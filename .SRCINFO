@@ -1,0 +1,55 @@
+pkgbase = libdbuslog-git
+	pkgdesc = D-Bus based logging
+	pkgver = 1.0.15.r0.gd0dbccb
+	pkgrel = 1
+	url = https://git.sailfishos.org/mer-core/libdbuslog
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = make
+	depends = glib2
+	depends = dbus
+	depends = libglibutil
+	depends = libdbusaccess
+	source = libdbuslog::git+https://git.sailfishos.org/mer-core/libdbuslog.git
+	sha256sums = SKIP
+
+pkgname = libdbuslog-tools-git
+	pkgdesc = Command line client for libdbuslogserver
+	depends = glib2
+	depends = dbus
+	depends = libglibutil
+	depends = libdbusaccess
+	provides = libdbuslog-tools
+	conflicts = libdbuslog-tools
+
+pkgname = libdbuslogserver-common-git
+	pkgdesc = Common development headers for libdbuslogserver
+	depends = glib2
+	depends = dbus
+	depends = libglibutil
+	depends = libdbusaccess
+	provides = libdbuslogserver-common
+	conflicts = libdbuslogserver-common
+
+pkgname = libdbuslogserver-dbus-git
+	pkgdesc = Library of logging utilities for libdbus based programs
+	depends = glib2
+	depends = dbus
+	depends = libglibutil
+	depends = libdbusaccess
+	depends = libdbuslogserver-common
+	provides = libdbuslogserver-dbus
+	conflicts = libdbuslogserver-dbus
+
+pkgname = libdbuslogserver-gio-git
+	pkgdesc = Library of logging utilities for gio based programs
+	depends = glib2
+	depends = dbus
+	depends = libglibutil
+	depends = libdbusaccess
+	depends = libdbuslogserver-common
+	provides = libdbuslogserver-gio
+	conflicts = libdbuslogserver-gio
+
