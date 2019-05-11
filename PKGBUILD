@@ -1,7 +1,7 @@
 # Maintainer: degreeme <suratovvlad@gmail.com>
 
 pkgname=libqdark-git
-pkgver=0.5.3.r0.g514bf60
+pkgver=0.5.5.r2.g78180d6
 pkgrel=1
 pkgdesc="Plugin for Qt applications. Choose the dark side of the style."
 arch=('i686' 'x86_64')
@@ -21,6 +21,7 @@ prepare() {
     cd ${pkgname%-*}
     git submodule update --init
     patch -d $srcdir/libqdark/src/QDarkStyleSheet -p1 < $srcdir/libqdark/0001_fix_class_names.patch
+    patch -d $srcdir/libqdark/src/QDarkStyleSheet_2.1 -p1 < $srcdir/libqdark/0002_QDarkStyleSheet_2_1_Change_naming.patch
 }
 
 build() {
