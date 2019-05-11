@@ -3,7 +3,7 @@
 
 pkgname='endless-sky-git'
 _gitname='endless-sky'
-pkgver=0.9.8.r536.gee883a47
+pkgver=0.9.8.r798.g95d7cf5d
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://endless-sky.github.io/"
@@ -46,16 +46,9 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/applications" endless-sky.desktop
 
   # icons
-  for res in 16 22 24 32 48 256; do
+  for res in 16 22 24 32 48 128 256 512; do
     install -Dm644 \
       "icons/icon_${res}x${res}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_gitname}.png"
-  done
-
-  # mac icon directory has additional icons [128+512px]
-  for res in 128 512; do
-    install -Dm644 \
-      "icons/endless-sky.iconset/icon_${res}x${res}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_gitname}.png"
   done
 

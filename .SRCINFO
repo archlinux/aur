@@ -1,6 +1,6 @@
 pkgbase = endless-sky-git
 	pkgdesc = A space exploration and combat game similar to Escape Velocity
-	pkgver = 0.9.8.r536.gee883a47
+	pkgver = 0.9.8.r798.g95d7cf5d
 	pkgrel = 1
 	url = http://endless-sky.github.io/
 	arch = i686
@@ -17,6 +17,8 @@ pkgbase = endless-sky-git
 	depends = glew
 	depends = libpng
 	depends = sdl2
+	optdepends = endless-sky-high-dpi: high resolution graphics assets
+	optdepends = endless-sky-editor: map editor
 	provides = endless-sky
 	conflicts = endless-sky
 	source = endless-sky::git+https://github.com/endless-sky/endless-sky.git#branch=master
