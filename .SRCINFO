@@ -1,7 +1,7 @@
 pkgbase = linux-amd-raven
 	pkgver = 5.1.v.1
 	pkgrel = 1
-	url = http://www.kernel.org/
+	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
