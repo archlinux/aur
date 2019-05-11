@@ -2,7 +2,7 @@
 
 _pkgname=ncspot
 pkgname="${_pkgname}-git"
-pkgver=0.0.0.160.d7848ec
+pkgver=0.0.0.251.5eff818
 pkgrel=1
 pkgdesc="Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes."
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/hrkfdn/ncspot"
 license=('BSD')
 depends=('ncurses' 'openssl' 'libpulse')
 optdepends=('portaudio: PortAudio backend')
-makedepends=('rust' 'cargo' 'git' 'alsa-lib')
+makedepends=('rust' 'cargo' 'git' 'alsa-lib' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/hrkfdn/ncspot.git")
