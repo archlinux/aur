@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-exec java -jar /opt/Trimmomatic/trimmomatic-0.38.jar "$@"
+exec java -jar /opt/Trimmomatic/trimmomatic-0.39.jar "$@"

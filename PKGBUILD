@@ -1,6 +1,6 @@
 # Maintainer: ZJLIN <zjin841126@gmail.com>
 pkgname=trimmomatic
-pkgver=0.38
+pkgver=0.39
 pkgrel=1
 pkgdesc='Trimmomatic: A flexible read trimming tool for Illumina NGS data'
 arch=('any')
@@ -10,8 +10,8 @@ depends=('java-environment>=6')
 source=("http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-$pkgver.zip"
         "trimmomatic"
         )
-md5sums=('4b3df3caf7fe803ca54c79db1a99c464'
-         '4841ad7904e222538c4469cf0e6c2b22')
+md5sums=('271ed9dca91132eee0c960e0ae487bcd'
+         'f48f380f206cb5f85bc25b8cf2c35d99')
 
 package() {
     mkdir $pkgdir/opt/
