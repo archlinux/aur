@@ -1,2 +1,3 @@
 *.tar.gz
 src/
+build.sh
