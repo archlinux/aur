@@ -1,0 +1,3 @@
+*.tar.gz
+beehive-*/
+*.pkg.tar

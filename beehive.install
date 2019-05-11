@@ -4,10 +4,8 @@ post_install() {
     fi
     mkdir -p /etc/beehive
     chown -R beehive: /etc/beehive
-    echo <<EOF
-To run a reverse proxy setup, please modify the systemd unit and add the following arguments to the ExecStart line:
-    -bind ":8181" -canonicalurl "http://beehive.myhost.com"
-EOF
+    echo "To run a reverse proxy setup, please modify the systemd unit and add the following arguments to the ExecStart line:"
+    echo "    -bind \":8181\" -canonicalurl \"http://beehive.myhost.com\""
 }
 
 pre_upgrade() {
@@ -17,5 +15,4 @@ pre_upgrade() {
 post_upgrade() {
     systemctl start beehive.service
 }
-
 

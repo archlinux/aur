@@ -1,50 +1,43 @@
 # Maintainer: Dennis Stengele <dennis@stengele.me>
 
 pkgname=beehive
-pkgver=0.2
-pkgrel=8
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="A flexible event and agent system with lots of bees"
 arch=('x86_64' 'i686')
 url="https://github.com/muesli/beehive"
 license=('AGPL3')
 makedepends=('go')
 options=('!strip' '!emptydirs')
-source=("https://github.com/muesli/${pkgname}/archive/v${pkgver}.tar.gz"
-        "beehive-admin-dist.zip::https://github.com/muesli/beehive-admin-dist/archive/e9e9a1124cf2d936e022be2371c6a5dd31f3a294.zip"
+install=beehive.install
+source=("$pkgname-$pkgver::git+https://github.com/muesli/beehive#tag=v$pkgver"
         "beehive.install"
         "beehive.service")
-sha256sums=('6d0f2587e3b9f1ff0ae75fec58a5f49c520497f8f4a16a96b1c1ad5e0e1466b5'
-            '7a87f6960d2deab3475cf7c96646bcd83126b40abe3381aa49505b92b8036666'
-            '3c52c9a1f3115493b78958ba03fd5385c5e2fa6c8caad88318794755426330ee'
-            'de07cc5b1fda921dd6ad4422651f5b81aa6393bc77c1760002e39ccd0b40c50f')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    GOPATH=`pwd` go get -d -v
-}
+sha256sums=('SKIP'
+            '6c6d380bd00e907b42fecb87bd07157d9e4c7806daf2f293ec9e2f9e656363c0'
+            '0b25ced04449720cba74c0c13bc6c0b75ff6f34bcaad58889745f572f66e7160')
 
 build() {
-    cd "$pkgname-$pkgver"
-    GOPATH=`pwd` go build
+    mkdir -p gopath/src/github.com/muesli
+    ln -rTsf $pkgname-$pkgver gopath/src/github.com/muesli/$pkgname
+    export GOPATH="$srcdir"/gopath
+    cd gopath/src/github.com/muesli/$pkgname
+    make
+}
+
+check() {
+    export GOPATH="$srcdir"/gopath
+    cd gopath/src/github.com/muesli/$pkgname
+    make test
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-
     # Install binary
-    install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/share/webapps/beehive/$pkgname"
-    # Copy assets dir
-    cp -r assets "$pkgdir/usr/share/webapps/beehive/assets"
+    install -Dm755 "$pkgname-$pkgver/beehive" "$pkgdir/usr/bin/beehive"
     # Copy License
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    cd ${srcdir}
+    install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     # Copy Unit file
     install -Dm644 beehive.service "$pkgdir/usr/lib/systemd/system/beehive.service"
-
-    # Copy webinterface files
-    install -dm755 "$pkgdir/usr/share/webapps/beehive/config"
-    cp -r beehive-admin-dist-e9e9a1124cf2d936e022be2371c6a5dd31f3a294/* "$pkgdir/usr/share/webapps/beehive/config"
 }
 
 # vim:set ts=4 sw=4 et:
