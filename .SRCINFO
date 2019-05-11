@@ -1,16 +1,17 @@
 pkgbase = python-mistralclient
 	pkgdesc = Mistral Client Library
 	pkgver = 3.8.0
-	pkgrel = 1
-	url = https://docs.openstack.org/developer/mistral/
+	pkgrel = 2
+	url = https://docs.openstack.org/python-mistralclient/
 	arch = any
 	license = Apache
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://github.com/openstack/python-mistralclient/archive/3.8.0.tar.gz
-	sha512sums = 1fabfc93d68651bde207122d74fc5b810670bed31d3e9beb52aa89b978ac23e141e0dfd2bb2f1561c64b3e3cca8a5311897efc35a9543faebffbeb4de2bc900e
-
-pkgname = python-mistralclient
+	checkdepends = python-openstackclient
+	checkdepends = python-mock
+	checkdepends = python-oslotest
+	checkdepends = python-requests-mock
+	checkdepends = python-tempest
+	checkdepends = python-osprofiler
+	checkdepends = python-stestr
 	depends = python-cliff
 	depends = python-osc-lib
 	depends = python-oslo-utils
@@ -21,16 +22,8 @@ pkgname = python-mistralclient
 	depends = python-requests
 	depends = python-six
 	depends = python-stevedore
+	source = https://github.com/openstack/python-mistralclient/archive/3.8.0.tar.gz
+	sha512sums = 1fabfc93d68651bde207122d74fc5b810670bed31d3e9beb52aa89b978ac23e141e0dfd2bb2f1561c64b3e3cca8a5311897efc35a9543faebffbeb4de2bc900e
 
-pkgname = python2-mistralclient
-	depends = python2-cliff
-	depends = python2-osc-lib
-	depends = python2-oslo-utils
-	depends = python2-oslo-i18n
-	depends = python2-pbr
-	depends = python2-keystoneclient
-	depends = python2-yaml
-	depends = python2-requests
-	depends = python2-six
-	depends = python2-stevedore
+pkgname = python-mistralclient
 
