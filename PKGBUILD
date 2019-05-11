@@ -55,8 +55,7 @@ build() {
 }
 
 package() {
-	#pwd
-	#ls
+	pkgdesc="Compiles the newest geoip databases for counties and cities from maxmind and installs them on your system"
 	echo -e "${BYELLOW}Installing the GeoIP Databases files in the right location${NOCOLOR}"
 	mkdir -p ../pkg/$pkgbase/usr/share/GeoIP
 	cp output/* ../pkg/$pkgbase/usr/share/GeoIP/

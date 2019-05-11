@@ -11,4 +11,5 @@ pkgbase = geoipdatabase_reloaded
 	sha256sums = SKIP
 
 pkgname = geoipdatabase_reloaded
+	pkgdesc = Compiles the newest geoip databases for counties and cities from maxmind and installs them on your system
 
