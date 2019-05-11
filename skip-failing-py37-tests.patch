@@ -1,8 +1,7 @@
-diff --git a/neutronclient/tests/unit/osc/v2/fwaas/common.py b/neutronclient/tests/unit/osc/v2/fwaas/common.py
-index 8acd51c4..4b2f0b05 100644
---- a/neutronclient/tests/unit/osc/v2/fwaas/common.py
-+++ b/neutronclient/tests/unit/osc/v2/fwaas/common.py
-@@ -47,6 +47,7 @@ class TestListFWaaS(test_fakes.TestNeutronClientOSCV2):
+diff -Nur /neutronclient/tests/unit/osc/v2/fwaas/common.py /neutronclient/tests/unit/osc/v2/fwaas/common.py
+--- /neutronclient/tests/unit/osc/v2/fwaas/common.py	2019-02-28 01:39:40.000000000 +1100
++++ /neutronclient/tests/unit/osc/v2/fwaas/common.py	2019-05-11 12:45:23.552516089 +1000
+@@ -47,6 +47,7 @@
  
  class TestShowFWaaS(test_fakes.TestNeutronClientOSCV2):
  
@@ -10,11 +9,10 @@ index 8acd51c4..4b2f0b05 100644
      def test_show_filtered_by_id_or_name(self):
          target = self.resource['id']
  
-diff --git a/neutronclient/tests/unit/osc/v2/fwaas/test_firewallrule.py b/neutronclient/tests/unit/osc/v2/fwaas/test_firewallrule.py
-index a512f3b3..9a7d9bd4 100644
---- a/neutronclient/tests/unit/osc/v2/fwaas/test_firewallrule.py
-+++ b/neutronclient/tests/unit/osc/v2/fwaas/test_firewallrule.py
-@@ -241,6 +241,7 @@ class TestCreateFirewallRule(TestFirewallRule, common.TestCreateFWaaS):
+diff -Nur /neutronclient/tests/unit/osc/v2/fwaas/test_firewallrule.py /neutronclient/tests/unit/osc/v2/fwaas/test_firewallrule.py
+--- /neutronclient/tests/unit/osc/v2/fwaas/test_firewallrule.py	2019-02-28 01:39:40.000000000 +1100
++++ /neutronclient/tests/unit/osc/v2/fwaas/test_firewallrule.py	2019-05-11 12:45:23.552516089 +1000
+@@ -273,6 +273,7 @@
  
          self.check_results(headers, data, request)
  
@@ -22,7 +20,7 @@ index a512f3b3..9a7d9bd4 100644
      def test_create_with_no_options(self):
          arglist = []
          verifylist = []
-@@ -252,6 +253,7 @@ class TestCreateFirewallRule(TestFirewallRule, common.TestCreateFWaaS):
+@@ -284,6 +285,7 @@
      def test_create_with_all_params(self):
          self._test_create_with_all_params()
  
@@ -30,7 +28,7 @@ index a512f3b3..9a7d9bd4 100644
      def test_create_with_all_params_protocol_any(self):
          self._test_create_with_all_params({'protocol': 'any'})
  
-@@ -318,6 +320,7 @@ class TestListFirewallRule(TestFirewallRule):
+@@ -378,6 +380,7 @@
              return_value={self.res_plural: [_fwr]})
          self.mocked = self.neutronclient.list_fwaas_firewall_rules
  
@@ -38,11 +36,10 @@ index a512f3b3..9a7d9bd4 100644
      def test_list_with_long_option(self):
          arglist = ['--long']
          verifylist = [('long', True)]
-diff --git a/neutronclient/tests/unit/test_shell.py b/neutronclient/tests/unit/test_shell.py
-index 0395d623..82a1e8b5 100644
---- a/neutronclient/tests/unit/test_shell.py
-+++ b/neutronclient/tests/unit/test_shell.py
-@@ -97,6 +97,7 @@ class ShellTest(testtools.TestCase):
+diff -Nur /neutronclient/tests/unit/test_shell.py /neutronclient/tests/unit/test_shell.py
+--- /neutronclient/tests/unit/test_shell.py	2019-02-28 01:39:40.000000000 +1100
++++ /neutronclient/tests/unit/test_shell.py	2019-05-11 12:45:23.555849402 +1000
+@@ -97,6 +97,7 @@
          self.assertFalse(stdout)
          self.assertIn("Unknown command ['fake']", stderr.strip())
  
@@ -50,7 +47,7 @@ index 0395d623..82a1e8b5 100644
      def test_help(self):
          required = 'usage:'
          help_text, stderr = self.shell('help')
-@@ -104,6 +105,7 @@ class ShellTest(testtools.TestCase):
+@@ -104,6 +105,7 @@
              help_text,
              matchers.MatchesRegex(required))
  
@@ -58,7 +55,7 @@ index 0395d623..82a1e8b5 100644
      def test_bash_completion(self):
          required = '.*os_user_domain_id.*'
          bash_completion, stderr = self.shell('bash-completion')
-@@ -120,6 +122,7 @@ class ShellTest(testtools.TestCase):
+@@ -120,6 +122,7 @@
                  stdout,
                  matchers.MatchesRegex(r, re.DOTALL | re.MULTILINE))
  
@@ -66,7 +63,7 @@ index 0395d623..82a1e8b5 100644
      def test_help_command(self):
          required = 'usage:'
          help_text, stderr = self.shell('help network-create')
-@@ -127,6 +130,7 @@ class ShellTest(testtools.TestCase):
+@@ -127,6 +130,7 @@
              help_text,
              matchers.MatchesRegex(required))
  
@@ -74,7 +71,7 @@ index 0395d623..82a1e8b5 100644
      def test_bash_completion_in_outputs_of_help_command(self):
          help_text, stderr = self.shell('help')
          completion_cmd = "bash-completion"
-@@ -135,6 +139,7 @@ class ShellTest(testtools.TestCase):
+@@ -135,6 +139,7 @@
          self.assertIn(completion_cmd, help_text)
          self.assertIn(completion_help_str, help_text)
  
