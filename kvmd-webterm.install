@@ -1,5 +1,6 @@
 post_install() {
-	id kvmd-webterm &>/dev/null || useradd -r -m -c "Pi-KVM Web Terminal (GoTTY)" -s /bin/bash kvmd-webterm
+	id kvmd-webterm &>/dev/null || useradd -r -m -c "Pi-KVM - Web terminal (ttyd)" -s /bin/bash kvmd-webterm
+	(groupmems -l -g kvmd-webterm | grep kvmd-nginx >/dev/null) || groupmems -g kvmd-webterm -a kvmd-nginx
 }
 
 post_remove() {
