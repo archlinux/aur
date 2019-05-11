@@ -20,7 +20,7 @@ source=("https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira
         'jira.conf.d'
         'jira.service')
 sha256sums=('a6ede8d87a216180b35baf0ec82657e88d4de9700af9296b0f5261e3044bc56c'
-            'a6304ba13a8ab1e27761bd3be71d05d2c2e3d61ea308316f4a04723ea4b30fc1'
+            '457fd1c5bcedc81e64f71cb890b600944a5be7980716b7f49f9a8c810565dbfb'
             'd61181154183301a551b1ae85a7d42c7d60ae2c36e545d2ab8ef5cc969def717')
 
 package() {
