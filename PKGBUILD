@@ -3,7 +3,7 @@
 
 pkgname=nest
 pkgver=2.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simulator for spiking neural network models"
 arch=('x86_64')
 url="http://www.nest-simulator.org/"
@@ -18,7 +18,7 @@ build() {
   mkdir -p "${srcdir}/build" && cd "${srcdir}/build"
   cmake "${srcdir}/${pkgname}-simulator-${pkgver}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -Dwith-gsl=ON \
     -Dwith-readline=ON \
     -Dwith-ltdl=ON \
