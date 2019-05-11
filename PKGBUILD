@@ -5,7 +5,7 @@
 # Upstream: https://github.com/lightningnetwork/lnd
 
 pkgname=('lnd-git')
-pkgver=v0.6.beta.rc2.r0.g3a19afe4
+pkgver=v0.6.1.beta.r12.gf8c824fb
 pkgrel=1
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go-pie' 'fakeroot')
 provides=('lnd' 'lnd-cli')
-conflicts=()
+conflicts=('lnd')
 source=("$pkgname::git+https://github.com/lightningnetwork/lnd.git")
 md5sums=('SKIP')
 
@@ -25,14 +25,15 @@ pkgver() {
 
 build() {
    cd $pkgname
+   cd cmd/lnd
    go build -buildmode=pie -ldflags -extldflags=-Wl,-z,now,-z,relro .
-   cd cmd/lncli
+   cd ../lncli
    go build -buildmode=pie -ldflags -extldflags=-Wl,-z,now,-z,relro .
 }
 
 package() {
   cd $pkgname
-  install -Dm 755 "lnd" -t "$pkgdir/usr/bin";
+  install -Dm 755 "cmd/lnd/lnd" -t "$pkgdir/usr/bin";
   install -Dm 755 "cmd/lncli/lncli" -t "$pkgdir/usr/bin";
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
