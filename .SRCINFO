@@ -1,12 +1,12 @@
 pkgbase = gumbocoin
 	pkgdesc = The cli client
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = gumbocoin.com
 	arch = any
 	license = GPL
-	source = gumbocoin-0.1.4.tar.gz::https://github.com/gumbocoin/Gumbocoin/archive/v0.1.4.tar.gz
-	md5sums = c29266c2a1db44e1763cd34295a541ca
+	source = gumbocoin-0.1.5.tar.gz::https://github.com/gumbocoin/Gumbocoin/archive/v0.1.5.tar.gz
+	md5sums = e2107c655e9b67c4dedb0e1c1fab30d4
 
 pkgname = gumbocoin
 

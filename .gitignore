@@ -1,3 +1,4 @@
 *.tar.gz
 src/
 build.sh
+PKGBUILD.backup
