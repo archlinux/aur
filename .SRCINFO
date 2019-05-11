@@ -1,0 +1,37 @@
+pkgbase = cuda-9.0
+	pkgdesc = NVIDIA's GPU programming toolkit. Version 9.0
+	pkgver = 9.0.176.4
+	pkgrel = 1
+	url = http://www.nvidia.com/object/cuda_home.html
+	install = cuda-9.0.install
+	arch = x86_64
+	license = custom:NVIDIA
+	depends = gcc6-libs
+	depends = opencl-nvidia
+	depends = nvidia-utils
+	depends = gcc6
+	optdepends = gdb: for cuda-gdb
+	optdepends = java-runtime: for nsight and nvvp
+	provides = cuda-toolkit
+	provides = cuda-sdk
+	options = !strip
+	options = staticlibs
+	source = https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda_9.0.176_384.81_linux-run
+	source = https://developer.nvidia.com/compute/cuda/9.0/Prod/patches/1/cuda_9.0.176.1_linux-run
+	source = https://developer.nvidia.com/compute/cuda/9.0/Prod/patches/2/cuda_9.0.176.2_linux-run
+	source = https://developer.nvidia.com/compute/cuda/9.0/Prod/patches/3/cuda_9.0.176.3_linux-run
+	source = https://developer.nvidia.com/compute/cuda/9.0/Prod/patches/4/cuda_9.0.176.4_linux-run
+	source = cuda-9.0.sh
+	source = cuda-9.0.conf
+	source = cuda-findgllib_mk.diff
+	sha512sums = 00e24638c02d049c575732dee5237db21f7c451b606f37cf95e44e89d47d0cb055255e9f70dc013298c9e0d224147f239488558904556b68572e3f31935489a9
+	sha512sums = d65be85a14d782ecfbf43f51e5bc38a5777762e4a8e5f3f5fe915cd4ff98e8616e5630ba45e9cadfd6f30d9495548da5ad73dc519c062a075f16f35b72685e46
+	sha512sums = ab626de9c856dd8888dc78f5ea88997672aa4e4a09931a09323e98f1189a15ab20b732b71709b09df8198c8c92ac202cf505cf687a509814ca174ac66ea6b3bb
+	sha512sums = af5843abe208bfcc5fa19b03c017b55e600502308b366a3e49781b1303904d136e25686f208fbc9b313e8a2519d2e6d99b30119f75edd4aca9af7fc6f3ed7218
+	sha512sums = 3f80a79e0f1f426499d77bc32f345ccfe762cf01308d8bc86de24040323ca84e7b08a0bf4f17cceb515d13c459900ad4246f9d224b4d2490e6cd52d32bda6694
+	sha512sums = 3115c602ee8e1b24597d55f715b4614ad688ddd6a701da876729d11b74c1d4debc234905d2a3932c285bae450a1b02693354a4c6a6c3feb44719c7cd0b869dd2
+	sha512sums = 5374b8f545245885a5732f28aa77324f53ab88740972b8c60b312fc310a603552e1c028cf71f2e2d9852041304f2c307a1fcc5ec2c7afc01d431e5f607a5f4fb
+	sha512sums = 6e9a15c73849e6400b0289ed9d6e9d3b7f100712713efcb7bbf4921f39fe671cd9fd3958e735c0da3a44f9afdd2aca94dbc63b564970a0dcacba599b570aca0f
+
+pkgname = cuda-9.0
+
