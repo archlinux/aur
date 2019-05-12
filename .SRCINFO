@@ -1,0 +1,15 @@
+pkgbase = python-nc-dnsapi
+	pkgdesc = A simple API wrapper for the netcup DNS API
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://pypi.org/project/nc-dnsapi/
+	arch = any
+	license = GPL3
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/c9/3b/36691546246b0b4ef5cf53aadbc5be5d51a9321d063205be3ee4c2ea28de/nc_dnsapi-0.1.5.tar.gz
+	sha256sums = d5fbf3af77b46406d20cea2f84bcf91872424ba97e2bcf5f6d81e8696c4ef5c0
+
+pkgname = python-nc-dnsapi
+
