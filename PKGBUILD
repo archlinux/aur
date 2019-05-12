@@ -2,7 +2,7 @@
 # Contributor: kevku <kevku@gmx.com>
 
 pkgname=kodi-addon-inputstream-adaptive
-pkgver=2.3.17
+pkgver=2.3.18
 pkgrel=1
 pkgdesc="InputStream client for adaptive streams for Kodi 18+"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ makedepends=('kodi-dev>=18' 'cmake')
 depends=('kodi-platform')
 conflicts=("${pkgname%-git}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/peak3d/inputstream.adaptive/archive/${pkgver}.tar.gz")
-sha256sums=('39746955c301c67ad3613254979f792a0eb29c0c109e35c1b54ac928c3fb8f3c')
+sha256sums=('11dab0e791c8fd6314adbf1bfb1b4f161889dd765c68d175bdebeb3e9b41b6c0')
 
 
 build() {
