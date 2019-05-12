@@ -1,6 +1,6 @@
 pkgbase = python-pybgpstream
 	pkgdesc = python bindings for libbgpstream
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://bgpstream.caida.org/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = python-pybgpstream
 	makedepends = python-setuptools
 	makedepends = python2
 	makedepends = python2-setuptools
-	source = https://bgpstream.caida.org/bundles/caidabgpstreamwebhomepage/dists/pybgpstream-1.2.2.tar.gz
-	md5sums = 933c2194f1e27bdd03399688e639dffe
+	source = https://bgpstream.caida.org/bundles/caidabgpstreamwebhomepage/dists/pybgpstream-1.2.3.tar.gz
+	md5sums = 1f25c162d9ae59b3afbd1da4705679de
 
 pkgname = python-pybgpstream
 	depends = python

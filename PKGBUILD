@@ -3,7 +3,7 @@
 pkgbase=python-pybgpstream
 pkgname=('python-pybgpstream' 'python2-pybgpstream')
 _pkgname='pybgpstream'
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="python bindings for libbgpstream"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 url="https://bgpstream.caida.org/"
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 source=("https://bgpstream.caida.org/bundles/caidabgpstreamwebhomepage/dists/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('933c2194f1e27bdd03399688e639dffe')
+md5sums=('1f25c162d9ae59b3afbd1da4705679de')
 
 prepare() {
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${_pkgname}2-${pkgver}"
