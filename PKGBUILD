@@ -4,8 +4,7 @@ pkgdesc="ROS - A collection of .mk include files for building ROS architectural 
 url='http://www.ros.org/wiki/ROS'
 
 pkgname='ros-melodic-mk'
-pkgver='1.14.4'
-_pkgver_patch=0
+pkgver='1.14.6'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -28,9 +27,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros-release-release-melodic-mk-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/melodic/mk/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('772a2f9f3ed5c5471ec012131fda7e7e7d6e955f9aca243eb95049f3ba92ce72')
+_dir="ros-${pkgver}/core/mk"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
+sha256sums=('62f1350271a76bc35794c2cdb741cdae2ba096c96a924dba025aed4f561c978c')
 
 build() {
 	# Use ROS environment variables.
