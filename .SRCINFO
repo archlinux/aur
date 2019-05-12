@@ -1,6 +1,6 @@
 pkgbase = hyper-git
 	pkgdesc = A terminal built on web technologies
-	pkgver = 3.0.0.canary.10.r0.g34fb41c2
+	pkgver = 3.0.1.canary.4.r0.gef14af49
 	pkgrel = 1
 	url = https://hyper.is/
 	arch = any

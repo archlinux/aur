@@ -8,7 +8,7 @@
 # Contributer: auk
 
 pkgname=hyper-git
-pkgver=3.0.0.canary.10.r0.g34fb41c2
+pkgver=3.0.1.canary.4.r0.gef14af49
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('any')
