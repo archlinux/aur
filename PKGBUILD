@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=27.0.50.r135638
+pkgver=27.0.50.r136298
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.gnu.org/software/emacs/"
 license=('GPL')
 depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'm17n-lib' 'libxrandr' 'acl'
 	 'libxinerama' 'librsvg' 'gnutls' 'xaw3d' 'libdbus' 'libxfixes'
-	 'jansson' 'libmagick6' 'desktop-file-utils')
+	 'jansson' 'libmagick' 'desktop-file-utils')
 makedepends=('git' 'texlive-core')
 conflicts=('emacs')
 options=('docs' '!emptydirs')
@@ -26,7 +26,7 @@ pkgver() {
 build() {
   cd emacs
   [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
-  ac_cv_lib_gif_EGifPutExtensionLast=yes PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig" \
+  ac_cv_lib_gif_EGifPutExtensionLast=yes PKG_CONFIG_PATH="/usr/lib/imagemagick/pkgconfig" \
     ./configure --program-transform-name='s/^ctags$/ctags.emacs/' \
     --prefix=/usr \
     --sysconfdir=/etc \
