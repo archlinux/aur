@@ -9,7 +9,6 @@ pkgbase = grv
 	depends = ncurses
 	depends = readline
 	depends = curl
-	depends = go
 	provides = grv
 	conflicts = grv
 	source = https://github.com/rgburke/grv/releases/download/v0.3.2/grv_v0.3.2_linux64
