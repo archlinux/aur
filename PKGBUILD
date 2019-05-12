@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd bemenu
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
