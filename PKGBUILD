@@ -1,6 +1,6 @@
 # Maintainer: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm
-pkgver=0.4.053
+pkgver=0.4.151
 pkgrel=1
 pkgdesc="An highly automated, intuitive, Digital Audio Workstation (DAW)"
 arch=( 'x86_64' )
@@ -13,7 +13,7 @@ depends=('gtk3' 'lv2' 'lilv' 'libx11' 'jack'
 makedepends=('python' 'gettext' 'sed' 'libtool')
 conflicts=( 'zrythm-git' )
 source=( "https://git.zrythm.org/zrythm/${pkgname}/-/archive/v$pkgver/${pkgname}-v$pkgver.tar.gz" )
-md5sums=( '573b3501859ba8b5361c01a83d17b23d' )
+md5sums=( '5eebcbb84df1ad1d8c79f3fb94e87cec' )
 
 rootdir="${pkgname}-v${pkgver}"
 
