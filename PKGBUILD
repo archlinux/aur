@@ -1,17 +1,18 @@
 # $Id$
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # Maintainer: Sebastian Weiland <sebastianweiland97@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 # Original package: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20190511
+pkgver=4.0.0v20190512
 _pkgver=4.0.0
-_snapshot_=20190511
-_snapver_=0231
+_snapshot_=20190512
+_snapver_=0230
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
-pkgrel=2
+pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot'
 url='https://nightlies.videolan.org/'
 arch=('x86_64')
@@ -21,7 +22,7 @@ depends=('qt5-quickcontrols2' 'a52dec' 'libdvbpsi' 'libxpm'  'libdca' 'libproxy'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libarchive' 'qt5-base'  'libgcrypt' 'qt5-x11extras' 'qt5-svg' 'freetype2'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo-git'
-         'wayland-protocols' 'aribb24')
+         'wayland-protocols' 'aribb24' 'libfdk-aac')
 makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
@@ -219,7 +220,6 @@ build() {
               --enable-chromaprint \
               --enable-chromecast \
               --enable-qt \
-              --enable-skins2 \
               --enable-libtar \
               --enable-ncurses \
               --enable-lirc \
@@ -243,11 +243,13 @@ build() {
               \
               --libexecdir=/usr/lib \
 	            --disable-daala \
-	            --disable-fdkaac \
-	            --disable-decklink
+	            --enable-fdkaac \
+	            --disable-decklink \
+              --disable-skins2
   # note: removing --enable-daala for now because it is currently broken
   #       removing --enable-fdkaac for now because it is currently broken
   #       adding --disable-decklink because it is broken
+  #       adding --disable-skins2 because skins are currently broken thanks to changes in upstream concerning how playlist and player works.
   make V=1
 }
 
@@ -271,7 +273,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('622e53bcf12de170ccb3b26b5d198236aa39a7c88c08aa9edb13af9d6d04ec10'
+sha256sums=('a0eb6bc0309e25b427cd93ec4f9fe7d9306b43de60b68483be218d5f81861885'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             '3e6bddbaed443e40036c494a0754aedd2f94fe41bfa3754855e16f7452a03cdf'
             '52d2818dde06fe5fd873b4a89f31884650c480528f7b61c0cbc05576fdbb3e53'
