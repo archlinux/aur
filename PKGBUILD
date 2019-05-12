@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname/build"
+  cd "$srcdir/build"
   DESTDIR=${pkgdir}/ ninja install
 }
 
