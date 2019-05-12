@@ -1,7 +1,7 @@
 # maintainer: odknt <oda.kenta.hj at gmail.com>
 pkgname=bspwmbar
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight status bar for bspwm'
 arch=(x86_64)
 license=('ISC')

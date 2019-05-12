@@ -1,7 +1,7 @@
 pkgbase = bspwmbar
 	pkgdesc = A lightweight status bar for bspwm
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/odknt/bspwmbar
 	arch = x86_64
 	license = ISC
