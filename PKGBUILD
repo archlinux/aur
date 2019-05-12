@@ -2,9 +2,9 @@
 # Maintainer: ValleyKnight <valleyknight@protonmail.com>
 
 pkgname=rsfetch-git
-pkgver=1.5.0
+pkgver=1.6.6
 pkgrel=1
-pkgdesc="Fast (0.01s - 0.2s execution time) and somewhat(?) minimal fetch program written in Rust."
+pkgdesc="Fast (1ms execution time) and somewhat(?) minimal fetch program written in Rust."
 url="https://github.com/phate6660/rsfetch"
 license=('Unlicense')
 depends=()
