@@ -9,8 +9,9 @@ arch=('i686' 'x86_64')
 url="https://mhogomchungu.github.io/sirikali/"
 license=('GPL')
 depends=('qt5-base' 'libpwquality' 'hicolor-icon-theme')
-makedepends=('git' 'cmake' 'libgcrypt' 'lxqt_wallet' 'gcc-libs')
-optdepends=('libsecret: support for Gnome libsecret password storage (must recompile)'
+makedepends=('git' 'cmake' 'libgcrypt' 'gcc-libs')
+optdepends=('lxqt_wallet: use an external lxqt_wallet (must recompile)'
+            'libsecret: support for Gnome libsecret password storage (must recompile)'
             'kwallet: support for KDE wallet storage (must recompile)'
             'cryfs: for CryFS support'
             'gocryptfs: for gocryptfs support'
@@ -31,6 +32,12 @@ prepare() {
   cd "$srcdir/${_pkgname}"
   mkdir -p build
 
+  if pacman -Qs "lxqt_wallet" > /dev/null ; then
+    intwallet="false"
+  else
+    intwallet="true"
+  fi
+
   if pacman -Qs "kwallet" > /dev/null ; then
     kdeopt="false"
   else
@@ -49,7 +56,7 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DINTERNAL_LXQT_WALLET=false \
+    -DINTERNAL_LXQT_WALLET=$intwallet \
     -DNOKDESUPPORT=$kdeopt \
     -DNOSECRETSUPPORT=$gnomeopt \
     -DQT5=true \
