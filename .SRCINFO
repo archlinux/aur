@@ -1,6 +1,6 @@
 pkgbase = djgpp-gcc
 	pkgdesc = GCC for the djgpp cross-compiler
-	pkgver = 8.3.0
+	pkgver = 9.1.0
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = djgpp-gcc
 	options = !strip
 	options = staticlibs
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/gcc/gcc-8.3.0/gcc-8.3.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-9.1.0/gcc-9.1.0.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
 	source = lto.patch
 	source = gcc-djgpp.diff
