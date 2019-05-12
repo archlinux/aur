@@ -1,7 +1,7 @@
 pkgbase = vlc-nightly
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot
 	pkgver = 4.0.0v20190512
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nightlies.videolan.org/
 	arch = x86_64
 	license = LGPL2.1

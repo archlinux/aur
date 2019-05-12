@@ -12,7 +12,7 @@ _snapshot_=20190512
 _snapver_=0230
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot'
 url='https://nightlies.videolan.org/'
 arch=('x86_64')
@@ -103,7 +103,7 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'sidplay2-libs: for C64 sid demuxer'
             'sndio: for OpenBSD sndio audio output')
 # note: removing 'daala-git: for Daala video support' because it is currently broken
-#       removing 'libfdk-aac: FDK AAC codec' because it is currently broken
+#       if you want to redistribute the binary remove 'libfdk-aac: FDK AAC codec' 
 conflicts=("${_appname_}-plugin" "${_appname_}")
 provides=("${_appname_}")
 replaces=("${_appname_}-plugin")
@@ -247,8 +247,8 @@ build() {
 	            --disable-decklink \
               --disable-skins2
   # note: removing --enable-daala for now because it is currently broken
-  #       removing --enable-fdkaac for now because it is currently broken
-  #       adding --disable-decklink because it is broken
+  #       change --enable-fdkaac to --disable-fdkaac if you want to redistribute the binary
+  #       adding --disable-decklink because it's a big mess that i don't want to touch even though it'll probably work now according to git
   #       adding --disable-skins2 because skins are currently broken thanks to changes in upstream concerning how playlist and player works.
   make V=1
 }
