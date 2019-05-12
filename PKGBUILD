@@ -5,9 +5,8 @@ url='http://ros.org/wiki/rosbag_migration_rule'
 
 pkgname='ros-melodic-rosbag-migration-rule'
 pkgver='1.0.0'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -27,9 +26,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rosbag_migration_rule-release-release-melodic-rosbag_migration_rule-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rosbag_migration_rule-release/archive/release/melodic/rosbag_migration_rule/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('985744e58043e42585c195d72c7f8c0a265b646ca9dbfdf7d67d4488ed2a2a11')
+_dir="rosbag_migration_rule-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rosbag_migration_rule/archive/${pkgver}.tar.gz")
+sha256sums=('3943772fda87d82b84b0209d4da2e266872740b62f10447a0ad21b881edd20a2')
 
 build() {
 	# Use ROS environment variables.
