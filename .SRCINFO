@@ -1,0 +1,17 @@
+pkgbase = distccd-arch-arm
+	pkgdesc = Provides an Arch ARM client with Systemd services/environment files to make use of distcc-alarm naively.
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://github.com/graysky2/distccd-arch-arm
+	arch = armv5
+	arch = armv6h
+	arch = armv7h
+	arch = armv8
+	license = MIT
+	depends = distcc
+	optdepends = distccd-alarm: recommended on the x86_64 volunteer machine
+	source = distccd-arch-arm-1.01.tar.gz::https://github.com/graysky2/distccd-arch-arm/archive/v1.01.tar.gz
+	sha256sums = b2e6058aa7aee2d77715a3ebb6bd305af53917a5a5b5cc8311de72dd6af5a251
+
+pkgname = distccd-arch-arm
+
