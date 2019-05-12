@@ -5,9 +5,8 @@ url='http://ros.org/wiki/visualization_msgs'
 
 pkgname='ros-melodic-visualization-msgs'
 pkgver='1.12.7'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -33,9 +32,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="common_msgs-release-release-melodic-visualization_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/visualization_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('fcd899da639e6bd69f2b1dab627bf76ae527ae753f671d01357cb55c215d05da')
+_dir="common_msgs-${pkgver}/visualization_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/common_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4')
 
 build() {
 	# Use ROS environment variables.
