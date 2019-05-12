@@ -1,6 +1,6 @@
 pkgbase = vim-x11
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor (X11 support, no GUI)
-	pkgver = 8.1.1073
+	pkgver = 8.1.1186
 	pkgrel = 1
 	url = http://www.vim.org
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = vim-x11
 	makedepends = lua
 	makedepends = gawk
 	makedepends = tcl
-	depends = vim-runtime=8.1.1073-1
+	depends = vim-runtime=8.1.1186-1
 	depends = gpm
 	depends = acl
 	optdepends = python2: Python 2 language support
@@ -24,17 +24,17 @@ pkgbase = vim-x11
 	optdepends = lua: Lua language support
 	optdepends = perl: Perl language support
 	optdepends = tcl: Tcl language support
-	provides = vim=8.1.1073-1
+	provides = vim=8.1.1186-1
 	provides = xxd
 	conflicts = vim-minimal
 	conflicts = vim
 	conflicts = vim-python3
 	conflicts = gvim
 	conflicts = gvim-python3
-	source = vim-8.1.1073.tar.gz::http://github.com/vim/vim/archive/v8.1.1073.tar.gz
+	source = vim-8.1.1186.tar.gz::http://github.com/vim/vim/archive/v8.1.1186.tar.gz
 	source = vimrc
 	source = archlinux.vim
-	sha1sums = 4a7fa21c6ff7772fe325c39563bd0c41eb193f3a
+	sha1sums = 737d9de8ee6377bf25e4fe51af3a36cbdadf5b11
 	sha1sums = b8ca9132826e53cd14431ef9767e4fd820faa782
 	sha1sums = 94f7bb87b5d06bace86bc4b3ef1372813b4eedf2
 
