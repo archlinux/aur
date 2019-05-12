@@ -13,8 +13,8 @@ options=('!zipman')
 depends=('gcc-libs' 'libtasn1' 'readline' 'zlib' 'nettle' 'p11-kit' 'libidn2'
          'libidn2.so' 'libunistring' guile)
 checkdepends=('net-tools')
-provides=('gnutls')
-conflicts=('gnutls')
+provides=($_pkgname=$pkgver)
+conflicts=($_pkgname=$pkgver)
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/${_pkgname}-${pkgver}.tar.xz{,.sig})
 sha256sums=('5b3409ad5aaf239808730d1ee12fdcd148c0be00262c7edf157af655a8a188e2'
             'SKIP')
