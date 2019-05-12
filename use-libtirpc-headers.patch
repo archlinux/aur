@@ -1,11 +1,11 @@
-diff -aur --no-dereference radium-5.8.9.pristine/bin/packages/build.sh radium-5.8.9.new/bin/packages/build.sh
---- radium-5.8.9.pristine/bin/packages/build.sh	2018-09-12 17:40:04.000000000 +0100
-+++ radium-5.8.9.new/bin/packages/build.sh	2018-09-15 08:11:31.031841089 +0100
-@@ -97,6 +97,7 @@
+diff -aur --no-dereference radium-5.9.60.pristine/bin/packages/build.sh radium-5.9.60.new/bin/packages/build.sh
+--- radium-5.9.60.pristine/bin/packages/build.sh	2019-05-11 22:54:53.259293886 +0100
++++ radium-5.9.60.new/bin/packages/build.sh	2019-05-11 22:55:12.335959902 +0100
+@@ -110,6 +110,7 @@
+ rm -fr libpd-master
  tar xvzf libpd-master.tar.gz
  cd libpd-master/
- make clean
 +sed -i '/define CFLAGS/ s|")| -I/usr/include/tirpc ")|' make.scm
- make -j  `nproc`
+ make clean
+ make -j`nproc`
  cd ..
- 

@@ -3,7 +3,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.9.52
+pkgver=5.9.60
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ makedepends=(
   'libxinerama'
   'libxkbfile'
   'libxrandr'
-  'llvm40'
+  'llvm'
   'qt5-tools'
   'steinberg-vst36'
 )
@@ -38,17 +38,15 @@ optdepends=(
   'calf-ladspa: Default chorus plugin'
   'ladspa-plugins: Package group for default radium plugins incl in binary releases'
 )
-options=(!strip) # https://github.com/kmatheussen/radium/issues/1153#issuecomment-421543245
+options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "use-libtirpc-headers.patch"
         "use-system-libxcb.patch"
-        "use-system-vstsdk.patch"
-        "use-static-llvm40.patch")
-sha256sums=('86afd2977bc091faca0235f1fd48226233e111e9e50b4c52e1762e8e07cdbc3b'
-            'f2596261f9ebd859f9850cbfc97edb7fd5d45cf8768ce47d0721cbf4b2d80c7e'
-            '94de9befbe6530c721917445ee3a0c0202371e1b2229784b2ea6e0c0efaf7808'
-            'aefb2973d28056956d55ff89c7ff77e36e6a1213463741d72bf1afe2cfb5affe'
-            '8b5a038fd3320bd49ed2cd81150aa2550c5f5389529f24fbcd603755977644a7')
+        "use-system-vstsdk.patch")
+sha256sums=('330d7346b45d0b1bcd04e903da17d87cec8c2261a7e8a335f2372509cab8109f'
+            '0dfa3014bc6a66989564c7da2d963681f5d129eb0be28153744693dd533e4909'
+            '6c29e825e06d1c3aec4afd915718b8c46da705d1411a94f7c0f777b888a9b50d'
+            '0471dab0a9ae8c52fdb15a453b4863d31e82c32ee493c31d9473e34e8391d9df')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -62,16 +60,8 @@ prepare() {
   # JUCE expects the VST SDK in home directory, this adds paths for SDK in steinberg-vst36 from AUR
   patch -p1 < "${srcdir}/use-system-vstsdk.patch"
 
-  # Bundled FAUST package is not compatible with LLVM above 4.0.1
-  # Link llvm40 statically in radium and faust binaries to avoid conflicts with system llvm
-  # https://github.com/kmatheussen/radium/issues/1174
-  patch -p1 < "${srcdir}/use-static-llvm40.patch"
-
-  # The optional calf-ladspa package in AUR switched to LMMS's 'veal' fork of Calf LADSPA
-  # Radium's demo and new .rad song files reference the old/unmaintained calf plugins used in its binary distribution
-  # Currently only Calf's 'Multi-Chorus' plugin is used in the preset chorus bus which is replaced by a pipe if missing
-  # Simple sed search and replace can be used to replace the old chorus plugin name with the one used in 'veal' plugins
-  # https://github.com/kmatheussen/radium/issues/1158
+  # calf-ladspa in AUR uses LMMS's 'veal' fork of Calf LADSPA in which the chorus plugin ref contains a white space
+  # Radium has not switched to veal yet for its demo songs, https://github.com/kmatheussen/radium/issues/1158
   for file in bin/sounds/*.rad; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
 }
 
@@ -106,6 +96,13 @@ package() {
   ln -s "/opt/radium/radium_256x256x32.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/radium.png"
   ln -s "/opt/radium/radium.desktop" "${pkgdir}/usr/share/applications/radium.desktop"
   ln -s "/opt/radium/radium-mimetype.xml" "${pkgdir}/usr/share/mime/packages/radium.xml"
+}
+
+warn_build_references() {
+  # Radium author would prefer if binaries are left unstripped.
+  # Meaning debug information inside them will reference build dir, this silences the warning from makepkg.
+  # https://github.com/kmatheussen/radium/issues/1153#issuecomment-421543245
+  true
 }
 
 # vim:set sw=2 ts=2 indentexpr=GetShIndent() et:

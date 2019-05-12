@@ -1,7 +1,7 @@
-diff -aur --no-dereference radium-5.9.0.pristine/bin/packages/build.sh radium-5.9.0.new/bin/packages/build.sh
---- radium-5.9.0.pristine/bin/packages/build.sh	2018-09-16 16:43:47.000000000 +0100
-+++ radium-5.9.0.new/bin/packages/build.sh	2018-09-16 16:57:25.576723176 +0100
-@@ -171,28 +171,6 @@
+diff -aur --no-dereference radium-5.9.60.pristine/bin/packages/build.sh radium-5.9.60.new/bin/packages/build.sh
+--- radium-5.9.60.pristine/bin/packages/build.sh	2019-05-11 22:54:53.259293886 +0100
++++ radium-5.9.60.new/bin/packages/build.sh	2019-05-11 22:57:03.595956087 +0100
+@@ -185,28 +185,28 @@
      cd ../
  fi
  
@@ -13,7 +13,7 @@ diff -aur --no-dereference radium-5.9.0.pristine/bin/packages/build.sh radium-5.
 -    cd xcb-proto-1.13/
 -    mkdir install
 -    ./configure --prefix=`pwd`/install PYTHON=`which python2`
--    make
+-    make -j`proc`
 -    make install
 -    cd ..
 -    
@@ -23,16 +23,38 @@ diff -aur --no-dereference radium-5.9.0.pristine/bin/packages/build.sh radium-5.
 -    #patch -p1 <../libxcb-1.12.patch
 -    export PKG_CONFIG_PATH=`pwd`/../xcb-proto-1.13/install/lib/pkgconfig:$PKG_CONFIG_PATH
 -    CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CPPFLAGS="$CXXFLAGS" ./configure PYTHON=`which python2`
--    CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CPPFLAGS="$CXXFLAGS" make
+-    CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CPPFLAGS="$CXXFLAGS" make -j`nproc`
 -    cd ..
 -    
 -fi
++#if [[ $RADIUM_QT_VERSION == 5 ]]
++#then
++#
++#    rm -fr xcb-proto-1.13/
++#    tar xvjf xcb-proto-1.13.tar.bz2
++#    cd xcb-proto-1.13/
++#    mkdir install
++#    ./configure --prefix=`pwd`/install PYTHON=`which python2`
++#    make -j`proc`
++#    make install
++#    cd ..
++#    
++#    rm -fr libxcb-1.13
++#    tar xvjf libxcb-1.13.tar.bz2 
++#    cd libxcb-1.13
++#    #patch -p1 <../libxcb-1.12.patch
++#    export PKG_CONFIG_PATH=`pwd`/../xcb-proto-1.13/install/lib/pkgconfig:$PKG_CONFIG_PATH
++#    CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CPPFLAGS="$CXXFLAGS" ./configure PYTHON=`which python2`
++#    CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CPPFLAGS="$CXXFLAGS" make -j`nproc`
++#    cd ..
++#    
++#fi
  
  
- # Build faust last since we reset the build flags.
-diff -aur --no-dereference radium-5.9.0.pristine/bin/run_radium_linux.sh radium-5.9.0.new/bin/run_radium_linux.sh
---- radium-5.9.0.pristine/bin/run_radium_linux.sh	2018-09-16 16:43:47.000000000 +0100
-+++ radium-5.9.0.new/bin/run_radium_linux.sh	2018-09-16 16:57:25.576723176 +0100
+ touch deletemetorebuild
+diff -aur --no-dereference radium-5.9.60.pristine/bin/run_radium_linux.sh radium-5.9.60.new/bin/run_radium_linux.sh
+--- radium-5.9.60.pristine/bin/run_radium_linux.sh	2019-05-11 22:54:53.262627219 +0100
++++ radium-5.9.60.new/bin/run_radium_linux.sh	2019-05-11 22:57:03.595956087 +0100
 @@ -4,14 +4,14 @@
  
  
@@ -52,12 +74,12 @@ diff -aur --no-dereference radium-5.9.0.pristine/bin/run_radium_linux.sh radium-
 -export LD_LIBRARY_PATH="$XCB_LIB_DIR"${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 +#export LD_LIBRARY_PATH="$XCB_LIB_DIR"${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
  
-  # To avoid buggy qt plugins from crashing radium (very common).
+ # To avoid buggy qt plugins crashing radium (very common).
  unset QT_QPA_PLATFORMTHEME
-diff -aur --no-dereference radium-5.9.0.pristine/install.sh radium-5.9.0.new/install.sh
---- radium-5.9.0.pristine/install.sh	2018-09-16 16:43:47.000000000 +0100
-+++ radium-5.9.0.new/install.sh	2018-09-16 16:58:34.036723259 +0100
-@@ -79,7 +79,7 @@
+diff -aur --no-dereference radium-5.9.60.pristine/install.sh radium-5.9.60.new/install.sh
+--- radium-5.9.60.pristine/install.sh	2019-05-11 22:54:53.275960552 +0100
++++ radium-5.9.60.new/install.sh	2019-05-11 22:57:03.595956087 +0100
+@@ -99,7 +99,7 @@
  cd "$THIS_DIR/bin"
  
  # libxcb
@@ -69,19 +91,22 @@ diff -aur --no-dereference radium-5.9.0.pristine/install.sh radium-5.9.0.new/ins
 +#cd "$TARGET/packages/libxcb-1.13/src"
 +#rm -f *.o
 +#cd "$THIS_DIR/bin"
-diff -aur --no-dereference radium-5.9.0.pristine/Qt/Qt_Main.cpp radium-5.9.0.new/Qt/Qt_Main.cpp
---- radium-5.9.0.pristine/Qt/Qt_Main.cpp	2018-09-16 16:43:47.000000000 +0100
-+++ radium-5.9.0.new/Qt/Qt_Main.cpp	2018-09-16 16:57:25.586723176 +0100
-@@ -3449,12 +3449,6 @@
+diff -aur --no-dereference radium-5.9.60.pristine/Qt/Qt_Main.cpp radium-5.9.60.new/Qt/Qt_Main.cpp
+--- radium-5.9.60.pristine/Qt/Qt_Main.cpp	2019-05-11 22:54:53.245960553 +0100
++++ radium-5.9.60.new/Qt/Qt_Main.cpp	2019-05-11 22:57:03.595956087 +0100
+@@ -3536,6 +3536,7 @@
+   
+ #endif // !defined(RELEASE)
+ 
++/*
  #if defined(FOR_LINUX)
    {
      QString name(dlpi_name);
--    if (name.contains("libxcb.so")){
--      if (!name.contains("bin/packages/libxcb-1.13/src/.libs/")){
--        fprintf(stderr,"\n\n%c[31mError. A version of libxcb not included with Radium has been dynamically linked into the program. Something is wrong the installation of Radium.\nOlder versions of libxcb (probably before 1.11.1) are unstable with Radium.%c[0m\n\n", 0x1b, 0x1b);
--        abort();
--      }
--    }
+@@ -3547,6 +3548,7 @@
+     }
    }
  #endif
++*/
   
+  
+   if (is_main_root)

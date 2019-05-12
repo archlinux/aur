@@ -1,7 +1,7 @@
-diff -aur --no-dereference radium-5.9.51.pristine/check_dependencies.sh radium-5.9.51.new/check_dependencies.sh
---- radium-5.9.51.pristine/check_dependencies.sh	2019-04-02 21:02:25.000000000 +0100
-+++ radium-5.9.51.new/check_dependencies.sh	2019-04-03 16:47:17.163749245 +0100
-@@ -211,11 +211,6 @@
+diff -aur --no-dereference radium-5.9.60.pristine/check_dependencies.sh radium-5.9.60.new/check_dependencies.sh
+--- radium-5.9.60.pristine/check_dependencies.sh	2019-05-11 22:54:53.265960552 +0100
++++ radium-5.9.60.new/check_dependencies.sh	2019-05-11 22:58:13.635953702 +0100
+@@ -211,11 +211,11 @@
      exit 5
  fi
  
@@ -10,13 +10,18 @@ diff -aur --no-dereference radium-5.9.51.pristine/check_dependencies.sh radium-5
 -    echo 'You should find these files in the "VST Audio Plug-Ins SDK" from http://www.steinberg.net/en/company/developers.html . Unless Steinberg have changed the directory structure again, it should enough to unzip the file into your ~/SDKs directory.'
 -    exit 5
 -fi
++#if [[ ! -f ~/SDKs/vstsdk2.4/pluginterfaces/vst2.x/aeffect.h && ! -f ~/SDKs/"VST3 SDK"/pluginterfaces/vst2.x/aeffect.h && ! -f ~/SDKs/VST_SDK/VST2_SDK/pluginterfaces/vst2.x/aeffect.h ]] ; then
++#    echo 'Steinberg VST headers not found. (Missing "~/SDKs/vstsdk2.4/pluginterfaces/vst2.x/aeffect.h or "~/SDKs/VST3 SDK/pluginterfaces/vst2.x/aeffect.h" or "~/SDKs/VST_SDK/VST2_SDK/pluginterfaces/vst2.x/aeffect.h")'
++#    echo 'You should find these files in the "VST Audio Plug-Ins SDK" from http://www.steinberg.net/en/company/developers.html . Unless Steinberg have changed the directory structure again, it should enough to unzip the file into your ~/SDKs directory.'
++#    exit 5
++#fi
  
  
  if [[ $4 == "test_build" ]] ; then
-diff -aur --no-dereference radium-5.9.51.pristine/Makefile.Qt radium-5.9.51.new/Makefile.Qt
---- radium-5.9.51.pristine/Makefile.Qt	2019-04-02 21:02:25.000000000 +0100
-+++ radium-5.9.51.new/Makefile.Qt	2019-04-03 16:48:33.380415989 +0100
-@@ -242,7 +242,7 @@
+diff -aur --no-dereference radium-5.9.60.pristine/Makefile.Qt radium-5.9.60.new/Makefile.Qt
+--- radium-5.9.60.pristine/Makefile.Qt	2019-05-11 22:54:53.245960553 +0100
++++ radium-5.9.60.new/Makefile.Qt	2019-05-11 22:58:13.639287034 +0100
+@@ -252,7 +252,7 @@
  
  FLAGOPTS = $(DEFINES) -DGUIISQT -DUSE_GFX_OP_QUEUE -DFULL_VERSION=$(FULL_VERSION) -DIS_LITTLE_ENDIAN=1 -DUSE_OPENGL=1 $(VISUAL) $(REQTYPE_TYPE) $(MENU_TYPE)
  
@@ -25,15 +30,15 @@ diff -aur --no-dereference radium-5.9.51.pristine/Makefile.Qt radium-5.9.51.new/
  #-fdelete-null-pointer-checks 
  # -Werror
  
-diff -aur --no-dereference radium-5.9.51.pristine/pluginhost/Builds/Linux/Makefile radium-5.9.51.new/pluginhost/Builds/Linux/Makefile
---- radium-5.9.51.pristine/pluginhost/Builds/Linux/Makefile	2019-04-02 21:02:25.000000000 +0100
-+++ radium-5.9.51.new/pluginhost/Builds/Linux/Makefile	2019-04-03 16:47:17.167082577 +0100
+diff -aur --no-dereference radium-5.9.60.pristine/pluginhost/Builds/Linux/Makefile radium-5.9.60.new/pluginhost/Builds/Linux/Makefile
+--- radium-5.9.60.pristine/pluginhost/Builds/Linux/Makefile	2019-05-11 22:54:53.279293885 +0100
++++ radium-5.9.60.new/pluginhost/Builds/Linux/Makefile	2019-05-11 22:58:13.639287034 +0100
 @@ -8,7 +8,7 @@
    CONFIG=Debug
  endif
  
--COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -Wno-class-memaccess -mfpmath=sse -msse2
-+COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I /usr/include/vst36 -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -Wno-class-memaccess -mfpmath=sse -msse2
+-COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -mfpmath=sse -msse2
++COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I /usr/include/vst36 -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -mfpmath=sse -msse2
  
- ifeq ($(CONFIG),Debug)
-   BINDIR := build
+ ifeq (,$(findstring clang,$(CXX)))
+ 	COMMONCPPFLAGS += -Wno-class-memaccess 
