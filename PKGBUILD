@@ -13,6 +13,7 @@ makedepends=('cmake')
 provides=()
 conflicts=()
 
+_dir="${pkgname}-Simbody-${pkgver}"
 source=("https://github.com/simbody/${pkgname}/archive/Simbody-${pkgver}.tar.gz")
 sha256sums=('7716d6ea20b950e71e8535faa4353ac89716c03fd7a445dd802eb6a630796639')
 
@@ -20,30 +21,34 @@ _buildtype="Release"
 
 build() {
 
+    cd "${srcdir}/${_dir}"
+
     msg "Starting CMake (build type: ${_buildtype})"
 
     # Create a build directory
-    mkdir -p "${srcdir}/${pkgname}-Simbody-${pkgver}/build"
-    cd "${srcdir}/${pkgname}-Simbody-${pkgver}/build"
+    mkdir -p "${srcdir}/${_dir}/build"
+    cd "${srcdir}/${_dir}/build"
 
     # Build project
-    cmake .. \
+    cmake \
         -DCMAKE_BUILD_TYPE="${_buildtype}" \
-        -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr"
-        #-DCMAKE_INSTALL_LIBDIR=lib
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_INSTALL_LIBDIR="lib" \
+        "${srcdir}/${_dir}"
+
 
     msg "Building the project"
     make -j4
 }
 
 #check() {
-#    cd "${srcdir}/${pkgname}-Simbody-${pkgver}/build"
+#    cd "${srcdir}/${_dir}/build"
 #    make test
 #}
 
 package() {
 
-    cd "${srcdir}/${pkgname}-Simbody-${pkgver}/build"
+    cd "${srcdir}/${_dir}/build"
 
     msg "Installing files"
     make DESTDIR="${pkgdir}/" install
