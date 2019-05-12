@@ -10,7 +10,7 @@ license=('GPL3' 'LGPL2.1')
 url="https://www.gnutls.org/"
 options=('!zipman')
 depends=('gcc-libs' 'libtasn1' 'readline' 'zlib' 'nettle' 'p11-kit' 'libidn2'
-         'libidn2.so' 'libunistring')
+         'libidn2.so' 'libunistring' guile)
 checkdepends=('net-tools')
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/${pkgname}-${pkgver}.tar.xz{,.sig})
 sha256sums=('5b3409ad5aaf239808730d1ee12fdcd148c0be00262c7edf157af655a8a188e2'
@@ -26,7 +26,7 @@ build() {
 	--with-zlib \
 	--disable-static \
 	--with-idn \
-	--disable-guile \
+	--enable-guile \
 	--with-default-trust-store-pkcs11="pkcs11:model=p11-kit-trust;manufacturer=PKCS%2311%20Kit"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make

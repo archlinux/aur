@@ -16,6 +16,7 @@ pkgbase = gnutls
 	depends = libidn2
 	depends = libidn2.so
 	depends = libunistring
+	depends = guile
 	options = !zipman
 	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.7.tar.xz
 	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.7.tar.xz.sig
