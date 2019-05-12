@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-stereo-msgs
 	pkgdesc = ROS - stereo_msgs contains messages specific to stereo processing, such as disparity images.
-	pkgver = 1.12.6
+	pkgver = 1.12.7
 	pkgrel = 1
 	url = http://wiki.ros.org/stereo_msgs
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-stereo-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-stereo-msgs-1.12.6-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/stereo_msgs/1.12.6-0.tar.gz
-	sha256sums = 71d1fdfd5c078a79d4d32570b1158b647929d8780b344867713cf8da43a0bc36
+	source = ros-melodic-stereo-msgs-1.12.7.tar.gz::https://github.com/ros/common_msgs/archive/1.12.7.tar.gz
+	sha256sums = a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4
 
 pkgname = ros-melodic-stereo-msgs
 

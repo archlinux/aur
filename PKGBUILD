@@ -4,8 +4,7 @@ pkgdesc="ROS - stereo_msgs contains messages specific to stereo processing, such
 url='http://wiki.ros.org/stereo_msgs'
 
 pkgname='ros-melodic-stereo-msgs'
-pkgver='1.12.6'
-_pkgver_patch=0
+pkgver='1.12.7'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -22,16 +21,9 @@ ros_depends=(ros-melodic-message-runtime
   ros-melodic-std-msgs)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/stereo_msgs/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
-_dir="common_msgs-release-release-melodic-stereo_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/stereo_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('71d1fdfd5c078a79d4d32570b1158b647929d8780b344867713cf8da43a0bc36')
+_dir="common_msgs-${pkgver}/stereo_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/common_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4')
 
 build() {
   # Use ROS environment variables
