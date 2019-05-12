@@ -4,8 +4,7 @@ pkgdesc="ROS - rosmsg contains two command-line tools: rosmsg and rossrv."
 url='http://ros.org/wiki/rosmsg'
 
 pkgname='ros-melodic-rosmsg'
-pkgver='1.14.3'
-_pkgver_patch=0
+pkgver='1.12.14'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -33,9 +32,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="ros_comm-release-release-melodic-rosmsg-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosmsg/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d6b76ae3f2df2b92e423f03b57ddd325f928e6d16b1fbcac2939fd173ce3195d')
+_dir="ros_comm-${pkgver}/tools/rosmsg"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
+sha256sums=('239c225cc9b1613cc7f76daf73c182f991787b7cf601287cb6cc28957eeeec1d')
 
 build() {
 	# Use ROS environment variables.
