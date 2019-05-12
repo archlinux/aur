@@ -8,8 +8,6 @@ pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
-_date="$(date +%d%m%y)"
-_datepkgver="$(date +%d%m%y%H%M)"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss sqlite ttf-font libpulse libvpx icu)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
@@ -27,7 +25,7 @@ source=("hg+$_repo"
         $_pkgname.desktop
         $_pkgname-symbolic.svg)
 sha512sums=('SKIP'
-            '04ff0a612a5e43bc6951abc0eb84df678e19d1f0233e49ef7e4559688ebce4fa51d1d3ee856ae926b0d0c89f512f223fc70446269b5049428d1c1d5c9abc2155'
+            '28219dab29bb53fa66c894ea16330f3cd20f6783000141a1a57e2a9616d9b4a377f85fd8d213e47c5323738e0a867039bc64648e2316aa7519266d23c14989e4'
             'ba7db9a7c95a051bcd84e4c09c802fc55ee3c0d1d06ec1b169b04e414259b75bbe92fe584aee41a1e3f71e71c160df8bedf5393449e5024110ed27dbc0579ea8')
 
 pkgver() {
@@ -123,10 +121,5 @@ END
     # Replace duplicate binary with wrapper
     # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
     mv "$pkgdir/usr/bin/firefox" "$pkgdir/usr/bin/firefox-nightly"
-	}
-sha512sums=('SKIP'
-            '04ff0a612a5e43bc6951abc0eb84df678e19d1f0233e49ef7e4559688ebce4fa51d1d3ee856ae926b0d0c89f512f223fc70446269b5049428d1c1d5c9abc2155'
-            'ba7db9a7c95a051bcd84e4c09c802fc55ee3c0d1d06ec1b169b04e414259b75bbe92fe584aee41a1e3f71e71c160df8bedf5393449e5024110ed27dbc0579ea8')
-sha512sums=('SKIP'
-            '28219dab29bb53fa66c894ea16330f3cd20f6783000141a1a57e2a9616d9b4a377f85fd8d213e47c5323738e0a867039bc64648e2316aa7519266d23c14989e4'
-            'ba7db9a7c95a051bcd84e4c09c802fc55ee3c0d1d06ec1b169b04e414259b75bbe92fe584aee41a1e3f71e71c160df8bedf5393449e5024110ed27dbc0579ea8')
+	
+}
