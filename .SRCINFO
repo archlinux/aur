@@ -1,0 +1,19 @@
+pkgbase = rfc-read
+	pkgdesc = Read RFCs from the command-line
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/bfontaine/rfc
+	arch = any
+	license = MIT
+	makedepends = gzip
+	depends = bash
+	depends = curl
+	depends = sed
+	depends = less
+	conflicts = rfc
+	conflicts = rfc-get
+	source = https://github.com/bfontaine/rfc/archive/v0.2.6.tar.gz
+	sha512sums = daab2153c412732ba834261694890488b2a7af342185ab6452daa2a8b8de47febdf49ba55dff433b85e9e60b736a998183214bcd58e970d69162dee886f36cc2
+
+pkgname = rfc-read
+
