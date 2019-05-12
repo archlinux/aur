@@ -4,8 +4,7 @@ pkgdesc="ROS - rosmake is a ros dependency aware build tool which can be used to
 url='http://ros.org/wiki/rosmake'
 
 pkgname='ros-melodic-rosmake'
-pkgver='1.14.4'
-_pkgver_patch=0
+pkgver='1.14.6'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -29,9 +28,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="ros-release-release-melodic-rosmake-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/melodic/rosmake/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('eae91dbf54d8a8b4d5e6b34880d6a6c49f77584a3be8dbca37762bb5b9186fca')
+_dir="ros-${pkgver}/tools/rosmake"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
+sha256sums=('62f1350271a76bc35794c2cdb741cdae2ba096c96a924dba025aed4f561c978c')
 
 build() {
 	# Use ROS environment variables.
