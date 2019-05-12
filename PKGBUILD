@@ -7,9 +7,9 @@ pkgver=2.3.6
 pkgrel=1
 pkgdesc="A module for looking up DNS entries in Python applications"
 arch=('any')
-url="https://launchpad.net/py3dns"
+url="https://launchpad.net/pydns"
 license=('Python')
-depends=('python')
+depends=('python2')
 source=("https://launchpad.net/${_realname}/${pkgver}/${pkgver}/+download/${_realname}-${pkgver}.tar.gz")
 md5sums=('d12ca75251854ab6fcabbaff6909b690')
 
