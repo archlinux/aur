@@ -1,4 +1,4 @@
-pkgbase = gnutls
+pkgbase = gnutls-guile
 	pkgdesc = A library which provides a secure layer over a reliable transport layer
 	pkgver = 3.6.7
 	pkgrel = 1
@@ -25,5 +25,5 @@ pkgbase = gnutls
 	sha256sums = 5b3409ad5aaf239808730d1ee12fdcd148c0be00262c7edf157af655a8a188e2
 	sha256sums = SKIP
 
-pkgname = gnutls
+pkgname = gnutls-guile
 

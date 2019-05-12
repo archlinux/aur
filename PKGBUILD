@@ -1,7 +1,8 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
-pkgname=gnutls
+pkgname=gnutls-guile
+_pkgname=gnutls
 pkgver=3.6.7
 pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer"
@@ -12,7 +13,7 @@ options=('!zipman')
 depends=('gcc-libs' 'libtasn1' 'readline' 'zlib' 'nettle' 'p11-kit' 'libidn2'
          'libidn2.so' 'libunistring' guile)
 checkdepends=('net-tools')
-source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/${pkgname}-${pkgver}.tar.xz{,.sig})
+source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/${_pkgname}-${pkgver}.tar.xz{,.sig})
 sha256sums=('5b3409ad5aaf239808730d1ee12fdcd148c0be00262c7edf157af655a8a188e2'
             'SKIP')
 validpgpkeys=('0424D4EE81A0E3D119C6F835EDA21E94B565716F'
@@ -21,7 +22,7 @@ validpgpkeys=('0424D4EE81A0E3D119C6F835EDA21E94B565716F'
                # "Nikos Mavrogiannopoulos <nmav@gnutls.org>
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
   ./configure --prefix=/usr \
 	--with-zlib \
 	--disable-static \
@@ -33,12 +34,12 @@ build() {
 }
 
 check() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
   make check
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 
   # lots of .png files are put into infodir and are gzipped by makepkg! this needs to be fixed by using !zipman
