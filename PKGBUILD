@@ -33,7 +33,7 @@ build() {
 
     rm -f cmake/FindOlm.cmake
 
-    cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF -DUSE_BUNDLED_CMARK=OFF
+    cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF -DUSE_BUNDLED_CMARK=OFF -DUSE_BUNDLED_JSON=OFF
     cmake --build .deps
 
     cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release \
