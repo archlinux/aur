@@ -10,7 +10,7 @@ pkgdesc="A modern slicer for extrusion 3D printing provided by E3D Skunkworks (b
 arch=('x86_64')
 url="https://pathio.xyz/"
 options=('!strip')
-license=('custom')
+license=('custom:Pathio Software License Agreement')
 _filename="pathio-$pkgver-$_channel.AppImage"
 source=("$_filename::https://api.pathio.xyz/api/asset/download/$_channel/linux/"
 	pathio.sh
