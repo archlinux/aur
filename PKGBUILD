@@ -11,7 +11,7 @@
 
 pkgname=(lib32-mesa-git)
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.2.0_devel.110857.8b3baa27440
+pkgver=19.2.0_devel.110903.974c4d679c2
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -79,14 +79,18 @@ pkgver() {
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
+prepare() {
+    # although removing _build folder in build() function feels more natural,
+    # that interferes with the spirit of makepkg --noextract
+    if [  -d _build ]; then
+        rm -rf _build
+    fi
+}
 build () {
     export CC="gcc -m32"
     export CXX="g++ -m32"
     export PKG_CONFIG=/usr/bin/pkg-config-32  
 
-      if [  -d _build ]; then
-        rm -rf _build
-    fi
     meson setup mesa _build \
         --native-file llvm32.native \
         -D b_ndebug=true \
