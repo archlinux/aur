@@ -55,7 +55,7 @@ _disabled_modules=(languages/mod_spidermonkey
 # BUILD CONFIGURATION ENDS                     #
 
 pkgname=freeswitch-git
-pkgver=1.7.0.r33467.a5858c8b9f
+pkgver=1.7.0.r33483.13e40b6951
 pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
 arch=('i686' 'x86_64')
@@ -176,12 +176,9 @@ build() {
   # We need to override some things for the ./configure for 1.6.17
   #PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
   #CFLAGS+=" -I/usr/include/openssl-1.0" \
-  #LDFLAGS+=" -I/usr/lib/openssl-1.0" ./configure \
   sed -i -re 's@^(confdir=)"$prefix/conf"@"/etc/freeswitch"@g' ./configure
   export CFLAGS="${CFLAGS} -Wno-error -D__alloca=alloca"
   export CXXFLAGS="${CFLAGS}"
-  #./configure \
-  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
   ./configure \
     --prefix=/var/lib/freeswitch \
     --with-python=/usr/bin/python2 \
