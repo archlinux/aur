@@ -1,4 +1,5 @@
 # Maintainer: Konstantinos Sideris <siderisk at auth dot gr>
+# Maintainer: Joseph Donofry <joe at joedonofry dot com>
 
 pkgname=nheko-git
 pkgver=0.5.0.r732.96a2c614
