@@ -39,6 +39,7 @@ build() {
     cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release \
         -DLMDBXX_INCLUDE_DIR=.deps/usr/include \
         -DTWEENY_INCLUDE_DIR=.deps/usr/include
+        -DJSON_INCLUDE_DIR=/usr/include
     cmake --build build
 }
 
