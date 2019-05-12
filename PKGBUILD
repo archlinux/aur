@@ -3,7 +3,7 @@
 
 pkgname=qjson
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Qt4-based library that maps JSON data to QVariant objects"
 arch=(x86_64)
 license=(GPL)
@@ -21,7 +21,8 @@ build() {
   cd build
   cmake ../$pkgname-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DQT4_BUILD=ON
   make
 }
 
