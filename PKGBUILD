@@ -3,7 +3,7 @@
 pkgname='mplayer-gui'
 pkgver='1.3.0'
 _sver='1'
-pkgrel='28'
+pkgrel='29'
 pkgdesc='GUI for mplayer'
 arch=('x86_64')
 url='http://www.mplayerhq.hu/'
@@ -15,7 +15,7 @@ md5sums=('3112e13347c857e60cc272fecda11536')
 
 build() {
   cd ${srcdir}
-  bsdtar -xf "mplayer-1.3.0-26.20180620svn.fc29.src.rpm" -C .
+  bsdtar -xf "mplayer-gui-1.3.0-26.20180620svn.fc29.x86_64.rpm" -C .
 }
 
 package() {
