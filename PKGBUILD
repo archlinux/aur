@@ -5,9 +5,8 @@ url='http://wiki.ros.org/nav_msgs'
 
 pkgname='ros-melodic-nav-msgs'
 pkgver='1.12.7'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -35,9 +34,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="common_msgs-release-release-melodic-nav_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/nav_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('614b3c69348013d8d3fc72c67652ad3b02057376044e63a29210261be1406eac')
+_dir="common_msgs-${pkgver}/nav_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/common_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4')
 
 build() {
 	# Use ROS environment variables.

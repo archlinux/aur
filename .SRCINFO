@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-nav-msgs
 	pkgdesc = ROS - nav_msgs defines the common messages used to interact with the navigation stack.
 	pkgver = 1.12.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/nav_msgs
 	arch = any
 	license = BSD
@@ -16,8 +16,8 @@ pkgbase = ros-melodic-nav-msgs
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-actionlib-msgs
 	depends = ros-melodic-geometry-msgs
-	source = ros-melodic-nav-msgs-1.12.7-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/nav_msgs/1.12.7-0.tar.gz
-	sha256sums = 614b3c69348013d8d3fc72c67652ad3b02057376044e63a29210261be1406eac
+	source = ros-melodic-nav-msgs-1.12.7.tar.gz::https://github.com/ros/common_msgs/archive/1.12.7.tar.gz
+	sha256sums = a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4
 
 pkgname = ros-melodic-nav-msgs
 
