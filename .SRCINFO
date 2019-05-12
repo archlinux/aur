@@ -8,8 +8,6 @@ pkgbase = optimus-manager-qt
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = optimus-manager>=1.0
-	depends = knotifications
-	depends = kiconthemes
 	source = optimus-manager-qt-1.2.0.tar.gz::https://github.com/Shatur95/optimus-manager-qt/archive/1.2.0.tar.gz
 	source = SingleApplication-submodule.tar.gz::https://github.com/itay-grudev/SingleApplication/archive/3.0.14.tar.gz
 	sha256sums = 6dbf9c8276fc81a47709f678c5b4b3787b400098fa904b38647ffa51cbaff40d

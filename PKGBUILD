@@ -1,7 +1,7 @@
 # Maintainer: Shatur <genaloner@gmail.com>
 
 # Use KDE API features (recommended for Plasma users)
-_plasma=true
+_plasma=false
 
 pkgname=optimus-manager-qt
 pkgver=1.2.0
