@@ -11,8 +11,8 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
 # Can be from either systemd or systemd-stable
-_commit='db2e367bfc3b119609f837eb973d915f6c550b2f'
-pkgver=242.19
+_commit='298d13df7ef1097fa4801de573f668cef23a22b3'
+pkgver=242.29
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -83,6 +83,10 @@ _backports=(
 
   # network: logs link state change
   '0beb9542e90ab1c5d1507a1046a326fbcf73861c'
+
+  # fix coredumps
+  '51aba17b88617515e037e8985d3a4ea871ac47fe'
+  'b9ea3d2e47b3741f3f46ba9c5e19640136933b71'
 )
 
 _reverts=(
