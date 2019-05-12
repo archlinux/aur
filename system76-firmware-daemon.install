@@ -34,7 +34,6 @@ pre_upgrade() {
 post_upgrade() {
   /usr/bin/systemctl daemon-reload >/dev/null 2>&1
   _restore_services
-  post_install
 }
 
 pre_remove() {
@@ -44,9 +43,4 @@ pre_remove() {
 
 post_remove() {
   /usr/bin/systemctl daemon-reload >/dev/null 2>&1
-  cat << EOF
-
-    Be sure to stop and disable all running System76 user services.
-
-EOF
 }
