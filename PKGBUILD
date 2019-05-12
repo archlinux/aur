@@ -2,7 +2,7 @@
 # Contributor: Oliver Rümpelein <arch@pheerai.de>
 
 pkgname=mergerfs
-pkgver=2.26.0
+pkgver=2.26.1
 pkgrel=1
 pkgdesc="FUSE based union filesystem"
 arch=('x86_64')
@@ -12,9 +12,9 @@ license=('custom:ISC')
 #       fuse2 depends on fuse-common, which has a shared library dependency on fuse3 (ldd /usr/bin/mount.fuse | grep libfuse3).
 depends=('fuse2' 'fuse3')
 makedepends=('git')    # 'pandoc'
-#source=("https://github.com/trapexit/mergerfs/archive/$pkgver.tar.gz")
-source=("https://github.com/trapexit/mergerfs/releases/download/$pkgver/mergerfs-$pkgver.tar.gz")
-md5sums=('36a216cb33ea4d1759ab0bf79188356a')
+source=("https://github.com/trapexit/mergerfs/archive/$pkgver.tar.gz")
+#source=("https://github.com/trapexit/mergerfs/releases/download/$pkgver/mergerfs-$pkgver.tar.gz")
+md5sums=('1ee9946095273fa9ea6a5e285ee2b31e')
 
 build() {
   cd $pkgname-$pkgver
