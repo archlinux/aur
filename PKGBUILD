@@ -20,12 +20,13 @@ optdepends=('konsole:  The terminal emulator used in the default config.'
             'perl-anyevent-i3: For i3-save-tree')
 backup=(etc/i3/config)
 options=('docs' '!strip')
-source=('git+https://gitlab.com/ognarb/i3-kde.git')
+source=("$pkgname-$pkgver::git+https://gitlab.com/ognarb/i3-kde.git")
 sha256sums=('SKIP')
 
 prepare(){
   mkdir -p build
-  cd "i3-kde"
+  echo "$pkgname"
+  cd "$pkgname-$pkgver"
 
   autoreconf -fvi
 }
@@ -33,7 +34,7 @@ prepare(){
 build() {
   cd build
 
-  ../i3-$pkgver/configure \
+  ../$pkgname-$pkgver/configure \
     --prefix=/usr \
     --sysconfdir=/etc
   make
@@ -44,7 +45,7 @@ package() {
 
   make DESTDIR="${pkgdir}/" install
   install -Dt "$pkgdir/usr/share/man/man1" -m644 man/*.1
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 ../i3-$pkgver/LICENSE
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 ../$pkgname-$pkgver/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
