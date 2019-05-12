@@ -2,7 +2,7 @@
 # Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-git
-pkgver=21.0.r2306.bbfcf076
+pkgver=21.0.r2309.5dda6b2e
 pkgrel=1
 epoch=1
 pkgdesc="Download from Usenet using .nzb files"
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  printf "%s.r%s.%s" "$(git describe --tags | sed 's/v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(git describe --tags | sed 's/^v//;s/-.*//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
