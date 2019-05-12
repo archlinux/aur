@@ -7,8 +7,8 @@
 
 pkgname=icecat
 pkgver=60.6.3
-_pkgver=60.3.0
-pkgrel=1
+_pkgver=c2e111f41e86eb6f76bf884c9ab997fec7ef8f5c
+pkgrel=2
 pkgdesc="GNU version of the Firefox browser."
 arch=(i686 x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -22,19 +22,19 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 
-source=(http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_pkgver}.tar.gz
+source=(http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-c2e111f41e86eb6f76bf884c9ab997fec7ef8f5c.tar.gz
         icecat.desktop icecat-safe.desktop
         rust_133-part0.patch 'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664' 
         deny_missing_docs.patch patch_makeicecat_stuff.patch)
 
-sha256sums=('a99420657f5e92ff4e03f4466d7c075061c3c2e7fe84870b957881bc1e09c249'
+sha256sums=('c329f94adaec97553865b2a5da0578bcad914063b99ab99aa18e3a4f5db66d75'
             'c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
             '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
             'c10521badc262b476e844d3f3045ddf27e28d83d49b5db0d0e19431f06386e4d'
             '8b37332dd205946ea95c606103b5b0e1e8498819051ea1c1bce79f04fd88ebca'
             '08ab4293d6008524a38e20b428c750c4c55a2f7189e9a0067871ad723c1efab5'
             'cb1116c783995b8187574f84acb8365681aedaa2c76222cf060d31fedcb063c4'
-            '947805be92124383e69e022efe62824ef6fabdaec2e9f94cc97e13f75b2e0c1b')
+            'a5c61776cd7c7b3c640785083e194100e4745f124e549ae1c304ac2e2eba2b3e')
 
 #validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
