@@ -2,7 +2,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=simbody
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance C++ multibody dynamics/physics library for simulating articulated biomechanical and mechanical systems like vehicles, robots, and the human skeleton."
 arch=('i686' 'x86_64')
 url="https://simtk.org/home/simbody"
