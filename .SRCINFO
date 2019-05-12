@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rosboost-cfg
 	pkgdesc = ROS - Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc.
-	pkgver = 1.14.4
+	pkgver = 1.14.6
 	pkgrel = 1
 	url = http://ros.org/wiki/rosboost_cfg
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ros-melodic-rosboost-cfg
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	source = ros-melodic-rosboost-cfg-1.14.4-0.tar.gz::https://github.com/ros-gbp/ros-release/archive/release/melodic/rosboost_cfg/1.14.4-0.tar.gz
-	sha256sums = 48a4149e4ee43077f5b4c5f1d4d4acc3055d1507ccf7e3fe7399cc228fccfc7b
+	source = ros-melodic-rosboost-cfg-1.14.6.tar.gz::https://github.com/ros/ros/archive/1.14.6.tar.gz
+	sha256sums = 62f1350271a76bc35794c2cdb741cdae2ba096c96a924dba025aed4f561c978c
 
 pkgname = ros-melodic-rosboost-cfg
 
