@@ -2,13 +2,13 @@
 
 pkgname=xtensor
 pkgver=0.20.5
-pkgrel=1
+pkgrel=2
 pkgdesc="QuantStack tools library - Multi-dimensional arrays with broadcasting and lazy computing."
 arch=('x86_64')
 url="https://github.com/QuantStack/${pkgname}"
 license=('BSD-3-Clause')
-depends=('gcc' 'xtl' 'nlohmann-json')
-makedepends=('cmake')
+depends=('xtl')
+makedepends=('gcc' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QuantStack/${pkgname}/archive/${pkgver}.tar.gz")
 
 build() {

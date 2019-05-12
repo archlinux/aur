@@ -1,14 +1,13 @@
 pkgbase = xtensor
 	pkgdesc = QuantStack tools library - Multi-dimensional arrays with broadcasting and lazy computing.
 	pkgver = 0.20.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QuantStack/xtensor
 	arch = x86_64
 	license = BSD-3-Clause
+	makedepends = gcc
 	makedepends = cmake
-	depends = gcc
 	depends = xtl
-	depends = nlohmann-json
 	source = xtensor-0.20.5.tar.gz::https://github.com/QuantStack/xtensor/archive/0.20.5.tar.gz
 	sha512sums = 038f6858bea33a0b6e3b6622c9bbb316864335f7190ef64455ec0a062c13bcafcf215c089bbdf1f72acca63c50ceb2f1d11eb4874d82a5bfff3eead10cbfc00c
 
