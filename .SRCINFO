@@ -1,0 +1,17 @@
+pkgbase = line
+	pkgdesc = A dead simple line printer.
+	pkgver = 1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/mini-eggs/line
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	provides = line
+	conflicts = line
+	source = git+https://github.com/mini-eggs/line.git
+	md5sums = SKIP
+
+pkgname = line
+
