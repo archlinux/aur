@@ -9,10 +9,10 @@ pkgver=7.16
 pkgrel=7
 pkgdesc="Ncurses-based spreadsheet program"
 arch=('x86_64')
-url="http://ibiblio.org/pub/linux/apps/financial/spreadsheet/!INDEX.html"
+url="https://ibiblio.org/pub/linux/apps/financial/spreadsheet/!INDEX.html"
 license=('Public Domain')
 depends=('ncurses')
-source=(http://ibiblio.org/pub/linux/apps/financial/spreadsheet/$pkgname-$pkgver.tar.gz
+source=(https://ibiblio.org/pub/linux/apps/financial/spreadsheet/$pkgname-$pkgver.tar.gz
         https://launchpadlibrarian.net/1281150/${pkgname}_$pkgver-2.diff.gz)
 md5sums=('1db636e9b2dc7cd73c40aeece6852d47'
          '83d5d8a4b5ffb4e85da887b63c49f2ff')
