@@ -1,0 +1,22 @@
+pkgbase = python-greendns
+	pkgdesc = A non-poisonous and CDN-friendly recursive DNS resolver written in Python
+	pkgver = 0.9.12
+	pkgrel = 1
+	url = https://github.com/faicker/greendns
+	install = greendns.install
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-dnslib
+	depends = python-six
+	conflicts = python-greendns-git
+	conflicts = greendns
+	source = https://github.com/faicker/greendns/archive/0.9.12.tar.gz
+	source = greendns.service
+	source = greendns.conf
+	sha512sums = 3a5d527f46d1cdde3ad2e89f76f059cb7f7704f0088b87c80794170c4e7936b74a76bced8021c892f6e3011c5c2a444c008396447b2fadd3b0efe2b9cc296293
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = python-greendns
+

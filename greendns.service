@@ -1,0 +1,33 @@
+[Unit]
+Description="Anti-pollution, CDN-friendly recursive DNS resolver"
+Before=network-online.target nss-lookup.target
+After=systemd-sysusers.service
+Wants=nss-lookup.target
+
+[Service]
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+LimitNOFILE=32768
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=strict
+RestrictAddressFamilies=AF_UNIX AF_NETLINK AF_INET AF_INET6
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+Type=simple
+KillSignal=SIGINT
+Restart=on-failure
+User=greendns
+Group=greendns
+ExecStart=/usr/bin/greendns -r greendns -p 127.0.0.1:1053 -t 9 --lds 223.5.5.5:53 --rds 1.1.1.1:53 --rfc1918
+
+[Install]
+WantedBy=multi-user.target
