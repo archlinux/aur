@@ -6,7 +6,7 @@ pkgver=2.2
 pkgrel=5
 pkgdesc="Plugins for Icinga, Naemon, Nagios, Shinken, Sensu and other monitoring applications"
 arch=('x86_64')
-url="http://www.monitoring-plugins.org"
+url="https://www.monitoring-plugins.org"
 license=('GPL3')
 makedepends=('net-snmp' 'postgresql-libs' 'libdbi' 'mariadb-libs'
   'procps-ng' 'iputils' 'fping' 'dnsutils' 'rpcbind' 'smbclient' 'openssh'
