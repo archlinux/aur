@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-message-filters
 	pkgdesc = ROS - A set of message filters which take in messages and may output those messages at a later time, based on the conditions that filter needs met.
-	pkgver = 1.14.3
+	pkgver = 1.12.14
 	pkgrel = 1
 	url = http://ros.org/wiki/message_filters
 	arch = any
@@ -15,8 +15,9 @@ pkgbase = ros-melodic-message-filters
 	makedepends = boost
 	depends = ros-melodic-rosconsole
 	depends = ros-melodic-roscpp
-	source = ros-melodic-message-filters-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/message_filters/1.14.3-0.tar.gz
-	sha256sums = 3eb38ff43701662023ac5e7141fb50303fb27657822275b4d4da92ed661ff72d
+	conflicts = ros-melodic-message-filters-git
+	source = ros-melodic-message-filters-1.12.14.tar.gz::https://github.com/ros/ros_comm/archive/1.12.14.tar.gz
+	sha256sums = 239c225cc9b1613cc7f76daf73c182f991787b7cf601287cb6cc28957eeeec1d
 
 pkgname = ros-melodic-message-filters
 

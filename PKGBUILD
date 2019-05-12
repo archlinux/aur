@@ -4,8 +4,7 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='http://ros.org/wiki/message_filters'
 
 pkgname='ros-melodic-message-filters'
-pkgver='1.14.3'
-_pkgver_patch=0
+pkgver='1.12.14'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -34,9 +33,13 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros_comm-release-release-melodic-message_filters"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/message_filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3eb38ff43701662023ac5e7141fb50303fb27657822275b4d4da92ed661ff72d')
+conflicts=(
+	'ros-melodic-message-filters-git'
+)
+
+_dir="ros_comm-${pkgver}/utilities/message_filters"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
+sha256sums=('239c225cc9b1613cc7f76daf73c182f991787b7cf601287cb6cc28957eeeec1d')
 
 build() {
 	# Use ROS environment variables.
@@ -49,6 +52,8 @@ build() {
 
 	# Fix Python2/Python3 conflicts.
 	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
+	#Workaround for boost signals
+        sed -i 's/signals//g' ${srcdir}/${_dir}/CMakeLists.txt
 
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
