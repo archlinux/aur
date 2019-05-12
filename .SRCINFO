@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-std-srvs
 	pkgdesc = ROS - Common service definitions.
 	pkgver = 1.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/std_srvs
 	arch = any
 	license = BSD
@@ -10,8 +10,8 @@ pkgbase = ros-melodic-std-srvs
 	makedepends = ros-melodic-message-generation
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-message-runtime
-	source = ros-melodic-std-srvs-1.11.2-0.tar.gz::https://github.com/ros-gbp/ros_comm_msgs-release/archive/release/melodic/std_srvs/1.11.2-0.tar.gz
-	sha256sums = ecc565aebf13d5afbfaf42a1fb8a31de29af19331ca76239ced87c10f14fc363
+	source = ros-melodic-std-srvs-1.11.2.tar.gz::https://github.com/ros/ros_comm_msgs/archive/1.11.2.tar.gz
+	sha256sums = 7bb9f57ea9e6c5fb0599b247736f4f3b7868d722344fb42bc3055b31626ea250
 
 pkgname = ros-melodic-std-srvs
 

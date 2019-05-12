@@ -5,9 +5,8 @@ url='http://ros.org/wiki/std_srvs'
 
 pkgname='ros-melodic-std-srvs'
 pkgver='1.11.2'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -29,9 +28,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros_comm_msgs-release-release-melodic-std_srvs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm_msgs-release/archive/release/melodic/std_srvs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ecc565aebf13d5afbfaf42a1fb8a31de29af19331ca76239ced87c10f14fc363')
+_dir="ros_comm_msgs-${pkgver}/std_srvs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('7bb9f57ea9e6c5fb0599b247736f4f3b7868d722344fb42bc3055b31626ea250')
 
 build() {
 	# Use ROS environment variables.
