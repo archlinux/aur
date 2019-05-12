@@ -5,9 +5,8 @@ url='http://wiki.ros.org/shape_msgs'
 
 pkgname='ros-melodic-shape-msgs'
 pkgver='1.12.7'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -33,9 +32,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="common_msgs-release-release-melodic-shape_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/shape_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('77d8b3b79ef765cde23be9b753eab1e457888adbec1dd82fc8eadd3edeff83e3')
+_dir="common_msgs-${pkgver}/shape_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/common_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4')
 
 build() {
 	# Use ROS environment variables.
