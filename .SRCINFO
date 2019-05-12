@@ -1,7 +1,7 @@
 pkgbase = remakepkg
 	pkgdesc = Apply changes to pacman packages
 	pkgver = 0.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/ayekat/pacman-hacks
 	changelog = changelog
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = remakepkg
 	makedepends = git
 	depends = coreutils
 	depends = sed
+	conflicts = makemetapkg
 	source = git+https://gitlab.com/ayekat/pacman-hacks.git#tag=v0.7.7
 	source = diffrepo.hook.example
 	sha256sums = SKIP

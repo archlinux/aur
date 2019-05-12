@@ -2,12 +2,17 @@
 
 pkgname=remakepkg
 pkgver=0.7.7
-pkgrel=1
+pkgrel=2
 arch=(any)
 
 pkgdesc='Apply changes to pacman packages'
 url='https://gitlab.com/ayekat/pacman-hacks'
 license=(GPL3)
+
+# Both are part of pacman-hacks. If you want both makemetapkg and remakepkg,
+# just install pacman-hacks:
+# https://gitlab.com/ayekat/PKGBUILDs/tree/pacman-hacks
+conflicts=(makemetapkg)
 
 depends=(coreutils sed)
 makedepends=(asciidoc git)
