@@ -1,0 +1,10 @@
+pkgbase = certspotter
+	pkgdesc = Certificate Transparency Log Monitor
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/SSLMate/certspotter
+	arch = x86_64
+	license = MPL2
+	makedepends = go
+
+pkgname = certspotter
