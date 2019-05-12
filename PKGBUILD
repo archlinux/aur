@@ -1,7 +1,7 @@
 # Maintainer: Musee "lae" Ullah <lae(at)lae(dot)is>
 
 pkgname=cryptobridge-bin
-pkgver=0.12.6
+pkgver=0.18.3
 pkgrel=1
 pkgdesc="CryptoBridge: Cryptocurrency and Decentralized Exchange. Advanced wallet interface for the BitShares financial blockchain."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('cryptobridge')
 depends=('gconf' 'libnotify' 'libxss' 'libxtst' 'nss')
 source=("cryptobridge-${pkgver}.deb::https://github.com/CryptoBridge/cryptobridge-ui/releases/download/v${pkgver}/CryptoBridge_${pkgver}_amd64.deb")
-sha512sums=('236f0adeebe79abf53d9f8907b66faa1460cb2baefb8fd1281ca82adca2d90459c3dd3fa7bd25a6e82feb112979f1b2a6f9b0142e087cdbac23a05e5a3b54e83')
+sha512sums=('a5fccb1fe92d88911a12699f041743d9f9aa531cf48eb43ea648fa5708e48b33bc726d46fff2188d5904ebcc8dd67c13e69ccd326aec534036e6ea78aed0f6f1')
 
 package() {
     bsdtar xf data.tar.xz -C "${pkgdir}/"
