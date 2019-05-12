@@ -1,7 +1,7 @@
 # Maintainer: Daniel Gray <dng@disroot.org>
 _libname=sejda
 pkgname=java-${_libname}
-pkgver=3.2.72
+pkgver=3.2.73
 pkgrel=1
 pkgdesc="An extendible and configurable PDF manipulation layer library written in java"
 arch=('any')
@@ -9,9 +9,9 @@ url="https://github.com/torakiki/sejda"
 license=('AGPL3')
 depends=('java-runtime-headless')
 makedepends=('maven')
-checkdepends=('maven')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/torakiki/sejda/archive/v${pkgver}.tar.gz")
-sha256sums=('f53415ad32a1c0ee962f708c047e5026443334b8ec70d898412dbf98278aae50')
+sha256sums=('70e265edbe3620f1080bd69e2d16affda4032e7adf175e9b0667b2c6c064f922')
+_M2_REPO=$(mktemp -d)
 
 build() {
     cd "${srcdir}/${_libname}-${pkgver}"
@@ -22,6 +22,9 @@ build() {
 }
 
 package() {
+    sed -i ':a;N;$!ba;s/REPO=\n/REPO=\/usr\/share\/java\/sejda\n/' \
+           "${srcdir}/${_libname}-${pkgver}"/sejda-console/target/assembled/bin/sejda-console
+
     install -Dm755 "${srcdir}/${_libname}-${pkgver}"/sejda-console/target/assembled/bin/sejda-console \
                     -t "${pkgdir}"/usr/bin
 
