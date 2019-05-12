@@ -1,7 +1,7 @@
 pkgbase = fs-uae-launcher
 	pkgdesc = Graphical user interface for the fs-uae Amiga emulator
 	pkgver = 2.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fs-uae.net/launcher/
 	arch = any
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = fs-uae-launcher
 	depends = hicolor-icon-theme
 	optdepends = p7zip: for .7z file support
 	optdepends = python-lhafile: for .lha file support
-	source = https://fs-uae.net/fs-uae/stable/2.8.3/fs-uae-launcher-2.8.3.tar.gz
+	source = https://fs-uae.net/stable/2.8.3/fs-uae-launcher-2.8.3.tar.gz
 	source = remove_inbuilt_six.patch
 	source = fs-uae-launcher.patch
 	sha256sums = 8ce764031013516daab76e996eff9e9fdead6c0f00b4e497fc927f7719d8a233
