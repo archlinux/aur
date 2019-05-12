@@ -2,7 +2,7 @@
 # Maintainer: ValleyKnight <valleyknight@protonmail.com>
 
 pkgname=rsfetch-bin
-pkgver=1.5.0
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="Fast (0.01s - 0.2s execution time) and somewhat(?) minimal fetch program written in Rust."
 url="https://github.com/phate6660/rsfetch"
@@ -22,5 +22,5 @@ package() {
 	install -Dm 644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('5ef12a47982e07c3a9b07e286fafc55d8f74d66b32cfcafe93cd5d1dd43ff3fe3a970376f5714e951db0d32c87d2a16edd932531e1fa79cdc19bc4fe9f83dcad'
+sha512sums=('6fa1174237d0522622d0eec336d806a2410db09b682739d96f5c5968ca624d6cdd817d7be10797fa905044ff35ba5a5aaa412370a6b41ac91c5f699ec674cca4'
             '6db610810f1b22a21ef217b4b6ace78dd5a4f427be3e6934a5770b64d019c0699459ea433b7117e955aac3feea02bd703fba2892a7961e27b2c0de859f68d7d7')
