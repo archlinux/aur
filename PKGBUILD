@@ -5,7 +5,7 @@
 
 pkgname=logisim-evolution-git
 pkgver=3.0.0.r848.c86375e3
-pkgrel=1
+pkgrel=2
 provides=('logisim-evolution')
 conflicts=('logisim-evolution')
 pkgdesc='An educational tool for designing and simulating digital logic circuits'
