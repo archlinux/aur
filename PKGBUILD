@@ -32,10 +32,10 @@ build() {
   make dev
 }
 
-check() {
-  cd ${_pkgname}
-  make test
-}
+# check() {
+#   cd ${_pkgname}
+#   make test
+# }
 
 package() {
   cd ${_pkgname}
