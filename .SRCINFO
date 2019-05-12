@@ -1,6 +1,6 @@
 pkgbase = python-mlxtend
 	pkgdesc = A library of Python tools and extensions for data science.
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/rasbt/mlxtend
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = python-mlxtend
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/m/mlxtend/mlxtend-0.15.0.0.tar.gz
-	md5sums = 84290053b926ecf6af9b60c7e3519a15
-	sha256sums = f59cadf199563fdaa0bfeff2327de4dc49571c22f92140ed0e5e1135723aded9
-	sha512sums = dcbf52d52b88254285720215cff2b12fac11d7503dffecd6368af19f9278f31f6ebf56ada33bd23be4971e341702dc3d2060fc603ab47eb17e37479361a05c4c
+	source = https://files.pythonhosted.org/packages/source/m/mlxtend/mlxtend-0.16.0.tar.gz
+	md5sums = 7f5784f6a05f3db2ff91c3e01783178d
+	sha256sums = 86e14a6af1f61c851b032b7983c566a970af9732245f5d7a535b70b0979684c6
+	sha512sums = f6a8072e02ada162c130f82f80afb30c6600d2907c95d3f750b37e42de592ad7c99caeae7d50d0cc1f74a3987cb0a83aef8e212f301447ea831c7bdaca887a3c
 
 pkgname = python-mlxtend
 
