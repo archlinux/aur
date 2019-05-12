@@ -1,7 +1,7 @@
 pkgbase = djgpp-djcrx
 	pkgdesc = Headers and utilities for the djgpp cross-compiler
 	pkgver = 2.05
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.delorie.com/djgpp/
 	arch = i686
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = djgpp-djcrx
 	sha256sums = 536684b0152f7ad77b99bcc5ea535ca8339832399c4582b944ccd882e4b261a1
 	sha256sums = 693810c3242f4e23cdc55d3101281721da9407851e5d29459ad59405e534b916
 	sha256sums = 0debe0161e27aeb004e89a43915d6d77bcd07a5db2c67e2798568535fe9143f1
-	sha256sums = 5f99a83f9ad897e2e4c7c18bb18dab33c95766bb8a213db8ae927119a0d908ab
+	sha256sums = f4636f4b0b6e3879e0660e0a0af4653aee3721ecfa4e89b4ff1e10f8ca43eb1b
 
 pkgname = djgpp-djcrx
 

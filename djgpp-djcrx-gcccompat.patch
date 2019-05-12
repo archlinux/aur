@@ -1,3 +1,14 @@
+diff --git a/src/libc/ansi/locale/makefile b/src/libc/ansi/locale/makefile
+index 517efc5..d8111b4 100644
+--- a/src/libc/ansi/locale/makefile
++++ b/src/libc/ansi/locale/makefile
+@@ -10,4 +10,6 @@ SRC += setlocal.c
+ SRC += wcstombs.c
+ SRC += wctomb.c
+ 
++setlocal.o: EXTRA_CFLAGS += -Wno-stringop-truncation
++
+ include $(TOP)/../makefile.inc
 diff --git a/src/libc/ansi/string/makefile b/src/libc/ansi/string/makefile
 index 06cdfc7..6b88a2b 100644
 --- a/src/libc/ansi/string/makefile
@@ -92,15 +103,16 @@ index 8bd6fed..758e2aa 100644
 +
  include $(TOP)/../makefile.inc
 diff --git a/src/libc/posix/string/makefile b/src/libc/posix/string/makefile
-index a59b4dd..c65893e 100644
+index a59b4dd..3bbb7c6 100644
 --- a/src/libc/posix/string/makefile
 +++ b/src/libc/posix/string/makefile
-@@ -8,3 +8,5 @@ SRC += strndup.c
+@@ -8,3 +8,6 @@ SRC += strndup.c
  SRC += strnlen.c
  
  include $(TOP)/../makefile.inc
 +
 +strndup.o:	EXTRA_CFLAGS += -fno-builtin-strndup
++strnlen.o:	EXTRA_CFLAGS += -Wno-nonnull-compare
 diff --git a/src/libm/math/e_asin.c b/src/libm/math/e_asin.c
 index 451b0b7..a590c9d 100644
 --- a/src/libm/math/e_asin.c
