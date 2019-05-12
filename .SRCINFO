@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-topic-tools
 	pkgdesc = ROS - Tools for directing, throttling, selecting, and otherwise messing with ROS topics at a meta level.
-	pkgver = 1.14.3
+	pkgver = 1.12.14
 	pkgrel = 1
 	url = http://ros.org/wiki/topic_tools
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = ros-melodic-topic-tools
 	depends = ros-melodic-rosconsole
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-message-runtime
-	source = ros-melodic-topic-tools-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/topic_tools/1.14.3-0.tar.gz
-	sha256sums = c5d7f1f83280d10663846fe557bf905316e92dbf7b7ade73f74ed3f3949bcd40
+	source = ros-melodic-topic-tools-1.12.14.tar.gz::https://github.com/ros/ros_comm/archive/1.12.14.tar.gz
+	sha256sums = 239c225cc9b1613cc7f76daf73c182f991787b7cf601287cb6cc28957eeeec1d
 
 pkgname = ros-melodic-topic-tools
 
