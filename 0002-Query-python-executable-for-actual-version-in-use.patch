@@ -1,0 +1,35 @@
+From 69b94c9d9ee6a525022c40dae70fd0d839db5537 Mon Sep 17 00:00:00 2001
+From: Nobody <nobody@nowhere.net>
+Date: Mon, 17 Sep 2001 00:00:00 +0000
+Subject: [PATCH 2/2] Query python executable for actual version in use
+
+---
+ pjsip-apps/src/swig/python/Makefile | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/pjsip-apps/src/swig/python/Makefile b/pjsip-apps/src/swig/python/Makefile
+index 5addbb9..0e1d194 100644
+--- a/pjsip-apps/src/swig/python/Makefile
++++ b/pjsip-apps/src/swig/python/Makefile
+@@ -3,13 +3,14 @@ PYTHON_SO=_pjsua2.so
+ USE_PYTHON3?=1
+ 
+ ifeq ($(USE_PYTHON3),1)
+-  PYTHON_EXE=python3.6
+-  PYTHON_PKG_DIR=$(HOME)/.local/lib/python3.6/site-packages
++  PYTHON_EXE=python3
+ else
+-  PYTHON_EXE=python2.7
+-  PYTHON_PKG_DIR=$(HOME)/.local/lib/python2.7/site-packages
++  PYTHON_EXE=python2
+ endif
+ 
++PYTHON_VERSION := $(shell $(PYTHON_EXE) -c 'import sys; print(".".join(str(v) for v in sys.version_info[0:2]))')
++PYTHON_PKG_DIR := $(HOME)/.local/lib/python$(PYTHON_VERSION)/site-packages
++
+ #PYTHON_SETUP_FLAGS = --inplace 
+ ifeq ($(OS),Windows_NT)
+   PYTHON_SETUP_FLAGS += --compiler=mingw32
+-- 
+2.20.1
+
