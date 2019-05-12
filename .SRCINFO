@@ -1,6 +1,6 @@
 pkgbase = zipios-git
 	pkgdesc = Small C++ library for reading and writing zip files, similar to java.util.zip and the standard iostreams library
-	pkgver = 2.1.7.11
+	pkgver = 2.1.7.11+cvs.2019.04.25
 	pkgrel = 1
 	url = http://zipios.sourceforge.net
 	arch = i686

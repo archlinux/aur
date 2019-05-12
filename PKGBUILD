@@ -2,7 +2,7 @@
 
 # zipios++ has been rebranded to zipios
 pkgname=zipios-git
-pkgver=2.1.7.11
+pkgver=2.2.1.0
 pkgrel=1
 pkgdesc="Small C++ library for reading and writing zip files, similar to java.util.zip and the standard iostreams library"
 arch=('i686' 'x86_64')
@@ -18,11 +18,13 @@ md5sums=('SKIP')
 pkgver() {
   cd Zipios
 
-  _pkgver=$( git describe --abbrev=0 | sed s/^v// )
+  _pkgver=$( git describe --tags --abbrev=0 | sed s/^v// )
 
-  if [ $_pkgver = $(git describe | sed s/^v// ) ]; then
+  if [ $_pkgver = $(git describe --tags | sed s/^v// ) ]; then
+    # version is tagged
     echo $_pkgver
   else
+    # otherwise tag + date of last commit, in the same style like old zipios++
     _last_commit_date=$( git log -1 --date=short --pretty=format:%cd | sed s/-/./g )
     echo $_pkgver+cvs.$_last_commit_date
   fi
