@@ -2,7 +2,7 @@
 # Co-Maintainer: dccafe
 
 pkgname=ldap-account-manager
-pkgver=6.6
+pkgver=6.7
 pkgrel=1
 pkgdesc="A webfrontend for managing entries stored in an LDAP directory"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('php>=5.2.4' 'php-ldap' 'openldap>2.0')
 optdepends=('php-mcrypt: Store LDAP password encrypted in the session file'
             'perl'
-            'perl-quota'
+            'perl-quota: Quota module limits disk storage per user'
             'php-apache: Run LDAP Account Manager on Apache'
             'php-fpm: Run LDAP Account Manager on other webservers')
 options=('!strip')
