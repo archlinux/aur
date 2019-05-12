@@ -130,7 +130,7 @@ build() {
   mkdir -p out/Default
 
   # Assemble GN flags
-  cp "$_ungoogled_repo/flags.gn" "out/Default/args.gn"
+  cp "$srcdir/ungoogled-chromium-${_ungoogled_version}/flags.gn" "out/Default/args.gn"
   printf '\n' >> "out/Default/args.gn"
   cat "$_ungoogled_archlinux_repo/flags.archlinux.gn" >> "out/Default/args.gn"
 
