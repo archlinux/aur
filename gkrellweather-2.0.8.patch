@@ -1,0 +1,47 @@
+diff -ruN gkrellweather-2.0.8.orig/GrabWeather gkrellweather-2.0.8/GrabWeather
+--- gkrellweather-2.0.8.orig/GrabWeather	2009-01-11 13:15:02.000000000 -0500
++++ gkrellweather-2.0.8/GrabWeather	2019-05-12 12:07:54.695207563 -0400
+@@ -12,7 +12,7 @@
+ 
+ $ReportDir  = '.wmWeatherReports';
+ #$WeatherSrc = 'ftp://weather.noaa.gov/data/observations/metar/decoded';
+-$WeatherSrc = 'http://weather.noaa.gov/pub/data/observations/metar/decoded';
++$WeatherSrc = 'http://tgftp.nws.noaa.gov/data/observations/metar/decoded/';
+ 
+ use strict; 
+ use vars qw( $ReportDir $WeatherSrc );
+diff -ruN gkrellweather-2.0.8.orig/Makefile gkrellweather-2.0.8/Makefile
+--- gkrellweather-2.0.8.orig/Makefile	2009-01-11 13:15:02.000000000 -0500
++++ gkrellweather-2.0.8/Makefile	2019-05-12 12:07:54.695207563 -0400
+@@ -3,7 +3,7 @@
+ CFLAGS = -O2 -std=gnu99 -Wall -fPIC `pkg-config gtk+-2.0 --cflags`
+ LIBS = `pkg-config gtk+-2.0 --libs`
+ LFLAGS = -shared
+-PREFIX = /usr/local
++PREFIX = /usr
+ 
+ LOCALEDIR := $(PREFIX)/share/locale
+ 
+diff -ruN gkrellweather-2.0.8.orig/gkrellweather.c gkrellweather-2.0.8/gkrellweather.c
+--- gkrellweather-2.0.8.orig/gkrellweather.c	2009-01-11 13:15:02.000000000 -0500
++++ gkrellweather-2.0.8/gkrellweather.c	2019-05-12 12:07:54.695207563 -0400
+@@ -721,7 +721,7 @@
+         options.station[1] = c[1];
+         options.station[2] = c[2];
+         options.station[3] = c[3];
+-        snprintf(options.command, 512, PREFIX "/bin/GrabWeather %s", options.station);
++        snprintf(options.command, 512, "/usr/share/gkrellm" "/GrabWeather %s", options.station);
+         options.command[511] = 0;
+         snprintf(options.filename, 512, "%s/.wmWeatherReports/%s.dat",
+                 getenv("HOME"), options.station);
+@@ -777,7 +777,7 @@
+         " switch interval - number of seconds (0 = never)" \
+         " between switching display\n")
+     };
+-    static gchar url[] = "http://www.nws.noaa.gov/tg/siteloc.shtml";
++    static gchar url[] = "https://aviationweather.gov/metar";
+     laptop = gtk_notebook_new();
+     gtk_notebook_set_tab_pos(GTK_NOTEBOOK(laptop), GTK_POS_TOP);
+     gtk_box_pack_start(GTK_BOX(tab), laptop, TRUE, TRUE, 0);
+Binary files gkrellweather-2.0.8.orig/gkrellweather.o and gkrellweather-2.0.8/gkrellweather.o differ
+Binary files gkrellweather-2.0.8.orig/gkrellweather.so and gkrellweather-2.0.8/gkrellweather.so differ

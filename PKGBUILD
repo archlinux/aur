@@ -4,7 +4,7 @@
 
 pkgname=gkrellweather
 pkgver=2.0.8
-pkgrel=4
+pkgrel=6
 pkgdesc="A weather monitor plugin for gkrellm2"
 arch=('i686' 'x86_64')
 depends=('gkrellm' 'perl' 'wget' 'gtk2')
@@ -13,15 +13,11 @@ url="https://sites.google.com/site/makovick/gkrellm-plugins"
 source=("${pkgname}-${pkgver}.tgz::https://sites.google.com/site/makovick/projects/${pkgname}-${pkgver}.tgz?attredirects=0")
 md5sums=('b21ed55cc9998eb7307ec53e99f9beea')
 
+patch=$(realpath $pkgname-$pkgver.patch)
+
 prepare() {
   cd $pkgname-$pkgver
-  old_url='http://weather.noaa.gov/pub/data/observations/metar/decoded'
-  new_url='http://tgftp.nws.noaa.gov/data/observations/metar/decoded/'
-
-  sed -i -e 's|/usr/local|/usr|' Makefile
-  sed -i -e 's|PREFIX|"/usr/share/gkrellm"|' gkrellweather.c
-  sed -i -e 's|/bin/GrabWeather|/GrabWeather|' gkrellweather.c
-  sed -i -e "s|WeatherSrc = '$old_url'|WeatherSrc = '$new_url'|" GrabWeather
+  patch < $patch
 }
 
 build() {
