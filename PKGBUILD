@@ -5,7 +5,7 @@
 # Thanks: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=gtkwave-tcl
-pkgver=3.3.98
+pkgver=3.3.100
 pkgrel=1
 pkgdesc='A wave viewer which reads LXT, LXT2, VZT, GHW, FST and VCD/EVCD files (with Tcl/Tk support)'
 arch=('x86_64')
@@ -38,8 +38,8 @@ source=("http://gtkwave.sourceforge.net/${pkgname%-tcl}-${pkgver}.tar.gz"
         "http://gtkwave.sourceforge.net/${pkgname%-tcl}.pdf"
         "gtkwave.install")
 
-md5sums=('eac3073ef381e0c09da33590296ca37f'
-         '0f2af8e45fd4173c93eb24d0caa69498'
+md5sums=('0fb05e0e043b08e6f829b89e1511f502'
+         'SKIP'
          'ccbede6bf65569f5688f5254389eec53')
 
 build() {
@@ -64,8 +64,8 @@ build() {
     --enable-tk \
     \
     --with-gsettings \
-    --with-tcl=/usr/lib/tclConfig.sh  \
-    --with-tk=/usr/lib/tkConfig.sh \
+    --with-tcl=/usr/lib  \
+    --with-tk=/usr/lib \
 
     # --with-gconf \
     # --with-tcl=/usr/lib/tcl8.6  \
