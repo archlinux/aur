@@ -1,26 +1,30 @@
 pkgbase = optimus-manager
-	pkgdesc = Management utility to handle GPU switching for Optimus laptops.
-	pkgver = 0.8
-	pkgrel = 2
+	pkgdesc = Management utility to handle GPU switching for Optimus laptops
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://github.com/Askannz/optimus-manager
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
-	depends = python-pyqt5
 	depends = python-setuptools
+	depends = python-dbus
 	depends = mesa-demos
 	depends = xorg-xrandr
 	optdepends = bbswitch: alternative power switching method
+	optdepends = xf86-video-intel: provides the Xorg intel driver
 	provides = optimus-manager
 	conflicts = optimus-manager-git
 	backup = etc/optimus-manager/xorg-intel.conf
 	backup = etc/optimus-manager/xorg-nvidia.conf
 	backup = etc/optimus-manager/xsetup-intel.sh
 	backup = etc/optimus-manager/xsetup-nvidia.sh
-	source = git+https://github.com/Askannz/optimus-manager.git#tag=v0.8
+	backup = var/lib/optimus-manager/startup_mode
+	backup = var/lib/optimus-manager/requested_mode
+	source = git+https://github.com/Askannz/optimus-manager.git#tag=v1.0
 	sha256sums = SKIP
 
 pkgname = optimus-manager
+	install = optimus-manager.install
 
