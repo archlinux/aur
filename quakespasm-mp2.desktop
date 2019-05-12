@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Quake - MP 2
+Icon=quakespasm
+Exec=quakespasm -game rogue
+Categories=Game;Shooter;
+Comment=Quake (quakespasm engine) + Mission Pack 2
+Terminal=false
+StartupNotify=true

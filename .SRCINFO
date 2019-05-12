@@ -1,0 +1,28 @@
+pkgbase = quakespasm-spiked-git
+	pkgdesc = A modern Quake 1 engine. Forked from Quakespasm. AKA QSS. Git version with optional Mission pack desktop files.
+	pkgver = 0.92.1.r332.gd7f84a92
+	pkgrel = 1
+	url = http://triptohell.info/moodles/qss/
+	install = quakespasm.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libvorbis
+	depends = libmad
+	depends = sdl2
+	provides = quakespasm
+	conflicts = quakespasm
+	conflicts = quakespasm-svn
+	source = quakespasm::git+https://github.com/Shpoike/Quakespasm
+	source = quakespasm.desktop
+	source = quakespasm-mp1.desktop
+	source = quakespasm-mp2.desktop
+	source = quakespasm-impel.desktop
+	sha1sums = SKIP
+	sha1sums = 7a78889a7a6e24047b4777a8b4827e29cfc87381
+	sha1sums = 2b774f68f889308ba0b8de69580a32ed11f833ec
+	sha1sums = 1184a40775fc46c129828d4a9a35785542c62ee3
+	sha1sums = 2c97f722fc5c9f8d8f1a9a01f55491a448a9253e
+
+pkgname = quakespasm-spiked-git
+

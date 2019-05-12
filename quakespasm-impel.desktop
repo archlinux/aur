@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Quake - Abyss of Pandemonium
+Icon=quakespasm
+Exec=quakespasm -game impel
+Categories=Game;Shooter;
+Comment=Quake (quakespasm engine) + Abyss of Pandemonium
+Terminal=false
+StartupNotify=true

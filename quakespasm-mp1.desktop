@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Quake - MP 1
+Icon=quakespasm
+Exec=quakespasm -game hipnotic
+Categories=Game;Shooter;
+Comment=Quake (quakespasm engine) + Mission Pack 1
+Terminal=false
+StartupNotify=true
