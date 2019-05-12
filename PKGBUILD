@@ -2,14 +2,15 @@
 pkgname=sirikali
 _name=SiriKali
 pkgver=1.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt/C++ GUI front end to cryfs, gocryptfs, securefs and encfs"
 arch=('i686' 'x86_64')
 url="https://mhogomchungu.github.io/sirikali/"
 license=('GPL')
-depends=('qt5-base' 'libpwquality' 'lxqt_wallet' 'hicolor-icon-theme')
+depends=('qt5-base' 'libpwquality' 'hicolor-icon-theme')
 makedepends=('cmake' 'libgcrypt' 'gcc-libs')
-optdepends=('libsecret: support for Gnome libsecret password storage (must recompile)'
+optdepends=('lxqt_wallet: use an external lxqt_wallet (must recompile)'
+            'libsecret: support for Gnome libsecret password storage (must recompile)'
             'kwallet: support for KDE wallet storage (must recompile)'
             'cryfs: for CryFS support'
             'gocryptfs: for gocryptfs support'
@@ -26,6 +27,12 @@ validpgpkeys=('6855E493B5B2DF96E319BB6D16E2E1ACC6F51242')
 prepare() {
   cd "$srcdir/${_name}-${pkgver}"
   mkdir -p build
+
+  if pacman -Qs "lxqt_wallet" > /dev/null ; then
+    intwallet="false"
+  else
+    intwallet="true"
+  fi
 
   if pacman -Qs "kwallet" > /dev/null ; then
     skipkde="false"
@@ -45,7 +52,7 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DINTERNAL_LXQT_WALLET=false \
+    -DINTERNAL_LXQT_WALLET=$intwallet \
     -DNOKDESUPPORT=$skipkde \
     -DNOSECRETSUPPORT=$skipsecret \
     -DQT5=true \
