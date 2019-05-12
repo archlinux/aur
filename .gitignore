@@ -2,3 +2,7 @@
 src/
 build.sh
 PKGBUILD.backup
+chroot/
+mnt/
+pkg/
+*.tar.xz

@@ -13,7 +13,7 @@ arch=('any')
 url="gumbocoin.com"
 license=('GPL')
 groups=()
-depends=()
+depends=(java-runtime-common)
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -26,7 +26,7 @@ install=
 changelog=
 source=($pkgname-$pkgver.tar.gz::https://github.com/gumbocoin/Gumbocoin/archive/v$pkgver.tar.gz)
 noextract=()
-validpgpkeys=()
+validpgpkeys=('BB881A11F78A79D93FAB707D67D77A4726CF8D6F')
 
 prepare() {
         ls -la
