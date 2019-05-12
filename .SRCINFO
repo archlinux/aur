@@ -1,15 +1,14 @@
 pkgbase = java-sejda
 	pkgdesc = An extendible and configurable PDF manipulation layer library written in java
-	pkgver = 3.2.72
+	pkgver = 3.2.73
 	pkgrel = 1
 	url = https://github.com/torakiki/sejda
 	arch = any
 	license = AGPL3
-	checkdepends = maven
 	makedepends = maven
 	depends = java-runtime-headless
-	source = java-sejda-3.2.72.tar.gz::https://github.com/torakiki/sejda/archive/v3.2.72.tar.gz
-	sha256sums = f53415ad32a1c0ee962f708c047e5026443334b8ec70d898412dbf98278aae50
+	source = java-sejda-3.2.73.tar.gz::https://github.com/torakiki/sejda/archive/v3.2.73.tar.gz
+	sha256sums = 70e265edbe3620f1080bd69e2d16affda4032e7adf175e9b0667b2c6c064f922
 
 pkgname = java-sejda
 
