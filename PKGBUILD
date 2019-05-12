@@ -5,9 +5,8 @@ url='http://wiki.ros.org/common_msgs'
 
 pkgname='ros-melodic-common-msgs'
 pkgver='1.12.7'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +35,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="common_msgs-release-release-melodic-common_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/common_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('631a7674053674e50d7fdadc741dcd4f112f0f12c62c179b438e0db457e86a36')
+_dir="common_msgs-${pkgver}/common_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/common_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4')
 
 build() {
 	# Use ROS environment variables.
