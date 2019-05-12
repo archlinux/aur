@@ -33,7 +33,7 @@ pkgbase = i3-plasma
 	options = docs
 	options = !strip
 	backup = etc/i3/config
-	source = git+https://gitlab.com/ognarb/i3-kde.git
+	source = i3-plasma-4.16.1::git+https://gitlab.com/ognarb/i3-kde.git
 	sha256sums = SKIP
 
 pkgname = i3-plasma
