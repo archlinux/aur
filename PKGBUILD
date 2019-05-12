@@ -4,7 +4,7 @@
 
 pkgname=webmin
 pkgver=1.910
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(x86_64)
 license=('custom:webmin')
@@ -40,7 +40,6 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/fail2ban/config' \
 'etc/webmin/fdisk/config' \
 'etc/webmin/fetchmail/config' \
-'etc/webmin/file/config' \
 'etc/webmin/filemin/config' \
 'etc/webmin/filter/config' \
 'etc/webmin/firewall/config' \
@@ -120,7 +119,7 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/xinetd/config' \
 'etc/logrotate.d/webmin' \
 'etc/pam.d/webmin' )
-source=("webmin-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
+source=("http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.tar.gz"
         setup-pre.sh
         setup-post.sh
         webmin-config.tar.bz2
@@ -171,7 +170,7 @@ package() {
 }
 
 
-sha256sums=('528e88b45e1ed580fd677d6be2a2ecdefe9f02dddaf1c60b06b69d4a71cfafcc'
+sha256sums=('e0fa2b0df85825b8f39146242ecfd46fe5af8a0b118584bafae915f1fb85b0da'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             '21b24cbbf88593f9da727e8f36dea283c8765002a378b3d4e55e6332387c43c6'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
