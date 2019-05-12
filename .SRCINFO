@@ -1,5 +1,5 @@
 pkgbase = webstorm-eap
-	pkgver = 191.7141.24
+	pkgver = 191.7141.49
 	pkgrel = 1
 	url = http://www.jetbrains.com/webstorm
 	arch = i686

@@ -4,7 +4,7 @@
 
 pkgname=webstorm-eap
 _pkgname=WebStorm
-pkgver=191.7141.24
+pkgver=191.7141.49
 _pkgver=2019.1.2
 pkgrel=1
 ipkgdesc="JavaScript IDE and HTML editor."
