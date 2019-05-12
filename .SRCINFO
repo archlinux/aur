@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rosbag-storage
 	pkgdesc = ROS - This is a set of tools for recording from and playing back ROS message without relying on the ROS client library.
-	pkgver = 1.14.3
+	pkgver = 1.12.14
 	pkgrel = 1
 	url = http://www.ros.org/
 	arch = any
@@ -31,8 +31,8 @@ pkgbase = ros-melodic-rosbag-storage
 	depends = openssl
 	depends = boost
 	depends = bzip2
-	source = ros-melodic-rosbag-storage-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rosbag_storage/1.14.3-0.tar.gz
-	sha256sums = 84cc834e6f7cfb6507a8484bcf4ab21949ff56d2921a5041ed52300f100c45aa
+	source = ros-melodic-rosbag-storage-1.12.14.tar.gz::https://github.com/ros/ros_comm/archive/1.12.14.tar.gz
+	sha256sums = 239c225cc9b1613cc7f76daf73c182f991787b7cf601287cb6cc28957eeeec1d
 
 pkgname = ros-melodic-rosbag-storage
 
