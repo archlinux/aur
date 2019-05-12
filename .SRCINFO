@@ -11,7 +11,6 @@ pkgbase = nheko-git
 	makedepends = gcc
 	makedepends = fontconfig
 	makedepends = qt5-tools
-	makedepends = nlohmann-json
 	depends = qt5-base
 	depends = lmdb
 	depends = qt5-multimedia
