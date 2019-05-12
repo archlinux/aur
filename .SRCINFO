@@ -1,0 +1,15 @@
+pkgbase = gradle-bash-completion
+	pkgdesc = Bash completion for Gradle
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/gradle/gradle-completion
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash-completion
+	depends = gradle
+	source = git+https://github.com/gradle/gradle-completion.git
+	md5sums = SKIP
+
+pkgname = gradle-bash-completion
+
