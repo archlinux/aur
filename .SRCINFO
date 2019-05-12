@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ros-base
 	pkgdesc = ROS - A metapackage which extends ros_core and includes other basic non-robot tools like actionlib, dynamic reconfigure, nodelets, and pluginlib.
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/
 	arch = any
 	license = BSD
@@ -13,8 +13,8 @@ pkgbase = ros-melodic-ros-base
 	depends = ros-melodic-dynamic-reconfigure
 	depends = ros-melodic-ros-core
 	depends = ros-melodic-actionlib
-	source = ros-melodic-ros-base-1.4.1-0.tar.gz::https://github.com/ros-gbp/metapackages-release/archive/release/melodic/ros_base/1.4.1-0.tar.gz
-	sha256sums = 0b0cab7cb298a642bd33a0c4d7e17f10ac6533a1a59745a11e96c58d238f47eb
+	source = ros-melodic-ros-base-1.4.1.tar.gz::https://github.com/ros/metapackages/archive/1.4.1.tar.gz
+	sha256sums = ef1df96c61c9762555174cc1a0e21e05149f74909d27044be0cd10aa065747a1
 
 pkgname = ros-melodic-ros-base
 
