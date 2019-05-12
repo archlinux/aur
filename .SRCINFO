@@ -1,7 +1,7 @@
 pkgbase = electrum-mona
 	pkgdesc = A lightweight Monacoin wallet
-	pkgver = 3.1.3.1
-	pkgrel = 2
+	pkgver = 3.3.4
+	pkgrel = 1
 	url = https://github.com/wakiyamap/electrum-mona
 	arch = any
 	license = MIT
@@ -26,10 +26,8 @@ pkgbase = electrum-mona
 	optdepends = python-trezor: for Trezor hardware support
 	optdepends = python-btchip: for BTChip hardware support
 	optdepends = python-keepkey: for KeepKey hardware support
-	source = electrum-mona-3.1.3.1.tar.gz::https://github.com/wakiyamap/electrum-mona/archive/3.1.3.1.tar.gz
-	source = 0001-locale-download.patch
-	sha512sums = 7ce49fb53cebd4c168bcce1003b38ecc7ed4024419144a43b38cfe60ac20521cd6271e83afb4ec8d823a477b8bffa75d429ca5dfe93f549a927666478d73e2a5
-	sha512sums = 434e2695ccc41519d86a4c89b56be9f60bfaf072ceb70344d9ca43954521e58904d01401e65f04ab24a1c05d5511996187cdef83f8b4b8bc09b70c7c8d1086eb
+	source = electrum-mona-3.3.4.tar.gz::https://github.com/wakiyamap/electrum-mona/archive/3.3.4.tar.gz
+	sha512sums = c79d34a77c77f2d267ecf3127065ae8b8d01d9390700637bf255cc14826e6f6a12095921746de788a3b46f2e3adebc7173e1629e96d9d2f56c63785d101d3574
 
 pkgname = electrum-mona
 
