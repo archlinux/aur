@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-sensor-msgs
 	pkgdesc = ROS - This package defines messages for commonly used sensors, including cameras and scanning laser rangefinders.
 	pkgver = 1.12.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/sensor_msgs
 	arch = any
 	license = BSD
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-sensor-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-geometry-msgs
-	source = ros-melodic-sensor-msgs-1.12.7-0.tar.gz::https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/sensor_msgs/1.12.7-0.tar.gz
-	sha256sums = 25b8448825591eb461e1d3e24c32fd2a1f2e1e2e69c56bd67748c54c7f8d3529
+	source = ros-melodic-sensor-msgs-1.12.7.tar.gz::https://github.com/ros/common_msgs/archive/1.12.7.tar.gz
+	sha256sums = a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4
 
 pkgname = ros-melodic-sensor-msgs
 
