@@ -2,21 +2,21 @@
 # Maintainer: Joseph Donofry <joe at joedonofry dot com>
 
 pkgname=nheko-git
-pkgver=0.5.0.r732.96a2c614
+pkgver=0.6.3.r1020.be5287a
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64")
 
-url="https://github.com/mujx/nheko"
+url="https://github.com/Nheko-Reborn/nheko"
 license=("GPL3")
 
 depends=("qt5-base" "lmdb" "qt5-multimedia" "qt5-svg" "boost" "libsodium" "openssl" "cmark")
-makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools")
+makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools" "nlohmann-json")
 
 provides=("nheko")
 conflicts=("nheko")
 
-source=($pkgname::git://github.com/mujx/nheko.git)
+source=($pkgname::git://github.com/Nheko-Reborn/nheko.git)
 md5sums=("SKIP")
 
 prepare() {
@@ -25,7 +25,7 @@ prepare() {
 
 pkgver() {
     cd "$pkgname"
-    printf "0.5.5.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.6.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
