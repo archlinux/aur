@@ -1,0 +1,28 @@
+pkgbase = gnutls
+	pkgdesc = A library which provides a secure layer over a reliable transport layer
+	pkgver = 3.6.7
+	pkgrel = 1
+	url = https://www.gnutls.org/
+	arch = x86_64
+	license = GPL3
+	license = LGPL2.1
+	checkdepends = net-tools
+	depends = gcc-libs
+	depends = libtasn1
+	depends = readline
+	depends = zlib
+	depends = nettle
+	depends = p11-kit
+	depends = libidn2
+	depends = libidn2.so
+	depends = libunistring
+	options = !zipman
+	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.7.tar.xz
+	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.7.tar.xz.sig
+	validpgpkeys = 0424D4EE81A0E3D119C6F835EDA21E94B565716F
+	validpgpkeys = 1F42418905D8206AA754CCDC29EE58B996865171
+	sha256sums = 5b3409ad5aaf239808730d1ee12fdcd148c0be00262c7edf157af655a8a188e2
+	sha256sums = SKIP
+
+pkgname = gnutls
+
