@@ -1,9 +1,10 @@
+# Maintainer: Danny Bautista <pyrolagus at gmail.com>
 # Contributor: Agustin Borgna <hello[at]aborgna.com.ar>
 # Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Renan Birck <renan.ee.ufsm at gmail.com>
 
 pkgname=logisim-evolution-git
-pkgver=2.15.r659.f1376766
+pkgver=3.0.0.r848.c86375e3
 pkgrel=1
 provides=('logisim-evolution')
 conflicts=('logisim-evolution')
@@ -12,10 +13,10 @@ arch=('any')
 url="https://github.com/reds-heig/logisim-evolution"
 license=('GPL3')
 depends=('java-runtime' 'gtk-update-icon-cache' 'desktop-file-utils' 'shared-mime-info')
-makedepends=('git' 'java-environment' 'apache-ant')
+makedepends=('git' 'java-environment' 'gradle')
 install=logisim-evolution.install
 
-source=('git://github.com/reds-heig/logisim-evolution.git'
+source=('git://github.com/reds-heig/logisim-evolution.git#branch=develop'
         logisim-evolution.xml
         logisim-evolution.desktop
         logisim-evolution.sh)
@@ -26,19 +27,19 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/logisim-evolution"
-    printf "2.15.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "3.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "$srcdir/logisim-evolution"
 
-    ./gradlew shadowJar
+    ./gradlew --no-daemon shadowJar
 }
 
 package() {
     cd "$srcdir"
-
-    install -Dm644 logisim-evolution/build/libs/logisim-evolution-2.15.0-all.jar \
+    _appver=$(grep -oP '(?<=^version = ).*$' logisim-evolution/gradle.properties)
+    install -Dm644 logisim-evolution/build/libs/logisim-evolution-${_appver}-all.jar \
         "${pkgdir}/usr/share/java/logisim-evolution/logisim-evolution.jar"
     install -Dm644 logisim-evolution.xml \
         "${pkgdir}/usr/share/mime/packages/logisim-evolution.xml"
