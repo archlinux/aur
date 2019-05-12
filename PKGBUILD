@@ -2,14 +2,14 @@
 
 pkgname=oguri-git
 pkgver=r52.59a5175
-pkgrel=1
+pkgrel=2
 pkgdesc="A very nice animated wallpaper tool for Wayland compositors."
 arch=('i686' 'x86_64')
 url="https://github.com/vilhalmer/oguri"
 license=('MIT')
 groups=()
-depends=('gtk3')
-makedepends=('git' 'meson' 'wayland')
+depends=('gtk3' 'wayland')
+makedepends=('git' 'meson')
 optdepends=('sway: Wayland compositor to display wallpaper in.')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

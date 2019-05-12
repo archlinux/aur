@@ -1,15 +1,15 @@
 pkgbase = oguri-git
 	pkgdesc = A very nice animated wallpaper tool for Wayland compositors.
 	pkgver = r52.59a5175
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vilhalmer/oguri
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = meson
-	makedepends = wayland
 	depends = gtk3
+	depends = wayland
 	optdepends = sway: Wayland compositor to display wallpaper in.
 	provides = oguri
 	conflicts = oguri
