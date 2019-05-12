@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-roslisp
 	pkgdesc = ROS - Lisp client library for ROS, the Robot Operating System.
 	pkgver = 1.9.22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/roslisp
 	arch = any
 	license = BSD
@@ -13,8 +13,8 @@ pkgbase = ros-melodic-roslisp
 	depends = ros-melodic-std-srvs
 	depends = ros-melodic-rospack
 	depends = sbcl
-	source = ros-melodic-roslisp-1.9.22-0.tar.gz::https://github.com/ros-gbp/roslisp-release/archive/release/melodic/roslisp/1.9.22-0.tar.gz
-	sha256sums = 83844af11c1d8a5baf84efcef5a107629966d66b14973723446cd8803fc9781a
+	source = ros-melodic-roslisp-1.9.22.tar.gz::https://github.com/ros/roslisp/archive/1.9.22.tar.gz
+	sha256sums = 23164ff090ba09d6ad67ad34bdf3c24662d0fdb59a81af8a69ab2827793a77e4
 
 pkgname = ros-melodic-roslisp
 

@@ -5,9 +5,8 @@ url='http://ros.org/wiki/roslisp'
 
 pkgname='ros-melodic-roslisp'
 pkgver='1.9.22'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -32,9 +31,9 @@ depends=(
 	sbcl
 )
 
-_dir="roslisp-release-release-melodic-roslisp-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roslisp-release/archive/release/melodic/roslisp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('83844af11c1d8a5baf84efcef5a107629966d66b14973723446cd8803fc9781a')
+_dir="roslisp-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/roslisp/archive/${pkgver}.tar.gz")
+sha256sums=('23164ff090ba09d6ad67ad34bdf3c24662d0fdb59a81af8a69ab2827793a77e4')
 
 build() {
 	# Use ROS environment variables.
