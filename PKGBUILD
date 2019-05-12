@@ -11,7 +11,7 @@ url="https://github.com/Nheko-Reborn/nheko"
 license=("GPL3")
 
 depends=("qt5-base" "lmdb" "qt5-multimedia" "qt5-svg" "boost" "libsodium" "openssl" "cmark")
-makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools" "nlohmann-json")
+makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools")
 
 provides=("nheko")
 conflicts=("nheko")
@@ -33,7 +33,7 @@ build() {
 
     rm -f cmake/FindOlm.cmake
 
-    cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF -DUSE_BUNDLED_CMARK=OFF
+    cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF -DUSE_BUNDLED_CMARK=OFF -DUSE_BUNDLED_JSON=ON
     cmake --build .deps
 
     cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release \
