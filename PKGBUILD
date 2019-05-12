@@ -2,7 +2,7 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=phoenix
-pkgver=v1.0.0.beta.5.r29.g4874c78
+pkgver=v1.0.0.beta.6.r16.ged2118a2
 pkgrel=1
 pkgdesc="BURST Cross-Platform Wallet UI"
 arch=('i686' 'x86_64')

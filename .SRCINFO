@@ -1,6 +1,6 @@
 pkgbase = phoenix
 	pkgdesc = BURST Cross-Platform Wallet UI
-	pkgver = v1.0.0.beta.5.r29.g4874c78
+	pkgver = v1.0.0.beta.6.r16.ged2118a2
 	pkgrel = 1
 	url = https://github.com/burst-apps-team/phoenix
 	install = phoenix.install
