@@ -4,8 +4,7 @@ pkgdesc="ROS - Assorted shell commands for using ros with bash."
 url='http://www.ros.org/wiki/rosbash'
 
 pkgname='ros-melodic-rosbash'
-pkgver='1.14.4'
-_pkgver_patch=0
+pkgver='1.14.6'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -28,9 +27,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros-release-release-melodic-rosbash-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/melodic/rosbash/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6fbc312e0f21722eef820e2365c96a0a96e1ab8ff136fed53b72819533d0e820')
+_dir="ros-${pkgver}/tools/rosbash"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
+sha256sums=('62f1350271a76bc35794c2cdb741cdae2ba096c96a924dba025aed4f561c978c')
 
 build() {
 	# Use ROS environment variables.
