@@ -1,7 +1,7 @@
 # Maintainer: Kai Yuan <kent.yuan @t gmail d@t com>
 pkgname=tinyswitch
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="commandline tool to switch tinyproxy based proxy conveniently"
 arch=('any')
 url="https://github.com/sk1418/tinyswitch"
