@@ -1,14 +1,14 @@
 pkgbase = python-lhafile
 	pkgdesc = LHA archive support for Python 3
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = http://fengestad.no/python-lhafile/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = python
-	source = http://fengestad.no/python-lhafile/python-lhafile-0.2.1.tar.gz
-	md5sums = bc63d61a1b562bbbc52118c168f8cb5e
+	source = python-lhafile-0.2.2.tar.gz::https://github.com/FrodeSolheim/python-lhafile/archive/v0.2.2.tar.gz
+	sha256sums = 18396276b77d8c7e094f169d3b2471e60de3d412a2454a0f73c452a54817ee68
 
 pkgname = python-lhafile
 
