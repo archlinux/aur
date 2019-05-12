@@ -1,6 +1,6 @@
 pkgbase = doom-remake-4-experimental
 	pkgdesc = Doom Remake 4 Experimental via the GzDoom engine.
-	pkgver = 1.11
+	pkgver = 1.13
 	pkgrel = 1
 	url = https://www.moddb.com/mods/lowpoly-doom-lite-10
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = doom-remake-4-experimental
 	makedepends = xmlstarlet
 	makedepends = unrar
 	depends = gzdoom
-	noextract = Doom_Remake_4_experimental_1.11.rar
-	source = Doom_Remake_4_experimental_1.11.rar::https://www.moddb.com/downloads/start/177776
+	noextract = Doom_Remake_4_experimental_1.13.rar
+	source = Doom_Remake_4_experimental_1.13.rar::https://www.moddb.com/downloads/start/177776
 	source = gzdoom.ini
 	source = doom-remake-4-experimental
-	sha512sums = c47953176332cdafabde0e43f90ca4449b9089b76725920f710253e74ac1f176565be187ae3a2450ff58d84b89a93c3a86be836b6568cd8e57060aa31f3d3d2f
+	sha512sums = f92c89bf2aca7afb95d1c6a548c68391530e8596c317342b1922d3fcf820f36a70e4461c3af91b033deab4132856c1d1c4b1a55f32058f192d2eb3c76ecae8ab
 	sha512sums = 76ea6485b7b262ff1d2018150c1fcffd372c6a3f258cfc90542b41928d87e3eeb8f111c7715fb4d01a0594d6808b4dcbc6d9d39fa9057a558bef85dd48201b77
 	sha512sums = 304c4755328f68226a70277584077c7c724453f9ac4b195af65fc72510ace24885ecaa99328a66eaf2e505814457fa4cab86c42d88ecb7d04e45ce85b1b3cce7
 
