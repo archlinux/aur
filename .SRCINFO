@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-nodelet-topic-tools
 	pkgdesc = ROS - This package contains common nodelet tools such as a mux, demux and throttle.
 	pkgver = 1.9.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/nodelet_topic_tools
 	arch = any
 	license = BSD
@@ -16,8 +16,8 @@ pkgbase = ros-melodic-nodelet-topic-tools
 	depends = ros-melodic-message-filters
 	depends = ros-melodic-pluginlib
 	depends = boost
-	source = ros-melodic-nodelet-topic-tools-1.9.16-0.tar.gz::https://github.com/ros-gbp/nodelet_core-release/archive/release/melodic/nodelet_topic_tools/1.9.16-0.tar.gz
-	sha256sums = 39f55bdfb39c520b29a3c6004ca8d359a2e2ffc8da9ed254ba38c180bd035ae3
+	source = ros-melodic-nodelet-topic-tools-1.9.16.tar.gz::https://github.com/ros/nodelet_core/archive/1.9.16.tar.gz
+	sha256sums = 609a85323a47aff2e5e53531a465ddc62ba3290ba8b359a12dd07253bbaa9e26
 
 pkgname = ros-melodic-nodelet-topic-tools
 
