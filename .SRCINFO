@@ -9,6 +9,7 @@ pkgbase = bspwmbar
 	depends = alsa-lib
 	depends = libxft
 	depends = fontconfig
+	optdepends = ttf-nerd-fonts-symbols: default prefix icons font
 	source = https://github.com/odknt/bspwmbar/archive/v0.3.2.tar.gz
 	source = config.h
 	sha256sums = 7d58d50d1734784fef10770e346ca38732ab8641935a3767ec7c373af5757116
