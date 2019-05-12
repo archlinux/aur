@@ -5,9 +5,8 @@ url='http://ros.org/wiki/nodelet'
 
 pkgname='ros-melodic-nodelet'
 pkgver='1.9.16'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -45,9 +44,9 @@ depends=(
 	util-linux
 )
 
-_dir="nodelet_core-release-release-melodic-nodelet-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/melodic/nodelet/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3a9e9701df570659d70f871eb7e1970dacd3b89c02513c456f8f0ea1a446d15a')
+_dir="nodelet_core-${pkgver}/nodelet"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/nodelet_core/archive/${pkgver}.tar.gz")
+sha256sums=('609a85323a47aff2e5e53531a465ddc62ba3290ba8b359a12dd07253bbaa9e26')
 
 build() {
 	# Use ROS environment variables.
