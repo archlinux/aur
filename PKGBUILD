@@ -5,7 +5,6 @@ url='http://ros.org/wiki/dynamic_reconfigure'
 
 pkgname='ros-melodic-dynamic-reconfigure'
 pkgver='1.6.0'
-_pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -41,9 +40,9 @@ depends=(
 	boost
 )
 
-_dir="dynamic_reconfigure-release-release-melodic-dynamic_reconfigure-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/dynamic_reconfigure-release/archive/release/melodic/dynamic_reconfigure/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('00811c7ff7a43ff5dc2d22ce9bb493e55728d403f49c359606e173b687872151')
+_dir="dynamic_reconfigure-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/dynamic_reconfigure/archive/${pkgver}.tar.gz")
+sha256sums=('8dad5836e6844f1ab76b1b155a9ec3f34bdaa7a5c629d6197b85c96812d8bca6')
 
 build() {
 	# Use ROS environment variables.
