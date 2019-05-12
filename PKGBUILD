@@ -3,7 +3,7 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr
 pkgver=2.4.0
-pkgrel=10
+pkgrel=11
 pkgdesc="'open' digital satellite receiver and timer controlled video disk recorder"
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -17,32 +17,40 @@ replaces=('runvdr-extreme')
 conflicts=('runvdr-extreme')
 provides=("vdr-api=2.4.0")
 install='vdr.install'
+_patches=('vdr-2.4.0-01-fix-svdrp-modt-recflag.diff'
+          'vdr-2.4.0-02-fix-invalid-locking-sequence.diff'
+          'vdr-2.4.0-03-fix-locking-channel-display.diff'
+          'vdr-2.4.0-04-fix-locking-channel-display-2.diff'
+          'vdr-2.4.0-05-fix-shutdown.diff'
+          'vdr-2.4.0-06-fix-channel-switch.diff'
+          'vdr-2.4.0-07-fix-disabling-mtd.diff'
+          'vdr-2.4.0-08-add-multi-frontend-support.diff'
+          'vdr-2.4.0-09-fix-multi-frontend-access.diff'
+          'vdr-2.4.0-10-fix-missing-epg.diff'
+          'vdr-2.4.0-11-fix-peerdemo-udp-port.diff'
+          'vdr-2.4.0-12-fix-empty-pat.diff'
+          'vdr-2.4.0-13-fix-shutdown-2.diff'
+          'vdr-2.4.0-14-fix-eitscan.diff'
+          'vdr-2.4.0-15-fix-skincurses.diff'
+          'vdr-2.4.0-16-fix-nit-transponder-processing.diff'
+          'vdr-2.4.0-17-fix-nit-sdt-trigger.diff'
+          'vdr-2.4.0-19-add-eac3-from-other-sources.diff'
+          'vdr-2.4.0-20-fix-logging-inactive-transponders.diff'
+          'vdr-2.4.0-21-fix-libsi.diff'
+          'vdr-2.4.0-22-fix-sort-recordings.diff'
+          'vdr-2.4.0-23-fix-patch-16.diff'
+          'vdr-2.4.0-24-fix-drop-caps.diff'
+          'vdr-2.4.0-25-fix-channels-menu.diff'
+          'vdr-2.4.0-26-fix-shared-ca-pids.diff'
+          'vdr-2.4.0-27-fix-mtd-map-sid.diff'
+          'vdr-2.4.0-28-fix-mtd-checksum.diff'
+          'vdr-2.4.0-29-fix-compiler-warning.diff'
+          'vdr-2.4.0-30-fix-ci-sendanswer.diff'
+          'vdr-2.4.0-31-fix-invalid-lock-sequence.diff'
+          'vdr-2.4.0-32-fix-remote-timers-lstt-550.diff'
+          'vdr-2.4.0-33-fix-compiler-warning-add-attr-packed.diff')
 source=("ftp://ftp.tvdr.de/vdr/${pkgname}-${pkgver}.tar.bz2"
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-01-fix-svdrp-modt-recflag.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-02-fix-invalid-locking-sequence.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-03-fix-locking-channel-display.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-04-fix-locking-channel-display-2.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-05-fix-shutdown.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-06-fix-channel-switch.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-07-fix-disabling-mtd.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-08-add-multi-frontend-support.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-09-fix-multi-frontend-access.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-10-fix-missing-epg.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-11-fix-peerdemo-udp-port.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-12-fix-empty-pat.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-13-fix-shutdown-2.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-14-fix-eitscan.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-15-fix-skincurses.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-16-fix-nit-transponder-processing.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-17-fix-nit-sdt-trigger.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-19-add-eac3-from-other-sources.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-20-fix-logging-inactive-transponders.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-21-fix-libsi.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-22-fix-sort-recordings.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-23-fix-patch-16.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-24-fix-drop-caps.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-25-fix-channels-menu.diff'
-        'ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/vdr-2.4.0-26-fix-shared-ca-pids.diff'
+        "${_patches[@]/#/ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/}"
         'MainMenuHooks-v1_0_2.diff::https://www.vdr-portal.de/index.php?attachment/30330'
         '00-vdr.conf' '50-hello.conf' '50-pictures.conf'
         '60-create-dvb-device-units.rules'
@@ -87,6 +95,13 @@ md5sums=('12c6a3abeadfa915fcfe736bb047a3ab'
          '36e8e34dbd55cc9994c7ebb57b5cbce6'
          '168fca065cbff6237575d3a35842e35d'
          '181f845e4fe0b855449960e920091ce0'
+         '3f2f5d1eced0dd5ae6521e677892b06a'
+         '637437b35a9383d4659256c03cbe560b'
+         '923d11dba8d3beff1023cd3722e5b9a6'
+         '44204391b4526fbc210a21434764ac9b'
+         '68853b503fe1d9f62074f823db71a4bf'
+         '330f3382d91a66aa90f6ce98dc16fac5'
+         'd9fbd48e5ad651623966304f168ef902'
          '301c9b9766ed5182b07f1debc79abc21'
          'de3dcdea1a4282211c6dac370019548b'
          'fc450f75037b8712673db4969a1dd758'
@@ -110,31 +125,9 @@ prepare() {
   echo 'LIRC_DEVICE  = /run/lirc/lircd' >> Make.config
 
   # Upstream fixes
-  patch -p0 -i "$srcdir/vdr-2.4.0-01-fix-svdrp-modt-recflag.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-02-fix-invalid-locking-sequence.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-03-fix-locking-channel-display.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-04-fix-locking-channel-display-2.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-05-fix-shutdown.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-06-fix-channel-switch.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-07-fix-disabling-mtd.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-08-add-multi-frontend-support.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-09-fix-multi-frontend-access.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-10-fix-missing-epg.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-11-fix-peerdemo-udp-port.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-12-fix-empty-pat.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-13-fix-shutdown-2.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-14-fix-eitscan.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-15-fix-skincurses.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-16-fix-nit-transponder-processing.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-17-fix-nit-sdt-trigger.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-19-add-eac3-from-other-sources.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-20-fix-logging-inactive-transponders.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-21-fix-libsi.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-22-fix-sort-recordings.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-23-fix-patch-16.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-24-fix-drop-caps.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-25-fix-channels-menu.diff"
-  patch -p0 -i "$srcdir/vdr-2.4.0-26-fix-shared-ca-pids.diff"
+  for patch in "${_patches[@]}"; do
+    patch -p0 -i "$srcdir/$patch"
+  done
 
   # Custom extensions
   sed -i 's/NULL, 0, true/NULL, 0, OpenSubMenus/g' "$srcdir/MainMenuHooks-v1_0_2.diff"
