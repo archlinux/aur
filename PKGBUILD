@@ -1,23 +1,28 @@
-# Maintainer: Bram Swenson <bram+aur@craniumisajar.com>
-# Maintainer: Jaroslav Bojko <echo "Ym95amFyIGF0IHNlem5hbSBkb3QgY3oK" | base64 -d>
+# Maintainer: D. Can Celasun <can[at]dcc[dot]im>
+# Contributor: Bram Swenson <bram+aur@craniumisajar.com>
+# Contributor: Jaroslav Bojko <echo "Ym95amFyIGF0IHNlem5hbSBkb3QgY3oK" | base64 -d>
 
 pkgname=amazon-ecr-credential-helper
-pkgver=8549783ceff8405a4dcc02689409945565c0c7ea
+pkgver=0.3.0
 pkgrel=1
+_commit=798bf2536dbe8a8d297e0b9ce5d61a8ef3df7775
 pkgdesc="A credential helper for the Docker daemon that makes it easier to use Amazon EC2 Container Registry."
 url='https://github.com/awslabs/amazon-ecr-credential-helper'
 arch=('i686' 'x86_64')
 license=('MPL')
-makedepends=('go' 'godep' 'git')
+makedepends=('go')
 _gourl=github.com/awslabs
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/awslabs/amazon-ecr-credential-helper/archive/${pkgver}.tar.gz")
-sha512sums=('d6693e8394262cd15bdf6b0455d0304995819bf86da4512ebaf0bc50e6343c5dd5da7f8e0d6821ed244474860fdac3990afd7fae81b89ec7b98f12e8dbd9ff28')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/awslabs/amazon-ecr-credential-helper/archive/v${pkgver}.tar.gz")
+sha512sums=('af25cd729391d1eefcd8c62aa5b165d8ffaafcfd19a65134c9e96aeae975747b8ae34819024eb89db4025ef1bf9105ff1acd9ad3bc9104987cc47c072441418e')
 
 prepare() {
   mkdir -p "${srcdir}/src/${_gourl}"
   rm -rf "${srcdir}/src/${_gourl}/${pkgname}"
   tar -zxvf "${pkgname}-${pkgver}.tar.gz" &> /dev/null
   mv -f "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/${_gourl}/${pkgname}"
+  sed -i '/^GITFILES/d' "${srcdir}/src/${_gourl}/${pkgname}/Makefile"
+  sed -i 's|GITCOMMIT_SHA: $(GITFILES)|GITCOMMIT_SHA:|' "${srcdir}/src/${_gourl}/${pkgname}/Makefile"
+  sed -i "s|git rev-parse --short=7 HEAD|echo ${_commit}|" "${srcdir}/src/${_gourl}/${pkgname}/Makefile"
 }
 
 build() {
