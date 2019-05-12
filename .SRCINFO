@@ -1,18 +1,23 @@
 pkgbase = xiphos-git
 	pkgdesc = A Bible study tool -- git version
-	pkgver = r4065
-	pkgrel = 4
+	pkgver = 4.1.0.r63.gd1dd1598
+	pkgrel = 1
+	epoch = 1
 	url = http://xiphos.org
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = cmake
+	makedepends = gtkmm
+	makedepends = libgsf
+	makedepends = libxml2
 	makedepends = gnome-common
 	makedepends = gnome-doc-utils
 	makedepends = intltool
 	makedepends = git
 	makedepends = python2
 	makedepends = docbook-utils
-	depends = dbus-glib
+	depends = gconf
 	depends = webkit2gtk
 	depends = libgsf
 	depends = sword>=1.8.1
@@ -23,9 +28,7 @@ pkgbase = xiphos-git
 	conflicts = gnomesword
 	conflicts = xiphos
 	source = git+https://github.com/crosswire/xiphos.git
-	source = http://deb.debian.org/debian/pool/main/x/xiphos/xiphos_4.1.0.1+dfsg1-1.debian.tar.xz
 	sha512sums = SKIP
-	sha512sums = 7438bc523b8a6d50a2474e43d9057081667436b8292eef9164a5478471e8dc3380f75a84c736ff95ce4ba29bc99588f1a48cf9dfbf5c7c431dd0d53374bfeeb6
 
 pkgname = xiphos-git
 
