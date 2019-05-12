@@ -1,6 +1,6 @@
 pkgbase = netbeans-incubator
 	pkgdesc = IDE for Java, HTML5, PHP, Groovy, C and C++ (incubator/nightly version)
-	pkgver = 20190105
+	pkgver = 20190512
 	pkgrel = 1
 	url = http://netbeans.apache.org
 	install = netbeans.install

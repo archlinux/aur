@@ -1,7 +1,7 @@
 # Maintainer: Pavol Hluchy (Lopo) <lopo AT losys DOT eu>
 
 pkgname=netbeans-incubator
-pkgver=20190105
+pkgver=20190512
 pkgrel=1
 pkgdesc='IDE for Java, HTML5, PHP, Groovy, C and C++ (incubator/nightly version)'
 license=('Apache')
@@ -19,7 +19,7 @@ install="netbeans.install"
 options=(!strip)
 source=('netbeans-nightly.png')
 sha512sums=('5ce471647913dd0686511724d9b6045f44e9ae06938a8b6f8478bfd7c261c17fea4fa2b692a8c2d6b766503f00aff9c4b8f9e6c26d3b697b8f9a2361a66d9409')
-_webroot="https://builds.apache.org/job/incubator-netbeans-linux"
+_webroot="https://builds.apache.org/view/Incubator%20Projects/job/netbeans-linux"
 
 prepare() {
 	cd "${SRCDEST}"
@@ -28,12 +28,19 @@ prepare() {
 	curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o webindex "${_webroot}/lastStableBuild/artifact/nbbuild/"
 
 	_file=`grep -e '-release.zip' webindex \
-		| awk  'BEGIN{FPAT="NetBeans-dev-incubator-netbeans-linux-[[:digit:]]+-on-[[:digit:]]+-release.zip";} {print $1}'`
+		| awk  'BEGIN{FPAT="NetBeans-dev-netbeans-linux-[[:digit:]]+-on-[[:digit:]]+-release.zip";} {print $1}'`
 	download_file "${_webroot}/lastStableBuild/artifact/nbbuild/${_file}"
 
 	cd "$srcdir"
 	ln -fs "${SRCDEST}/${_file}"
 	extract_file "${_file}"
+}
+
+pkgver() {
+	cd "${SRCDEST}"
+	grep -e '-release.zip' webindex \
+		| awk 'BEGIN{FPAT="NetBeans-dev-netbeans-linux-[[:digit:]]+-on-[[:digit:]]+-release.zip";} {print $1}' \
+		| awk 'BEGIN{FPAT="[[:digit:]]+";} {print $2"."$1}'
 }
 
 build() {
