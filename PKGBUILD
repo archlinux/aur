@@ -1,7 +1,7 @@
 # Maintainer: David Santiago <demanuel@ymail.com>
 pkgname=newsup-git
 _pkgname=newsup
-pkgrel=2
+pkgrel=3
 pkgver=r443.b4ea158
 provides=(${_pkgname})
 pkgdesc="NewsUP - A usenet binary uploader"
@@ -20,7 +20,6 @@ package() {
   install -D $srcdir/$pkgname/bin/newsup.pl $pkgdir/usr/bin/vendor_perl/$_pkgname
   mkdir -p $pkgdir/usr/share/perl5/vendor_perl/
   cp -R $srcdir/$pkgname/lib/NewsUP/ $pkgdir/usr/share/perl5/vendor_perl/
- 
 }
 
 pkgver() {
