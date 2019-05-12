@@ -1,7 +1,7 @@
 pkgbase = djgpp-djcrx
 	pkgdesc = Headers and utilities for the djgpp cross-compiler
 	pkgver = 2.05
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.delorie.com/djgpp/
 	arch = i686
 	arch = x86_64
