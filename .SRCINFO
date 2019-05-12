@@ -1,6 +1,6 @@
 pkgbase = openra-sp-git
 	pkgdesc = A Tiberian Sun-inspired mod of OpenRA
-	pkgver = 217.git.7944472
+	pkgver = 221.git.ac000cc
 	pkgrel = 1
 	url = https://github.com/ABrandau/OpenRAModSDK
 	install = openra-sp.install
