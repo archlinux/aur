@@ -16,16 +16,16 @@ pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot'
 url='https://nightlies.videolan.org/'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua' 'libidn'
+depends=('qt5-quickcontrols2' 'a52dec' 'libdvbpsi' 'libxpm'  'libdca' 'libproxy' 'lua' 'libidn'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
-         'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
+         'libarchive' 'qt5-base'  'libgcrypt' 'qt5-x11extras' 'qt5-svg' 'freetype2'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo-git'
          'wayland-protocols' 'aribb24')
 makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
-             'libmtp' 'libmicrodns' 'libdvdcss' 'smbclient'
+             'libmtp' 'libmicrodns'  'libdvdcss' 'smbclient'
              'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
              'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
              'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
@@ -110,6 +110,9 @@ options=('!emptydirs')
 source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-${_suffix_}.tar.xz"
         'update-vlc-plugin-cache.hook'
         '0001-lua-Fix-build-using-lua-5.3.patch'
+        '1-3-placebo-update-for-new-tone-mapping-desaturation-algo.patch'
+        '2-3-placebo-update-for-new-peak-detection-algo.patch'
+        '3-3-opengl-update-libplacebo-call-for-changed-API.patch'
         'find-deps.py')
 
 pkgver() {
@@ -122,13 +125,16 @@ prepare() {
   ./bootstrap
 
   patch -Np1 -i "${srcdir}/0001-lua-Fix-build-using-lua-5.3.patch"
+  patch -Np1 -i "${srcdir}/3-3-opengl-update-libplacebo-call-for-changed-API.patch"
+  patch -Np1 -i "${srcdir}/1-3-placebo-update-for-new-tone-mapping-desaturation-algo.patch"
+  patch -Np1 -i "${srcdir}/2-3-placebo-update-for-new-peak-detection-algo.patch"
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
 
   # libplacebo 12 API
- sed 's|pl_shader_alloc(tc->pl_ctx, NULL, 0, 0);|pl_shader_alloc(tc->pl_ctx, NULL);|' -i modules/video_output/opengl/vout_helper.c
+# sed 's|pl_shader_alloc(tc->pl_ctx, NULL, 0, 0);|pl_shader_alloc(tc->pl_ctx, NULL);|' -i modules/video_output/opengl/vout_helper.c
 }
 
 build() {
@@ -224,7 +230,7 @@ build() {
               --enable-upnp \
               --enable-microdns \
               --enable-libxml2 \
-              --disable-libgcrypt \
+              --enable-libgcrypt \
               --enable-gnutls \
               --enable-taglib \
               --enable-secret \
@@ -268,4 +274,7 @@ package() {
 sha256sums=('622e53bcf12de170ccb3b26b5d198236aa39a7c88c08aa9edb13af9d6d04ec10'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             '3e6bddbaed443e40036c494a0754aedd2f94fe41bfa3754855e16f7452a03cdf'
+            '52d2818dde06fe5fd873b4a89f31884650c480528f7b61c0cbc05576fdbb3e53'
+            'af46e70a85a82f2428b1c6ab09d27ee8c18a4b8adc1a4d71bde66e89be877f04'
+            'cd7d11aa6aff73745170451ef769ccd62cdb8f3eaf803de7c7ab6bd388ab1d7b'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
