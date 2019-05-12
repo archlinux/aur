@@ -9,9 +9,8 @@ pkgdesc="A weather monitor plugin for gkrellm2"
 arch=('i686' 'x86_64')
 depends=('gkrellm' 'perl' 'wget' 'gtk2')
 license=('GPL')
-url="https://sites.google.com/site/makovick/gkrellm-plugins"
-source=("${pkgname}-${pkgver}.tgz::https://sites.google.com/site/makovick/projects/${pkgname}-${pkgver}.tgz?attredirects=0")
-md5sums=('b21ed55cc9998eb7307ec53e99f9beea')
+source=(https://launchpad.net/ubuntu/+archive/primary/+files/gkrellweather_2.0.8.orig.tar.gz)
+sha256sums=(06236ad489151019e71bab4ba63b4b8b06d58c58890caed8b1a28fdd05cde16d)
 
 patch=$(realpath $pkgname-$pkgver.patch)
 
