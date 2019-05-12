@@ -3,7 +3,7 @@
 
 pkgname=musixmatch-bin
 _pkgname=musixmatch
-pkgver=0.21.26
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Lyrics platform where users can search and share lyrics'
 arch=('x86_64')
