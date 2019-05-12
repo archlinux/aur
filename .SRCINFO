@@ -1,6 +1,6 @@
 pkgbase = d9vk-mingw-git
 	pkgdesc = A d3d9 to vk layer based off DXVK's codebase. Mingw version
-	pkgver = 0.10.r0.g27b6ee21
+	pkgver = r2885.da392277
 	pkgrel = 1
 	url = https://github.com/Joshua-Ashton/d9vk
 	arch = x86_64

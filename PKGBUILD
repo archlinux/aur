@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-mingw-git
-pkgver=0.10.r0.g27b6ee21
+pkgver=r2885.da392277
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase. Mingw version"
 arch=('x86_64')
@@ -24,7 +24,8 @@ sha256sums=(
 
 pkgver() {
     cd d9vk
-    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/m//g')"
+    #printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/m//g')"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
