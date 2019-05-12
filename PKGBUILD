@@ -42,6 +42,7 @@ build() {
               --with-system-expat \
               --with-dbmliborder=gdbm:ndbm \
               --with-system-libmpdec \
+              --with-system-ffi \
               --enable-loadable-sqlite-extensions \
               --without-ensurepip
 
