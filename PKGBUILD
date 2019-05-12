@@ -5,9 +5,8 @@ url='http://www.ros.org/'
 
 pkgname='ros-melodic-ros-core'
 pkgver='1.4.1'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -51,9 +50,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="metapackages-release-release-melodic-ros_core-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/melodic/ros_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('390d24da9397fce3a11f1dc7a0a23fb0886b81a4cfd2473906508358a670782d')
+_dir="metapackages-${pkgver}/ros_core"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/metapackages/archive/${pkgver}.tar.gz")
+sha256sums=('ef1df96c61c9762555174cc1a0e21e05149f74909d27044be0cd10aa065747a1')
 
 build() {
 	# Use ROS environment variables.
