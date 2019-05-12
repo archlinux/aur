@@ -4,8 +4,7 @@ pkgdesc="ROS - Integration test suite based on roslaunch that is compatible with
 url='http://ros.org/wiki/rostest'
 
 pkgname='ros-melodic-rostest'
-pkgver='1.14.3'
-_pkgver_patch=0
+pkgver='1.12.14'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -35,9 +34,9 @@ depends=(
 	boost
 )
 
-_dir="ros_comm-release-release-melodic-rostest-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rostest/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('90e7b4ba3167ae06f5ad213c193b0c5ab7888b4abd75542a3d7c02592ef9c707')
+_dir="ros_comm-${pkgver}/tools/rostest"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
+sha256sums=('239c225cc9b1613cc7f76daf73c182f991787b7cf601287cb6cc28957eeeec1d')
 
 build() {
 	# Use ROS environment variables.

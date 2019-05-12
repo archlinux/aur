@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rostest
 	pkgdesc = ROS - Integration test suite based on roslaunch that is compatible with xUnit frameworks.
-	pkgver = 1.14.3
+	pkgver = 1.12.14
 	pkgrel = 1
 	url = http://ros.org/wiki/rostest
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = ros-melodic-rostest
 	depends = ros-melodic-roslaunch
 	depends = ros-melodic-rospy
 	depends = boost
-	source = ros-melodic-rostest-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rostest/1.14.3-0.tar.gz
-	sha256sums = 90e7b4ba3167ae06f5ad213c193b0c5ab7888b4abd75542a3d7c02592ef9c707
+	source = ros-melodic-rostest-1.12.14.tar.gz::https://github.com/ros/ros_comm/archive/1.12.14.tar.gz
+	sha256sums = 239c225cc9b1613cc7f76daf73c182f991787b7cf601287cb6cc28957eeeec1d
 
 pkgname = ros-melodic-rostest
 
