@@ -4,8 +4,7 @@ pkgdesc="ROS - rosconsole_bridge is a package used in conjunction with console_b
 url='http://www.ros.org/wiki/rosconsole_bridge'
 
 pkgname='ros-melodic-rosconsole-bridge'
-pkgver='0.5.2'
-_pkgver_patch=0
+pkgver='0.5.3'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -31,9 +30,9 @@ depends=(
 	console-bridge
 )
 
-_dir="rosconsole_bridge-release-release-melodic-rosconsole_bridge-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rosconsole_bridge-release/archive/release/melodic/rosconsole_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('accc196fd9e011032d1fbf8ceba59d779af0f74f7a8dfd92b850050c5b6d283c')
+_dir="rosconsole_bridge-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rosconsole_bridge/archive/${pkgver}.tar.gz")
+sha256sums=('e2aca7171b599a65c630e0be199cc642f7bfde266f58a34501def4644ec52fb1')
 
 build() {
 	# Use ROS environment variables.
