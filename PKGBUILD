@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=wapm
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="WebAssembly Package Manager"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://wapm.io"
 license=(MIT)
 makedepends=(cargo)
 source=(https://github.com/wasmerio/wapm-cli/archive/v${pkgver}.tar.gz)
-sha512sums=('727846ff658ce067b7db0e790530ef8af7cd99c80e117d57ab833d5585fb56d6bd68bfb4ca5091b2816bef827bf5edbbedacc7d6cf12c27606d92bf11076629e')
+sha512sums=('4df65b180981b4c6283473e429aa9171ac1b72db36d1629a97230af40ea8cdfb588e32061264170712c69e1cdcef298691214d00c781c6557dfa4d5d177152e2')
 
 build() {
   cd "$srcdir/wapm-cli-$pkgver"
