@@ -94,20 +94,22 @@ source=("git+${_repo_url}?signed#tag=v${_srcver}"
         60-linux.hook  # pacman hook for depmod
         90-linux.hook  # pacman hook for initramfs regeneration
         linux.preset   # standard config files for mkinitcpio ramdisk
-        "Undead-PDS-0.99o-rebase-by-TkG.patch"
+        01-Glitched-PDS-by-TkG.patch
+        02-Undead-PDS-0.99o-rebase-by-TkG.patch
 )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886'    # Linus Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E'    # Greg Kroah-Hartman
     '8218F88849AAC522E94CF470A5E9288C4FA415FA'    # Jan Alexander Steffens (heftig)
 )
-sha256sums=('SKIP'
+sha512sums=('SKIP'
             'SKIP'
-            '8ec8a6079408a0fe6cf5f81c24076b0f7461d2b67eb0ddbe9de2f22a1d07ee5d'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '680f2ada99d1f0c1e611b4340140ef2da68530ab2f3bcd95770c68d07a56e0e2')
+            'cb24bed94fa191b13e4122721875f61e75d0aacc030b9b87dba80286e5d62e31b25fef13ac70225b1c45484af4fadd0d1ed26c3784508c764fcfd0582cc966a5'
+            '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
+            '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            '3ff796cbc213ae5f43a55f1ba92406bba04703db3459040beacacd9baceb3138021e908f440bd101cc76cb725e418ebdc8ab776327801690da30a1477bc84753'
+            'cdfa59b9f369a5795c93ced526e7f480851ef439f3379e6c1a32b9cf29232cd4671fe4b0ddb50c5d996e23db71582844e233fee96bb551827eaf70b0be1d18dc')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -117,7 +119,8 @@ prepare() {
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching Undead PDS 0.99o 5.1 rebase by TkG"
-    patch -Np1 -i "$srcdir/Undead-PDS-0.99o-rebase-by-TkG.patch"
+    patch -Np1 -i "$srcdir/01-Glitched-PDS-by-TkG.patch"
+    patch -Np1 -i "$srcdir/02-Undead-PDS-0.99o-rebase-by-TkG.patch"
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching to enabled additional gcc CPU optimizatons..."
