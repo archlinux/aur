@@ -2,7 +2,7 @@
 # Author: Hossein Bakhtiarifar <abakh@tuta.io>
 # Discussion: https://www.reddit.com/r/linux/comments/b8y7rp/i_have_made_a_bunch_of_fancy_terminal_games_more/
 pkgname=nbsdgames-git
-pkgver=r42.423f273_score_patch
+pkgver=2.0.r2.ga70209e_score_patch
 pkgrel=1
 pkgdesc="A collection of curses-based console games"
 arch=('x86_64' 'i686')
@@ -32,8 +32,8 @@ EOF
 
 pkgver() {
     cd "${pkgname%%-git}"
-    printf "r%s.%s_score_patch" \
-        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s_score_patch" \
+    "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 

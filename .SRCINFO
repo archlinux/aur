@@ -1,6 +1,6 @@
 pkgbase = nbsdgames-git
 	pkgdesc = A collection of curses-based console games
-	pkgver = r42.423f273_score_patch
+	pkgver = 2.0.r2.ga70209e_score_patch
 	pkgrel = 1
 	url = https://github.com/untakenstupidnick/nbsdgames
 	install = nbsdgames-git.install
