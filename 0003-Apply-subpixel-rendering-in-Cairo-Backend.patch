@@ -1,4 +1,4 @@
-From 9d3df285e6f1b833b637c12c8b059f3b82bab217 Mon Sep 17 00:00:00 2001
+From 21f2167b9776d0766f805c506629b6d045464314 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
 Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
@@ -74,10 +74,10 @@ index 78d24bb5..d482ceb5 100644
          g_timer_stop (timer);
  
 diff --git a/glib/poppler-page.cc b/glib/poppler-page.cc
-index a635f398..6b80f62d 100644
+index dc82afc4..622e2954 100644
 --- a/glib/poppler-page.cc
 +++ b/glib/poppler-page.cc
-@@ -2420,3 +2420,13 @@ poppler_page_get_text_attributes_for_area (PopplerPage      *page,
+@@ -2413,3 +2413,13 @@ poppler_page_get_text_attributes_for_area (PopplerPage      *page,
  
    return g_list_reverse(attributes);
  }
@@ -104,7 +104,7 @@ index f99f0920..8ff914f4 100644
  /* A rectangle on a page, with coordinates in PDF points. */
  #define POPPLER_TYPE_RECTANGLE             (poppler_rectangle_get_type ())
 diff --git a/poppler/CairoFontEngine.cc b/poppler/CairoFontEngine.cc
-index e29898a9..314925a8 100644
+index bf6bd88d..d9e42304 100644
 --- a/poppler/CairoFontEngine.cc
 +++ b/poppler/CairoFontEngine.cc
 @@ -124,7 +124,7 @@ CairoFont::getSubstitutionCorrection(GfxFont *gfxFont)
@@ -191,10 +191,10 @@ index d2769a22..f1bb39fc 100644
    glyphs = nullptr;
    if (use_show_text_glyphs) {
 diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
-index 9244b044..e459a13f 100644
+index 5fba4c72..a5e5e963 100644
 --- a/poppler/Gfx.cc
 +++ b/poppler/Gfx.cc
-@@ -4605,6 +4605,47 @@ void Gfx::doImage(Object *ref, Stream *str, bool inlineImg) {
+@@ -4607,6 +4607,47 @@ void Gfx::doImage(Object *ref, Stream *str, bool inlineImg) {
    error(errSyntaxError, getPos(), "Bad image parameters");
  }
  
@@ -243,7 +243,7 @@ index 9244b044..e459a13f 100644
    // check the effect of compositing objects as a group:
    // look for ExtGState entries with ca != 1 or CA != 1 or BM != normal
 diff --git a/poppler/Gfx.h b/poppler/Gfx.h
-index 47ae0153..9df0d18d 100644
+index 19462e8d..b0bbd11c 100644
 --- a/poppler/Gfx.h
 +++ b/poppler/Gfx.h
 @@ -192,6 +192,9 @@ public:
@@ -257,7 +257,7 @@ index 47ae0153..9df0d18d 100644
  
    void drawForm(Object *str, Dict *resDict, const double *matrix, const double *bbox,
 diff --git a/poppler/Page.cc b/poppler/Page.cc
-index 2cb75146..cd42b656 100644
+index d137ec4b..5950b964 100644
 --- a/poppler/Page.cc
 +++ b/poppler/Page.cc
 @@ -336,6 +336,19 @@ Dict *Page::getResourceDictCopy(XRef *xrefA) {

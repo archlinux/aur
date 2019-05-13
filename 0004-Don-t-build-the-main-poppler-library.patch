@@ -1,4 +1,4 @@
-From 19661939fe1d03ac29ac3db43aa7fd04d29adc0c Mon Sep 17 00:00:00 2001
+From f65dca308474f0ee56075b1319afb71a78eda971 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 20 Oct 2009 18:32:35 +0100
 Subject: [PATCH 4/4] Don't build the main poppler library.
@@ -8,7 +8,7 @@ Subject: [PATCH 4/4] Don't build the main poppler library.
  1 file changed, 17 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e3b8e8d9..d9632ebb 100644
+index 4b107479..8ea0625a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -485,23 +485,6 @@ if(TIFF_FOUND)
@@ -21,7 +21,7 @@ index e3b8e8d9..d9632ebb 100644
 -else()
 -add_library(poppler ${poppler_SRCS})
 -endif()
--set_target_properties(poppler PROPERTIES VERSION 86.0.0 SOVERSION 86)
+-set_target_properties(poppler PROPERTIES VERSION 87.0.0 SOVERSION 87)
 -if(MINGW AND BUILD_SHARED_LIBS)
 -    get_target_property(POPPLER_SOVERSION poppler SOVERSION)
 -    set_target_properties(poppler PROPERTIES SUFFIX "-${POPPLER_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
