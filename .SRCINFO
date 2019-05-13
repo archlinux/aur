@@ -1,14 +1,13 @@
 pkgbase = tortoisehg-hg
 	pkgdesc = Mercurial GUI front end
-	pkgver = 4.8.2.18704
+	pkgver = 4.9.1.18761
 	pkgrel = 1
 	url = https://bitbucket.org/tortoisehg/thg
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = python2
-	depends = mercurial>=4.8
-	depends = mercurial<4.10
+	depends = mercurial>=4.9
 	depends = python2-pyqt5
 	depends = python2-qscintilla-qt5
 	optdepends = python2-iniparse: ini file support
