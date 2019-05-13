@@ -1,0 +1,19 @@
+pkgbase = python-geoplot
+	pkgdesc = High-level geospatial data visualization library for Python
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/ResidentMario/geoplot
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-matplotlib
+	depends = python-seaborn
+	depends = python-pandas
+	depends = python-geopandas
+	depends = python-cartopy
+	depends = python-descartes
+	source = https://github.com/ResidentMario/geoplot/archive/0.2.1.tar.gz
+	sha256sums = e336bf84c4040a9c7e68f90ba5744d1149a19854eb0b34551def8bd7c2a299d6
+
+pkgname = python-geoplot
+
