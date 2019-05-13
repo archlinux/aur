@@ -1,0 +1,24 @@
+pkgbase = pandoc-pyplot
+	pkgdesc = A Pandoc filter to generate Matplotlib figures directly in documents
+	pkgver = 2.1.1.1
+	pkgrel = 1
+	url = https://github.com/LaurentRDC/pandoc-pyplot
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = pandoc
+	depends = haskell-hspec
+	depends = haskell-tasty
+	depends = haskell-tasty-hunit
+	depends = haskell-tasty-hspec
+	depends = haskell-yaml
+	depends = haskell-open-browser
+	depends = haskell-typed-process
+	depends = python-matplotlib
+	depends = python-pillow
+	source = pandoc-pyplot-2.1.1.1.tar.gz::https://github.com/LaurentRDC/pandoc-pyplot/archive/2.1.1.1.tar.gz
+	sha256sums = 05ff76d059abb237d1e16ab97c14c105f9c477f80599d6cbbf3d8d7785eb6bb1
+
+pkgname = pandoc-pyplot
+
