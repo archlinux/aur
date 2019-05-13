@@ -5,7 +5,7 @@ pkgname=gmt6
 _pkgname=gmt
 pkghashver=e35dcdb027985864664d4c5f7e442a7b877344d4
 pkgver=6.0.0_${pkghashver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps."
 arch=(i686 x86_64)
 url="https://gmt.soest.hawaii.edu/"
@@ -54,7 +54,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkghashver}/build"
-  make docs_man
+  make docs_html docs_man
   cd doc/rst/man \
   && for i in $(ls *.1.gz); do mv $i ${i%".1.gz"}.1gmt.gz; done \
   && for i in $(ls *.3.gz); do mv $i ${i%".3.gz"}.3gmt.gz; done \
