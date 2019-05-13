@@ -1,6 +1,6 @@
 # Maintainer: kausban <mail at kausban com>
 pkgname=polar-bookshelf-bin
-pkgver=1.17.5
+pkgver=1.19.2
 pkgrel=1
 pkgdesc="Polar Bookshelf"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'libxss' 'nss')
 source_x86_64=("https://github.com/burtonator/polar-bookshelf/releases/download/v"$pkgver"/polar-bookshelf-"$pkgver"-x64.tar.gz"
 "polar-bookshelf.desktop"
 "polar-bookshelf.svg")
-sha512sums_x86_64=('b72c2f5d5a5776f728d68b7e3cac3e0346d8fc77fca27d39c243d9bfaac0f6ccfae7f00c52a42ad2b10b24f5bbfc1cb00f0cfb321578792af5a8326622bc4653'
+sha512sums_x86_64=('f546694040f030de341cbd73bcc6c991e1cbdf1728ccb0d775ad7963388c6111268bbe401954439e3740d972b073b78bddda22c1edd5c388c0374cae078b9ce7'
                    '245196d23eb0c724bba1ba09e8234cc8dfdd230fcd02e8083c84d65d4721886977a111e19511d5afee9b8b61458ab851e6263dad31be9bbe0f4f5a3607f00690'
                    '2f1c91308fa6fc30496501894f5c9454799e26437000843f00cf0ab4b94713a1500a734c0f5590f86dae8bab7e34107670571ea2fde18981669a17ede61d1829')
 
