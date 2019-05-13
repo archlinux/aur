@@ -1,6 +1,36 @@
 --- a/makeicecat	2019-05-13 13:13:15.000000000 +0200
-+++ b/makeicecat	2019-05-13 13:12:41.338936305 +0200
-@@ -449,87 +449,6 @@
++++ b/makeicecat	2019-05-13 13:20:40.551626940 +0200
+@@ -264,9 +264,6 @@
+ ###############################################################################
+ 
+ # Replace Firefox branding
+-find -type d | grep fennec | xargs prename s/fennec/icecatmobile/
+-find -type f | grep fennec | xargs prename s/fennec/icecatmobile/
+-find -type f | grep Fennec | xargs prename s/Fennec/IceCatMobile/
+ find -type d | grep firefox | xargs prename -f s/firefox/icecat/
+ find -type f | grep firefox | xargs prename -f s/firefox/icecat/
+ find -type f | grep Firefox | xargs prename -f s/Firefox/IceCat/
+@@ -289,11 +286,8 @@
+ 
+ s/Mozilla Firefox/GNU IceCat/g;
+ s/firefox/icecat/g;
+-s/fennec/icecatmobile/g;
+ s/Firefox/IceCat/g;
+-s/Fennec/IceCatMobile/g;
+ s/FIREFOX/ICECAT/g;
+-s/FENNEC/ICECATMOBILE/g;
+ s/ Mozilla / GNU /g;
+ 
+ s|PACKAGES/icecat|PACKAGES/firefox|g;
+@@ -378,7 +372,6 @@
+ MOZ_DATA_REPORTING=0
+ MOZ_SERVICES_SYNC=0
+ MOZ_DEVICES=0
+-MOZ_ANDROID_GOOGLE_PLAY_SERVICES=0
+ MOZ_ADDON_SIGNING=0
+ EOF
+ 
+@@ -449,87 +442,6 @@
  cp $ff32 image/test/unit/image2jpg32x32-win.png
  
  ###############################################################################
@@ -88,7 +118,7 @@
  # Extensions
  ###############################################################################
  
-@@ -594,6 +513,3 @@
+@@ -594,6 +506,3 @@
  # Fix CVE-2012-3386
  /bin/sed 's/chmod a+w/chmod u+w/' -i ./js/src/ctypes/libffi/Makefile.in ./toolkit/crashreporter/google-breakpad/Makefile.in ./toolkit/crashreporter/google-breakpad/src/third_party/glog/Makefile.in || true
  
