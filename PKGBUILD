@@ -96,7 +96,6 @@ source=("git+${_repo_url}?signed#tag=v${_srcver}"
         linux.preset   # standard config files for mkinitcpio ramdisk
         01-Undead-PDS-0.99o-rebase-by-TkG.patch
         02-Glitched-PDS-by-TkG.patch
-        01-Glitched-PDS-by-TkG.patch
         02-Undead-PDS-0.99o-rebase-by-TkG.patch
 )
 validpgpkeys=(
@@ -111,7 +110,6 @@ sha512sums=('SKIP'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'cdfa59b9f369a5795c93ced526e7f480851ef439f3379e6c1a32b9cf29232cd4671fe4b0ddb50c5d996e23db71582844e233fee96bb551827eaf70b0be1d18dc'
-            '3ff796cbc213ae5f43a55f1ba92406bba04703db3459040beacacd9baceb3138021e908f440bd101cc76cb725e418ebdc8ab776327801690da30a1477bc84753'
             '3ff796cbc213ae5f43a55f1ba92406bba04703db3459040beacacd9baceb3138021e908f440bd101cc76cb725e418ebdc8ab776327801690da30a1477bc84753'
             'cdfa59b9f369a5795c93ced526e7f480851ef439f3379e6c1a32b9cf29232cd4671fe4b0ddb50c5d996e23db71582844e233fee96bb551827eaf70b0be1d18dc')
 
