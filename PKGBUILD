@@ -3,7 +3,7 @@
 # Maintainer: rmorgans <rick.morgans@gmail.com>
 pkgname=direnv
 pkgver=2.20.1
-pkgrel=2
+pkgrel=3
 pkgdesc='a shell extension that manages your environment'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://direnv.net'
