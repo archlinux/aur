@@ -14,7 +14,7 @@ _revert=
 
 pkgname=mutter-781835-workaround
 pkgver=3.32.1+9+g0a3cddeec
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -81,10 +81,7 @@ prepare() {
 
   # Add experimental key for RT scheduling
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/460
-  h_first=$(git log --oneline --all | grep 'core: Drop all capabilities before running the main loop' | tail -n 1 | awk '{print $1}') # Sorry guys
-  h_last=$(git log --oneline --all | grep 'backends/native: Add rt-scheduler experimental key to set RT scheduling' | tail -n 1 | awk '{print $1}') # Sorry guys
-  echo "Found $h_first^$h_last for MR460"
-  git cherry-pick -n $h_first^..$h_last -Xtheirs
+ git cherry-pick -n dae2c1d4
 
   # cogl: Enable EGL_IMG_context_priority
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/454
