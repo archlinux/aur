@@ -1,8 +1,8 @@
 # Maintainer: Tinu Weber <http://ayekat.ch>
 
 pkgname=remakepkg
-pkgver=0.7.7
-pkgrel=2
+pkgver=0.7.8
+pkgrel=1
 arch=(any)
 
 pkgdesc='Apply changes to pacman packages'
@@ -28,6 +28,7 @@ _tools='diffrepo getpkg pkgmirror remakepkg repkg'
 
 build() {
   cd pacman-hacks
+  make clean
   make PREFIX=/usr SCRIPTS="$_tools" MANPAGES="$_tools"
 }
 
@@ -35,7 +36,12 @@ package() {
   depends+=(bash curl expac grep gzip fakeroot libarchive pacman sh vi)
 
   cd pacman-hacks
-  make DESTDIR="$pkgdir" SCRIPTS="$_tools" MANPAGES="$_tools" install
+  make \
+    PREFIX=/usr \
+    DESTDIR="$pkgdir" \
+    SCRIPTS="$_tools" \
+    MANPAGES="$_tools" \
+    install
   install -Dm 0644 README "$pkgdir"/usr/share/doc/remakepkg/README
   install -Dm 0644 CHANGELOG "$pkgdir"/usr/share/doc/remakepkg/CHANGELOG
   install -Dm 0644 "$srcdir"/diffrepo.hook.example \

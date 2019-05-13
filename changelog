@@ -1,3 +1,7 @@
+v0.7.8-1 (2019-05-13)
+* Makefile: Fix target dependencies to allow multithreaded building
+* man pages: Clarify/improve some sections
+
 v0.7.7-2 (2019-05-12)
 * Add conflict with makemetapkg
 
