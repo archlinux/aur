@@ -15,6 +15,7 @@ makedepends=(npm python2 git jq)
 optdepends=('libnotify: for notifications'
             'speech-dispatcher: for text-to-speech')
 conflicts=("${_pkgname}"
+  "${_pkgname}-git"
   "${_pkgname}-bin"
 )
 options=('!strip')
