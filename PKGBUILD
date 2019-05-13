@@ -94,6 +94,8 @@ source=("git+${_repo_url}?signed#tag=v${_srcver}"
         60-linux.hook  # pacman hook for depmod
         90-linux.hook  # pacman hook for initramfs regeneration
         linux.preset   # standard config files for mkinitcpio ramdisk
+        01-Undead-PDS-0.99o-rebase-by-TkG.patch
+        02-Glitched-PDS-by-TkG.patch
         01-Glitched-PDS-by-TkG.patch
         02-Undead-PDS-0.99o-rebase-by-TkG.patch
 )
@@ -108,6 +110,8 @@ sha512sums=('SKIP'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            'cdfa59b9f369a5795c93ced526e7f480851ef439f3379e6c1a32b9cf29232cd4671fe4b0ddb50c5d996e23db71582844e233fee96bb551827eaf70b0be1d18dc'
+            '3ff796cbc213ae5f43a55f1ba92406bba04703db3459040beacacd9baceb3138021e908f440bd101cc76cb725e418ebdc8ab776327801690da30a1477bc84753'
             '3ff796cbc213ae5f43a55f1ba92406bba04703db3459040beacacd9baceb3138021e908f440bd101cc76cb725e418ebdc8ab776327801690da30a1477bc84753'
             'cdfa59b9f369a5795c93ced526e7f480851ef439f3379e6c1a32b9cf29232cd4671fe4b0ddb50c5d996e23db71582844e233fee96bb551827eaf70b0be1d18dc')
 
@@ -119,8 +123,8 @@ prepare() {
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching Undead PDS 0.99o 5.1 rebase by TkG"
-    patch -Np1 -i "$srcdir/01-Glitched-PDS-by-TkG.patch"
-    patch -Np1 -i "$srcdir/02-Undead-PDS-0.99o-rebase-by-TkG.patch"
+    patch -Np1 -i "$srcdir/01-Undead-PDS-0.99o-rebase-by-TkG.patch"
+    patch -Np1 -i "$srcdir/02-Glitched-PDS-by-TkG.patch"
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching to enabled additional gcc CPU optimizatons..."
