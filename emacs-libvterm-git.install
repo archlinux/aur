@@ -1,0 +1,7 @@
+post_install() {
+  cat << EOF
+==> Add this to your emacs init file to enable loading:
+
+(require 'vterm)
+EOF
+}
