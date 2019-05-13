@@ -1,4 +1,4 @@
-pkgbase = etcher
+pkgbase = balena-etcher
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily
 	pkgver = 1.5.35
 	pkgrel = 1
@@ -18,15 +18,17 @@ pkgbase = etcher
 	depends = alsa-lib
 	optdepends = libnotify: for notifications
 	optdepends = speech-dispatcher: for text-to-speech
+	conflicts = etcher
+	conflicts = etcher-bin
 	options = !strip
 	source = etcher::git+https://github.com/balena-io/etcher.git#tag=v1.5.35
 	source = git+https://github.com/balena-io/scripts.git
-	source = etcher-electron
-	source = etcher-electron.desktop
+	source = balena-etcher-electron
+	source = balena-etcher-electron.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 4499f316e4de865696312b31545f8df62850aad4492bcc9736cccb6d8eeb96ec
 	sha256sums = 89291532fb6e6c5555b43d61c9ba3df103bca0eace040483884b86fd30dca3e4
 
-pkgname = etcher
+pkgname = balena-etcher
 
