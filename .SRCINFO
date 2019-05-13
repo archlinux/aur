@@ -1,15 +1,14 @@
 pkgbase = python-pyowm
-	pkgdesc = A Python wrapper around the OpenWeatherMap API
-	pkgver = 2.9.0
-	pkgrel = 2
-	url = https://github.com/csparpa/pyowm
+	pkgdesc = A Python wrapper around OpenWeatherMap web APIs
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = http://github.com/csparpa/pyowm
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-requests
-	depends = python-geojson
-	source = https://github.com/csparpa/pyowm/archive/2.9.0.tar.gz
-	md5sums = SKIP
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pyowm/pyowm-2.10.0.tar.gz
+	sha256sums = 8fd41a18536f4d6c432bc6d9ea69994efb1ea9b43688cf19523659b6f4d86cf7
 
 pkgname = python-pyowm
 	depends = python
