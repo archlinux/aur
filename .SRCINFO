@@ -1,6 +1,6 @@
 pkgbase = optimus-manager-git
 	pkgdesc = Management utility to handle GPU switching for Optimus laptops (Git version)
-	pkgver = 0.8.r109.g8ccd6ca
+	pkgver = 1.0.r1.g146d661
 	pkgrel = 1
 	url = https://github.com/Askannz/optimus-manager
 	arch = any
