@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=18.3rc1pre15
 _major=18.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -132,6 +132,11 @@ sha256sums=('07b8cffc396473523a51354dc95dfffb54a6a456b82cda7ad67dc2c052d99f64'
             '04832b1066cc5066aa059fa21a5b430e3d5bfe3976d99c87b4b547ff4a947ed5')
 
 prepare() {
+  # force python 'binary' as python2
+  [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
+  mkdir "$srcdir/path"
+  ln -s /usr/bin/python2 "$srcdir/path/python"
+
   [[ -d kodi-build-x11 ]] && rm -rf kodi-build-x11
   mkdir kodi-build-x11
   [[ -d kodi-build-wayland ]] && rm -rf kodi-build-wayland
@@ -169,6 +174,8 @@ prepare() {
 }
 
 build() {
+  export PATH="$srcdir/path:$PATH"
+
   ### Optionally uncomment and setup to your liking
   # export CFLAGS+=" -march=native"
   # export CXXFLAGS="${CFLAGS}"
@@ -220,7 +227,6 @@ build() {
     ../"xbmc-$_tag"
   make
   make preinstall
-
 
   msg2 "building kodi-gbm"
   cd "$srcdir/kodi-build-gbm"
@@ -360,6 +366,8 @@ package_kodi-devel-eventclients() {
     'kodi-eventclients-kodi-send'
   )
 
+  export PATH="$srcdir/path:$PATH"
+
   cd kodi-build-x11
   # install eventclients
   for _cmp in ${_components[@]}; do
@@ -419,6 +427,8 @@ package_kodi-devel-dev() {
     'kodi-visualization-dev'
   )
 
+  export PATH="$srcdir/path:$PATH"
+
   cd kodi-build-x11
   # install eventclients
   for _cmp in ${_components[@]}; do
@@ -429,5 +439,6 @@ package_kodi-devel-dev() {
 
   # python2 is being used
   cd "$pkgdir"
-  grep -lR '#!.*python' * | while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
+  grep -lR '#!.*python' * | \
+    while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
 }
