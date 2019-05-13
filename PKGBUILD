@@ -1,16 +1,16 @@
-pkgbase='python-authlib'
-pkgname=('python-authlib')
-_module='Authlib'
-pkgver='0.11'
+pkgbase='python-cloudant'
+pkgname=('python-cloudant')
+_module='cloudant'
+pkgver='2.12.0'
 pkgrel=1
-pkgdesc="The ultimate Python library in building OAuth and OpenID Connect servers."
-url="https://authlib.org/"
+pkgdesc="Cloudant / CouchDB Client Library"
+url="https://github.com/cloudant/python-cloudant"
 depends=('python')
 makedepends=('python-setuptools')
-license=('BSD')
+license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('9741db6de2950a0a5cefbdb72ec7ab12f7e9fd530ff47219f1530e79183cbaaf')
+sha256sums=('641b7fa47d0055fafcb712ba4435ae4bd8b60e88e52ac3328411817524f50c24')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"

@@ -1,15 +1,15 @@
-pkgbase = python-authlib
-	pkgdesc = The ultimate Python library in building OAuth and OpenID Connect servers.
-	pkgver = 0.11
+pkgbase = python-cloudant
+	pkgdesc = Cloudant / CouchDB Client Library
+	pkgver = 2.12.0
 	pkgrel = 1
-	url = https://authlib.org/
+	url = https://github.com/cloudant/python-cloudant
 	arch = any
-	license = BSD
+	license = Apache
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/A/Authlib/Authlib-0.11.tar.gz
-	sha256sums = 9741db6de2950a0a5cefbdb72ec7ab12f7e9fd530ff47219f1530e79183cbaaf
+	source = https://files.pythonhosted.org/packages/source/c/cloudant/cloudant-2.12.0.tar.gz
+	sha256sums = 641b7fa47d0055fafcb712ba4435ae4bd8b60e88e52ac3328411817524f50c24
 
-pkgname = python-authlib
+pkgname = python-cloudant
 	depends = python
 
