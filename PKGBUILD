@@ -1,49 +1,51 @@
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Former maintainer: Anton Kudryavtsev <boblobl4@gmail.com>
+
 pkgname=mbedtls-git
-pkgver=2.3.0.r156.g184eea6
+pkgver=2.17.0.r258.g75d9a333c
 pkgrel=1
-pkgdesc="Portable cryptographic and SSL/TLS library, aka polarssl - git checkout"
+pkgdesc="An open source, portable, easy to use, readable and flexible SSL library"
 arch=('i686' 'x86_64')
-url="https://tls.mbed.org"
-license=('Apache')
-provides=('polarssl' 'mbedtls')
-replaces=('polarssl')
-conflicts=('polarssl' 'mbedtls')
-source=("git://github.com/ARMmbed/mbedtls")
-sha256sums=('SKIP')
+url="https://tls.mbed.org/"
+license=('apache')
 depends=('glibc')
+makedepends=('git')
+checkdepends=('python2')
+provides=('mbedtls' 'polarssl')
+conflicts=('mbedtls' 'polarssl')
 options=('staticlibs')
+source=("git+https://github.com/ARMmbed/mbedtls.git")
+sha256sums=('SKIP')
 
-pkgver() {
-	cd mbedtls/
-
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
-	else
-		echo "0.r$(git rev-list --count development).g$(git log -1 --format="%h")"
-	fi
-}
 
 prepare() {
-  cd mbedtls/
-  # enable flags for non-embedded systems
-  sed -i 's|//\(#define MBEDTLS_THREADING_C\)|\1|' include/mbedtls/config.h
-  sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' include/mbedtls/config.h
+  cd "mbedtls"
 
-  # FS#49914
-  sed -i 's|<time.h>|"platform.h"|' include/mbedtls/ssl.h
+  # enable flags for non-embedded systems
+  sed -i 's|//\(#define MBEDTLS_THREADING_C\)|\1|' "include/mbedtls/config.h"
+  sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' "include/mbedtls/config.h"
+}
+
+pkgver() {
+  cd "mbedtls"
+
+  git describe --long --tags | sed 's/^mbedtls-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd mbedtls/
-  LDFLAGS+=" -I../include " make SHARED=1 no_test
+  cd "mbedtls"
+
+  make SHARED=1 no_test
 }
 
 check() {
-  cd mbedtls/
+  cd "mbedtls"
+
   make SHARED=1 check
 }
 
 package() {
-  cd mbedtls/
+  cd "mbedtls"
+
   make DESTDIR="$pkgdir/usr" install
 }
