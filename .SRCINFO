@@ -1,0 +1,18 @@
+pkgbase = lz4-static-musl
+	pkgdesc = Extremely fast compression algorithm
+	pkgver = 1.9.1
+	pkgrel = 1
+	epoch = 1
+	url = http://www.lz4.org/
+	arch = x86_64
+	license = GPL2
+	checkdepends = diffutils
+	makedepends = git
+	makedepends = musl
+	provides = lz4=1.9.1
+	conflicts = lz4
+	source = git+https://github.com/lz4/lz4.git#tag=v1.9.1
+	md5sums = SKIP
+
+pkgname = lz4-static-musl
+
