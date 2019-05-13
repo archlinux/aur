@@ -1,11 +1,12 @@
 pkgbase = zapier-platform-cli
 	pkgdesc = This CLI is your gateway to creating custom applications on the Zapier platform
 	pkgver = 8.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zapier.github.io/zapier-platform-cli/cli
 	arch = x86_64
-	license = Unlicensed
+	license = UNLICENSED
 	makedepends = npm
+	makedepends = jq
 	depends = nodejs
 	noextract = zapier-platform-cli-8.1.0.tgz
 	options = !strip
