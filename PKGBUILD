@@ -1,7 +1,7 @@
 # Maintainer: Raphael Scholer <rascholer@gmail.com>
 _pkgname='elementary-xfce'
 pkgname="${_pkgname}-icons-git"
-pkgver=0.13.1.r3.g4a4d7c9f
+pkgver=0.13.1.r25.g33dc91cb
 pkgrel=1
 pkgdesc='Elementary icon-theme with improved Xfce support'
 arch=('any')
@@ -23,7 +23,7 @@ build() {
   cd "${_pkgname}"
 
   ./configure --prefix="/usr/"
-  make -j1
+  make
 }
 
 package() {
