@@ -1,12 +1,12 @@
 pkgbase = macbook-lighter
 	pkgdesc = Macbook screen/keyboard backlight CLI and auto-adjust on ambient light
-	pkgver = v0.0.2.1.g4441c81
+	pkgver = v0.0.2.4.g95c5044
 	pkgrel = 1
 	url = https://github.com/harttle/macbook-lighter
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = perl
+	depends = bc
 	provides = macbook-lighter
 	provides = macbook-lighter-kbd
 	provides = macbook-lighter-screen
