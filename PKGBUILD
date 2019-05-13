@@ -5,6 +5,7 @@ pkgver=0.7.1
 pkgrel=1
 pkgdesc="A simple clipboard manager for Wayland"
 url="https://github.com/yory8/clipman"
+depends=("wl-clipboard-git")
 makedepends=("go-pie")
 provides=("clipman")
 license=("GPL3")
