@@ -1,0 +1,9 @@
+--- tcllauncher-1.8/Makefile.in.orig	2019-05-13 15:45:34.963346244 -0600
++++ tcllauncher-1.8/Makefile.in	2019-05-13 15:45:46.263327929 -0600
+@@ -472,4 +472,5 @@
+ 
+ tcllauncher:	$(TCLSH_OBJS)
+ 	$(LINK_CC) -o $@ $(TCLSH_OBJS) \
+-	    $(TCL_LIB_SPEC) $(TCL_STUB_LIB_SPEC) $(THREADS_LIBS) $(CC_SEARCH_FLAGS) $(LIBS)
++	    $(TCL_LIB_SPEC) $(TCL_STUB_LIB_SPEC) $(THREADS_LIBS) $(CC_SEARCH_FLAGS) $(LIBS) \
++			$(LDFLAGS_DEFAULT)
