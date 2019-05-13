@@ -5,9 +5,9 @@ _gituser="magnars"
 _gitrepo="dash.el"
 
 pkgname=emacs-dash-git
-pkgver=2.15.0.r12.g1549860
+pkgver=2.16.0.r2.g77f3bf4
 pkgrel=1
-pkgdesc='A modern list API for Emacs. No cl required'
+pkgdesc='A modern list API for Emacs, checked out from git master'
 arch=('any')
 url="https://github.com/${_gituser}/${_gitrepo}"
 license=('GPL')
