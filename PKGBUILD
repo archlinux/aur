@@ -33,6 +33,8 @@ build() {
 
     rm -f cmake/FindOlm.cmake
 
+    # build with more cores than the default
+    export CMAKE_BUILD_PARALLEL_LEVEL=$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
     cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF -DUSE_BUNDLED_CMARK=OFF -DUSE_BUNDLED_JSON=ON -DMTX_STATIC=ON
     cmake --build .deps
 
