@@ -4,7 +4,7 @@ pkgdesc="ROS - The pluginlib package provides tools for writing and dynamically 
 url='http://www.ros.org/wiki/pluginlib'
 
 pkgname='ros-melodic-pluginlib'
-pkgver='2.3.0'
+pkgver='1.12.1'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -37,9 +37,9 @@ depends=(
 	tinyxml2
 )
 
-_dir="pluginlib-${pkgver}"
+_dir="pluginlib-${pkgver}/pluginlib"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/pluginlib/archive/${pkgver}.tar.gz")
-sha256sums=('8fede085c83d4b7f1fcde454f364e04cfc5680ab41ac7029f9bbaf53ff6e5a07')
+sha256sums=('28d63fe6de613e52876bdb9c2263f5ca982fe7dd6d40ed7976178801b9aaf9fb')
 
 build() {
 	# Use ROS environment variables.
