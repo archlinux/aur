@@ -84,8 +84,9 @@ _backports=(
   # network: logs link state change
   '0beb9542e90ab1c5d1507a1046a326fbcf73861c'
 
-  # fix coredumps
+  # network: drop invalid assertion
   '51aba17b88617515e037e8985d3a4ea871ac47fe'
+  # network: fix assertion when link get carrier
   'b9ea3d2e47b3741f3f46ba9c5e19640136933b71'
 )
 
