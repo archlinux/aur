@@ -3,7 +3,7 @@ post_install() {
 }
 
 post_upgrade() {
-	ln -sf '/opt/criptext-bin/Criptext-latest.AppImage' '/usr/local/bin/criptext'
+	post_install $1
 }
 
 post_remove() {
