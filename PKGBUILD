@@ -3,7 +3,7 @@
 pkgname=click
 pkgdir="pkg-build"
 pkgdesc="Click CLI for Kubernetes"
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 arch=('i686' 'x86_64' 'arm64')
 url="https://github.com/databricks/click"
@@ -11,7 +11,7 @@ license=('apache2')
 makedepends=('rust')
 
 source=("https://github.com/databricks/click/archive/v${pkgver}.tar.gz")
-sha256sums=('eed648409bf78a05658a9d097e5099ca17bf19df70122e2067859ae94c5575d5')
+sha256sums=('69df76f57af8b0c244ef4c975a242d3fe84f8e4f4fd44e62b2ccdf24ea82b23d')
 
 build() {
   cd "$srcdir/click-$pkgver"
