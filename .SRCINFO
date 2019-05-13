@@ -1,7 +1,7 @@
 pkgbase = balena-etcher
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily
 	pkgver = 1.5.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://etcher.io
 	arch = x86_64
 	license = Apache
