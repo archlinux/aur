@@ -166,7 +166,6 @@ build() {
               --enable-smbclient \
               --enable-sftp \
               --enable-nfs \
-              --enable-realrtsp \
               --enable-dvbpsi \
               --enable-gme \
               --enable-ogg \
@@ -210,7 +209,6 @@ build() {
               --enable-fontconfig \
               --enable-svg \
               --enable-svgdec \
-              --enable-aa \
               --enable-caca \
               --enable-pulse \
               --enable-alsa \
@@ -245,11 +243,13 @@ build() {
 	            --disable-daala \
 	            --enable-fdkaac \
 	            --disable-decklink \
-              --disable-skins2
+              --disable-skins2 \
+              --disable-medialibrary
   # note: removing --enable-daala for now because it is currently broken
   #       change --enable-fdkaac to --disable-fdkaac if you want to redistribute the binary
   #       adding --disable-decklink because it's a big mess that i don't want to touch even though it'll probably work now according to git
   #       adding --disable-skins2 because skins are currently broken thanks to changes in upstream concerning how playlist and player works.
+  #       adding --disable-medialibrary medialibrary is broken 
   make V=1
 }
 
