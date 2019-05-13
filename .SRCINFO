@@ -1,3 +1,4 @@
+# May 12 
 pkgbase = vlc-nightly
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot
 	pkgver = 4.0.0v20190512
