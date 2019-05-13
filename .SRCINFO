@@ -1,0 +1,15 @@
+pkgbase = trashf
+	pkgdesc = CLI tool to safely remove any file and directory by putting them in the trash
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/yoarch/trashf
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python>=3
+	source = https://files.pythonhosted.org/packages/source/t/trashf/trashf-1.0.1.tar.gz
+	sha256sums = d6026d56610963605e4c504fad254774fbbe0a3b3da68af421ba10326d4e9312
+
+pkgname = trashf
+
