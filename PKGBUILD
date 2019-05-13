@@ -2,7 +2,7 @@
 
 pkgname=adom-noteye
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A roguelike game with a quest-centric, plot driven structure (+ GUI) - Please consider buying the game on Steam"
 arch=("x86_64")
 url="http://www.adom.de/"
@@ -14,14 +14,14 @@ _repo_url="https://repo.sshadm.in/archlinux/eldios"
 
 license=('custom:adom')
 source_x86_64=(
-    "${_repo_url}/${arch}/adom_noteye_64_${pkgver}.tar.gz"
+    "${_repo_url}/${arch}/adom_noteye_64_${pkgver}.tar.xz"
     "${_repo_url}/common/adom.sh"
     "${_repo_url}/common/LICENSE"
     )
 
 # PACKAGES
 sha256sums_x86_64=(
-    '5cec393dd95db14bbcc0e5df4b33009defff7c3a4eb75571d7906a14ce598df9'
+    '627ac9f45ded291bcf8cf3b4e3dd5be44eebd0f71b4c4d8b4c1229bd78f55679'
     'ffd19a5088bc63dffe386b4052f29b2194ab50c5b01ca1f574cfc51225a8afa8'
     'd0b08609c52ab96fb1083b2b0eea3d022549c59c87b793a140f5dfa56099544b'
     )
