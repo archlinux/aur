@@ -1,8 +1,8 @@
 pkgbase = gtimelog-collabora-git
 	pkgdesc = A time tracking application: Collabora repository.
 	pkgver = r338.7890123
-	pkgrel = 1
-	url = https://git.collabora.co.uk/cgit/gtimelog.git
+	pkgrel = 2
+	url = https://gitlab.collabora.com/collabora/gtimelog.git
 	arch = any
 	license = GPL2
 	makedepends = git

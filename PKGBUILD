@@ -3,11 +3,11 @@
 _pkgbase='gtimelog'
 pkgname=gtimelog-collabora-git
 pkgver=r338.7890123
-pkgrel=1
+pkgrel=2
 pkgdesc="A time tracking application: Collabora repository."
 provides=('gtimelog')
 arch=('any')
-url="https://git.collabora.co.uk/cgit/gtimelog.git"
+url="https://gitlab.collabora.com/collabora/gtimelog.git"
 license=('GPL2')
 depends=(
   'libsoup'
