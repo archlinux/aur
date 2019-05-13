@@ -1,16 +1,16 @@
 # Maintainer: Sigvald Marholm <marholm@marebakken.com>
 
 pkgname=slepc4py
-pkgver=3.9.0
+pkgver=3.11.0
 pkgrel=1
 _config=linux-c-opt
 pkgdesc="Python bindings for SLEPc"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/slepc/slepc4py/src/master/"
-license=(custom)
-depends=(slepc petsc petsc4py openmpi python-numpy)
+license=('custom')
+depends=('slepc' 'petsc' 'petsc4py' 'openmpi' 'python-numpy')
 source=(https://bitbucket.org/slepc/slepc4py/downloads/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('67ed4ffed36c076448d6a0148edfad65d6610b9838df97c79f6fc5d7ec06b90b')	
+sha256sums=('9812d8b398fd6f30e872993421e420c64387c74fc3dab410208f13d7270257cf')
 
 _slepc_dir=/opt/slepc/${_config}
 _petsc_dir=/opt/petsc/${_config}
@@ -22,7 +22,7 @@ build() {
 	export PETSC_DIR=${_petsc_dir}
 	export PETSC_ARCH=${_petsc_arch}
 
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd "${srcdir}"/${pkgname}-${pkgver}
 
 	python setup.py build
 
@@ -34,7 +34,7 @@ package() {
 	export PETSC_DIR=${_petsc_dir}
 	export PETSC_ARCH=${_petsc_arch}
 
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd "${srcdir}"/${pkgname}-${pkgver}
 
 	python setup.py install --root="${pkgdir}"
 
