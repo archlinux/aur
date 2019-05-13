@@ -1,6 +1,6 @@
 pkgbase = d9vk-bin
 	pkgdesc = A d3d9 to vk layer based off DXVK's codebase. Binary version
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 1
 	url = https://github.com/Joshua-Ashton/d9vk
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = d9vk-bin
 	depends = bash
 	provides = d9vk
 	conflicts = d9vk
-	source = https://github.com/Joshua-Ashton/d9vk/releases/download/0.10/d9vk-0.10.tar.gz
+	source = https://github.com/Joshua-Ashton/d9vk/releases/download/0.11/d9vk-release-0.11.2a0c153b0c9e0b754b9cfc41ea16c5bdc758fab5.zip
 	source = setup_d9vk
-	sha256sums = 9e50f2609aafaa7dd24c327f6af83c821c2259ca4967656029782faa71398ae2
+	sha256sums = 34adb56a75a20c0520db4365d5d29dfa4755439cf0c50dda1a4e56254e8278ef
 	sha256sums = 7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a
 
 pkgname = d9vk-bin
