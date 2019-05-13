@@ -1,7 +1,7 @@
 # Maintainer: Tim Savannah <kata198@gmail.com>
 
 pkgname='python-func_timeout'
-pkgver=4.3.0
+pkgver=4.3.2
 pkgrel=2
 pkgdesc="Python module which allows you to specify timeouts when calling any existing function, and support for stoppable threads"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools' 'python')
 depends=('python-setuptools' 'python')
 
 source=("https://github.com/kata198/func_timeout/archive/${pkgver}.tar.gz")
-sha512sums=("9da18dd49b7f987e1c8ff6bec652a1cf5e74234d932e63490eb3d943d5d2d6a9e693970f7d0e7bf2b9a75b99843239c42df8b7292136801403b4c51f7965ad23")
+sha512sums=("c93b9acfe8ab43e24cb61b0fcaf29961674a1e794d7307dee9e9a990dd0c9730a4db0e71737e87723a49cf7964772bcd2aa7b0337183465796927a317d7679b8")
 
 build() {
   cd "$srcdir"/func_timeout-$pkgver
