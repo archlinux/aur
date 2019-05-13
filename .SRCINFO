@@ -1,0 +1,20 @@
+pkgbase = brother-dcpj983n
+	pkgdesc = LPR and CUPS driver for the Brother DCP-J983N
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-dcpj983n.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	depends = a2ps
+	depends = cups
+	source = fix_lp.patch
+	source = https://download.brother.com/welcome/dlf103266/dcpj983nlpr-1.0.0-0.i386.rpm
+	source = https://download.brother.com/welcome/dlf103267/dcpj983ncupswrapper-1.0.0-0.i386.rpm
+	md5sums = d48eb3c8d98e4ab98c9aeeaba65c4631
+	md5sums = dc13f800b8443db1691f774c3a8f8c1b
+	md5sums = 149be0d1ee1f811ca03b0b083f6857aa
+
+pkgname = brother-dcpj983n
+
