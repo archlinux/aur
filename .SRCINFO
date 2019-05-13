@@ -1,0 +1,19 @@
+pkgbase = haskell-tasty-hspec
+	pkgdesc = Hspec provider for the Tasty test framework.
+	pkgver = 1.1.5.1
+	pkgrel = 1
+	url = https://github.com/mitchellwrosen/tasty-hspec
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-tasty
+	depends = haskell-tasty-quickcheck
+	depends = haskell-tasty-smallcheck
+	depends = haskell-hspec
+	depends = haskell-hspec-core
+	source = https://hackage.haskell.org/packages/archive/tasty-hspec/1.1.5.1/tasty-hspec-1.1.5.1.tar.gz
+	sha256sums = fe889ec0f7b3991c46a07d9ff9cf09608a73a18f434a7480d2a09c79e56f3345
+
+pkgname = haskell-tasty-hspec
+
