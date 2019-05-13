@@ -1,0 +1,19 @@
+pkgbase = fluxlang
+	pkgdesc = InfluxData's Flux Language
+	pkgver = 0.28.3
+	pkgrel = 1
+	url = https://github.com/influxdata/flux
+	arch = i686
+	arch = x86_64
+	arch = arm64
+	license = mit
+	makedepends = go
+	makedepends = dep
+	makedepends = make
+	makedepends = ragel
+	makedepends = ruby
+	source = https://github.com/influxdata/flux/archive/v0.28.3.tar.gz
+	sha256sums = b0332f395303578acda2fb8fb675c959c982588cd57861ceb8cd8881744293fd
+
+pkgname = fluxlang
+
