@@ -1,48 +1,43 @@
-# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Former maintainer: Dan Beste <dan.ray.beste@gmail.com>
 # Contributor: Lex Black <autumn-wind at web dot de>
 
-pkgname='libscrypt-git'
-_gitname='libscrypt'
-pkgver=1.21.r5.g164525d
+pkgname=libscrypt-git
+pkgver=1.21.r13.ga402f41
 pkgrel=1
-pkgdesc='Shared library that implements scrypt() functionality - a replacement for bcrypt()'
+pkgdesc="Linux scrypt shared library"
 arch=('i686' 'x86_64')
-url='https://github.com/technion/libscrypt'
+url="https://github.com/technion/libscrypt"
 license=('BSD')
+depends=('glibc')
 makedepends=('git')
-provides=("${_gitname}")
-conflicts=("${_gitname}")
-source=('git+https://github.com/technion/libscrypt.git')
+provides=('libscrypt')
+conflicts=('libscrypt')
+source=("git+https://github.com/technion/libscrypt.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${_gitname}"
 
-  git describe --long                  \
-    | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
-    | sed 's/v//'
+pkgver() {
+  cd "libscrypt"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${_gitname}"
+  cd "libscrypt"
 
-  CFLAGS="${CFLAGS} -fPIC"
   make
 }
 
 check() {
-  cd "${_gitname}"
+  cd "libscrypt"
 
   make check
 }
 
 package() {
-  cd "${_gitname}"
+  cd "libscrypt"
 
-  make PREFIX='/usr' DESTDIR="${pkgdir}" install
-
-  install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/libscrypt/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
