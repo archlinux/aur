@@ -1,7 +1,7 @@
 pkgbase = warsaw-bin
 	pkgdesc = Banking security tool developed by GAS Tecnologia
-	pkgver = 1.12.13.8
-	pkgrel = 5
+	pkgver = 1.13.1.2
+	pkgrel = 1
 	url = https://www.dieboldnixdorf.com.br/warsaw
 	install = warsaw-bin.install
 	arch = i686
@@ -28,9 +28,9 @@ pkgbase = warsaw-bin
 	backup = etc/init/warsaw.conf
 	backup = etc/xdg/autostart/warsaw.desktop
 	source_i686 = https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_32.deb
-	sha256sums_i686 = f5be8314329edc47de71a377296b76d275255eb56f98a2e34eb32002ba0074cf
+	sha256sums_i686 = a6f6ec95ccd023aef66f8a80c8695bfe8713a68435b3e277b9e5a6b3b0c818af
 	source_x86_64 = https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_64.deb
-	sha256sums_x86_64 = 89467d4be8a6cf7b3c0301022519eccd1d5c2ab0a161be931cad9b5863283ac6
+	sha256sums_x86_64 = 6b99554976c12f6290c4eef97895e36bc980011703ddfbade5ff8cf825d25e58
 
 pkgname = warsaw-bin
 
