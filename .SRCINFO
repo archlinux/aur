@@ -1,7 +1,7 @@
 pkgbase = uuid
 	pkgdesc = OSSP Universally Unique Identifier
 	pkgver = 1.6.2
-	pkgrel = 16
+	pkgrel = 17
 	url = http://www.ossp.org/pkg/lib/uuid
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = uuid
 	arch = aarch64
 	license = MIT
 	depends = sh
+	depends = git
 	options = !libtool
 	source = git+https://github.com/sean-/ossp-uuid.git
 	source = https://src.fedoraproject.org/rpms/uuid/raw/master/f/uuid-aarch64.patch
