@@ -106,7 +106,7 @@ prepare() {
     cd ${_reponame}
 
     msg2 "Adding patches from Linux upstream kernel repository..."
-    git remote add upstream_stable https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+    git remote add upstream_stable https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git || true
     git pull --no-edit upstream_stable v${_srcver_tag}
 
     msg2 "Adding patches from Arch Linux kernel repository..."
