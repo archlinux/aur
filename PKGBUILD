@@ -1,5 +1,5 @@
 pkgname=totp-git
-pkgver=r5.5e9f68e
+pkgver=r15.ba17832
 pkgrel=1
 pkgdesc="command line TOTP generator"
 arch=('i686' 'x86_64' 'armv7h')
@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
         install -D $srcdir/$pkgname/totp $pkgdir/usr/bin/totp
-        install -D $srcdir/$pkgname/zsh/site-functions/_totp $pkgdir/usr/share/zsh/site-functions/_totp
+        install -m 644 -D $srcdir/$pkgname/zsh/site-functions/_totp $pkgdir/usr/share/zsh/site-functions/_totp
 }

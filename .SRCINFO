@@ -1,6 +1,6 @@
 pkgbase = totp-git
 	pkgdesc = command line TOTP generator
-	pkgver = r5.5e9f68e
+	pkgver = r15.ba17832
 	pkgrel = 1
 	url = https://github.com/TestudoAquatilis/totp
 	arch = i686
