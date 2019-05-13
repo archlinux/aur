@@ -1,14 +1,15 @@
 # Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx[at]gmail[dot]com>
 
 pkgname=adom-noteye
-pkgver=3.0.6
-pkgrel=4
+pkgver=3.3.3
+pkgrel=1
 pkgdesc="A roguelike game with a quest-centric, plot driven structure (+ GUI) - Please consider buying the game on Steam"
 arch=("x86_64")
 url="http://www.adom.de/"
 conflicts=('adom' 'adom-restricted' 'adom-noteye')
 provides=('adom')
-depends=('ncurses' 'mesa' 'sdl_image' 'sdl_net' 'sdl_mixer' 'lua51' 'libbsd' 'libmad' 'fluidsynth' 'libpng12')
+depends=('ncurses' 'mesa' 'sdl_image' 'sdl_net' 'sdl_mixer' 'lua51' 'libbsd' 
+    'libmad' 'libpng12')
 _repo_url="https://repo.sshadm.in/archlinux/eldios"
 
 license=('custom:adom')
@@ -20,7 +21,7 @@ source_x86_64=(
 
 # PACKAGES
 sha256sums_x86_64=(
-    '5a81afa2409af2dde461dcce89f74c89b7807504b75bd5b3796c6187768fa050'
+    '5cec393dd95db14bbcc0e5df4b33009defff7c3a4eb75571d7906a14ce598df9'
     'ffd19a5088bc63dffe386b4052f29b2194ab50c5b01ca1f574cfc51225a8afa8'
     'd0b08609c52ab96fb1083b2b0eea3d022549c59c87b793a140f5dfa56099544b'
     )
