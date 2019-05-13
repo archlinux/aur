@@ -3,24 +3,21 @@
 
 pkgname=xvile
 _basename=vile
-pkgver=9.8_s
+pkgver=9.8_t
 _basever=${pkgver//_/}
 pkgrel=1
 pkgdesc="vi like emacs"
 arch=('i686' 'x86_64')
 url="http://invisible-island.net/vile/vile.html"
-_download="ftp://ftp.invisible-island.net/vile"
 depends=('perl' 'vile' 'xaw3d')
 license=('custom')
 options=(!libtool)
 source=( ftp://ftp.invisible-island.net/vile/current/vile-${_basever}.tgz )
-sha1sums=(
-	'9fb812db22adff95acfb6b1c900988805d34dd3f'
-)
+sha1sums=( 9e181852cdc3ff72756ace4873bcf3eddd071cf5 )
 
 prepare() {
   cd $srcdir/${_basename}-${_basever}
-  sed -i 's|FLEX_BETA|FLEX_NOBETA|g' filters/filters.h
+  #sed -i 's|FLEX_BETA|FLEX_NOBETA|g' filters/filters.h
 }
 
 build() {
