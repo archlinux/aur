@@ -7,7 +7,7 @@ _pkgname=jitsi
 # pkgvermajor needs manual increment
 _pkgvermajor=2.11
 # pkgver is determined automatically
-pkgver=2.11.20190402
+pkgver=2.11.20190513
 pkgrel=1
 pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
 arch=('i686' 'x86_64')
@@ -43,8 +43,9 @@ build() {
   # append the build revision to the jitsi version
   sed -i "s/BUILD_ID="\"".*"\""/BUILD_ID="\"$(date +%Y%m%d)\""/" src/net/java/sip/communicator/impl/version/NightlyBuildID.java
 
-  # Force to compile with Java 8, since Java 10 does return compile errors as of 09-08-2018
+  # Override the default Java version and force to compile with Java 8, since Java 10+ results in compile errors.
   export PATH=/usr/lib/jvm/java-8-openjdk/bin/:$PATH
+  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
   ant rebuild
 }
 
