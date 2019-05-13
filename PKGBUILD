@@ -12,7 +12,7 @@ arch=("x86_64" "i686")
 md5sums=("93cdc82aeca4a288b75bb2fa52aa8e41")
 source=("https://github.com/yory8/${pkgname}/archive/v${pkgver}.tar.gz")
 
-build(){
+build() {
   cd $pkgname-$pkgver
   go build .
 }
