@@ -1,5 +1,5 @@
 pkgname=libmodulemd
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="C Library for manipulating module metadata files"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ depends=('glib2' 'libyaml')
 makedepends=('gobject-introspection' 'gtk-doc' 'meson>=0.47' 'python-gobject')
 optdepends=('python-gobject: for python bindings')
 source=("$url/releases/download/$pkgname-$pkgver/${pkgname#lib}-$pkgver.tar.xz")
-md5sums=('061be67e72ad8d5d1dc2a624560609d4')
+md5sums=('bd9271295c7bee3995d80ededea169fa')
 
 prepare() {
 	mv "${pkgname#lib}-$pkgver" "$pkgname-$pkgver"
@@ -40,6 +40,8 @@ package() {
 
 	install -Dp -m644 COPYING   "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 	install -Dp -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+	chmod 644 "$pkgdir/"usr/share/gtk-doc/html/modulemd-[12].0/style.css
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
