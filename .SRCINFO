@@ -1,6 +1,6 @@
 pkgbase = jd-gui
 	pkgdesc = A standalone graphical utility that displays Java source codes of .class files
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = http://jd.benow.ca/
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = jd-gui
 	depends = java-runtime
 	provides = jd-gui
 	conflicts = jd-gui-bin
-	source = jd-gui-1.4.2.tar.gz::https://github.com/java-decompiler/jd-gui/archive/v1.4.2.tar.gz
+	source = jd-gui-1.4.3.tar.gz::https://github.com/java-decompiler/jd-gui/archive/v1.4.3.tar.gz
 	source = jd-gui
 	source = jd-gui.desktop
-	sha512sums = f3de3680efa2e269deb417f1ab13e0d38741fa73101dec09f03452b68ce064cbbf4be479591a93803f6eb5d204f36a9f3849d9c292b9d270a1cc3df382c0730e
+	sha512sums = d806228a493b5f3cea97d219121a687204c251370211744732e098b08f3b132d0389c485fcf2cf724fd5673befee89d45c9f31a68bc1b5c9ae8f4f18bf6dbcd2
 	sha512sums = d073054480e06c9f124605bdbc5cee775e067115592f46bbcea2650d363b81f453b8e1a5e818a685eff7ba166631ebc79d14dc72e2d1dfae102f4cdf05188933
 	sha512sums = 9ddb8521c1791f5d3251f012e30b7d6aaa48b509e02af628f3b8a90fb6ba176de3f79fbfbec316c86c1594ac142ca4d85bcffff7ea8f0fba6f926ea78cd1f81d
 
