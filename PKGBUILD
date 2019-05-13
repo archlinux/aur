@@ -1,6 +1,6 @@
 # Maintainer: nepda <aur@nepda.eu>
 pkgname="php-pdo-firebird"
-pkgver=7.3.3
+pkgver=7.3.4
 pkgrel=1
 pkgdesc="Firebird PHP PDO extension"
 arch=("i686" "x86_64")
@@ -9,7 +9,7 @@ license=("PHP")
 depends=("php" "libfbclient")
 source=("http://www.php.net/distributions/php-${pkgver}.tar.bz2"
         "pdo_firebird.ini")
-md5sums=("03e37fb5246e868a569cdd4c857ba654"
+md5sums=("efb58aea95a66738d871f83ec55fec6f"
          "4a23b02aaa079d4419dad09b41b1f3a2")
 
 build() {
