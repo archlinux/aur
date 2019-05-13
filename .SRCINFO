@@ -1,7 +1,7 @@
 pkgbase = mlat-client-git
-	pkgdesc = Mode S multilateration client. (by Mutability)
+	pkgdesc = Mode S multilateration client by Mutability
 	pkgver = 0.2.10.r0.g59e3d57
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mutability/mlat-client
 	changelog = mlat-client-git.changelog
 	arch = i686

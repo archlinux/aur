@@ -5,31 +5,31 @@
 
 pkgname=mlat-client-git
 pkgver=0.2.10.r0.g59e3d57
-pkgrel=2
-pkgdesc="Mode S multilateration client. (by Mutability)"
+pkgrel=3
+pkgdesc="Mode S multilateration client by Mutability"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mutability/mlat-client"
 license=('GPL3')
 depends=('python')
 makedepends=('git')
-source=("${pkgname%-git}::git+${url}.git")
-changelog="${pkgname}.changelog"
-provides=("${pkgname%-git}" 'fa-mlat-client')
-conflicts=("${pkgname%-git}" 'fa-mlat-client')
+provides=("${pkgname%-git}" "fa-${pkgname%-git}")
+conflicts=("${pkgname%-git}" "fa-${pkgname%-git}")
+changelog="$pkgname.changelog"
+source=("${pkgname%-git}::git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${pkgname%-git}"
   ./setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${pkgname%-git}"
   ./setup.py install --prefix="${pkgdir}/usr"
   install -Dm755 -t "${pkgdir}/usr/lib/piaware/helpers/" fa-mlat-client
   install -Dm755 -t "${pkgdir}/usr/bin/" mlat-client
