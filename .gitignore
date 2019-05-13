@@ -1,0 +1,4 @@
+/src/
+/pkg/
+/*.kwinscript
+/*.pkg.tar.xz
