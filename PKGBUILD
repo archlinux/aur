@@ -2,7 +2,7 @@
 # Contributor: Kai Geißdörfer <kai.s.geissdoerfer at campus.tu-berlin.de>
 
 pkgname=ccstudio
-pkgver=9.0.0.00018
+pkgver=9.0.1.00004
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
 arch=('x86_64')
@@ -29,7 +29,7 @@ install=$pkgname.install
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
-_desktop="Code Composer Studio 9.0.0.desktop"
+_desktop="Code Composer Studio 9.0.1.desktop"
 
 _destdir=opt
 _installdir=installdir
@@ -90,7 +90,7 @@ package() {
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('279b41e5e89d2bc06879676415930dd06fd8fd147a35e42c5f31a1667cc58e8d'
+sha256sums=('f98cd3f74f14bf7619df9c799c01ce47c447d72b1ef7d7318d16b489618abf1e'
             'adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076'
             '97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db'
             'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a')
