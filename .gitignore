@@ -1,0 +1,6 @@
+src/
+pkg/
+OpenRiichi/
+Engine/
+*.log
+*.pkg.tar.xz

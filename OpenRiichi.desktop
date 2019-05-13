@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=OpenRiichi
+Comment=Japanese Mahjong
+Categories=Game
+Path=/opt/OpenRiichi
+Exec=/opt/OpenRiichi/OpenRiichi
+Terminal=false
+Icon=/usr/share/pixmaps/OpenRiichi.png
+Type=Application
