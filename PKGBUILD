@@ -1,6 +1,6 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=python-xnatpy
-pkgver=0.3.16
+pkgver=0.3.17
 pkgrel=1
 pkgdesc="A new XNAT client that exposes XNAT objects/functions as python objects/functions."
 arch=('any')
@@ -16,9 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://bitbucket.org/bigr_erasmusmc/xnatpy/get/${pkgver}.tar.bz2")
-# We temporarily have to use the hg version due to Python 3.7 incompatibility in 0.3.10 proper
-#source=("https://bitbucket.org/bigr_erasmusmc/xnatpy/get/0f6e6a0d245f.tar.gz")
-sha256sums=('257fe7c68fbd5fbab51495c93e865f951e7e7bed948793881428322ee8b4adcc')
+sha256sums=('9b4c0b55b0e2635ff26fa72f9cb274a7ddf814d3d9dfba7abd2eb169f5021611')
 
 package() {
   cd "$srcdir"/bigr_erasmusmc-xnatpy-*
