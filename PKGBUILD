@@ -2,7 +2,7 @@
 
 pkgname=ant-bloody-theme-git
 _pkgname=Ant-Bloody
-pkgver=r55.65a3ba8
+pkgver=r56.1c70c97
 pkgrel=1
 pkgdesc="Bloody variant of the Ant theme"
 arch=("any")
