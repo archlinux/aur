@@ -28,7 +28,7 @@ prepare() {
   git submodule update --init --recursive
 
   # cannot be modified upstream, see https://gitlab.kitware.com/paraview/paraview/merge_requests/1716
-  patch -p1 -i "${srcdir}/compile-tools.patch"
+  #patch -p1 -i "${srcdir}/compile-tools.patch"
 }
 
 build() {
