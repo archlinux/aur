@@ -8,7 +8,7 @@
 pkgname=icecat
 pkgver=60.6.3
 _pkgver=c2e111f41e86eb6f76bf884c9ab997fec7ef8f5c
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU version of the Firefox browser."
 arch=(i686 x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -34,7 +34,7 @@ sha256sums=('c329f94adaec97553865b2a5da0578bcad914063b99ab99aa18e3a4f5db66d75'
             '8b37332dd205946ea95c606103b5b0e1e8498819051ea1c1bce79f04fd88ebca'
             '08ab4293d6008524a38e20b428c750c4c55a2f7189e9a0067871ad723c1efab5'
             'cb1116c783995b8187574f84acb8365681aedaa2c76222cf060d31fedcb063c4'
-            'a5c61776cd7c7b3c640785083e194100e4745f124e549ae1c304ac2e2eba2b3e')
+            'bc424d1dfdc2f0a95c1f3d46c60eb109bc58661bbe4ac4e51e35117218ea31de')
 
 #validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 

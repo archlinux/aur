@@ -1,7 +1,7 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox browser.
 	pkgver = 60.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/gnuzilla/
 	arch = i686
 	arch = x86_64
@@ -60,7 +60,7 @@ pkgbase = icecat
 	sha256sums = 8b37332dd205946ea95c606103b5b0e1e8498819051ea1c1bce79f04fd88ebca
 	sha256sums = 08ab4293d6008524a38e20b428c750c4c55a2f7189e9a0067871ad723c1efab5
 	sha256sums = cb1116c783995b8187574f84acb8365681aedaa2c76222cf060d31fedcb063c4
-	sha256sums = a5c61776cd7c7b3c640785083e194100e4745f124e549ae1c304ac2e2eba2b3e
+	sha256sums = bc424d1dfdc2f0a95c1f3d46c60eb109bc58661bbe4ac4e51e35117218ea31de
 
 pkgname = icecat
 
