@@ -1,7 +1,7 @@
 pkgbase = gmt6
 	pkgdesc = Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps.
 	pkgver = 6.0.0_e35dcdb027985864664d4c5f7e442a7b877344d4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gmt.soest.hawaii.edu/
 	install = gmt.install
 	arch = i686
