@@ -1,8 +1,8 @@
 # Maintainer: Térence Clastres <t.clastres@gmail.com>
 
 pkgname=gnome-shell-extension-notification-center-git 
-pkgver=r130.eb12dca
-pkgrel=2
+pkgver=r138.1f3ec46
+pkgrel=1
 pkgdesc="A GNOME Shell extension that eables notification center indicator on top panel and customizations."
 arch=('any')
 url="https://github.com/Selenium-H/Notification-Center"
@@ -22,7 +22,7 @@ package() {
     cd "$pkgname"
 
     mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/"
-    glib-compile-schemas notification-center@Selenium-H/schemas/
+    glib-compile-schemas schemas/
     # install  -Dm644 notification-center@Selenium-H/schemas/*.xml -t "$pkgdir/usr/share/glib-2.0/schemas/" not supported by the extension
     cp -R "notification-center@Selenium-H" "$pkgdir/usr/share/gnome-shell/extensions/"
 }
