@@ -1,0 +1,16 @@
+pkgbase = pmdk-git
+	pkgdesc = Persistent Memory Development Kit.
+	pkgver = 1.6.r49.g6e9868c93
+	pkgrel = 1
+	url = http://pmem.io
+	arch = x86_64
+	license = Intel
+	makedepends = git
+	depends = autoconf
+	depends = pkgconf
+	depends = ndctl
+	source = git://github.com/pmem/pmdk.git
+	md5sums = SKIP
+
+pkgname = pmdk-git
+
