@@ -2,7 +2,7 @@
 
 pkgname=curvedns
 pkgver=0.87
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNSCurve forwarding name server"
 arch=('i686' 'x86_64')
 url="https://github.com/curvedns/curvedns"
@@ -17,7 +17,7 @@ build() {
   ./configure.nacl
 
   ./configure.curvedns
-  echo $CFLAGS > "nacl/build/work/curvedns/cflags"
+  echo "$CFLAGS" > "nacl/build/work/curvedns/cflags"
   ./configure.curvedns
   make
 }
