@@ -11,6 +11,7 @@ pkgbase = plata-theme
 	makedepends = libxml2
 	makedepends = parallel
 	makedepends = sassc
+	makedepends = zip
 	optdepends = gtk-engine-murrine: for gtk2 themes
 	optdepends = ttf-roboto: Recommended font
 	source = git+https://gitlab.com/tista500/plata-theme.git#tag=0.7.91
