@@ -1,13 +1,13 @@
 pkgbase = linkerd
 	pkgdesc = A service sidecar for Kubernetes and beyond. Main repo for Linkerd 2.x. - https://linkerd.io
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://linkerd.io/2/getting-started/
 	arch = x86_64
 	license = Apache
 	depends = glibc
 	options = !strip
-	source_x86_64 = linkerd::https://github.com/linkerd/linkerd2/releases/download/stable-2.2.1/linkerd2-cli-stable-2.2.1-linux
+	source_x86_64 = linkerd::https://github.com/linkerd/linkerd2/releases/download/stable-2.3.0/linkerd2-cli-stable-2.3.0-linux
 	sha256sums_x86_64 = 31fa9833aeafdfc309eed92bc45e465bc21400a6b97dd0cad3e1bfad2a4d1ead
 
 pkgname = linkerd
