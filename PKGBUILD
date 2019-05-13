@@ -1,7 +1,7 @@
 # Maintainer: wallace < str(11) + my_id at gmail dot com>
 
 pkgname='kde-service-menu-reimage'
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc='Manipulate images e their metadata'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0+')
 depends=('dolphin' 'kdialog' 'imagemagick')
 optdepends=('jhead: used for extracting exif data')
 source=("https://www.egregorion.net/works/kde/servicemenus/reimage/${pkgname}-${pkgver}_all.tar.gz")
-md5sums=('213213d6ccf7892a7e9f6c756a904242')
+md5sums=('c8dffad8dec37298c8e3c90ad7cee624')
 
 package() {
     source_path="${srcdir}/${pkgname}-${pkgver}_all"

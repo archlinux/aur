@@ -1,6 +1,6 @@
 pkgbase = kde-service-menu-reimage
 	pkgdesc = Manipulate images e their metadata
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = https://www.egregorion.net
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = kde-service-menu-reimage
 	depends = kdialog
 	depends = imagemagick
 	optdepends = jhead: used for extracting exif data
-	source = https://www.egregorion.net/works/kde/servicemenus/reimage/kde-service-menu-reimage-2.4_all.tar.gz
-	md5sums = 213213d6ccf7892a7e9f6c756a904242
+	source = https://www.egregorion.net/works/kde/servicemenus/reimage/kde-service-menu-reimage-2.5_all.tar.gz
+	md5sums = c8dffad8dec37298c8e3c90ad7cee624
 
 pkgname = kde-service-menu-reimage
 
