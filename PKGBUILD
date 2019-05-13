@@ -4,7 +4,7 @@
 
 pkgname=kismet-ng
 pkgver=2019.04.R1
-pkgrel=5
+pkgrel=6
 _pkgname=${pkgname%-ng}
 _srcname="$(sed 's/\./-/g' <<<"$_pkgname-$pkgver")"
 
@@ -30,7 +30,7 @@ source=("$url/code/$_srcname.tar.xz"
         "$_pkgname-sysusers.conf")
 
 sha256sums=('60575e3473abc2a60c583a10b3e386c547f54e720140ab9de6130de5590a7790'
-            'c1c01e7b791a3df5e5a3413d4b4157bdf4a5fa99c1a79d9a36424ed635e04a99'
+            '18b79e5a577e515ec08629baf95e6100dbd7c272b7d2519d799bbf396ceaf02a'
             '8b5b25bb6d9c611589ce0200da3cfeed2194bfa45aeed88e10c980c668383806')
 validpgpkeys=('7A194E3F7A8F867BEA8A5339023F078862ACFE50')
 
