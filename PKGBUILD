@@ -10,7 +10,7 @@
 
 pkgbase=calibre-git
 pkgname=(calibre-git calibre-python3-git)
-pkgver=3.41.3.r27.gb42963af61
+pkgver=3.42.0.r63.g969ad38858
 pkgrel=1
 pkgdesc="Ebook management application"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ source=("git+https://github.com/kovidgoyal/${pkgbase%-git}.git?signed"
         "user-agent-data.json")
 sha256sums=('SKIP'
             'SKIP'
-            'b6da5e354a167f000462cf7964132c6e0749e16588249ef75ab31a62230561b8')
+            'd17a1fff7bf441db8d1ec826afd8661352869ec4e5edd2a17f917ef2fbf01043')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
 pkgver() {
@@ -42,15 +42,15 @@ pkgver() {
 prepare(){
   cd "${srcdir}/${pkgbase%-git}"
 
+  python2 setup.py git_version
+
   # Link translations to build dir
   ln -sfT ../calibre-translations translations
 
   # Desktop integration (e.g. enforce arch defaults)
   # Use uppercase naming scheme, don't create uninstaller.
   # xdg *cannot* be kludged into installing mime files properly.
-  sed -e "/self.create_uninstaller()/,/os.rmdir(config_dir)/d" \
-      -e "/cc(\['xdg-desktop-menu', 'forceupdate'\])/d" \
-      -e "/cc(\['xdg-mime', 'install', MIME\])/d" \
+  sed -e "/import config_dir/,/os.rmdir(config_dir)/d" \
       -e "s/^Name=calibre/Name=Calibre/g" \
       -i  src/calibre/linux.py
 
@@ -104,22 +104,14 @@ package_calibre-git() {
 
   cd "${srcdir}/${pkgbase%-git}"
 
-  # If these directories don't exist, zsh completion, icons, and desktop files won't install.
-  install -d "${pkgdir}/usr/share/zsh/site-functions" \
-      "${pkgdir}"/usr/share/{applications,desktop-directories,icons/hicolor}
+  # If this directory don't exist, zsh completion won't install.
+  install -d "${pkgdir}/usr/share/zsh/site-functions"
 
-  install -Dm644 resources/calibre-mimetypes.xml \
-      "${pkgdir}/usr/share/mime/packages/calibre-mimetypes.xml"
-
-  XDG_DATA_DIRS="${pkgdir}/usr/share" LANG='en_US.UTF-8' python2 setup.py install \
-      --staging-root="${pkgdir}/usr" \
+  LANG='en_US.UTF-8' python2 setup.py install --staging-root="${pkgdir}/usr" \
       --prefix=/usr
   rm -r "${pkgdir}"/usr/lib/calibre/calibre/plugins/3/
 
   #cp -a man-pages/ "${pkgdir}/usr/share/man"
-
-  sed -i '/^numeric_version = /c\numeric_version = '"$(printf "(%s, %s, %s, '%s', '%s')" ${pkgver//./ })" \
-      "${pkgdir}/usr/lib/calibre/calibre/constants.py"
 
   # not needed at runtime
   rm -r "${pkgdir}"/usr/share/calibre/rapydscript/

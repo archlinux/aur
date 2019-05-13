@@ -1,6 +1,6 @@
 pkgbase = calibre-git
 	pkgdesc = Ebook management application
-	pkgver = 3.41.3.r27.gb42963af61
+	pkgver = 3.42.0.r63.g969ad38858
 	pkgrel = 1
 	url = https://calibre-ebook.com/
 	arch = i686
@@ -77,7 +77,7 @@ pkgbase = calibre-git
 	validpgpkeys = 3CE1780F78DD88DF45194FD706BC317B515ACE7C
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = b6da5e354a167f000462cf7964132c6e0749e16588249ef75ab31a62230561b8
+	sha256sums = d17a1fff7bf441db8d1ec826afd8661352869ec4e5edd2a17f917ef2fbf01043
 
 pkgname = calibre-git
 	depends = chmlib
