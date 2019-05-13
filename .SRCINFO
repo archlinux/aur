@@ -1,6 +1,6 @@
 pkgbase = d9vk-winelib
-	pkgdesc = A d3d9 to vk layer based off DXVK's codebase. Winelib version
-	pkgver = 0.10
+	pkgdesc = A d3d9 to vk layer based off DXVK's codebase, winelib version
+	pkgver = 0.11
 	pkgrel = 1
 	url = https://github.com/Joshua-Ashton/d9vk
 	arch = x86_64
@@ -13,14 +13,17 @@ pkgbase = d9vk-winelib
 	depends = vulkan-icd-loader
 	depends = wine>=4.0rc1
 	depends = lib32-vulkan-icd-loader
+	depends = bash
 	provides = d9vk
 	conflicts = d9vk
-	source = git+https://github.com/Joshua-Ashton/d9vk.git#tag=0.10
+	source = git+https://github.com/Joshua-Ashton/d9vk.git#tag=0.11
 	source = setup_d9vk
 	source = extraopts.patch
+	source = dxvk-async.patch
 	sha256sums = SKIP
 	sha256sums = 7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a
 	sha256sums = d73f948fd39da218141cc72c7373f59e6fc289630e155b6e51d18597455d0040
+	sha256sums = 6c6936b753903ba59ee9e2b6c8fc533bf60cba894cf4288ec0239c35b86796cd
 
 pkgname = d9vk-winelib
 
