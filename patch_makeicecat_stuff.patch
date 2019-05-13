@@ -1,15 +1,21 @@
---- a/makeicecat	2019-05-13 13:13:15.000000000 +0200
-+++ b/makeicecat	2019-05-13 13:20:40.551626940 +0200
-@@ -264,9 +264,6 @@
+--- a/makeicecat	2019-05-13 20:55:02.000000000 +0200
++++ b/makeicecat	2019-05-13 20:54:38.007705184 +0200
+@@ -264,12 +264,9 @@
  ###############################################################################
  
  # Replace Firefox branding
 -find -type d | grep fennec | xargs prename s/fennec/icecatmobile/
 -find -type f | grep fennec | xargs prename s/fennec/icecatmobile/
 -find -type f | grep Fennec | xargs prename s/Fennec/IceCatMobile/
- find -type d | grep firefox | xargs prename -f s/firefox/icecat/
- find -type f | grep firefox | xargs prename -f s/firefox/icecat/
- find -type f | grep Firefox | xargs prename -f s/Firefox/IceCat/
+-find -type d | grep firefox | xargs prename -f s/firefox/icecat/
+-find -type f | grep firefox | xargs prename -f s/firefox/icecat/
+-find -type f | grep Firefox | xargs prename -f s/Firefox/IceCat/
++find -type d | grep firefox | xargs perl-rename -f s/firefox/icecat/
++find -type f | grep firefox | xargs perl-rename -f s/firefox/icecat/
++find -type f | grep Firefox | xargs perl-rename -f s/Firefox/IceCat/
+ 
+ echo "Running batch rebranding"
+ SEDSCRIPT="
 @@ -289,11 +286,8 @@
  
  s/Mozilla Firefox/GNU IceCat/g;
@@ -22,6 +28,15 @@
  s/ Mozilla / GNU /g;
  
  s|PACKAGES/icecat|PACKAGES/firefox|g;
+@@ -331,7 +325,7 @@
+ 
+ sed 's/mozilla-bin/icecat-bin/' -i build/unix/run-mozilla.sh
+ 
+-find -type f | grep run-mozilla | xargs prename s/mozilla/icecat/
++find -type f | grep run-mozilla | xargs perl-rename s/mozilla/icecat/
+ 
+ # do not alter useragent/platform/oscpu/etc with fingerprinting countermeasure, it makes things worse
+ sed '/ShouldResistFingerprinting/,/}/s/^/\/\//' -i ./netwerk/protocol/http/nsHttpHandler.cpp
 @@ -378,7 +372,6 @@
  MOZ_DATA_REPORTING=0
  MOZ_SERVICES_SYNC=0
