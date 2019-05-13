@@ -1,7 +1,7 @@
 # Maintainer: Luca CPZ <luca.cpz [at] gmail [dot] com>
 
 pkgname=lain-git
-pkgcom=1695
+pkgcom=1697; /pkgsha=/cpkgsha=3328e73
 pkgsha=724c7b9
 pkgver=$pkgcom.$pkgsha
 pkgrel=1
@@ -29,7 +29,4 @@ package() {
     git --git-dir=lain/.git --work-tree=lain/ reset --hard $pkgsha --quiet
     rm -rf lain/{wiki,.git*,*.rockspec,*TEMPLATE*}
     cp -a lain $aw_path
-
-    # fix scripts permissions
-    find "$pkgdir" -type f ! -path "*/scripts/*" -print0 | xargs -0 chmod -R 644
 }
