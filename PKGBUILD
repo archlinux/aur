@@ -12,13 +12,18 @@ depends=('icu')
 makedepends=('cmake' 'clang' 'python2')
 provides=('libChakraCore.so' 'ch')
 conflicts=('chakracore-git' 'chakracore-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Microsoft/ChakraCore/archive/v${pkgver}.tar.gz")
-sha256sums=('e644d4ff278a5460301b6b55a3f69c24fc3e910906f955c41b651472905002f5')
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/Microsoft/ChakraCore/archive/v${pkgver}.tar.gz"
+  "fix-assembly-for-clang.patch"
+)
+sha256sums=('e644d4ff278a5460301b6b55a3f69c24fc3e910906f955c41b651472905002f5'
+            '623458eff6effd1d6497c69bf3338f25cc8396853f74ecdfbb92db982b232d99')
 
 _dir="ChakraCore-${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
+  patch -p1 < $srcdir/fix-assembly-for-clang.patch
   ./build.sh --jobs=$(nproc) --extra-defines=U_USING_ICU_NAMESPACE=1 -y
   ./build.sh --jobs=$(nproc) --extra-defines=U_USING_ICU_NAMESPACE=1 -y --static
 }

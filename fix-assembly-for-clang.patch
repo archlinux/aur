@@ -1,0 +1,316 @@
+diff --git a/lib/Backend/amd64/LinearScanMdA.S b/lib/Backend/amd64/LinearScanMdA.S
+index 71363a324..36017544b 100644
+--- a/lib/Backend/amd64/LinearScanMdA.S
++++ b/lib/Backend/amd64/LinearScanMdA.S
+@@ -51,23 +51,23 @@ LEAF_ENTRY _ZN12LinearScanMD26SaveAllRegistersEP13BailOutRecord, _TEXT
+     mov [rax + 15 * 8], r15
+ 
+     // Save all XMM regs (full width)
+-    movups xmmword ptr [rax + 80h], xmm0         // [rax + 16 * 8 + 0 * 16] = xmm0
+-    movups xmmword ptr [rax + 90h], xmm1         // [rax + 16 * 8 + 1 * 16] = xmm1
+-    movups xmmword ptr [rax + 0a0h], xmm2        //  ...
+-    // movups xmmword ptr [rax + 0b0h], xmm3    // xplat: WHY this one fails to compile...
++    movups xmmword ptr [rax + 0x80], xmm0         // [rax + 16 * 8 + 0 * 16] = xmm0
++    movups xmmword ptr [rax + 0x90], xmm1         // [rax + 16 * 8 + 1 * 16] = xmm1
++    movups xmmword ptr [rax + 0x0a0], xmm2        //  ...
++    // movups xmmword ptr [rax + 0x0b0], xmm3    // xplat: WHY this one fails to compile...
+     movups xmmword ptr [rax + 11 * 16], xmm3
+-    movups xmmword ptr [rax + 0c0h], xmm4
+-    movups xmmword ptr [rax + 0d0h], xmm5
+-    movups xmmword ptr [rax + 0e0h], xmm6
+-    movups xmmword ptr [rax + 0f0h], xmm7
+-    movups xmmword ptr [rax + 100h], xmm8
+-    movups xmmword ptr [rax + 110h], xmm9
+-    movups xmmword ptr [rax + 120h], xmm10
+-    movups xmmword ptr [rax + 130h], xmm11
+-    movups xmmword ptr [rax + 140h], xmm12
+-    movups xmmword ptr [rax + 150h], xmm13
+-    movups xmmword ptr [rax + 160h], xmm14
+-    movups xmmword ptr [rax + 170h], xmm15       // [rax + 16 * 8 + 15 * 16] = xmm15
++    movups xmmword ptr [rax + 0x0c0], xmm4
++    movups xmmword ptr [rax + 0x0d0], xmm5
++    movups xmmword ptr [rax + 0x0e0], xmm6
++    movups xmmword ptr [rax + 0x0f0], xmm7
++    movups xmmword ptr [rax + 0x100], xmm8
++    movups xmmword ptr [rax + 0x110], xmm9
++    movups xmmword ptr [rax + 0x120], xmm10
++    movups xmmword ptr [rax + 0x130], xmm11
++    movups xmmword ptr [rax + 0x140], xmm12
++    movups xmmword ptr [rax + 0x150], xmm13
++    movups xmmword ptr [rax + 0x160], xmm14
++    movups xmmword ptr [rax + 0x170], xmm15       // [rax + 16 * 8 + 15 * 16] = xmm15
+ 
+     ret
+ 
+@@ -91,12 +91,12 @@ NESTED_ENTRY _ZN12LinearScanMD26SaveAllRegistersAndBailOutEP13BailOutRecord, _TE
+ 
+     mov [rsp + 3 * 8], rsi
+ 
+-    sub rsp, 28h        // use the same as Windows x64 so register locations are the same
++    sub rsp, 0x28        // use the same as Windows x64 so register locations are the same
+     .cfi_adjust_cfa_offset 0x28
+ 
+     call C_FUNC(_ZN12LinearScanMD26SaveAllRegistersEP13BailOutRecord)
+ 
+-    add rsp, 28h        // deallocate stack space
++    add rsp, 0x28        // deallocate stack space
+     .cfi_adjust_cfa_offset -0x28
+ 
+     jmp C_FUNC(_ZN13BailOutRecord7BailOutEPKS_)
+@@ -117,12 +117,12 @@ NESTED_ENTRY _ZN12LinearScanMD32SaveAllRegistersAndBranchBailOutEP19BranchBailOu
+     // rdi == bailOutRecord
+     // rsi == condition
+ 
+-    sub rsp, 28h        // use the same as Windows x64 so register locations are the same
++    sub rsp, 0x28        // use the same as Windows x64 so register locations are the same
+     .cfi_adjust_cfa_offset 0x28
+ 
+     call C_FUNC(_ZN12LinearScanMD26SaveAllRegistersEP13BailOutRecord)
+ 
+-    add rsp, 28h        // deallocate stack space
++    add rsp, 0x28        // deallocate stack space
+     .cfi_adjust_cfa_offset -0x28
+ 
+     jmp C_FUNC(_ZN19BranchBailOutRecord7BailOutEPKS_i)
+diff --git a/lib/Backend/amd64/Thunks.S b/lib/Backend/amd64/Thunks.S
+index 4a7a9ed7e..c3c37ff7c 100644
+--- a/lib/Backend/amd64/Thunks.S
++++ b/lib/Backend/amd64/Thunks.S
+@@ -63,24 +63,24 @@ NESTED_ENTRY _ZN19NativeCodeGenerator22CheckAsmJsCodeGenThunkEPN2Js16RecyclableO
+         push r8
+         push r9
+ 
+-        sub rsp, 40h
++        sub rsp, 0x40
+ 
+         // ----- TODO: potentially xmm0-xmm7 args
+         // spill potential floating point arguments to stack
+-        movaps xmmword ptr [rsp + 00h], xmm0
+-        movaps xmmword ptr [rsp + 10h], xmm1
+-        movaps xmmword ptr [rsp + 20h], xmm2
+-        movaps xmmword ptr [rsp + 30h], xmm3
++        movaps xmmword ptr [rsp + 0x00], xmm0
++        movaps xmmword ptr [rsp + 0x10], xmm1
++        movaps xmmword ptr [rsp + 0x20], xmm2
++        movaps xmmword ptr [rsp + 0x30], xmm3
+ 
+         call C_FUNC(_ZN19NativeCodeGenerator17CheckAsmJsCodeGenEPN2Js14ScriptFunctionE)
+ 
+         // restore potential floating point arguments from stack
+-        movaps xmm0, xmmword ptr [rsp + 00h]
+-        movaps xmm1, xmmword ptr [rsp + 10h]
+-        movaps xmm2, xmmword ptr [rsp + 20h]
+-        movaps xmm3, xmmword ptr [rsp + 30h]
++        movaps xmm0, xmmword ptr [rsp + 0x00]
++        movaps xmm1, xmmword ptr [rsp + 0x10]
++        movaps xmm2, xmmword ptr [rsp + 0x20]
++        movaps xmm3, xmmword ptr [rsp + 0x30]
+ 
+-        add rsp, 40h
++        add rsp, 0x40
+ 
+         pop r9
+         pop r8
+diff --git a/lib/Common/Memory/amd64/amd64_SAVE_REGISTERS.S b/lib/Common/Memory/amd64/amd64_SAVE_REGISTERS.S
+index c1feba57a..91c7456f7 100644
+--- a/lib/Common/Memory/amd64/amd64_SAVE_REGISTERS.S
++++ b/lib/Common/Memory/amd64/amd64_SAVE_REGISTERS.S
+@@ -16,20 +16,20 @@
+ //
+ .globl C_FUNC(amd64_SAVE_REGISTERS)
+ C_FUNC(amd64_SAVE_REGISTERS):   
+-        mov [rdi+00h], rsp
+-        mov [rdi+08h], rax
+-        mov [rdi+10h], rbx
+-        mov [rdi+18h], rcx
+-        mov [rdi+20h], rdx
+-        mov [rdi+28h], rbp
+-        mov [rdi+30h], rsi
+-        mov [rdi+38h], rdi
+-        mov [rdi+40h], r8
+-        mov [rdi+48h], r9
+-        mov [rdi+50h], r10
+-        mov [rdi+58h], r11
+-        mov [rdi+60h], r12
+-        mov [rdi+68h], r13
+-        mov [rdi+70h], r14
+-        mov [rdi+78h], r15
++        mov [rdi+0x00], rsp
++        mov [rdi+0x08], rax
++        mov [rdi+0x10], rbx
++        mov [rdi+0x18], rcx
++        mov [rdi+0x20], rdx
++        mov [rdi+0x28], rbp
++        mov [rdi+0x30], rsi
++        mov [rdi+0x38], rdi
++        mov [rdi+0x40], r8
++        mov [rdi+0x48], r9
++        mov [rdi+0x50], r10
++        mov [rdi+0x58], r11
++        mov [rdi+0x60], r12
++        mov [rdi+0x68], r13
++        mov [rdi+0x70], r14
++        mov [rdi+0x78], r15
+         ret
+diff --git a/lib/Runtime/Language/amd64/JavascriptOperatorsA.S b/lib/Runtime/Language/amd64/JavascriptOperatorsA.S
+index 0eb7c6726..176094ad1 100644
+--- a/lib/Runtime/Language/amd64/JavascriptOperatorsA.S
++++ b/lib/Runtime/Language/amd64/JavascriptOperatorsA.S
+@@ -27,15 +27,15 @@ NESTED_ENTRY amd64_CallWithFakeFrame, _TEXT, NoHandler
+         sub rsp, rdx
+ 
+         // Save callee-saved xmm registers -- none on Sys V x64
+-        // movapd xmmword ptr [rsp + 90h], xmm15
+-        // movapd xmmword ptr [rsp + 80h], xmm14
+-        // movapd xmmword ptr [rsp + 70h], xmm13
+-        // movapd xmmword ptr [rsp + 60h], xmm12
+-        // movapd xmmword ptr [rsp + 50h], xmm11
+-        // movapd xmmword ptr [rsp + 40h], xmm10
+-        // movapd xmmword ptr [rsp + 30h], xmm9
+-        // movapd xmmword ptr [rsp + 20h], xmm8
+-        // movapd xmmword ptr [rsp + 10h], xmm7
++        // movapd xmmword ptr [rsp + 0x90], xmm15
++        // movapd xmmword ptr [rsp + 0x80], xmm14
++        // movapd xmmword ptr [rsp + 0x70], xmm13
++        // movapd xmmword ptr [rsp + 0x60], xmm12
++        // movapd xmmword ptr [rsp + 0x50], xmm11
++        // movapd xmmword ptr [rsp + 0x40], xmm10
++        // movapd xmmword ptr [rsp + 0x30], xmm9
++        // movapd xmmword ptr [rsp + 0x20], xmm8
++        // movapd xmmword ptr [rsp + 0x10], xmm7
+         // movapd xmmword ptr [rsp], xmm6
+ 
+         // Save all callee saved registers.
+@@ -67,15 +67,15 @@ NESTED_ENTRY amd64_ReturnFromCallWithFakeFrame, _TEXT, NoHandler
+ 
+         // Restore callee-saved xmm registers -- none on Sys V x64; must match RegList.h
+         // movapd xmm6, xmmword ptr [rsp]
+-        // movapd xmm7, xmmword ptr [rsp + 10h]
+-        // movapd xmm8, xmmword ptr [rsp + 20h]
+-        // movapd xmm9, xmmword ptr [rsp + 30h]
+-        // movapd xmm10, xmmword ptr [rsp + 40h]
+-        // movapd xmm11, xmmword ptr [rsp + 50h]
+-        // movapd xmm12, xmmword ptr [rsp + 60h]
+-        // movapd xmm13, xmmword ptr [rsp + 70h]
+-        // movapd xmm14, xmmword ptr [rsp + 80h]
+-        // movapd xmm15, xmmword ptr [rsp + 90h]
++        // movapd xmm7, xmmword ptr [rsp + 0x10]
++        // movapd xmm8, xmmword ptr [rsp + 0x20]
++        // movapd xmm9, xmmword ptr [rsp + 0x30]
++        // movapd xmm10, xmmword ptr [rsp + 0x40]
++        // movapd xmm11, xmmword ptr [rsp + 0x50]
++        // movapd xmm12, xmmword ptr [rsp + 0x60]
++        // movapd xmm13, xmmword ptr [rsp + 0x70]
++        // movapd xmm14, xmmword ptr [rsp + 0x80]
++        // movapd xmm15, xmmword ptr [rsp + 0x90]
+ 
+         add  rsp, rdx
+ 
+diff --git a/lib/Runtime/Language/amd64/amd64_Thunks.S b/lib/Runtime/Language/amd64/amd64_Thunks.S
+index dafc9f0a7..ab4f99b57 100644
+--- a/lib/Runtime/Language/amd64/amd64_Thunks.S
++++ b/lib/Runtime/Language/amd64/amd64_Thunks.S
+@@ -217,10 +217,10 @@ NESTED_ENTRY _ZN2Js23AsmJsExternalEntryPointEPNS_16RecyclableObjectENS_8CallInfo
+ 
+         set_cfa_register rbp, (2*8)     // Set to compute CFA as: rbp + 16 (sizeof: [rbp] [ReturnAddress])
+ 
+-        sub rsp, 40h
++        sub rsp, 0x40
+ 
+-        mov [rsp + 28h], r12
+-        mov [rsp + 30h], r13
++        mov [rsp + 0x28], r12
++        mov [rsp + 0x30], r13
+ 
+         mov r12, rdi // r12: entryObject
+         mov r13, rsi // r13: callInfo
+@@ -232,7 +232,7 @@ NESTED_ENTRY _ZN2Js23AsmJsExternalEntryPointEPNS_16RecyclableObjectENS_8CallInfo
+         mov rcx, r13 // arg4: callInfo
+         mov rsi, rsp // arg2: orig stack pointer is arg for the unboxing helper
+         mov r13, rsi // r13: save orig stack pointer, so that we can add it back later
+-        add rsi, 68h // account for the changes we have already made to rsp
++        add rsi, 0x68 // account for the changes we have already made to rsp
+ 
+         sub rsp, rax // allocate additional stack space for args
+         // UnboxAsmJsArguments(func, origArgsLoc, argDst, callInfo)
+@@ -245,7 +245,7 @@ NESTED_ENTRY _ZN2Js23AsmJsExternalEntryPointEPNS_16RecyclableObjectENS_8CallInfo
+ 
+         mov rdi, r12 // arg0: func
+ 
+-        mov [rsp + 00h], rdi
++        mov [rsp + 0x00], rdi
+ 
+         // call entry point
+         call rax
+@@ -258,16 +258,16 @@ NESTED_ENTRY _ZN2Js23AsmJsExternalEntryPointEPNS_16RecyclableObjectENS_8CallInfo
+ 
+ 
+         // store SIMD xmm value and pointer to it as argument to box function
+-        sub rsp, 20h
+-        movups [rsp + 10h], xmm0
+-        lea r12, [rsp + 10h]
++        sub rsp, 0x20
++        movups [rsp + 0x10], xmm0
++        lea r12, [rsp + 0x10]
+         mov qword ptr [rsp], r12
+         call C_FUNC(_ZN2Js19BoxAsmJsReturnValueEPNS_14ScriptFunctionEldfDv4_f)
+ 
+         mov rsp, r13 // restore stack pointer
+     Epilogue:
+-        mov r12, [rsp + 28h]
+-        mov r13, [rsp + 30h]
++        mov r12, [rsp + 0x28]
++        mov r13, [rsp + 0x30]
+ 
+         lea  rsp, [rbp]
+         pop_nonvol_reg rbp
+diff --git a/lib/Runtime/Library/amd64/JavascriptFunctionA.S b/lib/Runtime/Library/amd64/JavascriptFunctionA.S
+index 40679d9f9..6ae2aa8af 100644
+--- a/lib/Runtime/Library/amd64/JavascriptFunctionA.S
++++ b/lib/Runtime/Library/amd64/JavascriptFunctionA.S
+@@ -75,7 +75,7 @@ NESTED_ENTRY amd64_CallFunction, _TEXT, NoHandler
+         and r10, -2     // Mask off the lower bit to 16 byte align the stack
+         shl r10, 3      // Calculate space for remaining args (* sizeof(Var*))
+ 
+-        cmp r10, 1000h  // If the space is large, make sure the stack is committed
++        cmp r10, 0x1000  // If the space is large, make sure the stack is committed
+         jl  LOCAL_LABEL(allocate_stack)
+         // xplat-todo: Figure out if we need to implement __chkstk
+         // call __chkstk
+@@ -83,17 +83,17 @@ NESTED_ENTRY amd64_CallFunction, _TEXT, NoHandler
+ LOCAL_LABEL(allocate_stack):
+         sub rsp, r10    // Allocate the stack space
+         mov qword ptr [rsp], rdi        // function
+-        mov qword ptr [rsp + 8h], rsi   // callInfo
++        mov qword ptr [rsp + 0x8], rsi   // callInfo
+         cmp rcx, 0
+         je LOCAL_LABEL(args_setup_done)
+ 
+         // Copy all args (r8) to rsp[2]. rcx has argc.
+ LOCAL_LABEL(copy_args_to_stack):
+-        lea rdi, [rsp + 10h]            // &rsp[2]
++        lea rdi, [rsp + 0x10]            // &rsp[2]
+         mov rsi, r8                     // argv
+         rep movsq
+         mov rdi, qword ptr [rsp]        // restore rdi
+-        mov rsi, qword ptr [rsp + 8h]   // restore rsi
++        mov rsi, qword ptr [rsp + 0x8]   // restore rsi
+ 
+ LOCAL_LABEL(args_setup_done):
+         xor rax, rax    // Zero out rax in case r11 expects varags
+@@ -193,13 +193,13 @@ NESTED_ENTRY _ZN2Js18JavascriptFunction20DeferredParsingThunkEPNS_16RecyclableOb
+         // Call
+         //  JavascriptMethod JavascriptFunction::DeferredParse(ScriptFunction**)
+         //
+-        lea rdi, [rbp + 10h]    // &function, setup by custom calling convention
++        lea rdi, [rbp + 0x10]    // &function, setup by custom calling convention
+         call C_FUNC(_ZN2Js18JavascriptFunction13DeferredParseEPPNS_14ScriptFunctionE)
+ 
+         pop_register rsi
+         pop_register rdi
+ 
+-        mov rdi, qword ptr [rbp + 10h]  // re-load function, might have been changed by DeferredParse.
++        mov rdi, qword ptr [rbp + 0x10]  // re-load function, might have been changed by DeferredParse.
+                                         // e.g. StackScriptFunction is Boxed
+                                         // previous push/pop rdi is for stack alignment
+ 
