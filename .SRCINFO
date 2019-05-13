@@ -1,0 +1,13 @@
+pkgbase = xfemm
+	pkgdesc = Cross platform electromagnetics finite element analysis based on FEMM
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/xfemm/
+	arch = x86_64
+	license = custom:Aladdin,
+	license = APACHE
+	source = https://cfhcable.dl.sourceforge.net/project/xfemm/Release/Release%203_0/xfemm_v3.0_linux64.tar.gz
+	md5sums = 6358316d3fc882bc8979b92069bb9536
+
+pkgname = xfemm
+
