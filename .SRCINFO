@@ -18,6 +18,9 @@ pkgbase = etcher
 	depends = alsa-lib
 	optdepends = libnotify: for notifications
 	optdepends = speech-dispatcher: for text-to-speech
+	conflicts = balena-etcher
+	conflicts = etcher-git
+	conflicts = etcher-bin
 	options = !strip
 	source = etcher::git+https://github.com/balena-io/etcher.git#tag=v1.5.35
 	source = git+https://github.com/balena-io/scripts.git

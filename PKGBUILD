@@ -22,6 +22,10 @@ sha256sums=('SKIP'
             'SKIP'
             '4499f316e4de865696312b31545f8df62850aad4492bcc9736cccb6d8eeb96ec'
             '89291532fb6e6c5555b43d61c9ba3df103bca0eace040483884b86fd30dca3e4')
+conflicts=("balena-${pkgname}"
+  "${pkgname}-git"
+  "${pkgname}-bin"
+)
 
 prepare() {
   cd "${pkgname}"
