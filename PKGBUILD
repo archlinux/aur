@@ -1,8 +1,8 @@
 # Maintainer: Tinu Weber <http://ayekat.ch>
 
 pkgname=makemetapkg
-pkgver=0.7.7
-pkgrel=2
+pkgver=0.7.8
+pkgrel=1
 arch=(any)
 
 pkgdesc='Create meta-packages for pacman'
@@ -26,6 +26,7 @@ _tools='makemetapkg metapkg'
 
 build() {
   cd pacman-hacks
+  make clean
   make PREFIX=/usr SCRIPTS="$_tools" MANPAGES="$_tools"
 }
 
@@ -39,7 +40,12 @@ package() {
   depends+=(bash fakeroot pacman sh)
 
   cd pacman-hacks
-  make DESTDIR="$pkgdir" SCRIPTS="$_tools" MANPAGES="$_tools" install
+  make \
+    PREFIX=/usr \
+    DESTDIR="$pkgdir" \
+    SCRIPTS="$_tools" \
+    MANPAGES="$_tools" \
+    install
   install -Dm 0644 README "$pkgdir"/usr/share/doc/remakepkg/README
   install -Dm 0644 CHANGELOG "$pkgdir"/usr/share/doc/remakepkg/CHANGELOG
 }
