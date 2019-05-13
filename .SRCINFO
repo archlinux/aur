@@ -4,10 +4,12 @@ pkgbase = geoipdatabase_reloaded
 	url = https://dev.maxmind.com/geoip/geoip2/geolite2/
 	arch = x86_64
 	license = Creative Commons Attribution-ShareAlike 4.0 International License
-	checkdepends = python2
-	checkdepends = geoip
+	makedepends = python2
+	depends = geoip
 	source = http://nhameh.ovh/varia/python2-pygeoip-0.3.2-4-any.pkg.tar.xz
+	source = http://nhameh.ovh/varia/python2-ipaddr-2.2.0-1-any.pkg.tar.xz
 	source = git+https://github.com/sherpya/geolite2legacy/
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

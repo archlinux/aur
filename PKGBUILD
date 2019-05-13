@@ -6,7 +6,8 @@ pkgrel=1
 arch=('x86_64')
 url="https://dev.maxmind.com/geoip/geoip2/geolite2/"
 license=('Creative Commons Attribution-ShareAlike 4.0 International License')
-checkdepends=('python2' 'geoip')
+makedepends=('python2')
+depends=('geoip')
 
 # We all love colors. Stop pretending you don't.
 BRED="\033[1;31m"
@@ -16,12 +17,14 @@ BGREEN='\033[1;92m'
 NOCOLOR='\033[0m'
 
 
-		#the deprecated package for parsing the geoip data
+	#the deprecated packages for parsing the geoip data
 source=('http://nhameh.ovh/varia/python2-pygeoip-0.3.2-4-any.pkg.tar.xz'
+	'http://nhameh.ovh/varia/python2-ipaddr-2.2.0-1-any.pkg.tar.xz'
         # the main kernel config files
         'git+https://github.com/sherpya/geolite2legacy/')
 sha256sums=('SKIP'
-			'SKIP')
+		'SKIP'
+		'SKIP')
 
 pkgver() {
   echo $pkgver
@@ -39,10 +42,10 @@ prepare() {
         echo "1.."
         sleep 1
 
-	if [ "$(pacman -Q python2-pygeoip)" == "" ]; then
-	echo -e "${BYELLOW}Now installing a ${BRED}(missing in the arch repo??) ${BORANGE}package${BYELLOW} to parse the geoipfiles..."
-	echo -e "${BORANGE}python2-pygeoip${BYELLOW} got completely deprecated for undisclosed ${BRED}(as usual)${BYELLOW} reasons, so we need to install this here from an external source.${NOCOLOR}"
-		sudo pacman --noconfirm -U ../python2-pygeoip-0.3.2-4-any.pkg.tar.xz
+	if [ "$(pacman -Q python2-pygeoip)" == "" ] || [ "$(pacman -Q python2-ipaddr)" == "" ]; then
+	echo -e "${BYELLOW}Now installing ${BRED}(missing in the arch repos) ${BORANGE}packages${BYELLOW} to parse the geoipfiles..."
+	echo -e "${BORANGE}python2-pygeoip and python2-ipaddr ${BYELLOW} got completely deprecated, so we need to install this here from an external source.${NOCOLOR}"
+		sudo pacman --noconfirm -U ../python2-pygeoip-0.3.2-4-any.pkg.tar.xz ../python2-ipaddr-2.2.0-1-any.pkg.tar.xz 
 	fi
 	if [ ! -d CSVzips ]; then
 		mkdir CSVzips
