@@ -1,6 +1,6 @@
 pkgbase = bemenu-git
 	pkgdesc = Dynamic menu library and client program inspired by dmenu with support for wayland compositors.
-	pkgver = r223.c3abc43
+	pkgver = r280.121367b
 	pkgrel = 1
 	url = https://github.com/Cloudef/bemenu
 	arch = i686

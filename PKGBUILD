@@ -1,6 +1,7 @@
+# Maintainer: Danny Bautista <pyrolagus at gmail.com>
 # https://github.com/Earnestly/pkgbuilds/tree/master/bemenu-git
 pkgname=bemenu-git
-pkgver=r223.c3abc43
+pkgver=r280.121367b
 pkgrel=1
 
 pkgdesc='Dynamic menu library and client program inspired by dmenu with support for wayland compositors.'
@@ -28,7 +29,9 @@ pkgver() {
 
 build() {
     cd bemenu
-    cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    mkdir -p build && cd build
+    cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib\
+          -DBEMENU_X11_RENDERER=ON -DBEMENU_WAYLAND_RENDERER=ON ..
     make
 }
 
@@ -38,6 +41,6 @@ check() {
 }
 
 package() {
-    cd bemenu
+    cd bemenu/build
     make DESTDIR="$pkgdir" install
 }
