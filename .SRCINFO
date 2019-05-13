@@ -1,0 +1,17 @@
+pkgbase = diamond-aligner-git
+	pkgdesc = Accelerated BLAST compatible local sequence aligner.
+	pkgver = v0.9.24.r46.gd333bab
+	pkgrel = 1
+	url = https://github.com/bbuchfink/diamond
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = gcc-libs
+	depends = zlib
+	provides = diamond-aligner
+	conflicts = diamond-aligner
+	source = git+https://github.com/bbuchfink/diamond.git
+	sha256sums = SKIP
+
+pkgname = diamond-aligner-git
+
