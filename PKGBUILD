@@ -1,4 +1,5 @@
-# Maintainer: Morris Jobke <hey AT morrisjobke DOT de>
+# Maintainer: Jérôme Deuchnord <jerome@deuchnord.fr>
+# Contributor: Morris Jobke <hey AT morrisjobke DOT de>
 pkgname=php-blackfire
 pkgver=1.25.0
 pkgrel=1
