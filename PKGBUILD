@@ -24,12 +24,12 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/$_name"
+  cd "${srcdir}/${_pkgname}"
   NOCONFIGURE=1 ./autogen.sh
 }
 
 check() {
-  cd "${srcdir}/$_name"
+  cd "${srcdir}/${_pkgname}"
   make check
 }
 
