@@ -1,12 +1,14 @@
 pkgbase = dmenu-wayland-git
 	pkgdesc = Wayland port of a generic menu for X
-	pkgver = 4.2.1.r26.de4fcbf
+	pkgver = .r34.88f1766
 	pkgrel = 1
 	url = https://github.com/nyyManni/dmenu-wayland
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = meson
+	makedepends = ninja
 	depends = wayland-protocols
 	depends = cairo
 	depends = pango

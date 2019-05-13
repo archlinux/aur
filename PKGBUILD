@@ -9,14 +9,14 @@
 
 _pkgname=dmenu-wayland
 pkgname=$_pkgname-git
-pkgver=4.2.1.r26.de4fcbf
+pkgver=.r34.88f1766
 pkgrel=1
 pkgdesc="Wayland port of a generic menu for X"
 url="https://github.com/nyyManni/dmenu-wayland"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('wayland-protocols' 'cairo' 'pango' 'libxkbcommon' 'glib2')
-makedepends=('git')
+makedepends=('git' 'meson' 'ninja')
 # Not providing "dmenu" is intented: it does not provide a "dmenu" command, it's "dmenu-wl"
 provides=(dmenu-wayland)
 conflicts=(dmenu-wayland)
@@ -37,20 +37,18 @@ prepare() {
   if [[ -f ${SRCDEST}/config.h ]]; then
       cp "${SRCDEST}/config.h" .
   fi
-
-  sed -i 's/^PREFIX = .*$/PREFIX = \/usr/' config.mk
-  sed -i 's/lib\/x86_64-linux-gnu/lib/g' config.mk
 }
 
 build(){
-  cd $srcdir/$_pkgname
-  make \
-    X11INC=/usr/include/X11 \
-    X11LIB=/usr/lib/X11
+  cd $srcdir
+  arch-meson ${_pkgname} build
+  ninja -C build
 }
 
 package() {
-  cd $srcdir/$_pkgname
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  cd $srcdir
+  DESTDIR="$pkgdir" ninja -C build install
+
+  cd $_pkgname
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
