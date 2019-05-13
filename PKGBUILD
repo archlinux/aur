@@ -110,7 +110,7 @@ prepare() {
     git pull --no-edit upstream_stable v${_srcver_tag}
 
     msg2 "Adding patches from Arch Linux kernel repository..."
-    git remote add arch_stable https://git.archlinux.org/linux.git
+    git remote add arch_stable https://git.archlinux.org/linux.git || true
     # git pull --no-edit arch_stable "v${_srcver_tag}-arch1"
     git fetch arch_stable "v5.0.13-arch1"
     git cherry-pick 1ce49fc24c97401dda96f916e0aec1be26e480a8
