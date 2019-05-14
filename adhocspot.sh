@@ -1,6 +1,6 @@
 #!/bin/bash
 
-_version=20181219.2
+_version=20190514.1
 
 ##### Dependencies. #####
 #
@@ -48,11 +48,20 @@ _rundir_base_default="/var/run/adhocspot"
 
 stdout()
 # To write to stdout.
+# Options: '-n': Without trailing newline.
 {
-  if [ $# -ge 1 ]; then
-    cat <<< "$@"
+  if [ "$1" == "-n" ]; then
+    _fmt='%s'
+    shift
   else
-    cat
+    _fmt='%s\n'
+  fi
+
+  if [ $# -gt 1 ]; then
+    errmsg "BUG: Too many arguments passed to internal function 'stdout()'".
+    return 12
+  else
+    printf "${_fmt}" "$1"
   fi
 }
 
