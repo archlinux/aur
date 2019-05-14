@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-sexplib0
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Library containing the definition of S-expressions and some base converters"
 arch=('x86_64')
@@ -11,12 +11,12 @@ depends=('ocaml')
 makedepends=('dune')
 options=('!strip')
 source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/sexplib0-v${pkgver}.tar.gz")
-md5sums=('1c14ba30b471e49f1b23fea5ff99ea6b')
+sha512sums=('104f8526a147cfa6ecf168c8ee10a78ad3133c0a8a3714dc9dffd6358152752b337262b857c89170e07071ae669724da6f5556304c5abb3e9ce505ec700b7ad8')
 
 build() {
   cd "${srcdir}/sexplib0-v${pkgver}"
 
-  jbuilder build
+  dune build
 }
 
 
@@ -24,7 +24,7 @@ package() {
   cd "${srcdir}/sexplib0-v${pkgver}"
 
   mkdir -p "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
-  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
+  dune install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
-  install -Dm755 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  install -Dm755 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
