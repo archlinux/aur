@@ -3,7 +3,7 @@
 # Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 
 pkgname=etcher
-pkgver=1.5.38
+pkgver=1.5.34
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64)
