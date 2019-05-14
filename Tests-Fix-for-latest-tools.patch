@@ -1,0 +1,56 @@
+From 51b4e20dacdf12e30c506cdb7878fa2d95f4138c Mon Sep 17 00:00:00 2001
+From: Andreas Fuchs <andreas.fuchs@sit.fraunhofer.de>
+Date: Wed, 8 May 2019 10:27:43 +0200
+Subject: [PATCH] Tests: Fix for latest tools
+
+Latest tpm2_evictcontrol outputs a second line to stdout.
+
+Signed-off-by: Andreas Fuchs <andreas.fuchs@sit.fraunhofer.de>
+---
+ test/rsasign_parent.sh               | 2 +-
+ test/rsasign_persistent.sh           | 2 +-
+ test/rsasign_persistent_emptyauth.sh | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/test/rsasign_parent.sh b/test/rsasign_parent.sh
+index a4a89be..60720bb 100755
+--- a/test/rsasign_parent.sh
++++ b/test/rsasign_parent.sh
+@@ -19,7 +19,7 @@ tpm2_createprimary -a o -g sha256 -G rsa -o ${PARENT_CTX}
+ tpm2_flushcontext -t
+ 
+ # Load primary key to persistent handle
+-HANDLE=$(tpm2_evictcontrol -a o -c ${PARENT_CTX} | cut -d ' ' -f 2)
++HANDLE=$(tpm2_evictcontrol -a o -c ${PARENT_CTX} | cut -d ' ' -f 2 | head -n 1)
+ tpm2_flushcontext -t
+ 
+ # Generating a key underneath the persistent parent
+diff --git a/test/rsasign_persistent.sh b/test/rsasign_persistent.sh
+index 293b13e..b04bccc 100755
+--- a/test/rsasign_persistent.sh
++++ b/test/rsasign_persistent.sh
+@@ -30,7 +30,7 @@ RSA_CTX=${DIR}/rsakey.ctx
+ tpm2_load -C ${PARENT_CTX} -u ${TPM_RSA_PUBKEY} -r ${TPM_RSA_KEY} -o ${RSA_CTX}
+ tpm2_flushcontext -t
+ 
+-HANDLE=$(tpm2_evictcontrol -a o -c ${RSA_CTX} | cut -d ' ' -f 2)
++HANDLE=$(tpm2_evictcontrol -a o -c ${RSA_CTX} | cut -d ' ' -f 2 | head -n 1)
+ tpm2_flushcontext -t
+ 
+ # Signing Data
+diff --git a/test/rsasign_persistent_emptyauth.sh b/test/rsasign_persistent_emptyauth.sh
+index 71debcd..a97d14f 100755
+--- a/test/rsasign_persistent_emptyauth.sh
++++ b/test/rsasign_persistent_emptyauth.sh
+@@ -30,7 +30,7 @@ RSA_CTX=${DIR}/rsakey.ctx
+ tpm2_load -C ${PARENT_CTX} -u ${TPM_RSA_PUBKEY} -r ${TPM_RSA_KEY} -o ${RSA_CTX}
+ tpm2_flushcontext -t
+ 
+-HANDLE=$(tpm2_evictcontrol -a o -c ${RSA_CTX} | cut -d ' ' -f 2)
++HANDLE=$(tpm2_evictcontrol -a o -c ${RSA_CTX} | cut -d ' ' -f 2 | head -n 1)
+ tpm2_flushcontext -t
+ 
+ # Signing Data
+-- 
+2.21.0
+
