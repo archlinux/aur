@@ -1,0 +1,17 @@
+pkgbase = gocomplete
+	pkgdesc = bash completion written in go + bash completion for go command
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/posener/complete
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = go
+	depends = bash-completion
+	source = complete-1.2.1.tar.gz::https://github.com/posener/complete/archive/v1.2.1.tar.gz
+	source = go
+	sha256sums = 172c679610a8e91b188b0260f0615ea32ef05c6feb2dc313eaef522853758579
+	sha256sums = cf3f177396a14b0800249a16ab18e9e0e4e3b001b51f0cc28f1974fc5bb76850
+
+pkgname = gocomplete
+
