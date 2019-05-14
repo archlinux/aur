@@ -3,11 +3,11 @@
 
 pkgname=gmt
 pkgver=5.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps."
 arch=(i686 x86_64)
 url="http://gmt.soest.hawaii.edu/"
-license=('GPL')
+license=('LGPL')
 makedepends=('cmake')
 depends=('gdal' 'fftw' 'lapack')
 optdepends=(
@@ -27,6 +27,9 @@ md5sums=('846c7717ca8a6e2c76cc5538331ff59e')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i 's/\*\.1\.gz/\*\.1gmt\.gz/g' doc/rst/CMakeLists.txt
+  sed -i 's/\*\.3\.gz/\*\.3gmt\.gz/g' doc/rst/CMakeLists.txt
+  sed -i 's/\*\.5\.gz/\*\.5gmt\.gz/g' doc/rst/CMakeLists.txt
   rm -fr build && mkdir build
 }
 
@@ -48,6 +51,12 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
+  make docs_man
+  cd doc/rst/man \
+  && for i in $(ls *.1.gz); do mv $i ${i%".1.gz"}.1gmt.gz; done \
+  && for i in $(ls *.3.gz); do mv $i ${i%".3.gz"}.3gmt.gz; done \
+  && for i in $(ls *.5.gz); do mv $i ${i%".5.gz"}.5gmt.gz; done \
+  && cd "${srcdir}/${pkgname}-${pkgver}/build"
   make "DESTDIR=${pkgdir}" install || return 1
 }
 
