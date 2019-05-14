@@ -1,5 +1,5 @@
 pkgbase = anbox-git
-	pkgver = r880.69e75c9
+	pkgver = r1096.ea2b7a3
 	pkgrel = 1
 	epoch = 1
 	url = http://anbox.io/

@@ -2,7 +2,7 @@
 
 pkgname=('anbox-git' 'anbox-modules-dkms-git')
 _pkgname=anbox
-pkgver=r880.69e75c9
+pkgver=r1096.ea2b7a3
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -48,7 +48,7 @@ build() {
   mkdir -p "$srcdir/${_pkgname}/build"
   cd "$srcdir/${_pkgname}/build"
 
-  cmake .. -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_FLAGS="-Wno-error=implicit-fallthrough" -DCMAKE_BUILD_TYPE=Release
+  cmake .. -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_FLAGS="-Wno-error=implicit-fallthrough -Wno-error=missing-field-initializers" -DCMAKE_BUILD_TYPE=Release
   make
 }
 
