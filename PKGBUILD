@@ -4,7 +4,7 @@
 pkgbase=gridcoinresearch
 pkgname=(gridcoinresearch-qt gridcoinresearchd)
 pkgver=4.0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
 makedepends=('boost' 'qt5-charts' 'qt5-tools' 'qrencode' 'db')
 
@@ -35,7 +35,7 @@ package_gridcoinresearch-qt() {
   cd "$srcdir/$_sourcename"
 
   install -Dm755 usr/bin/gridcoinresearch "$pkgdir/usr/bin/gridcoinresearch"
-  cp -r ${srcdir}/${_sourcename}/usr/share ${pkgdir}/share/
+  cp -r ${srcdir}/${_sourcename}/usr/share ${pkgdir}/usr/share/
   install -Dm644 doc/gridcoinresearch.1 "$pkgdir/usr/share/man/man1/gridcoinresearch.1"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
