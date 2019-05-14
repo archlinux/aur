@@ -10,7 +10,7 @@
 
 pkgname=opencpn
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Chart Plotting / Marine Navigation"
 arch=('x86_64')
 license=("GPL2")
@@ -18,8 +18,14 @@ depends=('wxgtk3' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme')
 makedepends=('cmake')
 url="http://opencpn.org"
 install=opencpn.install
-source=("https://github.com/OpenCPN/OpenCPN/archive/v5.0.0.tar.gz")
-sha1sums=('9ef9ef76ccd94f2a970ef0689a487aec33b19125')
+source=("https://github.com/OpenCPN/OpenCPN/archive/v5.0.0.tar.gz" "wxWidgets.patch")
+sha1sums=('9ef9ef76ccd94f2a970ef0689a487aec33b19125'
+          'e40584dae18b4f4522e5e24491fb5cb212913467')
+
+prepare() {
+  cd "OpenCPN-${pkgver}"
+  patch  --forward --strip=1 --input="${srcdir}/wxWidgets.patch"
+}
 
 build() {
   cd "OpenCPN-${pkgver}"

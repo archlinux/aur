@@ -1,7 +1,7 @@
 pkgbase = opencpn
 	pkgdesc = Open Source Chart Plotting / Marine Navigation
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opencpn.org
 	install = opencpn.install
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = opencpn
 	depends = tinyxml
 	depends = hicolor-icon-theme
 	source = https://github.com/OpenCPN/OpenCPN/archive/v5.0.0.tar.gz
+	source = wxWidgets.patch
 	sha1sums = 9ef9ef76ccd94f2a970ef0689a487aec33b19125
+	sha1sums = e40584dae18b4f4522e5e24491fb5cb212913467
 
 pkgname = opencpn
 
