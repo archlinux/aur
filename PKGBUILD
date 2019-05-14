@@ -8,7 +8,7 @@ epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
 license=('GPL3')
-makedepends=('cmake' 'git' 'glm' 'lxc' 'sdl2_image' 'protobuf' 'boost' 'properties-cpp' 'gtest')
+makedepends=('cmake' 'git' 'glm' 'lxc' 'sdl2_image' 'protobuf' 'boost' 'properties-cpp' 'gtest' 'python2')
 source=("git+https://github.com/anbox/anbox.git"
 	"git+https://github.com/anbox/anbox-modules.git"
 	'anbox-container-manager.service'
