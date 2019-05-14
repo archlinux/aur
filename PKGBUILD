@@ -1,7 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=appleseed-git
 #_fragment="#branch=2.0.5-beta-maintenance"
-pkgver=2.0.0.beta.r297.g94b600d49
+pkgver=2.0.0.beta.r408.gffce4b2da
 pkgrel=1
 epoch=1
 pkgdesc="physically-based global illumination rendering engine primarily designed for animation and visual effects. "
@@ -19,7 +19,7 @@ source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment
         )
 md5sums=('SKIP'
          '1cc8d927665c126dde4d1135e500c0dc'
-         '55ae4d9dca2d3bbdeb6bbbd58c5d1094')
+         '0414eb9eae969118a118c82ac9d47512')
   
 #_pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 #_pyver=$(pacman -Sddp --print-format %v python|grep -oP ^[0-9.]{3})
