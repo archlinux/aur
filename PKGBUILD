@@ -3,7 +3,7 @@
 # Contributor: mitts <mittens2001@opmbx.org>
 
 pkgname=gmusicproxy
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Stream Google Play Music using any media-player"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python-gmusicapi' 'python-netifaces' 'python-xdg' 'python-eyed3' 'python-daemon')
 optdepends=('python-keyring: keyring support')
 makedepends=('python-setuptools')
-source=("https://github.com/M0Rf30/gmusicproxy/archive/v${pkgver}.tar.gz"
+source=("https://github.com/M0Rf30/gmusicproxy/archive/${pkgver}.tar.gz"
 	"$pkgname.service"
 	"$pkgname.sysuser"
 	"$pkgname.tmpfiles"
@@ -38,8 +38,7 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-
-md5sums=('26bdf574454116abbf4a43d0ac73d0d1'
-         'dcb085039110ab6a87e944865a4fccdb'
-         'f7c765324710c59738db0b8a9c124982'
-         '73f91c48628136882893a3dbb1919bae')
+md5sums=('2fdd26f21e4a6a3d2563f4e847bde64e'
+	'dcb085039110ab6a87e944865a4fccdb'
+	'f7c765324710c59738db0b8a9c124982'
+'73f91c48628136882893a3dbb1919bae')
