@@ -28,7 +28,7 @@ pkgbase = mudlet
 	conflicts = mudlet-git
 	conflicts = mudlet-deb
 	source = https://www.mudlet.org/wp-content/files/Mudlet-3.20.1.tar.xz
-	sha256sums = 9b736865d8450d73b0effca7d1f118d31fa7a9cb489e26cf8242840111398ef7s
+	sha256sums = 9b736865d8450d73b0effca7d1f118d31fa7a9cb489e26cf8242840111398ef7
 
 pkgname = mudlet
 
