@@ -1,28 +1,29 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=hunter-holy
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.4
+pkgrel=1
 pkgdesc='ranger-like file browser written in Rust (holy branch)'
 arch=(i686 x86_64)
 url=https://github.com/rabite0/hunter
 license=(WTFPL)
 depends=(file)
-makedepends=(rust)
-optdepends=('ranger: to open files using rifle')
+makedepends=(rust-nightly)
+optdepends=('ranger: to open files using rifle'
+            'xdg-open: fallback to open files with xdg-open')
 provides=(hunter)
 conflicts=(hunter hunter-git hunter-holy-git)
 source=($url/archive/v$pkgver-holy.tar.gz)
-sha512sums=('8f9b907b062065b289b7481b0ff4a00fc58a533ca56261a9576801a4a22e225caacecce65780f4fd5a41f757fb3854e7452587e5b736c3946bec0100c7527616')
+sha512sums=('4540d4df98cd49a8171d62a090fbd5c83264784c710c89718bc7ae6559d205e14921c42136acaee9e7bd95121cbd2f5400c056dd663e5fa277f71572fdadd47a')
 
 build() {
   cd hunter-$pkgver-holy
-  cargo build --release
+  cargo +nightly build --release
 }
 
 package() {
   cd hunter-$pkgver-holy
   install -D {target/release/hunter,extra/scope.sh} -t "$pkgdir"/usr/bin
-  install -Dm 644 README.md -t "$pkgdir"/usr/share/hunter-holy
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/hunter
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/hunter
 }
