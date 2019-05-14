@@ -1,6 +1,6 @@
 pkgbase = nvidia-container-runtime
 	pkgdesc = NVIDIA container runtime
-	pkgver = 2.0.0+1.docker18.09.3
+	pkgver = 2.0.0+3.docker18.09.6
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-container-runtime
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = nvidia-container-runtime
 	depends = libseccomp
 	depends = nvidia-container-runtime-hook
 	source = git+https://github.com/NVIDIA/nvidia-container-runtime.git#commit=03af0a80dbcbcfa09a828cde46151749bee2480e
-	source = git+https://github.com/opencontainers/runc.git#commit=6635b4f0c6af3810594d2770f662f34ddc15b40d
+	source = git+https://github.com/opencontainers/runc.git#commit=2b18fe1d885ee5083ef9f0838fee39b62d653e30
 	sha256sums = SKIP
 	sha256sums = SKIP
 
