@@ -10,7 +10,7 @@ pkgdesc="Radio program for GNU/Linux made in gtk3 designed for Pantheon Shell"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
-depends=('gtk3' 'granite' 'glib2>=2.20' 'libsoup' 'json-glib' 'gdk-pixbuf2')
+depends=('gtk3' 'granite' 'gdk-pixbuf2' 'glib2>=2.20' 'libsoup' 'json-glib' 'mpv')
 optdepends=('lib32-json-glib')
 makedepends=('git' 'meson' 'ninja' 'vala')
 provides=("${_gitname}")

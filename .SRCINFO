@@ -12,10 +12,11 @@ pkgbase = raddiu-git
 	makedepends = vala
 	depends = gtk3
 	depends = granite
+	depends = gdk-pixbuf2
 	depends = glib2>=2.20
 	depends = libsoup
 	depends = json-glib
-	depends = gdk-pixbuf2
+	depends = mpv
 	optdepends = lib32-json-glib
 	provides = raddiu
 	conflicts = raddiu
