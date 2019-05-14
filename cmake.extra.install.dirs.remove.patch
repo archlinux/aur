@@ -1,15 +1,16 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 55bc83209..cfa5542e1 100644
+index cb8bfa958..8d8a4e5be 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -673,10 +673,6 @@ install (
-     DESTINATION .
+@@ -756,11 +756,6 @@ install (
+     DESTINATION schemas
  )
  
 -install (
 -    CODE "FILE (MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/images)"
 -    CODE "FILE (MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/images/autosave)"
 -)
- 
- if (WITH_SAMPLES)
+-
+ if (INSTALL_HEADERS)
      install (
+         DIRECTORY src/appleseed/foundation

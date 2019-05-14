@@ -25,10 +25,8 @@ pkgbase = appleseed-git
 	conflicts = appleseed
 	source = appleseed-git::git+https://github.com/appleseedhq/appleseed.git
 	source = cmake.extra.install.dirs.remove.patch
-	source = https://github.com/appleseedhq/appleseed/pull/2526.diff
 	md5sums = SKIP
-	md5sums = 1cc8d927665c126dde4d1135e500c0dc
-	md5sums = 0414eb9eae969118a118c82ac9d47512
+	md5sums = 667700dcf5d0e135ad17109877001ade
 
 pkgname = appleseed-git
 

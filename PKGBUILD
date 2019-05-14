@@ -15,11 +15,10 @@ makedepends=(git cmake)
 options=()
 source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment}"
         "cmake.extra.install.dirs.remove.patch"
-        "https://github.com/appleseedhq/appleseed/pull/2526.diff"
         )
 md5sums=('SKIP'
-         '1cc8d927665c126dde4d1135e500c0dc'
-         '0414eb9eae969118a118c82ac9d47512')
+         '667700dcf5d0e135ad17109877001ade'
+         )
   
 #_pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 #_pyver=$(pacman -Sddp --print-format %v python|grep -oP ^[0-9.]{3})
@@ -43,7 +42,7 @@ pkgver() {
 prepare() {
   cd ${pkgname}
   git apply -v ${srcdir}/cmake.extra.install.dirs.remove.patch
-  git apply -v ${srcdir}/*.diff
+# git apply -v ${srcdir}/*.diff
   grep -q avx /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_AVX=ON"
   grep -q avx2 /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_AVX2=ON"
   grep -q f16c /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_F16C=ON"
