@@ -68,13 +68,13 @@ _srcname=linux-${_major}
 _clr=${_major}.40-29
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
 makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
 options=('!strip')
-_ucode='20190312'
+_ucode='20190514'
 _gcc_more_v='20180509'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar".{xz,sign}
@@ -342,7 +342,7 @@ sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
             '76d70fd9edc3f5eb106eec2815d51717c2daf698b258a2c21f9cbdb495a3002c'
             'SKIP'
-            '2a4438a66ed1a9b82be943d6d19366c006787ba5af302f425674ca6d8c928099'
+            '553858de4315d267d1f259d1146db028eec5112a797379a7a83f5c8a22e626b3'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
