@@ -1,20 +1,28 @@
-# Maintainer: Sigmund Vestergaard <sigmundv at gmail dot com>
+# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Contributor: Sigmund Vestergaard <sigmundv at gmail dot com>
+
 pkgname=python-eve
-pkgver=0.5.3
+_pkgname=eve
+pkgver=0.9
 pkgrel=1
-pkgdesc="An open source Python REST API framework designed for human beings."
+pkgdesc="An open source Python REST API framework designed for human beings"
 arch=('any')
 url="http://python-eve.org/"
 license=('BSD')
+depends=('python-flask' 'python-simplejson' 'python-pymongo' 'python-cerberus' 'python-events')
 makedepends=('python-setuptools')
-provides=('python-eve')
-options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/E/Eve/Eve-${pkgver}.tar.gz")
-sha256sums=('623e89bc551eee0fa4b2325ec17eef2cf13d019475befb8a425d62f1117619fb')
+conflicts=('python-eve-git')
+source=("https://github.com/pyeve/$_pkgname/archive/v$pkgver.tar.gz")
+md5sums=('04d237d2995f6fcd1cada5f095931377')
+
+build() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir/Eve-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --root="$pkgdir/" --skip-build --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
