@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=system76-driver-git
-pkgver=19.04.7.r7.g1090881
+pkgver=19.04.8.r2.g12fc202
 pkgrel=1
 pkgdesc="System76 Driver for System76 computers"
 arch=('any')
