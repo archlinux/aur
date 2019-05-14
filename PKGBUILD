@@ -1,28 +1,40 @@
-# Maintainer: Jack Random <jack at random dot to>
-# former Maintainer: Rasmus Steinke <rasi at xssn dot at>
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Jack Random <jack at random dot to>
+# Contributor: Rasmus Steinke <rasi at xssn dot at>
 
-pkgname=buku-git
-_pkgname=buku
-pkgver=1382.271390e
+set -u
+pkgname='buku-git'
+_pkgname="${pkgname%-git}"
+pkgver=4.2.2.r15.g2c577a9
 pkgrel=1
-pkgdesc="Powerful command-line bookmark manager."
+pkgdesc='Powerful command-line bookmark manager.'
 arch=('any')
-depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'python-urllib3' 'python-certifi')
-conflicts=('buku')
-provides=('buku')
-makedepends=('make')
-url="https://github.com/jarun/Buku"
+url='https://github.com/jarun/Buku'
 license=('GPL3')
+depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'python-urllib3' 'python-certifi' 'python-html5lib')
+makedepends=('make')
+makedepends+=('git')
+provides=("buku=${pkgver%%.r*}")
+conflicts=('buku')
 source=('git+https://github.com/jarun/buku.git')
+md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
-	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  set -u
+  cd "${_pkgname}"
+  git describe --long | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g' -e 's:^v::g'
+  set +u
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  install -Dm755 ${_pkgname}.py "${pkgdir}/usr/bin/${_pkgname}"
+  set -u
+  cd "${_pkgname}"
+  install -Dm644 "${_pkgname}.1" -t "${pkgdir}/usr/share/man/man1/"
+  python setup.py install --root="${pkgdir}" --prefix='/usr'
+  install -Dm644 'auto-completion/fish/buku.fish' -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  install -Dm644 'auto-completion/bash/buku-completion.bash' "${pkgdir}/etc/bash_completion.d/buku"
+  install -Dm644 'auto-completion/zsh/_buku' -t "${pkgdir}/usr/share/zsh/site-functions/"
+  set +u
 }
-
-md5sums=('SKIP')
+set +u

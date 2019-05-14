@@ -1,20 +1,23 @@
 pkgbase = buku-git
 	pkgdesc = Powerful command-line bookmark manager.
-	pkgver = 1172.33c126a
+	pkgver = 4.2.2.r15.g2c577a9
 	pkgrel = 1
 	url = https://github.com/jarun/Buku
 	arch = any
 	license = GPL3
 	makedepends = make
+	makedepends = git
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-cryptography
 	depends = python-urllib3
 	depends = python-certifi
-	provides = buku
+	depends = python-html5lib
+	provides = buku=4.2.2
 	conflicts = buku
 	source = git+https://github.com/jarun/buku.git
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = buku-git
 
