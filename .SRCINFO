@@ -23,6 +23,7 @@ pkgbase = macaulay2
 	depends = cddlib
 	depends = gfan
 	depends = gtest
+	depends = readline7
 	source = git+https://github.com/Macaulay2/M2
 	md5sums = SKIP
 

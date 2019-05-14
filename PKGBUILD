@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.math.uiuc.edu/Macaulay2/"
 license=('GPL')
 depends=('gcc-fortran' 'gdbm' 'gmp' 'readline' 'lapack' 'scscp' 'gc'
-         'singular-factory' 'frobby' 'glpk' 'cddlib' 'gfan' 'gtest')
+         'singular-factory' 'frobby' 'glpk' 'cddlib' 'gfan' 'gtest' 'readline7')
 makedepends=('git' 'unzip' 'emacs' 'texinfo')
 source=('git+https://github.com/Macaulay2/M2')
 
