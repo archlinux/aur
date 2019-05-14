@@ -1,0 +1,13 @@
+pkgbase = kytan
+	pkgdesc = High Performance Peer-to-Peer VPN by rust
+	pkgver = 0903be12
+	pkgrel = 1
+	url = https://github.com/changlan/kytan
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	source = kytan::git+https://github.com/changlan/kytan
+	sha256sums = SKIP
+
+pkgname = kytan
+
