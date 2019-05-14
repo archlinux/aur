@@ -1,6 +1,6 @@
 pkgbase = dr
 	pkgdesc = An ed-like client for devRant written in python
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/Ewpratten/dr
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dr
 	makedepends = python
 	depends = python-pip
 	depends = python
-	source = https://github.com/Ewpratten/dr/releases/download/1.0-nix/dr
+	source = https://github.com/Ewpratten/dr/releases/download/2.0-nix/dr
 	sha512sums = b372238a0ee3ce0a44ca733c0f9676f9f21498304825ee97409351c78f9fbd08ae44c2f354ecfbb030b5c59eebee85227f643ff6d2063622759f82bd60e6f377
 
 pkgname = dr
