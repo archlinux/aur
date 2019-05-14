@@ -88,14 +88,17 @@ _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
 _gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
-source=("git+${_repo_url}?signed#tag=v${_srcver}"
-        "git+${_repo_url_gcc_patch}"
-        config         # the main kernel config file
-        60-linux.hook  # pacman hook for depmod
-        90-linux.hook  # pacman hook for initramfs regeneration
-        linux.preset   # standard config files for mkinitcpio ramdisk
-        01-Undead-PDS-0.99o-rebase-by-TkG.patch
-        02-Glitched-PDS-by-TkG.patch
+_pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
+
+source=(
+    "git+${_repo_url}?signed#tag=v${_srcver}"
+    "git+${_repo_url_gcc_patch}"
+    config         # the main kernel config file
+    60-linux.hook  # pacman hook for depmod
+    90-linux.hook  # pacman hook for initramfs regeneration
+    linux.preset   # standard config files for mkinitcpio ramdisk
+    01-Undead-PDS-0.99o-rebase-by-TkG.patch
+    02-Glitched-PDS-by-TkG.patch
 )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886'    # Linus Torvalds
@@ -117,7 +120,6 @@ _kernelname=${pkgbase#linux}
 prepare() {
     cd ${_reponame}
 
-    # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching Undead PDS 0.99o 5.1 rebase by TkG"
     patch -Np1 -i "$srcdir/01-Undead-PDS-0.99o-rebase-by-TkG.patch"
     patch -Np1 -i "$srcdir/02-Glitched-PDS-by-TkG.patch"
@@ -190,7 +192,7 @@ build() {
 }
 
 _package() {
-    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
+    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules ${_pkgdesc_extra}"
     depends=(
         coreutils
         kmod
@@ -251,7 +253,7 @@ _package() {
 }
 
 _package-headers() {
-    pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
+    pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel ${_pkgdesc_extra}"
     provides=(
         "linux-pds-headers=${pkgver}"
         "linux-headers=${pkgver}"
@@ -336,7 +338,7 @@ _package-headers() {
 }
 
 _package-docs() {
-    pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
+    pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel ${_pkgdesc_extra}"
     provides=(
         "linux-pds-docs=${pkgver}"
         "linux-docs=${pkgver}"
