@@ -1,6 +1,6 @@
 pkgbase = electrum-ltc-git
 	pkgdesc = Litecoin thin client
-	pkgver = 3.3.5.1.git20190510.eed0e58
+	pkgver = 3.3.5.1.git20190514.7db15b9
 	pkgrel = 1
 	url = https://electrum-ltc.org/
 	arch = any
@@ -25,7 +25,6 @@ pkgbase = electrum-ltc-git
 	depends = python-qrcode
 	depends = python-scrypt
 	depends = python-websocket-client
-	depends = python-websockets
 	depends = zbar
 	source = git+https://github.com/pooler/electrum-ltc
 	sha256sums = SKIP
