@@ -7,6 +7,9 @@ arch=('i686' 'x86_64')
 url="https://github.com/kamranahmedse/pennywise"
 license=('MIT')
 depends=('gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libxss')
+optdepends=('chromium: For Open with Pennywise Chrome extension'
+			'google-chrome: For Open with Pennywise Chrome Extension'
+			'firefox: For Open with Pennywise Firefox Add-on')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source_i686=("https://github.com/kamranahmedse/$_pkgname/releases/download/v$pkgver/${_pkgname}_${pkgver}_i386.deb")
