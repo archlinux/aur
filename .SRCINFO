@@ -1,6 +1,6 @@
 pkgbase = python-gmusicapi
 	pkgdesc = An unofficial client library for Google Music
-	pkgver = 12.0.0
+	pkgver = 12.1.0
 	pkgrel = 1
 	url = https://github.com/simon-weber/gmusicapi
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-gmusicapi
 	makedepends = python-setuptools
 	provides = python2-gmusicapi
 	conflicts = python2-gmusicapi-git
-	source = https://github.com/simon-weber/gmusicapi/archive/12.0.0.tar.gz
-	md5sums = e04f4c44ce8ca501ab29c4a85a8c669b
+	source = https://github.com/simon-weber/gmusicapi/archive/12.1.0.tar.gz
+	md5sums = b1e21ab4f4662d72fc525f7d72243f10
 
 pkgname = python2-gmusicapi
 	depends = python2-validictory
