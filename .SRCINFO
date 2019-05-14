@@ -1,0 +1,18 @@
+pkgbase = vmware-modules-dkms-git
+	pkgdesc = vmware-host-modules is a collection of modified vmware host side kernel modules actually build against all modern kernel headers. This package wraps it in a dkms module.
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://github.com/mkubecek/vmware-host-modules
+	install = vmware-modules-dkms-git.install
+	arch = any
+	license = LGPL
+	makedepends = dkms
+	makedepends = git
+	optdepends = vmware-workstation: Required, but using the AUR package is optional
+	source = dkms.conf.in
+	source = dkms.sh.in
+	sha256sums = 57984b4a196e78f7ec0c2557c03810c8c3cf6ae393ae725b97b8ebebcb02e6a1
+	sha256sums = c4d6489274c779e418a5fd4d200c85f24903c7f116d2a6ea457fbc54cdd4c7f1
+
+pkgname = vmware-modules-dkms-git
+

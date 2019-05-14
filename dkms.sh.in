@@ -1,0 +1,27 @@
+#!/bin/sh
+# Author: Matt Wilder (<me@partcyb.org>)
+
+BASEDIR="$1"
+KERNELVER="$(echo $2 | sed 's/\([0-9]\.[0-9]*\).*/\1/')"
+PKGVER="%PKGVER%"
+NAME="%DKMSNAME%"
+DEFAULT_VERSION="15.0.4"
+
+VMWARE_VERSION="$(vmware --version | awk '{print $3}')"
+if [[ -n "$VMWARE_VERSION" ]]; then
+   echo "WARNING: Could not find vmware application to determine version to build against." \
+        " Choosing the latest version as a default"
+   VMWARE_VERSION="$DEFAULT_VERSION"
+fi
+
+TAG="w${VMWARE_VERSION}-k${KERNELVER}"
+
+git checkout "$TAG" 2>&1 >/dev/null
+RES=$?
+
+if [[ "$RES" -gt 0 ]]; then
+   echo "Failed to switch to the correct tag ($TAG)  This build will likely fail"
+   exit $RES
+fi
+echo "Switched $NAME repo to tag $TAG"
+

@@ -1,0 +1,18 @@
+# Author: Matt Wilder (<me@partcyb.org>)
+
+PACKAGE_NAME="%DKMSNAME%"
+PACKAGE_VERSION="%PKGVER%"
+AUTOINSTALL="yes"
+CLEAN[0]="make clean"
+
+MAKE[0]="'make' VM_UNAME=$kernelver"
+
+PRE_BUILD="dkms.sh $dkms_tree $kernelver"
+
+
+BUILT_MODULE_NAME[0]='vmmon'
+BUILT_MODULE_LOCATION[0]='vmmon-only/'
+DEST_MODULE_LOCATION[0]='/kernel/misc'
+BUILT_MODULE_NAME[1]='vmnet'
+BUILT_MODULE_LOCATION[1]='vmnet-only/'
+DEST_MODULE_LOCATION[1]='/kernel/misc'

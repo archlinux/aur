@@ -1,0 +1,33 @@
+# Author: Matt Wilder <me@partcyb.org>
+# vim: set ft=sh:
+
+_clone() {
+   git clone https://github.com/mkubecek/vmware-host-modules /usr/src/vmware-host-modules-${1//-*/}
+}
+
+
+pre_install() {
+   _clone "$1"
+}
+
+
+pre_upgrade() {
+   # Don't clone if this a reinstall
+   # of the same version
+   [[ "${1//-*/}" == "${2//-*/}" ]] || _clone "$1"
+}
+
+post_upgrade() {
+   # Don't remove if this a reinstall
+   # of the same version
+   [[ "${1//-*/}" == "${2//-*/}" ]] || _remove "$2"
+}
+
+post_remove() {
+   _remove "$1"
+}
+
+
+_remove() {
+   rm -rf /usr/src/vmware-host-modules-${1//-*/}
+}
