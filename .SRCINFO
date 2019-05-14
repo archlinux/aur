@@ -1,0 +1,32 @@
+pkgbase = clang-minimal-git
+	pkgdesc = C language family frontend for LLVM
+	pkgver = 9.0.0_r316422.7c5c0c9fe59
+	pkgrel = 1
+	url = https://clang.llvm.org/
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = git
+	makedepends = llvm-minimal-git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python-sphinx
+	makedepends = llvm-libs
+	depends = llvm-libs-minimal-git
+	depends = gcc
+	depends = lone_wolf-compiler-rt-git
+	optdepends = openmp: OpenMP support in clang with -fopenmp
+	optdepends = python: for scan-view and git-clang-format
+	optdepends = llvm-libs: for LLVMgold support
+	provides = clang=9.0.0_r316422.7c5c0c9fe59-1
+	provides = lone_wolf-clang-git
+	conflicts = clang
+	replaces = lone_wolf-clang-git
+	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	source = enable-SSP-and-PIE-by-default.patch
+	md5sums = SKIP
+	md5sums = 5e9b3822e6b7de45f0ecb0ad71b3f7d3
+	sha512sums = SKIP
+	sha512sums = 2fdbae0b62d33411beaf191920ff280f83fa80fd505a71077671027f27ed8c61c5867de3e6ee6f26734c7605037e86796404212182f8ffa71f4af6ed2c316a40
+
+pkgname = clang-minimal-git
+
