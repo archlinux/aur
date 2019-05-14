@@ -19,7 +19,7 @@ conflicts=('mudlet-dev' 'mudlet-git' 'mudlet-deb')
 #source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
 ##using alternate link
 source=("https://www.mudlet.org/wp-content/files/Mudlet-${pkgver}.tar.xz")
-sha256sums=('9b736865d8450d73b0effca7d1f118d31fa7a9cb489e26cf8242840111398ef7s')
+sha256sums=('9b736865d8450d73b0effca7d1f118d31fa7a9cb489e26cf8242840111398ef7')
 
 prepare() {
     cd "$srcdir/src"
