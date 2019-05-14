@@ -5,6 +5,7 @@ pkgbase = sentencepiece-git
 	url = https://github.com/google/sentencepiece
 	arch = x86_64
 	license = Apache
+	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
 	optdepends = gperftools
