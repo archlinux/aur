@@ -2,13 +2,13 @@
 # Contributer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=electrumx
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
 depends=('leveldb'
          'python>=3.6'
-         'python-aiorpcx>=0.15.0' 'python-aiorpcx<0.16.0'
+         'python-aiorpcx>=0.18.1' 'python-aiorpcx<0.19.0'
          'python-attrs'
          'python-plyvel'
          'python-pylru'
@@ -19,48 +19,37 @@ optdepends=('bitcoin-daemon: Bitcoin core headless P2P node'
             'electrum: Bitcoin thin client')
 url="https://github.com/kyuupichan/electrumx"
 license=('MIT')
-options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/kyuupichan/$pkgname/tar.gz/$pkgver
         'electrumx.conf'
-        'electrumx.service')
-sha256sums=('1fdcd39edbd4317aa13ffa56c1119f22312aaabdb5afa329da76b765cdaa6d88'
-            'f6562ddc7850be7f01a7a2428028093546d4eff2d6f5750e41124d9488dac89c'
-            'ece0696dc82e0159d9a266834e6e9e1e518caa68e6f145d262b291e1fc09d67e')
-backup=('etc/electrumx/electrumx.conf'
-        'usr/lib/systemd/system/electrumx.service')
-install=electrumx.install
+        'electrumx.service'
+        'electrumx.sysusers')
+sha256sums=('a27e8f503feaaad17f8ce7ab13bb33428a468b6beb13e041706a069f541364f8'
+            '5977f369d4a07024bcbd305c02e2130bba42fd93913224c4cd0f8f41525ad0ef'
+            'ece0696dc82e0159d9a266834e6e9e1e518caa68e6f145d262b291e1fc09d67e'
+            '761a21723d21348d598be96655e6de4827b2fcff93270895303e82670e0532f1')
+backup=('etc/electrumx/electrumx.conf')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Building...'
   python setup.py build
 }
 
 package() {
+  install -D -m 644 "$srcdir/electrumx.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg2 'Installing license...'
   install -Dm 644 LICENCE -t "$pkgdir/usr/share/licenses/$pkgname"
 
-  msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/$pkgname"
   cp -dpr --no-preserve=ownership README.rst contrib docs/* "$pkgdir/usr/share/doc/$pkgname"
 
-  msg2 'Making essential directories...'
-  install -dm 700 "$pkgdir/etc/electrumx"
-  install -dm 755 "$pkgdir/srv/electrumx"
-
-  msg2 'Installing electrumx.conf...'
   install -Dm 600 "$srcdir/electrumx.conf" -t "$pkgdir/etc/electrumx"
 
-  msg2 'Installing electrumx.service...'
   install -Dm 644 "$srcdir/electrumx.service" -t "$pkgdir/usr/lib/systemd/system"
 
-  msg2 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-  msg2 'Renaming executables...'
   mv "$pkgdir/usr/bin/electrumx_server" "$pkgdir/usr/bin/electrumx-server"
   mv "$pkgdir/usr/bin/electrumx_rpc" "$pkgdir/usr/bin/electrumx-rpc"
   mv "$pkgdir/usr/bin/electrumx_compact_history" "$pkgdir/usr/bin/electrumx-compact-history"
