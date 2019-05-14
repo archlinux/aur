@@ -23,7 +23,6 @@ pkgbase = electrum-ltc
 	depends = python-qrcode
 	depends = python-scrypt
 	depends = python-websocket-client
-	depends = python-websockets
 	depends = zbar
 	source = https://electrum-ltc.org/download/Electrum-LTC-3.3.5.1.tar.gz
 	source = https://electrum-ltc.org/download/Electrum-LTC-3.3.5.1.tar.gz.asc

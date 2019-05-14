@@ -23,7 +23,6 @@ depends=(desktop-file-utils
          python-qrcode
          python-scrypt
          python-websocket-client
-         python-websockets
          zbar)
 source=("https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz"{,.asc})
 validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
