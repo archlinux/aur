@@ -1,7 +1,7 @@
 # Maintainer: Tom Hiller <thrilleratplay@gmail.com>
 pkgname=notable-bin
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 epoch=
 pkgdesc="The markdown-based note-taking app that doesn't suck"
 arch=('x86_64')
@@ -21,15 +21,12 @@ install=
 changelog=
 source=("https://github.com/fabiospampinato/notable/releases/download/v${pkgver}/notable_${pkgver}_amd64.deb")
 noextract=()
-md5sums=('d93b98c4a6bdf65908b94af73868adea')
-sha512sums=('4db967fc1a38729bc26378f5cd7e6d8a27fb3cd08b714b014ea4c6d573e32bf10c613b31abb2cee56cce204c6a15284f971728a4f8aebf6f5bde18ef817274b1')
+md5sums=('7115dc49f46367f85f56f82409ab60e9')
+sha512sums=('80bf2a46f67940999db4e89171cda3f1b22c86cacccd7ee2e0e38a961f89083a76505b1288f65f8fc9fd6a91d3b98748f047a2d27e1763ba2aa7eef1fb7e24ae')
 validpgpkeys=()
 
 package() {
   tar xf data.tar.xz
-
-  # https://github.com/notable/notable/issues/658
-  chmod 4755 opt/Notable/chrome-sandbox
 
   mv usr "$pkgdir"
   mv opt "$pkgdir"
