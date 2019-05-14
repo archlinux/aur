@@ -1,0 +1,27 @@
+pkgbase = compiler-rt-minimal-git
+	pkgdesc = Compiler runtime libraries for clang
+	pkgver = 9.0.0_r316415.e041d15f5e3
+	pkgrel = 1
+	url = https://compiler-rt.llvm.org/
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = git
+	makedepends = llvm-minimal-git
+	makedepends = llvm-libs-minimal-git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	makedepends = llvm-libs
+	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	md5sums = SKIP
+	sha512sums = SKIP
+	makedepends_x86_64 = lib32-gcc-libs
+
+pkgname = compiler-rt-minimal-git
+	depends = gcc-libs
+	provides = compiler-rt=9.0.0_r316415.e041d15f5e3-1
+	provides = compiler-rt-git=9.0.0_r316415.e041d15f5e3-1
+	provides = lone_wolf-compiler-rt-git
+	conflicts = compiler-rt
+	replaces = lone_wolf-compiler-rt-git
+
