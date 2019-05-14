@@ -1,0 +1,23 @@
+pkgbase = r-promises
+	pkgdesc = Abstractions for Promise-Based Asynchronous Programming
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=promises
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = r
+	depends = r-r6
+	depends = r-rcpp
+	depends = r-later
+	depends = r-rlang
+	depends = r-magrittr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-future
+	source = http://cran.r-project.org/src/contrib/promises_1.0.1.tar.gz
+	md5sums = ba0b1c2d9b26819f48e589732854d7c8
+
+pkgname = r-promises
+
