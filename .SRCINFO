@@ -1,8 +1,8 @@
 pkgbase = seexpr2
 	pkgdesc = An embeddable expression evaluation engine
 	pkgver = 1.11.4
-	pkgrel = 1
-	url = http://www.disneyanimation.com/technology/seexpr.html
+	pkgrel = 2
+	url = https://www.disneyanimation.com/technology/seexpr.html
 	arch = i686
 	arch = x86_64
 	license = custom:Apache
@@ -10,13 +10,14 @@ pkgbase = seexpr2
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = git
-	makedepends = llvm
+	makedepends = llvm7
 	makedepends = libpng
 	makedepends = python-pyqt5
 	makedepends = python-sip
 	makedepends = sip
 	depends = python
 	depends = boost-libs
+	depends = llvm7-libs
 	depends = qt5-base
 	source = git+https://github.com/wdas/SeExpr.git#tag=v2-1.11.4
 	source = llvm.patch

@@ -3,14 +3,14 @@
 pkgname=('seexpr2' 'seexpr2-doc')
 _fragment="#tag=v2-1.11.4"
 pkgver=1.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An embeddable expression evaluation engine"
 arch=('i686' 'x86_64')
-url="http://www.disneyanimation.com/technology/seexpr.html"
+url="https://www.disneyanimation.com/technology/seexpr.html"
 license=('custom:Apache')
-depends=('python' 'boost-libs' 'llvm-libs' 'qt5-base')
+depends=('python' 'boost-libs' 'llvm7-libs' 'qt5-base')
 #makedepends=('python2-pyqt4' 'doxygen' 'glew' 'libpng' 'cmake>=2.4.6' 'git' 'python-sip' 'boost' 'llvm')
-makedepends=('boost' 'cmake' 'doxygen' 'git' 'llvm' 'libpng' 'python-pyqt5' 'python-sip' 'sip')
+makedepends=('boost' 'cmake' 'doxygen' 'git' 'llvm7' 'libpng' 'python-pyqt5' 'python-sip' 'sip')
 source=("git+https://github.com/wdas/SeExpr.git${_fragment}"
 	"llvm.patch")
 md5sums=('SKIP'
