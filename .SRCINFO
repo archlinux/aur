@@ -7,7 +7,7 @@ pkgbase = python2-pygtkhelpers
 	license = LGPL3
 	makedepends = python2-distribute
 	depends = pygtk
-	source = http://pypi.python.org/packages/source/p/pygtkhelpers/pygtkhelpers-0.4.3.tar.gz
+	source = https://pypi.python.org/packages/source/p/pygtkhelpers/pygtkhelpers-0.4.3.tar.gz
 	md5sums = 1e2493dbbfed4042d35552b383f7a7cc
 
 pkgname = python2-pygtkhelpers

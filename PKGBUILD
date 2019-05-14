@@ -9,7 +9,7 @@ url="http://packages.python.org/pygtkhelpers"
 license=('LGPL3')
 depends=('pygtk')
 makedepends=('python2-distribute')
-source=("http://pypi.python.org/packages/source/p/pygtkhelpers/pygtkhelpers-$pkgver.tar.gz")
+source=("https://pypi.python.org/packages/source/p/pygtkhelpers/pygtkhelpers-$pkgver.tar.gz")
 
 package() {
   cd "$srcdir/pygtkhelpers-$pkgver"
