@@ -4,7 +4,7 @@ pkgname=intellij-idea-community-edition-no-jre
 _appname=jetbrains-idea-ce
 pkgver=2019.1.2
 _buildver=191.7141.44
-pkgrel=1
+pkgrel=2
 pkgdesc="Intellij Idea Community Edition without bundled JRE"
 arch=('any')
 url="http://www.jetbrains.com/idea/"
@@ -25,7 +25,7 @@ package() {
 
 	install -dm 755 "$pkgdir"/usr/bin
 	install -dm 755 "$pkgdir"/usr/share/{licenses,pixmaps,"$_appname",icons/hicolor/scalable/apps}
-	cp -dr --no-preserve='ownership' bin lib plugins redist "$pkgdir"/usr/share/"$_appname/"
+	cp -dr --no-preserve='ownership' bin lib plugins redist build.txt product-info.json "$pkgdir"/usr/share/"$_appname/"
 	cp -dr --no-preserve='ownership' license "$pkgdir"/usr/share/licenses/"$_appname"
 	ln -s /usr/share/"$_appname"/bin/idea.png "$pkgdir"/usr/share/pixmaps/"$_appname".png
 	ln -s /usr/share/idea/bin/idea.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/"$_appname".svg
