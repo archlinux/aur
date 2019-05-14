@@ -10,7 +10,7 @@ license=(WTFPL)
 depends=(file)
 makedepends=(git rust-nightly)
 optdepends=('ranger: to open files using rifle'
-            'xdg-open: fallback to open files with xdg-open')
+            'xdg-utils: fallback to open files with xdg-open')
 provides=(hunter)
 conflicts=(hunter hunter-holy hunter-holy-git)
 source=(git+$url)
