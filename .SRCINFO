@@ -5,6 +5,7 @@ pkgbase = unbound-block-hosts
 	url = https://github.com/gbxyz/unbound-block-hosts
 	arch = any
 	license = GPL
+	license = PerlArtistic
 	depends = perl-lwp-protocol-https
 	source = git+https://github.com/gbxyz/unbound-block-hosts#commit=87966ee571cdeb78b89d16aac48d8fa2935ad6b2
 	sha512sums = SKIP

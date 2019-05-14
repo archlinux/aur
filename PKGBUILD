@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="Script to convert an ad-blocking hosts file (Dan Pollock's, by default) into Unbound local-data"
 arch=(any)
 url=https://github.com/gbxyz/unbound-block-hosts
-license=(GPL)
+license=(GPL PerlArtistic)
 depends=(perl-lwp-protocol-https)
 source=(git+$url#commit=$_commit)
 sha512sums=('SKIP')
