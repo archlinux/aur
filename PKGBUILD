@@ -32,7 +32,7 @@ md5sums=('SKIP'
          'ebb1dc43e014a1e720a06422c6248a40'
          '65b200a06e15205bda713c8553953c50'
          '57e1c8073d9085631911e060c3802bd2'
-         '1c27e2a01d243f40f15595d93cfd0981')
+         '0a02a670408ea23b70301e797d67e803')
 
 pkgver() {
   cd "$pkgname"
