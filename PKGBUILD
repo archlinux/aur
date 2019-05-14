@@ -1,6 +1,6 @@
 # Maintainer: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname=ripgrep-git
-pkgver=0.10.0.r72.049354b
+pkgver=11.0.1.r8.5ce2d73
 pkgrel=1
 pkgdesc="A search tool that combines the usability of The Silver Searcher with the raw speed of grep."
 arch=('i686' 'x86_64')
@@ -8,6 +8,7 @@ url="https://github.com/BurntSushi/ripgrep"
 license=('UNLICENSE' 'MIT')
 provides=("ripgrep")
 makedepends=('cargo' 'git' 'asciidoc')
+optdepends=('fish: fish completions')
 depends=('pcre2')
 conflicts=('ripgrep')
 source=("$pkgname::git+https://github.com/BurntSushi/ripgrep")
@@ -39,7 +40,6 @@ package() {
 
   install -Dm644 "complete/_rg" "$pkgdir/usr/share/zsh/site-functions/_rg"
   install -Dm644 "target/release/build/ripgrep-"*/out/rg.bash "$pkgdir/usr/share/bash-completion/completions/rg"
-  install -Dm644 "target/release/build/ripgrep-"*/out/rg.fish "$pkgdir/usr/share/fish/completions/rg.fish"
 
   install -Dm644 "target/release/build/ripgrep-"*/out/rg.1 "$pkgdir/usr/share/man/man1/rg.1"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
