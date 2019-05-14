@@ -2,6 +2,7 @@
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # From core package
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 set -u
@@ -10,27 +11,30 @@ pkgbase="${_pkgname}-git"
 #_srcdir="${pkgbase}"
 _srcdir='ImageMagick'
 pkgname=("${pkgbase}"{,-doc})
-pkgver=7.0.6.7.r12351.geaada474d
+pkgver=7.0.8.45.r15636.g909488f04
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
-arch=('i686' 'x86_64')
-url='http://www.imagemagick.org/script/'
-license=('custom')
-makedepends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript'
-             'openexr' 'libwmf' 'librsvg' 'libxml2' 'liblqr' 'openjpeg2'
-             'opencl-headers' 'ocl-icd' 'libwebp' 'patch' 'git')
+arch=('x86_64')
+url="https://www.imagemagick.org/"
+license=(custom)
+makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2' 'libraw' 'opencl-headers' 'libwebp'
+             'chrpath' 'ocl-icd' 'glu' 'ghostpcl' 'ghostxps' 'libheif' 'jbigkit' 'lcms2' 'libxext' 'liblqr' 'libraqm' 'libpng')
+#makedepends+=('libltdl' 'libxt' 'fontconfig')
+makedepends+=('patch' 'git')
+checkdepends=(gsfonts ttf-dejavu)
+_relname=ImageMagick-${pkgver%%.*}
 _verwatch=("${url/script/download/}" 'ImageMagick-\([-0-9\.]\+\)\.tar\.bz2' 'l')
 _archlink="@@@::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
 source=(
   #"${_srcdir}::git+http://git.imagemagick.org/repos/ImageMagick.git"
   "git+https://github.com/ImageMagick/ImageMagick.git"
-  'libpng_mmx_patch_x86_64.patch'
-  "${_archlink//@@@/perlmagick.rpath.patch}"
+  "${_archlink//@@@/arch-fonts.diff}"
+  "${_archlink//@@@/IM7-GS-policy.patch}"
 )
 sha256sums=('SKIP'
-            '4f3ab23349fd3958a88eb09a7107e08c2c6f3953287907103ec48cfa83575e87'
-            '17218bbecc17f3c7a86935a09d5a47e46113a1fc28f7d91c2fe495019cc36088')
-#validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')
+            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73'
+            'f20c09860da65a4259ec9627ceeca7d993949b7460fa199c5ffd874633814cf6')
+#validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
 
 pkgver() {
   set -u
@@ -42,28 +46,53 @@ pkgver() {
 
 prepare() {
   set -u
-  cd "${_srcdir}/"
-  #[ "${CARCH}" = 'x86_64' ] && patch -p1 -i "${srcdir}/libpng_mmx_patch_x86_64.patch"
-  sed -e '/AC_PATH_XTRA/d' -i 'configure.ac'
+  mkdir -p docpkg/usr/share
+
+  cd "${_srcdir}"
+
+  # Fix up typemaps to match our packages, where possible
+  patch -p1 -i ../arch-fonts.diff
+
+  # Work around ghostscript security issues https://bugs.archlinux.org/task/59778
+  patch -p1 -i ../IM7-GS-policy.patch
   set +u
 }
 
 _configure() {
   set -u
-  cd "${_srcdir}/"
-  if [ ! -s 'Makefile' ]; then
-    autoreconf --force --install
-    patch -p0 -i "${srcdir}/perlmagick.rpath.patch"
-    declare -A _EXTRAOPTS=([i686]='i686' [x86_64]='x86-64')
-    #./configure --prefix='/usr' --sysconfdir='/etc' --with-modules --disable-static --enable-openmp --with-x --with-wmf --with-openexr --with-xml --with-gslib --with-gs-font-dir='/usr/share/fonts/Type1' --with-perl --with-perl-options='INSTALLDIRS=vendor' --without-gvc --with-djvu --without-autotrace --with-jp2 --with-jbig --without-fpx --without-dps --without-fftw
-    ./configure --prefix='/usr' --sysconfdir='/etc' --with-modules \
-      --enable-hdri --with-wmf --with-openexr --with-xml --with-lcms2 \
-      --with-webp --with-gslib --with-gs-font-dir='/usr/share/fonts/Type1' \
-      --with-perl --with-perl-options='INSTALLDIRS=vendor' --with-lqr --with-rsvg \
-      --enable-opencl --with-openjp2 --without-gvc --without-djvu --without-autotrace \
-      --without-jbig --without-fpx --without-dps --without-fftw --with-gcc-arch="${_EXTRAOPTS[${CARCH}]}"
-    sed -e 's: -mtune=x86-64 : :g' -i 'Makefile' # This works even though the screen still shows the flags
-  fi
+  cd "${_srcdir}"
+if [ ! -s 'Makefile' ]; then
+  autoreconf --force --install
+  ./configure \
+    --prefix='/usr' \
+    --sysconfdir='/etc' \
+    --with-dejavu-font-dir='/usr/share/fonts/TTF' \
+    --with-gs-font-dir='/usr/share/fonts/gsfonts' \
+    PSDelegate='/usr/bin/gs' \
+    XPSDelegate='/usr/bin/gxps' \
+    PCLDelegate='/usr/bin/gpcl6' \
+    --enable-hdri \
+    --enable-opencl \
+    --with-gslib \
+    --with-lqr \
+    --with-modules \
+    --with-openexr \
+    --with-openjp2 \
+    --with-perl \
+    --with-perl-options='INSTALLDIRS=vendor' \
+    --with-rsvg \
+    --with-webp \
+    --with-wmf \
+    --with-xml \
+    --without-autotrace \
+    --without-djvu \
+    --without-dps \
+    --without-fftw \
+    --without-fpx \
+    --without-gcc-arch \
+    --without-gvc
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+fi
   cd "${srcdir}"
   set +u
 }
@@ -71,67 +100,67 @@ _configure() {
 build() {
   _configure
   set -u
-  cd "${_srcdir}/"
+  cd "${_srcdir}"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   nice make -s -j "${_nproc}"
   set +u
 }
 
-check() {
-  cd "${_srcdir}/"
-  #make -s -j1 check
+check_disabled() {
+  cd "${_srcdir}"
+  ulimit -n 4096
+  sed -e '/validate-formats/d' -i Makefile # these fail due to the security patch
+  make -s -j1 check
 }
 
 package_imagemagick-git() {
   set -u
-  pkgdesc='An image viewing/manipulation program'
-  depends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'liblqr')
-  optdepends=('imagemagick-doc: for additional information'
-              'ghostscript: for Ghostscript support' 
-              'openexr: for OpenEXR support' 
-              'openjpeg2: for JP2 support' 
-              'libwmf: for WMF support' 
-              'librsvg: for SVG support' 
-              'libxml2: for XML support' 
-              'libpng: for PNG support' 
-              'libwebp: for WEBP support')
-  backup=("etc/ImageMagick-${pkgver%%.*}"/{coder,colors,delegates,log,magic,mime,policy,thresholds,type{,-dejavu,-ghostscript,-windows}})
-  #options=('libtool' '!emptydirs' '!makeflags')
-  options=('!docs' 'libtool' '!emptydirs')
-  provides=("${_pkgname}=${pkgver%.r*}")
-  conflicts=("${_pkgname}")
+  depends=(libltdl lcms2 fontconfig libxext liblqr libraqm libpng libxml2)
+  optdepends=('ghostscript: PS/PDF support'
+              'libheif: HEIF support'
+              'libraw: DNG support'
+              'librsvg: SVG support'
+              'libwebp: WEBP support'
+              'libwmf: WMF support'
+              'libxml2: Magick Scripting Language'
+              'ocl-icd: OpenCL support'
+              'openexr: OpenEXR support'
+              'openjpeg2: JPEG2000 support'
+              'pango: Text rendering'
+              'imagemagick-doc: manual and API docs')
+  options=(!emptydirs libtool)
+  backup=(etc/$_relname/{colors,delegates,log,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
+  conflicts=(imagemagick6)
+  provides=(libmagick)
+  replaces=(imagemagick6 libmagick)
+  provides+=("${_pkgname}=${pkgver%.r*}")
+  conflicts+=("${_pkgname}")
 
-  cd "${_srcdir}/"
+  cd "${_srcdir}"
   make -s -j1 DESTDIR="${pkgdir}" install
-  #install -d "${pkgdir}/usr/share/licenses/${_pkgname}/"
-  install -Dpm644 'LICENSE' 'NOTICE' -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
-  #Cleaning. Why are we deleting a file that says DO NOT DELETE?
-  #rm -f "${pkgdir}/usr/lib"/*.la
-  #rm -rf "${pkgdir}/usr/share/doc/" # same as option !docs
 
-  # This looks dangerous. Upgrading perl will remove ImageMagick
-  if ! :; then
-    # template start; name=perl-binary-module-dependency; version=1;
-    if [ ! -z "$(find "${pkgdir}/usr/lib/perl5/" -name '*.so')" ]; then
-      local _perlver_min="$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')"
-      local _perlver_max="$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')"
-      eval 'dep''ends+=("perl>=${_perlver_min}" "perl<${_perlver_max}")' # keep mksrcinfo from reading this
-    fi
-    # template end;
-  fi
+  find "${pkgdir}/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
+  rm "${pkgdir}"/etc/$_relname/type-{apple,urw-base35,windows}.xml
+  rm "${pkgdir}"/usr/lib/*.la
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE NOTICE
+
+# Split docs
+  mv "${pkgdir}/usr/share/doc" "${srcdir}/docpkg/usr/share/"
   set +u
 }
 
 package_imagemagick-git-doc() {
   set -u
-  pkgdesc='The ImageMagick documentation (utilities manuals and libraries API)'
+  pkgdesc+=" (manual and API docs)"
   provides=("${_pkgname}-doc")
   conflicts=("${_pkgname}-doc")
   depends=("${_pkgname}")
 
-  cd "${_srcdir}/"
-  make -s DESTDIR="${pkgdir}" install-data-html
-  install -Dpm644 'LICENSE' 'NOTICE' -t "${pkgdir}/usr/share/licenses/${_pkgname}-doc/"
+  mv docpkg/* "${pkgdir}"
+
+  cd "${_srcdir}"
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE NOTICE
   set +u
 }
 set +u
