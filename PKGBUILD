@@ -2,8 +2,8 @@
 
 pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_futoshiki pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_scrabbler pzl_othello pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_wordwheel pzl_wordladder)
 pkgbase="pzl_games"
-pkgver=18.0
-_pkgver=18_0
+pkgver=18.1
+_pkgver=18_1
 pkgrel=1
 pkgdesc="Small collection of puzzle games."
 arch=('any')
@@ -36,7 +36,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_wordwheel.desktop"
         "pzl_wordladder.desktop")
 
-md5sums=('912a8af2810f3e693be07a571105ace6'
+md5sums=('3781e6309d21e8e32f560c2d83859853'
          '6f5058e263976d69a2eb356ca2c2a6b5'
          '37af6d1fa020f7fa532a69a0e07b32ad'
          'a1e25c7621e92598bcdb8d442133031a'
