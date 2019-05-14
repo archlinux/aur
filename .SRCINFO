@@ -1,14 +1,14 @@
 pkgbase = ueyed
 	pkgdesc = IDS uEye camera daemon (USB and ethernet)
 	pkgver = 4.92.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://en.ids-imaging.com
 	install = ueyed.install
 	arch = x86_64
 	license = custom
 	makedepends = patchelf
 	depends = glibc
-	depends = qt4
+	depends = qt5-base
 	backup = etc/ueye/ueyeethd.conf
 	backup = etc/ueye/ueyeusbd.conf
 	source = https://en.ids-imaging.com/download-ueye-lin64.html?file=tl_files/downloads/uEye_SDK/driver/uEye-Linux-4.92.0-64.tgz

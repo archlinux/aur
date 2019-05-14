@@ -3,11 +3,11 @@
 pkgname=ueyed
 pkgdesc="IDS uEye camera daemon (USB and ethernet)"
 pkgver=4.92.0
-pkgrel=4
+pkgrel=5
 arch=(x86_64)
 license=(custom)
 url='https://en.ids-imaging.com'
-depends=('glibc' 'qt4')
+depends=('glibc' 'qt5-base')
 makedepends=('patchelf')
 install="$pkgname.install"
 backup=(
