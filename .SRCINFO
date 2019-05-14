@@ -7,8 +7,10 @@ pkgbase = wlr-randr
 	license = MIT
 	makedepends = meson
 	makedepends = ninja
+	makedepends = gcc
+	depends = wayland
 	provides = wlr-randr
-	source = wlr::git+https://github.com/emersion/wlr-randr.git
+	source = git+https://github.com/emersion/wlr-randr.git
 	md5sums = SKIP
 
 pkgname = wlr-randr
