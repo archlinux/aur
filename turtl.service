@@ -1,5 +1,5 @@
 [Unit]
-Description=turtle server
+Description=turtl server
 
 [Service]
 User=turtl

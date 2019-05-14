@@ -19,7 +19,7 @@ source=("$pkgname::git+git://github.com/turtl/server.git"
 md5sums=('SKIP'
          '7436fec3178f4204a0bda9519dcc8f08'
          'd91669b7799dea106b8e7f0e5d14e9a7'  
-         'a101adeec6af4d2696ffbaf42658dd8b')
+         '222f09bb6a654caa705e14a82ad8db8a')
 
 pkgver() {
 	cd "$pkgname"
