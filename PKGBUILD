@@ -1,6 +1,6 @@
 # -*- mode: pkgbuild; -*-
-# Maintainer: Denis Zheleztsov <d_zheleztsov@wargaming.net>
-pkgname=wlr-randr
+# Maintainer: Denis Zheleztsov <difrex.punk@gmail.com>
+pkgname=wlr-randr-git
 pkgver=r13.c4066aa
 pkgrel=1
 pkgdesc="Utility to manage outputs of a Wayland compositor. You need a support wlr-output-management-unstable-v1 in the compositor."
