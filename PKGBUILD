@@ -3,8 +3,8 @@
 
 _pkgname=pylote
 pkgname=$_pkgname-git
-pkgver=r160.e9d7678
-pkgrel=2
+pkgver=r167.9b8fbb8
+pkgrel=1
 pkgdesc="Software making it possible to draw on the screen of the computer, like handling various instruments of geometry."
 url="http://pascal.peter.free.fr/$_pkgname.html"
 license=('GPL')
@@ -20,9 +20,8 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  (
-    set -o pipefail
-    git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }

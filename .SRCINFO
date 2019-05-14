@@ -1,7 +1,7 @@
 pkgbase = pylote-git
 	pkgdesc = Software making it possible to draw on the screen of the computer, like handling various instruments of geometry.
-	pkgver = r160.e9d7678
-	pkgrel = 2
+	pkgver = r167.9b8fbb8
+	pkgrel = 1
 	url = http://pascal.peter.free.fr/pylote.html
 	arch = any
 	license = GPL
