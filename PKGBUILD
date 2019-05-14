@@ -12,7 +12,7 @@ makedepends=("meson" "ninja" "gcc")
 checkdepends=()
 optdepends=()
 provides=("wlr-randr")
-source=("${pkgname%-*}::git+https://github.com/emersion/wlr-randr.git")
+source=("git+https://github.com/emersion/wlr-randr.git")
 md5sums=('SKIP')
 
 pkgver() {
