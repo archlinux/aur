@@ -1,9 +1,9 @@
 # Maintainer: Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 
 pkgbase='hunspell-fr-ungendered'
-pkgname=(hunspell-fr-{'classical','comprehensive','modern','revised'}-ungendered)
+pkgname=("$pkgbase"-{'classical','comprehensive','modern','revised'})
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="French ungendered hunspell dictionary"
 arch=(any)
 url="https://github.com/RadicaliseesSurInternet/hunspell-inclusif"
@@ -14,22 +14,22 @@ provides=('hunspell-fr')
 source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('e86eb438b81eb67c1d35122325f000d1077779e42f4f5ec27554a8b390d44922')
 
-package_hunspell-fr-classical-ungendered() {
+package_hunspell-fr-ungendered-classical() {
   pkgdesc+=" (classical variant)"
   _package 'classique'
 }
 
-package_hunspell-fr-comprehensive-ungendered() {
+package_hunspell-fr-ungendered-comprehensive() {
   pkgdesc+=" (comprehensive variant)"
   _package 'toutesvariantes'
 }
 
-package_hunspell-fr-modern-ungendered() {
+package_hunspell-fr-ungendered-modern() {
   pkgdesc+=" (modern variant)"
   _package 'moderne'
 }
 
-package_hunspell-fr-revised-ungendered() {
+package_hunspell-fr-ungendered-revised() {
   pkgdesc+=" (revised variant)"
   _package 'reforme1990'
 }
