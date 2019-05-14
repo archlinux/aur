@@ -8,6 +8,7 @@ pkgbase = ubuntustudio-controls-git
 	depends = jack2
 	depends = python
 	depends = python-gobject
+	depends = python-jack-client
 	provides = ubuntustudio-controls-git
 	provides = ubuntustudio-controls-git-git
 	conflicts = ubuntustudio-controls-git
