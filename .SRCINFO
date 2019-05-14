@@ -1,0 +1,15 @@
+pkgbase = nodejs-live-server
+	pkgdesc = A simple development HTTP server with live reload capability
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/tapio/live-server
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = live-server-1.2.1.tgz
+	source = https://registry.npmjs.org/live-server/-/live-server-1.2.1.tgz
+	sha256sums = b55db556232443fbbafa67adb57f06e1009e2d7a49e512fecd03c8639f97cd33
+
+pkgname = nodejs-live-server
+
