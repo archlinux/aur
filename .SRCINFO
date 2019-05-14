@@ -1,6 +1,6 @@
 pkgbase = shepherd
 	pkgdesc = Service manager that looks after the herd.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://www.gnu.org/software/shepherd/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = shepherd
 	makedepends = gawk
 	makedepends = sed
 	depends = guile
-	source = https://ftp.gnu.org/gnu/shepherd/shepherd-0.6.0.tar.gz
+	source = https://ftp.gnu.org/gnu/shepherd/shepherd-0.6.1.tar.gz
 	sha1sums = 9be871aff2c2d8ad8068714878eee6acee5cd35b
 
 pkgname = shepherd
