@@ -2,8 +2,8 @@
 # Contributor: mock
 pkgname=ttf-nishiki-teki
 pkgver=3.51f
-pkgrel=1
-pkgdesc='A Unicode-based font inspired by a free shell of Ukagaka called “Nishiki”.'
+pkgrel=2
+pkgdesc='Unicode-based font inspired by a free shell of Ukagaka called “Nishiki”'
 arch=('any')
 url='http://hwm3.gyao.ne.jp/shiroi-niwatori/nishiki-teki.htm'
 license=('custom')
