@@ -1,7 +1,7 @@
 pkgbase = i2pd
 	pkgdesc = Simplified C++ implementation of I2P client
-	pkgver = 2.24.0
-	pkgrel = 2
+	pkgver = 2.25.0
+	pkgrel = 1
 	url = https://github.com/PurpleI2P/i2pd
 	install = i2pd.install
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = i2pd
 	conflicts = i2pd-git
 	backup = etc/i2pd/i2pd.conf
 	backup = etc/i2pd/tunnels.conf
-	source = https://github.com/PurpleI2P/i2pd/archive/2.24.0.tar.gz
-	md5sums = 89dcd47214b68cd7e147e7b8f2a8c97a
+	source = https://github.com/PurpleI2P/i2pd/archive/2.25.0.tar.gz
+	md5sums = e345dd69800998c378c00ae6bfa82eff
 
 pkgname = i2pd
 
