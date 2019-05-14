@@ -1,16 +1,17 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=astyle-svn
-pkgver=r605
+pkgver=r672
 pkgrel=1
 pkgdesc="A free, fast, and small automatic code formatter"
 arch=('i686' 'x86_64')
 url="http://astyle.sourceforge.net/"
 license=('MIT')
-depends=('glibc')
-makedepends=('svn')
+depends=('gcc-libs')
+makedepends=('subversion')
 provides=('astyle')
 conflicts=('astyle')
+options=('staticlibs')
 source=("svn+https://svn.code.sf.net/p/astyle/code/trunk")
 sha256sums=('SKIP')
 
