@@ -1,0 +1,52 @@
+pkgbase = linux-clear-current
+	pkgver = 5.1.2
+	pkgrel = 1
+	url = https://github.com/clearlinux-pkgs/linux-current
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = git
+	makedepends = inetutils
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = linux-firmware
+	makedepends = xmlto
+	options = !strip
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.1.2.xz
+	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.1.0-2
+	source = intel-ucode-20190514.tar.gz::https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-20190514.tar.gz
+	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = 99-linux.hook
+	source = linux.preset
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = d06a7be6e73f97d1350677ad3bae0ce7daecb79c2c2902aaabe806f7fa94f041
+	sha256sums = SKIP
+	sha256sums = d2d6782474da294effb5076f74227381aadd5a7b10328335693f1df20d1d4382
+	sha256sums = SKIP
+	sha256sums = 553858de4315d267d1f259d1146db028eec5112a797379a7a83f5c8a22e626b3
+	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
+	sha256sums = ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+
+pkgname = linux-clear-current
+	pkgdesc = Clearlinux current kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	provides = WIREGUARD-MODULE
+	backup = etc/mkinitcpio.d/linux-clear-current.preset
+
+pkgname = linux-clear-current-headers
+	pkgdesc = Header files and scripts for building modules for linux-clear-current
+
