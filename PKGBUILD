@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ppxlib
-pkgver=0.3.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Base library and tools for ppx rewriters"
 arch=('x86_64')
@@ -11,12 +11,12 @@ depends=('ocaml' 'ocaml-base' 'ocaml-compiler-libs-repackaged' 'ocaml-migrate-pa
 makedepends=('dune')
 options=('!strip')
 source=("https://github.com/ocaml-ppx/ppxlib/releases/download/${pkgver}/ppxlib-${pkgver}.tbz")
-sha512sums=('6fd5fd40a427582d30b83ed5dac8312f442081a52a454b5edd0c6e5f4bc735f3cd5c0712a9f9ad5dacfac5bb8646403baf350f79d2dcb5ad2041282f5b9643a6')
+sha512sums=('dcb92285a4822499f66d86947cfcae25bbdbfec0df7c861c08cdcfe7b958dcb0ad6b42ca7737436150d0eebbaccc62d742fb37fc81c66c81e1d88b127654a06c')
 
 build() {
   cd "${srcdir}/ppxlib-${pkgver}"
 
-  jbuilder build
+  dune build
 }
 
 
@@ -24,7 +24,7 @@ package() {
   cd "${srcdir}/ppxlib-${pkgver}"
 
   mkdir -p "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
-  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
+  dune install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
   install -Dm755 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
