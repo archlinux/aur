@@ -1,5 +1,5 @@
 pkgbase = r-shiny
-	pkgdesc = 'RStudio' Addin for Editing a 'data.frame'
+	pkgdesc = Web Application Framework for R
 	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=shiny

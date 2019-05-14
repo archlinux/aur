@@ -5,7 +5,7 @@ _cranver=1.3.2
 pkgname=r-${_cranname}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="'RStudio' Addin for Editing a 'data.frame'"
+pkgdesc="Web Application Framework for R"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
