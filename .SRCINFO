@@ -1,6 +1,6 @@
 pkgbase = unity-editor-webgl
 	pkgdesc = Allows building your Unity projects for the WebGL platform
-	pkgver = 2019.1.1f1
+	pkgver = 2019.1.2f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = unity-editor-webgl
 	depends = gzip
 	depends = ncurses5-compat-libs
 	options = !strip
-	source = 2019.1.1f1.1.1f1.tar.xz::https://download.unity3d.com/download_unity/fef62e97e63b/LinuxEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-2019.1.1f1.tar.xz
-	md5sums = 5815c8c1464b8d30e8b5528439b991a2
+	source = 2019.1.2f1.1.2f1.tar.xz::https://download.unity3d.com/download_unity/3e18427e571f/LinuxEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-2019.1.2f1.tar.xz
+	md5sums = 51edb32d626ee91bff56f0de5846b500
 
 pkgname = unity-editor-webgl
 
