@@ -1,5 +1,5 @@
 pkgbase = vmware-modules-dkms-git
-	pkgdesc = vmware-host-modules is a collection of modified vmware host side kernel modules actually build against all modern kernel headers. This package wraps it in a dkms module.
+	pkgdesc = VMWare's host kernel modules patched to build against all modern kernels, wrapped up in a dkms module.
 	pkgver = 1.0
 	pkgrel = 3
 	url = https://github.com/mkubecek/vmware-host-modules
