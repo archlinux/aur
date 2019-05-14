@@ -1,6 +1,6 @@
 pkgbase = nordconnect
 	pkgdesc = Connect to a NordVPN server
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://gitlab.com/ranisalt/nordconnect
 	arch = any

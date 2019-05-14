@@ -1,7 +1,7 @@
 # Maintainer: Ranieri Althoff <ranisalt at gmail dot com>
 
 pkgname=nordconnect
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Connect to a NordVPN server'
 arch=('any')
