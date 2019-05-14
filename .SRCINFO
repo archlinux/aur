@@ -1,0 +1,19 @@
+pkgbase = midifile-git
+	pkgdesc = C++ classes for reading/writing Standard MIDI Files
+	pkgver = 256.97405c8
+	pkgrel = 1
+	url = http://midifile.sapp.org
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	conflicts = midifile
+	source = midifile::git://github.com/craigsapp/midifile.git
+	sha256sums = SKIP
+
+pkgname = midifile-git
+
