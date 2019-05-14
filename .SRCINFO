@@ -1,6 +1,6 @@
 pkgbase = linuxed-git
 	pkgdesc = Installer for EnhancedDiscord
-	pkgver = 0.r81.af0524f
+	pkgver = 0.r99.8d5081b
 	pkgrel = 1
 	url = https://github.com/Cr3atable/LinuxED
 	arch = any

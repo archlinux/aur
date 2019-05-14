@@ -1,7 +1,7 @@
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 _pkgname=linuxed
 pkgname=${_pkgname}-git
-pkgver=0.r81.af0524f
+pkgver=0.r99.8d5081b
 pkgrel=1
 pkgdesc='Installer for EnhancedDiscord'
 arch=('any')
