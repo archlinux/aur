@@ -2,7 +2,7 @@
 
 pkgname=unityhub
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations."
 arch=('x86_64')
 license=('custom')
@@ -49,8 +49,8 @@ package() {
   # Fix 7z permissions
   chmod +x "${pkgdir}/opt/${pkgname}/resources" \
            "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked" \
-           "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/external" \
-           "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/external/7z" \
-           "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/external/7z/linux64" \
-           "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/external/7z/linux64/7z"
+           "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/lib/linux" \
+           "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/lib/linux/7z" \
+           "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/lib/linux/7z/linux64" \
+           "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/lib/linux/7z/linux64/7z"
 }
