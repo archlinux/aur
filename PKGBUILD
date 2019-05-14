@@ -1,5 +1,5 @@
 pkgname=electrum-ltc
-pkgver=3.3.4.1
+pkgver=3.3.5.1
 pkgrel=1
 pkgdesc='Litecoin thin client'
 arch=(any)
@@ -23,10 +23,11 @@ depends=(desktop-file-utils
          python-qrcode
          python-scrypt
          python-websocket-client
+         python-websockets
          zbar)
 source=("https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz"{,.asc})
 validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
-sha256sums=(62227ed18eb683975871318fd682f20687d0e42d74f350d510cff9745fb64a6a
+sha256sums=(4afe374033e25a840b6ea2154deaa78ea719ce5a40d1d91b41c205fe4ed8eaef
             SKIP)
 
 prepare() {
