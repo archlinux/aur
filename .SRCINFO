@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 19.2.0_devel.110943.73055ae1c9f
+	pkgver = 19.2.0_devel.111007.6b0b8f132aa
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = lib32-mesa-git
 	makedepends = meson
 	makedepends = lib32-libva
 	makedepends = lib32-libxrandr
-	makedepends = lone_wolf-lib32-llvm-git
+	makedepends = lib32-llvm-minimal-git
 	depends = mesa-git
 	depends = lib32-gcc-libs
 	depends = lib32-libdrm
@@ -34,13 +34,13 @@ pkgbase = lib32-mesa-git
 	depends = lib32-libunwind
 	depends = lib32-lm_sensors
 	depends = glslang
-	depends = lone_wolf-lib32-llvm-libs-git
+	depends = lib32-llvm-libs-minimal-git
 	optdepends = opengl-man-pages: for the OpenGL API man pages
-	provides = lib32-mesa=19.2.0_devel.110943.73055ae1c9f-1
-	provides = lib32-vulkan-intel=19.2.0_devel.110943.73055ae1c9f-1
-	provides = lib32-vulkan-radeon=19.2.0_devel.110943.73055ae1c9f-1
-	provides = lib32-libva-mesa-driver=19.2.0_devel.110943.73055ae1c9f-1
-	provides = lib32-mesa-vdpau=19.2.0_devel.110943.73055ae1c9f-1
+	provides = lib32-mesa=19.2.0_devel.111007.6b0b8f132aa-1
+	provides = lib32-vulkan-intel=19.2.0_devel.111007.6b0b8f132aa-1
+	provides = lib32-vulkan-radeon=19.2.0_devel.111007.6b0b8f132aa-1
+	provides = lib32-libva-mesa-driver=19.2.0_devel.111007.6b0b8f132aa-1
+	provides = lib32-mesa-vdpau=19.2.0_devel.111007.6b0b8f132aa-1
 	provides = lib32-opengl-driver
 	conflicts = lib32-mesa
 	conflicts = lib32-vulkan-intel
