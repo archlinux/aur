@@ -1,9 +1,10 @@
 # Maintainer: detrito <detrito@inventati.org>
 # Contributor: Thomas Holder <thomas@thomas-holder.de>
 # Contributor: detrito <detrito@inventati.org>
+# Contributor: Rodrigo Severo <rsev@protonmail.com>
 
 pkgname=therion
-pkgver=5.4.1
+pkgver=5.4.4
 pkgrel=2
 pkgdesc="A cave surveying software"
 arch=('x86_64' 'i686')
@@ -23,14 +24,14 @@ source=("http://github.com/therion/therion/archive/v${pkgver}.tar.gz"
 	"make_install.patch"
 	"therion_ini.patch")
 
-sha256sums=('6e4b88d1803bdf252cf7d4632afcd9c4005e387245e9ac95774e6cc894ae4ccd'
+sha256sums=('5d3d79157a23e8758e9259425d706b9d7861993971ba630525e1665574024d85'
 	'81cd6c75a74897831edd4116bb97c71090023abbb14725b96d2a219f67cb5613'
-	'bf3fda048fb1a4f4c49f0daf7faa7e40c630748b33ed27c47bcfabba4014571c'
+	'4dbff0ae39877078e295c90b0e7b7fce4b39a910546ed09e79eaf64c903bf1b4'
 	'0639b0c4c9660af33675bf948ca4678d441167f77f7818cc015b7738a53fb8f3'
 	)
 
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+prepare() {
+  cd "${pkgname}-${pkgver}"
 
   # patch to compile loch with VTK 7.1
   patch -p0 -i ${srcdir}/loch_vtk7.patch
@@ -45,11 +46,15 @@ build() {
   sed -i.bak 's/-DLXLINUX//' loch/Makefile
   sed -i.bak 's/^POBJECTS =.*/POBJECTS =/' loch/Makefile
   sed -i.bak 's/freetype-config --cflags/pkg-config --cflags freetype2/' loch/Makefile
-
-  make
 }
 
-package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+build() {
+  cd "${pkgname}-${pkgver}"
+ 
+  make PREFIX=/usr
+ }
+ 
+ package() {
+  cd "${pkgname}-${pkgver}"
+  make PREFIX="${pkgdir}" install
 }
