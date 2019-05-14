@@ -11,7 +11,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.2.0_devel.110903.974c4d679c2
+pkgver=19.2.0_devel.110943.73055ae1c9f
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -31,17 +31,19 @@ md5sums=('SKIP'
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 
-# mesa_which_llvm is an evironment variable used to determine which llvm package tree is used to built mesa-git against
+# MESA_WHICH_LLVM is an environment variable used to determine which llvm package tree is used to built mesa-git against.
+# Adding a line to makepkg.conf that sets this value is the simplest way to ensure a specific choice.
+#
 # 1: lone_wolf-llvm-git (aur) Default value
 # 2: llvm-git (aur)
 # 3  llvm-svn (lordheavy unoffical repo)
 # 4  llvm (stable from extra)
 # 
-if [[ ! $mesa_which_llvm ]] ; then
-    mesa_which_llvm=1
+if [[ ! $MESA_WHICH_LLVM ]] ; then
+    MESA_WHICH_LLVM=4
 fi
 
-case $mesa_which_llvm in
+case $MESA_WHICH_LLVM in
     1)
         # aur lone_wolf-llvm-git
         makedepends+=('lone_wolf-llvm-git' 'lone_wolf-clang-git')
