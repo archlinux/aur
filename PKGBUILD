@@ -1,7 +1,7 @@
 # Maintainer: another <code § deadcode § eu>
 pkgname=openssh-known-hosts
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="known_hosts downloader/merger for OpenSSH"
 arch=('any')
 url="https://git.tiwe.de/openssh-known-hosts.git"
@@ -35,6 +35,6 @@ package() {
 	install -dm0755 $pkgdir/usr/share/doc/$pkgname/examples
 	install -Dm0644 examples/* $pkgdir/usr/share/doc/$pkgname/examples/
 	install -Dm0644 changelog $pkgdir/usr/share/doc/$pkgname/changelog
-	install -dm0755 $pkgdir/var/{lib,cache}/$pkgname $pkgdir/etc/$pkgname/sources $pkgdir/usr/local/share/$pkgname/plugins
+	install -dm0755 $pkgdir/var/{lib,cache}/$pkgname $pkgdir/etc/$pkgname/sources $pkgdir/usr/share/$pkgname/plugins
 	install -dm0755 $pkgdir/etc/ssh
 }

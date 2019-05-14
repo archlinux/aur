@@ -1,7 +1,7 @@
 pkgbase = openssh-known-hosts
 	pkgdesc = known_hosts downloader/merger for OpenSSH
 	pkgver = 0.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.tiwe.de/openssh-known-hosts.git
 	install = openssh-known-hosts.install
 	arch = any
