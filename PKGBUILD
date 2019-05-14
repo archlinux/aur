@@ -1,6 +1,6 @@
 pkgname=libsolv
 pkgver=0.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for solving packages and reading repositories"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/$pkgname"
@@ -10,13 +10,18 @@ makedepends=('cmake' 'perl' 'python' 'ruby' 'swig')
 optdepends=('perl: for perl bindings'
             'python: for python bindings'
             'ruby: for ruby bindings')
-source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('8798e1b32d7c5e3a99e8b26b6b8818b5')
+source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+        "$pkgname-0.7.4-fix-for-swig-4.patch::https://bugzilla.redhat.com/attachment.cgi?id=1565131")
+md5sums=('8798e1b32d7c5e3a99e8b26b6b8818b5'
+         '027174a79ffa99a13eb26885e9a2aa61')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build
+
+	# See https://github.com/openSUSE/libsolv/issues/325
+	patch -p1 -i "$srcdir/$pkgname-0.7.4-fix-for-swig-4.patch"
 }
 
 build() {
