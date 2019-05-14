@@ -3,16 +3,16 @@
 pkgbase=python-mbdata
 _name=${pkgbase#python-}
 pkgname=($pkgbase ${pkgbase/python-/python2-})
-pkgver=2019.4.26
+pkgver=25.0.0
 pkgrel=1
 pkgdesc='MusicBrainz database tools for Python'
 url="https://pypi.python.org/pypi/$_name"
 arch=('any')
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        "$_name-$pkgver-LICENSE::https://github.com/lalinsky/mbdata/raw/4e3d1927db9f085a09945a21c0d0ae82682f91fd/LICENSE")
-sha256sums=('abf869e3982b83a4e61ecfa9e377de53b4f1977101c02b26d51c037669d71c11'
+source=("$_name-v$pkgver.tar.gz::https://github.com/lalinsky/$_name/archive/v$pkgver.tar.gz"
+        "$_name-$pkgver-LICENSE::https://github.com/lalinsky/mbdata/raw/v$pkgver/LICENSE")
+sha256sums=('dfef117e5adaf614f34823a58adc0ba315b78edca06c8e023a315b961cf04939'
             'ecae6699839c9b7845aa36aba997c2ec5f09c5eb237f8910b972269de4bfc5f9')
 
 prepare() {
@@ -43,4 +43,6 @@ package_python2-mbdata() {
   cd python2
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 ../"$_name-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgbase/python-/python2-}/LICENSE"
+  # `mbslave` is provided by python-mbdata (for Python 3); no sense in duplicating
+  rm -rf "$pkgdir/usr/bin"
 }
