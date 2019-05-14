@@ -1,7 +1,7 @@
 # Maintainer: Electrux <ElectruxRedsworth AT gmail DOT com>
 
 pkgname=dr
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="An ed-like client for devRant written in python"
 arch=('any')
