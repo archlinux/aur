@@ -1,3 +1,4 @@
+# Maintainer: bakatrouble <bakatrouble@gmail.com>
 # Maintainer: Lenovsky <lenovsky@pm.me>
 
 pkgname=telegram-desktop-git
