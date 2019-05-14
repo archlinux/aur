@@ -24,6 +24,6 @@ build() {
 package() {
   cd hunter-$pkgver-holy
   install -D {target/release/hunter,extra/scope.sh} -t "$pkgdir"/usr/bin
-  install -Dm 644 README.md -t "$pkgdir"/usr/share/hunter
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/hunter
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/hunter
 }
