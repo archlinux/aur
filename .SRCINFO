@@ -1,0 +1,20 @@
+pkgbase = mpfr-svn
+	pkgdesc = C library for multiple-precision floating-point computations with correct rounding
+	pkgver = r13491
+	pkgrel = 1
+	url = https://www.mpfr.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	makedepends = subversion
+	depends = glibc
+	depends = gmp
+	provides = mpfr
+	conflicts = mpfr
+	options = staticlibs
+	source = svn+https://scm.gforge.inria.fr/anonscm/svn/mpfr/trunk
+	sha256sums = SKIP
+
+pkgname = mpfr-svn
+
