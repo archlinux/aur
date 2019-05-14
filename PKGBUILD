@@ -1,7 +1,7 @@
 # Maintainer: Lenovsky <lenovsky@pm.me>
 
 pkgname=telegram-desktop-git
-pkgver=1.6.3.r0.g9b247ce5e
+pkgver=1.7.0.r7.g63fc55263
 pkgrel=1
 pkgdesc="Official desktop version of Telegram messaging app (dev branch)"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ sha256sums=('SKIP'
             '3f23161f8239893e82d2a4f655cb80523a558a4e7869a6683802c2f434b68bbf'
             '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
             '95efc9cd84c2c26bddd832ef8c88637353ed9ba9d9068f183b7ee48ba25d1cc7'
-            '088cbdb71bd96684cf8a60469ba3707b70ed4d606b96b7352f614ec674b9aa8d'
+            '838dd05c2ac4bcd5391204c67e592ec522765ca75ff779ecffd90f60623feec2'
             '2457746d9b963c77decd5d8b08498035dc1003fbcbc95d4dfdb11bf524954f13')
 pkgver() {
     cd "$srcdir/tdesktop"
