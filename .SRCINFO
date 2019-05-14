@@ -1,0 +1,13 @@
+pkgbase = phoenixfs-git
+	pkgdesc = A versioning filesystem inspired by git
+	pkgver = r115.6ea03d9
+	pkgrel = 1
+	url = https://github.com/artagnon/phoenixfs
+	arch = any
+	license = MIT
+	depends = fuse2
+	source = phoenixfs-git::git://github.com/artagnon/phoenixfs.git
+	sha256sums = SKIP
+
+pkgname = phoenixfs-git
+
