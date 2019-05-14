@@ -1,5 +1,5 @@
 # Maintainer: Attenuation <ouyangjun1999@gmail.com>
-pkgname=kytan
+pkgname=kytan-git
 pkgver=0903be12
 pkgrel=1
 pkgdesc='High Performance Peer-to-Peer VPN by rust'
