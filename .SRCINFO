@@ -1,5 +1,5 @@
 pkgbase = ji
-	pkgdesc = A future programing language
+	pkgdesc = The eywa compiler
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://git.fumseck.eu/cgit/ji
