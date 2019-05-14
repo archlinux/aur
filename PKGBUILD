@@ -11,6 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'qt5-tools' 'qt5-xmlpatterns' 'libpaper' 'bzip2' 'openssl' 'libfdk-aac' 'sdl' 'ffmpeg')
 depends+=(quazip)  #drop internal quazip and use system one.
 depends+=(poppler) #replace xpdf lib with poppler, simplify the package and remove internal dep.
+makedepends=(git)
 source=("git://github.com/OpenBoard-org/OpenBoard.git${_fragment}"
         qchar.patch
         qwebkit.patch
