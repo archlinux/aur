@@ -1,0 +1,26 @@
+pkgbase = raddiu-git
+	pkgdesc = Radio program for GNU/Linux made in gtk3 designed for Pantheon Shell
+	pkgver = r51.729f8f8
+	pkgrel = 1
+	url = https://github.com/ranfdev/raddiu
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = glib2>=2.20
+	depends = libsoup
+	depends = json-glib
+	depends = gdk-pixbuf2
+	optdepends = lib32-json-glib
+	provides = raddiu
+	conflicts = raddiu
+	source = git+https://github.com/ranfdev/raddiu.git
+	md5sums = SKIP
+
+pkgname = raddiu-git
+
