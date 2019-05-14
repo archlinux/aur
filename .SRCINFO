@@ -17,8 +17,8 @@ pkgbase = ros-melodic-rospy
 	depends = python-yaml
 	depends = python-rospkg
 	depends = python-numpy
-	source = ros-melodic-rospy-1.14.3-0.tar.gz::https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rospy/1.14.3-0.tar.gz
-	sha256sums = 114c5f35bb368343f3a6b8f58374369344bb4ec8aae377ba33fca2ada0a7c07f
+	source = ros-melodic-rospy-1.14.3.tar.gz::https://github.com/ros/ros_comm/archive/1.14.3.tar.gz
+	sha256sums = 3e49bef96b8a0f9684e5c4f1736d171e9c8842a3979d5d3c6442b53698e8167f
 
 pkgname = ros-melodic-rospy
 

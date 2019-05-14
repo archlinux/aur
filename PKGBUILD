@@ -5,7 +5,6 @@ url='http://ros.org/wiki/rospy'
 
 pkgname='ros-melodic-rospy'
 pkgver='1.14.3'
-_pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -36,9 +35,9 @@ depends=(
 	python-numpy
 )
 
-_dir="ros_comm-release-release-melodic-rospy"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rospy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('114c5f35bb368343f3a6b8f58374369344bb4ec8aae377ba33fca2ada0a7c07f')
+_dir="ros_comm-${pkgver}/clients/rospy"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
+sha256sums=('3e49bef96b8a0f9684e5c4f1736d171e9c8842a3979d5d3c6442b53698e8167f')
 
 build() {
 	# Use ROS environment variables.
