@@ -1,7 +1,7 @@
 pkgbase = sabaki
 	pkgdesc = An elegant SGF editor for the game of Go
 	pkgver = 0.43.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sabaki.yichuanshen.de/
 	install = sabaki.install
 	arch = any

@@ -3,7 +3,7 @@
 
 pkgname=sabaki
 pkgver=0.43.3
-pkgrel=2
+pkgrel=3
 pkgdesc='An elegant SGF editor for the game of Go'
 arch=('any')
 url='http://sabaki.yichuanshen.de/'
@@ -36,6 +36,7 @@ package() {
 
   cp -r $srcdir/Sabaki-$pkgver/dist/linux-unpacked $pkgdir/opt/Sabaki
   chmod 4755 $pkgdir/opt/Sabaki/chrome-sandbox
+  install -Dm644 ${srcdir}/Sabaki-${pkgver}/logo.png $pkgdir/usr/share/pixmaps/sabaki.png
   install -Dm644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
   install -Dm644 ${srcdir}/${pkgname}.xml ${pkgdir}/usr/share/mime/packages/${pkgname}.xml
 }
