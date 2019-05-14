@@ -5,7 +5,7 @@
 # Contributor(s): IC-Parc, Imperial College London
 
 _major_version=7.0
-_minor_version=46
+_minor_version=47
 
 pkgname=eclipse-clp
 pkgver=${_major_version}.${_minor_version}
