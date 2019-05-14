@@ -2,7 +2,7 @@
 
 pkgbase=python-mbdata
 _name=${pkgbase#python-}
-pkgname=($pkgbase python2-$_name)
+pkgname=($pkgbase ${pkgbase/python-/python2-})
 pkgver=2019.4.26
 pkgrel=1
 pkgdesc='MusicBrainz database tools for Python'
@@ -27,23 +27,20 @@ build() {
 
   pushd python2
   python2 setup.py build
-  popd
 }
 
 package_python-mbdata() {
   depends=(python python-psycopg2 python-six)
 
-  install -Dm644 "$_name-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/python-$_name/LICENSE"
-
-  pushd python3
+  cd python3
   python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 ../"$_name-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
 }
 
 package_python2-mbdata() {
   depends=(python2 python2-psycopg2 python2-six)
 
-  install -Dm644 "$_name-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/python2-$_name/LICENSE"
-
-  pushd python2
+  cd python2
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 ../"$_name-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgbase/python-/python2-}/LICENSE"
 }
