@@ -47,7 +47,8 @@ build() {
     -DVTK_USE_SYSTEM_PROTOBUF=OFF \
     -DVTK_USE_SYSTEM_GL2PS=OFF \
     -DVTK_USE_SYSTEM_LIBHARU=OFF \
-    -DHDF5_ROOT=/usr/${_arch}/ ..
+    -DHDF5_ROOT=/usr/${_arch}/ .. > cmake.log 2>&1 || tail cmake.log -n 1000
+
     make
     popd
   done
