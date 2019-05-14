@@ -1,13 +1,13 @@
-pkgname=certspotter
-pkgver=0.9
-pkgrel=1
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+pkgname='certspotter'
+pkgver='0.9'
+pkgrel='2'
 pkgdesc='Certificate Transparency Log Monitor'
 arch=('x86_64')
 url="https://github.com/SSLMate/$pkgname"
 _gourl='software.sslmate.com/src/certspotter/cmd/certspotter'
 license=('MPL2')
 makedepends=('go')
-
 
 prepare() {
 	GOPATH="$srcdir" go get -d -fix -v "$_gourl"
