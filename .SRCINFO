@@ -1,0 +1,14 @@
+pkgbase = r-tkrplot
+	pkgdesc = TK Rplot
+	pkgver = 0.0.24
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tkrplot
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/tkrplot_0.0-24.tar.gz
+	md5sums = 60f0565b9b0c1f865e007287e65a4e39
+
+pkgname = r-tkrplot
+
