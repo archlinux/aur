@@ -1,14 +1,14 @@
 pkgbase = hunspell-fr
 	pkgdesc = French Hunspell dictionary
-	pkgver = 6.3
+	pkgver = 6.4.1
 	pkgrel = 1
-	url = https://dicollecte.org/home.php?prj=fr
+	url = https://grammalecte.net/home.php?prj=fr
 	arch = any
 	license = MPL2
 	provides = hunspell-fr
 	conflicts = hunspell-fr
-	source = https://dicollecte.org/download/fr/hunspell-french-dictionaries-v6.3.zip
-	sha256sums = cc6c2d15073659d221487b45245e9eee9a4ed66c30c6dcf784326bab063c5266
+	source = https://grammalecte.net/download/fr/hunspell-french-dictionaries-v6.4.1.zip
+	sha256sums = 744e77a3bd115144fa3131485231638d41c21e65ed757bfc576ccec1dcc9c6cc
 
 pkgname = hunspell-fr-classical
 	pkgdesc = French Hunspell dictionary (classical variant)
