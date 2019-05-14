@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='mongodb-compass-community-beta'
 pkgver='1.18.0beta.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - Community Edition (beta version)'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
@@ -9,7 +9,7 @@ license=('custom')
 depends=('nss' 'gconf' 'libxtst' 'alsa-lib' 'gtk2' 'libsecret' 'gcc-libs-multilib' 'libxss')
 optdepends=('gnome-keyring' 'libgnome-keyring')
 source=('https://downloads.mongodb.com/compass/beta/mongodb-compass-community-beta-1.18.0-beta.3.x86_64.rpm')
-md5sums=('7a706177aa08b5be36d3cdfecc1fb383')
+sha256sums=('49e1d91680e178ec66644e773ab80bbe5b74e3e5ea4557522195dbdf7fab8dc8')
 
 package() {
 	rm -r "$srcdir/usr/share/doc/"
