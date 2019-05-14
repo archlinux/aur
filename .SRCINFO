@@ -1,0 +1,19 @@
+pkgbase = r-crosstalk
+	pkgdesc = Inter-Widget Interactivity for HTML Widgets
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=crosstalk
+	arch = any
+	license = GPL3
+	depends = r
+	depends = r-htmltools
+	depends = r-jsonlite
+	depends = r-lazyeval
+	depends = r-r6
+	depends = r-shiny
+	depends = r-ggplot2
+	source = http://cran.r-project.org/src/contrib/crosstalk_1.0.0.tar.gz
+	md5sums = c13c21b81af2154be3f08870fd3a7077
+
+pkgname = r-crosstalk
+
