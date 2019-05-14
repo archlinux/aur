@@ -1,23 +1,27 @@
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
-pkgbase=python-mbdata
-_name=${pkgbase#python-}
+pkgbase=python-mbdata-git
+_pkgbase=${pkgbase%-git}
+_name=${_pkgbase#python-}
 pkgname=($pkgbase ${pkgbase/python-/python2-})
-pkgver=2019.4.26
+pkgver=2017.06.02.r23.g55a2372
 pkgrel=1
 pkgdesc='MusicBrainz database tools for Python'
-url="https://pypi.python.org/pypi/$_name"
+url="https://github.com/lalinsky/$_name"
 arch=('any')
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        "$_name-$pkgver-LICENSE::https://github.com/lalinsky/mbdata/raw/4e3d1927db9f085a09945a21c0d0ae82682f91fd/LICENSE")
-sha256sums=('abf869e3982b83a4e61ecfa9e377de53b4f1977101c02b26d51c037669d71c11'
-            'ecae6699839c9b7845aa36aba997c2ec5f09c5eb237f8910b972269de4bfc5f9')
+makedepends=('python-setuptools' 'python2-setuptools' 'git')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd python3
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
 
 prepare() {
-  cp -a $_name-$pkgver python2
-  mv $_name-$pkgver python3
+  cp -a $_name python2
+  mv $_name python3
 }
 
 build() {
@@ -29,18 +33,28 @@ build() {
   python2 setup.py build
 }
 
-package_python-mbdata() {
+package_python-mbdata-git() {
   depends=(python python-psycopg2 python-six)
+  provides=(${_pkgbase})
+  conflicts=(${_pkgbase})
 
   cd python3
   python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 ../"$_name-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgbase/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
+  install -d "$pkgdir/usr/share/doc/$_pkgbase"
+  install -m644 -t "$pkgdir/usr/share/doc/$_pkgbase" README.rst CHANGELOG.rst settings.py.sample mbslave.conf.default
 }
 
-package_python2-mbdata() {
+package_python2-mbdata-git() {
   depends=(python2 python2-psycopg2 python2-six)
+  provides=(${_pkgbase/python-/python2-})
+  conflicts=(${_pkgbase/python-/python2-})
 
   cd python2
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 ../"$_name-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/${pkgbase/python-/python2-}/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgbase/python-/python2-}/LICENSE"
+  install -d "$pkgdir/usr/share/doc/${_pkgbase/python-/python2-}"
+  install -m644 -t "$pkgdir/usr/share/doc/${_pkgbase/python-/python2-}" README.rst CHANGELOG.rst settings.py.sample mbslave.conf.default
+  # `mbslave` is provided by python-mbdata-git (for Python 3); no sense in duplicating
+  rm -rf "$pkgdir/usr/bin"
 }
