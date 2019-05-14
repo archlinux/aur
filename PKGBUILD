@@ -6,7 +6,7 @@ set -u
 pkgname='pkgbuild-introspection'
 pkgver='9'
 pkgrel='1'
-pkgdesc='Tools for generating .SRCINFO files and PKGBUILD data extraction (mkaurball)'
+pkgdesc='Tool for generating .SRCINFO files (mksrcinfo)'
 arch=('any')
 url="https://github.com/falconindy/${pkgname}"
 license=('MIT')

@@ -1,5 +1,5 @@
 pkgbase = pkgbuild-introspection
-	pkgdesc = Tools for generating .SRCINFO files and PKGBUILD data extraction (mkaurball)
+	pkgdesc = Tool for generating .SRCINFO files (mksrcinfo)
 	pkgver = 9
 	pkgrel = 1
 	url = https://github.com/falconindy/pkgbuild-introspection
