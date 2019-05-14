@@ -17,7 +17,7 @@ pkgbase = turtl-server-git
 	md5sums = SKIP
 	md5sums = 7436fec3178f4204a0bda9519dcc8f08
 	md5sums = d91669b7799dea106b8e7f0e5d14e9a7
-	md5sums = a101adeec6af4d2696ffbaf42658dd8b
+	md5sums = 222f09bb6a654caa705e14a82ad8db8a
 
 pkgname = turtl-server-git
 
