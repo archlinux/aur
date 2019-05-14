@@ -4,16 +4,16 @@
 # Contributor: Philipp Überbacher <murks at lavabit dot com>
 
 pkgname=traverso
-pkgver=0.49.5
+pkgver=0.49.6
 pkgrel=1
 pkgdesc="Digital Audio Workstation with an innovative User Interface"
 arch=('x86_64')
 url="https://traverso-daw.org/"
 license=('GPL')
-depends=('qt5-base' 'jack' 'fftw' 'wavpack' 'lame' 'libmad' 'lilv' 'hicolor-icon-theme')
+depends=('qt5-base' 'fftw' 'wavpack' 'lame' 'libmad' 'lilv' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('cmake')
 source=("https://traverso-daw.org/$pkgname-$pkgver.tar.gz")
-sha256sums=('75980d93e600d9cca0ee086819e2c8c07740631c4da096b78aec00e432d62d99')
+sha256sums=('f850b88cbb64529655514b7cfe01c56133e21929374b3e3b90813bc227eac789')
 
 prepare() {
   mkdir -p build
