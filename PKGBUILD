@@ -5,8 +5,8 @@ git_user_name=gregzaal
 _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}-git
-pkgver=3.0.4.r1.gf74e188
-pkgrel=2
+pkgver=3.1.2.r0.gf895629
+pkgrel=1
 pkgdesc="Blender addon for light and hdri managament."
 arch=('any')
 url="https://blendermarket.com/products/gaffer-light-manager/"
@@ -17,11 +17,11 @@ install="${pkgname}.install"
 source=("${name}::git+https://github.com/${git_user_name}/${name}.git"
         "remove.updater.patch")
 md5sums=('SKIP'
-         'ea6aa0e22871607e9b8d9285c367ad86')
+         'f5605da2a9b5ed7f69eeebdcd057cf69')
 
 prepare() {
   cd ${name}
-  patch -Np1 -i ../remove.updater.patch 
+# patch -Np1 -i ../remove.updater.patch 
   rm addon_updater.py addon_updater_ops.py
 }
 
