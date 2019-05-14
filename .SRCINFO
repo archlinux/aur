@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-libressl-portable-git
+	pkgdesc = LibreSSL is an open-source implementation of the Transport Layer Security protocol (mingw-w64)
+	pkgver = v2.1.3.r787.ga2befe3
+	pkgrel = 1
+	url = https://www.libressl.org
+	arch = any
+	license = Apache 1.0
+	license = 4-clause BSD
+	license = ISC
+	license = public domain
+	makedepends = mingw-w64-gcc
+	makedepends = perl
+	provides = mingw-w64-openssl
+	conflicts = mingw-w64-openssl
+	options = !strip
+	options = staticlibs
+	options = !buildflags
+	source = libressl-portable::git+https://github.com/libressl-portable/portable/
+	sha256sums = SKIP
+
+pkgname = mingw-w64-libressl-portable-git
+
