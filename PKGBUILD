@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Lieven Moors <lievenmoors at protonmail dot com>
 # Contributor: Michał Szymański <smiszym at gmail dot com>
 # Contributor: rtfreedman  (rob<d0t>til<d0t>freedman<aT>googlemail<d0t>com
 # Contributor: Philipp Überbacher <murks at lavabit dot com>
