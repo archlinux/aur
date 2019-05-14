@@ -82,17 +82,21 @@ _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
 _gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
 
-source=("git+${_repo_url}#branch=master"
-        "git+${_repo_url_gcc_patch}"
-        config         # the main kernel config file
-        60-linux.hook  # pacman hook for depmod
-        90-linux.hook  # pacman hook for initramfs regeneration
-        linux.preset   # standard config files for mkinitcpio ramdisk
+_pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
+
+source=(
+    "git+${_repo_url}#branch=master"
+    "git+${_repo_url_gcc_patch}"
+    config         # the main kernel config file
+    60-linux.hook  # pacman hook for depmod
+    90-linux.hook  # pacman hook for initramfs regeneration
+    linux.preset   # standard config files for mkinitcpio ramdisk
 )
-validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-              '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+validpgpkeys=(
+    'ABAF11C65A2970B130ABE3C479BE3E4300411886'    # Linus Torvalds
+    '647F28654894E3BD457199BE38DBBDC86092693E'    # Greg Kroah-Hartman
 )
-sha256sums=('SKIP'
+sha512sums=('SKIP'
             'SKIP'
             '408d92182111c3ae9f54f6e166e6175de3c10faa63bda59f2160fbdfd526ac03'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -124,15 +128,6 @@ prepare() {
     scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "$_kernelname" > localversion.20-pkgname
-
-    local src
-    for src in "${source[@]}"; do
-        src="${src%%::*}"
-        src="${src##*/}"
-        [[ $src = *.patch ]] || continue
-        msg2 "Applying patch $src..."
-        patch -Np1 < "../$src"
-    done
 
     msg2 "Setting config..."
     cp ../config .config
@@ -175,7 +170,7 @@ build() {
 }
 
 _package() {
-    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules ${_pkgdesc_extra}"
     depends=(
         bcachefs-tools-git
         coreutils
@@ -236,7 +231,7 @@ _package() {
 }
 
 _package-headers() {
-    pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+    pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel ${_pkgdesc_extra}"
     provides=(
         "linux-bcachefs-git-headers=${pkgver}"
         "linux-headers=${pkgver}"
@@ -321,7 +316,7 @@ _package-headers() {
 }
 
 _package-docs() {
-    pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+    pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel ${_pkgdesc_extra}"
     provides=(
         "linux-bcachefs-git-docs=${pkgver}"
         "linux-docs=${pkgver}"

@@ -19,15 +19,15 @@ pkgbase = linux-bcachefs-git
 	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 408d92182111c3ae9f54f6e166e6175de3c10faa63bda59f2160fbdfd526ac03
-	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
-	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 408d92182111c3ae9f54f6e166e6175de3c10faa63bda59f2160fbdfd526ac03
+	sha512sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha512sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
+	sha512sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-bcachefs-git
-	pkgdesc = The Linux-bcachefs-git kernel and modules
+	pkgdesc = The Linux-bcachefs-git kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
 	install = linux.install
 	depends = bcachefs-tools-git
 	depends = coreutils
@@ -38,12 +38,12 @@ pkgname = linux-bcachefs-git
 	backup = etc/mkinitcpio.d/linux-bcachefs-git.preset
 
 pkgname = linux-bcachefs-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux-bcachefs-git kernel
+	pkgdesc = Header files and scripts for building modules for Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
 	provides = linux-bcachefs-git-headers=5.0.15.arch1
 	provides = linux-headers=5.0.15.arch1
 
 pkgname = linux-bcachefs-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bcachefs-git kernel
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
 	provides = linux-bcachefs-git-docs=5.0.15.arch1
 	provides = linux-docs=5.0.15.arch1
 
