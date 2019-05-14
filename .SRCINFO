@@ -1,13 +1,13 @@
 pkgbase = python-empy
 	pkgdesc = A powerful and robust templating system for Python.
-	pkgver = 3.3.3
+	pkgver = 3.3.4
 	pkgrel = 1
 	url = http://www.alcyone.com/software/empy
 	arch = any
 	license = LGPL
 	depends = python
-	source = http://www.alcyone.com/software/empy/empy-3.3.3.tar.gz
-	sha256sums = 9841e36dd26c7f69fe1005f9d9e078e41bdd50dd56fc77837ae390fb6af1aed7
+	source = http://www.alcyone.com/software/empy/empy-3.3.4.tar.gz
+	sha256sums = 9126211471fc7ff83fdd40beca93eb6de5681758fbe68b4cf8af6326259df1b1
 
 pkgname = python-empy
 
