@@ -1,6 +1,6 @@
 pkgbase = therion
 	pkgdesc = A cave surveying software
-	pkgver = 5.4.1
+	pkgver = 5.4.4
 	pkgrel = 2
 	url = http://therion.speleo.sk
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = therion
 	optdepends = libjpeg-turbo
 	optdepends = libpng
 	optdepends = zlib
-	source = http://github.com/therion/therion/archive/v5.4.1.tar.gz
+	source = http://github.com/therion/therion/archive/v5.4.4.tar.gz
 	source = loch_vtk7.patch
 	source = make_install.patch
 	source = therion_ini.patch
-	sha256sums = 6e4b88d1803bdf252cf7d4632afcd9c4005e387245e9ac95774e6cc894ae4ccd
+	sha256sums = 5d3d79157a23e8758e9259425d706b9d7861993971ba630525e1665574024d85
 	sha256sums = 81cd6c75a74897831edd4116bb97c71090023abbb14725b96d2a219f67cb5613
-	sha256sums = bf3fda048fb1a4f4c49f0daf7faa7e40c630748b33ed27c47bcfabba4014571c
+	sha256sums = 4dbff0ae39877078e295c90b0e7b7fce4b39a910546ed09e79eaf64c903bf1b4
 	sha256sums = 0639b0c4c9660af33675bf948ca4678d441167f77f7818cc015b7738a53fb8f3
 
 pkgname = therion
