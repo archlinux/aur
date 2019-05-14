@@ -1,0 +1,10 @@
+[Unit]
+Description=turtle server
+
+[Service]
+User=turtl
+Group=turtl
+ExecStart=/usr/bin/node /var/www/turtl/server/server.js
+
+[Install]
+WantedBy=multi-user.target

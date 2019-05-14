@@ -1,0 +1,23 @@
+pkgbase = turtl-server-git
+	pkgdesc = The secure, collaborative notebook's server
+	pkgver = r209.f37f183
+	pkgrel = 1
+	url = https://turtlapp.com/
+	install = turtl-server-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	depends = postgresql
+	source = turtl-server-git::git+git://github.com/turtl/server.git
+	source = turtl.conf
+	source = turtl-server-git.install
+	source = turtl.service
+	md5sums = SKIP
+	md5sums = 7436fec3178f4204a0bda9519dcc8f08
+	md5sums = d91669b7799dea106b8e7f0e5d14e9a7
+	md5sums = a101adeec6af4d2696ffbaf42658dd8b
+
+pkgname = turtl-server-git
+
