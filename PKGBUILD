@@ -4,7 +4,7 @@
 pkgname=nvidia-container-runtime-bin
 _pkgname=nvidia-container-runtime
 
-pkgver=2.0.0
+pkgver=2.0.0+3.docker18.09.6
 
 pkgrel=1
 pkgdesc='NVIDIA container runtime'
@@ -13,11 +13,11 @@ url='https://github.com/NVIDIA/nvidia-container-runtime'
 license=('BSD')
 
 depends=('libseccomp' 'nvidia-container-runtime-hook')
-provides=('nvidia-container-runtime=2.0.0+1.docker18.09.3')
+provides=('nvidia-container-runtime=2.0.0+3.docker18.09.6')
 conflicts=('nvidia-container-runtime')
 
-source=("https://nvidia.github.io/nvidia-container-runtime/centos7/$CARCH/${_pkgname}-2.0.0-1.docker18.09.3.$CARCH.rpm")
-sha256sums=('baa919c98282f9a722ef51f987d5d672941f8e68337e582cebfcb0606812eb68')
+source=("https://nvidia.github.io/nvidia-container-runtime/centos7/$CARCH/${_pkgname}-2.0.0-3.docker18.09.6.$CARCH.rpm")
+sha256sums=('1d23d648709a12f3245f138129e24837fb978c5ef75f51bce17c3c5a9d40d1ab')
 
 package() {
   cd "$srcdir"
