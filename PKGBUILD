@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=system76-power-git
-pkgver=r160.1c347b8
-pkgrel=4
+pkgver=r168.99e80af
+pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
