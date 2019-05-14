@@ -1,6 +1,6 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
-	pkgver = 19.04.0
+	pkgver = 19.04.1
 	pkgrel = 1
 	url = https://kde.org/applications/system/dolphin/
 	arch = x86_64
@@ -23,14 +23,14 @@ pkgbase = dolphin-meld
 	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
-	provides = dolphin=19.04.0
-	conflicts = dolphin=19.04.0
-	source = https://download.kde.org/stable/applications/19.04.0/src/dolphin-19.04.0.tar.xz
-	source = https://download.kde.org/stable/applications/19.04.0/src/dolphin-19.04.0.tar.xz.sig
+	provides = dolphin=19.04.1
+	conflicts = dolphin=19.04.1
+	source = https://download.kde.org/stable/applications/19.04.1/src/dolphin-19.04.1.tar.xz
+	source = https://download.kde.org/stable/applications/19.04.1/src/dolphin-19.04.1.tar.xz.sig
 	source = dolphin-meld.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
-	sha256sums = f3f45b9048c283252067eebfad8c6e1efc6bc64d43fcba78b933850ea4762375
+	sha256sums = 72cab4d9f49ac05d3e0e8e1ff67cf29c0cacbe2c3a43506eca4c849ea878370a
 	sha256sums = SKIP
 	sha256sums = 13107b72348bd7eea5665196dc4a37c21bff131bbc8457efe77ef8c3e9450c7b
 
