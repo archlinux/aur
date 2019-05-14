@@ -1,0 +1,23 @@
+pkgbase = spinecreator-git
+	pkgdesc = A user interface for creating neural network simulations
+	pkgver = 0.9.6+git
+	pkgrel = 1
+	url = https://github.com/SpineML/SpineCreator.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = brahms
+	depends = qt5-base
+	provides = spinecreator
+	conflicts = spinecreator
+	source = git+https://github.com/SpineML/SpineML_PreFlight.git
+	source = git+https://github.com/SpineML/SpineML_2_BRAHMS.git
+	source = git+https://github.com/SpineML/SpineCreator.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = spinecreator-git
+

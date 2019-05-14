@@ -1,0 +1,17 @@
+/SpineCreator
+/SpineML_2_BRAHMS
+/SpineML_PreFlight
+
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
