@@ -22,11 +22,11 @@ $ docker run --runtime=kata --rm busybox date
 - to set kata as the default runtime, add '"default-runtime": "kata"' to /etc/docker/daemon.json and restart the docker daemon
 """
 {
+    "default-runtime": "kata",
     "runtimes": {
       "kata": {
         "path": "/usr/bin/kata-runtime"
       },
-      "default-runtime": "kata"
     }
 }
 """
