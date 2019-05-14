@@ -1,7 +1,7 @@
 pkgname=ji
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="A future programing language"
+pkgdesc="The eywa compiler"
 arch=('any')
 licence=('GPL3')
 groups=('base-devel')
