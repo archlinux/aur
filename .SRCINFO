@@ -1,5 +1,5 @@
 pkgbase = thrust-git
-	pkgdesc = A C++ parallel programming library which resembles the C++ Standard Library.
+	pkgdesc = A C++ parallel programming library which resembles the C++ Standard Library
 	pkgver = 1.9.4.28.g986d178b
 	pkgrel = 1
 	url = https://github.com/thrust/thrust
