@@ -1,6 +1,6 @@
 pkgbase = python-mbdata-git
 	pkgdesc = MusicBrainz database tools for Python
-	pkgver = 2017.06.02.r23.g55a2372
+	pkgver = 25.0.0.r0.g384f8ab
 	pkgrel = 1
 	url = https://github.com/lalinsky/mbdata
 	arch = any
