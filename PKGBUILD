@@ -1,21 +1,23 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
+# Co-maintainer: David Birks <david@tellus.space>
 # Contributor: dpeukert
+
 pkgname=marktext
-pkgver=0.13.65
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Next generation markdown editor'
 arch=('x86' 'x86_64')
-url='https://marktext.github.io/website/'
+url='https://github.com/marktext/marktext'
 license=('MIT')
 depends=('gtk3' 'libxss' 'nss')
-makedepends=('npm')
+makedepends=('yarn')
 source=("${pkgname}-${pkgver}.tar.gz::http://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('110f3b2a91ac2af2f7ae94abdff5fb6a155e810630f3e87929c61e52786e2e690464803ae239dc3f583ad37fc61e03e57ba394b28ac4d6d95e915382dcdfdc24')
+sha512sums=('11249a2b350a973dd4e35c6f1bedf61415c6e49e22f8e344a4e3f942244cfea5d587adfe7f472e26696ab7e91fc5f17337e6de5db32de2ced964dadd5907c003')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    npm install --cache "${srcdir}/npm-cache"
-    npm run release:linux
+    yarn install
+    yarn build:dir
 }
 
 package() {
@@ -35,7 +37,7 @@ package() {
 
     # Install desktop file and icon
     install -D "resources/linux/marktext.desktop" "$pkgdir/usr/share/applications/marktext.desktop"
-    install -D "build/.icon-set/icon_512x512.png" "$pkgdir/usr/share/pixmaps/marktext.png"
+    install -D "resources/icons/icon.png" "$pkgdir/usr/share/pixmaps/marktext.png"
 }
 
 # vim:ts=4:sw=4:expandtab
