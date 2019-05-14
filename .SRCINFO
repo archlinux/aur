@@ -1,0 +1,15 @@
+pkgbase = inferno-git
+	pkgdesc = A Rust port of FlameGraph
+	pkgver = r162
+	pkgrel = 1
+	url = https://github.com/jonhoo/inferno
+	arch = i686
+	arch = x86_64
+	license = CDDL
+	makedepends = git
+	makedepends = rust
+	source = inferno-git::git+https://github.com/jonhoo/inferno
+	md5sums = SKIP
+
+pkgname = inferno-git
+
