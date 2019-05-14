@@ -1,0 +1,13 @@
+pkgbase = eywa
+	pkgdesc = A future programing language
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://git.fumseck.eu/cgit/eywa
+	arch = any
+	groups = base-devel
+	depends = ji
+	source = https://git.fumseck.eu/cgit/eywa/snapshot/eywa-0.0.0.tar.gz
+	md5sums = 1ffa0aea3e98d84fc933a5702fc28d2c
+
+pkgname = eywa
+
