@@ -1,6 +1,6 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=flashplayer-standalone-debug
-pkgver=32.0.0.171
+pkgver=32.0.0.192
 pkgrel=1
 pkgdesc="Standalone, debug version of Adobe Flash Player"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ depends_i686=(gtk2 libxt nss curl)
 depends_x86_64=(lib32-gtk2 lib32-libxt lib32-nss lib32-curl)
 source=("flashplayer-standalone-debug-$pkgver-$pkgrel.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_sa_linux_debug.x86_64.tar.gz")
 options=(!strip)
-md5sums=('39fb8205581e8a217f31a427ab897fab')
+md5sums=('985c1d1be755a64d6212469393eb5092')
 
 package () {
     install -Dm755 flashplayerdebugger "$pkgdir/usr/bin/flashplayerdebugger"
