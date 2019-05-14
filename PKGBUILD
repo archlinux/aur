@@ -2,7 +2,7 @@
 
 pkgname=abrowser-bin
 s_pkgname=${pkgname%-*}
-pkgver=66.0.4
+pkgver=66.0.5
 pkgrel=1
 pkgdesc="Binary version of Abrowser, safe and easy web browser from Mozilla"
 arch=('i686' 'x86_64')
@@ -27,5 +27,5 @@ package() {
 }
 
 
-sha256sums_i686=('87037ec5f6eabdce194123eef5384ba6d7b1059cb22b1ae73cd9d7991ba06291')
-sha256sums_x86_64=('dbde914ebd0f6ed1d782751be23e2e9ef1a178791cd954dd80ceb7c845d13ef2')
+sha256sums_i686=('391dc8ce5b314d7d9b8bd07c7282ad02d1e6c7140402d8efbda524caa74e09af')
+sha256sums_x86_64=('c6c7bfb6c05fc9edf5660ef3b629cd1a97494f886d0365dd244e80189892f58b')
