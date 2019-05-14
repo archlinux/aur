@@ -1,0 +1,25 @@
+pkgbase = pennywise-bin
+	pkgdesc = Cross-platform application that allows you to open URLs in a floating window that always stays on top.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/kamranahmedse/pennywise
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libxtst
+	depends = nss
+	depends = libxss
+	provides = pennywise
+	conflicts = pennywise
+	source = https://raw.githubusercontent.com/kamranahmedse/pennywise/master/license.md
+	sha256sums = b41ccd76edcf9e9af64581622b1d6dc1de7ed55a96548c4af8c43d32cd764b0b
+	source_i686 = https://github.com/kamranahmedse/pennywise/releases/download/v0.7.0/pennywise_0.7.0_i386.deb
+	sha256sums_i686 = 4e01b247a33f54db74eb0f846e0066eb937539635945619c7e5d33ee29a2459a
+	source_x86_64 = https://github.com/kamranahmedse/pennywise/releases/download/v0.7.0/pennywise_0.7.0_amd64.deb
+	sha256sums_x86_64 = aa2d135218915dcd22f72bd0c209f64856de9dc022b7801c8d59973fddc88110
+
+pkgname = pennywise-bin
+
