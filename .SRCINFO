@@ -1,21 +1,22 @@
 pkgbase = r-callr
 	pkgdesc = Call R from R
-	pkgver = 3.0.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=callr
 	arch = any
-	license = MIT
+	license = GPL3
 	depends = r
-	depends = r-base64enc
-	depends = r-processx>=3.2.0
+	depends = r-processx
 	depends = r-r6
+	optdepends = r-cliapp
 	optdepends = r-covr
 	optdepends = r-crayon
+	optdepends = r-pingr
 	optdepends = r-ps
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/callr_3.0.0.tar.gz
-	md5sums = ed29786f0760021d76fff26b205be2fd
+	source = http://cran.r-project.org/src/contrib/callr_3.2.0.tar.gz
+	md5sums = 0ef93d63ac8d3f413eceb62388d82e40
 
 pkgname = r-callr
 
