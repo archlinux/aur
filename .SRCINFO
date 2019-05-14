@@ -1,29 +1,28 @@
 pkgbase = r-rgl
 	pkgdesc = 3D Visualization Using OpenGL
-	pkgver = 0.99.16
+	pkgver = 0.100.19
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rgl
+	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	depends = r
 	depends = r-htmlwidgets
 	depends = r-htmltools
 	depends = r-knitr
-	depends = r-jsonlite>=0.9.20
+	depends = r-jsonlite
 	depends = r-shiny
 	depends = r-magrittr
 	depends = r-crosstalk
-	depends = r-manipulatewidget>=0.9.0
+	depends = r-manipulatewidget
+	depends = mesa
+	depends = glu
+	optdepends = zlib
+	optdepends = libpng
+	optdepends = freetype2
 	optdepends = pandoc
-	optdepends = r-rmarkdown
-	optdepends = r-deldir
-	optdepends = r-orientlib
-	optdepends = r-misc3d
-	optdepends = r-rstudioapi
-	optdepends = r-magick
-	replaces = r-cran-rgl
-	source = https://cran.r-project.org/src/contrib/rgl_0.99.16.tar.gz
-	md5sums = 85b15452c982b11c3e001121e68cbf88
+	source = http://cran.r-project.org/src/contrib/rgl_0.100.19.tar.gz
+	md5sums = 68b8468752cdfaa2f78a142088363069
 
 pkgname = r-rgl
 

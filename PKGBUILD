@@ -1,28 +1,29 @@
-# Contributor: Ward Segers <w@rdsegers.be>
-# Contributor: Alex Branham <branham@utexas.edu>
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+
 _cranname=rgl
-_cranver=0.99.16
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-rgl
+_cranver=0.100.19
+pkgname=r-${_cranname}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="3D Visualization Using OpenGL"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL')
-depends=('r' 'r-htmlwidgets' 'r-htmltools' 'r-knitr' 'r-jsonlite>=0.9.20' 'r-shiny' 'r-magrittr' 'r-crosstalk' 'r-manipulatewidget>=0.9.0')
-
-optdepends=('pandoc' 'r-rmarkdown' 'r-deldir' 'r-orientlib' 'r-misc3d' 'r-rstudioapi' 'r-magick')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('85b15452c982b11c3e001121e68cbf88')
-replaces=('r-cran-rgl')
+license=('GPL3')
+depends=('r' 'r-htmlwidgets' 'r-htmltools' 'r-knitr' 'r-jsonlite' 'r-shiny' 'r-magrittr' 'r-crosstalk' 'r-manipulatewidget' 'mesa' 'glu')
+optdepends=('zlib' 'libpng' 'freetype2' 'pandoc')
+source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('68b8468752cdfaa2f78a142088363069')
 
 build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+    cd "${srcdir}"
+
+    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l $srcdir
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+    cd "${srcdir}"
+
+    install -dm0755 "$pkgdir/usr/lib/R/library"
+    cp -a --no-preserve=ownership "$_cranname" "$pkgdir/usr/lib/R/library"
 }
 
