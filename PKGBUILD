@@ -4,7 +4,7 @@
 pkgname=thrust
 pkgver=1.9.4
 pkgrel=1
-pkgdesc='A C++ parallel programming library which resembles the C++ Standard Library.'
+pkgdesc='A C++ parallel programming library which resembles the C++ Standard Library'
 arch=('any')
 url="https://github.com/thrust/$pkgname"
 license=('Apache')
