@@ -1,0 +1,20 @@
+pkgbase = r-editdata
+	pkgdesc = 'RStudio' Addin for Editing a 'data.frame'
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=editData
+	arch = any
+	license = GPL3
+	depends = r
+	depends = r-shiny
+	depends = r-miniui
+	depends = r-rstudioapi
+	depends = r-dt
+	depends = r-tibble
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = http://cran.r-project.org/src/contrib/editData_0.1.2.tar.gz
+	md5sums = fa8c7fb3fea5a55ac89cd3ad73237740
+
+pkgname = r-editdata
+
