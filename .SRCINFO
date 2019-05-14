@@ -1,29 +1,29 @@
 pkgbase = sw4stm32
 	pkgdesc = SystemWorkbench for STM32
-	pkgver = 2.7
+	pkgver = 2.9
 	pkgrel = 1
 	url = http://www.openstm32.org/System+Workbench+for+STM32
 	arch = x86_64
 	license = CUSTOM
-	depends = java-environment<=8
+	depends = java-environment=8
 	optdepends = arm-none-eabi-gcc: ARM compiler
 	optdepends = arm-none-eabi-gdb: ARM GDB
 	optdepends = arm-none-eabi-newlib: ARM bare metal files
 	optdepends = arm-none-eabi-binutils: ARM binutils
 	optdepends = openocd: firmware flashing tool
-	noextract = install_sw4stm32_linux_64bits-v2.7.run
+	noextract = install_sw4stm32_linux_64bits-v2.9.run
 	options = !emptydirs
 	options = !strip
-	source = http://www.ac6-tools.com/downloads/SW4STM32/install_sw4stm32_linux_64bits-v2.7.run
+	source = http://www.ac6-tools.com/downloads/SW4STM32/install_sw4stm32_linux_64bits-v2.9.run
 	source = sw4stm32
 	source = sw4stm32.png
 	source = sw4stm32.desktop
 	source = auto-install.xml
-	md5sums = f391a314d958442a94a28ea3dbf4b1e3
+	md5sums = 670be5ab4b336a118aaa4179a499fcac
 	md5sums = d1dfe6479d10bbfd07b17a289aa1ae32
 	md5sums = 1abad981624008108a0651b9847e183e
 	md5sums = ff9b48b50dc8a1845d002bc1f1ddb50a
-	md5sums = bbec97848b7d66d227a40b0321e55f31
+	md5sums = 78b8e04b38d672dc60bc14a78ac5814f
 
 pkgname = sw4stm32
 
