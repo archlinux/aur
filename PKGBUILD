@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="http://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=mfcj5330dw_us_eu_as"
 license=('custom:Brother commercial license')
 depends=('cups' 'ghostscript' 'poppler' 'a2ps' 'psutils')
-depends_x86_64=('lib32-glibc')
+depends_x86_64=('lib32-glibc' 'lib32-gcc-libs')
 install="$pkgname.install"
 source=("http://download.brother.com/welcome/dlf103003/mfcj5330dwlpr-$pkgver-0.i386.rpm"
         "http://download.brother.com/welcome/dlf103027/mfcj5330dwcupswrapper-$pkgver-0.i386.rpm"
