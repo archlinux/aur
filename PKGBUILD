@@ -1,30 +1,29 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-migrate-parsetree
-pkgver=1.1.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Convert OCaml parsetrees between different versions"
 arch=('i686' 'x86_64')
-license=('LGPL2.1')
+license=('BSD')
 url="https://github.com/ocaml-ppx/ocaml-migrate-parsetree"
-depends=('ocaml' 'ocaml-result')
-optdepends=('ocamlbuild: For ocamlbuild plugin')
-makedepends=('ocaml-findlib' 'dune' 'ocamlbuild')
+depends=('ocaml' 'ocaml-result' 'ocaml-ppx_derivers')
+makedepends=('dune')
 options=('!strip')
-source=("https://github.com/ocaml-ppx/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tbz")
-sha512sums=('23c61d1eae05d5090712038d58c807f2959172d37b0eaf0e43ed6f3fe9a7b52390ebace173350abb47bc3be17be5659f9a6d8751ae6e0794f540780a58711d01')
+source=("https://github.com/ocaml-ppx/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tbz")
+sha512sums=('95a12f4e9e257395aeb5024f3acf4f8e419f6df8d94e611c3660a139254252aa5e462394a5ff91c2b238351bed946e0b5aee05f22e0e2e3350fb476ab3b8b510')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
 
-  jbuilder build
+  dune build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
 
   install -dm755 "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
-  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
-
+  dune install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
