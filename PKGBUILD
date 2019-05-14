@@ -2,13 +2,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-pkgbuild-mode-git
-pkgver=0.14.1.6.geef2803
+pkgver=0.14.1.r8.gd237beb
 pkgrel=1
 pkgdesc="A major mode for creating packages with emacs"
 arch=('any')
 url="https://github.com/stefanhusmann/pkgbuild-mode"
 license=('GPL')
-depends=('emacs' 'pkgbuild-introspection')
+depends=('emacs') 
 makedepends=('git')
 provides=('emacs-pkgbuild-mode')
 conflicts=('emacs-pkgbuild-mode')
@@ -18,12 +18,12 @@ md5sums=('SKIP')
 _gitname="pkgbuild-mode"
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git describe --tags | sed s+-+.+g
+  cd $_gitname
+  git describe --tags | sed s+-+.r+ | tr - .
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd $_gitname
   emacs -batch -f batch-byte-compile pkgbuild-mode.el 
 }
 
