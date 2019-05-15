@@ -2,15 +2,15 @@ pkgname=basilisk
 pkgver=2019.03.27
 pkgrel=1
 pkgdesc="Standalone web browser forked from mozilla.org, UXP version"
-arch=(x86_64)
-license=(MPL GPL LGPL)
+arch=('x86_64')
+license=('MPL' 'GPL' 'LGPL')
 url="https://www.basilisk-browser.org"
-depends=(gtk2 libxt mime-types alsa-lib ffmpeg libvpx libevent
-         nspr nss hunspell hyphen sqlite ttf-font icu libpng libjpeg
-         bzip2 zlib libffi cairo pixman sqlite)
-makedepends=(unzip zip python2 yasm mesa gconf autoconf2.13)
+depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent'
+         'nspr' 'nss' 'hunspell' 'hyphen' 'sqlite' 'ttf-font' 'icu' 'libpng' 'libjpeg'
+         'bzip2' 'zlib' 'libffi' 'cairo' 'pixman' 'sqlite')
+makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'gconf' 'autoconf2.13')
 optdepends=('libnotify: Notification integration')
-options=(!emptydirs)
+options=('!emptydirs')
 source=("https://github.com/MoonchildProductions/UXP/archive/v$pkgver.tar.gz"
         "basilisk.desktop")
 sha256sums=('d1d614fa5f3682ad6bd05f9a9ae2b9089de10df2bdd245528ed867d2fce563a4'
@@ -106,6 +106,7 @@ package() {
 
   DESTDIR="$pkgdir" ./mach install
 
+  local i
   for i in 16 22 24 32 64 48 256; do
     install -Dm644 "application/basilisk/branding/official/default${i}.png" \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/basilisk.png"
