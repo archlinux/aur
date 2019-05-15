@@ -3,7 +3,7 @@
 
 pkgname=xmind-zen
 pkgver=201807162014
-pkgrel=2
+pkgrel=3
 pkgdesc="XMind - The most popular mind mapping software"
 arch=('x86_64')
 url="http://www.xmind.net"
@@ -17,7 +17,7 @@ sha256sums=('0ded9e1bcf15a7cb1aa4c2e364c6b627f1e0cc68c976b850ee9737a35123bc1d')
 prepare() {
     sed -i 's/"\/opt\/XMind ZEN\/XMind"/XMind/' "$srcdir/usr/share/applications/XMind.desktop"
     echo "#!/usr/bin/env sh
-exec electron2 /usr/share/zmind-zen/app \$@    
+exec electron2 /usr/share/xmind-zen/app \$@    
 " > "$srcdir/XMind.sh"
 }
 

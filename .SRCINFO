@@ -1,7 +1,7 @@
 pkgbase = xmind-zen
 	pkgdesc = XMind - The most popular mind mapping software
 	pkgver = 201807162014
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.xmind.net
 	arch = x86_64
 	license = EPL
