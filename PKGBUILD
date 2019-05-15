@@ -2,7 +2,7 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=phoenix
-pkgver=v1.0.0.beta.6.r16.ged2118a2
+pkgver=v1.0.0.beta.6.r17.g7ccc15a9
 pkgrel=1
 pkgdesc="BURST Cross-Platform Wallet UI"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=(git+https://github.com/burst-apps-team/$pkgname.git
 	$pkgname.desktop
 	package.json.patch)
 sha256sums=('SKIP'
-	    'bbbaf2f53ef6dfb232364b981e441f00772699351c95e0700fd8ef59c984a80b'
+	    '4a4a80a65a426b30ae85e1b9fef879a3748578669a3409e2953ace12f7baa8a7'
 	    '6b1cac2f8a633e508608242fd7dffd15e8d95cc94073eaa4994f985f06dcafc3')
 
 pkgver() {
