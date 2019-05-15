@@ -1,0 +1,14 @@
+pkgbase = dbus-dummy
+	pkgdesc = Dummy package for DBus
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.freedesktop.org/www/Software/dbus/
+	arch = any
+	license = GPL
+	license = custom
+	depends = libdbus
+	provides = dbus
+	conflicts = dbus
+
+pkgname = dbus-dummy
+
