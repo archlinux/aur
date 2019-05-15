@@ -1,17 +1,17 @@
 pkgbase = nzbhydra2
 	pkgdesc = Meta search for NZB indexers
-	pkgver = 2.6.6
+	pkgver = 2.6.7
 	pkgrel = 1
 	url = https://github.com/theotherp/nzbhydra2
 	arch = any
 	license = Apache
 	depends = python2
 	depends = java-runtime-headless>=8
-	source = https://github.com/theotherp/nzbhydra2/releases/download/v2.6.6/nzbhydra2-2.6.6-linux.zip
+	source = https://github.com/theotherp/nzbhydra2/releases/download/v2.6.7/nzbhydra2-2.6.7-linux.zip
 	source = nzbhydra2.service
 	source = nzbhydra2.tmpfiles
 	source = nzbhydra2.sysusers
-	sha256sums = 330084898f972df515809843333be98997f2fcfae6d4fdd5284006d20e2519a9
+	sha256sums = 7f568085a85ee09ca9db536a06b216cbcd582599f59d28e6d2bf9992563399ed
 	sha256sums = 8c864fa865c92a6e0182f4dd3d4032ad85f09d021444cca217efafecbeff33c3
 	sha256sums = 464bffa0e7bf99ccd7bbcdb787b25b53b7692f86f081a4fe347b92f88c56fb09
 	sha256sums = 8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a
