@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Drill Search
+Comment=Search files without using indexing, but clever crawling
+Comment[it]=Trova files sul tuo PC senza indicizzare, ma cercando intelligentemente
+Icon=drill-search
+Exec=drill-search
+Terminal=false
+Categories=Application;Utility;GTK;
+Keywords=Search;FileSearch;File Search;Find;

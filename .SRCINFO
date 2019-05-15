@@ -1,0 +1,24 @@
+pkgbase = drill-search-git
+	pkgdesc = GTK+ tool for searching files without indexing, but clever crawling.
+	pkgver = 1.79
+	pkgrel = 1
+	url = https://www.drill.santamorena.me/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = dub
+	depends = gtk3
+	provides = drill-search
+	source = drill-search.sh
+	source = me.santamorena.drill.desktop
+	source = git://github.com/yatima1460/Drill.git
+	source = git://github.com/yatima1460/GtkD.git
+	source = git://github.com/yatima1460/datefmt.git
+	sha256sums = 56cf59130ce9b794a4d065ef5b2e1203380e29747bb1211f57b35a0e6a4a5f88
+	sha256sums = 10ad4dbbc13e7d978c15ad3aaf376b25a80450ebf7eb71b1c41ed7d73d1335a7
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = drill-search-git
+
