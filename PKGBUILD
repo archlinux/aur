@@ -3,7 +3,7 @@
 
 _name=gzdoom
 pkgname=${_name}
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
