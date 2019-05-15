@@ -10,11 +10,11 @@
 
 pkgname=opencpn
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Chart Plotting / Marine Navigation"
 arch=('x86_64')
 license=("GPL2")
-depends=('wxgtk3' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme')
+depends=('wxgtk3' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme' 'webkit2gtk')
 makedepends=('cmake')
 url="http://opencpn.org"
 install=opencpn.install
