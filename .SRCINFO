@@ -1,12 +1,12 @@
 pkgbase = ocaml-bin_prot
 	pkgdesc = A binary protocol generator
-	pkgver = 0.11.0
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/bin_prot
 	arch = i686
 	arch = x86_64
-	license = Apache
+	license = MIT
 	makedepends = dune
 	depends = ocaml
 	depends = ocaml-base
@@ -15,11 +15,9 @@ pkgbase = ocaml-bin_prot
 	depends = ocaml-ppx_fields_conv
 	depends = ocaml-ppx_sexp_conv
 	depends = ocaml-ppx_variants_conv
-	depends = ocaml-migrate-parsetree
-	depends = ocaml-ppxlib
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/v0.11/files/bin_prot-v0.11.0.tar.gz
-	md5sums = 64495e0e88fe7cccba6e66b0deaef283
+	source = https://ocaml.janestreet.com/ocaml-core/v0.12/files/bin_prot-v0.12.0.tar.gz
+	sha512sums = e2a35ca27f80c8a79a75017e30e277489a5f64716764da02b2de21500ba6709a440113bc6d33d07db9dcf81f02bd62670b9b310e36c9807e818d8e03e7f79300
 
 pkgname = ocaml-bin_prot
 
