@@ -38,7 +38,7 @@ source=("git://github.com/matrix-org/synapse.git#branch=develop"
 md5sums=('SKIP'
          '276a99050f40601089255ea168bb7620'
          'ecd9f66fb57fe1a2e1e2df07a460a35b'
-         'ad2900abb04351778e577175cedf6edc')
+         '4a2e1a8f77529cef49d0f8ed673dcfdb')
 
 backup=('etc/synapse/log_config.yaml')
 install=synapse.install

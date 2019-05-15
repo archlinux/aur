@@ -1,18 +1,5 @@
-From c1a7db468d4dbb3958f5b480fcde760566962ba4 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Johannes=20L=C3=B6thberg?= <johannes@kyriasis.com>
-Date: Tue, 8 Jan 2019 20:09:50 +0100
-Subject: [PATCH] Bump python_dependencies
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-Signed-off-by: Johannes Löthberg <johannes@kyriasis.com>
----
- synapse/python_dependencies.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/synapse/python_dependencies.py b/synapse/python_dependencies.py
-index f71e21ff4..b49873781 100644
+index 2708f5e82..b030dfbf4 100644
 --- a/synapse/python_dependencies.py
 +++ b/synapse/python_dependencies.py
 @@ -62,7 +62,7 @@ REQUIREMENTS = [
@@ -24,6 +11,12 @@ index f71e21ff4..b49873781 100644
  
      # we use attr.s(slots), which arrived in 16.0.0
      # Twisted 18.7.0 requires attrs>=17.4.0
--- 
-2.21.0
-
+@@ -76,7 +76,7 @@ REQUIREMENTS = [
+     # As of requests 2.21, requests does not yet support urllib3 1.25.
+     # (If we do not pin it here, pip will give us the latest urllib3
+     # due to the dep via sentry-sdk.)
+-    "urllib3<1.25",
++    "urllib3<1.26",
+ ]
+ 
+ CONDITIONAL_REQUIREMENTS = {

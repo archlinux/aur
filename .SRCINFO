@@ -56,7 +56,7 @@ pkgbase = matrix-synapse-git
 	md5sums = SKIP
 	md5sums = 276a99050f40601089255ea168bb7620
 	md5sums = ecd9f66fb57fe1a2e1e2df07a460a35b
-	md5sums = ad2900abb04351778e577175cedf6edc
+	md5sums = 4a2e1a8f77529cef49d0f8ed673dcfdb
 
 pkgname = matrix-synapse-git
 
