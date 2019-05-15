@@ -2,12 +2,12 @@
 
 pkgname=webtorrent-desktop
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Streaming torrent client."
 arch=('i686' 'x86_64')
 url="https://webtorrent.io/desktop"
 license=('MIT')
-depends=('gconf' 'electron2' 'libnotify')
+depends=('gconf' 'electron' 'libnotify')
 makedepends=('npm')
 conflicts=('webtorrent-desktop-git' 'webtorrent-desktop-bin')
 options=(!strip)
@@ -16,7 +16,7 @@ source=("https://github.com/feross/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "traysupport.patch")
 sha256sums=('2eec644337f2e8a47187c54d702491e3b4c1f1236dae48cb494c4e99ba0a9796'
-            '2c5e3e19b9bb3899fe244df0d285876beeee0b0dc6bf587febd698a50ccc277a'
+            'c1a416dbaefa5da60d236af561d60b7ed86def1c3ee05b7090bc5586da72fb17'
             '6af365f47ca47b33cca65f62c3a662218ba38af7d3d52bb891ce3e73bbb60539'
             'dbeff65a109489ce8ce4e89d0b4ad3bc1768d03707bc1a0845db852049296deb')
 
@@ -28,6 +28,7 @@ prepare() {
 
   sed -i '/"electron.*":/d' package.json
   patch -p1 -i "$srcdir/traysupport.patch"
+  sed -i 's/app.makeSingleInstance(onAppOpen)/!app.requestSingleInstanceLock()/' src/main/index.js
 }
 
 build() {
