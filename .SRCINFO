@@ -1,0 +1,37 @@
+pkgbase = prusaslicer
+	pkgdesc = PrusaSlicer takes 3D models (STL, OBJ, AMF) and converts them into G-code instructions for FFF printers or PNG layers for mSLA 3D printers
+	pkgver = 2.0.0_rc
+	pkgrel = 1
+	url = https://github.com/prusa3d/PrusaSlicer
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = boost
+	makedepends = cmake
+	makedepends = eigen
+	makedepends = expat
+	makedepends = git
+	makedepends = gtest
+	makedepends = leatherman
+	makedepends = qhull
+	depends = boost-libs
+	depends = curl
+	depends = glew
+	depends = intel-tbb
+	depends = nlopt
+	optdepends = perl-net-dbus: notifications support via any dbus-based notifier
+	optdepends = perl-net-bonjour: support for autodiscovery of printers on network (octoprint)
+	optdepends = perl-class-xsaccessor: creating faster accessor methods
+	conflicts = slic3r-prusa3d
+	conflicts = slic3r-prusa3d-git
+	conflicts = prusaslicer-git
+	replaces = slic3r-prusa3d
+	replaces = slic3r-prusa3d-git
+	replaces = prusaslicer-git
+	source = git+https://github.com/prusa3d/PrusaSlicer.git#tag=version_2.0.0-rc
+	source = prusa-slicer.desktop
+	md5sums = SKIP
+	md5sums = d3f87e380d2e93a63aa7a7afc2ddf54d
+
+pkgname = prusaslicer
+
