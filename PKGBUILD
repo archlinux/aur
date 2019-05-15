@@ -26,8 +26,8 @@ sha256sums=(
   'e4da3d40061de6eb51a4364a6724d376a39bbc631cec5e453b2fdaea36e02f52'
 )
 
-conflicts=('slic3r-prusa3d' 'slic3r' 'prusaslicer')
-replaces=('slic3r-prusa3d-git')
+conflicts=('slic3r-prusa3d-git' 'slic3r-prusa3d' 'slic3r' 'prusaslicer')
+replaces=( 'slic3r-prusa3d-git')
 
 pkgver() {
   cd "${srcdir}/PrusaSlicer"

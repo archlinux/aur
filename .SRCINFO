@@ -18,6 +18,7 @@ pkgbase = prusaslicer-git
 	depends = glew
 	depends = intel-tbb
 	depends = nlopt
+	conflicts = slic3r-prusa3d-git
 	conflicts = slic3r-prusa3d
 	conflicts = slic3r
 	conflicts = prusaslicer
