@@ -1,10 +1,10 @@
 # Maintainer : David C. Rankin <drankinatty@gmail.com>
 
 pkgname=virtualbox-bin-5
-pkgver=5.2.28
-_build=130011
+pkgver=5.2.30
+_build=130521
 _rev=75085
-pkgrel=2
+pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version 5)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
@@ -35,7 +35,7 @@ source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBoxSDK-${pk
         '009-include-path.patch'
         "http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_amd64.run")
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('265b0a46601eb0347a419522ef6d2ef00c07e070fb18ec1239e425de40b13622'
+sha256sums=('d361f1d9c8d1c8fb605ebd5aad78a251130d1c0328c301cc919bf9f43bb7cb75'
             '23e3e0e6abfaa69bf0aa046c0ee070d19435b97cb4bfbb16bba65a2783502154'
             '815f6e2e3ab687356aad0e6f59eef6e266514fb12a6b569d239d834e0a480f37'
             '99deff35d8a600f20223b96ba409451834e58ac21a589a989dd82a2d6fe006ae'
@@ -46,7 +46,7 @@ sha256sums=('265b0a46601eb0347a419522ef6d2ef00c07e070fb18ec1239e425de40b13622'
             'cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a'
             'e9df0fff15184d0a90abe17707bdbe1931582433bbc14ded4fb3b0252653c801'
             '5112f0e1ba3bd0bd92ef2edb2d21024e265abb02841aa29aa05410526adc273f'
-            '6846c7ad0ba2fbf875ebd8b8cc9cb1a2e1f70947848396c0fb92b55787c99679')
+            '021bf5db6e3c1cc69450af32df85cf33cac23f4804805689223ea04faf3fb4d7')
 
 prepare() {
     [ "$CARCH" = 'i686'   ] && local _arch='x86'
