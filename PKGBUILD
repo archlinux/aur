@@ -1,9 +1,9 @@
 # Maintainer: Kerolos Zaki <kerolos4zaki@gmail.com>
 
 pkgname=dawayer
-pkgdesc="An ordinary audio player"
+pkgdesc="An ordinary audio player built with web technologies"
 arch=("x86_64")
-url="https://gitlab.com/herpproject/Dawayer"
+url="https://gitlab.com/hpj/Dawayer"
 license=("MIT")
 depends=('nodejs' 'c-ares' 'gtk3' 'libxss' 'nss')
 
@@ -33,8 +33,8 @@ package() {
   install -d "${pkgdir}/usr/share/pixmaps"
   cp "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/Dawayer.png"
 }
-pkgver=1552099207370
-pkgrel=2
-source=('icon.png' 'Dawayer.desktop' 'Dawayer-1552099207370.tar.xz'::'https://gitlab.com/herpproject/Dawayer/-/jobs/174508276/artifacts/raw/public/Dawayer.tar.xz
+pkgver=1557939663005
+pkgrel=1
+source=('icon.png' 'Dawayer.desktop' 'Dawayer-1557939663005.tar.xz'::'https://gitlab.com/hpj/Dawayer/-/jobs/213136744/artifacts/raw/public/Dawayer.tar.xz
 ')
-md5sums=('d57d7316ee7ab96130fc6a8c07d1ae3f' 'e406095b0807377b9e779d910da220a6' '11d60ba98b0c18085e31de0a5f365155')
+md5sums=('d57d7316ee7ab96130fc6a8c07d1ae3f' 'f31321605a55d19fb385ba4ae97ea1e8' '2518fe23659e81098f1f765b055f953e')

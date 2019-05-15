@@ -7,4 +7,4 @@ Type=Application
 Icon=Dawayer
 StartupWMClass=Dawayer
 MimeType=audio/mpeg3;audio/mp4;audio/mpeg;audio/opus;audio/ogg;audio/wav;audio/aac;audio/m4a;audio/flac;
-Categories=Audio;
+Categories=AudioVideo;Audio;
