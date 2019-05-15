@@ -6,13 +6,13 @@
 pkgname=prusaslicer
 pkgver=2.0.0_rc
 _pkgver=$(tr _ - <<< $pkgver)
-pkgrel=3
+pkgrel=4
 pkgdesc="Takes 3D models (STL, OBJ, AMF) and converts them into G-code instructions for FFF printers or PNG layers for mSLA 3D printers"
 arch=('i686' 'x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
 license=('AGPL3')
-depends=('boost-libs' 'curl' 'glew' 'intel-tbb' 'nlopt' 'wxgtk2')
-makedepends=('boost' 'cmake' 'git' 'gtest')
+depends=('boost-libs' 'curl' 'glew' 'intel-tbb' 'nlopt' 'wxgtk3')
+makedepends=('boost' 'cmake' 'git' 'gtest' 'wxgtk2')
 replaces=('slic3r-prusa3d' 'slic3r-prusa3d-git' 'prusaslicer-git')
 conflicts=('slic3r-prusa3d' 'slic3r-prusa3d-git' 'prusaslicer-git')
 source=("git+https://github.com/prusa3d/PrusaSlicer.git#tag=version_${_pkgver}"
@@ -32,6 +32,7 @@ build() {
   cmake -DSLIC3R_STATIC=0 \
         -DSLIC3R_FHS=1 \
         -DSLIC3R_WX_STABLE=1 \
+        -DSLIC3R_GTK=3 \
         -DSLIC3R_PCH=0 \
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
