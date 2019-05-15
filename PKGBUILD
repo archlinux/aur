@@ -2,15 +2,16 @@
 
 _pkgname=avogadrolibs
 pkgname="${_pkgname}-git"
-pkgver=1.91.0.r1674.207b959f
-pkgrel=1
+pkgver=1.92.1.r1776.04c6ff1f
+pkgrel=2
 pkgdesc="Avogadro 2: libraries"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("x86_64")
 license=("Kitware")
-depends=("libarchive" "glew" "hdf5" "vtk" "libmsym-git" "spglib" "qt5-webview" "qt5-x11extras" "molequeue" "python" "pybind11")
+depends=("libarchive" "glew" "hdf5" "vtk" "libmsym" "spglib" "libmmtf" "qt5-webview" "qt5-x11extras" "molequeue" "pybind11" "python-cclib")
 # gdal is for proj, which is optional for VTK but required here? same for openmpi
-makedepends=("git" "cmake" "eigen" "gtest" "gdal" "openmpi")
+# `msgpack-c` is a workaround for the broken libmmtf PKGBUILD
+makedepends=("git" "cmake" "eigen" "gtest" "gdal" "openmpi" "msgpack-c")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("git://github.com/OpenChemistry/${_pkgname}.git")
@@ -24,30 +25,34 @@ pkgver() {
          "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  mkdir -p "${srcdir}"/build
+}
+
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}"/build
   cmake \
-      -DCMAKE_BUILD_TYPE:STRING=Release \
-      -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-      -DCMAKE_INSTALL_LIBDIR:PATH=lib \
-      -DBUILD_SHARED_LIBS:BOOL=ON \
-      -DENABLE_TESTING:BOOL=ON \
-      -DUSE_HDF5:BOOL=ON \
-      -DUSE_VTK:BOOL=ON \
-      -DUSE_MMTF:BOOK=OFF \
-      -DUSE_PYTHON:BOOL=ON \
-      -DPYTHON_EXECUTABLE:PATH=/usr/bin/python \
-      .
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=lib \
+      -DBUILD_SHARED_LIBS=ON \
+      -DENABLE_TESTING=ON \
+      -DUSE_HDF5=ON \
+      -DUSE_VTK=ON \
+      -DUSE_MMTF=ON \
+      -DUSE_PYTHON=ON \
+      -DPYTHON_EXECUTABLE=/usr/bin/python \
+      "${srcdir}/${_pkgname}"
   make
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}"/build
   make test
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}"/build
   make DESTDIR="${pkgdir}" install
-  install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -D -m 644 "${srcdir}/${_pkgname}"/LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
