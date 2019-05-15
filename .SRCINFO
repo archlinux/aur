@@ -1,6 +1,6 @@
 pkgbase = mutter-hide-legacy-decorations
 	pkgdesc = A window manager for GNOME (with a little hack to hide the window decorations on maximized legacy applications)
-	pkgver = 3.32.0+15+gc96cf0608
+	pkgver = 3.32.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -27,15 +27,17 @@ pkgbase = mutter-hide-legacy-decorations
 	depends = libinput
 	depends = pipewire
 	depends = xorg-server-xwayland
-	provides = mutter=3.32.0+15+gc96cf0608
+	provides = mutter=3.32.2
 	conflicts = mutter-wayland
 	conflicts = mutter
 	replaces = mutter-wayland
 	replaces = mutter
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=c96cf0608dd5e92369447ddbba9f63b7a2c84c0f
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=189f71f5d1e70dd16796418d568d3e3e4cad49e0
+	source = 0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
 	source = 216.patch
 	source = hideTitlebar.patch
 	sha256sums = SKIP
+	sha256sums = 842162bf8cec5d69fdb80c85fd152ddd3db6a9179d11d6f81d486f79814838c0
 	sha256sums = ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756
 	sha256sums = 0f57441f08f7c58d198c6c9b70bcffd05e84b54b2a048e032babd836d8967bcb
 
