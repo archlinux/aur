@@ -3,8 +3,8 @@ pkgver=1
 pkgrel=2
 pkgdesc="A script for suspending to memory"
 arch=('any')
-depends=('glibc')
-source=('mem-suspend.c')
+license=('custom:WTFPL')
+source=("mem-suspend.c")
 sha256sums=('cfd07c414894effebd5b1452b40496c1ace51d4d734f834a83ae2dec84f03d6a')
 
 build() {

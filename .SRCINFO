@@ -3,7 +3,7 @@ pkgbase = mem-suspend
 	pkgver = 1
 	pkgrel = 2
 	arch = any
-	depends = glibc
+	license = custom:WTFPL
 	source = mem-suspend.c
 	sha256sums = cfd07c414894effebd5b1452b40496c1ace51d4d734f834a83ae2dec84f03d6a
 
