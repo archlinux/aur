@@ -86,7 +86,7 @@ source=(
         'https://raw.githubusercontent.com/chromium/crashpad/master/third_party/lss/lss.h'
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
-        'chromium-skia-harmony.patch'
+        'chromium-skia-harmony_r1.patch'
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
