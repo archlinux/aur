@@ -2,10 +2,10 @@
 # Submitter: Schala Zeal <schalaalexiazeal@gmail.com>
 
 pkgname=spigot
-_pkgver=1.14
+_pkgver=1.14.1
 _build=101
 pkgver="${_pkgver}+b${_build}"
-pkgrel=2
+pkgrel=1
 pkgdesc="High performance Minecraft server implementation"
 arch=('any')
 url="https://www.spigotmc.org/"
