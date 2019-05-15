@@ -10,7 +10,7 @@ depends=('perl' 'perl-net-server' 'spamassassin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mpaperno/spampd/archive/2.53.tar.gz"
         spampd.service)
 md5sums=('63ef45a103687ec3a1b7983f537b4d9a'
-         'afc4f2c824bfbd1cc81db3e740f29078')
+         '009db21d0046a73bde74e403e903da6e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
