@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/opt/fastoredis/bin/FastoRedis
+Exec=/opt/fastoredis/bin/fastoredis
 Name=FastoRedis
 GenericName=The IDE for redis working.
 GenericName[de]=Die IDE der

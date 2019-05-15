@@ -14,7 +14,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("${_pkgname}.desktop"
         "${_pkgname}-${pkgver}-x86_64.tar.gz::https://fastoredis.com/downloads/linux/${_pkgname}-${pkgver}-x86_64.tar.gz")
-md5sums=('d28ffa69dcd9523f53e4866661778e9b'
+md5sums=('a3da6c7bf56828a0b94e106960a41f9f'
          'decf13c54d0dec0d814db1f8c53e90aa')
 
 build() {
