@@ -1,14 +1,14 @@
 pkgbase = python-snuggs
 	pkgdesc = Snuggs are s-expressions for Numpy
-	pkgver = 1.4.3
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/mapbox/snuggs
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/snuggs/snuggs-1.4.3.tar.gz
-	sha256sums = d819e52a6b104936b293b625e5ab53cb8b95194643525a7d181334d743a77625
+	source = https://files.pythonhosted.org/packages/source/s/snuggs/snuggs-1.4.5.tar.gz
+	sha256sums = a315f8fc2d781225ffee92081c7e20217ba178e9b192ffd26b85a0013c056d2c
 
 pkgname = python-snuggs
 
