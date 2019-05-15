@@ -5,8 +5,8 @@
 # Maintainer: jooch <jooch AT gmx DOT com>
 
 pkgname=freefilesync
-pkgver=10.11
-pkgrel=3
+pkgver=10.12
+pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="https://www.freefilesync.org"
@@ -21,7 +21,7 @@ source=(
 	RealTimeSync.desktop
 	)
 
-sha256sums=('ed322ef285d85b1cfaa7d4e6fd4dbcb00c4aaf57003a3cbd35126eaef95a1d37'
+sha256sums=('55b915c47f2dff5c376ed7b6297bae449ab71179bab026a776dea123aaa65407'
             '052ef5bf5eb11730499f4b81cd7e70f990fff3cfcc2f7059b84981e7ededc361'
             'fef8aa099a27c277b76f1229651ed2324355528482c8f115e09c39269bbf4bdd'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
@@ -47,15 +47,15 @@ prepare() {
     sed -e 's:const double scrollSpeed =:& 6; //:g' -i 'wx+/grid.cpp'
 
 # libssh2 v1.8.2 does not yet implement LIBSSH2_SFTP_DEFAULT_MODE, revert to previous impl.
-    sed -e 's/LIBSSH2_SFTP_DEFAULT_MODE/LIBSSH2_SFTP_S_IRWXU | LIBSSH2_SFTP_S_IRWXG | LIBSSH2_SFTP_S_IRWXO/g' -i 'FreeFileSync/Source/fs/sftp.cpp'
+    sed -e 's/LIBSSH2_SFTP_DEFAULT_MODE/LIBSSH2_SFTP_S_IRWXU | LIBSSH2_SFTP_S_IRWXG | LIBSSH2_SFTP_S_IRWXO/g' -i 'FreeFileSync/Source/afs/sftp.cpp'
 
 # add '-lz' back into LINKFLAGS
     sed -i '/pie/ s/-pthread/-lz -pthread/' FreeFileSync/Source/Makefile
     sed -i '/pie/ s/-pthread/-lz -pthread/' FreeFileSync/Source/RealTimeSync/Makefile
 
 # inlining of constants not present in libssh2's distributed headers
-    sed -i 's/MAX_SFTP_READ_SIZE/30000/g' FreeFileSync/Source/fs/sftp.cpp
-    sed -i 's/MAX_SFTP_OUTGOING_SIZE/30000/g' FreeFileSync/Source/fs/sftp.cpp
+    sed -i 's/MAX_SFTP_READ_SIZE/30000/g' FreeFileSync/Source/afs/sftp.cpp
+    sed -i 's/MAX_SFTP_OUTGOING_SIZE/30000/g' FreeFileSync/Source/afs/sftp.cpp
 }
 
 build() {
