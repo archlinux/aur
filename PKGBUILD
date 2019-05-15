@@ -1,7 +1,7 @@
 # Maintainer: Malachi Soord <me@malachisoord.com>
 pkgname=psalm
 pkgver=3.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Psalm is a static analysis tool for finding errors in PHP applications, built on top of PHP Parser."
 url="https://getpsalm.org"
 arch=('any')
