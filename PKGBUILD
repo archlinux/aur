@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=75.0.3770.15
+pkgver=76.0.3788.1
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -86,8 +86,7 @@ source=(
         'https://raw.githubusercontent.com/chromium/crashpad/master/third_party/lss/lss.h'
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
-        'chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
-        'libstdcpp.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1584292/revisions/2/patch?download'
+        'chromium-skia-harmony.patch'
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -102,8 +101,7 @@ sha256sums=(
             '986e5bd28abcc5f7d0c0587bb850f3b4edb8a91eeebf82b3c329752455fa1606'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
-            '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
-            'd40e7a5dd5eccdcfa40259c5b4994b8e2aecb8090e070e51ca453446457a167b'
+            '0dd2fea50a93b26debce63c762c0291737b61816ba5b127ef923999494142b78'
             )
 install=chromium-dev.install
 
@@ -255,6 +253,7 @@ _keeplibs=(
            'third_party/shaderc'
            'third_party/skia'
            'third_party/skia/include/third_party/vulkan'
+           'third_party/skia/include/third_party/skcms'
            'third_party/skia/third_party/gif'
            'third_party/skia/third_party/skcms'
            'third_party/skia/third_party/vulkan'
@@ -317,7 +316,7 @@ _flags=(
         "google_default_client_id=\"${_google_default_client_id}\""
         "google_default_client_secret=\"${_google_default_client_secret}\""
         'fieldtrial_testing_like_official_build=true'
-        'remove_webcore_debug_symbols=true'
+        'blink_symbol_level=0'
         'use_aura=true'
         'use_gio=false'
         'use_gnome_keyring=false'
@@ -499,9 +498,6 @@ prepare() {
 
   # https://crbug.com/473866.
   patch -p1 -i "${srcdir}/chromium-widevine-r4.patch"
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/1584292
-  base64 -d ${srcdir}/libstdcpp.patch.base64 | patch -p1 -i -
 
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
