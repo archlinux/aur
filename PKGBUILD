@@ -3,15 +3,15 @@
 # Contributor: Glaucous <glakke1 at gmail dot com>
 
 pkgname=lib32-apitrace
-pkgver=7.1
-pkgrel=3
+pkgver=8.0
+pkgrel=1
 pkgdesc="Graphics API Tracing (32-bit)"
 arch=('x86_64')
 url="https://github.com/apitrace/apitrace"
 license=('custom')
 makedepends=('cmake' 'lib32-mesa-libgl' 'lib32-procps-ng' 'python2' 'gcc-multilib')
 source=("apitrace-$pkgver.tar.gz::https://github.com/apitrace/apitrace/archive/${pkgver}.tar.gz")
-md5sums=('c5d44dece1e1ca7c63f8b8efbd06ac5a')
+sha256sums=('45f61fb4859606ee54ebfd7dd8a4dedce18b9fe8a2523bbd23526bd9413b6b6c')
 
 build() {
   cd "${srcdir}/apitrace-${pkgver}"
