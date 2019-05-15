@@ -1,15 +1,17 @@
 pkgbase = tkhtml
 	pkgdesc = A Tcl/Tk widget that displays HTML
-	pkgver = 3a16
+	pkgver = 3a17
 	pkgrel = 1
-	url = https://github.com/Geballin/PgBrowse
+	url = https://github.com/Geballin/tkhtml3
 	arch = x86_64
 	arch = i686
 	license = BSD
+	makedepends = make
+	makedepends = gcc
 	depends = tcl
 	depends = tk
-	source = http://tkhtml.tcl.tk/tkhtml3-alpha-16.tar.gz
-	md5sums = 1bed3863ded3f695b6fe65ec02e7c0df
+	source = https://github.com/Geballin/tkhtml3/archive/Alpha-17.tar.gz
+	md5sums = a3e223dda4340471fdd38abc172bf16a
 
 pkgname = tkhtml
 
