@@ -1,8 +1,8 @@
 # Maintainer: Tyler Dence <tyzoid@archlinux32.org>
 
 pkgname=nextcloud-desktop-git
-pkgver='2.5.0'
-pkgrel='2'
+pkgver='2.5.3.rc1'
+pkgrel='1'
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
@@ -29,6 +29,7 @@ build() {
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE="Release" \
+		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DNO_SHIBBOLETH=1 \
 		-DQTKEYCHAIN_LIBRARY=/usr/lib/libqt5keychain.so \
 		-DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
