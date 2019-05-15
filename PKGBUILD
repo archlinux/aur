@@ -10,7 +10,7 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgname=ungoogled-chromium
+pkgname=ungoogled-chromium-archlinux
 # Commit or tag for the upstream ungoogled-chromium repo
 _ungoogled_version='74.0.3729.136-1'
 _ungoogled_archlinux_version=c0bd60f9726f68c62471f15a701f1087baec87c4

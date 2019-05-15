@@ -1,4 +1,4 @@
-pkgbase = ungoogled-chromium
+pkgbase = ungoogled-chromium-archlinux
 	pkgdesc = A lightweight approach to removing Google web service dependency
 	pkgver = 74.0.3729.136
 	pkgrel = 1
@@ -69,5 +69,5 @@ pkgbase = ungoogled-chromium
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = ungoogled-chromium
+pkgname = ungoogled-chromium-archlinux
 
