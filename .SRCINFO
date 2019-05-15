@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-cast-to-tv
 	pkgdesc = Cast files to your Chromecast or other devices over local network
-	pkgver = 8
+	pkgver = 9
 	pkgrel = 1
 	url = https://github.com/Rafostar/gnome-shell-extension-cast-to-tv
 	arch = any
@@ -9,8 +9,9 @@ pkgbase = gnome-shell-extension-cast-to-tv
 	makedepends = gettext
 	depends = gnome-shell
 	depends = ffmpeg
-	source = https://github.com/Rafostar/gnome-shell-extension-cast-to-tv/archive/v8.tar.gz
-	sha256sums = 1c37ea56c9d38950016d8a469e7ee13ff342e6773b6793d2ded0cc1bd118d48e
+	optdepends = python-nautilus: Nautilus integration
+	source = https://github.com/Rafostar/gnome-shell-extension-cast-to-tv/archive/v9.tar.gz
+	sha256sums = b67df23d85de7feb779cda4872e54a59b521e789a7183f60f5fdd297dcc746db
 
 pkgname = gnome-shell-extension-cast-to-tv
 
