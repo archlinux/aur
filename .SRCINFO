@@ -1,6 +1,6 @@
-pkgbase = slic3r-prusa3d-git
-	pkgdesc = Updated Slic3r by Prusa3D with many bugfixes and new features
-	pkgver = 1.42.0.alpha7.r95.gc77d15c98
+pkgbase = prusaslicer-git
+	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
+	pkgver = 2.0.0.rc.r18.gd13d3f39a
 	pkgrel = 1
 	url = http://www.prusa3d.com/
 	arch = i686
@@ -20,10 +20,12 @@ pkgbase = slic3r-prusa3d-git
 	depends = nlopt
 	conflicts = slic3r-prusa3d
 	conflicts = slic3r
-	source = git+https://github.com/prusa3d/Slic3r.git
-	source = slic3r_prusa3d.desktop
+	conflicts = prusaslicer
+	replaces = slic3r-prusa3d-git
+	source = git+https://github.com/prusa3d/PrusaSlicer.git
+	source = prusaslicer.desktop
 	sha256sums = SKIP
-	sha256sums = 598e84a1a837059929477ce9d45e1e660be51e69202f788f83c6f65437055db5
+	sha256sums = e4da3d40061de6eb51a4364a6724d376a39bbc631cec5e453b2fdaea36e02f52
 
-pkgname = slic3r-prusa3d-git
+pkgname = prusaslicer-git
 

@@ -1,14 +1,10 @@
 # Maintainer: Salamandar <felix@piedallu.me>
-# Contributor: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
-# Contributor: Swift Geek <swifgeek ɐ google m č0m>
-# Contributor: Nick Østergaard <oe.nick at gmail dot com>
-# Contributor: olasd
 
-_pkgname=slic3r-prusa3d
+_pkgname=prusaslicer
 pkgname=${_pkgname}-git
-pkgver=1.42.0.alpha7.r95.gc77d15c98
+pkgver=2.0.0.rc.r18.gd13d3f39a
 pkgrel=1
-pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
+pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://www.prusa3d.com/"
 license=('AGPL3')
@@ -21,24 +17,25 @@ makedepends=(
 checkdepends=(
   'gtest'
 )
-
-conflicts=('slic3r-prusa3d' 'slic3r')
 source=(
-  "git+https://github.com/prusa3d/Slic3r.git"
-  'slic3r_prusa3d.desktop'
+  "git+https://github.com/prusa3d/PrusaSlicer.git"
+  'prusaslicer.desktop'
 )
 sha256sums=(
   'SKIP'
-  '598e84a1a837059929477ce9d45e1e660be51e69202f788f83c6f65437055db5'
+  'e4da3d40061de6eb51a4364a6724d376a39bbc631cec5e453b2fdaea36e02f52'
 )
 
+conflicts=('slic3r-prusa3d' 'slic3r' 'prusaslicer')
+replaces=('slic3r-prusa3d-git')
+
 pkgver() {
-  cd "${srcdir}/Slic3r"
+  cd "${srcdir}/PrusaSlicer"
   git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^version_//'
 }
 
 build() {
-  cd "${srcdir}/Slic3r"
+  cd "${srcdir}/PrusaSlicer"
   mkdir -p build
 
   cd build
@@ -54,22 +51,19 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/Slic3r/build"
+  cd "${srcdir}/PrusaSlicer/build"
   ctest -V
 }
 
 package () {
-  cd "${srcdir}/Slic3r/build"
+  cd "${srcdir}/PrusaSlicer/build"
   DESTDIR="${pkgdir}" make install
 
-  # ZSH autocompletion
-  # install -Dm 0644 "utils/zsh/functions/_slic3r" "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
-
   # Desktop file
-  install -Dm 644 "${srcdir}/slic3r_prusa3d.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm 644 "${srcdir}/prusaslicer.desktop" -t "${pkgdir}/usr/share/applications"
 
   # Desktop icon
   install -d "${pkgdir}/usr/share/icons/hicolor/"{128x128,192x192}"/apps/"
-  ln -s "/usr/share/${_pkgname}/icons/Slic3r_128px.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
-  ln -s "/usr/share/${_pkgname}/icons/Slic3r_192px.png" "${pkgdir}/usr/share/icons/hicolor/192x192/apps/${_pkgname}.png"
+  ln -s "/usr/share/${_pkgname}/icons/PrusaSlicer_128px.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
+  ln -s "/usr/share/${_pkgname}/icons/PrusaSlicer_192px.png" "${pkgdir}/usr/share/icons/hicolor/192x192/apps/${_pkgname}.png"
 }
