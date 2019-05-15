@@ -1,30 +1,38 @@
-# Maintainer: RemiliaForever <remilia AT koumakan DOT cc>
+# Maintainer: Bruce Zhang
+# Contributor: RemiliaForever <remilia AT koumakan DOT cc>
 
 pkgname=xmind-zen
 pkgver=201807162014
-pkgrel=1
+pkgrel=2
 pkgdesc="XMind - The most popular mind mapping software"
 arch=('x86_64')
 url="http://www.xmind.net"
 license=('EPL' 'LGPL')
-depends=('gtk2' 'alsa-lib' 'gconf' 'nss' 'libxss' 'libxtst' 'libappindicator-gtk2' 'libnotify')
+depends=('electron2')
+provides=('xmind')
 conflicts=('xmind')
-source=("https://www.xmind.net/xmind/downloads/XMind-ZEN-for-Linux-64bit.deb"
-'xmind.xml')
-sha512sums=('61aa2f1b92df426f80b1f836cdb4088f3d63dc13ac858098a9b6203a2f725ae8ccf108b74ebc33992bb4c1bf59a0413b51b50e243a4f7432df81735142f75334'
-'SKIP')
+source=("https://dl3.xmind.net/XMind-ZEN-for-Linux-64bit.rpm")
+sha256sums=('0ded9e1bcf15a7cb1aa4c2e364c6b627f1e0cc68c976b850ee9737a35123bc1d')
 
 prepare() {
-    tar -Jxvf data.tar.xz
+    sed -i 's/"\/opt\/XMind ZEN\/XMind"/XMind/' "$srcdir/usr/share/applications/XMind.desktop"
+    echo "#!/usr/bin/env sh
+exec electron2 /usr/share/zmind-zen/app \$@    
+" > "$srcdir/XMind.sh"
 }
 
 package() {
-    cp -r ${srcdir}/opt ${pkgdir}/opt
-    cp -r ${srcdir}/usr ${pkgdir}/usr
+    # Install resources
+    cd "$srcdir/opt/XMind ZEN/resources/app"
+    find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/xmind-zen/app/{}" \;
 
-    mkdir -p ${pkgdir}/usr/share/mime/packages
-    install ${srcdir}/xmind.xml ${pkgdir}/usr/share/mime/packages/
-    sed -i "s|MimeType=|MimeType=application/xmind;|" ${pkgdir}/usr/share/applications/XMind.desktop
-    mkdir -p ${pkgdir}/usr/bin
-    ln -s "/opt/XMind ZEN/XMind" "${pkgdir}/usr/bin/XMind"
+    # Install start script
+    install -Dm755 "$srcdir/XMind.sh" "$pkgdir/usr/bin/XMind"
+
+    # Install desktop file
+    install -Dm644 "$srcdir/usr/share/applications/XMind.desktop" "$pkgdir/usr/share/applications/XMind.desktop"
+
+    # Install icons
+    cd "$srcdir/usr/share/icons/hicolor"
+    find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/icons/hicolor/{}" \;
 }
