@@ -1,38 +1,39 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=python-prospector
-pkgver=1.1.1
+_pkgname=prospector
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Python static analysis tool"
 arch=('any')
-depends=('python-setuptools'
-             'python-pydocstyle'
-             'python-pep8-naming'
-             'python-mccabe'
-             'python-pycodestyle'
-             'python-pyflakes'
-             'python-yaml'
-             'python-dodgy'
-             'python-setoptconf'
-             'python-requirements-detector'
-             'python-pylint-common'
-             'python-pylint-plugin-utils')
-optdeps=('python-pyroma: check setup.py'
-         'python-vulture: find dead code'
-         'python-mypy: optional type checking')
+depends=('python-pylint-celery'
+         'python-pylint-flask'
+         'python-pylint-django'
+         'python-requirements-detector'
+         'python-setoptconf'
+         'python-dodgy'
+         'python-pyaml'
+         'python-pycodestyle'
+         'python-pep8-naming'
+         'python-pydocstyle')
+makedepends=('python-setuptools')
+optdepends=('python-pyroma: check setup.py'
+            'python-vulture: find dead code'
+            'python-mypy: optional type checking')
 url="https://github.com/PyCQA/prospector"
 license=('GPL2')
-source=(${url}/archive/${pkgver}.tar.gz)
-md5sums=('a4a73a42bf50a21f84bc94e3d42ca81d')
+source=("$url/archive/$pkgver.tar.gz")
+md5sums=('222892e4f96752ea34a89b9152e35136')
 
 build() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"/LICENSE
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
+
 # vim:set ts=2 sw=2 et:
