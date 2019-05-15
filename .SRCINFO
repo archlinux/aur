@@ -1,0 +1,20 @@
+pkgbase = minergate-nvidia
+	pkgdesc = Cryptocurrency GUI miner and Mining Pool (xFast)
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.minergate.com/
+	arch = x86_64
+	license = custom
+	depends = ocl-icd
+	depends = qt5-websockets
+	depends = cuda-9.1
+	depends = desktop-file-utils
+	provides = minergate
+	conflicts = minergate-amd
+	replaces = minergate
+	options = !strip
+	source = MinerGate-xFast-gui-1.4-ubuntu.deb::https://minergate.com/download/xfast-ubuntu-gui
+	sha256sums = 09c518d356a7a09791a016fd9f0ad4be4e5b2fc253cb448dbba0b797331ae2af
+
+pkgname = minergate-nvidia
+
