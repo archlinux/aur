@@ -1,14 +1,15 @@
 pkgbase = simgrid
-	pkgdesc = Grid and Cloud Simulator (Stable Version)
-	pkgver = 3.11.1
+	pkgdesc = A scientific instrument to study large-scale distributed systems
+	pkgver = 3.22.2
 	pkgrel = 1
-	url = http://simgrid.gforge.inria.fr/index.html
+	url = https://simgrid.org/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = LGPL
 	makedepends = cmake
-	source = http://gforge.inria.fr/frs/download.php/file/33686/SimGrid-3.11.1.tar.gz
-	md5sums = SKIP
+	depends = boost
+	source = https://framagit.org/simgrid/simgrid/uploads/b086147968e111e7b7d7e27e8c4b11c5/SimGrid-3.22.tar.gz
+	md5sums = d5c229b2b53b9bb9a1136d5720db7e47
 
 pkgname = simgrid
 
