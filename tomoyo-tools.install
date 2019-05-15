@@ -1,18 +1,22 @@
 post_install () {
-  echo " *  To enable TOMOYO Linux, append 'security=tomoyo' to the kernel"
-  echo '    boot options and initialize policy with this command:'
-  echo '      /usr/lib/tomoyo/init_policy'
-  echo '    Also you may pass TOMOYO_trigger parameter'
-  echo '    if CONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER'
-  echo '    kernel option has wrong value'
-  echo ''
-  echo ' *  Kernel version >=3.2 and <5.1 is required'
-  echo "    Your version is $(uname -r)"
-  echo ' !! Using the wrong version may render your system unbootable'
+        echo " *  To initialize TOMOYO Linux configuration, run"
+        echo '      /usr/lib/tomoyo/init_policy'
+        echo "    To enable TOMOYO Linux append 'security=tomoyo'"
+        echo '      to the kernel boot options'
+        echo '    Also you may pass TOMOYO_trigger kernel boot option'
+        echo '    if CONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER'
+        echo '    kernel option has wrong value'
+        echo ''
+        echo ' *  Kernel version >=3.5 and <5.1 is required'
+        echo "    Your version is $(uname -r)"
+        echo ' WARNING:'
+        echo '    Using the wrong version may render your system unbootable'
 }
 
 post_upgrade () {
-  echo ' *  Kernel version >=3.2 and <5.1 is required'
-  echo "    Your version is $(uname -r)"
-  echo ' !! Using the wrong version may render your system unbootable'
+        echo ' *  Kernel version >=3.5 and <5.1 is required'
+        echo "    Your version is $(uname -r)"
+        echo ' WARNING:'
+        echo '    Using the wrong version may render your system unbootable'
 }
+
