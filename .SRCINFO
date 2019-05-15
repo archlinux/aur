@@ -1,0 +1,12 @@
+pkgbase = python-mint-api
+	pkgdesc = A screen-scraping API for Mint.com
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/mint-api/
+	arch = any
+	license = UNKNOWN
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-mint-api
+
