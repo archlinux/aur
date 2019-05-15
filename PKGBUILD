@@ -2,7 +2,7 @@
 
 pkgname=python2-cfscrape
 _pypiname=${pkgname/python2-/}
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A simple Python module to bypass Cloudflare's anti-bot page, using Requests"
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python2-requests nodejs)
 makedepends=(python2-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-sha256sums=('e0afdd8a6d5456c6c96555b9a71cdd41d3eaa3f14a8a032d64b700cb26ce98fd')
+sha256sums=('d3c863352f31f3538d2b428c7b8c368cbeee943bd8120f082e7d4f83f769f142')
 
 
 package() {
