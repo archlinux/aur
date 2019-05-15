@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.8.beta1.r0.g165d450f80
+pkgver=8.8.beta5.r0.gbaff1c42dd
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(ipython2 palp brial cliquer maxima-ecl gfan sympow nauty python2-rpy2 p
   python2-matplotlib python2-scipy python2-sympy python2-networkx python2-pillow python2-pplpy python2-future
   gap flintqs lcalc lrcalc arb eclib zn_poly gd python2-cvxopt pynac linbox m4rie rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
-  libgiac libhomfly libbraiding three.js)
+  iml libgiac libhomfly libbraiding three.js)
 optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cython code'
   'jmol: 3D plots' 'sage-notebook: Flask notebook interface (deprecated)'
   'sagemath-doc: Documentation and inline help' 'python2-igraph: igraph backend for graph theory'
@@ -44,18 +44,20 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-threejs.patch
         sagemath-cremona.patch
         sagemath-singular-4.1.2.patch
-        sagemath-ecl-sigfpe.patch)
+        sagemath-ecl-sigfpe.patch
+        sagemath-linbox-1.6.patch)
 sha256sums=('SKIP'
             '1c2a2d750e81ac65a1dc07094f086ba07f4862288c935a1cd009cdd62bcfc23c'
-            'b1068a8d5750051c2b5cfcb89d3d5870cf4233ab445e71c398543fb8b1e6281a'
-            'b66d5bb692159910cec83c80262c43a687d3a678010c7ae4c7070f7cf3a0d5cb'
+            '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
+            '596d03daf53a76b04029b120619253250b0e58d530d69f14afa169e27e06f446'
             '12cd410035ae644c2495b0dcd3a5138133a471ecc07912d37114c46ee837eb0e'
             'f12bd2a53ad51549015093aacc89978f4d796d9ab5bcd3d737aa0d57a5815b54'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
-            'e09910f0080a1b3f4167783f396f72fc2a5f4286cb1efb766aadb4b1463c02e7'
+            'a8c1409f4b4f1553b4f7602d4a6f0f3c6297ed258feed079f6560b0ec2dc62c6'
             '4c6df9e4e5a7b29ecf6189eda3e5a79f69b6e1b4d29c1b9559663149b8c0af96'
             '961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9'
-            'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938')
+            'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938'
+            '7e126c73d12c39be9012a66f979897fa630d540d30906dadff6c1384af4ec166')
 
 pkgver() {
   cd sage
@@ -78,6 +80,8 @@ prepare(){
   patch -p1 -i ../sagemath-python3-notebook.patch
 # fix three.js plotting backend
   patch -p1 -i ../sagemath-threejs.patch
+# fix build with linbox 1.6
+  patch -p1 -i ../sagemath-linbox-1.6.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
@@ -135,6 +139,8 @@ package_sagemath-git() {
   
 # Remove sage_setup
   rm -r "$pkgdir"/usr/lib/python2.7/site-packages/sage_setup
+# Install tests
+  cp -r sage/doctest/tests "$pkgdir"/usr/lib/python2.7/site-packages/sage/doctest
 
 # Split jupyter kernel
   rm -r "$pkgdir"/usr/share/jupyter

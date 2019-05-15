@@ -1,0 +1,191 @@
+diff --git a/src/sage/libs/linbox/fflas.pxd b/src/sage/libs/linbox/fflas.pxd
+index f3a7ce37ea..7d8d64d3b5 100644
+--- a/src/sage/libs/linbox/fflas.pxd
++++ b/src/sage/libs/linbox/fflas.pxd
+@@ -64,8 +64,8 @@ cdef extern from "fflas-ffpack/fflas-ffpack.h" namespace "FFPACK":
+                                     Modular_double.Element* A, size_t A_stride, int nullity)
+ 
+     Modular_double.Element Det (Modular_double F,
+-                                size_t nrows, size_t ncols,
+-                                Modular_double.Element* A, size_t A_stride)
++                                Modular_double.Element det, size_t ncols,
++                                Modular_double.Element* A, size_t A_stride, size_t* P, size_t* Q)
+ 
+     int Rank (Modular_double,
+               size_t nrows, size_t ncols,
+@@ -98,8 +98,8 @@ cdef extern from "fflas-ffpack/fflas-ffpack.h" namespace "FFPACK":
+                                    Modular_float.Element* A, size_t A_stride, int nullity)
+ 
+     Modular_float.Element Det (Modular_float F,
+-                               size_t nrows, size_t ncols,
+-                               Modular_float.Element* A, size_t A_stride)
++                               Modular_float.Element det, size_t ncols,
++                               Modular_float.Element* A, size_t A_stride, size_t* P, size_t* Q)
+ 
+     int Rank (Modular_float,
+               size_t nrows, size_t ncols,
+diff --git a/src/sage/libs/linbox/linbox.pxd b/src/sage/libs/linbox/linbox.pxd
+index 35a3fa0125..a4bda24c0e 100644
+--- a/src/sage/libs/linbox/linbox.pxd
++++ b/src/sage/libs/linbox/linbox.pxd
+@@ -125,7 +125,7 @@ cdef extern from "linbox/solutions/methods.h" namespace "LinBox":
+         pass
+     cdef struct WiedemannTraits:
+         pass
+-    cdef struct BlasEliminationTraits:
++    cdef struct DenseEliminationTraits:
+         pass
+     cdef struct SparseEliminationTraits:
+         pass
+@@ -135,7 +135,7 @@ cdef extern from "linbox/solutions/methods.h" namespace "LinBox":
+         ctypedef BlackboxSpecifier Blackbox
+         ctypedef EliminationSpecifier Elimination
+         ctypedef WiedemannTraits Wiedemann
+-        ctypedef BlasEliminationTraits BlasElimination
++        ctypedef DenseEliminationTraits DenseElimination
+         ctypedef SparseEliminationTraits SparseElimination
+ 
+ cdef extern from "linbox/solutions/charpoly.h" namespace "LinBox":
+@@ -157,19 +157,20 @@ cdef extern from "linbox/algorithms/gauss.h":
+                                              unsigned long Ni,
+                                              unsigned long Nj)
+ 
+-cdef extern from "linbox/algorithms/echelon-form.h":
++cdef extern from "linbox/solutions/echelon.h":
+     ## template<class Field>
+     ## class EchelonFormDomain
+     cdef cppclass EchelonForm_Modular_double "LinBox::EchelonFormDomain<Givaro::Modular<double>>":
+         ctypedef double Element
+         EchelonForm_Modular_double(Modular_double)
+-        int rowReducedEchelon(DenseMatrix_Modular_double&, const DenseMatrix_Modular_double&)
+ 
+     cdef cppclass EchelonForm_Modular_float "LinBox::EchelonFormDomain<Givaro::Modular<float>>":
+         ctypedef float Element
+         EchelonForm_Modular_float(Modular_float)
+-        int rowReducedEchelon(DenseMatrix_Modular_float, const DenseMatrix_Modular_float)
+ 
++    int reducedRowEchelon(DenseMatrix_Modular_double, const DenseMatrix_Modular_double)
++    int reducedRowEchelon(DenseMatrix_Modular_float, const DenseMatrix_Modular_float)
++    
+ cdef extern from "linbox/solutions/rank.h" namespace "LinBox":
+     unsigned long & rank (unsigned long&, DenseMatrix_integer)
+     unsigned long & rank (unsigned long&, SparseMatrix_integer)
+@@ -185,7 +186,7 @@ cdef extern from "linbox/solutions/solve.h" namespace "LinBox":
+                                 Integer &,
+                                 SparseMatrix_integer &,
+                                 DenseVector_integer &,
+-                                Method.BlasElimination) except +
++                                Method.DenseElimination) except +
+ 
+     DenseVector_integer& solve (DenseVector_integer &,
+                                 Integer &,
+diff --git a/src/sage/matrix/matrix_integer_sparse.pyx b/src/sage/matrix/matrix_integer_sparse.pyx
+index 7fa386eab7..5937720a03 100644
+--- a/src/sage/matrix/matrix_integer_sparse.pyx
++++ b/src/sage/matrix/matrix_integer_sparse.pyx
+@@ -1081,7 +1081,7 @@ cdef class Matrix_integer_sparse(Matrix_sparse):
+         elif method == METHOD_WIEDEMANN:
+             linbox.solve(res[0], D, A[0], b[0], linbox.Method.Wiedemann())
+         elif method == METHOD_BLAS_ELIMINATION:
+-            linbox.solve(res[0], D, A[0], b[0], linbox.Method.BlasElimination())
++            linbox.solve(res[0], D, A[0], b[0], linbox.Method.DenseElimination())
+         elif method == METHOD_SPARSE_ELIMINATION:
+             linbox.solve(res[0], D, A[0], b[0], linbox.Method.SparseElimination())
+         elif method == METHOD_BLACKBOX:
+@@ -1192,7 +1192,7 @@ cdef class Matrix_integer_sparse(Matrix_sparse):
+             if algo == METHOD_DEFAULT:
+                 linbox.solve(res[0], D, A[0], b[0])
+             elif algo == METHOD_BLAS_ELIMINATION:
+-                linbox.solve(res[0], D, A[0], b[0], linbox.Method.BlasElimination())
++                linbox.solve(res[0], D, A[0], b[0], linbox.Method.DenseElimination())
+             elif algo == METHOD_SPARSE_ELIMINATION:
+                 linbox.solve(res[0], D, A[0], b[0], linbox.Method.SparseElimination())
+             elif algo == METHOD_BLACKBOX:
+diff --git a/src/sage/matrix/matrix_modn_dense_double.pyx b/src/sage/matrix/matrix_modn_dense_double.pyx
+index c4b1a46444..4f140ad239 100644
+--- a/src/sage/matrix/matrix_modn_dense_double.pyx
++++ b/src/sage/matrix/matrix_modn_dense_double.pyx
+@@ -25,7 +25,7 @@ from sage.libs.linbox.givaro cimport \
+ 
+ from sage.libs.linbox.linbox cimport \
+     DenseMatrix_Modular_double as BlasMatrix, \
+-    EchelonForm_Modular_double as EchelonFormDomain
++    reducedRowEchelon
+ 
+ from sage.libs.linbox.fflas cimport \
+     fgemm, fgemv, Det, Rank, ReducedRowEchelonForm, applyP, \
+diff --git a/src/sage/matrix/matrix_modn_dense_float.pyx b/src/sage/matrix/matrix_modn_dense_float.pyx
+index 89d1a94ab2..198896259b 100644
+--- a/src/sage/matrix/matrix_modn_dense_float.pyx
++++ b/src/sage/matrix/matrix_modn_dense_float.pyx
+@@ -24,7 +24,7 @@ from sage.libs.linbox.givaro cimport \
+ 
+ from sage.libs.linbox.linbox cimport \
+     DenseMatrix_Modular_float as BlasMatrix, \
+-    EchelonForm_Modular_float as EchelonFormDomain
++    reducedRowEchelon
+ 
+ from sage.libs.linbox.fflas cimport \
+     fgemm, fgemv, Det, Rank, ReducedRowEchelonForm, applyP, \
+diff --git a/src/sage/matrix/matrix_modn_dense_template.pxi b/src/sage/matrix/matrix_modn_dense_template.pxi
+index 6a5e164ede..7eb70dae86 100644
+--- a/src/sage/matrix/matrix_modn_dense_template.pxi
++++ b/src/sage/matrix/matrix_modn_dense_template.pxi
+@@ -207,7 +207,6 @@ cdef inline linbox_echelonize_efd(celement modulus, celement* entries, Py_ssize_
+         return 0,[]
+ 
+     cdef ModField *F = new ModField(<long>modulus)
+-    cdef EchelonFormDomain *EF = new EchelonFormDomain(F[0])
+     cdef BlasMatrix *A = new BlasMatrix(F[0], <uint64_t>nrows, <uint64_t>ncols)
+     cdef BlasMatrix *E = new BlasMatrix(F[0], <uint64_t>nrows, <uint64_t>ncols)
+ 
+@@ -218,7 +217,7 @@ cdef inline linbox_echelonize_efd(celement modulus, celement* entries, Py_ssize_
+         for j in range(ncols):
+             A.setEntry(i, j, <ModField.Element>entries[i*ncols+j])
+ 
+-    cdef int r = EF.rowReducedEchelon(E[0], A[0])
++    cdef int r = reducedRowEchelon(E[0], A[0])
+     for i in range(nrows):
+         for j in range(ncols):
+             entries[i*ncols+j] = <celement>E.getEntry(i,j)
+@@ -232,7 +231,7 @@ cdef inline linbox_echelonize_efd(celement modulus, celement* entries, Py_ssize_
+                 ii = j+1
+                 break
+ 
+-    del F, A, E, EF
++    del F, A, E
+     return r, pivots
+ 
+ cdef inline celement *linbox_copy(celement modulus, celement *entries,  Py_ssize_t nrows, Py_ssize_t ncols) except? NULL:
+@@ -265,7 +264,8 @@ cdef inline celement linbox_det(celement modulus, celement* entries, Py_ssize_t
+     cdef ModField *F = new ModField(<long>modulus)
+     cdef celement *cpy = linbox_copy(modulus, entries, nrows, ncols)
+     if nrows*ncols > 1000: sig_on()
+-    d =  <celement>Det(F[0], nrows, ncols, <ModField.Element*>cpy, ncols)
++    cdef ModField.Element det
++    d =  <celement>Det(F[0], det, ncols, <ModField.Element*>cpy, ncols, <size_t*>NULL, <size_t*>NULL)
+     if nrows*ncols > 1000: sig_off()
+     sig_free(cpy)
+     del F
+diff --git a/src/sage/matrix/matrix_modn_sparse.pyx b/src/sage/matrix/matrix_modn_sparse.pyx
+index 241167ace4..8e65cbb532 100644
+--- a/src/sage/matrix/matrix_modn_sparse.pyx
++++ b/src/sage/matrix/matrix_modn_sparse.pyx
+@@ -1026,7 +1026,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
+         elif method == METHOD_WIEDEMANN:
+             linbox.solve(res[0], D, A[0], b[0], linbox.Method.Wiedemann())
+         elif method == METHOD_BLAS_ELIMINATION:
+-            linbox.solve(res[0], D, A[0], b[0], linbox.Method.BlasElimination())
++            linbox.solve(res[0], D, A[0], b[0], linbox.Method.DenseElimination())
+         elif method == METHOD_SPARSE_ELIMINATION:
+             linbox.solve(res[0], D, A[0], b[0], linbox.Method.SparseElimination())
+         elif method == METHOD_BLACKBOX:
+@@ -1137,7 +1137,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
+             if algo == METHOD_DEFAULT:
+                 linbox.solve(res[0], D, A[0], b[0])
+             elif algo == METHOD_BLAS_ELIMINATION:
+-                linbox.solve(res[0], D, A[0], b[0], linbox.Method.BlasElimination())
++                linbox.solve(res[0], D, A[0], b[0], linbox.Method.DenseElimination())
+             elif algo == METHOD_SPARSE_ELIMINATION:
+                 linbox.solve(res[0], D, A[0], b[0], linbox.Method.SparseElimination())
+             elif algo == METHOD_BLACKBOX:

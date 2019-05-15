@@ -2,7 +2,7 @@ diff --git a/src/sage/geometry/polyhedron/base_ZZ.py b/src/sage/geometry/polyhed
 index 268af9db0d..70d41dfa30 100644
 --- a/src/sage/geometry/polyhedron/base_ZZ.py
 +++ b/src/sage/geometry/polyhedron/base_ZZ.py
-@@ -171,7 +171,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+@@ -170,7 +170,7 @@ class Polyhedron_ZZ(Polyhedron_base):
              sage: p = P.ehrhart_polynomial(maxdet=5, verbose=True)  # optional - latte_int
              This is LattE integrale ...
              ...
@@ -11,7 +11,7 @@ index 268af9db0d..70d41dfa30 100644
              ...
              sage: p    # optional - latte_int
              1/2*t^2 + 3/2*t + 1
-@@ -179,7 +179,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+@@ -178,7 +178,7 @@ class Polyhedron_ZZ(Polyhedron_base):
              sage: p = P.ehrhart_polynomial(dual=True, verbose=True)  # optional - latte_int
              This is LattE integrale ...
              ...
@@ -20,7 +20,7 @@ index 268af9db0d..70d41dfa30 100644
              ...
              sage: p   # optional - latte_int
              1/2*t^2 + 3/2*t + 1
-@@ -187,7 +187,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+@@ -186,7 +186,7 @@ class Polyhedron_ZZ(Polyhedron_base):
              sage: p = P.ehrhart_polynomial(irrational_primal=True, verbose=True)   # optional - latte_int
              This is LattE integrale ...
              ...
@@ -29,7 +29,7 @@ index 268af9db0d..70d41dfa30 100644
              ...
              sage: p   # optional - latte_int
              1/2*t^2 + 3/2*t + 1
-@@ -195,7 +195,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+@@ -194,7 +194,7 @@ class Polyhedron_ZZ(Polyhedron_base):
              sage: p = P.ehrhart_polynomial(irrational_all_primal=True, verbose=True)  # optional - latte_int
              This is LattE integrale ...
              ...
@@ -38,7 +38,7 @@ index 268af9db0d..70d41dfa30 100644
              ...
              sage: p   # optional - latte_int
              1/2*t^2 + 3/2*t + 1
-@@ -207,7 +207,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+@@ -206,7 +206,7 @@ class Polyhedron_ZZ(Polyhedron_base):
              ...
              RuntimeError: LattE integrale program failed (exit code 1):
              ...
@@ -73,7 +73,7 @@ diff --git a/src/sage/features/latte.py b/src/sage/features/latte.py
 index 63d227fd35..040a5cf1f9 100644
 --- a/src/sage/features/latte.py
 +++ b/src/sage/features/latte.py
-@@ -10,10 +10,10 @@ from . import Executable, Feature, FeatureTestResult
+@@ -9,10 +9,10 @@ from . import Executable, Feature, FeatureTestResult
  
  class Latte_count(Executable):
      r"""
@@ -81,9 +81,9 @@ index 63d227fd35..040a5cf1f9 100644
 +    Feature for the executable ``latte-count`` from the LattE suite.
      """
      def __init__(self):
--        Executable.__init__(self, "count", executable="count", spkg="latte_int", url="https://www.math.ucdavis.edu/~latte/software.php")
-+        Executable.__init__(self, "latte-count", executable="latte-count", spkg="latte_int", url="https://www.math.ucdavis.edu/~latte/software.php")
+-        Executable.__init__(self, "count", executable="count",
++        Executable.__init__(self, "latte-count", executable="count",
+                             spkg="latte_int",
+                             url=LATTE_URL)
  
- class Latte_integrate(Executable):
-     r"""
 
