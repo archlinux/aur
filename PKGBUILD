@@ -5,13 +5,13 @@
 pkgname=nusmv
 _pkgname=NuSMV
 pkgver=2.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A new symbolic model checker"
 arch=('i686' 'x86_64')
 url="http://nusmv.fbk.eu/index.html"
 license=('LGPL2.1')
 depends=('libxml2')
-makedepends=('cmake' 'python2' 'ghostscript' 'texlive-latexextra')
+makedepends=('cmake' 'python2' 'ghostscript' 'texlive-latexextra' 'doxygen')
 optdepends=('perl: for scripts in /usr/share/nusmv/contrib/')
 source=("http://nusmv.fbk.eu/distrib/${_pkgname}-${pkgver}.tar.gz"
         "cmake.patch"
