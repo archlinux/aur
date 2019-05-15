@@ -3,7 +3,7 @@
 pkgname=gocomplete
 _pkgname=complete
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='bash completion written in go + bash completion for go command'
 arch=('x86_64')
 url='https://github.com/posener/complete'
@@ -18,7 +18,6 @@ sha256sums=(
 )
 makedepends=('go')
 depends=(
-    'go'
     'bash-completion'
 )
 

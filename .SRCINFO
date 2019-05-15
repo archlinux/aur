@@ -1,12 +1,11 @@
 pkgbase = gocomplete
 	pkgdesc = bash completion written in go + bash completion for go command
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/posener/complete
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	depends = go
 	depends = bash-completion
 	source = complete-1.2.1.tar.gz::https://github.com/posener/complete/archive/v1.2.1.tar.gz
 	source = go
