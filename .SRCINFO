@@ -1,0 +1,19 @@
+pkgbase = mdliveview
+	pkgdesc = Mdliveview is a lightweight Markdown file viewer with autoreload
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Geballin/Mdliveview
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = make
+	makedepends = gcc
+	depends = tcl
+	depends = tk
+	depends = gifblock
+	depends = tkhtml
+	source = https://github.com/Geballin/Mdliveview/archive/0.1.tar.gz
+	md5sums = 9ea267e491da0229681c821ccf60c90f
+
+pkgname = mdliveview
+
