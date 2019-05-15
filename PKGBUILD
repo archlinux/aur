@@ -22,6 +22,7 @@ build() {
       --runstatedir=/run \
       --libexecdir=/usr/lib/dbus-1.0 \
       --enable-shared \
+      --enable-ld-version-script \
       --disable-static \
       --disable-option-checking \
       --disable-silent-rules \
@@ -57,7 +58,6 @@ build() {
       --disable-x11-autolaunch \
       --disable-compile-warnings \
       --disable-Werror \
-      --disable-ld-version-script \
       --disable-relocation \
       --disable-stats \
       --disable-user-session \
