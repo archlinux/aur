@@ -2,8 +2,8 @@
 
 pkgname=olive-git
 _pkgname=olive
-pkgver=continuous.r33.g5e0e0334
-_commit=5e0e0334
+pkgver=continuous.r25.g7985cc48
+_commit=7985cc48
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Free non-linear video editor"
