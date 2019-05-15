@@ -1,6 +1,6 @@
 pkgbase = timeshift-autosnap
 	pkgdesc = Timeshift auto-snapshot script which runs before package upgrade using Pacman hook.
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://gitlab.com/gobonja/timeshift-autosnap
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = timeshift-autosnap
 	depends = timeshift
 	optdepends = grub-btrfs
 	backup = etc/timeshift-autosnap.conf
-	source = timeshift-autosnap-0.6.tar.gz::https://gitlab.com/gobonja/timeshift-autosnap/-/archive/0.6/timeshift-autosnap-0.6.tar.gz
-	md5sums = 6bf845f3c8e44107c78920368dec6524
+	source = timeshift-autosnap-0.7.tar.gz::https://gitlab.com/gobonja/timeshift-autosnap/-/archive/0.7/timeshift-autosnap-0.7.tar.gz
+	md5sums = 5256615ba6d7e78ebdef9ceed2a8af89
 
 pkgname = timeshift-autosnap
 
