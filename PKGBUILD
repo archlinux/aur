@@ -10,14 +10,15 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgname=ungoogled-chromium-archlinux
+pkgname=ungoogled-chromium
 # Commit or tag for the upstream ungoogled-chromium repo
-_ungoogled_version='74.0.3729.131-1'
-_ungoogled_archlinux_version=6e1b7c322c3ff3e7e4c14ebf87b7bfa60241e6c6
+_ungoogled_version='74.0.3729.136-1'
+_ungoogled_archlinux_version=c0bd60f9726f68c62471f15a701f1087baec87c4
 _chromium_version=$(curl -sL https://raw.githubusercontent.com/Eloston/ungoogled-chromium/${_ungoogled_version}/chromium_version.txt)
 _ungoogled_revision=$(curl -sL https://raw.githubusercontent.com/Eloston/ungoogled-chromium/${_ungoogled_version}/revision.txt)
 pkgver=${_chromium_version}
-pkgrel=${_ungoogled_revision}
+_ungoogled_archlinux_pkgrel=0
+pkgrel=$((_ungoogled_revision + _ungoogled_archlinux_pkgrel))
 _launcher_ver=6
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -76,8 +77,8 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 prepare() {
-  _ungoogled_archlinux_repo="$srcdir/$pkgname-${_ungoogled_archlinux_version}"
-  _ungoogled_repo="$srcdir/ungoogled-chromium-${_ungoogled_version}"
+  _ungoogled_archlinux_repo="$srcdir/$pkgname-archlinux-${_ungoogled_archlinux_version}"
+  _ungoogled_repo="$srcdir/$pkgname-${_ungoogled_version}"
   _utils="${_ungoogled_repo}/utils"
 
   cd "$srcdir/chromium-${_chromium_version}"
@@ -113,6 +114,9 @@ prepare() {
 }
 
 build() {
+  _ungoogled_archlinux_repo="$srcdir/$pkgname-archlinux-${_ungoogled_archlinux_version}"
+  _ungoogled_repo="$srcdir/$pkgname-${_ungoogled_version}"
+
   make -C chromium-launcher-$_launcher_ver
 
   cd "$srcdir/chromium-${_chromium_version}"
@@ -130,7 +134,7 @@ build() {
   mkdir -p out/Default
 
   # Assemble GN flags
-  cp "$srcdir/ungoogled-chromium-${_ungoogled_version}/flags.gn" "out/Default/args.gn"
+  cp "$_ungoogled_repo/flags.gn" "out/Default/args.gn"
   printf '\n' >> "out/Default/args.gn"
   cat "$_ungoogled_archlinux_repo/flags.archlinux.gn" >> "out/Default/args.gn"
 

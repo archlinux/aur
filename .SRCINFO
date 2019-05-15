@@ -1,6 +1,6 @@
-pkgbase = ungoogled-chromium-archlinux
+pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 74.0.3729.131
+	pkgver = 74.0.3729.136
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium-archlinux
 	arch = x86_64
@@ -60,14 +60,14 @@ pkgbase = ungoogled-chromium-archlinux
 	optdepends = libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs
 	provides = chromium
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-74.0.3729.131.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-74.0.3729.136.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
-	source = ungoogled-chromium-74.0.3729.131-1.tar.gz::https://github.com/Eloston/ungoogled-chromium/archive/74.0.3729.131-1.tar.gz
-	source = ungoogled-chromium-archlinux-6e1b7c322c3ff3e7e4c14ebf87b7bfa60241e6c6.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium-archlinux/archive/6e1b7c322c3ff3e7e4c14ebf87b7bfa60241e6c6.tar.gz
-	sha256sums = d178c7842f8f858ac876d88ce866cbd2132d7ca6c73940613ebf7e9c3fada986
+	source = ungoogled-chromium-74.0.3729.136-1.tar.gz::https://github.com/Eloston/ungoogled-chromium/archive/74.0.3729.136-1.tar.gz
+	source = ungoogled-chromium-archlinux-c0bd60f9726f68c62471f15a701f1087baec87c4.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium-archlinux/archive/c0bd60f9726f68c62471f15a701f1087baec87c4.tar.gz
+	sha256sums = 53bbbd59ddda9992f0706c0c686a5cdf8c42c3d59887edd1a1dfbca409bcb836
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = ungoogled-chromium-archlinux
+pkgname = ungoogled-chromium
 
