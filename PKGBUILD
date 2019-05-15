@@ -3,7 +3,7 @@
 provides=('pathio')
 conflicts=('pathio')
 _channel=beta
-pkgver=0.5.3
+pkgver=0.5.4
 pkgname=pathio-$_channel-bin
 pkgrel=1
 pkgdesc="A modern slicer for extrusion 3D printing provided by E3D Skunkworks (binary AppImage)."
@@ -15,7 +15,7 @@ _filename="pathio-$pkgver-$_channel.AppImage"
 source=("$_filename::https://api.pathio.xyz/api/asset/download/$_channel/linux/"
 	pathio.sh
         license)
-sha512sums=('999baf9dc8812db69fc7baf7d39be4f46b8ebd48fb542437bae8677fdb99716ba1c8a26740e123f76f34be0816da8a3b39381691e7b6f6af13d7ef74e770f4cc'
+sha512sums=('fd02ae261279ec11c8147a27fa322564f9c44940d7fc105ae4770f8c7bcb9ea75e7b910c41aeba578a3b3baebd5be164ad8cfbfad6294be50735da52a10a68fc'
             '7cee7ed780dbe2f0a7e7221836bc40da0d5e295a40e2689ffc6f9da0fc11a9edfba12dd3d8214cd5f1bed30fe9755cb4742f7c36d12573e6a9f97b39c0b69981'
             '5a1f7082e2d3cbe62878d7e00848969beb2bcb62e6c18549f2f73d1eb455810fa0cf198fa1e6d739bacade20d7dfbfc620a7d998024caf03e7347f8061ab9b08')
 
