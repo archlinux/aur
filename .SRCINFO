@@ -1,6 +1,6 @@
 pkgbase = obinslab-starter
 	pkgdesc = Obinslab Starter for Anne Pro and Anne Pro 2
-	pkgver = 1.0.10
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = http://en.obins.net/obinslab-starter
 	install = obinslab-starter.install
@@ -16,8 +16,8 @@ pkgbase = obinslab-starter
 	depends = nss
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = http://releases.obins.net/occ/linux/deb/ObinslabStarter_1.0.10_x64.deb
-	sha256sums_x86_64 = c112f5c5ce3aafd82cd1269888a2a7bebf90c6fefa244ef696d2e04bbf432174
+	source_x86_64 = http://releases.obins.net/occ/linux/deb/ObinslabStarter_1.0.11_x64.deb
+	sha256sums_x86_64 = 8e05bb0c88fce3c1c5b3fa4b5c8d008d70a66b8181b3cc9055b9e6fd15173ba0
 
 pkgname = obinslab-starter
 
