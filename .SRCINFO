@@ -1,7 +1,7 @@
 pkgbase = xxdiff
 	pkgdesc = A graphical browser for file and directory differences.
-	pkgver = 4.0
-	pkgrel = 3
+	pkgver = 5.0
+	pkgrel = 1
 	url = https://bitbucket.org/blais/xxdiff
 	arch = x86_64
 	arch = i686
@@ -10,9 +10,11 @@ pkgbase = xxdiff
 	makedepends = bison
 	makedepends = mercurial
 	makedepends = python-docutils
-	depends = qt4
-	source = hg+https://bitbucket.org/blais/xxdiff#revision=ae1e62c
+	depends = qt5-base
+	source = hg+https://bitbucket.org/blais/xxdiff#revision=5e5f885
+	source = cpp11.diff
 	md5sums = SKIP
+	md5sums = feb486afc64fa53cfc348219d3779d41
 
 pkgname = xxdiff
 
