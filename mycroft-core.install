@@ -7,6 +7,11 @@ post_install() {
 
   sudo -Hu mycroft-core bash -c '/usr/share/mycroft-core/venv_init'
 
+  # Create skill folder
+  mkdir -p /opt/mycroft/skills
+  chown -R mycroft-core:mycroft-core /opt/mycroft
+  chmod -R g+w /opt/mycroft
+
   # Create Log files
   mkdir -p /var/log/mycroft
   chown -R mycroft-core:mycroft-core /var/log/mycroft
