@@ -22,9 +22,7 @@ provides=(
     'libc++experimental'
     'clang'
     'clang-analyzer'
-    'clang-compiler-rt'
-    'clang-tools-extra'
-    'templight'
+    'compiler-rt'
 )
 conflicts=(
     'llvm'
@@ -36,13 +34,11 @@ conflicts=(
     'libc++experimental'
     'clang'
     'clang-analyzer'
-    'clang-compiler-rt'
-    'clang-tools-extra'
-    'templight'
+    'compiler-rt'
 )
 pkgdesc='A collection of LLVM-based C++ dev tools'
 
-pkgver=8.0.0svn_r340760
+pkgver=9.0.0svn_r360728
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -50,11 +46,11 @@ url='https://llvm.org/'
 license=('custom:University of Illinois')
 
 depends=(
+    'libedit'
     'python2-six' # for lldb
 )
 makedepends=(
     'cmake'
-    'libedit'
     'libffi'
     'ninja'
     'python'
@@ -67,7 +63,8 @@ makedepends=(
 )
 
 # this is always the latest svn so debug info can be useful
-options=('staticlibs' '!strip')
+#options=('staticlibs' '!strip')
+options=('staticlibs')
 
 source=(
     "${_pkgname}::svn+https://llvm.org/svn/llvm-project/llvm/trunk"
@@ -79,8 +76,6 @@ source=(
     'polly::svn+https://llvm.org/svn/llvm-project/polly/trunk'
     'libcxx::svn+https://llvm.org/svn/llvm-project/libcxx/trunk'
     'libcxxabi::svn+https://llvm.org/svn/llvm-project/libcxxabi/trunk'
-    'templight::git+https://github.com/mikael-s-persson/templight'
-    'templight.patch'
     'llvm-Config-llvm-config.h'
 )
 
@@ -94,8 +89,6 @@ sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP'
-    'dbc8086e8c2f05ddd4128fd3a0d39261eed19ffd0c9509a50ad656a8a5936c1f'
     '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
 )
 
@@ -128,11 +121,6 @@ prepare() {
     svn export --force "${srcdir}/lld" tools/lld
     svn export --force "${srcdir}/lldb" tools/lldb
     svn export --force "${srcdir}/polly" tools/polly
-    git clone "${srcdir}/templight" tools/clang/tools/templight
-    echo "add_clang_subdirectory(templight)" >> tools/clang/tools/CMakeLists.txt
-
-    cd "${srcdir}/${_pkgname}/tools/clang/tools/templight"
-    git apply "${srcdir}/templight.patch"
 
     mkdir -p "${srcdir}/build"
 }
@@ -153,16 +141,17 @@ build() {
         -DLLVM_ENABLE_FFI:BOOL=ON \
         -DFFI_INCLUDE_DIR:PATH="$(pkg-config --variable=includedir libffi)" \
         -DFFI_LIBRARY_DIR:PATH="$(pkg-config --variable=libdir libffi)" \
-        -DLLVM_BUILD_DOCS:BOOL=ON \
-        -DLLVM_ENABLE_SPHINX:BOOL=ON \
+        -DLLVM_BUILD_DOCS:BOOL=OFF \
+        -DLLVM_ENABLE_SPHINX:BOOL=OFF \
         -DPOLLY_ENABLE_GPGPU_CODEGEN:BOOL=ON \
         -DLINK_POLLY_INTO_TOOLS:BOOL=ON \
-        -DSPHINX_OUTPUT_HTML:BOOL=ON \
-        -DSPHINX_OUTPUT_MAN:BOOL=ON \
+        -DSPHINX_OUTPUT_HTML:BOOL=OFF \
+        -DSPHINX_OUTPUT_MAN:BOOL=OFF \
         -DSPHINX_WARNINGS_AS_ERRORS:BOOL=OFF \
         -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
         -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
         -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
+        -DLLVM_ENABLE_OCAMLDOC:BOOL=OFF \
         -DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=On \
         "../${_pkgname}"
 
