@@ -1,0 +1,19 @@
+pkgbase = libdbus-minimal
+	pkgdesc = DBus library
+	pkgver = 1.12.12
+	pkgrel = 1
+	url = http://www.freedesktop.org/Software/dbus
+	arch = x86_64
+	license = GPL
+	license = custom
+	provides = libdbus
+	conflicts = libdbus
+	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.12.12.tar.gz
+	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.12.12.tar.gz.asc
+	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
+	validpgpkeys = 3C8672A0F49637FE064AC30F52A43A1E4B77B059
+	md5sums = ea11069521beeee4e47f0086596a43c8
+	md5sums = SKIP
+
+pkgname = libdbus-minimal
+
