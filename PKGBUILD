@@ -3,13 +3,13 @@
 _pkgname=avogadro2
 pkgname="${_pkgname}-git"
 _gitname=avogadroapp
-pkgver=1.90.0.r373.d5e1f82
+pkgver=1.91.0.r417.b89b96c
 pkgrel=2
 pkgdesc="Avogadro 2: graphical application"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("i686" "x86_64")
 license=("Kitware")
-depends=("avogadrolibs-git")
+depends=("avogadrolibs-git" "desktop-file-utils")
 makedepends=("git" "cmake" "eigen")
 install=avogadro2.install
 conflicts=("${_pkgname}")
@@ -25,20 +25,25 @@ pkgver() {
          "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  mkdir -p "${srcdir}"/build
+}
+
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}"/build
   cmake \
-      -DCMAKE_BUILD_TYPE:STRING=Release \
-      -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-      -DCMAKE_INSTALL_LIBDIR:PATH=lib \
-      -DBUILD_SHARED_LIBS:BOOL=ON \
-      -DUSE_VTK:BOOL=ON \
-      .
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=lib \
+      -DBUILD_SHARED_LIBS=ON \
+      -DENABLE_TESTING=OFF \
+      -DUSE_VTK=ON \
+      "${srcdir}/${_pkgname}"
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}"/build
   make DESTDIR="${pkgdir}" install
-  install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -D -m 644 "${srcdir}/${_pkgname}"/LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
