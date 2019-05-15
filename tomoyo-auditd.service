@@ -1,5 +1,5 @@
 [Unit]
-Description=Tomoyo Auditing
+Description=TOMOYO Linux Auditing Daemon
 
 [Service]
 Type=forking
