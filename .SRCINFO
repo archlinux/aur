@@ -1,10 +1,10 @@
 pkgbase = eggnogg
-	pkgdesc = A competitive arcade game of immortals sword-fighting to the death
+	pkgdesc = Classic version of sword fighting arcade game
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://madgarden.itch.io/eggnogg
-	arch = x86_64
-	license = nonfree
+	arch = any
+	license = custom
 	makedepends = tar
 	makedepends = curl
 	makedepends = gendesk

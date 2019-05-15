@@ -2,10 +2,10 @@
 pkgname=eggnogg
 pkgver=1.0
 pkgrel=1
-pkgdesc="A competitive arcade game of immortals sword-fighting to the death"
-arch=('x86_64')
+pkgdesc="Classic version of sword fighting arcade game"
+arch=('any')
 url="https://madgarden.itch.io/eggnogg"
-license=('nonfree')
+license=('custom')
 makedepends=('tar' 'curl' 'gendesk')
 depends=('lib32-libglvnd' 'lib32-sdl_mixer')
 source=('http://madgarden.net/junkz/madgarden/eggnogg/icon-1.png')
