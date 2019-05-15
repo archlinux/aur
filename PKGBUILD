@@ -77,8 +77,8 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 prepare() {
-  _ungoogled_archlinux_repo="$srcdir/$pkgname-archlinux-${_ungoogled_archlinux_version}"
-  _ungoogled_repo="$srcdir/$pkgname-${_ungoogled_version}"
+  _ungoogled_archlinux_repo="$srcdir/$pkgname-${_ungoogled_archlinux_version}"
+  _ungoogled_repo="$srcdir/ungoogled-chromium-${_ungoogled_version}"
   _utils="${_ungoogled_repo}/utils"
 
   cd "$srcdir/chromium-${_chromium_version}"
@@ -114,8 +114,8 @@ prepare() {
 }
 
 build() {
-  _ungoogled_archlinux_repo="$srcdir/$pkgname-archlinux-${_ungoogled_archlinux_version}"
-  _ungoogled_repo="$srcdir/$pkgname-${_ungoogled_version}"
+  _ungoogled_archlinux_repo="$srcdir/$pkgname-${_ungoogled_archlinux_version}"
+  _ungoogled_repo="$srcdir/ungoogled-chromium-${_ungoogled_version}"
 
   make -C chromium-launcher-$_launcher_ver
 
@@ -134,7 +134,7 @@ build() {
   mkdir -p out/Default
 
   # Assemble GN flags
-  cp "$_ungoogled_repo/flags.gn" "out/Default/args.gn"
+  cp "$srcdir/ungoogled-chromium-${_ungoogled_version}/flags.gn" "out/Default/args.gn"
   printf '\n' >> "out/Default/args.gn"
   cat "$_ungoogled_archlinux_repo/flags.archlinux.gn" >> "out/Default/args.gn"
 
