@@ -41,6 +41,12 @@ build() {
     cd build
     cmake .. -DPYTHON_EXECUTABLE=/bin/python2 -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
     make
+
+    # For some reason the cmake makefiles don't call this, leading to an error
+    # at install time.
+    pushd doc/prog-man
+    doxygen doxygen_nusmv_html.conf
+    popd
 }
 
 package() {
