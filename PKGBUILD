@@ -3,8 +3,8 @@
 pkgname=gocomplete
 _pkgname=complete
 pkgver=1.2.1
-pkgrel=2
-pkgdesc='bash completion written in go + bash completion for go command'
+pkgrel=3
+pkgdesc='bash completion for go command written in golang'
 arch=('x86_64')
 url='https://github.com/posener/complete'
 license=('MIT')
