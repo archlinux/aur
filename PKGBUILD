@@ -1,6 +1,6 @@
 # Maintainer: Víctor González <mrvikxd@gmail.com>
 pkgname=fltrdr
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A TUI text reader for the terminal"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("MIT")
 depends=("icu" "openssl>=1.1.0") #Depends on gcc-libs but we assume you have base and base-devel
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('dd860b0fdf2ef05245f4b0354a8ce12c75bb8f6112df6d3a6acb4bab099b4c1a')
+sha256sums=('a52cf4eb41a37e330fe1e1687efab1e3e2bd78c673ca3576283ad68788fdd6eb')
 
 build(){
     cd "$pkgname-$pkgver"
