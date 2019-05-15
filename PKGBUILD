@@ -1,6 +1,6 @@
 # Maintainer: Versus Void
 pkgname=axtls
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Highly configurable client/server TLSv1.2 library"
 arch=(x86_64 i686)
@@ -10,17 +10,14 @@ source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/axTLS-${pkgver}
 	"config.h"
 	".config"
 	)
-#noextract=()
-sha256sums=("e53dd20e2b619349bc48b631176a38742ea600333fd0349df83c6366b7be05bb"
-	"c432c84b21d67fdf8e7fe2807d2354335a5f9e38ce37c5df43157b9a9253b71c"
-	"f6f8f3d744f34ba8b6e7bfeab46cee95f64fc6c6a8999834f710f0e599a781b3"
-	)
+sha256sums=('cf00b07617bfbf903cbe60821b54dc000415fae737f1db84b7f8da69537a2910'
+            'eadc5dfb340f36de0fac0ae3dd0d1d21460e8ffdbb236cf6da744d64b65c4079'
+            'f6f8f3d744f34ba8b6e7bfeab46cee95f64fc6c6a8999834f710f0e599a781b3')
 
 prepare() {
 	cd "axtls-code"
 	cp "$srcdir/config.h" config/
 	cp "$srcdir/.config" config/
-	#sed -i '/rm $(PREFIX)\/include\/axTLS\/os_port.h/d' Makefile
 }
 
 build() {
