@@ -3,7 +3,7 @@
 
 pkgname=matrix-synapse-git
 pkgver=0.99.2.r285.g8cbbedaa2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Matrix reference homeserver"
 url="https://github.com/matrix-org/synapse"
