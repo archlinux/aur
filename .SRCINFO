@@ -1,0 +1,13 @@
+pkgbase = otf-monego-git
+	pkgdesc = Monaco monospaced font with a bold and italic variant
+	pkgver = r16.0c384f8
+	pkgrel = 1
+	url = https://github.com/cseelus/monego
+	arch = any
+	license = CPL
+	makedepends = git
+	source = monego::git+https://github.com/cseelus/monego
+	sha512sums = SKIP
+
+pkgname = otf-monego-git
+
