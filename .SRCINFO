@@ -1,0 +1,12 @@
+pkgbase = skycoin-bin
+	pkgdesc = Skycoin Cryptocurrency Wallet; latest binary release
+	pkgver = 0.25.1
+	pkgrel = 1
+	url = https://github.com/skycoin/skycoin
+	arch = any
+	source = https://downloads.skycoin.net/wallet/skycoin-0.25.1-gui-standalone-linux-x64.tar.gz
+	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
+	sha256sums = 831133fb15dd2affe8b9b6363a9cf586d20c90c01f9bd92cb479f8e0724ebb12
+
+pkgname = skycoin-bin
+
