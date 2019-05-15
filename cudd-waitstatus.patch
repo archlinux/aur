@@ -1,0 +1,17 @@
+diff --git a/cudd-2.4.1.1/util/pipefork.c b/cudd-2.4.1.1/util/pipefork.c
+index 1d58bac..cfd5c12 100644
+--- a/cudd-2.4.1.1/util/pipefork.c
++++ b/cudd-2.4.1.1/util/pipefork.c
+@@ -39,12 +39,7 @@ int util_pipefork(char **argv,		/* normal argv argument list */
+     int forkpid, waitPid;
+     int topipe[2], frompipe[2];
+     char buffer[1024];
+-
+-#if (defined __hpux) || (defined __osf__) || (defined _IBMR2) || (defined __SVR4) || (defined __CYGWIN32__) || (defined __MINGW32__) 
+     int status;
+-#else
+-    union wait status;
+-#endif
+ 
+     /* create the PIPES...
+      * fildes[0] for reading from command
