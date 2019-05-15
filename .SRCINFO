@@ -1,15 +1,16 @@
 pkgbase = marktext
-	pkgdesc = Next generation markdown editor
+	pkgdesc = A simple and elegant open-source markdown editor that focused on speed and usability
 	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/marktext/marktext
-	arch = x86
 	arch = x86_64
 	license = MIT
 	makedepends = yarn
 	depends = gtk3
 	depends = libxss
 	depends = nss
+	conflicts = marktext-bin
+	conflicts = marktext-git
 	source = marktext-0.14.0.tar.gz::http://github.com/marktext/marktext/archive/v0.14.0.tar.gz
 	sha512sums = 11249a2b350a973dd4e35c6f1bedf61415c6e49e22f8e344a4e3f942244cfea5d587adfe7f472e26696ab7e91fc5f17337e6de5db32de2ced964dadd5907c003
 
