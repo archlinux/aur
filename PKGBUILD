@@ -2,8 +2,9 @@
 
 _pkgname='monav-light'
 pkgname="${_pkgname}-git"
-pkgver=0.1+git489ef8f
-pkgrel=3
+epoch=1
+pkgver=0.1+6+r40.20160309.489ef8f
+pkgrel=1
 pkgdesc="A lightweight and platform independent offline routing software that works on pre-processed OpenStreetMap data and uses JSON for input and output."
 url='https://github.com/M4rtinK/monav-light/'
 arch=('i686' 'x86_64')
@@ -63,24 +64,15 @@ sha256sums=(
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  
-  _ver="$(grep -e '^Version:' monav-light.spec | cut -d: -f2 | awk '{print $1}')"
-  
-  _rev="$(git ls-remote | grep -e '[[:space:]]HEAD$' | head -c7)"
-  
-  if [ -z "${_ver}" ]; then
-    echo "$0: Error: Could not determine version." > /dev/stderr
-    false
-    return 1
+
+  _ver="$(git describe --tags | sed -e 's|monav-light-||' -e 's|-g[0-9a-f]*||g' | tr '-' '+' | tr -d '[[:space:]]v')"
+  _rev="$(git rev-list --count HEAD)"
+  _hash="$(git rev-parse --short HEAD)"
+  _date="$(git log -n 1 --format=tformat:%ci | awk '{print $1}' | tr -d '-')"
+
+  if [ -n "${_ver}" ]; then
+    printf '%s' "${_ver}+r${_rev}.${_date}.${_hash}"
   fi
-  
-  if [ -z "${_rev}" ]; then
-    echo "$0: Error: Could not determine GIT revision." > /dev/stderr
-    false
-    return 1
-  fi
-  
-  echo "${_ver}+git${_rev}"
 }
 
 build() {
