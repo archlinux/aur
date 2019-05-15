@@ -1,0 +1,20 @@
+pkgbase = python-pyvista
+	pkgdesc = A Streamlined Python Interface to the Visualization Toolkit
+	pkgver = 0.20.1
+	pkgrel = 1
+	url = https://github.com/pyvista/pyvista
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-appdirs
+	depends = python-imageio
+	depends = python-matplotlib
+	depends = python-pyqt5
+	depends = vtk
+	replaces = python-vtkinterface
+	replaces = python-vista
+	source = https://github.com/pyvista/pyvista/archive/0.20.1.tar.gz
+	sha256sums = a340951292c41c1ae79a8b653f6253b4f402d55c359f5b1a3d26e7b8f93a3ea9
+
+pkgname = python-pyvista
+
