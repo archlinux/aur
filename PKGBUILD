@@ -83,7 +83,6 @@ package() {
 
     cd "${srcdir}/FreeFileSync/Build"
     install -t "${bindir}" -Dm755 Bin/FreeFileSync Bin/RealTimeSync
-    install -t "${appsharedir}" -Dm644 Resources.zip
     install -t "${appsharedir}/Misc" -Dm644 Misc/*
     install -t "${appsharedir}/Languages" -Dm644 Languages/*.lng
     install -t "${pkgdir}/usr/share/pixmaps" -Dm644 Misc/FreeFileSync.png Misc/RealTimeSync.png
