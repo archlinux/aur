@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=easytranscript
-pkgver=2.51.1
+pkgver=2.51.2
 pkgrel=1
 pkgdesc="Easy to use transcription-software with a high feature volume"
 arch=('i686' 'x86_64')
@@ -13,10 +13,9 @@ source=("${pkgname}-${pkgver}.zip::https://www.e-werkzeug.eu/software/easytransc
   "${pkgname}.desktop"
   "${pkgname}")
 noextract=("${pkgname}-${pkgver}.zip")
-sha512sums=('a53ff85305e41ded56d0e2f87aaa0d9fba6adb6ad3994701ea957ff70464b26bcb5cef9e95a873a913bd3161867ea69c50ec9873e59f6651460ad09b79d76904'
+sha512sums=('45f967f740972c6978f2f05844ae679e4430c36d67e70e0a366dec7c58147c23282a23a0806660f421729e15d68350f8b908b6f4e871ffa2e5990a3d3ec08da9'
             '210a9ef94a3d068e58392ff5d4aed85f4665d8fd614a6aa809ab7e7357b68b689788bf72da508650808e722f862f7c1b25c3f61babb15582b4ffc9593ae34a21'
-            '0284a7505437bd68c484f307ee674716e6d955b8e2e8eba391f596bc4535e5a804d13274de968fd6c154f4e1728a4a54d665e6f204135bc5c8e386233b4f25bd'
-            '1172946149ee0b56808f3a5d37aed3561c24e968fc861b628cc65f9c49f6501bb9097993ee38510f215c3d7f1bf467616c6130b3e16e05142dbba92e25531ed4')
+            '0284a7505437bd68c484f307ee674716e6d955b8e2e8eba391f596bc4535e5a804d13274de968fd6c154f4e1728a4a54d665e6f204135bc5c8e386233b4f25bd')
 
 build() {
   mkdir -vp "${pkgname}-${pkgver}"
