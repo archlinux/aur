@@ -2,10 +2,10 @@
 
 pkgname=python-m3u8
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Python m3u8 parser"
 url="https://github.com/globocom/m3u8"
-depends=('python')
+depends=('python' 'python-iso8601')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
