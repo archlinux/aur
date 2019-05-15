@@ -2,7 +2,7 @@
 
 _name=gzdoom
 pkgname=${_name}-legacy
-pkgver=3.7.2
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support (legacy version)'
 arch=('i686' 'x86_64')
@@ -10,18 +10,17 @@ url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
 depends=('hicolor-icon-theme'
          'libgl'
-         'libgme'
          'libjpeg'
          'sdl2')
 makedepends=('cmake'
              'desktop-file-utils'
-             'fluidsynth'
+             'fluidsynth>=2'
              'git'
              'gtk3')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
-            'fluidsynth: FluidSynth MIDI device'
+            'fluidsynth>=2: FluidSynth MIDI device'
             'freedm: FreeDM game data'
             'freedoom1: Freedoom: Phase 1 game data'
             'freedoom2: Freedoom: Phase 2 game data'
@@ -58,10 +57,13 @@ prepare() {
 build() {
     cd $_name
 
+    local _cflags="-ffile-prefix-map=\"$PWD\"=. \
+                   -DSHARE_DIR=\\\"/usr/share/$_name\\\" \
+                   -DFLUIDSYNTHLIB2=\\\"libfluidsynth.so.2\\\""
     cmake -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"/usr/share/$_name\\\"" \
-          -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/$_name\\\"" \
-          -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
+          -DCMAKE_C_FLAGS="${CFLAGS} ${_cflags}" \
+          -DCMAKE_CXX_FLAGS="${CXXFLAGS} ${_cflags}" \
+          -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -Wl,-z,noexecstack" \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DINSTALL_PATH=bin \
           -DINSTALL_PK3_PATH=share/$_name \

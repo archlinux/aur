@@ -1,6 +1,6 @@
 pkgbase = gzdoom-legacy
 	pkgdesc = Advanced Doom source port with OpenGL support (legacy version)
-	pkgver = 3.7.2
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -11,18 +11,17 @@ pkgbase = gzdoom-legacy
 	license = LGPL3
 	makedepends = cmake
 	makedepends = desktop-file-utils
-	makedepends = fluidsynth
+	makedepends = fluidsynth>=2
 	makedepends = git
 	makedepends = gtk3
 	depends = hicolor-icon-theme
 	depends = libgl
-	depends = libgme
 	depends = libjpeg
 	depends = sdl2
 	optdepends = blasphemer-wad: Blasphemer (free Heretic) game data
 	optdepends = chexquest3-wad: Chex Quest 3 game data
 	optdepends = doom1-wad: Doom shareware game data
-	optdepends = fluidsynth: FluidSynth MIDI device
+	optdepends = fluidsynth>=2: FluidSynth MIDI device
 	optdepends = freedm: FreeDM game data
 	optdepends = freedoom1: Freedoom: Phase 1 game data
 	optdepends = freedoom2: Freedoom: Phase 2 game data
@@ -43,7 +42,7 @@ pkgbase = gzdoom-legacy
 	optdepends = xorg-xmessage: crash dialog (other)
 	provides = gzdoom
 	conflicts = gzdoom
-	source = gzdoom::git://github.com/drfrag666/gzdoom.git#tag=g3.7.2_legacy
+	source = gzdoom::git://github.com/drfrag666/gzdoom.git#tag=g3.8.0_legacy
 	source = gzdoom.desktop
 	source = 0001-Fix-soundfont-search-path.patch
 	sha256sums = SKIP
