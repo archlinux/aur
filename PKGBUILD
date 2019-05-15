@@ -1,9 +1,9 @@
 # Maintainer: Jan Peter Koenig <public@janpeterkoenig.com>
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=libtrace
-pkgver=4.0.6
+pkgver=4.0.7
 pkgrel=1
-pkgdesc="libtrace is a library for trace processing"
+pkgdesc="a library for trace processing supporting multiple input and output methods"
 arch=('x86_64')
 url="http://research.wand.net.nz/software/libtrace.php"
 license=('GPL3')
@@ -24,4 +24,4 @@ package() {
   make DESTDIR="$pkgdir/" install
 }
 
-sha256sums=('253221d60db9b17057bb4f1ba506b25dfefcf74b813c7814ba76d62723885e93')
+sha256sums=('bb193db90898b88fa6fc05ac1a99d377512ab61b4ab0567adcd7bbab52e0224f')
