@@ -1,8 +1,8 @@
 pkgbase = evilgrade
 	pkgdesc = Modular framework that takes advantage of poor upgrade implementations by injecting fake updates
-	pkgver = 2.0.0
+	pkgver = 2.0.9
 	pkgrel = 4
-	url = http://www.infobyte.com.ar/developments.html
+	url = https://github.com/infobyte/evilgrade
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -11,10 +11,10 @@ pkgbase = evilgrade
 	depends = perl-time-hires
 	depends = perl-digest-md5
 	depends = perl-digest-sha1
-	source = http://www.infobyte.com.ar/down/isr-evilgrade-2.0.0.tar.gz
+	source = evilgrade-2.0.9.tar.gz::https://github.com/infobyte/evilgrade/archive/v2.0.9.tar.gz
 	source = evilgrade
-	md5sums = eea56454613528ea4cf28f916e2eacb2
-	md5sums = 9887bc389768f4171e8e4828b03b0b19
+	sha256sums = 65840e21a7f5c2c62e2af87b28b2a713d89ede977aa9c5a82fb264b03fb06357
+	sha256sums = 2f5a693b909037a6b670b8b403d28674b793596df4215b0face0ed32fbd29bf5
 
 pkgname = evilgrade
 
