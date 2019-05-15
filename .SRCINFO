@@ -16,9 +16,9 @@ pkgbase = choosenim
 	conflicts = nimpretty
 	conflicts = nimsuggest
 	source = choosenim::https://github.com/dom96/choosenim/releases/download/v0.4.0/choosenim-0.4.0_linux_amd64
-	source = https://github.com/dom96/choosenim/blob/v0.4.0/LICENSE
+	source = https://raw.githubusercontent.com/dom96/choosenim/v0.4.0/LICENSE
 	sha256sums = 451b081a717388ec50a198ba4bd601580efec53acb808e592926e89e04599ff4
-	sha256sums = 97cec2f19a271a6ec9d54912eaa75188d97494ce366d5548068dfc97bcc3b982
+	sha256sums = 5cb6b77a8a0f2f60ed5b9ceeb633fc79331a012c209fc05617f47bc528724d87
 
 pkgname = choosenim
 
