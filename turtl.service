@@ -4,7 +4,7 @@ Description=turtl server
 [Service]
 User=turtl
 Group=turtl
-ExecStart=/usr/bin/node /var/www/turtl/server/server.js
+ExecStart=/usr/bin/node /usr/share/webapps/turtl/server.js
 
 [Install]
 WantedBy=multi-user.target

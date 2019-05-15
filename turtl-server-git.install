@@ -1,9 +1,7 @@
 #!/bin/sh
 
 post_install() {
-    echo ":: Changing the ownership of Turtl's main directory"
-    chown -R turtl:turtl /var/www/turtl
-    echo
+    chown -R turtl:turtl /var/lib/turtl
     echo ":: Turtle needs a dedicated PostgreSQL user/db set up for it."
     echo "   Once it's set up, edit /var/www/turtl/server/config/config.yaml"
     echo "   to make 'connstr' match your user/db."
@@ -19,5 +17,5 @@ post_install() {
     echo "   cd /var/www/turtl/server"
     echo "   ./scripts/init-db.sh"
     echo 
-    echo ":: Finnaly, start the server: systemctl start turtle.service"
+    echo ":: Finnaly, start the server: systemctl start turtl.service"
 }
