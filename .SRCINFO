@@ -1,0 +1,17 @@
+pkgbase = eggnogg
+	pkgdesc = A competitive arcade game of immortals sword-fighting to the death
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://madgarden.itch.io/eggnogg
+	arch = x86_64
+	license = nonfree
+	makedepends = tar
+	makedepends = curl
+	makedepends = gendesk
+	depends = lib32-libglvnd
+	depends = lib32-sdl_mixer
+	source = http://madgarden.net/junkz/madgarden/eggnogg/icon-1.png
+	md5sums = a6eb8862c233b3a85a70ada0f8542edc
+
+pkgname = eggnogg
+
