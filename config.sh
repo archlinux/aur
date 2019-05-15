@@ -1,27 +1,50 @@
-#=================================================
-#=GA=Settings
-#=================================================
+#===================================================#
+#                   GA Settings                     #
+#===================================================#
+
+export CC=gcc
+export CXX=g++
+export FC=gfortran
+export F77=gfortran
 
 export USE_MPI=yes
-export USE_MPIF=yes
-export USE_MPIF4=yes
 
-export MPI_LOC=/usr/ #location of openmpi installation
+export MPI_LOC=/usr
 export MPI_LIB=$MPI_LOC/lib/openmpi
-export MPI_INCLUDE=$MPI_LOC/include/openmpi
-export LIBMPI="-pthread -Wl,--enable-new-dtags -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi"
+export MPI_INCLUDE=$MPI_LOC/include
+export LIBMPI="-lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi"
 
-#=================================================
-#=NWChem=Settings
-#=================================================
+export USE_64TO32=y
 
-export NWCHEM_MODULES="all python"
+export HAS_BLAS=yes
+export BLASOPT="-lblas"
+export BLAS_SIZE=4
+
+export USE_SCALAPACK=y
+export SCALAPACK_SIZE=4
+export SCALAPACK="-lscalapack"
+
+export LAPACK_SIZE=4
+export LAPACK_LIB="-llapack"
+
+#===================================================#
+#                   NWChem Settings                 #
+#===================================================#
+
+export NWCHEM_TARGET=LINUX64
+export NWCHEM_MODULES="all nwxc python"
 export NWCHEM_TOP=$(pwd)
 
 export PYTHONHOME=/usr
 export PYTHONVERSION=2.7
 export PYTHONLIBTYPE=so
-#export USE_PYTHON64=y
+export USE_PYTHON64=y
 
-export BLASOPT="-llapack -lblas"
+export LARGE_FILES=TRUE
+export USE_NOFSCHECK=TRUE
 
+export MRCC_METHODS=y
+export CCSDTQ=y
+export CCSDTLR=y
+export IPCCSD=y
+export EACCSD=y
