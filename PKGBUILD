@@ -4,8 +4,8 @@
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=firefox-extension-greasemonkey
-_file=965808
-pkgver=4.7
+_file=2334146
+pkgver=4.8
 pkgrel=1
 pkgdesc="Customize the way a web page displays or behaves, by using small bits of JavaScript."
 arch=('any')
@@ -13,8 +13,8 @@ url="http://www.greasespot.net/"
 license=('MPL')
 makedepends=('jq')
 depends=('firefox>=52.0')
-source=("https://addons.mozilla.org/firefox/downloads/file/$_file/greasemonkey-$pkgver-an+fx-linux.xpi")
-sha256sums=('10c5e35e15e3737fb83d62bd7e2b85e64fa36d34eaf1607855a9261f61447917')
+source=("https://addons.mozilla.org/firefox/downloads/file/$_file/greasemonkey-${pkgver}-an+fx.xpi")
+sha256sums=('243dd35537975ae4566710f3bac165dcf413642dbc735e9f92501fca30ff824e')
 
 package() {
   cd ${srcdir}
