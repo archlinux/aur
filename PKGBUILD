@@ -13,8 +13,8 @@ _revert=
 
 
 pkgname=mutter-781835-workaround
-pkgver=3.32.1+9+g0a3cddeec
-pkgrel=2
+pkgver=3.32.2
+pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -27,7 +27,7 @@ checkdepends=(xorg-server-xvfb)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-_commit=0a3cddeecff8d2c095108fde6c8fd4a3cdc63fe0 # tags/3.32.1^9
+_commit=189f71f5d1e70dd16796418d568d3e3e4cad49e0 # tags/3.32.2^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
         216.patch
@@ -81,7 +81,7 @@ prepare() {
 
   # Add experimental key for RT scheduling
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/460
- git cherry-pick -n dae2c1d4
+  git cherry-pick -n dae2c1d4
 
   # cogl: Enable EGL_IMG_context_priority
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/454
@@ -91,6 +91,10 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/73
   # does not compile yet
   # git cherry-pick -n 35ec0eaf^..202530c9
+
+  # Honour `CLUTTER_ACTOR_NO_LAYOUT` more efficiently [performance]
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/575
+  git cherry-pick -n 90aeecac^..022f26d4
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
