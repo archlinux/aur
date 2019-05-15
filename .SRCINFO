@@ -1,7 +1,7 @@
 pkgbase = nextcloud-desktop-git
 	pkgdesc = Nextcloud desktop client
-	pkgver = 2.5.0
-	pkgrel = 2
+	pkgver = 2.5.3.rc1
+	pkgrel = 1
 	url = https://nextcloud.com/
 	arch = i686
 	arch = x86_64
