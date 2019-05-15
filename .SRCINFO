@@ -1,6 +1,6 @@
 pkgbase = manager-accounting
 	pkgdesc = Manager is free accounting software for small business
-	pkgver = 19.2.62
+	pkgver = 19.5.14
 	pkgrel = 1
 	url = http://www.manager.io/
 	install = manager-accounting.install
@@ -14,10 +14,8 @@ pkgbase = manager-accounting
 	depends = gtk-sharp-3
 	options = !makeflags
 	source = LICENSE
-	source = https://d2ap5zrlkavzl7.cloudfront.net/19.2.62/manager-accounting.zip
-	source = https://raw.githubusercontent.com/ericsink/SQLitePCL.raw/02ae6a75ba254fe1f6bf27495545b5eac79456ac/sqlite3/sqlite3.c
+	source = https://d2ap5zrlkavzl7.cloudfront.net/19.5.14/Manager.deb
 	sha256sums = bd144763506372341487683b0f28ad627e7e8923ea8ef8569541b55f4b987061
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = manager-accounting

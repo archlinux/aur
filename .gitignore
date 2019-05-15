@@ -1,5 +1,7 @@
 pkg/
 src/
+*.deb
+*.rpm
 *.zip
 *.tar.xz
 sqlite3.c
