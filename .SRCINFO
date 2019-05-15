@@ -1,14 +1,14 @@
 pkgbase = python-aioamqp
 	pkgdesc = AMQP implementation using asyncio
-	pkgver = 0.11.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/polyconseil/aioamqp
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/a/aioamqp/aioamqp-0.11.0.tar.gz
-	md5sums = 5495653f94c6f87eb1c3ca85c4fa8bae
+	source = https://files.pythonhosted.org/packages/source/a/aioamqp/aioamqp-0.13.0.tar.gz
+	sha256sums = ced0d2bb0054809b37b0636da34fc7cda23d66943fb5f9f0610555988cf347b2
 
 pkgname = python-aioamqp
 	depends = python
