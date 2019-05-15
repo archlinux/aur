@@ -2,7 +2,7 @@
  
 pkgname="monado-git"
 _dirname="monado"
-pkgver=r6.52e11ac
+pkgver=r153.d9cdd04
 pkgrel=1
 pkgdesc='The open source OpenXR runtime.'
 arch=('i686' 'x86_64')
@@ -46,6 +46,6 @@ package() {
   DESTDIR="$pkgdir" ninja install
 
   # TODO: manage runtimes properly
-  install -d  "$pkgdir"/usr/share/openxr/0
-  ln -s openxr_monado.json "$pkgdir"/usr/share/openxr/0/active_runtime.json
+  install -d  "$pkgdir"/usr/local/share/openxr/0
+  ln -s /usr/share/openxr/0/openxr_monado.json "$pkgdir"/usr/local/share/openxr/0/active_runtime.json
 }
