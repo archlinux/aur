@@ -1,12 +1,11 @@
 pkgbase = network-manager-applet-indicator
-	pkgdesc = Latest nm-applet with Appindicator/StatusNotifierItem support from Gnome GitLab
-	pkgver = 1.8.19+dev+17+g57ef36bf
-	pkgrel = 2
-	url = https://aur.archlinux.org/packages/network-manager-applet-indicator/
-	arch = i686
+	pkgdesc = Applet for managing network connections, with Appindicator/StatusNotifierItem support from GNOME GitLab
+	pkgver = 1.8.21dev+3+gb4c365b1
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/NetworkManager/
 	arch = x86_64
-	license = GPL2
-	license = LGPL2.1
+	license = GPL
+	license = LGPL
 	makedepends = libsecret
 	makedepends = libnotify
 	makedepends = libmm-glib
@@ -14,31 +13,42 @@ pkgbase = network-manager-applet-indicator
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = gtk-doc
-	depends = libnm-glib
-	depends = libgudev
-	depends = gtk3
-	depends = mobile-broadband-provider-info
-	depends = iso-codes
+	makedepends = meson
+	makedepends = libnm
+	makedepends = gcr
+	makedepends = gtk3
+	makedepends = iso-codes
+	makedepends = mobile-broadband-provider-info
 	depends = libappindicator-gtk3
-	conflicts = nm-connection-editor
-	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/network-manager-applet.git/
+	source = git+https://gitlab.gnome.org/GNOME/network-manager-applet.git#commit=b4c365b136e25e69c3550a9984f8f3cbec4bc073
 	sha256sums = SKIP
-
-pkgname = nm-connection-editor-indicator
-	pkgdesc = NetworkManager GUI connection editor and widgets, with AppIndicator
-	provides = libnm-gtk=1.8.19+dev+17+g57ef36bf-2
-	provides = libnma=1.8.19+dev+17+g57ef36bf-2
-	provides = nm-connection-editor=1.8.19+dev+17+g57ef36bf-2
-	conflicts = libnm-gtk
-	replaces = libnm-gtk
 
 pkgname = network-manager-applet-indicator
 	depends = nm-connection-editor
 	depends = libmm-glib
 	depends = libnotify
 	depends = libsecret
+	depends = networkmanager
 	depends = libappindicator-gtk3
-	provides = network-manager-applet=1.8.19+dev+17+g57ef36bf-2
+	provides = network-manager-applet=1.8.21dev+3+gb4c365b1-1
 	conflicts = network-manager-applet
+
+pkgname = nm-connection-editor-indicator
+	pkgdesc = NetworkManager GUI connection editor and widgets, with AppIndicator
+	depends = libnma-indicator
+	provides = nm-connection-editor=1.8.21dev+3+gb4c365b1-1
+	conflicts = nm-connection-editor
+	conflicts = libnm-gtk<1.8.18-1
+	replaces = libnm-gtk<1.8.18-1
+
+pkgname = libnma-indicator
+	pkgdesc = NetworkManager GUI client library, with AppIndicator
+	depends = libnm
+	depends = gcr
+	depends = gtk3
+	depends = iso-codes
+	depends = mobile-broadband-provider-info
+	depends = libappindicator-gtk3
+	provides = libnma-indicator-1.8.21dev+3+gb4c365b1-1
+	conflicts = libnma
 
