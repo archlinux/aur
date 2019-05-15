@@ -1,13 +1,13 @@
 # Maintainer: Elimpfor <aur@s403.33mail.com>
 pkgname=busysteg-git
-pkgver=r10.6857c59
+pkgver=r13.47ec897
 pkgrel=1
 epoch=
 pkgdesc="Steganography tool to hide information content into busy areas of images, optimally"
 arch=('x86_64' 'i686')
 url="https://github.com/jaybosamiya/busysteg"
 license=('MIT')
-depends=('opencv')
+depends=('opencv2')
 makedepends=('git' 'cmake')
 source=("${pkgname}::git+git://github.com/jaybosamiya/busysteg.git" "https://jay.mit-license.org/license.txt")
 md5sums=('SKIP' 'SKIP')
