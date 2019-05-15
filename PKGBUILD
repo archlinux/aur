@@ -1,7 +1,7 @@
 # Maintainer: redfish <redfish@galactica.pw>
 
 pkgname=ssb-server
-pkgver=14.1.12
+pkgver=15.0.1
 pkgrel=1
 pkgdesc="The gossip and replication server for Secure Scuttlebutt - a distributed social network"
 arch=(any)
@@ -16,4 +16,4 @@ package(){
   npm install -g --user root --prefix "${pkgdir}/usr" "$srcdir/v${pkgver}.tar.gz"
 }
 
-sha256sums=('9e3fbf6c1f291780a45b14a16462cef14a487bee0fe646a8893782fae5321bb5')
+sha256sums=('c81771e1b7bc91d75b286fe9c851c863cfa2a3617b7e7d1bb75f5df9aa661cf8')
