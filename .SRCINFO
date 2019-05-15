@@ -1,10 +1,11 @@
 pkgbase = nodejs-carto-git
 	pkgdesc = Mapbox carto: Translates Carto MML/ CartoCSS to Mapnik XML or a JSON variant of Mapnik XML.
 	pkgver = 1.2.0+2+r1945.20190213.13a3962
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vis4.net/chromajs/
 	arch = any
 	license = apache
+	makedepends = git
 	makedepends = npm
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
