@@ -4,11 +4,11 @@ _module='pyGAM'
 pkgver='0.8.0'
 pkgrel=1
 pkgdesc="Generalized Additive Models in Python"
-url="https://pygam.readthedocs.io/en/latest/?badge=latest"
+url="https://pygam.readthedocs.io"
 checkdepends=('python-pytest')
 depends=('python' 'python-numpy' 'python-progressbar' 'python-scipy')
 makedepends=('python-setuptools')
-optdepends=('scikit-sparse')
+optdepends=('python-scikit-sparse')
 license=('GPL-3')
 arch=('any')
 source=("https://github.com/dswah/pyGAM/archive/v$pkgver.tar.gz")
