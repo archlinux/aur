@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/fastoredis/bin/FastoRedis
+Name=FastoRedis
+GenericName=The IDE for redis working.
+GenericName[de]=Die IDE der
+Icon=fastoredis.png
+Terminal=false
+Categories=Development;IDE;redis;
