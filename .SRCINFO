@@ -17,8 +17,8 @@ pkgbase = kpcli
 	optdepends = perl-crypt-pwsafe3: import Password Safe v3 files
 	optdepends = perl-capture-tiny
 	optdepends = perl-clipboard
-	source = https://kent.dl.sourceforge.net/project/kpcli/kpcli-3.2.pl
-	source = http://kent.dl.sourceforge.net/project/kpcli/README
+	source = https://iweb.dl.sourceforge.net/project/kpcli/kpcli-3.2.pl
+	source = https://iweb.dl.sourceforge.net/project/kpcli/README
 	sha256sums = 615a1bae19ed0c132076a809b162a66ea0dc22c1d992a8c6e1f2e1aaedfae687
 	sha256sums = 8d81478c10a5c364e015429aed16cb8618ab04277162a687d7ca970e9e2b34c6
 
