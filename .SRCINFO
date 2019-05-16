@@ -1,14 +1,14 @@
 pkgbase = broadcom-wl-ck
 	pkgdesc = Broadcom 802.11abgn hybrid Linux networking device driver for linux-ck.
 	pkgver = 6.30.223.271
-	pkgrel = 126
+	pkgrel = 127
 	url = https://www.broadcom.com/support/download-search/?pf=Wireless+LAN+Infrastructure
 	arch = x86_64
 	license = custom
-	makedepends = linux-ck-headers>=5.0
-	makedepends = linux-ck-headers<5.1
-	depends = linux-ck>=5.0
-	depends = linux-ck<5.1
+	makedepends = linux-ck-headers>=5.1
+	makedepends = linux-ck-headers<5.2
+	depends = linux-ck>=5.1
+	depends = linux-ck<5.2
 	source = https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-6_30_223_271.tar.gz
 	source = 001-null-pointer-fix.patch
 	source = 002-rdtscl.patch
