@@ -2,8 +2,8 @@
 # Contributor: Philipp A. <flying-sheep@web.de>
 # Contributor: theSander <aur@sandervanbalen.be>
 pkgname=rambox-os-git
-pkgver=r1077.d42dc5c
-pkgrel=2
+pkgver=r1088.26702dc
+pkgrel=1
 pkgdesc="Free and Open Source messaging and emailing app that combines common web applications into one."
 arch=(i686 x86_64)
 url="https://github.com/TheGoddessInari/rambox"
@@ -56,7 +56,6 @@ package() {
   install -d "$pkgdir/usr/bin"
 
   cp -r "$srcdir/${pkgname%-git}/dist/linux-unpacked" "$pkgdir/usr/lib/${pkgname%-git}"
-  chmod 4755 "${pkgdir}/usr/lib/${pkgname%-git}/chrome-sandbox"
 
   install -Dm644 "$srcdir/${pkgname%-git}/resources/Icon.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
   ln -s "/usr/lib/${pkgname%-git}/rambox" "${pkgdir}/usr/bin/${pkgname%-git}"
