@@ -1,16 +1,16 @@
-pkgbase='python-pyowm'
-pkgname=('python-pyowm')
-_module='pyowm'
-pkgver='2.10.0'
+pkgbase='python-tinydb'
+pkgname=('python-tinydb')
+_module='tinydb'
+pkgver='3.13.0'
 pkgrel=1
-pkgdesc="A Python wrapper around OpenWeatherMap web APIs"
-url="http://github.com/csparpa/pyowm"
+pkgdesc="TinyDB is a tiny, document oriented database optimized for your happiness :)"
+url="https://github.com/msiemens/tinydb"
 depends=('python')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('8fd41a18536f4d6c432bc6d9ea69994efb1ea9b43688cf19523659b6f4d86cf7')
+sha256sums=('a05c4c81e6e867c4f8a2e51c5236d0d897019aa5e9296f5947455b0bdd3c519d')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
