@@ -2,14 +2,16 @@ Fixes all the little issues with that new version. This is some kind of
 joke, isn't it? Did they even test the stuff? Ah well...
 ---
 diff -urpN a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2019-04-10 14:56:59.945587369 +0200
-+++ b/CMakeLists.txt	2019-04-10 16:03:20.072383378 +0200
-@@ -22,10 +22,10 @@
+--- a/CMakeLists.txt	2019-03-11 22:52:18.000000000 +0100
++++ b/CMakeLists.txt	2019-05-12 18:03:25.279901510 +0200
+@@ -21,11 +21,11 @@
+ # https://cmake.org/cmake/help/v3.12/module/CMakeDependentOption.html?highlight=cmakedependentoption
  # cmake 3.12 have more better modern c++ support
  
- cmake_minimum_required(VERSION 3.12  FATAL_ERROR)
+-cmake_minimum_required(VERSION 3.12  FATAL_ERROR)
 -project(nana VERSION      1.6.2
-+project(nana VERSION 1.7.0
++cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
++project(nana VERSION 1.7.1
          DESCRIPTION "C++ GUI library"
          HOMEPAGE_URL http://nanapro.org
 -        LANGUAGES CXX         )
@@ -18,20 +20,22 @@ diff -urpN a/CMakeLists.txt b/CMakeLists.txt
  #######################     Main setting of Nana targets, sources and installs    #####################
  
 diff -urpN a/build/cmake/compilers.cmake b/build/cmake/compilers.cmake
---- a/build/cmake/compilers.cmake	2019-04-10 14:56:59.945587369 +0200
-+++ b/build/cmake/compilers.cmake	2019-04-10 15:53:36.754700500 +0200
-@@ -15,7 +15,7 @@
+--- a/build/cmake/compilers.cmake	2019-03-11 22:52:18.000000000 +0100
++++ b/build/cmake/compilers.cmake	2019-05-12 18:04:11.045296059 +0200
+@@ -14,8 +14,8 @@
+ 
  if(CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang") #  AND NOT MINGW??
  
-     target_compile_options(nana PRIVATE  -Wall
+-    target_compile_options(nana PRIVATE  -Wall
 -                                 PUBLIC  -g   )
-+                                 PUBLIC  -Os -s)
++    target_compile_options(nana PRIVATE -Wall
++                                 PUBLIC -Os -s)
  
      set(THREADS_PREFER_PTHREAD_FLAG ON)               #  todo - test this
      find_package(Threads REQUIRED)
 diff -urpN a/build/cmake/enable_audio.cmake b/build/cmake/enable_audio.cmake
---- a/build/cmake/enable_audio.cmake	2019-04-10 14:56:59.945587369 +0200
-+++ b/build/cmake/enable_audio.cmake	2019-04-10 16:06:33.163862315 +0200
+--- a/build/cmake/enable_audio.cmake	2019-03-11 22:52:18.000000000 +0100
++++ b/build/cmake/enable_audio.cmake	2019-05-16 07:08:35.652372215 +0200
 @@ -4,12 +4,12 @@ option(NANA_CMAKE_ENABLE_AUDIO "Enable c
  if(NANA_CMAKE_ENABLE_AUDIO)
      target_compile_definitions(nana PUBLIC NANA_ENABLE_AUDIO)
@@ -40,10 +44,10 @@ diff -urpN a/build/cmake/enable_audio.cmake b/build/cmake/enable_audio.cmake
 -        if(ASOUND_FOUND)
 -            target_include_directories(nana PUBLIC ${ASOUND_INCLUDE_DIRS})
 -            target_link_libraries(nana PUBLIC  ${ASOUND_LIBRARIES})
-+        find_package(ALSA) # ? https://github.com/hintjens/demidi/blob/master/Findasound.cmake
++        find_package(ALSA)
 +        if(ALSA_FOUND)
 +            target_include_directories(nana PUBLIC ${ALSA_INCLUDE_DIRS})
-+            target_link_libraries(nana PUBLIC  ${ALSA_LIBRARIES})
++            target_link_libraries(nana PUBLIC  ${ALAS_LIBRARIES})
          else()
              message(FATAL_ERROR "libasound is not found")
          endif()
@@ -52,27 +56,21 @@ diff -urpN a/build/cmake/enable_audio.cmake b/build/cmake/enable_audio.cmake
 \ No newline at end of file
 +endif()
 diff -urpN a/source/filesystem/filesystem.cpp b/source/filesystem/filesystem.cpp
---- a/source/filesystem/filesystem.cpp	2019-04-10 14:56:59.948920713 +0200
-+++ b/source/filesystem/filesystem.cpp	2019-04-10 15:01:55.913333313 +0200
-@@ -40,7 +40,7 @@
+--- a/source/filesystem/filesystem.cpp	2019-04-22 05:06:30.000000000 +0200
++++ b/source/filesystem/filesystem.cpp	2019-05-16 07:10:08.609800194 +0200
+@@ -40,9 +40,9 @@
  	#include <dirent.h>
  	#include <cstdio>
  	#include <cstring>
 -	#include <errno.h>
 +	#include <cerrno>
  	#include <unistd.h>
- 	#include <stdlib.h>
+-	#include <stdlib.h>
++	#include <cstdlib>
  #endif
-@@ -1045,7 +1045,7 @@ namespace nana {	namespace experimental
- 				::fclose(stream);
- 				return bytes;
- 			}
--			ec.assign(static_cast<int>(::errno), std::generic_category());
-+			ec.assign(static_cast<int>(errno), std::generic_category());
- #endif
- 			return static_cast<std::uintmax_t>(-1);
- 		}
-@@ -1056,7 +1056,7 @@ namespace nana {	namespace experimental
+ 
+ namespace fs = std::filesystem;
+@@ -1141,7 +1141,7 @@ namespace nana {	namespace experimental
  			struct tm t;
  			nana::filesystem_ext::modified_file_time(p, t);
  			std::chrono::system_clock::time_point dateTime =std::chrono::system_clock::from_time_t( mktime(&t) );
