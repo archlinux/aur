@@ -26,10 +26,19 @@ pkgrel=1
 makedepends=("linux-vfio-headers=${_kernelver}")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_splver}/spl-${_splver}.tar.gz")
-sha256sums=("6fd4445850ac67b228fdd82fff7997013426a1c2a8fa9017ced70cc9ad2a4338")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_splver}/spl-${_splver}.tar.gz"
+        "linux-5.1-compat-drop-ULLONG_MAX-and-LLONG_MAX-definitions.patch"
+        "linux-5.1-compat-get-ds-removed.patch")
+sha256sums=("6fd4445850ac67b228fdd82fff7997013426a1c2a8fa9017ced70cc9ad2a4338"
+            "f110bd86a81602e531dda943cf0d066f09f3d58c297159ea285957ce28f0f0c1"
+            "d4a6c27aea521cf5635c1b9f679633c068b024606f634d5e6bf1a7b97db486c4")
 license=("GPL")
 depends=("kmod" "linux-vfio=${_kernelver}")
+prepare() {
+    cd "${srcdir}/spl-${_splver}"
+    patch -Np1 -i ${srcdir}/linux-5.1-compat-drop-ULLONG_MAX-and-LLONG_MAX-definitions.patch
+    patch -Np1 -i ${srcdir}/linux-5.1-compat-get-ds-removed.patch
+}
 
 build() {
     cd "${srcdir}/spl-${_splver}"
