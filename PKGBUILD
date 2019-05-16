@@ -1,7 +1,19 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
+_pytype_repo="https://github.com/google/pytype"
+_pytype_tag=2019.05.15
+
+_cpython_repo="https://github.com/python/cpython"
+_cpython_gitcommit="9734024ec65311e33936faa83fb1cb249ef0de9d"
+
+_googletest_repo="https://github.com/google/googletest"
+_googletest_gitcommit="e82d320567a45db1a999f9109f2b9a733bc59bb1"
+
+_typeshed_repo="https://github.com/python/typeshed"
+_typeshed_gitcommit="4e572ae6a398c82fa9f1b0e7ba7c819274de8c3a"
+
 pkgname=pytype
-pkgver=2019.05.08
+pkgver="${_pytype_tag}"
 pkgrel=1
 pkgdesc="Python type inferencer"
 arch=('any')
@@ -28,14 +40,14 @@ optdepends=(
 )
 options=(!emptydirs)
 source=(
-  "https://github.com/google/pytype/archive/${pkgver}.tar.gz"
-  "cpython-9734024.zip::https://github.com/python/cpython/archive/9734024ec65311e33936faa83fb1cb249ef0de9d.zip"
-  "googletest-e82d320.zip::https://github.com/google/googletest/archive/e82d320567a45db1a999f9109f2b9a733bc59bb1.zip"
-  "typeshed-4e572ae.zip::https://github.com/python/typeshed/archive/4e572ae6a398c82fa9f1b0e7ba7c819274de8c3a.zip"
+  "${_pytype_repo}/archive/${pkgver}.tar.gz"
+  "cpython-${_cpython_gitcommit:0:7}.zip::${_cpython_repo}/archive/${_cpython_gitcommit}.zip"
+  "googletest-${_googletest_gitcommit:0:7}.zip::${_googletest_repo}/archive/${_googletest_gitcommit}.zip"
+  "typeshed-${_typeshed_gitcommit:0:7}.zip::${_typeshed_repo}/archive/${_typeshed_gitcommit}.zip"
   'without-ninja-python-distributions.patch'
 )
 sha256sums=(
-  'f7793e8b2c8681f8c3115e10292bdc15b2d083e54800915b2dbc97dfbe3ddea4'
+  '2ae9997953e0471689347084fb7906f54daba532c640d12e0651e677f9ccf393'
   'ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a'
   '891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7'
   'b7d7530b5c628f389e967f0cc5b01f0499fd2aefb30cc63cd3748996345f5607'
@@ -51,13 +63,13 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   rm -rf googletest/
-  ln -s "${srcdir}/googletest-e82d320567a45db1a999f9109f2b9a733bc59bb1" googletest
+  ln -s "${srcdir}/googletest-${_googletest_gitcommit}" googletest
 
   rm -rf cpython/
-  ln -s "${srcdir}/cpython-9734024ec65311e33936faa83fb1cb249ef0de9d" cpython
+  ln -s "${srcdir}/cpython-${_cpython_gitcommit}" cpython
 
   rm -rf typeshed/
-  ln -s "${srcdir}/typeshed-4e572ae6a398c82fa9f1b0e7ba7c819274de8c3a" typeshed
+  ln -s "${srcdir}/typeshed-${_typeshed_gitcommit}" typeshed
 
   python setup.py build
 }
