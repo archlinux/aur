@@ -33,8 +33,8 @@ pkgname=('roccat-tools-common'
          'roccat-tools-tyon'
          'roccat-tools-nyth')
 pkgbase=roccat-tools
-pkgver=5.7.0
-pkgrel=3
+pkgver=5.9.0
+pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -45,7 +45,7 @@ optdepends=('kmod-roccat: Adds support for the old kone device.')
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2"
         '90-uinput.rules'
         'uhid.conf')
-sha256sums=('a6e21315c06e072fcea79c185518c8d2c8f19ed9681633613f26085319bdfd95'
+sha256sums=('6f6766309bace2aece09910912d4a6d8bec61c9b4432f4f3ed388ebf7e16408a'
             '097a333b61921698d60f448e66c34c57905d2098aca998d987be782a0e4862ff'
             '0d328038322f62ff1f3319666df5f8f58c0a028415a917ad247b0446c1ff90f5')
 
