@@ -2,7 +2,7 @@
 
 pkgname=ttf-material-design-icons-webfont
 _pkgname=MaterialDesign-Webfont
-pkgver=3.5.95
+pkgver=3.6.95
 pkgrel=1
 pkgdesc="Material Design webfont icons from materialdesignicons.com"
 arch=('any')
