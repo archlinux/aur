@@ -1,18 +1,18 @@
 pkgbase = zeroc-ice-php
 	pkgdesc = PHP bindings for Ice RPC framework
-	pkgver = 3.7.0
-	pkgrel = 1
+	pkgver = 3.7.2
+	pkgrel = 0
 	url = https://zeroc.com
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = custom:Ice license
-	makedepends = zeroc-ice=3.7.0
+	makedepends = zeroc-ice=3.7.2
 	makedepends = php
-	depends = zeroc-ice=3.7.0
+	depends = zeroc-ice=3.7.2
 	depends = php
-	source = ice-3.7.0.tar.gz::https://github.com/zeroc-ice/ice/archive/v3.7.0.tar.gz
-	sha256sums = 809fff14a88a7de1364c846cec771d0d12c72572914e6cc4fb0b2c1861c4a1ee
+	source = ice-3.7.2.tar.gz::https://github.com/zeroc-ice/ice/archive/v3.7.2.tar.gz
+	sha256sums = e329a24abf94a4772a58a0fe61af4e707743a272c854552eef3d7833099f40f9
 
 pkgname = zeroc-ice-php
 
