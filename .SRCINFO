@@ -1,12 +1,14 @@
 pkgbase = drill-search-git
 	pkgdesc = GTK+ tool for searching files without indexing, but clever crawling.
-	pkgver = 1.79
-	pkgrel = 1
+	pkgver = 1.99.r0.g8ccbf25
+	pkgrel = 2
 	url = https://www.drill.santamorena.me/
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = dub
+	makedepends = dmd
 	depends = gtk3
 	provides = drill-search
 	source = drill-search.sh

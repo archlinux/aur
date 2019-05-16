@@ -1,14 +1,14 @@
 # Maintainer: VinJK <vinjk at disroot dot org>
 
 pkgname="drill-search-git"
-pkgver=1.79
-pkgrel=1
+pkgver=1.99.r0.g8ccbf25
+pkgrel=2
 pkgdesc="GTK+ tool for searching files without indexing, but clever crawling."
 arch=("i686" "x86_64")
 url="https://www.drill.santamorena.me/"
 license=("GPL2")
 depends=("gtk3")
-makedepends=("dub")
+makedepends=("git" "dub" "dmd")
 provides=("drill-search")
 source=(
     "drill-search.sh"
@@ -33,7 +33,7 @@ prepare() {
 
 pkgver() {
 	cd "${srcdir}/Drill"
-	git describe --tags | sed 's/-/_/g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
