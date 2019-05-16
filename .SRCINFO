@@ -1,4 +1,4 @@
-pkgbase = pipelinedb
+pkgbase = pipelinedb-git
 	pkgdesc = The streaming SQL database
 	pkgver = 1.0.0
 	pkgrel = 13
@@ -12,5 +12,5 @@ pkgbase = pipelinedb
 	source = https://github.com/pipelinedb/pipelinedb/archive/1.0.0-13.tar.gz
 	md5sums = 6902fd076cc6f0615a2d4042021d792f
 
-pkgname = pipelinedb
+pkgname = pipelinedb-git
 

@@ -1,6 +1,6 @@
 # Maintainer: Jose Fernando Zazo <josefernando.zazo@hotmail.com>
 #
-pkgname=('pipelinedb')
+pkgname=('pipelinedb-git')
 pkgver='1.0.0'
 pkgrel=13
 pkgdesc="The streaming SQL database"
