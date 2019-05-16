@@ -63,7 +63,7 @@ _rev_override="n"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.1
-_minor=2
+_minor=3
 _srcname=linux-${_major}
 _clr=${_major}.0-2
 pkgbase=linux-clear-current
@@ -336,7 +336,7 @@ done
 
 sha256sums=('d06a7be6e73f97d1350677ad3bae0ce7daecb79c2c2902aaabe806f7fa94f041'
             'SKIP'
-            'd2d6782474da294effb5076f74227381aadd5a7b10328335693f1df20d1d4382'
+            'ea04b55d4a60c3aa801487ebbbf0c9e336cd28c2c1a6ab7c34f4105eca8ab30b'
             'SKIP'
             '553858de4315d267d1f259d1146db028eec5112a797379a7a83f5c8a22e626b3'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
