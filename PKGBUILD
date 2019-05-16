@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.1.2-arch1
+_srcver=5.1.3-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -86,7 +86,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('ec7ad67a423698855200b46e1c7ee325d68a8fe4706c66fe456780a8c99bef5b'
+sha256sums=('b0f53e12daf8e710992151333edeb7d7da3d935a6aa3db8360681f7d05a6aaa2'
             'SKIP'
             '7af14b92ef808cb57b4a09156e5cd3a6e32c31fc5eb942ec4b1402426a22cf0e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
