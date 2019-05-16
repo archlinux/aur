@@ -42,11 +42,11 @@ index ba8d34a8..ecec2eb4 100644
  [properties]
  needs_exe_wrapper = true
  
--c_args=['-m32', '-msse', '-msse2']
--cpp_args=['-m32', '--no-gnu-unique', '-msse', '-msse2']
+-c_args=['-m32', '-msse', '-msse2', '-fvisibility=hidden']
+-cpp_args=['-m32', '--no-gnu-unique', '-msse', '-msse2', '-fvisibility=hidden', '-fvisibility-inlines-hidden']
 -cpp_link_args=['-m32', '-mwindows']
-+c_args=['-m32', '-msse', '-msse2', @CARGS@]
-+cpp_args=['-m32', '--no-gnu-unique', '-msse', '-msse2', @CARGS@]
++c_args=['-m32', '-msse', '-msse2', '-fvisibility=hidden', @CARGS@]
++cpp_args=['-m32', '--no-gnu-unique', '-msse', '-msse2', '-fvisibility=hidden', '-fvisibility-inlines-hidden', @CARGS@]
 +cpp_link_args=['-m32', '-mwindows', @LDARGS@]
  
  [host_machine]
@@ -59,11 +59,11 @@ index b3e028bb..fb9d98fd 100644
  [properties]
  needs_exe_wrapper = true
  
--c_args=['-m64']
--cpp_args=['-m64', '--no-gnu-unique']
+-c_args=['-m64', '-fvisibility=hidden']
+-cpp_args=['-m64', '--no-gnu-unique', '-fvisibility=hidden', '-fvisibility-inlines-hidden']
 -cpp_link_args=['-m64', '-mwindows']
-+c_args=['-m64', @CARGS@]
-+cpp_args=['-m64', '--no-gnu-unique', @CARGS@]
++c_args=['-m64', '-fvisibility=hidden', @CARGS@]
++cpp_args=['-m64', '--no-gnu-unique', '-fvisibility=hidden', '-fvisibility-inlines-hidden', @CARGS@]
 +cpp_link_args=['-m64', '-mwindows', @LDARGS@]
  
  [host_machine]

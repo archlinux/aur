@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-mingw-git
-pkgver=r2885.da392277
+pkgver=r2920.4c337dc3
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase, mingw version"
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=(
 sha256sums=(
     "SKIP"
     "7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a"
-    "d73f948fd39da218141cc72c7373f59e6fc289630e155b6e51d18597455d0040"
-    "6c6936b753903ba59ee9e2b6c8fc533bf60cba894cf4288ec0239c35b86796cd"
+    "2042ed0d7365c41aee2107baf394c26cb05a2e2a80a49daa050ba62425b81bbb"
+    "c521ad17c249a02a70ffa0d169452321420ffb8603f99a902579d0fbdd66d3d3"
 )
 
 pkgver() {
