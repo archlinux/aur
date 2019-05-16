@@ -1,6 +1,7 @@
-sratom
-src
-pkg
+autowaf/
+sratom/
+src/
+pkg/
 sratom-git-*.tar.xz
 sratom-git-*.src.tar.gz
 .AURINFO

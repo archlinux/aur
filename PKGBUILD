@@ -2,7 +2,7 @@
 
 _pkgname=sratom
 pkgname="${_pkgname}-git"
-pkgver=0.6.2.r149.a82a011
+pkgver=0.6.3.r168.202873c
 pkgrel=1
 pkgdesc="An LV2 Atom RDF serialisation library"
 arch=('i686' 'x86_64')
@@ -13,15 +13,23 @@ makedepends=('git' 'python')
 conflicts=("${_pkgname}" "${_pkgname}-svn")
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 install="${_pkgname}.install"
-source=("${_pkgname}::git+http://git.drobilla.net/sratom.git")
-md5sums=('SKIP')
-
+source=("${_pkgname}::git+https://gitlab.com/lv2/sratom.git"
+        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   local ver=`grep "^SRATOM_VERSION" wscript | cut -d "'" -f 2`
   echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  git submodule init
+  git config submodule.waflib.url "${srcdir}/autowaf"
+  git submodule update
 }
 
 build() {
