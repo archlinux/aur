@@ -2,3 +2,4 @@
 /pkg/
 /*.log
 /metals-*.tar.xz
+/v*.tar.gz
