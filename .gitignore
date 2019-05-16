@@ -1,6 +1,7 @@
+autowaf/
 pkg/
 src/
-.AURINFO
 suil/
+.AURINFO
 suil-git-*.tar.xz
 suil-git-*.src.tar.gz
