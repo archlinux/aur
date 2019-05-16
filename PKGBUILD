@@ -1,8 +1,8 @@
 # Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
 
 pkgname=desk-git
-pkgver=v0.6.0.r10.g20369d7
-pkgrel=3
+pkgver=v0.6.0.r17.g252e683
+pkgrel=1
 pkgdesc="A lightweight workspace manager for the shell"
 arch=('any')
 url="https://github.com/jamesob/desk"
@@ -24,8 +24,8 @@ package() {
     install -m755 "$srcdir/$pkgname/desk" "$pkgdir/usr/bin/desk"
 
     # completions
-    install -dm755 "$pkgdir/usr/share/bash/completions"
-    install -m644 "$srcdir/$pkgname/shell_plugins/bash/desk" "$pkgdir/usr/share/bash/completions"
+    install -dm755 "$pkgdir/usr/share/bash-completion/completions"
+    install -m644 "$srcdir/$pkgname/shell_plugins/bash/desk" "$pkgdir/usr/share/bash-completion/completions"
     install -dm755 "$pkgdir/usr/share/zsh/site-functions"
     install -m644 "$srcdir/$pkgname/shell_plugins/zsh/_desk" "$pkgdir/usr/share/zsh/site-functions"
     install -dm755 "$pkgdir/usr/share/fish/completions"
