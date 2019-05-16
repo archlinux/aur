@@ -4,10 +4,10 @@
 # Contributor: Michael Kanis <mkanis@gmx.de>
 
 pkgname=libmutter2
-pkgver=3.28.3
+pkgver=3.28.4
 pkgrel=1
 pkgdesc='A window manager library for GNOME'
-url='https://gitlab.gnome.org/GNOME/mutter'
+url=https://gitlab.gnome.org/GNOME/mutter
 arch=(x86_64)
 license=(GPL)
 depends=(
@@ -76,13 +76,13 @@ build() {
   cd mutter
 
   ./configure \
-    --prefix='/usr' \
-    --includedir='/usr/include/mutter-2' \
+    --prefix=/usr \
+    --includedir=/usr/include/mutter-2 \
     --disable-gtk-doc \
     --disable-schemas-compile \
     --disable-remote-desktop \
     --disable-static \
-    --enable-compile-warnings='minimum' \
+    --enable-compile-warnings=minimum \
     --enable-egl-device
 
   make
