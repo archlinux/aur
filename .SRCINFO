@@ -1,6 +1,6 @@
 pkgbase = substratumnode
 	pkgdesc = SubstratumNode is the foundation of the decentralized SubstratumNetwork. SubstratumNodes work together to relay CORES packages and content on the network.
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://substratum.net
 	install = substratumnode.install
@@ -9,8 +9,8 @@ pkgbase = substratumnode
 	conflicts = substratumnode-git
 	options = !strip
 	options = !emptydirs
-	source = https://s3.us-east-2.amazonaws.com/substratum-website-downloads/v0.4.5/SubstratumNode-v0.4.5-Linux64-deb.zip
-	sha256sums = c662140f792be59345d051ee1ce869bb2b2af7906baa01ed14673f2cb4623221
+	source = https://s3.us-east-2.amazonaws.com/substratum-website-downloads/v0.4.6/SubstratumNode-v0.4.6-Linux64-deb.zip
+	sha256sums = 49e0ace32ba04a8522cd22ec9099f9b23b8717c7f1628bc2e101b7547b48388b
 
 pkgname = substratumnode
 
