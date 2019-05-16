@@ -1,14 +1,13 @@
 pkgbase = doctl-bin
 	pkgdesc = A command line tool for DigitalOcean services
-	pkgver = 1.17.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/digitalocean/doctl
 	arch = x86_64
 	license = Apache
 	conflicts = doctl
-	options = strip
-	source = https://github.com/digitalocean/doctl/releases/download/v1.17.0/doctl-1.17.0-linux-amd64.tar.gz
-	sha512sums = 5ac619cbde941952c102099ba3f2a16959d965cdefb15c353ec367c2eede0b6d783fe9c384f37f98fd724df2edd15d5f06810c36d4bf6aad6be6b4adbe27933a
+	source = https://github.com/digitalocean/doctl/releases/download/v1.18.0/doctl-1.18.0-linux-amd64.tar.gz
+	sha512sums = 341f9ab6803e992ad14c62ad45498ad42d901d2764f05fe71c04e2923e3682cdd2584a2ac4a2392b673c4dc0588dfb470ae86435f1a74d85461a6ae1d5d8fad7
 
 pkgname = doctl-bin
 
