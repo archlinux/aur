@@ -15,6 +15,7 @@ optdepends=('inotify-tools: asynchronous printing support')
 
 source=(http://support.ricoh.com/bb/pub_e/dr_ut_e/0001294/0001294700/V10_22/r75386L2.exe)
 # mirror at https://ftp.vtyulb.ru/r75386L2.exe
+# direct ppd file at https://ftp.vtyulb.ru/RICOH_SP_150.ppd.gz
 md5sums=('99d3a64dc492a238305676d9cf7efd44')
 
 build() {
