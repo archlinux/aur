@@ -4,7 +4,7 @@
 pkgname=thunderbird-52-bin
 _pkgname=thunderbird
 pkgver=52.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone Mail/News reader - Version 52.9.1 (en-GB)"
 arch=('x86_64' 'i686')
 url="https://www.mozilla.org/thunderbird"
@@ -21,7 +21,7 @@ source=('thunderbird-52-bin.desktop')
 source_x86_64=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-GB/thunderbird-$pkgver.tar.bz2")
 source_i686=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686/en-GB/thunderbird-$pkgver.tar.bz2")
 
-sha512sums=('21cb43d3ec1443f07685016e7b48bd888bb79eb6c242b9aae2c51be5ba80718dd1930a70b52281922f128fb01661a608c7c0aef42ea705d24b577172ea5e4d7b')
+sha512sums=('83a77090a91a0b6ccaa5ddb56ac10389a4bfa58a09465fa38b94a2cc9b641c2d70e73783968f197f5b692f80df51362724666bc4d956b3d6a9783d2abcc3b58a')
 sha512sums_x86_64=('a713653bc7da8347d2897ff522c8cb13983fd913ec987a81b9bcb1242dac14c0cd875e7bb5dfda14938953af0a526d24a54d40e1b88e31107498baf00aaeb6c9')
 sha512sums_i686=('53e66c5e9c98a6af311732341073b553c577dcfe35178996c7a27ee0cc0dddfc7774a065fdebbfa0a4cd4f6f3f422e9fe67fac07a586342e9dde33b59d6bd17a<Paste>')
 
