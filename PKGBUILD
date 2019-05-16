@@ -1,18 +1,18 @@
-# Maintainer: Kevin Del Castillo R. <lans9831@gmail.com>
+# Maintainer: Kevin Del Castillo R. <quebin31@gmail.com>
 
 pkgname=nvman
-pkgver=1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="NVIDIA Manager for Optimus/Bumblebee"
 arch=('any')
-url=https://github.com/lans98/nvman
+url=https://github.com/quebin31/nvman
 license=('GPL')
 depends=('bumblebee' 'primus' 'optimus-manager')
 optdepends=()
 conflicts=()
 options=()
 install=$pkgname.install
-source=("https://github.com/lans98/$pkgname/archive/$pkgver.tar.gz")
+source=("https://github.com/quebin31/$pkgname/archive/$pkgver.tar.gz")
 md5sums=(046714c66b69d3612619ac51b77fb87d)
 
 package() {
