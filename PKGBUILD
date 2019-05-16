@@ -15,12 +15,12 @@
 
 pkgname=rstudio-desktop-preview-bin
 pkgver=1.2.1511
-pkgrel=1
+pkgrel=2
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr')
+depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr' 'openssl-1.0')
 #makedepends=('patchelf')
 optdepends=('pandoc: markdown support'
             'pandoc-citeproc: markdown support')
