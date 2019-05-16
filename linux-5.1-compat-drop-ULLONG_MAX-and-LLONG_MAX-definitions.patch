@@ -1,0 +1,18 @@
+diff --unified --recursive --text a/include/sys/types.h b/include/sys/types.h
+--- a/include/sys/types.h	2019-02-22 12:55:48.000000000 -0500
++++ b/include/sys/types.h	2019-05-15 18:32:17.357535303 -0400
+@@ -28,14 +28,6 @@
+ #include <linux/types.h>
+ #include <sys/sysmacros.h>
+ 
+-#ifndef ULLONG_MAX
+-#define	ULLONG_MAX			(~0ULL)
+-#endif
+-
+-#ifndef LLONG_MAX
+-#define	LLONG_MAX			((long long)(~0ULL>>1))
+-#endif
+-
+ typedef enum { B_FALSE = 0, B_TRUE = 1 }	boolean_t;
+ typedef unsigned long			intptr_t;
+ typedef unsigned long			ulong_t;
