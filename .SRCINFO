@@ -1,0 +1,22 @@
+pkgbase = libxi-git
+	pkgdesc = X11 Input extension library
+	pkgver = 1.7.9.r8.g3e38d82
+	pkgrel = 1
+	url = https://www.x.org/wiki/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = libxfixes
+	makedepends = xorg-util-macros
+	depends = glibc
+	depends = inputproto
+	depends = libxext
+	provides = libxi
+	conflicts = libxi
+	options = staticlibs
+	source = git+https://gitlab.freedesktop.org/xorg/lib/libxi.git
+	sha256sums = SKIP
+
+pkgname = libxi-git
+
