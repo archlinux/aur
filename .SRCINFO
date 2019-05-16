@@ -31,7 +31,7 @@ pkgbase = linux-ck
 	sha256sums = 91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3
 
 pkgname = linux-ck
-	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.190
+	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.192
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
