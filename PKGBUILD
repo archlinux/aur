@@ -1,7 +1,7 @@
 # Maintainer: David Rodriguez <dissonant.tech@gmail.com>
 
 pkgname=kops-git
-pkgver=1.12.0.beta.2.r0.gd1453d22a
+pkgver=1.12.0.r0.ga2b7b4a88
 pkgrel=1
 pkgdesc="Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management. (git version)"
 arch=('x86_64')
