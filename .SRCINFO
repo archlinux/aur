@@ -1,14 +1,14 @@
 pkgbase = osu-install
 	pkgdesc = Auto-install osu! on Linux
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/yurisuki/osu-install
 	arch = any
 	depends = dialog
 	depends = curl
 	depends = bash
 	source = osu-install::https://raw.githubusercontent.com/yurisuki/osu-install/master/aur/osu-install
-	sha512sums = 91da88f02d5c0e696dfc51ddf47995236730e093c6edc6007a02bdbda0b7247173667f2ca88bd9741ee4bf652585b8848e432e1f7ee925ba5f490719e2d0eb66
+	sha512sums = 916175f12dfbf5480c7943ab7289622a8c8476048776ca9434c7d110e823b28193686dc990bb6a62a5b6675a1f96338dea303505f1b5a67923605f8dfcff5bff
 
 pkgname = osu-install
 
