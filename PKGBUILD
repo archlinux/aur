@@ -1,11 +1,11 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=list-all-systemd-timers-git
-pkgver=r5.175bcac
+pkgver=r7.1aaccb5
 pkgrel=1
 pkgdesc="Prints all systemd timers to stdout"
 arch=('i686' 'x86_64')
-makedepends=('git' 'ghc')
+makedepends=('git' 'stack')
 url="https://github.com/dmp1ce/list-all-systemd-timers"
 license=('custom:Unlicense')
 options=('strip')
@@ -13,18 +13,18 @@ source=("${pkgname}::git+https://github.com/dmp1ce/list-all-systemd-timers.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   msg2 'Building...'
-  cd "${pkgname}"
-  ghc --make list-all-systemd-timers.hs
+  cd "${pkgname}" || exit
+  stack ghc list-all-systemd-timers.hs
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
 
   msg2 'Installing license...'
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/list-all-systemd-timers"
