@@ -56,6 +56,9 @@ function main {
 
     build_cp
 
+    # Echo out the full path to the Java binary we will use.
+    echo "Java binary selected: $(command -v java)"
+
     # Java options taken from metals-emacs documentation
     # https://scalameta.org/metals/docs/editors/emacs.HTML
     exec java -XX:+UseG1GC -XX:+UseStringDeduplication -Xss4m -Xms100m -Dmetals.client="$_METALS_CLIENT" -cp "$_CP" scala.meta.metals.Main "$@"
