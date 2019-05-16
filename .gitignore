@@ -1,6 +1,7 @@
-serd
-src
-pkg
+autowaf/
+serd/
+src/
+pkg/
 serd-git-*.tar.xz
 serd-git-*.src.tar.gz
 .AURINFO
