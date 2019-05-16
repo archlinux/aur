@@ -1,6 +1,6 @@
 pkgbase = emacs-hydra
 	pkgdesc = Make Emacs bindings that stick around
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/abo-abo/hydra
 	install = emacs-hydra.install
@@ -8,8 +8,8 @@ pkgbase = emacs-hydra
 	license = GPL3
 	depends = emacs
 	optdepends = emacs-org-mode: Comes with an org-mode export widget
-	source = emacs-hydra-0.14.0.tar.gz::https://github.com/abo-abo/hydra/archive/0.14.0.tar.gz
-	sha256sums = a8664c86a5f48af37e47983829d653b31114eade87a2b6f234107eeedc980421
+	source = emacs-hydra-0.15.0.tar.gz::https://github.com/abo-abo/hydra/archive/0.15.0.tar.gz
+	sha256sums = a329ed62ed4d6c309f3e151fdfe77dae3fa3b7e4226bd26859ea1115ded2cd80
 
 pkgname = emacs-hydra
 
