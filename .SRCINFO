@@ -1,13 +1,14 @@
 pkgbase = python-aiohttp_socks
 	pkgdesc = SOCKS proxy connector for aiohttp
 	pkgver = 20181230
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/romis2012/aiohttp-socks
 	arch = x86_64
 	license = Apache
 	makedepends = python-pytest
 	makedepends = git
 	depends = python-aiohttp
+	conflicts = python-aiohttp-socks
 	source = python-aiohttp_socks::git+https://github.com/romis2012/aiohttp-socks.git
 	sha512sums = SKIP
 
