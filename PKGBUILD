@@ -1,12 +1,12 @@
 pkgname=plasma5-applets-mpdnowplaying
 _pkgname=mpdnowplaying
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="MPD plasmoid for Plasma 5."
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/mpdnowplaying"
 license=('GPL')
-depends=('plasma-framework')
+depends=('plasma-framework' 'libmpdclient')
 makedepends=('extra-cmake-modules')
 conflicts=("${pkgname}")
 provides=("${pkgname}")
