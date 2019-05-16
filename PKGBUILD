@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=ssacli
-pkgver=3.30_14.0
+pkgver=3.40_3.0
 pkgrel=1
 pkgdesc="HP Command Line Smart Storage Administrator"
 arch=(x86_64)
@@ -12,7 +12,7 @@ groups=(hpproliant)
 license=("CUSTOM")
 
 source=("https://downloads.linux.hpe.com/SDR/repo/mcp/centos/7/x86_64/current/$pkgname-${pkgver//_/-}.x86_64.rpm")
-sha256sums=('499f454e195eaa0b211f7118c3224a0a26fc5626677e26054e860137c2342c0f')
+sha256sums=('bf6ca8840878fcace31aeee8e8206be4f167179e99e5a845db2a3e17387825d7')
 
 package() {
 	mv usr/{sbin,bin}
