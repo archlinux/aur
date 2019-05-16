@@ -6,12 +6,12 @@ _pkgname=deadbeef-gnome-mmkeys
 pkgver=r45.96e5664
 pkgrel=1
 pkgdesc="DeaDBeeF player Gnome (via DBus) multimedia keys plugin"
-url="https://github.com/DreaminginCodeZH/deadbeef-gnome-mmkeys"
+url="https://github.com/zhanghai/deadbeef-gnome-mmkeys"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('deadbeef' 'glib2')
 makedepends=('git')
-source=(git+https://github.com/DreaminginCodeZH/deadbeef-gnome-mmkeys.git)
+source=(git+https://github.com/zhanghai/deadbeef-gnome-mmkeys.git)
 sha256sums=('SKIP')
 
 pkgver() {
