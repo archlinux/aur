@@ -1,7 +1,7 @@
 # Maintainer: Philipp Schmitt (philipp<at>schmitt<dot>co)
 
 pkgname=wallabag
-pkgver=2.3.7
+pkgver=2.3.8
 pkgrel=1
 pkgdesc='Self hostable application for saving web pages'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
 install="$pkgname.install"
 options=(!strip)
 source=("https://static.wallabag.org/releases/wallabag-release-${pkgver}.tar.gz")
-sha256sums=('e223de12d8ea9f889e8660df4555c37c965f5ae1ca77af3d3532ab76889762cf')
+sha256sums=('58f319ee41828fcc4fd00a14c4ac7c16b2179a47af21e257a15938311d1426eb')
 backup=("etc/webapps/${pkgname}/parameters.yml"
         "usr/share/webapps/${pkgname}/parameters.yml"
         "var/lib/${pkgname}/data/db/wallabag.sqlite"

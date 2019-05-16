@@ -1,6 +1,6 @@
 pkgbase = wallabag
 	pkgdesc = Self hostable application for saving web pages
-	pkgver = 2.3.7
+	pkgver = 2.3.8
 	pkgrel = 1
 	url = http://www.wallabag.org/
 	install = wallabag.install
@@ -19,8 +19,8 @@ pkgbase = wallabag
 	backup = usr/share/webapps/wallabag/parameters.yml
 	backup = var/lib/wallabag/data/db/wallabag.sqlite
 	backup = usr/share/webapps/wallabag/data/db/wallabag.sqlite
-	source = https://static.wallabag.org/releases/wallabag-release-2.3.7.tar.gz
-	sha256sums = e223de12d8ea9f889e8660df4555c37c965f5ae1ca77af3d3532ab76889762cf
+	source = https://static.wallabag.org/releases/wallabag-release-2.3.8.tar.gz
+	sha256sums = 58f319ee41828fcc4fd00a14c4ac7c16b2179a47af21e257a15938311d1426eb
 
 pkgname = wallabag
 
