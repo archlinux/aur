@@ -10,11 +10,11 @@ _googletest_repo="https://github.com/google/googletest"
 _googletest_gitcommit="e82d320567a45db1a999f9109f2b9a733bc59bb1"
 
 _typeshed_repo="https://github.com/python/typeshed"
-_typeshed_gitcommit="4e572ae6a398c82fa9f1b0e7ba7c819274de8c3a"
+_typeshed_gitcommit="50d98acc766e9425cb099c17b711f1bccb697584"
 
 pkgname=pytype
 pkgver="${_pytype_tag}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Python type inferencer"
 arch=('any')
 url="https://google.github.io/pytype"
@@ -50,7 +50,7 @@ sha256sums=(
   '2ae9997953e0471689347084fb7906f54daba532c640d12e0651e677f9ccf393'
   'ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a'
   '891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7'
-  'b7d7530b5c628f389e967f0cc5b01f0499fd2aefb30cc63cd3748996345f5607'
+  '56579ebcd86d9b99497a433e6bc96eb5222558a62e568927f0522411b29f8d72'
   '3c6c812ffa7412634552ed32a71b326ac38387dd2d6c319fa9ae21a88dd55eaf'
 )
 
