@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.0.16-arch1
+_srcver=5.1.2-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -70,7 +70,7 @@ url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
 makedepends=(kmod inetutils bc libelf)
 options=('!strip')
-_ckpatch="patch-5.0-ck${_ckpatchversion}"
+_ckpatch="patch-5.1-ck${_ckpatchversion}"
 _gcc_more_v='20180509'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
@@ -79,21 +79,21 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "http://ck.kolivas.org/patches/5.0/5.0/5.0-ck${_ckpatchversion}/$_ckpatch.xz"
+  "http://ck.kolivas.org/patches/5.0/5.1/5.1-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('5ca7ce390f52d0ce10b3c07f77701e75f7370b5da856646f63c2b67a4ef9fcac'
+sha256sums=('ec7ad67a423698855200b46e1c7ee325d68a8fe4706c66fe456780a8c99bef5b'
             'SKIP'
-            'a0e8f77c7a790efd882bf5d5cc5dd0f6fa8303811e5e755c1ac29700b2e41ad2'
+            '7af14b92ef808cb57b4a09156e5cd3a6e32c31fc5eb942ec4b1402426a22cf0e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
-            '661f64bbd8bf49afcc7c760c4148b2e2108511a1eadcae917cfe6056a83d8476'
+            'f8d18a34f6b17ec8e5f2a7354383ca627e0fd00b5578c1ee7d9808a34f33c724'
             '91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3')
 
 _kernelname=${pkgbase#linux}
@@ -111,8 +111,7 @@ prepare() {
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
 
   msg2 "Patching with ck patchset..."
-  sed -i '/-CFLAGS/ s/$/ \$(LIBELF_FLAGS)/' "$srcdir/patch-5.0-ck1"
-  patch -F 3 -Np1 -i "$srcdir/${_ckpatch}"
+  patch -Np1 -i "$srcdir/${_ckpatch}"
 
   local src
   for src in "${source[@]}"; do
