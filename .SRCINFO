@@ -1,14 +1,14 @@
 pkgbase = zfs-linux-lts-rc
-	pkgver = 0.8.0_rc5_4.19.42.1
+	pkgver = 0.8.0_rc5_4.19.43.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-lts-headers=4.19.42-1
+	makedepends = linux-lts-headers=4.19.43-1
 	makedepends = python
 	depends = kmod
 	depends = zfs-utils-rc=0.8.0_rc5
-	depends = linux-lts=4.19.42-1
+	depends = linux-lts=4.19.43-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.0-rc5/zfs-0.8.0-rc5.tar.gz
 	sha256sums = c5dc91e3efb7555c6c1846cf89fd4cfb0952271a2900434e697f2b7397ce9b16
 
