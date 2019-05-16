@@ -1,4 +1,4 @@
-# Maintainer: Pradaba Aumars <paumars@protonmail.com>
+# Maintainer: Pradana Aumars <paumars@protonmail.com>
 
 pkgname=classicladder
 pkgver=0.9
