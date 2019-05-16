@@ -10,7 +10,7 @@ url="https://materialdesignicons.com/"
 license=('SIL OPEN FONT LICENSE Version 1.1')
 depends=('fontconfig' 'xorg-font-utils')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Templarian/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3d613e075673552786f6fc7f3b381492ef6b22b11386e84bcbefb0971c0f18b1')
+sha256sums=('09b2aa5acbf58cfe469f64680dc3f3a9efd8987a4425a5d57fc847bf003bf847')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/TTF"
