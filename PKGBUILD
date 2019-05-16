@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=gomuks-git
 pkgdesc='A terminal based Matrix client written in Go'
-pkgver=0.r280
+pkgver=0.r339
 pkgrel=1
 url='https://github.com/tulir/gomuks'
 license=(GPL3)
@@ -20,6 +20,10 @@ prepare () {
 	# out modules; so remove those to make sure "go build" below will
 	# ensure that the correct version is always fetched.
 	sed -i -e '/^replace\s/d' go.mod
+
+	# Fix a build failure
+	go mod edit \
+		-replace=gopkg.in/russross/blackfriday.v2@v2.0.1=github.com/russross/blackfriday/v2@v2.0.1
 }
 
 pkgver () {
