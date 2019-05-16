@@ -1,33 +1,35 @@
 pkgbase = scanpy
 	pkgdesc = Single-Cell Analysis in Python
-	pkgver = 1.4
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/theislab/scanpy
 	arch = any
 	license = BSD
 	depends = python-anndata>=0.6.15
-	depends = python-matplotlib>=2.2
+	depends = python-matplotlib>=3.0
 	depends = python-pandas>=0.21
 	depends = python-scipy
 	depends = python-seaborn
 	depends = python-h5py
 	depends = python-pytables
+	depends = python-tqdm
 	depends = python-scikit-learn>=0.19.1
 	depends = python-statsmodels
 	depends = python-patsy
 	depends = python-networkx
 	depends = python-natsort
 	depends = python-joblib
-	depends = python-numba>=0.40.0
+	depends = python-numba>=0.41.0
+	depends = python-umap-learn>=0.3.0
 	optdepends = python-bbknn: Batch balanced KNN (batch correction)
 	optdepends = python-leidenalg: leiden community detection
 	optdepends = python-multicoretsne: Fast t-SNE
 	optdepends = python-louvain-igraph: Louvain clustering
 	provides = scanpy
 	provides = python-scanpy
-	noextract = scanpy-1.4-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/s/scanpy/scanpy-1.4-py3-none-any.whl
-	sha256sums = 703ce2809838dc067b7d20091d903bb679cc0489968253d69e3ea6f87f19d5f2
+	noextract = scanpy-1.4.3-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/s/scanpy/scanpy-1.4.3-py3-none-any.whl
+	sha256sums = 4da3b34deed62a94e6456bfff261200cd816a08cacd677369275e091ed536e6d
 
 pkgname = scanpy
 
