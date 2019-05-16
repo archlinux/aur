@@ -14,7 +14,7 @@ _revert=
 
 pkgname=mutter-781835-workaround
 pkgver=3.32.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -95,6 +95,10 @@ prepare() {
   # Honour `CLUTTER_ACTOR_NO_LAYOUT` more efficiently [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/575
   git cherry-pick -n 90aeecac^..022f26d4
+
+  # WIP: backends: Do not reload keymap on new keyboard notifications
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/579
+  git cherry-pick -n b3192d6b
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
