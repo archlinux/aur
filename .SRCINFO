@@ -1,0 +1,16 @@
+pkgbase = pipelinedb
+	pkgdesc = The streaming SQL database
+	pkgver = 1.0.0
+	pkgrel = 13
+	url = https://www.pipelinedb.com
+	arch = any
+	license = Apache2
+	makedepends = zeromq
+	depends = postgresql>=10.1
+	provides = pipelinedb
+	conflicts = pipelinedb
+	source = https://github.com/pipelinedb/pipelinedb/archive/1.0.0-13.tar.gz
+	md5sums = 6902fd076cc6f0615a2d4042021d792f
+
+pkgname = pipelinedb
+
