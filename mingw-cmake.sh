@@ -14,7 +14,7 @@ export LDFLAGS="${MINGW_LDFLAGS:-$default_mingw_linker_flags $LDFLAGS}"
 
 PATH=${mingw_prefix}/bin:$PATH cmake \
     -DCMAKE_INSTALL_PREFIX:PATH=${mingw_prefix} \
-    -DCMAKE_INSTALL_LIBDIR:PATH=${mingw_prefix}/lib \
+    -DCMAKE_INSTALL_LIBDIR:PATH=lib \
     -DINCLUDE_INSTALL_DIR:PATH=${mingw_prefix}/include \
     -DLIB_INSTALL_DIR:PATH=${mingw_prefix}/lib \
     -DSYSCONF_INSTALL_DIR:PATH=${mingw_prefix}/etc \
