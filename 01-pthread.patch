@@ -1,0 +1,14 @@
+--- pthread.h	2019-05-16 21:30:41.620331620 +0200
++++ pthread_new.h	2019-05-16 21:21:14.130277483 +0200
+@@ -0,0 +1,11 @@
++/*
++ * Public domain
++ * pthread.h compatibility shim
++ */
++
++#ifndef LIBCRYPTOCOMPAT_PTHREAD_H
++#define LIBCRYPTOCOMPAT_PTHREAD_H
++
++#include_next <pthread.h>
++
++#endif

@@ -28,9 +28,14 @@ pkgver() {
 build() {
   cd "${srcdir}/${_gitname}"
   for _arch in $_architectures; do
-    mkdir -p "${srcdir}/build-${_arch}" && cp -a "${srcdir}/${_gitname}/"* "${srcdir}/build-${_arch}" && cd "${srcdir}/build-${_arch}"
+    mkdir -p "${srcdir}/build-${_arch}"
+    cp -a "${srcdir}/${_gitname}/"* "${srcdir}/build-${_arch}"
+    cd "${srcdir}/build-${_arch}"
+    ## Remove pthread shim code
+    patch include/compat/pthread.h < ../../01-pthread.patch
     ./autogen.sh
-    CC="${_arch}-gcc" CPPFLAGS="-D__MINGW_USE_VC2005_COMPAT" ./configure --host=${_arch} --prefix=/usr/${_arch}
+    CC="${_arch}-gcc" CCFLAGS="-pthread" CPPFLAGS="-D__MINGW_USE_VC2005_COMPAT"\
+    ./configure --host=${_arch} --prefix=/usr/${_arch}
     make
     ## make check
   done
