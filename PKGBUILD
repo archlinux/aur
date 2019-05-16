@@ -2,7 +2,7 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.0.2+201+gc004a11c
+pkgver=9.0.2+297+g7bece24c
 _d2j=2.0
 _yajsw=12.12
 _hfsx=0.21
@@ -67,8 +67,8 @@ EOF
   ln -sf ghidra ../ghidra.bin
   install -Dm 644 ../yajsw-stable-$_yajsw.zip -t Ghidra/Features/GhidraServer
 
-  # Ignore lack of licensing for YAJSW zip and packed FID datasets
-  sed -i '/FileTree tree/a\\t\texclude "yajsw-stable-**.zip"\n\t\texclude "src/main/fidb/**.fidb"' gradle/support/ip.gradle
+  # Ignore lack of licensing for YAJSW zip, packed FID datasets, and the native binaries
+  sed -i '/FileTree tree/a\\t\texclude "yajsw-stable-**.zip"\n\t\texclude "src/main/fidb/**.fidb"\n\t\texclude "os/linux64/**"' gradle/support/ip.gradle
 
   # Add FID datasets
   install -Dm 644 ../ghidra-data/FunctionID/*.fidb -t Ghidra/Features/FunctionID/src/main/fidb
@@ -76,7 +76,11 @@ EOF
 
 build() {
   cd ghidra
+  msg2 'Unpacking YAJSW...'
   gradle yajswDevUnpack
+  msg2 'Building native components...'
+  gradle prebuildNatives_linux64
+  msg2 'Building full package...'
   gradle buildGhidra
 }
 
@@ -88,7 +92,7 @@ package() {
   install -d "$pkgdir"/{opt,usr/bin}
   _appver=$(grep -oP '(?<=^application.version=).*$' Ghidra/application.properties)
   _relname=$(grep -oP '(?<=^application.release.name=).*$' Ghidra/application.properties)
-  unzip -u build/dist/ghidra_${_appver}_${_relname}_`date +"%Y%m%d"`_$_platform.zip -d "$pkgdir"/opt
+  unzip -u build/dist/ghidra_${_appver}_${_relname}_$(date +"%Y%m%d")_$_platform.zip -d "$pkgdir"/opt
   mv "$pkgdir"/opt/ghidra{_$_appver,}
   ln -s /opt/ghidra/ghidraRun "$pkgdir"/usr/bin/ghidra
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/ghidra
