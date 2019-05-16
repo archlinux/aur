@@ -1,6 +1,6 @@
 pkgbase = ivre-git
 	pkgdesc = Network recon framework
-	pkgver = 0.9.12.dev64
+	pkgver = 0.9.12.dev114
 	pkgrel = 1
 	url = https://ivre.rocks/
 	arch = any
