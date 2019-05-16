@@ -13,7 +13,7 @@ conflicts=()
 options=()
 install=$pkgname.install
 source=("https://github.com/quebin31/$pkgname/archive/$pkgver.tar.gz")
-md5sums=(046714c66b69d3612619ac51b77fb87d)
+md5sums=(27da24091f5c3fc3fa87425fdccaa239)
 
 package() {
     cd "$pkgname-$pkgver"

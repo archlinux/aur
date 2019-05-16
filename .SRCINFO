@@ -10,7 +10,7 @@ pkgbase = nvman
 	depends = primus
 	depends = optimus-manager
 	source = https://github.com/quebin31/nvman/archive/1.2.0.tar.gz
-	md5sums = 046714c66b69d3612619ac51b77fb87d
+	md5sums = 27da24091f5c3fc3fa87425fdccaa239
 
 pkgname = nvman
 
