@@ -2,14 +2,14 @@
 
 _pkgname=jalv
 pkgname="${_pkgname}-git"
-pkgver=1.4.7.r311.1ed0a84
+pkgver=1.6.1.r443.3dc259e
 pkgrel=1
 pkgdesc="A simple but fully featured LV2 host for Jack"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/${_pkgname}/"
 license=('custom:ISC')
 depends=('lilv' 'suil')
-makedepends=('gtk2' 'gtk3' 'gtkmm' 'jack' 'python' 'qt4' 'qt5-base')
+makedepends=('git' 'gtk2' 'gtk3' 'gtkmm' 'jack' 'python' 'qt4' 'qt5-base')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 optdepends=('gtk2: Gtk+ 2.x frontend'
@@ -17,9 +17,9 @@ optdepends=('gtk2: Gtk+ 2.x frontend'
             'gtkmm: Gtk++ 2.x frontend'
             'qt4: Qt 4.x frontend'
             'qt5-base: Qt 5.x frontend')
-source=("${_pkgname}::git+http://git.drobilla.net/${_pkgname}.git")
-md5sums=('SKIP')
-
+source=("${_pkgname}::git+http://git.drobilla.net/${_pkgname}.git"
+        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -28,12 +28,20 @@ pkgver() {
   echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  git submodule init
+  git config submodule.waflib.url "${srcdir}/autowaf"
+  git submodule update
+}
+
 build() {
   cd "${srcdir}/${_pkgname}"
 
   CXXFLAGS+=' -std=c++11'
   python waf configure --prefix=/usr
-  python waf
+  python waf build $MAKEFLAGS
 }
 
 package() {

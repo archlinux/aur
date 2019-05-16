@@ -1,6 +1,7 @@
+autowaf/
+jalv/
 pkg/
 src/
 .AURINFO
-jalv/
 jalv-git-*.tar.xz
 jalv-git-*.src.tar.gz
