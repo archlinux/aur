@@ -1,0 +1,20 @@
+pkgbase = mint-cli-git
+	pkgdesc = cli interface for Mint using python-mintapi
+	pkgver = r52.814bd4d
+	pkgrel = 1
+	url = https://github.com/userWayneCampbell/mint-cli
+	arch = any
+	license = GPL
+	depends = git
+	depends = python
+	depends = python-mintapi
+	depends = chromedriver
+	depends = google-chrome
+	depends = python-dotenv
+	depends = python-tabulate-git
+	depends = python-colorama-git
+	source = git+https://github.com/userWayneCampbell/mint-cli.git
+	md5sums = SKIP
+
+pkgname = mint-cli-git
+
