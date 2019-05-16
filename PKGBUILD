@@ -33,8 +33,8 @@ package() {
   install -d "${pkgdir}/usr/share/pixmaps"
   cp "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/Sulaiman.png"
 }
-pkgver=1558009820700
+pkgver=1558016656245
 pkgrel=1
-source=('icon.png' 'Sulaiman.desktop' 'Sulaiman-1558009820700.tar.xz'::'https://gitlab.com/hpj/Sulaiman/-/jobs/213648977/artifacts/raw/public/Sulaiman.tar.xz
+source=('icon.png' 'Sulaiman.desktop' 'Sulaiman-1558016656245.tar.xz'::'https://gitlab.com/hpj/Sulaiman/-/jobs/213738320/artifacts/raw/public/Sulaiman.tar.xz
 ')
-md5sums=('29f6faca0ab8a3614cacb41bd6d06aef' '493da0565241adc188c24f22b3c13cdb' 'df8d2f049b637ce963fd08e0b9dad437')
+md5sums=('29f6faca0ab8a3614cacb41bd6d06aef' '493da0565241adc188c24f22b3c13cdb' '8ee440e89d16ac43f3aeb98dfff091f3')
