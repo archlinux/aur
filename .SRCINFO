@@ -1,13 +1,13 @@
 pkgbase = grub-reboot-poweroff
 	pkgdesc = Reboot and Poweroff system from Grub boot menu
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/eworm-de/grub-reboot-poweroff
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = grub
-	source = git://github.com/eworm-de/grub-reboot-poweroff.git#tag=0.2.0?signed
+	source = git://github.com/eworm-de/grub-reboot-poweroff.git#tag=0.2.1?signed
 	validpgpkeys = BD84DE71F493DF6814B0167254EDC91609BC9183
 	sha256sums = SKIP
 

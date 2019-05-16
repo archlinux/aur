@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=grub-reboot-poweroff
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Reboot and Poweroff system from Grub boot menu'
 arch=('any')
