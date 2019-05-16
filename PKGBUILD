@@ -3,7 +3,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.9.60
+pkgver=5.9.61
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -43,10 +43,10 @@ source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "use-libtirpc-headers.patch"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch")
-sha256sums=('330d7346b45d0b1bcd04e903da17d87cec8c2261a7e8a335f2372509cab8109f'
+sha256sums=('d74dc686f62b068b24f25129efba180cfdbd43bf437001532d348308f838ac50'
             '0dfa3014bc6a66989564c7da2d963681f5d129eb0be28153744693dd533e4909'
             '6c29e825e06d1c3aec4afd915718b8c46da705d1411a94f7c0f777b888a9b50d'
-            '0471dab0a9ae8c52fdb15a453b4863d31e82c32ee493c31d9473e34e8391d9df')
+            '045e4b4c444d1a37dffdcecb87e5245188fadf68444f9a4b14207a5b98671344')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

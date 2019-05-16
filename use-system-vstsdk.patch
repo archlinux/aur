@@ -1,6 +1,6 @@
-diff -aur --no-dereference radium-5.9.60.pristine/check_dependencies.sh radium-5.9.60.new/check_dependencies.sh
---- radium-5.9.60.pristine/check_dependencies.sh	2019-05-11 22:54:53.265960552 +0100
-+++ radium-5.9.60.new/check_dependencies.sh	2019-05-11 22:58:13.635953702 +0100
+diff -aur --no-dereference radium-5.9.61.pristine/check_dependencies.sh radium-5.9.61.new/check_dependencies.sh
+--- radium-5.9.61.pristine/check_dependencies.sh	2019-05-15 14:04:11.000000000 +0100
++++ radium-5.9.61.new/check_dependencies.sh	2019-05-16 10:03:43.252329929 +0100
 @@ -211,11 +211,11 @@
      exit 5
  fi
@@ -18,21 +18,21 @@ diff -aur --no-dereference radium-5.9.60.pristine/check_dependencies.sh radium-5
  
  
  if [[ $4 == "test_build" ]] ; then
-diff -aur --no-dereference radium-5.9.60.pristine/Makefile.Qt radium-5.9.60.new/Makefile.Qt
---- radium-5.9.60.pristine/Makefile.Qt	2019-05-11 22:54:53.245960553 +0100
-+++ radium-5.9.60.new/Makefile.Qt	2019-05-11 22:58:13.639287034 +0100
-@@ -252,7 +252,7 @@
+diff -aur --no-dereference radium-5.9.61.pristine/Makefile.Qt radium-5.9.61.new/Makefile.Qt
+--- radium-5.9.61.pristine/Makefile.Qt	2019-05-15 14:04:11.000000000 +0100
++++ radium-5.9.61.new/Makefile.Qt	2019-05-16 10:05:39.962325937 +0100
+@@ -269,7 +269,7 @@
  
  FLAGOPTS = $(DEFINES) -DGUIISQT -DUSE_GFX_OP_QUEUE -DFULL_VERSION=$(FULL_VERSION) -DIS_LITTLE_ENDIAN=1 -DUSE_OPENGL=1 $(VISUAL) $(REQTYPE_TYPE) $(MENU_TYPE)
  
--COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_63_0 -I${HOME}/boost_1_67_0 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers -Wnull-dereference 
-+COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_63_0 -I${HOME}/boost_1_67_0 -I /usr/include/vst36 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers -Wnull-dereference 
+-COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_70_0 -I${HOME}/boost_1_67_0 -I${HOME}/boost_1_63_0 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers -Wnull-dereference 
++COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_70_0 -I${HOME}/boost_1_67_0 -I${HOME}/boost_1_63_0 -I /usr/include/vst36 -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers -Wnull-dereference 
  #-fdelete-null-pointer-checks 
  # -Werror
  
-diff -aur --no-dereference radium-5.9.60.pristine/pluginhost/Builds/Linux/Makefile radium-5.9.60.new/pluginhost/Builds/Linux/Makefile
---- radium-5.9.60.pristine/pluginhost/Builds/Linux/Makefile	2019-05-11 22:54:53.279293885 +0100
-+++ radium-5.9.60.new/pluginhost/Builds/Linux/Makefile	2019-05-11 22:58:13.639287034 +0100
+diff -aur --no-dereference radium-5.9.61.pristine/pluginhost/Builds/Linux/Makefile radium-5.9.61.new/pluginhost/Builds/Linux/Makefile
+--- radium-5.9.61.pristine/pluginhost/Builds/Linux/Makefile	2019-05-15 14:04:11.000000000 +0100
++++ radium-5.9.61.new/pluginhost/Builds/Linux/Makefile	2019-05-16 10:03:43.272329928 +0100
 @@ -8,7 +8,7 @@
    CONFIG=Debug
  endif
