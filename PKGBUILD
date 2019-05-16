@@ -1,77 +1,79 @@
 # Maintainer: Gao xiang<hughgao01@gmail.com>
+# Contributor: Anton Kudelin <kudelin at protonmail dot com>
 
 pkgname='gamess'
-pkgver=2016R1
+pkgver=2018R3
 pkgrel=1
-pkgdesc="A general ab initio quantum chemistry package. For single machine use only."
+pkgdesc="The General Atomic and Molecular Electronic Structure System"
 arch=('x86_64')
 url="http://www.msg.ameslab.gov/GAMESS/GAMESS.html"
 license=('custom')
-depends=('gcc-fortran' 'tcsh' 'atlas-lapack')
+depends=('gcc-fortran' 'tcsh' 'openblas-lapack')
+makedepends=('python')
 install=${pkgname}.install
 
-# You MUST download the package from http://www.msg.ameslab.gov/GAMESS/GAMESS.html and put it in the PKGBUILD folder!
-source=('gamess-current.tar.gz::file://gamess-current.tar.gz' "rungms.patch")
-
-[ "$CARCH" = "x86_64" ] && md5sums=('1bc784a96b6a1e234e51e0349897402b' 'b2b4fbe7f95c21b5a3e448ca67433e38')
+# You have to get the package from the official website and put into the current directory.
+source=("local://gamess-current.tar.gz"
+        "opt.patch")
+sha256sums=('fb177614395650dc4b4baff643962cc36435ad81516aa58b74204bfe47f90605'
+            '0e71dd49041c11193f2d05f820db2bdf9d7128a79f82abd0979799708cc0da66')
 
 prepare() {
-	cd "$pkgname"
-
-    _GMS_PATH=$(pwd)
-    _GMS_BUILD_DIR=$(pwd)
-    mkdir -p $_GMS_BUILD_DIR/{object,tools,ddi,tests}
-
-    # generate install.info
-    cat > $_GMS_BUILD_DIR/install.info <<EOF
-# install path
-setenv GMS_PATH            $_GMS_PATH
-# build path
-setenv GMS_BUILD_DIR       $_GMS_BUILD_DIR
-# machine type
-setenv GMS_TARGET          linux64
-# FORTRAN compiler setup
-setenv GMS_FORTRAN         gfortran
-# gamess does not support gfortran 6.x, using 5.9 instead
-setenv GMS_GFORTRAN_VERNO  5.3
-# mathematical library setup
-setenv GMS_MATHLIB         atlas
-setenv GMS_MATHLIB_PATH    /usr/lib
-# parallel message passing model setup
-setenv GMS_DDI_COMM        sockets
-# LIBCCHEM CPU/GPU code interface
-setenv GMS_LIBCCHEM        false
-# Intel Xeon Phi build: true/false
-setenv GMS_PHI             false
-# Shared memory type: sysv/posix
-setenv GMS_SHMTYPE         sysv
-# OpenMP support: true/false
-setenv GMS_OPENMP          false
-EOF
-
-    # test the compiler setup by creating actvte.x
-    sed -e "s/^\*UNX/    /" tools/actvte.code > actvte.f
-    gfortran -o $_GMS_BUILD_DIR/tools/actvte.x actvte.f
-    rm actvte.f
-
-    # patch
-    patch -p1 -i $srcdir/rungms.patch 
+  cd $srcdir/$pkgname
+  
+  # opt.patch passes to the compiler "-O3" options in the explicit form (-f...).
+  # This is done because of an unusual compiler behaviour when OPT='-O<n>', n>0.
+  # Architecture-specific options are enabled as well except FMA-intrinsics.
+  # You may comment out two lines below to let GAMESS choose compiler options.
+  patch -p1 < $srcdir/opt.patch
+  msg2 "Compiler options '-O3 -march=native -mno-fma' are enabled by default."
+  
+  # Uncomment the following line out to use external LAPACK. May be unsafe.
+  #sed -i "s/dgeev.o dgesvd.o zheev.o//g" lked
 }
 
 build() {
-	cd "$pkgname"/ddi
-    ./compddi
-    mv ddikick.x ..
+  cd $srcdir/$pkgname
+  python bin/create-install-info.py \
+                                  --math=openblas \
+                                  --mathlib_path=/usr/lib \
+                                  --fortran_version=8.2
+  make
+}
 
-	cd ..
-    ./compall
-
-    ./lked gamess 01
+check() {
+  msg2 "Please, wait for the computation of 47 examples to end."
+  msg2 "It is going to take about 5 min depending on your CPU frequency."
+  cd $srcdir/$pkgname
+  
+  # Prepare the launch script 'rungms' to testing.
+  sed -i '/set GMSPATH=/c\set GMSPATH=$PWD' rungms
+  sed -i '/set SCR=/c\set SCR=\/tmp' rungms
+  mkdir scr
+  sed -i '/set USERSCR=/c\set USERSCR=$PWD\/scr' rungms
+  
+  # Start testing on 1 CPU core.
+  ./runall 00
+  tests/standard/checktst
+  rm -r scr
 }
 
 package() {
-	cd "$pkgname"
-    mkdir -p $pkgdir/opt/gamess $pkgdir/usr/bin
-    cp -r * $pkgdir/opt/gamess/
-    ln -s $pkgdir/opt/gamess/rungms $pkgdir/usr/bin/
+  cd $srcdir/$pkgname
+  
+  # Fix rungms
+  sed -i '/set GMSPATH=/c\set GMSPATH=/opt/gamess' rungms
+  sed -i '/set SCR=/c\set SCR=\/tmp' rungms
+  sed -i '/set USERSCR=/c\set USERSCR=$HOME\/.gamess' rungms
+  
+  install -dm755 $pkgdir/opt/gamess
+  install -dm755 $pkgdir/usr/bin
+  install -m755 *.x $pkgdir/opt/gamess
+  install -m755 run* $pkgdir/opt/gamess
+  install -m755 *.DOC $pkgdir/opt/gamess
+  install -m755 gms-files.csh $pkgdir/opt/gamess
+  
+  cp -r auxdata machines qmnuc tests tools vb2000 $pkgdir/opt/gamess
+  
+  ln -sf $pkgdir/opt/gamess/rungms $pkgdir/usr/bin
 }

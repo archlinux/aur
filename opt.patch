@@ -1,0 +1,26 @@
+--- gamess/comp	2018-04-25 14:01:49.124308188 +0300
++++ gamess/comp	2018-04-25 14:04:50.000000000 +0300
+@@ -1916,10 +1916,10 @@
+ #
+ #         first, initialize OPT and EXTRAOPT
+ #
+-      set OPT='-O2'
++      set OPT=' '
+       if ($MODULE == zheev)  set OPT='-O0'  # defensive compiling
+ 
+-      set EXTRAOPT=" "
++      set EXTRAOPT=" -faggressive-loop-optimizations -falign-labels -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg -fcaller-saves -fcode-hoisting -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fcrossjumping -fcse-follow-jumps -fdce -fdefer-pop -fdelete-null-pointer-checks -fdevirtualize -fdevirtualize-speculatively -fdse -fearly-inlining -fexpensive-optimizations -fforward-propagate -ffp-int-builtin-inexact -ffunction-cse -fgcse -fgcse-after-reload -fgcse-lm -fguess-branch-probability -fhoist-adjacent-loads -fif-conversion -fif-conversion2 -findirect-inlining -finline -finline-atomics -finline-functions -finline-functions-called-once -finline-small-functions -fipa-bit-cp -fipa-cp -fipa-cp-clone -fipa-icf -fipa-icf-functions -fipa-icf-variables -fipa-profile -fipa-pure-const -fipa-ra -fipa-reference -fipa-sra -fipa-vrp -fira-hoist-pressure -fira-share-save-slots -fira-share-spill-slots -fisolate-erroneous-paths-dereference -fivopts -fjump-tables -flifetime-dse -floop-interchange -floop-unroll-and-jam -flra-remat -fmath-errno -fmove-loop-invariants -fomit-frame-pointer -foptimize-sibling-calls -foptimize-strlen -fpartial-inlining -fpeel-loops -fpeephole -fpeephole2 -fplt -fpredictive-commoning -fprefetch-loop-arrays -fprintf-return-value -freg-struct-return -frename-registers -freorder-blocks -freorder-blocks-and-partition -freorder-functions -frerun-cse-after-loop -frtti -fsched-critical-path-heuristic -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-fusion -fschedule-insns2 -fshort-enums -fshrink-wrap -fshrink-wrap-separate -fsigned-zeros -fsplit-ivs-in-unroller -fsplit-loops -fsplit-paths -fsplit-wide-types -fssa-backprop -fssa-phiopt -fstdarg-opt -fstore-merging -fstrict-aliasing -fstrict-volatile-bitfields -fthread-jumps -fno-threadsafe-statics -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-cselim -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-loop-distribute-patterns -ftree-loop-distribution -ftree-loop-if-convert -ftree-loop-im -ftree-loop-ivcanon -ftree-loop-optimize -ftree-loop-vectorize -ftree-partial-pre -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc -ftree-scev-cprop -ftree-sink -ftree-slp-vectorize -ftree-slsr -ftree-sra -ftree-switch-conversion -ftree-tail-merge -ftree-ter -ftree-vrp -funswitch-loops -funwind-tables -fvar-tracking -fvar-tracking-assignments -fweb -march=native -mno-fma"
+       if ($MODULE_F:e == f90) then
+          set EXTRAOPT="$EXTRAOPT -ffree-line-length-none"
+       else
+--- gamess/ddi/compddi	2018-02-08 00:15:23.000000000 +0300
++++ gamess/ddi/compddi	2018-04-25 17:08:10.133181272 +0300
+@@ -741,7 +741,7 @@
+      if (`uname -p` == ia64) set ARCH=''
+ 
+      set CC = 'gcc'
+-     set CFLAGS = "-DLINUX $ARCH -O3 -fstrict-aliasing -I./"
++     set CFLAGS = "-DLINUX $ARCH -O3 -march=native -mno-fma -fstrict-aliasing -I./"
+      set CLIBS  = "-lpthread"
+ 
+      if ($GMS_PHI == knc) then
