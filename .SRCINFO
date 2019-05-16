@@ -1,15 +1,15 @@
-pkgbase = python-cloudant
-	pkgdesc = Cloudant / CouchDB Client Library
-	pkgver = 2.12.0
+pkgbase = python-pyowm
+	pkgdesc = A Python wrapper around OpenWeatherMap web APIs
+	pkgver = 2.10.0
 	pkgrel = 1
-	url = https://github.com/cloudant/python-cloudant
+	url = http://github.com/csparpa/pyowm
 	arch = any
-	license = Apache
+	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/cloudant/cloudant-2.12.0.tar.gz
-	sha256sums = 641b7fa47d0055fafcb712ba4435ae4bd8b60e88e52ac3328411817524f50c24
+	source = https://files.pythonhosted.org/packages/source/p/pyowm/pyowm-2.10.0.tar.gz
+	sha256sums = 8fd41a18536f4d6c432bc6d9ea69994efb1ea9b43688cf19523659b6f4d86cf7
 
-pkgname = python-cloudant
+pkgname = python-pyowm
 	depends = python
 
