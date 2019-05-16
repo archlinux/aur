@@ -1,15 +1,15 @@
-pkgbase = python-tinydb
-	pkgdesc = TinyDB is a tiny, document oriented database optimized for your happiness :)
-	pkgver = 3.13.0
+pkgbase = python-authlib
+	pkgdesc = The ultimate Python library in building OAuth and OpenID Connect servers.
+	pkgver = 0.11
 	pkgrel = 1
-	url = https://github.com/msiemens/tinydb
+	url = https://authlib.org/
 	arch = any
-	license = MIT
+	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/tinydb/tinydb-3.13.0.tar.gz
-	sha256sums = a05c4c81e6e867c4f8a2e51c5236d0d897019aa5e9296f5947455b0bdd3c519d
+	source = https://files.pythonhosted.org/packages/source/A/Authlib/Authlib-0.11.tar.gz
+	sha256sums = 9741db6de2950a0a5cefbdb72ec7ab12f7e9fd530ff47219f1530e79183cbaaf
 
-pkgname = python-tinydb
+pkgname = python-authlib
 	depends = python
 
