@@ -1,7 +1,8 @@
 _npmname=verdaccio
-_npmver=3.11.6
-pkgname=verdaccio
-pkgver=3.11.6
+_npmver=3.11.7
+
+pkgname=$_npmname
+pkgver=$_npmver
 pkgrel=1
 pkgdesc="Private npm repository server"
 arch=(any)
@@ -10,8 +11,7 @@ license=(MIT)
 depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-# noextract=($_npmname-$_npmver.tgz)
-sha256sums=('f9a699b14e6e24cf7158c6920d7de2614d83a9fa4d8444f89f5718113a4590c6')
+sha256sums=('da3a127600dbe230f7e4d5afe9eb350fc5f45f8b59de58b6967c0a080bedcde4')
 
 package() {
   cd $srcdir
