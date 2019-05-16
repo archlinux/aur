@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Sulaiman
+Comment=A modern keyboard launcher
+Exec="/opt/Sulaiman/Sulaiman" %U
+Terminal=false
+Type=Application
+Icon=Sulaiman
+StartupWMClass=Sulaiman
+Categories=Utility;

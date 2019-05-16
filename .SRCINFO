@@ -1,0 +1,21 @@
+pkgbase = sulaiman
+	pkgdesc = A modern keyboard launcher built with web technologies
+	pkgver = 1558009820700
+	pkgrel = 1
+	url = https://gitlab.com/hpj/Sulaiman
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	depends = c-ares
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = icon.png
+	source = Sulaiman.desktop
+	source = Sulaiman-1558009820700.tar.xz::https://gitlab.com/hpj/Sulaiman/-/jobs/213648977/artifacts/raw/public/Sulaiman.tar.xz
+	md5sums = 29f6faca0ab8a3614cacb41bd6d06aef
+	md5sums = 493da0565241adc188c24f22b3c13cdb
+	md5sums = df8d2f049b637ce963fd08e0b9dad437
+
+pkgname = sulaiman
+
