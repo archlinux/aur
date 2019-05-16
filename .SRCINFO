@@ -1,7 +1,7 @@
 pkgbase = bitwarden
 	pkgdesc = Bitwarden Desktop Application
 	pkgver = 1.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bitwarden/desktop
 	arch = x86_64
 	license = GPL3

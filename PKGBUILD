@@ -3,7 +3,7 @@
 
 pkgname=bitwarden
 pkgver=1.14.0
-pkgrel=2
+pkgrel=3
 _jslibcommit='49e06e77c4913867fc468f7d9e0b2b1529c1d181'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
@@ -63,7 +63,7 @@ package() {
   done
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -sf "${pkgdir}/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}-desktop"
+  ln -sf "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}-desktop"
 
   install -Dm644 "${srcdir}"/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 }
