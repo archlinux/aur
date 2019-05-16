@@ -4,7 +4,7 @@
 
 _pkgname=lilv
 pkgname="${_pkgname}-git"
-pkgver=0.24.5.r1185.bf061a4
+pkgver=0.24.5.r1218.9091b84
 pkgrel=1
 pkgdesc="A C library interface to the LV2 plug-in standard"
 arch=('i686' 'x86_64')
@@ -18,14 +18,23 @@ optdepends=(
 )
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}" "${_pkgname}-svn")
-source=("${_pkgname}::git+http://git.drobilla.net/${_pkgname}.git")
-md5sums=('SKIP')
+source=("${_pkgname}::git+https://gitlab.com/lv2/${_pkgname}.git"
+        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   local ver=`grep "^LILV_VERSION" wscript | cut -d "'" -f 2`
   echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  git submodule init
+  git config submodule.waflib.url "${srcdir}/autowaf"
+  git submodule update
 }
 
 build() {
@@ -36,7 +45,7 @@ build() {
     --configdir=/etc \
     --dyn-manifest \
     --bindings
-  python waf
+  python waf $MAKEFLAGS
 }
 
 package() {

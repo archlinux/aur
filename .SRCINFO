@@ -1,6 +1,6 @@
 pkgbase = lilv-git
 	pkgdesc = A C library interface to the LV2 plug-in standard
-	pkgver = 0.24.5.r1185.bf061a4
+	pkgver = 0.24.5.r1218.9091b84
 	pkgrel = 1
 	url = http://drobilla.net/software/lilv
 	arch = i686
@@ -17,7 +17,9 @@ pkgbase = lilv-git
 	provides = lilv=0.24.5
 	conflicts = lilv
 	conflicts = lilv-svn
-	source = lilv::git+http://git.drobilla.net/lilv.git
+	source = lilv::git+https://gitlab.com/lv2/lilv.git
+	source = autowaf::git+https://gitlab.com/drobilla/autowaf.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = lilv-git
