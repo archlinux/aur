@@ -12,7 +12,7 @@ depends=('cairo'  'fontconfig'          'freetype2'
          'libx11' 'xcb-util-cursor'     'xcb-util'
          'libxcb' 'xcb-util-renderutil' 'xcb-util-image'
          )
-makedepends=('steinberg-vst' 'premake5' 'git')
+makedepends=('steinberg-vst36' 'premake-git' 'git')
 provides=("surge-synthesizer")
 conflicts=('surge-synthesizer')
 options=()
