@@ -4,7 +4,7 @@
 
 pkgname=nvidia-390xx-ck
 pkgver=390.116
-pkgrel=18
+pkgrel=19
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck, 390xx legacy branch."
 pkgdesc="$_pkgdesc"
@@ -18,19 +18,20 @@ conflicts=('nvidia-340xx-ck' 'nvidia-ck')
 license=('custom')
 options=('!strip')
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-kernel-4.16.patch)
+'kernel-4.16.patch' 'kernel-5.1.patch')
 sha256sums=('de85a2eea39ca16e25645b345259b01fbe858b833286b7e6785afa273009ef6f'
-            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
+            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385'
+            'd92899d4f7a40e2c3cad92d067f2f53c3a18c49b34e62e707a93b125aa37640f')
 
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
+    # patches here
 
-    # Restore phys_to_dma support (still needed for 396.18)
-    # https://bugs.archlinux.org/task/58074
-    patch -Np1 -i ../kernel-4.16.patch
+    patch -Np0 < "${srcdir}/kernel-4.16.patch"
+    patch -Np0 < "${srcdir}/kernel-5.1.patch"
 }
 
 build() {

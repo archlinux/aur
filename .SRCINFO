@@ -1,7 +1,7 @@
 pkgbase = nvidia-390xx-ck
 	pkgdesc = NVIDIA drivers for linux-ck, 390xx legacy branch.
 	pkgver = 390.116
-	pkgrel = 18
+	pkgrel = 19
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -16,8 +16,10 @@ pkgbase = nvidia-390xx-ck
 	options = !strip
 	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/390.116/NVIDIA-Linux-x86_64-390.116-no-compat32.run
 	source = kernel-4.16.patch
+	source = kernel-5.1.patch
 	sha256sums = de85a2eea39ca16e25645b345259b01fbe858b833286b7e6785afa273009ef6f
 	sha256sums = 622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385
+	sha256sums = d92899d4f7a40e2c3cad92d067f2f53c3a18c49b34e62e707a93b125aa37640f
 
 pkgname = nvidia-390xx-ck
 
