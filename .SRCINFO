@@ -1,27 +1,14 @@
 pkgbase = dxvk-bin
 	pkgdesc = A Vulkan-based compatibility layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine (Windows DLL binary files)
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 0
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
 	arch = i686
 	license = zlib/libpng
-	provides = dxvk
-	conflicts = dxvk-git
 	options = !strip
-	source = https://github.com/doitsujin/dxvk/releases/download/v1.1.1/dxvk-1.1.1.tar.gz
-	sha256sums = 346c523953f72ac5885071c4384039faf01f6f43a88d5b0c12d94bfaa9598c1d
-
-pkgname = dxvk-win64-bin
-	pkgdesc = Dummy package
-	arch = x86_64
-	depends = dxvk-bin
-
-pkgname = dxvk-win32-bin
-	pkgdesc = Dummy package
-	arch = x86_64
-	arch = i686
-	depends = dxvk-bin
+	source = https://github.com/doitsujin/dxvk/releases/download/v1.2/dxvk-1.2.tar.gz
+	sha256sums = 414751a810143ced34d1f4f0eb2a40e79b4c9726318994b244b70d1b3a6f8b32
 
 pkgname = dxvk-bin
 	arch = x86_64
@@ -29,11 +16,11 @@ pkgname = dxvk-bin
 	depends = wine>=3.10
 	depends = lib32-vulkan-icd-loader
 	provides = dxvk
-	provides = dxvk64
-	provides = dxvk32
 	conflicts = dxvk-git
 	conflicts = dxvk-bin<1.0-1
 	conflicts = dxvk-win64-bin<1.0-1
 	conflicts = dxvk-win32-bin<1.0-1
 	conflicts = dxvk-win64-git
+	conflicts = dxvk-win32-bin
+	conflicts = dxvk-win64-bin
 
