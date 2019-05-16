@@ -1,0 +1,22 @@
+pkgbase = nats-cclient-git
+	pkgdesc = NATS & NATS Streaming - C Client
+	pkgver = v1.8.0.r11.g7e071ff
+	pkgrel = 1
+	url = https://github.com/nats-io/nats.c
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = glibc
+	makedepends = cmake
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	provides = nats-cclient
+	conflicts = nats-cclient
+	replaces = nats-cclient
+	source = nats.c::git+https://github.com/nats-io/nats.c.git#branch=master
+	md5sums = SKIP
+
+pkgname = nats-cclient-git
+
