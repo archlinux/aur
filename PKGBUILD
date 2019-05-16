@@ -42,9 +42,9 @@ package() {
 }
 
 post_install() {
-  echo "Remember to update your configuration to preload the pipelinedb extension with:"
-  echo "  \$cat \"shared_preload_libraries = 'pipelinedb'\" >> /var/lib/postgres/data/postgresql.conf"
-  echo "  \$cat \"max_worker_processes = 128\"              >> /var/lib/postgres/data/postgresql.conf"
-  echo "And to enable the pipelinedb extension in your database with:"
-  echo "  \$psql -c \"CREATE EXTENSION pipelinedb\""
+  msg2 "Remember to update your configuration to preload the pipelinedb extension with:"
+  msg2 "  \$cat \"shared_preload_libraries = 'pipelinedb'\" >> /var/lib/postgres/data/postgresql.conf"
+  msg2 "  \$cat \"max_worker_processes = 128\"              >> /var/lib/postgres/data/postgresql.conf"
+  msg2 "And to enable the pipelinedb extension in your database with:"
+  msg2 "  \$psql -c \"CREATE EXTENSION pipelinedb\""
 }
