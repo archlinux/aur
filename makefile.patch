@@ -1,0 +1,49 @@
+--- Makefile.proto	2015-07-21 23:15:10.000000000 +0300
++++ Makefile	2019-05-09 20:08:49.139698846 +0300
+@@ -31,8 +31,8 @@
+ # If using OpenSSL, uncomment the following 3 lines.
+ ##
+ #CRYPTO_CFLAGS =
+-#CRYPTO_OBJS   = secure_random_openssl.o
+-#CRYPTO_LIBS   = -lcrypto
++CRYPTO_OBJS   = secure_random_openssl.o
++CRYPTO_LIBS   = -lcrypto
+ 
+ ##
+ # If using cryptlib, uncomment the following 3 lines.
+@@ -45,7 +45,7 @@
+ # Change PREFIX to install to different directories. The binary is installed
+ # in $PREFIX/bin, and the man in $PREFIX/man/man1
+ ##
+-PREFIX = /usr/local
++PREFIX ?= /usr
+ 
+ ##
+ # On some operating systems (most notably Linux 2.6 kernels) using mlockall
+@@ -60,12 +60,13 @@
+ # Sometimes you have only dynamic libraries available. In that case COMMENT
+ # the following line.
+ ##
+-LINK_STATIC = -static
++#LINK_STATIC = -static
+ 
+ ##############################################################################
+ # NO USER MODIFIABLE PARTS AFTER THIS POINT
+ ##############################################################################
+-CFLAGS	= -Wall $(CRYPTO_INCLUDE_PATH) $(CRYPTO_CFLAGS) $(NO_MLOCKALL)
++CFLAGS	:= ${CFLAGS} -Wall $(CRYPTO_INCLUDE_PATH) $(CRYPTO_CFLAGS) $(NO_MLOCKALL)
++#LDFLAGS on my system results in libcrypto catching SIGSEGV
+ LDFLAGS	= $(CRYPTO_LIBRARY_PATH) $(LINK_STATIC) $(CRYPTO_LIBS) -lm
+ 
+ .PHONY : all install-strip install clean 
+@@ -75,8 +76,9 @@
+ 
+ all: secpwgen
+ 
++#libcrypto catches SIGSEGV if linked with cc.
+ secpwgen: $(OBJS)
+-	$(CC) -o $@ $(OBJS) $(LDFLAGS)
++	$(CXX) -o $@ $(OBJS) $(LDFLAGS)
+ 
+ install-strip: secpwgen
+ 	strip secpwgen
