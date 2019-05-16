@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://www.msg.ameslab.gov/GAMESS/GAMESS.html"
 license=('custom')
 depends=('gcc-fortran' 'tcsh' 'openblas-lapack')
-makedepends=('python')
+makedepends=('python' 'python-jinja')
 install=${pkgname}.install
 
 # You have to get the package from the official website and put into the current directory.

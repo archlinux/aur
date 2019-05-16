@@ -7,6 +7,7 @@ pkgbase = gamess
 	arch = x86_64
 	license = custom
 	makedepends = python
+	makedepends = python-jinja
 	depends = gcc-fortran
 	depends = tcsh
 	depends = openblas-lapack
