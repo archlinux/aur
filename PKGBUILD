@@ -4,25 +4,24 @@
 
 pkgname=python2-venusian
 _pkgname=venusian
-pkgver=1.0
-pkgrel=1
+pkgver=1.2.0
+pkgrel=2
 pkgdesc="A library for deferring decorator actions."
 license=('custom:BSD')
 arch=('any')
-url="http://www.repoze.org"
+url="https://pylonsproject.org"
 depends=('python2')
-replaces=('venusian')
-conflicts=('venusian')
-provides=('venusian')
-source=(http://pypi.python.org/packages/source/v/venusian/venusian-$pkgver.tar.gz)
-md5sums=('dccf2eafb7113759d60c86faf5538756')
+makedepends=('python2-setuptools')
+source=(https://pypi.python.org/packages/source/v/$_pkgname/$_pkgname-$pkgver.tar.gz)
+sha256sums=('64ec8285b80b110d0ae5db4280e90e31848a59db98db1aba4d7d46f48ce91e3e')
 
 build() {
-  cd $srcdir/$_pkgname-$pkgver
+  cd $_pkgname-$pkgver
   python2 setup.py build
 }
 
 package() {
-  cd $srcdir/$_pkgname-$pkgver
-  python2 setup.py install --prefix=/usr --root=$pkgdir --optimize=1
+  cd $_pkgname-$pkgver
+  python2 setup.py install --root=$pkgdir --optimize=1
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
