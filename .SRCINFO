@@ -1,14 +1,18 @@
 pkgbase = spl-linux-lts
-	pkgver = 0.7.13_4.19.42.1
+	pkgver = 0.7.13_4.19.43.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
-	makedepends = linux-lts-headers=4.19.42-1
+	makedepends = linux-lts-headers=4.19.43-1
 	depends = kmod
-	depends = linux-lts=4.19.42-1
+	depends = linux-lts=4.19.43-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.13/spl-0.7.13.tar.gz
+	source = linux-5.1-compat-drop-ULLONG_MAX-and-LLONG_MAX-definitions.patch
+	source = linux-5.1-compat-get-ds-removed.patch
 	sha256sums = 6fd4445850ac67b228fdd82fff7997013426a1c2a8fa9017ced70cc9ad2a4338
+	sha256sums = f110bd86a81602e531dda943cf0d066f09f3d58c297159ea285957ce28f0f0c1
+	sha256sums = d4a6c27aea521cf5635c1b9f679633c068b024606f634d5e6bf1a7b97db486c4
 
 pkgname = spl-linux-lts
 	pkgdesc = Solaris Porting Layer kernel modules.
