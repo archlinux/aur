@@ -1,15 +1,15 @@
-pkgbase = python-authlib
-	pkgdesc = The ultimate Python library in building OAuth and OpenID Connect servers.
-	pkgver = 0.11
+pkgbase = python-pyowm
+	pkgdesc = A Python wrapper around OpenWeatherMap web APIs
+	pkgver = 2.10.0
 	pkgrel = 1
-	url = https://authlib.org/
+	url = http://github.com/csparpa/pyowm
 	arch = any
-	license = BSD
+	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/A/Authlib/Authlib-0.11.tar.gz
-	sha256sums = 9741db6de2950a0a5cefbdb72ec7ab12f7e9fd530ff47219f1530e79183cbaaf
+	source = https://files.pythonhosted.org/packages/source/p/pyowm/pyowm-2.10.0.tar.gz
+	sha256sums = 8fd41a18536f4d6c432bc6d9ea69994efb1ea9b43688cf19523659b6f4d86cf7
 
-pkgname = python-authlib
+pkgname = python-pyowm
 	depends = python
 
