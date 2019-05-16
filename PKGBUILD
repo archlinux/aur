@@ -1,23 +1,23 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=diffutils-patched-exclude-directory-git
-pkgver=3.5.r8.g1c1de41
+pkgver=3.7.r11.g3600e8d
 pkgrel=1
 pkgdesc='Utility programs used for creating patch files, including exclude directory feature'
 arch=('i686' 'x86_64')
 url='http://www.gnu.org/software/diffutils'
 license=('GPL3')
 depends=('libsigsegv')
-makedepends=('gperf')
+makedepends=('gperf' 'git' 'help2man' 'rsync' 'wget')
 provides=('diffutils')
 conflicts=('diffutils')
 source=("${pkgname}::git+git://git.savannah.gnu.org/diffutils.git"
             'exclude-directory.patch')
 sha256sums=('SKIP'
-            '97ac78bc61718cba9ae0387b9882042a4e59086f14c8964c75aa467d68e5de34')
+            'f13ddfff73dd85a8051c9196cecd900162ce496f924b60bee7ec086871c4d572')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$pkgname" || exit
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -25,26 +25,26 @@ prepare() {
   msg 'Applying exclude directory patch ...'
   patch -d "$pkgname" -p1 <exclude-directory.patch
 
-  cd "$pkgname"
+  cd "$pkgname" || exit
 
-  msg 'Bootstrapping diffutils ...'
+  # Bootstrap diffutils
   ./bootstrap
 }
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname" || exit
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd "$pkgname"
+  cd "$pkgname" || exit
   make check
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname" || exit
   make DESTDIR="$pkgdir" install
 }
 
-# vim:set ts=2 sw=2 et:	
+# vim:set ts=2 sw=2 et:

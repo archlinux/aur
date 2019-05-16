@@ -1,8 +1,24 @@
+diff --git a/doc/diffutils.texi b/doc/diffutils.texi
+index 3a780db..0553937 100644
+--- a/doc/diffutils.texi
++++ b/doc/diffutils.texi
+@@ -1827,6 +1827,11 @@ patterns in a file, one pattern per line, and use the
+ @option{--exclude-from=@var{file}} (@option{-X @var{file}}) option.
+ Trailing white space and empty lines are ignored in the pattern file.
+ 
++To ignore whole directories with exclude pattern instead of only
++basenames use the @option{--exclude-directory} option in addition to
++@option{--exclude=@var{pattern}} or
++@option{--exclude-from=@var{file}} options.
++
+ If you have been comparing two directories and stopped partway through,
+ later you might want to continue where you left off.  You can do this by
+ using the @option{--starting-file=@var{file}} (@option{-S @var{file}})
 diff --git a/src/diff.c b/src/diff.c
-index 9bc1d96..4420623 100644
+index e9c2b11..8e4e2ba 100644
 --- a/src/diff.c
 +++ b/src/diff.c
-@@ -122,6 +122,7 @@ enum
+@@ -124,6 +124,7 @@ enum
    NO_IGNORE_FILE_NAME_CASE_OPTION,
    NORMAL_OPTION,
    SDIFF_MERGE_ASSIST_OPTION,
@@ -10,7 +26,7 @@ index 9bc1d96..4420623 100644
    STRIP_TRAILING_CR_OPTION,
    SUPPRESS_BLANK_EMPTY_OPTION,
    SUPPRESS_COMMON_LINES_OPTION,
-@@ -208,6 +209,7 @@ static struct option const longopts[] =
+@@ -210,6 +211,7 @@ static struct option const longopts[] =
    {"show-function-line", 1, 0, 'F'},
    {"side-by-side", 0, 0, 'y'},
    {"speed-large-files", 0, 0, 'H'},
@@ -18,18 +34,18 @@ index 9bc1d96..4420623 100644
    {"starting-file", 1, 0, 'S'},
    {"strip-trailing-cr", 0, 0, STRIP_TRAILING_CR_OPTION},
    {"suppress-blank-empty", 0, 0, SUPPRESS_BLANK_EMPTY_OPTION},
-@@ -592,6 +594,10 @@ main (int argc, char **argv)
- 	  sdiff_merge_assist = true;
- 	  break;
+@@ -596,6 +598,10 @@ main (int argc, char **argv)
+           sdiff_merge_assist = true;
+           break;
  
 +	case EXCLUDE_DIRECTORY_OPTION:
 +	  exclude_directory = true;
 +	  break;
 +
- 	case STRIP_TRAILING_CR_OPTION:
- 	  strip_trailing_cr = true;
- 	  break;
-@@ -911,6 +917,7 @@ static char const * const option_help_msgid[] = {
+         case STRIP_TRAILING_CR_OPTION:
+           strip_trailing_cr = true;
+           break;
+@@ -921,6 +927,7 @@ static char const * const option_help_msgid[] = {
    N_("    --no-ignore-file-name-case  consider case when comparing file names"),
    N_("-x, --exclude=PAT               exclude files that match PAT"),
    N_("-X, --exclude-from=FILE         exclude files that match any pattern in FILE"),
@@ -38,7 +54,7 @@ index 9bc1d96..4420623 100644
    N_("    --from-file=FILE1           compare FILE1 to all operands;\n"
       "                                  FILE1 can be a directory"),
 diff --git a/src/diff.h b/src/diff.h
-index 0983e7c..413790a 100644
+index 5eb3008..dd73517 100644
 --- a/src/diff.h
 +++ b/src/diff.h
 @@ -224,6 +224,9 @@ XTERN bool speed_large_files;
@@ -52,27 +68,27 @@ index 0983e7c..413790a 100644
     slower) but will find a guaranteed minimal set of changes.  */
  XTERN bool minimal;
 diff --git a/src/dir.c b/src/dir.c
-index c8aa6a5..e9c70d6 100644
+index b02099a..ace29f2 100644
 --- a/src/dir.c
 +++ b/src/dir.c
 @@ -96,8 +96,15 @@ dir_read (struct file_data const *dir, struct dirdata *dirdata)
- 	      && (d_name[1] == 0 || (d_name[1] == '.' && d_name[2] == 0)))
- 	    continue;
+               && (d_name[1] == 0 || (d_name[1] == '.' && d_name[2] == 0)))
+             continue;
  
--	  if (excluded_file_name (excluded, d_name))
--	    continue;
-+	  /* Exclude filename matches from diff */
-+	  if (exclude_directory) {
-+	    if (excluded_file_name (excluded,
-+	      file_name_concat(dir->name, d_name, NULL)))
-+	      continue;
-+	  } else {
-+	    if (excluded_file_name (excluded, d_name))
-+	      continue;
-+	  }
+-          if (excluded_file_name (excluded, d_name))
+-            continue;
++          /* Exclude filename matches from diff */
++          if (exclude_directory) {
++            if (excluded_file_name (excluded,
++              file_name_concat(dir->name, d_name, NULL)))
++              continue;
++          } else {
++            if (excluded_file_name (excluded, d_name))
++              continue;
++          }
  
- 	  while (data_alloc < data_used + d_size)
- 	    {
+           while (data_alloc < data_used + d_size)
+             {
 diff --git a/tests/exclude-directory b/tests/exclude-directory
 new file mode 100755
 index 0000000..825154a
