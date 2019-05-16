@@ -2,13 +2,13 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname="clustershell"
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python framework for efficient cluster administration"
 arch=(any)
 url="http://cea-hpc.github.io/clustershell/"
 license=('LGPL')
 groups=()
-depends=('python2')
+depends=('python')
 makedepends=('python' 'python-setuptools')
 optdepends=('openssh: Secure SHell client to connect to distant machines', 'vim: Vi Improved')
 provides=()
