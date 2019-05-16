@@ -5,6 +5,7 @@ pkgver=r7.1aaccb5
 pkgrel=1
 pkgdesc="Prints all systemd timers to stdout"
 arch=('i686' 'x86_64')
+depends=('gmp')
 makedepends=('git' 'stack')
 url="https://github.com/dmp1ce/list-all-systemd-timers"
 license=('custom:Unlicense')
@@ -18,7 +19,7 @@ pkgver() {
 }
 
 build() {
-  msg2 'Building...'
+  # Building
   cd "${pkgname}" || exit
   stack ghc list-all-systemd-timers.hs
 }
@@ -26,10 +27,10 @@ build() {
 package() {
   cd "${pkgname}" || exit
 
-  msg2 'Installing license...'
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/list-all-systemd-timers"
+  # Installing license
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/list-all-systemd-timers-git"
 
-  msg2 'Installing...'
+  # Installing
   mkdir -p "$pkgdir/usr/bin"
   install -Dm 755 list-all-systemd-timers -t "$pkgdir/usr/bin"
 }
