@@ -34,7 +34,7 @@ build() {
     ## Remove pthread shim code
     patch include/compat/pthread.h < ../../01-pthread.patch
     ./autogen.sh
-    CC="${_arch}-gcc" CCFLAGS="-pthread" CPPFLAGS="-D__MINGW_USE_VC2005_COMPAT"\
+    CC="${_arch}-gcc" CFLAGS="-pthread" CPPFLAGS="-D__MINGW_USE_VC2005_COMPAT"\
     ./configure --host=${_arch} --prefix=/usr/${_arch}
     make
     ## make check
