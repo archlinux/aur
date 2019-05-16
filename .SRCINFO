@@ -1,14 +1,13 @@
 pkgbase = bitwarden
 	pkgdesc = Bitwarden Desktop Application
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bitwarden/desktop
 	arch = x86_64
 	license = GPL3
 	makedepends = npm
 	makedepends = nvm
 	depends = alsa-lib
-	depends = electron
 	depends = gconf
 	depends = gtk2
 	depends = libnotify
@@ -23,11 +22,9 @@ pkgbase = bitwarden
 	options = !emptydirs
 	source = bitwarden-1.14.0.tar.gz::https://github.com/bitwarden/desktop/archive/v1.14.0.tar.gz
 	source = jslib-49e06e77c4913867fc468f7d9e0b2b1529c1d181.tar.gz::https://github.com/bitwarden/jslib/archive/49e06e77c4913867fc468f7d9e0b2b1529c1d181.tar.gz
-	source = bitwarden.sh
 	source = bitwarden.desktop
 	sha512sums = 245d81a87fef13c2e6c69de66511f5b404d1f53659efd621473d1390576b3e9f7b639520095fa9544dd5ec97ca11785d8151560c62562f10f06adc6adc8f5280
 	sha512sums = 89428796d35edd09648814ed8a89b72e95b47a1a5b830855da2a319236e4fae74812f7cd5326ec7c56c87a038ba2d73ac9352764c950a362c2617e21e617b902
-	sha512sums = 72cb31b6bdccf7b4ea2a151e3be1e19d8d6f2f2034a658aef0f6aedca33a5b4faa3bed11ba973cfbbb9317b84532312affe4fdb478d84dc67a365fd25cf1e28c
 	sha512sums = 05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd
 
 pkgname = bitwarden

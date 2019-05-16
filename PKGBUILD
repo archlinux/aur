@@ -3,23 +3,21 @@
 
 pkgname=bitwarden
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 _jslibcommit='49e06e77c4913867fc468f7d9e0b2b1529c1d181'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
 url='https://github.com/bitwarden/desktop'
 license=('GPL3')
 makedepends=('npm' 'nvm')
-depends=('alsa-lib' 'electron' 'gconf' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
+depends=('alsa-lib' 'gconf' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
 conflicts=('bitwarden-git' 'bitwarden-bin')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/desktop/archive/v${pkgver}.tar.gz"
         "jslib-${_jslibcommit}.tar.gz::https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz"
-        "${pkgname}.sh"
         "${pkgname}.desktop")
 sha512sums=('245d81a87fef13c2e6c69de66511f5b404d1f53659efd621473d1390576b3e9f7b639520095fa9544dd5ec97ca11785d8151560c62562f10f06adc6adc8f5280'
             '89428796d35edd09648814ed8a89b72e95b47a1a5b830855da2a319236e4fae74812f7cd5326ec7c56c87a038ba2d73ac9352764c950a362c2617e21e617b902'
-            '72cb31b6bdccf7b4ea2a151e3be1e19d8d6f2f2034a658aef0f6aedca33a5b4faa3bed11ba973cfbbb9317b84532312affe4fdb478d84dc67a365fd25cf1e28c'
             '05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd')
 
 prepare() {
@@ -33,7 +31,7 @@ build() {
   _npm_prefix=$(npm config get prefix)
   npm config delete prefix
   source /usr/share/nvm/init-nvm.sh
-  nvm install 10.13.0 && nvm use 10.13.0
+  nvm install 10.15.3 && nvm use 10.15.3
 
   cd "${srcdir}/desktop-${pkgver}/jslib"
   npm install
@@ -55,7 +53,9 @@ package() {
   cd "${srcdir}/desktop-${pkgver}"
 
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-  cp -r dist/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}/"
+  # Unfortunately we have to copy the bundled electron now
+  # Since electron3 is no longer in arch community
+  cp -a dist/linux-unpacked/. "${pkgdir}/usr/lib/${pkgname}/"
 
   install -dm755 "${pkgdir}/usr/share/icons/hicolor"
   for i in 16 32 48 64 128 256 512; do
@@ -63,7 +63,7 @@ package() {
   done
 
   install -dm755 "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}-desktop"
+  ln -sf "${pkgdir}/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}-desktop"
 
   install -Dm644 "${srcdir}"/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 }
