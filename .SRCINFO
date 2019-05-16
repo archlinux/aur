@@ -1,7 +1,7 @@
 pkgbase = nvidia-340xx-ck
 	pkgdesc = NVIDIA drivers for linux-ck, 340xx legacy branch.
 	pkgver = 340.107
-	pkgrel = 63
+	pkgrel = 64
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -16,9 +16,11 @@ pkgbase = nvidia-340xx-ck
 	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/340.107/NVIDIA-Linux-x86_64-340.107-no-compat32.run
 	source = kernel-4.11.patch
 	source = kernel-5.0.patch
+	source = kernel-5.1.patch
 	sha256sums = 6dc6f183c69c414670d8adef0286a2362eedd6e16ec6dfae811e48ea4a4505dc
 	sha256sums = 5ba7e6d5e502882c3534d1d8578f7fd29fdf3d2aeb49206efa7b3514a7e3e821
 	sha256sums = 236a1d1dc9adc1cafec828f0650d5a15f1f6d0fa27905dab58ca072a46f159fa
+	sha256sums = 58c1201dc774525cba74c3a0042f4049b7a251381e00539746b936d2ec39f0de
 
 pkgname = nvidia-340xx-ck
 
