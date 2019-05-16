@@ -1,6 +1,6 @@
 pkgbase = sord-git
 	pkgdesc = A lightweight C library for storing RDF statements in memory
-	pkgver = 0.16.2.r401.55ab1c4
+	pkgver = 0.16.2.r408.5894971
 	pkgrel = 1
 	url = http://drobilla.net/software/sord/
 	install = sord.install
@@ -15,7 +15,9 @@ pkgbase = sord-git
 	provides = sord=0.16.2
 	conflicts = sord
 	conflicts = sord-svn
-	source = sord::git+http://git.drobilla.net/sord.git
+	source = sord::git+https://gitlab.com/drobilla/sord.git
+	source = autowaf::git+https://gitlab.com/drobilla/autowaf.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = sord-git

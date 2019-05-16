@@ -1,6 +1,7 @@
-sord
-src
-pkg
+autowaf/
+sord/
+src/
+pkg/
 sord-git-*.tar.xz
 sord-git-*.src.tar.gz
 .AURINFO
