@@ -17,8 +17,11 @@ options=('!strip' 'staticlibs' '!buildflags')
 conflicts=('mingw-w64-openssl')
 provides=('mingw-w64-openssl')
 
-source=("${_gitname}::git+https://github.com/${_gitname}/portable/")
-sha256sums=('SKIP')
+source=("${_gitname}::git+https://github.com/${_gitname}/portable/"
+        "01-pthread.patch")
+
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd "$srcdir/${_gitname}"
