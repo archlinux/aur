@@ -2,7 +2,7 @@
 # TODO: check if using https://sjp.pl/slownik/ort/ won't be better idea
 
 pkgname=words-pl
-pkgver=20170729
+pkgver=20190419
 pkgrel=1
 pkgdesc="A ‘words’ file for Polish language"
 arch=("any")
@@ -14,8 +14,8 @@ makedepends=("dos2unix")
 conflicts=("${pkgname}")
 # install=$pkgname.install
 source=("https://sjp.pl/slownik/odmiany/sjp-odm-${pkgver}.zip")
-md5sums=('3b85dfeeeecb7ead69124e2e5367b8bb')
-sha256sums=('f9bdb5cee88e755d2c35c9f2f11510bee3317e3a3dda0e302b1feb959c03fd66')
+md5sums=('4683ae23d5b98faf9711549e0f17592d')
+sha256sums=('47bb9eb97e8a286979e1de2a050d110adf47cb1015b1524bad90ff88983719d8')
 
 build() {
     cd "${srcdir}"
