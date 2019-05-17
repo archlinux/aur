@@ -1,6 +1,6 @@
 pkgbase = nomad-git
 	pkgdesc = Nomad is an easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch, containerized, and non-containerized applications. Nomad is easy to operate and scale and has native Consul and Vault integrations.
-	pkgver = v0.9.0_451_g9b6e5c1fd
+	pkgver = v0.9.0_553_ge8a2fdba9
 	pkgrel = 1
 	url = https://www.nomadproject.io/
 	arch = x86_64

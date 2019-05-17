@@ -2,7 +2,7 @@
 
 _pkgname=nomad
 pkgname=${_pkgname}-git
-pkgver=v0.9.0_451_g9b6e5c1fd
+pkgver=v0.9.0_553_ge8a2fdba9
 pkgrel=1
 pkgdesc="Nomad is an easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch, containerized, and non-containerized applications. Nomad is easy to operate and scale and has native Consul and Vault integrations."
 arch=('x86_64')
@@ -24,24 +24,24 @@ prepare() {
   mkdir -p gopath/src/github.com/hashicorp
   ln -rTsf ${_pkgname} gopath/src/github.com/hashicorp/${_pkgname}
   export GOPATH="$srcdir"/gopath
+  export PATH="$PATH:$GOPATH/bin"
 
   cd gopath/src/github.com/hashicorp/${_pkgname}
   make bootstrap
 }
 
 build() {
-  export GOPATH="$srcdir"/gopath
   export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
 
   cd gopath/src/github.com/hashicorp/${_pkgname}
   make dev
+
+  unset GOFLAGS
 }
 
 # check() {
-#   export GOPATH="$srcdir"/gopath
-
 #   cd gopath/src/github.com/hashicorp/${_pkgname}
-#   make test
+#   make test-nomad
 # }
 
 package() {
