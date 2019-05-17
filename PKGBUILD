@@ -2,7 +2,7 @@
 
 pkgname=qtws-base
 _gitname=qtws
-_gittag=0.91
+_gittag=0.92
 pkgver=$_gittag
 pkgrel=1
 pkgdesc='Standalone web-app container based on qt5-webengine'
