@@ -7,7 +7,7 @@ pkgrel=0
 pkgdesc="EasyEDA Desktop Client, A Simple and Powerful Electronic Circuit Design Tool"
 arch=('x86_64')
 license=(custom)
-depends=()
+depends=(gconf)
 url="https://easyeda.com/page/download"
 options=('!strip')
 

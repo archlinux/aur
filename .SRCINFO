@@ -5,6 +5,7 @@ pkgbase = easyeda
 	url = https://easyeda.com/page/download
 	arch = x86_64
 	license = custom
+	depends = gconf
 	options = !strip
 	source = https://image.easyeda.com/files/easyeda-client-linux-x64.zip
 	sha256sums = SKIP
