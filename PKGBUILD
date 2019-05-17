@@ -1,7 +1,7 @@
 # Maintainer Alexander Mcmillan <linuxguy93@gmail.com>
 
 pkgname=ava-plugins
-pkgver=2.1.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Harrison Consoles VST Plugin Suite."
 arch=('x86_64')
@@ -22,18 +22,21 @@ prepare () {
 }
 
 package() {
-	## Install Plugins
+	## Install Plugins And Manual
 	for plugin in DS LegacyQ MC ME; do
 		if [ -f $srcdir/Harrison_AVA/vst/AVA-$plugin.so ]; then
-			install -D "$srcdir/Harrison_AVA/vst/AVA-$plugin.so" "$pkgdir/usr/lib/vst/AVA-$plugin.so"
+			install -Dm644 "$srcdir/Harrison_AVA/vst/AVA-$plugin.so" "$pkgdir/usr/lib/vst/AVA-$plugin.so"
+			# install -Dm644 "../AVA-$plugin.pdf" $pkgdir/usr/share/doc/harrison_consoles/ava/AVA-$plugin.pdf ## Manual is optional, download and save as appropriately named files.
 		fi
 	done
+	
 	## Install Serial Keys
 	for license in ds legacyq mc me; do
 		if [ -f ../license_key_harrison_ava_${license}.txt ]; then
-			install -D ../license_key_harrison_ava_$license.txt $pkgdir/usr/local/share/license_key_harrison_ava_$license.txt
+			install -Dm644 ../license_key_harrison_ava_$license.txt $pkgdir/usr/local/share/license_key_harrison_ava_$license.txt
 		fi
 	done
+	
 	## Install Software License
-	install -D "$srcdir/Harrison_AVA/EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
+	install -Dm644 "$srcdir/Harrison_AVA/EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
 }
