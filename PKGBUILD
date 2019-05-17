@@ -19,10 +19,9 @@ build() {
 }
 
 package() {
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/user" gpgsync.{service,timer}
   cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-
-  install -Dm644 -t "$pkgdir/usr/lib/systemd/user" gpgsync.{service,timer}
 }
 
 # vim:set ts=2 sw=2 et
