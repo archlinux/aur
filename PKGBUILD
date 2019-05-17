@@ -1,7 +1,7 @@
 # Maintainer: YoyPa <yoann dot p dot public at gmail dot com>
 pkgname=fluffy-switch
-pkgver=2.7
-pkgrel=2
+pkgver=2.8
+pkgrel=1
 pkgdesc="Goldtree and Tinfoil GUI for USB install on switch"
 arch=('any')
 url="https://github.com/fourminute/Fluffy"
@@ -19,7 +19,7 @@ backup=(
 	'etc/udev/rules.d/80-fluffy-switch.rules'
 )
 source=("Fluffy-${pkgver}.tar.gz::https://github.com/fourminute/Fluffy/archive/v${pkgver}.tar.gz")
-sha256sums=('6fc772cd38e6721ac0d21f5c5accc9ff48a7f81561a35290a3551e7778f55b24')
+sha256sums=('bbab5cdc5b21186fd2d17bb4d2bcbfdd2e54c185db5977628f948be271beeaea')
 
 # Change .desktop file PATH from /tmp to ~/.config/fluffy (Make fluffy config file persistent)
 prepare() {
