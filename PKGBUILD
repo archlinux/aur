@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_tag=5.0.16
+_srcver_tag=5.0.17
 pkgver="${_srcver_tag}.arch1"
 pkgrel=1
 arch=(x86_64)
@@ -98,10 +98,10 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '408d92182111c3ae9f54f6e166e6175de3c10faa63bda59f2160fbdfd526ac03'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            '5ad7d43b56255c6130deb130bd327f273575f085c81effb9f433d09f13ba90ac6d2cee9d1c7c55fe7a78980bf393fcd06cb4f71b6057ed298e46ffd2b33bcdb5'
+            '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
+            '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
