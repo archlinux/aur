@@ -3,7 +3,7 @@
 
 _pkgname=setroot
 pkgname=setroot
-pkgver=v2.0.g16b07b3
+pkgver=v2.0.2
 pkgrel=1
 pkgdesc="simple program that sets your (X11) wallpaper. inspired by the *setroots and feh."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  echo $(git describe --long | sed 's|-[0-9]\+-|.|g')
+  echo $(git describe --tags)
 }
 
 build() {
