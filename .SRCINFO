@@ -1,0 +1,15 @@
+pkgbase = kubernetes-kind-bin
+	pkgdesc = Kubernetes in Docker - local clusters for testing
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/kubernetes-sigs/kind
+	arch = x86_64
+	license = Apache
+	depends = docker
+	optdepends = kubectl: check cluster status
+	optdepends = kubectl-bin: check cluster status - binary package
+	source = https://github.com/kubernetes-sigs/kind/releases/download/v0.3.0/kind-linux-amd64
+	md5sums = 4f9a7cc85b2cec6bf99ccd3a636a68d3
+
+pkgname = kubernetes-kind-bin
+
