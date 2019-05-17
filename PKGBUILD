@@ -5,11 +5,11 @@
 
 pkgname=libressl-side
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='libressl side-by-side with openssl'
 url='http://www.libressl.org/'
 arch=('x86_64')
-license=('custom:OpenSSL')
+license=('ISC' 'custom:OpenSSL')
 depends=('glibc')
 optdepends=('ca-certificates')
 makedepends=('gawk')
