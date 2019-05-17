@@ -3,7 +3,7 @@
 
 pkgname=plasma-theme-helium
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Helium is a clear / white theme designed from scratch for Plasma 5"
 arch=('any')
 url="https://github.com/mcder3/Helium-Plasma-Theme"
@@ -12,12 +12,11 @@ depends=('plasma-workspace')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 options=('!strip')
-source=("${pkgname}::git+https://github.com/mcder3/Helium-Plasma-Theme.git#commit=3d8c5dfae5437586af60d44a01d5457378f0bf17")
+source=("https://dl.opendesktop.org/api/files/download/id/1553266692/s/16c801c070301541d3f0f38373aa3520498831b323f0c8104041e624c8acd55572a8d6269746ada91d5bcac65eb71e8ad34e97e4d00bb563f5bf2bdb4be11125/t/1558127643/lt/download/Helium.tar.gz")
 md5sums=('SKIP')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/plasma/desktoptheme/"
-  install -Dm644 "${srcdir}/${pkgname}/LICENSE.md/CC BY-SA 4.0 EN.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 
-  mv "${srcdir}/${pkgname}/Helium" "${pkgdir}/usr/share/plasma/desktoptheme"
+  cp -r --no-preserve=mode,ownership "${srcdir}/Helium" "${pkgdir}/usr/share/plasma/desktoptheme"
 }
