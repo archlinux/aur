@@ -1,0 +1,24 @@
+pkgbase = sge
+	pkgdesc = Son of Grid Engine/Sun Grid Engine
+	pkgver = 20190516
+	pkgrel = 1
+	url = https://arc.liv.ac.uk/downloads/SGE/releases/8.1.9/
+	install = sge.install
+	arch = x86_64
+	license = GPL
+	depends = awk
+	depends = gcc
+	depends = grep
+	depends = hwloc
+	depends = inetutils
+	depends = libtirpc
+	depends = libxt
+	depends = openmotif
+	depends = tcsh
+	source = https://arc.liv.ac.uk/downloads/SGE/releases/8.1.9/sge_8.1.9.tar.xz
+	source = sge-8.1.9.patch.xz
+	md5sums = a2f03ca8b803ca4da7d2dedadeca74bb
+	md5sums = be59af210af77e2ac6efd9fe10d51149
+
+pkgname = sge
+
