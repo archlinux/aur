@@ -1,0 +1,20 @@
+pkgbase = python-osc-placement
+	pkgdesc = OpenStackClient plugin for the Placement service
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://docs.openstack.org/osc-placement
+	arch = any
+	license = Apache
+	checkdepends = python-oslotest
+	checkdepends = python-openstackclient
+	checkdepends = python-stestr
+	checkdepends = python-wsgi-intercept
+	depends = python-pbr
+	depends = python-six
+	depends = python-keystoneauth1
+	depends = python-osc-lib
+	source = https://github.com/openstack/osc-placement/archive/1.5.0.tar.gz
+	sha512sums = 697a9bb794bcdc899ecc77afe3bcdb9ade2dcc94664290ae478488af04cf4867f2c361a92cdff3922f22f8088bc122e485bf3f01b883508d5bdeee199283060b
+
+pkgname = python-osc-placement
+
