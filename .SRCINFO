@@ -1,0 +1,32 @@
+pkgbase = opensmtpd-libressl
+	pkgdesc = A FREE implementation of the server-side SMTP protocol. Latest snapshot.
+	pkgver = 6.4.1p2
+	pkgrel = 1
+	url = http://www.opensmtpd.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libressl-side-by-side
+	depends = libevent
+	depends = pam
+	depends = libasr
+	provides = smtp-server
+	provides = smtp-forwarder
+	provides = opensmtpd
+	conflicts = smtp-server
+	conflicts = smtp-forwarder
+	conflicts = opensmtpd
+	options = emptydirs
+	backup = etc/smtpd/smtpd.conf
+	backup = etc/smtpd/aliases
+	source = https://www.opensmtpd.org/archives/opensmtpd-6.4.1p2.tar.gz
+	source = opensmtpd.sysusers
+	source = smtpd.service
+	source = smtpd.socket
+	sha256sums = b69b84934bcc4893ca334504411cd47f86ea04ac5e971a5746d44c473ac5f732
+	sha256sums = b38b64f1457b7227d55585edc711cce525e089516d16b093e6c44387380e6b13
+	sha256sums = abf5baeb2a87c60d668ad18ea41cc08cab7a4f76339dd6df05de15cdaadaf922
+	sha256sums = 32d46de5562d01de445d04c93bcc9f94bf103539b676e449c32e3603a3866cf8
+
+pkgname = opensmtpd-libressl
+

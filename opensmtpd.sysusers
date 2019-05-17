@@ -1,0 +1,4 @@
+u smtpd 91 "SMTP Daemon" -
+u smtpq 92 "SMTP Queue"  -
+
+m smtpd root

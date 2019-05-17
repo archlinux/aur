@@ -1,0 +1,2 @@
+d /var/spool/smtpd         711 root root  - -
+d /var/spool/smtpd/offline 770 root smtpq - -

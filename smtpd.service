@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenSMTPD
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/smtpd -f /etc/smtpd/smtpd.conf
+
+[Install]
+WantedBy=multi-user.target
