@@ -1,0 +1,13 @@
+pkgbase = libray-git
+	pkgdesc = LibRay aims to be a Libre (FLOSS) Python application for unencrypting, extracting, repackaging, and encrypting PS3 ISOs.
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = GPLv3
+	depends = python
+	depends = python-pip
+	source = https://notabug.org/necklace/libray/archive/0.0.1.tar.gz
+	sha256sums = 35d04f09d8ae019be4f62067dad19fce14aa5436e677ba22b3510b58117a5aa8
+
+pkgname = libray-git
+
