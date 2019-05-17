@@ -1,7 +1,7 @@
 pkgbase = linux-zen-vfio
-	pkgver = 5.1.1.zen1
+	pkgver = 5.1.2.zen1
 	pkgrel = 2
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.1.1-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.1.2-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -11,7 +11,7 @@ pkgbase = linux-zen-vfio
 	makedepends = libelf
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.1.1-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.1.2-zen1
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook

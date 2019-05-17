@@ -1,7 +1,7 @@
 # Maintainer: Shayne Hartford<shayneehartford@gmail.com>
 
 pkgbase=linux-zen-vfio
-_srcver=5.1.1-zen1
+_srcver=5.1.2-zen1
 pkgver=${_srcver//-/.}
 pkgrel=2
 arch=(x86_64)
