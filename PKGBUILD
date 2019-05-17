@@ -2,7 +2,7 @@
 # Contributor: LA-MJ <4mr.minj+aur [at] g-mail>
 
 pkgname=firefox-unbranded-bin
-pkgver=66.0.4
+pkgver=66.0.5
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Unbranded version"
 arch=('x86_64')
@@ -19,10 +19,10 @@ optdepends=('pulseaudio: audio support'
             'networkmanager: location detection via available WiFi networks'
             'speech-dispatcher: text-to-speech'
             'startup-notification: support for FreeDesktop Startup Notification')
-_url="https://queue.taskcluster.net/v1/task/L8NaY3ZeRIyHb_ZpmKGcHQ/runs/0/artifacts/public/build/target.tar.bz2"
+_url="https://queue.taskcluster.net/v1/task/ROKX-zn_TouxfGbPcErEbQ/runs/0/artifacts/public/build/target.tar.bz2"
 source=(${_url}
         firefox.desktop)
-sha256sums=('6aab83542f8875fed03072594242afb6db990155f7e968ae6cf1ee2b21374490'
+sha256sums=('edd55ea71963151981686328bba49076019eb7a5bfc646496711afa30d66ec07'
             '4a783dca1f88e003c72f32d22719a0915f3fa576adbc492240e7cc250246ce10')
 
 package() {
