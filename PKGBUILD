@@ -14,7 +14,7 @@ _revert=
 
 pkgname=mutter-781835-workaround
 pkgver=3.32.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -94,7 +94,10 @@ prepare() {
 
   # Honour `CLUTTER_ACTOR_NO_LAYOUT` more efficiently [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/575
-  git cherry-pick -n 90aeecac^..022f26d4
+  h_first=$(git log --oneline --all | grep "clutter/stage: Add an API for shallow relayouts" | tail -n 1 | awk '{print $1}') # Sorry guys
+  h_last=$(git log --oneline --all | grep 'clutter/actor: Use the new shallow relayout API' | tail -n 1 | awk '{print $1}') # Sorry guys
+  echo "Found $h_first^$h_last for MR575"
+  git cherry-pick -n $h_first^..$h_last
 
   # WIP: backends: Do not reload keymap on new keyboard notifications
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/579
