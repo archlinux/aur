@@ -1,25 +1,24 @@
-# Maintainer: Riccardo Berto <riccardobrt at gmail dot com>
-# Contributor: tembleking <tembleking at gmail dot com>
-
-pkgname='python-alpha-vantage'
-_pkgname='alpha_vantage'
-pkgver=1.8.0
+pkgbase='python-alpha_vantage'
+pkgname=('python-alpha_vantage')
+_module='alpha_vantage'
+pkgver='2.1.0'
 pkgrel=1
-pkgdesc="Python module to get stock data from the Alpha Vantage API."
-arch=("any")
+pkgdesc="Python module to get stock data from the Alpha Vantage Api"
 url="https://github.com/RomelTorres/alpha_vantage"
+depends=('python')
+makedepends=('python-setuptools')
 license=('MIT')
-depends=("python" "python-requests" "python-simplejson" "python-pandas")
-makedepends=("python-setuptools")
-source=("$url/archive/$pkgver.tar.gz")
-md5sums=('645699c44e681b3ccba0f29a076c8446')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
+sha256sums=('f4d5d59f8d5aa29cfe74ed1526fd2393b871b3aad8442bdeb23e2be0747446de')
 
 build() {
-	cd "$_pkgname-$pkgver"
-	python setup.py build
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py build
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
+    depends+=()
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
