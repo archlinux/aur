@@ -3,7 +3,7 @@
 
 pkgname=ocp
 pkgver=0.1.21
-pkgrel=6
+pkgrel=7
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
 url="http://stian.cubic.org/project-ocp.php"
@@ -16,7 +16,7 @@ install=ocp.install
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  sed -i "4592c2.95.[2-9]|2.95.[2-9][-.]*|3.[0-9]|3.[0-9].[0-9]|3.[0-9]|3.[0-9].[0-9]-*|4.*|5.*|6.*|7.*)" configure
+  sed -i "4592c2.95.[2-9]|2.95.[2-9][-.]*|3.[0-9]|3.[0-9].[0-9]|3.[0-9]|3.[0-9].[0-9]-*|4.*|5.*|6.*|7.*|8.*)" configure
   ./configure --prefix=/usr --sysconfdir=/etc
   make -j1 DESTDIR=$pkgdir
 }
