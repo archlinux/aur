@@ -36,7 +36,7 @@ post_install() {
             echo "ERROR: Nginx was detected but file '/etc/nginx/nginx.conf' was not found. Something seems broken."
             echo
         fi
-    # Else, if Nginx either is not installed, or is installed and inactive but Apache is also installed, we prefer Apache.
+    # Else, if Nginx either is not installed, or is installed and inactive but Apache is also installed (no matter if it's active or not), we prefer Apache.
     elif [[ "$(pacman -Qs apache)" = *"local/apache"* ]]
     then
         # Ensure the main conf file is present
@@ -66,32 +66,36 @@ post_install() {
         fi
     # Else, if neither of them is installed, we inform the user that something is seriously messed up.
     else
-        echo "ERROR: Neither Nginx nor Apache were detected in your system. I hope you know what you're doing."
+        echo "WARNING: Neither Nginx nor Apache were detected in your system. I hope you know what you're doing."
         echo
     fi
     
     ### fcgiwrap ###
+    
+    # By default fcgiwrap is configured to launch in 10 instances via spawn-fcgi and multiwatch. This should be
+    # enough for ZoneMinder to operate with 3 cameras. If you need more than 10 simultaneous CGI threads, edit the
+    # provided fcgiwrap-multiwatch.service file and increase the number of instances to whatever suits your needs.
     
     if [[ "$(pacman -Qs fcgiwrap)" = *"local/fcgiwrap"* ]]
     then
         systemctl is-active --quiet fcgiwrap.socket && systemctl stop fcgiwrap.socket
         systemctl is-active --quiet fcgiwrap && systemctl stop fcgiwrap
         systemctl is-active --quiet fcgiwrap-multiwatch && systemctl stop fcgiwrap-multiwatch
-        systemctl start fcgiwrap-multiwatch &&
-        {
-        echo "---------------"
-        echo
-        echo "fcgiwrap has been launched in multiple parallel instances via spawn-fcgi and multiwatch."
-        echo
-        echo "The default number of 10 instances should be enough for ZoneMinder to operate with 2 or 3 cameras"
-        echo "under normal circumstances. If you need more than 10 simultaneous CGI threads, edit the provided"
-        echo "fcgiwrap-multiwatch.service file and increase the number of instances to whatever suits your needs."
-        echo
-        }
+        systemctl start fcgiwrap-multiwatch
     fi
     
     ### PHP-FPM ###
     
+    # To avoid modifying the global 'php.ini' file, this package uses a separate 'conf.d/zoneminder.ini' in order to apply
+    # some PHP settings that ZoneMinder needs to function properly, namely to load some PHP modules and to set the correct
+    # timezone.
+    #
+    # This has the side effect that any further changes to these specific PHP settings that have been overriden (i.e. to change
+    # the timezone or to disable one of the modules) will either need to be made inside 'conf.d/zoneminder.ini', or that file
+    # will have to be modified so it no longer overrides them.
+    #
+    # Modifying the global 'php.ini' on its own will have NO EFFECT as far as these settings are concerned.
+
     # Set local timezone in /etc/php/conf.d/zoneminder.ini
     sed -i 's|PLACEHOLDER|'`timedatectl | grep "Time zone" | tr -s ' ' | cut -f4 -d ' '`'|g' /etc/php/conf.d/zoneminder.ini
     
@@ -111,7 +115,6 @@ post_install() {
         then
             # Stop MariaDB if it's active
             systemctl is-active --quiet mariadb && systemctl stop mariadb
-            # NOTE: This will need to be changed when MariaDB 10.2 hits the repos, as mysql_install_db has been deprecated in favor of mysqld
             mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql 2> /dev/null
         fi
         
@@ -163,14 +166,14 @@ post_install() {
 }
 
 post_upgrade() {
-    # Parse zm.conf and any custom configuration files
+    # Parse zm.conf and all custom configuration files
     . /etc/zoneminder/zm.conf
     for CONF in /etc/zoneminder/conf.d/*.conf; do
         . $CONF
     done
     
     # Check if we're running a local database server
-    if [ "$ZM_DB_HOST" = "localhost" ]; then        
+    if [ "$ZM_DB_HOST" = "localhost" ] || [[ "$ZM_DB_HOST" = "127.0.0.1"* ]]; then        
         systemctl daemon-reload
         
         # Make sure MariaDB is running before we attempt to use the updater

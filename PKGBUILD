@@ -27,27 +27,22 @@
 
 #######################################################################################################################
 #                                                                                                                     #
-#  If you're upgrading from a version older than 1.32.0:                                                                       #
+#  If you're upgrading from a release older than 1.32.0:                                                              #
 #                                                                                                                     #
-#  Due to the many breaking changes in this release (both upstream and in the packaging), it's recommended to backup  #
+#  Due to the many breaking changes in new releases (both upstream and in the packaging), it's recommended to backup  #
 #  any existing ZoneMinder databases and perform a clean installation. Failure to do so may have very weird results.  #
 #                                                                                                                     #
 #######################################################################################################################
 
 
-
 pkgname=zoneminder
 pkgver=1.32.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('x86_64')
 url='https://zoneminder.com/'
 license=('GPL2')
 depends=('polkit' 'ffmpeg' 'libmp4v2'
-         # Remove the following line if you want to install ZoneMinder without a local database server, e.g. as part of a Multi-Server setup
-         'mariadb'
-         # Remove the following line if you don't need Nginx
-         'nginx-mainline' 'fcgiwrap' 'spawn-fcgi' 'multiwatch'
          'php-apcu' 'php-fpm' 'php-gd'
          'perl-archive-zip' 'perl-data-dump' 'perl-date-manip' 'perl-dbd-mysql' 'perl-device-serialport' 'perl-file-slurp' 'perl-image-info'
          'perl-json-any' 'perl-libwww' 'perl-mime-lite' 'perl-mime-tools' 'perl-number-bytes-human' 'perl-sys-meminfo' 'perl-sys-mmap'
@@ -57,15 +52,24 @@ depends=('polkit' 'ffmpeg' 'libmp4v2'
          'perl-lwp-protocol-https'
          # Apparently needed for Telemetry support
          'perl-json-maybexs'
-         # Unverified dependencies. So far not installing them hasn't raised any red flags, but I can't be 100% sure whether they're leftovers from previous ZoneMinder incarnations or if they're needed for proper operation during runtime, so for the time being I'm leaving them in.
-         'perl-net-sftp-foreign' 'perl-php-serialization' 'perl-sys-cpu' 'perl-uri-encode')
+         # Unverified dependencies. So far not installing them hasn't raised any red flags, but I can't be 100% sure whether they're leftovers from
+         # previous ZoneMinder incarnations or if they're needed for proper operation during runtime, so for the time being I'm leaving them in.
+         'perl-net-sftp-foreign' 'perl-php-serialization' 'perl-sys-cpu' 'perl-uri-encode'
+         
+         # Remove the following line if you don't need Nginx
+         'nginx-mainline' 'fcgiwrap' 'spawn-fcgi' 'multiwatch'
+         
+         # Remove the following line if you don't need MariaDB
+         'mariadb'
+         
+         )
 makedepends=('cmake')
 optdepends=('apache: alternative web server'
-            'vlc: provides libvlc (may achieve better performance with some cameras)'
-            'ffmpeg-full: provides libavresample (dropped from the official ffmpeg package)')
+            'vlc: provides libvlc (may achieve better performance with some camera models)')
 conflicts=('zoneminder-git')
 backup=("etc/nginx/sites-available/$pkgname.conf"
-        "etc/httpd/conf/extra/$pkgname.conf")
+        "etc/httpd/conf/extra/$pkgname.conf"
+        "etc/php/conf.d/$pkgname.ini")
 install=$pkgname.install
 source=("https://github.com/ZoneMinder/ZoneMinder/archive/$pkgver.tar.gz"
         "https://github.com/FriendsOfCake/crud/archive/v3.2.0.tar.gz"
@@ -82,7 +86,7 @@ sha256sums=('9a7e61c529a6269ff0344403369b160b8c8da48615c4172377c465da0b0074b1'
             # zoneminder-nginx.conf
             'be503e5cedf42383122a1f96a6e00e25d473f8c1c536c000db748dbde12c88b0'
             # zoneminder-httpd.conf
-            '9657fd9fdbdb4a96e3c31c9453610200258711f5ae2f6e46d3eeb9676ae857a6'
+            '0753527da658bb4025509c03923f21f7995cedb09008d64f1568fd1d5c2ec46b'
             # zoneminder-php.ini
             '479f290d3c92938cd929020ad140d613814b912b4302c2758be6446ebfb8a4ac'
             # zoneminder.service
