@@ -1,0 +1,19 @@
+pkgbase = fast_align-git
+	pkgdesc = Simple, fast unsupervised word aligner
+	pkgver = r55.7c2bbca
+	pkgrel = 1
+	url = https://github.com/clab/fast_align.git
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = python
+	optdepends = gperftools
+	optdepends = openmp
+	optdepends = sparsehash
+	source = git+https://github.com/clab/fast_align.git
+	md5sums = SKIP
+
+pkgname = fast_align-git
+
