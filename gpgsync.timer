@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodically sync GPG keys
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=2000
+
+[Install]
+WantedBy=timers.target

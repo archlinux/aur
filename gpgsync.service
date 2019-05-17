@@ -1,0 +1,7 @@
+[Unit]
+Description=Synchronize GPG public keys
+Documentation=https://github.com/firstlookmedia/gpgsync
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env gpgsync --sync
