@@ -1,7 +1,7 @@
 # Maintainer: Oliver Papst <opapst at ikp dot tu-darmstadt dot de>
 pkgname=hdtv-git
 _pkgname=hdtv
-pkgver=r1016.f35e634
+pkgver=r1020.39d70a5
 pkgrel=1
 pkgdesc="Nuclear spectrum analysis tool on top of the ROOT data analysis toolkit"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ provides=('hdtv')
 depends=('glibc'
          'python'
          'root'
-         'mfile'
+         'libmfile'
          'python-setuptools'
          'python-scipy'
          'python-matplotlib'

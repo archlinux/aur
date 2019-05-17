@@ -1,6 +1,6 @@
 pkgbase = hdtv-git
 	pkgdesc = Nuclear spectrum analysis tool on top of the ROOT data analysis toolkit
-	pkgver = r1016.f35e634
+	pkgver = r1020.39d70a5
 	pkgrel = 1
 	url = https://gitlab.ikp.uni-koeln.de/staging/hdtv
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = hdtv-git
 	depends = glibc
 	depends = python
 	depends = root
-	depends = mfile
+	depends = libmfile
 	depends = python-setuptools
 	depends = python-scipy
 	depends = python-matplotlib
