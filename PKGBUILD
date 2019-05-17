@@ -22,8 +22,7 @@ build() {
     mkdir -p "${srcdir}/build-${_arch}"
     cp -a "${srcdir}/lzlib-${pkgver}/"* "${srcdir}/build-${_arch}"
     cd "${srcdir}/build-${_arch}"
-    CC="${_arch}-gcc" CFLAGS="" CPPFLAGS="" \
-    ./configure --host=${_arch} --prefix=/usr/${_arch}
+    ./configure CC=${_arch}-gcc --prefix=/usr/${_arch}
     make
     ## make check
   done
