@@ -1,7 +1,7 @@
 pkgbase = gitahead
 	pkgdesc = Graphical Git client that helps you understand and manage your source history
-	pkgver = 2.5.5
-	pkgrel = 3
+	pkgver = 2.5.6
+	pkgrel = 1
 	url = https://www.gitahead.com/
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = gitahead
 	makedepends = ninja
 	depends = desktop-file-utils
 	depends = qt5-base
-	source = git+https://github.com/gitahead/gitahead#tag=v2.5.5
+	source = git+https://github.com/gitahead/gitahead#tag=v2.5.6
 	source = gitahead.desktop
 	source = gitahead.patch
 	sha256sums = SKIP
