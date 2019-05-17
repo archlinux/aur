@@ -7,6 +7,7 @@ license=('GPL')
 depends=('gtk-engines')
 optdepends=('gtk-engine-murrine')
 themename=McMojave-circle
+url=https://github.com/vinceliuice/McMojave-circle
 source=("${themename}::git+https://github.com/vinceliuice/McMojave-circle.git#branch=master")
 sha1sums=('SKIP')
 
