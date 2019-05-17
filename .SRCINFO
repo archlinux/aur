@@ -1,0 +1,16 @@
+pkgbase = simplenote-electron
+	pkgdesc = A Simplenote React app packaged via Electron for Windows and Linux
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/Automattic/simplenote-electron
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = electron
+	provides = simplenote-electron
+	conflicts = simplenote-electron-bin
+	source = simplenote-electron-1.5.0.src.tar.gz::https://github.com/Automattic/simplenote-electron/archive/v1.5.0.tar.gz
+	sha256sums = 5103b61db4cb6c4ea2f4359ec00560d16be7d32cf32612a2985c76fbd2488d64
+
+pkgname = simplenote-electron
+
