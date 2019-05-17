@@ -1,0 +1,14 @@
+pkgbase = frece
+	pkgdesc = Frecency sorted database
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SicariusNoctis/frece
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = frece-1.0.0.tar.gz::https://github.com/SicariusNoctis/frece/archive/1.0.0.tar.gz
+	sha256sums = f667b8ade5d6a2bba214a4227e5e980cd4b9be4c53683cacb7f1a3327189f3b9
+
+pkgname = frece
+
