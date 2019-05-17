@@ -1,13 +1,13 @@
 pkgbase = ytsubs
 	pkgdesc = Make an RSS feed from YouTube subscriptions
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = http://ikn.org.uk/Scripts#ytsubs
 	arch = any
 	license = GPL3
 	depends = python>=3.2
 	source = http://ikn.org.uk/files/scripts/ytsubs
-	md5sums = 6a47ce0dca68f990266f15d49ab03e0c
+	md5sums = b422b27b393952e2b5dc5f73d333dea5
 
 pkgname = ytsubs
 
