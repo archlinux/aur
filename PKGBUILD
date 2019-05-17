@@ -1,14 +1,14 @@
 # Maintainer: David Parrish <daveparrish@gmail.com>
 
 pkgname=bitaddress-git
-pkgver=3.2.3.r0.gaf91e78
+pkgver=3.3.0.r0.g72aefc0
 pkgrel=1
 pkgdesc="JavaScript Client-Side Bitcoin Wallet Generator"
 arch=('any')
 url="https://www.bitaddress.org"
 license=('MIT')
 depends=('bash')
-makedepends=('nodejs-grunt-cli')
+makedepends=('grunt-cli' 'git' 'npm')
 source=("${pkgname}::git+https://github.com/pointbiz/bitaddress.org.git"
   "bitaddress.sh"
   "bitaddress.desktop")
@@ -17,12 +17,12 @@ sha256sums=("SKIP"
   "5208ec3016cf12a7f1b1d62802cd488817aa3cef26fb7e672b52251cd40af276")
 
 pkgver() {
-  cd "$pkgname"
+  cd "$pkgname" || exit
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}" || exit
   npm install
   grunt
 }
