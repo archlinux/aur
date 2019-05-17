@@ -1,6 +1,6 @@
 pkgbase = kloud
 	pkgdesc = An open source and minimalistic cloud based on Kotlin
-	pkgver = 0.2
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/texxme/Kloud
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = kloud
 	depends = java-runtime>=8
 	depends = gradle
 	source = kloud
-	source = kloud-0.2.tar.gz::https://github.com/texxme/Kloud/archive/v0.2-BETA.tar.gz
-	sha1sums = SKIP
-	sha1sums = ec7409412e3eb48191d4672f276a8234f3635a3a
+	source = kloud-1.0.tar.gz::https://github.com/texxme/Kloud/archive/v1.0.tar.gz
+	sha1sums = 778be42080f3dc4c15cd63568718addef2557bb3
+	sha1sums = f5d2b57fd6ffe844fe82b0963525c526b0952b47
 
 pkgname = kloud
 
