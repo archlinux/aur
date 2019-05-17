@@ -1,6 +1,6 @@
 # Maintainer: zer0def <zer0def on freenode>
 pkgname=doom-remake-4-experimental
-pkgver=1.16
+pkgver=1.18
 pkgrel=1
 pkgdesc="Doom Remake 4 Experimental via the GzDoom engine."
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   'doom-remake-4-experimental'
 )
 sha512sums=(
-  'bbb2c0de4bbcec3d6597d3a53b2b2a4f105977c935c7042c5706771a8c9ee5088ca403250aa8d11aad6c34806ed0f341a8081d56202206c28d4fbbdf6d436392'
+  '0c4850a1c0b3b9178a6fdbffb1f7f6409e4d305b067d6059e25edaa1e9add9932897de9e25271bb2db29b7269b264359dbf7f19bce1fa2e5dfb26753f89767d1'
   '76ea6485b7b262ff1d2018150c1fcffd372c6a3f258cfc90542b41928d87e3eeb8f111c7715fb4d01a0594d6808b4dcbc6d9d39fa9057a558bef85dd48201b77'
   '304c4755328f68226a70277584077c7c724453f9ac4b195af65fc72510ace24885ecaa99328a66eaf2e505814457fa4cab86c42d88ecb7d04e45ce85b1b3cce7'
 )
