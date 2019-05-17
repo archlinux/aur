@@ -4,7 +4,7 @@
 
 pkgname=nvidia-390xx-ck
 pkgver=390.116
-pkgrel=19
+pkgrel=20
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck, 390xx legacy branch."
 pkgdesc="$_pkgdesc"
@@ -30,8 +30,8 @@ prepare() {
     cd "${_pkg}"
     # patches here
 
-    patch -Np0 < "${srcdir}/kernel-4.16.patch"
-    patch -Np0 < "${srcdir}/kernel-5.1.patch"
+    patch -Np1 -i ../kernel-4.16.patch
+    patch -Np1 -i ../kernel-5.1.patch
 }
 
 build() {
