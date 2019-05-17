@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" "$pkgbase-bin" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=18.3rc1pre15
+pkgver=18.3rc1pre18
 _major=18.2
 pkgrel=2
 arch=('x86_64')
@@ -93,6 +93,9 @@ source=(
   013-PR16086.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16086.patch
   014-PR16082.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16082.patch
   015-PR16054.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16054.patch
+  016-PR16143.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16143.patch
+  017-PR16147.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16147.patch
+  018-PR16148.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16148.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -129,7 +132,10 @@ sha256sums=('07b8cffc396473523a51354dc95dfffb54a6a456b82cda7ad67dc2c052d99f64'
             'a6889c224c65c0184179d67d1f4b1a02f04444120dbf3c8f415110bc0fe3dece'
             '7ddfca006b6b306a410e5677bf797305d4e8a999a49176d00eed18446946d74b'
             'cbed8de6937ca6a6eb835cefb01dfa8ebba82b60cf4a6cc7d926fab92d6ab7b2'
-            '04832b1066cc5066aa059fa21a5b430e3d5bfe3976d99c87b4b547ff4a947ed5')
+            '04832b1066cc5066aa059fa21a5b430e3d5bfe3976d99c87b4b547ff4a947ed5'
+            '0818a4cd683a3a1e5dff2f1c07dd3a4e1e20dbef81f2417e4018168f08f80469'
+            'b65df19f1e31d5427f78b200e17ecfe264b35b5310a1ecbec9184b2009efa748'
+            '6d5bc5a6cc3fae86b72991c0ed475fe3880e585513dd7231f7ecab052460f107')
 
 prepare() {
   # force python 'binary' as python2
@@ -279,6 +285,8 @@ package_kodi-devel() {
     'kodi'
     'kodi-bin'
   )
+
+  export PATH="$srcdir/path:$PATH"
 
   cd kodi-build-x11
   # install eventclients
