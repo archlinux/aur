@@ -2,7 +2,7 @@
 pkgname=hdtv
 _commit=f35e63437302548ba6e4a0845a6663f5741358dc
 pkgver=18.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Nuclear spectrum analysis tool on top of the ROOT data analysis toolkit"
 arch=('i686' 'x86_64')
 url="https://gitlab.ikp.uni-koeln.de/staging/hdtv"
@@ -12,7 +12,7 @@ provides=('hdtv')
 depends=('glibc'
          'python'
          'root'
-         'mfile'
+         'libmfile'
          'python-setuptools'
          'python-scipy'
          'python-matplotlib'
