@@ -5,7 +5,7 @@
 _name=radon
 pkgbase="python-${_name}"
 pkgname=("${pkgbase}" "python2-${_name}")
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 arch=('any')
 url="https://${_name}.readthedocs.org/"
@@ -13,7 +13,7 @@ license=('MIT')
 depends=()
 makedepends=('python-sphinx' 'python2-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('6d8f40b02141bb94c6b87cc4fdb6ca1f8ff6ab4128f4f0b155d4bab08736ca40')
+sha256sums=('b96ea58cc7ede3a1b957b4d83dd894006e6bb17daade2586773a035b5e131a55')
 
 
 prepare() {
