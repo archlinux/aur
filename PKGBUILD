@@ -17,4 +17,7 @@ sha256sums_x86_64=('f2f9de4ca0653867a2266fd4d3a28983829bb71e92df9ef44d63dbcecec2
 package() {
   mkdir -p "$pkgdir"/usr/bin
   install -Dm0755  "$_pkgname" "$pkgdir"/usr/bin/
+  rm -f ../"$_pkgname".gz || true
+  rm -f ../../"$_pkgname".gz || true
+
 }
