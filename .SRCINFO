@@ -1,14 +1,14 @@
 pkgbase = ivykis
 	pkgdesc = Asynchronous I/O readiness notification library
-	pkgver = 0.42.3
+	pkgver = 0.42.4
 	pkgrel = 1
 	url = https://github.com/buytenh/ivykis
 	arch = x86_64
 	license = LGPL2.1
 	conflicts = libivykis
 	conflicts = libivykis-git
-	source = https://downloads.sourceforge.net/project/libivykis/0.42.3/ivykis-0.42.3.tar.gz
-	sha256sums = c9b025d55cefe9c58958d1012f36d63aa0a5caf22075617fff648751ea940aec
+	source = https://downloads.sourceforge.net/project/libivykis/0.42.4/ivykis-0.42.4.tar.gz
+	sha256sums = 6ef8ed255814e5068473356877da55d67493eeafd978884cdecc5a3e58067129
 
 pkgname = ivykis
 
