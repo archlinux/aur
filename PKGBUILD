@@ -3,7 +3,7 @@
 pkgname=timer
 pkgver=8.378985f
 pkgrel=1
-pkgdesc='a simple timer/minutor for terminal with audio alarm'
+pkgdesc='a simple timer for terminal with audio alarm'
 arch=('any')
 url='https://github.com/yoarch/timer'
 license=('MIT')
