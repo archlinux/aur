@@ -1,15 +1,15 @@
 pkgbase = python-googlemaps
-	pkgdesc = Python Client for Google Maps Services
-	pkgver = 2.5.1
+	pkgdesc = Python client library for Google Maps API Web Services
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/googlemaps/google-maps-services-python
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python
-	depends = python-requests
-	source = https://github.com/googlemaps/google-maps-services-python/archive/2.5.1.tar.gz
-	md5sums = 184fe061a1c4a8eb3adfab53c7ef5330
+	source = https://files.pythonhosted.org/packages/source/g/googlemaps/googlemaps-3.0.2.tar.gz
+	sha256sums = e13d8f4101f033bc39d76ade52f99977f077814d79087794735d1bb71f35dcc2
 
 pkgname = python-googlemaps
+	depends = python
 
