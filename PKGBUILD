@@ -3,22 +3,20 @@
 
 pkgname=gst-libav-git
 _gitname=gst-libav
-pkgver=1.15.0.1.2144.43bda46
+pkgver=1.17.0.1.2232.e3e99dd
 pkgrel=1
 pkgdesc="Gstreamer libav Plugin"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://gstreamer.freedesktop.org/"
-depends=('gstreamer-git' 'gst-plugins-base-git' 'bzip2')
-makedepends=('yasm' 'git' 'gtk-doc')
+depends=('gstreamer-git' 'gst-plugins-base-git' 'bzip2' 'ffmpeg')
+makedepends=('yasm' 'git' 'gtk-doc' 'meson' 'ninja' 'hotdoc' )
 options=(!emptydirs)
-provides=("gst-libav=$pkgver-$pkgrel" "gst-ffmpeg=$pkgver-$pkgrel")
+provides=("gst-libav" "gst-ffmpeg")
 conflicts=("gst-libav" "gst-ffmpeg")
 
-source=('git://anongit.freedesktop.org/gstreamer/gst-libav'
-        'Port-To-FFMPEG-4.patch')
-sha256sums=('SKIP'
-            '0bc52e3ba4495cecca5bb83004ea4d248cb8694fd3a2e6ea7270578ee06f46b2')
+source=('git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_gitname
@@ -32,19 +30,19 @@ pkgver() {
 prepare() {
  cd $_gitname
  git submodule update --init --recursive
- patch -Np1 -i ../Port-To-FFMPEG-4.patch
 
- NOCONFIGURE=1 ./autogen.sh
 
 }
 build() {
-  cd $_gitname
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --disable-static --with-libav-extra-configure="--enable-runtime-cpudetect"
-  make
+  export PKG_CONFIG_PATH='/usr/lib/pkgconfig'
+  arch-meson $_gitname build \
+    -Dpackage-name="GStreamer FFMPEG Plugin (Arch Linux)" \
+    -Dpackage-origin="https://www/archlinux.org/" \
+    -Ddoc=disabled
+
+  ninja -C build
 }
 
 package() {
-  cd $_gitname
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
