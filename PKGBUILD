@@ -8,6 +8,7 @@ url="https://arc.liv.ac.uk/downloads/SGE/releases/8.1.9/"
 license=('GPL')
 depends=(
 	'awk'
+	'binutils'
 	'gcc'
 	'grep'
 	'hwloc'
