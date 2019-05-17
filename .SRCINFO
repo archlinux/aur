@@ -1,5 +1,5 @@
 pkgbase = linux-gc
-	pkgver = 5.0.13
+	pkgver = 5.1.3
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -13,24 +13,28 @@ pkgbase = linux-gc
 	makedepends = python-sphinx
 	makedepends = graphviz
 	options = !strip
-	source = linux-5.0.13-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-5.0.13-arch1.tar.gz
+	source = linux-5.1.3-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-5.1.3-arch1.tar.gz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
-	source = 0001_v5.0_bmq093.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.0/v5.0_bmq093.patch
-	source = 0002_uksm-5.0.10.patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.0/uksm-dolohow-dev/uksm-5.0.10.patch
-	source = 0003_enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
+	source = 0001_v5.1_bmq094.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.1/v5.1_bmq094.patch
+	source = 0002_Revert_c546951d9c93.patch::https://gitlab.com/alfredchen/linux-bmq/commit/c98f44724fac5c2b42d831f0ad986008420d13c2.patch
+	source = 0003_uksm-5.1-initial-submission.patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.1/uksm-pf/0001-uksm-5.1-initial-submission.patch
+	source = 0004_uksm_5.1.fix.patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.1/uksm-pf-fix/0001-uksm-5.1-apply-52d1e606ee733.patch
+	source = 0005_enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = 82676aff2bea1fef61fd0118d2e380c82c21cde42219448259b6c4c977c2919a
-	sha256sums = 41b540015ddf46eee6b5d93dfb2a2347efa48560842790aa60a26fedf2b29618
+	sha256sums = fc390e7d8714e29950a61fd10645d9056fe3ad9955d17316ac942cb4c96b5bd2
+	sha256sums = 12684e82ea015a4c54e924e537d0203b3e3ba7e20ecf9167b48ed99fd53ae4a9
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = 8e155350eefe9975149d8c9fe15d13432c0e173597928b5b1ed6e5602c115476
-	sha256sums = 12a91d2a050f6849b5c4c7a66b5576e72c1cd23cb05904a9463056416bbf8a86
+	sha256sums = 885ed0c36054afd28055ff8cad6c6da47f40f5e5e7774f609e209e0e384b5198
+	sha256sums = cb6f653ca75a87f0109efba8c385e097691be90ba36fef88b127f022bcd4e1f9
+	sha256sums = 088c5d7fb0ccfcecb7553358c6dea46395b410368dffae3b87a66ed0779e7623
+	sha256sums = 06d5ea7472c2af577ec1ab756dccead814609f5989f8eabe3cfa1181d5c07923
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
 
 pkgname = linux-gc
@@ -41,12 +45,12 @@ pkgname = linux-gc
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-gc=5.0.13
+	provides = linux-gc=5.1.3
 	backup = etc/mkinitcpio.d/linux-gc.preset
 
 pkgname = linux-gc-headers
 	pkgdesc = Header files and scripts for building modules for Linux-gc kernel and UKSM patchset
 	depends = linux-gc
-	provides = linux-gc-headers=5.0.13
-	provides = linux-headers=5.0.13
+	provides = linux-gc-headers=5.1.3
+	provides = linux-headers=5.1.3
 
