@@ -1,7 +1,7 @@
 # Maintainer: Felix Fung <fylixeoi@gmail.com>
 
 pkgname=timescaledb
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=0
 pkgdesc="An open-source time-series database optimized for fast ingest and complex queries."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('postgresql>=9.6.0' 'postgresql-libs>=9.6.0')
 makedepends=('gcc' 'cmake>=3.4' 'git')
 install=${pkgname}.install
-source=("$pkgname-$pkgver::git+https://github.com/timescale/timescaledb.git#tag=1.2.2")
+source=("$pkgname-$pkgver::git+https://github.com/timescale/timescaledb.git#tag=1.3.0")
 md5sums=(SKIP)
 
 build() {
