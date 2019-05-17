@@ -1,0 +1,15 @@
+pkgbase = kotlin-language-server
+	pkgdesc = Kotlin Language Server
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/fwcd/KotlinLanguageServer.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = gradle
+	depends = java-runtime
+	source = kotlin-language-server::git+https://github.com/fwcd/KotlinLanguageServer.git#commit=e3df0185ebcdf9502051fd806e45a9469e9d41e4
+	sha256sums = SKIP
+
+pkgname = kotlin-language-server
+
