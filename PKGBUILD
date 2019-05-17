@@ -10,7 +10,7 @@
 _pkgname=dmenu-wayland
 pkgname=$_pkgname-git
 pkgver=.r34.88f1766
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland port of a generic menu for X"
 url="https://github.com/nyyManni/dmenu-wayland"
 arch=('i686' 'x86_64')
