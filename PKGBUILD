@@ -1,6 +1,7 @@
 # Maintainer: Bruno Silva <brunofernandes at ua dot pt>
 
-pkgbase=wireshark
+pkgbase=wireshark-its
+_pkgbase=wireshark
 pkgname=('wireshark-cli-its' 'wireshark-qt-its')
 pkgver=v2.9.0rc0.r2721.g4b4f4df18d
 pkgrel=1
@@ -14,13 +15,13 @@ makedepends=('cmake' 'ninja' 'c-ares' 'libmaxminddb' 'qt5-tools' 'qt5-svg'
              'glib2' 'libgcrypt' 'sbc' 'bcg729' 'desktop-file-utils'
              'hicolor-icon-theme')
 options=('!emptydirs')
-source=(${pkgbase}::git+https://github.com/YannGarcia/wireshark-for-ITS.git#branch=ITS_Protocol_Support
+source=(${_pkgbase}::git+https://github.com/YannGarcia/wireshark-for-ITS.git#branch=ITS_Protocol_Support
         wireshark.sysusers)
 sha512sums=('SKIP'
             '3956c1226e64f0ce4df463f80b55b15eed06ecd9b8703b3e8309d4236a6e1ca84e43007336f3987bc862d8a5e7cfcaaf6653125d2a34999a0f1357c52e7c4990')
 
 pkgver() {
-  cd "${pkgbase}"
+  cd "${_pkgbase}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -28,7 +29,7 @@ pkgver() {
 }
 
 build() {
-  cd ${pkgbase}
+  cd ${_pkgbase}
   pwd 
   egrep -nr -lRZ '"Do not treat warnings as errors" OFF' | xargs -0 -l sed -i -e 's/"Do not treat warnings as errors" OFF/"Do not treat warnings as errors" ON/g'
   cmake . -GNinja \
@@ -50,7 +51,7 @@ package_wireshark-cli-its() {
   conflicts=(wireshark wireshark-cli)
   replaces=(wireshark-cli)
 
-  cd ${pkgbase}
+  cd ${_pkgbase}
   DESTDIR="${pkgdir}" ninja install
 
   # wireshark uid group is 150
@@ -74,7 +75,7 @@ package_wireshark-qt-its() {
   replaces=(wireshark wireshark-gtk wireshark-common wireshark-qt)
   conflicts=(wireshark wireshark-gtk wireshark-common wireshark-qt)
 
-  cd ${pkgbase}
+  cd ${_pkgbase}
   install -d "${srcdir}/staging"
   DESTDIR="${srcdir}/staging" ninja install
 

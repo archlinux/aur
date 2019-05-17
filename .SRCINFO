@@ -1,5 +1,5 @@
-pkgbase = wireshark
-	pkgdesc = Network traffic and protocol analyzer/sniffer
+pkgbase = wireshark-its
+	pkgdesc = Network traffic and protocol analyzer/sniffer with ITS (Intelligent Transportation System) plugins
 	pkgver = v2.9.0rc0.r2721.g4b4f4df18d
 	pkgrel = 1
 	url = https://www.wireshark.org/
@@ -37,7 +37,7 @@ pkgbase = wireshark
 	sha512sums = 3956c1226e64f0ce4df463f80b55b15eed06ecd9b8703b3e8309d4236a6e1ca84e43007336f3987bc862d8a5e7cfcaaf6653125d2a34999a0f1357c52e7c4990
 
 pkgname = wireshark-cli-its
-	pkgdesc = Network traffic and protocol analyzer/sniffer - CLI tools and data files
+	pkgdesc = Network traffic and protocol analyzer/sniffer with ITS (Intelligent Transportation System) plugins - CLI tools and data files
 	install = wireshark.install
 	depends = c-ares
 	depends = libmaxminddb
@@ -61,7 +61,7 @@ pkgname = wireshark-cli-its
 	replaces = wireshark-cli
 
 pkgname = wireshark-qt-its
-	pkgdesc = Network traffic and protocol analyzer/sniffer - Qt GUI
+	pkgdesc = Network traffic and protocol analyzer/sniffer with ITS (Intelligent Transportation System) plugins - Qt GUI
 	depends = desktop-file-utils
 	depends = qt5-multimedia
 	depends = qt5-svg
