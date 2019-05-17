@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 _gitname='xbmc'
-pkgver=18.2rc1.r179.gd57182cafa4
+pkgver=18.2rc1.r264.gf5636182c08
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -72,7 +72,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
-  'cpuinfo'
+  cpuinfo
   '00-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch'
 )
 noextract=(
@@ -103,6 +103,11 @@ pkgver() {
 }
 
 prepare() {
+  # force python 'binary' as python2
+  [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
+  mkdir "$srcdir/path"
+  ln -s /usr/bin/python2 "$srcdir/path/python"
+
   [[ -d kodi-build-x11 ]] && rm -rf kodi-build-x11
   mkdir kodi-build-x11
   [[ -d kodi-build-wayland ]] && rm -rf kodi-build-wayland
@@ -123,6 +128,8 @@ prepare() {
 }
 
 build() {
+  export PATH="$srcdir/path:$PATH"
+
   ### Optionally uncomment and setup to your liking
   # export CFLAGS+=" -march=native"
   # export CXXFLAGS="${CFLAGS}"
@@ -175,7 +182,6 @@ build() {
   make
   make preinstall
 
-
   msg2 "building kodi-gbm"
   cd "$srcdir/kodi-build-gbm"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
@@ -202,7 +208,7 @@ build() {
 }
 
 # kodi
-# components: kodi, kodi-bin
+# components: kodi
 
 package_kodi-git() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch)"
@@ -227,6 +233,8 @@ package_kodi-git() {
     'kodi'
     'kodi-bin'
   )
+
+  export PATH="$srcdir/path:$PATH"
 
   cd kodi-build-x11
   # install eventclients
@@ -314,6 +322,8 @@ package_kodi-git-eventclients() {
     'kodi-eventclients-kodi-send'
   )
 
+  export PATH="$srcdir/path:$PATH"
+
   cd kodi-build-x11
   # install eventclients
   for _cmp in ${_components[@]}; do
@@ -373,6 +383,8 @@ package_kodi-git-dev() {
     'kodi-visualization-dev'
   )
 
+  export PATH="$srcdir/path:$PATH"
+
   cd kodi-build-x11
   # install eventclients
   for _cmp in ${_components[@]}; do
@@ -383,5 +395,6 @@ package_kodi-git-dev() {
 
   # python2 is being used
   cd "$pkgdir"
-  grep -lR '#!.*python' * | while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
+  grep -lR '#!.*python' * | \
+    while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
 }
