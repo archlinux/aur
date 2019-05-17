@@ -2,17 +2,17 @@
 
 pkgname=profanity-git
 _pkgname=profanity
-pkgver=4737.d485588
+pkgver=5179.c94f3d0b
 pkgrel=1
 pkgdesc="A console based jabber client."
 arch=('i686' 'x86_64')
-url="http://www.profanity.im"
+url="http://profanity-im.github.io"
 license=('GPL3')
-depends=('curl' 'expat' 'libnotify' 'libotr' 'libxss' 'libstrophe-git')
+depends=('curl' 'expat' 'libgcrypt' 'libnotify' 'libotr' 'libxss' 'libsignal-protocol-c' 'libstrophe-git')
 makedepends=('git' 'autoconf-archive')
 provides=('profanity')
 conflicts=('profanity')
-source=("$_pkgname::git://github.com/boothj5/profanity.git#branch=master")
+source=("$_pkgname::git://github.com/profanity-im/profanity.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
