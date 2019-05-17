@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 139e9dc..3c12546 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,14 +43,17 @@ add_library(Warnings INTERFACE)
+ target_compile_options(Warnings INTERFACE ${WARNINGS})
+ 
+ # External dependencies
+-add_subdirectory(external/fmt)
++find_package(fmt)
++find_package(yaml-cpp)
++find_package(CLI11)
++#add_subdirectory(external/fmt)
+ add_subdirectory(external/abseil-cpp)
+-add_subdirectory(external/CLI11)
++#add_subdirectory(external/CLI11)
+ set(YAML_CPP_BUILD_TESTS OFF CACHE BOOL "Enable testing")
+ set(YAML_CPP_BUILD_TOOLS OFF CACHE BOOL "Enable parse tools")
+ set(YAML_CPP_BUILD_CONTRIB OFF CACHE BOOL "Enable contrib stuff in library")
+ set(YAML_CPP_INSTALL OFF CACHE BOOL "Enable generation of install target")
+-add_subdirectory(external/yaml-cpp)
++#add_subdirectory(external/yaml-cpp)
+ 
+ add_executable(testcode src/testcode.cpp)
+ target_link_libraries(testcode PRIVATE Warnings fmt absl::strings)
+@@ -62,4 +65,4 @@ add_executable(tidytest src/testmain.cpp src/patched_file.test.cpp)
+ target_link_libraries(tidytest PRIVATE Warnings absl::strings absl::algorithm)
+ 
+ add_executable(autotidy src/main.cpp src/autotidy.cpp src/manpages.cpp)
+-target_link_libraries(autotidy PRIVATE Warnings fmt absl::strings CLI11 yaml-cpp)
++target_link_libraries(autotidy PRIVATE Warnings fmt absl::strings yaml-cpp)

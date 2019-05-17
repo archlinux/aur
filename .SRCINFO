@@ -1,0 +1,22 @@
+pkgbase = autotidy-git
+	pkgdesc = Speedier handling of clang-tidy checking
+	pkgver = 43.d77d67b
+	pkgrel = 1
+	url = https://github.com/sasq64/autotidy
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = yaml-cpp
+	depends = fmt
+	depends = cli11
+	provides = autotidy
+	source = git+https://github.com/sasq64/autotidy.git
+	source = git+https://github.com/abseil/abseil-cpp.git
+	source = cmake.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 930244a70099ebf81174c88114fd9aa67b6807e2149dcab221c0653d262d51f2
+
+pkgname = autotidy-git
+
