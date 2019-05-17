@@ -2,9 +2,9 @@
 # Contributor: Ethan Schoonover
 
 pkgname=gam
-pkgver=4.83
+pkgver=4.85
 pkgrel=1
-pkgdesc="Command-line tool for Google GSuite admins to manage settings quickly and easily."
+pkgdesc="Command-line tool for Google GSuite admins to manage settings quickly and easily"
 arch=('any')
 url="https://github.com/jay0lee/GAM"
 license=('Apache')
@@ -24,7 +24,7 @@ source=(
     "gam.sh"
 )
 
-sha256sums=('a2aeaa0b021cf79d5959765877dce83aaa8769ba52422b339b5f0a277ae8661f'
+sha256sums=('209244c3cf062b31ae6c901a3e8282d0850387624ec92182933b88a0811d0379'
             '202e3566d837c37526174fb6311232c06d90e3786578668aa58ef3eb0648054a'
             'd93809852ef9eefeb99f3fc1b955305264f93f2552db14b4d9d6fe7c2b08345b')
 
