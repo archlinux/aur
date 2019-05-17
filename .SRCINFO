@@ -1,14 +1,14 @@
 pkgbase = unity-editor-beta-ios
 	pkgdesc = Allows building your Unity projects for the iOS platform
-	pkgver = 2019.2.0b1
+	pkgver = 2019.2.0b2
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
 	license = custom
 	depends = unity-editor-beta
 	options = !strip
-	source = 2019.2.0b1.2.0b1.tar.xz::https://beta.unity3d.com/download/18ccf127b486/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2019.2.0b1.tar.xz
-	md5sums = dc62ec1d894d275b6a695376a9f2342d
+	source = 2019.2.0b2.2.0b2.tar.xz::https://beta.unity3d.com/download/ad601490df46/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2019.2.0b2.tar.xz
+	md5sums = a80cb665c7b4130bf1f20488393dae5f
 
 pkgname = unity-editor-beta-ios
 
