@@ -1,22 +1,24 @@
-# Maintainer: RcrdBrt <riccardobrt@gmail.com>
-
-_pkgname=flask-paginate
-pkgname=python-flask-paginate
-pkgver=0.5.1
-pkgrel=2
-pkgdesc="flask-paginate is a simple paginate extension for flask which is reference to will_paginate, and use bootstrap as css framework."
-arch=('any')
-url="http://github.com/lixxu/flask-paginate"
-license=('BSD-3')
+pkgbase='python-flask-paginate'
+pkgname=('python-flask-paginate')
+_module='flask-paginate'
+pkgver='0.5.2'
+pkgrel=1
+pkgdesc="Simple paginate support for flask"
+url="https://github.com/lixxu/flask-paginate"
+depends=('python')
 makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/fc/95/d7d61640893050a55365ffba33885883495c0838a05f11984336aa023f00/flask-paginate-0.5.1.tar.gz#md5=83bdaa64c75df75296abb5a4f7edfa14")
-md5sums=('83bdaa64c75df75296abb5a4f7edfa14')
+license=('BSD')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
+sha256sums=('ebc896bf6e8d7a414e3efba0bd0770a8f73dcd7023f99e849c64164287e36e9b')
 
-package() {
-depends=('python-flask')
-
-    cd $_pkgname-$pkgver 
-    python setup.py install --root="$pkgdir/" --optimize=1
-
+build() {
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py build
 }
 
+package() {
+    depends+=()
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+}
