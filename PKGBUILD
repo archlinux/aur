@@ -17,7 +17,7 @@ pkgname=vmware-workstation
 pkgver=15.1.0
 _buildver=13591040
 _pkgver=${pkgver}_${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -144,8 +144,8 @@ source+=(
   'unlocker.py'
 )
 sha256sums+=(
-  '0de0f886ad5d53bcdb2adf3969f2c63d4dcbca6ee4c6c7bd2ea4f5237dc52a75'
-  '40a5e530c5b0dc9572931cd892504fafe6ff50cad7bc626a2487fa436a918ee1'
+  'b228af2f5f7b5eed3a4f574645e823e92dbd95945a5dce343f51445f0cc83b1c'
+  '7bc24a658c0a91ea21ffda67becb9bc40f1e2592ff74020be7c174af1b81f554'
   '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
 )
 
