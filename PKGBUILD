@@ -8,13 +8,17 @@ url="https://arc.liv.ac.uk/downloads/SGE/releases/8.1.9/"
 license=('GPL')
 depends=(
 	'awk'
+	'fakeroot'
+	'file'
 	'gcc'
 	'grep'
 	'hwloc'
 	'inetutils'
 	'libtirpc'
 	'libxt'
+	'make'
 	'openmotif'
+	'patch'
 	'tcsh'
 )
 source=(

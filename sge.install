@@ -16,6 +16,18 @@ pre_install() {
 post_install() {
 	cd /opt/sge/build/source/
 	env SGE_ROOT=/opt/sge scripts/distinst -all -local -noexit
+	echo "##################################################"
+	echo "##################################################"
+	echo "##################################################"
+	echo "export SGE_ROOT=/opt/sge"
+	echo "cd /opt/sge"
+	echo "#to install master"
+	echo "./install_qmaster"
+	echo "#to install execd"
+	echo "./install_execd"
+	echo "##################################################"
+	echo "##################################################"
+	echo "##################################################"
 }
 
 ## arg 1:  the new package version
