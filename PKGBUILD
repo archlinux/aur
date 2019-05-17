@@ -3,8 +3,8 @@
 # Contrubutor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-ck
-pkgver=418.74
-pkgrel=4
+pkgver=430.14
+pkgrel=1
 epoch=2
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck."
@@ -20,17 +20,16 @@ license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
-kernel-4.16.patch)
-sha256sums=('dc8736decb9627e18d71a5b3cb1273682d649208eca7dce0b589cd7faf20120f'
-            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
+        fs62142.patch)
+sha256sums=('00d46ffaf3e1e430081ddbd68b74cc361cd1328e8944224dfe69630dd8540f17'
+            '24a3082688ee4d60d27f601d535b1e6ced7537b46cc83fc9bb6da0f76e07e017')
 
 prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
 
-    # Restore phys_to_dma support (still needed for 396.18)
-    # https://bugs.archlinux.org/task/58074
-    patch -Np1 -i ../kernel-4.16.patch
+    # Fix https://bugs.archlinux.org/task/62142
+    patch -Np1 -i ../fs62142.patch
 }
 
 build() {
