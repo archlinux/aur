@@ -2,7 +2,7 @@
 
 pkgname=sysrepo
 pkgver=0.7.7
-pkgrel=2
+pkgrel=3
 pkgdesc='YANG-based configuration and operational state data store for Unix/Linux applications'
 depends=('libyang' 'protobuf-c' 'libev' 'libredblack' 'libssh')
 optdepends=('netopeer2: for remote management via NETCONF')
@@ -15,11 +15,13 @@ conflicts=('sysrepo')
 source=("https://github.com/sysrepo/sysrepo/archive/v$pkgver.tar.gz"
         '000-disable-lua-bindings.patch'
         '001-fix-default-permissions.patch'
-        '002-disable-uid-check.patch')
+        '002-disable-uid-check.patch'
+        '003-build-python-3-bindings.patch')
 sha256sums=('2bf8cb4d810d19231eba1e549f58f3a0ce068d170a5e7b212b927396098560e4'
             '6b8b4e6fb9b9ca1818720b01ebdcd291a7db8436a0a1f953ae360e6e1f6dbecd'
             '3ee0b97d0bc157f62a76eca67d6d4d72e804c800accf633198c517b56148a6f1'
-            'e831980732a96a26d3056077ff12f3c9fad687a0f490e0345f4961f196c29ac9')
+            'e831980732a96a26d3056077ff12f3c9fad687a0f490e0345f4961f196c29ac9'
+            '8ad938bdaebb0d54b24a1a42e14d61d05512562d752f8b4d08199f8b432c5142')
 
 prepare() {
     mkdir -p "$srcdir/$pkgname-$pkgver/build-pkgtool"
@@ -27,6 +29,7 @@ prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     patch -p1 < "$srcdir/000-disable-lua-bindings.patch"
     patch -p1 < "$srcdir/001-fix-default-permissions.patch"
+    patch -p1 < "$srcdir/003-build-python-3-bindings.patch"
     sed -i -e 's,/var/run/,/run/,' \
         "$srcdir/$pkgname-$pkgver/deploy/systemd/"*.service
 }
