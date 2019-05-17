@@ -10,7 +10,7 @@ pkgbase = packer-git
 	depends = glibc
 	provides = packer
 	conflicts = packer
-	source = git+https://github.com/hashicorp/packer.git#branch=master
+	source = git+https://github.com/hashicorp/packer.git
 	sha256sums = SKIP
 
 pkgname = packer-git
