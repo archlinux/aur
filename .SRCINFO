@@ -1,7 +1,7 @@
 pkgbase = opensmtpd-libressl
-	pkgdesc = A FREE implementation of the server-side SMTP protocol. Latest snapshot.
+	pkgdesc = OpenSMTPD built against LibreSSL
 	pkgver = 6.4.1p2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.opensmtpd.org/
 	arch = i686
 	arch = x86_64

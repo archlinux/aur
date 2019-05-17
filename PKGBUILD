@@ -6,8 +6,8 @@
 
 pkgname=opensmtpd-libressl
 pkgver=6.4.1p2
-pkgrel=2
-pkgdesc='A FREE implementation of the server-side SMTP protocol. Latest snapshot.'
+pkgrel=3
+pkgdesc='OpenSMTPD built against LibreSSL'
 arch=('i686' 'x86_64')
 url="http://www.opensmtpd.org/"
 license=('BSD')
