@@ -1,0 +1,11 @@
+--- upnp-player-qt-0.2-5f6147e489e7dea50a8d12b33c5915e9319aed91/src/upnpservereventobject.h.orig	2017-12-07 10:07:19.031032498 +0000
++++ upnp-player-qt-0.2-5f6147e489e7dea50a8d12b33c5915e9319aed91/src/upnpservereventobject.h	2017-12-07 10:07:32.681061939 +0000
+@@ -46,7 +46,7 @@
+ 
+     void processRequestWithPath(const KDSoapMessage &request, KDSoapMessage &response, const QByteArray &soapAction, const QString &path) Q_DECL_OVERRIDE;
+ 
+-    bool processCustomVerbRequest(const QByteArray &requestData, const QMap<QByteArray, QByteArray> &headers, QByteArray &customAnswer) Q_DECL_OVERRIDE;
++    bool processCustomVerbRequest(const QByteArray &requestData, const QMap<QByteArray, QByteArray> &headers, QByteArray &customAnswer);
+ 
+     void setService(UpnpControlAbstractService *service);
+ 

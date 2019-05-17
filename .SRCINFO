@@ -1,0 +1,16 @@
+pkgbase = upnp-player-qt
+	pkgdesc = Upnp layer build with Qt5
+	pkgver = 0.2.git20170530
+	pkgrel = 2
+	url = https://gitlab.com/homeautomationqt/upnp-player-qt
+	arch = x86_64
+	license = LGPL3
+	makedepends = extra-cmake-modules
+	makedepends = qt5-declarative
+	makedepends = qt5-websockets
+	depends = kdsoap
+	source = upnp-player-qt-0.2.git20170530.tar.gz::https://gitlab.com/homeautomationqt/upnp-player-qt/repository/feda500b33eeb5b0b5c05f34e2fe632acb6649ad/archive.tar.gz
+	sha256sums = 6c8b2f44dc457d2368c9b599adb469083c25b7ac80030a8a3856560f1b4403f9
+
+pkgname = upnp-player-qt
+
