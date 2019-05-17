@@ -1,15 +1,16 @@
-#Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
-pkgdesc="Library for collision detection between two convex shapes."
-url='https://github.com/danfis/libccd'
+# Previous Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=libccd
-pkgver=2.0
+pkgver=2.1
+pkgrel=1
+pkgdesc="Library for collision detection between two convex shapes."
 arch=('i686' 'x86_64')
-pkgrel=3
+url='https://github.com/danfis/libccd'
 license=('BSD')
-makedepends=('cmake')
 depends=()
+makedepends=('cmake')
 source=(https://github.com/danfis/libccd/archive/v${pkgver}.tar.gz)
-sha256sums=('1b4997e361c79262cf1fe5e1a3bf0789c9447d60b8ae2c1f945693ad574f9471')
+sha256sums=('542b6c47f522d581fbf39e51df32c7d1256ac0c626e7c2b41f1040d4b9d50d1e')
 provides=('libccd')
 conflicts=('libccd-git')
 
