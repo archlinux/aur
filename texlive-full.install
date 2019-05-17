@@ -1,0 +1,23 @@
+post_install()
+{
+    _year=$(date "+%Y")
+    echo "======================================================================="
+    echo "This packages provides texlive-full in /opt.  It also tricks ArchLinux"
+    echo "into thinking it has its texlive packages installed."
+    echo "-----------------------------------------------------------------------"
+    echo "Add"
+    echo "	/opt/texlive/${_year}/bin/x86_64-linux"
+    echo "to your PATH"
+    echo "Add"
+    echo "	/opt/texlive/${_year}/texmf-dist/doc/man"
+    echo "to your MANPATH"
+    echo "Add"
+    echo "	/opt/texlive/${_year}/texmf-dist/doc/info"
+    echo "to your INFOPATH"
+    echo "======================================================================="
+}
+
+post_upgrade()
+{
+    post_install
+}
