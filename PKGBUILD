@@ -7,7 +7,7 @@
 
 pkgname=gcalcli
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Google calendar command line interface'
 arch=('any')
 url=https://github.com/insanum/gcalcli
@@ -25,11 +25,6 @@ optdepends=(
 )
 source=("gcalcli-$pkgver.tar.gz::https://github.com/insanum/gcalcli/archive/v$pkgver.tar.gz")
 sha256sums=('78be91994499789f9f330f3480415387fab81e697b243db7eb26797ddb6a1a4f')
-
-prepare() {
-    # By default wants to install in /usr/man/man1/
-    sed -i 's;man/man1;share/man/man1;' "gcalcli-$pkgver/setup.py"
-}
 
 build() {
     cd "gcalcli-$pkgver"
