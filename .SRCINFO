@@ -16,6 +16,8 @@ pkgbase = mingw-w64-libressl-portable-git
 	options = staticlibs
 	options = !buildflags
 	source = libressl-portable::git+https://github.com/libressl-portable/portable/
+	source = 01-pthread.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mingw-w64-libressl-portable-git
