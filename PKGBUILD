@@ -10,7 +10,6 @@ url="https://bitbucket.org/tdaff/remote_ikernel"
 license=('BSD')
 depends=('python-pexpect' 'jupyter-notebook')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest-runner' 'python-scripttest')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
 'host.patch')
 sha256sums=('740b80a57fa1af40cadef541c5a4eb293675b504092ecf00c57dd2f0011bd840'
