@@ -1,5 +1,5 @@
 pkgbase = kotlin-language-server
-	pkgdesc = Kotlin Language Server
+	pkgdesc = Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol
 	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/fwcd/KotlinLanguageServer.git
