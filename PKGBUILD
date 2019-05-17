@@ -2,8 +2,8 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='frr'
-pkgver='7.0'
-pkgrel='4'
+pkgver='7.0.1'
+pkgrel='1'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('any')
 url="https://frrouting.org/"
@@ -23,7 +23,7 @@ source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.ta
         "${pkgname}.tmpfiles"
         "${pkgname}_6.0_systemd_arch.patch"
         "${pkgname}_7.0_Archlinux.patch")
-sha256sums=('15b62dc0c52531e4bcefa6b830e9b9b07d1d0f189c2110307dbc19d80b719354'
+sha256sums=('5b74fc2c730e9973eab03546415f8dd7b36fa00fbf0bc856458266773dd5ae6d'
             '9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89'
             '9d98a0b5d7016cb66fe3cbec234f70327f0a961de47f7eae39a5bd4477b072ce'
@@ -64,28 +64,26 @@ build() {
   make
 }
 
-check() {
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
-  make check
-}
-
 package() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   pushd "redhat"
   sed -ri 's|/var/run/frr|/run/frr|g' "${pkgname}.logrotate"
-  sed -ri 's|/usr/lib/frr/|/usr/bin/|g' "${pkgname}.service"
   install -Dm0644 "${pkgname}.logrotate" "${pkgdir}/etc/logrotate.d/${pkgname}"
   for d in babeld bgpd bfdd eigrpd isisd ldpd nhrpd ospf6d ospfd ospfd-instance@ pbrd pimd ripd ripngd staticd zebra; do
     install -Dm0644 ${d}.service "${pkgdir}/usr/lib/systemd/system/${d}.service"
   done
   install -Dm0644 "${pkgname}.pam" "${pkgdir}/etc/pam.d/${pkgname}"
-  install -Dm0644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm0644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -Dm0644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   popd
-  
+
+  pushd "tools"
+  sed -ri 's|/usr/lib/frr/|/usr/bin/|g' "${pkgname}.service"
+  install -Dm0644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  popd
+
   pushd "tools/etc"
   install -Dm0644 "${pkgname}/daemons" "${pkgdir}/etc/${pkgname}/daemons.conf"
   install -Dm0644 "iproute2/rt_protos.d/${pkgname}.conf" "${pkgdir}/etc/iproute2/rt_protos.d/${pkgname}.conf"
