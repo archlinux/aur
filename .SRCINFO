@@ -1,13 +1,9 @@
 pkgbase = hibiscus-nightly
-	pkgdesc = Hibiscus Plugin for Jameica Plattform
+	pkgdesc = Hibiscus HBCI banking plugin for Jameica (nightly)
 	pkgver = 2.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.willuhn.de/products/hibiscus/
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = unzip
 	depends = jameica-nightly>=2.9
@@ -16,4 +12,3 @@ pkgbase = hibiscus-nightly
 	sha256sums = SKIP
 
 pkgname = hibiscus-nightly
-
