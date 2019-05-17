@@ -2,7 +2,7 @@
 # Contributor: sh4nks <sh4nks7@gmail.com
 
 pkgname=lightdm-pantheon-greeter-git
-pkgver=3.3.1.r72.0047839
+pkgver=3.3.1.r104.13f8dc9
 pkgrel=1
 pkgdesc='Pantheon greeter for LightDM'
 arch=(x86_64)
@@ -10,6 +10,7 @@ url=https://github.com/elementary/greeter
 license=(GPL)
 groups=(pantheon-unstable)
 depends=(
+  accountsservice
   cairo
   gdk-pixbuf2
   glib2
@@ -43,7 +44,6 @@ pkgver() {
 
 build() {
   arch-meson lightdm-pantheon-greeter build \
-    -D b_pie=false \
     -D ubuntu-patched-gsd=false
   ninja -C build
 }
