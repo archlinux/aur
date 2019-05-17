@@ -1,23 +1,22 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=redasm-git
-pkgver=r994.0169573
+pkgver=r1316.e889eb3
 pkgrel=1
 url='https://github.com/REDasmOrg/REDasm'
 arch=('i686' 'x86_64')
 pkgdesc='The OpenSource Disassembler'
 license=('GPL3')
-depends=('qt5-base' 'qt5-webengine')
+depends=('qt5-base')
 makedepends=('git')
 conflicts=(redasm)
 provides=(redasm)
 source=(
     'git+https://github.com/REDasmOrg/REDasm.git'
-    'git+https://github.com/Dax89/QHexEdit.git'
+    'git+https://github.com/Dax89/QHexView.git'
     'git+https://github.com/aquynh/capstone.git'
-    'git+https://github.com/madler/zlib.git'
     )
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd REDasm
@@ -27,10 +26,9 @@ pkgver() {
 prepare() {
     cd REDasm
     git submodule init
-    git config submodule.widgets/QHexEdit.url "$srcdir/QHexEdit"
+    git config submodule.widgets/QHexView.url "$srcdir/QHexView"
     git submodule update
     cd LibREDasm
-    git config submodule.depends/zlib.url "$srcdir/zlib"
     git config submodule.depends/capstone.url "$srcdir/capstone"
     git submodule update
 }
