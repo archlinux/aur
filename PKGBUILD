@@ -2,7 +2,7 @@
 
 _pkgname=packer
 pkgname=${_pkgname}-git
-pkgver=v1.3.3_991_g69aec690f
+pkgver=v1.3.3_999_g5504709e1
 pkgrel=1
 pkgdesc="Packer is a tool for creating identical machine images for multiple platforms from a single source configuration."
 arch=('x86_64')
@@ -20,17 +20,25 @@ pkgver() {
   git describe | sed 's/[- ]/_/g'
 }
 
+prepare() {
+  mkdir -p gopath
+}
+
 build() {
+  export GOPATH="${srcdir}/gopath"
   export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
 
   cd ${_pkgname}
   make dev
 }
 
-# check() {
-#   cd ${_pkgname}
-#   make test
-# }
+check() {
+  export GOPATH="${srcdir}/gopath"
+  unset GOFLAGS
+
+  cd ${_pkgname}
+  make test
+}
 
 package() {
   cd ${_pkgname}
