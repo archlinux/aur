@@ -2,7 +2,7 @@
 
 pkgname=gpgsync
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to let users always have up-to-date public keys for other members of their organization."
 arch=('any')
 url="https://github.com/firstlookmedia/gpgsync/"

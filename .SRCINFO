@@ -1,7 +1,7 @@
 pkgbase = gpgsync
 	pkgdesc = A tool to let users always have up-to-date public keys for other members of their organization.
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/firstlookmedia/gpgsync/
 	arch = any
 	license = GPL3
