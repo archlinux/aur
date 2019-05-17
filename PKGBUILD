@@ -3,7 +3,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-lzlib
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc="Lzlib is a data compression library providing in-memory LZMA compression and decompression functions (mingw-w64)"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('mingw-w64-gcc')
 options=('!strip' 'staticlibs' '!buildflags')
 
 source=("http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-${pkgver}.tar.gz")
-sha256sums=('1d6ab7800a5b43e56fd20607fd2cfda9e550350dc95f5beb6a4ce14f85b41043')
+sha256sums=('6c5c5f8759d1ab7c4c3c53788ea2d9daad04aeddcf338226893f8ff134914d36')
 
 build() {
   cd "${srcdir}/lzlib-${pkgver}"
