@@ -4,4 +4,4 @@
 !*.install
 !.gitignore
 !phoenix.desktop
-!package.json.patch
+!electron-builder.json.patch

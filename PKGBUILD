@@ -2,9 +2,9 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=phoenix
-pkgver=v1.0.0.beta.6.r17.g7ccc15a9
+pkgver=v1.0.0.beta.6.r20.gd65c928a
 pkgrel=1
-pkgdesc="BURST Cross-Platform Wallet UI"
+pkgdesc="The BurstCoin desktop wallet"
 arch=('i686' 'x86_64')
 url="https://github.com/burst-apps-team/phoenix"
 license=('GPL3')
@@ -13,10 +13,10 @@ makedepends=('npm' 'angular-cli')
 install=phoenix.install
 source=(git+https://github.com/burst-apps-team/$pkgname.git
 	$pkgname.desktop
-	package.json.patch)
+	electron-builder.json.patch)
 sha256sums=('SKIP'
-	    '4a4a80a65a426b30ae85e1b9fef879a3748578669a3409e2953ace12f7baa8a7'
-	    '6b1cac2f8a633e508608242fd7dffd15e8d95cc94073eaa4994f985f06dcafc3')
+	    'ee7cb123dca7e311bea596df59d59284a9b0b32be6990da3cd89303a800acac0'
+	    'b9d713a3c016b4ba7d68803c24aea06518991e02103ba03d7060d95be469e307')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -34,7 +34,7 @@ build() {
     cd ../desktop/wallet
     npm install
     # patch build only unpacked
-    patch package.json < "${srcdir}/package.json.patch"
+    patch electron-builder.json < "${srcdir}/electron-builder.json.patch"
 
     npm run release:linux
 }
