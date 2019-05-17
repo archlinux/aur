@@ -2,7 +2,7 @@
 
 _pkgname=consul
 pkgname=${_pkgname}-git
-pkgver=v1.5.0_5_g5508fd164
+pkgver=v1.5.0_35_gf452de1c5
 pkgrel=1
 pkgdesc="Consul is a distributed, highly available, and data center aware solution to connect and configure applications across dynamic, distributed infrastructure."
 arch=('x86_64')
@@ -21,6 +21,10 @@ pkgver() {
 }
 
 prepare() {
+  mkdir -p gopath
+  export GOPATH="${srcdir}/gopath"
+  export PATH="$PATH:$GOPATH/bin"
+
   cd ${_pkgname}
   make tools
 }
@@ -30,6 +34,8 @@ build() {
 
   cd ${_pkgname}
   make dev
+
+  unset GOFLAGS
 }
 
 # check() {
