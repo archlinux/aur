@@ -1,0 +1,19 @@
+pkgbase = python-remote_ikernel
+	pkgdesc = Remote kernel setup for Jupyter
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://bitbucket.org/tdaff/remote_ikernel
+	arch = any
+	license = BSD
+	checkdepends = python-pytest-runner
+	checkdepends = python-scripttest
+	makedepends = python-setuptools
+	depends = python-pexpect
+	depends = jupyter-notebook
+	source = https://files.pythonhosted.org/packages/source/r/remote_ikernel/remote_ikernel-0.4.6.tar.gz
+	source = host.patch
+	sha256sums = 740b80a57fa1af40cadef541c5a4eb293675b504092ecf00c57dd2f0011bd840
+	sha256sums = bf209f55f6dea633e09a7f809ae9e1aa7c0d9fdfd0d026d8cf900b7a6d8cf6af
+
+pkgname = python-remote_ikernel
+

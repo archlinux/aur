@@ -1,0 +1,132 @@
+# HG changeset patch
+# User Bitbucket <noreply@bitbucket.org>
+# Date 0 0
+# Node ID f1c61b7dab8a078193cb611920a14b65c5c9c6a8
+# Parent  69fe424722f50cf74b9c1b5db1095f0430e22181
+# Parent  c41d418c286245cf6161eefc9a5bff5ba9ba2404
+
+diff -r 69fe424722f5 -r f1c61b7dab8a remote_ikernel/kernel.py
+--- a/remote_ikernel/kernel.py
++++ b/remote_ikernel/kernel.py
+@@ -18,6 +18,7 @@
+ import uuid
+ 
+ import pexpect
++import warnings
+ 
+ from tornado.log import LogFormatter
+ 
+@@ -173,6 +174,20 @@
+ 
+     """
+ 
++    @property
++    def host(self):
++        return self._host
++
++    @host.setter
++    def host(self, new):
++        if isinstance(new, bytes):
++            warnings.warn('Automatically Decoding self.host assignment to bytes. Did you forget a `.decode()` ? ')
++            self._host = new.decode()
++        elif isinstance(new, str):
++            self._host = new
++        else:
++            raise TypeError('self.host can only be assigned `str` or `bytes`, not `{}`'.format(type(new)))
++
+     def __init__(self, connection_info=None, interface='sge', cpus=1, pe='smp',
+                  kernel_cmd='ipython kernel', workdir=None, tunnel=True,
+                  host=None, precmd=None, launch_args=None, verbose=False,
+@@ -196,7 +211,12 @@
+         self.cpus = cpus
+         self.pe = pe
+         self.kernel_cmd = kernel_cmd
+-        self.host = host  # Name of node to be changed once connection is ready.
++        self._host = ''
++        if not host :
++            self.host = ''
++        else:
++            self.host = host
++
+         self.tunnel_hosts = tunnel_hosts
+         self.connection = None  # will usually be a spawned pexpect
+         self.workdir = workdir
+@@ -331,10 +351,10 @@
+         # hostnames whould be alphanumeric with . and - permitted
+         # This way we also ignore the echoed echo command
+         qsub_i.expect('Running on ([\w.-]+)')
+-        node = qsub_i.match.groups()[0]
++        node = qsub_i.match.groups()[0] or b''
+ 
+         self.log.info("Established session on node: {0}.".format(node))
+-        self.host = node
++        self.host = node.decode()
+ 
+     def launch_sge(self, qlogin='qlogin'):
+         """
+@@ -361,9 +381,9 @@
+         # Hopefully this text is universal?
+         qlogin.expect('Establishing .* session to host (.*) ...')
+ 
+-        node = qlogin.match.groups()[0]
++        node = qlogin.match.groups()[0] or b''
+         self.log.info("Established session on node: {0}.".format(node))
+-        self.host = node
++        self.host = node.decode()
+ 
+     def launch_slurm(self):
+         """
+@@ -390,9 +410,9 @@
+         # Hopefully this text is universal?
+         srun.expect('srun: Node (.*), .* tasks started')
+ 
+-        node = srun.match.groups()[0]
++        node = srun.match.groups()[0] or b''
+         self.log.info("Established session on node: {0}.".format(node))
+-        self.host = node
++        self.host = node.decode()
+ 
+     def launch_lsf(self):
+         """
+@@ -418,9 +438,9 @@
+         # Hopefully this text is universal?
+         bsub.expect('<<Starting on (.*)>>')
+ 
+-        node = bsub.match.groups()[0]
++        node = bsub.match.groups()[0] or b''
+         self.log.info("Established session on node: {0}.".format(node))
+-        self.host = node
++        self.host = node.decode()
+ 
+     def start_kernel(self):
+         """
+@@ -597,10 +617,6 @@
+     @property
+     def tunnel_cmd(self):
+         """Return a tunnelling command that just needs a port."""
+-        # zmq needs str in Python 3, but pexpect gives bytes
+-        if hasattr(self.host, 'decode'):
+-            self.host = self.host.decode('utf-8')
+-
+         # One connection can tunnel all the ports
+         ports_str = " ".join(["-L 127.0.0.1:{{{port}}}:127.0.0.1:{{{port}}}"
+                               "".format(port=port) for port in PORT_NAMES])
+diff -r 69fe424722f5 -r f1c61b7dab8a setup.py
+--- a/setup.py
++++ b/setup.py
+@@ -7,10 +7,13 @@
+     from distutils.core import setup
+     scripts = ['bin/remote_ikernel']
+ 
++with open('README.rst') as f:
++    long_desc = f.read()
++
+ setup(name='remote_ikernel',
+       version='0.4.6',
+       description='Running IPython kernels through batch queues',
+-      long_description=open('README.rst').read(),
++      long_description=long_desc,
+       author='Tom Daff',
+       author_email='tdd20@cam.ac.uk',
+       license='BSD',
+
