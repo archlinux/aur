@@ -1,0 +1,7 @@
+# Ignored folders
+src/
+pkg/
+python-pwntools-git/
+
+# Ignored files
+*.pkg.tar.xz
