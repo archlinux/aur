@@ -1,32 +1,35 @@
-# Maintainer: drakkan <nicola.murino at gmail dot com>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname=kdsoap
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='Qt-based client-side and server-side SOAP component'
-license=('GPL3' 'LGPL' 'custom')
-arch=('x86_64' 'i686')
+license=(GPL3 LGPL custom)
+arch=(x86_64)
 url='https://github.com/KDAB/KDSoap'
-depends=('qt5-base')
-conflicts=('kdsoap-qt4')
-makedepends=('cmake')
-source=("https://github.com/KDAB/KDSoap/releases/download/kdsoap-${pkgver}/kdsoap-${pkgver}.tar.gz")
-sha256sums=('d6b6b01348d2e1453f7e12724d1848ee41c86a1b19168ca67ac98fedb0408668')
+depends=(qt5-base)
+makedepends=(cmake)
+source=("https://github.com/KDAB/KDSoap/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"{,.asc})
+sha256sums=('e73fbaf57f01a6d45f8f0530861a8f528bf0216633c2c70617cec4434237e742'
+            'SKIP')
+validpgpkeys=(E86C000370B1B9E2A9191AD53DBFB6882C9358FB) # KDAB Products (user for KDAB products) <info@kdab.com>
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd "$pkgname-$pkgver"
-  mkdir build && pushd build
-  cmake -DCMAKE_BUILD_TYPE=Release \
+  cd build
+  cmake ../$pkgname-$pkgver \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=/usr/lib ..
+        -DCMAKE_INSTALL_LIBDIR=lib
   make 
-  popd
 }
 
 package() {
-  cd "$pkgname-$pkgver"/build
-  make DESTDIR="${pkgdir}" install
+  cd build
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "$srcdir"/$pkgname-$pkgver/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
