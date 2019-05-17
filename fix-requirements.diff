@@ -1,10 +1,11 @@
---- requirements.txt.orig	2019-02-27 10:44:38.748699510 +0100
-+++ requirements.txt	2019-02-27 10:45:24.922436047 +0100
-@@ -6,6 +6,5 @@
+--- requirements.txt.orig	2019-05-17 15:46:13.925840190 +0200
++++ requirements.txt	2019-05-17 15:54:03.083018342 +0200
+@@ -6,7 +6,5 @@
  raven>=5.23.0
  psutil>=3.0.0
  zipstream>=1.1.4
 -typing>=3.5.3.0 # Otherwise yarl fails with python 3.4
  prompt-toolkit==1.0.15
 -async-timeout<3.0.0 # pyup: ignore; 3.0 drops support for python 3.4
+-
 +async-timeout>=3.0.0
