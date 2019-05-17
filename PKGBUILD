@@ -1,12 +1,12 @@
 # Maintainer: Christian Bundy <christianbundy@fraction.io> 
 pkgname=patchbay
-pkgver=7.17.0
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="An alternative Secure Scuttlebutt client interface that is fully compatible with Patchwork"
 arch=('i686' 'x86_64')
 url="https://github.com/ssbc/patchbay"
 license=('MIT')
-depends=('libsodium' 'gtk2' 'gconf' 'python' 'electron2')
+depends=('libsodium' 'gtk2' 'gconf' 'python' 'electron')
 makedepends=('nodejs' 'npm' 'git')
 options=(!strip)
 
@@ -16,19 +16,14 @@ source=(
 "${pkgname}.desktop"
 )
 
-md5sums=('60a264b095eb4f29baf529ad69979d32'
-         'e7f5fd2469bf175658b9b5b57c4b7057'
+md5sums=('33d51bd5114df2da89d3847b25668870'
+         '0a8a4bb12c505623896a7b32245af544'
          'f459479fef0987c5fa81a38b04767ffa')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    npm ci --only=production --ignore-scripts
-    npm rebuild \
-      --runtime=electron \
-      --target=$(electron2 -v) \
-      --abi=$(electron2 --abi) \
-      --disturl=https://atom.io/download/atom-shell
+    npm ci
 }
 
 package() {
@@ -36,7 +31,7 @@ package() {
 
     install -d "${pkgdir}/opt/${pkgname}"
     cp -a * "${pkgdir}/opt/${pkgname}"
-    install -D assets/icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    install -D build/icon.svg "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.svg"
 
     cd "${srcdir}"
     install -D run.sh "${pkgdir}/usr/bin/${pkgname}"
