@@ -3,12 +3,12 @@
 
 pkgname=signal-desktop-bin
 pkgver=1.24.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
 url='https://github.com/signalapp/Signal-Desktop'
 license=('GPL3')
-depends=('gconf' 'gtk3' 'libnotify' 'nss' 'xdg-utils' 'libxss')
+depends=('gtk3' 'libnotify' 'nss' 'xdg-utils' 'libxss')
 optdepends=('hunspell-en_US: US English hunspell dictionaries')
 provides=('signal-desktop')
 conflicts=('signal')
