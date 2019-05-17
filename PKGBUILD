@@ -100,10 +100,10 @@ package() {
 	mkdir -p "$pkgdir/usr/lib/lv2/carla.lv2"
 	mkdir -p "$pkgdir/usr/lib/vst/carla.vst"
 	cd "$pkgdir/usr/lib/carla"
-	ln -sr *.exe ../lv2/carla.lv2/
-	ln -sr *.exe ../vst/carla.vst/
-	ln -sr *.dll ../lv2/carla.lv2/
-	ln -sr *.dll ../vst/carla.vst/
-	ln -sr *posix32 ../lv2/carla.lv2/
-	ln -sr *posix32 ../vst/carla.vst/
+	cp *.exe ../lv2/carla.lv2/
+	cp *.exe ../vst/carla.vst/
+	cp *.dll ../lv2/carla.lv2/
+	cp *.dll ../vst/carla.vst/
+	cp *posix32 ../lv2/carla.lv2/
+	cp *posix32 ../vst/carla.vst/
 }
