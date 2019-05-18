@@ -13,3 +13,18 @@ pkgbase = python-glymur
 
 pkgname = python-glymur
 
+pkgbase = python-glymur
+	pkgdesc = Tools for accessing JPEG2000 files
+	pkgver = 0.8.18
+	pkgrel = 2
+	url = https://github.com/quintusdias/glymur
+	arch = any
+	license = MIT
+	makedepends = python
+	depends = python
+	depends = openjpeg
+	source = https://files.pythonhosted.org/packages/source/p/python-glymur/python-glymur-0.8.18.tar.gz
+	md5sums = 13f5da35b50ec2363292b059b8524629
+
+pkgname = python-glymur
+
