@@ -1,0 +1,17 @@
+pkgbase = qmqtt-git
+	pkgdesc = mqtt client for Qt
+	pkgver = r291.508b714
+	pkgrel = 1
+	url = https://github.com/emqtt/qmqtt
+	arch = x86_64
+	license = Eclipse Public License 1.0
+	license = Eclipse Distribution License 1.0
+	makedepends = qt5-tools
+	depends = qt5-base
+	provides = qmqtt=r291.508b714
+	conflicts = qmqtt
+	source = git+https://github.com/emqtt/qmqtt.git
+	sha256sums = SKIP
+
+pkgname = qmqtt-git
+
