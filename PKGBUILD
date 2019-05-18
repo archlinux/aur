@@ -6,7 +6,7 @@
 pkgname=irssi-passwd
 _pkgname=irssi
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Modular text mode IRC client with Perl scripting, with irssi-passwd patch'
 url='https://github.com/swick/irssi-passwd'
 arch=('x86_64')
@@ -44,7 +44,7 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   mkdir -p "${pkgdir}/usr/share/irssi/scripts"
-	install -D -m755 ${srcdir}/passwd.pl ${pkgdir}/usr/share/irssi/scripts/
+	install -D -m644 ${srcdir}/passwd.pl ${pkgdir}/usr/share/irssi/scripts/
 }
 
 # vim: ts=2 sw=2 et:
