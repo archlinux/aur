@@ -1,13 +1,13 @@
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 
 pkgname=clickhouse-static
-pkgver=19.5.3.8
-pkgrel=4
+pkgver=19.6.2.11
+pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time. Static binary'
 arch=('i686' 'x86_64')
 url='https://clickhouse.yandex/'
 license=('Apache')
-makedepends=('cmake' 'python')
+makedepends=('cmake' 'python' 'ninja')
 source=("https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz"
   'arrow.tgz::https://github.com/apache/arrow/archive/87ac6fdd.tar.gz'
   'base64.tgz::https://github.com/aklomp/base64/archive/a27c565.tar.gz'
@@ -18,7 +18,7 @@ source=("https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz"
   'cppkafka.tgz::https://github.com/ClickHouse-Extras/cppkafka/archive/9b184d8.tar.gz'
   'double-conversion.tgz::https://github.com/google/double-conversion/archive/cf2f0f3.tar.gz'
   'googletest.tgz::https://github.com/google/googletest/archive/d175c8b.tar.gz'
-  'hyperscan.tgz::https://github.com/ClickHouse-Extras/hyperscan/archive/05dab0e.tar.gz'
+  'hyperscan.tgz::https://github.com/ClickHouse-Extras/hyperscan/archive/05b0f90.tar.gz'
   'jemalloc.tgz::https://github.com/jemalloc/jemalloc/archive/cd2931ad.tar.gz'
   'libgsasl.tgz::https://github.com/ClickHouse-Extras/libgsasl/archive/3b8948a.tar.gz'
   'libhdfs3.tgz::https://github.com/ClickHouse-Extras/libhdfs3/archive/e2131aa.tar.gz'
@@ -27,7 +27,7 @@ source=("https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz"
   'llvm.tgz::https://github.com/ClickHouse-Extras/llvm/archive/163def2.tar.gz'
   'lz4.tgz::https://github.com/lz4/lz4/archive/c10863b.tar.gz'
   'mariadb-connector-c.tgz::https://github.com/ClickHouse-Extras/mariadb-connector-c/archive/d85d0e9.tar.gz'
-  'poco.tgz::https://github.com/ClickHouse-Extras/poco/archive/fe5505e56.tar.gz'
+  'poco.tgz::https://github.com/ClickHouse-Extras/poco/archive/29439cf.tar.gz'
   'protobuf.tgz::https://github.com/ClickHouse-Extras/protobuf/archive/1273537.tar.gz'
   're2.tgz::https://github.com/google/re2/archive/7cf8b88.tar.gz'
   'snappy.tgz::https://github.com/google/snappy/archive/3f194ac.tar.gz'
@@ -37,7 +37,8 @@ source=("https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz"
   'zlib-ng.tgz::https://github.com/ClickHouse-Extras/zlib-ng/archive/9173b89.tar.gz'
   'zstd.tgz::https://github.com/facebook/zstd/archive/25559750.tar.gz'
 )
-sha256sums=(530906ef4bda8064afa830cc1118998eb4ba7ab9b1d7e10a169707755670866d # clickhouse
+sha256sums=(
+  36202b0bc43357e3c3e564de114828f3d29be65877108722351f5d19d11dd2f3 # clickhouse
   80837520237b40e27c36edb5b71127dd9051e3bcb93e26d7fa3301f2e0563e3f # arrow.tgz
   fd586532ea7c0f297f36f1fa076da6ca421abc5d2dee05f96175267a753e7154 # base64.tgz
   53d6144fcbd64fa0f88559afbb6e65ef5258f449a1358e48f3baf531e3d596a9 # boost.tgz
@@ -47,7 +48,7 @@ sha256sums=(530906ef4bda8064afa830cc1118998eb4ba7ab9b1d7e10a169707755670866d # c
   2390e9f9bbd11a7e47d9fb0ceb65a50480f9dd71e10d4acbf1b404b09b8708a2 # cppkafka.tgz
   546a1eb8ce6ab886c885a6f68e193142f09483c64a0f182e1a54f682af637b04 # double-conversion.tgz
   39a708e81cf68af02ca20cad879d1dbd055364f3ae5588a5743c919a51d7ad46 # googletest.tgz
-  375a6883df5cdcaa746f2b963bb434ef1efcf41fe6a173ee6a218c1ebe6b62ec # hyperscan.tgz
+  474f0e976c9cdce8d4bf8cdcabfa30317f94d2d470f21ff212dd3b76989800c9 # hyperscan.tgz
   aa1523658d0b1dbebccdf3f0fabdf7add86f14758d846fa6ba797ee2469c45be # jemalloc.tgz
   c41328df4d1b79f9043ad86219320d12af18dedcacbe76aa6115f906c28c6381 # libgsasl.tgz
   6744b54d9465db5bdc844a1ccd5e93fc35c804652978d304fd59772ef25ab18d # libhdfs3.tgz
@@ -56,7 +57,7 @@ sha256sums=(530906ef4bda8064afa830cc1118998eb4ba7ab9b1d7e10a169707755670866d # c
   86389e971f15512ae6952584cf4c4a471a72a7489e8063cfba5e0c6b3af826a4 # llvm.tgz
   0df7bd2a9463d9345a038d2dad25c43a8771aef6f70f7c967bc0f28dea1affdc # lz4.tgz
   91739101b1e73c19dddb5a3389f7af4ab1a3dbb3b00a4d8769369df8aa394d4c # mariadb-connector-c.tgz
-  63d620239d6098c66032ec97faf4ae4966a078e9c8aa3891f86426be7e56ed5d # poco.tgz
+  7ca4874794a5b1aa5472fe21368910f2a641fb6eba84b46cb4617b9d7aef6c4e # poco.tgz
   92a47cda264ef66dbaa28608e830a560871311b2f5558a91ea34ce27747cbfb7 # protobuf.tgz
   2e1d268c4340fc86206756f265f5910608c6d8e07a3668a955191c486afb072b # re2.tgz
   5811308e224ae6a405c4f20356388df80a01513af20958e3568791c5444765a3 # snappy.tgz
