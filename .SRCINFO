@@ -1,8 +1,8 @@
 pkgbase = plasma5-applets-plasma-pass-git
-	pkgdesc = Plasma applet for pass
-	pkgver = r52.049822b
+	pkgdesc = Plasma applet for the Pass password manager
+	pkgver = r69.360dfe8
 	pkgrel = 1
-	url = https://cgit.kde.org/scratch/dvratil/plasma-pass.git
+	url = https://cgit.kde.org/plasma-pass.git
 	arch = x86_64
 	license = GPL2
 	makedepends = extra-cmake-modules
@@ -11,7 +11,9 @@ pkgbase = plasma5-applets-plasma-pass-git
 	depends = plasma-framework
 	depends = kitemmodels
 	provides = plasma5-applets-plasma-pass
+	provides = plasma-pass
 	conflicts = plasma5-applets-plasma-pass
+	conflicts = plasma-pass
 	source = git+https://anongit.kde.org/plasma-pass.git
 	sha256sums = SKIP
 
