@@ -1,0 +1,18 @@
+pkgbase = drm_info-git
+	pkgdesc = Grab images from a Wayland compositor
+	pkgver = 1.1.0.r45.g6bb0405046ed
+	pkgrel = 1
+	url = https://github.com/ascent12/drm_info
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	depends = libdrm
+	depends = json-c
+	provides = drm_info
+	conflicts = drm_info
+	source = drm_info::git+https://github.com/ascent12/drm_info.git
+	sha1sums = SKIP
+
+pkgname = drm_info-git
+
