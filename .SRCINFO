@@ -1,5 +1,5 @@
 pkgbase = drm_info-git
-	pkgdesc = Grab images from a Wayland compositor
+	pkgdesc = Small utility to dump info about DRM devices
 	pkgver = 1.1.0.r45.g6bb0405046ed
 	pkgrel = 1
 	url = https://github.com/ascent12/drm_info
