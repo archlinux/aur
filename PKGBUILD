@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://blackfire.io'
 license=('custom')
 backup=('etc/php/conf.d/blackfire.ini')
-depends=('glibc')
+depends=('glibc' 'php>=7.3.0' 'php<7.4')
 
 # Change this if you need to support an older version of PHP (think to update the SHA256 sums too)
 PHP_VERSION=73

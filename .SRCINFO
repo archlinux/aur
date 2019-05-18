@@ -7,6 +7,8 @@ pkgbase = php-blackfire
 	arch = x86_64
 	license = custom
 	depends = glibc
+	depends = php>=7.3.0
+	depends = php<7.4
 	backup = etc/php/conf.d/blackfire.ini
 	source = blackfire.ini
 	sha256sums = 43f82aea3877cc0133cf2278cb85d0c612cf1f6c869ad430cbaa2b2598f78f33
