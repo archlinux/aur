@@ -1,7 +1,7 @@
 pkgbase = fairy-wallet
 	pkgdesc = Manages EOS tokens stored in a Ledger Nano S hardware wallet
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tarassh/fairy-wallet
 	arch = x86_64
 	license = MIT

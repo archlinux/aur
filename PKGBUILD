@@ -4,7 +4,7 @@
 Publisher="tarassh"
 pkgname="fairy-wallet"
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manages EOS tokens stored in a Ledger Nano S hardware wallet"
 arch=("x86_64")
 url="https://github.com/${Publisher}/${pkgname}"
@@ -18,6 +18,8 @@ sha256sums=("SKIP")
 
 package () {
 	tar xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+	install --directory "${pkgdir}/usr/bin"
+	ln --symbolic "/opt/FairyWallet/fairy-wallet" "${pkgdir}/usr/bin/fairy-wallet"
 }
 
 
