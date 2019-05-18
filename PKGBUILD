@@ -7,15 +7,15 @@
 
 _pkgname=go-filecoin
 pkgname=$_pkgname-git
-pkgver=0.0.1.r25.g7a875edf
-pkgrel=2
+pkgver=nightly_17481_fc53b4_0_gfc53b48c
+pkgrel=1
 pkgdesc='A decentralized storage network, full node implementation in Go'
 _organization='filecoin-project'
 url="https://github.com/$_organization/$_pkgname"
 arch=('x86_64')
 license=('MIT' 'Apache-2.0')
-makedepends=('git' 'go>=1.11.2' 'rust>=1.31.0' 'pkgconf' 'clang' 'jq')
-optdepends=()
+makedepends=('git' 'go>=1.11.2' 'pkgconf' 'clang' 'jq')
+optdepends=('rustup: compiling proofs from scratch')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+${url}.git")
@@ -24,9 +24,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  VERSION=$(jq -r .version package.json)
-  REST=$(git describe --long --tags | sed -e 's/^v//' -e 's/^\(.*\)-\([0-9]*\)-\(g[0-9a-f]*\)$/r\2.\3/')
-  printf "%s.%s" "$VERSION" "$REST" | sed -e 's/-//g'
+  git describe --long --tags | sed -e 's/-/_/g'
 }
 
 prepare() {
@@ -50,6 +48,11 @@ build() {
 
   msg2 'Installing dependencies...'
   cd "$GOPATH/src/github.com/${_organization}/${_pkgname}"
+  if ! command -v rustup > /dev/null; then
+    echo "No rustup, will be using precompiled rust proofs and bls signatures."
+    export FILECOIN_USE_PRECOMPILED_BLS_SIGNATURES=yes
+    export FILECOIN_USE_PRECOMPILED_RUST_PROOFS=yes
+  fi
   make deps
 
   msg2 'Building binary...'
