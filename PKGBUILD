@@ -2,21 +2,21 @@
 
 _pkgname=xfconf
 pkgname=${_pkgname}-devel
-pkgver=4.13.6
+pkgver=4.13.7
 pkgrel=1
 pkgdesc="A simple client-server configuration storage and query system"
 arch=('i686' 'x86_64')
-url="http://www.xfce.org/"
+url="https://www.xfce.org/"
 license=('GPL2')
 depends=('libxfce4util' 'dbus')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig' 'glib-perl'
-             'intltool' 'gtk-doc' 'chrpath')
+             'intltool' 'gtk-doc' 'chrpath' 'python') #for gdbus-codegen
 optdepends=('xfconf4.12: Legacy xfconf libraries')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
-source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('d1a3d442dae188b5a7380b5815377e5488578cdafb03ae363e9426e3b01185df')
+source=(https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
+sha256sums=('5deb13fc48a4116f5ebdee5c21d0fd3deb85bec2f69602beb3c3adb4f85e5bde')
 install='xfconf.install'
 
 build() {
@@ -30,7 +30,8 @@ build() {
     --disable-static \
     --enable-gtk-doc \
     --with-perl-options=INSTALLDIRS="vendor" \
-    --disable-debug
+    --disable-debug \
+    --enable-gsettings-backend
   make
 }
 
@@ -39,8 +40,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  # fix insecure rpath, http://bugs.archlinux.org/task/19980
+  # fix insecure rpath, https://bugs.archlinux.org/task/19980
   find "$pkgdir" -name Xfconf.so -exec chrpath -d {} +
 }
 
-# vim:set ts=2 sw=2 et:
