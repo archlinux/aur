@@ -632,3 +632,23 @@ index 79259875..db2f8a32 100644
  
      /// Number of compiler threads
      /// when using the state cache
+diff --git a/dxvk.conf b/dxvk.conf
+index 25d27cb9..4e409075 100644
+--- a/dxvk.conf
++++ b/dxvk.conf
+@@ -159,6 +159,15 @@
+ # dxvk.numCompilerThreads = 0
+ 
+ 
++# Compile pipelines asynchronously if possible. This may reduce stuttering
++# in some games, but may also introduce rendering issues that might become
++# apparent over time. Do not report bugs with this option enabled.
++#
++# Supported values: True, False
++
++# dxvk.useAsync = False
++
++
+ # Toggles raw SSBO usage.
+ # 
+ # Uses storage buffers to implement raw and structured buffer
