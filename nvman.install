@@ -1,6 +1,6 @@
 post_install() {
     echo "Setting default service to 'optimus' (if possible)"
-    nvman default optimus
+    nvman default optimus || true 
 
     echo -n "IMPORTANT! Run 'nvman default bumblebee' or 'nvman default optimus' to set "
     echo "one default service! (extremely needed)"

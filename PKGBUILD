@@ -1,7 +1,7 @@
 # Maintainer: Kevin Del Castillo R. <quebin31@gmail.com>
 
 pkgname=nvman
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="NVIDIA Manager for Optimus/Bumblebee"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=()
 options=()
 install=$pkgname.install
 source=("https://github.com/quebin31/$pkgname/archive/$pkgver.tar.gz")
-md5sums=(ef15fb793973eab6a9d25adb33a14469)
+md5sums=(9eab50d1dbd5d8508484d0667f5dc041)
 
 package() {
     cd "$pkgname-$pkgver"
