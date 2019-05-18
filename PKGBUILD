@@ -2,7 +2,7 @@
 pkgbase=python-iminuit
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
-pkgver=1.3.3
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Python interface for MINUIT, a physics analysis tool for function minimization."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cython' 'cython2' 'python-numpy' 'python2-numpy')
 checkdepends=('python-pytest' 'jupyter-nbconvert')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('35f074f44dadd4e20dd110576c8a0ffc')
+md5sums=('fd1ed0db33f303031323ee7c3aa839a9')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -54,7 +54,7 @@ package_python2-iminuit() {
 }
 
 package_python-iminuit() {
-    depends=('python>=3.4' 'python-numpy')
+    depends=('python>=3.5' 'python-numpy')
     optdepends=('ipython'
                 'python-matplotlib'
                 'python-pytest-cov: For testing and get a coverage report'
