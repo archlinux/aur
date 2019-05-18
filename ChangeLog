@@ -1,6 +1,11 @@
+2019-05-18 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 4.3_beta6-3 :
+	Fix location of .jar file.
+
 2019-05-15 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
-	* 4.3_beta6-1 :
+	* 4.3_beta6-2 :
 	Version bump.
 	See https://github.com/toolbox4minecraft/amidst/releases/tag/v4.3-beta6
 

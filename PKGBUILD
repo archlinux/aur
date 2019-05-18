@@ -7,7 +7,7 @@ _version='4.3-beta6'
 pkgver=${_version//-/_}
 _jarver="v${_version}"
 _jarfile="${_pkgname}-${_jarver/./-}.jar"
-pkgrel=2
+pkgrel=3
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
 license=('GPL3')
@@ -32,7 +32,7 @@ build() {
 
     #Create shell script to launch the application
     echo "#!/bin/sh" > amidst.sh
-    echo "java -noverify -jar /usr/share/java/$pkgname/AMIDST.jar" >> amidst.sh
+    echo "java -noverify -jar /usr/share/java/$_pkgname/AMIDST.jar" >> amidst.sh
 }
 
 package() {
@@ -40,7 +40,7 @@ package() {
 
     install -Dm755 'amidst.sh'                 "$pkgdir/usr/bin/amidst"
     install -Dm644 'amidst.desktop'            "$pkgdir/usr/share/applications/amidst.desktop"
-    install -Dm644 "$_jarfile"                 "$pkgdir/usr/share/java/$pkgname/AMIDST.jar"
+    install -Dm644 "$_jarfile"                 "$pkgdir/usr/share/java/$_pkgname/AMIDST.jar"
 
     icon_sizes=(16 32 48 64 128 256)
     for s in "${icon_sizes[@]}"; do
