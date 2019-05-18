@@ -1,7 +1,7 @@
 pkgbase = lib32-llvm-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit, git)
-	pkgver = 9.0.0_r315633.d3cfaae2430
-	pkgrel = 1
+	pkgver = 9.0.0_r316806.f40c18b628f
+	pkgrel = 2
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License
@@ -19,8 +19,8 @@ pkgbase = lib32-llvm-git
 pkgname = lib32-llvm-git
 	depends = lib32-llvm-libs-git
 	depends = llvm-git
-	provides = llvm=9.0.0_r315633.d3cfaae2430-1
-	provides = clang=9.0.0_r315633.d3cfaae2430-1
+	provides = lib32-llvm=9.0.0_r316806.f40c18b628f-2
+	provides = lib32-clang=9.0.0_r316806.f40c18b628f-2
 	provides = lib32-clang-git
 	provides = lib32-clang-svn
 	provides = lib32-llvm-svn
@@ -35,7 +35,7 @@ pkgname = lib32-llvm-libs-git
 	depends = lib32-libxml2
 	depends = lib32-ncurses
 	depends = lib32-zlib
-	provides = lib32-llvm-libs=9.0.0_r315633.d3cfaae2430-1
+	provides = lib32-llvm-libs=9.0.0_r316806.f40c18b628f-2
 	provides = lib32-llvm-libs-svn
 	conflicts = lib32-llvm-libs
 
