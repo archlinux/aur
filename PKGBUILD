@@ -7,15 +7,14 @@
 
 pkgname=go-filecoin
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A decentralized storage network, full node implementation in Go'
 _organization='filecoin-project'
 url="https://github.com/$_organization/$pkgname"
 arch=('x86_64')
 license=('MIT' 'Apache-2.0')
-#makedepends=('git' 'go>=1.11.2' 'rust>=1.31.0' 'pkgconf' 'clang')
-makedepends=('git' 'go>=1.11.2' 'rustup' 'pkgconf' 'clang')
-optdepends=()
+makedepends=('git' 'go>=1.11.2' 'pkgconf' 'clang' 'jq')
+optdepends=('rustup: compiling proofs from scratch')
 conflicts=("${pkgname}-git")
 source=("git+https://github.com/filecoin-project/go-filecoin.git#tag=${pkgver}")
 
@@ -44,9 +43,11 @@ build() {
 
   msg2 'Installing dependencies...'
   cd "$GOPATH/src/github.com/${_organization}/${pkgname}"
-  # Use precompiled versions of proofs here
-  export FILECOIN_USE_PRECOMPILED_RUST_PROOFS=true
-  export FILECOIN_USE_PRECOMPILED_BLS_SIGNATURES=yes
+  if ! command -v rustup > /dev/null; then
+    echo "No rustup, will be using precompiled rust proofs and bls signatures."
+    export FILECOIN_USE_PRECOMPILED_BLS_SIGNATURES=yes
+    export FILECOIN_USE_PRECOMPILED_RUST_PROOFS=yes
+  fi
   make deps
 
   msg2 'Building binary...'
