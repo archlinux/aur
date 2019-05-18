@@ -3,8 +3,8 @@
 
 _pkgname=php-cs-fixer
 pkgname=${_pkgname}
-pkgver=2.14.0
-pkgrel=2
+pkgver=2.15.0
+pkgrel=1
 pkgdesc="Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible)."
 url="http://cs.sensiolabs.org/"
 license=("MIT")
