@@ -2,7 +2,7 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=phoenix
-pkgver=v1.0.0.beta.6.r20.gd65c928a
+pkgver=v1.0.0.beta.6.r22.g0b7591e8
 pkgrel=1
 pkgdesc="The BurstCoin desktop wallet"
 arch=('i686' 'x86_64')
