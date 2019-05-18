@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname=owl
 pkgdesc='Parser generator for visibly pushdown languages.'
-pkgver=2
+pkgver=4
 pkgrel=1
 url='https://github.com/ianh/owl'
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=(custom)
 depends=(glibc)
 makedepends=(make lowdown)
 source=("${url}/archive/${pkgname}.v${pkgver}.tar.gz")
-sha512sums=('396dfbba4d44e95422349b96d51943af7af2b31619511e4a34a831c50cc17364072fedffa23e9ba8539230445ca9bcbff4892ac573ae3cd9aba009f95e9f48ca')
+sha512sums=('13fb588bf015827fd9311e5e115c861b875e4eefa0723e410e665c530b0a2f2922f0951debd5f378a2f7e9b39de65e942b5d2cc0c50acd957e8bf609059b0611')
 
 build () {
 	cd "${pkgname}-${pkgname}.v${pkgver}"
