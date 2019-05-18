@@ -12,8 +12,8 @@
 
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
-_srcbasever=5.0-gnu
-_srcver=5.0.6-gnu
+_srcbasever=5.1-gnu
+_srcver=5.1.3-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -53,7 +53,7 @@ source=(
 )
 source_armv7h=(
   # armv7h patches, put in the source_armv7h variable just for a more comfortable loop patching
-  "https://repo.parabola.nu/other/rcn-libre/patches/${_srcver%-*}/rcn-libre-${_srcver%-*}-$rcnrel.patch"{,.sig}
+#  "https://repo.parabola.nu/other/rcn-libre/patches/${_srcver%-*}/rcn-libre-${_srcver%-*}-$rcnrel.patch"{,.sig}
   0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
   0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
   0003-SMILE-Plug-device-tree-file.patch
@@ -68,9 +68,9 @@ validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
   '6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78' # David P.
 )
-sha512sums=('56b8e77eb445c92c3e0ec0dc45fa5fb09641cad18003b79991652b83cf1d96cc1651750dfa9eec15652108a1b8aff1781c4f8ec5f92784b8542e59e0605922d9'
+sha512sums=('42510bffa69746e0f919fecef5a23da4adb2473239ee67730fa1eb2340256fb4618c6acab439c01ae781df768a2e1ac4b76ad80fe0e4a432eaceb7f01f275439'
             'SKIP'
-            'c015da00812cfc9cb16e408807338d2e09270e3b33deb85c5cab36e9c2e6155dbc2a3653d744de272032d524bbb59b428984debf1369e42b788b51caf4591526'
+            'a84d9d60f754c7afc7a733721dc50a39f4c7e8d702f21bffcd4685564914a74259de9be2c19122c82db0606c1e984591b34248356a70000c3974ddb812e7330e'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -90,9 +90,7 @@ sha512sums=('56b8e77eb445c92c3e0ec0dc45fa5fb09641cad18003b79991652b83cf1d96cc165
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
             '7748427819372a27b5aa9b3ce8cc8c75397bc3a76ac4fddd06f497ce5a1b34c2e15b6301e764e6e007ad66a49bb3f9c49e906c179875e115d213d2682ddb2576')
-sha512sums_armv7h=('4f185601aa569db7ee2033d6360f284aede970ea02093fdbfe25e2a3bc7463b55180678192974ce38e425ea3ecb8193a58cb7442c9390429c1dabd13afc9be8e'
-                   'SKIP'
-                   '6e2eed5e047d95a825241bf30bd09e3edad7787f1f742ca5cf3cf53f4f1383ca7ede306f12cf522fa1175930b3dde550994ef085bf6d93761babfe976dc94ca2'
+sha512sums_armv7h=('6e2eed5e047d95a825241bf30bd09e3edad7787f1f742ca5cf3cf53f4f1383ca7ede306f12cf522fa1175930b3dde550994ef085bf6d93761babfe976dc94ca2'
                    '32a185f7d8b93e8cb70bee0d32eb6876ac0a976abe550ec83de1fc57963b0879872831c671f4aa5281b4def9bf81660c92809047eda9a9ada939bdf5b7d32dbc'
                    'b523cc0978f6426162d8ef82dc44763fca7ca57c8bf3b2b27549d7ed7d873389ba3acf00dfe5576ceef991d31ba39613c3203195cb5a91900330c997c9b0efff'
                    'd85f97025f21c26b438afb599af13939bae3ff769c1d1055bdcf9130a1449703a26ecf04ce715390570c14d6b91b693e7b220e7cff0576f9775990ee2fe75113'
