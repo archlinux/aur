@@ -1,16 +1,16 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Generic WPE WebKit backend using FreeDesktop technologies (Wayland)'
 pkgname=wpebackend-fdo
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=0
 url=https://github.com/Igalia/WPEBackend-fdo
 license=(custom:BSD)
 arch=(x86_64 i686 aarch64)
 groups=(wpe)
-depends=(glib2 'libwpe>=1.0.0' opengl-driver)
+depends=(glib2 'libwpe>=1.2.0' opengl-driver)
 makedepends=(cmake)
 source=("https://wpewebkit.org/releases/${pkgname}-${pkgver}.tar.xz")
-sha512sums=('1856a9594e0f8fb8deca7df3290b50913d5c0710745d2ca72bb75d8d34be8a402fa964ed3e786c97236fd0e9c38f4529a640baeb27b3f60302f621f20ef0a162')
+sha512sums=('05bc2523d18474b076d77b868d4932ca850bf4abc9a94a14af510901d250ce0cf0d2d416ffd47b570080c55252dfa30d53c80e19353bff40a009002e5ed90c4b')
 
 prepare () {
 	mkdir -p _build
