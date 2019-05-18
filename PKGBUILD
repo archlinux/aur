@@ -33,6 +33,7 @@ build() {
 	cd "$pkgname"
 	qmake
 	make
+	qmake
 }
 
 check() {
