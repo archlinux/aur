@@ -5,7 +5,7 @@
 pkgbase=reduce-svn
 _pkgbase=reduce
 pkgname=(reduce-csl-svn reduce-psl-svn reduce-common-svn reduce-addons-svn)
-pkgver=20180329.4549
+pkgver=20190517.4997
 pkgrel=1
 arch=('x86_64')
 url="http://reduce-algebra.sourceforge.net/"
