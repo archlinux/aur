@@ -4,27 +4,26 @@
 
 pkgname=caffe-git
 _srcname=caffe
-pkgver=1.0.r132.g99bd99795
-pkgrel=7
+pkgver=1.0.r134.g04ab089db
+pkgrel=1
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (cpu only, git version)'
 arch=('i686' 'x86_64')
 url='https://caffe.berkeleyvision.org/'
 license=('BSD')
-depends=(
+depends=('openblas' 'lapack' 'boost-libs' 'protobuf' 'google-glog' 'gflags'
+         'hdf5' 'opencv' 'leveldb' 'lmdb' 'python' 'python-numpy' 'python-pandas')
+optdepends=(
     # official repositories:
-        'openblas' 'lapack' 'boost-libs' 'protobuf' 'google-glog' 'gflags'
-        'hdf5' 'opencv' 'leveldb' 'lmdb' 'python' 'cython'
-        'python-numpy' 'python-scipy' 'python-matplotlib' 'ipython'
-        'python-h5py' 'python-networkx' 'python-nose' 'python-pandas'
-        'python-dateutil' 'python-protobuf' 'python-gflags' 'python-yaml'
-        'python-pillow' 'python-six'
+        'cython' 'python-scipy' 'python-matplotlib' 'ipython' 'python-h5py'
+        'python-networkx' 'python-nose' 'python-dateutil' 'python-protobuf'
+        'python-gflags' 'python-yaml' 'python-pillow' 'python-six'
     # AUR:
         'python-leveldb' 'python-scikit-image' 'python-pydotplus'
     # NOTE:
     # python-pydotplus (or python-pydot) is required by python executable 'draw_net.py'
     # https://github.com/BVLC/caffe/blob/99bd99795dcdf0b1d3086a8d67ab1782a8a08383/python/caffe/draw.py#L7-L22
 )
-makedepends=('git' 'boost' 'doxygen' 'texlive-core')
+makedepends=('git' 'boost' 'doxygen' 'texlive-core' 'texlive-latexextra' 'ghostscript')
 provides=('caffe' 'caffe-cpu-git')
 conflicts=('caffe' 'caffe-cpu-git')
 replaces=('caffe-cpu-git')
@@ -38,7 +37,7 @@ sha256sums=('SKIP'
 prepare() {
     cp -af "${srcdir}/Makefile.config" "${srcdir}/${_srcname}"
     
-    # fix build with opencv 4.0
+    # fix build with opencv 4
     cd "$_srcname"
     patch -Np1 -i "${srcdir}/caffe-git-opencv4-fix.patch"
 }
@@ -53,14 +52,14 @@ pkgver() {
 build() {
     cd "$_srcname"
     
-    make all pycaffe
+    make all pycaffe test
     rm -rf doxygen
     make docs distribute
 }
 
 check() {
     cd "$_srcname"
-    make test runtest
+    make runtest
 }
 
 package() {
