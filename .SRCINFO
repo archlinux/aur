@@ -1,13 +1,14 @@
 pkgbase = gmt6
 	pkgdesc = Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps.
 	pkgver = 6.0.0_67749cd5de1a06e88861b21470daaa3515ccc4e5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gmt.soest.hawaii.edu/
 	install = gmt.install
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
+	makedepends = ninja
 	depends = gdal
 	depends = fftw
 	depends = lapack
@@ -19,7 +20,7 @@ pkgbase = gmt6
 	conflicts = gmt4
 	conflicts = gmt
 	source = https://github.com/GenericMappingTools/gmt/archive/67749cd5de1a06e88861b21470daaa3515ccc4e5.tar.gz
-	md5sums = 9ab1a9d2fdce7c3c2910b02902274e2e
+	sha256sums = 37b7356c25be06abd6b84df25d6169d921573b017c7de38f6817fa907d03c645
 
 pkgname = gmt6
 
