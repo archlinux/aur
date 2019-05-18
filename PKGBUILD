@@ -3,13 +3,15 @@
 pkgname=hashdb
 pkgver=3.1.0
 _pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for finding previously identified blocks of data in media such as disk images'
 arch=('i686' 'x86_64')
 url='https://github.com/NPS-DEEP/hashdb/wiki'
 license=('GPL')
 depends=(openssl bzip2 libewf)
-makedepends=()
+makedepends=(
+automake-1.15
+)
 source=(http://digitalcorpora.org/downloads/hashdb/hashdb-$_pkgver.tar.gz
 configure.patch
 )
