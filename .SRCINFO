@@ -1,41 +1,41 @@
 pkgbase = sdrangel
-	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
-	pkgver = 4.0.4
+	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend
+	pkgver = 4.5.3
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
-	arch = i686
-	arch = arm
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
 	license = GPL3
-	makedepends = git
 	makedepends = cmake
+	makedepends = ffmpeg
+	makedepends = airspy
+	makedepends = bladerf
+	makedepends = hackrf
+	makedepends = limesuite
+	makedepends = rtl-sdr
+	makedepends = boost
 	depends = pkg-config
-	depends = boost
 	depends = log4cpp
 	depends = opencv
-	depends = qt5-base>=5.9
-	depends = qt5-tools
-	depends = qt5-multimedia
 	depends = fftw
+	depends = ffmpeg
+	depends = cm256cc
+	depends = dsdcc
+	depends = pulseaudio
 	depends = lz4
 	depends = nanomsg
-	depends = ffmpeg>=3.1
-	depends = cm256cc
-	depends = dsdcc>=1.8.3
-	depends = pulseaudio
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qt5-multimedia
 	optdepends = ffmpeg: DATV demodulator
-	optdepends = libmirisdr4: SDRPlay support
 	optdepends = rtl-sdr: RTLSDR support
 	optdepends = hackrf: HackRF support
-	optdepends = libad9361-iio: PlutoSDR support
 	optdepends = limesuite: LimeSDR support
 	optdepends = bladerf: BladeRF support
 	optdepends = airspy: AirSPY support
-	source = sdrangel-4.0.4.tar.gz::https://github.com/f4exb/sdrangel/archive/v4.0.4.tar.gz
-	sha256sums = be025174203e0f4b49cb45b526da5975264d5d10308df501fbffce42b41a7bc7
+	source = sdrangel-4.5.3.tar.gz::https://github.com/f4exb/sdrangel/archive/v4.5.3.tar.gz
+	source = sdrangel-opencv4.patch
+	sha512sums = ef32c4f20fca5578e8d2de3b4ff822d25ee8f7430504578a81b231f987bdd11a1087e2e19135d5f02274e7a1c1d8a76808d9c2626330ae076adc07f6d778652e
+	sha512sums = bc9519a0f08cc6372b3290ed475e3a70b71d4a29f2cedefd349f9ba220a9d446c05c02ca648f068ee298612b85faeda96d45d186120555382b2df99596576e7e
 
 pkgname = sdrangel
 

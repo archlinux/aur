@@ -1,0 +1,87 @@
+--- sdrangel-4.1.0/plugins/channeltx/modatv/atvmod.cpp.orig	2018-11-20 21:07:19.060496490 +0000
++++ sdrangel-4.1.0/plugins/channeltx/modatv/atvmod.cpp	2018-11-20 21:09:08.127437459 +0000
+@@ -331,7 +331,7 @@
+             		        mixImageAndText(colorFrame);
+             		    }
+ 
+-            		    cv::cvtColor(colorFrame, m_videoframeOriginal, CV_BGR2GRAY);
++            		    cv::cvtColor(colorFrame, m_videoframeOriginal, cv::COLOR_BGR2GRAY);
+             		    resizeVideo();
+             		}
+             	}
+@@ -451,7 +451,7 @@
+                         mixImageAndText(colorFrame);
+                     }
+ 
+-                    cv::cvtColor(colorFrame, camera.m_videoframeOriginal, CV_BGR2GRAY);
++                    cv::cvtColor(colorFrame, camera.m_videoframeOriginal, cv::COLOR_BGR2GRAY);
+                     resizeCamera();
+                 }
+ 
+@@ -561,7 +561,7 @@
+ 
+         if (m_videoOK && m_video.isOpened())
+         {
+-            framesCount = m_video.get(CV_CAP_PROP_POS_FRAMES);;
++            framesCount = m_video.get(cv::CAP_PROP_POS_FRAMES);;
+         } else {
+             framesCount = 0;
+         }
+@@ -792,7 +792,7 @@
+ 
+ void ATVMod::openImage(const QString& fileName)
+ {
+-    m_imageFromFile = cv::imread(qPrintable(fileName), CV_LOAD_IMAGE_GRAYSCALE);
++    m_imageFromFile = cv::imread(qPrintable(fileName), cv::IMREAD_GRAYSCALE);
+ 	m_imageOK = m_imageFromFile.data != 0;
+ 
+ 	if (m_imageOK)
+@@ -822,11 +822,11 @@
+     if (m_videoOK)
+     {
+         m_videoFileName = fileName;
+-        m_videoFPS = m_video.get(CV_CAP_PROP_FPS);
+-        m_videoWidth = (int) m_video.get(CV_CAP_PROP_FRAME_WIDTH);
+-        m_videoHeight = (int) m_video.get(CV_CAP_PROP_FRAME_HEIGHT);
+-        m_videoLength = (int) m_video.get(CV_CAP_PROP_FRAME_COUNT);
+-        int ex = static_cast<int>(m_video.get(CV_CAP_PROP_FOURCC));
++        m_videoFPS = m_video.get(cv::CAP_PROP_FPS);
++        m_videoWidth = (int) m_video.get(cv::CAP_PROP_FRAME_WIDTH);
++        m_videoHeight = (int) m_video.get(cv::CAP_PROP_FRAME_HEIGHT);
++        m_videoLength = (int) m_video.get(cv::CAP_PROP_FRAME_COUNT);
++        int ex = static_cast<int>(m_video.get(cv::CAP_PROP_FOURCC));
+         char ext[] = {(char)(ex & 0XFF),(char)((ex & 0XFF00) >> 8),(char)((ex & 0XFF0000) >> 16),(char)((ex & 0XFF000000) >> 24),0};
+ 
+         qDebug("ATVMod::openVideo: %s FPS: %f size: %d x %d #frames: %d codec: %s",
+@@ -921,7 +921,7 @@
+     if ((m_videoOK) && m_video.isOpened())
+     {
+         int seekPoint = ((m_videoLength * seekPercentage) / 100);
+-        m_video.set(CV_CAP_PROP_POS_FRAMES, seekPoint);
++        m_video.set(cv::CAP_PROP_POS_FRAMES, seekPoint);
+         m_videoFPSCount = m_videoFPSq;
+         m_videoPrevFPSCount = 0;
+         m_videoEOF = false;
+@@ -939,9 +939,9 @@
+ 
+ 		if (m_cameras.back().m_camera.isOpened())
+ 		{
+-			m_cameras.back().m_videoFPS = m_cameras.back().m_camera.get(CV_CAP_PROP_FPS);
+-			m_cameras.back().m_videoWidth = (int) m_cameras.back().m_camera.get(CV_CAP_PROP_FRAME_WIDTH);
+-			m_cameras.back().m_videoHeight = (int) m_cameras.back().m_camera.get(CV_CAP_PROP_FRAME_HEIGHT);
++			m_cameras.back().m_videoFPS = m_cameras.back().m_camera.get(cv::CAP_PROP_FPS);
++			m_cameras.back().m_videoWidth = (int) m_cameras.back().m_camera.get(cv::CAP_PROP_FRAME_WIDTH);
++			m_cameras.back().m_videoHeight = (int) m_cameras.back().m_camera.get(cv::CAP_PROP_FRAME_HEIGHT);
+ 
+ 			//m_cameras.back().m_videoFPS = m_cameras.back().m_videoFPS < 0 ? 16.3f : m_cameras.back().m_videoFPS;
+ 
+@@ -1012,7 +1012,7 @@
+     // position the text in the top left corner
+     cv::Point textOrg(6, textSize.height+10);
+     // then put the text itself
+-    cv::putText(image, m_settings.m_overlayText.toStdString(), textOrg, fontFace, fontScale, cv::Scalar::all(255*m_settings.m_uniformLevel), thickness, CV_AA);
++    cv::putText(image, m_settings.m_overlayText.toStdString(), textOrg, fontFace, fontScale, cv::Scalar::all(255*m_settings.m_uniformLevel), thickness, cv::LINE_AA);
+ }
+ 
+ void ATVMod::applyChannelSettings(int outputSampleRate, int inputFrequencyOffset, bool force)
+
