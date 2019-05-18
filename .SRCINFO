@@ -1,0 +1,33 @@
+pkgbase = balena-engine
+	pkgdesc = A Moby-based container engine for the Internet of Things
+	pkgver = 18.9.5
+	pkgrel = 1
+	epoch = 1
+	url = https://www.balena.io/
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = git
+	makedepends = go>=1.10.8
+	makedepends = cmake
+	makedepends = systemd
+	depends = glibc
+	depends = bridge-utils
+	depends = iproute2
+	depends = device-mapper
+	depends = sqlite
+	depends = libsystemd
+	depends = libseccomp
+	depends = libtool
+	optdepends = lxc: lxc backend support
+	options = !strip
+	options = !buildflags
+	source = git+https://github.com/balena-os/balena-engine.git#tag=v18.9.5
+	source = balena-engine.sysusers
+	source = 80-balena-engine.rules
+	sha256sums = SKIP
+	sha256sums = 39ab64fca83966b0edf2d56013ce33dcb44962800c1f0a29673708c9ba9328e3
+	sha256sums = fbdcb0d6c5794c9db8fa30e81fa0f1d2f91d11e23f4c286e15ff57e8bef87bce
+
+pkgname = balena-engine
+

@@ -1,0 +1,2 @@
+# create balena-engine group (FS#38029, similar to docker)
+g balena-engine - -
