@@ -10,6 +10,7 @@ pkgbase = borg-bin
 	provides = borgbackup
 	conflicts = borg
 	conflicts = borgbackup
+	conflicts = borg-arm-bin
 	source = borg-bin-1.1.10-README.txt::https://github.com/borgbackup/borg/releases/download/1.1.10/README.txt
 	sha256sums = e694697cd7b7ccc6330ab16eb91046150f5950ecb0598e125cadaac0ebd4dada
 	source_x86_64 = borg-bin-1.1.10-x86_64::https://github.com/borgbackup/borg/releases/download/1.1.10/borg-linux64
