@@ -4,7 +4,7 @@
 # Contributor: David Danier <david.danier@team23.de>
 
 pkgname=solr
-pkgver=7.7.0
+pkgver=7.7.1
 pkgrel=1
 pkgdesc="Popular, blazing fast open source enterprise search platform from the Apache Lucene project"
 arch=('any')
@@ -20,8 +20,8 @@ backup=(opt/solr/server/etc/jetty{,-http,-https,-ssl}.xml
         opt/solr/server/solr/zoo.cfg)
 install="$pkgname.install"
 options=(!strip)
-validpgpkeys=('052C5B48A480B9CEA9E218A5F98C13CFA5A135D8') # Jim Ferenczi (CODE SIGNING KEY) <jimczi@apache.org> 
-sha256sums=('ad9eaa29449701fcabad497cc5f0506f8a8f76da714dc4a5429a549fcac24dc7'
+validpgpkeys=('2085660D9C1FCCACC4A479A3BF160FF14992A24C') # Ishan Chattopadhyaya <ishan@apache.org>
+sha256sums=('4fb85f12af045b28f6cb935b2f3739d59ec61ad1288ffe44c7ede64e614f28c4'
             'SKIP'
             'e4ca86de2ef9425913280deeeec42d6e8ff310b08ea55d9156193ceef3c847bd'
             'a336c1a16742b100b3d28fe49722366477bb805e262f36b83cc2fdd9e85d5bf9')
