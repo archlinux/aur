@@ -1,15 +1,15 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 _tarname='Delorean'
-pkgname='python-delorean'
+pkgname=python-delorean
 pkgdesc='Library providing a more convenient use of datetimes'
-pkgver='0.6.0'
-pkgrel='2'
-url='http://delorean.readthedocs.org/'
-license=('custom:MIT')
-arch=('any')
-depends=('python-pytz' 'python-dateutil' 'python-humanize' 'python-tzlocal')
+pkgver=1.0.0
+pkgrel=1
+url=http://delorean.readthedocs.org/
+license=(custom:MIT)
+arch=(any)
+depends=(python-pytz python-dateutil python-humanize python-tzlocal)
 source=("https://pypi.python.org/packages/source/D/Delorean/${_tarname}-${pkgver}.tar.gz")
-sha512sums=('ceb9adbed3086b4ae510d5aa2cc2b2a23f56bfb5e67dff6b34b94c977f58de2745ef736421a4650f98486cb5e9e79c78e95954372620f6f240e0f8da4a6c9d30')
+sha512sums=('7514145d0084d8f0697b7ae078e35087b64d723ef6d20b105a72bf84a5f122eb69693aec59c7d574a1b57f114ba4269f31931bdfc54cfeac32a98add9eec05e3')
 
 package () {
 	cd "${_tarname}-${pkgver}"
