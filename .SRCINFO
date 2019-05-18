@@ -1,6 +1,6 @@
 pkgbase = emacs-hydra-git
 	pkgdesc = Make Emacs bindings that stick around
-	pkgver = 0.14.0r38.g9c4a471
+	pkgver = 0.15.0.r1.ge94b391
 	pkgrel = 1
 	url = https://github.com/abo-abo/hydra
 	arch = any
