@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Jakub Rup <tomasz.rup@gmail.com>
 pkgname=speccy
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A handy toolkit for OpenAPI, with a linter to enforce quality rules, documentation rendering, and resolution"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('nodejs>=8.4.0')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-md5sums=('078c55d58ab0bf7d180b8dfd3cfb8d08')
+md5sums=('466f889f22e259c54dbb2656df8f6919')
 
 package() {
 	cd $srcdir
