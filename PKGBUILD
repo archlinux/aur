@@ -9,7 +9,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=60.0.3255.83
+pkgver=60.0.3255.95
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
@@ -31,7 +31,7 @@ source=(
     'terms.html'
     'privacy.html'
 )
-sha512sums=('037ed829bef7561bec3ced495ca7b975a81ddd8fda87f93988b1f7c220e9fb1ea1f5e425a8e72aa6da0881df94a4b520bddf38a4ef6ae49bed6acb572c949219'
+sha512sums=('c58bc42527b5dd876f06c9d7393f03be2b5dc598d7e66159f24bdceef1ea4f6d3832ee48b5a793e39c44ad738d84e22e0083531f5dfcbc9ed1dd169fd9c06d9e'
             '7e854e4c972785b8941f60117fbe4b88baeb8d7ca845ef2e10e8064043411da73821ba1ab0068df61e902f242a3ce355b51ffa9eab5397ff3ae3b5defd1be496'
             'ddb1773877fcfd7d9674e63263a80f9dd5a3ba414cda4cc6c411c88d49c1d5175eede66d9362558ddd53c928c723101e4e110479ae88b8aec4d2366ec179297f'
             '285a0633e5863ec9c9af99138ff0b59da155a2dd72a340e784e53de3e801029eb6ca2e4b38846592b85b9f8b99dcb6f6eedbed273057a9216abe31c396d9f28a'
