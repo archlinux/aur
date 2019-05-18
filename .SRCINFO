@@ -1,0 +1,22 @@
+pkgbase = rofi-pass-ydotool-git
+	pkgdesc = bash script to handle pass storages in a convenient way. Ydotool branch, which works under Wayland
+	pkgver = 525.90317d4
+	pkgrel = 1
+	url = https://github.com/carnager/rofi-pass/tree/ydotool
+	install = rofi-pass.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = xdg-utils
+	depends = rofi
+	depends = gawk
+	depends = pass
+	depends = ydotool
+	depends = xclip
+	depends = pwgen
+	optdepends = passed-git: change fieldnames in password files
+	source = git+https://github.com/carnager/rofi-pass#branch=ydotool
+	md5sums = SKIP
+
+pkgname = rofi-pass-ydotool-git
+
