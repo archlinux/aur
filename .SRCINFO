@@ -18,6 +18,5 @@ pkgbase = openxenmanager-git
 	options = !emptydirs
 	source = openxenmanager-git::git+https://github.com/OpenXenManager/openxenmanager.git
 	sha1sums = SKIP
-
 pkgname = openxenmanager-git
 

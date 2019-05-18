@@ -1,4 +1,4 @@
-# Maintainer: Lars Hagström <lars@foldspace.nu>
+# Maintainer: Katherine Cumberbatch <stykers@stykers.moe>
 pkgname=openxenmanager-git
 pkgver=r292.1cb5c1c
 pkgrel=1
