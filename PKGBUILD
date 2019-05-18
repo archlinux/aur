@@ -6,7 +6,7 @@
 _name=c++utilities
 _reponame=cpp-utilities
 pkgname=$_name-doc
-pkgver=4.17.0
+pkgver=4.17.1
 pkgrel=1
 arch=('any')
 pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities (API documentation)'
@@ -14,7 +14,7 @@ license=('GPL')
 makedepends=('cmake' 'doxygen' 'dia' 'graphviz')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('92d288b606b4f32d69686cbf5a264f90e5e00d80894583a9df2284d593cdc2b4')
+sha256sums=('c5cbca152eb43e3b2e16309d934fc5832a5c52d83dfca2d231d26384d8fe3805')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
