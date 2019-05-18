@@ -1,12 +1,12 @@
 pkgbase = scalafmt-native
 	pkgdesc = Code formatter for Scala built with GraalVM (for fast startup)
-	pkgver = 2.0.0.RC6
+	pkgver = 2.0.0.RC7
 	pkgrel = 2
 	url = https://scalameta.org/scalafmt/
 	arch = x86_64
 	license = Apache
-	source = https://chugunkov.website/files/scalafmt-native-2.0.0.RC6.tar.gz
-	sha256sums = 772260f561b0a9ed38b67cff383f20bc78ccd924a7cee26af46418b63a4c6a61
+	source = https://chugunkov.website/files/scalafmt-native-2.0.0.RC7.tar.gz
+	sha256sums = 974086c63d1176f80342b7bd83f698866b91c169a10b1d73406db024c15dbe52
 
 pkgname = scalafmt-native
 
