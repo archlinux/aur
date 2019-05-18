@@ -14,7 +14,7 @@ optdepends=('streamlink: For piping streams to video players'
 provides=('chatterino')
 conflicts=('chatterino')
 install=$pkgname.install
-source=('chatterino.png' 'chatterino.desktop' "git://github.com/chatterino/chatterino2#branch=nightly")
+source=('chatterino.png' 'chatterino.desktop' "git://github.com/Chatterino/chatterino2#branch=nightly")
 md5sums=('b8de2f4e09b13025f92e12bb292dccb1' '6dc7280e81653e9a1f35e150fbebd8a0' 'SKIP')
 
 pkgver() {
