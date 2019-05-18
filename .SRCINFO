@@ -1,0 +1,26 @@
+pkgbase = polkit-no-script-git
+	pkgdesc = A polkit-fork with no javascript dependency
+	pkgver = 0.113+35+g5bcb1c1
+	pkgrel = 1
+	url = https://github.com/getsolus/polkit-no-script.git
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = automake
+	depends = glib2
+	depends = pam
+	depends = expat
+	depends = systemd
+	provides = polkit-no-script
+	provides = polkit
+	conflicts = polkit-no-script
+	conflicts = polkit
+	source = git+https://github.com/ikeydoherty/polkit-no-script.git#branch=noscript-3
+	sha256sums = SKIP
+
+pkgname = polkit-no-script-git
+
