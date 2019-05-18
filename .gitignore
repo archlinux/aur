@@ -2,6 +2,7 @@ pkg/
 src/
 download
 *.pkg.tar.xz
+*.pkg.tar
 *.tar.bz2
 *.tar.gz
 *.tar.xz
