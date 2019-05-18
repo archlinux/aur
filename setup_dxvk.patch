@@ -1,5 +1,5 @@
 diff --git a/setup_dxvk.sh b/setup_dxvk.sh
-index f6bb5b7d..f7828bea 100644
+index f6bb5b7d..01cebf7f 100644
 --- a/setup_dxvk.sh
 +++ b/setup_dxvk.sh
 @@ -50,6 +50,7 @@ if [ -z "$wine" ]; then
@@ -21,7 +21,7 @@ index f6bb5b7d..f7828bea 100644
  win32_sys_path=$($wine winepath -u 'C:\windows\system32' 2> /dev/null)
  win64_sys_path=$($wine64 winepath -u 'C:\windows\system32' 2> /dev/null)
  
-@@ -91,12 +96,12 @@ installFile() {
+@@ -91,14 +96,14 @@ installFile() {
    if [ -f "${srcfile}.so" ]; then
      srcfile="${srcfile}.so"
    fi
@@ -36,8 +36,11 @@ index f6bb5b7d..f7828bea 100644
 -  
 +
    if [ -n "$1" ]; then
-     if [ -f "${dstfile}" ]; then
+-    if [ -f "${dstfile}" ]; then
++    if [ -f "${dstfile}" ] || [ -h "${dstfile}" ]; then
        if ! [ -f "${dstfile}.old" ]; then
+         mv "${dstfile}" "${dstfile}.old"
+       else
 @@ -107,31 +112,58 @@ installFile() {
        $file_cmd "${srcfile}" "${dstfile}"
      else
@@ -65,7 +68,7 @@ index f6bb5b7d..f7828bea 100644
 +    return 1
 +  fi
 +
-+  if ! [ -f "${dstfile}" ];then
++  if ! [ -f "${dstfile}" ] && ! [ -h "${dstfile}" ]; then
 +    echo "${dstfile}: File not found. Skipping." >&2
 +    return 1
 +  fi

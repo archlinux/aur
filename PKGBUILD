@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-winelib-git
-pkgver=r2920.4c337dc3
+pkgver=r2924.58669173
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase, winelib version"
 arch=('x86_64')
@@ -15,14 +15,12 @@ source=(
     "git+https://github.com/Joshua-Ashton/d9vk.git"
     "setup_d9vk"
     "setup_dxvk.patch"
-    "extraopts.patch"
     "dxvk-async.patch"
 )
 sha256sums=(
     "SKIP"
     "7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a"
-    "8ebed41bc54f795c4b5f4d2548475dffd28b2d5fe85c82a4753a983638376823"
-    "2042ed0d7365c41aee2107baf394c26cb05a2e2a80a49daa050ba62425b81bbb"
+    "4e74b2d921c38ca0f9c5a6069501e9d15c7c076dcd6d41ae243830375115b8f9"
     "32780432c2159d57ca0fb1863309cdb141fbfc506c6b9003acfa05896af90140"
 )
 
@@ -35,16 +33,7 @@ pkgver() {
 prepare() {
     cd d9vk
     patch -p1 -i ../setup_dxvk.patch
-    # Patch crossfiles with extra optimizations from makepkg.conf
-    # If building fails, comment the line below to disable them.
-    patch -p1 -i ../extraopts.patch
-    CFLAGS="$CPPFLAGS $CFLAGS"
-    sed -i build-wine64.txt \
-        -e "s|@CARGS@|\'${CFLAGS// /\',\'}\'|g" \
-        -e "s|@LDARGS@|\'${LDFLAGS// /\',\'}\'|g"
-    sed -i build-wine32.txt \
-        -e "s|@CARGS@|\'${CFLAGS// /\',\'}\'|g" \
-        -e "s|@LDARGS@|\'${LDFLAGS// /\',\'}\'|g"
+
     # Uncomment to enable dxvk async patch.
     # Enable at your own risk, if you don't know what it is,
     # leave it as is. You have been warned.
