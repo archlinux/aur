@@ -1,0 +1,15 @@
+pkgbase = spotify_dl
+	pkgdesc = Downloads songs from your Spotify Playlist
+	pkgver = v3.r2.gb9d82fb
+	pkgrel = 1
+	url = https://github.com/SathyaBhat/spotify-dl
+	arch = any
+	license = MIT
+	depends = python-spotipy
+	depends = python-google-api-python-client
+	depends = youtube-dl
+	source = git+https://github.com/SathyaBhat/spotify-dl/
+	md5sums = SKIP
+
+pkgname = spotify_dl
+
