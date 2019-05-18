@@ -2,8 +2,8 @@
 pkgname=compcert-git
 _basepkgname=${pkgname%-*}
 _dirname=CompCert
-pkgver=3.5.r25.g8df51b98
-pkgrel=1
+pkgver=3.5.r36.g5b7fc96a
+pkgrel=3
 pkgdesc="The formally verified C compiler"
 arch=('x86_64')
 url="http://compcert.inria.fr"
@@ -15,12 +15,8 @@ makedepends=('coq>=8.6.1' 'ocaml>=4.0.2'
              'git')
 provides=($_basepkgname=$pkgver)
 conflicts=($_basepkgname)
-source=("git+https://github.com/AbsInt/CompCert.git"
-        "Makefile.patch"
-        "Makefile-runtime.patch")
-sha1sums=('SKIP'
-          '12abd465a238501777573391c551deb1637a9384'
-          '810e5efc65179168764221d4d7fd83b8340f61bb')
+source=("git+https://github.com/AbsInt/CompCert.git")
+sha1sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$_dirname
@@ -29,11 +25,6 @@ pkgver() {
 
 prepare() {
   cd $srcdir/$_dirname
-
-  # Fix missing $DESTDIR references in Makefile
-  # Until upstream fixes this, we're forced to use this patch
-  patch -Np0 -i ../Makefile.patch
-  patch -Np0 -i ../Makefile-runtime.patch  
 }
 
 build() {
@@ -42,7 +33,7 @@ build() {
   # Some useful options:
   # -clightgen: builds and installs the clightgen tool
   # -install-coqdev: also installs the Coq development, implied by -clightgen, useful
-  #   if you will use tools such as Princeton VST)
+  #   if you want to use tools such as Princeton VST)
   ./configure -prefix /usr $CARCH-linux
 
   make all
