@@ -7,11 +7,11 @@ post_install() {
 	chown http:http . db.sqlite3
 	chown http:http -R static myenv
 
-	secret=`python -c 'import random; result = "".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)") for i in range(50)]); print(result)'`
+	secret=`python -c 'import random; result = "".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^*(-_=+)") for i in range(50)]); print(result)'`
 	sed -i "s/^SECRET_KEY = .*$/SECRET_KEY = '$secret'/" unarelith/settings.py
 	sed -i "s/^DEBUG = .*$/DEBUG = False/" unarelith/settings.py
 
-	cp unarelith/settings.py{,prod}
+	cp unarelith/settings.py{,.prod}
 
 	echo "==>"
 	echo "==>"
