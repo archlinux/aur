@@ -1,0 +1,32 @@
+https://debbugs.gnu.org/35776
+
+diff --git a/tests/guix-pack-localstatedir.sh b/tests/guix-pack-localstatedir.sh
+index b734b0f..41afda1 100644
+--- a/tests/guix-pack-localstatedir.sh
++++ b/tests/guix-pack-localstatedir.sh
+@@ -27,8 +27,9 @@ guix pack --version
+ # the test in the user's global store if possible, on the grounds that
+ # binaries may already be there or can be built or downloaded inexpensively.
+ 
+-NIX_STORE_DIR="`guile -c '(use-modules (guix config))(display %storedir)'`"
++nix_store_dir="`guile -c '(use-modules (guix config))(display %storedir)'`"
+ localstatedir="`guile -c '(use-modules (guix config))(display %localstatedir)'`"
++NIX_STORE_DIR="$nix_store_dir"
+ GUIX_DAEMON_SOCKET="$localstatedir/guix/daemon-socket/socket"
+ export NIX_STORE_DIR GUIX_DAEMON_SOCKET
+ 
+diff --git a/tests/guix-pack-relocatable.sh b/tests/guix-pack-relocatable.sh
+index 38dcf1e..b276fdc 100644
+--- a/tests/guix-pack-relocatable.sh
++++ b/tests/guix-pack-relocatable.sh
+@@ -27,8 +27,9 @@ guix pack --version
+ # run it on the user's global store if possible, on the grounds that binaries
+ # may already be there or can be built or downloaded inexpensively.
+ 
+-NIX_STORE_DIR="`guile -c '(use-modules (guix config))(display %storedir)'`"
++nix_store_dir="`guile -c '(use-modules (guix config))(display %storedir)'`"
+ localstatedir="`guile -c '(use-modules (guix config))(display %localstatedir)'`"
++NIX_STORE_DIR="$nix_store_dir"
+ GUIX_DAEMON_SOCKET="$localstatedir/guix/daemon-socket/socket"
+ export NIX_STORE_DIR GUIX_DAEMON_SOCKET
+ 
