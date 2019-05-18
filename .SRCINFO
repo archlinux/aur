@@ -1,15 +1,16 @@
 pkgbase = gm2calc
 	pkgdesc = A C++ program which calculates the anomalous magnetic moment of the muon in the MSSM at 1-loop and leading 2-loop order.
-	pkgver = 1.3.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = http://gm2calc.hepforge.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = boost>=1.37.0
-	depends = eigen>=3.1
-	source = http://www.hepforge.org/archive/gm2calc/gm2calc-1.3.2.tar.gz
-	sha256sums = 93c3f53ce2e0e147c21c7b097ae08090a22492c5bb282eaeacccb5df05847591
+	makedepends = cmake
+	depends = boost
+	depends = eigen
+	source = https://gm2calc.hepforge.org/downloads/GM2Calc-1.5.0.tar.gz
+	sha256sums = e099211bf9f4f6d75f467351059d5ee4bd567998fcecc6aacdfbd79ee48e35a6
 
 pkgname = gm2calc
 
