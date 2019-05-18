@@ -2,11 +2,11 @@
 
 _pkgname=xfce4-appfinder
 pkgname=${_pkgname}-devel
-pkgver=4.13.2
+pkgver=4.13.3
 pkgrel=1
 pkgdesc="An application finder for Xfce"
 arch=('i686' 'x86_64')
-url="http://www.xfce.org/"
+url="https://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4')
 depends=('libxfce4ui' 'garcon' 'hicolor-icon-theme')
@@ -14,8 +14,8 @@ makedepends=('intltool')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=('xfce-utils')
-source=("http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('fd774acbcab08dbb88bcbf28eecf73ec9f55b13e1f2058021b63f703c4989d97')
+source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
+sha256sums=('d738082a5fb01e42ea6333803012fd80258061f444afbbbd7b05a0f620a32ba6')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -35,4 +35,3 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-# vim:set ts=2 sw=2 et:
