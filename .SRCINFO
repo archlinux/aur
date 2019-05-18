@@ -1,5 +1,5 @@
 pkgbase = linux-lts-tomoyo
-	pkgver = 4.19.43
+	pkgver = 4.19.44
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = linux-lts-tomoyo
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.43.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.44.xz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -22,7 +22,7 @@ pkgbase = linux-lts-tomoyo
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1
 	sha256sums = SKIP
-	sha256sums = 76d70fd9edc3f5eb106eec2815d51717c2daf698b258a2c21f9cbdb495a3002c
+	sha256sums = d1a3a7db1cc066bc53d1dd396312fb734b4c52fb55a4f54c2fd3c57869693c99
 	sha256sums = dfd03045db0fd87adeda3397ee25d6d75d22ca686ffc167161d286d5bffb38de
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
@@ -30,22 +30,22 @@ pkgbase = linux-lts-tomoyo
 	sha256sums = 36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98
 
 pkgname = linux-lts-tomoyo
-	pkgdesc = The Linux LTS kernel with TOMOYO configuration
+	pkgdesc = The Linux-lts kernel with TOMOYO Linux configuration
 	install = linux-lts.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
-	depends = tomoyo-tools-25
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-lts-tomoyo=4.19.43
+	optdepends = tomoyo-tools-25: the TOMOYO Linux 2.5.x userspace tools
+	provides = linux-lts-tomoyo=4.19.44
 	backup = etc/mkinitcpio.d/linux-lts-tomoyo.preset
 
 pkgname = linux-lts-tomoyo-headers
 	pkgdesc = Header files and scripts for building modules for Linux-lts-tomoyo kernel
-	provides = linux-lts-tomoyo-headers=4.19.43
+	provides = linux-lts-tomoyo-headers=4.19.44
 
 pkgname = linux-lts-tomoyo-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-lts-tomoyo kernel
-	provides = linux-lts-tomoyo-docs=4.19.43
+	provides = linux-lts-tomoyo-docs=4.19.44
 

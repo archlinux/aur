@@ -6,7 +6,7 @@
 
 pkgbase=linux-lts-tomoyo
 _srcname=linux-4.19
-pkgver=4.19.43
+pkgver=4.19.44
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -29,7 +29,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '76d70fd9edc3f5eb106eec2815d51717c2daf698b258a2c21f9cbdb495a3002c'
+            'd1a3a7db1cc066bc53d1dd396312fb734b4c52fb55a4f54c2fd3c57869693c99'
             'dfd03045db0fd87adeda3397ee25d6d75d22ca686ffc167161d286d5bffb38de'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -94,10 +94,13 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux LTS kernel with TOMOYO configuration"
+  pkgdesc="The Linux-lts kernel with TOMOYO Linux configuration"
   [ "${pkgbase}" = "linux" ] && groups=('base')
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7' 'tomoyo-tools-25')
-  optdepends=('crda: to set the correct wireless channels of your country')
+  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  optdepends=(
+             'crda: to set the correct wireless channels of your country'
+             'tomoyo-tools-25: the TOMOYO Linux 2.5.x userspace tools'
+             )
   provides=("${pkgbase}=${pkgver}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux-lts.install
