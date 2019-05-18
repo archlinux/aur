@@ -1,7 +1,7 @@
 pkgbase = execute-git
 	pkgdesc = Opens exe and bat files as if they were native
 	pkgver = r16.241a46f
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/es20490446e/execute
 	arch = x86_64
 	license = GPL3
@@ -11,9 +11,9 @@ pkgbase = execute-git
 	depends = wine_gecko
 	depends = wine-mono
 	provides = execute
-	provides = batman-git
+	provides = batman
 	conflicts = execute
-	conflicts = batman-git
+	conflicts = batman
 	source = git+https://gitlab.com/es20490446e/execute.git
 	md5sums = SKIP
 
