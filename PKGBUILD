@@ -3,7 +3,7 @@
 
 Name="execute"
 pkgname="${Name}-git"
-pkgver=r11.1bc0822
+pkgver=r16.241a46f
 pkgrel=3
 pkgdesc="Opens exe and bat files as if they were native"
 arch=("x86_64")
