@@ -1,0 +1,73 @@
+--- meson.build.orig	2019-05-19 01:25:08.696623185 +0300
++++ meson.build	2019-05-19 01:26:51.054299530 +0300
+@@ -26,8 +26,7 @@
+   conf.set('HAVE_FREETYPE', 1)
+ endif
+ 
+-coretext = dependency('appleframeworks', modules: 'applicationservices',
+-                      required: false)
++coretext = disabler()
+ if coretext.found()
+   conf.set('HAVE_CORETEXT', 1)
+ endif
+@@ -242,15 +241,6 @@
+     dependencies: deps,
+     install: true,
+   )
+-  test_good_fonts = find_program('tests/test_good_fonts.sh')
+-  test('test_good_fonts',
+-    test_good_fonts,
+-    timeout: 9999,
+-    env: [
+-      'top_srcdir=@0@'.format(meson.current_source_dir()),
+-      'top_builddir=@0@'.format(meson.current_build_dir()),
+-    ]
+-  )
+ endif
+ 
+ 
+@@ -288,44 +278,3 @@
+     install: true,
+   )
+ endif
+-
+-
+-gtest = dependency('gtest', fallback: ['gtest', 'gtest_main_dep'])
+-
+-cff_type2_charstring = executable('cff_type2_charstring',
+-  'tests/cff_type2_charstring_test.cc',
+-  include_directories: include_directories(['include', 'src']),
+-  link_with: libots,
+-  dependencies: gtest,
+-)
+-
+-test('cff_type2_charstring', cff_type2_charstring)
+-
+-
+-layout_common_table = executable('layout_common_table',
+-  'tests/layout_common_table_test.cc',
+-  include_directories: include_directories(['include', 'src']),
+-  link_with: libots,
+-  dependencies: gtest,
+-)
+-
+-test('layout_common_table', layout_common_table)
+-
+-
+-test('test_bad_fonts',
+-  find_program('tests/test_bad_fonts.sh'),
+-  env: [
+-    'top_srcdir=@0@'.format(meson.current_source_dir()),
+-    'top_builddir=@0@'.format(meson.current_build_dir()),
+-  ]
+-)
+-
+-
+-test('test_fuzzed_fonts',
+-  find_program('tests/test_fuzzed_fonts.sh'),
+-  timeout: 9999,
+-  env: [
+-    'top_srcdir=@0@'.format(meson.current_source_dir()),
+-    'top_builddir=@0@'.format(meson.current_build_dir()),
+-  ]
+-)

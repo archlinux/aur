@@ -1,15 +1,19 @@
 pkgbase = ots
 	pkgdesc = OpenType fonts sanitiser. Supports TTF, WOFF, WOFF2 and other formats
-	pkgver = 6.1.1
+	pkgver = 7.1.9
 	pkgrel = 1
 	url = https://github.com/khaledhosny/ots
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = meson
+	makedepends = ninja
 	depends = freetype2
 	conflicts = ots-git
-	source = https://github.com/khaledhosny/ots/releases/download/v6.1.1/ots-6.1.1.tar.gz
-	sha512sums = d7c6f77496a4b0867731e066d6c33642141b7a2ec3c4c4b323e4a350331d0360d4c58e7c8a9e996afb15dc150e62a98a5c484e25be9da2d6cbcd3b32fdd6bc9b
+	source = https://github.com/khaledhosny/ots/releases/download/v7.1.9/ots-7.1.9.tar.xz
+	source = no-tests.patch
+	sha512sums = 0defa5b9d03ab76f8d5a9403d0dd6a285b42def6151bad4c1cc2baed95e7d5feeb22c79fec313644de84a015d2fa38d8bf5eabcf9ce43a96652278aeeec5f246
+	sha512sums = 5cbbe4d68f83505892a7e04f8a8d8f541a982b43a47839dd6320912961c3c6178874ca3c488c26333d02e64bbef7235b623a59722f6cd38b4b9e6ae5a4858aba
 
 pkgname = ots
 

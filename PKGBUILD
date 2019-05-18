@@ -1,27 +1,32 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
-pkgname='ots'
-pkgver='6.1.1'
-pkgrel='1'
+pkgname=ots
+pkgver=7.1.9
+pkgrel=1
 pkgdesc='OpenType fonts sanitiser. Supports TTF, WOFF, WOFF2 and other formats'
-arch=('i686' 'x86_64')
-url='https://github.com/khaledhosny/ots'
-license=('custom')
-depends=('freetype2')
-conflicts=('ots-git')
-source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('d7c6f77496a4b0867731e066d6c33642141b7a2ec3c4c4b323e4a350331d0360d4c58e7c8a9e996afb15dc150e62a98a5c484e25be9da2d6cbcd3b32fdd6bc9b')
+arch=(i686 x86_64)
+url=https://github.com/khaledhosny/ots
+license=(custom)
+depends=(freetype2)
+makedepends=(meson ninja)
+conflicts=(ots-git)
+source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz" no-tests.patch)
+sha512sums=('0defa5b9d03ab76f8d5a9403d0dd6a285b42def6151bad4c1cc2baed95e7d5feeb22c79fec313644de84a015d2fa38d8bf5eabcf9ce43a96652278aeeec5f246'
+            '5cbbe4d68f83505892a7e04f8a8d8f541a982b43a47839dd6320912961c3c6178874ca3c488c26333d02e64bbef7235b623a59722f6cd38b4b9e6ae5a4858aba')
+
+prepare () {
+	cd "${pkgname}-${pkgver}"
+	patch -p0 < "${srcdir}/no-tests.patch"
+}
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	./configure --prefix=/usr --libdir=/usr/lib
-	make
+	rm -rf build
+	arch-meson build -Dgraphite=true -Dvariations=true
+	ninja -C build
 }
 
 package() {
 	cd "${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+	DESTDIR="${pkgdir}" ninja -C build install
   	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	# Remove stray static libraries and headers.
-	rm -rf "${pkgdir}/usr"/{lib,include}
 }
