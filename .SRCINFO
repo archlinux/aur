@@ -1,7 +1,7 @@
 pkgbase = irssi-passwd
 	pkgdesc = Modular text mode IRC client with Perl scripting, with irssi-passwd patch
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/swick/irssi-passwd
 	arch = x86_64
 	license = GPL
