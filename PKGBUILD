@@ -1,7 +1,7 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 _pkgname=wootility
 pkgname=${_pkgname}-appimage
-pkgver=3.2.6
+pkgver=3.2.7
 pkgrel=1
 pkgdesc='Utility for configuring Wooting keyboards (binary AppImage version)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ _appimage="${_pkgname}-${pkgver}-x86_64.AppImage"
 source=("https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-linux-latest/${_appimage}"
         '70-wooting.rules')
 noextract=("${_appimage}")
-sha512sums=('eadd3fa6b134f9bafee0e57916f2bedbd6f0a645077fd76ea8e5f007d3a771ed6954c21536d9417f00d3dd73e0e45b188d29c52c526207d78fa95aa92ad9e412'
+sha512sums=('4cddab944178c9526c50fe43676b22f3e56a34aba0f3ac3b54101827cb6f90ad29847f2cb5dcbba4f05760d8b14ae19c5c28730cd29574a2946d15ad02526fd0'
             '3a569cb1292efc31e22fd6c425fff14ac98d7f280849b3d81cdd72523a3388e6623bcd026571f726656fb339f9b90527efd8829d82de1d0b1ac778921dd72633')
 
 prepare() {
