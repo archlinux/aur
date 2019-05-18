@@ -1,7 +1,7 @@
 # Maintainer: Oscar Shrimpton <oscar.shrimpton.personal@gmail.com>
 pkgname=autopsy
 pkgver=4.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensic tools'
 arch=(x86_64)
 url='http://www.sleuthkit.org/autopsy/'
@@ -20,7 +20,7 @@ package() {
   cp -r * $pkgdir/usr/share/${pkgname}/
 
   # copy sleuthkit jar into autopsy
-  rm -f $pkgdir/usr/share/${pkgname}/${pkgname}/modules/ext/sleuthkit-postgresql-$skver.jar
+  rm -f $pkgdir/usr/share/${pkgname}/${pkgname}/modules/ext/sleuthkit-postgresql-4.6.6.jar
   ln -s /usr/share/java/sleuthkit-$skver.jar $pkgdir/usr/share/${pkgname}/${pkgname}/modules/ext/sleuthkit-postgresql-4.6.6.jar
 
   # overwrite bin/autopsy with proper permissions
