@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=OpenJK Jedi Outcast
+Comment="Open Source Jedi Knight II + III Engine - Jedi Outcast"
+Exec=openjo
+Icon=openjo
+Terminal=false
+StartupNotify=false
+Categories=Game
