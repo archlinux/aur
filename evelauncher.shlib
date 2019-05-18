@@ -18,12 +18,11 @@ check_custom_wine() {
     if [ "x$UCW" = "xtrue" ] ;then
 	WINEPATH=${CUSTOMWP%/*}
     else
-	desktop_msg "INFO: \"Use custom Wine\" not set, using internal version."
 	CUSTOMWP=${SHAREDIR}wine
 	WINEPATH=${SHAREDIR}wine/bin
     fi
     if [ ! -x "$WINEPATH/wine" ] ;then
-	desktop_msg "ERROR: \"$CUSTOMWP\" from \"Custom Wine path\" not found!"
+	desktop_msg "ERROR: \"$CUSTOMWP\" not found!"
 	exit 1
     fi
 }

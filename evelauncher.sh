@@ -43,29 +43,23 @@ check_wine() {
     WINEDATE=$(ls -l --time-style=+%s "$WINECONF" 2>/dev/null | cut -d' ' -f6)
     if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
 	desktop_msg "Preparing wine in $WINEPREFIX"
+	rm -f $WINEPREFIX/.update-timestamp $WINEPREFIX/*.reg || true
+	rm -rf $WINEPREFIX/drive_c/Program* $WINEPREFIX/drive_c/windows || true
 	env WINEPREFIX=$WINEPREFIX \
 	    WINEDEBUG=-all \
 	    WINEDLLOVERRIDES="mscoree,mshtml,winemenubuilder.exe=d" \
 	    $WINEPATH/wine wineboot
-	env WINEPREFIX=$WINEPREFIX $WINEPATH/wine reg delete \
-	    'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunServices' \
-	    /v winemenubuilder /f >/dev/null || true
-	    env WINEPREFIX=$WINEPREFIX $WINEPATH/wine reg add \
-	    'HKEY_CURRENT_USER\Software\Wine\DllOverrides' \
-	    /v winemenubuilder.exe /f >/dev/null
+	env WINEPREFIX=$WINEPREFIX $WINEPATH/wine reg add \
+	    'HKEY_CURRENT_USER\Software\Wine\FileOpenAssociations' \
+	    /v Enable /d N /f >/dev/null
 	WINETRP=$(grep -v win[x1..9] $WINEPREFIX/winetricks.log 2>/dev/null | uniq)
+	rm $WINEPREFIX/winetricks.log 2>/dev/null || true
 	if [ "x$WINETRP" != "x" ] ;then
-	    rm $WINEPREFIX/winetricks.log
 	    env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
 		$(which winetricks) -q --force $WINETRP >/dev/null
 	fi
-	if [ "x$($WINEPATH/wine --version | grep -q 4. ;echo $?)" != "x0" ] ;then
-	    WINVER=winxp
-	else
-	    WINVER=win10
-	fi
 	env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
-	    $(which winetricks) -q --force $WINVER >/dev/null
+	    $(which winetricks) -q --force win10 >/dev/null
     fi
 }
 

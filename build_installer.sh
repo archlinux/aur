@@ -44,7 +44,7 @@ cp -f ../evelauncher.shlib evesetup/evelauncher.shlib
 cp -f ../evelauncher.sh.in evesetup/evelauncher.sh
 grep -v '^#-' ../setup.sh.in >evesetup/setup.sh
 #-- testing only
-#-	cp -f ../setup.sh.in evesetup/setup.sh
+#- cp -f ../setup.sh.in evesetup/setup.sh
 #--
 chmod a+x evesetup/setup.sh
 echo "done."
