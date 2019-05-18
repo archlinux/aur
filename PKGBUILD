@@ -4,13 +4,13 @@ pkgbase=python-lunardate
 pkgname=('python-lunardate'
 	 'python2-lunardate')
 pkgdesc="A Chinese Calendar Library in Pure Python"
-pkgver=0.1.5
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 url="https://github.com/lidaobing/python-lunardate"
 license=('GPLv3')
 arch=('any')
 source=("https://pypi.python.org/packages/source/l/lunardate/lunardate-${pkgver}.tar.gz")
-md5sums=('7a7ca79f68ccea1d0981286ef9af1cc5')
+md5sums=('ea6a1558ead36a2c0e51d6715dc784c0')
 
 package_python-lunardate(){
 	depends=('python')
