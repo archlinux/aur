@@ -1,7 +1,7 @@
 # Maintainer:  Michael Kogan <michael dot kogan at gmx dot net>
 
 pkgname=jngl
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="One of the easiest 2D game libraries for C++ and Python"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('sdl2' 'fontconfig' 'glew' 'libwebp' 'openal' 'libvorbis' 'boost')
 
 makedepends=('meson' 'ninja')
 source=("https://github.com/jhasse/jngl/archive/v$pkgver.tar.gz")
-md5sums=('9dcbcde797ae92b61c7fd0fdaf044e47')
+md5sums=('cbf808e28e99a4f07617ca6b035842ba')
 
 build() {
     cd $srcdir/jngl-$pkgver
