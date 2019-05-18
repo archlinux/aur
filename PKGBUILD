@@ -3,7 +3,7 @@
 
 _pkgname=exaile
 pkgname=${_pkgname}-git
-pkgver=4.0.0+rc3+79+gac165d73
+pkgver=4.0.0+rc4+12+g4623a05c
 pkgrel=1
 pkgdesc="music player for gnome, similar to KDEs amarok"
 arch=('x86_64' 'i686')
@@ -27,7 +27,8 @@ optdepends=('python2-feedparser: podcasts plugin'
             'ipython2: Ipython console plugin'
             'python2-pylast: Last.fm loved tracks plugin'
             'gst-plugins-bad: Additional audio codecs'
-            'gst-plugins-ugly: Additional audio codecs')
+            'gst-plugins-ugly: Additional audio codecs'
+            'spydaap-git: DAAP server/client')
 
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
