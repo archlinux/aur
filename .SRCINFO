@@ -1,7 +1,7 @@
 pkgbase = xplayer
 	pkgdesc = Simple media player. X-Apps Project.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/xplayer
 	arch = i686
 	arch = x86_64
@@ -30,7 +30,9 @@ pkgbase = xplayer
 	provides = xplayer
 	conflicts = xplayer-git
 	source = xplayer-2.0.2.tar.gz::https://github.com/linuxmint/xplayer/archive/2.0.2.tar.gz
+	source = xplayer_issues_147.patch
 	md5sums = 46526042743d6b0af60bbbb7a4388d66
+	md5sums = 533653d8352f0afcac5c4542f1bc0d84
 
 pkgname = xplayer
 
