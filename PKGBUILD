@@ -18,8 +18,8 @@
 pkgbase="spl-linux-hardened"
 pkgname=("spl-linux-hardened" "spl-linux-hardened-headers")
 _splver="0.7.13"
-_kernelver="5.0.15.a-1"
-_extramodules="5.0.15.a-1-hardened"
+_kernelver="5.0.16.a-1"
+_extramodules="5.0.16.a-1-hardened"
 
 pkgver="${_splver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
