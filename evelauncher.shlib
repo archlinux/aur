@@ -17,6 +17,7 @@ check_custom_wine() {
     WINEPREFIX=${SHAREDIR}wineenv
     if [ "x$UCW" = "xtrue" ] ;then
 	WINEPATH=${CUSTOMWP%/*}
+	[ -d "${SHAREDIR}wine" ] && rm -rf ${SHAREDIR}wine
     else
 	CUSTOMWP=${SHAREDIR}wine
 	WINEPATH=${SHAREDIR}wine/bin

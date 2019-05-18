@@ -49,9 +49,6 @@ check_wine() {
 	    WINEDEBUG=-all \
 	    WINEDLLOVERRIDES="mscoree,mshtml,winemenubuilder.exe=d" \
 	    $WINEPATH/wine wineboot
-	env WINEPREFIX=$WINEPREFIX $WINEPATH/wine reg add \
-	    'HKEY_CURRENT_USER\Software\Wine\FileOpenAssociations' \
-	    /v Enable /d N /f >/dev/null
 	WINETRP=$(grep -v win[x1..9] $WINEPREFIX/winetricks.log 2>/dev/null | uniq)
 	rm $WINEPREFIX/winetricks.log 2>/dev/null || true
 	if [ "x$WINETRP" != "x" ] ;then
@@ -61,6 +58,9 @@ check_wine() {
 	env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
 	    $(which winetricks) -q --force win10 >/dev/null
     fi
+    env WINEPREFIX=$WINEPREFIX $WINEPATH/wine reg add \
+	'HKEY_CURRENT_USER\Software\Wine\FileOpenAssociations' \
+	/v Enable /d N /f >/dev/null
 }
 
 ELVER="1501045"
