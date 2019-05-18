@@ -1,7 +1,7 @@
 # Maintainer: YeahSure <lapdogpdx.yahoo.com>
 
 pkgname=filet-git
-pkgver=r68.8679f58
+pkgver=r7.40b794f
 pkgrel=1
 pkgdesc="A fucking fast file manager for your terminal"
 arch=('i686' 'x86_64')
