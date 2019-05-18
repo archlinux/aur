@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=purevpn-networkmanager
 pkgver=2019.03.13
-pkgrel=1
+pkgrel=2
 pkgdesc='A script to generate template-based PureVPN configuration files for NetworkManager'
 arch=('any')
 url='https://www.purevpn.com/'
@@ -15,7 +15,7 @@ source=("OVPN-files.zip::https://s3-us-west-1.amazonaws.com/heartbleed/windows/N
         "template-ovpn"
         "template-pptp"
         "purevpn")
-sha256sums=('a5ebcb069a822e6d360bbe75537c8a7dfb306b2d1e29de3bf9434b4d152cde54'
+sha256sums=('92fe195fc3c000357ab4ea17cf96a1bd73366c9465e26243d1555503514869cc'
             '025a9062b948d05d8648c660674090b79164147ad51ed47a45d10695561e334e'
             'eb63f1730a807726e906d6c2e2362ee402f39d3b554bea225d0303a33b19ea58'
             'e647fee6c5600f05d5f90329f63dbd788df0771c3d92973bd10e87d872c62730')
