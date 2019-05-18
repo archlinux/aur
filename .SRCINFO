@@ -1,7 +1,7 @@
 pkgbase = pandoc-plantuml-filter
-	pkgdesc = Pandoc filter for PlantUML code blocks
+	pkgdesc = Pandoc filter for PlantUML code blocks, python version
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/pandoc-plantuml-filter
 	arch = any
 	license = MIT
