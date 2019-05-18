@@ -1,0 +1,16 @@
+pkgbase = chibi-scheme
+	pkgdesc = minimal R7RS scheme implementation for use as an extension language
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://synthcode.com/wiki/chibi-scheme
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = glibc
+	provides = chibi-scheme
+	conflicts = chibi-scheme
+	source = http://synthcode.com/scheme/chibi/chibi-scheme-0.8.0.tgz
+	sha512sums = f5f3479c25e2df70857ae455de2399adec374114ab540626f8b90f3bf28984d0c7b8479362112921af93f4b509b9c252134bc8c3afe839c56b23001aec837f4f
+
+pkgname = chibi-scheme
+
