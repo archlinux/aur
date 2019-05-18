@@ -1,0 +1,18 @@
+pkgbase = qwertone-git
+	pkgdesc = Turns your PC into musical instrument
+	pkgver = v0.1.0.r6.54fb520
+	pkgrel = 1
+	url = https://gitlab.com/azymohliad/qwertone
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cargo
+	depends = gtk3
+	depends = alsa-lib
+	provides = qwertone
+	conflicts = qwertone
+	source = qwertone-git::git+https://gitlab.com/azymohliad/qwertone.git
+	md5sums = SKIP
+
+pkgname = qwertone-git
+
