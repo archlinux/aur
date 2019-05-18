@@ -1,69 +1,51 @@
-# Maintainer: Claudio Kozicky <claudiokozicky@gmail.com>
+# Maintainer: Simon Brulhart <simon@brulhart.me>
+# Contributor: Claudio Kozicky <claudiokozicky@gmail.com>
 # Contributor: trya <tryagainprod@gmail.com>
 # Contributor: Todd Partridge <toddrpartridge@gmail.com>
 
 pkgname=worldofgoo
-pkgver=1.41
-pkgrel=7
+pkgver=1.53
+pkgrel=1
 pkgdesc="A physics based puzzle/construction game (requires copy of the full game)."
 arch=(i686 x86_64)
-url="http://2dboy.com/games.php"
+url="https://2dboy.com/"
 license=(custom)
-depends=(gtk-update-icon-cache sdl_mixer hicolor-icon-theme)
+depends=(sdl2_mixer)
 optdepends=("worldofgoo-gootool: for creating and installing fan levels")
 install=$pkgname.install
-source=(hib://WorldOfGooSetup.1.41.tar.gz
+source=(hib://WorldOfGoo.Linux.1.53.sh
         $pkgname.desktop)
-md5sums=('f5afa40893d0fbcc37885191404f6d8c'
+md5sums=('9049f4fccf98ba79ac238a8b414e053a'
          '706ff492ea8096e1a2a7ee9a4d171aca')
 options=(!strip)
 DLAGENTS+=("hib::/usr/bin/echo Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf.")
 
-prepare()
-{
-    cd "$srcdir"/WorldOfGoo
-
-    # cleanup
-    rm -r libs{32,64}
-    [ $CARCH = i686 ] \
-        && rm WorldOfGoo.bin64 \
-        && find -name "*.binltl64" -exec rm {} \; \
-        || true
-    [ $CARCH = x86_64 ] \
-        && rm WorldOfGoo.bin32 \
-        && find -name "*.binltl" -exec rm {} \; \
-        || true
-}
 
 package()
 {
     cd "$srcdir"
 
+    [[ "$CARCH" = "x86_64" ]] && _arch=x86_64 || _arch=x86
+
     # data
-    find WorldOfGoo -type f -name "WorldOfGoo*" -exec install -Dm755 {} "$pkgdir"/opt/{} \; \
-        -o -type f -exec install -Dm644 {} "$pkgdir"/opt/{} \;
+    install -Dm755 "$srcdir/data/${_arch}/WorldOfGoo.bin.${_arch}" -t "$pkgdir"/opt/worldofgoo
+    cp -aT "$srcdir"/data/noarch "$pkgdir"/opt/worldofgoo
 
     # launcher
     install -d "$pkgdir"/usr/bin
-    ln -s /opt/WorldOfGoo/WorldOfGoo "$pkgdir"/usr/bin/worldofgoo
+    ln -s "/opt/worldofgoo/WorldOfGoo.bin.${_arch}" "$pkgdir"/usr/bin/worldofgoo
 
     # desktop integration
     install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
-    for i in 16x16 22x22 32x32 48x48 64x64 128x128
-    do
-        install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps
-        ln -s /opt/WorldOfGoo/icons/$i.png "$pkgdir"/usr/share/icons/hicolor/$i/apps/$pkgname.png
-    done
-    install -d "$pkgdir"/usr/share/icons/hicolor/scalable/apps
-    ln -s /opt/WorldOfGoo/icons/scalable.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$pkgname.svg
+    install -d "$pkgdir"/usr/share/pixmaps
+    ln -s /opt/worldofgoo/game/gooicon.png "$pkgdir"/usr/share/pixmaps/worldofgoo.png
 
     # doc
     install -d "$pkgdir"/usr/share/doc/$pkgname
-    ln -s -t "$pkgdir"/usr/share/doc/$pkgname /opt/WorldOfGoo/{linux-issues.txt,readme.html} 
+    ln -s -t "$pkgdir"/usr/share/doc/$pkgname /opt/worldofgoo/readme.html
 
     # legal
-    install -d "$pkgdir"/usr/share/licenses/$pkgname
-    ln -s /opt/WorldOfGoo/eula.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname "$srcdir"/data/eula.txt
 }
 
 # vim:et:sw=4:sts=4

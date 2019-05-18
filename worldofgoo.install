@@ -3,8 +3,7 @@ post_install()
     cat <<-EOI
 
   Several settings, like screen resolution, can be changed in the configuration
-  file. To copy it to your home directory run:
-  mkdir ~/.WorldOfGoo && cp /opt/WorldOfGoo/properties/config.txt ~/.WorldOfGoo
+  file at ~/.WorldOfGoo/config.ini
 
 	EOI
 }
