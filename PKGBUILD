@@ -2,8 +2,8 @@
 # Maintainer: Francois Boulogne <devel at sciunto dot org>
 
 pkgname=mat2
-pkgver=0.8.0
-pkgrel=4
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="Metadata anonymisation toolkit"
 arch=('any')
 url="https://0xacab.org/jvoisin/mat2"
