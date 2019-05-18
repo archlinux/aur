@@ -1,0 +1,6 @@
+/pkg/
+/qbe-git/
+/src/
+/*.log
+/*.tar
+/*.tar.*
