@@ -1,6 +1,6 @@
 # Maintainer: Remy Kaldawy <remykaldawy@gmail.com>
 pkgname=gifpaper
-pkgver=1.2.1.r0.gf283e73
+pkgver=1.2.2.r0.g2ea47fe
 pkgrel=1
 pkgdesc="Gif wallpapers with X11"
 arch=('x86_64')
