@@ -1,9 +1,9 @@
+# Maintainer: George Rawlinson <george@rawlinson.net.nz>
 # Contributor: Ainola
 # Contributor: jfranco
-# Contributor: George Rawlinson
 
 pkgname=plasma5-applets-plasma-pass-git
-pkgver=r69.360dfe8
+pkgver=1.0.0.r12.360dfe8
 pkgrel=1
 pkgdesc='Plasma applet for the Pass password manager'
 url="https://cgit.kde.org/plasma-pass.git"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd plasma-pass
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
