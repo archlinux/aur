@@ -3,14 +3,14 @@
 pkgname=rtl8192du-git
 _pkgname=rtl8192du
 pkgver=62f90cf
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for Realtek RTL8192DU USB wireless devices."
 arch=('x86_64')
 url="https://github.com/lwfinger/rtl8192du"
 license=('GPL')
 _extramodules="extramodules-ARCH"
-depends=('linux>=5.0' 'linux<5.1')
-makedepends=('linux-headers>=5.0' 'git')
+depends=('linux>=5.1' 'linux<5.2')
+makedepends=('linux-headers>=5.1' 'git')
 source=("git://github.com/lwfinger/$_pkgname.git")
 
 sha256sums=('SKIP')
