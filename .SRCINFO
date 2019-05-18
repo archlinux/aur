@@ -1,13 +1,13 @@
 pkgbase = ttf-nishiki-teki
 	pkgdesc = Unicode-based font inspired by a free shell of Ukagaka called “Nishiki”
-	pkgver = 3.51f
-	pkgrel = 2
+	pkgver = 3.51h
+	pkgrel = 1
 	url = http://hwm3.gyao.ne.jp/shiroi-niwatori/nishiki-teki.htm
 	arch = any
 	license = custom
-	source = ttf-nishiki-teki-v3.51f.zip::http://hwm3.gyao.ne.jp/shiroi-niwatori/nishiki-teki.zip
+	source = ttf-nishiki-teki-v3.51h.zip::http://hwm3.gyao.ne.jp/shiroi-niwatori/nishiki-teki.zip
 	source = LICENSE
-	sha512sums = 43b07f39e75c952d1712711ca57cbbb07f4aefa7249b33b67637ec5dea83107bfd9590164df317ee217dbc66c649d4e7ac8a4f39006994a1f534e5cef4a51ce9
+	sha512sums = 205f8db011773847bbfe8f58085824b6378e68bc36b9c9240bae6795bf6beef4e24de2fcd780d2f7c7cc0264c4d947a83e300ed7ee8b9476ff28d7099ed1deb2
 	sha512sums = f6138f41a7eade900bcda1a5be608cbb4a8205ce53c6d175d6ae13693ff34b8e2cdc42f9dd4ae49b7285a5f09c1fb4f077ad872361abb8303c1589acf5958436
 
 pkgname = ttf-nishiki-teki
