@@ -2,7 +2,7 @@
 
 pkgname=ts3audiobot
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="ts3 audio bot by splamy"
 arch=('any')
@@ -23,7 +23,7 @@ sha256sums=(SKIP
             '34b20c0f1f71a454990c21f34a4016ff35337403dbc2515f0dca9256b7c88093')
 
 prepare() {
-    unzip -q "$pkgname-$pkgver.zip" -d "$srcdir/$pkgname"
+    unzip -q "$pkgname-$pkgver.zip" -d "$srcdir/$pkgname" || true
 }
 package() {
     cd $srcdir

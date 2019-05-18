@@ -1,7 +1,7 @@
 pkgbase = ts3audiobot
 	pkgdesc = ts3 audio bot by splamy
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Splamy/TS3AudioBot
 	arch = any
 	license = custom:OSL 3.0
