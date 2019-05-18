@@ -1,27 +1,27 @@
-# Maintainer: Joel Teichroeb <joel at teichroeb dot net>
-# Contributero: Alim Gokkaya <alimgokkaya at gmail dot com>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Joel Teichroeb <joel at teichroeb dot net>
+# Contributor: Alim Gokkaya <alimgokkaya at gmail dot com>
 
 pkgname=librdkafka
-pkgver=0.11.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Apache Kafka C driver library'
 url="https://github.com/edenhill/librdkafka"
 license=('BSD')
-source=("https://github.com/edenhill/librdkafka/archive/v$pkgver.tar.gz")
-arch=(x86_64)
-depends=(glibc zlib)
-optdepends=(openssl libsasl lz4)
-makedepends=(python)
-sha256sums=('9c0afb8b53779d968225edf1e79da48a162895ad557900f75e7978f65e642032')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/edenhill/librdkafka/archive/v${pkgver}.tar.gz")
+arch=('x86_64')
+depends=(zlib libsasl zstd)
+makedepends=(python openssl lz4 rapidjson)
+sha256sums=('b00a0d9f0e8c7ceb67b93b4ee67f3c68279a843a15bf4a6742eb64897519aa09')
 
 build() {
-  cd librdkafka-$pkgver
+  cd $srcdir/librdkafka-$pkgver
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd librdkafka-$pkgver
+  cd $srcdir/librdkafka-$pkgver
   make install DESTDIR="$pkgdir"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

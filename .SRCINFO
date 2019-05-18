@@ -1,18 +1,19 @@
 pkgbase = librdkafka
 	pkgdesc = Apache Kafka C driver library
-	pkgver = 0.11.6
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/edenhill/librdkafka
 	arch = x86_64
 	license = BSD
 	makedepends = python
-	depends = glibc
+	makedepends = openssl
+	makedepends = lz4
+	makedepends = rapidjson
 	depends = zlib
-	optdepends = openssl
-	optdepends = libsasl
-	optdepends = lz4
-	source = https://github.com/edenhill/librdkafka/archive/v0.11.6.tar.gz
-	sha256sums = 9c0afb8b53779d968225edf1e79da48a162895ad557900f75e7978f65e642032
+	depends = libsasl
+	depends = zstd
+	source = librdkafka-1.0.0.tar.gz::https://github.com/edenhill/librdkafka/archive/v1.0.0.tar.gz
+	sha256sums = b00a0d9f0e8c7ceb67b93b4ee67f3c68279a843a15bf4a6742eb64897519aa09
 
 pkgname = librdkafka
 
