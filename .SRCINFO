@@ -8,6 +8,7 @@ pkgbase = blackbox-tools-git
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = pentium4
 	license = GPLv3
 	makedepends = git
 	provides = blackbox-tools
