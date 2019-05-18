@@ -1,13 +1,13 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=amazon-corretto-11
 pkgver=11.0.3.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
 arch=('x86_64')
 url='https://aws.amazon.com/corretto/'
 license=('GPL2')
 depends=('java-runtime-common' 'java-environment-common')
-provides=('java-runtime=11' 'java-environment=11')
+provides=('java-runtime-headless=11' 'java-runtime=11' 'java-environment=11')
 backup=()
 options=()
 # https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html
