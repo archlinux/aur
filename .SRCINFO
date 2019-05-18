@@ -1,10 +1,9 @@
 pkgbase = j9-git
 	pkgdesc = J is a modern, high-level, general-purpose, high-performance programming language
-	pkgver = 9.01.03.20190429
+	pkgver = 9.01.05.20190518
 	pkgrel = 1
 	url = http://www.jsoftware.com
 	install = j9-git.install
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	license = LGPL
@@ -19,10 +18,10 @@ pkgbase = j9-git
 	optdepends = lapack: for math/lapack addon
 	source = jsource.zip::https://github.com/jsoftware/jsource/archive/master.zip
 	source = qtide.zip::https://github.com/jsoftware/qtide/archive/master.zip
-	source = jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j901_env_20190429.tar.gz
+	source = jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j901_env_20190518.tar.gz
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 475d8f34755d8f5f5515144c22d8385f
+	md5sums = 07d4d7e4123946f3e2f98abec00711d8
 
 pkgname = j9-git
 

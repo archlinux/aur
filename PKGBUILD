@@ -1,10 +1,10 @@
 # Maintainer: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j9-git
-pkgver=9.01.03.20190429
+pkgver=9.01.05.20190518
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.jsoftware.com'
 license=('GPL3'  'LGPL')
 depends=('qt5-webengine' 'qt5-websockets' 'qt5-multimedia' 'qt5-svg')
@@ -15,16 +15,9 @@ optdepends=('wget: for web/gethttp addon'
 makedepends=('clang')
             source=('jsource.zip::https://github.com/jsoftware/jsource/archive/master.zip'
         'qtide.zip::https://github.com/jsoftware/qtide/archive/master.zip'
-        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j901_env_20190429.tar.gz')
-md5sums=('SKIP' 'SKIP' '475d8f34755d8f5f5515144c22d8385f')
+        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j901_env_20190518.tar.gz')
+md5sums=('SKIP' 'SKIP' '07d4d7e4123946f3e2f98abec00711d8')
 install=j9-git.install
-if [ "${CARCH}" = x86_64 ]; then
-_xarch=x86_64
-_jarch=j64
-else
-_xarch=x86
-_jarch=j32
-fi
 
 pkgver() {
 cd ${srcdir}
@@ -43,6 +36,7 @@ sed -i "s@jbld=~/jbld@jbld=${srcdir}/jsource-master/jbld@" make/jvars.sh
 sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/build_jconsole.sh
 sed -i "s@-l:libedit.so.2@-ledit@" make/build_jconsole.sh
 sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/build_libj.sh
+sed -i "s@-mavx -DC_AVX=1@-mavx -march=native -DC_AVX=1@" make/build_libj.sh
 sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/domake.sh
 sed -i "s@else if(_isnan(@// else if(_isnan(@" jsrc/f2.c
 }
@@ -52,11 +46,11 @@ build() {
 cd ${srcdir}/jsource-master
 rm -rf jbld
 mkdir -p jbld/jout
-mkdir jbld/${_jarch}
-cp -r jlibrary/* jbld/${_jarch}
+mkdir jbld/j64
+cp -r jlibrary/* jbld/j64
 . make/jvars.sh
-make/build_jconsole.sh ${_jarch}
-make/build_libj.sh ${_jarch}
+make/build_jconsole.sh j64
+make/build_libj.sh j64
 # qtide
 cd ${srcdir}/qtide-master/lib
 qmake && make
@@ -67,8 +61,8 @@ qmake && make
 package() {
 cd ${srcdir}
 cp -a jenv/* ${pkgdir}/
-cp -a jsource-master/jbld/${_jarch}/bin/jconsole ${pkgdir}/usr/lib/j9/bin/jconsole
-cp -a jsource-master/jbld/${_jarch}/bin/libj.so ${pkgdir}/usr/lib/j9/bin/libj.so
-cp -a qtide-master/bin/linux-${_xarch}/release/*  ${pkgdir}/usr/lib/j9/bin/
+cp -a jsource-master/jbld/j64/bin/jconsole ${pkgdir}/usr/lib/j9/bin/jconsole
+cp -a jsource-master/jbld/j64/bin/libj.so ${pkgdir}/usr/lib/j9/bin/libj.so
+cp -a qtide-master/bin/linux-x86_64/release/*  ${pkgdir}/usr/lib/j9/bin/
 echo "${pkgname}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz (Arch Linux package)" > ${pkgdir}/usr/lib/j9/bin/installer.txt
 }
