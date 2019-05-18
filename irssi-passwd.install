@@ -1,0 +1,8 @@
+
+post_install() {
+  echo "==> For password subtitution to work, you'll need to load the passwd.pl script in /usr/share/irssi/scripts/passwd.pl"
+  echo "==> You can do that manually with /run passwd.pl (or with scriptassist.pl, /script load passwd.pl) in irssi,"
+  echo "==> or you can have it load automatically by symlinking it into ~/.irssi/scripts/autorun:"
+  echo '==>   cd ~/.irssi/scripts/autorun'
+  echo '==>   ln -s /usr/share/irssi/scripts/passwd.pl'
+}
