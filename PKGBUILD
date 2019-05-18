@@ -3,14 +3,14 @@
 
 pkgname=balena-engine
 pkgver=18.9.5
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A Moby-based container engine for the Internet of Things'
 arch=('x86_64' 'i686')
 url='https://www.balena.io/'
 license=('Apache')
 depends=('glibc' 'bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'libsystemd'
-         'libseccomp' 'libtool')
+         'libseccomp' 'libtool' 'btrfs-progs')
 makedepends=('git' 'go>=1.10.8' 'cmake' 'systemd')
 optdepends=('lxc: lxc backend support')
 # don't strip binaries! A sha1 is used to check binary consistency.
