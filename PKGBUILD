@@ -2,18 +2,18 @@
 
 _pkgname=libxfce4util
 pkgname=${_pkgname}-devel
-pkgver=4.13.2
+pkgver=4.13.3
 pkgrel=1
 pkgdesc="Basic utility non-GUI functions for Xfce"
 arch=('i686' 'x86_64')
-url="http://www.xfce.org/"
+url="https://www.xfce.org/"
 license=('GPL2')
 depends=('glib2')
-makedepends=('intltool' 'gtk-doc' 'gobject-introspection')
+makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'vala')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('c58275ff650080369e742695862c811cb78402c85f243ea0b5aec186027be361')
+source=(https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
+sha256sums=('724b523a4a9ec8cada727950ab2173be30f256fa332a891ccd28b46f4b91b67e')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -35,4 +35,3 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-# vim:set ts=2 sw=2 et:
