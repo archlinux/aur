@@ -5,7 +5,7 @@ pkgname=gmt6
 _pkgname=gmt
 pkghashver=67749cd5de1a06e88861b21470daaa3515ccc4e5
 pkgver=6.0.0_${pkghashver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps."
 arch=(i686 x86_64)
 url="https://gmt.soest.hawaii.edu/"
@@ -33,11 +33,11 @@ prepare() {
   sed -i 's/\*\.1\.gz/\*\.1gmt\.gz/g' doc/rst/CMakeLists.txt
   sed -i 's/\*\.3\.gz/\*\.3gmt\.gz/g' doc/rst/CMakeLists.txt
   sed -i 's/\*\.5\.gz/\*\.5gmt\.gz/g' doc/rst/CMakeLists.txt
-  rm -fr build && mkdir build
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkghashver}/build"
+  mkdir -p "${srcdir}/build/aur"
+  cd "${srcdir}/build/aur"
   # -DLICENSE_RESTRICTED=off \
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DGSHHG_ROOT=/usr/share/gmt/coast \
@@ -47,20 +47,21 @@ build() {
     -DGMT_MANDIR=share/man \
     -DGMT_DOCDIR=share/doc/gmt \
     -DCMAKE_BUILD_TYPE=Release \
-    ..
+    -GNinja \
+    "${srcdir}/${_pkgname}-${pkghashver}"
   export MAKEFLAGS="-j$(nproc)"
-  make || return 1
+  ninja || return 1
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkghashver}/build"
-  make docs_html docs_man
+  cd "${srcdir}/build/aur"
+  ninja docs_html docs_man
   cd doc/rst/man \
   && for i in $(ls *.1.gz); do mv $i ${i%".1.gz"}.1gmt.gz; done \
   && for i in $(ls *.3.gz); do mv $i ${i%".3.gz"}.3gmt.gz; done \
   && for i in $(ls *.5.gz); do mv $i ${i%".5.gz"}.5gmt.gz; done \
-  && cd "${srcdir}/${_pkgname}-${pkghashver}/build"
-  make "DESTDIR=${pkgdir}" install || return 1
+  && cd "${srcdir}/build/aur"
+  DESTDIR="${pkgdir}" ninja install || return 1
 }
 
 # vim:set ts=2 sw=2 et:
