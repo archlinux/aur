@@ -3,7 +3,7 @@
 
 pkgname=electrumx
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
 depends=('leveldb'
@@ -13,6 +13,7 @@ depends=('leveldb'
          'python-plyvel'
          'python-pylru'
          'python-aiohttp>=3.3.0'
+         'python-websockets'
          )
 makedepends=('python-setuptools')
 optdepends=('bitcoin-daemon: Bitcoin core headless P2P node'
@@ -24,7 +25,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/kyuupichan/$pkgname
         'electrumx.service'
         'electrumx.sysusers')
 sha256sums=('a27e8f503feaaad17f8ce7ab13bb33428a468b6beb13e041706a069f541364f8'
-            '5977f369d4a07024bcbd305c02e2130bba42fd93913224c4cd0f8f41525ad0ef'
+            'ca05f8e8cf01c5074376df75a6691c1aea74cf278244f86ac838900cad9547fb'
             'ece0696dc82e0159d9a266834e6e9e1e518caa68e6f145d262b291e1fc09d67e'
             '761a21723d21348d598be96655e6de4827b2fcff93270895303e82670e0532f1')
 backup=('etc/electrumx/electrumx.conf')
