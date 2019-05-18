@@ -8,30 +8,31 @@
 # https://developer.nvidia.com/tensorrt/
 
 _srcname=TensorRT
-_cudaver=10.0
-_cudnnver=7.3
-_graphsurgeonver=0.3.2
-_uffver=0.5.5
-_ubuntuver=18.04.1
+_cudaver=10.1
+_cudnnver=7.5
+_graphsurgeonver=0.4.1
+_uffver=0.6.3
+_ubuntuver=18.04.2
 
 pkgname=tensorrt
-pkgver=5.0.2.6
+pkgver=5.1.5.0
 pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference (needs registration at upstream URL and manual download)'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
 license=('custom')
-depends=('cuda' 'cudnn' 'python')
-optdepends=('python2: for tensorflow python2 modules (python2 only)'
-            'python-tensorflow: for graphsurgeon and uff python3 modules (python3 only)')
+depends=('cuda' 'cudnn')
+optdepends=('python-numpy: for tensorflow, graphsurgeon and uff python modules'
+            'python-tensorflow: for graphsurgeon and uff python modules'
+            'python-protobuf: for uff python module')
 makedepends=('poppler' 'unzip')
 options=('!strip')
 source=("file://${_srcname}-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_cudnnver}.tar.gz")
-sha256sums=('4310010d6bb2b613953a579a34c729efbf5d5defc49c68cf20969751962d901c')
+sha256sums=('d247fd1270ea20bda896fdd8dff6ae320b981addfa071c3a1246b7c27023e011')
 
 prepare() {
     cd "${_srcname}-${pkgver}/python"
-    unzip -oqq "tensorrt-${pkgver}-py2.py3-none-any.whl"
+    unzip -oqq "tensorrt-${pkgver}-cp37-none-linux_${CARCH}.whl"
     
     cd ../graphsurgeon
     unzip -oqq "graphsurgeon-${_graphsurgeonver}-py2.py3-none-any.whl"
@@ -47,7 +48,7 @@ package() {
     cd "${_srcname}-${pkgver}"
     
     local _pythonver
-    _pythonver="$(python --version | awk '{ print $2 }' | grep -o '^[0-9]*\.[0-9]*')"
+    _pythonver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     
     mkdir -p "${pkgdir}/usr/lib/python"{2.7,"${_pythonver}"}
     
@@ -61,21 +62,13 @@ package() {
     cp -a lib/*.so*       "${pkgdir}/usr/lib"
     cp -a lib/*_static.a* "${pkgdir}/usr/lib"
     
-    # python 2
-    cp -a python/tensorrt "${pkgdir}/usr/lib/python2.7"
-    
-    # python 3
-    ### broken until ubuntu supports python 3.7
-    #cp -a python/tensorrt "${pkgdir}/usr/lib/python${_pythonver}"
+    # python
+    cp -a python/tensorrt "${pkgdir}/usr/lib/python${_pythonver}"
     
     # graphsurgeon
-    ### python3 only because there is no python2-tensorflow package
-    #cp -a graphsurgeon/graphsurgeon "${pkgdir}/usr/lib/python2.7"
     cp -a graphsurgeon/graphsurgeon "${pkgdir}/usr/lib/python${_pythonver}"
     
     # uff
-    ### python3 only because there is no python2-tensorflow package
-    #cp -a uff/uff "${pkgdir}/usr/lib/python2.7"
     cp -a uff/uff "${pkgdir}/usr/lib/python${_pythonver}"
     
     # documentation
