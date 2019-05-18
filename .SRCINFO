@@ -1,6 +1,6 @@
 pkgbase = d9vk-mingw-git
 	pkgdesc = A d3d9 to vk layer based off DXVK's codebase, mingw version
-	pkgver = r2920.4c337dc3
+	pkgver = r2924.58669173
 	pkgrel = 1
 	url = https://github.com/Joshua-Ashton/d9vk
 	arch = x86_64
@@ -19,12 +19,14 @@ pkgbase = d9vk-mingw-git
 	conflicts = d9vk
 	source = git+https://github.com/Joshua-Ashton/d9vk.git
 	source = setup_d9vk
+	source = setup_dxvk.patch
 	source = extraopts.patch
 	source = dxvk-async.patch
 	sha256sums = SKIP
 	sha256sums = 7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a
+	sha256sums = 8ebed41bc54f795c4b5f4d2548475dffd28b2d5fe85c82a4753a983638376823
 	sha256sums = 2042ed0d7365c41aee2107baf394c26cb05a2e2a80a49daa050ba62425b81bbb
-	sha256sums = c521ad17c249a02a70ffa0d169452321420ffb8603f99a902579d0fbdd66d3d3
+	sha256sums = 32780432c2159d57ca0fb1863309cdb141fbfc506c6b9003acfa05896af90140
 
 pkgname = d9vk-mingw-git
 

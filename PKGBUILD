@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-mingw-git
-pkgver=r2920.4c337dc3
+pkgver=r2924.58669173
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase, mingw version"
 arch=('x86_64')
@@ -14,14 +14,16 @@ conflicts=("d9vk")
 source=(
     "git+https://github.com/Joshua-Ashton/d9vk.git"
     "setup_d9vk"
+    "setup_dxvk.patch"
     "extraopts.patch"
     "dxvk-async.patch"
 )
 sha256sums=(
     "SKIP"
     "7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a"
+    "8ebed41bc54f795c4b5f4d2548475dffd28b2d5fe85c82a4753a983638376823"
     "2042ed0d7365c41aee2107baf394c26cb05a2e2a80a49daa050ba62425b81bbb"
-    "c521ad17c249a02a70ffa0d169452321420ffb8603f99a902579d0fbdd66d3d3"
+    "32780432c2159d57ca0fb1863309cdb141fbfc506c6b9003acfa05896af90140"
 )
 
 pkgver() {
@@ -32,6 +34,7 @@ pkgver() {
 
 prepare() {
     cd d9vk
+    patch -p1 -i ../setup_dxvk.patch
     # Patch crossfiles with extra optimizations from makepkg.conf
     # If building fails, comment the line below to disable them.
     patch -p1 -i ../extraopts.patch
@@ -56,7 +59,10 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "release" \
         --strip \
-        -Denable_tests=false
+        -Denable_tests=false \
+        -Denable_d3d10=false \
+        -Denable_d3d11=false \
+        -Denable_dxgi=false
     ninja -C "build/x64" -v
 
     meson d9vk "build/x32" \
@@ -65,7 +71,10 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "release" \
         --strip \
-        -Denable_tests=false
+        -Denable_tests=false \
+        -Denable_d3d10=false \
+        -Denable_d3d11=false \
+        -Denable_dxgi=false
     ninja -C "build/x32" -v
 }
 
