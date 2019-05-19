@@ -160,6 +160,8 @@ prepare() {
 
 	msg "Avoid problem with unifont during compile of grub"
 	# http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
+	# Fix: for some reason this is not unpacked automatically anymore
+	gunzip -f "${srcdir}/unifont-${_UNIFONT_VER}.bdf.gz"
 	cp "${srcdir}/unifont-${_UNIFONT_VER}.bdf" "unifont.bdf"
 }
 
