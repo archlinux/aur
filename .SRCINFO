@@ -1,7 +1,7 @@
 pkgbase = gmt6
 	pkgdesc = Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps.
-	pkgver = 6.0.0_67749cd5de1a06e88861b21470daaa3515ccc4e5
-	pkgrel = 3
+	pkgver = 6.0.0_a8fda40c2de908c3cedacc2de4f5a5b908ca6b99
+	pkgrel = 1
 	url = https://gmt.soest.hawaii.edu/
 	install = gmt.install
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = gmt6
 	optdepends = gmt-dcw: digital chart of the world polygon map
 	conflicts = gmt4
 	conflicts = gmt
-	source = https://github.com/GenericMappingTools/gmt/archive/67749cd5de1a06e88861b21470daaa3515ccc4e5.tar.gz
-	sha256sums = 37b7356c25be06abd6b84df25d6169d921573b017c7de38f6817fa907d03c645
+	source = https://github.com/GenericMappingTools/gmt/archive/a8fda40c2de908c3cedacc2de4f5a5b908ca6b99.tar.gz
+	sha256sums = 01249632cc4c4465e0bbaadfadf552aa772b89501e85ec21910346b6de8b79ce
 
 pkgname = gmt6
 
