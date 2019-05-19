@@ -1,0 +1,16 @@
+post_install() {
+	/usr/bin/systemctl enable --now unlock-pacman.service
+	printf  "\nThanks for using my pkg 😊\n\n"
+}
+
+pre_remove() {
+	/usr/bin/systemctl disable unlock-pacman.service
+	printf  "\n 🖐️🖐️ bye bye 😞\n\n"
+}
+
+post_upgrade() {
+	printf  "\nThanks for still using my pkg 😊\n\n"
+}
+
+
+
