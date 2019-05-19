@@ -3,7 +3,7 @@
 
 pkgname=high-fidelity-stable-git
 pkgver=r77707.576f41f90c
-pkgrel=1
+pkgrel=1.01
 pkgdesc="High Fidelity (Hifi) is an open-source software where you can create and share virtual reality (VR) experiences. Create and host your own VR world, explore other worlds and meet other users. (git - latest stable version)"
 arch=('i686' 'x86_64')
 url="https://github.com/highfidelity/hifi"
@@ -95,10 +95,12 @@ package() {
 	install -Dm644 "$srcdir/hifi-interface.desktop" "$pkgdir/usr/share/applications/hifi-interface.desktop"
 	install -Dm755 "$srcdir/hifi-interface.launcher" "$pkgdir/usr/bin/hifi-interface"
 	install -Dm755 "$srcdir/build/interface/interface" "$pkgdir/opt/hifi/interface/interface"
-	cp -R "$srcdir/build/interface/resources*" "$pkgdir/opt/hifi/interface/"
+	cp -R "$srcdir/build/interface/resources" "$pkgdir/opt/hifi/interface/"
+
 	cp -R "$srcdir/build/interface/jsdoc" "$pkgdir/opt/hifi/interface/"
 	cp -R "$srcdir/build/interface/scripts" "$pkgdir/opt/hifi/interface/"
-	
+	cp "$srcdir/build/interface/resources.qrc" "$pkgdir/opt/hifi/interface/"
+  	cp "$srcdir/build/interface/resources.rcc" "$pkgdir/opt/hifi/interface/"
 	install -Dm755 "$srcdir/build/domain-server/domain-server" "$pkgdir/opt/hifi/domain-server/domain-server"
 	cp -R "$srcdir/build/domain-server/resources" "$pkgdir/opt/hifi/domain-server/"
 	install -Dm755 "$srcdir/hifi-domain-server.launcher" "$pkgdir/usr/bin/hifi-domain-server"
