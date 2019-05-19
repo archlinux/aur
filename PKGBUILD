@@ -2,8 +2,8 @@
 
 pkgbase='hunspell-fr-ungendered'
 pkgname=("$pkgbase"-{'classical','comprehensive','modern','revised'})
-pkgver=0.6.0
-pkgrel=2
+pkgver=6.4.1
+pkgrel=1
 pkgdesc="French ungendered hunspell dictionary"
 arch=(any)
 url="https://github.com/RadicaliseesSurInternet/hunspell-inclusif"
@@ -12,7 +12,7 @@ makedepends=('python')
 conflicts=('hunspell-fr')
 provides=('hunspell-fr')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('e86eb438b81eb67c1d35122325f000d1077779e42f4f5ec27554a8b390d44922')
+sha256sums=('4b0325f5866def67314b99bda65709df1a965deb1939332e68890fd2d64e8b69')
 
 package_hunspell-fr-ungendered-classical() {
   pkgdesc+=" (classical variant)"
@@ -38,8 +38,8 @@ _package() {
   _dicname=$1
   cd "${srcdir}/hunspell-inclusif-${pkgver}"
 
-  python3 scripts/generate-aff.py dicollecte/fr-${_dicname}.aff > fr.aff
-  python3 scripts/generate-dic.py dicollecte/fr-${_dicname}.dic > fr.dic
+  python3 scripts/generate-aff.py grammalecte/fr-${_dicname}.aff > fr.aff
+  python3 scripts/generate-dic.py grammalecte/fr-${_dicname}.dic > fr.dic
 
   install -dm755 ${pkgdir}/usr/share/hunspell
   install -m644 fr.dic ${pkgdir}/usr/share/hunspell/fr_FR.dic

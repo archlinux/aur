@@ -1,15 +1,15 @@
 pkgbase = hunspell-fr-ungendered
 	pkgdesc = French ungendered hunspell dictionary
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 6.4.1
+	pkgrel = 1
 	url = https://github.com/RadicaliseesSurInternet/hunspell-inclusif
 	arch = any
 	license = MPL2
 	makedepends = python
 	provides = hunspell-fr
 	conflicts = hunspell-fr
-	source = https://github.com/RadicaliseesSurInternet/hunspell-inclusif/archive/0.6.0.tar.gz
-	sha256sums = e86eb438b81eb67c1d35122325f000d1077779e42f4f5ec27554a8b390d44922
+	source = https://github.com/RadicaliseesSurInternet/hunspell-inclusif/archive/6.4.1.tar.gz
+	sha256sums = 4b0325f5866def67314b99bda65709df1a965deb1939332e68890fd2d64e8b69
 
 pkgname = hunspell-fr-ungendered-classical
 	pkgdesc = French ungendered hunspell dictionary (classical variant)
