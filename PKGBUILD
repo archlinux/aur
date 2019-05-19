@@ -5,14 +5,14 @@ _module="$_name"
 
 pkgname=("python-$_module" "python2-$_module")
 pkgdesc="Worldwide holidays and working days helper and toolkit"
-pkgver="2.5.0"
-pkgrel=2
+pkgver="4.4.0"
+pkgrel=1
 url="https://github.com/novafloss/workalendar"
 license=('MIT')
 arch=('any')
 makedepends=("python-pbr>=1.9" "python2-pbr>=1.9")
 source=("https://github.com/novafloss/workalendar/archive/${pkgver}.tar.gz")
-sha256sums=('1f194ae47e8ea921bc4e3d746d4901ee6448fec133a53d9ca9c96e75eda7f1e6')
+sha256sums=('2c8f7716e01e543ac097956070b12faeb2e2caa3433a7dd5ca34128f0bcd75aa')
 
 build() {
   cd "$_name-$pkgver"
