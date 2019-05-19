@@ -1,17 +1,19 @@
 pkgbase = spl-dkms
 	pkgdesc = Solaris Porting Layer kernel modules.
 	pkgver = 0.7.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zfsonlinux.org/
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = dkms
 	source = git+https://github.com/zfsonlinux/spl.git#tag=spl-0.7.13?signed
+	source = 0001-Linux-5.1-compat-get_ds-removed.patch
 	source = 0001-only-build-the-module-in-dkms.conf.patch
 	validpgpkeys = 4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027
 	validpgpkeys = C33DF142657ED1F7C328A2960AB9E991C6AF658B
 	sha256sums = SKIP
+	sha256sums = 7ff496450dd2ec451d7533d51664f47f6977b05441ed0e09cfccab94e4ff16dc
 	sha256sums = a6f6e6a84ed93269e83b92aad7c0dea713e56529d2c47aed3c64940d8b4fe5c5
 
 pkgname = spl-dkms
