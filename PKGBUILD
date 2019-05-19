@@ -5,7 +5,7 @@
 buildarch=1
 
 pkgname=metasploit-payload-creator
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 arch=('any')
 pkgdesc="A wrapper to generate multiple types of payloads, based on users choice."
@@ -16,10 +16,10 @@ provides=('mpc-git')
 replaces=('mpc-git')
 conflicts=('mpc-git')
 source=("https://github.com/g0tmi1k/mpc/archive/v${pkgver}.tar.gz")
-sha512sums=('d1850f4a7d2219ab55f8fdc232d30ff00d797fd63bf6ea0fb13cced7a992796a45e1526bef9c644a568aa653bf869cfa361b83ce817323daac09fe9194d19a11')
+sha512sums=('00e24f4cbd149e95b325ed040b105ad730095f6560fd7abe0f77fccce3bb28b1f4a145750ecb05821873d28650ecc9d2a453d483a707b2dd8187fac4b362c138')
 
 package() {
-  cd mpc-$pkgver
+  cd msfpc-$pkgver
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
