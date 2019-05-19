@@ -1,6 +1,6 @@
 pkgbase = python-imgaug
 	pkgdesc = Image augmentation for machine learning experiments
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/aleju/imgaug
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-imgaug
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-scikit-image
-	source = imgaug-0.2.8.tar.gz::https://github.com/aleju/imgaug/archive/0.2.8.tar.gz
-	sha256sums = 3c40c8e9b06277d258368129376151d2cb41c2523353719f646b2448c9d18fea
+	source = imgaug-0.2.9.tar.gz::https://github.com/aleju/imgaug/archive/0.2.9.tar.gz
+	sha256sums = f2f96f9120e07090abf6bf26bb24d4c20dd531d5fe14a5129f3ad8d941af28fe
 
 pkgname = python-imgaug
 

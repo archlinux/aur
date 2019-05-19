@@ -1,7 +1,7 @@
 # Maintainer: dianlujitao <dianlujitao at gmail dot com>
 
 pkgname=python-imgaug
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Image augmentation for machine learning experiments"
 url="https://github.com/aleju/imgaug"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("imgaug-$pkgver.tar.gz::https://github.com/aleju/imgaug/archive/$pkgver.tar.gz")
-sha256sums=('3c40c8e9b06277d258368129376151d2cb41c2523353719f646b2448c9d18fea')
+sha256sums=('f2f96f9120e07090abf6bf26bb24d4c20dd531d5fe14a5129f3ad8d941af28fe')
 
 build() {
     cd $srcdir/imgaug-$pkgver
