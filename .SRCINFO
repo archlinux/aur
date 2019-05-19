@@ -1,6 +1,6 @@
 pkgbase = doublecmd-gtk2-alpha-bin
 	pkgdesc = A file manager with two panels side by side
-	pkgver = 1.0.0.svn.r8843
+	pkgver = 1.0.0.svn.r8849
 	pkgrel = 1
 	url = https://doublecmd.sourceforge.io
 	arch = x86_64
@@ -19,16 +19,16 @@ pkgbase = doublecmd-gtk2-alpha-bin
 	conflicts = doublecmd-gtk2-svn
 	conflicts = doublecmd-gtk2-bin-nightly
 	replaces = doublecmd-gtk2-bin-nightly
-	noextract = doublecmd-gtk_1.0.0~0+svn8843_amd64.deb
-	noextract = doublecmd-plugins_1.0.0~0+svn8843_amd64.deb
-	noextract = doublecmd-common_1.0.0~0+svn8843_all.deb
+	noextract = doublecmd-gtk_1.0.0~0+svn8849_amd64.deb
+	noextract = doublecmd-plugins_1.0.0~0+svn8849_amd64.deb
+	noextract = doublecmd-common_1.0.0~0+svn8849_all.deb
 	options = !strip
-	source = http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_19.04/all/doublecmd-common_1.0.0~0+svn8843_all.deb
-	sha256sums = f6c80fd3af4932cd79f1b1377c1490999cd5424315de1acf48050b1ed7ab8e27
-	source_x86_64 = http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_19.04/amd64/doublecmd-gtk_1.0.0~0+svn8843_amd64.deb
-	source_x86_64 = http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_19.04/amd64/doublecmd-plugins_1.0.0~0+svn8843_amd64.deb
-	sha256sums_x86_64 = f58c36c1135118ebd27015bcd9f0511bb40222af85bd96440188f459ba998ead
-	sha256sums_x86_64 = 912828b9ea006c0b9f5447d3db284428afb3ac2a242995003d1d4a49aada8044
+	source = http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_19.04/all/doublecmd-common_1.0.0~0+svn8849_all.deb
+	sha256sums = 82bf384d6cf195b2bc2f00dbf127790e11745a7895ab865d9a250cef2f70bf3e
+	source_x86_64 = http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_19.04/amd64/doublecmd-gtk_1.0.0~0+svn8849_amd64.deb
+	source_x86_64 = http://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/xUbuntu_19.04/amd64/doublecmd-plugins_1.0.0~0+svn8849_amd64.deb
+	sha256sums_x86_64 = 3f8f69a527da00b353eebd3f69f25cf33a29b8fe9cc3f2ab3445cc034c96c932
+	sha256sums_x86_64 = c91be9da94bfd107c8699dca5627bfb67a4a9c1efd9dc9291a8766a7ecc274d6
 
 pkgname = doublecmd-gtk2-alpha-bin
 
