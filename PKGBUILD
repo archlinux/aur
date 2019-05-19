@@ -2,28 +2,32 @@
 # Contributor: martinjlowm <martin {at} martinjlowm {dot} dk>
 
 pkgname=zuki-themes-git
-pkgver=r220.812237a
-pkgrel=1
+pkgver=r256.5cc9f1c
+pkgrel=2
 pkgdesc="A selection of themes for GTK3, gnome-shell and more."
-arch=('any')
-url="https://github.com/lassekongo83/zuki-themes"
-license=('GPL3')
-depends=('gtk-engine-murrine' 'gtk-engines')
-makedepends=('git')
-conflicts=('zukitwo-themes')
+arch=(any)
+url=https://github.com/lassekongo83/zuki-themes
+license=(GPL3)
+depends=(gtk-engine-murrine gtk-engines)
+makedepends=(git meson ninja)
+conflicts=(zukitwo-themes)
 optdepends=('gnome-themes-standard: Required for the GTK3 theme'
             'ttf-droid: Font family for the Gnome Shell theme')
-install='firefox-theme.install'
 
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
-pkgver() {
+pkgver () {
    	cd "${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-  	cd "${pkgname}"
-  	find */ -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
+build () {
+	rm -rf build
+	arch-meson "${pkgname}" build
+	ninja -C build
+}
+
+package () {
+	DESTDIR="${pkgdir}" ninja -C build install
 }
