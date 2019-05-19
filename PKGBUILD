@@ -7,6 +7,7 @@ pkgdesc="Open C++ library and utilities for common RPG rulesets"
 arch=('x86_64')
 url="https://openrpg.io"
 license=('custom:OSL' 'custom:OGL')
+provides=(openrpg=$_orpgver roll=$_orpgver name-generator=$_orpgver)
 depends=()
 makedepends=('gcc>=4.7' 'cmake>=2.8.4')
 changelog=
@@ -27,8 +28,6 @@ build() {
 }
 
 package_openrpg-git() {
-  pkgdesc='Free peer-reviewed portable C++ source libraries - development headers and binaries'
-
   cd "${srcdir}/build"
 
   make DESTDIR="${pkgdir}" install
