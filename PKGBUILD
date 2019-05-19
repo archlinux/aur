@@ -5,7 +5,7 @@
 
 pkgname=ucon64
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A ROM backup tool and emulator's Swiss Army knife program. " 
 arch=('i686' 'x86_64')
 url="http://ucon64.sourceforge.net/index.php"

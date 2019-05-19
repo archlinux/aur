@@ -1,7 +1,7 @@
 pkgbase = ucon64
 	pkgdesc = A ROM backup tool and emulator's Swiss Army knife program.
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ucon64.sourceforge.net/index.php
 	arch = i686
 	arch = x86_64
