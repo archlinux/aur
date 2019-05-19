@@ -1,41 +1,11 @@
---- a/usr/bin/atom-beta
-+++ b/usr/bin/atom-beta
-@@ -1,5 +1,12 @@
- #!/bin/bash
-
-+# Allow users to override command-line options
-+if [[ -f ~/.config/atom-editor-beta-flags.conf ]]; then
-+  ATOM_USER_FLAGS="$(cat ~/.config/atom-editor-beta-flags.conf)"
-+fi
-+
-+export PYTHON=python2
-+
- if [ "$(uname)" == 'Darwin' ]; then
-   OS='Mac'
- elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-@@ -101,11 +108,11 @@
-   [ -x "$ATOM_PATH" ] || ATOM_PATH="$TMPDIR/atom-build/Atom/atom"
-
-   if [ $EXPECT_OUTPUT ]; then
--    "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ "$@"
-+    "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ $ATOM_USER_FLAGS "$@"
-     exit $?
-   else
-     (
--    nohup "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ "$@" > "$ATOM_HOME/nohup.out" 2>&1
-+    nohup "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ $ATOM_USER_FLAGS "$@" > "$ATOM_HOME/nohup.out" 2>&1
-     if [ $? -ne 0 ]; then
-       cat "$ATOM_HOME/nohup.out"
-       exit $?
-
 --- a/usr/share/applications/atom-beta.desktop
 +++ b/usr/share/applications/atom-beta.desktop
 @@ -2,7 +2,7 @@
  Name=Atom Beta
  Comment=A hackable text editor for the 21st Century.
  GenericName=Text Editor
--Exec=/usr/share/atom-beta/atom %F
-+Exec=env PYTHON=python2 XMODIFIERS= /usr/share/atom-beta/atom %F
+-Exec=env ATOM_DISABLE_SHELLING_OUT_FOR_ENVIRONMENT=false /usr/bin/atom-beta %F
++Exec=env PYTHON=python2 /usr/bin/atom-beta %U
  Icon=atom-beta
  Type=Application
  StartupNotify=true
