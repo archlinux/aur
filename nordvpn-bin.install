@@ -5,7 +5,7 @@ post_install() {
 }
 
 post_upgrade() {
-  if [ $(vercmp $2 3.0.0-4) -lt 0 ]; then
+  if [ $(vercmp $2 3.0.0_4-1) -lt 0 ]; then
     echo ':: In order to enable nordvpn you have to start two services:'
     echo '     sudo systemctl enable --now nordvpnsd'
     echo '     systemctl --user enable --now nordvpnud'
