@@ -1,0 +1,16 @@
+pkgbase = openrpg-git
+	pkgdesc = Open C++ library and utilities for common RPG rulesets
+	pkgver = 0.4.4_dev
+	pkgrel = 1
+	url = https://openrpg.io
+	arch = x86_64
+	license = custom:OSL
+	license = custom:OGL
+	makedepends = gcc>=4.7
+	makedepends = cmake>=2.8.4
+	source = https://github.com/incomingstick/OpenRPG/archive/v0.4.4-dev.tar.gz
+	md5sums = 7c732b689aee64744e7696b30afa9de7
+
+pkgname = openrpg-git
+	pkgdesc = Free peer-reviewed portable C++ source libraries - development headers and binaries
+
