@@ -1,6 +1,6 @@
 pkgbase = python-pikepdf
 	pkgdesc = Read and write PDFs with Python, powered by qpdf
-	pkgver = 1.1.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/pikepdf/pikepdf
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = python-pikepdf
 	makedepends = python-setuptools
 	depends = python
 	depends = qpdf
-	source = https://files.pythonhosted.org/packages/d0/de/87be0b2b9dd5626d87df75f7f5ee04276cde661095eb4f854193eeaa32c4/pikepdf-1.1.0.tar.gz
-	sha256sums = be826ba57db1a928ca0b95d7513e1c45cb7042ddf88adbb5f80881014d366391
+	source = https://files.pythonhosted.org/packages/04/a0/0951cda6ebdf3d205af9b177250382e3c149a96b82d0ce75e984310488e1/pikepdf-1.3.0.tar.gz
+	sha256sums = f6db680c47e01ab23ee813d7c0e2bc50469a6a9f4a33414e961d07cdec0ed541
 
 pkgname = python-pikepdf
 
