@@ -1,7 +1,7 @@
 pkgbase = flare-engine
 	pkgdesc = Free/Libre Action Roleplaying Engine
-	pkgver = 1.09.01
-	pkgrel = 2
+	pkgver = 1.10
+	pkgrel = 1
 	url = http://www.flarerpg.org/
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = flare-engine
 	depends = sdl2_ttf
 	depends = hicolor-icon-theme
 	depends = python
-	source = flare-engine-1.09.01::https://github.com/flareteam/flare-engine/archive/v1.09.01.tar.gz
-	sha1sums = f221e5c4a71c72a01694cf3407082f1d8066d9fb
+	source = flare-engine-1.10::https://github.com/flareteam/flare-engine/archive/v1.10.tar.gz
+	sha1sums = 1c5254009c7729d61c8b12a0a2f0397b0ea2cf46 
 
 pkgname = flare-engine
 
