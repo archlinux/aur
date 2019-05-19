@@ -1,7 +1,7 @@
 pkgbase = mplayer-gui
 	pkgdesc = GUI for mplayer
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.mplayerhq.hu/
 	install = mplayer-gui.install
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = mplayer-gui
 	depends = mplayer
 	depends = libjpeg6-turbo
 	source = http://download1.rpmfusion.org/free/fedora/updates/30/x86_64/m/mplayer-gui-1.4-1.fc30.x86_64.rpm
+	source = http://download-ib01.fedoraproject.org/pub/fedora/linux/releases/30/Everything/x86_64/os/Packages/l/libcdio-2.0.0-4.fc30.x86_64.rpm
 	md5sums = a4c418e33c92593932bd8a939dd3032c
+	md5sums = 2672e9a2b6f20003c464dd31f49bcaae
 
 pkgname = mplayer-gui
 
