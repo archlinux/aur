@@ -1,6 +1,6 @@
 # Maintainer: Andrii Zymohliad <azymohliad@pm.me>
 pkgname=qwertone-git
-pkgver=v0.1.0.r6.54fb520
+pkgver=v0.1.1.r0.eb0a38a
 pkgrel=1
 pkgdesc='Turns your PC into musical instrument'
 arch=(x86_64)
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-    _appid="org.azymohliad.Qwertone"
+    _appid="com.gitlab.azymohliad.Qwertone"
     cd "$srcdir/$pkgname"
     install -Dm 755 target/release/qwertone -t "$pkgdir/usr/bin"
     install -Dm 644 res/$_appid.desktop -t "$pkgdir/usr/share/applications"
