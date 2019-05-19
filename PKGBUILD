@@ -2,7 +2,7 @@
 
 pkgname=d9vk-mingw
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase, mingw version"
 arch=('x86_64')
 url="https://github.com/Joshua-Ashton/d9vk"
@@ -14,29 +14,20 @@ conflicts=("d9vk")
 source=(
     "git+https://github.com/Joshua-Ashton/d9vk.git#tag=$pkgver"
     "setup_d9vk"
-    "extraopts.patch"
+    "setup_dxvk.patch"
     "dxvk-async.patch"
 )
 sha256sums=(
     "SKIP"
     "7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a"
-    "d73f948fd39da218141cc72c7373f59e6fc289630e155b6e51d18597455d0040"
-    "6c6936b753903ba59ee9e2b6c8fc533bf60cba894cf4288ec0239c35b86796cd"
+    "4e74b2d921c38ca0f9c5a6069501e9d15c7c076dcd6d41ae243830375115b8f9"
+    "1f9e060fe059c0333bbe361f6278716757a853ab7b289186f58f3ddd2466bb8e"
 )
 
 prepare() {
     cd d9vk
-    # Patch crossfiles with extra optimizations from makepkg.conf
-    # If building fails, comment the line below to disable them.
-    patch -p1 -i ../extraopts.patch
-    CFLAGS="$CPPFLAGS $CFLAGS"
-    LDFLAGS="${LDFLAGS/,-z,relro,-z,now/}"
-    sed -i build-win64.txt \
-        -e "s|@CARGS@|\'${CFLAGS// /\',\'}\'|g" \
-        -e "s|@LDARGS@|\'${LDFLAGS// /\',\'}\'|g"
-    sed -i build-win32.txt \
-        -e "s|@CARGS@|\'${CFLAGS// /\',\'}\'|g" \
-        -e "s|@LDARGS@|\'${LDFLAGS// /\',\'}\'|g"
+    patch -p1 -i ../setup_dxvk.patch
+
     # Uncomment to enable dxvk async patch.
     # Enable at your own risk, if you don't know what it is,
     # leave it as is. You have been warned.
