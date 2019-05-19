@@ -13,6 +13,7 @@ pkgbase = archisomydrive
 	depends = glibc
 	depends = glib2
 	depends = libutil-linux
+	conflicts = archisomydrive-git
 	source = https://github.com/daltomi/ArchIsoMyDrive/raw/master/Install/archisomydrive-git-4.1-1-x86_64.pkg.tar.xz
 	source = https://github.com/daltomi/ArchIsoMyDrive/raw/master/Install/archisomydrive-git-4.1-1-x86_64.pkg.tar.xz.sig
 	validpgpkeys = 51479755D90A2AACFA90A6551DD242462908D08B

@@ -13,6 +13,8 @@ url="https://github.com/daltomi/$_gitname"
 license=('GPL3')
 depends=('qt5-base' 'qt5pas' 'qt5-x11extras' 'rhash' 'udev' 'glibc' 'glib2' 'libutil-linux') 
 
+conflicts=('archisomydrive-git')
+
 source=("$url/raw/master/Install/$_remotepkgbase-$pkgver-$pkgrel-x86_64.pkg.tar.xz"{,.sig})
 
 
