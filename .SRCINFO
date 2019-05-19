@@ -1,0 +1,20 @@
+pkgbase = python-hattifnatt
+	pkgdesc = Push directory to Telegram channel
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/alexshpilkin/hattifnatt
+	arch = any
+	license = custom:CC0
+	makedepends = python-setuptools
+	depends = python>=3.5
+	depends = python-pathtools>=0.1.2
+	depends = python-telegram-bot>=10.0.2
+	depends = python-watchdog>=0.9.0
+	source = https://github.com/alexshpilkin/hattifnatt/releases/download/v0.2.1/hattifnatt-0.2.1.tar.gz
+	source = https://github.com/alexshpilkin/hattifnatt/releases/download/v0.2.1/hattifnatt-0.2.1.tar.gz.asc
+	validpgpkeys = B595D74D6615C010469F5A1373E9AA114B3A894B
+	sha256sums = 4f10ff1f1e29590ce4bc25c7bbeecb5778bf4732118294543f0632cdc9139830
+	sha256sums = SKIP
+
+pkgname = python-hattifnatt
+
