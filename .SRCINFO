@@ -1,14 +1,14 @@
 pkgbase = high-fidelity-stable-git
 	pkgdesc = High Fidelity (Hifi) is an open-source software where you can create and share virtual reality (VR) experiences. Create and host your own VR world, explore other worlds and meet other users. (git - latest stable version)
 	pkgver = r77707.576f41f90c
-	pkgrel = 1
+	pkgrel = 1.01
 	url = https://github.com/highfidelity/hifi
 	install = high-fidelity-stable-git.install
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = git
-	makedepends = cmake>=2.8.12.2
+	makedepends = cmake>=3.2
 	depends = qt5-base>=5.5.1
 	depends = qt5-script>=5.5.1
 	depends = qt5-tools>=5.5.1
@@ -18,6 +18,7 @@ pkgbase = high-fidelity-stable-git
 	depends = qt5-webengine>=5.5.1
 	depends = qt5-graphicaleffects>=5.5.1
 	depends = qt5-quickcontrols>=5.5.1
+	depends = qt5-xmlpatterns>=5.5.1
 	depends = glm>=0.9.5.4
 	depends = openssl>=1.0.1m
 	depends = intel-tbb>=4.3
