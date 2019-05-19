@@ -3,6 +3,6 @@
    notifempty
    sharedscripts
    postrotate
-      /usr/bin/systemctl reload usermin.service 2>/dev/null || true
+      /usr/bin/systemctl -q try-reload-or-restart usermin.service 2>/dev/null || true
    endscript
 }

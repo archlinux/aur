@@ -1,12 +1,12 @@
 # Maintainer: Amish <contact at via dot aur>
 
 pkgname=usermin
-pkgver=1.750
+pkgver=1.760
 pkgrel=1
 pkgdesc="A web-based user account administration interface"
 arch=(i686 x86_64)
 license=('custom:webmin')
-url="http://www.webmin.com/"
+url="http://www.webmin.com/usermin.html"
 depends=('perl' 'perl-net-ssleay' 'perl-authen-pam' 'perl-encode-detect' 'openssl')
 optdepends=('webmin: A web-based interface for system administration')
 backup=('etc/usermin/miniserv.conf' 'etc/usermin/miniserv.users' \
@@ -93,11 +93,11 @@ package() {
 }
 
 
-sha256sums=('ed2fe3885b651e45dd8c8938a732d81793bcc32111e135088c7f5d72a921ebf9'
+sha256sums=('0572781c705f4d9cb9321cc899c68a7baa5f783cc678c87073cfc732de5dab5d'
             '366e0315307c89bb0ec10d76c22352de93b92ca556f7f7bb6e34eb1b17d26a9c'
             '17102b3583190f64fae039ca5270ae823cae90ed60fdb2dd49aba95496bff559'
             'c0ff7f1dfdbe7c4265ebae5a7033d46e2a3f729f092f2c975b05ae7ef4034d6d'
             'a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d'
-            '73b47189419d107e3be2cce131123c73e4d1c954c14f53c223f332da0348681c'
+            '12def022feec3b063dbc0a247d3db1423785beea90d3f065e785c86799d31431'
             'be8ca34e385063a162f9ba91e535776e58b26520127f724837bc5840df07a4f7'
-            '6f40dfcd8f1530639b7a8db2cd5401be74d1416ce1116b8f36b0542a85c8d3cf')
+            'ade1b28a8f65512c8878ecabf6c8bc5a2d8ce3fd88dc3bffc1a9e14f3fd1ec47')
