@@ -1,11 +1,12 @@
 # $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jacek Poplawski <jacekpoplawski@gmail.com>
 # Contributor: Charlie Cox <ccoxiv@yahoo.com>
 
 pkgname=atanks
 pkgver=6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Atomic Tanks"
 url="http://atanks.sourceforge.net"
 license=('GPL')
