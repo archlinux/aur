@@ -1,16 +1,16 @@
 pkgbase = xmage
 	pkgdesc = Java-based program for playing Magic:The Gathering, including client and server
-	pkgver = 1.4.35V5
+	pkgver = 1.4.35V6
 	pkgrel = 0
 	url = http://xmage.de
 	arch = any
 	license = MIT
 	makedepends = detox
 	optdepends = wmname: change window manager name for compatibility with certain WMs
-	source = http://xmage.de/files/xmage_1.4.35V5.zip
+	source = http://xmage.de/files/xmage_1.4.35V6.zip
 	source = http://xmage.today/java/jre-8u201-linux-x64.tar.gz
 	source = https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt
-	sha256sums = 422bd42aa2ff6f7f17a31d380cde4f1d4483bd288839f71e2c063b759e554133
+	sha256sums = 3a4337ea67234d77fc82344e8f723ce6884d4822ffd2d9742e82239f241ce51f
 	sha256sums = 12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352
 	sha256sums = SKIP
 
