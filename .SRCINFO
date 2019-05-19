@@ -1,0 +1,20 @@
+pkgbase = ledger2beancount-git
+	pkgdesc = Ledger to Beancount text-based converter
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/zacchiro/ledger2beancount
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-carp-assert
+	depends = perl-config-onion
+	depends = perl-date-calc
+	depends = perl-datetime-format-strptime
+	depends = perl-file-basedir
+	depends = perl-getopt-long-descriptive
+	depends = perl-yaml-libyaml
+	source = ledger2beancount::git+https://github.com/zacchiro/ledger2beancount.git
+	md5sums = SKIP
+
+pkgname = ledger2beancount-git
+
