@@ -2,18 +2,18 @@
 
 _pkgname=mailvelope
 pkgname=firefox-extension-${_pkgname}
-pkgver=3.0.2
+pkgver=3.2.0
 pkgrel=1
-_file=1184296
+_file=2927344
 pkgdesc="Secure webmail communication based on the OpenPGP standard."
 license=('GPL2')
 arch=('any')
 url="https://www.mailvelope.com"
 depends=("firefox")
-source=("${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_file}/${_pkgname}-${pkgver}-an+fx.xpi")
+source=("${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_file}/${_pkgname}-${pkgver}-fx.xpi")
 
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('fa981baa447a335ee86b3d60cb4b5cee569f91b14616e7c57fefd5081c729327')
+sha256sums=('136b43b730434f79dac620d1de5d3456414d83a57f39cad42c2eeae3eae3ea4c')
 
 package() {
   cd "${srcdir}"
