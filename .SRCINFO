@@ -1,11 +1,12 @@
 pkgbase = electrum-mona
 	pkgdesc = A lightweight Monacoin wallet
 	pkgver = 3.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wakiyamap/electrum-mona
 	arch = any
 	license = MIT
 	makedepends = python-pycurl
+	makedepends = python-pip
 	depends = cython
 	depends = python-pyaes
 	depends = python-ecdsa

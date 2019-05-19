@@ -1,7 +1,7 @@
 # Maintainer: Musee "lae" Ullah <lae(at)lae(dot)is>
 pkgname=electrum-mona
 pkgver=3.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight Monacoin wallet"
 arch=('any')
 url='https://github.com/wakiyamap/electrum-mona'
@@ -27,7 +27,7 @@ optdepends=('python-matplotlib: for plot history'
             'python-trezor: for Trezor hardware support'
             'python-btchip: for BTChip hardware support'
             'python-keepkey: for KeepKey hardware support')
-makedepends=('python-pycurl')
+makedepends=('python-pycurl' 'python-pip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wakiyamap/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('c79d34a77c77f2d267ecf3127065ae8b8d01d9390700637bf255cc14826e6f6a12095921746de788a3b46f2e3adebc7173e1629e96d9d2f56c63785d101d3574')
 
