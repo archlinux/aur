@@ -9,7 +9,7 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname="python-scipy-openblas"
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ license=('BSD')
 makedepends=('gcc-fortran' 'python-numpy-openblas' 'python-setuptools' 'openblas-lapack')
 checkdepends=('python-pytest')
 source=("https://github.com/scipy/scipy/releases/download/v${pkgver}/scipy-${pkgver}.tar.gz")
-sha256sums=('51a2424c8ed80e60bdb9a896806e7adaf24a58253b326fbad10f80a6d06f2214')
+sha256sums=('c3bb4bd2aca82fb498247deeac12265921fe231502a6bc6edea3ee7fe6c40a7a')
 
 
 build() {
