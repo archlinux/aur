@@ -12,7 +12,7 @@ pkgbase = openrpg-git
 	provides = roll=0.4.4_dev
 	provides = name-generator=0.4.4_dev
 	provides = character-generator=0.4.4_dev
-	source = git+https://github.com/incomingstick/OpenRPG
+	source = git+https://github.com/incomingstick/OpenRPG#tag=
 	md5sums = SKIP
 
 pkgname = openrpg-git

@@ -10,7 +10,7 @@ provides=(openrpg=$pkgver roll=$pkgver name-generator=$pkgver character-generato
 depends=()
 makedepends=('gcc>=4.7' 'cmake>=2.8.4')
 changelog=
-source=(git+https://github.com/incomingstick/OpenRPG)
+source=(git+https://github.com/incomingstick/OpenRPG#tag=${_orpgver})
 noextract=()
 md5sums=('SKIP')
 _orpgver=v${pkgver//_/-}
