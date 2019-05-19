@@ -11,9 +11,9 @@ pkgbase = d9vk-bin
 	depends = bash
 	provides = d9vk
 	conflicts = d9vk
-	source = https://github.com/Joshua-Ashton/d9vk/releases/download/0.11/d9vk-release-0.11.2a0c153b0c9e0b754b9cfc41ea16c5bdc758fab5.zip
+	source = https://github.com/Joshua-Ashton/d9vk/releases/download/0.11/d9vk-0.11.tar.gz
 	source = setup_d9vk
-	sha256sums = 34adb56a75a20c0520db4365d5d29dfa4755439cf0c50dda1a4e56254e8278ef
+	sha256sums = fac8eab2a7de7af2404d4bac13ed24ff60c1cf36ba6b8ab7fc5f0d405f284e08
 	sha256sums = 7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a
 
 pkgname = d9vk-bin
