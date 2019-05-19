@@ -1,10 +1,19 @@
 post_install() {
-    echo -n "IMPORTANT! Run 'nvman default bumblebee' or 'nvman default optimus' to set "
-    echo "one default service! (extremely needed)"
-
-    echo "Enabling nvman.service (if possible)"
+    echo "$(tput bold)$(tput setaf 6)::$(tput sgr0) Enabling nvman.service"
     systemctl enable nvman.service
 
-    echo -n "IMPORTANT! Enable 'nvman.service' with 'systemctl enable nvman.service' "
-    echo "(if it wasn't enabled yet)"
+    if [[ $? -ne 0 ]]; then 
+        echo "$(tput bold)$(tput setaf 1)::$(tput sgr0) Failed to enable nvman.service"
+        echo "$(tput bold)$(tput setaf 3)IMPORTANT!$(tput sgr0) Please enable nvman.service manually"
+    else 
+        echo "$(tput bold)$(tput setaf 6)::$(tput sgr0) Succesfully enabled nvman.service"
+    fi
+
+    # Reminders
+    echo "$(tput bold)$(tput setaf 3)IMPORTANT!$(tput sgr0) Don't disable nvman.service"
+    echo "$(tput bold)$(tput setaf 3)IMPORTANT!$(tput sgr0) Remember that optimus-manager only works with Xorg!"
+
+    # Suggestions
+    echo -n "$(tput bold)$(tput setaf 3)IMPORTANT!$(tput sgr0) If you want to change your default"
+    echo " service use 'nvman default <service>' (default: optimus)"
 }

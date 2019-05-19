@@ -2,7 +2,7 @@
 
 pkgname=nvman
 pkgver=1.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc="NVIDIA Manager for Optimus/Bumblebee"
 arch=('any')
 url=https://github.com/quebin31/nvman
