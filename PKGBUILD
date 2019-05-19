@@ -5,7 +5,7 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.32.1
+pkgver=3.32.2
 pkgrel=1
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -27,8 +27,7 @@ depends=('dconf'
   'pipewire'
   'xorg-server-xwayland'
 )
-makedepends=('intltool'
-  'gobject-introspection'
+makedepends=('gobject-introspection'
   'git'
   'egl-wayland'
   'meson'
@@ -38,7 +37,7 @@ checkdepends=('xorg-server-xvfb')
 conflicts=('mutter' "gnome-shell>1:${pkgver:0:6}+999")
 provides=("mutter=${pkgver}")
 groups=('gnome')
-_commit=e3f3274bbf631c57f9a01b7bead6ebf6374f5be4  # tags/3.32.1^0
+_commit=189f71f5d1e70dd16796418d568d3e3e4cad49e0  # tags/3.32.2^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
         216.patch
@@ -86,7 +85,7 @@ check() (
   glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
   export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
 
-  dbus-run-session xvfb-run -s '+iglx -noreset' meson test -C build
+  dbus-run-session xvfb-run -s '+iglx -noreset' meson test -C build --print-errorlogs
 )
 
 package() {
