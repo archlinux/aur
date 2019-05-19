@@ -3,11 +3,11 @@
 
 pkgname=aerc2-git
 _pkgname=aerc2
-pkgver=r187.a275f65
+pkgver=r246.ca2cd00
 pkgrel=1
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
-url='https://git.sr.ht/~sircmpwn/aerc2'
+url='https://git.sr.ht/~sircmpwn/aerc'
 license=('MIT')
 depends=('libvterm')
 makedepends=('go')
