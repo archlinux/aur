@@ -2,7 +2,7 @@
 
 pkgname=('python-timezonefinder' 'python2-timezonefinder')
 pkgdesc="Fast and lightweight project for looking up the timezone for a given lat/lng"
-pkgver=3.0.0
+pkgver=4.0.2
 pkgrel=1
 url="https://github.com/MrMinimal64/timezonefinder"
 license=('MIT')
@@ -11,15 +11,19 @@ makedepends=('python'
   'python-setuptools' 
   'python2' 
   'python2-setuptools')
-source=("https://files.pythonhosted.org/packages/source/t/timezonefinder/timezonefinder-${pkgver}.tar.gz")
-sha256sums=('90f19dc51752e51b5e23742b5cb40763844855096f017a07c361eed1377777dd')
+source=("https://files.pythonhosted.org/packages/source/t/timezonefinder/timezonefinder-${pkgver}.tar.gz"
+"python3.patch")
+sha256sums=('659ff7fe78248e6a79af4652be70f88bc72ed5478985e2c0bbc5e2c1868bf380'
+            '2fc4a9ecc413c09c4eddfbfe8c71952d9b7e608f415f3d8ba295988e30786288')
 
 build() {
   cp -r ${srcdir}/timezonefinder-${pkgver} ${srcdir}/timezonefinder-${pkgver}-py2
 
   cd ${srcdir}/timezonefinder-${pkgver}
   python setup.py build
-
+  
+  patch -p1 -i "${srcdir}/python3.patch"
+  
   cd ${srcdir}/timezonefinder-${pkgver}-py2
   python2 setup.py build
 }
