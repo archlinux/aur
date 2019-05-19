@@ -3,8 +3,7 @@
 
 pkgname=mtvcgui
 pkgver=1.0.2
-pkgrel=1
-epoch=1
+pkgrel=2
 pkgdesc="Mencoder TV Capture GUI"
 arch=('any')
 url="http://www.santiagobruno.com.ar/programas.html#mtvcgui"
@@ -12,6 +11,11 @@ license=('GPL2')
 depends=('hicolor-icon-theme' 'mencoder' 'mplayer' 'python2-pyqt4' 'python2-sip-pyqt4')
 source=( https://github.com/sbruno/mtvcgui/archive/$pkgver.tar.gz )
 md5sums=('d5ede35a483f9cdb2d85312f049f92b9')
+
+prepare() {
+  cd "${srcdir}"/"${pkgname}"-"${pkgver}"/src
+  sed -i '1s+python+python2+' run.py
+}
 
 package() {
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"/src

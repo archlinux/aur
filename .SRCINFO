@@ -1,8 +1,7 @@
 pkgbase = mtvcgui
 	pkgdesc = Mencoder TV Capture GUI
 	pkgver = 1.0.2
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = http://www.santiagobruno.com.ar/programas.html#mtvcgui
 	arch = any
 	license = GPL2
