@@ -4,7 +4,7 @@ pkgbase = ttf-bignoodletitling
 	pkgrel = 1
 	url = https://www.dafont.com/bignoodletitling.font
 	arch = any
-	license = unknown
+	license = custom:Sentinel Type Freefont EULA
 	depends = fontconfig
 	source = bignoodletitling.zip::https://dl.dafont.com/dl/?f=bignoodletitling
 	md5sums = dc93df2d62cd2cb3277d53a98c46c755

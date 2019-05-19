@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Bignoodletitling, a font which uses on Overwatch."
 arch=('any')
 url="https://www.dafont.com/bignoodletitling.font"
-license=('unknown')
+license=('custom:Sentinel Type Freefont EULA')
 depends=('fontconfig')
 source=("bignoodletitling.zip::https://dl.dafont.com/dl/?f=bignoodletitling")
 md5sums=('dc93df2d62cd2cb3277d53a98c46c755')
