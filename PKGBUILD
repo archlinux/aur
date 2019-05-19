@@ -1,6 +1,6 @@
 # Maintainer: Ramon Fried <rfried.dev@gmail.com>
 pkgname="bitwise"
-pkgver="v0.13"
+pkgver="v0.14"
 pkgrel="1"
 pkgdesc="Terminal based bitwise manipulator in curses"
 arch=("any")
@@ -9,8 +9,8 @@ url="https://github.com/mellowcandle/bitwise"
 depends=("ncurses")
 provides=("bitwise")
 
-source=("https://github.com/mellowcandle/bitwise/releases/download/v0.13/bitwise-v0.13.tar.gz")
-sha256sums=('9860a0da7dc2f7b33cd0ac003d6d642b5ecd531ed68463406ca40b82ce7e5488')
+source=("https://github.com/mellowcandle/bitwise/releases/download/v0.14/bitwise-v0.14.tar.gz")
+md5sums=('81a2c44bd7ee04a6947de1579535a729')
 
 build() {
     cd "${pkgname}-${pkgver}"
