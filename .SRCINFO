@@ -1,0 +1,14 @@
+pkgbase = mpv-discordrpc
+	pkgdesc = Discord Rich Presence integration for mpv Media Player
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/cniw/mpv-discordRPC
+	arch = any
+	license = MIT
+	depends = discord-rpc-api
+	depends = python-pypresence
+	source = https://github.com/cniw/mpv-discordRPC/releases/download/v1.4.1/mpv-discordRPC-1.4.1-linux.zip
+	md5sums = 4c2a749fb3e7f9b627448737851e742a
+
+pkgname = mpv-discordrpc
+
