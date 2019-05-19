@@ -5,6 +5,7 @@ post_install() {
   echo "    script-security 2"
   echo "    setenv PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   echo "    up /etc/openvpn/scripts/update-systemd-resolved"
+  echo "    up-restart"
   echo "    down /etc/openvpn/scripts/update-systemd-resolved"
   echo "    down-pre"
   echo
@@ -17,5 +18,10 @@ post_upgrade() {
   echo "configuration files to match this:"
   echo "    up /etc/openvpn/scripts/update-systemd-resolved"
   echo "    down /etc/openvpn/scripts/update-systemd-resolved"
+  echo
+  echo "If you are using persist-tun and ping-restart, you should add up-restart"
+  echo "to your configuration so that update-systemd-resolved is called when"
+  echo "there is a partial restart of the connection. Otherwise, or your DNS"
+  echo "configuration may not be restored."
   echo
 }
