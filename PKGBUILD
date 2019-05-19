@@ -4,7 +4,7 @@
 _pkgname=nginx
 pkgname=$_pkgname-rtmp-sergey-git
 _nginx_ver=1.16.0
-_rtmp_commit_id=a5ac72c274
+_rtmp_commit_id=3bf752326
 pkgver=$_nginx_ver"_"$_rtmp_commit_id
 pkgrel=0
 pkgdesc='NGINX-based Media Streaming Server, forked by Sergey Dryabzhinsky.'
