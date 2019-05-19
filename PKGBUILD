@@ -2,7 +2,7 @@
 
 pkgname="ftpgrab-bin"
 _pkgname="ftpgrab"
-pkgver="5.2.0"
+pkgver="5.3.0"
 pkgrel=1
 pkgdesc="A CLI application written in Go to grab your files from a remote FTP or SFTP server."
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('ftpgrab')
 conflicts=()
 depends=()
 source=("https://github.com/ftpgrab/ftpgrab/releases/download/${pkgver}/ftpgrab_${pkgver}_linux_x86_64.tar.gz")
-sha256sums=('59d40fcb73c8fd959b9e4b82609a4092592eff50609d48aabb764ac755b4ceff')
+sha256sums=('036fc26b3680f7667b518affe324258d23a3ac599d4d441d6e348ab6a53751ed')
 
 package() {
 	install -Dm755 ${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
