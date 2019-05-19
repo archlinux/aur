@@ -2,7 +2,7 @@
 
 pkgname=freecad-appimage
 pkgver=0.18_16110
-pkgrel=3
+pkgrel=4
 pkgdesc="A general purpose 3D CAD modeler (binary AppImage version)"
 arch=('x86_64')
 url='http://www.freecadweb.org/'
@@ -12,7 +12,7 @@ conflicts=('freecad')
 source=("https://github.com/FreeCAD/FreeCAD/releases/download/0.18.1/FreeCAD_${pkgver//_/-}-Linux-Conda_Py3Qt5_glibc2.12-${arch}.AppImage"
         freecad_conda.desktop.patch
         freecad.sh)
-sha256sums=('ebe8cc15d8e2c4f4a475fb60e1fbca9370c3ee4892308ab852ff4c06a6d9fe8e'
+sha256sums=('a6d886127dadc910f8e2f35a89922c9a77ca529defbf9a034bb2087b14bbb9cd'
          'c56c0d1fd1d795419e464e487bab5fe2f62edb3ce40f895079d8251a9f6ddd1b'
          '9bfca97e1e633601ddfbd74f32501050f50378cfd6b30f5bf91d978e7ce33436')
 options=(!strip)
