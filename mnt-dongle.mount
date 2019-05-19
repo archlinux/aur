@@ -3,15 +3,11 @@
 [Unit]
 After=dev-md1.device
 ConditionPathExists=/dev/disk/by-uuid/BA19-64EE
-BindsTo=manolo.luksopenwithkey.service
-#Before=systemd-cryptsetup@md1.service
+Before=manolo.luksopenwithkey.service
+#BindsTo=manolo.luksopenwithkey.service
 
 [Mount]
 Where=/mnt/dongle
 What=/dev/disk/by-label/DONGLE04
 Type=vfat
 Options=defaults
-
-#[Install]
-#WantedBy=manolo.luksopenwithkey.service manolo.luksopenwithoutkey.service
-#WantedBy=basic.target

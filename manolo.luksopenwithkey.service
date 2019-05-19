@@ -7,6 +7,7 @@ DefaultDependencies=no
 BindsTo=dev-mapper-%i.device
 After=dev-md1.device mnt-dongle.mount
 Requires=dev-md1.device
+Wants=mnt-dongle.mount
 Before=mnt-daten.mount
 ConditionPathExists=/mnt/dongle/.Thumb0.db
 
@@ -14,7 +15,7 @@ ConditionPathExists=/mnt/dongle/.Thumb0.db
 Type=oneshot
 RemainAfterExit=no
 ExecStart=/usr/lib/systemd/systemd-cryptsetup attach 'storage' '/dev/md1' '/mnt/dongle/.Thumb0.db' 'luks';
-#ExecStop=/usr/bin/systemctl stop --no-block mnt-dongle.mount 
+ExecStartPost=systemctl stop mnt-dongle.mount 
 
 [Install]
 WantedBy=basic.target

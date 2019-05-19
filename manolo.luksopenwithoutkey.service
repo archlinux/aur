@@ -14,7 +14,6 @@ ConditionPathExists=!/dev/disk/by-uuid/BA19-64EE
 Type=oneshot
 RemainAfterExit=no
 ExecStart=/usr/lib/systemd/systemd-cryptsetup attach 'storage' '/dev/md1' 'none' 'luks';
-#ExecStop=/usr/bin/systemctl stop --no-block mnt-dongle.mount
 
 [Install]
 WantedBy=basic.target

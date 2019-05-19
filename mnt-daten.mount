@@ -9,7 +9,3 @@ Where=/mnt/daten
 What=/dev/disk/by-label/daten
 Type=ext4
 Options=defaults,usrjquota=aquota.user,jqfmt=vfsv1
-
-#[Install]
-#WantedBy=basic.target
-
