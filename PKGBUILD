@@ -45,4 +45,6 @@ package() {
 		Terminal=false
 		StartupNotify=false
 	__EOF__
+
+	install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${pkgname^}-${pkgver}/LICENSE"
 }
