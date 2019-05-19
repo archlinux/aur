@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-sassc
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="C implementation of Sass CSS preprocessor (mingw-w64)"
 arch=('any')
@@ -10,8 +10,8 @@ license=('MIT')
 makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt' 'mingw-w64-libsass')
 options=('!strip' '!buildflags' 'staticlibs')
-md5sums=('f5c6aeb4e98c96d093f20295fc490f2c')
 source=("sassc-${pkgver}.tar.gz"::"https://github.com/sass/sassc/archive/${pkgver}.tar.gz")
+sha256sums=('dac8d83339c3c8fc6b9599e2ff1e0a0ae833ab0e65d4370b9c69bde18f8ec676')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
