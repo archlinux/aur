@@ -108,5 +108,4 @@ package() {
 	install -Dm755 "$srcdir/build/assignment-client/assignment-client" "$pkgdir/opt/hifi/assignment-client"
 	install -Dm755 "$srcdir/hifi-assignment-client.launcher" "$pkgdir/usr/bin/hifi-assignment-client"
 	install -Dm755 "$srcdir/build/assignment-client/oven" "$pkgdir/opt/hifi/assignment-client"
-	cp -R "$srcdir/build/assignment-client/plugins" "$pkgdir/opt/hifi/assignment-client"
 }
