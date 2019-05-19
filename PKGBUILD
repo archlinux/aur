@@ -15,6 +15,4 @@ sha256sums=('4d6e06bf359efecf4bea251e330c852f83b9150f503df28fd94239499f4ff606')
 package() {
   cd "${srcdir}/${pkgname/python-/}-${pkgver}"
   python setup.py install --root="${pkgdir}"
-
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${pkgname/python-/}-${pkgver}/LICENSE"
 }
