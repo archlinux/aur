@@ -1,0 +1,22 @@
+pkgbase = perl-dist-zilla-role-modulemetadata
+	pkgdesc = A role for plugins that use Module::Metadata
+	pkgver = 0.006
+	pkgrel = 1
+	url = https://metacpan.org/release/Dist-Zilla-Role-ModuleMetadata
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep>=0
+	checkdepends = perl-test-fatal>=0
+	checkdepends = perl-test-needs>=0
+	depends = perl>=5.010
+	depends = perl-dist-zilla>=0
+	depends = perl-moose>=0
+	depends = perl-path-tiny>=0
+	depends = perl-namespace-autoclean>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Dist-Zilla-Role-ModuleMetadata-0.006.tar.gz
+	md5sums = e4a470bd449da77710211bf597a16c1e
+
+pkgname = perl-dist-zilla-role-modulemetadata
+
