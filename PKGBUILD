@@ -8,9 +8,6 @@ arch=('any')
 url="https://github.com/hhannine/Superpaper"
 license=('MIT')
 depends=('python-pillow' 'python-screeninfo' 'python-wxpython' 'python-system_hotkey')
-makedepends=('python-setuptools')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hhannine/${pkgname^}/archive/v${pkgver}.tar.gz"
        'write_to_confdir.patch')
 sha256sums=('1defc8b55b1ffa87d37d918ab646e210c88525acdc21c38f4100bf08209d4239'

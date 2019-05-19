@@ -5,7 +5,6 @@ pkgbase = superpaper
 	url = https://github.com/hhannine/Superpaper
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	depends = python-pillow
 	depends = python-screeninfo
 	depends = python-wxpython
