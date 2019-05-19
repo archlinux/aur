@@ -3,7 +3,7 @@
 pkgname=marktext-bin
 _pkgname=marktext
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability.'
 arch=('x86_64')
 url='https://marktext.app'
@@ -13,44 +13,44 @@ conflicts=('marktext')
 depends=('gtk3' 'libxss' 'nss')
 
 _source() {
-  _github=https://github.com/marktext/marktext
-  
-  # Binary tarball
-  echo $pkgname-$pkgver.tar.gz::$_github/releases/download/v$pkgver/$_pkgname-$pkgver-x64.tar.gz
+	local _github=https://github.com/marktext/marktext
 
-  # Desktop entry
-  echo $pkgname-$pkgver.desktop::$_github/raw/v$pkgver/resources/linux/$_pkgname.desktop
-  
-  # Icons
-  for s in 16 24 32 48 64 128 256 512; do
-    echo $pkgname-${s}x${s}.png::$_github/raw/v$pkgver/resources/icons/${s}x${s}/$_pkgname.png
-  done
+	# Binary tarball
+	echo $pkgname-$pkgver.tar.gz::$_github/releases/download/v$pkgver/$_pkgname-$pkgver-x64.tar.gz
+
+	# Desktop entry
+	echo $pkgname-$pkgver.desktop::$_github/raw/v$pkgver/resources/linux/$_pkgname.desktop
+
+	# Icons
+	for s in 16 24 32 48 64 128 256 512; do
+		echo $pkgname-${s}x${s}.png::$_github/raw/v$pkgver/resources/icons/${s}x${s}/$_pkgname.png
+	done
 }
 source=($(_source))
 
 prepare() {
-  # Change desktop entry to execute /usr/lib/marktext/marktext
-  sed -i "s|Exec=.*|Exec=/usr/lib/marktext/marktext %F|" \
-  $srcdir/$pkgname-$pkgver.desktop
+	# Change desktop entry to execute /usr/lib/marktext/marktext
+	sed -i "s|Exec=.*|Exec=/usr/lib/marktext/marktext %F|" \
+		"$srcdir/$pkgname-$pkgver.desktop"
 }
 
 package() {
-  install -d $pkgdir/usr/lib
-  cp -rT $srcdir/$_pkgname-$pkgver-x64 $pkgdir/usr/lib/$_pkgname
+	install -d "$pkgdir/usr/lib"
+	cp -rT "$srcdir/$_pkgname-$pkgver-x64" "$pkgdir/usr/lib/$_pkgname"
 
-  # Install desktop entry
-  install -Dm644 $srcdir/$pkgname-$pkgver.desktop \
-  $pkgdir/usr/share/applications/$_pkgname.desktop
+	# Install desktop entry
+	install -Dm644 "$srcdir/$pkgname-$pkgver.desktop" \
+		"$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-  # Install icons
-  for s in 16 24 32 48 64 128 256 512; do
-    install -Dm644 $srcdir/$pkgname-${s}x${s}.png \
-    $pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/$_pkgname.png
-  done
+	# Install icons
+	for s in 16 24 32 48 64 128 256 512; do
+		install -Dm644 "$srcdir/$pkgname-${s}x${s}.png" \
+			"$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/$_pkgname.png"
+	done
 
-  # Install licenses
-  install -Dt $pkgdir/usr/share/licenses/$_pkgname -m644 \
-  $srcdir/$_pkgname-$pkgver-x64/{LICENSE,LICENSE.electron.txt,LICENSES.chromium.html}
+	# Install licenses
+	install -Dt "$pkgdir/usr/share/licenses/$_pkgname" -m644 \
+		"$srcdir/$_pkgname-$pkgver-x64/"{LICENSE,LICENSE.electron.txt,LICENSES.chromium.html}
 }
 
 sha512sums=('8e485ac0c599d149ab4a04666b8ba58f77c5576d2cf70b5e81d2748d69b3c9d79a92ca9b3d3d7ea6d643f7ef12145ccd4c3a8f093436962161fd73c9704e6ae3'
