@@ -2,6 +2,8 @@
 pkgname=('openrpg-git')
 pkgver=0.4.4_dev # update this when new releases happen
 pkgrel=1
+_orpgname=openrpg
+_orpgver=v${pkgver//_/-}
 pkgdesc="Open C++ library and utilities for common RPG rulesets"
 arch=('x86_64')
 url="https://openrpg.io"
@@ -13,8 +15,6 @@ changelog=
 source=(git+https://github.com/incomingstick/OpenRPG#tag=${_orpgver})
 noextract=()
 md5sums=('SKIP')
-_orpgver=v${pkgver//_/-}
-_orpgname=openrpg
 
 build() {
   mkdir -p "${srcdir}/build"
