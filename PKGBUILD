@@ -2,7 +2,7 @@
 
 pkgname=beehive
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A flexible event and agent system with lots of bees"
 arch=('x86_64' 'i686')
 url="https://github.com/muesli/beehive"
@@ -21,6 +21,7 @@ build() {
     mkdir -p gopath/src/github.com/muesli
     ln -rTsf $pkgname-$pkgver gopath/src/github.com/muesli/$pkgname
     export GOPATH="$srcdir"/gopath
+    export GO111MODULE=on
     cd gopath/src/github.com/muesli/$pkgname
     make
 }
