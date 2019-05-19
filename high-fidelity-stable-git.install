@@ -1,0 +1,6 @@
+post_install() {
+  echo
+  echo "==> The following can now be executed:"
+  echo "==> hifi-interface: The graphical archways to the boundless multiverse."
+  echo
+}
