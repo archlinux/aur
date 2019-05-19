@@ -1,8 +1,8 @@
 pkgbase = sql-workbench
 	pkgdesc = SQL Workbench/J is a free, DBMS-independent, cross-platform SQL query tool.
 	pkgver = 125
-	pkgrel = 1
-	url = http://www.sql-workbench.net/
+	pkgrel = 2
+	url = https://www.sql-workbench.eu/
 	arch = any
 	license = custom
 	makedepends = unzip
@@ -10,7 +10,7 @@ pkgbase = sql-workbench
 	provides = SQL-Workbench
 	replaces = sqlworkbench
 	noextract = Workbench-Build125.zip
-	source = http://www.sql-workbench.net/Workbench-Build125.zip
+	source = https://www.sql-workbench.eu/Workbench-Build125.zip
 	sha256sums = 9534f115fff372a43ec2ae044d97fca660e3bcfd43552da4cc585f0148e458e1
 
 pkgname = sql-workbench
