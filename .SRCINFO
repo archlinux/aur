@@ -1,7 +1,7 @@
 pkgbase = imule
 	pkgdesc = Anonymous P2P file sharing software
 	pkgver = 2.3.3.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.imule.i2p/
 	arch = i686
 	arch = x86_64
