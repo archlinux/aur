@@ -5,7 +5,7 @@
 pkgname=dcmtk363
 pkgver=3.6.3
 _pkgver=${pkgver//./}
-pkgrel=1
+pkgrel=3
 pkgdesc="A collection of libraries and applications implementing large parts the DICOM standard"
 arch=('i686' 'x86_64')
 url="http://dicom.offis.de/dcmtk"
@@ -54,10 +54,4 @@ package() {
 
   # Remove empty files (0 length)
   find "${pkgdir}" -type f -empty -exec rm -v {} \;
-
-  install -dm755 "${pkgdir}/usr/lib/"
-
-  # Install ld config file
-  install -dm755 "${pkgdir}/etc/ld.so.conf.d/"
-  echo "/usr/lib/" > "${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf"
 }
