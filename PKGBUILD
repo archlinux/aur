@@ -4,7 +4,7 @@
 
 pkgname=webmin
 pkgver=1.910
-pkgrel=2
+pkgrel=3
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(x86_64)
 license=('custom:webmin')
@@ -175,6 +175,6 @@ sha256sums=('e0fa2b0df85825b8f39146242ecfd46fe5af8a0b118584bafae915f1fb85b0da'
             '21b24cbbf88593f9da727e8f36dea283c8765002a378b3d4e55e6332387c43c6'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
             'a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d'
-            'f4909f4fe1be13faa2f4c2b8f53745124231c68649a9e3d8adffb8e1aba0b140'
+            '9babd7f1e7e24ba4aeb5587a3cb46aa1e92904226cad84a4cbee5f9aaa408802'
             '075c8156471d0fb4825a51b6411636102d2cf61d4eb5c7c097330e53cd9323b0'
             '4757a44a07a4bcb6f919274f35b8ab27a34936b5f8d6aee9cdbcbde49e73fb7d')

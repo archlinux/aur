@@ -3,6 +3,6 @@
    notifempty
    sharedscripts
    postrotate
-      /usr/bin/systemctl reload webmin.service 2>/dev/null || true
+      /usr/bin/systemctl -q try-reload-or-restart webmin.service 2>/dev/null || true
    endscript
 }
