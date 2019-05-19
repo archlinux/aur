@@ -2,21 +2,26 @@
 # Contributor: Robert Booster <boosterdev at linuxmail dot org>
 
 pkgname=zuki-themes
-pkgver=3.32_1
+pkgver=3.32_4
 pkgrel=1
 pkgdesc="Zuki themes for GNOME, Xfce and more."
 arch=('any')
 url="https://github.com/lassekongo83/zuki-themes"
 license=(GPL3)
-depends=(gtk-engine-murrine gtk-engines)
+depends=(gtk-engine-murrine gtk-engines sassc)
+makedepends=(ninja meson)
 optdepends=(ttf-roboto)
 conflicts=(zukitwo-themes-git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lassekongo83/zuki-themes/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('338c2c3e5c8a848ffd1c8b234fa31d2e95ae786305951fc08b7bf9b5fb26dcfc')
+sha256sums=('77d1d4e6288fb4b8487f5ec88913a9338f262a21bbfd572604932462a8610ce7')
+
+build() {
+    cd $pkgname-${pkgver//_/-}
+    meson --prefix /usr --buildtype=plain build
+    ninja -C build
+}
 
 package(){
-    install -d -m755 "$pkgdir"/usr/share/{themes,licenses/$pkgname}
-    cd $(find -maxdepth 1 -type d | grep '[a-z]')
-    cp -rp Zuki* "$pkgdir"/usr/share/themes
-    install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/
+    cd $pkgname-${pkgver//_/-}
+    DESTDIR="$pkgdir" ninja -C build install
 }
