@@ -2,7 +2,7 @@
 
 pkgname=('python-django-extra-views' 'python2-django-extra-views')
 pkgdesc="The missing class-based generic views for Django"
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 url="https://github.com/AndrewIngram/django-extra-views"
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('python'
   'python2' 
   'python2-setuptools')
 source=("https://github.com/AndrewIngram/django-extra-views/archive/${pkgver}.tar.gz")
-sha256sums=('c34bc17d316e8ae32771453b4f11f2be19aa921148c1cd764e4e9a926ab59fd3')
+sha256sums=('d1a513c70b94abc7b97c0a109401e53bcff9fd303e4a807d4b7aaebce1350ed7')
 
 build() {
   cp -r ${srcdir}/django-extra-views-${pkgver} ${srcdir}/django-extra-views-${pkgver}-py2
