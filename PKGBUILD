@@ -2,7 +2,7 @@
 
 _pkgname=thunar
 pkgname=${_pkgname}-devel
-pkgver=1.8.5
+pkgver=1.8.6
 pkgrel=1
 pkgdesc='file manager for xfce'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ provides=("${_pkgname}=${pkgver}" 'libthunarx-3.so')
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname^}-${pkgver}.tar.bz2")
-sha256sums=('caeecb82b33057bbec24164bbd47ef84bec927149daeac3bcad72499a4f92e4a')
+sha256sums=('c0e5fb828e3d036941dfeb7ed7f9f2b17b729fc044c2bf7c4218c1c91b38ef2a')
 
 prepare() {
     cd "${_pkgname^}-${pkgver}"

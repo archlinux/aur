@@ -1,6 +1,6 @@
 pkgbase = thunar-devel
 	pkgdesc = file manager for xfce
-	pkgver = 1.8.5
+	pkgver = 1.8.6
 	pkgrel = 1
 	url = https://thunar.xfce.org
 	install = thunar.install
@@ -28,11 +28,11 @@ pkgbase = thunar-devel
 	optdepends = thunar-volman: manages removable devices
 	optdepends = thunar-archive-plugin-git: create and deflate archives
 	optdepends = thunar-media-tags-plugin-git: view/edit id3/ogg tags
-	provides = thunar=1.8.5
+	provides = thunar=1.8.6
 	provides = libthunarx-3.so
 	conflicts = thunar
-	source = https://archive.xfce.org/src/xfce/thunar/1.8/Thunar-1.8.5.tar.bz2
-	sha256sums = caeecb82b33057bbec24164bbd47ef84bec927149daeac3bcad72499a4f92e4a
+	source = https://archive.xfce.org/src/xfce/thunar/1.8/Thunar-1.8.6.tar.bz2
+	sha256sums = c0e5fb828e3d036941dfeb7ed7f9f2b17b729fc044c2bf7c4218c1c91b38ef2a
 
 pkgname = thunar-devel
 
