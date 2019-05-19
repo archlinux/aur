@@ -1,7 +1,7 @@
 pkgbase = imagemagick-full
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all libs and features)
 	pkgver = 7.0.8.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.imagemagick.org/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,53 @@ pkgbase = imagemagick-full
 	makedepends = ghostxps
 	makedepends = zstd
 	makedepends = chrpath
+	makedepends = lcms2
+	makedepends = libraqm
+	makedepends = liblqr
+	makedepends = fftw
+	makedepends = libxml2
+	makedepends = fontconfig
+	makedepends = freetype2
+	makedepends = libxext
+	makedepends = libx11
+	makedepends = bzip2
+	makedepends = zlib
+	makedepends = libltdl
+	makedepends = jemalloc
+	makedepends = djvulibre
+	makedepends = libraw
+	makedepends = graphviz
+	makedepends = openexr
+	makedepends = libheif
+	makedepends = openjpeg2
+	makedepends = libjpeg-turbo
+	makedepends = xz
+	makedepends = glib2
+	makedepends = pango
+	makedepends = cairo
+	makedepends = libpng
+	makedepends = ghostscript
+	makedepends = ming
+	makedepends = librsvg
+	makedepends = libtiff
+	makedepends = libwebp
+	makedepends = libwmf
+	makedepends = ocl-icd
+	makedepends = gsfonts
+	makedepends = ttf-dejavu
+	makedepends = pstoedit-nomagick
+	makedepends = autotrace-nomagick
+	makedepends = flif
+	makedepends = libfpx
+	makedepends = libumem-git
+	source = git+https://github.com/ImageMagick/ImageMagick.git#commit=9a529b2171ab1d64748c3385b0c2c4702808983d
+	source = imagemagick-full-security-fix.patch
+	source = arch-fonts.diff
+	sha256sums = SKIP
+	sha256sums = e2453381d283c33107194fa791d6b9b2c4c1856afb936d4fa010c05aaebe538e
+	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
+
+pkgname = imagemagick-full
 	depends = lcms2
 	depends = libraqm
 	depends = liblqr
@@ -49,26 +96,19 @@ pkgbase = imagemagick-full
 	depends = ocl-icd
 	depends = gsfonts
 	depends = ttf-dejavu
+	depends = perl
 	depends = pstoedit-nomagick
 	depends = autotrace-nomagick
 	depends = flif
 	depends = libfpx
 	depends = libumem-git
-	source = git+https://github.com/ImageMagick/ImageMagick.git#commit=9a529b2171ab1d64748c3385b0c2c4702808983d
-	source = imagemagick-full-security-fix.patch
-	source = arch-fonts.diff
-	sha256sums = SKIP
-	sha256sums = e2453381d283c33107194fa791d6b9b2c4c1856afb936d4fa010c05aaebe538e
-	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
-
-pkgname = libmagick-full
-	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all libs and features) (library)
-	optdepends = ttf-mac-fonts: for Apple fonts support
+	optdepends = imagemagick-full-doc: manual and API docs
+	provides = imagemagick=7.0.8.42
 	provides = libmagick=7.0.8.42
-	provides = libMagickCore-7.Q32HDRI.so
-	provides = libMagickWand-7.Q32HDRI.so
-	provides = libMagick++-7.Q32HDRI.so
+	provides = libmagick-full=7.0.8.42
+	conflicts = imagemagick
 	conflicts = libmagick
+	replaces = libmagick-full
 	options = !emptydirs
 	options = libtool
 	backup = etc//colors.xml
@@ -82,18 +122,9 @@ pkgname = libmagick-full
 	backup = etc//type-dejavu.xml
 	backup = etc//type-ghostscript.xml
 
-pkgname = imagemagick-full
-	depends = libmagick-full=7.0.8.42-1
-	depends = perl
-	optdepends = imagemagick-full-doc: manual and API docs
-	provides = imagemagick=7.0.8.42
-	conflicts = imagemagick
-	options = !emptydirs
-
 pkgname = imagemagick-full-doc
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all libs and features) (manual and API docs)
 	arch = any
-	depends = 
 	provides = imagemagick-doc=7.0.8.42
 	conflicts = imagemagick-doc
 

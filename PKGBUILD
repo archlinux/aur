@@ -14,16 +14,18 @@ _commit='9a529b2171ab1d64748c3385b0c2c4702808983d'
 _qdepth='32'
 
 pkgbase=imagemagick-full
-pkgname=('libmagick-full' 'imagemagick-full' 'imagemagick-full-doc')
+pkgname=('imagemagick-full' 'imagemagick-full-doc')
 _srcname=ImageMagick
 pkgver=7.0.8.42
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
 url='https://www.imagemagick.org/'
 license=('custom')
-depends=(
+makedepends=(
     # official repositories:
+        'git' 'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
+        'zstd' 'chrpath'
         'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
         'libx11' 'bzip2' 'zlib' 'libltdl' 'jemalloc' 'djvulibre' 'libraw' 'graphviz'
         'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango' 'cairo'
@@ -32,8 +34,6 @@ depends=(
     # AUR:
         'pstoedit-nomagick' 'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
 )
-makedepends=('git' 'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
-             'zstd' 'chrpath')
 source=("git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
         'imagemagick-full-security-fix.patch'
         'arch-fonts.diff')
@@ -43,6 +43,8 @@ sha256sums=('SKIP'
 
 prepare() {
     cd "$_srcname"
+    
+    mkdir -p docpkg/usr/share
     
     # 1) workaround for ghostscript security issues:
     #      https://bugs.archlinux.org/task/59778
@@ -137,58 +139,38 @@ check() (
    make check
 )
 
-package_libmagick-full() {
+package_imagemagick-full() {
     local _majorver="${pkgver%%.*}"
     local _etcdir="ImageMagick-${_majorver}"
     
-    pkgdesc+=' (library)'
-    optdepends=(
+    depends=(
+        # official repositories:
+            'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
+            'libx11' 'bzip2' 'zlib' 'libltdl' 'jemalloc' 'djvulibre' 'libraw' 'graphviz'
+            'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango' 'cairo'
+            'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf' 'ocl-icd'
+            'gsfonts' 'ttf-dejavu' 'perl'
         # AUR:
-            'ttf-mac-fonts: for Apple fonts support'
+            'pstoedit-nomagick' 'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
     )
-    backup=(etc/"$_etcdir"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
-    options=('!emptydirs' 'libtool')
-    provides=("libmagick=${pkgver}"
-              "libMagickCore-${pkgver%%.*}.Q${_qdepth}HDRI.so"
-              "libMagickWand-${pkgver%%.*}.Q${_qdepth}HDRI.so"
-                "libMagick++-${pkgver%%.*}.Q${_qdepth}HDRI.so")
-    conflicts=('libmagick')
-    
-    cd "$_srcname"
-    make DESTDIR="$pkgdir" install
-    
-    rm "$pkgdir"/usr/lib/*.la
-    
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    
-    rm -rf binpkg/* docpkg/*
-    mkdir -p binpkg/usr/lib {binpkg,docpkg}/usr/share
-    
-    # split 'imagemagick'
-    mv "${pkgdir}/usr/bin"       binpkg/usr/
-    mv "${pkgdir}/usr/lib/perl5" binpkg/usr/lib/
-    mv "${pkgdir}/usr/share/man" binpkg/usr/share/
-    
-    # split docs
-    mv "${pkgdir}/usr/share/doc" docpkg/usr/share/
-}
-
-package_imagemagick-full() {
-    depends=("libmagick-full=${pkgver}-${pkgrel}" 'perl')
     optdepends=(
         # AUR:
             'imagemagick-full-doc: manual and API docs'
     )
-    provides=("imagemagick=${pkgver}")
-    conflicts=('imagemagick')
-    options=('!emptydirs')
+    backup=(etc/"$_etcdir"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
+    options=('!emptydirs' 'libtool')
+    provides=("imagemagick=${pkgver}" "libmagick=${pkgver}" "libmagick-full=${pkgver}")
+    conflicts=('imagemagick' 'libmagick')
+    replaces=('libmagick-full')
     
     cd "$_srcname"
-    
-    cp -a binpkg/* "$pkgdir"
+    make DESTDIR="$pkgdir" install
     
     find "${pkgdir}/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
+    rm "$pkgdir"/usr/lib/*.la
+    
+    # split docs
+    mv "${pkgdir}/usr/share/doc" docpkg/usr/share/
     
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -197,7 +179,6 @@ package_imagemagick-full() {
 package_imagemagick-full-doc() {
     pkgdesc+=' (manual and API docs)'
     arch=('any')
-    depends=()
     provides=("imagemagick-doc=${pkgver}")
     conflicts=('imagemagick-doc')
     
