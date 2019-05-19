@@ -2,7 +2,7 @@
 
 pkgname=superpaper
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform multi monitor wallpaper manager"
 arch=('any')
 url="https://github.com/hhannine/Superpaper"

@@ -1,7 +1,7 @@
 pkgbase = superpaper
 	pkgdesc = Cross-platform multi monitor wallpaper manager
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hhannine/Superpaper
 	arch = any
 	license = MIT
