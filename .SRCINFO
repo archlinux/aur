@@ -1,0 +1,13 @@
+pkgbase = deepspeech-models
+	pkgdesc = A TensorFlow implementation of Baidu's DeepSpeech architecture - models and supporting files.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/mozilla/DeepSpeech
+	arch = any
+	license = MPL2
+	provides = deepspeech-models
+	source = https://github.com/mozilla/DeepSpeech/releases/download/v0.4.1/deepspeech-0.4.1-models.tar.gz
+	sha512sums = 804e97c22f83beefca9e54056f1c6d55499440171fd6cf7737b83895a847ede5bbd3d65dd196280d15ac239259573757069d209401478cd2f6eddbbeff4aaf35
+
+pkgname = deepspeech-models
+
