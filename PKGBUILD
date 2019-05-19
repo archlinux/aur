@@ -1,20 +1,20 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wpewebkit
-pkgver=2.22.5
-pkgrel=2
+pkgver=2.24.1
+pkgrel=0
 pkgdesc='Web content engine library optimized for embedded devices'
 arch=(x86_64 i686 aarch64)
 url='https://wpewebkit.org'
 license=(custom)
 groups=(wpe)
 depends=(cairo libxslt gst-plugins-base-libs libepoxy libsoup libwebp
-         harfbuzz-icu woff2 'libwpe>=1.0.0')
-makedepends=(gperf ruby cmake python2 ninja)
+         harfbuzz-icu woff2 openjpeg2 'libwpe>=1.2.0')
+makedepends=(gperf ruby cmake python ninja)
 source=("${url}/releases/${pkgname}-${pkgver}.tar.xz")
-md5sums=('7b768bfae1295ebbc9a9038bf8fb6e6c')
-sha1sums=('c85f927e0f17f1e7045a5d33c683d310c7af24de')
-sha256sums=('d5e7b23e4f9e9f1b9d369faa4d527cdb59aef56b3e6a50a16dad243df5f699f3')
-sha512sums=('d84ca94e4108e8e0a4fef6a34611d639f6f2de593092b5bc3fe6003edd594a33a2f4048215171d58128e8260033df8cee0901ab33d2528149d4d249084806e79')
+md5sums=('0f7b792874853416d8005b020bd90685')
+sha1sums=('d009c82afbc2c373a7f34ffda392e5c3b52dac7d')
+sha256sums=('95f2fb68429fbd901ea415d09fdd88d6d9ac5ec2d170bec9977093b12e5093a6')
+sha512sums=('fc89ff2100bd66a859afaaafcfcbed33c70f608174b7157d07b0ebe6c0dc0d000571b7faaa00d0617ce05c9bcd23499ab3bfc691ef6696b76c0218700211aaea')
 
 prepare () {
 	mkdir -p _build
@@ -26,7 +26,7 @@ build () {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		-DPYTHON_EXECUTABLE=/usr/bin/python2 \
+		-DPYTHON_EXECUTABLE=/usr/bin/python \
 		"../${pkgname}-${pkgver}"
 	cmake --build .
 }
