@@ -8,8 +8,13 @@ pkgbase = ucon64
 	license = GPL
 	depends = zlib
 	depends = libusb-compat
+	optdepends = libieee1284: libcd64 enhancements
 	source = https://downloads.sourceforge.net/ucon64/ucon64-2.1.0-src.tar.gz
+	source = fix_makefile_cflags.diff
+	source = fix_libcd64_libieee1284.diff
 	sha256sums = c99964060a5337cea811b27c4103e186a14ba1f04b19cff08bac0260271bc872
+	sha256sums = 8f1532c4c35b98af34b3c1dc3bdeaa6c2183c7927be69ce396895491d7e8feff
+	sha256sums = 19efc5d87c07c11797fba657f25619c70fa175d100688eafd1094d14baad1255
 
 pkgname = ucon64
 
