@@ -1,13 +1,13 @@
 pkgbase = isl3886usb-firmware
 	pkgdesc = Firmware for p54usb module
 	pkgver = 2.13.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wireless.kernel.org/en/users/Drivers/p54
 	arch = i686
 	arch = x86_64
 	license = GPL
 	source = http://daemonizer.de/prism54/prism54-fw/fw-usb/2.13.1.0.lm86.arm
-	md5sums = 6495bbb447bce149427182b25135820b
+	sha256sums = 40c4a2bc94b0af65d81cf6467b2e22fe029d55827ba100ff17c4974a2a377d0e
 
 pkgname = isl3886usb-firmware
 
