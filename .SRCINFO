@@ -1,7 +1,7 @@
 pkgbase = mate-tweak
 	pkgdesc = Tweak tool for MATE (fork of MintDesktop)
 	pkgver = 19.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ubuntu-mate/mate-tweak
 	arch = any
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = mate-tweak
 	depends = libnotify
 	depends = mate-applets
 	depends = python-configobj
+	depends = python-distro
 	depends = python-gobject
 	depends = python-psutil
 	depends = python-setproctitle

@@ -6,12 +6,12 @@
 pkgname=mate-tweak
 pkgver=19.10.0
 _umsver=19.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tweak tool for MATE (fork of MintDesktop)"
 arch=('any')
 url="https://github.com/ubuntu-mate/mate-tweak"
 license=('GPL')
-depends=('gtk3' 'libnotify' 'mate-applets' 'python-configobj' 'python-gobject' 'python-psutil' 'python-setproctitle')
+depends=('gtk3' 'libnotify' 'mate-applets' 'python-configobj' 'python-distro' 'python-gobject' 'python-psutil' 'python-setproctitle')
 makedepends=('python-distutils-extra' 'python-setuptools')
 optdepends=('brisk-menu: for Manjaro panel layout'
             'mate-applet-dock: for Mutiny panel layout'
