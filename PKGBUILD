@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 _wwwpkgname=AdminLTE
 _wwwpkgver=4.3
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -42,8 +42,8 @@ source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$
 
 md5sums=('27582692821f86f1fe1e702633a6fe02'
          '670e5c4c4ca0cba6f732bf622918784c'
-         '12963a109730543dbcb3d6944fdc59ad'
-         '154332c22aa898367ad224611cc90b8b'
+         '3f8b5915be48fe58ffebe1b3255a255c'
+         'f5fd7abfcf0ffdbfd181d839fb8edd60'
          '4d9038588164bb9130c8ca11653f83f3'
          '971cc2859672341d77f8deba702fb7f7'
          'b63fcf29c29796023a2677bcf2b369a7'
@@ -101,6 +101,7 @@ package() {
   install -dm755 "$pkgdir"/etc/pihole
   install -dm755 "$pkgdir"/usr/share/pihole/configs
   install -Dm644 $_pkgname-$pkgver/adlists.list "$pkgdir"/etc/pihole/adlists.list
+  install -Dm644 $_pkgname-$pkgver/dns-servers.conf "$pkgdir"/etc/pihole/dns-servers.conf
   install -Dm644 $_pkgname-$pkgver/advanced/Templates/logrotate "$pkgdir"/etc/pihole/logrotate
   install -Dm644 /dev/null "$pkgdir"/etc/pihole/whitelist.txt
   install -Dm644 /dev/null "$pkgdir"/etc/pihole/blacklist.txt
