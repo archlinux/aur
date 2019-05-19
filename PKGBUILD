@@ -1,7 +1,7 @@
 # Maintainer: YoyPa <yoann dot p dot public at gmail dot com>
 pkgname=fluffy-switch
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Goldtree and Tinfoil GUI for USB install on switch"
 arch=('any')
 url="https://github.com/fourminute/Fluffy"
@@ -29,7 +29,7 @@ prepare() {
 
 package() {
 	mkdir -p "${pkgdir}$HOME/.config/fluffy"
-	chown $USER:$(id -gn) "${pkgdir}$HOME/.config/fluffy"
+	chown $USER:$(id -gn $USER) "${pkgdir}$HOME/.config/fluffy"
 	cd "Fluffy-${pkgver}"
 	install -Dm 644 linux/80-fluffy-switch.rules "${pkgdir}/etc/udev/rules.d/80-fluffy-switch.rules"
 	install -Dm 644 linux/fluffy.desktop "${pkgdir}/usr/share/applications/fluffy.desktop"
