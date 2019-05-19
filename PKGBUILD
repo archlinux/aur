@@ -1,6 +1,6 @@
 # Maintainer: Vojtech Balak <balakvojtech@gmail.com>
 pkgname='shadowfox-updater'
-pkgver=1.7.20
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='An auto-updater for ShadowFox'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/SrKomodo/shadowfox-updater'
 license=('MIT')
 _filename=shadowfox_linux_x64
 source=("${_filename}_$pkgver::https://github.com/SrKomodo/shadowfox-updater/releases/download/v$pkgver/$_filename")
-md5sums=('c60405e44a5e05619a8a8740354e0150')
+md5sums=('3d25d085946f7f2ac77ae4e9ce3f6a9d')
 
 package() {
     install -dm 755 "$pkgdir/usr/bin"
