@@ -1,26 +1,27 @@
 # Maintainer: Nick Gaulke <incomingstick@gmail.com>
 pkgname=('openrpg-git')
 pkgver=0.4.4_dev # update this when new releases happen
-_orpgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Open C++ library and utilities for common RPG rulesets"
 arch=('x86_64')
 url="https://openrpg.io"
 license=('custom:OSL' 'custom:OGL')
-provides=(openrpg=v$pkgver roll=v$pkgver name-generator=v$pkgver character-generator=v$pkgver)
+provides=(openrpg=$pkgver roll=$pkgver name-generator=$pkgver character-generator=$pkgver)
 depends=()
 makedepends=('gcc>=4.7' 'cmake>=2.8.4')
 changelog=
-source=(https://github.com/incomingstick/OpenRPG/archive/v${_orpgver}.tar.gz)
+source=(git+https://github.com/incomingstick/OpenRPG)
 noextract=()
-md5sums=('7c732b689aee64744e7696b30afa9de7')
+md5sums=('SKIP')
+_orpgver=v${pkgver//_/-}
+_orpgname=openrpg
 
 build() {
   mkdir -p "${srcdir}/build"
 
   cd "${srcdir}/build"
 
-  cmake "${srcdir}/OpenRPG-${_orpgver}" \
+  cmake "${srcdir}/OpenRPG" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=RELEASE
 
@@ -32,15 +33,5 @@ package_openrpg-git() {
 
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 ${srcdir}/OpenRPG-${_orpgver}/LICENSE "${pkgdir}/usr/share/licenses/openrpg/LICENSE"
+  install -Dm644 ${srcdir}/OpenRPG/LICENSE "${pkgdir}/usr/share/licenses/openrpg/LICENSE"
 }
-
-# package_openrpg-libs() {
-#   pkgdesc='Free peer-reviewed portable C++ source libraries - runtime libraries'
-  
-#   cd "${srcdir}/build"
-
-#   make DESTDIR="${pkgdir}" install
-  
-#   install -Dm644 ${srcdir}/${pkgbase}-${_orpgver}/LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
-# }
