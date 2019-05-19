@@ -1,0 +1,16 @@
+pkgbase = postgresql-scram256-password-generator
+	pkgdesc = A program to generate password hashes using SCRAM-SHA-256 for PostgreSQL 10 (and above).
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/DenisMedeirosBBD/PostgresSCRAM256PasswordGenerator
+	arch = x86_64
+	license = GPL2
+	makedepends = autoconf
+	makedepends = automake
+	depends = postgresql-libs
+	provides = pg-password-generator
+	source = https://github.com/DenisMedeirosBBD/PostgresSCRAM256PasswordGenerator/archive/1.0.tar.gz
+	md5sums = 04926346bcd623a1a6d8f0ef22ec2693
+
+pkgname = postgresql-scram256-password-generator
+
