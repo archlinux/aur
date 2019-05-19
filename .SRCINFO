@@ -1,7 +1,7 @@
 pkgbase = mplayer-gui
 	pkgdesc = GUI for mplayer
 	pkgver = 1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.mplayerhq.hu/
 	install = mplayer-gui.install
 	arch = x86_64
