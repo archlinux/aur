@@ -1,7 +1,7 @@
 # Maintainer: higgsbosoncodes higgsbosoncodes@gmail.com
 # https://github.com/higgsbosoncodes
 pkgname=arch-animated-startscreen
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 epoch=
 pkgdesc="Animated SDDM-Theme and Splashscreen for Archlinux (made for KDE)(Aurora Borealis Background)"
@@ -9,7 +9,7 @@ arch=("any")
 url="https://github.com/higgsbosoncodes/Arch-Aurora-Borealis-Startscreen.git"
 license=('GPL3')
 groups=()
-depends=()
+depends=('qt5-multimedia>=5.12.1' 'qt5-quickcontrols>=5.12.1')
 makedepends=()
 checkdepends=()
 optdepends=()
