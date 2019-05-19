@@ -8,22 +8,21 @@
 
 _pkgname=xfce4-session
 pkgname=${_pkgname}-git
-pkgver=4.13.0.r38.g8ca48fe
+pkgver=4.13.2+1+g0b1e5933
 pkgrel=1
 pkgdesc="Xfce session manager (git checkout)"
 arch=('i686' 'x86_64')
-url="http://www.xfce.org/"
+url="https://www.xfce.org/"
 license=('GPL2')
 depends=('libxfce4ui' 'libwnck3' 'libsm' 'polkit' 'xorg-iceauth' 'xorg-xinit'
          'xorg-xrdb' 'polkit-gnome' 'hicolor-icon-theme')
 makedepends=('intltool' 'git' 'xfce4-dev-tools')
 optdepends=('gnome-keyring: for keyring support when GNOME compatibility is enabled'
+            'xfce4-screensaver: for locking screen with xflock4'
             'xscreensaver: for locking screen with xflock4'
-            'gnome-screensaver: for locking screen with xflock4'
-            'xlockmore: for locking screen with xflock4'
-            'slock: for locking screen with xflock4')
-provides=("${_pkgname}=${pkgver%%.r*}")
-conflicts=("${_pkgname}" "${_pkgname}-devel")
+            'gnome-screensaver: for locking screen with xflock4')
+provides=("${_pkgname}=${pkgver%%+*}")
+conflicts=("${_pkgname}")
 replaces=('xfce-utils')
 source=("${_pkgname}::git://git.xfce.org/xfce/xfce4-session"
         'xfce-polkit-gnome-authentication-agent-1.desktop')
@@ -32,20 +31,20 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  git describe --long | sed -r "s/^${_pkgname}-//;s/([^-]*-g)/r\1/;s/-/./g"
+  git describe --long | sed -r "s/^${_pkgname}-//;s/-/+/g"
 }
 
 build() {
   cd "$srcdir/${_pkgname}"
 
   ./autogen.sh \
-      --prefix=/usr \
-      --sysconfdir=/etc \
-      --libexecdir=/usr/lib \
-      --localstatedir=/var \
-      --disable-static \
-      --disable-debug
-
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib/xfce4 \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-debug \
+    --enable-systemd
   make
 }
 
