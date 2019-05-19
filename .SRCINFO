@@ -1,7 +1,7 @@
 pkgbase = geda-gaf-unstable
 	pkgdesc = gEDA/gaf suite - contains gschem, gnetlist, gsymcheck, gattrib, utilities and documentation from the gEDA project
 	pkgver = 1.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.geda-project.org/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = geda-gaf-unstable
 	provides = geda-gaf
 	conflicts = geda-gaf
 	source = http://ftp.geda-project.org/geda-gaf/unstable/v1.9/1.9.2/geda-gaf-1.9.2.tar.gz
-	md5sums = ae99981f509dee0f9a6f7c7f51fcb652
+	sha256sums = 3f3ba90a0f1db1e71caaadcabdb52e375864a8e04e3d6330293b84ef6e21b392
 
 pkgname = geda-gaf-unstable
 
