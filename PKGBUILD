@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=76.0.3788.1
+pkgver=76.0.3795.3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -84,9 +84,11 @@ source=(
         'enable-vaapi.patch' # Use Saikrishna Arcot patch again :https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/4d40b58013b518373b2544d486d3de40796edd36/debian/patches/enable_vaapi_on_linux_2.diff'
         'https://raw.githubusercontent.com/chromium/crashpad/master/third_party/lss/BUILD.gn'
         'https://raw.githubusercontent.com/chromium/crashpad/master/third_party/lss/lss.h'
-        # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com or Arch chromium package.
+        # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
-        'chromium-skia-harmony_r1.patch'
+        'chromium-skia-harmony-r1.patch'
+        'std_pair.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1611690/revisions/2/patch?download'
+        'MakeCheckOpValueString.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1611608/revisions/2/patch?download'
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -96,12 +98,14 @@ sha256sums=(
             # Patch form Gentoo
 
             # Misc Patches
-            '4b785aeee1cab89bf410de063b7769ef4eb99130888ece60a38a584019747b9f'
+            '36e78ad3e6fdd4b8c402d3dd5e38413fd1f33fb992c6522af29a02b0f617ee22'
             '56e516480b2f0ff6806068df2a77ebb2cabe211c7d3e7d390396e66df3d40a09'
             '986e5bd28abcc5f7d0c0587bb850f3b4edb8a91eeebf82b3c329752455fa1606'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '0dd2fea50a93b26debce63c762c0291737b61816ba5b127ef923999494142b78'
+            'f71611e94fcff8412513525b78191fa8459138d4bd9a642184865d5f09da66d5'
+            'a86050ee902a8b7f8bbe4d8f297e49a7d72a32906c13d90e22effab3effa9978'
             )
 install=chromium-dev.install
 
@@ -227,7 +231,6 @@ _keeplibs=(
            'third_party/nasm'
            'third_party/node'
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
-           'third_party/openmax_dl'
            'third_party/ots'
            'third_party/pdfium'
            'third_party/pdfium/third_party/agg23'
@@ -491,13 +494,19 @@ prepare() {
   patch -p1 -i "${srcdir}/enable-vaapi.patch"
   sed 's|/dri/|/|g' -i media/gpu/vaapi/vaapi_wrapper.cc
 
-  # Patch from crbug (chromium bugtracker) or Arch chromium package.
+  # # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
 
   # https://crbug.com/skia/6663#c10.
-  patch -p0 -i "${srcdir}/chromium-skia-harmony.patch"
+  patch -p0 -i "${srcdir}/chromium-skia-harmony-r1.patch"
 
   # https://crbug.com/473866.
   patch -p1 -i "${srcdir}/chromium-widevine-r4.patch"
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/1611690
+  base64 -d ${srcdir}/std_pair.patch.base64 | patch -p1 -i -
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/1611608
+  base64 -d ${srcdir}/MakeCheckOpValueString.patch.base64 | patch -p1 -i -
 
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
@@ -643,7 +652,6 @@ package() {
               'chrome_200_percent.pak'
               'headless_lib.pak'
               'resources.pak'
-              'views_mus_resources.pak'
               )
   for i in "${_resources[@]}"; do
     install -Dm644 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"

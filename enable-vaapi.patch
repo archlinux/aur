@@ -254,9 +254,9 @@ Index: dev/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
  #endif
  
 +#if defined(OS_ANDROID) || defined(OS_CHROMEOS)
- // Returns true if the CPU is an Intel Kaby/Gemini/Sky Lake or later.
- // Cpu platform id's are referenced from the following file in kernel source
- // arch/x86/include/asm/intel-family.h
+ // Returns true if the CPU is an Intel Gemini Lake or later (including Kaby
+ // Lake) Cpu platform id's are referenced from the following file in kernel
+ // source arch/x86/include/asm/intel-family.h
 @@ -103,6 +104,7 @@ bool IsSkyLakeOrLater() {
                                       cpuid.model() >= kFirstSkyLakeModelId;
    return is_sky_lake_or_later;
@@ -301,7 +301,7 @@ Index: dev/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
 @@ -1091,6 +1102,9 @@ VaapiVideoDecodeAccelerator::GetSupporte
  
  VaapiVideoDecodeAccelerator::BufferAllocationMode
- VaapiVideoDecodeAccelerator::DecideBufferAllocationMode() const {
+ VaapiVideoDecodeAccelerator::DecideBufferAllocationMode() {
 +#if defined(OS_LINUX) && !defined(OS_ANDROID) && !defined(OS_CHROMEOS)
 +  return BufferAllocationMode::kNormal;
 +#else
