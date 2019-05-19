@@ -1,7 +1,7 @@
 pkgbase = macports-base
 	pkgdesc = The MacPorts command-line client
 	pkgver = 2.5.4
-	pkgrel = 4
+	pkgrel = 6
 	epoch = 1
 	url = https://www.macports.org/
 	arch = i686
