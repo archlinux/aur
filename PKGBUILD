@@ -2,7 +2,7 @@
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 _distname=Dist-Zilla-Plugin-InstallGuide
 pkgname=perl-dist-zilla-plugin-installguide
-pkgver=1.200012
+pkgver=1.200013
 pkgrel=1
 pkgdesc="Build an INSTALL file"
 arch=('any')
@@ -10,6 +10,7 @@ url="https://metacpan.org/release/$_distname"
 license=('PerlArtistic' 'GPL')
 depends=('perl>=5.008'
          'perl-dist-zilla>=0'
+         'perl-dist-zilla-role-modulemetadata>=0'
          'perl-moose>=0'
          'perl-path-tiny>=0'
          'perl-namespace-autoclean>=0')
@@ -17,7 +18,7 @@ makedepends=()
 checkdepends=('perl-test-fatal>=0')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/$_distname-$pkgver.tar.gz")
-md5sums=('cb7b2eb7fcb39189e82a5b9d698707da')
+md5sums=('d598e5462b808459e75455a466481dae')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
