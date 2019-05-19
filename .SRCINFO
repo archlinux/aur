@@ -1,0 +1,20 @@
+pkgbase = xfce4-docklike-plugin-git
+	pkgdesc = A minimalist, dock-style taskbar for XFCE4
+	pkgver = 20190519
+	pkgrel = 1
+	url = https://github.com/nsz32/docklike-plugin
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = xfce4-panel>=4.4
+	depends = xfce4-dev-tools
+	depends = libwnck3
+	depends = libxfce4ui
+	depends = gtk3
+	depends = cairo
+	source = git://github.com/nsz32/docklike-plugin
+	sha512sums = SKIP
+
+pkgname = xfce4-docklike-plugin-git
+
