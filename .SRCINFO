@@ -1,0 +1,25 @@
+pkgbase = stm8-binutils-gdb
+	pkgdesc = Binutils and GDB for the STM8 target
+	pkgver = 20180304
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils/
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	depends = xz
+	depends = mpfr
+	depends = guile2.0
+	depends = python
+	noextract = binutils-2.30.tar.xz
+	noextract = gdb-8.1.tar.xz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.30.tar.xz
+	source = https://ftp.gnu.org/gnu/gdb/gdb-8.1.tar.xz
+	source = https://netix.dl.sourceforge.net/project/stm8-binutils-gdb/stm8-binutils-gdb-sources-2018-03-04.tar.gz
+	source = gdb_fix_python37.patch
+	md5sums = ffc476dd46c96f932875d1b2e27e929f
+	md5sums = f46487561f9a16916a8102316f7fd105
+	md5sums = 53e0630afa62504050ac3a82b5a14b91
+	md5sums = a8e737772afafa68bd6bec0541942140
+
+pkgname = stm8-binutils-gdb
+
