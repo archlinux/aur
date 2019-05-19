@@ -6,7 +6,7 @@
 pkgname=prusaslicer
 pkgver=2.0.0_rc2
 _pkgver=$(tr _ - <<< $pkgver)
-pkgrel=4
+pkgrel=1
 pkgdesc="Takes 3D models (STL, OBJ, AMF) and converts them into G-code instructions for FFF printers or PNG layers for mSLA 3D printers"
 arch=('i686' 'x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
