@@ -1,0 +1,15 @@
+pkgbase = python-fbprophet
+	pkgdesc = Automatic Forecasting Procedure
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://facebook.github.io/prophet/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/f/fbprophet/fbprophet-0.5.tar.gz
+	sha256sums = c67fde2845db52dbdb4becd312b271575ce1c804be666ed1eee94339c5a35127
+
+pkgname = python-fbprophet
+	depends = python
+
