@@ -1,5 +1,5 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributr: Patrick José Pereira <positivcheg94@gmail.com>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributr: Patrick José Pereira < positivcheg94 at gmail dot com >
 
 _commit=9bdbfd98440b6516f8c864fbdfd6a9778b2c5715  # tags=v2.21.0
 pkgname=librealsense
