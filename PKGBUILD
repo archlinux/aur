@@ -24,6 +24,7 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     npm ci
+    rm -rf node_modules/electron
 }
 
 package() {
