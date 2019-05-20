@@ -2,7 +2,7 @@
 pkgname=majsoul-plus
 pkgver=1.12.0b4
 _pkgver=${pkgver/b/-beta.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Majsoul browser, with more features"
 arch=('x86_64' 'i686')
 url="https://github.com/MajsoulPlus/majsoul-plus"
@@ -44,6 +44,8 @@ package() {
 
 	cd "build/unpacked/Majsoul_Plus-linux-$targetArch/resources/app"
 	find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/majsoul-plus/app/{}" \;
+	mkdir "$pkgdir/usr/share/majsoul-plus/app/static"
+	chmod a+w "$pkgdir/usr/share/majsoul-plus/app/static"
 
 	for size in 16 24 32 48 64 72 128 256; do
         target="$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/"

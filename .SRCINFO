@@ -1,7 +1,7 @@
 pkgbase = majsoul-plus
 	pkgdesc = Majsoul browser, with more features
 	pkgver = 1.12.0b4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/MajsoulPlus/majsoul-plus
 	arch = x86_64
 	arch = i686
