@@ -10,7 +10,8 @@ license=('Apache')
 depends=('udev')
 provides=("$pkgname")
 conflicts=("$pkgname" "solokeys-udev-git")
-sha256sums=('09134a1f4d97f5a1e591194a24595f966edf5d5f0c6ae45e2bef32d710535c6b')
+sha256sums=('09134a1f4d97f5a1e591194a24595f966edf5d5f0c6ae45e2bef32d710535c6b'
+            '0afcd39efc916b370472d15453c668f4ad9634ef92d9e5ede2d8d6a883af5625')
 source=('70-solokeys-access.rules'
         'solokeys-udev.install')
 install='solokeys-udev.install'
