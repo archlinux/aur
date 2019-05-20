@@ -1,0 +1,14 @@
+pkgbase = ridl
+	pkgdesc = A tool to check whether your system is affected by Micro-architectural Data Sampling and other attacks
+	pkgver = r39.508d549
+	pkgrel = 1
+	url = https://github.com/vusec/ridl
+	arch = i686
+	arch = x86_64
+	license = MPL2
+	makedepends = cmake
+	source = git+https://github.com/vusec/ridl
+	sha512sums = SKIP
+
+pkgname = ridl
+
