@@ -4,15 +4,15 @@
 pkgbase=python-lyra2re_hash
 pkgname=(python-lyra2re_hash python2-lyra2re_hash)
 _reponame=lyra2re-hash-python
-_reporef=6677dd3a6b3ebb7e6ef76d08311d5b8580cdec26
-pkgver=1.1
+_reporef=639567bf3674730362fafbb8ae90c35bcf94b42a
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Python module for Lyra2RE."
 arch=("any")
 url="https://github.com/metalicjames/lyra2re-hash-python"
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/metalicjames/${_reponame}/archive/${_reporef}.tar.gz")
-sha512sums=('91cb3499a76b93d75e18d2c4069a41088515ebc5ff0760afe4e37a173bc310df3760b8c93701a3e5780cdb0ca6db404e79de3c2b7f623a1a1aecc9f69716a5ae')
+sha512sums=('65dd2c23471cc4bce59c075c896b550ddc4177d0e78a01e6ba33f3b1fb8eb5ba5bac75b6997566831f1e4700bd20964262b822c262837f0bc1e3d85dc90118eb')
 
 prepare() {
   cp -a ${srcdir}/${_reponame}-${_reporef}{,-py2}

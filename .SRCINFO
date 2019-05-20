@@ -1,13 +1,13 @@
 pkgbase = python-lyra2re_hash
 	pkgdesc = Python module for Lyra2RE.
-	pkgver = 1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/metalicjames/lyra2re-hash-python
 	arch = any
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/metalicjames/lyra2re-hash-python/archive/6677dd3a6b3ebb7e6ef76d08311d5b8580cdec26.tar.gz
-	sha512sums = 91cb3499a76b93d75e18d2c4069a41088515ebc5ff0760afe4e37a173bc310df3760b8c93701a3e5780cdb0ca6db404e79de3c2b7f623a1a1aecc9f69716a5ae
+	source = https://github.com/metalicjames/lyra2re-hash-python/archive/639567bf3674730362fafbb8ae90c35bcf94b42a.tar.gz
+	sha512sums = 65dd2c23471cc4bce59c075c896b550ddc4177d0e78a01e6ba33f3b1fb8eb5ba5bac75b6997566831f1e4700bd20964262b822c262837f0bc1e3d85dc90118eb
 
 pkgname = python-lyra2re_hash
 	depends = python
