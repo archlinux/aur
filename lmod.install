@@ -1,0 +1,7 @@
+post_install() {
+	echo -e "\n----------------------------------------------------"
+	echo -e "In order tu use lmod make sure to source"
+	echo -e "/etc/profile.d/module.sh or /etc/profile.d/module.csh"
+        echo -e "----------------------------------------------------\n"
+
+}
