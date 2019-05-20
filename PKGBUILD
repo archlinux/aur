@@ -3,7 +3,7 @@
 
 _pkgname=aiohttp
 pkgname=python-"$_pkgname"-gns3
-pkgver=2.3.9
+pkgver=2.3.10
 pkgrel=1
 pkgdesc='Asynchronous HTTP Client/Server for asyncio and Python'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-setuptools')
 provides=("python-$_pkgname")
 conflicts=("python-$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aio-libs/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3044eed412a7100ba5c9ef61a06e0264ae159a4cb007339e0e98812dd45ae83d')
+sha256sums=('ca3c15aa2c178599393919c27dbada24860e075d501257db54d6547ecf34bac8')
 
 build() {
     cd "$_pkgname-$pkgver"
