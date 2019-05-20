@@ -1,15 +1,15 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: goodguy <lists.cinelerra-cv.org>
-# Contributor: Ray Rashif <schiv@archlinux.org>
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-# Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
-# Contributor: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: goodguy < lists dot cinelerra-cv dot org >
+# Contributor: Ray Rashif < schiv at archlinux dot org >
+# Contributor: Daniel J Griffiths < ghost1227 at archlinux dot us >
+# Contributor: Jaroslaw Swierczynski < swiergot at aur dot archlinux dot org >
+# Contributor: Alexander Rødseth < rodseth at gmail dot com >
 
 _pkgname=cinelerra-gg
 _pkgver=5.1
 
 pkgname=cin-git
-pkgver=5.1.20181231
+pkgver=5.1.20190430
 pkgrel=1
 pkgdesc="Cinelerra maintained by Good Guy (git version)"
 arch=('x86_64')
