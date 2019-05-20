@@ -3,7 +3,7 @@
 pkgname=cx
 projectname=skycoin
 pkgdesc="CX Skycoin Blockchain Programming Language"
-pkgver=0.6.2
+pkgver=0.7
 pkggopath="github.com/$projectname/$pkgname"
 pkgrel=1
 arch=('x86_64')
