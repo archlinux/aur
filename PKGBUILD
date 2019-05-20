@@ -3,7 +3,7 @@
 pkgname=clatd-git
 _pkgname=clatd
 _pkgauthor=toreanderson
-pkgver=1.4.r11.g888e30b
+pkgver=1.4.r12.g19c4042
 pkgrel=1
 pkgdesc="A 464XLAT CLAT implementation for Linux"
 arch=('any')
