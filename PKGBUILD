@@ -2,7 +2,7 @@
 
 _pkgname=prusaslicer
 pkgname=${_pkgname}-git
-pkgver=2.0.0.rc.r18.gd13d3f39a
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'e4da3d40061de6eb51a4364a6724d376a39bbc631cec5e453b2fdaea36e02f52'
+  '8787e62d32e6460d92076ffe9366cd1c55e5703d220398e7f4ab1146d67f81d1'
 )
 
 conflicts=('slic3r-prusa3d-git' 'slic3r-prusa3d' 'slic3r' 'prusaslicer')
@@ -64,6 +64,6 @@ package () {
 
   # Desktop icon
   install -d "${pkgdir}/usr/share/icons/hicolor/"{128x128,192x192}"/apps/"
-  ln -s "/usr/share/${_pkgname}/icons/PrusaSlicer_128px.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
-  ln -s "/usr/share/${_pkgname}/icons/PrusaSlicer_192px.png" "${pkgdir}/usr/share/icons/hicolor/192x192/apps/${_pkgname}.png"
+  ln -s "/usr/share/PrusaSlicer/icons/PrusaSlicer_128px.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
+  ln -s "/usr/share/PrusaSlicer/icons/PrusaSlicer_192px.png" "${pkgdir}/usr/share/icons/hicolor/192x192/apps/${_pkgname}.png"
 }

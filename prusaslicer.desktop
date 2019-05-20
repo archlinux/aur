@@ -1,11 +1,12 @@
 [Desktop Entry]
 Version=1.0
 Name=PrusaSlicer (git edition)
-Exec=/usr/bin/slic3r-gui
+Exec=/usr/bin/prusa-slicer
 Icon=prusaslicer
 Terminal=false
 Type=Application
 Categories=Graphics;3DGraphics;
 MimeType=model/stl;
 StartupNotify=true
-StartupWMClass=Slic3r-gui
+StartupWMClass=Prusa-slicer
+X-Desktop-File-Install-Version=0.24
