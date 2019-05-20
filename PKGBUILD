@@ -3,16 +3,16 @@
 pkgbase=python-mbdata
 _name=${pkgbase#python-}
 pkgname=($pkgbase ${pkgbase/python-/python2-})
-pkgver=25.0.0
+pkgver=25.0.4
 pkgrel=1
 pkgdesc='MusicBrainz database tools for Python'
 url="https://pypi.python.org/pypi/$_name"
 arch=('any')
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("$_name-v$pkgver.tar.gz::https://github.com/lalinsky/$_name/archive/v$pkgver.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         "$_name-$pkgver-LICENSE::https://github.com/lalinsky/mbdata/raw/v$pkgver/LICENSE")
-sha256sums=('dfef117e5adaf614f34823a58adc0ba315b78edca06c8e023a315b961cf04939'
+sha256sums=('1aab8797552e7e77881389b1aad4fe587458fb7e343d14410f2a662e9eaea081'
             'ecae6699839c9b7845aa36aba997c2ec5f09c5eb237f8910b972269de4bfc5f9')
 
 prepare() {
