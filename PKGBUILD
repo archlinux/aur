@@ -75,7 +75,6 @@ build() {
 package() {
 	mkdir -p "$pkgdir/usr/share/hifi"
  	mkdir -p "$pkgdir/opt/hifi"
- 	mkdir -p "$pkgdir/usr/lib/hifi"
 
 
 	cd "$srcdir/build"
