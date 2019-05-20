@@ -3,13 +3,13 @@
 
 pkgname=zuki-themes
 pkgver=3.32_4
-pkgrel=1
+pkgrel=2
 pkgdesc="Zuki themes for GNOME, Xfce and more."
 arch=('any')
 url="https://github.com/lassekongo83/zuki-themes"
 license=(GPL3)
-depends=(gtk-engine-murrine gtk-engines sassc)
-makedepends=(ninja meson)
+depends=(gtk-engine-murrine gtk-engines)
+makedepends=(ninja meson sassc)
 optdepends=(ttf-roboto)
 conflicts=(zukitwo-themes-git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lassekongo83/zuki-themes/archive/v${pkgver//_/-}.tar.gz")
