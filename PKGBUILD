@@ -1,14 +1,14 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=tenshi-rs-git
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Unbound local-zone generator for curated hosts files (git)'
 arch=(aarch64 arm armv6h armv7h i686 x86_64)
 url=https://github.com/flacks/tenshi
 license=(GPL3)
 makedepends=(git rust)
-optdepends=('sudo: to write to destination as superuser')
+optdepends=('sudo: to write to destination as another user')
 provides=(tenshi-rs)
 conflicts=(tenshi-rs)
 source=(git+$url)
