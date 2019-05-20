@@ -84,7 +84,7 @@ pkgver() {
 build() {
 	cd "$srcdir/build"
 	cmake -DQT_CMAKE_PREFIX_PATH="/usr/lib/cmake" ..
-	make -j $(nproc)
+	make
 }
 
 package() {
