@@ -1,30 +1,27 @@
-# Maintainer: Marcs <aur (at) mg.odd.red>
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Contributor: Marcs <aur (at) mg.odd.red>
 
-_npmname=lerna
-_npmver=3.3.0
 pkgname=lerna
-pkgver=3.3.0
+pkgver=3.14.1
 pkgrel=1
 pkgdesc="Tool for managing JavaScript projects with multiple packages"
 arch=(any)
 url="https://github.com/sebmck/lerna#readme"
 license=('MIT')
-depends=('nodejs' 'npm')
-optdepends=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_npmname}/${_npmname}/archive/v${_npmver}.tar.gz")
-sha256sums=('fef6fc20b05d7a02a2cbdf2cb764f3560fa58b0d5f49a9270fbd4e0bd33f8922')
-noextract=(${_npmname}-${_npmver}.tgz)
+depends=('nodejs')
+makedepends=('npm')
+source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
+noextract=($pkgname-$pkgver.tgz)
+options=(!strip)
 
 package() {
   cd ${srcdir}
   local _npmdir="${pkgdir}/usr/lib/node_modules/"
   mkdir -p ${_npmdir}
   cd ${_npmdir}
-  npm install -g --prefix "${pkgdir}/usr" ${_npmname}@${_npmver}
-
-  # fix perms
-  chmod 755 ${pkgdir}/usr/bin
-  find ${pkgdir}/usr/lib/node_modules/ -type d -exec chmod 755 {} +
+  npm install -g --prefix "${pkgdir}/usr" ${pkgname}@${pkgver}
+  find "${pkgdir}"/usr -name package.json -exec sed -i '/"_where"/d' '{}' '+'
+  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
 
-# vim:set ts=2 sw=2 et:
+sha256sums=('d6cc1e17d6ed2080fa5f3f0de9a2580eda5ef9c032fcf30a4a7795ef92dffb72')
