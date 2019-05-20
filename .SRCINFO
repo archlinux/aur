@@ -17,7 +17,6 @@ pkgbase = waybar-git
 	depends = libdbusmenu-gtk3
 	depends = libappindicator-gtk3
 	depends = libpulse
-	depends = wlroots
 	optdepends = sway: Sway modules support
 	optdepends = libmpdclient: Mpd module support
 	optdepends = otf-font-awesome: Icons in the default configuration

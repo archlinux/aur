@@ -18,8 +18,7 @@ depends=('gtkmm3'
          'wayland'
          'libdbusmenu-gtk3'
          'libappindicator-gtk3'
-         'libpulse'
-         'wlroots')
+         'libpulse')
 makedepends=('meson'
              'git')
 optdepends=('sway: Sway modules support'
