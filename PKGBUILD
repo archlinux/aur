@@ -4,17 +4,17 @@
 # Contributor: CRT <crt.011@gmail.com>
 pkgname=skipfish
 pkgver=2.10b
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully automated, active web application security reconnaissance tool"
 arch=('any')
 license=('APACHE')
 url='http://code.google.com/p/skipfish/'
 depends=('openssl' 'libidn' 'zlib' 'glibc' 'sh')
-source=("http://skipfish.googlecode.com/files/${pkgname}-${pkgver}.tgz"
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/skipfish/${pkgname}-${pkgver}.tgz"
 	"skipfish.patch")
 
-md5sums=('8edf6092f3d1835cb4a381b7a723db8a'
-         '640b24c2989f2316ac5e0926bba3b226')
+sha256sums=('1a4fbc9d013f1f9b970946ea7228d943266127b7f4100c994ad26c82c5352a9e'
+            '096e9f7095a499605c8bf29bb9737397e9d5a168ec47888004dc8c2e7ceb0b62')
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
