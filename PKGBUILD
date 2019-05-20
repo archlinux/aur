@@ -11,7 +11,7 @@ url="https://qtum.org"
 license=('GPL-3.0')
 depends=('glibc')
 source=("https://repo.qtum.org/apt/ubuntu/pool/main/q/qtum/qtum_0.17.5_amd64.deb")
-sha256sums=('')
+sha256sums=('d121387ac420a83e5ef3c9ccbb951b6982855c18dc2ae53d4ed19212f82d8b77')
 
 package() {
     bsdtar -O -xf qtum_0.17.5_amd64.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
