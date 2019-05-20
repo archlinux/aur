@@ -57,7 +57,7 @@ sha256sums=('SKIP'
             '4c6df9e4e5a7b29ecf6189eda3e5a79f69b6e1b4d29c1b9559663149b8c0af96'
             '961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9'
             'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938'
-            '7e126c73d12c39be9012a66f979897fa630d540d30906dadff6c1384af4ec166')
+            '81fc39e39e8508f742ccc784efd0492fd04474cee75edf7bd3cbea43edd49b2e')
 
 pkgver() {
   cd sage
@@ -80,8 +80,6 @@ prepare(){
   patch -p1 -i ../sagemath-python3-notebook.patch
 # fix three.js plotting backend
   patch -p1 -i ../sagemath-threejs.patch
-# fix build with linbox 1.6
-  patch -p1 -i ../sagemath-linbox-1.6.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
@@ -92,6 +90,8 @@ prepare(){
   patch -p1 -i ../sagemath-singular-4.1.2.patch
 # Fix SIGFPE crashes with ecl 16.1.3 https://trac.sagemath.org/ticket/22191
   patch -p1 -i ../sagemath-ecl-sigfpe.patch
+# fix build with linbox 1.6 https://trac.sagemath.org/ticket/26932
+  patch -p1 -i ../sagemath-linbox-1.6.patch
 
 # use python2
   sed -e 's|sage-python23|python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
