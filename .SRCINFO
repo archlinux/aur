@@ -1,7 +1,7 @@
 pkgbase = tenshi-rs
 	pkgdesc = Unbound local-zone generator for curated hosts files
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flacks/tenshi
 	arch = aarch64
 	arch = arm
@@ -14,7 +14,7 @@ pkgbase = tenshi-rs
 	optdepends = sudo: to write to destination as another user
 	conflicts = tenshi-rs-git
 	source = https://github.com/flacks/tenshi/archive/0.2.1.tar.gz
-	sha512sums = bc6aa36a89d487b5799cef52346d3597cc0eaa785b4a9911d44bdb993975c827bf4afd74d03d9e83f134456db516b1278ab0467f6a45b00c82cbcf5f62931cf4
+	sha512sums = b5affe3b5cae81e9359c7e7a5a516b7e80e2a0e115f82a9aef29b5a934e5482d7ec5aea321367aa26bc7c19ae0d2ffb05253d5ea4767dd08bf4f87283bb87fcd
 
 pkgname = tenshi-rs
 
