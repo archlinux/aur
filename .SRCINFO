@@ -1,0 +1,13 @@
+pkgbase = rpgp-git
+	pkgdesc = Pure rust implementation of OpenPGP
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/deltachat/deltachat-desktop
+	arch = any
+	license = APACHE
+	license = MIT
+	makedepends = rustup
+	depends = gcc-libs
+
+pkgname = rpgp-git
+
