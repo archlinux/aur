@@ -2,9 +2,9 @@
 # Contributor: klardotsh <josh@klar.sh>
 
 pkgname=tuijam
-pkgver=0.3.12
+pkgver=0.4.1
 pkgrel=1
-_pkgcommit='fb045a8c93651b824ba40a28daed199f23d795cd'
+_pkgcommit='58a887a249ecb65a35092e7d8116f705aac09360'
 pkgdesc=" A fancy TUI client for Google Play Music"
 url="https://github.com/cfangmeier/tuijam"
 arch=(any)
@@ -16,6 +16,7 @@ depends=(
 	'python-urwid'
 	'python-pyaml'
 	'python-mpv'
+	'python-requests'
 	'python-scrypt'
 	'python-pydbus'
 	'pygobject-devel'
