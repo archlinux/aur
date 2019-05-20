@@ -1,29 +1,26 @@
 pkgbase = etesync-server
 	pkgdesc = A self-hostable EteSync server
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/etesync/server-skeleton
 	install = etesync-server.install
 	arch = any
 	license = AGPLv3
-	depends = python-django
 	depends = python-django-cors-headers
 	depends = python-django-etesync-journal
-	depends = python-django-rest-framework
-	depends = python-drf-nested-routers
 	depends = python-pytz
 	optdepends = postgresql: storage backend
 	optdepends = uwsgi-plugin-python: application container
 	options = !emptydirs
-	backup = usr/share/etesync-server/etesync_server/settings.py
-	source = https://github.com/etesync/server-skeleton/archive/v0.1.0.tar.gz
+	backup = etc/etesync-server/etesync-server.ini
+	source = https://github.com/etesync/server-skeleton/archive/v0.2.0.tar.gz
 	source = etesync-server.install
 	source = etesync-server.sysusers
 	source = etesync-server
-	sha256sums = 9ab6ac6d3517023ad6702843e855dc2f89edf32388a058439d6248c2d6f1ae52
-	sha256sums = 8737998b58b9a101f33e911e4f1f413399a0bfa6b72533ddf00eb7dd963e8ddd
+	sha256sums = 435aef6f8f33f82b13dbb99f00c16fa92743194aedb0b4a88ee51001e51244f1
+	sha256sums = 965e5eb9664f7aaf4e071c901d3be9b345b6480846c7146697d945e877a5480e
 	sha256sums = 7363b065206a40e067675d072c5ff269b32704ec89c4eed98e5d3edd71fca122
-	sha256sums = d822ce24a223016f4576ea46c86d912721eb423ebc6c54f0db5f0c9cff1613e7
+	sha256sums = d695d13c339c72fde298d5f751e99a6f6c4da467692a6c1be352dfe7a9c8791a
 
 pkgname = etesync-server
 

@@ -1,6 +1,4 @@
 post_install() {
-	mkdir -p /etc/etesync-server
-	chown -R etesync: /etc/etesync-server
-	mkdir -p /var/lib/etesync-server
-	chown -R etesync:etesync /var/lib/etesync &>/dev/null
+    mkdir -p /var/lib/etesync-server
+    chown -R etesync:etesync /var/lib/etesync-server &>/dev/null
 }
