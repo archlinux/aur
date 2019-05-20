@@ -20,7 +20,7 @@ source=(
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
-#validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8')
+validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8')
 
 build() {
     cd "$srcdir"/nginx-$_nginxver
