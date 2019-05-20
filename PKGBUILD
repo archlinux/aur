@@ -1,15 +1,14 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: ant32 <antreimer@gmail.com>
-# Contributor: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
-# Contributor: rkitover <rkitover@gmail.com>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: Sergej Pupykin < pupykin dot s+arch at gmail dot com >
+# Contributor: ant32 < antreimer at gmail dot com >
+# Contributor: rubenvb < vanboxem dot ruben at gmail dot com >
+# Contributor: rkitover < rkitover at gmail dot com >
 
 _pkgver=6.0.0
-_commit=b13e8de242269cc58c219fec37516341de1f8310 # conflict with gcc's own function
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-winpthreads-git
-pkgver=6.0.0.20180923
+pkgver=6.0.0.20190518
 pkgrel=1
 pkgdesc="MinGW-w64 winpthreads library (git version)"
 arch=('any')
@@ -26,7 +25,7 @@ conflicts=('mingw-w64-winpthreads'
            'mingw-w64-headers-bootstrap')
 replaces=('mingw-w64-headers-bootstrap')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64#commit=${_commit}")
+source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64")
 sha256sums=('SKIP')
 
 pkgver() {
