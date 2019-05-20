@@ -1,7 +1,7 @@
 # Contributor: Max Devaine <maxdevaine@gmail.com>
 
 pkgname=flexibee
-pkgver=2019.2.1
+pkgver=2019.2.2
 pkgbasever=2019.2
 pkgrel=1
 pkgdesc="Accounting economic system for person and business. Server and client in one package."
