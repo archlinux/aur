@@ -1,4 +1,4 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
+# Maintainer: pingplug < aur at pingplug dot me >
 
 pkgname=ccache-ext
 pkgver=1
