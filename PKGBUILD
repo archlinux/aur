@@ -10,10 +10,10 @@ url="https://github.com/highfidelity/hifi"
 license=('Apache')
 install="${pkgname}.install"
 
-makedepends=('git' 'cmake>=3.2')
+makedepends=('git' 'cmake>=3.2' 'python>=3.6')
 provides=('hifi')  
 conflicts=('hifi')
-_qt5version=5.5.1 
+_qt5version=5.10.1 
 depends=("qt5-base>=$_qt5version"
          "qt5-script>=$_qt5version"
          "qt5-tools>=$_qt5version"
@@ -23,22 +23,7 @@ depends=("qt5-base>=$_qt5version"
          "qt5-webengine>=$_qt5version"
          "qt5-graphicaleffects>=$_qt5version"
          "qt5-quickcontrols>=$_qt5version"
-         "qt5-xmlpatterns>=$_qt5version"
-
-         'glm>=0.9.5.4'
-         'openssl>=1.0.1m'
-         'intel-tbb>=4.3'
-         'freeglut>=2.8.0'
-         'oglplus>=0.63'
-         'glew'
-         'alsa-lib'
-         'libxmu'
-         'jack'
-         'polyvox-git'
-         'sdl2>=2.0.3'
-         'bullet>=2.82'
-         'libsoxr>=0.1.1'
-         'qxmpp'
+         "qt5-xmlpatterns>=$_qt5version"	 
 )
 
 source=(
