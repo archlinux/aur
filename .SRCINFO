@@ -1,7 +1,7 @@
 pkgbase = huestacean
 	pkgdesc = Philips Hue control app for desktop with screen syncing
 	pkgver = v2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BradyBrenot/huestacean
 	arch = any
 	license = Apache
@@ -12,7 +12,11 @@ pkgbase = huestacean
 	depends = qt5-remoteobjects
 	provides = huestacean
 	source = huestacean::git+https://github.com/BradyBrenot/huestacean#tag=v2.6
-	md5sums = SKIP
+	source = huestacean.desktop
+	source = huestacean.png
+	sha256sums = SKIP
+	sha256sums = 94fab0d5a9dc2f454528d3bcbb11d4437fcb87390181791d26be9bb51127ca77
+	sha256sums = ec3bacc6516c8cd091d52edaf9f0e98fc846c95e538faa625e167af7c583dcee
 
 pkgname = huestacean
 

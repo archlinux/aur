@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Huestacean
+Exec=/usr/bin/REPL_NAME
+Icon=REPL_NAME
+Categories=Utility;
+Comment=REPL_COMMENT
