@@ -1,6 +1,34 @@
 Version history
 ===============
 
+0.9.27
+------
+
+2019-05-20
+
+Fixed a backroute in The Bottomless Closet, a miniature by geoo.
+
+Fix #379: The editor avoids cloning tiles outside of the map. Usually, the
+editor moves freshly-cloned tiles down-right by (16, 16). Sometimes, this
+would move tiles out of the map. New behavior: If a cloned tile would move out
+of the map, or even very close to the edge (= undercutting a safety margin of
+16 pixels), all cloned tiles are moved up-left by (16, 16) instead. If neither
+offset keeps all tiles on the map, we move down-right by (16, 16) and accept
+that some are outside. In torus directions, tiles are always on the map within
+the safety margin.
+
+Fix #380: While you change the background color in the editor's map dialog,
+the level behind the dialog previews your chosen color in real time. When
+you press OK, the color stays; when you press Cancel, the color reverts.
+
+Code: Fixed deprecations, now Lix compiles warning-free on dmd 2.086.0.
+
+Code: Removed module constructors and moved construction of user options
+into al_run_main. We hope to troubleshoot a segfault on macOS with this,
+github issue #381. Renamed DisplayTryMode to ScreenChoice.
+
+
+
 0.9.26
 ------
 
