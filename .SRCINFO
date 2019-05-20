@@ -10,6 +10,7 @@ pkgbase = nginx-mod-rtmpt-proxy
 	source = http://nginx.org/download/nginx-1.16.0.tar.gz
 	source = http://nginx.org/download/nginx-1.16.0.tar.gz.asc
 	source = https://github.com/kwojtek/nginx-rtmpt-proxy-module/archive/master.zip
+	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
