@@ -1,21 +1,22 @@
+# Contributor: Martin Diehl <m.diehl@mpie.de>
 # Contributor: Alad Wenter <alad@archlinux.org>
 # Contributor: Jingbei Li <i@jingbei.li>
 # Contributor: Simon Pintarelli <simon.pintarelli@gmail.com>
 # Contributor: Feng Wang <wanng.fenng@gmail.com>
 pkgname=trilinos
-pkgver=12.12.1
+pkgver=12.14.1
 _pkgver=${pkgver//./-}
-pkgrel=4
+pkgrel=1
 pkgdesc="algorithms for the solution of large-scale scientific problems"
 arch=('x86_64')
 url="http://trilinos.org"
 license=('LGPL3')
-depends=('lapack' 'openmpi' 'python2' 'boost' 'netcdf' 'libmatio' 'libx11')
+depends=('lapack' 'python2' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
 makedepends=('python2-numpy' 'swig' 'gcc-fortran' 'perl' 'blas' 'cmake' 
              'gtest' 'doxygen')
 checkdepends=('cmake')
 source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz")
-sha256sums=('5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18')
+sha256sums=('52a4406cca2241f5eea8e166c2950471dd9478ad6741cbb2a7fc8225814616f0')
 
 prepare() {
     # https://github.com/trilinos/Trilinos/issues/862#issuecomment-365852261
@@ -30,10 +31,12 @@ build() {
 
     cmake .. -DTrilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=ON \
              -DTrilinos_ENABLE_ALL_PACKAGES:BOOL=ON \
+             -DTrilinos_ENABLE_PyTrilinos:BOOL=OFF \
              -DTrilinos_ENABLE_Gtest:BOOL=ON \
-             -DTrilinos_ENABLE_TESTS=ON \
+             -DTrilinos_ENABLE_TESTS=OFF \
              -DTPL_ENABLE_gtest:BOOL=ON \
              -DTPL_ENABLE_MPI:BOOL=ON \
+             -DTPL_ENABLE_HDF5:BOOL=ON \
              -DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 \
              -DCMAKE_INSTALL_PREFIX:PATH=/usr \
              -DBUILD_SHARED_LIBS:BOOL=ON
