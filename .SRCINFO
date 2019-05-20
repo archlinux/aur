@@ -1,13 +1,14 @@
 pkgbase = zuki-themes-git
 	pkgdesc = A selection of themes for GTK3, gnome-shell and more.
 	pkgver = r256.5cc9f1c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lassekongo83/zuki-themes
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = sassc
 	depends = gtk-engine-murrine
 	depends = gtk-engines
 	optdepends = gnome-themes-standard: Required for the GTK3 theme
