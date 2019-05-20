@@ -1,7 +1,7 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
 _pkgname=openbook-desktop
-_pkgver=0.0.43-1
+_pkgver=0.0.43-2
 pkgname="${_pkgname}-bin"
 pkgver="${_pkgver//-/_}"
 pkgrel=1
@@ -13,7 +13,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('libxcursor' 'libxinerama' 'libxrandr' 'libxxf86vm' 'sqlite' 'bash' 'gtk3')
 source=("${_pkgname}-${_pkgver}.zip::https://gitlab.com/999eagle/openbook-desktop/-/jobs/artifacts/${_pkgver}/download?job=release-linux")
-sha256sums=('16b7ec8a0ac0dab2cd44b084f0b8a5d7cc89997a8831416056bbc306ec3ed400')
+sha256sums=('2ef3e61f2584cd38faa99f19bc7a988df12f4adf42b61940d248759092ad68c8')
 
 package() {
 	# Main files
