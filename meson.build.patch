@@ -1,7 +1,9 @@
---- meson.build	2018-11-08 09:57:21.000000000 +0100
-+++ meson.build.patch	2018-11-09 09:47:40.000000000 +0100
-@@ -32,7 +32,7 @@
-
+diff --git a/meson.build b/meson.build
+index 47f4e83..991202d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -47,7 +47,7 @@ add_global_link_arguments(cpp_link_args, language : 'cpp')
+ 
  thread_dep = dependency('threads')
  libinput = dependency('libinput')
 -fmt = dependency('fmt', version : ['>=5.3.0'], fallback : ['fmt', 'fmt_dep'])
@@ -9,4 +11,3 @@
  wayland_client = dependency('wayland-client')
  wayland_cursor = dependency('wayland-cursor')
  wayland_protos = dependency('wayland-protocols')
- 
