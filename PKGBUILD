@@ -6,7 +6,7 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r549.g2ddfceb
+pkgver=r601.g0a097fe
 pkgrel=1
 
 pkgdesc='A simple interface to auto-configure neomutt and isync with safe passwords'
@@ -19,10 +19,11 @@ conflicts=("${pkgname%-git}")
 
 makedepends=('git')
 depends=('neomutt' 'isync' 'msmtp' 'pass')
-optdepends=('w3m: view HTML email and images inside of neomutt’s TUI'
-            'lynx: view HTML email inside of neomutt’s TUI'
-            'links: view HTML email inside of neomutt’s TUI'
-            'elinks: view HTML email inside of neomutt’s TUI'
+optdepends=('imagemagick: view images inside of the neomutt TUI'
+            'w3m: view HTML email and images inside of the neomutt TUI'
+            'lynx: view HTML email inside of the neomutt TUI'
+            'links: view HTML email inside of the neomutt TUI'
+            'elinks: view HTML email inside of the neomutt TUI'
             'urlview: list URLs found in mails to open them in a browser'
             'abook: contact store and tab completion'
             'cronie: auto-sync mails - alt.: fcron'
@@ -38,7 +39,7 @@ sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" -s install
   install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-git}/" README.md
 }
 
