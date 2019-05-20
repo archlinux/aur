@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
 license=('custom')
-url="http://www.numpy.org/"
+url="https://www.numpy.org/"
 makedepends=('cblas' 'lapack' 'python' 'python2' 'python-setuptools' 'python2-setuptools'
              'gcc-fortran' 'python-nose' 'python2-nose' 'cython' 'cython2')
 checkdepends=('python-pytest' 'python2-pytest')
