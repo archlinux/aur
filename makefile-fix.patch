@@ -13,8 +13,8 @@ diff -ruN librsvg-2.45.5/Makefile.am librsvg-2.45.5-fixed/Makefile.am
  	PKG_CONFIG_ALLOW_CROSS=1						\
  	PKG_CONFIG='$(PKG_CONFIG)'						\
  	CARGO_TARGET_DIR=$(CARGO_TARGET_DIR)					\
--	$(CARGO) build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS)
-+	$(CARGO) build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS) && cp $(RUST_LIB_WIN) $(RUST_LIB)
+-	$(CARGO) --locked build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS) --features "c-library"
++	$(CARGO) --locked build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS) --features "c-library" && cp $(RUST_LIB_WIN) $(RUST_LIB)
  
  librsvg_@RSVG_API_MAJOR_VERSION@_la_CPPFLAGS = \
  	-I$(top_srcdir) 			\
@@ -69,8 +69,8 @@ diff -ruN librsvg-2.45.5/Makefile.in librsvg-2.45.5-fixed/Makefile.in
  	PKG_CONFIG_ALLOW_CROSS=1						\
  	PKG_CONFIG='$(PKG_CONFIG)'						\
  	CARGO_TARGET_DIR=$(CARGO_TARGET_DIR)					\
--	$(CARGO) build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS)
-+	$(CARGO) build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS) && cp $(RUST_LIB_WIN) $(RUST_LIB)
+-	$(CARGO) --locked build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS) --features "c-library"
++	$(CARGO) --locked build $(CARGO_VERBOSE) $(CARGO_TARGET_ARGS) $(CARGO_RELEASE_ARGS) --features "c-library" && cp $(RUST_LIB_WIN) $(RUST_LIB)
  
  @HAVE_INTROSPECTION_TRUE@-include $(INTROSPECTION_MAKEFILE)
  
