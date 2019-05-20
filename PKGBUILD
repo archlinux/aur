@@ -1,5 +1,5 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: Jan de Groot <jgc@archlinux.org>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: Jan de Groot < jgc at archlinux dot org >
 
 pkgname=xf86-video-mga
 pkgver=2.0.0
