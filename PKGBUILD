@@ -5,9 +5,8 @@ url='http://www.ros.org/wiki/catkin'
 
 pkgname='ros-melodic-catkin'
 pkgver='0.7.17'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -15,7 +14,6 @@ ros_makedepends=(
 
 makedepends=(
 	'cmake'
-	'ros-build-tools'
 	${ros_makedepends[@]}
 	python-catkin_pkg
 	python-empy
@@ -36,7 +34,7 @@ depends=(
 )
 
 _dir="catkin-${pkgver}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros/catkin/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/catkin/archive/${pkgver}.tar.gz")
 sha256sums=('71a735bee28e4132350fae55c14324ff7cb7c6d0548ee08e5f6d588985001541')
 
 build() {
