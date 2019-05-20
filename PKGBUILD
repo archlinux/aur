@@ -1,12 +1,12 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 pkgname=deltachat-desktop-git
-pkgver=v0.102.0.dev.rpgp.r85.g7528400
+pkgver=v0.102.0.dev.rpgp.r122.g0e3f738
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
 url="https://github.com/deltachat/deltachat-desktop"
 license=("GPL")
-depends=('nodejs>=11.14.0-1' 'openssl>=1.0' 'sqlite' 'libsasl' 'zlib' 'bzip2')
+depends=('nodejs>=11.14.0-1' 'openssl>=1.0' 'sqlite' 'libsasl' 'zlib' 'bzip2' 'rpgp-git')
 makedepends=('npm' 'git' 'meson' 'ninja')
 source=(
     "deltachat-desktop-git::git://github.com/deltachat/deltachat-desktop.git"
@@ -31,7 +31,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/${pkgname}"
 
-    npm install
+    npm install --verbose
     npm run build
 
     # Save electron. this will otherwise get removed by the prune command
