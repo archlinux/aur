@@ -1,7 +1,6 @@
 # Maintainer: Dan Maftei <dan.maftei@gmail.com>
 pkgname="molden"
-pkgver=5.9.2
-_majver=5.9
+pkgver=6.1
 pkgrel=1
 pkgdesc="A program for molecular and electronic structure visualization"
 arch=('i686' 'x86_64')
@@ -32,19 +31,20 @@ source=(
     "ftp://ftp.cmbi.umcn.nl/pub/molgraph/molden/$pkgname$pkgver.tar.gz"
 )
 noextract=()
-md5sums=('bef48c933facceb84699eb6ce7f23e82')
+md5sums=('445dced799cbc281dca4751477ec2a45')
 
 build() {
-  cd "$pkgname$_majver"
+  dir=`find . -name "molden*" -type d -exec echo {} \;`
+  cd "$dir"
   # Patch Makefile for surf utility to reflect the 
   # replacement of missing makedepend 
   sed -i 's/@.*makedepend.*$/@ \$(CC) \$(INCLUDE) -M \$(SRCS) \> makedep/' surf/Makefile
-
   make
 }
 
 package() {
-  cd "$pkgname"5.9
+  dir=`find . -name "molden*" -type d -exec echo {} \;`
+  cd "$dir"
   install -t "$pkgdir/usr/bin/"  -Dm755 molden gmolden
   install -t "$pkgdir/usr/lib/$pkgname/" -Dm755 ambfor/ambfor ambfor/ambmd surf/surf  
   install -t "$pkgdir/usr/share/doc/$pkgname" -Dm755 doc/figures.ps.Z  doc/manual.ps.Z doc/manual.txt.Z  
