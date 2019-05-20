@@ -18,7 +18,7 @@ build() {
   cd "utfcpp-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    # CYGWIN=1 to trick the build system to install the cmake config in lib/cmake/utf8cpp instead
+    # https://github.com/nemtrif/utfcpp/pull/40
     ${_arch}-cmake -DUTF8_TESTS=OFF -DCYGWIN=1 ..
     make
     popd
