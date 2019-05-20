@@ -1,12 +1,12 @@
 pkgbase = spl-linux
-	pkgver = 0.7.13_5.1.2.arch1.1
+	pkgver = 0.7.13_5.1.3.arch1.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = GPL
-	makedepends = linux-headers=5.1.2.arch1-1
+	makedepends = linux-headers=5.1.3.arch1-1
 	depends = kmod
-	depends = linux=5.1.2.arch1-1
+	depends = linux=5.1.3.arch1-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.13/spl-0.7.13.tar.gz
 	source = linux-5.1-compat-drop-ULLONG_MAX-and-LLONG_MAX-definitions.patch
 	source = linux-5.1-compat-get-ds-removed.patch
