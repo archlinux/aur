@@ -1,6 +1,6 @@
 pkgbase = snail-git
 	pkgdesc = Parasitic network manager
-	pkgver = 0.4.0.r0.g33e1959
+	pkgver = 0.4.0.r33.gd4d4a3f
 	pkgrel = 1
 	url = https://github.com/kpcyrd/snail
 	arch = i686

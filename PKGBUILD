@@ -2,7 +2,7 @@
 
 _gitname=snail
 pkgname=snail-git
-pkgver=0.4.0.r32.g84dc9fa
+pkgver=0.4.0.r33.gd4d4a3f
 pkgrel=1
 pkgdesc="Parasitic network manager"
 url="https://github.com/kpcyrd/snail"
@@ -45,7 +45,9 @@ package() {
   install -Dm644 contrib/snail-sysuser.conf "${pkgdir}/usr/lib/sysusers.d/snail.conf"
 
   install -d "${pkgdir}/usr/share/bash-completion/completions"
-  "${pkgdir}/usr/bin/snailctl" bash-completion > "${pkgdir}/usr/share/bash-completion/completions/snailctl"
+  "${pkgdir}/usr/bin/snailctl" completions bash > "${pkgdir}/usr/share/bash-completion/completions/snailctl"
+  "${pkgdir}/usr/bin/snailctl" completions zsh > "${pkgdir}/usr/share/zsh/site-functions/_snailctl"
+  "${pkgdir}/usr/bin/snailctl" completions fish > "${pkgdir}/usr/share/fish/vendor_completions.d/snailctl.fish"
 
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 docs/snail.7 \
