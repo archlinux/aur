@@ -40,12 +40,19 @@ const char *colors[] = {
 
 const char *fontname = "sans-serif:size=10";
 
-/* init, deinit, handler for polling fd */
-const Poller pollers[] = {
-	/* init         deinit           handler */
-	{ alsa_connect, alsa_disconnect, alsa_update },
-};
-
+/*
+ * function       description
+ *
+ * logo           render the given string
+ * workspace      bspwm workspaces
+ * windowtitle    active window title
+ * datetime       the current time in the given format
+ * thermal        temperature of given sensor file
+ * volume         playback volume
+ * memgraph       memory usage
+ * cpugraph       cpu usage per core
+ * systray        systray icons
+ */
 /* for modules on the right (float: right;) */
 const Module modules[] = {
 	/* function    argument        event handler */
