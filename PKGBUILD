@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Zok <tomasz.zok [at] gmail.com>
 pkgname=x3dna-dssr
-pkgver=1.9.1_20190406
+pkgver=1.9.2_20190506
 pkgrel=1
 pkgdesc="DSSR, an integrated software tool for Dissecting the Spatial Structure of RNA. Please see: http://forum.x3dna.org/site-announcements/download-instructions/"
 arch=('x86_64')
