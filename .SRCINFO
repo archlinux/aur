@@ -1,0 +1,18 @@
+pkgbase = nginx-mod-rtmpt-proxy
+	pkgdesc = Module for nginx that adds RTMP support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kwojtek/nginx-rtmpt-proxy-module.git
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = nginx
+	source = http://nginx.org/download/nginx-1.16.0.tar.gz
+	source = http://nginx.org/download/nginx-1.16.0.tar.gz.asc
+	source = https://github.com/kwojtek/nginx-rtmpt-proxy-module/archive/master.zip
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nginx-mod-rtmpt-proxy
+
