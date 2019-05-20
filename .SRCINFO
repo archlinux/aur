@@ -1,0 +1,20 @@
+pkgbase = solokeys-udev-git
+	pkgdesc = Official SoloKey udev rules. (from Github repo)
+	pkgver = 20190308.c7f0d05
+	pkgrel = 1
+	url = https://github.com/solokeys/solo
+	install = solokeys-udev.install
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = udev
+	provides = solokeys-udev-git
+	conflicts = solokeys-udev-git
+	conflicts = solokeys-udev
+	source = git+https://github.com/solokeys/solo
+	source = solokeys-udev.install
+	sha256sums = SKIP
+	sha256sums = 0afcd39efc916b370472d15453c668f4ad9634ef92d9e5ede2d8d6a883af5625
+
+pkgname = solokeys-udev-git
+
