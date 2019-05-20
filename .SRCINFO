@@ -1,7 +1,7 @@
 pkgbase = acmed
 	pkgdesc = An ACME (RFC 8555) client daemon
 	pkgver = 0.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/breard-r/acmed/archive/v0.5.0.tar.gz
 	arch = x86_64
 	license = Apache
@@ -13,7 +13,7 @@ pkgbase = acmed
 	source = acmed-0.5.0.tar.gz::https://github.com/breard-r/acmed/archive/v0.5.0.tar.gz
 	source = acmed.service
 	md5sums = 0356a1a3136b6ce6a724907f08e8fd21
-	md5sums = 2e56b46374c658969da97f6dd771a9c9
+	md5sums = dd3c3e98dc5fed641be25237dbd1103d
 
 pkgname = acmed
 
