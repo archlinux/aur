@@ -3,13 +3,14 @@
 _name='git-prompt.zsh'
 pkgname="${_name}"
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast, pure-shell, single-file Git prompt for Zsh.'
 arch=('any')
 url="https://github.com/woefe/${_name}"
 license=('MIT')
 source=("https://github.com/woefe/git-prompt.zsh/archive/v${pkgver}.tar.gz")
 depends=('git' 'zsh')
+conflicts=('git-prompt.zsh-git')
 sha256sums=('f9761a98761b4329e3c831ab5ccb67a052a160387b5429d6c4c8786ab2670e02')
 
 package() {
