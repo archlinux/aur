@@ -1,26 +1,24 @@
 # Maintainer: David Birks <david@tellus.space>
 
 pkgname=jx
-pkgver=2.0.106
+pkgver=2.0.141
 pkgrel=1
-pkgdesc="Command line tool for working with Jenkins X: automated CI/CD for Kubernetes"
-arch=("x86_64")
-url="https://github.com/jenkins-x/jx"
+pkgdesc='Command line tool for working with Jenkins X'
+arch=('x86_64')
+url='https://github.com/jenkins-x/jx'
 license=('Apache')
 depends=('go>=1.11.4')
-source=("https://github.com/jenkins-x/jx/archive/v${pkgver}.tar.gz")
-sha256sums=('2b407d5850ef9ce81f159a1a7a3d7f81641be58bbc36e6928bf05550a5e7baa6')
-
-prepare() {
-    # Clean up any extracted files from previous installation
-    rm -rf "github.com/jenkins-x/jx"
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jenkins-x/jx/archive/v$pkgver.tar.gz")
+sha256sums=('65791bd1b206c85f0b40ab26d4393b0b0acc47ab4d74e922db131727215148af')
 
 build() {
+    # Trim $PWD in build
+    export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
     export GOPATH="${srcdir}"
-    mkdir -p "github.com/jenkins-x"
-    mv "jx-${pkgver}" "github.com/jenkins-x/jx"
-    cd "github.com/jenkins-x/jx"
+
+    mkdir -p github.com/jenkins-x
+    mv $pkgname-$pkgver github.com/jenkins-x/jx
+    cd github.com/jenkins-x/jx
     VERSION=${pkgver} make build
 }
 
@@ -33,4 +31,3 @@ package() {
     "${pkgdir}/usr/bin/jx" completion bash > "${pkgdir}/usr/share/bash-completion/completions/jx"
     "${pkgdir}/usr/bin/jx" completion zsh >  "${pkgdir}/usr/share/zsh/site-functions/_jx"
 }
-
