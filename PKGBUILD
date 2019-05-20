@@ -2,7 +2,7 @@
 # Contributor: Michael Carlberg <c@rlberg.se>
 _pkgname=polybar
 pkgname="${_pkgname}-git"
-pkgver=3.3.0.r87.g65e72fd7
+pkgver=3.3.0.r92.g7724c4dc
 pkgrel=1
 pkgdesc="A fast and easy-to-use status bar"
 arch=("i686" "x86_64")
