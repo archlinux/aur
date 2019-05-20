@@ -1,6 +1,6 @@
---- a/meson.build
-+++ b/meson.build.patch
-@@ -47,7 +47,7 @@ add_global_link_arguments(cpp_link_args, language : 'cpp')
+--- meson.build	2019-05-20 12:20:47.907105269 +0200
++++ meson.build.patch	2019-05-20 12:20:42.907105043 +0200
+@@ -47,7 +47,7 @@
  
  thread_dep = dependency('threads')
  libinput = dependency('libinput')

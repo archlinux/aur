@@ -1,7 +1,7 @@
 # Maintainer: Alexis Rouillard <contact@arouillard.fr>
 
 pkgname=waybar-git
-pkgver=r304.66ad286
+pkgver=r636.67593b8
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors (GIT)'
 arch=('x86_64')
@@ -25,12 +25,11 @@ optdepends=('sway: Sway modules support'
             'libmpdclient: Mpd module support'
             'otf-font-awesome: Icons in the default configuration')
 
-# source=("${pkgname}::git://github.com/Alexays/Waybar#commit=28c65c64"
 source=("${pkgname}::git://github.com/Alexays/Waybar"
         'meson.build.patch')
 
 sha1sums=('SKIP'
-          'd5b5d3b9de2dccd64d9230d3f4d2614d471ab4d2')
+          '90712e229ba3190655c59fa4d13151ce63761d05')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
