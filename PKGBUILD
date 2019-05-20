@@ -98,7 +98,7 @@ _local_qt5_repo="${local_qt5_repo}"
 _pkgvermajmin="5.13"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="beta1"
+_dev_suffix="beta3"
 pkgrel=1
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
@@ -149,11 +149,21 @@ case ${_piver} in
   _use_mesa=true
   _mkspec="linux-tinker-g++"
 ;;
+5)
+  # https://developer.nvidia.com/embedded/dlc/kernel-gcc-6-4-tool-chain
+  # took forever to find one that worked
+  _toolchain="/opt/gcc-linaro-6.4.1-2017.08-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-"
+  _float=false
+  _mkspec="linux-jetson-nano-g++"
+;;
+
 esac
 
 if $_target_host; then
   _use_mesa=true
 elif [[ "${_piver}" = "4" ]]; then
+  echo ""
+elif [[ "${_piver}" = "5" ]]; then
   echo ""
 else
   depends=("qpi${_piver}-toolchain")
@@ -265,6 +275,7 @@ else
         -fontconfig \
         -system-freetype \
         -system-harfbuzz \
+        -system-pcre \
     "
 fi
 
@@ -299,7 +310,7 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-_tar_xz_sha256="23756b4786cf66b0bddb27694a48f4ecb01ec40fed1e26949db0bc57a03557cc"
+_tar_xz_sha256="0118ef63c69bc5265c4310e5ab262242eb8ec7160c54f2e5a619204982b10a9f"
 #_tar_xz_sha256="356f42d9087718f22f03d13d0c2cdfb308f91dc3cf0c6318bed33f2094cd9d6c"
 
 source=("git://github.com/sirspudd/mkspecs.git")
@@ -397,7 +408,7 @@ fi
 if $_patching; then
   echo "Patching source"
   cd ${_srcdir}/qtdeclarative
-  patch -p1 < ${startdir}/0005-Fix-qtdeclarative-build-configured-with-qreal-float.patch
+  #patch -p1 < ${startdir}/0005-Fix-qtdeclarative-build-configured-with-qreal-float.patch
 fi
 
   rm -Rf ${_bindir}
