@@ -7,7 +7,6 @@ pkgbase = trilinos
 	license = LGPL3
 	checkdepends = cmake
 	makedepends = python2-numpy
-	makedepends = swig
 	makedepends = gcc-fortran
 	makedepends = perl
 	makedepends = blas
@@ -15,14 +14,14 @@ pkgbase = trilinos
 	makedepends = gtest
 	makedepends = doxygen
 	depends = lapack
-	depends = openmpi
 	depends = python2
 	depends = boost
 	depends = netcdf
 	depends = libmatio
 	depends = libx11
-	source = https://github.com/trilinos/Trilinos/archive/trilinos-release-12-12-1.tar.gz
-	sha256sums = 5474c5329c6309224a7e1726cf6f0d855025b2042959e4e2be2748bd6bb49e18
+    depends = hdf5-openmpi
+	source = https://github.com/trilinos/Trilinos/archive/trilinos-release-12-14-1.tar.gz
+	sha256sums = 52a4406cca2241f5eea8e166c2950471dd9478ad6741cbb2a7fc8225814616f0
 
 pkgname = trilinos
 

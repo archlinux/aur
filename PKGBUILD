@@ -12,7 +12,7 @@ arch=('x86_64')
 url="http://trilinos.org"
 license=('LGPL3')
 depends=('lapack' 'python2' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
-makedepends=('python2-numpy' 'swig' 'gcc-fortran' 'perl' 'blas' 'cmake' 
+makedepends=('python2-numpy' 'gcc-fortran' 'perl' 'blas' 'cmake' 
              'gtest' 'doxygen')
 checkdepends=('cmake')
 source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz")
