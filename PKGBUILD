@@ -3,7 +3,7 @@
 
 pkgname=high-fidelity-stable-git
 pkgver=r77707.576f41f90c
-pkgrel=1.01
+pkgrel=1.02
 pkgdesc="High Fidelity (Hifi) is an open-source software where you can create and share virtual reality (VR) experiences. Create and host your own VR world, explore other worlds and meet other users. (git - latest stable version)"
 arch=('i686' 'x86_64')
 url="https://github.com/highfidelity/hifi"
@@ -68,17 +68,17 @@ pkgver() {
 
 build() {
 	cd "$srcdir/build"
-	cmake -DQT_CMAKE_PREFIX_PATH="/usr/lib/cmake" ..
+	cmake -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/opt/hifi" -DCMAKE_BUILD_TYPE:STRING="Release" -DQT_CMAKE_PREFIX_PATH:PATH="/usr/lib/cmake" ..
 	make
 }
 
 package() {
 	mkdir -p "$pkgdir/usr/share/hifi"
+ 	mkdir -p "$pkgdir/opt/hifi"
 
 	cd "$srcdir/build"
 
-	# TODO: Clean makefiles here
-	cp -R "$srcdir/build" "$pkgdir/opt/hifi"
+	make install
 
 	install -Dm644 "$srcdir/hifi-interface.png" "$pkgdir/usr/share/hifi/hifi-interface.png"
 	install -Dm644 "$srcdir/hifi-interface.desktop" "$pkgdir/usr/share/applications/hifi-interface.desktop"
