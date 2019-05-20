@@ -1,6 +1,6 @@
 pkgbase = trezor-bridge-bin
 	pkgdesc = Communication daemon for TREZOR
-	pkgver = 2.0.26
+	pkgver = 2.0.27
 	pkgrel = 1
 	url = https://trezor.io/
 	install = trezor-bridge-bin.install
@@ -8,10 +8,10 @@ pkgbase = trezor-bridge-bin
 	arch = x86_64
 	license = LGPL3
 	depends = systemd
-	source_i686 = https://wallet.trezor.io/data/bridge/2.0.26/trezor-bridge_2.0.26_i386.deb
-	sha256sums_i686 = 4928ca508eec302afc562ba2a4142c74d172b6baa942a6a05b34947a24bc5185
-	source_x86_64 = https://wallet.trezor.io/data/bridge/2.0.26/trezor-bridge_2.0.26_amd64.deb
-	sha256sums_x86_64 = d5e7068eb196bfa6c4a68ba9523506339a563e773277f03189736d252161bbd7
+	source_i686 = https://wallet.trezor.io/data/bridge/2.0.27/trezor-bridge_2.0.27_i386.deb
+	sha256sums_i686 = fe750c227e4a7593142b959e29c41368a354fac25a9986158dfdd4fa7630a001
+	source_x86_64 = https://wallet.trezor.io/data/bridge/2.0.27/trezor-bridge_2.0.27_amd64.deb
+	sha256sums_x86_64 = ed7edb5cb33210af6faaf8a10f219525d8a1e551ea6f886cc6654b427f91e397
 
 pkgname = trezor-bridge-bin
 
