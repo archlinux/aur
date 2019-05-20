@@ -1,0 +1,16 @@
+pkgbase = uxy-git
+	pkgdesc = UXY is tool to manipulate UXY format
+	pkgver = r44.6c193d2
+	pkgrel = 1
+	url = https://github.com/sustrik/uxy
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	provides = uxy
+	conflicts = uxy
+	source = uxy-git::git+https://github.com/sustrik/uxy.git
+	sha256sums = SKIP
+
+pkgname = uxy-git
+
