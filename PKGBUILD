@@ -76,17 +76,17 @@ package() {
 	mkdir -p "$pkgdir/opt/hifi"
 	mkdir -p "$pkgdir/usr/share/hifi"
 
-	cd $srcdir
+	cd "$srcdir/build"
 
 	make install DESTDIR="$pkgdir/opt/hifi"
 
-	install -Dm644 "hifi-interface.png" "$pkgdir/usr/share/hifi/hifi-interface.png"
-	install -Dm644 "hifi-interface.desktop" "$pkgdir/usr/share/applications/hifi-interface.desktop"
-	install -Dm755 "hifi-interface.launcher" "$pkgdir/usr/bin/hifi-interface"
+	install -Dm644 "$srcdir/hifi-interface.png" "$pkgdir/usr/share/hifi/hifi-interface.png"
+	install -Dm644 "$srcdir/hifi-interface.desktop" "$pkgdir/usr/share/applications/hifi-interface.desktop"
+	install -Dm755 "$srcdir/hifi-interface.launcher" "$pkgdir/usr/bin/hifi-interface"
 
-	install -Dm755 "hifi-domain-server.launcher" "$pkgdir/usr/bin/hifi-domain-server"
+	install -Dm755 "$srcdir/hifi-domain-server.launcher" "$pkgdir/usr/bin/hifi-domain-server"
 
-	install -Dm755 "hifi-ice-server.launcher" "$pkgdir/usr/bin/hifi-ice-server"
+	install -Dm755 "$srcdir/hifi-ice-server.launcher" "$pkgdir/usr/bin/hifi-ice-server"
 
-	install -Dm755 "hifi-assignment-client.launcher" "$pkgdir/usr/bin/hifi-assignment-client"
+	install -Dm755 "$srcdir/hifi-assignment-client.launcher" "$pkgdir/usr/bin/hifi-assignment-client"
 }
