@@ -18,8 +18,8 @@
 pkgbase="spl-linux-zen"
 pkgname=("spl-linux-zen" "spl-linux-zen-headers")
 _splver="0.7.13"
-_kernelver="5.1.2.zen1-1"
-_extramodules="5.1.2-zen1-1-zen"
+_kernelver="5.1.3.zen1-1"
+_extramodules="5.1.3-zen1-1-zen"
 
 pkgver="${_splver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
