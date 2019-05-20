@@ -1,0 +1,84 @@
+From 887b49452acfa897e700083fe732f1b24788f1d8 Mon Sep 17 00:00:00 2001
+From: Mark Blakeney <mark.blakeney@bullet-systems.net>
+Date: Tue, 21 May 2019 09:24:56 +1000
+Subject: [PATCH] Relative paths should be allowed
+
+This applies the fix for https://code.google.com/archive/p/parallel-ssh/issues/83.
+---
+ bin/prsync | 4 ----
+ bin/pscp   | 6 +-----
+ bin/pslurp | 5 +----
+ 3 files changed, 2 insertions(+), 13 deletions(-)
+
+diff --git a/bin/prsync b/bin/prsync
+index 84130af..354e225 100755
+--- a/bin/prsync
++++ b/bin/prsync
+@@ -7,7 +7,6 @@
+ """Parallel rsync to the set of nodes in hosts.txt.
+ 
+ For each node, we essentially do a rsync -rv -e ssh local user@host:remote.
+-Note that remote must be an absolute path.
+ """
+ 
+ import os
+@@ -110,9 +109,6 @@ if __name__ == "__main__":
+     opts, args = parse_args()
+     local = args[0]
+     remote = args[1]
+-    if not re.match("^/", remote):
+-        print("Remote path %s must be an absolute path" % remote)
+-        sys.exit(3)
+     try:
+         hosts = psshutil.read_host_files(opts.host_files,
+             default_user=opts.user)
+diff --git a/bin/pscp b/bin/pscp
+index 5b89b70..75bf449 100755
+--- a/bin/pscp
++++ b/bin/pscp
+@@ -7,8 +7,7 @@
+ """Parallel scp to the set of nodes in hosts.txt.
+ 
+ For each node, we essentially do a scp [-r] local user@host:remote.  This
+-program also uses the -q (quiet) and -C (compression) options.  Note that
+-remote must be an absolute path.
++program also uses the -q (quiet) and -C (compression) options.
+ """
+ 
+ import os
+@@ -92,9 +91,6 @@ if __name__ == "__main__":
+     opts, args = parse_args()
+     localargs = args[0:-1]
+     remote = args[-1]
+-    if not re.match("^/", remote):
+-        print("Remote path %s must be an absolute path" % remote)
+-        sys.exit(3)
+     try:
+         hosts = psshutil.read_host_files(opts.host_files,
+             default_user=opts.user)
+diff --git a/bin/pslurp b/bin/pslurp
+index c7dece6..8a73124 100755
+--- a/bin/pslurp
++++ b/bin/pslurp
+@@ -8,7 +8,7 @@
+ 
+ For each node, we essentially do a scp [-r] user@host:remote
+ outdir/<node>/local.  This program also uses the -q (quiet) and -C
+-(compression) options.  Note that remote must be an absolute path.
++(compression) options.
+ """
+ 
+ import os
+@@ -113,9 +113,6 @@ if __name__ == "__main__":
+     opts, args = parse_args()
+     remote = args[0]
+     local = args[1]
+-    if not re.match("^/", remote):
+-        print("Remote path %s must be an absolute path" % remote)
+-        sys.exit(3)
+     try:
+         hosts = psshutil.read_host_files(opts.host_files,
+             default_user=opts.user)
+-- 
+2.21.0
+
