@@ -1,7 +1,7 @@
 pkgbase = solokeys-udev
 	pkgdesc = Official SoloKey udev rules.
 	pkgver = 20190308
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/solokeys/solo/tree/master/udev
 	install = solokeys-udev.install
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = solokeys-udev
 	provides = solokeys-udev
 	conflicts = solokeys-udev
 	source = 70-solokeys-access.rules
+	source = solokeys-udev.install
 	sha256sums = 09134a1f4d97f5a1e591194a24595f966edf5d5f0c6ae45e2bef32d710535c6b
 
 pkgname = solokeys-udev
