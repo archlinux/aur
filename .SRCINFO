@@ -1,6 +1,6 @@
 pkgbase = python-usernotify-git
 	pkgdesc = Python 3 library and scripts for notifying desktop users
-	pkgver = r30.681f135
+	pkgver = r32.cf66096
 	pkgrel = 1
 	url = https://github.com/conqp/usernotify
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = python-usernotify-git
 	makedepends = python
 	depends = python
 	depends = libnotify
-	optdepends = python-docopt: scripts
 	source = python-usernotify-git::git+https://github.com/conqp/usernotify.git
 	md5sums = SKIP
 

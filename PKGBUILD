@@ -2,14 +2,13 @@
 
 _pkgbase='usernotify'
 pkgname="python-${_pkgbase}-git"
-pkgver=r30.681f135
+pkgver=r32.cf66096
 pkgrel=1
 pkgdesc="Python 3 library and scripts for notifying desktop users"
 arch=('any')
 url="https://github.com/conqp/${_pkgbase}"
 license=('GPLv3')
 depends=('python' 'libnotify')
-optdepends=('python-docopt: scripts')
 makedepends=('git' 'python')
 source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
