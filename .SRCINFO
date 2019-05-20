@@ -6,12 +6,16 @@ pkgbase = solokeys-udev
 	install = solokeys-udev.install
 	arch = any
 	license = Apache
+	license = MIT
 	depends = udev
 	provides = solokeys-udev
 	conflicts = solokeys-udev
 	conflicts = solokeys-udev-git
 	source = 70-solokeys-access.rules
 	source = solokeys-udev.install
+	source = LICENSE
+	source = LICENSE-MIT
+	source = LICENSE-APACHE
 	sha256sums = 09134a1f4d97f5a1e591194a24595f966edf5d5f0c6ae45e2bef32d710535c6b
 	sha256sums = 0afcd39efc916b370472d15453c668f4ad9634ef92d9e5ede2d8d6a883af5625
 
