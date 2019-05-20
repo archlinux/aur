@@ -1,0 +1,13 @@
+pkgbase = natural-scrolling-forever
+	pkgdesc = Enable natural scrolling for current and future devices.
+	pkgver = r3.97109f6
+	pkgrel = 1
+	url = https://github.com/WhyNotHugo/natural-scrolling-forever
+	arch = any
+	license = ISC
+	depends = python-pyudev
+	source = git+https://github.com/WhyNotHugo/natural-scrolling-forever.git
+	sha256sums = SKIP
+
+pkgname = natural-scrolling-forever
+
