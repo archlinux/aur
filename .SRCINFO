@@ -1,0 +1,17 @@
+pkgbase = upyloader-git
+	pkgdesc = File transfer and communication tool for MicroPython boards.
+	pkgver = 0.3245c72
+	pkgrel = 1
+	url = https://github.com/zindy/uPyLoader
+	arch = any
+	license = MIT
+	depends = python
+	depends = sudo
+	depends = git
+	depends = python-pyqt5
+	depends = kdesu
+	source = upyloader-git::git+https://github.com/zindy/uPyLoader.git
+	md5sums = SKIP
+
+pkgname = upyloader-git
+
