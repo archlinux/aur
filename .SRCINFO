@@ -1,0 +1,16 @@
+pkgbase = progpick
+	pkgdesc = Bruteforce with a stream of permutations of a specific pattern
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kpcyrd/progpick
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	source = https://github.com/kpcyrd/progpick/archive/v0.1.0/progpick-0.1.0.tar.gz
+	sha512sums = 37d3f1db4d64ce16374b2c5ee40f0e094174bdbfb3dd489a9924593ec23a8e52508dc9bf18df919dd7db757a633ad32b64e3466c1232609e42ae40eec56a5eb3
+
+pkgname = progpick
+
