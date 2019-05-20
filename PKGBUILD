@@ -1,7 +1,7 @@
 # Maintainer: Oliver Friedrich <olifriedrich at gmail dot com>
 
 pkgname='tonelib-jam-bin'
-pkgver=3.8.0
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="ToneLib Jam – the learning and practice software for guitar players"
 arch=('x86_64')

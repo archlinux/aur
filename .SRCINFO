@@ -1,6 +1,6 @@
 pkgbase = tonelib-jam-bin
 	pkgdesc = ToneLib Jam – the learning and practice software for guitar players
-	pkgver = 3.8.0
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://tonelib.net/jam-overview/
 	arch = x86_64
