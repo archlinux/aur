@@ -1,7 +1,7 @@
 # Maintainer: Christian Bundy <christianbundy@fraction.io> 
 pkgname=patchbay
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An alternative Secure Scuttlebutt client interface that is fully compatible with Patchwork"
 arch=('i686' 'x86_64')
 url="https://github.com/ssbc/patchbay"
