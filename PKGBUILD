@@ -4,7 +4,7 @@ pkgname=automake-1.15
 _pkgname=automake
 pkgver=1.15.1
 _pkgver=1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNU tool for automatically creating Makefiles"
 arch=('any')
 license=('GPL')
@@ -23,12 +23,7 @@ build() {
   make
 }
 
-check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make check PYTHON=/usr/bin/python2
-}
-
-package(){
+package() {
   cd "$srcdir"/${_pkgname}-$pkgver
   make DESTDIR="$pkgdir" install
 

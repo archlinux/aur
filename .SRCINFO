@@ -1,7 +1,7 @@
 pkgbase = automake-1.15
 	pkgdesc = A GNU tool for automatically creating Makefiles
 	pkgver = 1.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/automake
 	arch = any
 	groups = base-devel
