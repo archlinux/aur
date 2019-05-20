@@ -1,7 +1,7 @@
 pkgbase = sfeed-git
 	pkgdesc = RSS and Atom parser
-	pkgver = 0.9.8.r3.gb3c9ad3
-	pkgrel = 2
+	pkgver = 0.9.11.r3.g16a6611
+	pkgrel = 1
 	url = https://codemadness.org/sfeed-simple-feed-parser.html
 	arch = i686
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: KingofToasters <dev at sgregoratto dot me>
 pkgname=sfeed-git
-pkgver=0.9.8.r3.gb3c9ad3
-pkgrel=2
+pkgver=0.9.11.r3.g16a6611
+pkgrel=1
 pkgdesc='RSS and Atom parser'
 url='https://codemadness.org/sfeed-simple-feed-parser.html'
 license=('ISC')
