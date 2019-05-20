@@ -1,7 +1,5 @@
-diff --git a/meson.build b/meson.build
-index 47f4e83..991202d 100644
 --- a/meson.build
-+++ b/meson.build
++++ b/meson.build.patch
 @@ -47,7 +47,7 @@ add_global_link_arguments(cpp_link_args, language : 'cpp')
  
  thread_dep = dependency('threads')
