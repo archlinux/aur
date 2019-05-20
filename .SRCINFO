@@ -9,30 +9,17 @@ pkgbase = high-fidelity-stable-git
 	license = Apache
 	makedepends = git
 	makedepends = cmake>=3.2
-	depends = qt5-base>=5.5.1
-	depends = qt5-script>=5.5.1
-	depends = qt5-tools>=5.5.1
-	depends = qt5-multimedia>=5.5.1
-	depends = qt5-svg>=5.5.1
-	depends = qt5-websockets>=5.5.1
-	depends = qt5-webengine>=5.5.1
-	depends = qt5-graphicaleffects>=5.5.1
-	depends = qt5-quickcontrols>=5.5.1
-	depends = qt5-xmlpatterns>=5.5.1
-	depends = glm>=0.9.5.4
-	depends = openssl>=1.0.1m
-	depends = intel-tbb>=4.3
-	depends = freeglut>=2.8.0
-	depends = oglplus>=0.63
-	depends = glew
-	depends = alsa-lib
-	depends = libxmu
-	depends = jack
-	depends = polyvox-git
-	depends = sdl2>=2.0.3
-	depends = bullet>=2.82
-	depends = libsoxr>=0.1.1
-	depends = qxmpp
+	makedepends = python>=3.6
+	depends = qt5-base>=5.10.1
+	depends = qt5-script>=5.10.1
+	depends = qt5-tools>=5.10.1
+	depends = qt5-multimedia>=5.10.1
+	depends = qt5-svg>=5.10.1
+	depends = qt5-websockets>=5.10.1
+	depends = qt5-webengine>=5.10.1
+	depends = qt5-graphicaleffects>=5.10.1
+	depends = qt5-quickcontrols>=5.10.1
+	depends = qt5-xmlpatterns>=5.10.1
 	provides = hifi
 	conflicts = hifi
 	source = hifi-interface.desktop
