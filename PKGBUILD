@@ -1,6 +1,6 @@
 # Maintainer: liberodark
 
-pkgname=guitar
+pkgname=guitar-bin
 pkgver=0.9.4
 pkgrel=1
 pkgdesc="Git GUI Client"
