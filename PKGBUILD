@@ -2,7 +2,7 @@
 
 pkgname=gkrellm-fchart
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="general-purpose plugin for gkrellm"
 url="https://www.cs.hmc.edu/~geoff/gkrellm-fchart.html"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   install -m755 -D fchart.so $pkgdir/usr/lib/gkrellm2/plugins/fchart.so
   install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
-  install -Dm644 scripts/ntpgrabber $pkgdir/usr/share/doc/$pkgname/scripts/ntpgrabber
-  install -Dm644 scripts/pingtimer $pkgdir/usr/share/doc/$pkgname/scripts/pingtimer
-  install -Dm644 scripts/tideplot $pkgdir/usr/share/doc/$pkgname/scripts/tideplot
+  install -Dm755 scripts/ntpgrabber $pkgdir/usr/share/doc/$pkgname/scripts/ntpgrabber
+  install -Dm755 scripts/pingtimer $pkgdir/usr/share/doc/$pkgname/scripts/pingtimer
+  install -Dm755 scripts/tideplot $pkgdir/usr/share/doc/$pkgname/scripts/tideplot
 }
