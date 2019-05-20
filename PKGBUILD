@@ -10,14 +10,14 @@
 #   - deJaVu and GhostScript font directories are the default ones
 #   - Windows font directory is set according to a Wiki example
 
-_commit='9a529b2171ab1d64748c3385b0c2c4702808983d'
+_commit='39c2e1ec751ddb665151a593076ec14d6f571d33'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
 _srcname=ImageMagick
-pkgver=7.0.8.42
-pkgrel=2
+pkgver=7.0.8.46
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
 url='https://www.imagemagick.org/'
@@ -30,10 +30,11 @@ makedepends=(
         'libx11' 'bzip2' 'zlib' 'libltdl' 'jemalloc' 'djvulibre' 'libraw' 'graphviz'
         'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango' 'cairo'
         'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf' 'ocl-icd'
-        'gsfonts' 'ttf-dejavu'
+        'gsfonts' 'ttf-dejavu' 'perl'
     # AUR:
         'pstoedit-nomagick' 'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
 )
+BUILDENV+=('!check')
 source=("git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
         'imagemagick-full-security-fix.patch'
         'arch-fonts.diff')
@@ -142,7 +143,6 @@ check() (
 package_imagemagick-full() {
     local _majorver="${pkgver%%.*}"
     local _etcdir="ImageMagick-${_majorver}"
-    
     depends=(
         # official repositories:
             'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
