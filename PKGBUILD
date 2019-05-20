@@ -9,7 +9,7 @@ url='https://github.com/solokeys/solo/tree/master/udev'
 license=('Apache')
 depends=('udev')
 provides=("$pkgname")
-conflicts=("$pkgname")
+conflicts=("$pkgname" "solokeys-udev-git")
 sha256sums=('09134a1f4d97f5a1e591194a24595f966edf5d5f0c6ae45e2bef32d710535c6b')
 source=('70-solokeys-access.rules'
         'solokeys-udev.install')
