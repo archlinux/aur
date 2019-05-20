@@ -3,7 +3,7 @@
 pkgname=rambox-os-bin
 _pkgname=rambox-os
 pkgver=0.5.18
-pkgrel=8
+pkgrel=9
 pkgdesc='Forked Free and Open Source messaging and emailing app that combines common web applications into one'
 arch=('x86_64')
 depends=('alsa-lib' 'bash' 'desktop-file-utils' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'libxss' 'nss')
@@ -20,6 +20,7 @@ package() {
     install -d ${pkgdir}/{opt/rambox-os,usr/{bin,share/pixmaps}}
     cp -R ${srcdir}/Rambox-${pkgver}/* ${pkgdir}/opt/${_pkgname}/
     ln -rs ${pkgdir}/opt/${_pkgname}/rambox ${pkgdir}/usr/bin/rambox
+    chmod 4755 /opt/rambox-os/chrome-sandbox
     install -Dm644 $srcdir/${_pkgname}.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
     desktop-file-install ${srcdir}/${_pkgname}.desktop --dir ${pkgdir}/usr/share/applications/
 }
