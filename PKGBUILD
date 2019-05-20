@@ -1,8 +1,8 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: Johannes Löthberg <johannes@kyriasis.com>
-# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
-# Contributor: Daniel Micay <danielmicay@gmail.com>
-# Contributor: userwithuid <userwithuid@gmail.com>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: Johannes Löthberg < johannes at kyriasis dot com >
+# Contributor: Alexander F Rødseth < xyproto at archlinux dot org >
+# Contributor: Daniel Micay < danielmicay at gmail dot com >
+# Contributor: userwithuid < userwithuid at gmail dot com >
 
 _pkgname=rust
 _date=2019-02-28
@@ -11,7 +11,7 @@ _cargo=0.34.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.34.1
+pkgver=1.34.2
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=('gdb'
              'ninja'
              'libffi'
              'perl'
-             'python2'
+             'python'
              'nodejs'
              'cmake')
 options=('!strip' 'staticlibs' '!buildflags')
@@ -38,7 +38,7 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('e0efb1e6aba0d4900de57bd2db64e32e7c5b440a95a675d5303839c9a2c3328f'
+sha256sums=('2b3b3a5462aa31d07f39721af73ef394803ceae3472e2470f28b7ee0b12e38ef'
             'SKIP'
             '6f20343ed73faf5fdfc423bec38a9bb1910a0a962af6f2dddd7184407543ed0e'
             'SKIP'
@@ -84,7 +84,7 @@ package() {
   # TODO: find a way to disable packaging
   # use level 0 to speed up xz packaging
   sed -i 's|XzEncoder::new(create_new_file(tar_xz)?, 6)|XzEncoder::new(create_new_file(tar_xz)?, 0)|' "src/tools/rust-installer/src/tarballer.rs"
-  DESTDIR="${pkgdir}" python2 ./x.py install
+  DESTDIR="${pkgdir}" python ./x.py install
 
   # license
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"{rust,cargo}
