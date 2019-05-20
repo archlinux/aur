@@ -3,7 +3,7 @@
 
 pkgname=high-fidelity-stable-git
 pkgver=r77707.576f41f90c
-pkgrel=1.02
+pkgrel=1.1
 pkgdesc="High Fidelity (Hifi) is an open-source software where you can create and share virtual reality (VR) experiences. Create and host your own VR world, explore other worlds and meet other users. (git - latest stable version)"
 arch=('i686' 'x86_64')
 url="https://github.com/highfidelity/hifi"
@@ -75,10 +75,30 @@ build() {
 package() {
 	mkdir -p "$pkgdir/usr/share/hifi"
  	mkdir -p "$pkgdir/opt/hifi"
+ 	mkdir -p "$pkgdir/usr/lib/hifi"
+
 
 	cd "$srcdir/build"
 
 	make install
+
+	#copy polyvox library
+	cp "$srcdir/build/ext/makefiles/polyvox/project/lib/Release/libPolyVoxCore.so.0.2.1" "$pkgdir/usr/lib/"
+	cp "$srcdir/build/ext/makefiles/polyvox/project/lib/Release/libPolyVoxCore.so.0" "$pkgdir/usr/lib/"
+	cp "$srcdir/build/ext/makefiles/polyvox/project/lib/Release/libPolyVoxCore.so" "$pkgdir/usr/lib/"
+
+	cp "$srcdir/build/ext/makefiles/polyvox/project/lib/libPolyVoxUtil.so.0.2.1" "$pkgdir/usr/lib/"
+	cp "$srcdir/build/ext/makefiles/polyvox/project/lib/libPolyVoxUtil.so.0" "$pkgdir/usr/lib/"
+	cp "$srcdir/build/ext/makefiles/polyvox/project/lib/libPolyVoxUtil.so" "$pkgdir/usr/lib/"
+
+	#copy quazip library
+	cp "$srcdir/build/ext/makefiles/quazip/project/lib/libquazip5.so.1.0.0" "$pkgdir/usr/lib/"
+	cp "$srcdir/build/ext/makefiles/quazip/project/lib/libquazip5.so.1" "$pkgdir/usr/lib/"
+	cp "$srcdir/build/ext/makefiles/quazip/project/lib/libquazip5.so" "$pkgdir/usr/lib/"
+
+	#copy steamworks libsdkencryptedappticket libsteam api
+	cp "$srcdir/build/ext/makefiles/steamworks/project/src/steamworks/public/steam/lib/linux64/libsdkencryptedappticket.so" "$pkgdir/usr/lib/hifi/"
+	cp "$srcdir/build/ext/makefiles/steamworks/project/src/steamworks/redistributable_bin/linux64/libsteam_api.so" "$pkgdir/usr/lib/hifi/"
 
 	install -Dm644 "$srcdir/hifi-interface.png" "$pkgdir/usr/share/hifi/hifi-interface.png"
 	install -Dm644 "$srcdir/hifi-interface.desktop" "$pkgdir/usr/share/applications/hifi-interface.desktop"
