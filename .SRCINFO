@@ -1,11 +1,12 @@
 pkgbase = solokeys-udev-git
 	pkgdesc = Official SoloKey udev rules. (from Github repo)
 	pkgver = 20190308.c7f0d05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/solokeys/solo
 	install = solokeys-udev.install
 	arch = any
 	license = Apache
+	license = MIT
 	makedepends = git
 	depends = udev
 	provides = solokeys-udev-git
