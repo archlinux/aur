@@ -2,7 +2,7 @@
 pkgname=majsoul-plus
 pkgver=1.12.0b4
 _pkgver=${pkgver/b/-beta.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Majsoul browser, with more features"
 arch=('x86_64' 'i686')
 url="https://github.com/MajsoulPlus/majsoul-plus"
@@ -22,7 +22,7 @@ prepare() {
 		targetArch="ia32"
 	fi
 	sed -i "/\"electron\": \"/c\\\"electron\": \"$electronVer\"," package.json
-	sed -i "/\"build-linux\": \"/c\\\"build-linux\": \"gulp sass && electron-packager . Majsoul_Plus  --platform=linux --arch=$targetArch --asar --out ./build/unpacked --ignore=build --overwrite --icon=bin/icons/icon.png\"," package.json
+	sed -i "/\"build-linux\": \"/c\\\"build-linux\": \"gulp sass && electron-packager . Majsoul_Plus  --platform=linux --arch=$targetArch --out ./build/unpacked --ignore=build --overwrite --icon=bin/icons/icon.png\"," package.json
 }
 
 build() {
@@ -42,7 +42,8 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/applications"
 
-	install -Dm644 "build/unpacked/Majsoul_Plus-linux-$targetArch/resources/app.asar" "$pkgdir/usr/share/majsoul-plus/app.asar"
+	cd "build/unpacked/Majsoul_Plus-linux-$targetArch/resources/app"
+	find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/majsoul-plus/app/{}" \;
 
 	for size in 16 24 32 48 64 72 128 256; do
         target="$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/"
@@ -51,7 +52,7 @@ package() {
     done
 
 	echo "#!/usr/bin/env bash
-exec electron --enable-logging /usr/share/majsoul-plus/app.asar" > "$srcdir/majsoul-plus.sh"
+exec electron --enable-logging /usr/share/majsoul-plus/app" > "$srcdir/majsoul-plus.sh"
 	install -Dm755 "$srcdir/majsoul-plus.sh" "$pkgdir/usr/bin/majsoul-plus"
 
 	echo "[Desktop Entry]
