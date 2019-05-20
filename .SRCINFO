@@ -1,6 +1,6 @@
 pkgbase = deltachat-desktop-git
 	pkgdesc = A privacy oriented chat application built on e-mail
-	pkgver = v0.102.0.dev.rpgp.r85.g7528400
+	pkgver = v0.102.0.dev.rpgp.r122.g0e3f738
 	pkgrel = 1
 	url = https://github.com/deltachat/deltachat-desktop
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = deltachat-desktop-git
 	depends = libsasl
 	depends = zlib
 	depends = bzip2
+	depends = rpgp-git
 	source = deltachat-desktop-git::git://github.com/deltachat/deltachat-desktop.git
 	source = deltachat-desktop.desktop
 	source = deltachat-desktop.sh
