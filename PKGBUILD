@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 _srcname=ffmpeg
-pkgver=4.2.r93657.g7c2ee8d43d
+pkgver=4.2.r93888.gb401a4ab8a
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ depends=(
     # AUR:
         'chromaprint-fftw' 'dav1d-git' 'codec2' 'davs2' 'flite1-patched' 'libilbc'
         'libklvanc-git' 'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc'
-        'xavs' 'xavs2' 'libmysofa' 'rockchip-mpp'
+        'xavs' 'xavs2' 'libmysofa' 'pocketsphinx' 'rockchip-mpp'
 )
 depends_x86_64=(
     # official repositories:
@@ -201,6 +201,7 @@ build() {
         --enable-opencl \
         --enable-opengl \
         --disable-openssl \
+        --enable-pocketsphinx \
         --enable-sndio \
         --enable-sdl2 \
         --enable-vapoursynth \
