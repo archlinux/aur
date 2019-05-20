@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@tellus.space>
 
 pkgname=kail
-pkgver=0.8.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Kubernetes log viewer'
 url='https://github.com/boz/kail'
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/boz/kail/archive/v${pkgver}.tar.gz")
-sha256sums=('2bc0bfb0d15ed0f6e4adfaa38b782c5967e1c5b6fbf47f0b4911aca940a031e9')
+sha256sums=('0f0db93ac947d6d64d3357b8be795a9b682abfd494f06c5afd3b3d8b4920769f')
 
 prepare(){
   mkdir -p gopath/src/github.com/boz
@@ -31,9 +31,9 @@ build() {
   # Build binary
   export VERSION=$pkgver
   cd gopath/src/github.com/boz/$pkgname
-  make build-linux
+  make build
 }
 
 package() {
-    install -Dm 755 ${srcdir}/gopath/src/github.com/boz/kail/kail-linux ${pkgdir}/usr/bin/kail
+    install -Dm 755 ${srcdir}/gopath/src/github.com/boz/kail/kail ${pkgdir}/usr/bin/kail
 }
