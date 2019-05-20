@@ -1,17 +1,18 @@
 pkgbase = majsoul-plus
 	pkgdesc = Majsoul browser, with more features
-	pkgver = 2.0.0a1
-	pkgrel = 1
+	pkgver = 1.12.0b4
+	pkgrel = 2
 	url = https://github.com/MajsoulPlus/majsoul-plus
 	arch = x86_64
 	arch = i686
 	license = AGPL3
-	makedepends = yarn
+	makedepends = npm
 	makedepends = imagemagick
+	makedepends = gulp
 	depends = electron
 	conflicts = majsoul-plus-bin
-	source = majsoul-plus-2.0.0a1.src.tar.gz::https://github.com/MajsoulPlus/majsoul-plus/archive/v2.0.0-alpha.1.tar.gz
-	sha256sums = 40aa0493276e1168e63373325824899884fa586e4d2bf5828fc79ac50273a08a
+	source = https://github.com/MajsoulPlus/majsoul-plus/archive/v1.12.0-beta.4.tar.gz
+	sha256sums = 537f5bb4c20ed957d536f0240c513529a44fef519e72dde66e4fdd68c131006b
 
 pkgname = majsoul-plus
 
