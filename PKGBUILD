@@ -78,7 +78,8 @@ package() {
 
 	cd "$srcdir/build"
 
-	make install DESTDIR="$pkgdir/opt/hifi"
+	# TODO: Clean makefiles here
+	cp -R "$srcdir/build" "$pkgdir/opt/hifi"
 
 	install -Dm644 "$srcdir/hifi-interface.png" "$pkgdir/usr/share/hifi/hifi-interface.png"
 	install -Dm644 "$srcdir/hifi-interface.desktop" "$pkgdir/usr/share/applications/hifi-interface.desktop"
