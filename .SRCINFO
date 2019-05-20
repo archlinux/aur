@@ -1,6 +1,6 @@
 pkgbase = tscrape-git
 	pkgdesc = Twitter feed scraper
-	pkgver = 0.1.r0.gbd299de
+	pkgver = 0.2.r4.gdb47c97
 	pkgrel = 1
 	url = https://git.codemadness.org/tscrape.html
 	arch = i686

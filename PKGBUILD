@@ -1,6 +1,6 @@
 # Maintainer: KingofToasters <dev at sgregoratto dot me>
 pkgname=tscrape-git
-pkgver=0.1.r0.gbd299de
+pkgver=0.2.r4.gdb47c97
 pkgrel=1
 pkgdesc='Twitter feed scraper'
 url='https://git.codemadness.org/tscrape.html'
