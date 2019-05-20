@@ -2,7 +2,7 @@
 
 pkgbase=archisomydrive
 pkgname=$pkgbase
-pkgver=4.3
+pkgver=4.4
 pkgrel=1
 _remotepkgbase=$pkgbase-git
 _gitname=ArchIsoMyDrive
@@ -18,7 +18,7 @@ conflicts=('archisomydrive-git')
 source=("$url/raw/master/Install/$_remotepkgbase-$pkgver-$pkgrel-x86_64.pkg.tar.xz"{,.sig})
 
 
-sha256sums=('1da9eead7267560f3043364a05461362e3cd68a4d7869902993c5894f50a58e1'
+sha256sums=('5db26d8e1910ed7e8373ddefb0ead92f81868756dcc559182f48dc35ef714766'
             'SKIP'
            )
 
