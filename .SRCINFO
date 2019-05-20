@@ -1,11 +1,14 @@
 pkgbase = git-prompt.zsh-git
 	pkgdesc = A fast, pure-shell, single-file Git prompt for Zsh.
-	pkgver = 1.0.0.r0.g24414df
+	pkgver = 2.0.0.r0.g8a65337
 	pkgrel = 1
 	url = https://github.com/woefe/git-prompt.zsh
 	arch = any
 	license = MIT
 	depends = git
+	depends = zsh
+	provides = git-prompt.zsh
+	conflicts = git-prompt.zsh
 	source = git+https://github.com/woefe/git-prompt.zsh.git
 	sha1sums = SKIP
 
