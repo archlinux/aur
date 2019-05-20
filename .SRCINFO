@@ -10,8 +10,6 @@ pkgbase = linux-mainline
 	makedepends = bc
 	makedepends = libelf
 	makedepends = git
-	makedepends = python-sphinx
-	makedepends = graphviz
 	options = !strip
 	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v5.1
 	source = config
