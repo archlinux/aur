@@ -1,4 +1,4 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
+# Maintainer: pingplug < aur at pingplug dot me >
 
 _pkgname=rust
 _cargo=0.35.0
