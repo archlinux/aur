@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-armcl-neon
 	pkgdesc = ARM Computer Vision and Machine Learning Library (armv7a NEON Backend)
 	pkgver = 19.02
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ARM-software/ComputeLibrary
 	arch = x86_64
 	license = MIT
