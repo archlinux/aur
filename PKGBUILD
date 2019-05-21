@@ -22,9 +22,6 @@ pkgver () {
 prepare() {
   cd "${srcdir}/vtk"
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5560.patch | patch -p1  
-
-  # LD_PRELOAD error ?
-  sed -i "s|if (NOT _vtk_add_module_exclude_wrap)|if(0)|g" CMake/vtkModule.cmake
 }
 
 
@@ -70,7 +67,7 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     cd "$srcdir/vtk/build-${_arch}"
-    make install DESTDIR="$pkgdir"
+    LD_PRELOAD="" make install DESTDIR="$pkgdir"
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
