@@ -1,8 +1,8 @@
 # Maintainer : Katherine Cumberbatch <stykers@stykers.moe>
-# Plugin file is obtained from Debian package vlc-plugin-fluidsynth_3.0.1-1_amd64.deb
+# Plugin file is obtained from Debian package vlc-plugin-fluidsynth_3.0.6-1_amd64.deb
 
 pkgname=vlc-plugin-fluidsynth
-pkgver=3.0.1
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="FluidSynth plugin for VLC"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname}-git")
 replaces=("${pkgname}-git")
 install="notes.install"
 source=("libfluidsynth_plugin.so")
-md5sums=('6cd7738f25d45977f0fded19d8d800c9')
+md5sums=('72b2021ecf1155f74981007f7075a03b')
 
 package() {
 		cd "${srcdir}/"
