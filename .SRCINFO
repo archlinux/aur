@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 13 Early-Access Build.
-	pkgver = 13b20
+	pkgver = 13b21
 	pkgrel = 1
 	url = http://jdk.java.net/13
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=13
 	provides = java-runtime-headless=13
 	provides = java-runtime-headless-openjdk=13
-	source = https://download.java.net/java/early_access/jdk13/20/GPL/openjdk-13-ea+20_linux-x64_bin.tar.gz
-	sha256sums = 545f946d931f38ea32614cc6a5089fb5abe92497f98d52dc9f6375097c70bdba
+	source = https://download.java.net/java/early_access/jdk13/21/GPL/openjdk-13-ea+21_linux-x64_bin.tar.gz
+	sha256sums = 0708b5eb0402af007a0a29a5e0082f8be6eacb224afb28cf1e193b32ee8c84c0
 
 pkgname = java-openjdk-ea-bin
 
