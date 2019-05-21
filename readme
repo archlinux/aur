@@ -1,0 +1,4 @@
+This package contains source code, *.c, and helper files, to create efi utilities. The utilities are efi executables to poweroff, or reboot, the machine.
+Expected usage of the utilities is by uefi boot managers that do not provide these utilities. The utilities can also be run from within a uefi shell. The user is expected to copy the *.efi files to the ESP, and set the boot manager to use them. The exact path depends on the user choice. The exact procedure for setting the boot manager depends on the boot manager.
+
+SPDX-License-Identifier: GPL-2.0
