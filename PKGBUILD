@@ -1,8 +1,8 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
-# Contributor: ant32 <antreimer@gmail.com>
-# Contributor: Alexey Pavlov <Alexpux@gmail.com>
-# Contributor: Ray Donnelly <mingw.android@gmail.com>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
+# Contributor: ant32 < antreimer at gmail dot com >
+# Contributor: Alexey Pavlov < Alexpux at gmail dot com >
+# Contributor: Ray Donnelly < mingw dot android at gmail dot com >
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
