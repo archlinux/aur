@@ -83,22 +83,22 @@ package() {
 	make install
 
 	#copy polyvox library
-	cp "$srcdir/build/ext/makefiles/polyvox/project/lib/Release/libPolyVoxCore.so.0.2.1" "$pkgdir/usr/lib/"
-	cp "$srcdir/build/ext/makefiles/polyvox/project/lib/Release/libPolyVoxCore.so.0" "$pkgdir/usr/lib/"
-	cp "$srcdir/build/ext/makefiles/polyvox/project/lib/Release/libPolyVoxCore.so" "$pkgdir/usr/lib/"
+	cp -p "$srcdir/build/ext/makefiles/polyvox/project/lib/Release/libPolyVoxCore.so.0.2.1" "$pkgdir/usr/lib/"
+	cp -p "$srcdir/build/ext/makefiles/polyvox/project/lib/Release/libPolyVoxCore.so.0" "$pkgdir/usr/lib/"
+	cp -p "$srcdir/build/ext/makefiles/polyvox/project/lib/Release/libPolyVoxCore.so" "$pkgdir/usr/lib/"
 
-	cp "$srcdir/build/ext/makefiles/polyvox/project/lib/libPolyVoxUtil.so.0.2.1" "$pkgdir/usr/lib/"
-	cp "$srcdir/build/ext/makefiles/polyvox/project/lib/libPolyVoxUtil.so.0" "$pkgdir/usr/lib/"
-	cp "$srcdir/build/ext/makefiles/polyvox/project/lib/libPolyVoxUtil.so" "$pkgdir/usr/lib/"
+	cp -p "$srcdir/build/ext/makefiles/polyvox/project/lib/libPolyVoxUtil.so.0.2.1" "$pkgdir/usr/lib/"
+	cp -p "$srcdir/build/ext/makefiles/polyvox/project/lib/libPolyVoxUtil.so.0" "$pkgdir/usr/lib/"
+	cp -p "$srcdir/build/ext/makefiles/polyvox/project/lib/libPolyVoxUtil.so" "$pkgdir/usr/lib/"
 
 	#copy quazip library
-	cp "$srcdir/build/ext/makefiles/quazip/project/lib/libquazip5.so.1.0.0" "$pkgdir/usr/lib/"
-	cp "$srcdir/build/ext/makefiles/quazip/project/lib/libquazip5.so.1" "$pkgdir/usr/lib/"
-	cp "$srcdir/build/ext/makefiles/quazip/project/lib/libquazip5.so" "$pkgdir/usr/lib/"
+	cp -p "$srcdir/build/ext/makefiles/quazip/project/lib/libquazip5.so.1.0.0" "$pkgdir/usr/lib/"
+	cp -p "$srcdir/build/ext/makefiles/quazip/project/lib/libquazip5.so.1" "$pkgdir/usr/lib/"
+	cp -p "$srcdir/build/ext/makefiles/quazip/project/lib/libquazip5.so" "$pkgdir/usr/lib/"
 
 	#copy steamworks libsdkencryptedappticket libsteam api
-	cp "$srcdir/build/ext/makefiles/steamworks/project/src/steamworks/public/steam/lib/linux64/libsdkencryptedappticket.so" "$pkgdir/usr/lib/"
-	cp "$srcdir/build/ext/makefiles/steamworks/project/src/steamworks/redistributable_bin/linux64/libsteam_api.so" "$pkgdir/usr/lib/"
+	cp -p "$srcdir/build/ext/makefiles/steamworks/project/src/steamworks/public/steam/lib/linux64/libsdkencryptedappticket.so" "$pkgdir/usr/lib/"
+	cp -p "$srcdir/build/ext/makefiles/steamworks/project/src/steamworks/redistributable_bin/linux64/libsteam_api.so" "$pkgdir/usr/lib/"
 
 	install -Dm644 "$srcdir/hifi-interface.png" "$pkgdir/usr/share/hifi/hifi-interface.png"
 	install -Dm644 "$srcdir/hifi-interface.desktop" "$pkgdir/usr/share/applications/hifi-interface.desktop"
