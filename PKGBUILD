@@ -4,7 +4,7 @@
 
 pkgname=netradiant-git
 pkgver=r1793.5c0f69d0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GTKRadiant fork) - git version'
 url='https://gitlab.com/xonotic/netradiant'
@@ -38,6 +38,7 @@ package() {
 	
     cmake --build build --target install -- -j$(nproc)
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/netradiant/LICENSE"
+    rm -r ${pkgdir}/usr/share/mime/ # Map mime type doesn't work and shouldn't be handled this way
     
 	## Fix (some of) the included gamepacks so they work with the official archlinux packages
 	## Normally we would do this in prepare(), but this is not an viable option, as the Makefile initiates the download and update of the gamepacks.

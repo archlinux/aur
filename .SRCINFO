@@ -1,7 +1,7 @@
 pkgbase = netradiant-git
 	pkgdesc = The open source, cross platform level editor for idtech games (GTKRadiant fork) - git version
 	pkgver = r1793.5c0f69d0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://gitlab.com/xonotic/netradiant
 	arch = i686
