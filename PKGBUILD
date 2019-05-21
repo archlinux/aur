@@ -2,7 +2,7 @@
 # Contributor: Humberto F. da Luz Jr. <hfluz at uel dot br>
 # Contributor: Zhuo Peng <zhuo dot peng at vanemy dot org>
 pkgname=archiva
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="Apache Archiva™ is an extensible repository management software that helps taking care of your own personal or enterprise-wide build artifact repository"
 arch=("any")
@@ -11,7 +11,7 @@ license=("Apache")
 depends=("java-runtime-headless>=7")
 source=("http://www.us.apache.org/dist/archiva/$pkgver/binaries/apache-archiva-$pkgver-bin.tar.gz"
         "archiva.service")
-md5sums=('085ea9afd0bef07fba71b892af44dc11'
+md5sums=('597aeb9f42e634ae58256fb99997040f'
          'd741d8899541001f6ab062b2772428e4')
 
 package() {
