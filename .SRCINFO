@@ -1,8 +1,8 @@
 pkgbase = crema-git
 	pkgdesc = Manage your custom Arch Linux repository
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
-	url = https://github.com/mipimipi/crema
+	url = https:///crema
 	arch = any
 	license = GPL3
 	depends = aurutils

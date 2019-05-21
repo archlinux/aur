@@ -1,18 +1,21 @@
 # Maintainer: Michael Picht <michael.picht@ussenterprise.de>
 
-pkgorg=github.com/mipimipi
+_pkgorg=github.com/mipimipi
 pkgname=crema-git
 _pkgname=crema
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Manage your custom Arch Linux repository"
 arch=('any')
 url="https://$pkgorg/$_pkgname"
 license=('GPL3')
-source=("git://$pkgorg/$_pkgname.git")
+source=("git://$_pkgorg/$_pkgname.git")
 md5sums=(SKIP)
 depends=('aurutils')
-
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  printf "%s.r%s.g%s" "$(git describe)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 package() {
   cd "$srcdir/$_pkgname"
 
