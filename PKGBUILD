@@ -1,6 +1,6 @@
 # Maintainer: Christian Pinedo <chr.pinedo@gmail.com>
 pkgname=idazki-desktop
-pkgver=2.2.4
+pkgver=3.2.2
 pkgrel=1
 _pkgdld="idazki-desktop-linux64.run"
 epoch=
@@ -21,10 +21,12 @@ options=()
 install=idazki-desktop.install
 changelog=
 source=("http://www.izenpe.com/contenidos/informacion/idazki_izenpe/es_def/adjuntos/${_pkgdld}"
-	"idazki-desktop.desktop.patch")
+	"idazki-desktop.desktop.patch"
+	"idazki-delegado.desktop.patch")
 noextract=()
-sha256sums=('10c09a973dd86d34f67c06e688055dbf4155bea018634548d9702fd2124f5f2a'
-            '215bec230a1a1a33e5cf143aa04b0a6fb892c222c92f3bf2c01425639eb9c1cd')
+sha256sums=('99f8f1b60efadb2ad3b86bc783145ce014f2de6b0490824a123787cd96103dc7'
+            'bb6634429b75a64e3cc04c6415ebea72cababbe8bffce9dfaedf59d6b09281a7'
+            '9cbab6ae4e506ab57223fabac18a7da9160ccb3d9f1a07b37e9999a8993ffb75')
 validpgpkeys=()
 
 prepare() {
@@ -33,6 +35,7 @@ prepare() {
 	tar xf "${_pkgdld%.*}/$pkgname.tar" -C "${_pkgdld%.*}/$pkgname"
 	cd "${_pkgdld%.*}/$pkgname"
 	patch < ../../idazki-desktop.desktop.patch
+	patch < ../../idazki-delegado.desktop.patch
 }
 
 package() {

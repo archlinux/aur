@@ -1,0 +1,15 @@
+--- idazki-delegado.desktop	2019-02-27 17:20:44.000000000 +0100
++++ idazki-delegado.desktop.new	2019-05-21 13:01:31.653008117 +0200
+@@ -2,10 +2,10 @@
+ Encoding=UTF-8
+ Name=Idazki Desktop Delegado
+ Comment=Protocolo idazki
+-Exec=/usr/local/idazki-desktop/jre/bin/java -Xmx512m -Xms512m -jar /usr/local/idazki-desktop/idazkiDelegado.jar %U
++Exec=/opt/idazki-desktop/jre/bin/java -Xmx512m -Xms512m -jar /opt/idazki-desktop/idazkiDelegado.jar %U
+ Terminal=false
+ Type=Application
+-Icon=/usr/local/idazki-desktop/izenpe.ico
++Icon=/opt/idazki-desktop/izenpe.ico
+ Categories=Application;TextEditor;
+ MimeType=text/plain;x-scheme-handler/idazkidelegado
+ StartupNotify=false

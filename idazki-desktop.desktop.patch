@@ -1,6 +1,6 @@
---- idazki-desktop.desktop	2017-10-10 11:01:25.000000000 +0200
-+++ idazki-desktop.desktop.new	2017-12-13 22:18:48.226207117 +0100
-@@ -2,7 +2,7 @@
+--- idazki-desktop.desktop	2019-05-21 13:14:18.869946569 +0200
++++ idazki-desktop.desktop.new	2019-05-21 13:15:01.053300955 +0200
+@@ -2,10 +2,10 @@
  Encoding=UTF-8
  Name=Idazki Desktop Protocol
  Comment=Protocolo idazki
@@ -8,4 +8,8 @@
 +Exec=/opt/idazki-desktop/jre/bin/java -Xmx512m -Xms512m -jar /opt/idazki-desktop/idazki-desktop-protocol.jar %U
  Terminal=false
  Type=Application
- Icon=
+-Icon=/usr/local/idazki-desktop/izenpe.ico
++Icon=/opt/idazki-desktop/izenpe.ico
+ Categories=Application;TextEditor;
+ MimeType=text/plain;x-scheme-handler/idazki
+ StartupNotify=false
