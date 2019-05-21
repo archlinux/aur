@@ -1,6 +1,6 @@
 pkgbase = release-bot
 	pkgdesc = Release to Github and PyPI with an ease.
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/user-cont/release-bot
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = release-bot
 	depends = twine
 	depends = python-wheel
 	depends = python-pyjwt
-	source = git+https://github.com/user-cont/release-bot#tag=0.7.0
+	source = git+https://github.com/user-cont/release-bot#tag=0.7.1
 	md5sums = SKIP
 
 pkgname = release-bot

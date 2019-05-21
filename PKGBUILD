@@ -2,7 +2,7 @@
 # Owner: Userspace Containerization team at Red Hat user-cont-team@redhat.com
 
 pkgname=release-bot
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Release to Github and PyPI with an ease."
 url="https://github.com/user-cont/release-bot"
