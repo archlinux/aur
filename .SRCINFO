@@ -1,7 +1,7 @@
 pkgbase = python-iterfzf
 	pkgdesc = Pythonic interface to fzf, a CLI fuzzy finder
 	pkgver = 0.4.0.17.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dahlia/iterfzf
 	arch = any
 	license = GPL3

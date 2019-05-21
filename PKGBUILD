@@ -2,7 +2,7 @@
 
 pkgname=python-iterfzf
 pkgver=0.4.0.17.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Pythonic interface to fzf, a CLI fuzzy finder"
 arch=('any')
 url="https://github.com/dahlia/iterfzf"
@@ -19,6 +19,6 @@ build() {
 
 package() {
     cd "iterfzf-${pkgver}"
-    python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
+    python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
