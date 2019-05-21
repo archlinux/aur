@@ -1,6 +1,6 @@
 pkgbase = aquatone
 	pkgdesc = A Tool for Domain Flyovers
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/michenriksen/aquatone
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = aquatone
 	makedepends = go
 	makedepends = git
 	depends = chromium
-	source = aquatone-1.6.0.tar.gz::https://github.com/michenriksen/aquatone/archive/v1.6.0.tar.gz
-	sha256sums = ca4965ba24b1bc6be14981b1946c45c7064d96c0e9a9c9b11b3a4fd699ef4c5e
+	source = aquatone-1.7.0.tar.gz::https://github.com/michenriksen/aquatone/archive/v1.7.0.tar.gz
+	sha256sums = 7849dce3241df663ea6edd9a9433d5ecc20fb768d0192ccbfb28d61d67ebcc97
 
 pkgname = aquatone
 
