@@ -52,12 +52,12 @@ package() {
     install -Dm755 $srcdir/openra-ra2 $pkgdir/usr/bin/openra-ra2
     cp -r $srcdir/openra-ra2.appdata.xml $pkgdir/usr/share/appdata/openra-ra2.appdata.xml
     cp -r README.md $pkgdir/usr/share/doc/packages/${_pkgname}/README.md
-    ln -sf /usr/lib/${_pkgname}/mods/ra2/icon.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
+    ln -sf /usr/lib/${_pkgname}/mods/ra2/logo.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
     install -Dm644 $srcdir/openra-ra2.desktop $pkgdir/usr/share/applications/openra-ra2.desktop
     mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps
     for size in 16 32 48 64 128 256; do
       size="${size}x${size}"
-      cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
+      cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
     done
     rm $pkgdir/usr/lib/${_pkgname}/*.sh
 }
