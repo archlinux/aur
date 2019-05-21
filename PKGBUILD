@@ -28,7 +28,7 @@ prepare() {
 package() {
 	mkdir -vp "$pkgdir/usr/bin/"
 	mkdir -vp "$pkgdir/usr/share/man/man1/"
-	cp -v "$pkgname-$pkgver/wallo.sh" "$pkgdir/usr/bin/wallo"
-	cp -v "$pkgname-$pkgver/wallo.man" "$pkgdir/usr/share/man/man1/wallo.1"
+	cp -v "$srcdir/$pkgname-$pkgver/wallo.sh" "$pkgdir/usr/bin/wallo"
+	cp -v "$srcdir/$pkgname-$pkgver/wallo.man" "$pkgdir/usr/share/man/man1/wallo.1"
 	gzip -v "$pkgdir/usr/share/man/man1/wallo.1"
 }
