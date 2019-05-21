@@ -1,6 +1,6 @@
 # Maintainer: Denis Lobanov <denis dot lobanov at zooei dot com>
 pkgname=bloomrpc
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="GUI Client for GRPC Services"
 arch=(any)
