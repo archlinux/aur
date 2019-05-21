@@ -1,7 +1,7 @@
 pkgbase = ddshttpd
         pkgdesc = An old and weird http server that uses only dd and sh.
         pkgver = 1.0
-        pkgrel = 1
+        pkgrel = 3
         url = https://git.syskiller.io/Stykers/fonts/raw/master/ddshttpd.sh
         install = ddshttpd.install
         arch = any
