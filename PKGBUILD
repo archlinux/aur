@@ -1,7 +1,8 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
+# Co-Maintainer: therojam <archlinux at therojam dot xyz>
 pkgname=atomic-tweetdeck
-pkgver=0.10.1
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="Just a small Electron TweetDeck app."
 arch=('any')
 url="https://github.com/dogancelik/atomic-tweetdeck"
@@ -9,10 +10,10 @@ license=('MIT')
 depends=('gtk2' 'gconf' 'xdg-utils' 'libxtst' 'libxss' 'nss' 'alsa-lib')
 source=(
     "${url}/releases/download/v${pkgver}/atomic-tweetdeck-linux-x64.tgz"
-    "atomic-tweetdeck.desktop"
+	"atomic-tweetdeck.desktop"
 )
 md5sums=(
-    '8168e23175084ac7f5a0fb33c213ff6b'
+    'd14f515ecd35feeacd3a338878952998'
     '6d0350843795b0e996d159e5dd6607bf'
 )
 
