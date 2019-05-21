@@ -1,0 +1,16 @@
+pkgbase = polished-map-git
+	pkgdesc = A map and tileset editor for pokecrystal, pokered, and hacks based on them like Polished Crystal.
+	pkgver = 299.3069954
+	pkgrel = 1
+	url = https://github.com/Rangi42/polished-map
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = unzip
+	depends = libxft
+	depends = libxpm
+	source = git+ssh://git@github.com/Rangi42/polished-map.git
+	sha1sums = SKIP
+
+pkgname = polished-map-git
+
