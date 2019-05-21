@@ -1,8 +1,8 @@
 # Maintainer: Federico Giuliani <federico.giuliani86 at gmail dot com>
 
 pkgname=airsonic
-pkgver=10.2.1
-pkgrel=3
+pkgver=10.3.0
+pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="https://github.com/Airsonic/airsonic/"
@@ -33,7 +33,7 @@ package() {
   
 }
 
-sha256sums=('9bd4e9651df1a15278fb6414d011bd5a45c037857e84eaeb1375b26c717a5ebe'
+sha256sums=('a7b1827049b759922928af83976b2afcd27a1081c0866b92d531a66878f947aa'
             '059a43fe100d95aaaae8091d1c312f4d3a2a2b4edc1969358dd7be35f6525930'
             '8178ae5396921739176e33ae8693d0fe5fb43709fc669e38cc87ab0d0e8bf2fb'
             '25af0b92b247df928db5ac8fec3fb4fa2cdc717e649729d5e0c059a5b81e058e'
