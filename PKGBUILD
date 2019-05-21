@@ -85,16 +85,16 @@ package() {
 	#copy polyvox library
 	cp -p "$srcdir/build/ext/makefiles/polyvox/project/lib/Release/libPolyVoxCore.so.0.2.1" "$pkgdir/usr/lib/"
 	ln -s "$pkgdir/usr/lib/libPolyVoxCore.so.0.2.1" "$pkgdir/usr/lib/libPolyVoxCore.so.0"
-	ln -s "$pkgdir/usr/lib/libPolyVoxCore.so.0.2.1" "$pkgdir/usr/lib/libPolyVoxCore.so"
+	ln -s "$pkgdir/usr/lib/libPolyVoxCore.so.0" "$pkgdir/usr/lib/libPolyVoxCore.so"
 
 	cp -p "$srcdir/build/ext/makefiles/polyvox/project/lib/libPolyVoxUtil.so.0.2.1" "$pkgdir/usr/lib/"
 	ln -s "$pkgdir/usr/lib/libPolyVoxUtil.so.0.2.1" "$pkgdir/usr/lib/libPolyVoxUtil.so.0"
-	ln -s "$pkgdir/usr/lib/libPolyVoxUtil.so.0.2.1" "$pkgdir/usr/lib/libPolyVoxUtil.so"
+	ln -s "$pkgdir/usr/lib/libPolyVoxUtil.so.0" "$pkgdir/usr/lib/libPolyVoxUtil.so"
 
 	#copy quazip library
 	cp -p "$srcdir/build/ext/makefiles/quazip/project/lib/libquazip5.so.1.0.0" "$pkgdir/usr/lib/"
 	ln -s "$pkgdir/usr/lib/libquazip5.so.1.0.0" "$pkgdir/usr/lib/libquazip5.so.1"
-	ln -s "$pkgdir/usr/lib/libquazip5.so.1.0.0" "$pkgdir/usr/lib/libquazip5.so"
+	ln -s "$pkgdir/usr/lib/libquazip5.so.1" "$pkgdir/usr/lib/libquazip5.so"
 
 	#copy steamworks libsdkencryptedappticket libsteam api
 	cp -p "$srcdir/build/ext/makefiles/steamworks/project/src/steamworks/public/steam/lib/linux64/libsdkencryptedappticket.so" "$pkgdir/usr/lib/"
