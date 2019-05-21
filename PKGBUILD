@@ -1,5 +1,5 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: xantares <xantares09@hotmail.com>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: xantares < xantares09 at hotmail dot com >
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
