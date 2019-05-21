@@ -1,7 +1,7 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: Jens Staal <staal1978@gmail.com>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: Jens Staal < staal1978 at gmail dot com >
 # adopted from mingw-w64-pdcurses package:
-# Contributor: Filip Brcic <brcha@gna.org>
+# Contributor: Filip Brcic < brcha at gna dot org >
 
 _commit=96f9dc577e6b30242b1a2e8f5489cdd77a6182a9  # tags/4.1.0^1
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
