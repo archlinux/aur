@@ -5,7 +5,7 @@ _pkgbase=btintel-default-address
 pkgname=${_pkgbase}-dkms
 url=https://github.com/c0ldcat
 pkgver=${_kernver_base}
-pkgrel=1
+pkgrel=2
 pkgdesc="Allow default address when setup intel bluetooth device"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -38,7 +38,7 @@ package() {
 }
 
 md5sums=("d4023861ba05ecb47380354511ac798f"
-         "b90eb0a51c82feb590bfd5647d3ecbd2"
+         "2883aa8bd1701166530078a21c13900b"
          "5263f3baa5ef312a6ee6f3923f9ee78f"
          "407f5d49e4440bf2f009c3be1935ed36"
          "f7a3ed12a2b7540186a0547865533420"
