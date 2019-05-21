@@ -8,8 +8,6 @@ pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
-_date="$(date +%d%m%y)"
-_datepkgver="$(date +%d%m%y%H%M)"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss sqlite ttf-font libpulse libvpx icu)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
@@ -44,6 +42,7 @@ export CC=clang
 export CXX=clang++
 export MOZ_TELEMETRY_REPORTING=1
 export MOZ_REQUIRE_SIGNING=1
+mk_add_options AUTOCLOBBER=1
 mk_add_options AUTOCONF=autoconf-2.13
 mk_add_options MOZ_MAKE_FLAGS="-j5"
 ac_add_options --enable-application=browser
