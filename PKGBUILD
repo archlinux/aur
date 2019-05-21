@@ -31,7 +31,7 @@ build() {
 
   npm install home-path buffer-to-vinyl stream-combiner2
   npm install
-  CHANNEL=dev npm run build-package
+  CHANNEL=dev npm run init
 
   if [[ ! (-r /proc/sys/kernel/unprivileged_userns_clone && $(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n $(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ) ]]; then
     echo "User namespaces are not detected as enabled on your system, brave will run with the sandbox disabled"
