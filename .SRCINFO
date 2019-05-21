@@ -1,7 +1,7 @@
 pkgbase = python-ipympl
 	pkgdesc = Matplotlib Jupyter Extension
 	pkgver = 0.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/ipympl/
 	arch = any
 	license = BSD
@@ -19,8 +19,12 @@ pkgbase = python-ipympl
 pkgname = python2-ipympl
 	depends = python2>=2.7
 	depends = python2<2.8
+	depends = python-ipympl-common
 
 pkgname = python-ipympl
 	depends = python>=3.7
 	depends = python<3.8
+	depends = python-ipympl-common
+
+pkgname = python-ipympl-common
 
