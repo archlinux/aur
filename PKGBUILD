@@ -1,4 +1,4 @@
-# Maintainer: Please see AUR page for current maintainer and contact information.
+# Maintainer: Katherine Cumberbatch <stykers@stykers.moe>
 
 pkgname=brave-git
 pkgver=0.24.1.r236.g7e6875794
@@ -14,7 +14,7 @@ optdepends=('cups: To print stuff'
             'pepper-flash: Adobe Flash support')
 provides=('brave' 'brave-browser')
 conflicts=('brave')
-source=('browser-laptop::git://github.com/brave/browser-laptop.git'
+source=('brave-browser::git://github.com/brave/brave-browser.git'
         'brave-launcher'
         'brave.desktop')
 sha384sums=('SKIP'
@@ -22,12 +22,12 @@ sha384sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/browser-laptop"
+  cd "$srcdir/brave-browser"
   git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/browser-laptop"
+  cd "$srcdir/brave-browser"
 
   npm install home-path buffer-to-vinyl stream-combiner2
   npm install
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/browser-laptop"
+  cd "$srcdir/brave-browser"
 
   install -d -m0755 "$pkgdir"/usr/lib
   cp -a --reflink=auto brave-linux-x64 "$pkgdir/usr/lib/brave"
