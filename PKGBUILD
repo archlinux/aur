@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-mingw-git
-pkgver=r2924.58669173
+pkgver=r2933.d112de83
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase, mingw version"
 arch=('x86_64')
@@ -14,30 +14,16 @@ conflicts=("d9vk")
 source=(
     "git+https://github.com/Joshua-Ashton/d9vk.git"
     "setup_d9vk"
-    "setup_dxvk.patch"
-    "dxvk-async.patch"
 )
 sha256sums=(
     "SKIP"
     "7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a"
-    "4e74b2d921c38ca0f9c5a6069501e9d15c7c076dcd6d41ae243830375115b8f9"
-    "32780432c2159d57ca0fb1863309cdb141fbfc506c6b9003acfa05896af90140"
 )
 
 pkgver() {
     cd d9vk
     #printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/m//g')"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd d9vk
-    patch -p1 -i ../setup_dxvk.patch
-
-    # Uncomment to enable dxvk async patch.
-    # Enable at your own risk, if you don't know what it is,
-    # leave it as is. You have been warned.
-    #patch -p1 -i ../dxvk-async.patch
 }
 
 build() {
