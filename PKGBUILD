@@ -1,7 +1,7 @@
 # Maintainer: agilob <archlinux@agilob.net>
 # Contributor: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-linux
-pkgver=3.51.0
+pkgver=3.52.1
 pkgrel=1
 pkgdesc='Official Tutanota email client'
 arch=('x86_64')
@@ -30,7 +30,4 @@ package() {
 	install -Dpm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
 #	install -d "${pkgdir}/usr/bin"
 #	ln -s "../../opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${pkgname}"
-# 	install -Dpm644 'tutanota-desktop-linux.desktop' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-# 	install -d "${pkgdir}/usr/share/icons"
-# 	cp -a usr/share/icons/default "${pkgdir}/usr/share/icons/hicolor"
 }
