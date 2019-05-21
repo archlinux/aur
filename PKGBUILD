@@ -9,7 +9,7 @@ url="https://github.com/dogancelik/atomic-tweetdeck"
 license=('MIT')
 depends=('gtk2' 'gconf' 'xdg-utils' 'libxtst' 'libxss' 'nss' 'alsa-lib')
 source=(
-    "${url}/releases/download/v${pkgver}/atomic-tweetdeck-linux-x64.tgz"
+    	"${url}/releases/download/v${pkgver}/atomic-tweetdeck-linux-x64.tgz"
 	"atomic-tweetdeck.desktop"
 )
 md5sums=(
