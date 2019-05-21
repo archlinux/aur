@@ -1,12 +1,12 @@
 # Maintainer: Vojtech Balak <balakvojtech@gmail.com>
 pkgname='shadowfox-updater'
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An auto-updater for ShadowFox'
 arch=('x86_64')
 url='https://github.com/SrKomodo/shadowfox-updater'
 license=('MIT')
-depends=('zenity')
+optdepends=('zenity: For graphical UI')
 _filename=shadowfox_linux_x64
 source=("${_filename}_$pkgver::https://github.com/SrKomodo/shadowfox-updater/releases/download/v$pkgver/$_filename")
 md5sums=('3d25d085946f7f2ac77ae4e9ce3f6a9d')
