@@ -1,6 +1,6 @@
 pkgbase = treesheets-git
 	pkgdesc = The ultimate replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases
-	pkgver = r243.02f38e2
+	pkgver = r244.754b839
 	pkgrel = 1
 	url = http://treesheets.com
 	arch = i686
