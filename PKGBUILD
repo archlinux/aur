@@ -14,9 +14,12 @@ _pgo=true
 # http://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head
 # /view/head:/debian/patches/unity-menubar.patch
 
+# patches from gentoo:
+# https://dev.gentoo.org/~anarchy/mozilla/patchsets/firefox-67.0-patches-05.tar.xz
+
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=66.0.5
+pkgver=67.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -25,7 +28,13 @@ url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
 depends=('mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'hicolor-icon-theme'
 	 'libvpx' 'icu'  'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
-	 'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' 'gtk3')
+	 'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' 'gtk3'
+         # system av1
+         'dav1d' 'aom'
+         # system harfbuzz
+         'harfbuzz'
+         # system graphite
+         'graphite')
 
 makedepends=('unzip' 'zip' 'diffutils' 'python2-setuptools' 'yasm' 'mesa' 'imake'
              'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13' 'rust'
@@ -37,7 +46,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=eca1c1f2fe50
+_patchrev=3942c205588b
 options=('!emptydirs')
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -62,7 +71,15 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         mozilla-1516081.patch
         pgo.patch
         # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
-        0001-bz-1468911.patch.xz
+        2009_rust-1.33-support.patch.xz
+        2010_rust-1.33-support.patch.xz
+        2011_rust-1.33-support.patch.xz
+        # use sytem av1
+        7002_system_av1_support.patch
+        # https://bugzilla.mozilla.org/show_bug.cgi?id=1542958
+        # note: fixes compile errrors when using elf migrartion
+        2014_spectre_variant2_bug1542958.patch
+        2015_spectre_variant2_bug1542958.patch
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -106,11 +123,19 @@ prepare() {
   
   patch -Np1 -i "$srcdir"/2000_system_harfbuzz_support.patch
   patch -Np1 -i "$srcdir"/2001_system_graphite2_support.patch
+  patch -Np1 -i "$srcdir"/7002_system_av1_support.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
   # patch -Np1 -i ../0001-bz-1468911.patch patch is to large for the AUR
-  xzcat "$srcdir"/0001-bz-1468911.patch.xz | patch -Np1
+  xzcat "$srcdir"/2009_rust-1.33-support.patch.xz | patch -Np1
+  xzcat "$srcdir"/2010_rust-1.33-support.patch.xz | patch -Np1
+  xzcat "$srcdir"/2011_rust-1.33-support.patch.xz | patch -Np1
 
+  
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1542958
+  # note: fixes compile errrors when using elf migrartion
+  patch -Np1 -i  "$srcdir"/2014_spectre_variant2_bug1542958.patch
+  patch -Np1 -i  "$srcdir"/2015_spectre_variant2_bug1542958.patch
   
   if [[ $_pgo ]] ; then
     # https://bugzilla.mozilla.org/show_bug.cgi?id=1516803
@@ -206,15 +231,15 @@ END
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
 md5sums=('SKIP'
-         '7a93c5b10defc17661cb13138d38b6bc'
+         '15a351d5936fb76a779d3afa2baa1308'
          '14e0f6237a79b85e60256f4808163160'
          '5cee310a9040ccc5abcf29742b84aeb8'
          '05bb69d25fb3572c618e3adf1ee7b670'
          'd7ce23a18da21c05cd756766e177834f'
-         'acb2d5930350fb287709283103cfffe2'
-         '7dbeb468613520beba5de17471487e6c'
-         'f1c5db18b8910b80f1933af1f4fe7c2b'
-         '97cb13d3dfb6222d09070d2c22019deb'
+         '1fd3db31015977eb77960716d6d2dbe6'
+         '270eed48793b9358702e7de6185c32be'
+         '73e7380641d8c3bf78a51ef2f95f69f2'
+         '4cd539459e253f53f631ccca51650a87'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3fa8bd22d97248de529780f5797178af'
          '554514bf00a7927a85280f19e52a55fb'
@@ -222,4 +247,9 @@ md5sums=('SKIP'
          'becf6bf9ceb6008401832c855ccadff9'
          '79d27c8896913c7d87b148240995ab69'
          'f867ae41a722630cc5567e2dcc51676d'
-         '47a4608970217485250b7e9bc59609e3')
+         'ef358dae95d487740dda8114df4d5f90'
+         'f343dc6520abb0be8eb77da17256ce21'
+         '4594ded5cdcdaae038bc49645643f914'
+         'df439e02304d302009c320a540f01dbe'
+         'f0e6dccbb32695d2d9057dacd650822c'
+         'cca2f77b28b5fd53cbc919045006ab0a')
