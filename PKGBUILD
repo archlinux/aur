@@ -9,7 +9,7 @@ url="https://www.brave.com/"
 license=('custom:MPL2' 'BSD' 'Apache' 'custom:others')
 groups=('networking')
 depends=('gtk2' 'nss' 'alsa-lib' 'gconf' 'libxtst' 'libgnome-keyring' 'libxss' 'ttf-font')
-makedepends=('git' 'npm' 'python2')
+makedepends=('git' 'npm' 'python2' 'icu' 'glibc')
 optdepends=('cups: To print stuff'
             'pepper-flash: Adobe Flash support')
 provides=('brave' 'brave-browser')
