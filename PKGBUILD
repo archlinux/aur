@@ -3,11 +3,11 @@
 
 pkgname=gnome-vfs
 pkgver=2.24.4
-pkgrel=10
+pkgrel=11
 pkgdesc="The GNOME Virtual File System"
 arch=(i686 x86_64)
 license=('LGPL')
-depends=('gconf' 'bzip2' 'avahi' 'smbclient' 'gnome-mime-data' 'krb5' 'gnutls' 'libgcrypt')
+depends=('gconf' 'bzip2' 'avahi' 'smbclient' 'gnome-mime-data' 'krb5' 'gnutls' 'libgcrypt' 'gamin')
 makedepends=('pkg-config' 'intltool' 'gtk-doc' 'gnome-common')
 options=('!emptydirs')
 url="https://developer.gnome.org/gnome-vfs/"
