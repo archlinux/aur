@@ -22,6 +22,9 @@ pkgver () {
 prepare() {
   cd "${srcdir}/vtk"
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5560.patch | patch -p1  
+
+  # LD_PRELOAD error ?
+  sed -i "s|if (NOT _vtk_add_module_exclude_wrap)|if(0)|g" CMake/vtkModule.cmake
 }
 
 
