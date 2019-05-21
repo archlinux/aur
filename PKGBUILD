@@ -1,14 +1,14 @@
 # Maintainer: whight
 
 pkgname=plata-theme-slim
-pkgver=0.7.9
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A Gtk+ theme based on Material Design Refresh, built with most options disabled.'
 arch=('any')
 url='https://gitlab.com/tista500/plata-theme'
 license=('GPL2' 'CCbySA4')
 depends=('gtk-engine-murrine' 'gtk3')
-makedepends=('git' 'inkscape' 'libxml2' 'parallel' 'sassc')
+makedepends=('git' 'inkscape' 'libxml2' 'parallel' 'sassc' 'zip')
 provides=('plata-theme')
 conflicts=('plata-theme')
 source=("git+https://gitlab.com/tista500/plata-theme.git#tag=${pkgver}")
