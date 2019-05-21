@@ -1,6 +1,6 @@
 pkgbase = kvmd
 	pkgdesc = The main Pi-KVM daemon
-	pkgver = 0.171
+	pkgver = 0.172
 	pkgrel = 1
 	url = https://github.com/pi-kvm/kvmd
 	arch = any
@@ -26,11 +26,23 @@ pkgbase = kvmd
 	depends = raspberrypi-io-access
 	optdepends = dkms
 	optdepends = tc358743-dkms
-	source = https://github.com/pi-kvm/kvmd/archive/v0.171.tar.gz
+	source = https://github.com/pi-kvm/kvmd/archive/v0.172.tar.gz
 	md5sums = SKIP
 
 pkgname = kvmd
 	install = kvmd.install
+
+pkgname = kvmd-platform-v0-vga-rpi2
+	pkgdesc = Pi-KVM platform configs - v0-vga for rpi2
+
+pkgname = kvmd-platform-v0-vga-rpi3
+	pkgdesc = Pi-KVM platform configs - v0-vga for rpi3
+
+pkgname = kvmd-platform-v0-hdmi-rpi2
+	pkgdesc = Pi-KVM platform configs - v0-hdmi for rpi2
+
+pkgname = kvmd-platform-v0-hdmi-rpi3
+	pkgdesc = Pi-KVM platform configs - v0-hdmi for rpi3
 
 pkgname = kvmd-platform-v1-vga-rpi2
 	pkgdesc = Pi-KVM platform configs - v1-vga for rpi2
