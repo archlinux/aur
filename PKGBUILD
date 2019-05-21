@@ -1,5 +1,5 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: Jiaxi Hu <sftrytry@gmail.com>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: Jiaxi Hu < sftrytry at gmail dot com >
 
 _pkgname=OpenBLAS
 _lapackver=3.8.0
