@@ -52,23 +52,24 @@ prepare() {
   git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   git fetch vanvugt
 
-  # Geometric (GPU-less) picking
+  # Geometric (OpenGL-less) picking
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
-  git cherry-pick -n d774fb22
+  git cherry-pick -n bfdf54fa
 
-  # Consolidate all frame throttling into clutter-stage-cogl [performance]
+  # clutter/stage-cogl: Don't skip over the next frame
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/520
+  git cherry-pick -n 45244852
+
+  # Consolidate all frame throttling into clutter-stage-cogl
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/363
-  h_first=$(git log --oneline --all | grep "clutter/stage-cogl: Don't skip over the next frame" | tail -n 1 | awk '{print $1}') # Sorry guys
+  h_first=$(git log --oneline --all | grep "clutter/stage-cogl: Remove magic numbers" | tail -n 1 | awk '{print $1}') # Sorry guys
   h_last=$(git log --oneline --all | grep 'clutter/master-clock: Remove fallback throttles' | tail -n 1 | awk '{print $1}') # Sorry guys
   echo "Found $h_first^$h_last for MR363"
   git cherry-pick -n $h_first^..$h_last
 
-  # clutter-stage-cogl: Reduce output latency and reduce missed frames too [performance]
+  # clutter/stage-cogl: Reschedule update on present
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281
-  # first commit replaced by !363
-  hash=$(git log --oneline --all | grep 'clutter/stage-cogl: Reschedule update on present' | head -n 1 | awk '{print $1}') # Sorry guys
-  echo "Found $hash for MR281"
-  git cherry-pick -n $hash -Xtheirs
+  git cherry-pick -n 4faeb127
 
   # clutter: Deliver events sooner when possible
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168
@@ -99,9 +100,9 @@ prepare() {
   echo "Found $h_first^$h_last for MR575"
   git cherry-pick -n $h_first^..$h_last
 
-  # WIP: backends: Do not reload keymap on new keyboard notifications
+  # backends: Do not reload keymap on new keyboard notifications
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/579
-  git cherry-pick -n b3192d6b
+  git cherry-pick -n 8ba1e42c
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
