@@ -1,5 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=('nautilus-folder-icons' 'nemo-folder-icons')
+pkgbase=nautilus-folder-icons
 pkgver=3.0
 pkgrel=1
 arch=('i686' 'x86_64')

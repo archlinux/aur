@@ -10,7 +10,7 @@ pkgbase = nautilus-folder-icons
 	makedepends = gettext
 	makedepends = appstream-glib
 	options = !emptydirs
-	source = -3.0.tar.gz::https://github.com/bil-elmoussaoui//archive/3.0.tar.gz
+	source = nautilus-folder-icons-3.0.tar.gz::https://github.com/bil-elmoussaoui/nautilus-folder-icons/archive/3.0.tar.gz
 	sha256sums = 25fa6f164f50ed84ee6fa6d7a6004cb5190051847a5c3895f41bf1b426ad2565
 
 pkgname = nautilus-folder-icons
