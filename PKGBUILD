@@ -1,7 +1,7 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: PelPix <kylebloss@pelpix.info>
-# Contributor: DrZaius <lou[at]fakeoutdoorsman[dot]com>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: Maxime Gauduin < alucryd at archlinux dot org >
+# Contributor: PelPix < kylebloss at pelpix dot info >
+# Contributor: DrZaius < lou at fakeoutdoorsman dot com >
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
