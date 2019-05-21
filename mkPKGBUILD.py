@@ -17,13 +17,15 @@ _channel={0}
 pkgver={1}
 pkgname={2}
 pkgrel={3}
+_upstream_version={5}
+_upstream_channel={6}
 pkgdesc="A modern slicer for extrusion 3D printing provided by E3D Skunkworks (binary AppImage)."
 arch=('x86_64')
 makedepends=('elinks')
 url="https://pathio.xyz/"
 options=('!strip')
 license=('custom:Pathio Software License Agreement')
-_filename="pathio-$pkgver-$_channel.AppImage"
+_filename="pathio-$_channel-v$_upstream_version-$_upstream_channel$pkgrel.AppImage"
 source=("$_filename::{4}"
         license.html::https://docs.pathio.xyz/pathio/latest/legal/termsAndConditions.html
         pathio.sh)
@@ -77,17 +79,25 @@ package() {
 
 
 def render_pkgbuild(branch, release):
-    version = (
+    version2 = (
         release['version_major'],
         release['version_minor'],
         release['version_patch'],
         BRANCHES.index(release['version_channel_name'])
     )
-    version = f"{version[0]}.{version[1]}.{version[2]}_{version[3]}"
+    version = f"{version2[0]}.{version2[1]}.{version2[2]}_{version2[3]}"
     patch = release['version_channel_edition']
     url = release['download_url']
     pkgname = 'pathio-bin' if branch == 'stable' else f"pathio-{branch}-bin"
-    return PKGBUILD_TEMPLATE.format(branch, version, pkgname, patch, url)+PKGBUILD_STATIC_PART
+    return PKGBUILD_TEMPLATE.format(
+        branch,
+        version,
+        pkgname,
+        patch,
+        url,
+        '.'.join(list(map(str, version2[:-1]))),
+        BRANCHES[version2[3]]
+    )+PKGBUILD_STATIC_PART
 
 
 def main():
@@ -109,12 +119,13 @@ def main():
         )
         subprocess.run("rm -f license.html", shell=True)
         subprocess.run("updpkgsums", shell=True).check_returncode()
-        subprocess.run("makepkg --printsrcinfo > .SRCINFO", shell=True).check_returncode()
+        subprocess.run("makepkg --printsrcinfo > .SRCINFO",
+                       shell=True).check_returncode()
         subprocess.run("rm -f license.html", shell=True)
         subprocess.run("makepkg -f", shell=True).check_returncode()
-        subprocess.run('git commit -am "Version updated"', shell=True).check_returncode()
+        subprocess.run('git commit -am "Version updated"',
+                       shell=True).check_returncode()
         print('Now, double-check everything and "git push"')
-
 
 
 if __name__ == '__main__':
