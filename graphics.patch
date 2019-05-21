@@ -1,37 +1,18 @@
 diff --git a/src/graphics.rs b/src/graphics.rs
-index 6ff9020..e9a44ad 100644
+index d9d8af7..a8cb466 100644
 --- a/src/graphics.rs
 +++ b/src/graphics.rs
-@@ -14,11 +14,11 @@ blacklist nouveau
- blacklist nvidia
- blacklist nvidia-drm
- blacklist nvidia-modeset
--alias i2c_nvidia_gpu off
--alias nouveau off
--alias nvidia off
--alias nvidia-drm off
--alias nvidia-modeset off
-+#alias i2c_nvidia_gpu off
-+#alias nouveau off
-+#alias nvidia off
-+#alias nvidia-drm off
-+#alias nvidia-modeset off
- "#;
+@@ -248,10 +248,10 @@ impl Graphics {
+             warn!("systemctl: failed with {} (not an error if service does not exist!)", status);
+         }
  
- pub struct GraphicsDevice {
-@@ -204,12 +204,12 @@ impl Graphics {
-                 }
-             }
- 
--            info!("Updating initramfs");
--            let status = process::Command::new("update-initramfs").arg("-u").status()?;
-+            info!("Updating mkinitcpio");
-+            let status = process::Command::new("mkinitcpio").arg("-P").status()?;
-             if ! status.success() {
-                 return Err(io::Error::new(
-                     io::ErrorKind::Other,
--                    format!("update-initramfs: failed with {}", status)
-+                    format!("mkinitcpio: failed with {}", status)
-                 ));
-             }
+-        info!("Updating initramfs");
+-        const UPDATE_INITRAMFS_CMD: &str = "update-initramfs";
++        info!("Updating mkinitcpio");
++        const UPDATE_INITRAMFS_CMD: &str = "mkinitcpio";
+         let status = process::Command::new(UPDATE_INITRAMFS_CMD)
+-            .arg("-u")
++            .arg("-P")
+             .status()
+             .map_err(|why| GraphicsDeviceError::Command { cmd: UPDATE_INITRAMFS_CMD, why })?;
  

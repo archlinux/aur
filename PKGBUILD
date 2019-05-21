@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=system76-power-git
-pkgver=r168.99e80af
+pkgver=r185.1d361ba
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('dbus' 'systemd' 'system76-dkms')
 source=("${pkgname}::git+https://github.com/pop-os/system76-power.git"
         "graphics.patch")
 sha256sums=('SKIP'
-            'c951b97d420bd3e26178b404a24ae334cae54f96ca4930f53ce1d0bc8f83d1dc')
+            'c44423e11bbe3f045203ef5b836f64151728aec0762d798295a1787092fecf1b')
 
 pkgver() {
     cd ${pkgname}
