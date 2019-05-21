@@ -1,6 +1,6 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
-# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
+# Contributor: Xiao-Long Chen < chenxiaolong at cxl dot epac dot to >
 
 _pkgname=cairo
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
