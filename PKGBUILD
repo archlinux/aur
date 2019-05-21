@@ -1,7 +1,7 @@
 # Maintainer: Manuel Lladosa <$(base64 --decode <<<'bWFub2xvbGxyQHJpc2V1cC5uZXQK')>
 # Contributor: Tarn Burton <twburton at gmail dot com>
 pkgname='pioneer-git'
-pkgver=20190203.r168.g2e0115a01
+pkgver=20190203.r173.g9537956c2
 pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=('pioneer')
 conflicts=('pioneer-bin' 'pioneer')
 depends=('assimp' 'freetype2' 'hicolor-icon-theme' 'libsigc++' 'libvorbis' 'sdl2_image')
-makedepends=('git' 'cmake' 'naturaldocs' 'mesa' 'glu')
+makedepends=('git' 'cmake' 'mesa' 'glu')
 source=("$pkgname::git+https://github.com/pioneerspacesim/pioneer")
 sha256sums=('SKIP')
 
@@ -22,16 +22,7 @@ pkgver() {
 build() {
   cd $pkgname
 
-  # Autotools support is dropped
-  # https://github.com/pioneerspacesim/pioneer/issues/4525#issuecomment-460067597
-  # Old autotools build
-  #  ./bootstrap
-  #  ./configure CXXFLAGS='-fPIC' --prefix=/usr
-  #  make
-  #  make codedoc
-
-  # New cmake build
-  ./bootstrap cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+  ./bootstrap -D CMAKE_INSTALL_PREFIX:PATH=/usr \
     -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/
   make -C build
 
@@ -52,10 +43,11 @@ build() {
   fi
 
 #  make codedoc (execute naturaldocs manually)
-  install -dm755 codedoc
-  naturaldocs -i ./src/ -i ./data/libs/ -xi ./src/data/ -o HTML codedoc/ -p ./nd/ -do -ro -s Default Local
+# This is development doc, I think it should not be in main game package
+  #install -dm755 codedoc
+  #naturaldocs -i ./src/ -i ./data/libs/ -xi ./src/data/ -o HTML codedoc/ -p ./nd/ -do -ro -s Default Local
   # Remove references to $srcdir. A 'naturaldocs' bug?
-  grep -Rl "$(pwd)" codedoc/ | xargs sed -i "s#$(pwd)/##g"
+  #grep -Rl "$(pwd)" codedoc/ | xargs sed -i "s#$(pwd)/##g"
 }
 
 package() {
@@ -63,6 +55,6 @@ package() {
 
   make -C build DESTDIR="$pkgdir" install
 
-  install -dm755 "$pkgdir/usr/share/doc/pioneer"
-  cp -R codedoc/* "$pkgdir/usr/share/doc/pioneer"
+  #install -dm755 "$pkgdir/usr/share/doc/pioneer"
+  #cp -R codedoc/* "$pkgdir/usr/share/doc/pioneer"
 }
