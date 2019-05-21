@@ -1,5 +1,5 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: Filip Brcic <brcha@gna.org>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: Filip Brcic < brcha at gna dot org >
 
 # Thanks to the patch from the MXE project <mxe.cc>
 
