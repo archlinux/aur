@@ -1,5 +1,5 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
 _commit=26f1135f374f3ad5eb963dcdf016542fbbda361b  # tags/1.43.0^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
