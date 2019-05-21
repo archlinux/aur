@@ -1,0 +1,30 @@
+pkgbase = genkernel-next-git
+	pkgdesc = Kernel compiliation and initramfs image creation utility - git checkout
+	pkgver = 69.r2.g7b20b78
+	pkgrel = 1
+	url = https://github.com/Sabayon/genkernel-next
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = asciidoc
+	makedepends = e2fsprogs
+	makedepends = udev
+	depends = bash
+	depends = lvm2
+	depends = thin-provisioning-tools
+	depends = util-linux
+	depends = pax-utils
+	depends = cpio
+	optdepends = cryptsetup: Enable support for LUKS disk encryption
+	optdepends = gnupg: Enable support for GPG
+	optdepends = mdadm: Enable support for mdadm
+	optdepends = dmraid: Enable support for dmraid
+	optdepends = open-iscsi: Enable iscsi support
+	optdepends = plymouth: Enable framebuffer splash support
+	provides = genkernel
+	backup = etc/genkernel.conf
+	source = git://github.com/Sabayon/genkernel-next.git
+	sha256sums = SKIP
+
+pkgname = genkernel-next-git
+
