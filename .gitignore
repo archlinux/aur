@@ -4,3 +4,4 @@ pkg
 src
 clean.sh
 checksum.sh
+*.part
