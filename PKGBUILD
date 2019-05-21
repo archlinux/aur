@@ -74,6 +74,7 @@ build() {
 
 package() {
 	mkdir -p "$pkgdir/usr/share/hifi"
+	mkdir -p "$pkgdir/usr/lib"
  	mkdir -p "$pkgdir/opt/hifi"
 
 
