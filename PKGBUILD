@@ -19,7 +19,7 @@ backup=()
 options=()
 source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=("1084671ea3a1243a14e7132755b6627784a4040b86923e60dfe4d7ee28567d67")
+sha256sums=("cf60557a6ae17d63c80db23f98c1f9d96f1c7951ff968b0ba1f5777fbfbf9d37")
 
 prepare() {
 	tar -xvf "$pkgname-$pkgver.tar.gz"
