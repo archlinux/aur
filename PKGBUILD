@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/dahlia/iterfzf"
 license=('GPL3')
 depends=('python')
-makedepends('python-setuptools')
+makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dahlia/iterfzf/archive/${pkgver}.tar.gz")
 sha256sums=('91884eb65aae192461f9bc8ab2b2eaded07f950369e5802599d008bec191ced3')
 
