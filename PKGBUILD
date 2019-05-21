@@ -1,4 +1,4 @@
-# Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer : Katherine Cumberbatch <stykers@stykers.moe>
 # Plugin file is obtained from Debian package vlc-plugin-fluidsynth_3.0.1-1_amd64.deb
 
 pkgname=vlc-plugin-fluidsynth
