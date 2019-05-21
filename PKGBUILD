@@ -1,7 +1,7 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
-# Contributor: ant32 <antreimer@gmail.com>
-# Contributor: Filip Brcic <brcha@gna.org>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
+# Contributor: ant32 < antreimer at gmail dot com >
+# Contributor: Filip Brcic < brcha at gna dot org >
 
 _pkgver=1.1.1b
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
