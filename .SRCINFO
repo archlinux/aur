@@ -1,13 +1,13 @@
 pkgbase = kwin-scripts-tiling
 	pkgdesc = Tiling script for kwin
-	pkgver = 2.0.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://store.kde.org/content/show.php?content=161151
 	arch = any
 	license = GPL2
 	depends = kwin
-	source = https://github.com/faho/kwin-tiling/releases/download/v2.0.0/tiling-2.0.0.kwinscript
-	sha512sums = 6fa8966bebbe61344a72fca1d8d87099fb9ec91837b3b6f69467478ecf5453cc5fc35ab57025f826c2db748385698936623159af493c70c2c900ce4df6eeb9a6
+	source = https://github.com/kwin-scripts/kwin-tiling/archive/v2.1.tar.gz
+	sha512sums = cf74c35803c78b9845f0daf5a8ad2d4ec88f68a9dcb1c3a8797c2c4620d384bcdcbf99972e3e021711c6d5b35d2a2f66f9e6cabdb181c3ce7b526b7515b16cd0
 
 pkgname = kwin-scripts-tiling
 
