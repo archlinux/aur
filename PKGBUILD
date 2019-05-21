@@ -2,7 +2,7 @@
 
 pkgname=openra-sp-git
 _pkgname=${pkgname/-git}
-pkgver=221.git.ac000cc
+pkgver=226.git.c97e352
 pkgrel=1
 pkgdesc="A Tiberian Sun-inspired mod of OpenRA"
 arch=('any')
@@ -52,7 +52,6 @@ package() {
     install -Dm755 $srcdir/openra-sp $pkgdir/usr/bin/openra-sp
     cp -r $srcdir/openra-sp.appdata.xml $pkgdir/usr/share/appdata/openra-sp.appdata.xml
     cp -r README.md $pkgdir/usr/share/doc/packages/${_pkgname}/README.md
-    ln -sf /usr/lib/${_pkgname}/mods/sp/logo.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
     install -Dm644 $srcdir/openra-sp.desktop $pkgdir/usr/share/applications/openra-sp.desktop
     mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps
     for size in 16 32 48 64 128 256; do
