@@ -22,5 +22,12 @@ else
   export WINEARCH=win32
 fi
 
+if ! test -d "${WINEPREFIX}"
+then
+  /usr/bin/xvfb-run wineboot --init
+fi
+
+export WINEDLLOVERRIDES="mscoree,mshtml="
+
 /usr/bin/wine "$@"
 
