@@ -2,8 +2,9 @@
 pkgname=cliqz-bin
 _vendorname=cliqz
 pkgver=1.26.5
-_cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
-pkgrel=1
+#_cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
+_cqzbuildid=20190508134915
+pkgrel=2
 pkgdesc="Firefox-based privacy aware web browser, repackaged from debian official cliqz repository"
 arch=('x86_64')
 url="https://cliqz.com/"
