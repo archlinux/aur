@@ -11,3 +11,16 @@ pkgbase = scheme-9-from-empty-space
 
 pkgname = scheme-9-from-empty-space
 
+pkgbase = scheme-9-from-empty-space
+	pkgdesc = S9fES Reimagined is a mature, portable, and comprehensible interpreter for R4RS Scheme.
+	pkgver = 20181205
+	pkgrel = 1
+	url = http://www.t3x.org/s9fes/
+	arch = x86_64
+	arch = i686
+	license = unknown
+	source = http://www.t3x.org/s9fes/s9fes-20181205.tgz
+	md5sums = 65e6582a0ede8100f7dd6b708f881201
+
+pkgname = scheme-9-from-empty-space
+
