@@ -44,7 +44,7 @@ package() {
   install -Dm644 "${srcdir}/${_pkgname_fork}.desktop" "${pkgdir}/usr/share/applications/${_pkgname_fork}.desktop"
   _pkgver="$(git describe --abbrev=0 --tags | sed 's/^v//')"
   sed -i "s/%version%/${_pkgver}/" "${pkgdir}/usr/share/applications/${_pkgname_fork}.desktop"
-  for _file in "${srcdir}/${_pkgname}/build/icons/"*.png; do
+  for _file in "${srcdir}/${_pkgname}/app/lib/assets/icons/"*.png; do
     _filename="$(basename ${_file})"
     install -Dm644 "${_file}" "${pkgdir}/usr/share/icons/hicolor/${_filename%.png}/apps/${_pkgname_fork}.png"
   done
