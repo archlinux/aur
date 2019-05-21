@@ -9,7 +9,7 @@ url="https://www.brave.com/"
 license=('custom:MPL2' 'BSD' 'Apache' 'custom:others')
 groups=('networking')
 depends=('gtk2' 'nss' 'alsa-lib' 'gconf' 'libxtst' 'libgnome-keyring' 'libxss' 'ttf-font')
-makedepends=('git' 'npm' 'python' 'icu' 'glibc')
+makedepends=('git' 'npm' 'python2' 'icu' 'glibc')
 optdepends=('cups: To print stuff'
             'pepper-flash: Adobe Flash support')
 provides=('brave' 'brave-browser')
@@ -31,6 +31,7 @@ build() {
 
   npm install home-path buffer-to-vinyl stream-combiner2
   npm install
+  alias python=python2
   npm run init
 
   if [[ ! (-r /proc/sys/kernel/unprivileged_userns_clone && $(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n $(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ) ]]; then
