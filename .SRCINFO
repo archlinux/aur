@@ -1,7 +1,7 @@
 pkgbase = ninfs-git
 	pkgdesc = FUSE filesystem Python scripts for Nintendo console files
-	pkgver = 1.4.r0.g996fe4c
-	pkgrel = 2
+	pkgver = 1.5.r0.gaf15e6d
+	pkgrel = 1
 	url = https://github.com/ihaveamac/ninfs
 	arch = x86_64
 	license = MIT
@@ -19,7 +19,7 @@ pkgname = ninfs-git
 	depends = openssl>=1.1
 	provides = fuse-3ds-git
 	provides = fuse-3ds
-	provides = ninfs=1.4.r0.g996fe4c-2
+	provides = ninfs=1.5.r0.gaf15e6d-1
 	conflicts = fuse-3ds-git
 	conflicts = fuse-3ds
 	conflicts = ninfs
@@ -28,11 +28,11 @@ pkgname = ninfs-git
 
 pkgname = ninfs-gui-git
 	install = NinFSGUI.install
-	depends = ninfs-git=1.4.r0.g996fe4c-2
+	depends = ninfs-git=1.5.r0.gaf15e6d-1
 	depends = python-appjar
 	provides = fuse-3ds-gui-git
 	provides = fuse-3ds-gui
-	provides = ninfs-gui=1.4.r0.g996fe4c-2
+	provides = ninfs-gui=1.5.r0.gaf15e6d-1
 	conflicts = fuse-3ds-gui-git
 	conflicts = fuse-3ds-gui
 	conflicts = ninfs-gui
