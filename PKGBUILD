@@ -1,6 +1,6 @@
-# Maintainer: pingplug <pingplug@foxmail.com>
-# Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
-# Contributor: Filip Brcic <brcha@gna.org>
+# Maintainer: pingplug < aur at pingplug dot me >
+# Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
+# Contributor: Filip Brcic < brcha at gna dot org >
 
 _commit=a330c6184fe9c7f67495f8d4563b11d51a6dccc7  # tags/dbus-1.12.14^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
