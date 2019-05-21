@@ -1,7 +1,7 @@
 pkgbase = ttf-electroharmonix
         pkgdesc = A Romanji font follow Japanese style
         pkgver = 1.0
-        pkgrel = 1
+        pkgrel = 3
         url = https://git.syskiller.io/Stykers/fonts.git
         install = ttf-electroharmonix.install
         arch = any
