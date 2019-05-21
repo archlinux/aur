@@ -1,0 +1,37 @@
+pkgbase = bforartists-git
+	pkgdesc = A fully integrated 3D graphics creation suite (development)
+	pkgver = 2.0.0.3769deb
+	pkgrel = 1
+	url = www.bforartists.de
+	install = bforartists.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = boost
+	makedepends = mesa
+	depends = libgl
+	depends = python
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = ffmpeg
+	depends = fftw
+	depends = openal
+	depends = freetype2
+	depends = libxi
+	depends = openimageio
+	depends = opencolorio
+	depends = openshadinglanguage
+	depends = libtiff
+	depends = libpng
+	depends = python-numpy
+	optdepends = cuda
+	provides = bforartists
+	conflicts = bforartists
+	replaces = bforartists
+	source = git://github.com/Bforartists/Bforartists.git
+	md5sums = SKIP
+
+pkgname = bforartists-git
+
