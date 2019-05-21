@@ -57,8 +57,9 @@ prepare() {
 
   cp "${srcdir}"/mingw-config.toml config.toml
   sed -i "s|\@PREFIX\@|/${_prefix}|" config.toml
-  cd "${srcdir}/rustc-${pkgver}-src/src/bootstrap"
-  sed -i "s|tar.gz|tar.xz|" bootstrap.py
+  # use level 0 to speed up xz packaging
+  sed -i 's|XzEncoder::new(create_new_file(tar_xz)?, 6)|XzEncoder::new(create_new_file(tar_xz)?, 0)|' "src/tools/rust-installer/src/tarballer.rs"
+  sed -i "s|tar.gz|tar.xz|" "src/bootstrap/bootstrap.py"
 
   cd "${srcdir}"
   mkdir -p "${srcdir}/rustc-${pkgver}-src/build/cache/${_date}"
@@ -72,7 +73,8 @@ build() {
 
   export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
-  python ./x.py build
+  # BUG: x.py install will build rust a second time
+  #python ./x.py build
 }
 
 package() {
@@ -82,8 +84,6 @@ package() {
   export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   # TODO: find a way to disable packaging
-  # use level 0 to speed up xz packaging
-  sed -i 's|XzEncoder::new(create_new_file(tar_xz)?, 6)|XzEncoder::new(create_new_file(tar_xz)?, 0)|' "src/tools/rust-installer/src/tarballer.rs"
   DESTDIR="${pkgdir}" python ./x.py install
 
   # license
