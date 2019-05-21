@@ -37,6 +37,7 @@ package() {
   find scripts -type f -exec install -D -m644 {} "${pkgdir}/usr/lib/${_pkgname}/{}" \;
   find sections -type f -exec install -D -m644 {} "${pkgdir}/usr/lib/${_pkgname}/{}" \;
   install -D -m644 spaceship.zsh "${pkgdir}/usr/lib/${_pkgname}/spaceship.zsh"
+  ln -s spaceship.zsh "${pkgdir}/usr/lib/${_pkgname}/spaceship.zsh-theme"
 
   install -d "${pkgdir}/usr/local/share/zsh/site-functions/"
   ln -s "/usr/lib/${_pkgname}/spaceship.zsh" "${pkgdir}/usr/local/share/zsh/site-functions/prompt_spaceship_setup"
