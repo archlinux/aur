@@ -1,6 +1,6 @@
 pkgbase = code-server
 	pkgdesc = Run VS Code on a remote server
-	pkgver = 1.1106_vsc1.33.1
+	pkgver = 1.1119_vsc1.33.1
 	pkgrel = 0
 	url = https://github.com/codercom/code-server
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = code-server
 	depends = glibc
 	depends = net-tools
 	options = !strip
-	source = https://github.com/codercom/code-server/releases/download/1.1106-vsc1.33.1/code-server1.1106-vsc1.33.1-linux-x64.tar.gz
+	source = https://github.com/codercom/code-server/releases/download/1.1119-vsc1.33.1/code-server1.1119-vsc1.33.1-linux-x64.tar.gz
 	sha512sums = SKIP
 
 pkgname = code-server
