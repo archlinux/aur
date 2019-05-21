@@ -1,0 +1,15 @@
+pkgbase = python-fzf-wal
+	pkgdesc = pywal theme selector using fzf
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/shanedabes/fzf_wal
+	arch = any
+	license = APACHE
+	depends = python
+	depends = python-iterfzf
+	depends = python-pywal
+	source = python-fzf-wal-0.1.1.tar.gz::https://github.com/shanedabes/fzf_wal/archive/v0.1.1.tar.gz
+	sha256sums = eae1f11771f30076113860eb2a5f83614744b2fe3c6694157e654dd2593437dc
+
+pkgname = python-fzf-wal
+
