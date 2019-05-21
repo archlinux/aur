@@ -11,8 +11,8 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.2.0_devel.111123.daa85a882e8
-pkgrel=1
+pkgver=19.2.0_devel.111155.9b9f7030c68
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
@@ -26,13 +26,13 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
-        'radeonsi: update buffer descriptors in all contexts after buffer invalidation 78e35df52aa2f7d770f929a0866a0faa89c261a9.patch')
+        '0001-radeonsi-fix-a-regression-in-si_rebind_buffer.patch')
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         '0cf986d1e8a664c2aa231cbfbe3c4b13')
+         'f30002fd49fa44197541ba8fe5faa0e9')
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'e29d60885bcca64333bc0be618d77db3ef02fc653f67ed00204623cb522bd05ea81aaaac0dc3fe0f4a22b3fd9d485c34f152b9f3228947dc0c4ea51179e1e5e6')
+            '505003b745d055bc97bfd26382171759cba57df1bbd4f5a84ce0b02da1b6cd8b4a7c036c25f467c4179dedc441f18480b93454432f4a4d3b09eacae608453b15')
 
 # MESA_WHICH_LLVM is an environment variable used to determine which llvm package tree is used to built mesa-git against.
 # Adding a line to makepkg.conf that sets this value is the simplest way to ensure a specific choice.
@@ -87,7 +87,7 @@ prepare() {
         rm -rf _build
     fi
     cd mesa
-    patch --reverse -Np1 -i $srcdir/'radeonsi: update buffer descriptors in all contexts after buffer invalidation 78e35df52aa2f7d770f929a0866a0faa89c261a9.patch'
+    patch -Np1 -i "$srcdir"/0001-radeonsi-fix-a-regression-in-si_rebind_buffer.patch
 }
 
 build () {
