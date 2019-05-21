@@ -1,37 +1,38 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=bdsup2subpp-git
-pkgver=1.0.2.5.g8245aa8
+pkgver=1.0.3.13.g38dddf9
 pkgrel=1
 pkgdesc="Subtitle conversion tool for image based stream formats with scaling capabilities and some other nice features. (GIT version)"
 arch=('x86_64')
 license=('Apache')
 url='http://forum.doom9.org/showthread.php?t=167051'
-depends=('libqxt')
+depends=('qt5-base')
 makedepends=('git')
 provides=('bdsup2subpp')
 conflicts=('bdsup2subpp')
-source=('git+https://github.com/darealshinji/BDSup2SubPlusPlus.git')
-md5sums=('SKIP')
-_gitname="bdsup2subpp"
+source=('bdsup2subpp::git+https://github.com/amichaeltm/BDSup2SubPlusPlus.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd BDSup2SubPlusPlus
+  cd bdsup2subpp
   echo "$(git describe --long --tags | tr - .)"
 }
 
-build() {
-  cd BDSup2SubPlusPlus/src
+prepare() {
+  mkdir -p build
 
-  qmake-qt4
-  make
+  cd build
+  qmake-qt5 "${srcdir}/bdsup2subpp/src"
+}
+
+build() {
+  make -C build
 }
 
 package() {
-  cd BDSup2SubPlusPlus
-  install -Dm755 src/bdsup2sub++ "${pkgdir}/usr/bin/bdsup2subpp"
+  install -Dm755 build/bdsup2sub++ "${pkgdir}/usr/bin/bdsup2subpp"
 
-  install -Dm644 desktop/bdsup2sub++.1 "${pkgdir}/usr/share/man/man1/bdsup2subpp.1"
-  install -Dm644 desktop/bdsup2sub++.desktop "${pkgdir}/usr/share/applications/bdsup2subpp.desktop"
-  install -Dm644 desktop/bdsup2subpp.png "${pkgdir}/usr/share/pixmaps/bdsup2subpp.png"
+  install -Dm644 bdsup2subpp/bundle/linux/bdsup2sub++.desktop "${pkgdir}/usr/share/applications/bdsup2subpp.desktop"
+  install -Dm644 bdsup2subpp/bundle/linux/bdsup2subpp.png "${pkgdir}/usr/share/pixmaps/bdsup2subpp.png"
 }
