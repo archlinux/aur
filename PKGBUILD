@@ -19,8 +19,8 @@ _ENABLE_OMP=0
 
 _pkgname=lammps
 pkgname=${_pkgname}-beta
-pkgver=20190430
-_pkgver="30Apr2019"
+pkgver=20190515
+_pkgver="15May2019"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
@@ -31,10 +31,8 @@ depends=('fftw' 'openmpi')
 makedepends=('cmake')
 conflicts=('lammps')
 provides=('lammps')
-source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/patch_${_pkgver}.tar.gz"
-        "intel_pkg.patch::https://github.com/${_pkgname}/${_pkgname}/commit/d7da1db745128ed3c10c78d73613f88a8ed6a492.patch")
-sha512sums=('dc520c70d008468555a843765f7abcf9fca74bad901b05c0d4240ba95189ee0e048e955148ada913042d5d275aa6a58ac65389835f3dbc84546c9e3f613abdd6'
-            '3e573841275a44d3f7a4a8fdb13eb0223a02ca41eb30ba852977f3ca629490c72cef35240c2c4962974e6ff25f6a7723ec8ea52551b5493971eba12d0f363beb')
+source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/patch_${_pkgver}.tar.gz")
+sha512sums=('1f9498c8ad93f90064c95c0bd942bb1628069d2a8dc578fef0ff5f95d66df03b05072e7fe4356cafa19f04f988681ad05bfd6dc6fb4df69f6c138d12abd300e7')
 
 # process the build settings from above
 if (( $_ENABLE_INTEL_COMPILER )); then
@@ -62,7 +60,6 @@ fi
 
 prepare(){
   cd "${_pkgname}-patch_${_pkgver}"
-  patch --strip=1 -i ../intel_pkg.patch
   mkdir -p build
 }
 
