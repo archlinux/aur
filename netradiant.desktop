@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=NetRadiant
-Comment=The open source, cross platform level editor for idtech games
-Icon=/usr/share/pixmaps/netradiant.png
-Categories=Game;Graphics;
-Exec=netradiant
