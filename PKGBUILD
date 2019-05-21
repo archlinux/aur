@@ -2,7 +2,7 @@
 
 pkgname=brave-git
 pkgver=0.24.1.r236.g7e6875794
-pkgrel=1
+pkgrel=2
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -31,8 +31,7 @@ build() {
 
   npm install home-path buffer-to-vinyl stream-combiner2
   npm install
-  alias python=python2
-  npm run init
+  npm run init --python=python2.7
 
   if [[ ! (-r /proc/sys/kernel/unprivileged_userns_clone && $(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n $(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ) ]]; then
     echo "User namespaces are not detected as enabled on your system, brave will run with the sandbox disabled"
