@@ -15,6 +15,7 @@ pkgbase = vtk-git
 	depends = jsoncpp
 	depends = libxt
 	depends = double-conversion
+	depends = glew
 	depends = hdf5
 	depends = python
 	provides = vtk

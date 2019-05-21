@@ -5,7 +5,7 @@ pkgdesc='A software system for 3D computer graphics, image processing, and visua
 arch=('i686' 'x86_64')
 url='http://www.vtk.org'
 license=('BSD')
-depends=('jsoncpp' 'libxt' 'double-conversion' 'hdf5' 'python')
+depends=('jsoncpp' 'libxt' 'double-conversion' 'glew' 'hdf5' 'python')
 makedepends=('git' 'cmake' 'doxygen' 'boost' 'java-environment' 'utf8cpp')
 provides=("vtk")
 conflicts=("vtk")
@@ -39,7 +39,7 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_expat=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_freetype=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_glew=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_glew=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_hdf5=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_jpeg=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_jsoncpp=ON \
