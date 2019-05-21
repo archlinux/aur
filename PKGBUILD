@@ -19,5 +19,5 @@ pkgver() {
 package() {
   cd "$srcdir/$_pkgname"
 
-  install -D -m 755 $_pkgname "$pkgdir/usr/bin"
+  install -Dm755 -t "$pkgdir/usr/bin/" "$_pkgname"
 }
