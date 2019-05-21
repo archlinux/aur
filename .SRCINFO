@@ -1,0 +1,16 @@
+pkgbase = perl-test-env
+	pkgdesc = test the environment
+	pkgver = 1.084
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Env
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Test-Env-1.084.tar.gz
+	md5sums = 7c08ea653ba3652ba3559be00e70f535
+	sha512sums = 06a3ed9ac82defe85c411543864ab5cee2891f4f3847cc4bcc3b5c257b722668d9a6f35335db34da1a3766d51a01aa15636051e9d6401171211e10a94236fb4e
+
+pkgname = perl-test-env
+
