@@ -2,7 +2,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=java-openjfx-ea-bin
 _majorver=13
-_buildver=7
+_buildver=8
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJFX ${_majorver} Early-Access Build."
@@ -12,8 +12,8 @@ license=('GPL2')
 depends=('java-openjdk-ea-bin' 'gstreamer' 'libxtst' 'webkit2gtk' 'ffmpeg' 'qt5-base')
 source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-jmods.zip")
-sha256sums=('e0cff01519444ff74cafc6ec879c24c9852fe183661c40036d5dfb1541ce679e'
-            '8812ca93985a903c7e66f672efe014ecc995afc748bf72a1681b35a904266409')
+sha256sums=('ba0951b22e9bc4d1f568dc740c0d0c75b78c7e7c5ddf0dc93a963eafd795bf9a'
+            '7359072b9a0a0ccb7445ad91155075402ea8643e88920ab4e27d814e4d5d9013')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
