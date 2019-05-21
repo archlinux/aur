@@ -1,5 +1,5 @@
 pkgname=avdump2-bin
-pkgver=7080
+pkgver=7100
 pkgrel=1
 pkgdesc="AniDB video/audio codec identification utility (command line version)"
 arch=('any')
@@ -12,8 +12,7 @@ _archive="avdump2_${pkgver}.zip"
 source=("https://static.anidb.net/client/avdump2/${_archive}" \
         'avdump2')
 noextract=("$_archive")
-sha256sums=('6ddcb341735b575ce204951b7b91465706c5d77e829284bdd551205e15abbf48' \
-            'SKIP')
+md5sums=('a1539a6139315a3c0f24113bb2d2853b' 'SKIP')
 
 prepare() {
   cd "$srcdir"
@@ -22,6 +21,8 @@ prepare() {
 
 package() {
   cd "$srcdir/$pkgver"
+  # Unclean packaging
+  rmdir "AVDump2 Build 7100 Public"
   install -m 755 -d "$pkgdir"/opt/avdump2
   install -m 644 -t "$pkgdir"/opt/avdump2 -- *
   install -Dm 755 "$srcdir"/avdump2 "$pkgdir"/usr/bin/avdump2
