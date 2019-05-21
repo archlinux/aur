@@ -1,0 +1,4 @@
+atomic-tweetdeck-*.pkg.tar.xz
+*.tgz
+pkg/*
+src/*
