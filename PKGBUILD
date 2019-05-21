@@ -3,8 +3,8 @@
 
 pkgbase=gridcoinresearch
 pkgname=(gridcoinresearch-qt gridcoinresearchd)
-pkgver=4.0.3.0
-pkgrel=2
+pkgver=4.0.4.0
+pkgrel=1
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
 makedepends=('boost' 'qt5-charts' 'qt5-tools' 'qrencode' 'db')
 
@@ -16,7 +16,7 @@ _sourcename="Gridcoin-Research-$pkgver"
 
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/$pkgver.tar.gz")
 
-sha256sums=('4da89e4d3dcdd38ed24a3402b73383e8412eaf59207428ceaa6918764e4f2f85')
+sha256sums=('47f2aea26dda52432f1e15c00037f19de75b2b15975f17e6800f7d6192c90b6a')
 
 build() {
   cd "$srcdir/$_sourcename"

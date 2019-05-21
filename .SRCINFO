@@ -1,7 +1,7 @@
 pkgbase = gridcoinresearch
 	pkgdesc = A cryptocurrency that rewards users for participating on the BOINC network
-	pkgver = 4.0.3.0
-	pkgrel = 2
+	pkgver = 4.0.4.0
+	pkgrel = 1
 	url = https://gridcoin.us
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = gridcoinresearch
 	makedepends = qt5-tools
 	makedepends = qrencode
 	makedepends = db
-	source = gridcoinresearch-4.0.3.0.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/4.0.3.0.tar.gz
-	sha256sums = 4da89e4d3dcdd38ed24a3402b73383e8412eaf59207428ceaa6918764e4f2f85
+	source = gridcoinresearch-4.0.4.0.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/4.0.4.0.tar.gz
+	sha256sums = 47f2aea26dda52432f1e15c00037f19de75b2b15975f17e6800f7d6192c90b6a
 
 pkgname = gridcoinresearch-qt
 	pkgdesc = A cryptocurrency that rewards users for participating on the BOINC network (Qt GUI)
