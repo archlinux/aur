@@ -16,7 +16,7 @@ conflicts=("${pkgname}" "stremio-legacy" "stremio")
 
 install=${_pkgname}.install
 
-source=("${_pkgname}::git+https://github.com/Stremio/stremio-shell.git#branch=master")
+source=("${_pkgname}::git+https://github.com/Stremio/stremio-shell.git#tag=${pkgver}")
 noextract=()
 md5sums=("SKIP")
 
