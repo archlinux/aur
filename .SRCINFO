@@ -1,0 +1,32 @@
+pkgbase = mingw-w64-vtk-git
+	pkgdesc = A software system for 3D computer graphics, image processing, and visualization (mingw-w64)
+	pkgver = r70959.c5be49810d
+	pkgrel = 1
+	url = http://www.vtk.org/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	makedepends = git
+	makedepends = mingw-w64-utf8cpp
+	depends = mingw-w64-crt
+	depends = mingw-w64-qt5-base
+	depends = mingw-w64-jsoncpp
+	depends = mingw-w64-expat
+	depends = mingw-w64-netcdf
+	depends = mingw-w64-libtiff
+	depends = mingw-w64-libjpeg-turbo
+	depends = mingw-w64-freetype2
+	depends = mingw-w64-libpng
+	depends = mingw-w64-libxml2
+	depends = mingw-w64-hdf5
+	depends = mingw-w64-libtheora
+	depends = mingw-w64-freeglut
+	depends = mingw-w64-lz4
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = git+https://gitlab.kitware.com/vtk/vtk.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-vtk-git
+
