@@ -1,6 +1,6 @@
 pkgbase = avdump2-bin
 	pkgdesc = AniDB video/audio codec identification utility (command line version)
-	pkgver = 7080
+	pkgver = 7100
 	pkgrel = 1
 	url = https://wiki.anidb.net/w/Avdump2
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = avdump2-bin
 	makedepends = p7zip
 	depends = mono
 	provides = avdump2
-	noextract = avdump2_7080.zip
-	source = https://static.anidb.net/client/avdump2/avdump2_7080.zip
+	noextract = avdump2_7100.zip
+	source = https://static.anidb.net/client/avdump2/avdump2_7100.zip
 	source = avdump2
-	sha256sums = 6ddcb341735b575ce204951b7b91465706c5d77e829284bdd551205e15abbf48
-	sha256sums = SKIP
+	md5sums = a1539a6139315a3c0f24113bb2d2853b
+	md5sums = SKIP
 
 pkgname = avdump2-bin
 
