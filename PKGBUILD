@@ -1,4 +1,5 @@
 # Maintainer: Zach Zundel <me+aur at zachzundel dot com>
+# Contributor: Christian Sarazin <archlinux at offlinehoster dot de>
 pkgname=boxcli-git
 pkgver=2.2.0
 pkgrel=1
