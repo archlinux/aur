@@ -6,9 +6,9 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=60.6.3
-_pkgver=c2e111f41e86eb6f76bf884c9ab997fec7ef8f5c
-pkgrel=3
+pkgver=60.7.0
+_pkgver=5dda1503f0eee6ba4e4856396b41865179ae25e0
+pkgrel=1
 pkgdesc="GNU version of the Firefox browser."
 arch=(i686 x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -22,12 +22,12 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 
-source=(http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-c2e111f41e86eb6f76bf884c9ab997fec7ef8f5c.tar.gz
+source=(http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_pkgver}.tar.gz
         icecat.desktop icecat-safe.desktop
         rust_133-part0.patch 'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664' 
         deny_missing_docs.patch patch_makeicecat_stuff.patch)
 
-sha256sums=('c329f94adaec97553865b2a5da0578bcad914063b99ab99aa18e3a4f5db66d75'
+sha256sums=('2bc49d726e30db27159bc58c40c41072b65dca1800a4e7d12c831dac22bd8ff1'
             'c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
             '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
             'c10521badc262b476e844d3f3045ddf27e28d83d49b5db0d0e19431f06386e4d'
@@ -41,6 +41,7 @@ sha256sums=('c329f94adaec97553865b2a5da0578bcad914063b99ab99aa18e3a4f5db66d75'
 prepare() {
   cd gnuzilla-${_pkgver}
   patch -Np1 -i ../patch_makeicecat_stuff.patch
+  sed -e '/sha256sum/d' -i makeicecat
   sed -e "s/^FFMAJOR.*/FFMAJOR=${pkgver:0:2}/g" -i makeicecat
   sed -e "s/^FFMINOR.*/FFMINOR=${pkgver:(-3):(-2)}/g" -i makeicecat
   sed -e "s/^FFSUB.*/FFSUB=${pkgver:(5)}/g" -i makeicecat
