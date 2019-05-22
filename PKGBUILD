@@ -84,15 +84,12 @@ build() {
   gradle buildGhidra
 }
 
-[ "$CARCH" = i686 ] && _platform=linux32
-[ "$CARCH" = x86_64 ] && _platform=linux64
-
 package() {
   cd ghidra
   install -d "$pkgdir"/{opt,usr/bin}
   _appver=$(grep -oP '(?<=^application.version=).*$' Ghidra/application.properties)
   _relname=$(grep -oP '(?<=^application.release.name=).*$' Ghidra/application.properties)
-  unzip -u build/dist/ghidra_${_appver}_${_relname}_$(date +"%Y%m%d")_$_platform.zip -d "$pkgdir"/opt
+  unzip -u build/dist/ghidra_${_appver}_${_relname}_$(date +"%Y%m%d")_linux64.zip -d "$pkgdir"/opt
   mv "$pkgdir"/opt/ghidra{_$_appver,}
   ln -s /opt/ghidra/ghidraRun "$pkgdir"/usr/bin/ghidra
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/ghidra
