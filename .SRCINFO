@@ -1,0 +1,18 @@
+pkgbase = soundtunnel
+	pkgdesc = IN DEVELOPMENT! A tun device to communicate via sounds.
+	pkgver = 0.0.10
+	pkgrel = 2
+	url = https://example.com/
+	install = soundtunnel.install
+	arch = x86_64
+	license = unknown
+	makedepends = gcc
+	makedepends = cmake
+	depends = quiet
+	depends = libconfig
+	depends = liquid-dsp
+	source = soundtunnel-0.0.10.tar.gz
+	sha256sums = 1c9ff8b2a648f2b59c15a9805115f88dfbbbe3656f9dcc81e866ada791005683
+
+pkgname = soundtunnel
+

@@ -1,0 +1,26 @@
+post_install() {
+    if ! getent group soundtunnel >/dev/null; then
+        groupadd --system soundtunnel
+    fi
+
+    if ! getent passwd soundtunnel >/dev/null; then
+        useradd --system --create-home --gid soundtunnel --groups audio --home-dir /var/lib/soundtunnel --shell /usr/bin/nologin soundtunnel
+    fi
+
+    chown soundtunnel:soundtunnel /var/lib/soundtunnel
+    chmod 0750 /var/lib/soundtunnel
+
+#    setcap cap_net_admin+eip /usr/bin/soundtunnel
+
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    systemctl stop soundtunnel.service
+    userdel soundtunnel
+#    groupdel soundtunnel
+}
+
+post_remove() {
+    systemctl daemon-reload
+}
