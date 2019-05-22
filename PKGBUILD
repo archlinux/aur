@@ -2,7 +2,7 @@
 
 pkgname=elvish-git
 _pkgname=elvish
-pkgver=r2198.856dde5
+pkgver=0.12.r508.g14121baa
 pkgrel=1
 pkgdesc="A friendly and expressive Unix shell."
 arch=('i686' 'x86_64')
@@ -18,7 +18,10 @@ install=elvish.install
 
 pkgver() {
     cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    ( set -o pipefail;
+      git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+          printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare() {
@@ -31,7 +34,11 @@ prepare() {
 build() {
     export GOPATH="$srcdir/build"
     cd "$GOPATH/src/github.com/elves/elvish"
-    make get
+    go get \
+        -gcflags "all=-trimpath=${PWD}" \
+        -asmflags "all=-trimpath=${PWD}" \
+        -ldflags "-X github.com/elves/elvish/buildinfo.Version=$pkgver \
+        -extldflags ${LDFLAGS}" .
 }
 
 check() {
