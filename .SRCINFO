@@ -1,6 +1,6 @@
 pkgbase = goxel-git
 	pkgdesc = Download accelerator written in Go (inspired by axel)
-	pkgver = r125.4f5a813
+	pkgver = r126.0e00703
 	pkgrel = 1
 	url = https://github.com/m1ck43l/goxel
 	arch = x86_64
