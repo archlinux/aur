@@ -1,7 +1,7 @@
 pkgbase = packer-kit
 	pkgdesc = Bash wrapper for pacman and AUR (fork of github.com/keenerd/packer)
-	pkgver = 20190422
-	pkgrel = 2
+	pkgver = 20190522
+	pkgrel = 1
 	url = http://github.com/pi-kvm/packer-kit
 	install = packer-kit.install
 	arch = any

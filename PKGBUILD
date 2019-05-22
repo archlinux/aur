@@ -1,8 +1,8 @@
 # Contributor: Maxim Devaev <mdevaev@gmail.com>
 
 pkgname=packer-kit
-pkgver=20190422
-pkgrel=2
+pkgver=20190522
+pkgrel=1
 pkgdesc="Bash wrapper for pacman and AUR (fork of github.com/keenerd/packer)"
 url="http://github.com/pi-kvm/packer-kit"
 license=(GPL3)
