@@ -2,9 +2,9 @@
 
 pkgname=hicolor-icon-theme-git
 pkgver=0.17.r0.gf522d9d
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org Hicolor icon theme"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://www.freedesktop.org/wiki/Software/icon-theme/"
 license=('GPL')
 makedepends=('git')
