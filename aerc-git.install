@@ -1,4 +1,0 @@
-post_install(){
-  echo "==> Copy config/* to ~/.config/aerc/ and edit them to your liking."
-}
-
