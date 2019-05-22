@@ -1,7 +1,7 @@
 # Maintainer: Igor Deyashkin <igor_deyawka@mail.ru>
 pkgname="medivia"
-pkgver="2.4.0"
-pkgrel=3
+pkgver="2.5.1"
+pkgrel=0
 pkgdesc="Client for medivia.online mmorpg server."
 arch=('i686' 'x86_64')
 url="https://medivia.online/download"
@@ -17,8 +17,8 @@ source=("$pkgname-$pkgver.tar.gz::https://medivia.online/uploads/downloads/mediv
 noextract=("$pkgname-$pkgver.tar.gz")
 
 # autofill using updpkgsums
-md5sums=('70a59bd2857a14256a6a20b3d00c0abd'
-         '5808058b5bdea0b87199b34fe1dc1319')
+md5sums=('8fdf6590b0c430dccf3f0bf7f32e34bc'
+         '2791be26444cdf1b14d8a49736a6bbb9')
 
 prepare() {
     mkdir -p "$pkgname-$pkgver"

@@ -1,17 +1,17 @@
 pkgbase = medivia
 	pkgdesc = Client for medivia.online mmorpg server.
-	pkgver = 2.4.0
-	pkgrel = 3
+	pkgver = 2.5.1
+	pkgrel = 0
 	url = https://medivia.online/download
 	arch = i686
 	arch = x86_64
 	license = unknown
 	makedepends = chrpath
-	noextract = medivia-2.4.0.tar.gz
-	source = medivia-2.4.0.tar.gz::https://medivia.online/uploads/downloads/medivia-2.4.0-linux-32bits.tar.gz
+	noextract = medivia-2.5.1.tar.gz
+	source = medivia-2.5.1.tar.gz::https://medivia.online/uploads/downloads/medivia-2.5.1-linux-32bits.tar.gz
 	source = medivia.desktop
-	md5sums = 70a59bd2857a14256a6a20b3d00c0abd
-	md5sums = 5808058b5bdea0b87199b34fe1dc1319
+	md5sums = 8fdf6590b0c430dccf3f0bf7f32e34bc
+	md5sums = 2791be26444cdf1b14d8a49736a6bbb9
 	depends_i686 = libglvnd
 	depends_x86_64 = lib32-libglvnd
 
