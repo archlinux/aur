@@ -9,8 +9,11 @@ pkgbase = gst-rtsp-server
 	arch = armv6h
 	license = LGPL
 	depends = gst-plugins-base>=1.16.0
-	source = http://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.16.0.tar.xz
-	md5sums = adc4460239ec2eccf58ad9752ce53bfd
+	source = https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.16.0.tar.xz
+	source = https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.16.0.tar.xz.asc
+	validpgpkeys = D637032E45B8C6585B9456565D2EEE6F6F349D7C
+	sha256sums = 198e9eec1a3e32dc810d3fbf3a714850a22c6288d4a5c8e802c5ff984af03f19
+	sha256sums = SKIP
 
 pkgname = gst-rtsp-server
 
