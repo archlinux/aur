@@ -1,6 +1,7 @@
 # Maintainer: X3n0m0rph59 <x3n0m0rph59@gmail.com>
 
 pkgname='eruption-roccat-vulcan-git'
+_pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
 pkgver='0.0.3'
 pkgrel='1'
@@ -26,13 +27,13 @@ sha512sums=('SKIP')
 PKGEXT='.pkg.tar.gz'
 
 build() {
-    cd "$pkgname"
+    cd "$_pkgname"
 
     CARGO_INCREMENTAL=0 cargo build --all --release
 }
 
 package() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/etc/eruption"
