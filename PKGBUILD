@@ -16,7 +16,7 @@ _JBR=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=191.7479.1
+_buildver=191.7479.7
 _veryear=2019
 _verrelease=1
 _verextra=3
