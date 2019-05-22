@@ -3,7 +3,7 @@
 
 pkgname=ssb-patchwork
 _upstream=patchwork
-pkgver=3.11.6
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ source=(
 )
 
 sha512sums=(
-'1e60b23037f12a11d41965ca04f84baa66082fc439f429d4c011c569e0d2d0f524e8c6e7324b8fadbc621b85b85759049f6a6d87b61a89c030ac5fcda7e7cee4'
-'582a74d9581c382745b33903f60e40c1fba97a1ff253560fd609ccd133f6074b7827561b559402274e879296b24aad73e2f3f5b9c7f25142e1885de919a2e8b7'
+'097dda49ff36f616471314decc2332fd6d68e480b58a5cfc38bf2a33565661551b79d3911b2241a26340f167c71dbe87f477553a6cfc39980a10ea3d4c80dd89'
+'0df1ea65d60742d82ef04bea84376380cad03d3cd4ffb326374578f9f9954ad326b19fc81162ae838c10ae45acdd236c37731b68ca535cbbe7ddf4b69266c33c'
 '09292ec2f7c02d741cbeb046bd99293f4d144314d0233252dd34a619e1aacbbbf28078677c0871d367240e29aa50d9197bbe0a35e5b14f7ff9a6288c386124f6'
 )
 
@@ -28,12 +28,12 @@ sha512sums=(
 build() {
     cd "${srcdir}/${_upstream}-${pkgver}"
 
-    # Remove postinstall script that references `electron`
-    # (we instead need it to reference `electron2`)
+    # Remove postinstall script that rebuilds for Electron
+    # Instead we just build correctly the first time
     sed -i '/postinstall/d' package.json
 
     # Electron's version.
-    export npm_config_target=$(electron2 -v)
+    export npm_config_target=$(electron -v)
     # The architecture of Electron, can be ia32 or x64.
     export npm_config_arch=x64
     export npm_config_target_arch=x64
@@ -41,8 +41,6 @@ build() {
     export npm_config_disturl=https://atom.io/download/electron
     # Tell node-pre-gyp that we are building for Electron.
     export npm_config_runtime=electron
-    # Tell node-pre-gyp to build module from source code.
-    export npm_config_build_from_source=true
     # Install all dependencies, and store cache to ~/.electron-gyp.
     HOME=~/.electron-gyp npm install --only=production
 }
