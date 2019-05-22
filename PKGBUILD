@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mesa
-pkgver=19.0.3
+pkgver=19.0.5
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
@@ -9,18 +9,18 @@ makedepends=('mingw-w64-gcc' 'scons' 'python2-mako')
 depends=('mingw-w64-dlfcn' 'mingw-w64-llvm')
 options=('staticlibs' '!strip' '!buildflags')
 validpgpkeys=('71C4B75620BC75708B4BDB254C95FAAB3EB073EC') # Dylan Baker <dylan@pnwbakers.com>
-source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig})
-sha256sums=('f027244e38dc309a4c12db45ef79be81ab62c797a50a88d566e4edb6159fc4d5' SKIP)
+source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig} mingw-posix.patch)
+sha256sums=('6aecb7f67c136768692fb3c33a54196186c6c4fcafab7973516a355e1a54f831' SKIP SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}"/mesa-${pkgver}
-  # sh: /usr/bin/i686-w64-mingw32-g++-posix: No such file or directory
-  sed -i "s|env\['CXX'\] = env\['CXX'\] + '-posix'||g" scons/llvm.py
+  # https://gitlab.freedesktop.org/mesa/mesa/merge_requests/784
+  patch -p1 -i "${srcdir}"/mingw-posix.patch
 
-  # hack: libLLVMSupport.a: undefined reference to `compressBound'
-  sed -i "s|'LLVMSupport',|'LLVMSupport','z',|g" scons/llvm.py
+  # libLLVMSupport.a: undefined reference to `compressBound' (only with static llvm)
+  sed -i "s|'LLVMSupport',|'LLVMSupport', 'z',|g" scons/llvm.py
 }
 
 build() {
