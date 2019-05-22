@@ -1,0 +1,33 @@
+# Maintainer: Ben Brown <benjamb at pm dot me>
+pkgname=dlt-viewer-git
+pkgver=2.18.0.r132.g2e75489
+pkgrel=1
+pkgdesc="Diagnostic Log and Trace viewing program"
+url="https://github.com/GENIVI/dlt-viewer"
+arch=('x86_64')
+license=('MPL2')
+depends=('qt5-base' 'qt5-serialport')
+makedepends=('git')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+source=("${pkgname%-*}::git+$url")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-*}"
+  git describe --tags --long | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
+}
+
+build() {
+  cd "${pkgname%-*}"
+  qmake BuildDltViewer.pro \
+    QMAKE_CFLAGS="${CFLAGS}" \
+    QMAKE_CXXFLAGS="${CXXFLAGS}" \
+    QMAKE_LFLAGS="${LDFLAGS}"
+  make
+}
+
+package() {
+  cd "${pkgname%-*}"
+  make INSTALL_ROOT="${pkgdir}" install
+}

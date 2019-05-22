@@ -1,0 +1,6 @@
+*.tar.*
+*.log
+
+pkg/
+src/
+dlt-viewer/
