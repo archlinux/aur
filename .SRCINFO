@@ -1,6 +1,6 @@
 pkgbase = firebase-tools
 	pkgdesc = The Firebase Command Line Tools
-	pkgver = 6.7.0
+	pkgver = 6.10.0
 	pkgrel = 0
 	url = https://firebase.google.com/docs/cli/
 	install = firebase-tools.install
@@ -11,9 +11,9 @@ pkgbase = firebase-tools
 	provides = nodejs-firebase-tools
 	conflicts = nodejs-firebase-tools
 	replaces = nodejs-firebase-tools
-	noextract = firebase-tools-6.7.0.tgz
-	source = https://registry.npmjs.org/firebase-tools/-/firebase-tools-6.7.0.tgz
-	sha256sums = a290243a9da1fabd883640e0da45f9b0a1d381c826e8b7d67c18c1e5ff997894
+	noextract = firebase-tools-6.10.0.tgz
+	source = https://registry.npmjs.org/firebase-tools/-/firebase-tools-6.10.0.tgz
+	sha256sums = 19b13391241d977df38ee61ff5860eb77d1a6421a994df87c65f939497c12371
 
 pkgname = firebase-tools
 
