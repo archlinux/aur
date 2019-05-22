@@ -1,6 +1,6 @@
 pkgbase = mshr
 	pkgdesc = Mesh generation component of FEniCS (stable).
-	pkgver = 2018.1.0
+	pkgver = 2019.1.0
 	pkgrel = 1
 	url = https://bitbucket.org/fenics-project/mshr
 	arch = i686
@@ -8,12 +8,12 @@ pkgbase = mshr
 	groups = fenics
 	license = GPL3
 	makedepends = git
-	depends = dolfin=2018.1.0
+	depends = dolfin=2019.1.0.post0
 	depends = mpfr
 	conflicts = python-mshr-git
 	options = !emptydirs
-	source = mshr-2018.1.0.tar.gz::https://bitbucket.org/fenics-project/mshr/downloads/mshr-2018.1.0.tar.gz
-	sha256sums = c2f91300aff792de76b937e7e709076d8ac37043ddb6fe250ebb4229b48ac014
+	source = mshr-2019.1.0.tar.gz::https://bitbucket.org/fenics-project/mshr/downloads/mshr-2019.1.0.tar.gz
+	sha256sums = 0be8f261e7370404863067badadd230dbd55d54f6ffeba15728f4a9bfc856173
 
 pkgname = mshr
 
