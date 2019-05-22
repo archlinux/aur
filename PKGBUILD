@@ -1,6 +1,6 @@
 # Maintainer: Matthias De Bie <mattydebie@gmail.com>
 pkgname=bitwarden-rofi-git
-pkgver=0.4.r0.7c34d3c
+pkgver=0.4.r9.5f70386
 pkgrel=1
 pkgdesc="Wrapper for Bitwarden bitwarden/cli and Rofi"
 arch=('any')
@@ -27,6 +27,7 @@ package() {
   local doc_path="$pkgdir/usr/share/doc/${pkgname}"
 
   install -Dm755 "bwmenu" "$pkgdir/usr/bin/bwmenu"
+  install -Dm755 "lib-bwmenu" "$pkgdir/usr/bin/lib-bwmenu"
 
   install -Dm755 -d "$pkgdir/usr/share/doc/${pkgname}"
   install -Dm755 -d "$pkgdir/usr/share/doc/${pkgname}/img"
