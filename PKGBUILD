@@ -1,8 +1,8 @@
 # Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
 pkgname=octoprint
-pkgver=1.3.10
-pkgrel=2
+pkgver=1.3.11
+pkgrel=1
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(x86_64 armv6h armv7h)
 url="http://octoprint.org/"
