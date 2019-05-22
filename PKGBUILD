@@ -10,7 +10,6 @@ url="https://github.com/SoCo/SoCo"
 license=('MIT')
 depends=('python' 'python-requests' 'python-xmltodict')
 makedepends=('python-setuptools')
-checkdepends=('python-mock' 'python-pytest')
 source=("SoCo-$pkgver.tar.gz::https://github.com/SoCo/SoCo/archive/v$pkgver.tar.gz")
 sha256sums=('7711063e5d78b9052eadecd2b43b0219b3382f4ded500b204efca44d06a76e4d')
 
@@ -19,10 +18,6 @@ build() {
   python setup.py build
 }
 
-check() {
-  cd SoCo-$pkgver
-  pytest
-}
 
 package() {
   cd SoCo-$pkgver
