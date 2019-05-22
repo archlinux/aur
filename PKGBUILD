@@ -5,7 +5,7 @@
 # Contributor: simo <simo@archlinux.org>
 
 pkgname=tor-unstable
-pkgver=0.4.0.5
+pkgver=0.4.1.1_alpha
 pkgrel=1
 pkgdesc='Anonymizing overlay network.'
 arch=('i686' 'x86_64' 'armv7h')
@@ -22,7 +22,7 @@ install='tor.install'
 source=("https://www.torproject.org/dist/${pkgname/-unstable/}-${pkgver/_/-}.tar.gz"{,.asc}
         'torrc'
         'tor.service')
-sha256sums=('b5a2cbf0dcd3f1df2675dbd5ec10bbe6f8ae995c41b68cebe2bc95bffc90696e'
+sha256sums=('60100c5cbed22a3e474452bb1b8ee941b98f4a268d7bbaa3ad04c7390ccb3e01'
             'SKIP'
             '44093eaf790c6c1cad8690ee002829481fb9b22ca58663f524f5792521222406'
             '05383ab3c9879b7d77eadeeb8e9824c471ff7a5a7501996efaa573a7547fa4da')
