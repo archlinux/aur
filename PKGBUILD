@@ -4,7 +4,7 @@
 
 pkgbase=linux-zen           # Build stock -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=5.1.3-zen1
+_srcver=5.1.3-zen2
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
