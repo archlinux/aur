@@ -1,5 +1,5 @@
 pkgbase = waterfox-alpha-bin
-	pkgdesc = 64-Bit optimized Firefox, no data collection, allows unsigned extensions
+	pkgdesc = 64-bit optimised Firefox fork; no telemetry; supports XUL add-ons.
 	pkgver = 68.0a1
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
