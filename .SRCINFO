@@ -5,7 +5,6 @@ pkgbase = minify
 	url = https://github.com/tdewolff/minify
 	arch = x86_64
 	license = MIT
-	depends = glibc
 	optdepends = bash-completion: command-line autocomplete with bash
 	source = https://github.com/tdewolff/minify/releases/download/v2.5.0/minify_2.5.0_linux_amd64.tar.gz
 	source = https://raw.githubusercontent.com/tdewolff/minify/master/cmd/minify/minify_bash_tab_completion
