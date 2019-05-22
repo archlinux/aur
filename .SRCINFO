@@ -1,5 +1,5 @@
 pkgbase = linux-clear-current
-	pkgver = 5.1.3
+	pkgver = 5.1.4
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-current
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = linux-clear-current
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.1.3.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.1.4.xz
 	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.1.0-2
 	source = intel-ucode-20190514.tar.gz::https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-20190514.tar.gz
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
@@ -26,7 +26,7 @@ pkgbase = linux-clear-current
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = d06a7be6e73f97d1350677ad3bae0ce7daecb79c2c2902aaabe806f7fa94f041
 	sha256sums = SKIP
-	sha256sums = ea04b55d4a60c3aa801487ebbbf0c9e336cd28c2c1a6ab7c34f4105eca8ab30b
+	sha256sums = ccf55cf1f6fab09419bee802dbe2029b69467ae78fbaeb669d5ce0bea631fab8
 	sha256sums = SKIP
 	sha256sums = 553858de4315d267d1f259d1146db028eec5112a797379a7a83f5c8a22e626b3
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
