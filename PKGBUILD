@@ -2,11 +2,10 @@
 
 pkgname=luna
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage npm dependencies through a modern UI'
 arch=('x86_64')
 depends=('npm' 'electron')
-makedepends=('yarn')
 url='https://github.com/rvpanoz/luna'
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rvpanoz/luna/archive/v${pkgver}.tar.gz"
@@ -18,13 +17,11 @@ sha512sums=('bfa885709bf40d1720cd293691fb74bb8a02ebb2173f9b2ce6732246b05e843fc32
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  #yarn install
   npm install
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  #yarn build:dir
   npm run package-linux --target dir
 }
 

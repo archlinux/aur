@@ -1,11 +1,10 @@
 pkgbase = luna
 	pkgdesc = Manage npm dependencies through a modern UI
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rvpanoz/luna
 	arch = x86_64
 	license = GPL3
-	makedepends = yarn
 	depends = npm
 	depends = electron
 	source = luna-3.1.0.tar.gz::https://github.com/rvpanoz/luna/archive/v3.1.0.tar.gz
