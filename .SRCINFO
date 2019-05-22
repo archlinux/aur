@@ -1,7 +1,7 @@
 pkgbase = discord-canary
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
 	pkgver = 0.0.78
-	pkgrel = 2
+	pkgrel = 3
 	url = https://discordapp.com/
 	arch = x86_64
 	license = custom

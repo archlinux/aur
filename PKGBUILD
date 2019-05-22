@@ -5,7 +5,7 @@
 
 pkgname=discord-canary
 pkgver=0.0.78
-pkgrel=2
+pkgrel=3
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -27,7 +27,6 @@ package() {
     # Install the main files.
     install -d "${pkgdir}/opt/${pkgname}"
     cp -a "${srcdir}/DiscordCanary/." "${pkgdir}/opt/${pkgname}"
-    chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
 
     # Desktop Entry
     install -Dm644 "${pkgdir}/opt/${pkgname}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
