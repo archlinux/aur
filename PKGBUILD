@@ -10,7 +10,7 @@ license=('GPL')
 makedepends=('git')
 provides=('hicolor-icon-theme')
 conflicts=('hicolor-icon-theme')
-source=("git+https://anongit.freedesktop.org/git/xdg/default-icon-theme.git")
+source=("git+https://gitlab.freedesktop.org/xdg/default-icon-theme")
 sha256sums=('SKIP')
 
 
@@ -24,7 +24,8 @@ build() {
   cd "default-icon-theme"
 
   ./autogen.sh --no-configure
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
