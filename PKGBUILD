@@ -4,7 +4,7 @@
 
 pkgname=pan-git
 _gitname=pan
-pkgver=0.145.r9.ge65ba15
+pkgver=0.145.r15.g476b5a6
 pkgrel=1
 epoch=1
 pkgdesc="Pan is a Usenet newsreader that's good at both text and binaries. Development version."
