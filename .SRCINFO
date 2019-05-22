@@ -1,19 +1,19 @@
 pkgbase = sourcetrail
 	pkgdesc = A cross-platform source explorer for C/C++ and Java
-	pkgver = 2019.1.11
+	pkgver = 2019.2.25
 	pkgrel = 1
 	url = https://www.sourcetrail.com
 	arch = x86_64
 	license = custom
 	makedepends = rsync
-	provides = sourcetrail=2019.1.11
+	provides = sourcetrail=2019.2.25
 	conflicts = coati
 	replaces = coati
-	noextract = sourcetrail-2019.1.11.tar.gz
+	noextract = sourcetrail-2019.2.25.tar.gz
 	options = !strip
-	source = sourcetrail-2019.1.11.tar.gz::https://www.sourcetrail.com/downloads/2019.1.11/linux/64bit/
+	source = sourcetrail-2019.2.25.tar.gz::https://www.sourcetrail.com/downloads/2019.2.25/linux/64bit/
 	source = sourcetrail.desktop
-	sha256sums = 808b63e5b6972aae91c1014d1d0791a4851d09c4a08041a2a2cd3cdc5ec3c325
+	sha256sums = e448e8767ca213aa9e0036bb577d1f838682aa53eb8c37f4cd9ac5178d3147f6
 	sha256sums = 9254abd7c73b70d3b81a40a6993b8c305cd24535aafe0eedffcd280f7fae2a3d
 
 pkgname = sourcetrail
