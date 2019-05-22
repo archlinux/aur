@@ -3,14 +3,14 @@
 
 pkgname=aerc-git
 _pkgname=aerc
-pkgver=r272.4d6e665
+pkgver=r280.062f00e
 pkgrel=1
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
 url='https://git.sr.ht/~sircmpwn/aerc'
 license=('MIT')
 depends=('libvterm')
-makedepends=('go')
+makedepends=('go' 'scdoc')
 provides=('aerc')
 conflicts=('aerc')
 source=("$_pkgname::git+https://git.sr.ht/~sircmpwn/aerc")
@@ -33,21 +33,10 @@ prepare() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    go build \
-        -gcflags "all=-trimpath=$PWD" \
-        -asmflags "all=-trimpath=$PWD" \
-        -ldflags "-extldflags $LDFLAGS" \
-        -o $_pkgname .
+    make PREFIX=$pkgdir/usr
 }
 
 package() {
     cd "$srcdir/$_pkgname"
-    install -Dm755 "aerc" "$pkgdir/usr/bin/aerc"
-    install -Dm644 "config/accounts.conf" "$pkgdir/usr/share/doc/aerc/accounts.conf"
-    install -Dm644 "config/aerc.conf" "$pkgdir/usr/share/doc/aerc/aerc.conf"
-    install -Dm644 "config/binds.conf" "$pkgdir/usr/share/doc/aerc/binds.conf"
-
-    # install contrib scripts
-    install -Dm755 -d "$pkgdir/usr/share/aerc"
-    cp contrib/* "$pkgdir/usr/share/aerc/"
+    make PREFIX=$pkgdir/usr install
 }
