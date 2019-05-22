@@ -9,6 +9,7 @@ pkgver=1.30.0
 pkgrel=1
 epoch=1
 pkgdesc='A lightweight display manager. With guest-session enabled'
+_add_group=add-autologin-group
 arch=(x86_64)
 url=https://www.freedesktop.org/wiki/Software/LightDM/
 license=(
@@ -33,6 +34,7 @@ makedepends=(
   vala
   yelp-tools
 )
+install=$_add_group.install
 source=(
     "lightdm-${pkgver}.tar.gz::https://github.com/CanonicalLtd/lightdm/archive/${pkgver}.tar.gz"
     lightdm.service
@@ -44,7 +46,9 @@ source=(
     lightdm-default-config.patch
     Xsession
     0001-guest-account-Add-default-GSettings-support.patch
-    0002-Fix-separator-error.patch)
+    $_add_group.script
+    $_add_group.service
+)
 sha256sums=('05fe38d10dc8966f19806f001561edc057e757656ed37e08ca3127ab32a02692'
             '0db37a14521be729411a767f157fbd07adb738b14006277def53a1efe4dacfb8'
             'fd93291bfc9985f0a1bb288472866aa0a9bcd259e024c3a29d20ca158bc08403'
@@ -54,14 +58,14 @@ sha256sums=('05fe38d10dc8966f19806f001561edc057e757656ed37e08ca3127ab32a02692'
             'a89566307e1c81c24f037d854cbd472d2f94f8a4b759877a01563a332319f7d6'
             '70b1d952d1ea8ade6b5561e6de781cfbfe3a86a116c10ea9774cfae73281c7a6'
             'd30321a1b490500483b8ed7825fcff2c24a7c760ac627789ff517693888ec3c5'
-             'e4c2c618f5484ba165776b747befadd101e40cfdbe4bc01cbb6d3e22beb6ab65'
-             '05ead7af1f631df8bcb690dfd4404fe8459e7757d744af0748b4e5a2e8b171e7')
+            'e4c2c618f5484ba165776b747befadd101e40cfdbe4bc01cbb6d3e22beb6ab65'
+            '8b665387245531d4d25ffee9636a3735667876937238c376d7eece97f7a82c14'
+            '2199300cc27b6b407e46206abd181b2be2679d2520ddd183e4a37a3fc691739a')
 
 prepare() {
     cd "lightdm-${pkgver}"
 
     patch -Np1 -i ../lightdm-default-config.patch
-    # patch -p1 -i "${srcdir}"/0002-Fix-separator-error.patch
 
     # Do not use Ubuntu's language-tools
     sed -i '/04_language_handling.patch/d' debian/patches/series
@@ -156,31 +160,36 @@ package_lightdm-guest() {
   install -m 644 ../lightdm.sysusers "${pkgdir}"/usr/lib/sysusers.d/lightdm.conf
   install -m 644 ../lightdm.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/lightdm.conf
 
-    # Additional LightDM configuration files
-    install -dm755 "${pkgdir}"/etc/lightdm/lightdm.conf.d/
-    install -m644 debian/50-{xserver-command,greeter-wrapper,guest-wrapper,disable-log-backup}.conf \
+  # Additional LightDM configuration files
+  install -dm755 "${pkgdir}"/etc/lightdm/lightdm.conf.d/
+  install -m644 debian/50-{xserver-command,greeter-wrapper,guest-wrapper,disable-log-backup}.conf \
                   "${pkgdir}"/etc/lightdm/lightdm.conf.d/
 
-    # Install binaries and scripts
-    install -dm755 "${pkgdir}"/usr/bin/
-    install -m755 debian/guest-account.sh "${pkgdir}"/usr/bin/guest-account
-    install -m755 debian/guest-session-auto.sh "${pkgdir}"/usr/lib/lightdm/
-    install -m755 debian/lightdm-session "${pkgdir}"/usr/bin/
-    install -m755 debian/lightdm-greeter-session "${pkgdir}"/usr/lib/lightdm/
-    install -m755 debian/config-error-dialog.sh "${pkgdir}"/usr/lib/lightdm/
+  # Install binaries and scripts
+  install -dm755 "${pkgdir}"/usr/bin/
+  install -m755 debian/guest-account.sh "${pkgdir}"/usr/bin/guest-account
+  install -m755 debian/guest-session-auto.sh "${pkgdir}"/usr/lib/lightdm/
+  install -m755 debian/lightdm-session "${pkgdir}"/usr/bin/
+  install -m755 debian/lightdm-greeter-session "${pkgdir}"/usr/lib/lightdm/
+  install -m755 debian/config-error-dialog.sh "${pkgdir}"/usr/lib/lightdm/
 
-    # Skeleton files for guest account
-    install -dm755 "${pkgdir}"/usr/share/lightdm/guest-session/skel/.config/autostart/
-    install -m644 debian/guest-session-startup.desktop \
+  # Skeleton files for guest account
+  install -dm755 "${pkgdir}"/usr/share/lightdm/guest-session/skel/.config/autostart/
+  install -m644 debian/guest-session-startup.desktop \
                   "${pkgdir}"/usr/share/lightdm/guest-session/skel/.config/autostart/
-    install -m755 debian/guest-session-setup.sh \
+  install -m755 debian/guest-session-setup.sh \
                   "${pkgdir}"/usr/share/lightdm/guest-session/setup.sh
 
-    # Create GSettings defaults directory
-    install -dm755 "${pkgdir}"/etc/guest-session/gsettings/
+  # Create GSettings defaults directory
+  install -dm755 "${pkgdir}"/etc/guest-session/gsettings/
 
-    # Remove apparmor stuff
-    rm -rvf "${pkgdir}"/etc/apparmor.d/
+  # Remove apparmor stuff
+  rm -rvf "${pkgdir}"/etc/apparmor.d/
+
+  # Install autologin systemd service
+  cd /$srcdir
+  install -Dm755 $_add_group.script $pkgdir/usr/bin/$_add_group
+  install -Dm644 $_add_group.service $pkgdir/etc/systemd/system/$_add_group.service
 }
 
 package_liblightdm-qt5-guest() {

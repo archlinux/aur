@@ -1,0 +1,45 @@
+# Colored makepkg-like functions
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+  
+  systemctl is-active add-autologin-group >/dev/null || systemctl enable add-autologin-group
+  
+  echo ""
+  note "We have enabled autologin for all users."
+  note "Reboot your system the first time, so changes will take affect."
+  echo ""
+}
+
+post_upgrade() {
+  
+  post_install
+}
+
+post_remove() {
+ 
+  ! systemctl is-active add-autologin-group >/dev/null || systemctl disable add-autologin-group
+  
+  grep autologin /etc/group
+	if [[ "$?" -eq 0 ]]; then
+		groupdel autologin >/dev/null
+	else echo "" 
+		note"Autologin group already removed"
+  		echo ""
+  echo ""
+  note "We have disabled autologin for all users and removed autologin group."
+  note "Reboot your system, so changes will take affect."
+  echo ""
+  fi
+}
