@@ -63,7 +63,7 @@ package_nvidia-410xx-utils() {
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia-410xx: OpenCL support')
     conflicts=('nvidia-410xx-libgl' 'nvidia-utils' 'nvidia-libgl')
-    provides=('vulkan-driver' 'opengl-driver' 'nvidia-410xx-libgl' 'nvidia-libgl')
+    provides=('vulkan-driver' 'opengl-driver' 'nvidia-utils' 'nvidia-410xx-libgl' 'nvidia-libgl')
     replaces=('nvidia-410xx-libgl')
     install="${pkgname}.install"
 

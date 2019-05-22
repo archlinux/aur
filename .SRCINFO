@@ -23,6 +23,7 @@ pkgname = nvidia-410xx-utils
 	optdepends = opencl-nvidia-410xx: OpenCL support
 	provides = vulkan-driver
 	provides = opengl-driver
+	provides = nvidia-utils
 	provides = nvidia-410xx-libgl
 	provides = nvidia-libgl
 	conflicts = nvidia-410xx-libgl

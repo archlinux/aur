@@ -1,4 +1,5 @@
 *.pkg*
 *.run
 *.part
+*.log
 */
