@@ -5,8 +5,8 @@
 
 pkgname=jameica-nightly
 pkgver=2.9.0
-pkgrel=3
-pkgdesc="Jameica Plattform"
+pkgrel=4
+pkgdesc="Jameica is a free Java application platform"
 arch=('any')
 url="http://www.willuhn.de/products/jameica/"
 license=('GPL')
@@ -23,26 +23,21 @@ package() {
   # remove local swt lib
   rm -rf "$pkgdir"/usr/share/java/jameica/lib/swt/linux64
 
-  if [ "$CARCH" = "armv6h" ] || [ "$CARCH" = "armv7h" ] || [ "$CARCH" = "aarch64" ]; then
-
-    # adjust classpath in order to use system swt
-    unzip "$pkgdir"/usr/share/java/jameica/jameica-linux64.jar \
+  # adjust classpath in order to use system swt
+  unzip "$pkgdir"/usr/share/java/jameica/jameica-linux64.jar \
 	  -d "$pkgdir"/usr/share/java/jameica/unzipped
-    sed -i 's|lib/swt/linux64/swt.jar|/usr/share/java/swt.jar|g' \
-	"$pkgdir"/usr/share/java/jameica/unzipped/META-INF/MANIFEST.MF
+  sed -i 's|lib/swt/linux64/swt.jar|/usr/share/java/swt.jar|g' \
+	  "$pkgdir"/usr/share/java/jameica/unzipped/META-INF/MANIFEST.MF
 
-    pushd "$pkgdir"/usr/share/java/jameica/unzipped
-    zip -r ../jameica-linux64.jar *
-    popd
+  pushd "$pkgdir"/usr/share/java/jameica/unzipped
+  zip -r ../jameica-linux64.jar *
+  popd
 
-    # remove dead bodies
-    rm -rf "$pkgdir"/usr/share/java/jameica/unzipped
-
-    # link jameica-linux64.jar to jameica-linux.jar
-    ln -s /usr/share/java/jameica/jameica-linux64.jar \
-       "$pkgdir"/usr/share/java/jameica/jameica-linux.jar
-
-  fi
+  # remove dead bodies
+  rm -rf "$pkgdir"/usr/share/java/jameica/unzipped
+  # link jameica-linux64.jar to jameica-linux.jar
+  ln -s /usr/share/java/jameica/jameica-linux64.jar \
+    "$pkgdir"/usr/share/java/jameica/jameica-linux.jar
 
   install -m 644 "$srcdir"/jameica.desktop "$pkgdir"/usr/share/applications
 }

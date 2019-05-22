@@ -1,7 +1,7 @@
 pkgbase = jameica-nightly
 	pkgdesc = Jameica is a free Java application platform
 	pkgver = 2.9.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.willuhn.de/products/jameica/
 	arch = any
 	license = GPL
