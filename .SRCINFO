@@ -1,6 +1,6 @@
 pkgbase = fastoredis
 	pkgdesc = FastoRedis, cross-platform open source Redis GUI management tool.
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://fastoredis.com/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = fastoredis
 	provides = fastoredis
 	conflicts = fastoredis
 	source = fastoredis.desktop
-	source = fastoredis-2.2.1-x86_64.tar.gz::https://fastoredis.com/downloads/linux/fastoredis-2.2.1-x86_64.tar.gz
+	source = fastoredis-2.3.0-x86_64.tar.gz::https://fastoredis.com/downloads/linux/fastoredis-2.3.0-x86_64.tar.gz
 	md5sums = a3da6c7bf56828a0b94e106960a41f9f
-	md5sums = decf13c54d0dec0d814db1f8c53e90aa
+	md5sums = 5e7a7cebe1cec4f778c21aa9dd56ad01
 
 pkgname = fastoredis
 
