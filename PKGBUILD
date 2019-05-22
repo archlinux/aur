@@ -1,44 +1,66 @@
-# Maintainer: Sam Burgos < sam dot burgos1089 at gmail dot 
+# Maintainer: Sam Burgos < santiago dot burgos1089 at gmail dot 
 
 pkgbase=lightdm-guest
-pkgname=('lightdm-guest' 'liblightdm-qt4-guest' 'liblightdm-qt5-guest')
-pkgver=1.28.0
+pkgname=(
+  lightdm-guest
+  liblightdm-qt5-guest
+)
+pkgver=1.30.0
 pkgrel=1
 epoch=1
-pkgdesc='A lightweight display manager. With guest-session enabled and other tweaks'
-arch=('x86_64')
-url='https://www.freedesktop.org/wiki/Software/LightDM/'
-license=('GPL3' 'LGPL3')
-makedepends=('gcc-libs' 'glib2' 'glibc' 'gobject-introspection' 'gtk-doc'
-             'intltool' 'itstool' 'libgcrypt' 'libx11' 'libxcb' 'libxdmcp'
-             'libxklavier' 'pam' 'polkit' 'qt4' 'qt5-base' 'vala' 'yelp-tools')
-source=("lightdm-${pkgver}.tar.gz::https://github.com/CanonicalLtd/lightdm/archive/${pkgver}.tar.gz"
-        'lightdm.service'
-        'lightdm.sysusers'
-        'lightdm.tmpfiles'
-        'lightdm.pam'
-        'lightdm-autologin.pam'
-        'lightdm.rules'
-        'lightdm-default-config.patch'
-        'Xsession'
-        0001-guest-account-Add-default-GSettings-support.patch
-	0002-Fix-separator-error.patch)
-sha256sums=('e76eb297ff9bf57d38f3480789b9cc0d99a939bd0b5f280c7309ff313d956784'
-             SKIP
-             SKIP
-             SKIP
-             SKIP
-             SKIP
-             SKIP
-             SKIP
-             SKIP
-             SKIP
-             SKIP)
+pkgdesc='A lightweight display manager. With guest-session enabled'
+arch=(x86_64)
+url=https://www.freedesktop.org/wiki/Software/LightDM/
+license=(
+  GPL3
+  LGPL3
+)
+makedepends=(
+  glib2
+  glibc
+  gobject-introspection
+  gtk-doc
+  intltool
+  itstool
+  libgcrypt
+  libx11
+  libxcb
+  libxdmcp
+  libxklavier
+  pam
+  polkit
+  qt5-base
+  vala
+  yelp-tools
+)
+source=(
+    "lightdm-${pkgver}.tar.gz::https://github.com/CanonicalLtd/lightdm/archive/${pkgver}.tar.gz"
+    lightdm.service
+    lightdm.sysusers
+    lightdm.tmpfiles
+    lightdm.pam
+    lightdm-autologin.pam
+    lightdm.rules
+    lightdm-default-config.patch
+    Xsession
+    0001-guest-account-Add-default-GSettings-support.patch
+    0002-Fix-separator-error.patch)
+sha256sums=('05fe38d10dc8966f19806f001561edc057e757656ed37e08ca3127ab32a02692'
+            '0db37a14521be729411a767f157fbd07adb738b14006277def53a1efe4dacfb8'
+            'fd93291bfc9985f0a1bb288472866aa0a9bcd259e024c3a29d20ca158bc08403'
+            'cd69f928a1a5b30a30ba916e1b64c9f3657597cb28f3f0e220494d6e5e4bf587'
+            'e8c4c5fd3b801a390d201166fd1fb9730e78a5c62928768103b870b6bd980ea0'
+            '33e3c3d6e16c8d30756754ea3f31f5457c5be0343686aad287692be34958984a'
+            'a89566307e1c81c24f037d854cbd472d2f94f8a4b759877a01563a332319f7d6'
+            '70b1d952d1ea8ade6b5561e6de781cfbfe3a86a116c10ea9774cfae73281c7a6'
+            'd30321a1b490500483b8ed7825fcff2c24a7c760ac627789ff517693888ec3c5'
+             'e4c2c618f5484ba165776b747befadd101e40cfdbe4bc01cbb6d3e22beb6ab65'
+             '05ead7af1f631df8bcb690dfd4404fe8459e7757d744af0748b4e5a2e8b171e7')
 
 prepare() {
     cd "lightdm-${pkgver}"
 
-    patch -p1 -i "${srcdir}"/lightdm-default-config.patch
+    patch -Np1 -i ../lightdm-default-config.patch
     # patch -p1 -i "${srcdir}"/0002-Fix-separator-error.patch
 
     # Do not use Ubuntu's language-tools
@@ -57,8 +79,7 @@ prepare() {
 build() {
   cd lightdm-${pkgver}
 
-  export MOC4='moc-qt4'
-  export MOC5='moc-qt5'
+  export MOC5=moc-qt5
 
     gtkdocize
     aclocal --install --force
@@ -66,36 +87,48 @@ build() {
     intltoolize -f
 
   ./configure \
-    --prefix='/usr' \
-    --libexecdir='/usr/lib/lightdm' \
-    --localstatedir='/var' \
-    --sbindir='/usr/bin' \
-    --sysconfdir='/etc' \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/lightdm \
+    --localstatedir=/var \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
     --disable-static \
     --disable-tests \
     --enable-gtk-doc \
-    --with-greeter-user='lightdm' \
-    --with-greeter-session='lightdm-gtk-greeter'
+    --with-greeter-user=lightdm \
+    --with-greeter-session=lightdm-gtk-greeter
   make
 }
 
 package_lightdm-guest() {
-  depends=('glib2' 'glibc' 'libgcrypt' 'libx11' 'libxcb' 'libxdmcp'
-           'libxklavier' 'pam' 'polkit')
-  optdepends=('accountsservice: Enhanced user accounts handling'
-              'lightdm-gtk-greeter: GTK greeter'
-              'xorg-server-xephyr: LightDM test mode'
-              'bindfs: Used for guest session to avoid copying skeleton dotfiles')
+  depends=(
+    bindfs
+    glib2
+    libgcrypt
+    libx11
+    libxcb
+    libxdmcp
+    libxklavier
+    pam
+    polkit
+  )
+  optdepends=(
+    'accountsservice: Enhanced user accounts handling'
+    'lightdm-gtk-greeter: GTK greeter'
+    'xorg-server-xephyr: LightDM test mode'
+  )
     provides=(lightdm)
     conflicts=(lightdm)
-  backup=('etc/apparmor.d/lightdm-guest-session'
-          'etc/lightdm/keys.conf'
-          'etc/lightdm/lightdm.conf'
-          'etc/lightdm/users.conf'
-          'etc/lightdm/Xsession'
-          'etc/pam.d/lightdm'
-          'etc/pam.d/lightdm-autologin'
-          'etc/pam.d/lightdm-greeter')
+  backup=(
+    etc/apparmor.d/lightdm-guest-session
+    etc/lightdm/keys.conf
+    etc/lightdm/lightdm.conf
+    etc/lightdm/users.conf
+    etc/lightdm/Xsession
+    etc/pam.d/lightdm
+    etc/pam.d/lightdm-autologin
+    etc/pam.d/lightdm-greeter
+  )
 
   cd lightdm-${pkgver}
 
@@ -104,6 +137,10 @@ package_lightdm-guest() {
   install -m 755 ../Xsession "${pkgdir}"/etc/lightdm/Xsession
   rm -rf "${pkgdir}"/etc/init
   rm -rf "${pkgdir}"/usr/include/lightdm-qt{,5}-*
+
+  # Dbus
+  mv "${pkgdir}"/{etc,usr/share}/dbus-1/system.d
+  rmdir "${pkgdir}"/etc/dbus-1
 
   # PAM
   install -m 644 ../lightdm.pam "${pkgdir}"/etc/pam.d/lightdm
@@ -146,27 +183,13 @@ package_lightdm-guest() {
     rm -rvf "${pkgdir}"/etc/apparmor.d/
 }
 
-package_liblightdm-qt4-guest() {
-  pkgdesc='LightDM Qt client library. With guest-session enabled and other tweaks'
-  depends=('gcc-libs' 'glibc' 'lightdm' 'qt4')
-  options=('!emptydirs')
-  provides=(liblightdm-qt4)
-  conflicts=(liblightdm-qt4)
-
-  cd lightdm-${pkgver}
-
-  make DESTDIR="${pkgdir}" -C liblightdm-gobject install
-  make DESTDIR="${pkgdir}" -C liblightdm-qt install
-  make DESTDIR="${pkgdir}" -C liblightdm-gobject uninstall
-  find "${pkgdir}" -type d -name *qt5* -exec rm -rf {} +
-  find "${pkgdir}" -type f  -name *qt5* -exec rm {} +
-  find "${pkgdir}" -type l  -name *qt5* -exec rm {} +
-}
-
 package_liblightdm-qt5-guest() {
-  pkgdesc='LightDM Qt client library. With guest-session enabled and other tweaks'
-  depends=('gcc-libs' 'glibc' 'lightdm' 'qt5-base')
-  options=('!emptydirs')
+  pkgdesc='LightDM Qt client library. With guest-session enabled'
+  depends=(
+    lightdm
+    qt5-base
+  )
+  options=(!emptydirs)
   provides=(liblightdm-qt5)
   conflicts=(liblightdm-qt5)
 
