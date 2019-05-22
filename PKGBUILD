@@ -2,7 +2,7 @@
 
 pkgname="ryzenadj-git"
 pkgver=gui.v0.2.1.r2.g4656930
-pkgrel=1
+pkgrel=4
 pkgdesc="RyzenAdj tool for adjusting Ryzen Mobile power states"
 url="https://github.com/FlyGoat/RyzenAdj"
 arch=("x86_64")
