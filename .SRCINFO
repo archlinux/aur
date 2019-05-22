@@ -1,17 +1,24 @@
 pkgbase = python-flask-cors
-	pkgdesc = cross origin resource sharing (CORS) support for Flask
+	pkgdesc = A Flask extension for handling Cross Origin Resource Sharing (CORS), making cross-origin AJAX possible
 	pkgver = 3.0.7
-	pkgrel = 1
-	url = https://github.com/corydolphin/flask-cors
+	pkgrel = 2
+	url = https://pypi.org/project/Flask-Cors
 	arch = any
-	license = BSD
+	license = MIT
 	makedepends = python-setuptools
-	depends = python-flask>=0.9
-	depends = python-six
-	depends = python>=3.4
-	source = https://github.com/corydolphin/flask-cors/archive/3.0.7.tar.gz
-	md5sums = da02288a9734e26ef0a38afcf82ea6db
-	sha1sums = 21845aa4e9bdbd9051ab7e82a9784c72bf1e039e
+	makedepends = python2-setuptools
+	source = python-flask-cors-3.0.7.tar.gz::https://files.pythonhosted.org/packages/source/F/Flask-Cors/Flask-Cors-3.0.7.tar.gz
+	md5sums = 4448765829502d74745a976aa0620c1a
+	sha1sums = 4e3b951c6ee56e19396ff8a3ff4534d821434b86
+	sha256sums = 7e90bf225fdf163d11b84b59fb17594d0580a16b97ab4e1146b1fb2737c1cfec
 
 pkgname = python-flask-cors
+	depends = python>=3.4
+	depends = python2-flask>=0.9
+	depends = python2-six
+
+pkgname = python2-flask-cors
+	depends = python2
+	depends = python2-flask>=0.9
+	depends = python2-six
 
