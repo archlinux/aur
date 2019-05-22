@@ -1,7 +1,7 @@
 pkgbase = kops-bin
 	pkgdesc = Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management
 	pkgver = 1.12.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/kubernetes/kops
 	arch = x86_64
 	license = apache
