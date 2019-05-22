@@ -1,6 +1,6 @@
 # Maintainer: Camilo Prieto <camilo.prieto93@gmail.com>
 pkgname=boostnote-bin
-pkgver=0.11.15
+pkgver=0.11.16
 pkgrel=1
 pkgdesc="Open source note-taking app for programmers. Official binary."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 conflicts=('boostnote')
 
 source_x86_64=("https://github.com/BoostIO/boost-releases/releases/download/v${pkgver}/boostnote_${pkgver}_amd64.deb")
-sha512sums_x86_64=('7a26792d4ef1ae33e1b44abc400958cbedd27966054a0bc7af7d17a62e13947df79a97bab0b1a7fc36a1e84add0e304a9775a4df54c7cc433f87b31dd41b9690')
+sha512sums_x86_64=('c24f763665f730a46ba8b3be7a807d44c72df04465bb436755eb2ba5898cc6d3526dccd629896e855d81fc881dbbf364481c900df515f3cd75e573af363dcb72')
 
 package(){
 
