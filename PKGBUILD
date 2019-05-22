@@ -2,7 +2,7 @@
 # Contributor: Bennett Piater <bennett at piater dot name>
 
 pkgname=doctl
-pkgver=1.14.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='A command line tool for DigitalOcean services'
 arch=('i686' 'x86_64')
@@ -27,9 +27,15 @@ check() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm 755 builds/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm 755 "builds/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+
+  # Install bash and zsh completions
+  install -d 755 "${pkgdir}/usr/share/bash-completion/completions/"
+  install -d 755 "${pkgdir}/usr/share/zsh/site-functions/"
+  ${pkgdir}/usr/bin/"${pkgname}" completion bash > "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  ${pkgdir}/usr/bin/"${pkgname}" completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
 
 # vim: set et sw=2 sts=2:
-sha256sums=('94a2c0f416f602fe6ee01d5b09d9596dad6f012841d7d9763b2ed9e5be5dc16f')
+sha256sums=('b82c0470542e7b8d4e13bf07ff09b0a7cfc50454dd0551a531ff850ccc0d6570')
