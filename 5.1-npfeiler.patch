@@ -1,0 +1,47 @@
+--- archive_files/common/lib/modules/fglrx/build_mod/firegl_public.c
++++ archive_files/common/lib/modules/fglrx/build_mod/firegl_public.c
+@@ -212,6 +212,10 @@
+ #include <asm/set_memory.h>
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,1,0)
++#include <uapi/linux/mman.h>// MAP_SHARED
++#endif
++
+ #include "firegl_public.h"
+ #include "kcl_osconfig.h"
+ #include "kcl_io.h"
+@@ -4262,22 +4266,28 @@ static vm_nopage_ret_t ip_vm_gart_nopage(struct vm_area_struct* vma,
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,11,0)
+ 
+-static int ip_vm_fault(struct vm_fault *vmf) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,1,0)
++typedef unsigned int ip_vm_ret;
++#else
++typedef int ip_vm_ret;
++#endif
++
++static ip_vm_ret ip_vm_fault(struct vm_fault *vmf) {
+     TRACE_FAULT(do_vm_fault, vmf->vma, vmf);
+ }
+-static int ip_vm_shm_fault(struct vm_fault *vmf) {
++static ip_vm_ret ip_vm_shm_fault(struct vm_fault *vmf) {
+     TRACE_FAULT(do_vm_shm_fault, vmf->vma, vmf);
+ }
+-static int ip_vm_dma_fault(struct vm_fault *vmf) {
++static ip_vm_ret ip_vm_dma_fault(struct vm_fault *vmf) {
+     TRACE_FAULT(do_vm_dma_fault, vmf->vma, vmf);
+ }
+-static int ip_vm_kmap_fault(struct vm_fault *vmf) {
++static ip_vm_ret ip_vm_kmap_fault(struct vm_fault *vmf) {
+     TRACE_FAULT(do_vm_kmap_fault, vmf->vma, vmf);
+ }
+-static int ip_vm_pcie_fault(struct vm_fault *vmf) {
++static ip_vm_ret ip_vm_pcie_fault(struct vm_fault *vmf) {
+     TRACE_FAULT(do_vm_pcie_fault, vmf->vma, vmf);
+ }
+-static int ip_vm_gart_fault(struct vm_fault *vmf) {
++static ip_vm_ret ip_vm_gart_fault(struct vm_fault *vmf) {
+     TRACE_FAULT(do_vm_gart_fault, vmf->vma, vmf);
+ }

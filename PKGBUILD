@@ -24,13 +24,13 @@
 # Contributor: aslmaswd (acpi main script)
 # Contributor: npfeiler (libcl/opencl-icd-loader cleaning)
 # Contributor: sling00 (4.10 kernel patch)
-# Contributor: npfeiler (4.11, 4.12, 4.13, 4.14, 4.15.5, 4.17, 4.20 and 5.0 kernel patch)
+# Contributor: npfeiler (4.11, 4.12, 4.13, 4.14, 4.15.5, 4.17, 4.20, 5.0 and 5.1 kernel patch)
 
 _old_control=n #for pre-GCN users who has problems with default config, pick =y to use control file and opencl runtime from catalyst 15.9
 
 pkgname=catalyst-test
 pkgver=15.12
-pkgrel=29
+pkgrel=30
 # _betano=1.0
 _amdver=15.302
 pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons are optionally supported"
@@ -38,7 +38,7 @@ arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip')
-depends=('dkms' 'linux>=5.0' 'linux<5.1' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa-noglvnd')
+depends=('dkms' 'linux>=5.0' 'linux<5.2' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa-noglvnd')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	'opencl-headers: headers necessary for OpenCL development'
@@ -111,7 +111,8 @@ source=(
 	4.14.21_4.15.5-npfeiler-flush_tlb_one_kernel.patch
 	4.17-npfeiler-pci_get_domain_bus_and_slot.patch
 	4.20-npfeiler-libfglrx_ip.patch
-	5.0-npfeiler.patch)
+	5.0-npfeiler.patch
+	5.1-npfeiler.patch)
 
 md5sums=('39808c8a9bcc9041f1305e3531b60622'
          'af7fb8ee4fc96fd54c5b483e33dc71c4'
@@ -151,7 +152,8 @@ md5sums=('39808c8a9bcc9041f1305e3531b60622'
          '10af58c21e4e972115dda6dbd8279594'
          '7ed6e1cf3a9719e6a9874e6a18f29bfb'
          '3ca961ceefbc4ddc0eb21452cba79c6c'
-         '61e709ce66c0479fe3aff7245c71a382')
+         '61e709ce66c0479fe3aff7245c71a382'
+		 'ff894855bfd17a477363398de8eaeac9')
 
 if [ "${_old_control}" = "y" ]; then
 	source+=(https://www2.ati.com/drivers/linux/amd-catalyst-15.9-linux-installer-15.201.1151-x86.x86_64.zip)
@@ -195,6 +197,7 @@ prepare() {
 	patch -Np1 -i ../4.17-npfeiler-pci_get_domain_bus_and_slot.patch
 	patch -Np1 -i ../4.20-npfeiler-libfglrx_ip.patch
 	patch -Np1 -i ../5.0-npfeiler.patch
+	patch -Np1 -i ../5.1-npfeiler.patch
 
 	cd ${srcdir}/archive_files/common
 	patch -Np2 -i ${srcdir}/arch-fglrx-authatieventsd_new.patch
