@@ -1,6 +1,6 @@
 pkgbase = nginx-h5bp-server-configs
 	pkgdesc = Nginx HTTP server boilerplate configs
-	pkgver = 3.0.1
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/h5bp/server-configs-nginx
 	install = .install
@@ -8,9 +8,8 @@ pkgbase = nginx-h5bp-server-configs
 	license = MIT
 	depends = nginx
 	provides = nginx-h5bp-server-configs
-	backup = etc/nginx/nginx.conf
-	source = https://github.com/h5bp/server-configs-nginx/archive/3.0.1.tar.gz
-	sha1sums = 7f3c0d396093d2c1365a5550a89c7f49cece5068
+	source = https://github.com/h5bp/server-configs-nginx/archive/3.1.0.tar.gz
+	sha1sums = c611f5c717114c461f2d08b3bf9de47f590cb8cf
 
 pkgname = nginx-h5bp-server-configs
 

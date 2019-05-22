@@ -1,4 +1,9 @@
 post_install() {
-  echo 'mime.types conflicts with other packages. To use the h5bp'
-  echo 'version, replace `/etc/nginx/mime.types` with `/etc/nginx/h5bp.mime.types`'
+  echo "mime.types conflicts with the base nginx package. To use the h5bp's"
+  echo 'version, replace the include for `/etc/nginx/mime.types`'
+  echo 'with `/etc/nginx/h5bp/mime.types`'
+}
+
+post_update() {
+  post_install
 }
