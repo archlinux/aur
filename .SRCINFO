@@ -1,56 +1,44 @@
 pkgbase = fusioninventory-agent
 	pkgdesc = An application for keeping track of the hardware and software
-	pkgver = 2.4.3
+	pkgver = 2.5
 	pkgrel = 1
 	url = http://fusioninventory.org
 	arch = any
 	license = GPL
 	checkdepends = perl-file-copy-recursive
-	checkdepends = perl-cgi
-	checkdepends = perl-http-server-simple
-	checkdepends = perl-http-server-simple-authen
-	checkdepends = perl-io-socket-ssl
-	checkdepends = perl-io-capture
-	checkdepends = perl-ipc-run
-	checkdepends = perl-net-snmp
-	checkdepends = perl-lwp-protocol-https
+	checkdepends = perl-http-proxy
 	checkdepends = perl-parallel-forkmanager
 	checkdepends = perl-test-compile
+	checkdepends = perl-test-cpan-meta
 	checkdepends = perl-test-deep
 	checkdepends = perl-test-exception
 	checkdepends = perl-test-mockmodule
+	checkdepends = perl-test-mockobject
 	checkdepends = perl-test-most
 	checkdepends = perl-test-nowarnings
-	checkdepends = perl-test-mockobject
-	makedepends = perl-http-server-simple
-	makedepends = perl-http-server-simple-authen
-	makedepends = perl-io-socket-ssl
-	makedepends = perl-io-capture
-	makedepends = perl-ipc-run
-	makedepends = perl-lwp-protocol-https
-	makedepends = perl-net-snmp
-	makedepends = perl-test-compile
-	makedepends = perl-test-deep
-	makedepends = perl-test-exception
-	makedepends = perl-test-mockmodule
-	makedepends = perl-test-mockobject
-	makedepends = perl-test-most
-	makedepends = perl-test-nowarnings
 	depends = perl>=5.8
+	depends = perl-cgi
 	depends = perl-file-which
+	depends = perl-http-server-simple
+	depends = perl-http-server-simple-authen
+	depends = perl-io-socket-ssl>=1.14
+	depends = perl-io-capture
+	depends = perl-ipc-run
 	depends = perl-libwww>=5.8
+	depends = perl-lwp-protocol-https
 	depends = perl-net-ip
+	depends = perl-net-snmp
 	depends = perl-text-template
 	depends = perl-universal-require
 	depends = perl-xml-treepp>=0.26
 	depends = perl-proc-daemon
 	optdepends = perl-compress-zlib: message compression
 	optdepends = perl-http-daemon: web interface
-	optdepends = perl-io-socket-ssl: HTTPS support
+	optdepends = perl-io-socket-ssl>=1.14: HTTPS support
 	optdepends = perl-lwp-protocol-https: HTTPS support
 	optdepends = perl-proc-pid-file
 	optdepends = perl-datetime
-	optdepends = perl-net-cups: Inventory printers detection
+	optdepends = perl-net-cups>=0.60: Inventory printers detection
 	optdepends = perl-parse-edid: Inventory EDID data parsing
 	optdepends = dmidecode: Inventory DMI data retrieval
 	optdepends = pciutils: Inventory PCI bus scanning (lspci)
@@ -67,10 +55,13 @@ pkgbase = fusioninventory-agent
 	optdepends = nmap: Network discovery
 	optdepends = perl-net-write: Wake on Lan ethernet method support
 	backup = etc/fusioninventory/agent.cfg
-	source = https://github.com/fusioninventory/fusioninventory-agent/releases/download/2.4.3/FusionInventory-Agent-2.4.3.tar.gz
-	source = setup.patch
-	md5sums = ac10003b29282fe63c0a247a80472743
-	md5sums = 51f15a7346dda3d3337b514e73a00132
+	backup = etc/fusioninventory/inventory-server-plugin.cfg
+	backup = etc/fusioninventory/server-test-plugin.cfg
+	backup = etc/fusioninventory/ssl-server-plugin.cfg
+	source = https://github.com/fusioninventory/fusioninventory-agent/releases/download/2.5/FusionInventory-Agent-2.5.tar.gz
+	source = package.patch
+	md5sums = 915e5ed60399facee2c4552d6601965d
+	md5sums = c3896747249badd126b65f0f3e8c822f
 
 pkgname = fusioninventory-agent
 

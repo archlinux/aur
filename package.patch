@@ -1,0 +1,57 @@
+diff --git a/etc/agent.cfg b/etc/agent.cfg
+index f11fb49c7..edbb1851d 100644
+--- a/etc/agent.cfg
++++ b/etc/agent.cfg
+@@ -97,13 +97,13 @@ httpd-trust =
+ #
+ 
+ # Logger backend, either Stderr, File or Syslog (Stderr)
+-logger = stderr
++logger = syslog
+ # log file
+ #logfile = /var/log/fusioninventory.log
+ # maximum log file size, in MB
+ #logfile-maxsize = 0
+ # Syslog facility
+-logfacility = LOG_USER
++logfacility = LOG_DAEMON
+ # Use color in the console
+ color = 0
+ 
+@@ -133,5 +133,5 @@ debug = 0
+ #   4. Package maintainers are encouraged to use this feature to avoid conflict
+ #      during upgrades after configuration update
+ #
+-#include "conf.d/"
++include "conf.d/"
+ #include "agent.local"
+diff --git a/lib/FusionInventory/Agent/Version.pm b/lib/FusionInventory/Agent/Version.pm
+index e027bd8a9..bf047ffa0 100644
+--- a/lib/FusionInventory/Agent/Version.pm
++++ b/lib/FusionInventory/Agent/Version.pm
+@@ -5,7 +5,7 @@ use warnings;
+ 
+ our $VERSION = "2.5";
+ our $PROVIDER = "FusionInventory";
+-our $COMMENTS = [];
++our $COMMENTS = [ "Arch Linux package from AUR" ];
+ 
+ 1;
+ 
+diff --git a/lib/setup.pm b/lib/setup.pm
+index 5d02f8500..e5499a2d1 100644
+--- a/lib/setup.pm
++++ b/lib/setup.pm
+@@ -11,9 +11,9 @@ use Cwd qw(abs_path);
+ our @EXPORT = ('%setup');
+ 
+ our %setup = (
+-    datadir => './share',
+-    libdir  => './lib',
+-    vardir  => './var',
++    datadir => '/usr/share/fusioninventory',
++    libdir  => '/usr/share/fusioninventory/lib',
++    vardir  => '/var/lib/fusioninventory-agent',
+ );
+ 
+ # Compute directly libdir from this setup file as it should be installed
