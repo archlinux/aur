@@ -14,8 +14,8 @@ pkgbase = python-flask-cors
 
 pkgname = python-flask-cors
 	depends = python>=3.4
-	depends = python2-flask>=0.9
-	depends = python2-six
+	depends = python-flask>=0.9
+	depends = python-six
 
 pkgname = python2-flask-cors
 	depends = python2
