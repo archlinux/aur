@@ -15,19 +15,21 @@ conflicts=('janet-lang-git')
 source=("https://github.com/janet-lang/janet/archive/v${pkgver}.tar.gz")
 sha256sums=('f5c90122715869657427cbba62809a1d53eaaced2268e7d55202301d65a75076')
 
+janet_build='JANET_BUILD=\"c7dc361\"'
+
 #prepare() {
 #    cd "${srcdir}/${_pkgname}-${pkgver}"
 #}
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    make PREFIX="/usr" CC=clang -j7
+    make PREFIX="/usr" CC=clang $janet_build -j7
 }
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    make PREFIX="${pkgdir}/usr" install
-    make PREFIX="${pkgdir}/usr" docs
+    make PREFIX="${pkgdir}/usr" $janet_build install
+    make PREFIX="${pkgdir}/usr" $janet_build docs
     mkdir -p ${pkgdir}/usr/share/janet
     cp -a examples ${pkgdir}/usr/share/janet
     cp -a build/doc.html ${pkgdir}/usr/share/janet
