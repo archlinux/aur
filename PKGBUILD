@@ -1,17 +1,20 @@
-# Maintainer: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
+# Maintainer: Sigvald Marholm <marholm@marebakken.com>
+# Maintainer: Georg S. Voelker <voelker@maibox.org>
+# Contributor: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
+
 pkgname=slepc
-pkgver=3.10.1
+pkgver=3.11.1
 pkgrel=1
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('i686' 'x86_64')
 url="http://www.grycap.upv.es/slepc"
 license=('BSD')
-depends=('petsc>=3.10')
+depends=('petsc>=3.11')
 install=slepc.install
 source=(http://slepc.upv.es/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
-sha256sums=('f64787c8c2ab3d2f6db3c67d2bfe6ee84f741ce3dfde1d2f8221e131820a12a1')
+sha256sums=('4816070d4ecfeea6212c6944cee22dc7b4763df1eaf6ab7847cc5ac5132608fb')
 
 export MAKEFLAGS="-j1"
 
