@@ -13,11 +13,14 @@ depends=('exiv2' 'graphicsmagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules')
-source=(http://photoqt.org/pkgs/$pkgname-$pkgver.tar.gz)
-md5sums=('656fee6f9923499992f069496a0aaa5d')
+source=(http://photoqt.org/pkgs/$pkgname-$pkgver.tar.gz
+        https://gitlab.com/luspi/photoqt/commit/c6fd41478e818f3a651d40f96cab3d790e1c09a4.diff)
+md5sums=('656fee6f9923499992f069496a0aaa5d' 'SKIP')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
+
+  patch -p1 < ../c6fd41478e818f3a651d40f96cab3d790e1c09a4.diff
 
   # To build PhotoQt with less features, add -Dxxxx=OFF to
   # the next line (where xxxx is the respective CMake option).
