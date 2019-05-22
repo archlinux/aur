@@ -4,10 +4,10 @@
  
 appname=Quaternion
 pkgname=quaternion
-libname=libQMatrixClient
-_libname=libqmatrixclient
-pkgver=0.0.9.3
-_libqmatrixclient_pkgver=0.4.0
+libname=libQuotient
+_libname=libQuotient
+pkgver=0.0.9.4b
+_libquotient_pkgver=0.5.2
 pkgrel=1
 pkgdesc='Qt5-based IM client for the Matrix protocol'
 url='https://matrix.org/docs/projects/client/quaternion.html'
@@ -17,13 +17,13 @@ depends=('qt5-tools' 'qt5-quickcontrols' 'qt5-quickcontrols2')
 makedepends=('cmake')
 provides=('quaternion')
 conflicts=('quaternion-git')
-source=("https://github.com/QMatrixClient/Quaternion/archive/v$pkgver.tar.gz"
-        "https://github.com/QMatrixClient/libqmatrixclient/archive/v${_libqmatrixclient_pkgver}.tar.gz")
-sha256sums=('7f92c3acc73bb7e44efe94bd1085ae9fd5b58efa51efc28a931cace131c22230'
-            '8c0a1e0c52e9be06a9883487893cff005287fb199e378033182b681949c521c3')
+source=("https://github.com/quotient-im/Quaternion/archive/$pkgver.tar.gz"
+        "https://github.com/quotient-im/libQuotient/archive/${_libquotient_pkgver}.tar.gz")
+sha256sums=('fc3634a02d12070290c42dc21746ca8e51303eb3ed1cc5e3f6bebf1096b75d1f'
+            '1848bc0af53ce42c2b1a1a4fdeccb054af1f9e0f765cadf609f62727ce23dfd2')
 
 prepare() {
-  cp -r ${_libname}-${_libqmatrixclient_pkgver}/* ${srcdir}/${appname}-${pkgver}/lib/
+  cp -r ${_libname}-${_libquotient_pkgver}/* ${srcdir}/${appname}-${pkgver}/lib/
   # INSTALL rule also installs libqmatrixclient
   sed -i 's/EXCLUDE_FROM_ALL//' ${appname}-${pkgver}/CMakeLists.txt
 }
