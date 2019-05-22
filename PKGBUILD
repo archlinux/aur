@@ -5,7 +5,7 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
-pkgver=1.1.0.DEV.r43604.g36d0116774
+pkgver=1.3.0.DEV.r44719.gefd794e199
 pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language'
 arch=('x86_64')
@@ -22,9 +22,9 @@ source=(git://github.com/JuliaLang/julia.git#branch=master
         julia-makefile.patch
         cblas.patch)
 sha256sums=('SKIP'
-            '89c7b3234cf87d132345b6c0194dae756836059d3793cc8a97cc6366203a6ae7'
-            '29b68ecdaf91770585609f54e5559e571d6b57a6312a3e8335caa7d647a2d2ca'
-            '5c346bf8ed9a5763cf3bf6478158297107f16bbc07052b43920f778f0018b77a')
+            '21f97b3441097e71db59e2205f644466d829bbd0b73a34bc8b857b4390cf8ffc'
+            '030b37d711a08567e7f9c5f0626dec7aed02c83373b5ec666d519897b50218ea'
+            '5eb9280c6b91c9be15a52de7dc5f05e69a5edbfe1c5d1f62497470a1aa0d1fa8')
 
 
 pkgver() {
@@ -41,10 +41,10 @@ prepare() {
   git submodule init
   git submodule update
 
-  # Move the Make.user in place
+  msg2 'Configuring the build...'
   cp -v $srcdir/Make.user .
 
-  # make 'make install' really just install
+  msg2 'Patching make install...'
   patch -p0 -i ../julia-makefile.patch
 
   # add and use option to build with system cblas
