@@ -1,15 +1,15 @@
 pkgbase = gst-rtsp-server
 	pkgdesc = RTSP server library based on GStreamer
-	pkgver = 1.14.4
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/modules/gst-rtsp-server.html
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = LGPL
-	depends = gst-plugins-base>=1.14.4
-	source = http://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.14.4.tar.xz
-	md5sums = ab0fb5c829266a500e14b46b7bdf06bf
+	depends = gst-plugins-base>=1.16.0
+	source = http://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.16.0.tar.xz
+	md5sums = adc4460239ec2eccf58ad9752ce53bfd
 
 pkgname = gst-rtsp-server
 
