@@ -1,0 +1,49 @@
+pkgbase = erlang-git
+	pkgver = 22.0.1
+	pkgrel = 1
+	url = https://www.erlang.org
+	arch = x86_64
+	license = Apache
+	makedepends = fop
+	makedepends = git
+	makedepends = glu
+	makedepends = java-environment
+	makedepends = libxslt
+	makedepends = lksctp-tools
+	makedepends = mesa
+	makedepends = perl
+	makedepends = unixodbc
+	makedepends = wxgtk
+	options = staticlibs
+	source = git+https://github.com/erlang/otp.git#tag=OTP-22.0.1
+	source = https://www.erlang.org/download/otp_doc_man_22.0.tar.gz
+	source = epmd.conf
+	source = epmd.service
+	source = epmd.socket
+	sha256sums = SKIP
+	sha256sums = c3acdb3c7c69eaceb8bcd5a69f8a19ba8320d403c176a3b560f9240b943ab370
+	sha256sums = 78ce5e67b21758c767d727e56b20502f75dc4385ff9b6c6db312d8e8506f2df2
+	sha256sums = b3b3b453d14f4bc233054430f1e3aa918c900ba293f09a6ea91e7102df2b87eb
+	sha256sums = 0f139f01547221ae091a868ce66d3bcc52c936facea3615c2932798d610bb74d
+
+pkgname = erlang-git
+	pkgdesc = General-purpose concurrent functional programming language developed by Ericsson
+	depends = ncurses
+	depends = glu
+	depends = wxgtk
+	depends = openssl
+	optdepends = erlang-unixodbc: database support
+	optdepends = java-environment: for Java support
+	optdepends = lksctp-tools: for SCTP support
+	provides = erlang
+	provides = erlang-nox
+	conflicts = erlang
+	conflicts = erlang-nox
+
+pkgname = erlang-unixodbc-git
+	pkgdesc = Unixodbc support for Erlang
+	depends = unixodbc
+	depends = erlang-nox
+	provides = unixodbc
+	conflicts = unixodbc
+
