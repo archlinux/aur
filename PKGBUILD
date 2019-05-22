@@ -16,7 +16,7 @@ _JBR=
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=191.7479.1
+_buildver=191.7479.7
 _veryear=2019
 _verrelease=1
 _verextra=3
@@ -29,7 +29,7 @@ url="http://www.jetbrains.com/idea/"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
 if [ -n "${_JBR}" ]; then
-  source=("https://download.jetbrains.com/idea/ideaIU${_buildver}-${_JBR}.tar.gz")
+  source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}-${_JBR}.tar.gz")
   sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}-${_JBR}.tar.gz.sha256" | cut -f1 -d" "))
 else
   source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz")
