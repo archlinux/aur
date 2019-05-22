@@ -24,25 +24,22 @@ depends=(desktop-file-utils
          python-scrypt
          python-websocket-client
          zbar)
-makedepends=(python-requests)
-source=(
-  "electrum-ltc-$pkgver.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/$pkgver"
-)
-sha256sums=(8c5ab5f496bc0dcedb6efcf7dee4c936dcf6fddbea58ebb081b4aa4bb2faf624)
+source=("https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz"{,.asc})
+validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
+sha256sums=(4fc3ed3ff7d46b85e72366d6d0d137f3cc8adfaecbc66d68567a3dd98c32763b
+            SKIP)
 
 prepare() {
-  sed -E 's/sh.*(electrum.*)"/\1/' -i electrum-ltc-$pkgver/electrum-ltc.desktop
+  sed -E 's/sh.*(electrum.*)"/\1/' -i Electrum-LTC-$pkgver/electrum-ltc.desktop
 }
 
 build() {
-  cd electrum-ltc-$pkgver
-  protoc --proto_path=electrum_ltc --python_out=electrum_ltc electrum_ltc/paymentrequest.proto
-  contrib/make_locale
+  cd Electrum-LTC-$pkgver
   ./setup.py build
 }
 
 package() {
-  cd electrum-ltc-$pkgver
+  cd Electrum-LTC-$pkgver
   ./setup.py install -O1 --root="$pkgdir" --skip-build
   install -Dm644 AUTHORS README.rst RELEASE-NOTES -t "$pkgdir"/usr/share/doc/electrum-ltc
   install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname

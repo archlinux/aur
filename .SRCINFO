@@ -5,7 +5,6 @@ pkgbase = electrum-ltc
 	url = https://electrum-ltc.org/
 	arch = any
 	license = MIT
-	makedepends = python-requests
 	depends = desktop-file-utils
 	depends = libsecp256k1
 	depends = python-aiohttp
@@ -25,8 +24,11 @@ pkgbase = electrum-ltc
 	depends = python-scrypt
 	depends = python-websocket-client
 	depends = zbar
-	source = electrum-ltc-3.3.6.1.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/3.3.6.1
-	sha256sums = 8c5ab5f496bc0dcedb6efcf7dee4c936dcf6fddbea58ebb081b4aa4bb2faf624
+	source = https://electrum-ltc.org/download/Electrum-LTC-3.3.6.1.tar.gz
+	source = https://electrum-ltc.org/download/Electrum-LTC-3.3.6.1.tar.gz.asc
+	validpgpkeys = CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA
+	sha256sums = 4fc3ed3ff7d46b85e72366d6d0d137f3cc8adfaecbc66d68567a3dd98c32763b
+	sha256sums = SKIP
 
 pkgname = electrum-ltc
 
