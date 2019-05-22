@@ -1,9 +1,6 @@
-# Maintainer: Det <nimetonmaili g-mail>
-# Based on [extra]'s thunderbird
-
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=60.6.1
+pkgver=60.7.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -25,8 +22,8 @@ source_i686=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i68
 
 sha512sums=('2f2da27d0d677cfee9ed2ff9da74c4e779150d26e369cb6816f2b1962b38af7d0728c9c362304138212b45e9580f65847c3a011b9bd3417a26b1b48c00cabe8d'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('a3413e19b91a5fa2dd59a4582cda7d1053d25a84c7ddeeaae8b0b47b27fbbac26388911ecc1a5db0a8e5113efc8a150f843a96cf4a7e4b6817d1bc27d7c43c4e')
-sha512sums_i686=('e0e8c9523c8051115659970974ffd3f308001405b99149275d9c5622ddcf1abc79fb81595303a4c8c325e2cdb1107ab9332429eba191e5b36b37488031bfb635')
+sha512sums_x86_64=('0bf5bbbaf76c1dd304eda6ad175f3fdc4fbe9f56ed11bac4b6855f13c2cbd5ddd635c364d8f9660542a20d4bf8d3a8b18b4398280d15ad47afc4fa88d321d5bb')
+sha512sums_i686=('631d84e772069bfe192f7db3fde5113595201b56340b8284fbd3c26c58ce67e93c2e52bdbe95c8378fa1b99f6d26d4ba6d2cc5851321251dc84c5d375773824c')
 
 # RC
 if [[ $_build = ? ]]; then
