@@ -1,10 +1,10 @@
 # Maintainer: Justin Jagieniak <justin@jagieniak.net>
 # Contributor: Alex Tharp <toastercup@gmail.com>
 
-pkgname=high-fidelity-stable-git
+pkgname=high-fidelity
 pkgver=r77707.576f41f90c
 pkgrel=1.11
-pkgdesc="High Fidelity (Hifi) is an open-source software where you can create and share virtual reality (VR) experiences. Create and host your own VR world, explore other worlds and meet other users. (git - latest stable version)"
+pkgdesc="High Fidelity (Hifi) is an open-source software where you can create and share virtual reality (VR) experiences. Create and host your own VR world, explore other worlds and meet other users. (git - latest stable version) Source build!"
 arch=('i686' 'x86_64')
 url="https://github.com/highfidelity/hifi"
 license=('Apache')
