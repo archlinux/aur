@@ -3,7 +3,7 @@
 _pkgname=janet
 pkgname=janet-lang
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="https://janet-lang.org/"
