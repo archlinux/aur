@@ -1,0 +1,26 @@
+pkgbase = waterfox-alpha-bin
+	pkgdesc = 64-Bit optimized Firefox, no data collection, allows unsigned extensions
+	pkgver = 68.0a1
+	pkgrel = 1
+	url = https://www.waterfoxproject.org/
+	arch = x86_64
+	license = MPL
+	depends = libxt
+	depends = libnotify
+	depends = mime-types
+	depends = nss
+	depends = gtk2
+	depends = gtk3
+	depends = sqlite
+	depends = dbus-glib
+	optdepends = alsa-lib
+	optdepends = pulseaudio
+	provides = waterfox-alpha
+	conflicts = waterfox-alpha
+	source = waterfox-alpha.desktop
+	source = https://storage-waterfox.netdna-ssl.com/Waterfox/aurora/Linux/waterfox-68.0a1.en-US.linux-x86_64.tar.bz2
+	md5sums = 4b385db944b4d72136ca5798be9bd7b4
+	md5sums = caf4bf111f0c5ec667251853b5cb6a46
+
+pkgname = waterfox-alpha-bin
+
