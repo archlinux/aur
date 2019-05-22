@@ -1,11 +1,12 @@
 # Maintainer: Daniel "dtubber" Wanner <daniel.wanner@tubber.xyz>
 
 pkgname="ryzenadj-git"
-pkgver=v0.2.r3.g68bf3a1
-pkgrel=3
+pkgver=gui.v0.2.1.r2.g4656930
+pkgrel=1
 pkgdesc="RyzenAdj tool for adjusting Ryzen Mobile power states"
 url="https://github.com/FlyGoat/RyzenAdj"
 arch=("x86_64")
+depends=("pciutils")
 makedepends=("cmake")
 license=("LGPL2")
 source=("$pkgname::git+https://github.com/FlyGoat/RyzenAdj")
@@ -18,14 +19,16 @@ pkgver() {
 
 build() {
     cd $pkgname
-    mkdir build
+    mkdir build || true
     cd build
     cmake ..
-    make -j
+    make || true
 }
 
 package() {
-    mkdir -p $pkgdir/usr/bin
-    cp $pkgname/build/ryzenadj $pkgdir/usr/bin/
-    chmod +x $pkgdir/usr/bin/ryzenadj
+    mkdir -p $pkgdir/usr/bin || true
+    cd $pkgname
+    pwd
+    ls -la
+    cp ryzenadj $pkgdir/usr/bin/
 }
