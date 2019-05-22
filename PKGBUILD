@@ -6,6 +6,7 @@
 #pkgbase=linux-zen           # Build stock -zen kernel
 pkgbase=linux-zencjk       # Build kernel with a different name
 _srcver=5.0.13-zen1
+_cjkver=5.0
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -20,7 +21,7 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  linux-zencjk-5.0.patch::https://github.com/zen-kernel/zen-kernel/compare/5.0/master...Gentoo-zh:5.0-utf8.patch  # CJK Patch
+  "linux-cjktty-$_cjkver.patch::https://github.com/zen-kernel/zen-kernel/compare/$_cjkver/master...Gentoo-zh:$_cjkver-utf8.patch"  # CJK Patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
