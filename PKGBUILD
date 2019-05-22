@@ -2,8 +2,8 @@
 
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager-bin
-pkgver=2.9.17
-build=a55d726
+pkgver=2.9.17.1
+build=bf18047
 pkgrel=1
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
@@ -12,28 +12,28 @@ license=('Apache-2.0')
 depends=('libmediainfo' 'java-runtime<=11')
 noextract=("tmm_${pkgver}_${build}_linux.tar.gz")
 source=("http://release.tinymediamanager.org/v2/dist/tmm_${pkgver}_${build}_linux.tar.gz"
-    "tinyMediaManager.desktop"
-    "tinymediamanager"
+	"tinyMediaManager.desktop"
+	"tinymediamanager"
 "tinymediamanager-cli")
 
 package() {
-    destpath="$pkgdir/usr/share/$_gitname"
-    mkdir -p $destpath
+	destpath="$pkgdir/usr/share/$_gitname"
+	mkdir -p $destpath
 
-    tar -xvf "tmm_${pkgver}_${build}_linux.tar.gz" -C $destpath
+	tar -xvf "tmm_${pkgver}_${build}_linux.tar.gz" -C $destpath
 
-    chmod -R 777 "$pkgdir/usr/share/$_gitname"
+	chmod -R 777 "$pkgdir/usr/share/$_gitname"
 
-    # Install desktop entry
-    install -D "$srcdir/tinyMediaManager.desktop" "$pkgdir/usr/share/applications/tinyMediaManager.desktop"
-    install -D $destpath/tmm.png $pkgdir/usr/share/pixmaps/tmm.png
+	# Install desktop entry
+	install -D "$srcdir/tinyMediaManager.desktop" "$pkgdir/usr/share/applications/tinyMediaManager.desktop"
+	install -D $destpath/tmm.png $pkgdir/usr/share/pixmaps/tmm.png
 
-    # Install launch scripts
-    install -D "$srcdir/tinymediamanager-cli" "$pkgdir/usr/bin/tinymediamanager-cli"
-    install -D "$srcdir/tinymediamanager" "$pkgdir/usr/bin/tinymediamanager"
+	# Install launch scripts
+	install -D "$srcdir/tinymediamanager-cli" "$pkgdir/usr/bin/tinymediamanager-cli"
+	install -D "$srcdir/tinymediamanager" "$pkgdir/usr/bin/tinymediamanager"
 }
 
-md5sums=('9b5a56ee39615193ec75d73990bbabe0'
-    '010f5308884b7293bb398b2a63079883'
-    'c382f9ba03915a1f70f5aaea8699cfe5'
+md5sums=('8436a5fd63591d1cb02dc6a84338f572'
+	'010f5308884b7293bb398b2a63079883'
+	'c382f9ba03915a1f70f5aaea8699cfe5'
 '677bed3f438e84ecd948c9f6faa37194')
