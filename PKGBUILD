@@ -63,12 +63,12 @@ _rev_override="n"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=44
+_minor=45
 _srcname=linux-${_major}
 _clr=${_major}.44-40
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
-pkgrel=4
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
@@ -105,7 +105,7 @@ prepare() {
         echo "$_kernelname" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2018.spec | grep -Ev '^Patch0126' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2018.spec | grep -Ev '^Patch0126|^Patch0002' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/${pkgbase}/${i}"
         done
@@ -340,7 +340,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            'd1a3a7db1cc066bc53d1dd396312fb734b4c52fb55a4f54c2fd3c57869693c99'
+            'eda5c959e2a8315085136f62f3ee7ac7f8318288bc732b08768280a13863f6db'
             'SKIP'
             '553858de4315d267d1f259d1146db028eec5112a797379a7a83f5c8a22e626b3'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
