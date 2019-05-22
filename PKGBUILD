@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=rexgen-git
-pkgver=2.0.6.r17.gb8cd7b4
+pkgver=2.1.3.r2.g585e86d
 pkgrel=1
 pkgdesc="A tool to create words based on regular expressions"
 arch=('i686' 'x86_64')
