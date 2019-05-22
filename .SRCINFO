@@ -1,0 +1,18 @@
+pkgbase = go-rainbow-git
+	pkgdesc = Tasty rainbows for your terminal! (lolcat clone)
+	pkgver = v0.1.r0.g708cb3d
+	pkgrel = 1
+	url = https://github.com/arsham/rainbow
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	provides = rainbow
+	provides = rainbow-git
+	conflicts = rainbow
+	conflicts = rainbow-git
+	source = go-rainbow-git::git+https://github.com/arsham/rainbow
+	sha256sums = SKIP
+
+pkgname = go-rainbow-git
+
