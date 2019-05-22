@@ -6,7 +6,7 @@ _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 pkgname=mingw-w64-gcc
 pkgver=9.1.0
 _islver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross GCC for the MinGW-w64 cross-compiler"
 arch=('x86_64')
 url="http://gcc.gnu.org"
@@ -47,7 +47,8 @@ build() {
         --target=${_target} \
         --enable-languages=c,lto,c++,objc,obj-c++,fortran,ada \
         --enable-shared --enable-static \
-        --enable-threads=posix --enable-fully-dynamic-string --enable-libstdcxx-time=yes \
+        --enable-threads=posix --enable-fully-dynamic-string \
+        --enable-libstdcxx-time=yes --enable-libstdcxx-filesystem-ts=yes \
         --with-system-zlib --enable-cloog-backend=isl \
         --enable-lto --disable-dw2-exceptions --enable-libgomp \
         --disable-multilib --enable-checking=release
