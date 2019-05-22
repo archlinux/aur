@@ -1,0 +1,16 @@
+pkgbase = nix-zsh-completions-git
+	pkgdesc = Additional completion definitions for Zsh
+	pkgver = 0.4.3.r2.ga03a558
+	pkgrel = 1
+	url = https://github.com/spwhitt/nix-zsh-completions
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = zsh
+	provides = nix-zsh-completions
+	conflicts = nix-zsh-completions
+	source = git://github.com/spwhitt/nix-zsh-completions.git
+	md5sums = SKIP
+
+pkgname = nix-zsh-completions-git
+
