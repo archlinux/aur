@@ -2,7 +2,7 @@
 
 pkgname=cppcheck-nox
 _pkgname=cppcheck
-pkgver=1.86
+pkgver=1.87
 pkgrel=1
 pkgdesc="A tool for static C/C++ code analysis without the GUI"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('docbook-xsl')
 provides=('cppcheck')
 conflicts=('ccpcheck')
 source=(https://github.com/danmar/cppcheck/archive/${pkgver}.tar.gz)
-md5sums=('9ae557751c758631055a0ba2b8ddfb9c')
+md5sums=('eba3b8b4d69045bd24104c2d0cc0cb0c')
 
 build() {
   cd "${_pkgname}-${pkgver}"
