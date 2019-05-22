@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.1.17
+pkgver=2.1.18
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
@@ -24,16 +24,13 @@ optdepends=('dynamips: Cisco router emulator.'
 )
 install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "$pkgname@.service"
-        'fix-requirements.diff')
-sha256sums=('c52268244b6e74f7f03b6f35be7b853c6cd6d04511f74b04b5eea525f4b19fad'
-            'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f'
-            '47b2d076133cbbf47b69347535531b5cbc00db0b186ace3d8e5990755f21b6e1')
+        "$pkgname@.service")
+sha256sums=('b9678b8d44be57bf421072f314e52b895133f6ef447cec1a060b1eca0b2f84a0'
+            'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    find . -type f -print0 | xargs -r0 sed -i -e 's/asyncio.async(/asyncio.ensure_future(/g'
-    patch -i "$srcdir"/fix-requirements.diff
+    sed -i '/^typing>=3.5.3.0/d' requirements.txt
 }
 
 build() {
