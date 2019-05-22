@@ -2,7 +2,7 @@
 pkgname=waterfox-alpha-bin
 pkgver=68.0a1
 pkgrel=1
-pkgdesc="64-Bit optimized Firefox, no data collection, allows unsigned extensions"
+pkgdesc="64-bit optimised Firefox fork; no telemetry; supports XUL add-ons."
 arch=('x86_64')
 url="https://www.waterfoxproject.org/"
 license=('MPL')
