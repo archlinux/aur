@@ -1,9 +1,10 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
 # Contributor: Gökberk Yaltıraklı <aur at gkbrk dot com>
+# Contributor: Drew DeVault <sir@cmpwn.com>
 
 pkgname=aerc-git
 _pkgname=aerc
-pkgver=r280.062f00e
+pkgver=r283.3e7ac52
 pkgrel=1
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
@@ -33,10 +34,10 @@ prepare() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    make PREFIX=$pkgdir/usr
+    make PREFIX=/usr
 }
 
 package() {
     cd "$srcdir/$_pkgname"
-    make PREFIX=$pkgdir/usr install
+    make PREFIX=/usr DESTDIR=$pkgdir install
 }
