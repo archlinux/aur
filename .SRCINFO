@@ -1,7 +1,7 @@
 pkgbase = tor-browser-dev
 	pkgdesc = Tor Browser Bundle (alpha version; locale-aware international PKGBUILD)
 	pkgver = 9.0a1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.torproject.org/download/alpha/
 	arch = i686
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = tor-browser-dev
 	source = tor-browser-dev.sh
 	validpgpkeys = EF6E286DDA85EA2A4BA7DE684E2C6E8793298290
 	sha256sums = 13d2e1fe85a9a08e9f66116f3c2d6f1e5d37e07d2ad8b08ae4f01890e864a722
-	sha256sums = f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152
+	sha256sums = 13267084e2b6dd1dbbb93f685d61da4cb48184a76a1c06a42ecc575855e24c57
 	sha256sums = ce19dd89a8ecd9289136f97f0122b7301bdda9bcf0208f4277817e23ea9a95d8
 	source_i686 = https://dist.torproject.org/torbrowser/9.0a1/tor-browser-linux32-9.0a1_en-US.tar.xz
 	source_i686 = https://dist.torproject.org/torbrowser/9.0a1/tor-browser-linux32-9.0a1_en-US.tar.xz.asc
