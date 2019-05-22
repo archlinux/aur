@@ -10,8 +10,8 @@ pkgbase = python-ufl
 	depends = python-numpy
 	conflicts = python-ufl-git
 	options = !emptydirs
-	source = python-ufl-2018.1.0.tar.gz::https://bitbucket.org/fenics-project/ufl/downloads/ufl-2018.1.0.tar.gz
-	sha256sums = ed191f5e0abfeb9922a68a6802f819e9cc6c50749472c01365319f66a5cfcbea
+	source = python-ufl-2019.1.0.tar.gz::https://bitbucket.org/fenics-project/ufl/downloads/ufl-2019.1.0.tar.gz
+	sha256sums = 213a56bfa2edb0365909fa6f110f970e582b10a3f5f1fd9a0e85254f1eefaa11
 
 pkgname = python-ufl
 
