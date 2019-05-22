@@ -1,7 +1,7 @@
 # Contributor: Maxim Devaev <mdevaev@gmail.com>
 
 pkgname=yay-kit
-pkgver=20190422
+pkgver=20190522
 pkgrel=1
 pkgdesc="Bash wrapper for pacman and YAY"
 url="http://github.com/pi-kvm/yay-kit"

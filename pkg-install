@@ -3,6 +3,15 @@ if [ `whoami` != root ]; then
 	echo "Only root can do that"
 	exit 1
 fi
+if [ "$1" != "-S" ]; then
+	echo "WARNING: This script automatically installs the specified packages"
+	echo "         from the standard repository or from AUR without any questions."
+	echo "         Don't use it unless you are sure that these packages are safe."
+	echo
+	echo "Usage: $0 -S <packages...>"
+	exit 1
+fi
+shift
 pacman --noconfirm -Syy && sudo -u yay yay --noconfirm --mflags="--ignorearch --nocheck" -S $@
 retval=$?
 pacman --noconfirm -Sc

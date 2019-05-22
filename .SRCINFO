@@ -1,6 +1,6 @@
 pkgbase = yay-kit
 	pkgdesc = Bash wrapper for pacman and YAY
-	pkgver = 20190422
+	pkgver = 20190522
 	pkgrel = 1
 	url = http://github.com/pi-kvm/yay-kit
 	install = yay-kit.install
