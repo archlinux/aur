@@ -1,20 +1,21 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname=osslsigncode
-pkgver=1.7.1
-pkgrel="7"
-pkgdesc="Platform-independent tool for Authenticode signing of PE/CAB/MSI files"
+pkgver="2.0"
+pkgrel="1"
+pkgdesc="OpenSSL based Authenticode signing for PE/MSI/Java CAB files"
 arch=('i686' 'x86_64')
-url="https://sourceforge.net/projects/osslsigncode/"
+url="https://github.com/mtrojnar/osslsigncode"
 license=('GPL')
-depends=('curl' 'openssl-1.0')
+depends=('curl' 'openssl')
+makedepends=('autoconf' 'automake' 'libtool')
 options=('!makeflags')
-source=("https://cytranet.dl.sourceforge.net/project/osslsigncode/osslsigncode/osslsigncode-1.7.1.tar.gz")
-sha512sums=('cc5a7e0c5baa2a98db93f1d2cc9d86e732e2a8a55fc20bf8e6aa67e2120af37c6be857dfe4b8eb8c82fd40604dbb3c845190b59c7e6b4147f06b710a256b877f')
+source=("https://github.com/mtrojnar/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('aec7b101afd96925fbd70ac67a6752997f0dab3987151c0658e5f011d8a6be6f53518d7a4aba6dff696c722a1e669100143a87d07c3f59364cd62693e9f3e4e5')
 
 prepare() {
   cd "$srcdir/osslsigncode-${pkgver}"
-  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig/
+  ./autogen.sh
   ./configure \
     --prefix=/usr \
     --mandir=/usr/share/man \
