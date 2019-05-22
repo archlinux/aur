@@ -8,7 +8,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r525913.43a6ba47356a
+pkgver=r530539.fe795231a4af
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Wayland build of mozilla-unified hg"
 arch=(x86_64)
@@ -119,7 +119,7 @@ build() {
   # LTO/PGO needs more open files
   ulimit -n 4096
  
-  ./mach build
+  xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   ./mach buildsymbols
 }
 

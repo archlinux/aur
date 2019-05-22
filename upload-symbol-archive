@@ -21,4 +21,5 @@ for zip; do
     --retry 4 --retry-connrefused --connect-timeout 120 \
     https://symbols.mozilla.org/upload/
   echo
+  mv -v "$zip" "$zip.uploaded"
 done
