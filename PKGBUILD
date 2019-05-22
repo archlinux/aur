@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
-# Contributor: brikler 
+# Contributor: brikler
 
 pkgname=fwts-git
-pkgver=3056.9ddce1f
+pkgver=4336.f4063ed2
 pkgrel=1
 pkgdesc="The FirmWare Test Suite is a tool to do automatic testing of a PC's firmware"
 arch=('i686' 'x86_64')
@@ -13,21 +13,21 @@ makedepends=('git')
 source=('fwts::git://kernel.ubuntu.com/hwe/fwts.git')
 
 build() {
-  cd fwts
-  autoreconf -ivf
-  CPPFLAGS="$CPPFLAGS -O2"
-  CFLAGS=--sysroot= ./configure --prefix=/usr
-  make
+	cd fwts
+	autoreconf -ivf
+	CPPFLAGS="$CPPFLAGS -O2"
+	CFLAGS=--sysroot= ./configure --prefix=/usr
+	make
 }
 
 package() {
-  cd fwts
-  make DESTDIR=$pkgdir install
+	cd fwts
+	make DESTDIR=$pkgdir install
 }
 
 pkgver() {
-  cd fwts
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+	cd fwts
+	echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 md5sums=('SKIP')
