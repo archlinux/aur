@@ -1,3 +1,4 @@
+# Maintainer: tdewolff <tacodewolff@gmail.com>
 # Maintainer: 4679kun <4679kun@outlook.com>
 # Maintainer: meepzh <meep.aur@meepzh.com>
 
@@ -8,7 +9,6 @@ pkgdesc="Minifier CLI for HTML, CSS, JS, JSON, SVG and XML"
 arch=('x86_64')
 url="https://github.com/tdewolff/minify"
 license=('MIT')
-depends=('glibc')
 optdepends=('bash-completion: command-line autocomplete with bash')
 source=("https://github.com/tdewolff/minify/releases/download/v${pkgver}/minify_${pkgver}_linux_amd64.tar.gz"
         "https://raw.githubusercontent.com/tdewolff/minify/master/cmd/minify/minify_bash_tab_completion")
