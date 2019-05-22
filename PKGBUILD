@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=go-peerflix-git
-pkgver=r99.abb60b4
+pkgver=r110.01557ce
 pkgrel=1
 epoch=
 pkgdesc="A Golang port of peerflix."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/Sioro-Neoku/go-peerflix"
 license=('MIT')
 groups=()
-depends=('')
+depends=()
 makedepends=('git' 'go')
 optdepends=()
 checkdepends=()
