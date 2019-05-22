@@ -1,16 +1,19 @@
 pkgbase = luna
-	pkgdesc = npm management through a modern UI. Created with ReactJS and Redux, Material-UI. Bundled with Webpack. Build on Electron.
-	pkgver = 2.1.0
+	pkgdesc = Manage npm dependencies through a modern UI
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/rvpanoz/luna
 	arch = x86_64
-	license = GPL-3.0
+	license = GPL3
+	makedepends = yarn
 	depends = npm
-	depends = yarn
-	options = !strip
-	options = !emptydirs
-	source_x86_64 = https://github.com/rvpanoz/luna/releases/download/v2.1.0/luna_2.1.0_amd64.deb
-	sha512sums_x86_64 = e3243db4ebc4d6aa70cd0b209bcb86a3b59cec47cd9d35260386cc0f6570b8679a2ecdbdd9dd26275d02637603604031bef04ad3c68fe70d730fb9bb045fe5a6
+	depends = electron
+	source = luna-3.1.0.tar.gz::https://github.com/rvpanoz/luna/archive/v3.1.0.tar.gz
+	source = luna.desktop
+	source = luna.sh
+	sha512sums = bfa885709bf40d1720cd293691fb74bb8a02ebb2173f9b2ce6732246b05e843fc32039e710ee6c3fd1fb5503f8f133ff14b4e3159b6b1821ce1febba85a08577
+	sha512sums = 25c04ad1f3eb6661558bbefbb383005e3c229cc0a14b6ccb031b49ff13d2ca3b925a99ee847161ab9b33882670683a362a1ed21a2e1eab8aa87a044bdd9e9860
+	sha512sums = 96d5450563aae807157c86cf2578392f8c83f0169503bfcd365d9e648829ace28562ba254c9fb5c9ce8b41f287d7e464d1f102389a956a8780696cdb2f5edfb5
 
 pkgname = luna
 

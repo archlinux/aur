@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Luna
+Comment=Manage npm dependencies through a modern UI
+Exec=luna
+Terminal=false
+Type=Application
+Icon=luna
