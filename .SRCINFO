@@ -1,0 +1,21 @@
+pkgbase = liquid-dsp-quiet-devel-git
+	pkgdesc = libliquid compatible with libquiet
+	pkgver = v1.2.0.r1586.g4951bbbf
+	pkgrel = 7
+	url = https://github.com/quiet/quiet-dsp
+	arch = x86_64
+	license = MIT
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = make
+	depends = fftw
+	optdepends = libfec-git: forward error correction support
+	provides = liquid-dsp
+	conflicts = liquid-dsp
+	options = staticlibs
+	source = git+https://github.com/quiet/quiet-dsp.git
+	sha256sums = SKIP
+
+pkgname = liquid-dsp-quiet-devel-git
+
