@@ -1,7 +1,7 @@
 pkgbase = python-dijitso
 	pkgdesc = A Python module for distributed just-in-time shared library building (stable).
-	pkgver = 2018.1.0
-	pkgrel = 2
+	pkgver = 2019.1.0
+	pkgrel = 1
 	url = https://bitbucket.org/fenics-project/dijitso
 	arch = any
 	groups = fenics
@@ -11,8 +11,8 @@ pkgbase = python-dijitso
 	optdepends = mpi4py: for running tests with MPI
 	conflicts = python-dijitso-git
 	options = !emptydirs
-	source = python-dijitso-2018.1.0.tar.gz::https://bitbucket.org/fenics-project/dijitso/downloads/dijitso-2018.1.0.tar.gz
-	sha256sums = 2084ada1e7bd6ecec0999b15a17db98c72e26f1ccbf3fcbe240b1a035a1a2e64
+	source = python-dijitso-2019.1.0.tar.gz::https://bitbucket.org/fenics-project/dijitso/downloads/dijitso-2019.1.0.tar.gz
+	sha256sums = eaa45eec4457f3f865d72a926b7cba86df089410e78de04cd89b15bb405e8fd9
 
 pkgname = python-dijitso
 
