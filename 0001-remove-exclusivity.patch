@@ -11,3 +11,14 @@
          log.info('--> shielding modified with:')
      # move root tasks into system set
      root_tasks = cset.unique_set('/').tasks
+
+--- a/cpuset/commands/set.py	2019-05-22 16:16:08.518318722 -0400
++++ b/cpuset/commands/set.py	2019-05-22 16:23:06.243819897 -0400
+@@ -413,8 +413,8 @@ def modify(name, cpuspec=None, memspec=N
+     log.debug('modifying cpuset "%s"', nset.name)
+     if cpuspec: nset.cpus = cpuspec
+     if memspec: nset.mems = memspec
+-    if cx: nset.cpu_exclusive = cx
+-    if mx: nset.mem_exclusive = mx
++    # if cx: nset.cpu_exclusive = cx
++    # if mx: nset.mem_exclusive = mx

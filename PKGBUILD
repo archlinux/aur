@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>, Saren Arterius <saren@wtako.net>
 # Maintainer: George Amanakis<gamanakis@gmail.com>
 pkgname=cpuset-git
-pkgver=r59.02ef9e0
+pkgver=r76.b5a70c1
 pkgver() {
 	cd "${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -20,7 +20,7 @@ conflicts=('cpuset')
 source=('git+https://github.com/lpechacek/cpuset'
 	'0001-remove-exclusivity.patch')
 md5sums=('SKIP'
-         'f944918002bde0e949a694741309fda8')
+         'f3dc8cdca7977027c5683ce51462b6fa')
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
