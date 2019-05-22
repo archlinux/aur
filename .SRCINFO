@@ -1,0 +1,15 @@
+pkgbase = sudont
+	pkgdesc = Grants superuser permission, then does nothing
+	pkgver = r5.43cf8b3
+	pkgrel = 1
+	url = https://github.com/cbondurant/sudont
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = bash
+	source = git+https://github.com/cbondurant/sudont
+	md5sums = SKIP
+
+pkgname = sudont
+
