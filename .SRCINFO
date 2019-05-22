@@ -1,13 +1,13 @@
 pkgbase = grav-admin
 	pkgdesc = Grav is a modern open source flat-file CMS with admin plugin
-	pkgver = 1.5.3
+	pkgver = 1.6.9
 	pkgrel = 1
 	url = https://getgrav.org
 	arch = any
 	license = MIT
 	depends = php
-	source = https://github.com/getgrav/grav/releases/download/1.5.3/grav-admin-v1.5.3.zip
-	sha256sums = 055f6f248aa74c68436b6d639d9340d333136044e5946fc6d62271ad2b3b319b
+	source = https://github.com/getgrav/grav/releases/download/1.6.9/grav-admin-v1.6.9.zip
+	sha256sums = 73ec2e217cf099b8d1ee461d07dc065dfa41875b7e5d5f3e0846e0668f8570ac
 
 pkgname = grav-admin
 
