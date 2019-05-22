@@ -56,8 +56,7 @@ package() {
   install -d -m 755 $pkgdir/usr/{include/libcmatrix,lib}
   install -m755 include/*.h $pkgdir/usr/include/libcmatrix
   install -m755 lib/libcmatrix.so.3.11.0 $pkgdir/usr/lib
-  ln -sf $pkgdir/usr/lib/libcmatrix.so.3.11.0 $pkgdir/usr/lib/libcmatrix.so.3
-  ln -sf $pkgdir/usr/lib/libcmatrix.so.3 $pkgdir/usr/lib/libcmatrix.so
-  chmod 755 $pkgdir/usr/lib/*
-  chmod -R 755 $pkgdir/usr/include/libcmatrix
+  cd $pkgdir/usr/lib
+  ln -sf libcmatrix.so.3.11.0 libcmatrix.so.3
+  ln -sf libcmatrix.so.3 libcmatrix.so
 }
