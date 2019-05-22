@@ -1,0 +1,16 @@
+pkgbase = python-sequitur-git
+	pkgdesc = Sequitur G2P: A trainable Grapheme-to-Phoneme converter.
+	pkgver = 33.ecebf07
+	pkgrel = 1
+	url = https://github.com/sequitur-g2p/sequitur-g2p
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = swig
+	depends = python-numpy
+	source = git+https://github.com/sequitur-g2p/sequitur-g2p
+	md5sums = SKIP
+
+pkgname = python-sequitur-git
+
