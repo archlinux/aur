@@ -1,12 +1,11 @@
 # Maintainer: exilko <exile at mailoo dot org>
 pkgname=brother-dcpj1100dw
 pkgver=1.0.5
-pkgrel=0
+pkgrel=1
 pkgdesc="Driver for the Brother DCP-J1100DW"
 url="https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=dcpj1100dw_eu_as"
 license=('custom:brother')
 depends=('cups')
-makedepends=('rpmextract')
 install="$pkgname.install"
 arch=('i686' 'x86_64')
 source=(

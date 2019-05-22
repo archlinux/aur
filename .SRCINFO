@@ -1,13 +1,12 @@
 pkgbase = brother-dcpj1100dw
 	pkgdesc = Driver for the Brother DCP-J1100DW
 	pkgver = 1.0.5
-	pkgrel = 0
+	pkgrel = 1
 	url = https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=dcpj1100dw_eu_as
 	install = brother-dcpj1100dw.install
 	arch = i686
 	arch = x86_64
 	license = custom:brother
-	makedepends = rpmextract
 	depends = cups
 	source = fix_lp.patch
 	source = https://download.brother.com/welcome/dlf103810/dcpj1100dwpdrv-1.0.5-0.i386.rpm
