@@ -1,118 +1,88 @@
-# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Previous Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=pagmo-git
-pkgver=20150609
+pkgver=r3632.f580121d
 pkgrel=1
-pkgdesc="Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model."
+pkgdesc="Perform parallel computations of optimisation tasks (global and local)
+via the asynchronous generalized island model (git version)"
 arch=('i686' 'x86_64')
-url="https://github.com/esa/pagmo"
+url="https://github.com/esa/pagmo2"
 license=('GPLv3')
 depends=('boost')
-optdepends=('blas' 'gsl' 'ipopt' 'nlopt' 'python')
-makedepends=('git' 'cmake' 'doxygen')
+optdepends=('coin-or-ipopt: Ipopt optimizer support'
+            'eigen: library for matrix math'
+            'nlopt: NLopt optimizer support')
+makedepends=('git' 'cmake')
+_name=pagmo2
 provides=('pagmo')
 conflicts=('pagmo')
-
-# Repository location
-_gitroot="git://github.com/esa/pagmo"
-_gitname="pagmo"
-
-source=("${_gitname}"::${_gitroot}#branch=master)
+source=("git+https://github.com/esa/pagmo2.git")
 md5sums=('SKIP')
 
-# Build type
-_buildtype="RelWithDebInfo"
-
-# Build directory
-_builddir="${_gitname}-build"
-
-_cmake_options=(
-  -D BUILD_MAIN=OFF
-  -D BUILD_EXAMPLES=OFF
-  -D ENABLE_TESTS=OFF
-  -D INSTALL_HEADERS=ON
-  -D PYGMO_PYTHON_VERSION=3
-  -D PYTHON_LIBRARY=/usr/lib/python3.4
-  -D PYTHON_INCLUDE_DIR=/usr/include/python3.4m
-  -D PYTHON_EXECUTABLE=/usr/bin/python3
-)
-
 pkgver() {
-    cd "$srcdir/${_gitname}"
-    date +%Y%m%d
+  cd "$_name"
+
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
+_buildtype="Release"
+
+_cmake_options=()
 
 check_optdepends() {
-    # Check if gsl is installed
-    if (pacman -Qqs gsl >/dev/null) ; then
-        msg "Enabling GSL support"
-        _cmake_options=(${_cmake_options[@]} -D ENABLE_GSL=ON)
+
+    # Check if coin-or-ipopt is installed
+    if (pacman -Qqs coin-or-ipopt >/dev/null) ; then
+        msg "Enabling ipopt support"
+        _cmake_options=(${_cmake_options[@]} -DPAGMO_WITH_IPOPT=ON)
     else
-        msg "Disabling GSL support"
+        msg "Disabling ipopt support"
     fi
 
-    # Check if ipopt is installed
-    if (pacman -Qqs ipopt >/dev/null) ; then
-        msg "Enabling Ipopt support"
-        _cmake_options=(${_cmake_options[@]} -D ENABLE_IPOPT=ON)
+    # Check if eigen is installed
+    if (pacman -Qqs eigen3 >/dev/null) ; then
+        msg "Enabling eigen support"
+        _cmake_options=(${_cmake_options[@]} -DPAGMO_WITH_EIGEN3=ON)
     else
-        msg "Disabling Ipopt support"
+        msg "Disabling eigen support"
     fi
 
-    # Check if NLopt is installed
+    # Check if nlopt is installed
     if (pacman -Qqs nlopt >/dev/null) ; then
-        msg "Enabling NLopt support"
-        _cmake_options=(${_cmake_options[@]} -D ENABLE_NLOPT=ON)
+        msg "Enabling nlopt support"
+        _cmake_options=(${_cmake_options[@]} -DPAGMO_WITH_NLOPT=ON)
     else
-        msg "Disabling NLopt support"
+        msg "Disabling nlopt support"
     fi
 
-    # Check if Python 3 is installed
-    if (pacman -Qqs python3 >/dev/null) ; then
-        msg "Enabling PyGMO build"
-        _cmake_options=(${_cmake_options[@]} -D BUILD_PYGMO=ON)
-    else
-        msg "Disabling PyGMO build"
-    fi
 }
 
-# Build the project
 build() {
+
     # Check optional dependencies
     check_optdepends
 
-    msg "Updating Git submodules"
+    cd "${srcdir}/${_name}"
 
-    cd "${srcdir}/${_gitname}"
-
-    msg "Starting CMake (build type = ${_buildtype})"
+    msg "Starting CMake (build type: ${_buildtype})"
 
     # Create a build directory
-    cd "${srcdir}"
-    mkdir -p ${_builddir}
-    cd "${_builddir}"
+    mkdir -p "${srcdir}/${_name}-build"
+    cd "${srcdir}/${_name}-build"
 
-    # Run CMake in release
-    cmake -DCMAKE_BUILD_TYPE="${_buildtype}" \
-          -DCMAKE_INSTALL_PREFIX="/usr" \
-          ${_cmake_options[@]} \
-          "${srcdir}/${_gitname}"
+    cmake \
+        -DCMAKE_BUILD_TYPE="${buildtype}" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        ${_cmake_options[@]} \
+        "${srcdir}/${_name}"
 
-    # Compile the library
     msg "Building the project"
-    make --silent
+    make -j4
 }
 
-# Run unit tests
-check() {
-    msg "Running unit tests"
-    cd "${srcdir}/${_builddir}"
-    make test
-}
-
-# Create the package
 package() {
-    cd "${srcdir}/${_builddir}"
+    cd "${srcdir}/${_name}-build"
 
     msg "Installing files"
-    make --silent DESTDIR="${pkgdir}/" install
+    make DESTDIR="${pkgdir}/" install
 }

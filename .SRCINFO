@@ -1,23 +1,20 @@
 pkgbase = pagmo-git
-	pkgdesc = Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model.
-	pkgver = 20150609
+	pkgdesc = Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model (git version)
+	pkgver = r3632.f580121d
 	pkgrel = 1
-	url = https://github.com/esa/pagmo
+	url = https://github.com/esa/pagmo2
 	arch = i686
 	arch = x86_64
 	license = GPLv3
 	makedepends = git
 	makedepends = cmake
-	makedepends = doxygen
 	depends = boost
-	optdepends = blas
-	optdepends = gsl
-	optdepends = ipopt
-	optdepends = nlopt
-	optdepends = python
+	optdepends = coin-or-ipopt: Ipopt optimizer support
+	optdepends = eigen: library for matrix math
+	optdepends = nlopt: NLopt optimizer support
 	provides = pagmo
 	conflicts = pagmo
-	source = pagmo::git://github.com/esa/pagmo#branch=master
+	source = git+https://github.com/esa/pagmo2.git
 	md5sums = SKIP
 
 pkgname = pagmo-git
