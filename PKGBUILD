@@ -1,21 +1,19 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dbus-git
-pkgver=1.11.16.r31.gd82378fd
+pkgver=1.13.10.r2.gedece027
 pkgrel=1
 pkgdesc="Message bus system"
 arch=('i686' 'x86_64')
-url="https://wiki.freedesktop.org/www/Software/dbus/"
+url="https://www.freedesktop.org/wiki/Software/dbus/"
 license=('GPL' 'custom')
-depends=('glibc' 'expat' 'gettext' 'libsystemd')
+depends=('glibc' 'audit' 'expat' 'systemd-libs')
 makedepends=('git' 'autoconf-archive' 'systemd')
 provides=('libdbus' 'dbus')
 conflicts=('libdbus' 'dbus')
 options=('staticlibs')
-source=("git+https://anongit.freedesktop.org/git/dbus/dbus.git"
-        "dbus.sysusers::https://git.archlinux.org/svntogit/packages.git/plain/trunk/dbus.sysusers?h=packages/dbus")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+https://gitlab.freedesktop.org/dbus/dbus.git")
+sha256sums=('SKIP')
 
 
 pkgver() {
@@ -36,7 +34,10 @@ build() {
     --with-system-socket="/run/dbus/system_bus_socket" \
     --with-console-auth-dir="/run/console" \
     --with-systemdsystemunitdir="/usr/lib/systemd/system" \
-    --with-dbus-user=dbus --enable-systemd --enable-user-session --enable-epoll
+    --with-dbus-user="dbus" \
+    --enable-systemd \
+    --enable-user-session \
+    --enable-epoll
   make
 }
 
@@ -54,7 +55,9 @@ package() {
   rm -r "$pkgdir/usr/share/doc"
   rm -r "$pkgdir/var/run"
 
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/dbus/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/dbus"
 
-  install -Dm644 "$srcdir/dbus.sysusers" "$pkgdir/usr/lib/sysusers.d/dbus.conf"
+  # We have a pre-assigned uid (81)
+  echo 'u dbus 81 "System Message Bus"' |
+    install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/dbus.conf"
 }
