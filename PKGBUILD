@@ -3,7 +3,7 @@
 
 _pkgname=robo
 pkgname=${_pkgname}
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Modern task runner for PHP."
 arch=("any")
