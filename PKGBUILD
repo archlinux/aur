@@ -1,6 +1,6 @@
 # Maintainer : David Beley <dbeley@protonmail.com>
 pkgname=ypc-git
-pkgver=0.0.1
+pkgver=1.2
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
