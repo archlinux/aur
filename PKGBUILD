@@ -3,19 +3,23 @@
 pkgname=lain-git
 pkgcom=1697
 pkgsha=3328e73
+pkgfullsha="3328e738bdc1223583fb98730668dfed24395dfc"
 pkgver=$pkgcom.$pkgsha
-pkgrel=1
+pkgrel=2
 pkgdesc="Layouts, asynchronous widgets and utilities for Awesome WM"
-arch=('any')
+arch=("any")
 url="https://github.com/lcpz/lain"
-license=('GPL2')
-depends=('awesome')
-optdepends=('curl: for IMAP, MPD and weather widgets')
-makedepends=('git')
-provides=('lain')
-conflicts=('lain')
-source=("git://github.com/lcpz/lain.git")
-md5sums=('SKIP')
+license=("GPL2")
+depends=("awesome")
+optdepends=("curl: for IMAP, MPD and weather widgets")
+provides=("lain")
+conflicts=("lain")
+sha256sums=("SKIP")
+source=("lain-${pkgver}.zip::https://github.com/lcpz/lain/archive/$pkgsha.zip")
+
+prepare() {
+    mv "lain-$pkgsha"* lain
+}
 
 package() {
     # check if awesome is stable or git
@@ -26,7 +30,5 @@ package() {
     fi
 
     install -dm755 "$aw_path/lain"
-    git --git-dir=lain/.git --work-tree=lain/ reset --hard $pkgsha --quiet
-    rm -rf lain/{wiki,.git*,*.rockspec,*TEMPLATE*}
     cp -a lain $aw_path
 }
