@@ -3,32 +3,36 @@ package main
 import (
     "bufio"
     "fmt"
-    "os"
-    "os/exec"
+	"os"
+	"os/exec"
+	"bytes"
     "strings"
 )
 
 func main() {
-    reader := bufio.NewReader(os.Stdin)
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println(execCmd("ls .", false))
     for {
         fmt.Print("> ")
         // Read the keyboad input.
         input, err := reader.ReadString('\n')
         if err != nil {
             fmt.Fprintln(os.Stderr, err)
-        }
-
-        // Handle the execution of the input.
-        if err = execGit(input); err != nil {
-            fmt.Fprintln(os.Stderr, err)
+		}
+		// Handle the execution of the input.
+        if retval := execCmd(input, true); len(retval) > 0 {
+			fmt.Fprintln(os.Stderr, retval)
         }
     }
 }
 
-func execGit(input string) error {
-	// Add the 'git' command
-	input = "git " + input
+var outb, errb bytes.Buffer
 
+func execCmd(input string, git_cmd bool) string {
+	// Add the 'git' command
+	if git_cmd {
+		input = "git " + input
+	}
     // Remove the newline character.
     input = strings.TrimSuffix(input, "\n")
 
@@ -44,10 +48,21 @@ func execGit(input string) error {
     // Prepare the command to execute.
     cmd := exec.Command(args[0], args[1:]...)
 
-    // Set the correct output device.
-    cmd.Stderr = os.Stderr
-    cmd.Stdout = os.Stdout
-
+	// Set the correct output device.
+	if git_cmd{
+    	cmd.Stderr = os.Stderr
+		cmd.Stdout = os.Stdout
+	}else{
+		cmd.Stdout = &outb
+		cmd.Stderr = &errb
+	}
     // Execute the command and return the error.
-    return cmd.Run()
+	err := cmd.Run()
+	if err != nil{
+		return err.Error()
+	}
+	if !git_cmd{
+		return outb.String()
+	}
+	return ""
 }
