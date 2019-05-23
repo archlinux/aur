@@ -1,7 +1,7 @@
 # Maintainer: Martin Drawitsch <martin dot drawitsch at gmail dot com>
 pkgname=('ezc3d')
 pkgver='0.3.6'
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use reader, modifier and writer for C3D format files. Includes Python bindings"
 url="https://github.com/pyomeca/ezc3d"
 depends=('python')
@@ -27,4 +27,8 @@ build() {
 package() {
     cd ${srcdir}/ezc3d-Release_${pkgver}/build
     make DESTDIR=${pkgdir} install
+    # Fix the _ezc3d.so path. How did it end up there?
+    PY=$(readlink $(which python3))
+    mv ${pkgdir}/usr/lib/${PY}/site-packages/_ezc3d.so \
+       ${pkgdir}/usr/lib/${PY}/site-packages/ezc3d/ 
 }
