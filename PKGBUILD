@@ -2,7 +2,7 @@
 
 _pkgver_openzwafe=1.5
 pkgname=gateway
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Things Gateway by Mozilla"
 arch=(any)
