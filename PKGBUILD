@@ -3,7 +3,7 @@
 
 pkgname=python-gpy
 _name=GPy
-pkgver=1.9.6
+pkgver=1.9.8
 pkgrel=1
 pkgdesc="Gaussian processes framework in python"
 arch=("any")
@@ -13,13 +13,13 @@ depends=('python' 'python-numpy' 'python-scipy' 'python-six' 'python-paramz' 'py
 optdepends=('python-plotly' 'ipython' 'python-sphinx' 'python-ipykernel' 'python-ipywidgets' 'python-jupyter_client' 'jupyter-notebook' 'python-mpi4py')
 makedepends=('python-setuptools' 'python-numpy' 'cython')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=("f11d649b3320d4cb836d283706754953277c8696977726803ccd3ee1355a94a7")
+sha256sums=("33a55bb99fe5c7cdd8df4f8e220e3b87574afde49f5654b3ef7c0445018af4a0")
 
 prepare() {
     cd "GPy-${pkgver}"
     
     # Forcibly update cython for python 3.7 (https://github.com/SheffieldML/GPy/issues/649)
-    find . -name '*.pyx' -exec cython {} \;
+    find . -name '*.pyx' -exec cython -v -3 {} \;
 }
 
 build() {
