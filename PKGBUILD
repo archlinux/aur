@@ -3,7 +3,7 @@
 
 _pkgname=klayout
 pkgname=klayout-git
-pkgver=v0.25.4.r47.g9dd603bb
+pkgver=v0.25.8
 pkgrel=1
 pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS files."
 arch=('i686' 'x86_64')
@@ -21,14 +21,14 @@ md5sums=(SKIP
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git tag | tail -1
 }
 
 build() {
 	cd "$srcdir/klayout"
 
     # Get thread count to multithread build process.
-    threads="$(grep -c ^processor /proc/cpuinfo)"
+    threads="$(($(grep -c ^processor /proc/cpuinfo) + 1))"
 
 	build_opt="-qmake /usr/bin/qmake
 		-ruby /usr/bin/ruby
