@@ -10,6 +10,7 @@ pkgbase = newsup-git
 	depends = perl-io-socket-ssl>=2.020
 	depends = perl-inline-c>=0.76
 	depends = perl-config-tiny>=2.22
+	depends = perl-file-copy-recursive>=0.44
 	provides = newsup
 	source = newsup-git::git+https://github.com/demanuel/NewsUP.git
 	md5sums = SKIP

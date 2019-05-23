@@ -8,7 +8,7 @@ pkgdesc="NewsUP - A usenet binary uploader"
 arch=('any')
 url="https://github.com/demanuel/NewsUP"
 license=('GPLv3')
-depends=('perl>=5.026' 'perl-io-socket-ssl>=2.020' 'perl-inline-c>=0.76' 'perl-config-tiny>=2.22')
+depends=('perl>=5.026' 'perl-io-socket-ssl>=2.020' 'perl-inline-c>=0.76' 'perl-config-tiny>=2.22' 'perl-file-copy-recursive>=0.44')
 source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 install=newsup.install
