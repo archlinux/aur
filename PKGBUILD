@@ -2,7 +2,7 @@
 
 pkgname=mutter-dev
 _pkgname=mutter
-pkgver=3.33.1
+pkgver=3.33.2
 pkgrel=1
 pkgdesc="A window manager for GNOME."
 url="https://gitlab.gnome.org/GNOME/mutter"
