@@ -1,7 +1,7 @@
 # Maintainer: Davide Depau <davide@depau.eu>
 
 pkgname=ant-dracula-gtk-theme
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Ant Dracula Theme for GTK 3.x"
 arch=(any)
@@ -13,7 +13,7 @@ _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
 read _s _t <<< $(echo -n $(curl -s $url | sed -n "s/$_p/\2\3/p"))
 
 source=("https://github.com/EliverLara/Ant-Dracula/archive/v$pkgver.tar.gz")
-sha256sums=('8f8336340eae4178f3f1b22d6c591342fbbe11d1d0d9159041ecb52818b25076')
+sha256sums=('5de816ebdcdc5cccf02c8965bf7a38e0a9718a769e274505bcf3809d3ce6ece8')
 
 package(){
 	cd "$srcdir"
