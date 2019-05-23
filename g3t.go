@@ -12,7 +12,7 @@ import (
 
 func main() {
 	// test code
-	// fmt.Println(execCmd("ls .", false))
+	// fmt.Println(execCmd("help", false))
 
 	term, err := terminal.NewWithStdInOut()
 	if err != nil {
@@ -37,28 +37,18 @@ func main() {
 
 var outb, errb bytes.Buffer
 
-func execCmd(input string, git_cmd bool) string {
-	// Add the 'git' command
-	if git_cmd {
-		input = "git " + input
-	}
+func execCmd(input string, stdout bool) string {
     // Remove the newline character.
     input = strings.TrimSuffix(input, "\n")
 
     // Split the input separate the command and the arguments.
     args := strings.Split(input, " ")
 
-    // Check for built-in commands.
-    switch args[1] {
-    case "exit":
-        os.Exit(0)
-    }
-
     // Prepare the command to execute.
-    cmd := exec.Command(args[0], args[1:]...)
+    cmd := exec.Command("git", args[0:]...)
 
 	// Set the correct output device.
-	if git_cmd{
+	if stdout{
     	cmd.Stderr = os.Stderr
 		cmd.Stdout = os.Stdout
 	}else{
@@ -70,7 +60,7 @@ func execCmd(input string, git_cmd bool) string {
 	if err != nil{
 		return err.Error()
 	}
-	if !git_cmd{
+	if !stdout{
 		return outb.String()
 	}
 	return ""
