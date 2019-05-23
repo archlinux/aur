@@ -1,12 +1,12 @@
 
 pkgname=mingw-w64-vtk-git
-pkgver=r70984.0f96a07b43
+pkgver=r70988.e16be12990
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
 url='http://www.vtk.org/'
 license=('BSD')
-depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-jsoncpp' 'mingw-w64-expat' 'mingw-w64-netcdf' 'mingw-w64-libtiff' 'mingw-w64-libjpeg-turbo' 'mingw-w64-freetype2' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-hdf5' 'mingw-w64-libtheora' 'mingw-w64-freeglut' 'mingw-w64-lz4' 'mingw-w64-proj')
+depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-jsoncpp' 'mingw-w64-expat' 'mingw-w64-netcdf' 'mingw-w64-libtiff' 'mingw-w64-libjpeg-turbo' 'mingw-w64-freetype2' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-hdf5' 'mingw-w64-libtheora' 'mingw-w64-freeglut' 'mingw-w64-lz4')
 makedepends=('mingw-w64-cmake' 'git' 'mingw-w64-utf8cpp')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("git+https://gitlab.kitware.com/vtk/vtk.git")
@@ -42,7 +42,7 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_jpeg=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_jsoncpp=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libxml2=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_lz4=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_lzma=ON \
