@@ -24,7 +24,8 @@ func main() {
 	term.SetPrompt("> ")
 	for {
 		line, err := term.ReadLine()
-		if err == io.EOF {
+		if err == io.EOF ||  line == "^C"{
+			fmt.Println()
 			return
 		}
 		if retval := execCmd(line, true); len(retval) > 0 {
