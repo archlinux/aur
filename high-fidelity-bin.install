@@ -6,4 +6,6 @@ post_install() {
   echo "==> hifi-domain-server: Setup high fidelity domain server."
   echo "==> hifi-ice-server: Set up your own server for high fidelity."
   echo
+  echo "Please note: Intel GPU is not supported yet by HiFi!"
+  echo
 }
