@@ -3,7 +3,7 @@
 pkgbase=python-num2words
 pkgname=('python-num2words' 'python2-num2words')
 pkgver=0.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python modules to convert numbers to words."
 arch=('any')
 url='https://github.com/savoirfairelinux/num2words'
@@ -33,6 +33,7 @@ package_python2-num2words() {
 
   cd "${srcdir}/num2words-${pkgver}"
   python2 setup.py install --root=${pkgdir} 
+  mv "${pkgdir}/usr/bin/num2words" "${pkgdir}/usr/bin/num2words2"
 }
 
 # vim:set ts=2 sw=2 et:
