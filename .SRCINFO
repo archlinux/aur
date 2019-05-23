@@ -1,0 +1,13 @@
+pkgbase = epics-base
+	pkgdesc = Experimental Physics and Industrial Control System -- base
+	pkgver = 7.0.2.2
+	pkgrel = 1
+	url = https://epics-controls.org
+	arch = any
+	license = EPICS Open License
+	depends = readline
+	source = https://github.com/epics-base/epics-base/archive/R7.0.2.2.tar.gz
+	md5sums = 2f222803cb62f90bc7832fb16d829646
+
+pkgname = epics-base
+
