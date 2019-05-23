@@ -43,7 +43,7 @@ func execCmd(input string, stdout bool) string {
 
     // Split the input separate the command and the arguments.
     args := strings.Split(input, " ")
-
+	//
     // Prepare the command to execute.
     cmd := exec.Command("git", args[0:]...)
 
