@@ -6,7 +6,6 @@ cat <<EOF
     Options:
             -h  --help                  Show this message
                 --windowed              Windowed mode
-                --single
                 --addon [desert|moon]   Start addon The Desert or The Moon of Chromos
                 --desert                Start Battle Isle: The Desert
                 --moon                  Start Battle Isle: The Moon of Chromos
@@ -31,7 +30,7 @@ fi
 
 script=${0##*/}
 
-TEMP=$(getopt -o h --long help,windowed,single,addon:,moon,desert \
+TEMP=$(getopt -o h --long help,windowed,addon:,moon,desert \
      -n "$script" -- "$@")
 
 if [ $? != 0 ] ; then exit 1 ; fi
@@ -42,7 +41,6 @@ while true; do
     case "$1" in
         -h|--help)  _help; shift ;;
         --windowed) WINDOWED=1; shift ;;
-        --single)   START_SINGLE=1; shift ;;
         --addon)
             case "$2" in
                 desert) START_DESERT=1 ;;
@@ -62,9 +60,7 @@ if [ "$WINDOWED" ]; then
     configs+=('-conf' 'dosbox_windowed.conf')
 fi
 
-if [ "$START_SINGLE" ] ; then
-    configs+=('-conf' 'dosboxbi1_single.conf')
-elif [ "$START_DESERT" ] ; then
+if [ "$START_DESERT" ] ; then
     configs+=('-conf' 'dosboxbi1_desert.conf')
 elif [ "$START_MOON" ] ; then
     configs+=('-conf' 'dosboxbi1_moon.conf')
