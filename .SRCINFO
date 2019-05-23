@@ -1,7 +1,7 @@
 pkgbase = mumbledj-git
 	pkgdesc = a mumble dj that can play music from soundcloud, youtube, and mixcloud -- git version
 	pkgver = 3.2.2.r2.ea0e037
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lilmike/mumbledj
 	arch = aarch64
 	arch = armv7h
