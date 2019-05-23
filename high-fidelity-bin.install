@@ -1,0 +1,9 @@
+post_install() {
+  echo
+  echo "==> The following can now be executed:"
+  echo "==> hifi-interface: The graphical archways (client) to the boundless multiverse."
+  echo "==> hifi-assignment-client: A client for assignments. See high fidelity docs for uses."
+  echo "==> hifi-domain-server: Setup high fidelity domain server."
+  echo "==> hifi-ice-server: Set up your own server for high fidelity."
+  echo
+}

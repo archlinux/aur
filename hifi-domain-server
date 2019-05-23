@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd "/opt/hifi/domain-server/"
+./domain-server $*
+exit $?
