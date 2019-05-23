@@ -2,7 +2,7 @@
 
 pkgname=jagged-alliance-gog
 pkgver=1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A turn-based tactics game that takes place on the fictional South Atlantic island of Metavira."
 url="https://www.gog.com/game/jagged_alliance"
 license=('custom:eula')
@@ -51,7 +51,7 @@ prepare() {
     cp setup/tmp/eula.txt "$srcdir"
 
     # remove bundled dosbox, windows stuff and gog client files
-    rm -rf setup/{app/,commonappdata/,dosbox/,tmp/,*.ico,*.dll,*.zip,__redist,__support}
+    rm -rf setup/{app/,commonappdata/,dosbox/,tmp/,goggame-*,*.ico,*.dll,*.zip,__redist,__support}
 }
 
 package() {
