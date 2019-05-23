@@ -1,7 +1,7 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=rivet
-pkgver=2.7.1
-pkgrel=1
+pkgver=2.7.2
+pkgrel=3
 pkgdesc="A particle physics package for data analysis and validation of Monte Carlo event generators"
 arch=('x86_64' 'i686')
 url="http://rivet.hepforge.org"
@@ -12,11 +12,13 @@ optdepends=('texlive-core: Plotting functionality'
             'imagemagick: PNG plot output'
             'python2: For Python2 module in addition to Python3')
 makedepends=('cython')
-source=(http://www.hepforge.org/archive/rivet/Rivet-$pkgver.tar.gz)
-md5sums=('761cfe8b6500f89131b293cf6d31a3b4')
+source=(http://www.hepforge.org/archive/rivet/Rivet-$pkgver.tar.gz rivet-python3.patch)
+md5sums=('9b4061fbb79791045ffdff6b16c8272a'
+         'e9476790ce0f6709713561583a8fbc10')
 
 build() {
 	cd "$srcdir/Rivet-$pkgver"
+        patch -p1 < $srcdir/rivet-python3.patch
 	./configure --prefix=/usr
 	make
 }
