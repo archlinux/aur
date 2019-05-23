@@ -19,7 +19,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/vtk"
-  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5560.patch | patch -p1  
 }
 
 build() {
@@ -53,6 +52,7 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_sqlite=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_tiff=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=ON \
+      -Dutf8cpp_INCLUDE_DIR=/usr/include/utf8cpp \
       -DVTK_MODULE_USE_EXTERNAL_VTK_zlib=ON \
       -DVTK_BUILD_TESTING=OFF \
       -DVTK_PYTHON_VERSION="3" \
