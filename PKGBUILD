@@ -51,7 +51,6 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_sqlite=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_tiff=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=ON \
-      -Dutf8cpp_INCLUDE_DIR=/usr/${_arch}/include/utf8cpp \
       -DVTK_MODULE_USE_EXTERNAL_VTK_zlib=ON \
       -DVTK_BUILD_TESTING=OFF \
       ..
