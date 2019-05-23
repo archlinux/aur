@@ -9,8 +9,8 @@ pkgbase = awesome-freedesktop-git
 	depends = awesome
 	provides = awesome-freedesktop
 	conflicts = awesome-freedesktop
-	source = git://github.com/copycat-killer/awesome-freedesktop.git
-	md5sums = SKIP
+	source = awesome-freedesktop-105.6951b09.zip::https://github.com/lcpz/awesome-freedesktop/archive/6951b09.zip
+	sha256sums = SKIP
 
 pkgname = awesome-freedesktop-git
 

@@ -6,15 +6,19 @@ pkgsha=6951b09
 pkgver=$pkgcom.$pkgsha
 pkgrel=1
 pkgdesc="Freedesktop.org menu and desktop icons support for Awesome WM"
-arch=('any')
+arch=("any")
 url="https://github.com/lcpz/awesome-freedesktop"
-license=('GPL2')
-depends=('awesome')
-makedepends=('git')
-provides=('awesome-freedesktop')
-conflicts=('awesome-freedesktop')
-source=("git://github.com/copycat-killer/awesome-freedesktop.git")
-md5sums=('SKIP')
+license=("GPL2")
+depends=("awesome")
+makedepends=("git")
+provides=("awesome-freedesktop")
+conflicts=("awesome-freedesktop")
+sha256sums=("SKIP")
+source=("awesome-freedesktop-${pkgver}.zip::https://github.com/lcpz/awesome-freedesktop/archive/$pkgsha.zip")
+
+prepare() {
+    mv "awesome-freedesktop-$pkgsha"* freedesktop
+}
 
 package() {
     # check if awesome is stable or git
@@ -24,9 +28,6 @@ package() {
         aw_path="$pkgdir/usr/local/share/awesome/lib"
     fi
 
-    mv awesome-freedesktop freedesktop
     install -dm755 "$aw_path/freedesktop"
-    git --git-dir=freedesktop/.git --work-tree=freedesktop/ reset --hard $pkgsha --quiet
-    rm -rf freedesktop/{wiki,.git*,*.rockspec,*TEMPLATE*,*.png}
     cp -a freedesktop $aw_path
 }
