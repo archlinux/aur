@@ -7,6 +7,9 @@ pkgbase = basis-universal-git
 	license = Apache
 	makedepends = cmake
 	makedepends = ninja
+	provides = basis-universal
+	provides = basisu
+	conflicts = basis-universal
 	source = https://github.com/BinomialLLC/basis_universal
 	sha256sums = SKIP
 

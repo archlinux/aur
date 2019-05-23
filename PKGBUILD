@@ -10,6 +10,8 @@ license=('Apache')
 makedepends=('cmake' 'ninja')
 source=("git+$url")
 sha256sums=('SKIP')
+provides=(basis-universal basisu)
+conflicts=(basis-universal)
 
 pkgver() {
   cd basis_universal
