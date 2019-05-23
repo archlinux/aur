@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python')
 source_x86_64=("https://omnidb.org/dist/${pkgver}/omnidb-server_${pkgver}-debian-amd64.deb")
 options=("!strip")
-sha256sums_x86_64=('1795dc6b977bfc55f75fc96ffde8d123cae186e2788521baa328e493e35f6d25')
+sha256sums_x86_64=('998afe3c8c3b9733f8c08e88a4bebfd84ac804fa62359d84d2fd084891ffaf42')
 
 package() {
     cd "$pkgdir"
