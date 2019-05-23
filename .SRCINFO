@@ -1,7 +1,7 @@
 pkgbase = oomox
 	pkgdesc = Themix: GUI for generating different color variations of Arc, Materia, Oomox themes (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm), ArchDroid, Gnome-Colors, Numix, Papirus, Suru++ icons, and terminal palettes. Have a hack for HiDPI in GTK2.
 	pkgver = 1.12.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/themix-project/oomox
 	arch = i686
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = oomox
 	source = base16_mirror-2e4112fe859ed5d33f67c177f11d369d360db9ae.tar.gz::https://github.com/themix-project/base16_mirror/archive/2e4112fe859ed5d33f67c177f11d369d360db9ae.tar.gz
 	source = numix-icon-theme-88ba3654506c73f77a28629d863d1e23a553bff7.tar.gz::https://github.com/numixproject/numix-icon-theme/archive/88ba3654506c73f77a28629d863d1e23a553bff7.tar.gz
 	source = numix-folders-24e5f6c6603e7f798553d2f24a00de107713c333.tar.gz::https://github.com/numixproject/numix-folders/archive/24e5f6c6603e7f798553d2f24a00de107713c333.tar.gz
-	source = papirus-icon-theme-20190501.tar.gz::https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/20190501.tar.gz
+	source = papirus-icon-theme-20190521.tar.gz::https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/20190521.tar.gz
 	source = suru-plus-icon-theme-30.0.tar.gz::https://github.com/gusbemacbe/suru-plus/archive/v30.0.tar.gz
 	source = suru-plus-aspromauros-icon-theme-2.1.tar.gz::https://github.com/gusbemacbe/suru-plus-aspromauros/archive/v2.1.tar.gz
 	md5sums = 3dd791ab2cf30cc713657fc68d0b8e87
@@ -60,7 +60,7 @@ pkgbase = oomox
 	md5sums = 8f7506b74131bfce78685aade0e275eb
 	md5sums = 6873ed4ffd84e69e10625f5aee2bfdc6
 	md5sums = 3fcb07cefe43a6a2fe4d977f124624ec
-	md5sums = b3abab74cdcb2838eb8c417100650e39
+	md5sums = f1729af8821c6fd1c592275ae1cddd67
 	md5sums = aba1a105215425e843b60b8edae38241
 	md5sums = 852e3cb9292153fd55f8a5e79ce81ebe
 
