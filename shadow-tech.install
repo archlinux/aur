@@ -1,0 +1,24 @@
+post_install() {
+	ln -sf '/opt/Shadow/shadow' '/usr/bin/shadow'
+}
+
+post_remove() {
+	# Remove configuration
+	for user in `ls /home`
+	do
+		if [ -d /home/$user/.config/Shadow ]; then
+			rm -R /home/$user/.config/Shadow
+		fi
+	done
+}
+
+pre_upgrade(){
+	# Delete the old version of Shadow
+	if [ -d "/opt/Shadow" ]; then
+	    rm -r "/opt/Shadow"
+	fi
+}
+
+post_upgrade(){
+	post_install
+}
