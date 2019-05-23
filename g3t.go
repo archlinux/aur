@@ -2,7 +2,6 @@ package main
 
 import (
 	"io"
-    _ "bufio"
     "fmt"
 	"os"
 	"os/exec"
@@ -12,41 +11,28 @@ import (
 )
 
 func main() {
-	//reader := bufio.NewReader(os.Stdin)
-	fmt.Println(execCmd("ls .", false))
+	// test code
+	// fmt.Println(execCmd("ls .", false))
 
 	term, err := terminal.NewWithStdInOut()
 	if err != nil {
 		panic(err)
 	}
 	defer term.ReleaseFromStdInOut()
-	fmt.Println("Ctrl-D to break")
 	term.SetPrompt("> ")
 	for {
+		// Read the keyboad input.
 		line, err := term.ReadLine()
+		// Exit on Ctrl-D and Ctrl-C
 		if err == io.EOF ||  line == "^C"{
 			fmt.Println()
 			return
 		}
+		// Handle the execution of the input.
 		if retval := execCmd(line, true); len(retval) > 0 {
 			fmt.Fprintln(os.Stderr, retval)
 		}
 	}
-
-	/*
-
-    for {
-        fmt.Print("> ")
-        // Read the keyboad input.
-        input, err := reader.ReadString('\n')
-        if err != nil {
-            fmt.Fprintln(os.Stderr, err)
-		}
-		// Handle the execution of the input.
-        if retval := execCmd(input, true); len(retval) > 0 {
-			fmt.Fprintln(os.Stderr, retval)
-        }
-    }*/
 }
 
 var outb, errb bytes.Buffer
