@@ -1,14 +1,14 @@
 # Maintainer: Valentijn V. <deepnavy at waifu dot club>
 pkgname=gb-studio-git # '-bzr', '-git', '-hg' or '-svn'
 _pkgname=gb-studio
-pkgver=1.0.0.r4.g11124d5
-pkgrel=1
+pkgver=1.1.0.r36.g4e74b371
+pkgrel=2
 pkgdesc="Visual retro game maker"
 arch=('x86_64')
 url="https://github.com/chrismaltby/gb-studio"
 license=('MIT')
 groups=()
-depends=()
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'util-linux' 'trash-cli')
 makedepends=('git' 'yarn' 'npm' 'nodejs' 'dpkg')
 provides=("gb-studio")
 conflicts=("gb-studio")
