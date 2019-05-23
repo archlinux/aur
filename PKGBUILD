@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/highfidelity/hifi"
 license=('Apache')
 install="${pkgname}.install"
-gitname=hifi-packages
+_gitname=hifi-packages
 
 provides=('hifi')  
 conflicts=('hifi')
@@ -33,7 +33,7 @@ source=(
 	'hifi-assignment-client'
 	'hifi-domain-server'
 	'hifi-ice-server'
-	'git+https://github.com/Justinizer/${gitname}.git'
+	'$_gitname::git+https://github.com/Justinizer/hifi-packages.git'
 )
 
 md5sums=(
@@ -51,8 +51,8 @@ package() {
 	mkdir -p "$pkgdir/usr/lib"
  	mkdir -p "$pkgdir/opt"
 
- 	tar -xvf "$srcdir/$gitname/hifi.tar.xz" -C "$pkgdir/opt/"
- 	tar -xvf "$srcdir/$gitname/libraries.tar.gz" -C "$pkgdir/usr/lib/"
+ 	tar -xvf "$srcdir/$_gitname/hifi.tar.xz" -C "$pkgdir/opt/"
+ 	tar -xvf "$srcdir/$_gitname/libraries.tar.gz" -C "$pkgdir/usr/lib/"
 
 	#copy polyvox library
 	cd "$pkgdir/usr/lib"
