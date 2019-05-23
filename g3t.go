@@ -1,17 +1,42 @@
 package main
 
 import (
-    "bufio"
+	"io"
+    _ "bufio"
     "fmt"
 	"os"
 	"os/exec"
 	"bytes"
-    "strings"
+	"strings"
+	"github.com/carmark/pseudo-terminal-go/terminal"
 )
 
 func main() {
-	reader := bufio.NewReader(os.Stdin)
+	//reader := bufio.NewReader(os.Stdin)
 	fmt.Println(execCmd("ls .", false))
+
+	term, err := terminal.NewWithStdInOut()
+	if err != nil {
+		panic(err)
+	}
+	defer term.ReleaseFromStdInOut()
+	fmt.Println("Ctrl-D to break")
+	term.SetPrompt("> ")
+	line, err:= term.ReadLine()
+	for {
+		line, err = term.ReadLine()
+		if err == io.EOF {
+			return
+		}
+		if retval := execCmd(line, true); len(retval) > 0 {
+			fmt.Fprintln(os.Stderr, retval)
+		}
+		fmt.Println("x")
+	}
+	//term.Write([]byte(line))
+
+	/*
+
     for {
         fmt.Print("> ")
         // Read the keyboad input.
@@ -23,7 +48,7 @@ func main() {
         if retval := execCmd(input, true); len(retval) > 0 {
 			fmt.Fprintln(os.Stderr, retval)
         }
-    }
+    }*/
 }
 
 var outb, errb bytes.Buffer
