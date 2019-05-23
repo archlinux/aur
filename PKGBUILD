@@ -7,7 +7,7 @@ repo="github.com/bellecp/$pkgname"
 url="https://$repo"
 license=('MIT')
 depends=('fzf')
-makedepends=('go-pie')
+makedepends=('go-pie' 'git')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('87e34e6b4bee5e20247e997b19c0d8c08dd6f35a6c0dd4b507224d6790e2b071')
 
