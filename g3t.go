@@ -7,6 +7,7 @@ import (
 	"os/exec"
 	"bytes"
 	"strings"
+	"regexp"
 	"github.com/carmark/pseudo-terminal-go/terminal"
 )
 
@@ -41,11 +42,14 @@ func execCmd(input string, stdout bool) string {
     // Remove the newline character.
     input = strings.TrimSuffix(input, "\n")
 
+	argr := regexp.MustCompile(`(".*")`)
+	fmt.Printf("%q\n", argr.Split(input, -1))
+
     // Split the input separate the command and the arguments.
-    args := strings.Split(input, " ")
-	//
-    // Prepare the command to execute.
-    cmd := exec.Command("git", args[0:]...)
+	//args := strings.Split(input, " ")
+	
+	// Prepare the command to execute.
+    cmd := exec.Command("sh", "-c", "git " + input)
 
 	// Set the correct output device.
 	if stdout{
