@@ -11,7 +11,7 @@ pkgdesc='Kernel DRM miscellaneous fixes and cross-tree changes'
 _srcname=$pkgbase
 _kernel_rel=5.1
 _branch=drm-misc-next
-pkgver=5.1.826116.409c53f07a81
+pkgver=5.1.839739.cbb56814fbe7
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/drm/drm-misc'
@@ -25,7 +25,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm-misc#branch=${_branch
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            'd7faebb0dc6979e503febda4b5b58e1c17e1e5ec02c37daf66b8c683d2fedf9d'
+            'cc85bf7aa64e7e8d0b89acb3f345aaf859e86551d2b40ddb497a4ef8c3f9af99'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
