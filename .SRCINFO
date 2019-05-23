@@ -1,14 +1,14 @@
 pkgbase = zfs-linux-rc
-	pkgver = 0.8.0_rc5_5.1.3.arch1.1
+	pkgver = 0.8.0_rc5_5.1.4.arch1.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-headers=5.1.3.arch1-1
+	makedepends = linux-headers=5.1.4.arch1-1
 	makedepends = python
 	depends = kmod
 	depends = zfs-utils-rc=0.8.0_rc5
-	depends = linux=5.1.3.arch1-1
+	depends = linux=5.1.4.arch1-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.0-rc5/zfs-0.8.0-rc5.tar.gz
 	sha256sums = c5dc91e3efb7555c6c1846cf89fd4cfb0952271a2900434e697f2b7397ce9b16
 
