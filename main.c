@@ -25,13 +25,13 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 
 	int opt;
 	int short_format = 0;
 	int one_shot = 0;
 	int quit_on_keypress = 0;
-	while ((opt = getopt(argc, argv, "soq")) != -1) {
+	while ((opt = getopt(argc, argv, "soqh")) != -1) {
 		switch(opt) {
 			case 's':
 				short_format = 1;
@@ -42,9 +42,15 @@ void main(int argc, char *argv[]) {
 			case 'q':
 				quit_on_keypress = 1;
 				break;
+			case 'h':
+				printf( "colorpicker [options]\n"
+						"  -h: show this help\n"
+						"  -s: use short format\n"
+						"  -o: oneshot\n"
+						"  -q: quit on keyboard press\n");
+				return 0;
 			default:
-				fprintf(stderr, "Unknown flag: %c\n", opt);
-				break;
+				return 1;
 		}
 	}
 
@@ -56,6 +62,7 @@ void main(int argc, char *argv[]) {
 
 	XWindowAttributes gwa;
 	XGetWindowAttributes(display, root, &gwa);
+
 	XImage *image = XGetImage(display, root, 0, 0, gwa.width, gwa.height, AllPlanes, ZPixmap);
 	XGrabKeyboard(display, root, 0, GrabModeAsync, GrabModeAsync, CurrentTime);
 
@@ -84,7 +91,10 @@ void main(int argc, char *argv[]) {
 			break;
 		}
 	}
+
+	/* will be done on connection close anw */
 	XUngrabPointer(display, CurrentTime);
-	XFree(image);
+	XUngrabKeyboard(display, CurrentTime);
+	XDestroyImage(image);
 	XCloseDisplay(display);
 }
