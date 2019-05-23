@@ -1,0 +1,12 @@
+post_install() {	
+    # systemctl preset eruption
+    udevadm control --reload-rules
+}
+
+pre_remove() {
+	systemctl stop eruption.service
+}
+
+post_remove() {
+	systemctl daemon-reload
+}
