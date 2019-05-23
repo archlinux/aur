@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Gauvrit <guillaume@gauvr.it>
 pkgname=starleaf-breeze
-pkgver=1.6.12
+pkgver=1.10.1
 pkgrel=3
 pkgdesc="StarLeaf Breeze voice and video softclient"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('custom:starleaf')
 makedepends=('pacman>=4.2.0')
 options=('!emptydirs' '!strip')
 source=("${pkgname}_${pkgver}.deb::https://dl.starleaf.com/breeze_downloads/StarLeaf-Breeze-Installer-Ubuntu.deb")
-md5sums=('ea07fdd1a213dc30fbb51edc8e54331e')
+md5sums=('21e56af2bbcb9e19200500cbd145b2cd')
 
 package() {
   msg2 "Extracting starleaf-breeze_$pkgver.deb to $pkgdir/..."
