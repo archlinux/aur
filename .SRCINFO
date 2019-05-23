@@ -1,7 +1,7 @@
 pkgbase = nyancoin-qt
 	pkgdesc = NyanCoin Qt5 wallet
 	pkgver = 1.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://reddit.com/r/NyanCoins
 	arch = x86_64
 	arch = i686
@@ -18,9 +18,9 @@ pkgbase = nyancoin-qt
 	source = git+https://github.com/Nyancoins/nyancoin-client.git
 	source = nyancoin-qt.desktop
 	source = nyancoin-qt.png
-	md5sums = SKIP
-	md5sums = f5ec718a29bcd8419c5aafe1b4e210b5
-	md5sums = 1a235ccadeff05eb3422027e3fb610ba
+	sha256sums = SKIP
+	sha256sums = 81f414068fbb64502152975ec6f906ee6e0dc8728ade64cd1adecce2cb270258
+	sha256sums = 9e16d85cf7d7abe16c766b1898905e42fa1ed8c9a5e43d3bd7cf09e8d6f03593
 
 pkgname = nyancoin-qt
 
