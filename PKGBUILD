@@ -9,7 +9,7 @@ arch=('any')
 source=("${_gitname}::git+${url}")
 sha512sums=(SKIP)
 makedepends=('git')
-license=('CPL')
+license=('unknown')
 
 pkgver () {
 	cd "${_gitname}"
