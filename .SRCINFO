@@ -1,6 +1,6 @@
 pkgbase = dmenu-wayland-git
 	pkgdesc = Wayland port of a generic menu for X
-	pkgver = .r34.88f1766
+	pkgver = 4.2.1.r34.88f1766
 	pkgrel = 1
 	url = https://github.com/nyyManni/dmenu-wayland
 	arch = i686

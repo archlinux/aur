@@ -9,8 +9,8 @@
 
 _pkgname=dmenu-wayland
 pkgname=$_pkgname-git
-pkgver=.r34.88f1766
-pkgrel=2
+pkgver=4.2.1.r34.88f1766
+pkgrel=1
 pkgdesc="Wayland port of a generic menu for X"
 url="https://github.com/nyyManni/dmenu-wayland"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$_pkgname
-  base_ver=$(cat config.mk | grep VERSION | head -n1 | awk '{ print $3 }')
+  base_ver=$(sed -En "s/^.*version:.*(([[:digit:]]+\.?){3}).*$/\1/p" meson.build)
   git_ver=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
 
   echo "$base_ver.$git_ver"
