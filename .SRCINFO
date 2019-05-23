@@ -9,7 +9,6 @@ pkgbase = mumbledj-git
 	license = MIT
 	makedepends = git
 	makedepends = go
-	makedepends = glide
 	depends = aria2
 	depends = ffmpeg
 	depends = openal

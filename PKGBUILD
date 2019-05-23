@@ -9,7 +9,7 @@ arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/lilmike/mumbledj"
 license=('MIT')
 depends=('aria2' 'ffmpeg' 'openal' 'opus' 'youtube-dl')
-makedepends=('git' 'go' 'glide')
+makedepends=('git' 'go')
 source=("mumbledj::git+https://github.com/lilmike/mumbledj.git")
 sha512sums=('SKIP')
 
