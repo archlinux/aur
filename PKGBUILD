@@ -5,7 +5,7 @@
 # Contributor: James An <james@jamesan.ca>
 
 pkgname=drush
-pkgver=8.2.0
+pkgver=8.2.1
 pkgrel=1
 pkgdesc="Command line shell and Unix scripting interface for Drupal."
 arch=('any')
@@ -17,7 +17,7 @@ install=${pkgname}.install
 source=("$pkgname.install"
         "https://github.com/drush-ops/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('e800601699e4b1ea0a0057fc91827b31fc8c5070f5014df2777396aabc7680ec'
-            '80ac3781d47ce6454be1ead9358458261f4156ce67896bbc09172762d8d51bfc')
+            'a4b21ede8613a06f1637b2747b591de33b4c8616d3541ab74bd07b3baa3aa597')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
