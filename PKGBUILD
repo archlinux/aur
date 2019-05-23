@@ -6,7 +6,7 @@ pkgname=(
   liblightdm-qt5-guest
 )
 pkgver=1.30.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A lightweight display manager. With guest-session enabled'
 _add_group=add-autologin-group
@@ -46,6 +46,7 @@ source=(
     lightdm-default-config.patch
     Xsession
     0001-guest-account-Add-default-GSettings-support.patch
+    0002-guest-account-Enable-autologin-guest-account-command.patch
     $_add_group.script
     $_add_group.service
 )
@@ -59,6 +60,7 @@ sha256sums=('05fe38d10dc8966f19806f001561edc057e757656ed37e08ca3127ab32a02692'
             '70b1d952d1ea8ade6b5561e6de781cfbfe3a86a116c10ea9774cfae73281c7a6'
             'd30321a1b490500483b8ed7825fcff2c24a7c760ac627789ff517693888ec3c5'
             'e4c2c618f5484ba165776b747befadd101e40cfdbe4bc01cbb6d3e22beb6ab65'
+            '145fc56dd6d04273cda7058e3d14cfb0cd849ceb7d0089af73be5e69c50fefc6'
             '8b665387245531d4d25ffee9636a3735667876937238c376d7eece97f7a82c14'
             '2199300cc27b6b407e46206abd181b2be2679d2520ddd183e4a37a3fc691739a')
 
@@ -78,6 +80,11 @@ prepare() {
     # put the files in /etc/guest-session/gsettings/. The file format is the same
     # as the regular GSettings override files.
     patch -p1 -i ../0001-guest-account-Add-default-GSettings-support.patch
+
+    # Add support for autologin in the guest session. In Archlinux and derivatives
+    # this is a requirement to enable a fully functional session. It requires adding
+    # the autologin tweak.
+    patch -p1 -i ../0002-guest-account-Enable-autologin-guest-account-command.patch
 }
 
 build() {

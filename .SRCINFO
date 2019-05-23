@@ -1,7 +1,7 @@
 pkgbase = lightdm-guest
 	pkgdesc = A lightweight display manager. With guest-session enabled
 	pkgver = 1.30.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.freedesktop.org/wiki/Software/LightDM/
 	install = add-autologin-group.install
@@ -34,6 +34,7 @@ pkgbase = lightdm-guest
 	source = lightdm-default-config.patch
 	source = Xsession
 	source = 0001-guest-account-Add-default-GSettings-support.patch
+	source = 0002-guest-account-Enable-autologin-guest-account-command.patch
 	source = add-autologin-group.script
 	source = add-autologin-group.service
 	sha256sums = 05fe38d10dc8966f19806f001561edc057e757656ed37e08ca3127ab32a02692
@@ -46,6 +47,7 @@ pkgbase = lightdm-guest
 	sha256sums = 70b1d952d1ea8ade6b5561e6de781cfbfe3a86a116c10ea9774cfae73281c7a6
 	sha256sums = d30321a1b490500483b8ed7825fcff2c24a7c760ac627789ff517693888ec3c5
 	sha256sums = e4c2c618f5484ba165776b747befadd101e40cfdbe4bc01cbb6d3e22beb6ab65
+	sha256sums = 145fc56dd6d04273cda7058e3d14cfb0cd849ceb7d0089af73be5e69c50fefc6
 	sha256sums = 8b665387245531d4d25ffee9636a3735667876937238c376d7eece97f7a82c14
 	sha256sums = 2199300cc27b6b407e46206abd181b2be2679d2520ddd183e4a37a3fc691739a
 

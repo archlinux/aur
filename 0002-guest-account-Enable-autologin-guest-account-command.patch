@@ -1,0 +1,22 @@
+From: Sam Burgos < santiago dot burgos1089 at gmail dot >
+Date: Wed, 22 May 2019 18:30:00 -0600
+Subject: guest-account: Add autologin support
+
+---
+ debian/guest-account.sh | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/debian/guest-account.sh b/debian/guest-account.sh
+index 0fc3daa..38e849c 100644
+--- a/debian/guest-account.sh
++++ b/debian/guest-account.sh
+@@ -71,7 +71,7 @@
+     fi
+   else
+     # does not exist, so create it
+-    useradd --system --home-dir ${GUEST_HOME} --comment $(gettext "Guest") --user-group --shell /bin/bash ${GUEST_USER} || {
++    useradd --system --home-dir ${GUEST_HOME} --comment $(gettext "Guest") --user-group -G autologin --shell /bin/bash ${GUEST_USER} || {
+       rm -rf ${GUEST_HOME}
+       exit 1
+     }
+
