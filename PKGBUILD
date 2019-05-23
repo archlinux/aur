@@ -1,15 +1,15 @@
-# Maintainer: Storm Dragon <storm_dragon@linux-a11y.org>
 # Maintainer: Michael Taboada <michael@2mb.solutions>
+# Maintainer: Storm Dragon <storm_dragon@linux-a11y.org>
                                                                                                                                                                 
 pkgname="mumbledj-git"
 pkgver=3.2.2.r2.ea0e037
-pkgrel=2
+pkgrel=3
 pkgdesc="a mumble dj that can play music from soundcloud, youtube, and mixcloud -- git version"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/lilmike/mumbledj"
 license=('MIT')
 depends=('aria2' 'ffmpeg' 'openal' 'opus' 'youtube-dl')
-makedepends=('git' 'go')
+makedepends=('git' 'go-pie')
 source=("mumbledj::git+https://github.com/lilmike/mumbledj.git")
 sha512sums=('SKIP')
 
