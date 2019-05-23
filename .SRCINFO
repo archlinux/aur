@@ -17,11 +17,7 @@ pkgbase = chatterino2-git
 	optdepends = gst-plugins-good: For audio output
 	provides = chatterino
 	conflicts = chatterino
-	source = chatterino.png
-	source = chatterino.desktop
 	source = git://github.com/Chatterino/chatterino2#branch=nightly
-	md5sums = b8de2f4e09b13025f92e12bb292dccb1
-	md5sums = 6dc7280e81653e9a1f35e150fbebd8a0
 	md5sums = SKIP
 
 pkgname = chatterino2-git

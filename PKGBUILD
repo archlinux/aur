@@ -14,8 +14,8 @@ optdepends=('streamlink: For piping streams to video players'
 provides=('chatterino')
 conflicts=('chatterino')
 install=$pkgname.install
-source=('chatterino.png' 'chatterino.desktop' "git://github.com/Chatterino/chatterino2#branch=nightly")
-md5sums=('b8de2f4e09b13025f92e12bb292dccb1' '6dc7280e81653e9a1f35e150fbebd8a0' 'SKIP')
+source=("git://github.com/Chatterino/chatterino2#branch=nightly")
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/chatterino2"
@@ -36,8 +36,8 @@ build() {
 }
 
 package() {
-    cd "$srcdir/chatterino2/build/bin"
-    install -Dm755 chatterino "$pkgdir/usr/bin/chatterino"
-    install -Dm644 "$srcdir/chatterino.desktop" "$pkgdir/usr/share/applications/chatterino.desktop"
-    install -Dm644 "$srcdir/chatterino.png" "$pkgdir/usr/share/pixmaps/chatterino.png"
+    cd "$srcdir/chatterino2"
+    install -Dm755 "build/bin/chatterino" "$pkgdir/usr/bin/chatterino"
+    install -Dm644 "resources/chatterino.desktop" "$pkgdir/usr/share/applications/chatterino.desktop"
+    install -Dm644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/chatterino.png"
 }
