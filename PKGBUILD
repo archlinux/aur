@@ -15,7 +15,7 @@ source=("${pkgname}::git+https://github.com/vhakulinen/gnvim.git")
 md5sums=('SKIP')
 
 check() {
-    cd "$srcdir/${pkgname}-${pkgver}"
+    cd "$srcdir/${pkgname}"
     cargo test
 }
 
