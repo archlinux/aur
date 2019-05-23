@@ -1,7 +1,7 @@
 # Maintainer: Sophie 'Sharky' Schumann <sharky@sharky.pw>
 pkgname=nyancoin-qt
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="NyanCoin Qt5 wallet"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://reddit.com/r/NyanCoins"

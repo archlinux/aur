@@ -1,7 +1,7 @@
 pkgbase = nyancoin-qt
 	pkgdesc = NyanCoin Qt5 wallet
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://reddit.com/r/NyanCoins
 	arch = x86_64
 	arch = i686
