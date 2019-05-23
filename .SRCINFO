@@ -20,6 +20,7 @@ pkgbase = high-fidelity
 	depends = qt5-graphicaleffects>=5.10.1
 	depends = qt5-quickcontrols>=5.10.1
 	depends = qt5-xmlpatterns>=5.10.1
+	depends = quazip
 	provides = hifi
 	conflicts = hifi
 	source = hifi-interface.desktop

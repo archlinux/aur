@@ -23,7 +23,8 @@ depends=("qt5-base>=$_qt5version"
          "qt5-webengine>=$_qt5version"
          "qt5-graphicaleffects>=$_qt5version"
          "qt5-quickcontrols>=$_qt5version"
-         "qt5-xmlpatterns>=$_qt5version"	 
+         "qt5-xmlpatterns>=$_qt5version"
+         "quazip"
 )
 
 source=(
@@ -92,11 +93,6 @@ package() {
 	cp -p "$srcdir/build/ext/makefiles/polyvox/project/lib/libPolyVoxUtil.so.0.2.1" "$pkgdir/usr/lib/"
 	ln -s "libPolyVoxUtil.so.0.2.1" "libPolyVoxUtil.so.0"
 	ln -s "libPolyVoxUtil.so.0.2.1" "libPolyVoxUtil.so"
-
-	#copy quazip library
-	cp -p "$srcdir/build/ext/makefiles/quazip/project/lib/libquazip5.so.1.0.0" "$pkgdir/usr/lib/"
-	ln -s "libquazip5.so.1.0.0" "libquazip5.so.1"
-	ln -s "libquazip5.so.1" "libquazip5.so"
 
 	#copy steamworks libsdkencryptedappticket libsteam api
 	cp -p "$srcdir/build/ext/makefiles/steamworks/project/src/steamworks/public/steam/lib/linux64/libsdkencryptedappticket.so" "$pkgdir/usr/lib/"
