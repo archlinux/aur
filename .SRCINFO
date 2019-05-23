@@ -1,0 +1,22 @@
+pkgbase = g0d
+	pkgdesc = Utility for simplifying the Git usage
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/KeyLo99/god
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = go>=1.7
+	makedepends = git
+	makedepends = make
+	depends = sh
+	depends = git
+	provides = god-1.0
+	conflicts = g0d
+	source = git://github.com/KeyLo99/god.git
+	sha256sums = SKIP
+
+pkgname = g0d
+
