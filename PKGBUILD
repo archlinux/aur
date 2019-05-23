@@ -13,9 +13,9 @@ _log_path="/var/log/${_pkgname}"
 
 
 pkgname=nginx-libressl
-pkgver=1.14.2
-pkgrel=3
-librever=2.8.3
+pkgver=1.16.0
+pkgrel=1
+librever=2.9.2
 pkgdesc="lightweight HTTP server, statically linked against LibreSSL."
 arch=('i686' 'x86_64')
 
@@ -71,14 +71,12 @@ build() {
 		--error-log-path=${_log_path}/error.log \
 		--user=${_user} \
 		--group=${_group} \
-		--with-ipv6 \
 		--with-openssl=./libressl-$librever \
 		--with-threads \
 		--with-http_ssl_module \
         --with-http_v2_module \
 		--with-http_gzip_static_module \
-		--with-http_realip_module \
-		--with-file-aio
+		--with-http_realip_module
 
 	make
 }
@@ -106,5 +104,5 @@ package() {
 sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
-            '002d9f6154e331886a2dd4e6065863c9c1cf8291ae97a1255308572c02be9797'
-            '9b640b13047182761a99ce3e4f000be9687566e0828b4a72709e9e6a3ef98477')
+            '4fd376bad78797e7f18094a00f0f1088259326436b537eb5af69b01be2ca1345'
+            'c4c78167fae325b47aebd8beb54b6041d6f6a56b3743f4bd5d79b15642f9d5d4')
