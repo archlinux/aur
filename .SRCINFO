@@ -1,0 +1,15 @@
+pkgbase = shivyc
+	pkgdesc = A C compiler written in Python
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/ShivamSarodia/ShivyC
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.6
+	options = !emptydirs
+	source = https://github.com/ShivamSarodia/ShivyC/archive/0.5.0.tar.gz
+	sha256sums = 693d3be4d923f1c1d77cdae80d9ce856a3221891769f74907d8dde1ae65dcaca
+
+pkgname = shivyc
+
