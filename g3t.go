@@ -22,18 +22,15 @@ func main() {
 	defer term.ReleaseFromStdInOut()
 	fmt.Println("Ctrl-D to break")
 	term.SetPrompt("> ")
-	line, err:= term.ReadLine()
 	for {
-		line, err = term.ReadLine()
+		line, err := term.ReadLine()
 		if err == io.EOF {
 			return
 		}
 		if retval := execCmd(line, true); len(retval) > 0 {
 			fmt.Fprintln(os.Stderr, retval)
 		}
-		fmt.Println("x")
 	}
-	//term.Write([]byte(line))
 
 	/*
 
