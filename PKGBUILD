@@ -3,7 +3,7 @@
 # Please report issues at https://github.com/sanduhrs/arch-aur-phploc
 
 pkgname=phploc
-pkgver=4.0.1
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A tool for quickly measuring the size of a PHP project"
 url="https://github.com/sebastianbergmann/phploc"
@@ -12,8 +12,8 @@ license=("BSD")
 depends=("php")
 source=("https://phar.phpunit.de/${pkgname}-${pkgver}.phar"
         "https://raw.githubusercontent.com/sebastianbergmann/${pkgname}/${pkgver}/LICENSE")
-sha512sums=('bf16850dd0d507412a7f581ef21b59993e0a941d7a881756450b55326a6482ead5ab1682793f4901684cd64a5c3400f224488224dd4de5576ff98ef86b7b901f'
-            'c5dec54e82d5989860ccfbd5ea0c5f0b7b0331531f1d5d7a409903315cca7a2be72296bd4e2166c44fabe8ded48b22a154c9dcd5c0cde0ce91587fcb90a7b506')
+sha512sums=('cc5636bab356e2be966f60371a5d85668e1f508c04df5a486fd6af0928184103912b2a6fef416282d9cfd3a8083fff590a491d215b58f9a35a412e879c39ab8e'
+            'cfba02006d338edd426e9e34774255d515a95c92b12614513f0646cd399cedd212bb020cca45d6120a5b7f1262a3e2f748bf6a97802d7b8cc177e6f4c5465220')
 
 package() {
   install -D -m 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
