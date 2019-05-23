@@ -1,7 +1,7 @@
 # Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 
 pkgname=hexeditor
-pkgver=1.9.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='A cross-platform Hex Editor'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('qt5-tools')
 provides=("${pkgname}=${pkgver}")
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chipmunk-sm/HexEditor/archive/v${pkgver}.tar.gz")
-sha512sums=('109f2e508e5406d2eebbeea66d81bf80be96b3d4e6b4f57ebdcfab8712d0ccd22819f66d350de24b6bfafa8631cf15208e9d538b8542ec960bad84cc454f647d')
+sha512sums=('ba62636e9ae3ca6f95cd081b226c803a6f900130c1137ec9c418c587740442c091100fda8842a0c957ab39bda37d10b4b7c08608869724bfe39c4a736c9cf94f')
 
 prepare() {
 	# Create build directory
