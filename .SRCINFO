@@ -5,6 +5,13 @@ pkgbase = ant-dracula-gtk-theme
 	url = https://github.com/EliverLara/Ant-Dracula
 	arch = any
 	depends = gtk3
+	conflicts = ant-dracula-gtk-theme
+	conflicts = ant-dracula-theme
+	conflicts = ant-dracula-theme-git
+	replaces = ant-dracula-gtk-theme
+	replaces = ant-dracula-theme
+	replaces = ant-dracula-theme-git
+	options = !strip
 	source = https://github.com/EliverLara/Ant-Dracula/archive/v1.3.0.tar.gz
 	sha256sums = 5de816ebdcdc5cccf02c8965bf7a38e0a9718a769e274505bcf3809d3ce6ece8
 

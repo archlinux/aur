@@ -7,6 +7,9 @@ pkgdesc="Ant Dracula Theme for GTK 3.x"
 arch=(any)
 url=https://github.com/EliverLara/Ant-Dracula
 depends=('gtk3')
+conflicts=($pkgname ant-dracula-theme ant-dracula-theme-git)
+replaces=($pkgname ant-dracula-theme ant-dracula-theme-git)
+options=(!strip)
 
 # Hash and Timestamp (taken from macos-icon-theme pkgbuild)
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
