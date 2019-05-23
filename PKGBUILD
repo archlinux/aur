@@ -1,30 +1,30 @@
 # Maintainer: Constantin Nickel <constantin dot nickel at gmail dot com>
 
 pkgname=historyline-1914-1918-gog
-pkgver=2.2.0.20
+pkgver=1.0
 pkgrel=1
 pkgdesc="A turn-based tactics game which takes the player through various battles of the First World War."
 url="https://www.gog.com/game/battle_isle_platinum"
 license=('custom:eula')
 groups=('games')
 arch=('any')
-makedepends=('innoextract' 'icoutils')
+makedepends=('innoextract-git' 'icoutils')
 depends=('dosbox')
 optdepends=('unionfs-fuse: mounting game folder to home for savegames and settings')
 install=$pkgname.install
 
-source=("setup_battle_isle_historyline_$pkgver.exe"::"gogdownloader://historyline_19141918/installer_win_en"
+source=("setup_battle_isle_historyline_1914-1918_${pkgver}_(28043).exe"::"gogdownloader://historyline_19141918/installer_win_en"
         "historyline-1914-1918-gog.desktop"
         "historyline-1914-1918-gog.sh"
+        "dosboxbi1hl_single.conf"
         "dosbox_windowed.conf"
-        "fix-dosbox-mounts.patch"
         "fix-permissions.sh")
 
-sha256sums=('bd2083c0e6ffc51ef214ce2b8bc3903751db575215ecb3354a6251b766e62891'
+sha256sums=('8b66992e3c9b80853a2df4bb7d0bd74d043bd475aedb4e23b701ea21ff4d0291'
             '3e23da721bf92236f431cb6d1131ae2d0681afc162baa027167816d164c9567b'
             '96426337f51658c94be5ad91a21fefcec936d73e35d66a27e79ef69e93ddc428'
+            '6b82ae24bc2815299b7bc894f6186589779c9f9dd3b3bba7340268d502d098e7'
             '50b601b33522677a9bcaf23edc833329067bb87ccda33039c0b95f0d4ddca578'
-            '9e8cfbbba458f19373df1c32c69cbc91c5c49d25d9cd0585b19839b9844ed3d3'
             '8cb0a355c97b243e495509fd63191ba93b8e2e89fc45bf636938f691580102d0')
 
 # You need to download the gog.com installer file to this directory ($PWD),
@@ -36,27 +36,29 @@ DLAGENTS+=('gogdownloader::/usr/bin/awk BEGIN{print"Please\ download\ the\ file\
 
 prepare() {
     # extract installer (convert files to lowercase, as DOS does not care)
-    innoextract -e -L -d "$srcdir" setup_battle_isle_historyline_$pkgver.exe
+    innoextract -e -L -d "$srcdir"/setup "setup_battle_isle_historyline_1914-1918_${pkgver}_(28043).exe"
     # convert icon
-    icotool -x app/goggame-1207661063.ico
+    icotool -x setup/goggame-1207661063.ico
+
+    cp setup/__support/app/dosboxbi1hl.conf "$srcdir"
+    cp setup/tmp/eula.txt "$srcdir"
+
     # remove bundled dosbox, windows stuff and gog client files
-    rm -rf app/{dosbox/,*.ico,*.dll,goggame-1207661063.*,*.zip,__support}
-    # fix mount directory
-    patch -p1 -i "$srcdir"/fix-dosbox-mounts.patch
+    rm -rf setup/{app,commonappdata,dosbox,tmp,*.ico,*.dll,goggame-1207661063.*,*.zip,__redist,__support}
 }
 
 package() {
     # data
     install -d "$pkgdir"/opt/historyline-1914-1918
-    cp -r app/* "$pkgdir"/opt/historyline-1914-1918
+    cp -r setup/* "$pkgdir"/opt/historyline-1914-1918
     # fix permissions script
     install -Dm755 fix-permissions.sh "$pkgdir"/opt/historyline-1914-1918
     # additional dosbox configs
-    install -m644 dosbox_windowed.conf "$pkgdir"/opt/historyline-1914-1918
+    install -m644 *.conf "$pkgdir"/opt/historyline-1914-1918
     # doc + licenses
     install -d "$pkgdir"/usr/share/{doc,licenses}/$pkgname
     ln -s -t "$pkgdir"/usr/share/doc/$pkgname /opt/historyline-1914-1918/manual.pdf
-    install -m644 tmp/{gog_,}eula.txt "$pkgdir"/usr/share/licenses/$pkgname
+    install -m644 eula.txt "$pkgdir"/usr/share/licenses/$pkgname
     # .desktop files and launchers
     install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/historyline-1914-1918.desktop
     install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/historyline-1914-1918
