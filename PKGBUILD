@@ -9,15 +9,15 @@
 pkgbase=linux-amd-wip-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=${pkgbase}
-_kernel_rel=5.2
+_kernel_rel=5.3
 _branch=drm-next-${_kernel_rel}-wip
 _kernelname=${pkgbase#linux}
-pkgver=5.2.813720.940d104240cd
+pkgver=5.3.839765.8dcf1d70d7d7
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
+makedepends=(xmlto kmod inetutils bc libelf git)
 options=('!strip')
 source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
   config         # the main kernel config file
@@ -26,7 +26,7 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            'deb1adf620569137c146f645d57a7a46ec2206abe30dddb3b6eb802596db5bce'
+            '6dc60ab5d23f8d8b249dcfb289f6474817560e2d6fefc5fb326401d87144010f'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -66,7 +66,9 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+#mainline: disabled for 5.1-rc5
+#make bzImage modules htmldocs
+  make bzImage modules
 }
 
 _package() {
@@ -217,17 +219,19 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
+  #mainline: disabled for 5.1-rc5
 
-  msg2 "Moving HTML docs..."
-  local src dst
-  while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
+  #msg2 "Removing doctrees..."
+  #rm -r "$builddir/Documentation/output/.doctrees"
+
+  #msg2 "Moving HTML docs..."
+  #local src dst
+  #while read -rd '' src; do
+    #dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    #mkdir -p "${dst%/*}"
+    #mv "$src" "$dst"
+    #rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  #done < <(find "$builddir/Documentation/output" -type f -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
@@ -244,3 +248,4 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
+
