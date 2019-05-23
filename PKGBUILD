@@ -1,8 +1,9 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
 pkgname=genn_cpu_only
-pkgver=4.0.0_RC1
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="GeNN: GPU-enhanced neural networks (version 4; without CUDA backend)"
+epoch=2
 arch=(x86_64)
 url="https://github.com/genn-team/genn"
 license=('GPL')
@@ -12,7 +13,7 @@ options=(staticlibs !emptydirs)
 provides=(genn)
 conflicts=(genn)
 source=("$url/archive/${pkgver//_/-}.tar.gz")
-sha256sums=('b94c0b8c05d8525987f9d4279478dd41f68e8d9824cb5344adb5fbe257b38e99')
+sha256sums=('26879deff8201f13f10f314e42548fb8e85d5310f7da6d8c097fe6bc2bd1cd64')
 
 # Make sure we aren't building with CUDA support
 export CUDA_PATH=
