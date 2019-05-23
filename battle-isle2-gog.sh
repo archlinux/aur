@@ -7,12 +7,10 @@ cat <<EOF
             -h  --help          Show this message
                 --windowed      Windowed mode
                 --addon         Battle Isle 2 Scenery CD: Titan's Legacy
-                --single        Use original gog startup config
     Examples:
 
     $script --windowed
-    $script --client
-    $script --server --addon
+    $script --addon
 EOF
     exit 0
 }
@@ -29,7 +27,7 @@ fi
 
 script=${0##*/}
 
-TEMP=$(getopt -o h --long help,windowed,addon,single \
+TEMP=$(getopt -o h --long help,windowed,addon \
      -n "$script" -- "$@")
 
 if [ $? != 0 ] ; then exit 1 ; fi
@@ -40,7 +38,6 @@ while true; do
     case "$1" in
         -h|--help) _help; shift ;;
         --windowed) WINDOWED=1; shift ;;
-        --single) START_SINGLE=1; shift ;;
         --addon) START_ADDON=1; shift ;;
         --) shift; break ;;
     esac
@@ -52,9 +49,7 @@ if [ "$WINDOWED" ]; then
     configs+=('-conf' 'dosbox_windowed.conf')
 fi
 
-if [ "$START_SINGLE" ]; then
-    configs+=('-conf' 'dosboxbi2_single.conf')
-elif [ "$START_ADDON" ] ; then
+if [ "$START_ADDON" ] ; then
     configs+=('-conf' 'dosboxbi2_addon.conf')
 else
     configs+=('-conf' 'dosboxbi2_main.conf')

@@ -1,15 +1,15 @@
-diff --git a/app/isle2/bi2.inst b/app/isle2/bi2.inst
---- a/app/isle2/bi2.inst
-+++ b/app/isle2/bi2.inst
+diff --git a/setup/isle2/bi2.inst b/setup/isle2/bi2.inst
+--- a/setup/isle2/bi2.inst
++++ b/setup/isle2/bi2.inst
 @@ -1,4 +1,4 @@
 -FILE "BI2.gog" BINARY
 +FILE "bi2.gog" BINARY
    TRACK 01 MODE1/2352
      INDEX 01 00:00:00
  FILE "bi202.ogg" MP3
-diff --git a/app/scenery/bi2scen.inst b/app/scenery/bi2scen.inst
---- a/app/scenery/bi2scen.inst
-+++ b/app/scenery/bi2scen.inst
+diff --git a/setup/scenery/bi2scen.inst b/setup/scenery/bi2scen.inst
+--- a/setup/scenery/bi2scen.inst
++++ b/setup/scenery/bi2scen.inst
 @@ -1,4 +1,4 @@
 -FILE "BI2scen.gog" BINARY
 +FILE "bi2scen.gog" BINARY
