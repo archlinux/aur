@@ -1,0 +1,14 @@
+pkgbase = basis-universal-git
+	pkgdesc = Basis Universal GPU Texture Codec
+	pkgver = r178.0319b500f6
+	pkgrel = 1
+	url = https://github.com/BinomialLLC/basis_universal
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = ninja
+	source = https://github.com/BinomialLLC/basis_universal
+	sha256sums = SKIP
+
+pkgname = basis-universal-git
+

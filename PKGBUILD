@@ -1,0 +1,41 @@
+# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+
+pkgname=basis-universal-git
+pkgver=r178.0319b500f6
+pkgrel=1
+pkgdesc="Basis Universal GPU Texture Codec"
+arch=('x86_64')
+url="https://github.com/BinomialLLC/basis_universal"
+license=('Apache')
+makedepends=('cmake' 'ninja')
+source=("git+$url")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd basis_universal
+  printf 'r%d.%s' \
+    $(git rev-list --count HEAD) \
+    $(git rev-parse --short=10 HEAD)
+}
+
+prepare() {
+  cd basis_universal
+  cmake \
+    -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    .
+}
+
+build() {
+  cd basis_universal
+  ninja
+}
+
+package() {
+  cd basis_universal
+  #DESTDIR="$pkgdir" ninja install
+
+  install -dm755 "$pkgdir"/usr/bin
+  install -m755 bin/basisu "$pkgdir"/usr/bin
+}
