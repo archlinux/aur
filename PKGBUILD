@@ -5,7 +5,7 @@
 
 pkgname=buildbot
 pkgdesc='The Continuous Integration Framework'
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 arch=(any)
 url='https://buildbot.net'
@@ -28,7 +28,7 @@ optdepends=(
   'vault: to use SecretInVault provider'
 )
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.sig})
-sha256sums=('eb57afd7f8005b84bc345903211e4a3ff1a4d6a162eb55a37ab9bd445044476e'
+sha256sums=('93241e1660cc8e0a37dba6c8c4bbb2e989f5da35006d6b5b523dfc3f37e8b927'
             'SKIP')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
