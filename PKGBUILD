@@ -1,7 +1,7 @@
 # Maintainer: Karol Babioch <karol@babioch.de>
 
 pkgname=flamethrower
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="DNS performance and functional testing utility"
 arch=('i686' 'x86_64')
@@ -25,6 +25,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm0644 man/flame.1 "$pkgdir/usr/share/man/man1/flame.1"
     cd build
     install -Dm0755 flame "$pkgdir/usr/bin/flame"
 }
