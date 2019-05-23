@@ -1,5 +1,5 @@
 pkgbase = waterfox-alpha-bin
-	pkgdesc = 64-bit optimised Firefox fork; no telemetry; supports XUL add-ons.
+	pkgdesc = 64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons.
 	pkgver = 68.0a1
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
@@ -19,8 +19,8 @@ pkgbase = waterfox-alpha-bin
 	conflicts = waterfox-alpha
 	source = waterfox-alpha.desktop
 	source = https://storage-waterfox.netdna-ssl.com/Waterfox/aurora/Linux/waterfox-68.0a1.en-US.linux-x86_64.tar.bz2
-	md5sums = 4b385db944b4d72136ca5798be9bd7b4
-	md5sums = caf4bf111f0c5ec667251853b5cb6a46
+	sha256sums = 335e392704a8535b777a8e7b30a0acfdc323479e58bef682818b567b5d25652a
+	sha256sums = 6ed7b01d35e8ffa7cc6a238afce7f654aae64683ff47aa77d40f78acd7151c45
 
 pkgname = waterfox-alpha-bin
 
