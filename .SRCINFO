@@ -1,13 +1,19 @@
-pkgbase = pkgbase
-	pkgdesc = Refreshed new Adwaita theme with creamy colors and minor changes.
-	pkgver = 3.24.8
+pkgbase = pocketbook-pro-sdk-linux
+	pkgdesc = Pocketbook-Pro SDK for Linux
+	pkgver = 1.1
 	pkgrel = 1
-	url = https://github.com/murat-cileli/adwaita-creamy
+	url = https://sourceforge.net/projects/pocketbook-free/files/PocketBook_Pro_SDK_Linux_1.1/
 	arch = x86_64
-	license = MIT
-	provides = adwaita-creamy
-	source = adwaita-creamy-3.24.8::https://github.com/murat-cileli/adwaita-creamy/archive/3.24.8.tar.gz
-	sha256sums = SKIP
+	license = custom
+	optdepends = cmake: build some pocketbook apps from /usr/share/pocketbook-pro-sdk-linux/sources/
+	optdepends = freetype2: use freetype in your apps, also required to build some pocketbook apps
+	optdepends = gtk2: use GTK2 in your apps, also required to build some pocketbook apps
+	optdepends = bzip2: use bzip2 in your apps, also required to build some pocketbook apps
+	optdepends = giflib: use giflib in your apps, also required to build some pocketbook apps
+	options = !strip
+	options = !libtool
+	source = https://datapacket.dl.sourceforge.net/project/pocketbook-free/PocketBook_Pro_SDK_Linux_1.1/sdkrelease_1_1a.tar.gz
+	md5sums = 814aca54f7edf4b8c4d9469b455e0866
 
-pkgname = adwaita-creamy
+pkgname = pocketbook-pro-sdk-linux
 
