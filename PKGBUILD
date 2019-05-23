@@ -14,13 +14,13 @@ _node_version="v8.11.3"
 
 pkgname=wechat-devtools
 pkgver=${_wechat_devtools_ver}
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="WeChat Devtools Linux version."
 arch=("x86_64")
 url="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/devtools.html"
 license=('unknown')
-depends=('wine')
+depends=('wine' 'gconf')
 makedepends=('p7zip' 'nvm')
 source=("nwjs.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs_ver}/nwjs-sdk-v${_nwjs_ver}-linux-${_arch}.tar.gz"
         "${_wechat_devtools_exe}::${_wechat_devtools_url}"
