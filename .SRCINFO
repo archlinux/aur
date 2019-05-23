@@ -1,6 +1,6 @@
 pkgbase = authenticator-git
 	pkgdesc = 2FA code generator for GNOME
-	pkgver = 0.2.4.r180.g49c895f
+	pkgver = 3.32.r3.g873df2f
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Authenticator
 	arch = any
@@ -9,9 +9,8 @@ pkgbase = authenticator-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = gobject-introspection
-	makedepends = gnome-common
-	depends = gtk3>=3.16.0
-	depends = python>=3.3.0
+	depends = gtk3
+	depends = python
 	depends = glib2
 	depends = python-pyotp
 	depends = libsecret
