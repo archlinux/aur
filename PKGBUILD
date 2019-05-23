@@ -27,6 +27,8 @@ pkgver() {
 build() {
 	cd "$srcdir/klayout"
 
+    git checkout tags/${pkgver}
+
     # Get thread count to multithread build process.
     threads="$(($(grep -c ^processor /proc/cpuinfo) + 1))"
 
