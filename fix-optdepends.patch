@@ -1,15 +1,17 @@
---- a/setup.py	2019-05-23 16:15:30.945543628 +0200
-+++ b/setup.py	2019-05-23 16:15:27.888862034 +0200
-@@ -22,9 +22,11 @@
+--- a/setup.py	2019-04-16 21:51:47.000000000 +0200
++++ b/setup.py	2019-05-23 16:27:40.527368256 +0200
+@@ -22,10 +22,12 @@
            'aiodns>=1.1.1',
            'aiohttp>=3.4.4',
            'PyYAML>=3.12',
-+          'sdnotify>=0.3.2',
-+      ],
-+      extra_requires=[
-           'aiosqlite>=0.10.0',
-           'aioredis>=1.2.0',
--          'sdnotify>=0.3.2',
+-          'aiosqlite>=0.10.0',
+-          'aioredis>=1.2.0',
+           'sdnotify>=0.3.2',
        ],
++      extras_require={
++          'sqlite': 'aiosqlite>=0.10.0',
++          'redis': 'aioredis>=1.2.0',
++      },
        entry_points={
            'console_scripts': [
+               'mta-sts-daemon=postfix_mta_sts_resolver.daemon:main',

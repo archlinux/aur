@@ -1,7 +1,7 @@
 # Maintainer: Toke Høiland-Jørgensen <toke@toke.dk>
 pkgname=postfix-mta-sts-resolver
 pkgver=0.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Daemon for MTA-STS policy enforcement for postfix"
 arch=('any')
 url="https://github.com/Snawoot/postfix-mta-sts-resolver"
@@ -16,7 +16,7 @@ source=("https://github.com/Snawoot/${pkgname}/releases/download/v${pkgver}/${pk
        "fix-optdepends.patch")
 sha256sums=('0551b733985cb7f9682ba03567e4cee8729d4b2651c5ab22410640d51c0bb07c'
             'SKIP'
-            'ec70751d4ed581727c2f4b2736b87ae44bfffd72d508f6135e08c715845fa1ad')
+            '8fc8a83644b946f585038c0667bb10c7c61903db925fc8fc38068ecc01fa6ad8')
 validpgpkeys=('8EE97E32515D051898B1864AF6C5633BE5DE7127')
 
 build() {
