@@ -9,7 +9,7 @@ pkgbase = lain-git
 	optdepends = curl: for IMAP, MPD and weather widgets
 	provides = lain
 	conflicts = lain
-	source = lain-1697.3328e73.zip::https://github.com/lcpz/lain/archive/3328e738bdc1223583fb98730668dfed24395dfc.zip
+	source = lain-1697.3328e73.zip::https://github.com/lcpz/lain/archive/3328e73.zip
 	sha256sums = SKIP
 
 pkgname = lain-git
