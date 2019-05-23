@@ -3,7 +3,7 @@
 pkgname=gnvim-git
 url="https://github.com/vhakulinen/gnvim"
 pkgdesc="GUI for neovim, without any web bloat"
-pkgver=r172.fd50f79
+pkgver=r193.4f7c547
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -14,6 +14,10 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+https://github.com/vhakulinen/gnvim.git")
 md5sums=('SKIP')
 
+check() {
+    cd "$srcdir/${pkgname}-${pkgver}"
+    cargo test
+}
 
 prepare() {
     cd "$srcdir/${pkgname}"
