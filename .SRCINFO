@@ -1,13 +1,13 @@
 pkgbase = dataset
-	pkgdesc = CLI for introspecting datasets
-	pkgver = 0.2.1
+	pkgdesc = Dataset introspection CLI
+	pkgver = 0.2.2
 	pkgrel = 1
-	url = https://github.com/amrhassan/dataframe
+	url = https://github.com/amrhassan/dataset
 	arch = x86_64
 	license = MIT
 	makedepends = rustup
-	source = https://github.com/amrhassan/dataset/archive/0.2.1.tar.gz
-	md5sums = d5c5192cc7dc5a5b0e2874d55d0b192d
+	source = https://github.com/amrhassan/dataset/archive/0.2.2.tar.gz
+	md5sums = 42e929fb4afdb581a5e92f343218d9fa
 
 pkgname = dataset
 
