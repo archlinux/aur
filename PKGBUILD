@@ -9,7 +9,7 @@
 
 pkgname=pure-ftpd
 pkgver=1.0.49
-pkgrel=2
+pkgrel=3
 pkgdesc="A secure, production-quality and standard-conformant FTP server, focused on efficiency and ease of use."
 arch=('i686' 'x86_64')
 url="https://www.pureftpd.org/"
@@ -45,7 +45,8 @@ build() {
 	--with-peruserlimits \
 	--with-throttling \
 	--with-tls \
-	--with-rfc2640
+	--with-rfc2640 \
+	--with-virtualchroot
 	make
 }
 
