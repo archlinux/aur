@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-vtk-git
-pkgver=r70961.8c78f17d44
+pkgver=r70977.21439c804d
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -21,13 +21,13 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
-  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5560.patch | patch -p1  
+  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5578.patch | patch -p1
+  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5579.patch | patch -p1
 }
 
 
 build() {
   cd "${srcdir}/vtk"
-
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -D_vtk_thread_impl_output="Thread model: posix" \
@@ -37,7 +37,7 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_expat=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_freetype=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_glew=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_glew=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_hdf5=ON \
       -DHDF5_ROOT=/usr/${_arch}/ \
       -DVTK_MODULE_USE_EXTERNAL_VTK_jpeg=ON \
@@ -52,11 +52,8 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_sqlite=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_tiff=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=ON \
+      -Dutf8cpp_INCLUDE_DIR=/usr/${_arch}/include/utf8cpp \
       -DVTK_MODULE_USE_EXTERNAL_VTK_zlib=ON \
-      -DVTK_MODULE_ENABLE_VTK_IOVeraOut=NO \
-      -DVTK_MODULE_ENABLE_VTK_IOAMR=NO \
-      -DVTK_MODULE_ENABLE_VTK_IOGeometry=NO \
-      -DVTK_MODULE_ENABLE_VTK_IOExport=NO \
       -DVTK_BUILD_TESTING=OFF \
       ..
     make
