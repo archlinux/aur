@@ -1,6 +1,6 @@
 pkgbase = thunderbird-conversations-git
 	pkgdesc = GMail-like conversation view for Thunderbird
-	pkgver = r1824.7495611
+	pkgver = r1839.2bc7c5a
 	pkgrel = 1
 	url = https://github.com/protz/GMail-Conversation-View
 	arch = any
