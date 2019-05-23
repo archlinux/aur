@@ -7,7 +7,7 @@ pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd (git version)"
-pkgver=242.104
+pkgver=242.580
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -150,7 +150,7 @@ package_systemd-git() {
 
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
-  rm -rv "$pkgdir"/etc/systemd/system/*
+  rm -rfv "$pkgdir"/etc/systemd/system/*
 
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
@@ -160,16 +160,16 @@ package_systemd-git() {
   mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs
 
   # manpages shipped with systemd-sysvcompat
-  rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
+  rm -f "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
 
   # executable (symlinks) shipped with systemd-sysvcompat
-  rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit}
+  rm -f "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit}
 
   # files shipped with systemd-resolvconf
-  rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
+  rm -f "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
 
   # avoid a potential conflict with [core]/filesystem
-  rm "$pkgdir"/usr/share/factory/etc/nsswitch.conf
+  rm -f "$pkgdir"/usr/share/factory/etc/nsswitch.conf
   sed -i '/^C \/etc\/nsswitch\.conf/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 
   # add back tmpfiles.d/legacy.conf, normally omitted without sysv-compat
@@ -239,8 +239,8 @@ package_systemd-sysvcompat-git() {
   provides=('systemd-sysvcompat')
   conflicts=('systemd-sysvcompat' 'sysvinit')
 
-  install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
-    build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
+  # install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
+    # build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
 
   install -d -m0755 "$pkgdir"/usr/bin
   ln -s ../lib/systemd/systemd "$pkgdir"/usr/bin/init
