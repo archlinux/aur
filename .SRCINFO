@@ -1,0 +1,23 @@
+pkgbase = xqemu-git
+	pkgdesc = An original Xbox emulator
+	pkgver = r63217.729e52662f
+	pkgrel = 1
+	url = http://xqemu.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = python
+	makedepends = git
+	depends = sdl2
+	depends = virglrenderer
+	depends = vde2
+	depends = libnfs
+	depends = libepoxy
+	optdepends = qemu: support scripts and localization
+	optdepends = xqemu-manager: launcher with graphical user interface
+	provides = xqemu
+	source = xqemu::git+https://github.com/xqemu/xqemu.git
+	md5sums = SKIP
+
+pkgname = xqemu-git
+
