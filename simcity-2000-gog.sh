@@ -9,6 +9,7 @@ cat <<EOF
                 --settings      Change settings
                 --addon         Start the addon Urban Renewal Kit
                 --scurk         Start the addon Urban Renewal Kit
+                --willtv        Start WillTV
     Examples:
 
     $script --windowed
@@ -29,7 +30,7 @@ fi
 
 script=${0##*/}
 
-TEMP=$(getopt -o h --long help,windowed,addon,settings,scurk \
+TEMP=$(getopt -o h --long help,windowed,addon,settings,scurk,willtv \
      -n "$script" -- "$@")
 
 if [ $? != 0 ] ; then exit 1 ; fi
@@ -42,6 +43,7 @@ while true; do
         --windowed) WINDOWED=1; shift ;;
         --settings) START_SETTINGS=1; WINDOWED=1; shift ;;
         --addon|--scurk) START_ADDON=1; shift ;;
+        --willtv) START_WILLTV=1; shift ;;
         --) shift; break ;;
     esac
 done
@@ -54,8 +56,10 @@ fi
 
 if [ "$START_SETTINGS" ]; then
     configs+=('-conf' 'dosboxsc2000_settings.conf')
+elif [ "$START_WILLTV" ] ; then
+    configs+=('-conf' 'dosboxsc2000_willtv.conf')
 elif [ "$START_ADDON" ] ; then
-    configs+=('-conf' 'dosboxsc2000_addon.conf')
+    configs+=('-conf' 'dosboxsc2000_scurk.conf')
 else
     configs+=('-conf' 'dosboxsc2000_single.conf')
 fi
