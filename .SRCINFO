@@ -1,13 +1,13 @@
-pkgbase = dataframe
-	pkgdesc = CLI for introspecting data frames (Avro, Parquet)
-	pkgver = 0.2.0
+pkgbase = dataset
+	pkgdesc = CLI for introspecting datasets
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/amrhassan/dataframe
 	arch = x86_64
 	license = MIT
 	makedepends = rustup
-	source = https://github.com/amrhassan/dataframe/archive/0.2.0.tar.gz
-	md5sums = 76b7faee4335df648f183b1f066c2835
+	source = https://github.com/amrhassan/dataset/archive/0.2.1.tar.gz
+	md5sums = d5c5192cc7dc5a5b0e2874d55d0b192d
 
-pkgname = dataframe
+pkgname = dataset
 

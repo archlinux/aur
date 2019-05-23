@@ -1,14 +1,14 @@
 # Maintainer: Amr Hassan <amr.hassan@gmail.com.com>
-pkgname=dataframe
-pkgver=0.2.0
+pkgname=dataset
+pkgver=0.2.1
 pkgrel=1
-pkgdesc="CLI for introspecting data frames (Avro, Parquet)"
+pkgdesc="CLI for introspecting datasets"
 arch=(x86_64)
 url="https://github.com/amrhassan/dataframe"
 license=('MIT')
 source=("https://github.com/amrhassan/$pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('76b7faee4335df648f183b1f066c2835')
+md5sums=('d5c5192cc7dc5a5b0e2874d55d0b192d')
 makedepends=(rustup)
 
 prepare() {
