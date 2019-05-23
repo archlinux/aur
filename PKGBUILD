@@ -33,7 +33,7 @@ source=(
 	'hifi-assignment-client'
 	'hifi-domain-server'
 	'hifi-ice-server'
-	'$_gitname::git+https://github.com/Justinizer/hifi-packages.git'
+	"$_gitname::git+https://github.com/Justinizer/$_gitname.git"
 )
 
 md5sums=(
