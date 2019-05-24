@@ -27,6 +27,7 @@ pkgver() {
 build() {
 	cd "$srcdir/klayout"
 
+    # Checkout the latest release.
     git checkout tags/${pkgver}
 
     # Get thread count to multithread build process.

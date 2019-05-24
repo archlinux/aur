@@ -1,6 +1,6 @@
 pkgbase = klayout-git
 	pkgdesc = High Performance Layout Viewer And Editor. Support of GDS and OASIS files.
-	pkgver = v0.25.4.r47.g9dd603bb
+	pkgver = v0.25.8
 	pkgrel = 1
 	url = http://www.klayout.org/
 	arch = i686
