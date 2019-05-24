@@ -1,6 +1,9 @@
+# Maintainer: dviktor <linux776 at gmail dot com>
+# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+
 pkgname=cp2k
 pkgver=6.1.0
-pkgrel=3
+pkgrel=4
 _arch="basic"
 _version="psmp"
 _buildmode=0
@@ -9,8 +12,7 @@ pkgdesc="A quantum chemistry and solid state physics software package"
 arch=("x86_64")
 url="https://www.cp2k.org"
 license=("GPL2")
-depends=('lapack' 'blas' 'fftw' 'gcc-libs' 'glibc' 'cp2k-data'
-         'openmpi' 'scalapack' 'libxc>=4.0.4' 'libint>=1.1.4')
+depends=('fftw' 'cp2k-data' 'scalapack' 'libxc>=4.0.4' 'libint>=1.1.4')
 makedepends=('gcc' 'gcc-fortran' 'python2' 'make' 'sed')
 optdepends=('cuda: GPU calculations support'
             'plumed-mpi: enhanced sampling support')

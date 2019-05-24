@@ -1,7 +1,7 @@
 pkgbase = cp2k
 	pkgdesc = A quantum chemistry and solid state physics software package
 	pkgver = 6.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.cp2k.org
 	arch = x86_64
 	license = GPL2
@@ -10,13 +10,8 @@ pkgbase = cp2k
 	makedepends = python2
 	makedepends = make
 	makedepends = sed
-	depends = lapack
-	depends = blas
 	depends = fftw
-	depends = gcc-libs
-	depends = glibc
 	depends = cp2k-data
-	depends = openmpi
 	depends = scalapack
 	depends = libxc>=4.0.4
 	depends = libint>=1.1.4
