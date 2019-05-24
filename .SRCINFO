@@ -1,7 +1,7 @@
 pkgbase = sshcode
 	pkgdesc = A CLI to automatically install and run code-server over SSH.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cdr/sshcode
 	arch = x86_64
 	license = MIT
