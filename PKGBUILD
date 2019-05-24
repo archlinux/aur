@@ -2,23 +2,19 @@
 
 pkgname=lua51-say
 pkgver=1.3
-_rockname=say
-_rockrel=1
-pkgrel=3
+_pkgname=say
+pkgrel=4
 pkgdesc="A simple static analyzer"
 arch=('i686' 'x86_64')
 url="https://github.com/Olivine-Labs/say"
 license=('MIT')
-depends=('lua' 'lua-filesystem')
-makedepends=('luarocks5.1')
+depends=('lua51' 'lua51-filesystem')
 conflicts=()
 source=("git+https://github.com/Olivine-Labs/say#commit=7f30493f602bf8b97332c3faf94e824eb1c4ea2f")
 sha256sums=('SKIP')
 
 package() {
-	cd "say"
-    luarocks-5.1 --tree="$pkgdir/usr" install --deps-mode=none "${_rockname}-${pkgver}-${_rockrel}.rockspec"
-      find "$pkgdir/usr" -name manifest -delete
-
+cd ${srcdir}/$_pkgname
+install -D $srcdir/$_pkgname/src/init.lua $pkgdir/usr/share/lua/5.1/say/init.lua
 }
 
