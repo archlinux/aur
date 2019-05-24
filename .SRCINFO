@@ -1,0 +1,58 @@
+pkgbase = apache-git
+	pkgdesc = Provides useful functions commonly found on BSD systems
+	pkgver = 2.5.0.alpha.r1107.gbdff1daffc
+	pkgrel = 1
+	url = https://httpd.apache.org/
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = brotli
+	makedepends = curl
+	makedepends = jansson
+	makedepends = libxml2
+	makedepends = lua
+	depends = glibc
+	depends = apr-util
+	depends = libnghttp2
+	depends = openssl
+	depends = pcre
+	depends = zlib
+	optdepends = brotli: for mod_brotli module
+	optdepends = curl: for mod_md module
+	optdepends = jansson: for mod_md module
+	optdepends = libxml2: for mod_proxy_html, mod_xml2enc modules
+	optdepends = lua: for mod_lua module
+	optdepends = lynx: apachectl status
+	optdepends = uwsgi: for mod_proxy_uwsgi module
+	provides = apache
+	conflicts = apache
+	backup = etc/httpd/conf/httpd.conf
+	backup = etc/httpd/conf/extra/httpd-autoindex.conf
+	backup = etc/httpd/conf/extra/httpd-dav.conf
+	backup = etc/httpd/conf/extra/httpd-default.conf
+	backup = etc/httpd/conf/extra/httpd-info.conf
+	backup = etc/httpd/conf/extra/httpd-languages.conf
+	backup = etc/httpd/conf/extra/httpd-manual.conf
+	backup = etc/httpd/conf/extra/httpd-mpm.conf
+	backup = etc/httpd/conf/extra/httpd-multilang-errordoc.conf
+	backup = etc/httpd/conf/extra/httpd-ssl.conf
+	backup = etc/httpd/conf/extra/httpd-userdir.conf
+	backup = etc/httpd/conf/extra/httpd-vhosts.conf
+	backup = etc/httpd/conf/extra/proxy-html.conf
+	backup = etc/httpd/conf/mime.types
+	backup = etc/httpd/conf/magic
+	backup = etc/logrotate.d/httpd
+	source = git+https://github.com/apache/httpd.git
+	source = apache.tmpfiles.conf::https://git.archlinux.org/svntogit/packages.git/plain/trunk/apache.tmpfiles.conf?h=packages/apache
+	source = arch.layout::https://git.archlinux.org/svntogit/packages.git/plain/trunk/arch.layout?h=packages/apache
+	source = httpd.logrotate::https://git.archlinux.org/svntogit/packages.git/plain/trunk/httpd.logrotate?h=packages/apache
+	source = httpd.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/httpd.service?h=packages/apache
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = apache-git
+
