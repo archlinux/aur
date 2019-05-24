@@ -2,11 +2,11 @@
 
 pkgname=nginx-mainline-mod-pagespeed
 pkgver=1.13.35.2
-pkgrel=18
+pkgrel=19
 
 _modname="ngx_${pkgname#nginx-mainline-mod-}"
 
-_nginxver=1.15.12
+_nginxver=1.17.0
 _pagespeedver=$pkgver-stable
 _psolver=$pkgver
 
@@ -27,7 +27,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('3d5b90aa17de1700709ae4ec6c4d73d87c888b06c510391bf7104b006fdb2abe'
+sha256sums=('e21b5d06cd53e86afb94f0b3678e0abb0c0f011433471fa3d895cefa65ae0fab'
             'SKIP'
             '68242a30308b21f13de9a36f2aea5c3e34e8a4c0b7c6a37d3369334f6f847d36')
 sha256sums_i686=('9155acfc1764c3554ef21b17b00739d6879822eabeada9a1578a848b0b2d70d0')
