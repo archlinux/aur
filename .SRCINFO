@@ -1,0 +1,12 @@
+pkgbase = godot-headless-bin
+	pkgdesc = Godot is an advanced, feature packed, multi-platform 2D and 3D game engine
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = http://www.godotengine.org
+	arch = x86_64
+	license = MIT
+	source = godot-headless-bin-3.1.1::https://downloads.tuxfamily.org/godotengine/3.1.1/Godot_v3.1.1-stable_linux_headless.64.zip
+	md5sums = 36fd2c3c401d0f9f7a20bfd7b0d03997
+
+pkgname = godot-headless-bin
+
