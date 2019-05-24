@@ -24,7 +24,7 @@ prepare() {
  pip install todoist-python==8.0.0 PyInstaller==3.4
 }
 build() {
- pyinstaller --distpath "$srcdir/dist" --onefile "$srcdir/$pkgname/td.py" --name $_pkgname
+ $srcdir/venv/bin/pyinstaller --distpath "$srcdir/dist" --onefile "$srcdir/$pkgname/td.py" --name $_pkgname
 }
 package() {
   install -Dm755 "$srcdir/dist/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
