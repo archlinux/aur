@@ -1,0 +1,25 @@
+pkgbase = grandorgue-git
+	pkgdesc = git-version of the Virtual Pipe Organ GrandOrgue
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/e9925248/grandorgue
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = docbook-xsl
+	makedepends = zip
+	makedepends = po4a
+	makedepends = gettext
+	depends = fftw
+	depends = wavpack
+	depends = wxgtk2
+	depends = alsa-lib
+	depends = libglvnd
+	depends = jack
+	source = git+https://github.com/e9925248/grandorgue.git#branch=master
+	md5sums = SKIP
+
+pkgname = grandorgue-git
+
