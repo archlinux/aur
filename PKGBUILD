@@ -6,7 +6,7 @@ pkgver=7.65.0
 pkgrel=1
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
-url="http://curl.haxx.se"
+url="https://curl.haxx.se"
 license=("MIT")
 depends=('mingw-w64-crt'
          'mingw-w64-libidn2'
