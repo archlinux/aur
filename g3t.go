@@ -10,31 +10,6 @@ import (
 	"github.com/carmark/pseudo-terminal-go/terminal"
 )
 
-func main() {
-	// test code
-	// fmt.Println(execCmd("help", false))
-
-	term, err := terminal.NewWithStdInOut()
-	if err != nil {
-		panic(err)
-	}
-	defer term.ReleaseFromStdInOut()
-	term.SetPrompt("> ")
-	for {
-		// Read the keyboad input.
-		line, err := term.ReadLine()
-		// Exit on Ctrl-D and Ctrl-C
-		if err == io.EOF ||  line == "^C"{
-			fmt.Println()
-			return
-		}
-		// Handle the execution of the input.
-		if retval := execCmd(line, true); len(retval) > 0 {
-			fmt.Fprintln(os.Stderr, retval)
-		}
-	}
-}
-
 var outb, errb bytes.Buffer
 
 func execCmd(input string, stdout bool) string {
@@ -42,7 +17,7 @@ func execCmd(input string, stdout bool) string {
     input = strings.TrimSuffix(input, "\n")
 
     // Split the input separate the command and the arguments.
-	//args := strings.Split(input, " ")
+	// args := strings.Split(input, " ")
 	
 	// Prepare the command to execute.
     cmd := exec.Command("sh", "-c", "git " + input)
@@ -64,4 +39,36 @@ func execCmd(input string, stdout bool) string {
 		return outb.String()
 	}
 	return ""
+}
+
+func shortenCmds(){
+	// TODO: Create a list for git commands
+}
+
+func startTerm() {
+	term, err := terminal.NewWithStdInOut()
+	if err != nil {
+		panic(err)
+	}
+	defer term.ReleaseFromStdInOut()
+	term.SetPrompt("> ")
+	for {
+		// Read the keyboad input.
+		line, err := term.ReadLine()
+		// Exit on Ctrl-D and Ctrl-C
+		if err == io.EOF ||  line == "^C"{
+			fmt.Println()
+			return
+		}
+		// Handle the execution of the input.
+		if retval := execCmd(line, true); len(retval) > 0 {
+			fmt.Fprintln(os.Stderr, retval)
+		}
+	}
+}
+
+func main() {
+	// test code
+	// fmt.Println(execCmd("help", false))
+	startTerm()
 }
