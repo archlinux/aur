@@ -1,39 +1,48 @@
+# Maintainer: Andrew Sun <adsun701@gmail.com>
 
-_pipname=simplekv
+_name=simplekv
 pkgbase=python-simplekv
 pkgname=('python2-simplekv' 'python-simplekv')
-pkgver=0.9.3
+pkgver=0.12.0
 pkgrel=1
-pkgdesc="A key-value storage for binary data, support many backends"
+pkgdesc="A simple key-value store for binary data"
 arch=('any')
-url="http://github.com/mbr/simplekv"
+url="https://github.com/mbr/simplekv"
 license=('MIT')
 makedepends=('python2-setuptools' 'python-setuptools')
-source=("https://pypi.python.org/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz")
-md5sums=('33ee89d21f71d2c7a049e1327fe39390')
+source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha512sums=('3ca3db6a35482c2cc3b763e33a7b8816e20a35de01c1063ece631cee3de277932291657e20d2e653434efa0c5a037c43ff4ac8362550220b5735ef8a3ad50aac')
 
 
 prepare() {
-    cp -R $_pipname-$pkgver python2-$_pipname-$pkgver
+  cp -a "${srcdir}/${_name}-${pkgver}"{,-py2}
+
+  cd "${srcdir}/${_name}-${pkgver}-py2"
+  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
+         -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+      $(find . -name '*.py')
+}
+
+build(){
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}/${_name}-${pkgver}-py2"
+  python2 setup.py build
 }
 
 package_python2-simplekv() {
 depends=('python2')
 
-    cd python2-$_pipname-$pkgver
-    python2 setup.py install --root="$pkgdir/" --optimize=1
-
-    install -d ${pkgdir}/usr/share/licenses/$pkgname
-    install -m 644 "$srcdir/${_pipname}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+  cd "${srcdir}/${_name}-${pkgver}-py2"
+  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 "${srcdir}/${_name}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python-simplekv() {
 depends=('python')
 
-    cd $_pipname-$pkgver 
-    python setup.py install --root="$pkgdir/" --optimize=1
-
-    install -d ${pkgdir}/usr/share/licenses/$pkgname
-    install -m 644 "$srcdir/${_pipname}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 "${srcdir}/${_name}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
