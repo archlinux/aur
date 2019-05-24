@@ -1,0 +1,15 @@
+pkgbase = chromium-extension-augmented-steam-git
+	pkgdesc = Chrome/Chromium extension for Augmented Steam - git/dev
+	pkgver = v0.9.7.r6.g03603955
+	pkgrel = 1
+	url = https://github.com/tfedor/AugmentedSteam
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/tfedor/AugmentedSteam.git
+	source = config.js
+	sha256sums = SKIP
+	sha256sums = 7b7e2ad8c1fd886dcf6b83d75bb973f18ee8c973ad43bb70de7dadf7619e655d
+
+pkgname = chromium-extension-augmented-steam-git
+
