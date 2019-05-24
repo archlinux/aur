@@ -9,23 +9,20 @@ url="https://httpd.apache.org/"
 license=('apache')
 depends=('glibc' 'apr-util' 'libnghttp2' 'openssl' 'pcre' 'zlib')
 makedepends=('git' 'brotli' 'curl' 'jansson' 'libxml2' 'lua')
-optdepends=(
-    'brotli: for mod_brotli module'
-    'curl: for mod_md module'
-    'jansson: for mod_md module'
-    'libxml2: for mod_proxy_html, mod_xml2enc modules'
-    'lua: for mod_lua module'
-    'lynx: apachectl status'
-    'uwsgi: for mod_proxy_uwsgi module')
+optdepends=('brotli: for mod_brotli module'
+            'curl: for mod_md module'
+            'jansson: for mod_md module'
+            'libxml2: for mod_proxy_html, mod_xml2enc modules'
+            'lua: for mod_lua module'
+            'lynx: apachectl status'
+            'uwsgi: for mod_proxy_uwsgi module')
 provides=('apache')
 conflicts=('apache')
-backup=(
-    'etc/httpd/conf/httpd.conf'
-    'etc/httpd/conf/extra'/httpd-{autoindex,dav,default,info,languages,manual,mpm,multilang-errordoc,ssl,userdir,vhosts}.conf
-    'etc/httpd/conf/extra/proxy-html.conf'
-    'etc/httpd/conf'/{mime.types,magic}
-    'etc/logrotate.d/httpd')
-#options=('staticlibs')
+backup=('etc/httpd/conf/httpd.conf'
+        'etc/httpd/conf/extra'/httpd-{autoindex,dav,default,info,languages,manual,mpm,multilang-errordoc,ssl,userdir,vhosts}.conf
+        'etc/httpd/conf/extra/proxy-html.conf'
+        'etc/httpd/conf'/{mime.types,magic}
+        'etc/logrotate.d/httpd')
 source=("git+https://github.com/apache/httpd.git"
         "apache.tmpfiles.conf::https://git.archlinux.org/svntogit/packages.git/plain/trunk/apache.tmpfiles.conf?h=packages/apache"
         "arch.layout::https://git.archlinux.org/svntogit/packages.git/plain/trunk/arch.layout?h=packages/apache"
@@ -41,7 +38,7 @@ sha256sums=('SKIP'
 prepare() {
   cd "httpd"
 
-    # set default user
+  # set default user
   sed -e 's#User daemon#User http#' \
       -e 's#Group daemon#Group http#' \
       -i "docs/conf/httpd.conf.in"
