@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-hoppla-sa-git
 	pkgdesc = Plasmoid for Plasma 5 for controlling Phillips Hue lights
-	pkgver = r156.d2cb0ad
+	pkgver = r157.90e0ccb
 	pkgrel = 1
 	url = https://github.com/Fuchs/hoppla-sa
 	arch = any
