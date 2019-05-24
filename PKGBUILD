@@ -15,10 +15,10 @@ conflicts=("$_pkgname")
 install="$_pkgname.install"
 source=("LICENSE.txt")
 sha256sums=('056a0443fc2a8a562d193dd1acdc99933b9ceada4f8f544f89c314253b117801')
-sha256sums_i686=('4c887a4d0be9b9aade9dc2574e24f23f05a31215445c27748cb335aa8c65d6d8')
+sha256sums_i686=('f5432be44dfdadb4ea7ffe1b20e04a1c17eb1d1a55a0507296fb3464adc1487a')
 sha256sums_x86_64=('049ea77b5ac7177b3107456eb527815a0873f5f00ccb303a28402ea8920a9c44')
 source_i686=("${_pkgname}-${pkgver}_i686.deb::http://www.ocenaudio.com/downloads/index.php/ocenaudio_debian32.deb")
-source_x86_64=("${_pkgname}-${pkgver}_x86_64.pkg.tar.xz::http://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz")
+source_x86_64=("${_pkgname}-${pkgver}_x86_64.tar.xz::http://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz")
 
 build() {
   echo "ocenaudio "$pkgver
@@ -33,7 +33,7 @@ package() {
     rm -rf "${pkgdir}/var"
   else
     cp -rLnf ${srcdir}/* ${pkgdir}/
-    rm -f ${pkgdir}/${_pkgname}-${pkgver}_x86_64.pkg.tar.xz
+    rm -f ${pkgdir}/${_pkgname}-${pkgver}_x86_64.tar.xz
   fi
   install -Dm644 "${srcdir}/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
