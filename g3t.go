@@ -41,8 +41,8 @@ func execCmd(input string, stdout bool) string {
 	return ""
 }
 
-func shortenCmds(){
-	// TODO: Create a list for git commands
+func prepareCmds(){
+	
 }
 
 func startTerm() {
@@ -68,7 +68,6 @@ func startTerm() {
 }
 
 func main() {
-	// test code
-	// fmt.Println(execCmd("help", false))
-	startTerm()
+	prepareCmds()
+	//startTerm()
 }
