@@ -2,4 +2,4 @@ pkg/
 src/
 /.project
 /*.rpm
-/*.pkg.tar.xz
+/*.pkg.tar*
