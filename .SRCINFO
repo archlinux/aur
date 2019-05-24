@@ -1,0 +1,17 @@
+pkgbase = nmguish-git
+	pkgdesc = nmguish is the GUI Frontend for nmcli ,thus NetworkManager using shellscript (using yad for GUI)
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/varshitbhat/nmguish
+	arch = any
+	license = GPL2
+	depends = networkmanager
+	depends = sed
+	depends = yad
+	depends = libnotify
+	noextract = nmguish
+	source = https://gitlab.com/varshitbhat/nmguish/raw/master/nmguish
+	md5sums = SKIP
+
+pkgname = nmguish-git
+
