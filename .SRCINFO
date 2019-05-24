@@ -1,6 +1,6 @@
 pkgbase = perflock-git
 	pkgdesc = RWMutex for sharing of multicore machines
-	pkgver = r7.eaf54d0
+	pkgver = r7.7650760
 	pkgrel = 1
 	url = https://github.com/mit-pdos/perflock
 	arch = any
