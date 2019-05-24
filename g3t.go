@@ -20,7 +20,8 @@ func execCmd(input string, stdout bool) string {
 	// args := strings.Split(input, " ")
 	
 	// Prepare the command to execute.
-    cmd := exec.Command("sh", "-c", "git " + input)
+	
+	cmd := exec.Command("sh", "-c", input)
 
 	// Set the correct output device.
 	if stdout{
@@ -42,7 +43,7 @@ func execCmd(input string, stdout bool) string {
 }
 
 func prepareCmds(){
-	
+	fmt.Println(execCmd("ls", false))
 }
 
 func startTerm() {
@@ -61,7 +62,7 @@ func startTerm() {
 			return
 		}
 		// Handle the execution of the input.
-		if retval := execCmd(line, true); len(retval) > 0 {
+		if retval := execCmd("git " + line, true); len(retval) > 0 {
 			fmt.Fprintln(os.Stderr, retval)
 		}
 	}
