@@ -1,0 +1,15 @@
+pkgbase = dkoch-git
+	pkgdesc = A program for learning morse code using the Koch and/or Farnsworth methods.
+	pkgver = 8.10ba713
+	pkgrel = 1
+	url = https://gitlab.com/big-friendian/dkoch
+	arch = any
+	license = MIT
+	depends = dmd
+	depends = dub
+	depends = sdl
+	source = dkoch-git::git+https://gitlab.com/big-friendian/dkoch.git
+	md5sums = SKIP
+
+pkgname = dkoch-git
+
