@@ -1,4 +1,4 @@
-pkgbase = pkgbase
+pkgbase = pocketbook-pro-sdk-linux
 	pkgdesc = Pocketbook-Pro SDK for Linux
 	pkgver = 1.1
 	pkgrel = 1

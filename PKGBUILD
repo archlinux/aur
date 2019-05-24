@@ -1,6 +1,5 @@
 # Maintainer Stoyan Minaev <stoyan.minaev@gmail.com>
 
-pkgbase=pkgbase
 pkgname=pocketbook-pro-sdk-linux
 pkgver=1.1
 _pkgver=1_1a
