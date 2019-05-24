@@ -25,7 +25,7 @@ prepare() {
 
 pkgver() {
     cd "$pkgname"
-    printf "0.6.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.6.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
