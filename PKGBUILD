@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=basis-universal-git
-pkgver=r178.0319b500f6
+pkgver=r186.92bc0de0ea
 pkgrel=1
 pkgdesc="Basis Universal GPU Texture Codec"
 arch=('x86_64')
@@ -36,8 +36,5 @@ build() {
 
 package() {
   cd basis_universal
-  #DESTDIR="$pkgdir" ninja install
-
-  install -dm755 "$pkgdir"/usr/bin
-  install -m755 bin/basisu "$pkgdir"/usr/bin
+  DESTDIR="$pkgdir" ninja install
 }

@@ -1,6 +1,6 @@
 pkgbase = basis-universal-git
 	pkgdesc = Basis Universal GPU Texture Codec
-	pkgver = r178.0319b500f6
+	pkgver = r186.92bc0de0ea
 	pkgrel = 1
 	url = https://github.com/BinomialLLC/basis_universal
 	arch = x86_64
