@@ -1,7 +1,7 @@
 pkgbase = sail
 	pkgdesc = A universal workflow for reproducible, project-defined development environments.
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cdr/sail
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = sail
 	depends = git
 	optdepends = chromium: For opening code-server in an app window.
 	source = https://github.com/cdr/sail/archive/v1.0.3.tar.gz
-	sha256sums = 67920931e9d4355e90eb5228b6cf1139c57f6269a3339c2b8f91d6e4d399a3c6
+	sha512sums = 938efc95be63bcc842eeead9fd0b68faa2b09df1c7cf7f64c2a209966610fc9aff14f612d604d515496b9787b8014958e986d74f56feea1233f70b43cc6079f5
 
 pkgname = sail
 
