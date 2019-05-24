@@ -1,15 +1,15 @@
 pkgbase = eslint-plugin-node
 	pkgdesc = Additional ESLint rules for Node.js
-	pkgver = 9.0.1
+	pkgver = 9.1.0
 	pkgrel = 1
 	url = https://github.com/mysticatea/eslint-plugin-node
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = eslint
-	noextract = eslint-plugin-node-9.0.1.tgz
-	source = http://registry.npmjs.org/eslint-plugin-node/-/eslint-plugin-node-9.0.1.tgz
-	md5sums = ffb38d463be2fd63ebd2c3217e064f7c
+	noextract = eslint-plugin-node-9.1.0.tgz
+	source = http://registry.npmjs.org/eslint-plugin-node/-/eslint-plugin-node-9.1.0.tgz
+	md5sums = ad748e9ee80e8ce0e74d812d9836f4ad
 
 pkgname = eslint-plugin-node
 
