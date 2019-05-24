@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/cdr/${pkgname}"
 license=('MIT')
 makedepends=('go')
-depends=('ssh' 'rsync')
+depends=('openssh' 'rsync')
 optdepends=(
   'chromium: For opening code-server in an app window.'
 )
