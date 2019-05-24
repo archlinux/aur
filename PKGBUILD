@@ -17,19 +17,19 @@
 #
 pkgbase="zfs-linux-vfio"
 pkgname=("zfs-linux-vfio" "zfs-linux-vfio-headers")
-_zfsver="0.7.13"
-_kernelver="5.1.2.arch1-1"
-_extramodules="5.1.2-arch1-1-vfio"
+_zfsver="0.8.0"
+_kernelver="5.1.4.arch1-1"
+_extramodules="5.1.4-arch1-1-vfio"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
-makedepends=("linux-vfio-headers=${_kernelver}" "spl-linux-vfio-headers")
+makedepends=("python" "linux-vfio-headers=${_kernelver}")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
-sha256sums=("d23f0d292049b1bc636d2300277292b60248c0bde6a0f4ba707c0cb5df3f8c8d")
+sha256sums=("0fd92e87f4b9df9686f18e2ac707c16b2eeaf00f682d41c20ea519f3a0fe4705")
 license=("CDDL")
-depends=("kmod" 'spl-linux-vfio' "zfs-utils=${_zfsver}" "linux-vfio=${_kernelver}")
+depends=("kmod" "zfs-utils=${_zfsver}" "linux-vfio=${_kernelver}")
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
@@ -45,9 +45,10 @@ build() {
 package_zfs-linux-vfio() {
     pkgdesc="Kernel modules for the Zettabyte File System."
     install=zfs.install
-    provides=("zfs")
+    provides=("zfs" "spl")
     groups=("archzfs-linux-vfio")
-    conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" 'zfs-linux-vfio-git')
+    conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" "spl-dkms" "spl-dkms-git" 'zfs-linux-vfio-git' 'spl-linux-vfio')
+    replaces=("spl-linux-vfio")
     cd "${srcdir}/zfs-${_zfsver}"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
@@ -58,8 +59,8 @@ package_zfs-linux-vfio() {
 
 package_zfs-linux-vfio-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
-    provides=("zfs-headers")
-    conflicts=("zfs-headers" "zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc")
+    provides=("zfs-headers" "spl-headers")
+    conflicts=("zfs-headers" "zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" "spl-dkms" "spl-dkms-git" "spl-headers")
     cd "${srcdir}/zfs-${_zfsver}"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
