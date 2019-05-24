@@ -2,7 +2,7 @@ pkgname=newlogic
 _pkgname=newlogic
 pkgver=0.1.1_beta
 _pkgver="0.1.1-beta"
-pkgrel=2
+pkgrel=3
 pkgdesc="Circuit Builder Desktop Application (like mmlogic)"
 arch=('any')
 url="https://github.com/ericm/newlogic"
@@ -13,9 +13,10 @@ sha256sums=('SKIP')
 dependens=('nodejs>=10', "electron>=1.8.8")
 makedepends=('npm' 'yarn' 'git')
 prepare() {
+  mkdir /usr/lib/node_modules/newlogic
   cd "${_pkgname}"
   yarn
-  npm run package
+  npm run build
 }
 package() {
   install -dm755  /usr/lib/node_modules/newlogic
