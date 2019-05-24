@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_tag=5.0.17
+_srcver_tag=5.0.18
 pkgver="${_srcver_tag}.arch1"
 pkgrel=1
 arch=(x86_64)
@@ -109,6 +109,11 @@ _kernelname=${pkgbase#linux}
 prepare() {
     cd ${_reponame}
 
+    msg2 "Setting version..."
+    scripts/setlocalversion --save-scmversion
+    echo "-$pkgrel" > localversion.10-pkgrel
+    echo "$_kernelname" > localversion.20-pkgname
+
     msg2 "Adding patches from Linux upstream kernel repository..."
     git remote add upstream_stable https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git || true
     git pull --no-edit upstream_stable v${_srcver_tag}
@@ -123,12 +128,7 @@ prepare() {
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching to enabled additional gcc CPU optimizatons..."
     patch -Np1 -i "$srcdir/${_reponame_gcc_patch}/${_gcc_patch_name}"
-
-    msg2 "Setting version..."
-    scripts/setlocalversion --save-scmversion
-    echo "-$pkgrel" > localversion.10-pkgrel
-    echo "$_kernelname" > localversion.20-pkgname
-
+    
     msg2 "Setting config..."
     cp ../config .config
 
