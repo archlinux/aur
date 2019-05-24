@@ -2,7 +2,7 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.0.2+297+g7bece24c
+pkgver=9.0.4+259+g8cdfe79d
 _d2j=2.0
 _yajsw=12.12
 _hfsx=0.21
@@ -90,7 +90,7 @@ package() {
   _appver=$(grep -oP '(?<=^application.version=).*$' Ghidra/application.properties)
   _relname=$(grep -oP '(?<=^application.release.name=).*$' Ghidra/application.properties)
   unzip -u build/dist/ghidra_${_appver}_${_relname}_$(date +"%Y%m%d")_linux64.zip -d "$pkgdir"/opt
-  mv "$pkgdir"/opt/ghidra{_$_appver,}
+  mv "$pkgdir"/opt/ghidra{_${_appver}_${_relname},}
   ln -s /opt/ghidra/ghidraRun "$pkgdir"/usr/bin/ghidra
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/ghidra
 }
