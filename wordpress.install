@@ -1,0 +1,21 @@
+post_install() {
+  # Make uploads work
+  install -dm775 /usr/share/webapps/wordpress/wp-content/uploads
+  chown http:http /usr/share/webapps/wordpress/wp-content/uploads
+  echo 'You can now configure your (PHP compatible) web server to run WordPress'
+}
+
+pre_remove() {
+  cp -r /usr/share/webapps/wordpress /usr/share/webapps/wordpress_backup
+  echo 'Your WordPress folder was backed up to /usr/share/webapps/wordpress_backup'
+}
+
+post_remove() {
+  rm -rf /usr/share/webapps/wordpress
+}
+
+post_upgrade() {
+  echo 'WordPress was placed in /usr/share/webapps'
+}
+
+# vim: ts=2 sw=2 et:
