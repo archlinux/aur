@@ -1,6 +1,6 @@
 pkgbase = gitsome-git
 	pkgdesc = A Supercharged Git/Shell Autocompleter with GitHub Integration.
-	pkgver = 0.6.0.r30.g1d9b6b3
+	pkgver = 0.8.0.r5.gd7c57ab
 	pkgrel = 1
 	url = https://github.com/donnemartin/gitsome
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = gitsome-git
 	depends = python-feedparser
 	depends = python-pytz
 	depends = python-docopt
-	depends = python-uritemplate.py
+	depends = python-uritemplate
 	depends = python-numpydoc
 	provides = gitsome
 	conflicts = xonsh
