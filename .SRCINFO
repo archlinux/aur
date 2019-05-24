@@ -1,16 +1,18 @@
 pkgbase = fate-the-game
 	pkgdesc = The Game is based to simulate a real life hack
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = custom
 	depends = dosbox
 	source = https://master.dl.sourceforge.net/project/host-fate-dos-game/Fate.zip
 	source = https://master.dl.sourceforge.net/project/host-fate-dos-game/fate-the-game.desktop
 	source = https://master.dl.sourceforge.net/project/host-fate-dos-game/fate-the-game.png
+	source = https://master.dl.sourceforge.net/project/host-fate-dos-game/fate-the-game-launcher
 	md5sums = 3db0a0bbc8279477f672272d20270c89
-	md5sums = 0a585e4d38a2b7a62a8895ae2bf4eef3
+	md5sums = 3fa39b232b412b8319c5e97284d6123a
 	md5sums = 3aad39f65bef9ff83a55c255615f5ea2
+	md5sums = fb449564d16a30fe1c05660a13ba8f69
 
 pkgname = fate-the-game
 
