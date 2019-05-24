@@ -1,11 +1,12 @@
 pkgbase = bloscpack
 	pkgdesc = command line interface to and serialization format for Blosc.
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Blosc/bloscpack
 	arch = any
 	license = MIT
 	depends = python-blosc
+	depends = python-deprecated
 	depends = python-numpy
 	depends = python-six
 	source = bloscpack-0.16.0.tar.gz::https://github.com/Blosc/bloscpack/archive/v0.16.0.tar.gz
