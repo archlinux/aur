@@ -1,0 +1,24 @@
+pkgbase = cockroach
+	pkgdesc = A scalable, survivable, strongly-consistent SQL database
+	pkgver = 19.1.1
+	pkgrel = 1
+	url = https://www.cockroachlabs.com
+	install = cockroach.install
+	arch = x86_64
+	license = CCL
+	makedepends = go-pie
+	makedepends = cmake
+	backup = etc/default/cockroach
+	source = cockroach-19.1.1.tar.gz::https://binaries.cockroachdb.com/cockroach-v19.1.1.src.tgz
+	source = cockroach.service
+	source = cockroach.default
+	source = cockroach.sysusers
+	source = 01_no_githooks.patch
+	md5sums = 71a0e1f88aa2d5a528d7d7046c9eebda
+	md5sums = 2eadebb6eb17e584ecdc469411cd53e8
+	md5sums = 15e9d2cd9ef82ca26b56179859e2a6af
+	md5sums = c4d4dcb51ce92cb03bc46c04a8151c20
+	md5sums = 2ec5af308106c99eeadfa6f69ffedaa8
+
+pkgname = cockroach
+
