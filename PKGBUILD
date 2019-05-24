@@ -40,7 +40,7 @@ package() {
     install -m 0644 $pkgname.desktop $pkgdir/usr/share/applications/
     install -m 0644 $pkgname.png $pkgdir/usr/share/icons/hicolor/64x64/
     install -m 0755 $pkgname-launcher $pkgdir/usr/bin/
-    ln -s $pkgdir/usr/bin/$pkgname-launcher $pkgdir/usr/bin/fate
+    ln -s /usr/bin/$pkgname-launcher $pkgdir/usr/bin/fate
 }
 
 #vim: syntax=sh
