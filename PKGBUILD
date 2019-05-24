@@ -47,8 +47,8 @@ package() {
 
   # Systemd
   install -Dm644 sslh.sysusers "$pkgdir/usr/lib/sysusers.d/sslh.conf"
-  install -Dm644 sslh\@.service "$pkgdir/usr/lib/systemd/system/sslh\@.service"
-  install -Dm644 sslh-select\@.service "$pkgdir/usr/lib/systemd/system/sslh-select\@.service"
+  install -Dm644 sslh@.service "$pkgdir/usr/lib/systemd/system/sslh@.service"
+  install -Dm644 sslh-select@.service "$pkgdir/usr/lib/systemd/system/sslh-select@.service"
 
   cd $pkgname
   install -Dm644 scripts/etc.sysconfig.sslh "$pkgdir/etc/conf.d/sslh"
