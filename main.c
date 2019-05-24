@@ -96,6 +96,7 @@ int main(int argc, char *argv[]) {
 	XUngrabPointer(display, CurrentTime);
 	XUngrabKeyboard(display, CurrentTime);
 	XFreeCursor(display, cursor);
+	XDestroyWindow(display, root);
 	XDestroyImage(image);
 	XCloseDisplay(display);
 }
