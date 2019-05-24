@@ -22,7 +22,7 @@ _makedepends=(
 )
 license=('BSD')
 arch=(any)
-source=("https://pypi.python.org/packages/f3/ed/f7d73a5e35ca3423e65ef70a7de0f640bc24919ec4fc57d5f0c1b831f5ff/${_pkgname}-0.2.1.tar.gz")
+source=("https://pypi.python.org/packages/f3/ed/f7d73a5e35ca3423e65ef70a7de0f640bc24919ec4fc57d5f0c1b831f5ff/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('48ede51641bee78c32994cbd86b385714d61beb7d80c87f0cc1b70efb51dd5f5')
 
 makedepends=(
