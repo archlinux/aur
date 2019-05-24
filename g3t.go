@@ -43,8 +43,9 @@ func execCmd(input string, stdout bool) string {
 }
 
 func prepareCmds(){
-	cmdlist := execCmd("git help | grep '^  *[a-z]' | sed -e 's/^\\s*//' -e 's/ *[A-Z].*//'", false)
-	fmt.Println(cmdlist)
+	cmdStr := execCmd("git help | grep '^  *[a-z]' | sed -e 's/^\\s*//' -e 's/ *[A-Z].*//'", false)
+	cmdList := strings.Split(cmdStr, "\n")
+	fmt.Println(cmdList)
 }
 
 func startTerm() {
