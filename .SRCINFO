@@ -1,0 +1,15 @@
+pkgbase = newlogic
+	pkgdesc = Circuit Builder Desktop Application (like mmlogic)
+	pkgver = 0.1.1_beta
+	pkgrel = 1
+	url = https://github.com/ericm/newlogic
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = yarn
+	makedepends = git
+	source = newlogic::git+https://github.com/ericm/newlogic.git#tag=v0.1.1-beta
+	sha256sums = SKIP
+
+pkgname = newlogic
+
