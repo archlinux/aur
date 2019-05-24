@@ -2,7 +2,7 @@
 
 pkgname=sshcode
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A CLI to automatically install and run code-server over SSH.'
 arch=('x86_64')
 url="https://github.com/cdr/${pkgname}"
