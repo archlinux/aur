@@ -16,14 +16,6 @@ depends=('python2' 'python-setuptools' 'python2-billiard' 'python2-beautifulsoup
 	'python2-lxml' 'python2-ipwhois' 'python2-json2html' 'python2-travispy'
 	'python2-piplapis' 'python2-anyjson' 'python2-tldextract' 'python2-cfscrape')
 
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GIJack/datasploit/archive/v${pkgver}.tar.gz")
 sha256sums=('3c9e380ca69d0c9d4e1f1234a635929a558b491293b8b69713c575d5d5e6c392')
 
