@@ -1,13 +1,15 @@
 pkgbase = losslessaudiochecker
 	pkgdesc = A utility to check whether a WAVE or FLAC file is truly lossless or not.
 	pkgver = 2.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://losslessaudiochecker.com/
 	arch = i686
 	arch = x86_64
 	license = custom
 	source = http://losslessaudiochecker.com/dl/LAC-Linux-64bit.tar.gz
+	source = LICENSE
 	md5sums = 85f1925ffa24b963549a8bb7049b75e5
+	md5sums = 2065545ba17fb023761f33b80d4805b3
 
 pkgname = losslessaudiochecker
 
