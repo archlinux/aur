@@ -2,13 +2,13 @@
 
 pkgname=siesta
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A first-principles materials simulation code using DFT"
 arch=("x86_64")
 url="https://departments.icmab.es/leem/siesta"
 license=('GPL')
-depends=('gcc-fortran' 'openmpi' 'blas' 'lapack' 'scalapack')
-makedepends=('sed')
+depends=('scalapack' 'fftw' 'python')
+makedepends=('sed' 'gcc-fortran')
 source=("https://launchpad.net/$pkgname/4.0/$pkgver/+download/$pkgname-$pkgver.tar.gz")
 sha256sums=('bafbda19358f0c1dd39bb1253c92ee548791a1c0f648977051d2657216874f7e')
 
@@ -19,7 +19,7 @@ build() {
                     --prefix=/usr \
                     --enable-mpi \
                     --with-lapack="-llapack" \
-                    FCFLAGS="$CFLAGS"
+                    FCFLAGS="$FCFLAGS"
     make -j1
     cd ../Util
     sed -i "s/ make/ make -j1/g" build_all.sh
