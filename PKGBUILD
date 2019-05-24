@@ -17,14 +17,14 @@
 #
 pkgbase="zfs-linux-hardened-git"
 pkgname=("zfs-linux-hardened-git" "zfs-linux-hardened-git-headers")
-_commit='9dc41a769df164875d974c2431b2453e70e16c41'
-_zfsver="2019.05.19.r5128.g9dc41a769"
+_commit='75c09c5060b85a144cc794ae857520662dc8fd58'
+_zfsver="2019.05.23.r5134.g75c09c506"
 _kernelver="5.0.18.a-1"
 _extramodules="5.0.18.a-1-hardened"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
-makedepends=("linux-hardened-headers=${_kernelver}" "git" "python")
+makedepends=("python" "linux-hardened-headers=${_kernelver}" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}")
@@ -48,7 +48,7 @@ package_zfs-linux-hardened-git() {
     install=zfs.install
     provides=("zfs" "spl")
     groups=("archzfs-linux-hardened-git")
-    conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" 'zfs-linux-hardened' 'spl-linux-hardened-git' 'spl-linux-hardened' "spl-dkms" "spl-dkms-git")
+    conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" "spl-dkms" "spl-dkms-git" 'zfs-linux-hardened' 'spl-linux-hardened-git' 'spl-linux-hardened')
     replaces=("spl-linux-hardened-git")
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
