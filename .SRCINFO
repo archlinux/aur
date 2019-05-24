@@ -1,0 +1,16 @@
+pkgbase = eko
+	pkgdesc = EKO is a simple sound editor with mixer and audio effects.
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/psemiletov/eko
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = gcc-libs
+	depends = libsamplerate
+	depends = libsndfile
+	source = https://github.com/psemiletov/eko/archive/6.0.0.tar.gz
+	md5sums = 39d879264344e71ebbaafd0e1391c7dd
+
+pkgname = eko
+
