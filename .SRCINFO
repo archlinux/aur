@@ -1,7 +1,7 @@
 pkgbase = brahms-git
 	pkgdesc = The BRAHMS simulation execution engine
 	pkgver = 0.7.3+git32ca5f7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BRAHMS-SystemML/brahms
 	arch = i686
 	arch = x86_64
