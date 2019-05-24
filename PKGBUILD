@@ -5,13 +5,13 @@
 # Contributor: userwithuid < userwithuid at gmail dot com >
 
 _pkgname=rust
-_date=2019-02-28
-_rustc=1.33.0
-_cargo=0.34.0
+_date=2019-05-14
+_rustc=1.34.2
+_cargo=0.35.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.34.2
+pkgver=1.35.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -27,7 +27,9 @@ makedepends=('gdb'
              'libffi'
              'perl'
              'python'
+             'python2'
              'nodejs'
+             'procps-ng'
              'cmake')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
@@ -38,15 +40,15 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_cargo}-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('2b3b3a5462aa31d07f39721af73ef394803ceae3472e2470f28b7ee0b12e38ef'
+sha256sums=('169756df2298957bcf02da6a612996c24a51b9ac3b23409e6507d69eb2e6f523'
             'SKIP'
-            '6f20343ed73faf5fdfc423bec38a9bb1910a0a962af6f2dddd7184407543ed0e'
+            'aaf63ed4d9ebfeade316b2923880df37839ee62f613799563be410cff84edddf'
             'SKIP'
-            '57c5ced1a826d34f26e50adf041528dd0000f2a59e8be32d2359386843382ce1'
+            'ddd1f6353221658bf63ef296c9a0919ea78f9ddfdde0a159c4ff271300bdec7f'
             'SKIP'
-            '1730c8ebcacc1327eb28b328cb9f5a2c612bb3d9efff9c350647adf19f304e15'
+            'ffa3dd54ef07cef1e8a7b702bc954a1cd4f4ae64faea83c6a3fb9b6e0bbcbd96'
             'SKIP'
-            'd7b86ebb3382c838cb931ed0292e4a8133dd524beed7abe0f3ab8d7bc5973d04')
+            'cff1ec08d6bf3d427e831828ac0597e7e724662ddee548a52478c41fa0c111c6')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/rust/cargo/config")
@@ -57,9 +59,12 @@ prepare() {
 
   cp "${srcdir}"/mingw-config.toml config.toml
   sed -i "s|\@PREFIX\@|/${_prefix}|" config.toml
+  # use xz source
+  sed -i "s|tar.gz|tar.xz|" "src/bootstrap/bootstrap.py"
+  # fix path
+  sed -i "s|lld_install_root.join|lld_install_root.join(\"build\").join|" "src/bootstrap/compile.rs"
   # use level 0 to speed up xz packaging
   sed -i 's|XzEncoder::new(create_new_file(tar_xz)?, 6)|XzEncoder::new(create_new_file(tar_xz)?, 0)|' "src/tools/rust-installer/src/tarballer.rs"
-  sed -i "s|tar.gz|tar.xz|" "src/bootstrap/bootstrap.py"
 
   cd "${srcdir}"
   mkdir -p "${srcdir}/rustc-${pkgver}-src/build/cache/${_date}"
