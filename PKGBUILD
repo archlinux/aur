@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 pkgname=datasploit
 pkgver=1.0a
-pkgrel=1
+pkgrel=2
 pkgdesc="An OSINT framework to perform various recon techniques on Companies, People, Phone Number, Bitcoin Addresses, etc"
 arch=('any')
 url="http://datasploit.info/"
@@ -14,7 +14,7 @@ depends=('python2' 'python-setuptools' 'python2-billiard' 'python2-beautifulsoup
 	'python2-requests-file' 'python2-simplejson' 'python2-termcolor'
 	'python2-tqdm' 'python2-tweepy' 'python2-netaddr' 'python2-clearbit'
 	'python2-lxml' 'python2-ipwhois' 'python2-json2html' 'python2-travispy'
-	'python2-piplapis' 'python2-anyjson' 'python2-tldextract')
+	'python2-piplapis' 'python2-anyjson' 'python2-tldextract' 'python2-cfscrape')
 
 optdepends=()
 provides=()
