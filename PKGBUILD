@@ -17,14 +17,14 @@
 #
 pkgbase="zfs-linux-zen-git"
 pkgname=("zfs-linux-zen-git" "zfs-linux-zen-git-headers")
-_commit='9dc41a769df164875d974c2431b2453e70e16c41'
-_zfsver="2019.05.19.r5128.g9dc41a769"
+_commit='75c09c5060b85a144cc794ae857520662dc8fd58'
+_zfsver="2019.05.23.r5134.g75c09c506"
 _kernelver="5.1.4.zen1-1"
 _extramodules="5.1.4-zen1-1-zen"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
-makedepends=("linux-zen-headers=${_kernelver}" "git" "python")
+makedepends=("python" "linux-zen-headers=${_kernelver}" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}")
@@ -48,7 +48,7 @@ package_zfs-linux-zen-git() {
     install=zfs.install
     provides=("zfs" "spl")
     groups=("archzfs-linux-zen-git")
-    conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" 'zfs-linux-zen' 'spl-linux-zen-git' 'spl-linux-zen' "spl-dkms" "spl-dkms-git")
+    conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" "spl-dkms" "spl-dkms-git" 'zfs-linux-zen' 'spl-linux-zen-git' 'spl-linux-zen')
     replaces=("spl-linux-zen-git")
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
