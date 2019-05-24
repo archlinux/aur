@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=9.0.0_r316430.48c4e4fa802
+pkgver=9.0.0_r317360.3e8b9d4a57c
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -51,7 +51,7 @@ prepare() {
     mkdir _build
 
     cd llvm-project
-    # remove code parts not needed to build llvm itself
+    # remove code parts not needed to build this package
     rm -rf clang clang-tools-extra compiler-rt debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl
 }
 
@@ -59,28 +59,31 @@ build() {
     cd _build
   
     export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-
+    
+    LIB32_CFLAGS="$CFLAGS"" -m32"
+    LIB32_CXXFLAGS="$CXXFLAGS"" -m32"
+    
     cmake "$srcdir"/llvm-project/llvm -G Ninja \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DLLVM_LIBDIR_SUFFIX=32 \
-        -DCMAKE_C_FLAGS:STRING=-m32 \
-        -DCMAKE_CXX_FLAGS:STRING=-m32 \
-        -DLLVM_TARGET_ARCH:STRING=i686 \
-        -DLLVM_HOST_TRIPLE=$CHOST \
-        -DLLVM_DEFAULT_TARGET_TRIPLE="i686-pc-linux-gnu" \
-        -DLLVM_TARGETS_TO_BUILD="AMDGPU;X86" \
-        -DLLVM_BUILD_LLVM_DYLIB=ON \
-        -DLLVM_LINK_LLVM_DYLIB=ON \
-        -DLLVM_ENABLE_RTTI=ON \
-        -DLLVM_ENABLE_FFI=ON \
-        -DLLVM_BUILD_DOCS=OFF \
-        -DLLVM_ENABLE_SPHINX=OFF \
-        -DLLVM_ENABLE_DOXYGEN=OFF \
-        -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
-        -DLLVM_BINUTILS_INCDIR=/usr/include \
-        -DLLVM_VERSION_SUFFIX="" \
-        -DLLVM_ENABLE_BINDINGS=OFF
+        -D CMAKE_C_FLAGS="$LIB32_CFLAGS" \
+        -D CMAKE_CXX_FLAGS="$LIB32_CXXFLAGS" \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D LLVM_LIBDIR_SUFFIX=32 \
+        -D LLVM_TARGET_ARCH:STRING=i686 \
+        -D LLVM_HOST_TRIPLE=$CHOST \
+        -D LLVM_DEFAULT_TARGET_TRIPLE="i686-pc-linux-gnu" \
+        -D LLVM_TARGETS_TO_BUILD="AMDGPU;X86" \
+        -D LLVM_BUILD_LLVM_DYLIB=ON \
+        -D LLVM_LINK_LLVM_DYLIB=ON \
+        -D LLVM_ENABLE_RTTI=ON \
+        -D LLVM_ENABLE_FFI=ON \
+        -D LLVM_BUILD_DOCS=OFF \
+        -D LLVM_ENABLE_SPHINX=OFF \
+        -D LLVM_ENABLE_DOXYGEN=OFF \
+        -D FFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
+        -D LLVM_BINUTILS_INCDIR=/usr/include \
+        -D LLVM_VERSION_SUFFIX="" \
+        -D LLVM_ENABLE_BINDINGS=OFF
         
     if [[ ! $NINJAFLAGS ]]; then
         ninja
