@@ -1,13 +1,14 @@
 pkgbase = ibus-libzhuyin
 	pkgdesc = New Zhuyin engine based on libzhuyin for IBus
 	pkgver = 1.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/libzhuyin/ibus-libzhuyin
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = intltool
 	makedepends = gnome-common
+	makedepends = wget
 	depends = ibus
 	depends = opencc
 	depends = python-xdg
