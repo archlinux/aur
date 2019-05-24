@@ -1,5 +1,5 @@
 post_install() {	
-    # systemctl preset eruption
+    systemctl preset eruption
     udevadm control --reload-rules
 }
 
