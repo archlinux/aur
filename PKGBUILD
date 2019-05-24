@@ -7,7 +7,7 @@ pkgdesc='A universal workflow for reproducible, project-defined development envi
 arch=('x86_64')
 url="https://github.com/cdr/${pkgname}"
 license=('MIT')
-makedepends=('go-pie')
+makedepends=('go')
 depends=('docker' 'git')
 optdepends=(
   'chromium: For opening code-server in an app window.'
