@@ -1,10 +1,13 @@
 pkgbase = python2-textx
 	pkgdesc = Python library for building Domain-Specific Languages and parsers
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://textx.github.io/textX/
 	arch = any
 	license = MIT
+	checkdepends = python2-pytest-runner
+	checkdepends = python2-jinja
+	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-arpeggio
 	depends = python2-click
