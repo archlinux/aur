@@ -1,7 +1,7 @@
 pkgbase = caddy
 	pkgdesc = HTTP/2 Web Server with Automatic HTTPS
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caddyserver.com
 	install = caddy.install
 	arch = x86_64

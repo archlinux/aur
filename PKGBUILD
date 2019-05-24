@@ -8,7 +8,7 @@ _gopkgname='github.com/mholt/caddy'
 
 pkgname=caddy
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -31,27 +31,26 @@ sha256sums=('1c8b435a79e21b9832c7a8a88c44e70bc80434ca3719853d2b1092ffbbbbff7d'
             '80520b80ccabf077a3269f6a1bf55faa3811ef5adce115131b35ef2044d37b64'
             'f5a0fbb961e7c9ecf99e88d0959a3164cbea54660c1c08c3ba3cdf1d45563929')
 
-patch_plugins() {
-    IFS=''
-    n=0
-    while read -r line; do
-        echo "$line"
-        if [[ $n = 0 && $line =~ ^import ]]; then
-            go run $srcdir/plugins.go "${plugins[@]}"
-            n=1
-        fi
-    done
-}
-
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver/caddy"
+    cat > main.go <<EOF
+package main
 
+import (
+	"github.com/mholt/caddy/caddy/caddymain"
+EOF
     if [ ${#plugins[@]} -gt 0 ]; then
         echo enabled plugins: ${plugins[@]}
-        cd caddy/caddymain/
-        patch_plugins < run.go > run1.go
-        mv run1.go run.go
+        go run $srcdir/plugins.go "${plugins[@]}" >> main.go
     fi
+    cat >> main.go <<EOF
+)
+
+func main() {
+	caddymain.EnableTelemetry = false
+	caddymain.Run()
+}
+EOF
 }
 
 build() {
@@ -84,7 +83,6 @@ plugins=(
 #    'http.cors'
 #    'http.datadog'
 #    'http.expires'
-#    'http.filebrowser'
 #    'http.filter'
 #    'http.forwardproxy'
 #    'http.geoip'
@@ -106,7 +104,6 @@ plugins=(
 #    'http.restic'
 #    'http.s3browser'
 #    'http.supervisor'
-#    'http.upload'
 #    'http.webdav'
 #    'net'
 #    'supervisor'
