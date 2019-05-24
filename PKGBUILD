@@ -5,7 +5,7 @@
 # Contributor: Link Dupont <link@subpop.net>
 #
 pkgname=dbus-nosystemd
-pkgver=1.12.12
+pkgver=1.12.14
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -22,7 +22,7 @@ provides=('dbus-core' "dbus=${pkgver}" "libdbus=${pkgver}")
 conflicts=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
 replaces=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
 install=dbus-nosystemd.install
-_commit=d4f8423bbff9b3c5fca2d8009c28d1cff4652788  # tags/dbus-1.12.12^0
+_commit=a330c6184fe9c7f67495f8d4563b11d51a6dccc7  # tags/dbus-1.12.14^0
 source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=$_commit"
 	30-dbus.sh dbus.rc)
 md5sums=('SKIP'
@@ -46,6 +46,7 @@ build() {
       --libexecdir=/usr/lib/dbus-1.0 \
       --with-dbus-user=dbus \
       --with-system-socket=/run/dbus/system_bus_socket \
+      --with-system-pid-file=/run/dbus/pid \
       --with-console-auth-dir=/run/console/ \
       --enable-inotify \
       --disable-verbose-mode \
