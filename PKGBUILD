@@ -8,7 +8,7 @@ pkgdesc="Open C++ library and utilities for common RPG rulesets"
 arch=('x86_64')
 url="https://openrpg.io"
 license=('custom:OSL' 'custom:OGL')
-provides=(openrpg=$pkgver roll=$pkgver name-generator=$pkgver character-generator=$pkgver)
+provides=(openrpg roll name-generator character-generator)
 depends=()
 makedepends=('gcc>=4.7' 'cmake>=2.8.4')
 changelog=
