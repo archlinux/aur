@@ -6,7 +6,7 @@
 #   gpg --recv-keys 3CE464558A84FDC69DB40CFB090B11993D9AEBB5
 
 pkgname=guix
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A purely functional package manager for the GNU system"
 arch=('x86_64' 'i686' 'armv7h')
@@ -34,50 +34,22 @@ optdepends=(
   'guile-json1: to import packages from cpan, gem, pypi'
   'guile-ssh: to offload builds to other machines')
 source=(
-  "https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
-  "${pkgname}-${pkgver}-docker-image.tmpl::https://git.savannah.gnu.org/cgit/guix.git/plain/gnu/system/examples/docker-image.tmpl?h=v${pkgver}"
-  'guix-1.0.0-tests-gremlin.patch'
-  'guix-1.0.0-tests-guix-pack-localstatedir.patch')
+  "https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig})
 install="${pkgname}.install"
 sha1sums=(
-  'fd64cd4347214a4e75d611696c9929cba8995323'
-  '42fef4a882b71b0413d33a6f9199a53cc92bba74'
-  'SKIP'
-  'SKIP'
-  'SKIP')
+  'f6e32b17e034124edeec11d841e687ba0ee59242'
+  '551bf83df2771573403bcd1fe048d74dcb98e4cf')
 sha256sums=(
-  'SKIP'
-  'SKIP'
-  'f0567476a202c1c3bc3eacf991f3b5f5af030ed165a1846d045a9a375f4851ba'
-  '6dd16cbf6b8d03e866e8dcc29a9b3ae689438de7041e05cb303a7585634ae80a'
-  '2038b2e2282ce29b837701688d86339ccdf1df6f7d842c45f663046489d47415')
+  '3939b6cfa11661290fee0b82f91d2a0d39c2e36fdf4e53d8afd31dd34430ea5f'
+  '15e59f63f95527f7126ed85c66435850a82c17f015568e1432f1fcbabc70dabb')
 validpgpkeys=('3CE464558A84FDC69DB40CFB090B11993D9AEBB5')
-
-prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	# Obtain the file from the git repository and put it into the source tree.
-	# It is required by the test tests/guix-system.sh.
-	# https://debbugs.gnu.org/35774
-	cp "${srcdir}/${source[2]%%::*}" gnu/system/examples/docker-image.tmpl
-	# Apply patches to avoid unexpected test failure.
-	# https://debbugs.gnu.org/35775
-	# https://debbugs.gnu.org/35776
-	local source_file
-	for source_file in "${source[@]}"; do
-		case "${source_file}" in
-			*.patch)
-				patch -p1 < "${srcdir}/${source_file}"
-				;;
-		esac
-	done
-}
 
 build() {
 	local bash_completion_dir="$(pkg-config --variable=completionsdir bash-completion)"
 	local fish_completion_dir="$(pkg-config --variable=completionsdir fish)"
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc \
-		--libexecdir="/usr/lib/${pkgname}" --localstatedir=/var \
+		--libexecdir=/usr/lib --localstatedir=/var \
 		--with-bash-completion-dir="${bash_completion_dir}" \
 		--with-fish-completion-dir="${fish_completion_dir}" \
 		--disable-rpath \

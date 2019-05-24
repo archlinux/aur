@@ -1,6 +1,6 @@
 pkgbase = guix
 	pkgdesc = A purely functional package manager for the GNU system
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://www.gnu.org/software/guix/
 	install = guix.install
@@ -26,22 +26,13 @@ pkgbase = guix
 	optdepends = guile-json1: to import packages from cpan, gem, pypi
 	optdepends = guile-ssh: to offload builds to other machines
 	options = !strip
-	source = https://ftp.gnu.org/gnu/guix/guix-1.0.0.tar.gz
-	source = https://ftp.gnu.org/gnu/guix/guix-1.0.0.tar.gz.sig
-	source = guix-1.0.0-docker-image.tmpl::https://git.savannah.gnu.org/cgit/guix.git/plain/gnu/system/examples/docker-image.tmpl?h=v1.0.0
-	source = guix-1.0.0-tests-gremlin.patch
-	source = guix-1.0.0-tests-guix-pack-localstatedir.patch
+	source = https://ftp.gnu.org/gnu/guix/guix-1.0.1.tar.gz
+	source = https://ftp.gnu.org/gnu/guix/guix-1.0.1.tar.gz.sig
 	validpgpkeys = 3CE464558A84FDC69DB40CFB090B11993D9AEBB5
-	sha1sums = fd64cd4347214a4e75d611696c9929cba8995323
-	sha1sums = 42fef4a882b71b0413d33a6f9199a53cc92bba74
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = f0567476a202c1c3bc3eacf991f3b5f5af030ed165a1846d045a9a375f4851ba
-	sha256sums = 6dd16cbf6b8d03e866e8dcc29a9b3ae689438de7041e05cb303a7585634ae80a
-	sha256sums = 2038b2e2282ce29b837701688d86339ccdf1df6f7d842c45f663046489d47415
+	sha1sums = f6e32b17e034124edeec11d841e687ba0ee59242
+	sha1sums = 551bf83df2771573403bcd1fe048d74dcb98e4cf
+	sha256sums = 3939b6cfa11661290fee0b82f91d2a0d39c2e36fdf4e53d8afd31dd34430ea5f
+	sha256sums = 15e59f63f95527f7126ed85c66435850a82c17f015568e1432f1fcbabc70dabb
 
 pkgname = guix
 
