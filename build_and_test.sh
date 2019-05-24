@@ -15,7 +15,7 @@ echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 echo "auruser:*" | chpasswd
 
 # Give all files in current directory to auruser
-chown auruser *
+chown auruser ./*
 
 # Actually build and test package as auruser
 sudo -u auruser ./auruser_build_and_test.sh

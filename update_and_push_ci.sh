@@ -16,4 +16,5 @@ version=$1
 git checkout master
 git checkout -b ci-${version}
 git add PKGBUILD .SRCINFO
+git commit -m "Update to ${version}"
 git push gitlab

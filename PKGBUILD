@@ -1,7 +1,7 @@
 # Maintainer: Mikael Simberg <mikael.simberg@iki.fi>
 # Contributor: Denis Demidov <dennis.demidov@gmail.com>
 pkgname=hpx
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=2
 pkgdesc="A general purpose C++ runtime system for parallel and distributed applications of any scale"
 arch=("any")
@@ -14,7 +14,7 @@ options=("staticlibs")
 
 source=("http://stellar.cct.lsu.edu/files/${pkgname}_${pkgver}.tar.bz2")
 
-sha512sums=("6dc5fdad61e4a65803db331d54faf27a03e335040fc7a91b4f7207342021ca4f8d9f5b2f2d9542e04a834a1ea12cd68b740408f401c4ad4dff29f9fe8dd056c3")
+sha512sums=("ffba2d0e95b49d33511df4696cc019501d2ea6b6848dbc4d32fe4fe52a04bb9ff909d9c5001d65a551d32d2e60dce0a8cb5fd8dcef30efc0d00daac7dee9d9a5")
 
 build() {
     cd "${srcdir}/${pkgname}_${pkgver}"

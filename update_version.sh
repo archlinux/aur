@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 set -euo pipefail
 
@@ -13,10 +13,10 @@ source="http://stellar.cct.lsu.edu/files/hpx_${version}.tar.bz2"
 output_file="/tmp/hpx_${version}.tar.bz2"
 
 # Download given version package
-wget --output-document ${output_file} ${source}
+wget --output-document "${output_file}" "${source}"
 
 # Get the checksum
-checksum=$(sha512sum ${output_file} | awk '{print $1}')
+checksum=$(sha512sum "${output_file}" | awk '{print $1}')
 
 # Update version and checksum in PKGBUILD
 sed -i "s/\(pkgver=\).*/\1${version}/" PKGBUILD
@@ -26,3 +26,4 @@ sed -i "s/\(sha512sums=(\"\).*\(\")\)/\1${checksum}\2/" PKGBUILD
 # --printsrcinfo.
 sed -i "s/\(pkgver = \).*/\1${version}/" .SRCINFO
 sed -i "s/\(sha512sums = \).*/\1${checksum}/" .SRCINFO
+sed -i "s/\(source = \).*/\1${source//\//\\/}/" .SRCINFO
