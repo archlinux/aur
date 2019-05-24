@@ -2,7 +2,7 @@
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=bugwarrior
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)"
 arch=(any)
@@ -16,11 +16,10 @@ depends=('python' 'python-setuptools'
          'python-dogpile.cache' 'python-lockfile'
          'python-click' 'python-future')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ralphbean/bugwarrior/archive/$pkgver.tar.gz")
-sha256sums=('92e417f956e6f9855ed7bb1197d10931175083086f2244fbf4aaeabdadfbdd82')
+sha256sums=('2d7cee5043e35aa1a63d13eeccd14264759ae4358fdd60178bb96eda51b6b487')
 
 prepare(){
     cd "$srcdir/$pkgname-$pkgver"
-    sed -i -e 's/!=0.16.0//g' setup.py
 }
 
 build() {
