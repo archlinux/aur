@@ -6,7 +6,7 @@
 
 pkgname=gitahead
 pkgrel=1
-pkgver=2.5.6
+pkgver=2.5.7
 pkgdesc='Graphical Git client that helps you understand and manage your source history'
 url='https://www.gitahead.com/'
 arch=('x86_64')
