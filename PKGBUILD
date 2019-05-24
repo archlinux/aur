@@ -3,7 +3,7 @@ pkgname=marg
 pkgver=0.1
 pkgrel=1
 epoch=
-pkgdesc="Simple argument handling library"
+pkgdesc="Simple argument handling library for C programs"
 arch=("any")
 url="https://gitlab.com/oktopod11/marg"
 license=("LGPL3")
@@ -19,7 +19,7 @@ backup=()
 options=()
 source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=("85771c5b15964513588aa0f6b8785168252197305fcab6dba5bfe9eb1ac5c77d")
+sha256sums=("be0ee8c6727745bc7b842c30fbdfdb277da5d05b0df4d5432721e560685370e4")
 
 prepare() {
 	tar -xvf "$pkgname-$pkgver.tar.gz"
