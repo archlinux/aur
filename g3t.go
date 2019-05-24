@@ -7,7 +7,6 @@ import (
 	"os/exec"
 	"bytes"
 	"strings"
-	"regexp"
 	"github.com/carmark/pseudo-terminal-go/terminal"
 )
 
@@ -41,9 +40,6 @@ var outb, errb bytes.Buffer
 func execCmd(input string, stdout bool) string {
     // Remove the newline character.
     input = strings.TrimSuffix(input, "\n")
-
-	argr := regexp.MustCompile(`(".*")`)
-	fmt.Printf("%q\n", argr.Split(input, -1))
 
     // Split the input separate the command and the arguments.
 	//args := strings.Split(input, " ")
