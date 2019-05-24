@@ -4,18 +4,20 @@
 
 pkgname=tango-icon-theme
 pkgver=0.8.90
-pkgrel=13
+pkgrel=14
 pkgdesc="Icon theme that follows the Tango visual guidelines"
 arch=('any')
 url="http://tango.freedesktop.org"
-license=('custom:public domain')
+license=('custom:public domain' 'custom:TRADEMARKS')
 makedepends=('imagemagick' 'icon-naming-utils' 'intltool' 'librsvg')
 options=(!strip !zipman)
 source=(${url}/releases/${pkgname}-${pkgver}.tar.bz2
-        https://web.archive.org/web/20180303014950if_/http://cinderwick.ca:80/files/archlinux/artwork-official/symbol.svg
+        symbol.svg
+        TRADEMARKS
         rsvg.patch)
 md5sums=('b7b9b16480afb781a4c13f8bceb8688b'
          'e9c0c2e165f2883c3fa00277635ae4ae'
+         '538362c9ff75fd6939d9024ac4329430'
          '40cb8a4dd485bac0851c6fd2915d43ba')
 
 prepare() {
@@ -36,6 +38,7 @@ package() {
 
   # install licenses
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 ../TRADEMARKS "${pkgdir}/usr/share/licenses/${pkgname}/"
 
   cd "${pkgdir}/usr/share/icons/Tango"
 
