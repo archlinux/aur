@@ -1,0 +1,18 @@
+pkgbase = todoist-add-git
+	pkgdesc = Quick Add Todoist tasks, from the command line.
+	pkgver = r15.257b2e1
+	pkgrel = 1
+	url = https://github.com/jeffgreenca/todoist-add
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = python3
+	makedepends = git
+	makedepends = python-virtualenv
+	options = !strip
+	options = !emptydirs
+	source = todoist-add-git::git://github.com/jeffgreenca/todoist-add.git
+	md5sums = SKIP
+
+pkgname = todoist-add-git
+
