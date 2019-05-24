@@ -1,14 +1,15 @@
-# Maintainer: Scott Tincman <sctincman at gmail dot com>
+# Maintainter: Anton Kudelin <kudelin at protonmail dot com>
+# Contributor: Scott Tincman <sctincman at gmail dot com>
 
 pkgname=nwchem
 pkgver=6.8.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Ab initio computational chemistry software package"
 arch=('x86_64')
 url="http://www.nwchem-sw.org/index.php/Main_Page"
 license=('ECL')
-depends=('gcc-fortran' 'openmpi' 'python2' 'blas' 'lapack' 'scalapack')
-makedepends=()
+depends=('python2' 'scalapack')
+makedepends=('gcc-fortran')
 optdepends=()
 install=nwchem.install
 source=("https://github.com/nwchemgit/$pkgname/archive/$pkgver-release.tar.gz"

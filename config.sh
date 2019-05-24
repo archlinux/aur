@@ -28,7 +28,7 @@ export LAPACK_SIZE=4
 export LAPACK_LIB="-llapack"
 
 #===================================================#
-#                   NWChem Settings                 #
+#                 NWChem Settings                   #
 #===================================================#
 
 export NWCHEM_TARGET=LINUX64
@@ -38,7 +38,6 @@ export NWCHEM_TOP=$(pwd)
 export PYTHONHOME=/usr
 export PYTHONVERSION=2.7
 export PYTHONLIBTYPE=so
-export USE_PYTHON64=y
 
 export LARGE_FILES=TRUE
 export USE_NOFSCHECK=TRUE
@@ -48,3 +47,12 @@ export CCSDTQ=y
 export CCSDTLR=y
 export IPCCSD=y
 export EACCSD=y
+
+#===================================================#
+#                  CUDA Settings                    #
+#===================================================#
+
+#export TCE_CUDA=y
+#export CUDA_HOME=/opt/cuda
+#export CUDA_LIBS="-L$CUDA_HOME/lib64 -lcudart"
+#export CUDA_INCLUDE="-I. -I$CUDA_HOME/include"
