@@ -2,12 +2,12 @@
 
 pkgname=libcmatrix
 pkgver=3.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library designed for numerical studies of problems in NMR"
 arch=('x86_64')
 url="https://www.dur.ac.uk/paul.hodgkinson/pNMRsim"
 license=('GPL')
-depends=('openmpi' 'glibc')
+depends=('openmpi')
 makedepends=('gcc')
 source=($url/libcmatrixR3_lite.tar.gz
         $pkgname-3.11.0-fix-c++14.patch
@@ -55,8 +55,8 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   install -d -m 755 $pkgdir/usr/{include/libcmatrix,lib}
   install -m755 include/*.h $pkgdir/usr/include/libcmatrix
-  install -m755 lib/libcmatrix.so.3.11.0 $pkgdir/usr/lib
+  install -m755 lib/libcmatrix.so.$pkgver $pkgdir/usr/lib
   cd $pkgdir/usr/lib
-  ln -sf libcmatrix.so.3.11.0 libcmatrix.so.3
+  ln -sf libcmatrix.so.$pkgver libcmatrix.so.3
   ln -sf libcmatrix.so.3 libcmatrix.so
 }
