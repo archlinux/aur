@@ -3,15 +3,19 @@
 _fontname=spleen
 
 pkgname=bdf-spleen
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Monospaced bitmap fonts"
 arch=('any')
 license=('BSD')
 url="https://www.cambus.net/spleen-monospaced-bitmap-fonts/"
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-source=("https://github.com/fcambus/spleen/releases/download/${pkgver}/spleen-${pkgver}.tar.gz")
-sha256sums=('b4bf78e646f8b9c85f0ee870e6472506ccf5e144548e3f209ebb57faf90d6fa0')
+source=(
+  "https://github.com/fcambus/spleen/releases/download/${pkgver}/spleen-${pkgver}.tar.gz"
+)
+sha256sums=(
+  '6f6860ae947a6bd507259175dbaa57fad88a6e26e633a5d67f370ffb7c51c2f4'
+)
 
 package() {
   cd "${srcdir}/${_fontname}-${pkgver}"
@@ -23,5 +27,6 @@ package() {
 
   install -Dm644 AUTHORS "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 ChangeLog "${pkgdir}/usr/share/doc/${pkgname}/ChangeLog"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
