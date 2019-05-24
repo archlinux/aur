@@ -1,0 +1,42 @@
+diff --git a/configure b/configure
+index 701f65f..68f8b60 100755
+--- a/configure
++++ b/configure
+@@ -1,7 +1,7 @@
+ #!/bin/bash
+ 
+ BASENAME=$(basename $0)
+-CWD=$(dirname $0)
++CWD="$(dirname $0)"
+ PREFIX=/usr
+ LIBDIR=lib
+ DEBUG=no
+@@ -84,7 +84,7 @@ while test $# -gt 0; do
+     shift
+ done
+ 
+-QMAKE_CACHE=$CWD/.qmake.cache
++QMAKE_CACHE="$CWD"/.qmake.cache
+ echo -n > $QMAKE_CACHE
+ 
+ check_executable() {
+@@ -171,7 +171,7 @@ else
+ fi
+ echo "PREFIX = $PREFIX" >> $QMAKE_CACHE
+ 
+-echo "N_LIBDIR = $LIBDIR" >> $QMAKE_CACHE
++echo "LIBDIR = $LIBDIR" >> $QMAKE_CACHE
+ echo "Library directory: $LIBDIR"
+ 
+ echo "N_CONFIG_SUCCESS = yes" >> $QMAKE_CACHE
+diff --git a/src/src.pro b/src/src.pro
+index 84ef7c6..95e7f11 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -4,5 +4,5 @@ DESTDIR = ..
+ 
+ SRC_DIR = $$PWD
+ include($$SRC_DIR/src.pri)
+-DEFINES += N_LIBDIR=\""\\\"$${N_LIBDIR}\\\""\"
++DEFINES += N_LIBDIR=\""\\\"$${LIBDIR}\\\""\"
+ SOURCES += $$SRC_DIR/main.cpp
