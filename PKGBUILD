@@ -4,7 +4,7 @@
 # Maintainer: Julian Paul Dasmarinas <julian.dasma@gmail.com>
 
 pkgname=buku
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="Powerful command-line bookmark manager."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('make')
 url="https://github.com/jarun/Buku"
 license=('GPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/jarun/Buku/tar.gz/v$pkgver)
-sha256sums=('833bf328459a7637c157efacf0d2731b5aa9bf5218ea901e928740999edb8d7c')
+sha256sums=('08866f284a03454d9ee5bbb332da62e6ae1dfbe83ada75092453a7fd04fe62b3')
 
 package() {
   cd "$srcdir/Buku-$pkgver"
