@@ -1,21 +1,24 @@
 pkgbase = parlatype
 	pkgdesc = GNOME audio player for transcription
-	pkgver = 1.5.6
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://gkarsay.github.io/parlatype/
 	arch = any
 	license = GPL
 	makedepends = libreoffice
+	makedepends = meson
+	makedepends = appstream
 	makedepends = yelp-tools
-	makedepends = intltool
-	makedepends = gobject-introspection
+	makedepends = python-atspi
+	makedepends = sphinxbase
+	makedepends = pocketsphinx
 	depends = gtk3
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	optdepends = libreoffice: LibreOffice macros
 	optdepends = gst-plugins-ugly: Play MP3 files
-	source = https://github.com/gkarsay/parlatype/releases/download/v1.5.6/parlatype-1.5.6.tar.gz
-	sha256sums = ae72ac7c80e1adfec8b0f04bec066e2c45adf0da90736707a5f962cfdd722f3f
+	source = https://github.com/gkarsay/parlatype/releases/download/v1.6/parlatype-1.6.tar.gz
+	sha256sums = 8150aab04988b6966863f8c42fbab7a8d096b52c859929a819b19ef307f878b9
 
 pkgname = parlatype
 

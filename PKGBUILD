@@ -1,46 +1,25 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 pkgname=parlatype
-pkgver=1.5.6
+pkgver=1.6
 pkgrel=1
 pkgdesc="GNOME audio player for transcription"
 arch=('any')
 url="https://gkarsay.github.io/parlatype/"
 license=('GPL')
 depends=('gtk3' 'gst-plugins-base' 'gst-plugins-good')
-makedepends=('libreoffice' 'yelp-tools' 'intltool' 'gobject-introspection')
-# makedepends=('libreoffice' 'yelp-tools' 'intltool' 'gobject-introspection' 'glade' 'gtk-doc')
+makedepends=('libreoffice' 'meson' 'appstream' 'yelp-tools' 'python-atspi' 'sphinxbase' 'pocketsphinx')
 optdepends=('libreoffice: LibreOffice macros' 'gst-plugins-ugly: Play MP3 files')
 source=("https://github.com/gkarsay/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ae72ac7c80e1adfec8b0f04bec066e2c45adf0da90736707a5f962cfdd722f3f')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-}
+sha256sums=('8150aab04988b6966863f8c42fbab7a8d096b52c859929a819b19ef307f878b9')
 
 build() {
 	cd "$pkgname-$pkgver"
-	autoreconf
-	# Parlatype ships its own library, libparlatype.
-	# Developers might be interested in having a library documentation, gobject introspection
-	# and a glade catalog for the widgets.
-	# These are the configure options:
-	# --with-libreoffice: install LibreOffice macros (default: yes)
-	# --enable-introspection: install gobject introspection (default: yes)
-	# --enable-tests: build unit tests (default: yes)
-	# --enable-gtk-doc: install library documentation (default: no)
-	# --enable-glade-catalog: install a glade catalog (default: no)
-	# --enable-code-coverage: enable gcov/lcov code coverage (default: no)
-	# If you want the program only, you would use --prefix=/usr --disable-introspection.
-	./configure --prefix=/usr --disable-introspection --disable-tests
-	make
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-	make -k check
+	meson build --prefix=/usr
+	cd build
+	ninja
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	cd "$pkgname-$pkgver"/build
+	DESTDIR="$pkgdir/" ninja install
 }
