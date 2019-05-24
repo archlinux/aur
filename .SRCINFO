@@ -1,19 +1,12 @@
 pkgbase = pkgbase
-	pkgdesc = Pocketbook-Pro SDK for Linux
-	pkgver = 1.1
+	pkgdesc = Japanese-Russian kanji and word dictionary
+	pkgver = 1.10
 	pkgrel = 1
-	url = https://sourceforge.net/projects/pocketbook-free/files/PocketBook_Pro_SDK_Linux_1.1/
+	url = http://www.susi.ru/yarxi/
 	arch = x86_64
 	license = custom
-	optdepends = cmake: build some pocketbook apps from /usr/share/pocketbook-pro-sdk-linux/sources/
-	optdepends = freetype2: use freetype in your apps, also required to build some pocketbook apps
-	optdepends = gtk2: use GTK2 in your apps, also required to build some pocketbook apps
-	optdepends = bzip2: use bzip2 in your apps, also required to build some pocketbook apps
-	optdepends = giflib: use giflib in your apps, also required to build some pocketbook apps
-	options = !strip
-	options = !libtool
-	source = https://datapacket.dl.sourceforge.net/project/pocketbook-free/PocketBook_Pro_SDK_Linux_1.1/sdkrelease_1_1a.tar.gz
-	md5sums = 814aca54f7edf4b8c4d9469b455e0866
+	depends = ttf-sazanami
+	depends = nas
 
-pkgname = pocketbook-pro-sdk-linux
+pkgname = yarxi
 
