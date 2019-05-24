@@ -1,0 +1,3 @@
+u cockroach - - /var/lib/cockroach
+g cockroach - -
+m cockroach cockroach
