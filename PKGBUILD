@@ -30,7 +30,7 @@ source=("$url/code/$_srcname.tar.xz"
         "$_pkgname-sysusers.conf")
 
 sha256sums=('60575e3473abc2a60c583a10b3e386c547f54e720140ab9de6130de5590a7790'
-            'bf8d93049b85a1972f59137ec8e164072a1ba307e906e510c3c3da48a1e09a2b'
+            '4f4ce0bcd8b3e0c2c2e5ced2ac8fba85a53a289cf33adfdc3ad27cd6d2375752'
             '8b5b25bb6d9c611589ce0200da3cfeed2194bfa45aeed88e10c980c668383806')
 validpgpkeys=('7A194E3F7A8F867BEA8A5339023F078862ACFE50')
 
