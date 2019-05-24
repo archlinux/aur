@@ -1,0 +1,27 @@
+pkgbase = perl-throwable-sugarfactory
+	pkgdesc = build a library of syntax-sugared Throwable-based exceptions
+	pkgver = 0.152700
+	pkgrel = 1
+	url = https://metacpan.org/release/Throwable-SugarFactory
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal>=0
+	checkdepends = perl-test-indistdir>=0
+	depends = perl-class-inspector>=0
+	depends = perl-import-into>=0
+	depends = perl-module-runtime>=0
+	depends = perl-moo>=1.004000
+	depends = perl-package-variant>=1.003002
+	depends = perl-string-camelcase>=0
+	depends = perl-throwable>=0
+	depends = perl-try-tiny>=0
+	depends = perl>=5.006
+	depends = perl-strictures>=2
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MITHALDU/Throwable-SugarFactory-0.152700.tar.gz
+	md5sums = 8b19d41ada31bbca4dce246985e26c07
+	sha512sums = 2229a6713597f4f161e5c4dea6ce74f2e46861d2a29f7e7aa158852af0c80020b6016b899a89ac0c52c6620a3eb6020f5074c0ad9011b39c6a7d67b5839f56bf
+
+pkgname = perl-throwable-sugarfactory
+
