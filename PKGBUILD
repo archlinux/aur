@@ -2,7 +2,7 @@
 
 pkgname=wordpress-git
 pkgver=5.2.1.r75.gce21465841
-pkgrel=1
+pkgrel=2
 pkgdesc="Blog tool, publishing platform and CMS"
 arch=('any')
 url="https://wordpress.org/"
@@ -15,9 +15,17 @@ optdepends=('apache: Web server for serving WordPress'
 provides=('wordpress')
 conflicts=('wordpress')
 install=wordpress.install
-source=("git://core.git.wordpress.org/")
-sha256sums=('SKIP')
+source=("git://core.git.wordpress.org/"
+        "password_reset_exploit.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/password_reset_exploit.patch?h=packages/wordpress")
+sha256sums=('SKIP'
+            'SKIP')
 
+
+prepare() {
+  cd "core"
+
+  patch -Np1 -i "$srcdir/password_reset_exploit.patch"
+}
 
 pkgver() {
   cd "core"
