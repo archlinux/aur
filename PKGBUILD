@@ -1,7 +1,7 @@
 pkgname=mingw-w64-glew
 pkgver=2.1.0
 pkgrel=4
-pkgdesc="GLEW, The OpenGL Extension Wrangler Library (mingw-w64)"
+pkgdesc="The OpenGL Extension Wrangler Library (mingw-w64)"
 arch=('any')
 url="http://glew.sourceforge.net/"
 license=('Modified BSD/MIT/GPL')
