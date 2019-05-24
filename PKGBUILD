@@ -18,11 +18,10 @@ prepare() {
   npm run package
 }
 package() {
-  install -dm755  "$pkgdir"/usr/lib/node_modules/newlogic
-  cp -R "$srcdir"/$_pkgname/* "$pkgdir"/usr/lib/node_modules/newlogic
+  install -dm755  /usr/lib/node_modules/newlogic
+  cp -R "$srcdir"/$_pkgname/* /usr/lib/node_modules/newlogic
   
-  install -dm755 "$pkgdir"/usr/bin
-  ln -s "$pkgdir"/usr/lib/node_modules/newlogic/start.js "$pkgdir"/usr/bin/newlogic
-  install -Dm644 "$pkgdir"/usr/lib/node_modules/newlogic/install/newlogic.desktop \ 
-    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -dm755 /usr/bin
+  ln -s /usr/lib/node_modules/newlogic/start.js /usr/bin/newlogic
+  
 }
