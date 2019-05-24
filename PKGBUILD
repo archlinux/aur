@@ -3,7 +3,7 @@
 _pkgname=ocenaudio
 pkgname="$_pkgname"
 pkgver=3.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform, easy to use, fast and functional audio editor"
 arch=('i686' 'x86_64')
 url="http://www.ocenaudio.com/"

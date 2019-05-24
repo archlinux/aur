@@ -1,7 +1,7 @@
 pkgbase = ocenaudio
 	pkgdesc = Cross-platform, easy to use, fast and functional audio editor
 	pkgver = 3.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ocenaudio.com/
 	install = ocenaudio.install
 	arch = i686
