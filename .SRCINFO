@@ -1,6 +1,6 @@
 pkgbase = nheko
 	pkgdesc = Desktop client for the Matrix protocol
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/Nheko-Reborn/nheko
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = nheko
 	depends = lmdb
 	depends = cmark
 	depends = mtxclient
-	source = nheko-0.6.3.tar.gz::https://github.com/Nheko-Reborn/nheko/archive/v0.6.3.tar.gz
-	sha512sums = cc4637b9c9e7135367c38f96c14f3ddfef1444e2ad4a916e3431104d4c4a35c1274f4a7dd428edb7a05d8b4c1f99a7fb422d7fd24e78c3409efb72398532688e
+	source = nheko-0.6.4.tar.gz::https://github.com/Nheko-Reborn/nheko/archive/v0.6.4.tar.gz
+	sha512sums = 782673a3ae642029307517798e5be96cf0473cd4261af891988a35dfeb5e2e724d2c034407f62addd2e15973d287d11c6590d70cca739c705354cb0151536470
 
 pkgname = nheko
 
