@@ -11,8 +11,8 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.2.0_devel.111185.90e7ce5bde8
-pkgrel=1
+pkgver=19.2.0_devel.111212.ea1e0acfd04
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
@@ -46,12 +46,12 @@ fi
 case $MESA_WHICH_LLVM in
     1)
         # aur lone_wolf-llvm-git
-        makedepends+=('llvm-minimal-git' 'clang-minimal-git')
+        makedepends+=('llvm-minimal-git')
         depends+=('llvm-libs-minimal-git')
         ;;
     2)
         # aur llvm-git
-        makedepends+=('llvm-git' 'clang-git')
+        makedepends+=('llvm-git')
         depends+=('llvm-libs-git')
         ;;
     3)
