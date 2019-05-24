@@ -65,7 +65,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-_srcver=5.1.3-arch1
+_srcver=5.1.4-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -120,6 +120,11 @@ _kernelname=${pkgbase#linux}
 prepare() {
     cd ${_reponame}
 
+    msg2 "Setting version..."
+    scripts/setlocalversion --save-scmversion
+    echo "-$pkgrel" > localversion.10-pkgrel
+    echo "$_kernelname" > localversion.20-pkgname
+
     msg2 "Patching Undead PDS 0.99o 5.1 rebase by TkG"
     patch -Np1 -i "$srcdir/01-Undead-PDS-0.99o-rebase-by-TkG.patch"
     patch -Np1 -i "$srcdir/02-Glitched-PDS-by-TkG.patch"
@@ -127,12 +132,7 @@ prepare() {
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching to enabled additional gcc CPU optimizatons..."
     patch -Np1 -i "$srcdir/${_reponame_gcc_patch}/${_gcc_patch_name}"
-
-    msg2 "Setting version..."
-    scripts/setlocalversion --save-scmversion
-    echo "-$pkgrel" > localversion.10-pkgrel
-    echo "$_kernelname" > localversion.20-pkgname
-
+    
     msg2 "Setting config..."
     cp ../config .config
 
