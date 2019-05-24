@@ -2,7 +2,7 @@
 
 pkgname=apache-git
 pkgver=2.5.0.alpha.r1107.gbdff1daffc
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides useful functions commonly found on BSD systems"
 arch=('i686' 'x86_64')
 url="https://httpd.apache.org/"
@@ -46,7 +46,7 @@ prepare() {
       -e 's#Group daemon#Group http#' \
       -i "docs/conf/httpd.conf.in"
 
-  echo "$srcdir/arch.layout" >> "config.layout"
+  cat "$srcdir/arch.layout" >> "config.layout"
 }
 
 pkgver() {
