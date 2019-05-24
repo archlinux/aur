@@ -95,8 +95,11 @@ int main(int argc, char *argv[]) {
 	/* will be done on connection close anw */
 	XUngrabPointer(display, CurrentTime);
 	XUngrabKeyboard(display, CurrentTime);
+
 	XFreeCursor(display, cursor);
+
 	XDestroyWindow(display, root);
 	XDestroyImage(image);
+
 	XCloseDisplay(display);
 }
