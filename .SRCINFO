@@ -1,0 +1,28 @@
+pkgbase = cuda-10.0
+	pkgdesc = NVIDIA's GPU programming toolkit. Version 10.0
+	pkgver = 10.0.130.1
+	pkgrel = 1
+	url = http://www.nvidia.com/object/cuda_home.html
+	arch = x86_64
+	license = custom:NVIDIA
+	depends = gcc7-libs
+	depends = opencl-nvidia
+	depends = nvidia-utils
+	depends = gcc7
+	optdepends = gdb: for cuda-gdb
+	optdepends = java-runtime: for nsight and nvvp
+	provides = cuda-toolkit
+	provides = cuda-sdk
+	options = !strip
+	options = staticlibs
+	source = https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux
+	source = cuda-10.0.sh
+	source = cuda-10.0.conf
+	source = cuda-findgllib_mk.diff
+	sha512sums = 409ea4cc6aa0fe7063450e77c3b67b9b41aab1bbe556db673fb1a80610b20bd52e2020bf94034a92ab68c721d3d5739500bae4bd7a3558b2d8e73730a3b4ea25
+	sha512sums = ac102d0e36a67d22e4bb37ba1632a9aa3e1b0fafb8f997f65a92e1128ee96c5f37206636f7cfd4e198820eae35d9ef197f87b279b4e501abf613960d72df2d10
+	sha512sums = 1f3a204ed42fa051fcf401462f2e529d0e11f85c5332f9c8aa5f4a7ead6c09dfecb7eb370a7bd63cf10cb3bdc6528a0f4fc450147e63dd1dad22c2ec6798f24c
+	sha512sums = 99407937f079066829fc18b39b2ddfd2edb621cc7040a0db82dd3f3553272f487f3f183f4638295249b69461112ac1759888c928b404d2b62461c87d2760533c
+
+pkgname = cuda-10.0
+
