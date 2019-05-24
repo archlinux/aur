@@ -7,4 +7,4 @@ index 3f781354..2dec69f4 100644
  
  macx:QMAKE_POST_LINK = "cp "$$_PRO_FILE_PWD_/$$TARGET".xml ../../distrib/plugins/"$$TARGET".xml"
 -
-+linux:QMAKE_POST_LINK = "cp "$$_PRO_FILE_PWD_/$$TARGET".xml ../../distrib/plugins/"$$TARGET".xml; cd ../../distrib/plugins/ ; ln -s "$$TARGET".xml lib"$$TARGET".xml"
++linux:QMAKE_POST_LINK = "cp "$$_PRO_FILE_PWD_/$$TARGET".xml ../../distrib/plugins/"$$TARGET".xml; cd ../../distrib/plugins/ ; ln -sf "$$TARGET".xml lib"$$TARGET".xml"
