@@ -1,22 +1,19 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=mtxclient
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Client API library for Matrix, built on top of Boost.Asio<Paste>"
 arch=('x86_64' 'i686')
-url="https://github.com/mujx/mtxclient"
+url="https://github.com/Nheko-Reborn/mtxclient"
 license=('MIT')
 depends=('libolm' 'libsodium' 'openssl' 'boost-libs')
 makedepends=('cmake' 'nlohmann-json' 'boost')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mujx/mtxclient/archive/v$pkgver.tar.gz")
-sha256sums=('e7638d4a8233c0c763d48111fd13e8ad1dcd5f34e3e641b46eaf1bb920b73482')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Nheko-Reborn/mtxclient/archive/v$pkgver.tar.gz")
+sha256sums=('859217f3ed8fbe5479a6cf77dc15f164c76e593f588990c2acce3fe13c9f845a')
 
 prepare() {
   mkdir -p build
-  # Fix up includes to nlohmann json
-  grep -rl '#include <json.hpp>' | xargs sed -i 's|#include <json.hpp>|#include <nlohmann/json.hpp>|'
-  grep -rl '#include "json.hpp"' | xargs sed -i 's|#include "json.hpp"|#include <nlohmann/json.hpp>|'
 }
 
 build() {
