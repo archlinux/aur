@@ -3,7 +3,7 @@
 
 pkgname=fate-the-game
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The Game is based to simulate a real life hack"
 license=('custom')
 source=(
