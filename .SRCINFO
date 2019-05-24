@@ -1,7 +1,7 @@
 pkgbase = newlogic
 	pkgdesc = Circuit Builder Desktop Application (like mmlogic)
 	pkgver = 0.1.1_beta
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ericm/newlogic
 	arch = any
 	license = MIT
