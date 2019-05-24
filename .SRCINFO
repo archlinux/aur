@@ -29,7 +29,7 @@ pkgbase = python-postpic
 	makedepends = python2-setuptools
 	makedepends = cython2
 	makedepends = python2-h5py
-	source = python-postpic-0.4.tar.gz::https://github.com/skuschel/postpic/archive/v0.4.tar.gz
+	source = postpic-0.4.tar.gz::https://github.com/skuschel/postpic/archive/v0.4.tar.gz
 	sha512sums = c1a2ce68e7df5c4f16b01f46d2e171ac48c3eeddc7b2c219c6b070df5e4e4521b81ff9b7b45b514ff78b4866a1bfa44ad83ce357865c59d3b4f86e274d81fe69
 
 pkgname = python-postpic

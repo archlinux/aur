@@ -37,7 +37,7 @@ makedepends=(
   "${_makedepends[@]}"
   "${_makedepends[@]/ython/ython2}"
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/skuschel/${_pkgname}/archive/v$pkgver.tar.gz")
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/skuschel/${_pkgname}/archive/v$pkgver.tar.gz")
 sha512sums=('c1a2ce68e7df5c4f16b01f46d2e171ac48c3eeddc7b2c219c6b070df5e4e4521b81ff9b7b45b514ff78b4866a1bfa44ad83ce357865c59d3b4f86e274d81fe69')
 
 prepare() {
