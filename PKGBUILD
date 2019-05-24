@@ -2,12 +2,12 @@
 
 pkgname=gsim
 pkgver=21.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for visualisation and processing of NMR spectra"
 arch=('x86_64')
 url="https://sourceforge.net/projects/gsim"
 license=('GPL')
-depends=('minuit2' 'muparser' 'qt5-base' 'qt5-svg' 'libcmatrix' 'libemf' 'gcc-libs')
+depends=('minuit2' 'muparser' 'qt5-svg' 'libcmatrix' 'libemf' 'hicolor-icon-theme')
 makedepends=('imagemagick' 'sed')
 conflicts=("$pkgname-bin" "$pkgname-git")
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgver:0:2}/${pkgname}-${pkgver}.tar.gz")
