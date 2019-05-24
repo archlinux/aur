@@ -13,7 +13,7 @@ pkgname=(
   'xorg-server-common-git'
   'xorg-server-devel-git')
 _pkgbase='xserver'
-pkgver=1.20.0.r341.gb4231d690
+pkgver=1.20.0.r342.g846924159
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -62,7 +62,9 @@ build() {
     -D systemd_logind=true \
     -D suid_wrapper=true \
     -D xkb_dir=/usr/share/X11/xkb \
-    -D xkb_output_dir=/var/lib/xkb
+    -D xkb_output_dir=/var/lib/xkb \
+    -D b_lto=false \
+    -D b_lundef=false
 
   # Print config
   meson configure build
@@ -92,9 +94,9 @@ package_xorg-server-common-git() {
   _install fakeinstall/usr/lib/xorg/protocol.txt
   _install fakeinstall/usr/share/man/man1/Xserver.1
 
-  install -m644 -Dt "${pkgdir}/var/lib/xkb/" "${pkgbase}"/xkb/README.compiled
+  install -m644 -Dt "${pkgdir}/var/lib/xkb/" "${_pkgbase}"/xkb/README.compiled
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-git() {
@@ -124,7 +126,7 @@ package_xorg-server-git() {
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-xephyr-git() {
@@ -140,7 +142,7 @@ package_xorg-server-xephyr-git() {
   _install fakeinstall/usr/share/man/man1/Xephyr.1
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-xvfb-git() {
@@ -157,7 +159,7 @@ package_xorg-server-xvfb-git() {
   install -m644 "${srcdir}/xvfb-run.1" "${pkgdir}/usr/share/man/man1/" # outda
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-xnest-git() {
@@ -171,7 +173,7 @@ package_xorg-server-xnest-git() {
   _install fakeinstall/usr/share/man/man1/Xnest.1
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-xdmx-git() {
@@ -186,7 +188,7 @@ package_xorg-server-xdmx-git() {
   _install fakeinstall/usr/share/man/man1/{Xdmx,dmxtodmx,vdltodmx,xdmxconfig}.1
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-xwayland-git() {
@@ -200,7 +202,7 @@ package_xorg-server-xwayland-git() {
   _install fakeinstall/usr/bin/Xwayland
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 }
 
 package_xorg-server-devel-git() {
@@ -217,7 +219,7 @@ package_xorg-server-devel-git() {
   _install fakeinstall/usr/share/aclocal/xorg-server.m4
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${pkgbase}"/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 
   # make sure there are no files left to install
   find fakeinstall -depth -print0 | xargs -0 rmdir

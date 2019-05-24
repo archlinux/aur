@@ -2,3 +2,4 @@ xserver/
 src/
 pkg/
 *.pkg.*
+*.log
