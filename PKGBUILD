@@ -1,7 +1,7 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-atari-py
 _pkgname=atari-py
-pkgver=0.1.7
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="A python interface for the Arcade Learning Environment (Modified by OpenAI)"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python' 'python-numpy' 'python-six' 'zlib')
 makedepends=('python-setuptools' 'cmake' 'gcc')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/openai/atari-py/archive/${pkgver}.tar.gz")
-md5sums=('0de4736dff57022538238a9d5554ef1c')
+md5sums=('b4588fb012548bfb3a4636045643c475')
 
 build() {
   msg "Building Python 3"
