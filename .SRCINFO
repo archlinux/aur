@@ -1,16 +1,16 @@
 pkgbase = zfs-linux-git
-	pkgver = 2019.05.19.r5128.g9dc41a769_5.1.4.arch1.1
+	pkgver = 2019.05.23.r5134.g75c09c506_5.1.4.arch1.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
+	makedepends = python
 	makedepends = linux-headers=5.1.4.arch1-1
 	makedepends = git
-	makedepends = python
 	depends = kmod
-	depends = zfs-utils-git=2019.05.19.r5128.g9dc41a769
+	depends = zfs-utils-git=2019.05.23.r5134.g75c09c506
 	depends = linux=5.1.4.arch1-1
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=9dc41a769df164875d974c2431b2453e70e16c41
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=75c09c5060b85a144cc794ae857520662dc8fd58
 	sha256sums = SKIP
 
 pkgname = zfs-linux-git
@@ -22,11 +22,11 @@ pkgname = zfs-linux-git
 	conflicts = zfs-dkms
 	conflicts = zfs-dkms-git
 	conflicts = zfs-dkms-rc
+	conflicts = spl-dkms
+	conflicts = spl-dkms-git
 	conflicts = zfs-linux
 	conflicts = spl-linux-git
 	conflicts = spl-linux
-	conflicts = spl-dkms
-	conflicts = spl-dkms-git
 	replaces = spl-linux-git
 
 pkgname = zfs-linux-git-headers
