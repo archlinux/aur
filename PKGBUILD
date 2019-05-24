@@ -1,9 +1,9 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=ghidra-bin
-pkgver=9.0.2
-_date=20190403
-pkgrel=3
+pkgver=9.0.4
+_date=20190516
+pkgrel=1
 pkgdesc='Software reverse engineering framework (bin)'
 arch=(x86_64)
 url=https://ghidra-sre.org
@@ -12,8 +12,8 @@ provides=(ghidra)
 conflicts=(ghidra ghidra-git)
 depends=('java-environment>=11' bash)
 source=(https://ghidra-sre.org/ghidra_${pkgver}_PUBLIC_$_date.zip)
-sha256sums=('10ffd65c266e9f5b631c8ed96786c41ef30e2de939c3c42770573bb3548f8e9f')
-sha512sums=('865eb93029ca56936e444c76d442d14f71d7c3f59c2a19c67175759c918b8500e175e62ec7338e22e364b2a2ee42827f886c70a487f44b18dddeda60bf6a7ac7')
+sha256sums=('a50d0cd475d9377332811eeae66e94bdc9e7d88e58477c527e9c6b78caec18bf')
+sha512sums=('be8c6ed3bfc8661489e9da191e643a7fbbe15b3adb82cd312f5c1abb08b761e8d8bef7cf7125fef0faa55e8660cd3ce405a580adce9adee5b52ea98eec625103')
 
 package() {
   install -d "$pkgdir"/{opt,usr/bin}
