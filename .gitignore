@@ -1,4 +1,7 @@
-*
+*.xz
+/pkg
+/src
 !PKGBUILD
 !.SRCINFO
+!*.patch
 !.gitignore

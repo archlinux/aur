@@ -1,0 +1,149 @@
+diff -Naur gfs2-utils-3.2.0.orig/gfs2/convert/Makefile.am gfs2-utils-3.2.0/gfs2/convert/Makefile.am
+--- gfs2-utils-3.2.0.orig/gfs2/convert/Makefile.am	2019-05-23 19:53:05.366710857 -0400
++++ gfs2-utils-3.2.0/gfs2/convert/Makefile.am	2019-05-23 20:01:52.338267646 -0400
+@@ -7,5 +7,4 @@
+ 	-I$(top_srcdir)/gfs2/include \
+ 	-I$(top_srcdir)/gfs2/libgfs2
+ 
+-gfs2_convert_LDADD = $(top_builddir)/gfs2/libgfs2/libgfs2.la
+-gfs2_convert_LDFLAGS = $(uuid_LIBS)
++gfs2_convert_LDADD = $(top_builddir)/gfs2/libgfs2/libgfs2.la $(uuid_LIBS)
+diff -Naur gfs2-utils-3.2.0.orig/gfs2/edit/Makefile.am gfs2-utils-3.2.0/gfs2/edit/Makefile.am
+--- gfs2-utils-3.2.0.orig/gfs2/edit/Makefile.am	2019-05-23 19:53:05.366710857 -0400
++++ gfs2-utils-3.2.0/gfs2/edit/Makefile.am	2019-05-23 20:02:31.751921335 -0400
+@@ -25,9 +25,7 @@
+ 	$(zlib_CFLAGS) \
+ 	$(uuid_CFLAGS)
+ 
+-gfs2_edit_LDFLAGS = \
+-	$(ncurses_LIBS) \
++gfs2_edit_LDADD = $(top_builddir)/gfs2/libgfs2/libgfs2.la \
++    $(ncurses_LIBS) \
+ 	$(zlib_LIBS) \
+ 	$(uuid_LIBS)
+-
+-gfs2_edit_LDADD = $(top_builddir)/gfs2/libgfs2/libgfs2.la
+diff -Naur gfs2-utils-3.2.0.orig/gfs2/fsck/Makefile.am gfs2-utils-3.2.0/gfs2/fsck/Makefile.am
+--- gfs2-utils-3.2.0.orig/gfs2/fsck/Makefile.am	2019-05-23 19:53:05.370044226 -0400
++++ gfs2-utils-3.2.0/gfs2/fsck/Makefile.am	2019-05-23 20:02:41.972003719 -0400
+@@ -36,6 +36,4 @@
+ 	-I$(top_srcdir)/gfs2/libgfs2
+ 
+ fsck_gfs2_LDADD = \
+-	$(top_builddir)/gfs2/libgfs2/libgfs2.la
+-fsck_gfs2_LDFLAGS = \
+-	$(uuid_LIBS)
++	$(top_builddir)/gfs2/libgfs2/libgfs2.la $(uuid_LIBS)
+diff -Naur gfs2-utils-3.2.0.orig/gfs2/glocktop/Makefile.am gfs2-utils-3.2.0/gfs2/glocktop/Makefile.am
+--- gfs2-utils-3.2.0.orig/gfs2/glocktop/Makefile.am	2019-05-23 19:53:05.370044226 -0400
++++ gfs2-utils-3.2.0/gfs2/glocktop/Makefile.am	2019-05-23 20:05:08.833160084 -0400
+@@ -9,10 +9,6 @@
+ glocktop_CFLAGS = \
+ 	$(ncurses_CFLAGS)
+ 
+-glocktop_LDFLAGS = \
+-	$(ncurses_LIBS) \
+-	$(uuid_LIBS)
+-
+ glocktop_CPPFLAGS = \
+ 	-D_FILE_OFFSET_BITS=64 \
+ 	-D_LARGEFILE64_SOURCE \
+@@ -21,4 +17,6 @@
+ 	-I$(top_srcdir)/gfs2/libgfs2
+ 
+ glocktop_LDADD = \
+-	$(top_builddir)/gfs2/libgfs2/libgfs2.la
++	$(top_builddir)/gfs2/libgfs2/libgfs2.la \
++	$(ncurses_LIBS) \
++	$(uuid_LIBS)
+diff -Naur gfs2-utils-3.2.0.orig/gfs2/libgfs2/Makefile.am gfs2-utils-3.2.0/gfs2/libgfs2/Makefile.am
+--- gfs2-utils-3.2.0.orig/gfs2/libgfs2/Makefile.am	2019-05-23 19:53:05.373377595 -0400
++++ gfs2-utils-3.2.0/gfs2/libgfs2/Makefile.am	2019-05-23 20:02:49.292062559 -0400
+@@ -54,8 +54,7 @@
+ 	$(uuid_CFLAGS)
+ 
+ gfs2l_SOURCES = gfs2l.c
+-gfs2l_LDADD = libgfs2.la
+-gfs2l_LDFLAGS = $(uuid_LIBS)
++gfs2l_LDADD = libgfs2.la $(uuid_LIBS)
+ gfs2l_CPPFLAGS = \
+ 	-I$(top_srcdir)/gfs2/include \
+ 	-D_FILE_OFFSET_BITS=64
+diff -Naur gfs2-utils-3.2.0.orig/gfs2/mkfs/Makefile.am gfs2-utils-3.2.0/gfs2/mkfs/Makefile.am
+--- gfs2-utils-3.2.0.orig/gfs2/mkfs/Makefile.am	2019-05-23 19:53:05.376710965 -0400
++++ gfs2-utils-3.2.0/gfs2/mkfs/Makefile.am	2019-05-23 20:04:28.832849842 -0400
+@@ -25,10 +25,9 @@
+ mkfs_gfs2_CFLAGS = \
+ 	$(blkid_CFLAGS) \
+ 	$(uuid_CFLAGS)
+-mkfs_gfs2_LDFLAGS = \
++mkfs_gfs2_LDADD	= $(top_builddir)/gfs2/libgfs2/libgfs2.la \
+ 	$(blkid_LIBS) \
+ 	$(uuid_LIBS)
+-mkfs_gfs2_LDADD	= $(top_builddir)/gfs2/libgfs2/libgfs2.la
+ 
+ gfs2_grow_SOURCES = \
+ 	main_grow.c \
+@@ -36,16 +35,14 @@
+ 
+ gfs2_grow_CPPFLAGS = $(COMMON_CPPFLAGS)
+ gfs2_grow_CFLAGS = $(blkid_CFLAGS)
+-gfs2_grow_LDFLAGS = \
+-	$(blkid_LIBS) \
++gfs2_grow_LDADD = $(top_builddir)/gfs2/libgfs2/libgfs2.la \
++    $(blkid_LIBS) \
+ 	$(uuid_LIBS)
+-gfs2_grow_LDADD = $(top_builddir)/gfs2/libgfs2/libgfs2.la
+ 
+ gfs2_jadd_SOURCES = \
+ 	main_jadd.c \
+ 	metafs.c
+ 
+ gfs2_jadd_CPPFLAGS = $(COMMON_CPPFLAGS)
+-gfs2_jadd_LDADD = $(top_builddir)/gfs2/libgfs2/libgfs2.la
+-gfs2_jadd_LDFLAGS = $(uuid_LIBS)
++gfs2_jadd_LDADD = $(top_builddir)/gfs2/libgfs2/libgfs2.la $(uuid_LIBS)
+ 
+diff -Naur gfs2-utils-3.2.0.orig/gfs2/tune/Makefile.am gfs2-utils-3.2.0/gfs2/tune/Makefile.am
+--- gfs2-utils-3.2.0.orig/gfs2/tune/Makefile.am	2019-05-23 19:53:05.376710965 -0400
++++ gfs2-utils-3.2.0/gfs2/tune/Makefile.am	2019-05-23 20:06:19.843703294 -0400
+@@ -13,5 +13,5 @@
+ 	-I$(top_srcdir)/group/include
+ tunegfs2_CFLAGS = \
+ 	$(uuid_CFLAGS)
+-tunegfs2_LDFLAGS = \
++tunegfs2_LDADD = \
+ 	$(uuid_LIBS)
+diff -Naur gfs2-utils-3.2.0.orig/tests/Makefile.am gfs2-utils-3.2.0/tests/Makefile.am
+--- gfs2-utils-3.2.0.orig/tests/Makefile.am	2019-05-23 19:53:05.380044334 -0400
++++ gfs2-utils-3.2.0/tests/Makefile.am	2019-05-23 20:08:16.267909225 -0400
+@@ -26,9 +26,7 @@
+ 	-I$(top_srcdir)/gfs2/libgfs2 \
+ 	-I$(top_srcdir)/gfs2/include
+ nukerg_LDADD = \
+-	$(top_builddir)/gfs2/libgfs2/libgfs2.la
+-nukerg_LDFLAGS = \
+-	$(uuid_LIBS)
++	$(top_builddir)/gfs2/libgfs2/libgfs2.la $(uuid_LIBS)
+ 
+ if HAVE_CHECK
+ UNIT_TESTS = \
+@@ -54,16 +52,14 @@
+ 	$(UNIT_SOURCES) \
+ 	check_meta.c
+ check_meta_CFLAGS = $(UNIT_CFLAGS)
+-check_meta_LDADD = $(UNIT_LDADD)
+-check_meta_LDFLAGS = $(uuid_LIBS)
++check_meta_LDADD = $(UNIT_LDADD) $(uuid_LIBS)
+ check_meta_CPPFLAGS = $(UNIT_CPPFLAGS)
+ 
+ check_rgrp_SOURCES = \
+ 	$(UNIT_SOURCES) \
+ 	check_rgrp.c
+ check_rgrp_CFLAGS = $(UNIT_CFLAGS)
+-check_rgrp_LDADD = $(UNIT_LDADD)
+-check_rgrp_LDFLAGS = $(uuid_LIBS)
++check_rgrp_LDADD = $(UNIT_LDADD) $(uuid_LIBS)
+ check_rgrp_CPPFLAGS = $(UNIT_CPPFLAGS)
+ endif
+ 
