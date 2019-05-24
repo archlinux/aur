@@ -3,7 +3,7 @@
 
 pkgname=ocaml-zarith
 provides=(zarith)
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc='Implements arithmetic and logical operations over arbitrary-precision integers and rational numbers'
 arch=(x86_64 i686)
@@ -12,8 +12,8 @@ license=('GPL2')
 depends=('gmp')
 makedepends=('ocaml>=3.12.1' 'ocaml-findlib' )
 source=("https://github.com/ocaml/Zarith/archive/release-${pkgver}.tar.gz")
-md5sums=('80944e2755ebb848451a77dc2ad0651b')
-sha256sums=('d641bb66d04461111b75f2fc37ad1eec764dcf326d98a51ac078695baea2ab3a')
+md5sums=('c8757c1b1e7c30b990ccd830fb655c64')
+sha256sums=('07e338621f9ab044ccf4fea784ff6c7ad92b03fc81c1c2b34d414675121bc6b2')
 
 build() {
   cd Zarith-release-${pkgver}
