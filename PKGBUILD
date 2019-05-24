@@ -46,7 +46,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=3942c205588b
+_patchrev=9c008b241362
 options=('!emptydirs')
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -238,7 +238,7 @@ md5sums=('SKIP'
          'd7ce23a18da21c05cd756766e177834f'
          '1fd3db31015977eb77960716d6d2dbe6'
          '270eed48793b9358702e7de6185c32be'
-         '73e7380641d8c3bf78a51ef2f95f69f2'
+         '8b24c694c259064b1296e7a1397c3aee'
          '4cd539459e253f53f631ccca51650a87'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3fa8bd22d97248de529780f5797178af'
