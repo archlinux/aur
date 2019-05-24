@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url='http://www.rutschle.net/tech/sslh.shtml'
 license=('GPL2')
 depends=('libcap' 'libconfig' 'libwrap' 'systemd')
-#makedepends=('git' 'pcre-static')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -29,11 +28,6 @@ pkgver() {
   cd $pkgname
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
-#prepare() {
-#  cd $pkgname
-#  sed -i 's|^\(ExecStart.*\) $DAEMON_OPTS|\1 -F/etc/sslh/sslh.cfg|' sslh\@.service
-#}
 
 build() {
   cd $pkgname
