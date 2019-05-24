@@ -1,0 +1,17 @@
+pkgbase = opencalphad-git
+	pkgdesc = A thermodynamic calculation code
+	pkgver = 5.041
+	pkgrel = 1
+	url = http://www.opencalphad.com
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	makedepends = git
+	makedepends = sed
+	depends = gcc-libs
+	conflicts = opencalphad
+	source = git+https://github.com/sundmanbo/opencalphad.git
+	sha256sums = SKIP
+
+pkgname = opencalphad-git
+
