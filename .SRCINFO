@@ -1,7 +1,7 @@
 pkgbase = yajhfc-pdf-plugin
 	pkgdesc = PDF Plugin for (Yet another Java HylaFAX client).
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.yajhfc.de/
 	arch = any
 	license = GPL3
