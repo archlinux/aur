@@ -3,14 +3,14 @@
 pkgname=python-textx
 _srcname=textX
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for building Domain-Specific Languages and parsers"
 arch=('any')
 url="http://textx.github.io/textX/"
 license=('MIT')
 depends=('python' 'python-arpeggio' 'python-click')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest-runner' 'python-jinja')
+checkdepends=('python-pytest-runner' 'python-pip' 'python-jinja')
 source=($pkgname-$pkgver.tar.gz::https://github.com/textX/$_srcname/archive/v$pkgver.tar.gz)
 md5sums=('cc4fe6d5db278477b15afd5d349c1cda')
 
