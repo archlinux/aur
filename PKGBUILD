@@ -4,12 +4,12 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=('python-inotify' 'python2-inotify')
 pkgver=0.2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Access inotify events via python (this is NOT related to python-pynotify!)"
-arch=( 'i686' 'x86_64' )
+arch=('any')
 url="https://pypi.python.org/pypi/inotify"
-license=( 'GPL2' )
-depends=( 'python' 'python2' )
+license=('GPL2')
+depends=('python' 'python-nose' 'python2' 'python2-nose')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 _pkgname=inotify
 install=
@@ -21,13 +21,13 @@ sha512sums=('d6ec9acbf4f2317cfe6b8caf9b00386bcaf2da0263089618f6856cc05ca9ec43582
             'SKIP')
 
 package_python-inotify() {
-	depends=('python')
+	depends=('python' 'python-nose')
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	python3 setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-inotify() {
-	depends=('python2')
+	depends=('python2' 'python2-nose')
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	python2 setup.py install --root="${pkgdir}" --optimize=1
 }
