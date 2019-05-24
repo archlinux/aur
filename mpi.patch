@@ -1,0 +1,26 @@
+--- configure	2019-05-24 15:48:39.590316691 +0300
++++ configure	2019-05-24 15:48:07.136424874 +0300
+@@ -970,15 +970,15 @@
+ #######################
+ $mpi_defines     = "-DVMDMPI ";
+ ## Argonne MPICH
+-$mpi_dir         = "/usr/lib64/mpich";
+-$mpi_include     = "-I/usr/include/mpich-x86_64";
+-$mpi_library     = "-L$mpi_dir/lib";
+-$mpi_libs        = "-lmpich";
++#$mpi_dir         = "/usr";
++#$mpi_include     = "-I/usr/include";
++#$mpi_library     = "-L$mpi_dir/lib";
++#$mpi_libs        = "-lmpicxx -lmpi";
+ ## OpenMPI
+-# $mpi_dir         = "/usr/lib64/openmpi";
+-# $mpi_include     = "-I/usr/include/openmpi-x86_64";
+-# $mpi_library     = "-L$mpi_dir/lib";
+-# $mpi_libs        = "-lmpi";
++$mpi_dir         = "/usr";
++$mpi_include     = "-I/usr/include";
++$mpi_library     = "-L$mpi_dir/lib/openmpi";
++$mpi_libs        = "-lmpi_cxx -lmpi";
+ ## OSU MVAPICH
+ # $mpi_dir         = "/usr/mpi/gcc/mvapich-1.0.0";
+ # $mpi_include     = "-I$mpi_dir/include";
