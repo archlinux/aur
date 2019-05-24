@@ -1,0 +1,16 @@
+pkgbase = perl-test-indistdir
+	pkgdesc = test environment setup for development with IDE
+	pkgver = 1.112071
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-InDistDir
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MITHALDU/Test-InDistDir-1.112071.tar.gz
+	md5sums = 41fd6a8f84b6c352927501705bc085b6
+	sha512sums = fb34181df5668ad460218cc26825bbdfd087047a84b20c2c665c020e9fc95b8040ccc48114f497bde55202231da9e7a1b8dc909806d1e230957f0e210ae61517
+
+pkgname = perl-test-indistdir
+
