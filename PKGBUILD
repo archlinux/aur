@@ -2,7 +2,7 @@
 
 pkgname=sail
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A universal workflow for reproducible, project-defined development environments.'
 arch=('x86_64')
 url="https://github.com/cdr/${pkgname}"
@@ -10,7 +10,6 @@ license=('MIT')
 makedepends=('go-pie')
 depends=('docker' 'git')
 optdepends=(
-  'chrome: For opening code-server in an app window.'
   'chromium: For opening code-server in an app window.'
 )
 
