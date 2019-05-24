@@ -1,0 +1,29 @@
+pkgbase = sslh-systemd-git
+	pkgdesc = Network port multiplexer. Allows sharing of HTTP, SSL, SSH, OpenVPN, tinc, XMPP, etc. on the same port
+	pkgver = 1.20.r37.g3822352
+	pkgrel = 1
+	url = http://www.rutschle.net/tech/sslh.shtml
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libcap
+	depends = libconfig
+	depends = libwrap
+	depends = systemd
+	provides = sslh
+	conflicts = sslh
+	backup = etc/sslh/sslh.cfg
+	source = sslh-systemd-git::git+https://github.com/matthewacon/sslh
+	source = sslh.cfg
+	source = sslh.sysusers
+	source = sslh@.service
+	source = sslh-select@.service
+	md5sums = SKIP
+	md5sums = d5405c7ca7e1813e4d49a473e5834640
+	md5sums = f39544277a30595d4b7476b3f87ebbcf
+	md5sums = 59d76639059db542a1ee975cccf8762c
+	md5sums = df50f93f12c4d50dce1b2fa5ec21fe85
+
+pkgname = sslh-systemd-git
+
