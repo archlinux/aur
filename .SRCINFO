@@ -1,6 +1,6 @@
 pkgbase = rua
 	pkgdesc = secure AUR helper written in Rust
-	pkgver = 0.13.8
+	pkgver = 0.13.9
 	pkgrel = 1
 	url = https://github.com/vn971/rua
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = rua
 	makedepends = cargo
 	depends = bubblewrap
 	depends = git
-	source = https://github.com/vn971/rua/archive/0.13.8.tar.gz
-	sha256sums = 71953f13c688701145286bb274ac1e8a278fda14a34dbcb2d855162c962a7fce
+	source = https://github.com/vn971/rua/archive/0.13.9.tar.gz
+	sha256sums = 42590153b15e726240a7308214ec6ea126a096d36aa02b0a45d9dbfda9455b0d
 
 pkgname = rua
 
