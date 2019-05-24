@@ -1,7 +1,7 @@
 pkgbase = libuninameslist
 	pkgdesc = Library with sparse array mapping for Unicode code points.
 	pkgver = 20190305
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fontforge/libuninameslist/
 	arch = x86_64
 	license = BSD
