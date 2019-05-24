@@ -1,1 +1,1 @@
-f /run/perflock 0555 root root -
+f /run/perflock 0666 root root -

@@ -11,7 +11,7 @@ pkgbase = perflock-git
 	source = git+https://github.com/mit-pdos/perflock.git
 	source = perflock.tmpfiles
 	md5sums = SKIP
-	md5sums = c2ca7dd3883d996d0bbb1638f5e7f041
+	md5sums = b9b34e13088f9f50e86206e1ae23fbe7
 
 pkgname = perflock-git
 

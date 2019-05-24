@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset
 pkgname=perflock-git
 pkgver=r7.eaf54d0
-pkgrel=1
+pkgrel=2
 pkgdesc="RWMutex for sharing of multicore machines"
 arch=('any')
 url="https://github.com/mit-pdos/perflock"
@@ -12,7 +12,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/mit-pdos/perflock.git' 'perflock.tmpfiles')
 md5sums=('SKIP'
-         'c2ca7dd3883d996d0bbb1638f5e7f041')
+         'b9b34e13088f9f50e86206e1ae23fbe7')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
