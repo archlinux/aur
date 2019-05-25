@@ -2,7 +2,7 @@
 
 pkgname=rescuetime2
 pkgver=2.14.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Application time-tracking for Linux. Stable version"
 arch=('i686' 'x86_64')
 url=https://www.rescuetime.com
