@@ -76,14 +76,13 @@ func prepareCmds(){
 }
 
 func buildCmd(line string) string {
-	line = " " + line + " "
 	for index, cmd := range cmdSlice {
-		if (strings.Contains(line, " " + cmd + " ")) {
-			line = strings.Replace(line, " " + cmd + " ", 
+		cmd = " " + cmd + " "
+		if (strings.Contains(line, cmd)) {
+			line = strings.Replace(line, cmd, 
 				" " + cmdList[index] + " ", -1)
 		}
 	}
-	fmt.Println("git" + line)
 	return "git" + line
 }
 
@@ -103,11 +102,10 @@ func startTerm() {
 			return
 		}
 		// Handle the execution of the input.
-		//gitCmd := 
-		buildCmd(line)
-		/*if retval := execCmd(gitCmd, true); len(retval) > 0 {
+		gitCmd := buildCmd(" " + line + " ")
+		if retval := execCmd(gitCmd, true); len(retval) > 0 {
 			fmt.Fprintln(os.Stderr, retval)
-		}*/
+		}
 	}
 }
 
