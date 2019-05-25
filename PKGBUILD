@@ -2,7 +2,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=omplapp
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Motion Planning Library App (OMPL.app) is an extended version
 of OMPL that adds support for mesh loading and collision checking along with a
 GUI"
@@ -11,13 +11,26 @@ url="http://ompl.kavrakilab.org/"
 license=('BSD')
 depends=('assimp'
          'boost'
+         'doxygen'
          'eigen'
          'fcl')
-optdepends=('doxygen'
+optdepends=('castxml'
+            'flann'
+            'graphviz'
+            'libccd'
+            'morse-simulator'
             'ode'
-            'pyqt'
+            'pqp'
+            'py++'
+            'pypy'
+            'python'
+            'python-celery'
+            'python-flask'
+            'python-numpy'
             'python-opengl'
-            'py++')
+            'python-pyqt5'
+            'spot'
+            'triangle')
 makedepends=('cmake')
 provides=(ompl)
 source=(https://bitbucket.org/ompl/ompl/downloads/omplapp-${pkgver}-Source.tar.gz)
