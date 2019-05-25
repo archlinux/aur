@@ -1,7 +1,7 @@
 pkgbase = buku
 	pkgdesc = Powerful command-line bookmark manager.
 	pkgver = 4.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jarun/Buku
 	arch = any
 	license = GPL3
@@ -17,6 +17,7 @@ pkgbase = buku
 	depends = python-cffi
 	depends = python-click
 	depends = python-flask-admin
+	depends = python-flask-api
 	depends = python-flask-bootstrap
 	depends = python-flask-paginate
 	depends = python-flask-wtf
