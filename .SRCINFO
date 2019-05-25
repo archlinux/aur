@@ -1,0 +1,15 @@
+pkgbase = python-moods
+	pkgdesc = Motif Occurrence Detection Suite
+	pkgver = 1.9.4.1
+	pkgrel = 1
+	url = https://github.com/jhkorhonen/MOODS
+	arch = any
+	license = Biopython
+	makedepends = python-setuptools
+	makedepends = swig
+	depends = python
+	source = https://github.com/jhkorhonen/MOODS/archive/v1.9.4.1.tar.gz
+	sha256sums = f7f522f341b99473d4aa0f95fdfcaef65d9d83866c7da3894c405b2ac14a4ae4
+
+pkgname = python-moods
+
