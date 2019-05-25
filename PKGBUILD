@@ -5,10 +5,10 @@
 
 pkgname=buku
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful command-line bookmark manager."
 arch=('any')
-depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'python-urllib3' 'python-certifi' 'python-html5lib')
+depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'python-urllib3' 'python-certifi' 'python-html5lib' 'python-appdirs' 'python-arrow' 'python-cffi' 'python-click' 'python-flask-admin' 'python-flask-bootstrap' 'python-flask-paginate' 'python-flask-wtf' 'python-idna' 'python-itsdangerous' 'python-jinja' 'python-markupsafe' 'python-packaging' 'python-pyasn1' 'python-pycparser' 'python-requests' 'python-six' 'python-werkzeug')
 makedepends=('make')
 url="https://github.com/jarun/Buku"
 license=('GPL3')
