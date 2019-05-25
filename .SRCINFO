@@ -1,7 +1,7 @@
 pkgbase = gns3-server
 	pkgdesc = GNS3 network simulator, Server package
 	pkgver = 2.1.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GNS3/gns3-server
 	install = gns3-server.install
 	arch = x86_64
