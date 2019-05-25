@@ -1,0 +1,26 @@
+From 39d17d5cd071887cea7b89ce63244920ddce8c3a Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Sat, 25 May 2019 15:43:42 +0200
+Subject: [PATCH] Insert source_dir before other directories in sys.path
+
+Currently the site-packages directory is searched first when importing kitchen.release, which can cause issues if the installed version of kitchen is broken. To fix this, insert source_dir first in sys.path.
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index e52e163..4de3370 100755
+--- a/setup.py
++++ b/setup.py
+@@ -43,7 +43,7 @@ elif sys.version_info[0] == 3:
+ else:
+     raise NotImplementedError("Python version unsupported %r" % sys.version)
+ 
+-sys.path.append(os.path.abspath(source_dir))
++sys.path.insert(1, os.path.abspath(source_dir))
+ 
+ # Now that we have modified sys.path, these imports will pull in either the py3
+ # version or the py2 version.
+-- 
+2.21.0
+
