@@ -1,0 +1,15 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  if (( "$(vercmp "$2" "0.r72.cca1186-1")" <= 0 )); then
+    cat << EOF || return 1
+
+The location of the configuration file has changed. Use
+
+  vimdiff /etc/sbupdate.conf /etc/default/sbupdate.pacsave
+
+or similar to merge the current configuration.
+
+EOF
+  fi
+}
