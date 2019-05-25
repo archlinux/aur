@@ -1,12 +1,12 @@
 # Maintainer: Lily Wilson <hotaru@thinkindifferent.net>
 pkgname=raspberrypi-userland-aarch64-git
-pkgver=r684.2e2899c
+pkgver=r688.517cdc3
 pkgrel=1
 pkgdesc="aarch64-compatible bits of /opt/vc for Raspberry Pi (vcgencmd, tvservice, etc.)" 
 arch=('aarch64')
 url="https://github.com/raspberrypi/userland"
 license=('custom')
-makedepends=('git')
+makedepends=('git' 'cmake')
 source=('git+https://github.com/raspberrypi/userland.git'
         'arm64.patch'
         'raspberrypi-userland.conf')
