@@ -1,0 +1,48 @@
+--- FreeDoko-orig/Makefile.install.directories	2019-05-25 14:37:35.282880167 +0200
++++ FreeDoko/Makefile.install.directories	2019-05-25 14:38:00.213169401 +0200
+@@ -4,14 +4,14 @@
+ # the different directories for the files
+ 
+ # installing in /usr/local
+-MAIN_DIRECTORY         = /usr/local
+-BIN_DIRECTORY          = $(MAIN_DIRECTORY)/games
+-DATA_DIRECTORY         = $(MAIN_DIRECTORY)/share/games/FreeDoko
+-HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/FreeDoko
+-MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
+-ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
+-LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
+-DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
++#MAIN_DIRECTORY         = /usr/local
++#BIN_DIRECTORY          = $(MAIN_DIRECTORY)/games
++#DATA_DIRECTORY         = $(MAIN_DIRECTORY)/share/games/FreeDoko
++#HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/FreeDoko
++#MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
++#ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
++#LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
++#DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
+ 
+ # debian
+ #MAIN_DIRECTORY         = /usr
+@@ -54,14 +54,14 @@
+ #DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
+ 
+ # Arch Linux
+-#MAIN_DIRECTORY         = /usr
+-#BIN_DIRECTORY          = $(MAIN_DIRECTORY)/bin
+-#DATA_DIRECTORY         = $(MAIN_DIRECTORY)/share/freedoko
+-#HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/freedoko
+-#MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
+-#ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
+-#LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
+-#DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
++MAIN_DIRECTORY         = /usr
++BIN_DIRECTORY          = $(MAIN_DIRECTORY)/bin
++DATA_DIRECTORY         = $(MAIN_DIRECTORY)/share/freedoko
++HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/freedoko
++MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
++ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
++LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
++DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
+ 
+ # Void Linux
+ #MAIN_DIRECTORY         = /usr
