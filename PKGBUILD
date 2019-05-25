@@ -1,6 +1,6 @@
 # Maintainer: Aurélien Ooms <aurelien.ooms@gmail.com>
 pkgname=memoize
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 epoch=
 pkgdesc="Cache executable calls"
