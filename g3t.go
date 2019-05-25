@@ -42,10 +42,32 @@ func execCmd(input string, stdout bool) string {
 	return ""
 }
 
+func searchInSlice(slice []string, query string) bool{
+	set := make(map[string]bool)
+	for _, v := range slice {
+		set[v] = true
+	}
+	return set[query]
+}
+
 func prepareCmds(){
 	cmdStr := execCmd("git help | grep '^  *[a-z]' | sed -e 's/^\\s*//' -e 's/ *[A-Z].*//'", false)
 	cmdList := strings.Split(cmdStr, "\n")
-	fmt.Println(cmdList)
+	var cmdSlice []string
+	for _, cmd := range cmdList {
+		if (len(cmd) > 0){
+			firstChar := string([]rune(cmd)[0])
+			if (!searchInSlice(cmdSlice, firstChar)){
+				cmdSlice = append(cmdSlice, firstChar)
+			}else{
+				cmdSlice = append(cmdSlice, string([]rune(cmd)[:2]))
+			}
+		}
+	}
+	for index, cmd := range cmdSlice {
+		fmt.Println(cmdList[index] + " -> " + cmd)
+	}
+	
 }
 
 func startTerm() {
