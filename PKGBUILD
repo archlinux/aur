@@ -7,7 +7,7 @@ pkgname=teensyduino
 pkgver=1.46
 _pkgver=1.46
 _arduino=1.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino SDK with Teensyduino"
 arch=('i686' 'x86_64')
 url="http://www.pjrc.com/teensy/teensyduino.html"
@@ -25,9 +25,9 @@ source=('arduino.xml'
         "http://www.pjrc.com/teensy/49-teensy.rules"
         'LICENSE')
 source_i686+=("http://downloads.arduino.cc/arduino-${_arduino}-linux32.tar.xz"
-              "http://www.pjrc.com/teensy/td_${_pkgver//./}/TeensyduinoInstall.linux32")
+              "TeensyduinoInstall_${_pkgver//./}_i686::http://www.pjrc.com/teensy/td_${_pkgver//./}/TeensyduinoInstall.linux32")
 source_x86_64+=("http://downloads.arduino.cc/arduino-${_arduino}-linux64.tar.xz"
-                "http://www.pjrc.com/teensy/td_${_pkgver//./}/TeensyduinoInstall.linux64")
+                "TeensyduinoInstall_${_pkgver//./}_x86_64::http://www.pjrc.com/teensy/td_${_pkgver//./}/TeensyduinoInstall.linux64")
 sha256sums=('473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68'
             '270b55353eb438d3790c7245e5ae16ff8bac9f98cfe927d6c9f2146a34499323'
             'SKIP'
@@ -38,17 +38,11 @@ sha256sums_i686=('f5cadd3467c183bf6f10bd981a84581fe9861cacfaad951f65f9a6f68c1a8a
 sha256sums_x86_64=('ea4ea81a9b9b67d6d9eb8d27c34590749f61c45cbb7da223031a6520938d64d3'
                    'f5e906731f771f97171edfb89299ab1e052f1224c380348db8f019f85e325ac1')
 
-if [ "$CARCH" == 'x86_64' ]; then
-  _bits=64
-elif [ "$CARCH" == 'i686' ]; then
-  _bits=32
-fi
-
 build() {
   msg2 "Installing Teensyduino"
 
-  chmod +x "TeensyduinoInstall.linux${_bits}"
-  ./TeensyduinoInstall.linux${_bits} --dir="${srcdir}/arduino-${_arduino}"
+  chmod +x "TeensyduinoInstall_${_pkgver//./}_${CARCH}"
+  ./TeensyduinoInstall_${_pkgver//./}_${CARCH} --dir="${srcdir}/arduino-${_arduino}"
 
   msg2 "Building Teensy Loader command line"
 
