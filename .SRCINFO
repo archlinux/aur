@@ -1,6 +1,6 @@
 pkgbase = airgeddon-git
 	pkgdesc = Multi-use bash script for Linux systems to audit wireless networks
-	pkgver = r1569.2fbc020
+	pkgver = r1572.47b7475
 	pkgrel = 1
 	url = https://github.com/v1s1t0r1sh3r3/airgeddon
 	arch = any
@@ -18,6 +18,7 @@ pkgbase = airgeddon-git
 	depends = sed
 	depends = wireless_tools
 	depends = xterm
+	depends = tmux
 	optdepends = asleap: Actively recover LEAP/PPTP passwords
 	optdepends = bettercap: Complete, modular, portable and easily extensible MITM framework
 	optdepends = bully: Retrieve WPA/WPA2 passphrase from a WPS enabled access point
