@@ -2,7 +2,7 @@
 # Contributor: lesebas < sebdeligny at gmail dot com>
 
 pkgname=ocaml-extlib
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="Extends the OCaml standard library"
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,7 +12,7 @@ depends=('ocaml')
 makedepends=('ocaml-findlib' 'cppo')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/ygrek/ocaml-extlib/archive/${pkgver}.tar.gz")
 options=('staticlibs')
-sha256sums=('28e36367a65b1a5886d09f6d535e73b4aa88076778594c62df653a2b1536e62d')
+sha256sums=('a1758f6a393100f0f7505883feb421149986569629bbe30d3507948582f86939')
 
 build() {
   cd ocaml-extlib-${pkgver}
