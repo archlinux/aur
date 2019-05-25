@@ -2,11 +2,11 @@
 
 pkgname=python-first
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Return the first true value of an iterable"
 url="https://github.com/hynek/first"
 license=('MIT')
-arch=('x86_64')
+arch=('any')
 depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner')
