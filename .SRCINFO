@@ -1,9 +1,9 @@
 pkgbase = idos-timetable-browser-license
 	pkgdesc = If you purchased IDOS for Windows by CHAPS, then this installs the license. You need your setup-code during installation.
 	pkgver = 2017_2018
-	pkgrel = 3
+	pkgrel = 1
 	epoch = 1
-	url = http://www.chaps.cz/eng/download/idos-install/
+	url = http://www.chaps.cz/eng/order
 	arch = i686
 	arch = x86_64
 	groups = idos-timetable

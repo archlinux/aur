@@ -1,16 +1,16 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2019-05-25.
 
 _pkgname=idos-timetable-browser-license
 pkgname="${_pkgname}"
 epoch=1
 _pkgver=2017_2018
 pkgver="${_pkgver}"
-pkgrel=3
+pkgrel=1
 pkgdesc="If you purchased IDOS for Windows by CHAPS, then this installs the license. You need your setup-code during installation."
 arch=('i686' 'x86_64')
-url="http://www.chaps.cz/eng/download/idos-install/"
+url="http://www.chaps.cz/eng/order"
 license=('custom')
 
 groups=(
