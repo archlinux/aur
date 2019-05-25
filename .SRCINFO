@@ -1,11 +1,13 @@
 pkgbase = maddy-git
 	pkgdesc = Fast, cross-platform mail server
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/emersion/maddy
 	install = maddy.install
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = go
 	provides = maddy
 	conflicts = maddy
 	backup = etc/maddy/maddy.conf
