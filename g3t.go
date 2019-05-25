@@ -51,7 +51,9 @@ func searchInSlice(slice []string, query string) bool{
 }
 
 func prepareCmds(){
-	cmdStr := execCmd("git help | grep '^  *[a-z]' | sed -e 's/^\\s*//' -e 's/ *[A-Z].*//'", false)
+	parseGitCmd := "git help | grep '^  *[a-z]' | sed -e 's/^\\s*//' " +
+					"-e 's/ *[A-Z].*//'"
+	cmdStr := execCmd(parseGitCmd, false)
 	cmdList := strings.Split(cmdStr, "\n")
 	var cmdSlice []string
 	for _, cmd := range cmdList {
@@ -60,7 +62,8 @@ func prepareCmds(){
 			if (!searchInSlice(cmdSlice, firstChar)){
 				cmdSlice = append(cmdSlice, firstChar)
 			}else{
-				cmdSlice = append(cmdSlice, string([]rune(cmd)[0]) + string([]rune(cmd)[len(cmd)/2])) 
+				cmdSlice = append(cmdSlice, string([]rune(cmd)[0]) + 
+					string([]rune(cmd)[len(cmd)/2])) 
 			}
 		}
 	}
