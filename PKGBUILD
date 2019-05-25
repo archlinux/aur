@@ -8,10 +8,15 @@ pkgdesc="Regulatory Genomics Toolbox"
 arch=('any')
 url=http://www.regulatory-genomics.org
 license=('custom')
-depends=('python' 'python-numpy' 'python-scipy' 'python-pysam' 'python-pybigwig' 'python-pyvcf')
+depends=('python' 'python-numpy' 'python-scipy' 'python-pysam' 'python-pybigwig' 'python-pyvcf' 'python-natsort' 'python-matplotlib' 'python-scikit-learn' 'python-matplotlib-venn' 'python-mpmath' 'python-htseq' 'python-hmmlearn' 'python-pyx' 'python-moods' 'python-fisher' 'python-biopython')
 makedepends=('python-setuptools')
 source=("https://github.com/CostaLab/${_pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('baccb00d00dd98a26954414f13fd6f8f7d4ac1f6b40d65177867237029477fcf')
+
+prepare() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  sed -i 's,pyBigWig==,pyBigWig>=,g' setup.py
+}
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

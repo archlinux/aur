@@ -12,6 +12,17 @@ pkgbase = python-rgt
 	depends = python-pysam
 	depends = python-pybigwig
 	depends = python-pyvcf
+	depends = python-natsort
+	depends = python-matplotlib
+	depends = python-scikit-learn
+	depends = python-matplotlib-venn
+	depends = python-mpmath
+	depends = python-htseq
+	depends = python-hmmlearn
+	depends = python-pyx
+	depends = python-moods
+	depends = python-fisher
+	depends = python-biopython
 	source = https://github.com/CostaLab/reg-gen/archive/0.12.1.tar.gz
 	sha256sums = baccb00d00dd98a26954414f13fd6f8f7d4ac1f6b40d65177867237029477fcf
 
