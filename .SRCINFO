@@ -1,16 +1,19 @@
 pkgbase = sleuthkit-java
 	pkgdesc = Java bindings for The Sleuth Kit.
-	pkgver = 4.6.5
-	pkgrel = 1
+	pkgver = 4.6.6
+	pkgrel = 0
 	url = http://www.sleuthkit.org/sleuthkit
 	arch = x86_64
 	license = CPL,
 	license = custom:"IBM Public Licence",
 	license = GPL2
+	makedepends = ant
 	depends = java-runtime
 	depends = sleuthkit
-	source = https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.6.5/sleuthkit-java_4.6.5-1_amd64.deb
-	md5sums = 0c9705ef3c1e90b53b48fc53a522e0a2
+	source = https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.6.6/sleuthkit-4.6.6.tar.gz
+	source = build-tmp-dir.patch
+	md5sums = 42a4aee67eed09fb03a29b757743cb5d
+	md5sums = 8a39286ec6585c5298073043af3b4dcf
 
 pkgname = sleuthkit-java
 
