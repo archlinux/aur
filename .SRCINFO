@@ -1,6 +1,6 @@
 pkgbase = oidn
 	pkgdesc = Intel(R) Open Image Denoise library
-	pkgver = 0.8.2
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = http://www.openimagedenoise.org/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = oidn
 	makedepends = cmake
 	depends = intel-tbb
 	depends = python
-	source = oidn::git+https://github.com/OpenImageDenoise/oidn.git#tag=v0.8.2
+	source = oidn::git+https://github.com/OpenImageDenoise/oidn.git#tag=v0.9.0
 	source = git+https://github.com/OpenImageDenoise/mkl-dnn.git
 	source = git+https://github.com/OpenImageDenoise/oidn-weights.git
 	md5sums = SKIP
