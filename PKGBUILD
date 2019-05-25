@@ -21,8 +21,8 @@ source=($pkgname::'git+https://github.com/matthewacon/sslh'
 md5sums=('SKIP'
          'd5405c7ca7e1813e4d49a473e5834640'
          'f39544277a30595d4b7476b3f87ebbcf'
-         '59d76639059db542a1ee975cccf8762c'
-         'df50f93f12c4d50dce1b2fa5ec21fe85')
+         '97b214f91f02e42269cb858dfc51bef2'
+         '75a0056c919dc644910c4b36d7bd9e6f')
 
 pkgver() {
   cd $pkgname
