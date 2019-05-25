@@ -1,6 +1,6 @@
 # Maintainer: Brennan Thews <brennan.thews@pm.me>
 pkgname=everdo
-pkgver=1.2.14
+pkgver=1.2.15
 pkgrel=1
 pkgdesc="The Perfect App for GTD / Getting Things Done"
 arch=('x86_64')
@@ -43,4 +43,4 @@ package() {
                       "${pkgdir}${icons_dir}/${pkgname}.png"
     done
 }
-md5sums=('55764b0834b0eff3e05134186441670b')
+md5sums=('2c24fab9bba10dd431b25f7586d97b63')
