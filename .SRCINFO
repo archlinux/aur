@@ -1,7 +1,7 @@
 pkgbase = sile
 	pkgdesc = Modern typesetting system inspired by TeX
 	pkgver = 0.9.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.sile-typesetter.org/
 	arch = i386
 	arch = x86_64
@@ -18,10 +18,8 @@ pkgbase = sile
 	depends = lua-sec
 	depends = lua-zlib
 	depends = ttf-gentium-plus
-	source = https://github.com/simoncozens/sile/archive/v0.9.5.1.tar.gz
-	source = https://github.com/simoncozens/libtexpdf/archive/50f0d788c358eb6e1953185f91817f885dc19649.tar.gz
-	sha512sums = b716a880aa610977d54a8086aac8e31e1b17e16a315e460efd0b732c4f4c82bb6cc616c485f0abd18e446317708c3349c69be0f2be19ae8cbe3321630c9c37c4
-	sha512sums = 4dd2df1ff4027634f8c5e4ccbfb661229c0f6bf7e4f8e739dcb737f0af0d30570d92321781ab34e61a2f660c225715e569506b825a83744c244dfe9a956c8727
+	source = https://github.com/simoncozens/sile/releases/download/v0.9.5.1/sile-0.9.5.1.tar.bz2
+	sha512sums = 7d83e7737668471f637a59036abe029299148783f87e29e3dd2833d02038bf1aecdf6fc35e36569eaba2cc18f9049d49257a03af4fbab6bceea7898fcb8508d1
 
 pkgname = sile
 
