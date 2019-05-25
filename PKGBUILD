@@ -1,11 +1,11 @@
 pkgname=google-chinese-handwriting-ime
-pkgver=3.0.7
+pkgver=3.0.8
 pkgrel=1
 pkgdesc="Chinese handwriting IME powered by Google Translate. MacOS style touchpad writing is supported. Written in Electron for Linux."
 arch=('x86_64')
 url="https://github.com/Saren-Arterius/google-chinese-handwriting-ime"
 depends=('xdotool' 'xorg-xinput' 'python-pyperclip' 'yarn' 'evtest' 'gconf' 'unclutter')
-_commit=17ddce8c385014530d38b117b27b6b61133f5bec # tags/v3.0.7
+_commit=36844c09835eb0d1d8d29639237a50360cfc1ce8
 source=(
   "git+https://github.com/Saren-Arterius/google-chinese-handwriting-ime.git#commit=$_commit" 
   'google-chinese-handwriting-ime.desktop'
