@@ -7,8 +7,8 @@
 # Contributor: zman0900 <zman0900@gmail.com>
 
 pkgname=freshplayerplugin
-pkgver=0.3.9
-pkgrel=2
+pkgver=0.3.11
+pkgrel=1
 pkgdesc='PPAPI-host NPAPI-plugin adapter.'
 arch=('i686' 'x86_64')
 url='https://github.com/i-rinat/freshplayerplugin'
@@ -18,16 +18,11 @@ depends=('alsa-lib' 'cairo' 'ffmpeg' 'freetype2' 'glib2' 'icu' 'jack'
          'libxcursor' 'libxrandr' 'libxrender' 'openssl' 'pango'
          'v4l-utils' 'pepper-flash')
 makedepends=('libdrm' 'cmake' 'ragel')
-source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz"
-        "use-AV-prefixed-macros.patch")
-sha1sums=('fc7ba6b860a126de15a6f26c2835a437774161e0'
-          '02bee874ade2aa8d679fd593618254e1b9f703c3')
+source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
+sha1sums=('55d43f0c045cc0b16aed1c39fc8aab6aba1e8c98')
 
 prepare() {
   mkdir -p ${pkgname}-${pkgver}/build
-
-  cd ${pkgname}-${pkgver}
-  patch -p1 -i "${srcdir}/use-AV-prefixed-macros.patch"
 }
 
 build() {
