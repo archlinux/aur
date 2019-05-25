@@ -1,7 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=luxcorerender
 pkgver=2.2
-_rel="alpha1"
+_rel="beta1"
 [ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
 pkgrel=1
 epoch=1
@@ -20,7 +20,7 @@ source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${_pkgver}
         "glfw.patch"
         "boost016900_serialization.patch"
         )
-md5sums=('028c799d069db672056deb81802a282d'
+md5sums=('550a4981ec8c1a0c81bf91c6f5ea83f2'
          '8e2fd7337fe6afaf5b2801426837f600'
          'e2a20172b7b7ac92a7002b6218afe327'
          '52f097678654151e2b5427d271a7e69d')
