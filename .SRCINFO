@@ -1,0 +1,13 @@
+pkgbase = vim-wolfram
+	pkgdesc = Syntax Highlighting for Wolfram Language in Vim
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/arnoudbuzing/wolfram-vim
+	arch = x86_64
+	license = None
+	makedepends = git
+	source = git+https://github.com/arnoudbuzing/wolfram-vim.git
+	sha256sums = SKIP
+
+pkgname = vim-wolfram
+
