@@ -1,14 +1,14 @@
 # Maintainer: Ryan Suchocki <ryan <at> ryansuchocki <dot> co <dot> uk>
 pkgname=microscheme
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A Scheme subset designed for Atmel microcontrollers, especially as found on Arduino boards"
 arch=('any')
 url="http://microscheme.org"
 license=('MIT')
 groups=()
 depends=('glibc' 'avr-gcc' 'avr-libc' 'avrdude')
-makedepends=('vim')
+makedepends=('xxd')
 optdepends=()
 provides=()
 conflicts=()
