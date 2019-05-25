@@ -3,14 +3,14 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.0.6'
+pkgver='0.0.7'
 pkgrel='1'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
 license=('GPL3+')
 groups=()
-depends=('libevdev' 'hidapi' 'systemd-libs')
+depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus')
 makedepends=('git' 'rust')
 checkdepends=()
 optdepends=()
@@ -62,6 +62,8 @@ package() {
   install -m 644 "support/systemd/eruption.preset" "$pkgdir/usr/lib/systemd/system-preset/"
 
   install -m 644 "support/udev/99-eruption-roccat-vulcan.rules" "$pkgdir/usr/lib/udev/rules.d/"
+
+  install -m 644 "support/dbus/org.eruption.control.conf" "$pkgdir/etc/dbus-1/system.d/"
 
   install -m 644 "support/man/eruption.8" "$pkgdir/usr/share/man/man8/"
   install -m 644 "support/man/eruption.conf.5" "$pkgdir/usr/share/man/man5/"

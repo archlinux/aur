@@ -1,5 +1,6 @@
 post_install() {	
     systemctl preset eruption
+    systemctl reload dbus.service
     udevadm control --reload-rules
 }
 
