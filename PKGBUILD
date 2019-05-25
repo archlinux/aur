@@ -18,5 +18,5 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 target/release/kytan "$pkgdir/usr/bin/kytan"
 }
