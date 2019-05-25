@@ -73,6 +73,10 @@ func prepareCmds(){
 	
 }
 
+func buildCmd(line string) string {
+	return "git " + line
+}
+
 func startTerm() {
 	term, err := terminal.NewWithStdInOut()
 	if err != nil {
@@ -89,7 +93,8 @@ func startTerm() {
 			return
 		}
 		// Handle the execution of the input.
-		if retval := execCmd("git " + line, true); len(retval) > 0 {
+		gitCmd := buildCmd(line)
+		if retval := execCmd(gitCmd, true); len(retval) > 0 {
 			fmt.Fprintln(os.Stderr, retval)
 		}
 	}
@@ -97,5 +102,5 @@ func startTerm() {
 
 func main() {
 	prepareCmds()
-	//startTerm()
+	startTerm()
 }
