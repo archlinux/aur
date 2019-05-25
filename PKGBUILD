@@ -1,8 +1,8 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=udr-git
-pkgver=v0.9.4.r11.g7885528
-pkgrel=3
+pkgver=v0.9.4.r20.g49ca8b5
+pkgrel=2
 pkgdesc="A UDT wrapper for rsync that improves throughput of large dataset transfers over long distances."
 arch=('i686' 'x86_64')
 url="https://github.com/LabAdvComp/UDR"
@@ -17,6 +17,11 @@ md5sums=('SKIP')
 pkgver() {
   cd UDR
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd UDR
+  curl -L https://github.com/martinetd/UDR/commit/d65038fab5a35a446d5e17274a28ece64ad8c3c2.patch | patch -p1
 }
 
 build() {
