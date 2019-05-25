@@ -1,5 +1,6 @@
-#
 # Maintainer: Guilhelm Savin <aur@gsav.in>
+# Maintainer: Jake <aur@ja-ke.tech>
+#
 # Upstream URL: https://github.com/platformio/platformio
 #
 # For improvements/fixes to this package, please send a pull request:
@@ -7,7 +8,7 @@
 #
 
 pkgname=platformio
-pkgver=3.6.3
+pkgver=3.6.7
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
@@ -26,7 +27,7 @@ depends=('python2'
          'python2-setuptools')
 conflicts=('platformio-git')
 source=("https://github.com/platformio/platformio-core/archive/v${pkgver}.tar.gz")
-sha256sums=('dc6316cf6eaa03594ce7f82c5e42fd46bb92cf46af4bdb52fd6dc429badc030e')
+sha256sums=('0486cf72c02ade8ce26643c33784f8f801860c7c5149f5a511a6dedcee341869')
 
 package() {
     cd "$srcdir/platformio-core-$pkgver"
