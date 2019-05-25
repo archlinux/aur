@@ -1,13 +1,13 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # Maintainer: Alex Dahl <adahl1@umbc.edu>
 _name="partio"
-_fragment="#tag=v1.7.3"
+_fragment="#tag=v1.7.4"
 pkgname=${_name}
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Particle IO and manipulation library"
 arch=(i686 x86_64)
-url="http://www.disneyanimation.com/technology/partio.html"
+url="https://www.disneyanimation.com/technology/partio.html"
 license=('custom')
 depends=('glut' 'glu' 'seexpr')
 optdepends=('python2: Python interface support'
