@@ -20,7 +20,6 @@ arch:
   # arch/aur packages
 # - python
 # - perl
-  - python-pyside-tools
   script:
 # - "sudo pacman -Sy"
   - "makepkg -s --noconfirm TRAVIS=1"

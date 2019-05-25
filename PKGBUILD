@@ -8,8 +8,8 @@ url="https://www.luxcorerender.org/"
 license=('Apache')
 depends=(openimageio boost-libs blosc embree glfw-x11 gtk3 oidn opencl-icd-loader)
 optdepends=("opencl-driver: for gpu acceleration"
-            "python-pyside: for pyluxcoretools gui")
-makedepends=(boost git doxygen cmake python-pyside-tools opencl-headers)
+            "pyside2: for pyluxcoretools gui")
+makedepends=(boost git doxygen cmake pyside2-tools opencl-headers)
 conflicts=(luxrays-hg luxcorerender)
 provides=(luxrays luxcorerender)
 options=('!buildflags')
