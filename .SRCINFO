@@ -1,17 +1,17 @@
-pkgbase = libtcod-hg
+pkgbase = libtcod-git
 	pkgdesc = Roguelike graphics/utility library. Development version.
-	pkgver = r423.f164d6bb25a4
+	pkgver = 1.12.2.r0.gde3b645
 	pkgrel = 1
-	url = https://bitbucket.org/libtcod/libtcod
+	url = https://github.com/libtcod/libtcod
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = mercurial
+	makedepends = git
 	depends = sdl2
 	provides = libtcod
 	conflicts = libtcod
-	source = hg+https://bitbucket.org/libtcod/libtcod
+	source = git+https://github.com/libtcod/libtcod
 	md5sums = SKIP
 
-pkgname = libtcod-hg
+pkgname = libtcod-git
 
