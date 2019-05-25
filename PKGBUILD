@@ -4,7 +4,7 @@
 
 pkgname=signal-web-gateway-git
 pkgver=0.1
-pkgrel=3
+pkgrel=5
 pkgdesc="Use Signal as a web gateway for other apps (reporting, monitoring, etc.)"
 arch=('x86_64')
 url="https://gitlab.com/morph027/signal-web-gateway"
@@ -17,6 +17,7 @@ sha512sums=('SKIP'
 install="signal-web-gateway.install"
 conflicts=("signal-web-gateway")
 provides=("signal-web-gateway")
+backup=("etc/webapps/signal-web-gateway/config.yml")
 
 #pkgver() {
 #  cd "textsecure"
@@ -26,6 +27,7 @@ provides=("signal-web-gateway")
 prepare() {
   export GOPATH="${srcdir}"
   mkdir -p "${srcdir}/src/github.com/morph027"
+  rm -r "${srcdir}/src/github.com/morph027/textsecure"
   mv "${srcdir}/textsecure" "${srcdir}/src/github.com/morph027/textsecure"
   cd "${srcdir}/src/github.com/morph027/textsecure"
   go get -v
