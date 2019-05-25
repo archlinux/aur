@@ -1,0 +1,15 @@
+pkgbase = python-fisher
+	pkgdesc = Fishers Exact Test
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/brentp/fishers_exact_test
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	source = fishers_exact_test-0.1.5.tar.gz::https://github.com/brentp/fishers_exact_test/archive/c8af5911e668a73e566fa4adee18ccba1a327d02.tar.gz
+	sha256sums = 8e5fd217d87ff711a891919a84097f18ff42904270f477b4e4251ef6f82d44cb
+
+pkgname = python-fisher
+
