@@ -1,7 +1,7 @@
 pkgbase = libsbml
 	pkgdesc = XML-based description language for computational models in systems biology
 	pkgver = 5.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sbml.org/Software/libSBML
 	arch = i686
 	arch = x86_64
