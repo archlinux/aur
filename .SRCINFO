@@ -1,7 +1,7 @@
 pkgbase = cufflinks
 	pkgdesc = Cufflinks assembles transcripts, estimates their abundances, and tests for differential expression and regulation in RNA-Seq samples..
 	pkgver = 2.2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://cole-trapnell-lab.github.io/projects/cufflinks/
 	arch = x86_64
 	license = Artistic
