@@ -2,7 +2,7 @@
 pkgname=luxcorerender-git
 pkgver=2.2alpha1.r11.gb1b91b90f
 pkgrel=1
-pkgdesc="LuxCoreRender is a physically correct, unbiased rendering engine."
+pkgdesc="LuxCoreRender: a physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
 license=('Apache')
@@ -38,6 +38,14 @@ prepare() {
 build() {
   cd ${srcdir}/LuxCore
   mkdir -p build && cd build
+  ((TRAVIS)) && {
+    suppress_warnings="-Wno-implicit-fallthrough -Wno-class-memaccess"
+    CFLAGS="$CFLAGS $suppress_warnings"
+    CXXFLAGS="$CXXFLAGS $suppress_warnings"
+  }
+  msg "cflags=\"$CFLAGS\""
+  msg "cxxflags=\"$CXXFLAGS\""
+
   cmake -DPYTHON_V=3 ..
   make
 }
