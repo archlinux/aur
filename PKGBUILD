@@ -2,7 +2,7 @@
 
 _pkgname=sslh
 pkgname=$_pkgname-systemd-git
-pkgver=1.20.r37.g3822352
+pkgver=1.20
 pkgrel=1
 pkgdesc="Network port multiplexer. Allows sharing of HTTP, SSL, SSH, OpenVPN, tinc, XMPP, etc. on the same port"
 arch=('i686' 'x86_64')

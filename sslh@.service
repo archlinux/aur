@@ -1,13 +1,10 @@
 [Unit]
 Description=SSL/SSH multiplexer (fork mode) for %I
-Conflicts=sslh-select@%I.service
-Requires=sslh@%I.socket
-PartOf=sslh@%I.socket
 After=network.target
 
 [Service]
 EnvironmentFile=/etc/conf.d/sslh
-ExecStart=/usr/bin/sslh-fork -F/etc/sslh/%I.cfg -f -v 
+ExecStart=/usr/bin/sslh-fork -f -F/etc/sslh/%I.cfg
 KillMode=process
 ProtectSystem=strict
 ProtectHome=true

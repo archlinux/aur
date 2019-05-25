@@ -1,13 +1,10 @@
 [Unit]
 Description=SSL/SSH multiplexer (select mode) for %I
-Conflicts=sslh@%I.service
-Requires=sslh@%I.socket
-PartOf=sslh@%I.socket
 After=network.target
 
 [Service]
 EnvironmentFile=/etc/conf.d/sslh
-ExecStart=/usr/bin/sslh-select -F/etc/sslh/%I.cfg -f -v 
+ExecStart=/usr/bin/sslh-select -f -F/etc/sslh/%I.cfg
 KillMode=process
 ProtectSystem=strict
 ProtectHome=true
