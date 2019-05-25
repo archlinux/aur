@@ -1,0 +1,36 @@
+sudo: required
+
+branches:
+  only:
+  - master
+
+cache:
+  directories:
+  - src
+# - AUR-repo
+
+services:
+- docker
+
+arch:
+  repos:
+# - papyros=http://dash.papyros.io/repos/$repo/$arch
+  - bartus=https://github.com/bartoszek/AUR-repo/raw/master
+  packages:
+  # arch/aur packages
+# - python
+# - perl
+  script:
+# - "sudo pacman -Sy"
+  - "makepkg -se --noconfirm"
+
+script:
+- "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
+- "ls $(pwd)"
+
+deploy:
+  provider: script
+  script: bash .travis_deploy.sh
+  on:
+    branch: master
+  skip_cleanup: true
