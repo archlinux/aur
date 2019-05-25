@@ -9,6 +9,7 @@ url="https://github.com/ozeidan/gosearch"
 arch=('x86_64')
 license=('GPL3')
 makedepends=(go git)
+depends=('linux>=5.1')
 provides=("${pkgname%-git}")
 conflicts=("${provides[@]}")
 source=("${pkgname}::git+${url}")

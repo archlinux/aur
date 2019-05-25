@@ -8,6 +8,7 @@ pkgbase = gosearch-git
 	license = GPL3
 	makedepends = go
 	makedepends = git
+	depends = linux>=5.1
 	provides = gosearch
 	conflicts = gosearch
 	source = gosearch-git::git+https://github.com/ozeidan/gosearch
