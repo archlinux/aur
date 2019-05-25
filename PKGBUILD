@@ -2,13 +2,13 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epgsearch
-pkgver=2.4.0.r0.g84b59b8
-_gitver=84b59b81137887a48533cc897551bccf2e9e10f6
+pkgver=2.4.0.r6.g770de32
+_gitver=770de32f1908b1f9c60f66bf288a4c8a03f97d52
 _vdrapi=2.4.0
 epoch=1
 pkgrel=1
 pkgdesc="Searchtimer and replacement of the VDR program menu"
-url="http://winni.vdr-developer.org/epgsearch"
+url="https://projects.vdr-developer.org/projects/plg-epgsearch"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
