@@ -1,56 +1,31 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
-_name=PyVCF
-pkgbase='python-pyvcf'
-pkgname=('python-pyvcf' 'python2-pyvcf')
+pkgname=python-pyvcf
+_pkgname=PyVCF
 pkgver=0.6.8
-pkgrel=2
-pkgdesc="A Variant Call Format reader for Python"
+_commit_hash=bfcedb9bad1a14074ac4526ffdb610611e073810
+pkgrel=1
+pkgdesc="Variant Call Format (VCF) parser for Python"
 arch=('any')
-url=https://pypi.python.org/pypi/"${_name}"
-license=('custom:population-genetics-technologies')
-makedepends=(
-  'python' 'python-setuptools' 'cython'
-  'python2' 'python2-setuptools' 'cython2')
-options=(!emptydirs)
-source=(
-  https://raw.githubusercontent.com/jamescasbon/PyVCF/476169cd457ba0caa6b998b301a4d91e975251d9/LICENSE
-  "${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/20/b6/36bfb1760f6983788d916096193fc14c83cce512c7787c93380e09458c09/PyVCF-0.6.8.tar.gz
-)
-sha256sums=(
-  'f4a2bc89af6b660958705e9f5e47ed5ebf31690101b121b9016b807ee1967e6a'
-  'e9d872513d179d229ab61da47a33f42726e9613784d1cb2bac3f8e2642f6f9d9'
-)
+url=https://pyvcf.readthedocs.io/en/latest/index.html
+license=('custom')
+depends=('python')
+makedepends=('python-setuptools')
+#source=("https://github.com/jamescasbon/${_pkgname}/archive/${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/jamescasbon/PyVCF/archive/${_commit_hash}.tar.gz")
+sha256sums=('be575aa7d21b8ef6029b513c5d0d4e3abde57d16cf5ca55ccb2122f54209c511')
 
-prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
-}
-
-build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
+build() {
+  #cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$_commit_hash"
   python setup.py build
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
 }
 
-package_python2-pyvcf() {
-  depends=('python2')
 
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-
-  mv "${pkgdir}"/usr/bin/vcf_melt "${pkgdir}"/usr/bin/vcf_melt2
-  for script in "${pkgdir}"/usr/bin/*.py; do
-    mv "${script}" "${pkgdir}"/usr/bin/$(basename "${script%.py}2.py")
-  done
+package(){
+  #cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$_commit_hash"
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-package_python-pyvcf() {
-  depends=('python')
-
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-}
+# vim:ts=2:sw=2:et:
