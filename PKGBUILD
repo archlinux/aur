@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=9.0.0_r317352.21efe2afed7
+pkgver=9.0.0_r317391.9a33dc9fb82
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -109,8 +109,8 @@ package_llvm-minimal-git() {
     pkgdesc="Collection of modular and reusable compiler and toolchain technologies"
     depends=(llvm-libs-minimal-git=$pkgver-$pkgrel  'perl')
     optdepends=('python-setuptools: for using lit (LLVM Integrated Tester)')
-    conflicts=('llvm' compiler-rt-minimal-git clang-minimal-git)
-    provides=(llvm=$pkgver-$pkgrel lone_wolf-llvm-git)
+    conflicts=('llvm' compiler-rt clang)
+    provides=(llvm=$pkgver-$pkgrel compiler-rt=$pkgver-$pkgrel clang=$pkgver-$pkgrel lone_wolf-llvm-git)
     replaces=(lone_wolf-llvm-git)
 
     cd _build
