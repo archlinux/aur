@@ -2,7 +2,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=omplapp
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The Open Motion Planning Library App (OMPL.app) is an extended version
 of OMPL that adds support for mesh loading and collision checking along with a
 GUI"
@@ -22,6 +22,7 @@ optdepends=('castxml'
             'ode'
             'pqp'
             'py++'
+            'pygccxml'
             'pypy'
             'python'
             'python-celery'
