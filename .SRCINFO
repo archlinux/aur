@@ -1,7 +1,7 @@
 pkgbase = perl-data-validate-ip
 	pkgdesc = IPv4 and IPv6 validation methods
 	pkgver = 0.27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Data-Validate-IP
 	arch = any
 	license = GPL
