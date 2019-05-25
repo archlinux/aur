@@ -1,15 +1,15 @@
 pkgbase = plasma-theme-helium
-	pkgdesc = Helium is a clear / white theme designed from scratch for Plasma 5
+	pkgdesc = A translucent theme for Plasma 5.
 	pkgver = 9.1.0
-	pkgrel = 2
-	url = https://github.com/mcder3/Helium-Plasma-Theme
+	pkgrel = 3
+	url = https://www.opendesktop.org/p/998869/
 	arch = any
 	license = custom:Creative Commons
 	depends = plasma-workspace
 	provides = plasma-theme-helium
 	conflicts = plasma-theme-helium-git
 	options = !strip
-	source = https://dl.opendesktop.org/api/files/download/id/1553266692/s/16c801c070301541d3f0f38373aa3520498831b323f0c8104041e624c8acd55572a8d6269746ada91d5bcac65eb71e8ad34e97e4d00bb563f5bf2bdb4be11125/t/1558127643/lt/download/Helium.tar.gz
+	source = file://Helium.tar.gz
 	md5sums = SKIP
 
 pkgname = plasma-theme-helium
