@@ -1,12 +1,11 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='tablet-mode'
-_upstream_name='tablet-switch'
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools to toggle a convertible laptop between laptop and tablet mode'
 arch=('any')
-url="https://github.com/coNQP/${_upstream_name}"
+url="https://github.com/coNQP/${pkgname}"
 license=('GPLv3')
 depends=('adwaita-icon-theme' 'evtest' 'libnotify' 'python' 'sudo' 'systemd')
 makedepends=('git')
@@ -15,7 +14,7 @@ md5sums=('SKIP')
 
 
 package() {
-    cd "${_upstream_name}"
+    cd "${pkgname}"
     install -Dm 755 setsysmode "${pkgdir}/usr/bin/setsysmode"
     install -Dm 755 sysmoded "${pkgdir}/usr/bin/sysmoded"
     install -dm 755 "${pkgdir}/etc"
