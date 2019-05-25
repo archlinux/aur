@@ -1,33 +1,26 @@
-# Maintainer: luke bonham <dada [at] archlinux [dot] info>
+# Maintainer: Luca CPZ <luca.cpz [at] gmail [dot] com>
 
-pkgname=awesome-freedesktop-git
+_pkgname=awesome-freedesktop
+pkgname=$_pkgname-git
 pkgcom=105
 pkgsha=6951b09
 pkgver=$pkgcom.$pkgsha
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org menu and desktop icons support for Awesome WM"
 arch=("any")
-url="https://github.com/lcpz/awesome-freedesktop"
+url="https://github.com/lcpz/$_pkgname"
 license=("GPL2")
 depends=("awesome")
-makedepends=("git")
-provides=("awesome-freedesktop")
-conflicts=("awesome-freedesktop")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 sha256sums=("SKIP")
-source=("awesome-freedesktop-${pkgver}.zip::https://github.com/lcpz/awesome-freedesktop/archive/$pkgsha.zip")
+source=("$_pkgname-${pkgver}.zip::https://github.com/lcpz/$_pkgname/archive/$pkgsha.zip")
 
 prepare() {
-    mv "awesome-freedesktop-$pkgsha"* freedesktop
+    mv "$_pkgname-$pkgsha"* $_pkgname
 }
 
 package() {
-    # check if awesome is stable or git
-    if [ -d "/usr/share/awesome/lib/" ]; then
-        aw_path="$pkgdir/usr/share/awesome/lib"
-    else
-        aw_path="$pkgdir/usr/local/share/awesome/lib"
-    fi
-
-    install -dm755 "$aw_path/freedesktop"
-    cp -a freedesktop $aw_path
+    install -dm755 "$pkgdir/usr/share/lua/5.3/$_pkgname/"
+    install -m644 $_pkgname/{LICENSE,README.rst,*.lua} "$pkgdir/usr/share/lua/5.3/$_pkgname"
 }

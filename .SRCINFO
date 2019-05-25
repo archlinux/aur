@@ -1,11 +1,10 @@
 pkgbase = awesome-freedesktop-git
 	pkgdesc = Freedesktop.org menu and desktop icons support for Awesome WM
 	pkgver = 105.6951b09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lcpz/awesome-freedesktop
 	arch = any
 	license = GPL2
-	makedepends = git
 	depends = awesome
 	provides = awesome-freedesktop
 	conflicts = awesome-freedesktop
