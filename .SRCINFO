@@ -1,7 +1,7 @@
 pkgbase = mollyguardctl
-	pkgdesc = Yet another mirror list optimization tool
+	pkgdesc = Guards your system from accidental reboots and shutdowns
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coNQP/mollyguardctl
 	arch = any
 	license = GPLv3

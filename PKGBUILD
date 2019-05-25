@@ -2,8 +2,8 @@
 
 pkgname='mollyguardctl'
 pkgver=1.0.1
-pkgrel=1
-pkgdesc='Yet another mirror list optimization tool'
+pkgrel=2
+pkgdesc='Guards your system from accidental reboots and shutdowns'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
 license=('GPLv3')
