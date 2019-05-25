@@ -50,12 +50,14 @@ func searchInSlice(slice []string, query string) bool{
 	return set[query]
 }
 
+var cmdSlice, cmdList []string
+
+
 func prepareCmds(){
 	parseGitCmd := "git help | grep '^  *[a-z]' | sed -e 's/^\\s*//' " +
 					"-e 's/ *[A-Z].*//'"
 	cmdStr := execCmd(parseGitCmd, false)
-	cmdList := strings.Split(cmdStr, "\n")
-	var cmdSlice []string
+	cmdList = strings.Split(cmdStr, "\n")
 	for _, cmd := range cmdList {
 		if (len(cmd) > 0){
 			firstChar := string([]rune(cmd)[0])
@@ -74,7 +76,15 @@ func prepareCmds(){
 }
 
 func buildCmd(line string) string {
-	return "git " + line
+	line = " " + line + " "
+	for index, cmd := range cmdSlice {
+		if (strings.Contains(line, " " + cmd + " ")) {
+			line = strings.Replace(line, " " + cmd + " ", 
+				" " + cmdList[index] + " ", -1)
+		}
+	}
+	fmt.Println("git" + line)
+	return "git" + line
 }
 
 func startTerm() {
@@ -93,10 +103,11 @@ func startTerm() {
 			return
 		}
 		// Handle the execution of the input.
-		gitCmd := buildCmd(line)
-		if retval := execCmd(gitCmd, true); len(retval) > 0 {
+		//gitCmd := 
+		buildCmd(line)
+		/*if retval := execCmd(gitCmd, true); len(retval) > 0 {
 			fmt.Fprintln(os.Stderr, retval)
-		}
+		}*/
 	}
 }
 
