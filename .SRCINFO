@@ -1,6 +1,6 @@
 pkgbase = sandpolis-git
 	pkgdesc = Ultimate remote management utility
-	pkgver = r351.b31f2ec
+	pkgver = r509.4a6d3e8
 	pkgrel = 1
 	url = https://github.com/Subterranean-Security/Sandpolis
 	arch = any
