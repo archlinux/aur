@@ -1,6 +1,6 @@
 pkgbase = agensgraph-git
 	pkgdesc = A multi-model graph database based on PostgreSQL.
-	pkgver = 1.3.1.r524.a46722f3
+	pkgver = 2.1.1.r494.6122dd6c
 	pkgrel = 1
 	url = http://bitnine.net/agensgraph/
 	install = postgresql.install
@@ -8,7 +8,7 @@ pkgbase = agensgraph-git
 	arch = x86_64
 	license = Apache
 	makedepends = tcl
-	makedepends = java-environment-jdk>=7
+	makedepends = jdk8-openjdk
 	depends = libxml2
 	depends = readline
 	depends = zlib
@@ -30,7 +30,7 @@ pkgbase = agensgraph-git
 	options = !strip
 	backup = etc/pam.d/postgresql
 	backup = etc/logrotate.d/postgresql
-	source = git+https://github.com/bitnine-oss/agensgraph
+	source = git+https://github.com/bitnine-oss/agensgraph#commit=6122dd6c66abd1af9cba67b72321213f7b53c3e7
 	source = postgresql-run-socket.patch
 	source = agensgraph.patch
 	source = postgresql.pam

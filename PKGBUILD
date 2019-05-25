@@ -2,7 +2,7 @@
 
 _pkgname='agensgraph'
 pkgname="${_pkgname}-git"
-pkgver=1.3.1.r524.a46722f3
+pkgver=2.1.1.r494.6122dd6c
 pkgrel=1
 pkgdesc="A multi-model graph database based on PostgreSQL."
 arch=('i686' 'x86_64')
@@ -12,12 +12,12 @@ backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
 options=(!strip) # to facilitate debugging of testing builds
 license=('Apache')
 conflicts=('postgresql' 'postgresql-libs' 'postgresql-testing' 'postgresql-client' 'postgresql-git')
-makedepends=('tcl' 'java-environment-jdk>=7' )
+makedepends=('tcl' 'jdk8-openjdk' )
 provides=("postgresql-libs=10.3" "postgresql=10.3" 'postgresql-client')
 optdepends=('python2: for PL/Python support'
              'perl: for PL/Perl support'
              'tcl: for PL/Tcl support')
-source=("git+https://github.com/bitnine-oss/agensgraph"
+source=("git+https://github.com/bitnine-oss/agensgraph#commit=6122dd6c66abd1af9cba67b72321213f7b53c3e7"
          postgresql-run-socket.patch
          agensgraph.patch
          postgresql.pam
@@ -49,7 +49,6 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
   export JAVA_LIBRARY_PATH="/usr/lib/jvm/default-runtime/lib/amd64/server"
-
   ./configure \
     --prefix=/usr \
     --mandir=/usr/share/man \
