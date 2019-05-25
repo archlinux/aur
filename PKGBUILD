@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="http://www.wxhexeditor.org"
 license=('GPL2')
 depends=('wxgtk3')
+makedepends=('python')
 source=("https://github.com/EUA/wxHexEditor/archive/v$pkgver.tar.gz")
 md5sums=('1b77bddc026e22797fd0e7a82e52cd28')
 

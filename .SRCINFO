@@ -6,6 +6,7 @@ pkgbase = wxhexeditor
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = python
 	depends = wxgtk3
 	source = https://github.com/EUA/wxHexEditor/archive/v0.24.tar.gz
 	md5sums = 1b77bddc026e22797fd0e7a82e52cd28
