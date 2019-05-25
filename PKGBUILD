@@ -2,7 +2,7 @@
 
 pkgname=gosearch-git
 _pkgname=gosearch
-pkgver=r38.df011a9
+pkgver=r44.71829c9
 pkgrel=1
 pkgdesc="A fast, real-time file searching program for linux"
 url="https://github.com/ozeidan/gosearch"
