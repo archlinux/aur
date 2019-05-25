@@ -1,0 +1,24 @@
+pkgbase = sandpolis
+	pkgdesc = Ultimate remote management utility
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://github.com/Subterranean-Security/Sandpolis
+	arch = any
+	license = Apache 2
+	depends = java-runtime>=11
+	source = https://github.com/Subterranean-Security/Sandpolis/releases/download/v5.0.1/SandpolisInstaller-offline-5.0.1.jar
+	sha512sums = d6e5415a9cf6237772a4ffa18a4bb9f6afb357496fc628d5de208e46fc977c29d9b78bb3798c651f4d3eee0bfe54b34ed95936678e54769005a2c2fe8f70cecc
+
+pkgname = sandpolis-server
+	install = sandpolis-server.install
+	provides = sandpolis-server
+	conflicts = sandpolis-server
+
+pkgname = sandpolis-viewer
+	provides = sandpolis-viewer
+	conflicts = sandpolis-viewer
+
+pkgname = sandpolis-viewer-cli
+	provides = sandpolis-viewer-cli
+	conflicts = sandpolis-viewer-cli
+
