@@ -83,11 +83,12 @@ func startTerm() {
 	}
 	defer term.ReleaseFromStdInOut()
 	term.SetPrompt("> ")
+	cmdLoop:
 	for {
 		// Read the keyboad input.
 		line, err := term.ReadLine()
 		// Exit on Ctrl-D and Ctrl-C
-		if err == io.EOF ||  line == "^C"{
+		if err == io.EOF ||  line == "^C" {
 			fmt.Println()
 			return
 		}
@@ -97,6 +98,8 @@ func startTerm() {
 			break
 		case "clear":
 			execCmd("clear", true)
+		case "exit":
+			break cmdLoop
 		case "?", "help":
 			printUsage()
 		default:
