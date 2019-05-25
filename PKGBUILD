@@ -2,11 +2,11 @@
 
 pkgname=python-colander
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple schema-based serialization and deserialization library"
 url="https://docs.pylonsproject.org/projects/colander/en/latest/"
 license=('BSD')
-arch=('x86_64')
+arch=('any')
 depends=('python-translationstring' 'python-iso8601')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
