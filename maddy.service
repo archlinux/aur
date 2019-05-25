@@ -1,0 +1,15 @@
+[Unit]
+Description=Maddy mail server
+After=network.target
+
+[Service]
+PIDFile=/var/lib/maddy/pid
+User=maddy
+Group=maddy
+RuntimeDirectory=maddy
+WorkingDirectory=/var/lib/maddy
+ExecStart=/usr/bin/maddy
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
