@@ -4,7 +4,7 @@
 
 pkgname=aerc-git
 _pkgname=aerc
-pkgver=r285.1ec72f8
+pkgver=r289.c4c8648
 pkgrel=1
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
@@ -24,12 +24,6 @@ pkgver() {
       git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
-}
-
-prepare() {
-    cd "$srcdir/$_pkgname"
-    # change filenames in example config to include package dirs
-    sed -i 's|contrib/\(.*\)|/usr/share/aerc/\1|' config/aerc.conf
 }
 
 build() {
