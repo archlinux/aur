@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=symengine
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Fast symbolic manipulation library, written in C++"
 url="http://sympy.org/"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('cmake' 'boost')
 replaces=('csympy-git')
 conflicts=('csympy-git')
 source=($pkgname-$pkgver.tar.gz::https://github.com/sympy/symengine/archive/v$pkgver.tar.gz)
-sha256sums=('591463cb9e741d59f6dfd39a7943e3865d3afe9eac47d1a9cbf5ca74b9c49476')
+sha256sums=('dd755901a9e2a49e53ba3bbe3f565f94265af05299e57a7b592186dd35916a1b')
 
 build() {
   cd $pkgname-$pkgver
