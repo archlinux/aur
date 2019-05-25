@@ -22,7 +22,7 @@ arch:
 # - perl
   script:
 # - "sudo pacman -Sy"
-  - "makepkg -se --noconfirm"
+  - "makepkg -s --noconfirm"
 
 script:
 - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
