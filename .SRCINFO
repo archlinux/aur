@@ -1,18 +1,19 @@
 pkgbase = rescuetime2
-        pkgdesc = Application time-tracking for Linux. Stable version
-        pkgver = 2.14.3.1
-        pkgrel = 1
-        url = https://www.rescuetime.com
-        arch = i686
-        arch = x86_64
-        license = GPL2
-        depends = qt4
-        depends = xorg-xprop
-        depends = xprintidle
-        conflicts = rescuetime
-        source_i686 = rescuetime2_2.14.3.1_i686.deb::https://www.rescuetime.com/installers/rescuetime_current_i386.deb
-        sha256sums_i686 = a6179d27df565b2ec16b31d206bd29fd65bd51651609a728de23084690c8c574
-        source_x86_64 = rescuetime2_2.14.3.1_amd64.deb::https://www.rescuetime.com/installers/rescuetime_current_amd64.deb
-        sha256sums_x86_64 = 51563c57689d364c93f2d6740b46f3089bc6d5338b105bc897d11d2577f2730d
+	pkgdesc = Application time-tracking for Linux. Stable version
+	pkgver = 2.14.3.1
+	pkgrel = 1
+	url = https://www.rescuetime.com
+	arch = i686
+	arch = x86_64
+	license = proprietary
+	depends = qt5-base
+	depends = xorg-xprop
+	depends = xprintidle
+	conflicts = rescuetime
+	source_i686 = rescuetime2_2.14.3.1_i686.deb::https://www.rescuetime.com/installers/rescuetime_current_i386.deb
+	sha256sums_i686 = a6179d27df565b2ec16b31d206bd29fd65bd51651609a728de23084690c8c574
+	source_x86_64 = rescuetime2_2.14.3.1_amd64.deb::https://www.rescuetime.com/installers/rescuetime_current_amd64.deb
+	sha256sums_x86_64 = 51563c57689d364c93f2d6740b46f3089bc6d5338b105bc897d11d2577f2730d
 
 pkgname = rescuetime2
+
