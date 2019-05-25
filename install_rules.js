@@ -9,6 +9,14 @@ function Controller() {
     installer.uninstallationFinished.connect(function() {
         gui.clickButton(buttons.NextButton);
     });
+
+    console.log("OS: " + systemInfo.productType);
+    console.log("Kernel: " + systemInfo.kernelType + "/" + systemInfo.kernelVersion);
+    console.log("CPU Architecture: " +  systemInfo.currentCpuArchitecture);
+    console.log("sys info: " +  systemInfo);
+
+    // https://together.jolla.com/question/198669/sailfish-os-sdk-offline-installer-virtualbox-6/
+    installer.setValue("ConfigVariant", "SailfishOS-SDK");
 }
 
 Controller.prototype.WelcomePageCallback = function() {
