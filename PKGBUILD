@@ -1,9 +1,10 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _name=importlab
+_sha256sum=d855350d19dc10a17aabd2fe6f4b428ff1a936071f692fbf686a73694d26a51c
 
 pkgname=python-importlab
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A library to calculate python dependency graphs."
 arch=('any')
@@ -13,11 +14,11 @@ depends=('python-networkx' 'python-six')
 makedepends=('python' 'python-setuptools')
 options=(!emptydirs)
 source=(
-  'https://files.pythonhosted.org/packages/6c/14/9081386bafaa5673b7d75063afe084d2c15ce837921e3bfb32281569081f/importlab-0.5.tar.gz'
-  )
+  "https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
+)
 sha256sums=(
-  'ab3a0bf77a326de577e3c7f643ec304f83fed93cb1056638560d832413d6e736'
-  )
+  "${_sha256sum}"
+)
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}"
