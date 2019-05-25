@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _pytype_repo="https://github.com/google/pytype"
-_pytype_tag=2019.05.15
+_pytype_tag=2019.05.24
 
 _cpython_repo="https://github.com/python/cpython"
 _cpython_gitcommit="9734024ec65311e33936faa83fb1cb249ef0de9d"
@@ -14,7 +14,7 @@ _typeshed_gitcommit="50d98acc766e9425cb099c17b711f1bccb697584"
 
 pkgname=pytype
 pkgver="${_pytype_tag}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Python type inferencer"
 arch=('any')
 url="https://google.github.io/pytype"
@@ -23,7 +23,7 @@ provides=('pytype')
 depends=(
   'ninja'
   'python>=3.3'
-  'python-importlab>=0.5'
+  'python-importlab>=0.5.1'
   'python-six'
   'python-typed-ast'
   'python-yaml>=3.11'
@@ -47,11 +47,11 @@ source=(
   'without-ninja-python-distributions.patch'
 )
 sha256sums=(
-  '2ae9997953e0471689347084fb7906f54daba532c640d12e0651e677f9ccf393'
+  '267fcc8767e4a64d54a20d0414b336252f4fc5b3c0adb789e092c295c1060229'
   'ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a'
   '891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7'
   '56579ebcd86d9b99497a433e6bc96eb5222558a62e568927f0522411b29f8d72'
-  '3c6c812ffa7412634552ed32a71b326ac38387dd2d6c319fa9ae21a88dd55eaf'
+  '4094677e9c9e56866cf2581ca834e8e4cfbaaa1fd3061a78acef89795758df8a'
 )
 
 prepare() {
