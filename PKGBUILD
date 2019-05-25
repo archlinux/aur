@@ -4,12 +4,12 @@
 
 pkgname=maddy-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, cross-platform mail server"
 arch=(any)
 url="https://github.com/emersion/maddy"
 license=('MIT')
-makedpeneds=('git')
+makedpeneds=('git' 'go')
 source=("git+https://github.com/emersion/maddy.git"
 	"maddy.service")
 install="maddy.install"
