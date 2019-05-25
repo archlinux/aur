@@ -11,6 +11,7 @@ import (
 )
 
 var outb, errb bytes.Buffer
+var cmdSlice, cmdList []string
 
 func execCmd(input string, stdout bool) string {
     // Remove the newline character.
@@ -50,9 +51,6 @@ func searchInSlice(slice []string, query string) bool{
 	return set[query]
 }
 
-var cmdSlice, cmdList []string
-
-
 func prepareCmds(){
 	parseGitCmd := "git help | grep '^  *[a-z]' | sed -e 's/^\\s*//' " +
 					"-e 's/ *[A-Z].*//'"
@@ -69,10 +67,6 @@ func prepareCmds(){
 			}
 		}
 	}
-	for index, cmd := range cmdSlice {
-		fmt.Println(cmdList[index] + " -> " + cmd)
-	}
-	
 }
 
 func buildCmd(line string) string {
@@ -101,15 +95,29 @@ func startTerm() {
 			fmt.Println()
 			return
 		}
-		// Handle the execution of the input.
-		gitCmd := buildCmd(" " + line + " ")
-		if retval := execCmd(gitCmd, true); len(retval) > 0 {
-			fmt.Fprintln(os.Stderr, retval)
+		// Built-in commands
+		switch line{
+		case "", " ": 
+		case "clear":
+			execCmd("clear", true)
+		case "?", "help":
+			printUsage()
+		default:
+			// Handle the execution of the input.
+			gitCmd := buildCmd(" " + line + " ")
+			if retval := execCmd(gitCmd, true); len(retval) > 0 {
+				fmt.Fprintln(os.Stderr, retval)
+			}
 		}
 	}
 }
-
+func printUsage(){
+	for index, cmd := range cmdSlice {
+		fmt.Println(cmdList[index] + " -> " + cmd)
+	}
+}
 func main() {
 	prepareCmds()
+	printUsage()
 	startTerm()
 }
