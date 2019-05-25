@@ -1,11 +1,11 @@
 pkgbase = microscheme
 	pkgdesc = A Scheme subset designed for Atmel microcontrollers, especially as found on Arduino boards
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://microscheme.org
 	arch = any
 	license = MIT
-	makedepends = vim
+	makedepends = xxd
 	depends = glibc
 	depends = avr-gcc
 	depends = avr-libc
