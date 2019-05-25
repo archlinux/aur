@@ -1,0 +1,19 @@
+pkgbase = python-flask-api
+	pkgdesc = Browsable web APIs for Flask.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/flask-api/flask-api
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-flask
+	depends = python-markdown
+	source = https://files.pythonhosted.org/packages/source/F/Flask-API/Flask-API-1.1.tar.gz
+	sha256sums = c0142c53fc4053d866ff3f449dd7f43b4737b6d9a70e5a77fa2b9aaf68bb4364
+
+pkgname = python-flask-api
+	depends = python
+	depends = python-flask
+	depends = python-markdown
+
