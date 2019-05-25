@@ -10,7 +10,7 @@ pkgbase = plasma-theme-helium
 	conflicts = plasma-theme-helium-git
 	options = !strip
 	source = file://Helium.tar.gz
-	md5sums = SKIP
+	md5sums = 67c1164605e18ac1b7e08469eaec84b2
 
 pkgname = plasma-theme-helium
 

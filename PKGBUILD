@@ -13,7 +13,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 options=('!strip')
 source=('Helium.tar.gz')
-md5sums=('SKIP')
+md5sums=('67c1164605e18ac1b7e08469eaec84b2')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/plasma/desktoptheme/"
