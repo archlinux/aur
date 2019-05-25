@@ -16,12 +16,8 @@ var cmdSlice, cmdList []string
 func execCmd(input string, stdout bool) string {
     // Remove the newline character.
     input = strings.TrimSuffix(input, "\n")
-
-    // Split the input separate the command and the arguments.
-	// args := strings.Split(input, " ")
 	
-	// Prepare the command to execute.
-	
+	// Prepare the command to execute.	
 	cmd := exec.Command("sh", "-c", input)
 
 	// Set the correct output device.
@@ -98,6 +94,7 @@ func startTerm() {
 		// Built-in commands
 		switch line{
 		case "", " ": 
+			break
 		case "clear":
 			execCmd("clear", true)
 		case "?", "help":
