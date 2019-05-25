@@ -1,0 +1,16 @@
+pkgbase = python-rgt
+	pkgdesc = Regulatory Genomics Toolbox
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = http://www.regulatory-genomics.org
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	source = https://github.com/CostaLab/reg-gen/archive/0.12.1.tar.gz
+	sha256sums = baccb00d00dd98a26954414f13fd6f8f7d4ac1f6b40d65177867237029477fcf
+
+pkgname = python-rgt
+
