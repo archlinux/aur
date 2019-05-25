@@ -1,6 +1,6 @@
 pkgbase = fs-uae-launcher-devel
 	pkgdesc = Launcher and configuration program for FS-UAE (development version).
-	pkgver = 2.9.8dev2
+	pkgver = 2.9.9dev
 	pkgrel = 1
 	url = http://fs-uae.net/download-devel
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = fs-uae-launcher-devel
 	optdepends = p7zip: for .7z zip support
 	provides = fs-uae-launcher
 	conflicts = fs-uae-launcher
-	source = http://downloadcontent.opensuse.org/repositories/home:/FrodeSolheim:/devel/Debian_9.0/fs-uae-launcher_2.9.8~dev2.orig.tar.gz
-	sha256sums = c9d3801af3ba8a84472858a7881dd6c863fed13f121102b765e4ef37b81adad1
+	source = http://fs-uae.net/devel/2.9.9dev/fs-uae-launcher-2.9.9dev.tar.gz
+	sha256sums = 16712910028cd3fc0047609ef1d85d94b1843246fad9756b4d8c763412a454a4
 
 pkgname = fs-uae-launcher-devel
 
