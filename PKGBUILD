@@ -1,14 +1,14 @@
 # Maintainer: Daniel Kronberg <danikron at protonmail dot com>
 pkgname=otf-font-awesome-5-free
-pkgver=5.8.1
-pkgrel=2
+pkgver=5.8.2
+pkgrel=1
 pkgdesc="Iconic font designed for Bootstrap"
 url="http://fontawesome.com/"
 license=('custom:OFL')
 arch=('any')
 depends=('fontconfig')
 source=("$pkgname-$pkgver.zip::https://use.fontawesome.com/releases/v$pkgver/fontawesome-free-$pkgver-desktop.zip")
-sha256sums=('888f7ff14cfbd31d4ae1e59a65f1037ed0c5460ba2a9480cda1d7d454ed31e16')
+sha256sums=('e0ae4ab1084b76eea25a75ddd6239f9f277ad8eb85b1d4c011e396e460ed5109')
 
 package() {
   cd "fontawesome-free-$pkgver-desktop"
