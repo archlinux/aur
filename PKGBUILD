@@ -1,24 +1,26 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=libsedml
 _pkgname=libSEDML
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Simulation Experiment Description - Markup Language"
 url="http://libsedml.sourceforge.net/libSedML"
-license=('BSD 2-clause')
+license=('BSD')
 arch=('i686' 'x86_64')
 depends=('libnuml')
-source=("https://github.com/fbergmann/libSEDML/archive/v$pkgver.tar.gz")
-md5sums=('2722b74dc83ff029b0432f4209e178f3')
+source=($_pkgname-$pkgver.tar.gz::https://github.com/fbergmann/libSEDML/archive/v$pkgver.tar.gz)
+sha256sums=('74bf15442216bcee5ee15cb8abcbdf69fc04dfdd4ffe789abec8ea7a7dfff65a')
 
 build() {
   cd "$_pkgname-$pkgver"
   mkdir -p build && cd build
-  cmake ..
+  cmake \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    ..
   make
 }
 
 package() {
   cd "$srcdir"/$_pkgname-$pkgver/build
-  DESTDIR="$pkgdir" cmake -DCMAKE_INSTALL_PREFIX=/usr -P cmake_install.cmake
+  DESTDIR="$pkgdir" cmake -P cmake_install.cmake
 }
