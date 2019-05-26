@@ -1,6 +1,6 @@
 # Contributor: Niko Rosvall <niko@byteptr.com>
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Maintainer: Zachary Matthews <zacharymatt5@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Co-Maintainer: Zachary Matthews <zacharymatt5@gmail.com>
 
 pkgname=ylva
 pkgver=1.5
