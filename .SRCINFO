@@ -24,6 +24,10 @@ pkgbase = firefox-kde-opensuse-bin
 	depends = kmozillahelper
 	depends = ffmpeg
 	depends = gtk3
+	depends = dav1d
+	depends = aom
+	depends = harfbuzz
+	depends = graphite
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	provides = firefox=67.0

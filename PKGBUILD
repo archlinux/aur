@@ -13,7 +13,13 @@ url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
 depends=('mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'hicolor-icon-theme'
 	 'libvpx' 'icu'  'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
-	 'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' 'gtk3')
+	 'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' 'gtk3'
+         # system av1
+         'dav1d' 'aom'
+         # system harfbuzz
+         'harfbuzz'
+         # system graphite
+         'graphite')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech')
 provides=("firefox=${pkgver}")
