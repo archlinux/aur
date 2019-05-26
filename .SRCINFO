@@ -1,0 +1,14 @@
+pkgbase = python-fzf-template
+	pkgdesc = Template files using yaml config and an fzf selector
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/shanedabes/fzf-template
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-iterfzf
+	source = python-fzf-template-0.1.0.tar.gz::https://github.com/shanedabes/fzf-template/archive/v0.1.0.tar.gz
+	sha256sums = 49039934db0c47d14c558ece01c0281f78ba68502b7b0c28a9076eebb3bcedba
+
+pkgname = python-fzf-template
+
