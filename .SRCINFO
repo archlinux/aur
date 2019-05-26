@@ -1,7 +1,8 @@
 pkgbase = exaile-git
 	pkgdesc = music player for gnome, similar to KDEs amarok
-	pkgver = 4.0.0+rc4+12+g4623a05c
+	pkgver = 4.0.0rc5+0+g449775a8
 	pkgrel = 1
+	epoch = 1
 	url = http://www.exaile.org
 	arch = x86_64
 	arch = i686
@@ -32,7 +33,7 @@ pkgbase = exaile-git
 	optdepends = gst-plugins-bad: Additional audio codecs
 	optdepends = gst-plugins-ugly: Additional audio codecs
 	optdepends = spydaap-git: DAAP server/client
-	provides = exaile=4.0.0
+	provides = exaile=4.0.0rc5
 	conflicts = exaile
 	source = exaile::git+https://github.com/exaile/exaile.git
 	sha256sums = SKIP

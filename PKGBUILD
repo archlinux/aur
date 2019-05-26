@@ -3,7 +3,8 @@
 
 _pkgname=exaile
 pkgname=${_pkgname}-git
-pkgver=4.0.0+rc4+12+g4623a05c
+epoch=1
+pkgver=4.0.0rc5+0+g449775a8
 pkgrel=1
 pkgdesc="music player for gnome, similar to KDEs amarok"
 arch=('x86_64' 'i686')
@@ -37,7 +38,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed 's/-beta/.beta/;s/-/+/g'
+  git describe --long --tags | sed 's/-beta/.beta/;s/-rc/rc/;s/-/+/g'
 }
 
 build() {
