@@ -1,6 +1,6 @@
 pkgname=haskell-ordered-containers
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Set and Map-like types that remember the order elements were inserted"
 arch=('i686' 'x86_64')
 makedepends=('ghc' 'ghc-libs' 'haskell-containers')
