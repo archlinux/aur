@@ -121,6 +121,13 @@ func startTerm() {
 		}
 	}
 }
+func setTableColors(table (*tablewriter.Table)) (*tablewriter.Table) {
+	table.SetHeaderColor(tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiWhiteColor},
+		tablewriter.Colors{tablewriter.FgHiRedColor, tablewriter.Bold, tablewriter.FgHiWhiteColor})
+	table.SetColumnColor(tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiGreenColor},
+		tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiBlackColor})
+	return table
+}
 func showHelp(){
 	cliCmds := map[string]string{
 		"git": "List available simplified git commands",
@@ -129,10 +136,7 @@ func showHelp(){
 		"exit": "Exit shell"}
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader([]string{"Command", "Description"})
-	table.SetHeaderColor(tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiWhiteColor},
-		tablewriter.Colors{tablewriter.FgHiRedColor, tablewriter.Bold, tablewriter.FgHiWhiteColor})
-	table.SetColumnColor(tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiGreenColor},
-		tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiBlackColor})
+	table = setTableColors(table)
 	for k, v := range cliCmds {
 		table.Append([]string{k, v})
 	}
@@ -141,10 +145,7 @@ func showHelp(){
 func showCommands(){
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader([]string{"Command", "git"})
-	table.SetHeaderColor(tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiWhiteColor},
-		tablewriter.Colors{tablewriter.FgHiRedColor, tablewriter.Bold, tablewriter.FgHiWhiteColor})
-	table.SetColumnColor(tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiGreenColor},
-		tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiBlackColor})
+	table = setTableColors(table)
 	for index, cmd := range cmdSlice {
 		table.Append([]string{cmd, cmdList[index]})
 	}
