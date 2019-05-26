@@ -1,6 +1,6 @@
 pkgbase = wgmgr
 	pkgdesc = Manages WireGuard PKIs for VPN-like deployments
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/coNQP/wgmgr
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = wgmgr
 	depends = python-peewee
 	depends = python-wgtools
 	depends = python-peeweeplus
-	source = git+https://github.com/coNQP/wgmgr.git#tag=1.2.3
+	source = git+https://github.com/coNQP/wgmgr.git#tag=1.2.4
 	md5sums = SKIP
 
 pkgname = wgmgr
