@@ -8,6 +8,7 @@ pkgbase = wgmgr
 	makedepends = git
 	depends = python
 	depends = python-peewee
+	depends = python-pymysql
 	depends = python-wgtools
 	depends = python-peeweeplus
 	source = git+https://github.com/coNQP/wgmgr.git#tag=1.2.4

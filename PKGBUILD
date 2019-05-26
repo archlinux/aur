@@ -7,7 +7,7 @@ pkgdesc='Manages WireGuard PKIs for VPN-like deployments'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
 license=('GPLv3')
-depends=('python' 'python-peewee' 'python-wgtools' 'python-peeweeplus')
+depends=('python' 'python-peewee' 'python-pymysql' 'python-wgtools' 'python-peeweeplus')
 makedepends=('git')
 source=("git+${url}.git#tag=${pkgver}")
 md5sums=('SKIP')
