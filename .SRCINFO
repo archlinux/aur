@@ -1,7 +1,7 @@
 pkgbase = haskell-ordered-containers
 	pkgdesc = Set and Map-like types that remember the order elements were inserted
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dmwit/ordered-containers
 	arch = i686
 	arch = x86_64
