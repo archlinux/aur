@@ -4,7 +4,7 @@ _npmname=instant-markdown-d
 _npmver=0.1.0
 pkgname=vim-instant-markdown
 pkgver=0.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Instant Markdown previews from vim in a browser"
 arch=(any)
 license=(unknown)
@@ -24,7 +24,14 @@ package() {
   mkdir -p "$pkgdir/usr/share/vim/vimfiles/after/ftplugin/markdown"
 
   cd "$pkgdir/usr/lib/node_modules/"
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+	npm install                    \
+	    --global                     \
+			--no-save                    \
+			--production                 \
+			--user   root                \
+			--cache  "$srcdir/npm-cache" \
+			--prefix "$pkgdir/usr"       \
+			"$_npmname-$_npmver.tgz"
 
   cp "$srcdir/instant-markdown.vim" "$pkgdir/usr/share/vim/vimfiles/after/ftplugin/markdown"
 }
