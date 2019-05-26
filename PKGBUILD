@@ -1,7 +1,7 @@
 # Maintainer: basigur
 
 pkgname=papirus-folders-nordic
-pkgver=2.2
+pkgver=3.5
 pkgrel=1
 pkgdesc="Icons themes papirus color folder nordic."
 arch=('any')
@@ -12,7 +12,7 @@ replaces=('papirus-folders-nordic')
 depends=('gtk-update-icon-cache' 'papirus-icon-theme')
 source=("https://github.com/basigur/papirus-folders/archive/v$pkgver.tar.gz?/papirus-folders-nordic-v$pkgver.tar.gz")
 
-sha512sums=('B981AB5F799B7E4387A51630615217D2EF45C5C2F2BB780A925EF9D9A51D56E64009B3683E1A80107E9A75D1C372A2768C3454AD0CC2C2048A74B2917693F3BE')
+sha512sums=('71891e05a4d7c421d8df4499d0bf1957f876f81ad49fec72e902d3e308561817da3d53cf92deb479ec0689c04aa74dff059ab238b67fd3c11e12106fd24c0fe0')
 
 
 package() {
