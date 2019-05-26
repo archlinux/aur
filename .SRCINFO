@@ -1,7 +1,7 @@
 pkgbase = python-opcodes-git
-	pkgdesc = Python3 module for instruction sets documentation in a format convenient for tools development (git version)
+	pkgdesc = Python module for instruction sets documentation in a format convenient for tools development (git version)
 	pkgver = r179.6e2b0cd
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Maratyszcza/Opcodes/
 	arch = any
 	license = BSD
@@ -14,7 +14,7 @@ pkgbase = python-opcodes-git
 	makedepends = python2-sphinx
 	makedepends = python-sphinx-bootstrap-theme
 	makedepends = python2-sphinx-bootstrap-theme
-	source = python-opcodes-git::git+https://github.com/Maratyszcza/Opcodes.git
+	source = git+https://github.com/Maratyszcza/Opcodes.git
 	sha256sums = SKIP
 
 pkgname = python-opcodes-git
