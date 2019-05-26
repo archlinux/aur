@@ -8,7 +8,6 @@ import (
 	"bytes"
 	"strings"
 	"github.com/carmark/pseudo-terminal-go/terminal"
-	"github.com/abiosoft/ishell"
 )
 
 var outb, errb bytes.Buffer
@@ -122,29 +121,7 @@ func printUsage(){
 	}
 }
 func main() {
-	//prepareCmds()
-	//printUsage()
-	//startTerm()
-
-	shell := ishell.New()
-	shell.Println("GGod")
-	shell.SetPrompt("> ")
-
-    shell.AddCmd(&ishell.Cmd{
-        Name: "clear",
-        Help: "clear the terminal",
-        Func: func(c *ishell.Context) {
-            execCmd("clear", true)
-        },
-	})
-
-	shell.AddCmd(&ishell.Cmd{
-        Name: "?",
-        Help: "display help",
-        Func: func(c *ishell.Context) {
-            c.Println(c.HelpText())
-        },
-	})
-	
-    shell.Run()
+	prepareCmds()
+	printUsage()
+	startTerm()
 }
