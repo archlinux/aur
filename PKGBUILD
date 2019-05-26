@@ -1,6 +1,6 @@
 # Maintainer: aps42 <arch@andre-sterba.de>
 pkgname=mqtt-explorer-appimage
-pkgver=0.2.3
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='Explore your message queues.'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     )
 noextract=("${_appimage}")
 sha256sums=(
-    '402236d837f7190ddc87ce0084f451548f16c857fc7ca55fe2c17e250bf9e6c3'
+    'f2f97256ed6f7bf0f9cd0145f4b086b57792158e183b18cc1a7273bd67511023'
     'SKIP'
     'SKIP'
     )
