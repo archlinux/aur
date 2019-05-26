@@ -61,6 +61,7 @@ func prepareCmds(){
 			if (!searchInSlice(cmdSlice, firstChar)){
 				cmdSlice = append(cmdSlice, firstChar)
 			}else{
+				//
 				cmdSlice = append(cmdSlice, string([]rune(cmd)[0]) + 
 					string([]rune(cmd)[len(cmd)/2])) 
 			}
