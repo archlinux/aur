@@ -1,0 +1,20 @@
+pkgbase = telephant-git
+	pkgdesc = A lightweight but modern Mastodon client, written in Go & QML
+	pkgver = 20190525
+	pkgrel = 1
+	url = https://github.com/muesli/telephant
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = pkgconf
+	makedepends = qt5-tools
+	makedepends = git
+	makedepends = libpulse
+	makedepends = glib2
+	makedepends = mesa
+	depends = qt5-base
+	provides = telephant
+	conflicts = telephant
+
+pkgname = telephant-git
+
