@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=viper4linux-gui-git
-pkgver=1.5.r2.f98f249
+pkgver=1,6.r10.08f12bb
 pkgrel=1
 pkgdesc="Unofficial UI for Viper4Linux"
 arch=('any')
 url="https://github.com/ThePBone/Viper4Linux-GUI"
 license=('GPL3')
-depends=('viper4linux' 'qt5-base')
-makedepends=('git' 'cmake')
+depends=('viper4linux' 'qt5-base' 'mesa')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/ThePBone/Viper4Linux-GUI.git"
