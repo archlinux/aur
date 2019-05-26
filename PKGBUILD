@@ -1,8 +1,8 @@
 # Maintainer: das_kube
 pkgname='esy'
 pkgver='0.5.6'
-arch=('x86' 'x86_64')
-pkgrel='0'
+arch=('i686' 'x86_64')
+pkgrel='1'
 pkgdesc="package manager for OCaml/Reason"
 url="https://esy.sh/"
 license=('custom')
@@ -13,7 +13,7 @@ prepare() {
   # directory for node_modules
   mkdir -p snapshot
   cd snapshot/
-  npm init -y
+  npm init -y > /dev/null 2> /dev/null
   npm install "esy@${pkgver}" --no-scripts
 }
 
