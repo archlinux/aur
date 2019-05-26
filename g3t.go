@@ -53,7 +53,6 @@ func prepareCmds(){
 		"git help | grep '^  *[a-z]' | " + removeSpaces +
 		"git branch | tr -d '*' | " + removeSpaces +
 		"git remote"
-	fmt.Println(parseGitCmd)
 	cmdStr := execCmd(parseGitCmd, false)
 	cmdList = strings.Split(cmdStr, "\n")
 	for _, cmd := range cmdList {
