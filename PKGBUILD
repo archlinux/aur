@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/jurplel/qView/releases/download/$pkgver/qView-$pkgver.tar.gz")
 noextract=()
-sha256sums=('4afb4b0f3efa779a08057fc77c7f614171deb12bb89275215a2867bcae7a0b67')
+sha256sums=('81f36329c30e253466e21502a474dcdf16e55d644d6ac756e5923601b6aeba11')
 validpgpkeys=()
 
 build() {

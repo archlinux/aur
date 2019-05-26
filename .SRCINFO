@@ -12,7 +12,7 @@ pkgbase = qview
 	optdepends = qt5-imageformats: Extra image format support
 	optdepends = qt5-svg: SVG support
 	source = https://github.com/jurplel/qView/releases/download/2.0/qView-2.0.tar.gz
-	sha256sums = 4afb4b0f3efa779a08057fc77c7f614171deb12bb89275215a2867bcae7a0b67
+	sha256sums = 81f36329c30e253466e21502a474dcdf16e55d644d6ac756e5923601b6aeba11
 
 pkgname = qview
 
