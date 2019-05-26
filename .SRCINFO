@@ -1,7 +1,7 @@
 pkgbase = gws2-git
 	pkgdesc = Colorful KISS helper for git workspaces
 	pkgver = 0.1.0.r3.ga26c963
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/emlun/gws2
 	arch = any
 	license = GPL3
