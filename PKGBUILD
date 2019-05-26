@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-first
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Return the first true value of an iterable"
 url="https://github.com/hynek/first"
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hynek/first/archive/$pkgver.tar.gz")
-sha512sums=('c0794fa6d6185a12ef51c39a5b659a4f09e22c6d7284a8f6f10a62fe0744e4158ced191dff6f160bffd83043a8bf76948214861e9c2341d5d231f6f9b6af19f4')
+sha512sums=('4d82d4b3ddae8a47ab423b1ab5c281738f0290e428be5ce66ce50ed8110ced656c57a7164a3ca734763db117be437fe32d9d9d9a7cd196296b2ac1c4dd14d675')
 
 build() {
   cd first-$pkgver
