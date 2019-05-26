@@ -1,13 +1,13 @@
 pkgbase = python-ninja-syntax
-	pkgdesc = Python3 module for generating .ninja files
+	pkgdesc = Python module for generating .ninja files
 	pkgver = 1.7.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.python.org/pypi/ninja_syntax/
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/4b/c3/303da27e7d72aeae5d1879d592048fcd5e8c0c333505b76dda136ab342c0/ninja_syntax-1.7.2.tar.gz
+	source = python-ninja-syntax-1.7.2.tar.gz::https://files.pythonhosted.org/packages/source/n/ninja_syntax/ninja_syntax-1.7.2.tar.gz
 	sha256sums = 342dc97b9e88a6495bae22953ee6063f91d2f03db6f727b62ba5c3092a18ef1f
 
 pkgname = python-ninja-syntax
