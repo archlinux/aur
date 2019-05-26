@@ -6,9 +6,12 @@ DB_NEW=$XPLICO_BASE/xplico_new.db
 XI=$XPLICO_BASE/xi/app/
 XPLICO_SQLITE_BASE=$XPLICO_BASE/script/db/sqlite
 PHPINI=/etc/php/php.ini
+PHPINIEXTRA=/etch/php/conf.d/3-mcrypt.ini
 HTTPDCONF=/etc/httpd/conf/httpd.conf
 
-echo "Don't forget to enable sqlite extension in $PHPINI"
+echo "Don't forget to enable sqlite3 extension in $PHPINI"
+echo "Don't forget to enable pdo_sqlite extension in $PHPINI"
+echo "Don't forget to enable mcrypt extension in $PHPINIEXRA"
 echo "Don't forget to enable mod_rewrite module in $HTTPDCONF"
 echo "Default Xplico daemon port is 9876"
 
