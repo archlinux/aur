@@ -1,15 +1,15 @@
 # Maintainer: jurplel <jeep70cp[at]gmail[dotcom]>
 pkgname=qview
-pkgver=1.0
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 epoch=
-pkgdesc="Practical and mimimal image viewer"
+pkgdesc="qView is a Qt image viewer designed with minimalism and usability in mind."
 arch=('i686' 'x86_64')
-url="https://intvhq.com/qview"
+url="https://interversehq.com/qview/"
 license=('GPL3')
 groups=()
 depends=('qt5-base>=5.9' 'hicolor-icon-theme')
-optdepends=('qt5-imageformats: Additional image format support' 'qt5-svg: SVG support')
+optdepends=('xdg-utils: Used to open containing folder of file' 'qt5-imageformats: Extra image format support' 'qt5-svg: SVG support')
 makedepends=()
 checkdepends=()
 provides=()
