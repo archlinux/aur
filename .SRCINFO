@@ -1,7 +1,7 @@
 pkgbase = pthreadpool-git
 	pkgdesc = A pthread-based thread pool implementation for C/C++ (git version)
 	pkgver = r56.6673a4c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Maratyszcza/pthreadpool/
 	arch = i386
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = pthreadpool-git
 	depends = glibc
 	provides = pthreadpool
 	conflicts = pthreadpool
-	options = staticlibs
 	source = git+https://github.com/Maratyszcza/pthreadpool.git
 	sha256sums = SKIP
 

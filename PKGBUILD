@@ -2,7 +2,7 @@
 
 pkgname=pthreadpool-git
 pkgver=r56.6673a4c
-pkgrel=1
+pkgrel=2
 pkgdesc='A pthread-based thread pool implementation for C/C++ (git version)'
 arch=('i386' 'x86_64')
 url='https://github.com/Maratyszcza/pthreadpool/'
@@ -11,7 +11,6 @@ depends=('glibc')
 makedepends=('git' 'cmake' 'python' 'gtest')
 provides=('pthreadpool')
 conflicts=('pthreadpool')
-options=('staticlibs')
 source=('git+https://github.com/Maratyszcza/pthreadpool.git')
 sha256sums=('SKIP')
 
