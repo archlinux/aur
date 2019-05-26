@@ -4,3 +4,4 @@ GeoLite2-Country-CSV.zip
 xt_geoip_build
 xtables-geoip-db-*.tar.gz
 *-any.pkg.tar.xz
+*-any.pkg.tar.xz.sig
