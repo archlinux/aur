@@ -7,3 +7,4 @@ fs.writeFileSync("PKGBUILD", fs.readFileSync("PKGBUILD").toString().replace(
 ));
 
 require("child_process").execSync("makepkg --printsrcinfo > .SRCINFO");
+require("child_process").execSync("updpkgsums");
