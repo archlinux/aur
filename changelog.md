@@ -1,6 +1,7 @@
 # Package brother-mfc-9335cdw
 
 ## Version 1.1.4
+* Fixed incorrect deb source
 * Added forgotten cups dependency
 * Moved make dependencies into their appropriate variable
 * Moved 64bit dependencies to their appropriate variable
