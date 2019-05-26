@@ -9,6 +9,7 @@ import (
 	"strings"
 	"github.com/carmark/pseudo-terminal-go/terminal"
 	"github.com/olekukonko/tablewriter"
+	"github.com/fatih/color"
 )
 
 var outb, errb bytes.Buffer
@@ -87,7 +88,9 @@ func startTerm() {
 		panic(err)
 	}
 	defer term.ReleaseFromStdInOut()
-	term.SetPrompt("> ")
+	d := color.New(color.FgGreen, color.Bold)
+	d.Println("Type '?' for help or 'git' for list of commands.")
+	term.SetPrompt("[ggod]> ")
 	cmdLoop:
 	for {
 		// Read the keyboad input.
@@ -106,7 +109,7 @@ func startTerm() {
 		case "exit":
 			break cmdLoop
 		case "?", "help":
-			//printUsage()
+			showCommands()
 		default:
 			// Handle the execution of the input.
 			gitCmd := buildCmd(" " + line + " ")
@@ -115,6 +118,9 @@ func startTerm() {
 			}
 		}
 	}
+}
+func displayHelp(){
+	
 }
 func showCommands(){
 	table := tablewriter.NewWriter(os.Stdout)
@@ -130,7 +136,5 @@ func showCommands(){
 }
 func main() {
 	prepareCmds()
-	showCommands()
-	//printUsage()
 	startTerm()
 }
