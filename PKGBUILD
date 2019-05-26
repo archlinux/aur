@@ -2,7 +2,7 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='pymilter'
-pkgver='1.0.2'
+pkgver='1.0.4'
 pkgrel='1'
 pkgdesc='Python interface to sendmail milter API'
 arch=('any')
@@ -11,12 +11,11 @@ license=('GPL')
 depends=('python2')
 makedepends=('libmilter')
 source=("${url}/archive/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f513053f5fc9b0c31d886d8412a411bdc958786a673d7071b1bd521498b01153')
+sha256sums=('f871e29d2bb4bb192e9d9a1f205278f55cb0092a6c8c84ab698171924e4d2a2c')
 
 build() {
-  pushd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   python2 setup.py build
-  popd
 }
 
 package() {
