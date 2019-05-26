@@ -1,7 +1,7 @@
 pkgbase = doctest
 	pkgdesc = The lightest feature rich C++ single header testing framework
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/onqtam/doctest
 	arch = i686
 	arch = x86_64

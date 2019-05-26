@@ -2,7 +2,7 @@
 
 pkgname=doctest
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The lightest feature rich C++ single header testing framework'
 arch=('i686' 'x86_64')
 url='https://github.com/onqtam/doctest'
@@ -19,8 +19,9 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DDOCTEST_WITH_TESTS=off \
         -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DDOCTEST_WITH_TESTS=off \
         ../
   make
 }
