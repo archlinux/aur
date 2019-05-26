@@ -2,7 +2,7 @@
 
 pkgname=scdtools
 pkgver=0.3.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Some tools to play with GnuPG’s smartcard daemon and OpenPGP smartcards."
 arch=('x86_64')
 url='https://incenp.org/dvlpt/scdtools.html'
