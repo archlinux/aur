@@ -1,8 +1,8 @@
 # Maintainer: heinrich5991 <heinrich5991@gmail.com>
 pkgname=volt
 pkgver=0.80
-pkgrel=3
-pkgdesc="Fast native desktop client Slack"
+pkgrel=4
+pkgdesc="Fast native desktop client for Slack"
 arch=('x86_64')
 url="https://volt-app.com/"
 license=('unknown')
