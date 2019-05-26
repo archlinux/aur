@@ -7,7 +7,7 @@
 
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
-pkgver=5.8.0
+pkgver=5.8.2
 pkgrel=1
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
@@ -105,7 +105,7 @@ source=("https://github.com/OpenNebula/one/archive/release-${pkgver}.tar.gz"
         'set_locations.patch'
         'fix_kvm_emulator.patch'
         'opennebula.install')
-md5sums=('0b295dc41ccebc78bae028dbf2b5db66'
+md5sums=('680c606a7b3256ae2042f7177b14ef85'
          '69c4374554ae689c44b0ef8c0a31b911'
          '74bc0a908441063a44cb134449564db1'
          'f207636bd04a621f20b14a37c6ad49b7'
@@ -118,7 +118,7 @@ md5sums=('0b295dc41ccebc78bae028dbf2b5db66'
          'cd272404aba91a27cf89ce22364e51b4'
          'bab6415dd2437c6dfdadad90efedeff3'
          '680931b4555ea25a17ea8c20b382d175'
-         '073b8bce1b12201658b9745ba7ad2e66')
+         'd6fd565c86ea40001c618689f18a222d')
 
 prepare() {
   cd "one-release-${pkgver}"
