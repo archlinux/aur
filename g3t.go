@@ -69,6 +69,7 @@ func prepareCmds(){
 }
 
 func buildCmd(line string) string {
+	line = strings.Replace(line, " git ", " ", -1)
 	for index, cmd := range cmdSlice {
 		cmd = " " + cmd + " "
 		if (strings.Contains(line, cmd)) {
