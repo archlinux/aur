@@ -1,28 +1,32 @@
-# Maintainer: Auguste Pop <auguste [at] gmail [dot] com>
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Contributor: Wojciech Ochmański <wojciech.ochmanski@gmail.com>
+# Contributor: Fredrik Strandin <fredrik@strandin.name>
+# Contributor: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=pkgcacheclean
 pkgver=1.9.0
-pkgrel=2
-pkgdesc="Application to clean the pacman cache"
-arch=('any')
-url='https://bbs.archlinux.org/viewtopic.php?pid=841774'
+pkgrel=3
+pkgdesc='Application to clean the pacman package cache'
+arch=('x86_64')
+url='https://github.com/dbermond/pkgcacheclean/'
 license=('GPL')
 depends=('pacman>=5')
-source=($pkgname.c
-        $pkgname.8)
-md5sums=('e4d09851f6052beab8179b88e21e2f6b'
-         '965889f755e4611c12f8c9ac0048372d')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbermond/pkgcacheclean/archive/v${pkgver}.tar.gz"
+        "https://github.com/dbermond/pkgcacheclean/releases/download/v${pkgver}/pkgcacheclean-${pkgver}.tar.gz.asc")
+sha256sums=('0efa1183ad556d26f5d7dbb8f34b8f6b0a6fdf0060f345e320db53b8804424e5'
+            'SKIP')
+validpgpkeys=('3FFA6AB7B69AAE6CCA263DDE019A7474297D8577') # Daniel Bermond
 
 build()
 {
-    cd "$srcdir"
-    gcc -o $pkgname $CFLAGS -DVERSION=\"$pkgver\" -DCARCH=\"$CARCH\" \
-        $pkgname.c -lalpm $LDFLAGS
-    gzip --keep --force $pkgname.8
+    cd "${pkgname}-${pkgver}"
+    
+    make
 }
 
 package()
 {
-    install -m 755 -D "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -m 644 -D "$srcdir/$pkgname.8.gz" "$pkgdir/usr/share/man/man8/$pkgname.8.gz"
+    cd "${pkgname}-${pkgver}"
+    
+    make DESTDIR="$pkgdir" PREFIX='/usr' install
 }
