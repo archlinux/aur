@@ -28,8 +28,7 @@ build() {
 }
 
 package() {
-    install -D build/cli/launcher/launcher $pkgdir/usr/bin/opensph
-    install -D build/gui/launcherGui/launcherGui $pkgdir/usr/bin/opensphgui
-    install -D build/gui/player/player $pkgdir/usr/bin/opensphview
+    install -D build/cli/launcher/launcher $pkgdir/usr/bin/opensph-cli
+    install -D build/gui/launcherGui/launcherGui $pkgdir/usr/bin/opensph
 }
 
