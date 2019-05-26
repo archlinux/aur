@@ -2,7 +2,7 @@
 # Contributor: kehon
 
 pkgname=traccar-bin
-pkgver=4.2
+pkgver=4.5
 pkgrel=1
 pkgdesc="Open source GPS tracking system"
 arch=('i686' 'x86_64')
@@ -21,5 +21,5 @@ package() {
 	chmod 755 -R $pkgdir/opt/*
 }
 
-md5sums=('73c0e220ddd2d48f69a33ccb7f7e53c8'
-         '3e230b1b98fb5d0ae71ee08ab96a7c92')
+md5sums=('b1ed400e3ee0ba060d7c3452b28b68a3'
+'3e230b1b98fb5d0ae71ee08ab96a7c92')
