@@ -3,7 +3,7 @@
 
 pkgname=screencloud
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='An easy to use screenshot sharing application'
 arch=('i686' 'x86_64')
 url='https://github.com/olav-st/screencloud/'
@@ -20,13 +20,15 @@ optdepends=('python2-crypto: for SFTP support')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/olav-st/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('2cc4b33227efdf74ea3803d7f4f29c75de37de376995346f35eb9ae0a9eaf212')
 
-build() {
-    cd "${pkgname}-${pkgver}"
-    
-    mkdir -p build
-    cd build
+prepare() {
+    mkdir -p "${pkgname}-${pkgver}/build"
+}
 
+build() {
+    cd "${pkgname}-${pkgver}/build"
+    
     cmake \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCOLOR_OUTPUT:BOOL='ON' \
         -DPYTHON_USE_PYTHON3:BOOL='OFF' \
