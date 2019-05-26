@@ -90,7 +90,7 @@ func startTerm() {
 	defer term.ReleaseFromStdInOut()
 	d := color.New(color.FgGreen, color.Bold)
 	d.Println("Type '?' for help or 'git' for list of commands.")
-	term.SetPrompt("[ggod]> ")
+	term.SetPrompt("[god]> ")
 	cmdLoop:
 	for {
 		// Read the keyboad input.
@@ -109,6 +109,8 @@ func startTerm() {
 		case "exit":
 			break cmdLoop
 		case "?", "help":
+			showHelp()
+		case "git":
 			showCommands()
 		default:
 			// Handle the execution of the input.
@@ -119,8 +121,22 @@ func startTerm() {
 		}
 	}
 }
-func displayHelp(){
-	
+func showHelp(){
+	cliCmds := map[string]string{
+		"git": "List available simplified git commands",
+		"help": "Show this help message",  
+		"clear": "Clear the terminal", 
+		"exit": "Exit shell"}
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{"Command", "Description"})
+	table.SetHeaderColor(tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiWhiteColor},
+		tablewriter.Colors{tablewriter.FgHiRedColor, tablewriter.Bold, tablewriter.FgHiWhiteColor})
+	table.SetColumnColor(tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiGreenColor},
+		tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiBlackColor})
+	for k, v := range cliCmds {
+		table.Append([]string{k, v})
+	}
+	table.Render()
 }
 func showCommands(){
 	table := tablewriter.NewWriter(os.Stdout)
