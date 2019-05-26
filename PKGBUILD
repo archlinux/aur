@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=igb
-pkgver=5.3.5.22
+pkgver=5.3.5.22s
 pkgrel=1
 pkgdesc="Driver for Intel ethernet network connection"
 arch=('i686' 'x86_64')
@@ -10,14 +10,8 @@ license=('GPL')
 depends=('linux>=2.6.30')
 makedepends=('linux-headers>=2.6.30' 'xz')
 source=("$pkgname-$pkgver-src.tar.gz::https://downloads.sourceforge.net/project/e1000/igb%20stable/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('16402e7d874bd563c2e8cdee7c9a6daf6d12084e800a84b608a18e87ddc6cef6')
+sha256sums=('f20e037412baec27f75ec387244b9069e94393c936bb905a4db4cb78f98e081c')
 
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  #patch -p1 -i "$srcdir/pci_enable_msix.patch"
-}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/src"
