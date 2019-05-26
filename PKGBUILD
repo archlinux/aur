@@ -1,14 +1,14 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=nftables-geoip-db
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GeoIP Database for nftables"
 arch=('any')
 license=('BSD' 'GPL')
 url="https://dev.maxmind.com/geoip/geoip2/geolite2/"
 makedepends=('perl-text-csv-xs' 'perl-net-cidr-lite')
 _xtver=3.2
-source=("http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip"
+source=("https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip"
         "xt_geoip_build::https://sourceforge.net/p/xtables-addons/xtables-addons/ci/v${_xtver}/tree/geoip/xt_geoip_build?format=raw"
         "xt_geoip_build.patch"
         "README")
