@@ -2,8 +2,8 @@
 # Contributor: fzerorubigd <fzero@rubi.gd>
 _pkgmain=backports.csv
 pkgname=python-$_pkgmain
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="Backport of Python 3 csv module."
 arch=('any')
 url="https://github.com/ryanhiebert/backports.csv"
@@ -19,4 +19,4 @@ package() {
   install -Dm644 LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rst"
 }
 
-md5sums=('f3fa0a34a9e49dc5df78e7b487e94900')
+md5sums=('e9b594a3d94317aaf51f5c3c79a8feaa')
