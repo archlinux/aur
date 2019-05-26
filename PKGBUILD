@@ -1,8 +1,11 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
+# waiting for upstream to finish python3 support
+# https://github.com/Netflix/vmaf/issues/331
+
 pkgname=python2-vmaf-git
 _srcname=vmaf
-pkgver=1.3.13.r29.ga0e7289
+pkgver=1.3.14.r11.g030ded4
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (python2 implementation, git version)'
 arch=('any')
@@ -16,6 +19,7 @@ depends=(
         'python2-scikit-image' 'python2-sureal'
 )
 makedepends=('git' 'python2-setuptools')
+checkdepends=('python2-cloudpickle') #'python2-dask' 'python2-toolz')
 provides=('python2-vmaf')
 conflicts=('python2-vmaf')
 source=('git+https://github.com/Netflix/vmaf.git')
@@ -33,9 +37,10 @@ build() {
     python2 setup.py build
 }
 
-# waiting for upstream to finish python3 support
-# https://github.com/Netflix/vmaf/issues/128
-# https://github.com/Netflix/vmaf/blob/fbb9d3ecda8cc2bd80ecbdd63f877825216045be/resource/doc/VMAF_Python_library.md
+check() {
+    cd "${_srcname}/python"
+    python2 setup.py test
+}
 
 package() {
     cd "${_srcname}/python"
