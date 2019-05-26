@@ -1,8 +1,8 @@
 pkgname=newlogic
 _pkgname=newlogic
-pkgver=0.1.1_beta
-_pkgver="0.1.1-beta"
-pkgrel=6
+pkgver=0.1.2_beta
+_pkgver="0.1.2-beta"
+pkgrel=1
 pkgdesc="Circuit Builder Desktop Application (like mmlogic)"
 arch=('any')
 url="https://github.com/ericm/newlogic"
