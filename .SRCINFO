@@ -1,7 +1,7 @@
 pkgbase = python-glog
-	pkgdesc = A simple Google-style logging wrapper for Python3
+	pkgdesc = A simple Google-style logging wrapper for Python
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/benley/python-glog/
 	arch = any
 	license = BSD
