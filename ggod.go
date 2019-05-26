@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"strings"
 	"github.com/carmark/pseudo-terminal-go/terminal"
+	"github.com/olekukonko/tablewriter"
 )
 
 var outb, errb bytes.Buffer
@@ -105,7 +106,7 @@ func startTerm() {
 		case "exit":
 			break cmdLoop
 		case "?", "help":
-			printUsage()
+			//printUsage()
 		default:
 			// Handle the execution of the input.
 			gitCmd := buildCmd(" " + line + " ")
@@ -115,13 +116,21 @@ func startTerm() {
 		}
 	}
 }
-func printUsage(){
+func showCommands(){
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{"Command", "git"})
+	table.SetHeaderColor(tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiWhiteColor},
+		tablewriter.Colors{tablewriter.FgHiRedColor, tablewriter.Bold, tablewriter.FgHiWhiteColor})
+	table.SetColumnColor(tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiGreenColor},
+		tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiBlackColor})
 	for index, cmd := range cmdSlice {
-		fmt.Println(cmdList[index] + " -> " + cmd)
+		table.Append([]string{cmd, cmdList[index]})
 	}
+	table.Render()
 }
 func main() {
 	prepareCmds()
-	printUsage()
+	showCommands()
+	//printUsage()
 	startTerm()
 }
