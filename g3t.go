@@ -48,8 +48,8 @@ func searchInSlice(slice []string, query string) bool{
 }
 
 func prepareCmds(){
-	parseGitCmd := "git help | grep '^  *[a-z]' | sed -e 's/^\\s*//' " +
-					"-e 's/ *[A-Z].*//'"
+	removeSpaces := "sed -e 's/^\\s*//' -e 's/ *[A-Z].*//'"
+	parseGitCmd := "git help | grep '^  *[a-z]' | " + removeSpaces
 	cmdStr := execCmd(parseGitCmd, false)
 	cmdList = strings.Split(cmdStr, "\n")
 	for _, cmd := range cmdList {
@@ -63,6 +63,9 @@ func prepareCmds(){
 			}
 		}
 	}
+	//parseGitBranch := "git branch | tr -d '*' | " + removeSpaces
+	//parseGitRemote := "git remote"
+
 }
 
 func buildCmd(line string) string {
