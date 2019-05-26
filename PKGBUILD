@@ -14,7 +14,7 @@ sha512sums=('5c45948f7e6b6357aa6305c942bb388f9693908991049b2b279bbf1f27bb2de3df1
 validpgpkeys=('4FA2082362FE73AD03B88830A8DC7067E25FBABB') # Damien Goutte-Gattat <dgouttegattat@incenp.org>
 
 prepare() {
-  cp -vf /usr/share/libtool/build-aux/config.{guess,sub} "$srcdir/$pkgname-$pkgver/config/" || exit 1
+  cp -vf /usr/share/libtool/build-aux/config.{guess,sub} "$srcdir/$pkgname-$pkgver/config/"
 }
 
 build() {
