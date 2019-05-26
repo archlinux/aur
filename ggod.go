@@ -127,14 +127,22 @@ func main() {
 	//startTerm()
 
 	shell := ishell.New()
-	shell.Println(".:|GGod|:.")
+	shell.Println("GGod")
 	shell.SetPrompt("> ")
 
     shell.AddCmd(&ishell.Cmd{
-        Name: "greet",
-        Help: "greet user",
+        Name: "clear",
+        Help: "clear the terminal",
         Func: func(c *ishell.Context) {
-            c.Println("Hello", strings.Join(c.Args, " "))
+            execCmd("clear", true)
+        },
+	})
+
+	shell.AddCmd(&ishell.Cmd{
+        Name: "?",
+        Help: "display help",
+        Func: func(c *ishell.Context) {
+            c.Println(c.HelpText())
         },
 	})
 	
