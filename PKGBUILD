@@ -65,7 +65,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-_srcver=5.1.4-arch1
+_srcver=5.1.5-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
