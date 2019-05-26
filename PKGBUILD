@@ -2,7 +2,7 @@
 
 _pkgbase='wgtools'
 pkgname="python-${_pkgbase}-git"
-pkgver=latest
+pkgver=r11.f986439
 pkgrel=1
 pkgdesc='Python bindings for wireguard-tools'
 arch=('any')
@@ -10,10 +10,9 @@ url="https://github.com/coNQP/${_pkgbase}"
 license=('GPLv3')
 depends=('python' 'wireguard-tools')
 makedepends=('git')
+provides=("python-${_pkgbase}")
 source=("${_pkgbase}::git+${url}.git")
 md5sums=('SKIP')
-pkgdir='pkg'
-srcdir='src'
 
 
 pkgver() {
