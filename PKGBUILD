@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 _npmname=webpack
 pkgname=nodejs-webpack
-pkgver=4.32.0
+pkgver=4.32.2
 pkgrel=1
 pkgdesc="JavaScript bundler (CommonJs, AMD, ES6 modules, CSS, Images, JSON, CoffeeScript, LESS)"
 arch=(any)
@@ -12,7 +12,7 @@ optdepends=()
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('f7c64853e33ebd82834b471a85b1e90dca787d2bf86d8468c19f75f379ebebd6')
+sha256sums=('6aacb0208e3ee47f61ec944e67f5a9facca6e65602492f1f345061a2854c83e2')
 
 package() {
   cd $srcdir
