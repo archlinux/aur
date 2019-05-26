@@ -31,8 +31,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-  make all
-  make systemd-sslh-generator
+  make -j`nproc` all USELIBWRAP=true USELIBCONFIG=true USESYSTEMD=true 
 }
 
 package() {
