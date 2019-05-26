@@ -1,0 +1,12 @@
+pkgbase = echo-meme
+	pkgdesc = Print your message as a part of various Japanese internet memes.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/greymd/echo-meme
+	arch = any
+	license = MIT
+	source = echo-meme-1.1.0.tar.gz::https://github.com/greymd/echo-meme/archive/v1.1.0.tar.gz
+	sha256sums = 7f013cb66e38bfacac0f213409afc9e263c43a0f89d220f73c81bbbe80a99a35
+
+pkgname = echo-meme
+
