@@ -2,7 +2,7 @@
 
 pkgname=('python-django-post-office' 'python2-django-post-office')
 pkgbase='python-django-post-office'
-pkgver='3.2.0'
+pkgver='3.2.1'
 pkgrel=1
 pkgdesc='A simple app to send and manage your emails in Django'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/ui/django-post_office'
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("$pkgbase.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ac8a9dfe2090de0bf6450d50060134cc8a671030aedbbdacf123e7ae39be5923')
+sha256sums=('f9c8767a577001f0a074612c5af562addf10d3631645a11399cb9a72c0cb5318')
 
 package_python-django-post-office() {
     depends=('python-django-jsonfield')
