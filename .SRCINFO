@@ -1,7 +1,7 @@
 pkgbase = libreswan
 	pkgdesc = IPsec implementation with IKEv1 and IKEv2 keying protocols
 	pkgver = 3.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libreswan.org/
 	arch = i686
 	arch = x86_64
