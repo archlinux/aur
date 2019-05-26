@@ -3,8 +3,8 @@
 pkgname="gws2-git"
 _reponame="gws2"
 _binname="gws"
-pkgver=0.1.0.r2.g3c97a0e
-pkgrel=2
+pkgver=0.1.0.r3.ga26c963
+pkgrel=1
 pkgdesc="Colorful KISS helper for git workspaces"
 url="https://github.com/emlun/${_reponame}"
 license=('GPL3')
@@ -36,6 +36,11 @@ build() {
   for shell in bash fish zsh; do
     "${srcdir}/${_reponame}/target/release/${_binname}" completions "${shell}" > "${srcdir}/completions/${shell}"
   done
+}
+
+check() {
+  cd "${srcdir}/${_reponame}"
+  cargo test
 }
 
 package() {
