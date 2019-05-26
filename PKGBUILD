@@ -2,7 +2,7 @@
 
 pkgname='wgmgr'
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Manages WireGuard PKIs for VPN-like deployments'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"

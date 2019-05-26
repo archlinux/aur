@@ -1,7 +1,7 @@
 pkgbase = wgmgr
 	pkgdesc = Manages WireGuard PKIs for VPN-like deployments
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coNQP/wgmgr
 	arch = any
 	license = GPLv3
