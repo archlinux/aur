@@ -1,7 +1,8 @@
 # Maintainer: Ron B.S <ronthecookie0101 on gmail --OR-- me AT ronthecookie DOT me >
 
 pkgname=6cord
-pkgver=8.1
+# https://gitlab.com/diamondburned/6cord/releases
+pkgver=8.3
 pkgrel=1
 pkgdesc='Discord, TUI and SIXEL.'
 arch=('x86_64')
