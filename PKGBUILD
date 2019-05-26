@@ -2,7 +2,7 @@
 
 pkgname=dovecot-fts-xapian
 _reponame=fts-xapian
-pkgver=1.0.4
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="Dovecot FTS plugin based on Xapian"
@@ -13,7 +13,7 @@ depends=(dovecot xapian-core icu)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grosjo/${_reponame}/archive/${_reponame}-${pkgver}.tar.gz")
 
-sha256sums=('0bc6aae3dca7ebc71a3b418995387c7a678ba8055e17bdb3a956559d50b17884')
+sha256sums=('9f605f20cf696122b6788868419104be7a74ceabb8192d83834adb14e49604a9')
 
 build() {
 	cd "${_reponame}-${_reponame}-${pkgver}"
