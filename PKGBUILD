@@ -4,7 +4,7 @@ _npmname=instant-markdown-d
 _npmver=0.1.0
 pkgname=vim-instant-markdown
 pkgver=0.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Instant Markdown previews from vim in a browser"
 arch=(any)
 license=(unknown)
@@ -23,7 +23,6 @@ package() {
   mkdir -p "$pkgdir/usr/share/vim/vimfiles/autoload/"
   mkdir -p "$pkgdir/usr/share/vim/vimfiles/after/ftplugin/markdown"
 
-  cd "$pkgdir/usr/lib/node_modules/"
 	npm install                    \
 	    --global                     \
 			--no-save                    \
