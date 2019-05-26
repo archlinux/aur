@@ -4,7 +4,7 @@ pkgname="gws2-git"
 _reponame="gws2"
 _binname="gws"
 pkgver=0.1.0.r3.ga26c963
-pkgrel=3
+pkgrel=4
 pkgdesc="Colorful KISS helper for git workspaces"
 url="https://github.com/emlun/${_reponame}"
 license=('GPL3')
@@ -45,7 +45,7 @@ check() {
 
 package() {
   install -D -m 755 "${srcdir}/${_reponame}/target/release/${_binname}" "${pkgdir}/usr/bin/${_binname}"
-  install -D -m 755 "${srcdir}/completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
-  install -D -m 755 "${srcdir}/completions/fish" "${pkgdir}/usr/share/fish/completions/${_binname}.fish"
-  install -D -m 755 "${srcdir}/completions/zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
+  install -D -m 644 "${srcdir}/completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
+  install -D -m 644 "${srcdir}/completions/fish" "${pkgdir}/usr/share/fish/completions/${_binname}.fish"
+  install -D -m 644 "${srcdir}/completions/zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
 }
