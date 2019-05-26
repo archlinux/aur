@@ -3,11 +3,11 @@
 gitname=taxi
 author=Alecaddd
 pkgname=("${gitname}-git")
-pkgver=latest
+pkgver=r223.dcbe0cf
 pkgrel=1
 pkgdesc="Taxi is a native Linux FTP client designed for elementary OS. If you like Taxi and you want to support its development, consider donating via https://www.paypal.me/alecaddd or https://www.patreon.com/alecaddd"
 arch=('i686' 'x86_64')
-url="https://github.com/${author}/${gitname}"
+url="https://github.com/${author}/${gitname}#dev"
 license=('GPL3')
 depends=('gtk3' 'vala' 'granite' 'glib2' 'libsoup' 'libsecret')
 optdepends=()
