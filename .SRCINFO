@@ -17,7 +17,7 @@ pkgbase = taxi-git
 	depends = libsecret
 	provides = taxi
 	conflicts = taxi
-	source = git+https://github.com/Alecaddd/taxi.git#dev
+	source = git+https://github.com/Alecaddd/taxi.git#branch=dev
 	md5sums = SKIP
 
 pkgname = taxi-git

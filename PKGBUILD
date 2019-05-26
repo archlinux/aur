@@ -14,7 +14,7 @@ optdepends=()
 makedepends=('git' 'meson' 'ninja')
 provides=("${gitname}")
 conflicts=("${gitname}")
-source=("git+${url}.git#dev")
+source=("git+${url}.git#branch=dev")
 md5sums=('SKIP')
 
 pkgver() {
