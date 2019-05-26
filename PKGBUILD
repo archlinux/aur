@@ -12,16 +12,16 @@
 #   git -C dbus remote set-url origin https://gitlab.freedesktop.org/dbus/dbus.git
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
-pkgver=1.12.12
+pkgver=1.12.14
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64)
 license=(GPL custom)
 groups=('selinux')
-depends=(libsystemd-selinux expat audit)
+depends=(systemd-libs-selinux expat audit)
 makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive graphviz audit libselinux)
-_commit=d4f8423bbff9b3c5fca2d8009c28d1cff4652788  # tags/dbus-1.12.12^0
+_commit=a330c6184fe9c7f67495f8d4563b11d51a6dccc7  # tags/dbus-1.12.14^0
 source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=$_commit")
 sha256sums=('SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -39,14 +39,6 @@ prepare() {
   printf '%s\n' >>Doxyfile.in \
     HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
 
-  # Fix compatibility with autoconf-archive v2019.01.06
-  # https://gitlab.freedesktop.org/dbus/dbus/issues/249
-  echo 'm4_pattern_allow(AX_CHECK_GNU_MAKE_HEADLINE)' >> configure.ac
-
-  # Remove incompatible @CODE_COVERAGE_RULES@ from Makefiles
-  # Otherwise this macro is kept in generated Makefiles
-  sed 's/^@CODE_COVERAGE_RULES@$//' -i Makefile.am ./*/Makefile.am
-
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -56,13 +48,20 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    runstatedir=/run \
     --libexecdir=/usr/lib/dbus-1.0 \
-    --with-system-socket=/run/dbus/system_bus_socket \
-    --with-dbus-session-bus-connect-address=unix:runtime=yes \
+    runstatedir=/run \
+    --with-console-auth-dir=/run/console/ \
     --with-dbus-user=dbus \
+    --with-system-pid-file=/run/dbus/pid \
+    --with-system-socket=/run/dbus/system_bus_socket \
+    --with-systemdsystemunitdir=/usr/lib/systemd/system \
+    --enable-inotify \
+    --enable-systemd \
     --enable-user-session \
     --disable-static \
+    --disable-verbose-mode \
+    --disable-asserts \
+    --disable-checks \
     --without-x \
     --enable-selinux --enable-libaudit
   make
