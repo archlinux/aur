@@ -1,6 +1,6 @@
 pkgbase = taxi-git
 	pkgdesc = Taxi is a native Linux FTP client designed for elementary OS. If you like Taxi and you want to support its development, consider donating via https://www.paypal.me/alecaddd or https://www.patreon.com/alecaddd
-	pkgver = latest
+	pkgver = r223.dcbe0cf
 	pkgrel = 1
 	url = https://github.com/Alecaddd/taxi
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = taxi-git
 	depends = libsecret
 	provides = taxi
 	conflicts = taxi
-	source = git+https://github.com/Alecaddd/taxi.git
+	source = git+https://github.com/Alecaddd/taxi.git#dev
 	md5sums = SKIP
 
 pkgname = taxi-git
