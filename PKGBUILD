@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel
-pkgver=2.2.2
+pkgver=2.2.4
 pkgrel=1
 pkgdesc='The Pantheon Top Panel'
 arch=(x86_64)
