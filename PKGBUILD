@@ -2,7 +2,7 @@
 
 pkgname=psimd-git
 pkgver=r25.90a938f
-pkgrel=1
+pkgrel=2
 pkgdesc='Header-only library for portable 128-bit SIMD intrinsics (git version)'
 arch=('any')
 url='https://github.com/Maratyszcza/psimd/'
@@ -10,18 +10,18 @@ license=('MIT')
 makedepends=('git')
 provides=('psimd')
 conflicts=('psimd')
-source=("$pkgname"::'git+https://github.com/Maratyszcza/psimd.git')
+source=('git+https://github.com/Maratyszcza/psimd.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd psimd
     
     # git, no tags available
     printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "$pkgname"
+    cd psimd
     
     # headers
     mkdir -p "${pkgdir}/usr/include"

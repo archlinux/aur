@@ -1,14 +1,14 @@
 pkgbase = psimd-git
 	pkgdesc = Header-only library for portable 128-bit SIMD intrinsics (git version)
 	pkgver = r25.90a938f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Maratyszcza/psimd/
 	arch = any
 	license = MIT
 	makedepends = git
 	provides = psimd
 	conflicts = psimd
-	source = psimd-git::git+https://github.com/Maratyszcza/psimd.git
+	source = git+https://github.com/Maratyszcza/psimd.git
 	sha256sums = SKIP
 
 pkgname = psimd-git
