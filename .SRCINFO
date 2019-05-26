@@ -1,6 +1,6 @@
 pkgbase = rst2pdf
 	pkgdesc = Convert reStructured Text to PDF via ReportLab.
-	pkgver = 0.95.dev0+1+6685e394
+	pkgver = 0.95.dev0+2+6685e39
 	pkgrel = 1
 	url = https://rst2pdf.org
 	arch = any
