@@ -4,7 +4,7 @@ pkgname="gws2-git"
 _reponame="gws2"
 _binname="gws"
 pkgver=0.1.0.r2.g3c97a0e
-pkgrel=1
+pkgrel=2
 pkgdesc="Colorful KISS helper for git workspaces"
 url="https://github.com/emlun/${_reponame}"
 license=('GPL3')
@@ -13,7 +13,7 @@ depends=('git')
 makedepends=('rust' 'cargo')
 provides=("gws")
 conflicts=("gws")
-source=("${_reponame}::git+https://github.com/emlun/${_reponame}.git#branch=tmp")
+source=("${_reponame}::git+https://github.com/emlun/${_reponame}.git#branch=master")
 md5sums=('SKIP')
 validpgpkeys=('BFD86BE9948C849A')
 
