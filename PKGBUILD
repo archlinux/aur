@@ -10,13 +10,13 @@
 
 pkgname=shadow-selinux
 pkgver=4.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('x86_64')
 url='https://github.com/shadow-maint/shadow'
 license=('BSD')
 groups=('selinux')
-depends=('bash' 'pam-selinux' 'acl' 'libsemanage')
+depends=('bash' 'pam-selinux' 'acl' 'audit' 'libaudit.so' 'libsemanage')
 makedepends=('git' 'libxslt' 'docbook-xsl' 'gnome-doc-utils')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
