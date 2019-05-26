@@ -1,7 +1,7 @@
 pkgbase = ocaml-zarith
 	pkgdesc = Implements arithmetic and logical operations over arbitrary-precision integers and rational numbers
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml/Zarith
 	arch = x86_64
 	arch = i686
