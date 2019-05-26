@@ -1,13 +1,16 @@
 pkgbase = scdtools
 	pkgdesc = Some tools to play with GnuPG’s smartcard daemon and OpenPGP smartcards.
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://incenp.org/dvlpt/scdtools.html
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc
 	makedepends = libtool
 	depends = gnupg
+	depends = libgcrypt>=1.6.0
+	depends = libassuan>=2.1.0
+	depends = libgpg-error>=1.11
 	source = https://git.incenp.org/damien/scdtools/releases/download/scdtools-0.3.5/scdtools-0.3.5.tar.gz
 	source = https://git.incenp.org/damien/scdtools/releases/download/scdtools-0.3.5/scdtools-0.3.5.tar.gz.asc
 	validpgpkeys = 4FA2082362FE73AD03B88830A8DC7067E25FBABB
