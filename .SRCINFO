@@ -1,6 +1,6 @@
 pkgbase = ypc-git
 	pkgdesc = Convert spotify/deezer/text playlists to youtube urls or audio/video files
-	pkgver = 1.2
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/dbeley/ypc
 	arch = any
