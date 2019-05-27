@@ -1,0 +1,22 @@
+pkgbase = xfce4-weather-plugin-devel
+	pkgdesc = A weather plugin for the Xfce4 panel
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://goodies.xfce.org/projects/panel-plugins/xfce4-weather-plugin
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies-devel
+	license = GPL2
+	makedepends = intltool
+	depends = xfce4-panel
+	depends = libxml2
+	depends = libsoup
+	depends = hicolor-icon-theme
+	depends = upower
+	provides = xfce4-weather-plugin=0.9.1
+	conflicts = xfce4-weather-plugin
+	source = https://archive.xfce.org/src/panel-plugins/xfce4-weather-plugin/0.9/xfce4-weather-plugin-0.9.1.tar.bz2
+	sha256sums = 7cdc18b8df759dee4ceaaf6ce303eff7fda48e247dbc26b78142929213506cfd
+
+pkgname = xfce4-weather-plugin-devel
+
