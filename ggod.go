@@ -4,8 +4,9 @@ import (
 	"io"
     "fmt"
 	"os"
-	"os/exec"
+	"flag"
 	"bytes"
+	"os/exec"
 	"strings"
 	"github.com/carmark/pseudo-terminal-go/terminal"
 	"github.com/olekukonko/tablewriter"
@@ -151,7 +152,16 @@ func showCommands(){
 	}
 	table.Render()
 }
+func showVersion(){
+	fmt.Println("xx")
+}
 func main() {
-	prepareCmds()
-	startTerm()
+	versionFlag := flag.Bool("v", false, "Show version information")
+	flag.Parse()
+	if(*versionFlag){
+		showVersion()	
+	}else{
+		prepareCmds()
+		startTerm()
+	}
 }
