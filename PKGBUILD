@@ -3,7 +3,7 @@
 _pkgname=xfce4-appfinder
 pkgname=${_pkgname}-devel
 pkgver=4.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An application finder for Xfce"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
