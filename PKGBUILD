@@ -40,4 +40,11 @@ build() {
 
 package() {
 	install -Dm755 "gopath/src/github.com/muesli/telephant/deploy/linux/telephant" "$pkgdir/usr/bin/telephant"
+	install -Dm644 "gopath/src/github.com/muesli/telephant/assets/telephant.desktop" "$pkgdir/usr/share/applications/telephant.desktop"
+	
+	for icon_size in 8 16 32 64 128 256 512; do
+		icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
+		install -d "$icon_dir"
+		install -m644 "gopath/src/github.com/muesli/telephant/assets/icons/telephant-${icon_size}.png" "$icon_dir/telephant.png"
+	done
 }
