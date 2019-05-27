@@ -1,6 +1,6 @@
 pkgbase = dbus-x11
 	pkgdesc = Freedesktop.org message bus system (with x11 autolaunch)
-	pkgver = 1.12.12
+	pkgver = 1.12.14
 	pkgrel = 1
 	url = https://wiki.freedesktop.org/www/Software/dbus/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = dbus-x11
 	makedepends = autoconf-archive
 	makedepends = graphviz
 	makedepends = libx11
-	depends = libsystemd
+	depends = systemd-libs
 	depends = expat
-	source = git+https://anongit.freedesktop.org/git/dbus/dbus#commit=d4f8423bbff9b3c5fca2d8009c28d1cff4652788
+	source = git+https://anongit.freedesktop.org/git/dbus/dbus#commit=a330c6184fe9c7f67495f8d4563b11d51a6dccc7
 	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
 	validpgpkeys = 3C8672A0F49637FE064AC30F52A43A1E4B77B059
 	sha256sums = SKIP

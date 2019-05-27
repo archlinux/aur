@@ -6,15 +6,15 @@
 
 pkgbase=dbus-x11
 pkgname=(dbus-x11 dbus-x11-docs)
-pkgver=1.12.12
+pkgver=1.12.14
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system (with x11 autolaunch)"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64)
 license=(GPL custom)
-depends=(libsystemd expat)
+depends=(systemd-libs expat)
 makedepends=(systemd xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive graphviz libx11)
-_commit=d4f8423bbff9b3c5fca2d8009c28d1cff4652788  # tags/dbus-1.12.12^0
+_commit=a330c6184fe9c7f67495f8d4563b11d51a6dccc7  # tags/dbus-1.12.14^0
 source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit")
 sha256sums=('SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
@@ -27,7 +27,6 @@ pkgver() {
 
 prepare() {
   cd dbus
-
   # Reduce docs size
   printf '%s\n' >>Doxyfile.in \
     HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
@@ -41,13 +40,20 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    runstatedir=/run \
     --libexecdir=/usr/lib/dbus-1.0 \
-    --with-system-socket=/run/dbus/system_bus_socket \
-    --with-dbus-session-bus-connect-address=unix:runtime=yes \
+    runstatedir=/run \
+    --with-console-auth-dir=/run/console/ \
     --with-dbus-user=dbus \
+    --with-system-pid-file=/run/dbus/pid \
+    --with-system-socket=/run/dbus/system_bus_socket \
+    --with-systemdsystemunitdir=/usr/lib/systemd/system \
+    --enable-inotify \
+    --enable-systemd \
     --enable-user-session \
     --disable-static \
+    --disable-verbose-mode \
+    --disable-asserts \
+    --disable-checks \
     --enable-x11-autolaunch
   make
 }
