@@ -1,4 +1,4 @@
-/*.tar.xz
-/pkg
-/src
-/operator-sdk*
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
