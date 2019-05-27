@@ -11,6 +11,7 @@ pkgdesc="Commonly used Xfce widgets among Xfce applications (Development version
 arch=('i686' 'x86_64')
 url="https://git.xfce.org/xfce/libxfce4ui/tree/README"
 license=('GPL2')
+groups=('xfce4-devel')
 depends=('libxfce4util' 'gtk2' 'xfconf' 'libsm' 'startup-notification'
          'hicolor-icon-theme' 'gtk3')
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'vala' 'glade')

@@ -5,6 +5,7 @@ pkgbase = libxfce4ui-devel
 	url = https://git.xfce.org/xfce/libxfce4ui/tree/README
 	arch = i686
 	arch = x86_64
+	groups = xfce4-devel
 	license = GPL2
 	makedepends = intltool
 	makedepends = gtk-doc
