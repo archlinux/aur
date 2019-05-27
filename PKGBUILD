@@ -9,13 +9,14 @@
 _pkgbase=rts5139
 pkgname=${_pkgbase}-dkms
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver to support Realtek RTS5139 SD Card Reader"
 arch=('i686' 'x86_64')
 url="http://www.realtek.com.tw/"
 license=('GPL2')
 depends=('dkms')
-source=("rts5139::git+https://github.com/aurorafossorg/rts5139.git")
+makedepends=('git')
+source=("${_pkgbase}::git+https://github.com/aurorafossorg/rts5139.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 package() {
