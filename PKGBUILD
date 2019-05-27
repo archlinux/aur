@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=9.0.0_r317391.9a33dc9fb82
+pkgver=9.0.0_r317455.ae4ec62cc9a
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -33,6 +33,10 @@ sha512sums=('SKIP'
             '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
             '2fdbae0b62d33411beaf191920ff280f83fa80fd505a71077671027f27ed8c61c5867de3e6ee6f26734c7605037e86796404212182f8ffa71f4af6ed2c316a40')
 
+# NINJAFLAGS is an env var used to pass commandline options to ninja
+# NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
+
+            
 pkgver() {
     cd llvm-project/llvm
 
@@ -88,21 +92,12 @@ build() {
         -D LLVM_ENABLE_BINDINGS=OFF \
         -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang" \
 
-
-    if [[ ! $NINJAFLAGS ]]; then
-        ninja 
-    else
         ninja "$NINJAFLAGS"
-    fi
 }
 
 check() {
     cd _build
-    if [[ ! $NINJAFLAGS ]]; then
-        ninja check check-clang check-clang-tools
-    else
-        ninja "$NINJAFLAGS" check check-clang check-clang-tools
-    fi
+    ninja "$NINJAFLAGS" check check-clang check-clang-tools
 }
 
 package_llvm-minimal-git() {
@@ -114,7 +109,7 @@ package_llvm-minimal-git() {
     replaces=(lone_wolf-llvm-git)
 
     cd _build
-    DESTDIR="$pkgdir" ninja install
+    DESTDIR="$pkgdir" ninja "$NINJAFLAGS" install
 
     # Include lit for running lit-based tests in other projects
     pushd "$srcdir"/llvm-project/llvm/utils/lit 
