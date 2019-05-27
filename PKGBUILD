@@ -3,7 +3,7 @@
 # Previous Maintainer: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=libdart
-pkgver=6.8.5
+pkgver=6.9.0
 pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ optdepends=('bullet: Bullet collision detection support'
 makedepends=('cmake')
 _name=dart
 source=(https://github.com/dartsim/${_name}/archive/v${pkgver}.tar.gz)
-sha256sums=('f0ee1c396758d4b6c77dbb5ada186f1f4bf8de409537f3cee93c66c8c3728cb0')
+sha256sums=('8351c3fe53bd5251235d28ce15cc2796e529125b7990e49a715f4f567021aaed')
 
 _buildtype="Release"
 
