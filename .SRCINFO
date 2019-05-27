@@ -1,7 +1,7 @@
 pkgbase = libxfce4util-devel
 	pkgdesc = Basic utility non-GUI functions for Xfce
 	pkgver = 4.13.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64

@@ -3,7 +3,7 @@
 _pkgname=libxfce4util
 pkgname=${_pkgname}-devel
 pkgver=4.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Basic utility non-GUI functions for Xfce"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
