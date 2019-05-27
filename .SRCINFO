@@ -13,6 +13,8 @@ pkgbase = telephant-git
 	makedepends = glib2
 	makedepends = mesa
 	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols2
 	provides = telephant
 	conflicts = telephant
 

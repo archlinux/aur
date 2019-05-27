@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/muesli/telephant"
 license=('MIT')
 groups=()
-depends=('qt5-base')
+depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2')
 makedepends=('go' 'pkgconf' 'qt5-tools' 'git' 'libpulse' 'glib2' 'mesa')
 checkdepends=()
 optdepends=()
@@ -30,7 +30,6 @@ build() {
 
 	# Qt Bindings
 	go get -u -v -tags=no_env github.com/therecipe/qt/cmd/...
-	$(go env GOPATH)/bin/qtsetup -test=false
 
 	# Building Telephant
 	go get -d -v github.com/muesli/telephant
