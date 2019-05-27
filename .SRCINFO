@@ -13,7 +13,9 @@ pkgbase = release-bot-git
 	depends = twine
 	depends = python-wheel
 	depends = python-pyjwt
+	depends = python-flask
 	depends = python-gitchangelog
+	depends = python-pystache
 	source = git+https://github.com/user-cont/release-bot#branch=master
 	md5sums = SKIP
 
