@@ -1,0 +1,36 @@
+pkgbase = amino-git
+	pkgdesc = Lightweight robotics utility library
+	pkgver = r1538.c979e7f
+	pkgrel = 1
+	url = https://www.github.com/golems/amino
+	arch = i686
+	arch = x86_64
+	license = BSD 3-Clause
+	depends = gcc
+	depends = blas
+	depends = lapack
+	depends = maxima
+	depends = flex
+	depends = autoconf
+	depends = autoconf-archive
+	depends = automake
+	depends = libtool
+	depends = git
+	optdepends = blender: used to convert mesh files
+	optdepends = sbcl: robot models
+	optdepends = quicklisp: robot models
+	optdepends = freeglut: GUI/visualization
+	optdepends = sdl2: GUI/visualization
+	optdepends = povray: raytracing
+	optdepends = ffmpeg: raytracing
+	optdepends = fcl: motion planning
+	optdepends = ompl: motion planning
+	optdepends = jdk-openjdk: java bindings
+	optdepends = coin-or-clp: optimization
+	optdepends = glpk: optimization
+	optdepends = lpsolve: optimization
+	source = git+https://github.com/golems/amino.git
+	md5sums = SKIP
+
+pkgname = amino-git
+
