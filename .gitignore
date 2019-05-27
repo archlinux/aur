@@ -1,0 +1,7 @@
+*.xz
+*.xz.sig
+pkg
+src
+clean.sh
+checksum.sh
+*.part
