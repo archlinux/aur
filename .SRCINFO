@@ -1,7 +1,7 @@
 pkgbase = cp2k
 	pkgdesc = A quantum chemistry and solid state physics software package
 	pkgver = 6.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.cp2k.org
 	arch = x86_64
 	license = GPL2
@@ -13,10 +13,13 @@ pkgbase = cp2k
 	depends = fftw
 	depends = cp2k-data
 	depends = scalapack
-	depends = libxc>=4.0.4
-	depends = libint>=1.1.4
+	depends = libxc
+	depends = libint
 	optdepends = cuda: GPU calculations support
 	optdepends = plumed-mpi: enhanced sampling support
+	provides = cp2k
+	conflicts = cp2k-bin
+	conflicts = cp2k-git
 	source = https://github.com/cp2k/cp2k/archive/v6.1.0.tar.gz
 	source = basic.psmp
 	source = cuda_plumed.psmp
