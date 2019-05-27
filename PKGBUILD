@@ -1,6 +1,6 @@
 pkgbase=ninfs
 pkgname=(ninfs ninfs-gui)
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="FUSE filesystem Python scripts for Nintendo console files"
 arch=($CARCH)
@@ -10,7 +10,7 @@ makedepends=('python-setuptools' 'python-pycryptodomex' 'unzip')
 options=(!strip)
 _source=("${pkgbase}-${pkgver}-src.zip"{,.asc}"::${url}/releases/download/v${pkgver}/${pkgbase}-${pkgver}-src.zip"{.asc,''})
 source=(${_source[@]:1:2})
-sha256sums=('e6c5d77cb943f7aa8160f5012c30c7fdd56295f04e8927e5d4116e8e78e230a7'
+sha256sums=('27a93b1ff26afe826611937b8806fc880ef5f3768320ca1f894525bc760cbe47'
             'SKIP')
 validpgpkeys=('E6284E1064CC2199B304B68990725113CA578EAA')
 noextract=("${pkgbase}-${pkgver}-src.zip")
