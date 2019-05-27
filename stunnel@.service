@@ -1,0 +1,20 @@
+[Unit]
+Description=TLS tunnel for %I
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStartPre=mkdir -p /run/stunnel/%I/
+ExecStartPre=mkdir -p /var/log/stunnel/%I/
+WorkingDirectory=/etc/stunnel/
+ExecStart=/usr/bin/stunnel %I.conf
+PIDFile=/run/stunnel/%I/stunnel.pid
+ExecStopPost=rm -rf /run/stunnel/%I/
+CapabilityBoundingSet=CAP_IPC_LOCK CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_SETGID CAP_SETUID CAP_SYS_CHROOT CAP_DAC_OVERRIDE CAP_AUDIT_WRITE
+ProtectSystem=true
+ProtectHome=true
+KillMode=processRestartSec=5s
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
