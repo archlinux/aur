@@ -1,18 +1,17 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
-pkgname='mcipc-git'
-pkgver=latest
+_pkgbase='mcipc'
+pkgname="${_pkgbase}-git"
+pkgver=r193.5f04681
 pkgrel=1
 pkgdesc='Python 3 library and scripts for the RCON and Query protocol'
 arch=('any')
-url='https://gitlab.com/coNQP/mcipc'
+url="https://github.com/coNQP/${_pkgbase}"
 license=('GPLv3')
 depends=('python' 'python-docopt')
-makedepends=('git' 'python')
+makedepends=('git' 'python' 'python-setuptools' 'python-setuptools-git')
 source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
-pkgdir='pkg'
-srcdir='src'
 
 
 pkgver() {
