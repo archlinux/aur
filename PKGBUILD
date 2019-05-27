@@ -3,7 +3,7 @@
 pkgname=guile-git
 epoch=1
 _majorver=2.9
-pkgver=2.9.1.1.gbb0860a0e
+pkgver=2.9.2.r14.g1fb39929f
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64' 'aarch64')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags |sed 's+-+.+g'|sed 's+^v++'
+  git describe --tags | sed 's+-+.r+' | sed 's+^v++' | tr - .
 }
 
 build() {
