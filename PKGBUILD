@@ -7,8 +7,8 @@ pkgrel=1
 pkgdesc='file manager for xfce'
 arch=('i686' 'x86_64')
 license=('GPL')
-url='https://thunar.xfce.org'
 groups=('xfce4-devel')
+url='https://thunar.xfce.org'
 depends=('desktop-file-utils' 'exo' 'gtk3' 'hicolor-icon-theme' 'libgudev'
          'libexif' 'libnotify' 'libpng' 'libxfce4ui' 'libxfce4util')
 makedepends=('intltool' 'xfce4-panel' 'gtk-doc' 'gobject-introspection') # 'xfce4-dev-tools')
