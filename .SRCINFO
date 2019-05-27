@@ -1,13 +1,11 @@
 pkgbase = openssh-ldap-publickey
 	pkgdesc = Wrapper for OpenSSH to store public keys inside the OpenLDAP entry.
-	pkgver = 9edb4e8
-	pkgrel = 2
+	pkgver = a3c1846
+	pkgrel = 1
 	url = https://github.com/AndriiGrytsenko/openssh-ldap-publickey
 	install = openssh-ldap-publickey.install
 	arch = any
 	license = custom
-	makedepends = pear-net-ldap2
-	makedepends = pear-net-ldap3
 	makedepends = perl-net-ldap-server
 	provides = openssh-ldap-publickey
 	conflicts = openssh-ldap-publickey

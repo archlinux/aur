@@ -1,13 +1,13 @@
 # Maintainer: TC <crt@archlinux.email>
 pkgname=openssh-ldap-publickey
-pkgver=9edb4e8
-pkgrel=2
+pkgver=a3c1846
+pkgrel=1
 pkgdesc="Wrapper for OpenSSH to store public keys inside the OpenLDAP entry."
 arch=('any')
 url="https://github.com/AndriiGrytsenko/openssh-ldap-publickey"
 license=('custom')
 install='openssh-ldap-publickey.install'
-makedepends=('pear-net-ldap2' 'pear-net-ldap3' 'perl-net-ldap-server')
+makedepends=('perl-net-ldap-server')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=('git+git://github.com/AndriiGrytsenko/openssh-ldap-publickey.git'
