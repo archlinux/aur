@@ -1,18 +1,18 @@
-# Maintainer: Robert Holt <holt.r94 at gmail dot com>
+# Maintainer: whoami <whoami@systemli.org>
+# Contributor: Robert Holt <holt.r94 at gmail dot com>
 # Contributor: Anton Larionov <diffident dot cat at gmail dot com>
 # Contributor: Yorhel <projects@yorhel.nl>
 # Contributor: archtux <antonio.arias99999@gmail.com>
 
 pkgname=ncdc
-pkgver=1.20
+pkgver=1.22
 pkgrel=1
-pkgdesc="Modern and lightweight direct connect client with a friendly ncurses interface"
-arch=('i686' 'x86_64' 'arm')
-url="http://dev.yorhel.nl/ncdc"
+pkgdesc='Modern and lightweight direct connect client with a friendly ncurses interface'
+arch=('i686' 'x86_64' 'arm' 'armv6h')
+url='http://dev.yorhel.nl/ncdc'
 license=('MIT')
-depends=('bzip2' 'gnutls' 'ncurses' 'sqlite' 'glib2' 'geoip')
+depends=('gnutls' 'sqlite' 'glib2' 'libmaxminddb')
 source=("http://dev.yorhel.nl/download/$pkgname-$pkgver.tar.gz")
-md5sums=('662fbddf17392cdb963d480af1812ae7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -26,4 +26,4 @@ package() {
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
+sha256sums=('fd41ef85cec3eca0107d83583ad25faa8804dd22d76f6da7fc157e0233b13a59')
