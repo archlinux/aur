@@ -7,12 +7,6 @@ pkgbase = macbook-lighter
 	license = GPL
 	makedepends = git
 	depends = bc
-	provides = macbook-lighter
-	provides = macbook-lighter-kbd
-	provides = macbook-lighter-screen
-	conflicts = macbook-lighter
-	conflicts = macbook-lighter-kbd
-	conflicts = macbook-lighter-screen
 	source = git+https://github.com/harttle/macbook-lighter.git
 	md5sums = SKIP
 
