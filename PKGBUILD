@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=9.0.0_r317360.3e8b9d4a57c
+pkgver=9.0.0_r317455.ae4ec62cc9a
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -29,6 +29,9 @@ makedepends=('git' 'cmake' 'ninja' 'lib32-libffi' 'lib32-zlib' 'python' 'lib32-g
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
 md5sums=('SKIP')
 sha512sums=('SKIP')
+
+# NINJAFLAGS is an env var used to pass commandline options to ninja
+# NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
 
 pkgver() {
     cd llvm-project/llvm
@@ -85,11 +88,7 @@ build() {
         -D LLVM_VERSION_SUFFIX="" \
         -D LLVM_ENABLE_BINDINGS=OFF
         
-    if [[ ! $NINJAFLAGS ]]; then
-        ninja
-    else
         ninja "$NINJAFLAGS"
-    fi
 }
 
 package_lib32-llvm-minimal-git() {
@@ -100,7 +99,7 @@ package_lib32-llvm-minimal-git() {
     replaces=(lone_wolf-lib32-llvm-git)
     
     cd _build
-    DESTDIR="$pkgdir" ninja install
+    DESTDIR="$pkgdir" ninja "$NINJAFLAGS" install
 
     # Remove files which conflict with lib32-llvm-libs
     rm "$pkgdir"/usr/lib32/{LLVMgold,lib{LLVM,LTO}}.so

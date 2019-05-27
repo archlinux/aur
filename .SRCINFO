@@ -1,5 +1,5 @@
 pkgbase = lib32-llvm-minimal-git
-	pkgver = 9.0.0_r317360.3e8b9d4a57c
+	pkgver = 9.0.0_r317455.ae4ec62cc9a
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = lib32-llvm-minimal-git
 
 pkgname = lib32-llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
-	depends = lib32-llvm-libs-minimal-git=9.0.0_r317360.3e8b9d4a57c-1
+	depends = lib32-llvm-libs-minimal-git=9.0.0_r317455.ae4ec62cc9a-1
 	depends = llvm-minimal-git
-	provides = lib32-llvm=9.0.0_r317360.3e8b9d4a57c-1
+	provides = lib32-llvm=9.0.0_r317455.ae4ec62cc9a-1
 	provides = lone_wolf-lib32-llvm-git
 	conflicts = lib32-llvm
 	replaces = lone_wolf-lib32-llvm-git
@@ -33,6 +33,6 @@ pkgname = lib32-llvm-libs-minimal-git
 	depends = lib32-libxml2
 	depends = lib32-gcc-libs
 	optdepends = lib32-llvm-libs: for LLVMgold linker
-	provides = lone_wolf-lib32-llvm-libs-git=9.0.0_r317360.3e8b9d4a57c-1
+	provides = lone_wolf-lib32-llvm-libs-git=9.0.0_r317455.ae4ec62cc9a-1
 	replaces = lone_wolf-lib32-llvm-libs-git
 
