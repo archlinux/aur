@@ -1,0 +1,22 @@
+commit 3843ec4c50c5a97b74500e9e7277c49848b91e81
+Author: Tomas Krizek <tomas.krizek@nic.cz>
+Date:   2019-04-23 11:52:42 +0200
+
+    meson: dnstap - use declare_dependency for generated sources
+    
+    Closes #461
+
+diff --git a/modules/dnstap/meson.build b/modules/dnstap/meson.build
+index c3aa0803..3a4813fb 100644
+--- a/modules/dnstap/meson.build
++++ b/modules/dnstap/meson.build
+@@ -40,8 +40,8 @@ if build_dnstap
+   dnstap_mod = shared_module(
+     'dnstap',
+     dnstap_src,
+-    dnstap_pb[1],
+     dependencies: [
++      declare_dependency(sources: dnstap_pb),
+       libfstrm,
+       libprotobuf_c,
+     ],
