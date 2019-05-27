@@ -1,0 +1,24 @@
+pkgbase = asdf-vm
+	pkgdesc = Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://asdf-vm.com
+	install = asdf-vm.install
+	arch = any
+	license = MIT
+	depends = autoconf
+	depends = automake
+	depends = libffi
+	depends = libtool
+	depends = libxslt
+	depends = libyaml
+	depends = ncurses
+	depends = openssl
+	depends = readline
+	depends = unixodbc
+	provides = asdf
+	source = https://github.com/asdf-vm/asdf/archive/v0.7.2.tar.gz
+	sha256sums = 1c53c1dfabfdbdee3c9b34e396655d963aeb362a8173e956233ac2689d696a34
+
+pkgname = asdf-vm
+
