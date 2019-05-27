@@ -1,7 +1,7 @@
 pkgbase = endless-sky
 	pkgdesc = A space exploration and combat game similar to Escape Velocity
-	pkgver = 0.9.8
-	pkgrel = 2
+	pkgver = 0.9.9
+	pkgrel = 1
 	url = http://endless-sky.github.io/
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = endless-sky
 	depends = libmad
 	optdepends = endless-sky-high-dpi: high resolution graphics assets
 	optdepends = endless-sky-editor: map editor
-	source = endless-sky-0.9.8.tar.gz::https://github.com/endless-sky/endless-sky/archive/v0.9.8.tar.gz
-	sha512sums = 521026cb70372fd380b14a1a1d296f86015e5999dc233f4d9c05d958092e1f3982d2f12e913a435d5827fb45945bd4b60bbae293c2c90685024cdae96e352078
+	source = endless-sky-0.9.9.tar.gz::https://github.com/endless-sky/endless-sky/archive/v0.9.9.tar.gz
+	sha512sums = 3e46ffea3f15b276a837b1e53b416a48564a578dc009055b35704060bf8e63df4eef368814cf75da80448e2b942a0b40212555d29286a78f22c1c877661def6d
 
 pkgname = endless-sky
 

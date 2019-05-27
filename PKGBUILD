@@ -1,10 +1,10 @@
-# Maintainer: Max Zhao <alcasa dot mz at gmail dot com>
+# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Contributor: Max Zhao <alcasa dot mz at gmail dot com>
 # Contributor: Leonard König <leonard.r.koenig at googlemail dot com>
-# Contributor: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=endless-sky
-pkgver=0.9.8
-pkgrel=2
+pkgver=0.9.9
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://endless-sky.github.io/"
 depends=(openal libpng glew hicolor-icon-theme libjpeg-turbo sdl2 libmad)
@@ -14,7 +14,7 @@ optdepends=('endless-sky-high-dpi: high resolution graphics assets'
 license=('GPL3' 'CCPL' 'custom:public domain')
 pkgdesc="A space exploration and combat game similar to Escape Velocity"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/endless-sky/endless-sky/archive/v${pkgver}.tar.gz")
-sha512sums=('521026cb70372fd380b14a1a1d296f86015e5999dc233f4d9c05d958092e1f3982d2f12e913a435d5827fb45945bd4b60bbae293c2c90685024cdae96e352078')
+sha512sums=('3e46ffea3f15b276a837b1e53b416a48564a578dc009055b35704060bf8e63df4eef368814cf75da80448e2b942a0b40212555d29286a78f22c1c877661def6d')
 
 build() {
   cd $pkgname-$pkgver
@@ -29,26 +29,17 @@ package() {
   install -Dm755 -t "${pkgdir}/usr/bin" endless-sky
 
   # resources
-  ## They explicitly want this path. Although one could workaround with '-r' param
-  install --directory "${pkgdir}/usr/share/games/${pkgname}"
-  cp -rf data images sounds "${pkgdir}/usr/share/games/${pkgname}/"
   install -Dm644 credits.txt "${pkgdir}/usr/share/games/${pkgname}/credits.txt"
   install -Dm644 keys.txt "${pkgdir}/usr/share/games/${pkgname}/keys.txt"
+  cp -rf data images sounds "${pkgdir}/usr/share/games/${pkgname}/"
 
   # .desktop
   install -Dm644 -t "${pkgdir}/usr/share/applications" endless-sky.desktop
 
   # icons
-  for res in 16 22 24 32 48 256; do
+  for res in 16 22 24 32 48 128 256 512; do
     install -Dm644 \
       "${srcdir}/${pkgname}-${pkgver}/icons/icon_${res}x${res}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}.png"
-  done
-
-  # mac icon directory has additional icons [128+512px]
-  for res in 128 512; do
-    install -Dm644 \
-      "${srcdir}/${pkgname}-${pkgver}/icons/endless-sky.iconset/icon_${res}x${res}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}.png"
   done
 
