@@ -2,7 +2,7 @@
 # Contributor: Etienne Perot <etienne at perot dot me>
 
 pkgname=parcimonie-sh-git
-pkgver=72.03713bb
+pkgver=73.551999c
 pkgrel=1
 pkgdesc='Bash reimplementation of parcimonie - Refresh your GnuPG keyring without disclosing your whole contact list to the world'
 arch=('any')
@@ -27,7 +27,7 @@ check() {
 	mkdir -p "$GNUPGHOME"
 	chmod 700 "$GNUPGHOME"
 	gpg --import < "${srcdir}/pgp-key"
-	gpgKeyId="$(gpg --batch --with-colons < "${srcdir}/pgp-key" | grep '^sub:' | head -1 | cut -d ':' -f 5)"
+	gpgKeyId="$(gpg --show-key --batch --with-colons < "$srcdir/pgp-key" | grep '^sub:' | head -1 | cut -d ':' -f 5)"
 	git log --max-count=1 --pretty="format:%H,%G?,%GK" HEAD | grep -q ",[GU],${gpgKeyId}\$"
 	returnValue="$?"
 	if [ "$returnValue" -eq 0 ]; then
