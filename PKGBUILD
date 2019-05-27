@@ -11,8 +11,8 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.2.0_devel.111212.ea1e0acfd04
-pkgrel=2
+pkgver=19.2.0_devel.111223.7a7be613983
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
@@ -30,6 +30,9 @@ md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a')
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
+
+# NINJAFLAGS is an env var used to pass commandline options to ninja
+# NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
 
 # MESA_WHICH_LLVM is an environment variable used to determine which llvm package tree is used to built mesa-git against.
 # Adding a line to makepkg.conf that sets this value is the simplest way to ensure a specific choice.
@@ -121,15 +124,11 @@ build () {
        -D tools=[]
        
     meson configure _build
-    if [[ ! $NINJAFLAGS ]]; then
-        ninja  -C _build
-    else
-        ninja  "$NINJAFLAGS" -C _build
-    fi
+    ninja  "$NINJAFLAGS" -C _build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C _build install
+  DESTDIR="$pkgdir" ninja "$NINJAFLAGS" -C _build install
 
   # indirect rendering
   ln -s /usr/lib/libGLX_mesa.so.0 ${pkgdir}/usr/lib/libGLX_indirect.so.0
