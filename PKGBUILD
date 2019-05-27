@@ -17,7 +17,7 @@ source=("https://github.com/foosel/OctoPrint/archive/${pkgver}.tar.gz"
         'octoprint.service'
         'octoprint.sysusers'
         'octoprint.tmpfiles')
-sha256sums=('16df0be946208ec32ecb123ebac9c36245915badc5f05cd9b7a13ff67040fce6'
+sha256sums=('4f9cf0d94feb1f0161a647ab23226c79655231ae248ab7dc35310fa213e6705c'
             'c6fb02d68cbfb1806c6c66134f1fa211caa1a8b7176befee53757cf546fdd4b3'
             '79d0f9fe053181eaa77f472b5235463ce217475d47fada9869f42d313b4651a9'
             '67f7844f39428058d59e2a7cb03b3d3077b5f4b0a136fc9dd123e6538a92e851')
