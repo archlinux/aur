@@ -157,7 +157,9 @@ func showVersion(){
 	fmt.Println()
 	asciiFigure := figure.NewFigure("god", "cosmic", true)
 	asciiFigure.Print()
-	fmt.Println()
+	fmt.Println("\n ~ god:v1.0")
+	fmt.Println(" ~ utility for simplifying the git usage")
+	fmt.Println(" ~ github.com/keylo99/god\n")
 }
 func main() {
 	versionFlag := flag.Bool("v", false, "Show version information")
