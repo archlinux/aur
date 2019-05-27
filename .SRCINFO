@@ -1,7 +1,7 @@
 pkgbase = libxfce4ui-devel
 	pkgdesc = Commonly used Xfce widgets among Xfce applications (Development version)
 	pkgver = 4.13.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.xfce.org/xfce/libxfce4ui/tree/README
 	arch = i686
 	arch = x86_64
