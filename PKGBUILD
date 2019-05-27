@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 pkgname=libvisio2svg
 pkgver=0.5.5
-pkgrel=1
-pkgdesc="Library/Utilities to convert Microsoft (MS) Visio Documents and Stencils (VSS and VSD) to SVG"
+pkgrel=2
+pkgdesc="VSS/VSD (Visio Stencil/Drawing) to SVG conversion library"
 arch=('x86_64')
 url="https://github.com/kakwa/libvisio2svg"
 license=('GPL')

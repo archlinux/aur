@@ -1,7 +1,7 @@
 pkgbase = libvisio2svg
-	pkgdesc = Library/Utilities to convert Microsoft (MS) Visio Documents and Stencils (VSS and VSD) to SVG
+	pkgdesc = VSS/VSD (Visio Stencil/Drawing) to SVG conversion library
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kakwa/libvisio2svg
 	arch = x86_64
 	license = GPL
