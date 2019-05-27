@@ -5,6 +5,7 @@ pkgbase = libxfce4util-devel
 	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64
+	groups = xfce4-devel
 	license = GPL2
 	makedepends = intltool
 	makedepends = gtk-doc
