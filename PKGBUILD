@@ -8,7 +8,7 @@ pkgdesc="Xfce window manager"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
 license=('GPL2')
-groups=('xfce4')
+groups=('xfce4-devel')
 depends=('libxfce4ui>=4.12.0' 'libwnck3' 'xfconf' 'hicolor-icon-theme' 'libxpresent')
 makedepends=('intltool' 'exo')
 provides=("${_pkgname}=${pkgver}")
