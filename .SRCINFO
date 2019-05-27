@@ -1,7 +1,7 @@
 pkgbase = xfce4-panel-profiles
 	pkgdesc = Simple application to manage Xfce panel layouts
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.xfce.org/apps/xfce4-panel-profiles/about/
 	arch = any
 	groups = xfce4-goodies

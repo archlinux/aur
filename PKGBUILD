@@ -3,7 +3,7 @@
 
 pkgname=xfce4-panel-profiles
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple application to manage Xfce panel layouts"
 arch=('any')
 url="https://git.xfce.org/apps/xfce4-panel-profiles/about/"
