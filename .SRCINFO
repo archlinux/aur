@@ -1,14 +1,14 @@
 pkgbase = chezmoi-bin
 	pkgdesc = Manage your dotfiles across multiple machines, securely. Pre-compiled.
-	pkgver = 1.4.1
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/twpayne/chezmoi
 	arch = x86_64
 	license = MIT
 	provides = chezmoi
 	conflicts = chezmoi
-	source_x86_64 = https://github.com/twpayne/chezmoi/releases/download/v1.4.1/chezmoi_1.4.1_linux_amd64.tar.gz
-	sha1sums_x86_64 = ee5baa2e3f8378df2df4cc4ba6730349c2a01f32
+	source_x86_64 = https://github.com/twpayne/chezmoi/releases/download/v1.5.3/chezmoi_1.5.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 45d9985d4d5a1b4283cad52328bb8c0d32bed39a7fd033c85c6da8aa56e5af32
 
 pkgname = chezmoi-bin
 
