@@ -3,7 +3,7 @@
 _appname=whalebird
 pkgname="$_appname-bin"
 pkgver=2.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An Electron based Mastodon client for Windows, Mac and Linux'
 arch=(x86_64)
 url='https://whalebird.org/'
@@ -16,5 +16,4 @@ package() {
   cp -R opt/ usr/ $pkgdir
   mkdir $pkgdir/usr/bin
   ln -s "/opt/Whalebird/whalebird" $pkgdir/usr/bin/whalebird
-  chmod 4755 $pkgdir/opt/Whalebird/chrome-sandbox
 }
