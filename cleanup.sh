@@ -31,6 +31,7 @@ fi
 rm -r src/
 rm -r pkg/
 rm v*.zip
+rm v*.zip.part
 rm *tar.xz
 
 exit 0
