@@ -5,7 +5,7 @@
 # Contributor: Thomas Baechler <thomas at archlinux dot org>
 
 pkgbase=linux-covolunablu-gaming
-_srcver=5.0.9-arch1
+_srcver=5.1.5-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -36,7 +36,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '0035f06a22dc72a0804ac049212ac1e697d4eef23c526d8aae590c90bcd9a0c0'
+            '7232a538c8bcbf336faf5ed86c11e494fbde2a8df050866c6bd3619770c2be19'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
