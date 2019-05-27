@@ -2,7 +2,7 @@
 
 pkgbase=chkuuid
 pkgname=$pkgbase
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 _remotepkgbase=$pkgbase-git
 _remotepkgrel=1
@@ -23,7 +23,7 @@ depends=('udev' 'libutil-linux')
 
 source=("$url/releases/download/v$pkgver/$_remotepkgbase-$pkgver-$_remotepkgrel-x86_64.pkg.tar.xz"{,.sig})
 
-sha256sums=('5916bc4232315e0747bf39d97f81093d9df38b39638122cf862e33a3bdbef756'
+sha256sums=('a672aead5d0e13b0a925b022b54a4d1e8f6d83df8c96858e2c01112535bf09e9'
             'SKIP'
            )
 

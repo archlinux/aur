@@ -1,6 +1,6 @@
 pkgbase = chkuuid
 	pkgdesc = Compare the UUID of each partition with those found in FSTAB.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/daltomi/chkuuid
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = chkuuid
 	depends = udev
 	depends = libutil-linux
 	conflicts = chkuuid-git
-	source = https://github.com/daltomi/chkuuid/releases/download/v1.1/chkuuid-git-1.1-1-x86_64.pkg.tar.xz
-	source = https://github.com/daltomi/chkuuid/releases/download/v1.1/chkuuid-git-1.1-1-x86_64.pkg.tar.xz.sig
+	source = https://github.com/daltomi/chkuuid/releases/download/v1.2/chkuuid-git-1.2-1-x86_64.pkg.tar.xz
+	source = https://github.com/daltomi/chkuuid/releases/download/v1.2/chkuuid-git-1.2-1-x86_64.pkg.tar.xz.sig
 	validpgpkeys = 51479755D90A2AACFA90A6551DD242462908D08B
-	sha256sums = 5916bc4232315e0747bf39d97f81093d9df38b39638122cf862e33a3bdbef756
+	sha256sums = a672aead5d0e13b0a925b022b54a4d1e8f6d83df8c96858e2c01112535bf09e9
 	sha256sums = SKIP
 
 pkgname = chkuuid
