@@ -1,0 +1,9 @@
+# blocklist
+branches:
+  except:
+  - /.*/
+
+# safelist
+branches:
+  only:
+  - /^travis.*$/
