@@ -3,7 +3,7 @@
 _pkgname=xfce4-settings
 pkgname=${_pkgname}-devel
 pkgver=4.13.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Settings manager for xfce"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
