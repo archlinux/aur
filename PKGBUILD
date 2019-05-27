@@ -2,7 +2,7 @@
 pkgname=ttf-roboto-mono
 pkgver=2.002
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc='Roboto Mono is a monospaced addition to the Roboto type family.'
 arch=('any')
 url='https://www.google.com/fonts/specimen/Roboto+Mono'
