@@ -1,7 +1,7 @@
 pkgbase = xfwm4-devel
 	pkgdesc = Xfce window manager
 	pkgver = 4.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64
