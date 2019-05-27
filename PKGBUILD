@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=clevis
 pkgver=11
-pkgrel=1
+pkgrel=2
 pkgdesc='Automated Encryption Framework'
 arch=('x86_64')
 url='https://github.com/latchset/clevis'
@@ -11,11 +11,13 @@ makedepends=('meson'
              # Optional components, must be present during build to enable corresponding features
              'asciidoc' # man page support
              'bash-completion' # Bash completion support
+             'dracut' # Dracut unlocker support
              'libpwquality' 'luksmeta' # LUKS unlocker support
              'tpm2-tools' # TPM pin support
              'udisks2') # UDisks2 unlocker support
 checkdepends=('tang')
 optdepends=('curl: Tang pin support'
+            'dracut: Dracut unlocker support'
             'libpwquality: LUKS unlocker support'
             'luksmeta: LUKS and UDisks2 unlocker support'
             'tpm2-tools: TPM2 pin support'
