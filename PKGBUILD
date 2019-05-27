@@ -4,7 +4,7 @@ pkgname='remarkable-git'
 conflicts=('remarkable')
 provides=('remarkable')
 pkgver=1.87.r27.gda0d88c
-pkgrel=2
+pkgrel=3
 pkgdesc="A free fully featured markdown editor for Linux."
 arch=('any')
 url="http://remarkableapp.github.io"
@@ -14,13 +14,14 @@ depends=('python'
          'python-gobject'
          'python-markdown'
          'python-beautifulsoup4'
-         'python-gtkspellcheck'
          'python-lxml'
+         'python-setuptools'
          'webkitgtk'
          'wkhtmltopdf'
          'gtksourceview3'
          )
 makedepends=('python' 'git')
+optdepends=('python-gtkspellcheck: Spellcheck (might cause problems)')
 
 install="remarkable.install"
 source=("git+https://github.com/jamiemcg/Remarkable.git"
