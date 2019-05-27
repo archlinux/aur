@@ -5,7 +5,7 @@ pkgname=$_pkgname-git
 pkgcom=105
 pkgsha=6951b09
 pkgver=$pkgcom.$pkgsha
-pkgrel=2
+pkgrel=3
 pkgdesc="Freedesktop.org menu and desktop icons support for Awesome WM"
 arch=("any")
 url="https://github.com/lcpz/$_pkgname"
@@ -17,6 +17,7 @@ sha256sums=("SKIP")
 source=("$_pkgname-${pkgver}.zip::https://github.com/lcpz/$_pkgname/archive/$pkgsha.zip")
 
 prepare() {
+    rm -fr "$_pkgname/$_pkgname-$pkgsha"*
     mv "$_pkgname-$pkgsha"* $_pkgname
 }
 
