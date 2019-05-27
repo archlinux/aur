@@ -1,0 +1,16 @@
+pkgbase = wlr-brightness-git
+	pkgdesc = Adjust the brightness of wlroots-based compositors such as sway.
+	pkgver = r5.b498003
+	pkgrel = 1
+	url = https://github.com/mherzberg/wlr-brightness
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glib2
+	depends = wayland
+	depends = wlroots
+	source = wlr-brightness-git::git+https://github.com/mherzberg/wlr-brightness.git
+	md5sums = SKIP
+
+pkgname = wlr-brightness-git
+
