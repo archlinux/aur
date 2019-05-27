@@ -1,0 +1,14 @@
+pkgbase = libusbp-1
+	pkgdesc = Pololu libusbp-1
+	pkgver = 1.1.0.r4.gaad19dc
+	pkgrel = 1
+	url = https://github.com/pololu/libusbp
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	source = git+https://github.com/pololu/libusbp.git
+	sha256sums = SKIP
+
+pkgname = libusbp-1
+
