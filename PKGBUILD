@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Release to Github and PyPI with an ease."
 url="https://github.com/user-cont/release-bot"
 license=("GPL3")
-depends=('python' 'python-yaml' 'python-requests' 'python-semver' 'twine' 'python-wheel' 'python-pyjwt')
+depends=('python' 'python-yaml' 'python-requests' 'python-semver' 'twine' 'python-wheel' 'python-pyjwt' 'python-flask')
 makedepends=('python-setuptools')
 arch=("i686" "x86_64")
 source=("git+https://github.com/user-cont/${pkgname}#tag=${pkgver}")
