@@ -1,6 +1,6 @@
 pkgbase = lastfm_cg-git
 	pkgdesc = Lastfm Collage Generator
-	pkgver = 1.1
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/dbeley/lastfm_cg
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = lastfm_cg-git
 	depends = python-numpy
 	depends = python-pylast
 	depends = python-requests
+	depends = python-requests-cache
 	provides = lastfm_cg
 	conflicts = lastfm_cg
 	source = git+https://github.com/dbeley/lastfm_cg
