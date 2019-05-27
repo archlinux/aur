@@ -1,8 +1,8 @@
 post_install() {
 	printf "$(tput setaf 1)$(tput bold)  ==> WARNING: $(tput sgr0)"
-	echo "Not all XFCE packages currently work well with xfconf 4.13.x. Install"
-	echo "xfconf4.12 to provide support for applications that haven't been ported."
-	echo "List of packages which are linked against legacy xfconf (4.12.x) libraries"
+	echo "List of packages which are linked against legacy xfconf (4.12.x)"
+	echo "Please rebuild manually."
+	echo "pacman -Sb <package>"
 	while read pkg; do
 		mapfile -t files < <(pacman -Qlq $pkg | grep -v /$)
 		grep -Fq 'libxfconf-0.so.2' "${files[@]}" <&- 2>/dev/null && echo "  >> $pkg"
@@ -16,6 +16,7 @@ post_upgrade() {
 post_remove() {
 	printf "$(tput setaf 1)$(tput bold)  ==> WARNING: $(tput sgr0)"
 	echo "Packages linked against uninstalled version of xfconf:"
+	echo "If you are reverting to xfconf 4.12.x reinstall or rebuild packages in this list"
 	while read pkg; do
 		mapfile -t files < <(pacman -Qlq $pkg | grep -v /$)
 		grep -Fq 'libxfconf-0.so.3' "${files[@]}" <&- 2>/dev/null && echo "  >> $pkg"
