@@ -16,7 +16,6 @@ pkgbase = asdf-vm
 	depends = openssl
 	depends = readline
 	depends = unixodbc
-	provides = asdf
 	source = https://github.com/asdf-vm/asdf/archive/v0.7.2.tar.gz
 	sha256sums = 1c53c1dfabfdbdee3c9b34e396655d963aeb362a8173e956233ac2689d696a34
 
