@@ -3,8 +3,8 @@
 _pkgname=confluence-publisher
 pkgname=${_pkgname}-git
 pkgver=v1.2.1.24.gebca4c2
-pkgrel=1
-pkgdesc='Atlassian Confluence extension for sphinx.'
+pkgrel=2
+pkgdesc='Tool for publishing Sphinx generated documents to Confluence'
 url="https://github.com/Arello-Mobile/${_pkgname}"
 arch=('any')
 license=('MIT')
