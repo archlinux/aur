@@ -1,18 +1,18 @@
 pkgbase = ninfs
 	pkgdesc = FUSE filesystem Python scripts for Nintendo console files
-	pkgver = 1.6
-	pkgrel = 4
+	pkgver = 1.6.1
+	pkgrel = 1
 	url = https://github.com/ihaveamac/ninfs
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = unzip
-	noextract = ninfs-1.6-src.zip
+	noextract = ninfs-1.6.1-src.zip
 	options = !strip
-	source = ninfs-1.6-src.zip::https://github.com/ihaveamac/ninfs/releases/download/v1.6/ninfs-1.6-src.zip
-	source = ninfs-1.6-src.zip.asc::https://github.com/ihaveamac/ninfs/releases/download/v1.6/ninfs-1.6-src.zip.asc
+	source = ninfs-1.6.1-src.zip::https://github.com/ihaveamac/ninfs/releases/download/v1.6.1/ninfs-1.6.1-src.zip
+	source = ninfs-1.6.1-src.zip.asc::https://github.com/ihaveamac/ninfs/releases/download/v1.6.1/ninfs-1.6.1-src.zip.asc
 	validpgpkeys = E6284E1064CC2199B304B68990725113CA578EAA
-	sha256sums = 27a93b1ff26afe826611937b8806fc880ef5f3768320ca1f894525bc760cbe47
+	sha256sums = b3ed8c14657e86a2c660086ade9b48726b0be37e77550f406c14091dae336593
 	sha256sums = SKIP
 
 pkgname = ninfs
@@ -29,7 +29,7 @@ pkgname = ninfs
 
 pkgname = ninfs-gui
 	install = NinFSGUI.install
-	depends = ninfs=1.6-4
+	depends = ninfs=1.6.1-1
 	depends = python-setuptools
 	depends = python-appjar
 	depends = tk
