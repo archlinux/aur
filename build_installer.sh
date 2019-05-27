@@ -9,14 +9,24 @@ version=$(grep ^pkgver PKGBUILD | cut -d= -f2) || exit 1
 release=$(grep ^pkgrel PKGBUILD | cut -d= -f2) || exit 1
 arch=$(uname -m)
 
-if [ ! -f "makeself-2.4.0.run" ] ;then
-printf "\nGet makeself...\n\n"
+mscsum="ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2"
+rcsum=""
+
+if [ ! -f "./makeself-2.4.0.run" ] ;then
+    if [ ! -x "$(which curl)" ] ;then
+	echo "Curl not found. Curl are needed for downloading makeself build tool."
+	echo " Please install curl with your Package Manager."
+	printf "\nExiting.\n\n"
+	exit 0
+    fi
+    printf "\nGet makeself...\n\n"
     curl -L -O https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run
 fi
-
-if [ ! -f "evelauncher-$version.tar.gz" ] ;then
-printf "\nGet evelauncher-$version.tar.gz...\n\n"
-    curl -L -O https://binaries.eveonline.com/evelauncher-$version.tar.gz
+rcsum="$(sha256sum ./makeself-2.4.0.run| cut -d' ' -f1)"
+if [ "$rcsum" != "$mscsum" ] ;then
+    printf "\n\nError: Checksum from makeself-2.4.0.run doesn't match!"
+    printf "\nExiting.\n\n"
+    exit 0
 fi
 
 printf "\nCreate clean build environment..."
@@ -47,40 +57,7 @@ grep -v '^#-' ../setup.sh.in >evesetup/setup.sh
 #- cp -f ../setup.sh.in evesetup/setup.sh
 #--
 chmod a+x evesetup/setup.sh
-echo "done."
-
-printf "\nExtract evelauncher-$version.tar.gz..."
-tar xf ../evelauncher-$version.tar.gz
-echo "done."
-
-printf "\nClean up evelauncher directory..."
-cd evelauncher/
-rm -f ./*.a ./*.la ./*.prl
-chmod 0755 ./*
-chmod 0644 ./*.qm ./*.conf
-echo "done."
-
-printf "\nReplace identical files with symbolic links to the original file\n\n"
-ln -sfv evelauncher.sh LogLite.sh
-libb=/dev/zero
-for lib in $(find ./ -maxdepth 1 -type f -name 'lib*' -printf '%s-%f\n'|sort -r)
-do
-    liba=${lib#*-}
-    if [ "$(cmp -s $liba $libb; echo $?)" = "0" ] ;then
-        ln -sfv $libb $liba
-    else
-        libb=$liba
-    fi
-done
-
-printf "\nRemove unneeded symbols from files..."
-find ./ -maxdepth 1 -type f -exec strip -s {} 2>/dev/null \;
-echo "done."
-
-printf "\nRepack evelauncher-$version.tar.gz..."
-cd ../
-tar czf evesetup/evelauncher-$version.tar.gz evelauncher/
-rm -rf evelauncher/
+if [ -f "../evelauncher-$version.tar.gz" ] ;then cp ../evelauncher-$version.tar.gz evesetup/ ;fi
 echo "done."
 
 printf "\nBuild self-extractable archive evesetup-$version-$release-$arch.run\n\n"
