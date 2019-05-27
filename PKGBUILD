@@ -2,7 +2,7 @@
 
 _pkgname=tox-node
 pkgname=$_pkgname-rs
-pkgver=0.0.6
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="A server application to run tox node written in pure Rust"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo' 'pkgconf')
 url="https://github.com/tox-rs/tox-node"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tox-rs/tox-node/archive/v$pkgver.tar.gz")
-sha256sums=('ee36632c09de676d365ca806a2c0bc2386d5d1e459fe3fcdf9874d9fc2ea22c1')
+sha256sums=('58d6da0d3bbd683b6fadfaa6f40dae9ccfce8c98a218bcf19367259715fe300b')
 provides=('tox-node-rs')
 
 build() {
