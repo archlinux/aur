@@ -19,7 +19,6 @@ depends=(
   "readline"
   "unixodbc"
 )
-provides=("asdf")
 install=asdf-vm.install
 source=("https://github.com/asdf-vm/asdf/archive/v${pkgver}.tar.gz")
 sha256sums=("1c53c1dfabfdbdee3c9b34e396655d963aeb362a8173e956233ac2689d696a34")
