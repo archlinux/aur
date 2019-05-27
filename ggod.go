@@ -9,6 +9,7 @@ import (
 	"os/exec"
 	"strings"
 	"github.com/carmark/pseudo-terminal-go/terminal"
+	"github.com/common-nighthawk/go-figure"
 	"github.com/olekukonko/tablewriter"
 	"github.com/fatih/color"
 )
@@ -153,7 +154,9 @@ func showCommands(){
 	table.Render()
 }
 func showVersion(){
-	fmt.Println("xx")
+	asciiFigure := figure.NewFigure("ggod", "stop", true)
+	asciiFigure.Print()
+	fmt.Println()
 }
 func main() {
 	versionFlag := flag.Bool("v", false, "Show version information")
