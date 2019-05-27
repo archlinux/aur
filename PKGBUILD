@@ -18,7 +18,7 @@ conflicts=('archisomydrive-git')
 source=("$url/raw/master/Install/$_remotepkgbase-$pkgver-$pkgrel-x86_64.pkg.tar.xz"{,.sig})
 
 
-sha256sums=('0a14999cd575322cb154bbd7ff34703362f5efc23be5e05710fffef4f01ce663'
+sha256sums=('eff48bd67c9e91aef1fe335460c3c7002a158ca74bb0f662e015373d0247b836'
             'SKIP'
            )
 
