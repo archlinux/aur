@@ -3,7 +3,7 @@
 # This PKGBUILD is based on the packages jabref and jabref-git
 
 pkgname=jabref-latest
-pkgver=20190426
+pkgver=20190527
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java; latest master version from git"
 arch=('any')
@@ -59,7 +59,7 @@ source=(https://builds.jabref.org/master/JabRef--master--latest.jar
         jabref.sh
         jabref.desktop)
 noextract=(JabRef--master--latest.jar)
-sha256sums=('75db47c39bb667b7360c6a31a652803ed38b39245b5846da20985e48555eef5a'
+sha256sums=('SKIP'
             '5c1fd05ff42cfe35f7f1722fa349546bab877f00ac0d4756def08ae098615653'
             'b51970cc3b70da835f7ebc971d03570417dba7dae837f28f2cce213ecb844768'
             'a26845ba60ef2588c52d7d18259a977b146c777f935573bacdffcdcefa2b41b5')
