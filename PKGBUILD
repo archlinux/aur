@@ -2,7 +2,7 @@
 
 _gonamespc='github.com/schollz/croc'
 pkgname=croc-bin
-pkgver=4.1.5
+pkgver=6.0.6
 pkgrel=1
 pkgdesc="Easily and securely send things from one computer to another."
 arch=('x86_64')
@@ -15,12 +15,12 @@ provides=('croc')
 conflicts=('croc' 'croc-git')
 #options=()
 source=("${url}/releases/download/v${pkgver}/${provides[0]}_${pkgver}_linux-64bit.tar.gz")
-sha256sums=('f407124497af8ff2b6c438092bced3d6d905006fd3e64d7c695206b10b874796')
+sha256sums=('e974be8811da4cee7457f244cfd26cdc9cb83b7752bafbcf9a7fb250be6b8185')
 
 build() {
 	if [ $(which upx 2>/dev/null) ]; then
 		echo Compressing ${provides[0]} with UPX...
-		upx --best "${srcdir}/${provides[0]}"; fi
+		upx "${srcdir}/${provides[0]}"; fi
 }
 
 package() {
