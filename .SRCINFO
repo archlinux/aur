@@ -1,0 +1,14 @@
+pkgbase = ruby-origami
+	pkgdesc = Framework written in pure Ruby to manipulate PDF files
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/gdelugre/origami
+	arch = any
+	license = LGPL
+	depends = ruby
+	options = !emptydirs
+	source = ruby-origami-2.1.0.tar.gz::https://github.com/gdelugre/origami/archive/2.1.0.tar.gz
+	sha256sums = 92ce30bae084c07414cdfd4cf79ebc0435e04373ee954622f511ea757c84d0bb
+
+pkgname = ruby-origami
+
