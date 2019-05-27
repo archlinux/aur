@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git')
-pkgver=9.0.0_r315275.99bad370134
+pkgver=9.0.0_r317457.5a500fd2c50
 pkgrel=1
 _ocaml_ver=4.07.1
 arch=('x86_64')
@@ -80,6 +80,7 @@ build() {
     cmake "$srcdir"/llvm-project/llvm  -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -D PYTHON_EXECUTABLE=/usr/bin/python \
         -DLLVM_APPEND_VC_REV=ON \
         -DLLVM_HOST_TRIPLE=$CHOST \
         -DLLVM_ENABLE_RTTI=ON \
@@ -108,18 +109,19 @@ build() {
 
 check() {
     cd _build
-    # Dirty fix for unittests failing because the shared lib is not in the library path.
-    # Also, disable the LLVM tests on i686 as they seem to fail too often there.
-    [[ "$CARCH" == "i686" ]] || LD_LIBRARY_PATH="$srcdir"/_build/lib ninja check
-    ninja check-clang
-    ninja check-polly
-    ninja check-lld
-    ninja check-lldb
+    if [[ ! $NINJAFLAGS ]]; then
+        ninja check check-polly check-lld check-lldb check-clang
+    else
+    ninja "$NINJAFLAGS" check check-polly check-lld check-lldb check-clang
+    fi
+    
+
+    
 }
 
 package_llvm-git() {
     pkgdesc="LLVM development version. includes clang and many other tools"
-    depends=('llvm-libs-git' 'perl')
+    depends=(llvm-libs-git=$pkgver-$pkgrel 'perl')
     optdepends=( 'python: for scripts'
                             'python-setuptools: for using lit (LLVM Integrated Tester)'
                             'ocaml: for ocaml support')
@@ -132,7 +134,13 @@ package_llvm-git() {
     
     pushd _build
 
-    DESTDIR="$pkgdir" ninja install
+    if [[ ! $NINJAFLAGS ]]; then
+        DESTDIR="$pkgdir" ninja install
+    else
+        DESTDIR="$pkgdir" ninja "$NINJAFLAGS" install
+    fi
+
+
     
     popd
     # Clean up conflicting files

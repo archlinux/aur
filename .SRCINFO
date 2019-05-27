@@ -1,5 +1,5 @@
 pkgbase = llvm-git
-	pkgver = 9.0.0_r315275.99bad370134
+	pkgver = 9.0.0_r317457.5a500fd2c50
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -28,23 +28,23 @@ pkgbase = llvm-git
 
 pkgname = llvm-git
 	pkgdesc = LLVM development version. includes clang and many other tools
-	depends = llvm-libs-git
+	depends = llvm-libs-git=9.0.0_r317457.5a500fd2c50-1
 	depends = perl
 	optdepends = python: for scripts
 	optdepends = python-setuptools: for using lit (LLVM Integrated Tester)
 	optdepends = ocaml: for ocaml support
-	provides = compiler-rt-git=9.0.0_r315275.99bad370134-1
-	provides = clang-git=9.0.0_r315275.99bad370134-1
-	provides = lld-git=9.0.0_r315275.99bad370134-1
-	provides = lldb-git=9.0.0_r315275.99bad370134-1
-	provides = polly-git=9.0.0_r315275.99bad370134-1
-	provides = llvm-ocaml-git=9.0.0_r315275.99bad370134-1
-	provides = compiler-rt=9.0.0_r315275.99bad370134-1
-	provides = clang=9.0.0_r315275.99bad370134-1
-	provides = lld=9.0.0_r315275.99bad370134-1
-	provides = lldb=9.0.0_r315275.99bad370134-1
-	provides = polly=9.0.0_r315275.99bad370134-1
-	provides = llvm-ocaml=9.0.0_r315275.99bad370134-1
+	provides = compiler-rt-git=9.0.0_r317457.5a500fd2c50-1
+	provides = clang-git=9.0.0_r317457.5a500fd2c50-1
+	provides = lld-git=9.0.0_r317457.5a500fd2c50-1
+	provides = lldb-git=9.0.0_r317457.5a500fd2c50-1
+	provides = polly-git=9.0.0_r317457.5a500fd2c50-1
+	provides = llvm-ocaml-git=9.0.0_r317457.5a500fd2c50-1
+	provides = compiler-rt=9.0.0_r317457.5a500fd2c50-1
+	provides = clang=9.0.0_r317457.5a500fd2c50-1
+	provides = lld=9.0.0_r317457.5a500fd2c50-1
+	provides = lldb=9.0.0_r317457.5a500fd2c50-1
+	provides = polly=9.0.0_r317457.5a500fd2c50-1
+	provides = llvm-ocaml=9.0.0_r317457.5a500fd2c50-1
 	provides = llvm-svn
 	provides = compiler-rt-svn
 	provides = clang-svn
@@ -69,7 +69,7 @@ pkgname = llvm-libs-git
 	depends = libedit
 	depends = ncurses
 	depends = libxml2
-	provides = llvm-libs=9.0.0_r315275.99bad370134-1
-	provides = llvm-libs-svn=9.0.0_r315275.99bad370134-1
+	provides = llvm-libs=9.0.0_r317457.5a500fd2c50-1
+	provides = llvm-libs-svn=9.0.0_r317457.5a500fd2c50-1
 	conflicts = llvm-libs
 
