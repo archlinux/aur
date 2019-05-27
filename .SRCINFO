@@ -1,6 +1,6 @@
 pkgbase = endless-sky-high-dpi
 	pkgdesc = High DPI sprites for Endless Sky
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = https://github.com/endless-sky/endless-sky-high-dpi
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = endless-sky-high-dpi
 	license = custom:CC-BY-SA-4.0
 	license = custom:public domain
 	depends = endless-sky
-	source = endless-sky-high-dpi-0.9.8.tar.gz::https://github.com/endless-sky/endless-sky-high-dpi/archive/v0.9.8.tar.gz
-	sha512sums = 534a51190e3b5388c29b09bab9fbef05691c6eb89260da83742e28897612c80f99d5c1205838c4d32fddab15d1f685cdeaddccf028381a77c2223a0a1c6b5dce
+	source = endless-sky-high-dpi-0.9.9.tar.gz::https://github.com/endless-sky/endless-sky-high-dpi/archive/v0.9.9.tar.gz
+	sha512sums = 86b81a26fdbc76aeeb6ed01e5bbde7da3d13e0f915a46cbc94be980221506276f45e17122524fa008640b86b45a142b3383db1c7cd48bf10cbe5c72db611be2f
 
 pkgname = endless-sky-high-dpi
 
