@@ -1,0 +1,16 @@
+pkgbase = mcmojave-circle-icon-theme
+	pkgdesc = MacOSX Mojave like circle icon theme for linux desktops.
+	pkgver = 21.47b3420
+	pkgrel = 1
+	url = https://github.com/vinceliuice/McMojave-circle
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk-update-icon-cache
+	optdepends = mojave-gtk-theme-git: Recommended GTK theme.
+	options = !strip
+	source = git+https://github.com/vinceliuice/McMojave-circle
+	md5sums = SKIP
+
+pkgname = mcmojave-circle-icon-theme
+
