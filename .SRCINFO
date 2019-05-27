@@ -1,0 +1,16 @@
+pkgbase = taglib-extras
+	pkgdesc = Additional taglib plugins
+	pkgver = 1.0.1
+	pkgrel = 5
+	url = https://developer.kde.org/~wheeler/taglib.html
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = taglib
+	source = https://download.kde.org/stable/taglib-extras/1.0.1/src/taglib-extras-1.0.1.tar.gz
+	source = taglib-1.10.patch
+	sha256sums = fe546b4b315f3227c975fed8ea9dfc0e54fc6997fdbba2a9da7beba479229632
+	sha256sums = 31673efa5f655b26e5f28277bfb97b3d85d7c9f9e650a229227afe09ae2f9749
+
+pkgname = taglib-extras
+
