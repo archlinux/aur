@@ -3,23 +3,19 @@
 
 pkgbase=python-mock
 pkgname=(python2-mock python-mock)
-pkgver=2.0.0
-pkgrel=4
+pkgver=3.0.5
+pkgrel=1
 pkgdesc='Mocking and Patching Library for Testing'
 url='http://www.voidspace.org.uk/python/mock/'
 makedepends=('python2' 'python' 'python-pbr' 'python2-pbr')
 checkdepends=('python2-funcsigs')
 license=('BSD')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/m/mock/mock-$pkgver.tar.gz"
-        "0001-be-able-to-run-tests-on-python2.patch")
-sha512sums=('a08007651b749d2843b94f5045d74c122958888290aea21930455538a854e6b04c07115e21d82edde996154bf597d7a8784a2f4213cbabc49a98dec22dd92238'
-            '8da4aa25e7f35482369c6e69b4c430b0a506203b5629771cf63932f98d9c4167ed0a08c541baf4993749c24b28cacf0bb26328d34445e7e39448edb89e329f12')
+source=(mock-$pkgver.tar.gz::https://github.com/testing-cabal/mock/archive/$pkgver.tar.gz)
+sha512sums=('9ab4f0c794f5701ba1367d982cf79a5662d4233753d12ed9c88ae20282db1f44be73f84c4d9f6d03ff64926b8c1b6d0c9a79b2a4724a3eb36c247ffd4ab03e2d')
 
 prepare() {
   cd "$srcdir/mock-$pkgver"
-  # self.assertRaisesRegex() is self.assertRaisesRegexp() in Python 2.7
-  patch -p1 -i ../0001-be-able-to-run-tests-on-python2.patch
   # use unittest instead of unittest2 as they are the same on recent python*
   sed -i 's/unittest2/unittest/g' mock/tests/*.py
 
@@ -42,6 +38,8 @@ check() {
 
   cd "$srcdir/mock2-$pkgver"
   echo 'python2 tests'
+  # Remove Python 3 only test
+  rm mock/tests/testhelpers_py3.py
   python2 -m unittest discover
 }
 
