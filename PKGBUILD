@@ -4,12 +4,12 @@
 
 pkgname=mist-icon-theme
 pkgver=3.0.0+20+gaaba3bb
-pkgrel=1
+pkgrel=2
 pkgdesc="Mist icon theme"
 arch=('any')
 url="https://wiki.gnome.org/GnomeArt"
 license=('GPL')
-depends=('gtk-update-icon-cache')
+depends=('gtk-update-icon-cache' 'gnome-icon-theme')
 makedepends=('git' 'gtk-engines' 'icon-naming-utils' 'gnome-common')
 _commit=aaba3bb83add369a480f393a8d0907f6ea72b285
 source=("git+https://git.gnome.org/browse/archive/gnome-themes#commit=${_commit}")
