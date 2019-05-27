@@ -5,6 +5,7 @@ pkgbase = istio-bin
 	url = https://istio.io
 	arch = x86_64
 	license = Apache
+	depends = bash
 	depends = glibc
 	conflicts = istio
 	source = https://github.com/istio/istio/releases/download/1.1.7/istio-1.1.7-linux.tar.gz
