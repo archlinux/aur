@@ -154,7 +154,8 @@ func showCommands(){
 	table.Render()
 }
 func showVersion(){
-	asciiFigure := figure.NewFigure("god", "stop", true)
+	fmt.Println()
+	asciiFigure := figure.NewFigure("god", "cosmic", true)
 	asciiFigure.Print()
 	fmt.Println()
 }
