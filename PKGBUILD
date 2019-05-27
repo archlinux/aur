@@ -18,8 +18,8 @@
 #
 
 pkgname=codelite
-pkgver=12.0
-pkgrel=2
+pkgver=13.0
+pkgrel=1
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
@@ -49,12 +49,10 @@ optdepends=('graphviz: callgraph visualization'
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/eranif/${pkgname}/archive/${pkgver//_/-}.tar.gz"
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
-    mariadb_10_3.patch
   )
 
-md5sums=('674287c16de4744726afd5fd6521ee4f'
-         '20f3428eb831c3ff2539a7228afaa3b4'
-         '6cd2ad345bc5eff9f88f690519ce6432')
+md5sums=('2f5251a0b5d6e1bc0d1bdc6ea7aa830b'
+         '20f3428eb831c3ff2539a7228afaa3b4')
 
 
 #if [[ "$CARCH" == 'i686' ]]; then
@@ -71,7 +69,6 @@ pkg_name_ver="${pkgname}-${pkgver//_/-}"
 prepare()
 {
   cd "${srcdir}/${pkg_name_ver}"
-  patch -p1 -i "${srcdir}"/mariadb_10_3.patch
 }
 
 
@@ -83,7 +80,7 @@ CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 
 mkdir -p build
 cd build
-cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=0 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=1 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
 make
 }
 
