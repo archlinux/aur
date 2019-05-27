@@ -1,7 +1,7 @@
 pkgbase = bukuserver
 	pkgdesc = Powerful command-line bookmark manager. CLI and server.
 	pkgver = 4.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jarun/Buku
 	arch = any
 	license = GPL3
