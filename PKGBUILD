@@ -1,7 +1,7 @@
 # Maintainer: Evgeny Kurnevsky <kurnevsky@gmail.com>
 
 pkgname=tox-node-rs-git
-pkgver=v0.0.6.r13.g2e21027
+pkgver=v0.0.8.r0.g924b61e
 pkgrel=1
 pkgdesc="A server application to run tox node written in pure Rust"
 arch=('i686' 'x86_64')

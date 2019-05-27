@@ -1,6 +1,6 @@
 pkgbase = tox-node-rs-git
 	pkgdesc = A server application to run tox node written in pure Rust
-	pkgver = v0.0.6.r13.g2e21027
+	pkgver = v0.0.8.r0.g924b61e
 	pkgrel = 1
 	url = https://github.com/tox-rs/tox-node
 	arch = i686
