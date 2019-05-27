@@ -7,7 +7,7 @@ pkgdesc="3rd party drivers for INDI: EQMod"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(GPL3)
 arch=(i686 x86_64)
-depends=(libindi gpsd)
+depends=(libindi)
 makedepends=(cmake)
 source=("https://github.com/indilib/indi/archive/v${pkgver}.tar.gz")
 sha256sums=('55959bfa271048840782ee61a7c33d769790b7b3e333143de9c8bd60e6e8c5e2')
