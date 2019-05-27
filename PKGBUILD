@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-totp'
 license=('BSD')
 depends=('qrencode' 'tpm2-tss')
-checkdepends=('ibm-sw-tpm2' 'oath-toolkit' 'psmisc' 'tpm2-tools-git')
+checkdepends=('ibm-sw-tpm2' 'oath-toolkit' 'psmisc' 'tpm2-tools')
 optdepends=('mkinitcpio: hook to display the TOTP during boot')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.asc}
         'initcpio_install_tpm2-totp'
