@@ -1,36 +1,6 @@
-diff --git a/app/dosbox_fg_settings.conf b/app/dosbox_fg_settings.conf
---- a/app/dosbox_fg_settings.conf
-+++ b/app/dosbox_fg_settings.conf
-@@ -9,8 +9,8 @@ ipx=false
- 
- @echo off
- cls
--mount c ".."
--imgmount d "..\game.ins" -t iso -fs iso
-+mount c "."
-+imgmount d "game.ins" -t iso -fs iso
- c:
- sound.bat
- exit
-\ No newline at end of file
-diff --git a/app/dosbox_fg_single.conf b/app/dosbox_fg_single.conf
---- a/app/dosbox_fg_single.conf
-+++ b/app/dosbox_fg_single.conf
-@@ -9,8 +9,8 @@ ipx=false
- 
- @echo off
- cls
--mount c ".."
--imgmount d "..\game.ins" -t iso -fs iso
-+mount c "."
-+imgmount d "game.ins" -t iso -fs iso
- c:
- fg.bat
- exit
-\ No newline at end of file
-diff --git a/app/game.ins b/app/game.ins
---- a/app/game.ins
-+++ b/app/game.ins
+diff --git a/setup/game.ins b/setup/game.ins
+--- a/setup/game.ins
++++ b/setup/game.ins
 @@ -1,48 +1,48 @@
  FILE "game.gog" BINARY
    TRACK 01 MODE2/2352

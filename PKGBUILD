@@ -1,30 +1,49 @@
 # Maintainer: Constantin Nickel <constantin dot nickel at gmail dot com>
 
 pkgname=fantasy-general-gog
-pkgver=2.0.0.3
+pkgver=1.0
 pkgrel=1
 pkgdesc="A turn-based strategy game set in a high fantasy world."
 url="https://www.gog.com/game/fantasy_general"
 license=('custom:eula')
 groups=('games')
 arch=('any')
-makedepends=('innoextract' 'icoutils')
+makedepends=('innoextract-git' 'icoutils')
 depends=('dosbox')
 optdepends=('unionfs-fuse: mounting game folder to home for savegames and settings')
 install=$pkgname.install
 
-source=("setup_fantasy_general_$pkgver.exe"::"gogdownloader://fantasy_general/installer_win_en"
+# English
+_filename="setup_fantasy_general_${pkgver}_(28044).exe"
+_downloader="gogdownloader://fantasy_general/installer_win_en"
+_checksum="a6384e64558c32ce2a66b3a1e7a50562d4057cfab9909f519829f50ce06a2fd8"
+
+# French
+# _filename="setup_fantasy_general_${pkgver}_(french)_(28044).exe"
+# _downloader="gogdownloader://fantasy_general/installer_win_fr"
+# _checksum="0dcaac101fb59c0f789584e67c07c9feb80bb42cc132dc4e93d15a44308227ff"
+
+# German
+# _filename="setup_fantasy_general_${pkgver}_(german)_(28044).exe"
+# _downloader="gogdownloader://fantasy_general/installer_win_de"
+# _checksum="26ecd5375d3fa3b241cdfa46befbaa8273a77f41ee1c08341958087a29574d67"
+
+source=("$_filename"::"$_downloader"
         "fantasy-general-gog.desktop"
         "fantasy-general-gog.sh"
+        "dosbox_fg_single.conf"
+        "dosbox_fg_settings.conf"
         "dosbox_windowed.conf"
         "fix-dosbox-mounts.patch"
         "fix-permissions.sh")
 
-sha256sums=('8edd78a1ad6d8e0c0a5e2aae387a2945c6d0e85aa500acf6c41a32ec2a801484'
+sha256sums=("$_checksum"
             'dccc8dd876353e3486db07bbed80e69a7e620374edc5de2dd7c9d91819a0ef03'
             '636702307a43418d549aa5d27d0890927858b8977a3ff73fe823b4f423cca545'
+            'a47c3f6dea5ba58bd993b9a3a0f9d717de97051ea10616686bbdb44cff5d4b27'
+            'f72970cd0222f582b69eb6aa877989211813df1ad4bd6775b67983ace5336672'
             '50b601b33522677a9bcaf23edc833329067bb87ccda33039c0b95f0d4ddca578'
-            '0afb0c1b03c813489025533723f360649d112d771f74034a4bc4ef2866116f63'
+            '0e2b707e32056bb1b33c00e9a16c3ce90943ffe9d30435a2b8aa2ec8db520927'
             'ed21a4119450a6648369826e1da44712e92bd629c77726e021dfd7f19515f146')
 
 # You need to download the gog.com installer file to this directory ($PWD),
@@ -36,11 +55,15 @@ DLAGENTS+=('gogdownloader::/usr/bin/awk BEGIN{print"Please\ download\ the\ file\
 
 prepare() {
     # extract installer (convert files to lowercase, as DOS does not care)
-    innoextract -e -L -d "$srcdir" setup_fantasy_general_$pkgver.exe
+    innoextract -e -L -d "$srcdir"/setup "$_filename"
     # convert icon
-    icotool -x app/goggame-1430136345.ico
+    icotool -x setup/goggame-1430136345.ico
+
+    cp setup/__support/app/dosbox_fg.conf "$srcdir"
+    cp setup/tmp/eula.txt "$srcdir"
+
     # remove bundled dosbox, windows stuff and gog client files
-    rm -rf app/{dosbox/,*.ico,*.dll,goggame-1430136345.*,*.zip,__support}
+    rm -rf setup/{app,commonappdata,dosbox,tmp,*.ico,*.dll,goggame-1430136345.*,*.zip,__redist,__support}
     # fix mount directory
     patch -p1 -i "$srcdir"/fix-dosbox-mounts.patch
 }
@@ -48,17 +71,17 @@ prepare() {
 package() {
     # data
     install -d "$pkgdir"/opt/fantasy-general
-    cp -r app/* "$pkgdir"/opt/fantasy-general
+    cp -r setup/* "$pkgdir"/opt/fantasy-general
     # fix permissions script
     install -Dm755 fix-permissions.sh "$pkgdir"/opt/fantasy-general
     # additional dosbox configs
-    install -m644 dosbox_windowed.conf "$pkgdir"/opt/fantasy-general
+    install -m644 *.conf "$pkgdir"/opt/fantasy-general
     # doc + licenses
     install -d "$pkgdir"/usr/share/{doc,licenses}/$pkgname
     for _f in app/*.pdf; do
         ln -s -t "$pkgdir"/usr/share/doc/$pkgname "/opt/fantasy-general/$(basename "$_f")"
     done
-    install -m644 tmp/{gog_,}eula.txt "$pkgdir"/usr/share/licenses/$pkgname
+    install -m644 eula.txt "$pkgdir"/usr/share/licenses/$pkgname
     # .desktop files and launchers
     install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/fantasy-general.desktop
     install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/fantasy-general
