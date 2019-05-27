@@ -3,7 +3,7 @@
 _pkgname=xfconf
 pkgname=${_pkgname}-devel
 pkgver=4.13.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple client-server configuration storage and query system"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"

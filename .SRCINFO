@@ -1,7 +1,7 @@
 pkgbase = xfconf-devel
 	pkgdesc = A simple client-server configuration storage and query system
 	pkgver = 4.13.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xfce.org/
 	install = xfconf.install
 	arch = i686
