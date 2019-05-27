@@ -1,10 +1,11 @@
 pkgbase = ninfs
 	pkgdesc = FUSE filesystem Python scripts for Nintendo console files
 	pkgver = 1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ihaveamac/ninfs
 	arch = x86_64
 	license = MIT
+	makedepends = python-setuptools
 	makedepends = unzip
 	noextract = ninfs-1.6-src.zip
 	options = !strip
@@ -28,7 +29,7 @@ pkgname = ninfs
 
 pkgname = ninfs-gui
 	install = NinFSGUI.install
-	depends = ninfs=1.6-3
+	depends = ninfs=1.6-4
 	depends = python-setuptools
 	depends = python-appjar
 	depends = tk

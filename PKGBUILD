@@ -1,12 +1,12 @@
 pkgbase=ninfs
 pkgname=(ninfs ninfs-gui)
 pkgver=1.6
-pkgrel=3
+pkgrel=4
 pkgdesc="FUSE filesystem Python scripts for Nintendo console files"
 arch=($CARCH)
 license=(MIT)
 url='https://github.com/ihaveamac/ninfs'
-makedepends=('unzip')
+makedepends=('python-setuptools' 'unzip')
 options=(!strip)
 _source=("${pkgbase}-${pkgver}-src.zip"{,.asc}"::${url}/releases/download/v${pkgver}/${pkgbase}-${pkgver}-src.zip"{.asc,''})
 source=(${_source[@]:1:2})
