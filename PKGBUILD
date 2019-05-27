@@ -3,7 +3,7 @@
 
 pkgname=nwchem
 pkgver=6.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Ab initio computational chemistry software package"
 arch=('x86_64')
 url="http://www.nwchem-sw.org/index.php/Main_Page"
@@ -16,7 +16,7 @@ source=("https://github.com/nwchemgit/$pkgname/archive/$pkgver-release.tar.gz"
         "config.sh"
         "nwchemrc")
 sha256sums=('ea3cf029d578729fe61041dcb63fa8d5a2d012b662c4f026d1fa22ef10401bf5'
-            '7f3d791d31fc0bb734bb18d27773f317e6dc96a4ca8e4c7d026b09951f46e379'
+            'd0af34392385eaecf9dd08b9b49b9a0fbbed65c4c7945da5915293f620e9a08c'
             'd63fdfc44a8f44419748e029d031c91716635ac4f062cd835014cde04677b90f')
 
 prepare(){
