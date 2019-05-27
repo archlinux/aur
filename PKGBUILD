@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034
 
 pkgname=android-emulator-canary
-pkgver=29.0.10
+pkgver=29.0.11
 pkgrel=1
 pkgdesc='Google Android Emulator (Canary channel)'
 arch=('x86_64')
@@ -16,11 +16,11 @@ makedepends=('xmlstarlet')
 provides=('android-emulator')
 conflicts=('android-emulator')
 install="${pkgname}.install"
-source=('https://dl.google.com/android/repository/emulator-linux-5575233.zip'
+source=('https://dl.google.com/android/repository/emulator-linux-5598178.zip'
         'https://dl.google.com/android/repository/repository2-1.xml'
         "${pkgname}.sh"
         "${pkgname}.csh")
-sha256sums=('b8f7c96ae8d191f85187de63947d3919ba8207b06eac74244019fce48ae6bbfa'
+sha256sums=('523bf2fae0d93f19b93b0839243acadcca1d8cea8f3946f13651d6989dd1bb6d'
             'SKIP'
             '2d7cd6457bc848c369ee215783146da7dce71d7c7f7043f944700f0a7b0d587d'
             '630ea153f52154ac51b3e76357c8a123bea9ed0c910c64b8585775a345834803')
