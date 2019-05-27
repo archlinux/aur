@@ -1,33 +1,40 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
-# Contributor: Tyler Harper <tyler@cowboycoding.net>
+# Maintainer: Aniket Pradhan <aniket17133@iiitd.ac.in>
+# Contributor: Chris Wanstrath <chris@github.com>
 
-_gitname="pystache"
+_pkgname="pystache"
 pkgname=python-pystache-git
 pkgver=20091121
 pkgrel=1
 pkgdesc="The mustache template engine written in python"
-arch=(any)
-url="http://github.com/defunkt/pystache"
+arch=("x86_64")
+url="https://github.com/defunkt/pystache"
 license=('MIT')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=('python-pystache')
 conflicts=('python-pystache')
-source=( "git+$url" )
+source=("git+https://github.com/defunkt/pystache#branch=master")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$_gitname"
-  # Use the tag of the last commit
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+build() {
+	cd "$srcdir/$_pkgname"
+	python setup.py build
 }
 
-build() {
-  cd "$srcdir/$_gitname"
-  python setup.py build
+check() {
+	# This package uses 2to3 to convert itself to Python 3 on the fly
+	# So we need to jump through some hoops here
+	rm -rf test_dir
+	mkdir test_dir
+	cd ${_pkgname}
+	python setup.py install --root=../test_dir
+	PYTHONPATH=../test_dir/usr/lib/python3.7/site-packages/ \
+		../test_dir/usr/bin/pystache-test .
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  python setup.py install --prefix=/usr --root="$pkgdir"
+	cd ${srcdir}/${_pkgname}
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
