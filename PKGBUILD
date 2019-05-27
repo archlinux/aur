@@ -3,7 +3,7 @@
 
 pkgname=scalasca
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for measuring and analyzing runtime behavior of parallel programs."
 arch=('i686' 'x86_64')
 url="http://www.scalasca.org/start.html"
@@ -12,7 +12,7 @@ depends=('openmpi')
 makedepends=('cubelib' 'cubew' 'cubegui' 'otf2' 'scorep' 'openmpi')
 install=scalasca.install
 source=(http://apps.fz-juelich.de/scalasca/releases/$pkgname/$pkgver/dist/$pkgname-$pkgver.tar.gz)
-sha1sums=('44828bf8c83347b9ee17e8b28bb6419d4bd24d1e')
+sha256sums=('7dfa01e383bfb8a4fd3771c9ea98ff43772e415009d9f3c5f63b9e05f2dde0f6')
 
 
 build() {
