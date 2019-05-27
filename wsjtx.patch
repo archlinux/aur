@@ -1,45 +1,45 @@
---- CMakeLists.txt	2019-05-27 12:04:08.383328015 -0500
-+++ CMakeLists.txt	2019-05-27 12:03:24.470182804 -0500
+--- CMakeLists.txt	2019-05-27 12:15:30.212133672 -0500
++++ CMakeLists.txt	2019-05-27 12:16:01.995437956 -0500
 @@ -845,7 +845,7 @@
  # libhamlib setup
  #
  set (hamlib_STATIC 1)
--set (hamlib_LIBRARIES hamlib)
-+find_package (hamlib 3 REQUIRED)
+-find_package (hamlib 3 REQUIRED)
++set (hamlib_LIBRARIES hamlib)
  find_program (RIGCTL_EXE rigctl)
  find_program (RIGCTLD_EXE rigctld)
  find_program (RIGCTLCOM_EXE rigctlcom)
-@@ -1305,8 +1305,7 @@
+@@ -1305,7 +1305,8 @@
        )
    endif ()
  endif ()
--find_package (Qt5SerialPort)
--target_link_libraries (wsjtx Qt5::SerialPort)
-+qt5_use_modules (wsjtx SerialPort) # not sure why the interface link library syntax above doesn't work
+-qt5_use_modules (wsjtx SerialPort) # not sure why the interface link library syntax above doesn't work
++find_package (Qt5SerialPort)
++target_link_libraries (wsjtx Qt5::SerialPort)
  
  # make a library for WSJT-X UDP servers
  # add_library (wsjtx_udp SHARED ${UDP_library_CXXSRCS})
-@@ -1327,8 +1326,7 @@
+@@ -1326,7 +1327,8 @@
    )
  target_compile_definitions (wsjtx_udp-static PUBLIC UDP_STATIC_DEFINE)
  #qt5_use_modules (wsjtx_udp Network)
--target_link_libraries (wsjtx_udp-static Qt5::Network Qt5::Gui)
--
-+qt5_use_modules (wsjtx_udp-static Network Gui)
+-qt5_use_modules (wsjtx_udp-static Network Gui)
++target_link_libraries (wsjtx_udp-static Qt5::Network Qt5::Gui)
++
  generate_export_header (wsjtx_udp-static BASE_NAME udp)
  
  add_executable (udp_daemon UDPExamples/UDPDaemon.cpp UDPExamples/udp_daemon.rc ${WSJTX_ICON_FILE})
-@@ -1420,6 +1418,13 @@
+@@ -1418,13 +1420,6 @@
    RENAME rigctld-wsjtx${CMAKE_EXECUTABLE_SUFFIX}
    )
  
-+install (PROGRAMS
-+  ${RIGCTLCOM_EXE}
-+  DESTINATION ${CMAKE_INSTALL_BINDIR}
-+  #COMPONENT runtime
-+  RENAME rigctlcom-wsjtx${CMAKE_EXECUTABLE_SUFFIX}
-+  )
-+
+-install (PROGRAMS
+-  ${RIGCTLCOM_EXE}
+-  DESTINATION ${CMAKE_INSTALL_BINDIR}
+-  #COMPONENT runtime
+-  RENAME rigctlcom-wsjtx${CMAKE_EXECUTABLE_SUFFIX}
+-  )
+-
  install (FILES
    README
    COPYING
