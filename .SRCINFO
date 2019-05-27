@@ -1,0 +1,26 @@
+pkgbase = aisleriot-git
+	pkgdesc = A collection of patience games written in guile scheme
+	pkgver = 3.22.8.r6.g21bf497e
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Aisleriot
+	arch = x86_64
+	license = GPL
+	makedepends = appdata-tools
+	makedepends = gnome-common
+	makedepends = git
+	depends = guile
+	depends = gtk3
+	depends = librsvg
+	depends = libcanberra
+	depends = dconf
+	optdepends = libkdegames: KDE card sets
+	optdepends = pysolfc: PySol card sets
+	optdepends = pysolfc-cardsets: PySol card sets
+	provides = aisleriot
+	conflicts = aisleriot
+	options = !emptydirs
+	source = git+https://gitlab.gnome.org/GNOME/aisleriot.git
+	sha256sums = SKIP
+
+pkgname = aisleriot-git
+
