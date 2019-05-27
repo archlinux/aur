@@ -2,7 +2,7 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Maintainer : Solomon Choina <shlomochoina@gmail.com>
 pkgname=falkon-git
-pkgver=3.1.0.11.g1f197875
+pkgver=3.1.0.72.g2098d69a
 pkgrel=1
 pkgdesc="Cross-platform Qt Web Browser"
 arch=('i686' 'x86_64')
@@ -27,13 +27,8 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
-prepare(){
-  mkdir -p build
-  cd "${pkgname%-*}"
-  sed -i 's/set(ENABLE_PYTHON_PLUGINS TRUE)//' CMakeLists.txt
-
-}
 build() {
+  mkdir build
   cd build
   cmake ../"${pkgname%-*}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
