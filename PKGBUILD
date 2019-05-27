@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git')
-pkgver=9.0.0_r317457.5a500fd2c50
+pkgver=9.0.0_r317463.bcc0cedf770
 pkgrel=1
 _ocaml_ver=4.07.1
 arch=('x86_64')
@@ -31,6 +31,9 @@ source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
 sha256sums=('SKIP'
             '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
             '58f86da25eb230ed6d423b5b61870cbf3bef88f38103ca676a2c7f34b2372171')
+
+# NINJAFLAGS is an env var used to pass commandline options to ninja
+# NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
 
 _python_optimize() {
   python -m compileall "$@"
@@ -100,23 +103,13 @@ build() {
         -DPOLLY_ENABLE_GPGPU_CODEGEN=ON \
         -DLINK_POLLY_INTO_TOOLS=ON \
         -DCMAKE_POLICY_DEFAULT_CMP0075=NEW
-    if [[ ! $NINJAFLAGS ]]; then
-        ninja all ocaml_doc
-    else
-        ninja "$NINJAFLAGS" all ocaml_doc
-    fi
+
+    ninja "$NINJAFLAGS" all ocaml_doc
 }
 
 check() {
     cd _build
-    if [[ ! $NINJAFLAGS ]]; then
-        ninja check check-polly check-lld check-lldb check-clang
-    else
     ninja "$NINJAFLAGS" check check-polly check-lld check-lldb check-clang
-    fi
-    
-
-    
 }
 
 package_llvm-git() {
@@ -133,24 +126,17 @@ package_llvm-git() {
     conflicts=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly' 'llvm-ocaml' 'llvm-lw-git')
     
     pushd _build
-
-    if [[ ! $NINJAFLAGS ]]; then
-        DESTDIR="$pkgdir" ninja install
-    else
         DESTDIR="$pkgdir" ninja "$NINJAFLAGS" install
-    fi
-
-
-    
     popd
+
     # Clean up conflicting files
     # TODO: This should probably be discussed with upstream.
     rm -rf "${pkgdir}/usr/lib/python3.7/site-packages/six.py"
+
     # Include lit for running lit-based tests in other projects
     pushd llvm-project/llvm/utils/lit
     python setup.py install --root="$pkgdir" -O1
     popd
-
     
     # Move analyzer scripts out of /usr/libexec
     mv "$pkgdir"/usr/libexec/{ccc,c++}-analyzer "$pkgdir"/usr/lib/clang/
