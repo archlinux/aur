@@ -5,6 +5,7 @@ pkgbase = xfce4-panel-profiles
 	url = https://git.xfce.org/apps/xfce4-panel-profiles/about/
 	arch = any
 	groups = xfce4-goodies
+	groups = xfce4-goodies-devel
 	license = GPL3
 	makedepends = intltool
 	makedepends = git
