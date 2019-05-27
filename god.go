@@ -113,6 +113,8 @@ func startTerm() {
 			break cmdLoop
 		case "?", "help":
 			showHelp()
+		case "version":
+			showVersion()
 		case "git":
 			showCommands()
 		default:
@@ -134,7 +136,8 @@ func setTableColors(table (*tablewriter.Table)) (*tablewriter.Table) {
 func showHelp(){
 	cliCmds := map[string]string{
 		"git": "List available simplified git commands",
-		"help": "Show this help message",  
+		"help": "Show this help message",
+		"version": "Show version information",
 		"clear": "Clear the terminal", 
 		"exit": "Exit shell"}
 	table := tablewriter.NewWriter(os.Stdout)
