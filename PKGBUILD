@@ -8,7 +8,7 @@ pkgdesc="Settings manager for xfce"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
 license=('GPL2')
-groups=('xfce4')
+groups=('xfce4-devel')
 depends=('exo' 'garcon' 'libxfce4ui>=4.13' 'libnotify' 'libxklavier'
          'gnome-icon-theme' 'gtk-engines' 'xfconf>4.13.0' 'upower' 'colord')
 makedepends=('intltool')
