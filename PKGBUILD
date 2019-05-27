@@ -3,7 +3,7 @@
 _pkgname=xfce4-panel
 pkgname=${_pkgname}-devel
 pkgver=4.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Panel for the Xfce desktop environment"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
