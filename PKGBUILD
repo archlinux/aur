@@ -5,7 +5,7 @@ pkgver=1.7.8
 pkgrel=1
 pkgdesc="3rd party drivers for INDI: EQMod"
 url="http://www.indilib.org/index.php?title=Main_Page"
-license=(GPL2)
+license=(GPL3)
 arch=(i686 x86_64)
 depends=(libindi gpsd)
 makedepends=(cmake)
