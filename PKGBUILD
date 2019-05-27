@@ -7,12 +7,12 @@ pkgver=3.0.0+20+gaaba3bb
 pkgrel=2
 pkgdesc="Mist icon theme"
 arch=('any')
-url="https://wiki.gnome.org/GnomeArt"
+url="https://wiki.gnome.org/Design"
 license=('GPL')
 depends=('gtk-update-icon-cache' 'gnome-icon-theme')
 makedepends=('git' 'gtk-engines' 'icon-naming-utils' 'gnome-common')
 _commit=aaba3bb83add369a480f393a8d0907f6ea72b285
-source=("git+https://git.gnome.org/browse/archive/gnome-themes#commit=${_commit}")
+source=("git+https://gitlab.gnome.org/Archive/gnome-themes.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
