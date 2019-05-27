@@ -1,7 +1,7 @@
 pkgbase = xfdesktop-devel
 	pkgdesc = A desktop manager for Xfce
 	pkgver = 4.13.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64
