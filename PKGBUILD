@@ -1,9 +1,9 @@
 # Maintainer: Konstantin Gizdov < arch at kge dot pw >
 
 pkgname=simpletools
-pkgver=2.0v.e574cc8
-_commit=e574cc8
-pkgrel=6
+pkgver=2.0v.a94b24b
+_commit=a94b24b
+pkgrel=1
 pkgdesc="Handy command line tools for ntuple manipulation and analysis"
 arch=('i686' 'x86_64')
 url="https://github.com/cofitzpa/simpletools"
