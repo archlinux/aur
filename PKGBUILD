@@ -1,9 +1,9 @@
-# Maintainer: Mark Constable <markc@renta.net>
+# Maintainer: Christopher Draper <christopherwdraper@gmail.com>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=cockpit-git
-pkgver=0.91.r3.gf5f3eda
+pkgver=194.r102.gfea9847af
 pkgrel=1
 pkgdesc='A systemd web based user interface for Linux servers'
 arch=(i686 x86_64)
