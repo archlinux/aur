@@ -8,11 +8,11 @@ pkgdesc="Simple application to manage Xfce panel layouts"
 arch=('any')
 url="https://git.xfce.org/apps/xfce4-panel-profiles/about/"
 license=('GPL3')
+groups=('xfce4-goodies')
 depends=('xfce4-panel' 'gtk3' 'python-gobject')
 makedepends=('intltool' 'git')
 conflicts=('xfpanel-switch')
 replces=('xfpanel-switch')
-#source=("git://git.xfce.org/apps/xfce4-panel-profiles#tag=${pkgname}-${pkgver}")
 source=("https://archive.xfce.org/src/apps/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('a69e20f5e637319e14898b5c13ff7ba31d001a6e38e7516d70dbfd7600ad72db')
 
