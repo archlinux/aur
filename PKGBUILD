@@ -5,7 +5,7 @@ pkgname=$_pkgname-git
 pkgcom=1698
 pkgsha=025508c
 pkgver=$pkgcom.$pkgsha
-pkgrel=3
+pkgrel=1
 pkgdesc="Layouts, asynchronous widgets and utilities for Awesome WM"
 arch=("any")
 url="https://github.com/lcpz/$_pkgname"
@@ -18,6 +18,7 @@ sha256sums=("SKIP")
 source=("$_pkgname-${pkgver}.zip::https://github.com/lcpz/$_pkgname/archive/$pkgsha.zip")
 
 prepare() {
+    rm -fr $_pkgname
     mv "$_pkgname-$pkgsha"* $_pkgname
 }
 
