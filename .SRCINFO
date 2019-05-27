@@ -1,10 +1,11 @@
-pkgbase = tumbler
+pkgbase = tumbler-devel
 	pkgdesc = D-Bus service for applications to request thumbnails
 	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://www.xfce.org/
+	arch = i686
 	arch = x86_64
-	groups = xfce4
+	groups = xfce4-devel
 	license = GPL2
 	license = LGPL
 	makedepends = intltool
@@ -20,8 +21,10 @@ pkgbase = tumbler
 	optdepends = libgsf: for ODF thumbnails
 	optdepends = libopenraw: for RAW thumbnails
 	optdepends = freetype2: for font thumbnails
+	provides = tumbler=0.2.4
+	conflicts = tumbler
 	source = https://archive.xfce.org/src/xfce/tumbler/0.2/tumbler-0.2.4.tar.bz2
 	sha256sums = 0ff497e13f9f9322112cb7707918dd8970e405447f0c92dac40ec3d659e5b6a6
 
-pkgname = tumbler
+pkgname = tumbler-devel
 
