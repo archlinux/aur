@@ -8,7 +8,7 @@ pkgdesc="A desktop manager for Xfce"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
 license=('GPL2')
-groups=('xfce4')
+groups=('xfce4-devel')
 depends=('libxfce4ui>=4.13' 'libxfce4util>=4.13' 'exo' 'thunar>=1.7.0' 'garcon>=0.6.0' 'hicolor-icon-theme' 'libwnck3>=3.14')
 makedepends=('intltool')
 conflicts=('xfce4-menueditor' "${_pkgname}")
