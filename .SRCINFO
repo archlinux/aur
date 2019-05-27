@@ -1,7 +1,7 @@
 pkgbase = thunar-devel
 	pkgdesc = file manager for xfce
 	pkgver = 1.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://thunar.xfce.org
 	install = thunar.install
 	arch = i686
