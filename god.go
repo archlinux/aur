@@ -14,6 +14,7 @@ import (
 	"github.com/fatih/color"
 )
 
+var version string = "1.0"
 var outb, errb bytes.Buffer
 var cmdSlice, cmdList []string
 
@@ -157,7 +158,7 @@ func showVersion(){
 	fmt.Println()
 	asciiFigure := figure.NewFigure("god", "cosmic", true)
 	asciiFigure.Print()
-	fmt.Println("\n ~ god:v1.0")
+	fmt.Println("\n ~ god:v" + version)
 	fmt.Println(" ~ utility for simplifying the git usage")
 	fmt.Println(" ~ github.com/keylo99/god\n")
 }
