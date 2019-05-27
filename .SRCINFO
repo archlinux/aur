@@ -1,0 +1,18 @@
+pkgbase = tmatrix-git
+	pkgdesc = A cmatrix-like replica of the digital rain from the Matrix
+	pkgver = 1.0.r2.gebeaf00
+	pkgrel = 1
+	url = https://github.com/M4444/TMatrix
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = ncurses
+	provides = tmatrix
+	conflicts = tmatrix
+	source = tmatrix::git+https://github.com/M4444/TMatrix.git
+	md5sums = SKIP
+
+pkgname = tmatrix-git
+
