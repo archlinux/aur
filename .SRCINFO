@@ -1,6 +1,6 @@
 pkgbase = android-messages-desktop
 	pkgdesc = Android Messages as a cross-platform desktop app
-	pkgver = 1.0.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/chrisknepper/android-messages-desktop
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = android-messages-desktop
 	depends = libappindicator-gtk2
 	depends = libappindicator-gtk3
 	depends = libappindicator-sharp
-	source = https://github.com/chrisknepper/android-messages-desktop/releases/download/v1.0.1/android-messages-desktop-1.0.1.pacman
+	source = https://github.com/chrisknepper/android-messages-desktop/releases/download/v2.0.0/android-messages-desktop-2.0.0.pacman
 	source = https://raw.githubusercontent.com/chrisknepper/android-messages-desktop/master/LICENSE
-	sha256sums = 1a27c792305119a9e18687308741d7a6a3c5799b43b7ec519f0374a266715f16
+	sha256sums = 46a81825a7c023d92dcb3da94a3f15a82f2c2514572ddf07b39ee8f6ac75449c
 	sha256sums = 3a0332a1a4cbd1db232d73b032c3450c978e48759a3dbcfeddfb874e93bc0b3c
 
 pkgname = android-messages-desktop
