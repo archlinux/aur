@@ -13,7 +13,7 @@ optdepends=('sqlite: Database' 'mariadb: Alternate database' 'php-sqlite: To use
 source=("https://github.com/fruux/Baikal/releases/download/$pkgver/baikal-$pkgver.zip"
         'baikal.install')
 sha1sums=('58c241be61889589395b207ff2187656ff3a9691'
-          'af1ac68cd5194d24525a2eafee2122aaf3fcbb43')
+          'deb948e61c3cd8d6ad560321f78c0b288f7a6210')
 options=('!strip')
 install=baikal.install
 

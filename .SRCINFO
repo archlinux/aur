@@ -14,7 +14,7 @@ pkgbase = baikal
 	source = https://github.com/fruux/Baikal/releases/download/0.5.2/baikal-0.5.2.zip
 	source = baikal.install
 	sha1sums = 58c241be61889589395b207ff2187656ff3a9691
-	sha1sums = af1ac68cd5194d24525a2eafee2122aaf3fcbb43
+	sha1sums = deb948e61c3cd8d6ad560321f78c0b288f7a6210
 
 pkgname = baikal
 
