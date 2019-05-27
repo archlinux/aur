@@ -1,6 +1,6 @@
 # Maintainer: Robosky <fangyuhao0612@gmail.com>
 
-pkgname=mcmojave-circle-icon-theme
+pkgname=mcmojave-circle-icon-theme-git
 _gitname=McMojave-circle
 pkgver=21.47b3420
 pkgrel=1
