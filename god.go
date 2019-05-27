@@ -127,10 +127,17 @@ func startTerm() {
 	}
 }
 func setTableColors(table (*tablewriter.Table)) (*tablewriter.Table) {
-	table.SetHeaderColor(tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiWhiteColor},
-		tablewriter.Colors{tablewriter.FgHiRedColor, tablewriter.Bold, tablewriter.FgHiWhiteColor})
-	table.SetColumnColor(tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiGreenColor},
-		tablewriter.Colors{tablewriter.Bold, tablewriter.FgHiBlackColor})
+	whiteColor := tablewriter.Colors{
+		tablewriter.Bold, 
+		tablewriter.FgHiWhiteColor}
+	greenColor := tablewriter.Colors{
+		tablewriter.Bold, 
+		tablewriter.FgHiGreenColor}
+	blackColor := tablewriter.Colors{
+		tablewriter.Bold, 
+		tablewriter.FgHiBlackColor}
+	table.SetHeaderColor(whiteColor, whiteColor)
+	table.SetColumnColor(greenColor, blackColor)
 	return table
 }
 func showHelp(){
@@ -161,9 +168,10 @@ func showVersion(){
 	fmt.Println()
 	asciiFigure := figure.NewFigure("god", "cosmic", true)
 	asciiFigure.Print()
-	fmt.Println("\n ~ god:v" + version +
-				"\n ~ utility for simplifying the git usage" +
-				"\n ~ github.com/keylo99/god\n")
+	fmt.Println(
+		"\n ~ god:v" + version +
+		"\n ~ utility for simplifying the git usage" +
+		"\n ~ github.com/keylo99/god\n")
 }
 func main() {
 	versionFlag := flag.Bool("v", false, "Show version information")
