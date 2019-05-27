@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=downlords-faf-client
-pkgver=0.9.4.beta
+pkgver=0.10.6.beta
 _pkgver_major=$(echo $pkgver | cut -d . -f 1)
 _pkgver_minor=$(echo $pkgver | cut -d . -f 2)
 _pkgver_tag=$(echo $pkgver | cut -d . -f 3)
@@ -24,7 +24,10 @@ options=()
 install=
 changelog=
 source=("https://github.com/FAForever/downlords-faf-client/releases/download/v$_pkgver/$_filename" "https://github.com/FAForever/downlords-faf-client/raw/develop/src/media/appicon/128.png" 'DownlordsFafClient.desktop' 'downlords-faf-client')
-sha256sums=('572b04d2f5d7f515d584a38d8afe5ef032bc3e2d2a4e09b1e6b5df5088907eaf' '2a5803ca2dd463aa4b53d79cff7f30e3aa7beb0d874b39c8ef59e679fbde9d3d' 'SKIP' 'SKIP')
+sha256sums=('b0d7e47dae35736b7d68a47c2fdce892367e69872ef656f8be075d5d26fb1aa8'
+            '2a5803ca2dd463aa4b53d79cff7f30e3aa7beb0d874b39c8ef59e679fbde9d3d'
+            '3fd2b21da9de9f9c02dd89ee07f49c559dbb2de15f4e86a9b31f6353f608ffa6'
+            '761e1b02c9075f2bd6428d5293f64ea4c8825dc35439a1acb8a4475a9b85f0e7')
 noextract=()
 validpgpkeys=()
 
@@ -45,5 +48,5 @@ package() {
   install -D "$srcdir/DownlordsFafClient.desktop" "$pkgdir/usr/share/applications/DownlordsFafClient.desktop"
   install -D "$srcdir/downlords-faf-client" "$pkgdir/usr/bin/downlords-faf-client"
   install -D "$srcdir/128.png" "$pkgdir/usr/share/java/downlords-faf-client/icon.png"
-  chmod +x "$pkgdir/usr/share/java/downlords-faf-client/lib/faf-uid"
+  chmod +x "$pkgdir/usr/share/java/downlords-faf-client/natives/faf-uid"
 }
