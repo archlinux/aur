@@ -1,13 +1,13 @@
 pkgbase = rsfetch-bin
 	pkgdesc = Fast (1ms execution time) and somewhat(?) minimal fetch program written in Rust.
-	pkgver = 1.7.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/phate6660/rsfetch
 	arch = i686
 	arch = x86_64
 	license = Unlicense
 	conflicts = rsfetch-git
-	source = https://github.com/rsfetch/rsfetch/releases/download/1.7.0/rsfetch
+	source = https://github.com/rsfetch/rsfetch/releases/download/1.9.0/rsfetch
 	source = https://raw.githubusercontent.com/rsfetch/rsfetch/master/LICENSE
 	sha512sums = aa6074f38362c7a2802b96a6fd83c2632673dc232da4ccef37c5aa98a6ce2ba994c6cf6df6e4d15fe788bc431fddb193e4fbb02613d26dd5a0e8c350c3962f7f
 	sha512sums = 6db610810f1b22a21ef217b4b6ace78dd5a4f427be3e6934a5770b64d019c0699459ea433b7117e955aac3feea02bd703fba2892a7961e27b2c0de859f68d7d7
