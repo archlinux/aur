@@ -8,7 +8,7 @@ pkgdesc="An application finder for Xfce"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
 license=('GPL2')
-groups=('xfce4')
+groups=('xfce4-devel')
 depends=('libxfce4ui' 'garcon' 'hicolor-icon-theme')
 makedepends=('intltool')
 provides=("${_pkgname}=${pkgver}")
