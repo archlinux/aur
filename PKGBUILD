@@ -3,7 +3,7 @@
 # https://bbs.archlinux.org/viewtopic.php?id=235884
 
 pkgname=lando-git
-pkgver=3.0.0.rc.13.r12.gc0e229e8
+pkgver=3.0.0.rc.16.r9.gcbb08477
 
 # Transform git tag into target version string
 _target_version=${pkgver: 0:-10}
