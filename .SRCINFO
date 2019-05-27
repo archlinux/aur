@@ -1,7 +1,7 @@
 pkgbase = docker-machine-driver-kvm2
 	pkgdesc = Minikube-maintained KVM driver for docker-machine
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kubernetes/minikube
 	arch = x86_64
 	license = Apache
@@ -11,6 +11,6 @@ pkgbase = docker-machine-driver-kvm2
 	depends = dnsmasq
 	optdepends = docker: to manage the containers in the machine
 	source = https://github.com/kubernetes/minikube/releases/download/v1.1.0/docker-machine-driver-kvm2
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = 98fd0d9947da473667adcb2e0615f95eb781e31e4870a4b4eea29aa15cce3b11
 
 pkgname = docker-machine-driver-kvm2
