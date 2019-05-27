@@ -8,6 +8,7 @@ pkgdesc="A session manager for Xfce"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
 license=('GPL2')
+groups=('xfce4-devel')
 depends=('libxfce4ui' 'libwnck3' 'libsm' 'polkit' 'xorg-iceauth' 'xorg-xinit'
          'xorg-xrdb' 'polkit-gnome' 'hicolor-icon-theme')
 makedepends=('intltool')
