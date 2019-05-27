@@ -14,7 +14,9 @@ pkgbase = telephant-git
 	makedepends = mesa
 	depends = qt5-base
 	depends = qt5-declarative
+	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols2
+	depends = qt5-svg
 	provides = telephant
 	conflicts = telephant
 
