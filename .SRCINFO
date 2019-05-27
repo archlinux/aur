@@ -1,0 +1,22 @@
+pkgbase = sol2-git
+	pkgdesc = C++ <-> Lua Wrapper Library
+	pkgver = v3.0.2.r1.ge256012d
+	pkgrel = 1
+	url = http://sol2.rtfd.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	makedepends = python-sphinx
+	optdepends = lua
+	optdepends = lua51
+	optdepends = lua52
+	optdepends = luajit
+	provides = sol2
+	conflicts = sol2
+	source = sol2::git+https://github.com/ThePhD/sol2.git
+	md5sums = SKIP
+
+pkgname = sol2-git
+
