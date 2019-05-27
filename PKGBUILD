@@ -1,6 +1,6 @@
 pkgbase=ninfs-git
 pkgname=(ninfs-git ninfs-gui-git)
-pkgver=1.6.r0.gc2caa0f
+pkgver=1.6.1.r1.g219b33a
 pkgrel=1
 pkgdesc="FUSE filesystem Python scripts for Nintendo console files"
 arch=($CARCH)
