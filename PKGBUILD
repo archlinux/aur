@@ -4,14 +4,14 @@ pkgname=cubelib
 _version=4.4
 _patch=.3
 pkgver=${_version}${_patch}
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for reading and writing a multi-dimensional performance space."
 arch=('i686' 'x86_64')
 url="http://www.scalasca.org/software/cube-4.x/download.html"
 license=('BSD')
 depends=('zlib')
 source=(http://apps.fz-juelich.de/scalasca/releases/cube/${_version}/dist/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('5899f2859dc08dd5ab559ead2aed9a5f2d37a582')
+sha1sums=('bcd4fa81a5ba37194e590a5d7c3e6c44b448f5e156a175837b77c21206847a8d')
 replaces=('cube-perf')
 
 build() {
