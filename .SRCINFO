@@ -1,0 +1,26 @@
+pkgbase = odysseus
+	pkgdesc = Web browser for the open and decentralized web.
+	pkgver = 1.5.18
+	pkgrel = 1
+	url = https://odysseus.adrian.geek.nz
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = webkit2gtk
+	depends = json-glib
+	depends = libsoup
+	depends = sqlite
+	depends = appstream
+	depends = gcr
+	depends = gettext
+	optdepends = archlinux-appstream-data: compatible app recommendations for hyperlinks
+	optdepends = html-xml-utils: webfeed autodiscovery
+	source = https://github.com/alcinnz/Odysseus/archive/1.5.18.tar.gz
+	md5sums = 939f5f1811359a00146a6e0c7105f547
+
+pkgname = odysseus
+
