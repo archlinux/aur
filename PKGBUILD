@@ -8,6 +8,7 @@ pkgdesc="A simple client-server configuration storage and query system"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
 license=('GPL2')
+groups=('xfce4-devel')
 depends=('libxfce4util' 'dbus')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig' 'glib-perl'
              'intltool' 'gtk-doc' 'chrpath' 'python') #for gdbus-codegen

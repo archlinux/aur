@@ -6,6 +6,7 @@ pkgbase = xfconf-devel
 	install = xfconf.install
 	arch = i686
 	arch = x86_64
+	groups = xfce4-devel
 	license = GPL2
 	makedepends = perl-extutils-depends
 	makedepends = perl-extutils-pkgconfig
