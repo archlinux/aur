@@ -5,7 +5,7 @@ pkgbase = rsfetch-git
 	url = https://github.com/phate6660/rsfetch
 	arch = i686
 	arch = x86_64
-	license = Unlicense
+	license = MIT
 	makedepends = rust
 	conflicts = rsfetch-bin
 	source = rsfetch-git::git+https://github.com/phate6660/rsfetch#branch=master
