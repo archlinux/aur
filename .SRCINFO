@@ -1,6 +1,6 @@
 pkgbase = rsfetch-git
 	pkgdesc = Fast (1ms execution time) and somewhat(?) minimal fetch program written in Rust.
-	pkgver = 1.7.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/rsfetch/rsfetch
 	arch = i686
