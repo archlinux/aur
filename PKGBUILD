@@ -3,8 +3,8 @@
 # Contributor: Leo von Klenze <aur@leo.von-klenze.de>
 
 pkgname=jquery
-pkgver=3.3.1
-pkgrel=2
+pkgver=3.4.1
+pkgrel=1
 pkgdesc="Cross-platform JavaScript library designed to simplify the client-side scripting of HTML"
 arch=('any')
 url="http://jquery.com"
@@ -15,11 +15,11 @@ source=("http://code.jquery.com/jquery-${pkgver}.min.js"
 		"http://code.jquery.com/jquery-${pkgver}.slim.js"
 		"http://code.jquery.com/jquery-${pkgver}.slim.min.map"
 		"LICENSE")
-sha256sums=('160a426ff2894252cd7cebbdd6d6b7da8fcd319c65b70468f10b6690c45d02ef'
-            '14a62d0001cecb74956ef6e883b6ff7b1ac1cf4883ec6b769555aa8f3fe34cb4'
-            'dde76b9b2b90d30eb97fc81f06caa8c338c97b688cea7d2729c88f529f32fbb1'
-            '7cd5c914895c6b4e4120ed98e73875c6b4a12b7304fbf9586748fe0a1c57d830'
-            '4d1b350208787a6f321d3ed90e5b9fb2925efdcd4063e9ed4cdf761d809d315e'
+sha256sums=('0925e8ad7bd971391a8b1e98be8e87a6971919eb5b60c196485941c3c1df089a'
+            '8da74aec0fcdd7678a2663b3cc9bafbaf009e6d6929b28bb3dd95bced18206f6'
+            'a5ab2a00a0439854f8787a0dda775dea5377ef4905886505c938941d6854ee4f'
+            '0539537503bdfdf6ac701d5dade92b0d591a29df4f93007298c9473a21bea8b2'
+            '002d30ff1c54bd8474796dea3278b032a56ad7a77cef9b16c298e9bf5731fa6c'
             '2b3ed8ba424423a50b023e728530d94bc385cfc7c328ad65a3dfee9c7c0531c5')
 
 package() {
