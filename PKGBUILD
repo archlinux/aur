@@ -3,7 +3,7 @@
 # Contributer: sowieso <sowieso@dukun.de>
 
 pkgname=minecraft-server
-pkgver=1.14.1
+pkgver=1.14.2
 _nonce=ed76d597a44c5266be2a7fcd77a8270f1f0bc118
 pkgrel=1
 pkgdesc="Minecraft server unit files, script, and jar"
