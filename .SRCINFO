@@ -1,0 +1,22 @@
+pkgbase = ngs-python
+	pkgdesc = A new, domain-specific API for accessing reads, alignments and pileups produced from Next Generation Sequencing.
+	pkgver = 2.9.6
+	pkgrel = 1
+	url = https://github.com/ncbi/ngs
+	arch = x86_64
+	license = custom:PublicDomain
+	depends = java-environment
+	depends = perl-file-copy-recursive
+	depends = zlib
+	depends = ncbi-vdb
+	depends = ngs
+	provides = ngs-python
+	source = https://github.com/ncbi/ngs/archive/2.9.6.tar.gz
+	source = ngs.patch
+	source = ngs-python.patch
+	md5sums = d87f96dcfcaf4967ddbbf8de761641f8
+	md5sums = 3973d35d7a1b252eb6a426403a652ef9
+	md5sums = 105d75eb6e144af86569e1240e959702
+
+pkgname = ngs-python
+

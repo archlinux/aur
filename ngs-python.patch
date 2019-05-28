@@ -1,0 +1,30 @@
+--- a/ngs-python/setup.py	2019-03-18 12:37:12.000000000 -0400
++++ b/ngs-python/setup.py	2019-05-28 13:09:44.344531737 -0400
+@@ -17,7 +17,6 @@
+       author='sra-tools',
+       author_email='sra-tools@ncbi.nlm.nih.gov',
+       packages=['ngs'],
+-      include_package_data=True,
+       scripts=[],
+       #test_suite="tests",
+       )
+
+--- a/ngs-python/Makefile.python	2019-05-28 13:42:40.144181446 -0400
++++ b/ngs-python/Makefile.python	2019-05-28 13:41:25.357950185 -0400
+@@ -79,14 +79,8 @@
+ 	@ mkdir -p $@
+ 
+ install: $(TARGETS) $(INST_PYTHONDIR) copyexamples
+-ifeq (0, $(shell id -u))
+-	@ echo "Installing ngs package..."
+-	@ python setup.py -q install --root="$pkgdir/"
+-   
+-else
+-	@ echo "Installing ngs package..."
+-	@ python setup.py -q install --user
+-endif
++	@ echo "Installing ngs package..." 
++	@ python setup.py -q install --root=$(subst usr/,,$(INST_PYTHONDIR))
+ 
+ ifneq (, $(NGS_LIBDIR))
+ ifneq (, $(VDB_LIBDIR))
