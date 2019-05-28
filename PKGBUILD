@@ -7,7 +7,7 @@ pkgdesc="C++ <-> Lua Wrapper Library"
 arch=('any')
 url="http://sol2.rtfd.io/"
 license=('MIT')
-makedepends=('git' 'cmake' 'python' 'python-sphinx')
+makedepends=('git')
 optdepends=('lua' 'lua51' 'lua52' 'luajit')
 conflicts=('sol2')
 provides=('sol2')
@@ -19,22 +19,8 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-  cd sol2
-  rm -rf build
-  mkdir build
-  cd build
-  cmake .. -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
-    -DSOL2_BUILD_LUA=OFF \
-    -DSOL2_GENERATE_SINGLE=ON \
-    -DBUILD_LUA_AS_DLL=OFF
-  make
-}
-
 package() {
-  cd sol2/build
-  make DESTDIR="$pkgdir" install
+  cd sol2
+  install -d $pkgdir/usr/include
+  cp -rf ./include $pkgdir/usr
 }
