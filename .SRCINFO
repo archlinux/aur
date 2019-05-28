@@ -11,7 +11,7 @@ pkgbase = mycash-git
 	depends = python
 	depends = python-pip
 	depends = python-virtualenv
-	provides = unarelith
+	provides = mycash
 	source = mycash::git+https://git.unarelith.net/Unarelith/mycash.git
 	md5sums = SKIP
 
