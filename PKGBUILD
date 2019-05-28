@@ -13,7 +13,7 @@ depends=('libpng' 'sdl' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-f
 optdepends=('openttd-opengfx: free graphics' 
             'openttd-openmsx: free musicset'
             'openttd-opensfx: free soundset')
-source=("https://proxy.binaries.openttd.org/openttd-releases/${pkgver}/${pkgname}-${pkgver}-source.tar.xz"
+source=("https://proxy.binaries.openttd.org/openttd-releases/${pkgver}/${_pkgname}-${pkgver}-source.tar.xz"
         "http://openttd.btpro.nl/OpenTTD_versions/BTPro_Client_1.9.1_A_19101.diff"
         "http://openttd.btpro.nl/OpenTTD_versions/innerhighlight.grf")
 sha256sums=('ff8158c1ddffebdb807fea8057c038fce1171e544fe11523e2ea70febe3711e5'
