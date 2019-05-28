@@ -1,6 +1,6 @@
 pkgbase = archisomydrive
 	pkgdesc = GUI utility to copy an ISO file to a USB disk.
-	pkgver = 5.5
+	pkgver = 5.6
 	pkgrel = 1
 	url = https://github.com/daltomi/ArchIsoMyDrive
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = archisomydrive
 	depends = glib2
 	depends = libutil-linux
 	conflicts = archisomydrive-git
-	source = https://github.com/daltomi/ArchIsoMyDrive/releases/download/v5.5/archisomydrive-git-5.5-1-x86_64.pkg.tar.xz
-	source = https://github.com/daltomi/ArchIsoMyDrive/releases/download/v5.5/archisomydrive-git-5.5-1-x86_64.pkg.tar.xz.sig
+	source = https://github.com/daltomi/ArchIsoMyDrive/releases/download/v5.6/archisomydrive-git-5.6-1-x86_64.pkg.tar.xz
+	source = https://github.com/daltomi/ArchIsoMyDrive/releases/download/v5.6/archisomydrive-git-5.6-1-x86_64.pkg.tar.xz.sig
 	validpgpkeys = 51479755D90A2AACFA90A6551DD242462908D08B
-	sha256sums = 063b22a4d267bf74c0cd9d21af072400b789871784097e9ca9bab4c26643915a
+	sha256sums = 8fc83b9cd8efec9cf39fe0e299042741b70ccbdee21a9ad6c9d8e49c8c2ada9a
 	sha256sums = SKIP
 
 pkgname = archisomydrive
