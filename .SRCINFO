@@ -1,0 +1,15 @@
+pkgbase = upload-gphotos
+	pkgdesc = Upload photos to Google Photos (Unofficial)
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = https://github.com/3846masa/upload-gphotos
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = google-chrome
+	source = upload-gphotos-3.0.5.tar.gz::https://github.com/3846masa/upload-gphotos/archive/v3.0.5.tar.gz
+	md5sums = 521ded74605751bf07be84fefc98014e
+
+pkgname = upload-gphotos
+
