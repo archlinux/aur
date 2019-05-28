@@ -12,8 +12,11 @@ pkgbase = sol2
 	optdepends = luajit
 	provides = sol2
 	conflicts = sol2
+	options = !strip
 	source = https://github.com/ThePhD/sol2/archive/v3.0.2.tar.gz
 	sha256sums = 6265ade1efd5b1133d71fa3b81fd0214ccf964992a8cbab3dfae650a00ed0258
 
 pkgname = sol2
+
+pkgname = sol2-single
 
