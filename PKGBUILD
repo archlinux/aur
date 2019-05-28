@@ -20,20 +20,17 @@ sha256sums=(
 )
 
 build() {
-  cd "$srcdir"
-  msg "Extracting..."
-  tar xf data.tar.xz
-  msg2 "Done extracting!"
+  msg "Extracting deb data..."
+  tar xf "$srcdir/data.tar.xz" -C "$srcdir"
+  msg2 "Done extracting deb data!"
   if [ "$CARCH" = "x86_64" ]; then
     _jre_file="jre64.tar.gz"
   else
     _jre_file="jre32.tar.gz"
   fi
-  cd "$srcdir/usr/share/screamingfrogseospider/tmp"
   msg "Extracting jre..."
-  tar xf "$_jre_file"
+  tar xf "$srcdir/usr/share/screamingfrogseospider/tmp/$_jre_file" -C "$srcdir/usr/share/screamingfrogseospider"
   msg2 "Done extracting jre!"
-  mv "$srcdir/usr/share/screamingfrogseospider/tmp/jre" "$srcdir/usr/share/screamingfrogseospider/jre"
   rm -rf "$srcdir/usr/share/screamingfrogseospider/tmp"
 }
 
