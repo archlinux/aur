@@ -1,7 +1,7 @@
-# Maintainer: Hilton Medeiros <medeiros.hilton@gmail.com>
-
+# Previous Maintainer: Hilton Medeiros <medeiros.hilton@gmail.com>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=angelscript
-pkgver=2.31.0
+pkgver=2.33.0
 pkgrel=1
 pkgdesc="An extremely flexible cross-platform scripting library."
 arch=('i686' 'x86_64')
@@ -10,13 +10,13 @@ license=('custom:ZLIB')
 depends=('gcc-libs')
 source=("http://angelcode.com/angelscript/sdk/files/${pkgname}_${pkgver}.zip"
         LICENSE)
-sha512sums=('a415c9c9ee9bc2ab0eecd0c7a41ef173f6616f393dd092143e4be2c4eddf6394f065d0862c0603015426681648ff1f7c0aaf121036ca13065f495beaed112e98'
+sha512sums=('eaf972ecf965fe4f72e55755f5e796499018e918f93cfd835b1ca20f9338e299e8dbd707240341eef81ae920f07d2280646151f515f5990a62550689445c86f0'
             '523a6ded94dab26ebc1fc5ed39346b950afea1dae1a51c5f262242de1ad86ce921d462b430825bd7a0ca7bb2d501b85e60f39732c3e1d948e1f0182cc9c691a1')
 
 build() {
   cd "$srcdir/sdk/angelscript/projects/gnuc"
 
-  make all
+  make -j4 all
 }
 
 package() {
@@ -37,4 +37,3 @@ package() {
   cp -rf * "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-
