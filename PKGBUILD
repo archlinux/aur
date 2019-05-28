@@ -2,7 +2,7 @@
 # Maintainer: Lorenz Wellmer
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=1.3.0
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Clockify Desktop App"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ groups=('')
 depends=('alsa-lib' 'atk' 'at-spi2-atk' 'cairo' 'dbus' 'desktop-file-utils' 'electron' 'expat' 'fontconfig' 'gconf' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libcups' 'libnotify' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'nspr' 'nss' 'pango')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://clockify.me/downloads/Clockify_Setup_1.3.0.deb")
-sha512sums_x86_64=('2092f55b92990fdb2e37b3e13d77d6698e33a1f782f45c8032c8d6fd5302eaa1762df20d3cc1aa5767d458e5ceb7f93d589c4e35c96962a4d5bb21ea165e5ae1')
+source_x86_64=("https://clockify.me/downloads/Clockify_Setup.deb")
+sha512sums_x86_64=('571714438972ee3d61d58b0196225e0d583ffa562f8aa1846649a13ba84cb2bcffb1a044f44703df37c51079cf8b66fc00b265952e9ca4c3025ef74df15ad6c5')
 
 package(){
 
