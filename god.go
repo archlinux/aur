@@ -241,7 +241,8 @@ func showVersion(){
 	asciiFigure.Print()
 	whiteColor.Println("\n ~ god:v" + version)
 	fmt.Println(" ~ utility for simplifying the git usage" +
-		"\n ~ github.com/keylo99/god\n")
+		"\n ~ github.com/keylo99/god" +
+		"\n ~ licensed under gplv3\n")
 }
 
 func main() {
