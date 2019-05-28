@@ -5,7 +5,7 @@
 
 pkgname=knossos
 pkgver=5.1
-pkgrel=2
+pkgrel=3
 arch=("x86_64")
 pkgdesc="A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity."
 url="https://knossos.app"
@@ -14,7 +14,7 @@ depends=("glu"
 	"qt5-base"
 	"qt5-python27-git" # qt5-python27
 	"qt5-tools" # Qt5Help
-	"quazip-qt5"
+	"quazip"
 	"snappy"
 )
 makedepends=("boost"
