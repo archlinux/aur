@@ -1,7 +1,7 @@
 # Maintainer: Hurstel Alexandre <a.hurstel at unistra dot fr>
 _pkgname=NordVPN-Connect
 pkgname=gnome-shell-extension-nordvpn-connect-git
-pkgver=r80.28bbe2b
+pkgver=r82.0b9f8f1
 pkgrel=1
 pkgdesc="Unofficial Gnome-Shell Extension to provide a GUI for the official NordVPN CLI Tool."
 arch=('any')
