@@ -1,45 +1,49 @@
 # Contributor: Max Devaine <max@devaine.cz>
-
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=code-eli-git
-pkgver=20140913
+pkgver=r821.f9ff74f
 pkgrel=1
 pkgdesc='Collection of C++ libraries that provide a variety of functionalities.'
-arch=(i686 x86_64)
-url='https://github.com/ddmarshall/Code-Eli'
+arch=('i686' 'x86_64')
+url='https://github.com/ramcdona/Code-Eli'
 license=('EPL 1.0')
+depends=('eigen')
+optdepends=('cpptest: unit tests'
+            'doxygen: documentation')
 makedepends=('cmake' 'git')
-depends=('')
+_name=Code-Eli
 provides=('code-eli')
 conflicts=('')
-groups=('')
+source=("git+https://github.com/ramcdona/Code-Eli.git")
+md5sums=('SKIP')
 
-_gitroot="https://github.com/ddmarshall/Code-Eli.git"
-_gitname="Code-Eli"
+pkgver() {
+  cd "$_name"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+_buildtype="Release"
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
 
-  if [ -d "$srcdir/$_gitname" ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot
-  fi
+  msg "Starting CMake (build type: ${_buildtype})"
 
-  msg "GIT checkout done or server timeout"
+  cd "${srcdir}/${_name}/"
 
-  msg "Configure Code-Eli..."
-  cd "$srcdir/$_gitname/"
+  cmake . \
+    -DCMAKE_PREFIX_PATH='/usr' \
+    -DCMAKE_INSTALL_PREFIX='/usr'
 
-  cmake . -DCMAKE_PREFIX_PATH='/usr' -DCMAKE_INSTALL_PREFIX='/usr'
-  
+  msg "Building the project"
+  make -j4
 }
 
 
 package() {
+  msg "Installing files"
+
   mkdir $pkgdir/usr
-  cp -a $srcdir/$_gitname/include $pkgdir/usr/
+  cp -a $srcdir/${_name}/include $pkgdir/usr/
   chown -R root:root $pkgdir/usr
   chmod -R 755 $pkgdir/usr
 }
