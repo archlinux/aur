@@ -1,7 +1,7 @@
 # Maintainer: Antoine Viallon <antoine.viallon@gmail.com>
 pkgname=upyloader-git
 pkgver=0.3245c72
-pkgrel=1
+pkgrel=2
 pkgdesc="File transfer and communication tool for MicroPython boards."
 arch=('any')
 url="https://github.com/zindy/uPyLoader"
@@ -11,6 +11,7 @@ depends=(
   'sudo'
   'git'
   'python-pyqt5'
+  'python-pyserial'
   'kdesu'
 )
 source=("$pkgname::git+https://github.com/zindy/uPyLoader.git")
