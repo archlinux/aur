@@ -1,8 +1,9 @@
 # Maintainer: TheAifam5 <theaifam5 at gmail com>
 
-pkgname=sol2-git
+pkgbase=sol2
+pkgname=(sol2-git sol2-single-git)
 pkgver=v3.0.2.r1.ge256012d
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ <-> Lua Wrapper Library"
 arch=('any')
 url="http://sol2.rtfd.io/"
@@ -19,8 +20,18 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
+package_sol2-git() {
   cd sol2
+
   install -d $pkgdir/usr/include
   cp -rf ./include $pkgdir/usr
+}
+
+package_sol2-single-git() {
+  makedepends+=('python')
+  
+  cd sol2/single
+
+  install -d $pkgdir/usr/include
+  python single.py --input ../include --output $pkgdir/usr/include/sol/sol.hpp
 }
