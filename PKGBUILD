@@ -3,8 +3,8 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.1.18
-pkgrel=2
+pkgver=2.1.19
+pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
 url='https://github.com/GNS3/gns3-server'
@@ -25,12 +25,12 @@ optdepends=('dynamips: Cisco router emulator.'
 install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service")
-sha256sums=('b9678b8d44be57bf421072f314e52b895133f6ef447cec1a060b1eca0b2f84a0'
+sha256sums=('54785bf130e04a7b96161fb6c83c353cbb8207a05d88281733cfc173f10d233f'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    sed -i -e '/^typing>=3\.5\.3\.0/d' -e '/^async-timeout<3\.0\.0/d' requirements.txt
+    sed -i -e '/^async-timeout<3\.0\.0/d' requirements.txt
     echo 'async-timeout>=3.0.0' >> requirements.txt
 }
 
