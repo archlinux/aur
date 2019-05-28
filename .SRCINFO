@@ -1,6 +1,6 @@
 pkgbase = python-geopy
-	pkgdesc = Geocoding Toolbox for Python 3. Includes geocoder classes for the OpenStreetMap,ESRI ArcGIS,Google,Baidu,Bing,Yahoo,Yandex,IGN France,GeoNames,NaviData,OpenMapQuest,What3Words,OpenCage,SmartyStreets,geocoder.us, and GeocodeFarm geocoder services.
-	pkgver = 1.19.0
+	pkgdesc = Geocoding Toolbox for Python 3. Includes geocoder classes for the OpenStreetMap Nominatim, Google Geocoding API (V3), and many other geocoding services
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://github.com/geopy/geopy
 	arch = any
@@ -9,10 +9,11 @@ pkgbase = python-geopy
 	depends = python
 	depends = python-requests-oauthlib
 	depends = python-pytz
+	depends = python-geographiclib
 	provides = python-geopy-git
 	conflicts = python-geopy-git
-	source = https://pypi.python.org/packages/source/g/geopy/geopy-1.19.0.tar.gz
-	sha256sums = d2fc0dc79572f5acbcf7e48af1233ac8033079ddb15cae538b9dd03587436de5
+	source = https://pypi.python.org/packages/source/g/geopy/geopy-1.20.0.tar.gz
+	sha256sums = 9419bc90ee6231590c4ae7acf1cf126cefbd0736942da7a6a1436946e80830e2
 
 pkgname = python-geopy
 
