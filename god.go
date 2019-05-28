@@ -14,9 +14,9 @@ import (
 	"github.com/carmark/pseudo-terminal-go/terminal"
 )
 
-var version string = "1.0"
+var version = "1.0"
 var outb, errb bytes.Buffer // Buffer for command output
-var cmdSlice, cmdList []string // Arrays for the shortened git commands
+var cmdSlice, gitCmdSlice []string // Slice for the shortened git commands
 var whiteColor (*color.Color) = color.New(color.FgWhite, color.Bold)
 
 // Executes the terminal command and returns output.
@@ -78,8 +78,8 @@ func prepareCmds(){
 		"git branch | tr -d '*' | " + removeSpaces +
 		"git remote"
 	cmdStr := execCmd(parseGitCmd, false)
-	cmdList = strings.Split(cmdStr, "\n")
-	for _, cmd := range cmdList {
+	gitCmdSlice = strings.Split(cmdStr, "\n")
+	for _, cmd := range gitCmdSlice {
 		if (len(cmd) > 0){
 			// Use the first character of git command
 			// for the new command if not exists in the
@@ -108,7 +108,7 @@ func buildCmd(line string) string {
 		cmd = " " + cmd + " "
 		if (strings.Contains(line, cmd)) {
 			line = strings.Replace(line, cmd, 
-				" " + cmdList[index] + " ", -1)
+				" " + gitCmdSlice[index] + " ", -1)
 		}
 	}
 	return "git" + line
@@ -193,7 +193,7 @@ func showCommands(){
 	table.SetHeader([]string{"Command", "git"})
 	table = setTableColors(table)
 	for index, cmd := range cmdSlice {
-		table.Append([]string{cmd, cmdList[index]})
+		table.Append([]string{cmd, gitCmdSlice[index]})
 	}
 	table.Render()
 }
