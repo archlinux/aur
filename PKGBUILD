@@ -6,12 +6,13 @@
 pkgname=vmd-src
 _pkgname=vmd
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=('custom')
 arch=('x86_64')
-depends=('tcsh' 'tk' 'python2-numpy' 'fltk' 'ospray' 'netcdf' 'ocl-icd')
+depends=('tcsh' 'tk' 'python2-numpy' 'fltk' 'ospray'
+         'netcdf' 'ocl-icd' 'opencl-headers' 'libxi')
 makedepends=('gcc')
 optdepends=('openbabel: additional file formats support'
             'sqlite: dmsplugin'

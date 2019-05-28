@@ -1,7 +1,7 @@
 pkgbase = vmd-src
 	pkgdesc = Visual Molecular Dynamics
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ks.uiuc.edu/Research/vmd/
 	arch = x86_64
 	license = custom
@@ -13,6 +13,8 @@ pkgbase = vmd-src
 	depends = ospray
 	depends = netcdf
 	depends = ocl-icd
+	depends = opencl-headers
+	depends = libxi
 	optdepends = openbabel: additional file formats support
 	optdepends = sqlite: dmsplugin
 	optdepends = optix: accelerated ray tracing for NVIDIA GPUs
