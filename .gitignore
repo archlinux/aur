@@ -1,3 +1,5 @@
 *
 !PKGBUILD
 !.SRCINFO
+!.gitignore
+!*.sh

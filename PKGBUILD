@@ -1,17 +1,17 @@
-# Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
+# Maintainer: Colin Adler <cadler@coder.com>
 
 pkgname=code-server
 pkgver=1.1119_vsc1.33.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Run VS Code on a remote server"
 arch=('x86_64')
-url="https://github.com/codercom/code-server"
+url="https://github.com/cdr/code-server"
 license=(MIT)
 depends=(glibc net-tools)
 _ghtag=${pkgver//_/-}
 _dirname=code-server${_ghtag}-linux-x64
-source=(https://github.com/codercom/code-server/releases/download/${_ghtag}/${_dirname}.tar.gz)
-sha512sums=(SKIP)
+source=(${url}/releases/download/${_ghtag}/${_dirname}.tar.gz)
+sha512sums=('ff357061c122db327343135f157b86b1fd0e3afcaa568218dc8970f3e546ccf6e2a42829536ae207958831469fde28a0e038efb28619bb4dc8081af575c0d550')
 options=('!strip')
 
 package() {
