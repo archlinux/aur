@@ -8,10 +8,10 @@ import (
 	"bytes"
 	"os/exec"
 	"strings"
-	"github.com/carmark/pseudo-terminal-go/terminal"
-	"github.com/common-nighthawk/go-figure"
-	"github.com/olekukonko/tablewriter"
 	"github.com/fatih/color"
+	"github.com/olekukonko/tablewriter"
+	"github.com/common-nighthawk/go-figure"
+	"github.com/carmark/pseudo-terminal-go/terminal"
 )
 
 var version string = "1.0"
@@ -93,7 +93,7 @@ func startTerm() {
 	defer term.ReleaseFromStdInOut()
 	d := color.New(color.FgGreen, color.Bold)
 	d.Println("Type '?' for help or 'git' for list of commands.")
-	term.SetPrompt("[god]> ")
+	term.SetPrompt("[god ~]$ ")
 	cmdLoop:
 	for {
 		// Read the keyboad input.
