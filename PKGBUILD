@@ -6,7 +6,7 @@ url='http://www.ros.org/wiki/tf2'
 pkgname='ros-melodic-tf2'
 pkgver='0.6.5'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
