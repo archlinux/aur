@@ -1,7 +1,7 @@
 pkgbase = stunnel-systemd-git
 	pkgdesc = A program that allows you to encrypt arbitrary TCP connections inside SSL
 	pkgver = 5.54
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.stunnel.org/
 	arch = x86_64
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = stunnel-systemd-git
 	makedepends = pkgconf
 	makedepends = libtool
 	makedepends = autoconf-archive
+	makedepends = gnu-netcat
 	depends = libnsl
 	depends = openssl
 	depends = systemd
