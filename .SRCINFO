@@ -1,6 +1,6 @@
 pkgbase = adsf
 	pkgdesc = A web server that you can launch instantly in any directory.
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/ddfreyne/adsf
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = adsf
 	depends = ruby-rack<3
 	provides = ruby-adsf
 	conflicts = ruby-adsf
-	noextract = adsf-1.4.1.gem
+	noextract = adsf-1.4.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/adsf-1.4.1.gem
-	source = https://github.com/ddfreyne/adsf/blob/1.4.1/LICENSE
-	sha256sums = b8d598d74a28d0103786c2f64dc927e50fcbb6c0c678af19b8162990cd6e0bbd
-	sha256sums = e9b0431c295cde4e96495904c40ebad7d109272212167a1ac8fc911359cd2e6d
+	source = https://rubygems.org/downloads/adsf-1.4.2.gem
+	source = https://github.com/ddfreyne/adsf/blob/1.4.2/LICENSE
+	sha256sums = ebf3a8af1facd577ec90cd2000ec5d5b53dffc710420a0308002f7d49e392b17
+	sha256sums = ca73e8ea87495579f44f1f6550b3c7953babf8b6b5c32fe891ecb8817175f460
 
 pkgname = adsf
 
