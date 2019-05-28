@@ -4,7 +4,7 @@
 
 pkgname=ngs
 pkgver=2.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A new, domain-specific API for accessing reads, alignments and pileups produced from Next Generation Sequencing."
 arch=('x86_64')
 url="https://github.com/ncbi/ngs"
@@ -25,20 +25,22 @@ prepare(){
 build(){
   cd "${pkgname}-${pkgver}"
   ./configure --prefix="$pkgdir/usr/" --build-prefix="$srcdir/build"
-  make
+  make -C ngs-sdk
+  make -C ngs-java
 }
 
-check(){
-  cd "${pkgname}-${pkgver}"
-  make -k test
-}
+#check(){
+#  cd "${pkgname}-${pkgver}"
+#  make -k test
+#}
 
 package(){
   cd "$pkgname-$pkgver"
   # ncbi does not use autoconf/automake so there is no respect for DESTDIR
   #   but there is a ROOT(dir)
   #make "ROOT=$pkgdir" install
-  make install
+  make -C ngs-sdk install
+  make -C ngs-java install
 
   # add license
   mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"

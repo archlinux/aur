@@ -1,7 +1,7 @@
 pkgbase = ngs
 	pkgdesc = A new, domain-specific API for accessing reads, alignments and pileups produced from Next Generation Sequencing.
 	pkgver = 2.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ncbi/ngs
 	arch = x86_64
 	license = custom:PublicDomain
