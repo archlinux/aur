@@ -1,4 +1,4 @@
-pkgbase = sol2
+pkgbase = sol2-git
 	pkgdesc = C++ <-> Lua Wrapper Library
 	pkgver = v3.0.2.r1.ge256012d
 	pkgrel = 2
@@ -6,6 +6,7 @@ pkgbase = sol2
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python
 	optdepends = lua
 	optdepends = lua51
 	optdepends = lua52
