@@ -4,10 +4,11 @@
 pkgbase=bootstrap-studio
 pkgname=bootstrap-studio
 pkgver=4.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful desktop app for creating responsive websites using the Bootstrap framework.'
 url='https://bootstrapstudio.io/'
 arch=('x86_64')
+depends=('gconf')
 source=($pkgname-$pkgver.deb::'https://bootstrapstudio.io/releases/desktop/4/Bootstrap%20Studio%204%20(64bit).deb')
 
 prepare() {
@@ -16,10 +17,10 @@ prepare() {
 
 	# Fix desktop entry
 	sed -i "s|Exec=.*|Exec=/usr/bin/$pkgname %F|" \
-	"$srcdir"/usr/share/applications/bootstrapstudio.desktop
-	
+		"$srcdir"/usr/share/applications/bootstrapstudio.desktop
+
 	sed -i "s|Path=.*|Path=/usr/bin/|" \
-	"$srcdir"/usr/share/applications/bootstrapstudio.desktop
+		"$srcdir"/usr/share/applications/bootstrapstudio.desktop
 }
 
 package() {
@@ -28,10 +29,9 @@ package() {
 
 	# Install license
 	install -Dm644 "$srcdir"/usr/share/doc/bootstrapstudio/copyright \
-	"$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+		"$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 	install -Dm644 "$srcdir"/opt/bootstrapstudio/LICENSES.chromium.html \
-	"$pkgdir"/usr/share/licenses/$pkgname/LICENSES.chromium.html
-
+		"$pkgdir"/usr/share/licenses/$pkgname/LICENSES.chromium.html
 
 	# Remove unnecessary files
 	rm -rf "$srcdir"/usr/share/doc
