@@ -1,0 +1,18 @@
+pkgbase = libiges-git
+	pkgdesc = Implementation of the IGESv5.3 specification
+	pkgver = r225.efb93fd
+	pkgrel = 1
+	url = http://cbernardo.github.io/libIGES
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1
+	makedepends = git
+	makedepends = cmake
+	depends = gcc
+	provides = libiges
+	conflicts = libiges
+	source = git+https://github.com/cbernardo/libIGES.git
+	md5sums = SKIP
+
+pkgname = libiges-git
+
