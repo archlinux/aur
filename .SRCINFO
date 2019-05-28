@@ -1,7 +1,7 @@
 pkgbase = bootstrap-studio
 	pkgdesc = A powerful desktop app for creating responsive websites using the Bootstrap framework.
 	pkgver = 4.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bootstrapstudio.io/
 	arch = x86_64
 	depends = gconf
