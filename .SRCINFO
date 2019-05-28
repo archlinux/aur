@@ -1,12 +1,11 @@
 pkgbase = screamingfrogseospider
 	pkgdesc = A small desktop program you can install on your PC or Mac which spiders websites’ links, images, CSS, script and apps from an SEO perspective.
 	pkgver = 11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.screamingfrog.co.uk/seo-spider/
 	arch = any
 	license = custom
-	depends = jre8-openjdk
-	depends = java-openjfx
+	makedepends = tar
 	source = https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_11.2_all.deb
 	source = LICENSE
 	sha256sums = 04ccb77dd8955f52903d29041f380c4d9ee95f429b46cd5f5a3cb0f925556de2

@@ -3,13 +3,13 @@
 
 pkgname=screamingfrogseospider
 pkgver=11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A small desktop program you can install on your PC or Mac which spiders websites’ links, images, CSS, script and apps from an SEO perspective."
 arch=('any')
 url="https://www.screamingfrog.co.uk/seo-spider/"
 license=('custom')
-depends=('jre8-openjdk' 'java-openjfx')
-makedepends=()
+depends=()
+makedepends=('tar')
 source=(
   "https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_all.deb"
   "LICENSE"
@@ -24,8 +24,17 @@ build() {
   msg "Extracting..."
   tar xf data.tar.xz
   msg2 "Done extracting!"
-  # Fix java path
-  sed -i "s%usr/share/screamingfrogseospider/jre%usr/lib/jvm/java-8-openjdk/jre%g" "$srcdir/usr/bin/screamingfrogseospider"
+  if [ "$CARCH" = "x86_64" ]; then
+    _jre_file="jre64.tar.gz"
+  else
+    _jre_file="jre32.tar.gz"
+  fi
+  cd "$srcdir/usr/share/screamingfrogseospider/tmp"
+  msg "Extracting jre..."
+  tar xf "$_jre_file"
+  msg2 "Done extracting jre!"
+  mv "$srcdir/usr/share/screamingfrogseospider/tmp/jre" "$srcdir/usr/share/screamingfrogseospider/jre"
+  rm -rf "$srcdir/usr/share/screamingfrogseospider/tmp"
 }
 
 package() {
