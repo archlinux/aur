@@ -17,11 +17,12 @@ import (
 var version = "1.0"
 var outb, errb bytes.Buffer // Buffer for command output
 var cmdSlice, gitCmdSlice []string // Slice for the shortened git commands
+var gitShortcuts[][] string // 2-d slice for the git shortcuts
 var whiteColor (*color.Color) = color.New(color.FgWhite, color.Bold)
 
 // Executes the terminal command and returns output.
 // stdout parameter determines the output stream.
-func execCmd(input string, stdout bool) string {
+func execCmd(input string, stdout bool) (string) {
     // Remove the newline character.
     input = strings.TrimSuffix(input, "\n")
 	// Prepare the command to execute.
@@ -53,13 +54,24 @@ func execCmd(input string, stdout bool) string {
 
 // Search the given query in slice.
 // Returns true if the element exists.
-func searchInSlice(slice []string, query string) bool{
+func searchInSlice(slice []string, query string) (bool) {
 	set := make(map[string]bool)
 	for _, v := range slice {
 		set[v] = true
 	}
 	return set[query]
 }
+
+// Return the element index in a slice. 
+// (-1 on non-existence)
+func sliceIndexOf(slice []string, element string) (int) {
+	for k, v := range slice {
+		if element == v {
+			return k
+		}
+	}
+	return -1
+ }
 
 // Prepare (shorten) the git commands.
 func prepareCmds(){
@@ -100,7 +112,7 @@ func prepareCmds(){
 
 // Create a git command from the given string.
 // Returns changed/new command.
-func buildCmd(line string) string {
+func buildCmd(line string) (string) {
 	// Support the normal usage.
 	line = strings.Replace(line, " git ", " ", -1)
 	// Replace the shortened command with its original.
@@ -115,7 +127,7 @@ func buildCmd(line string) string {
 }
 
 // Start the interactive shell.
-func startTerm() {
+func startTerm(){
 	term, err := terminal.NewWithStdInOut()
 	if err != nil {
 		panic(err)
@@ -203,7 +215,7 @@ func showCommands(){
 
 // Show commonly used git command shortcuts.
 func showShortcuts(){
-	fmt.Println("x")
+	fmt.Println(cmdSlice[sliceIndexOf(gitCmdSlice, "add")])
 }
 
 // Show project information including version.
