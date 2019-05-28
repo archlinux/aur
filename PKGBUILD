@@ -2,17 +2,17 @@
 
 pkgname=lib32-libnftnl
 _pkgbasename=libnftnl
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Netfilter library providing interface to the nf_tables subsystem (32-bit)'
 arch=('x86_64')
 url='https://netfilter.org/projects/libnftnl/'
 license=('GPL2')
 depends=('lib32-libmnl' 'libnftnl')
-makedepends=('lib32-gcc-libs')
+makedepends=('gcc-multilib')
 validpgpkeys=('C09DB2063F1D7034BA6152ADAB4655A126D292E4') # Netfilter Core Team
 source=("https://netfilter.org/projects/libnftnl/files/libnftnl-${pkgver}.tar.bz2"{,.sig})
-sha1sums=('c0f880588fabaa845a88fb5a2bdad0dea7481857'
+sha1sums=('d000e7d07b36fae73ddc3a1aa09e6d7918924eab'
           'SKIP')
 
 prepare() {
