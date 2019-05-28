@@ -110,11 +110,14 @@ func prepareCmds(){
 			gitCmdSlice = append(gitCmdSlice[:i], gitCmdSlice[i+1:]...)
 		}
 	}
+	// Add git shortcuts.
 	gitShortcuts = append(gitShortcuts, 
 		[]string{"add -A", "aa"},
 		[]string{"commit -m", "cmt"},
 		[]string{"rm -r", "rr"},
-		[]string{"log --graph --decorate --oneline --all", "lo"})
+		[]string{"log --graph --decorate --all", "ll"},
+		[]string{"log --graph --decorate --oneline --all", "lo"},
+		[]string{"ls-files", "ls"})
 }
 
 // Create a git command from the given string.
