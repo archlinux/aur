@@ -173,7 +173,7 @@ func setTableColors(table (*tablewriter.Table)) (*tablewriter.Table) {
 // Display help message.
 func showHelp(){
 	cliCmds := map[string]string{
-		"git": "List available simplified git commands",
+		"git": "List available git commands",
 		"help": "Show this help message",
 		"version": "Show version information",
 		"clear": "Clear the terminal", 
