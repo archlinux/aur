@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=GemistDownloader
+Comment=Gemiste uitzendingen downloaden was nog nooit zo makkelijk
+Exec=/usr/bin/gemistdownloader
+TryExec=/usr/bin/gemistdownloader
+Icon=gemistdownloader
+Terminal=false
+Type=Application
+Categories=AudioVideo;Recorder;
+Keywords=Video;Capture;
