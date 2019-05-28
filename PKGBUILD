@@ -11,21 +11,21 @@ depends=("gcc-libs")
 makedepends=("cargo" "git")
 provides=("frece")
 conflicts=("frece")
-source=("$pkgname-$pkgver::git+https://github.com/SicariusNoctis/frece")
+source=("$pkgname::git+https://github.com/SicariusNoctis/frece")
 sha256sums=("SKIP")
 
 pkgver() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     cargo build --release
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     install -Dm755 "target/release/frece" "$pkgdir/usr/bin/frece"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/frece/LICENSE"
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/frece/README.md"

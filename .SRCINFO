@@ -10,7 +10,7 @@ pkgbase = frece-git
 	depends = gcc-libs
 	provides = frece
 	conflicts = frece
-	source = frece-git-1.0.0.r1.g4d037d3::git+https://github.com/SicariusNoctis/frece
+	source = frece-git::git+https://github.com/SicariusNoctis/frece
 	sha256sums = SKIP
 
 pkgname = frece-git
