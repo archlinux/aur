@@ -1,7 +1,7 @@
 pkgname=auracle-git
 _pkgname=auracle
-pkgver=r192.ad01c04
-pkgrel=2
+pkgver=r255.5435855
+pkgrel=1
 pkgdesc='A flexible client for the AUR'
 arch=('x86_64' 'i686')
 url="https://github.com/falconindy/auracle.git"
@@ -20,15 +20,10 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build () {
+build() {
   cd "$_pkgname"
 
-  local action=setup
-  if [[ -d build ]]; then
-    action=configure
-  fi
-
-  meson "$action" build \
+  meson build --wipe \
     --prefix=/usr \
     --buildtype=plain \
     --default-library=static
