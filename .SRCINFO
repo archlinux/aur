@@ -6,7 +6,7 @@ pkgbase = gosearch-git
 	install = gosearch.install
 	arch = x86_64
 	license = GPL3
-	makedepends = go
+	makedepends = go-pie
 	makedepends = git
 	depends = linux>=5.1
 	provides = gosearch
