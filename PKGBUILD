@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=slime
-pkgver=2.23
+pkgver=2.24
 pkgrel=1
 pkgdesc="The Superior Lisp Interaction Mode for Emacs"
 arch=('any')
@@ -17,7 +17,7 @@ provides=('slime')
 conflicts=('slime')
 install=slime.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slime/slime/archive/v$pkgver.tar.gz")
-sha256sums=('cc962654d08324f6552097f0f0c7fd11699285b670657ee30e9db9781dcef305')
+sha256sums=('be13afe8f0bffc8bbb848ba0fe61e5624486a50a230cda840ef379a08e2fa002')
 
 build() {
   cd $pkgname-$pkgver
