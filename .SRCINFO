@@ -8,10 +8,10 @@ pkgbase = openrpg-git
 	license = custom:OGL
 	makedepends = gcc>=4.7
 	makedepends = cmake>=2.8.4
-	provides = openrpg=0.4.4_dev
-	provides = roll=0.4.4_dev
-	provides = name-generator=0.4.4_dev
-	provides = character-generator=0.4.4_dev
+	provides = openrpg
+	provides = roll
+	provides = name-generator
+	provides = character-generator
 	source = git+https://github.com/incomingstick/OpenRPG#tag=v0.4.4-dev
 	md5sums = SKIP
 

@@ -17,9 +17,11 @@ noextract=()
 md5sums=('SKIP')
 
 build() {
-  mkdir -p "${srcdir}/build"
+  mkdir -p build
 
-  cd "${srcdir}/build"
+  cd build
+
+  cp -v ${srcdir}/OpenRPG/LICENSE .
 
   cmake "${srcdir}/OpenRPG" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
@@ -28,10 +30,10 @@ build() {
   make && make check
 }
 
-package_openrpg-git() {
-  cd "${srcdir}/build"
+package() {
+  cd build
 
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 ${srcdir}/OpenRPG/LICENSE "${pkgdir}/usr/share/licenses/openrpg/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/openrpg/LICENSE"
 }
