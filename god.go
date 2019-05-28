@@ -54,6 +54,9 @@ func searchInSlice(slice []string, query string) bool{
 }
 
 func prepareCmds(){
+	if(strings.Contains(execCmd("git status", false), "exit status")){
+		fmt.Println("No git repository found.")
+	}
 	removeSpaces := "sed -e 's/^\\s*//' -e 's/ *[A-Z].*//' && "
 	parseGitCmd := 
 		"git help | grep '^  *[a-z]' | " + removeSpaces +
