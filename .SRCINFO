@@ -1,6 +1,6 @@
 pkgbase = amdvlk-deb
 	pkgdesc = AMD Open Source Driver for Vulkan (Stable DEB Release)
-	pkgver = 2019.Q2.3
+	pkgver = 2019.Q2.4
 	pkgrel = 1
 	url = https://github.com/GPUOpen-Drivers/AMDVLK
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = amdvlk-deb
 	provides = vulkan-driver
 	conflicts = amdvlk-git
 	conflicts = amdvlk
-	source = https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-2019.Q2.3/amdvlk_2019.Q2.3_amd64.deb
+	source = https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-2019.Q2.4/amdvlk_2019.Q2.4_amd64.deb
 	sha256sums = SKIP
 
 pkgname = amdvlk-deb
