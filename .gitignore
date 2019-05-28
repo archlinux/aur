@@ -5,3 +5,4 @@
 /pkg/i3-env/.BUILDINFO
 /pkg/i3-env/.MTREE
 /pkg/i3-env/.PKGINFO
+/pkg/i3-env/usr/bin/i3-env-rofi
