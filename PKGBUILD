@@ -10,7 +10,7 @@ arch=('any')
 options=(!strip)
 url="http://sol2.rtfd.io/"
 license=('MIT')
-makedepends=('git')
+makedepends=('git' 'python')
 optdepends=('lua' 'lua51' 'lua52' 'luajit')
 conflicts=('sol2')
 provides=('sol2')
@@ -25,8 +25,6 @@ package_sol2() {
 }
 
 package_sol2-single() {
-  makedepends+=('python')
-
   cd "./$pkgbase-$_pkgver/single"
 
   install -d $pkgdir/usr/include
