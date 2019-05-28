@@ -1,7 +1,7 @@
 # Maintainer: Denis Borisevich <elfmax@tut.by>
 
 pkgname=jeveassets
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
@@ -10,18 +10,28 @@ license=('GPL2')
 depends=('jre8-openjdk' 'unzip')
 install=$pkgname.install
 
-source=("https://github.com/GoldenGnu/jeveassets/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip"
+source=(
+	"https://github.com/GoldenGnu/jeveassets/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip"
         "https://eve.nikr.net/${pkgname}/data.zip"
-        "$pkgname.desktop" "$pkgname.png" "$pkgname.sh")
-md5sums=('9946014b4e6c40b71d0462ae7ac91c66'
-         '4997276d68c24470414da9582776cd1f'
-         'fe76109bee617582dc94e35a572070d6'
-         '706a6b2856a3aa9e26952078534faa8d'
+        "packagemanager.properties"
+        "$pkgname.desktop" 
+        "${pkgname}_16x16.png"
+        "${pkgname}_32x32.png"
+        "${pkgname}_64x64.png"
+        "$pkgname.sh")
+md5sums=('b7fcf187c689826942c00d8515714834'
+         '7b9f1d29459e56af2dcc98bb689998f3'
+         '9313d681f64dc80ea2cc3b775310371f'
+         '9d8d6da83c5e2ca7b2b47997f321ff1e'
+         '35e020735f2fbe6f86acd749fc61dc43'
+         '1a6847a033f7f1b9149e6b1630ee31a3'
+         'b9578475c8ccfa347ac38ba809b8e2f5'
          '349f0b0edae2c5df570142d43071a7f1')
 package() {
 
 	install -d "$pkgdir/opt/"
 	cp -dr --no-preserve=ownership "$srcdir/jEveAssets" "$pkgdir/opt/"
+	install -Dm644 "$startdir/packagemanager.properties" "$pkgdir/opt/jEveAssets/packagemanager.properties"
 
 	install -d "$pkgdir/usr/bin/"
 	cp -dr --no-preserve=ownership "$srcdir/jeveassets.sh" "$pkgdir/usr/bin"
@@ -31,7 +41,11 @@ package() {
 	install -d "$pkgdir/usr/share/applications/"
 	cp -dr --no-preserve=ownership "$srcdir/jeveassets.desktop" "$pkgdir/usr/share/applications/"
 
-	install -Dm644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+        for res in 16x16 32x32 64x64
+        do
+            install -Dm644 "$srcdir/${pkgname}_${res}.png" \
+                "$pkgdir/usr/share/icons/hicolor/${res}/apps/jEveAssets.png"
+        done
 
 	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
