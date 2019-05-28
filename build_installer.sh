@@ -62,7 +62,7 @@ echo "done."
 
 printf "\nBuild self-extractable archive evesetup-$version-$release-$arch.run\n\n"
 ./makeself.sh evesetup/ ../evesetup-$version-$release-$arch.run \
-    "EVE Online Launcher Setup" ./setup.sh
+    "EVE Online Launcher Setup $version-$release" ./setup.sh
 cd ..
 printf "\nClean up build environment..."
 rm -rf src/
