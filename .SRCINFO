@@ -1,7 +1,7 @@
 pkgbase = roger-router
 	pkgdesc = Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://www.tabos.org/
 	arch = i686
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = roger-router
 	depends = libappindicator-gtk3
 	depends = evolution-data-server
 	optdepends = portaudio: PortAudio support
-	provides = rogerrouter=2.0.0
-	provides = roger=2.0.0
+	provides = rogerrouter=2.1.0
+	provides = roger=2.1.0
 	conflicts = rogerrouter
 	conflicts = roger
 	options = !emptydirs
-	source = git+https://git.krueger-it.net/tabos.org/rogerrouter.git#tag=v2.0.0
+	source = git+https://gitlab.com/tabos/rogerrouter.git#tag=v2.1.0
 	sha1sums = SKIP
 
 pkgname = roger-router
