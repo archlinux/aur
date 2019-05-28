@@ -1,0 +1,20 @@
+pkgbase = gssdp-1.0
+	pkgdesc = A GObject-based API for handling resource discovery and announcement over SSDP
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GUPnP
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = vala
+	makedepends = meson
+	makedepends = git
+	makedepends = gtk3
+	depends = libsoup
+	optdepends = gtk3: gssdp-device-sniffer
+	source = git+https://gitlab.gnome.org/GNOME/gssdp.git#commit=386a53714a650cd10b40019b818864add93e9d0f
+	sha256sums = SKIP
+
+pkgname = gssdp-1.0
+
