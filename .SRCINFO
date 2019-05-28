@@ -1,6 +1,6 @@
 pkgbase = lux
 	pkgdesc = POSIX Shell script to easily control brightness on backlight controllers.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/Ventto/lux.git
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = lux
 	makedepends = help2man
 	provides = lux
 	conflicts = lux
-	source = https://github.com/Ventto/lux/archive/v1.1.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/Ventto/lux/archive/v1.2.tar.gz
+	sha256sums = d9f52ad31aa90bf94b120c62d06fbcfe68070b4869b59745095f663d09ad1395
 
 pkgname = lux
 
