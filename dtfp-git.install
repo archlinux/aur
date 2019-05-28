@@ -1,0 +1,28 @@
+post_install() {
+	cd /usr/share/webapps/dtfp
+
+	bash scripts/setup_prod.sh
+
+	# Set permissions
+	chown http:http . db.sqlite3
+	chown http:http -R static myenv
+
+	sed -i "s/^DEBUG = .*$/DEBUG = False/" dtfp/settings.py
+
+	echo "==>"
+	echo "==>"
+	echo "==> Check /usr/share/webapps/dtfp/misc/apache.conf"
+	echo "==>"
+	echo "==>"
+}
+
+post_upgrade() {
+	cd /usr/share/webapps/dtfp
+
+	bash scripts/update_prod.sh
+
+	sed -i "s/^DEBUG = .*$/DEBUG = False/" dtfp/settings.py
+
+	sudo systemctl restart httpd
+}
+
