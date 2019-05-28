@@ -17,6 +17,7 @@ import (
 var version string = "1.0"
 var outb, errb bytes.Buffer
 var cmdSlice, cmdList []string
+var whiteColor (*color.Color) = color.New(color.FgWhite, color.Bold)
 
 func execCmd(input string, stdout bool) string {
     // Remove the newline character.
@@ -91,8 +92,7 @@ func startTerm() {
 		panic(err)
 	}
 	defer term.ReleaseFromStdInOut()
-	d := color.New(color.FgGreen, color.Bold)
-	d.Println("Type '?' for help or 'git' for list of commands.")
+	whiteColor.Println("Type '?' for help or 'git' for list of commands.")
 	term.SetPrompt("[god ~]$ ")
 	cmdLoop:
 	for {
@@ -127,17 +127,14 @@ func startTerm() {
 	}
 }
 func setTableColors(table (*tablewriter.Table)) (*tablewriter.Table) {
-	whiteColor := tablewriter.Colors{
+	whiteTable := tablewriter.Colors{
 		tablewriter.Bold, 
 		tablewriter.FgHiWhiteColor}
-	greenColor := tablewriter.Colors{
-		tablewriter.Bold, 
-		tablewriter.FgHiGreenColor}
-	blackColor := tablewriter.Colors{
+	blackTable := tablewriter.Colors{
 		tablewriter.Bold, 
 		tablewriter.FgHiBlackColor}
-	table.SetHeaderColor(whiteColor, whiteColor)
-	table.SetColumnColor(greenColor, blackColor)
+	table.SetHeaderColor(whiteTable, whiteTable)
+	table.SetColumnColor(whiteTable, blackTable)
 	return table
 }
 func showHelp(){
@@ -168,7 +165,6 @@ func showVersion(){
 	fmt.Println()
 	asciiFigure := figure.NewFigure("god", "cosmic", true)
 	asciiFigure.Print()
-	whiteColor := color.New(color.FgWhite, color.Bold)
 	whiteColor.Println("\n ~ god:v" + version)
 	fmt.Println(" ~ utility for simplifying the git usage" +
 		"\n ~ github.com/keylo99/god\n")
