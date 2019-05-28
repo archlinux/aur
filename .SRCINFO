@@ -1,7 +1,7 @@
 pkgbase = roger-router
 	pkgdesc = Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tabos.org/
 	arch = i686
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = roger-router
 	depends = libgdata
 	depends = libappindicator-gtk3
 	depends = evolution-data-server
+	optdepends = cups: FAX printer
 	optdepends = portaudio: PortAudio support
 	provides = rogerrouter=2.1.0
 	provides = roger=2.1.0

@@ -3,21 +3,19 @@
 _name=rogerrouter
 pkgname=roger-router
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"
 license=('GPL2')
 
-# depends=(curl dbus glib2 libsndfile spandsp speex libxml2 gtk3 isdn4k-utils libpeas libsoup gupnp)
 depends=(gtk3 libsoup ghostscript librm poppler-glib libgdata libappindicator-gtk3 evolution-data-server)
 makedepends=(intltool gobject-introspection meson git)
 optdepends=(
-	# 'cups: FAX printer'
+	'cups: FAX printer'
 	# 'evolution-data-server: Address book integration'
 	# 'libpulse: Pulse Audio support'
 	'portaudio: PortAudio support'
-	# 'libsecret: Store passwords in keyring (requires a compatible keyring application like gnome-keyring)'
 	# 'libnotify: Desktop notifications'
 	# 'libappindicator-gtk3: App indicator support'
 )

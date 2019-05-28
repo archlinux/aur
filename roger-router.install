@@ -1,15 +1,7 @@
 post_install() {
-	mkdir -p "$pkgdir/var/spool/roger"
-	chmod 2770 "$pkgdir/var/spool/roger"
-	chown root:lp "$pkgdir/var/spool/roger"
-
 	echo To add the fax printer install cups and run the following command:
 	echo
-	echo "  lpadmin -p \"Roger-Router-Fax\" -E -v roger-cups:/ -P /usr/share/cups/model/roger-fax.ppd"
-	echo
-	echo Users have to be in the group \"lp\" to use this printer. Run:
-	echo
-	echo "  gpasswd --add [username] lp"
+	echo "  lpadmin -p Roger-Router-Fax -m drv:///sample.drv/generic.ppd -v socket://localhost:9100/ -E -o PageSize=A4"
 }
 
 post_upgrade() {
