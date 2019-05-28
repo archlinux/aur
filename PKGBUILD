@@ -57,9 +57,11 @@ prepare() {
 }
 
 build() {
-  arch-meson $pkgname build -D documentation=true
+  arch-meson $_pkgname build -D documentation=true
   ninja -C build
 }
+
+
 
 check() {
   meson test -C build --print-errorlogs
