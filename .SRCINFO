@@ -1,0 +1,15 @@
+pkgbase = stepcode
+	pkgdesc = Data exchange with ISO 10303. Used with IFC, STEP, and other standards to exchange data wit C++ and Python.
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://stepcode.github.io
+	arch = i686
+	arch = x86_64
+	license = BSD 3-Clause
+	makedepends = cmake
+	depends = gcc
+	source = https://github.com/stepcode/stepcode/archive/v0.8.tar.gz
+	sha256sums = f9cc8a5a4193f97add595c1909433154f82983b892c532be2a696758b153fd2c
+
+pkgname = stepcode
+
