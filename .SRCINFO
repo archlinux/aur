@@ -1,6 +1,6 @@
 pkgbase = skaffold
 	pkgdesc = A command line tool that facilitates continuous development for Kubernetes applications
-	pkgver = 0.29.0
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://github.com/GoogleContainerTools/skaffold
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = skaffold
 	depends = kubectl
 	optdepends = google-cloud-sdk: To use GKE
 	optdepends = minikube: To use Minikube
-	source = skaffold-0.29.0.tar.gz::https://github.com/GoogleContainerTools/skaffold/archive/v0.29.0.tar.gz
+	source = skaffold-0.30.0.tar.gz::https://github.com/GoogleContainerTools/skaffold/archive/v0.30.0.tar.gz
 	source = build_info.patch
-	sha256sums = 864f2a6f76720153ac9da0386fb5d367a9dd82e29d6fd676dfc165e628863ac1
+	sha256sums = 98eac8633003ee16b1331d6f523821994e8623c3b5f9ed7e14e4d74c2327a0c7
 	sha256sums = 840df9da5528da50cb84cc7fc26265a5e48f96e6ecad86539b1c166455400652
 
 pkgname = skaffold
