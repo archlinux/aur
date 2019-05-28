@@ -1,6 +1,6 @@
 pkgname=serviio
-pkgver=1.10.1
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="Free DLNA media server"
 arch=('any')
 url="http://www.serviio.org/"
@@ -11,7 +11,7 @@ source=(http://download.serviio.org/releases/serviio-${pkgver}-linux.tar.gz
         $pkgname.service
         $pkgname.desktop
         $pkgname.png)
-md5sums=('24b8b85c91aac76ea654d3dc54486b9e'
+md5sums=('026f2dea2caf571af840bba28a735e6a'
          '227a75de2dea1db93c1fba3d004e01ad'
          'e958d9812448f97fe325dfffe8b44620'
          'fbfcac4ad5dffd909e51ea1a7a6335aa'
