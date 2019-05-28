@@ -6,7 +6,7 @@ pkgdesc='Java bindings for The Sleuth Kit.'
 arch=(x86_64)
 url='http://www.sleuthkit.org/sleuthkit'
 license=('CPL', 'custom:"IBM Public Licence"', 'GPL2')
-depends=(java-runtime sleuthkit)
+depends=(java-environment-jdk=8 sleuthkit)
 makedepends=(ant)
 source=("https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-${pkgver}/sleuthkit-${pkgver}.tar.gz" "build-tmp-dir.patch")
 md5sums=('42a4aee67eed09fb03a29b757743cb5d'
