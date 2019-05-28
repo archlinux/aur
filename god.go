@@ -62,6 +62,16 @@ func searchInSlice(slice []string, query string) (bool) {
 	return set[query]
 }
 
+// Returns a slice with given dimension parameter.
+// Used for getting keys or values from a 2-d slice.
+func getShortcutSlice(d int) ([]string){
+	var shortcuts []string
+	for _, shortcut := range gitShortcuts {
+		shortcuts = append(shortcuts, shortcut[d])
+	}
+	return shortcuts
+}
+
 // Prepare (shorten) the git commands.
 func prepareCmds(){
 	// Show status if repository exists in directory.
@@ -102,6 +112,7 @@ func prepareCmds(){
 	}
 	gitShortcuts = append(gitShortcuts, 
 		[]string{"add -A", "aa"},
+		[]string{"commit -m", "cmt"},
 		[]string{"commit -m", "cmt"})
 }
 
@@ -208,17 +219,7 @@ func showCommands(){
 	table.Render()
 }
 
-// Returns a slice with given dimension parameter.
-// Used for getting keys or values from a 2-d slice.
-func getShortcutSlice(d int) ([]string){
-	var shortcuts []string
-	for _, shortcut := range gitShortcuts {
-		shortcuts = append(shortcuts, shortcut[d])
-	}
-	return shortcuts
-}
-
-// Show commonly used git command shortcuts.
+// Show commonly used git commands shortcuts.
 func showShortcuts(){
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader([]string{"Shortcut", "Command"})
