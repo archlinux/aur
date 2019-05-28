@@ -1,6 +1,6 @@
 pkgbase = ffmpegfs
 	pkgdesc = FUSE-based transcoding filesystem from many formats to MP3 or MP4 including video transcoding
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://nschlia.github.io/ffmpegfs/
 	arch = x86_64
@@ -16,11 +16,10 @@ pkgbase = ffmpegfs
 	makedepends = xxd
 	depends = fuse
 	depends = ffmpeg
-	depends = sqlite3
-	depends = libdvdnav
+	depends = sqlite
 	depends = libbluray
-	source = https://github.com/nschlia/ffmpegfs/releases/download/v1.7/ffmpegfs-1.7.tar.gz
-	sha384sums = f0f4b3c1c4d39131ee11cc6ec259fcf190294518b0019c3284b6b27a44c29e4a462ea857039693fa7fa755304f5a601b
+	source = https://github.com/nschlia/ffmpegfs/releases/download/v1.8/ffmpegfs-1.8.tar.gz
+	sha384sums = 4bb98b28d6f21ef21c4c264498ef1428670e7e40cab76ff787d65c5ad108b3627c173680f538fe10d853ebb9c239323b
 
 pkgname = ffmpegfs
 
