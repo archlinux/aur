@@ -8,9 +8,9 @@
 
 _pkgbase=rts5139
 pkgname=${_pkgbase}-dkms
-pkgver=1.0
-pkgrel=2
-pkgdesc="Driver to support Realtek RTS5139 SD Card Reader"
+pkgver=1.05
+pkgrel=1
+pkgdesc="Linux kernel drivers module for RTS5129/RTS5139 USB MMC card reader"
 arch=('i686' 'x86_64')
 url="http://www.realtek.com.tw/"
 license=('GPL2')
