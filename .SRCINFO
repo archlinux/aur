@@ -1,7 +1,7 @@
 pkgbase = gssdp-1.0
 	pkgdesc = A GObject-based API for handling resource discovery and announcement over SSDP
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 4
 	url = https://wiki.gnome.org/Projects/GUPnP
 	arch = x86_64
 	license = LGPL

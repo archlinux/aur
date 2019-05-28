@@ -4,7 +4,7 @@
 
 pkgname=gssdp-1.0
 pkgver=1.0.3
-pkgrel=1
+pkgrel=4
 pkgdesc="A GObject-based API for handling resource discovery and announcement over SSDP"
 url="https://wiki.gnome.org/Projects/GUPnP"
 arch=(x86_64)
@@ -36,4 +36,6 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
+  mv "$pkgdir"/usr/bin/gssdp-device-sniffer "$pkgdir"/usr/bin/gssdp-device-sniffer-1.0
+  mv "$pkgdir"/usr/share/gtk-doc/html/gssdp "$pkgdir"/usr/share/gtk-doc/html/gssdp-1.0
 }
