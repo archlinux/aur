@@ -3,18 +3,18 @@
 # Maintainer: Georgios Amanakis <g_amanakis{at}yahoo{dt}com>
 
 pkgname=sra-tools
-pkgver=2.9.3
+pkgver=2.9.6
 pkgrel=1
 pkgdesc="The SRA Toolkit and SDK from NCBI is a collection of tools and libraries for using data in the INSDC Sequence Read Archives."
 arch=('x86_64')
-url="http://www.ncbi.nlm.nih.gov/Traces/sra/"
+url="http://github.com/ncbi/sra-tools/"
 depends=('libxml2' 'file' 'hdf5' 'ngs' 'ncbi-vdb')
 optdepends=('fuse: mount remote genome reference files')
 provides=('sra-tools')
 license=('custom:PublicDomain')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ncbi/sra-tools/archive/$pkgver.tar.gz"
 	"sra-tools.patch")
-sha256sums=('531c8ce774c9807df091005a23cdf88a63d6efb2be2e38342406af90e4db15c9'
+sha256sums=('f1fdd0d294da0528d00ab14e34921cb9cfe775a332543abf54ade5db13467e44'
             '59c87371b10a3d8f7c1c8312c534ec9a6374cb3428ecbeb42c60cf422cab0782')
 
 prepare(){
@@ -37,10 +37,10 @@ build(){
   make
 }
 
-check(){
-  cd "${pkgname}-${pkgver}"
+#check(){
+#  cd "${pkgname}-${pkgver}"
 #  make -k test
-}
+#}
 
 package(){
   cd "$pkgname-$pkgver"
