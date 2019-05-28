@@ -220,7 +220,13 @@ func getShortcutSlice(d int) ([]string){
 
 // Show commonly used git command shortcuts.
 func showShortcuts(){
-	fmt.Println(gitShortcuts)
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{"Shortcut", "Command"})
+	table = setTableColors(table)
+	for _, shortcut := range gitShortcuts {
+		table.Append([]string{shortcut[1], shortcut[0]})
+	}
+	table.Render()
 }
 
 // Show project information including version.
