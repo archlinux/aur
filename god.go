@@ -15,17 +15,21 @@ import (
 )
 
 var version string = "1.0"
-var outb, errb bytes.Buffer
-var cmdSlice, cmdList []string
+var outb, errb bytes.Buffer // Buffer for command output
+var cmdSlice, cmdList []string // Arrays for the shortened git commands
 var whiteColor (*color.Color) = color.New(color.FgWhite, color.Bold)
 
+// Executes the terminal command and returns output.
+// stdout parameter determines the output stream.
 func execCmd(input string, stdout bool) string {
     // Remove the newline character.
     input = strings.TrimSuffix(input, "\n")
-	
-	// Prepare the command to execute.	
+	// Prepare the command to execute.
+	// sh used for handling the command parameters.
+	// Otherwise, exec library takes the parameters
+	// as argument which is something that we don't
+	// want due to the complexity of git commands.
 	cmd := exec.Command("sh", "-c", input)
-
 	// Set the correct output device.
 	if stdout{
     	cmd.Stderr = os.Stderr
@@ -34,17 +38,21 @@ func execCmd(input string, stdout bool) string {
 		cmd.Stdout = &outb
 		cmd.Stderr = &errb
 	}
-    // Execute the command and return the error.
+	// Execute the command and return
+	// error or output depending on the
+	// stdout parameter.
 	err := cmd.Run()
 	if err != nil{
 		return err.Error()
 	}
 	if !stdout{
 		return outb.String()
-	}
+	} 
 	return ""
 }
 
+// Search the given query in slice.
+// Returns true if the element exists.
 func searchInSlice(slice []string, query string) bool{
 	set := make(map[string]bool)
 	for _, v := range slice {
@@ -53,10 +61,9 @@ func searchInSlice(slice []string, query string) bool{
 	return set[query]
 }
 
+// Prepare (shorten) the git commands.
 func prepareCmds(){
-	if(strings.Contains(execCmd("git status", false), "exit status")){
-		fmt.Println("No git repository found.")
-	}
+	execCmd("git status", true)
 	removeSpaces := "sed -e 's/^\\s*//' -e 's/ *[A-Z].*//' && "
 	parseGitCmd := 
 		"git help | grep '^  *[a-z]' | " + removeSpaces +
