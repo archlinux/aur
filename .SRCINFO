@@ -1,13 +1,13 @@
 pkgbase = streamstatus
 	pkgdesc = cli tool to check if your favorite twitch streamers are online.
-	pkgver = 0.7.1
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://github.com/andresterba/streamstatus
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = streamstatus-0.7.1.tar.gz::https://github.com/andresterba/streamstatus/archive/v0.7.1.tar.gz
-	sha256sums = 7bcefd77d101cb96a5a5c841936d1073d7b4b23bfde2c2c1ee849a69738556ae
+	source = streamstatus-0.7.5.tar.gz::https://github.com/andresterba/streamstatus/archive/v0.7.5.tar.gz
+	sha256sums = 12e87be874a3045f0d4e2e51edbb23bb2348231cd8398bf8a0aec6830e79e76a
 
 pkgname = streamstatus
 
