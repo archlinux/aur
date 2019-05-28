@@ -1,0 +1,18 @@
+pkgbase = libretro-beetle-dc-git
+	pkgdesc = Sega Dreamcast core
+	pkgver = r3632.9d0847c3
+	pkgrel = 1
+	url = https://github.com/libretro/beetle-dc
+	arch = x86_64
+	groups = libretro-unstable
+	license = GPL2
+	makedepends = git
+	depends = libgl
+	depends = libretro-core-info
+	provides = libretro-beetle-dc
+	conflicts = libretro-beetlc-dc
+	source = libretro-beetle-dc::git+https://github.com/libretro/beetle-dc.git
+	sha256sums = SKIP
+
+pkgname = libretro-beetle-dc-git
+
