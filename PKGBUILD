@@ -2,7 +2,7 @@
 
 _pkgname=yarn-completion
 pkgname=yarn-completion-git
-pkgver=v0.13.0.r0.g7b42496
+pkgver=v1.14.0.r0.g985e883
 pkgrel=1
 pkgdesc='Bash completion for Yarn'
 url='https://github.com/dsifford/yarn-completion'
@@ -15,9 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  # doesn't show the latest tag (v0.13.0) without this
-  declare _commit="$(git rev-list --tags --max-count=1)"
-  git describe --long --tags "$_commit" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 check() {
