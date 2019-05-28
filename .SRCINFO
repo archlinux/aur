@@ -1,0 +1,17 @@
+pkgbase = python-mplstereonet
+	pkgdesc = Pytest plugin to help with testing figures output from Matplotlib
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/joferkington/mplstereonet/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.3
+	depends = python-matplotlib
+	depends = python-numpy
+	source = https://github.com/joferkington/mplstereonet/archive/v0.5.tar.gz
+	sha256sums = a50b64de4dfab1dba6ac4c8e75d3af15e5aa73a71a0f56bbbee177aa91e27242
+
+pkgname = python-mplstereonet
+
