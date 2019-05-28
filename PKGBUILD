@@ -18,7 +18,7 @@ source=(
   "$pkgname-$pkgver::https://github.com/itoffshore/nginx-upstream-fair/archive/$pkgver.tar.gz"
 )
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
-sha256sums=('002d9f6154e331886a2dd4e6065863c9c1cf8291ae97a1255308572c02be9797'
+sha256sums=('4fd376bad78797e7f18094a00f0f1088259326436b537eb5af69b01be2ca1345'
             'SKIP'
             '5545e2f2a27d008690a2c60b90c0bf8a997310930d93fca80ebd33dc308ac2fc')
 
