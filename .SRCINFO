@@ -18,7 +18,7 @@ pkgbase = stunnel-systemd-git
 	source = stunnel-systemd-git::git+https://github.com/matthewacon/stunnel
 	source = stunnel@.service
 	md5sums = SKIP
-	md5sums = ca9e198adda46e3c31f45247b8439e74
+	md5sums = 9d7adb71dc2f4903212a14ae5434ca48
 
 pkgname = stunnel-systemd-git
 

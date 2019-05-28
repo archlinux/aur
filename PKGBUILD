@@ -16,7 +16,7 @@ conflicts=($_pkgname)
 source=($pkgname::'git+https://github.com/matthewacon/stunnel'
         'stunnel@.service')
 md5sums=('SKIP'
-         'ca9e198adda46e3c31f45247b8439e74')
+         '9d7adb71dc2f4903212a14ae5434ca48')
 
 pkgver() {
   cd $pkgname
