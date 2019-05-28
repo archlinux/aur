@@ -1,7 +1,7 @@
 pkgbase = sol2
 	pkgdesc = C++ <-> Lua Wrapper Library
 	pkgver = v3.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sol2.rtfd.io/
 	arch = any
 	license = MIT
