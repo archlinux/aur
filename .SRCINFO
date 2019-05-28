@@ -1,7 +1,7 @@
 pkgbase = freetype2-infinality
 	pkgdesc = Font rasterization library with Infinality patches and custom settings.
 	pkgver = 2.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.freetype.org/
 	arch = armv7h
 	arch = i686
@@ -21,11 +21,12 @@ pkgbase = freetype2-infinality
 	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-2.10.0.tar.gz.sig
 	source = https://download-mirror.savannah.gnu.org/releases/freetype/ft2demos-2.10.0.tar.gz
 	source = https://download-mirror.savannah.gnu.org/releases/freetype/ft2demos-2.10.0.tar.gz.sig
-	source = 0001-Enable-table-validation-modules.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Enable-table-validation-modules.patch?h=packages/freetype2
-	source = 0002-Enable-infinality-subpixel-hinting.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-infinality-subpixel-hinting.patch?h=packages/freetype2
-	source = 0003-Enable-long-PCF-family-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/freetype2
-	source = 0005-freetype-2.5.2-more-demos.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0005-freetype-2.5.2-more-demos.patch?h=packages/freetype2
-	source = freetype2.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/freetype2.sh?h=packages/freetype2
+	source = 0001-Enable-table-validation-modules.patch
+	source = 0002-infinality-2.10.0-2019.03.21.patch
+	source = 0003-Enable-long-PCF-family-names.patch
+	source = 0004-pcf-Fix-handling-of-undefined-glyph-56067.patch
+	source = 0005-freetype-2.5.2-more-demos.patch
+	source = freetype2.sh
 	validpgpkeys = 58E0C111E39F5408C5D3EC76C1A60EACE707FDA5
 	sha256sums = 955e17244e9b38adb0c98df66abb50467312e6bb70eac07e49ce6bd1a20e809a
 	sha256sums = SKIP
@@ -33,9 +34,10 @@ pkgbase = freetype2-infinality
 	sha256sums = SKIP
 	sha256sums = dcf88dfd0b3966f9f8a38f53fc0eb8216b4b129742148167931148e65d262568
 	sha256sums = SKIP
+	sha256sums = f67fe435d4c8cd1009614557470faf0401e184405f5b45fea9b65f3f744f2683
 	sha256sums = 739a67083b810c04e5cb87fa7e5a7819983410307e3d38d8f2a334c23085a5c2
-	sha256sums = 94b08773fbbb5122e5700398030c310836fe001a5327656a780f946b662e6e02
 	sha256sums = 778a084b84215fbe62dafaed1dd7ebcdbd35c5c7af681d2789b5fe37764ceadd
+	sha256sums = a964981ca456a7a4fc54b95fd082a0d5d33358c15292328af7bdc66bc2d68a82
 	sha256sums = 36484db4b926ed026e7f32570573493b5a9793a129f08d54383a26d65a6af89b
 	sha256sums = f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467
 
