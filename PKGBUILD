@@ -3,21 +3,21 @@
  
 pkgname=openttd-btpro
 _pkgname=openttd
-pkgver=1.8.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='An engine for running Transport Tycoon Deluxe. BTPro patches applied.'
 arch=('x86_64')
-url='http://openttd.btpro.nl/index.php/forum/30-btpro-openttd-client-talk/1186-btpro-openttd-client-1-8-0'
+url='http://openttd.btpro.nl/index.php/forum/30-btpro-openttd-client-talk/'
 license=('GPL')
 depends=('libpng' 'sdl' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-file-utils' 'xz')
 optdepends=('openttd-opengfx: free graphics' 
             'openttd-openmsx: free musicset'
             'openttd-opensfx: free soundset')
-source=("https://binaries.openttd.org/releases/${pkgver}/${_pkgname}-${pkgver}-source.tar.xz"
-        "http://openttd.btpro.nl/OpenTTD_versions/BTPro_Client_${pkgver}_B_18002_git.diff"
+source=("https://proxy.binaries.openttd.org/openttd-releases/${pkgver}/${pkgname}-${pkgver}-source.tar.xz"
+        "http://openttd.btpro.nl/OpenTTD_versions/BTPro_Client_1.9.1_A_19101.diff"
         "http://openttd.btpro.nl/OpenTTD_versions/innerhighlight.grf")
-sha256sums=('c2d32d9d736d27202a020027a3729ae763f5432ae6f424891e57a4095eeb087f'
-            '60b900349eadc3fa3c78e3ec1eeab82a454a90333b03e63b27aec143f6b5fe8a'
+sha256sums=('ff8158c1ddffebdb807fea8057c038fce1171e544fe11523e2ea70febe3711e5'
+            'ed4cda1de2712e0b9c3b4091ff6472da904e929505056de8a7f70af9057b0be1'
             '1b181a27fbb468c7301291fc61384087ce7b1592cb0023be00f04736eec6e79b')
 conflicts=('openttd')
  
