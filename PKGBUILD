@@ -5,9 +5,8 @@ url='http://www.ros.org/wiki/tf2_ros'
 
 pkgname='ros-melodic-tf2-geometry-msgs'
 pkgver='0.6.5'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -37,9 +36,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="geometry2-release-release-melodic-tf2_geometry_msgs"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_geometry_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d272355846872a5d6e16457ef69160530d467748d0caf1d22327e62dd6ab66e2')
+_dir="geometry2-${pkgver}/tf2_geometry_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry2/archive/${pkgver}.tar.gz")
+sha256sums=('9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a')
 
 build() {
 	# Use ROS environment variables.
