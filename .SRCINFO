@@ -1,0 +1,20 @@
+pkgbase = gupnp-1.0
+	pkgdesc = An object-oriented UPNP framework
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GUPnP
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = vala
+	makedepends = autoconf-archive
+	makedepends = git
+	depends = gssdp-1.0
+	depends = util-linux
+	optdepends = python: gupnp-binding-tool
+	source = git+https://gitlab.gnome.org/GNOME/gupnp.git#commit=0e4f31cfc489a2c21f052885695902ae5ba98c8a
+	sha256sums = SKIP
+
+pkgname = gupnp-1.0
+
