@@ -1,6 +1,6 @@
 pkgbase = librm
 	pkgdesc = Router Manager library
-	pkgver = 2.0+10+gc114cff
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://www.tabos.org/
 	arch = i686
@@ -17,14 +17,14 @@ pkgbase = librm
 	depends = spandsp
 	depends = json-glib
 	depends = libsndfile
-	depends = gupnp
-	depends = gssdp
+	depends = gupnp-1.0
+	depends = gssdp-1.0
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = isdn4k-utils
 	depends = libsecret
 	options = !emptydirs
-	source = git+https://git.krueger-it.net/tabos.org/librm.git#commit=c114cff4
+	source = git+https://gitlab.com/tabos/librm.git#tag=v2.1.0
 	sha512sums = SKIP
 
 pkgname = librm
