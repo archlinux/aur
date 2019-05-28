@@ -7,7 +7,7 @@
 pkgbase="freetype2-infinality"
 pkgname=("${pkgbase}" "${pkgbase/-/-demos-}" "${pkgbase/-/-docs-}")
 pkgver=2.10.0
-pkgrel=3
+pkgrel=4
 _patchrel=2019.03.21
 pkgdesc="Font rasterization library with Infinality patches and custom settings."
 arch=("armv7h" "i686" "x86_64")
@@ -16,8 +16,8 @@ url="http://www.${pkgbase%2-infinality}.org/"
 # adding harfbuzz for improved OpenType features auto-hinting
 # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
 depends=("bzip2" "harfbuzz" "libpng" "sh" "zlib")
-provides=("freetype2"
-          "libfreetype.so")
+provides=("freetype2=$pkgver" 'freetype2-infinality' 'libfreetype.so')
+conflicts=('freetype2' 'freetype2-infinality')
 makedepends=("libx11")
 source=("https://download-mirror.savannah.gnu.org/releases/${pkgbase%2-infinality}/${pkgbase%2-infinality}-${pkgver}.tar.gz"{,.sig}
         "https://download-mirror.savannah.gnu.org/releases/${pkgbase%2-infinality}/${pkgbase%2-infinality}-doc-${pkgver}.tar.gz"{,.sig}
@@ -35,8 +35,8 @@ sha256sums=('955e17244e9b38adb0c98df66abb50467312e6bb70eac07e49ce6bd1a20e809a'
             'SKIP'
             'dcf88dfd0b3966f9f8a38f53fc0eb8216b4b129742148167931148e65d262568'
             'SKIP'
-            'f67fe435d4c8cd1009614557470faf0401e184405f5b45fea9b65f3f744f2683'
             '739a67083b810c04e5cb87fa7e5a7819983410307e3d38d8f2a334c23085a5c2'
+            'f67fe435d4c8cd1009614557470faf0401e184405f5b45fea9b65f3f744f2683'
             '778a084b84215fbe62dafaed1dd7ebcdbd35c5c7af681d2789b5fe37764ceadd'
             'a964981ca456a7a4fc54b95fd082a0d5d33358c15292328af7bdc66bc2d68a82'
             '36484db4b926ed026e7f32570573493b5a9793a129f08d54383a26d65a6af89b'
