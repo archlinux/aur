@@ -38,15 +38,15 @@ prepare(){
 
 build() {
 	export GOPATH="$srcdir"/gopath
-	export GOFLAGS="-gcflags=all=-trimpath=$srcdir -asmflags=all=-trimpath=$srcdir -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
+	export GOFLAGS="-gcflags=all=-trimpath=${srcdir} -asmflags=all=-trimpath=${srcdir} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
 	
-	cd "$srcdir"/${pkgname}
+	cd "$srcdir"/$pkgname
 	make all
 	make clean
 }
 
 package() {
-	cd "$srcdir"/${pkgname}
+	cd "$srcdir"/$pkgname
 	
 	install -Dm755 gosearchServer "${pkgdir}"/usr/bin/gosearchServer
 	install -Dm755 gosearch "${pkgdir}"/usr/bin/gosearch
