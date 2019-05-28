@@ -62,17 +62,6 @@ func searchInSlice(slice []string, query string) (bool) {
 	return set[query]
 }
 
-// Return the element index in a slice. 
-// (-1 on non-existence)
-func sliceIndexOf(slice []string, element string) (int) {
-	for k, v := range slice {
-		if element == v {
-			return k
-		}
-	}
-	return -1
- }
-
 // Prepare (shorten) the git commands.
 func prepareCmds(){
 	// Show status if repository exists in directory.
@@ -91,7 +80,7 @@ func prepareCmds(){
 		"git remote"
 	cmdStr := execCmd(parseGitCmd, false)
 	gitCmdSlice = strings.Split(cmdStr, "\n")
-	for _, cmd := range gitCmdSlice {
+	for i, cmd := range gitCmdSlice {
 		if (len(cmd) > 0){
 			// Use the first character of git command
 			// for the new command if not exists in the
@@ -106,8 +95,14 @@ func prepareCmds(){
 				cmdSlice = append(cmdSlice, firstChar + 
 					string([]rune(cmd)[len(cmd)/2])) 
 			}
+		}else{
+			// Remove empty character
+			gitCmdSlice = append(gitCmdSlice[:i], gitCmdSlice[i+1:]...)
 		}
 	}
+	gitShortcuts = append(gitShortcuts, 
+		[]string{"add -A", "aa"},
+		[]string{"commit -m", "cmt"})
 }
 
 // Create a git command from the given string.
@@ -116,11 +111,11 @@ func buildCmd(line string) (string) {
 	// Support the normal usage.
 	line = strings.Replace(line, " git ", " ", -1)
 	// Replace the shortened command with its original.
-	for index, cmd := range cmdSlice {
+	for index, cmd := range append(cmdSlice, getShortcutSlice(1)...) {
 		cmd = " " + cmd + " "
 		if (strings.Contains(line, cmd)) {
 			line = strings.Replace(line, cmd, 
-				" " + gitCmdSlice[index] + " ", -1)
+				" " + append(gitCmdSlice, getShortcutSlice(0)...)[index] + " ", -1)
 		}
 	}
 	return "git" + line
@@ -213,9 +208,19 @@ func showCommands(){
 	table.Render()
 }
 
+// Returns a slice with given dimension parameter.
+// Used for getting keys or values from a 2-d slice.
+func getShortcutSlice(d int) ([]string){
+	var shortcuts []string
+	for _, shortcut := range gitShortcuts {
+		shortcuts = append(shortcuts, shortcut[d])
+	}
+	return shortcuts
+}
+
 // Show commonly used git command shortcuts.
 func showShortcuts(){
-	fmt.Println(cmdSlice[sliceIndexOf(gitCmdSlice, "add")])
+	fmt.Println(gitShortcuts)
 }
 
 // Show project information including version.
