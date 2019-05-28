@@ -1,6 +1,6 @@
 pkgbase = pcg-cpp-git
 	pkgdesc = A family of fast, statistically excellent algorithms for random number generation.
-	pkgver = 0.98.1.r36.gb656278
+	pkgver = 0.98.1.r45.g3191635
 	pkgrel = 1
 	url = http://www.pcg-random.org/
 	arch = any
@@ -8,9 +8,7 @@ pkgbase = pcg-cpp-git
 	license = MIT
 	makedepends = git
 	provides = pcg-cpp
-	source = fix-makefile.patch
 	source = git+https://github.com/imneme/pcg-cpp.git
-	sha256sums = 3867f1a75bf30b4aa73c2ab0b5e821fc8764a8d7bb20f6a44f12bc1b1477d361
 	sha256sums = SKIP
 
 pkgname = pcg-cpp-git
