@@ -146,6 +146,8 @@ func startTerm() {
 			showVersion()
 		case "git":
 			showCommands()
+		case "sc":
+			showShortcuts()
 		default:
 			// Build the git command.
 			gitCmd := buildCmd(" " + line + " ")
@@ -174,6 +176,7 @@ func setTableColors(table (*tablewriter.Table)) (*tablewriter.Table) {
 func showHelp(){
 	cliCmds := map[string]string{
 		"git": "List available git commands",
+		"sc": "List git shortcuts",
 		"help": "Show this help message",
 		"version": "Show version information",
 		"clear": "Clear the terminal", 
@@ -196,6 +199,11 @@ func showCommands(){
 		table.Append([]string{cmd, gitCmdSlice[index]})
 	}
 	table.Render()
+}
+
+// Show commonly used git command shortcuts.
+func showShortcuts(){
+	fmt.Println("x")
 }
 
 // Show project information including version.
