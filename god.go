@@ -113,7 +113,8 @@ func prepareCmds(){
 	gitShortcuts = append(gitShortcuts, 
 		[]string{"add -A", "aa"},
 		[]string{"commit -m", "cmt"},
-		[]string{"commit -m", "cmt"})
+		[]string{"rm -r", "rr"},
+		[]string{"log --graph --decorate --oneline --all", "lo"})
 }
 
 // Create a git command from the given string.
