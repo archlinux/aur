@@ -6,7 +6,7 @@ pkgname=netkit-telnet-ssl
 _debver=0.17.41+0.2
 _debrel=3
 pkgver=$_debver
-pkgrel=4
+pkgrel=5
 pkgdesc="Telnet client and server with TLS support (Debian Netkit version)"
 arch=('i686' 'x86_64')
 depends=('glibc' 'openssl' 'ncurses')
@@ -79,7 +79,7 @@ package() {
                     "$pkgdir"/etc/acme/hooks/netkit-telnetd-ssl
 
   install -D -m 755 "$srcdir"/netkit-telnetd-ssl.certbot.sh \
-                    "$pkgdir"/etc/letsencrypt/renew-hooks/deploy/netkit-telnetd-ssl
+                    "$pkgdir"/etc/letsencrypt/renewal-hooks/deploy/netkit-telnetd-ssl
 }
 
 # cleanbuild: required
