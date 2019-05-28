@@ -3,18 +3,18 @@
 # KNOSSOS saves its user preferences in $HOME/.config/MPIN/
 
 pkgname=knossos-git
-pkgver=5.1+9.g3373709f
+pkgver=5.1+466.g7614706d
 pkgrel=1
-arch=('x86_64')
+arch=("x86_64")
 pkgdesc="A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity."
-url="https://www.knossostool.org/"
+url="https://knossos.app"
 license=("GPL2")
 depends=("glu"
 	"qt5-base"
-    "qt5-python27-git" # qt5-python27
-    "qt5-tools" # Qt5Help
-    "quazip-qt5"
-    "snappy"
+	"qt5-python27-git" # qt5-python27
+	"qt5-tools" # Qt5Help
+	"quazip"
+	"snappy"
 )
 makedepends=("boost"
 	"cmake"
@@ -31,7 +31,7 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd "knossos"
-	git describe --always --dirty --tags | sed 's/^v//;s/-/+/;s/-/./g'
+	git describe --always --dirty --tags | sed "s/^v//;s/-/+/;s/-/./g"
 }
 
 build() {
