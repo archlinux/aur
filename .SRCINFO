@@ -1,0 +1,18 @@
+pkgbase = brunsli-git
+	pkgdesc = Lossless JPEG repacker
+	pkgver = r13.bf755c7
+	pkgrel = 1
+	url = https://github.com/google/brunsli
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = clang
+	depends = gcc-libs
+	provides = brunsli
+	conflicts = brunsli
+	source = git+https://github.com/google/brunsli.git
+	sha512sums = SKIP
+
+pkgname = brunsli-git
+
