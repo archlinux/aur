@@ -5,11 +5,11 @@ pkgver=0.6.1
 pkgrel=1
 pkgdesc="Community driven man pages improved with smart user interaction"
 arch=('any')
-url="http://isacikgoz.me/tldr"
+url="https://isacikgoz.me/tldr"
 license=('MIT')
 makedepends=('go')
 provides=("$_gitname")
-conflicts=('tldr-bash' 'nodejs-tldr' 'tldr-python-client')
+conflicts=("$_gitname" 'tldr-bash' 'nodejs-tldr' 'tldr-python-client')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/isacikgoz/$_gitname/archive/v$pkgver.tar.gz")
 sha256sums=('e377942c6dd9cbe3f9f55b7614e17b7c5f0694b326ad3993d0cde59aca8dc8fa')
 
