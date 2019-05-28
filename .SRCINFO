@@ -1,6 +1,6 @@
 pkgbase = ygopro-koishipro
 	pkgdesc = Link compatable ygopro client with AI
-	pkgver = 2019.4.22
+	pkgver = 2019.5.28
 	pkgrel = 1
 	url = https://github.com/purerosefallen/ygopro
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = ygopro-koishipro
 	makedepends = patchelf
 	depends = mono
 	depends = libevent
-	noextract = KoishiPro-linux-full-2019.4.22.zip
+	noextract = KoishiPro-linux-full-Overture.zip
 	options = !strip
 	options = emptydirs
-	source = https://github.com/purerosefallen/ygopro/releases/download/2019.4.22/KoishiPro-linux-full-2019.4.22.zip
-	sha256sums = 77acc955fdfd5e9ad1def7876bb476559a389cc565a2db66be859a01bfad742d
+	source = https://github.com/purerosefallen/ygopro/releases/download/Overture/KoishiPro-linux-full-Overture.zip
+	sha256sums = dd0ee3db573180089c3e4b760178f98a4d04eff5b294af7060360fc68f7dee5d
 
 pkgname = ygopro-koishipro
 
