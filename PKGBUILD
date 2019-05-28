@@ -5,7 +5,7 @@
 _pkgbase='engauge-digitizer'
 pkgname=('engauge-git' 'engauge-samples-git')
 pkgbase=engauge-git
-pkgver=11.r10.gf5000cde
+pkgver=11.2.r15.g6b86ea56
 pkgrel=1
 url="http://markummitchell.github.io/engauge-digitizer/"
 arch=('i686' 'x86_64')
@@ -36,7 +36,8 @@ build() {
 package_engauge-git() {
   pkgdesc="Extracts data points from images of graphs"
   depends=('qt5-tools' 'fftw' 'log4cpp' 'libpng' 'libjpeg-turbo' 'openjpeg2' 'poppler-qt5')
-
+  conflicts=('engauge')
+  provides=('engauge')
   cd ${_pkgbase}
   install -Dm755 ../${pkgbase%-git}.sh "$pkgdir"/usr/bin/${pkgbase%-git}
   install -Dm755 bin/${pkgbase%-git} "$pkgdir"/usr/lib/$_pkgbase/${pkgbase%-git}
@@ -54,6 +55,8 @@ package_engauge-git() {
 package_engauge-samples-git() {
   pkgdesc="sample image files for engauge copied into the doc subdirectory"
   arch=('any')
+  conflicts=('engauge-samples')
+  provides=('engauge-samples')
 
   cd ${_pkgbase}
   install -d "$pkgdir"/usr/share/doc/$_pkgbase

@@ -1,5 +1,5 @@
 pkgbase = engauge-git
-	pkgver = 11.r10.gf5000cde
+	pkgver = 11.2.r15.g6b86ea56
 	pkgrel = 1
 	url = http://markummitchell.github.io/engauge-digitizer/
 	install = engauge.install
@@ -30,8 +30,12 @@ pkgname = engauge-git
 	depends = libjpeg-turbo
 	depends = openjpeg2
 	depends = poppler-qt5
+	provides = engauge
+	conflicts = engauge
 
 pkgname = engauge-samples-git
 	pkgdesc = sample image files for engauge copied into the doc subdirectory
 	arch = any
+	provides = engauge-samples
+	conflicts = engauge-samples
 
