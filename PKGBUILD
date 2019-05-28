@@ -1,16 +1,16 @@
 # Maintainer: Noa-Emil Nissinen <aur dot satella at spamgourmet dot org>
 
-commitsha="e6afb9cbae4064da8c3e69af3ff5c4629579c1d2"
+commitsha="1034f5e5c4809ea0a7f4387e0cd37c5184de3cdd"
 
 pkgname=stb
-pkgver=20180211
+pkgver=20190528
 pkgrel=1
 pkgdesc="single-file public domain (or MIT licensed) libraries for C/C++"
 arch=('any')
 url="https://github.com/nothings/stb"
 license=('public domain' 'MIT')
 source=("https://github.com/nothings/$pkgname/archive/$commitsha.tar.gz")
-md5sums=('e52f1d8c18612d4d7a2eb1c5e2d7ed0f')
+md5sums=('09a1d7efc7496d8c4f86f89357cdfe4d')
 
 package() {
   cd "$pkgname-$commitsha"
