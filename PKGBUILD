@@ -2,7 +2,7 @@
 
 pkgname=python-log_symbols
 _name=${pkgname#python-}
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="Colored symbols for various log levels for Python"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-colorama')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('722cb7570c1a15ba4981cdaf8ca391ed686967c7de64ec5ed7b1376f0a51821e')
+sha256sums=('ecc2f8f3ee586fd819d8c8696705914761cd8367d1f10597b9b49a0980ab6e55')
 
 build() {
 	cd "$_name-$pkgver"
