@@ -1,10 +1,11 @@
 pkgname=srandom-git
-pkgver=12.77bc33a
+pkgver=1.37.r0.g4793b23
 pkgrel=1
 pkgdesc="srandom is a Linux kernel module that can be used to replace the built-in /dev/urandom & /dev/random device files. It is secure and VERY fast."
 arch=(any)
 url="https://github.com/josenk/srandom"
 license=('GPL')
+makedepends=("git")
 depends=('dkms')
 provides=("srandom")
 options=("!strip")
