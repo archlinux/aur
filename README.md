@@ -94,9 +94,26 @@ PID   TTY    TIME     CMD
 /home/k3/god
 ```
 
-## Examples
+## Demo
 
+## Example
 
+```
+[god ~]$ st
+On branch master
+	modified:   README.md
+no changes added to commit (use "git add" and/or "git commit -a")
+
+[god ~]$ a README.md
+
+[god ~]$ cmt "README.md updated~"
+[master fba7e79] README.md updated~
+ 1 file changed, 14 insertions(+)
+
+[god ~]$ ps o mt
+To https://github.com/KeyLo99/God.git
+   45e8aba..fba7e79  master -> master
+```
 
 ## Todo
 
