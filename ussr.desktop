@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=USSR
+Terminal=true
+Exec=bash -c 'python3 /opt/ussr/ussr.py'
+Hidden=false
+Icon=/opt/ussr/logo.png
