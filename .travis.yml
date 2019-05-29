@@ -1,6 +1,7 @@
 # ubuntu environment (18.04)
 dist: xenial
 
+# golang
 language: go
 
 # Force-enable Go modules. Also force go to use the code in vendor/
