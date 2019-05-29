@@ -9,11 +9,10 @@
 pkgbase=linux-drm-intel-testing-git
 pkgdesc='Linux kernel with patches for Intel graphics'
 _srcname=$pkgbase
-_kernel_rel=5.0
 _branch=drm-intel-testing
 _kernelname=${pkgbase#linux}
-pkgver=5.0.798032.98966a91be48
-pkgrel=2
+pkgver=4.21.798032.98966a91be48
+pkgrel=1
 arch=('x86_64')
 url='https://drm.pages.freedesktop.org/maintainer-tools/drm-intel.html'
 license=(GPL2)
@@ -32,8 +31,11 @@ sha256sums=('SKIP'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
   cd "${_srcname}"
+  local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
+  local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
+  patch=$(( $patch + 1 ))
 
-  echo ${_kernel_rel}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo $version.$patch.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 _kernelname=${pkgbase#linux}
@@ -66,7 +68,9 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules #htmldocs
+#mainline: disabled for 5.1-rc5
+#make bzImage modules htmldocs
+  make bzImage modules
 }
 
 _package() {
@@ -151,7 +155,6 @@ _package-headers() {
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
-  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/macros.s
 
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
@@ -218,17 +221,19 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  # msg2 "Removing doctrees..."
-  # rm -r "$builddir/Documentation/output/.doctrees"
+  #mainline: disabled for 5.1-rc5
 
-  # msg2 "Moving HTML docs..."
-  # local src dst
-  # while read -rd '' src; do
-  #   dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-  #   mkdir -p "${dst%/*}"
-  #   mv "$src" "$dst"
-  #   rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  # done < <(find "$builddir/Documentation/output" -type f -print0)
+  #msg2 "Removing doctrees..."
+  #rm -r "$builddir/Documentation/output/.doctrees"
+
+  #msg2 "Moving HTML docs..."
+  #local src dst
+  #while read -rd '' src; do
+    #dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    #mkdir -p "${dst%/*}"
+    #mv "$src" "$dst"
+    #rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  #done < <(find "$builddir/Documentation/output" -type f -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
