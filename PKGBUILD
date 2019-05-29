@@ -1,6 +1,6 @@
 # Maintainer: Gerald Bischof gBischof at gebix dot com
 pkgname=pdfmerger
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 epoch=
 pkgdesc="A simple Qt frontend for poppler's pdfunite"
