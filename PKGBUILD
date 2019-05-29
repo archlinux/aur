@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <echo dnlhY2hrb25vdmFsb3ZAZ21haWwuY29tCg== | base64 -d>
 
 pkgname=redis-desktop-manager
-pkgver=2019.0
+pkgver=2019.1
 pkgrel=1
 pkgdesc='Open source cross-platform Redis Desktop Manager based on Qt 5'
 arch=('x86_64')
@@ -73,7 +73,7 @@ package() {
   install -Dm755 "${_instdir}/rdm" "${_bindir}/rdm"
   install -Dm755 "${_instdir}/crashreporter" "${_bindir}/crashreporter"
   install -Dm755 "$srcdir/rdm.sh" "${_bindir}/rdm.sh"
-  install -Dm644 "$srcdir/rdm/src/resources/rdm.png" "$pkgdir/usr/share/pixmaps/rdm.png"
+  install -Dm644 "$srcdir/rdm/src/resources/images/rdm.png" "$pkgdir/usr/share/pixmaps/rdm.png"
   install -Dm644 "$srcdir/rdm.desktop" "$pkgdir/usr/share/applications/rdm.desktop"
 
   mkdir "$pkgdir/usr/bin"
