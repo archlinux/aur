@@ -1,7 +1,7 @@
 # Maintainer: heinrich5991 <heinrich5991@gmail.com>
 pkgname=volt
 pkgver=0.80
-pkgrel=4
+pkgrel=5
 pkgdesc="Fast native desktop client for Slack"
 arch=('x86_64')
 url="https://volt-app.com/"
@@ -11,7 +11,7 @@ depends=(
   'libcurl-compat'
 )
 options=('!strip')
-source=("https://github.com/voltapp/volt/releases/download/${pkgver}/volt_linux.zip"
+source=("https://heinrich5991.de/archlinux/aur/volt/${pkgver}/volt_linux.zip"
         "volt_wrapper")
 sha256sums=('c3c6e933bb680feb6c55a304fd08a61d778f07625793a81bb33998b782aa6378'
             'SKIP')
