@@ -176,7 +176,7 @@ func startTerm(){
 			// Build the git command.
 			gitCmd := buildCmd(" " + line + " ")
 			// Release the std in/out for preventing the
-			// git username & password input bugs.
+			// git username & password input issues.
 			if (strings.Contains(gitCmd, "push")){
 				restartTerm = true
 				term.ReleaseFromStdInOut()
@@ -185,7 +185,7 @@ func startTerm(){
 			if retval := execCmd(gitCmd, true); len(retval) > 0 {
 				fmt.Fprintln(os.Stderr, retval)
 			}
-			// Restart the terminal for flushing the stdout
+			// Restart the terminal for flushing the stdout.
 			// It is necessary for input required situations.
 			if (restartTerm) {
 				term, err = terminal.NewWithStdInOut()
