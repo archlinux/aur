@@ -4,12 +4,6 @@ dist: xenial
 # golang
 language: go
 
-# Force-enable Go modules. Also force go to use the code in vendor/
-# These will both be unnecessary when Go 1.13 lands.
-env:
-  - GO111MODULE=on
-  - GOFLAGS='-mod vendor'
-
 # Go version
 go:
   - 1.12.x
