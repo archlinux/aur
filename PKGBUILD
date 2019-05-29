@@ -13,7 +13,7 @@ pkgname=(
   'xorg-server-common-git'
   'xorg-server-devel-git')
 _pkgbase='xserver'
-pkgver=1.20.0.r342.g846924159
+pkgver=1.20.0.r346.g48f4ab750
 pkgrel=1
 arch=('x86_64')
 license=('custom')
