@@ -173,6 +173,11 @@ func startTerm(){
 		default:
 			// Build the git command.
 			gitCmd := buildCmd(" " + line + " ")
+			// Release the std in/out for preventing the
+			// git username & password input bugs.
+			if (strings.Contains(gitCmd, "push")){
+				term.ReleaseFromStdInOut()
+			}
 			// Handle the execution of the input.
 			if retval := execCmd(gitCmd, true); len(retval) > 0 {
 				fmt.Fprintln(os.Stderr, retval)
