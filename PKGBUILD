@@ -3,7 +3,7 @@
 pkgname='kindd'
 _pkgname='Kindd'
 _pkggit='kindd-git'
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc=" A Kindful dd gui written in qt quick"
 conflicts=("${_pkggit}")
@@ -12,7 +12,7 @@ url="https://github.com/LinArcX/Kindd"
 license=('GPL-3.0')
 depends=('polkit' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-graphicaleffects')
 makedepends=('git' 'qt5-base')
-source=("${pkgname}.tar.gz::https://github.com/LinArcX/Kindd/archive/1.0.0.tar.gz")
+source=("${pkgname}.tar.gz::https://github.com/LinArcX/Kindd/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
