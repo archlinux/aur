@@ -115,6 +115,7 @@ func prepareCmds(){
 	gitShortcuts = append(gitShortcuts, 
 		[]string{"add -A", "aa"},
 		[]string{"commit -m", "cmt"},
+		[]string{"remote -v", "rmt"},
 		[]string{"rm -r", "rr"},
 		[]string{"log --graph --decorate --all", "ll"},
 		[]string{"log --graph --decorate --oneline --all", "lo"},
