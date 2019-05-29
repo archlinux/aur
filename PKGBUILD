@@ -21,7 +21,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/d
 options=(!strip)
 sha512sums=('f2ff3d6fc302382c5b21e8b1fcecbd4b0b0823fc959a58f92d30c884707c692f43f097dfa184c3151ad875c5bf203cdd5ace5718c80935c70436886ddee8f6e5'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f'
-            '8f6b1ed0381735ea311129ff757e09b948eb8b3ea6580fe417cf9a6639ab0a461e747c26b3ce1e239acc587bdfa4350be954fe72db1018bea6bd4f41076e24a0'
+            '047bedb0ce6876e9a61cc36db066f760fee9d949f771a83a97783e9a8a434c729dfdefababad6105e1d0556ce8a4bbaeb7b244a5be4bd9fa417be5a82dff0888'
             '539a729fc0ec84d104ffda3ec94f9e5c908ca7269f61414bccff2c47ebcc845dd6c871b7013e4735686ee4fc7793d8add334ad87415effe91706823eae4fb68b'
             'd25d6613f95b5a540b8aab79c8637245f1e9ebfa0bc6dff14a8b902954c55d9acb5a34cee1b2c51722c1a85b2ba6ed87f162141d9c84a92eeb1b9f2a3d7e9554')
 noextract=("$pkgname-$pkgver.zip")
