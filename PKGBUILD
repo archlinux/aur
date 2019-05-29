@@ -5,7 +5,7 @@ pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc' 'python2-bcc')
 pkgver=0.10.0
 _libbpf_commit='59a6415'
-pkgrel=1
+pkgrel=2
 pkgdesc='BPF Compiler Collection'
 arch=('x86_64')
 url='https://github.com/iovisor/bcc'
@@ -19,7 +19,7 @@ sha512sums=('92ba0f57d22af610ac81661526fed8bec80d502bcbc8aa5048ba7c50911247c0208
 
 prepare() {
 	# Move git-submodule into right place without invoking git
-	mv "${srcdir}/libbpf-${_libbpf_commit}/"* "${srcdir}/${pkgbase}-${pkgver}/src/cc/libbpf"
+	mv "${srcdir}/libbpf-${_libbpf_commit}"*/* "${srcdir}/${pkgbase}-${pkgver}/src/cc/libbpf"
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = bcc
 	pkgdesc = BPF Compiler Collection
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iovisor/bcc
 	arch = x86_64
 	license = Apache
