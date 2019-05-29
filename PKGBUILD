@@ -1,5 +1,5 @@
 # Maintainer: Lex Childs <lexchilds@gmail.com>
-pkgname=leftwm
+pkgname=leftwm-git
 pkgver=e4a35f7
 pkgrel=1
 epoch=1
