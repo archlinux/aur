@@ -5,7 +5,7 @@
 
 pkgbase=python-numpy
 pkgname=('python-numpy' 'python2-numpy')
-pkgver=1.16.3
+pkgver=1.16.4
 pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('cblas' 'lapack' 'python' 'python2' 'python-setuptools' 'python2-se
 checkdepends=('python-pytest' 'python2-pytest')
 options=('staticlibs')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz")
-sha512sums=('f9caa1773ec38f6e737d7732083515dc32709c8127d137e51cf35138391a66b012b84592ef473c60846fd3178ed392aa81c4e8d27adb24e5746deabdd8352019')
+sha512sums=('c8437e01a8c6c37787a8bf52f26d1adb273a6bb8f709f3cd92b427c63a1f772f9b2285b46321f2bd1a60a572797223d801aaed0fc2782bcdc7cbe39cd8c34c69')
 
 prepare() {
   cp -a numpy-$pkgver{,-py2}
