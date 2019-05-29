@@ -1,7 +1,7 @@
 # Maintainer: Shane Donohoe <shane@donohoe.cc>
 
 pkgname=python-sputils
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A collection of spotify utilities, designed to be used with other shell utilities."
 arch=('any')
