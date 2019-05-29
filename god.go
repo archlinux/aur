@@ -2,7 +2,7 @@ package main
 
 import (
 	"io"
-    "fmt"
+	"fmt"
 	"os"
 	"flag"
 	"bytes"
