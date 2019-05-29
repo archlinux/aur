@@ -134,8 +134,8 @@ target="/opt/evesetup"
 prefix="/usr"
 key=""
 qtver="5.11"
-elver="1501045"
-elcsum="08b5dbb25c92ffe3c27e27a5353db7096b92a0a093c73e99e7fe08e2d4831ba0"
+elver="1514997"
+elcsum="03d614575282b3fabfdeb60a7c82f6a5f63cd2945fbc6015a55af2724ac486e8"
 rcsum=""
 
 if [ $(id -u) -ne 0 ] ;then
