@@ -19,6 +19,7 @@ var outb, errb bytes.Buffer // Buffer for command output
 var cmdSlice, gitCmdSlice []string // Slice for the shortened git commands
 var gitShortcuts[][] string // 2-d slice for the git shortcuts
 var whiteColor (*color.Color) = color.New(color.FgWhite, color.Bold)
+var restartTerm bool = false // Handling the stdout issues.
 
 // Executes the terminal command and returns output.
 // stdout parameter determines the output stream.
@@ -139,12 +140,13 @@ func buildCmd(line string) (string) {
 // Start the interactive shell.
 func startTerm(){
 	term, err := terminal.NewWithStdInOut()
+	promptStr := "[god ~]$ "
 	if err != nil {
 		panic(err)
 	}
 	defer term.ReleaseFromStdInOut()
 	whiteColor.Println("Type '?' for help or 'git' for list of commands.")
-	term.SetPrompt("[god ~]$ ")
+	term.SetPrompt(promptStr)
 	cmdLoop:
 	for {
 		// Read the keyboard input.
@@ -176,11 +178,20 @@ func startTerm(){
 			// Release the std in/out for preventing the
 			// git username & password input bugs.
 			if (strings.Contains(gitCmd, "push")){
+				restartTerm = true
 				term.ReleaseFromStdInOut()
 			}
 			// Handle the execution of the input.
 			if retval := execCmd(gitCmd, true); len(retval) > 0 {
 				fmt.Fprintln(os.Stderr, retval)
+			}
+			// Restart the terminal for flushing the stdout
+			// It is necessary for input required situations.
+			if (restartTerm) {
+				term, err = terminal.NewWithStdInOut()
+				defer term.ReleaseFromStdInOut()
+				term.SetPrompt(promptStr)
+				restartTerm = false
 			}
 		}
 	}
