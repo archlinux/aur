@@ -1,14 +1,16 @@
 pkgbase = matconvnet-cudnn
 	pkgdesc = matconvnet compile with cuda and cudnn
 	pkgver = 1.0.25
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.vlfeat.org/matconvnet/
+	install = matconvnet-cudnn.install
 	arch = x86_64
 	license = custom
 	makedepends = make
 	depends = cudnn
 	depends = gcc
 	provides = matconvnet
+	conflicts = matconvnet
 	source = http://www.vlfeat.org/matconvnet/download/matconvnet-1.0-beta25.tar.gz
 	source = R2019a.patch
 	sha512sums = 0ac36308067598ac62a1f0ec529fa5ba7758bb8b3588a88e12de70d1e62c50059e573b2e5936864527a1a1a815299feaf0c95cdc3ef3ec8160aa4bfdbbf534f5
