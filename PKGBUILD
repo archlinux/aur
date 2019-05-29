@@ -6,7 +6,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=247.0.0
+pkgver=248.0.0
 pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
@@ -20,7 +20,7 @@ source=(
   "google-cloud-sdk.sh"
 )
 sha256sums=(
-  'ca30ae1a2fffd43cc9f39ce65142cbfe0bf8b2b261257056c4c376d15f484461'
+  'a80a8646a6d04ea8f060b5761e0067f7b791253dee5bb97818b4d552dfe67cdb'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692'
 )
 
