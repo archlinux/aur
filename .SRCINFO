@@ -1,0 +1,13 @@
+pkgbase = profeat-bin
+	pkgdesc = Feature-oriented Engineering for Probabilistic Systems
+	pkgver = 1.0.0.0
+	pkgrel = 1
+	url = https://wwwtcs.inf.tu-dresden.de/ALGI/PUB/ProFeat/
+	arch = x86_64
+	license = custom
+	depends = gmp
+	source = https://wwwtcs.inf.tu-dresden.de/ALGI/PUB/ProFeat/files/profeat-linux-1.0.0.0.tar.gz
+	md5sums = 940694d60b89b8a87138b2926a8a18ad
+
+pkgname = profeat-bin
+
