@@ -83,6 +83,20 @@ _Example of shortened git commands._
 
 Other terminal commands can be executed with adding a `'#'` character before the command. It's necessary for non-git commands because the `god` executes all terminal inputs with `git`.
 
+```
+[god ~]$ # ps
+PID   TTY    TIME     CMD
+23965 pts/2  00:00:00 bash
+30306 pts/2  00:00:00 go
+30361 pts/2  00:00:00 god
+30519 pts/2  00:00:00 ps
+[god ~]$ # pwd
+/home/k3/god
+```
+
+## Examples
+
+
 
 ## Todo
 
