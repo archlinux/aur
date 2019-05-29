@@ -11,8 +11,8 @@ arch=('x86_64')
 url="https://github.com/svenstaro/miniserve"
 license=(MIT)
 source=(
-  https://github.com/svenstaro/miniserve/releases/download/v${pkgver}/miniserve-linux-x86_64
-  https://github.com/svenstaro/miniserve/raw/v${pkgver}/LICENSE
+  ${url}/releases/download/v${pkgver}/miniserve-linux-x86_64
+  ${url}/raw/v${pkgver}/LICENSE
 )
 sha512sums=(
   SKIP
