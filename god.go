@@ -122,13 +122,14 @@ func prepareCmds() ([]string){
 		[]string{"log --graph --decorate --all", "ll"},
 		[]string{"log --graph --decorate --oneline --all", "lo"},
 		[]string{"ls-files", "ls"})
-		
+
 	return gitCmdSlice
 }
 
 // Create a git command from the given string.
 // Returns changed/new command.
 func buildCmd(line string) (string) {
+	line = " " + line + " "
 	// Run command without git if it starts
 	// with '#' character.
 	if (strings.Contains(string([]rune(line)[:2]), termChar)) {
@@ -183,7 +184,7 @@ func startTerm(){
 			showShortcuts()
 		default:
 			// Build the git command.
-			gitCmd := buildCmd(" " + line + " ")
+			gitCmd := buildCmd(line)
 			// Release the std in/out for preventing the
 			// git username & password input issues.
 			if (strings.Contains(gitCmd, "push")){

@@ -41,4 +41,14 @@ func TestPrepareCmds(t *testing.T) {
 	}
 }
 
+func TestBuildCmd(t *testing.T) {
+	testCmd := "st && cm -m 'test' && ll && rmt"
+	gitCmdCheck := []string{"status", "commit", "log", "remote -v"}
+	gitCmd := buildCmd(testCmd)
+	for _, cmd := range gitCmdCheck{
+		if(!strings.Contains(gitCmd, cmd)){
+			t.Errorf("Building Git command failed. '%s' -> '%s'", gitCmd, cmd)
+		}
+	}
+}
 
