@@ -7,7 +7,7 @@ pkgdesc="A collection of spotify utilities, designed to be used with other shell
 arch=('any')
 url="https://github.com/shanedabes/sputils"
 license=('APACHE')
-depends=('python' 'python-configargparse' 'python-pyaml' 'python-spotipy')
+depends=('python' 'python-configargparse' 'python-pyaml' 'python-spotipy-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shanedabes/sputils/archive/v${pkgver}.tar.gz")
 sha256sums=('64bf10bbbbefacac15e1ef4d14d5dff655ad9d8f2a97a4b11a5465bbe7a3cb16')
 
