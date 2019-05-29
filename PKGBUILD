@@ -2,13 +2,13 @@
 
 pkgname=xcursor-comix-lh
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Comix X Cursor Theme for lefties"
 depends=('libxcursor')
 arch=(any)
 url="https://gitlab.com/limitland/comixcursors"
 license=('GPL')
-source=("https://ptpb.pw/~ComixCursors-LH")
+source=("https://cl.ly/38c89d33ce3e/download/ComixCursors-LH.tar.bz2")
 md5sums=('1058c81b7afed502d0e67b64272b57e8')
 
 package() {
