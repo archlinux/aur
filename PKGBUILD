@@ -1,3 +1,4 @@
+# Maintainer: neodarz <neodarz at neodarz dot net>
 # Maintainer: Julian Daube <joposter at gmail dot com>
 # Contributer: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
 
