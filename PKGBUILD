@@ -31,6 +31,7 @@ source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${
         'x-nzb.xml'
         "${pkgname}.service"
         'sabnzbd.sysusers'
+        'sabnzbd.tmpfiles'
         "${pkgname}.confd")
 
 sha256sums=('f3ab6dffba914e6ddf88f1a755ec3ebaa95f0bdbec6f04b7bf0f90822249bb0c'
@@ -42,6 +43,7 @@ sha256sums=('f3ab6dffba914e6ddf88f1a755ec3ebaa95f0bdbec6f04b7bf0f90822249bb0c'
             'f53261d7578c67fb9fd6a639df94cd53604bcf37b9b03a926cb03e5214b496fe'
             '3de9c07d7731a9756a60691c56897b1cb0c802c5eb510a7bb68b9e1c82d7102c'
             '8cdeae7e8fa327bafc2fd1b19c1995f89f52b2ba231c8305b4e7269ab9e0738a'
+            'e6310d2553fe0f65b742b15d03d82359ebb6a2ae6845c4404b8a1efabc2c918e'
             '8462203454d488b5d4f7beb85e61da2efa42d3dffa465f3bf16a95abe0bc7c0a')
 
 package() {
@@ -57,8 +59,11 @@ package() {
 
   install -Dm755 "${srcdir}/${pkgname}"       "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.confd" "${pkgdir}/etc/conf.d/${pkgname}"
+
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${srcdir}/sabnzbd.sysusers" "${pkgdir}/usr/lib/sysusers.d/sabnzbd.conf"
+  install -Dm644 "${srcdir}/sabnzbd.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/sabnzbd.conf"
+
   install -Dm755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm755 "${srcdir}/addnzb.sh"    "${pkgdir}/opt/${pkgname}/addnzb.sh"
   install -Dm644 "${srcdir}/nzb.png"    "${pkgdir}/opt/${pkgname}/nzb.png"

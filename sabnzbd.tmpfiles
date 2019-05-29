@@ -1,0 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /opt/sabnzbd 0755 radarr radarr
+Z /opt/sabnzbd - radarr radarr
+L /var/log/sabnzbd - - - - /opt/sabnzbd/logs/

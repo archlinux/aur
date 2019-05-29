@@ -1,9 +1,4 @@
-# Change these to modify the ownership of sabnzbd
-# If you change this here, you also have to change
-# the user and group in the systemd service file.
-SABNZBD_USER="sabnzbd"
-SABNZBD_GROUP="sabnzbd"
-
+# Installation location of SABnzbd
 SABNZBD_DIR="/opt/sabnzbd"  # should not be changed
 
 ## arg 1:  the new package version
@@ -13,8 +8,6 @@ post_install() {
     xdg-mime install --mode system "${SABNZBD_DIR}/x-nzb.xml"
     xdg-icon-resource install --context mimetypes --size 256 "${SABNZBD_DIR}/nzb.png" application-x-nzb
   fi
-
-  post_upgrade
 
   cat << "EOM"
 ==> If you want to associate .nzb-files with SABnzbd, run 'xdg-mime default sabnzbd.desktop applications/x-nzb'
@@ -29,12 +22,6 @@ pre_upgrade() {
   if [ -n "${PID}" ];then
     systemctl stop sabnzbd.service
   fi
-}
-
-## arg 1:  the new package version
-## arg 2:  the old package version
-post_upgrade() {
-  chown -R "${SABNZBD_USER}:${SABNZBD_GROUP}" "${SABNZBD_DIR}"
 }
 
 ## arg 1:  the old package version
