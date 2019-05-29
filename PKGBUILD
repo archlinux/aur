@@ -1,4 +1,4 @@
-# Maintainer: xsmile <sascha_r gmx de>
+# Maintainer: xsmile <>
 pkgname=ifrextractor-ls-git
 _pkgname=ifrextractor-ls
 pkgver=r37.4f9699d
