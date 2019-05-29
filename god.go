@@ -67,9 +67,9 @@ func searchInSlice(slice []string, query string) (bool) {
 
 // Returns a slice with given dimension parameter.
 // Used for getting keys or values from a 2-d slice.
-func getShortcutSlice(d int) ([]string){
+func getShortcutSlice(slice [][]string, d int) ([]string){
 	var shortcuts []string
-	for _, shortcut := range gitShortcuts {
+	for _, shortcut := range slice {
 		shortcuts = append(shortcuts, shortcut[d])
 	}
 	return shortcuts
@@ -135,11 +135,11 @@ func buildCmd(line string) (string) {
 	// Support the commands starting with git.
 	line = strings.Replace(line, " git ", " ", -1)
 	// Replace the shortened command with its original.
-	for index, cmd := range append(cmdSlice, getShortcutSlice(1)...) {
+	for index, cmd := range append(cmdSlice, getShortcutSlice(gitShortcuts, 1)...) {
 		cmd = " " + cmd + " "
 		if (strings.Contains(line, cmd)) {
 			line = strings.Replace(line, cmd, 
-				" " + append(gitCmdSlice, getShortcutSlice(0)...)[index] + " ", -1)
+				" " + append(gitCmdSlice, getShortcutSlice(gitShortcuts, 0)...)[index] + " ", -1)
 		}
 	}
 	return "git" + line

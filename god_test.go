@@ -22,3 +22,16 @@ func TestSearchInSlice(t *testing.T) {
 		t.Errorf("Cannot find '%s' in slice.", query)
 	}
 }
+
+func TestGetShortcutSlice(t *testing.T) {
+	gitShortcuts := [][]string{
+		[]string{"commit", "cm"}, 
+		[]string{"push", "ps"}}
+	for i, sc := range getShortcutSlice(gitShortcuts, 0){
+		if (sc != gitShortcuts[i][0]){
+			t.Error("Cannot retrieve the correct element from slice.")
+		}
+	}
+}
+
+
