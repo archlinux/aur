@@ -9,6 +9,7 @@ Shortcuts of [commonly used git commands](https://github.com/joshnh/Git-Commands
 
 ## Installation
 
+
 ## CLI
 
 ### Commands
@@ -113,6 +114,12 @@ no changes added to commit (use "git add" and/or "git commit -a")
 [god ~]$ ps o mt
 To https://github.com/KeyLo99/God.git
    45e8aba..fba7e79  master -> master
+```
+```
+st -> status
+a -> add
+cmt -> commit -m
+ps o mt -> push origin master
 ```
 
 ## Todo
