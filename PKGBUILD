@@ -9,10 +9,9 @@
 pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=${pkgbase}
-_kernel_rel=5.1
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=5.1.811424.f6993eeb6175
+pkgver=5.1.811436.d97852aeef73
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -32,8 +31,11 @@ sha256sums=('SKIP'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
   cd "${_srcname}"
+  local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
+  local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
+  patch=$(( $patch + 1 ))
 
-  echo ${_kernel_rel}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo $version.$patch.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 _kernelname=${pkgbase#linux}
