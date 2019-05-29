@@ -12,12 +12,12 @@ Shortcuts of [commonly used git commands](https://github.com/joshnh/Git-Commands
 ```
 ./install.sh
 ```
-or
+_or_
 ```
 go build god.go
 cp god /usr/local/bin/
 ```
-or maybe
+_or maybe_
 ```
 go run god.go
 ```
