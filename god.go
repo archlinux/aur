@@ -21,6 +21,7 @@ var gitShortcuts[][] string // 2-d slice for the git shortcuts
 var whiteColor (*color.Color) = color.New(color.FgWhite, color.Bold)
 var restartTerm bool = false // Handling the stdout issues.
 var termChar = "#" // Character for non-git terminal commands.
+var promptStr = "[god ~]$ "
 
 // Executes the terminal command and returns output.
 // stdout parameter determines the output stream.
@@ -147,7 +148,6 @@ func buildCmd(line string) (string) {
 // Start the interactive shell.
 func startTerm(){
 	term, err := terminal.NewWithStdInOut()
-	promptStr := "[god ~]$ "
 	if err != nil {
 		panic(err)
 	}
