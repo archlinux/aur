@@ -1,6 +1,6 @@
 pkgbase = google-chrome-beta
 	pkgdesc = The popular and trusted web browser by Google (Beta Channel)
-	pkgver = 75.0.3770.51
+	pkgver = 75.0.3770.66
 	pkgrel = 1
 	url = https://www.google.com/chrome
 	install = google-chrome-beta.install
@@ -22,7 +22,7 @@ pkgbase = google-chrome-beta
 	provides = google-chrome
 	options = !emptydirs
 	options = !strip
-	source = google-chrome-beta_75.0.3770.51_amd64.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
+	source = google-chrome-beta_75.0.3770.66_amd64.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
 	source = eula_text.html
 	source = google-chrome-beta.sh
 	sha512sums = b206e271b90336891b3a816b63c21a93ea0b64aa725ac754b0629ecd97190b45a67d64008f8f38eae3b2dd55a446d7d719e179d74ccfed25f2062f8fe25691e8
