@@ -13,7 +13,16 @@ optdepends=("xdg-utils: registration of .nzb files" "python2-feedparser: rss sup
 install="${pkgname}.install"
 backup=("etc/conf.d/sabnzbd" "opt/${pkgname}/${pkgname}.ini")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.gz"
-        "${pkgname}" "${pkgname}.desktop" "addnzb.sh" "nzb.png" "sabnzbd.png" "x-nzb.xml" "${pkgname}.service" "${pkgname}.confd")
+        "${pkgname}"
+        "${pkgname}.desktop"
+        "addnzb.sh"
+        "nzb.png"
+        "sabnzbd.png"
+        "x-nzb.xml"
+        "${pkgname}.service"
+        "sabnzbd.sysusers"
+        "${pkgname}.confd")
+
 md5sums=('6845962498a6c3629818e28b32edeac6'
          '48d60a1c626503c7fef1bc5374390513'
          '36e5f0f60f28f67102682f80e33c6d4b'
@@ -22,6 +31,7 @@ md5sums=('6845962498a6c3629818e28b32edeac6'
          'b834ca5dfb63a5d06041c3174172ec09'
          '11fb2cd1451e3725b08bfc2bd045be54'
          'da07971fa3790ea4824ed4ce611b38f3'
+         '39415e41f0e29996b1aa16444258b33a'
          '8fc2607a7961fc643ef4f6640166322a')
 
 package() {
@@ -38,6 +48,7 @@ package() {
   install -Dm755 "${srcdir}/${pkgname}"       "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.confd" "${pkgdir}/etc/conf.d/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 "${srcdir}/sabnzbd.sysusers" "${pkgdir}/usr/lib/sysusers.d/sabnzbd.conf"
   install -Dm755 "${srcdir}/${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm755 "${srcdir}/addnzb.sh"    "${pkgdir}/opt/${pkgname}/addnzb.sh"

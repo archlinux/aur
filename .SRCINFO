@@ -28,6 +28,7 @@ pkgbase = sabnzbd
 	source = sabnzbd.png
 	source = x-nzb.xml
 	source = sabnzbd.service
+	source = sabnzbd.sysusers
 	source = sabnzbd.confd
 	md5sums = 6845962498a6c3629818e28b32edeac6
 	md5sums = 48d60a1c626503c7fef1bc5374390513
@@ -37,6 +38,7 @@ pkgbase = sabnzbd
 	md5sums = b834ca5dfb63a5d06041c3174172ec09
 	md5sums = 11fb2cd1451e3725b08bfc2bd045be54
 	md5sums = da07971fa3790ea4824ed4ce611b38f3
+	md5sums = 39415e41f0e29996b1aa16444258b33a
 	md5sums = 8fc2607a7961fc643ef4f6640166322a
 
 pkgname = sabnzbd
