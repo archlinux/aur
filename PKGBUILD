@@ -18,9 +18,8 @@ install=$pkgname.install
 source_x86_64=("http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/oss/a/$pkgname/${pkgname}_$pkgver-0~Ubuntu~1804_amd64.deb"
                "activdriver.install")
 md5sums_x86_64=('d09c1be7e554f6682b1ad574ceb81ae8'
-                '6246dbff78de13139d0aa761b9f9c40a')
+                '8a8a6ddd6741a80a5839593ed385cd9a')
                 
-
 prepare() {
   # Extract the source
   bsdtar -xf data.tar.xz
