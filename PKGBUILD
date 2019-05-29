@@ -1,7 +1,7 @@
 # Maintainer: LinArcx <linarcx@gmail.com>
 
 pkgname='kindd-git'
-pkgver=r28.a150bbc
+pkgver=1.0.0.r3.g09bfebb
 pkgrel=1
 pkgdesc=" A Kindful dd gui written in qt quick. (Github version)"
 arch=('any')
