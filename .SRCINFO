@@ -1,7 +1,7 @@
 pkgbase = compcert
 	pkgdesc = The formally verified C compiler
 	pkgver = 3.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://compcert.inria.fr
 	arch = x86_64
 	license = custom:INRIA Non-Commercial License Agreement
@@ -10,6 +10,7 @@ pkgbase = compcert
 	makedepends = ocaml-menhir>=20161201
 	makedepends = ocaml-menhir<=20181113
 	makedepends = ocaml-findlib
+	makedepends = parallel
 	depends = gcc
 	source = http://compcert.inria.fr/release/compcert-3.5.tgz
 	source = Makefile.patch

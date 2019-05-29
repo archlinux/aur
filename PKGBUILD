@@ -1,8 +1,9 @@
 # Maintainer: Xuanrui Qi <me@xuanruiqi.com>
+
 pkgname=compcert
 _dirname=CompCert
 pkgver=3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="The formally verified C compiler"
 arch=('x86_64')
 url="http://compcert.inria.fr"
@@ -11,7 +12,7 @@ depends=('gcc')
 makedepends=('coq>=8.6.1' 'ocaml>=4.0.2'
              'ocaml-menhir>=20161201' 'ocaml-menhir<=20181113'
              'ocaml-findlib' # See: https://github.com/AbsInt/CompCert/issues/281
-            )
+             'parallel')
 source=("http://compcert.inria.fr/release/$pkgname-$pkgver.tgz"
         "Makefile.patch"
         "Makefile-runtime.patch")
@@ -25,7 +26,7 @@ prepare() {
   # Fix missing $DESTDIR references in Makefile
   # Until upstream fixes this, we're forced to use this patch
   patch -Np0 -i ../Makefile.patch
-  patch -Np0 -i ../Makefile-runtime.patch  
+  patch -Np0 -i ../Makefile-runtime.patch
 }
 
 build() {
@@ -34,15 +35,23 @@ build() {
   # Some useful options:
   # -clightgen: builds and installs the clightgen tool
   # -install-coqdev: also installs the Coq development, implied by -clightgen, useful
-  #   if you will use tools such as Princeton VST)
-  ./configure -prefix /usr $CARCH-linux 
+  #   if you will use tools such as the Princeton VST)
+  ./configure -prefix /usr $CARCH-linux
 
   make all
 }
 
+check() {
+  cd $srcdir/$_dirname-$pkgver/test
+
+  make all
+  make parallel
+}
+
 package() {
   cd $srcdir/$_dirname-$pkgver
-  make DESTDIR=$pkgdir install 
+  make DESTDIR=$pkgdir install
   
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
+
