@@ -9,7 +9,14 @@ Group=maddy
 RuntimeDirectory=maddy
 WorkingDirectory=/var/lib/maddy
 ExecStart=/usr/bin/maddy
+LimitNOFILE=1048576
+LimitNPROC=64
 PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/maddy
+AmbientCapabilities=CAP_NET_BIND_SERVICE
 
 [Install]
 WantedBy=multi-user.target
