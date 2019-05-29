@@ -1,6 +1,6 @@
-pkgbase = leftwm
+pkgbase = leftwm-git
 	pkgdesc = Leftwm - A tiling window manager for the adventurer
-	pkgver = 0.1.9
+	pkgver = e4a35f7
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/leftwm/leftwm
@@ -16,8 +16,8 @@ pkgbase = leftwm
 	optdepends = polybar: light weight bar
 	provides = leftwm
 	conflicts = leftwm
-	source = leftwm::git+https://github.com/leftwm/leftwm.git
+	source = leftwm-git::git+https://github.com/leftwm/leftwm.git
 	md5sums = SKIP
 
-pkgname = leftwm
+pkgname = leftwm-git
 
