@@ -34,4 +34,11 @@ func TestGetShortcutSlice(t *testing.T) {
 	}
 }
 
+func TestPrepareCmds(t *testing.T) {
+	gitCmds := prepareCmds()
+	if (len(gitCmds) < 5){
+		t.Error("Unable to prepare shortened git commands.")
+	}
+}
+
 

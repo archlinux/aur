@@ -76,7 +76,7 @@ func getShortcutSlice(slice [][]string, d int) ([]string){
 }
 
 // Prepare (shorten) the git commands.
-func prepareCmds(){
+func prepareCmds() ([]string){
 	// Show status if repository exists in directory.
 	execCmd("git status", true)
 	// Trimming the string using sed.
@@ -122,6 +122,8 @@ func prepareCmds(){
 		[]string{"log --graph --decorate --all", "ll"},
 		[]string{"log --graph --decorate --oneline --all", "lo"},
 		[]string{"ls-files", "ls"})
+		
+	return gitCmdSlice
 }
 
 // Create a git command from the given string.
