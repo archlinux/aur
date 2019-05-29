@@ -5,7 +5,7 @@ pkgname=${_appName}-dev
 _name=${pkgname}
 upstreamName="PyFunceble-dev"
 pkgver=1.74.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The tool to check the availability or syntax of domains, IPv4 or URL."
 arch=('any')
 url="https://funilrys.github.io/PyFunceble/"
@@ -14,16 +14,17 @@ provides=("${_appName}")
 conflicts=('pyfunceble')
 provides=("pyfunceble=${pkgver}")
 depends=(
-    'python3'
-    'python-distribute'
-    'python-setuptools'
+    'domain2idna'
     'python-colorama'
-    'python-pyaml'
-    'python-urllib3'
-    'python-requests'
+    'python-distribute'
     'python-dnspython'
     'python-dotenv'
-    'domain2idna'
+    'python-pyaml'
+    'python-pymysql'
+    'python-requests'
+    'python-setuptools'
+    'python-urllib3'
+    'python3'
 )
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${upstreamName}-${pkgver}.tar.gz"
