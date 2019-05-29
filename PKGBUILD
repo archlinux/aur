@@ -1,7 +1,7 @@
 # Maintainer: Mateen Ulhaq <mulhaq2005+aur at gmail dot com>
 
 pkgname=frece
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Frecency sorted database"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gcc-libs")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SicariusNoctis/frece/archive/$pkgver.tar.gz")
-sha256sums=("f667b8ade5d6a2bba214a4227e5e980cd4b9be4c53683cacb7f1a3327189f3b9")
+sha256sums=("af5cb178df8ef9a7f7d2ce7d76a9c794e8b1222c6dc0d7e884bd09adc65aed85")
 
 build() {
     cd "$pkgname-$pkgver"
