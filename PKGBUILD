@@ -3,13 +3,13 @@
 _pkgname=stunnel
 pkgname=$_pkgname-systemd-git
 pkgver=5.54
-pkgrel=3
+pkgrel=4
 pkgdesc="A program that allows you to encrypt arbitrary TCP connections inside SSL"
 arch=('x86_64')
 url='https://www.stunnel.org/'
 license=('GPL2')
 depends=('libnsl' 'openssl' 'systemd')
-makedepends=('git' 'automake' 'pkgconf' 'libtool' 'autoconf-archive' 'gnu-netcat')
+makedepends=('git' 'automake' 'pkgconf' 'libtool' 'autoconf-archive' 'gnu-netcat' 'pod2man')
 provides=($_pkgname)
 conflicts=($_pkgname)
 #backup=('/etc/stunnel/stunnel.conf-sample')
