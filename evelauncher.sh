@@ -63,7 +63,7 @@ check_wine() {
 	/v Enable /d N /f >/dev/null
 }
 
-ELVER="1501045"
+ELVER="1514997"
 QTVER="5.11"
 SHAREDIR=""
 CONFDIR="$HOME/.config/CCP"
