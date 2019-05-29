@@ -7,13 +7,14 @@
 `God` parses the available Git commands from the retrieved list (`git help`) and turns them into an easy-to-type, one or two char format at the execution time.
 Shortcuts of [commonly used git commands](https://github.com/joshnh/Git-Commands) are supported for simplifying the usage and speeding up typing even more.
 
-## install
+## Installation
 
-## cli
+## CLI
 
-### commands
+### Commands
 
 ```
+[god ~]$ ?
 +---------+-----------------------------+
 | COMMAND |         DESCRIPTION         |
 +---------+-----------------------------+
@@ -28,11 +29,62 @@ Shortcuts of [commonly used git commands](https://github.com/joshnh/Git-Commands
 
 ### `git`
 
+```
+[god ~]$ git
++---------+----------+
+| COMMAND |   GIT    |
++---------+----------+
+| c       | clone    |
+| i       | init     |
+| a       | add      |
+| m       | mv       |
+| r       | reset    |
+| rm      | rm       |
+| b       | bisect   |
+| g       | grep     |
+| l       | log      |
+| s       | show     |
+| st      | status   |
+| bn      | branch   |
+| ck      | checkout |
+| cm      | commit   |
+| d       | diff     |
+| mr      | merge    |
+| ra      | rebase   |
+| t       | tag      |
+| f       | fetch    |
+| p       | pull     |
+| ps      | push     |
+| mt      | master   |
+| o       | origin   |
++---------+----------+
+```
+_Example of shortened git commands._
+
 ### `sc`
 
-### other
+```
+[god ~]$ sc   
++----------+--------------------------------+
+| SHORTCUT |            COMMAND             |
++----------+--------------------------------+
+| aa       | add -A                         |
+| cmt      | commit -m                      |
+| rmt      | remote -v                      |
+| rr       | rm -r                          |
+| ll       | log --graph --decorate --all   |
+| lo       | log --graph --decorate         |
+|          | --oneline --all                |
+| ls       | ls-files                       |
++----------+--------------------------------+
+```
 
-## todo
+### Other
+
+Other terminal commands can be executed with adding a `'#'` character before the command. It's necessary for non-git commands because the `god` executes all terminal inputs with `git`.
+
+
+## Todo
 
 * Support adding custom shortcuts.
 * Add 'save' command to CLI for saving commands as Git config file.
