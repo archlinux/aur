@@ -1,6 +1,6 @@
 pkgbase = spigot
 	pkgdesc = High performance Minecraft server implementation
-	pkgver = 1.14.1+b101
+	pkgver = 1.14.2+b101
 	pkgrel = 1
 	url = https://www.spigotmc.org/
 	install = spigot.install
@@ -17,14 +17,14 @@ pkgbase = spigot
 	depends = sed
 	optdepends = tar: needed in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
-	provides = minecraft-server=1.14.1
-	provides = bukkit=1.14.1
-	provides = craftbukkit=1.14.1
+	provides = minecraft-server=1.14.2
+	provides = bukkit=1.14.2
+	provides = craftbukkit=1.14.2
 	conflicts = bukkit
 	conflicts = craftbukkit
 	conflicts = spigot-patcher
 	backup = etc/conf.d/spigot
-	source = BuildTools-1.14.1+b101.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/101/artifact/target/BuildTools.jar
+	source = BuildTools-1.14.2+b101.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/101/artifact/target/BuildTools.jar
 	source = spigot-backup.service
 	source = spigot-backup.timer
 	source = spigot.service
