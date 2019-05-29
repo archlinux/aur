@@ -1,0 +1,24 @@
+pkgbase = owl-git
+	pkgdesc = An open Apple Wireless Direct Link (AWDL) implementation written in C
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://owlink.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	depends = libpcap
+	depends = libev
+	depends = libnl
+	source = owl-git::git+https://github.com/seemoo-lab/owl.git#branch=master
+	source = git+https://github.com/google/googletest.git
+	source = git+https://github.com/radiotap/radiotap-library.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = owl-git
+
