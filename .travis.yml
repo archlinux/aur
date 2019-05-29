@@ -12,5 +12,9 @@ go:
 git:
   depth: 1
 
-# Skip the install step.
-install: true
+# Dependencies
+before_install:
+  - go get -v github.com/fatih/color
+  - go get -v github.com/olekukonko/tablewriter
+  - go get -v github.com/common-nighthawk/go-figure
+  - go get -v github.com/carmark/pseudo-terminal-go/terminal
