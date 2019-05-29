@@ -6,8 +6,8 @@ After=network-online.target
 
 [Service]
 Type=simple
-User=lesspassgo
-Group=lesspassgo
+DynamicUser=yes
+StateDirectory=lesspassgo-server
 EnvironmentFile=/etc/lesspassgo-server.conf
 ExecStart=/usr/bin/lesspassgo-server
 
