@@ -1,62 +1,43 @@
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
-
-# NOTE about libgl dependency 
-# if you have and use 'mesa',     install 'mesa-libgl'
-# if you have and use 'nvidia',   install 'nvidia-libgl'
-# if you have and use 'catalyst', install 'catalyst-libgl' (or catalyst-total)
-# p.s.: there is no 'libgl' pkg, instead it is provided by the above pkgs
-
-pkgname=teighaviewer-qt5
-_altname=teighaviewer
-pkgver=19.5.0
-_version=19.5.0.0
+pkgname=odadrawingsexplorer
+_pkgname=ODADrawingsExplorer
+pkgver=19.12.0.0
 pkgrel=1
-pkgdesc="Application for the visualization of CAD drawing files, QT5 version"
+pkgdesc="Application for the visualization of CAD drawing files (supersedes Teigha Viewer)"
 arch=('x86_64')
-url="https://www.opendesign.com/guestfiles/teigha_viewer"
+url="https://www.opendesign.com/guestfiles/oda_drawings_explorer"
 license=('custom')
 depends=('qt5-base' 'libxfixes' 'libgl' 'libxkbcommon-x11' 'bash' 'hicolor-icon-theme')
-source=("${pkgname}-x86_64-${_version}.deb::https://download.opendesign.com/guestfiles/TeighaViewer/TeighaViewer_QT5_lnxX64_4.7dll.deb"
-        'license')
-sha256sums=('b891749c7dd711e9113e8193e699453bfe284dfe4c3c3f87d9660031472d5159'
-            '770baed2dda51def38a40583d559b1e731a22b94a1e30b8d59f41aea153b25a7')
+replaces=('teighaviewer-qt5')
+source=("${pkgname}-x86_64-${pkgver}.deb::https://download.opendesign.com/guestfiles/${_pkgname}/${_pkgname}_QT5_lnxX64_4.7dll.deb")
+sha256sums=('8202a5dcf800062dc15359f37a769c09efdfe3436be714b09ff0bcab1c5304b2')
 
 prepare() {
-  rm -rf ${_altname}-${_version}
-  mkdir ${_altname}-${_version}
-  tar xf data.tar.gz -C ${_altname}-${_version}
+  rm -rf ${pkgname}-${pkgver}
+  mkdir ${pkgname}-${pkgver}
+  tar xf data.tar.gz -C ${pkgname}-${pkgver}
 }
 
 package() {
-  cd ${_altname}-${_version}
+  cd ${pkgname}-${pkgver}
 
-  for file in $(ls usr/bin/TeighaViewer_${_version}/); do
-    install -Dm755 usr/bin/TeighaViewer_${_version}/${file} \
-        "${pkgdir}/usr/lib/teighaviewer/${file}"
+  # libs
+  for file in $(ls "usr/bin/${_pkgname}_${pkgver}/"); do
+    install -Dm755 "usr/bin/${_pkgname}_${pkgver}/${file}" "${pkgdir}/usr/lib/${pkgname}/${file}"
   done
 
-    # binary
-  install -Dm755 usr/bin/TeighaViewer \
-    "${pkgdir}/usr/bin/teighaviewer"
-  sed -e "s#usr/bin/TeighaViewer_${_version}#usr/lib/teighaviewer#" \
-    -i "${pkgdir}/usr/bin/${_altname}"
+  # binary
+  install -Dm755 "usr/bin/$_pkgname" "${pkgdir}/usr/bin/${pkgname}"
+  sed -e "s#usr/bin/${_pkgname}_${pkgver}#usr/lib/${pkgname}#" -i "${pkgdir}/usr/bin/${pkgname}"
 
-    # desktop item
-  install -Dm644 usr/share/applications/TeighaViewer_${_version}.desktop \
-    "${pkgdir}/usr/share/applications/teighaviewer.desktop"
-  sed -e "s#/TeighaViewer#/teighaviewer#" \
-    -i "${pkgdir}/usr/share/applications/teighaviewer.desktop"
+  # desktop item
+  install -Dm644 usr/share/applications/${_pkgname}_${pkgver}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  sed -e "s#/$_pkgname#/${pkgname}#" -i "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    # hicolor icons
+  # hicolor icons
   for icon in $(find usr/share/icons -type f); do
-    install -Dm644 ${icon} \
-        "${pkgdir}/${icon}"
+    install -Dm644 ${icon} "${pkgdir}/${icon}"
   done
-
-    # copyright
-  install -Dm644 usr/share/doc/TeighaViewer/copyright \
-    "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
-  install -Dm644 "$srcdir"/license \
-    "${pkgdir}/usr/share/licenses/${pkgname}/license"
 }
