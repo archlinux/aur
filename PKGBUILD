@@ -9,10 +9,9 @@
 pkgbase=linux-drm-intel-next-queued-git
 pkgdesc='Linux with patches for Intel graphics'
 _srcname=${pkgbase}
-_kernel_rel=5.2
 _branch=drm-intel-next-queued
 _kernelname=${pkgbase#linux}
-pkgver=5.2.827749.09a93ef3d60f
+pkgver=5.3.840443.0c1f845772e5
 pkgrel=1
 arch=('x86_64')
 url='https://drm.pages.freedesktop.org/maintainer-tools/drm-intel.html'
@@ -26,14 +25,17 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm-intel#branch=${_branc
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            'c3bc65010322b021c657987538db775f5777ac6ea098169ff3e34261f848b199'
+            '7ae45e21cc5db548642381bd449d8b307c0ab44096af2c7a165fa23eb76155bd'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
   cd "${_srcname}"
+  local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
+  local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
+  patch=$(( $patch + 1 ))
 
-  echo ${_kernel_rel}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo $version.$patch.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 _kernelname=${pkgbase#linux}

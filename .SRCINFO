@@ -1,6 +1,6 @@
 pkgbase = linux-drm-intel-next-queued-git
 	pkgdesc = Linux with patches for Intel graphics
-	pkgver = 5.2.827749.09a93ef3d60f
+	pkgver = 5.3.840443.0c1f845772e5
 	pkgrel = 1
 	url = https://drm.pages.freedesktop.org/maintainer-tools/drm-intel.html
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = linux-drm-intel-next-queued-git
 	source = 90-linux.hook
 	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = c3bc65010322b021c657987538db775f5777ac6ea098169ff3e34261f848b199
+	sha256sums = 7ae45e21cc5db548642381bd449d8b307c0ab44096af2c7a165fa23eb76155bd
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
