@@ -1,6 +1,6 @@
 pkgbase = libretro-beetle-dc-git
 	pkgdesc = Sega Dreamcast core
-	pkgver = r3635.d9f44d04
+	pkgver = r3636.2af59a87
 	pkgrel = 1
 	url = https://github.com/libretro/beetle-dc
 	arch = x86_64

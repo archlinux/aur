@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-beetle-dc-git
-pkgver=r3635.d9f44d04
+pkgver=r3636.2af59a87
 pkgrel=1
 pkgdesc='Sega Dreamcast core'
 arch=(x86_64)
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  install -Dm 644 libretro-beetle-dc/beetle-dc_libretro.so -t "${pkgdir}"/usr/lib/libretro/
+  install -Dm 644 libretro-beetle-dc/beetledc_libretro.so -t "${pkgdir}"/usr/lib/libretro/
 }
 
 # vim: ts=2 sw=2 et:
