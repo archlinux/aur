@@ -6,7 +6,7 @@
 
 _pkgname=gnupg
 pkgname=gnupg-scdaemon-shared-access
-pkgver=2.2.15
+pkgver=2.2.16
 pkgrel=1
 pkgdesc='This package adds shared-access option that uses PCSC_SHARE_SHARED for pcsc_connect in scdaemon when using pcsc backend for smartcard access'
 url='https://www.gnupg.org/'
@@ -25,7 +25,7 @@ validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
               'D238EA65D64C67ED4C3073F28A861B1C7EFD60D9')
 source=("https://gnupg.org/ftp/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"{,.sig}
         "scdaemon_shared-access.patch")
-sha256sums=('cb8ce298d7b36558ffc48aec961b14c830ff1783eef7a623411188b5e0f5d454'
+sha256sums=('6cbe8d454bf5dc204621eed3016d721b66298fa95363395bb8eeceb1d2fd14cb'
             'SKIP'
             '877ca0b8abcb6d1263bf40f3e9aa66b754a9957943ae2de591dfa42a1b21b7cf')
 
@@ -37,7 +37,7 @@ provides=('gnupg' 'dirmngr' "gnupg=${pkgver}" "gnupg2=${pkgver}")
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	sed '/noinst_SCRIPTS = gpg-zip/c sbin_SCRIPTS += gpg-zip' -i tools/Makefile.in
-	patch -p1 -t -N < "${srcdir}/scdaemon_shared-access.patch"
+	patch -F3 -p1 -t -N < "${srcdir}/scdaemon_shared-access.patch"
 }
 
 build() {
