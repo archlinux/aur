@@ -4,23 +4,33 @@ pkgver=2.3.9
 pkgrel=1
 pkgdesc="A web-interface based binary newsgrabber with NZB file support"
 url="http://www.sabnzbd.org"
-arch=("any")
-license=("GPL")
-depends=("curl" "par2cmdline"
-         "python2" "python2-cheetah" "python2-sabyenc"
-         "sqlite" "unrar" "unzip")
-optdepends=("xdg-utils: registration of .nzb files" "python2-feedparser: rss support" "python2-pyopenssl: ssl support" "par2cmdline-tbb: par2 multi-threading")
+arch=('any')
+license=('GPL')
+depends=('curl'
+         'par2cmdline'
+         'python2'
+         'python2-cheetah'
+         'python2-sabyenc'
+         'sqlite'
+         'unrar'
+         'unzip')
+
+optdepends=('xdg-utils: registration of .nzb files'
+            'python2-feedparser: rss support'
+            'python2-pyopenssl: ssl support'
+            'par2cmdline-tbb: par2 multi-threading')
+
 install="${pkgname}.install"
-backup=("etc/conf.d/sabnzbd" "opt/${pkgname}/${pkgname}.ini")
+backup=('etc/conf.d/sabnzbd' "opt/${pkgname}/${pkgname}.ini")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.gz"
         "${pkgname}"
         "${pkgname}.desktop"
-        "addnzb.sh"
-        "nzb.png"
-        "sabnzbd.png"
-        "x-nzb.xml"
+        'addnzb.sh'
+        'nzb.png'
+        'sabnzbd.png'
+        'x-nzb.xml'
         "${pkgname}.service"
-        "sabnzbd.sysusers"
+        'sabnzbd.sysusers'
         "${pkgname}.confd")
 
 sha256sums=('f3ab6dffba914e6ddf88f1a755ec3ebaa95f0bdbec6f04b7bf0f90822249bb0c'
@@ -49,8 +59,7 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.confd" "${pkgdir}/etc/conf.d/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${srcdir}/sabnzbd.sysusers" "${pkgdir}/usr/lib/sysusers.d/sabnzbd.conf"
-  install -Dm755 "${srcdir}/${pkgname}.desktop" \
-    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm755 "${srcdir}/addnzb.sh"    "${pkgdir}/opt/${pkgname}/addnzb.sh"
   install -Dm644 "${srcdir}/nzb.png"    "${pkgdir}/opt/${pkgname}/nzb.png"
   install -Dm644 "${srcdir}/sabnzbd.png"  "${pkgdir}/opt/${pkgname}/sabnzbd.png"
