@@ -8,6 +8,7 @@ pkgbase = itk-snap-bin
 	makedepends = gendesk
 	depends = curl
 	depends = glib2
+	depends = libpng12
 	provides = itk-snap
 	conflicts = itk-snap
 	source = itk-snap-bin-3.8.0beta.tar.gz::http://www.nitrc.org/frs/downloadlink.php/10980
