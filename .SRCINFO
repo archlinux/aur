@@ -1,0 +1,14 @@
+pkgbase = openjdk-8-fake
+	pkgdesc = Package to provide fake openjdk 8 when using oracle jdk8
+	pkgver = 8.u212
+	pkgrel = 1
+	arch = any
+	provides = jre8-openjdk-headless
+	provides = jdk8-openjdk
+	provides = jre8-openjdk
+	conflicts = jre8-openjdk-headless
+	conflicts = jdk8-openjdk
+	conflicts = jre8-openjdk
+
+pkgname = openjdk-8-fake
+
