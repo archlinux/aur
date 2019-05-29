@@ -51,4 +51,3 @@ func TestBuildCmd(t *testing.T) {
 		}
 	}
 }
-

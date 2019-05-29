@@ -1,7 +1,7 @@
-# ubuntu environment (18.04)
+# Ubuntu environment (18.04)
 dist: xenial
 
-# golang
+# Golang
 language: go
 
 # Go version
