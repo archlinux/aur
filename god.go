@@ -20,6 +20,7 @@ var cmdSlice, gitCmdSlice []string // Slice for the shortened git commands
 var gitShortcuts[][] string // 2-d slice for the git shortcuts
 var whiteColor (*color.Color) = color.New(color.FgWhite, color.Bold)
 var restartTerm bool = false // Handling the stdout issues.
+var termChar = "#" // Character for non-git terminal commands.
 
 // Executes the terminal command and returns output.
 // stdout parameter determines the output stream.
@@ -125,7 +126,12 @@ func prepareCmds(){
 // Create a git command from the given string.
 // Returns changed/new command.
 func buildCmd(line string) (string) {
-	// Support the normal usage.
+	// Run command without git if it starts
+	// with '#' character.
+	if (strings.Contains(string([]rune(line)[:2]), termChar)) {
+		return strings.Replace(line, " " + termChar, " ", 1)
+	}
+	// Support the commands starting with git.
 	line = strings.Replace(line, " git ", " ", -1)
 	// Replace the shortened command with its original.
 	for index, cmd := range append(cmdSlice, getShortcutSlice(1)...) {
