@@ -12,7 +12,7 @@ arch=(any)
 license=(GPL2)
 depends=("python-requests" "python-beautifulsoup4" "python-gobject" "python-lxml")
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b3542e8bad9e2f85c81777f5c1d1c55220a145cea86d4c1e68ff78ae02cbec0e')
+sha256sums=('9212ec768d1bffa5b2d6350d0cde0b3b412eb2047cc110a9ff0d1a665e477805')
 optdepends=("firefox: Browser to use" "chromium: Browser to use" "google-chrome: Browser to use" "vivaldi: Browser to use")
 
 package() {
