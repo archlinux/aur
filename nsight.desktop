@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=NVIDIA Nsight Graphics
+Exec=nv-nsight-gfx
+Type=Application
+StartupNotify=true
+Icon=nsight
+Terminal=false

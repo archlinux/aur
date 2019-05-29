@@ -1,0 +1,33 @@
+pkgbase = nsight
+	pkgdesc = Standalone application for the debugging and profiling of graphics applications
+	pkgver = 2019.3.0
+	pkgrel = 1
+	url = https://developer.nvidia.com/nsight-graphics
+	arch = x86_64
+	license = custom
+	depends = libx11
+	depends = libxcb
+	depends = nvidia
+	depends = openssl
+	depends = icu
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-location
+	depends = qt5-declarative
+	depends = qt5-script
+	depends = qt5-sensors
+	depends = qt5-svg
+	depends = qt5-webchannel
+	depends = qt5-webengine
+	depends = qt5-xmlpatterns
+	depends = qt5-tools
+	depends = qt5-charts
+	source = NVIDIA_Nsight_Graphics_2019.3.0.run::https://developer.nvidia.com/rdp/assets/nsight-graphics-2019_3_0-linux-installer
+	source = http://developer.download.nvidia.com/NsightVisualStudio/3.1/Documentation/UserGuide/HTML/Content/Images/NSight_256.png
+	source = nsight.desktop
+	sha512sums = 522c69b4bc52a14253e1b00526ddeda5f57ff1eec6bb17527afcb9360f771aa602425a1cfb98537b28545e3adbbf8004a29068bba8adfe2459474458938ee2ca
+	sha512sums = 784985c2bd3a053cee4887af3b960c7fdc041dda3ca71196ec0870d5413f646d542687b16bffe85985a46d70f68ccf7df29ed5e39952d5e553a4beec485a1185
+	sha512sums = f4b1c7e2d152b765838f39a247cd57e6d4cae6a3b93d88d3b8e448e6ecf0115b806ceaacff60455d611e594b0121c16281f832a081b64ddf42009fe8d0548edd
+
+pkgname = nsight
+
