@@ -1,37 +1,67 @@
 pkgbase = epiphany-pantheon
-	pkgdesc = GNOME web browser based on the WebKit rendering engine (with elementary OS patches)
-	pkgver = 3.28.0.1+1ubuntu1+r21.dbc305d50
-	pkgrel = 5
-	url = https://gitlab.gnome.org/GNOME/epiphany/
-	arch = i686
+	pkgdesc = A GNOME web browser based on the WebKit rendering engine (with elementary OS patches)
+	pkgver = 3.32.2
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Web
 	arch = x86_64
 	groups = pantheon
 	license = GPL
-	makedepends = meson
+	checkdepends = xorg-server-xvfb
 	makedepends = docbook-xml
 	makedepends = startup-notification
 	makedepends = lsb-release
 	makedepends = gobject-introspection
 	makedepends = yelp-tools
-	makedepends = autoconf-archive
 	makedepends = appstream-glib
 	makedepends = git
-	depends = webkit2gtk>=2.19.4
+	makedepends = meson
+	depends = webkit2gtk
 	depends = gcr
+	depends = icu
 	depends = libdazzle
-	depends = gst-libav
-	provides = epiphany=3.28.0.1+1ubuntu1+r21.dbc305d50
+	depends = libhandy
+	provides = epiphany=3.32.2
 	provides = epiphany-sync
-	conflicts = epiphany
-	replaces = epiphany-pantheon-bzr
-	source = git+https://github.com/elementary/os-patches.git#branch=epiphany-browser-bionic-patched
+	source = epiphany-pantheon::git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=d154e6cea18123576d511512827cd6308c9780e2
 	source = epiphany-sync
 	source = epiphany-sync.service
-	source = add-preview-widget.patch
-	sha256sums = SKIP
-	sha256sums = cf90f3ea93fff8c61f82da40c8d07d5db2f33dc9a0d91408a6ffc4142bbedd20
-	sha256sums = ce1ac321d7bf9d88638634a141dfcb99119fc59ee44c4892e0874608e85006ba
-	sha256sums = fdd161fa242ebe39e198a19f2eced9bdc9870601e91a11643e5bebafa87ba1f8
+	source = full-width-url-bar-lesshandy.patch
+	source = 24px-color-toolbar-icons-reduced.patch
+	source = tab-close-button-left.patch
+	source = new-tab-button-left.patch
+	source = use-real-name.patch
+	source = double-click-for-new-tab.patch
+	source = overlay-bar-style.patch
+	source = dodge-incognito-mode-style.patch
+	source = middle-click-close-tab.patch
+	source = add-preferences-menuitem.patch
+	source = fix-menu-margins.patch
+	source = remove-newtab-menuitem.patch
+	source = remove-text-encoding-menuitem.patch
+	source = add-various-menuitem.patch
+	source = remove-gnome-menu.patch
+	source = hide-fonts-and-style-tab.patch
+	source = notebook-margin.patch
+	sha1sums = SKIP
+	sha1sums = 2a8fda153bf3fb2d9a14b632082329ed6e2d8fab
+	sha1sums = 2c1c89aee5e1ea2ca47d518690b93238213e73fd
+	sha1sums = 66527476f0f7ef19eefdfd2c700748350c1e24b9
+	sha1sums = 9ee462279ae5115535590ce6fb3318de7f7eeba1
+	sha1sums = 6830e08ab8f2fc363768a3357544c5322f3f702a
+	sha1sums = ec44a91a1693c664e55ef42c21ae2d9e27c75148
+	sha1sums = 8be3e4ce2d2dd1226faaeb1937e93aedbfc5c7a9
+	sha1sums = d1153085b4827a12aa3959ad6d7ab7e80b2a4754
+	sha1sums = cb88f86c9e44936993ab2e3a02f71874de422ae7
+	sha1sums = 1588217c2f425172693b4c6430accbc03273a349
+	sha1sums = fd94fe5b97a9e1d189f1f9e0310389831aa14e10
+	sha1sums = 2b07c438cdabe254a33b6b5f180f9359e3e21422
+	sha1sums = 8deb1718a29e157e888a1358048200cc5887b1f3
+	sha1sums = 58227528aa8bc1d1480fbd0f5e18a6eb11450ba8
+	sha1sums = 33246f87659164729c55a201151c368bd0f02b9c
+	sha1sums = 67f6d0c60cbf4ea9252c56d3ac37090fd18a534c
+	sha1sums = e125a6e6ca85ad06d192e1c200190438ca2b1f8a
+	sha1sums = 5a0aa426e87cfb2943a68ca70e1b301b0e6f427a
+	sha1sums = cd1090f20a153d77060aa1d6304c4d5e621c125f
 
 pkgname = epiphany-pantheon
 

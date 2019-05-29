@@ -1,0 +1,11 @@
+diff --git a/data/org.gnome.Epiphany.desktop.in b/data/org.gnome.Epiphany.desktop.in
+index c02164e1e..4c2e2fea0 100644
+--- a/data/org.gnome.Epiphany.desktop.in
++++ b/data/org.gnome.Epiphany.desktop.in
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Name=Web
++Name=Epiphany
+ GenericName=Web Browser
+ Comment=Browse the web
+ # Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!

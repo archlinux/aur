@@ -1,0 +1,44 @@
+diff --git a/embed/ephy-embed.c b/embed/ephy-embed.c
+index 563f73670..c6b66a290 100644
+--- a/embed/ephy-embed.c
++++ b/embed/ephy-embed.c
+@@ -156,6 +156,11 @@ static void
+ ephy_embed_set_statusbar_label (EphyEmbed *embed, const char *label)
+ {
+   nautilus_floating_bar_set_primary_label (NAUTILUS_FLOATING_BAR (embed->floating_bar), label);
++  g_object_set (NAUTILUS_FLOATING_BAR (embed->floating_bar),
++              "margin-bottom", 3,
++              "margin-start", 3,
++              "margin-end", 3,
++              NULL);
+ 
+   if (label == NULL || label[0] == '\0') {
+     gtk_widget_hide (embed->floating_bar);
+diff --git a/lib/widgets/contrib/nautilus-floating-bar.c b/lib/widgets/contrib/nautilus-floating-bar.c
+index 72bd1b02b..08fd83f18 100644
+--- a/lib/widgets/contrib/nautilus-floating-bar.c
++++ b/lib/widgets/contrib/nautilus-floating-bar.c
+@@ -364,10 +364,10 @@ nautilus_floating_bar_constructed (GObject *obj)
+   labels_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+   gtk_box_pack_start (GTK_BOX (box), labels_box, TRUE, TRUE, 0);
+   g_object_set (labels_box,
+-                "margin-top", 2,
+-                "margin-bottom", 2,
+-                "margin-start", 12,
+-                "margin-end", 12,
++                "margin-top", 0,
++                "margin-bottom", 0,
++                "margin-start", 0,
++                "margin-end", 0,
+                 NULL);
+   gtk_widget_show (labels_box);
+ 
+@@ -394,7 +394,7 @@ nautilus_floating_bar_init (NautilusFloatingBar *self)
+                                             NautilusFloatingBarDetails);
+ 
+   context = gtk_widget_get_style_context (GTK_WIDGET (self));
+-  gtk_style_context_add_class (context, "floating-bar");
++  gtk_style_context_add_class (context, "overlay-bar");
+ }
+ 
+ static void

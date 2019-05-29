@@ -1,0 +1,12 @@
+diff --git a/src/resources/gtk/prefs-dialog.ui b/src/resources/gtk/prefs-dialog.ui
+index 943af2552..4a248d22f 100644
+--- a/src/resources/gtk/prefs-dialog.ui
++++ b/src/resources/gtk/prefs-dialog.ui
+@@ -24,6 +24,7 @@
+           <object class="GtkNotebook" id="notebook">
+             <property name="visible">True</property>
+             <property name="show_border">False</property>
++            <property name="margin">12</property>
+             <child>
+               <object class="GtkBox">
+                 <property name="visible">True</property>
