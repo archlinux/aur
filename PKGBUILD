@@ -1,7 +1,7 @@
 # Maintainer: Tom Hiller <thrilleratplay@gmail.com>
 pkgname=notable-bin
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The markdown-based note-taking app that doesn't suck"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libxss')
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=()
+provides=('notable')
 conflicts=()
 replaces=()
 backup=()
@@ -31,5 +31,10 @@ package() {
   mv usr "$pkgdir"
   mv opt "$pkgdir"
   mkdir "$pkgdir"/usr/bin/
+
+  # replace script that was added as a result of https://github.com/notable/notable/issues/658
+  echo -e '#!/bin/bash\n/opt/Notable/notable.bin "$@" --no-sandbox' > /opt/Notable/notable
+  chmod 755 /opt/Notable/notable
+
   ln -s /opt/Notable/notable "$pkgdir"/usr/bin/notable
 }
