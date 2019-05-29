@@ -1,6 +1,6 @@
 pkgbase = fs-uae-devel
 	pkgdesc = Cross-platform Amiga emulator based on UAE/WinUAE (development version).
-	pkgver = 2.9.10dev
+	pkgver = 2.9.11dev
 	pkgrel = 1
 	url = http://fs-uae.net/download-devel
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = fs-uae-devel
 	depends = shared-mime-info
 	provides = fs-uae
 	conflicts = fs-uae
-	source = http://fs-uae.net/devel/2.9.10dev/fs-uae-2.9.10dev.tar.gz
-	sha256sums = 2cfa6963109f8f83e623de97136d1b4e2116f5ddbc0c24cd47e785586987804c
+	source = http://fs-uae.net/devel/2.9.11dev/fs-uae-2.9.11dev.tar.gz
+	sha256sums = d0a0333364c91f8e10544ec02b7825b5eb2b054205e3e10e0e7c491036717838
 
 pkgname = fs-uae-devel
 
