@@ -3,15 +3,15 @@
 
 pkgname=python-pyotherside
 _pyname=pyotherside
-pkgver=1.5.3
-pkgrel=2
+pkgver=1.5.4
+pkgrel=1
 pkgdesc='Asynchronous Python 3 Bindings for Qt5'
 arch=('x86_64')
 url='https://thp.io/2011/pyotherside'
 license=('ISC')
 depends=('python' 'qt5-base' 'qt5-declarative' 'qt5-svg')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thp/${_pyname}/archive/${pkgver}.tar.gz")
-sha256sums=('00049d5f42cac448368bc2a521edb8de36bb6d2a624e195b7f1004236758b805')
+sha256sums=('5f218778fc60377cee44b0edf6deaa6dd6aa84a109ebbb5b13d52cec31696b80')
 
 build() {
 	cd "${_pyname}-${pkgver}/"
@@ -24,4 +24,6 @@ package() {
 	cd "${_pyname}-${pkgver}/"
 
 	make INSTALL_ROOT="${pkgdir}/" install
+
+	rm -r "${pkgdir}/usr/tests"
 }
