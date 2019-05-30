@@ -4,7 +4,7 @@ pkgname_=graal
 pkgname=${pkgname_}-bin
 pkgver_=19.0.0
 pkgver=${pkgver_/-/_}
-pkgrel=1
+pkgrel=2 # TODO reset to 1 with the next pkgver change
 pkgdesc='Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other)'
 arch=('x86_64')
 url='https://www.graalvm.org/'
@@ -12,7 +12,7 @@ license=('custom')
 depends=('java-runtime-common'
          'java-environment-common')
 makedepends=()
-optdepends=()
+optdepends=('graal-native-image: plugin to generate native binary images (used to be bundled with this package before the 19.0.0 release)')
 provides=('java-runtime=8'
           'java-environment=8'
           "$pkgname_")
