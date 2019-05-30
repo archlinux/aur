@@ -1,0 +1,17 @@
+pkgbase = amsd
+	pkgdesc = HPE Agentless Management Service Daemon
+	pkgver = 1.4.0_3066.82
+	pkgrel = 1
+	url = https://downloads.linux.hpe.com/SDR/downloads/mcp
+	arch = x86_64
+	groups = hpproliant
+	license = CUSTOM
+	depends = bash
+	depends = lsof
+	depends = coreutils
+	depends = pciutils
+	source = https://downloads.linux.hpe.com/SDR/repo/mcp/centos/7/x86_64/current/amsd-1.4.0-3066.82.centos7.x86_64.rpm
+	sha256sums = cf880af3019886039d55661e4b45080135b142a98de99eb50dcce2a359999aa5
+
+pkgname = amsd
+
