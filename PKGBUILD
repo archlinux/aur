@@ -4,7 +4,7 @@ _pkg=god
 pkgname=g0d
 pkgdesc="Utility for simplifying the Git usage"
 pkgver=1.0
-pkgrel=0 
+pkgrel=0
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://github.com/KeyLo99/god"
 license=('GPL3')
@@ -27,5 +27,5 @@ build() {
 
 package() {
   cd $_pkg
-  install -Dm755 $_pkg "$_pkgdir"/usr/bin/$_pkg
+  sudo install -Dm755 $_pkg "$_pkgdir"/usr/bin/$_pkg
 }
