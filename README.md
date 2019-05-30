@@ -8,7 +8,14 @@ Shortcuts of [commonly used git commands](https://github.com/joshnh/Git-Commands
 ## Installation
 
 
-Follow the steps below if you didn't setup the required Go environment variables for the installation.
+Install the dependencies.
+
+```
+go get -d ./...
+```
+
+Set the required Go environment variables if not set for the installation.
+See [this link]((https://stackoverflow.com/questions/48361893/how-to-set-go-environment-variables-globally)) for setting environment variables globally.
 
 ```
 export GOPATH=~/go
@@ -16,13 +23,11 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 ```
 
-And finally install.
+And finally install the `god`.
 
 ```
 go install
 ```
-
-Now you can start the `god` on the terminal if everything goes right.
 
 ## Commands
 
