@@ -2,7 +2,7 @@
 
 pkgname='battop'
 pkgdesc="Interactive batteries viewer"
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/svartalf/rust-battop"
@@ -10,7 +10,7 @@ license=('Apache', 'MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/svartalf/rust-battop/archive/v${pkgver}.tar.gz")
-sha512sums=('41af5213c39fe6d50b34da276a43cf49ac64649be1bcfb5bc269ce60b938cecb6e71c3893d99a9f7f7e25b7978a9abe9d3c9eecaf1761d58c5fddb393fe25877')
+sha512sums=('d42095a3f296f2a8b444504158dbb17f98a667b88a9fe5713c23df7b1f16a509aa2bf911cd243eaf5d2565d6211f2b36003cdf3253142de5d4637def0934cca6')
 
 build() {
   cd "rust-$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = battop
 	pkgdesc = Interactive batteries viewer
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/svartalf/rust-battop
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = battop
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = battop-0.2.2.tar.gz::https://github.com/svartalf/rust-battop/archive/v0.2.2.tar.gz
-	sha512sums = 41af5213c39fe6d50b34da276a43cf49ac64649be1bcfb5bc269ce60b938cecb6e71c3893d99a9f7f7e25b7978a9abe9d3c9eecaf1761d58c5fddb393fe25877
+	source = battop-0.2.3.tar.gz::https://github.com/svartalf/rust-battop/archive/v0.2.3.tar.gz
+	sha512sums = d42095a3f296f2a8b444504158dbb17f98a667b88a9fe5713c23df7b1f16a509aa2bf911cd243eaf5d2565d6211f2b36003cdf3253142de5d4637def0934cca6
 
 pkgname = battop
 
