@@ -1,7 +1,7 @@
 pkgbase = openfx-io
 	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
 	pkgver = 2.3.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NatronGitHub/openfx-io
 	arch = i686
 	arch = x86_64
@@ -17,11 +17,13 @@ pkgbase = openfx-io
 	source = git+https://github.com/NatronGitHub/SequenceParsing
 	source = git+https://github.com/NatronGitHub/openfx-supportext
 	source = git+https://github.com/NatronGitHub/tinydir
+	source = fix-ocio-oiio-commit-7f24308.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = 9a9b268c8d9aa534f47a80d6f8c942bebd3d37f4650f84a1ee241a5477a9d10c922b843e5545b9b6b7f096c8aae9db935ff37ff72dc4350d2146a9450f8a1e40
 
 pkgname = openfx-io
 

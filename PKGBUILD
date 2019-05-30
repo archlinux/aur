@@ -4,7 +4,7 @@
 
 pkgname=openfx-io
 pkgver=2.3.14
-pkgrel=1
+pkgrel=2
 arch=("i686" "x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/NatronGitHub/openfx-io"
@@ -16,12 +16,14 @@ source=("$pkgname::git+https://github.com/NatronGitHub/openfx-io#tag=Natron-$pkg
         'git+https://github.com/NatronGitHub/openfx'
         'git+https://github.com/NatronGitHub/SequenceParsing'
         'git+https://github.com/NatronGitHub/openfx-supportext'
-        'git+https://github.com/NatronGitHub/tinydir')
+        'git+https://github.com/NatronGitHub/tinydir'
+        'fix-ocio-oiio-commit-7f24308.patch')
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '9a9b268c8d9aa534f47a80d6f8c942bebd3d37f4650f84a1ee241a5477a9d10c922b843e5545b9b6b7f096c8aae9db935ff37ff72dc4350d2146a9450f8a1e40')
 
 # Checks whether the environment is 32-bit or 64-bit
 if [ $CARCH == 'x86_64' ]
@@ -41,6 +43,14 @@ prepare() {
   cd IOSupport/SequenceParsing
   git config submodule.tinydir.url $srcdir/tinydir
   git submodule update
+
+  # Applying patch created with updates to commit 7f24308, 
+  # which solve the problem of compiling with the latest version
+  # of the OpenColorIO and OpenImageIO libraries.
+  # Solution provided by @FirstAirBender.
+
+  cd "$srcdir/$pkgname"
+  patch -p1 < "$srcdir/fix-ocio-oiio-commit-7f24308.patch"
 }
 
 build() {

@@ -1,0 +1,385 @@
+diff --git a/IOSupport/GenericOCIOOpenGL.cpp b/IOSupport/GenericOCIOOpenGL.cpp
+index 3a5d996..c78e02b 100644
+--- a/IOSupport/GenericOCIOOpenGL.cpp
++++ b/IOSupport/GenericOCIOOpenGL.cpp
+@@ -40,7 +40,7 @@
+ #include <ofxsOGLUtilities.h>
+ 
+ // Use OpenGL function directly, no need to use ofxsOGLFunctions.h directly because we don't use OSMesa
+-#include <glad.h>
++#include "glad.h"
+ 
+ #ifdef OFX_IO_USING_OCIO
+ namespace OCIO = OCIO_NAMESPACE;
+@@ -184,7 +184,7 @@ GenericOCIO::applyGL(const Texture* srcImg,
+                      string* lut3DCacheIDParam,
+                      string* shaderTextCacheIDParam)
+ {
+-#if OCIO_VERSION_HEX > 0x01010000 // more recent than 1.1.0?
++#if OCIO_VERSION_MAJOR > 1 // more recent than 1.x?
+     // TODO: OCIO 2 with new GPU API https://github.com/imageworks/OpenColorIO/pull/539
+     // See https://github.com/imageworks/OpenColorIO/blob/master/src/apps/ociodisplay/main.cpp
+ #error "Code must be upgraded for OCIO 2 with new GPU API"
+diff --git a/IOSupport/GenericReader.cpp b/IOSupport/GenericReader.cpp
+index 55b06e8..fa71664 100644
+--- a/IOSupport/GenericReader.cpp
++++ b/IOSupport/GenericReader.cpp
+@@ -2077,7 +2077,7 @@ GenericReaderPlugin::changedFilename(const InstanceChangedArgs &args)
+             if (colorSpaceStrLen == 0) {
+                 colorSpaceStr = NULL;
+             }
+-#if OCIO_VERSION_HEX > 0x01000900 // more recent than 1.0.9?
++#if OCIO_VERSION_HEX > 0x01010100 // more recent than 1.1.1?
+ #pragma message WARN("OpenColorIO was updated, check that the following code is still necessary")
+ #endif
+             if (colorSpaceStr) {
+diff --git a/IOSupport/GenericWriter.cpp b/IOSupport/GenericWriter.cpp
+index 1460cd0..458b1d2 100644
+--- a/IOSupport/GenericWriter.cpp
++++ b/IOSupport/GenericWriter.cpp
+@@ -2043,7 +2043,7 @@ GenericWriterPlugin::outputFileChanged(InstanceChangeReason reason,
+         if (colorSpaceStrLen == 0) {
+             colorSpaceStr = NULL;
+         }
+-#if OCIO_VERSION_HEX > 0x01000900 // more recent than 1.0.9?
++#if OCIO_VERSION_HEX > 0x01010100 // more recent than 1.1.1?
+ #pragma message WARN("OpenColorIO was updated, check that the following code is still necessary")
+ #endif
+         if (colorSpaceStr) {
+diff --git a/OCIO/OCIOColorSpace.cpp b/OCIO/OCIOColorSpace.cpp
+index 6bdb4c6..6e2c358 100644
+--- a/OCIO/OCIOColorSpace.cpp
++++ b/OCIO/OCIOColorSpace.cpp
+@@ -29,7 +29,7 @@
+ #include <cstdio> // printf
+ #endif
+ 
+-#include <GenericOCIO.h>
++#include "GenericOCIO.h"
+ 
+ #include "ofxsProcessing.H"
+ #include "ofxsThreadSuite.h"
+diff --git a/OCIO/OCIOLookTransform.cpp b/OCIO/OCIOLookTransform.cpp
+index 7d9e897..96a1fd8 100644
+--- a/OCIO/OCIOLookTransform.cpp
++++ b/OCIO/OCIOLookTransform.cpp
+@@ -29,7 +29,7 @@
+ #include <cstdio> // printf
+ #endif
+ 
+-#include <GenericOCIO.h>
++#include "GenericOCIO.h"
+ 
+ #include <ofxsProcessing.H>
+ #include <ofxsCopier.h>
+diff --git a/OIIO/ReadOIIO.cpp b/OIIO/ReadOIIO.cpp
+index afaac4c..d0000e9 100644
+--- a/OIIO/ReadOIIO.cpp
++++ b/OIIO/ReadOIIO.cpp
+@@ -92,6 +92,13 @@ using std::make_pair;
+ 
+ OFXS_NAMESPACE_ANONYMOUS_ENTER
+ 
++#if OIIO_PLUGIN_VERSION >= 22
++// OIIO_VERSION_MAJOR >= 2
++typedef std::unique_ptr<ImageInput> ImageInputPtr;
++#else
++typedef ImageInput* ImageInputPtr;
++#endif
++
+ #define kPluginName "ReadOIIO"
+ #define kPluginGrouping "Image/Readers"
+ #define kPluginDescription \
+@@ -172,6 +179,11 @@ enum RawOutputColorEnum
+ #endif
+ };
+ 
++#if OIIO_VERSION >= 10904
++#define kParamRawAber "rawAber"
++#define kParamRawAberLabel "Aber.", "Correction of chromatic aberrations, given as a red multiplier and a blue multiplier. The default values of (1.,1.) correspond to no correction."
++#endif
++
+ // int use_camera_matrix;
+ //0: do not use embedded color profile
+ //1 (default): use embedded color profile (if present) for DNG files (always); for other files only if use_camera_wb is set;
+@@ -436,13 +448,13 @@ private:
+ 
+     void getOIIOChannelIndexesFromLayerName(const string& filename, int view, const string& layerName, PixelComponentEnum pixelComponents, const vector<ImageSpec>& subimages, vector<int>& channels, int& numChannels, int& subImageIndex);
+ 
+-    void openFile(const string& filename, bool useCache, ImageInput** img, vector<ImageSpec>* subimages);
++    void openFile(const string& filename, bool useCache, ImageInputPtr* img, vector<ImageSpec>* subimages);
+ 
+     virtual bool getFrameBounds(const string& filename, OfxTime time, int view, OfxRectI *bounds, OfxRectI *format, double *par, string *error,  int* tile_width, int* tile_height) OVERRIDE FINAL;
+ 
+     string metadata(const string& filename);
+ 
+-    void getSpecsFromImageInput(ImageInput* img, vector<ImageSpec>* subimages) const;
++    void getSpecsFromImageInput(const ImageInputPtr& img, vector<ImageSpec>* subimages) const;
+ 
+     void getSpecsFromCache(const string& filename, vector<ImageSpec>* subimages) const;
+ 
+@@ -477,6 +489,9 @@ private:
+ #endif
+     DoubleParam* _rawExposure;
+     ChoiceParam* _rawDemosaic;
++#if OIIO_VERSION >= 10904
++    Double2DParam* _rawAber;
++#endif
+ 
+     ///V2 params
+     ChoiceParam* _outputLayer;
+@@ -553,7 +568,9 @@ ReadOIIOPlugin::ReadOIIOPlugin(OfxImageEffectHandle handle,
+ #endif
+     _rawExposure = fetchDoubleParam(kParamRawExposure);
+     _rawDemosaic = fetchChoiceParam(kParamRawDemosaic);
+-
++#if OIIO_VERSION >= 10904
++    _rawAber = fetchDouble2DParam(kParamRawAber);
++#endif
+     _offsetNegativeDispWindow = fetchBooleanParam(kParamOffsetNegativeDisplayWindow);
+     _edgePixels = fetchChoiceParam(kParamEdgePixels);
+ 
+@@ -693,6 +710,9 @@ ReadOIIOPlugin::changedParam(const InstanceChangedArgs &args,
+ #if OIIO_VERSION >= 10808 || (OIIO_VERSION >= 10717 && OIIO_VERSION < 10800)
+                (paramName == kParamRawHighlightMode) ||
+                (paramName == kParamRawHighlightRebuildLevel) ||
++#endif
++#if OIIO_VERSION >= 10904
++               (paramName == kParamRawAber) ||
+ #endif
+                (paramName == kParamRawDemosaic)) {
+         // advanced parameters changed, invalidate the cache entries for the whole sequence
+@@ -1288,7 +1308,7 @@ ReadOIIOPlugin::buildOutputLayerMenu(const vector<ImageSpec>& subimages)
+ } // buildOutputLayerMenu
+ 
+ void
+-ReadOIIOPlugin::getSpecsFromImageInput(ImageInput* img,
++ReadOIIOPlugin::getSpecsFromImageInput(const ImageInputPtr& img,
+                                        vector<ImageSpec>* subimages) const
+ {
+     subimages->clear();
+@@ -1345,8 +1365,12 @@ ReadOIIOPlugin::getSpecs(const string &filename,
+         // use the right config
+         ImageSpec config;
+         getConfig(&config);
+-        
++
++#     if OIIO_PLUGIN_VERSION >= 22
++        ImageInputPtr img = ImageInput::open(filename, &config);
++#     else
+         auto_ptr<ImageInput> img( ImageInput::open(filename, &config) );
++#     endif
+         if ( !img.get() ) {
+             if (error) {
+                 *error = "Could node open file " + filename;
+@@ -1354,7 +1378,11 @@ ReadOIIOPlugin::getSpecs(const string &filename,
+ 
+             return;
+         }
++#     if OIIO_PLUGIN_VERSION >= 22
++        getSpecsFromImageInput(img, subimages);
++#     else
+         getSpecsFromImageInput(img.get(), subimages);
++#     endif
+         img->close();
+     }
+     if ( subimages->empty() ) {
+@@ -1871,6 +1899,22 @@ ReadOIIOPlugin::getConfig(ImageSpec* config) const
+         config->attribute("raw:Exposure", (float)rawExposure);
+     }
+ 
++#if OIIO_VERSION >= 10904
++    // Chromatic Aberration
++    // see:
++    // https://github.com/NatronGitHub/Natron/issues/309
++    // https://github.com/OpenImageIO/oiio/issues/2029
++    // added to OIIO 1.9.4 via https://github.com/OpenImageIO/oiio/pull/2030
++    // Correction of chromatic aberrations; the only specified values are
++    // - the red multiplier
++    // - the blue multiplier.
++    OfxPointD rawAber = _rawAber->getValue();
++    if (rawAber.x != 1. || rawAber.y != 1.) {
++        float floats[2] = {(float)rawAber.x, (float)rawAber.y};
++        config->attribute("raw:aber", TypeDesc(TypeDesc::FLOAT, 2), &floats[0]);
++    }
++#endif
++
+ #if OIIO_VERSION >= 10808 || (OIIO_VERSION >= 10717 && OIIO_VERSION < 10800)
+     // Highlight adjustment
+     // (0=clip, 1=unclip, 2=blend, 3+=rebuild)
+@@ -1954,7 +1998,7 @@ ReadOIIOPlugin::getConfig(ImageSpec* config) const
+ void
+ ReadOIIOPlugin::openFile(const string& filename,
+                          bool useCache,
+-                         ImageInput** img,
++                         ImageInputPtr* img,
+                          vector<ImageSpec>* subimages)
+ {
+     if (_cache && useCache) {
+@@ -2172,13 +2216,21 @@ ReadOIIOPlugin::decodePlane(const string& filename,
+ 
+     vector<int> channels;
+     int numChannels = 0;
++# if OIIO_PLUGIN_VERSION >= 22
++    ImageInputPtr img;
++# else
+     auto_ptr<ImageInput> img;
++# endif
+     vector<ImageSpec> subimages;
+ 
+-    ImageInput* rawImg = 0;
++    ImageInputPtr rawImg = 0;
+     openFile(filename, useCache, &rawImg, &subimages);
+     if (rawImg) {
++# if OIIO_PLUGIN_VERSION >= 22
++        img.swap(rawImg);
++# else
+         img.reset(rawImg);
++#endif
+     }
+ 
+     if ( subimages.empty() ) {
+@@ -2771,14 +2823,22 @@ ReadOIIOPlugin::metadata(const string& filename)
+ {
+     stringstream ss;
+ 
++# if OIIO_PLUGIN_VERSION >= 22
++    ImageInputPtr img;
++# else
+     auto_ptr<ImageInput> img;
++# endif
+ 
+     if (!_cache) {
+         // use the right config
+         ImageSpec config;
+         getConfig(&config);
+         
++#     if OIIO_PLUGIN_VERSION >= 22
++        img = ImageInput::open(filename, &config);
++#     else
+         img.reset( ImageInput::open(filename, &config) );
++#     endif
+         if ( !img.get() ) {
+             setPersistentMessage(Message::eMessageError, "", string("ReadOIIO: cannot open file ") + filename);
+             throwSuiteStatusException(kOfxStatFailed);
+@@ -3012,7 +3072,11 @@ ReadOIIOPluginFactory::load()
+     // hard-coded extensions list
+     const char* extensionsl[] = {
+         /*"bmp",*/ // OpenImageIO does not read correctly https://raw.githubusercontent.com/NatronGitHub/Natron-Tests/master/TestImageBMP/input.bmp
+-        "cin", "dds", "dpx", "f3d", "fits", "hdr", "ico",
++        "cin", "dds", "dpx", "f3d", "fits", "hdr",
++#     if OIIO_VERSION >= 20100
++        "heic", "heif",
++#     endif
++        "ico",
+         "iff", "jpg", "jpe", "jpeg", "jif", "jfif", "jfi", "jp2", "j2k", "exr", "png",
+         "pbm", "pgm", "ppm",
+ #     if OIIO_VERSION >= 10605
+@@ -3097,6 +3161,9 @@ ReadOIIOPluginFactory::describe(ImageEffectDescriptor &desc)
+                                "FITS (*.fits)\n"
+                                "GIF (*.gif)\n"
+                                "HDR/RGBE (*.hdr)\n"
++#                           if OIIO_VERSION >= 20100
++                               "HEIC/HEIF (*.heic *.heif)\n"
++#                           endif
+                                "ICO (*.ico)\n"
+                                "IFF (*.iff)\n"
+                                "JPEG (*.jpg *.jpe *.jpeg *.jif *.jfif *.jfi)\n"
+@@ -3370,6 +3437,23 @@ ReadOIIOPluginFactory::describeInContext(ImageEffectDescriptor &desc,
+                     page->addChild(*param);
+                 }
+             }
++#if OIIO_VERSION >= 10904
++            {
++                Double2DParamDescriptor* param = desc.defineDouble2DParam(kParamRawAber);
++                param->setLabelAndHint(kParamRawAberLabel);
++                param->setRange(0.5, 0.5, 1.5, 1.5);
++                param->setDisplayRange(0.99, 0.99, 1.01, 1.01);
++                param->setDefault(1., 1.);
++                param->setAnimates(false);
++                if (group) {
++                    param->setParent(*group);
++                }
++                if (page) {
++                    page->addChild(*param);
++                }
++            }
++#endif
++
+         }
+     }
+ 
+diff --git a/OIIO/WriteOIIO.cpp b/OIIO/WriteOIIO.cpp
+index d3df6aa..f0e24e5 100644
+--- a/OIIO/WriteOIIO.cpp
++++ b/OIIO/WriteOIIO.cpp
+@@ -53,6 +53,13 @@ using std::map;
+ 
+ OFXS_NAMESPACE_ANONYMOUS_ENTER
+ 
++#if OIIO_PLUGIN_VERSION >= 22
++// OIIO_VERSION_MAJOR >= 2
++typedef std::unique_ptr<ImageOutput> ImageOutputPtr;
++#else
++typedef ImageOutput* ImageOutputPtr;
++#endif
++
+ #define kPluginName "WriteOIIO"
+ #define kPluginGrouping "Image/Writers"
+ #define kPluginDescription "Write images using OpenImageIO."
+@@ -649,7 +656,7 @@ getDefaultBitDepth(const string& filepath,
+                 ( format.find("png") != string::npos) ) {
+         return eTuttlePluginBitDepth8;
+     } else {
+-        //cin, dpx, fits, j2k, j2c, jp2, jpe, sgi, tif, tiff, tpic, webp
++        //cin, dpx, fits, heic, heif, j2k, j2c, jp2, jpe, sgi, tif, tiff, tpic, webp
+         return eTuttlePluginBitDepth16;
+     }
+ 
+@@ -821,7 +828,11 @@ WriteOIIOPlugin::refreshParamsVisibility(const string& filename)
+ 
+ struct WriteOIIOEncodePlanesData
+ {
++# if OIIO_PLUGIN_VERSION >= 22
++    ImageOutputPtr output;
++#else
+     auto_ptr<ImageOutput> output;
++#endif
+     vector<ImageSpec> specs;
+ };
+ 
+@@ -858,7 +869,11 @@ WriteOIIOPlugin::beginEncodeParts(void* user_data,
+     assert( !viewsToRender.empty() );
+     assert(user_data);
+     WriteOIIOEncodePlanesData* data = (WriteOIIOEncodePlanesData*)user_data;
++# if OIIO_PLUGIN_VERSION >= 22
++    data->output = ImageOutput::create(filename);
++# else
+     data->output.reset( ImageOutput::create(filename) );
++# endif
+     if ( !data->output.get() ) {
+         // output is NULL
+         setPersistentMessage(Message::eMessageError, "", string("Cannot create output file ") + filename);
+@@ -1400,7 +1415,11 @@ WriteOIIOPluginFactory::load()
+ #if 0
+     // hard-coded extensions list
+     const char* extensionsl[] = {
+-        "bmp", "cin", /*"dds",*/ "dpx", /*"f3d",*/ "fits", "hdr", "ico",
++        "bmp", "cin", /*"dds",*/ "dpx", /*"f3d",*/ "fits", "hdr",
++#     if OIIO_VERSION >= 20100
++        "heic", "heif",
++#     endif
++        "ico",
+         "iff", "jpg", "jpe", "jpeg", "jif", "jfif", "jfi", "jp2", "j2k", "exr", "png",
+         "pbm", "pgm", "ppm",
+ #     if OIIO_VERSION >= 10605
+@@ -1458,6 +1477,9 @@ WriteOIIOPluginFactory::describe(ImageEffectDescriptor &desc)
+                                //"Field3D (*.f3d)\n"
+                                "FITS (*.fits)\n"
+                                "HDR/RGBE (*.hdr)\n"
++#                           if OIIO_VERSION >= 20100
++                               "HEIC/HEIF (*.heic *.heif)\n"
++#                           endif
+                                "Icon (*.ico)\n"
+                                "IFF (*.iff)\n"
+                                "JPEG (*.jpg *.jpe *.jpeg *.jif *.jfif *.jfi)\n"
