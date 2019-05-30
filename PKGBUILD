@@ -2,7 +2,7 @@
 
 _pkgname=nulloy
 pkgname=${_pkgname}-git
-pkgver=0.8.2.pre46.40.gd3534e7
+pkgver=0.8.2.pre46.42.g9b036ea
 pkgrel=1
 pkgdesc='A music player with a waveform progress bar. Qt5 development version.'
 arch=('i686' 'x86_64')
@@ -17,14 +17,8 @@ makedepends=('qt5-tools' 'git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
-source=(
-	'git+https://github.com/nulloy/nulloy.git#branch=qt5'
-	'fix_libdir.patch'
-)
-sha512sums=(
-	'SKIP'
-	'SKIP'
-)
+source=('git+https://github.com/nulloy/nulloy.git#branch=qt5')
+sha512sums=('SKIP')
 
 pkgver() {
 	# Update package version
@@ -37,9 +31,6 @@ prepare() {
 	mkdir -p "${srcdir}"/build
 	cd "${srcdir}"/build
 	cp -R "${srcdir}"/${_pkgname}/* ./
-
-	# Fix LIBDIR
-	patch -Np1 < ../fix_libdir.patch
 }
 
 build() {
