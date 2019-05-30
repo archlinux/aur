@@ -3,7 +3,7 @@
 
 pkgname=rtags
 pkgver=2.31
-pkgrel=1
+pkgrel=2
 pkgdesc='A client/server application that indexes C/C++ code'
 arch=('i686' 'x86_64')
 _url='https://github.com/Andersbakken'
@@ -12,17 +12,13 @@ license=('GPL3')
 depends=('bash' 'clang')
 conflicts=("${pkgname}-git")
 makedepends=('cmake' 'git' 'llvm' 'zlib')
-optdepends=('bash-completion: for bash completion' 'zlib' 'lua: Lua bindings')
+optdepends=('bash-completion: for bash completion' 'zlib')
 source=("git+${_url}/rtags.git#tag=v${pkgver}"
         "git+${_url}/rct.git"
-        'git+https://github.com/jeremyong/Selene.git'
-        'git+https://github.com/LuaDist/lua.git'
         rdm.service
         rdm.socket
 )
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'c2235b4360442d309f14a38cbd7a7cbb2091061cb1d12a827ef173c1aa0bf556'
             '56bf4f3e8208ea142c61ed6f80b4907f15e2bab8d690763cff8fb15f893ad16d')
