@@ -1,6 +1,6 @@
 pkgbase = python-vmprof
 	pkgdesc = A statistical Python program profiler
-	pkgver = 0.4.12
+	pkgver = 0.4.15
 	pkgrel = 1
 	url = https://github.com/vmprof/vmprof-python
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = python-vmprof
 	depends = python-requests
 	depends = python-colorama
 	depends = python-six
-	source = https://github.com/vmprof/vmprof-python/archive/0.4.12.tar.gz
+	source = https://github.com/vmprof/vmprof-python/archive/0.4.15.tar.gz
 	source = pep-479.patch
-	sha256sums = 64c62cd737c88573447d1f90f29978fc3178a1663ddbdb60cdcb3f2c15e427da
+	sha256sums = d569c715cf68dcf02a65d2ba7f922538350b8f7fbd91529df67e0a71d1ffa2db
 	sha256sums = 6df41198c903a4b6575e2bfdce9a1548909b318ab06f715c442a6608668815ec
 
 pkgname = python-vmprof
