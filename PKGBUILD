@@ -2,7 +2,7 @@
 pkgname=ossia-score
 pkgver=2.4.1
 release_tag=v2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
 url="https://ossia.io"
@@ -14,7 +14,7 @@ provides=("$pkgname=$pkgver")
 conflicts=('ossia-score-git')
 replaces=('i-score')
 source=("https://github.com/OSSIA/score/releases/download/v${pkgver}/Score-v${pkgver}-src.tar.xz")
-sha512sums=("95878bac773cc569e29f26b9f243848ff5c4bc9d5a6102208ec5d4b1824fda3a0de0c93229b6c264d29b2ca574e7830490586df8025947ff9fa1623377c39272")
+sha512sums=("d5fae2d99b07a7c3b51b409304b589bb303d42a207b6dee1d7c214fddeed415216f3bc2704fc90aec167348be750db4271782e851a2c164d505f6eaba6ddc62b")
 
 build() {
   cd "$srcdir"
