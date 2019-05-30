@@ -1,0 +1,16 @@
+pkgbase = hessenbox-da
+	pkgdesc = is a software to sync, share, backup, and access files.
+	pkgver = 11.5.625
+	pkgrel = 1
+	url = https://hessenbox.tu-darmstadt.de/
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = jre-openjdk
+	source_x86_64 = hessenbox-da-11.5.625-Release::https://hessenbox.tu-darmstadt.de/client_deployment/HESSENBOX_DA_Latest_amd64.deb
+	md5sums_x86_64 = 3d8be13c1c1b8fce1a9a3745d3305524
+	source_i686 = hessenbox-da-11.5.625-Release::https://hessenbox.tu-darmstadt.de/client_deployment/HESSENBOX_DA_Latest_i386.deb
+	md5sums_i686 = 3d8be13c1c1b8fce1a9a3745d3305524
+
+pkgname = hessenbox-da
+
