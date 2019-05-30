@@ -1,7 +1,7 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-gym
 _pkgname=gym
-pkgver=0.12.1
+pkgver=0.12.5
 pkgrel=1
 pkgdesc="A toolkit for developing and comparing reinforcement learning algorithms."
 arch=('any')
@@ -16,8 +16,8 @@ optdepends=(
   'python-opengl'
 )
 makedepends=('python-setuptools')
-source=("https://github.com/${_github}/archive/${pkgver}.tar.gz")
-md5sums=('3c27f600c7876efa2be471c377452e69')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/${_github}/archive/${pkgver}.tar.gz")
+md5sums=('6aec0e864ec87643afa68f6824503b53')
 
 build() {
   msg "Building Python 3"
