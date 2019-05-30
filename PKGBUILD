@@ -3,7 +3,7 @@
 
 _gemname=tty-cursor
 pkgname=ruby-$_gemname
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='The purpose of this library is to help move the terminal cursor around and manipulate text by using intuitive method calls.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('3283ae56aa6d114f339a06c416299e74ef24d135')
+sha1sums=('4fcc5ccf12b138887dda3b39d105473b54fe4f04')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

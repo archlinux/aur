@@ -1,15 +1,15 @@
 pkgbase = ruby-tty-cursor
 	pkgdesc = The purpose of this library is to help move the terminal cursor around and manipulate text by using intuitive method calls.
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = http://piotrmurach.github.io/tty/
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = tty-cursor-0.6.1.gem
+	noextract = tty-cursor-0.7.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/tty-cursor-0.6.1.gem
-	sha1sums = 3283ae56aa6d114f339a06c416299e74ef24d135
+	source = https://rubygems.org/downloads/tty-cursor-0.7.0.gem
+	sha1sums = 4fcc5ccf12b138887dda3b39d105473b54fe4f04
 
 pkgname = ruby-tty-cursor
 
