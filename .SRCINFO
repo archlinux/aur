@@ -1,24 +1,15 @@
 pkgbase = brother-ql720nw
 	pkgdesc = LPR and CUPS driver for Brother QL-720NW label printer
-	pkgver = 1.1.4r0
-	pkgrel = 3
-	url = http://solutions.brother.com/linux/en_us/
+	pkgver = 3.1.5r0
+	pkgrel = 1
+	url = https://support.brother.com
 	install = brother-ql720nw.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = cups
-	depends = lib32-glibc
-	provides = brother-ql720nw-cupswrapper
-	provides = brother-ql720nw-lpr
-	conflicts = brother-ql720nw-cupswrapper
-	conflicts = brother-ql720nw-lpr
-	source = http://download.brother.com/welcome/dlfp002203/ql720nwlpr-1.1.4-0.i386.rpm
-	source = http://download.brother.com/welcome/dlfp002205/ql720nwcupswrapper-1.1.4-0.i386.rpm
-	source = LICENSE
-	sha256sums = edc09ff6b91676dbe1d4ae4e0d7ee880867102b87fd0d4e5b10dd9b421dc1f5b
-	sha256sums = feaf221669cfbc48862c6e532e14656f9f96daef255316fdb754830ec853657a
-	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+	source = https://download.brother.com/welcome/dlfp002203/ql720nwpdrv-3.1.5-0.i386.rpm
+	sha256sums = 07c2923aa60c502dae449d8716e4012331060fc60329098d1b92bb45064a8136
 
 pkgname = brother-ql720nw
 
