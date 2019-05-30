@@ -10,6 +10,7 @@ arch=(any)
 license=(unknown)
 url="https://github.com/suan/vim-instant-markdown#readme"
 depends=('nodejs' 'npm' 'wget')
+makedepends=('jq')
 optdepends=('neovim: neovim support' 'vim: vim support')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz"
         "https://raw.githubusercontent.com/suan/vim-instant-markdown/master/after/ftplugin/markdown/instant-markdown.vim")
