@@ -1,37 +1,38 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=mame-git
-pkgver=0.202.r95.ge4d039bc077
+_srcname=mame
+pkgver=0.210.r80.g0660656754b
 pkgrel=1
 pkgdesc='A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support (git version)'
 url='https://www.mamedev.org/'
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('sdl2_ttf' 'qt5-base' 'lua' 'libutf8proc' 'pugixml' 'portmidi' 'portaudio')
 makedepends=('git' 'nasm' 'python' 'asio' 'rapidjson' 'glm' 'libxinerama')
 provides=('mame')
 conflicts=('mame')
-source=("$pkgname"::'git+https://github.com/mamedev/mame.git'
+source=('git+https://github.com/mamedev/mame.git'
         'mame.sh')
 sha256sums=('SKIP'
-            'aa90bae40c27a7732a0915b813a7f749ee2a0b95f6fc70128ff666498da58b5c')
+            'ee1c59bafc5e5441e99fa4c58108a3e18048e60672f34de865c8a5a976094dba')
 
 prepare() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # use system libraries
     sed -e 's|\# USE_SYSTEM_LIB|USE_SYSTEM_LIB|g' -i makefile
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^\(mame\)\([0-9]\)/\2./'
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     make \
         NOWERROR='1' \
@@ -41,25 +42,24 @@ build() {
 }
 
 package() {
-    cd "$pkgname"
-    
-    local _bin
+    cd "$_srcname"
     
     # mame script
     install -D -m755 "${srcdir}/mame.sh" "${pkgdir}/usr/bin/mame"
     
     # binaries
-    [ "$CARCH" = 'i686'   ] && install -D -m755 mame32 "${pkgdir}/usr/lib/mame/mame"
-    [ "$CARCH" = 'x86_64' ] && install -D -m755 mame64 "${pkgdir}/usr/lib/mame/mame"
+    install -D -m755 mame64 "${pkgdir}/usr/lib/mame/mame"
+    local _bin
     for _bin in castool chdman imgtool jedutil nltool nlwav pngcmp regrep romcmp src2html \
                 split srcclean ldverify ldresample
     do
-        install -D -m755 "$_bin" -t "${pkgdir}/usr/lib/mame"
+        install -D -m755 "$_bin" -t   "${pkgdir}/usr/lib/mame"
+        ln -s "/usr/lib/mame/${_bin}" "${pkgdir}/usr/bin/mame-${_bin}"
     done
     
     # extra bits
     install -D -m644 src/osd/modules/opengl/shader/glsl*.*h -t "${pkgdir}/usr/lib/mame/shader/"
-    cp -ar {artwork,bgfx,plugins,language,ctrlr,keymaps,hash}  "${pkgdir}/usr/lib/mame/"
+    cp -a {artwork,bgfx,plugins,language,ctrlr,keymaps,hash}   "${pkgdir}/usr/lib/mame/"
     
     # documentation
     install -d -m0755 "${pkgdir}/usr/share/doc"
