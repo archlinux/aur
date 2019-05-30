@@ -4,7 +4,7 @@
 _gitname=darling
 pkgbase=$_gitname-git
 pkgname=('darling-git' 'darling-mach-dkms-git')
-pkgver=r2535.9abed516
+pkgver=r2543.567a5a27
 pkgrel=1
 pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
@@ -119,7 +119,7 @@ source=('dkms.conf'
         'git+https://github.com/darlinghq/darling-newlkm.git')
 
 # We skip md5 on all git repos
-md5sums=('d6d3b392245a45c6fb5f82037bfdbd19' '5349a07c2b26caa1220929878adcecad'
+md5sums=('d6d3b392245a45c6fb5f82037bfdbd19' '44d85fe17105c7ede4d334f05cf3e77e'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
