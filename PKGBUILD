@@ -3,19 +3,19 @@
 
 pkgbase=kata-containers
 pkgname=(kata-runtime kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
-pkgver="1.6.3"
+pkgver="1.7.0~rc1"
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers"
 arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
 
-__runtime_suffix="-10.1"
-__proxy_suffix="-10.1"
-__shim_suffix="-10.1"
-__ksm_throttler_suffix="-10.1"
-__img_suffix="-10.1"
-__linux_container_ver="4.19.28.38-10.1"
+__runtime_suffix="-4.1"
+__proxy_suffix="-4.1"
+__shim_suffix="-4.1"
+__ksm_throttler_suffix="-4.1"
+__img_suffix="-4.1"
+__linux_container_ver="4.19.28.39-4.1"
 
 __runtime_rpm="kata-runtime-${pkgver}${__runtime_suffix}.x86_64.rpm"
 __proxy_bin_rpm="kata-proxy-bin-${pkgver}${__proxy_suffix}.x86_64.rpm"
@@ -24,7 +24,7 @@ __ksm_throttler_rpm="kata-ksm-throttler-${pkgver}${__ksm_throttler_suffix}.x86_6
 __img_rpm="kata-containers-image-${pkgver}${__img_suffix}.x86_64.rpm"
 __linux_container_rpm="kata-linux-container-${__linux_container_ver}.x86_64.rpm"
 
-__dlbase="http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.6/Fedora_29/x86_64/"
+__dlbase="http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.7/Fedora_29/x86_64"
 __runtime_src="${__dlbase}/${__runtime_rpm}"
 __proxy_bin_src="${__dlbase}/${__proxy_bin_rpm}"
 __shim_bin_src="${__dlbase}/${__shim_bin_rpm}"
@@ -49,12 +49,12 @@ noextract=(
   $__linux_container_rpm
 )
 
-sha256sums=('0e4985156b19ccfb663f4a28fca19f31cf626b02aa8cd44f9898d332c5714848'
-            '573105d998894e4a022549ef4ca8b3e5904da7dbcf0acfea11f4dfdff425fb1b'
-            '5842ef9d4b3183401173564b213236d0dc4bc82b8aa82d8acfac1acb7cddef28'
-            '9da7faa0a445ae15b078a8201be7ac1f1712aafc16ae3ac0afbe507b481d0fc7'
-            '8c97f1f96886eef3bdeff09f134f9b50555bade9407cae965fe40a2b0293e365'
-            '5dc92f0f2f6d1902f3aa38687d6226688e72c1bfe98120c050c2a428fb01d55e')
+sha256sums=('f8679beea789e0a641c246eb22c9d506a38add15d8987016b669f334189e163a'
+            '56ef8d005da5d69caa5ba85b797afe1d385a5e2f2af2b0a26e7639acefa6c690'
+            '04ef332e7fb9b3be42a57c1708ad93a51ddfd409a48eb73ffacee29e731361f6'
+            'da9ddbfa2f567bd3d837d1564d86bbdb9ee051abf96f93b0e66aa86c8fdd4e0a'
+            '0cf3a656b04ff35d26aa370fd58b938eb3e15e5cb069b47b3c906a9db8f0e51d'
+            '672c497b5bba7c0314bfb5b197c29f75ebd2746c9ea4f2232cc2f76a99827edd')
 
 __extract_into_dir() {
   archive=$1
