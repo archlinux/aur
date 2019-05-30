@@ -6,7 +6,7 @@
 # Made with https://github.com/NicolasGuilloux/blade-shadow-beta
 _commit=9add3366d25530d51d168608c54b5339b64d2a4e
 pkgname=shadow-beta
-pkgver=4.4.1
+pkgver=4.4.14
 pkgrel=1
 pkgdesc="Shadow launcher"
 arch=('x86_64')

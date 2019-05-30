@@ -1,6 +1,6 @@
 pkgbase = shadow-beta
 	pkgdesc = Shadow launcher
-	pkgver = 4.4.1
+	pkgver = 4.4.14
 	pkgrel = 1
 	url = http://shadow.tech
 	install = shadow-beta.install
