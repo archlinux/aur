@@ -14,9 +14,8 @@ sha256sums=('00b881cea1668553fe40887375d72188f42e03893b73619e231893564b609721')
 
 prepare()
 {
-  # Create CUPS directories
+  # Create necessary CUPS directories
   install -d "${srcdir}/usr/share/cups/model"
-  install -d "${srcdir}/usr/share/ppd"
   install -d "${srcdir}/usr/lib/cups/filter"
 
   # Locate cupswrapper script
