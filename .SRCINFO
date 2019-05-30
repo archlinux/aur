@@ -1,6 +1,6 @@
 pkgbase = python-sputils
 	pkgdesc = A collection of spotify utilities, designed to be used with other shell utilities.
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 2
 	url = https://github.com/shanedabes/sputils
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-sputils
 	depends = python-configargparse
 	depends = python-yaml
 	depends = python-spotipy-git
-	source = python-sputils-0.1.3.tar.gz::https://github.com/shanedabes/sputils/archive/v0.1.3.tar.gz
-	sha256sums = e6ea0d2ed65aa866c1e6a626ba8543a1d00d69986d03b2b648a9a7ae0010e3e8
+	source = python-sputils-0.2.0.tar.gz::https://github.com/shanedabes/sputils/archive/v0.2.0.tar.gz
+	sha256sums = 673867c744c2e19bdba260ea7e8dcb06e86f308c26f0582d1c14545fef8b1914
 
 pkgname = python-sputils
 
