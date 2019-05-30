@@ -1,6 +1,6 @@
 pkgbase = mongodb
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
-	pkgver = 4.0.9
+	pkgver = 4.0.10
 	pkgrel = 1
 	url = https://www.mongodb.com/
 	arch = x86_64
@@ -20,14 +20,14 @@ pkgbase = mongodb
 	depends = libstemmer
 	depends = lsb-release
 	depends = pcre
-	depends = wiredtiger>=3.1.0.20190401
+	depends = wiredtiger>=3.1.0.20190516
 	depends = yaml-cpp
 	optdepends = mongodb-tools: mongoimport, mongodump, mongotop, etc
 	backup = etc/mongodb.conf
-	source = http://downloads.mongodb.org/src/mongodb-src-r4.0.9.tar.gz
+	source = http://downloads.mongodb.org/src/mongodb-src-r4.0.10.tar.gz
 	source = mongodb.sysusers
 	source = mongodb.tmpfiles
-	sha256sums = f0327dac12b85bd59a9358e2a55490f707fdf9b0528a0a1fc13ce51b6833954e
+	sha256sums = 11c9c55f1145ac1b6f757ff74f969d41cf47044191b3b0f3fee77f333b8f4f8d
 	sha256sums = 3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795
 	sha256sums = b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39
 
