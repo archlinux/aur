@@ -13,7 +13,7 @@ license=("CUSTOM")
 source=("https://downloads.linux.hpe.com/SDR/repo/mcp/centos/7/x86_64/current/$pkgname-${pkgver//_/-}.x86_64.rpm"
         hpessad.service)
 sha256sums=('CA9F482485944904126222DD4F79D64FD7AEED410108E0FF3B0344846E916DD4'
-'d4d28747afe4bc41f777356faefa4b2d186c28c301afee18d0f5c72c2428a800')
+'B7DCBD13FECB9ED30C0B0AD01AE2B3D0916EA97A46FAB4BD3D1DB2BCEAC5EF04')
 
 package() {
 	mv usr/{sbin,bin}
