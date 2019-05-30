@@ -1,0 +1,32 @@
+pkgbase = devhub
+	pkgdesc = TweetDeck for GitHub - Android, iOS, Web & Desktop
+	pkgver = 0.90.1
+	pkgrel = 1
+	url = https://github.com/devhubapp/devhub
+	arch = x86_64
+	arch = i686
+	license = AGPL3
+	makedepends = yarn
+	makedepends = jq
+	makedepends = moreutils
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libnghttp2
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	optdepends = kde-cli-tools: file deletion support (kioclient5)
+	optdepends = trash-cli: file deletion support (trash-put)
+	optdepends = xdg-utils: open URLs with desktop default (xdg-email, xdg-open)
+	provides = devhub
+	source = devhub-0.90.1.src.tar.gz::https://github.com/devhubapp/devhub/archive/v0.90.1.tar.gz
+	sha256sums = 9a7177e35488009934ab6089824743cac7678610acc0bda6ff9f7c3bb1711a9c
+
+pkgname = devhub
+
