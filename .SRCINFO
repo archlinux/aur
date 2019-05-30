@@ -1,6 +1,6 @@
 pkgbase = skypeforlinux-stable-bin
 	pkgdesc = Skype for Linux - Stable/Release Version
-	pkgver = 8.45.0.41
+	pkgver = 8.46.0.60
 	pkgrel = 1
 	url = http://www.skype.com
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = skypeforlinux-stable-bin
 	conflicts = skypeforlinux-preview-bin
 	conflicts = skypeforlinux-beta-bin
 	conflicts = skype
-	source = https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_8.45.0.41_amd64.deb
-	sha256sums = 956d666ed4f0cf493d5c80164554b627b2b5fadaa2728a212e5b4e78d57da4cc
+	source = https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_8.46.0.60_amd64.deb
+	sha256sums = 9ae62d31d2f6052128459ed28b73b42b262db75f4866e71fee35f4573f12ea6c
 
 pkgname = skypeforlinux-stable-bin
 
