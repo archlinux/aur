@@ -5,25 +5,27 @@ pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
-_srcname=linux-4.20
-pkgver=4.20.4
+_srcname=linux-5.1
+pkgver=5.1.5
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
 license=('GPL2')
 url="http://user-mode-linux.sourceforge.net/"
 depends=('coreutils')
-makedepends=('bc' 'inetutils' 'gcc7')
+makedepends=('bc' 'inetutils')
 source=(
-  http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
+  http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.{xz,sign}
 #  http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
-  http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
-  config)
+  http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz
+  config
+  001-hide_the_int3_emulate_call_jmp_functions_from_uml.patch)
 
-sha256sums=('ad0823183522e743972382df0aa08fb5ae3077f662b125f1e599b0b2aaa12438'
+sha256sums=('d06a7be6e73f97d1350677ad3bae0ce7daecb79c2c2902aaabe806f7fa94f041'
             'SKIP'
-            '24ee94fbbf9c356ace420e7eedfff4c9d3f2e8645011bc8947c22421dea5a8ba'
-            '0c6ca2df8b072b1fa1c13d290e2c1f0c97d872419f4bf8c2fd813a29e79c5626')
+            'def1a382c555454daf28fb768ed2c3e6f339c4bfcd36faa99982e4d31c04efa6'
+            'c2741019f57c2c918ad80cbf0fad0d03ef585fadf045078b3117cd73d83e5f2b'
+            'f292341bdbc90f27ea6775bf3c709d92fbf8842c7cf7603c71807f06ad1e69a9')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -35,6 +37,9 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # https://lkml.org/lkml/2019/5/14/966
+  patch -Np1 -i "${srcdir}"/001-hide_the_int3_emulate_call_jmp_functions_from_uml.patch
 
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
@@ -52,7 +57,7 @@ build() {
   cd "${srcdir}/${_srcname}"
   unset LDFLAGS CFLAGS
 
-  make ARCH=um CC=gcc-7 vmlinux modules 
+  make ARCH=um vmlinux modules
 }
 
 package_linux-usermode() {
