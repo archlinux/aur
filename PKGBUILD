@@ -1,5 +1,5 @@
 # Maintainer: James Brink <brink.james@gmail.com>
-# Previous Maintainer: X0rg
+# Contributor: X0rg
 
 _gitname=darling
 pkgbase=$_gitname-git
