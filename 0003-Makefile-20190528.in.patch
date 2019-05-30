@@ -1,0 +1,245 @@
+From c6617930d51c3b0235cbf533bb49cf7a0bcd3216 Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Wed, 29 May 2019 14:12:57 -0400
+Subject: [PATCH 3/5] Makefile-20190328.in
+
+---
+ Makefile.in             | 1 +
+ conf.d/Makefile.in      | 1 +
+ doc/Makefile.in         | 1 +
+ fc-cache/Makefile.in    | 1 +
+ fc-case/Makefile.in     | 1 +
+ fc-cat/Makefile.in      | 1 +
+ fc-conflist/Makefile.in | 1 +
+ fc-lang/Makefile.in     | 1 +
+ fc-list/Makefile.in     | 1 +
+ fc-match/Makefile.in    | 1 +
+ fc-pattern/Makefile.in  | 1 +
+ fc-query/Makefile.in    | 1 +
+ fc-scan/Makefile.in     | 1 +
+ fc-validate/Makefile.in | 1 +
+ fontconfig/Makefile.in  | 1 +
+ its/Makefile.in         | 1 +
+ src/Makefile.in         | 1 +
+ test/Makefile.in        | 1 +
+ 18 files changed, 18 insertions(+)
+
+diff --git a/Makefile.in b/Makefile.in
+index bea1b79..e13301f 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -389,6 +389,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/conf.d/Makefile.in b/conf.d/Makefile.in
+index 604af41..52e31fc 100644
+--- a/conf.d/Makefile.in
++++ b/conf.d/Makefile.in
+@@ -301,6 +301,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/doc/Makefile.in b/doc/Makefile.in
+index b8ae0b4..0e68e22 100644
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -550,6 +550,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/fc-cache/Makefile.in b/fc-cache/Makefile.in
+index 75393fa..0964634 100644
+--- a/fc-cache/Makefile.in
++++ b/fc-cache/Makefile.in
+@@ -354,6 +354,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/fc-case/Makefile.in b/fc-case/Makefile.in
+index 6485973..b91db3c 100644
+--- a/fc-case/Makefile.in
++++ b/fc-case/Makefile.in
+@@ -319,6 +319,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/fc-cat/Makefile.in b/fc-cat/Makefile.in
+index 75f5953..3e52282 100644
+--- a/fc-cat/Makefile.in
++++ b/fc-cat/Makefile.in
+@@ -354,6 +354,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/fc-conflist/Makefile.in b/fc-conflist/Makefile.in
+index 212e2e9..f9fe443 100644
+--- a/fc-conflist/Makefile.in
++++ b/fc-conflist/Makefile.in
+@@ -356,6 +356,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/fc-lang/Makefile.in b/fc-lang/Makefile.in
+index eea0cbb..6972f6b 100644
+--- a/fc-lang/Makefile.in
++++ b/fc-lang/Makefile.in
+@@ -319,6 +319,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/fc-list/Makefile.in b/fc-list/Makefile.in
+index e8ac374..a9e6ed3 100644
+--- a/fc-list/Makefile.in
++++ b/fc-list/Makefile.in
+@@ -354,6 +354,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/fc-match/Makefile.in b/fc-match/Makefile.in
+index c87053a..fad6675 100644
+--- a/fc-match/Makefile.in
++++ b/fc-match/Makefile.in
+@@ -354,6 +354,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/fc-pattern/Makefile.in b/fc-pattern/Makefile.in
+index 7eb31b9..6172d8d 100644
+--- a/fc-pattern/Makefile.in
++++ b/fc-pattern/Makefile.in
+@@ -354,6 +354,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/fc-query/Makefile.in b/fc-query/Makefile.in
+index c7e231e..c94726b 100644
+--- a/fc-query/Makefile.in
++++ b/fc-query/Makefile.in
+@@ -354,6 +354,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/fc-scan/Makefile.in b/fc-scan/Makefile.in
+index 153c33f..cb8bad8 100644
+--- a/fc-scan/Makefile.in
++++ b/fc-scan/Makefile.in
+@@ -354,6 +354,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/fc-validate/Makefile.in b/fc-validate/Makefile.in
+index dffa1a6..1617efc 100644
+--- a/fc-validate/Makefile.in
++++ b/fc-validate/Makefile.in
+@@ -356,6 +356,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/fontconfig/Makefile.in b/fontconfig/Makefile.in
+index 6f3c47d..ba53f89 100644
+--- a/fontconfig/Makefile.in
++++ b/fontconfig/Makefile.in
+@@ -297,6 +297,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/its/Makefile.in b/its/Makefile.in
+index 8492db4..65b54e6 100644
+--- a/its/Makefile.in
++++ b/its/Makefile.in
+@@ -278,6 +278,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 70b1161..fd7eb06 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -384,6 +384,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+diff --git a/test/Makefile.in b/test/Makefile.in
+index 013abb4..c256839 100644
+--- a/test/Makefile.in
++++ b/test/Makefile.in
+@@ -571,6 +571,7 @@ SET_MAKE = @SET_MAKE@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ TEMPLATEDIR = @TEMPLATEDIR@
++TEMPLATEINFDIR = @TEMPLATEINFDIR@
+ USE_NLS = @USE_NLS@
+ UUID_CFLAGS = @UUID_CFLAGS@
+ UUID_LIBS = @UUID_LIBS@
+-- 
+2.21.0
+
