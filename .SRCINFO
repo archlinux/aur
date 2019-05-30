@@ -1,7 +1,7 @@
 pkgbase = vim-instant-markdown
 	pkgdesc = Instant Markdown previews from vim in a browser
 	pkgver = 0.1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/suan/vim-instant-markdown#readme
 	install = install.sh
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = vim-instant-markdown
 	source = http://registry.npmjs.org/instant-markdown-d/-/instant-markdown-d-0.1.0.tgz
 	source = https://raw.githubusercontent.com/suan/vim-instant-markdown/master/after/ftplugin/markdown/instant-markdown.vim
 	sha256sums = 457cda23129183b01a97e96de9e598680fa0cee6c7c9a40db0f830cd7031fa81
-	sha256sums = f0d1698ff135649c5c9061896f194bbdaebe1701cfc81635ebc75b06bfc68228
+	sha256sums = 317faf4a9d43504540b99e319c2ba5f0218458936109574d231b894ed772df6f
 
 pkgname = vim-instant-markdown
 
