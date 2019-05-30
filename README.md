@@ -142,6 +142,7 @@ To https://github.com/KeyLo99/God.git
 
 * Support adding custom shortcuts.
 * Add 'save' command to CLI for saving commands as Git config file.
+* Terminal autocomplete feature.
 
 ## License
 
