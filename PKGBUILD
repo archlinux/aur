@@ -1,15 +1,16 @@
 # Maintainer: goetzc
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=python-spotipy
 _pkgname=spotipy
 pkgver=2.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple client for the Spotify Web API'
 arch=(any)
 url="https://github.com/plamere/spotipy"
 license=(MIT)
-makedepends=(python-setuptools)
-depends=('python-requests>=1.0' python-simplejson)
+makedepends=(python-setuptools git)
+depends=('python-requests' python-simplejson)
 conflicts=(${pkgname}-git)
 options=(!emptydirs)
 _commit=bf219eb264a414f952106fbdf987c2f26206a5cd
@@ -29,4 +30,5 @@ build() {
 package() {
   cd ${_pkgname}
   python setup.py install --root="$pkgdir/" --skip-build --optimize=1
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
