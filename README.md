@@ -109,6 +109,8 @@ PID   TTY    TIME     CMD
 
 ## Demo
 
+![v1.0-demo](https://user-images.githubusercontent.com/24392180/58592279-c97ef700-8270-11e9-8290-862ab278ca4b.gif)
+
 ## Example
 
 ```
