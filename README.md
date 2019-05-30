@@ -15,7 +15,7 @@ go get -d ./...
 ```
 
 Set the required Go environment variables if not set for the installation.
-See [this link]((https://stackoverflow.com/questions/48361893/how-to-set-go-environment-variables-globally)) for setting environment variables globally.
+See [this link](https://stackoverflow.com/questions/48361893/how-to-set-go-environment-variables-globally) for setting environment variables globally.
 
 ```
 export GOPATH=~/go
