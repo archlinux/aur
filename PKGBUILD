@@ -3,8 +3,7 @@
 
 pkgbase=python-amqp
 pkgname=('python-amqp' 'python2-amqp')
-pkgver=2.4.2
-_commit=dfc336d2db69f0e4e8aeda00650c1c5e23b9f93c
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Low-level AMQP client for Python (fork of amqplib)"
 arch=('any')
@@ -12,12 +11,8 @@ url="https://github.com/celery/py-amqp"
 license=('LGPL')
 makedepends=('python-vine' 'python2-vine')
 checkdepends=('python-case' 'python2-case' 'python-pytest-sugar' 'python2-pytest-sugar')
-source=("$pkgbase-$_commit.tar.gz::https://github.com/celery/py-amqp/archive/$_commit.tar.gz")
-sha512sums=('e820e733293428bfe86f185136060847d99251baa571ec6f106a9d6db01251b8950db4ead815b3df662c72166ffd575afb45389e2c2c19026e43a21e738a15a6')
-
-prepare() {
-  mv py-amqp-{$_commit,$pkgver}
-}
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/celery/py-amqp/archive/$pkgver.tar.gz")
+sha512sums=('2f85a8e653e67e937b630eb2c37ea1ba6ed6f4fbbb2d9ff51c46430583c8565253c0041c242b4a91e31bdda597256fefc03de071476d9796ca6a619abd058c53')
 
 build() {
   cd py-amqp-$pkgver
