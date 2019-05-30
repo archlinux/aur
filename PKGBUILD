@@ -11,7 +11,7 @@
 
 pkgname=(lib32-mesa-git)
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.2.0_devel.111223.7a7be613983
+pkgver=19.2.0_devel.111265.e459d6d6dff
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -134,13 +134,10 @@ build () {
         -D tools=[] \
 
     meson configure _build
-    
-    ninja  "$NINJAFLAGS" -C _build
+     ninja  $NINJAFLAGS -C _build
 }
 
-
 package() {
-
   DESTDIR="$pkgdir" ninja "$NINJAFLAGS" -C _build install
 
   # remove files provided by mesa-git
