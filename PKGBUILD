@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=9.0.0_r317455.ae4ec62cc9a
+pkgver=9.0.0_r317729.4bc710166fb
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -88,7 +88,7 @@ build() {
         -D LLVM_VERSION_SUFFIX="" \
         -D LLVM_ENABLE_BINDINGS=OFF
         
-        ninja "$NINJAFLAGS"
+        ninja $NINJAFLAGS
 }
 
 package_lib32-llvm-minimal-git() {
@@ -99,7 +99,7 @@ package_lib32-llvm-minimal-git() {
     replaces=(lone_wolf-lib32-llvm-git)
     
     cd _build
-    DESTDIR="$pkgdir" ninja "$NINJAFLAGS" install
+    DESTDIR="$pkgdir" ninja $NINJAFLAGS install
 
     # Remove files which conflict with lib32-llvm-libs
     rm "$pkgdir"/usr/lib32/{LLVMgold,lib{LLVM,LTO}}.so
