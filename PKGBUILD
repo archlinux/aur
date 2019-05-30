@@ -12,8 +12,8 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=9.0.0_r316806.f40c18b628f
-pkgrel=2
+pkgver=9.0.0_r317776.31e6d8feea1
+pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
 license=('custom:University of Illinois/NCSA Open Source License')
@@ -76,17 +76,12 @@ build() {
         -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
         -DLLVM_APPEND_VC_REV=ON
 
-    if [[ ! $NINJAFLAGS ]]; then
-        ninja all
-    else
-        ninja "$NINJAFLAGS" all
-    fi
+    ninja $NINJAFLAGS all
 }
 
 check() {
     cd _build
-    ninja check-llvm
-    ninja check-clang
+    ninja $NINJAFLAGS check-llvm check-clang
 }
 
 package_lib32-llvm-git() {
@@ -98,7 +93,7 @@ conflicts=('lib32-llvm' 'lib32-clang'
 
     cd _build
 
-    DESTDIR="$pkgdir" ninja install
+    DESTDIR="$pkgdir" ninja $NINJAFLAGS install
 
     # The runtime library goes into lib32-llvm-libs
     mv "$pkgdir"/usr/lib32/lib{LLVM,LTO}*.so* "$srcdir"
