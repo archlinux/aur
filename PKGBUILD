@@ -1,13 +1,13 @@
 # Maintainer: Terin Stock <terinjokes@gmail.com>
 
 pkgname=uxy-git
-pkgver=r44.6c193d2
+pkgver=r140.bf00223
 pkgrel=1
 pkgdesc="UXY is tool to manipulate UXY format"
 url="https://github.com/sustrik/uxy"
 arch=('any')
 license=('MIT')
-depends=('python')
+depends=('python' 'python-pyaml')
 makedepends=('git')
 conflicts=('uxy')
 provides=('uxy')
@@ -24,6 +24,12 @@ pkgver() {
 
 package() {
   cd "$srcdir"/$pkgname
+
+  install -D -m644 -t "${pkgdir}/usr/lib/python3.7/site-packages/" base.py
+  for file in uxy_*; do
+    install -D -m644 -t "${pkgdir}/usr/lib/python3.7/site-packages/" "$file"
+  done
+
   install -D -m755 uxy "${pkgdir}/usr/bin/uxy"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
