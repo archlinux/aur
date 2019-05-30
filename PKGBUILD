@@ -5,13 +5,13 @@
 pkgname=barman
 _realname=barman
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('x86_64')
 url="http://www.pgbarman.org"
 license=('GPL3')
-depends=('rsync' 'python2' 'python2-argh' 'python2-psycopg2' 'python2-dateutil' 'python2-argcomplete')
-makedepends=('python2-distribute')
+depends=('rsync' 'python' 'python-argh' 'python-psycopg2' 'python-dateutil' 'python-argcomplete')
+makedepends=('python-distribute')
 provides=('barman')
 options=(!emptydirs)
 
@@ -33,7 +33,7 @@ md5sums=('c0eab2058f10fdd9a3f6b2c038397bc8'
 package()
 {
   cd "${srcdir}/barman-${pkgver}"
-	python2 setup.py install --root="${pkgdir}" --optimize=1 || exit 1
+	python setup.py install --root="${pkgdir}" --optimize=1 || exit 1
 
   # install LICENSE file
   install -Dm 0644 LICENSE -t      "${pkgdir}/usr/share/licenses/${pkgname}"
