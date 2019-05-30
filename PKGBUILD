@@ -7,7 +7,7 @@ pkgdesc='Command-line fuzzy searching of Kubernetes pods'
 arch=(any)
 url='https://github.com/thecasualcoder/kube-fzf'
 license=(MIT)
-depends=('fzf')
+depends=('kubectl' 'fzf')
 source=("$pkgname-$pkgver::https://github.com/thecasualcoder/kube-fzf/archive/v$pkgver.tar.gz")
 sha512sums=('36fcc9be40a3666581fe06ebf6ce5ea99732d801cf6e632253ff4ac02025909a34612a920fcb6d0960da80a4ff443cc53a0fb84f16d00d534f43149785ecc182')
 
