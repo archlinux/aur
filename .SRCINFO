@@ -1,0 +1,24 @@
+pkgbase = epfl-moody-git
+	pkgdesc = Gnome client for EPFL's Moodle system
+	pkgver = r66.b171ad6
+	pkgrel = 1
+	url = https://gitlab.gnugen.ch/afontain/moodle/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = patch
+	depends = libhandy
+	depends = modest
+	depends = libsecret
+	optdepends = kwallet: use KWallet as a backend for libsecret.
+	optdepends = gnome-keyring: use gnome-keyring as a backend for libsecret.
+	provides = epfl-moody
+	conflicts = epfl-moody
+	source = git+https://gitlab.gnugen.ch/afontain/moodle
+	source = meson.build.patch
+	md5sums = SKIP
+	md5sums = 1e6188c4b506c8c00027508203ccea52
+
+pkgname = epfl-moody-git
+

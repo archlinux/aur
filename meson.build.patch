@@ -1,0 +1,15 @@
+--- a/moodle/meson.build
++++ b/moodle/meson.build
+@@ -127,9 +127,9 @@ handy_moodle_sources = [
+ libhandy_dep = dependency('libhandy-0.0', version: '>= 0.0.8')
+ libsoup_dep  = dependency('libsoup-2.4')
+ libsecret_dep  = dependency('libsecret-1')
+-libmyhtml_dep = dependency('myhtml', method: 'pkg-config')
++libmyhtml_dep = dependency('modest', method: 'pkg-config')
+ handy_moodle = executable('handy-moodle', handy_moodle_sources,
+   dependencies: [libhandy_dep, libsoup_dep, libsecret_dep, libmyhtml_dep],
+   gui_app: true,
+   install: true,
+-)
+\ No newline at end of file
++)
