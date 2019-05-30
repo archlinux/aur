@@ -1,89 +1,79 @@
-# Maintainer : Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
-# Contributor (ib-bundle): bohoomil <@zoho.com>
-# Contributor: Jan de Groot <jgc@archlinux.org>
+# $Id: PKGBUILD 272756 2016-07-31 10:13:10Z andyrtr $
+# Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: Brice Carpentier <brice@daknet.org>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=cairo-infinality
 _name=cairo
-_commit=36b60ecefe1fd0e042cad51105b0ffb29315e577
-pkgver=1.14.10
+pkgver=1.17.2+11+gdfe3aa6d8
 pkgrel=1
-pkgdesc="Cairo vector graphics library"
-arch=('armv7h' 'i686' 'x86_64')
-license=('LGPL' 'MPL')
-changelog=CHANGELOG
+pkgdesc="2D graphics library with support for multiple output devices (infinality version)"
 url="https://cairographics.org/"
-depends=('libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman>=0.28.0'
-         'glib2' 'mesa' 'libgl' 'lzo')
-makedepends=('mesa-libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre'
-             'gtk-doc' 'valgrind' 'git')
-             # for the test suite:
-             #'ttf-dejavu' 'gsfonts' 'xorg-server-xvfb' ) # 'libdrm')
-#optdepends=('xcb-util: for XCB backend') # really needed?
-groups=('infinality-bundle')
-provides=("cairo=${pkgver}" 'cairo-ubuntu' 'cairo-xcb')
-replaces=('cairo-xcb')
-conflicts=('cairo' 'cairo-cleartype' 'cairo-git' 'cairo-gl-git' 'cairo-glitz'
-           'cairo-ocaml-git' 'cairo-small' 'cairo-ubuntu')
-source=("https://cairographics.org/releases/cairo-${pkgver}.tar.xz"
-        "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/cairo/cairo-make-lcdfilter-default.patch"
-        "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/cairo/cairo-respect-fontconfig_pb.patch"
-        "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/cairo/cairo-server-side-gradients.patch"
-        "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/cairo/cairo-webkit-html5-fix.patch")
-sha1sums=('28c59d85d6b790c21b8b59ece73a6a1dda28d69a'
+arch=(x86_64)
+license=(LGPL MPL)
+groups=(infinality-bundle)
+depends=(libpng libxrender libxext fontconfig-infinality pixman glib2 lzo)
+makedepends=(librsvg gtk2 poppler-glib libspectre gtk-doc valgrind git)
+provides=(cairo)
+conflicts=(cairo cairo-cleartype cairo-git cairo-gl-git cairo-glitz cairo-ocaml-git cairo-small cairo-ubuntu)
+source=("git+https://gitlab.freedesktop.org/cairo/cairo.git#commit=$_commit"
+        cairo-make-lcdfilter-default.patch
+        cairo-respect-fontconfig_pb.patch
+        cairo-server-side-gradients.patch
+        cairo-webkit-html5-fix.patch)
+sha1sums=('SKIP'
           'b0cc2466cc5479f055ca2148cfa37fe13a1e78a6'
           'd8ffcb4c4745f7e61671109362a80a872ac989d3'
           '72ecf2dda8462e1588512de257ccbe18642d507f'
           '5bff494f52a16114f4cf6d04bfb0b9d7c4e9da23')
 
-prepare(){
-  cd "${_name}-${pkgver}"
+pkgver() {
+  cd cairo
+  git describe --tags | sed 's/-/+/g'
+}
 
-  patches=('cairo-make-lcdfilter-default.patch'
-           'cairo-respect-fontconfig_pb.patch'
-           'cairo-server-side-gradients.patch'
-           'cairo-webkit-html5-fix.patch')
+prepare() {
+  cd cairo
 
-  for patch in "${patches[@]}"; do
-    patch -Np1 -i "${srcdir}/${patch}"
-  done
+  patch -Np1 -i "${srcdir}"/cairo-make-lcdfilter-default.patch
+  patch -Np1 -i "${srcdir}"/cairo-respect-fontconfig_pb.patch
+  patch -Np1 -i "${srcdir}"/cairo-server-side-gradients.patch
+  patch -Np1 -i "${srcdir}"/cairo-webkit-html5-fix.patch
+
+  # Update gtk-doc
+  cp /usr/share/aclocal/gtk-doc.m4 build/aclocal.gtk-doc.m4
+  cp /usr/share/gtk-doc/data/gtk-doc.make build/Makefile.am.gtk-doc
+
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "${_name}-${pkgver}"
-
+  cd cairo
   ./configure --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --disable-static \
-    --disable-lto \
-    --enable-tee \
-    --enable-gl \
-    --enable-egl \
-    --enable-svg \
-    --enable-ps \
-    --enable-pdf \
-    --enable-gobject \
-    --enable-gtk-doc
-
-    #--disable-xlib-xcb \
-    #--enable-test-surfaces \ takes ages
-    #--enable-drm # breaks build
-
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --disable-static \
+        --disable-gl \
+        --enable-tee \
+        --enable-svg \
+        --enable-ps \
+        --enable-pdf \
+        --enable-gobject \
+        --enable-gtk-doc \
+        --enable-full-testing \
+        --enable-test-surfaces
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
-check() {
-  cd "${_name}-${pkgver}"
-  #make -j1 -k test || /bin/true
-
-  # results:
-  # 1.12.8-1   # 162 Passed, 328 Failed [  8 crashed, 10 expected], 26 Skipped
-  # 1.12.12-2: #  29 Passed, 464 Failed [460 crashed,  2 expected], 26 Skipped
-  # 1.12.16-1: # 144 Passed, 364 Failed [  6 crashed, 12 expected], 27 Skipped
-}
+#check() {
+#  cd cairo
+  # FIXME: tests don't pass
+#  env CAIRO_TEST_TARGET=image \
+#      CAIRO_TEST_TARGET_FORMAT=rgba \
+#      CAIRO_TESTS='!pthread-show-text' make -k check || :
+#}
 
 package() {
-  cd "${_name}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  cd cairo
+  make DESTDIR="$pkgdir" install
 }
