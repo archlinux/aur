@@ -1,0 +1,104 @@
+--- check_qnap.sh.orig	2019-05-30 10:04:30.438908176 +0200
++++ check_qnap.sh	2019-05-30 10:09:13.745890354 +0200
+@@ -25,33 +25,34 @@
+ usage="
+ -ver Check_qnap Version
+ -C community		default public
+--t timeout 			default 10 secdons
++-t timeout 		default 10 seconds
+ -v snmpversion		default 2c
+--p snmpport			defauilt 161
+--a 					checks you can use
+-					cpuload: check´s the system CPU load in perent
+-					cputemp: check´s the sytem CPU Temperature
+-					systemp: check´s the system Temperature
+-					hdtemp: check´s the Harddive Temperature
+-					diskusage: check´s the diskusage on perent
+-					mem: check´s the mem usage in perent
+-					volstatus: check´s the Volume status
+-					fan: check´s the Fan Speed
+-					hdstatus: check´s the Harddive status
+-					cachediskstatus: check´s the Cachedisk status
+-					lunstatus: check´s the LUN status
+-					raidstatus: check´s the Raid status
+-					powerstatus: check´s the Power status
+-					sysinfo: provides the QNAP infos
+-example
++-p snmpport		default 161
++-a checks you can use
++	cpuload: checks the system CPU load
++	cputemp: checks the sytem CPU Temperature
++	systemp: checks the system Temperature
++	hdtemp: checks the Harddive Temperature
++	diskusage: checks the diskusage
++	mem: checks the mem usage
++	volstatus: checks the Volume status
++	fan: checks the Fan Speed
++	hdstatus: checks the Harddive status
++	cachediskstatus: checks the Cachedisk status
++	lunstatus: checks the LUN status
++	raidstatus: checks the Raid status
++	powerstatus: checks the Power status
++	sysinfo: provides the QNAP infos
++	
++Example
+ 
+-check_qanp -H 192.168.0.2 -a mem
++check_qnap -H 192.168.0.2 -a mem
+ 
+-responce: OK: Memory Total=15976MB used=9177MB free:6799MB|Memory usage=43%;80;90;0;100
++response: OK: Memory Total=15976MB used=9177MB free:6799MB|Memory usage=43%;80;90;0;100
+ 
+ or 
+ 
+-check_qanp -H myqnap.domain.com -C public -v 1 -p 123 -a cputemp -u F -w 40 -c 45 -t 60
++check_qnap -H myqnap.domain.com -C public -v 1 -p 123 -a cputemp -u F -w 40 -c 45 -t 60
+ checked host myqnap.domain.com
+ community public
+ snmpversion 1
+@@ -64,7 +65,7 @@
+ 
+ "
+ 
+-while getopts H:b:C:t:v:p:a:w:c:u:help:h option; 
++while getopts H:b:C:t:v:p:a:w:c:u:help:h:U:P option; 
+ do
+ 	case $option in
+ 		H) hostaddress=$OPTARG;;
+@@ -77,6 +78,8 @@
+ 		w) warning=$OPTARG;;
+ 		c) critical=$OPTARG;;
+ 		u) unit=$OPTARG;;
++		U) username=$OPTARG;;
++		P) password=$OPTARG;;
+ 		h) help=1;;
+ 	esac
+ done
+@@ -100,6 +103,18 @@
+ }
+ check
+ 
++if [[ -z "$username" ]]; then
++	usernameargs=""
++else
++	usernameargs="-u ${username}"
++fi
++
++if [[ -z "$password" ]]; then
++	pwargs=""
++else
++	pwargs="-A ${password} -X ${password}"
++fi
++
+ if [[ -z "$community" ]]; then 
+ 	community=public; 
+ fi
+@@ -158,7 +173,7 @@
+ okqty=0
+ avg=0
+ 
+-mysnmpcheck="snmpget -v $snmpversion -c $community -t $timeout $hostaddress:$snmpport"
++mysnmpcheck="snmpget -v $snmpversion -c $community -t $timeout $hostaddress:$snmpport  ${usernameargs} ${pwargs}"
+ 
+ 
+ # DISKUSAGE
