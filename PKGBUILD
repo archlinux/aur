@@ -3,7 +3,7 @@
 
 pkgname=pg_activity
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Is a top like application for PostgreSQL server activity monitoring"
 arch=('any')
 url="https://github.com/julmon/pg_activity/"
@@ -16,7 +16,7 @@ md5sums=('1e4b0da782e8fd58c7a49e6dbb88c2cb')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1 --with-man
 
   # install LICENSEfile
   install -D -m 0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
