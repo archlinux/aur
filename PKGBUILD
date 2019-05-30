@@ -1,7 +1,7 @@
 # Maintainer: TrueRandom <rantruedom at gmail dot com>
 pkgname=iota-trinity-wallet
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="The IOTA Trinity Wallet"
 arch=(x86_64)
 url="https://trinity.iota.org/"
@@ -12,7 +12,7 @@ depends=('libsecret' 'gtk3' 'libxss' 'nss')
 optdepends=('gnome-keyring: for storing passwords in GNOME keyring')
 
 source_x86_64=("https://github.com/iotaledger/trinity-wallet/releases/download/$pkgver/trinity-desktop-$pkgver.AppImage"{,.asc})
-sha256sums_x86_64=('4e3c419d23eec2ad559d2ac0cff8bde5d0d4454b334475d5311cb5ac456838f1'
+sha256sums_x86_64=('706cd8e392de18f136d79f0188e4a009886d4102422c8722bfe8b208ff3ac87c'
                    'SKIP')
 
 source=("iota-trinity-wallet.desktop")
