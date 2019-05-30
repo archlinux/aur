@@ -1,7 +1,7 @@
 # Maintainer: Sasasu <sasasu [at] archlinuxcn.org>
 
 pkgname=juicefs
-pkgver=4.3.3
+pkgver=4.3.7
 pkgrel=1
 pkgdesc="A shared POSIX file system for the cloud"
 arch=('i686' 'x86_64')
