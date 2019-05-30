@@ -8,7 +8,7 @@ pkgver=4.2.9.6
 pkgrel=2
 groups=('fcitx-im')
 arch=('x86_64')
-url="http://fcitx-im.org"
+url="https://fcitx-im.org"
 license=('GPL' 'LGPL')
 makedepends=('extra-cmake-modules' 'doxygen' 'gtk2' 'gtk3' 'icu' 'mesa' 'opencc' \
              'iso-codes' 'gobject-introspection' 'libxkbfile' 'enchant' 'python2')
