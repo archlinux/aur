@@ -5,24 +5,26 @@
 `God` parses the available Git commands from the retrieved list (`git help`) and turns them into an easy-to-type, one or two char format at the execution time.
 Shortcuts of [commonly used git commands](https://github.com/joshnh/Git-Commands) are supported for simplifying the usage and speeding up typing even more.
 
-## Installation & Run
+## Installation
+
+
+Follow the steps below if you didn't setup the required Go environment variables for the installation.
 
 ```
-./install.sh
-```
-_or_
-```
-go build god.go
-cp god /usr/local/bin/
-```
-_or maybe_
-```
-go run god.go
+export GOPATH=~/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
 ```
 
-## CLI
+And finally install.
 
-### Commands
+```
+go install
+```
+
+Now you can start the `god` on the terminal if everything goes right.
+
+## Commands
 
 ```
 [god ~]$ ?
@@ -38,7 +40,7 @@ go run god.go
 +---------+-----------------------------+
 ```
 
-### `git`
+### **git**
 
 ```
 [god ~]$ git
@@ -70,9 +72,10 @@ go run god.go
 | o       | origin   |
 +---------+----------+
 ```
-_Example of shortened git commands._
 
-### `sc`
+_Example output of shortened git commands._
+
+### **sc**
 
 ```
 [god ~]$ sc   
@@ -90,9 +93,11 @@ _Example of shortened git commands._
 +----------+--------------------------------+
 ```
 
-### Other
+_Git shortcuts._
 
-Other terminal commands can be executed with adding a `'#'` character before the command. It's necessary for non-git commands because the `god` executes all terminal inputs with `git`.
+### Executing non-git commands
+
+Other terminal commands can be executed with adding a `'#'` character before the command. It's necessary for non-git commands because the `god` executes all other terminal inputs with `git`.
 
 ```
 [god ~]$ # ps
