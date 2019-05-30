@@ -1,0 +1,16 @@
+pkgbase = ssa
+	pkgdesc = HPE Smart Storage Administrator Web GUI
+	pkgver = 3.40_3.0
+	pkgrel = 1
+	url = https://downloads.linux.hpe.com/SDR/downloads/mcp
+	arch = x86_64
+	groups = hpproliant
+	license = CUSTOM
+	depends = bash
+	source = https://downloads.linux.hpe.com/SDR/repo/mcp/centos/7/x86_64/current/ssa-3.40-3.0.x86_64.rpm
+	source = hpessad.service
+	sha256sums = CA9F482485944904126222DD4F79D64FD7AEED410108E0FF3B0344846E916DD4
+	sha256sums = d4d28747afe4bc41f777356faefa4b2d186c28c301afee18d0f5c72c2428a800
+
+pkgname = ssa
+
