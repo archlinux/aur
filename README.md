@@ -1,5 +1,6 @@
-# god [![Build Status](https://travis-ci.org/KeyLo99/God.svg?branch=master)](https://travis-ci.org/KeyLo99/God)
+# god [![Build Status](https://img.shields.io/travis/KeyLo99/God.svg?style=flat-square)](https://travis-ci.org/KeyLo99/God)
 
+[![Release](https://img.shields.io/github/release/KeyLo99/God.svg?style=flat-square)](https://travis-ci.org/KeyLo99/God)
 ### Linux utility for simplifying the Git usage.
 
 ### (!) work in progress
@@ -136,7 +137,15 @@ cmt -> commit -m
 ps o mt -> push origin master
 ```
 
-## Todo
+## Todo(s)
 
 * Support adding custom shortcuts.
 * Add 'save' command to CLI for saving commands as Git config file.
+
+## License
+
+GNU General Public License v3. (see [gpl](https://www.gnu.org/licenses/gpl.txt))
+
+## Credit
+
+Copyright (C) 2019 by KeyLo99 https://www.github.com/KeyLo99
