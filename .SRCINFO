@@ -6,6 +6,7 @@ pkgbase = gnome-gmail
 	install = gnome-gmail.install
 	arch = any
 	license = GPL2
+	makedepends = intltool
 	depends = python-gobject
 	depends = python2-gnomekeyring
 	depends = desktop-file-utils
