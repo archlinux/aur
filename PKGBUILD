@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=9.0.0_r317455.ae4ec62cc9a
+pkgver=9.0.0_r317728.b9b64468cac
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -90,14 +90,14 @@ build() {
         -D LLVM_VERSION_SUFFIX="" \
         -D LLVM_APPEND_VC_REV=ON \
         -D LLVM_ENABLE_BINDINGS=OFF \
-        -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang" \
-
-        ninja "$NINJAFLAGS"
+        -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang"
+        
+    ninja $NINJAFLAGS
 }
 
 check() {
     cd _build
-    ninja "$NINJAFLAGS" check check-clang check-clang-tools
+    ninja $NINJAFLAGS check check-clang check-clang-tools
 }
 
 package_llvm-minimal-git() {
@@ -109,7 +109,7 @@ package_llvm-minimal-git() {
     replaces=(lone_wolf-llvm-git)
 
     cd _build
-    DESTDIR="$pkgdir" ninja "$NINJAFLAGS" install
+    DESTDIR="$pkgdir" ninja $NINJAFLAGS install
 
     # Include lit for running lit-based tests in other projects
     pushd "$srcdir"/llvm-project/llvm/utils/lit 
