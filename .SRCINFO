@@ -1,0 +1,16 @@
+pkgbase = npm-fzf
+	pkgdesc = Fuzzy search npm modules with fzf
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/hankchanocd/npm-fzf
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = fzf
+	noextract = npm-fzf-1.1.4.tgz
+	source = https://registry.npmjs.org/npm-fzf/-/npm-fzf-1.1.4.tgz
+	sha256sums = 42b7cbce5f261ec6c3d110d3d96b6ce02601c659bf4f3e787a001ba5e4c4dd11
+
+pkgname = npm-fzf
+
