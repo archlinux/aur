@@ -42,14 +42,10 @@ func execCmd(input string, stdout bool) (string) {
 		cmd.Stdout = &outb
 		cmd.Stderr = &errb
 	}
-	// Execute the command and return
-	// error or output depending on the
-	// stdout parameter.
-	err := cmd.Run()
-	if err != nil{
-		return err.Error()
-	}
-	if !stdout{
+	// Execute the command and return output 
+	// depending on the stdout parameter.
+	cmd.Run()
+	if (!stdout) {
 		return outb.String()
 	} 
 	return ""
