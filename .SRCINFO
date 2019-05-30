@@ -1,6 +1,6 @@
 pkgbase = python2-pytaglib
 	pkgdesc = Python bindigs for the TagLib audio metadata library (Python 2 version)
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://pypi.org/project/pytaglib/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = python2-pytaglib
 	makedepends = python2-setuptools
 	makedepends = taglib
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/66/ac/aea033ff78cd6addca7921afd52ecad62cf4c8a6a7217209dc077229b83f/pytaglib-1.4.4.tar.gz
-	md5sums = 932bc5dbedcda6fd4350ed2949d20c4e
+	source = https://files.pythonhosted.org/packages/02/3b/b7e5fe31527dffa41dd55c8f36c2fdbbf043c0b3d8707a9f9c45f9c49932/pytaglib-1.4.5.tar.gz
+	md5sums = 2f530e4d4b6a69478de9b064748be76a
 
 pkgname = python2-pytaglib
 	depends = python
