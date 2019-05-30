@@ -1,0 +1,18 @@
+pkgbase = cani
+	pkgdesc = A TUI wrapper around caniuse data using FZF and curses
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/SidOfc/cani
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	depends = fzf
+	depends = ruby-colorize
+	depends = ruby-curses
+	depends = ruby-json
+	noextract = cani-0.5.4.gem
+	source = https://rubygems.org/downloads/cani-0.5.4.gem
+	sha256sums = 8e764fed816d9bed0f2349150577be8ad12028c877cbf7651aaecd6f446d9a67
+
+pkgname = cani
+
