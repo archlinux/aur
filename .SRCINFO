@@ -6,6 +6,7 @@ pkgbase = vim-instant-markdown
 	install = install.sh
 	arch = any
 	license = unknown
+	makedepends = jq
 	depends = nodejs
 	depends = npm
 	depends = wget
