@@ -2,22 +2,22 @@
 
 _name=azure-cli
 pkgname=python-$_name
-pkgver=2.0.60
+pkgver=2.0.65
 pkgrel=1
 pkgdesc="Microsoft Azure Command-Line Tools"
 arch=('any')
 url="https://github.com/Azure/azure-cli"
 license=('MIT')
-depends=('python-applicationinsights' 'python-argcomplete' 'python-azure'
+depends=('python-applicationinsights' 'python-argcomplete' 'python-azure-git'
          'python-colorama' 'python-humanfriendly' 'python-jmespath' 'python-knack'
          'python-pyopenssl' 'python-pytz' 'python-scp' 'python-sshtunnel' 
          'python-tabulate' 'python-vsts-cd-manager' 'python-wheel' 'python-yaml')
 makedepends=('git' 'python-setuptools')
-source=("https://github.com/Azure/azure-cli/archive/azure-cli-${pkgver}.tar.gz")
-sha256sums=('f3919f0e1cb7a6344cc65c7595491dc7caccd38e000cce13bc51f8a92685d121')
+source=("https://github.com/Azure/azure-cli/archive/azure-cli-vm-${pkgver}.tar.gz")
+sha256sums=('3f91b342d8abb5a25028ea55001fbc36716daf2821465fb513555274d0d34796')
 
 build() {
-  cd "$_name-$_name-$pkgver/src"
+  cd "$_name-$_name-vm-$pkgver/src"
 
   for d in azure-cli \
                azure-cli-core \
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  cd "$_name-$_name-$pkgver/src"
+  cd "$_name-$_name-vm-$pkgver/src"
 
   for d in azure-cli \
                azure-cli-core \
