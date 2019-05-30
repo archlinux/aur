@@ -5,7 +5,7 @@ pkgbase=python-ipympl
 pkgname=(python2-ipympl python-ipympl python-ipympl-common)
 _pkgname="${pkgbase#*-}"
 pkgver=0.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
 _deppy2=(
@@ -16,9 +16,11 @@ _deppy=(
   'python>=3.7'
   'python<3.8'
 )
+_depends=(
+  'jupyterlab'
+)
 _makedepends=(
   'python-setuptools'
-  'jupyterlab'
 )
 license=('BSD')
 arch=(any)
@@ -43,14 +45,24 @@ build() {
     cd ${_pkgname}-${pkgver}-py2
     python2 setup.py build
     mkdir "${srcdir}/pkg-py2"
+    py_ver=$(python2 --version | cut -d' ' -f2 | cut -d. -f1,2)
+    mkdir -p "${srcdir}/pkg-py2/usr/lib/python${py_ver}/site-packages/jupyterlab"
+    mkdir -p "${srcdir}/pkg-py2/usr/share/jupyter"
+    ln -s "../../lib/python${py_ver}/site-packages/jupyterlab" "${srcdir}/pkg-py2/usr/share/jupyter/lab"
     python2 setup.py install --root="${srcdir}/pkg-py2/" --optimize=1 --skip-build
+    rm "${srcdir}/pkg-py2/usr/share/jupyter/lab"
   )
   (
     echo "building python"
     cd ${_pkgname}-${pkgver}
     python setup.py build
     mkdir "${srcdir}/pkg"
+    py_ver=$(python --version | cut -d' ' -f2 | cut -d. -f1,2)
+    mkdir -p "${srcdir}/pkg/usr/lib/python${py_ver}/site-packages/jupyterlab"
+    mkdir -p "${srcdir}/pkg/usr/share/jupyter"
+    ln -s "../../lib/python${py_ver}/site-packages/jupyterlab" "${srcdir}/pkg/usr/share/jupyter/lab"
     python setup.py install --root="${srcdir}/pkg/" --optimize=1 --skip-build
+    rm "${srcdir}/pkg/usr/share/jupyter/lab"
   )
   mkdir "${srcdir}/pkg-common"
   for s in "${srcdir}/pkg-py2" "${srcdir}/pkg"; do
