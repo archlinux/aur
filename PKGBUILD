@@ -32,8 +32,11 @@ sha256sums=('SKIP'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
   cd "${_srcname}"
+  local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
+  local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
+  patch=$(( $patch + 1 ))
 
-  echo ${_kernel_rel}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo $version.$patch.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 _kernelname=${pkgbase#linux}
