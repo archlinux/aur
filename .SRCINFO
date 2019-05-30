@@ -1,0 +1,13 @@
+pkgbase = kube-fzf
+	pkgdesc = Command-line fuzzy searching of Kubernetes pods
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/thecasualcoder/kube-fzf
+	arch = any
+	license = MIT
+	depends = fzf
+	source = kube-fzf-1.5.0::https://github.com/thecasualcoder/kube-fzf/archive/v1.5.0.tar.gz
+	sha512sums = 36fcc9be40a3666581fe06ebf6ce5ea99732d801cf6e632253ff4ac02025909a34612a920fcb6d0960da80a4ff443cc53a0fb84f16d00d534f43149785ecc182
+
+pkgname = kube-fzf
+
