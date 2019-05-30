@@ -3,7 +3,7 @@
 
 pkgname=tuijam
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 _pkgcommit='c1e3f33bff95e5f265db246a8c8a9d4ed56f6aff'
 pkgdesc=" A fancy TUI client for Google Play Music"
 url="https://github.com/cfangmeier/tuijam"
@@ -14,7 +14,7 @@ depends=(
 	'python-gmusicapi-git'
 	'python-google-api-python-client'
 	'python-urwid'
-	'python-pyaml'
+	'python-yaml'
 	'python-mpv'
 	'python-requests'
 	'python-scrypt'
