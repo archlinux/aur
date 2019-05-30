@@ -42,8 +42,8 @@ func TestPrepareCmds(t *testing.T) {
 }
 
 func TestBuildCmd(t *testing.T) {
-	testCmd := "st && cm -m 'test' && ll && rmt"
-	gitCmdCheck := []string{"status", "commit", "log", "remote -v"}
+	testCmd := "st && cm -m 'test' && ll && rmt && RR test"
+	gitCmdCheck := []string{"status", "commit", "log", "remote -v", "rm -r"}
 	gitCmd := buildCmd(testCmd)
 	for _, cmd := range gitCmdCheck{
 		if(!strings.Contains(gitCmd, cmd)){
