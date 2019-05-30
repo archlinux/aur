@@ -1,7 +1,7 @@
 # Contributor: Jishnu Mohan jishnu7 at gmail dot com
 
 pkgname=quilter
-pkgver=1.8.4
+pkgver=1.8.6
 pkgrel=1
 pkgdesc="Focus on your writing and write beautiful solid stories with the Focus Mode in tow in this Markdown editor."
 arch=(any)
