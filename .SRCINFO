@@ -1,0 +1,31 @@
+pkgbase = lib32-fontconfig-infinality
+	pkgdesc = A library for configuring and customizing font access (32-bit)
+	pkgver = 2.13.1+12+g5f5ec56
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/fontconfig/
+	install = lib32-fontconfig.install
+	arch = x86_64
+	groups = infinality-bundle-multilib
+	license = custom
+	license = MIT
+	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = gperf
+	makedepends = python-lxml
+	makedepends = python-six
+	makedepends = lib32-json-c
+	makedepends = gcc-multilib
+	makedepends = lib32-expat
+	depends = lib32-expat
+	depends = lib32-freetype2-infinality
+	depends = fontconfig-infinality
+	provides = lib32-fontconfig
+	conflicts = lib32-fontconfig
+	options = !libtool
+	source = git+https://anongit.freedesktop.org/git/fontconfig#commit=5f5ec5676c61b9773026a9335c9b0dfa73a73353
+	source = fontconfig-32.hook
+	sha256sums = SKIP
+	sha256sums = d97c0c5b88023da5a2acf64cf560265390a9365305c43b8e86b4f89348e727b3
+
+pkgname = lib32-fontconfig-infinality
+
