@@ -1,20 +1,23 @@
 pkgbase = perl-dist-zilla-plugin-test-minimumversion
 	pkgdesc = Author tests for minimum required versions
-	pkgver = 2.000009
+	pkgver = 2.000010
 	pkgrel = 1
 	url = https://metacpan.org/release/Dist-Zilla-Plugin-Test-MinimumVersion
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-dist-zilla>=0
+	checkdepends = perl-test-minimumversion>=0
 	checkdepends = perl-test-output>=0
 	depends = perl>=5.008
+	depends = perl-data-section>=0.004
 	depends = perl-dist-zilla>=4
 	depends = perl-moose>=0
-	depends = perl-test-minimumversion>=0
+	depends = perl-sub-exporter-formethods>=0
+	depends = perl-namespace-autoclean>=0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Test-MinimumVersion-2.000009.tar.gz
-	md5sums = 861487642515366b364fc715b7eb9a91
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Test-MinimumVersion-2.000010.tar.gz
+	md5sums = c7393f092ea58937794de35221e7b470
 
 pkgname = perl-dist-zilla-plugin-test-minimumversion
 
