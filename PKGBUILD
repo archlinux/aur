@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git')
-pkgver=9.0.0_r317463.bcc0cedf770
+pkgver=9.0.0_r317773.c7670113291
 pkgrel=1
 _ocaml_ver=4.07.1
 arch=('x86_64')
@@ -81,35 +81,37 @@ build() {
 
     cd _build
     cmake "$srcdir"/llvm-project/llvm  -G Ninja \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_C_FLAGS="${CFLAGS}" \
+        -D CMAKE_CXX_FLAGS="${CXXFLAGS}" \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_INSTALL_PREFIX=/usr \
         -D PYTHON_EXECUTABLE=/usr/bin/python \
-        -DLLVM_APPEND_VC_REV=ON \
-        -DLLVM_HOST_TRIPLE=$CHOST \
-        -DLLVM_ENABLE_RTTI=ON \
-        -DLLVM_ENABLE_FFI=ON \
-        -DFFI_INCLUDE_DIR:PATH="$(pkg-config --variable=includedir libffi)" \
-        -DLLVM_BUILD_LLVM_DYLIB=ON \
-        -DLLVM_LINK_LLVM_DYLIB=ON \
-        -DLLVM_INSTALL_UTILS=ON \
-        -DLLVM_BUILD_TESTS=ON \
-        -DLLVM_BUILD_DOCS=ON \
-        -DLLVM_ENABLE_DOXYGEN=OFF \
-        -DLLVM_ENABLE_SPHINX=ON \
-        -DSPHINX_OUTPUT_HTML:BOOL=OFF \
-        -DSPHINX_WARNINGS_AS_ERRORS=OFF \
-        -DLLVM_BINUTILS_INCDIR=/usr/include \
-        -DLLVM_VERSION_SUFFIX="" \
-        -DPOLLY_ENABLE_GPGPU_CODEGEN=ON \
-        -DLINK_POLLY_INTO_TOOLS=ON \
-        -DCMAKE_POLICY_DEFAULT_CMP0075=NEW
+        -D LLVM_APPEND_VC_REV=ON \
+        -D LLVM_HOST_TRIPLE=$CHOST \
+        -D LLVM_ENABLE_RTTI=ON \
+        -D LLVM_ENABLE_FFI=ON \
+        -D FFI_INCLUDE_DIR:PATH="$(pkg-config --variable=includedir libffi)" \
+        -D LLVM_BUILD_LLVM_DYLIB=ON \
+        -D LLVM_LINK_LLVM_DYLIB=ON \
+        -D LLVM_INSTALL_UTILS=ON \
+        -D LLVM_BUILD_TESTS=ON \
+        -D LLVM_BUILD_DOCS=ON \
+        -D LLVM_ENABLE_DOXYGEN=OFF \
+        -D LLVM_ENABLE_SPHINX=ON \
+        -D SPHINX_OUTPUT_HTML:BOOL=OFF \
+        -D SPHINX_WARNINGS_AS_ERRORS=OFF \
+        -D LLVM_BINUTILS_INCDIR=/usr/include \
+        -D LLVM_VERSION_SUFFIX="" \
+        -D POLLY_ENABLE_GPGPU_CODEGEN=ON \
+        -D LINK_POLLY_INTO_TOOLS=ON \
+        -D CMAKE_POLICY_DEFAULT_CMP0075=NEW
 
-    ninja "$NINJAFLAGS" all ocaml_doc
+    ninja $NINJAFLAGS all ocaml_doc
 }
 
 check() {
     cd _build
-    ninja "$NINJAFLAGS" check check-polly check-lld check-lldb check-clang
+    ninja $NINJAFLAGS check check-polly check-lld check-lldb check-clang
 }
 
 package_llvm-git() {
@@ -123,10 +125,10 @@ package_llvm-git() {
                       compiler-rt=$pkgver-$pkgrel clang=$pkgver-$pkgrel lld=$pkgver-$pkgrel lldb=$pkgver-$pkgrel polly=$pkgver-$pkgrel llvm-ocaml=$pkgver-$pkgrel
                       'llvm-svn' 'compiler-rt-svn' 'clang-svn' 'lld-svn' 'lldb-svn' 'polly-svn' 'llvm-ocaml-svn' 
                       )
-    conflicts=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly' 'llvm-ocaml' 'llvm-lw-git')
+    conflicts=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly' 'llvm-ocaml')
     
     pushd _build
-        DESTDIR="$pkgdir" ninja "$NINJAFLAGS" install
+        DESTDIR="$pkgdir" ninja $NINJAFLAGS install
     popd
 
     # Clean up conflicting files
