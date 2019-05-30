@@ -1,24 +1,15 @@
 pkgbase = brother-ql700
 	pkgdesc = LPR and CUPS driver for Brother QL-700 label printer
-	pkgver = 1.1.4r0
-	pkgrel = 2
-	url = http://solutions.brother.com/linux/en_us/
+	pkgver = 3.1.5r0
+	pkgrel = 1
+	url = https://support.brother.com
 	install = brother-ql700.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = cups
-	depends = lib32-glibc
-	provides = brother-ql700-cupswrapper
-	provides = brother-ql700-lpr
-	conflicts = brother-ql700-cupswrapper
-	conflicts = brother-ql700-lpr
-	source = http://download.brother.com/welcome/dlfp002191/ql700lpr-1.1.4-0.i386.rpm
-	source = http://download.brother.com/welcome/dlfp002193/ql700cupswrapper-1.1.4-0.i386.rpm
-	source = LICENSE
-	sha256sums = 7467978a6900a69f3b016ba4c0b1c2322e2ebb6db2693a25b5be10edaa024d9b
-	sha256sums = fd2815f2d2ed23273feb582cea5e56201c24bde7ab81271781e4d1a68b0128d9
-	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+	source = https://download.brother.com/welcome/dlfp002191/ql700pdrv-3.1.5-0.i386.rpm
+	sha256sums = 3aefd02ef4cc35c3d8ed7d8a99f7ac5f5fa44c3574479c45ecd443b363029040
 
 pkgname = brother-ql700
 

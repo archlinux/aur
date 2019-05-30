@@ -1,75 +1,64 @@
 # Maintainer: Karol Babioch <karol@babioch.de>
-# Inspired by package brother-dcp130c
 
-pkgname='brother-ql700'
-pkgver=1.1.4r0
-pkgrel=2
+pkgname=brother-ql700
+pkgver=3.1.5r0
+pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother QL-700 label printer'
-url='http://solutions.brother.com/linux/en_us/'
+url='https://support.brother.com'
 arch=('i686' 'x86_64')
 license=('custom')
-depends='cups'
-if [ "$CARCH" = 'x86_64' ]; then
-  depends+=('lib32-glibc')
-fi
-provides=('brother-ql700-cupswrapper' 'brother-ql700-lpr')
-conflicts=('brother-ql700-cupswrapper' 'brother-ql700-lpr')
-install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp002191/ql700lpr-${pkgver/r/-}.i386.rpm"
-        "http://download.brother.com/welcome/dlfp002193/ql700cupswrapper-${pkgver/r/-}.i386.rpm"
-        'LICENSE')
-sha256sums=('7467978a6900a69f3b016ba4c0b1c2322e2ebb6db2693a25b5be10edaa024d9b'
-            'fd2815f2d2ed23273feb582cea5e56201c24bde7ab81271781e4d1a68b0128d9'
-            'cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811')
+depends=('cups')
+install="${pkgname}.install"
+source=("https://download.brother.com/welcome/dlfp002191/ql700pdrv-${pkgver/r/-}.i386.rpm")
+sha256sums=('3aefd02ef4cc35c3d8ed7d8a99f7ac5f5fa44c3574479c45ecd443b363029040')
 
 prepare()
 {
-  #  do not install in '/usr/local'
-  if [ -d $srcdir/usr/local/Brother ]; then
-    install -d $srcdir/usr/share
-    mv $srcdir/usr/local/Brother/ $srcdir/usr/share/brother
-    rm -rf $srcdir/usr/local
-    sed -i 's|/usr/local/Brother|/usr/share/brother|g' `grep -lr '/usr/local/Brother' ./`
+  # Create necessary CUPS directories
+  install -d "${srcdir}/usr/share/cups/model"
+  install -d "${srcdir}/usr/lib/cups/filter"
+
+  # Locate cupswrapper script
+  cd $(find -type d -name 'cupswrapper')
+  _cupswrapper=$(ls cupswrapper*)
+
+  # Patch cupswrapper script
+  sed -i '/^sleep/d' ${_cupswrapper}
+  sed -i '/^echo lpadmin/d' ${_cupswrapper}
+  sed -i '/^lpadmin/d' ${_cupswrapper}
+  sed -i "s|/usr|${srcdir}/usr|g" ${_cupswrapper}
+  sed -i "s|/opt|${srcdir}/opt|g" ${_cupswrapper}
+  sed -i "s|/model/Brother|/model|g" ${_cupswrapper}
+  sed -i 's|lpinfo|echo|g' ${_cupswrapper}
+
+  # Invoke cupswrapper script
+  export srcdir=${srcdir}
+  ./${_cupswrapper}
+
+  # Patch resulting filter
+  sed -i "s|${srcdir}||" ${srcdir}/usr/lib/cups/filter/*lpdwrapper*
+
+  # Remove cupswrapper script and templates
+  find "${srcdir}" -type d -name 'cupswrapper' -exec rm -rf {} +
+
+  # Remove unneeded script (i.e. /etc/printcap is managed by CUPS)
+  rm $(find "${srcdir}" -type f -name 'setupPrintcap*')
+
+  # Remove binaries for different architectures
+  if [ "${CARCH}" = 'x86_64' ]; then
+    find "${srcdir}" -type d -name 'i686' -exec rm -rf {} +
+  elif [ "${CARCH}" = 'i686' ]; then
+    find "${srcdir}" -type d -name 'x86_64' -exec rm -rf {} +
   fi
-
-  # setup cups directories
-  install -d "$srcdir/usr/share/cups/model"
-  install -d "$srcdir/usr/lib/cups/filter"
-
-  #  go to the cupswrapper directory and find the source file from wich to generate a ppd- and wrapper-file
-  cd `find . -type d -name 'cupswrapper'`
-  if [ -f cupswrapper* ]; then
-    _wrapper_source=`ls cupswrapper*`
-    sed -i '/^\/etc\/init.d\/cups/d' $_wrapper_source
-    sed -i '/^sleep/d' $_wrapper_source
-    sed -i '/^echo lpadmin/d' $_wrapper_source
-    sed -i '/^lpadmin/d' $_wrapper_source
-    sed -i 's|/usr|$srcdir/usr|g' $_wrapper_source
-    sed -i 's|/opt|$srcdir/opt|g' $_wrapper_source
-    sed -i 's|/model/Brother|/model|g' $_wrapper_source
-    sed -i 's|lpinfo|echo|g' $_wrapper_source
-    export srcdir=$srcdir
-    ./$_wrapper_source
-    sed -i 's|$srcdir||' $srcdir/usr/lib/cups/filter/*lpdwrapper*
-    sed -i "s|$srcdir||" $srcdir/usr/lib/cups/filter/*lpdwrapper*
-    rm $_wrapper_source
-  fi
-
-  #  /etc/printcap is managed by cups
-  rm `find $srcdir -type f -name 'setupPrintcap*'`
-
-  # /usr/lib/cups/filter/brother_lpdwrapper_ql700 should be an absolute symlink
-  rm $srcdir/usr/lib/cups/filter/brother_lpdwrapper_ql700
-  ln -s /opt/brother/PTouch/ql700/cupswrapper/brother_lpdwrapper_ql700  \
-        $srcdir/usr/lib/cups/filter/brother_lpdwrapper_ql700
 }
 
-package() {
-  cd "$srcdir"
+package()
+{
+  # Install actual content
+  cp -R "${srcdir}/usr" "${pkgdir}"
+  cp -R "${srcdir}/opt" "${pkgdir}"
 
-  cp -R usr $pkgdir
-  if [ -d opt ]; then cp -R opt $pkgdir; fi
-
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # Handle license
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  find "${pkgdir}" -type f -name 'LICENSE*.txt' -exec mv -t "${pkgdir}/usr/share/licenses/${pkgname}" {} +
 }
-
