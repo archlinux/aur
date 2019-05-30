@@ -1,7 +1,7 @@
 pkgbase = lammps-beta
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator
 	pkgver = 20190515
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lammps.sandia.gov/
 	arch = x86_64
 	license = GPL

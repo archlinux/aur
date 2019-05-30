@@ -22,7 +22,7 @@ pkgname=${_pkgname}-beta
 pkgver=20190515
 _pkgver="15May2019"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
-pkgrel=1
+pkgrel=2
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
@@ -36,11 +36,11 @@ sha512sums=('1f9498c8ad93f90064c95c0bd942bb1628069d2a8dc578fef0ff5f95d66df03b050
 
 # process the build settings from above
 if (( $_ENABLE_INTEL_COMPILER )); then
-    _feature_args+=('-DCMAKE_C_COMPILER=icc')
-    _feature_args+=('-DCMAKE_C_FLAGS=-xHost -O3 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -restrict')
-    _feature_args+=('-DCMAKE_CXX_COMPILER=icpc')
-    _feature_args+=('-DCMAKE_CXX_FLAGS=-xHost -O3 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -restrict')
-    _feature_args+=('-DCMAKE_Fortran_COMPILER=ifort')
+    _feature_args+=('-DCMAKE_C_COMPILER=mpiicc')
+    _feature_args+=('-DCMAKE_C_FLAGS=-xHost -O2 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high')
+    _feature_args+=('-DCMAKE_CXX_COMPILER=mpiicpc')
+    _feature_args+=('-DCMAKE_CXX_FLAGS=-fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -O2 -DLMP_INTEL_USELRT -DLMP_USE_MKL_RNG')
+    _feature_args+=('-DCMAKE_Fortran_COMPILER=mpiifort')
 fi
 if (( $_BUILD_DOC )); then
     makedepends+=('python-sphinx' 'lammpsdoc')
