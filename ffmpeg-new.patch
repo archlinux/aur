@@ -1,0 +1,47 @@
+diff --git a/audio.c b/audio.c
+index bffd73e..56e539f 100644
+--- a/audio.c
++++ b/audio.c
+@@ -147,7 +147,7 @@ public:
+ 
+ 	unsigned int GetFreeSpace(void)
+ 	{
+-		return AVPKT_BUFFER_SIZE - m_size - FF_INPUT_BUFFER_PADDING_SIZE;
++		return AVPKT_BUFFER_SIZE - m_size - AV_INPUT_BUFFER_PADDING_SIZE;
+ 	}
+ 
+ 	bool Empty(void)
+@@ -182,7 +182,7 @@ public:
+ 		m_packet.size = 0;
+ 		m_size = 0;
+ 		m_parsed = true; // parser is empty, no need for parsing
+-		memset(m_packet.data, 0, FF_INPUT_BUFFER_PADDING_SIZE);
++		memset(m_packet.data, 0, AV_INPUT_BUFFER_PADDING_SIZE);
+ 
+ 		while (!m_ptsQueue.empty())
+ 		{
+@@ -197,13 +197,13 @@ public:
+ 		m_mutex->Lock();
+ 		bool ret = true;
+ 
+-		if (m_size + length + FF_INPUT_BUFFER_PADDING_SIZE > AVPKT_BUFFER_SIZE)
++		if (m_size + length + AV_INPUT_BUFFER_PADDING_SIZE > AVPKT_BUFFER_SIZE)
+ 			ret = false;
+ 		else
+ 		{
+ 			memcpy(m_packet.data + m_size, data, length);
+ 			m_size += length;
+-			memset(m_packet.data + m_size, 0, FF_INPUT_BUFFER_PADDING_SIZE);
++			memset(m_packet.data + m_size, 0, AV_INPUT_BUFFER_PADDING_SIZE);
+ 
+ 			Pts* entry = new Pts(pts, length);
+ 			m_ptsQueue.push(entry);
+@@ -222,7 +222,7 @@ public:
+ 		{
+ 			memmove(m_packet.data, m_packet.data + length, m_size - length);
+ 			m_size -= length;
+-			memset(m_packet.data + m_size, 0, FF_INPUT_BUFFER_PADDING_SIZE);
++			memset(m_packet.data + m_size, 0, AV_INPUT_BUFFER_PADDING_SIZE);
+ 
+ 			while (!m_ptsQueue.empty() && length)
+ 			{
