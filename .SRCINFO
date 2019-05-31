@@ -1,0 +1,15 @@
+pkgbase = tcolors
+	pkgdesc = Commandline color picker and palette builder
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/bcicen/tcolors
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = tcolors::git://github.com/bcicen/tcolors.git
+	md5sums = SKIP
+
+pkgname = tcolors
+
