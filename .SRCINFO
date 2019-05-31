@@ -1,6 +1,6 @@
 pkgbase = python-scielo-clea
 	pkgdesc = SciELO Publishing Schema XML document front matter metadata reader/sanitizer
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/scieloorg/clea
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-scielo-clea
 	optdepends = python-flask: development web server
 	optdepends = gunicorn: web server alternative
 	options = !emptydirs
-	source = https://github.com/scieloorg/clea/archive/v0.3.0.tar.gz
-	sha256sums = cf75cb88536336609269f9d84b2dbe908540c29277e82588174725c3e3b5a90d
+	source = https://github.com/scieloorg/clea/archive/v0.3.1.tar.gz
+	sha256sums = bd02a3fdb0da34260ce5f023e5fe5f439d4fdcfab789850eb8d227a4dc3c20db
 
 pkgname = python-scielo-clea
 

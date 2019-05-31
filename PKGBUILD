@@ -1,6 +1,6 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 pkgname=('python-scielo-clea')
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="SciELO Publishing Schema XML document front matter metadata reader/sanitizer"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-lxml' 'python-numpy' 'python-levenshtein'
 optdepends=('python-flask: development web server'
             'gunicorn: web server alternative')
 options=(!emptydirs)
-sha256sums=('cf75cb88536336609269f9d84b2dbe908540c29277e82588174725c3e3b5a90d')
+sha256sums=('bd02a3fdb0da34260ce5f023e5fe5f439d4fdcfab789850eb8d227a4dc3c20db')
 source=("$url/archive/v$pkgver.tar.gz")
 
 package() {
