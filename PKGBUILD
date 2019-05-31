@@ -1,7 +1,7 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist
-pkgver=0.7.2.rc8
+pkgver=0.7.2.rc8c
 pkgrel=1
 pkgdesc='A professional screenwriting software.'
 url='https://kitscenarist.ru/en/'
@@ -17,7 +17,7 @@ source=(
 md5sums=(
   'SKIP'
   '45018aa6c472835db014c62a80f5b6dc'
-  'eef816ca49ef1d45f8b101dd26e01a58'
+  'da0f40d723f2d15f888bf3197351da3d'
 )
 
 prepare() {
