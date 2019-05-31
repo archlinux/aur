@@ -1,7 +1,7 @@
 # Maintainer: KeyLo99 <keylo99official@gmail.com>
 
 _pkg=god
-pkgname=g0d-git
+pkgname=g0d
 pkgdesc="Utility for simplifying the Git usage"
 pkgver=1.2
 pkgrel=1.1
