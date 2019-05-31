@@ -20,7 +20,7 @@ pkgbase = linux-new
 	sha256sums = 18b701cd3891efa66a507c03ef8ef24f8d38080d4930159cedabbc6064e433aa
 
 pkgname = linux-new
-	pkgdesc = Linux kernel version 5 with the groundbreaking freesync AMD tech
+	pkgdesc = The newest Linux kernel available
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
@@ -31,7 +31,7 @@ pkgname = linux-new
 	backup = etc/mkinitcpio.d/linux-new.preset
 
 pkgname = linux-new-headers
-	pkgdesc = Header files and scripts for building modules for Linux kerel with groundbreaking freesync AMD tech
+	pkgdesc = Header files and scripts for building modules for yhe newest Linux kernel available
 	provides = linux-headers
 
 pkgname = linux-new-docs

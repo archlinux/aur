@@ -65,7 +65,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="Linux kernel version 5 with the groundbreaking freesync AMD tech"
+  pkgdesc="The newest Linux kernel available"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('linux')
@@ -127,7 +127,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for Linux kerel with groundbreaking freesync AMD tech"
+  pkgdesc="Header files and scripts for building modules for yhe newest Linux kernel available"
   provides=('linux-headers')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
