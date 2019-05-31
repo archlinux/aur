@@ -20,7 +20,9 @@ optdepends=('sabnzbd: usenet downloader'
             'jackett: torrent indexer proxy')
 
 provides=('sonarr')
-conflicts=('sonarr' 'sonarr-develop')
+
+conflicts=('sonarr'
+           'sonarr-develop')
 
 source=("https://download.sonarr.tv/v3/phantom-develop/${pkgver}/Sonarr.phantom-develop.${pkgver}.linux.tar.gz"
         "sonarr.service"
