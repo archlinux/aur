@@ -1,6 +1,6 @@
 pkgname=kmetronome
 pkgver=1.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="MIDI metronome with KDE interface and based on the ALSA sequencer"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/kmetronome/"
