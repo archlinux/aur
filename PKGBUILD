@@ -20,7 +20,8 @@ optdepends=('sabnzbd: usenet downloader'
             'jackett: torrent indexer proxy')
 
 provides=('sonarr')
-conflicts=('sonarr')
+conflicts=('sonarr'
+           'sonarr-phantom')
 
 source=("https://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.${pkgver}.mono.tar.gz"
         "sonarr.service"
