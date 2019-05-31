@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libopusenc-git
-pkgver=0.1.1.r0.gb37719f
+pkgver=0.2.1.r2.g9cb17c6
 pkgrel=1
 pkgdesc="High-level API for encoding .opus files"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('libopusenc')
 conflicts=('libopusenc')
 options=('staticlibs')
-source=("git+https://git.xiph.org/libopusenc.git")
+source=("git+https://gitlab.xiph.org/xiph/libopusenc.git")
 sha256sums=('SKIP')
 
 
@@ -26,7 +26,8 @@ build() {
   cd "libopusenc"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
@@ -35,6 +36,6 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/libopusenc/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/libopusenc"
   rm "$pkgdir/usr/share/doc/libopusenc/COPYING"
 }

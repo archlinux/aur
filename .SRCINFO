@@ -1,6 +1,6 @@
 pkgbase = libopusenc-git
 	pkgdesc = High-level API for encoding .opus files
-	pkgver = 0.1.1.r0.gb37719f
+	pkgver = 0.2.1.r2.g9cb17c6
 	pkgrel = 1
 	url = https://opus-codec.org/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = libopusenc-git
 	provides = libopusenc
 	conflicts = libopusenc
 	options = staticlibs
-	source = git+https://git.xiph.org/libopusenc.git
+	source = git+https://gitlab.xiph.org/xiph/libopusenc.git
 	sha256sums = SKIP
 
 pkgname = libopusenc-git
