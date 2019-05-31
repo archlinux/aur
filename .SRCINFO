@@ -1,13 +1,13 @@
 pkgbase = waves-backgrounds
 	pkgdesc = Fedora 9 (Sulphur) waves backgrounds.
-	pkgver = 29.0.0
+	pkgver = 30.0.0
 	pkgrel = 1
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_9
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/d/desktop-backgrounds-29.0.0-1.fc30.src.rpm
-	sha256sums = 24ac316bfb51c69a24a70de5fc136e7a0ee276992171b3728bfabf64f8e34f56
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/d/desktop-backgrounds-30.0.0-2.fc31.src.rpm
+	sha256sums = 068d920381985c0ea9241df4e06a9da18678b0950f3abe91b296dc9b8eb7798d
 
 pkgname = waves-backgrounds
 
