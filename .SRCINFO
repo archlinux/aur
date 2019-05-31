@@ -1,0 +1,21 @@
+pkgbase = lemons
+	pkgdesc = Output script for lemonbar
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://git.sr.ht/~rycwo/lemons
+	arch = any
+	license = custom:Unlicense
+	depends = bash
+	depends = lemonbar-xft-git
+	depends = ttf-font-awesome-4
+	depends = acpi
+	depends = alsa-utils
+	depends = pulseaudio
+	depends = pulseaudio-alsa
+	depends = bspwm
+	optdepends = ttf-dejavu: for a nice default font
+	source = https://git.sr.ht/~rycwo/lemons/archive/0.3.3.tar.gz
+	sha256sums = c283cc705d0fcbe5a00189257611303d6b8faacb174080d9b8b1052b30377c3f
+
+pkgname = lemons
+
