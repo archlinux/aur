@@ -11,7 +11,7 @@ pkgbase = foliate-git
 	depends = gjs
 	depends = webkit2gtk
 	depends = libsoup
-	provides = foliate-git
+	provides = foliate
 	conflicts = foliate
 	replaces = foliate
 	source = foliate::git+https://github.com/johnfactotum/foliate.git#branch=master

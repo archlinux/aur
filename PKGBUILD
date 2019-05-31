@@ -11,7 +11,7 @@ license=('GPL-3.0')
 depends=('gjs' 'webkit2gtk' 'libsoup')
 makedepends=('meson' 'ninja')
 source=("$_name::git+https://github.com/johnfactotum/$_name.git#branch=master")
-provides=("$pkgname")
+provides=("$_name")
 replaces=("$_name")
 conflicts=("$_name")
 md5sums=('SKIP')
@@ -28,6 +28,6 @@ package(){
 }
 
 pkgver() {
-  	cd "$srcdir/$_name"
-  	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd "$srcdir/$_name"
+	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
