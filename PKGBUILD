@@ -20,7 +20,9 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
+             #config.x86_64
             '04f9b19d0dde49a132d79006663cac6cfe3a0eb1252ca33e9694a63f00bccb65'
+             #.preset file
             '0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87')
 
 _kernelname=${pkgbase#linux}
