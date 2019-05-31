@@ -11,7 +11,7 @@ depends=('bash' 'curl')
 makedepends=('git')
 license=('GPL')
 arch=('any')
-source=("git+https://github.com/$author/$pkbase.git")
+source=("git+https://github.com/$author/$pkgbase.git")
 
 md5sums=('SKIP')
 sha1sums=('SKIP')
