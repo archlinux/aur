@@ -3,15 +3,15 @@
 author=Baitinq
 pkgname=geolocate-git
 pkgbase=geolocate
-pkgver=r3.5804c60
+pkgver=1.0
 pkgrel=1
-pkgdesc="Obtain your latitude and longitude in a simplistic format (based on your ip)"
+pkgdesc="Obtain your aproximate latitude and longitude in a simplistic format (based on your ip)"
 url="https://github.com/Baitinq/geolocate"
-depends=('bash' 'curl')
+depends=('bash' 'curl' 'jq')
 makedepends=('git')
 license=('GPL')
 arch=('any')
-source=("git+https://github.com/$author/$pkgname.git")
+source=("git+https://github.com/$author/$pkgbase.git")
 
 md5sums=('SKIP')
 sha1sums=('SKIP')
