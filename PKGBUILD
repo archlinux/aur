@@ -1,10 +1,11 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 
-pkgname_=graal-native-image
+pkgname__=native-image
+pkgname_=graal-${pkgname__}
 pkgname=${pkgname_}-bin
 pkgver_=19.0.0
 pkgver=${pkgver_/-/_}
-pkgrel=1
+pkgrel=2 # TODO reset to 1 with the next pkgver change
 pkgdesc='Plugin to turn Graal-based applications into native binary images'
 arch=('x86_64')
 url='https://github.com/oracle/graal'
@@ -14,7 +15,7 @@ makedepends=()
 optdepends=()
 provides=("$pkgname_")
 conflicts=("$pkgname_")
-source=("https://github.com/oracle/graal/releases/download/vm-${pkgver_}/native-image-installable-svm-linux-amd64-${pkgver_}.jar")
+source=("https://github.com/oracle/graal/releases/download/vm-${pkgver_}/${pkgname__}-installable-svm-linux-amd64-${pkgver_}.jar")
 sha256sums=('1c794a3c038f4e6bb90542cf13ba3c6c793dcd193462bf56b8713fd24386e344')
 
 package() {
@@ -56,5 +57,5 @@ package() {
 
     install -DTm644 jre/lib/svm/LICENSE_NATIVEIMAGE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    ln -s ../lib/jvm/java-8-graal/bin/${pkgname_} "$pkgdir/usr/bin/"
+    ln -s ../lib/jvm/java-8-graal/bin/${pkgname__} "$pkgdir/usr/bin/"
 }
