@@ -1,8 +1,8 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2019.1.2
-_pkgver=2019.1.2
+pkgver=2019.1.3
+_pkgver=2019.1.3
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE. Professional Edition."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz"
         "charm.desktop"
         "charm")
 # https://download.jetbrains.com/python/pycharm-professional-${_pkgver}.tar.gz.sha256
-sha256sums=('79fc70ea359fca2c6b0a6f5dde73c5bd90d2eed4a64f61287629bdd6e5a334e9'
+sha256sums=('8322de8b816895fcb7fd854e83d25084b0593ea2b90b5b4598a495ef2e958824'
             'aaf7113e8c56e4d977eca204d57350d9493eda2710abefd2488a2b5d47c53344'
             '818ed42f4200ae13315587abf6f247f93e68c658a94794f73924c985cdc145d0'
             '21e77b6b18e14636f9827e1f8d45bbc8dba8fb14ea5f4cde285c1ef4bb01c85e'
@@ -39,8 +39,9 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'python2-pytest: For support testing inside Pycharm with Python 2'
             'python-pytest: For support testing inside Pycharm with Python 3'
             'python2-tox: Python environments for testing tool with Python 2'
-            'python-tox: Python environments for testing tool with Python 3', 
-            'jupyter: For support Jupyter Notebook')
+            'python-tox: Python environments for testing tool with Python 3'
+            'jupyter: For support Jupyter Notebook'
+            'python-docutils-stubs: For build documentation with sphynx')
             
 build() {
   cd pycharm-$_pkgver
