@@ -1,9 +1,10 @@
+# Maintainer: Manuel Kauschinger <admin at bruzzzla dot de>
 # Contributor: Serkan Hosca <serkan@hosca.com>
 
 pkgbase=python-cfgv
 pkgname=(python-cfgv python2-cfgv)
 pypi_name=cfgv
-pkgver=1.6.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Validate configuration and produce human readable error messages."
 arch=('any')
