@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=nyacc 
-pkgver=0.92.0
+pkgver=0.93.0
 pkgrel=1
 pkgdesc="Not Yet Another Compiler Compiler"
 url="http://www.nongnu.org/nyacc"
@@ -10,7 +10,7 @@ license=('GPL' 'LGPL' 'FDL')
 depends=('guile')
 makedepends=()
 source=("http://download-mirror.savannah.gnu.org/releases/nyacc/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('af4119c0116a6918b1fa32a3a4146006ddc1c7d5b5180f7ff8e90a80a5300d71'
+sha256sums=('630f006eae762c3f60bf0c62be9ea7b05b0527dcafafd0b5668ce5cef012d8a1'
             'SKIP')
 validpgpkeys=('7C9EDA8DCE5DC8AE2C675EC9EE4F2A40097B7C03') # Marc Wette
 
