@@ -1,16 +1,16 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=kiwix-tools
-pkgver=1.2.1
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="kiwix command line tools"
 license=('GPL3')
 arch=('any')
 replaces=('kiwix-cli-git')
-depends=('kiwix-lib>=5.0.0' 'libmicrohttpd')
+depends=('kiwix-lib>=5.1.0' 'libmicrohttpd')
 makedepends=('meson')
 url='https://github.com/kiwix/kiwix-tools'
 source=("https://github.com/kiwix/kiwix-tools/archive/${pkgver}.tar.gz")
-sha256sums=(e8a218a7a8aedbcb279820ff6d241bb60e046eb4173f9bc7ae0fd3cbd0b52e8e)
+sha256sums=(d80b3ac46e37d0ead9fe9e4f2d07d808ad2df2e104180a9e2fc5eeaf33a0d272)
 
 build() {
 	cd "${pkgname}-${pkgver}"
