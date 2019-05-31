@@ -1,13 +1,13 @@
 pkgbase = goddard-backgrounds
 	pkgdesc = Fedora 13 (Goddard) backgrounds.
 	pkgver = 13.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_13
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/g/goddard-backgrounds-13.0.0-14.fc29.src.rpm
-	sha256sums = 1c735f96aed962f7ba427445ccad601b9cc4e8529454283d31aa7afaf5a3c5e6
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/g/goddard-backgrounds-13.0.0-15.fc30.src.rpm
+	sha256sums = 13276be07e8f027326e14a0aa8d31ef85704d564e8f5f3782bc33e7f7faafe67
 
 pkgname = goddard-backgrounds
 
