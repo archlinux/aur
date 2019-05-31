@@ -11,7 +11,7 @@ depends=('libhandy' 'python-appdirs' 'python-bleach' 'python-beautifulsoup4' 'py
 makedepends=('python-setuptools')
 provides=('daty')
 conflicts=('daty')
-source=('daty::git+https://gitlab.com/tallero/daty.git')
+source=('daty::git+https://gitlab.com/World/Daty.git')
 sha256sums=('SKIP')
 
 package() {
