@@ -1,0 +1,19 @@
+pkgbase = mirtk
+	pkgdesc = Medical image processing and analysis toolkit
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://mirtk.github.io/
+	arch = any
+	license = Apache
+	makedepends = cmake
+	depends = eigen
+	depends = boost
+	optdepends = python
+	optdepends = vtk
+	optdepends = libpng
+	optdepends = nifticlib
+	source = https://github.com/BioMedIA/MIRTK/archive/v2.0.0.zip
+	md5sums = db3cda47a268d8b2cb0081245cbc388a
+
+pkgname = mirtk
+
