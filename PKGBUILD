@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=liboggz-git
-pkgver=1.1.1.r34.gf49574e
+pkgver=1.1.1.r37.gacf142b
 pkgrel=1
 pkgdesc="Tools to inspect, edit and validate Ogg files"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('liboggz')
 conflicts=('liboggz')
 options=('!emptydirs' 'staticlibs')
-source=("git+https://git.xiph.org/liboggz.git")
+source=("git+https://gitlab.xiph.org/xiph/liboggz.git")
 sha256sums=('SKIP')
 
 
@@ -26,7 +26,8 @@ build() {
   cd "liboggz"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
@@ -40,7 +41,7 @@ package() {
   cd "liboggz"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/liboggz/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/liboggz"
 
   install -Dm644 "bash-completion/oggz" "$pkgdir/usr/share/bash-completion/completions/oggz"
 }
