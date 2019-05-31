@@ -1,0 +1,18 @@
+pkgbase = nauniq
+	pkgdesc = non-adjacent uniq
+	pkgver = 0.10
+	pkgrel = 1
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-file-slurper
+	checkdepends = perl-file-chdir
+	checkdepends = perl-string-shellquote
+	checkdepends = perl-tie-cache
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-module/App/App-nauniq-0.10.tar.gz
+	sha256sums = 8c37c9baf352bf21b876c1fef76b7225e493149e15e1d74defa94047d5a0e934
+
+pkgname = nauniq
+
