@@ -1,0 +1,19 @@
+pkgbase = xfce4-cpugraph-plugin-devel
+	pkgdesc = CPU graph plugin for the Xfce4 panel
+	pkgver = 1.0.90
+	pkgrel = 1
+	url = https://goodies.xfce.org/projects/panel-plugins/xfce4-cpugraph-plugin
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies-devel
+	license = GPL
+	license = custom
+	makedepends = intltool
+	depends = xfce4-panel
+	provides = xfce4-cpugraph-plugin=1.0.90
+	conflicts = xfce4-cpugraph-plugin
+	source = https://archive.xfce.org/src/panel-plugins/xfce4-cpugraph-plugin/1.0/xfce4-cpugraph-plugin-1.0.90.tar.bz2
+	sha256sums = 08e7a8ca378285335b7c5eaf1a550de52ef2935f06822f862a155c5342ca7560
+
+pkgname = xfce4-cpugraph-plugin-devel
+
