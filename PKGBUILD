@@ -2,7 +2,7 @@
 # Contributor: Tarn Burton <twburton at gmail dot com>
 
 pkgname='quex'
-pkgver=0.69.3
+pkgver=0.69.4
 pkgrel=1
 pkgdesc="Generator of lexical analyzers in C and C++. Unicode Supported."
 arch=('any')
@@ -10,8 +10,8 @@ url="http://quex.org/"
 license=('LGPL')
 provides=('quex' 'quex-for_libadalang')
 depends=('python2')
-source=("https://downloads.sourceforge.net/quex/quex-$pkgver.tar.gz")
-sha256sums=('ad0fbb6bef8116ac312d6ab9e93b444ca5826f9c683a6dae1c1f606cf7e78fcf')
+source=("https://downloads.sourceforge.net/quex/quex-${pkgver}.zip")
+sha256sums=('9824bddce32b31f885285a36897215415ca3dff6c6e0e2ec8342b23710969cab')
 
 package() {
 mkdir -p "${pkgdir}/usr/lib"
