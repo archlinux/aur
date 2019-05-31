@@ -1,15 +1,15 @@
 # Maintainer: David Birks <david@tellus.space>
 
 pkgname=doctl-bin
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='A command line tool for DigitalOcean services'
 url='https://github.com/digitalocean/doctl'
 license=('Apache')
 arch=('x86_64')
 conflicts=('doctl')
-source=("https://github.com/digitalocean/doctl/releases/download/v${pkgver}/doctl-${pkgver}-linux-amd64.tar.gz")
-sha512sums=('341f9ab6803e992ad14c62ad45498ad42d901d2764f05fe71c04e2923e3682cdd2584a2ac4a2392b673c4dc0588dfb470ae86435f1a74d85461a6ae1d5d8fad7')
+source=("https://github.com/digitalocean/doctl/releases/download/v$pkgver/doctl-$pkgver-linux-amd64.tar.gz")
+sha512sums=('495a68f1d0e1596565b3121bfad6789f2cc5473df92c5d431603416754739fe80a999ad1b3ec300e881cd5a0e6b017c05b12e1e89498659b291a314102a5f9f5')
 
 package() {
     install -Dm 755 "$srcdir/doctl" "$pkgdir/usr/bin/doctl"
