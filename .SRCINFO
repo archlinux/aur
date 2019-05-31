@@ -1,6 +1,6 @@
 pkgbase = libshout-git
 	pkgdesc = Library for accessing a shoutcast/icecast server
-	pkgver = 2.4.1.r22.g2dd6cfb
+	pkgver = 2.4.3.r0.g0496602
 	pkgrel = 1
 	url = https://libshout.freedesktop.org/wiki/
 	arch = i686
@@ -15,10 +15,8 @@ pkgbase = libshout-git
 	provides = libshout
 	conflicts = libshout
 	options = staticlibs
-	source = git+https://git.xiph.org/icecast-libshout.git
-	source = 0001-Fix-build-with-newer-openssl.patch
+	source = git+https://gitlab.xiph.org/xiph/icecast-libshout.git
 	sha256sums = SKIP
-	sha256sums = 742f1954c21ed5f8344dc1514507c981f445be0a7d4bdd2adaa73b0464f37a75
 
 pkgname = libshout-git
 

@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libshout-git
-pkgver=2.4.1.r22.g2dd6cfb
+pkgver=2.4.3.r0.g0496602
 pkgrel=1
 pkgdesc="Library for accessing a shoutcast/icecast server"
 arch=('i686' 'x86_64')
@@ -12,20 +12,16 @@ makedepends=('git')
 provides=('libshout')
 conflicts=('libshout')
 options=('staticlibs')
-source=("git+https://git.xiph.org/icecast-libshout.git"
-        "0001-Fix-build-with-newer-openssl.patch")
-sha256sums=('SKIP'
-            '742f1954c21ed5f8344dc1514507c981f445be0a7d4bdd2adaa73b0464f37a75')
+source=("git+https://gitlab.xiph.org/xiph/icecast-libshout.git")
+sha256sums=('SKIP')
 
 
 prepare() {
   cd "icecast-libshout"
 
-  sed -i 's|url = \.\.|url = https://git.xiph.org|' ".gitmodules"
+  sed -i 's|url = \.\.|url = https://gitlab.xiph.org/xiph|' ".gitmodules"
   git submodule sync
   git submodule update --init --recursive
-
-  patch -Np1 -i "$srcdir/0001-Fix-build-with-newer-openssl.patch"
 }
 
 pkgver() {
@@ -38,7 +34,8 @@ build() {
   cd "icecast-libshout"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
