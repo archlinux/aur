@@ -3,7 +3,7 @@
 
 pkgname=mgmt
 pkgver=0.0.19
-pkgrel=3
+pkgrel=1
 epoch=1
 pkgdesc='Next generation config management.'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
