@@ -13,6 +13,7 @@ pkgbase = liri-terminal-git
 	makedepends = git
 	makedepends = liri-cmake-shared-git
 	depends = qt5-gsettings-git
+	depends = fluid-git
 	depends = glib2
 	depends = dconf
 	provides = liri-terminal
