@@ -14,23 +14,23 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_
 sha256sums=('35c90698b55c683946091177177a9e9c0713a0860f0e049febd72649ccd77b70')
 
 prepare() {
-  cp -a AttrDict-$pkgver{,-py2}
+  cp -a attrdict-$pkgver{,-py2}
 }
 
 build() {
-  cd "${srcdir}"/AttrDict-${pkgver}
+  cd "${srcdir}"/attrdict-${pkgver}
   python setup.py build
 
-  cd "${srcdir}"/AttrDict-${pkgver}-py2
+  cd "${srcdir}"/attrdict-${pkgver}-py2
   python2 setup.py build
 }
 
 package_python-attrdict() {
-  cd AttrDict-${pkgver}
+  cd attrdict-${pkgver}
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-attrdict() {
-  cd AttrDict-${pkgver}-py2
+  cd attrdict-${pkgver}-py2
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
