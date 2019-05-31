@@ -2,7 +2,7 @@
 
 pkgbase=viennarna
 pkgname=('viennarna' 'python-rna' 'python2-rna' 'perl-rna')
-pkgver=2.4.12
+pkgver=2.4.13
 pkgrel=1
 pkgdesc="RNA Secondary Structure Prediction and Comparison"
 arch=('x86_64' 'i686')
@@ -13,16 +13,21 @@ makedepends=( 'perl'
               'python2'
               'python'
               'libtool'
-              'check')
+              'check'
+              'mpfr'
+              'gsl')
 source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.gz)
 
 options=('staticlibs' '!strip')
-
-sha256sums=('3fca7bd5fd1ed48b6c4551be653aa320373230a97904b35b5a3d7dda8b1ac232')
+sha256sums=('915c271b48536a3cc60b3109f11f7fd99dcd26d22621ee50f05e7f1c2f90cabe')
 
 build() {
   cd "${srcdir}/ViennaRNA-${pkgver}"
-  ./configure --with-cluster --prefix=/usr INSTALLDIRS=vendor
+  ./configure \
+      --with-cluster \
+      --with-kinwalker \
+      --prefix=/usr \
+      INSTALLDIRS=vendor
   make
 }
 
@@ -34,11 +39,15 @@ check() {
 
 package_viennarna() {
   depends=('perl'
-  	   'gsl'
-	   'mpfr')
-  optdepends=('gsl: use a variety of optimization methods in RNApvmin'
-              'gri: create 2D plots of secondary structure landscape with RNA2Dfold')
-  provides=('Kinfold=1.3' 'RNAforester=2.0' 'RNAlocmin=2.1' "viennarna2=${pkgver}" "libRNA=${pkgver}")
+           'mpfr'
+           'gsl')
+  optdepends=('gri: create 2D plots of secondary structure landscape with RNA2Dfold')
+  provides=('Kinfold=1.3'
+            'RNAforester=2.0'
+            'kinwalker=2.0'
+            "viennarna2=${pkgver}"
+            "libRNA=${pkgver}")
+  conflict=('kinwalker')
 
   cd "${srcdir}/ViennaRNA-${pkgver}"
 
@@ -54,6 +63,8 @@ package_viennarna() {
   make DESTDIR="${pkgdir}" install
   cd ../Cluster
   make DESTDIR="${pkgdir}" install
+  cd ../Kinwalker
+  make DESTDIR="${pkgdir}" install
   cd ../RNAlocmin
   make DESTDIR="${pkgdir}" install
   cd ../..
@@ -63,10 +74,12 @@ package_viennarna() {
   make DESTDIR="${pkgdir}" install
   cd ../..
 
-  # install manpages, documentation, and misc files
+  # install manpages, documentation, examples, and misc files
   cd man
   make DESTDIR="${pkgdir}" install
   cd ../doc
+  make DESTDIR="${pkgdir}" install
+  cd ../examples
   make DESTDIR="${pkgdir}" install
   cd ../misc
   make DESTDIR="${pkgdir}" install
