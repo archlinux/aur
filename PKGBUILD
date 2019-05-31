@@ -1,16 +1,17 @@
 # $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Cobalt Space <cobaltspace at protonmail dot com>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=laughlin-backgrounds
 pkgver=14.1.0
-pkgrel=4
-_rhver="${pkgver}-16.fc29"
+pkgrel=5
+_rhver="${pkgver}-17.fc30"
 pkgdesc="Fedora 14 (Laughlin) backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/Wallpapers#Fedora_14"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/l/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('92a7eb0d237f9a90c3c8d03ae79b8968785b176c92c475898a57c890d289f153')
+sha256sums=('b1003d31843906d4ed282bf1febe4945131f512530eead8a9cf1ce7eea2e61a5')
 
 prepare()  {
   tar -xv --lzma -f ./${pkgname}-${pkgver}.tar.lzma
