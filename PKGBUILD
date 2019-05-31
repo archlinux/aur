@@ -13,8 +13,8 @@ source=("https://github.com/odioapp/odio/releases/download/v${pkgver}/odio-${pkg
         odio.desktop.patch
         odio.sh)
 sha256sums=(SKIP
-         '90369800ea2f88f3d4c7304125c850efba630c0e7b97a68e50d84eb34421a25f'
-         'c68a609cb0c1eb91bec7dc6d38edc00bcf972b089f5440278f297be317ee23a4')
+         '2e393dc46cf88f98f91d19d5fe2487c185294e5b6004271064daf71c67e3eaaf'
+         '2565997eae175069af50e1eb6dafdb87cc17cb78f14da65dfd724815d522c0f7')
 options=(!strip)
 _filename=./odio-${pkgver}-${arch}.AppImage
 
@@ -22,7 +22,6 @@ prepare() {
   cd "${srcdir}"
   chmod +x ${_filename}
   ${_filename} --appimage-extract
-  #patch -Np0 < ./odio.desktop.patch
 }
 
 package() {
@@ -32,5 +31,5 @@ package() {
   install -dm755 "${pkgdir}/usr/share/"
   cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 
-  install -Dm644 "${srcdir}/squashfs-root/odio.desktop" "${pkgdir}/usr/share/applications/odio.desktop"
+  install -Dm644 "${srcdir}/odio.desktop.patch" "${pkgdir}/usr/share/applications/odio.desktop"
 }

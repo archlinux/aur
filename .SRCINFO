@@ -12,8 +12,8 @@ pkgbase = odio-appimage
 	source = odio.desktop.patch
 	source = odio.sh
 	sha256sums = SKIP
-	sha256sums = 90369800ea2f88f3d4c7304125c850efba630c0e7b97a68e50d84eb34421a25f
-	sha256sums = c68a609cb0c1eb91bec7dc6d38edc00bcf972b089f5440278f297be317ee23a4
+	sha256sums = 2e393dc46cf88f98f91d19d5fe2487c185294e5b6004271064daf71c67e3eaaf
+	sha256sums = 2565997eae175069af50e1eb6dafdb87cc17cb78f14da65dfd724815d522c0f7
 
 pkgname = odio-appimage
 

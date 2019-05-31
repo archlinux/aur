@@ -2,6 +2,6 @@
 Type=Application
 Name=Odio
 GenericName=Radio Player
-Icon=odio
+Icon=/usr/share/icons/hicolor/0x0/apps/odio.png
 Exec=/usr/bin/odio
 Categories=Audio;Music;Player;AudioVideo;
