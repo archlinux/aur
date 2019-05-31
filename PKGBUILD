@@ -18,6 +18,12 @@ md5sums=('SKIP')
 sha1sums=('SKIP')
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${srcdir}/${pkgbase}"
+
+  # Get the version number.
+  echo "${pkgbase}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
 package() {
   cd "${srcdir}/${pkgbase}"
