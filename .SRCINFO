@@ -10,6 +10,7 @@ pkgbase = liri-networkmanager-git
 	groups = liri-git
 	license = GPL3
 	makedepends = git
+	makedepends = qt5-tools
 	makedepends = liri-cmake-shared-git
 	depends = fluid-git
 	depends = networkmanager-qt
