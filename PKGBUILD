@@ -28,12 +28,12 @@ sha256sums=("895a658c6362026c46f54059e129fba362cf0a1385e8a7b974ac8adabcfcdd64")
 
 build() {
 	cd "rip-$pkgver"
-	cargo build --release --locked
+	cargo build --release
 }
 
 check() {
 	cd "rip-$pkgver"
-	cargo test --release --locked
+	cargo test --release
 }
 
 package() {
