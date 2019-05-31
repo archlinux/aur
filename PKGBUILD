@@ -31,7 +31,7 @@ build() {
 
 check() {
   cd "$srcdir/python3-build"
-  python setup.py test
+  python3 setup.py test
   cd "$srcdir/python2-build"
   python2 setup.py test
 }
