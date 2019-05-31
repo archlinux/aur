@@ -3,7 +3,7 @@ pkgbase=python-sncosmo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Python library for supernova cosmology"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'python2-setuptools' 'python-numpy' 'python2-nu
 checkdepends=('python-pytest-astropy' 'python-astropy' 'python2-astropy' 'python-extinction' 'python-iminuit')
 #'python2-pytest' 'python2-extinction' 'python-nestle')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('fdc70cb1f9c7d49397a7589829694162')
+md5sums=('09a3c9100ed1be411e832be2fb18c8d7')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
