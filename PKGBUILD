@@ -11,7 +11,7 @@ depends=('bash' 'curl' 'jq' 'gnu-netcat')
 makedepends=('git')
 license=('GPL')
 arch=('any')
-source=("https://github.com/Baitinq/geolocate")
+source=("https://github.com/Baitinq/geolocate.git")
 provides=('geolocate')
 
 md5sums=('SKIP')
