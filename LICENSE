@@ -1,14 +1,13 @@
-See http://www.screamingfrog.co.uk/seo-spider/terms-conditions/ for the most up to date version of this license
+See https://www.screamingfrog.co.uk/seo-spider/terms-conditions/ for the most up to date version of this license
 
-Please read this EULA carefully, as it sets out the terms and conditions upon which we license our Software for use.
 
 Before you download the Software from our website, we will ask you to give your express agreement to the terms and conditions of this EULA.
 
 If you do not agree to this EULA, you must not use the software for any purpose whatsoever.
 
-1.         Definitions and interpretation
+1. Definitions and interpretation
 
-1.1     In this EULA:
+1.1 In this EULA:
 
 “Computer” means a desktop, notebook, netbook or similar computer owned by and in the control of the Licensee;
 
@@ -22,7 +21,7 @@ If you do not agree to this EULA, you must not use the software for any purpose 
 
 “Licensee” means the licensee of the Software under this EULA;
 
-“Licensor” means Screaming Frog Ltd, a limited company incorporated in England and Wales (registration number 07277243) having its registered office at BEECHEY HOUSE, 87 CHURCH STREET, CROWTHORNE, BERKSHIRE, ENGLAND, RG45 7AW;
+“Licensor” means Screaming Frog Ltd, a limited company incorporated in England and Wales (registration number 07277243) having its registered office at 3 ACORN BUSINESS CENTRE, NORTHARBOUR ROAD, PORTSMOUTH, PO6 3TH;
 
 “Software” means Screaming Frog SEO Spider including following the application of any Upgrade; and
 
@@ -38,21 +37,21 @@ If you do not agree to this EULA, you must not use the software for any purpose 
 
 1.4     The ejusdem generis rule is not intended to be used in the interpretation of this EULA.
 
-2.         Term of EULA
+2. Term of EULA
 
 This EULA will come into force on the Effective Date and will continue in force indefinitely, unless and until terminated in accordance with Clause 9.
 
-3.         Licence
+3. Licence
 
-3.1     The Licensee may use the Software for the Licensee’s business, internal business and / or own private and non-commercial purposes and in accordance with the provisions of this Clause 3.
+3.1  The Licensee may use the Software for the Licensee’s business, internal business and / or own private and non-commercial purposes and in accordance with the provisions of this Clause 3.
 
 3.2     Subject to the payment by the Licensee of the relevant charges and fees in respect of the Software licence, and the Licensee’s compliance with Clause 3.4 and the other provisions of this EULA, the Licensor grants to the Licensee a non-exclusive non-transferable licence to:
 
 (a)      download the Software;
 
-(b)      install 1 instance of the Software on one desktop computer and 1 portable (laptop) computer on the condition that only the single authorised licence holder will operate the products. A single licence does not permit the licensee to install the product on a network or a shared drive for use by more than one user.
+(b)      install the Software on computers that are owned or controlled by the licensee on the condition that only the single authorised licence holder will operate the products at any time. A single licence does not permit the licensee to install the product on a network or a shared drive for use by more than one user. A single Authorised Licence is identified as a single Username with a single Authorised Licence Key.
 
-(c)      use 1 instance of the Software anywhere in the world;
+(c)      use 1 instance of the Software anywhere in the world at any one time;
 
 3.3     Subject to the payment by the Licensee of the relevant charges and fees in respect of the Software licence, and the Licensee’s compliance with Clause 3.4 and the other provisions of this EULA, the Licensor further grants to the Licensee the rights to:
 
@@ -68,19 +67,15 @@ This EULA will come into force on the Effective Date and will continue in force 
 
 (d)      reverse engineer, decompile, disassemble the Software  or any part of the Software;
 
-(e)      circumvent or remove or attempt to circumvent or remove the technological measures applied to the Software for the purposes of preventing unauthorised use,
+(e)      circumvent or remove or attempt to circumvent or remove the technological measures applied to the Software for the purposes of preventing unauthorised use, providing that nothing in this Clause 3.4 will prohibit or restrict the Licensee or any other person from doing any act expressly permitted by applicable law (including any act expressly permitted by Section 296A of the Copyright, Designs and Patents Act 1988).
 
-providing that nothing in this Clause 3.4 will prohibit or restrict the Licensee or any other person from doing any act expressly permitted by applicable law (including any act expressly permitted by Section 296A of the Copyright, Designs and Patents Act 1988).
+(f)      use the Software to create any automated tool or service capable of being accessed by anyone other than the Licensee.
 
 3.5     All Intellectual Property Rights in the Software are and will remain, as between the parties, the property of the Licensor.
 
-3.6     The Licensee must provide to the Licensor, or procure for the Licensee, upon reasonable notice and during normal business hours, reasonable access to:
+3.6 The Licensee must comply with the terms & conditions of any 3rd party API or other data providers utilised.
 
-(a)      any Computers and/or media upon which the Software is / are stored, installed or used; and
-
-(b)      any premises at which any such Computer and/or media is situated from time to time,
-
-for the purpose of the investigating whether the Licensee is complying with the terms of this EULA.
+3.7 The Licensee accepts the Licensor’s privacy policy which is available at https://www.screamingfrog.co.uk/privacy/
 
 4.         Other Users
 
@@ -136,9 +131,7 @@ The Licensee must not permit any other person to use the Software  or to exercis
 
 (c)      limit any liability of a party in any way that is not permitted under applicable law; or
 
-(d)      exclude any liability of a party that may not be excluded under applicable law,
-
-and, if you are a consumer, any statutory rights which you have, which cannot be excluded or limited, will not be affected by the EULA.
+(d)      exclude any liability of a party that may not be excluded under applicable law, and, if you are a consumer, any statutory rights which you have, which cannot be excluded or limited, will not be affected by the EULA.
 
 8.2     The limitations and exclusions of liability set out in this Clause 8:
 
@@ -150,15 +143,15 @@ and, if you are a consumer, any statutory rights which you have, which cannot be
 
 8.4     The Licensor will not be liable to the Licensee in respect of any business losses, such as loss of or damage to profits, income, revenue, use, production, anticipated savings, business, contracts, commercial opportunities or goodwill.
 
-8.5     Where the Licensee is a business customer, the Licensor will not be liable to the Licensee in respect of any loss or corruption of any data, database or software.
+8.5    The Licensor will not be liable to the Licensee in respect of any loss or corruption of any data, database or software.
 
-8.6     Where the Licensee is a business customer, the Licensor will not be liable to the Licensee in respect of any special, indirect or consequential loss or damage.
+8.6     The Licensor will not be liable to the Licensee in respect of any special, indirect or consequential loss or damage.
 
-8.7     Where the Licensee is a business customer, the Licensor’s aggregate liability to the Licensee will not exceed the greater of:
+8.7     The Licensor’s aggregate liability to the Licensee will not exceed the greater of:
 
 (a) the price paid by you for the particular software item giving rise to the damage, or
 
-(b) one hundred pounds (£100)
+(b) one hundred and forty nine pounds (£149)
 
 9.         Termination
 
@@ -195,3 +188,5 @@ This EULA will terminate immediately and if:
 11.5    This EULA constitutes the entire agreement and understanding of the parties in relation to the subject matter of this EULA, and supersedes all previous agreements, arrangements and understandings between the parties relating to the subject matter of this EULA.  Subject to Clause 8.1, each party acknowledges that no representations or promises not expressly contained in this EULA have been made by or on behalf of the other party.
 
 11.6    This EULA will be governed by and construed in accordance with the laws of England and Wales; and the courts of England will have exclusive jurisdiction to adjudicate any dispute arising under or in connection with this EULA.
+
+Last updated 28th Sep 2018
