@@ -1,0 +1,1726 @@
+diff -ruN cdcat-2.3.1/src/adddialog.cpp cdcat-2.3.1.work/src/adddialog.cpp
+--- cdcat-2.3.1/src/adddialog.cpp	2013-08-08 09:25:39.000000000 +0200
++++ cdcat-2.3.1.work/src/adddialog.cpp	2019-05-31 21:12:17.534111036 +0200
+@@ -12,16 +12,16 @@
+ #include "dbase.h"
+ 
+ #include <qvariant.h>
+-#include <qcombobox.h>
+-#include <qlabel.h>
+-#include <qlineedit.h>
+-#include <qpushbutton.h>
+-#include <qspinbox.h>
+-#include <qcheckbox.h>
++#include <QComboBox>
++#include <QLabel>
++#include <QLineEdit>
++#include <QPushButton>
++#include <QSpinBox>
++#include <QCheckBox>
+ #include <QTextEdit>
+-#include <qlayout.h>
+-#include <qtooltip.h>
+-#include <qmessagebox.h>
++#include <QLayout>
++#include <QToolTip>
++#include <QMessageBox>
+ #include <qimage.h>
+ #include <qpixmap.h>
+ #include <qfile.h>
+@@ -29,9 +29,9 @@
+ #include <qfileinfo.h>
+ #include <qpainter.h>
+ #include <qdatetime.h>
+-#include <qapplication.h>
++#include <QApplication>
+ #include <qfontmetrics.h>
+-#include <qfiledialog.h>
++#include <QFileDialog>
+ #include <QHBoxLayout>
+ #include <QPaintEvent>
+ #include <QGridLayout>
+@@ -49,7 +49,7 @@
+ #include "misc.h"
+ #include "selreadable.h"
+ 
+-addDialog::addDialog ( GuiSlave *c, QWidget* parent, const char* name, bool modal, Qt::WFlags fl )
++addDialog::addDialog ( GuiSlave *c, QWidget* parent, const char* name, bool modal, Qt::WindowFlags fl )
+ 	: QDialog ( parent, fl ) {
+ 	int i;
+ 	setModal(modal);
+@@ -59,7 +59,7 @@
+ 		setObjectName ( "addDialog" );
+ 	setWindowIcon ( *get_t_add_icon() );
+ 
+-	setSizeGripEnabled ( TRUE );
++	setSizeGripEnabled ( true );
+ 	addDialogLayout = new QGridLayout ( this );
+ 
+ 	layout10 = new QVBoxLayout ( this );
+@@ -717,7 +717,7 @@
+ 	setObjectName ( "addlnkdialog" );
+ 	setWindowIcon ( *get_p_icon_big() );
+ 
+-	setSizeGripEnabled ( TRUE );
++	setSizeGripEnabled ( true );
+ 
+ 	vbox  = new QVBoxLayout ( this );
+ 
+diff -ruN cdcat-2.3.1/src/adddialog.h cdcat-2.3.1.work/src/adddialog.h
+--- cdcat-2.3.1/src/adddialog.h	2012-05-12 20:51:53.000000000 +0200
++++ cdcat-2.3.1.work/src/adddialog.h	2019-05-31 21:09:09.910268205 +0200
+@@ -12,17 +12,17 @@
+ 
+ #include <qvariant.h>
+ #include <qpixmap.h>
+-#include <qdialog.h>
+ #include <qdatetime.h>
+ #include <QList>
++#include <QDialog>
+ #include <QGridLayout>
+ #include <QHBoxLayout>
+ #include <QVBoxLayout>
+ #include <QLabel>
+-#include <QMouseEvent>
+-#include <QPaintEvent>
+ #include <QCheckBox>
+ #include <QPushButton>
++#include <QMouseEvent>
++#include <QPaintEvent>
+ 
+ class QVBoxLayout;
+ class QHBoxLayout;
+@@ -44,7 +44,7 @@
+ 
+ public:
+ 
+-    addDialog ( GuiSlave *c,QWidget* parent = 0, const char* name = 0, bool modal = FALSE, Qt::WFlags fl = 0 );
++    addDialog ( GuiSlave *c,QWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0 );
+     ~addDialog();
+ 
+     int volumename;
+diff -ruN cdcat-2.3.1/src/borrow.cpp cdcat-2.3.1.work/src/borrow.cpp
+--- cdcat-2.3.1/src/borrow.cpp	2013-08-25 16:01:29.000000000 +0200
++++ cdcat-2.3.1.work/src/borrow.cpp	2019-05-31 21:12:40.187505886 +0200
+@@ -15,18 +15,18 @@
+ #include "cdcat.h"
+ 
+ #include <qvariant.h>
+-#include <qlabel.h>
++#include <QLabel>
+ #include <qpoint.h>
+ #include <QMenu>
+-#include <qlineedit.h>
+-#include <qpushbutton.h>
+-#include <qlayout.h>
+-#include <qtooltip.h>
+-#include <qcheckbox.h>
++#include <QLineEdit>
++#include <QPushButton>
++#include <QLayout>
++#include <QToolTip>
++#include <QCheckBox>
+ #include <QTableWidget>
+ #include <QTableWidgetItem>
+ #include <QHeaderView>
+-#include <qmessagebox.h>
++#include <QMessageBox>
+ #include <qimage.h>
+ #include <qpixmap.h>
+ #include <QHBoxLayout>
+@@ -34,14 +34,14 @@
+ 
+ char *buff = NULL;
+ 
+-borrowDialog::borrowDialog ( QString mname, QWidget* parent, const char* name, bool modal, Qt::WFlags fl )
++borrowDialog::borrowDialog ( QString mname, QWidget* parent, const char* name, bool modal, Qt::WindowFlags fl )
+ 	: QDialog ( parent, fl )
+ 
+ {
+ 	ok = 0;
+ 	setModal(modal);
+ 	setWindowTitle ( tr ( "Borrowing..." ) );
+-	setSizeGripEnabled ( TRUE );
++	setSizeGripEnabled ( true );
+ 	setWindowIcon ( *get_t_sborrow_icon() );
+ 
+ 	borrowDialogLayout = new QVBoxLayout ( this );
+@@ -122,7 +122,7 @@
+ ** CLASS borrowingDialog
+ ****************************************************************************/
+ 
+-borrowingDialog::borrowingDialog ( DataBase *dbp, QWidget* parent, const char* name, bool modal, Qt::WFlags fl )
++borrowingDialog::borrowingDialog ( DataBase *dbp, QWidget* parent, const char* name, bool modal, Qt::WindowFlags fl )
+ 	: QDialog ( parent, fl )
+ 
+ {
+@@ -133,7 +133,7 @@
+ 	this->parent = parent;
+ 	if ( !name )
+ 		 setWindowTitle( "borrowingDialog" );
+-	setSizeGripEnabled ( TRUE );
++	setSizeGripEnabled ( true );
+ 	setWindowIcon ( *get_m_borrow_icon() );
+ 	borrowingDialogLayout = new QVBoxLayout ( this );
+ 	
+@@ -299,7 +299,7 @@
+ 		num++;
+ 	}
+ 	
+-	table->setSortingEnabled ( FALSE );
++	table->setSortingEnabled ( false );
+ 	//table->setSelectionMode ( QTableWidget::NoSelection );
+ 	
+ 	return 0;
+diff -ruN cdcat-2.3.1/src/borrow.h cdcat-2.3.1.work/src/borrow.h
+--- cdcat-2.3.1/src/borrow.h	2012-04-10 21:08:53.000000000 +0200
++++ cdcat-2.3.1.work/src/borrow.h	2019-05-31 21:09:03.500250802 +0200
+@@ -11,7 +11,7 @@
+ #define BORROW_H
+ 
+ #include <qvariant.h>
+-#include <qdialog.h>
++#include <QDialog>
+ #include <QVBoxLayout>
+ #include <QGridLayout>
+ #include <QHBoxLayout>
+@@ -37,7 +37,7 @@
+ public:
+     QString m;
+     int ok;
+-    borrowDialog ( QString mname,QWidget* parent = 0, const char* name = 0, bool modal = FALSE, Qt::WFlags fl = 0 );
++    borrowDialog ( QString mname,QWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0 );
+     ~borrowDialog();
+ 
+     QLabel* textLabel;
+@@ -65,7 +65,7 @@
+ 
+ public:
+     int ch;
+-    borrowingDialog ( DataBase *dbp, QWidget* parent = 0, const char* name = 0, bool modal = FALSE, Qt::WFlags fl = 0 );
++    borrowingDialog ( DataBase *dbp, QWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0 );
+     ~borrowingDialog();
+ 
+     DataBase *db;
+diff -ruN cdcat-2.3.1/src/cdcat.cpp cdcat-2.3.1.work/src/cdcat.cpp
+--- cdcat-2.3.1/src/cdcat.cpp	2013-08-13 10:46:04.000000000 +0200
++++ cdcat-2.3.1.work/src/cdcat.cpp	2019-05-31 21:12:56.180882647 +0200
+@@ -14,8 +14,8 @@
+ 
+ #include <qtextcodec.h>
+ #include <qfont.h>
+-#include <qapplication.h>
+-#include <qmessagebox.h>
++#include <QApplication>
++#include <QMessageBox>
+ #include <qdir.h>
+ #include <QList>
+ 
+@@ -61,9 +61,7 @@
+ 	qInstallMsgHandler(myMessageOutput);
+ #endif
+ 	
+-	QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
+ 	QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
+-	QTextCodec::setCodecForTr ( QTextCodec::codecForName ( "UTF-8" ) );
+ 	
+ 	QApplication app ( argi, argc );
+ 	
+diff -ruN cdcat-2.3.1/src/cdcat_pch.h cdcat-2.3.1.work/src/cdcat_pch.h
+--- cdcat-2.3.1/src/cdcat_pch.h	2012-04-10 01:24:26.000000000 +0200
++++ cdcat-2.3.1.work/src/cdcat_pch.h	2019-05-31 21:29:34.012237585 +0200
+@@ -57,7 +57,6 @@
+ #include <qmenubar.h>
+ #include <QMessageBox>
+ #include <qmessagebox.h>
+-#include <qmime.h>
+ #include <QMouseEvent>
+ #include <qobject.h>
+ #include <qpainter.h>
+@@ -108,4 +107,4 @@
+ #include <QtXml/QXmlLocator>
+ #include <qvariant.h>
+ #include <qwidget.h>
+-#endif
+\ No hay ningún carácter de nueva línea al final del fichero
++#endif
+diff -ruN cdcat-2.3.1/src/cdcat.pro cdcat-2.3.1.work/src/cdcat.pro
+--- cdcat-2.3.1/src/cdcat.pro	2013-09-29 10:44:34.000000000 +0200
++++ cdcat-2.3.1.work/src/cdcat.pro	2019-05-31 20:59:37.328713677 +0200
+@@ -101,7 +101,7 @@
+ 	
+ 	###### encryption
+ 	DEFINES += CATALOG_ENCRYPTION
+-	LIBS+= c:/libs/libcrypto++.a -lpthread
++	LIBS+= c:/libs/libcryptopp.a -lpthread
+ 	###### end encryption
+ 
+ 	# enable if cdcat should made console output
+@@ -226,7 +226,7 @@
+ 	
+ 	###### encryption
+ 	DEFINES += CATALOG_ENCRYPTION
+-	LIBS+= -lcrypto++ -lpthread
++	LIBS+= -lcryptopp -lpthread
+ 	###### end encryption
+ 
+ 	LIBS       += -lz -lbz2 -ldl
+@@ -243,6 +243,6 @@
+ FORMS      	    = help.ui
+ TARGET          = cdcat
+ INSTALLS += target translations distfiles
+-QT += xml
++QT += xml widgets printsupport
+ CONFIG += uic
+ 
+diff -ruN cdcat-2.3.1/src/colorsettings.cpp cdcat-2.3.1.work/src/colorsettings.cpp
+--- cdcat-2.3.1/src/colorsettings.cpp	2013-08-25 16:27:58.000000000 +0200
++++ cdcat-2.3.1.work/src/colorsettings.cpp	2019-05-31 21:13:23.437623325 +0200
+@@ -10,14 +10,14 @@
+ #include "colorsettings.h"
+ 
+ #include <qvariant.h>
+-#include <qcombobox.h>
++#include <QComboBox>
+ #include <QFrame>
+ #include <QGroupBox>
+-#include <qlabel.h>
+-#include <qpushbutton.h>
+-#include <qspinbox.h>
+-#include <qlayout.h>
+-#include <qtooltip.h>
++#include <QLabel>
++#include <QPushButton>
++#include <QSpinBox>
++#include <QLayout>
++#include <QToolTip>
+ #include <qimage.h>
+ #include <qpixmap.h>
+ #include <qevent.h>
+@@ -83,7 +83,7 @@
+ 
+ 
+ 
+-ColorSettings::ColorSettings ( CdCatConfig *cfgp, QWidget* parent, const char* name, bool modal, Qt::WFlags fl )
++ColorSettings::ColorSettings ( CdCatConfig *cfgp, QWidget* parent, const char* name, bool modal, Qt::WindowFlags fl )
+         : QDialog ( parent, fl ) {
+     if ( !name )
+         setObjectName ( "ColorSettings" );
+@@ -91,7 +91,7 @@
+ 
+     cfg=cfgp;
+     setWindowIcon ( *get_t_colorconfig_icon() );
+-    setSizeGripEnabled ( TRUE );
++    setSizeGripEnabled ( true );
+     ColorSettingsLayout = new QVBoxLayout (this );
+ 
+     preview = new ColorSchemePreview ( this );
+diff -ruN cdcat-2.3.1/src/colorsettings.h cdcat-2.3.1.work/src/colorsettings.h
+--- cdcat-2.3.1/src/colorsettings.h	2012-04-11 07:51:59.000000000 +0200
++++ cdcat-2.3.1.work/src/colorsettings.h	2019-05-31 21:09:07.110260602 +0200
+@@ -13,7 +13,7 @@
+ 
+ #include <qvariant.h>
+ #include <qpixmap.h>
+-#include <qdialog.h>
++#include <QDialog>
+ #include <QFrame>
+ #include <QGridLayout>
+ #include <QHBoxLayout>
+@@ -69,7 +69,7 @@
+     QColor bg,ts,td,fr;
+     int current;
+ 
+-    ColorSettings ( CdCatConfig *cfgp, QWidget* parent = 0, const char* name = 0, bool modal = FALSE, Qt::WFlags fl = 0 );
++    ColorSettings ( CdCatConfig *cfgp, QWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0 );
+     ~ColorSettings();
+ 
+ 
+diff -ruN cdcat-2.3.1/src/commwidget.cpp cdcat-2.3.1.work/src/commwidget.cpp
+--- cdcat-2.3.1/src/commwidget.cpp	2013-08-25 16:30:06.000000000 +0200
++++ cdcat-2.3.1.work/src/commwidget.cpp	2019-05-31 21:13:49.597694371 +0200
+@@ -10,16 +10,16 @@
+ #include "commwidget.h"
+ 
+ #include <qimage.h>
+-#include <qwidget.h>
++#include <QWidget>
+ #include <qpainter.h>
+ #include <qimage.h>
+-#include <qtoolbutton.h>
++#include <QToolButton>
+ #include <qvariant.h>
+-#include <qpushbutton.h>
++#include <QPushButton>
+ #include <QTextEdit>
+-#include <qlayout.h>
+-#include <qtooltip.h>
+-#include <qstringlist.h>
++#include <QLayout>
++#include <QToolTip>
++#include <QStringList>
+ #include <qregexp.h>
+ #include <QHBoxLayout>
+ #include <QPaintEvent>
+@@ -62,7 +62,7 @@
+ 	QApplication::setOverrideCursor ( Qt::PointingHandCursor );
+ }
+ 
+-CommentWidget::CommentWidget ( CdCatConfig *cc, QApplication *appl, QWidget *parent, const char *name, Qt::WFlags fl )
++CommentWidget::CommentWidget ( CdCatConfig *cc, QApplication *appl, QWidget *parent, const char *name, Qt::WindowFlags fl )
+ 	: QWidget ( parent, fl ) {
+ 	if ( !name )
+ 		setObjectName ( "CommentWidget" );
+@@ -979,7 +979,7 @@
+ 
+ /****************************************************************************************/
+ 
+-commentEdit::commentEdit ( QString cc, CdCatConfig *cconfig, QWidget *parent, const char *name, bool modal, bool isCommentEdit, Qt::WFlags fl )
++commentEdit::commentEdit ( QString cc, CdCatConfig *cconfig, QWidget *parent, const char *name, bool modal, bool isCommentEdit, Qt::WindowFlags fl )
+ 	: QDialog ( parent, fl )
+ 
+ {
+@@ -993,7 +993,7 @@
+ 	setWindowIcon ( *get_t_comment_icon() );
+ 
+ 	setBaseSize ( QSize ( 300, 150 ) );
+-	setSizeGripEnabled ( TRUE );
++	setSizeGripEnabled ( true );
+ 	CommentEditBaseLayout = new QGridLayout ( this );
+ 
+ 	layout5 = new QVBoxLayout (this);
+@@ -1007,13 +1007,13 @@
+ 
+ 	buttonOk = new QPushButton ( this );
+ 	buttonOk->setMinimumSize ( QSize ( 80, 0 ) );
+-	buttonOk->setAutoDefault ( TRUE );
+-	buttonOk->setDefault ( TRUE );
++	buttonOk->setAutoDefault ( true );
++	buttonOk->setDefault ( true );
+ 	layout4->addWidget ( buttonOk );
+ 
+ 	buttonCancel = new QPushButton ( this );
+ 	buttonCancel->setMinimumSize ( QSize ( 80, 0 ) );
+-	buttonCancel->setAutoDefault ( TRUE );
++	buttonCancel->setAutoDefault ( true );
+ 	layout4->addWidget ( buttonCancel );
+ 	QSpacerItem *spacer_2 = new QSpacerItem ( 120, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+ 	layout4->addItem ( spacer_2 );
+diff -ruN cdcat-2.3.1/src/commwidget.h cdcat-2.3.1.work/src/commwidget.h
+--- cdcat-2.3.1/src/commwidget.h	2012-04-11 07:51:59.000000000 +0200
++++ cdcat-2.3.1.work/src/commwidget.h	2019-05-31 21:09:09.313599919 +0200
+@@ -10,11 +10,11 @@
+ #ifndef COMMENTWIDGET_H
+ #define COMMENTWIDGET_H
+ 
+-#include <qwidget.h>
++#include <QWidget>
+ #include <qimage.h>
+ #include <qvariant.h>
+-#include <qdialog.h>
+-#include <qtoolbutton.h>
++#include <QDialog>
++#include <QToolButton>
+ #include <QPixmap>
+ #include <QResizeEvent>
+ #include <QGridLayout>
+@@ -53,7 +53,7 @@
+ 
+ public:
+ 
+-    CommentWidget ( CdCatConfig * cc,QApplication *appl, QWidget *parent=0, const char *name=0, Qt::WFlags fl=0 );
++    CommentWidget ( CdCatConfig * cc,QApplication *appl, QWidget *parent=0, const char *name=0, Qt::WindowFlags fl=0 );
+     
+     CdCatConfig * cconfig;
+     HQToolButton* ButtonEdit;
+@@ -100,7 +100,7 @@
+     Q_OBJECT
+ 
+ public:
+-    commentEdit ( QString cc, CdCatConfig *cconfig = NULL, QWidget* parent = 0, const char* name = 0, bool modal = FALSE, bool isCommentEdit=true, Qt::WFlags fl = 0 );
++    commentEdit ( QString cc, CdCatConfig *cconfig = NULL, QWidget* parent = 0, const char* name = 0, bool modal = false, bool isCommentEdit=true, Qt::WindowFlags fl = 0 );
+     ~commentEdit();
+ 
+     QTextEdit* teComm;
+diff -ruN cdcat-2.3.1/src/config.cpp cdcat-2.3.1.work/src/config.cpp
+--- cdcat-2.3.1/src/config.cpp	2013-08-25 17:06:23.000000000 +0200
++++ cdcat-2.3.1.work/src/config.cpp	2019-05-31 21:14:11.707754413 +0200
+@@ -10,24 +10,24 @@
+ #include "config.h"
+ 
+ #include <qstring.h>
+-#include <qmessagebox.h>
+-#include <qwidget.h>
++#include <QMessageBox>
++#include <QWidget>
+ #include <qvariant.h>
+-#include <qcheckbox.h>
+-#include <qfiledialog.h>
+-#include <qlineedit.h>
+-#include <qpushbutton.h>
+-#include <qlayout.h>
+-#include <qtooltip.h>
+-#include <qlabel.h>
+-#include <qspinbox.h>
++#include <QCheckBox>
++#include <QFileDialog>
++#include <QLineEdit>
++#include <QPushButton>
++#include <QLayout>
++#include <QToolTip>
++#include <QLabel>
++#include <QSpinBox>
+ #include <qfile.h>
+ #include <qfont.h>
+ #include <qcolor.h>
+ #include <QFrame>
+ #include <qtextstream.h>
+-#include <qcombobox.h>
+-#include <qgroupbox.h>
++#include <QComboBox>
++#include <QGroupBox>
+ #include <QHBoxLayout>
+ #include <QGridLayout>
+ 
+@@ -1352,7 +1352,7 @@
+ }
+ 
+ /************************************************************************************/
+-ConfigDialog::ConfigDialog ( CdCatMainWidget* parent, const char* name, bool modal, Qt::WFlags fl )
++ConfigDialog::ConfigDialog ( CdCatMainWidget* parent, const char* name, bool modal, Qt::WindowFlags fl )
+ 	: QDialog ( parent, fl ) {
+ 	if ( !name )
+ 		setObjectName ( "ConfigDialog" );
+@@ -1360,7 +1360,7 @@
+ 	setModal(modal);
+ 	p = parent;
+ 	
+-	setSizeGripEnabled ( TRUE );
++	setSizeGripEnabled ( true );
+ 	ConfigDialogBaseLayout = new QGridLayout ( this );
+ 	
+ 	layout1 = new QHBoxLayout ( this );
+@@ -1368,7 +1368,7 @@
+ 	filename = new QLineEdit ( this );
+ 	searchButton = new QPushButton ( this );
+ 	searchButton->setText ( "..." );
+-	searchButton->setFlat ( FALSE );
++	searchButton->setFlat ( false );
+ 	
+ 	layout1->addWidget ( cbAutoload );
+ 	
+@@ -1432,7 +1432,7 @@
+ 	layout5->addWidget ( cdrom_lab );
+ 	searchButton2 = new QPushButton ( this );
+ 	searchButton2->setText ( "..." );
+-	searchButton2->setFlat ( FALSE );
++	searchButton2->setFlat ( false );
+ 	layout5->addWidget ( searchButton2 );
+ 	ConfigDialogBaseLayout->addLayout ( layout5, 10, 0 );
+ 	
+@@ -1529,13 +1529,13 @@
+ 	
+ 	okButton = new QPushButton ( this );
+ 	okButton->setMinimumSize ( QSize ( 100, 0 ) );
+-	okButton->setAutoDefault ( TRUE );
+-	okButton->setDefault ( TRUE );
++	okButton->setAutoDefault ( true );
++	okButton->setDefault ( true );
+ 	layout7->addWidget ( okButton );
+ 	
+ 	cancelButton = new QPushButton ( this );
+ 	cancelButton->setMinimumSize ( QSize ( 100, 0 ) );
+-	cancelButton->setAutoDefault ( TRUE );
++	cancelButton->setAutoDefault ( true );
+ 	layout7->addWidget ( cancelButton );
+ 	QSpacerItem* spacer_2 = new QSpacerItem ( 130, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+ 	layout7->addItem ( spacer_2 );
+diff -ruN cdcat-2.3.1/src/config.h cdcat-2.3.1.work/src/config.h
+--- cdcat-2.3.1/src/config.h	2013-08-25 17:06:23.000000000 +0200
++++ cdcat-2.3.1.work/src/config.h	2019-05-31 21:09:03.930251969 +0200
+@@ -13,7 +13,7 @@
+ #include <qstring.h>
+ #include <qvariant.h>
+ #include <qobject.h>
+-#include <qdialog.h>
++#include <QDialog>
+ #include <qstringlist.h>
+ #include <QHBoxLayout>
+ #include <QGridLayout>
+@@ -195,7 +195,7 @@
+ 		Q_OBJECT
+ 
+ 	public:
+-		ConfigDialog ( CdCatMainWidget* parent = 0, const char* name = 0, bool modal = FALSE, Qt::WFlags fl = 0 );
++		ConfigDialog ( CdCatMainWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0 );
+ 		~ConfigDialog();
+ 		
+ 		CdCatMainWidget *p;
+diff -ruN cdcat-2.3.1/src/dbase.cpp cdcat-2.3.1.work/src/dbase.cpp
+--- cdcat-2.3.1/src/dbase.cpp	2013-08-30 09:31:42.000000000 +0200
++++ cdcat-2.3.1.work/src/dbase.cpp	2019-05-31 21:14:32.637811241 +0200
+@@ -9,7 +9,7 @@
+ 
+ #include <qdatetime.h>
+ #include <qfileinfo.h>
+-#include <qmessagebox.h>
++#include <QMessageBox>
+ #include <qdir.h>
+ #include <qfile.h>
+ #include <qregexp.h>
+diff -ruN cdcat-2.3.1/src/dirview.cpp cdcat-2.3.1.work/src/dirview.cpp
+--- cdcat-2.3.1/src/dirview.cpp	2013-09-15 13:53:58.000000000 +0200
++++ cdcat-2.3.1.work/src/dirview.cpp	2019-05-31 21:28:18.352079942 +0200
+@@ -13,10 +13,9 @@
+ #include <qpixmap.h>
+ #include <qevent.h>
+ #include <qpoint.h>
+-#include <qmessagebox.h>
+-#include <qmime.h>
++#include <QMessageBox>
+ #include <qstringlist.h>
+-#include <qapplication.h>
++#include <QApplication>
+ #include <qobject.h>
+ #include <QMouseEvent>
+ 
+@@ -84,12 +83,12 @@
+ 		QString s ( fullName() );
+ 		QDir thisDir ( s );
+ 		if ( !thisDir.isReadable() ) {
+-			readable = FALSE;
+-			// setExpandable ( FALSE ); // FIXME
++			readable = false;
++			// setExpandable ( false ); // FIXME
+ 			return;
+ 		}
+ 
+-		//listView()->setUpdatesEnabled ( FALSE ); //FIXME
++		//listView()->setUpdatesEnabled ( false ); //FIXME
+ 		QFileInfoList files ( thisDir.entryInfoList() );
+ 		if ( files.size() > 0 ) {
+ 			for ( int i = 0; i < files.size(); ++i ) {
+@@ -112,14 +111,14 @@
+ 		else {
+ 			setChildIndicatorPolicy(QTreeWidgetItem::DontShowIndicator);
+ 		}
+-		//listView()->setUpdatesEnabled ( TRUE ); //FIXME
++		//listView()->setUpdatesEnabled ( true ); //FIXME
+ 	}
+ 	QTreeWidgetItem::setExpanded ( o );
+ }
+ 
+ 
+ void Directory::setup() {
+-	//setExpandable ( TRUE );
++	//setExpandable ( true );
+ 	//QTreeWidgetItem::setup();
+ }
+ 
+@@ -156,7 +155,7 @@
+  *****************************************************************************/
+ 
+ DirectoryView::DirectoryView ( QWidget *parent, const char * )
+-	: QTreeWidget ( parent ),  oldCurrent ( 0 ), dropItem ( 0 ), mousePressed ( FALSE ) {
++	: QTreeWidget ( parent ),  oldCurrent ( 0 ), dropItem ( 0 ), mousePressed ( false ) {
+ 
+ // 	autoopen_timer = new QTimer ( this );
+ 	
+@@ -175,8 +174,8 @@
+ 	connect (this, SIGNAL( itemExpanded(QTreeWidgetItem*)), this, SLOT(itemExpanded(QTreeWidgetItem*)));
+ 	connect (this, SIGNAL( itemCollapsed(QTreeWidgetItem*)), this, SLOT(itemCollapsed(QTreeWidgetItem*)));
+ 
+-	setAcceptDrops ( TRUE );
+-	viewport()->setAcceptDrops ( TRUE );
++	setAcceptDrops ( true );
++	viewport()->setAcceptDrops ( true );
+ 
+ // 	connect ( autoopen_timer, SIGNAL ( timeout() ),
+ // 	          this, SLOT ( openFolder() ) );
+@@ -294,7 +293,7 @@
+ // 		                treeStepSize() * ( i->depth() + ( rootIsDecorated() ? 1 : 0 ) ) + itemMargin() ||
+ // 		                p.x() < header()->cellPos ( header()->mapToActual ( 0 ) ) ) {
+ // 			presspos = e->pos();
+-// 			mousePressed = TRUE;
++// 			mousePressed = true;
+ // 		}
+ // 	} // FIXME
+ 
+@@ -302,7 +301,7 @@
+ 
+ 
+ void DirectoryView::contentsMouseReleaseEvent ( QMouseEvent * ) {
+-	mousePressed = FALSE;
++	mousePressed = false;
+ }
+ 
+ void DirectoryView::setDir ( const QString &s ) {
+diff -ruN cdcat-2.3.1/src/dmetaph.cpp cdcat-2.3.1.work/src/dmetaph.cpp
+--- cdcat-2.3.1/src/dmetaph.cpp	2013-08-25 16:54:04.000000000 +0200
++++ cdcat-2.3.1.work/src/dmetaph.cpp	2019-05-31 20:25:32.219316384 +0200
+@@ -33,9 +33,9 @@
+ bool MString::SlavoGermanic() {
+ 
+ 	if ( ( indexOf ( 'W' ) > -1 ) OR ( indexOf ( 'K' ) > -1 ) OR ( indexOf ( "CZ" ) > -1 ) OR ( indexOf ( "WITZ" ) > -1 ) )
+-		return TRUE;
++		return true;
+ 
+-	return FALSE;
++	return false;
+ }
+ 
+ ////////////////////////////////////////////////////////////////////////////////
+@@ -72,7 +72,7 @@
+ 	if ( *main )
+ 		primary += main;
+ 	if ( *alt ) {
+-		alternate = TRUE;
++		alternate = true;
+ 		if ( alt[0] != ' ' )
+ 			secondary += alt;
+ 	} else {
+@@ -90,7 +90,7 @@
+ bool MString::StringAt ( int start, int len, ... ) {
+ 
+ 	if ( start < 0 )
+-		return FALSE;
++		return false;
+ 
+ 	char    buffer[64];
+ 	char   *test;
+@@ -127,7 +127,7 @@
+ 		return;
+ 	last = len - 1;//zero based index
+ 
+-	alternate = FALSE;
++	alternate = false;
+ 
+ 	//this=MString(toUpper());
+ 
+@@ -156,7 +156,7 @@
+ 		if ( current >= len )
+ 			break;
+ 		
+-		switch ( at ( current ).toAscii() ) {
++		switch ( at ( current ).toLatin1() ) {
+ 			case 'A':
+ 			case 'E':
+ 			case 'I':
+diff -ruN cdcat-2.3.1/src/exportcdcatdb.cpp cdcat-2.3.1.work/src/exportcdcatdb.cpp
+--- cdcat-2.3.1/src/exportcdcatdb.cpp	2013-08-29 08:08:32.000000000 +0200
++++ cdcat-2.3.1.work/src/exportcdcatdb.cpp	2019-05-31 21:16:26.558120604 +0200
+@@ -9,23 +9,23 @@
+ 
+ 
+ #include <qvariant.h>
+-#include <qpushbutton.h>
+-#include <qlabel.h>
++#include <QPushButton>
++#include <QLabel>
+ #include <QListWidget>
+ #include <QListWidgetItem>
+-#include <qcheckbox.h>
++#include <QCheckBox>
+ #include <QGroupBox>
+-#include <qradiobutton.h>
+-#include <qlineedit.h>
+-#include <qlayout.h>
++#include <QRadioButton>
++#include <QLineEdit>
++#include <QLayout>
+ #include <qpixmap.h>
+-#include <qtooltip.h>
+-#include <qmessagebox.h>
++#include <QToolTip>
++#include <QMessageBox>
+ #include <qtextstream.h>
+-#include <qapplication.h>
++#include <QApplication>
+ #include <qstring.h>
+ #include <qregexp.h>
+-#include<QTextCodec>
++#include <QTextCodec>
+ #include <QHBoxLayout>
+ #include <QGridLayout>
+ #include <QVBoxLayout>
+@@ -45,7 +45,7 @@
+  *  The dialog will by default be modeless, unless you set 'modal' to
+  *  TRUE to construct a modal dialog.
+  */
+-exportCdcatDB::exportCdcatDB ( CdCatMainWidget *mainw, QWidget *parent, const char *name, bool modal, Qt::WFlags fl ) : QDialog ( parent, fl ) {
++exportCdcatDB::exportCdcatDB ( CdCatMainWidget *mainw, QWidget *parent, const char *name, bool modal, Qt::WindowFlags fl ) : QDialog ( parent, fl ) {
+ 	this->mainw = mainw;
+ 	p = mainw->db;
+ 	app = mainw->app;
+@@ -55,7 +55,7 @@
+ 	setModal ( modal );
+ 	if ( !name )
+ 		setObjectName ( "exportCdcatDB" );
+-	setSizeGripEnabled ( TRUE );
++	setSizeGripEnabled ( true );
+ 
+ 	setWindowTitle ( tr ( "Export database..." ) );
+ 
+@@ -217,12 +217,12 @@
+ 	layout4->addItem ( spacer_6 );
+ 
+ 	buttonOk = new QPushButton ( this );
+-	buttonOk->setAutoDefault ( TRUE );
+-	buttonOk->setDefault ( TRUE );
++	buttonOk->setAutoDefault ( true );
++	buttonOk->setDefault ( true );
+ 	layout4->addWidget ( buttonOk );
+ 
+ 	buttonCancel = new QPushButton ( this );
+-	buttonCancel->setAutoDefault ( TRUE );
++	buttonCancel->setAutoDefault ( true );
+ 	layout4->addWidget ( buttonCancel );
+ 	QSpacerItem *spacer_5 = new QSpacerItem ( 163, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+ 	layout4->addItem ( spacer_5 );
+diff -ruN cdcat-2.3.1/src/exportcdcatdb.h cdcat-2.3.1.work/src/exportcdcatdb.h
+--- cdcat-2.3.1/src/exportcdcatdb.h	2012-12-31 16:39:51.000000000 +0100
++++ cdcat-2.3.1.work/src/exportcdcatdb.h	2019-05-31 21:09:06.203591474 +0200
+@@ -11,15 +11,14 @@
+ 
+ #include <qvariant.h>
+ #include <qpixmap.h>
+-#include <qdialog.h>
++#include <QDialog>
+ #include <qdatetime.h>
+-#include <qcheckbox.h>
+-#include <qlayout.h>
++#include <QCheckBox>
++#include <QLayout>
+ #include <qobject.h>
+-#include <qfiledialog.h>
+-#include <qwidget.h>
++#include <QFileDialog>
++#include <QWidget>
+ #include <qdatetime.h>
+-#include <qdialog.h>
+ #include <QGridLayout>
+ #include <QHBoxLayout>
+ #include <QVBoxLayout>
+@@ -28,23 +27,16 @@
+ #include <stdlib.h>
+ #include <qvariant.h>
+ #include <qpixmap.h>
+-#include <qlayout.h>
+-#include <qlabel.h>
++#include <QLabel>
+ #include <QListWidget>
+-#include <qpushbutton.h>
+-#include <qcheckbox.h>
++#include <QPushButton>
+ #include <QGroupBox>
+-#include <qradiobutton.h>
+-#include <qspinbox.h>
+-#include <qlineedit.h>
+-#include <qdialog.h>
+-#include <qlabel.h>
++#include <QRadioButton>
++#include <QSpinBox>
++#include <QLineEdit>
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <qfile.h>
+-#include <QLayout>
+-#include <QGridLayout>
+-#include <QVBoxLayout>
+ #include <QStandardItemModel>
+ 
+ 
+@@ -63,7 +55,7 @@
+     Q_OBJECT
+ 
+ public:
+-    exportCdcatDB ( CdCatMainWidget *mainw, QWidget* parent=0, const char* name=0, bool modal=true, Qt::WFlags fl=0 );
++    exportCdcatDB ( CdCatMainWidget *mainw, QWidget* parent=0, const char* name=0, bool modal=true, Qt::WindowFlags fl=0 );
+     ~exportCdcatDB();
+ 
+ 
+diff -ruN cdcat-2.3.1/src/find.cpp cdcat-2.3.1.work/src/find.cpp
+--- cdcat-2.3.1/src/find.cpp	2013-08-25 17:17:49.000000000 +0200
++++ cdcat-2.3.1.work/src/find.cpp	2019-05-31 21:24:32.179439605 +0200
+@@ -11,19 +11,18 @@
+ #include "find.h"
+ 
+ #include <qvariant.h>
+-#include <qcheckbox.h>
+-#include <qcombobox.h>
++#include <QCheckBox>
++#include <QComboBox>
+ #include <QFrame>
+-#include <qlayout.h>
+-#include <qlabel.h>
+-#include <qlineedit.h>
++#include <QLayout>
++#include <QLabel>
++#include <QLineEdit>
+ #include <QHeaderView>
+-#include <qpushbutton.h>
+-#include <qlayout.h>
+-#include <qtooltip.h>
++#include <QPushButton>
++#include <QToolTip>
+ #include <qimage.h>
+ #include <qpixmap.h>
+-#include <qmessagebox.h>
++#include <QMessageBox>
+ #include <QSpinBox>
+ #include <qtextcodec.h>
+ #include <QHBoxLayout>
+@@ -42,6 +41,7 @@
+ #include <QTextCodec>
+ #include <QDir>
+ #include <QStatusBar>
++#include <QFileDialog>
+ 
+ // #include <pcre.h>
+ #include <QRegExp>
+@@ -60,10 +60,9 @@
+ #include <string.h>
+ #include "dmetaph.h"
+ #include <iostream>
+-#include <QFileDialog>
+ using namespace std;
+ 
+-findDialog::findDialog ( CdCatMainWidget* parent, const char* name, bool isFindDuplicates, bool modal, Qt::WFlags fl )
++findDialog::findDialog ( CdCatMainWidget* parent, const char* name, bool isFindDuplicates, bool modal, Qt::WindowFlags fl )
+ 	: QDialog ( parent, fl ) {
+ 	if ( !name ) {
+ 		if ( isFindDuplicates ) {
+@@ -78,7 +77,7 @@
+ 	use_unsharpsearch = false;
+ 	this->isFindDuplicates = isFindDuplicates;
+ 	
+-	setSizeGripEnabled ( TRUE );
++	setSizeGripEnabled ( true );
+ 	if ( !isFindDuplicates ) {
+ 		FindDialogBaseLayout = new QGridLayout ( this );
+ 		
+@@ -169,12 +168,12 @@
+ 		buttonClearSearchResult = new QPushButton ( this );
+ 		
+ 		buttonOk = new QPushButton ( this );
+-		buttonOk->setAutoDefault ( TRUE );
+-		buttonOk->setDefault ( TRUE );
++		buttonOk->setAutoDefault ( true );
++		buttonOk->setDefault ( true );
+ 		buttonOk->setMinimumWidth ( 80 );
+ 		
+ 		buttonCancel = new QPushButton ( this );
+-		buttonCancel->setAutoDefault ( TRUE );
++		buttonCancel->setAutoDefault ( true );
+ 		buttonCancel->setMinimumWidth ( 80 );
+ 		
+ 		resultsl = new QTreeWidget ( this );
+@@ -384,7 +383,7 @@
+ 		if ( mainw->guis->standON != NULL )
+ 			searchFilepath = mainw->guis->standON->getFullPath();
+ 		
+-		setSizeGripEnabled ( TRUE );
++		setSizeGripEnabled ( true );
+ 		FindDialogBaseLayout = new QGridLayout ( this );
+ 		
+ 		QSpacerItem* spacer_4 = new QSpacerItem ( 200, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+@@ -409,12 +408,12 @@
+ 		layout16 = new QGridLayout ( this );
+ 		
+ 		buttonOk = new QPushButton ( this );
+-		buttonOk->setAutoDefault ( TRUE );
+-		buttonOk->setDefault ( TRUE );
++		buttonOk->setAutoDefault ( true );
++		buttonOk->setDefault ( true );
+ 		buttonOk->setMinimumWidth ( 80 );
+ 		
+ 		buttonCancel = new QPushButton ( this );
+-		buttonCancel->setAutoDefault ( TRUE );
++		buttonCancel->setAutoDefault ( true );
+ 		buttonCancel->setMinimumWidth ( 80 );
+ 		
+ 		textLabel5 = new QLabel ( this );
+@@ -824,9 +823,9 @@
+ 		}
+ 	}
+ 	QTextDocument mydoc;
+-	QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
++//	QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
+ 	QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
+-	QTextCodec::setCodecForTr ( QTextCodec::codecForName ( "UTF-8" ) );
++//	QTextCodec::setCodecForTr ( QTextCodec::codecForName ( "UTF-8" ) );
+ 	QString result_str;
+ 	if ( *DEBUG_INFO_ENABLED )
+ 		cerr << "result (childCount: " << resultsl->children().count() << "): " << endl;
+diff -ruN cdcat-2.3.1/src/find.h cdcat-2.3.1.work/src/find.h
+--- cdcat-2.3.1/src/find.h	2012-04-10 21:08:53.000000000 +0200
++++ cdcat-2.3.1.work/src/find.h	2019-05-31 21:09:11.426938990 +0200
+@@ -11,7 +11,7 @@
+ #define FINDDIALOG_H
+ 
+ #include <qvariant.h>
+-#include <qdialog.h>
++#include <QDialog>
+ #include <qobject.h>
+ #include <QGridLayout>
+ #include <QHBoxLayout>
+@@ -21,7 +21,7 @@
+ #include <QCloseEvent>
+ // #include <pcre.h>
+ #include <QRegExp>
+-#include <QtGui/QDateTimeEdit>
++#include <QDateTimeEdit>
+ #include <QTreeWidget>
+ #include <QTreeWidgetItem>
+ 
+@@ -108,7 +108,7 @@
+ 		Q_OBJECT
+ 
+ 	public:
+-		findDialog ( CdCatMainWidget* parent = 0, const char* name = 0, bool isFindDuplicates = false, bool modal = FALSE, Qt::WFlags fl = Qt::WindowMinMaxButtonsHint );
++		findDialog ( CdCatMainWidget* parent = 0, const char* name = 0, bool isFindDuplicates = false, bool modal = false, Qt::WindowFlags fl = Qt::WindowMinMaxButtonsHint );
+ 		~findDialog();
+ 		
+ 		
+diff -ruN cdcat-2.3.1/src/guibase.cpp cdcat-2.3.1.work/src/guibase.cpp
+--- cdcat-2.3.1/src/guibase.cpp	2013-08-30 09:56:50.000000000 +0200
++++ cdcat-2.3.1.work/src/guibase.cpp	2019-05-31 21:16:25.078116584 +0200
+@@ -9,7 +9,6 @@
+ 
+ #include <string.h>
+ #include <qimage.h>
+-#include <qlabel.h>
+ #include <qpainter.h>
+ 
+ #include <QRegExp>
+@@ -190,7 +189,7 @@
+ 	;
+ }
+ 
+-HQListView::HQListView ( CdCatMainWidget *mw, QWidget *parent, const char *, Qt::WFlags )
++HQListView::HQListView ( CdCatMainWidget *mw, QWidget *parent, const char *, Qt::WindowFlags )
+ 	: QTreeWidget ( parent) {
+ 	mainw = mw;
+ 	setColumnCount(3);
+@@ -3111,7 +3110,7 @@
+ 	this->n = n;
+ 	changeOk = false;
+ 
+-	setSizeGripEnabled ( TRUE );
++	setSizeGripEnabled ( true );
+ 	layout1 = new QVBoxLayout ( this );
+ 	TextLabel = new QLabel ( this );
+ 	layout1->addWidget ( TextLabel );
+diff -ruN cdcat-2.3.1/src/guibase.h cdcat-2.3.1.work/src/guibase.h
+--- cdcat-2.3.1/src/guibase.h	2013-08-30 09:56:50.000000000 +0200
++++ cdcat-2.3.1.work/src/guibase.h	2019-05-31 21:09:08.580264594 +0200
+@@ -12,7 +12,7 @@
+ 
+ #include <QList>
+ #include <qobject.h>
+-#include <qdialog.h>
++#include <QDialog>
+ #include <QTreeWidget>
+ #include <QTreeWidgetItem>
+ #include <QMenu>
+@@ -52,7 +52,7 @@
+     Q_OBJECT
+ public:
+     CdCatMainWidget *mainw;
+-    HQListView ( CdCatMainWidget *mw,QWidget *parent=0,const char *name=0,Qt::WFlags f=0 );
++    HQListView ( CdCatMainWidget *mw,QWidget *parent=0,const char *name=0,Qt::WindowFlags f=0 );
+     void start ( void );
+     void setCurrentVisible ( void );
+     void changed ( void );
+@@ -64,7 +64,7 @@
+     //It is'nt necessary under QT 3.X becouse there is sorting query function,
+     //but I didn't found it in QT 2.3.0 (Non-Commercial for Win)
+ public:
+-    void setSorting ( int column, bool increasing = TRUE );
++    void setSorting ( int column, bool increasing = true );
+     int  scol;
+     bool sasc;
+ };
+diff -ruN cdcat-2.3.1/src/hdirview.cpp cdcat-2.3.1.work/src/hdirview.cpp
+--- cdcat-2.3.1/src/hdirview.cpp	2013-08-13 09:33:13.000000000 +0200
++++ cdcat-2.3.1.work/src/hdirview.cpp	2019-05-31 21:25:47.236310150 +0200
+@@ -15,11 +15,9 @@
+ #include <qpixmap.h>
+ #include <qevent.h>
+ #include <qpoint.h>
+-#include <qmessagebox.h>
+-#include <qmime.h>
++#include <QMessageBox>
+ #include <QStringList>
+-#include <qstringlist.h>
+-#include <qapplication.h>
++#include <QApplication>
+ #include <qevent.h>
+ #include <QHeaderView>
+ #include <qpainter.h>
+@@ -195,7 +193,7 @@
+ 			tmp = tmp->next;
+ 		}
+ 		childsCollected = true;
+-		treeWidget()->setUpdatesEnabled ( TRUE ); //FIXME
++		treeWidget()->setUpdatesEnabled ( true ); //FIXME
+ 	}
+ 	QTreeWidgetItem::setExpanded ( o );
+ 	treeWidget()->resizeColumnToContents(0);
+@@ -203,7 +201,7 @@
+ 
+ 
+ void LNode::setup() {
+-	//setExpandable ( TRUE ); //FIXME
++	//setExpandable ( true ); //FIXME
+ 	// QTreeWidgetItem::setup(); // FIXME
+ }
+ 
+@@ -293,7 +291,7 @@
+ 
+ HDirectoryView::HDirectoryView ( DataBase **dbp, QWidget *parent, const char *name )
+ 	: QTreeWidget ( parent ), oldCurrent ( 0 ),
+-	  dropItem ( 0 ), mousePressed ( FALSE ) {
++	  dropItem ( 0 ), mousePressed ( false ) {
+ 	db = dbp;
+ 	autoopen_timer = new QTimer ( this );
+ 
+@@ -307,8 +305,8 @@
+ 	connect (this, SIGNAL( itemExpanded(QTreeWidgetItem*)), this, SLOT(itemExpanded(QTreeWidgetItem*)));
+ 	connect (this, SIGNAL( itemCollapsed(QTreeWidgetItem*)), this, SLOT(itemCollapsed(QTreeWidgetItem*)));
+ 
+-	setAcceptDrops ( TRUE );
+-	viewport()->setAcceptDrops ( TRUE );
++	setAcceptDrops ( true );
++	viewport()->setAcceptDrops ( true );
+ 
+ // 	connect ( autoopen_timer, SIGNAL ( timeout() ),
+ // 	          this, SLOT ( openFolder() ) );
+@@ -322,8 +320,8 @@
+ 	labels.append ( tr ( "Directory Tree" ) );
+ 	labels.append ( tr ( "Type" ) );
+ 	setHeaderLabels ( labels );
+-	//header()->setClickEnabled ( FALSE, header()->count() - 1 ); // FIXME
+-	//header()->setResizeEnabled ( FALSE, header()->count() - 1 ); //FIXME
++	//header()->setClickEnabled ( false, header()->count() - 1 ); // FIXME
++	//header()->setResizeEnabled ( false, header()->count() - 1 ); //FIXME
+ 
+ 	//header()->setResizeMode(0,QHeaderView::Stretch);
+ 	//header()->setResizeMode(1,QHeaderView::Stretch);
+@@ -373,10 +371,10 @@
+ // 	autoopen_timer->stop();
+ // 	if ( dropItem ) {
+ // 		if( !dropItem->isExpanded() ) {
+-// 		dropItem->setExpanded ( TRUE );
++// 		dropItem->setExpanded ( true );
+ // 		//dropItem->repaint();
+ // 		} else {
+-// 		dropItem->setExpanded ( FALSE );
++// 		dropItem->setExpanded ( false );
+ // 		//dropItem->repaint();
+ // 		}
+ // 	}
+@@ -419,14 +417,14 @@
+ //                 indentation() * ( i->depth() + ( rootIsDecorated() ? 1 : 0 ) ) + itemMargin() ||
+ //                 p.x() < header()->pos ( ))  {
+ //             presspos = e->pos();
+-//             mousePressed = TRUE;
++//             mousePressed = true;
+ //         }
+ //     } // FIXME
+ }
+ 
+ 
+ void HDirectoryView::contentsMouseReleaseEvent ( QMouseEvent * ) {
+-	mousePressed = FALSE;
++	mousePressed = false;
+ }
+ 
+ void HDirectoryView::keyPressEvent ( QKeyEvent *e ) {
+diff -ruN cdcat-2.3.1/src/import.cpp cdcat-2.3.1.work/src/import.cpp
+--- cdcat-2.3.1/src/import.cpp	2013-08-25 16:43:42.000000000 +0200
++++ cdcat-2.3.1.work/src/import.cpp	2019-05-31 21:16:25.264783757 +0200
+@@ -7,7 +7,7 @@
+ Copyright : (C) 2003 Christoph Thielecke
+ ****************************************************************************/
+ 
+-#include <qmessagebox.h>
++#include <QMessageBox>
+ #include <qfile.h>
+ #include <QTextStream>
+ #include <qdatetime.h>
+@@ -195,7 +195,7 @@
+ 				QString import_filename = filename;
+ 
+ 				medialines = new QList < lineObject > ();
+-				//medialines->setAutoDelete( TRUE );  // the list owns the objects
++				//medialines->setAutoDelete( true );  // the list owns the objects
+ 
+ 				while ( !t.atEnd() ) {
+ 					QString line;
+@@ -1534,7 +1534,7 @@
+ QString tmpdirname;
+ bool importGtktalogXml::startDocument() {
+ 	//cout << "startDocument: " << endl;
+-	return TRUE;
++	return true;
+ }
+ 
+ bool importGtktalogXml::startElement ( const QString&, const QString&,
+@@ -1548,7 +1548,7 @@
+ 
+ 	tag_content = "";
+ 
+-	return TRUE;
++	return true;
+ }
+ 
+ bool importGtktalogXml::endElement ( const QString&, const QString & tag, const QString& ) {
+@@ -1751,7 +1751,7 @@
+ 												progress->setValue ( linecount );
+ 											}
+ 
+-	return TRUE;
++	return true;
+ }
+ 
+ bool importGtktalogXml::characters ( const QString & ch ) {
+@@ -1759,7 +1759,7 @@
+ 	progress->setValue ( locator->lineNumber() );
+ 	if ( guislave->mainw->app->hasPendingEvents() )
+ 		guislave->mainw->app->processEvents();
+-	return TRUE;
++	return true;
+ }
+ 
+ void importGtktalogXml::setDocumentLocator ( QXmlLocator * locator ) {
+@@ -2097,7 +2097,7 @@
+ bool importWhereIsItXml::startDocument() {
+ 
+ 	//cout << "startDocument: " << endl;
+-	return TRUE;
++	return true;
+ }
+ 
+ bool importWhereIsItXml::startElement ( const QString&, const QString&,
+@@ -2147,7 +2147,7 @@
+ 	}
+ 
+ 
+-	return TRUE;
++	return true;
+ }
+ 
+ bool importWhereIsItXml::endElement ( const QString&, const QString & tag, const QString& ) {
+@@ -2560,7 +2560,7 @@
+ 													comment = "";
+ 												} // ITEM
+ 	currentText = "";
+-	return TRUE;
++	return true;
+ }
+ 
+ bool importWhereIsItXml::characters ( const QString & ch ) {
+@@ -2622,7 +2622,7 @@
+ 		if ( ( filehdl = fopen ( filename.toLocal8Bit().constData(), "r" ) ) == NULL )
+ 			std::cerr << "Can't open " << qPrintable ( filename ) << endl;
+ 		else {
+-			//      file_raise( f, FALSE );
++			//      file_raise( f, false );
+ 			//      statfile( f );
+ 			while ( ( c = getc ( filehdl ) ) != EOF ) {
+ 				if ( c == '\n' )
+diff -ruN cdcat-2.3.1/src/importdialog.cpp cdcat-2.3.1.work/src/importdialog.cpp
+--- cdcat-2.3.1/src/importdialog.cpp	2012-04-10 21:08:53.000000000 +0200
++++ cdcat-2.3.1.work/src/importdialog.cpp	2019-05-31 21:16:30.234797255 +0200
+@@ -10,20 +10,20 @@
+ 
+ #include "importdialog.h"
+ 
+-#include <qlabel.h>
+-#include <qlineedit.h>
+-#include <qpushbutton.h>
+-#include <qmessagebox.h>
+-#include <qtooltip.h>
++#include <QLabel>
++#include <QLineEdit>
++#include <QPushButton>
++#include <QMessageBox>
++#include <QToolTip>
+ #include <qfile.h>
+-#include <qfiledialog.h>
++#include <QFileDialog>
+ #include <QGridLayout>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <qvariant.h>
+ 
+ 
+-ImportDialog::ImportDialog ( QWidget *parent, const char *name, bool modal, Qt::WFlags fl )
++ImportDialog::ImportDialog ( QWidget *parent, const char *name, bool modal, Qt::WindowFlags fl )
+ 	: QDialog ( parent, fl ) {
+ 	if ( !name )
+ 		setObjectName ( "ImportDialog" );
+diff -ruN cdcat-2.3.1/src/importdialog.h cdcat-2.3.1.work/src/importdialog.h
+--- cdcat-2.3.1/src/importdialog.h	2012-04-11 07:51:59.000000000 +0200
++++ cdcat-2.3.1.work/src/importdialog.h	2019-05-31 21:09:08.106929976 +0200
+@@ -12,12 +12,11 @@
+ 
+ #include <qvariant.h>
+ #include <qpixmap.h>
+-#include <qdialog.h>
++#include <QDialog>
+ #include <qdatetime.h>
+-#include <qcheckbox.h>
+-#include <qlayout.h>
+-#include <qcheckbox.h>
+-#include <qradiobutton.h>
++#include <QCheckBox>
++#include <QLayout>
++#include <QRadioButton>
+ #include <QGroupBox>
+ #include <QVBoxLayout>
+ #include <QGridLayout>
+@@ -34,7 +33,7 @@
+     Q_OBJECT
+ 
+ public:
+-    ImportDialog ( QWidget* parent = 0, const char* name = 0, bool modal = true, Qt::WFlags fl = 0 );
++    ImportDialog ( QWidget* parent = 0, const char* name = 0, bool modal = true, Qt::WindowFlags fl = 0 );
+     ~ImportDialog();
+ 
+ 
+diff -ruN cdcat-2.3.1/src/import.h cdcat-2.3.1.work/src/import.h
+--- cdcat-2.3.1/src/import.h	2012-03-17 10:25:34.000000000 +0100
++++ cdcat-2.3.1.work/src/import.h	2019-05-31 21:09:08.796931850 +0200
+@@ -12,11 +12,11 @@
+ 
+ 
+ #include <qobject.h>
+-#include <qfiledialog.h>
+-#include <qwidget.h>
++#include <QFileDialog>
++#include <QWidget>
+ #include <qdatetime.h>
+ 
+-#include <qprogressdialog.h>
++#include <QProgressDialog>
+ 
+ #include <QtXml/QXmlDefaultHandler>
+ #include <QtXml/QXmlLocator>
+diff -ruN cdcat-2.3.1/src/info.cpp cdcat-2.3.1.work/src/info.cpp
+--- cdcat-2.3.1/src/info.cpp	2013-09-15 14:01:06.000000000 +0200
++++ cdcat-2.3.1.work/src/info.cpp	2019-05-31 21:06:45.259875448 +0200
+@@ -9,13 +9,13 @@
+ #include "info.h"
+ 
+ #include <qvariant.h>
+-#include <qpushbutton.h>
+-#include <qtabwidget.h>
+-#include <qwidget.h>
+-#include <qlabel.h>
++#include <QPushButton>
++#include <QTabWidget>
++#include <QWidget>
++#include <QLabel>
+ #include <QTextBrowser>
+-#include <qlayout.h>
+-#include <qtooltip.h>
++#include <QLayout>
++#include <QToolTip>
+ #include <QGridLayout>
+ #include <QLocale>
+ #include <QTableWidget>
+@@ -37,7 +37,7 @@
+  *  The dialog will by default be modeless, unless you set 'modal' to
+  *  TRUE to construct a modal dialog.
+  */
+-InfoDialog::InfoDialog ( QWidget *parent, const char *name, bool modal, Qt::WFlags fl )
++InfoDialog::InfoDialog ( QWidget *parent, const char *name, bool modal, Qt::WindowFlags fl )
+ 	: QDialog ( parent, fl ) {
+ 	if ( !name )
+ 		setObjectName ( "helpDialog" );
+@@ -134,6 +134,9 @@
+ 	infotext += tr ( "Copyright (C) 2003 Peter Deak (GPL)" );
+ 	infotext += "<br>\n";
+ 	infotext += tr ( "Copyright (C) 2010 Christoph Thielecke (GPL)" );
++	infotext += "<br>\n";
++	infotext += "<br>\n";
++	infotext += tr ( "Qt5 port and Archlinux packaging: Jesús Alonso (@doragasu)" );
+ 	infotext += "</p></font></p>";
+ 
+ 	/******************************************************************************************/
+@@ -465,7 +468,7 @@
+ 	tabWidget2->setTabText ( 2, tr ( "Thanks" ) );
+ }
+ 
+-KeyBindingDialog::KeyBindingDialog ( GuiSlave *gs, QWidget *parent, const char *name, bool modal, Qt::WFlags fl )
++KeyBindingDialog::KeyBindingDialog ( GuiSlave *gs, QWidget *parent, const char *name, bool modal, Qt::WindowFlags fl )
+ 	: QDialog ( parent, fl ) {
+ 	if ( !name )
+ 		setObjectName ( "Key bindings" );
+@@ -495,7 +498,7 @@
+ 		KeyBindingsTableWidget->setItem(i, 1, newItem2);
+ 	}
+ 	KeyBindingsTableWidget->resizeColumnsToContents();
+-	KeyBindingsTableWidget->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
++	KeyBindingsTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+ 	KeyBindingsTableWidget->setSortingEnabled(true);
+ 	KeyBindingsTableWidget->sortByColumn(0, Qt::AscendingOrder);
+ 	KeyBindingsTableWidget->verticalHeader()->hide();
+diff -ruN cdcat-2.3.1/src/info.h cdcat-2.3.1.work/src/info.h
+--- cdcat-2.3.1/src/info.h	2013-08-30 09:56:50.000000000 +0200
++++ cdcat-2.3.1.work/src/info.h	2019-05-31 21:09:07.463594894 +0200
+@@ -11,7 +11,7 @@
+ #define __HELPDIALOG_H__
+ 
+ #include <qvariant.h>
+-#include <qdialog.h>
++#include <QDialog>
+ #include <qstring.h>
+ #include <QVBoxLayout>
+ #include <QGridLayout>
+@@ -33,7 +33,7 @@
+     Q_OBJECT
+ 
+ public:
+-    InfoDialog ( QWidget* parent = 0, const char* name = 0, bool modal = FALSE, Qt::WFlags fl = 0 );
++    InfoDialog ( QWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0 );
+     ~InfoDialog();
+ 
+     QPushButton* closeButton;
+@@ -63,7 +63,7 @@
+     Q_OBJECT
+ 
+ public:
+-    KeyBindingDialog ( GuiSlave *gs, QWidget* parent = 0, const char* name = 0, bool modal = FALSE, Qt::WFlags fl = 0 );
++    KeyBindingDialog ( GuiSlave *gs, QWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0 );
+     ~KeyBindingDialog();
+ 
+     QGridLayout* keyBindingDialogLayout;
+diff -ruN cdcat-2.3.1/src/mainwidget.cpp cdcat-2.3.1.work/src/mainwidget.cpp
+--- cdcat-2.3.1/src/mainwidget.cpp	2013-08-30 09:56:50.000000000 +0200
++++ cdcat-2.3.1.work/src/mainwidget.cpp	2019-05-31 21:16:29.728129210 +0200
+@@ -10,21 +10,21 @@
+ #include "mainwidget.h"
+ 
+ #include <qvariant.h>
+-#include <qmenubar.h>
++#include <QMenuBar>
+ #include <QFrame>
+ #include <QTreeWidget>
+ #include <QHeaderView>
+-#include <qtoolbutton.h>
+-#include <qlayout.h>
+-#include <qtooltip.h>
++#include <QToolButton>
++#include <QLayout>
++#include <QToolTip>
+ #include <qimage.h>
+ #include <qpixmap.h>
+ #include <qdir.h>
+ #include <qfile.h>
+ #include <qfileinfo.h>
+-#include <qlabel.h>
++#include <QLabel>
+ #include <qfontmetrics.h>
+-#include <qsplitter.h>
++#include <QSplitter>
+ #include <QHBoxLayout>
+ #include <QCloseEvent>
+ #include <QList>
+@@ -36,7 +36,7 @@
+ 
+ #include <iostream>
+ 
+-#include <QPlastiqueStyle>
++#include <QStyleFactory>
+ 
+ #include <QDockWidget>
+ 
+@@ -58,13 +58,12 @@
+  *  Constructs a CdCatMainWidget as a child of 'parent', with the
+  *  name 'name' and widget flags set to 'f'.
+  */
+-CdCatMainWidget::CdCatMainWidget ( CdCatConfig *ccp, QApplication *appp, QWidget *parent, const char *name, Qt::WFlags fl )
++CdCatMainWidget::CdCatMainWidget ( CdCatConfig *ccp, QApplication *appp, QWidget *parent, const char *name, Qt::WindowFlags fl )
+ 	: QMainWindow ( parent, fl ) {
+ 
+ 	main = new QWidget ( this );
+ 	setCentralWidget ( main );
+ 	app = appp;
+-	QFontMetrics fm = app->font();
+ 	
+ 	if ( !name )
+ 		setObjectName ( "CdCatMainWidget" );
+@@ -527,8 +526,7 @@
+ 	splitMain->setSizes ( splitterSizesList );
+ 	splitMain->setStretchFactor(splitMain->indexOf(DirView), 1);
+ 	splitMain->setStretchFactor(splitMain->indexOf(listView), 1);
+-	QPlastiqueStyle plastic_style;
+-	splitMain->setStyle ( &plastic_style );
++	splitMain->setStyle ( QStyleFactory::create("Fusion") );
+ 
+ 	if(!cconfig->commentDockIsFloating)
+ 		CommentDock->resize(QSize(cconfig->mainP3, CommentDock->height()));
+diff -ruN cdcat-2.3.1/src/mainwidget.h cdcat-2.3.1.work/src/mainwidget.h
+--- cdcat-2.3.1/src/mainwidget.h	2013-08-30 09:56:50.000000000 +0200
++++ cdcat-2.3.1.work/src/mainwidget.h	2019-05-31 21:09:10.806937308 +0200
+@@ -12,8 +12,8 @@
+ 
+ #include <qvariant.h>
+ #include <qpixmap.h>
+-#include <qwidget.h>
+-#include <qapplication.h>
++#include <QWidget>
++#include <QApplication>
+ #include <QMenu>
+ #include <QGridLayout>
+ #include <QHBoxLayout>
+@@ -48,7 +48,7 @@
+ class CdCatMainWidget : public QMainWindow{
+ 	Q_OBJECT
+ 	public:
+-		CdCatMainWidget ( CdCatConfig *ccp, QApplication *appp, QWidget *parent = 0, const char *name = 0, Qt::WFlags fl = 0 );
++		CdCatMainWidget ( CdCatConfig *ccp, QApplication *appp, QWidget *parent = 0, const char *name = 0, Qt::WindowFlags fl = 0 );
+ 		~CdCatMainWidget();
+ 
+ 		CdCatConfig  *cconfig;
+diff -ruN cdcat-2.3.1/src/newdbdialog.cpp cdcat-2.3.1.work/src/newdbdialog.cpp
+--- cdcat-2.3.1/src/newdbdialog.cpp	2013-08-08 09:25:39.000000000 +0200
++++ cdcat-2.3.1.work/src/newdbdialog.cpp	2019-05-31 21:16:27.214789053 +0200
+@@ -13,13 +13,13 @@
+ #include "guibase.h"
+ 
+ #include <qvariant.h>
+-#include <qlabel.h>
+-#include <qlineedit.h>
+-#include <qpushbutton.h>
++#include <QLabel>
++#include <QLineEdit>
++#include <QPushButton>
+ #include <QTextEdit>
+-#include <qlayout.h>
+-#include <qtooltip.h>
+-#include <qmessagebox.h>
++#include <QLayout>
++#include <QToolTip>
++#include <QMessageBox>
+ #include <QGridLayout>
+ #include <QHBoxLayout>
+ 
+@@ -27,7 +27,7 @@
+ #include <string.h>
+ 
+ #ifdef CATALOG_ENCRYPTION
+-#include <crypto++/blowfish.h>
++#include <cryptopp/blowfish.h>
+ #endif
+ 
+ #include "icons.h"
+@@ -38,7 +38,7 @@
+  *  The dialog will by default be modeless, unless you set 'modal' to
+  *  TRUE to construct a modal dialog.
+  */
+-newdbdialog::newdbdialog ( QWidget *parent, const char *name, bool modal, Qt::WFlags fl )
++newdbdialog::newdbdialog ( QWidget *parent, const char *name, bool modal, Qt::WindowFlags fl )
+ 	: QDialog ( parent, fl )
+ 
+ {
+@@ -47,7 +47,7 @@
+ 		setObjectName ( "NewDBDialogBase" );
+ 	setWindowIcon ( *get_t_new_icon() );
+ 
+-	setSizeGripEnabled ( TRUE );
++	setSizeGripEnabled ( true );
+ 	NewDBDialogBaseLayout = new QGridLayout ( this );
+ 	 textLabelOwner = new QLabel ( this );
+ 	leOwner = new QLineEdit ( this );
+@@ -96,13 +96,13 @@
+ 
+ 	buttonOK = new QPushButton ( this );
+ 	buttonOK->setMinimumSize ( QSize ( 100, 0 ) );
+-	buttonOK->setAutoDefault ( TRUE );
+-	buttonOK->setDefault ( TRUE );
++	buttonOK->setAutoDefault ( true );
++	buttonOK->setDefault ( true );
+ 	layout12->addWidget ( buttonOK );
+ 
+ 	buttonCancel = new QPushButton ( this );
+ 	buttonCancel->setMinimumSize ( QSize ( 100, 0 ) );
+-	buttonCancel->setAutoDefault ( TRUE );
++	buttonCancel->setAutoDefault ( true );
+ 	layout12->addWidget ( buttonCancel );
+ 	QSpacerItem *spacer_4 = new QSpacerItem ( 170, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+ 	layout12->addItem ( spacer_4 );
+diff -ruN cdcat-2.3.1/src/newdbdialog.h cdcat-2.3.1.work/src/newdbdialog.h
+--- cdcat-2.3.1/src/newdbdialog.h	2013-01-11 20:06:25.000000000 +0100
++++ cdcat-2.3.1.work/src/newdbdialog.h	2019-05-31 21:09:04.343586423 +0200
+@@ -11,7 +11,7 @@
+ #define NEWDBDIALOG_H
+ 
+ #include <qvariant.h>
+-#include <qdialog.h>
++#include <QDialog>
+ #include <qstring.h>
+ #include <QVBoxLayout>
+ #include <QGridLayout>
+@@ -47,7 +47,7 @@
+ 		QString encryptionPassword;
+ #endif
+ 
+-		newdbdialog ( QWidget *parent = 0, const char *name = 0, bool modal = FALSE, Qt::WFlags fl = 0 );
++		newdbdialog ( QWidget *parent = 0, const char *name = 0, bool modal = false, Qt::WindowFlags fl = 0 );
+ 		~newdbdialog();
+ 
+ 		QLabel *textLabelDatabase;
+diff -ruN cdcat-2.3.1/src/selreadable.cpp cdcat-2.3.1.work/src/selreadable.cpp
+--- cdcat-2.3.1/src/selreadable.cpp	2013-08-29 08:06:18.000000000 +0200
++++ cdcat-2.3.1.work/src/selreadable.cpp	2019-05-31 21:16:24.138114033 +0200
+@@ -49,7 +49,7 @@
+ #endif
+ 
+ 
+-SelReadable::SelReadable ( CdCatConfig *confp, QWidget* parent, const char* name, bool modal, Qt::WFlags fl )
++SelReadable::SelReadable ( CdCatConfig *confp, QWidget* parent, const char* name, bool modal, Qt::WindowFlags fl )
+ 	: QDialog ( parent, fl )
+ 
+ {
+@@ -61,7 +61,7 @@
+ 	setWindowIcon ( *get_t_config_icon() );
+ 	
+ 	SelReadableLayout = new QVBoxLayout ( this );
+-	setSizeGripEnabled ( TRUE );
++	setSizeGripEnabled ( true );
+ 	
+ 	layoutArchiveScan= new QHBoxLayout ( this );
+ 	cbScanArchive = new QCheckBox ( this );
+diff -ruN cdcat-2.3.1/src/selreadable.h cdcat-2.3.1.work/src/selreadable.h
+--- cdcat-2.3.1/src/selreadable.h	2012-05-13 17:01:41.000000000 +0200
++++ cdcat-2.3.1.work/src/selreadable.h	2019-05-31 21:09:04.810254356 +0200
+@@ -11,7 +11,7 @@
+ #define SELREADABLE_H
+ 
+ #include <qvariant.h>
+-#include <qdialog.h>
++#include <QDialog>
+ #include <QVBoxLayout>
+ #include <QFrame>
+ #include <QGridLayout>
+@@ -42,7 +42,7 @@
+ 		Q_OBJECT
+ 	
+ 	public:
+-		SelReadable ( CdCatConfig *confp, QWidget* parent = 0, const char* name = 0, bool modal = FALSE, Qt::WFlags fl = 0 );
++		SelReadable ( CdCatConfig *confp, QWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0 );
+ 		~SelReadable();
+ 		void checkExcludeRules();
+ 		
+diff -ruN cdcat-2.3.1/src/showcontent.cpp cdcat-2.3.1.work/src/showcontent.cpp
+--- cdcat-2.3.1/src/showcontent.cpp	2012-04-11 07:51:59.000000000 +0200
++++ cdcat-2.3.1.work/src/showcontent.cpp	2019-05-31 21:16:22.878110614 +0200
+@@ -9,16 +9,16 @@
+ #include "showcontent.h"
+ 
+ #include <qvariant.h>
+-#include <qpushbutton.h>
+-#include <qtextbrowser.h>
+-#include <qtoolbutton.h>
+-#include <qlayout.h>
+-#include <qtooltip.h>
++#include <QPushButton>
++#include <QTextBrowser>
++#include <QToolButton>
++#include <QLayout>
++#include <QToolTip>
+ #include <qimage.h>
+ #include <qpixmap.h>
+-#include <qlabel.h>
+-#include <qmessagebox.h>
+-#include <qfiledialog.h>
++#include <QLabel>
++#include <QMessageBox>
++#include <QFileDialog>
+ #include <QGridLayout>
+ #include <QHBoxLayout>
+ 
+@@ -33,7 +33,7 @@
+  *  The dialog will by default be modeless, unless you set 'modal' to
+  *  TRUE to construct a modal dialog.
+  */
+-ShowContent::ShowContent ( Node *node, bool isCategory, CdCatConfig *cconfig, QWidget *parent, const char *name, bool modal, Qt::WFlags fl )
++ShowContent::ShowContent ( Node *node, bool isCategory, CdCatConfig *cconfig, QWidget *parent, const char *name, bool modal, Qt::WindowFlags fl )
+ 	: QDialog ( parent, fl ) {
+ 	
+ 	this->cconfig = cconfig;
+diff -ruN cdcat-2.3.1/src/showcontent.h cdcat-2.3.1.work/src/showcontent.h
+--- cdcat-2.3.1/src/showcontent.h	2012-04-11 07:51:59.000000000 +0200
++++ cdcat-2.3.1.work/src/showcontent.h	2019-05-31 21:09:06.686926118 +0200
+@@ -11,13 +11,13 @@
+ 
+ #include <qvariant.h>
+ #include <qpixmap.h>
+-#include <qdialog.h>
++#include <QDialog>
+ #include <QVBoxLayout>
+ #include <QGridLayout>
+ #include <QHBoxLayout>
+ #include <QTextBrowser>
+ #include <QLabel>
+- #include <QFontComboBox>
++#include <QFontComboBox>
+ 
+ #include "config.h"
+ 
+@@ -34,7 +34,7 @@
+     Q_OBJECT
+ 
+ public:
+-    ShowContent ( Node *node, bool isCategory=false, CdCatConfig *cconfig=NULL, QWidget* parent = 0, const char* name = 0, bool modal = FALSE, Qt::WFlags fl = 0 );
++    ShowContent ( Node *node, bool isCategory=false, CdCatConfig *cconfig=NULL, QWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0 );
+     ~ShowContent();
+ 
+     QPushButton* closeButton;
+diff -ruN cdcat-2.3.1/src/wdbfile.cpp cdcat-2.3.1.work/src/wdbfile.cpp
+--- cdcat-2.3.1/src/wdbfile.cpp	2013-08-29 08:08:32.000000000 +0200
++++ cdcat-2.3.1.work/src/wdbfile.cpp	2019-05-31 21:16:22.068108415 +0200
+@@ -1061,7 +1061,7 @@
+ 			converter = QTextCodec::codecForName ( XML_ENCODING.toUtf8() );
+ 
+ 		if ( *DEBUG_INFO_ENABLED )
+-			std::cerr << "detected encoding: " << XML_ENCODING.toAscii().constData() << endl;
++			std::cerr << "detected encoding: " << XML_ENCODING.toLocal8Bit().constData() << endl;
+ 	}
+ 	
+ 	CdCatXmlHandler *handler = new CdCatXmlHandler ( this, only_name );
+diff -ruN cdcat-2.3.1/src/wdbfile.h cdcat-2.3.1.work/src/wdbfile.h
+--- cdcat-2.3.1/src/wdbfile.h	2013-08-26 09:37:10.000000000 +0200
++++ cdcat-2.3.1.work/src/wdbfile.h	2019-05-31 21:18:30.148456280 +0200
+@@ -18,12 +18,12 @@
+ 
+ #ifdef CATALOG_ENCRYPTION
+ // libcrypto++
+-#include <crypto++/osrng.h>
+-#include <crypto++/secblock.h>
+-#include <crypto++/blowfish.h>
+-#include <crypto++/filters.h>
+-#include <crypto++/modes.h>
+-#include <crypto++/hex.h>
++#include <cryptopp/osrng.h>
++#include <cryptopp/secblock.h>
++#include <cryptopp/blowfish.h>
++#include <cryptopp/filters.h>
++#include <cryptopp/modes.h>
++#include <cryptopp/hex.h>
+ #endif
+ 
+ #ifdef CATALOG_ENCRYPTION
+@@ -31,7 +31,7 @@
+ 
+ static CryptoPP::SecByteBlock crypto_key(CryptoPP::Blowfish::BLOCKSIZE);
+ 
+-static byte iv[CryptoPP::Blowfish::BLOCKSIZE];
++static CryptoPP::byte iv[CryptoPP::Blowfish::BLOCKSIZE];
+ 
+ 
+ int generate_cryptokey(QString password);
