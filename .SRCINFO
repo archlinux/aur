@@ -1,6 +1,6 @@
 pkgbase = tmatrix-git
 	pkgdesc = A cmatrix-like replica of the digital rain from the Matrix
-	pkgver = 1.0.r2.gebeaf00
+	pkgver = 1.1.r13.gf192137
 	pkgrel = 1
 	url = https://github.com/M4444/TMatrix
 	arch = x86_64

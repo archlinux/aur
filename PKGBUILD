@@ -2,7 +2,7 @@
 # Author: Miloš Stojanović <mc.cm.mail@gmail.com>
 # Discussion: https://www.reddit.com/r/unixporn/comments/btg6rj/oc_tmatrix_a_new_terminal_digital_rain_simulator
 pkgname=tmatrix-git
-pkgver=1.0.r2.gebeaf00
+pkgver=1.1.r13.gf192137
 pkgrel=1
 pkgdesc="A cmatrix-like replica of the digital rain from the Matrix"
 arch=('x86_64' 'i686')
@@ -26,16 +26,12 @@ build() {
     cd "${pkgname%%-git}"
     mkdir -p build && cd build
 
-    # Install into /usr/bin
     cmake -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr" ..
     make -j8
 }
 
 
 package() {
-    cd "${pkgname%%-git}"
-    install -Dm644 tmatrix.6 "$pkgdir/usr/share/man/man6/tmatrix.6"
-
-    cd build
+    cd "${pkgname%%-git}/build"
     make install
 }
