@@ -1,14 +1,15 @@
 # Maintainer: Dennis Stengele <dennis@stengele.me>
+# Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=beehive
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="A flexible event and agent system with lots of bees"
 arch=('x86_64' 'i686')
 url="https://github.com/muesli/beehive"
 license=('AGPL3')
-makedepends=('go')
-options=('!strip' '!emptydirs')
+makedepends=('go' 'make')
+options=('!strip' '!emptydirs' '!makeflags')
 install=beehive.install
 source=("$pkgname-$pkgver::git+https://github.com/muesli/beehive#tag=v$pkgver"
         "beehive.install"
@@ -18,17 +19,19 @@ sha256sums=('SKIP'
             '0b25ced04449720cba74c0c13bc6c0b75ff6f34bcaad58889745f572f66e7160')
 
 build() {
-    mkdir -p gopath/src/github.com/muesli
-    ln -rTsf $pkgname-$pkgver gopath/src/github.com/muesli/$pkgname
     export GOPATH="$srcdir"/gopath
     export GO111MODULE=on
-    cd gopath/src/github.com/muesli/$pkgname
+
+    mkdir -p "$GOPATH"/bin
+    cd "$srcdir"/$pkgname-$pkgver
     make
 }
 
 check() {
     export GOPATH="$srcdir"/gopath
-    cd gopath/src/github.com/muesli/$pkgname
+    export GO111MODULE=on
+
+    cd "$srcdir"/$pkgname-$pkgver
     make test
 }
 
