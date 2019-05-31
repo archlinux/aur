@@ -1,0 +1,16 @@
+pkgbase = dunner
+	pkgdesc = A container based task-runner
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/leopardslab/dunner
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = dep
+	makedepends = git
+	depends = docker
+	source = dunner-2.1.1.tar.gz::https://github.com/leopardslab/dunner/archive/v2.1.1.tar.gz
+	sha256sums = 970087b3fd9f2d7a99c37e72bc1639a93f976847cbecb79b7b6f2312658f6818
+
+pkgname = dunner
+
