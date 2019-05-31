@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=opusfile-git
-pkgver=0.9.r0.g2c239eb
+pkgver=0.11.r5.gd2577d7
 pkgrel=1
 pkgdesc="Stand-alone decoder library for .opus streams"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('opusfile')
 conflicts=('opusfile')
 options=('staticlibs')
-source=("git+https://git.xiph.org/opusfile.git")
+source=("git+https://gitlab.xiph.org/xiph/opusfile.git")
 sha256sums=('SKIP')
 
 
@@ -26,7 +26,8 @@ build() {
   cd "opusfile"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
@@ -35,6 +36,6 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/opusfile/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/opusfile"
   rm "$pkgdir/usr/share/doc/opusfile/COPYING"
 }
