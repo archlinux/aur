@@ -3,7 +3,7 @@
 author=Baitinq
 pkgname=geolocate-git
 pkgbase=geolocate
-pkgver=geolocate.r1.53fb9b1
+pkgver=1
 pkgrel=1
 pkgdesc="Obtain an ip's approximate latitude and longitude in a simplistic format (latitude:longitude)"
 url="https://github.com/Baitinq/geolocate"
