@@ -11,7 +11,7 @@ pkgdesc='Linux with patches for Intel graphics'
 _srcname=${pkgbase}
 _branch=drm-intel-next-queued
 _kernelname=${pkgbase#linux}
-pkgver=5.3.840447.6501aa4e3a45
+pkgver=5.3.840450.1fbf9d81429a
 pkgrel=1
 arch=('x86_64')
 url='https://drm.pages.freedesktop.org/maintainer-tools/drm-intel.html'
@@ -25,7 +25,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm-intel#branch=${_branc
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '7ae45e21cc5db548642381bd449d8b307c0ab44096af2c7a165fa23eb76155bd'
+            '3e8f8da3b5feaec6ede640091acb20b0784e28dd152be7a844513b1d2f18dba5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
