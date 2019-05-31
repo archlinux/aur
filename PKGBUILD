@@ -6,7 +6,7 @@ pkgname=plecs-standalone
 _pkgname="plecs"
 pkgver=v4.2.6
 pkgrel=1
-pkgdesc="A Circuit simulation tool written by plexim (license needed, only demo mode available otherwise)"
+pkgdesc="A circuit simulation tool written by plexim (license needed, only demo mode available otherwise)"
 url='http://www.plexim.com/de/products/plecs_standalone'
 
 arch=('x86_64')
