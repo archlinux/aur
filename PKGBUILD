@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=meteo-gtk
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A forecast application using OpenWeatherMap API"
 arch=('any')
 url="https://gitlab.com/bitseater/meteo"
@@ -20,5 +20,5 @@ build() {
 package() {
 	cd "meteo-$pkgver"
 	DESTDIR="$pkgdir" ninja -C build install
-	ln -s $pkgdir/usr/bin/com.gitlab.bitseater.meteo $pkgdir/usr/bin/meteo
+	ln -s /usr/bin/com.gitlab.bitseater.meteo $pkgdir/usr/bin/meteo
 }
