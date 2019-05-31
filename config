@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.2.0-rc1 Kernel Configuration
+# Linux/x86 5.2.0-rc2 Kernel Configuration
 #
 
 #
@@ -5704,6 +5704,12 @@ CONFIG_DRM_I915_DEBUG_GUC=y
 # CONFIG_DRM_I915_DEBUG_VBLANK_EVADE is not set
 CONFIG_DRM_I915_DEBUG_RUNTIME_PM=y
 # end of drm/i915 Debugging
+
+#
+# drm/i915 Profile Guided Optimisation
+#
+CONFIG_DRM_I915_SPIN_REQUEST=5
+# end of drm/i915 Profile Guided Optimisation
 
 CONFIG_DRM_VGEM=m
 CONFIG_DRM_VKMS=m
