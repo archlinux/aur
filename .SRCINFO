@@ -1,6 +1,6 @@
 pkgbase = libvorbis-git
 	pkgdesc = Reference implementation of the Ogg Vorbis audio format
-	pkgver = 1.3.6.r9.g46e70fa
+	pkgver = 1.3.6.r18.g9eadecc
 	pkgrel = 1
 	url = https://xiph.org/vorbis/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = libvorbis-git
 	provides = libvorbisenc.so
 	conflicts = libvorbis
 	options = staticlibs
-	source = git+https://git.xiph.org/vorbis.git
+	source = git+https://gitlab.xiph.org/xiph/vorbis.git
 	sha256sums = SKIP
 
 pkgname = libvorbis-git

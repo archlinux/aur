@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libvorbis-git
-pkgver=1.3.6.r9.g46e70fa
+pkgver=1.3.6.r18.g9eadecc
 pkgrel=1
 pkgdesc="Reference implementation of the Ogg Vorbis audio format"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('libvorbis' 'libvorbisfile.so' 'libvorbis.so' 'libvorbisenc.so')
 conflicts=('libvorbis')
 options=('staticlibs')
-source=("git+https://git.xiph.org/vorbis.git")
+source=("git+https://gitlab.xiph.org/xiph/vorbis.git")
 sha256sums=('SKIP')
 
 
@@ -26,8 +26,8 @@ build() {
   cd "vorbis"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
-
+  ./configure \
+    --prefix="/usr"
   make
 }
 
@@ -41,5 +41,5 @@ package() {
   cd "vorbis"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/libvorbis/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/libvorbis"
 }
