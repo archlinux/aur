@@ -149,6 +149,14 @@ To https://github.com/KeyLo99/God.git
    45e8aba..fba7e79  master -> master
 ```
 
+## FAQ
+
+Q: _So it's an application just to create some shortcuts to git commands? Did you heard of [git aliases](https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases)?_
+
+A: The project aims to provide a interactive shell that have built-in shortened Git commands and shorcuts. Benefits of it depends on your workspace, people like to use Git in command line and work with multiple shells can use it as a helper tool. Unlike the git aliases, it only needs one execution and there will be no need for typing 'git' anymore for using git. Here's a screenshot of my workspace while using `god` in a separate terminal.
+
+![Workspace](https://user-images.githubusercontent.com/24392180/58703963-166ae680-83b3-11e9-8e3b-1b92b70a7583.jpg)
+
 ## Todo(s)
 
 * Support adding custom shortcuts.
