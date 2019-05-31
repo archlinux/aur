@@ -3,7 +3,7 @@
 
 pkgname=deal-ii
 _realname=dealii
-pkgver=9.0.1
+pkgver=9.1.1
 pkgrel=1
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
@@ -11,11 +11,14 @@ url="http://www.dealii.org/"
 license=('LGPL')
 depends=('boost')
 optdepends=(
+      # deal.II is compatible with adol-c 2.6.4 and newer (which is not yet in the AUR)
+      # 'adol-c: automatic differentiation library'
       'arpack: Fortran77 subroutines designed to solve large scale eigenvalue problems'
       'assimp: Library to import various well-known 3D model formats in an uniform manner'
-      'p4est-deal-ii: The parallel forest (p4est) library, built to work with deal.II'
+      # The latest release of gmsh is not compatible with deal.II and causes
+      # some tests to fail
+      # 'gmsh: An automatic 3D finite element mesh generator with pre and post-processing facilities'
       'gsl: A modern numerical library for C and C++ programmers'
-      'gmsh: An automatic 3D finite element mesh generator with pre and post-processing facilities'
       'hdf5-openmpi: General purpose library and file format for storing scientific data'
       'intel-tbb: High level abstract threading library'
       'lapack: Linear Algebra PACKage'
@@ -25,11 +28,14 @@ optdepends=(
       'netcdf-cxx-legacy: Legacy NetCDF C++ bindings'
       'openmpi: High performance message passing library (MPI)'
       'opencascade: Open CASCADE Technology, 3D modeling & numerical simulation'
+      'p4est-deal-ii: The parallel forest (p4est) library, built to work with deal.II'
       'parmetis: A parallel graph partitioning library'
       'petsc: Portable, extensible toolkit for scientific computation'
       'scalapack: subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers'
       'slepc: Scalable library for Eigenvalue problem computations'
-      'sundials: Suite of nonlinear differential/algebraic equation solvers'
+      # deal.II is not compatible with sundials 4.0 or newer yet
+      # 'sundials: Suite of nonlinear differential/algebraic equation solvers'
+      'symengine: Fast symbolic manipulation library'
       'trilinos: object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems'
       'suitesparse: A collection of sparse matrix libraries'
       'zlib: Compression library implementing the deflate compression method found in gzip and PKZIP'
@@ -37,7 +43,7 @@ optdepends=(
 makedepends=('cmake')
 install=deal-ii.install
 source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
-sha1sums=('99e7a774ad30d43173438e84e8a7df2cabe2e567')
+sha1sums=('58ae55a3cb70c8a36f74cb0c737a0d29b281eb94')
 
 # where to install deal.II: change to something else (e.g., /opt/deal.II/)
 # if desired.
@@ -53,7 +59,7 @@ build() {
   # /opt/petsc/), source their environment variable scripts in the (likely) case
   # that a user installed one of these packages without logging out and logging
   # back in
-  for package in opencascade p4est-deal-ii petsc slepc trilinos
+  for package in opencascade p4est-deal-ii petsc slepc
   do
       if pacman -Qs $package >/dev/null
       then
@@ -95,7 +101,7 @@ build() {
   sed -i '/ENABLE_IF_LINKS(DEAL_II_LINKER_FLAGS "-Wl,--as-needed")/d' \
       ${srcdir}/${_realname}-$pkgver/cmake/setup_compiler_flags_gnu.cmake
 
-  sed -i '116ifedisableexcept(FE_INVALID);\n' \
+  sed -i '121ifedisableexcept(FE_INVALID);\n' \
       ${srcdir}/${_realname}-$pkgver/tests/quick_tests/scalapack.cc
 
 
@@ -125,10 +131,9 @@ build() {
 
 check() {
     cd "${srcdir}/build"
-    # make test cannot handle parallelism: spawned make instances read this 
-    # which causes trouble.
-    unset MAKEFLAGS 
-    make test
+    # workaround a bug by setting the number of jobs to 1 (though this still
+    # runs in parallel)
+    make -j1 test
 }
 
 package() {
