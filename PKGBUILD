@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libogg-git
-pkgver=1.3.2.r41.gdd85929
+pkgver=1.3.3.r19.g6ccfcc2
 pkgrel=1
 pkgdesc="Reference implementation of the Ogg media container"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('git')
 provides=('libogg')
 conflicts=('libogg')
 options=('staticlibs')
-source=("git+https://git.xiph.org/ogg.git")
+source=("git+https://gitlab.xiph.org/xiph/ogg.git")
 sha256sums=('SKIP')
 
 
@@ -25,8 +25,8 @@ build() {
   cd "ogg"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
-
+  ./configure \
+    --prefix="/usr"
   make
 }
 
@@ -34,5 +34,5 @@ package() {
   cd "ogg"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/libogg/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/libogg"
 }
