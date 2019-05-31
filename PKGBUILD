@@ -3,7 +3,8 @@
 pkgname=adaptativeneuralnetwork
 _fullname=AdaptativeNeuralNetwork
 pkgbase=adaptativeneuralnetwork
-pkgver=0.1.1.3
+pkgver=0.1.1.4
+_fullver=0.1.1.4-1
 pkgrel=0
 epoch=
 pkgdesc="AdaptativeNeuralNetwork : A static library containing multiple neural network models written in C"
@@ -15,11 +16,11 @@ optdepends=()
 makedepends=('make' 'cmake' 'gcc')
 checkdepends=('criterion')
 provides=()
-source=("https://github.com/cedricfarinazzo/${_fullname}/archive/${pkgver}.tar.gz")
+source=("https://github.com/cedricfarinazzo/${_fullname}/archive/${_fullver}.tar.gz")
 md5sums=('SKIP')
 
 build() {
-    cd "$srcdir/$_fullname-$pkgver"
+    cd "$srcdir/$_fullname-$_fullver"
     mkdir -p build
     cd build
     cmake -DCMAKE_BUILD_TYPE=RELEASE \
@@ -30,14 +31,14 @@ build() {
 }
 
 check() {
-    cd "$srcdir/$_fullname-$pkgver"
+    cd "$srcdir/$_fullname-$_fullver"
     cd build
     make check
 }
 
 
 package() {
-    cd "$srcdir/$_fullname-$pkgver"
+    cd "$srcdir/$_fullname-$_fullver"
     cd build
     make DESTDIR=$pkgdir LIBDIR=$pkgdir/usr/lib install
 }
