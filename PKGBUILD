@@ -6,7 +6,7 @@ pkgname=plecs-blockset
 _pkgname="plecs-blockset"
 pkgver=v4.2.6
 pkgrel=1
-pkgdesc="A MATLAB/Simulink integration of a Circuit simulation tool written by Plexim (license needed, only demo mode available otherwise)"
+pkgdesc="A MATLAB/Simulink integration of a circuit simulation tool written by Plexim (license needed)"
 url='http://www.plexim.com/de/products/plecs_blockset'
 
 arch=('x86_64')

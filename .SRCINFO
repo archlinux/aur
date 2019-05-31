@@ -1,5 +1,5 @@
 pkgbase = plecs-blockset
-	pkgdesc = A MATLAB/Simulink integration of a Circuit simulation tool written by Plexim (license needed, only demo mode available otherwise)
+	pkgdesc = A MATLAB/Simulink integration of a circuit simulation tool written by Plexim (license needed)
 	pkgver = v4.2.6
 	pkgrel = 1
 	url = http://www.plexim.com/de/products/plecs_blockset
