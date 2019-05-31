@@ -1,6 +1,6 @@
 pkgbase = cpuminer-opt
 	pkgdesc = Optimized multi-algo CPU miner
-	pkgver = 3.8.8.1
+	pkgver = 3.9.1.1
 	pkgrel = 1
 	url = https://github.com/JayDDee/cpuminer-opt
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = cpuminer-opt
 	conflicts = cpuminer
 	conflicts = cpuminer-multi
 	conflicts = cpuminer-multi-git
-	source = cpuminer-opt-3.8.8.1.tar.gz::https://github.com/JayDDee/cpuminer-opt/archive/v3.8.8.1.tar.gz
-	md5sums = bbba91c296b82830adf27db9d696487a
+	source = cpuminer-opt-3.9.1.1.tar.gz::https://github.com/JayDDee/cpuminer-opt/archive/v3.9.1.1.tar.gz
+	sha256sums = 8a842ac6597c7dae9f13eaf0b6ee0dbd7fe130f0b61d0307527b0a89b1826170
 
 pkgname = cpuminer-opt
 
