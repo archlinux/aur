@@ -10,6 +10,7 @@ pkgbase = liri-pulseaudio-git
 	groups = liri-git
 	license = LGPL3
 	makedepends = git
+	makedepends = qt5-tools
 	makedepends = liri-cmake-shared-git
 	depends = fluid-git
 	depends = pulseaudio
