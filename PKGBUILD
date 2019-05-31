@@ -5,16 +5,10 @@
 # Patched package maintainer: Saren Arterius <saren@wtako.net>
 # Patch origin: https://gist.github.com/DeadMetaler/12622bf9415c1100f2d436ffbd6778c6
 
-### BUILD OPTIONS
-# Set these variables to ANYTHING that is not null to enable them
-
-### Revert offending commit, recommanded to leave disable if not using NVIDIA
-_revert=
-
 
 pkgname=mutter-781835-workaround
-pkgver=3.32.2
-pkgrel=4
+pkgver=3.32.2+5+g13a1624c1
+pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -27,15 +21,13 @@ checkdepends=(xorg-server-xvfb)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-_commit=189f71f5d1e70dd16796418d568d3e3e4cad49e0 # tags/3.32.2^0
+_commit=13a1624c1050c91cd4d8a298f7a10fafe56fe9e5 # tags/3.32.2^5
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
-        216.patch
-        revert.patch)
+        216.patch)
 sha256sums=('SKIP'
             '842162bf8cec5d69fdb80c85fd152ddd3db6a9179d11d6f81d486f79814838c0'
-            'ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756'
-            '2d2e305e0a6cca087bb8164f81bdc0ae7a5ca8e9c13c81d7fd5252eb3563fc09')
+            'ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756')
 
 pkgver() {
   cd $pkgname
@@ -102,15 +94,14 @@ prepare() {
 
   # backends: Do not reload keymap on new keyboard notifications
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/579
-  git cherry-pick -n 8ba1e42c
+  git cherry-pick -n b01edc22
+
+  # cogl: Remove GLX "threaded swap wait" used on Nvidia [performance]
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/602
+  git cherry-pick -n 88ee2f51
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
-
-  # Revert offending commit
-  if [ -n "$_revert" ]; then
-    patch -Np1 -i ../revert.patch
-  fi
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1534089
   patch -Np1 -i ../0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
