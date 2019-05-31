@@ -1,6 +1,6 @@
 pkgbase = geolocate
 	pkgdesc = Obtain an ip's approximate latitude and longitude in a simplistic format (latitude:longitude)
-	pkgver = r13.3c5f8a1
+	pkgver = geolocate.r1.53fb9b1
 	pkgrel = 1
 	url = https://github.com/Baitinq/geolocate
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = geolocate
 	depends = curl
 	depends = jq
 	depends = gnu-netcat
-	source = git+https://github.com/Baitinq/geolocate.git
+	provides = geolocate
+	source = geolocate::git+https://github.com/Baitinq/geolocate.git
 	md5sums = SKIP
 	sha1sums = SKIP
 	sha256sums = SKIP
