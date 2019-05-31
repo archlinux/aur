@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 
 package() {
-  cd "${pkgdir}/${pkgbase}"
+  cd "${pkgbase}"
 
   # Install the program.
   install -Dm755 geolocate "${pkgdir}/usr/bin/geolocate"
