@@ -27,5 +27,5 @@ build() {
 
 package() {
   cd $_pkg
-  install -Dm755 $_pkg "$_pkgdir"/usr/bin/$_pkg
+  install -Dm755 $_pkg "$_pkgdir"/usr/local/bin/$_pkg
 }
