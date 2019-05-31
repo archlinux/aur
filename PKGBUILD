@@ -2,7 +2,7 @@
 
 pkgname=liboggz-git
 pkgver=1.1.1.r37.gacf142b
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to inspect, edit and validate Ogg files"
 arch=('i686' 'x86_64')
 url="https://www.xiph.org/oggz/"
@@ -11,7 +11,7 @@ depends=('glibc' 'libogg' 'sh')
 makedepends=('git')
 provides=('liboggz')
 conflicts=('liboggz')
-options=('!emptydirs' 'staticlibs')
+options=('staticlibs')
 source=("git+https://gitlab.xiph.org/xiph/liboggz.git")
 sha256sums=('SKIP')
 

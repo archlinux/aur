@@ -1,7 +1,7 @@
 pkgbase = liboggz-git
 	pkgdesc = Tools to inspect, edit and validate Ogg files
 	pkgver = 1.1.1.r37.gacf142b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xiph.org/oggz/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = liboggz-git
 	depends = sh
 	provides = liboggz
 	conflicts = liboggz
-	options = !emptydirs
 	options = staticlibs
 	source = git+https://gitlab.xiph.org/xiph/liboggz.git
 	sha256sums = SKIP
