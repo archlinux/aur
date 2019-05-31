@@ -20,7 +20,7 @@ source=("plecs-blockset.desktop" "plecs-blockset.png" "plecs-blockset.sh" "$pkgn
 sha1sums=('ad2dcabb5ef5c51d48809df6645d4c0b74aabe6e'
           'e1d9007695acbf40ce55b47f3724c4de8b5ac270'
           'fc44048d6defd161e850bb18bdc132b3dcee6242'
-          '4f7de4c1680432536ee12b0940aa3df154a58af2')
+          '0820a419091e73bbd37e0e74517b48afc8315ad4')
 
 package() {
     # install icon
