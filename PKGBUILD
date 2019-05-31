@@ -14,6 +14,7 @@ source=("$_name::git+https://github.com/johnfactotum/$_name.git#branch=master")
 provides=("$pkgname")
 replaces=("$_name")
 conflicts=("$_name")
+md5sums=('SKIP')
 
 build() {
 	cd "$srcdir/$_name"
