@@ -5,16 +5,17 @@
 
 pkgname='sat-xmpp-hg'
 _realname=sat
-pkgver=0.7.0.r2946.ce16847a7b6d
+pkgver=0.7.0.r2956.767e1ef6e1bd
 _version=0.7.0
 pkgrel=1
 url="http://salut-a-toi.org/"
 pkgdesc="Salut à Toi, multi-frontends multi-purposes XMPP client (core)"
 arch=('any')
-depends=('python2' 'dbus' 'python2-lxml>=3.1.0' 'python2-pillow' 'python2-pycryptodomex>=2.6.1' 'python2-pyopenssl' 'python2-dbus' 'python2-potr' 'python2-twisted' 'python2-wokkel>=0.7.1' 'python-xdg' 'python2-zope-interface' 'mutagen' 'python2-markdown' 'python2-xdg' 'python2-shortuuid-git' 'python2-gobject2' 'python2-html2text' 'python2-netifaces' 'python2-miniupnpc' 'python2-service-identity' 'sat-tmp-hg' 'python2-dateutil' 'python2-regex' 'python2-gobject' 'python2-progressbar' 'python2-pyinotify' 'python2-babel' 'python2-urwid>=1.2.0' 'python2-urwid-satext>=0.6.1' 'python2-xlib')
+depends=('python2' 'dbus' 'python2-lxml>=3.1.0' 'python2-pillow' 'python2-pycryptodomex>=2.6.1' 'python2-pyopenssl' 'python2-dbus' 'python2-twisted' 'python2-wokkel>=0.7.1' 'python-xdg' 'python2-zope-interface' 'mutagen' 'python2-markdown' 'python2-xdg' 'python2-shortuuid-git' 'python2-gobject2' 'python2-html2text' 'python2-netifaces' 'python2-service-identity' 'sat-tmp-hg' 'python2-dateutil' 'python2-regex' 'python2-gobject' 'python2-pyinotify' 'python2-babel' 'python2-urwid>=1.2.0' 'python2-urwid-satext>=0.6.1' 'python2-xlib')
+optdepends=('python2-progressbar' 'python2-miniupnpc' 'python2-potr')
 makedepends=('python2-setuptools' 'mercurial')
 license=('AGPL3')
-source=("hg+http://repos.goffi.org/sat")
+source=("hg+https://repos.goffi.org/sat")
 md5sums=('SKIP')
 options=('!strip')
 
