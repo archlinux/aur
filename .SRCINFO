@@ -1,5 +1,5 @@
 pkgbase = signal
-	pkgdesc = Signal Private Messenger for the Desktop
+	pkgdesc = Private messenger for the desktop
 	pkgver = 1.24.1
 	pkgrel = 1
 	url = https://github.com/signalapp/Signal-Desktop
@@ -14,7 +14,6 @@ pkgbase = signal
 	makedepends = nodejs-lts-dubnium
 	depends = electron
 	depends = openssl-1.0
-	provides = signal
 	conflicts = signal-desktop-beta-bin
 	conflicts = signal-desktop-bin
 	source = signal-git-repo::git+https://github.com/signalapp/Signal-Desktop.git#tag=v1.24.1
