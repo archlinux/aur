@@ -3,7 +3,7 @@
 
 pkgname=python-sphinx-automodapi
 _pyname=${pkgname#python-}
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="Sphinx extension for generating API documentation."
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('python-sphinx>=1.6')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('5c989bfe37f555f635e8fbb650859df391556981f5a436507fb3241794fd26c6')
+sha256sums=('4f61015db8c9a65809a41b1f609d827c99dc2c7b0179aedc4f64fc7d7aeec9e7')
 
 package() {
     cd ${srcdir}/${_pyname}-${pkgver}
