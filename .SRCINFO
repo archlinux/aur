@@ -1,0 +1,17 @@
+pkgbase = geolocate
+	pkgdesc = Obtain your latitude and longitude in a simplistic format (based on your ip)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Baitinq/geolocate
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = curl
+	source = git+https://github.com/Baitinq/.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = geolocate-git
+
