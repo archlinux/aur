@@ -9,6 +9,7 @@ pkgbase = geolocate
 	depends = bash
 	depends = curl
 	depends = jq
+	depends = gnu-netcat
 	source = git+https://github.com/Baitinq/geolocate.git
 	md5sums = SKIP
 	sha1sums = SKIP
