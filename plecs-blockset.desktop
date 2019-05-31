@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=4.2.6                   
+Name=PLECS Blockset Installation Wizard 
+Icon=plecs-blockset
+Comment=Wizard for the integration into MATLAB  
+Path=/opt/plecs-blockset
+Exec=plecs-blockset %U
+Terminal=false                       
+Categories=Development     
+
