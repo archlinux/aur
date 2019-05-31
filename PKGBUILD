@@ -49,6 +49,5 @@ package() {
 	rm "$srcdir/plecs/license.txt"
 
 	echo "copying plecs dir"
-	rm "$srcdir/plecs/PLECS"
 	cp "$srcdir/plecs/." "$pkgdir/opt/plecs" -r 
 }
