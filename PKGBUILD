@@ -27,5 +27,5 @@ build() {
 
 package() {
   cd $_pkg
-  sudo install -Dm755 $_pkg "$_pkgdir"/usr/local/bin/$_pkg
+  go install -v .
 }
