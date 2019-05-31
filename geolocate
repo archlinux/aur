@@ -35,15 +35,6 @@ curl -s https://ipvigilante.com/ | \
         done
 }
 
-getCoord() {
-curl -s https://ipvigilante.com/ | \
-        jq '.data.latitude, .data.longitude' | \
-        while read -r LATITUDE; do
-                read -r LONGITUDE
-                echo "${LATITUDE}:${LONGITUDE}" | tr -d '"'
-        done
-}
-
         main() {
 
             case "$1" in
@@ -82,5 +73,5 @@ curl -s https://ipvigilante.com/ | \
             exit 0
         }
 
-        # call main
+        # call main function
         main "${@}"
