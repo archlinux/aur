@@ -3,7 +3,7 @@
 author=Baitinq
 pkgname=geolocate-git
 pkgbase=geolocate
-pkgver=1
+pkgver=geolocate.r1.53fb9b1
 pkgrel=1
 pkgdesc="Obtain an ip's approximate latitude and longitude in a simplistic format (latitude:longitude)"
 url="https://github.com/Baitinq/geolocate"
@@ -18,9 +18,15 @@ md5sums=('SKIP')
 sha1sums=('SKIP')
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${pkgdir}/${pkgbase}"
+
+  # Get the version number.
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-  cd "${pkgbase}"
+  cd "${srcdir}/${pkgbase}"
 
   # Install the program.
   install -Dm755 geolocate "${pkgdir}/usr/bin/geolocate"
