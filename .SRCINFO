@@ -1,0 +1,15 @@
+pkgbase = baph
+	pkgdesc = Basic AUR Package Helper
+	pkgver = 0.6
+	pkgrel = 3
+	url = https://github.com/PandaFoss/baph
+	arch = any
+	license = GPL
+	depends = coreutils
+	depends = pacman-contrib
+	depends = curl
+	source = https://raw.githubusercontent.com/PandaFoss/baph/master/baph
+	md5sums = 55365800010330b45842101f0a4e3bf5
+
+pkgname = baph
+
