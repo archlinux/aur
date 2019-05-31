@@ -1,7 +1,7 @@
 pkgbase = g0d
 	pkgdesc = Utility for simplifying the Git usage
-	pkgver = 1.0
-	pkgrel = 0
+	pkgver = 1.1
+	pkgrel = 1.0
 	url = https://github.com/KeyLo99/god
 	arch = x86_64
 	arch = i686
@@ -13,9 +13,10 @@ pkgbase = g0d
 	makedepends = make
 	depends = sh
 	depends = git
-	provides = god-1.0
+	provides = god-1.1
 	conflicts = g0d
 	source = git://github.com/KeyLo99/god.git
 	sha256sums = SKIP
 
 pkgname = g0d
+
