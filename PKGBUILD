@@ -1,7 +1,7 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist-bin
-pkgver=0.7.2.rc8
+pkgver=0.7.2.rc8c
 pkgrel=1
 pkgdesc='A professional screenwriting software.'
 url='https://kitscenarist.ru/en/'
@@ -10,7 +10,7 @@ license=('GPL3')
 conflicts=('scenarist')
 depends=()
 source=("https://kitscenarist.ru/downloads/linux/scenarist-setup-${pkgver}_en_amd64.deb")
-sha512sums=('59d98bbcc489831f8c8beaabf178fdc6f7d0580809cd9e283e35c55e8e42c68dc3f521ee698a4bdd628533f9597945602c21a093b15a2fad9d3a4d02146218d5')
+sha512sums=('b797e45a4509245665f7bd8c9b60406ad5305c7baa2b69b397df40a2ca78dc38d317b10af931ec301c07ba1b35fba430dbacfbd62c1c06694a773363fc136abb')
 options=('!strip' '!emptydirs')
 PKGEXT=.tar
 
