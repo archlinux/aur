@@ -2,12 +2,12 @@
 
 pkgname=opusfile-git
 pkgver=0.11.r5.gd2577d7
-pkgrel=1
+pkgrel=2
 pkgdesc="Stand-alone decoder library for .opus streams"
 arch=('i686' 'x86_64')
 url="https://opus-codec.org/"
 license=('BSD')
-depends=('glibc' 'openssl' 'opus')
+depends=('glibc' 'libogg' 'openssl' 'opus')
 makedepends=('git')
 provides=('opusfile')
 conflicts=('opusfile')

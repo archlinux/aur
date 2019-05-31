@@ -1,13 +1,14 @@
 pkgbase = opusfile-git
 	pkgdesc = Stand-alone decoder library for .opus streams
 	pkgver = 0.11.r5.gd2577d7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opus-codec.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	depends = glibc
+	depends = libogg
 	depends = openssl
 	depends = opus
 	provides = opusfile
