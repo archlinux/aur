@@ -1,0 +1,15 @@
+pkgbase = put
+	pkgdesc = A modern, featureful echo(1)
+	pkgver = 2.0.5.a.3
+	pkgrel = 1
+	url = https://github.com/Unlimiter/put
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	source = https://github.com/Unlimiter/put/archive/v2.0.5-a.3.tar.gz
+	sha256sums = 474a9074ac380c3ff37f4637f66fc5be2e868492f313b2ef486c767d1c16d624
+
+pkgname = put
+
