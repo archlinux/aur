@@ -19,14 +19,14 @@ sha1sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgbase}"
+  cd "${srcdir}/${pkgbase}"
 
   # Get the version number.
   echo "${pkgbase}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${pkgbase}"
+  cd "${srcdir}/${pkgbase}"
 
   # Install the program.
   install -Dm755 geolocate "${pkgdir}/usr/bin/geolocate"
