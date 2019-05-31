@@ -1,9 +1,10 @@
-# Maintainer: Michał Szymański <smiszym at gmail dot com>
-# Contributor: Daniel Kirchner <daniel AT ekpyron DOT org>
-# Contributor: RemiliaForever <remilia AT koumakan DOT cc>
+# Maintainer: J. A. Cornejo Scappini <jacorsca at gmail dot com>
+# Contributor: Michał Szymański <smiszym at gmail dot com>
+# Contributor: Daniel Kirchner <daniel at ekpyron dot org>
+# Contributor: RemiliaForever <remilia at koumakan dot cc>
 
 pkgname=mingw-w64-glfw
-pkgver=3.2.1
+pkgver=3.3
 pkgrel=1
 pkgdesc="A free, open source, portable framework for OpenGL application development (mingw-w64)"
 arch=('any')
@@ -13,7 +14,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://github.com/glfw/glfw/releases/download/${pkgver}/glfw-${pkgver}.zip)
-md5sums=('824c99eea073bdd6d2fec76b538f79af')
+sha256sums=('36fda4cb173e3eb2928c976b0e9b5014e2e5d12b9b787efa0aa29ffc41c37c4a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -46,7 +47,6 @@ package() {
                 cd "${srcdir}/build-${_arch}"
                 make DESTDIR="${pkgdir}" install
                 mkdir -p "${pkgdir}/usr/${_arch}/bin/"
-                mv "${pkgdir}/usr/${_arch}/lib/"*.dll "${pkgdir}/usr/${_arch}/bin/"
                 ${_arch}-strip -x -g "${pkgdir}/usr/${_arch}/bin/"*.dll
                 ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.a
 
@@ -57,5 +57,5 @@ package() {
 
         #copy license file
         mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-        cp "${srcdir}/glfw-${pkgver}/COPYING.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
+        cp "${srcdir}/glfw-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
