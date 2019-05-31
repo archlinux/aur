@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Odio
+GenericName=Radio Player
+Icon=odio
+Exec=/usr/bin/odio
+Categories=Audio;Music;Player;AudioVideo;
