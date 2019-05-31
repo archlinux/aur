@@ -1,0 +1,40 @@
+pkgbase = linux-slim
+	pkgver = 5.2.rc2
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	options = !strip
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+	source = config.x86_64
+	source = linux-slim.preset
+	sha256sums = SKIP
+	sha256sums = b17f7c2c09a057a4faa3b5c4114c0f1705f94c672ea3bca78bd6ab14be240187
+	sha256sums = 41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367
+
+pkgname = linux-slim
+	pkgdesc = Linux kernel slimmed down to only work on AMD hardware. Zero compatibility.
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-slim.preset
+
+pkgname = linux-slim-headers
+	pkgdesc = Header files and scripts for building modules for the slimmed down linux kernel.
+	provides = linux-headers
+
+pkgname = linux-slim-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel
+	provides = linux-docs
+
