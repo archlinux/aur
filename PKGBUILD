@@ -17,11 +17,11 @@ makedepends=('coreutils')
 
 source=("plecs.desktop" "plecs.png" "plecs.sh" "$pkgname-$pkgver-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-standalone-4-2-6_linux64.tar.gz")
 
-md5sums=('f58fcc25f16d68c283fc04ca1f0b513e'
+md5sums=('7e0990a952785f929402da88efbd6cde'
          '8ed62f1ce2de47c761c9244531dc154e'
          '675ece23be004504ae71890909f8819c'
          'b871e079630ee2a7b4b2189c704cd86b')
-sha1sums=('df41875ba74ec90453ddcf45c2e84c56d2b57f2e'
+sha1sums=('6dbc37f69996baf211e0c387cc5ee6bb4c456619'
           'e1d9007695acbf40ce55b47f3724c4de8b5ac270'
           '4150e3dcc41210b7a28b7042972f76e7f6f3ac71'
           'c594bc7ae8f3a641ac660c144b971bf3fd6d34e5')
