@@ -2,7 +2,7 @@
 
 _name=anndata
 pkgname=python-$_name
-pkgver=0.6.19
+pkgver=0.6.20
 pkgrel=1
 pkgdesc='A data structure for rectangular numeric data and sample/variable annotations.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-pandas python-scipy python-h5py python-natsort)
 makedepends=(python-pip)
 _wheel="${_name/-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_wheel")
-sha256sums=('679cd9f2775acf996f959dc272b8effbad4d2f391221d4854896ae3dba741d50')
+sha256sums=('9385c08c85c1491150917189de51693d14e0b6bbb7cc207be70d5264bf4840e0')
 noextract=("$_wheel")
 
 package() {
