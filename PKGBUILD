@@ -3,7 +3,7 @@
 
 pkgname=python2-pafy-git
 _pkgname=python2-pafy
-pkgver=v0.5.4r20.ga23a227
+pkgver=v0.5.4r22.g0e315a4
 pkgrel=1
 pkgdesc="Python API for YouTube"
 url='https://pypi.org/project/pafy/'
