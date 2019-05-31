@@ -14,7 +14,7 @@ depends=(
     'python2-pyspotify>=2'
     'python2-setuptools'
     'python2-requests>=2')
-makedepends=('python2')
+makedepends=('python2', 'git')
 provides=('mopidy-spotify')
 source=("git+https://github.com/kingosticks/mopidy-spotify.git#branch=fix/web-api-playlists-v2")
 md5sums=('SKIP')

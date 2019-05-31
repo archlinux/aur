@@ -6,6 +6,7 @@ pkgbase = mopidy-spotify-playlist-fix-git
 	arch = any
 	license = APACHE
 	makedepends = python2
+	makedepends = git
 	depends = mopidy>=2
 	depends = python2-pykka>=1.1
 	depends = python2-pyspotify>=2
