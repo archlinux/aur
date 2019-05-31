@@ -1,19 +1,17 @@
 pkgbase = icecast-git
 	pkgdesc = A streaming media (audio/video) server
 	pkgver = 2.5.0.beta.2.r438.gde3a075
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.icecast.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = glibc
-	depends = openssl
-	depends = curl>=7.10
-	depends = libxml2
+	depends = curl
 	depends = libxslt
 	depends = libtheora
-	depends = libvorbis>=1.0
+	depends = libvorbis
 	depends = speex
 	depends = libkate
 	provides = icecast

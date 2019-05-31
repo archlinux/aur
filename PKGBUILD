@@ -2,12 +2,12 @@
 
 pkgname=icecast-git
 pkgver=2.5.0.beta.2.r438.gde3a075
-pkgrel=1
+pkgrel=2
 pkgdesc="A streaming media (audio/video) server"
 arch=('i686' 'x86_64')
 url="http://www.icecast.org/"
 license=('GPL2')
-depends=('glibc' 'openssl' 'curl>=7.10' 'libxml2' 'libxslt' 'libtheora' 'libvorbis>=1.0' 'speex' 'libkate')
+depends=('glibc' 'curl' 'libxslt' 'libtheora' 'libvorbis' 'speex' 'libkate')
 makedepends=('git')
 provides=('icecast')
 conflicts=('icecast')
