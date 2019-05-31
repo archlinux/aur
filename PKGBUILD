@@ -2,7 +2,7 @@
 
 pkgname=duffle-bin
 pkgver=0.1.0
-pkgsubver=-ralpha.4+dramallamabuie
+pkgsubver=-ralpha.5+englishrose
 pkgrel=1
 pkgdesc="CNAB installer"
 url="https://github.com/deislabs/duffle"
