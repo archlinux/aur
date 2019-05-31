@@ -11,19 +11,13 @@ depends=('bash' 'curl' 'jq' 'gnu-netcat')
 makedepends=('git')
 license=('GPL')
 arch=('any')
-source=("${pkgbase}::git+https://github.com/$author/$pkgbase.git")
+source=("https://github.com/Baitinq/geolocate.git")
 provides=('geolocate')
 
 md5sums=('SKIP')
 sha1sums=('SKIP')
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/${pkgbase}"
-
-  # Get the version number.
-  echo "${pkgbase}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
 
 package() {
   cd "${srcdir}/${pkgbase}"
