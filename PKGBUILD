@@ -2,7 +2,7 @@
 # Maintainer: Pavel Sevecek <sevecek at sirrah.troja.mff.cuni.cz>
 
 pkgname=opensph
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Smoothed particle hydrodynamics library and visualization tools."
 arch=('i686' 'x86_64')
@@ -28,7 +28,6 @@ build() {
 }
 
 package() {
-    install -D build/cli/launcher/launcher $pkgdir/usr/bin/opensph-cli
-    install -D build/gui/launcherGui/launcherGui $pkgdir/usr/bin/opensph
+    make install
 }
 
