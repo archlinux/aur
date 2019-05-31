@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=SQL Workbench/J
+GenericName=Database Manager
+Comment=Graphical Java program to manage JDBC databases
+Exec=sqlworkbenchj
+Icon=sqlworkbenchj
+Terminal=false
+Categories=Development;
+
