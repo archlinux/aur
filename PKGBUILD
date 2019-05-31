@@ -9,7 +9,7 @@ pkgbase=clion-eap
 pkgname=(clion-eap clion-eap-jre clion-eap-cmake clion-eap-gdb clion-eap-lldb)
 _pkgname=clion
 _dlname=CLion
-pkgver=192.4205.36
+pkgver=192.4488.4
 _dlver=$pkgver
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
@@ -20,7 +20,7 @@ license=('custom')
 makedepends=('rsync')
 source=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}.tar.gz"
         "jetbrains-${pkgbase}.desktop")
-sha256sums=('0473f0508aeb0ff936fda162b4c8e45e3e37f96150084cb1af2bb6680c781697'
+sha256sums=('1eecac807bc5cd632504b571b37951fc422a27581a5f8b170e4c04d5daf1b943'
             'deb1e9f90e99f2ac00b5c31581fe6148712ecfa25f7290a39ae71443978cd539')
 noextract=("${_dlname}-${_dlver}.tar.gz")
 
@@ -57,7 +57,7 @@ package_clion-eap() {
     backup=("opt/${pkgbase}/bin/clion64.vmoptions")
 
     rsync -rtl "${srcdir}/opt" "${pkgdir}" \
-          --exclude=/opt/${pkgbase}/jre64 \
+          --exclude=/opt/${pkgbase}/jbr \
           --exclude=/opt/${pkgbase}/bin/cmake \
           --exclude=/opt/${pkgbase}/bin/gdb \
           --exclude=/opt/${pkgbase}/bin/lldb
@@ -80,7 +80,7 @@ package_clion-eap() {
 
 package_clion-eap-jre() {
     install -d -m755 "${pkgdir}/opt/${pkgbase}"
-    rsync -rtl "${srcdir}/opt/${pkgbase}/jre64" "${pkgdir}/opt/${pkgbase}"
+    rsync -rtl "${srcdir}/opt/${pkgbase}/jbr" "${pkgdir}/opt/${pkgbase}"
 }
 
 package_clion-eap-cmake() {
