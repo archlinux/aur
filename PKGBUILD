@@ -20,11 +20,11 @@ source=("plecs-blockset.desktop" "plecs-blockset.png" "plecs-blockset.sh" "$pkgn
 md5sums=('381be723bc77af74c5aca5f070d5925c'
          '8ed62f1ce2de47c761c9244531dc154e'
          'fa37afb26f11e1dd331e886eb175a2ef'
-         'e1c67652e604a75bbd7cb2f0946cbb96')
+         'c479fbcd1d3b2b8d7c2f6502daaff67e')
 sha1sums=('ad2dcabb5ef5c51d48809df6645d4c0b74aabe6e'
           'e1d9007695acbf40ce55b47f3724c4de8b5ac270'
           'fc44048d6defd161e850bb18bdc132b3dcee6242'
-          '0820a419091e73bbd37e0e74517b48afc8315ad4')
+          '4f7de4c1680432536ee12b0940aa3df154a58af2')
 
 package() {
     # install icon
