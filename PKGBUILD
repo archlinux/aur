@@ -36,9 +36,6 @@ build() {
     git clean -xdf
     npm install
     gulp build
-    # workaround: require electron >= 3.0.0
-    cd app_compiled
-    npm install electron@beta
 }
 
 package() {
