@@ -6,8 +6,8 @@ pkgbase = duffle-bin
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source = duffle-0.1.0::https://github.com/deislabs/duffle/releases/download/0.1.0-ralpha.4+dramallamabuie/duffle-linux-amd64
-	sha256sums = 68103b1225335803b460031d5ba16b15adae87aed11bfa73f1372554448d5aaa
+	source = duffle-0.1.0::https://github.com/deislabs/duffle/releases/download/0.1.0-ralpha.5+englishrose/duffle-linux-amd64
+	sha256sums = 0f1187d3afc284016d552f1ffa5095514a8535288d2ee65afd32d2757e33a285
 
 pkgname = duffle-bin
 

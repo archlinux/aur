@@ -13,7 +13,7 @@ source=(
   "duffle-$pkgver::https://github.com/deislabs/duffle/releases/download/$pkgver$pkgsubver/duffle-linux-amd64"
 )
 
-sha256sums=('68103b1225335803b460031d5ba16b15adae87aed11bfa73f1372554448d5aaa')
+sha256sums=('0f1187d3afc284016d552f1ffa5095514a8535288d2ee65afd32d2757e33a285')
 
 package() {
   cd "$srcdir"
