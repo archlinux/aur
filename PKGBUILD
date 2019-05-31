@@ -2,11 +2,12 @@
 
 pkgname=libogg-git
 pkgver=1.3.3.r19.g6ccfcc2
-pkgrel=1
+pkgrel=2
 pkgdesc="Reference implementation of the Ogg media container"
 arch=('i686' 'x86_64')
 url="https://www.xiph.org/ogg/"
 license=('BSD')
+depends=('glibc')
 makedepends=('git')
 provides=('libogg')
 conflicts=('libogg')
