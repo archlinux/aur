@@ -1,0 +1,5 @@
+*.tar.xz
+*.AppImage
+license.html
+pkg/**
+src/**
