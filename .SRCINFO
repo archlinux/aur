@@ -1,0 +1,40 @@
+pkgbase = linux-new
+	pkgver = 5.2.rc2
+	pkgrel = 2
+	url = http://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	options = !strip
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+	source = config.x86_64
+	source = linux-new.preset
+	sha256sums = SKIP
+	sha256sums = 8a5b4e33c65cf565af666c3c6ae80940bed6ff4cf89dae9fff889b5be7e412b2
+	sha256sums = 18b701cd3891efa66a507c03ef8ef24f8d38080d4930159cedabbc6064e433aa
+
+pkgname = linux-new
+	pkgdesc = Linux kernel version 5 with the groundbreaking freesync AMD tech
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-new.preset
+
+pkgname = linux-new-headers
+	pkgdesc = Header files and scripts for building modules for Linux kerel with groundbreaking freesync AMD tech
+	provides = linux-headers
+
+pkgname = linux-new-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel
+	provides = linux-docs
+
