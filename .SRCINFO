@@ -10,8 +10,8 @@ pkgbase = cointop
 	license = APACHE
 	makedepends = go-pie
 	makedepends = git
-	source = https://github.com/miguelmota/cointop/archive/1.2.0.tar.gz
-	sha256sums = 1848a70457f6e634579619328f1792d68b97a0e2c10118b72b0cacf7e808360c
+	source = https://github.com/miguelmota/cointop/archive/1.2.1.tar.gz
+	sha256sums = 67e05b8ed1a080e224d53911b720f40ee9737b749b3b3a09e091116799fde06f
 
 pkgname = cointop
 
