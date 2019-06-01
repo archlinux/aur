@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=4.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='https://www.ffmpeg.org/'
@@ -24,14 +24,14 @@ depends=(
         'libxext' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'codec2' 'davs2' 'flite1-patched' 'libilbc' 'libklvanc-git'
-        'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'intel-svt-hevc' 'intel-svt-av1'
-        'svt-vp9-git' 'vo-amrwbenc' 'xavs' 'xavs2' 'ndi-sdk' 'libmysofa' 'rockchip-mpp'
+        'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2'
+        'ndi-sdk' 'libmysofa' 'rockchip-mpp'
 )
 depends_x86_64=(
     # official repositories:
         'cuda'
     # AUR:
-        'intel-media-sdk'
+        'intel-svt-hevc' 'intel-svt-av1' 'svt-vp9-git' 'intel-media-sdk'
 )
 makedepends=(
     # official repositories:
@@ -48,28 +48,31 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswresample.so' 'ffmpeg')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
-        'ffmpeg-full-add-intel-svt-hevc.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v1.3.0/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch'
+        'LICENSE')
+source_x86_64=('ffmpeg-full-add-intel-svt-hevc.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v1.3.0/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch'
         'ffmpeg-full-add-intel-svt-hevc-docs.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v1.3.0/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch'
         'ffmpeg-full-add-intel-svt-av1.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v0.5.0/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch'
-        'ffmpeg-full-add-intel-svt-vp9.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/9c96f478e4a281f6019c8b0de39c2b7caba56371/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch'
-        'LICENSE')
+        'ffmpeg-full-add-intel-svt-vp9.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/9c96f478e4a281f6019c8b0de39c2b7caba56371/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch')
 sha256sums=('0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d'
             'SKIP'
-            'cc8ba4ff56cdb38a59650203999c4c8c83fc40bdb905b87b678ff68a4538444d'
-            '516c5a1b3ab6dc444e2270a1bae90455838fc3b7e3a18de37d7d63e25e79493d'
-            '490952c315404ecaa633d55cdb3456d1e518180c8375f374f3fb85d226fff476'
-            '7690a4f6bdc4a57e35c7ff5b6e87f2fe6d056d452eff9e767eaccff41832f4d7'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
+sha256sums_x86_64=('cc8ba4ff56cdb38a59650203999c4c8c83fc40bdb905b87b678ff68a4538444d'
+                   '516c5a1b3ab6dc444e2270a1bae90455838fc3b7e3a18de37d7d63e25e79493d'
+                   '490952c315404ecaa633d55cdb3456d1e518180c8375f374f3fb85d226fff476'
+                   '7690a4f6bdc4a57e35c7ff5b6e87f2fe6d056d452eff9e767eaccff41832f4d7')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
     cd "${_srcname}-${pkgver}"
     
     # add intel-svt support for hevc, av1 and vp9
-    patch -Np1 -i "${srcdir}/ffmpeg-full-add-intel-svt-hevc.patch"
-    patch -Np1 -i "${srcdir}/ffmpeg-full-add-intel-svt-hevc-docs.patch"
-    patch -Np1 -i "${srcdir}/ffmpeg-full-add-intel-svt-av1.patch"
-    patch -Np1 -i "${srcdir}/ffmpeg-full-add-intel-svt-vp9.patch"
+    if [ "$CARCH" = 'x86_64' ] 
+    then
+        patch -Np1 -i "${srcdir}/ffmpeg-full-add-intel-svt-hevc.patch"
+        patch -Np1 -i "${srcdir}/ffmpeg-full-add-intel-svt-hevc-docs.patch"
+        patch -Np1 -i "${srcdir}/ffmpeg-full-add-intel-svt-av1.patch"
+        patch -Np1 -i "${srcdir}/ffmpeg-full-add-intel-svt-vp9.patch"
+    fi
 }
 
 build() {
@@ -79,7 +82,7 @@ build() {
     if [ "$CARCH" = 'x86_64' ] 
     then
         local _libvmaf='--enable-libvmaf'
-        local _cudasdk='--enable-cuda-sdk'
+        local _cudanvcc='--enable-cuda-sdk'
         local _libmfx='--enable-libmfx'
         local _libnpp='--enable-libnpp'
         
@@ -215,7 +218,7 @@ build() {
         --enable-xlib \
         --enable-zlib \
         \
-        $_cudasdk \
+        $_cudanvcc \
         --enable-cuvid \
         --enable-ffnvcodec \
         --enable-libdrm \
