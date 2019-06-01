@@ -2,7 +2,7 @@
 # Co-maintainer: Guillaume Raffin ("theelectronwill") <theelectronwill@gmail.com>
 
 pkgname=mill
-pkgver=0.3.6
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Your shiny new Java/Scala build tool"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('bash' 'java-environment')
 source=("$pkgname-$pkgver::https://github.com/lihaoyi/mill/releases/download/$pkgver/$pkgver"
         "$pkgname-LICENSE::https://raw.githubusercontent.com/lihaoyi/mill/$pkgver/LICENSE")
 
-md5sums=('5c65859b12a25e88b1abf6d03a6fb528'
+md5sums=('45b090d6426606cc724b274e1b9cc191'
          '08a3c7271d440a2388964b1d9289507a')
 
 package() {
