@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="一个高颜值并且实用的喜马拉雅桌面客户端。"
 url="https://github.com/zenghongtu/Mob"
 arch=('x86_64')
-license=('TIM')
+license=('MIT')
 depends=('libxtst' 'gtk2' 'libxss' 'nss' 'gconf' 'alsa-lib')
 install=${pkgname}.install
 
