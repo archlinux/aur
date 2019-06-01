@@ -1,6 +1,6 @@
 pkgbase = st-mattiadr
 	pkgdesc = Fork of the suckless terminal with additional patches.
-	pkgver = 0.8.2a
+	pkgver = 0.8.2b
 	pkgrel = 1
 	url = https://github.com/mattiadr/st
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = st-mattiadr
 	depends = xorg-fonts-misc
 	provides = st
 	conflicts = st
-	source = https://github.com/mattiadr/st/archive/0.8.2a.tar.gz
-	md5sums = 971e0bd66386ad4227eaf88964a5dda3
+	source = https://github.com/mattiadr/st/archive/0.8.2b.tar.gz
+	md5sums = 95949274501255ec67c51c2994bd7a09
 
 pkgname = st-mattiadr
 

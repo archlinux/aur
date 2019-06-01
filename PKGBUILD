@@ -11,7 +11,7 @@ depends=('libxft' 'libxext' 'xorg-fonts-misc')
 provides=('st')
 conflicts=('st')
 source=("https://github.com/mattiadr/st/archive/$pkgver.tar.gz")
-md5sums=('971e0bd66386ad4227eaf88964a5dda3')
+md5sums=('95949274501255ec67c51c2994bd7a09')
 
 prepare() {
 	cd $srcdir/st-$pkgver
