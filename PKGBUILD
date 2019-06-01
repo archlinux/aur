@@ -3,16 +3,16 @@
 _module='flake8-polyfill'
 pkgbase=("python-${_module}")
 pkgname=("${pkgbase}" "python2-${_module}")
-pkgver='1.0.1'
-pkgrel=2
+pkgver='1.0.2'
+pkgrel=1
 pkgdesc="Polyfill package for Flake8 plugins"
 url="https://gitlab.com/pycqa/flake8-polyfill"
 depends=()
 makedepends=('python-setuptools' 'python2-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/71/6e/dd7e0f0ddf146213d0cc0b963b3d4c6434823ebe3992c29b523182bbf785/${_module}-${pkgver}.tar.gz")
-md5sums=('92aa008899021c8c7c3a9db2578164da')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
+md5sums=('076110bed47814d27019a0db25ad481b')
 
 prepare() {
   cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
