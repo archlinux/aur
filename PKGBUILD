@@ -11,21 +11,12 @@ depends=('bash' 'curl' 'jq' 'gnu-netcat')
 makedepends=('git')
 license=('GPL')
 arch=('any')
-source=("git://github.com/Baitinq/geolocate")
+source=("git://github.com/$author/$pkgbase")
 provides=('geolocate')
 
 md5sums=('SKIP')
 sha1sums=('SKIP')
 sha256sums=('SKIP')
-
-prepare() {
-  if [ -d "$srcdir/$pkgname" ]; then
-    rm -rf "$srcdir/$pkgname"
-  fi
-
-  mkdir -p "$srcdir/$pkgname"
-  cd "$srcdir/$pkgname"
-}
 
 pkgver() {
   cd "$srcdir/$pkgbase"
@@ -40,6 +31,8 @@ package() {
   cd "$srcdir/$pkgbase"
 
   # Install the program.
-  install -Dm755 geolocate "${pkgdir}/usr/bin/geolocate"
-  chmod +x "$pkgdir/usr/bin/geolocate"
+  install -Dm755 geolocate "${pkgdir}/usr/bin/$pkgbase"
+  chmod +x "$pkgdir/usr/bin/$pkgbase"
+  install -Dm 644 service/$pkgbase.service \
+    "$pkgdir/etc/systemd/system/$pkgbase.service"
 }
