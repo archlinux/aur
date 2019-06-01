@@ -13,6 +13,7 @@ pkgbase = liri-networkmanager-git
 	makedepends = qt5-tools
 	makedepends = liri-cmake-shared-git
 	depends = fluid-git
+	depends = libliri-git
 	depends = networkmanager-qt
 	depends = modemmanager-qt
 	provides = liri-networkmanager
