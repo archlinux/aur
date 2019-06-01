@@ -1,5 +1,5 @@
 pkgbase = plecs-blockset
-	pkgdesc = PLECS integration into MATLAB/Simulink (license needed / no demo version available)
+	pkgdesc = PLECS integration into MATLAB/Simulink (license needed / 30-days free trial)
 	pkgver = v4.2.6
 	pkgrel = 1
 	url = http://www.plexim.com/de/products/plecs_blockset

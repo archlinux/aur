@@ -6,7 +6,7 @@ pkgname=plecs-blockset
 _pkgname="plecs-blockset"
 pkgver=v4.2.6
 pkgrel=1
-pkgdesc="PLECS integration into MATLAB/Simulink (license needed / no demo version available)"
+pkgdesc="PLECS integration into MATLAB/Simulink (license needed / 30-days free trial)"
 url='http://www.plexim.com/de/products/plecs_blockset'
 
 arch=('x86_64')
