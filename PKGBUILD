@@ -3,22 +3,22 @@ pkgbase=python-gammapy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc="A Python package for gamma-ray astronomy"
 arch=('i686' 'x86_64')
 url="https://gammapy.org/"
 license=('BSD')
-makedepends=('python-setuptools' 'python-numpy' 'python-astropy-helpers>=3.1')
-#'python-sphinx-astropy' 'python-nbsphinx' 'python-sphinx-click' 'python-click' 'python-regions')
-#checkdepends=('python-pytest-astropy'
-#              'python-astropy'
-#              'python-yaml'
-#              'python-click'
-#              'python-regions'
-#              'python-astropy-healpix')
+makedepends=('python-setuptools' 'python-numpy' 'python-astropy-helpers>=3.1' 'python-astropy-helpers<3.2')
+#'python-sphinx-astropy' 'python-sphinx_rtd_theme' 'python-nbsphinx' 'python-sphinx-click' 'python-click' 'python-yaml' 'python-regions' 'python-naima')
+checkdepends=('python-pytest-astropy'
+              'python-astropy'
+              'python-yaml'
+              'python-click'
+              'python-regions'
+              'python-astropy-healpix')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('58d306240bac03ecb0c6cabad03073d7')
+md5sums=('cf0b476948029fbef2c8ded365f0b57a')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -34,11 +34,11 @@ build() {
 #   python setup.py build_docs
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-#    python setup.py test
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    python setup.py test
+}
 
 package() {
     depends=('python>=3.5' 'python-yaml' 'python-astropy>=1.0.2' 'python-regions' 'python-click' 'python-astropy-healpix')
