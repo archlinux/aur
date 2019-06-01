@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=4.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='https://www.ffmpeg.org/'
@@ -48,6 +48,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswresample.so' 'ffmpeg')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
+        'ffmpeg-full-decklink-sdk-11.patch'
         'LICENSE')
 source_x86_64=('ffmpeg-full-add-intel-svt-hevc.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v1.3.0/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch'
         'ffmpeg-full-add-intel-svt-hevc-docs.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v1.3.0/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch'
@@ -55,6 +56,7 @@ source_x86_64=('ffmpeg-full-add-intel-svt-hevc.patch'::'https://raw.githubuserco
         'ffmpeg-full-add-intel-svt-vp9.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/9c96f478e4a281f6019c8b0de39c2b7caba56371/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch')
 sha256sums=('0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d'
             'SKIP'
+            '96500257c72c664a9e7417d9aee3d0b2a4436f836e9733dcf1c9c30926b642df'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 sha256sums_x86_64=('cc8ba4ff56cdb38a59650203999c4c8c83fc40bdb905b87b678ff68a4538444d'
                    '516c5a1b3ab6dc444e2270a1bae90455838fc3b7e3a18de37d7d63e25e79493d'
@@ -73,6 +75,9 @@ prepare() {
         patch -Np1 -i "${srcdir}/ffmpeg-full-add-intel-svt-av1.patch"
         patch -Np1 -i "${srcdir}/ffmpeg-full-add-intel-svt-vp9.patch"
     fi
+    
+    # fix build with decklink sdk 11
+    patch -Np1 -i "${srcdir}/ffmpeg-full-decklink-sdk-11.patch"
 }
 
 build() {
