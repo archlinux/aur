@@ -5,7 +5,7 @@ _pkgsrcname=atom
 _pkgmaintainer=file-icons
 _pkgdestdirname=atom-file-icons
 _versionprefix=v
-pkgver=2.1.32
+pkgver=2.1.33
 pkgrel=1
 pkgdesc="Atom file-specific icons for improved visual grepping."
 pkgname=ttf-${_pkgdestdirname}
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=('woff2-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('d335c46e3e4d1ba8cac44b1ba1923a6341a7f3a8608317a63368657fa7e47931')
+sha256sums=('e9c4f67e9e6c38902f90d5712513be2434303dccfe5597d69fc27ed9e97161b1')
 install=$pkgname.install
 
 build() {
