@@ -13,7 +13,7 @@
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
 pkgver=4.2.10.23938
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://www.scootersoftware.com'
 license=('custom')
@@ -69,7 +69,8 @@ package_bcompare() {
   # Excecute install script - needs to be run here
   cd "${pkgbase}-${pkgver}"
   _install_dir="${srcdir}/install"
-  sh install.sh --prefix="${_install_dir}"
+  sh -version &> /dev/null && sh   install.sh --prefix="${_install_dir}"\
+                           || bash install.sh --prefix="${_install_dir}"
 
   # Prepare the directory skeleton needed for install.sh
   cp -r "${_install_dir}/bin"  "${pkgdir}/"
