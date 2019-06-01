@@ -18,6 +18,6 @@ package(){
 	tar -xJvf data.tar.xz -C "${pkgdir}"
 	mkdir ${pkgdir}/usr/bin
 
-	ln -s ${pkgdir}/opt/Mob/mob /usr/bin/mob
+	ln -s ${pkgdir}/opt/Mob/mob ${pkgdir}/usr/bin/mob
 
 }
