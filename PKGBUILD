@@ -2,7 +2,7 @@
 pkgname=gnome-pass-search-provider-git
 _pkgname=gnome-pass-search-provider
 pkgver=r9.bed2f59
-pkgrel=2
+pkgrel=3
 pkgdesc="Gnome Shell search provider for zx2c4/pass (passwordstore.org) that sends passwords to clipboard (or GPaste)"
 arch=('any')
 url="https://github.com/jle64/gnome-pass-search-provider"
