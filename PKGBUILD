@@ -1,7 +1,7 @@
 # Maintainer: Martin Kröning <martin dot kroening at rwth hyphen aachen dot de>
 
 pkgname=pi2-view
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="The GUI library for showing the Map of the Praktikum Informatik 2"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=("boost"
              "meson"
              "git")
 options=('staticlibs' 'strip')
-_commit=f3f887b3a53ad73919943252785835ebfcaaf694  # tags/0.1^0
+_commit=d3549d28ad2ba7bc9ca2a3d6ab6012ee86475245  # tags/0.2^0
 source=("git+https://git.rwth-aachen.de/pi2/$pkgname.git#commit=$_commit")
 sha256sums=('SKIP')
 
