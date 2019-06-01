@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=nmguish
+Comment=nmguish is the GUI Frontend for nmcli ,thus NetworkManager using shellscript (using yad for GUI) .
+Exec=nmguish
+Icon=nmguish
+Terminal=false
+Type=Application
+Categories=Network;Utility
