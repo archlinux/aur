@@ -1,13 +1,13 @@
 pkgbase = pgcli
 	pkgdesc = a command line interface for Postgres with auto-completion and syntax highlighting
 	pkgver = 2.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://pgcli.com/
 	arch = any
 	license = BSD
 	makedepends = python-distribute
 	depends = python
-	depends = python-sqlparse
+	depends = python-sqlparse>=0.3.0
 	depends = python-psycopg2
 	depends = python-click
 	depends = python-prompt_toolkit
