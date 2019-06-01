@@ -1,7 +1,7 @@
 pkgbase = poi
 	pkgdesc = Scalable KanColle browser and tool
 	pkgver = 10.3.0.0.g9c7f0982
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/poooi/poi/
 	arch = any
 	license = MIT
@@ -19,6 +19,7 @@ pkgbase = poi
 	makedepends = python2
 	depends = npm
 	depends = sh
+	depends = electron
 	provides = poi
 	conflicts = poi
 	options = !strip
