@@ -1,7 +1,7 @@
 pkgbase = slimit-git
 	pkgdesc = A JavaScript minifier written in Python
 	pkgver = 0.8.1.r12.g3533eba
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rspivak/slimit/
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = slimit-git
 	makedepends = python2
 	makedepends = python2-setuptools
 	makedepends = python2-sphinx
-	source = slimit-git::git+https://github.com/rspivak/slimit.git
+	source = git+https://github.com/rspivak/slimit.git
 	sha256sums = SKIP
 
 pkgname = slimit-git

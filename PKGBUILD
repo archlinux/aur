@@ -4,42 +4,50 @@ pkgbase=slimit-git
 pkgname=('slimit-git' 'slimit2-git')
 _srcname=slimit
 pkgver=0.8.1.r12.g3533eba
-pkgrel=1
+pkgrel=2
 pkgdesc='A JavaScript minifier written in Python'
 arch=('any')
 url='https://github.com/rspivak/slimit/'
 license=('MIT')
 makedepends=('git' 'python' 'python-setuptools' 'python-sphinx'
                    'python2' 'python2-setuptools' 'python2-sphinx')
-source=("$pkgname"::'git+https://github.com/rspivak/slimit.git')
+source=('git+https://github.com/rspivak/slimit.git')
 sha256sums=('SKIP')
 
 prepare() {
-    cp -a "$pkgbase" "${pkgbase}-py2"
+    cp -a "$_srcname" "${_srcname}-py2"
     
-    cd "${pkgbase}-py2/docs"
+    cd "${_srcname}-py2/docs"
     sed -i '/sphinx-build/s/$/2/' Makefile
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    printf '%s\n' "  -> Building for Python3..."
-    cd "$pkgbase"
+    printf '%s\n' '  -> Building for Python...'
+    cd "$_srcname"
     python setup.py build
     cd docs
     make html man
     
-    printf '%s\n' "  -> Building for Python2..."
-    cd "${srcdir}/${pkgbase}-py2"
+    printf '%s\n' '  -> Building for Python2...'
+    cd "${srcdir}/${_srcname}-py2"
     python2 setup.py build
     cd docs
     make html man
+}
+
+check() {
+    cd "$_srcname"
+    python setup.py test
+    
+    cd "${srcdir}/${_srcname}-py2"
+    python2 setup.py test
 }
 
 package_slimit-git() {
@@ -53,8 +61,8 @@ package_slimit-git() {
     mkdir -p "${pkgdir}/usr/share/man/man1"
     
     # main python install
-    cd "$pkgbase"
-    python setup.py install --prefix='/usr' --root="$pkgdir" --optimize='1'
+    cd "$_srcname"
+    python setup.py install --prefix='/usr' --root="$pkgdir" --skip-build --optimize='1'
     
     # html docs
     cd docs/build/html
@@ -65,7 +73,7 @@ package_slimit-git() {
     install -D -m644 "${_srcname}.1" -t "${pkgdir}/usr/share/man/man1"
     
     # license
-    cd "${srcdir}/${pkgbase}"
+    cd "${srcdir}/${_srcname}"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -81,8 +89,8 @@ package_slimit2-git() {
     mkdir -p "${pkgdir}/usr/share/man/man1"
     
     # main python2 install
-    cd "${pkgbase}-py2"
-    python2 setup.py install --prefix='/usr' --root="$pkgdir" --optimize='1'
+    cd "${_srcname}-py2"
+    python2 setup.py install --prefix='/usr' --root="$pkgdir" --skip-build --optimize='1'
     mv "$pkgdir"/usr/bin/slimit{,2}
     
     # html docs
@@ -94,6 +102,6 @@ package_slimit2-git() {
     install -D -m644 "${_srcname}.1" "${pkgdir}/usr/share/man/man1/${_srcname}2.1"
     
     # license
-    cd "${srcdir}/${pkgbase}-py2"
+    cd "${srcdir}/${_srcname}-py2"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
