@@ -1,7 +1,7 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
 pkgver=1514997
-pkgrel=0
+pkgrel=1
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
@@ -72,6 +72,7 @@ package() {
                 cp "${srcdir}/${cmd%.*}.desktop" "${pkgdir}/usr/share/applications/"
             fi
         done
+        sed -i s,ELVER=\"\",ELVER=\"${pkgver}\", "${pkgdir}/opt/${pkgname}/bin/evelauncher.sh"
         mkdir -p ${srcdir}/Launcher
         cp -r ${srcdir}/evelauncher/errorpage ${srcdir}/Launcher
         cp ${srcdir}/evelauncher/evelauncher* ${srcdir}/Launcher
@@ -105,8 +106,8 @@ package() {
 }
 
 sha256sums=('f49b404341e1dd48eaa2504c83f9ff07c9a4c11e1a109c67d04167dc70d65731'
-            '9b918c748866e9d8cda2b34fd54c9e1f920422005b7e18a477059a1c52561637'
-            'ebcefccd79849f5d204d60f5a4079fb4a8603f16cf9b81acafcd9be80dd6dd7f'
+            'd5d3399b84675cfb59c867169be36ef8b4210ac14ecf4f360064aeda69dc72dd'
+            'db24f355c9e56ae1eae3358fc794b240ee6d550853154566dea2dbc84f2ede00'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
             '1b13f885ae3f62d7eaac1cf50f7ad05e62513117d7084822f9b8d2779f3efab4'
             'f8988be390204ce645ca37f43cdb8e395970f8d6dd36095acf08c5c7cf72833c'
@@ -115,8 +116,8 @@ sha256sums=('f49b404341e1dd48eaa2504c83f9ff07c9a4c11e1a109c67d04167dc70d65731'
             '22690e393ee89703b17898038aaa37900805104e8c960b346fe1f6050edc9bce'
             'af9e68d643f0482259393eb326ccfbfe88c3084ebb120bb4c299abf6f6f58576'
             '2520a9b19f2827fa2634ea2acae3a6f61e73aada1af0eb2029e95709f0c8927d'
-            '0bab761f1b9cd2166bb08b20205dc2b4b49f7b4e74f49aaa6260320ccd29a429'
-            '9abf77404e7d71aeb7b951a908742c5fdf14fd24005bbfd9fc9420b793d35525'
+            '55e532797665542f1f011578967e7b27491e382138bcdc762213d70b8d611a8b'
+            '5a5abdf7f205be9823b710b223feeb396edaa7f675194b2b9451579a5cc272ed'
             '2c192fdc282fefafee5596b60bd1779668b611d386e2bf933eef51d39eac7a28'
             'f88c7c28582b6531a021b8fcece47c906f900c48edf453dc04c349f8671cf8a2'
             '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'

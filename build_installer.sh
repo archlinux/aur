@@ -9,8 +9,24 @@ version=$(grep ^pkgver PKGBUILD | cut -d= -f2) || exit 1
 release=$(grep ^pkgrel PKGBUILD | cut -d= -f2) || exit 1
 arch=$(uname -m)
 
+elcsum=""
 mscsum="ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2"
 rcsum=""
+
+pshal=$(grep -n ^sha256sum PKGBUILD | cut -d: -f1)
+psrcl=$(grep -n ^source PKGBUILD | cut -d: -f1)
+pelsl=$(grep -n evelauncher-\${pkgver}.tar.gz\" PKGBUILD | cut -d: -f1)
+pofsl=$(expr $pelsl - $psrcl)
+pelcs=$(expr $pshal + $pofsl)
+
+plc=1
+while read pline ;do
+    if [ $plc -eq $pelcs ] ;then
+	elcsum=${pline#*\'}
+	elcsum=${elcsum%%\'*}
+    fi
+    plc=$(expr $plc + 1)
+done < PKGBUILD
 
 if [ ! -f "./makeself-2.4.0.run" ] ;then
     if [ ! -x "$(which curl)" ] ;then
@@ -48,12 +64,15 @@ for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks ;do
     if [ -f ../$cmd ] ;then cp ../$cmd evesetup/ ;fi
     if [ ! "$cmd" = "evewine" ] ;then cp ../${cmd%.*}.desktop evesetup/ ;fi
 done
-cp -f ../evelauncher.shlib evesetup/evelauncher.shlib
-cp -f ../evelauncher.sh.in evesetup/evelauncher.sh
+cp ../evelauncher.shlib evesetup/evelauncher.shlib
+cp ../evelauncher.sh.in evesetup/evelauncher.sh
+sed -i s,ELVER=\"\",ELVER=\"$version\", evesetup/evelauncher.sh
 grep -v '^#-' ../setup.sh.in >evesetup/setup.sh
 #-- testing only
 #- cp -f ../setup.sh.in evesetup/setup.sh
 #--
+sed -i s,elver=\"\",elver=\"$version\", evesetup/setup.sh
+sed -i s,elcsum=\"\",elcsum=\"$elcsum\", evesetup/setup.sh
 chmod a+x evesetup/setup.sh
 if [ -f "../evelauncher-$version.tar.gz" ] ;then cp ../evelauncher-$version.tar.gz evesetup/ ;fi
 echo "done."
