@@ -1,9 +1,9 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Rob Lynn <rob22uk at gmail dot com>
 
 pkgname=stremio-legacy
 pkgver=3.6.5
-pkgrel=3
+pkgrel=4
 pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels) (legacy version)'
 arch=('x86_64')
 url='https://www.stremio.com/'
@@ -15,6 +15,8 @@ source=("https://strem.io/Stremio${pkgver}.linux.tar.gz"
         'https://strem.io/favicon-96x96.png'
         'stremio.desktop')
 noextract=("Stremio${pkgver}.linux.tar.gz")
+provides=('stremio')
+conflicts=('stremio')
 sha256sums=('8ea9fc21543e30c773adbcfac3759e8787de315ac25e2da7f8580cb670f68424'
             'd41058548c2505c476955e2e9bbfe0b14d0c76198147b3364343f5a1b2a1e702'
             '3633a9ca3a3584037e90b1203d2fd2987180c5ab949682a2db6bfbcfa9852a9d'

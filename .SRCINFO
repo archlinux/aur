@@ -1,7 +1,7 @@
 pkgbase = stremio-legacy
 	pkgdesc = A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels) (legacy version)
 	pkgver = 3.6.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.stremio.com/
 	arch = x86_64
 	license = custom
@@ -9,6 +9,8 @@ pkgbase = stremio-legacy
 	depends = gconf
 	depends = gtk2
 	depends = nss
+	provides = stremio
+	conflicts = stremio
 	noextract = Stremio3.6.5.linux.tar.gz
 	options = !strip
 	source = https://strem.io/Stremio3.6.5.linux.tar.gz
