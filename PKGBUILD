@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=slime-git
-pkgver=2.20.9.gcdb7e0ca
+pkgver=2.24.r1.g01531b09
 pkgrel=1
 pkgdesc="The Superior Lisp Interaction Mode for Emacs - from git"
 arch=('any')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  echo $(git describe --tags | sed 's|-|.|g'|cut -c2-)
+  echo $(git describe --tags | sed 's|-|.r|' | tr - .| cut -c2-)
 }
 build() {
   cd ${pkgname%-git}
