@@ -7,6 +7,7 @@ pkgbase = rm-improved
 	license = GPL
 	makedepends = rust
 	depends = gcc-libs
+	conflicts = rip
 	source = rm-improved-0.12.0.tar.gz::https://github.com/nivekuil/rip/archive/0.12.0.tar.gz
 	sha256sums = 895a658c6362026c46f54059e129fba362cf0a1385e8a7b974ac8adabcfcdd64
 
