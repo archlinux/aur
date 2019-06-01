@@ -1,7 +1,7 @@
 # Mantainer Mattia De Rosa <mattiadr96 at gmail dot com>
 
 pkgname=st-mattiadr
-pkgver=0.8.2a
+pkgver=0.8.2b
 pkgrel=1
 pkgdesc='Fork of the suckless terminal with additional patches.'
 arch=('x86_64')
