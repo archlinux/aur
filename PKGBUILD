@@ -4,7 +4,7 @@
 
 pkgname=inkscape-git
 pkgver=1.0+devel.r4525.ge00088acae
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://gitlab.com/inkscape/inkscape"
