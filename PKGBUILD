@@ -2,16 +2,15 @@
 
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager-bin
-pkgver=2.9.17.1
-build=bf18047
+pkgver=3.0
 pkgrel=1
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
 url="http://www.tinymediamanager.org"
 license=('Apache-2.0')
 depends=('libmediainfo' 'java-runtime<=11')
-noextract=("tmm_${pkgver}_${build}_linux.tar.gz")
-source=("http://release.tinymediamanager.org/v2/dist/tmm_${pkgver}_${build}_linux.tar.gz"
+noextract=("tmm_${pkgver}_linux.tar.gz")
+source=("http://release.tinymediamanager.org/v3/dist/tmm_${pkgver}_linux.tar.gz"
 	"tinyMediaManager.desktop"
 	"tinymediamanager"
 "tinymediamanager-cli")
@@ -20,7 +19,7 @@ package() {
 	destpath="$pkgdir/usr/share/$_gitname"
 	mkdir -p $destpath
 
-	tar -xvf "tmm_${pkgver}_${build}_linux.tar.gz" -C $destpath
+	tar -xvf "tmm_${pkgver}_linux.tar.gz" -C $destpath
 
 	chmod -R 777 "$pkgdir/usr/share/$_gitname"
 
@@ -33,7 +32,7 @@ package() {
 	install -D "$srcdir/tinymediamanager" "$pkgdir/usr/bin/tinymediamanager"
 }
 
-md5sums=('8436a5fd63591d1cb02dc6a84338f572'
+md5sums=('5b7a434677105bbcbc2edacadf9545f4'
 	'010f5308884b7293bb398b2a63079883'
 	'c382f9ba03915a1f70f5aaea8699cfe5'
 '677bed3f438e84ecd948c9f6faa37194')
