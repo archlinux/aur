@@ -1,7 +1,7 @@
 pkgbase = conky-lua-nv
 	pkgdesc = An advanced system monitor for X based on torsmo with lua and nvidia enabled
 	pkgver = 1.11.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/brndnmtthws/conky
 	install = conky-lua-nv.install
 	arch = i686
@@ -28,6 +28,7 @@ pkgbase = conky-lua-nv
 	depends = librsvg
 	depends = tolua++
 	depends = libxnvctrl
+	depends = libpulse
 	optdepends = nvidia: for GT4xx and newer GPUs,
 	optdepends = nvidia-340xx: for G8x, G9x, GT2xx GPUS,
 	optdepends = nvidia-304xx: for GeForce 6/7 GPUs
