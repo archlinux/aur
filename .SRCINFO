@@ -1,6 +1,6 @@
 pkgbase = zsh-theme-powerlevel10k-git
 	pkgdesc = Powerlevel10k is a theme for ZSH. It's a backward-compatible fork of Powerlevel9k with lower latency and better prompt responsiveness
-	pkgver = r1912.cea3f32
+	pkgver = r2070.5e72d3c
 	pkgrel = 1
 	url = https://github.com/romkatv/powerlevel10k
 	install = zsh-theme-powerlevel10k.install

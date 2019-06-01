@@ -2,7 +2,7 @@
 
 _pkgname=powerlevel10k
 pkgname=zsh-theme-${_pkgname}-git
-pkgver="r1912.cea3f32"
+pkgver=r2070.5e72d3c
 pkgrel=1
 pkgdesc="Powerlevel10k is a theme for ZSH. It's a backward-compatible fork of Powerlevel9k with lower latency and better prompt responsiveness"
 arch=('any')
@@ -57,7 +57,9 @@ package()
   done
   install -D -m755 prompt_powerlevel10k_setup "${pkgdir}/usr/share/zsh-theme-${_pkgname}/prompt_powerlevel10k_setup"
   install -D -m644 prompt.png "${pkgdir}/usr/share/zsh-theme-${_pkgname}/prompt.png"
-  install -D -m644 prompt.png "${pkgdir}/usr/share/zsh-theme-${_pkgname}/demo.png"
+  install -D -m644 demo.png "${pkgdir}/usr/share/zsh-theme-${_pkgname}/demo.png"
+  install -D -m644 p9k-vs-p10k.cast "${pkgdir}/usr/share/zsh-theme-${_pkgname}/p9k-vs-p10k.cast"
   install -d "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/bin"
   cp -R gitstatus "$pkgdir"/usr/share/zsh-theme-${_pkgname}/
+  cp -R internal "$pkgdir"/usr/share/zsh-theme-${_pkgname}/
 }
