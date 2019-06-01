@@ -37,4 +37,5 @@ package() {
   install -Dm 644 $pkgbase.service \
     "$pkgdir/etc/systemd/system/$pkgbase.service"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgbase"
+  chmod a+x "$pkgdir/usr/bin/$pkgbase"
 }
