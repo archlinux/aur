@@ -1,0 +1,11 @@
+pkgbase = dua-cli
+	pkgdesc = A tool to conveniently learn about the disk usage of directories, fast!
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://crates.io/crates/dua-cli/1.1.0
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+
+pkgname = dua-cli
+
