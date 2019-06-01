@@ -3,6 +3,7 @@ pkgbase = mob
 	pkgver = 0.2.1_81
 	pkgrel = 1
 	url = https://github.com/zenghongtu/Mob
+	install = mob.install
 	arch = x86_64
 	license = TIM
 	depends = libxtst
