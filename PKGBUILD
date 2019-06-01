@@ -1,6 +1,6 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
-_pkg_subver=2231  # see ${srcdir}/Version.txt
+_pkg_subver=2282  # see ${srcdir}/Version.txt
 _gamepkg=RimWorld1-0-${_pkg_subver}Linux.zip
 
 pkgname=rimworld
@@ -48,16 +48,15 @@ build() {
 
   # unpack game zipfile
   msg "Found game package, unpacking..."
-  unzip -u "${pkgpath}/${_gamepkg}" -d "${srcdir}" \
-        -x "RimWorld${_pkg_subver}Linux/Mods/Core/Languages/Russian/*RimWorld/*"
+  unzip -u "${pkgpath}/${_gamepkg}" -d "${srcdir}"
 }
 
 package() {
-  cd "$srcdir"/RimWorld${_pkg_subver}Linux
+  cd "$srcdir"/RimWorld1-0-${_pkg_subver}Linux
 
   install -Dm755 "$srcdir/rimworld.sh" "$pkgdir/usr/bin/rimworld"
-  install -Dm755 RimWorld${_pkg_subver}Linux.${_rimworld_arch} "$pkgdir/opt/rimworld/rimworld"
-  cp -r RimWorld${_pkg_subver}Linux_Data "$pkgdir/opt/rimworld/Data"
+  install -Dm755 RimWorldLinux.${_rimworld_arch} "$pkgdir/opt/rimworld/rimworld"
+  cp -r RimWorldLinux_Data "$pkgdir/opt/rimworld/Data"
   cp -r Mods Source "$pkgdir/opt/rimworld"
   chgrp games "$pkgdir/opt/rimworld/Mods"
   chmod g+w "$pkgdir/opt/rimworld/Mods"
