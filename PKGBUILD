@@ -2,8 +2,8 @@
 # Contributor: kozec
 
 pkgname=minecraft-technic-launcher
-pkgver=4.402
-pkgrel=2
+pkgver=4.407
+pkgrel=1
 pkgdesc='Choose from thousands of community-made Minecraft modpacks.'
 arch=('any')
 license=('custom')
@@ -15,7 +15,7 @@ noextract=('TechnicLauncher.jar')
 source=("$pkgname-$pkgver.jar::http://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/TechnicLauncher.jar"
         "technic-launcher"
         "technic-launcher.desktop")
-sha256sums=('4ee5d729510e5ebc579276e26d487e967222b22de977f8bc7299a47b27b9a613'
+sha256sums=('50021c74d5bcf4d653fcfa108eb4a0ae1e7aa9fe3d3fb1715099b6e21cab5b5b'
             '11e5cbc3ae9888865c34bec90ce725532a039aa751aefa61cd4703c9f0460397'
             '221da85f9fb535951e490a3feda052c60839883ae0806d7d587b0c64337f3513')
 
