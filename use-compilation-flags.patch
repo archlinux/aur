@@ -1,0 +1,12 @@
+diff --git a/Makefile b/Makefile.parcheado
+index 1720682..d6b53c2 100644
+--- a/Makefile
++++ b/Makefile.parcheado
+@@ -2,7 +2,7 @@ default: run
+ .PHONY: run build rebuild clean
+ 
+ gild: gild.ldpl gild.cpp
+-	ldpl -i=gild.cpp -o=gild gild.ldpl
++	ldpl -i=gild.cpp -o=gild -f="$(CXXFLAGS) $(LDFLAGS)" gild.ldpl
+ 
+ build: gild
