@@ -10,15 +10,15 @@
 # Contributor: delor <bartekpiech gmail com>
 
 pkgname=qtcreator-fixed-themes
-pkgver=4.8.2
+pkgver=4.9.1
 _clangver=8.0.0
-pkgrel=2
-pkgdesc='Lightweight, cross-platform integrated development environment, with fixes applied for various themes and other bug fixes'
+pkgrel=1
+pkgdesc='Lightweight, cross-platform integrated development environment, with theme and bug fixes applied'
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
-depends=(qt5-tools qt5-quickcontrols qt5-quickcontrols2 qt5-webengine clang=$_clangver qbs clazy)
-makedepends=(git mesa llvm python)
+depends=(qt5-tools qt5-quickcontrols qt5-quickcontrols2 qt5-webengine clang=$_clangver qbs clazy syntax-highlighting desktop-file-utils)
+makedepends=(llvm python patchelf)
 conflicts=(qtcreator)
 options=(docs)
 optdepends=('qt5-doc: integrated Qt documentation'
@@ -32,19 +32,13 @@ optdepends=('qt5-doc: integrated Qt documentation'
             'bzr: bazaar support'
             'valgrind: analyze support')
 source=("https://download.qt.io/official_releases/qtcreator/${pkgver%.*}/$pkgver/qt-creator-opensource-src-$pkgver.tar.xz"
-        qtcreator-clang-plugins.patch
-        qtcreator-theme-fixes.patch
-        qtcreator-occurrences-fix.patch
-        qtcreator-debugger-columns-fix.patch
-        qtcreator-cmake-fail-target-fix.patch
-        qtcreator-cmake-edit-fix.patch)
-sha256sums=('a8257daf39f6025c8523285dc73fd6b66645f3ff071e112b484325966eee0c92'
-            '34ea74698ddff9925e06bff6b4c995bf93488d1104e8cc517bcfdd621effb428'
-            'bf0f8e88d0fa628d24f59eaf1f359873926998dde442e3bcbd56afcdd6eec7fa'
-            '640c4c1607f9ee867e2445ad576697b9b0d3c9a64ae6589c1b99ea4f1d7e3481'
-            'cf378a8b591a10646ad89d101375d8b04844c76a83d6c9c960036ba6a3b122e3'
-            'df22bfe38bf6dd54b64d9ec0e78873a43e570eb490faf2a247aae7fd44e3d05e'
-            '5f002e93717d99a23ed94842567caa35f5cddfac317bddf29e7a677fb6db61a3')
+        qtcreator-clazy-1.5.patch
+        qtcreator-preload-plugins.patch
+		qtcreator-debugger-layout.patch)
+sha256sums=('79b8228d0871927837681e6af9ab91e3ea28154cecfba317f9c0e56246b8ad81'
+            '1f6998fea92b9a157f42cca783839ce95f70ccc667027078b7881cbb253838f0'
+            '150c444e76ec969fc8765774b648984037829623300d0ce9d41a915b2afa792d'
+			'6000452635f8c8f0cd21d1cc8d484821f4d0f8fc36afa744de5c2a3fdd1a5e9c')
 
 prepare() {
   mkdir -p build
@@ -52,27 +46,27 @@ prepare() {
   cd qt-creator-opensource-src-$pkgver
   # fix hardcoded libexec path
   sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qtcreator.pri
+  sed -e 's|libexec|lib|g' -i src/tools/tools.pro
   # use system qbs
   rm -r src/shared/qbs
-  # Load analyzer plugins on demand, since upstream clang doesn't link to all plugins
+  # Adapt to clazy 1.5 plugin rename
+  patch -p1 -i ../qtcreator-clazy-1.5.patch
+  # Preload analyzer plugins, since upstream clang doesn't link to all plugins
   # see http://code.qt.io/cgit/clang/clang.git/commit/?id=7f349701d3ea0c47be3a43e265699dddd3fd55cf
   # and https://bugs.archlinux.org/task/59492
-  patch -p1 -i ../qtcreator-clang-plugins.patch
-  # Theme fixes
-  patch -p1 -i ../qtcreator-theme-fixes.patch
-  patch -p1 -i ../qtcreator-occurrences-fix.patch
-  # Fix broken sizing for debugger columns.
-  patch -p1 -i ../qtcreator-debugger-columns-fix.patch
-  # Fixes for CMake integration
-  patch -p1 -i ../qtcreator-cmake-fail-target-fix.patch
-  patch -p1 -i ../qtcreator-cmake-edit-fix.patch
+  patch -p1 -i ../qtcreator-preload-plugins.patch
+  # Fixes for debugger layout.
+  patch -p1 -i ../qtcreator-debugger-layout.patch
 }
 
 build() {
   cd build
 
-  qmake LLVM_INSTALL_DIR=/usr QBS_INSTALL_DIR=/usr CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
-    DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES "$srcdir"/qt-creator-opensource-src-$pkgver/qtcreator.pro
+  qmake LLVM_INSTALL_DIR=/usr QBS_INSTALL_DIR=/usr \
+    KSYNTAXHIGHLIGHTING_LIB_DIR=/usr/lib KSYNTAXHIGHLIGHTING_INCLUDE_DIR=/usr/include/KF5/KSyntaxHighlighting \
+    CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
+    DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES \
+    "$srcdir"/qt-creator-opensource-src-$pkgver/qtcreator.pro
   make
   make docs
 }
@@ -84,4 +78,7 @@ package() {
   make INSTALL_ROOT="$pkgdir/usr/" install_docs
 
   install -Dm644 "$srcdir"/qt-creator-opensource-src-$pkgver/LICENSE.GPL3-EXCEPT "$pkgdir"/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
+
+# Link clazy plugin explicitely
+  patchelf --add-needed ClazyPlugin.so "$pkgdir"/usr/lib/qtcreator/clangbackend
 }

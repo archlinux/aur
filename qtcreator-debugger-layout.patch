@@ -1,0 +1,1715 @@
+diff --git a/src/libs/utils/fancymainwindow.cpp b/src/libs/utils/fancymainwindow.cpp
+index 9a5c84894c..de73c6edaa 100644
+--- a/src/libs/utils/fancymainwindow.cpp
++++ b/src/libs/utils/fancymainwindow.cpp
+@@ -523,21 +523,6 @@ bool FancyMainWindow::autoHideTitleBars() const
+     return d->m_autoHideTitleBars.isChecked();
+ }
+ 
+-void FancyMainWindow::setAutoHideTitleBars(bool on)
+-{
+-    d->m_autoHideTitleBars.setChecked(on);
+-}
+-
+-bool FancyMainWindow::isCentralWidgetShown() const
+-{
+-    return d->m_showCentralWidget.isChecked();
+-}
+-
+-void FancyMainWindow::showCentralWidget(bool on)
+-{
+-    d->m_showCentralWidget.setChecked(on);
+-}
+-
+ void FancyMainWindow::addDockActionsToMenu(QMenu *menu)
+ {
+     QList<QAction *> actions;
+diff --git a/src/libs/utils/fancymainwindow.h b/src/libs/utils/fancymainwindow.h
+index 4424b1c8bb..623ef42408 100644
+--- a/src/libs/utils/fancymainwindow.h
++++ b/src/libs/utils/fancymainwindow.h
+@@ -66,10 +66,6 @@ public:
+     void addDockActionsToMenu(QMenu *menu);
+ 
+     bool autoHideTitleBars() const;
+-    void setAutoHideTitleBars(bool on);
+-
+-    bool isCentralWidgetShown() const;
+-    void showCentralWidget(bool on);
+ 
+ signals:
+     // Emitted by resetLayoutAction(). Connect to a slot
+diff --git a/src/plugins/debugger/debuggerengine.cpp b/src/plugins/debugger/debuggerengine.cpp
+index b86bb1088e..5f89c07875 100644
+--- a/src/plugins/debugger/debuggerengine.cpp
++++ b/src/plugins/debugger/debuggerengine.cpp
+@@ -61,7 +61,6 @@
+ #include <coreplugin/icore.h>
+ #include <coreplugin/idocument.h>
+ #include <coreplugin/messagebox.h>
+-#include <coreplugin/modemanager.h>
+ #include <coreplugin/progressmanager/progressmanager.h>
+ #include <coreplugin/progressmanager/futureprogress.h>
+ 
+@@ -281,16 +280,12 @@ public:
+           m_disassemblerAgent(engine),
+           m_toolTipManager(engine)
+     {
+-        m_debuggerName = DebuggerEngine::tr("Debugger");
+-
+         m_logWindow = new LogWindow(m_engine); // Needed before start()
+-        m_logWindow->setObjectName("Debugger.Dock.Output");
++        m_logWindow->setObjectName(DOCKWIDGET_OUTPUT);
++        m_debuggerName = DebuggerEngine::tr("Debugger");
+ 
+-        connect(action(EnableReverseDebugging), &SavedAction::valueChanged, this, [this] {
+-            updateState();
+-            if (m_companionEngine)
+-                m_companionEngine->d->updateState();
+-        });
++        connect(action(EnableReverseDebugging), &SavedAction::valueChanged,
++                this, [this] { updateState(true); });
+         static int contextCount = 0;
+         m_context = Context(Id("Debugger.Engine.").withSuffix(++contextCount));
+ 
+@@ -375,15 +370,17 @@ public:
+         if (!m_perspective)
+             return;
+ 
+-        Perspective *perspective = m_perspective;
++        delete m_perspective;
+         m_perspective = nullptr;
+ 
+         EngineManager::unregisterEngine(m_engine);
+ 
+-        // This triggers activity in the EngineManager which
+-        // recognizes the rampdown by the m_perpective == nullptr above.
+-        perspective->destroy();
+-        delete perspective;
++        // Give up ownership on claimed breakpoints.
++        m_breakHandler.releaseAllBreakpoints();
++        m_toolTipManager.deregisterEngine();
++        m_memoryAgents.handleDebuggerFinished();
++
++        setBusyCursor(false);
+     }
+ 
+     void updateReturnViewHeader(int section, int, int newSize)
+@@ -449,14 +446,14 @@ public:
+     void setInitialActionStates();
+     void setBusyCursor(bool on);
+     void cleanupViews();
+-    void updateState();
++    void updateState(bool alsoUpdateCompanion);
+     void updateReverseActions();
+ 
+     DebuggerEngine *m_engine = nullptr; // Not owned.
+     QString m_runId;
+     QPointer<RunConfiguration> m_runConfiguration;  // Not owned.
+     QString m_debuggerName;
+-    QPointer<Perspective> m_perspective;
++    Perspective *m_perspective = nullptr;
+     DebuggerRunParameters m_runParameters;
+     IDevice::ConstPtr m_device;
+ 
+@@ -554,17 +551,16 @@ public:
+ void DebuggerEnginePrivate::setupViews()
+ {
+     const DebuggerRunParameters &rp = m_runParameters;
+-    const QString engineId = EngineManager::registerEngine(m_engine);
+ 
+     QTC_CHECK(!m_perspective);
+ 
+-    const QString perspectiveId = "Debugger.Perspective." + m_runId + '.' + m_debuggerName;
+-    const QString settingsId = "Debugger.Perspective." + m_debuggerName;
+-
+-    m_perspective = new Perspective(perspectiveId,
++    m_perspective = new Perspective("Debugger.Perspective." + m_runId + '.' + m_debuggerName,
+                                     m_engine->displayName(),
+                                     Debugger::Constants::PRESET_PERSPECTIVE_ID,
+-                                    settingsId);
++                                    m_debuggerName);
++    m_perspective->setShouldPersistChecker([this] {
++        return EngineManager::isLastOf(m_debuggerName);
++    });
+ 
+     m_progress.setProgressRange(0, 1000);
+     FutureProgress *fp = ProgressManager::addTask(m_progress.future(),
+@@ -632,7 +628,7 @@ void DebuggerEnginePrivate::setupViews()
+             m_engine, &DebuggerEngine::reloadModules,
+             Qt::QueuedConnection);
+     m_modulesWindow = addSearch(m_modulesView);
+-    m_modulesWindow->setObjectName("Debugger.Dock.Modules." + engineId);
++    m_modulesWindow->setObjectName(DOCKWIDGET_MODULES);
+     m_modulesWindow->setWindowTitle(tr("&Modules"));
+ 
+     m_registerView = new BaseTreeView;
+@@ -643,7 +639,7 @@ void DebuggerEnginePrivate::setupViews()
+             m_engine, &DebuggerEngine::reloadRegisters,
+             Qt::QueuedConnection);
+     m_registerWindow = addSearch(m_registerView);
+-    m_registerWindow->setObjectName("Debugger.Dock.Register." + engineId);
++    m_registerWindow->setObjectName(DOCKWIDGET_REGISTER);
+     m_registerWindow->setWindowTitle(tr("Reg&isters"));
+ 
+     m_stackView = new StackTreeView;
+@@ -651,7 +647,7 @@ void DebuggerEnginePrivate::setupViews()
+     m_stackView->setSettings(settings, "Debugger.StackView");
+     m_stackView->setIconSize(QSize(10, 10));
+     m_stackWindow = addSearch(m_stackView);
+-    m_stackWindow->setObjectName("Debugger.Dock.Stack." + engineId);
++    m_stackWindow->setObjectName(DOCKWIDGET_STACK);
+     m_stackWindow->setWindowTitle(tr("&Stack"));
+ 
+     m_sourceFilesView = new BaseTreeView;
+@@ -662,7 +658,7 @@ void DebuggerEnginePrivate::setupViews()
+             m_engine, &DebuggerEngine::reloadSourceFiles,
+             Qt::QueuedConnection);
+     m_sourceFilesWindow = addSearch(m_sourceFilesView);
+-    m_sourceFilesWindow->setObjectName("Debugger.Dock.SourceFiles." + engineId);
++    m_sourceFilesWindow->setObjectName(DOCKWIDGET_SOURCE_FILES);
+     m_sourceFilesWindow->setWindowTitle(tr("Source Files"));
+ 
+     m_threadsView = new BaseTreeView;
+@@ -672,7 +668,7 @@ void DebuggerEnginePrivate::setupViews()
+     m_threadsView->setIconSize(QSize(10, 10));
+     m_threadsView->setSpanColumn(ThreadData::FunctionColumn);
+     m_threadsWindow = addSearch(m_threadsView);
+-    m_threadsWindow->setObjectName("Debugger.Dock.Threads." + engineId);
++    m_threadsWindow->setObjectName(DOCKWIDGET_THREADS);
+     m_threadsWindow->setWindowTitle(tr("&Threads"));
+ 
+     m_returnView = new WatchTreeView{ReturnType};
+@@ -686,26 +682,26 @@ void DebuggerEnginePrivate::setupViews()
+     m_localsView->setModel(m_watchHandler.model());
+     m_localsView->setSettings(settings, "Debugger.LocalsView");
+     m_localsWindow = addSearch(m_localsView);
+-    m_localsWindow->setObjectName("Debugger.Dock.Locals." + engineId);
++    m_localsWindow->setObjectName("CppDebugLocals");
+     m_localsWindow->setWindowTitle(tr("Locals"));
+ 
+     m_inspectorView = new WatchTreeView{InspectType};
+     m_inspectorView->setModel(m_watchHandler.model());
+     m_inspectorView->setSettings(settings, "Debugger.LocalsView"); // sic! same as locals view.
+     m_inspectorWindow = addSearch(m_inspectorView);
+-    m_inspectorWindow->setObjectName("Debugger.Dock.Inspector." + engineId);
++    m_inspectorWindow->setObjectName("Inspector");
+     m_inspectorWindow->setWindowTitle(tr("Locals"));
+ 
+     m_watchersView = new WatchTreeView{WatchersType};
+     m_watchersView->setModel(m_watchHandler.model());
+     m_watchersView->setSettings(settings, "Debugger.WatchersView");
+     m_watchersWindow = addSearch(m_watchersView);
+-    m_watchersWindow->setObjectName("Debugger.Dock.Watchers." + engineId);
++    m_watchersWindow->setObjectName("CppDebugWatchers");
+     m_watchersWindow->setWindowTitle(tr("&Expressions"));
+ 
+     m_localsAndInspectorWindow = new LocalsAndInspectorWindow(
+                 m_localsWindow, m_inspectorWindow, m_returnWindow);
+-    m_localsAndInspectorWindow->setObjectName("Debugger.Dock.LocalsAndInspector." + engineId);
++    m_localsAndInspectorWindow->setObjectName(DOCKWIDGET_LOCALS_AND_INSPECTOR);
+     m_localsAndInspectorWindow->setWindowTitle(m_localsWindow->windowTitle());
+ 
+     // Locals
+@@ -723,7 +719,7 @@ void DebuggerEnginePrivate::setupViews()
+     m_breakView->setModel(m_breakHandler.model());
+     m_breakView->setRootIsDecorated(true);
+     m_breakWindow = addSearch(m_breakView);
+-    m_breakWindow->setObjectName("Debugger.Dock.Break." + engineId);
++    m_breakWindow->setObjectName(DOCKWIDGET_BREAK);
+     m_breakWindow->setWindowTitle(tr("&Breakpoints"));
+ 
+     m_perspective->useSubPerspectiveSwitcher(EngineManager::engineChooser());
+@@ -850,6 +846,7 @@ void DebuggerEnginePrivate::setupViews()
+ DebuggerEngine::DebuggerEngine()
+   : d(new DebuggerEnginePrivate(this))
+ {
++    updateState(false);
+ }
+ 
+ DebuggerEngine::~DebuggerEngine()
+@@ -1023,6 +1020,7 @@ void DebuggerEngine::setRunTool(DebuggerRunTool *runTool)
+ 
+ void DebuggerEngine::start()
+ {
++    EngineManager::registerEngine(this);
+     d->m_watchHandler.resetWatchers();
+     d->setInitialActionStates();
+     setState(EngineSetupRequested);
+@@ -1118,7 +1116,7 @@ void DebuggerEngine::abortDebugger()
+ 
+ void DebuggerEngine::updateUi(bool isCurrentEngine)
+ {
+-    updateState();
++    updateState(false);
+     if (isCurrentEngine) {
+         gotoCurrentLocation();
+     } else {
+@@ -1321,7 +1319,7 @@ void DebuggerEngine::notifyInferiorSpontaneousStop()
+ {
+     showMessage("NOTE: INFERIOR SPONTANEOUS STOP");
+     QTC_ASSERT(state() == InferiorRunOk, qDebug() << this << state());
+-    d->m_perspective->select();
++    EngineManager::activateEngine(this);
+     showMessage(tr("Stopped."), StatusBar);
+     setState(InferiorStopOk);
+     if (boolSetting(RaiseOnInterrupt))
+@@ -1388,12 +1386,10 @@ void DebuggerEnginePrivate::setInitialActionStates()
+     m_threadLabel->setEnabled(false);
+ }
+ 
+-void DebuggerEnginePrivate::updateState()
++void DebuggerEnginePrivate::updateState(bool alsoUpdateCompanion)
+ {
+-    // Can happen in mixed debugging.
+-    if (!m_threadLabel)
++    if (!m_perspective)
+         return;
+-    QTC_ASSERT(m_threadLabel, return);
+ 
+     const DebuggerState state = m_state;
+     const bool companionPreventsAction = m_engine->companionPreventsActions();
+@@ -1403,7 +1399,7 @@ void DebuggerEnginePrivate::updateState()
+     // visible, possibly disabled.
+     if (state == DebuggerNotReady) {
+         // Happens when companion starts, otherwise this should not happen.
+-        //QTC_CHECK(m_companionEngine);
++        QTC_CHECK(m_companionEngine);
+         m_interruptAction.setVisible(true);
+         m_interruptAction.setEnabled(false);
+         m_continueAction.setVisible(false);
+@@ -1533,6 +1529,9 @@ void DebuggerEnginePrivate::updateState()
+         || state == DebuggerFinished
+         || state == InferiorUnrunnable;
+     setBusyCursor(!notbusy);
++
++    if (alsoUpdateCompanion && m_companionEngine)
++        m_companionEngine->updateState(false);
+ }
+ 
+ void DebuggerEnginePrivate::updateReverseActions()
+@@ -1691,9 +1690,9 @@ void DebuggerEngine::notifyInferiorExited()
+     d->doShutdownEngine();
+ }
+ 
+-void DebuggerEngine::updateState()
++void DebuggerEngine::updateState(bool alsoUpdateCompanion)
+ {
+-    d->updateState();
++    d->updateState(alsoUpdateCompanion);
+ }
+ 
+ WatchTreeView *DebuggerEngine::inspectorView()
+@@ -1794,28 +1793,17 @@ void DebuggerEngine::setState(DebuggerState state, bool forced)
+     if (!forced && !isAllowedTransition(oldState, state))
+         qDebug() << "*** UNEXPECTED STATE TRANSITION: " << this << msg;
+ 
+-    if (state == EngineRunRequested) {
++    if (state == EngineRunRequested)
+         emit engineStarted();
+-        d->m_perspective->select();
+-    }
+ 
+     showMessage(msg, LogDebug);
+ 
+-    d->updateState();
+-    if (d->m_companionEngine)
+-        d->m_companionEngine->d->updateState();
++    d->updateState(true);
+ 
+     if (oldState != d->m_state)
+         emit EngineManager::instance()->engineStateChanged(this);
+ 
+     if (state == DebuggerFinished) {
+-        d->setBusyCursor(false);
+-
+-        // Give up ownership on claimed breakpoints.
+-        d->m_breakHandler.releaseAllBreakpoints();
+-        d->m_toolTipManager.deregisterEngine();
+-        d->m_memoryAgents.handleDebuggerFinished();
+-
+         d->destroyPerspective();
+         emit engineFinished();
+     }
+diff --git a/src/plugins/debugger/debuggerengine.h b/src/plugins/debugger/debuggerengine.h
+index 736d2b3c03..12e4356ce0 100644
+--- a/src/plugins/debugger/debuggerengine.h
++++ b/src/plugins/debugger/debuggerengine.h
+@@ -416,7 +416,7 @@ protected:
+     void notifyInferiorStopFailed();
+ 
+ public:
+-    void updateState();
++    void updateState(bool alsoUpdateCompanion);
+     QString formatStartParameters() const;
+     WatchTreeView *inspectorView();
+     void updateLocalsWindow(bool showReturn);
+diff --git a/src/plugins/debugger/debuggerinternalconstants.h b/src/plugins/debugger/debuggerinternalconstants.h
+index 8f6599b653..cb9591e8ad 100644
+--- a/src/plugins/debugger/debuggerinternalconstants.h
++++ b/src/plugins/debugger/debuggerinternalconstants.h
+@@ -28,6 +28,24 @@
+ #include <QtGlobal>
+ 
+ namespace Debugger {
++namespace Internal {
++
++// DebuggerMainWindow dock widget names
++const char DOCKWIDGET_BREAKPOINTMANAGER[]    = "Debugger.Docks.BreakpointManager";
++const char DOCKWIDGET_ENGINEMANAGER[]        = "Debugger.Docks.Snapshots";
++const char DOCKWIDGET_GLOBALLOG[]            = "Debugger.Docks.GlobalLog";
++
++const char DOCKWIDGET_BREAK[]                = "Debugger.Docks.Break";
++const char DOCKWIDGET_MODULES[]              = "Debugger.Docks.Modules";
++const char DOCKWIDGET_REGISTER[]             = "Debugger.Docks.Register";
++const char DOCKWIDGET_OUTPUT[]               = "Debugger.Docks.Output";
++const char DOCKWIDGET_STACK[]                = "Debugger.Docks.Stack";
++const char DOCKWIDGET_SOURCE_FILES[]         = "Debugger.Docks.SourceFiles";
++const char DOCKWIDGET_THREADS[]              = "Debugger.Docks.Threads";
++const char DOCKWIDGET_LOCALS_AND_INSPECTOR[] = "Debugger.Docks.LocalsAndInspector";
++
++} // namespace Internal
++
+ namespace Constants {
+ 
+ const char DEBUGGER_COMMON_SETTINGS_ID[]   = "A.Debugger.General";
+diff --git a/src/plugins/debugger/debuggermainwindow.cpp b/src/plugins/debugger/debuggermainwindow.cpp
+index 598344bb25..7d4175fc95 100644
+--- a/src/plugins/debugger/debuggermainwindow.cpp
++++ b/src/plugins/debugger/debuggermainwindow.cpp
+@@ -49,10 +49,9 @@
+ 
+ #include <QAction>
+ #include <QComboBox>
+-#include <QContextMenuEvent>
++#include <QDebug>
+ #include <QDockWidget>
+ #include <QHBoxLayout>
+-#include <QLoggingCategory>
+ #include <QMenu>
+ #include <QScrollArea>
+ #include <QStackedWidget>
+@@ -63,57 +62,37 @@
+ using namespace Debugger;
+ using namespace Core;
+ 
+-Q_LOGGING_CATEGORY(perspectivesLog, "qtc.utils.perspectives", QtWarningMsg)
+-
+ namespace Utils {
+ 
+-const int SettingsVersion = 3;
+-
+ const char LAST_PERSPECTIVE_KEY[]   = "LastPerspective";
+-const char MAINWINDOW_KEY[]         = "Debugger.MainWindow";
+-const char AUTOHIDE_TITLEBARS_KEY[] = "AutoHideTitleBars";
+-const char SHOW_CENTRALWIDGET_KEY[] = "ShowCentralWidget";
+-const char STATE_KEY[]              = "State";
+-const char CHANGED_DOCK_KEY[]       = "ChangedDocks";
++const char OWNED_BY_PERSPECTIVE[]   = "OwnedByPerspective";
+ 
+ static DebuggerMainWindow *theMainWindow = nullptr;
+ 
+ class DockOperation
+ {
+ public:
+-    void setupLayout();
+-    QString name() const { QTC_ASSERT(widget, return QString()); return widget->objectName(); }
+-
+-    Core::Id commandId;
+     QPointer<QWidget> widget;
+-    QPointer<QDockWidget> dock;
+-    QPointer<QWidget> anchorWidget;
++    QString anchorDockId;
+     Perspective::OperationType operationType = Perspective::Raise;
+     bool visibleByDefault = true;
+-    bool visibleByUser = true;
+     Qt::DockWidgetArea area = Qt::BottomDockWidgetArea;
+ };
+ 
+ class PerspectivePrivate
+ {
+ public:
+-    void showInnerToolBar();
+-    void hideInnerToolBar();
++    void showToolBar();
++    void hideToolBar();
+     void restoreLayout();
+     void saveLayout();
+-    void resetPerspective();
+-    void populatePerspective();
+-    void depopulatePerspective();
+-    void saveAsLastUsedPerspective();
+-    Context context() const;
+-
+     QString settingsId() const;
+     QToolButton *setupToolButton(QAction *action);
+ 
+     QString m_id;
+     QString m_name;
+     QString m_parentPerspectiveId;
+-    QString m_settingsId;
++    QString m_subPerspectiveType;
+     QVector<DockOperation> m_dockOperations;
+     QPointer<QWidget> m_centralWidget;
+     Perspective::Callback m_aboutToActivateCallback;
+@@ -121,6 +100,8 @@ public:
+     QHBoxLayout *m_innerToolBarLayout = nullptr;
+     QPointer<QWidget> m_switcher;
+     QString m_lastActiveSubPerspectiveId;
++    QHash<QString, QVariant> m_nonPersistenSettings;
++    Perspective::ShouldPersistChecker m_shouldPersistChecker;
+ };
+ 
+ class DebuggerMainWindowPrivate : public QObject
+@@ -137,30 +118,20 @@ public:
+     void registerPerspective(Perspective *perspective);
+     void resetCurrentPerspective();
+     int indexInChooser(Perspective *perspective) const;
++    void fixupLayoutIfNeeded();
+     void updatePerspectiveChooserWidth();
+ 
+-    void cleanDocks();
+-    void setCentralWidget(QWidget *widget);
+-
+-    QDockWidget *dockForWidget(QWidget *widget) const;
+-
+-    void setCurrentPerspective(Perspective *perspective)
+-    {
+-        m_currentPerspective = perspective;
+-    }
+-
+     DebuggerMainWindow *q = nullptr;
+-    QPointer<Perspective> m_currentPerspective = nullptr;
++    Perspective *m_currentPerspective = nullptr;
+     QComboBox *m_perspectiveChooser = nullptr;
+     QStackedWidget *m_centralWidgetStack = nullptr;
+     QHBoxLayout *m_subPerspectiveSwitcherLayout = nullptr;
+     QHBoxLayout *m_innerToolsLayout = nullptr;
+-    QPointer<QWidget> m_editorPlaceHolder;
++    QWidget *m_editorPlaceHolder = nullptr;
+     Utils::StatusLabel *m_statusLabel = nullptr;
+     QDockWidget *m_toolBarDock = nullptr;
+ 
+-    QList<QPointer<Perspective>> m_perspectives;
+-    QSet<QString> m_persistentChangedDocks;
++    QList<Perspective *> m_perspectives;
+ };
+ 
+ DebuggerMainWindowPrivate::DebuggerMainWindowPrivate(DebuggerMainWindow *parent)
+@@ -240,9 +211,10 @@ DebuggerMainWindowPrivate::DebuggerMainWindowPrivate(DebuggerMainWindow *parent)
+     m_toolBarDock = dock;
+     q->addDockWidget(Qt::BottomDockWidgetArea, m_toolBarDock);
+ 
+-    connect(viewButton, &QAbstractButton::clicked, this, [this, viewButton] {
+-        ActionContainer *viewsMenu = ActionManager::actionContainer(Core::Constants::M_WINDOW_VIEWS);
+-        viewsMenu->menu()->exec(viewButton->mapToGlobal(QPoint()));
++    connect(viewButton, &QAbstractButton::clicked, [this, viewButton] {
++        QMenu menu;
++        q->addDockActionsToMenu(&menu);
++        menu.exec(viewButton->mapToGlobal(QPoint()));
+     });
+ 
+     connect(closeButton, &QAbstractButton::clicked, [] {
+@@ -284,19 +256,6 @@ DebuggerMainWindow::DebuggerMainWindow()
+         "Debugger.Views.ResetSimple", debugcontext);
+     cmd->setAttribute(Command::CA_Hide);
+     viewsMenu->addAction(cmd, Core::Constants::G_DEFAULT_THREE);
+-
+-    connect(ICore::instance(), &ICore::saveSettingsRequested, this, [this] {
+-        // There's one saveSettings triggered after plugin loading intentionally.
+-        // We do not want to save anything at that time.
+-        static bool firstOne = true;
+-        if (firstOne) {
+-            qCDebug(perspectivesLog) << "FIRST SAVE SETTINGS REQUEST IGNORED";
+-            firstOne = false;
+-        } else {
+-            qCDebug(perspectivesLog) << "SAVING SETTINGS";
+-            savePersistentSettings();
+-        }
+-    });
+ }
+ 
+ DebuggerMainWindow::~DebuggerMainWindow()
+@@ -304,12 +263,6 @@ DebuggerMainWindow::~DebuggerMainWindow()
+     delete d;
+ }
+ 
+-void DebuggerMainWindow::contextMenuEvent(QContextMenuEvent *ev)
+-{
+-    ActionContainer *viewsMenu = ActionManager::actionContainer(Core::Constants::M_WINDOW_VIEWS);
+-    viewsMenu->menu()->exec(ev->globalPos());
+-}
+-
+ void DebuggerMainWindow::ensureMainWindowExists()
+ {
+     if (!theMainWindow)
+@@ -318,8 +271,6 @@ void DebuggerMainWindow::ensureMainWindowExists()
+ 
+ void DebuggerMainWindow::doShutdown()
+ {
+-    QTC_ASSERT(theMainWindow, return);
+-
+     delete theMainWindow;
+     theMainWindow = nullptr;
+ }
+@@ -335,12 +286,9 @@ void DebuggerMainWindowPrivate::registerPerspective(Perspective *perspective)
+ 
+ void DebuggerMainWindowPrivate::destroyPerspective(Perspective *perspective)
+ {
+-    qCDebug(perspectivesLog) << "ABOUT TO DESTROY PERSPECTIVE" << perspective->id();
+-
+-    const bool wasCurrent = perspective == m_currentPerspective;
+-    if (wasCurrent) {
+-        qCDebug(perspectivesLog) << "RAMPING IT DOWN FIRST AS IT WAS CURRENT" << perspective->id();
+-        perspective->rampDownAsCurrent();
++    if (perspective == m_currentPerspective) {
++        depopulateCurrentPerspective();
++        m_currentPerspective = nullptr;
+     }
+ 
+     m_perspectives.removeAll(perspective);
+@@ -350,31 +298,6 @@ void DebuggerMainWindowPrivate::destroyPerspective(Perspective *perspective)
+     const int idx = indexInChooser(perspective);
+     if (idx != -1)
+         m_perspectiveChooser->removeItem(idx);
+-
+-    for (DockOperation &op : perspective->d->m_dockOperations) {
+-        if (op.commandId.isValid())
+-            ActionManager::unregisterAction(op.dock->toggleViewAction(), op.commandId);
+-        if (op.dock) {
+-            theMainWindow->removeDockWidget(op.dock);
+-            op.widget->setParent(nullptr); // Prevent deletion
+-            op.dock->setParent(nullptr);
+-            delete op.dock;
+-            op.dock = nullptr;
+-        }
+-    }
+-
+-    if (wasCurrent) {
+-        if (Perspective *parent = Perspective::findPerspective(perspective->d->m_parentPerspectiveId)) {
+-            qCDebug(perspectivesLog) << "RAMPING UP PARENT PERSPECTIVE" << parent->id();
+-            parent->rampUpAsCurrent();
+-        } else {
+-            qCDebug(perspectivesLog) << "RAMPED DOWN WAS ACTION, BUT NO PARENT AVAILABLE. TAKE FIRST BEST";
+-            if (QTC_GUARD(!m_perspectives.isEmpty()))
+-                m_perspectives.first()->rampUpAsCurrent();
+-        }
+-    }
+-
+-    qCDebug(perspectivesLog) << "DESTROYED PERSPECTIVE" << perspective->id();
+ }
+ 
+ void DebuggerMainWindow::showStatusMessage(const QString &message, int timeoutMS)
+@@ -386,124 +309,34 @@ void DebuggerMainWindow::showStatusMessage(const QString &message, int timeoutMS
+ void DebuggerMainWindow::enterDebugMode()
+ {
+     theMainWindow->setDockActionsVisible(true);
+-    theMainWindow->restorePersistentSettings();
+-    QTC_CHECK(theMainWindow->d->m_currentPerspective == nullptr);
+-
+-    QSettings *settings = ICore::settings();
+-    const QString lastPerspectiveId = settings->value(LAST_PERSPECTIVE_KEY).toString();
+-    Perspective *perspective = Perspective::findPerspective(lastPerspectiveId);
+-    // If we don't find a perspective with the stored name, pick any.
+-    // This can happen e.g. when a plugin was disabled that provided
+-    // the stored perspective, or when the save file was modified externally.
+-    if (!perspective && !theMainWindow->d->m_perspectives.isEmpty())
+-        perspective = theMainWindow->d->m_perspectives.first();
+-
++    Perspective *perspective = theMainWindow->d->m_currentPerspective;
++    if (!perspective) {
++        const QSettings *settings = ICore::settings();
++        const QString lastPerspectiveId = settings->value(LAST_PERSPECTIVE_KEY).toString();
++        perspective = Perspective::findPerspective(lastPerspectiveId);
++        // If we don't find a perspective with the stored name, pick any.
++        // This can happen e.g. when a plugin was disabled that provided
++        // the stored perspective, or when the save file was modified externally.
++        if (!perspective && !theMainWindow->d->m_perspectives.isEmpty())
++            perspective = theMainWindow->d->m_perspectives.first();
++    }
+     // There's at least the debugger preset perspective that should be found above.
+     QTC_ASSERT(perspective, return);
+-
+-    if (auto sub = Perspective::findPerspective(perspective->d->m_lastActiveSubPerspectiveId)) {
+-        qCDebug(perspectivesLog) << "SWITCHING TO SUBPERSPECTIVE" << sub->d->m_id;
+-        perspective = sub;
+-    }
+-
+-    perspective->rampUpAsCurrent();
++    perspective->select();
+ }
+ 
+ void DebuggerMainWindow::leaveDebugMode()
+ {
+-    theMainWindow->savePersistentSettings();
+-
+-    if (theMainWindow->d->m_currentPerspective)
+-        theMainWindow->d->m_currentPerspective->rampDownAsCurrent();
+-    QTC_CHECK(theMainWindow->d->m_currentPerspective == nullptr);
++    if (Perspective *perspective = theMainWindow->d->m_currentPerspective)
++        perspective->d->saveLayout();
+ 
+     theMainWindow->setDockActionsVisible(false);
+ 
+     // Hide dock widgets manually in case they are floating.
+     for (QDockWidget *dockWidget : theMainWindow->dockWidgets()) {
+         if (dockWidget->isFloating())
+-            dockWidget->setVisible(false);
+-    }
+-}
+-
+-void DebuggerMainWindow::restorePersistentSettings()
+-{
+-    qCDebug(perspectivesLog) << "RESTORE PERSISTENT";
+-    QSettings *settings = ICore::settings();
+-    settings->beginGroup(MAINWINDOW_KEY);
+-    const bool res = theMainWindow->restoreState(settings->value(STATE_KEY).toByteArray(),
+-                                                 SettingsVersion);
+-    if (!res)
+-        qCDebug(perspectivesLog) << "NO READABLE PERSISTENT SETTINGS FOUND, ASSUMING NEW CLEAN SETTINGS";
+-
+-    theMainWindow->setAutoHideTitleBars(settings->value(AUTOHIDE_TITLEBARS_KEY, true).toBool());
+-    theMainWindow->showCentralWidget(settings->value(SHOW_CENTRALWIDGET_KEY, true).toBool());
+-    theMainWindow->d->m_persistentChangedDocks
+-            = QSet<QString>::fromList(settings->value(CHANGED_DOCK_KEY).toStringList());
+-    settings->endGroup();
+-
+-    qCDebug(perspectivesLog) << "LOADED DOCKS:" << theMainWindow->d->m_persistentChangedDocks;
+-
+-    QTC_ASSERT(theMainWindow, return);
+-    QTC_ASSERT(theMainWindow->d, return);
+-    for (Perspective *perspective : theMainWindow->d->m_perspectives) {
+-        QTC_ASSERT(perspective, continue);
+-        qCDebug(perspectivesLog) << "RESTORING PERSPECTIVE" << perspective->d->m_id;
+-        for (DockOperation &op : perspective->d->m_dockOperations) {
+-            if (op.operationType != Perspective::Raise) {
+-                QTC_ASSERT(op.dock, continue);
+-                QTC_ASSERT(op.widget, continue);
+-                if (theMainWindow->d->m_persistentChangedDocks.contains(op.name())) {
+-                    qCDebug(perspectivesLog) << "DOCK " << op.name() << "*** UNUSUAL";
+-                    op.visibleByUser = !op.visibleByDefault;
+-                } else {
+-                    qCDebug(perspectivesLog) << "DOCK " << op.name() << "NORMAL";
+-                    QTC_CHECK(op.visibleByUser == op.visibleByDefault);
+-                }
+-            }
+-        }
+-    }
+-}
+-
+-Perspective *DebuggerMainWindow::currentPerspective()
+-{
+-    return theMainWindow->d->m_currentPerspective;
+-}
+-
+-void DebuggerMainWindow::savePersistentSettings()
+-{
+-    // The current one might have active, non saved changes.
+-    if (Perspective *perspective = theMainWindow->d->m_currentPerspective)
+-        perspective->d->saveLayout();
+-
+-    qCDebug(perspectivesLog) << "SAVE PERSISTENT";
+-
+-    QSet<QString> changedDocks = theMainWindow->d->m_persistentChangedDocks;
+-    for (Perspective *perspective : theMainWindow->d->m_perspectives) {
+-        QTC_ASSERT(perspective, continue);
+-        qCDebug(perspectivesLog) << "SAVE PERSPECTIVE" << perspective->d->m_id;
+-        for (const DockOperation &op : perspective->d->m_dockOperations) {
+-            if (op.operationType != Perspective::Raise) {
+-                QTC_ASSERT(op.dock, continue);
+-                QTC_ASSERT(op.widget, continue);
+-                qCDebug(perspectivesLog) << "DOCK " << op.name() << "ACTIVE: " << op.visibleByUser;
+-                if (op.visibleByUser != op.visibleByDefault)
+-                    changedDocks.insert(op.name());
+-                else
+-                    changedDocks.remove(op.name());
+-            }
+-        }
++            dockWidget->hide();
+     }
+-    theMainWindow->d->m_persistentChangedDocks = changedDocks;
+-    qCDebug(perspectivesLog) << "CHANGED DOCKS:" << changedDocks;
+-
+-    QSettings *settings = ICore::settings();
+-    settings->beginGroup(MAINWINDOW_KEY);
+-    settings->setValue(CHANGED_DOCK_KEY, QStringList(changedDocks.toList()));
+-    settings->setValue(STATE_KEY, theMainWindow->saveState(SettingsVersion));
+-    settings->setValue(AUTOHIDE_TITLEBARS_KEY, theMainWindow->autoHideTitleBars());
+-    settings->setValue(SHOW_CENTRALWIDGET_KEY, theMainWindow->isCentralWidgetShown());
+-    settings->endGroup();
+ }
+ 
+ QWidget *DebuggerMainWindow::centralWidgetStack()
+@@ -525,100 +358,67 @@ DebuggerMainWindow *DebuggerMainWindow::instance()
+ 
+ Perspective *Perspective::findPerspective(const QString &perspectiveId)
+ {
+-    QTC_ASSERT(theMainWindow, return nullptr);
+-    return Utils::findOr(theMainWindow->d->m_perspectives, nullptr,
+-                         [perspectiveId](Perspective *perspective) {
+-        return perspective && perspective->d->m_id == perspectiveId;
++    return Utils::findOr(theMainWindow->d->m_perspectives, nullptr, [&](Perspective *perspective) {
++        return perspective->d->m_id == perspectiveId;
+     });
+ }
+ 
+-bool Perspective::isCurrent() const
+-{
+-    return theMainWindow->d->m_currentPerspective == this;
+-}
+-
+-QDockWidget *DebuggerMainWindowPrivate::dockForWidget(QWidget *widget) const
++void DebuggerMainWindowPrivate::resetCurrentPerspective()
+ {
+-    QTC_ASSERT(widget, return nullptr);
+-
+-    for (QDockWidget *dock : q->dockWidgets()) {
+-        if (dock->widget() == widget)
+-            return dock;
++    if (m_currentPerspective) {
++        m_currentPerspective->d->m_nonPersistenSettings.clear();
++        m_currentPerspective->d->hideToolBar();
+     }
+-
+-    return nullptr;
++    depopulateCurrentPerspective();
++    populateCurrentPerspective();
++    if (m_currentPerspective)
++        m_currentPerspective->d->saveLayout();
+ }
+ 
+-void DebuggerMainWindowPrivate::resetCurrentPerspective()
++int DebuggerMainWindowPrivate::indexInChooser(Perspective *perspective) const
+ {
+-    QTC_ASSERT(m_currentPerspective, return);
+-    cleanDocks();
+-    m_currentPerspective->d->resetPerspective();
+-    setCentralWidget(m_currentPerspective->d->m_centralWidget);
++    return perspective ? m_perspectiveChooser->findData(perspective->d->m_id) : -1;
+ }
+ 
+-void DebuggerMainWindowPrivate::setCentralWidget(QWidget *widget)
++void DebuggerMainWindowPrivate::fixupLayoutIfNeeded()
+ {
+-    if (widget) {
+-        m_centralWidgetStack->addWidget(widget);
+-        q->showCentralWidgetAction()->setText(widget->windowTitle());
+-    } else {
+-        m_centralWidgetStack->addWidget(m_editorPlaceHolder);
+-        q->showCentralWidgetAction()->setText(DebuggerMainWindow::tr("Editor"));
++    // Evil workaround for QTCREATORBUG-21455: In some so far unknown situation
++    // the saveLayout/restoreLayout process leads to a situation where some docks
++    // do not end up below the perspective toolbar even though they were there
++    // initially, leading to an awkward dock layout.
++    // This here tries to detect the situation (sonmething else in the bottom
++    // area is at the right of the toolbar) "corrects" that by restoring the
++    // default layout.
++
++    if (m_toolBarDock->width() != q->width()) {
++        qDebug() << "Scrambled dock layout found. Resetting it.";
++        resetCurrentPerspective();
+     }
+ }
+ 
+-void PerspectivePrivate::resetPerspective()
++void DebuggerMainWindowPrivate::selectPerspective(Perspective *perspective)
+ {
+-    showInnerToolBar();
++    QTC_ASSERT(perspective, return);
+ 
+-    for (DockOperation &op : m_dockOperations) {
+-        if (op.operationType == Perspective::Raise) {
+-            QTC_ASSERT(op.dock, qCDebug(perspectivesLog) << op.name(); continue);
+-            op.dock->raise();
+-        } else {
+-            op.setupLayout();
+-            op.dock->setVisible(op.visibleByDefault);
+-            qCDebug(perspectivesLog) << "SETTING " << op.name()
+-                                     << " TO ACTIVE: " << op.visibleByDefault;
+-        }
++    if (m_currentPerspective) {
++        m_currentPerspective->d->saveLayout();
++        m_currentPerspective->d->hideToolBar();
+     }
+-}
+ 
+-void DockOperation::setupLayout()
+-{
+-    QTC_ASSERT(widget, return);
+-    QTC_ASSERT(operationType != Perspective::Raise, return);
+-    QTC_ASSERT(dock, return);
++    depopulateCurrentPerspective();
+ 
+-    QDockWidget *anchor = nullptr;
+-    if (anchorWidget)
+-        anchor = theMainWindow->d->dockForWidget(anchorWidget);
+-    else if (area == Qt::BottomDockWidgetArea)
+-        anchor = theMainWindow->d->m_toolBarDock;
+-
+-    if (anchor) {
+-        switch (operationType) {
+-        case Perspective::AddToTab:
+-            theMainWindow->tabifyDockWidget(anchor, dock);
+-            break;
+-        case Perspective::SplitHorizontal:
+-            theMainWindow->splitDockWidget(anchor, dock, Qt::Horizontal);
+-            break;
+-        case Perspective::SplitVertical:
+-            theMainWindow->splitDockWidget(anchor, dock, Qt::Vertical);
+-            break;
+-        default:
+-            break;
+-        }
+-    } else {
+-        theMainWindow->addDockWidget(area, dock);
++    m_currentPerspective = perspective;
++
++    perspective->aboutToActivate();
++
++    populateCurrentPerspective();
++
++    if (m_currentPerspective) {
++        m_currentPerspective->d->restoreLayout();
++        fixupLayoutIfNeeded();
+     }
+-}
+ 
+-int DebuggerMainWindowPrivate::indexInChooser(Perspective *perspective) const
+-{
+-    return perspective ? m_perspectiveChooser->findData(perspective->d->m_id) : -1;
++    updatePerspectiveChooserWidth();
+ }
+ 
+ void DebuggerMainWindowPrivate::updatePerspectiveChooserWidth()
+@@ -644,72 +444,111 @@ void DebuggerMainWindowPrivate::updatePerspectiveChooserWidth()
+     }
+ }
+ 
+-void DebuggerMainWindowPrivate::cleanDocks()
++void DebuggerMainWindowPrivate::depopulateCurrentPerspective()
+ {
+-    m_statusLabel->clear();
+-
++    // Clean up old perspective.
+     for (QDockWidget *dock : q->dockWidgets()) {
+-        if (dock != m_toolBarDock)
+-            dock->setVisible(false);
++        if (dock->property(OWNED_BY_PERSPECTIVE).toBool()) {
++            // Prevent deletion of plugin-owned widgets.
++            if (dock->widget())
++                dock->widget()->setParent(nullptr);
++            ActionManager::unregisterAction(dock->toggleViewAction(),
++                                            Id("Dock.").withSuffix(dock->objectName()));
++            delete dock;
++        }
+     }
+-}
+-
+-void PerspectivePrivate::depopulatePerspective()
+-{
+-    ICore::removeAdditionalContext(context());
+-    theMainWindow->d->m_centralWidgetStack
+-            ->removeWidget(m_centralWidget ? m_centralWidget : theMainWindow->d->m_editorPlaceHolder);
+ 
+-    theMainWindow->d->m_statusLabel->clear();
+-
+-    for (QDockWidget *dock : theMainWindow->dockWidgets()) {
+-        if (dock != theMainWindow->d->m_toolBarDock)
+-            dock->setVisible(false);
++    if (m_currentPerspective) {
++        ICore::removeAdditionalContext(m_currentPerspective->context());
++        QWidget *central = m_currentPerspective->centralWidget();
++        m_centralWidgetStack->removeWidget(central ? central : m_editorPlaceHolder);
+     }
+-
+-    hideInnerToolBar();
+ }
+ 
+-void PerspectivePrivate::saveAsLastUsedPerspective()
+-{
+-    if (Perspective *parent = Perspective::findPerspective(m_parentPerspectiveId))
+-        parent->d->m_lastActiveSubPerspectiveId = m_id;
+-    else
+-        m_lastActiveSubPerspectiveId.clear();
++void DebuggerMainWindowPrivate::populateCurrentPerspective()
++{
++    // Create dock widgets wrapping ther perspective's widgets.
++    QHash<QString, QDockWidget *> dockForDockId;
++    for (const DockOperation &op : m_currentPerspective->d->m_dockOperations) {
++        if (op.operationType == Perspective::Raise)
++            continue;
++        QTC_ASSERT(op.widget, continue);
++        const QString dockId = op.widget->objectName();
++        QTC_CHECK(!dockId.isEmpty());
++        QTC_ASSERT(!dockForDockId.contains(dockId), continue);
++        QDockWidget *dock = q->addDockForWidget(op.widget);
++        dock->setProperty(OWNED_BY_PERSPECTIVE, true);
++        dockForDockId[dockId] = dock;
++        q->addDockWidget(op.area, dock);
++
++        QAction *toggleViewAction = dock->toggleViewAction();
++        toggleViewAction->setText(dock->windowTitle());
++
++        Command *cmd = ActionManager::registerAction(toggleViewAction,
++                                                     Id("Dock.").withSuffix(dock->objectName()),
++                                                     m_currentPerspective->context());
++        cmd->setAttribute(Command::CA_Hide);
++        ActionManager::actionContainer(Core::Constants::M_WINDOW_VIEWS)->addAction(cmd);
++    }
+ 
+-    const QString &lastKey = m_parentPerspectiveId.isEmpty() ? m_id : m_parentPerspectiveId;
+-    qCDebug(perspectivesLog) << "SAVE LAST USED PERSPECTIVE" << lastKey;
+-    ICore::settings()->setValue(LAST_PERSPECTIVE_KEY, lastKey);
+-}
++    m_currentPerspective->d->showToolBar();
+ 
+-void PerspectivePrivate::populatePerspective()
+-{
+-    showInnerToolBar();
++    // Pre-arrange dock widgets.
++    for (const DockOperation &op : m_currentPerspective->d->m_dockOperations) {
++        QTC_ASSERT(op.widget, continue);
++        const QString dockId = op.widget->objectName();
++        QDockWidget *dock = dockForDockId.value(dockId);
++        QTC_ASSERT(dock, continue);
++        if (op.operationType == Perspective::Raise) {
++            dock->raise();
++            continue;
++        }
++        QDockWidget *anchor = dockForDockId.value(op.anchorDockId);
++        if (!anchor && op.area == Qt::BottomDockWidgetArea) {
++            anchor = m_toolBarDock;
++        }
+ 
+-    if (m_centralWidget) {
+-        theMainWindow->d->m_centralWidgetStack->addWidget(m_centralWidget);
+-        theMainWindow->showCentralWidgetAction()->setText(m_centralWidget->windowTitle());
+-    } else {
+-        theMainWindow->d->m_centralWidgetStack->addWidget(theMainWindow->d->m_editorPlaceHolder);
+-        theMainWindow->showCentralWidgetAction()->setText(DebuggerMainWindow::tr("Editor"));
++        if (anchor) {
++            switch (op.operationType) {
++            case Perspective::AddToTab:
++                q->tabifyDockWidget(anchor, dock);
++                break;
++            case Perspective::SplitHorizontal:
++                q->splitDockWidget(anchor, dock, Qt::Horizontal);
++                break;
++            case Perspective::SplitVertical:
++                q->splitDockWidget(anchor, dock, Qt::Vertical);
++                break;
++            default:
++                break;
++            }
++        }
++        dock->setVisible(op.visibleByDefault);
+     }
+ 
+-    ICore::addAdditionalContext(context());
++    QWidget *central = m_currentPerspective->centralWidget();
++    m_centralWidgetStack->addWidget(central ? central : m_editorPlaceHolder);
++    q->showCentralWidgetAction()->setText(central ? central->windowTitle()
++                                                  : DebuggerMainWindow::tr("Editor"));
++
++    m_statusLabel->clear();
+ 
+-    restoreLayout();
++    ICore::addAdditionalContext(m_currentPerspective->context());
+ }
+ 
+ // Perspective
+ 
+ Perspective::Perspective(const QString &id, const QString &name,
+                          const QString &parentPerspectiveId,
+-                         const QString &settingsId)
++                         const QString &subPerspectiveType)
+     : d(new PerspectivePrivate)
+ {
++    const bool shouldPersist = parentPerspectiveId.isEmpty();
+     d->m_id = id;
+     d->m_name = name;
+     d->m_parentPerspectiveId = parentPerspectiveId;
+-    d->m_settingsId = settingsId;
++    d->m_subPerspectiveType = subPerspectiveType;
++    d->m_shouldPersistChecker = [shouldPersist] { return shouldPersist; };
+ 
+     DebuggerMainWindow::ensureMainWindowExists();
+     theMainWindow->d->registerPerspective(this);
+@@ -726,8 +565,12 @@ Perspective::Perspective(const QString &id, const QString &name,
+ Perspective::~Perspective()
+ {
+     if (theMainWindow) {
++        d->saveLayout();
++
+         delete d->m_innerToolBar;
+         d->m_innerToolBar = nullptr;
++
++        theMainWindow->d->destroyPerspective(this);
+     }
+     delete d;
+ }
+@@ -753,6 +596,12 @@ void Perspective::setAboutToActivateCallback(const Perspective::Callback &cb)
+     d->m_aboutToActivateCallback = cb;
+ }
+ 
++void Perspective::aboutToActivate() const
++{
++    if (d->m_aboutToActivateCallback)
++        d->m_aboutToActivateCallback();
++}
++
+ void Perspective::setEnabled(bool enabled)
+ {
+     QTC_ASSERT(theMainWindow, return);
+@@ -805,24 +654,34 @@ void Perspective::addToolbarSeparator()
+     d->m_innerToolBarLayout->addWidget(new StyledSeparator(d->m_innerToolBar));
+ }
+ 
++void Perspective::setShouldPersistChecker(const ShouldPersistChecker &checker)
++{
++    d->m_shouldPersistChecker = checker;
++}
++
+ QWidget *Perspective::centralWidget() const
+ {
+     return d->m_centralWidget;
+ }
+ 
+-Context PerspectivePrivate::context() const
++Perspective *Perspective::currentPerspective()
+ {
+-    return Context(Id::fromName(m_id.toUtf8()));
++    return theMainWindow ? theMainWindow->d->m_currentPerspective : nullptr;
+ }
+ 
+-void PerspectivePrivate::showInnerToolBar()
++Context Perspective::context() const
++{
++    return Context(Id::fromName(d->m_id.toUtf8()));
++}
++
++void PerspectivePrivate::showToolBar()
+ {
+     m_innerToolBar->setVisible(true);
+     if (m_switcher)
+         m_switcher->setVisible(true);
+ }
+ 
+-void PerspectivePrivate::hideInnerToolBar()
++void PerspectivePrivate::hideToolBar()
+ {
+     QTC_ASSERT(m_innerToolBar, return);
+     m_innerToolBar->setVisible(false);
+@@ -839,131 +698,63 @@ void Perspective::addWindow(QWidget *widget,
+     QTC_ASSERT(widget, return);
+     DockOperation op;
+     op.widget = widget;
++    if (anchorWidget)
++        op.anchorDockId = anchorWidget->objectName();
+     op.operationType = type;
+-    op.anchorWidget = anchorWidget;
+     op.visibleByDefault = visibleByDefault;
+     op.area = area;
+-
+-    if (op.operationType != Perspective::Raise) {
+-        qCDebug(perspectivesLog) << "CREATING DOCK " << op.name()
+-                                 << "DEFAULT: " << op.visibleByDefault;
+-        op.dock = theMainWindow->addDockForWidget(op.widget);
+-        op.commandId = Id("Dock.").withSuffix(op.name());
+-        if (theMainWindow->restoreDockWidget(op.dock)) {
+-            qCDebug(perspectivesLog) << "RESTORED SUCCESSFULLY";
+-        } else {
+-            qCDebug(perspectivesLog) << "COULD NOT RESTORE";
+-            op.setupLayout();
+-        }
+-        op.dock->setVisible(false);
+-        op.dock->toggleViewAction()->setText(op.dock->windowTitle());
+-
+-        QObject::connect(op.dock->toggleViewAction(), &QAction::changed, op.dock, [this, op] {
+-            qCDebug(perspectivesLog) << "CHANGED: " << op.name()
+-                 << "ACTION CHECKED: " << op.dock->toggleViewAction()->isChecked();
+-        });
+-
+-        Command *cmd = ActionManager::registerAction(op.dock->toggleViewAction(),
+-                                                     op.commandId, d->context());
+-        cmd->setAttribute(Command::CA_Hide);
+-        ActionManager::actionContainer(Core::Constants::M_WINDOW_VIEWS)->addAction(cmd);
+-    }
+-
+-    op.visibleByUser = op.visibleByDefault;
+-    if (theMainWindow->d->m_persistentChangedDocks.contains(op.name())) {
+-        op.visibleByUser = !op.visibleByUser;
+-        qCDebug(perspectivesLog) <<  "*** NON-DEFAULT USER: " << op.visibleByUser;
+-    } else {
+-        qCDebug(perspectivesLog) <<  "DEFAULT USER";
+-    }
+-
+     d->m_dockOperations.append(op);
+ }
+ 
+-void Perspective::destroy()
+-{
+-    theMainWindow->d->destroyPerspective(this);
+-}
+-
+-void Perspective::rampDownAsCurrent()
+-{
+-    QTC_ASSERT(this == theMainWindow->d->m_currentPerspective, return);
+-    d->saveLayout();
+-    d->depopulatePerspective();
+-    theMainWindow->d->setCurrentPerspective(nullptr);
+-
+-    Debugger::Internal::EngineManager::updatePerspectives();
+-}
+-
+-void Perspective::rampUpAsCurrent()
+-{
+-    if (d->m_aboutToActivateCallback)
+-        d->m_aboutToActivateCallback();
+-
+-    QTC_ASSERT(theMainWindow->d->m_currentPerspective == nullptr, return);
+-    theMainWindow->d->setCurrentPerspective(this);
+-    QTC_ASSERT(theMainWindow->d->m_currentPerspective == this, return);
+-
+-    d->populatePerspective();
+-
+-    theMainWindow->d->updatePerspectiveChooserWidth();
+-
+-    d->saveAsLastUsedPerspective();
+-
+-    Debugger::Internal::EngineManager::updatePerspectives();
+-}
+-
+ void Perspective::select()
+ {
+     Debugger::Internal::EngineManager::activateDebugMode();
+-
+-    if (theMainWindow->d->m_currentPerspective == this)
++    if (Perspective::currentPerspective() == this)
+         return;
++    theMainWindow->d->selectPerspective(this);
++    if (Perspective *parent = Perspective::findPerspective(d->m_parentPerspectiveId))
++        parent->d->m_lastActiveSubPerspectiveId = d->m_id;
++    else
++        d->m_lastActiveSubPerspectiveId.clear();
+ 
+-    if (theMainWindow->d->m_currentPerspective)
+-        theMainWindow->d->m_currentPerspective->rampDownAsCurrent();
+-    QTC_CHECK(theMainWindow->d->m_currentPerspective == nullptr);
+-
+-    rampUpAsCurrent();
++    const QString &lastKey = d->m_parentPerspectiveId.isEmpty() ? d->m_id : d->m_parentPerspectiveId;
++    ICore::settings()->setValue(LAST_PERSPECTIVE_KEY, lastKey);
+ }
+ 
+ void PerspectivePrivate::restoreLayout()
+ {
+-    qCDebug(perspectivesLog) << "PERSPECTIVE" << m_id << "RESTORING LAYOUT FROM " << settingsId();
+-    for (DockOperation &op : m_dockOperations) {
+-        if (op.operationType != Perspective::Raise) {
+-            QTC_ASSERT(op.dock, continue);
+-            const bool active = op.visibleByUser;
+-            op.dock->toggleViewAction()->setChecked(active);
+-            op.dock->setVisible(active);
+-            qCDebug(perspectivesLog) << "RESTORE DOCK " << op.name() << "ACTIVE: " << active
+-                                     << (active == op.visibleByDefault ? "DEFAULT USER" : "*** NON-DEFAULT USER");
+-        }
++    if (m_nonPersistenSettings.isEmpty()) {
++        //qDebug() << "PERSPECTIVE" << m_id << "RESTORE PERSISTENT FROM " << settingsId();
++        QSettings *settings = ICore::settings();
++        settings->beginGroup(settingsId());
++        theMainWindow->restoreSettings(settings);
++        settings->endGroup();
++        m_nonPersistenSettings = theMainWindow->saveSettings();
++    } else {
++        //qDebug() << "PERSPECTIVE" << m_id << "RESTORE FROM LOCAL TEMP";
++        theMainWindow->restoreSettings(m_nonPersistenSettings);
+     }
+ }
+ 
+ void PerspectivePrivate::saveLayout()
+ {
+-    qCDebug(perspectivesLog) << "PERSPECTIVE" << m_id << "SAVE LAYOUT TO " << settingsId();
+-    for (DockOperation &op : m_dockOperations) {
+-        if (op.operationType != Perspective::Raise) {
+-            QTC_ASSERT(op.dock, continue);
+-            QTC_ASSERT(op.widget, continue);
+-            const bool active = op.dock->toggleViewAction()->isChecked();
+-            op.visibleByUser = active;
+-            if (active == op.visibleByDefault)
+-                theMainWindow->d->m_persistentChangedDocks.remove(op.name());
+-            else
+-                theMainWindow->d->m_persistentChangedDocks.insert(op.name());
+-            qCDebug(perspectivesLog) << "SAVE DOCK " << op.name() << "ACTIVE: " << active
+-                                     << (active == op.visibleByDefault ? "DEFAULT USER" : "*** NON-DEFAULT USER");
+-        }
++    //qDebug() << "PERSPECTIVE" << m_id << "SAVE LOCAL TEMP";
++    m_nonPersistenSettings = theMainWindow->saveSettings();
++
++    if (m_shouldPersistChecker()) {
++        //qDebug() << "PERSPECTIVE" << m_id << "SAVE PERSISTENT TO " << settingsId();
++        QSettings *settings = ICore::settings();
++        settings->beginGroup(settingsId());
++        theMainWindow->saveSettings(settings);
++        settings->endGroup();
++    } else {
++        //qDebug() << "PERSPECTIVE" << m_id << "NOT PERSISTENT";
+     }
+ }
+ 
+ QString PerspectivePrivate::settingsId() const
+ {
+-    return m_settingsId.isEmpty() ? m_id : m_settingsId;
++    return m_parentPerspectiveId.isEmpty() ? m_id : (m_parentPerspectiveId + '.' + m_subPerspectiveType);
+ }
+ 
+ // ToolbarAction
+diff --git a/src/plugins/debugger/debuggermainwindow.h b/src/plugins/debugger/debuggermainwindow.h
+index 116eb73717..98ff0a37d1 100644
+--- a/src/plugins/debugger/debuggermainwindow.h
++++ b/src/plugins/debugger/debuggermainwindow.h
+@@ -59,12 +59,12 @@ public:
+     QPointer<QToolButton> m_toolButton;
+ };
+ 
+-class DEBUGGER_EXPORT Perspective : public QObject
++class DEBUGGER_EXPORT Perspective
+ {
+ public:
+     Perspective(const QString &id, const QString &name,
+                 const QString &parentPerspectiveId = QString(),
+-                const QString &settingId = QString());
++                const QString &subPerspectiveType = QString());
+     ~Perspective();
+ 
+     enum OperationType { SplitVertical, SplitHorizontal, AddToTab, Raise };
+@@ -92,26 +92,26 @@ public:
+ 
+     using Callback = std::function<void()>;
+     void setAboutToActivateCallback(const Callback &cb);
++    void aboutToActivate() const;
+ 
+     void setEnabled(bool enabled);
+ 
+     void select();
+-    void destroy();
+ 
++    static Perspective *currentPerspective();
+     static Perspective *findPerspective(const QString &perspectiveId);
+ 
+-    bool isCurrent() const;
++    Core::Context context() const;
+ 
+-private:
+-    void rampDownAsCurrent();
+-    void rampUpAsCurrent();
++    void showToolBar();
++    void hideToolBar();
+ 
++private:
+     Perspective(const Perspective &) = delete;
+     void operator=(const Perspective &) = delete;
+ 
+     friend class DebuggerMainWindow;
+     friend class DebuggerMainWindowPrivate;
+-    friend class PerspectivePrivate;
+     class PerspectivePrivate *d = nullptr;
+ };
+ 
+@@ -132,20 +132,12 @@ public:
+     static QWidget *centralWidgetStack();
+     void addSubPerspectiveSwitcher(QWidget *widget);
+ 
+-    static void savePersistentSettings();
+-    static void restorePersistentSettings();
+-
+-    static Perspective *currentPerspective();
+-
+ private:
+     DebuggerMainWindow();
+     ~DebuggerMainWindow() override;
+ 
+-    void contextMenuEvent(QContextMenuEvent *ev) override;
+-
+     friend class Perspective;
+     friend class PerspectivePrivate;
+-    friend class DockOperation;
+     class DebuggerMainWindowPrivate *d = nullptr;
+ };
+ 
+diff --git a/src/plugins/debugger/debuggerplugin.cpp b/src/plugins/debugger/debuggerplugin.cpp
+index 322a87277c..89c0dff58f 100644
+--- a/src/plugins/debugger/debuggerplugin.cpp
++++ b/src/plugins/debugger/debuggerplugin.cpp
+@@ -1046,7 +1046,7 @@ bool DebuggerPluginPrivate::initialize(const QStringList &arguments,
+     m_breakpointManagerView->setSpanColumn(BreakpointFunctionColumn);
+     m_breakpointManagerWindow = addSearch(m_breakpointManagerView);
+     m_breakpointManagerWindow->setWindowTitle(tr("Breakpoint Preset"));
+-    m_breakpointManagerWindow->setObjectName("Debugger.Docks.BreakpointManager");
++    m_breakpointManagerWindow->setObjectName(DOCKWIDGET_BREAKPOINTMANAGER);
+     addLabel(m_breakpointManagerWindow, m_breakpointManagerWindow->windowTitle());
+ 
+ 
+@@ -1058,7 +1058,7 @@ bool DebuggerPluginPrivate::initialize(const QStringList &arguments,
+     m_engineManagerView->setModel(m_engineManager.model());
+     m_engineManagerWindow = addSearch(m_engineManagerView);
+     m_engineManagerWindow->setWindowTitle(tr("Debugger Perspectives"));
+-    m_engineManagerWindow->setObjectName("Debugger.Docks.Snapshots");
++    m_engineManagerWindow->setObjectName(DOCKWIDGET_ENGINEMANAGER);
+     addLabel(m_engineManagerWindow, m_engineManagerWindow->windowTitle());
+ 
+     // Logging
+@@ -1357,8 +1357,7 @@ bool DebuggerPluginPrivate::initialize(const QStringList &arguments,
+             DebuggerMainWindow::leaveDebugMode();
+     });
+ 
+-    connect(ModeManager::instance(), &ModeManager::currentModeChanged, [](Id mode, Id oldMode) {
+-        QTC_ASSERT(mode != oldMode, return);
++    connect(ModeManager::instance(), &ModeManager::currentModeChanged, this, [](Id mode) {
+         if (mode == MODE_DEBUG) {
+             DebuggerMainWindow::enterDebugMode();
+             if (IEditor *editor = EditorManager::currentEditor())
+@@ -1523,7 +1522,7 @@ void DebuggerPluginPrivate::updatePresetState()
+     } else {
+         // The startup phase should be over once we are here.
+         // But treat it as 'undisturbable if we are here by accident.
+-        //QTC_CHECK(state != DebuggerNotReady);
++        QTC_CHECK(state != DebuggerNotReady);
+         // Everything else is "undisturbable".
+         m_startAction.setEnabled(false);
+         m_debugWithoutDeployAction.setEnabled(false);
+@@ -1561,7 +1560,7 @@ void DebuggerPluginPrivate::onStartupProjectChanged(Project *project)
+     }
+     for (DebuggerEngine *engine : EngineManager::engines()) {
+         // Run controls might be deleted during exit.
+-        engine->updateState();
++        engine->updateState(false);
+     }
+ 
+     updatePresetState();
+@@ -2016,9 +2015,11 @@ void DebuggerPluginPrivate::aboutToShutdown()
+     m_shutdownTimer.setInterval(0);
+     m_shutdownTimer.setSingleShot(true);
+     connect(&m_shutdownTimer, &QTimer::timeout, this, &DebuggerPluginPrivate::doShutdown);
+-    if (EngineManager::shutDown()) {
+-        // If any engine is aborting we give them extra three seconds.
+-        m_shutdownTimer.setInterval(3000);
++    for (DebuggerEngine *engine : m_engineManager.engines()) {
++        if (engine && engine->state() != Debugger::DebuggerNotReady) {
++            engine->abortDebugger();
++            m_shutdownTimer.setInterval(3000);
++        }
+     }
+     m_shutdownTimer.start();
+ }
+diff --git a/src/plugins/debugger/debuggerruncontrol.cpp b/src/plugins/debugger/debuggerruncontrol.cpp
+index ca76e8cfe1..c72fcb6228 100644
+--- a/src/plugins/debugger/debuggerruncontrol.cpp
++++ b/src/plugins/debugger/debuggerruncontrol.cpp
+@@ -728,6 +728,8 @@ void DebuggerRunTool::stop()
+ 
+ void DebuggerRunTool::handleEngineStarted(DebuggerEngine *engine)
+ {
++    EngineManager::activateEngine(engine);
++
+     // Correct:
+ //    if (--d->engineStartsNeeded == 0) {
+ //        EngineManager::activateDebugMode();
+diff --git a/src/plugins/debugger/enginemanager.cpp b/src/plugins/debugger/enginemanager.cpp
+index 0ca42d64a7..68a31bde14 100644
+--- a/src/plugins/debugger/enginemanager.cpp
++++ b/src/plugins/debugger/enginemanager.cpp
+@@ -155,14 +155,14 @@ public:
+     }
+ 
+     EngineItem *findEngineItem(DebuggerEngine *engine);
++    void activateEngine(DebuggerEngine *engine);
+     void activateEngineItem(EngineItem *engineItem);
+     void activateEngineByIndex(int index);
+     void selectUiForCurrentEngine();
+     void updateEngineChooserVisibility();
+-    void updatePerspectives();
+ 
+     TreeModel<TypedTreeItem<EngineItem>, EngineItem> m_engineModel;
+-    QPointer<EngineItem> m_currentItem; // The primary information is DebuggerMainWindow::d->m_currentPerspective
++    QPointer<EngineItem> m_currentItem;
+     Core::Id m_previousMode;
+     QPointer<QComboBox> m_engineChooser;
+     bool m_shuttingDown = false;
+@@ -200,11 +200,6 @@ QWidget *EngineManager::engineChooser()
+     return d->m_engineChooser;
+ }
+ 
+-void EngineManager::updatePerspectives()
+-{
+-    d->updatePerspectives();
+-}
+-
+ EngineManager::~EngineManager()
+ {
+     theEngineManager = nullptr;
+@@ -221,6 +216,11 @@ QAbstractItemModel *EngineManager::model()
+     return &d->m_engineModel;
+ }
+ 
++void EngineManager::activateEngine(DebuggerEngine *engine)
++{
++    d->activateEngine(engine);
++}
++
+ QVariant EngineItem::data(int column, int role) const
+ {
+     if (m_engine) {
+@@ -281,7 +281,7 @@ bool EngineItem::setData(int row, const QVariant &value, int role)
+ 
+     if (role == BaseTreeView::ItemActivatedRole) {
+         EngineItem *engineItem = d->findEngineItem(m_engine);
+-        d->activateEngineByIndex(engineItem->indexInParent());
++        d->activateEngineItem(engineItem);
+         return true;
+     }
+ 
+@@ -324,27 +324,21 @@ bool EngineItem::setData(int row, const QVariant &value, int role)
+ 
+ void EngineManagerPrivate::activateEngineByIndex(int index)
+ {
+-    // The actual activation is triggered indirectly via the perspective change.
+-    Perspective *perspective = nullptr;
+-    if (index == 0) {
+-        perspective = Perspective::findPerspective(Debugger::Constants::PRESET_PERSPECTIVE_ID);
+-    } else {
+-        EngineItem *engineItem = m_engineModel.rootItem()->childAt(index);
+-        QTC_ASSERT(engineItem, return);
+-        QTC_ASSERT(engineItem->m_engine, return);
+-        perspective = engineItem->m_engine->perspective();
+-    }
+-
+-    QTC_ASSERT(perspective, return);
+-    perspective->select();
++    activateEngineItem(m_engineModel.rootItem()->childAt(index));
+ }
+ 
+ void EngineManagerPrivate::activateEngineItem(EngineItem *engineItem)
+ {
+-    if (m_currentItem == engineItem)
+-        return;
++    Context previousContext;
++    if (m_currentItem) {
++        if (DebuggerEngine *engine = m_currentItem->m_engine) {
++            previousContext.add(engine->languageContext());
++            previousContext.add(engine->debuggerContext());
++        } else {
++            previousContext.add(Context(Constants::C_DEBUGGER_NOTRUNNING));
++        }
++    }
+ 
+-    QTC_ASSERT(engineItem, return);
+     m_currentItem = engineItem;
+ 
+     Context newContext;
+@@ -357,13 +351,7 @@ void EngineManagerPrivate::activateEngineItem(EngineItem *engineItem)
+         }
+     }
+ 
+-    ICore::updateAdditionalContexts(m_currentAdditionalContext, newContext);
+-    m_currentAdditionalContext = newContext;
+-
+-    // In case this was triggered externally by some Perspective::select() call.
+-    const int idx = engineItem->indexInParent();
+-    m_engineChooser->setCurrentIndex(idx);
+-
++    ICore::updateAdditionalContexts(previousContext, newContext);
+     selectUiForCurrentEngine();
+ }
+ 
+@@ -372,7 +360,12 @@ void EngineManagerPrivate::selectUiForCurrentEngine()
+     if (ModeManager::currentModeId() != Constants::MODE_DEBUG)
+         return;
+ 
++    Perspective *perspective = nullptr;
+     int row = 0;
++
++    if (m_currentItem && m_currentItem->m_engine)
++        perspective = m_currentItem->m_engine->perspective();
++
+     if (m_currentItem)
+         row = m_engineModel.rootItem()->indexOf(m_currentItem);
+ 
+@@ -385,6 +378,12 @@ void EngineManagerPrivate::selectUiForCurrentEngine()
+                 QStyle::CT_ComboBox, &option, sz).width();
+     m_engineChooser->setFixedWidth(width);
+ 
++    if (!perspective)
++        perspective = Perspective::findPerspective(Debugger::Constants::PRESET_PERSPECTIVE_ID);
++
++    QTC_ASSERT(perspective, return);
++    perspective->select();
++
+     m_engineModel.rootItem()->forFirstLevelChildren([this](EngineItem *engineItem) {
+         if (engineItem && engineItem->m_engine)
+             engineItem->m_engine->updateUi(engineItem == m_currentItem);
+@@ -400,6 +399,12 @@ EngineItem *EngineManagerPrivate::findEngineItem(DebuggerEngine *engine)
+     });
+ }
+ 
++void EngineManagerPrivate::activateEngine(DebuggerEngine *engine)
++{
++    EngineItem *engineItem = findEngineItem(engine);
++    activateEngineItem(engineItem);
++}
++
+ void EngineManagerPrivate::updateEngineChooserVisibility()
+ {
+     // Show it if there's more than one option (i.e. not the preset engine only)
+@@ -409,48 +414,12 @@ void EngineManagerPrivate::updateEngineChooserVisibility()
+     }
+ }
+ 
+-void EngineManagerPrivate::updatePerspectives()
+-{
+-    d->updateEngineChooserVisibility();
+-
+-    Perspective *current = DebuggerMainWindow::currentPerspective();
+-    if (!current) {
+-        return;
+-    }
+-
+-    m_engineModel.rootItem()->forFirstLevelChildren([this, current](EngineItem *engineItem) {
+-        if (engineItem == m_currentItem)
+-            return;
+-
+-        bool shouldBeActive = false;
+-        if (engineItem->m_engine) {
+-            // Normal engine.
+-            shouldBeActive = engineItem->m_engine->perspective()->isCurrent();
+-        } else {
+-            // Preset.
+-            shouldBeActive = current->id() == Debugger::Constants::PRESET_PERSPECTIVE_ID;
+-        }
+-
+-        if (shouldBeActive && engineItem != m_currentItem)
+-            activateEngineItem(engineItem);
+-    });
+-}
+-
+-QString EngineManager::registerEngine(DebuggerEngine *engine)
++void EngineManager::registerEngine(DebuggerEngine *engine)
+ {
+     auto engineItem = new EngineItem;
+     engineItem->m_engine = engine;
+     d->m_engineModel.rootItem()->appendChild(engineItem);
+     d->updateEngineChooserVisibility();
+-    return QString::number(d->m_engineModel.rootItem()->childCount());
+-}
+-
+-void EngineManager::unregisterEngine(DebuggerEngine *engine)
+-{
+-    EngineItem *engineItem = d->findEngineItem(engine);
+-    QTC_ASSERT(engineItem, return);
+-    d->m_engineModel.destroyItem(engineItem);
+-    d->updateEngineChooserVisibility();
+ }
+ 
+ void EngineManager::activateDebugMode()
+@@ -473,6 +442,33 @@ void EngineManager::deactivateDebugMode()
+     }
+ }
+ 
++bool EngineManager::isLastOf(const QString &type)
++{
++    int count = 0;
++    d->m_engineModel.rootItem()->forFirstLevelChildren([&](EngineItem *engineItem) {
++        if (engineItem && engineItem->m_engine)
++            count += (engineItem->m_engine->debuggerName() == type);
++    });
++    return count == 1;
++}
++
++void EngineManager::unregisterEngine(DebuggerEngine *engine)
++{
++    if (ModeManager::currentModeId() == Constants::MODE_DEBUG) {
++        if (Perspective *parent = Perspective::findPerspective(Constants::PRESET_PERSPECTIVE_ID))
++            parent->select();
++    }
++
++    d->activateEngineItem(d->m_engineModel.rootItem()->childAt(0)); // Preset.
++
++    // Could be that the run controls died before it was appended.
++    if (auto engineItem = d->findEngineItem(engine))
++        d->m_engineModel.destroyItem(engineItem);
++
++    d->updateEngineChooserVisibility();
++    emit theEngineManager->currentEngineChanged();
++}
++
+ QList<QPointer<DebuggerEngine>> EngineManager::engines()
+ {
+     QList<QPointer<DebuggerEngine>> result;
+@@ -488,18 +484,5 @@ QPointer<DebuggerEngine> EngineManager::currentEngine()
+     return d->m_currentItem ? d->m_currentItem->m_engine : nullptr;
+ }
+ 
+-bool EngineManager::shutDown()
+-{
+-    d->m_shuttingDown = true;
+-    bool anyEngineAborting = false;
+-    for (DebuggerEngine *engine : EngineManager::engines()) {
+-        if (engine && engine->state() != Debugger::DebuggerNotReady) {
+-            engine->abortDebugger();
+-            anyEngineAborting = true;
+-        }
+-    }
+-    return anyEngineAborting;
+-}
+-
+ } // namespace Internal
+ } // namespace Debugger
+diff --git a/src/plugins/debugger/enginemanager.h b/src/plugins/debugger/enginemanager.h
+index 08549ba711..a1ee76c60b 100644
+--- a/src/plugins/debugger/enginemanager.h
++++ b/src/plugins/debugger/enginemanager.h
+@@ -45,19 +45,17 @@ public:
+     static EngineManager *instance();
+     static QAbstractItemModel *model();
+ 
+-    static QString registerEngine(DebuggerEngine *engine);
++    static void registerEngine(DebuggerEngine *engine);
+     static void unregisterEngine(DebuggerEngine *engine);
+-
++    static void activateEngine(DebuggerEngine *engine);
+     static void activateDebugMode();
+     static void deactivateDebugMode();
++    static bool isLastOf(const QString &type);
+ 
+     static QList<QPointer<DebuggerEngine> > engines();
+     static QPointer<DebuggerEngine> currentEngine();
+ 
+     static QWidget *engineChooser();
+-    static void updatePerspectives();
+-
+-    static bool shutDown(); // Return true if some engine is being forced to shut down.
+ 
+ signals:
+     void engineStateChanged(DebuggerEngine *engine);
+diff --git a/src/plugins/debugger/gdb/gdbengine.cpp b/src/plugins/debugger/gdb/gdbengine.cpp
+index 796416374a..8d2af5008a 100644
+--- a/src/plugins/debugger/gdb/gdbengine.cpp
++++ b/src/plugins/debugger/gdb/gdbengine.cpp
+@@ -2953,7 +2953,7 @@ void GdbEngine::handleThreadInfo(const DebuggerResponse &response)
+     if (response.resultClass == ResultDone) {
+         ThreadsHandler *handler = threadsHandler();
+         handler->setThreads(response.data);
+-        updateState(); // Adjust Threads combobox.
++        updateState(false); // Adjust Threads combobox.
+         if (boolSetting(ShowThreadNames)) {
+             runCommand({"threadnames " + action(MaximalStackDepth)->value().toString(),
+                 Discardable, CB(handleThreadNames)});
+@@ -2993,7 +2993,7 @@ void GdbEngine::handleThreadNames(const DebuggerResponse &response)
+             thread.name = decodeData(name["value"].data(), name["valueencoded"].data());
+             handler->updateThread(thread);
+         }
+-        updateState();
++        updateState(false);
+     }
+ }
+ 
