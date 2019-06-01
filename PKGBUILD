@@ -33,6 +33,6 @@ package() {
   # Install the program.
   install -Dm755 geolocate "${pkgdir}/usr/bin/$pkgbase"
   chmod +x "$pkgdir/usr/bin/$pkgbase"
-  install -Dm 644 service/$pkgbase.service \
+  install -Dm 644 $pkgbase.service \
     "$pkgdir/etc/systemd/system/$pkgbase.service"
 }
