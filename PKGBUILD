@@ -1,52 +1,50 @@
-# Maintainer: Jose Riha <jose1711 gmail com>
+# Maintainer:  Malstrond <malstrond@gmail.com>
+# Contributor: Jose Riha <jose1711 gmail com>
 # Contributor: Bazon <bazonbloch@arcor.de>
 
 pkgname=activtools
-pkgver=5.17.14
-pkgrel=1
-pkgdesc="Includes activmanager, activcalibrate, activremote and activmonitor.
- You must install activtools if you want to use ActivInspire with Promethean
- hardware. You do not need activtools if you just want to run ActivInspire 
- Personal Edition."
-arch=('i686' 'x86_64')
+pkgver=5.18.12
+pkgrel=0
+pkgdesc="Tools for Promethean hardware: activmanager, activcalibrate, activremote, activmonitor."
+arch=('x86_64')
 url="https://support.prometheanworld.com/product/activdriver"
 license=('unknown')
-depends=('qt4')
-
-optdepends=('activinspire: activboard presentation')
-source_x86_64=(http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/non-oss/a/activtools/activtools_$pkgver-0~Ubuntu~1604_amd64.deb activinspire-restart.desktop)
-source_i686=(http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/non-oss/a/activtools/activtools_$pkgver-0~Ubuntu~1604_i386.deb activinspire-restart.desktop)
-
-md5sums_i686=('314d782256db4b6090c755d9af720dd4'
-              'fe9981eca6b2e3299f3a7ed908a6b83d')
-md5sums_x86_64=('4d8daf99cbf6aaeaab69009e60b2f230'
-                'fe9981eca6b2e3299f3a7ed908a6b83d')
+depends=('nss' 'openssl-1.0' 'qt5-xcb-private-headers' 'icu60')
+optdepends=('activinspire: Prometheans presentation software'
+			'activdriver: Driver for Promethean hardware')
+source_x86_64=(http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/non-oss/a/activtools/activtools_$pkgver-0~Ubuntu~1804_amd64.deb)
+md5sums_x86_64=('74ead494dd9645a20d27bb7efcd97156')
 
 package() {
-	# extract archive
-        bsdtar -C "$pkgdir" -xf data.tar.xz
+ # Extract the source.
+ bsdtar -C "$pkgdir" -xf data.tar.xz
 
-        # move out of the local directory to match arch standards
-        mv "$pkgdir"/usr/local/* "$pkgdir"/usr/
-        rmdir "$pkgdir"/usr/local
+ # Use /usr instead of /usr/local to match Arch packaging standards.
+ mv "$pkgdir"/usr/local/* "$pkgdir"/usr/
+ rmdir "$pkgdir"/usr/local
 
-        # activmgr works only when started after board is attached, so no autostart. 
-        # Delete the following line if you want an autostart of activmgr
-        cd "$pkgdir"
-	rm -r etc
+ # activmgr is linked to libpcre16.so.3, which only exists on Debian.
+ # So we create a dirty symlink in the directory that has Prometheans own library versions.
+ ln -s /usr/lib/libpcre16.so "$pkgdir"/usr/share/promethean/lib/libpcre16.so.3
 
-	sed -i '/LD_LIBRARY_PATH/d' usr/bin/activmgr.sh
+ # These tools attempt to create a lockfile in /var/Promethean, the path is hardcoded.
+ # Since they are started by the user, this directory needs to be world-writable, even if that's a bad idea.
+ install -dm0777 "$pkgdir"/var/Promethean
 
-        echo " "
-        echo "when activtools is installed, activinspire needs to be killed before it can restart"
-        #(if you know how to fix: please tell!)
-        echo "therefore, a second launcher to restart activinspire is created (inspire-restart)"
-        cd "$pkgdir"/usr/bin
-        touch inspire-restart
-        chmod a+x inspire-restart
-        echo "#!/bin/bash" > inspire-restart
-        echo "killall inspire Inspire ; inspire \"\$1\"" >> "$pkgdir"/usr/bin/inspire-restart
-        echo " "
-        echo "activcalibrate has to be closed by Alt+F4 or get killed after the last calibration-point."
-        echo " "
+ # activcalibrate attemps to store calibration information in /etc/promethean/calibration, the path is hardcoded.
+ # Since it is started by the user, this directory needs to be world-writable, even if that's a bad idea.
+ install -dm0777 "$pkgdir"/etc/promethean/calibration
+
+ # activmgr works only when started after board is attached, so no autostart.
+ # Delete the following line if you want an autostart of activmgr.
+ rm -r "$pkgdir"/etc/xdg
+
+ echo " "
+ echo "These tools depend on specific library versions included by Promethean."
+ echo "In order for them to be used start activmgr using activmgr.sh, activcalibrate using activcalibrate.sh, and so on."
+ echo " "
+ echo "Promethean software has a bug that often causes it to hang when attempting to close it using the GUI."
+ echo "This means you need to manually kill activcalibrate.sh after you finished calibration."
+ echo "Use ALT+F4, your desktop environments method, killall, or start it using the timeout command."
+ echo " "
 }
