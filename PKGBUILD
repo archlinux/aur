@@ -42,11 +42,7 @@ build() {
     -v ./...
 }
 
-#check() {
-#  cd $GOPATH/src/github.com/leopardslab/$pkgname
-#  go test ./...
-#}
-
 package() {
-  install -Dm755 $GOPATH/bin/$pkgname /usr/bin/$pkgname
+  install -Dm755 $GOPATH/bin/$pkgname "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 $GOPATH/src/github.com/leopardslab/dunner/LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
