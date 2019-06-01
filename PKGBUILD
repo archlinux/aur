@@ -52,13 +52,13 @@ _muqss_disable=
 ### Do not edit below this line unless you know what you're doing
 
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
-_major=5.0
+_major=5.1
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=21
+_lqxpatchrel=1
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
-pkgver=5.0.20_1
+pkgver=5.1.6_1
 pkgrel=1
 arch=('x86_64')
 url="http://liquorix.net/"
@@ -367,9 +367,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('3fbab70c7b03b1a10e9fa14d1e2e1f550faba4f5792b7699ca006951da74ab86e7d7f19c6a67849ab99343186e7d6f2752cd910d76222213b93c1eab90abf1b0'
+sha512sums=('ae96f347badc95f1f3acf506c52b6cc23c0bd09ce8f4ce6705d4b4058b62593059bba1bc603c8d8b00a2f19131e7e56c31ac62b45883a346fa61d655e178f236'
             'SKIP'
-            '5f203c49830e1e4034705e93e0bc35e633f15a89787cd6b642007d7c03c64643383573666cef73300c7f4daf22c2a465280222f1690bb758ad1498c0e7f165c4'
+            'd5df84c07c255c36a3ea893b0523fbe845d557fa98149c18d6ff0c714ee16f3d24b0c43523ffd9d208be6b53933bf826659810b572d8b1ed763efbb855039407'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
