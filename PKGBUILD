@@ -1,16 +1,18 @@
-# Maintainer : Skydrome <skydrome@i2pmail.org>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Old Maintainer : Skydrome <skydrome@i2pmail.org>
 # Contributor: DaNiMoTh <jjdanimoth@gmail.com>
 # Contributor (Arch): Peter Simons <simons@cryp.to>
 # Contributor (Arch): Nicolas Pouillard <nicolas.pouillard@gmail.com>
 
 pkgname=tahoe-lafs
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Secure, decentralized, and fault-tolerant filesystem."
 url='https://tahoe-lafs.org/trac/tahoe-lafs'
 license=('GPL')
 arch=('any')
 conflicts=('tahoe-lafs-i2p')
+replaces=('tahoe-lafs-i2p')
 BUILDENV+=(!check)
 
 depends=('openssl>=1.0.2'
@@ -38,7 +40,7 @@ depends=('openssl>=1.0.2'
          'python2-setuptools'
          'python2-shutilwhich>=1.1.0'
          'python2-yaml'
-         'python2-crypto>=2.6')
+         'python2-pycryptodome')
 
 optdepends=('python2-numpy: reliability test')
 
@@ -46,7 +48,7 @@ source=("https://tahoe-lafs.org/downloads/tahoe-lafs-$pkgver.tar.bz2"
         "https://tahoe-lafs.org/downloads/tahoe-lafs-$pkgver.tar.bz2.asc")
 
 # https://tahoe-lafs.org/downloads/tahoe-release-signing-gpg-key.asc
-sha256sums=('7a2eeb0522d888cd98887605837827ab55f43ff058176aae432884eae50c2e75'
+sha256sums=('82d4d20f2672e67927d91e73e54dbfd7e526eca27dea09a29f131bef7dfaee86'
             'SKIP')
 
 validpgpkeys=('E34E62D06D0E69CFCA4179FFBDE0D31D68666A7A')
