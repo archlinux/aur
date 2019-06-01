@@ -31,6 +31,7 @@ package() {
   cd "$srcdir/$pkgbase"
 
   # Install the program.
+  mkdir -p "$pkgdir/usr/share/$pkgbase"
   install -Dm755 geolocate "${pkgdir}/usr/bin/$pkgbase"
   chmod +x "$pkgdir/usr/bin/$pkgbase"
   install -Dm 644 $pkgbase.service \
