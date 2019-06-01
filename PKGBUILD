@@ -1,7 +1,7 @@
 # Mantainer: Michele Bovo <mbovo@gmx.com>
 
 pkgname=dosbox-x
-pkgver=0.82.18
+pkgver=0.82.19
 pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features"
 arch=(i686 x86_64)
@@ -29,6 +29,6 @@ package() {
 	"$pkgdir/usr/share/applications/dosbox-x.desktop"
 }
 
-md5sums=('b33dddf87a777ab26d3b04953275f784'
-         '3dcfe45c5ed0433316eaea51e3620b36'
-	 '615228a51b52d4788c73940602f1dc97')
+sha1sums=('f7a23eb515f4e162dd1ca22bd860ccfaabfaba93'
+         'fa54fcde17bc641fb772cdf595771ff6813d2250'
+	 '7501e53de8053900f5871f14afa3abf6cfbc64d7')
