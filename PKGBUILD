@@ -2,10 +2,10 @@
 
 pkgname=foliate-git
 _name=foliate
-pkgver=56.c1bc214
+pkgver=60.fc30c1c
 pkgrel=1
 pkgdesc="A simple and modern GTK eBook reader"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://johnfactotum.github.io/foliate/"
 license=('GPL-3.0')
 depends=('gjs' 'webkit2gtk' 'libsoup')
