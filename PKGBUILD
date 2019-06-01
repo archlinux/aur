@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mm-common-git
-pkgver=0.9.11
+pkgver=0.9.12.r7.gcca2cf9
 pkgrel=1
 pkgdesc="The build infrastructure and utilities shared among the GNOME C++ binding libraries"
 arch=('any')
@@ -16,7 +16,7 @@ _gitname="mm-common"
 
 pkgver() {
   cd $srcdir/$_gitname
-  git describe --always | sed 's|-|.|g'
+  git describe --always | sed 's|-|.r|'|tr - .
 }
 
 build() {
