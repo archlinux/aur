@@ -1,0 +1,11 @@
+diff -Naurp a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2019-06-01 14:58:09.000000000 +0000
++++ b/CMakeLists.txt	2019-05-31 15:30:35.000000000 +0000
+@@ -706,7 +706,6 @@ macro(srt_make_application name)
+ 		# be placed into the binrary directory anyway.
+ 		# XXX not sure about Mac.
+ 		# See this name used already in install(${TARGET_srt} LIBRARY DESTINATION...).
+-		set(FORCE_RPATH LINK_FLAGS -Wl,-rpath,.,-rpath,../${CMAKE_INSTALL_LIBDIR} BUILD_WITH_INSTALL_RPATH TRUE INSTALL_RPATH_USE_LINK_PATH TRUE)
+ 	endif()
+ 
+ 	# We state that Darwin always uses CLANG compiler, which honors this flag the same way.

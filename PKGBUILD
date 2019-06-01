@@ -3,24 +3,28 @@
 
 pkgname=srt-git
 _srcname=srt
-pkgver=1.3.1.r45.g4c3dccb
+pkgver=1.3.2.r58.g11feba2
 pkgrel=1
 pkgdesc='Secure Reliable Transport - transport technology that optimizes streaming performance across unpredictable networks (git version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.srtalliance.org/'
-license=('MPL')
+license=('MPL2')
 depends=('openssl')
 makedepends=('git' 'cmake')
 provides=('srt')
 conflicts=('srt')
-source=('git+https://github.com/Haivision/srt.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/Haivision/srt.git'
+        'srt-git-remove-insecure-rpath.patch')
+sha256sums=('SKIP'
+            'b96008ed593f893b1051191483f9aea0f58703bc6d5074537a6ea740120c0bf6')
 
 prepare() {
     cd "$_srcname"
     
+    mkdir -p build
+    
     # remove insecure rpath
-    sed -i '/set(FORCE_RPATH/d' CMakeLists.txt
+    patch -Np1 -i "${srcdir}/srt-git-remove-insecure-rpath.patch"
 }
 
 pkgver() {
@@ -31,10 +35,7 @@ pkgver() {
 }
 
 build() {
-    cd "$_srcname"
-    
-    mkdir -p build
-    cd build
+    cd "${_srcname}/build"
     
     cmake \
         -DCMAKE_INSTALL_BINDIR:PATH='bin' \
@@ -60,7 +61,4 @@ package() {
     make DESTDIR="$pkgdir" install
     
     rm "$pkgdir"/usr/bin/*-test
-    
-    # build tries this but fails when DESTDIR is set
-    ln -s srt-live-transmit "${pkgdir}/usr/bin/stransmit"
 }
