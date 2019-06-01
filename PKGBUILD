@@ -3,7 +3,7 @@
 pkgbase=python-apprise
 pkgname=('python-apprise' 'python2-apprise')
 _name=${pkgname#python-}
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc="Push Notifications that work with just about every platform"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/caronc/apprise"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('1bbb92bea04097569f5641935672456d1128f3811f934d389c622b63b9a25ce6')
+sha256sums=('c3c7922f7b80107620f541a6c16435485e7045771b3ecfb998deacee0eb90753')
 
 prepare() {
   cp -a apprise-$pkgver{,-py2}
