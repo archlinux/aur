@@ -1,6 +1,6 @@
-diff -Naupr ipt-netflow-2.3/compat.h ipt-netflow/compat.h
---- ipt-netflow-2.3/compat.h	2018-03-19 22:27:26.000000000 +0700
-+++ ipt-netflow/compat.h	2019-03-06 19:13:31.334760141 +0700
+diff -Naupr ipt-netflow_orig/compat.h ipt-netflow_git/compat.h
+--- ipt-netflow_orig/compat.h	2018-03-19 22:27:26.000000000 +0700
++++ ipt-netflow_git/compat.h	2019-06-01 12:33:22.887853266 +0700
 @@ -206,7 +206,9 @@ err:
  }
  #endif
@@ -76,9 +76,9 @@ diff -Naupr ipt-netflow-2.3/compat.h ipt-netflow/compat.h
 +}
 +
  #endif /* COMPAT_NETFLOW_H */
-diff -Naupr ipt-netflow-2.3/configure ipt-netflow/configure
---- ipt-netflow-2.3/configure	2018-03-19 22:27:26.000000000 +0700
-+++ ipt-netflow/configure	2019-03-06 19:13:31.334760141 +0700
+diff -Naupr ipt-netflow_orig/configure ipt-netflow_git/configure
+--- ipt-netflow_orig/configure	2018-03-19 22:27:26.000000000 +0700
++++ ipt-netflow_git/configure	2019-06-01 12:33:22.887853266 +0700
 @@ -247,7 +247,11 @@ iptables_try_pkgconfig() {
      if [ -s /etc/debian_version ]; then
        echo "! "
@@ -92,9 +92,52 @@ diff -Naupr ipt-netflow-2.3/configure ipt-netflow/configure
      elif [ -s /etc/redhat-release ]; then
        echo "! "
        arch=.`uname -m`
-diff -Naupr ipt-netflow-2.3/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
---- ipt-netflow-2.3/ipt_NETFLOW.c	2018-03-19 22:27:26.000000000 +0700
-+++ ipt-netflow/ipt_NETFLOW.c	2019-03-06 19:13:31.334760141 +0700
+diff -Naupr ipt-netflow_orig/CREDITS ipt-netflow_git/CREDITS
+--- ipt-netflow_orig/CREDITS	2018-03-19 22:27:26.000000000 +0700
++++ ipt-netflow_git/CREDITS	2019-06-01 12:33:22.884519926 +0700
+@@ -45,7 +45,7 @@ Sign-off rule is that of the Linux kerne
+ 
+ Principal author and project maintainer:
+ 
+-   ABC <abc@openwall.com> [2008-2018]
++   ABC <abc@openwall.com> [2008-2019]
+ 
+ 
+ Compatibility layer is using code from Linux Kernel and should be
+@@ -61,6 +61,7 @@ Patch authors and submitters:
+    Eric W. Biederman [2010]
+    Giedrius Liubavičius [2010]
+    Igor Alov [2010]
++   Valentin V. Yankin [2011] prototype for SNMP-index
+    Alexey Osipov [2011]
+    Pavel Boldin [2012]
+    Alexander Demenshin [2013]
+@@ -69,11 +70,9 @@ Patch authors and submitters:
+    Jeremy Drake [2013]
+    Matthew Martin [2016] DKMS fixes
+    alex-eri [2016, 2017] OpenWRT compatibility
+-
+-
+-Reference or prototype code authors:
+-
+-   Valentin V. Yankin [2011] SNMP-index
++   xtaran [2018]
++   Thadeu Lima de Souza Cascardo @ Canonical [2019]
++   dbugnar [2019]
+ 
+ 
+ Project supporters:
+diff -Naupr ipt-netflow_orig/ipt_NETFLOW.c ipt-netflow_git/ipt_NETFLOW.c
+--- ipt-netflow_orig/ipt_NETFLOW.c	2018-03-19 22:27:26.000000000 +0700
++++ ipt-netflow_git/ipt_NETFLOW.c	2019-06-01 12:33:22.891186609 +0700
+@@ -1,6 +1,6 @@
+ /*
+  * This is NetFlow exporting module (NETFLOW target) for linux
+- * (c) 2008-2018 <abc@openwall.com>
++ * (c) 2008-2019 <abc@openwall.com>
+  *
+  *
+  *   This program is free software: you can redistribute it and/or modify
 @@ -50,6 +50,7 @@
  #include <net/addrconf.h>
  #include <net/dst.h>
@@ -113,7 +156,39 @@ diff -Naupr ipt-netflow-2.3/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  #ifdef CONFIG_SYSCTL
  # include <linux/sysctl.h>
  #endif
-@@ -1947,7 +1945,7 @@ static struct socket *usock_open_sock(st
+@@ -86,7 +84,7 @@
+ # undef CONFIG_NF_NAT_NEEDED
+ #endif
+ 
+-#define IPT_NETFLOW_VERSION "2.2"   /* Note that if you are using git, you
++#define IPT_NETFLOW_VERSION "2.3"   /* Note that if you are using git, you
+ 				       will see version in other format. */
+ #include "version.h"
+ #ifdef GITVERSION
+@@ -95,7 +93,7 @@
+ #endif
+ 
+ MODULE_LICENSE("GPL");
+-MODULE_AUTHOR("<abc@telekom.ru>");
++MODULE_AUTHOR("<abc@openwall.com>");
+ MODULE_DESCRIPTION("iptables NETFLOW target module");
+ MODULE_VERSION(IPT_NETFLOW_VERSION);
+ MODULE_ALIAS("ip6t_NETFLOW");
+@@ -1942,12 +1940,20 @@ static struct socket *usock_open_sock(st
+ 		struct net_device *dev = dev_get_by_name(&init_net, usock->sdev);
+ 
+ 		if (dev) {
+-			sock->sk->sk_bound_dev_if = dev->ifindex;
++			struct sock *sk = sock->sk;
++
++			/* SO_BINDTOIFINDEX */
++			sk->sk_bound_dev_if = dev->ifindex;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,36)
++			if (sk->sk_prot->rehash)
++				sk->sk_prot->rehash(sk);
++#endif
++			sk_dst_reset(sk);
+ 			dev_put(dev);
  		} else {
  			printk(KERN_ERR "ipt_NETFLOW: error binding to device %s, errno %d\n",
  			    usock->sdev, -error);
@@ -122,7 +197,7 @@ diff -Naupr ipt-netflow-2.3/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  		}
  	}
  	if (!is_zero_addr(&usock->saddr)) {
-@@ -1957,7 +1955,7 @@ static struct socket *usock_open_sock(st
+@@ -1957,7 +1963,7 @@ static struct socket *usock_open_sock(st
  			salen = sizeof(struct sockaddr_in6);
  		if ((error = sock->ops->bind(sock, (struct sockaddr *)&usock->saddr, salen)) < 0) {
  			printk(KERN_ERR "ipt_NETFLOW: error binding socket %d\n", -error);
@@ -131,7 +206,7 @@ diff -Naupr ipt-netflow-2.3/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  		}
  	}
  
-@@ -1970,10 +1968,12 @@ static struct socket *usock_open_sock(st
+@@ -1970,10 +1976,12 @@ static struct socket *usock_open_sock(st
  		printk(KERN_ERR "ipt_NETFLOW: error connecting UDP socket %d,"
  		    " don't worry, will try reconnect later.\n", -error);
  		/* ENETUNREACH when no interfaces */
@@ -146,7 +221,7 @@ diff -Naupr ipt-netflow-2.3/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  }
  
  static void usock_connect(struct ipt_netflow_sock *usock, const int sendmsg)
-@@ -2339,7 +2339,7 @@ static int add_destinations(const char *
+@@ -2339,7 +2347,7 @@ static int add_destinations(const char *
  				++end;
  			if (succ &&
  			    (*end == ':' || *end == '.' || *end == 'p' || *end == '#'))
@@ -155,7 +230,7 @@ diff -Naupr ipt-netflow-2.3/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  			if (succ && *end == '@') {
  				++end;
  				sout->sin6_family = AF_INET6;
-@@ -2354,7 +2354,7 @@ static int add_destinations(const char *
+@@ -2354,7 +2362,7 @@ static int add_destinations(const char *
  			sin->sin_port = htons(2055);
  			succ = in4_pton(ptr, len, (u8 *)&sin->sin_addr, -1, &end);
  			if (succ && *end == ':')
@@ -164,7 +239,7 @@ diff -Naupr ipt-netflow-2.3/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  			if (succ && *end == '@') {
  				++end;
  				sout->sin_family = AF_INET;
-@@ -4805,6 +4805,23 @@ static void parse_l2_header(const struct
+@@ -4805,6 +4813,23 @@ static void parse_l2_header(const struct
  	/* get vlan tag that is saved in skb->vlan_tci */
  	if (vlan_tx_tag_present(skb))
  		tuple->tag[tag_num++] = htons(vlan_tx_tag_get(skb));
@@ -188,7 +263,7 @@ diff -Naupr ipt-netflow-2.3/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  # endif
  	if (mac_header < skb->head ||
  	    mac_header + ETH_HLEN > skb->data)
-@@ -4934,8 +4951,8 @@ static unsigned int netflow_target(
+@@ -4934,8 +4959,8 @@ static unsigned int netflow_target(
  	memset(&tuple, 0, sizeof(tuple));
  	tuple.l3proto = family;
  #ifdef ENABLE_PHYSDEV_OVER
@@ -199,7 +274,7 @@ diff -Naupr ipt-netflow-2.3/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  	else /* FALLTHROUGH */
  #endif
  	tuple.i_ifc	= if_in? if_in->ifindex : -1;
-@@ -5199,8 +5216,8 @@ do_protocols:
+@@ -5199,8 +5224,8 @@ do_protocols:
  		nf->tcp_flags = tcp_flags;
  		nf->o_ifc = if_out? if_out->ifindex : -1;
  #ifdef ENABLE_PHYSDEV_OVER
@@ -210,7 +285,7 @@ diff -Naupr ipt-netflow-2.3/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  #endif
  
  #ifdef SNMP_RULES
-@@ -5210,8 +5227,8 @@ do_protocols:
+@@ -5210,8 +5235,8 @@ do_protocols:
  #endif
  /* copy and snmp-resolve device with physdev overriding normal dev */
  #define copy_dev(out, physdev, dev) \
@@ -221,11 +296,36 @@ diff -Naupr ipt-netflow-2.3/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  		else \
  			out = resolve_snmp(dev);
  #ifdef ENABLE_PHYSDEV
-diff -Naupr ipt-netflow-2.3/README ipt-netflow/README
---- ipt-netflow-2.3/README	2018-03-19 22:27:26.000000000 +0700
-+++ ipt-netflow/README	2019-03-06 19:13:31.334760141 +0700
+@@ -5698,7 +5723,11 @@ static void __exit ipt_netflow_fini(void
+ 	netflow_scan_and_export(AND_FLUSH);
+ 	del_timer_sync(&rate_timer);
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,1,0)
+ 	synchronize_sched();
++#else
++	synchronize_rcu();
++#endif
+ 
+ 	free_templates();
+ 	destination_removeall();
+diff -Naupr ipt-netflow_orig/openwrt/Makefile ipt-netflow_git/openwrt/Makefile
+--- ipt-netflow_orig/openwrt/Makefile	2018-03-19 22:27:26.000000000 +0700
++++ ipt-netflow_git/openwrt/Makefile	2019-06-01 12:33:22.891186609 +0700
+@@ -5,7 +5,7 @@ PKG_NAME:=ipt-netflow
+ PKG_RELEASE:=2
+ 
+ PKG_SOURCE_URL:=https://github.com/aabc/$(PKG_NAME).git
+-PKG_VERSION:=2.2
++PKG_VERSION:=2.3
+ PKG_SOURCE_VERSION:=v$(PKG_VERSION)
+ 
+ #TO BUILD development version uncomment 2 rows below and remove patches
+diff -Naupr ipt-netflow_orig/README ipt-netflow_git/README
+--- ipt-netflow_orig/README	2018-03-19 22:27:26.000000000 +0700
++++ ipt-netflow_git/README	2019-06-01 12:33:22.887853266 +0700
 @@ -1,8 +1,8 @@
- ipt_NETFLOW linux 2.6.x-4.x kernel module by <abc@openwall.com> -- 2008-2018.
+-ipt_NETFLOW linux 2.6.x-4.x kernel module by <abc@openwall.com> -- 2008-2018.
++ipt_NETFLOW linux 2.6.x-5.x kernel module by <abc@openwall.com> -- 2008-2019.
  
     High performance NetFlow v5, v9, IPFIX flow data export module for Linux
 -   kernel. Created to be useful for highly loaded linux router. It should be
@@ -235,6 +335,15 @@ diff -Naupr ipt-netflow-2.3/README ipt-netflow/README
  
  
  =========================
+@@ -39,7 +39,7 @@ ipt_NETFLOW linux 2.6.x-4.x kernel modul
+      Such as metering, exporting, sampling stat and reliability stat, sampling 
+      configuration, network devices ifName, ifDescr list.
+ 
+-   * Tested to compile and work out of the box on Centos 5, 6, 7, Debian and
++   * Tested to compile and work out of the box on Centos 6, 7, Debian and
+    * Ubuntu. Many vanilla Linux kernels since 2.6.18 up to the latest (as of
+    * writing is 3.19) are supported and tested.
+ 
 @@ -111,7 +111,8 @@ ipt_NETFLOW linux 2.6.x-4.x kernel modul
     Before this step it also would be useful to install pkg-config if don't
     already have.
