@@ -5,11 +5,11 @@
 
 _srcname=vlc
 pkgname=vlc-decklink
-pkgver=3.0.4
+pkgver=3.0.6
 pkgrel=1
-pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (with decklink support)'
+pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player'
 url='https://www.videolan.org/vlc/'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua' 'libidn'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
@@ -17,23 +17,21 @@ depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua' 'libidn'
          'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
          'wayland-protocols' 'aribb24')
-makedepends=(
-    # official repositories:
-        'gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
-        'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
-        'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
-        'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
-        'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
-        'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
-        'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
-        'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
-        'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
-        'lirc' 'libgoom2' 'projectm' 'chromaprint'
-    # AUR:
-        'blackmagic-decklink-sdk'
-)
+makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
+             'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
+             'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'systemd-libs'
+             'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
+             'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
+             'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
+             'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
+             'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
+             'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
+             'lirc' 'libgoom2' 'projectm' 'chromaprint' 'aom' 'srt' 'dav1d'
+             'blackmagic-decklink-sdk')
 optdepends=('avahi: service discovery using bonjour protocol'
+            'aom: AOM AV1 codec'
             'gst-plugins-base-libs: for libgst plugins'
+            'dav1d: dav1d AV1 decoder'
             'libdvdcss: decoding encrypted DVDs'
             'libavc1394: devices using the 1394ta AV/C'
             'libdc1394: IEEE 1394 access plugin'
@@ -46,13 +44,12 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'libgme: Game Music Emu plugin'
             'vcdimager: navigate VCD with libvcdinfo'
             'libmtp: MTP devices discovery'
-            'libsystemd: udev services discovery'
+            'systemd-libs: udev services discovery'
             'smbclient: SMB access plugin'
             'libcdio: audio CD playback'
             'ttf-freefont: subtitle font '
             'ttf-dejavu: subtitle font'
             'libssh2: sftp access'
-            #'opencv: opencv video'
             'libnfs: NFS access'
             'mpg123: mpg123 codec'
             'protobuf: chromecast streaming'
@@ -72,13 +69,14 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'libpng: PNG support'
             'libjpeg-turbo: JPEG support'
             'librsvg: SVG plugin'
-            'libx264: H264 encoding'
+            'x264: H264 encoding'
             'x265: HEVC/H.265 encoder'
             'zvbi: VBI/Teletext decoding'
             'libass: Subtitle support'
             'libkate: Kate codec'
             'libtiger: Tiger rendering for Kate streams'
             'sdl_image: SDL image support'
+            'srt: SRT input/output plugin'
             'aalib: ASCII art video output'
             'libcaca: colored ASCII art video output'
             'libpulse: PulseAudio audio output'
@@ -94,18 +92,22 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'libnotify: notification plugin'
             'gtk3: notification plugin')
 provides=('vlc')
-conflicts=('vlc' 'vlc-git' 'vlc-plugin')
+conflicts=('vlc' 'vlc-plugin')
 replaces=('vlc-plugin')
 options=('!emptydirs')
 source=("https://download.videolan.org/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.xz"{,.asc}
         'update-vlc-plugin-cache.hook'
         'lua53_compat.patch'
-        'vlc-3.0.3-fix-build-with-libx264-git.patch')
-sha256sums=('01f3db3790714038c01f5e23c709e31ecd6f1c046ac93d19e1dde38b3fc05a9e'
+        'vlc-libvpx18.patch'::'https://github.com/videolan/vlc-3.0/commit/2688feb2742a6021ca211ae5c106b12c3d822946.patch'
+        'vlc-libssh2-ecdsa.patch'::'https://github.com/videolan/vlc-3.0/commit/db381f6edeac9d70b7545a72bc2840f42266d655.patch'
+        'vlc-decklink-fix-build-with-sdk-11.patch')
+sha256sums=('18c16d4be0f34861d0aa51fbd274fb87f0cab3b7119757ead93f3db3a1f27ed3'
             'SKIP'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
-            '410064c7f18e08025d365962fd5e17f0f99f74c7334b9a283a90bc89b1d72158')
+            '8b7b4cb3982f2dd16bbe8ab53f4d42c70ff9ca7145daab72a61118ce12cb3564'
+            '99e85191e972d0939ee62498f47da6820020e01e834a733a995f665fd1ccef45'
+            'be1ae99f62304d5291eecd181175d593b5a26a4192021528624e88d96ecf3c74')
 validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Signing Key
 
 prepare() {
@@ -117,20 +119,27 @@ prepare() {
     sed 's|whoami|echo builduser|g' -i configure
     sed 's|hostname -f|echo arch|g' -i configure
     
-    patch -Np1 -i "${srcdir}/lua53_compat.patch"
-    patch -Np1 -i "${srcdir}/vlc-3.0.3-fix-build-with-libx264-git.patch"
+    local _src
+    for _src in "${source[@]}"
+    do
+        _src="${_src%%::*}"
+        _src="${_src##*/}"
+        [[ "$_src" = *.patch ]] || continue
+        printf '%s\n' "  -> Applying patch '${_src}'..."
+        patch -Np1 -i "../${_src}"
+    done
 }
 
 build() {
     cd "${_srcname}-${pkgver}"
     
-    export CFLAGS+=" -I/usr/include/samba-4.0"
-    export CPPFLAGS+=" -I/usr/include/samba-4.0"
-    export CXXFLAGS+=" -std=c++11"
+    export CFLAGS+=' -I/usr/include/samba-4.0'
+    export CPPFLAGS+=' -I/usr/include/samba-4.0'
+    export CXXFLAGS+=' -std=c++11'
     export LUAC='/usr/bin/luac'
     export LUA_LIBS="$(pkg-config --libs lua)"
     export RCC='/usr/bin/rcc-qt5'
-    
+
     ./configure \
         --prefix='/usr' \
         --sysconfdir='/etc' \
@@ -224,6 +233,9 @@ build() {
         --enable-libplacebo \
         --enable-vlc \
         --enable-aribsub \
+        --enable-aom \
+        --enable-srt \
+        --enable-dav1d \
         --enable-decklink
         
     make
