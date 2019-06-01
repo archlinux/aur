@@ -1,6 +1,6 @@
 # Maintainer: Ron Asimi <ron.asimi@gmail.com>
 pkgname=interui-otf
-pkgver=3.5
+pkgver=3.7
 pkgrel=1
 pkgdesc='Inter UI is a typeface specially designed for user interfaces with focus on high legibility of small-to-medium sized text on computer screens.'
 arch=('any')
@@ -9,7 +9,7 @@ license=('custom:SIL')
 depends=('fontconfig' 'xorg-font-utils')
 source=("https://github.com/rsms/inter/releases/download/v${pkgver}/Inter-${pkgver}.zip"
         "https://raw.githubusercontent.com/rsms/inter/master/LICENSE.txt")
-sha256sums=('81f6ac333068803eb1524ea7e0d8b33c9cdad140f97666e63fc7083ecb9e325f'
+sha256sums=('0eb097467954991e109d179e22f06b11ef462e632dac5ce65633aa6e7262fa40'
             'e68284465dffb78145848f2c2e466add3a8f1025788497e95e090f06e5bc19a4')
 package() {
     install -d ${pkgdir}/usr/share/fonts/OTF/
