@@ -1,16 +1,20 @@
 # Maintainer: Magnus Bergmark <magnus.bergmark@gmail.com>
 
 pkgname=rofi-emoji
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Rofi plugin for selecting emojis"
 arch=('x86_64')
 url="https://github.com/Mange/rofi-emoji"
 license=('BSD')
-depends=('rofi' 'xsel')
+depends=('rofi')
+optdepends=('xsel: X11 support'
+            'xclip: X11 support'
+            'xdotool: X11 support'
+            'wl-clipboard: Wayland support')
 
 source=("https://github.com/Mange/rofi-emoji/archive/v${pkgver}.tar.gz")
-sha256sums=('d12d36de61d549c5f522a7046e95ca1f2b5fa9352c4b2333c01cae9ed296bb55')
+sha256sums=('d27084be97612e39c344ac3d11e0b0f99dad821559da7de799a4fed20242f0cd')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -19,7 +23,7 @@ build() {
   mkdir -p build
   cd build
 
-  ../configure --prefix=/usr
+  ../configure
   make
 }
 
