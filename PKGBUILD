@@ -3,7 +3,7 @@
 pkgname=slimit2
 _srcname=slimit
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A JavaScript minifier written in Python (uses python2)'
 arch=('any')
 url="https://github.com/rspivak/slimit/"
@@ -26,6 +26,11 @@ build() {
     make html man
 }
 
+check() {
+    cd "${_srcname}-${pkgver}"
+    python2 setup.py test
+}
+
 package() {
     cd "${_srcname}-${pkgver}"
     
@@ -35,7 +40,7 @@ package() {
     mkdir -p "${pkgdir}/usr/share/man/man1"
     
     # main python install
-    python2 setup.py install --prefix="/usr" --root="$pkgdir" --optimize=1
+    python2 setup.py install --prefix="/usr" --root="$pkgdir" --skip-build --optimize='1'
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     mv "$pkgdir"/usr/bin/slimit{,2}
     
