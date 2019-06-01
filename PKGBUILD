@@ -3,7 +3,7 @@
 # Contributor: FzerorubigD <Fzerorubigd {AT} GMail {DOT} com>
 pkgname=obfs4-git
 _gitname=obfs4
-pkgver=138.1df5c8f
+pkgver=176.a828843
 pkgrel=1
 pkgdesc='The obfourscator - a pluggable transport proxy written in Go'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -22,8 +22,8 @@ pkgver()	{
 }
 
 build()	{
-  cd "${srcdir}/${_gitname}/obfs4proxy"
-  GOPATH="$srcdir" GOBIN="$PWD" go get -v
+  cd "${srcdir}/${_gitname}"
+  GOPATH="${srcdir}/go" go build -o obfs4proxy/obfs4proxy ./obfs4proxy
 }
 
 package()	{

@@ -1,6 +1,6 @@
 pkgbase = obfs4-git
 	pkgdesc = The obfourscator - a pluggable transport proxy written in Go
-	pkgver = 138.1df5c8f
+	pkgver = 176.a828843
 	pkgrel = 1
 	url = https://gitweb.torproject.org/pluggable-transports/obfs4.git/
 	arch = i686
