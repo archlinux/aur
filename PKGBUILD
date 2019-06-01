@@ -22,6 +22,8 @@ pkgver() {
 
 package() {
         cd "$srcdir/$_pkgname"
+        DATADIR="$pkgdir/usr/share" \
+        LIBDIR="$pkgdir/usr/lib" \
 	./install.sh 
 }
 
