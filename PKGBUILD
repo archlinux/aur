@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=4.1.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='https://www.ffmpeg.org/'
@@ -51,9 +51,9 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         'ffmpeg-full-decklink-sdk-11.patch'
         'LICENSE')
 source_x86_64=('ffmpeg-full-add-intel-svt-hevc.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v1.3.0/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch'
-        'ffmpeg-full-add-intel-svt-hevc-docs.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v1.3.0/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch'
-        'ffmpeg-full-add-intel-svt-av1.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v0.5.0/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch'
-        'ffmpeg-full-add-intel-svt-vp9.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/9c96f478e4a281f6019c8b0de39c2b7caba56371/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch')
+               'ffmpeg-full-add-intel-svt-hevc-docs.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v1.3.0/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch'
+               'ffmpeg-full-add-intel-svt-av1.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v0.5.0/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch'
+               'ffmpeg-full-add-intel-svt-vp9.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/9c96f478e4a281f6019c8b0de39c2b7caba56371/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch')
 sha256sums=('0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d'
             'SKIP'
             '96500257c72c664a9e7417d9aee3d0b2a4436f836e9733dcf1c9c30926b642df'
@@ -87,7 +87,7 @@ build() {
     if [ "$CARCH" = 'x86_64' ] 
     then
         local _libvmaf='--enable-libvmaf'
-        local _cudanvcc='--enable-cuda-sdk'
+        local _cudasdk='--enable-cuda-sdk'
         local _libmfx='--enable-libmfx'
         local _libnpp='--enable-libnpp'
         
@@ -223,7 +223,7 @@ build() {
         --enable-xlib \
         --enable-zlib \
         \
-        $_cudanvcc \
+        $_cudasdk \
         --enable-cuvid \
         --enable-ffnvcodec \
         --enable-libdrm \
