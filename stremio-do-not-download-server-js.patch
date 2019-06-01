@@ -1,0 +1,28 @@
+diff -Naurp a/release.makefile b/release.makefile
+--- a/release.makefile	2019-06-01 17:55:19.000000000 +0000
++++ b/release.makefile	2019-06-01 17:58:39.254503016 +0000
+@@ -8,7 +8,7 @@ SERVER_JS := server.js
+ 
+ STREMIO_BIN := ${BUILD_DIR}/stremio
+ 
+-ALL: ${STREMIO_BIN} ${SERVER_JS} icons
++ALL: ${STREMIO_BIN} icons
+ 
+ install:
+ 	make -C ${BUILD_DIR} install
+@@ -24,14 +24,11 @@ icons:
+ 	mkdir -p "$@"
+ 	cd "$@" && printf 16,22,24,32,64,128 | xargs -I^ -d, sh -c 'rsvg-convert ../images/stremio.svg -w ^ -o smartcode-stremio_^.png && rsvg-convert ../images/stremio_tray_white.svg -w ^ -o smartcode-stremio-tray_^.png'
+ 
+-${SERVER_JS}:
+-	wget "https://s3-eu-west-1.amazonaws.com/stremio-artifacts/four/master/server.js" -qO ${SERVER_JS} || rm ${SERVER_JS}
+-
+ ${STREMIO_BIN}:
+ 	mkdir -p ${BUILD_DIR}
+ 	cd ${BUILD_DIR} && qmake PREFIX="${PREFIX}" ..
+ 	make -j -C ${BUILD_DIR}
+ 
+ clean:
+-	rm -rf ${BUILD_DIR} ${SERVER_JS} icons
++	rm -rf ${BUILD_DIR} icons
+ 
