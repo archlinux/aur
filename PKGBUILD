@@ -2,7 +2,7 @@
 
 pkgname=foliate-git
 _name=foliate
-pkgver=53.ad485f8
+pkgver=54.a4bfcf8
 pkgrel=1
 pkgdesc="A simple and modern GTK eBook reader"
 arch=('i686' 'x86_64')
