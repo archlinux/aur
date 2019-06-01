@@ -6,8 +6,8 @@
 _srcname=vlc
 pkgname=vlc-decklink
 pkgver=3.0.6
-pkgrel=1
-pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player'
+pkgrel=2
+pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (with decklink support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
