@@ -1,6 +1,6 @@
 pkgbase = mopidy-spotify-playlist-fix-git
 	pkgdesc = Mopidy extension for playing music from Spotify
-	pkgver = v1.0.0.r409.gc043290
+	pkgver = v1.0.0.r410.g62a16f0
 	pkgrel = 1
 	url = http://www.mopidy.com
 	arch = any
