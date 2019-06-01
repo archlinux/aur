@@ -11,8 +11,7 @@ url="https://gitlab.com/inkscape/inkscape"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 depends=('double-conversion' 'gc' 'poppler-glib' 'libxslt' 'gsl' 'libyaml' 'potrace' 'gdl>=3.8.0.25'
-	 'gtkmm3' 'libcdr' 'libvisio' 'dbus-glib' 'jemalloc' 'gtkspell3' 'libsm'
-	 'libmagick6' 'libsoup')
+	 'gtkmm3' 'libcdr' 'libvisio' 'gtkspell3' 'libsm' 'libmagick6' 'libsoup' 'python')
 optdepends=('python-numpy: some extensions'
             'python-lxml: some extensions and filters'
             'uniconvertor: reading/writing to some proprietary formats'
