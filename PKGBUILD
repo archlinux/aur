@@ -4,8 +4,8 @@
 #               Lara Maia, Padfoot, Jorge Barroso, carstene1ns, Sebastian Lau
 
 pkgname=plymouth-git
-pkgver=0.9.4.r105.gb9f2aac
-pkgrel=2
+pkgver=0.9.4.r113.g566af35
+pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="https://www.freedesktop.org/wiki/Software/Plymouth/"
 arch=('i686' 'x86_64')
@@ -51,8 +51,8 @@ md5sums=('SKIP'
          '606cd558141551a1ce0d80150a045d83'
          '672ad913e2383483bcb4599a0a6bee48'
          '32f04fdbd1eb94ade30d1e63fdcdd9b5'
-         'c17e915b19a469198a37dd7376a846c7'
-         'af3c3eadc80e240416d11b2d5983dfb5'
+         '1979a4d9a1f496b52be9c29a7adb698b'
+         'a08c422b67314e21100207f61caef095'
          '69f16be8d44b25c199eb53c436884b07'
          '98c20619291ee7c5a1c5f24b50e92db8')
 
