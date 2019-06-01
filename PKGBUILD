@@ -1,6 +1,6 @@
 # Maintainer: Eloy Garcia Almaden <eloy.garcia.pca@gmail.com>
 pkgname=wallpaperdownloader
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 epoch=
 pkgdesc="Download, manage and change automatically your favorite wallpapers from the Internet. It supports GNOME Shell, Plasma 5, MATE, Unity, XFCE, Cinnamon, Budgie, Deepin and Pantheon"
