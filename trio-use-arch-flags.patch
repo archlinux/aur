@@ -1,0 +1,26 @@
+diff -Naurp a/Makefile.in b/Makefile.in
+--- a/Makefile.in	2013-09-18 12:48:43.000000000 +0000
++++ b/Makefile.in	2019-06-01 20:21:06.204864658 +0000
+@@ -1,11 +1,11 @@
+ SHELL = @SHELL@
+ CC	= @CC@
+-CFLAGS	= @CFLAGS@ -I. -DDEBUG -fPIC -fvisibility=hidden
++CFLAGS	= @CPPFLAGS@ @CFLAGS@ -I. -DDEBUG -fPIC -fvisibility=hidden
+ OBJS	= triostr.o trio.o trionan.o
+ TARGETLIB	= libtrio.a
+ TARGETSHLIB	= $(TARGETLIB:.a=.so.2.0.0)
+ TARGETINCS	= trio.h triop.h triodef.h trionan.h triostr.h
+-LDFLAGS	= -L. -ltrio -lm
++LDFLAGS	= @LDFLAGS@ -L. -ltrio -lm
+ AR	= ar
+ RANLIB	= @RANLIB@
+ ERASE	= rm -f
+@@ -68,7 +68,7 @@ $(TARGETLIB): $(OBJS)
+ 	$(RANLIB) $(TARGETLIB)
+ 
+ $(TARGETSHLIB): $(TARGETLIB)
+-	$(CC) -lm -shared -Wl,-soname,$(patsubst %.so.2.0.0,%.so.2,$@) -Wl,--whole-archive,$< -Wl,--no-whole-archive -o $@
++	$(CC) -lm -shared -Wl,-soname,$(patsubst %.so.2.0.0,%.so.2,$@) -Wl,--whole-archive,$< -Wl,--no-whole-archive -o $@ $(LDFLAGS)
+ 
+ doc::
+ 	(cd $(srcdir) && $(GENDOC) doc/trio.cfg)
