@@ -5,6 +5,7 @@ pkgbase = re
 	url = http://creytiv.com/re.html
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	license = BSD
 	depends = openssl
 	depends = zlib
