@@ -9,7 +9,7 @@ pkgdesc="Tools for Promethean hardware: activmanager, activcalibrate, activremot
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activdriver"
 license=('unknown')
-depends=('nss' 'openssl-1.0' 'qt5-xcb-private-headers' 'icu60')
+depends=('nss' 'openssl-1.0' 'qt5-base' 'icu60')
 optdepends=('activinspire: Prometheans presentation software'
 			'activdriver: Driver for Promethean hardware')
 source_x86_64=(http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/non-oss/a/activtools/activtools_$pkgver-0~Ubuntu~1804_amd64.deb)
