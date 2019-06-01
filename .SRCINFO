@@ -1,0 +1,24 @@
+pkgbase = libcaer-git
+	pkgdesc = Minimal C library to access, configure and get data from neuromorphic sensors and processors.
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.com/inivation/libcaer/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = libusb
+	depends = libserialport
+	depends = opencv
+	provides = libcaer
+	conflicts = libcaer
+	options = staticlibs
+	source = libcaer-git::git+https://gitlab.com/inivation/libcaer.git
+	sha256sums = SKIP
+
+pkgname = libcaer-git
+
