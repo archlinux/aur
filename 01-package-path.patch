@@ -1,0 +1,46 @@
+diff --git a/HP-15C.tcl b/HP-15C.tcl
+old mode 100644
+new mode 100755
+index 50238bb..209392b
+--- a/HP-15C.tcl
++++ b/HP-15C.tcl
+@@ -62,7 +62,7 @@ array set APPDATA {
+ }
+ 
+ set APPDATA(SerialNo) "$APPDATA(build)[string map {. {}} $APPDATA(version)]"
+-set APPDATA(basedir) [file dirname [info script]]
++set APPDATA(basedir) "/usr/lib/hp15c"
+ set APPDATA(locale) [mclocale]
+ 
+ # Load language according to current locale
+@@ -487,6 +487,7 @@ if {![file exists $dnam]} {
+   set dnam "$APPDATA(basedir)/images"
+ }
+ 
++
+ foreach img {PrefIconSimulator.gif PrefIconSystem.gif PrefIconFiles.gif
+   PrefIconDM15CC.gif PrefIconFonts.gif PrefIconHelp.gif PrevIconDev.gif
+   dispframe.gif HP-15C-logo-256.png HP-15C-logo-512.png} {
+@@ -3252,14 +3253,7 @@ proc help { topic } {
+ 
+   switch $topic {
+     simulator {
+-# Differentiate between running from a starpack or from wish
+-      if {[info exists ::starkit::topdir]} {
+-        set helpdir [file dirname $::starkit::topdir]
+-      } else {
+-        set helpdir [file dirname $::argv0]
+-      }
+-      if {[string compare $helpdir "."] == 0} {set helpdir [pwd]}
+-      set helpfile "$helpdir/doc/index.htm"
++      set helpfile "/usr/share/doc/hp15c/index.htm"
+     }
+     prgm {
+       set helpfile "$HP15(prgmdir)/$HP15(prgmname).htm"
+@@ -9507,4 +9501,4 @@ option add *tearOff 0
+ # ------------------------------------------------------------------------------
+ # And now let the window manager show the interface in all it's beauty...
+ wm deiconify .
+-#set curdisp "   XP-15C"
+\ No newline at end of file
++#set curdisp "   XP-15C"

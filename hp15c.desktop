@@ -1,0 +1,10 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Name=HP-15C
+Comment=HEWLETT-PACKARD 15C Simulator
+Exec=hp15c
+Icon=hp15c
+Terminal=false
+Categories=Utility;Calculator;
