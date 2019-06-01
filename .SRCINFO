@@ -1,7 +1,7 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference (needs registration at upstream URL and manual download)
 	pkgver = 5.1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.nvidia.com/tensorrt/
 	arch = x86_64
 	license = custom

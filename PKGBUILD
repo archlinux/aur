@@ -16,7 +16,7 @@ _ubuntuver=18.04.2
 
 pkgname=tensorrt
 pkgver=5.1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for high-performance deep learning inference (needs registration at upstream URL and manual download)'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
@@ -50,7 +50,7 @@ package() {
     local _pythonver
     _pythonver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     
-    mkdir -p "${pkgdir}/usr/lib/python"{2.7,"${_pythonver}"}
+    mkdir -p "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
     
     # binaries
     install -D -m755 bin/* -t "${pkgdir}/usr/bin"
@@ -63,13 +63,13 @@ package() {
     cp -a lib/*_static.a* "${pkgdir}/usr/lib"
     
     # python
-    cp -a python/tensorrt "${pkgdir}/usr/lib/python${_pythonver}"
+    cp -a python/tensorrt "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
     
     # graphsurgeon
-    cp -a graphsurgeon/graphsurgeon "${pkgdir}/usr/lib/python${_pythonver}"
+    cp -a graphsurgeon/graphsurgeon "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
     
     # uff
-    cp -a uff/uff "${pkgdir}/usr/lib/python${_pythonver}"
+    cp -a uff/uff "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
     
     # documentation
     install -D -m644 doc/TensorRT-Developer-Guide.pdf -t "${pkgdir}/usr/share/doc/${pkgname}"
