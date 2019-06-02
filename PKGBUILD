@@ -1,4 +1,4 @@
-# Maintainer: itsagoodbrain1 <itsrottenisay@gmail.com>
+# Maintainer: weearc <qby19981121@gmail.com>
 # Co-Maintainer: therojam <archlinux@therojam.xyz>
 
 pkgname=zettlr
