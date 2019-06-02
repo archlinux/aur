@@ -1,4 +1,5 @@
 pkgbase = haskell-terminal-progress-bar
+	pkgdesc = A simple progress bar in the terminal
 	pkgver = 0.4.0.1
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/terminal-progress-bar
