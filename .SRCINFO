@@ -1,7 +1,7 @@
 pkgbase = looking-glass
 	pkgdesc = An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough
-	pkgver = a12
-	pkgrel = 2
+	pkgver = B1_rc5
+	pkgrel = 1
 	url = https://looking-glass.hostfission.com
 	arch = x86_64
 	license = GPL2
@@ -11,12 +11,8 @@ pkgbase = looking-glass
 	makedepends = fontconfig
 	makedepends = libconfig
 	makedepends = spice-protocol
-	source = https://github.com/gnif/LookingGlass/archive/a12.tar.gz
-	source = https://github.com/gnif/LookingGlass/pull/126.diff
-	source = dkms.conf
-	sha512sums = 72fa8bd1f8ced79bbd81784f9a8502cc39b9eea4d74caf7d27a98da29a2aa58abe71349661800f0b16cecd477ffb6b9a71e35abb68b942f3dad54fe339a70c47
-	sha512sums = 86b9d697496e48f351125c37f9f020f222326527441f199289303589d3b519f0920cd02f8cad570a85218ea4fd9fdacda3043ab3e9066351abd28266bddfbaeb
-	sha512sums = e1f6cd6aabd336d2af97b44a2746e5a0b41d5d5942993379b1284d1cc8d4981fced0ae44d8105709f2bc45a939dfc7f229018c680b0742c3f0778fe28ba301f8
+	source = https://github.com/gnif/LookingGlass/archive/B1-rc5.tar.gz
+	sha512sums = 5e4539d7decbfb37e8eb481c5d27cc38c1d7ed65df5e49a64f9a14402243b9f9ee97c939d3733bd90859ded71961a866c627d3c6c44bff6bd36881eced1fc1ec
 
 pkgname = looking-glass
 	pkgdesc = A client application for accessing the LookingGlass IVSHMEM device of a VM
@@ -24,9 +20,13 @@ pkgname = looking-glass
 	depends = glu
 	depends = nettle
 	depends = fontconfig
-	depends = libconfig
 
 pkgname = looking-glass-module-dkms
 	pkgdesc = A kernel module that implements a basic interface to the IVSHMEM device for when using LookingGlass in VM->VM mode
 	depends = dkms
+
+pkgname = looking-glass-host
+	pkgdesc = Linux host application for pushing frame data to the LookingGlass IVSHMEM device
+	depends = libxcb
+	depends = zlib
 
