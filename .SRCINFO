@@ -1,6 +1,6 @@
 pkgbase = phoenix
 	pkgdesc = The BurstCoin desktop wallet
-	pkgver = v0.1.2.r16.gb69ae4da
+	pkgver = v0.1.2.r32.gf70385b3
 	pkgrel = 1
 	url = https://github.com/burst-apps-team/phoenix
 	install = phoenix.install
