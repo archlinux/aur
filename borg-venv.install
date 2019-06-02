@@ -1,0 +1,9 @@
+post_install() {
+  echo ">>> While borg-venv seems to work fine, make sure everything works"
+  echo ">>> correctly for you too before using it. I created this package in"
+  echo ">>> good faith, but I take no responsibility for any damage caused by it."
+}
+
+post_upgrade() {
+  post_install
+}
