@@ -1,12 +1,14 @@
 # Maintainer: bb010g <bb010g@gmail.com>
+# Co-maintainer: ObserverOfTime <chronobserver@disroot.org>
+
 pkgname=betterdiscordctl-git
-pkgver=r10.8c5008b
-pkgrel=2
+pkgver=1.6.0.r34.g6433a5b
+pkgrel=1
 pkgdesc="A utility for managing BetterDiscord on Linux"
 arch=('any')
 url="https://github.com/bb010g/betterdiscordctl"
 license=('MIT')
-depends=('asar' 'git' 'nodejs' 'npm')
+depends=('git')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -20,7 +22,9 @@ prepare() {
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf '%s.r%s.g%s' \
+    "$(sed -n 's/^VERSION=//p' "${pkgname%-git}")" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
