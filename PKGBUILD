@@ -2,13 +2,13 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 # Contributor: Darcy Hu <hot123tea123@gmail.com>
 
-## This PKGBUILD creates an Arch Linux package for the proprietary MATLAB application.
+## This PKGBUILD creates an Arch Linux package for the proprietary MATLAB(version R2018b) application.
 ## In order to build the package, the user must supply:
-## 1) a plain text file installation key as file `matlab.fik`
+## 1) a plain text file installation key as file `matlab-r2018b.fik`
 ## and
-## 2) the software tarball as `matlab.tar` from MATLAB ISO image or as downloaded by the installer
+## 2) the software tarball as `matlab-r2018b.tar` from MATLAB ISO image or as downloaded by the installer
 ## A typical matlab tarball structure looks like this:
-#matlab.tar
+#matlab-r2018b.tar
 #├── activate.ini*
 #├── archives/
 #│   ├── common/
