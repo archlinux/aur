@@ -1,7 +1,7 @@
 pkgbase = alex4
 	pkgdesc = Help Alex the Allegator rescue Lola before the humans make a pair of shoes out of her!
-	pkgver = 1.2.alpha
-	pkgrel = 1
+	pkgver = 1.2
+	pkgrel = 2
 	url = http://allegator.sourceforge.net
 	install = alex4.install
 	arch = i686
@@ -9,12 +9,8 @@ pkgbase = alex4
 	license = GPL2
 	depends = aldumb
 	depends = allegro4
-	source = alex4-1.2.alpha.tar.gz::https://github.com/carstene1ns/alex4/archive/1.2-alpha.tar.gz
-	source = alex4.png
-	source = alex4.desktop
-	sha256sums = 0fe6e9341d52623503c87f778926c33e17f393059e8a572e779e1a15f678414a
-	sha256sums = 236a8d163ee8aa94073aa1ec969a85e887b3c70fefbcd03b1f41b93b09fa32c6
-	sha256sums = 780063f3f8b72f9a4310a4929f9a3b3a229ada199a2175e04b65cd49ff1e2644
+	source = alex4-1.2.tar.gz::https://github.com/carstene1ns/alex4/archive/1.2.tar.gz
+	sha256sums = 759bd418c026286dda83b609eddd3fe3a22b75327d3befba831c4a5fd95185bb
 
 pkgname = alex4
 
