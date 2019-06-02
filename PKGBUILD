@@ -2,7 +2,7 @@
 # submitter: vorpalblade77@gmail.com
 pkgname=python-libusb1
 _pkgname=libusb1
-pkgver=1.7
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Pure python wrapper for libusb"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=()
 conflicts=("${pkgname}-git")
 changelog='changelog.txt'
 source=("https://github.com/vpelletier/python-libusb1/archive/${pkgver}.tar.gz")
-sha256sums=('efd174cc9151f56437102651be07857b873ffab77e58052576aa3ac2ab059c46')
+sha256sums=('4f7156d7f50d58e8c8cfc78bc97f269e1cf67580cf8ac57ad9ec27e3de699e23')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
