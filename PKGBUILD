@@ -1,75 +1,55 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=xine-lib-hg
-pkgver=1.2.9.r13885.1868bc14317c
+pkgver=1.2.9.r14420.88e48552a162
 pkgrel=1
-pkgdesc='A multimedia playback engine (Mercurial version with all possible libs)'
-arch=('i686' 'x86_64')
+pkgdesc='A multimedia playback engine (mercurial version)'
+arch=('x86_64')
 url='https://www.xine-project.org/'
-license=('GPL2' 'LGPL2.1')
-depends=('fontconfig')
-makedepends=(
-    # official repositories:
-        'mercurial' 'a52dec' 'aalib' 'faad2' 'ffmpeg' 'gdk-pixbuf2' 'glu'
-        'libmagick6' 'jack' 'libcaca' 'libcdio' 'libbluray' 'libdca'
-        'libdvdnav' 'libmad' 'libmng' 'libmpcdec' 'libpulse' 'libvdpau'
-        'libxinerama' 'libxvmc' 'sdl' 'smbclient' 'v4l-utils' 'vcdimager'
-        'wavpack'
-    # AUR:
-        'esound' 'gnome-vfs-nosmb' 'sndio'
-)
-optdepends=('a52dec: for using the a52 plugin'
-            'aalib: for using the aalib plugin'
-            'alsa-lib: for using the alsa plugin'
-            'esound: for using the esound plugin'
-            'faad2: for using the faad plugin'
-            'ffmpeg: for using the ff/avformat/avutil plugin'
-            'flac: for using the flac plugin'
-            'gdk-pixbuf2: for using the gdk-pixbuf plugin'
-            'glu: for using the opengl plugin'
-            'gnome-vfs-nosmb: for using the gnome-vfs plugin'
-            'imagemagick: for using the imagemagick plugin'
+license=('GPL' 'LGPL')
+depends=('libxvmc' 'ffmpeg' 'libxinerama' 'libnsl' 'libssh2')
+makedepends=('mercurial'
+             'wavpack' 'faad2' 'libmng' 'imagemagick' 'mesa' 'libmodplug'
+             'vcdimager' 'jack' 'aalib' 'libdca' 'a52dec' 'libmad' 'libdvdnav'
+             'libmpcdec' 'libcaca' 'libbluray' 'libvdpau' 'glu' 'gdk-pixbuf2')
+optdepends=('imagemagick: for using the imagemagick plugin'
             'jack: for using the jack plugin'
-            'libbluray: for using the bluray plugin'
-            'libcaca: for using the caca plugin'
-            'libcdio: for using the cd plugin'
-            'libdca: for using the dts plugin'
-            'libdvdnav: for using the dvd plugin'
-            'libjpeg-turbo: for using the libjpeg plugin'
-            'libmad: for using the mp3 plugin'
-            'libmng: for using the mng plugin'
-            'libmodplug: for using the modplug plugin'
-            'libmpcdec: for using the musepack plugin'
-            'libpulse: for using the pulseaudio plugin'
-            'libtheora: for using the xiph plugin'
-            'libva: for using the vaapi plugin'
-            'libvdpau: for using the vdpau plugin'
-            'libvorbis: for using the xiph plugin'
-            'libvpx: for using the libvpx plugin'
-            'libxcb: for using the xcb-shm and xcb-xv plugins'
-            'libxinerama: for using the xv plugin'
-            'sdl: for using the sdl plugin'
-            'smbclient: for using the samba plugin'
-            'sndio: for using the sndio plugin'
-            'speex: for using the xiph plugin'
-            'v4l-utils: for using the v4l2 plugin'
             'vcdimager: for using the vcd plugin'
+            'glu: for using the opengl plugin'
             'wavpack: for using the wavpack plugin'
-)
+            'faad2: for using the faad plugin'
+            'libmng: for using the mng plugin'
+            'aalib: for using the aalib plugin'
+            'libmodplug: for using the modplug plugin'
+            'libdca: for using the dca plugin'
+            'a52dec: for using the a52 plugin'
+            'libmad: for using the mp3 plugin'
+            'libdvdnav: for using the dvd plugin'
+            'libmpcdec: for using the musepack plugin'
+            'libcaca: for using the caca plugin'
+            'libbluray: for using the bluray plugin'
+            'libvdpau: for using the VDPAU plugin'
+            'smbclient: for using the samba plugin'
+            'gdk-pixbuf2: for using the gdk-pixbuf plugin')
 provides=('xine-lib')
 conflicts=('xine-lib')
-source=("$pkgname"::'hg+http://hg.code.sf.net/p/xine/xine-lib-1.2')
+source=('hg+http://hg.code.sf.net/p/xine/xine-lib-1.2')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd xine-lib-1.2
     
-    local _version_major="$(grep '^XINE_VERSION_MAJOR=' version.sh | sed 's/.*=//')"
-    local _version_minor="$(grep '^XINE_VERSION_MINOR=' version.sh | sed 's/.*=//')"
-    local _version_sub="$(  grep '^XINE_VERSION_SUB='   version.sh | sed 's/.*=//')"
-    local _version_patch="$(grep '^XINE_VERSION_PATCH=' version.sh | sed 's/.*=//')"
-    
-    local _version="$_version_major"
+    local _version_major
+    local _version_minor
+    local _version_sub
+    local _version_patch
+    local _version
+    local _number
+    _version_major="$(grep '^XINE_VERSION_MAJOR=' version.sh | sed 's/.*=//')"
+    _version_minor="$(grep '^XINE_VERSION_MINOR=' version.sh | sed 's/.*=//')"
+    _version_sub="$(  grep '^XINE_VERSION_SUB='   version.sh | sed 's/.*=//')"
+    _version_patch="$(grep '^XINE_VERSION_PATCH=' version.sh | sed 's/.*=//')"
+    _version="$_version_major"
     
     for _number in "$_version_minor" "$_version_sub" "$_version_patch"
     do
@@ -80,107 +60,18 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
-    
-    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/usr/lib/imagemagick6/pkgconfig"
-    
-    ./autogen.sh
-    
-    ./configure \
+    cd xine-lib-1.2
+    ./autogen.sh \
         --prefix='/usr' \
-        \
-        --enable-ipv6 \
-        --enable-antialiasing \
-        --enable-static='no' \
-        --enable-shared='yes' \
-        --enable-fast-install='yes' \
-        --enable-optimizations \
-        --enable-largefile \
-        --enable-libxine-builtins \
-        \
-        --disable-coreaudio \
-        --disable-irixal \
-        --enable-oss \
-        --disable-sunaudio \
-        --enable-sndio \
-        --enable-aalib \
-        --disable-dha-kmod \
-        --disable-directfb \
-        --enable-dxr3 \
-        --enable-fb \
-        --disable-macosx-video \
-        --enable-opengl \
-        --enable-glu \
-        --disable-vidix \
-        --enable-xinerama \
-        --disable-static-xv \
-        --enable-xvmc \
+        --with-wavpack \
         --enable-vdpau \
-        --enable-vaapi \
-        --enable-dvb \
-        --enable-gnomevfs \
-        --enable-samba \
-        --enable-v4l2 \
-        --enable-libv4l \
-        --enable-vcd \
-        --enable-vdr \
-        --enable-bluray \
-        --enable-avformat \
-        --enable-a52dec \
-        --enable-asf \
-        --enable-nosefart \
-        --enable-faad \
-        --enable-ffmpeg \
-        --enable-postproc \
-        --enable-gdkpixbuf \
-        --enable-libjpeg \
-        --enable-dts \
-        --enable-mad \
-        --enable-modplug \
-        --disable-libmpeg2new \
-        --enable-musepack \
-        --disable-mlib \
-        --disable-mlib-lazyload \
-        --enable-mng \
-        --enable-real-codecs \
-        --disable-w32dll \
-        --enable-vpx \
-        --disable-mmal \
-        \
-        --with-freetype \
-        --with-fontconfig \
-        --with-x \
-        --with-alsa \
-        --with-esound \
-        --without-fusionsound \
-        --with-jack \
-        --with-pulseaudio \
-        --with-caca \
-        --without-linux-path \
-        --without-libstk \
-        --with-sdl \
-        --with-xcb \
         --with-external-dvdnav \
-        --with-imagemagick \
-        --with-libflac \
-        --with-speex \
-        --with-theora \
-        --with-vorbis \
-        --with-wavpack
-        
-        # TODO:
-        # --enable-dha-kmod
-        # --enable-vidix
-        # --with-fusionsound
-        # --with-linux-path=/usr/lib/modules/$(uname -r)/build
-        # --with-libstk
-        # --with-openhevc
-        
+        --disable-optimizations 
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     make
 }
 
 package() {
-    cd "$pkgname"
-    
+    cd xine-lib-1.2
     make DESTDIR="$pkgdir" install
 }
