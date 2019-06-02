@@ -3,8 +3,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=hop-git
-epoch=1
-pkgver=3.2.0r5279
+epoch=2
+pkgver=3.2.0.r5327
 pkgrel=1
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ options=('!makeflags')
 pkgver() {
   cd ${pkgname%-git}
   . .hoprelease
-  printf "%sr%s" $major "$(git rev-list --count HEAD)" 
+  printf "%s.r%s" $major "$(git rev-list --count HEAD)" 
 }
 
 build() {
