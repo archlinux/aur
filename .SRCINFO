@@ -1,0 +1,15 @@
+pkgbase = tina-tpn
+	pkgdesc = TIme Petri Net Analyzer
+	pkgver = 3.5.0
+	pkgrel = 0
+	url = http://projects.laas.fr/tina/home.php
+	arch = x86_64
+	license = unknown
+	depends = gmp
+	depends = graphviz
+	options = !strip
+	source = http://projects.laas.fr/tina/binaries/tina-3.5.0-x86_64-linux.tar.gz
+	md5sums = 4aeeda8dca7f1cb98f0ce6206bfc3891
+
+pkgname = tina-tpn
+
