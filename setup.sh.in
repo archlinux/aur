@@ -69,7 +69,7 @@ build_lib() {
 	    printf "\nExiting.\n\n"
 	    exit 0
 	fi
-    printf "\nDownloading evelauncher-$elver.tar.gz...\n\n"
+	printf "\nDownloading evelauncher-$elver.tar.gz...\n\n"
 	curl -L -O https://binaries.eveonline.com/evelauncher-$elver.tar.gz
     fi
     rcsum="$(sha256sum ./evelauncher-$elver.tar.gz| cut -d' ' -f1)"

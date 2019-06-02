@@ -70,6 +70,8 @@ sed -i s,ELVER=\"\",ELVER=\"$version\", evesetup/evelauncher.sh
 grep -v '^#-' ../setup.sh.in >evesetup/setup.sh
 #-- testing only
 #- cp -f ../setup.sh.in evesetup/setup.sh
+#- sed -i 's,#- , ,' evesetup/setup.sh
+#- release="test"
 #--
 sed -i s,elver=\"\",elver=\"$version\", evesetup/setup.sh
 sed -i s,elcsum=\"\",elcsum=\"$elcsum\", evesetup/setup.sh
