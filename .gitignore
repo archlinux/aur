@@ -1,0 +1,4 @@
+*.xpi
+*.tar.xz
+src
+pkg
