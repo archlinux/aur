@@ -1,8 +1,8 @@
 # Maintainer: Ysblokje <ysblokje at gmail dot com>
 pkgname=('lib32-gamemode-git')
 _pkgname=('gamemode')
-pkgver=r326.0074faf
-pkgrel=1
+pkgver=r453.3718717
+pkgrel=2
 pkgdesc="A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS."
 arch=('x86_64')
 url="https://github.com/FeralInteractive/gamemode.git"
@@ -14,6 +14,10 @@ conflicts=('lib32-gamemode')
 source=("git+https://github.com/FeralInteractive/gamemode.git")
 sha256sums=('SKIP')
 
+prepare() {
+    cd $_pkgname
+    patch --forward --strip=1 --input="${startdir}/temp_util_fix.patch"
+}
 pkgver() {
     cd gamemode
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -24,7 +28,7 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   
   meson ${_pkgname} build  --prefix /usr \
-    -Dwith-daemon=false -Dwith-examples=false -Dwith-systemd=false --libdir lib32
+    -Dwith-daemon=false -Dwith-examples=false -Dwith-systemd=false -Dwith-util=false --libdir lib32
   ninja -C build
 }
 
