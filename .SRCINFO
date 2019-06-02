@@ -1,5 +1,5 @@
 pkgbase = liri-session-git
-	pkgdesc = QtQuick and Wayland based shell for convergence
+	pkgdesc = Liri session manager
 	pkgver = r1.1d7732b
 	pkgrel = 1
 	url = https://liri.io

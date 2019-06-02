@@ -3,7 +3,7 @@
 pkgname=liri-session-git
 pkgver=r1.1d7732b
 pkgrel=1
-pkgdesc="QtQuick and Wayland based shell for convergence"
+pkgdesc="Liri session manager"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
