@@ -1,0 +1,40 @@
+diff -Naur SFCGAL-1.3.6.orig/CGAL_patches/CGAL/internal/corefinement/intersection_triangle_segment_3.h SFCGAL-1.3.6/CGAL_patches/CGAL/internal/corefinement/intersection_triangle_segment_3.h
+--- SFCGAL-1.3.6.orig/CGAL_patches/CGAL/internal/corefinement/intersection_triangle_segment_3.h	2019-06-01 21:08:45.368050324 -0400
++++ SFCGAL-1.3.6/CGAL_patches/CGAL/internal/corefinement/intersection_triangle_segment_3.h	2019-06-01 21:11:10.212568302 -0400
+@@ -27,7 +27,11 @@
+ 
+ //TODO rename this file when doing proper integration
+ #include <CGAL/internal/corefinement/Polyhedron_constness_types.h>
++#if CGAL_VERSION_NR < 1041401000 // version 4.14
+ #include <CGAL/internal/Intersections_3/Triangle_3_Segment_3_intersection.h>
++#else
++#include <CGAL/Intersections_3/Segment_3_Triangle_3.h>
++#endif
+ namespace CGAL{
+ namespace internal_IOP{
+ 
+@@ -153,7 +157,11 @@
+       // the segment is coplanar with the triangle's supporting plane
+       // we test whether the segment intersects the triangle in the common 
+       // supporting plane
++#if CGAL_VERSION_NR < 1041401000 // version 4.14
+       if ( ::CGAL::internal::do_intersect_coplanar(a,b,c,p,q,Kernel()) )
++#else
++      if ( ::CGAL::Intersections::internal::do_intersect_coplanar(a,b,c,p,q,Kernel()) )
++#endif
+         return Intersection_result(COPLNR,Intersection_info(),true,true);
+       return Intersection_result(EMPTY,Intersection_info(),true,true);
+       
+diff -Naur SFCGAL-1.3.6.orig/src/config.h.cmake SFCGAL-1.3.6/src/config.h.cmake
+--- SFCGAL-1.3.6.orig/src/config.h.cmake	2019-06-01 21:08:45.374717045 -0400
++++ SFCGAL-1.3.6/src/config.h.cmake	2019-06-01 21:12:08.333040552 -0400
+@@ -20,6 +20,9 @@
+ #ifndef _SFCGAL_CONFIG_H_
+ #define _SFCGAL_CONFIG_H_
+ 
++#define CGAL_DO_NOT_USE_BOOST_MP 1
++#define CGAL_DO_NOT_USE_GMPXX 1
++
+ #include <SFCGAL/export.h>
+ 
+ /**
