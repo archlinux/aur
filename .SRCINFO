@@ -1,7 +1,7 @@
 pkgbase = lua-format-ext-git
 	pkgdesc = LuaFormatter with extended identifiers
 	pkgver = r50.21e0205
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/tkkcc/LuaFormatter
 	arch = x86_64
 	license = Apache2
