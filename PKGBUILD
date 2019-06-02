@@ -1,6 +1,6 @@
 # Maintainer: Šarūnas Gliebus <ssharunas at yahoo.co.uk>
 pkgname=boram
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Cross-platform WebM converter"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 	"git+https://github.com/Kagami/boram.git#tag=v$pkgver"
 )
 md5sums=(
-	'b907fc61a9cd1d7049812576f052515d'
+	'd0bd9d68b7981a27ee4fc00211d34eab'
 	'SKIP'
 	'SKIP'
 )
