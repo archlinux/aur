@@ -1,7 +1,7 @@
 # Maintainer: X3n0m0rph59 <x3n0m0rph59@gmail.com>
 pkgname=precached
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=0
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
@@ -11,24 +11,24 @@ depends=('dbus' 'zeromq')
 makedepends=('rust' 'dbus' 'zeromq' 'systemd')
 optdepends=()
 provides=()
-conflicts=()
+conflicts=(precached)
 replaces=()
 backup=()
 options=()
 install=${pkgname}.install
 changelog=
-source=('precached::git+https://gitlab.com/X3n0m0rph59/precached.git/#branch=v1.6')
+source=("git+https://gitlab.com/X3n0m0rph59/precached/tree/v1.6")
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP') 
 
 build() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   CARGO_INCREMENTAL=0 cargo build --all --release
 }
 
 package() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/etc/precached"
