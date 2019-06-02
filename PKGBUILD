@@ -12,7 +12,7 @@ makedepends=('git' 'liri-cmake-shared-git')
 options=(debug !strip)
 conflicts=('liri-session')
 replaces=('liri-session')
-provides=('liri-shell')
+provides=('liri-session')
 groups=('liri-git')
 
 _gitroot="git://github.com/lirios/session.git"
