@@ -3,7 +3,7 @@ pkgname=motrix
 _pkgname=Motrix
 pkgver=v1.3.8
 _pkgver=1.3.8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="elegent downloading tool frontend for aria2c,using vue(release version)"
 arch=("x86_64")
@@ -12,7 +12,7 @@ license=('MIT')
 groups=()
 depends=('bash'
 	 'tar'
-	 'fakeroot')
+	 'fakeroot''glibc''glib2''nss''nspr''gtk3''pango''atk''nettle''libxcb')
 makedepends=('curl'
 	     'yarn'
 	     'npm')
