@@ -7,7 +7,7 @@ index 142fc33..13f7b87 100644
  RSB: ']';
  
 -NAME: [a-zA-Z_][a-zA-Z_0-9]*;
-+NAME: [a-zA-Z_][a-zA-Z_0-9]* | IdentifierStart IdentifierPart*;
++NAME: IdentifierStart IdentifierPart*;
 +
 +fragment IdentifierPart
 +    : IdentifierStart

@@ -3,7 +3,7 @@ _srcname=LuaFormatter
 _pkgname=lua-format
 pkgname=$_pkgname-ext-git
 pkgver=r50.21e0205
-pkgrel=6
+pkgrel=7
 pkgdesc='LuaFormatter with extended identifiers'
 arch=(x86_64)
 url=https://github.com/tkkcc/LuaFormatter
@@ -17,7 +17,7 @@ source=(git+https://github.com/Koihik/LuaFormatter
   g4.patch)
 sha512sums=(SKIP
   e33afdda51c9ab3aa23a7ccad536762f2807972e9bde52ea67793dbc9bb3c3884daf2fed830d44f0b34c6f7bef2e327af8634293fba74ceb091bf71bbd2fe662
-  8b15e06a09db2ce1462011b4484336873825660268a3d97d982c9f49a600016f0e35e16e24d3e1cb1004a0a910b39ab85e2a7654f86f6c2e9f59c06ee056da63)
+  8747d10775b34b8e413263439b1284bd524ef0ef867e3646774cb5ed4dddf008f852b7a2b6f8a6a1492739a7f931d57e6346cb8b65e00542b7aa8d0b868a4ebc)
 pkgver() {
   cd $_srcname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
