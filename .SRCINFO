@@ -1,9 +1,8 @@
 pkgbase = x264-noffmpeg
 	pkgdesc = Open Source H264/AVC video encoder (no ffmpeg dependency)
-	pkgver = 155.r2917.g0a84d986
-	pkgrel = 2
+	pkgver = 157.r2945.g72db4377
+	pkgrel = 1
 	url = https://www.videolan.org/developers/x264.html
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -17,7 +16,7 @@ pkgbase = x264-noffmpeg
 	conflicts = libx264
 	conflicts = libx264-10bit
 	conflicts = libx264-all
-	source = x264-noffmpeg::git+https://git.videolan.org/git/x264.git#commit=0a84d986e7020f8344f00752e3600b9769cc1e85
+	source = git+https://git.videolan.org/git/x264.git#commit=72db437770fd1ce3961f624dd57a8e75ff65ae0b
 	sha256sums = SKIP
 
 pkgname = x264-noffmpeg
