@@ -1,6 +1,6 @@
 pkgbase = python-hyperopt
 	pkgdesc = Distributed Asynchronous Hyperparameter Optimization in Python
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/hyperopt/hyperopt
 	arch = any
@@ -11,8 +11,10 @@ pkgbase = python-hyperopt
 	depends = python-six
 	depends = python-networkx
 	depends = python-future
-	source = hyperopt-0.1.1.tar.gz::https://github.com/hyperopt/hyperopt/archive/0.1.1.tar.gz
-	sha1sums = 98b36f8c42586574524f693b1f8982b1b05b5225
+	depends = python-tqdm
+	optdepends = python-dill
+	source = hyperopt-0.1.2.tar.gz::https://github.com/hyperopt/hyperopt/archive/0.1.2.tar.gz
+	sha1sums = f58de8c6041369127026a4928411d99f612bf3b3
 
 pkgname = python-hyperopt
 
