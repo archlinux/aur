@@ -11,7 +11,7 @@ arch=('any')
 license=('GPL3')
 provides=('python2-pafy')
 
-makedepends=('git')
+makedepends=('git' 'python2-setuptools')
 depends=('python2' 'python2-youtube-dl')
 conflicts=('')
 
