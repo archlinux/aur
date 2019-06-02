@@ -1,42 +1,49 @@
-# Maintainer: Christopher Rosell <chrippa@gmail.com>
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Contributor: Christopher Rosell <chrippa@gmail.com>
 # Contributor: Army
 # Contributor: tomegun
 
 pkgname=rtmpdump-git
-pkgver=0.512.fa8646d
+pkgver=2.4.r98.gc5f04a5
 pkgrel=1
-pkgdesc="A tool to download rtmp and rtmpe streams"
-url="http://rtmpdump.mplayerhq.hu/"
-arch=('i686' 'x86_64')
+pkgdesc='A tool to download rtmp and rtmpe streams (git version)'
+url='http://rtmpdump.mplayerhq.hu/'
+arch=('x86_64')
 license=('GPL2' 'LGPL2.1')
-depends=('gnutls')
+depends=('glibc' 'gnutls' 'zlib' 'nettle' 'gmp')
 makedepends=('git')
-provides=('rtmpdump')
+provides=('rtmpdump' 'librtmp.so')
 conflicts=('rtmpdump')
-source=("git+git://git.ffmpeg.org/rtmpdump")
+source=('git+https://git.ffmpeg.org/rtmpdump')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/rtmpdump"
-    echo "0.$(git rev-list --count HEAD).$(git describe --always)"
+    cd rtmpdump
+    
+    local _version
+    local _ver_commit='c28f1bab7822de97353849e7787b59e50bbb1428'
+    local _revision
+    local _shorthash
+    
+    _version="$(grep '^VERSION=' Makefile | sed 's/.*=v//')"
+    _revision="$(git rev-list --count "$_ver_commit"..HEAD)"
+    _shorthash="$(git rev-parse --short HEAD)"
+    
+    printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
 
 build() {
-    cd "$srcdir/rtmpdump"
+    cd rtmpdump
     sed -e 's/^CRYPTO=OPENSSL/#CRYPTO=OPENSSL/' -e 's/#CRYPTO=GNUTLS/CRYPTO=GNUTLS/' -i Makefile -i librtmp/Makefile
     make OPT="$CFLAGS" XLDFLAGS="$LDFLAGS"
 }
 
 package() {
-    cd "$srcdir/rtmpdump"
-
-    install -dm755 "$pkgdir/usr/lib"
-
-    make prefix=/usr \
-         sbindir=/usr/bin \
-         mandir=/usr/share/man \
+    cd rtmpdump
+    mkdir -p "${pkgdir}/usr/lib"
+    make prefix='/usr' \
+         sbindir='/usr/bin' \
+         mandir='/usr/share/man' \
          DESTDIR="$pkgdir" \
          install
 }
-
-# vim:set ts=2 sw=2 et:
