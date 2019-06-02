@@ -1,63 +1,56 @@
-# Maintainer: Jose Riha <jose1711 gmail com>
+# Maintainer: Malstrond <malstrond@gmail.com>
+# Contributor: Jose Riha <jose1711 gmail com>
 # Contributor: Bazon <bazonbloch@arcor.de>
 
 pkgname=activinspire
-pkgver=2.14.67304
-pkgrel=2
-pkgdesc="Presentation Software to use with Promethean Hardware products."
-arch=('i686' 'x86_64')
+pkgver=2.15.67911
+pkgrel=0
+pkgdesc="Presentation Software for use with Promethean Hardware products."
+arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
 license=('unknown')
-depends_i686=('qt4' 'gst-plugins-base' 'libjpeg6' 'jre7-openjdk' 'openssl-1.0' 'libpulse' 'recordmydesktop')
-depends_x86_64=('qt4' 'lib32-gst-plugins-base' 'bin32-jre' 'lib32-libjpeg' 'lib32-libjpeg6' 'lib32-libxmu' 'lib32-alsa-lib' 'lib32-openssl-1.0' 'lib32-libpulse' 'recordmydesktop')
-
-optdepends=('activdriver: promethean hardware support'
-            'activtools: hardware calibration'
-	    'activrelay: promethean driver with classflow')
-
-if [ "${CARCH}" = "i686" ]
-then
-	_arch="i386"
-else
-	_arch="amd64"
-fi
-
-_u="http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/"
-source_i686=(${_u}activinspire/activinspire_${pkgver}-1."$_arch"_"$_arch".deb)
-source_x86_64=(${_u}activinspire/activinspire_${pkgver}-1."$_arch"_"$_arch".deb)
-
-md5sums_i686=('e8d8790bab3e74de868e80fedaf95029')
-md5sums_x86_64=('24d75df7df8b6328fb65a36b8730f407')
-
-prepare() {
-	bsdtar -xf activinspire_${pkgver}-1.${_arch}_${_arch}.deb
-}
+depends_x86_64=(lib32-libxmu lib32-gst-plugins-base lib32-libjpeg6-turbo lib32-libxrender lib32-libgl lib32-fontconfig lib32-openssl-1.0 lib32-nss)
+optdepends=('bin32-jre: For using the equation editor'
+            'activdriver: Driver for Promethean hardware'
+            'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')
+source_x86_64=("http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/activinspire/activinspire_${pkgver}-1.amd64_amd64.deb"
+               "inspire.sh")
+md5sums_x86_64=('de5a3c8345b59de44bdd946ad2d1541a'
+                'ff6607cc18a27e2535b8475f5f0db09d')
 
 package() {
-        # extract the archive
-        bsdtar -xf data.tar.gz -C "$pkgdir"
+ # The upstream .deb actually includes 3 whole setups:
+ #  1. The actual files to be used by the package manager (in the . directory),
+ #  2. a self-contained installer for installing without a package manager (in ./inspire),
+ #  3. an older version of ActivInspire (13.x) (in ./inspire/DEB).
+ # It also includes/etc/xdg (not needed) and /var/Promethean (created with the correct permissions below).
+ # All except #1 are not extracted to save time while removing them.
+ bsdtar -C "$pkgdir" --exclude=./inspire --exclude=./var --exclude=./etc -xf data.tar.gz
 
-        # move out of the local directory to match arch standards
-        mv "$pkgdir"/usr/local/bin "$pkgdir"/usr/
-        rmdir "$pkgdir"/usr/local
+ # Use /usr instead of /usr/local to match Arch packaging standards.
+ mv "$pkgdir"/usr/local/bin "$pkgdir"/usr/
+ rmdir "$pkgdir"/usr/local
+ # Because we just changed that, now we need to fix the absolute paths that Promethean uses in their files.
+ sed -i "s%/usr/local/bin%/usr/bin%" "$pkgdir"/usr/share/applications/activsoftware.desktop
+ sed -i "s%/usr/local/bin%/usr/bin%" "$pkgdir"/usr/share/applications/activplayer.desktop
+ sed -i "s%/usr/local/bin%/usr/bin%" "$pkgdir"/usr/bin/activsoftware/workbench/activdashboard.sh
+ sed -i "s%/usr/local/bin%/usr/bin%" "$pkgdir"/usr/bin/activityplayer
 
-        # the starting script contains a lot of stuff specific to ubuntu, we don't need that and make a shorter one
-        mv "$pkgdir"/usr/bin/inspire "$pkgdir"/usr/bin/inspire-for-ubuntu
-        echo "#! /bin/bash" > "$pkgdir"/usr/bin/inspire
-        # in order to make java work, we need an export for 64bit versions:
-        if [ "$CARCH" = "x86_64" ]; then
-            echo "export JAVA_HOME=/usr/lib32/jvm/java32-8-jre/jre/" >> "$pkgdir"/usr/bin/inspire
-        fi
-        echo "cd /usr/bin/activsoftware" >> "$pkgdir"/usr/bin/inspire
-        echo "./Inspire \$1" >> "$pkgdir"/usr/bin/inspire
-        chmod 755 "$pkgdir"/usr/bin/inspire
-        
-        # delete the no-compiz-shortcut. if you want it, delete the following line
-        rm "$pkgdir"/usr/share/applications/activsoftware-nc.desktop 
+ # ActivInspire ships with functionality to disable compositing. This should really be handled by the users WM configuration, so we remove that.
+ rm "$pkgdir"/usr/share/applications/activsoftware-nc.desktop
 
-        # modify the other one to match the new path and add a better hires icon
-        install -Dm644 "$pkgdir/usr/bin/activsoftware/inspire.ico" "$pkgdir/usr/share/icons/hicolor/512x512/apps/inspire.ico"
-        sed -i 's/48x48\/apps\/asstudio.png/512x512\/apps\/inspire.ico/' "$pkgdir"/usr/share/applications/activsoftware.desktop
-        sed -i 's/usr\/local\/bin/usr\/bin/' "$pkgdir"/usr/share/applications/activsoftware.desktop
-        rm -r "$pkgdir/DEB"
+ # The upstream launch script for ActivInspire only works with Ubuntu, so we replace it with out own.
+ install -Dm555 inspire.sh "$pkgdir"/usr/bin/inspire
+
+ # This software attempts to create a lockfile in /var/Promethean/ActivInspire, the path is hardcoded.
+ # Since it is started by the user, this directory needs to be world-writable, even if that's a bad idea.
+ install -dm0777 "$pkgdir"/var/Promethean
+
+ # Warn the user about behavior.
+ echo " "
+ echo "Promethean software has a bug that often causes it to hang when attempting to close it using the GUI."
+ echo "It will also not start if an instance of it is already running."
+ echo "To work around this all remaining ActivInspire instances are killed when you launch it. "
+ echo "This means you will lose your work when attempting to open a second instance while still working in the first one."
+ echo " "
 }
