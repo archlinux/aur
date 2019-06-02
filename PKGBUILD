@@ -12,7 +12,7 @@ pkgver=$_plugin_version
 pkgrel=1
 arch=('any')
 url="https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/"
-depends=("firefox>=52")
+depends=("firefox>=52" "keepassxc")
 source=("https://addons.mozilla.org/firefox/downloads/file/${_plugin_id}/keepassxc_browser-${pkgver}${_plugin_ext}.xpi")
 noextract=('keepassxc_browser-${pkgver}${_plugin_ext}.xpi')
 md5sums=('1106566f409b9c1363771c1c845c0f57')
