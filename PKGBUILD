@@ -2,6 +2,7 @@
 
 pkgbase=looking-glass
 pkgname=("${pkgbase}" "${pkgbase}-module-dkms" "${pkgbase}-host")
+epoch=1
 pkgver=B1_rc5
 _pkgver=${pkgver//_/-}
 pkgrel=1
