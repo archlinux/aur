@@ -2,27 +2,20 @@
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=python-caldav
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="a caldav client library"
 arch=('any')
 url="https://pypi.python.org/pypi/caldav"
 license=('GPL')
 depends=('python' 'python-lxml' 'python-vobject' 'python-dateutil' 'python-distribute' 'python-six' 'python-requests')
 options=(!emptydirs)
-source=("git+https://github.com/python-caldav/caldav.git")
-sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/caldav"
-  # relase 0.5.0 commit
-  git checkout 38c1a4cad6fd3d361cdd7a99905d279727099225
-}
+source=("https://files.pythonhosted.org/packages/source/c/caldav/caldav-0.6.1.tar.gz")
+sha256sums=(eddb7f4e6a3eb5f02eaa2227817a53ac4372d4c4d51876536f4c6f00282f569e)
 
 package() {
-  cd "$srcdir/caldav"
+  cd "$srcdir/caldav-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
-  rm -r "$pkgdir/usr/lib/python3.7/site-packages/tests"
 }
 
 # vim:set ts=2 sw=2 et:
