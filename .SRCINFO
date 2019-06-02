@@ -1,4 +1,5 @@
 pkgbase = arbtt
+	pkgdesc = Automatic Rule-Based Time Tracker
 	pkgver = 0.10.2
 	pkgrel = 3
 	url = http://hackage.haskell.org/package/arbtt
