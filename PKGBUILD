@@ -1,10 +1,10 @@
 pkgname=openra-yr-git
 _pkgname=openra-yr
-pkgver=199.git.5b8b952
+pkgver=203.git.aa4ed5a
 pkgrel=1
 pkgdesc="A Command & Conquer: Yuri's Revenge-inspired mod of OpenRA"
 arch=('any')
-url="https://github.com/cookgreen/yr"
+url="https://github.com/cookgreen/Yuris-Revenge"
 license=('GPL3')
 install=openra-yr.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
@@ -22,25 +22,25 @@ md5sums=('SKIP'
          '3be388e2b2fb8b8c33b2e5f3232e9cda')
 
 pkgver() {
-    cd $srcdir/yr
+    cd $srcdir/Yuris-Revenge
     no=$(git rev-list --count HEAD)
     hash=$(git log | head -n 1 | cut -d ' ' -f 2 | head -c 7)
     printf "${no}.git.${hash}"
 }
 
 prepare() {
-    cd $srcdir/yr
+    cd $srcdir/Yuris-Revenge
     dos2unix *.md
 }
 
 build() {
-    cd $srcdir/yr
+    cd $srcdir/Yuris-Revenge
     make version VERSION="${pkgver}"
     make
 }
 
 package() {
-    cd $srcdir/yr
+    cd $srcdir/Yuris-Revenge
     mkdir -p $pkgdir/usr/{lib/openra-yr/mods,bin,share/pixmaps,share/doc/packages/openra-yr,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-yr
     cp -r engine/{glsl,lua,AUTHORS,COPYING,Eluant.dll*,FuzzyLogicLibrary.dll,GeoLite2-Country.mmdb.gz,'global mix database.dat',ICSharpCode.SharpZipLib.dll,launch-dedicated.sh,launch-game.sh,MaxMind.Db.dll,OpenAL-CS.dll,OpenAL-CS.dll.config,Open.Nat.dll,OpenRA.Game.exe,OpenRA.Platforms.Default.dll,OpenRA.Server.exe,OpenRA.Utility.exe,rix0rrr.BeaconLib.dll,SDL2-CS.dll,SDL2-CS.dll.config,SharpFont.dll,SharpFont.dll.config,VERSION} $pkgdir/usr/lib/openra-yr
