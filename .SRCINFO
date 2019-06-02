@@ -1,0 +1,21 @@
+pkgbase = haskell-bytestring-progress
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://hackage.haskell.org/package/bytestring-progress
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	makedepends = haskell-base<5
+	makedepends = haskell-base>=4.0
+	makedepends = haskell-bytestring
+	makedepends = haskell-time>=1.1
+	makedepends = haskell-time<2.0
+	makedepends = haskell-terminal-progress-bar>=0.2.0
+	depends = ghc
+	options = strip
+	source = https://hackage.haskell.org/packages/archive/bytestring-progress/1.2/bytestring-progress-1.2.tar.gz
+	md5sums = 502e643aa440f04d5efe02577aec6f33
+
+pkgname = haskell-bytestring-progress
+
