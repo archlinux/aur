@@ -1,7 +1,7 @@
 # Maintainer: osch <oliver@luced.de>
 pkgname=surge-synthesizer
-pkgver=1.6.0b9
-scmver=1.6.0-beta-9
+pkgver=1.6.0
+scmver=1.6.0
 pkgrel=1
 pkgdesc="Surge Synthesizer plugin"
 arch=('x86_64')
@@ -64,3 +64,4 @@ package() {
 	mkdir -p   "$DEST_DIR/usr/share/Surge/doc"
 	cp LICENSE "$DEST_DIR/usr/share/Surge/doc"
 }
+
