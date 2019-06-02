@@ -3,7 +3,7 @@
 
 pkgname=inkscape-092-git
 epoch=1
-pkgver=0.92.3.r84.g4e014550a5
+pkgver=0.92.4.r48.ga364238274
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, from git branch 0.92.x"
 url="https://gitlab.com/inkscape/inkscape"
@@ -21,7 +21,7 @@ makedepends=('boost' 'intltool' 'git' 'gettext' 'pango' 'fontconfig' 'python' 'c
 provides=('inkscape')
 conflicts=('inkscape')
 options=('!libtool')
-source=('inkscape.git::git+https://gitlab.com/inkscape/inkscape#branch=0.92.x')
+source=("inkscape.git::git+$url.git#branch=0.92.x")
 md5sums=('SKIP')
 _gitname="inkscape.git"
 
