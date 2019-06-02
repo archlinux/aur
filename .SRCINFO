@@ -4,8 +4,9 @@ pkgbase = flat-remix-git
 	pkgrel = 1
 	url = https://drasite.com/flat-remix
 	arch = any
-	license = GPL 3.0
-	source = flat-remix-git::git+https://github.com/daniruiz/Flat-Remix.git
+	license = GPL-3.0
+	makedepends = git
+	source = flat-remix-git::git+https://github.com/daniruiz/flat-remix.git
 	sha256sums = SKIP
 
 pkgname = flat-remix-git
