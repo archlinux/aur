@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.2.0-rc2 Kernel Configuration
+# Linux/x86 5.2.0-rc1 Kernel Configuration
 #
 
 #
@@ -5672,7 +5672,6 @@ CONFIG_DRM_AMD_ACP=y
 #
 CONFIG_DRM_AMD_DC=y
 CONFIG_DRM_AMD_DC_DCN1_0=y
-CONFIG_DRM_AMD_DC_DCN1_01=y
 # CONFIG_DEBUG_KERNEL_DC is not set
 # end of Display Engine Configuration
 
