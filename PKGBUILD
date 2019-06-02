@@ -1,6 +1,6 @@
 # Maintainer: KingofToasters <dev at sgregoratto dot me>
 pkgname=cointop
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="An interactive terminal based UI application for tracking cryptocurrencies"
 url="https://github.com/miguelmota/cointop"
@@ -8,7 +8,7 @@ license=('APACHE')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=('go-pie' 'git')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('67e05b8ed1a080e224d53911b720f40ee9737b749b3b3a09e091116799fde06f')
+sha256sums=('117b29c9c719faeafaa1d0591a9e63029988ddb09dbe36d095da98c98c80c2e5')
 
 build() {
   cd "$pkgname-$pkgver"
