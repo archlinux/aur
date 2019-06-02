@@ -1,7 +1,7 @@
 pkgbase = intellij-idea-community-edition-no-jre
 	pkgdesc = Intellij Idea Community Edition without bundled JRE
-	pkgver = 2019.1.2
-	pkgrel = 2
+	pkgver = 2019.1.3
+	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
 	license = Apache2
@@ -14,10 +14,10 @@ pkgbase = intellij-idea-community-edition-no-jre
 	depends = libdbusmenu-glib
 	provides = jetbrains-idea-ce
 	conflicts = jetbrains-idea-ce
-	source = https://download.jetbrains.com/idea/ideaIC-2019.1.2-no-jbr.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIC-2019.1.3-no-jbr.tar.gz
 	source = jetbrains-idea-ce.desktop
-	md5sums = 7db12f5c13b3e898e133687150dae3af
-	md5sums = 8255a0c131e7bd57c1f5c9886e1c064d
+	sha256sums = 6fbb1f99b467a7c7a39d74b835414288b113a9a136f9ba22b25ea44f87952fff
+	sha256sums = 91aa66e16e428d595c9f76a02f5a6d54d6fb0b1d1ccac4159cfb7070cff26a4b
 
 pkgname = intellij-idea-community-edition-no-jre
 
