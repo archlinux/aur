@@ -1,9 +1,8 @@
 pkgbase = xdotool-git
 	pkgdesc = Command-line X11 automation tool (git version)
-	pkgver = 3.20160805.1.r23.g08c8e2d
+	pkgver = 3.20160805.1.r24.g6523b5f
 	pkgrel = 1
-	url = http://www.semicomplete.com/projects/xdotool/
-	arch = i686
+	url = https://www.semicomplete.com/projects/xdotool/
 	arch = x86_64
 	license = BSD
 	makedepends = git
@@ -11,11 +10,10 @@ pkgbase = xdotool-git
 	depends = libxinerama
 	depends = libxkbcommon
 	provides = xdotool
-	provides = libxdo.so
 	conflicts = xdotool
 	conflicts = xdotool-svn
 	replaces = xdotool-svn
-	source = xdotool-git::git+https://github.com/jordansissel/xdotool.git
+	source = git+https://github.com/jordansissel/xdotool.git
 	md5sums = SKIP
 
 pkgname = xdotool-git
