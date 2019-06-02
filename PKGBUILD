@@ -4,7 +4,7 @@
 
 pkgname=signal-web-gateway-git
 pkgver=0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Use Signal as a web gateway for other apps (reporting, monitoring, etc.)"
 arch=('x86_64')
 url="https://gitlab.com/morph027/signal-web-gateway"
@@ -48,8 +48,7 @@ package() {
   install -Dm 644 "${srcdir}/signal-web-gateway.sysusers" "${pkgdir}/usr/lib/sysusers.d/signal-web-gateway.conf"
   install -Dm 644 "${srcdir}/signal-web-gateway.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/signal-web-gateway.conf"
   install -D "${srcdir}/src/github.com/morph027/textsecure/COPYING" "${pkgdir}/usr/share/licenses/signal-web-gateway/LICENSE"
-  mkdir -p "${pkgdir}/var/lib/signal-web-gateway"
-  cp -r "${srcdir}/src/github.com/morph027/textsecure/cmd/textsecure/.config" "${pkgdir}/var/lib/signal-web-gateway/.config"
-  mkdir -p "${pkgdir}/etc/webapps/signal-web-gateway"
-  ln -s "/var/lib/signal-web-gateway/.config/config.yml" "${pkgdir}/etc/webapps/signal-web-gateway/"
+  install -Dm 644 "${srcdir}/src/github.com/morph027/textsecure/cmd/textsecure/.config/config.yml" "${pkgdir}/etc/webapps/signal-web-gateway/config.yml"
+  mkdir -p "${pkgdir}/var/lib/signal-web-gateway/.config"
+  ln -s "/etc/webapps/signal-web-gateway/config.yml" "${pkgdir}/var/lib/signal-web-gateway/.config/config.yml" 
 }

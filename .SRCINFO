@@ -1,7 +1,7 @@
 pkgbase = signal-web-gateway-git
 	pkgdesc = Use Signal as a web gateway for other apps (reporting, monitoring, etc.)
 	pkgver = 0.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://gitlab.com/morph027/signal-web-gateway
 	arch = x86_64
 	license = MIT
