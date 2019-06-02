@@ -1,6 +1,6 @@
 pkgname=python-chaospy
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolbox for performing uncertainty quantification"
 arch=('any')
 url="https://github.com/jonathf/chaospy"
@@ -12,6 +12,7 @@ sha256sums=('e1d180b690eb89043175e7d98da4b2b50f01bd78585fe301d40a23006cd64202')
 
 build() {
   cd "${srcdir}/chaospy-$pkgver"
+  curl -L https://github.com/jonathf/chaospy/pull/141.patch|patch -p1
   python setup.py build
 }
 

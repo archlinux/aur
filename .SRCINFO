@@ -1,7 +1,7 @@
 pkgbase = python-chaospy
 	pkgdesc = Toolbox for performing uncertainty quantification
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonathf/chaospy
 	arch = any
 	license = BSD
