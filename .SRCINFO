@@ -17,7 +17,7 @@ pkgbase = foliate
 	provides = foliate
 	conflicts = foliate-git
 	source = https://github.com/johnfactotum/foliate/archive/1.1.0.tar.gz
-	md5sums = 5c4079995e3e953e2c10665ab6f1d705
+	md5sums = 4602004426c2e6e26ca72b5936b9b05d
 
 pkgname = foliate
 

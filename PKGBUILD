@@ -12,7 +12,7 @@ makedepends=('meson' 'ninja')
 source=(https://github.com/johnfactotum/${pkgname}/archive/${pkgver}.tar.gz)
 provides=("$pkgname")
 conflicts=("$pkgname-git")
-md5sums=('5c4079995e3e953e2c10665ab6f1d705')
+md5sums=('4602004426c2e6e26ca72b5936b9b05d')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
