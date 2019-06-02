@@ -1,14 +1,16 @@
 pkgbase = lua-format-ext-git
 	pkgdesc = LuaFormatter with extended identifiers
 	pkgver = r50.21e0205
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/tkkcc/LuaFormatter
 	arch = x86_64
 	license = Apache2
 	makedepends = antlr4
 	depends = antlr4-runtime
+	provides = lua-format-ext
 	provides = lua-format
 	provides = LuaFormatter
+	conflicts = lua-format-ext
 	conflicts = lua-format
 	conflicts = LuaFormatter
 	source = git+https://github.com/Koihik/LuaFormatter
