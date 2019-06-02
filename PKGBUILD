@@ -2,17 +2,17 @@
 # Contributor: 3ED_0 <krzysztof1987 at gmail>
 
 pkgname=valentina-studio
-pkgver=9.1.5
-pkgrel=2
+pkgver=9.2
+pkgrel=1
 pkgdesc="Create, administer, query and explore Valentina DB, MySQL, MariaDB, PostgreSQL and SQLite databases for FREE."
 arch=('i686' 'x86_64')
 url="http://www.valentina-db.com"
 license=('custom')
 makedepends=('')
-source_i686=("${pkgname}-${pkgver}-${CARCH}.rpm::http://valentina-db.com/download/prev_releases/9.1.5/lin_32/vstudio_9_lin.rpm")
-source_x86_64=("${pkgname}-${pkgver}-${CARCH}.rpm::http://valentina-db.com/download/prev_releases/9.1.5/lin_64/vstudio_x64_9_lin.rpm")
-sha256sums_i686=('e713f397b5a8f6a46855321c42d69312fed04fb65c6ce3d9624251b7384d4e50')
-sha256sums_x86_64=('9f01ac1611c22d5a89379c0098ec8a6abab9093a0b18fc9bccac0cb90921f36b')
+source_i686=("${pkgname}-${pkgver}-${CARCH}.rpm::http://valentina-db.com/download/prev_releases/9.2/lin_32/vstudio_9_lin.rpm")
+source_x86_64=("${pkgname}-${pkgver}-${CARCH}.rpm::http://valentina-db.com/download/prev_releases/9.2/lin_64/vstudio_x64_9_lin.rpm")
+sha256sums_i686=('0da2d3a4918df5ea457ba88feee7000ed1185d665cbf625e6b3ed040eef13ac5')
+sha256sums_x86_64=('99ebb46c6343b3163dfae68a0705b6f257c552760e65f1cb8c77c1e72ab90ec4')
 
 package() {
 	install -d "${pkgdir}"/opt/VStudio
