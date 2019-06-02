@@ -3,7 +3,7 @@ pkgname=motrix
 _pkgname=Motrix
 pkgver=v1.3.8
 _pkgver=1.3.8
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="elegent downloading tool frontend for aria2c,using vue(release version)"
 arch=("x86_64")
@@ -50,9 +50,28 @@ prepare() {
 	tar -xvf $_pkgname.tar.gz
 	rm $_pkgname.tar.gz
 	mv $_pkgname-$_pkgver $_pkgname
-#	npm config set registry 'https://registry.npm.taobao.org'
-	export ELECTRON_MIRROR='https://npm.taobao.org/mirrors/electron/'
-	export SASS_BINARY_SITE='https://npm.taobao.org/mirrors/node-sass'
+	echo "====================================="
+	echo "Finding if you are in China..."
+	curl myip.ipip.net | grep -i "中国"
+	if [ $? -eq 0 ]
+	then
+		echo "Yes,I'm sure you are in China."
+		echo "To speed up installation I'll change npm mirrors to Taobao."
+		npm config set registry 'https://registry.npm.taobao.org'
+		export ELECTRON_MIRROR='https://npm.taobao.org/mirrors/electron/'
+		export SASS_BINARY_SITE='https://npm.taobao.org/mirrors/node-sass'
+	else
+		curl myip.ipip.net | grep -i "China"
+		if [ $? -eq 0 ]
+		then
+			echo "Yes,I'm sure you are in China."
+			echo "To speed up installation I'll change npm mirrors to Taobao."
+                	npm config set registry 'https://registry.npm.taobao.org'
+                	export ELECTRON_MIRROR='https://npm.taobao.org/mirrors/electron/'
+                	export SASS_BINARY_SITE='https://npm.taobao.org/mirrors/node-sass'
+		fi
+	fi
+	echo "======================================"
 	sed -i '/"dmg"/,/"linux"/{//!d}' $_pkgname/package.json
 	sed -i '/"dmg"/d' $_pkgname/package.json
 	sed -i '/"deb"/d' $_pkgname/package.json

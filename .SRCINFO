@@ -1,7 +1,7 @@
 pkgbase = motrix
 	pkgdesc = elegent downloading tool frontend for aria2c,using vue(release version)
 	pkgver = v1.3.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/agalwood/Motrix
 	arch = x86_64
 	license = MIT
