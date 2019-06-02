@@ -1,6 +1,6 @@
 post_install() {
 	echo -e "\033[1;33mMake sure to grab the latest Windows host application build!"
-	echo -e "Get it here: https://ci.appveyor.com/project/gnif/lookingglass/build/artifacts"
+	echo -e "Get it from the 'Bleeding Edge' section here: https://looking-glass.hostfission.com/downloads"
 	echo -e "\033[1;36mAlternatively, switch to the versioned releases by building https://aur.archlinux.org/pkgbase/looking-glass/ instead.\033[0m"
 }
 
