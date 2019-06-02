@@ -1,7 +1,7 @@
 # Maintainer: Jakub Kądziołka <kuba@kadziolka.net>
 
 pkgname=dazzlie-git
-pkgver=31.facd1c9
+pkgver=36.4199ba0
 pkgrel=1
 pkgdesc="a command-line program that lets you convert between various retro tile graphics formats and PNG"
 arch=(x86_64)
@@ -18,7 +18,7 @@ pkgver(){
 }
 
 prepare(){
-	sed -i 's/crystal deps/shards/;s/crystal build/\0 --link-flags -Wl,-z,relro,-z,now,--as-needed/' dazzlie/Makefile
+	sed -i 's/crystal deps/shards/;s/crystal build/\0 --link-flags $(LDFLAGS)/' dazzlie/Makefile
 }
 
 build(){
