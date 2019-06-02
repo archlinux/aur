@@ -70,9 +70,9 @@ depends=('gconf'
          'xerces-c')
 optdepends=('gcc6: For MEX support')
 
-source=("local:///matlab.tar"
-	"local:///matlab.fik"
-	"matlab.png::https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png")
+source=("local:///matlab-r2018b.tar"
+	"local:///matlab-r2018b.fik"
+	"matlab-r2018b.png::https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png")
 md5sums=("SKIP" "SKIP" 'cf28632239db6e02bc09bcca6bf5360f')
 #PKGEXT='.pkg.tar'
 
