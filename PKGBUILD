@@ -4,8 +4,8 @@
 _gitname=darling
 pkgbase=$_gitname-git
 pkgname=('darling-git' 'darling-mach-dkms-git')
-pkgver=r2543.567a5a27
-pkgrel=2
+pkgver=r2545.8df457b0
+pkgrel=1
 pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
 url="http://www.darlinghq.org"
@@ -19,7 +19,6 @@ _make_depends_x86_64=('gcc-multilib')
 
 # Darling git repo and all submodules.
 source=('dkms.conf'
-        'linux-5.1.patch'
         'git+https://github.com/darlinghq/darling.git'
         'git+https://github.com/darlinghq/darling-DSTools.git'
         'git+https://github.com/darlinghq/darling-DirectoryService.git'
@@ -119,7 +118,7 @@ source=('dkms.conf'
         'git+https://github.com/darlinghq/darling-newlkm.git')
 
 # We skip md5 on all git repos
-md5sums=('d6d3b392245a45c6fb5f82037bfdbd19' '44d85fe17105c7ede4d334f05cf3e77e'
+md5sums=('d6d3b392245a45c6fb5f82037bfdbd19'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
@@ -247,10 +246,6 @@ prepare() {
 
 	echo "Creating build directory."
 	mkdir -pv "build"
-
-  echo "Patching LKM for linux 5.1"
-  cd "$srcdir/darling/src/lkm"
-  patch -p1 < "$srcdir"/linux-5.1.patch
 }
 
 build() {
