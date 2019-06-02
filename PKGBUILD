@@ -1,7 +1,7 @@
-# Maintainer: Ainola
+# Maintainer: Brett Cornwall <ainola@archlinux.org>
 
 pkgname=python-vipaccess
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="A free software implementation of Symantec's VIP Access application and protocol."
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-nose')
 depends=('python-pycryptodome' 'python-lxml' 'python-oath' 'python-requests')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dlenski/python-vipaccess/archive/v$pkgver.tar.gz")
-sha256sums=('c48b92554e9e08d1c6e4a25f7c10cf7d97346a963a7adf0e4a99eaf98b68f98f')
+sha256sums=('240bfbd32edd7dba7481ad2bfc51678f970fa4106e092c6a8e9d0f7b1b4d5630')
 
 build() {
     cd "python-vipaccess-$pkgver"
