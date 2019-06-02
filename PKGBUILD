@@ -24,16 +24,24 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}/"
 
-	## Needs Internet; Downloads gamepacks
-	## Possible values for the GAMEPACKS_LICENSE_LIST filter are "free", "all" (free + proprietary) and "none"
-	## To only fetch Xonotic and Unvanquished gamepacks for example, use -DGAMEPACKS_LICENSE_LIST=none with -DGAMEPACKS_NAME_LIST="Xonotic Unvanquished"
-	cmake -G 'Unix Makefiles' -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DFHS_INSTALL=ON -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
+	# Needs Internet; Downloads gamepacks
+	# Possible values for the GAMEPACKS_LICENSE_LIST filter are "free",
+    # "all" (free + proprietary) and "none". To only fetch Xonotic and
+    # Unvanquished gamepacks for example, use -DGAMEPACKS_LICENSE_LIST=none
+    # with -DGAMEPACKS_NAME_LIST="Xonotic Unvanquished"
+
+	cmake -G 'Unix Makefiles' -H. -Bbuild \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DFHS_INSTALL=ON \
+    -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
 	-DDOWNLOAD_GAMEPACKS=ON \
 	-DGAMEPACKS_LICENSE_LIST=free \
 	-DGAMEPACKS_NAME_LIST=none
 	
 	cmake --build build -- -j$(nproc)
-	cmake -H. -Bbuild # This step is needed again for CMake to detect the gamepacks it has to install 
+
+    # This step is needed again for CMake to detect the gamepacks it has to install
+	cmake -H. -Bbuild
 }
 
 package() {
@@ -42,13 +50,18 @@ package() {
 	cmake --build build -- install
 	
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/netradiant/LICENSE"
-	rm -r ${pkgdir}/usr/share/mime/ # Map mime type doesn't work and produces a pacman warning
+
+    # Map mime type doesn't work and produces a pacman warning
+	rm -r ${pkgdir}/usr/share/mime/
     
-	## Fix (some of) the included gamepacks so they work with the official archlinux packages
-	## Normally we would do this in prepare(), but this is not an viable option, as the Makefile initiates the download and update of the gamepacks.
-	## So we would need to call the referenced download script ourselves in prepare() and modify the Makefile so it doesn't try to do it in build() too.
-	## Not worth it.
-	## Don't forget to comment the lines with the gamepacks that you don't use, otherwise the sed command will fail.
+	# Fix (some of) the included gamepacks so they work with the official
+    # Archlinux packages. Normally we would do this in prepare(), but this
+    # is not an viable option, as the Makefile initiates the download and
+    # update of the gamepacks. So we would need to call the referenced
+    # download script ourselves in prepare() and modify the Makefile so it
+    # doesn't try to do it in build() too. Not worth it. Don't forget to
+    # comment the lines with the gamepacks that you don't use, otherwise
+    # the sed command will fail.
 
 	sed -i -e '/enginepath_linux/c\  enginepath_linux="/usr/share/nexuiz/"' "${pkgdir}/usr/share/netradiant/games/nexuiz.game"
 	sed -i -e '/enginepath_linux/c\  enginepath_linux="/opt/warsow/"' "${pkgdir}/usr/share/netradiant/games/warsow.game"
