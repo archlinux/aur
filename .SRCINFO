@@ -1,6 +1,6 @@
 pkgbase = meters-lv2
 	pkgdesc = Collection of LV2 plug-ins for audio-level metering from x42
-	pkgver = 0.9.8
+	pkgver = 0.9.12
 	pkgrel = 1
 	url = http://x42-plugins.com/x42/x42-meters
 	arch = i686
@@ -19,10 +19,10 @@ pkgbase = meters-lv2
 	conflicts = lv2-meters
 	conflicts = meters.lv2
 	conflicts = x42-plugins
-	source = meters-lv2-0.9.8.tar.gz::https://github.com/x42/meters.lv2/archive/v0.9.8.tar.gz
-	source = robtk-0.6.1.tar.gz::https://github.com/x42/robtk/archive/v0.6.1.tar.gz
-	md5sums = 5b31af71baf67157e3d6f17565f31c67
-	md5sums = fc8167293207c9bdd5d413e8575ee759
+	source = meters-lv2-0.9.12.tar.gz::https://github.com/x42/meters.lv2/archive/v0.9.12.tar.gz
+	source = robtk-0.6.4.tar.gz::https://github.com/x42/robtk/archive/v0.6.4.tar.gz
+	md5sums = ba7803bbd3b3c3a51d5fe4767588a8d0
+	md5sums = 1551b6582813d3a136916f068402adbe
 
 pkgname = meters-lv2
 
