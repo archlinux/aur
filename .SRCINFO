@@ -1,7 +1,7 @@
 pkgbase = repocalc
 	pkgdesc = An ncurses RPN calculator
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drdonahue/repocalc
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = repocalc
 	makedepends = pkgconf
 	depends = ncurses
 	depends = glibc
-	source = https://github.com/drdonahue/repocalc/archive/v1.0.1.tar.gz
+	source = https://github.com/drdonahue/repocalc/archive/repocalc-1.0.1.tar.gz
 	sha256sums = 306845ebbb30e3da3559391bafa7d648a92ca397156883863537df04e45d9be3
 
 pkgname = repocalc
