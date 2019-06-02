@@ -9,7 +9,13 @@ Group=signal
 RuntimeDirectory=signal-web-gateway
 WorkingDirectory=/var/lib/signal-web-gateway/
 ExecStart=/usr/bin/signal-web-gateway -gateway
+LimitNOFILE=1048576
+LimitNPROC=64
 PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/signal-web-gateway
 
 [Install]
 WantedBy=multi-user.target
