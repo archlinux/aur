@@ -1,0 +1,19 @@
+pkgbase = ncpong-git
+	pkgdesc = An example game made with the nCine
+	pkgver = r37.42a14b6
+	pkgrel = 1
+	url = http://ncine.github.io
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = ncine
+	provides = ncpong
+	conflicts = ncpong
+	options = !strip
+	source = git://github.com/nCine/ncPong
+	md5sums = SKIP
+
+pkgname = ncpong-git
+
