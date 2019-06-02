@@ -12,7 +12,17 @@ license=('MIT')
 groups=()
 depends=('bash'
 	 'tar'
-	 'fakeroot''glibc''glib2''nss''nspr''gtk3''pango''atk''nettle''libxcb')
+	 'fakeroot'
+	 'glibc'
+	 'glib2'
+	 'nss'
+	 'nspr'
+	 'gtk3'
+	 'pango'
+	 'atk'
+	 'nettle'
+	 'libxcb'
+	)
 makedepends=('curl'
 	     'yarn'
 	     'npm')
