@@ -3,7 +3,7 @@ _srcname=LuaFormatter
 _pkgname=lua-format
 pkgname=$_pkgname-ext-git
 pkgver=r50.21e0205
-pkgrel=4
+pkgrel=5
 pkgdesc='LuaFormatter with extended identifiers'
 arch=(x86_64)
 url=https://github.com/tkkcc/LuaFormatter
@@ -31,6 +31,7 @@ build() {
   cd $_srcname
   antlr4 -Dlanguage=Cpp -no-listener -visitor -o generated Lua.g4
   cmake -D BUILD_TESTS=OFF COVERAGE=OFF .
+  make clean
   make
 }
 package() {
