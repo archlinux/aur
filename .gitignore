@@ -1,0 +1,4 @@
+libretro-sameboy-git/
+pkg/
+src/
+*.tar.xz
