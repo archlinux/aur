@@ -1,6 +1,6 @@
 # Maintainer: KingofToasters <dev at sgregoratto dot me>
 pkgname=put
-_pkgver="2.0.5-a.3"
+_pkgver="2.0.13-a.0"
 pkgver="$(tr '-' '.' <<< $_pkgver)"
 pkgrel=1
 pkgdesc='A modern, featureful echo(1)'
@@ -8,7 +8,7 @@ url='https://github.com/Unlimiter/put'
 license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("$url/archive/v$_pkgver.tar.gz")
-sha256sums=('474a9074ac380c3ff37f4637f66fc5be2e868492f313b2ef486c767d1c16d624')
+sha256sums=('a18395ff7e20c788b6b34cfb8eac56223f46bf30cf676b3666eb0d403b6b2f98')
 
 build() {
   cd "$pkgname-$_pkgver"
