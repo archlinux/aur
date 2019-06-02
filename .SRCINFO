@@ -1,6 +1,6 @@
 pkgbase = python-pyroma
 	pkgdesc = Test your project's packaging friendliness
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = https://bitbucket.org/regebro/pyroma
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-pyroma
 	makedepends = python-docutils
 	makedepends = python2-docutils
 	options = !emptydirs
-	source = https://pypi.io/packages/source/p/pyroma/pyroma-2.4.tar.gz
-	md5sums = f0c0e28bd070afa5c4c682f02909349f
+	source = https://pypi.io/packages/source/p/pyroma/pyroma-2.5.tar.gz
+	sha256sums = 54d332f540d4828bc5672b75ccf9e12d4b2f72a42a4f304bcec1c73565aecc26
 
 pkgname = python-pyroma
 	depends = python
