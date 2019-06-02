@@ -1,85 +1,70 @@
 # Maintainer: Yunhui Fu <yhfudev@gmail.com>
 
 pkgname=tulip
-pkgver=5.1.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc='Tulip is an information visualization framework dedicated to the analysis and visualization of relational data.'
 arch=( 'i686' 'x86_64' 'armv6' 'armv6h' 'arm7h' )
 url='http://tulip.labri.fr/'
 license=('GPL')
 depends=(
-    'qt4'
+    'qt5-base'
     'libjpeg'
     'libpng'
     'zlib'
     'glew'
     'libxml2'
     'freetype2'
-    'qtwebkit'
+    'qhull'
+    'quazip'
+    'yajl'
+    'python'
+    'desktop-file-utils'
+    'qt5-webkit'
     )
 makedepends=(
     'cmake'
+    'cppunit'
+    'sip'
+    )
+optdepends=(
+    'doxygen'
+    'python-sphinx'
     )
 source=(
     "https://sourceforge.net/projects/auber/files/tulip/tulip-${pkgver}/tulip-${pkgver}_src.tar.gz"
-    #"tulip-svn::svn+http://svn.code.sf.net/p/auber/code/"
     )
-md5sums=('f29fc38efe91e2402adbffea695bd794')
-sha1sums=('9d615400cd9b854547698cb5efb231c7dbef7e63')
-
-pkgver_git() {
-    cd "${srcdir}/${pkgname}"
-    local ver="$(git show | grep commit | awk '{print $2}' )"
-    #printf "r%s" "${ver//[[:alpha:]]}"
-    echo ${ver:0:7}
-}
-
-pkgver_svn() {
-    cd "${srcdir}/${pkgname}"
-    local ver="$(svn info | grep Revision | awk '{print $2}' )"
-    #printf "r%s" "${ver//[[:alpha:]]}"
-    echo ${ver:0:7}
-}
-
-#pkgver() {
-#    pkgver_git
-#}
+sha256sums=('a863ee21877fe0181ef5c9fa215f27ba1b8773fc3d945e23c323d7ff0f0db60b')
 
 prepare()
 {
-    #cd "${srcdir}/${pkgname}"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
 
-    mkdir -p build && cd build && \
+    mkdir -p build && cd build
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DTULIP_BUILD_TESTS=ON \
         -DBUILD_SHARED_LIBS=ON \
-        -DBUILD_STATIC_LIBS=OFF \
         ..
 }
 
 build()
 {
-    #cd "${srcdir}/${pkgname}"
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
-    cd build && \
-    make -j $(cat /proc/cpuinfo | grep processor | wc -l | awk '{print $0 + 1;}')
+    cd "${pkgname}-${pkgver}/build"
+    make
 }
 
-verify_build()
+check()
 {
-    #cd "${srcdir}/${pkgname}"
-    cd "${srcdir}/${pkgname}-${pkgver}"
-
+    cd "${pkgname}-${pkgver}/build"
+    make test
 }
 
 package()
 {
-    #cd "${srcdir}/${pkgname}"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}/build"
 
-    cd build && \
     make DESTDIR="${pkgdir}" install
 }
