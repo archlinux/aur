@@ -2,38 +2,44 @@
 
 _pkgname=looking-glass
 pkgbase="${_pkgname}-git"
-pkgname=("${_pkgname}-git" "${_pkgname}-module-dkms-git")
-pkgver=a11.r41.g697dbc7
+pkgname=("${_pkgname}-git" "${_pkgname}-module-dkms-git" "${_pkgname}-host-git")
+epoch=1
+pkgver=B1_rc5.r6.g2b4f809
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.hostfission.com"
 arch=('x86_64')
 license=('GPL2')
 makedepends=('cmake' 'git' 'sdl2_ttf' 'glu' 'fontconfig' 'libconfig' 'spice-protocol')
-source=("${_pkgname}::git+https://github.com/gnif/LookingGlass.git"
-        "dkms.conf")
-sha512sums=('SKIP'
-            'e1f6cd6aabd336d2af97b44a2746e5a0b41d5d5942993379b1284d1cc8d4981fced0ae44d8105709f2bc45a939dfc7f229018c680b0742c3f0778fe28ba301f8')
+source=("${_pkgname}::git+https://github.com/gnif/LookingGlass.git")
+sha512sums=('SKIP')
 install="${pkgbase}.install"
 
 pkgver() {
 	cd "${_pkgname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	local TAG=$(git describe --abbrev=0 --tags)
+	local SUFFIX=$(git describe --long --tags | sed 's/^'"${TAG}"'-\([^-]*-g\)/r\1/;s/-/./g')
+	printf "%s.%s" "${TAG//-/_}" "${SUFFIX}"
 }
 
 build() {
-	cd "${_pkgname}/client"
-	cmake .
-	make
+	cd "${srcdir}/${_pkgname}"
+	for b in {client,c-host}; do
+		pushd "${b}"
+		cmake -DCMAKE_INSTALL_PREFIX=/usr .
+		make
+		popd
+	done
 }
 
 package_looking-glass-git() {
 	pkgdesc="A client application for accessing the LookingGlass IVSHMEM device of a VM"
-	depends=('sdl2_ttf' 'glu' 'nettle' 'fontconfig' 'libconfig')
+	depends=('sdl2_ttf' 'glu' 'nettle' 'fontconfig')
 	provides=("${_pkgname}")
 	conflicts=("${_pkgname}")
 
-	install -Dm755 "${srcdir}/${_pkgname}/client/looking-glass-client" "${pkgdir}/usr/bin/looking-glass-client"
+	cd "${srcdir}/${_pkgname}/client"
+	make DESTDIR="${pkgdir}" install
 }
 
 package_looking-glass-module-dkms-git() {
@@ -42,12 +48,18 @@ package_looking-glass-module-dkms-git() {
 	provides=("${_pkgname}-module-dkms")
 	conflicts=("${_pkgname}-module-dkms")
 
-	install -Dm644 "${srcdir}/dkms.conf" "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
+	cd "${srcdir}/${_pkgname}/module"
+	for f in {Makefile,dkms.conf,kvmfr.c}; do
+		install -Dm644 "${f}" "${pkgdir}/usr/src/${pkgbase}-${pkgver}/${f}"
+	done
+}
 
-	# Set module name and version
-	sed -e "s/@PKGNAME@/${_pkgname}/" \
-		-e "s/@PKGVER@/${pkgver}/" \
-		-i "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
+package_looking-glass-host-git() {
+	pkgdesc="Linux host application for pushing frame data to the LookingGlass IVSHMEM device"
+	depends=('libxcb' 'zlib')
+	provides=("${_pkgname}-host")
+	conflicts=("${_pkgname}-host")
 
-	cp -r "${srcdir}/${_pkgname}/module/"* "${pkgdir}/usr/src/${_pkgname}-${pkgver}/"
+	cd "${srcdir}/${_pkgname}/c-host"
+	make DESTDIR="${pkgdir}" install
 }
