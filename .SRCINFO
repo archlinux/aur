@@ -1,0 +1,26 @@
+pkgbase = emacs-harfbuzz-git
+	pkgdesc = GNU Emacs, git checkout from the harfbuzz branch
+	pkgver = 27.0.50.r136526
+	pkgrel = 1
+	url = http://www.gnu.org/software/emacs/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = texlive-core
+	depends = gpm
+	depends = m17n-lib
+	depends = libdbus
+	depends = jansson
+	depends = libmagick
+	depends = webkit2gtk
+	provides = emacs
+	provides = emacs-seq
+	conflicts = emacs
+	options = docs
+	options = !emptydirs
+	source = git://git.savannah.gnu.org/emacs.git#branch=harfbuzz
+	sha256sums = SKIP
+
+pkgname = emacs-harfbuzz-git
+
