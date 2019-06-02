@@ -1,4 +1,5 @@
 pkgbase = haskell-bytestring-progress
+	pkgdesc = A library for tracking the consumption of a lazy ByteString
 	pkgver = 1.2
 	pkgrel = 2
 	url = http://hackage.haskell.org/package/bytestring-progress
