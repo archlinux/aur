@@ -1,12 +1,12 @@
 pkgbase = psalm
 	pkgdesc = Psalm is a static analysis tool for finding errors in PHP applications, built on top of PHP Parser.
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 2
 	url = https://getpsalm.org
 	arch = any
 	license = MIT
 	depends = php
-	source = https://github.com/vimeo/psalm/releases/download/3.3.0/psalm.phar
-	sha512sums = 3de8763d89b289480eda39884909d9a95a3d8dc2f9307767628e7d2119c3f851b4ec2c52d577c97cb857aac8148c61b3ac0484ed0808e64ac0b94c99eda8ed68
+	source = https://github.com/vimeo/psalm/releases/download/3.4.0/psalm.phar
+	sha512sums = ca1db286632cbb3ce030d1e8d509441d121f27c14a4369646b27b1f4956df3920f5306f2916897e33603ab58a493c195e9fd359118090f6d896f9ef2d3158add
 
 pkgname = psalm
