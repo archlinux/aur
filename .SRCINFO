@@ -1,8 +1,8 @@
 pkgbase = java-openjfx-ea-bin
 	pkgdesc = Java OpenJFX 13 Early-Access Build.
 	pkgver = 13b8
-	pkgrel = 1
-	url = http://jdk.java.net/openjfx/
+	pkgrel = 2
+	url = https://openjfx.io/
 	arch = x86_64
 	license = GPL2
 	depends = java-openjdk-ea-bin
