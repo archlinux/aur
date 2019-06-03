@@ -1,0 +1,13 @@
+pkgbase = xfwm4-theme-dots-git
+	pkgdesc = A xfwm4 theme for xfce
+	pkgver = 9dae772
+	pkgrel = 1
+	url = https://github.com/rafacuevas3/dots-theme
+	arch = any
+	license = unknown
+	makedepends = git
+	source = xfwm4-theme-dots-git::git+https://github.com/rafacuevas3/dots-theme.git
+	sha256sums = SKIP
+
+pkgname = xfwm4-theme-dots-git
+
