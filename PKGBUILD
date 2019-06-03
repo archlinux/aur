@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=viper4linux-gui
 pkgver=1.9
 pkgrel=1
