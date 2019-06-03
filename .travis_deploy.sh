@@ -5,4 +5,4 @@ cp $TRAVIS_BUILD_DIR/$pkgname*$pkgver*.pkg.tar.xz $(pwd)
 git add $pkgname*$pkgver*.pkg.tar.xz
 git status
 git commit -a -m "$pkgname $pkgver" -m "build_log: $TRAVIS_BUILD_WEB_URL" 
-git push
+git pull --rebase && git push
