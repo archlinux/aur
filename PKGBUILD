@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=symengine
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast symbolic manipulation library, written in C++"
 url="http://sympy.org/"
 arch=('i686' 'x86_64')
@@ -20,6 +20,7 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DCMAKE_INSTALL_LIBDIR:PATH=lib \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DWITH_TCMALLOC:BOOL=ON \
     -DWITH_PTHREAD:BOOL=ON \
