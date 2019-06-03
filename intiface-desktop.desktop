@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=intiface-desktop
+Comment=Desktop Intiface Application
+Exec=intiface-desktop
+Terminal=false
+Type=Application
+Icon=intiface-desktop
+StartupWMClass=intiface-desktop
+Categories=Utility
