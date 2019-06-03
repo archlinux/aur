@@ -1,9 +1,9 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=botsay
-pkgver=1.0.1
+pkgver=1.2.1
 pkgrel=1
-pkgdesc='Like cowsay, but with randomly generated ASCII robots'
+pkgdesc='Like cowsay, but with randomly generated ASCII robots and rainbow support'
 arch=(x86_64)
 url='https://github.com/xyproto/botsay'
 license=(MIT)
@@ -14,7 +14,11 @@ md5sums=('SKIP')
 build() {
   cd $pkgname
 
-  go build -buildmode=pie -gccgoflags="-s -w $LDFLAGS"
+  go build \
+    -asmflags "all=-trimpath=$PWD" \
+    -buildmode=pie \
+    -gcflags "all=-trimpath=$PWD" \
+    -ldflags "-s -w -extldflags $LDFLAGS"
 }
 
 package() {
