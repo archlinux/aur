@@ -1,6 +1,6 @@
 # Maintainer: George Angelopoulos <george@usermod.net>
 pkgname=xsos
-pkgver=0.7.13
+pkgver=0.7.19
 pkgrel=1
 pkgdesc="Summarize system info from sosreports"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('bash' 'gawk' 'sed')
 optdepends=('dmidecode: for bios info'
             'ethtool: for network interface data')
 source=("https://github.com/ryran/xsos/archive/v${pkgver}.tar.gz")
-md5sums=('1abb692adc0160836876eea40b5bc286')
+md5sums=('ea78cc2c54df57293f3c44cdc3b65868')
 
 package() {
     cd "${pkgname}-${pkgver}"
