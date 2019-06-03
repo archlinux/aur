@@ -6,31 +6,39 @@ branches:
 
 cache:
   directories:
-  - src
-# - AUR-repo
+  - .ccache
+  - .arch-cache
+  - AUR-repo
+  - LuxCore.git
 
 services:
 - docker
 
 arch:
   repos:
-# - papyros=http://dash.papyros.io/repos/$repo/$arch
   - bartus=https://github.com/bartoszek/AUR-repo/raw/master
   packages:
-  # arch/aur packages
-# - python
-# - perl
+# disable to prevent `package-cleanup.hook`
+# - ccache
+# - moreutils
   script:
-# - "sudo pacman -Sy"
-  - "makepkg -s --noconfirm TRAVIS=1"
+  - "echo 'options+=(ccache)' >> PKGBUILD"
+  - "export CCACHE_DIR='/build/.ccache'"
+# COMPRESSXZ=(), can't be passed to makepkg as bash dosn't support array in `export` statement.
+  - "echo 'COMPRESSXZ=(xz -T 0 -7 -c -z -)' >> PKGBUILD"
+# override `package-cleanup.hook` to preserve cache for travis.
+  - "sudo mkdir /etc/pacman.d/hooks/ && sudo ln -s /dev/null /etc/pacman.d/hooks/package-cleanup.hook"
+  - "sudo pacman -S --noconfirm ccache moreutils"
+  - "makepkg -s --noconfirm TRAVIS=1 MAKEFLAGS='-j2' 2>&1 |ts -s '[%.T]'"
+  - "ccache -s"
 
 script:
-- "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
-- "ls $(pwd)"
+- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/pacman-pkg-cache/arch-travis.sh | bash"
+- "echo 'pacman pkg cache size: ' $(du -h .arch-cache|cut -f1) in $(ls .arch-cache|wc -l) files"
 
 deploy:
-  provider: script
-  script: bash .travis_deploy.sh
   on:
     branch: master
   skip_cleanup: true
+  provider: script
+  script: bash .travis_deploy.sh
