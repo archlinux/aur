@@ -11,8 +11,8 @@ arch=(i686 x86_64)
 url="https://gitlab.gnome.org/GNOME/geary"
 license=('GPL3')
 depends=('appstream-glib' 'enchant' 'gcr' 'gmime' 'gtk3' 'gnome-online-accounts'
-         'gspell' 'libgee' 'libnotify' 'libsoup' 'libunwind' 'libxml2' 'sqlite'
-         'webkit2gtk')
+         'gspell' 'libgee' 'libnotify' 'libsoup' 'libunwind' 'libxml2'
+         'libytnef' 'sqlite' 'webkit2gtk')
 makedepends=('git' 'itstool' 'meson' 'vala')
 provides=('geary')
 conflicts=('geary')
