@@ -7,12 +7,13 @@ pkgbase = rakudo-star
 	arch = x86_64
 	license = PerlArtistic
 	makedepends = perl>=5.8
+	depends = nqp>=2019.03
 	optdepends = zef
 	provides = rakudo-star
 	provides = rakudo-moarvm
 	conflicts = rakudo-star
 	conflicts = rakudo-moarvm
-	source = http://rakudo.org/downloads/star/rakudo-star-2019.03.tar.gz
+	source = https://rakudostar.com/latest/star/source
 	sha512sums = f9632c6193b8b6fc5ba10d8eb2bf69560965b77bf1aa08af458f8a5fee52d9750bbbb2b2fcd42a0b609d925627940bb3167520a32a5df04cce8d2c4e7815b999
 
 pkgname = rakudo-star
