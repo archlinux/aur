@@ -1,6 +1,6 @@
 pkgbase = netextender
 	pkgdesc = SonicWALL SSL VPN Client
-	pkgver = 9.0.805
+	pkgver = 10.0.807
 	pkgrel = 1
 	url = https://www.sonicwall.com/en-us/products/remote-access/vpn-client
 	install = netextender.install
@@ -10,14 +10,14 @@ pkgbase = netextender
 	depends = bash
 	depends = ppp
 	depends = net-tools
-	optdepends = java-runtime: GUI support
-	source_i686 = NetExtender-9.0.805.tgz::https://sslvpn.demo.sonicwall.com/NetExtender.tgz
+	depends = java-runtime
+	source_i686 = NetExtender-10.0.807.tgz::https://sslvpn.demo.sonicwall.com/NetExtender.tgz
 	source_i686 = https://www.sonicwall.com/legal/general-product-agreement
-	sha256sums_i686 = 88909607550cc1b88240baf9f9f10dcb3d2dc4b8842a1b2490ffbf21cfadc21d
+	sha256sums_i686 = 94c6e0003cf7e2a623f0359e6f33c92521cde1e6b878a28fc700eb3f4fd814b3
 	sha256sums_i686 = SKIP
-	source_x86_64 = NetExtender-9.0.805.x86_64.tgz::https://sslvpn.demo.sonicwall.com/NetExtender.x86_64.tgz
+	source_x86_64 = NetExtender-10.0.807.x86_64.tgz::https://sslvpn.demo.sonicwall.com/NetExtender.x86_64.tgz
 	source_x86_64 = https://www.sonicwall.com/legal/general-product-agreement
-	sha256sums_x86_64 = 96a3b8d8d76a2ded82d049bd9c80ecd52a561cbccfd2d253a641cdbcbcbeb9f7
+	sha256sums_x86_64 = 773849f159db917db6a89b7593849eec9af0f0fc08ba57ccf6db45b07aad3daf
 	sha256sums_x86_64 = SKIP
 
 pkgname = netextender

@@ -8,23 +8,31 @@
 # Contributor: Jeff Sharpe
 # Contributor: Roman Pearah
 
+# Set to 0 if you don't want to install
+# files and dependencies needed for the GUI
+_GUI=1
+
 pkgname=netextender
-pkgver=9.0.805
+pkgver=10.0.807
 pkgrel=1
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('i686' 'x86_64')
 url="https://www.sonicwall.com/en-us/products/remote-access/vpn-client"
 license=('custom')
 depends=('bash' 'ppp' 'net-tools')
-optdepends=('java-runtime: GUI support')
 source_i686=("NetExtender-${pkgver}.tgz::https://sslvpn.demo.sonicwall.com/NetExtender.tgz"
              "https://www.sonicwall.com/legal/general-product-agreement")
 source_x86_64=("NetExtender-${pkgver}.x86_64.tgz::https://sslvpn.demo.sonicwall.com/NetExtender.x86_64.tgz"
                "https://www.sonicwall.com/legal/general-product-agreement")
-sha256sums_i686=('88909607550cc1b88240baf9f9f10dcb3d2dc4b8842a1b2490ffbf21cfadc21d'
+sha256sums_i686=('94c6e0003cf7e2a623f0359e6f33c92521cde1e6b878a28fc700eb3f4fd814b3'
                  'SKIP')
-sha256sums_x86_64=('96a3b8d8d76a2ded82d049bd9c80ecd52a561cbccfd2d253a641cdbcbcbeb9f7'
+sha256sums_x86_64=('773849f159db917db6a89b7593849eec9af0f0fc08ba57ccf6db45b07aad3daf'
                  'SKIP')
+
+if (( $_GUI )); then
+    depends+=('java-runtime')
+fi
+
 
 install="${pkgname}.install"
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
@@ -38,7 +46,6 @@ package() {
 
   install -Dm 644 sslvpn "${pkgdir}/etc/ppp/peers/sslvpn"
   install -Dm 755 netExtender "${pkgdir}/usr/bin/netExtender"
-  install -Dm 755 netExtenderGui "${pkgdir}/usr/bin/netExtenderGui"
   install -Dm 744 nxMonitor "${pkgdir}/usr/bin/nxMonitor"
 
   mkdir -p "${pkgdir}/etc/ppp/ip-down.d"
@@ -53,11 +60,14 @@ package() {
   install -Dm 755 libNetExtenderEpc.so "${pkgdir}/usr/lib/libNetExtenderEpc.so"
   install -Dm 644 ca-bundle.crt "${pkgdir}/usr/share/netExtender/ca-bundle.crt"
 
-  # netExtenderGui is hard-coded to check in /usr/lib
-  install -Dm 644 NetExtender.jar "${pkgdir}/usr/lib/NetExtender.jar"
-  install -Dm 644 icons/* "${pkgdir}/usr/share/netExtender/icons"
-  install -Dm 664 NetExtender.desktop "${pkgdir}/usr/share/netExtender/NetExtender.desktop"
-  install -Dm 664 NetExtender.desktop "${pkgdir}/usr/share/applications/sonicwall-netextender.desktop"
+  if (( $_GUI )); then
+    install -Dm 755 netExtenderGui "${pkgdir}/usr/bin/netExtenderGui"
+    # netExtenderGui is hard-coded to check in /usr/lib
+    install -Dm 644 NetExtender.jar "${pkgdir}/usr/lib/NetExtender.jar"
+    install -Dm 644 icons/* "${pkgdir}/usr/share/netExtender/icons"
+    install -Dm 664 NetExtender.desktop "${pkgdir}/usr/share/netExtender/NetExtender.desktop"
+    install -Dm 664 NetExtender.desktop "${pkgdir}/usr/share/applications/sonicwall-netextender.desktop"
 
-  chown -f root:root "${pkgdir}/usr/share/applications/sonicwall-netextender.desktop"
+    chown -f root:root "${pkgdir}/usr/share/applications/sonicwall-netextender.desktop"
+  fi
 }
