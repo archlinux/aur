@@ -1,7 +1,7 @@
 pkgbase = chromium-ublock-origin
 	pkgdesc = An efficient blocker for Chromium
 	pkgver = 1.19.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gorhill/uBlock
 	install = chromium-ublock-origin.install
 	arch = any

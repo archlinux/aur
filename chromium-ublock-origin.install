@@ -1,6 +1,8 @@
 post_install() {
 	echo "Instructions on how to add uBlock Origin to you Chrome/Chromium browser can"
     echo "be found at https://github.com/gorhill/uBlock/blob/master/dist/README.md."
+    echo ""
+    echo "The unpacked extension is located in: /usr/share/chromium-ublock-origin"
 }
 
 post_upgrade() {
