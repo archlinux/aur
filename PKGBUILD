@@ -1,11 +1,11 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=ncl
-pkgver=6.5.0
+pkgver=6.6.2
 pkgrel=1
 pkgdesc='Ncar Command Language, is an interpreted language designed specifically for scientific data analysis and visualization'
 url='http://www.ncl.ucar.edu'
-license=('custom:NCL Source Code License')
+license=('APACHE')
 arch=('i686' 'x86_64')
 depends=('libxext' 'cairo' 'pixman' 'fontconfig' 'expat' 'bzip2' 'zlib' 'netcdf' 'hdf5' 
          'triangle' 'hdf4' 'netcdf-fortran' 'libxt' 'libxaw' 'libxext' 'libxpm' 'udunits'
@@ -23,7 +23,7 @@ source=(ncl-$pkgver.tar.gz::https://github.com/NCAR/ncl/archive/$pkgver.tar.gz
         paths.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-5.1.0-paths.patch
         ncl-libs.patch::https://src.fedoraproject.org/rpms/ncl/raw/master/f/ncl-libs.patch)
 optdepends=('ncl-highres: High-resolution coastlines (RANGS and GSHHS)')
-md5sums=('b70819091cef3ae2d5eb106ecbc50b2c'
+md5sums=('38e3d2b55490f6eac93035d31579a45e'
          '10aff8d7950f5e0e2fb6dd2e340be2c9'
          'bdbef74e361df88fbceff912bff6dd8a'
          '33fd270a3ea1b4beb770b3e89ada4f59'
