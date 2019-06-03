@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nuitka-git
-pkgver=0.6.3.r0.g3cf363c2
+pkgver=0.6.3.1.r137.g99b496e6
 pkgrel=1
 pkgdesc="A Python compiler"
 arch=('any')
@@ -12,8 +12,7 @@ makedepends=('git' 'python-setuptools')
 optdepends=('chrpath: for building standalone executables')
 provides=('nuitka')
 conflicts=('nuitka')
-options=('!emptydirs')
-source=("git+https://git.nuitka.net/Nuitka.git")
+source=("git+https://github.com/Nuitka/Nuitka.git")
 sha256sums=('SKIP')
 
 
