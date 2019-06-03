@@ -1,9 +1,9 @@
 # Maintainer : Chris Elston chris.elston@blueyonder.co.uk
 # Contributor : Artem Klevtsov a.a.klevtsov@gmail.com
 
-_pkgname=py3exiv2
+_pkgname=python3-exiv2
 pkgname=python-exiv2
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="py3exiv2 is a Python3 binding to exiv2, the C++ library for manipulation of EXIF, IPTC and XMP image metadata."
 url="https://launchpad.net/py3exiv2"
@@ -12,7 +12,7 @@ depends=('python>=3.7' 'boost-libs' 'exiv2')
 makedepends=('boost')
 license=('GPL3')
 source=("http://www.py3exiv2.tuxfamily.org/releases/python3-exiv2-${pkgver}.tar.gz")
-sha512sums=('17bd83fe96c836daf01137c99a2e5bfdf7a506e27570b680cf967469963c161c0ef90d7185801128512ed79f6b64b7fe8f720c00db8ecf00e59c29f6e8766b71')
+sha512sums=('ece1133b8ba0566617438e38f371044df52451a2952e55f05f52f2ec5f4323fe39b797a482c5a7b5666eea35fc88d1207d16d4246e984c05a56bb2fdb421e319')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
