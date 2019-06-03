@@ -1,7 +1,7 @@
 # Maintainer: Juan Simón <play4pro@protonmail.com>
 
 pkgname=gosearch-git
-pkgver=r44.71829c9
+pkgver=r49.f8254a3
 pkgrel=1
 pkgdesc="A fast, real-time file searching program for linux"
 url="https://github.com/ozeidan/gosearch"
