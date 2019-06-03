@@ -3,12 +3,11 @@
 
 pkgname=("python-fakeredis" "python2-fakeredis")
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Fake implementation of redis API (redis-py) for testing purposes"
 arch=("any")
 url="https://github.com/jamesls/fakeredis"
 license=("BSD")
-depends=("python" "python-redis")
 checkdepends=(
     "python-nose" "python2-nose"
     "python-lupa" "python2-lupa"
@@ -37,6 +36,7 @@ check() {
 }
 
 package_python-fakeredis() {
+    depends=("python" "python-redis" "python-sortedcontainers")
     optdepends=("python-lupa: Lua scripts")
     cd "$srcdir/python3-build"
     python3 setup.py install --root="$pkgdir" -O1
@@ -44,6 +44,7 @@ package_python-fakeredis() {
 }
 
 package_python2-fakeredis() {
+    depends=("python" "python2-redis")
     optdepends=("python2-lupa: Lua scripts")
     cd "$srcdir/python2-build"
     python2 setup.py install --root="$pkgdir" -O1

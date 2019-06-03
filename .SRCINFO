@@ -1,7 +1,7 @@
 pkgbase = python-fakeredis
 	pkgdesc = Fake implementation of redis API (redis-py) for testing purposes
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jamesls/fakeredis
 	arch = any
 	license = BSD
@@ -11,15 +11,18 @@ pkgbase = python-fakeredis
 	checkdepends = python2-lupa
 	checkdepends = python-hypothesis
 	checkdepends = python2-hypothesis
-	depends = python
-	depends = python-redis
 	options = !emptydirs
 	source = https://github.com/jamesls/fakeredis/archive/1.0.3.tar.gz
 	sha256sums = 4d5a501a39c321acfdb9e41c9a66851852caa6f3ed4d1c7de8ea2bf17ef6e457
 
 pkgname = python-fakeredis
+	depends = python
+	depends = python-redis
+	depends = python-sortedcontainers
 	optdepends = python-lupa: Lua scripts
 
 pkgname = python2-fakeredis
+	depends = python
+	depends = python2-redis
 	optdepends = python2-lupa: Lua scripts
 
