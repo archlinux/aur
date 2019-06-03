@@ -5,7 +5,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=66.0.5
+pkgver=67.0
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -27,13 +27,13 @@ options=(!emptydirs !makeflags)
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         $_pkgname.desktop firefox-symbolic.svg
-        "https://gitlab.com/nikatar/for-aur/raw/master/firefox-appmenu/0001-bz-1468911.patch"
+        "https://gitlab.com/nikatar/for-aur/raw/master/firefox-appmenu/0001-bz-1521249.patch"
         unity-menubar.patch)
 sha256sums=('SKIP'
             'e8d2908727309a58bee9a3dc994e85140c5977b2d486381d67d5e22ad3830d28'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-            '821f858bac2e13ce02b8c20d5387d4ecc8ab2d0e4ebe0a517cbf935da6aeb31b'
-            'e1ea199faa3da245da5b8ed4fdc6cb71126d014c907d461f6fb7d0ec135e24e7')
+            'd0673786a6a1f1b9f6f66a3a1356afa33f1f18f59dabd92bd193c88c52a1d04c'
+            'cf4bed830bc271d00029f23b9c66f5bfa286532be0848ce8a045fce78ff66341')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -52,7 +52,7 @@ prepare() {
   cd mozilla-unified
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
-  patch -Np1 -i ../0001-bz-1468911.patch
+  patch -Np1 -i ../0001-bz-1521249.patch
 
   # actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
