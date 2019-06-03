@@ -5,8 +5,8 @@ pkgname=$_pkgname-git
 pkgcom=105
 pkgsha=6951b09
 pkgver=$pkgcom.$pkgsha
-pkgrel=4
-pkgdesc="Freedesktop.org menu and desktop icons support for Awesome WM"
+pkgrel=5
+pkgdesc="Freedesktop.org compliant desktop entries and menu for Awesome WM"
 arch=("any")
 url="https://github.com/lcpz/$_pkgname"
 license=("GPL2")
@@ -22,6 +22,6 @@ prepare() {
 }
 
 package() {
-    install -dm755 "$pkgdir/usr/share/lua/5.3/$_pkgname/"
-    install -m644 $_pkgname/{LICENSE,README.rst,*.lua} "$pkgdir/usr/share/lua/5.3/freedesktop"
+    install -dm755 "$pkgdir/usr/share/lua/5.3/${_pkgname##*-}"
+    install -m644 $_pkgname/{LICENSE,README.rst,*.lua} "$pkgdir/usr/share/lua/5.3/${_pkgname##*-}"
 }
