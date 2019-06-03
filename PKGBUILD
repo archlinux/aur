@@ -9,14 +9,14 @@ pkgdesc="Presentation Software for use with Promethean Hardware products."
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
 license=('unknown')
-depends_x86_64=(lib32-libxmu lib32-gst-plugins-base lib32-libjpeg6-turbo lib32-libxrender lib32-libgl lib32-fontconfig lib32-openssl-1.0 lib32-nss)
+depends=(lib32-libxmu lib32-gst-plugins-base lib32-libjpeg6-turbo lib32-libxrender lib32-libgl lib32-fontconfig lib32-openssl-1.0 lib32-nss)
 optdepends=('bin32-jre: For using the equation editor'
             'activdriver: Driver for Promethean hardware'
             'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')
-source_x86_64=("http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/activinspire/activinspire_${pkgver}-1.amd64_amd64.deb"
-               "inspire.sh")
-md5sums_x86_64=('de5a3c8345b59de44bdd946ad2d1541a'
-                'ff6607cc18a27e2535b8475f5f0db09d')
+source=("http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/activinspire/activinspire_${pkgver}-1.amd64_amd64.deb"
+        "inspire.sh")
+md5sums=('de5a3c8345b59de44bdd946ad2d1541a'
+         'ff6607cc18a27e2535b8475f5f0db09d')
 
 package() {
  # The upstream .deb actually includes 3 whole setups:
@@ -50,7 +50,7 @@ package() {
  echo " "
  echo "Promethean software has a bug that often causes it to hang when attempting to close it using the GUI."
  echo "It will also not start if an instance of it is already running."
- echo "To work around this all remaining ActivInspire instances are killed when you launch it. "
+ echo "To work around this all remaining ActivInspire instances are killed when you launch it."
  echo "This means you will lose your work when attempting to open a second instance while still working in the first one."
  echo " "
 }
