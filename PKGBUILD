@@ -5,7 +5,7 @@
 # Contributor: Alessio Sergi <asergi@archlinux.us>
 
 pkgname=lib32-libsodium
-pkgver=1.0.17
+pkgver=1.0.18
 pkgrel=1
 pkgdesc='A modern, portable, easy to use crypto library'
 arch=(x86_64)
@@ -29,11 +29,11 @@ build() {
   cd libsodium
 
   export CC='gcc -m32'
-  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_LIBDIR=/usr/lib32/pkgconfig
 
   ./configure \
-    --prefix='/usr' \
-    --libdir='/usr/lib32'
+    --prefix=/usr \
+    --libdir=/usr/lib32
   make
 }
 
