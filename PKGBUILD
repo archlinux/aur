@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='dynwg'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A DynDNS watchdog for WireGuard over systemd-networkd'
 arch=('any')
