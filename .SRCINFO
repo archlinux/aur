@@ -1,6 +1,6 @@
 pkgbase = bdf-spleen
 	pkgdesc = Monospaced bitmap fonts
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://www.cambus.net/spleen-monospaced-bitmap-fonts/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = bdf-spleen
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = https://github.com/fcambus/spleen/releases/download/1.0.4/spleen-1.0.4.tar.gz
-	sha256sums = 6f6860ae947a6bd507259175dbaa57fad88a6e26e633a5d67f370ffb7c51c2f4
+	source = https://github.com/fcambus/spleen/releases/download/1.0.5/spleen-1.0.5.tar.gz
+	sha256sums = cf26c313da53857353e48a93540845cf6f773908fe19d2a509249f061776dfe0
 
 pkgname = bdf-spleen
 
