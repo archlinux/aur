@@ -3,7 +3,7 @@
 
 pkgname=icecat-bin
 _pkgname=icecat
-pkgver=60.3.0
+pkgver=60.7.0
 _pkgver=${pkgver}-gnu1
 pkgrel=2
 pkgdesc="Binary build of the GNU version of the Mozilla Firefox browser"
@@ -26,9 +26,9 @@ source=($_pkgname.desktop
 sha256sums=('c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
             '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
             'b49fe5ba063002ad2cbf5e981b98d08e4157e20f5a4f00971a5f73eeca6ddbba')
-sha256sums_i686=('1a85ff878f624c37a907bcf4bc20a413149820d0fecb4c4e31efdbabf552930c'
+sha256sums_i686=('8d3e3038ec1a1f5b871c5c54b97fb13bc42eb10f85ecd3b096529ed7d290f571'
                  'SKIP')
-sha256sums_x86_64=('a70c4c9dc05a4d43739db1f1b10634b16b5e58537d87153b2ab12f7dd15c003e'
+sha256sums_x86_64=('4f0dffe7ae5d98a63bd44b2b0dbd39f93d60056391214e8565892ab1ade36a85'
                    'SKIP')
 
 validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
