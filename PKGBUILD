@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.8.beta5.r0.gbaff1c42dd
+pkgver=8.8.beta7.r0.g716fb69754
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(ipython2 palp brial cliquer maxima-ecl gfan sympow nauty python2-rpy2 p
   python2-matplotlib python2-scipy python2-sympy python2-networkx python2-pillow python2-pplpy python2-future
   gap flintqs lcalc lrcalc arb eclib zn_poly gd python2-cvxopt pynac linbox m4rie rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
-  iml libgiac libhomfly libbraiding three.js)
+  iml libgiac libhomfly libbraiding symmetrica three.js)
 optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cython code'
   'jmol: 3D plots' 'sage-notebook: Flask notebook interface (deprecated)'
   'sagemath-doc: Documentation and inline help' 'python2-igraph: igraph backend for graph theory'
@@ -27,12 +27,12 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'coxeter: Coxeter groups implementation'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
-  'latte-integrale: integral point count in polyhedra' 'polymake: polymake backend for polyhedral computations'
+  'latte-integrale: integral point count in polyhedra' 'python2-jupymake: polymake backend for polyhedral computations'
   'shared_meataxe: faster matrix arithmetic over finite fields' 'openblas: faster linear algebra'
   'sirocco: for computing the fundamental group of the complement of a plane curve' 'primecount: faster prime_pi implementation'
   'dot2tex: for displaying some diagrams' 'cryptominisat5: SAT solver' 'python2-pycosat: picosat SAT solver'
   'python2-pip: to install optional packages with sage -pip')
-makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc sirocco
+makedepends=(cython2 boost ratpoints python2-jinja coin-or-cbc sirocco
   mcqd coxeter bliss tdlib python2-pkgconfig shared_meataxe libfes primecount git)
 source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-env.patch
@@ -50,8 +50,8 @@ sha256sums=('SKIP'
             '1c2a2d750e81ac65a1dc07094f086ba07f4862288c935a1cd009cdd62bcfc23c'
             '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
             '596d03daf53a76b04029b120619253250b0e58d530d69f14afa169e27e06f446'
-            '12cd410035ae644c2495b0dcd3a5138133a471ecc07912d37114c46ee837eb0e'
-            'f12bd2a53ad51549015093aacc89978f4d796d9ab5bcd3d737aa0d57a5815b54'
+            '7be9f88975079d671eb3cde78e752e74741bcc29ba9b323bab5cddf50ce6dec9'
+            '1f2a34e15bf732ec8687c467a52e897615505dc3ddd792d811e8b6a7e19f1517'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
             'a8c1409f4b4f1553b4f7602d4a6f0f3c6297ed258feed079f6560b0ec2dc62c6'
             '4c6df9e4e5a7b29ecf6189eda3e5a79f69b6e1b4d29c1b9559663149b8c0af96'
@@ -127,7 +127,7 @@ package_sagemath-git() {
 
   mkdir -p "$pkgdir"/usr/bin
   cp bin/{sage,math-readline} "$pkgdir"/usr/bin
-  for _i in cachegrind callgrind cleaner coverage coverageall cython env eval grep grepdoc inline-fortran ipynb2rst \
+  for _i in cachegrind callgrind cleaner coverage coverageall cython env eval fixdoctests grep grepdoc inline-fortran ipynb2rst \
     ipython massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2sws rst2txt run \
     run-cython runtests startuptime.py sws2rst valgrind version.sh
   do
@@ -141,6 +141,7 @@ package_sagemath-git() {
   rm -r "$pkgdir"/usr/lib/python2.7/site-packages/sage_setup
 # Install tests
   cp -r sage/doctest/tests "$pkgdir"/usr/lib/python2.7/site-packages/sage/doctest
+  cp -r sage/tests/books "$pkgdir"/usr/lib/python2.7/site-packages/sage/tests
 
 # Split jupyter kernel
   rm -r "$pkgdir"/usr/share/jupyter
