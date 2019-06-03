@@ -1,7 +1,7 @@
 #Maintainer: Solomon Choina <shlomochoina at gmail dot com>
 pkgname=kawaii-player-git
 _pkgname=kawaii-player
-pkgver=v3.7.1.1.beta.r43.g29a9aa5
+pkgver=v4.0.0.1.r76.gb8cd928
 pkgrel=1
 pkgdesc="An Audio/Video Manager and Front End for mpv/mplayer along with functionalities of portable media server"
 arch=(any)
@@ -26,4 +26,7 @@ package() {
   cd $srcdir/kawaii-player
   python setup.py install --root="$pkgdir" --optimize=1 --prefix=/usr 
   install -D "${pkgdir}/usr/lib/python3.7/site-packages/kawaii_player/resources/kawaii-player.desktop" "${pkgdir}/usr/share/applications/kawaii-player.desktop"
+
+ sed -i 's/Exec=/Exec=kawaii-player/g' "$pkgdir/usr/share/applications/kawaii-player.desktop"
+ install -D $pkgdir/usr/lib/python3.7/site-packages/kawaii_player/resources/tray.png $pkgdir/usr/share/kawaii-player/resources/tray.png
 }
