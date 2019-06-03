@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=76.0.3795.3
+pkgver=76.0.3806.1
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -87,8 +87,7 @@ source=(
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
         'chromium-skia-harmony-r1.patch'
-        'std_pair.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1611690/revisions/2/patch?download'
-        'MakeCheckOpValueString.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1611608/revisions/2/patch?download'
+        'WebPushSubscription_null_ptr.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1631411/revisions/2/patch?download'
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -104,8 +103,7 @@ sha256sums=(
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '0dd2fea50a93b26debce63c762c0291737b61816ba5b127ef923999494142b78'
-            'f71611e94fcff8412513525b78191fa8459138d4bd9a642184865d5f09da66d5'
-            'a86050ee902a8b7f8bbe4d8f297e49a7d72a32906c13d90e22effab3effa9978'
+            '01aab7827a1082f73bd6d68723ef8658aa7ad615949c7d420edb703fdf688337'
             )
 install=chromium-dev.install
 
@@ -125,6 +123,7 @@ _google_default_client_secret="0ZChLK6AxeA3Isu96MkwqDR4"
 _keeplibs=(
            'base/third_party/dmg_fp'
            'base/third_party/dynamic_annotations'
+           'base/third_party/cityhash'
            'base/third_party/icu'
            'base/third_party/nspr'
            'base/third_party/superfasthash'
@@ -162,6 +161,8 @@ _keeplibs=(
            'third_party/blink'
            'third_party/boringssl'
            'third_party/boringssl/src/third_party/fiat'
+           'third_party/boringssl/src/third_party/sike'
+           'third_party/boringssl/linux-x86_64/crypto/third_party/sike'
            'third_party/breakpad'
            'third_party/breakpad/breakpad/src/third_party/curl'
            'third_party/brotli'
@@ -231,6 +232,7 @@ _keeplibs=(
            'third_party/nasm'
            'third_party/node'
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
+           'third_party/openscreen'
            'third_party/ots'
            'third_party/pdfium'
            'third_party/pdfium/third_party/agg23'
@@ -502,18 +504,15 @@ prepare() {
   # https://crbug.com/473866.
   patch -p1 -i "${srcdir}/chromium-widevine-r4.patch"
 
-  # https://chromium-review.googlesource.com/c/chromium/src/+/1611690
-  base64 -d ${srcdir}/std_pair.patch.base64 | patch -p1 -i -
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/1611608
-  base64 -d ${srcdir}/MakeCheckOpValueString.patch.base64 | patch -p1 -i -
+  # https://chromium-review.googlesource.com/c/chromium/src/+/1631411
+  base64 -d ${srcdir}/WebPushSubscription_null_ptr.patch.base64 | patch -p1 -i -
 
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
   ln -sf /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
 
   # Use the file at run time instead of effectively compiling it in.
-  sed 's|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g' -i device/usb/BUILD.gn
+  sed 's|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g' -i services/device/usb/BUILD.gn
 
   # Setup the linker in chromium.
   sed "s|fuse-ld=lld|fuse-ld=${_clang_path}${_lld}|g" -i build/config/compiler/BUILD.gn
