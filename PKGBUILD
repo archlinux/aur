@@ -1,4 +1,5 @@
-# Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
+# Maintainer: Guillaume Alaux <guillaume@archlinux.org>
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: William Gathoye <william + archlinux at gathoye dot be>
 # Contributor: Emanuel Couto <emanuel dot amaral dot couto at gmail dot com>
 # Contributor: Richard Jackson <rdjack21 at gmail dot com>
@@ -6,109 +7,116 @@
 # Contributor: Jens Kapitza <j dot kapitza at schwarze-allianz dot de>
 # Contributor: Olli <olli at coderkun dot de>
 
-# Demos available in ``
-# To build and test this pakcage:
-# - install this version of java-openjfx
-# - cd apps/samples
-# - ant -Dplatforms.JDK_1.8.home=/usr/lib/jvm/default jar
-# - java -jar ./Ensemble8/dist/Ensemble8.jar
-# - java -jar ./Modena/dist/Modena.jar
-# - java -jar ./3DViewer/dist/3DViewer.jar
-
 pkgbase=java-openjfx
-pkgname=('java-openjfx' 'java-openjfx-doc' 'java-openjfx-src')
-_java_ver=8
-_jdk_update=172
-_jdk_build=00
-_hgtag=${_java_ver}u${_jdk_update}-b${_jdk_build}
-pkgver=${_java_ver}.u${_jdk_update}
-pkgrel=2
-pkgdesc='Java OpenJFX 8 client application platform (open-source implementation of JavaFX)'
-arch=('x86_64')
-url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
-license=('GPL')
-makedepends=('java-environment-openjdk=8' 'bison' 'gperf' 'gtk2'
-             'libxtst' 'ffmpeg' 'python2' 'qt5-base' 'webkit2gtk' 'ruby' 'cmake' 'unzip')
-             # TODO add junit antlr3 swt so that they are not downloaed during the build
-source=(http://hg.openjdk.java.net/openjfx/8u-dev/rt/archive/${_hgtag}.tar.bz2
-        gradle.properties
-        https://services.gradle.org/distributions/gradle-1.8-bin.zip
-        # https://anonscm.debian.org/cgit/pkg-java/openjfx.git/tree/debian/patches/17-gcc-compatibility.patch
-        17-gcc-compatibility.patch)
-
-sha256sums=('7d6aa064c1368dcba9c781083440368f835823e41b98ef61c4f0b6818484eb5a'
-            '1d09385ac23d755aec079954247365de3875507641f5ecd7bd3511ebf3fa9e3c'
-            'a342bbfa15fd18e2482287da4959588f45a41b60910970a16e6d97959aea5703'
-            '864967467efeaffdabe1e60b7cfd0a27ce93be55ef45ef9993790219ad164554')
-
-_openjdk8dir="/usr/lib/jvm/java-8-openjdk"
-
-case $CARCH in
-  'i686') _CARCH='i386' ;;
-  'x86_64')_CARCH='amd64' ;;
-esac
+pkgname=(
+  java-openjfx
+  java-openjfx-doc
+  java-openjfx-src
+)
+pkgver=11.0.3.u1
+pkgrel=1
+pkgdesc='Java OpenJFX 11 client application platform (open-source implementation of JavaFX)'
+arch=(x86_64)
+url=https://wiki.openjdk.java.net/display/OpenJFX/Main
+license=(custom)
+makedepends=(
+  alsa-lib
+  ant
+  cairo
+  cmake
+  ffmpeg
+  freetype2
+  gdk-pixbuf2
+  glib2
+  gperf
+  gtk2
+  gtk3
+  java-environment-openjdk=11
+  libgl
+  libx11
+  libxtst
+  pango
+  python2
+  qt5-base
+  ruby
+  unzip
+  webkit2gtk
+  zip
+)
+source=(
+  https://hg.openjdk.java.net/openjfx/11/rt/archive/${pkgver//.u/+}.tar.bz2
+  gradle.properties
+  https://services.gradle.org/distributions/gradle-4.8-bin.zip
+  java-openjfx-flags.patch
+  java-openjfx-no-xlocale.patch
+)
+sha256sums=('c4a42e9f7ac94ca3b05b363375f782bc79be9446bee23eb94e6175a97b5262ae'
+            '2622aa35d733cc69f4421f1cd053bf425e89f93141cb52c9f016a9b425fc0cb6'
+            'f3e29692a8faa94eb0b02ebf36fa263a642b3ae8694ef806c45c345b8683f1ba'
+            '62d7356654b541a9f868cc7beb185e64a1375d9a734b906ba00eacbee258d16e'
+            '220c63396561867a6d07ae81b6390160d8f91502587e4873998e3b7a83793a1c')
 
 prepare() {
-  cd "rt-${_hgtag}"
-  patch -p1 < "${srcdir}/17-gcc-compatibility.patch"
+  cd rt-${pkgver//.u/+}
+
+  ln -sf ../gradle.properties .
+  patch -Np1 -i ../java-openjfx-flags.patch
+  patch -Np1 -i ../java-openjfx-no-xlocale.patch
 }
 
 build() {
-  cd "rt-${_hgtag}"
+  cd rt-${pkgver//.u/+}
 
-  ln -sf "${srcdir}/gradle.properties" .
-  export GRADLE_USER_HOME="${srcdir}/gradle_home"
-  mkdir -p ${GRADLE_USER_HOME}
-
-  "${srcdir}"/gradle-1.8/bin/gradle
+  ../gradle-4.8/bin/gradle zips
 }
 
 package_java-openjfx() {
-  pkgdesc='Java OpenJFX 8 client application platform (open-source implementation of JavaFX)'
-  depends=('java-runtime-openjdk=8' 'gstreamer' 'libxtst' 'webkit2gtk' 'ffmpeg' 'qt5-base')
-  conflicts=('openjfx')
-  replaces=('openjfx')
+  depends=(
+    alsa-lib
+    cairo
+    ffmpeg
+    gdk-pixbuf2
+    glib2
+    gtk2
+    gtk3
+    java-runtime-openjdk=11
+    libavcodec.so
+    libavformat.so
+    libfreetype.so
+    libgl
+    libx11
+    libxtst
+    pango
+    python2
+    qt5-base
+    ruby
+    unzip
+    webkit2gtk
+  )
 
-  local _builddir="${srcdir}/rt-${_hgtag}/build"
-  local _sdkdir="${_builddir}/sdk"
+  cd rt-${pkgver//.u/+}
 
-  install -d "${pkgdir}${_openjdk8dir}/jre/lib/${_CARCH}"
-  install -m755 "${_sdkdir}/rt/lib/${_CARCH}"/*.* "${pkgdir}${_openjdk8dir}/jre/lib/${_CARCH}"
-
-  install -d "${pkgdir}${_openjdk8dir}/jre/lib/ext"
-  install -m644 "${_sdkdir}/rt/lib/ext"/*.* "${pkgdir}${_openjdk8dir}/jre/lib/ext"
-  install -m644 "${_sdkdir}/rt/lib"/*.* "${pkgdir}${_openjdk8dir}/jre/lib"
-
-  install -d "${pkgdir}${_openjdk8dir}/lib"
-  install -m644 "${_sdkdir}/lib"/*.* "${pkgdir}${_openjdk8dir}/lib"
-
-  install -d "${pkgdir}${_openjdk8dir}/bin"
-  install -m755 "${_sdkdir}/bin"/* "${pkgdir}${_openjdk8dir}/bin"
-
-  install -m644 -D "${_sdkdir}/man/man1/javapackager.1" "${pkgdir}/usr/share/man/man1/javapackager.1"
+  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-11-openjdk,share/licenses}
+  cp -dr --no-preserve=ownership build/sdk/lib "${pkgdir}"/usr/lib/jvm/java-11-openjdk/
+  rm "${pkgdir}"/usr/lib/jvm/java-11-openjdk/lib/src.zip
+  cp -dr --no-preserve=ownership build/jmods "${pkgdir}"/usr/lib/jvm/java-11-openjdk/
+  cp -dr --no-preserve=ownership build/sdk/legal "${pkgdir}"/usr/share/licenses/java-openjfx
 }
 
 package_java-openjfx-doc() {
-  pkgdesc='Java OpenJFX 8 client application platform (open-source implementation of JavaFX) - documentation'
-  conflicts=('openjfx-doc')
-  replaces=('openjfx-doc')
+  cd rt-${pkgver//.u/+}
 
-  local _builddir="${srcdir}/rt-${_hgtag}/build"
-  local _sdkdir="${_builddir}/sdk"
-  local docdir="/usr/share/doc"
-
-  install -d "${pkgdir}${docdir}/openjfx"
-  cp -dr --no-preserve=ownership "${_builddir}/javadoc"/* "${pkgdir}${docdir}/openjfx"
+  install -dm 755 "${pkgdir}"/usr/share/{doc,licenses}
+  cp -dr --no-preserve=ownership build/javadoc "${pkgdir}"/usr/share/doc/java-openjfx
+  ln -s java-openjfx "${pkgdir}"/usr/share/licenses/java-openjfx-doc
 }
 
 package_java-openjfx-src() {
-  pkgdesc='Java OpenJFX 8 client application platform (open-source implementation of JavaFX) - sources'
-  conflicts=('openjfx-src')
-  replaces=('openjfx-src')
+  cd rt-${pkgver//.u/+}
 
-  local _builddir="${srcdir}/rt-${_hgtag}/build"
-  local _sdkdir="${_builddir}/sdk"
-
-  install -d "${pkgdir}${_openjdk8dir}"
-  install -m644 "${_builddir}/javafx-src.zip" "${pkgdir}${_openjdk8dir}"
+  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-11-openjdk,share/licenses}
+  install -m 644 build/sdk/lib/src.zip "${pkgdir}"/usr/lib/jvm/java-11-openjdk/javafx-src.zip
+  ln -s java-openjfx "${pkgdir}"/usr/share/licenses/java-openjfx-src
 }
+
+# vim: ts=2 sw=2 et:
