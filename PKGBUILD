@@ -1,7 +1,7 @@
 # Maintainer:  Johannes Schlatow <johannes.schlatow@googlemail.com>
 
 pkgname=genode-toolchain-bin
-pkgver=17.05
+pkgver=19.05
 pkgrel=1
 pkgdesc="GCC-based toolchain for the genode framework"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ _arch="x86_64"
 
 _filename="genode-toolchain-${pkgver}-${_arch}.tar.xz"
 source=("http://downloads.sourceforge.net/project/genode/genode-toolchain/${pkgver}/${_filename}")
-md5sums=('6a9fe849a507d3db0caa68d2ce350d8b')
+md5sums=('90f83ee84930377aa554e9db488a290d')
 [ "$CARCH" == 'i686' ] && md5sums=('bf6a20eb248c8a5a37ba4be733eaa6ae')
 noextract=(${_filename})
 
