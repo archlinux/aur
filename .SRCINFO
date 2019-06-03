@@ -1,0 +1,14 @@
+pkgbase = cloudflare-wrangler
+	pkgdesc = Command-line tool for working with Cloudflare Workers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cloudflare/wrangler
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	source = cloudflare-wrangler-1.0.0.tar.gz::https://github.com/cloudflare/wrangler/archive/v1.0.0.tar.gz
+	sha512sums = 9c6dcb251557ab29d1cac718b6e6ba830fd2e8f5fe338f5ed78e6bf5c80ceb7615f6075e0601467cbaa7a6c3843e44093659f4a38f5522a97554889156e2b535
+
+pkgname = cloudflare-wrangler
+
