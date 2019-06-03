@@ -3,7 +3,7 @@
 _pkg=god
 pkgname=god-git
 pkgdesc="Utility for simplifying the Git usage"
-pkgver=1.2
+pkgver=1.4
 pkgrel=1
 arch=('any')
 url="https://github.com/KeyLo99/god"
