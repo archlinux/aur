@@ -1,6 +1,6 @@
 pkgbase = waypipe-git
 	pkgdesc = A proxy for Wayland protocol applications. WARNING: very unstable
-	pkgver = 0.1.0.r0.g93945dd
+	pkgver = 0.1.0.r8.g5c1f6ff
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mstoeckl/waypipe
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = waypipe-git
 	makedepends = scdoc
 	makedepends = wayland-protocols
 	depends = libffi
+	depends = mesa
 	depends = wayland
 	optdepends = openssh: recommended transport
 	options = debug
