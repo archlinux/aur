@@ -6,7 +6,7 @@
 
 pkgname=ubuntu-wallpapers
 _ubuntu_rel=0ubuntu1
-pkgver=18.04.1
+pkgver=19.04.2
 pkgrel=1
 pkgdesc="The default wallpapers for Ubuntu (from 9.10 to 18.04)"
 arch=(any)
@@ -16,8 +16,8 @@ groups=(unity-extra)
 makedepends=(libxslt python2-distutils-extra)
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.orig.tar.gz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}-${_ubuntu_rel}.debian.tar.xz")
-sha512sums=('ad46d79cc32315f67f244bfabb74188478c43374d3021e20d0f0d4182cff7f93920df2fae141257695148dc0d69d8e4e0fa486ac616e6256e9269c8b5d6e06d6'
-            'ad753d4cada05f8a3b75d8e22e0fa7a0be3e324abac38382b867ac269399ee7a69ec87c418c2afabb65907aef4b1e68efe63f90c193403d3bc67da35371e4b35')
+sha512sums=('324812015f04c7286e9f90d73bb671013fff386eaf7933998a1199ebc24dbd1bba4ca3f8fc526afe4e26df738662d6d033a90f99195380b7fb4cf09feb8e631b'
+            '3806dab05de2f3733d36cea7aaced08be400f9302bf72e70977685e3e84b8b135e5d85be64356b4b8f46d1cfcb2be2519d13e05389b592df83e7fc14e9ffd97a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
