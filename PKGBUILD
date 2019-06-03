@@ -2,13 +2,13 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=sway
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
 license=(MIT)
-depends=(cairo gdk-pixbuf2 json-c pango pcre ttf-font wlroots)
+depends=(cairo gdk-pixbuf2 json-c pango pcre ttf-font 'wlroots>=0.6.0')
 makedepends=(meson ninja scdoc wayland-protocols)
 optdepends=(
   'dmenu: for launching applications'
@@ -21,7 +21,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/swaywm/$pkgname/archive/$pkgver.tar.gz"
   "https://github.com/swaywm/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz.sig"
 )
-sha256sums=('2aeed6589b770acf18179c711a777c8defa93b14b2daaec6f2e06dc2940e5453'
+sha256sums=('740bf97556c54da83937a255113d715aaa05e05b44d61fbe85e01b53ff1f9922'
             'SKIP')
 
 build() {
