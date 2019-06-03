@@ -1,7 +1,7 @@
 # Maintainer: LaFr4nc3 <lafr4nc3 at gmail dot com>
 pkgname=ttf-hackgen
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HackGen is a composite font of Hack and GenJyuu-Gothic."
 arch=("any")
 url="https://github.com/yuru7/HackGen"
@@ -9,7 +9,7 @@ license=("custom")
 source=("https://github.com/yuru7/HackGen/releases/download/v${pkgver}/HackGen_v${pkgver}.zip"
         "https://raw.githubusercontent.com/yuru7/HackGen/v${pkgver}/LICENSE.txt")
 md5sums=("a612b00d9d161e8070b2ab25f38eaa08"
-         "00fd1f706126253d3a3875bbc622627a")
+         "8ddf37fb8b4fe29428dd085beb8a8718")
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF
