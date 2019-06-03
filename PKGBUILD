@@ -1,6 +1,6 @@
 # Maintainer: George Angelopoulos <george@usermod.net>
 pkgname=fadein
-pkgver=3.0.602
+pkgver=3.0.618
 pkgrel=2
 pkgdesc="Professional screenwriting software (DEMO)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://www.fadeinpro.com/"
 license=('custom')
 depends=('gtk2')
 source=("http://www.fadeinpro.com/download/demo/fadein-linux-amd64-demo.tar.gz")
-md5sums=('a2ce6a80302aec7c67241451ab2a35d2')
+md5sums=('d5121a093b4dfa3e46b1b3e7cb1dc08e')
 
 _vendor_name="fadein-linux-amd64"
 
