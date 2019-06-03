@@ -4,14 +4,15 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo at gmail dot com>
 
 pkgname=geary-git
-pkgver=r4379.384dc179
+pkgver=r4719.5a87cf54
 pkgrel=1
 pkgdesc="A lightweight email client for the GNOME desktop"
 arch=(i686 x86_64)
 url="https://wiki.gnome.org/Apps/Geary"
 license=('GPL3')
-depends=('enchant' 'gcr' 'gmime' 'gtk3' 'gnome-online-accounts' 'libgee'
-         'libnotify' 'libsoup' 'libunwind' 'libxml2' 'sqlite' 'webkit2gtk')
+depends=('appstream-glib' 'enchant' 'gcr' 'gmime' 'gtk3' 'gnome-online-accounts'
+         'gspell' 'libgee' 'libnotify' 'libsoup' 'libunwind' 'libxml2' 'sqlite'
+         'webkit2gtk')
 makedepends=('git' 'itstool' 'meson' 'vala')
 provides=('geary')
 conflicts=('geary')
