@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=QSyncthingTray
+Comment=Syncs files among devices
+Exec=qsyncthingtray %U
+Icon=qsyncthingtray
+StartupNotify=false
+Categories=Network;Internet;
+Type=Application
