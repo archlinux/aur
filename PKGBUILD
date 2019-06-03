@@ -6,18 +6,17 @@
 pkgname=stellarium-lts
 _pkgname=stellarium
 pkgver=0.12.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A stellarium with great graphics and a nice database of sky-objects. LTS version for old/weak graphics cards"
 arch=("i686" "x86_64")
 url="http://stellarium.org/"
 license=('GPL2')
-depends=('libpng' 'glu' 'libgl' 'freetype2' 'qt4' 'openssl' 'desktop-file-utils' 
-         'xdg-utils' 'phonon-qt4')
+depends=('libpng' 'glu' 'libgl' 'freetype2' 'qt4' 'openssl' 'desktop-file-utils' 'xdg-utils')
 provides=("stellarium")
 conflicts=("stellarium")
 install=stellarium.install
 makedepends=('cmake' 'boost' 'mesa' 'mesa-libgl')
-source=(http://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.gz
+source=(https://github.com/Stellarium/stellarium/releases/download/v${pkgver}/stellarium-${pkgver}.tar.gz
 	stellarium.desktop
         stellarium.png)
 md5sums=('ed95879c38e7370ed895df47ef7b1aac'
