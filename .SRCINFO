@@ -1,0 +1,12 @@
+pkgbase = oie-icons-git
+	pkgver = d1c2739
+	pkgrel = 1
+	url = https://www.opencode.net/adhe/oieicons
+	arch = any
+	license = LGPL3
+	makedepends = git
+	source = oie-icons-git::git+https://www.opencode.net/adhe/oieicons.git
+	sha256sums = SKIP
+
+pkgname = oie-icons-git
+
