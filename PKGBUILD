@@ -7,7 +7,7 @@
 
 set -u
 pkgname='joomla'
-pkgver='3.9.4'
+pkgver='3.9.6'
 pkgrel='1'
 pkgdesc='a php Content Management System (CMS) which enables you to build websites and powerful online applications.'
 arch=('any')
@@ -22,7 +22,7 @@ _giturl="https://github.com/joomla/${pkgname}-cms"
 #_verwatch=("${_giturl}/releases" "${_giturl}/releases/download/[0-9\.]\+/Joomla_\([0-9\.]\+\)-Stable-Full_Package\.tar\.bz2" 'l')
 _verwatch=("${_giturl}/releases.atom" '\s\+<title>Joomla! \([0-9.]\+\)<.*' 'f')
 source=("${_giturl}/releases/download/${pkgver}/Joomla_${pkgver}-Stable-Full_Package.tar.bz2")
-sha256sums=('3f55d2ec7500474629fd6881ea81a148ef9e8b4df3c69d437aa2c061900db421')
+sha256sums=('b9c3b455acf71ab4cf14b77ec29a8afb9493123d2c3c6019e203adb9bbdc0f26')
 
 package() {
   set -u
