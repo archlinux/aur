@@ -1,6 +1,6 @@
 # Maintainer: Markus Moser<marmoser@wu.ac.at>
 pkgname=naviserver
-pkgver=4.99.16
+pkgver=4.99.18
 pkgrel=1
 pkgdesc="A versatile multiprotocol (httpd et al) server written in C/Tcl"
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('MPL')
 depends=('tcllib>=1.17' 'tcl>=8.5.18' 'tdom>=0.8.3' 'nsf>=1.6.8' 'systemd')
 source=("http://download.sourceforge.net/sourceforge/naviserver/${pkgname}-${pkgver}.tar.gz" 
 "naviserver.service")
-md5sums=("f54303b33393d61ecc125231d99d05a6"
-"62410d8f8e0e7f74fdceb13ca8058895")
+md5sums=("2029166b43e680bf3536123cf5ffc7cd"
+"1ce98dd274bb30020a1bcfbf82a67259")
 
 build() {
     cd "naviserver-${pkgver}"
