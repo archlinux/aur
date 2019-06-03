@@ -10,7 +10,11 @@ url='https://www.jetbrains.com/pycharm/'
 conflicts=('pycharm' 'pycharm-community-edition')
 provides=('pycharm')
 license=('custom')
-backup=(opt/$pkgname/bin/pycharm.vmoptions opt/$pkgname/bin/pycharm64.vmoptions)
+backup=(
+    opt/$pkgname/bin/pycharm.vmoptions 
+    opt/$pkgname/bin/pycharm64.vmoptions
+    opt/$pkgname/bin/idea.properties
+)
 depends=('giflib' 'glibc' 'sh' 'ttf-font' 'libxtst' 'libxslt' 'python')
 source=("https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz"
         "pycharm-professional.desktop"
