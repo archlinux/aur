@@ -9,13 +9,13 @@ arch=(any)
 url="https://github.com/fwcd/KotlinLanguageServer.git"
 license=('MIT')
 depends=('java-runtime')
-makedepends=('git' 'gradle')
+makedepends=('git')
 source=("${pkgname}::git+https://github.com/fwcd/KotlinLanguageServer.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}"
-    gradle server:installDist
+    ./gradlew server:installDist
 }
 
 package() {
