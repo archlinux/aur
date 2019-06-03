@@ -1,0 +1,17 @@
+pkgbase = perl-devel-size
+	pkgdesc = Perl extension for finding the memory usage of Perl variables
+	pkgver = 0.83
+	pkgrel = 1
+	url = https://metacpan.org/release/Devel-Size
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.005
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NW/NWCLARK/Devel-Size-0.83.tar.gz
+	md5sums = 0b5335d69402c75d5ab9978027ae2f66
+	sha512sums = cacc484d57b66bf84b92297c594635f41310ddcd87c6f60a36669cd9c9a6e1405b19a5bbf0d57d795b8e45c9e6c470d84bf56384c0c48637cc0617c5070c31e6
+
+pkgname = perl-devel-size
+
