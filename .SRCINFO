@@ -1,11 +1,12 @@
 pkgbase = aerc
 	pkgdesc = Email Client for your Terminal
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~sircmpwn/aerc
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = git
 	makedepends = scdoc
 	depends = libvterm
 	provides = aerc
