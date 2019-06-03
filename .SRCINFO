@@ -1,14 +1,13 @@
 pkgbase = ozone
 	pkgdesc = Segger Ozone JLink debugger for Linux
 	pkgver = 2.62c
-	pkgrel = 0
+	pkgrel = 1
 	epoch = 18
 	url = https://www.segger.com/jlink-software.html
 	arch = i686
 	arch = x86_64
 	groups = jlink
 	license = custom
-	depends = qt4
 	depends = jlink-software-and-documentation>=5.10n
 	provides = jlink-debugger
 	conflicts = jlink-debugger
