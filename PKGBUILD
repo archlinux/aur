@@ -31,7 +31,7 @@ sha256sums_i686=('8d3e3038ec1a1f5b871c5c54b97fb13bc42eb10f85ecd3b096529ed7d290f5
 sha256sums_x86_64=('4f0dffe7ae5d98a63bd44b2b0dbd39f93d60056391214e8565892ab1ade36a85'
                    'SKIP')
 
-validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
+validpgpkeys=(318C679D94F17700CC847DE646A70073E4E50D4E) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
 package() {
   install -d $pkgdir/usr/lib/$_pkgname
