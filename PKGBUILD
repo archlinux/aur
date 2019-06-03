@@ -5,11 +5,11 @@ pkgname=irssi-xmpp
 pkgver=0.54
 pkgrel=2
 pkgdesc='irssi plugin to connect to the Jabber network'
-url='http://cybione.org/~irssi-xmpp'
+url='https://cybione.org/~irssi-xmpp'
 arch=('x86_64')
 license=('GPL2')
 depends=('glib2' 'loudmouth' 'irssi')
-source=(${pkgname}-${pkgver}.tar.gz::http://cybione.org/~irssi-xmpp/files/${pkgname}-${pkgver}.tar.gz)
+source=(${pkgname}-${pkgver}.tar.gz::https://cybione.org/~irssi-xmpp/files/${pkgname}-${pkgver}.tar.gz)
 sha512sums=('31ddd9e0147eec23d08b8bcbe242e831d612cb2d00f3b56776e9d0b87db9bd76d4bb147422cdf18c0567f0e0463ab828ab7a0ef80a2b35cfdc0a8be962b39f14')
 
 build() {
