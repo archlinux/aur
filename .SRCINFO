@@ -1,8 +1,7 @@
 pkgbase = gotty-git
 	pkgdesc = Share your terminal as a web application
 	pkgver = v2.0.0.alpha.3.r0.ga080c85
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://github.com/yudai/gotty
 	arch = any
 	license = MIT
@@ -10,7 +9,9 @@ pkgbase = gotty-git
 	makedepends = go
 	makedepends = godep
 	provides = gotty
+	provides = gotty-bin
 	conflicts = gotty
+	conflicts = gotty-bin
 	source = gotty-git::git+https://github.com/yudai/gotty.git
 	sha256sums = SKIP
 

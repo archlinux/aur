@@ -2,15 +2,14 @@
 
 pkgname=gotty-git
 pkgver=v2.0.0.alpha.3.r0.ga080c85
-pkgrel=1
-epoch=1
+pkgrel=2
 pkgdesc='Share your terminal as a web application'
 url=https://github.com/yudai/gotty
 arch=('any')
 license=('MIT')
 makedepends=('git' 'go' 'godep')
-conflicts=('gotty')
-provides=('gotty')
+conflicts=('gotty' 'gotty-bin')
+provides=('gotty' 'gotty-bin')
 source=("${pkgname}::git+https://github.com/yudai/gotty.git")
 sha256sums=('SKIP')
 
@@ -44,6 +43,6 @@ build() {
 package() {
 	cd "${srcdir}/go/src/github.com/yudai/gotty"
 
-	install -Dm755 gotty "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 gotty "${pkgdir}/usr/bin/gotty"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
