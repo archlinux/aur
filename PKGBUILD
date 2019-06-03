@@ -1,7 +1,7 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 
 pkgname=simg-tools
-pkgver=8.1.0_r14
+pkgver=9.0.0_r39
 pkgrel=1
 pkgdesc="Tools to handle/convert Android sparse image file (simg2img, append2simg, img2simg, simg2simg)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
