@@ -4,8 +4,8 @@
 set -u
 pkgname='canon-pixma-ip1500' # pixmaip1500
 _casepkgname=iP1500Linux
-pkgver='2.5'
-pkgrel='2'
+pkgver='2.50'
+pkgrel='3'
 pkgdesc="Canon BJ Printer Driver for Pixma ip1500"
 arch=('i686' 'x86_64')
 url='https://www.canon.co.uk/support/consumer_products/products/printers/inkjet/pixma_ip_series/pixma_ip1500.aspx' # Software, not drivers
@@ -15,19 +15,17 @@ _libpng='libpng12'
 depends_i686=('glibc' 'popt' "${_libpng}" 'xz' 'libjpeg-turbo' 'zlib' 'libtiff')
 depends_x86_64=("${depends_i686[@]/#/lib32-}")
 makedepends_x86_64=("${_libpng}")
-_srcdir='iP1500/bjfilter-common-2.50'
-source=("http://software.canon-europe.com/files/soft22415/software/${_casepkgname}.tar.gz")
-md5sums=('a77599e93a334107eb003e656ff6893b')
-sha256sums=('e885a285d9d5febd4b9feb83b850abfcec709a8a24b8af2b0d55156ff56d27d4')
+_srcdir='bjfilter-common-2.50'
+#source=("http://software.canon-europe.com/files/soft22415/software/${_casepkgname}.tar.gz")
+source=("http://gdlp01.c-wss.com/gds/7/0900007177/01/bjfilter-common-2.50-3.src.rpm")
+md5sums=('2c702ccf2bea05d3d585325f148a044f')
+sha256sums=('925b17953348953546781bb08efd1d48227f97cfe234e749d289496efae3bdb5')
 
 prepare() {
   set -u
-  cd "${_srcdir%%/*}"
-  bsdtar -xf 'bjfilter-common-2.50-2.src.rpm'
-  find -type 'f' -exec chmod 644 '{}' '+'
-  bsdtar -xf 'bjfilter-common-2.50-2.tar.gz'
+  bsdtar -xf 'bjfilter-common-2.50-3.tar.gz'
 
-  cd "${srcdir}/${_srcdir}"
+  cd "${_srcdir}"
   sed -e '# Fix many clib prototype warnings' \
       -e 's:^#include <stdlib.h>$:&\n#include <unistd.h>\n#include <string.h>\n#include <ctype.h>:g' \
       -e '# Set version of libpng' \
