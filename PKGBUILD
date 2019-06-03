@@ -1,7 +1,7 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 
 pkgname=bforartists-git
-pkgver=2.0.0.3769deb
+pkgver=2.0.0.30beccc
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')

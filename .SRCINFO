@@ -1,6 +1,6 @@
 pkgbase = bforartists-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 2.0.0.3769deb
+	pkgver = 2.0.0.30beccc
 	pkgrel = 1
 	url = www.bforartists.de
 	install = bforartists.install
