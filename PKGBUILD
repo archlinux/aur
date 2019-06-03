@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-tss-engine-git
-pkgver=1.0.0.r14.2c0df2f
+pkgver=1.0.0.r26.0bd2b64
 pkgrel=1
 pkgdesc='OpenSSL engine for Trusted Platform Module 2.0 devices'
 arch=('x86_64')
@@ -21,6 +21,11 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
+
+	# https://github.com/tpm2-software/tpm2-tss-engine/pull/119
+	# Revert to using tpm2-tools-git until tpm2-tools 3.2 is released
+	git revert --no-commit 6c31844e86bbeb56c6c5d78e91e703e7cae26ab3
+
 	autoreconf --install --force
 }
 
