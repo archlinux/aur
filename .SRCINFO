@@ -1,0 +1,20 @@
+pkgbase = perl-encoding-handleutf8
+	pkgdesc = Fix the encoding for Perl value store (input) and general output (output) to a console or the web.
+	pkgver = 0.004
+	pkgrel = 1
+	url = https://metacpan.org/release/Encoding-HandleUtf8
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-nowarnings>=0
+	checkdepends = perl-test-warn>=0
+	depends = perl-clone>=0
+	depends = perl-encoding-fixlatin>=0
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BU/BURNERSK/Encoding-HandleUtf8-0.004.tar.gz
+	md5sums = aa6e3a30828965b033c3654ddd3656cd
+	sha512sums = 678fcdffee7ab17100a45941b8a79f8d7095bf70796603430f721dd0097aeb8204eb4c8cdfc3e8df0249e1d6b4fc4ba14429f099459591c1c2af7cbbf24dd6d6
+
+pkgname = perl-encoding-handleutf8
+
