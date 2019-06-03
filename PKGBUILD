@@ -8,7 +8,7 @@ pkgver=r4719.5a87cf54
 pkgrel=1
 pkgdesc="A lightweight email client for the GNOME desktop"
 arch=(i686 x86_64)
-url="https://wiki.gnome.org/Apps/Geary"
+url="https://gitlab.gnome.org/GNOME/geary"
 license=('GPL3')
 depends=('appstream-glib' 'enchant' 'gcr' 'gmime' 'gtk3' 'gnome-online-accounts'
          'gspell' 'libgee' 'libnotify' 'libsoup' 'libunwind' 'libxml2' 'sqlite'
