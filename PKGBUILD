@@ -1,8 +1,8 @@
 # Maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=tastyworks
-pkgver=0.27.0
-pkgrel=4
+pkgver=0.35.0
+pkgrel=1
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
 url="https://tastyworks.com/technology.html"
@@ -10,7 +10,7 @@ license=('Other')
 depends=('java-runtime')
 source=("https://download.tastyworks.com/desktop/$pkgver/$pkgname-$pkgver.rpm"
         "tastyworks.png")
-sha256sums=('1e512ea67dc99f0a1108764c960a47e1f4e97ff51c7a62a386843611c22d1965'
+sha256sums=('fbc8873a99158ab4ac5b2fb7132fdaeb8a26106140cbeef2e0ab519821ac701d'
             '5875675195bb9156c050976e00c98538a6662740f5359e677d26fe5e21560cea')
 
 # I'm not sure that the all the lib32 stuff is actually needed. The application seemed to be working
