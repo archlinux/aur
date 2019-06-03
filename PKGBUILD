@@ -1,7 +1,7 @@
 pkgname=newlogic
 _pkgname=newlogic
-pkgver=0.1.2_beta
-_pkgver="0.1.2-beta"
+pkgver=0.1.3_beta
+_pkgver="0.1.3-beta"
 pkgrel=1
 pkgdesc="Circuit Builder Desktop Application (like mmlogic)"
 arch=('any')
