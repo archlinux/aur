@@ -1,14 +1,14 @@
 pkgbase = nsf
 	pkgdesc = The Next Scripting Framework (for short: NSF) is an infrastructure for creating object-oriented scripting languages based on Tcl. This package provides two object-orientated extensions for Tcl, NX and XOTcl2.
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://next-scripting.org
 	arch = x86_64
 	license = MIT
 	depends = tcl
 	conflicts = xotcl
-	source = http://downloads.sourceforge.net/project/next-scripting/2.2.0/nsf2.2.0.tar.gz
-	md5sums = c85a5622fb07387cf87621b9e9c3a0a5
+	source = http://downloads.sourceforge.net/project/next-scripting/2.3.0/nsf2.3.0.tar.gz
+	md5sums = 47cf23a98b4dd3a5e812d4c4b7d91dc5
 
 pkgname = nsf
 

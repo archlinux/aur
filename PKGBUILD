@@ -1,6 +1,6 @@
 # Maintainer: Markus Moser<marmoser@wu.ac.at>
 pkgname=nsf
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="The Next Scripting Framework (for short: NSF) is an infrastructure
  for creating object-oriented scripting languages based on Tcl. This package
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(tcl)
 conflicts=(xotcl)
 source=("http://downloads.sourceforge.net/project/next-scripting/${pkgver}/nsf${pkgver}.tar.gz")
-md5sums=("c85a5622fb07387cf87621b9e9c3a0a5")
+md5sums=("47cf23a98b4dd3a5e812d4c4b7d91dc5")
 
 build() {
     cd nsf${pkgver}
