@@ -1,0 +1,12 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/xfce4/*
+Target = usr/include/xfce4/*
+
+[Action]
+Description = Warning on packages linked to xfconf 4.12.x...
+When = PostTransaction
+Exec = /usr/bin/xfconf-warn
