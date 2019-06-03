@@ -1,11 +1,11 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-uaparser-git
-pkgver=r1.077c554
-pkgrel=1
+pkgver=r1.f5a1e52
+pkgrel=2
 
 _modname="nginx-uaparser-module"
-_nginxver=1.15.12
+_nginxver=1.17.0
 
 pkgdesc="User agent parser module for mainline nginx"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ validpgpkeys=(
 )
 
 sha256sums=(
-  '3d5b90aa17de1700709ae4ec6c4d73d87c888b06c510391bf7104b006fdb2abe'
+  'e21b5d06cd53e86afb94f0b3678e0abb0c0f011433471fa3d895cefa65ae0fab'
   'SKIP'
   'SKIP'
 )
