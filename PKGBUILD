@@ -64,6 +64,7 @@ package() {
 
   for f in $srcdir/$NIX_SRC/store/*; do
     cp -a $f $pkgdir/nix/var/pacman/store/
+    chmod -R ogu-w $pkgdir/nix/var/pacman/store/$(basename $f)
     ln -s /nix/store/$(basename $f) $pkgdir/nix/var/nix/gcroots/pacman/
   done
 }
