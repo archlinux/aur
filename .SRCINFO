@@ -1,0 +1,32 @@
+pkgbase = wine-installer
+	pkgdesc = A meta-installer for Wine along with desktop files and libraries for WINE to work properly
+	pkgver = 4.0.5
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/w/wine-installer
+	arch = x86_64
+	license = GPL
+	depends = gsm
+	depends = isdn4k-utils
+	depends = lib32-glu
+	depends = lib32-gpm
+	depends = lib32-gst-plugins-base
+	depends = lib32-krb5
+	depends = lib32-libcups
+	depends = lib32-libxcomposite
+	depends = lib32-libxslt
+	depends = lib32-mesa
+	depends = lib32-sdl2
+	depends = lib32-v4l-utils
+	depends = mesa
+	depends = sane
+	depends = sdl2
+	depends = unixodbc
+	depends = wine
+	depends = wine_gecko
+	depends = wine-mono
+	depends = winetricks
+	source = wine-installer-4.0.5.tar.xz::http://packages.linuxmint.com/pool/main/w/wine-installer/wine-installer_4.0.5.tar.xz
+	sha256sums = b360b6c34e2fbc84fd959caa204ba48c850db5fb437487ff2516e67c0632057f
+
+pkgname = wine-installer
+
