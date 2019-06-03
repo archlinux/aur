@@ -3,11 +3,11 @@
 
 # Uncomment, if you want tha last release
 #_version=spry_v2.5.0
-_spryrel=2.5.2.spry.r2
+_spryrel=2.5.3.spry.r0
 pkgname=sprycloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.5.2.spry.r2.r0.g93e8e621e
-pkgrel=2
+pkgver=2.5.3.spry.r0.r0.g9d0985e82
+pkgrel=1
 pkgdesc="spryCloud client for Linux"
 arch=('i686' 'x86_64')
 url="https://www.spryservers.net/"
@@ -50,7 +50,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE="Release" \
         -DNO_SHIBBOLETH=1 \
-        -DMIRALL_VERSION_SUFFIX=-spry-r2 \
+        -DMIRALL_VERSION_SUFFIX=-spry-r0 \
         -DMIRALL_VERSION_BUILD=${pkgrel} \
         -DQTKEYCHAIN_LIBRARY=/usr/lib/libqt5keychain.so \
         -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
