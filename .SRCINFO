@@ -1,6 +1,6 @@
 pkgbase = php-pcov-git
 	pkgdesc = PCOV - CodeCoverage compatible driver for PHP
-	pkgver = v1.0.3.r0.gb66aac3
+	pkgver = v1.0.4.r0.g1679440
 	pkgrel = 1
 	url = https://github.com/krakjoe/pcov
 	arch = i686
