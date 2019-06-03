@@ -2,7 +2,7 @@
 
 pkgname=gosearch-git
 pkgver=r49.f8254a3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, real-time file searching program for linux"
 url="https://github.com/ozeidan/gosearch"
 arch=('x86_64')
