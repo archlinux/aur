@@ -5,14 +5,15 @@
 # Contributor: archtux <antonio.arias99999@gmail.com>
 
 pkgname=ncdc
-pkgver=1.22
+pkgver=1.22.1
 pkgrel=1
 pkgdesc='Modern and lightweight direct connect client with a friendly ncurses interface'
 arch=('i686' 'x86_64' 'arm' 'armv6h')
 url='http://dev.yorhel.nl/ncdc'
 license=('MIT')
 depends=('gnutls' 'sqlite' 'glib2' 'libmaxminddb')
-source=("http://dev.yorhel.nl/download/$pkgname-$pkgver.tar.gz")
+source=("http://dev.yorhel.nl/download/$pkgname-$pkgver.tar.gz"{,.asc})
+validpgpkeys=('74460D32B80810EBA9AFA2E962394C698C2739FA') # Yoran Heling, only used for releases
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -26,4 +27,5 @@ package() {
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('fd41ef85cec3eca0107d83583ad25faa8804dd22d76f6da7fc157e0233b13a59')
+sha256sums=('d15fd378aa345f423e59a38691c668f69b516cd4b8afbbcdc446007740c3afad'
+            'SKIP')
