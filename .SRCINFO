@@ -1,15 +1,16 @@
 pkgbase = python2-tokenserver
 	pkgdesc = Mozilla Token Server
 	pkgver = 1.3.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/mozilla-services/tokenserver
 	arch = any
 	license = MPL2
 	depends = python2
 	depends = python2-browserid
-	depends = python2-cornice
+	depends = python2-cornice-0.16.2
 	depends = python2-pymysql-sa
 	depends = python2-setuptools
+	depends = python2-fxa
 	source = https://github.com/mozilla-services/tokenserver/archive/1.3.1.tar.gz
 	sha512sums = fc0396e9cefc7ba5bcaa91ed3975d4479c3e70036fd9c50a3031aaa80ef9bdd44cdfd4e95b2516a9e89240c9bda30a3336dbcf84d6680d9bfa908511ed7e05a4
 

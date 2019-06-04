@@ -1,4 +1,5 @@
-# Maintainer: peippo <christoph.fink@gmail.com>
+# Maintainer: aereaux <aidan@jmad.org>
+# Contributor: peippo <christoph.fink@gmail.com>
 # Contributor: Sergey Mastykov <smastykov[at]gmail[dot]com>
 
 pkgname=python2-tokenserver
@@ -8,7 +9,7 @@ pkgdesc="Mozilla Token Server"
 url="https://github.com/mozilla-services/tokenserver"
 
 pkgver=1.3.1
-pkgrel=0
+pkgrel=1
 
 arch=("any")
 license=("MPL2")
@@ -16,9 +17,10 @@ license=("MPL2")
 depends=(
     "python2"
     "python2-browserid"
-    "python2-cornice"
+    "python2-cornice-0.16.2"
     "python2-pymysql-sa"
     "python2-setuptools"
+    "python2-fxa"
 )
 
 source=("https://github.com/mozilla-services/tokenserver/archive/${pkgver}.tar.gz")
