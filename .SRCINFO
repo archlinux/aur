@@ -8,13 +8,13 @@ pkgbase = dbxfs
 	license = GPL3
 	makedepends = python-setuptools
 	depends = fuse2
-	depends = python-dropbox>=3.38
-	depends = python-appdirs>=1.4
-	depends = python-userspacefs>=1.0.13
-	depends = python-block_tracing>=1.0.1
-	depends = python-privy-git
-	depends = python-keyrings-alt>=3.1
-	depends = python-sentry_sdk>=0.3
+	depends = python-dropbox
+	depends = python-appdirs
+	depends = python-userspacefs
+	depends = python-block_tracing
+	depends = python-privy
+	depends = python-keyrings-alt
+	depends = python-sentry_sdk
 	replaces = python-dbxfs
 	source = dbxfs-1.0.43.tar.gz::https://github.com/rianhunter/dbxfs/archive/v1.0.43.tar.gz
 	source = dbxfs.patch
