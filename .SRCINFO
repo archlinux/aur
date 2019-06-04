@@ -1,6 +1,6 @@
 pkgbase = nvidia-xrun-pm-git
-	pkgdesc = Alternative version of nvidia-xrun, that relies on kernel PM instead of bbswitch - git branch
-	pkgver = r61.017c83b
+	pkgdesc = Alternative version of nvidia-xrun, that relies on kernel PM instead of bbswitch
+	pkgver = 0.3.2.r19.gaf3b734
 	pkgrel = 1
 	url = https://github.com/michelesr/nvidia-xrun-pm
 	install = nvidia-xrun-pm-git.install
@@ -12,12 +12,14 @@ pkgbase = nvidia-xrun-pm-git
 	depends = xorg-xrandr
 	depends = nvidia
 	depends = mesa-libgl
-	depends = xf86-video-intel
 	provides = nvidia-xrun
+	provides = nvidia-xrun-git
 	provides = nvidia-xrun-pm
 	conflicts = nvidia-xrun
+	conflicts = nvidia-xrun-git
+	conflicts = nvidia-xrun-pm
 	source = nvidia-xrun-pm-git::git+https://github.com/michelesr/nvidia-xrun-pm
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = nvidia-xrun-pm-git
 
