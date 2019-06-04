@@ -1,3 +1,13 @@
+2019-06-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.0.2.2-1:
+    Fixed a regression of possible garbage console output on unix machines, introduced in V4.0.2.1.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Usual amount of other core improvements, optimizations and bugfixes.
+  * 4.0.2.1:
+    It's now possible to use custom NLog.config in declared --path (ref: #1250).
+    Small improvements in regards to RateLimited logging procedure (ref: #1219).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2019-05-05 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.0.1.9-1:
     Improvements to ASF's networking code, stability enhancements.
