@@ -1,0 +1,22 @@
+pkgbase = gaia-hub
+	pkgdesc = A decentralized high-performance storage system
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = https://github.com/blockstack/gaia
+	arch = any
+	license = MIT
+	license = custom
+	makedepends = npm
+	makedepends = node-gyp
+	makedepends = make
+	depends = nodejs
+	optdepends = nginx: utilize provided example configs
+	source = gaia-hub::git+https://github.com/blockstack/gaia.git#tag=v2.5.3
+	source = gaia-hub.service
+	source = config.json
+	sha512sums = SKIP
+	sha512sums = 26297bc8e85b7577922442dc904597d7087e52e1204580a7c1ede516de9b9947e6e1640f28aa4bc03851c466bc9953dd256c39ac7f429db62ea9ba662eb14a0f
+	sha512sums = 19a037b067cd254cf7c06b517b6a696804f9a559fa6689ca65478f963d3dfc28a03598ecc9c3cede60699dd29b691cefeea2b98e283fcca443cc8eb4dc17aad7
+
+pkgname = gaia-hub
+
