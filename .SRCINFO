@@ -1,12 +1,12 @@
 pkgbase = bloop
 pkgdesc = Bloop gives you fast edit/compile/test workflows for Scala.
-pkgver = 1.2.5
+pkgver = 1.3.0.RC1
 pkgrel = 1
 url = https://scalacenter.github.io/bloop/
 arch = any
 license = Apache
 depends = scala
 depends = python
-source = https://github.com/scalacenter/bloop/releases/download/v1.2.5/install.py
-sha256sums = 25a18e6983463725e821f6f4f369cfef8d37f18c4dddb6a1cc1e85fa2961b9c8
+source = https://github.com/scalacenter/bloop/releases/download/v1.3.0-RC1/install.py
+sha256sums = e20769000f983baff3fce4a65c1f291328ec360cc362251a434061b1e54382a0
 pkgname = bloop
