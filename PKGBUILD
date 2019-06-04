@@ -2,7 +2,7 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: kevin <kevin@archlinux.org>
 
-pkgname=ntp
+pkgname=ntp-allclocks
 _pkgname=ntp #-dev
 _pkgver=4.2.8p13
 pkgver=${_pkgver/p/.p}
@@ -28,7 +28,7 @@ options=('!emptydirs')
 build() {
 	cd "${srcdir}/${_pkgname}-${_pkgver}"
 
-	./configure --prefix=/usr --libexecdir=/usr/lib --enable-linuxcaps --enable-ntp-signd
+	./configure --prefix=/usr --libexecdir=/usr/lib --enable-linuxcaps --enable-ntp-signd --enable-all-clocks --enable-parse-clocks
 	make
 }
 
