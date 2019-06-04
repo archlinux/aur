@@ -21,6 +21,8 @@ _update() {
 
 post_install() {
   _update
+    msg_blue "This is the most current version of PDF Studio."
+    msg_blue "Please check AUR for older versions."
     note "The binary is called: 'pdfstudio'"
 }
 

@@ -1,13 +1,13 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 # Contributor: Tristelune <tristelune@archlinux.info>
 pkgname=pdfstudio
-pkgver=18.4.0
-pkgrel=3
+pkgver=19.0.0
+pkgrel=1
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('i686' 'x86_64')
 url="http://www.qoppa.com/pdfstudio/"
 license=('custom')
-conflicts=('pdfstudio12' 'pdfstudio11' 'pdfstudio8' 'pdfstudio9' 'pdfstudio10')
+conflicts=('pdfstudio18' 'pdfstudio12' 'pdfstudio11' 'pdfstudio8' 'pdfstudio9' 'pdfstudio10')
 provides=('pdfstudio')
 makedepends=('pacman>=4.2.0')
 depends=('java-runtime>=6' 'gtk-update-icon-cache')
@@ -15,7 +15,7 @@ depends=('java-runtime>=6' 'gtk-update-icon-cache')
 install=${pkgname}.install     
      
 sha256sums=('b6b561761157363b835f7e09e8c860fa65b964dc00e3b58836f95f0f6cce9972'
-            'b82acfb50e1e15a43c54aba7a0712b6c710c10ae74280a26a451343720e965e3'
+            '6c73dba3ccc9e4ebc1e3d2318bd7e3cf8ff1d6cdca2243bed6522f99c20aea49'
             '0a3c1c337a22228f3df28412ca65d45d0d8067b508cf7b1cf93810fc17c9b447')
 sha256sums_i686=('f656736510903c75bdc076cada734f0556f168cf68f7f7041e188e703f1adb3f')
 sha256sums_x86_64=('267f83def6e4d18ea0c1a68c72c2d9cab3de451f1c2a7a078d7f37285e0ec4a2')
