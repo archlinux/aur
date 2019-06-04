@@ -2,7 +2,7 @@
 # Contributor: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-linux
 pkgver=3.52.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Tutanota email client'
 arch=('x86_64')
 url='https://tutanota.com/blog/posts/desktop-clients/'
