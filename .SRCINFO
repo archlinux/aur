@@ -1,7 +1,7 @@
 pkgbase = looking-glass
 	pkgdesc = An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough
 	pkgver = B1_rc5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://looking-glass.hostfission.com
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = looking-glass
 	makedepends = sdl2_ttf
 	makedepends = glu
 	makedepends = fontconfig
-	makedepends = libconfig
 	makedepends = spice-protocol
 	source = https://github.com/gnif/LookingGlass/archive/B1-rc5.tar.gz
 	sha512sums = 5e4539d7decbfb37e8eb481c5d27cc38c1d7ed65df5e49a64f9a14402243b9f9ee97c939d3733bd90859ded71961a866c627d3c6c44bff6bd36881eced1fc1ec
