@@ -7,11 +7,11 @@ pkgver=1.20.7
 pkgrel=2
 pkgdesc="A mouse server for the console and xterm (32 bit)"
 arch=('x86_64')
-url="http://www.nico.schottelius.org/software/gpm/"
+url="https://www.nico.schottelius.org/software/gpm/"
 license=('GPL')
 depends=('lib32-ncurses' "$_pkgname")
 options=('!makeflags')
-source=(http://www.nico.schottelius.org/software/gpm/archives/${_pkgname}-${pkgver}.tar.lzma
+source=(https://www.nico.schottelius.org/software/gpm/archives/${_pkgname}-${pkgver}.tar.lzma
         gpm-glibc-2.26.patch)
 sha1sums=('8d9f3655c80ce7667d31ede2a100b44986480369'
           '57d98a5ed864ead76290d32a6899caaed0b55959')
