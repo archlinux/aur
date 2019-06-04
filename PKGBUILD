@@ -1,5 +1,7 @@
+# Maintainer: Alexander Bus <busfromrus@gmail.com>
+
 pkgname=szsol-git
-pkgver=r39.1c5872a
+pkgver=r40.f5ce930
 pkgrel=1
 pkgdesc="ncurses clone of Shenzhen Solitaire card game"
 arch=('any')
@@ -16,13 +18,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/szsol"
-  sed -i 's/ncursesw5-config/ncursesw6-config/' Makefile
   make
 }
 
 package() {
-  # cd "$srcdir/szsol"
-  mkdir -p "$pkgdir/usr/bin"
-  cp "$srcdir/szsol/szsol" "$pkgdir/usr/bin"
+  install -Dm755 "$srcdir/szsol/szsol" "$pkgdir/usr/bin/szsol"
   install -Dm644 $srcdir/szsol/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
