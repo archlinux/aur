@@ -6,7 +6,7 @@
 
 pkgname=ncdc
 pkgver=1.22.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Modern and lightweight direct connect client with a friendly ncurses interface'
 arch=('i686' 'x86_64' 'arm' 'armv6h')
 url='http://dev.yorhel.nl/ncdc'
