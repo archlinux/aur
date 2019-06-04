@@ -1,0 +1,18 @@
+pkgbase = zeek-broker
+	pkgdesc = The message passing interface for pub/sub brokering with zeek
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/zeek/broker
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = openssl
+	source = src::git+https://github.com/zeek/broker#tag=v1.1.2
+	source = third_party::git+https://github.com/zeek/zeek-3rdparty
+	source = cmake_mods::git+https://github.com/zeek/cmake
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = zeek-broker
+
