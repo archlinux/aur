@@ -1,0 +1,13 @@
+pkgbase = python2-browserid
+	pkgdesc = Python client library for the BrowserID protocol
+	pkgver = 0.14.0
+	pkgrel = 3
+	url = https://github.com/mozilla/PyBrowserID
+	arch = any
+	license = MPL2
+	depends = python2-requests
+	source = https://files.pythonhosted.org/packages/source/P/PyBrowserID/PyBrowserID-0.14.0.tar.gz
+	md5sums = fdfd2b65fbd3939332b90b6d2089ce59
+
+pkgname = python2-browserid
+
