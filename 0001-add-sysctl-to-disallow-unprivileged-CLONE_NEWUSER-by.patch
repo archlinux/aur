@@ -1,8 +1,7 @@
-From 97ad944eef70f5d93159eaaf969e5ca9055f98f8 Mon Sep 17 00:00:00 2001
+From ec4b54ebab3f84210e4b36d1af2dea754b8eb789 Mon Sep 17 00:00:00 2001
 From: Serge Hallyn <serge.hallyn@canonical.com>
 Date: Fri, 31 May 2013 19:12:12 +0100
-Subject: [PATCH 1/2] add sysctl to disallow unprivileged CLONE_NEWUSER by
- default
+Subject: [PATCH] add sysctl to disallow unprivileged CLONE_NEWUSER by default
 
 Signed-off-by: Serge Hallyn <serge.hallyn@ubuntu.com>
 [bwh: Remove unneeded binary sysctl bits]

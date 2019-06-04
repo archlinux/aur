@@ -13,7 +13,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _srcbasever=5.1-gnu
-_srcver=5.1.4-gnu
+_srcver=5.1.6-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -23,7 +23,7 @@ _srcname=linux-${_srcbasever%-*}
 _archpkgver=${_srcver%-*}
 pkgver=${_srcver//-/_}
 pkgrel=1
-rcnrel=armv7-x4
+rcnrel=armv7-x5
 arch=(i686 x86_64 armv7h)
 url='https://linux-libre.fsfla.org/'
 license=(GPL2)
@@ -50,7 +50,6 @@ source=(
 
   # Arch's custom linux patches
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-Revert-dm-eliminate-split_discard_bios-flag-from-DM-.patch
 )
 source_armv7h=(
   # armv7h patches, put in the source_armv7h variable just for a more comfortable loop patching
@@ -70,7 +69,7 @@ validpgpkeys=(
 )
 sha512sums=('42510bffa69746e0f919fecef5a23da4adb2473239ee67730fa1eb2340256fb4618c6acab439c01ae781df768a2e1ac4b76ad80fe0e4a432eaceb7f01f275439'
             'SKIP'
-            '09b935439659f6d170f8acc77d47f43973d066e372fe353167ab1cf96598a757e2430e448477384dc799b910a7903fb6841467be2a01e08e40194bfc6bea77c3'
+            '7c860911baae3c94743981980f93928bde01679f5f8bc3c91f19eb23d1fb1cc590cc4dbb421c1ae9165dab9d1c697e19926fc265a4a2fcfdaaa262cb2b025455'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -80,7 +79,7 @@ sha512sums=('42510bffa69746e0f919fecef5a23da4adb2473239ee67730fa1eb2340256fb4618
             'SKIP'
             '4ecc5c328565188428a18f97fbdb849a34c0f4f29d637430adad50486e5be756f985bfa371897066586fe7ee48c098bd8ae5dd21d1234ac9a2e5eba2c47062d8'
             '3f8f695d19cf0fd9bb63aa9852195b13e2ee0294ca2407404958ada72386f1d3c28495a809fc937f4fa7e07ca9ae83c57883bb597ec6827c6168477c79399ebb'
-            '6174f2b904365c0834abc2744f6579986f775bde23170a66e5b0ab813e6ffcd6b88579ef4ac56d3240fc3b7a619e9b59782dd1e34a7aeced256e869b50e30975'
+            'c845c78b20819f1a74917c3accef1c41b31b3e91d14ff9c1b524763290137c07fa4175b90a406e5e6aba11998196438e94ab8c578e6f4fb91e3c2b74057eae2a'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
@@ -89,8 +88,7 @@ sha512sums=('42510bffa69746e0f919fecef5a23da4adb2473239ee67730fa1eb2340256fb4618
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '0ab57c05815c0a0e758f14688fb8f3946e9082cfa1d31e21c4a2287a477adfbb2489fb576e6030cd6445eb0f91f57400b2970aed6565477bc487acf113e1b3f8'
-            'e500924b47857bda3f1e062913e241180ab44f4df89b001db640dd5da6a0ad5d8808a6902f8f4debed1526adc2188806507d282f4c5538d7d9ff5bb637da6884')
+            '4dd2f5be666462549a70ae330e094c35970c0fa384d215884c84fe40ca7f82f9b90b155c96bb3d14d0a460c64f5fc251c156ae9cca595d0f5546674569f215ea')
 sha512sums_armv7h=('d5361f28165e59cc09f8728af84b095ba890c6d617c3e05d3feb9402221fb1affa699d786e5b32dd989141f96e9f273611b0434f03cf7ec0d00a1aa8eb5d3c6d'
                    'SKIP'
                    'cd064ca844aa2f0f1e4157ce7a7607850d7c4b531f5b8336d75ce2f49d3a76e09f1e41ebd712b942357068028896dd7f55d037f5c01367c5cd8297c98920e7dc'
