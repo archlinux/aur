@@ -24,7 +24,7 @@ depends=(
 )
 
 source=("https://github.com/mozilla-services/tokenserver/archive/${pkgver}.tar.gz")
-sha512sums=("fc0396e9cefc7ba5bcaa91ed3975d4479c3e70036fd9c50a3031aaa80ef9bdd44cdfd4e95b2516a9e89240c9bda30a3336dbcf84d6680d9bfa908511ed7e05a4")
+sha512sums=('7e416f80d5c0a67c4120989682b15e9ffcf18c0d4674703c858255ef42b1c66feba8efb8814201c30f2eb79ac0703cc54d64f645b42a105087449230aa406d62')
 
 build(){
   cd ${srcdir}/${_pkgname}-${pkgver}
