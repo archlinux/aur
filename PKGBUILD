@@ -2,7 +2,7 @@
 # Contributor: Tristelune <tristelune@archlinux.info>
 pkgname=pdfstudio
 pkgver=18.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('i686' 'x86_64')
 url="http://www.qoppa.com/pdfstudio/"
@@ -27,9 +27,9 @@ source=(${pkgname}.desktop
 
 prepare() {
 	bsdtar xf data.tar.gz
-	bsdtar xf "opt/pdfstudio2018/lib/pdfstudio.jar" resources/license.html
+	bsdtar xf "opt/pdfstudio2019/lib/pdfstudio.jar" resources/license.html
 
-	rm -rf "opt/pdfstudio2018/jre"
+	rm -rf "opt/pdfstudio2019/jre"
 }
 
 package() {
