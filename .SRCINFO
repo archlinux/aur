@@ -1,0 +1,27 @@
+pkgbase = python-mkl-fft
+	pkgdesc = Python hooks for Intel(R) Math Kernel Library runtime control settings.
+	pkgver = 1.0.13
+	pkgrel = 1
+	url = https://github.com/IntelPython/mkl_fft
+	arch = x86_64
+	license = custom
+	makedepends = cython
+	makedepends = cython2
+	makedepends = git
+	makedepends = intel-compiler-base
+	makedepends = python-numpy
+	makedepends = python2-numpy
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = intel-mkl
+	source = git+https://github.com/IntelPython/mkl_fft#tag=v1.0.13
+	md5sums = SKIP
+
+pkgname = python-mkl-fft
+	depends = intel-mkl
+	depends = python-numpy
+
+pkgname = python2-mkl-fft
+	depends = intel-mkl
+	depends = python2-numpy
+
