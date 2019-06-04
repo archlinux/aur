@@ -63,8 +63,8 @@ index 3df655fd..7e57cffe 100644
 +ul.list-group.list-group-2fa > li:nth-child(5) button { @extend %bwrs-hide; }
 +
 +/* Hide organization plans */
-+app-create-organization > form > div.form-check { @extend %bwrs-hide; }
-+app-create-organization > form > h2.mt-5 { @extend %bwrs-hide; }
++app-organization-plans > form > div.form-check { @extend %bwrs-hide; }
++app-organization-plans > form > h2.mt-5 { @extend %bwrs-hide; }
 +
 +/* Hide Tax Info in Organization settings */
 +app-org-account > div.secondary-header.border-0.mb-0:nth-child(3) { @extend %bwrs-hide; }
@@ -75,3 +75,14 @@ index 3df655fd..7e57cffe 100644
  $primary: #3c8dbc;
  $primary-accent: #286090;
  $secondary: #ced4da;
+index aecb1860..44acdc1d 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -170,6 +170,7 @@ const config = {
+         },
+         minimizer: [
+             new TerserPlugin({
++                sourceMap: true,
+                 terserOptions: {
+                     safari10: true,
+                 },

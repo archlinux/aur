@@ -1,8 +1,8 @@
 # Maintainer: Markus Richter <mqus at disroot dot org>
 
-_jslib_commit="a884f779381d0958ce31a99c2cd9e62cd9fba521"
+_jslib_commit="741e060d999c7b40e98b5b2b8afab4e43d59afcb"
 pkgname=bitwarden_rs-vault
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Integrates the Vault Web-Interface into bitwarden_rs."
 arch=('any')
@@ -17,9 +17,9 @@ source=("https://github.com/bitwarden/web/archive/v$pkgver.tar.gz"
 	"0001-Set-Vault-BaseURL.patch"
 	"0002-Disable-Git-Submodule-Commands.patch"
 	"$pkgname.install")
-sha512sums=('da245c94eadfec2d26ad78f1591154ca5eb1205b932169687e8445b49fac4225b6e861bc68848e59763bd89258c599c06fbff530fd1742332296b594100f5307'
-            '4d1f84d3779afadf5d488320ab420a859a3a6f8bc25efb2533fc950daae7753f5068ded6f95690ced81388e00e93a5dd1af1297a07afe2e0f6deff78760ba465'
-            '1fe9de2dca3a0199446a09d31deb7ce18cb32af9e7b7732c444e505edc1a5f834b6457d03561b5595fb2aca1120892823f8c2cdd4f96a2a8402df27155baec3a'
+sha512sums=('1020c94e2167a4e37813dc63c489b19e7ec8d5a9f863b2d904cab1768e1dea35c4c756f3fae974fed958107b7d0b86d4bea82afacda4da8b00d843657368cd75'
+            'a0be963cd6f96c27f8a8750cce739aae50b3a35a91d7f268496d03680b8e2b669faed2198222d03e3629e1b5380f8ea9da06db56474172be6708ca4d0f9e431f'
+            '02bada10c338b8fd6fd792b1d5f275109d296416a0f75f03399a763bf4edb5d2594352511169997c1ec7e532af0335bb322a925bb7f91d0bb067dadaca5a3bd8'
             'adaa6037e59f08a6a44f681c8eab915c0738069989f9d6acbf46e4d3135f69696fa7735a65158979fbc924b27f43bdf255648e615b33495ac7da418e89f27c90'
             '5265612afd40cb757e7d6550ca902f9c02c558e7d03607a181df923374efdf9eff85296c216db7c96d9987eb1fe0834a7eb90de7dcd988c9f7443dc69b9469b1')
 
