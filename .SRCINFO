@@ -1,4 +1,4 @@
-pkgbase = bladerf
+pkgbase = bladerf-git
 	pkgdesc = Driver, userspace, fpga & firmware for the bladeRF SDR.
 	pkgver = 2018.12.rc2.r37.g080916a3
 	pkgrel = 1
@@ -20,5 +20,5 @@ pkgbase = bladerf
 	md5sums = 33641f8a126bef1c0b7e6ba8bedda93f
 	md5sums = c823ea5aa2c25c26bbaf4ab395ac559d
 
-pkgname = bladerf
+pkgname = bladerf-git
 
