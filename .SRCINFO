@@ -8,10 +8,6 @@ pkgbase = zeek-broker
 	makedepends = cmake
 	depends = openssl
 	source = src::git+https://github.com/zeek/broker#tag=v1.1.2
-	source = third_party::git+https://github.com/zeek/zeek-3rdparty
-	source = cmake_mods::git+https://github.com/zeek/cmake
-	md5sums = SKIP
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = zeek-broker
