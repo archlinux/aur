@@ -2,7 +2,7 @@
 
 pkgname=otf-gandhifamily
 pkgdesc="Gandhi Sans and Serif font family by Cristóbal Henestrosa and Raúl Plancarte for Librería Gandhi (OpenType)"
-url=('http://www.tipografiagandhi.com/')
+url='http://www.tipografiagandhi.com/'
 license=('custom')
 pkgver=1.001
 pkgrel=1
