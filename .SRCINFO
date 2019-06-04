@@ -1,11 +1,15 @@
 pkgbase = futhark
 	pkgdesc = A data-parallel functional programming language.
 	pkgver = 0.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://futhark-lang.org/
 	arch = x86_64
 	license = ISC
 	depends = ncurses5-compat-libs
+	depends = zlib
+	optdepends = opencl-headers: OpenCL backend
+	optdepends = cuda: CUDA backend
+	optdepends = python-pyopencl: PyOpenCL backend
 	source = https://github.com/diku-dk/futhark/releases/download/v0.10.2/futhark-0.10.2-linux-x86_64.tar.xz
 	sha512sums = 05bd265a98681ccdbc2183d3db80057e632f68f64c5924a40b0650b60f8b2dc5381caf37bd0e3ee5e5db656150d7155c28dac589246f764eeaf7713d5ac12d6f
 
