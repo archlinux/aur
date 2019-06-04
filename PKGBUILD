@@ -1,7 +1,7 @@
 # Maintainer: Chiku < chirantan dot mitra at gmail dot com >
 
 pkgname=zukitwo-themes-git
-pkgver=v3.28.3.r6.gee1fa3a
+pkgver=v3.32.4.r3.ga6ea8ee
 pkgrel=1
 pkgdesc="A theme for GTK3, GTK2, Metacity, xfwm4, Gnome Shell and Unity - git version"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gtk-engines' 'gtk-engine-murrine')
 optdepends=('gnome-themes-standard: Required for the GTK3 theme'
             'ttf-roboto: Font family for the Gnome Shell theme')
-makedepends=('git')
+makedepends=('git' 'ninja' 'meson' 'sassc')
 provides=('zukitwo-themes')
 conflicts=('zukitwo-themes')
 source=("$pkgname::git+https://github.com/lassekongo83/zuki-themes")
@@ -40,11 +40,14 @@ build() {
 
   rm -rf "$srcdir/$_gitname-build"
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
+  meson --prefix /usr --buildtype=plain build
+  ninja -C build
 }
 
 package() {
   cd "$srcdir/$_gitname-build"
-  find Zuki* -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
+  DESTDIR="$pkgdir" ninja -C build install
 }
 
 # vim:set ts=2 sw=2 et:
