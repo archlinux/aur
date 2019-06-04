@@ -1,8 +1,8 @@
 # Contributor: Luca Cesari < luca AT cesari DOT me>
 _gemname=xdg
 pkgname=ruby-xdg
-pkgver=2.2.3
-pkgrel=3
+pkgver=2.2.5
+pkgrel=1
 pkgdesc="XDG provides a module for supporting the XDG Base Directory Standard"
 arch=(any)
 url="https://github.com/rubyworks/xdg"
@@ -11,7 +11,7 @@ depends=(ruby ruby-rdoc)
 makedepends=(rubygems)
 source=(http://rubygems.org/downloads/xdg-$pkgver.gem)
 noextract=(xdg-$pkgver.gem)
-md5sums=('889498527b5e08fb080503614cee29ef')
+md5sums=('19cb2211f1eaa59c8940cc37f2b950a0')
 
 package() {
     cd $srcdir
