@@ -1,10 +1,11 @@
 pkgbase = drill-search-bin
 	pkgdesc = Search files without indexing, but clever crawling
 	pkgver = 1.204
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.drill.santamorena.me/
 	arch = x86_64
 	license = GPL2
+	depends = gtk3
 	provides = drill-search-bin
 	conflicts = drill-search-bin
 	source = https://github.com/yatima1460/Drill/releases/download/1.204/Drill-ui-linux-1.204-x86_64.deb

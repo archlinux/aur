@@ -2,11 +2,12 @@
 
 pkgname=drill-search-bin
 pkgver=1.204
-pkgrel=1
+pkgrel=2
 pkgdesc="Search files without indexing, but clever crawling"
 url="https://www.drill.santamorena.me/"
 arch=('x86_64')
 license=('GPL2')
+depends=('gtk3')
 provides=("${pkgname}")
 conflicts=("${provides[@]}")
 source=("https://github.com/yatima1460/Drill/releases/download/$pkgver/Drill-ui-linux-$pkgver-x86_64.deb")
