@@ -2,7 +2,7 @@
 # Contributor: Tristelune <tristelune@archlinux.info>
 pkgname=pdfstudio
 pkgver=18.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('i686' 'x86_64')
 url="http://www.qoppa.com/pdfstudio/"
@@ -43,5 +43,5 @@ package() {
 	
 	cp -r opt/ "${pkgdir}"
 	mkdir -p "${pkgdir}/usr/bin"
-	ln -s /opt/pdfstudio2018/pdfstudio2018 "${pkgdir}/usr/bin/pdfstudio"
+	ln -s /opt/pdfstudio2019/pdfstudio2019 "${pkgdir}/usr/bin/pdfstudio"
 }
