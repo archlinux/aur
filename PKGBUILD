@@ -11,7 +11,7 @@
 
 pkgname=(lib32-mesa-git)
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.2.0_devel.111287.b31a31bba51
+pkgver=19.2.0_devel.111397.73dda855129
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -44,7 +44,7 @@ sha512sums=('SKIP'
 # 
 # 1: llvm-minimal-git (aur) preferred value
 # 2: llvm-git (aur)
-# 3  llvm-svn (lordheavy unoffical repo)
+# 3  llvm-git (lordheavy unoffical repo)
 # 4  llvm (stable from extra) default value
 # 
 # N.B. make sure lib32-mesa-git uses same value for this as mesa-git to avoid problems !
@@ -62,13 +62,14 @@ case $MESA_WHICH_LLVM in
         ;;
     2)
         # aur llvm-git
-        makedepends+=('lib32-llvm-git')
-        depends+=('lib32-llvm-libs-git')
+        # depending on aur-lib32-llvm-* to avoid mixup with LH llvm-git
+        makedepends+=('aur-lib32-llvm-git')
+        depends+=('aur-lib32-llvm-libs-git')
         ;;
     3)
-        # mesa-git/llvm-svn (lordheavy unofficial repo)
-        makedepends+=('lib32-llvm-svn')
-        depends+=('lib32-llvm-libs-svn')
+        # mesa-git/llvm-git (lordheavy unofficial repo)
+        makedepends+=('lib32-llvm-git')
+        depends+=('lib32-llvm-libs-git')
         ;;
     4)
         # extra/llvm
@@ -134,7 +135,7 @@ build () {
         -D tools=[] \
 
     meson configure _build
-     ninja  $NINJAFLAGS -C _build
+    ninja  $NINJAFLAGS -C _build
 }
 
 package() {
