@@ -1,4 +1,5 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
+# Contributor: David Runge <dave@sleepmap.de>
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: timbosa <tinny_tim@dodo.com.au>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
@@ -7,14 +8,14 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt       # Build kernel with a different name
-_pkgver=5.0.14
-_rtpatchver=rt9
-pkgver=${_pkgver}_${_rtpatchver}
+_pkgver=5.0.19
+_rtpatchver=rt11
+pkgver="${_pkgver}_${_rtpatchver}"
 pkgrel=1
-arch=(x86_64)
+arch=('x86_64')
 url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
-license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git)
+license=('GPL2')
+makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
 _srcname=linux-${_pkgver}
 source=(
@@ -36,9 +37,9 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('2e376076cf8a20c0f86fa30fc56a9ca35cadbe43908cd24b7d678f97f3676c61'
+sha256sums=('0bf0d5c64dafc1184e9aafd2f3ebb77aa88ddee881a7766436258feaa214d9ec'
             'SKIP'
-            '554fe3da2d293de906dd862ffde700cb9ca37650c25703b9d157999522e84820'
+            '717d95306b2f1b915d93a1a730c76a866b3da5ad680db3b115e4207eccccb300'
             'SKIP'
             'fee121cf51bfe83544aa7705b985b0204c814b19b3e3423de4d859ca58b9c2f8'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
