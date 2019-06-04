@@ -1,6 +1,6 @@
 pkgbase = yarn-completion-git
 	pkgdesc = Bash completion for Yarn
-	pkgver = v1.14.0.r0.g985e883
+	pkgver = v0.14.0.r0.gfa6cf1e
 	pkgrel = 1
 	url = https://github.com/dsifford/yarn-completion
 	arch = any
