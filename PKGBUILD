@@ -11,7 +11,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.2.0_devel.111265.e459d6d6dff
+pkgver=19.2.0_devel.111394.d68218dbca9
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -38,10 +38,11 @@ sha512sums=('SKIP'
 # Adding a line to makepkg.conf that sets this value is the simplest way to ensure a specific choice.
 #
 # 1: llvm-minimal-git (aur) preferred value
-# 2: llvm-git (aur)
-# 3  llvm-svn (lordheavy unofficial repo)
+# 2: AUR llvm-git
+# 3: llvm-git from LordHeavy unofficial repo 
 # 4  llvm (stable from extra) Default value
 # 
+
 if [[ ! $MESA_WHICH_LLVM ]] ; then
     MESA_WHICH_LLVM=4
 fi
@@ -54,13 +55,14 @@ case $MESA_WHICH_LLVM in
         ;;
     2)
         # aur llvm-git
-        makedepends+=('llvm-git')
-        depends+=('llvm-libs-git')
+        # depending on aur-llvm-* to avoid mixup with LH llvm-git
+        makedepends+=('aur-llvm-git')
+        depends+=('aur-llvm-libs-git')
         ;;
     3)
         # mesa-git/llvm-svn (lordheavy unofficial repo)
-        makedepends+=('llvm-svn' 'clang-svn')
-        depends+=('llvm-libs-svn')
+        makedepends+=('llvm-git' 'clang-git')
+        depends+=('llvm-libs-git')
         ;;
     4)
         # extra/llvm
