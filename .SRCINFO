@@ -14,3 +14,6 @@ pkgbase = python-glob2
 pkgname = python-glob2
 	depends = python
 
+pkgname = python2-glob2
+	depends = python2
+
