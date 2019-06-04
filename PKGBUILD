@@ -12,7 +12,7 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=9.0.0_r317776.31e6d8feea1
+pkgver=9.0.0_r318201.d98a0a362fb
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
@@ -42,23 +42,31 @@ prepare() {
         '/^[[:blank:]]*find_library(FFI_LIBRARY_PATH/i\
     list(INSERT CMAKE_LIBRARY_PATH 0 /usr/lib32)' \
         "$srcdir"/llvm-project/llvm/cmake/config-ix.cmake
-}
 
-build() {
     if [  -d _build ]; then
         rm -rf _build
     fi
     mkdir _build
+    
+   cd llvm-project
+    # remove code parts not needed to build this package
+    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl
+}
+
+build() {
     cd _build
     export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
+    LIB32_CFLAGS="$CFLAGS"" -m32"
+    LIB32_CXXFLAGS="$CXXFLAGS"" -m32"
+    
     cmake "$srcdir"/llvm-project/llvm  -G Ninja \
         -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DLLVM_LIBDIR_SUFFIX=32 \
-        -DCMAKE_C_FLAGS:STRING=-m32 \
-        -DCMAKE_CXX_FLAGS:STRING=-m32 \
+        -D CMAKE_C_FLAGS="$LIB32_CFLAGS" \
+        -D CMAKE_CXX_FLAGS="$LIB32_CXXFLAGS" \
         -DLLVM_TARGET_ARCH:STRING=i686 \
         -DLLVM_HOST_TRIPLE=$CHOST \
         -DLLVM_DEFAULT_TARGET_TRIPLE="i686-pc-linux-gnu" \
@@ -86,7 +94,7 @@ check() {
 
 package_lib32-llvm-git() {
 depends=('lib32-llvm-libs-git' 'llvm-git')
-provides=(lib32-llvm=$pkgver-$pkgrel lib32-clang=$pkgver-$pkgrel 'lib32-clang-git'
+provides=(aur-lib32-llvm-git lib32-llvm=$pkgver-$pkgrel lib32-clang=$pkgver-$pkgrel 'lib32-clang-git'
                 'lib32-clang-svn'  'lib32-llvm-svn')
 conflicts=('lib32-llvm' 'lib32-clang' 
                     'lib32-llvm-svn' 'lib32-clang-svn')
@@ -123,7 +131,7 @@ conflicts=('lib32-llvm' 'lib32-clang'
 
 package_lib32-llvm-libs-git() {
     depends=('lib32-gcc-libs' 'lib32-libffi' 'lib32-libxml2' 'lib32-ncurses' 'lib32-zlib')
-provides=(lib32-llvm-libs=$pkgver-$pkgrel 'lib32-llvm-libs-svn')
+provides=(aur-lib32-llvm-libs-git lib32-llvm-libs=$pkgver-$pkgrel 'lib32-llvm-libs-svn')
 conflicts=('lib32-llvm-libs')
     
     install -d "$pkgdir/usr/lib32"
