@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=jprofiler10
 pkgver=10.1.4
-pkgrel=1
+pkgrel=2
 options=(!strip)
 pkgdesc="The Award-Winning All-in-One Java Profiler"
 arch=(any)
@@ -12,8 +12,8 @@ source=("http://download-keycdn.ej-technologies.com/jprofiler/jprofiler_linux_$(
         "${pkgname}.desktop"
         "${pkgname}.sh")
 sha256sums=('e104bb4f7a1f1d73f4ac7bea0ff93ddfd690cc06c6bb4a0b9d667265ab8c4816'
-            'be6fce730c9be07ca3574c1a390f93d54d8e9ab4a18233f97bc25273beacd33a'
-            'ccd3b8ffdefc25f5845263f087776153ec5269a68fe65970fe92e68e1dcf7e36')
+            '590d69cbc227fa7a0a3d274fca6423c1a113768264b67e7d9f6e6f121d650cea'
+            '7dcd6fc0d748b448f6a08dcb2c7c12c428798728484e0fd8404af6780e59aecd')
 
 package() {
     local optdir="/opt/${pkgname}"

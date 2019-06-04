@@ -4,6 +4,6 @@ Type=Application
 Name=JProfiler
 GenericName=JProfiler
 Comment=Launch JProfiler
-Icon=jprofiler
+Icon=jprofiler10
 Categories=Development;
 Exec=jprofiler10
