@@ -1,15 +1,15 @@
 pkgbase = nodejs-node-red
 	pkgdesc = A visual tool for wiring the Internet of Things.
-	pkgver = 0.19.6
+	pkgver = 0.20.5
 	pkgrel = 1
 	url = https://nodered.org
 	arch = any
 	license = APACHE
 	makedepends = npm
 	depends = nodejs
-	noextract = node-red-0.19.6.tgz
-	source = https://registry.npmjs.org/node-red/-/node-red-0.19.6.tgz
-	sha256sums = 169190f69c474f1c8cfe2d9f1129be191715875ecae20c7fe6e6c3ee71359df9
+	noextract = node-red-0.20.5.tgz
+	source = https://registry.npmjs.org/node-red/-/node-red-0.20.5.tgz
+	sha256sums = 8d2fc3078c7324d628d0a186a2bb8a90316005dd113e85c2d59b160834eb015e
 
 pkgname = nodejs-node-red
 
