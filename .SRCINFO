@@ -1,0 +1,14 @@
+pkgbase = ttf-national-park
+	pkgdesc = A typeface that mimics U.S. National Park Service signs.
+	pkgver = v0.0.1
+	pkgrel = 1
+	url = https://nationalparktypeface.com/
+	arch = any
+	license = custom:OFL
+	source = https://files.cargocollective.com/c206464/NationalPark.zip
+	source = ofl.txt
+	sha256sums = b03567a235e0a81dca30f961704f8f0a352e2dd40a5f91bbce111b31bee17322
+	sha256sums = a24aca924da18c40798440bd9e97ef0a78868f7f7c5d1ca9c709a29a4e220087
+
+pkgname = ttf-national-park
+
