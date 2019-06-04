@@ -1,14 +1,14 @@
 _name=wisp
 pkgname=guile-$_name-hg
-pkgver=r1383.34fb66b99fad
+pkgver=r1623.9b0863aad000
 pkgrel=1
-pkgdesc="wisp (srfi-119) as a language for guile"
+pkgdesc="wisp is a whitespace to lisp converter (srfi-119). guile module"
 arch=(any)
 license=(gpl3+)
 makedepends=(mercurial)
 depends=("guile>=2")
 provides=("$_name")
-source=("hg+http://draketo.de/proj/$_name#branch=stable")
+source=("hg+https://bitbucket.org/ArneBab/wisp#branch=stable")
 url="http://www.draketo.de/english/wisp"
 md5sums=(SKIP)
 install="$pkgname.install"
