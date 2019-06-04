@@ -1,7 +1,7 @@
 # Maintainer: schw0reismus <schw0reismus@protonmail.com>
 
 pkgname=foliate
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A simple and modern GTK eBook reader"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
