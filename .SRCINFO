@@ -7,6 +7,7 @@ pkgbase = purple-discord-git
 	license = GPL3
 	makedepends = git
 	makedepends = imagemagick
+	makedepends = librsvg
 	depends = libpurple
 	depends = json-glib
 	provides = purple-discord
