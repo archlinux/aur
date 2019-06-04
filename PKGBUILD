@@ -3,7 +3,7 @@
 pkgname=pdfstudio9
 pkgver=9.2.2
 _pkgver=v9_2_2
-pkgrel=3
+pkgrel=4
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('i686' 'x86_64')
 url="http://www.qoppa.com/pdfstudio/"
@@ -19,8 +19,8 @@ install=${pkgname}.install
 sha256sums=('7d4c4bee272f0f3adba5586dca0c889553358f8cda6b23a6878078fc7ce36c1a'
             'b82acfb50e1e15a43c54aba7a0712b6c710c10ae74280a26a451343720e965e3'
             '0a3c1c337a22228f3df28412ca65d45d0d8067b508cf7b1cf93810fc17c9b447')
-sha256sums_i686=('5ab1854af850d5fa329cb1326f2d534e805f1d637ca725b816912b3263455494')
-sha256sums_x86_64=('90774bd659259d028d1d0f630a8149b93c379643e60d9d802de4614b47afa6a8')
+sha256sums_i686=('f461821b4ae4e93582c6f9c9f37a7ce86bf54068e69a352af4c2ad492ba18485')
+sha256sums_x86_64=('f461821b4ae4e93582c6f9c9f37a7ce86bf54068e69a352af4c2ad492ba18485')
 source_i686=("http://www.qoppa.com/files/pdfstudio/demo/downloads/version9/PDFStudio_${_pkgver}_linux.deb")
 source_x86_64=("http://www.qoppa.com/files/pdfstudio/demo/downloads/version9/PDFStudio_${_pkgver}_linux64.deb")
 source=(${pkgname}.desktop
