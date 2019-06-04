@@ -15,12 +15,12 @@ makedepends=('git')
 source=(
 	"${_gitname}::git+https://github.com/ribtoks/xpiks.git#tag=v1.5.2"
 	"xpiks-build_with_system_libquazip5.patch"
-	"xpiks-libxpks_stub.patch.gz"
+	"xpiks-libxpks_stub.patch"
 	"xpiks.desktop"
 	)
 md5sums=('SKIP'
          '8d082ec0a08051aec943aa3c35486592'
-         '6684ebad2eb032180dd702d3058b1a55'
+         'cf8d93fcf7d19aa5768024752de0994a'
          '4112f7181afe7e45eb878b8eccc91eaf')
 
 prepare() {
