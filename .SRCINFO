@@ -10,7 +10,7 @@ pkgbase = virtualbox-modules-uksm
 
 pkgname = virtualbox-host-modules-uksm
 	pkgdesc = Host kernel modules for VirtualBox running under linux-uksm.
-	depends = linux-uksm>=5.0
-	depends = linux-uksm<5.1
+	depends = linux-uksm>=5.1
+	depends = linux-uksm<5.2
 	provides = VIRTUALBOX-HOST-MODULES
 
