@@ -28,14 +28,16 @@ arch:
   - "echo 'COMPRESSXZ=(xz -T 0 -7 -c -z -)' >> PKGBUILD"
 # override `package-cleanup.hook` to preserve cache for travis.
   - "sudo mkdir /etc/pacman.d/hooks/ && sudo ln -s /dev/null /etc/pacman.d/hooks/package-cleanup.hook"
-  - "sudo pacman -S --noconfirm ccache moreutils"
+  - "sudo pacman -S --noconfirm ccache moreutils bc"
 # check for new version
 # @update_interval in days
   - "update_interval=5"
+  - 'update_offset=$(. PKGBUILD; sha1sum <<<"$pkgname"|sed -e "s/[a-z -]//g" -e "s/^0*//"|echo `cat`%$update_interval|bc)'
+  - "next_update=$(((365-`date +%j`+update_offset)%update_interval))"
   - "makepkg -od --skipinteg"
   - "new_pkgver=$(. PKGBUILD; [[ -v epoch ]] && echo -n $epoch:; echo $pkgver-$pkgrel)"
   - "old_pkgver=$(. PKGBUILD; pacman -S --print-format %v $pkgname|tail -n1)"
-  - '[[ "$new_pkgver" == "$old_pkgver" && $((`date +%j`%update_interval)) != 0 ]] && { echo "Current version is up to date!"; exit 0; }'
+  - '[[ "$new_pkgver" == "$old_pkgver" && $next_update != 0 ]] && { echo -e "Current version is up to date!\nNext force update in $next_update days!"; exit 0; }'
 # exit with makepkg return code
   - "set -o pipefail"
   - "makepkg -s --noconfirm TRAVIS=1 MAKEFLAGS='-j2' 2>&1 |ts -s '[%.T]'; makepkg_ret=$?"
