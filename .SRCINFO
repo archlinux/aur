@@ -1,0 +1,14 @@
+pkgbase = python2-hawkauthlib
+	pkgdesc = Low-level library for implementing MAC Access Authentication
+	pkgver = 2.0.0
+	pkgrel = 3
+	url = https://github.com/mozilla-services/hawkauthlib
+	arch = any
+	license = MPL2
+	depends = python2-requests
+	depends = python2-webob
+	source = https://files.pythonhosted.org/packages/source/h/hawkauthlib/hawkauthlib-2.0.0.tar.gz
+	md5sums = bb2257a488c9971ba226bc6ade06c11f
+
+pkgname = python2-hawkauthlib
+
