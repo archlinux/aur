@@ -1,0 +1,24 @@
+pkgbase = bladerf
+	pkgdesc = Driver, userspace, fpga & firmware for the bladeRF SDR.
+	pkgver = 2018.12.rc2.r37.g080916a3
+	pkgrel = 1
+	url = https://github.com/Nuand/bladeRF
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = help2man
+	makedepends = doxygen
+	depends = libusb
+	source = bladeRF::git+https://github.com/Nuand/bladeRF.git
+	source = https://www.nuand.com/fpga/v0.10.2/hostedxA4.rbf
+	source = https://nuand.com/fpga/v0.10.2/hostedx40.rbf
+	source = https://nuand.com/fpga/v0.10.2/hostedx115.rbf
+	source = https://www.nuand.com/fx3/bladeRF_fw_v2.3.2.img
+	md5sums = SKIP
+	md5sums = b3f8b37fccee3eacb85aeb4f9fe89b2b
+	md5sums = 4aabf1617901423569f425db93598884
+	md5sums = 33641f8a126bef1c0b7e6ba8bedda93f
+	md5sums = c823ea5aa2c25c26bbaf4ab395ac559d
+
+pkgname = bladerf
+
