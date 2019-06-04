@@ -1,0 +1,14 @@
+pkgbase = nodejs-fkill
+	pkgdesc = Fabulously kill processes
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://github.com/sindresorhus/fkill-cli
+	arch = i686
+	arch = x86_64
+	makedepends = npm
+	noextract = fkill-cli-5.2.0.tgz
+	source = https://registry.npmjs.org/fkill-cli/-/fkill-cli-5.2.0.tgz
+	sha1sums = 0debb61bd87bc7e0db8346e5ae3e57b81a454f2f
+
+pkgname = nodejs-fkill
+
