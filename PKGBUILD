@@ -5,7 +5,7 @@
 pkgname=borg-venv
 _pkgname=borgbackup
 pkgver=1.1.8
-pkgrel=3
+pkgrel=4
 pkgdesc='Borgbackup in a virtualenv to use old msgpack version'
 url='https://borgbackup.github.io/'
 license=('BSD')
@@ -75,7 +75,7 @@ package() {
   ln -s /opt/"$pkgname"/bin/{borg,borgfs} "$pkgdir"/usr/bin/
 
   # remove junk files
-  rm -f "$pkgdir"/usr/lib/python*/site-packages/{.benchmarks,.coverage}
+  rm -f "$venvdest"/lib/python*/site-packages/"$_pkgname-"*/{.benchmarks,.coverage}
 
   # install misc files
   install -Dm644 scripts/shell_completions/bash/borg \
