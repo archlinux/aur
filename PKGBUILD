@@ -11,7 +11,7 @@ makedepends=('maven')
 provides=('universal-gcode-sender')
 conflicts=('universal-gcode-sender-git')
 source=("https://github.com/winder/Universal-G-Code-Sender/archive/v${pkgver}.tar.gz")
-md5sums=('81398c99e535484172c5d4db4bde45cd')
+md5sums=('f898607e51cd397b040550fab00911bf')
 
 build() {
   cd "${srcdir}/Universal-G-Code-Sender-${pkgver}"
