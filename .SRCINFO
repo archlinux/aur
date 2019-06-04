@@ -1,17 +1,18 @@
 pkgbase = pgsql-ogr-fdw
 	pkgdesc = PostgreSQL foreign data wrapper for OGR
-	pkgver = 1.0.7
-	pkgrel = 2
+	pkgver = 1.0.8
+	pkgrel = 1
 	url = https://github.com/pramsey/pgsql-ogr-fdw
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = postgresql
+	makedepends = llvm
 	depends = gdal
-	source = https://github.com/pramsey/pgsql-ogr-fdw/archive/v1.0.7.tar.gz
-	source = pgsql-ogr-fdw-1.0.7-fix-bin-install-path.patch
-	source = pgsql-ogr-fdw-1.0.7-use-cflags-from-env.patch
-	sha256sums = c776d9ad108818bae33336ca8d2219837e04d2c25c9086928e4bb6e06947b6e9
+	source = https://github.com/pramsey/pgsql-ogr-fdw/archive/v1.0.8.tar.gz
+	source = pgsql-ogr-fdw-1.0.8-fix-bin-install-path.patch
+	source = pgsql-ogr-fdw-1.0.8-use-cflags-from-env.patch
+	sha256sums = 4ab0c303006bfd83dcd40af4d53c48e7d8ec7835bb98491bc6640686da788a8b
 	sha256sums = bbde8139a04293d0c51ed13a4baedddfe206a19f34b27084776032d715847822
 	sha256sums = bf052972161e4b5317d747dca15bccd7538daf6441722ee74b2fb068a72fd0e3
 
