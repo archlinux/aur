@@ -3,12 +3,12 @@
 pkgname=pdfstudio9
 pkgver=9.2.2
 _pkgver=v9_2_2
-pkgrel=2
+pkgrel=3
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('i686' 'x86_64')
 url="http://www.qoppa.com/pdfstudio/"
 license=('custom')
-conflicts=('pdfstudio8' 'pdfstudio' 'pdfstudio10')
+conflicts=('pdfstudio18' 'pdfstudio8' 'pdfstudio' 'pdfstudio10')
 provides=('pdfstudio')
 makedepends=('pacman>=4.2.0')
 depends=('java-runtime>=6' 'desktop-file-utils')
