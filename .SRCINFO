@@ -1,0 +1,16 @@
+pkgbase = bolbol-git
+	pkgdesc = Learn languages on terminal, by short and practical sentences.
+	pkgver = 20190604.53_3f7a049
+	pkgrel = 1
+	url = https://github.com/mostafa-asg/bolbol
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = bolbol::git://github.com/mostafa-asg/bolbol.git#branch=master
+	md5sums = SKIP
+
+pkgname = bolbol-git
+
