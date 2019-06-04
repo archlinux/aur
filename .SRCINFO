@@ -1,6 +1,6 @@
 pkgbase = bladerf-git
 	pkgdesc = Driver, userspace, fpga & firmware for the bladeRF SDR.
-	pkgver = 2018.12.rc2.r37.g080916a3
+	pkgver = 2018.12.rc2.r36.g896d2431
 	pkgrel = 1
 	url = https://github.com/Nuand/bladeRF
 	arch = x86_64

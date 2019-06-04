@@ -9,7 +9,7 @@ _libver=git
 _CLIver=1.5.1
 _FPGAver=0.10.2
 _firmver=2.3.2
-pkgver=2018.12.rc2.r37.g080916a3
+pkgver=2018.12.rc2.r36.g896d2431
 pkgver() {
   cd "bladeRF"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -45,13 +45,13 @@ prepare() {
   git submodule update --init --recursive
   
   # FS#47168
-  sed -i 's|MODE.*$|TAG+="uaccess"|' host/misc/udev/*.in
+  #sed -i 's|MODE.*$|TAG+="uaccess"|' host/misc/udev/*.in
 
   # todo, report warning
-  sed -i '94i add_definitions(-Wno-error=format-truncation)' host/CMakeLists.txt
+  #sed -i '94i add_definitions(-Wno-error=format-truncation)' host/CMakeLists.txt
 
   # FS#55326
-  sed -i '44s/^else/#&/' host/misc/udev/CMakeLists.txt
+  #sed -i '44s/^else/#&/' host/misc/udev/CMakeLists.txt
 }
 
 build() {
@@ -61,6 +61,7 @@ build() {
   CFLAGS+=" -Wno-error=stringop-truncation" cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DINSTALL_UDEV_RULES=ON \
+    -DBLADERF_GROUP=wheel \
     -DBUILD_DOCUMENTATION=ON \
     -DCMAKE_INSTALL_LIBDIR:PATH=lib \
     -Dusb_LIBRARY:FILEPATH=/usr/lib/libusb-1.0.so \
@@ -79,6 +80,8 @@ package() {
   install -Dm644 hostedx115.rbf "$pkgdir/usr/share/bladerf/fpga/hostedx115.rbf"
   install -Dm644 hostedxA4.rbf "$pkgdir/usr/share/bladerf/fpga/hostedxA4.rbf"
   # FS#54105
-  #cd "$pkgdir/etc/udev/rules.d/"
-  #mv 88-nuand.rules 70-nuand.rules
+  cd "$pkgdir/etc/udev/rules.d/"
+  mv 88-nuand-bladerf1.rules 70-nuand-bladerf1.rules
+  mv 88-nuand-bladerf2.rules 70-nuand-bladerf2.rules
+  mv 88-nuand-bootloader.rules 70-nuand-bootloader.rules
 }
