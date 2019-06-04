@@ -22,7 +22,10 @@ arch=('x86_64')
 license=('GPL2')
 depends=('libusb')
 makedepends=('cmake' 'help2man' 'doxygen')
-#backup=("etc/bladerf.cfg")
+#replaces=('bladerf')
+conflicts=('bladerf')
+provides=('bladerf')
+backup=("etc/bladerf.cfg")
 
 source=(
     "bladeRF::git+https://github.com/Nuand/bladeRF.git"
