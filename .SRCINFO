@@ -11,7 +11,13 @@ pkgbase = nmguish-git
 	depends = libnotify
 	depends = nm-connection-editor
 	noextract = nmguish
+	noextract = nmguish.desktop
+	noextract = nmguish.png
 	source = https://gitlab.com/varshitbhat/nmguish/raw/master/nmguish
+	source = https://gitlab.com/varshitbhat/nmguish/raw/master/nmguish.desktop
+	source = https://gitlab.com/varshitbhat/nmguish/raw/master/nmguish.png
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = nmguish-git
