@@ -14,12 +14,12 @@ build() {
     bro_ver=bro-2.6.2
     tar xf $bro_ver.tar.gz
     cd "$bro_ver"
+    ./configure --disable-broctl --disable-auxtools --disable-perftools --disable-python --disable-broker-tests
+    make -j7
 }
 
 package() {
     bro_ver=bro-2.6.2
     cd "$bro_ver"
-    ./configure --disable-broctl --disable-auxtools --disable-perftools --disable-python --disable-broker-tests
-    make -j7
     make DESTDIR="$pkgdir/" install
 }
