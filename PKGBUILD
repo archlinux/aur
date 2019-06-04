@@ -7,7 +7,10 @@ pkgdesc="Automatic Book Downloading via NZBs & Torrent"
 arch=('any')
 url="https://github.com/DobyTang/LazyLibrarian"
 license=('GPL3')
-depends=('python' 'python-unrardll')
+depends=('python'
+         'python-unrardll'
+         'python-apprise'
+         'python-pyopenssl')
 conflicts=('lazylibrarian-git')
 provides=('lazylibrarian')
 install='lazylibrarian.install'
