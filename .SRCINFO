@@ -1,7 +1,7 @@
 pkgbase = pdfstudio12
 	pkgdesc = Review, annotate, and edit PDF Documents
 	pkgver = 12.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.qoppa.com/pdfstudio/
 	install = pdfstudio12.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = pdfstudio12
 	depends = desktop-file-utils
 	provides = pdfstudio
 	conflicts = pdfstudio
+	conflicts = pdfstudio18
 	conflicts = pdfstudio11
 	conflicts = pdfstudio8
 	conflicts = pdfstudio9
