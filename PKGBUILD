@@ -8,7 +8,7 @@ _pkgname=tokenserver
 pkgdesc="Mozilla Token Server"
 url="https://github.com/mozilla-services/tokenserver"
 
-pkgver=1.3.1
+pkgver=1.4.2
 pkgrel=1
 
 arch=("any")
