@@ -1,4 +1,4 @@
 #!/bin/sh
 
-/opt/jprofiler/bin/jprofiler
+/opt/jprofiler10/bin/jprofiler10
 

@@ -6,4 +6,4 @@ GenericName=JProfiler
 Comment=Launch JProfiler
 Icon=jprofiler
 Categories=Development;
-Exec=jprofiler
+Exec=jprofiler10
