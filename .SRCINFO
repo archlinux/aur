@@ -1,0 +1,25 @@
+pkgbase = ntp-allclocks
+	pkgdesc = Network Time Protocol reference implementation
+	pkgver = 4.2.8.p13
+	pkgrel = 2
+	url = http://www.ntp.org/
+	arch = x86_64
+	license = custom
+	depends = openssl
+	depends = libcap
+	depends = libedit
+	options = !emptydirs
+	backup = etc/ntp.conf
+	source = https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p13.tar.gz
+	source = ntp.conf
+	source = ntpd.service
+	source = ntpdate.service
+	source = ntp.sysusers
+	sha1sums = cff200a987d64e891fb349a22313ecb0feaea090
+	sha1sums = ad1d6ee2e9aca64a84a7224c88bf6008ac6c69e1
+	sha1sums = 0cccca872385e0142888ab48d273fec0669b30a8
+	sha1sums = 059b382d1af0c55202e2d17f2ae065a2cbfec9ee
+	sha1sums = e8d1c895eabeb45b1a5f096fa5fc3c088eb3ee71
+
+pkgname = ntp-allclocks
+
