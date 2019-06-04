@@ -7,11 +7,10 @@ pkgdesc='gif recorder that records the desktop, a window or a selection'
 url='https://github.com/phisch/giph'
 license=('MIT')
 arch=('any')
-depends=('bash' 'ffmpeg' 'grep' 'gawk')
+depends=('bash' 'ffmpeg')
 optdepends=('slop: for interactive selection'
-            'xorg-xwininfo: for window or desktop recording'
-            'zenity: for a graphical user interface'
-            'gifski: if the gifs should be encoded with gifski instead of ffmpeg')
+            'xdotool: for window or desktop recording'
+            'zenity: for a graphical user interface')
 makedepends=('git')
 provides=('giph')
 conflicts=('giph')
