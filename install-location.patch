@@ -1,0 +1,26 @@
+--- a/Makefile	2013-02-24 17:00:20.000000000 +0100
++++ b/Makefile	2019-06-04 09:28:29.293199623 +0200
+@@ -5,7 +5,7 @@
+ OPTIFLAG     = -O2 -g
+ SDL_CONFIG  ?= sdl-config
+ VERSION      = 1.0.8
+-CFLAGS      := -Wall -Isrc $(OPTIFLAG) $(CFLAGS_NOSDL) `$(SDL_CONFIG) --cflags` -DHAVE_SDL_MIXER "-DTRIPLANE_DATA=\"$(PREFIX)/share/games/triplane\"" "-DTRIPLANE_VERSION=\"$(VERSION)\""
++CFLAGS      := -Wall -Isrc $(OPTIFLAG) $(CFLAGS_NOSDL) `$(SDL_CONFIG) --cflags` -DHAVE_SDL_MIXER "-DTRIPLANE_DATA=\"$(PREFIX)/share/triplane\"" "-DTRIPLANE_VERSION=\"$(VERSION)\""
+ LDFLAGS      = 
+ LIBS        := `$(SDL_CONFIG) --libs` -lSDL_mixer -lm
+ INSTALL_DATA     ?= install -m 644
+@@ -76,10 +76,10 @@
+ 	$(CXX) -o tools/dksbuild -g src/tools/dksbuild/dksbuild.cc
+ 
+ install:
+-	mkdir -p $(DESTDIR)$(PREFIX)/games
+-	$(INSTALL_PROGRAM) triplane $(DESTDIR)$(PREFIX)/games/triplane
+-	mkdir -p $(DESTDIR)$(PREFIX)/share/games/triplane
+-	$(INSTALL_DATA) fokker.dks $(DESTDIR)$(PREFIX)/share/games/triplane/fokker.dks
++	mkdir -p $(DESTDIR)$(PREFIX)/bin
++	$(INSTALL_PROGRAM) triplane $(DESTDIR)$(PREFIX)/bin/triplane
++	mkdir -p $(DESTDIR)$(PREFIX)/share/triplane
++	$(INSTALL_DATA) fokker.dks $(DESTDIR)$(PREFIX)/share/triplane/fokker.dks
+ 	mkdir -p $(DESTDIR)$(PREFIX)/share/man/man6
+ 	$(INSTALL_DATA) doc/triplane.6 $(DESTDIR)$(PREFIX)/share/man/man6/triplane.6
+ test:

@@ -1,0 +1,18 @@
+pkgbase = triplane-classic
+	pkgdesc = Triplane Classic is a port of Triplane Turmoil side-scrolling dogfighting game featuring solo missions and multiplayer mode with up to four players.
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/vranki/triplane
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	depends = sdl
+	depends = sdl_mixer
+	source = https://github.com/vranki/triplane/archive/v1.0.8.tar.gz
+	source = install-location.patch
+	sha1sums = b37dbb6dcfab500c16f265da2f1bf10254828755
+	sha1sums = 1718f611d74870e8a692a3943f756af50393783c
+
+pkgname = triplane-classic
+
