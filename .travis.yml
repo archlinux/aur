@@ -29,6 +29,13 @@ arch:
 # override `package-cleanup.hook` to preserve cache for travis.
   - "sudo mkdir /etc/pacman.d/hooks/ && sudo ln -s /dev/null /etc/pacman.d/hooks/package-cleanup.hook"
   - "sudo pacman -S --noconfirm ccache moreutils"
+# check for new version
+# @update_interval in days
+  - "update_interval=5"
+  - "makepkg -od --skipinteg"
+  - "new_pkgver=$(. PKGBUILD; [[ -v epoch ]] && echo -n $epoch:; echo $pkgver-$pkgrel)"
+  - "old_pkgver=$(. PKGBUILD; pacman -S --print-format %v $pkgname|tail -n1)"
+  - '[[ "$new_pkgver" == "$old_pkgver" && $((`date +%j`%update_interval)) != 0 ]] && { echo "Current version is up to date!"; exit 0; }'
 # exit with makepkg return code
   - "set -o pipefail"
   - "makepkg -s --noconfirm TRAVIS=1 MAKEFLAGS='-j2' 2>&1 |ts -s '[%.T]'; makepkg_ret=$?"

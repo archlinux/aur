@@ -1,3 +1,4 @@
+[ ! -f *pkg.tar.xz ] && exit 0
 . PKGBUILD
 git clone https://$GITHUB_ACCESS_TOKEN@github.com/bartoszek/AUR-repo.git
 cd AUR-repo
