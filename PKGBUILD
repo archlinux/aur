@@ -1,6 +1,6 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter
-pkgver=r65.372c727
+pkgver=r66.25ccc7b
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software"
 arch=('x86_64')
