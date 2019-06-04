@@ -1,18 +1,20 @@
 pkgbase = apfsprogs-git
 	pkgdesc = Experimental APFS tools for linux
-	pkgver = r23.0dac1d6
+	pkgver = r304.26f3461
 	pkgrel = 1
 	url = https://github.com/eafer/apfsprogs
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = glibc
-	provides = apfsprogs=r23.0dac1d6
+	provides = apfsprogs=r304.26f3461
 	conflicts = apfsprogs
 	source = git+https://github.com/eafer/apfsprogs
 	source = add-ldflags.patch
+	source = destdir.patch
 	sha256sums = SKIP
-	sha256sums = a47c0056a94cf8bc7bba443e467a1a434356cad71ce0a88be460c727e6aee6c9
+	sha256sums = 30c173d08a6ceeb40ba09f267f3bbacc1486fa51e155fef17456da03bd35d741
+	sha256sums = 65c7af8a2538536bcf9e62b152893849b2cd1092040f5bc6ec2a33040027f8ac
 
 pkgname = apfsprogs-git
 
