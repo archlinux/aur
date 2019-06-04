@@ -22,11 +22,6 @@ else
   export WINEARCH=win32
 fi
 
-if ! test -d "${WINEPREFIX}"
-then
-  /usr/bin/xvfb-run wineboot --update
-fi
-
 export WINEDLLOVERRIDES="mscoree,mshtml="
 
 /usr/bin/wine "$@"

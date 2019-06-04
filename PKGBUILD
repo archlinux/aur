@@ -1,9 +1,9 @@
 pkgname=mingw-w64-wine
 pkgver=1
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="Wine wrapper for MinGW (mingw-w64)"
-depends=('wine' 'xorg-server-xvfb')
+depends=('wine')
 license=("MIT")
 url="http://fedoraproject.org/wiki/MinGW"
 source=("mingw-wine.sh")
