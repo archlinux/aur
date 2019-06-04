@@ -5,10 +5,11 @@
 # Contributor: denn
 # Contributor: post-factum
 # Contributor: wrdcrrtmnstr
+# Contributor: r4sas
 
 pkgname=i2pd
 pkgver=2.25.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/PurpleI2P/$pkgname"
@@ -28,16 +29,19 @@ build() {
 	BUILD_FLAGS='-DCMAKE_CXX_FLAGS="-w" -DCMAKE_INSTALL_PREFIX=/usr
 	-DWITH_UPNP=ON -DWITH_PCH=OFF -DCMAKE_BUILD_TYPE=Release'
 
-	grep -q -m1 -o aes /proc/cpuinfo
-	if [ $? -eq 0 ]
+	if [ "$CARCH" == "x86_64" ] || [ "$CARCH" == "i686" ]
 	then
-		BUILD_FLAGS="${BUILD_FLAGS} -DWITH_AESNI=ON"
-	fi
+		grep -q -m1 -o aes /proc/cpuinfo
+		if [ $? -eq 0 ]
+		then
+			BUILD_FLAGS="${BUILD_FLAGS} -DWITH_AESNI=ON"
+		fi
 
-	grep -q -m1 -o avx /proc/cpuinfo
-	if [ $? -eq 0 ]
-	then
-		BUILD_FLAGS="${BUILD_FLAGS} -DWITH_AVX=ON"
+		grep -q -m1 -o avx /proc/cpuinfo
+		if [ $? -eq 0 ]
+		then
+			BUILD_FLAGS="${BUILD_FLAGS} -DWITH_AVX=ON"
+		fi
 	fi
 
 	cmake . $BUILD_FLAGS
