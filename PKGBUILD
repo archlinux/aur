@@ -14,6 +14,6 @@ md5sums=('SKIP')
 
 package() {
 	install -Dm755 nmguish "${pkgdir}/usr/bin/nmguish"
-	install -Dm644 nmguish.desktop "${pkgdir}/usr/share/applications/nmguish.desktop"
-	install -Dm644 nmguish.png "${pkgdir}/usr/share/pixmaps/nmguish.png"
+	install -Dm644 "${srcdir}/nmguish.desktop" "${pkgdir}/usr/share/applications/nmguish.desktop"
+	install -Dm644 "${srcdir}/nmguish.png" "${pkgdir}/usr/share/pixmaps/nmguish.png"
 }
