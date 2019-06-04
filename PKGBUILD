@@ -2,7 +2,7 @@
 
 pkgname=ledger-udev
 pkgver=1
-pkgrel=5
+pkgrel=6
 pkgdesc='Udev rules to connect a ledger wallet to your linux box'
 arch=(any)
 url='https://www.ledgerwallet.com'
