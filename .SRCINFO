@@ -1,0 +1,14 @@
+pkgbase = nodejs-docker-langserver
+	pkgdesc = Language server for Dockerfiles powered by Node.js
+	pkgver = 0.0.21
+	pkgrel = 1
+	url = https://github.com/rcjsuen/dockerfile-language-server-nodejs
+	arch = i686
+	arch = x86_64
+	makedepends = npm
+	noextract = dockerfile-language-server-nodejs-0.0.21.tgz
+	source = https://registry.npmjs.org/dockerfile-language-server-nodejs/-/dockerfile-language-server-nodejs-0.0.21.tgz
+	sha1sums = cb6a526524d5ea5a2580b56cd3ce3102ba6384fc
+
+pkgname = nodejs-docker-langserver
+
