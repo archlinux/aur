@@ -6,12 +6,12 @@ pkgver=0.19.8.1
 pkgrel=2
 pkgdesc="GNU internationalization library (32-bit)"
 arch=('x86_64')
-url="http://www.gnu.org/software/gettext/"
+url="https://www.gnu.org/software/gettext/"
 license=('GPL')
 depends=('lib32-acl' lib32-gcc-libs $_pkgbasename)
 makedepends=(gcc-multilib)
 options=(!docs)
-source=(ftp://ftp.gnu.org/pub/gnu/gettext/${_pkgbasename}-${pkgver}.tar.gz{,.sig})
+source=(https://ftp.gnu.org/pub/gnu/gettext/${_pkgbasename}-${pkgver}.tar.gz{,.sig})
 md5sums=('97e034cf8ce5ba73a28ff6c3c0638092'
          'SKIP')
 validpgpkeys=(462225C3B46F34879FC8496CD605848ED7E69871)
