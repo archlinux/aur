@@ -4,7 +4,7 @@
 # it looks like the release model has gotten better
 # keeping it more modular for now though
 
-pkgname=bladerf
+pkgname=bladerf-git
 _libver=git
 _CLIver=1.5.1
 _FPGAver=0.10.2
