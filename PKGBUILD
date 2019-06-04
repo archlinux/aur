@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git')
-pkgver=9.0.0_r317773.c7670113291
+pkgver=9.0.0_r318181.92f95d21912
 pkgrel=1
 _ocaml_ver=4.07.1
 arch=('x86_64')
@@ -121,7 +121,7 @@ package_llvm-git() {
                             'python-setuptools: for using lit (LLVM Integrated Tester)'
                             'ocaml: for ocaml support')
     # yes, I know polly is not in official repos. It just feels cleaner to list it
-    provides=(compiler-rt-git=$pkgver-$pkgrel clang-git=$pkgver-$pkgrel lld-git=$pkgver-$pkgrel lldb-git=$pkgver-$pkgrel polly-git=$pkgver-$pkgrel llvm-ocaml-git=$pkgver-$pkgrel 
+    provides=(aur-llvm-git compiler-rt-git=$pkgver-$pkgrel clang-git=$pkgver-$pkgrel lld-git=$pkgver-$pkgrel lldb-git=$pkgver-$pkgrel polly-git=$pkgver-$pkgrel llvm-ocaml-git=$pkgver-$pkgrel 
                       compiler-rt=$pkgver-$pkgrel clang=$pkgver-$pkgrel lld=$pkgver-$pkgrel lldb=$pkgver-$pkgrel polly=$pkgver-$pkgrel llvm-ocaml=$pkgver-$pkgrel
                       'llvm-svn' 'compiler-rt-svn' 'clang-svn' 'lld-svn' 'lldb-svn' 'polly-svn' 'llvm-ocaml-svn' 
                       )
@@ -177,7 +177,7 @@ package_llvm-git() {
 package_llvm-libs-git() {
     pkgdesc="runtime libraries for llvm-git"
     depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
-    provides=(llvm-libs=$pkgver-$pkgrel llvm-libs-svn=$pkgver-$pkgrel)
+    provides=(aur-llvm-libs-git llvm-libs=$pkgver-$pkgrel llvm-libs-svn=$pkgver-$pkgrel)
     conflicts=('llvm-libs')
 
     install -d "$pkgdir"/usr/lib
