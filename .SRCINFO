@@ -1,6 +1,6 @@
 pkgbase = vcp-git
 	pkgdesc = Visual cp: a cp program with some scrollbars
-	pkgver = 2.2.4
+	pkgver = 2.2.r4
 	pkgrel = 1
 	url = https://github.com/Leask/VCP
 	arch = i686
