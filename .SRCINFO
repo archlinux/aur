@@ -1,6 +1,6 @@
 pkgbase = x86_64-apple-darwin-binutils
 	pkgdesc = Cross binutils for the Apple Darwin cross-compiler
-	pkgver = 2.27
+	pkgver = 2.32
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils
 	arch = i386
@@ -9,8 +9,11 @@ pkgbase = x86_64-apple-darwin-binutils
 	depends = zlib
 	options = !libtool
 	options = !emptydirs
-	source = http://ftp.gnu.org/gnu/binutils/binutils-2.27.tar.gz
-	md5sums = 41b053ed4fb2c6a8173ef421460fbb28
+	source = rsync://mirrors.ocf.berkeley.edu/gnu/binutils/binutils-2.32.tar.xz
+	source = rsync://mirrors.ocf.berkeley.edu/gnu/binutils/binutils-2.32.tar.xz.sig
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = x86_64-apple-darwin-binutils
 
