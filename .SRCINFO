@@ -1,0 +1,14 @@
+pkgbase = check_systemd_failed
+	pkgdesc = Simple script that will check for failed systemd units by parsing the output of systemctl(1)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/kbabioch/check_systemd_failed
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	source = git+https://github.com/kbabioch/check_systemd_failed.git#tag=v1
+	sha256sums = SKIP
+
+pkgname = check_systemd_failed
+
