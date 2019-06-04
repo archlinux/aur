@@ -1,5 +1,4 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
-# Contributer: Jose Riha <jose1711 gmail com>
 pkgbase=python-mkl-service
 pkgname=(python-mkl-service python2-mkl-service)
 _pkgname=mkl-service
