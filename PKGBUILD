@@ -6,7 +6,7 @@
 
 
 pkgname=shadowsocks-libev-git
-pkgver=3.2.5.r26.g4a42da6
+pkgver=3.2.5.r37.ge3e0f2a
 pkgrel=1
 pkgdesc='A lightweight secured socks5 proxy for embedded devices and low end boxes'
 arch=(x86_64)
