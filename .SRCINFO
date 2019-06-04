@@ -1,14 +1,17 @@
 pkgbase = libiconv
 	pkgdesc = Provides libiconv.so and libcharset.so
-	pkgver = 1.15
+	pkgver = 1.16
 	pkgrel = 1
 	url = http://www.gnu.org/software/libiconv/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	options = !libtool
-	source = http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.15.tar.gz
-	md5sums = ace8b5f2db42f7b3b3057585e80d9808
+	source = http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.16.tar.gz
+	source = http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.16.tar.gz.sig
+	validpgpkeys = 68D94D8AAEEAD48AE7DC5B904F494A942E4616C2
+	sha512sums = 365dac0b34b4255a0066e8033a8b3db4bdb94b9b57a9dca17ebf2d779139fe935caf51a465d17fd8ae229ec4b926f3f7025264f37243432075e5583925bb77b7
+	sha512sums = SKIP
 
 pkgname = libiconv
 
