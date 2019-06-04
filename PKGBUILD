@@ -12,7 +12,7 @@ license=('MIT')
 url="https://pypi.org/project/cfgv/"
 makedepends=('python' 'python2')
 source=("https://pypi.io/packages/source/c/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
-md5sums=('1e08f4a1e2438a3ef6d15e8f19468335')
+md5sums=('d542632243da5c422c5b9a92a1861e29')
 
 prepare() {
   cp -a ${pypi_name}-${pkgver}{,-python2}
