@@ -1,7 +1,7 @@
 pkgbase = keepass-plugin-rpc
 	pkgdesc = RPC plugin for Keepass
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kee-org/keepassrpc
 	arch = any
 	license = GPL
