@@ -1,6 +1,6 @@
 # Maintainer: Nick Skelsey <nskelsey+zb@gmail.com>
 pkgname=zeek-broker
-pkgver=1.1.2
+pkgver=1.1.2.49
 pkgrel=1
 pkgdesc="The message passing interface for pub/sub brokering with zeek"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/zeek/broker"
 license=('BSD')
 makedepends=("cmake")
 depends=("openssl")
-source=("src::git+https://github.com/zeek/broker#tag=v${pkgver}")
+source=("src::git+https://github.com/zeek/broker")
 md5sums=("SKIP")
 
 
