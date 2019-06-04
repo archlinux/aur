@@ -25,8 +25,8 @@ package()
     cp -a "$srcdir/usr/lib" "$pkgdir/usr/"
     cp -a "$srcdir/usr/share" "$pkgdir/usr/"
 
-    mkdir -p "$pkgdir/usr/bin"
-    ln -s "$srcdir/usr/lib/desktime-linux/desktime-linux" "$pkgdir/usr/bin/desktime-linux"
+    rm -f /bin/desktime-linux
+    ln -s "/usr/lib/desktime-linux/desktime-linux" "/bin/desktime-linux"
 }
 
 # vim:et:sw=4:sts=4
