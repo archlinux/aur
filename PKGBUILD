@@ -1,9 +1,9 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=botsay
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
-pkgdesc='Like cowsay, but with randomly generated ASCII robots and rainbow support'
+pkgdesc='Like cowsay, but with randomly generated ASCII robots and color support'
 arch=(x86_64)
 url='https://github.com/xyproto/botsay'
 license=(MIT)
