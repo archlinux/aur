@@ -1,6 +1,6 @@
 pkgbase = sshcode-bin
 	pkgdesc = Run VS Code on any server over SSH
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/cdr/sshcode
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = sshcode-bin
 	depends = rsync
 	optdepends = google-chrome: suggested supported browser
 	conflicts = sshcode-bin
-	source = sshcode-0.7.0.tar::https://github.com/cdr/sshcode/releases/download/v0.7.0/sshcode-linux-amd64.tar
-	sha256sums = 736af5f619839a816a5bb9363873c663828efc53edadb1349f787adc1cd78618
+	source = sshcode-0.8.0.tar::https://github.com/cdr/sshcode/releases/download/v0.8.0/sshcode-linux-amd64.tar
+	sha256sums = 37f2c6abe6b8cc6467ae63954e46cc9a2b930074b02c0400d38075f4a757a61c
 
 pkgname = sshcode-bin
 
