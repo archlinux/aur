@@ -3,18 +3,18 @@
 
 _gemname=hiera-eyaml
 pkgname=ruby-$_gemname
-pkgver=2.1.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='OpenSSL Encryption backend for Hiera'
 arch=(any)
 url='https://github.com/voxpupuli/hiera-eyaml'
 license=(MIT)
-depends=(ruby ruby-trollop ruby-highline-1.6)
+depends=(ruby ruby-optimist ruby-highline-1.6)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('ce38873934b8be6c464c6065ebd529e9f2e39bfa')
+sha256sums=('28d017c646fa8676b56208095a35072c1282c562e7490da8f40fefe8b9ed3911')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
