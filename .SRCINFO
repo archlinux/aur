@@ -1,6 +1,6 @@
 pkgbase = openmvs
 	pkgdesc = open Multi-View Stereo reconstruction library with simple and automatic set of tools
-	pkgver = 0.9
+	pkgver = 1.0
 	pkgrel = 1
 	url = http://cdcseacave.github.io/openMVS
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = openmvs
 	depends = opencv
 	depends = boost-libs
 	optdepends = nvidia-utils: GPU optimized mesh reconstruction code
-	source = openmvs::git+https://github.com/cdcseacave/openMVS.git#tag=v0.9
+	source = openmvs::git+https://github.com/cdcseacave/openMVS.git#tag=v1.0
 	source = vcglib::git+https://github.com/cdcseacave/VCG.git
 	md5sums = SKIP
 	md5sums = SKIP
