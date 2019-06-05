@@ -1,0 +1,13 @@
+pkgbase = paselect
+	pkgdesc = Select Pulse Audio profile and output easily.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/murat-cileli/paselect
+	arch = any
+	license = MIT
+	depends = pulseaudio
+	source = https://github.com/murat-cileli/paselect/archive/1.0.tar.gz
+	sha256sums = c8ec994520c328b3f5c05301e7815526cf90739dcd009d3afc41aa91dfca1eca
+
+pkgname = paselect
+
