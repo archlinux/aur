@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-qdarkstyle
-pkgver=2.6.8
+pkgver=2.7
 pkgrel=1
 pkgdesc="A dark stylesheet for Python and Qt applications"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/ColinDuquesnoy/QDarkStyleSheet"
 license=('MIT')
 options=('!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/ColinDuquesnoy/QDarkStyleSheet/tar.gz/$pkgver)
-sha256sums=('ffd800bd3960f45a49ee8c8dc4c36501a19e3b71dae60ba686060bec2e1b6881')
+sha256sums=('a5c345ab3e518d65faa60caadaac3e0e9bd9613724b27b45b70aa50a26eb4893')
 
 build() {
   cd "$srcdir/QDarkStyleSheet-$pkgver"
