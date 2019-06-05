@@ -1,6 +1,6 @@
 pkgbase = mod_auth_radius
 	pkgdesc = Radius authentication module for Apache
-	pkgver = 1.5.8
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://freeradius.org/mod_auth_radius/
 	arch = x86_64
@@ -9,10 +9,8 @@ pkgbase = mod_auth_radius
 	depends = apache
 	conflicts = apache-mod_auth_radius
 	replaces = apache-mod_auth_radius
-	source = ftp://ftp.freeradius.org/pub/radius/mod_auth_radius-1.5.8.tar
-	source = http://ftp.de.debian.org/debian/pool/main/liba/libapache-mod-auth-radius/libapache-mod-auth-radius_1.5.8-1.2.diff.gz
-	sha256sums = 6a16cb64c8e3da5ccef5db007d3ab3fa53274bdb37c5f6b1821a12de42aa6d93
-	sha256sums = e8de2c1a76178dd993d0011966e29c29d1a0ae5db929f6bd643c6fe4d43b6140
+	source = mod_auth_radius-1.6.0.tar.gz::https://github.com/FreeRADIUS/mod_auth_radius/archive/v1.6.0.tar.gz
+	sha256sums = 018a2f9887fb838a256fcc76c37ca996928392e2aaee0a0ef936b6381de60a51
 
 pkgname = mod_auth_radius
 
