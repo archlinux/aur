@@ -1,10 +1,12 @@
 pkgbase = inlets
 	pkgdesc = Expose your local endpoints to the Internet
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexellis/inlets
 	arch = any
 	license = MIT
+	makedepends = go
+	makedepends = git
 	options = !strip
 	source = inlets-server.service
 	source = inlets-client.service

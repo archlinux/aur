@@ -2,11 +2,12 @@
 
 pkgname=inlets
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Expose your local endpoints to the Internet'
 arch=('any')
-url="https://github.com/alexellis/inlets"
+url='https://github.com/alexellis/inlets'
 license=('MIT')
+makedepends=('go' 'git')
 options=('!strip')
 _repo="github.com/alexellis"
 
