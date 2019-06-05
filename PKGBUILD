@@ -6,19 +6,26 @@
 # Contributor: The_Decryptor
 
 pkgname=h2o-git
-pkgver=2.2.0.2053
-pkgrel=2
+pkgver=2.2.0.2300
+pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64')
 # if you want websocket support, you'll also need aur/wslay
 depends=('libuv' 'libyaml' 'zlib')
-makedepends=('cmake' 'libtool' 'make' 'pkg-config' 'ruby')
+makedepends=('cmake' 'ruby')
 url="https://github.com/h2o/h2o"
 license=('MIT')
+
+# brotli
+bver=1.0.7
 source=('git+https://github.com/h2o/h2o.git'
+        "brotli-$bver.tar.gz::https://github.com/google/brotli/archive/v$bver.tar.gz"
+		'brotli-107.patch'
         'h2o.service')
 sha256sums=('SKIP'
-            '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
+'4c61bfb0faca87219ea587326c467b95acb25555b53d1a421ffa3c8a9296ee2c'
+'853ca2d73332bcb18c04ad7b79e1bb8f618f89665e04c47c55c8227c89e77075'
+'7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
 conflicts=('h2o' 'libh2o')
@@ -30,6 +37,9 @@ pkgver() {
 
 build() {
 	cd "$srcdir/h2o"
+	rm -rf deps/brotli
+	mv "$srcdir/brotli-$bver" deps/brotli
+	patch -p1 -i "$srcdir/brotli-107.patch"
 
 	# Note that picotls can be turned off,
 	# OpenSSL already supports TLS 1.3
