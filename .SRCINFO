@@ -1,6 +1,6 @@
 pkgbase = chwifi-git
-	pkgdesc = Netctl script for wireless networks with rolling password systems
-	pkgver = r111.4b6be53
+	pkgdesc = network profile manager for wireless networks with rolling password systems
+	pkgver = r112.ae28fef
 	pkgrel = 1
 	url = https://github.com/cogitantium/chwifi
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = chwifi-git
 	depends = libxml2>=2.9.9
 	optdepends = macchanger: required for MAC-address spoofing
 	provides = chwifi
-	source = chwifi-r111.4b6be53::git+https://github.com/cogitantium/chwifi.git
+	source = chwifi-r112.ae28fef::git+https://github.com/cogitantium/chwifi.git
 	md5sums = SKIP
 
 pkgname = chwifi-git

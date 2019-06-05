@@ -1,9 +1,9 @@
 # Maintainer: Falke Carlsen "cogitantium" <falke.cs@gmail.com>
 _pkgname=chwifi
 pkgname=${_pkgname}-git
-pkgver=r111.4b6be53
+pkgver=r112.ae28fef
 pkgrel=1
-pkgdesc="Netctl script for wireless networks with rolling password systems"
+pkgdesc="network profile manager for wireless networks with rolling password systems"
 arch=('any')
 url="https://github.com/cogitantium/chwifi"
 license=('GPL2')
