@@ -1,0 +1,25 @@
+pkgbase = swig3
+	pkgdesc = Generate scripting interfaces to C/C++ code
+	pkgver = 3.0.12
+	pkgrel = 1
+	url = http://www.swig.org/
+	arch = x86_64
+	license = custom
+	checkdepends = ruby
+	checkdepends = python2
+	checkdepends = java-environment
+	checkdepends = tcl
+	checkdepends = php
+	checkdepends = lua
+	checkdepends = ocaml
+	checkdepends = r
+	checkdepends = go
+	checkdepends = python2-cffi
+	checkdepends = camlp4
+	depends = pcre
+	depends = gcc-libs
+	source = https://downloads.sourceforge.net/swig/swig-3.0.12.tar.gz
+	sha1sums = 5cc1af41d041e4cc609580b99bb3dcf720effa25
+
+pkgname = swig3
+
