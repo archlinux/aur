@@ -1,6 +1,6 @@
 pkgbase = ivre-git
-	pkgdesc = Network recon framework
-	pkgver = 0.9.12.dev114
+	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...
+	pkgver = 0.9.12.dev124
 	pkgrel = 1
 	url = https://ivre.rocks/
 	arch = any
@@ -26,7 +26,7 @@ pkgname = ivre-git
 	conflicts = ivre
 
 pkgname = ivre-web-git
-	pkgdesc = Network recon framework (web application)
+	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,... (web application)
 	depends = ivre-git
 	depends = python-bottle
 	optdepends = apache: Web server
@@ -37,12 +37,12 @@ pkgname = ivre-web-git
 	backup = etc/httpd/conf/extra/ivre.conf
 
 pkgname = ivre-docs-git
-	pkgdesc = Network recon framework (documentation)
+	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,... (documentation)
 	provides = ivre-docs
 	conflicts = ivre-docs
 
 pkgname = python-ivre-git
-	pkgdesc = Network recon framework (library)
+	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,... (library)
 	depends = python
 	depends = python-pymongo
 	depends = python-future
@@ -62,7 +62,7 @@ pkgname = python-ivre-git
 	conflicts = python-ivre
 
 pkgname = python2-ivre-git
-	pkgdesc = Network recon framework (library)
+	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,... (library)
 	depends = python2
 	depends = python2-pymongo
 	depends = python2-future

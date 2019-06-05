@@ -3,9 +3,9 @@
 pkgbase='ivre-git'
 pkgbasename='ivre'
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git' 'python2-ivre-git')
-pkgver=0.9.12.dev114
+pkgver=0.9.12.dev124
 pkgrel=1
-pkgdesc='Network recon framework'
+pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
 url='https://ivre.rocks/'
 license=('GPL3')
