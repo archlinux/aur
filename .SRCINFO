@@ -1,20 +1,16 @@
 pkgbase = panini
-	pkgdesc = A portable panoramic image viewer with 3D rotation and perspective control, using OpenGL in the Qt framework
-	pkgver = 0.71.104
-	pkgrel = 6
-	url = http://sourceforge.net/projects/pvqt/
+	pkgdesc = visual tool for creating perspective views from panoramic and wide angle photographs
+	pkgver = 0.73.0
+	pkgrel = 1
+	url = https://github.com/lazarus-pkgs/panini
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = qt4
+	depends = qt5-base
 	depends = zlib
 	depends = glu
-	conflicts = pvqt
-	replaces = pvqt
-	source = http://downloads.sourceforge.net/project/pvqt/panini/Panini%200.71.100/Panini-0.71.104-src.zip
-	source = panini-build.patch
-	sha256sums = aacd27a71049c5e3b953afc02ecd67fb9bfd35702255ff5cc21a96719c0c82b3
-	sha256sums = 609a2e6851a872ec6dce7825a415e7e549bf6ec605d6f6ee3f0853160ee62769
+	source = panini-0.73.0.tar.gz::https://github.com/lazarus-pkgs/panini/archive/v0.73.0.tar.gz
+	sha256sums = 9cdb6a40e9ea53a5b35ab3a73cf66879fe253d94908d108203b82847a08e33ed
 
 pkgname = panini
 
