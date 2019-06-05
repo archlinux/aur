@@ -11,4 +11,5 @@ See [configuration](http://studio.zerobrane.com/doc-configuration.html) page for
 
 -- to specify full path to lua interpreter if you need to use your own version
 path.lua = '/usr/bin/lua'
-path.lua52 = '/usr/bin/lua'
+path.lua52 = '/usr/bin/lua5.2'
+path.lua51 = '/usr/bin/lua5.1'
