@@ -3,15 +3,15 @@
 # Contributor: Gergely Tamas <dice@mfa.kfki.hu>
 
 pkgname=afio
-pkgver=2.5.1
-pkgrel=4
+pkgver=2.5.2
+pkgrel=1
 pkgdesc='Archiver & backup program with builtin compression'
 url='http://members.chello.nl/~k.holtman/afio.html'
 arch=('i686' 'x86_64')
 license=('custom')
 source=("http://members.chello.nl/~k.holtman/${pkgname}-${pkgver}.tgz"
 	'LICENSE')
-sha256sums=('363457a5d6ee422d9b704ef56d26369ca5ee671d7209cfe799cab6e30bf2b99a'
+sha256sums=('c64ca14109df547e25702c9f3a9ca877881cd4bf38dcbe90fbd09c8d294f42b9'
             'd34be83fc92406bd5b3a8d3ac17b47e77d2795a1d833ce9ee0b33a17de21abfa')
 
 build() {
