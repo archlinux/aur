@@ -2,16 +2,16 @@
 
 pkgname=('python-symengine')
 _module='symengine.py'
-pkgver='0.3.0'
+pkgver='0.4.0'
 pkgrel=1
 pkgdesc="SymEngine is a fast symbolic manipulation library"
 url="https://github.com/symengine/symengine.py"
-depends=('python' 'symengine')
+depends=('python' 'symengine=0.4.0')
 makedepends=('python-setuptools' 'cython')
 license=('MIT')
 arch=('any')
 source=("https://github.com/symengine/symengine.py/archive/v${pkgver}.tar.gz")
-sha256sums=('0ecccfe5a09b25b6640afca12de62062bdb60ed2712d6c16cc47fc1ba1e851ac')
+sha256sums=('b9e9884649a3563e24d4b90143e50c9a3ccd6518ea4bf7d7ed819aafc2ce24a2')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
