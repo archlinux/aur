@@ -4,7 +4,7 @@
 pkgname=freerdp-git
 pkgdesc='Free RDP client - git checkout'
 pkgver=2.0.0.rc4.r659.g4a6b843f1
-pkgrel=1
+pkgrel=2
 depends=('openssl' 'libxcursor' 'libcups' 'alsa-lib' 'libxext' 'libxdamage'
          'ffmpeg' 'libxkbfile' 'libxinerama' 'libxv' 'openh264')
 makedepends=('git' 'krb5' 'cmake' 'damageproto')
@@ -40,6 +40,7 @@ build() {
 		-DWITH_PULSE=ON \
 		-DWITH_SERVER=ON \
 		-DWITH_OPENH264=ON \
+		-DWITH_CUPS=ON \
 		.
 	make
 }
