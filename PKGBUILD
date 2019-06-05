@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=intel-graphics-compiler-bin
-pkgver=1.0.3
-_build=1844
+pkgver=1.0.7
+_build=2061
 pkgrel=1
 epoch=1
 pkgdesc='Intel Graphics Compiler for OpenCL (pre-compiled binaries)'
@@ -22,10 +22,10 @@ noextract=("intel-igc-core_${pkgver}-${_build}_amd64.deb"
            "intel-igc-media_${pkgver}-${_build}_amd64.deb"
            "intel-igc-opencl-devel_${pkgver}-${_build}_amd64.deb"
            "intel-igc-opencl_${pkgver}-${_build}_amd64.deb")
-sha256sums=('9afd0e361a9098f04810fd66f451de11337e00e7e26dd9264702cfe7fe6ae371'
-            '97bb0e91d6b852f1d89066a11cde5f5271b920ca732dc5d5bda4209f7f601082'
-            'cced578c548474b2708363912d94dd3bd45f3dfedf5c8b0a36d79b729c81028d'
-            'c687e3689b4bcb39ead2b101c4c050a8409b207a6d3f72ed4b369f7b43324127'
+sha256sums=('2dc7f40dfb0a8db4149dddff5beee311fbeb323ec30d7a4c36babe4590ace433'
+            'cd78ac42d6df4a65d34b68795fdafe8ae578995c98a739b30a2c0d3bc5169a4b'
+            'f061cb229057338574cb77d8f7514cd13cc694d42f6779254b4f05dfa057f489'
+            '5abee8a04d82ddf2cd3faf55920a4e3c490dcd48570c3208fc9c980c42951c91'
             '4099c7bc8a69e9e9c82f898e75870435cc0ca989a816a8ba6e38faabc88f0c36')
 
 prepare() {
@@ -48,9 +48,7 @@ package() {
     mv "$pkgdir"/usr/local/include/* "${pkgdir}/usr/include"
     mv "$pkgdir"/usr/local/lib/*     "${pkgdir}/usr/lib"
     
-    cd "${pkgdir}/usr/lib"
-    rm libopencl-clang.so
-    ln -sf libopencl-clang.so.? libopencl-clang.so
+    rm "${pkgdir}/usr/bin/clang"
     
     install -D -m644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
