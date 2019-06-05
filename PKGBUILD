@@ -3,7 +3,7 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20180621.693604753
+pkgver=20190603.a592b4e14
 pkgrel=1
 pkgdesc='Divelog program'
 url='https://subsurface-divelog.org/'
@@ -13,8 +13,10 @@ makedepends=('git' 'cmake' 'asciidoc' 'qt5-tools')
 depends=('libzip' 'libxml2' 'libxslt' 'sqlite' 'libusb' 'libgit2'
          'subsurface-libdc-git' 'qt5-svg' 'qt5-location'
          'qt5-connectivity' 'qt5-webkit' 'grantlee' 'googlemaps')
-source=('git+https://github.com/Subsurface-divelog/subsurface')
-sha256sums=('SKIP')
+source=('git+https://github.com/Subsurface-divelog/subsurface'
+        'semicolon.patch')
+sha256sums=('SKIP'
+            'ebf7a7e3690254a257ff9094a1298b7d070abe8cf95c03ea21d78ec710972060')
 
 # qt5-webkit still used for: printing, manual, facebook
 
@@ -26,11 +28,13 @@ pkgver() {
 	git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
+prepare() {
+	cd "${srcdir}/${_pkgname}"
+	sudo patch /usr/include/qt/QtQml/qqmlprivate.h ../semicolon.patch
+}
+
 build() {
 	cd "${srcdir}/${_pkgname}"
-	git revert -n a76f15f0f67c3f138362ec8c503f645dc1211cf5
-	git revert -n d21d42b69117aae04b68ecc9cc2139e034bde146
-
 	install -d build
 	cd build
 	cmake \
