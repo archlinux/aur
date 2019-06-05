@@ -1,0 +1,38 @@
+diff --git a/src/libxpks_stub/Microstocks/apisecretsstorage.cpp b/src/libxpks_stub/Microstocks/apisecretsstorage.cpp
+index 9f32d51c..ae784251 100644
+--- a/src/libxpks_stub/Microstocks/apisecretsstorage.cpp
++++ b/src/libxpks_stub/Microstocks/apisecretsstorage.cpp
+@@ -5,10 +5,33 @@
+ #include <QWriteLocker>
+ #include <QtGlobal>
+ 
++#include <Microstocks/microstockenums.h>
++
+ namespace libxpks {
+     namespace microstocks {
+         APISecretsStorage::APISecretsStorage()
+         {
++            /*
++             * Init keypairs
++             */
++            Encryption::SecretPair ShutterstockClientID, ShutterstockClientSecret, FotoliaAPIKey, GettyAPIKey;
++
++            ShutterstockClientID.m_Key = "MasterPassword";
++            ShutterstockClientID.m_Value = "28a2a9b917961a0cbc343c81b2dd0f6618377f9210aa3182e5cc9f5588f914d918ede1533c9e06b91769c89e80909743";
++
++            ShutterstockClientSecret.m_Key = "MasterPassword";
++            ShutterstockClientSecret.m_Value = "5092d9a967c2f19b57aac29bc09ac3b9e6ae5baec1a371331b73ff24f1625d95c4f3fef90bdacfbe9b0b3803b48c269192bc55f14bb9c2b5a16d650cd641b746eb384fcf9dbd53a96f1f81215921b04409f3635ecf846ffdf01ee04ba76624c9";
++
++            FotoliaAPIKey.m_Key = "MasterPassword";
++            FotoliaAPIKey.m_Value = "ad2954b4ee1e9686fbf8446f85e0c26edfae6003f51f49ca5559aed915879e733bbaf2003b3575bc0b96e682a30a69907c612865ec8f4ec2522131108a4a9f24467f1f83befc3d80201e5f906c761341";
++
++            GettyAPIKey.m_Key = "MasterPassword";
++            GettyAPIKey.m_Value = "17a45639c3bf88f7a6d549759af398090c3f420e53a61a06d7a2a2b153c89fc9470b2365dae8c6d92203287dc6f69f55b230835a8fb2a70b24e806771b750690";
++
++            m_Storage.insert(Microstocks::ShutterstockClientID, ShutterstockClientID);
++            m_Storage.insert(Microstocks::ShutterstockClientSecret, ShutterstockClientSecret);
++            m_Storage.insert(Microstocks::FotoliaAPIKey, FotoliaAPIKey);
++            m_Storage.insert(Microstocks::GettyAPIKey, GettyAPIKey);
+         }
+ 
+         bool APISecretsStorage::tryFindPair(int key, Encryption::SecretPair &secretPair) {

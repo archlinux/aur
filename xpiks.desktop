@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Xpiks
+Exec=/opt/Xpiks/Xpiks
+GenericName=Xpiks
+Comment=Cross-platform (X) Photo Keywording Software
+Icon=Xpiks
+Type=Application
+Terminal=false
+StartupNotify=false
+Encoding=UTF-8
+Categories=Graphics;Photography;
+
