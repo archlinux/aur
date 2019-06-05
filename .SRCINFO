@@ -1,26 +1,24 @@
-pkgbase = wxlua-svn
-	pkgdesc = A set of bindings to the wxWidgets library for the Lua programming language - svn version
-	pkgver = 252
-	pkgrel = 3
-	url = http://wxlua.sourceforge.net
+pkgbase = wxlua-git
+	pkgdesc = A set of bindings to the wxWidgets library for the Lua programming language - fork with Lua 5.3 support
+	pkgver = WX_3_1_0.7d9d59.r17.gead9b38
+	pkgrel = 1
+	url = https://github.com/pkulchenko/wxlua
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = armv8
 	license = custom:wxWindows
-	makedepends = subversion
+	makedepends = git
 	makedepends = cmake
 	depends = desktop-file-utils
 	depends = wxgtk
-	depends = lua52
+	depends = lua
 	provides = wxlua
 	provides = wxstedit
 	conflicts = wxlua
 	conflicts = wxstedit
-	source = wxlua::svn+http://svn.code.sf.net/p/wxlua/svn/trunk
-	source = wxlstate.patch
+	source = git://github.com/pkulchenko/wxlua.git
 	md5sums = SKIP
-	md5sums = d4bdd1ccbb3a33abf4e7e33776811038
 
-pkgname = wxlua-svn
+pkgname = wxlua-git
 
