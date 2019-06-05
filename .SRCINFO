@@ -1,0 +1,14 @@
+pkgbase = scbd-git
+	pkgdesc = Simple C Book Downloader, also create a reference file for LaTeX (.bib)
+	pkgver = r50.9050dc0
+	pkgrel = 1
+	url = https://github.com/josecleiton/book-downloader
+	arch = any
+	license = MIT
+	provides = scbd
+	conflicts = scbd
+	source = git+https://github.com/josecleiton/book-downloader
+	md5sums = SKIP
+
+pkgname = scbd-git
+
