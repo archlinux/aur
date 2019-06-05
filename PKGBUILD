@@ -3,8 +3,8 @@
 pkgbase='ivre'
 pkgname=('ivre' 'ivre-web' 'ivre-docs' 'python-ivre' 'python2-ivre')
 pkgver=0.9.12
-pkgrel=4
-pkgdesc='Network recon framework'
+pkgrel=5
+pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
 url='https://ivre.rocks/'
 license=('GPL3')

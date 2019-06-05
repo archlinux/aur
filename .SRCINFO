@@ -1,7 +1,7 @@
 pkgbase = ivre
-	pkgdesc = Network recon framework
+	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...
 	pkgver = 0.9.12
-	pkgrel = 4
+	pkgrel = 5
 	url = https://ivre.rocks/
 	arch = any
 	license = GPL3
@@ -25,7 +25,7 @@ pkgname = ivre
 	optdepends = ffmpeg: RTSP Screenshots via Nmap script
 
 pkgname = ivre-web
-	pkgdesc = Network recon framework (web application)
+	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,... (web application)
 	depends = ivre
 	depends = python-bottle
 	optdepends = apache: Web server
@@ -34,10 +34,10 @@ pkgname = ivre-web
 	backup = etc/httpd/conf/extra/ivre.conf
 
 pkgname = ivre-docs
-	pkgdesc = Network recon framework (documentation)
+	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,... (documentation)
 
 pkgname = python-ivre
-	pkgdesc = Network recon framework (library)
+	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,... (library)
 	depends = python
 	depends = python-pymongo
 	depends = python-future
@@ -55,7 +55,7 @@ pkgname = python-ivre
 	optdepends = neo4j-community: database server (experimental flow analysis)
 
 pkgname = python2-ivre
-	pkgdesc = Network recon framework (library)
+	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,... (library)
 	depends = python2
 	depends = python2-pymongo
 	depends = python2-future
