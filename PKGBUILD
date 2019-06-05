@@ -28,6 +28,6 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     install -D -m644 $srcdir/$pkgname/bundle/linux/sfizz.desktop $pkgdir/usr/share/applications/sfizz.desktop
-    install -D -m644 $srcdir/$pkgname/resources/icons/sfizz.png $pkgdir/usr/share/pixmaps/sfizz.png
+    install -D -m644 $srcdir/$pkgname/resources/icons/icon_256px.png $pkgdir/usr/share/pixmaps/sfizz.png
     install -D -m755 $srcdir/$pkgname/Builds/LinuxMakefile/build/sfizz $pkgdir/usr/bin/sfizz
 }
