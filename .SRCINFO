@@ -1,0 +1,18 @@
+pkgbase = libretro-flycast-git
+	pkgdesc = Sega Dreamcast core
+	pkgver = r3644.8f861517
+	pkgrel = 1
+	url = https://github.com/libretro/flycast
+	arch = x86_64
+	groups = libretro-unstable
+	license = GPL2
+	makedepends = git
+	depends = libgl
+	depends = libretro-core-info
+	provides = libretro-flycast
+	conflicts = libretro-flycast
+	source = libretro-flycast::git+https://github.com/libretro/flycast.git
+	sha256sums = SKIP
+
+pkgname = libretro-flycast-git
+
