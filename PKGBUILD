@@ -2,14 +2,14 @@
 # Contributor: Rodrigo S. Wanderley <rodrigoswanderley@gmail.com>
 
 pkgname=netsed
-pkgver=1.2
-pkgrel=3
+pkgver=1.3
+pkgrel=1
 pkgdesc="Alter the contents of packets forwarded through network in real time"
 arch=('i686' 'x86_64')
 url='http://silicone.homelinux.org/projects/netsed/'
 license=('GPL')
 source=("http://silicone.homelinux.org/release/netsed/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0a7f12bac83d02c6fc837055bf4ff02c1bdfc8ea478227afcc762e92d1661c80')
+sha256sums=('f0891285442c9a4701e2b7fc7d28f2834a5352f94295649d1fdb60da1eca81aa')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
