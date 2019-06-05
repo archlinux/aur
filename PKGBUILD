@@ -1,4 +1,4 @@
-pkgname=newlogic
+pkgname=newlogic-git
 _pkgname=newlogic
 pkgver=0.1.4_beta
 _pkgver="0.1.4-beta"
