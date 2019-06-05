@@ -1,0 +1,43 @@
+post_install() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+
+    python3 -OO -m py_compile /usr/share/slimbookbattery/preferences.py
+    python3 -OO -m py_compile /usr/share/slimbookbattery/slimbookbattery
+    python3 -OO -m py_compile /usr/share/slimbookbattery/slimbookbattery-changemode.py
+    python3 -OO -m py_compile /usr/share/slimbookbattery/slimbookbattery-report.py
+
+    rm /usr/share/slimbookbattery/preferences.py
+    rm /usr/share/slimbookbattery/slimbookbattery
+    rm /usr/share/slimbookbattery/slimbookbattery-changemode.py
+    rm /usr/share/slimbookbattery/slimbookbattery-report.py
+
+    cp /usr/share/slimbookbattery/__pycache__/preferences.cpython-*.pyc /usr/share/slimbookbattery/preferences.pyc
+    cp /usr/share/slimbookbattery/__pycache__/slimbookbatterycpython-*.pyc /usr/share/slimbookbattery/slimbookbattery
+    cp /usr/share/slimbookbattery/__pycache__/slimbookbattery-changemode.cpython-*.pyc /usr/share/slimbookbattery/slimbookbattery-changemode.pyc
+    cp /usr/share/slimbookbattery/__pycache__/slimbookbattery-report.cpython-*.pyc /usr/share/slimbookbattery/slimbookbattery-report.pyc
+
+    rm /usr/share/slimbookbattery/__pycache__/*
+    rmdir /usr/share/slimbookbattery/__pycache__
+
+    echo "Warning."
+    echo "It is highly recommended that you disable any other battery/power management program. For example, the tlpui."
+
+    update-desktop-database -q
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+    rm -rf /usr/share/slimbookbattery
+
+    for d in /home/*/ ; do
+        rm -rf $d/.config/slimbookbattery
+    done
+
+    update-desktop-database -q
+}
