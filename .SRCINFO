@@ -1,6 +1,6 @@
 pkgbase = aerc-git
 	pkgdesc = Email Client for your Terminal
-	pkgver = r289.c4c8648
+	pkgver = 0.1.0.r7.geabdcff
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/aerc
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = aerc-git
 	depends = libvterm
 	depends = w3m
 	depends = dante
+	depends = python-colorama
 	provides = aerc
 	conflicts = aerc
 	source = aerc::git+https://git.sr.ht/~sircmpwn/aerc
