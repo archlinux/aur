@@ -6,7 +6,7 @@
 # Maintainer: Matt Coffin <mcoffin13 at gmail.com>
 pkgname=wl-clipboard-rs
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A safe Rust reimplementation of the Wayland command-line copy/paste utilities"
 arch=('x86_64')
@@ -30,11 +30,13 @@ check() {
 }
 
 package() {
+	if [ ! -d "$pkgdir/usr/bin" ]; then
+		mkdir -p "$pkgdir/usr"
+	fi
+	cargo install --path "$pkgname-$pkgver" --root "$pkgdir/usr" --bins
+
 	cd "$pkgname-$pkgver"
-	install -D -m 755 -t "$pkgdir/usr/bin" \
-		"target/release/wl-copy" \
-		"target/release/wl-paste" \
-		"target/release/wl-clip"
+
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -D -m 644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE-APACHE LICENSE-MIT
 }
