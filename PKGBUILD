@@ -70,7 +70,8 @@ backup=('etc/advttyd.conf')
 install="${pkgname}-install.sh"
 _srcdir="VCOM_LINUX_${pkgver}.TAR.BZ2"
 _srcdir="${_srcdir,,}"
-source=("http://advdownload.advantech.com/productfile/Downloadfile${_dl}/${_srcdir}") # a .RAR file now
+_srcrar="${_srcdir//.tar.bz2/.rar}"
+source=("${_srcrar}::http://advdownload.advantech.com/productfile/Downloadfile${_dl}/${_srcdir}") # a .RAR file now
 #source=("${_srcdir,,}::http://downloadt.advantech.com/download/downloadsr.aspx?File_Id=${_dl}") # redirect works sooner but can be changed arbitrairly
 _srcdir="${_srcdir%\.tar*}"
 #source=("http://advdownload.advantech.com/productfile/Downloadfile4/${_dl}/${_srcdir}.rar")
@@ -83,6 +84,8 @@ sha256sums=('98e670d7ab0b67c5ca1d7c61ffffdbf812e2bcc2680d408b749ae4f36f1c46d7'
             '02f504a23fbef07f666aaa595faba0513d9ffec5e99ebca7b7fe2299a0179e32'
             '9335cfe8addfdf80224d21529fe0a70a6b750fa0823cfe806f5c94ae50a06cad'
             '77edc7a806085fc738fa4536e91fce98fb8e103f8207ec0d395f340107e83d0c')
+noextract=("${_srcrar}") # the RAR crashes bsdtar. Parsing filters is unsupported.
+makedepends+=('unrar')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -92,6 +95,7 @@ fi
 
 prepare() {
   set -u
+  unrar x "${_srcrar}"
   cd "${_srcdir}"
 
   #cp -p driver/adv_main.c{,.orig}; false
