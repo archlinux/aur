@@ -4,7 +4,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-patched-filechooser-icon-view
-pkgver=3.24.8
+pkgver=3.24.8+177+gae2ef1472c
 pkgrel=1
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
@@ -16,13 +16,13 @@ replaces=('gtk3-print-backends<=3.22.26-1')
 depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 dconf
          libxcomposite libxdamage pango shared-mime-info at-spi2-atk wayland libxkbcommon
          adwaita-icon-theme json-glib librsvg wayland-protocols desktop-file-utils mesa
-         cantarell-fonts colord rest libcups libcanberra fribidi gtk-update-icon-cache)
+         cantarell-fonts colord rest libcups libcanberra fribidi iso-codes gtk-update-icon-cache)
 optdepends=('glib2-patched-thumbnailer: Thumbnail generation in upload dialog')
-makedepends=(gobject-introspection gtk-doc git glib2-docs sassc)
+makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson)
 
 license=(LGPL)
 install=gtk3.install
-_commit=5428379fad31f1637c920d97a3d0303f606bfb6e  # tags/3.24.8^0
+_commit=ae2ef1472c69ad61ed8d19d932da4ca04c2a13ef # gtk-3-24
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         settings.ini
         gtk-query-immodules-3.0.hook
@@ -42,35 +42,23 @@ prepare() {
 
   # apply icon-view patch
   patch -Np1 -i ../gtk3-filechooser-icon-view.patch
-
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd gtk
-
-  ./configure --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --disable-schemas-compile \
-    --enable-x11-backend \
-    --enable-broadway-backend \
-    --enable-wayland-backend \
-    --enable-gtk-doc
-
-  #https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-  make
+  CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS"
+  arch-meson gtk build \
+    -D broadway_backend=true \
+    -D colord=yes \
+    -D gtk_doc=true \
+    -D man=true
+  ninja -C build
 }
 
 package() {
+  DESTDIR="$pkgdir" meson install -C build
 
-  cd gtk
-  make DESTDIR="$pkgdir" install
-
-  install -Dm644 ../settings.ini "$pkgdir/usr/share/gtk-3.0/settings.ini"
-  install -Dm644 ../gtk-query-immodules-3.0.hook "$pkgdir/usr/share/libalpm/hooks/gtk-query-immodules-3.0.hook"
+  install -Dt "$pkgdir/usre/share/gtk-3.0/settings.ini" -m644 settings.ini
+  install -Dt "$pkgdir/usr/share/libalpm/hooks/gtk-query-immodules-3.0.hook" -m644 gtk-query-immodules-3.0.hook
 
   # split these out to avoid file conflicts with gtk-update-icon-cache
   rm "$pkgdir/usr/bin/gtk-update-icon-cache"
