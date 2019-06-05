@@ -5,7 +5,6 @@ pkgbase = martinize-git
 	url = https://github.com/marrink-lab/vermouth-martinize
 	arch = any
 	license = Apache
-	makedepends = python>=3.5
 	depends = python>=3.5
 	source = martinize-git_0.1.0::git+https://github.com/marrink-lab/vermouth-martinize.git
 	md5sums = SKIP

@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/marrink-lab/vermouth-martinize"
 license=('Apache')
 depends=('python>=3.5')
-makedepends=('python>=3.5')
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
