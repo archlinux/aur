@@ -1,6 +1,6 @@
 pkgbase = wingpanel-git
 	pkgdesc = Stylish top panel that holds indicators and spawns an application launcher
-	pkgver = r393.86098c2
+	pkgver = r395.1fbb38c
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel
 	arch = x86_64
