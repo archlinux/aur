@@ -15,7 +15,9 @@ license=('AGPL3')
 arch=('any')
 provides=('anki')
 conflicts=('anki' 'anki20')
-depends=('python-pyqt5' 'python-beautifulsoup4' 'python-httplib2' 'python-pyaudio' 'python-requests' 'python-send2trash' 'qt5-webengine')
+depends=('python-pyqt5' 'python-beautifulsoup4' 'python-httplib2'
+    'python-pyaudio' 'python-requests' 'python-send2trash' 'qt5-webengine'
+    'python-pyqtwebengine')
 optdepends=('mplayer: sound playing')
 source=("${pkgname}::git+https://github.com/dae/anki.git")
 sha512sums=('SKIP')

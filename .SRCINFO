@@ -12,6 +12,7 @@ pkgbase = anki-git
 	depends = python-requests
 	depends = python-send2trash
 	depends = qt5-webengine
+	depends = python-pyqtwebengine
 	optdepends = mplayer: sound playing
 	provides = anki
 	conflicts = anki
