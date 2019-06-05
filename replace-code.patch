@@ -1,19 +1,18 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -266,1 +266,0 @@
+@@ -276,1 +276,0 @@
 -        GuiAddons
-@@ -270,1 +269,0 @@
+@@ -280,1 +279,0 @@
 -        WindowSystem
 --- a/libs/widgets/CMakeLists.txt
 +++ a/libs/widgets/CMakeLists.txt
-@@ -99,1 +99,1 @@
--target_link_libraries(kritawidgets kritaodf kritaflake kritapigment kritawidgetutils Qt5::PrintSupport KF5::CoreAddons KF5::ConfigGui KF5::GuiAddons KF5::WidgetsAddons KF5::ConfigCore KF5::Completion)
-+target_link_libraries(kritawidgets kritaodf kritaflake kritapigment kritawidgetutils Qt5::PrintSupport KF5::CoreAddons KF5::ConfigGui KF5::WidgetsAddons KF5::ConfigCore KF5::Completion)
+@@ -121,1 +121,0 @@
+-    KF5::GuiAddons
 --- a/libs/widgetutils/CMakeLists.txt
 +++ b/libs/widgetutils/CMakeLists.txt
-@@ -120,1 +120,0 @@
+@@ -125,1 +125,0 @@
 -        KF5::GuiAddons
-@@ -122,1 +121,0 @@
+@@ -127,1 +126,0 @@
 -        KF5::WindowSystem
 --- a/libs/widgetutils/config/kcolorscheme.cpp
 +++ b/libs/widgetutils/config/kcolorscheme.cpp
