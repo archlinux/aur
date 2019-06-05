@@ -1,5 +1,5 @@
 pkgbase = zfs-linux-hardened-git
-	pkgver = 2019.06.03.r5164.ga3c98d572_5.0.20.a.1
+	pkgver = 2019.06.04.r5167.g1ec7eda16_5.0.20.a.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = zfs-linux-hardened-git
 	makedepends = linux-hardened-headers=5.0.20.a-1
 	makedepends = git
 	depends = kmod
-	depends = zfs-utils-git=2019.06.03.r5164.ga3c98d572
+	depends = zfs-utils-git=2019.06.04.r5167.g1ec7eda16
 	depends = linux-hardened=5.0.20.a-1
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=a3c98d5728701d455e036d7687e3f7dbbb6100e5
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=1ec7eda16743a74b363d3765bca7642935422862
 	sha256sums = SKIP
 
 pkgname = zfs-linux-hardened-git
