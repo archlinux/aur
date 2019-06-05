@@ -1,16 +1,15 @@
 # Maintainer: Philipp Schaffrath <aur at philipp dot schaffrath dot email>
 
 pkgname=giph-git
-pkgver=r47.8e52600
+pkgver=v1.0.r0.gd7eccda
 pkgrel=1
 pkgdesc='gif recorder that records the desktop, a window or a selection'
 url='https://github.com/phisch/giph'
 license=('MIT')
 arch=('any')
-depends=('bash' 'ffmpeg')
+depends=('bash' 'ffmpeg' 'xdotool')
 optdepends=('slop: for interactive selection'
-            'xdotool: for window or desktop recording'
-            'zenity: for a graphical user interface')
+            'libnotify: for error and success notifications')
 makedepends=('git')
 provides=('giph')
 conflicts=('giph')
@@ -20,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$pkgname"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
