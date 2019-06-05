@@ -1,0 +1,20 @@
+--- driver/adv_mmap.c.orig	2019-05-27 15:37:05.655080151 -0400
++++ driver/adv_mmap.c	2019-05-27 15:37:14.062322054 -0400
+@@ -33,11 +33,16 @@ void adv_vma_close(struct vm_area_struct
+ {
+ //	printk("%s(%d)\n", __func__, __LINE__);
+ }
+ 
+ #if  LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)
+-int adv_vma_nopage(struct vm_fault *vmf)
++#if  LINUX_VERSION_CODE >= KERNEL_VERSION(4,17,0)
++vm_fault_t
++#else
++int
++#endif
++adv_vma_nopage(struct vm_fault *vmf)
+ {
+ 	unsigned long offset;
+ 	struct adv_vcom * data;
+ 	struct vm_area_struct *vma = vmf->vma;
+ 	struct page *page = NULL;

@@ -59,7 +59,7 @@ pkgname='advantech-vcom'
 #pkgver='2.1.0'; _dl='4/1-15OSOW4'
 #pkgver='2.2.0'; _dl='4/1-1LPJPGD'
 pkgver='2.2.1'; _dl='5/1-1NOKMCV' # not compatible with Linux 3.16
-pkgrel='2'
+pkgrel='3'
 pkgdesc='tty driver for Advantech Adam EKI serial console terminal servers'
 _pkgdescshort="Advantech ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -77,10 +77,12 @@ _srcdir="${_srcdir%\.tar*}"
 source+=(
   '0000-advman.systemd.patch'
   '0001-adv_main-access_ok_kernel-5-0.patch'
+  '0002-adv_mmap-vm_fault_t-5-1.patch'
 )
 sha256sums=('e5e313a1542e227a654fd1a497f8846ccb90df5490a888929826cb82becb5b0f'
             '02f504a23fbef07f666aaa595faba0513d9ffec5e99ebca7b7fe2299a0179e32'
-            '9335cfe8addfdf80224d21529fe0a70a6b750fa0823cfe806f5c94ae50a06cad')
+            '9335cfe8addfdf80224d21529fe0a70a6b750fa0823cfe806f5c94ae50a06cad'
+            '77edc7a806085fc738fa4536e91fce98fb8e103f8207ec0d395f340107e83d0c')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -95,6 +97,10 @@ prepare() {
   #cp -p driver/adv_main.c{,.orig}; false
   #diff -pNau5 driver/adv_main.c{.orig,} > '../0001-adv_main-access_ok_kernel-5-0.patch'
   patch -Nbup0 -i "${srcdir}/0001-adv_main-access_ok_kernel-5-0.patch"
+
+  #cp -p driver/adv_mmap.c{,.orig}; false
+  #diff -pNau5 driver/adv_mmap.c{.orig,} > '../0002-adv_mmap-vm_fault_t-5-1.patch'
+  patch -Nbup0 -i "${srcdir}/0002-adv_mmap-vm_fault_t-5-1.patch"
 
   # Cosmetic correction of CRLF for Linux
   sed -e 's:\r$::g' -i 'readme.txt'
