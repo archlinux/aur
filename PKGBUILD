@@ -1,14 +1,16 @@
 # Maintainer: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
+# Maintainer: ordoban <dirk.langer@vvovgonik.de>
 
 pkgname='perl-asa'
 _cpanname='asa'
 pkgver='1.03'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Lets your class/object say it works like something else.'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.5.0')
+makedepends=('perl-module-install')
 url="http://search.cpan.org/~adamk/$_cpanname-$pkgver/"
 source=("http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/$_cpanname-$pkgver.tar.gz")
 md5sums=('ad3d82114f569892d65163e8623d50e4')
