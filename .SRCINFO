@@ -1,12 +1,14 @@
 pkgbase = sfizz-git
 	pkgdesc = Juce based SFZ format sampler
-	pkgver = r5.4d45914
-	pkgrel = 2
+	pkgver = r65.4fd60bb
+	pkgrel = 1
 	url = https://github.com/sfztools/sfizz
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = juce
+	provides = sfizz
+	conflicts = sfizz
 	source = sfizz-git::git+https://github.com/sfztools/sfizz
 	md5sums = SKIP
 
