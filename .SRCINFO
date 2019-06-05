@@ -2,15 +2,13 @@ pkgbase = sfizz-git
 	pkgdesc = Juce based SFZ format sampler
 	pkgver = r5.4d45914
 	pkgrel = 1
-	url = https://github.com/redtide/sfizz
+	url = https://github.com/azdrums/sfizz
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = juce
-	source = sfizz-git::git+https://github.com/redtide/sfizz
-	source = Makefile
+	source = sfizz-git::git+https://github.com/azdrums/sfizz
 	md5sums = SKIP
-	md5sums = 00f1db42f1beed7ae40dae6e9932127a
 
 pkgname = sfizz-git
 
