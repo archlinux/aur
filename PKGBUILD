@@ -3,10 +3,10 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=micropython-lib-git
-pkgver=1.8.6.45.gf6668aa
+pkgver=1.9.3.140.gb89114c
 pkgrel=1
 epoch=1
-pkgdesc="Core Python libraries ported to MicroPython"
+pkgdesc="Core Python libraries ported to MicroPython (git version)"
 arch=('any')
 url="http://micropython.org/"
 license=('MIT')
@@ -31,7 +31,7 @@ build() {
 
 package() {
     cd "$srcdir/micropython-lib"
-    for _d in $(find -mindepth 1 -maxdepth 1 -type d | sort); do
+    for _d in $(find -mindepth 1 -maxdepth 1 -type d -iname '[_a-z]*' | sort); do
         pkg="${_d#*/}"
         if grep -qr 'import metadata' ./$_d/*; then
             warning "Skipping ${pkg} (bad import)."
