@@ -7,7 +7,7 @@
 pkgname=deluge-git
 _srcname=deluge
 pkgver=2.0.0b2.dev342.g72d363968
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=('librsvg: gtk ui'
             'geoip: display peer locations')
 makedepends=(
     # binary repositories:
-        'git' 'intltool' 'librsvg' 'pygtk' 'python2-mako'
+        'git' 'intltool' 'librsvg' 'pygtk'
     # AUR:
         'slimit2'
 )

@@ -1,7 +1,7 @@
 pkgbase = deluge-git
 	pkgdesc = A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)
 	pkgver = 2.0.0b2.dev342.g72d363968
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://deluge-torrent.org/
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = deluge-git
 	makedepends = intltool
 	makedepends = librsvg
 	makedepends = pygtk
-	makedepends = python2-mako
 	makedepends = slimit2
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
