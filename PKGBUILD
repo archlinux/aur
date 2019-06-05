@@ -7,7 +7,7 @@
 
 pkgname=h2o-git
 pkgver=2.2.0.2300
-pkgrel=3
+pkgrel=4
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64')
 # if you want websocket support, you'll also need aur/wslay
@@ -25,12 +25,14 @@ source=('git+https://github.com/h2o/h2o.git'
 	"libyrmcds-$yrver.tar.gz::https://github.com/cybozu/libyrmcds/archive/v$yrver.tar.gz"
 	"hiredis-$rver.tar.gz::https://github.com/redis/hiredis/archive/v$rver.tar.gz"
 	'deps.patch'
+	'h2o-hiredis.patch'
 	'h2o.service')
 sha256sums=('SKIP'
 '4c61bfb0faca87219ea587326c467b95acb25555b53d1a421ffa3c8a9296ee2c'
 'c00c878e8bedb3d9d5440fc9f58d349e1004612f4c349326cb06bbb1fa6bec27'
 '042f965e182b80693015839a9d0278ae73fae5d5d09d8bf6d0e6a39a8c4393bd'
 'e9278bc29d71d2ab675a64ad37fb17bfa150cefbdeb72995b3f69cc63e59b800'
+'ca9da403a8cdbd2594ba1b7261af119e56772d71ebbf0045bf7aa2d07d88118b'
 '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
@@ -56,6 +58,8 @@ build() {
 
 	rm -rf deps/hiredis
 	mv "$srcdir/hiredis-$rver" deps/hiredis
+
+	patch -p1 -i "$srcdir/h2o-hiredis.patch"
 
 	# Note that picotls can be turned off,
 	# OpenSSL already supports TLS 1.3
