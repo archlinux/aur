@@ -6,8 +6,8 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.5
+pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
@@ -28,6 +28,7 @@ source=(
     "crl::git+https://github.com/telegramdesktop/crl.git"
     "GSL::git+https://github.com/Microsoft/GSL.git"
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
+    "qtlottie::git+https://github.com/telegramdesktop/qtlottie.git"
     "variant::git+https://github.com/mapbox/variant.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
     # These files might require modifications to be up-to-date. If that is the
@@ -39,8 +40,11 @@ source=(
     "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
     "demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop"
     "Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/Use-system-wide-font.patch?h=packages/telegram-desktop"
+    "tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_lottie_animation_qtdebug.patch?h=packages/telegram-desktop"
+    "tdesktop_qtlottie_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_qtlottie_qtdebug.patch?h=packages/telegram-desktop"
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -52,7 +56,9 @@ sha256sums=('SKIP'
             '95efc9cd84c2c26bddd832ef8c88637353ed9ba9d9068f183b7ee48ba25d1cc7'
             '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
             '3f23161f8239893e82d2a4f655cb80523a558a4e7869a6683802c2f434b68bbf'
-            '2457746d9b963c77decd5d8b08498035dc1003fbcbc95d4dfdb11bf524954f13')
+            '2457746d9b963c77decd5d8b08498035dc1003fbcbc95d4dfdb11bf524954f13'
+            'd1efddbd518238ab7d0da9b6d4f1b8b2ce95c48e26dc10cf5b55605f43dd0849'
+            '8360e67c49547e43b30f3f04a4e8a3e7e34104fb283b00d1d99728c170b24ba1')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -61,6 +67,7 @@ prepare() {
     git config submodule.Telegram/ThirdParty/crl.url "$srcdir/crl"
     git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
+    git config submodule.Telegram/ThirdParty/qtlottie.url "$srcdir/qtlottie"
     git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
     git config submodule.Telegram/ThirdParty/xxHash.url "$srcdir/xxHash"
     git submodule update
@@ -75,7 +82,13 @@ prepare() {
     patch -Np1    -i "$srcdir/no-gtk2.patch"
     patch -R -Np1 -i "$srcdir/demibold.patch"
     patch -Np1    -i "$srcdir/Use-system-wide-font.patch"
+    patch -Np1 -i "$srcdir/tdesktop_lottie_animation_qtdebug.patch"
 
+    cd "$srcdir/tdesktop"
+    cd "Telegram/ThirdParty/qtlottie"
+    patch -Np1 -i "$srcdir/tdesktop_qtlottie_qtdebug.patch"
+
+    cd "$srcdir/tdesktop"
     cd "Telegram/ThirdParty/libtgvoip"
     patch -Np1    -i "$srcdir/libtgvoip.patch"
 }

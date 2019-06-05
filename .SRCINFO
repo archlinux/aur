@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 1.7.5
+	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
 	arch = x86_64
@@ -24,11 +24,12 @@ pkgbase = telegram-desktop-dev
 	optdepends = ttf-opensans: default Open Sans font family
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.7.0
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.7.5
 	source = Catch::git+https://github.com/philsquared/Catch.git
 	source = crl::git+https://github.com/telegramdesktop/crl.git
 	source = GSL::git+https://github.com/Microsoft/GSL.git
 	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git
+	source = qtlottie::git+https://github.com/telegramdesktop/qtlottie.git
 	source = variant::git+https://github.com/mapbox/variant.git
 	source = xxHash::git+https://github.com/Cyan4973/xxHash.git
 	source = CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop
@@ -37,6 +38,9 @@ pkgbase = telegram-desktop-dev
 	source = libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop
 	source = demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop
 	source = Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/Use-system-wide-font.patch?h=packages/telegram-desktop
+	source = tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_lottie_animation_qtdebug.patch?h=packages/telegram-desktop
+	source = tdesktop_qtlottie_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_qtlottie_qtdebug.patch?h=packages/telegram-desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -50,6 +54,8 @@ pkgbase = telegram-desktop-dev
 	sha256sums = 4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d
 	sha256sums = 3f23161f8239893e82d2a4f655cb80523a558a4e7869a6683802c2f434b68bbf
 	sha256sums = 2457746d9b963c77decd5d8b08498035dc1003fbcbc95d4dfdb11bf524954f13
+	sha256sums = d1efddbd518238ab7d0da9b6d4f1b8b2ce95c48e26dc10cf5b55605f43dd0849
+	sha256sums = 8360e67c49547e43b30f3f04a4e8a3e7e34104fb283b00d1d99728c170b24ba1
 
 pkgname = telegram-desktop-dev
 
