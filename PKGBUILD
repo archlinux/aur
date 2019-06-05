@@ -1,7 +1,7 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 # Contributor: Jonas Platte <aur@jonasplatte.de>
 pkgname=purescript-bin
-pkgver=0.12.3
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A strongly-typed functional programming language that compiles to JavaScript"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(gmp ncurses5-compat-libs zlib)
 provides=(purescript)
 conflicts=(purescript)
 source=(purescript-v$pkgver-linux64.tar.gz::https://github.com/purescript/purescript/releases/download/v$pkgver/linux64.tar.gz)
-sha1sums=('f0c9fae808ae27973de7c77519f87ae6e4837312')
+sha1sums=('249be2fa812c544d69dadaff45af53943d428215')
 
 package() {
     cd "$srcdir/purescript/$f"
