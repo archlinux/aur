@@ -1,15 +1,16 @@
 pkgbase = guile-wisp-hg
-	pkgdesc = wisp is a whitespace to lisp converter (srfi-119). guile module
-	pkgver = r1623.9b0863aad000
+	pkgdesc = Whitespace to Lisp converter (srfi-119) as a guile module
+	pkgver = r1628+.62d6a170aefd+
 	pkgrel = 1
 	url = http://www.draketo.de/english/wisp
-	install = guile-wisp-hg.install
 	arch = any
 	license = gpl3+
 	makedepends = mercurial
 	depends = guile>=2
 	provides = wisp
-	source = hg+https://bitbucket.org/ArneBab/wisp#branch=stable
+	source = hg+https://bitbucket.org/ArneBab/wisp
+	source = fix-build-path.patch
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = guile-wisp-hg
