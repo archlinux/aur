@@ -1,0 +1,11 @@
+[Unit]
+Description=Inlets server
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/inlets-server
+ExecStart=/usr/bin/inlets server --port=${port:8080} --token=$token
+
+[Install]
+WantedBy=multi-user.target

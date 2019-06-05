@@ -1,0 +1,11 @@
+[Unit]
+Description=Inlets client
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/inlets-client
+ExecStart=/usr/bin/inlets client --remote=$remote --token=$token --upstream=$upstream
+
+[Install]
+WantedBy=multi-user.target
