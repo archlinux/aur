@@ -5,6 +5,11 @@ pkgbase = zeek
 	url = https://www.zeek.org/index.html
 	arch = x86_64
 	license = BSD
+	makedepends = cmake
+	depends = zlib
+	depends = libpcap
+	depends = bash
+	depends = libmaxminddb
 	source = https://www.zeek.org/downloads/bro-2.6.2.tar.gz
 	sha256sums = 6df6876f3f7b1dd8afeb3d5f88bfb9269f52d5d796258c4414bdd91aa2eac0a6
 
