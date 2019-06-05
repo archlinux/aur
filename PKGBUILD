@@ -9,7 +9,6 @@ pkgdesc='Serial console remote sharing and logging daemon with support for IPMI.
 arch=('i686' 'x86_64')
 url=https://www.conserver.com
 license=(BSD)
-makedepends=(autoconf)
 depends=(freeipmi openssl libwrap pam)
 
 _giturl=https://github.com/conserver/conserver
