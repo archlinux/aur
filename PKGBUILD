@@ -1,30 +1,40 @@
-# Maintainer: montag451 <montag451 [at] laposte (dot) net>
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: montag451 <montag451 [at] laposte (dot) net>
 
 pkgname=asn1c
-pkgver=0.9.27
-pkgrel=3
+pkgver=0.9.28
+pkgrel=1
 pkgdesc='Open Source ASN.1 Compiler'
 arch=('i686' 'x86_64')
-url='http://lionet.info/asn1c/compiler.html'
+url='https://lionet.info/asn1c/compiler.html'
 license=('BSD')
-depends=('glibc')
-source=("http://lionet.info/soft/asn1c-${pkgver}.tar.gz")
-sha512sums=('ac010087cb1412ba766463e2b93163e2fbd17556446a28a3e4a010bef1123881b1366827b0f8e612a7450f4bb92e959cdb4ac898d7015922485045e0b6e12e92')
+depends=('perl')
+makedepends=('pandoc')
+source=("https://lionet.info/soft/asn1c-${pkgver}.tar.gz")
+sha512sums=('bb9d913ead074d59886652a681fb2cae3ac363beeb4ecdccf2b23753ed04a0dfa453f658a529c5c38eb34be8b90f322750f97513cd0a53b8541faa2f5b3da073')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  autoreconf -fiv
+}
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    ./configure --prefix=/usr
-    make
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure \
+    --prefix=/usr \
+    --enable-shared \
+    --disable-static
+  make
 }
 
 check() {
-    cd "${pkgname}-${pkgver}"
-    make check
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make check || true
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}/" install
-    install -m 644 -D -t "${pkgdir}/usr/share/${pkgname}/standard-modules" skeletons/standard-modules/*
-    install -m 644 -D COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+  install -m 644 -D -t "${pkgdir}/usr/share/${pkgname}/standard-modules" skeletons/standard-modules/*
+  install -m 644 -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

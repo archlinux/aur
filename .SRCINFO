@@ -1,14 +1,15 @@
 pkgbase = asn1c
 	pkgdesc = Open Source ASN.1 Compiler
-	pkgver = 0.9.27
-	pkgrel = 3
-	url = http://lionet.info/asn1c/compiler.html
+	pkgver = 0.9.28
+	pkgrel = 1
+	url = https://lionet.info/asn1c/compiler.html
 	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = glibc
-	source = http://lionet.info/soft/asn1c-0.9.27.tar.gz
-	sha512sums = ac010087cb1412ba766463e2b93163e2fbd17556446a28a3e4a010bef1123881b1366827b0f8e612a7450f4bb92e959cdb4ac898d7015922485045e0b6e12e92
+	makedepends = pandoc
+	depends = perl
+	source = https://lionet.info/soft/asn1c-0.9.28.tar.gz
+	sha512sums = bb9d913ead074d59886652a681fb2cae3ac363beeb4ecdccf2b23753ed04a0dfa453f658a529c5c38eb34be8b90f322750f97513cd0a53b8541faa2f5b3da073
 
 pkgname = asn1c
 
