@@ -5,7 +5,7 @@
 pkgname=muttprint
 pkgver=0.73_4
 _mainver=0.73
-pkgrel=3
+pkgrel=4
 arch=("i686" "x86_64")
 pkgdesc="An app to print email from CLI mail clients, mutt in particular"
 license=("GPL")
@@ -16,19 +16,19 @@ makedepends=('imagemagick')
 url="http://muttprint.sf.net"
 backup=('etc/Muttprintrc')
 source=(http://downloads.sf.net/$pkgname/$pkgname-$_mainver.tar.gz
-        'muttprint_0.73-4.diff.gz' 'regex.patch' 'two_edge.patch')
+        'muttprint_0.73-4.diff' 'regex.patch' 'two_edge.patch')
 md5sums=('39b76058b838e3078df93236eda2c316'
-         'd5d2ba786cd4ff0a40b7fd2c53e11562'
+         '4a97e45b6df024272a8683403c9b73e6'
          'c0eb6dcfc195c95edf5e27c414f8290a'
          '11846b8ebfba2b784ae64fb32abb7cfd')
 
 prepare(){
-   cd $srcdir/$pkgname-$_mainver
-   patch -p1 < "$srcdir"/muttprint_0.73-4.diff
-   patch -p1 < "$srcdir"/regex.patch
-   patch -p1 < "$srcdir"/two_edge.patch
+   cd $pkgname-$_mainver
+   patch -p1 < ../muttprint_0.73-4.diff
+   patch -p1 < ../regex.patch
+   patch -p1 < ../two_edge.patch
    # convert images (and make pics/ build work)
-   cd pics && \
+   cd pics/ && \
      convert -flop BabyTuX.eps BabyTuX.eps
      for i in BabyTuX_color.eps BabyTuX.eps Debian_color.eps Debian.eps \
        Gentoo.eps Gentoo_color.eps ; do \
@@ -38,7 +38,7 @@ prepare(){
 }
 
 build() {
-   cd $srcdir/$pkgname-$_mainver
+   cd $pkgname-$_mainver
 
    aclocal
    automake --add-missing --copy
@@ -48,7 +48,7 @@ build() {
 }
 
 package() {
-   cd $srcdir/$pkgname-$_mainver
+   cd $pkgname-$_mainver
    make PREFIX=/usr DESTDIR=$pkgdir install
    for i in README* CREDITS ChangeLog CHANGES AUTHORS ; do \
      install -m644 $i $pkgdir/usr/share/doc/muttprint/$i ; \

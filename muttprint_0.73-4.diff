@@ -1,0 +1,1939 @@
+diff -rupN orig/debian/changelog new/debian/changelog
+--- orig/debian/changelog	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/changelog	2013-06-07 10:38:04.066423802 +0200
+@@ -0,0 +1,643 @@
++muttprint (0.73-4) unstable; urgency=low
++
++  * remove obsolete debconf note (closes: #631303, #658505)
++  * run pod2man with --utf8 to fix german manpage encoding,
++    thanks Helge Kreutzmann (closes: #631117)
++  * update muttprint-manual.doc-base 
++
++ -- Rene Engelhard <rene@debian.org>  Fri, 10 Feb 2012 21:31:18 +0000
++
++muttprint (0.73-3) unstable; urgency=low
++
++  * 17_leave_tmp_dir.dpatch, also chdir() in the fatalError sub, thanks
++    martin krafft again (closes: #551543)
++  * suggest texlive-fonts-extra 
++
++ -- Rene Engelhard <rene@debian.org>  Wed, 15 Dec 2010 20:19:45 +0100
++
++muttprint (0.73-2.1) unstable; urgency=low
++
++  * Non-maintainer upload.
++  * Fix "cannot remove path when cwd is /tmp/muttprint*": new patch
++    17_leave_tmp_dir.dpatch by martin krafft: change away from temp dir before
++    removing it (closes: #551543).
++
++ -- gregor herrmann <gregoa@debian.org>  Sat, 27 Nov 2010 19:31:49 +0100
++
++muttprint (0.73-2) unstable; urgency=low
++
++  * upload to unstable 
++  * add missing build-dep on docbook
++  * add Russian debconf templates translation (closes: #537366)
++  * move libtimedate-perl to recommends (closes: #419876) 
++
++ -- Rene Engelhard <rene@debian.org>  Fri, 14 Aug 2009 03:10:30 +0200
++
++muttprint (0.73-1) experimental; urgency=low
++
++  * new upstream release.
++    - expands ~ in TO_FILE (closes: #480853)
++    - fixes removal of e-mail sigs (closes: #431638)
++  * remove tetex-* from Depends: (closes: #475009)  
++  * migrate from dbs to dpatch
++  * add build-dep on autoconf/automake1.9 since releases now have no
++    ./configure/Makefiles... pre-convert pics/ files to get pics/ build
++    working
++  * actually apply 03_fix_muttrc_changing_instructions and don't install
++    README.pics anymore
++  * debian/rules cleanup
++
++ -- Rene Engelhard <rene@debian.org>  Mon, 29 Dec 2008 23:22:20 +0100
++
++muttprint (0.72d-10) unstable; urgency=high
++
++  * backport fix for 15_CVE-2008-5368 from upstrem (closes: #509487)
++  * fix up lintian warnings
++
++ -- Rene Engelhard <rene@debian.org>  Thu, 25 Dec 2008 22:32:04 +0100
++
++muttprint (0.72d-9) unstable; urgency=low
++
++  * add galician debconf translation, thanks Jacobo Tarrio (closes: #414037) 
++
++ -- Rene Engelhard <rene@debian.org>  Mon, 12 Mar 2007 09:06:18 +0100
++
++muttprint (0.72d-8) unstable; urgency=low
++
++  * remove muttprint/utf8 debconf question, depend on perl (>= 5.8.0-16)
++    instead (closes: #388940)
++
++ -- Rene Engelhard <rene@debian.org>  Sun, 24 Sep 2006 19:44:30 +0200
++
++muttprint (0.72d-7) unstable; urgency=low
++
++  * change depends to latex-ucs | texlive-latex-recommended, thanks
++    Magnus Therning (closes: #388201)
++
++ -- Rene Engelhard <rene@debian.org>  Tue, 19 Sep 2006 11:08:11 +0200
++
++muttprint (0.72d-6) unstable; urgency=low
++
++  * Depend on tetex-ucs now since "Unicode locales *are* default [...] for
++    etch"... (closes: #262485)
++  * make Build-Depends-Indep Build-Depends: 
++  * add pt debconf translation, thanks Rui Branco (closes: #381690)
++  * add updated sv debconf translation, thanks Daniel Nylander (closes: #350631)
++
++ -- Rene Engelhard <rene@debian.org>  Mon, 11 Sep 2006 19:17:22 +0200
++
++muttprint (0.72d-5) unstable; urgency=low
++
++  * support texlive-* in muttprints Depends
++
++ -- Rene Engelhard <rene@debian.org>  Mon, 23 Jan 2006 05:44:20 +0100
++
++muttprint (0.72d-4) unstable; urgency=low
++
++  * readd apparently lost patch to point to /usr/share/ospics for the images
++    instead of /usr/share/muttprint, thanks David Moreno Garza
++  * add sv po-debconf translation, thanks Daniel Nylander (closes: #340970)
++
++ -- Rene Engelhard <rene@debian.org>  Sun, 22 Jan 2006 22:20:05 +0100
++
++muttprint (0.72d-3) unstable; urgency=low
++
++  * readd uncorrupted Debian.png from CVS (closes: #342277)
++
++ -- Rene Engelhard <rene@debian.org>  Tue,  3 Jan 2006 10:51:23 +0100
++
++muttprint (0.72d-2) unstable; urgency=low
++
++  * lower slrn Recommends to Suggests. Remove versioned Recommends: on
++    perl which was only "necessary" for woody. Same with the versioned
++    tetex-extra Suggests (closes: #333608)
++  * fix typo in de.po, thanks Jens Seidel (closes: #313964)
++  * add vi.po, thanks Clytie Siddall (closes: #312993)
++  * s/apperently/apparently/, thanks Clytie Siddall (closes: #312994)
++  * fix bashism in config script 
++  * Standards-Version: 3.6.2 (no changes needed)
++
++ -- Rene Engelhard <rene@debian.org>  Thu, 13 Oct 2005 16:34:20 +0200
++
++muttprint (0.72d-1) unstable; urgency=high
++
++  * New micro upstream release
++    - only upstream maintainer change, spelling fixes
++    - disables MAINT_SEARCH (closes: #309892)
++  * add ja debconf translation, thanks Hideki Yamane (closes: #290143)
++
++ -- Rene Engelhard <rene@debian.org>  Fri, 20 May 2005 17:12:44 +0200
++
++muttprint (0.72c-2) unstable; urgency=low
++
++  * add cs debconf translation, thanks Miroslav Kure (closes: #273710)
++  * add it debconf translation, thanks Luca Monducci (closes: #277840) 
++  * don't mention we have HTML docs, we don't
++  * don't install sample-* into example/ anymore, therefore no symlinks
++    anymore (closes: #266655)
++
++ -- Rene Engelhard <rene@debian.org>  Sat,  1 Jan 2005 03:00:55 +0100
++
++muttprint (0.72c-1) unstable; urgency=low
++
++  * New upstream release. 
++  * update pt_BR debconf translation, thanks Andre Luis Lopes
++    (closes: #264224)
++
++ -- Rene Engelhard <rene@debian.org>  Sun, 26 Dec 2004 23:24:24 +0100
++
++muttprint (0.72a-3) unstable; urgency=low
++
++  * add Build-Depends: on sharutils (closes: #249737)
++
++ -- Rene Engelhard <rene@debian.org>  Wed, 19 May 2004 09:37:00 +0200
++
++muttprint (0.72a-2) unstable; urgency=low
++
++  * readd the .png versions of the images (except the b/w penguin) back
++    from upstream CVS, same with penguin.jpg; readd flipped BabyTux for png
++    since there imagemagick actually seems to work....
++
++ -- Rene Engelhard <rene@debian.org>  Sun, 16 May 2004 00:39:03 +0200
++
++muttprint (0.72a-1) unstable; urgency=low
++
++  * New upstream release.
++  * add updated fr.po, thanks Christian Perrier (closes: #245759)
++  * remove the .png, .jpg and flipped versions for now since
++    neither imagemagick nor gimp with script-fu work now on thwm *sigh*
++
++ -- Rene Engelhard <rene@debian.org>  Sun, 25 Apr 2004 13:15:45 +0200
++
++muttprint (0.72-3) unstable; urgency=low
++
++  * remove the HTML stuff from doc-base and add the PDF stuff
++    (closes: #243073, #243160)
++
++ -- Rene Engelhard <rene@debian.org>  Mon, 12 Apr 2004 16:11:11 +0200
++
++muttprint (0.72-2) unstable; urgency=low
++
++  * The "Ugh-now-I-remember why gs was in Build-Depends:" release.
++
++  * readd gs to Build-Depends: (closes: #243134) 
++
++ -- Rene Engelhard <rene@debian.org>  Sun, 11 Apr 2004 14:08:24 +0200
++
++muttprint (0.72-1) unstable; urgency=low
++
++  * The "people interested in muttprint should read
++    http://muttprint.sourceforge.net/future.shtml and probably become new
++    upstream" release.
++
++  * new upstream release
++    - does not choke on minimalistic mails anymore (closes: #241912)
++  * New patch to fix building the documentation; use -d to the db2* tools
++    disable html generation stuff though since that somehow doesn't work
++    -> only PDF for now
++  * add Build-Depends: on docbook-utils and clean up the rest
++  * Recommend perl (>= 5.8.1)
++  * Replace muttprint (<< 0.70-1) instead of Conflicts: (closes: #214957)
++  * converted changelog to UTF8
++  * merge 0.71-7
++
++ -- Rene Engelhard <rene@debian.org>  Fri,  9 Apr 2004 22:01:05 +0200
++
++muttprint (0.71+0.72pre6-1) experimental; urgency=low
++
++  * CVS co (HEAD / 0.72pre6)
++    - handles utf8 right (closes: #200682, #200864)
++  * Depends: libtext-iconv-perl
++  * add dialog and perl (>= 5.8.0-16) to Suggests:
++  * temporarily back out 03_fix_muttrc_changing_instructions 
++  * add debconf warning for people trying to install muttprint on systems
++    having perl (<< 5.8.0-16) and the possibility to have utf8 used is there
++  * Standards-Version: 3.6.1
++  * enhance /etc/Muttprintrc with all possible variables; set to default
++  * remove CHARSET variable since it does not have an effect anymore...
++
++ -- Rene Engelhard <rene@debian.org>  Fri, 17 Oct 2003 16:12:34 +0200
++
++muttprint (0.71-7) unstable; urgency=low
++                                                                                
++  * add catalan debconf template translation;
++    thanks Aleix Badia i Bosch (closes: #236654)
++                                                                                
++ -- Rene Engelhard <rene@debian.org>  Sat, 13 Mar 2004 22:46:27 +0100
++
++muttprint (0.71-6) unstable; urgency=low
++
++  * add dutch debconf template translation - thanks
++    Tim Vandermeersch (closes: #209104)
++  * do not use | in Enhances: (closes: #204278)
++
++ -- Rene Engelhard <rene@debian.org>  Tue,  7 Oct 2003 20:09:50 +0200
++
++muttprint (0.71-5) unstable; urgency=low
++
++  * add spanish debconf template translation - thanks
++    Carlos Alberto MartÃ­n Edo (closes: #201138)
++  * bump Standards-Version: to 3.6.0
++
++ -- Rene Engelhard <rene@debian.org>  Mon, 14 Jul 2003 18:56:22 +0200
++
++muttprint (0.71-4) unstable; urgency=low
++
++  * add brazlian potugese debconf template translation - thanks
++    Andre Luis Lopez (closes: #197517)
++
++ -- Rene Engelhard <rene@debian.org>  Sun, 15 Jun 2003 20:20:06 +0200
++
++muttprint (0.71-3) unstable; urgency=low
++
++  * add french debconf template translation - thanks Christian Perrier
++    (closes: #195649) 
++
++ -- Rene Engelhard <rene@debian.org>  Sun,  8 Jun 2003 12:52:52 +0200
++
++muttprint (0.71-2) unstable; urgency=low
++
++  * add latex-ucs to Suggests: as it is now in Debian
++  * move psutils to Suggests:
++    (and add both package to Muttprintrc's comments..)
++
++ -- Rene Engelhard <rene@debian.org>  Fri,  6 Jun 2003 18:43:10 +0200
++
++muttprint (0.71-1) unstable; urgency=low
++
++  *  new upstream release.
++  *  The compface feature actually needs imagemagick too, so
++     add imagemagick to Suggests: and the comment in /etc/Muttprintrc
++
++ -- Rene Engelhard <rene@debian.org>  Tue, 27 May 2003 22:02:40 +0200
++
++muttprint (0.70-2) unstable; urgency=low
++
++  * fix muttprint's and muttprint-manual's description (closes: #191965) 
++
++ -- Rene Engelhard <rene@debian.org>  Mon,  5 May 2003 19:16:37 +0200
++
++muttprint (0.70-1) unstable; urgency=low
++
++  * new upstream release.
++  * ospics: since the new upstream tarball does not contain the *.png and
++    *.jpg images anymore, create them during build with convert; make
++    all images be available in all three formats
++  * removed unneeded Conflicts: in ospics package
++  * as the muttprint package itself now becomes bigger and bigger because
++    of the needed space of the manual, spit the manual out to
++    muttprint-manual, this reduces the main package of around 390 KB..
++    
++ -- Rene Engelhard <rene@debian.org>  Sun, 27 Apr 2003 20:04:56 +0200
++
++muttprint (0.64+0.70pre1-2) unstable; urgency=low
++
++  * kill CVS dirs from debian/ *sigh* 
++
++ -- Rene Engelhard <rene@debian.org>  Sun, 20 Apr 2003 03:08:36 +0200
++
++muttprint (0.64+0.70pre1-1) unstable; urgency=low
++
++  * new upstream (pre-)version (CVS HEAD 2003-04-19)
++    - does not create /tmp/muttprint-geometry-ver anymore (closes: #180615)
++    - handles CHARSET="auto" (closes: #154554)
++      - CHARSET="auto" as default in /etc/Muttprintrc
++    - "unitialized value" perl warning fixed (closes: #175182)
++    - removed patch 09_translations_in_usr_share and the appropriate
++      snippet in rules as the files are moved to /usr/share upstream now.
++    - new: koi8-r support
++    - new: experimental utf8 support; do not write in the explanatory
++      comments in /etc/Muttprintrc until the needed latex-ucs is in Debian
++  * added suggestions:
++    - compface -  needed for using the X-Face printing feature
++    - tetex-extra (>= 2.0-1) - koi8-r support needs tetex 2.x but
++      muttprint itself runs fine with older versions, so only suggest
++  * move mutt from Suggests: to Recommends: and recommend not only mutt;
++    recommend MUA's we know they (can) ouput plain text and mail-reader:
++    mutt | sylpheed | gnus | xfmail | exmh | mail-reader; do the same
++    with news-readers: slrn | news-reader
++  * Enhances: mutt, slrn im muttprint; Enhances: muttprint in ospics
++  * remove "of Mutt" from muttprint's short description as muttprint
++    can be used with many MUAs
++  * some formulation beautification/fixes on the "pictures moved" debconf
++    note
++  * write near the options in /etc/Muttprintrc which additional package
++    is needed (for the suggested packages)
++  * converted to po-debconf; Build-Depend: on debhelper (>= 4.1.16)
++  * Standards-Version: 3.5.9
++  * debhelper compatibility level 4; use ${misc:Depends}
++  
++ -- Rene Engelhard <rene@debian.org>  Sat, 19 Apr 2003 19:08:47 +0200
++
++muttprint (0.64-3) unstable; urgency=low
++
++  * remove cruft from source package *sigh*
++
++ -- Rene Engelhard <rene@debian.org>  Tue, 25 Mar 2003 22:24:01 +0100
++
++muttprint (0.64-2) unstable; urgency=low
++
++  * fix checking if we install new or upgrade from <= 0.63a in config
++    (closes: #174623)
++
++ -- Rene Engelhard <rene@debian.org>  Sun, 29 Dec 2002 16:14:30 +0100
++
++muttprint (0.64-1) unstable; urgency=low
++
++  * new upstream version
++    - removed compat2 patch because upstream added a handler routine
++      determining which geometry.sty we're using and adding compat2 if
++      necessary or not
++
++ -- Rene Engelhard <rene@debian.org>  Sun, 15 Dec 2002 21:22:27 +0100
++
++muttprint (0.63a-6) unstable; urgency=low
++
++  * geometry.sty changed heavily in the new tetex packages which
++    made printing the footer on each page not visible anymore... :(
++    Therefore added compat2 to the options of the \usepackage for
++    geometry.sty in /usr/bin/muttprint (closes: #172715)
++  * /etc/Muttprintrc: turn on rule before/after header/footer by default
++  * split the images out to extra 'ospics' package to let people install
++    them without installing tetex-extra
++    - added debconf note for people upgrading from an older version that
++      they have to install ospics additionally and change /usr/share/muttprint
++      to /usr/share/ospics
++  * fixed some lintian/linda warnings
++  * bumped Standards-Version: to 3.5.8 (no changes needed)
++
++ -- Rene Engelhard <rene@debian.org>  Thu, 12 Dec 2002 23:47:52 +0100
++
++muttprint (0.63a-5) unstable; urgency=low
++
++  * Description: s/XFMail and PINE//, s/Netscape Messenger/Mozilla/
++    and restructured the lines (closes: #170658)
++  * do not specify PAPER; let muttprint get that from /etc/papersize
++    (closes: #170821)
++
++ -- Rene Engelhard <rene@debian.org>  Sat, 30 Nov 2002 12:00:50 +0100
++
++muttprint (0.63a-4) unstable; urgency=low
++
++  * added jadetex and gs to Build-Depends: (closes: #164979)
++
++ -- Rene Engelhard <rene@debian.org>  Wed, 16 Oct 2002 12:27:16 +0200
++
++muttprint (0.63a-3) unstable; urgency=low
++
++  * do not install upstream changelog twice...
++
++ -- Rene Engelhard <rene@debian.org>  Sun, 22 Sep 2002 09:18:28 +0200
++
++muttprint (0.63a-2) unstable; urgency=low
++
++  * Hrmpf, the current default settings do not work on all systems
++    (ppl have to modify /etc/Muttprintrc first)
++    So:
++     - disable any definition of PRINTER= in /etc/Muttprintrc
++     - set PRINT_COMMAND in /etc/muttprintc to just "lpr"
++   Thhis have the effect that the default printer of the current
++   print system is used; if anyone wants to configure anything other
++   he has to do it him-/herself.... The whole fixes closes: #161329)
++   
++ -- Rene Engelhard <rene@debian.org>  Wed, 18 Sep 2002 20:19:03 +0200
++
++muttprint (0.63a-1) unstable; urgency=low
++
++  * new upstream release.
++    - now using FONT="Latex" instead of FONT="Latex-bright" per default
++      in /etc/Muttprintrc -- Latex-bright isn't available in Debian
++  * removed patches that were introduced in 0.63-1 and -2 and became
++    obsolete by the new upstream release:
++     - 02_fix_html_generation
++     - 04_fix_paths_in_documentation
++     - 05_remove_shebang
++     - 06_remove_use_cwd
++     - 07_fix_duplex_printer
++  * debian/rules: changend the build; we now have to do a make clean in
++    doc/manpages and doc/manual and then to a make docdir=... sharedir=...
++    and so on in these directories
++  
++ -- Rene Engelhard <rene@debian.org>  Thu, 12 Sep 2002 03:59:30 +0200
++
++muttprint (0.63-2) unstable; urgency=low
++
++  * added patch from upstream to get DUPLEX="printer" to work again
++    Thanks, Bernhard (closes: #160312)
++
++ -- Rene Engelhard <rene@debian.org>  Tue, 10 Sep 2002 19:47:32 +0200
++
++muttprint (0.63-1) unstable; urgency=low
++
++  * new upstream release
++  * moving to use dbs
++  * going back to only create html & pdf
++  * also provide "flipped" penguin (BabyTuX; the "normal" one doesn't
++    make sense) images, which has the effect that the penguin is looking
++    _to_ the mail, add imagemagick to Build-Depends-Indep: for that
++    (closes: #151135)
++  * fixed a lintian warning (remove #!/usr/bin/perl from translation-de.pl
++    as in the other translation-$(lang).pl files; these files are only for
++    using for inclusion from muttprint; not as scripts which should executed
++    standalone)
++  * add symlinks: /usr/share/doc/muttprint/sample-muttprintrc-$(lang)
++    to /usr/share/doc/muttprint/examples/sample-muttprintrc-$(lang).
++    This makes this path more like RedHat's one and makes it easier to ...
++  * ... change manual to point to the right location of documentation
++    We only have to point to two different locations, not three...
++    This change is only done for _de_ and _en_, I do not speak the other
++    languages (es/fr/it) good, so help there (send me patches) would be
++    appreciated... The changes for de and en are in patch
++    04_fix_paths_in_documentation.
++    So this only partially closes: #159480
++  * fixed "Subroutine main::getcwd redefined" warning
++    Thanks to Andreas Klapschus <klappi@lottinet.ping.de> for the patch
++    (closes: #159774).
++  * bumped Standards-Version: to 3.5.7 
++
++ -- Rene Engelhard <rene@debian.org>  Mon,  9 Sep 2002 07:34:07 +0200
++
++muttprint (0.62b-3) unstable; urgency=low
++
++  * after finding out how to fix the build failure at html generation,
++    reenable its generation and installation (indirectly closes: #137520)
++
++ -- Rene Engelhard <rene@debian.org>  Fri, 30 Aug 2002 20:53:02 +0200
++
++muttprint (0.62b-2) unstable; urgency=low
++
++  * new maintainer (closes: #158475)
++  * fix error in manual (closes: #138205)
++  * fix typo in doc-base (closes: #137520)
++  * package now builds (closes: #142161)
++    - disabling html doc generation
++    - enabling generation of dvi and txt additional to the left pdf
++    - fixing Makefiles for manuals to only depend on default not on all
++    - do not copy manual-$(lang)/*, copy manual-$(lang)*
++  * removed double listing of /etc/Muttprintrc as conffile; one time is
++    enough :)
++  * do not install the pdf version of the manual twice
++  * add Suggests: to libtimedate-perl (closes: #145913)
++  
++ -- Rene Engelhard <rene@debian.org>  Wed, 28 Aug 2002 04:00:23 +0200
++
++muttprint (0.62b-1) unstable; urgency=low
++
++  * New upstream release.
++
++ -- Chanop Silpa-Anan <chanop@debian.org>  Mon, 25 Feb 2002 14:48:31 +1100
++
++muttprint (0.61-3) unstable; urgency=low
++
++  * Fix Build-Depends-Indep. (closes: #133720)
++
++ -- Chanop Silpa-Anan <chanop@debian.org>  Wed, 13 Feb 2002 23:34:22 +1100
++
++muttprint (0.61-2) unstable; urgency=low
++
++  * Fix docbase. 
++
++ -- Chanop Silpa-Anan <chanop@debian.org>  Wed, 13 Feb 2002 08:50:01 +1100
++
++muttprint (0.61-1) unstable; urgency=low
++
++  * New upsteam release.
++  * Fix long package description. (closes: #131014)
++
++ -- Chanop Silpa-Anan <chanop@debian.org>  Wed, 13 Feb 2002 04:32:52 +1100
++
++muttprint (0.60-2) unstable; urgency=low
++
++  * Fix typos. (closes: #121539, #121535) 
++  * Honour PRINTER environment. (closes: #121537)
++
++ -- Chanop Silpa-Anan <chanop@debian.org>  Thu, 29 Nov 2001 11:31:03 +1100
++
++muttprint (0.60-1) unstable; urgency=low
++
++  * New upstream release. (closes: #111233, #111235, #113760)
++
++ -- Chanop Silpa-Anan <chanop@debian.org>  Sun, 25 Nov 2001 22:53:45 +1100
++
++muttprint (0.53a-1) unstable; urgency=low
++
++  * New upstream release. (closes: #108063)
++  * The patch I sent to upsteam to close Bug#108063 only deals with
++    a4 and letter in /etc/papersize since the code in muttprint only
++    knows A4 and letter. Default fallback is A4 though.
++
++ -- Chanop Silpa-Anan <chanop@debian.org>  Mon, 13 Aug 2001 00:47:11 +1000
++
++muttprint (0.52a-1) unstable; urgency=low
++
++  * New upstream release.
++  * Use Standards-Version: 3.5.6 (woody ready)
++
++ -- Chanop Silpa-Anan <chanop@debian.org>  Thu,  2 Aug 2001 09:42:06 +1000
++
++muttprint (0.51-1) unstable; urgency=low
++
++  * New upstream release.
++  * Now support hardware duplexing with postscript printer.
++
++ -- Chanop Silpa-Anan <chanop@debian.org>  Wed, 11 Jul 2001 16:22:02 +1000
++
++muttprint (0.50b-1) unstable; urgency=low
++
++  * New upstream release.
++  * Remove procmail from dependency since upstream does not use it anymore.
++  * There are documents on how people should set muttrc (unignore date) 
++    in the package from upstream. (closes: #91974)
++
++ -- Chanop Silpa-Anan <chanop@debian.org>  Thu,  5 Jul 2001 08:11:03 +1000
++
++muttprint (0.50a-1) unstable; urgency=low
++
++  * New upstream release.
++  * Fix one typo bug I found in 0.50.  
++
++ -- Chanop Silpa-Anan <chanop@debian.org>  Tue,  3 Jul 2001 20:04:45 +1000
++
++muttprint (0.50-1) unstable; urgency=low
++
++  * New upstream release.
++  * Update debian/rules.
++  * Add dependency for perl. Since this version is rewritten in perl.
++  * Default the printer to "lp"
++
++ -- Chanop Silpa-Anan <chanop@debian.org>  Tue,  3 Jul 2001 16:40:26 +1000
++
++muttprint (0.41-3) unstable; urgency=low
++
++  * New maintainer; closes: #100246
++  * Standards-Version 3.5.5.
++
++ -- Chanop Silpa-Anan <chanop@debian.org>  Fri, 15 Jun 2001 19:42:19 +1000
++
++muttprint (0.41-2) unstable; urgency=low
++
++  * Fixed an error in README; closes: #97588 
++
++ -- Dr. Guenter Bechly <gbechly@debian.org>  Tue, 15 May 2001 19:38:43 +0200
++
++muttprint (0.41-1) unstable; urgency=low
++
++  * New upstream release.
++  * Updated Debian package internals.
++
++ -- Dr. Guenter Bechly <gbechly@debian.org>  Sat, 12 May 2001 15:10:47 +0200
++
++muttprint (0.40-3) unstable; urgency=low
++
++  * Added dependency on procmail; closes: #94582 
++
++ -- Dr. Guenter Bechly <gbechly@debian.org>  Fri, 20 Apr 2001 16:52:23 +0200
++
++muttprint (0.40-2) unstable; urgency=low
++
++  * Changed the default paper format from letter to A4 because A4 is
++    more widely used all over the world (except USA and Canada). 
++
++ -- Dr. Guenter Bechly <gbechly@debian.org>  Sun, 15 Apr 2001 15:05:36 +0200
++
++muttprint (0.40-1) unstable; urgency=low
++
++  * New upstream release.
++  * Changed defaults in sample-muttprintrc.
++  * Deleted Debian's own manpage, because it was incorporated by upstream into the
++    new release.
++  * Updated to latest standards version (changed control and rules).
++
++ -- Dr. Guenter Bechly <gbechly@debian.org>  Wed, 11 Apr 2001 19:30:28 +0200
++
++muttprint (0.30-2) unstable; urgency=low
++
++  * Removed README.Debian and modified manpage. 
++
++ -- Dr. Guenter Bechly <gbechly@debian.org>  Wed, 28 Mar 2001 11:54:09 +0200
++
++muttprint (0.30-1) unstable; urgency=low
++
++  * New upstream release; closes: #89820
++  * Corrected typo in README.Debian; closes: #89347
++  * Corrected typo in copyright file.
++  * Adjusted sample-muttprintrc and Makefile for this new release.
++  * Adjusted the dependencies in control for this new release.
++  * Adjusted the manpage for this new release, and use of CUPS.
++
++ -- Dr. Guenter Bechly <gbechly@debian.org>  Tue, 27 Mar 2001 10:48:07 +0200
++
++muttprint (0.23-2) unstable; urgency=low
++
++  * Corrected typo in description; closes: #88404. 
++
++ -- Dr. Guenter Bechly <gbechly@debian.org>  Sun,  4 Mar 2001 14:55:54 +0100
++
++muttprint (0.23-1) unstable; urgency=low
++
++  * Initial Release; closes: #88218
++  * Added a Makefile.
++  * Wrote a manpage.
++  * Changed defaults in sample-muttprintrc.
++
++ -- Dr. Guenter Bechly <gbechly@debian.org>  Tue, 27 Feb 2001 20:22:41 +0100
+diff -rupN orig/debian/compat new/debian/compat
+--- orig/debian/compat	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/compat	2013-06-07 10:38:04.059757172 +0200
+@@ -0,0 +1 @@
++4
+diff -rupN orig/debian/control new/debian/control
+--- orig/debian/control	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/control	2013-06-07 10:38:04.059757172 +0200
+@@ -0,0 +1,47 @@
++Source: muttprint
++Section: mail
++Priority: optional
++Maintainer: Rene Engelhard <rene@debian.org>
++Build-Depends: debhelper (>= 4.1.16), dpatch, imagemagick, ghostscript, docbook-utils, sharutils, automake1.9, autoconf, docbook
++Standards-Version: 3.6.2
++
++Package: muttprint
++Architecture: all
++Depends: ${perl:Depends} (>= 5.8.0-16), ${misc:Depends}, texlive-latex-recommended, texlive-fonts-recommended, texlive-latex-extra, libtext-iconv-perl, latex-ucs | texlive-latex-recommended
++Recommends: mutt | sylpheed | gnus | xfmail | exmh | mail-reader, libtimedate-perl
++Suggests: ospics, compface, imagemagick, psutils, muttprint-manual, dialog, slrn | news-reader, texlive-fonts-extra
++Enhances: mail-reader, news-reader
++Description: Pretty printing of mails
++ Muttprint formats the printing of Mutt and other mail clients to be as
++ pretty as the printing of Mozilla or Kmail.
++ .
++ It can print a little penguin -- or the Debian logo -- on the first
++ page (suitable pictures can be found in the ospics package) and a headline
++ on every page. Furthermore, it only prints the most important headers, but
++ not the whole plethora of them. Finally, it can even print two pages on one
++ page in landscape format.
++ 
++Package: muttprint-manual
++Architecture: all
++Section: doc
++Enhances: muttprint
++Replaces: muttprint (<< 0.70-1)
++Depends: lynx | www-browser | xpdf | pdf-viewer, ${misc:Depends}
++Description: Manual for muttprint
++ Muttprint formats the printing of Mutt and other mail clients to be as
++ pretty as the printing of Mozilla or Kmail.
++ .
++ This package contains the manual.
++ 
++Package: ospics
++Section: graphics
++Architecture: all
++Enhances: muttprint
++Depends: ${misc:Depends}
++Description: Some images of operating system logos/mascots
++ This package contains some operating system logos / mascots
++ .
++ It contains:
++  - Tux (black/white)
++  - "Baby Tux" (black/white and color)
++  - Debian swirl (black/white and color)
+diff -rupN orig/debian/copyright new/debian/copyright
+--- orig/debian/copyright	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/copyright	2013-06-07 10:38:04.059757172 +0200
+@@ -0,0 +1,17 @@
++This package was debianized by Dr. Guenter Bechly <gbechly@debian.org> on
++Tue, 27 Feb 2001 20:22:41 +0100.
++
++Currently maintained by RenÃ© Engelhard <rene@debian.org>
++It was downloaded from http://muttprint.sourceforge.net/
++
++Upstream Author: Lukas Ruf <lukas.ruf@lpr.ch>
++                 
++Copyright:
++
++Copyright (C) 2000-04 by Bernhard Walle <bernhard.walle@gmx.de>
++Copyright (c) 2005,    Lukas Ruf <lukas.ruf@lpr.ch>
++
++You are free to distribute this software under the terms of
++the GNU General Public Licence.
++On Debian systems, the complete text of the GNU General Public
++Licence can be found in /usr/share/common-licenses/GPL file.
+diff -rupN orig/debian/dirs new/debian/dirs
+--- orig/debian/dirs	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/dirs	2013-06-07 10:38:04.059757172 +0200
+@@ -0,0 +1 @@
++etc
+diff -rupN orig/debian/docs new/debian/docs
+--- orig/debian/docs	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/docs	2013-06-07 10:38:04.059757172 +0200
+@@ -0,0 +1 @@
++README.Gnus
+diff -rupN orig/debian/muttprint-manual.dirs new/debian/muttprint-manual.dirs
+--- orig/debian/muttprint-manual.dirs	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/muttprint-manual.dirs	2013-06-07 10:38:04.059757172 +0200
+@@ -0,0 +1 @@
++usr/share/doc/muttprint/manual
+diff -rupN orig/debian/muttprint-manual.doc-base new/debian/muttprint-manual.doc-base
+--- orig/debian/muttprint-manual.doc-base	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/muttprint-manual.doc-base	2013-06-07 10:38:04.069757118 +0200
+@@ -0,0 +1,9 @@
++Document: muttprint
++Title: Pretty Printing of mails with Mutt
++Author: Bernhard Walle
++Abstract: This manual describes how to use Muttprint in details.
++Section: Typesetting
++
++Format: PDF
++Files: /usr/share/doc/muttprint/manual/manual-en.pdf.gz
++
+diff -rupN orig/debian/Muttprintrc new/debian/Muttprintrc
+--- orig/debian/Muttprintrc	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/Muttprintrc	2013-06-07 10:38:04.059757172 +0200
+@@ -0,0 +1,143 @@
++# MUTTPRINT configuration file
++#
++# ~/.muttprintrc or /etc/Muttprintrc
++
++#
++# Here you can configure your printer
++# To print in a file, use the following entry:
++# PRINTER="TO_FILE:/home/berwal/test.ps"
++#PRINTER="lp"
++
++#
++# Here you can set the print command
++# $PRINTER is substituted by the PRINTER
++# variable
++#PRINT_COMMAND="lpr -P$PRINTER"
++PRINT_COMMAND="lpr"
++
++#
++# Here you can set the path to the penguin image
++PENGUIN="off"
++
++#
++# Turn printing of X-Face picture on/off (on needs the packages compface
++# and imagemagick)
++XFACE="off"
++
++#
++# Here you can turn the duplex print on or off. (needs psutils)
++# Possible values are "off" or "on"
++#
++# For Postscript duplex printer set it to "printer"
++DUPLEX="off"
++
++#
++# Here you can turn on or off the paper save mode
++# (printing 2 pages on 1 page) - needs psutils
++# Set it to 'optional' if you only want papersave mode
++# if more than one page is printed.
++PAPERSAVE="off"
++
++#
++# Here you can set the printing speed in seconds
++# per page
++SPEED="30"
++
++#
++# Choose a font:
++# - Latex (EC-Fonts)
++# - Latex-bright (CM-bright)
++# - Times
++# - Utopia
++# - Palatino
++# - Charter
++# - Bookman
++FONT="Latex"
++
++
++#
++# Choose a style for the first page
++# - plain       no rules
++# - border      rule after the headers
++# - fbox        simple box around the mailheaders
++# - shadowbox   shadowbox around the header
++# - ovalbox     box with rounded corners around the header (thin lines)
++# - Ovalbox     same as "ovalbox" but thicker lines
++# - doublebox   box with double lines around the header
++# - grey        grey background behind the headers
++# - greybox     same as "grey" but with a additional black box
++FRONTSTYLE="border"
++
++#
++# Should there be a rule after the header (not first page)
++HEADRULE="on"
++
++#
++# Should there be a rule over the footer
++FOOTRULE="on"
++
++#
++# Choose a paper format, if not specified look in /etc/papersize
++# - A4
++# - letter
++#PAPER="A4"
++
++#
++# prints no signatures
++REM_SIG="off"
++# how does a signature look like?
++SIG_REGEXP="^-- $"
++
++#
++# prints no quoting
++REM_QUOTE="off"
++
++#
++# Choose of the printed headers, separation with "_"
++# /Header/ : italic printing
++# *Header* : bold printing
++# If the header does not exist, it is not printed.
++PRINTED_HEADERS="Date_To_From_CC_Newsgroups_*Subject*"
++
++# 
++# Writes error messages of LaTeX and dvips to /tmp/muttprint.log
++DEBUG="0"
++
++#
++# Font size: 10pt, 11pt or 12pt
++FONTSIZE="10pt"
++
++#
++# Longest line
++WRAPMARGIN="80"
++
++# margins
++TOPMARGIN="19"
++BOTTOMMARGIN="22"
++LEFTMARGIN="20"
++RIGHTMARGIN="20"
++
++#
++# Date (format of printed date)
++# original, local (needs Date::Parse from libtimedate-perl)
++DATE="original"
++
++#
++# Date format string (only if DATE=local)
++# See strftime(3) for details
++DATE_FORMAT="%c"
++
++# pass special options to the verbatim environment, see texdoc fancyvrvb
++VERBATIMNORMAL=""
++VERBATIMSIG="fontshape=it"
++
++# how should the address be printed out?
++ADDRESSFORMAT="%r <%a>,\n"
++
++# own LaTeX code to be inserted
++LATEXCODE=""
++LATEXCODE1=""
++LATEXCODE2=""
++LATEXCODE3=""
++LATEXCODE4=""
++LATEXCODE5=""
+diff -rupN orig/debian/ospics.dirs new/debian/ospics.dirs
+--- orig/debian/ospics.dirs	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/ospics.dirs	2013-06-07 10:38:04.059757172 +0200
+@@ -0,0 +1 @@
++usr/share
+diff -rupN orig/debian/patches/00list new/debian/patches/00list
+--- orig/debian/patches/00list	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/patches/00list	2013-06-07 10:38:04.076423748 +0200
+@@ -0,0 +1,7 @@
++03_fix_muttrc_changing_instructions
++11_right_docbook-utils_flags
++12_no_html_docs
++15_no_Gentoo
++16_dont_install_README
++17_leave_tmp_dir
++18_pod2man_de_utf8
+diff -rupN orig/debian/patches/03_fix_muttrc_changing_instructions.dpatch new/debian/patches/03_fix_muttrc_changing_instructions.dpatch
+--- orig/debian/patches/03_fix_muttrc_changing_instructions.dpatch	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/patches/03_fix_muttrc_changing_instructions.dpatch	2013-06-07 10:38:04.063090487 +0200
+@@ -0,0 +1,77 @@
++#! /bin/sh /usr/share/dpatch/dpatch-run
++## 03_fix_muttrc_changing_instructions.dpatch by Rene Engelhard <rene@debian.org>
++##
++## All lines beginning with `## DP:' are a description of the patch.
++## DP: fix up docs
++
++@DPATCH@
++diff -urNad muttprint-0.73~/doc/manual/de/manual-de.sgml muttprint-0.73/doc/manual/de/manual-de.sgml
++--- muttprint-0.73~/doc/manual/de/manual-de.sgml	2008-12-29 23:19:51.000000000 +0100
+++++ muttprint-0.73/doc/manual/de/manual-de.sgml	2008-12-29 23:21:52.000000000 +0100
++@@ -312,8 +312,8 @@
++ 
++ 			<ProgramListing>
++ # Alle Header sollen an Muttprint ï¿½bergeben werden
++-macro index p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt; &lt;exit&gt;"
++-macro pager p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt;"
+++macro index p "&lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;&lt;exit&gt;"
+++macro pager p "&lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;"
++ 			</ProgramListing>
++ 
++ 			<para>Das Makro schaltet zun&auml;chst auf Anzeige aller Header um,
++diff -urNad muttprint-0.73~/doc/manual/en/manual-en.sgml muttprint-0.73/doc/manual/en/manual-en.sgml
++--- muttprint-0.73~/doc/manual/en/manual-en.sgml	2008-12-29 23:19:51.000000000 +0100
+++++ muttprint-0.73/doc/manual/en/manual-en.sgml	2008-12-29 23:21:52.000000000 +0100
++@@ -293,8 +293,8 @@
++ 
++ 			<programlisting>
++ # Dump all headers
++-macro index p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt; &lt;exit&gt;"
++-macro pager p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt;"
+++macro index p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;&lt;exit&gt;
+++macro pager p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;
++ 			</programlisting>
++ 
++ 			<para>At first, the macro switches to the mode where all headers are
++diff -urNad muttprint-0.73~/doc/manual/es/manual-es.sgml muttprint-0.73/doc/manual/es/manual-es.sgml
++--- muttprint-0.73~/doc/manual/es/manual-es.sgml	2008-12-29 23:19:51.000000000 +0100
+++++ muttprint-0.73/doc/manual/es/manual-es.sgml	2008-12-29 23:22:09.000000000 +0100
++@@ -254,8 +254,8 @@
++ 
++ 			<programlisting>
++ # generar todas las cabeceras
++-macro index p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt; &lt;exit&gt;"
++-macro pager p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt;"
+++macro index p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;&lt;exit&gt;
+++macro pager p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;
++ 			</programlisting>
++ 
++ 			<para>primero, el macro cambia al modo donde todas las cabeceras
++diff -urNad muttprint-0.73~/doc/manual/it/manual-it.sgml muttprint-0.73/doc/manual/it/manual-it.sgml
++--- muttprint-0.73~/doc/manual/it/manual-it.sgml	2008-12-29 23:19:51.000000000 +0100
+++++ muttprint-0.73/doc/manual/it/manual-it.sgml	2008-12-29 23:21:52.000000000 +0100
++@@ -238,8 +238,8 @@
++ 
++                         <programlisting>
++ # Prendi tutti gli headers
++-macro index p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt;"
++-macro pager p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt;"
+++macro index p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;
+++macro pager p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;
++                         </programlisting>
++ 
++                         <para>Innanzitutto la macro passa al modo in
++diff -urNad muttprint-0.73~/doc/manual/sl/manual-sl.sgml muttprint-0.73/doc/manual/sl/manual-sl.sgml
++--- muttprint-0.73~/doc/manual/sl/manual-sl.sgml	2008-12-29 23:19:51.000000000 +0100
+++++ muttprint-0.73/doc/manual/sl/manual-sl.sgml	2008-12-29 23:21:52.000000000 +0100
++@@ -245,8 +245,8 @@
++ 
++ 			<programlisting>
++ # Ignoriraj celo glavo
++-macro index p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt; &lt;exit&gt;"
++-macro pager p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt;"
+++macro index p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;&lt;exit&gt;
+++macro pager p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;
++ 			</programlisting>
++ 
++ 			<para>Na za&ccaron;etku makro zamenja stanje, kjer so vsi deli glave vidni
+diff -rupN orig/debian/patches/11_right_docbook-utils_flags.dpatch new/debian/patches/11_right_docbook-utils_flags.dpatch
+--- orig/debian/patches/11_right_docbook-utils_flags.dpatch	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/patches/11_right_docbook-utils_flags.dpatch	2013-06-07 10:38:04.063090487 +0200
+@@ -0,0 +1,167 @@
++#! /bin/sh /usr/share/dpatch/dpatch-run
++## 11_right_docbook-utils_flags.dpatch by Rene Engelhard <rene@debian.org>
++##
++## All lines beginning with `## DP:' are a description of the patch.
++## DP: No description.
++
++@DPATCH@
++diff -urNad muttprint-0.73~/doc/manual/de/Makefile.am muttprint-0.73/doc/manual/de/Makefile.am
++--- muttprint-0.73~/doc/manual/de/Makefile.am	2008-12-29 23:19:51.000000000 +0100
+++++ muttprint-0.73/doc/manual/de/Makefile.am	2008-12-29 23:21:12.000000000 +0100
++@@ -18,23 +18,23 @@
++ 	$(do_subst) < $(srcdir)/manual-de.sgml > manual-de-sed.sgml
++ 
++ manual-de.pdf : manual-de-sed.sgml
++-	db2pdf -s ../stylesheet.dsl manual-de-sed.sgml
+++	db2pdf -d ../stylesheet.dsl manual-de-sed.sgml
++ 	mv manual-de-sed.pdf manual-de.pdf
++ 
++ manual-de.ps : manual-de-sed.sgml
++-	db2ps -s ../stylesheet.dsl manual-de-sed.sgml
+++	db2ps -d ../stylesheet.dsl manual-de-sed.sgml
++ 	mv manual-de-sed.ps manual-de.ps
++ 
++ manual-de.dvi : manual-de-sed.sgml
++-	db2dvi -s ../stylesheet.dsl manual-de-sed.sgml
+++	db2dvi -d ../stylesheet.dsl manual-de-sed.sgml
++ 	mv manual-de-sed.dvi manual-de.dvi
++ 
++ manual-de.rtf : manual-de-sed.sgml
++-	db2rtf -s ../stylesheet.dsl manual-de-sed.sgml
+++	db2rtf -d ../stylesheet.dsl manual-de-sed.sgml
++ 	mv manual-de-sed.rtf manual-de.rtf
++ 
++ manual-de.html : manual-de-sed.sgml
++-	db2html -u -s ../stylesheet.dsl manual-de-sed.sgml
+++	db2html -u -d ../stylesheet.dsl manual-de-sed.sgml
++ 	mv manual-de-sed/manual-de-sed.html manual-de.html
++ 	rm -rf manual-de-sed
++ 	rm -rf manual-de-sed.junk
++diff -urNad muttprint-0.73~/doc/manual/en/Makefile.am muttprint-0.73/doc/manual/en/Makefile.am
++--- muttprint-0.73~/doc/manual/en/Makefile.am	2008-12-29 23:19:51.000000000 +0100
+++++ muttprint-0.73/doc/manual/en/Makefile.am	2008-12-29 23:21:12.000000000 +0100
++@@ -18,23 +18,23 @@
++ 	$(do_subst) < $(srcdir)/manual-en.sgml > manual-en-sed.sgml
++ 
++ manual-en.pdf : manual-en-sed.sgml
++-	db2pdf -s ../stylesheet.dsl manual-en-sed.sgml
+++	db2pdf -d ../stylesheet.dsl manual-en-sed.sgml
++ 	mv manual-en-sed.pdf manual-en.pdf
++ 
++ manual-en.ps : manual-en-sed.sgml
++-	db2ps -s ../stylesheet.dsl manual-en-sed.sgml
+++	db2ps -d ../stylesheet.dsl manual-en-sed.sgml
++ 	mv manual-en-sed.ps manual-en.ps
++ 
++ manual-en.dvi : manual-en-sed.sgml
++-	db2dvi -s ../stylesheet.dsl manual-en-sed.sgml
+++	db2dvi -d ../stylesheet.dsl manual-en-sed.sgml
++ 	mv manual-en-sed.dvi manual-en.dvi
++ 
++ manual-en.rtf : manual-en-sed.sgml
++-	db2rtf -s ../stylesheet.dsl manual-en-sed.sgml
+++	db2rtf -d ../stylesheet.dsl manual-en-sed.sgml
++ 	mv manual-en-sed.rtf manual-en.rtf
++ 
++ manual-en.html : manual-en-sed.sgml
++-	db2html -u -s ../stylesheet.dsl manual-en-sed.sgml
+++	db2html -u -d ../stylesheet.dsl manual-en-sed.sgml
++ 	mv manual-en-sed/manual-en-sed.html manual-en.html
++ 	rm -rf manual-en-sed
++ 	rm -rf manual-en-sed.junk
++diff -urNad muttprint-0.73~/doc/manual/es/Makefile.am muttprint-0.73/doc/manual/es/Makefile.am
++--- muttprint-0.73~/doc/manual/es/Makefile.am	2006-05-06 09:13:46.000000000 +0200
+++++ muttprint-0.73/doc/manual/es/Makefile.am	2008-12-29 23:21:34.000000000 +0100
++@@ -18,23 +18,23 @@
++ 	$(do_subst) < $(srcdir)/manual-es.sgml > manual-es-sed.sgml
++ 
++ manual-es.pdf : manual-es-sed.sgml
++-	db2pdf -s ../stylesheet.dsl manual-es-sed.sgml
+++	db2pdf -d ../stylesheet.dsl manual-es-sed.sgml
++ 	mv manual-es-sed.pdf manual-es.pdf
++ 
++ manual-es.ps : manual-es-sed.sgml
++-	db2ps -s ../stylesheet.dsl manual-es-sed.sgml
+++	db2ps -d ../stylesheet.dsl manual-es-sed.sgml
++ 	mv manual-es-sed.ps manual-es.ps
++ 
++ manual-es.dvi : manual-es-sed.sgml
++-	db2dvi -s ../stylesheet.dsl manual-es-sed.sgml
+++	db2dvi -d ../stylesheet.dsl manual-es-sed.sgml
++ 	mv manual-es-sed.dvi manual-es.dvi
++ 
++ manual-es.rtf : manual-es-sed.sgml
++-	db2rtf -s ../stylesheet.dsl manual-es-sed.sgml
+++	db2rtf -d ../stylesheet.dsl manual-es-sed.sgml
++ 	mv manual-es-sed.rtf manual-es.rtf
++ 
++ manual-es.html : manual-es-sed.sgml
++-	db2html -u -s ../stylesheet.dsl manual-es-sed.sgml
+++	db2html -u -d ../stylesheet.dsl manual-es-sed.sgml
++ 	mv manual-es-sed/manual-es-sed.html manual-es.html
++ 	rm -rf manual-es-sed
++ 	rm -rf manual-es-sed.junk
++diff -urNad muttprint-0.73~/doc/manual/it/Makefile.am muttprint-0.73/doc/manual/it/Makefile.am
++--- muttprint-0.73~/doc/manual/it/Makefile.am	2008-12-29 23:19:51.000000000 +0100
+++++ muttprint-0.73/doc/manual/it/Makefile.am	2008-12-29 23:21:12.000000000 +0100
++@@ -18,23 +18,23 @@
++ 	$(do_subst) < $(srcdir)/manual-it.sgml > manual-it-sed.sgml
++ 
++ manual-it.pdf : manual-it-sed.sgml
++-	db2pdf -s ../stylesheet.dsl manual-it-sed.sgml
+++	db2pdf -d ../stylesheet.dsl manual-it-sed.sgml
++ 	mv manual-it-sed.pdf manual-it.pdf
++ 
++ manual-it.ps : manual-it-sed.sgml
++-	db2ps -s ../stylesheet.dsl manual-it-sed.sgml
+++	db2ps -d ../stylesheet.dsl manual-it-sed.sgml
++ 	mv manual-it-sed.ps manual-it.ps
++ 
++ manual-it.dvi : manual-it-sed.sgml
++-	db2dvi -s ../stylesheet.dsl manual-it-sed.sgml
+++	db2dvi -d ../stylesheet.dsl manual-it-sed.sgml
++ 	mv manual-it-sed.dvi manual-it.dvi
++ 
++ manual-it.rtf : manual-it-sed.sgml
++-	db2rtf -s ../stylesheet.dsl manual-it-sed.sgml
+++	db2rtf -d ../stylesheet.dsl manual-it-sed.sgml
++ 	mv manual-it-sed.rtf manual-it.rtf
++ 
++ manual-it.html : manual-it-sed.sgml
++-	db2html -u -s ../stylesheet.dsl manual-it-sed.sgml
+++	db2html -u -d ../stylesheet.dsl manual-it-sed.sgml
++ 	mv manual-it-sed/manual-it-sed.html manual-it.html
++ 	rm -rf manual-it-sed
++ 	rm -rf manual-it-sed.junk
++diff -urNad muttprint-0.73~/doc/manual/sl/Makefile.am muttprint-0.73/doc/manual/sl/Makefile.am
++--- muttprint-0.73~/doc/manual/sl/Makefile.am	2008-12-29 23:19:51.000000000 +0100
+++++ muttprint-0.73/doc/manual/sl/Makefile.am	2008-12-29 23:21:12.000000000 +0100
++@@ -18,23 +18,23 @@
++ 	$(do_subst) < $(srcdir)/manual-sl.sgml > manual-sl-sed.sgml
++ 
++ manual-sl.pdf : manual-sl-sed.sgml
++-	db2pdf -s ../stylesheet.dsl manual-sl-sed.sgml
+++	db2pdf -d ../stylesheet.dsl manual-sl-sed.sgml
++ 	mv manual-sl-sed.pdf manual-sl.pdf
++ 
++ manual-sl.ps : manual-sl-sed.sgml
++-	db2ps -s ../stylesheet.dsl manual-sl-sed.sgml
+++	db2ps -d ../stylesheet.dsl manual-sl-sed.sgml
++ 	mv manual-sl-sed.ps manual-sl.ps
++ 
++ manual-sl.dvi : manual-sl-sed.sgml
++-	db2dvi -s ../stylesheet.dsl manual-sl-sed.sgml
+++	db2dvi -d ../stylesheet.dsl manual-sl-sed.sgml
++ 	mv manual-sl-sed.dvi manual-sl.dvi
++ 
++ manual-sl.rtf : manual-sl-sed.sgml
++-	db2rtf -s ../stylesheet.dsl manual-sl-sed.sgml
+++	db2rtf -d ../stylesheet.dsl manual-sl-sed.sgml
++ 	mv manual-sl-sed.rtf manual-sl.rtf
++ 
++ manual-sl.html : manual-sl-sed.sgml
++-	db2html -u -s ../stylesheet.dsl manual-sl-sed.sgml
+++	db2html -u -d ../stylesheet.dsl manual-sl-sed.sgml
++ 	mv manual-sl-sed/manual-sl-sed.html manual-sl.html
++ 	rm -rf manual-sl-sed
++ 	rm -rf manual-sl-sed.junk
+diff -rupN orig/debian/patches/12_no_html_docs.dpatch new/debian/patches/12_no_html_docs.dpatch
+--- orig/debian/patches/12_no_html_docs.dpatch	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/patches/12_no_html_docs.dpatch	2013-06-07 10:38:04.063090487 +0200
+@@ -0,0 +1,67 @@
++#! /bin/sh /usr/share/dpatch/dpatch-run
++## 12_no_html_docs.dpatch by Rene Engelhard <rene@debian.org>
++##
++## All lines beginning with `## DP:' are a description of the patch.
++## DP: No description.
++
++@DPATCH@
++diff -urNad muttprint-0.73~/doc/manual/de/Makefile.am muttprint-0.73/doc/manual/de/Makefile.am
++--- muttprint-0.73~/doc/manual/de/Makefile.am	2008-12-29 23:20:51.000000000 +0100
+++++ muttprint-0.73/doc/manual/de/Makefile.am	2008-12-29 23:20:51.000000000 +0100
++@@ -9,7 +9,7 @@
++ 
++ if DOCBOOK
++ doc_DATA = manual-de.pdf manual-de.ps manual-de.dvi \
++-	   manual-de.rtf manual-de.html
+++	   manual-de.rtf
++ else
++ doc_DATA =
++ endif
++diff -urNad muttprint-0.73~/doc/manual/en/Makefile.am muttprint-0.73/doc/manual/en/Makefile.am
++--- muttprint-0.73~/doc/manual/en/Makefile.am	2008-12-29 23:20:51.000000000 +0100
+++++ muttprint-0.73/doc/manual/en/Makefile.am	2008-12-29 23:20:51.000000000 +0100
++@@ -9,7 +9,7 @@
++ 
++ if DOCBOOK
++ doc_DATA = manual-en.pdf manual-en.ps manual-en.dvi \
++-	   manual-en.rtf manual-en.html
+++	   manual-en.rtf
++ else
++ doc_DATA =
++ endif
++diff -urNad muttprint-0.73~/doc/manual/es/Makefile.am muttprint-0.73/doc/manual/es/Makefile.am
++--- muttprint-0.73~/doc/manual/es/Makefile.am	2006-05-06 09:13:46.000000000 +0200
+++++ muttprint-0.73/doc/manual/es/Makefile.am	2008-12-29 23:21:05.000000000 +0100
++@@ -9,7 +9,7 @@
++ 
++ if DOCBOOK
++ doc_DATA = manual-es.pdf manual-es.ps manual-es.dvi \
++-	   manual-es.rtf manual-es.html
+++	   manual-es.rtf
++ else
++ doc_DATA =
++ endif
++diff -urNad muttprint-0.73~/doc/manual/it/Makefile.am muttprint-0.73/doc/manual/it/Makefile.am
++--- muttprint-0.73~/doc/manual/it/Makefile.am	2008-12-29 23:20:51.000000000 +0100
+++++ muttprint-0.73/doc/manual/it/Makefile.am	2008-12-29 23:20:51.000000000 +0100
++@@ -9,7 +9,7 @@
++ 
++ if DOCBOOK
++ doc_DATA = manual-it.pdf manual-it.ps manual-it.dvi \
++-	   manual-it.rtf manual-it.html
+++	   manual-it.rtf
++ else
++ doc_DATA =
++ endif
++diff -urNad muttprint-0.73~/doc/manual/sl/Makefile.am muttprint-0.73/doc/manual/sl/Makefile.am
++--- muttprint-0.73~/doc/manual/sl/Makefile.am	2008-12-29 23:20:51.000000000 +0100
+++++ muttprint-0.73/doc/manual/sl/Makefile.am	2008-12-29 23:20:51.000000000 +0100
++@@ -9,7 +9,7 @@
++ 
++ if DOCBOOK
++ doc_DATA = manual-sl.pdf manual-sl.ps manual-sl.dvi \
++-	   manual-sl.rtf manual-sl.html
+++	   manual-sl.rtf
++ else
++ doc_DATA =
++ endif
+diff -rupN orig/debian/patches/14_point_to_ospics.dpatch new/debian/patches/14_point_to_ospics.dpatch
+--- orig/debian/patches/14_point_to_ospics.dpatch	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/patches/14_point_to_ospics.dpatch	2013-06-07 10:38:04.059757172 +0200
+@@ -0,0 +1,103 @@
++#! /bin/sh /usr/share/dpatch/dpatch-run
++## 14_point_to_ospics.dpatch by Rene Engelhard <rene@debian.org>
++##
++## All lines beginning with `## DP:' are a description of the patch.
++## DP: The images get moved to ospics
++
++@DPATCH@
++diff -urNad muttprint-0.73~/doc/manpages/de/muttprint.pod muttprint-0.73/doc/manpages/de/muttprint.pod
++--- muttprint-0.73~/doc/manpages/de/muttprint.pod	2006-05-06 09:13:46.000000000 +0200
+++++ muttprint-0.73/doc/manpages/de/muttprint.pod	2008-12-29 18:13:33.000000000 +0100
++@@ -377,7 +377,7 @@
++ Dokumentation in verschiedenen Sprachen und Formaten.
++ 
++ 
++-=item F<##SHAREDIR##/muttprint/>
+++=item F<##SHAREDIR##/ospics/>
++ 
++ Einige Bilder, die für den Druck auf der erste Seite der Mail verwendet werden
++ können.
++diff -urNad muttprint-0.73~/doc/manpages/en/muttprint.pod muttprint-0.73/doc/manpages/en/muttprint.pod
++--- muttprint-0.73~/doc/manpages/en/muttprint.pod	2006-05-06 09:13:46.000000000 +0200
+++++ muttprint-0.73/doc/manpages/en/muttprint.pod	2008-12-29 18:13:33.000000000 +0100
++@@ -375,7 +375,7 @@
++ B<Muttprint> manual files in different languages and formats.
++ 
++ 
++-=item F<##SHAREDIR##/muttprint/>
+++=item F<##SHAREDIR##/ospics/>
++ 
++ Some pictures which can be used for printing on the
++ first page of your mail.
++diff -urNad muttprint-0.73~/doc/manpages/es/muttprint.pod muttprint-0.73/doc/manpages/es/muttprint.pod
++--- muttprint-0.73~/doc/manpages/es/muttprint.pod	2006-05-06 09:13:46.000000000 +0200
+++++ muttprint-0.73/doc/manpages/es/muttprint.pod	2008-12-29 18:13:33.000000000 +0100
++@@ -357,7 +357,7 @@
++ Manuales de B<Muttprint> en diferentes idiomas y formatos.
++ 
++ 
++-=item F<##SHAREDIR##/muttprint/>
+++=item F<##SHAREDIR##/ospics/>
++ 
++ Algunas imágenes que pueden utilizarse para ser impresas en la
++ primera página de tu mensaje de correo.
++diff -urNad muttprint-0.73~/doc/manpages/it/muttprint.pod muttprint-0.73/doc/manpages/it/muttprint.pod
++--- muttprint-0.73~/doc/manpages/it/muttprint.pod	2006-05-06 09:13:46.000000000 +0200
+++++ muttprint-0.73/doc/manpages/it/muttprint.pod	2008-12-29 18:13:33.000000000 +0100
++@@ -377,7 +377,7 @@
++ 
++ Manuali di B<Muttprint> in diversi formati e lingue.
++ 
++-=item F<##SHAREDIR##/muttprint/>
+++=item F<##SHAREDIR##/ospics/>
++ 
++ Alcune immagini che possono essere stampate sulla prima
++ pagina della tua posta.
++diff -urNad muttprint-0.73~/doc/manual/de/manual-de.sgml muttprint-0.73/doc/manual/de/manual-de.sgml
++--- muttprint-0.73~/doc/manual/de/manual-de.sgml	2005-05-16 14:38:51.000000000 +0200
+++++ muttprint-0.73/doc/manual/de/manual-de.sgml	2008-12-29 18:13:33.000000000 +0100
++@@ -581,7 +581,7 @@
++ 
++ 			<para>Zus&auml;tzlich werden noch Beispielbilder mitgeliefert, die schon
++ 				in das EPS-Format konvertiert vorliegen. Sie befinden sich nach der
++-				Installation in <filename>##SHAREDIR##/muttprint</filename>.</para>
+++				Installation in <filename>##SHAREDIR##/ospics</filename>.</para>
++ 
++ 			<para>Soll der Druck der Grafik ganz ausgeschaltet werden, so kann
++ 				<literal>PENGUIN</literal> auf den Wert <literal>off</literal> 
++diff -urNad muttprint-0.73~/doc/manual/en/manual-en.sgml muttprint-0.73/doc/manual/en/manual-en.sgml
++--- muttprint-0.73~/doc/manual/en/manual-en.sgml	2005-05-16 14:38:51.000000000 +0200
+++++ muttprint-0.73/doc/manual/en/manual-en.sgml	2008-12-29 18:13:33.000000000 +0100
++@@ -550,7 +550,7 @@
++ 				
++ 			<para>Additionally, Muttprint comes with some example pictures that 
++ 				are already converted into the EPS format. After the installation,
++-				you'll find this in <filename>##SHAREDIR##/muttprint</filename>.</para>
+++				you'll find this in <filename>##SHAREDIR##/ospics</filename>.</para>
++ 				
++ 			<para>If the printing of the graphic should turned off,
++ 				set <literal>PENGUIN</literal> to the value <literal>off</literal>.
++diff -urNad muttprint-0.73~/doc/manual/es/manual-es.sgml muttprint-0.73/doc/manual/es/manual-es.sgml
++--- muttprint-0.73~/doc/manual/es/manual-es.sgml	2005-05-16 14:38:51.000000000 +0200
+++++ muttprint-0.73/doc/manual/es/manual-es.sgml	2008-12-29 18:13:33.000000000 +0100
++@@ -501,7 +501,7 @@
++ 			<para>Además, Muttprint viene con algunas imágenes
++ 			de ejemplo que están ya convertidas al formato EPS. 
++ 			Después de la instalación, las encontrarás en
++-			<filename>##SHAREDIR##/muttprint</filename>.</para>
+++			<filename>##SHAREDIR##/ospics</filename>.</para>
++ 				
++ 			<para>Si quieres la impresión de la imágen
++                         desactivada, define <literal>PENGUIN</literal> con el valor
++diff -urNad muttprint-0.73~/doc/manual/sl/manual-sl.sgml muttprint-0.73/doc/manual/sl/manual-sl.sgml
++--- muttprint-0.73~/doc/manual/sl/manual-sl.sgml	2005-05-16 14:38:51.000000000 +0200
+++++ muttprint-0.73/doc/manual/sl/manual-sl.sgml	2008-12-29 18:13:33.000000000 +0100
++@@ -510,7 +510,7 @@
++ 				
++ 			<para>Poleg tega pri Muttprint-u najdete tudi dodatne primere slik 
++ 				ki so &zcaron;e spremenjene v EPS format. Po namestitvi jih
++-				boste na&scaron;li v <filename>##SHAREDIR##/muttprint</filename>.</para>
+++				boste na&scaron;li v <filename>##SHAREDIR##/ospics</filename>.</para>
++ 				
++ 			<para>&Ccaron;e naj bi bilo tiskanje slik izklopljeno nastavite
++ 				vrednost <literal>PENGUIN</literal> na <literal>off</literal>.
+diff -rupN orig/debian/patches/15_no_Gentoo.dpatch new/debian/patches/15_no_Gentoo.dpatch
+--- orig/debian/patches/15_no_Gentoo.dpatch	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/patches/15_no_Gentoo.dpatch	2013-06-07 10:38:04.063090487 +0200
+@@ -0,0 +1,21 @@
++#! /bin/sh /usr/share/dpatch/dpatch-run
++## 15_no_Gentoo.dpatch by Rene Engelhard <rene@debian.org>
++##
++## All lines beginning with `## DP:' are a description of the patch.
++## DP: we don't need the Gentoo pictures
++
++@DPATCH@
++diff -urNad muttprint-0.73~/pics/Makefile.am muttprint-0.73/pics/Makefile.am
++--- muttprint-0.73~/pics/Makefile.am	2006-05-06 09:13:46.000000000 +0200
+++++ muttprint-0.73/pics/Makefile.am	2008-12-29 18:22:12.000000000 +0100
++@@ -7,10 +7,6 @@
++ 		    Debian_color.png \
++ 		    Debian.eps \
++ 		    Debian.png \
++-		    Gentoo_color.eps \
++-		    Gentoo_color.png \
++-		    Gentoo.eps \
++-		    Gentoo.png \
++ 		    penguin.eps \
++ 		    penguin.jpg \
++ 		    README.pics
+diff -rupN orig/debian/patches/16_dont_install_README.dpatch new/debian/patches/16_dont_install_README.dpatch
+--- orig/debian/patches/16_dont_install_README.dpatch	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/patches/16_dont_install_README.dpatch	2013-06-07 10:38:04.063090487 +0200
+@@ -0,0 +1,17 @@
++#! /bin/sh /usr/share/dpatch/dpatch-run
++## 16__dont_install_REAME.dpatch by Rene Engelhard <rene@debian.org>
++##
++## All lines beginning with `## DP:' are a description of the patch.
++## DP: we don't need README.pics being installed...
++
++@DPATCH@
++diff -urNad muttprint-0.73~/pics/Makefile.am muttprint-0.73/pics/Makefile.am
++--- muttprint-0.73~/pics/Makefile.am	2008-12-29 20:23:16.000000000 +0100
+++++ muttprint-0.73/pics/Makefile.am	2008-12-29 20:24:01.000000000 +0100
++@@ -12,5 +12,4 @@
++                    Debian.eps \
++                    Debian.png \
++ 		    penguin.eps \
++-		    penguin.jpg \
++-		    README.pics
+++		    penguin.jpg
+diff -rupN orig/debian/patches/17_leave_tmp_dir.dpatch new/debian/patches/17_leave_tmp_dir.dpatch
+--- orig/debian/patches/17_leave_tmp_dir.dpatch	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/patches/17_leave_tmp_dir.dpatch	2013-06-07 10:38:04.063090487 +0200
+@@ -0,0 +1,33 @@
++#! /bin/sh /usr/share/dpatch/dpatch-run
++## 16_leave_tmp_dir.dpatch by  <gregoa@debian.org>
++##
++## All lines beginning with `## DP:' are a description of the patch.
++## DP: cannot remove path when cwd is /tmp/muttprint*
++## DP: Author: martin f krafft <madduck@debian.org>
++## DP: http://bugs.debian.org/551543
++
++@DPATCH@
++diff -urNad '--exclude=CVS' '--exclude=.svn' '--exclude=.git' '--exclude=.arch' '--exclude=.hg' '--exclude=_darcs' '--exclude=.bzr' muttprint-0.73~/muttprint muttprint-0.73/muttprint
++--- muttprint-0.73~/muttprint	2008-12-26 01:33:36.000000000 +0100
+++++ muttprint-0.73/muttprint	2010-11-27 19:08:51.000000000 +0100
++@@ -740,6 +740,8 @@
++ 	}
++ }
++ 
+++chdir($ENV{HOME}) || chdir('/');
+++
++ ################################### ENDE ####################################
++ 
++ 
++--- muttprint-0.73~/muttprint	2010-12-15 15:54:24.000000000 +0100
+++++ muttprint-0.73/muttprint	2010-12-15 15:55:12.000000000 +0100
++@@ -1791,6 +1791,9 @@
++ 			output \*STDERR, $messageString;
++ 		}
++ 	}
+++
+++	chdir($ENV{HOME}) || chdir('/');
+++
++ 	exit 1;
++ }
++ 
+diff -rupN orig/debian/patches/18_pod2man_de_utf8.dpatch new/debian/patches/18_pod2man_de_utf8.dpatch
+--- orig/debian/patches/18_pod2man_de_utf8.dpatch	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/patches/18_pod2man_de_utf8.dpatch	2013-06-07 10:38:04.069757118 +0200
+@@ -0,0 +1,19 @@
++#! /bin/sh /usr/share/dpatch/dpatch-run
++## 18_pod2man_de_utf8.diff.dpatch by  <rene@debian.org>
++##
++## All lines beginning with `## DP:' are a description of the patch.
++## DP: No description.
++
++@DPATCH@
++diff -urNad '--exclude=CVS' '--exclude=.svn' '--exclude=.git' '--exclude=.arch' '--exclude=.hg' '--exclude=_darcs' '--exclude=.bzr' muttprint-0.73~/doc/manpages/de/Makefile.am muttprint-0.73/doc/manpages/de/Makefile.am
++--- muttprint-0.73~/doc/manpages/de/Makefile.am	2006-05-06 07:13:46.000000000 +0000
+++++ muttprint-0.73/doc/manpages/de/Makefile.am	2012-02-10 20:15:43.000000000 +0000
++@@ -16,7 +16,7 @@
++ 
++ muttprint.1 : muttprint.pod
++ 	$(do_subst) $(srcdir)/muttprint.pod > muttprint
++-	pod2man --center="Muttprint Kurzanleitung" muttprint muttprint.1
+++	pod2man --utf8 --error=stderr --center="Muttprint Kurzanleitung" muttprint muttprint.1
++ 	rm muttprint
++ 
++ EXTRA_DIST = muttprint.pod
+diff -rupN orig/debian/rules new/debian/rules
+--- orig/debian/rules	1970-01-01 01:00:00.000000000 +0100
++++ new/debian/rules	2013-06-07 10:38:04.059757172 +0200
+@@ -0,0 +1,108 @@
++#!/usr/bin/make -f
++
++include /usr/share/dpatch/dpatch.make
++
++configure: configure-stamp
++configure-stamp: patch-stamp
++	dh_testdir
++
++	aclocal-1.9
++	automake-1.9 --add-missing --copy
++	autoconf
++	
++	./configure --bindir=/usr/bin --sysconfdir=/etc --docdir=/usr/share/doc \
++		--libdir=/usr/lib --prefix=/usr
++
++	touch configure-stamp
++
++build: configure-stamp build-stamp
++build-stamp:
++	dh_testdir
++
++	# convert images (and make pics/ build work)
++	cd pics && \
++	for i in BabyTuX_color.eps BabyTuX.eps Debian_color.eps Debian.eps; do \
++		convert $$i `basename $$i .eps`.png; \
++	done && \
++	convert penguin.eps penguin.jpg
++
++	$(MAKE)
++	
++	touch build-stamp
++
++clean:  unpatch
++	dh_testdir
++	dh_testroot
++
++	[ ! -f Makefile ] || $(MAKE) distclean
++	cd pics && \
++	for i in BabyTuX_color.eps BabyTuX.eps Debian_color.eps Debian.eps; do \
++		rm -f `basename $$i .eps`.png; \
++	done && \
++	rm -f penguin.jpg
++
++	rm -f config.log config.status aclocal.m4 configure
++	rm -f missing install-sh depcomp
++	-find . -name "Makefile.in" | xargs rm
++	-find . -name "Makefile" | xargs rm
++
++	rm -f configure-stamp build-stamp
++	
++	dh_clean
++
++install: build
++	dh_testdir
++	dh_testroot
++	dh_clean -k
++	dh_installdirs
++
++	$(MAKE) install DESTDIR=$(CURDIR)/debian/muttprint
++	
++	# install default /etc/Muttprintrc
++	cp $(CURDIR)/debian/Muttprintrc \
++		$(CURDIR)/debian/muttprint/etc/Muttprintrc
++
++	# move the images to ospics ...
++	mv debian/muttprint/usr/share/muttprint \
++		$(CURDIR)/debian/ospics/usr/share/ && \
++	cd debian/ospics/usr/share && mv muttprint ospics
++
++	# flip the BabyTux PNG
++	cd $(CURDIR)/debian/ospics/usr/share/ospics && \
++		convert -flop BabyTuX.png BabyTuX_flip.png
++
++	# move the translations back
++	# yes, this way is ugly but easy ;)
++	mkdir $(CURDIR)/debian/muttprint/usr/share/muttprint
++	mv $(CURDIR)/debian/ospics/usr/share/ospics/translations \
++		$(CURDIR)/debian/muttprint/usr/share/muttprint
++
++	# move the manual into muttprint-manual
++	cd $(CURDIR)/debian/muttprint/usr/share/doc/muttprint && \
++	mv manual* \
++		$(CURDIR)/debian/muttprint-manual/usr/share/doc/muttprint/manual
++
++	# remove muttprint-langinfo stuff
++	rm -f $(CURDIR)/debian/muttprint/usr/bin/muttprint-langinfo
++
++binary-indep: build install
++	dh_testdir
++	dh_testroot
++	dh_installdocs
++	dh_installchangelogs ChangeLog
++	dh_installdebconf
++	dh_compress
++	dh_fixperms
++	dh_installdeb
++	dh_perl muttprint
++	dh_gencontrol
++	dh_md5sums
++	dh_builddeb
++
++#binary-arch: build install
++#	dh_testdir
++
++#binary: binary-indep binary-arch
++binary: binary-indep
++
++.PHONY: build clean binary-indep binary-arch binary install configure
+diff -rupN orig/doc/manpages/de/Makefile.am new/doc/manpages/de/Makefile.am
+--- orig/doc/manpages/de/Makefile.am	2006-05-06 09:13:46.000000000 +0200
++++ new/doc/manpages/de/Makefile.am	2013-06-07 10:38:04.089757009 +0200
+@@ -16,7 +16,7 @@ endif
+ 
+ muttprint.1 : muttprint.pod
+ 	$(do_subst) $(srcdir)/muttprint.pod > muttprint
+-	pod2man --center="Muttprint Kurzanleitung" muttprint muttprint.1
++	pod2man --utf8 --error=stderr --center="Muttprint Kurzanleitung" muttprint muttprint.1
+ 	rm muttprint
+ 
+ EXTRA_DIST = muttprint.pod
+diff -rupN orig/doc/manpages/en/Makefile.am new/doc/manpages/en/Makefile.am
+--- orig/doc/manpages/en/Makefile.am	2006-05-06 09:13:46.000000000 +0200
++++ new/doc/manpages/en/Makefile.am	2013-06-07 10:38:51.469500331 +0200
+@@ -15,7 +15,7 @@ endif
+ 
+ muttprint.1 : muttprint.pod
+ 	$(do_subst) $(srcdir)/muttprint.pod > muttprint
+-	pod2man --center="Muttprint Short Manual" muttprint muttprint.1
++	pod2man --utf8 --error=stderr --center="Muttprint Short Manual" muttprint muttprint.1
+ 	rm muttprint
+ 
+ EXTRA_DIST = muttprint.pod
+diff -rupN orig/doc/manpages/es/Makefile.am new/doc/manpages/es/Makefile.am
+--- orig/doc/manpages/es/Makefile.am	2006-05-06 09:13:46.000000000 +0200
++++ new/doc/manpages/es/Makefile.am	2013-06-07 10:39:05.116093068 +0200
+@@ -16,7 +16,7 @@ endif
+ 
+ muttprint.1 : muttprint.pod
+ 	$(do_subst) $(srcdir)/muttprint.pod > muttprint
+-	pod2man --center="Manual Corto de Muttprint" muttprint muttprint.1
++	pod2man --utf8 --error=stderr --center="Manual Corto de Muttprint" muttprint muttprint.1
+ 	rm muttprint
+ 
+ EXTRA_DIST = muttprint.pod
+diff -rupN orig/doc/manpages/it/Makefile.am new/doc/manpages/it/Makefile.am
+--- orig/doc/manpages/it/Makefile.am	2006-05-06 09:13:46.000000000 +0200
++++ new/doc/manpages/it/Makefile.am	2013-06-07 10:39:18.916018307 +0200
+@@ -16,7 +16,7 @@ endif
+ 
+ muttprint.1 : muttprint.pod
+ 	$(do_subst) $(srcdir)/muttprint.pod > muttprint
+-	pod2man --center="Breve manuale di Muttprint" muttprint muttprint.1
++	pod2man --utf8 --error=stderr --center="Breve manuale di Muttprint" muttprint muttprint.1
+ 	rm muttprint
+ 
+ EXTRA_DIST = muttprint.pod
+diff -rupN orig/doc/manual/de/Makefile.am new/doc/manual/de/Makefile.am
+--- orig/doc/manual/de/Makefile.am	2006-05-06 09:13:46.000000000 +0200
++++ new/doc/manual/de/Makefile.am	2013-06-07 10:38:04.083090379 +0200
+@@ -9,7 +9,7 @@ do_subst = sed -e 's,\#\#DOCDIR\#\#,$(do
+ 
+ if DOCBOOK
+ doc_DATA = manual-de.pdf manual-de.ps manual-de.dvi \
+-	   manual-de.rtf manual-de.html
++	   manual-de.rtf
+ else
+ doc_DATA =
+ endif
+@@ -18,23 +18,23 @@ manual-de-sed.sgml : manual-de.sgml
+ 	$(do_subst) < $(srcdir)/manual-de.sgml > manual-de-sed.sgml
+ 
+ manual-de.pdf : manual-de-sed.sgml
+-	db2pdf -s ../stylesheet.dsl manual-de-sed.sgml
++	db2pdf -d ../stylesheet.dsl manual-de-sed.sgml
+ 	mv manual-de-sed.pdf manual-de.pdf
+ 
+ manual-de.ps : manual-de-sed.sgml
+-	db2ps -s ../stylesheet.dsl manual-de-sed.sgml
++	db2ps -d ../stylesheet.dsl manual-de-sed.sgml
+ 	mv manual-de-sed.ps manual-de.ps
+ 
+ manual-de.dvi : manual-de-sed.sgml
+-	db2dvi -s ../stylesheet.dsl manual-de-sed.sgml
++	db2dvi -d ../stylesheet.dsl manual-de-sed.sgml
+ 	mv manual-de-sed.dvi manual-de.dvi
+ 
+ manual-de.rtf : manual-de-sed.sgml
+-	db2rtf -s ../stylesheet.dsl manual-de-sed.sgml
++	db2rtf -d ../stylesheet.dsl manual-de-sed.sgml
+ 	mv manual-de-sed.rtf manual-de.rtf
+ 
+ manual-de.html : manual-de-sed.sgml
+-	db2html -u -s ../stylesheet.dsl manual-de-sed.sgml
++	db2html -u -d ../stylesheet.dsl manual-de-sed.sgml
+ 	mv manual-de-sed/manual-de-sed.html manual-de.html
+ 	rm -rf manual-de-sed
+ 	rm -rf manual-de-sed.junk
+diff -rupN orig/doc/manual/de/manual-de.sgml new/doc/manual/de/manual-de.sgml
+--- orig/doc/manual/de/manual-de.sgml	2005-05-16 14:38:51.000000000 +0200
++++ new/doc/manual/de/manual-de.sgml	2013-06-07 10:38:04.076423748 +0200
+@@ -312,8 +312,8 @@ muttprint-<replaceable>Version</replacea
+ 
+ 			<ProgramListing>
+ # Alle Header sollen an Muttprint ï¿½bergeben werden
+-macro index p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt; &lt;exit&gt;"
+-macro pager p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt;"
++macro index p "&lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;&lt;exit&gt;"
++macro pager p "&lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;"
+ 			</ProgramListing>
+ 
+ 			<para>Das Makro schaltet zun&auml;chst auf Anzeige aller Header um,
+diff -rupN orig/doc/manual/en/Makefile.am new/doc/manual/en/Makefile.am
+--- orig/doc/manual/en/Makefile.am	2006-05-06 09:13:46.000000000 +0200
++++ new/doc/manual/en/Makefile.am	2013-06-07 10:38:04.083090379 +0200
+@@ -9,7 +9,7 @@ do_subst = sed -e 's,\#\#DOCDIR\#\#,$(do
+ 
+ if DOCBOOK
+ doc_DATA = manual-en.pdf manual-en.ps manual-en.dvi \
+-	   manual-en.rtf manual-en.html
++	   manual-en.rtf
+ else
+ doc_DATA =
+ endif
+@@ -18,23 +18,23 @@ manual-en-sed.sgml : manual-en.sgml
+ 	$(do_subst) < $(srcdir)/manual-en.sgml > manual-en-sed.sgml
+ 
+ manual-en.pdf : manual-en-sed.sgml
+-	db2pdf -s ../stylesheet.dsl manual-en-sed.sgml
++	db2pdf -d ../stylesheet.dsl manual-en-sed.sgml
+ 	mv manual-en-sed.pdf manual-en.pdf
+ 
+ manual-en.ps : manual-en-sed.sgml
+-	db2ps -s ../stylesheet.dsl manual-en-sed.sgml
++	db2ps -d ../stylesheet.dsl manual-en-sed.sgml
+ 	mv manual-en-sed.ps manual-en.ps
+ 
+ manual-en.dvi : manual-en-sed.sgml
+-	db2dvi -s ../stylesheet.dsl manual-en-sed.sgml
++	db2dvi -d ../stylesheet.dsl manual-en-sed.sgml
+ 	mv manual-en-sed.dvi manual-en.dvi
+ 
+ manual-en.rtf : manual-en-sed.sgml
+-	db2rtf -s ../stylesheet.dsl manual-en-sed.sgml
++	db2rtf -d ../stylesheet.dsl manual-en-sed.sgml
+ 	mv manual-en-sed.rtf manual-en.rtf
+ 
+ manual-en.html : manual-en-sed.sgml
+-	db2html -u -s ../stylesheet.dsl manual-en-sed.sgml
++	db2html -u -d ../stylesheet.dsl manual-en-sed.sgml
+ 	mv manual-en-sed/manual-en-sed.html manual-en.html
+ 	rm -rf manual-en-sed
+ 	rm -rf manual-en-sed.junk
+diff -rupN orig/doc/manual/en/manual-en.sgml new/doc/manual/en/manual-en.sgml
+--- orig/doc/manual/en/manual-en.sgml	2005-05-16 14:38:51.000000000 +0200
++++ new/doc/manual/en/manual-en.sgml	2013-06-07 10:38:04.079757064 +0200
+@@ -293,8 +293,8 @@ muttprint-<replaceable>Version</replacea
+ 
+ 			<programlisting>
+ # Dump all headers
+-macro index p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt; &lt;exit&gt;"
+-macro pager p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt;"
++macro index p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;&lt;exit&gt;
++macro pager p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;
+ 			</programlisting>
+ 
+ 			<para>At first, the macro switches to the mode where all headers are
+diff -rupN orig/doc/manual/es/Makefile.am new/doc/manual/es/Makefile.am
+--- orig/doc/manual/es/Makefile.am	2006-05-06 09:13:46.000000000 +0200
++++ new/doc/manual/es/Makefile.am	2013-06-07 10:38:04.083090379 +0200
+@@ -9,7 +9,7 @@ do_subst = sed -e 's,\#\#DOCDIR\#\#,$(do
+ 
+ if DOCBOOK
+ doc_DATA = manual-es.pdf manual-es.ps manual-es.dvi \
+-	   manual-es.rtf manual-es.html
++	   manual-es.rtf
+ else
+ doc_DATA =
+ endif
+@@ -18,23 +18,23 @@ manual-es-sed.sgml : manual-es.sgml
+ 	$(do_subst) < $(srcdir)/manual-es.sgml > manual-es-sed.sgml
+ 
+ manual-es.pdf : manual-es-sed.sgml
+-	db2pdf -s ../stylesheet.dsl manual-es-sed.sgml
++	db2pdf -d ../stylesheet.dsl manual-es-sed.sgml
+ 	mv manual-es-sed.pdf manual-es.pdf
+ 
+ manual-es.ps : manual-es-sed.sgml
+-	db2ps -s ../stylesheet.dsl manual-es-sed.sgml
++	db2ps -d ../stylesheet.dsl manual-es-sed.sgml
+ 	mv manual-es-sed.ps manual-es.ps
+ 
+ manual-es.dvi : manual-es-sed.sgml
+-	db2dvi -s ../stylesheet.dsl manual-es-sed.sgml
++	db2dvi -d ../stylesheet.dsl manual-es-sed.sgml
+ 	mv manual-es-sed.dvi manual-es.dvi
+ 
+ manual-es.rtf : manual-es-sed.sgml
+-	db2rtf -s ../stylesheet.dsl manual-es-sed.sgml
++	db2rtf -d ../stylesheet.dsl manual-es-sed.sgml
+ 	mv manual-es-sed.rtf manual-es.rtf
+ 
+ manual-es.html : manual-es-sed.sgml
+-	db2html -u -s ../stylesheet.dsl manual-es-sed.sgml
++	db2html -u -d ../stylesheet.dsl manual-es-sed.sgml
+ 	mv manual-es-sed/manual-es-sed.html manual-es.html
+ 	rm -rf manual-es-sed
+ 	rm -rf manual-es-sed.junk
+diff -rupN orig/doc/manual/es/manual-es.sgml new/doc/manual/es/manual-es.sgml
+--- orig/doc/manual/es/manual-es.sgml	2005-05-16 14:38:51.000000000 +0200
++++ new/doc/manual/es/manual-es.sgml	2013-06-07 10:38:04.079757064 +0200
+@@ -254,8 +254,8 @@ muttprint-<replaceable>versión</replacea
+ 
+ 			<programlisting>
+ # generar todas las cabeceras
+-macro index p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt; &lt;exit&gt;"
+-macro pager p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt;"
++macro index p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;&lt;exit&gt;
++macro pager p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;
+ 			</programlisting>
+ 
+ 			<para>primero, el macro cambia al modo donde todas las cabeceras
+diff -rupN orig/doc/manual/it/Makefile.am new/doc/manual/it/Makefile.am
+--- orig/doc/manual/it/Makefile.am	2006-05-06 09:13:46.000000000 +0200
++++ new/doc/manual/it/Makefile.am	2013-06-07 10:38:04.083090379 +0200
+@@ -9,7 +9,7 @@ do_subst = sed -e 's,\#\#DOCDIR\#\#,$(do
+ 
+ if DOCBOOK
+ doc_DATA = manual-it.pdf manual-it.ps manual-it.dvi \
+-	   manual-it.rtf manual-it.html
++	   manual-it.rtf
+ else
+ doc_DATA =
+ endif
+@@ -18,23 +18,23 @@ manual-it-sed.sgml : manual-it.sgml
+ 	$(do_subst) < $(srcdir)/manual-it.sgml > manual-it-sed.sgml
+ 
+ manual-it.pdf : manual-it-sed.sgml
+-	db2pdf -s ../stylesheet.dsl manual-it-sed.sgml
++	db2pdf -d ../stylesheet.dsl manual-it-sed.sgml
+ 	mv manual-it-sed.pdf manual-it.pdf
+ 
+ manual-it.ps : manual-it-sed.sgml
+-	db2ps -s ../stylesheet.dsl manual-it-sed.sgml
++	db2ps -d ../stylesheet.dsl manual-it-sed.sgml
+ 	mv manual-it-sed.ps manual-it.ps
+ 
+ manual-it.dvi : manual-it-sed.sgml
+-	db2dvi -s ../stylesheet.dsl manual-it-sed.sgml
++	db2dvi -d ../stylesheet.dsl manual-it-sed.sgml
+ 	mv manual-it-sed.dvi manual-it.dvi
+ 
+ manual-it.rtf : manual-it-sed.sgml
+-	db2rtf -s ../stylesheet.dsl manual-it-sed.sgml
++	db2rtf -d ../stylesheet.dsl manual-it-sed.sgml
+ 	mv manual-it-sed.rtf manual-it.rtf
+ 
+ manual-it.html : manual-it-sed.sgml
+-	db2html -u -s ../stylesheet.dsl manual-it-sed.sgml
++	db2html -u -d ../stylesheet.dsl manual-it-sed.sgml
+ 	mv manual-it-sed/manual-it-sed.html manual-it.html
+ 	rm -rf manual-it-sed
+ 	rm -rf manual-it-sed.junk
+diff -rupN orig/doc/manual/it/manual-it.sgml new/doc/manual/it/manual-it.sgml
+--- orig/doc/manual/it/manual-it.sgml	2005-05-16 14:38:51.000000000 +0200
++++ new/doc/manual/it/manual-it.sgml	2013-06-07 10:38:04.079757064 +0200
+@@ -238,8 +238,8 @@ muttprint-<replaceable>Versione</replace
+ 
+                         <programlisting>
+ # Prendi tutti gli headers
+-macro index p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt;"
+-macro pager p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt;"
++macro index p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;
++macro pager p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;
+                         </programlisting>
+ 
+                         <para>Innanzitutto la macro passa al modo in
+diff -rupN orig/doc/manual/sl/Makefile.am new/doc/manual/sl/Makefile.am
+--- orig/doc/manual/sl/Makefile.am	2006-05-06 09:13:46.000000000 +0200
++++ new/doc/manual/sl/Makefile.am	2013-06-07 10:38:04.083090379 +0200
+@@ -9,7 +9,7 @@ do_subst = sed -e 's,\#\#DOCDIR\#\#,$(do
+ 
+ if DOCBOOK
+ doc_DATA = manual-sl.pdf manual-sl.ps manual-sl.dvi \
+-	   manual-sl.rtf manual-sl.html
++	   manual-sl.rtf
+ else
+ doc_DATA =
+ endif
+@@ -18,23 +18,23 @@ manual-sl-sed.sgml : manual-sl.sgml
+ 	$(do_subst) < $(srcdir)/manual-sl.sgml > manual-sl-sed.sgml
+ 
+ manual-sl.pdf : manual-sl-sed.sgml
+-	db2pdf -s ../stylesheet.dsl manual-sl-sed.sgml
++	db2pdf -d ../stylesheet.dsl manual-sl-sed.sgml
+ 	mv manual-sl-sed.pdf manual-sl.pdf
+ 
+ manual-sl.ps : manual-sl-sed.sgml
+-	db2ps -s ../stylesheet.dsl manual-sl-sed.sgml
++	db2ps -d ../stylesheet.dsl manual-sl-sed.sgml
+ 	mv manual-sl-sed.ps manual-sl.ps
+ 
+ manual-sl.dvi : manual-sl-sed.sgml
+-	db2dvi -s ../stylesheet.dsl manual-sl-sed.sgml
++	db2dvi -d ../stylesheet.dsl manual-sl-sed.sgml
+ 	mv manual-sl-sed.dvi manual-sl.dvi
+ 
+ manual-sl.rtf : manual-sl-sed.sgml
+-	db2rtf -s ../stylesheet.dsl manual-sl-sed.sgml
++	db2rtf -d ../stylesheet.dsl manual-sl-sed.sgml
+ 	mv manual-sl-sed.rtf manual-sl.rtf
+ 
+ manual-sl.html : manual-sl-sed.sgml
+-	db2html -u -s ../stylesheet.dsl manual-sl-sed.sgml
++	db2html -u -d ../stylesheet.dsl manual-sl-sed.sgml
+ 	mv manual-sl-sed/manual-sl-sed.html manual-sl.html
+ 	rm -rf manual-sl-sed
+ 	rm -rf manual-sl-sed.junk
+diff -rupN orig/doc/manual/sl/manual-sl.sgml new/doc/manual/sl/manual-sl.sgml
+--- orig/doc/manual/sl/manual-sl.sgml	2005-05-16 14:38:51.000000000 +0200
++++ new/doc/manual/sl/manual-sl.sgml	2013-06-07 10:38:04.079757064 +0200
+@@ -245,8 +245,8 @@ da napi&scaron;ete makro
+ 
+ 			<programlisting>
+ # Ignoriraj celo glavo
+-macro index p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt; &lt;exit&gt;"
+-macro pager p "&lt;display-toggle-weed&gt; &lt;print-message&gt; &lt;display-toggle-weed&gt;"
++macro index p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;&lt;exit&gt;
++macro pager p &lt;display-toggle-weed&gt;&lt;print-message&gt;&lt;display-toggle-weed&gt;
+ 			</programlisting>
+ 
+ 			<para>Na za&ccaron;etku makro zamenja stanje, kjer so vsi deli glave vidni
+diff -rupN orig/muttprint new/muttprint
+--- orig/muttprint	2008-12-26 01:33:36.000000000 +0100
++++ new/muttprint	2013-06-07 10:38:04.089757009 +0200
+@@ -740,6 +740,8 @@ if ($Config{'PRINTER'} =~ /^(TO_FILE|fil
+ 	}
+ }
+ 
++chdir($ENV{HOME}) || chdir('/');
++
+ ################################### ENDE ####################################
+ 
+ 
+@@ -1791,6 +1793,9 @@ sub fatalError ($) {
+ 			output \*STDERR, $messageString;
+ 		}
+ 	}
++
++	chdir($ENV{HOME}) || chdir('/');
++
+ 	exit 1;
+ }
+ 
+diff -rupN orig/pics/Makefile.am new/pics/Makefile.am
+--- orig/pics/Makefile.am	2006-05-06 09:13:46.000000000 +0200
++++ new/pics/Makefile.am	2013-06-07 10:38:04.086423694 +0200
+@@ -7,10 +7,5 @@ dist_pkgdata_DATA = \
+ 		    Debian_color.png \
+ 		    Debian.eps \
+ 		    Debian.png \
+-		    Gentoo_color.eps \
+-		    Gentoo_color.png \
+-		    Gentoo.eps \
+-		    Gentoo.png \
+ 		    penguin.eps \
+-		    penguin.jpg \
+-		    README.pics
++		    penguin.jpg
+diff -rupN orig/pics/Makefile.am.orig new/pics/Makefile.am.orig
+--- orig/pics/Makefile.am.orig	1970-01-01 01:00:00.000000000 +0100
++++ new/pics/Makefile.am.orig	2013-06-07 10:38:04.086423694 +0200
+@@ -0,0 +1,12 @@
++dist_pkgdata_DATA = \
++		    BabyTuX_color.eps \
++		    BabyTuX_color.png \
++		    BabyTuX.eps \
++		    BabyTuX.png \
++		    Debian_color.eps \
++		    Debian_color.png \
++		    Debian.eps \
++		    Debian.png \
++		    penguin.eps \
++		    penguin.jpg \
++		    README.pics
