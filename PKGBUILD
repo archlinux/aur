@@ -1,27 +1,33 @@
-# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Maintainer: omgold
+# Contributor:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname='conserver'
-pkgver='8.2.2'
-pkgrel='2'
+pkgver='8.2.4'
+pkgrel='1'
 pkgdesc='Serial console remote sharing and logging daemon with support for IPMI.'
 arch=('i686' 'x86_64')
 url=https://www.conserver.com
 license=(BSD)
+makedepends=(autoconf)
 depends=(freeipmi openssl libwrap pam)
+
 _giturl=https://github.com/conserver/conserver
 _srcdir="${_giturl##*/}-${pkgver}"
+
 source=(
     "${_srcdir}.tar.gz::${_giturl}/archive/v${pkgver}.tar.gz"
     conserver.service
 )
+
 sha256sums=(
-    ff869fc64afe15a81998a1e5c49734225ad54ecda214583b00e7f4c9f4bbb326
+    8d8b263d9531ebb827257bd67baf9200cac4fb7ffbe033122686e39ca42cddd6
     SKIP
 )
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  ./package/setup-configure
   ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-libwrap --with-ipv6 --with-pam --with-openssl --with-freeipmi --with-port=782
 }
 
