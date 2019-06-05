@@ -1,7 +1,7 @@
 pkgbase = cb
-	pkgdesc = Find files with SQL-like queries
+	pkgdesc = Command line interface to manage clipboard
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yaa110/cb
 	arch = i686
 	arch = x86_64
