@@ -2,7 +2,7 @@
 
 pkgname=linkerd
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A service sidecar for Kubernetes and beyond. Main repo for Linkerd 2.x.  - https://linkerd.io"
 arch=('x86_64')
 url="https://linkerd.io/2/getting-started/"
@@ -12,7 +12,7 @@ source_x86_64=(
     "linkerd::https://github.com/linkerd/linkerd2/releases/download/stable-${pkgver}/linkerd2-cli-stable-${pkgver}-linux"
     )
 sha256sums_x86_64=(
-    '82bbd4e994231d0cb7532144851c84a5ce84811468e1eb7ceeebd21aec1d98fa'
+    'c16f5be2fd3957ac3995a78ca3046925c5c190e832ecf028998231b732aec1e1'
     )
 options=(!strip)
 
