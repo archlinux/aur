@@ -1,7 +1,7 @@
 # Maintainer: Philipp Schaffrath <aur at philipp dot schaffrath dot email>
 
 pkgname=giph-git
-pkgver=v1.0.r0.gd7eccda
+pkgver=1.0.r0.gd7eccda
 pkgrel=1
 pkgdesc='gif recorder that records the desktop, a window or a selection'
 url='https://github.com/phisch/giph'

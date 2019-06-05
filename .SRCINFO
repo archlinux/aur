@@ -1,6 +1,6 @@
 pkgbase = giph-git
 	pkgdesc = gif recorder that records the desktop, a window or a selection
-	pkgver = v1.0.r0.gd7eccda
+	pkgver = 1.0.r0.gd7eccda
 	pkgrel = 1
 	url = https://github.com/phisch/giph
 	arch = any
