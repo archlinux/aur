@@ -1,6 +1,6 @@
 pkgbase = etcher
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily
-	pkgver = 1.5.34
+	pkgver = 1.5.45
 	pkgrel = 1
 	url = https://etcher.io
 	arch = x86_64
@@ -22,14 +22,16 @@ pkgbase = etcher
 	conflicts = etcher-git
 	conflicts = etcher-bin
 	options = !strip
-	source = etcher::git+https://github.com/balena-io/etcher.git#tag=v1.5.34
+	source = etcher::git+https://github.com/balena-io/etcher.git#tag=v1.5.45
 	source = git+https://github.com/balena-io/scripts.git
 	source = etcher-electron
 	source = etcher-electron.desktop
+	source = use-electron-4.1.5.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 4499f316e4de865696312b31545f8df62850aad4492bcc9736cccb6d8eeb96ec
 	sha256sums = 89291532fb6e6c5555b43d61c9ba3df103bca0eace040483884b86fd30dca3e4
+	sha256sums = 488e2ebce14bb9a8caaa1e9aaa73ee22c1c3eaa68c110d355bd588b37023f002
 
 pkgname = etcher
 
