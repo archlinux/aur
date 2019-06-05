@@ -1,19 +1,18 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=hunter
-pkgver=1.1.4
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='ranger-like file browser written in Rust'
 arch=(i686 x86_64)
 url=https://github.com/rabite0/hunter
 license=(WTFPL)
-depends=(file)
+depends=(file xdg-utils gst-plugins-bad gst-plugins-ugly gst-libav)
 makedepends=(rust-nightly)
-optdepends=('ranger: to open files using rifle'
-            'xdg-utils: fallback to open files with xdg-open')
+optdepends=('nerd-fonts-complete: supported icon pack')
 conflicts=(hunter-git hunter-holy hunter-holy-git)
 source=($url/archive/v$pkgver.tar.gz)
-sha512sums=('f867ca8b10af89e182f4fee672e76285fcf0547f90cb37b76ca16d7ce874b914d550f0b3ece4a38fc5d6da32807c4b26a7ec92af4a0f772c66a084358fd0607c')
+sha512sums=('58646eb0e353d235eede2efa034dde9b5b6892eee82d64f938233faf250e019ae6a5b02162b77a9b979bf6f3adc8b71333bda0f1711d830845d01a14b21c7833')
 
 build() {
   cd hunter-$pkgver
@@ -22,7 +21,7 @@ build() {
 
 package() {
   cd hunter-$pkgver
-  install -D {target/release/hunter,extra/scope.sh} -t "$pkgdir"/usr/bin
+  install -D target/release/{hunter,preview-gen} extra/scope.sh -t "$pkgdir"/usr/bin
   install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/hunter
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/hunter
 }
