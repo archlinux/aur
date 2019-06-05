@@ -4,8 +4,8 @@
 # Contributor: Travis Nickles <nickles.travis@gmail.com>
 
 pkgname=antimicro
-pkgver=2.24.1
-pkgrel=3
+pkgver=2.24.2
+pkgrel=1
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to a gamepad"
 arch=("i686" "x86_64")
 url="https://github.com/juliagoda/${pkgname}"
@@ -13,7 +13,7 @@ license=("GPL3")
 depends=("desktop-file-utils" "hicolor-icon-theme" "libxtst" "qt5-base" "sdl2")
 makedepends=("cmake" "extra-cmake-modules" "gettext" "itstool" "qt5-tools")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/juliagoda/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=("1a7f8693b2f969426a1ae1177af9d76389274308ae2f713a694df7c616369b31")
+sha256sums=("f6c9d40709047ac0c09a41a9c35771748afd6525781b4ce61ed0524da96b2f45")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
