@@ -1,0 +1,52 @@
+diff --git a/npm-shrinkwrap.json b/npm-shrinkwrap.json
+index 6ce05035..6d7dbbd3 100644
+--- a/npm-shrinkwrap.json
++++ b/npm-shrinkwrap.json
+@@ -4169,20 +4169,20 @@
+       "dev": true
+     },
+     "electron": {
+-      "version": "3.1.9",
+-      "resolved": "https://registry.npmjs.org/electron/-/electron-3.1.9.tgz",
+-      "integrity": "sha512-F9AoMjY9zuQBdxmjZz644wHnJehNlYD+WQK2kBMXKoRKrzkYgD5k6QU6mqZuT5OGARpYp9zFOJ8uuJVcAB+TbQ==",
++      "version": "4.1.5",
++      "resolved": "https://registry.npmjs.org/electron/-/electron-4.1.5.tgz",
++      "integrity": "sha512-0VZzUd4vZaUeSLdxJI/XMrMnPN7AROjPFZOiNgZZkYRUUEjGHfaSAbCJyxuXtii52KGhzGL0JgW0q5QmQ3ykKQ==",
+       "dev": true,
+       "requires": {
+-        "@types/node": "^8.0.24",
++        "@types/node": "^10.12.18",
+         "electron-download": "^4.1.0",
+         "extract-zip": "^1.0.3"
+       },
+       "dependencies": {
+         "@types/node": {
+-          "version": "8.10.48",
+-          "resolved": "https://registry.npmjs.org/@types/node/-/node-8.10.48.tgz",
+-          "integrity": "sha512-c35YEBTkL4rzXY2ucpSKy+UYHjUBIIkuJbWYbsGIrKLEWU5dgJMmLkkIb3qeC3O3Tpb1ZQCwecscvJTDjDjkRw==",
++          "version": "10.14.5",
++          "resolved": "https://registry.npmjs.org/@types/node/-/node-10.14.5.tgz",
++          "integrity": "sha512-Ja7d4s0qyGFxjGeDq5S7Si25OFibSAHUi6i17UWnwNnpitADN7hah9q0Tl25gxuV5R1u2Bx+np6w4LHXfHyj/g==",
+           "dev": true
+         }
+       }
+@@ -13956,4 +13956,4 @@
+       }
+     }
+   }
+-}
++}
+\ No newline at end of file
+diff --git a/package.json b/package.json
+index babcc77a..eb84d9ef 100644
+--- a/package.json
++++ b/package.json
+@@ -89,7 +89,7 @@
+     "angular-mocks": "1.7.6",
+     "babel-loader": "^8.0.4",
+     "chalk": "^1.1.3",
+-    "electron": "3.1.9",
++    "electron": "4.1.5",
+     "electron-builder": "^20.40.2",
+     "electron-mocha": "^6.0.4",
+     "eslint": "^4.17.0",
