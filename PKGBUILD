@@ -1,6 +1,6 @@
 # Maintainer: Tesx <tesfabpel@gmail.com>
 pkgname=goxel
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Open Source 3D voxel editor for Mac, Windows and Linux."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ source=("https://github.com/guillaumechereau/$pkgname/archive/v$pkgver.tar.gz"
 	"goxel.desktop"
 	"goxel.png"
 	"fix-compile.patch")
-sha256sums=('a99e92ae4812a57450ef853626c95bcdb9abfe68885ae68f5541c77f4952991c'
+sha256sums=('950f1f130f54eacb0de4a97b195e8b02dcf3cb3a9f97356005c26055dece4018'
 	'9b29df7405a9593396bc7ea810dc2871cce7c4ee474c1fa56d32f56c2ca2d921'
 	'f857497012b8518817e321ff8e1e9f108c8e18b638285702f2041f82769d2652'
 	'8ef0df798c0e907f599025c6d5c6b6366b50728ff395addad78db2dd521d8890')
