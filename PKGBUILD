@@ -1,13 +1,14 @@
-# Maintainer: GreenRaccoon23 <GreenRaccoon23 AT gmail DOT com>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: GreenRaccoon23 <GreenRaccoon23 AT gmail DOT com>
 # Based on PKGBUILD from darkcoin-git maintained by Viliam Kubis <viliam dot kubis at gmail dot com>
 
 pkgname='dashcore'
-pkgver=0.13.3.0
+pkgver=0.14.0.1
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.dash.org/"
-depends=('qt4' 'boost' 'boost-libs' 'miniupnpc' 'openssl' 'qrencode')
-makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'automoc4' 'protobuf')
+depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'openssl' 'qrencode')
+makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'protobuf' 'qt5-tools')
 license=('MIT')
 pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool.)"
 provides=('dashd' 'dash-qt' 'dash-cli' 'dash-tx')
@@ -18,13 +19,8 @@ source=(
   'dash-qt.desktop'
   'COPYING'
 )
-source_i686=("https://github.com/dashpay/dash/releases/download/v${pkgver}/dashcore-${pkgver}-i686-pc-linux-gnu.tar.gz")
-source_x86_64=("https://github.com/dashpay/dash/releases/download/v${pkgver}/dashcore-${pkgver}-x86_64-linux-gnu.tar.gz")
-sha256sums=('d719e01df4b47f4d6f0d4d6eac50d402bebb4127d0b6d64764fe2a42e903819b'
-            '41f83cb53ecf33688d899f83e09bd52f9aa8e6d7b9b0f30810f192988b26079a'
-            'b5290c16b194d488265f3af37a7ab74cb9fecea2de97b910670cefa4e0909853')
-sha256sums_i686=('9cf8a72c58b527b3510c966c97260e69f72eac5b6c2e51926674a47e46982cf3')
-sha256sums_x86_64=('1da7bf1c201259c7ed9304c64e40a07bcce757af5e3fe4f4d8ae0632b2f39f51')
+source=("https://github.com/dashpay/dash/releases/download/v${pkgver}/dashcore-${pkgver}-$CARCH-linux-gnu.tar.gz")
+sha256sums=('c28881104ef7b3bdede7eb2b231b076a6e69213948695b4ec79ccb5621c04d97')
 
 package() {
   install -D -m755 "$srcdir/$pkgname-${pkgver%.*}/bin/dash-qt" "$pkgdir/usr/bin/dash-qt"
