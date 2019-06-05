@@ -1,7 +1,7 @@
 # Maintainer: Steven De Bondt <egnappah at gmail dot com>
 
 pkgbase=geoipdatabase_reloaded
-pkgver=1.2019.05
+pkgver=1.2019.06
 pkgrel=1
 arch=('x86_64')
 url="https://dev.maxmind.com/geoip/geoip2/geolite2/"
