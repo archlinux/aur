@@ -7,8 +7,9 @@ build:clear ## Build pakage
 clear: ## Clear files
 	rm -rf ./pkg
 	rm -rf ./src
-	rm -f ./shadowbeta.deb
+	rm -f ./*.zip
 	rm -f ./shadow-beta-*.pkg.tar
+	rm -f ./shadow-beta-*.pkg.tar.xz
 	rm -f ./*~
 
 install:build ## Install package with pacman
