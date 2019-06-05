@@ -21,8 +21,8 @@ _ENABLE_OMP=0
 
 _pkgname=lammps
 pkgname=${_pkgname}-beta
-pkgver=20190531
-_pkgver="31May2019"
+pkgver=20190605
+_pkgver="5Jun2019"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
@@ -34,7 +34,7 @@ makedepends=('cmake')
 conflicts=('lammps')
 provides=('lammps')
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/patch_${_pkgver}.tar.gz")
-sha512sums=('683466c4c05db55b0d680a847129fb0c5aa1c2d286b1cacbad570b672f6da92bc8350c95378d9d1c42e9971041f87a7e44375d2ad8fb7a1b2d778699c78da011')
+sha512sums=('d72a5de3068a902cd8a825c97cd071331d5e3c16429531809178c43930b363f6549bd6802b552c2667e8882f7f21c90bd815072deb5ac19c8687060c796e58b4')
 
 # process the build settings from above
 if (( $_ENABLE_INTEL_COMPILER )); then
@@ -113,6 +113,6 @@ package() {
   if (( $_INSTALL_EXAMPLES )) ; then
     mkdir -p "${pkgdir}/usr/share/examples/lammps"
     cp -r "../examples/"* "${pkgdir}/usr/share/examples/lammps/"
-    chmod 644 -R "${pkgdir}/usr/share/examples/lammps"
+    find "${pkgdir}/usr/share/examples/lammps/" -type f -exec chmod 644 '{}' +
   fi
 }
