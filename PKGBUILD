@@ -9,11 +9,11 @@
 
 pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=16
+pkgrel=17
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=(i686 x86_64)
 url="https://popcorntime.sh/"
-license=('GPL3')
+license=(GPL3)
 depends=(alsa-lib gconf gtk3 nss libxtst libxss ttf-font)
 makedepends=(git npm yarn)
 optdepends=('net-tools: vpn.ht client')
@@ -25,7 +25,7 @@ _commit_hash="commit=01d3b09080f458e3a2eb95506655e9d174922ef5"
 _pkgname="popcorn-desktop"
 
 # NW.js version to use while building
-_nwjs="0.37.4" # e.g. 0.31.5
+_nwjs="0.38.1" # e.g. 0.31.5
 # Missing dependencies to install
 #_missing_deps="underscore@~1.8.3"
 
