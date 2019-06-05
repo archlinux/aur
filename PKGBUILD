@@ -2,7 +2,7 @@
 
 pkgname=satysfi-git
 _pkgname=SATySFi
-pkgver=r1420.f032f1a
+pkgver=r2148.e1e0270
 pkgrel=1
 pkgdesc='A statically-typed, functional typesetting system'
 arch=('x86_64')
@@ -24,6 +24,9 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
+  sed -ie '/^LIBDIR=/d' install-libs.sh
+  sed -ie '2iLIBDIR=${pkgdir}/usr/share/satysfi' install-libs.sh
+  sed -ie 's/lib-satysfi/${srcdir}\/${_pkgname}\/lib-satysfi/' install-libs.sh
   export OPAMROOT="${srcdir}/.opam"
   export OPAMYES=1
   opam init --no-setup
@@ -33,6 +36,7 @@ build() {
   # bypass "ERROR: Preinstalled ocamlbuild detected at ..."
   export CHECK_IF_PREINSTALLED=false
   opam install --deps-only satysfi
+  ./download-fonts.sh
   make PREFIX=/usr
   make lib PREFIX=/usr
 }
@@ -40,7 +44,6 @@ build() {
 package() {
   cd "${_pkgname}"
   make install PREFIX="${pkgdir}/usr"
+  env srcdir="$srcdir" pkgdir="$pkgdir" _pkgname="$_pkgname" ./install-libs.sh
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  local gflpath=temp/latinmodern-math-1959/doc/GUST-FONT-LICENSE.txt
-  install -Dm644 "${gflpath}" "${pkgdir}/usr/share/licenses/${pkgname}/latin-modern/GUST-FONT-LICENSE.txt"
 }
