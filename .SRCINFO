@@ -1,0 +1,16 @@
+pkgbase = litguish-git
+	pkgdesc = litguish is the GUI Frontend for light backlight controller using shellscript (using yad for GUI)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/varshitbhat/litguish
+	arch = any
+	license = GPLv3
+	depends = light
+	depends = yad
+	depends = libnotify
+	noextract = litguish
+	source = https://gitlab.com/varshitbhat/litguish/raw/master/litguish
+	md5sums = SKIP
+
+pkgname = litguish-git
+
