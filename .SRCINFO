@@ -1,7 +1,7 @@
 pkgbase = gandi.cli
 	pkgdesc = Gandi command line interface
-	pkgver = 1.4
-	pkgrel = 3
+	pkgver = 1.5
+	pkgrel = 1
 	url = http://cli.gandi.net
 	arch = any
 	license = GPL3
@@ -20,8 +20,8 @@ pkgbase = gandi.cli
 	depends = git
 	optdepends = docker: gandi docker support
 	options = !emptydirs
-	source = https://github.com/Gandi/gandi.cli/archive/1.4.tar.gz
-	sha256sums = 81333e6982b45c27938ae9e1ae4612ace1145bab69abf36373d2ac23dbd0090b
+	source = https://github.com/Gandi/gandi.cli/archive/1.5.tar.gz
+	sha256sums = 91349aaac0399add4dec5025cd75ae34f42e0d78bd533da4619a075869c93fb0
 
 pkgname = gandi.cli
 
