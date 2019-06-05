@@ -1,9 +1,8 @@
 pkgbase = libreoffice-dev-bin
 	pkgdesc = LibreOffice development branch
-	pkgver = 6.3.0.0alpha1
+	pkgver = 6.3.0.0beta1
 	pkgrel = 1
 	url = https://www.libreoffice.org/
-	arch = i686
 	arch = x86_64
 	license = LGPL3
 	depends = gtk2
@@ -18,10 +17,8 @@ pkgbase = libreoffice-dev-bin
 	optdepends = kio: for Qt5 integration
 	provides = libreoffice
 	provides = libreoffice-en-US
-	source_i686 = https://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOfficeDev_6.3.0.0.alpha1_Linux_x86_rpm.tar.gz
-	sha256sums_i686 = SKIP
-	source_x86_64 = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOfficeDev_6.3.0.0.alpha1_Linux_x86-64_rpm.tar.gz
-	sha256sums_x86_64 = SKIP
+	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOfficeDev_6.3.0.0.beta1_Linux_x86-64_rpm.tar.gz
+	sha256sums = SKIP
 
 pkgname = libreoffice-dev-bin
 
