@@ -1,6 +1,6 @@
 pkgbase = polar-bookshelf-bin
 	pkgdesc = Polar Bookshelf
-	pkgver = 1.19.6
+	pkgver = 1.19.8
 	pkgrel = 1
 	url = https://github.com/burtonator/polar-bookshelf
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = polar-bookshelf-bin
 	depends = gtk3
 	depends = libxss
 	depends = nss
-	source_x86_64 = https://github.com/burtonator/polar-bookshelf/releases/download/v1.19.6/polar-bookshelf-1.19.6-x64.tar.gz
+	source_x86_64 = https://github.com/burtonator/polar-bookshelf/releases/download/v1.19.8/polar-bookshelf-1.19.8-x64.tar.gz
 	source_x86_64 = polar-bookshelf.desktop
 	source_x86_64 = polar-bookshelf.svg
-	sha512sums_x86_64 = ca7f8726bd1600276e099ac42f6247ac650409d44c682c53ea2553a6051be1343328c56f3b00b9c9185bc7b2e0c0a7e954775f1ffb8b7e66328347ad14a15f85
+	sha512sums_x86_64 = 452799456bb43783f3063bfee2af7e17b7d61dbfb9a5e7d1b0126fa7bac887792a4252907261fb9ed67df006c8fefbbf8b73a2d611340d635c83ae6c04e86fe1
 	sha512sums_x86_64 = 245196d23eb0c724bba1ba09e8234cc8dfdd230fcd02e8083c84d65d4721886977a111e19511d5afee9b8b61458ab851e6263dad31be9bbe0f4f5a3607f00690
 	sha512sums_x86_64 = 2f1c91308fa6fc30496501894f5c9454799e26437000843f00cf0ab4b94713a1500a734c0f5590f86dae8bab7e34107670571ea2fde18981669a17ede61d1829
 
