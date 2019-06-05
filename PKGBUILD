@@ -55,8 +55,8 @@ package() {
   make DESTDIR="${pkgdir}" altinstall maninstall
 
   # Avoid conflicts with the main 'python' package.
-  # rm "${pkgdir}/usr/lib/libpython${_pymajver}.so"
-  # rm "${pkgdir}/usr/share/man/man1/python${_pymajver}.1"
+  rm -f "${pkgdir}/usr/lib/libpython${_pymajver}.so"
+  rm -f "${pkgdir}/usr/share/man/man1/python${_pymajver}.1"
 
   # Fix FS#22552
   ln -sf ../../libpython${_pybasever}m.so \
