@@ -1,5 +1,5 @@
---- anki-2.1.12-linux-amd64/Makefile.orig
-+++ anki-2.1.12-linux-amd64/Makefile
+--- anki/Makefile.orig
++++ anki/Makefile
 @@ -10,7 +10,7 @@
  	mkdir -p ${PREFIX}/share/anki
  	cp -av * ${PREFIX}/share/anki/

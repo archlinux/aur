@@ -5,7 +5,7 @@
 
 # Maintainer: Kuklin István <kuklinistvan@zoho.com>
 pkgname=anki-official-binary-bundle
-pkgver=2.1.12
+pkgver=2.1.13
 pkgrel=1
 epoch=
 pkgdesc="The official binary shipped with the tested versions of the dependent libraries."
@@ -25,19 +25,25 @@ options=()
 install=
 changelog=
 topdirname="anki-$pkgver-linux-amd64"
-source=("https://apps.ankiweb.net/downloads/current/${topdirname}.tar.bz2" "remove_xdg_cmds_from_makefile.patch" "prefix-fix.patch")
+source=(
+  "https://apps.ankiweb.net/downloads/current/${topdirname}.tar.bz2"
+  "remove_xdg_cmds_from_makefile.patch"
+  "prefix-fix.patch"
+)
 noextract=()
 md5sums=(
-    '5c0e65479907b178ce7a9cb7db5c8238'
-    'f0aa931cc56a39efa3cef0c2ddbaea78'
-    '2d79e7014d1242e04dc398415bfdd5d8'
+    '1cbc4cf03f5f41fdbf694b931cb512c0'
+    '81e1cb8bfb5122319b141ea25e536ef6'
+    '82a5d4f63bbc29e6a80043dd95973b4f'
 )
 validpgpkeys=()
 
 prepare() {
 	cd "$srcdir"
-    patch -p0 -i remove_xdg_cmds_from_makefile.patch
-    patch -p0 -i prefix-fix.patch
+  ln -s "$topdirname" anki
+  patch -p0 -i remove_xdg_cmds_from_makefile.patch
+  patch -p0 -i prefix-fix.patch
+  rm anki
 }
 
 build() {
