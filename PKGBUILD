@@ -5,17 +5,17 @@
 # Contributor: Denis Martinez <deuns.martinez [at] gmail [dot] com>
 
 pkgname=lib32-intel-tbb
-pkgver=2019.3
+pkgver=2019.7
 _tagname=${pkgver/./_U}
 pkgrel=1
 pkgdesc="High level abstract threading library (32-bit)"
 arch=('x86_64')
-url="http://threadingbuildingblocks.org"
+url="https://threadingbuildingblocks.org"
 license=('GPL')
 depends=("${pkgname#lib32-}" 'lib32-gcc-libs')
 makedepends=('gcc-multilib')
 source=("${pkgname#lib32-}-${pkgver}.tar.gz::https://github.com/01org/tbb/archive/$_tagname.tar.gz")
-sha256sums=('b2244147bc8159cdd8f06a38afeb42f3237d3fc822555499d7ccfbd4b86f8ece')
+sha256sums=('4204a93f4c0fd989fb6f79acae74feb02ee39725c93968773d9b6efeb75c7a6a')
 
 build() {
   cd "tbb-${_tagname}"
