@@ -3,13 +3,13 @@
 # Former Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='a scalable c++ machine learning library'
 arch=('x86_64')
 url="http://www.mlpack.org"
 license=('BSD')
 depends=(
-  'armadillo>=6.500.0'
+  'armadillo'
   'boost>=1.49'
   'lapack'
   'libxml2>=2.6.0'

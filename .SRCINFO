@@ -1,7 +1,7 @@
 pkgbase = mlpack
 	pkgdesc = a scalable c++ machine learning library
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mlpack.org
 	arch = x86_64
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = mlpack
 	makedepends = txt2man
 	makedepends = python-setuptools
 	makedepends = python-pytest-runner
-	depends = armadillo>=6.500.0
+	depends = armadillo
 	depends = boost>=1.49
 	depends = lapack
 	depends = libxml2>=2.6.0
