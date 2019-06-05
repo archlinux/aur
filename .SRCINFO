@@ -1,7 +1,7 @@
 pkgbase = clion-eap
 	pkgdesc = C/C++ IDE. 30-day evaluation.
 	pkgver = 192.4488.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
 	license = custom
@@ -31,7 +31,9 @@ pkgname = clion-eap
 	optdepends = python: Python 3 programming language support
 	optdepends = python2: Python 2 programming language support
 	optdepends = doxygen: Code documentation generation
+	backup = opt/clion-eap/bin/clion.vmoptions
 	backup = opt/clion-eap/bin/clion64.vmoptions
+	backup = opt/clion-eap/bin/idea.properties
 
 pkgname = clion-eap-jre
 

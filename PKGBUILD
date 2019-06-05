@@ -11,7 +11,7 @@ _pkgname=clion
 _dlname=CLion
 pkgver=192.4488.4
 _dlver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="C/C++ IDE. 30-day evaluation."
 arch=('x86_64')
 options=(!strip)
@@ -54,7 +54,9 @@ package_clion-eap() {
         'python2: Python 2 programming language support'
         'doxygen: Code documentation generation'
     )
-    backup=("opt/${pkgbase}/bin/clion64.vmoptions")
+    backup=("opt/${pkgbase}/bin/clion.vmoptions"
+            "opt/${pkgbase}/bin/clion64.vmoptions"
+            "opt/${pkgbase}/bin/idea.properties")
 
     rsync -rtl "${srcdir}/opt" "${pkgdir}" \
           --exclude=/opt/${pkgbase}/jbr \
