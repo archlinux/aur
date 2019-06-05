@@ -1,7 +1,7 @@
 pkgbase = swift-language
 	pkgdesc = The Swift programming language and debugger
 	pkgver = 5.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://swift.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = swift-language
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = swig
+	makedepends = swig3
 	makedepends = clang>=5.0
 	makedepends = python2-six
 	makedepends = perl

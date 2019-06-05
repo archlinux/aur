@@ -4,14 +4,14 @@ pkgbase=swift-language
 pkgname=(swift swift-lldb)
 _swiftver=5.0.1-RELEASE
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses' 'libblocksruntime')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=5.0' 'python2-six' 'perl'
+makedepends=('git' 'cmake' 'ninja' 'swig3' 'clang>=5.0' 'python2-six' 'perl'
              'python2-sphinx' 'python2-requests' 'rsync')
 
 source=(
@@ -89,6 +89,7 @@ _common_build_params=(
     --xctest
     --foundation
     --libdispatch
+    --extra-cmake-options="-DSWIG_EXECUTABLE=/usr/bin/swig-3"
 )
 
 _build_script_wrapper() {
@@ -100,10 +101,7 @@ build() {
     cd "$srcdir/swift"
 
     export PATH="$PATH:/usr/bin/core_perl"
-    # sourcekit (STILL) doesn't link correctly on Linux.  Disable for now :(
-    _build_script_wrapper -R "${_common_build_params[@]}" \
-        --extra-cmake-options="-DSWIFT_BUILD_SOURCEKIT=FALSE" \
-        --skip-test-sourcekit
+    _build_script_wrapper -R "${_common_build_params[@]}"
 }
 
 check() {
@@ -115,7 +113,7 @@ check() {
     sed -i "/import_module('_lldb')/s/_lldb/lldb.&/" \
         "${srcdir}/build/Ninja-ReleaseAssert/lldb-linux-${CARCH}/lib/python2.7/site-packages/lldb/__init__.py"
 
-    _build_script_wrapper -R -t --skip-test-sourcekit
+    _build_script_wrapper -R -t
 }
 
 package_swift() {
@@ -140,7 +138,7 @@ package_swift() {
         ln -s swift "$pkgdir/usr/bin/swiftc"
         ln -s swift "$pkgdir/usr/bin/swift-autolink-extract"
 
-        #install -m644 lib/libsourcekitdInProc.so "$pkgdir/usr/lib"
+        install -m644 lib/libsourcekitdInProc.so "$pkgdir/usr/lib"
 
         install -dm755 "$pkgdir/usr/share/man/man1"
         install -m644 docs/tools/swift.1 "$pkgdir/usr/share/man/man1"
