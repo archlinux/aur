@@ -1,0 +1,14 @@
+pkgbase = unihedron-device-manager
+	pkgdesc = Unihedron Device Manager
+	pkgver = 1.0.0.216
+	pkgrel = 1
+	url = http://unihedron.com/projects/darksky/cd/
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	depends = libglvnd
+	source = http://unihedron.com/projects/darksky/cd/Linux/udm_amd64_1.0.0.216.deb
+	sha256sums = 79d3ec1adf74d13a2ec683ae644c71743e02688f4ac19a3d6129e54c10aedb4c
+
+pkgname = unihedron-device-manager
+
