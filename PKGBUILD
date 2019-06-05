@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=teamviewer-quicksupport
-pkgver=11.0.90184
+pkgver=11.0.95210
 _pkgver_major=${pkgver%%.*}
 pkgrel=1
 pkgdesc='Teamviewer Quicksupport - All-In-One Software for Remote Support and Online Meetings'
@@ -32,7 +32,7 @@ depends_i686=(
 conflicts=('teamviewer')
 license=('custom')
 source=("teamviewer_qs-${pkgver}.tar.gz::http://download.teamviewer.com/download/version_${_pkgver_major}x/teamviewer_qs.tar.gz")
-sha256sums=('b04ab46adec3771ba0a67c9a6d379bc752b4cfefaf9e7211a02f4d5b98589a4e')
+sha256sums=('57e4c5c40315e52307a2737021d6dfd02b0c8e01dfedecb805a0cdff7d09e323')
 
 prepare() {
 	cd teamviewerqs/
