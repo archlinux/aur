@@ -1,13 +1,14 @@
 pkgbase = cb-bin
 	pkgdesc = Command line interface to manage clipboard
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yaa110/cb
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
 	provides = cb
 	conflicts = cb-git
+	conflicts = cb
 	source = LICENSE::https://raw.githubusercontent.com/yaa110/cb/master/LICENSE-MIT
 	sha512sums = 6f22b5be709772ea56833d7f5a4e16874c5bdc5a91f2d0d3bc3acdc778be00cf680ea03b2099dc581d09b96c420511391b475165d587f56fee476b29b2c917fa
 	source_x86_64 = https://github.com/yaa110/cb/releases/download/0.1.0/cb
