@@ -3,7 +3,7 @@
 pkgname=visual-studio-code-bin
 _pkgname=visual-studio-code
 pkgver=1.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64' 'i686')
 url="https://code.visualstudio.com/"
@@ -24,11 +24,11 @@ source_i686=(code_ia32_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net
 sha256sums_x86_64=('507738c8d38ee22becad12765dbb37af7119c9f87cc349da08307e7f58114720'
                    '488592034dd5f979083bbd80788d33e253bb3ac3e52d50faee80e715a924a212'
                    '727adaf263801462744c65bc0fad1b64ab31b3c96ed1a11e5b61bffbd5d71bc7'
-                   '144636b4d6b75b1cc0d0ca7842023af6a3e77eb7032d9ff118df251bea7d8cd3')
+                   '7537330cec94b308feaa9bb66db45b5554b8379ec7dce83990521d2860bca4b2')
 sha256sums_i686=('2cfa8f5464d6a99d8c25d1810a21e1470b8f95b5457fc0053971e77cb0aa0591'
                  '488592034dd5f979083bbd80788d33e253bb3ac3e52d50faee80e715a924a212'
                  '727adaf263801462744c65bc0fad1b64ab31b3c96ed1a11e5b61bffbd5d71bc7'
-                 '144636b4d6b75b1cc0d0ca7842023af6a3e77eb7032d9ff118df251bea7d8cd3')
+                 '7537330cec94b308feaa9bb66db45b5554b8379ec7dce83990521d2860bca4b2')
 package() {
   _pkg=VSCode-linux-x64
   if [ "${CARCH}" = "i686" ]; then
