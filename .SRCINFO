@@ -1,0 +1,18 @@
+pkgbase = cb-git
+	pkgdesc = Find files with SQL-like queries
+	pkgver = 0.1.0.r1.g036df74
+	pkgrel = 1
+	url = https://github.com/yaa110/cb
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	provides = cb
+	conflicts = cb
+	conflicts = cb-bin
+	source = cb::git://github.com/yaa110/cb.git
+	sha512sums = SKIP
+
+pkgname = cb-git
+
