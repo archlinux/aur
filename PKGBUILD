@@ -2,25 +2,18 @@
 
 _pkgname=check-sieve
 pkgname=${_pkgname}-git
-pkgver=20150905.682d967
+pkgver=20190514.8fe4f97
 pkgrel=1
 pkgdesc="Syntax checker for mail sieves."
 arch=('i686' 'x86_64')
 url="https://github.com/dburkart/${_pkgname}"
 license=('custom')
-groups=()
-depends=()
-makedepends=('git' 'gcc' 'make' 'bison' 'flex')
-optdepends=()
+depends=('gcc-libs')
+makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replaces=("${_pkgname}")
-backup=()
-options=()
-install=
-changelog=
 source=("${_pkgname}::git+https://github.com/dburkart/${_pkgname}.git")
-noextract=()
 md5sums=('SKIP')
 
 
@@ -33,11 +26,6 @@ build() {
 	cd "${srcdir}/${_pkgname}"
 	make
 }
-
-#check() {
-#	cd "${srcdir}/${_pkgname}"
-#	make test
-#}
 
 package() {
 	cd "${srcdir}/${_pkgname}"
