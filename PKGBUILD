@@ -6,6 +6,8 @@ pkgdesc="A network analysis framework"
 arch=('x86_64')
 url="https://www.zeek.org/index.html"
 license=('BSD')
+depends=("zlib" "libpcap" "bash" "libmaxminddb")
+makedepends=("cmake")
 source=("https://www.zeek.org/downloads/bro-2.6.2.tar.gz")
 sha256sums=("6df6876f3f7b1dd8afeb3d5f88bfb9269f52d5d796258c4414bdd91aa2eac0a6")
 
@@ -15,7 +17,7 @@ build() {
     tar xf $bro_ver.tar.gz
     cd "$bro_ver"
     ./configure --disable-broctl --disable-auxtools --disable-perftools --disable-python --disable-broker-tests
-    make -j7
+    make
 }
 
 package() {
