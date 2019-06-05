@@ -1,0 +1,70 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dd7030b27..61e98093e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -157,7 +157,6 @@ INCLUDE_DIRECTORIES(
+     deps/neverbleed
+     deps/picohttpparser
+     deps/picotest
+-    deps/yaml/include
+     deps/yoml)
+ 
+ IF (PKG_CONFIG_FOUND)
+@@ -226,16 +225,6 @@ ENDIF(NOT CMAKE_BUILD_TYPE)
+ SET(CMAKE_C_FLAGS_DEBUG  "-O0")
+ SET(CMAKE_C_FLAGS_RELEASE  "-O2")
+ 
+-SET(LIBYAML_SOURCE_FILES
+-    deps/yaml/src/api.c
+-    deps/yaml/src/dumper.c
+-    deps/yaml/src/emitter.c
+-    deps/yaml/src/loader.c
+-    deps/yaml/src/parser.c
+-    deps/yaml/src/reader.c
+-    deps/yaml/src/scanner.c
+-    deps/yaml/src/writer.c)
+-
+ SET(BROTLI_SOURCE_FILES
+     deps/brotli/c/common/dictionary.c
+     deps/brotli/c/enc/backward_references.c
+@@ -255,6 +244,7 @@ SET(BROTLI_SOURCE_FILES
+     deps/brotli/c/enc/metablock.c
+     deps/brotli/c/enc/static_dict.c
+     deps/brotli/c/enc/utf8_util.c
++    deps/brotli/c/enc/encoder_dict.c
+     lib/handler/compress/brotli.c)
+ 
+ SET(PICOTLS_INCLUDE_DIRECTORIES
+@@ -384,7 +374,6 @@ SET(LIB_SOURCE_FILES
+ 
+ SET(UNIT_TEST_SOURCE_FILES
+     ${LIB_SOURCE_FILES}
+-    ${LIBYAML_SOURCE_FILES}
+     ${BROTLI_SOURCE_FILES}
+     deps/picotest/picotest.c
+     t/00unit/test.c
+@@ -447,7 +436,6 @@ LIST(REMOVE_ITEM UNIT_TEST_SOURCE_FILES
+ 
+ SET(FUZZED_SOURCE_FILES
+     ${LIB_SOURCE_FILES}
+-    ${LIBYAML_SOURCE_FILES}
+     ${BROTLI_SOURCE_FILES})
+ 
+ SET(EXTRA_LIBS ${EXTRA_LIBS} m ${CMAKE_THREAD_LIBS_INIT})
+@@ -557,7 +545,6 @@ ENDIF()
+ # standalone server directly links to libh2o using evloop
+ SET(STANDALONE_SOURCE_FILES
+     ${LIB_SOURCE_FILES}
+-    ${LIBYAML_SOURCE_FILES}
+     ${BROTLI_SOURCE_FILES}
+     deps/neverbleed/neverbleed.c
+     src/main.c
+@@ -590,7 +577,7 @@ ENDIF ()
+ ADD_EXECUTABLE(h2o ${STANDALONE_SOURCE_FILES})
+ SET_TARGET_PROPERTIES(h2o PROPERTIES COMPILE_FLAGS ${STANDALONE_COMPILE_FLAGS})
+ TARGET_INCLUDE_DIRECTORIES(h2o PUBLIC ${OPENSSL_INCLUDE_DIR})
+-TARGET_LINK_LIBRARIES(h2o ${OPENSSL_LIBRARIES} ${CMAKE_DL_LIBS})
++TARGET_LINK_LIBRARIES(h2o ${OPENSSL_LIBRARIES} ${CMAKE_DL_LIBS} -lyaml)
+ IF (WITH_MRUBY)
+     TARGET_INCLUDE_DIRECTORIES(h2o BEFORE PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/deps/mruby/include ${CMAKE_CURRENT_SOURCE_DIR}/deps/mruby-input-stream/src)
+     # note: the paths need to be determined before libmruby.flags.mak is generated
