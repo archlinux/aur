@@ -20,7 +20,7 @@ source=(
 	"xpiks.desktop"
 	)
 md5sums=('SKIP'
-         '8d082ec0a08051aec943aa3c35486592'
+         'c7b93172c88154f6d3834b7dccabd3e5'
          'c3b93f3c3410f76fc50b94a55b551e6b'
          '4112f7181afe7e45eb878b8eccc91eaf')
 
@@ -32,7 +32,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_gitname}"
 	
-	#git apply ../xpiks-build_with_system_libquazip5.patch
+	git apply ../xpiks-build_with_system_libquazip5.patch
 	git apply ../xpiks-libxpks_stub.patch
 	
 	git submodule update --init --recursive
