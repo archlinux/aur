@@ -1,0 +1,14 @@
+pkgbase = tetris-terminal-git
+	pkgdesc = Terminal interface for Tetris
+	pkgver = r82.8f506c3
+	pkgrel = 1
+	url = https://github.com/samtay/tetris
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = stack
+	source = tetris::git+https://github.com/samtay/tetris
+	md5sums = SKIP
+
+pkgname = tetris-terminal-git
+
