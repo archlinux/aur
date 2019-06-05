@@ -1,0 +1,11 @@
+--- wisp/Makefile.am.orig	2019-06-04 18:08:38.341783769 -0400
++++ wisp/Makefile.am	2019-06-04 18:03:12.011228420 -0400
+@@ -34,7 +34,7 @@
+ 
+ # precompile all scheme files
+ .scm.go:
+-	$(GUILE_TOOLS) compile $(GUILE_WARNINGS) -o "$@" "$<"
++	$(GUILE_TOOLS) compile -L . $(GUILE_WARNINGS) -o "$@" "$<"
+ 
+ wisp2lisp: wisp.scm ## build only the wisp2lisp converter
+ 	cp $< $@
