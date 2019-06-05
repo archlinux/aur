@@ -1,28 +1,26 @@
 pkgname=newlogic
 _pkgname=newlogic
-pkgver=0.1.3_beta
-_pkgver="0.1.3-beta"
+pkgver=0.1.4_beta
+_pkgver="0.1.4-beta"
 pkgrel=1
 pkgdesc="Circuit Builder Desktop Application (like mmlogic)"
 arch=('any')
 url="https://github.com/ericm/newlogic"
 license=('MIT')
-source=("${_pkgname}::git+https://github.com/ericm/newlogic.git#tag=v${_pkgver}")
+source=(
+    "${_pkgname}-${_pkgver}.tar.gz"::"https://github.com/ericm/newlogic/releases/download/v${_pkgver}/newlogic-linux-v${_pkgver}.tar.gz"
+)
 sha256sums=('SKIP')
 
-depends=('nodejs>=10', "electron>=1.8.8")
-makedepends=('npm' 'yarn' 'git')
-prepare() {
-  cd "${_pkgname}"
-  yarn
-  npm run build
-}
+makedepends=('tar')
+
 package() {
-  install -dm755  "$pkgdir"/usr/lib/node_modules/newlogic
-  cp -R "$srcdir"/$_pkgname/* "$pkgdir"/usr/lib/node_modules/newlogic
-  
-  install -dm755 "$pkgdir"/usr/bin
-  ln -s /usr/lib/node_modules/newlogic/start.js "$pkgdir"/usr/bin/newlogic
-  install -dm755 "$pkgdir"/usr/share/applications
-  cp "$srcdir"/$_pkgname/install/newlogic.desktop "$pkgdir"/usr/share/applications
+    rm "${_pkgname}-${_pkgver}.tar.gz"
+    install -dm755  "$pkgdir"/usr/lib/node_modules/newlogic
+    cp -R "$srcdir"/* "$pkgdir"/usr/lib/node_modules/newlogic
+     
+    install -dm755 "$pkgdir"/usr/bin
+    ln -s /usr/lib/node_modules/newlogic/newlogic "$pkgdir"/usr/bin/newlogic
+    #install -dm755 "$pkgdir"/usr/share/applications
+    #cp "$srcdir"/$_pkgname/install/newlogic.desktop "$pkgdir"/usr/share/applications
 }

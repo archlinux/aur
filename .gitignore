@@ -2,4 +2,5 @@ newlogic
 pkg
 source
 src
+*.gz
 *.xz
