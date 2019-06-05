@@ -1,20 +1,25 @@
 pkgbase = turtl
-	pkgdesc = Turtl lets you take notes, bookmark websites, and store documents for sensitive projects.
-	pkgver = 0.7.2.5
+	pkgdesc = The secure, collaborative notebook
+	pkgver = 0.7.2.6
 	pkgrel = 1
 	url = https://turtlapp.com/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = gendesk
+	depends = alsa-lib
 	depends = gconf
-	depends = gendesk
+	depends = gtk2
 	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = python
 	source = turtl.png
-	md5sums = 9e99b3fe83cb796343b7f1b21959f0d7
-	source_i686 = https://github.com/turtl/desktop/releases/download/v0.7.2.5/turtl-0.7.2.5-linux32.tar.bz2
-	md5sums_i686 = e85d853dccadcb5a8f6a5478cd038690
-	source_x86_64 = https://github.com/turtl/desktop/releases/download/v0.7.2.5/turtl-0.7.2.5-linux64.tar.bz2
-	md5sums_x86_64 = 771ac3060d5e6d13fcd1bb4644772999
+	sha256sums = 97036fdfca0e354363bc28f1952af6e63b85907a8292d2f121905130cee23e07
+	source_i686 = https://github.com/turtl/desktop/releases/download/v0.7.2.6-pre-sync-fix/turtl-0.7.2.6-pre-sync-fix-linux32.tar.bz2
+	sha256sums_i686 = 3644e521b8ce763cd58fb2394445f17706296b8aa594564d50b1d5b5126bff40
+	source_x86_64 = https://github.com/turtl/desktop/releases/download/v0.7.2.6-pre-sync-fix/turtl-0.7.2.6-pre-sync-fix-linux64.tar.bz2
+	sha256sums_x86_64 = 77746d54518aabf19c187c6fb3c9923fe84acad30a68073fee50ba5f61a96bde
 
 pkgname = turtl
 
