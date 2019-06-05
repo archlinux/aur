@@ -16,11 +16,11 @@ license=('GPL3' 'BSD')
 replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky' 'conky-lua')
-depends=('alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxinerama'
-         'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua51' 'librsvg' 'tolua++'
+depends=('libxml2' 'curl' 'cairo' 'wireless_tools' 'libxinerama'
+         'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua' 'librsvg'
          'libxnvctrl' 'libpulse')
-makedepends=('docbook2x' 'perl-xml-libxml' 'docbook-xml'
-             'docbook-xsl' 'cmake' 'git')
+makedepends=('cmake' 'docbook2x' 'perl-xml-libxml' 'docbook-xml'
+             'docbook-xsl' 'cmake' 'git' 'man-db')
 optdepends=('nvidia: for GT4xx and newer GPUs',
   'nvidia-340xx: for G8x, G9x, GT2xx GPUS',
   'nvidia-304xx: for GeForce 6/7 GPUs')
@@ -46,7 +46,6 @@ build() {
     -D BUILD_IMLIB2=ON \
     -D BUILD_RSS=ON \
     -D BUILD_WEATHER_METAR=ON \
-    -D BUILD_WEATHER_XOAP=ON \
     -D BUILD_PULSEAUDIO=ON \
     -D BUILD_JOURNAL=ON \
     -D BUILD_WLAN=ON \
