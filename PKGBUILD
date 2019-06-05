@@ -8,8 +8,10 @@ pkgdesc="Alter the contents of packets forwarded through network in real time"
 arch=('i686' 'x86_64')
 url='http://silicone.homelinux.org/projects/netsed/'
 license=('GPL')
-source=("http://silicone.homelinux.org/release/netsed/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f0891285442c9a4701e2b7fc7d28f2834a5352f94295649d1fdb60da1eca81aa')
+validpgpkeys=('E312A31DBEC374CCC49E6D698B306538D00E52B6') # Julien Viard de Galbert <julien@vdg.blogsite.org>
+source=("http://silicone.homelinux.org/release/netsed/${pkgname}-${pkgver}.tar.gz"{,.asc})
+sha256sums=('f0891285442c9a4701e2b7fc7d28f2834a5352f94295649d1fdb60da1eca81aa'
+            'SKIP')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
