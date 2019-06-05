@@ -1,6 +1,6 @@
 pkgbase = mesos
 	pkgdesc = A cluster manager that simplifies the complexity of running applications on a shared pool of servers
-	pkgver = 1.5.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = http://mesos.apache.org/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = mesos
 	makedepends = maven
 	makedepends = python2-setuptools
 	makedepends = openssl
+	makedepends = ninja
 	depends = python2
 	depends = zlib
 	depends = curl
@@ -19,11 +20,15 @@ pkgbase = mesos
 	depends = cyrus-sasl
 	depends = libnl>=3.2.28
 	depends = libevent>=2
+	depends = boost
+	depends = boost-libs
+	depends = leveldb
 	optdepends = openssl: ssl support
-	source = ftp://apache.cs.utah.edu/apache.org/mesos/1.5.0/mesos-1.5.0.tar.gz
-	source = https://apache.org/dist/mesos/1.5.0/mesos-1.5.0.tar.gz.asc
+	source = ftp://apache.cs.utah.edu/apache.org/mesos/1.8.0/mesos-1.8.0.tar.gz
+	source = https://apache.org/dist/mesos/1.8.0/mesos-1.8.0.tar.gz.asc
 	source = mesos-master.service
 	source = mesos-slave.service
+	source = hardcode-sources.patch
 	validpgpkeys = 4BF2061E73003185CA06E30FF99D6AD0F6FB762C
 	validpgpkeys = CE2C077CF6F6F7002DB0DB6AB5DA0D371B207A4D
 	validpgpkeys = 90A7F1E40A9BE920A82F4302CD56EF3924E79653
@@ -41,10 +46,12 @@ pkgbase = mesos
 	validpgpkeys = D64C61111ED9909C9071524FBDC218FB9AF7DC86
 	validpgpkeys = 070745B0AB67A2D3314D335623B0ADA4EF26082C
 	validpgpkeys = 30B6CAF9AB8560B2A3DAB2A6D10295D0D6EF55AD
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 42e6bb21d7682b8a8f036c23532e4fe9
-	md5sums = 55cc5e556bb0622f5f913a1999f17766
+	validpgpkeys = 526039B46E41368725C5B8790D5D2740E285E9AE
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 42d7e11412ca9634297e55f33867c8897c58da7a10c113f6892311a5e362066d7e54377be2856c4fed641bcff75843cc243d5ac65e7eafbe79c8d25e5c033d14
+	sha512sums = a270d59551aaeb2bdbec7e5c6a2da02249299d208dba0ed3c9503b36b7928cc6a4920e795d865ce71c5a7fb4d492e37f434a210acd7beac9613f5bb155d79132
+	sha512sums = 92425bd2eb1c56812bdddf8ec540579b773043353ee9bf3f4c7e20bb4970c83c7b9ea1faecc38dc6d3f27e4125ceca9c35f7082e013c706ce6a28bc06d223cfe
 
 pkgname = mesos
 

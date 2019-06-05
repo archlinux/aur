@@ -1,0 +1,10 @@
+--- mesos.pom.in	2019-06-05 14:48:42.810165610 -0600
++++ mesos.pom.in.new	2019-06-05 14:48:30.336651638 -0600
+@@ -86,6 +86,7 @@
+         <configuration>
+           <sourcepath>@abs_top_srcdir@/src/java/src:@abs_top_builddir@/src/java/generated</sourcepath>
+           <subpackages>org.apache.mesos</subpackages>
++          <source>1.6</source>
+         </configuration>
+         <executions>
+           <execution>
