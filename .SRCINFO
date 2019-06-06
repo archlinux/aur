@@ -1,0 +1,16 @@
+pkgbase = python-unireedsolomon-git
+	pkgdesc = Documented Universal Errors-and-erasures Reed Solomon Codec written in pure Python
+	pkgver = f375f61
+	pkgrel = 1
+	url = https://github.com/lrq3000/unireedsolomon
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	optdepends = cython
+	source = git+https://github.com/lrq3000/unireedsolomon.git
+	sha256sums = SKIP
+
+pkgname = python-unireedsolomon-git
+
