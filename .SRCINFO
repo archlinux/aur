@@ -1,0 +1,16 @@
+pkgbase = python-helpdev
+	pkgdesc = Extracts information about the Python environment easily.
+	pkgver = 0.6.10
+	pkgrel = 1
+	url = https://gitlab.com/dpizetta/helpdev
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-importlib-metadata
+	options = !emptydirs
+	source = python-helpdev-0.6.10.tar.gz::https://files.pythonhosted.org/packages/source/h/helpdev/helpdev-0.6.10.tar.gz
+	sha256sums = 9e61d24458b7506809670222ca656b139e67d46c530cd227a899780152d7b44e
+
+pkgname = python-helpdev
+
