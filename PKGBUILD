@@ -28,7 +28,7 @@ prepare() {
   ln -s `which python2` python2_path/python
 
   # Small patching
-  cd $pkgname
+  cd ferdi
 
   # Prevent franz from being launched in dev mode
   sed -i "s|export const isDevMode = .*|export const isDevMode = false;|g" \
