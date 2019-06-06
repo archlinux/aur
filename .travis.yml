@@ -34,12 +34,22 @@ arch:
   - "update_interval=5"
   - 'update_offset=$(. PKGBUILD; sha1sum <<<"$pkgname"|sed -e "s/[a-z -]//g" -e "s/^0*//"|echo `cat`%$update_interval|bc)'
   - "next_update=$(((365-`date +%j`+update_offset)%update_interval))"
+# check for (opt|)depends update
+  - |
+    build_deps=$(. PKGBUILD; IFS=$'\n'; echo -e "${depends[*]}\n${makedepends[*]}"; )
+    echo -e "Build dependency:\n${build_deps[*]}"
+    new_deps_ver=$(for pkg in $build_deps; do pacman -S --print-format '%n %v' $pkg|tail -1; done;)
+    echo -e "Pacman dependency versions:\n$new_deps_ver"
+    build_info=$(curl -sL $(. PKGBUILD; pacman -S --print $pkgname|tail -n1)|bsdtar xJOf - .BUILDINFO|grep -Po '^installed = \K.*'|rev|while IFS=$'-' read arch pkgrel pkgver pkgname; do echo $pkgrel-$pkgver $pkgname; done|rev)
+    old_deps_ver=$(echo "$build_info"|grep -f <(echo -e "$build_deps" ))
+    echo -e "AUR-repo. BUILDINFO dependency versions:\n$old_deps_ver"
+    dep_update=$(diff -y --suppress-common-lines <(echo "$old_deps_ver"|sort) <(echo "$new_deps_ver"|sort) >&2; echo $?;)
 # force update on commit message containing [force|rebuild]
-  - "force_update=$(git log --pretty=%B -1|egrep -q '\[(force|rebuild)\]'; echo $?"
+  - 'force_update=$(git log --pretty=%B -1|egrep -q "\[(force|rebuild)\]"; echo $?)'
   - "makepkg -od --skipinteg"
   - "new_pkgver=$(. PKGBUILD; [[ -v epoch ]] && echo -n $epoch:; echo $pkgver-$pkgrel)"
   - "old_pkgver=$(. PKGBUILD; pacman -S --print-format %v $pkgname|tail -n1)"
-  - '[[ "$new_pkgver" == "$old_pkgver" && $next_update != 0 && $force_update != 0 ]] && { echo -e "Current version is up to date!\nNext force update in $next_update days!"; exit 0; }'
+  - '[[ "$new_pkgver" == "$old_pkgver" && $next_update != 0 && $force_update != 0 && dep_update != 0 ]] && { echo -e "Current version is up to date!\nNext force update in $next_update days!"; exit 0; }'
 # exit with makepkg return code
   - "set -o pipefail"
   - "makepkg -s --noconfirm TRAVIS=1 MAKEFLAGS='-j2' 2>&1 |ts -s '[%.T]'; makepkg_ret=$?"
