@@ -1,7 +1,7 @@
 #Maintainer: Shajil K Joshy <shajilkrazy@gmail.com>
 pkgname=fonts-smc-malayalam
 pkgver=19.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fonts for Malayalam released by Swathanthra Malayalam Computing"
 url="http://smc.org.in/fonts/"
 license=('custom:OFL')
@@ -41,11 +41,11 @@ md5sums=('55fa571b7e08283f24c93621194373c7'
          '4eac8684c344f396849f2e43af78a6ab'
          '78560d6c3d6eaafe8a3d80fc385da019'
          '00d4598d7318a36c21b25a3568f0b73d'
-         '89a0ee20de3301d71dde836a65eb5a4d'
+         '3f49f7d15fc240b511323605895c5392'
          'a4197fa15cab5808106df900db07c2ed'
          'f5353ee42422f0e493ad2affc9ab0dd9'
          '63ddb5360891c820b6c4d6fdc048ab7b'
-         '303d597b27ba15e5c67700fd9508ee64'
+         'cf25d3fbfce6c6fd59dcecca57f1c7d1'
          '57285cae8f1a08813291667b0fc82665')
 
 package() {
