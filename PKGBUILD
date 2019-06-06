@@ -1,16 +1,17 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=libtas-git
-pkgver=1.3.4.r0.54098e9
-pkgrel=1
 pkgdesc="Tool-assisted speedrunning utility for Linux-native binaries"
+pkgver=1.3.4.r25.87f9f04
+pkgrel=1
 epoch=1
 arch=('x86_64')
 url="https://github.com/clementgallet/libTAS"
 license=('GPL3')
 depends=('alsa-lib' 'ffmpeg' 'fontconfig' 'freetype2'
          'qt5-base' 'xcb-util-cursor' 'zlib')
-makedepends=('cmake' 'extra-cmake-modules' 'git')
+makedepends=('git')
+optdepends=('lib32-libtas-git: for 32-bit games support')
 conflicts=('libtas')
 source=("git+$url")
 sha512sums=(SKIP)
@@ -21,16 +22,21 @@ pkgver() {
   printf %s "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//g')"
 }
 
+prepare() {
+  cd "libTAS"
+
+  autoreconf -i
+}
+
 build() {
   cd "libTAS"
 
-  mkdir build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  ./configure --prefix=/usr --enable-silent-rules
   make
 }
 
 package() {
-  cd "libTAS/build"
+  cd "libTAS"
 
   make DESTDIR="$pkgdir/" install
 }
