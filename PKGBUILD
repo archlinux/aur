@@ -3,7 +3,7 @@
 pkgname=compcert
 _dirname=CompCert
 pkgver=3.5
-pkgrel=3
+pkgrel=4
 pkgdesc="The formally verified C compiler"
 arch=('x86_64')
 url="http://compcert.inria.fr"
