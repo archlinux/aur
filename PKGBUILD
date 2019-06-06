@@ -1,16 +1,17 @@
-# Maintainer: stitran <tristan dot zuerl at gmx dot net>
+# Maintainer: BADGumby <badgumby at protonmail dot com>
+# Former Maintainer: stitran <tristan dot zuerl at gmx dot net>
 # Contributor: megadriver <megadriver at gmx dot com>
 # Contributor: Christian Berendt <christian at suppentopf dot net>
 
 pkgname=boxes
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Text mode box and comment drawing filter"
 url="http://boxes.thomasjensen.com/"
 arch=('i686' 'x86_64')
 license=('GPL2')
 source=("https://github.com/ascii-boxes/boxes/archive/v$pkgver.zip")
-md5sums=('7bfe3449bc52d72f3d6f2cc24a70645b')
+md5sums=('03cd8aa2c6a0392ae92bad46b31733af')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
