@@ -1,7 +1,7 @@
 pkgbase = dtrace-utils
 	pkgdesc = DTrace-utils contains the Userspace portion of the DTrace port to Linux
-	pkgver = 1.1.1
-	pkgrel = 5
+	pkgver = 1.2.1
+	pkgrel = 7
 	url = https://github.com/oracle/dtrace-utils
 	arch = x86_64
 	license = UPL
@@ -16,10 +16,10 @@ pkgbase = dtrace-utils
 	depends = zlib
 	depends = sudo
 	depends = git
-	source = https://yum.oracle.com/repo/OracleLinux/OL7/UEKR5/x86_64/getPackageSource/dtrace-utils-1.1.1-1.el7.src.rpm
+	source = http://yum.oracle.com/repo/OracleLinux/OL7/UEKR5/x86_64/getPackageSource/dtrace-utils-1.2.1-1.el7.src.rpm
 	source = third_arg.patch
 	source = sysmacros.patch
-	md5sums = f8ad5199cf7e311eac044a1e52c9a431
+	md5sums = 9a08352ab50f47fbab6c7ab6e9fb112a
 	md5sums = 48b69bae8daf29415f45c3a22c3f4d7f
 	md5sums = 5fbb6aaae1b2b2fd4f63282ff9304dcd
 
