@@ -10,8 +10,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=74.0.3729.169
-pkgrel=2
+pkgver=75.0.3770.80
+pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium with VA-API support to enable hardware acceleration"
 arch=('x86_64')
@@ -34,16 +34,16 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-drirc-disable-10bpc-color-configs.conf
         chromium-vaapi.patch
         chromium-system-icu.patch
-        chromium-glibc-2.29.patch
+        libstdc-do-not-assume-unique_ptr-has-ostream-operator.patch
         chromium-fix-window-flash-for-some-WMs.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('070f0210017f54b65264f88726431da7582e36a04caa673fe50662e8b41a0cb4'
+sha256sums=('da828bc8d887821380b461abfbbd0e17538c211d56f240f03711b918c77a66d6'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
-            'e87ede45edf39ac19e56ac1ae49c9d1f5f5130e5838bcbb4c3d4fb16e55575c0'
+            '4befcfa310db89736c890dd41e698a6a77ecec8b6f75077ddbae4a1c0ba80092'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
-            'dd791f154b48e69cd47fd94753c45448655b529590995fd71ac1591c53a3d60c'
+            'e309dfd9d790f32cb1d23103726ac25e405b6ae6757a1c957a8395667d753908'
             '183d8cc712f0bcf1afcb01ce90c4c104a4c8d8070a06f94974a28b007d9e2ce4'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3')
@@ -96,8 +96,8 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/libxml_utils.cc
 
-  # https://crbug.com/949312
-  patch -Np1 -i ../chromium-glibc-2.29.patch
+  # https://chromium-review.googlesource.com/1584292
+  patch -Np1 -i ../libstdc-do-not-assume-unique_ptr-has-ostream-operator.patch
 
   # Enable VAAPI on Linux
   patch -Np1 -i ../chromium-vaapi.patch
