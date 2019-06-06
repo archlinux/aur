@@ -1,7 +1,7 @@
 # Maintainer: Joachim Desroches <joachim.desroches@epfl.ch>
 
 pkgname=epfl-moody-git
-pkgver=r66.b171ad6
+pkgver=r108.3033089
 pkgrel=1
 pkgdesc="Gnome client for EPFL's Moodle system"
 
@@ -19,7 +19,7 @@ provides=(epfl-moody)
 
 source=('git+https://gitlab.gnugen.ch/afontain/moodle' 'meson.build.patch')
 md5sums=('SKIP'
-         '1e6188c4b506c8c00027508203ccea52')
+         '9ac03a20b058e5b8139359641373efe2')
 
 pkgver() {
   cd moodle/
