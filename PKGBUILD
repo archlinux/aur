@@ -52,31 +52,30 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname/hub"
-    
-    
+
     install -d "${pkgdir}/etc/gaia/hub" "${pkgdir}/usr/lib/node_modules/gaia-hub" "${pkgdir}/usr/bin"
-    
+
     # Install data
     cp -r "lib" "node_modules" "${pkgdir}/usr/lib/node_modules/gaia-hub/"
     chmod 755 "${pkgdir}/usr/lib/node_modules/gaia-hub/lib/index.js"
     # link executable
     ln -s "/usr/lib/node_modules/gaia-hub/lib/index.js" "${pkgdir}/usr/bin/gaia-hub"
-    
+
     # install custom default config
     install -Dm 644 "${srcdir}/config.json" "${pkgdir}/usr/lib/node_modules/gaia-hub/config.json"
     ln -s "/usr/lib/node_modules/gaia-hub/config.json" "${pkgdir}/etc/gaia/hub/config.json"
-    
+
     # install examples
     install -Dm 644 "nginx.conf" "${pkgdir}/usr/share/doc/gaia/hub/nginx.conf.example"
     for file in etc/*.json; do
         install -m 644 "$file" "${pkgdir}/usr/share/doc/gaia/hub/"
     done
-    
+
     # install documentation and license
     install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/gaia/hub/README.md"
     install -Dm 644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/gaia/hub/CHANGELOG.md"
     install -Dm 644 "../LICENSE" "${pkgdir}/usr/share/licenses/gaia/LICENSE"
-    
+
     # Install sysusers
     install -Dm644 "$srcdir/sysusers" "$pkgdir/usr/lib/sysusers.d/${pkgname}.conf"
 
