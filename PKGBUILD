@@ -6,7 +6,7 @@
 pkgname=ferdi-git
 _pkgver=5.1.0
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more. fork removing the non-skippable app delay frequently inviting you to buy a licence'
@@ -46,7 +46,7 @@ build() {
 
   # Better configuration for npm cache and calling installed binaries
   export npm_config_cache="$srcdir"/npm_cache
-  export PATH="$srcdir/$pkgname/node_modules/.bin:$srcdir/python2_path:$PATH"
+  export PATH="$srcdir/ferdi/node_modules/.bin:$srcdir/python2_path:$PATH"
 
   npm install lerna
   lerna bootstrap
@@ -58,8 +58,8 @@ package() {
   cd ferdi
 
   # Install the .asar files
-  install -dm 755 "$pkgdir"/usr/lib/$pkgname
-  cp -r --no-preserve=ownership --preserve=mode out/linux-unpacked/resources "$pkgdir"/usr/lib/$pkgname/
+  install -dm 755 "$pkgdir"/usr/lib/ferdi
+  cp -r --no-preserve=ownership --preserve=mode out/linux-unpacked/resources "$pkgdir"/usr/lib/ferdi/
 
   # Install icon
   install -Dm 644 "$srcdir"/ferdi.desktop "$pkgdir"/usr/share/applications/ferdi.desktop
