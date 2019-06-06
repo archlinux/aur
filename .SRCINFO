@@ -1,6 +1,6 @@
 pkgbase = ttf-malayalam-font-chilanka
 	pkgdesc = This is Chilanka, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language.
-	pkgver = 1.3+20181007
+	pkgver = 1.400
 	pkgrel = 1
 	url = http://smc.org.in/fonts/
 	install = ttf-malayalam-fonts.install
@@ -10,7 +10,7 @@ pkgbase = ttf-malayalam-font-chilanka
 	depends = xorg-font-utils
 	source = http://smc.org.in/downloads/fonts/chilanka/Chilanka-Regular.ttf
 	source = https://gitlab.com/smc/chilanka/raw/master/67-smc-chilanka.conf
-	sha256sums = 09228f9ad03ac0544eca2cdcc99ebbd66dc2cf75df10958a070eaad047e834e0
+	sha256sums = 5c939ecbc38eb49922d64b217f076cbef4a648b619b90a83d1eeb701230f102c
 	sha256sums = cf9d4c9e6efbd8bf676d9f1cabe86407ee570caa5f299bcbb8e4b5f46b59162a
 
 pkgname = ttf-malayalam-font-chilanka
