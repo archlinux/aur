@@ -8,7 +8,7 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-git
-pkgver=v4.9.0.r473.g1de548d1cb
+pkgver=v4.9.1.r864.g611e1ea837
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
@@ -41,7 +41,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd qt-creator
 
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --match v* | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
