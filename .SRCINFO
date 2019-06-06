@@ -1,6 +1,6 @@
 pkgbase = fonts-smc-malayalam
 	pkgdesc = Fonts for Malayalam released by Swathanthra Malayalam Computing
-	pkgver = 19.1
+	pkgver = 19.6
 	pkgrel = 1
 	url = http://smc.org.in/fonts/
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = fonts-smc-malayalam
 	md5sums = 55fa571b7e08283f24c93621194373c7
 	md5sums = 80d0e7ee6c910325d54c74e96fa51311
 	md5sums = da269e59d4cec4726b76ca058b5a2598
-	md5sums = bfbe0f4f4eeea6fd9679e91c3b14a5ad
+	md5sums = 0be3384c30ecf2a7cccb121f475684bf
 	md5sums = f5b807b946e3143ca615c73145195003
 	md5sums = 6ba3ca81dac063c6eb6d5564226cee64
 	md5sums = 4eac8684c344f396849f2e43af78a6ab
