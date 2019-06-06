@@ -1,0 +1,23 @@
+pkgbase = ferdi-git
+	pkgdesc = Free messaging app for services like WhatsApp, Slack, Messenger and many more. fork removing the non-skippable app delay frequently inviting you to buy a licence
+	pkgver = 5.1.0
+	pkgrel = 1
+	epoch = 1
+	url = https://meetfranz.com
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = expac
+	makedepends = git
+	makedepends = npm
+	makedepends = python2
+	depends = electron
+	source = git+https://github.com/kytwb/ferdi/
+	source = ferdi.desktop
+	source = ferdi.sh
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = ferdi-git
+

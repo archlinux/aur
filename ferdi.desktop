@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Ferdi
+GenericName=Internet Messenger
+Comment=A free messaging app for services like WhatsApp, Slack, Messenger and many more.
+Icon=franz
+TryExec=/usr/bin/ferdi
+Exec=/usr/bin/ferdi %U
+Terminal=false
+Categories=Network;InstantMessaging;
+Name[de_DE]=Ferdi
