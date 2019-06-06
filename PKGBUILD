@@ -1,5 +1,5 @@
 # Maintainer: BADGumby <badgumby at protonmail dot com>
-# Former Maintainer: stitran <tristan dot zuerl at gmx dot net>
+# Contributor: stitran <tristan dot zuerl at gmx dot net>
 # Contributor: megadriver <megadriver at gmx dot com>
 # Contributor: Christian Berendt <christian at suppentopf dot net>
 
