@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL3')
 source=("git+$url")
 depends=('python3' 'rofi')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 optdepends=()
 
 sha256sums=('SKIP')
