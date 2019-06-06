@@ -10,46 +10,34 @@
 pkgname=('jre8-openjdk-shenandoah-headless' 'jre8-openjdk-shenandoah' 'jdk8-openjdk-shenandoah' 'openjdk8-shenandoah-src' 'openjdk8-shenandoah-doc')
 pkgbase=java8-openjdk-shenandoah
 _java_ver=8
-# Found @ http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-_jdk_update=181
-_jdk_build=31
-# _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
+_jdk_update=222
+_jdk_build=02
+_repo_ver=aarch64-shenandoah-jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
 arch=('x86_64')
 url='http://openjdk.java.net/'
 license=('custom')
-makedepends=('java-environment=8' 'cpio' 'unzip' 'zip' 'gcc'
+makedepends=('java-environment=8' 'cpio' 'unzip' 'zip' 'gcc' 'giflib'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
-_url_src=http://hg.openjdk.java.net/shenandoah/jdk8u
-_last_update=20190501
-declare -g -A _repo_versions=(
-    [jdk8u]=abfdf545dc36
-    [corba]=79a3151ebf00
-    [hotspot]=a994d7874724
-    [jdk]=2a6d6dfe0a5f
-    [jaxws]=987a27eef8e6
-    [jaxp]=34889baf492b
-    [langtools]=da3019ae4eed
-    [nashorn]=67f49e0ffa83
-)
-pkgver=${_java_ver}.u${_jdk_update}_${_last_update}_hotspot${_repo_versions[hotspot]}
-source=("jdk8u-${_repo_versions[jdk8u]}.tar.gz::${_url_src}/archive/${_repo_versions[jdk8u]}.tar.gz"
-        "corba-${_repo_versions[corba]}.tar.gz::${_url_src}/corba/archive/${_repo_versions[corba]}.tar.gz"
-        "hotspot-${_repo_versions[hotspot]}.tar.gz::${_url_src}/hotspot/archive/${_repo_versions[hotspot]}.tar.gz"
-        "jdk-${_repo_versions[jdk]}.tar.gz::${_url_src}/jdk/archive/${_repo_versions[jdk]}.tar.gz"
-        "jaxws-${_repo_versions[jaxws]}.tar.gz::${_url_src}/jaxws/archive/${_repo_versions[jaxws]}.tar.gz"
-        "jaxp-${_repo_versions[jaxp]}.tar.gz::${_url_src}/jaxp/archive/${_repo_versions[jaxp]}.tar.gz"
-        "langtools-${_repo_versions[langtools]}.tar.gz::${_url_src}/langtools/archive/${_repo_versions[langtools]}.tar.gz"
-        "nashorn-${_repo_versions[nashorn]}.tar.gz::${_url_src}/nashorn/archive/${_repo_versions[nashorn]}.tar.gz")
+_url_src=http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah
+pkgver=${_java_ver}.u${_jdk_update}b${_jdk_build}
+source=("jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz"
+        "corba-${_repo_ver}.tar.gz::${_url_src}/corba/archive/${_repo_ver}.tar.gz"
+        "hotspot-${_repo_ver}.tar.gz::${_url_src}/hotspot/archive/${_repo_ver}.tar.gz"
+        "jdk-${_repo_ver}.tar.gz::${_url_src}/jdk/archive/${_repo_ver}.tar.gz"
+        "jaxws-${_repo_ver}.tar.gz::${_url_src}/jaxws/archive/${_repo_ver}.tar.gz"
+        "jaxp-${_repo_ver}.tar.gz::${_url_src}/jaxp/archive/${_repo_ver}.tar.gz"
+        "langtools-${_repo_ver}.tar.gz::${_url_src}/langtools/archive/${_repo_ver}.tar.gz"
+        "nashorn-${_repo_ver}.tar.gz::${_url_src}/nashorn/archive/${_repo_ver}.tar.gz")
 
-sha256sums=('9c9309a92f603eba3b638baa8dcbdc66666565b131e377b0be5540ecd330a9af'
-            '67ac5b1049249af5c8caafbe4ab0e415650fccdca9f05dffdb83f735be4ec6c9'
-            'a03dc4642241cc6f7ec6abc9eeba261d25440b8457e4ef43978fce70e989f577'
-            '95eba6158e909edee8f49a8cb79db3c3b4807402acd35a01a15bf6d508959d55'
-            '172ac7cf908de094ab6eeda11c26e5c20fca6b909cbe81c2b141968b990b6a55'
-            'd096661e36ea4bdc1dac008330955774ef76aa8c90002eef465cfd686edd1c22'
-            '007372f11297b99f90b1a1928e12f728e0d6549ac5fdb1f46496b9bb840841a2'
-            '5e6030ad51e4afa155c72da399cf3c785744b32150eb5c91e6cc7b557c11f551')
+sha256sums=('78f90dce375b9e84e8695b802ce8619458bec086e568e7443c8a3e9d2b748f38'
+            '4ace1b4919225722b3cdf6fc378f5a9965d40db289d84b11a4f36ab81ab39fd6'
+            '736b9206b9e52ed8ee439cfcacd981f6b2a6e0f4d75d590b34373046744010bc'
+            '02e94e4998676fa54b54171be2f3ba5d56ba29c695dc73b261a6c0a0936c5e26'
+            '334ce2d600d684abd2f2a37cd593c046d2f1dfe1df7214f72b041b93b9f0277c'
+            'ec3576aa040bd2c527b34d1a2a2b4ec0c718af34a00c0b586af91223d1206874'
+            '36dc7340ae4aed80159b21ab95b0de79d5a266e988ab19c668c502b561b17593'
+            '53d2d7396160d39850aeb06e552b8dcb1d88eaa3c3071917c1e8bb5c96b3c14f')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
@@ -58,7 +46,7 @@ esac
 
 _jdkname=openjdk8
 _jvmdir=/usr/lib/jvm/java-8-openjdk-shenandoah
-_prefix="jdk8u-${_repo_versions[jdk8u]}/image"
+_prefix="jdk8u-${_repo_ver}/image"
 _imgdir="${_prefix}/jvm/openjdk-1.8.0_$(printf '%.2d' ${_jdk_update})"
 _nonheadless=(bin/policytool
               lib/${_JARCH}/libjsound.so
@@ -66,14 +54,14 @@ _nonheadless=(bin/policytool
               lib/${_JARCH}/libsplashscreen.so)
 
 prepare() {
-  cd "${srcdir}/jdk8u-${_repo_versions[jdk8u]}"
+  cd "${srcdir}/jdk8u-shenandoah-${_repo_ver}"
   for subrepo in corba hotspot jdk jaxws jaxp langtools nashorn; do
-    ln -s "../${subrepo}-${_repo_versions[$subrepo]}" ${subrepo}
+    ln -s "../${subrepo}-${_repo_ver}" ${subrepo}
   done
 }
 
 build() {
-  cd "${srcdir}/jdk8u-${_repo_versions[jdk8u]}"
+  cd "${srcdir}/jdk8u-shenandoah-${_repo_ver}"
 
   # Detecting Java version by the first line of the output
   # of `java --version` is such a great idea
@@ -93,6 +81,7 @@ build() {
     --with-milestone="fcs" \
     --enable-unlimited-crypto \
     --with-zlib=system \
+    --with-giflib=system \
     --with-extra-cflags="${CFLAGS}" \
     --with-extra-cxxflags="${CXXFLAGS}" \
     --with-extra-ldflags="${LDFLAGS}"
@@ -129,7 +118,7 @@ build() {
 
 package_jre8-openjdk-shenandoah-headless() {
   pkgdesc='OpenJDK Java 8 headless runtime environment'
-  depends=('java-runtime-common' 'ca-certificates-utils' 'nss')
+  depends=('java-runtime-common' 'ca-certificates-utils' 'nss' 'giflib')
   optdepends=('java-rhino: for some JavaScript support')
   provides=('java-runtime-headless=8' 'java-runtime-headless-openjdk=8' 'java-runtime-headless-shenandoah=8')
   # Upstream config files that should go to etc and get backup
@@ -283,7 +272,7 @@ package_openjdk8-shenandoah-doc() {
   pkgdesc='OpenJDK Java 8 documentation'
 
   install -d -m 755 "${pkgdir}/usr/share/doc/${pkgbase}/"
-  cp -r "${srcdir}"/jdk8u-${_repo_versions[jdk8u]}/build/linux-${_DOC_ARCH}-normal-server-release/docs/* \
+  cp -r "${srcdir}"/jdk8u-shenandoah-${_repo_ver}/build/linux-${_DOC_ARCH}-normal-server-release/docs/* \
     "${pkgdir}/usr/share/doc/${pkgbase}/"
 }
 
