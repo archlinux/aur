@@ -2,7 +2,7 @@
 
 pkgname=gaia-hub
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A decentralized high-performance storage system"
 url="https://github.com/blockstack/gaia"
 license=("MIT" "custom")
@@ -43,7 +43,7 @@ prepare() {
 
 build() {
     export NODE_ENV="production"
-    
+
     cd "$srcdir/$pkgname/hub"
     npm run build
 }
@@ -77,10 +77,10 @@ package() {
     
     # Install sysusers
     install -Dm644 "$srcdir/sysusers" "$pkgdir/usr/lib/sysusers.d/${pkgname}.conf"
-    
+
     # Install tmpfiles
     install -Dm644 "$srcdir/tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${pkgname}.conf"
-    
+
     # install service
     install -Dm 644 "${srcdir}/service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }
