@@ -1,14 +1,14 @@
-# Maintainer: Mattias Giese <mattiasgiese@posteo.net>
+# Maintainer: Ben Widawsky <ben@bwidawsk.net>
 pkgname=kanshi-git
-pkgver=r45.970267e
+pkgver=r63.725d788
 pkgrel=1
 pkgdesc="Dynamic display configuration for WMs like i3/sway"
 arch=(x86_64)
 url="https://github.com/emersion/kanshi"
 license=('MIT')
 groups=()
-depends=('rust')
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+depends=()
+makedepends=('git' 'meson' 'ninja' 'scdoc' 'wayland')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -27,18 +27,22 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
-build() {
-	cd "$srcdir/${pkgname%-git}"
-  cargo build --release --locked
+prepare() {
+	cd "${srcdir}/${pkgname%-git}"
+	sed -i "s!join_paths(mandir, section)!join_paths(mandir, 'man' + section)!" meson.build
+	mkdir -p build
+		meson build \
+		--buildtype=release \
+		--prefix=/usr
 }
 
-check() {
-	cd "$srcdir/${pkgname%-git}"
-  cargo test --release --locked ${pkgname%-git}
+build() {
+	cd "${srcdir}/${pkgname%-git}"
+	ninja -C build
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-  install -Dm 755 target/release/${pkgname%-git} -t "${pkgdir}/usr/bin"
+	DESTDIR="$pkgdir/" ninja -C build install
+
 }
