@@ -15,6 +15,6 @@ sha256sums=('193b51161d7ae2f0925f4eadc611ebd18ac1a4903e9fb89a3979e525aa507282')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
-    install -dm755 "$pkgdir"/{opt,usr/bin,usr/share}
+    install -dm775 "$pkgdir"/{opt,usr/bin,usr/share}
     ln -s "/opt/LBRY/LBRY" "$pkgdir/usr/bin/lbry"
 }
