@@ -1,6 +1,6 @@
 pkgbase = epfl-moody-git
 	pkgdesc = Gnome client for EPFL's Moodle system
-	pkgver = r66.b171ad6
+	pkgver = r108.3033089
 	pkgrel = 1
 	url = https://gitlab.gnugen.ch/afontain/moodle/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = epfl-moody-git
 	source = git+https://gitlab.gnugen.ch/afontain/moodle
 	source = meson.build.patch
 	md5sums = SKIP
-	md5sums = 1e6188c4b506c8c00027508203ccea52
+	md5sums = 9ac03a20b058e5b8139359641373efe2
 
 pkgname = epfl-moody-git
 
