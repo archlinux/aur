@@ -6,7 +6,7 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.0.5.r1.g191c2a8af
+pkgver=4.0.6.r6.g42973010c
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
