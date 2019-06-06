@@ -2,23 +2,20 @@
 
 pkgname=dislocker
 pkgver=0.7.1
-pkgrel=2
-pkgdesc="Read BitLocker encrypted volumes under Linux"
+pkgrel=3
+pkgdesc="Read/write BitLocker-encrypted volumes"
 arch=('i686' 'x86_64')
-url="http://www.hsc.fr/ressources/outils/dislocker"
+url="https://github.com/Aorimn/dislocker"
 license=('GPL2')
 depends=('fuse' 'mbedtls' 'ruby')
 makedepends=('make' 'cmake')
 conflicts=('dislocker-git')
 optdepends=('ntfs-3g: NTFS file system support')
-source=(https://github.com/Aorimn/dislocker/archive/v$pkgver.tar.gz)
+source=($url/archive/v$pkgver.tar.gz)
 sha1sums=('0c5c62f63ba587663eb0474f1bd6ca7e345fe977')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  # Fix v0.7 upstream path error
-  sed -i 's/DIS_MAN \${PROJECT_SOURCE_DIR}/DIS_MAN ../' src/CMakeLists.txt
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -Dlibdir=/usr/lib \
