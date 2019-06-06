@@ -1,6 +1,6 @@
 pkgbase = foliate
 	pkgdesc = A simple and modern GTK eBook reader
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://johnfactotum.github.io/foliate/
 	arch = i686
@@ -16,8 +16,7 @@ pkgbase = foliate
 	depends = libsoup
 	provides = foliate
 	conflicts = foliate-git
-	source = https://github.com/johnfactotum/foliate/archive/1.1.1.tar.gz
-	md5sums = 4602004426c2e6e26ca72b5936b9b05d
+	source = https://github.com/johnfactotum/foliate/archive/1.2.0.tar.gz
 
 pkgname = foliate
 
