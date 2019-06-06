@@ -2,7 +2,7 @@
 
 pkgname=mpv-full-git
 _srcname=mpv
-pkgver=0.29.1.r317.gedbc199914
+pkgver=0.29.1.r331.g4d001bb30d
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -15,9 +15,9 @@ depends=(
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
         'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader' 'shaderc'
-        
+        'libplacebo'
     # AUR:
-        'mujs' 'rsound' 'crossc' 'libplacebo-git'
+        'mujs' 'rsound' 'crossc'
 )
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
