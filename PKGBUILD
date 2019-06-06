@@ -55,7 +55,7 @@ build() {
 }
 
 package() {
-  cd $pkgname
+  cd ferdi
 
   # Install the .asar files
   install -dm 755 "$pkgdir"/usr/lib/$pkgname
