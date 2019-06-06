@@ -2,7 +2,7 @@
 
 pkgname=dungeon-keeper-gold-gog
 pkgver=10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Construct and manage a dungeon, recruiting and catering for minions to run it and defend it from enemy invaders."
 url="https://www.gog.com/game/dungeon_keeper"
 license=('custom:eula')
@@ -26,7 +26,7 @@ source=("setup_dungeon_keeper_gold_${pkgver}_(28184).exe"::"gogdownloader://dung
         "fix-permissions.sh")
 
 sha256sums=('7c108532b5f0549c8c265ffa6ae7744a6d0f785856434b90911fa8276b031004'
-            'a7944e92e1109d5a741ac5147d9a82b911d5d67295d275e0db3bed076abc28fd'
+            '8ed8aea53a61693c47aa61aae70ecf63eca12a7810357e6a4f95fabbb044c00c'
             'bdbab0f3525b380d81cea61713009251da55a13c222ee4b4117afec12e90d4f9'
             '06ae3f1330695dd990a32438f509a92960c4b4725bbeb1f29d8d155c6a50a722'
             '98bba4add1533899b9f52ccb85f47e019b612234c1440e936d028dc39b185f9d'
