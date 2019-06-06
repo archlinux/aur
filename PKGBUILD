@@ -36,9 +36,8 @@ build() {
   # bypass "ERROR: Preinstalled ocamlbuild detected at ..."
   export CHECK_IF_PREINSTALLED=false
   opam install --deps-only satysfi
-  ./download-fonts.sh
   make PREFIX=/usr
-  make lib PREFIX=/usr
+  ./download-fonts.sh
 }
 
 package() {
