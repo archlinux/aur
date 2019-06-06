@@ -7,7 +7,7 @@ pkgbase = zeek-broker
 	license = BSD
 	makedepends = cmake
 	depends = openssl
-	source = src::git+https://github.com/zeek/broker
+	source = git+https://github.com/zeek/broker
 	md5sums = SKIP
 
 pkgname = zeek-broker
