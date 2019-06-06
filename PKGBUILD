@@ -2,7 +2,7 @@
 pkgname='scbd-git'
 _gitname='book-downloader'
 _pkgname='scbd'
-pkgver=r50.9050dc0
+pkgver=r56.4d71e57
 pkgrel=1
 pkgdesc='Simple C Book Downloader, also create a reference file for LaTeX (.bib)'
 arch=('any')
