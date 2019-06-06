@@ -1,4 +1,5 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
+# Contributor: David Runge <dave@sleepmap.de>
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: timbosa <tinny_tim@dodo.com.au>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
@@ -8,13 +9,13 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts       # Build kernel with a different name
 _pkgver=4.19.37
-_rtpatchver=rt19
+_rtpatchver=rt20
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
-arch=(x86_64)
+arch=('x86_64')
 url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
-license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git)
+license=('GPL2')
+makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
 _srcname=linux-${_pkgver}
 source=(
@@ -38,7 +39,7 @@ validpgpkeys=(
 )
 sha256sums=('ecb0b30ec32c0c7d614c394158c7d37099a815507ed62235cca32052d7ff9c65'
             'SKIP'
-            '8f19d28545abd358660c8ea7c2f6f95132186b4d3d3d0a6681782d3d643e3622'
+            '4edc6fffef7433c78ebecdf617eea25a63afb72ce4e4941e9bd1cc6ff5742b20'
             'SKIP'
             '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
             'daa6df66780eb18299815258cf4314160953d44f66ff750c9bb6ffef064e7b1a'
