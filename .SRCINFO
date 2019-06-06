@@ -1,0 +1,14 @@
+pkgbase = openscad-dotscad-git
+	pkgdesc = Collection of helpful OpenSCAD modules and functions from Justin Lin
+	pkgver = r846.7648373
+	pkgrel = 1
+	url = https://github.com/JustinSDK/dotSCAD
+	install = openscad-dotscad-git.install
+	arch = any
+	license = LGPL
+	depends = openscad
+	source = git+https://github.com/JustinSDK/dotSCAD.git
+	sha512sums = SKIP
+
+pkgname = openscad-dotscad-git
+
