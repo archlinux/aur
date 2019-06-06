@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-plugins-git
-pkgver=2019.01.r0.ga1cc634
+pkgver=2019.01.r83.g06c582f
 pkgrel=1
 pkgdesc="Plugins for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
@@ -29,6 +29,7 @@ build() {
         -DWITH_DDSIMPORTER=ON \
         -DWITH_DEVILIMAGEIMPORTER=ON \
         -DWITH_DRFLACAUDIOIMPORTER=ON \
+        -DWITH_DRMP3AUDIOIMPORTER=ON \
         -DWITH_DRWAVAUDIOIMPORTER=ON \
         -DWITH_FAAD2AUDIOIMPORTER=ON \
         -DWITH_FREETYPEFONT=ON \
