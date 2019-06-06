@@ -11,7 +11,7 @@ pkgbase = monopticon
 	depends = corrade-git
 	depends = magnum-integration
 	depends = imgui-src
-	source = src::git+https://github.com/nskelsey/monopticon
+	source = git+https://github.com/nskelsey/monopticon
 	md5sums = SKIP
 
 pkgname = monopticon
