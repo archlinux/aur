@@ -1,6 +1,6 @@
 # Maintainer: Matthias Lisin <ml@visu.li
 pkgname=vt-cli
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/VirusTotal/vt-cli'
 license=('Apache')
 makedepends=('go' 'dep')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('c3295d396f67133ecf67b1d6feadbc9ad3a6c359cd843bfa1b26fc7607b78e32ca5c1c73a1651c79d55b4f120570270ad339f631c6a6ac3677a044af86710dd7')
+sha512sums=('2e1a986e6e52afc0d34c8966ad29e3fca5e66b4a87dd2bed1a03c877694bccba26b44b2831d639248421f6eb0b45b72497f2caefcfcdad73da955e5d4f977b78')
 _gopkg=gopath/src/github.com/VirusTotal/"$pkgname"
 
 prepare() {
