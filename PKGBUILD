@@ -3,7 +3,7 @@
 
 pkgbase=('wownero-git')
 pkgname=('wownero-git')
-pkgver=0.6.0.0
+pkgver=0.6.1.0
 pkgrel=1
 pkgdesc="a fairly launched privacy-centric meme coin with no premine and a finite supply"
 license=('custom:Cryptonote')
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  git fetch --tags && git checkout tags/v0.6.0.0 -b v0.6.0.0
+  git fetch --tags && git checkout tags/v0.6.1.0 -b v0.6.1.0
   USE_SINGLE_BUILDDIR=1 make
 }
 
