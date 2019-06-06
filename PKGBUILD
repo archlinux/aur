@@ -1,18 +1,27 @@
-# Maintainer: Fabio Zanini <fabio _DOT zanini AT_ fastmail DOT_ fm>
-pkgname=python-htseq
-pkgver=0.8.0
+# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+
+_module_name=htseq
+pkgname=python-${_module_name}
+pkgver=0.11.2
 pkgrel=1
-pkgdesc='framework to process and analyze data from high-throughput sequencing assays'
-arch=('i686' 'x86_64')
-url="https://github.com/simon-anders/htseq"
-license=('GPL')
-depends=('python-matplotlib')
-source=("https://pypi.python.org/packages/de/e4/5287587097a4c46b571babb074ce3ff91cf220bed26502b69dccd3a2fda3/HTSeq-0.8.0.tar.gz")
-md5sums=('0a62f5da8905ad206389c29afd724afd')
-options=('!emptydirs')
+pkgdesc="library to facilitate processing and analysis of data from high-throughput sequencing (HTS) experiments"
+arch=('any')
+url=https://github.com/simon-anders/htseq
+license=('GPL-3.0')
+depends=(python python-matplotlib python-numpy python-pysam)
+makedepends=(python-setuptools cython swig)
+source=("https://github.com/simon-anders/${_module_name}/archive/release_${pkgver}.tar.gz")
+sha256sums=('dfc707effa699d5ba9034e1bb9f13c0fb4e9bc60d31ede2444aa49c7e2fc71aa')
 
-package() {
-  cd "$srcdir/HTSeq-${pkgver}"
+build() {
+  cd "$srcdir/${_module_name}-release_$pkgver"
+  python setup.py build
+}
 
+
+package(){
+  cd "$srcdir/${_module_name}-release_$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
+
+# vim:ts=2:sw=2:et:
