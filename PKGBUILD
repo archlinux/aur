@@ -2,7 +2,7 @@
 
 pkgname=dungeon-keeper-gold-gog
 pkgver=10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Construct and manage a dungeon, recruiting and catering for minions to run it and defend it from enemy invaders."
 url="https://www.gog.com/game/dungeon_keeper"
 license=('custom:eula')
@@ -28,11 +28,11 @@ source=("setup_dungeon_keeper_gold_${pkgver}_(28184).exe"::"gogdownloader://dung
 sha256sums=('7c108532b5f0549c8c265ffa6ae7744a6d0f785856434b90911fa8276b031004'
             '8ed8aea53a61693c47aa61aae70ecf63eca12a7810357e6a4f95fabbb044c00c'
             'bdbab0f3525b380d81cea61713009251da55a13c222ee4b4117afec12e90d4f9'
-            '06ae3f1330695dd990a32438f509a92960c4b4725bbeb1f29d8d155c6a50a722'
-            '98bba4add1533899b9f52ccb85f47e019b612234c1440e936d028dc39b185f9d'
+            '3f78d7642c634d8e1f55f51ff6cddf0a8cdfd6555beec807f7aa0cf1d7e34383'
+            'c50525401410a86ac536f9ab4911d2871694838682e7ddb77de18daad823e6f5'
             '2fdfcf1543d1194bf88fb9064c3a8b3b83769c2d723220d4d637d4a60c1905b7'
             'be5399a17a4769fe7c1fb66b25cef6ed8f0baff82d73233dcfb7d0f3a6c45ef4'
-            'f2f1742182bd7322f62c46e105172f9a634432a698309b58ed21961db02363c1'
+            '74081d05c1a97ad7d54bc085cc3812d54b5edb44768f057918a92523c4fcb350'
             '50b601b33522677a9bcaf23edc833329067bb87ccda33039c0b95f0d4ddca578'
             'e90b33464517fb8b8102f3667755302e01fa10b7bec3d660357f802685416ca8'
             'bbfa392edd4ac36e2c274d22b07bf2f9115e3f134b0b7c8b146538d2d0b36c2a')
@@ -59,6 +59,7 @@ prepare() {
     done
 
     cp setup/__support/app/dosboxdk.conf "$srcdir"
+    cp -r setup/__support/save/* "$srcdir"/setup
     cp setup/tmp/eula.txt "$srcdir"
 
     # remove bundled dosbox, windows stuff and gog client files
