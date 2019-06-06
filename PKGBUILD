@@ -1,7 +1,7 @@
 # Maintainer: Devin J. Pohly <djpohly+arch@gmail.com>
 # Contributor: Claudio Riva <firetux83@gmail.com>
 pkgname=songs
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="A software suite that allows a user to create beautiful songbooks using LaTeX"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('texlive-bin' 'texlive-core')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/Unix%20source/$pkgname-$pkgver.tar.gz)
 install=songs.install
-sha256sums=('90e473d9fb50ae67646d8d915239492aa4b0cb9a80ddab484cfded8e8c281e81')
+sha256sums=('fc0940cdfc7cd7eb899ebba1b4e19ee3dc55e400b9d18d7c50b267c0c1ccf43f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
