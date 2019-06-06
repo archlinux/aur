@@ -1,0 +1,17 @@
+pkgbase = python-chances
+	pkgdesc = Chances provides a simple utility to access random methods in a unified manner. The package implements pseudo, quasi, and true random methods, including an actual quantum random method and ambience sound based true random method.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/autonomio/chances
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-requests
+	depends = python-matplotlib
+	source = https://files.pythonhosted.org/packages/7f/8a/e0ce40affac9c5292da615375cd2ce979728b8f5a5d3afd4a9e3acdf9166/chances-0.1.6.tar.gz
+	sha256sums = 89d7341544324c8dfe336afba37809313cb247d9962c1da6caadb4276140b1f4
+
+pkgname = python-chances
+
