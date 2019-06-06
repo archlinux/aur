@@ -11,11 +11,11 @@ pkgver=1.11.1
 pkgrel=2
 pkgdesc="A Library for reading and editing the meta-data of several popular audio formats (32 bit)"
 arch=('x86_64')
-url="http://developer.kde.org/~wheeler/taglib.html"
+url="https://developer.kde.org/~wheeler/taglib.html"
 license=('LGPL' 'MPL')
 depends=($_pkgname 'lib32-zlib' 'lib32-gcc-libs')
 makedepends=('cmake')
-source=("http://taglib.github.io/releases/$_pkgname-$pkgver.tar.gz")
+source=("https://taglib.github.io/releases/$_pkgname-$pkgver.tar.gz")
 md5sums=('cee7be0ccfc892fa433d6c837df9522a')
 
 prepare() {
