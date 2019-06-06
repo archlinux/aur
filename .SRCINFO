@@ -17,7 +17,7 @@ pkgbase = python-pre-commit
 	makedepends = python-cached-property
 	makedepends = python2-identify
 	source = https://pypi.io/packages/source/p/pre_commit/pre_commit-1.16.1.tar.gz
-	md5sums = 316ee18793471515ed63586ed2115572
+	md5sums = 756bb91aef455f2e52c1159486d40a25
 
 pkgname = python-pre-commit
 	pkgdesc = Python 3 client for pre-commit

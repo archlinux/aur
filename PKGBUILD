@@ -14,7 +14,7 @@ makedepends=(
   'python2' 'python2-aspy-yaml' 'python2-virtualenv' 'python-cached-property' 'python2-identify'
 )
 source=("https://pypi.io/packages/source/p/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
-md5sums=('316ee18793471515ed63586ed2115572')
+md5sums=('756bb91aef455f2e52c1159486d40a25')
 
 prepare() {
   cp -a ${pypi_name}-${pkgver}{,-python2}
