@@ -8,22 +8,22 @@ url="https://github.com/zeek/broker"
 license=('BSD')
 makedepends=("cmake")
 depends=("openssl")
-source=("src::git+https://github.com/zeek/broker")
+source=("git+https://github.com/zeek/broker")
 md5sums=("SKIP")
 
 
 prepare() {
-    cd "$srcdir/src"
+    cd "$srcdir/broker"
     git submodule update --init --recursive
 }
 
 build() {
-    cd "$srcdir/src"
-    ./configure --disable-python --disable-docs --disable-tests
+    cd "$srcdir/broker"
+    ./configure --disable-python --disable-docs --disable-tests --enable-debug --with-log-level=TRACE
     make -j7
 }
 
 package() {
-    cd "$srcdir/src"
+    cd "$srcdir/broker"
     make DESTDIR="$pkgdir/" install
 }
