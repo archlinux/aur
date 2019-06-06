@@ -1,0 +1,15 @@
+pkgbase = grub-theme-creator
+	pkgdesc = Automates the creation of a grub2 theme
+	pkgver = .0.2
+	pkgrel = 1
+	url = https://github.com/petsam/grub-theme-creator
+	arch = any
+	license = GPL3
+	depends = horizontal-grub
+	depends = imagemagick
+	optdepends = grub2-theme-preview
+	source = grub-theme-creator-.0.2.tar.gz::https://github.com/petsam/grub-theme-creator/archive/v.0.2.tar.gz
+	sha256sums = fb44eba30534736b9af65f07868c104720d92a177c37cc3c1f218f41b454c495
+
+pkgname = grub-theme-creator
+
