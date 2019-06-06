@@ -3,7 +3,7 @@
 # Maintainer: Emanuel Fernandes <efernandes@tektorque.com>
 
 pkgname=studio-3t
-pkgver=2019.2.1
+pkgver=2019.3.0
 pkgrel=1
 pkgdesc="The professional workspace for MongoDB (formerly known as MongoChef)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ replaces=('mongochef')
 
 source=("$pkgname-$pkgver.tar.gz::https://download.studio3t.com/studio-3t/linux/${pkgver}/${pkgname}-linux-x64.tar.gz")
             
-sha256sums=('b878dd981852f98a789c165f5eb91b11253d8c62bb8f5d11f6e0cd5ad594d6de')
+sha256sums=('70a0ec13e949c6438f57186bb79a1e2872a4c3f9eb410eb162e688946463b8a3')
 
 prepare() {
     # Extract, rename and add execution permision
