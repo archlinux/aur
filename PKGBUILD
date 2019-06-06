@@ -3,7 +3,7 @@
 
 _gemname=nokogumbo
 pkgname=ruby-$_gemname
-pkgver=1.4.10
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Nokogiri interface to the Gumbo HTML5 parser'
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ depends=(ruby ruby-nokogiri)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('46f9a0233a79658322518932d2026226a79fcc0f')
+sha1sums=('18af12a01cb39f0c711f62e36f51557ab0341bbe')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
