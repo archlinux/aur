@@ -3,15 +3,15 @@
 # Release Code Name: Darwin
 
 pkgname=lbry-app-bin
-pkgver=0.33.0rc1
+pkgver=0.33.0
 pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
 url='https://lbry.io/'
 license=('MIT')
 depends=('nodejs' 'npm' 'gnome-keyring' 'gconf')
-source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.33.0-rc.1/LBRY_0.33.0-rc.1.deb')
-sha256sums=('c287818769d910d1f3f839ce41f6093907b353ff087a4160abe7c0b085b354eb')
+source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.33.0/LBRY_0.33.0.deb')
+sha256sums=('193b51161d7ae2f0925f4eadc611ebd18ac1a4903e9fb89a3979e525aa507282')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
