@@ -2,7 +2,7 @@
 
 pkgname=swaylock-blur-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A small Rust program that runs swaylock and sets the image to a blurred screenshot of the desktop"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=("swaylock" "ffmpeg" "grim" "sway")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=("92d9a83275d7074e93521d786fc4e024c64e6f6437dbf1fd5fe2e6a28e83ca9a")
+sha256sums=("7c36d91d2f5a050e8b37f047304280d14c3c0c0c49455e08568bd2ee10bd8ff4")
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
