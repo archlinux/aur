@@ -12,7 +12,7 @@ pkgbase = python-wrangle
 	depends = python-scikit-learn
 	depends = python-numpy
 	depends = python-pandas
-	depends = python-scipy
+	depends = python-scipy=1.2.1
 	source = https://files.pythonhosted.org/packages/17/9d/43d42e8bb95ef067635494fa8a0219a97d100c7ff96fb825ac01b72670b9/wrangle-0.6.4.tar.gz
 	sha256sums = 7dd1e71a3e8ed4285385c82863dcbb5f47da134500ddbd3b32cc8cb8a4e53033
 
