@@ -1,6 +1,6 @@
 pkgbase = pip-tools
 	pkgdesc = A set of tools to keep your pinned Python dependencies fresh.
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/jazzband/pip-tools/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = pip-tools
 	depends = python-click
 	depends = python-pip
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/p/pip-tools/pip-tools-3.7.0.tar.gz
-	md5sums = 9098ea576fe3168a26871a0b366d6bed
+	source = https://files.pythonhosted.org/packages/source/p/pip-tools/pip-tools-3.8.0.tar.gz
+	md5sums = 1a1e8d8318ec6943ba79c3aa10950703
 
 pkgname = pip-tools
 
