@@ -1,8 +1,8 @@
 # Maintainer: Tomasz Jakub Rup <tomasz.rup@gmail.com>
 pkgname=cppzmq
 pkgver=4.3.0
-pkgrel=1
-pkgdesc="Header-only C++ binding for libzmq"
+pkgrel=2
+pkgdesc="Header-only C++ binding for libzmq (only CMake module)"
 arch=('any')
 url="https://github.com/zeromq/cppzmq"
 license=('MIT')
@@ -27,6 +27,7 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver/build"
 	make -j4 DESTDIR="$pkgdir/" install
 	cd ..
+	rm -rf "$pkgdir/usr/include"
 	install -m 755 -d "$pkgdir/usr/share/licenses/$pkgname"
 	install -m 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
