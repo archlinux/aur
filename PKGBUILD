@@ -2,16 +2,16 @@
 # Contributor: Anonymo <meowdib at gmail dot com>
 
 pkgname=clarity-icon-theme
-pkgver=0.4.7
-pkgrel=3
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Vector icons in 9 colourthemes for GTK"
 arch=('any')
 makedepends=('imagemagick' 'librsvg')
 url="https://www.gnome-look.org/p/1012535"
 license=('CCPL:by-sa')
-options=(!strip !zipman)
-source=($pkgname-$pkgver.tar.gz::https://github.com/jcubic/Clarity/releases/download/$pkgver/${pkgname}_${pkgver}.tar.gz)
-md5sums=('530abb6a7dee6a3cc389dfe0279a5b8d')
+options=(!strip !zipman !makeflags)
+source=($pkgname-$pkgver.tar.gz::https://github.com/jcubic/Clarity/archive/$pkgver.tar.gz)
+md5sums=('08c0c5d7062c6423765195132b4ceeb1')
 
 ##############################################################
 #Put the themes you want to build in _buildtheme array below.#
@@ -33,7 +33,7 @@ _buildtheme=(violaceus lux_violaceus canus dark_canus caeruleus lux_caeruleus vi
 
 build() {
  for _theme in ${_buildtheme[*]}; do
-  cd "${srcdir}/Clarity"
+  cd "${srcdir}/Clarity-${pkgver}"
   make ${_theme}
   make arch
   install -d themes/${_theme}
@@ -45,7 +45,7 @@ build() {
 package() {
  for _theme in ${_buildtheme[*]}; do
   install -d "${pkgdir}/usr/share/icons/clarity-${_theme}"
-  cp -r "${srcdir}/Clarity/themes/${_theme}/"{scalable,16x16,index.theme} \
+  cp -r "${srcdir}/Clarity-${pkgver}/themes/${_theme}/"{scalable,16x16,index.theme} \
    "${pkgdir}/usr/share/icons/clarity-${_theme}"
 
   cd "${pkgdir}/usr/share/icons/clarity-${_theme}"
