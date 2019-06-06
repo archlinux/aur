@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('bash' 'grub')
 optdepends=('polkit: for saving the new configuration to system')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/petsam/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=()
+sha256sums=('05b0f95fded7a335a6b28bd30f18d8da13ff416a66f1483bad81a6c535aabe70')
 
 package() {
 	cd "$pkgname-$pkgver"
