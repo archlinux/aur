@@ -5,24 +5,11 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-DynamicUser=true
 User=gaia
 Group=gaia
 WorkingDirectory=/usr/lib/node_modules/gaia-hub
 Environment=NODE_ENV="production"
 ExecStart=/usr/bin/gaia-hub
-
-# Hardening options
-CapabilityBoundingSet=
-AmbientCapabilities=
-NoNewPrivileges=true
-ProtectHome=true
-ProtectSystem=full
-ProtectKernelTunables=true
-ProtectKernelModules=true
-ProtectControlGroups=true
-PrivateTmp=true
-LockPersonality=true
 
 [Install]
 WantedBy=multi-user.target
