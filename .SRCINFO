@@ -5,7 +5,6 @@ pkgbase = drill-search-cli-bin
 	url = https://www.drill.santamorena.me/
 	arch = x86_64
 	license = GPL2
-	depends = gtk3
 	provides = drill-search-cli-bin
 	conflicts = drill-search-cli-bin
 	source = https://github.com/yatima1460/Drill/releases/download/1.209/Drill-cli-linux-1.209-x86_64.deb
