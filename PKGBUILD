@@ -6,7 +6,7 @@
 _srcname=vlc
 pkgname=vlc-decklink
 pkgver=3.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (with decklink support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua' 'libidn'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
-         'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
+         'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' #'libplacebo'
          'wayland-protocols' 'aribb24')
 makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
@@ -230,7 +230,7 @@ build() {
         --enable-kwallet \
         --disable-update-check \
         --enable-notify \
-        --enable-libplacebo \
+        --disable-libplacebo \
         --enable-vlc \
         --enable-aribsub \
         --enable-aom \
