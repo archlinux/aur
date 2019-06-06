@@ -1,33 +1,26 @@
-# Maintainer: Grey Christoforo <first name at last name dot net>
+# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
-pkgbase=python-lmfit
-pkgname=('python-lmfit' 'python2-lmfit')
-pkgver=0.9.11
+pkgname=python-lmfit
+pkgver=0.9.13
 pkgrel=1
-pkgdesc="Least-Squares Minimization with Constraints for Python"
+pkgdesc="Non-Linear Least Squares Minimization, with flexible Parameter settings, based on scipy.optimize.leastsq, and with many additional classes and methods for curve fitting"
 arch=('any')
-url="http://lmfit.github.io/lmfit-py/"
-license=('BSD')
+url=http:/lmfit.github.io/lmfit-py/
+license=('BSD-3')
+depends=('python' 'python-numpy' 'python-scipy' 'python-asteval')
+makedepends=(python-setuptools)
 source=(https://github.com/lmfit/lmfit-py/archive/${pkgver}.tar.gz)
-md5sums=('227d48cf785119e4a249b2b5626ebbba')
+sha256sums=('b604afca0aaa23b28170065853b59d6e4c585c367e537b769813af313f8ebeed')
 
-#check() {
-#  cd "$srcdir/lmfit-py-$pkgver"
-#  nosetests3 tests
-#}
-
-package_python-lmfit(){
-  #checkdepends=('python-nose')
-  depends=('python' 'python-numpy' 'python-scipy' 'python-asteval')
+build() {
   cd "$srcdir/lmfit-py-$pkgver"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py build
 }
 
-package_python2-lmfit(){
-  #checkdepends=('python2-nose')
-  depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-asteval')
+
+package(){
   cd "$srcdir/lmfit-py-$pkgver"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 # vim:ts=2:sw=2:et:
