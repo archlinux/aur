@@ -1,0 +1,16 @@
+pkgbase = bkmkfi-git
+	pkgdesc = rofi-based web-browser independent bookmark manager
+	pkgver = r8.43eb798
+	pkgrel = 1
+	url = https://github.com/m-col/bkmkfi
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python3
+	depends = rofi
+	provides = bkmkfi
+	source = git+https://github.com/m-col/bkmkfi
+	sha256sums = SKIP
+
+pkgname = bkmkfi-git
+
