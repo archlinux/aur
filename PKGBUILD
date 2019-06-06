@@ -36,7 +36,9 @@ build() {
   # -clightgen: builds and installs the clightgen tool
   # -install-coqdev: also installs the Coq development, implied by -clightgen, useful
   #   if you will use tools such as the Princeton VST)
-  ./configure -prefix /usr $CARCH-linux
+  #
+  # Current latest Coq version is 8.9.1, not officially supported but works, so ignoring Coq version
+  ./configure -ignore-coq-version -prefix /usr $CARCH-linux
 
   make all
 }
