@@ -4,13 +4,12 @@
 
 pkgname=perl-devel-nytprof
 pkgver=6.06
-pkgrel=2
+pkgrel=3
 _author='T/TI/TIMB'
 _perlmod='Devel-NYTProf'
 pkgdesc='Devel::NYTProf - Powerful fast feature-rich perl source code profiler'
 url='http://search.cpan.org/dist/Devel-NYTProf'
 depends=(
-perl-json-any
 perl-getopt-long
 perl-test-simple
 perl-xsloader
