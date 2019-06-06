@@ -1,7 +1,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 pkgname=r-nlme
 _cran_name=nlme
-_pkgver=3.1-137
+_pkgver=3.1-140
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Linear and Nonlinear Mixed Effects Models"
@@ -10,7 +10,7 @@ url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
 license=('GPL3')
 depends=('r')
 source=("http://cran.r-project.org/src/contrib/${_cran_name}_${_pkgver}.tar.gz")
-md5sums=('1a9f73fd036e2406d430008ccf96048b')
+md5sums=('5e0a17727be4a7ba60ebb2e279189f67')
 
 package() {
  mkdir -p $pkgdir/usr/lib/R/library
