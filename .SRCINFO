@@ -1,6 +1,6 @@
 pkgbase = nextshot
 	pkgdesc = A simple screenshot tool that uploads to Nextcloud and works with Sway and X11
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/dshoreman/nextshot
 	install = nextshot.install
@@ -16,8 +16,8 @@ pkgbase = nextshot
 	optdepends = imagemagick: take screenshots on X11
 	optdepends = slop: window/area selection on X11
 	optdepends = xclip: clipboard support on X11
-	source = https://github.com/dshoreman/nextshot/archive/v1.1.1.tar.gz
-	md5sums = f54aa5390f30158d2cf9a4f1796c7b69
+	source = https://github.com/dshoreman/nextshot/archive/v1.2.0.tar.gz
+	md5sums = 9b78fbcdfaf2020302180847daec1a7d
 
 pkgname = nextshot
 
