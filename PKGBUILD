@@ -15,7 +15,7 @@ depends=('libxss' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb
 	'openssl' 'libpulse' 'alsa-lib' 'nss' 'libxcomposite' 'libxcursor' 'libxdamage' 'libcurl-compat' 
 	'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-libav' 'libxslt')
 options=('!strip')
-source=("http://download.cdn.viber.com/cdn/desktop/Linux/${pkgname}.deb"
+source=("$pkgname-$pkgver.tar.gz::http://download.cdn.viber.com/cdn/desktop/Linux/${pkgname}.deb"
         "eula.html"
         "viber")
 md5sums=('aba85df68ff4960ca27d0310b5a64ca5'
