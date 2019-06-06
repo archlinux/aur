@@ -1,7 +1,7 @@
 pkgbase = ephemeral-bin
 	pkgdesc = The always-incognito web browser. Browse the Internet in private without leaving a trace of history on your computer.
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cassidyjames/ephemeral
 	install = ephemeral-bin.install
 	arch = x86_64

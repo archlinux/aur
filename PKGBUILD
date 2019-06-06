@@ -1,10 +1,11 @@
 # Maintainer: Louis Tim Larsen <louis(a)louis.dk>
+
 pkgname=ephemeral-bin
 _appname=ephemeral
 _projectname=com.github.cassidyjames.ephemeral
 pkgver=5.1.0
 _subver=be6d31
-pkgrel=1
+pkgrel=2
 pkgdesc="The always-incognito web browser. Browse the Internet in private without leaving a trace of history on your computer."
 arch=('x86_64')
 url="https://github.com/cassidyjames/ephemeral"
@@ -23,10 +24,8 @@ package(){
 	mv "${pkgdir}/usr/bin/${_projectname}" "${pkgdir}/usr/bin/${_appname}"
 	mv "${pkgdir}/usr/share/applications/${_projectname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
 	mv "${pkgdir}/usr/share/doc/${_projectname}" "${pkgdir}/usr/share/doc/${_appname}"
+
 	# Update desktop file to match renamed package binary
 	sed -i "s/Exec=${_projectname}/Exec=${_appname}/" "${pkgdir}/usr/share/applications/${_appname}.desktop"
-
-	# Install license file
-	install -D -m644 "${srcdir}/usr/share/doc/${_projectname}/copyright" "${pkgdir}/usr/share/licenses/${_appname}/LICENSE"
 
 }
