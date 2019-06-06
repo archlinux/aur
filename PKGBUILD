@@ -4,9 +4,9 @@ pkgname=gaia-hub
 pkgver=2.5.3
 pkgrel=2
 pkgdesc="A decentralized high-performance storage system"
-url="https://github.com/blockstack/gaia"
-license=("MIT" "custom")
 arch=("any")
+url="https://github.com/blockstack/gaia"
+license=("custom:MIT")
 
 depends=(
     "nodejs"
@@ -19,6 +19,7 @@ makedepends=(
     "typescript"
     "ts-node"
 )
+
 optdepends=(
     "nginx: utilize provided example configs"
 )
@@ -30,6 +31,7 @@ source=(
     "sysusers"
     "tmpfiles"
 )
+
 sha512sums=('SKIP'
             'dcb22abf9ec89ff88882f493ad6e684637bf0c6dad0f3d9971e1db300882922167d39bc98f3fa937398eba1c449ee2ecf2661eb3c6f50b826262700f5baf8397'
             '9932bc1cad558cf86f107b3069e81d4034d6c3fced6d94af899da25b7309806efcc2d2a52572a3b755c893278fd440ac6ee6b723fb8ce736bd51968096138736'
