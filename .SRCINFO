@@ -1,13 +1,13 @@
 pkgbase = sfk
 	pkgdesc = Swiss File Knife - A Command Line Tools Collection
-	pkgver = 1.9.4.3
+	pkgver = 1.9.5.0
 	pkgrel = 1
 	url = http://stahlworks.com/dev/swiss-file-knife.html
 	arch = x86_64
 	license = BSD
 	depends = gcc-libs
-	source = sfk-1.9.4.3.tar.gz::https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/1.9.4.3/sfk-1.9.4.tar.gz
-	sha256sums = 103b0877ad84787a73d551c241258b1119aef229cbb56c130795a3760d516f00
+	source = sfk-1.9.5.0.tar.gz::https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/1.9.5.0/sfk-1.9.5.tar.gz
+	sha256sums = ef85385d3b6bb28cf59bc0d9ad731a8c58a9aacfdcb152cbac57ea90cccac935
 
 pkgname = sfk
 
