@@ -1,13 +1,14 @@
 pkgbase = python-qdarkstyle
 	pkgdesc = A dark stylesheet for Python and Qt applications
 	pkgver = 2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ColinDuquesnoy/QDarkStyleSheet
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = python-helpdev
+	depends = python-pip
 	options = !emptydirs
 	source = python-qdarkstyle-2.7.tar.gz::https://codeload.github.com/ColinDuquesnoy/QDarkStyleSheet/tar.gz/2.7
 	sha256sums = a5c345ab3e518d65faa60caadaac3e0e9bd9613724b27b45b70aa50a26eb4893

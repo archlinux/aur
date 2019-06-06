@@ -3,10 +3,10 @@
 
 pkgname=python-qdarkstyle
 pkgver=2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A dark stylesheet for Python and Qt applications"
 arch=('any')
-depends=('python' 'python-helpdev')
+depends=('python' 'python-helpdev' 'python-pip')
 makedepends=('python-setuptools')
 url="https://github.com/ColinDuquesnoy/QDarkStyleSheet"
 license=('MIT')
