@@ -2,7 +2,7 @@ pkgname=newlogic
 _pkgname=newlogic
 pkgver=0.1.4_beta
 _pkgver="0.1.4-beta"
-pkgrel=1
+pkgrel=2
 pkgdesc="Circuit Builder Desktop Application (like mmlogic)"
 arch=('any')
 url="https://github.com/ericm/newlogic"
@@ -21,6 +21,6 @@ package() {
      
     install -dm755 "$pkgdir"/usr/bin
     ln -s /usr/lib/node_modules/newlogic/newlogic "$pkgdir"/usr/bin/newlogic
-    #install -dm755 "$pkgdir"/usr/share/applications
-    #cp "$srcdir"/$_pkgname/install/newlogic.desktop "$pkgdir"/usr/share/applications
+    install -dm755 "$pkgdir"/usr/share/applications
+    cp "$srcdir"/newlogic.desktop "$pkgdir"/usr/share/applications
 }
