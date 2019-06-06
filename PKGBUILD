@@ -1,7 +1,7 @@
 # Maintainer: Nick Skelsey <nskelsey@gmail.com>
 pkgname=monopticon
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethernet traffic visualizer for zeek"
 arch=('x86_64')
 url="https://github.com/nskelsey/monopticon"
