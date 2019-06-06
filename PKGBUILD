@@ -8,7 +8,7 @@ _use_gh_api=true
 wl_project=${_pkgname}
 wl_dl="https://hosted.weblate.org/download/${wl_project}"
 pkgname=${_pkgname,,}-git
-pkgver=7.8.r1662.de3ea4e2
+pkgver=7.8.r1663.b7f2eeab
 pkgrel=1
 pkgdesc='GPS log file viewer and analyzer'
 arch=('i686' 'x86_64')
@@ -55,7 +55,7 @@ pkgver() {
 }
 
 wl_update() {
-  find . -name "${2}*.ts" -a ! -name "*template*" | \
+  find . -name "${2}*.ts" -a ! -name "*_en.ts" | \
     xargs basename -s .ts | \
     xargs -P 0 -I{} sh -c "curl -so \$1.ts $wl_dl/${1}/\${1#${2}}/" -- {}
 }
