@@ -4,7 +4,7 @@
 
 pkgbase="zfs-dkms-rc"
 pkgname=("zfs-dkms-rc" "zfs-utils-rc")
-_pkgver=0.8.0-rc5
+_pkgver=0.8.0
 _pkgver_base=${_pkgver%-*}
 pkgver=${_pkgver//-rc/.}
 pkgrel=1
@@ -16,7 +16,7 @@ source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_pkgver}/zfs-
         "zfs.bash-completion-r1"
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
-sha256sums=('c5dc91e3efb7555c6c1846cf89fd4cfb0952271a2900434e697f2b7397ce9b16'
+sha256sums=('0fd92e87f4b9df9686f18e2ac707c16b2eeaf00f682d41c20ea519f3a0fe4705'
             'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
             '17114052aa20c528f022f7f1349971aa28810e2ed2c97871226b5679a91f7e77'
             '138964b43d7a282e1ed5f7fcf1f8dc9baa4f664655b628eeac1912a3017a787b')
