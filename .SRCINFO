@@ -10,6 +10,7 @@ pkgbase = python-lmfit
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-asteval
+	depends = python-uncertainties
 	source = https://github.com/lmfit/lmfit-py/archive/0.9.13.tar.gz
 	sha256sums = b604afca0aaa23b28170065853b59d6e4c585c367e537b769813af313f8ebeed
 
