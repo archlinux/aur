@@ -1,6 +1,6 @@
 pkgbase = musixmatch-bin
 	pkgdesc = Lyrics platform where users can search and share lyrics
-	pkgver = 3.2.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://www.musixmatch.com/
 	arch = x86_64
