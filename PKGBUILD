@@ -42,7 +42,7 @@ prepare() {
 }
 
 build() {
-  cd $pkgname
+  cd ferdi
 
   # Better configuration for npm cache and calling installed binaries
   export npm_config_cache="$srcdir"/npm_cache
