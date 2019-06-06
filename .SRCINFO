@@ -1,0 +1,17 @@
+pkgbase = perl-apache-session
+	pkgdesc = A persistence framework for session data
+	pkgver = 1.93
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Apache-Session
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-deep
+	checkdepends = perl-test-exception
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-module/Apache/Apache-Session-1.93.tar.gz
+	sha512sums = 568653b5151df61dbbc4b034043e1d4be75642122ab920a13155c4abbe052e4d96915b1453eb9f2f06bd1159d95efef7ed5905b4d2f2b8c6fdd3711d0cf5dbe4
+
+pkgname = perl-apache-session
+
