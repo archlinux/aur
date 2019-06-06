@@ -1,0 +1,17 @@
+pkgbase = java-language-server
+	pkgdesc = Java language server using the Java compiler API
+	pkgver = 0.2.13
+	pkgrel = 1
+	url = https://github.com/georgewfraser/java-language-server.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = maven
+	depends = java-runtime
+	source = java-language-server::git+https://github.com/georgewfraser/java-language-server.git#commit=e747b6bce6740066755e3fa6fa12eb9c7263660c
+	source = launcher.sh
+	sha256sums = SKIP
+	sha256sums = 84920dd2311a6e4b03ef5b853d8acdea8c2119f849fb11b5a77e2d97fcf29d6b
+
+pkgname = java-language-server
+
