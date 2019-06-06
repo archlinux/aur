@@ -7,7 +7,7 @@
   "cacheControl": "public, max-age=1",
   "pageSize": 20,
   "diskSettings": {
-    "storageRootDirectory": "/srv/gaia"
+    "storageRootDirectory": "/var/lib/gaia"
   },
   "awsCredentials": {
     "accessKeyId": "",
