@@ -1,19 +1,19 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=ameba
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A static code analysis tool for Crystal"
 arch=('x86_64')
 url='https://github.com/veelenga/ameba'
 license=('MIT')
-depends=('crystal' 'make')
+depends=('crystal>=0.29.0' 'make')
 makedepends=('shards')
 source=(
   "${url}/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '8542fc226ba44f840ca07cb7c9a6d4e97b538a9cde071f8fefae02921594fbef'
+  'd6daa15b6fc5326b55140120408f0ae7510d918623fc55acf298018150b6ab43'
 )
 
 package() {
