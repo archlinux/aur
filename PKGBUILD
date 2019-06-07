@@ -11,8 +11,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor')
 makedepends=('cpio')
-source=("2019.1.5f1.1.5f1.pkg::https://download.unity3d.com/download_unity/6f1140cf2297/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-2019.1.5f1.pkg")
-md5sums=("61bab81465a99c0cf4b084b97fda8bcf")
+source=("2019.1.5f1.1.5f1.pkg::https://download.unity3d.com/download_unity/0ca0f5646614/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-2019.1.5f1.pkg")
+md5sums=("7191fc32b65e9a2326a62acc717bebf8")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
