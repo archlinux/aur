@@ -1,0 +1,28 @@
+From bcac9718735b287a6008907271e830b213933d19 Mon Sep 17 00:00:00 2001
+From: "Michael A. Sinclair" <squattingmonk@gmail.com>
+Date: Thu, 6 Jun 2019 14:29:53 -0500
+Subject: [PATCH] Run docker as current user
+
+By default, docker runs as root, so any files created during the build
+process are owned by root. This prevents the user from removing the
+files unless they have sudo access.
+
+This change causes docker to be run as the executing user. Thus, the
+user owns all files created by the build script.
+---
+ scripts/run-linux-build.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/run-linux-build.sh b/scripts/run-linux-build.sh
+index b7225dc..8a65a3e 100755
+--- a/scripts/run-linux-build.sh
++++ b/scripts/run-linux-build.sh
+@@ -17,4 +17,4 @@ while getopts ":hcj:" o; do
+ done
+ shift $((OPTIND-1))
+ 
+-docker run --rm -w /src --entrypoint "/bin/bash" -v $(pwd):/src glorwinger/holy-build-box-32:1.0.0 ./scripts/buildnwnsc.sh ${CLEAN}
++docker run --rm -t -u $(id -u):$(id -g) -w /src --entrypoint "/bin/bash" -v $(pwd):/src glorwinger/holy-build-box-32:1.0.0 ./scripts/buildnwnsc.sh ${CLEAN}
+-- 
+2.21.0
+

@@ -1,0 +1,25 @@
+From 5bf4d414e8981744f6797621a4906854a2fa04ca Mon Sep 17 00:00:00 2001
+From: "Michael A. Sinclair" <squattingmonk@gmail.com>
+Date: Wed, 5 Jun 2019 10:23:23 -0500
+Subject: [PATCH] Correct Linux Steam files location
+
+---
+ nwnsc/nwnsc.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/nwnsc/nwnsc.cpp b/nwnsc/nwnsc.cpp
+index 9bc2cc1..9b662f4 100644
+--- a/nwnsc/nwnsc.cpp
++++ b/nwnsc/nwnsc.cpp
+@@ -333,7 +333,7 @@ Environment:
+ #if defined(__APPLE__)
+                 SteamRootDir = GetHomeDirectory() + "/Library/Application Support/Steam/steamapps/common/Neverwinter Nights/";
+ #elif defined(__linux__)
+-                SteamRootDir = GetHomeDirectory() + "/Library/Application Support/Steam/steamapps/common/Neverwinter Nights/";
++                SteamRootDir = GetHomeDirectory() + "/.local/share/Steam/steamapps/common/Neverwinter Nights/";
+ #elif defined(_WINDOWS)
+                 SteamRootDir = GetHomeDirectory() + "/Library/Application Support/Steam/steamapps/common/Neverwinter Nights/";
+ #endif
+-- 
+2.21.0
+
