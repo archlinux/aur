@@ -11,15 +11,17 @@ license=(MIT)
 depends=(cairo gdk-pixbuf2 json-c pango pcre swaybg ttf-font 'wlroots>=0.6.0')
 makedepends=(meson ninja scdoc wayland-protocols)
 optdepends=(
-  'dmenu: for launching applications'
-  'i3status: display a status line'
-  'rxvt-unicode: default terminal emulator'
+  'dmenu: Application launcher'
+  'i3status: Status line'
+  'grim: Screenshot utility'
+  'mako: Lightweight notification daemon'
+  'rxvt-unicode: Terminal emulator'
+  'slurp: Select a region'
+  'swayidle: Idle management daemon'
+  'swaylock: Screen locker'
+  'wallutils: Timed wallpapers'
+  'waybar: Highly customizable bar'
   'xorg-server-xwayland: X11 support'
-  'swayidle: Idle management daemon for Wayland'
-  'swaylock: Screen locker for Wayland'
-  'grim: Screenshot utility that works with Wayland'
-  'wallutils: Timed wallpapers that works with Wayland'
-  'waybar: Highly customizable bar for Wayland'
 )
 validpgpkeys=("9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A") # Drew DeVault
 source=(
