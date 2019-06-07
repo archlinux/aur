@@ -1,0 +1,13 @@
+pkgbase = r-zeallot
+	pkgdesc = Multiple, Unpacking, and Destructuring Assignment
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/zeallot/index.html
+	arch = x86_64
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/zeallot_0.1.0.tar.gz
+	md5sums = 5de529556de3154caf069ce3ee39329d
+
+pkgname = r-zeallot
+
