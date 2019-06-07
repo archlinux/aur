@@ -1,6 +1,6 @@
 # Maintainer: Ivaylo Kirilov <iikirilov@gmail.com>
 pkgname=pantheon
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='An Apache 2.0 licensed, MainNet compatible, Ethereum client written in Java.'
 arch=('any')
@@ -11,7 +11,7 @@ source=('pantheon'
 	"https://bintray.com/consensys/pegasys-repo/download_file?file_path=pantheon-${pkgver}.tar.gz"
 	"https://bintray.com/consensys/pegasys-repo/download_file?file_path=pantheon-${pkgver}.tar.gz.asc")
 sha256sums=('97383c0098343059660aa50de27c482cca9929d03dd32dd08ba2dec43b9ea06e'
-	    'd6e9202fdfce852aea83eaf20e1294c37e3cc54c05089060401d25af26cb2212'
+	    '03789580e8a86b61f97e52f40ff4db009051a3239c043e4e04e6f26f6a60902d'
 	    'SKIP')
 validpgpkeys=('8756C4F765C9AC3CB6B85D62379CE192D401AB61')
 package() {
