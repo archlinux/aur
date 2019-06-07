@@ -1,0 +1,23 @@
+pkgbase = nvidia-340xx-lts
+	pkgdesc = NVIDIA drivers for linux-lts
+	pkgver = 340.107
+	pkgrel = 24
+	url = https://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	makedepends = linux-lts>=4.19.46
+	makedepends = linux-lts-headers>=4.19.46
+	makedepends = nvidia-340xx-utils=340.107
+	provides = nvidia-340xx
+	conflicts = nvidia-lts
+	options = !strip
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/340.107/NVIDIA-Linux-x86_64-340.107-no-compat32.run
+	source = kernel-4.11.patch
+	sha512sums = 0de6f182d67bd322df7ae04e74c0cde6973c55bfea47a8f2503a29f8a899cd1b801ae4b52d066628df4a4f9c84e5e7547465bdc37d1b87df47af43fdab23466f
+	sha512sums = c25d90499e1deb26129a67dd7e953be8c1e31c5770e2b8b64d03af54cf1afec1a52636e74900f8ac468692207ab8a3765a12edd581142c4d2cfd2d6e66ac7ac2
+
+pkgname = nvidia-340xx-lts
+	depends = linux-lts>=4.19.46
+	depends = nvidia-340xx-utils=340.107
+	depends = libgl
+
