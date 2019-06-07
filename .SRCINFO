@@ -1,13 +1,13 @@
 pkgbase = ttf-public-sans
 	pkgdesc = A strong, neutral typeface for text or display.
-	pkgver = 1.004
+	pkgver = 1.005
 	pkgrel = 1
 	url = https://public-sans.digital.gov/
 	arch = any
 	license = custom:OFL
-	source = ttf-public-sans-1.004.zip::https://github.com/uswds/public-sans/releases/download/v1.004/public-sans-v1.004.zip
+	source = ttf-public-sans-1.005.zip::https://github.com/uswds/public-sans/releases/download/v1.005/public-sans-v1.005.zip
 	source = https://raw.githubusercontent.com/uswds/public-sans/master/ofl.txt
-	sha256sums = 1d00de30bbe56ce0a5ab0c3cad9286612bfafce010131fdb2d68147b220d7a43
+	sha256sums = 19adc06119c72c4e98414bc31edb0324d99a304730f10aec5f6234ff050b15d3
 	sha256sums = a24aca924da18c40798440bd9e97ef0a78868f7f7c5d1ca9c709a29a4e220087
 
 pkgname = ttf-public-sans
