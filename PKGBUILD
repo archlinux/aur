@@ -4,7 +4,7 @@ pkgbase='ivre-git'
 pkgbasename='ivre'
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git' 'python2-ivre-git')
 pkgver=0.9.12.dev128
-pkgrel=1
+pkgrel=2
 pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
 url='https://ivre.rocks/'
@@ -40,7 +40,7 @@ package_ivre-git() {
               'nmap: Network scan'
               'masscan: Network scan'
               'zmap: Network scan'
-              'bro: Network traffic analysis'
+              'zeek: Network traffic analysis'
               'argus: Network traffic analysis'
               'nfdump: Netflow analysis'
               'imagemagick: Screenshots via Nmap scripts'

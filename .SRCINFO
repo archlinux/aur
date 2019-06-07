@@ -1,7 +1,7 @@
 pkgbase = ivre-git
 	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...
 	pkgver = 0.9.12.dev128
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ivre.rocks/
 	arch = any
 	license = GPL3
@@ -16,7 +16,7 @@ pkgname = ivre-git
 	optdepends = nmap: Network scan
 	optdepends = masscan: Network scan
 	optdepends = zmap: Network scan
-	optdepends = bro: Network traffic analysis
+	optdepends = zeek: Network traffic analysis
 	optdepends = argus: Network traffic analysis
 	optdepends = nfdump: Netflow analysis
 	optdepends = imagemagick: Screenshots via Nmap scripts
