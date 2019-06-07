@@ -1,6 +1,6 @@
 pkgbase = foliate-git
 	pkgdesc = A simple and modern GTK eBook reader
-	pkgver = 93.d26a178
+	pkgver = 96.81a8506
 	pkgrel = 1
 	url = https://johnfactotum.github.io/foliate/
 	arch = i686
