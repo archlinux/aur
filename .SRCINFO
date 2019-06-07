@@ -1,39 +1,40 @@
 pkgbase = linux-drm-tip-git
-	pkgver = r662284.035f22af3e97
+	pkgver = 5.3.841355.f384132bcdd8
 	pkgrel = 1
-	url = http://www.kernel.org/
-	arch = i686
+	url = https://cgit.freedesktop.org/drm-tip/
 	arch = x86_64
 	license = GPL2
+	makedepends = xmlto
 	makedepends = kmod
 	makedepends = inetutils
 	makedepends = bc
-	makedepends = git
 	makedepends = libelf
+	makedepends = git
 	options = !strip
-	source = git+https://anongit.freedesktop.org/git/drm-tip.git
-	source = config.i686
-	source = config.x86_64
+	source = linux-drm-tip-git::git+https://anongit.freedesktop.org/git/drm-tip.git#branch=drm-tip
+	source = config
+	source = 60-linux.hook
 	source = 90-linux.hook
-	source = linux-drm-tip-git.preset
+	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1
-	sha256sums = bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586
+	sha256sums = 02390efe7637927502bc834daf3f413ea5e2cb084bca125372e70dc9438e824c
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-drm-tip-git
-	pkgdesc = The Linux kernel and modules (git version)
+	pkgdesc = The Linux-drm-tip-git kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio>=0.7
+	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux
 	backup = etc/mkinitcpio.d/linux-drm-tip-git.preset
 
 pkgname = linux-drm-tip-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
-	provides = linux-headers
+	pkgdesc = Header files and scripts for building modules for Linux-drm-tip-git kernel
+
+pkgname = linux-drm-tip-git-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-drm-tip-git kernel
 
