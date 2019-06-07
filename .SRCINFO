@@ -1,0 +1,17 @@
+pkgbase = xkeycaps-debian
+	pkgdesc = A graphical front-end to xmodmap, version from debian
+	pkgver = 2.47
+	pkgrel = 1
+	url = https://www.jwz.org/xkeycaps/
+	arch = x86_64
+	license = custom
+	makedepends = imake
+	makedepends = xbitmaps
+	depends = libxaw
+	source = http://deb.debian.org/debian/pool/main/x/xkeycaps/xkeycaps_2.47.orig.tar.gz
+	source = license.txt
+	sha512sums = f5f5ecdf83c2bd86eb3d8b8a28b26af25a2dc9ff0a9c44091d8eb154d617b4373191a2e4479bb0e3025c023d6e5d785a088c64bc269c1c43431a3d2fc91c1a7e
+	sha512sums = dc07c0ff12bb103bcb42911977849c586364ba39cf171d3761c37e69131a933545d6b149b1ced8ff9fd9dd0dfc81bad9ac39e26c22c867fca38f85ccdff74220
+
+pkgname = xkeycaps-debian
+
