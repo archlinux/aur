@@ -1,6 +1,6 @@
 pkgbase = wasm-micro-runtime-git
 	pkgdesc = Standalone WebAssembly (WASM) runtime with small footprint
-	pkgver = r20.8425923c3f
+	pkgver = r89.4456ff89d8
 	pkgrel = 1
 	url = https://github.com/intel/wasm-micro-runtime
 	arch = x86_64
