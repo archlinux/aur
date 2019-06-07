@@ -1,6 +1,6 @@
 # Maintainer: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
 pkgname=kismet-git
-pkgver=20190421
+pkgver=r8139.8baa2896
 pkgrel=1
 pkgdesc="Current development version based on git repo"
 arch=('x86_64')
@@ -15,6 +15,11 @@ source=("git+https://github.com/kismetwireless/kismet"
         "${pkgname}-sysusers.conf")
 sha256sums=('SKIP'
             '8b5b25bb6d9c611589ce0200da3cfeed2194bfa45aeed88e10c980c668383806')
+
+pkgver() {
+  cd "$srcdir/kismet"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
     cd "$srcdir/kismet"
