@@ -2,7 +2,7 @@
 
 pkgname=constructor-gog
 pkgver=1.0_cs
-pkgrel=1
+pkgrel=2
 pkgdesc="Control a construction company, and aim to drive the other players out of business."
 url="https://www.gog.com/game/constructor"
 license=('custom:eula')
@@ -25,7 +25,7 @@ source=("setup_constructor_${pkgver}_(28162).exe"::"gogdownloader://constructor/
         "fix-permissions.sh")
 
 sha256sums=('35fcb4970635309697812a6ca9195194ed2e6d0ffa0f70669cb10b6d2845e835'
-            'bce1e648feb9e15bcbc33f7dec9a290a01c224a083801d258d9db36f4314c92b'
+            '34d7224ec640ff37dc26d894eb56a6a3f9cf83908347e7325d231a2f2fad065f'
             '7db33dbe4048286cc08f76de61c2a81eb9d06f0c8c76d532c5e8c50a7952789f'
             'd793964f2d407ddf43f233b72d41571655296c8501123f07ed986e00e6a8d19e'
             'c7cfa75590d3845f7c8fc05098e34f4a5a7183a755199dfbeb9c695aeef63ec1'
