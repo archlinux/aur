@@ -3,7 +3,7 @@
 
 pkgname=system76-driver
 pkgver=19.04.8
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -21,16 +21,16 @@ depends=(
 	'dmidecode'
 	'at'
 	'system76-dkms'
-	'system76-io-dkms'
 	'system76-firmware-daemon')
 makepdepends=(
 	'python-pyflakes')
 optdepends=(
-	'pm-utils: For power management features'
-	'gtk3: To launch System76 driver and firmware GUI'
 	'grub: To apply kernel boot time parameters'
+	'gtk3: To launch System76 driver and firmware GUI'
+	'pm-utils: For power management features'
 	'polkit: Run System76 Driver GUI from application menu'
 	'pulseaudio: To apply microphone fix'
+	'system76-io-dkms: Enable System76 I/O daughterboard'
 	'xorg-xhost: To enable GUI applications on Wayland'
 	'xorg-xbacklight: To use the backlight service')
 source=(
