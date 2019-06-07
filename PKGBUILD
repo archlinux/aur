@@ -2,7 +2,7 @@
 
 pkgname=simcity-2000-gog
 pkgver=1.0se
-pkgrel=1
+pkgrel=2
 pkgdesc="Now you can design any city you can imagine and SimCity 2000 will bring it, and its resident Sims, to life."
 url="https://www.gog.com/game/simcity_2000_special_edition"
 license=('custom:eula')
@@ -25,7 +25,7 @@ source=("setup_simcity_2000_special_edition_${pkgver}_(28187).exe"::"gogdownload
 
 sha256sums=('794b9e2e9eb242f99d4a107c7b474b3069506d9ebb5e438d8531eb9193bafdd2'
             '471482788dbfe607758a13e338241c39f8e8af1efa37d8d4f17310ded2374707'
-            '5364a8fc69aecf2fb1980b8f1cd988ad0bbd1c31000e78842210eef28c94612d'
+            'dc7c554a69147359e686f5687ecff89182049600c2f45e26f793d17b95bc64e9'
             '9a0b89a2bf114caea1d90a4c57e6e2b2558764c1bc1d84d915d10d853cef733a'
             '487ddedcc8fe98975250cf2436676d227e87bc582611250beec716865f2846bb'
             'ec412cfaa82a392a68ab64c288495fca35e51b83fa5224ad977f5dbdf4577da4'
