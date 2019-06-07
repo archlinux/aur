@@ -1,0 +1,18 @@
+pkgbase = r-vctrs
+	pkgdesc = Vector Helpers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/vctrs/index.html
+	arch = x86_64
+	license = GPL3
+	depends = r
+	depends = r-backports
+	depends = r-digest
+	depends = r-glue
+	depends = r-rlang
+	depends = r-zeallot
+	source = http://cran.r-project.org/src/contrib/vctrs_0.1.0.tar.gz
+	md5sums = e0ea02aefda2a7a4712a2e578f238f72
+
+pkgname = r-vctrs
+
