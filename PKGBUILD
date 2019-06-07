@@ -2,7 +2,7 @@
 
 pkgname=historyline-1914-1918-gog
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A turn-based tactics game which takes the player through various battles of the First World War."
 url="https://www.gog.com/game/battle_isle_platinum"
 license=('custom:eula')
@@ -22,7 +22,7 @@ source=("setup_battle_isle_historyline_1914-1918_${pkgver}_(28043).exe"::"gogdow
 
 sha256sums=('8b66992e3c9b80853a2df4bb7d0bd74d043bd475aedb4e23b701ea21ff4d0291'
             '3e23da721bf92236f431cb6d1131ae2d0681afc162baa027167816d164c9567b'
-            '96426337f51658c94be5ad91a21fefcec936d73e35d66a27e79ef69e93ddc428'
+            '1cf2f67556ca4ba5396588c5d4eaf1b22776e4e3a32908e3472cb4c342927577'
             '6b82ae24bc2815299b7bc894f6186589779c9f9dd3b3bba7340268d502d098e7'
             '50b601b33522677a9bcaf23edc833329067bb87ccda33039c0b95f0d4ddca578'
             '8cb0a355c97b243e495509fd63191ba93b8e2e89fc45bf636938f691580102d0')
