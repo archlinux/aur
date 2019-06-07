@@ -1,6 +1,6 @@
 pkgbase = deadbeef-mpris2-plugin
 	pkgdesc = MPRISv2 plugin for the DeaDBeeF music player
-	pkgver = 1.11
+	pkgver = 1.13
 	pkgrel = 1
 	url = https://github.com/Serranya/deadbeef-mpris2-plugin
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = deadbeef-mpris2-plugin
 	depends = deadbeef
 	conflicts = deadbeef-mpris-plugin
 	options = !libtool
-	source = https://github.com/Serranya/deadbeef-mpris2-plugin/releases/download/v1.11/deadbeef-mpris2-plugin-1.11.tar.xz
+	source = https://github.com/Serranya/deadbeef-mpris2-plugin/releases/download/v1.13/deadbeef-mpris2-plugin-1.13.tar.xz
 	md5sums = 03923767ea3d5e7fc8ddd8c4af93b311
 
 pkgname = deadbeef-mpris2-plugin

@@ -1,6 +1,6 @@
 # Maintainer: Peter Lamby <peterlamby@web.de>
 pkgname=deadbeef-mpris2-plugin
-pkgver=1.11
+pkgver=1.13
 pkgrel=1
 pkgdesc="MPRISv2 plugin for the DeaDBeeF music player"
 arch=('i686' 'x86_64')
