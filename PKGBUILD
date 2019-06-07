@@ -9,7 +9,7 @@
 # Contributor: Emile Bons
 
 pkgname="bunq-desktop-bin"
-pkgver="0.9.7"
+pkgver="0.9.8"
 pkgrel=1
 pkgdesc="A desktop implementation for the bunq API"
 url="https://github.com/BunqCommunity/BunqDesktop"
@@ -43,7 +43,7 @@ source=(
 )
 
 sha256sums=(
-	"ab4ec6f9581f41760e95bec93d2b2e2593833eb3801ff2b58c16b98d2b8d1c69"
+	"17b9f5afa410df73ab770484d7b4a77f80ed0cae4de3625b135a2cec4a840583"
 	"580274ac3f60cce7789cdb69afc67b9db43da09b04fd82ad563fdec4337302d1"
 	"1d84f185830733bb38928fcaa33ffc0ba46140f7f116b4d5ad24c93a585a0ffa"
 )
