@@ -14,9 +14,9 @@ md5sums=('2f222803cb62f90bc7832fb16d829646')
 prepare() {
   cd "$srcdir/${pkgname}-R${pkgver}"
   echo "$(perl src/tools/EpicsHostArch.pl)" > EPICS_HOST_ARCH
-  echo "${pkgdir/usr}" > INSTALL_LOCATION
-  echo "${pkgdir/usr/bin}" > INSTALL_HOST_BIN
-  echo "${pkgdir/usr/lib}" > INSTALL_HOST_LIB
+  echo "${pkgdir}/usr" > INSTALL_LOCATION
+  echo "${pkgdir}/usr/bin" > INSTALL_HOST_BIN
+  echo "${pkgdir}/usr/lib" > INSTALL_HOST_LIB
 }
 
 build() {
@@ -47,7 +47,6 @@ package() {
   INSTALL_HOST_LIB="$(cat INSTALL_HOST_LIB)"
 
   make INSTALL_LOCATION=${INSTALL_LOCATION} install
-
   mv "$pkgdir/usr/bin/$EPICS_HOST_ARCH/"* "$pkgdir/usr/bin/."
   rm -rf "$pkgdir/usr/bin/$EPICS_HOST_ARCH/"
 
