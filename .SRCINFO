@@ -1,15 +1,15 @@
 pkgbase = interactive-diff-patch
-	pkgdesc = A terminal program that allows you to compare two folders of files and merge differences one at a time per each file and preview them interactivly.
-	pkgver = 0.0.8
+	pkgdesc = A terminal program that allows you to compare two folders or files and merge differences one section at a time per each file and preview them interactivly.
+	pkgver = 0.0.16
 	pkgrel = 1
 	url = https://gitlab.com/bixfliz/interactive-diff-patch
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = interactive-diff-patch-0.0.8.tgz
-	source = https://registry.npmjs.org/interactive-diff-patch/-/interactive-diff-patch-0.0.8.tgz
-	sha1sums =cca09b80b5e03c0dda27d4c62dede94dc0f662d5 
+	noextract = interactive-diff-patch-0.0.16.tgz
+	source = https://registry.npmjs.org/interactive-diff-patch/-/interactive-diff-patch-0.0.16.tgz
+	sha1sums =965e71b86c48ab4a0b3392e69a29b985bf23b93f
 
 pkgname = interactive-diff-patch
 
