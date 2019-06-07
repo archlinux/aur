@@ -6,7 +6,7 @@
 # Contributor: Anatol Pomozov
 
 pkgname=python2-autobahn
-pkgver=19.3.3
+pkgver=19.6.2
 pkgrel=1
 pkgdesc='Real-time framework for Web, Mobile & Internet of Things'
 arch=(any)
@@ -21,7 +21,7 @@ optdepends=(
 )
 source=(https://pypi.io/packages/source/a/autobahn/autobahn-$pkgver.tar.gz
         skip-test-missing-serializers.patch)
-sha256sums=('e92f40ab26fb51672c25cd301ae79a549c6ff7748effe6abdea2ef31d5363a4f'
+sha256sums=('48c2d737d33cfe1d37124db984577c5d4f44e116d05a9f8b6505721413ff9b22'
             '2d4ec4300f98cddd13c3a4d70e6ae4934a98f17b04628cadfd18654172d04f92')
 
 prepare() {
@@ -31,18 +31,18 @@ prepare() {
 
 build() {
   cd "$srcdir/autobahn-$pkgver"
-  python2 setup.py build
+  AUTOBAHN_USE_NVX=1 python2 setup.py build
 }
 
 check() {
   cd "$srcdir/autobahn-$pkgver"
-  USE_TWISTED=1 PYTHONPATH=. pytest2 -v autobahn
-  USE_ASYNCIO=1 PYTHONPATH=. pytest2 -v autobahn
+  USE_TWISTED=1 PYTHONPATH=.:build/lib.linux-$CARCH-3.7 pytest2 -v autobahn
+  USE_ASYNCIO=1 PYTHONPATH=.:build/lib.linux-$CARCH-3.7 pytest2 -v autobahn
 }
 
 package() {
 
   cd "$srcdir/autobahn-$pkgver"
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  AUTOBAHN_USE_NVX=1 python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
