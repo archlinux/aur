@@ -1,0 +1,12 @@
+## arg 1:  the new package version
+post_install() {
+    echo 'If you need Numpress support, install cython2 and do: pip2 install git+https://github.com/mobiusklein/pynumpress'
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    echo 'If you need Numpress support, install cython2 and do: pip2 install git+https://github.com/mobiusklein/pynumpress'
+}
+
+

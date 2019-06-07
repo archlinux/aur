@@ -1,8 +1,9 @@
 pkgbase = python2-pyteomics
 	pkgdesc = A framework for proteomics data analysis.
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = https://pyteomics.readthedocs.io
+	install = python2-pyteomics.install
 	changelog = CHANGELOG
 	arch = any
 	license = Apache
@@ -15,8 +16,8 @@ pkgbase = python2-pyteomics
 	optdepends = python2-numpy: for most of features, highly recommended
 	optdepends = python2-dill: needed for multiprocessing when pickle is not enough
 	options = !emptydirs
-	source = https://pypi.io/packages/source/p/pyteomics/pyteomics-4.1.1.tar.gz
-	sha256sums = 384e4e5eabdbfec39d7c38369278e386a074c7066f33052d7c313af40f1aa45e
+	source = https://pypi.io/packages/source/p/pyteomics/pyteomics-4.1.2.tar.gz
+	sha256sums = 8eef7f325bb818fe403e3c0859b36eecd22efbd4012d7610f51479d88ced72a2
 
 pkgname = python2-pyteomics
 
