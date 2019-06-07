@@ -1,6 +1,6 @@
 pkgbase = gummi-gtk2-git
 	pkgdesc = Simple LaTex editor for GTK users (addtions to the original Gummi include: commenting functionality, cut/duplicate/delete line, reopening previously open files)
-	pkgver = 0.6.7
+	pkgver = 0.6.7.3
 	pkgrel = 3
 	url = http://github.com/florianbegusch/gummi
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = gummi-gtk2-git
 	depends = gtkspell
 	depends = gtksourceview2
 	depends = poppler-glib
-	source = git+ssh://git@github.com/florianbegusch/gummi#tag=0.6.7
+	source = git+ssh://git@github.com/florianbegusch/gummi#tag=0.6.7.3
 	md5sums = SKIP
 
 pkgname = gummi-gtk2-git
