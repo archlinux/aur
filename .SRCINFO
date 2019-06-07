@@ -1,0 +1,14 @@
+pkgbase = nodejs-entropic
+	pkgdesc = The Entropic package registry's ds command-line interface
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://entropic.dev
+	install = nodejs-entropic.install
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	source = https://www.entropic.dev/ds-latest.tgz
+	md5sums = cb96ef64adcafe8b93e912028eb2fc1c
+
+pkgname = nodejs-entropic
+

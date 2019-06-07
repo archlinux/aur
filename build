@@ -1,0 +1,5 @@
+sudo pacman -R entropic <<< "Y"
+updpkgsums
+makepkg -cf
+makepkg --printsrcinfo > .SRCINFO
+makepkg -sri <<< "Y"
