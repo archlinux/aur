@@ -6,16 +6,16 @@ pkgbase = nwnsc-git
 	arch = any
 	license = custom
 	makedepends = git
-	makedepends = docker
 	makedepends = cmake
+	depends = lib32-gcc-libs
 	provides = nwnsc
 	conflicts = nwnsc
 	source = git+https://gitlab.com/glorwinger/nwnsc.git
-	source = fix-docker-file-permissions.patch
 	source = fix-steam-paths.patch
+	source = fix-free-invalid-size.patch
 	md5sums = SKIP
-	md5sums = 9dc4ff49e791f7a8a2d1a86bd12d58d7
 	md5sums = 8bec12f6ea5cdd132524337f04647164
+	md5sums = 58a10f7ebeb2597505fb72cb8efc2f7e
 
 pkgname = nwnsc-git
 

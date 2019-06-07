@@ -1,0 +1,30 @@
+From ac7c07cfa010e11df5f3e4f27eaf5994a8b2a5c9 Mon Sep 17 00:00:00 2001
+From: "Michael A. Sinclair" <squattingmonk@gmail.com>
+Date: Fri, 7 Jun 2019 15:39:49 -0500
+Subject: [PATCH] Fix "free(): invalid size" error
+
+This is a hack-y fix for an error that occurs when attempting to compile
+a script. This should enable the compiler to work when built outside of
+a docker instance.
+---
+ _NscLib/NwnArray.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/_NscLib/NwnArray.h b/_NscLib/NwnArray.h
+index fbb8675..9e06616 100644
+--- a/_NscLib/NwnArray.h
++++ b/_NscLib/NwnArray.h
+@@ -819,8 +819,8 @@ protected:
+ 	static void CallDestructors (TClass *pElements, size_t nElements)
+ 	{
+ 		//pElements; // get rid of 4100 warning
+-		for (size_t iElement = 0; iElement < nElements; iElement++)
+-			pElements [iElement] .~TClass ();
++		//for (size_t iElement = 0; iElement < nElements; iElement++)
++			//pElements [iElement] .~TClass ();
+ 	}
+ 
+ // @access Protected members
+-- 
+2.21.0
+
