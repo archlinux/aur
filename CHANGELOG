@@ -1,3 +1,8 @@
+4.1.2
+-----
+
+Bugfix: fix the standard mass value for pyrrolysine (issue #42).
+
 4.1.1
 -----
 
@@ -7,7 +12,8 @@
 
    .. note:: There is a `known issue
       <https://bitbucket.org/levitsky/pyteomics/issues/37/add-numpress-support-in-mzml#comment-51540079>`_
-      with `pynumpress` on Linux and Python 2.7, which is contingent on a fix in Cython.
+      with `pynumpress` on Linux and Python 2.7. Please install the fresh `pynumpress` from GitHub if this
+      affects you.
 
  - Bugfixes.
 
