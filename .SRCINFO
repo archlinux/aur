@@ -1,6 +1,6 @@
 pkgbase = vulkan-caps-viewer
 	pkgdesc = Vulkan Hardware Capability Viewer
-	pkgver = 1.92
+	pkgver = 1.93
 	pkgrel = 1
 	url = http://vulkan.gpuinfo.org/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = vulkan-caps-viewer
 	depends = vulkan-icd-loader
 	depends = qt5-base
 	depends = qt5-x11extras
-	source = https://github.com/SaschaWillems/VulkanCapsViewer/archive/1.92.tar.gz
+	source = https://github.com/SaschaWillems/VulkanCapsViewer/archive/1.93.tar.gz
 	source = vulkan-caps-viewer.desktop
-	sha1sums = 685a80eafd573a37f466149c35b4d0959f465847
+	sha1sums = 4ed4bf8a0e796be7546d7408c61fe8743dadea17
 	sha1sums = 7ccdb4b4487b43bb428c32994092c00ca14f594a
 
 pkgname = vulkan-caps-viewer
