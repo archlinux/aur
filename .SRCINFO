@@ -1,5 +1,5 @@
 pkgbase = python-mkl-fft
-	pkgdesc = Python hooks for Intel(R) Math Kernel Library runtime control settings.
+	pkgdesc = NumPy-based Python interface to Intel (R) MKL FFT functionality
 	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://github.com/IntelPython/mkl_fft
