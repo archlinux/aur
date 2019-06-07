@@ -2,7 +2,7 @@
 
 pkgname=jagged-alliance-deadly-games-gog
 pkgver=1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A turn-based tactics game developed as a sequel of Jagged Alliance and features new missions and a multiplayer mode."
 url="https://www.gog.com/game/jagged_alliance_deadly_games"
 license=('custom:eula')
@@ -25,7 +25,7 @@ source=("setup_jagged_alliance_-_deadly_games_${pkgver}_(28044).exe"::"gogdownlo
         "fix-permissions.sh")
 
 sha256sums=('9a0ea3c3eaacefdfe8a85e3fb29e6e5377e0d667143a4ca68ca8fea9b1d946f7'
-            'c82f0f84ff1af66da90182e11c3ce39c2b32ff8d8eb52d4a8b98073e52b92a9a'
+            '6c737cd1d3ecab4b4e2e631c6cea2025e77ea0d96b73c95af400826ec6561c2f'
             'a036530c481cb7763ed778366d046636ca1695f8da1d518e98a72a4f86b4dc14'
             '39bc6cb3a8dedb823bc2a789984d74773fcf684dff1a82b839007a4aac3d8926'
             'c7cfa75590d3845f7c8fc05098e34f4a5a7183a755199dfbeb9c695aeef63ec1'
