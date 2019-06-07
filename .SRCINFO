@@ -1,0 +1,38 @@
+pkgbase = nvidia-340xx
+	pkgdesc = NVIDIA drivers for linux, 340xx legacy branch
+	pkgver = 340.107
+	pkgrel = 90
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	makedepends = nvidia-340xx-utils=340.107
+	makedepends = linux
+	makedepends = linux-headers
+	conflicts = nvidia
+	options = !strip
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/340.107/NVIDIA-Linux-x86_64-340.107-no-compat32.run
+	source = kernel-4.11.patch
+	source = kernel-5.0.patch
+	source = kernel-5.1.patch
+	sha512sums = 0de6f182d67bd322df7ae04e74c0cde6973c55bfea47a8f2503a29f8a899cd1b801ae4b52d066628df4a4f9c84e5e7547465bdc37d1b87df47af43fdab23466f
+	sha512sums = c25d90499e1deb26129a67dd7e953be8c1e31c5770e2b8b64d03af54cf1afec1a52636e74900f8ac468692207ab8a3765a12edd581142c4d2cfd2d6e66ac7ac2
+	sha512sums = ad60f9d09b6e8d5038375f9ddaab93341958f9400f40f5175857e44c7f7002d481121dc5d677703551c3cdf24069939ac6a1861920a455acf40e637f24234a56
+	sha512sums = 4bde7d15d68d21a8254e82cb41b07e55b3fd04054251919159dc440bf3253de76d7066e69b21c33d00d5ba61f88589b5444c2b5765c54cd1c0bcd7300971d499
+
+pkgname = nvidia-340xx
+	pkgdesc = NVIDIA drivers for linux, 340xx legacy branch
+	depends = linux
+	depends = nvidia-340xx-utils=340.107
+	depends = libgl
+
+pkgname = nvidia-340xx-dkms
+	pkgdesc = NVIDIA driver sources for linux, 340xx legacy branch
+	depends = dkms
+	depends = nvidia-340xx-utils=340.107
+	depends = libgl
+	optdepends = linux-headers: Build the module for Arch kernel
+	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
+	provides = nvidia-340xx=340.107
+	conflicts = nvidia
+	conflicts = nvidia-340xx
+

@@ -1,0 +1,52 @@
+--- kernel/nv-drm.c	2018-05-25 04:16:20.000000000 +0000
++++ kernel/nv-drm.c	2019-03-04 20:57:40.065280734 +0000
+@@ -252,7 +252,11 @@
+         goto done;
+     }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0)
+     drm_gem_object_unreference_unlocked(&nv_obj->base);
++#else
++    drm_gem_object_put_unlocked(&nv_obj->base);
++#endif
+ 
+     status = RM_OK;
+ 
+--- kernel/os-interface.c	2018-05-25 04:16:20.000000000 +0000
++++ kernel/os-interface.c	2019-03-04 21:03:03.815854982 +0000
+@@ -14,6 +14,16 @@
+ #include "os-interface.h"
+ #include "nv-linux.h"
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0)
++static inline void do_gettimeofday(struct timeval *tv)
++{
++    struct timespec64 now;
++    ktime_get_real_ts64(&now);
++    tv->tv_sec = now.tv_sec;
++    tv->tv_usec = now.tv_nsec/1000;
++}
++#endif
++
+ RM_STATUS NV_API_CALL os_disable_console_access(void)
+ {
+     NV_ACQUIRE_CONSOLE_SEM();
+--- kernel/uvm/nvidia_uvm_lite.c	2019-03-04 20:57:25.815255511 +0000
++++ kernel/uvm/nvidia_uvm_lite.c	2019-03-04 21:04:25.239333050 +0000
+@@ -30,6 +30,16 @@
+ #include "nvidia_uvm_lite_counters.h"
+ #include "ctrl2080mc.h"
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0)
++static inline void do_gettimeofday(struct timeval *tv)
++{
++    struct timespec64 now;
++    ktime_get_real_ts64(&now);
++    tv->tv_sec = now.tv_sec;
++    tv->tv_usec = now.tv_nsec/1000;
++}
++#endif
++
+ //
+ // nvidia_uvm_lite.c
+ // This file contains code that is specific to the UVM-Lite mode of operation.
