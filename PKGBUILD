@@ -3,13 +3,14 @@
 
 pkgname=sway
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
 license=(MIT)
 depends=(cairo gdk-pixbuf2 json-c pango pcre swaybg ttf-font 'wlroots>=0.6.0')
 makedepends=(meson ninja scdoc wayland-protocols)
+backup=(etc/sway/config)
 optdepends=(
   'dmenu: Application launcher'
   'i3status: Status line'
