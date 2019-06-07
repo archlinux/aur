@@ -10,6 +10,8 @@ license=(Apache)
 depends=(gcc-libs)
 source=("git+$url")
 sha256sums=('SKIP')
+provides=(wasm-micro-runtime)
+conflicts=(wasm-micro-runtime)
 
 pkgver() {
   cd wasm-micro-runtime
