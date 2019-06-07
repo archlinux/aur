@@ -2,7 +2,7 @@
 
 pkgname=fantasy-general-gog
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A turn-based strategy game set in a high fantasy world."
 url="https://www.gog.com/game/fantasy_general"
 license=('custom:eula')
@@ -37,9 +37,9 @@ source=("$_filename"::"$_downloader"
         "fix-dosbox-mounts.patch"
         "fix-permissions.sh")
 
-sha256sums=("$_checksum"
+sha256sums=('a6384e64558c32ce2a66b3a1e7a50562d4057cfab9909f519829f50ce06a2fd8'
             'dccc8dd876353e3486db07bbed80e69a7e620374edc5de2dd7c9d91819a0ef03'
-            '636702307a43418d549aa5d27d0890927858b8977a3ff73fe823b4f423cca545'
+            '2e440c39796c7420c208e5ad73e5f8b0a749c5c775bc15e69d1ed3227e8338f3'
             'a47c3f6dea5ba58bd993b9a3a0f9d717de97051ea10616686bbdb44cff5d4b27'
             'f72970cd0222f582b69eb6aa877989211813df1ad4bd6775b67983ace5336672'
             '50b601b33522677a9bcaf23edc833329067bb87ccda33039c0b95f0d4ddca578'
