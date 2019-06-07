@@ -1,12 +1,16 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = arch-efiboot
+	pkgdesc = Builds bootable UEFI blobs (including kernel, initrd, ucode, cmdline) in /boot directory
+	pkgver = 1.0
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = https://github.com/xdever/arch-efiboot
+	install = arch-efiboot.install
+	arch = i386
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	license = Apache
+	depends = binutils
+	depends = pacman
+	source = git+https://github.com/xdever/arch-efiboot#commit=bc7fc9e78fefbcfa9ba5663fe3da96a470734b77
+	md5sums = SKIP
 
-pkgname = yarxi
+pkgname = arch-efiboot
 
