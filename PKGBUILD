@@ -11,8 +11,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor')
 makedepends=('cpio')
-source=("2019.1.5f1.1.5f1.pkg::https://download.unity3d.com/download_unity/6f1140cf2297/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2019.1.5f1.pkg")
-md5sums=("945feef6fb45ddfa3279e0347efc86f0")
+source=("2019.1.5f1.1.5f1.pkg::https://download.unity3d.com/download_unity/0ca0f5646614/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2019.1.5f1.pkg")
+md5sums=("4dde76fb95ee10e0d4dc9b21abfca2e8")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
