@@ -1,6 +1,6 @@
 pkgbase = kanshi-git
 	pkgdesc = Dynamic display configuration for WMs like i3/sway
-	pkgver = r67.32666e0
+	pkgver = r68.3100251
 	pkgrel = 1
 	url = https://github.com/emersion/kanshi
 	arch = x86_64

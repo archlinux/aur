@@ -1,6 +1,6 @@
 # Maintainer: Ben Widawsky <ben@bwidawsk.net>
 pkgname=kanshi-git
-pkgver=r67.32666e0
+pkgver=r68.3100251
 pkgrel=1
 pkgdesc="Dynamic display configuration for WMs like i3/sway"
 arch=(x86_64)
@@ -29,7 +29,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname%-git}"
-	sed -i "s!join_paths(mandir, section)!join_paths(mandir, 'man' + section)!" meson.build
 	mkdir -p build
 		meson build \
 		--buildtype=release \
