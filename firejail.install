@@ -1,0 +1,5 @@
+# Firejail installation file
+
+post_install() {
+  echo "In order to use the apparmor integration with firejail, install the apparmor package and run as root: 'apparmor_parser -r /etc/apparmor.d/firejail-default'"
+}
