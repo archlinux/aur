@@ -79,11 +79,12 @@ md5sums=("SKIP" "SKIP" 'cf28632239db6e02bc09bcca6bf5360f')
 prepare() {
 	# using system's libstdc++
 	# using system's libfreetype for CJK font
+  #	set the MATLAB startup folder to the value specified by the Initial working folder option in the General Preferences panel
 	msg2 'Creating desktop file'
 	gendesk -f -n --pkgname "${pkgname}" \
 		--pkgdesc "${pkgdesc}" \
 		--categories "Development;Education;Science;Mathematics;IDE" \
-	        --exec 'env LD_PRELOAD=/usr/lib/libfreetype.so.6:/usr/lib/libstdc++.so.6 /opt/matlab/bin/matlab -desktop'
+	        --exec "env LD_PRELOAD=/usr/lib/libfreetype.so.6:/usr/lib/libstdc++.so.6 ${_instdir}/bin/matlab -desktop -useStartupFolderPref"
 
 	msg2 'Extracting file installation key'
 	_fik=$(grep -o [0-9-]* ${pkgname}.fik)
