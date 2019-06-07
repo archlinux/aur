@@ -1,0 +1,22 @@
+post_install() {
+  cat <<HERE
+  # put at least the following lines into ~/.config/todo-txt.cfg
+  export TODO_DIR=/LOCATION
+  export TODO_FILE="$TODO_DIR/todo.txt"
+  export DONE_FILE="$TODO_DIR/done.txt"
+  export REPORT_FILE="$TODO_DIR/report.txt"
+HERE
+}
+
+post_upgrade() {
+  /bin/true
+}
+
+pre_remove() {
+  /bin/true
+}
+
+op=$1
+shift
+
+$op $*

@@ -1,0 +1,14 @@
+pkgbase = todofi-git
+	pkgdesc = Handle your todo-txt tasks directly from Rofi
+	pkgver = 20190407
+	pkgrel = 1
+	url = https://github.com/hugokernel/todofi.sh
+	install = todofi.install
+	arch = any
+	license = unknown
+	depends = todotxt
+	source = git+https://github.com/hugokernel/todofi.sh
+	md5sums = SKIP
+
+pkgname = todofi-git
+
