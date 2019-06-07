@@ -1,0 +1,24 @@
+pkgbase = wlay-git
+	pkgdesc = Graphical output management for Wayland
+	pkgver = r20.4e30475
+	pkgrel = 1
+	url = https://github.com/atx/wlay
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = wayland
+	makedepends = glfw-wayland
+	makedepends = glew-wayland
+	depends = wayland
+	depends = glfw-wayland
+	depends = glew-wayland
+	provides = wlay
+	conflicts = wlay
+	source = wlay::git+https://github.com/atx/wlay.git
+	sha256sums = SKIP
+
+pkgname = wlay-git
+
