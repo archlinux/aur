@@ -1,17 +1,15 @@
 pkgbase = petrify
 	pkgdesc = A tool for synthesis of Petri Nets and asynchronous circuits
-	pkgver = 4.2
-	pkgrel = 5
+	pkgver = 5.2
+	pkgrel = 1
 	url = http://www.lsi.upc.edu/~jordicf/petrify/distrib/home.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	optdepends = graphviz
-	provides = petrify
-	conflicts = petrify
-	source = http://www.lsi.upc.edu/~jordicf/petrify/distrib/petrify-4.2-linux.tgz
+	source = http://www.lsi.upc.edu/~jordicf/petrify/distrib/petrify-5.2-linux.tar.gz
 	source = LICENSE
-	md5sums = a72708915daca998cc0b36404bec6fbd
+	md5sums = 598ffbb5b830e68d43c1fbb70794951d
 	md5sums = 4b563c944fa6b67cc03d21ab3c25212e
 
 pkgname = petrify
