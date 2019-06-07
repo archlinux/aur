@@ -1,0 +1,18 @@
+pkgbase = openvas-cli
+	pkgdesc = The OpenVAS Command-Line Interface
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = http://www.openvas.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = openvas-libraries
+	depends = cmake
+	options = !makeflags
+	options = !buildflags
+	source = http://wald.intevation.org/frs/download.php/file/2397/openvas-cli-1.4.5.tar.gz
+	sha1sums = b04ffd400ddef6021190c61fe32f3f1783c63c5f
+
+pkgname = openvas-cli
+
