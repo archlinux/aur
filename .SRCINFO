@@ -1,7 +1,7 @@
 pkgbase = battle-isle2-gog
 	pkgdesc = A turn-based tactics game which tells the story about the wars on the fictional planet, Chromos.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/game/battle_isle_platinum
 	install = battle-isle2-gog.install
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = battle-isle2-gog
 	source = fix-image-cue.patch
 	source = fix-permissions.sh
 	sha256sums = cbb7bef8cbac55e6b29468ad84c956b55be5bf2792e5986544617f5af3af607b
-	sha256sums = 7cad76a7579457e41e7ea29096c1eda0aa5b57d5173973083c86190bb7cb7140
+	sha256sums = 5c0a4bbb146a98f51e6c2de791febaa98350a0b4deaecef613ba05e8f45c6859
 	sha256sums = bb5c13954638d030c740805153aa25db3f94b21e0acef895022f1967d796fed4
 	sha256sums = 0331176b6b3e5505cb81e805cd90a3130bd861403b300b46ca7445aab4b2ca1a
 	sha256sums = 9407e1f77e8ccf1ed20504c42ce13560938e0d5b2412ae249d578a96acad8719

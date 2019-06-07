@@ -11,6 +11,7 @@ cat <<EOF
 
     $script --windowed
     $script --addon
+    DOSBOX_CMD=dosbox-x $script
 EOF
     exit 0
 }
@@ -20,6 +21,7 @@ popd() { builtin popd > /dev/null; }
 
 INSTALL_DIR=/opt/battle-isle2
 HOME_DIR="$HOME"/.gog/battle-isle2
+DOSBOX_CMD=${DOSBOX_CMD:-dosbox}
 
 if which unionfs &> /dev/null; then
     USE_UNIONFS=1
@@ -63,9 +65,9 @@ if [ "$USE_UNIONFS" ]; then
 
     unionfs -o cow,relaxed_permissions "$UPPER_DIR=RW:$LOWER_DIR=RO" "$UNION_DIR"
     echo "Launching game within $UNION_DIR"
-    pushd "$UNION_DIR" && dosbox "${configs[@]}"
+    pushd "$UNION_DIR" && "$DOSBOX_CMD" "${configs[@]}"
     popd && fusermount -u "$UNION_DIR"
 else
     echo "Launching game within $INSTALL_DIR"
-    cd $INSTALL_DIR && dosbox "${configs[@]}"
+    cd $INSTALL_DIR && "$DOSBOX_CMD" "${configs[@]}"
 fi

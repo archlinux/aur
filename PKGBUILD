@@ -2,7 +2,7 @@
 
 pkgname=battle-isle2-gog
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A turn-based tactics game which tells the story about the wars on the fictional planet, Chromos."
 url="https://www.gog.com/game/battle_isle_platinum"
 license=('custom:eula')
@@ -23,7 +23,7 @@ source=("setup_battle_isle_2_${pkgver}_(28043).exe"::"gogdownloader://battle_isl
         "fix-permissions.sh")
 
 sha256sums=('cbb7bef8cbac55e6b29468ad84c956b55be5bf2792e5986544617f5af3af607b'
-            '7cad76a7579457e41e7ea29096c1eda0aa5b57d5173973083c86190bb7cb7140'
+            '5c0a4bbb146a98f51e6c2de791febaa98350a0b4deaecef613ba05e8f45c6859'
             'bb5c13954638d030c740805153aa25db3f94b21e0acef895022f1967d796fed4'
             '0331176b6b3e5505cb81e805cd90a3130bd861403b300b46ca7445aab4b2ca1a'
             '9407e1f77e8ccf1ed20504c42ce13560938e0d5b2412ae249d578a96acad8719'
