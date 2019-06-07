@@ -1,7 +1,7 @@
 # Maintainer: Damien Molinier <damien-43\N{COMMERCIAL AT}gmx.fr>
 
 pkgname=hg-evolve
-pkgver=8.5.1
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='Flexible evolution of Mercurial history'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mercurial<5.1')
 #groups=('hgext')
 url='https://www.mercurial-scm.org/doc/evolution/'
 source=("https://files.pythonhosted.org/packages/source/h/hg-evolve/hg-evolve-${pkgver}.tar.gz")
-sha512sums=('7c5d9608d03ab81fc7291edb3f0ddb016cd4b267997bf66fcb221c9c917fbd34bfb4637bbb0c60b460a32304ee45fd7e30db929312dfbaa94df17baf7947482e')
+sha512sums=('4ce1fe0fbe58b9d260079ef588a74ef16d101b5080c8d72a80bfd7caa698ee7b0a1a9b2642ab20f0c8b7ba2d1a723c00aa3417b0a223fdf55f50bf7bfb940a2e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
