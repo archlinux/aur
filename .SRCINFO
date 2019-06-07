@@ -1,0 +1,16 @@
+pkgbase = perl-safe-hole
+	pkgdesc = make a hole to the original main compartment in the Safe compartment
+	pkgver = 0.14
+	pkgrel = 1
+	url = https://metacpan.org/release/Safe-Hole
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-module-build>=0.35
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/Safe-Hole-0.14.tar.gz
+	md5sums = c18aae4e07ed374fff0357442f411e9a
+	sha512sums = 29570c5e6c2bf8709b92b62c36d24c643956535ed0cf3fa73cbe9406543f17c96d4bd37a753c02d1f77f962d76788f423816fd63d31f7f56884acefa873f30e7
+
+pkgname = perl-safe-hole
+
