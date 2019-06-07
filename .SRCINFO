@@ -1,7 +1,7 @@
 pkgbase = python-mkl-random
-	pkgdesc = Python hooks for Intel(R) Math Kernel Library runtime control settings.
+	pkgdesc = NumPy-based Python interface to Intel (R) MKL Random Number Generation functionality
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IntelPython/mkl_random
 	arch = x86_64
 	license = custom
