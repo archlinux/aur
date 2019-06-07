@@ -10,7 +10,7 @@ depends=('glib2' 'deadbeef' )
 conflicts=('deadbeef-mpris-plugin')
 options=('!libtool')
 source=(https://github.com/Serranya/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz)
-md5sums=('03923767ea3d5e7fc8ddd8c4af93b311')
+md5sums=('848323d88f9b781d6c6e6dbf9a4e04c8')
 
 build() {
   cd "${srcdir}/deadbeef-${pkgver}"
