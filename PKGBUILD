@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=libpdfium-nojs
-pkgver=3729.r2.67bce04caa
+pkgver=3770.r1.6ce1d13248
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'python2' 'gn' 'ninja')
 
 source=("git+https://pdfium.googlesource.com/pdfium"
 	"git+https://chromium.googlesource.com/chromium/src/build.git"
-	"git+https://chromium.googlesource.com/chromium/buildtools.git"
+	"git+https://chromium.googlesource.com/chromium/src/buildtools.git"
 	"libpdfium.pc"
 	)
 
