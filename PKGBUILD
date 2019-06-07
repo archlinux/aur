@@ -79,7 +79,7 @@ md5sums=("SKIP" "SKIP" 'cf28632239db6e02bc09bcca6bf5360f')
 prepare() {
 	# using system's libstdc++
 	# using system's libfreetype for CJK font
-  #	set the MATLAB startup folder to the value specified by the Initial working folder option in the General Preferences panel
+	# set the MATLAB startup folder to the value specified by the Initial working folder option in the General Preferences panel
 	msg2 'Creating desktop file'
 	gendesk -f -n --pkgname "${pkgname}" \
 		--pkgdesc "${pkgdesc}" \
