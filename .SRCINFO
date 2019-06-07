@@ -1,0 +1,16 @@
+pkgbase = perl-convert-base32
+	pkgdesc = Encoding and decoding of base32 strings
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Convert-Base32
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-exception
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-module/Convert/Convert-Base32-0.06.tar.gz
+	sha512sums = 53cbbb171d86c04bdee85418a4040eb8b6dd3bd00db4d15907a0c4dfd2e55277eafae010a7c877b28dd90594f32d9ef1862f75218d059ec45e5fff6fe0bb98fd
+
+pkgname = perl-convert-base32
+
