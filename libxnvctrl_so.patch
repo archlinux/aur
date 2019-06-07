@@ -1,0 +1,56 @@
+diff -ru nvidia-settings-340.104/src/libXNVCtrl/Makefile nvidia-settings-340.104-patched/src/libXNVCtrl/Makefile
+--- nvidia-settings-340.104/src/libXNVCtrl/Makefile	2017-09-19 18:35:55.000000000 +0200
++++ nvidia-settings-340.104-patched/src/libXNVCtrl/Makefile	2018-06-09 08:12:48.643147441 +0200
+@@ -55,10 +55,17 @@
+ .PHONY: clean
+ 
+ all: $(LIBXNVCTRL)
++all: libXNVCtrl.so
+ 
+ $(LIBXNVCTRL) : $(OBJS)
+ 	$(AR) ru $@ $(OBJS)
+ 
++libXNVCtrl.so: $(OBJS)
++	$(RM) $@ $@.*
++	$(CC) -shared -Wl,-soname=$@.0 -o $@.0.0.0 $(LDFLAGS) $^ -lXext -lX11
++	ln -s $@.0.0.0 $@.0
++	ln -s $@.0 $@
++
+ # define the rule to build each object file
+ $(foreach src,$(SRC),$(eval $(call DEFINE_OBJECT_RULE,TARGET,$(src))))
+ 
+Only in nvidia-settings-340.104-patched/src/libXNVCtrl: _out
+diff -ru nvidia-settings-340.104/src/Makefile nvidia-settings-340.104-patched/src/Makefile
+--- nvidia-settings-340.104/src/Makefile	2017-09-19 18:35:55.000000000 +0200
++++ nvidia-settings-340.104-patched/src/Makefile	2018-06-09 08:16:48.837588597 +0200
+@@ -84,6 +84,8 @@
+ XNVCTRL_DIR             ?= libXNVCtrl
+ XNVCTRL_MAKEFILE        ?= Makefile
+ XNVCTRL_ARCHIVE         ?= $(XNVCTRL_DIR)/libXNVCtrl.a
++XNVCTRL_SHARED          ?= $(XNVCTRL_DIR)/libXNVCtrl.so.0
++XNVCTRL_LIB             ?= $(XNVCTRL_SHARED)
+ XCONFIG_PARSER_DIR      ?= XF86Config-parser
+ COMMON_UTILS_DIR        ?= common-utils
+ COMMON_UNIX_DIR         ?= common-unix
+@@ -203,9 +205,9 @@
+ 	$(MKDIR) $(BINDIR)
+ 	$(INSTALL) $(INSTALL_BIN_ARGS) $< $(BINDIR)/$(notdir $<)
+ 
+-$(NVIDIA_SETTINGS): $(OBJS) $(XNVCTRL_ARCHIVE)
++$(NVIDIA_SETTINGS): $(OBJS) $(XNVCTRL_LIB)
+ 	$(call quiet_cmd,LINK) $(CFLAGS) $(LDFLAGS) $(BIN_LDFLAGS) -o $@ $(OBJS) \
+-	    $(XNVCTRL_ARCHIVE) $(LIBS)
++	    $(XNVCTRL_LIB) $(LIBS)
+ 	$(call quiet_cmd,STRIP_CMD) $@
+ 
+ # define the rule to build each object file
+@@ -215,7 +217,7 @@
+ $(eval $(call DEFINE_STAMP_C_RULE, $(OBJS),$(NVIDIA_SETTINGS_PROGRAM_NAME)))
+ 
+ # define the rule to build $(XNVCTRL_ARCHIVE)
+-$(XNVCTRL_ARCHIVE): build-xnvctrl
++$(XNVCTRL_ARCHIVE) $(XNVCTRL_SHARED): build-xnvctrl
+ 
+ build-xnvctrl:
+ 	@$(MAKE) -C $(XNVCTRL_DIR) -f $(XNVCTRL_MAKEFILE)
+Only in nvidia-settings-340.104-patched/src: _out
