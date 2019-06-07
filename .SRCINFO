@@ -10,7 +10,6 @@ pkgbase = aerc-git
 	depends = libvterm
 	depends = w3m
 	depends = dante
-	depends = python-colorama
 	provides = aerc
 	conflicts = aerc
 	source = aerc::git+https://git.sr.ht/~sircmpwn/aerc
