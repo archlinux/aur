@@ -34,7 +34,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         jack-system-ports.patch
         no-plt.diff
         "waterfox-kde-56.2.10.1.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/waterfox-kde-56.2.10.1.patch"
-        "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/dont-statically-link-libstdc%2B%2B.patch")
+        "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/dont-statically-link-libstdc%2B%2B.patch"
+        pgo_fix_missing_kdejs.patch)
 sha256sums=('SKIP'
             '6e9ec5f9c6fc5b191f9dec85b82d58eb2a51577b989bc7852e6b254d56ff13e8'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -44,8 +45,9 @@ sha256sums=('SKIP'
             '065244d3f6d88c48b7afec313b7da5a3a04377076e198954cda7951500530b84'
             'be19426cd658ea0ff0dedbdd80da6bf84580c80d92f9b3753da107011dfdd85c'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
-            'f7c6e58117e4dab6a54a2b60452897e2b2036a1f1c5f7e1116ba090d65e23bae'
-            '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8')
+            'b55833542edf8cad2b73cf36dac6c667e588dcf79a99b570c5eca645698b80f7'
+            '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
+            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e')
 
 prepare() {
   mkdir path
@@ -62,7 +64,7 @@ prepare() {
   patch -Np1 -i ../waterfox-install-dir.patch
 
   patch -Np1 -i ../dont-statically-link-libstdc++.patch
-  
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
   patch -Np1 -i ../no-plt.diff
 
@@ -162,6 +164,7 @@ END
   #patch -Np1 -i "../fix_waterfox_browser-kde_xul.patch"
   #patch -Np1 -i "../fix_crash_e10s_upload_cancel.patch"
   patch -Np1 -i "../waterfox-kde-56.2.10.1.patch"
+  patch -Np1 -i "../pgo_fix_missing_kdejs.patch"
 
   # https://bugs.archlinux.org/task/52183
   msg "Patching for Jack"
