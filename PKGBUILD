@@ -2,14 +2,14 @@
 
 pkgname=nginx-mainline-mod-rtmp
 pkgver=1.2.1
-pkgrel=14
+pkgrel=15
 
 _modname="nginx-rtmp-module"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
 
 pkgdesc="Module for mainline nginx that adds RTMP support"
 arch=('i686' 'x86_64')
-depends=('nginx-mainline')
+depends=('nginx-mainline>=1.17.0')
 url="https://github.com/arut/nginx-rtmp-module"
 license=('BSD')
 
