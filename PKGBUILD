@@ -7,49 +7,47 @@
 # Contributor: Joshua Stiefer <facedelajunk@gmail.com>
 
 pkgname=exaile
-pkgver=3.4.5
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A full-featured Amarok-style media player for GTK+"
 arch=('any')
-url="http://www.exaile.org"
+url="https://www.exaile.org/"
 license=('GPL2')
-depends=('python2'
-	'gstreamer0.10-python'
-	'gstreamer0.10-good-plugins'
-	'gstreamer0.10-base-plugins'
-	'mutagen'
+depends=('python2>=2.7'
+	'gtk3>=3.10.0'
+	'gst-python2>=1.4.0'
+	'gst-plugins-base>=1.6.0'
+	'gst-plugins-good>=1.4.0'
+	'python2-mutagen>=1.10.0'
 	'python2-dbus'
-	'pygtk>=2.10'
-	'librsvg'
-	'desktop-file-utils')
-makedepends=('make' 'help2man')
-optdepends=('pycddb: CD metadata retrieval'
-	'python2-bsddb: music collection support'
-	'gstreamer0.10-bad-plugins: support for more formats'
-	'gstreamer0.10-ugly-plugins: support for more formats'
-	'gstreamer0.10-ffmpeg: support for more formats'
-	'python2-beautifulsoup3: lyricwiki plugin'
-	'python2-notify: notifyosd plugin'
-	'notify-osd: notifyosd plugin'
-	'webkitgtk2: contextinfo plugin'
-	'pywebkitgtk: contextinfo plugin'
-	'python2-pillow: Python Imaging Library (PIL) fork. Python2 version'
-	'streamripper: streamripper plugin'
-	'moodbar: moodbar plugin'
-	'python2-mmkeys: XKeys plugin')
-source=("https://github.com/exaile-dev/exaile/archive/$pkgver.tar.gz")
-sha512sums=('9337b86ed2f6a13071615bd46a7a05a6564011a4e1fef4cb42925336864c07854cfe497d8defe65c4e287fd9546de6a51543180c5ce6a84525506e57209914be')
+	'pygobject-devel>=3.13.2'
+	'python2-cairo')
+makedepends=('help2man')
+checkdepends=('python2-mox3' 'python2-pytest')
+optdepends=('udisks2: device detection'
+	'cddb-py: CD info'
+	'spydaap: DAAP plugins (daapserver and daapclient)'
+	'python2-pylast: Last.FM integration'
+	'python2-beautifulsoup4: lyrics from lyrics.wikia.com (lyricwiki)'
+	'python2-musicbrainzngs: Musicbrainz covers'
+	'python2-feedparser: podcast plugin'
+	'webkit2gtk: Wikipedia info'
+	'libkeybinder3: Xlib-based hotkeys'
+	'librsvg: scalable icons')
+source=("https://github.com/$pkgname/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('50ab8ec7a65dc431f2bc71a302d21e59ac3d5939b89a90ec161527e1d5c0b80b8c396f8f323b2959e0b807f577e021863fe423bf26a8f7165a6dd112afca6e45')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make PREFIX="/usr"
 }
 
+check() {
+	cd "$srcdir/$pkgname-$pkgver"
+	make PYTEST="py.test2" test
+}
+
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make PREFIX="/usr" DESTDIR="$pkgdir" install
-
-	# fix for clicking files with spaces in names from nautilus
-	sed -i "s#%u#%f#" "$pkgdir/usr/share/applications/exaile.desktop"
-	sed -i "s|Exec=$pkgdir/*|Exec=/|" "$pkgdir/usr/share/dbus-1/services/org.exaile.Exaile.service"
 }
