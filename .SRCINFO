@@ -5,6 +5,7 @@ pkgbase = epics-base
 	url = https://epics-controls.org
 	arch = any
 	license = EPICS Open License
+	makedepends = perl
 	depends = readline
 	source = https://github.com/epics-base/epics-base/archive/R7.0.2.2.tar.gz
 	md5sums = 2f222803cb62f90bc7832fb16d829646

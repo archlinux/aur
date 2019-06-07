@@ -6,32 +6,46 @@ pkgdesc="Experimental Physics and Industrial Control System -- base"
 arch=('any')
 url="https://epics-controls.org"
 license=('EPICS Open License')
-#makedepends=('rpcsvc-proto')
+makedepends=('perl')
 depends=('readline')
 source=("https://github.com/epics-base/epics-base/archive/R${pkgver}.tar.gz")
 md5sums=('2f222803cb62f90bc7832fb16d829646')
 
 prepare() {
   cd "$srcdir/${pkgname}-R${pkgver}"
-  export EPICS_HOST_ARCH=`perl src/tools/EpicsHostArch.pl`
-  export INSTALL_LOCATION="$pkgdir/usr"
-  export INSTALL_HOST_BIN="${INSTALL_LOCATION}/bin"
-  export INSTALL_HOST_LIB="${INSTALL_LOCATION}/lib"
+  echo "$(perl src/tools/EpicsHostArch.pl)" > EPICS_HOST_ARCH
+  echo "${pkgdir/usr}" > INSTALL_LOCATION
+  echo "${pkgdir/usr/bin}" > INSTALL_HOST_BIN
+  echo "${pkgdir/usr/lib}" > INSTALL_HOST_LIB
 }
 
 build() {
   cd "$srcdir/${pkgname}-R${pkgver}"
+  EPICS_HOST_ARCH="$(cat EPICS_HOST_ARCH)"
+  INSTALL_LOCATION="$(cat INSTALL_LOCATION)"
+  INSTALL_HOST_BIN="$(cat INSTALL_HOST_BIN)"
+  INSTALL_HOST_LIB="$(cat INSTALL_HOST_LIB)"
   make
 }
 
 check() {
   cd "$srcdir/${pkgname}-R${pkgver}"
+  EPICS_HOST_ARCH="$(cat EPICS_HOST_ARCH)"
+  INSTALL_LOCATION="$(cat INSTALL_LOCATION)"
+  INSTALL_HOST_BIN="$(cat INSTALL_HOST_BIN)"
+  INSTALL_HOST_LIB="$(cat INSTALL_HOST_LIB)"
+
   make tapfiles
   make -s test-results
 }
 
 package() {
   cd "$srcdir/${pkgname}-R${pkgver}"
+  EPICS_HOST_ARCH="$(cat EPICS_HOST_ARCH)"
+  INSTALL_LOCATION="$(cat INSTALL_LOCATION)"
+  INSTALL_HOST_BIN="$(cat INSTALL_HOST_BIN)"
+  INSTALL_HOST_LIB="$(cat INSTALL_HOST_LIB)"
+
   make INSTALL_LOCATION=${INSTALL_LOCATION} install
 
   mv "$pkgdir/usr/bin/$EPICS_HOST_ARCH/"* "$pkgdir/usr/bin/."
