@@ -2,7 +2,7 @@
 
 pkgname=syndicate-plus-gog
 pkgver=2.1.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="In the dark and twisted cities of tomorrow, corporate syndicates compete for global dominance."
 url="https://www.gog.com/game/syndicate"
 license=('custom:eula')
@@ -27,7 +27,7 @@ source=("setup_syndicate_plus_$pkgver.exe"::"gogdownloader://syndicate/installer
 
 sha256sums=('671c5197f1a1dbe7fb3118a5f0c5595bb9d65693e1856f656eb4f572c99e1af0'
             '9972dfcceb58af7fa0ca258a1c8ecdffbd15fb817dc75f137afa9bc6bfae0256'
-            '78f956a693b56907632d701e777117f84abb4675fe4d4e8413e8618151f4e6e9'
+            '8b5dd26aff37d7614e511a401e21cb51b017a8f2ce7d77974935aa5ae7cef8a6'
             '50b601b33522677a9bcaf23edc833329067bb87ccda33039c0b95f0d4ddca578'
             'e90b33464517fb8b8102f3667755302e01fa10b7bec3d660357f802685416ca8'
             '693a4d7a323acc98ad2ff585b9f403b937367e9a7ed8f7b1993a98889422a5a8'
