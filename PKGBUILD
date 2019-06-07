@@ -13,8 +13,8 @@ depends=('unity-editor'
          'ffmpeg'
          'gzip'
          'ncurses5-compat-libs')
-source=("2019.1.5f1.1.5f1.tar.xz::https://download.unity3d.com/download_unity/6f1140cf2297/LinuxEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-2019.1.5f1.tar.xz")
-md5sums=("b67baef5db908d757c614a791d66f84a")
+source=("2019.1.5f1.1.5f1.tar.xz::https://download.unity3d.com/download_unity/0ca0f5646614/LinuxEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-2019.1.5f1.tar.xz")
+md5sums=("033e0d5f7a0c7e01be4b1fbf45a73035")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
