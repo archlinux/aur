@@ -1,6 +1,6 @@
 pkgbase = waterfox-kde
 	pkgdesc = Free, open and private browser with openSUSE's patches for better integration with KDE
-	pkgver = 56.2.10
+	pkgver = 56.2.10.1
 	pkgrel = 1
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -41,39 +41,30 @@ pkgbase = waterfox-kde
 	optdepends = alsa-lib: Audio support
 	optdepends = jack: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = waterfox=56.2.10
+	provides = waterfox=56.2.10.1
 	conflicts = waterfox
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#commit=08473aef38ecac750042cc70a112047db0007568
+	source = git+https://github.com/MrAlex94/Waterfox.git#commit=d7201d404758aa6222f80502e3dcdf016fc87a31
 	source = waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/waterfox.desktop
 	source = waterfox-install-dir.patch
-	source = waterfoxproject-kde-56.2.0.patch
-	source = firefox-kde-7339b115a221.patch::http://www.rosenauer.org/hg/mozilla/raw-file/7339b115a221/firefox-kde.patch
-	source = fix_waterfox_browser-kde_xul.patch
-	source = pgo_fix_missing_kdejs.patch
 	source = kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/distribution.ini
 	source = waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/waterfox.1
 	source = jack-system-ports.patch
-	source = fix_crash_e10s_upload_cancel.patch::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/fix_crash_e10s_upload_cancel.patch
 	source = no-plt.diff
-	source = unity-menubar-56.2.10.patch::https://bazaar.launchpad.net/~mozillateam/firefox/firefox.xenial/download/1222/unitymenubar.patch-20130215095938-1n6mqqau8tdfqwhg-1/unity-menubar.patch
+	source = waterfox-kde-56.2.10.1.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/waterfox-kde-56.2.10.1.patch
 	sha256sums = SKIP
 	sha256sums = 6e9ec5f9c6fc5b191f9dec85b82d58eb2a51577b989bc7852e6b254d56ff13e8
 	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
-	sha256sums = 911e07ecb0095337c580c94f16b5414c243b26b1080cf0bfd2fac7f76c9a6a43
-	sha256sums = f672e60e22869381e9c4cdd90353a053a0171778eca40d4664bc733822fd535f
-	sha256sums = 33a8e89e504067914665b7858061f34dc81057961f365024c891aa386afc28ce
 	sha256sums = bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e
 	sha256sums = 0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc
 	sha256sums = 3961c09993c442df97832866ddaea5bcc1ade1313beb313b5ceba60166933016
-	sha256sums = e520e4e40a7b4c09d9da3bc0179619bc595347e23a38a5bbd578df82f8c9aa12
+	sha256sums = 065244d3f6d88c48b7afec313b7da5a3a04377076e198954cda7951500530b84
 	sha256sums = be19426cd658ea0ff0dedbdd80da6bf84580c80d92f9b3753da107011dfdd85c
-	sha256sums = 73e13bf689838e4b27cdb08f040fbafb308aaf2990f5e1bf193a69a9dd736794
 	sha256sums = ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa
-	sha256sums = 5903f99dce010279e2a2f0e56d98e756c5abf9a57e27df5e2239076038868d3d
+	sha256sums = f7c6e58117e4dab6a54a2b60452897e2b2036a1f1c5f7e1116ba090d65e23bae
 
 pkgname = waterfox-kde
 

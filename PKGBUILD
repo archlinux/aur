@@ -3,7 +3,7 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=56.2.10
+pkgver=56.2.10.1
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -24,35 +24,26 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=08473aef38ecac750042cc70a112047db0007568
+_commit=d7201d404758aa6222f80502e3dcdf016fc87a31
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/waterfox.desktop"
         waterfox-install-dir.patch
-        waterfoxproject-kde-56.2.0.patch
-        "firefox-kde-$_patchrev.patch::$_patchurl/firefox-kde.patch"
-        fix_waterfox_browser-kde_xul.patch
-        pgo_fix_missing_kdejs.patch
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/distribution.ini"
         "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/waterfox.1"
         jack-system-ports.patch
-        "fix_crash_e10s_upload_cancel.patch::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/fix_crash_e10s_upload_cancel.patch"
         no-plt.diff
-        "unity-menubar-$pkgver.patch::https://bazaar.launchpad.net/~mozillateam/firefox/firefox.xenial/download/1222/unitymenubar.patch-20130215095938-1n6mqqau8tdfqwhg-1/unity-menubar.patch")
+        "waterfox-kde-56.2.10.1.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/waterfox-kde-56.2.10.1.patch")
 sha256sums=('SKIP'
             '6e9ec5f9c6fc5b191f9dec85b82d58eb2a51577b989bc7852e6b254d56ff13e8'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            '911e07ecb0095337c580c94f16b5414c243b26b1080cf0bfd2fac7f76c9a6a43'
-            'f672e60e22869381e9c4cdd90353a053a0171778eca40d4664bc733822fd535f'
-            '33a8e89e504067914665b7858061f34dc81057961f365024c891aa386afc28ce'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
             '3961c09993c442df97832866ddaea5bcc1ade1313beb313b5ceba60166933016'
-            'e520e4e40a7b4c09d9da3bc0179619bc595347e23a38a5bbd578df82f8c9aa12'
+            '065244d3f6d88c48b7afec313b7da5a3a04377076e198954cda7951500530b84'
             'be19426cd658ea0ff0dedbdd80da6bf84580c80d92f9b3753da107011dfdd85c'
-            '73e13bf689838e4b27cdb08f040fbafb308aaf2990f5e1bf193a69a9dd736794'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
-            '5903f99dce010279e2a2f0e56d98e756c5abf9a57e27df5e2239076038868d3d')
+            'f7c6e58117e4dab6a54a2b60452897e2b2036a1f1c5f7e1116ba090d65e23bae')
 
 prepare() {
   mkdir path
@@ -63,7 +54,7 @@ prepare() {
   #sed -i 's/KMOZILLAHELPER/KWATERFOXHELPER/g' $srcdir/mozilla-kde-$_patchrev.patch
   #sed -i 's|/usr/lib/mozilla/kmozillahelper|/usr/lib/waterfox/kwaterfoxhelper|g' $srcdir/mozilla-kde-$_patchrev.patch
   #sed -i 's/kmozillahelper/kwaterfoxhelper/g' $srcdir/mozilla-kde-$_patchrev.patch
-  sed -i 's/firefox/waterfox/g' $srcdir/firefox-kde-$_patchrev.patch
+  #sed -i 's/firefox/waterfox/g' $srcdir/firefox-kde-$_patchrev.patch
 
   cd Waterfox
   patch -Np1 -i ../waterfox-install-dir.patch
@@ -162,16 +153,11 @@ END
 
   msg "Patching for KDE"
   #patch -Np1 -i "../mozilla-kde-$_patchrev.patch"
-  patch -Np1 -i "../waterfoxproject-kde-56.2.0.patch"
-  patch -Np1 -i "../firefox-kde-$_patchrev.patch"
-  patch -Np1 -i "../fix_waterfox_browser-kde_xul.patch"
-  patch -Np1 -i "../fix_crash_e10s_upload_cancel.patch"
-
-  # Global Menu support
-  patch -Np1 -i "../unity-menubar-$pkgver.patch"
-
-  msg "Add missing file in Makefile for pgo builds"
-  patch -Np1 -i "../pgo_fix_missing_kdejs.patch"
+  #patch -Np1 -i "../waterfoxproject-kde-56.2.0.patch"
+  #patch -Np1 -i "../firefox-kde-$_patchrev.patch"
+  #patch -Np1 -i "../fix_waterfox_browser-kde_xul.patch"
+  #patch -Np1 -i "../fix_crash_e10s_upload_cancel.patch"
+  patch -Np1 -i "../waterfox-kde-56.2.10.1.patch"
 
   # https://bugs.archlinux.org/task/52183
   msg "Patching for Jack"
@@ -212,6 +198,8 @@ pref("intl.locale.matchOS", true);
 // Fall back to en-US search plugins if none exist for the current locale
 pref("distribution.searchplugins.defaultLocale", "en-US");
 
+// Use OS regional settings for date and time
+pref("intl.regional_prefs.use_os_locales", true);
 END
 
   install -Dm644 "$srcdir/kde.js" "$pkgdir/usr/lib/waterfox/browser/defaults/preferences/kde.js"
