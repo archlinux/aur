@@ -1,6 +1,6 @@
 pkgbase = stress-ng
 	pkgdesc = stress-ng will stress test a computer system in various selectable ways
-	pkgver = 0.09.57
+	pkgver = 0.09.59
 	pkgrel = 1
 	url = http://kernel.ubuntu.com/~cking/stress-ng/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = stress-ng
 	arch = armv6h
 	arch = aarch64
 	license = GPL
-	source = http://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.09.57.tar.xz
+	source = http://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.09.59.tar.xz
 	sha256sums = 5d006097a17ff67abfa11c13a15cf92f380c5f56eac1c69a6410b938432de576
 
 pkgname = stress-ng
