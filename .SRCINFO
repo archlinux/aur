@@ -1,0 +1,18 @@
+pkgbase = perl-string-interpolate
+	pkgdesc = Wrapper for builtin the Perl interpolation engine.
+	pkgver = 0.32
+	pkgrel = 1
+	url = https://metacpan.org/release/String-Interpolate
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-padwalker>=0
+	depends = perl-safe-hole>=0
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/String-Interpolate-0.32.tar.gz
+	md5sums = 0ea13c3b89da1dcfa437b5a70332960f
+	sha512sums = a782ec8e1084fec291342d61a68edd4d43c647aefa693923e7548f001c5f7aead27ba6721d6054fef051041af3b0beac5e9b07de88c63220c257be72fb720e93
+
+pkgname = perl-string-interpolate
+
