@@ -1,6 +1,7 @@
 # Maintainer: Cobalt Space <cobaltspace at protonmail dot com>
 # Contributor: Andrew Stubbs <andrew.stubbs at gmail dot com>
 pkgname=mimic
+_pkgname=mimic1
 pkgver=1.2.0.2
 pkgrel=2
 pkgdesc="Text-to-speech voice synthesis from the Mycroft project."
@@ -22,22 +23,22 @@ md5sums=('a2baf460aa97a949519f4185d72053f5')
 # a description of each element in the source array.
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$_pkgname-$pkgver"
 	./autogen.sh
 	./configure --prefix=/usr
 
 	#make
-	# Temporary workaround for https://github.com/MycroftAI/mimic/issues/95
+	# Temporary workaround for https://github.com/MycroftAI/mimic1/issues/95
 	make CFLAGS='-D_DEFAULT_SOURCE -O2'
 }
 
 check() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$_pkgname-$pkgver"
 	make -k check
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$_pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
