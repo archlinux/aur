@@ -1,6 +1,6 @@
 pkgbase = ledger2beancount
 	pkgdesc = Ledger to Beancount text-based converter
-	pkgver = 1.1
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://github.com/zacchiro/ledger2beancount
 	arch = any
@@ -12,9 +12,10 @@ pkgbase = ledger2beancount
 	depends = perl-datetime-format-strptime
 	depends = perl-file-basedir
 	depends = perl-getopt-long-descriptive
+	depends = perl-string-interpolate
 	depends = perl-yaml-libyaml
-	source = https://github.com/zacchiro/ledger2beancount/archive/1.1.tar.gz
-	sha256sums = fc4e07f101529f81640636ba0933701bd1f88ceae17cede0f8484049b96eb9c3
+	source = https://github.com/zacchiro/ledger2beancount/archive/1.7.tar.gz
+	sha256sums = 06e657f71b9ac68af8756a8a0f48a4652f773ebc4f4a098ebc0a1677eba1c664
 
 pkgname = ledger2beancount
 
