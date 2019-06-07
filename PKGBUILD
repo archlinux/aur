@@ -3,7 +3,7 @@
 pkgname=mimic
 _pkgname=mimic1
 pkgver=1.2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Text-to-speech voice synthesis from the Mycroft project."
 arch=(x86_64 i686)
 url="https://mimic.mycroft.ai/"
