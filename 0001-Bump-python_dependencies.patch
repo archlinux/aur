@@ -1,8 +1,8 @@
 diff --git a/synapse/python_dependencies.py b/synapse/python_dependencies.py
-index 2708f5e82..b030dfbf4 100644
+index c78f2cb15..130e445fe 100644
 --- a/synapse/python_dependencies.py
 +++ b/synapse/python_dependencies.py
-@@ -62,7 +62,7 @@ REQUIREMENTS = [
+@@ -67,7 +67,7 @@ REQUIREMENTS = [
      "six>=1.10",
      # prometheus_client 0.4.0 changed the format of counter metrics
      # (cf https://github.com/matrix-org/synapse/issues/4001)
@@ -11,12 +11,3 @@ index 2708f5e82..b030dfbf4 100644
  
      # we use attr.s(slots), which arrived in 16.0.0
      # Twisted 18.7.0 requires attrs>=17.4.0
-@@ -76,7 +76,7 @@ REQUIREMENTS = [
-     # As of requests 2.21, requests does not yet support urllib3 1.25.
-     # (If we do not pin it here, pip will give us the latest urllib3
-     # due to the dep via sentry-sdk.)
--    "urllib3<1.25",
-+    "urllib3<1.26",
- ]
- 
- CONDITIONAL_REQUIREMENTS = {

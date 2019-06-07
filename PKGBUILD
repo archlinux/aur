@@ -2,8 +2,8 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=0.99.2.r285.g8cbbedaa2
-pkgrel=2
+pkgver=1.0.0rc1.r2.g8dc1eb669
+pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
 url="https://github.com/matrix-org/synapse"
@@ -38,7 +38,7 @@ source=("git://github.com/matrix-org/synapse.git#branch=develop"
 md5sums=('SKIP'
          '276a99050f40601089255ea168bb7620'
          'ecd9f66fb57fe1a2e1e2df07a460a35b'
-         '4a2e1a8f77529cef49d0f8ed673dcfdb')
+         '9c6b82545e5ca8ee36a9740bb706b67e')
 
 backup=('etc/synapse/log_config.yaml')
 install=synapse.install
