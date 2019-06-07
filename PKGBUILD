@@ -6,7 +6,7 @@
 
 pkgname=wxlua-git
 pkgver=WX_3_1_0.7d9d59.r17.gead9b38
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of bindings to the wxWidgets library for the Lua programming language - fork with Lua 5.3 support"
 arch=('i686' 'x86_64' 'armv7h' 'armv8')
 url="https://github.com/pkulchenko/wxlua"
@@ -38,6 +38,8 @@ build() {
 package() {
     cd ${pkgname%-git}/wxLua/build
     make DESTDIR="$pkgdir/" install
+    rm $pkgdir/usr/bin/lua
+    rm $pkgdir/usr/bin/luac
 
     # mv lua module
     install -d "$pkgdir/usr/lib/lua/5.3"

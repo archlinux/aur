@@ -1,7 +1,7 @@
 pkgbase = wxlua-git
 	pkgdesc = A set of bindings to the wxWidgets library for the Lua programming language - fork with Lua 5.3 support
 	pkgver = WX_3_1_0.7d9d59.r17.gead9b38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkulchenko/wxlua
 	arch = i686
 	arch = x86_64
