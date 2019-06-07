@@ -3,7 +3,7 @@
 # Maintainer: Netanel Shine <netanel at archlinux.org.il>
 
 pkgname=trace-cmd-git
-pkgver=2.7.r368.gff13b78
+pkgver=2.7.r406.gb43f658
 pkgrel=1
 pkgdesc="user-space front-end command-line tool for Ftrace, inclduing the GUI interface application kernelshark as well as trace-graph and trace-view."
 arch=('x86_64' 'aarch64')
@@ -19,9 +19,8 @@ provides=("trace-cmd")
 conflicts=("trace-cmd")
 source=(
   "git://git.kernel.org/pub/scm/linux/kernel/git/rostedt/trace-cmd.git"
-  "001_ksdir_ksmainwindow.patch"
 )
-sha256sums=("SKIP" "SKIP")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/trace-cmd"
@@ -37,35 +36,20 @@ prepare() {
 
   ## fixes for getting kernelshark installed correctly to /usr
 
-  # this implements QStandardPaths in KsMainWindow.cpp
-  patch -p1 < "${srcdir}/001_ksdir_ksmainwindow.patch"
-
-  # pass down Release as build type
+  # pass down Release as build type to strip build directories
+  # from final binaries
   sed -i.cip 's|\(-D_INSTALL_PREFIX=\)|-DCMAKE_BUILD_TYPE=Release \1|g' \
     Makefile
 
   # all work below is within kernel-shark/
   cd kernel-shark
 
-  # KS_DIR is the random local build directory, relocate it to /usr
-  sed -i.ks 's|@KS_DIR@|@_INSTALL_PREFIX@/share/kernelshark|g' \
-    build/ks.desktop.cmake
-  sed -i.ks 's|@KS_DIR@|@_INSTALL_PREFIX@|g' build/deff.h.cmake
+  # the build sets TRACECMD_BIN_DIR=(local build path) instead of /usr/bin/
   sed -i.tb 's|@TRACECMD_BIN_DIR@|@_INSTALL_PREFIX@/bin|g' build/deff.h.cmake
-
-  # this ends up hard-coded to the build directory, with the above
-  # patches it's no longer useful so set it to a safe directory
-  sed -i.ksc 's|KS_CONF_DIR "\${KS_DIR}|KS_CONF_DIR "/tmp|g' CMakeLists.txt
 
   # the gcc/g++ debug flag is enabled even when _DEBUG=0 which causes
   # the build directory to get coded into the libraries
   sed -i.dbg 's/-Wall -g/-Wall/g' CMakeLists.txt
-
-  # this source is hard-coded to KS_DIR/lib/plugin-* (bug?)
-  sed -i.plg 's|lib/plugin|lib/kshark/plugin|g' src/KsUtils.cpp
-
-  # this tries to use KS_DIR for open/close of files
-  sed -i.hm 's/KS_DIR/QDir::homePath()/g' src/KsCaptureDialog.cpp
 }
 
 build() {
@@ -81,8 +65,4 @@ package() {
   # pkg-config --cflags --libs $PYTHON_VERS
   make PYTHON_VERS=python3 prefix="/usr" DESTDIR="$pkgdir" \
     install install_doc install_gui
-
-  # referenced in the .desktop file
-  install -Dm0644 "${srcdir}/trace-cmd/kernel-shark/icons/ksharkicon.png" \
-    "${pkgdir}/usr/share/kernelshark/icons/ksharkicon.png"
 }
