@@ -7,22 +7,39 @@ pkgdesc='Vulkan Hardware Capability Viewer'
 url='http://vulkan.gpuinfo.org/'
 arch=('x86_64')
 license=('GPL2')
-source=('vulkan-caps-viewer.desktop'
-        'android_icon_256.png')
-sha1sums=('7ccdb4b4487b43bb428c32994092c00ca14f594a'
-          '96c802c82c45626f3b6bdbb846d0f1f7e67ab28e')
-sha1sums_x86_64=('e1fed300f8fc270ca661beccbd0a7bd7ebb8eea1')
-source_x86_64=("http://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver//./_}_linux64.tar.gz")
-depends=('vulkan-icd-loader' 'qt5-base' 'qt5-x11extras')
+source=("https://github.com/SaschaWillems/VulkanCapsViewer/archive/$pkgver.tar.gz"
+        'vulkan-caps-viewer.desktop')
+sha1sums=('685a80eafd573a37f466149c35b4d0959f465847'
+          '7ccdb4b4487b43bb428c32994092c00ca14f594a')
+makedepends=(qt5-base)
+depends=(vulkan-icd-loader qt5-base qt5-x11extras)
+
+prepare() {
+  if [ -d build ]
+  then
+    msg2 "Build dir already exist; performing an incremental build"
+    msg2 "If you want to perform a clean build, please delete $(realpath build)"
+    return
+  fi
+
+  mkdir build
+  cd build
+  export PREFIX="$pkgdir"
+  qmake ../VulkanCapsViewer-$pkgver/vulkanCapsViewer.pro
+}
+
+build() {
+  make -C build
+}
 
 package() {
-  cd "${srcdir}"
-
   # App
-  install -dm755 "${pkgdir}"/usr/bin
-  install -m755 vulkanCapsViewer "${pkgdir}"/usr/bin
+  install -dm755 "$pkgdir"/usr/bin
+  install -m755 build/Win32/Release/vulkanCapsViewer "$pkgdir"/usr/bin
 
   # Desktop shortcut
-  install -Dm644 vulkan-caps-viewer.desktop "${pkgdir}"/usr/share/applications/vulkan-caps-viewer.desktop
-  install -Dm644 android_icon_256.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
+  install -Dm644 vulkan-caps-viewer.desktop \
+    "$pkgdir"/usr/share/applications/vulkan-caps-viewer.desktop
+  install -Dm644 VulkanCapsViewer-$pkgver/gfx/android_icon_256.png \
+    "$pkgdir"/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
 }
