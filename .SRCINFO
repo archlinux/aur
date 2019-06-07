@@ -1,6 +1,6 @@
 pkgbase = menutray
 	pkgdesc = An application menu through a GTK+ tray status icon.
-	pkgver = 0.52
+	pkgver = 0.53
 	pkgrel = 1
 	url = https://github.com/trizen/menutray
 	install = readme.install
@@ -12,8 +12,8 @@ pkgbase = menutray
 	depends = perl-linux-desktopfiles>=0.25
 	optdepends = perl-gtk3: for Gtk3 support (--gtk3)
 	optdepends = perl-file-desktopentry: locale support
-	source = menutray-0.52.tar.gz::https://github.com/trizen/menutray/archive/0.52.tar.gz
-	sha256sums = 6622fff0074096dd332039ca90f083ca9e4e964dfda9f2a633b98198fc1e32d2
+	source = menutray-0.53.tar.gz::https://github.com/trizen/menutray/archive/0.53.tar.gz
+	sha256sums = 5d3da38bf626f0969221ef5db1cbd7d49ab1c1506aa423967b6d59780ee3b360
 
 pkgname = menutray
 
