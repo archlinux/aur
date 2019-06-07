@@ -11,3 +11,14 @@ index 0878dc83..d3f52403 100644
    end
    local icon = icons[file] or iconFilter(wx.wxBitmap(file), self.config.imagetint)
    icons[file] = icon
+--- a/src/editor/package.lua	2019-06-07 10:00:15.111002480 +0300
++++ b/src/editor/package.lua	2019-06-07 10:01:29.441242374 +0300
+@@ -463,7 +463,7 @@
+     end
+   end
+ 
+-  if not editor.ReplaceTargetRaw then
++  if not self:IsValidProperty(editor, "ReplaceTargetRaw") then
+     editor.ReplaceTargetRaw = function(self, ...)
+       self:ReplaceTarget("")
+       self:InsertTextDyn(self:GetTargetStart(), ...)
