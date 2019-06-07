@@ -1,27 +1,23 @@
 # Maintainer: vtyulb <vtyulb@vtyulb.ru>
 
 pkgname=kumir2-git
-pkgver=17.02.2017
+pkgver=08.07.2019
 pkgrel=1
 pkgdesc="An educational programming language and IDE in Russian schools"
-url="http://lpm.org.ru/kumir"
-arch=('x86_64' 'i686')
+url="https://www.niisi.ru/kumir/index.htm"
+arch=('x86_64')
 license=('GPL2')
 makedepends=('git' 'cmake' 'python')
-depends=('qt4')
+depends=('qt5-base')
 replaces=("kumir")
 
 build() {
   cd "${srcdir}"
-  git clone https://github.com/victor-yacovlev/kumir2.git
+  git clone https://git.niisi.ru/kumir/kumir2.git
   cd "${srcdir}/kumir2"
-  cd src/plugins
-  cat CMakeLists.txt | grep -v "llvmcodegenerator" > CMakeLists1
-  mv CMakeLists1 CMakeLists.txt
-  cd ../..
   mkdir build
   cd build
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr/" ../
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr/" -DUSE_QT=5 ../
   make
 }
 
