@@ -2,7 +2,7 @@
 
 pkgname=jagged-alliance-gog
 pkgver=1.13
-pkgrel=2
+pkgrel=3
 pkgdesc="A turn-based tactics game that takes place on the fictional South Atlantic island of Metavira."
 url="https://www.gog.com/game/jagged_alliance"
 license=('custom:eula')
@@ -22,7 +22,7 @@ source=("setup_jagged_alliance_${pkgver}_(28044).exe"::"gogdownloader://jagged_a
         "fix-permissions.sh")
 
 sha256sums=('03b2652cc2352fd84e98344e019503aa33ef7eb8a884112a5c219f07c6366aa6'
-            '0859a50cc4aaa025bbb4211f3b80ea11e997f6da12408c23c9a3f7b1cc9af03c'
+            '1e60766a62965cb1fa816f221f597afa4070949e3440f5152374a63cb7bbf1ff'
             'ea3f11dce620e6f1f9c2d6712c9168fe3216e6df5751f01f2ead022e1e746874'
             'd6ba58df35379ce0662f73ecdf0e5b45b28950b1584f55c2dcfa675a4c432389'
             'aaa680209f8f979e8250983c621268a30bfac3ca551f4dee50e88704bffb8059'
