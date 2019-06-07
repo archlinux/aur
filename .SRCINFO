@@ -1,15 +1,15 @@
 pkgbase = python-plaidml-keras
 	pkgdesc = PlaidML Keras backend implementation
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/plaidml/plaidml
 	arch = x86_64
-	license = AGPL3
+	license = Apache 2.0
 	depends = python-plaidml
 	depends = python-keras-applications
 	depends = python-keras-preprocessing
-	source = https://files.pythonhosted.org/packages/py2.py3/p/plaidml-keras/plaidml_keras-0.5.0-py2.py3-none-any.whl
-	sha256sums = fbe8c2913e0aa7cd14e5f4133ada54c34da0dec3465478f025decbf932991d19
+	source = https://files.pythonhosted.org/packages/py2.py3/p/plaidml-keras/plaidml_keras-0.6.0-py2.py3-none-any.whl
+	sha256sums = edc9335cab5a62fdf8961df8cf099758d31d813d3cf461ff826ca8d778ea6175
 
 pkgname = python-plaidml-keras
 
