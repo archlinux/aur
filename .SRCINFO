@@ -1,0 +1,19 @@
+pkgbase = vim-zig-git
+	pkgdesc = Vim configuration for Zig
+	pkgver = r76.d5b47fe
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/ziglang/zig.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	optdepends = zig
+	provides = vim-zig
+	conflicts = vim-zig
+	source = git+https://github.com/ziglang/zig.vim.git
+	md5sums = SKIP
+
+pkgname = vim-zig-git
+
