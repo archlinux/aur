@@ -11,6 +11,7 @@ pkgbase = r-pillar
 	depends = r-fansi
 	depends = r-rlang
 	depends = r-utf8
+	depends = r-vctrs
 	source = http://cran.r-project.org/src/contrib/pillar_1.4.1.tar.gz
 	md5sums = a87c721be674d8f889d7b79db9c07837
 
