@@ -1,12 +1,14 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = eless
+	pkgdesc = A Better 'less' - A bash script that loads emacs with minimal view-mode config
+	pkgver = 0.5
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://eless.scripter.co
+	arch = any
+	license = MIT
+	depends = bash
+	depends = emacs
+	source = https://github.com/kaushalmodi/eless/archive/v0.5.tar.gz
+	md5sums = 66e282b332feeabaf003512cc817a180
 
-pkgname = yarxi
+pkgname = eless
 
