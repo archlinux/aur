@@ -1,4 +1,4 @@
-# Maintainer: Kirill Gagarski <gagarin.gtn at gmail dot com>
+# Maintainer: Johan Manuel <johan29.manuel at gmail.com>
 # Original authors: Jordi Cortadella, Michael Kishinevsky, Alex Kondratyev, Luciano Lavagno, Enric Pastor and Alexandre Yakovlev
 pkgname=petrify
 pkgver=5.2
