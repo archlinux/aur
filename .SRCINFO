@@ -1,0 +1,18 @@
+pkgbase = vulkan-amdgpu-pro
+	pkgver = 19.10_785425
+	pkgrel = 1
+	url = http://www.amd.com
+	arch = x86_64
+	license = custom:AMD
+	makedepends = wget
+	depends = vulkan-icd-loader
+	provides = vulkan-driver
+	conflicts = amdvlk-git
+	conflicts = amdvlk-deb
+	conflicts = amdvlk
+	conflicts = amdgpu-pro-vulkan
+	source = https://drivers.amd.com/drivers/linux/amdgpu-pro-19.10-785425-ubuntu-18.04.tar.xz
+	sha256sums = a0bd71417d0c0ddd404be8c86653135c4e0190a54bb8dc62eef231d5275f37bd
+
+pkgname = vulkan-amdgpu-pro
+
