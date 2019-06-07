@@ -2,7 +2,7 @@
 
 pkgbase=python-control
 pkgname=('python2-control' 'python-control')
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Implements basic operations for analysis and design of feedback control systems in Python"
 arch=('any')
@@ -16,7 +16,7 @@ checkdepends=('python-nose' 'python2-nose' 'python-slycot-git')
 options=('staticlibs')
 source=("https://github.com/python-control/python-control/archive/${pkgver}.tar.gz"
         "LICENSE")
-md5sums=('6c741f1cbc69c5407ad275724c186e0f'
+md5sums=('23ff85f041cacd0ab4db0cdf540aa5d7'
          '5e21e2b8826c3345f50711d5634bc975')
 
 prepare() {
