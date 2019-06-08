@@ -1,10 +1,9 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-asdf
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
-#"python-${_pyname}-doc")
+pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('i686' 'x86_64')
 url="https://asdf.readthedocs.io/en/latest/"
@@ -16,9 +15,10 @@ makedepends=('python>=3.3'
              'python-yaml>=3.10'
              'python-six>=1.9.0'
              'python-astropy-helpers>=3.1'
-             'python-semantic-version>=2.3.1')
-#            'python-sphinx-astropy'
-#            'graphviz')
+             'python-semantic-version>=2.3.1'
+             'python-pytest'
+             'python-sphinx-astropy'
+             'graphviz')
 checkdepends=('python-astropy' 'python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('bdefc8f1772eadb48265027fd3bf33d1')
@@ -33,8 +33,9 @@ build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py build --use-system-libraries --offline
 
-#   msg "Building Docs"
-#   python setup.py build_docs
+    msg "Building Docs"
+    python setup.py bdist_egg
+    python setup.py build_docs
 }
 
 check() {
@@ -47,20 +48,21 @@ package_python-asdf() {
     depends=('python>=3.3' 'python-numpy>=1.8' 'python-jsonschema>=2.3.0' 'python-yaml>=3.10' 'python-six>=1.9.0' 'python-semantic-version>=2.3.1')
     optdepends=('python-astropy>=3.0: Support for units, time, transform, wcs, or running the tests'
                 'python-lz4: Support for lz4 compression'
-                'python-pytest: For testing')
+                'python-pytest: For testing'
+                'python-asdf-doc: Documentation for Python-ASDF')
 #               'python-pytest-astropy: For testing')
-#               'python-asdf-doc: Documentation for Python-ASDF')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" licenses/*
+    install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --use-system-libraries --offline
 }
 
-#package_python-asdf-doc() {
-#    pkgdesc="Documentation for Python ASDF module"
-#    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
-#
-#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
-#}
+package_python-asdf-doc() {
+    pkgdesc="Documentation for Python ASDF module"
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+
+    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+}
