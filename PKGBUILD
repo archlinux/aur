@@ -75,13 +75,13 @@ package() {
   install -Dm644 ../vendor.js "$pkgdir/opt/waterfox-alpha/browser/defaults/preferences/vendor.js"
 
   for i in 16 32 64 48 128; do
-      install -Dm644 "$srcdir/Waterfox/obj-x86_64-pc-linux-gnu/dist/waterfox/browser/chrome/icons/default/default$i.png" \
+      install -Dm644 "$srcdir/Waterfox/obj-x86_64-pc-linux-gnu/dist/waterfox-alpha/browser/chrome/icons/default/default$i.png" \
         "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/waterfox-alpha.png"
   done
 
-  install -Dm644 "$srcdir/Waterfox/obj-x86_64-pc-linux-gnu/dist/waterfox/browser/chrome/icons/default/default128.png" \
+  install -Dm644 "$srcdir/Waterfox/obj-x86_64-pc-linux-gnu/dist/waterfox-alpha/browser/chrome/icons/default/default128.png" \
     "$pkgdir/usr/share/icons/hicolor/64x64/apps/waterfox-alpha.png"
-  install -Dm644 "$srcdir/Waterfox/obj-x86_64-pc-linux-gnu/dist/waterfox/browser/chrome/icons/default/default128.png" \
+  install -Dm644 "$srcdir/Waterfox/obj-x86_64-pc-linux-gnu/dist/waterfox-alpha/browser/chrome/icons/default/default128.png" \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/waterfox-alpha.png"
   install -Dm644 browser/branding/official/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/waterfox-alpha.png"
