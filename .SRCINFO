@@ -1,0 +1,27 @@
+pkgbase = thunderbird-beta-bin
+	pkgdesc = Standalone Mail/News reader - Bleeding edge binary version, german
+	pkgver = 67.0b3
+	pkgrel = 1
+	url = https://www.mozilla.org/thunderbird
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = MPL
+	depends = dbus-glib
+	depends = gtk3
+	depends = libxt
+	depends = nss
+	optdepends = hunspell: Spell checking
+	optdepends = hyphen: Hyphenation
+	optdepends = libcanberra: Sound support
+	provides = thunderbird=67.0b3
+	conflicts = thunderbird-beta
+	source = https://ftp.mozilla.org/pub/thunderbird/releases/67.0b3/linux-x86_64/de/thunderbird-67.0b3.tar.bz2
+	source = thunderbird-beta-bin-de.desktop
+	source = vendor.js
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = thunderbird-beta-bin
+
