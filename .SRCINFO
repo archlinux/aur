@@ -1,8 +1,9 @@
 pkgbase = xmage
 	pkgdesc = Java-based program for playing Magic:The Gathering, including client and server
 	pkgver = 1.4.36V2
-	pkgrel = 0
+	pkgrel = 1
 	url = http://xmage.de
+	install = xmage.install
 	arch = any
 	license = MIT
 	makedepends = detox

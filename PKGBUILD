@@ -2,7 +2,7 @@
 
 pkgname=xmage
 pkgver=1.4.36V2
-pkgrel=0
+pkgrel=1
 _java_version=8u201
 _java_dir=jre1.8.0_201
 
@@ -14,6 +14,7 @@ license=('MIT')
 
 makedepends=('detox')
 optdepends=('wmname: change window manager name for compatibility with certain WMs')
+install="${pkgname}.install"
 
 # Due to compatibility issues with the current version of java in the repositories,
 # xmage now installs a dedicated version of java to /usr/share/xmage/java
