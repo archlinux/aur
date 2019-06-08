@@ -1,0 +1,27 @@
+pkgbase = libcloudstorage-git
+	pkgdesc = C++ library providing access to files located in various cloud services
+	pkgver = 1.2.r385.gf7b5d81
+	pkgrel = 1
+	url = https://code.videolan.org/videolan/libcloudstorage
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = boost
+	depends = boost-libs
+	depends = crypto++
+	depends = curl
+	depends = fuse2
+	depends = jsoncpp
+	depends = libmicrohttpd
+	depends = mega-sdk
+	depends = tinyxml2
+	provides = libcloudstorage
+	conflicts = libcloudstorage
+	source = git+https://code.videolan.org/videolan/libcloudstorage.git
+	source = 0001-Fix-compilation-with-newer-crypto.patch
+	sha256sums = SKIP
+	sha256sums = 6e44c6986af6b1717fca2287324c58264266ab8e80d5aabb55f50f04dd7f22de
+
+pkgname = libcloudstorage-git
+

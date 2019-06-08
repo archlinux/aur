@@ -1,0 +1,34 @@
+From 9dc275356d40ade924b1e45094fc4ce2a35958a1 Mon Sep 17 00:00:00 2001
+From: Chocobo1 <Chocobo1@users.noreply.github.com>
+Date: Sun, 9 Jun 2019 01:03:27 +0800
+Subject: [PATCH] Fix compilation with newer crypto++
+
+---
+ src/Utility/CryptoPP.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Utility/CryptoPP.cpp b/src/Utility/CryptoPP.cpp
+index b8f896c..72c4ca9 100644
+--- a/src/Utility/CryptoPP.cpp
++++ b/src/Utility/CryptoPP.cpp
+@@ -47,7 +47,7 @@ std::string CryptoPP::sha256(const std::string& message) {
+ std::string CryptoPP::hmac_sha256(const std::string& key,
+                                   const std::string& message) {
+   std::string mac;
+-  ::CryptoPP::HMAC<::CryptoPP::SHA256> hmac((byte*)key.c_str(), key.length());
++  ::CryptoPP::HMAC<::CryptoPP::SHA256> hmac((::CryptoPP::byte*)key.c_str(), key.length());
+   ::CryptoPP::StringSource(
+       message, true,
+       new ::CryptoPP::HashFilter(hmac, new ::CryptoPP::StringSink(mac)));
+@@ -59,7 +59,7 @@ std::string CryptoPP::hmac_sha256(const std::string& key,
+ std::string CryptoPP::hmac_sha1(const std::string& key,
+                                 const std::string& message) {
+   std::string mac;
+-  ::CryptoPP::HMAC<::CryptoPP::SHA1> hmac((byte*)key.c_str(), key.length());
++  ::CryptoPP::HMAC<::CryptoPP::SHA1> hmac((::CryptoPP::byte*)key.c_str(), key.length());
+   ::CryptoPP::StringSource(
+       message, true,
+       new ::CryptoPP::HashFilter(hmac, new ::CryptoPP::StringSink(mac)));
+-- 
+2.21.0
+
