@@ -1,7 +1,8 @@
+# Maintainer: Glen D'souza <gdsouza@linuxmail.org>
 # Maintainer: aimileus <me at aimileus dot nl>
 pkgname=fedora-arm-installer
 _pkgname=arm-image-installer
-pkgver=2.5
+pkgver=2.12
 pkgrel=1
 pkgdesc="Script to automate the installation of Fedora on ARM boards"
 arch=('any')
@@ -18,5 +19,5 @@ package() {
 	install -Dm644 boards.d/* -t "$pkgdir/usr/share/arm-image-installer/boards.d"
 	install -Dm755 update-uboot -t "$pkgdir/usr/bin/"
 	install -Dm755 arm-image-installer -t "$pkgdir/usr/bin/"
-	install -Dm755 rpi-firmware-update -t "$pkgdir/usr/bin"
+	install -Dm755 rpi-uboot-update -t "$pkgdir/usr/bin/"
 }
