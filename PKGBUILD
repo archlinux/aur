@@ -1,7 +1,7 @@
  # Maintainer: Dilawar Singh <dilawar.s.rajput@gmail.com
 pkgname=smoldyn
 _pkgname=smoldyn
-pkgver=2.58
+pkgver=2.60
 pkgrel=1
 epoch=
 pkgdesc="A particle-based biochemical simulator for modeling molecular diffusion, surface interactions, and chemical reactions"
