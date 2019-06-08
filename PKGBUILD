@@ -3,7 +3,7 @@
 pkgname=('python-astroplan')
 #'python-astroplan-doc')
 pkgver=0.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A python package to help astronomers plan observations"
 arch=('i686' 'x86_64')
 url="https://astroplan.readthedocs.io/en/latest/"
@@ -15,16 +15,23 @@ makedepends=('cython'
 #            'python-sphinx'
 #            'python-matplotlib'
 #            'python-astroquery')
-#checkdepends=('python-matplotlib' 'python-pytest-mpl')
+checkdepends=('python-matplotlib' 'python-pytest-mpl')
 source=("https://files.pythonhosted.org/packages/source/a/astroplan/astroplan-${pkgver}.tar.gz"
-        'python-astroplan.patch')
+        'correct_ephem_name.patch'
+        'disable_failing_assertion.patch'
+        'fix_doctest_failures.patch')
 md5sums=('8ac6dec44aadae0b98775658856a4f01'
-         'dbeae8fbb4ac0945676630db8d219c59')
+         '46f97fe32bba5028f27628bdde8c9da3'
+         '7b5c558e1b8f87b614913a0657623720'
+         'd74e4eaf50f34476d90476264354fbcc')
 
 prepare() {
     cd ${srcdir}/astroplan-${pkgver}
 
-    patch -Np1 -i "${srcdir}/python-astroplan.patch"
+    sed -i -e '/auto_use/s/True/False/' setup.cfg
+    patch -Np1 -i "${srcdir}/correct_ephem_name.patch"
+    patch -Np1 -i "${srcdir}/disable_failing_assertion.patch"
+    patch -Np1 -i "${srcdir}/fix_doctest_failures.patch"
 }
 
 build() {
@@ -35,11 +42,11 @@ build() {
 #   python setup.py build_docs
 }
 
-#check() {
-#    cd ${srcdir}/astroplan-${pkgver}
-#
-#    python setup.py test
-#}
+check() {
+    cd ${srcdir}/astroplan-${pkgver}
+
+    python setup.py test
+}
 
 package_python-astroplan() {
     depends=('python>=3.5' 'python-numpy>=1.10' 'python-astropy>=1.3' 'python-pytz')
