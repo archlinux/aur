@@ -1,4 +1,4 @@
-pkgbase = thunderbird-beta-bin
+pkgbase = thunderbird-beta-bin-de
 	pkgdesc = Standalone Mail/News reader - Bleeding edge binary version, german
 	pkgver = 67.0b3
 	pkgrel = 1
@@ -23,5 +23,5 @@ pkgbase = thunderbird-beta-bin
 	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = thunderbird-beta-bin
+pkgname = thunderbird-beta-bin-de
 
