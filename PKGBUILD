@@ -1,7 +1,7 @@
 # Maintainer: X3n0m0rph59 <x3n0m0rph59@gmail.com>
 pkgname=precached
 pkgver=1.6.1
-pkgrel=8
+pkgrel=9
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
@@ -69,6 +69,7 @@ package() {
   install -m 644 "support/systemd/precached.preset" "$pkgdir/usr/lib/systemd/system-preset/50-precached.preset"
   install -m 644 "support/systemd/precached-user.preset" "$pkgdir/usr/lib/systemd/user-preset/50-precached.preset"
   install -m 644 "support/dbus/org.precached.precached1.conf" "$pkgdir/etc/dbus-1/system.d/"
+  install -m 644 "support/desktop/precached-trigger.desktop" "$pkgdir/etc/xdg/autostart/precached-trigger.desktop"
   
   install -m 644 "support/man/precachedtop.1" "$pkgdir/usr/share/man/man1/"
   install -m 644 "support/man/precached-trigger.1" "$pkgdir/usr/share/man/man1/"
