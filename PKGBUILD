@@ -3,8 +3,8 @@
 # Contributor: François Charette <firmicus at gmx dot net>
 
 pkgname=perl-xml-dom
-pkgver=1.44
-pkgrel=10
+pkgver=1.46
+pkgrel=1
 pkgdesc="Implements Level 1 of W3's DOM"
 arch=('any')
 url="http://search.cpan.org/dist/XML-DOM"
@@ -13,7 +13,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl-xml-regexp' 'libxml-perl>=0.07' 'perl-libwww')
 options=('!emptydirs')
 source=(http://www.cpan.org/authors/id/T/TJ/TJMATHER/XML-DOM-${pkgver}.tar.gz) 
-md5sums=('1ec2032a06e5762984f7a332c199c205')
+md5sums=('91ec808de616a2af54a5118619f8f9cc')
 
 build() {
   cd ${srcdir}/XML-DOM-${pkgver}
