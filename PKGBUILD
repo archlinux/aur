@@ -5,7 +5,7 @@
 
 _name=internetarchive
 pkgname=python2-$_name
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="Wrapper for the various Internet Archive APIs (IA-S3, Metadata API, etc)"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('python2-ujson: faster json parsing'
             'cython2: speedups')
 checkdepends=('python2-responses' 'python2-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jjjake/internetarchive/archive/v$pkgver.tar.gz")
-sha256sums=('8825285164e1ccd33bbd4bcb04411f360c3023adff3359adcf658b37441de6a8')
+sha256sums=('dea42a8ebf6ba1f2eadb2b68ddcbadae9a4ce616077fa828529eebf1bc03ed5b')
 
 build() {
   cd "$_name-$pkgver"
