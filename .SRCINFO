@@ -1,14 +1,14 @@
 pkgbase = acpi_call-ck
 	pkgdesc = A linux-ck kernel module that enables calls to ACPI methods through /proc/acpi/call
 	pkgver = 1.1.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/mkottman/acpi_call
 	arch = x86_64
 	license = GPL
 	makedepends = linux-ck-headers>=4.18
-	makedepends = linux-ck-headers<5.0
+	makedepends = linux-ck-headers<5.2
 	depends = linux-ck>=4.18
-	depends = linux-ck<5.0
+	depends = linux-ck<5.2
 	provides = acpi_call
 	source = acpi_call-ck-1.1.0.tar.gz::https://github.com/mkottman/acpi_call/archive/v1.1.0.tar.gz
 	sha256sums = d0d14b42944282724fca76f57d598eed794ef97448f387d1c489d85ad813f2f0
