@@ -2,7 +2,7 @@ pkgbase = slingscold-git
 	pkgdesc = Slingscold fork with modifications for Molly-Rose Linux
 	pkgver = r15.df2116e
 	pkgrel = 1
-	url = https://github.com/chrisnharvey/slingscold
+	url = https://gitlab.com/chrisnharvey/slingscold
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -18,7 +18,7 @@ pkgbase = slingscold-git
 	optdepends = lib32-glib2
 	provides = slingscold
 	conflicts = slingscold
-	source = git+https://github.com/chrisnharvey/slingscold.git
+	source = git+https://gitlab.com/chrisnharvey/slingscold.git
 	md5sums = SKIP
 
 pkgname = slingscold-git
