@@ -1,13 +1,14 @@
 pkgbase = gsim
 	pkgdesc = A tool for visualisation and processing of NMR spectra
 	pkgver = 21.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/gsim
 	arch = x86_64
 	license = GPL
 	makedepends = imagemagick
 	makedepends = sed
-	depends = minuit2
+	makedepends = gcc
+	depends = root
 	depends = muparser
 	depends = qt5-svg
 	depends = libcmatrix
