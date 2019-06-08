@@ -4,7 +4,7 @@
 # Contributor: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=pacemaker
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ optdepends=('pssh: for use with some tools'
 install=${pkgname}.install
 source=("https://github.com/ClusterLabs/$pkgname/archive/Pacemaker-$pkgver.tar.gz"
         'crm_report.in')
-sha512sums=('63c287888e5f0bd5f1a2f56450cb3d4da580df2d750ffa90b2212a4efcfa146e05e258a9d87fdcaacde5f8985b9730dae11c5d5ad22e811fd114e1640365c9aa'
+sha512sums=('e24a80301f7f62fcbe6978d3c626ddbed5e5e11416657b20e965a84c786d8fa681f76e4b7dd6ec696c289e2aa9bcca897b4ad85ed24fbb39aa130ac958109d03'
             '09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64')
 
 prepare() {
@@ -79,5 +79,3 @@ package() {
 }
 
 # vim: set sw=2 et ts=2:
-sha512sums=('45e6880b06998a0f196e7ce5322bd288bda3801ee3009136b49d463cd85e6b9f4dfa4c83f823a355b92f2d02ff0b1f507f8f6b5f42da86ef0fe7421fbfd0027e'
-            '09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64')
