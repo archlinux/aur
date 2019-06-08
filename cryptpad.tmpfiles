@@ -1,0 +1,3 @@
+d /var/lib/cryptpad 0755 cryptpad cryptpad -
+Z /var/lib/cryptpad - cryptpad cryptpad -
+
