@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Raffin <theelectronwill@gmail.com>
 # Generator: Bloop release utilities <https://github.com/scalacenter/bloop>
 pkgname=bloop
-pkgver=1.3.1.0.da41649d.20190608.2123
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Bloop gives you fast edit/compile/test workflows for Scala."
 arch=(any)
@@ -9,7 +9,7 @@ url="https://scalacenter.github.io/bloop/"
 license=('Apache')
 depends=('scala' 'python')
 source=("https://github.com/scalacenter/bloop/releases/download/v1.3.1/install.py")
-sha256sums=('3067793647af2dd9b8f1f41cb5c25504449bfdce6c590b21cfd6b5a3c11df289')
+sha256sums=('7beee392e9f05f00626057e96d7889b54898a6037e3c8a4c92829de554f43984')
 
 build() {
   python ./install.py --dest "$srcdir/bloop"
