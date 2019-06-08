@@ -1,0 +1,12 @@
+pkgbase = uinputchars
+	pkgdesc = A utility to type character strings into /dev/uinput
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/piater/uinputchars
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/piater/uinputchars/archive/v0.1.tar.gz
+	sha256sums = 9ea51302e4aa7c155c6ffe76df6053205fba1d553fb7169e2e8fce9119c1390d
+
+pkgname = uinputchars
+
