@@ -8,7 +8,7 @@ pkgdesc="Speedy Cosmic Ray Annihilation Package in Python"
 arch=('i686' 'x86_64')
 url="https://github.com/astropy/astroscrappy"
 license=('BSD')
-makedepends=('cython>=0.21' 'python-astropy' 'python-astropy-helpers' 'python-sphinx-astropy')
+makedepends=('cython>=0.21' 'python-astropy' 'python-astropy-helpers<3.2' 'python-sphinx-astropy')
 checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/a/astroscrappy/astroscrappy-${pkgver}.tar.gz")
 md5sums=('eb68a7c81ea8d4370eab66e9c7859576')
