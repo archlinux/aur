@@ -1,17 +1,16 @@
 pkgbase = qmapshack-hg
 	pkgdesc = Plan your next outdoor trip
-	pkgver = r3004.43b0987e3069
+	pkgver = r4312.2a89299c92ed
 	pkgrel = 1
 	url = https://bitbucket.org/maproom/qmapshack/
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = mercurial
-	depends = hicolor-icon-theme
 	depends = gdal
+	depends = desktop-file-utils
 	depends = quazip
-	depends = qt5-script
-	depends = qt5-webkit
+	depends = qt5-webengine
 	depends = routino>=3.1
 	provides = qmapshack
 	conflicts = qmapshack
