@@ -1,5 +1,5 @@
 pkgbase = brother-dcpj572dw
-	pkgdesc = Driver for the Brother DCP-J762DW wifi multifunctional printer
+	pkgdesc = Driver for the Brother DCP-J772DW wifi multifunctional printer
 	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://support.brother.com/g/b/downloadlist.aspx?c=ch&lang=de&prod=dcpj572dw_eu_as&os=127

@@ -3,7 +3,7 @@
 pkgname=brother-dcpj572dw
 pkgver=1.0.5
 pkgrel=1
-pkgdesc="Driver for the Brother DCP-J762DW wifi multifunctional printer"
+pkgdesc="Driver for the Brother DCP-J772DW wifi multifunctional printer"
 url="https://support.brother.com/g/b/downloadlist.aspx?c=ch&lang=de&prod=dcpj572dw_eu_as&os=127"
 license=('custom:brother')
 optdepends=('brscan4: scanner support'
