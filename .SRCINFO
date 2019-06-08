@@ -1,11 +1,11 @@
 pkgbase = redhat-fonts
 	pkgdesc = Red Hat fonts
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RedHatOfficial/RedHatFont
 	arch = any
 	license = OFL
-	license = CCPL
+	license = CC-BY-SA
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = redhat-fonts-2.2.0.tar.gz::https://github.com/RedHatOfficial/RedHatFont/archive/2.2.0.tar.gz

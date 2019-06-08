@@ -3,11 +3,12 @@
 
 pkgname=redhat-fonts
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Red Hat fonts"
 arch=('any')
 url="https://github.com/RedHatOfficial/RedHatFont"
-license=('OFL' 'CCPL')
+# Only the metainfo files are CC-BY-SA
+license=('OFL' 'CC-BY-SA')
 depends=('fontconfig' 'xorg-font-utils')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         '0001-Add-basic-AppStream-metainfo-data.patch::https://src.fedoraproject.org/rpms/redhat-fonts/raw/master/f/0001-Add-basic-AppStream-metainfo-data.patch'
@@ -31,6 +32,7 @@ package() {
   # Install fonts
   install -m 0755 -d "$pkgdir/usr/share/fonts/redhat"
   install -m 0644 -p OTF/*.otf "$pkgdir/usr/share/fonts/redhat"
+  install -m 0644 -p TTF/*.ttf "$pkgdir/usr/share/fonts/redhat"
 
   # Install fontconfig data
   install -m 0755 -d "$pkgdir/etc/fonts/conf.d" "$pkgdir/usr/share/fontconfig/conf.avail"
