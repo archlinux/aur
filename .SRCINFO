@@ -13,7 +13,6 @@ pkgbase = gsim
 	depends = qt5-svg
 	depends = libcmatrix
 	depends = libemf
-	depends = hicolor-icon-theme
 	conflicts = gsim-bin
 	conflicts = gsim-git
 	source = http://downloads.sourceforge.net/gsim/21/gsim-21.3.tar.gz
