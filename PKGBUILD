@@ -2,14 +2,16 @@
 
 pkgname=foliate-git
 _name=foliate
-pkgver=96.81a8506
-pkgrel=1
+pkgver=99.a37760f
+pkgrel=2
 pkgdesc="A simple and modern GTK eBook reader"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://johnfactotum.github.io/foliate/"
 license=('GPL-3.0')
 depends=('gjs' 'webkit2gtk' 'libsoup')
 makedepends=('meson' 'ninja')
+optdepends=('hyphen: Auto-hyphenation support'
+						'hyphen-en: Hyphenation rules for English; you may choose package for your language')
 source=("$_name::git+https://github.com/johnfactotum/$_name.git#branch=master")
 provides=("$_name")
 replaces=("$_name")
