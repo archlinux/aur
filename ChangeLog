@@ -2,51 +2,169 @@ Change Log for Philip's Music Writer (Linux/Unix version)
 ---------------------------------------------------------
 
 
+Version 4.31 28-January-2019
+----------------------------
+
+1. Change code for building the version date to use memcpy() instead of 
+   strncat() because GCC now complains when a whole string isn't copied.
+   
+2. When there's an error that causes a skip to (e.g.) end-of-line, output the 
+   error message before doing the skip so that the correct position where the 
+   error was detected is shown.
+   
+3. Refactored the code handling ornament/expression errors to try to reduce 
+   error cascades when the terminating backslash is missing. After a skip to
+   a bar line, don't check the length of that bar. 
+   
+4. After "Note or rest letter expected" don't check the length of that bar. 
+
+5. Fixed error message loop for certain errors that skip to end of line, if the 
+   error was detected on the first character (e.g. a line after a "heading" 
+   directive starting with "+", where it thought a number should follow). Also, 
+   now check for a digit after + or - following a heading string before trying 
+   to read a spacing dimension. 
+
+6. Implemented &&& continuation lines, mainly for new replicator (see next).
+
+7. Implemented &* replication feature.
+
+8. Increased some buffer sizes (replicating many bars might require long 
+   lines).
+   
+9. Semicolons after the arguments of a macro call were being ignored, which was 
+   not the intention; they are ignored after an argumentless call (name only) 
+   to terminate the name. If &x(...) generates beamable notes, the following 
+   semicolon should terminate the beam. It now does.
+   
+10. Improve error message and handling if \...\ is (erroneously) present after 
+    an "x" note repetition. 
+    
+11. Install checks for too long macro names and too many macro arguments. 
+
+12. If an included PostScript file is actually encapsulated PostScript, wrap it 
+    in save/restore and disable the a4, showpage, and copypage commands for the 
+    duration.
+    
+13. More rigorous checks on the syntax of psheading etc.  
+
+14. Give warning for |:) or (:| that is, an end repeat at the start of a bar, 
+    or a start repeat at the end of a bar.
+    
+15. Increase two internal small buffers to avoid compiler warning. 
+
+16. Added escapes \<< and \>> for double typographic quotes.
+
+
+Version 4.30 15-June-2018
+-------------------------
+
+1. If a "movement" was coded without any staves (for example, for a title
+   page), there was the possibility of a segmentation crash due to memory
+   corruption. This is a very old bug, surprisingly never triggered before.
+
+2. Added the "tripletize" feature, somewhat of an experiment.
+
+3. Allow semicolon and comma after any note, not just quavers and shorter, to
+   make life easier when halvenotes and doublenotes are being used.
+
+4. Implement [doublenotes] and [halvenotes] to alter note lengths without
+   affecting time signatures.
+
+5. Make -norepeat a synonym of -norepeats because I keep forgetting.
+
+6. Make "stafflines" a synonym of "stavelines" because staff/stave are supposed
+   to be interchangeable throughout.
+
+7. Added an optional thickness to -drawstavelines.
+
+8. Repeats in the middle of bars are now honoured in MIDI output.
+
+9. If there were more than 20 text strings preceding a note, PMW could crash.
+   The limit has been increased to 50, and a test for overflow is now in place.
+
+10. Arrange to free heap memory so tests can run with -fsanitize=address.
+
+11. If a chord was repeated multiple times by 'x' followed by a number greater
+    than 1, a data overrun could occur. There is now also a hard error if there
+    are too many notes in a chord (the limit is now 16).
+
+12. If a midichannel directive contained a volume setting, undefined memory was
+    being copied accidentally (but never used).
+
+13. Several code refactorizations to tidy up suspect code picked up by gcc and
+    clang sanitizers.
+
+14. "Printtime" and "printkey" directives used to apply to the entire piece;
+    even if set in the second movement they would affect the first. Now they
+    apply only to the movement they are set in and any that follow.
+
+15. Some other changes for "printkey":
+
+    (a) At a mid-stave change of key, PMW used to check for C major or A minor
+    when deciding whether to automatically insert a previous key cancellation
+    signature using natural signs, though in one case the test for A minor was
+    missing. Now it checks for a key signature of zero width, which means that
+    if "printkey" defines an empty string for the new key, a cancellation
+    signature will be generated.
+
+    (b) Previously, a cancellation signature took no notice of any "printkey"
+    setting. There is now an optional second argument for "printkey" that
+    specifies what to print for a cancellation. If not supplied, an empty
+    string is used.
+
+16. Added four new characters to the music font: reverse turns and half circles.
+
+17. Characters from the PMW-Alpha font were not being correctly included in the
+    documentation PDF (something changed and I didn't notice). This has been
+    fixed by including the type 3 PostScript font explicitly when building the
+    PDF from SDoP's PostScript output.
+
+
 Version 4.29 26-June-2016
 -------------------------
 
 1. Added -norc to the scripts for running tests to ensure that the user's
    .pmwrc file, if it exists, is ignored.
-   
-2. Running with a lot more compiler warnings turned on threw up a number of 
+
+2. Running with a lot more compiler warnings turned on threw up a number of
    infelicities in the code. Refactoring has got rid of the compiler warnings.
-   
-3. Compiling with clang threw up a few that gcc missed; it also found a genuine 
-   bug, a misplaced ) in an expression. By pure fluke there appeared to be no 
-   way of provoking misbehaviour, because what was being checked was re-checked 
-   (correctly) later. 
-   
-4. Allow ! as a modifier to notes as well as rests. 
+
+3. Compiling with clang threw up a few that gcc missed; it also found a genuine
+   bug, a misplaced ) in an expression. By pure fluke there appeared to be no
+   way of provoking misbehaviour, because what was being checked was re-checked
+   (correctly) later.
+
+4. Allow ! as a modifier to notes as well as rests.
 
 
 Version 4.28 08-February-2014
 -----------------------------
 
-1. On a 64-bit system, stretching and shearing fonts did not work. I only 
-   noticed when I upgraded to a 64-bit system; clearly not many people use this 
+1. On a 64-bit system, stretching and shearing fonts did not work. I only
+   noticed when I upgraded to a 64-bit system; clearly not many people use this
    feature.
-   
-2. Under some circumstances, a spurious error "An input line is too long when 
-   macros are expanded" could be generated. This showed up on a 64-bit system 
+
+2. Under some circumstances, a spurious error "An input line is too long when
+   macros are expanded" could be generated. This showed up on a 64-bit system
    with 4G of memory, but I'm not sure which exact condition provoked it.
-     
+
 
 Version 4.27 04-December-2013
 -----------------------------
 
 1. If a bar containing a long rest symbol is wider or narrower than normal,
-   the |----| symbol is now drawn instead of using the font character. This 
-   means it can be made longer or shorter. In particular, it is now possible to 
-   have one long bar right across the page as is common in instrumental parts 
-   for tacet movements. 
-   
-2. Updated font-handling to add the remaining Unicode characters in the Latin-A 
+   the |----| symbol is now drawn instead of using the font character. This
+   means it can be made longer or shorter. In particular, it is now possible to
+   have one long bar right across the page as is common in instrumental parts
+   for tacet movements.
+
+2. Updated font-handling to add the remaining Unicode characters in the Latin-A
    extended font, together with the infinity character, all of which are
    present in modern fonts.
-   
-3. The PDF index in the manual now has clickable links to the individual letter 
-   headings in the index. 
-    
+
+3. The PDF index in the manual now has clickable links to the individual letter
+   headings in the index.
+
 
 Version 4.26 05-March-2013
 --------------------------
@@ -55,14 +173,14 @@ Version 4.26 05-March-2013
    pointers in the same table (space-saving back in the 1990s) which caused
    trouble on systems where addresses could be negative and in any case is bad
    style these days. In fact, the additional space used is very small.
-   
+
 2. Removed a number of unused variables that were thrown up by the warning
    -Wunused-but-set-variable in a modern gcc.
-   
+
 3. If a mid-stave bar at the start of a system starts with both a time change
    and a key change, it is now possible to have just one of them as a warning
    at the end of the previous system.
-   
+
 4. Added [no]codemultirests.
 
 
@@ -70,50 +188,50 @@ Version 4.25 06-January-2013
 ----------------------------
 
 1. Allow tremolo markings to be moved up and down (but not left and right).
-   The syntax is odd (e.g. G\//d4\ moves a single tremolo down 4) but it is 
+   The syntax is odd (e.g. G\//d4\ moves a single tremolo down 4) but it is
    consistent with everything else.
-   
-2. In read2.c there was a local variable called oo, which could be confused 
+
+2. In read2.c there was a local variable called oo, which could be confused
    with the macro oo in that module - a shorthand for offsetof. The variable
    is renamed, and a couple of explicit offsetof appearances now use the macro.
-   
-3. When writing a MIDI file, simple "scrubbing" (single or double tremolos) on 
-   minims and crotchets (possibly dotted) is now recognized. Previously the 
-   notes were played as single long notes.  
+
+3. When writing a MIDI file, simple "scrubbing" (single or double tremolos) on
+   minims and crotchets (possibly dotted) is now recognized. Previously the
+   notes were played as single long notes.
 
 
 Version 4.24 23-March-2012
 --------------------------
 
-1. There was a bug in the debugging code invoded by -dsb (used only by 
+1. There was a bug in the debugging code invoded by -dsb (used only by
    developers) which caused it to generate incorrect output for some ornaments.
-   
+
 2. On 64-bit systems, if there was more than one ornament on a note or chord
-   (e.g. arpeggio plus fermata), only the first of them was shown. 
-   
-3. Fixed a uninitialized value in the data block for certain ornaments. 
+   (e.g. arpeggio plus fermata), only the first of them was shown.
+
+3. Fixed a uninitialized value in the data block for certain ornaments.
 
 4. In rare circumstances, when a specific item happened to occur right at
-   the end of a memory block, the code for moving on to the next block was 
+   the end of a memory block, the code for moving on to the next block was
    incorrect, and so the output was not right. These are specific cases:
-   
+
    (a) Amalgamation of a right repeat immediately followed by a left repeat.
-    
-   (b) A final first time bar at the end of a line: the terminating jog might 
+
+   (b) A final first time bar at the end of a line: the terminating jog might
        be missing.
-       
+
    (c) Beam breaks on 64-bit systems.
-       
-5. The structure lengths for "assume time", "assume key", and "assume clef" 
-   were incorrect. This could lead to overwriting for "assume time" - by luck 
-   the other two were not affected. The only visible effect was small 
+
+5. The structure lengths for "assume time", "assume key", and "assume clef"
+   were incorrect. This could lead to overwriting for "assume time" - by luck
+   the other two were not affected. The only visible effect was small
    positioning variations when systems were stretched.
-   
+
 6. Code for advancing through a chord would have gone wrong on 64-bit systems,
    but for the lucky coincidence that the length of the structure involved
-   happens to be a multiple of 8. There was a similar issue with the code for 
+   happens to be a multiple of 8. There was a similar issue with the code for
    linking between multiple memory blocks.
-   
+
 
 Version 4.23
 ------------
@@ -123,29 +241,29 @@ Version 4.23
 
 2. Updated the documentation Makefile to ensure that (a) it uses the local
    versions of PMW's font metrics and PostScript header, and does not look for
-   installed versions, when building the PMW examples; (b) the PMW fontmetrics 
-   are made available to SDoP when it processes the spec. This is done by 
-   making a fontmetrics directory containing only those files rather than just 
-   pointing SDoP at the main PMW directory, for two reasons: (1) PMW also uses a 
-   PSheader file, which SDoP picks up in error (the main reason), and (2) we 
-   want SDoP to use its own fontmetrics for other fonts. 
-   
+   installed versions, when building the PMW examples; (b) the PMW fontmetrics
+   are made available to SDoP when it processes the spec. This is done by
+   making a fontmetrics directory containing only those files rather than just
+   pointing SDoP at the main PMW directory, for two reasons: (1) PMW also uses a
+   PSheader file, which SDoP picks up in error (the main reason), and (2) we
+   want SDoP to use its own fontmetrics for other fonts.
+
 3. Changed documentation to suggest making two symbolic links for the PMW fonts
-   intead of a single directory link, which does not always work. 
+   intead of a single directory link, which does not always work.
 
 
 Version 4.22 re-release
 -----------------------
 
-There are no changes whatsoever to the code, just to the packaging and the 
+There are no changes whatsoever to the code, just to the packaging and the
 documentation:
 
 1. Added support for DESTDIR to the Makefile.
 
-2. Reformatted the specification using the latest version of SDoP, which turns 
+2. Reformatted the specification using the latest version of SDoP, which turns
    cross-references and index page numbers into clickable links in the PDF.
-   
-3. Added some newly contributed files to the contrib directory. 
+
+3. Added some newly contributed files to the contrib directory.
 
 
 Version 4.22
@@ -166,10 +284,10 @@ Version 4.22
 
  4. Tidied up the copyright string, which for some crazy reason appeared twice
     in the source code. Added "Built" to the date that is shown by -V etc.
-    
- 5. When righttoleft was set with -eps, the bounding box values in the EPS file 
+
+ 5. When righttoleft was set with -eps, the bounding box values in the EPS file
     were incorrect whenever the magnification was not 1.0.
-    
+
  6. When a layout directive caused a system to be squashed to fit onto a line,
     underlaid words could crash into each other because of the squashing. (Bars
     are initially spaced to avoid underlay crashes, but this did not take
@@ -180,31 +298,31 @@ Version 4.22
     values 0, 1, or 2; oldstretchrule (dating from a much earlier change) is
     equivalent to setting stretchrule to 0. The default is 2, and 1 is the
     situation prior to this change.
-    
+
  7. Related to 6, when PMW was adjusting note spacing so that underlaid
     syllables did not collide, it was ignoring leading and trailing #
     characters, treating them as spaces (which of course, they print as).
     However, this means that using # to move a syllable left or right did not
     work as expected. It now ignores leading and trailing spaces only if they
     are actual space characters.
-    
+
  8. Updated the AFM files in the fontmetrics directory to later versions that
-    include additional characters in current versions of the text fonts.  
-    
- 9. When a bar was not of the correct length, the error message always said it 
-    was too long, even when it was too short. I am amazed nobody has noticed 
+    include additional characters in current versions of the text fonts.
+
+ 9. When a bar was not of the correct length, the error message always said it
+    was too long, even when it was too short. I am amazed nobody has noticed
     this bug before; it was introduced by change 30 of version 4.20.
-    
-10. Allow /u, /d, /l, and /r in strings for drawing calls. 
+
+10. Allow /u, /d, /l, and /r in strings for drawing calls.
 
 11. Add -MF <directory> to allow overriding of the directory in which the
     music fonts are stored.
-    
-12. Process the files in the testdist directory with -includefont (requiring 
-    the new -MF option) so that the output can be directly viewed in 
+
+12. Process the files in the testdist directory with -includefont (requiring
+    the new -MF option) so that the output can be directly viewed in
     environments where the fonts are not installed.
-    
-13. Added ||| to print an "end-of-piece" barline in the middle of a piece. 
+
+13. Added ||| to print an "end-of-piece" barline in the middle of a piece.
 
 14. Added /), /(, /b, and /B for bracketing expression marks and ornaments.
 
@@ -682,7 +800,7 @@ see above.)
 2. Fixed a bug with very long arpeggio squiggles - buffer not big enough -
 which just doesn't show up on RISC OS.
 
-3. A macro defined with arguments, but no text, didn't removed any arguments
+3. A macro defined with arguments, but no text, didn't remove any arguments
 that were present when it was called. For example, if you had
 
   *Define X(1) @....
