@@ -1,7 +1,7 @@
 # Maintainer: Sergey Khorev <sergey.khorev@gmail.com>
 pkgname=fricas
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced computer algebra system"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -14,7 +14,7 @@ md5sums=('bcf371708f1455f92dcf9c596f807ba5' '147828bf0b62e1f7d0c600a1c377669c')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    ./configure --prefix=/usr --with-lisp=sbcl
+    ./configure --prefix=/usr --with-lisp='sbcl --control-stack-size 512 --dynamic-space-size 6000'
     make
 }
 
