@@ -3,7 +3,7 @@
 
 pkgname=kvmtop
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A monitoring tool for black box virtual machines from KVM hypervisor level"
 arch=('x86_64')
 url="https://github.com/cha87de/kvmtop"
@@ -26,5 +26,5 @@ build() {
 }
 
 package() {
-  install -Dm 0755 "${srcdir}/${pkgname}-${pkgver}/cmd/kvmtop" "${pkgdir}/usr/bin/kvmtop"
+  install -Dm 0755 "${srcdir}/${pkgname}-${pkgver}/cmd/kvmtop/kvmtop" "${pkgdir}/usr/bin/kvmtop"
 }
