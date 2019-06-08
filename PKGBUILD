@@ -2,8 +2,8 @@
 # Maintainer: Marcel Robitaille <mail@marcelrobitaille.me>
 # Co-Maintainer: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
 pkgname=repetier-host
-pkgver=2.1.3
-pkgrel=2
+pkgver=2.1.6
+pkgrel=1
 pkgdesc="almost complete 3d-printing workflow"
 url='http://www.repetier.com/'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ depends=('desktop-file-utils' 'mono')
 optdepends=('slic3r' 'skeinforge')
 source=("http://download.repetier.com/files/host/linux/repetierHostLinux_${pkgver//./_}.tgz"
         "${pkgname}_fix-desktop-file.diff")
-md5sums=('fdc93c5336dd3da40667fc5d3adb3767'
+md5sums=('6e14f2a053f96d211a6e5d53c408d6f7'
          '9862b0f96ee420233b92b936d131707d')
 
 prepare() {
