@@ -1,0 +1,16 @@
+pkgbase = ydweb-git
+	pkgdesc = Console-based dictionary with contents crawled from the youdao website; offline dictionaries with common words are available.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/purboo/ydweb
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python-requests
+	depends = python-pyquery
+	depends = python-prompt_toolkit
+	source = git://github.com/purboo/ydweb.git
+	md5sums = SKIP
+
+pkgname = ydweb-git
+
