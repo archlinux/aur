@@ -3,7 +3,7 @@
 
 pkgname=gnutls-guile
 _pkgname=gnutls
-pkgver=3.6.7
+pkgver=3.6.8
 pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer"
 arch=('x86_64')
@@ -16,7 +16,7 @@ checkdepends=('net-tools')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/${_pkgname}-${pkgver}.tar.xz{,.sig})
-sha256sums=('5b3409ad5aaf239808730d1ee12fdcd148c0be00262c7edf157af655a8a188e2'
+sha256sums=('aa81944e5635de981171772857e72be231a7e0f559ae0292d2737de475383e83'
             'SKIP')
 validpgpkeys=('0424D4EE81A0E3D119C6F835EDA21E94B565716F'
               '1F42418905D8206AA754CCDC29EE58B996865171')
