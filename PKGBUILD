@@ -6,24 +6,24 @@
 pkgbase=python-django-debug-toolbar
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-django-debug-toolbar python2-django-debug-toolbar)
-pkgver=1.9
-pkgrel=2
+pkgver=1.11
+pkgrel=1
 pkgdesc='A configurable set of panels that display various debug information about the current request/response.'
 arch=(any)
 url='https://github.com/jazzband/django-debug-toolbar'
 license=(BSD-3)
 makedepends=(
-  'python-django>=1.8'
+  'python-django>=1.11'
   python-setuptools
-  'python2-django>=1.8'
+  'python2-django>=1.11'
   python2-setuptools
 )
 options=(!emptydirs)
 source=("https://github.com/jazzband/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('bb171fa5d6bb4e26136d0c43056d358a845a9bf814838c7ab58eaa7c76c85dcf')
+sha256sums=('be63b27dca3019514704130a3ea37da36c23d4bbf39d2011ef1a92a2ba396017')
 
 package_python-django-debug-toolbar() {
-  depends=('python-django>=1.8' 'python-sqlparse')
+  depends=('python-django>=1.11' 'python-sqlparse')
   conflicts=('python-django-debug-toolbar-git')
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
@@ -31,7 +31,7 @@ package_python-django-debug-toolbar() {
 }
 
 package_python2-django-debug-toolbar() {
-  depends=('python2-django>=1.8' 'python2-sqlparse')
+  depends=('python2-django>=1.11' 'python2-sqlparse')
   conflicts=('python2-django-debug-toolbar-git')
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
