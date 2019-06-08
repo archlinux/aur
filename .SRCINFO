@@ -1,0 +1,19 @@
+pkgbase = brother-dcpj572dw
+	pkgdesc = Driver for the Brother DCP-J762DW wifi multifunctional printer
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadlist.aspx?c=ch&lang=de&prod=dcpj572dw_eu_as&os=127
+	install = brother-dcpj572dw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	makedepends = bash
+	optdepends = brscan4: scanner support
+	optdepends = brscan-skey: remote scan support
+	source = fix_lp.patch
+	source = https://download.brother.com/welcome/dlf103778/dcpj572dwpdrv-1.0.5-0.i386.rpm
+	sha256sums = 190b9b9a0f53db624db06e433acbee99876f49dc0da40478a3af6afefedf51c4
+	sha256sums = cae9133aed983ffb64f8cd98bc13e93036e7d5fe78d2514b8c74845ca3be3882
+
+pkgname = brother-dcpj572dw
+

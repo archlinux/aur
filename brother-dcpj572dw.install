@@ -1,0 +1,27 @@
+post_install() {
+	# lpr
+	/opt/brother/Printers/dcpj572dw/inf/setupPrintcapij dcpj572dw -i
+	
+	# cupswrapper
+	/opt/brother/Printers/dcpj572dw/cupswrapper/cupswrapperdcpj572dw
+	
+	systemctl restart org.cups.cupsd
+}
+
+post_upgrade() {
+	/bin/true
+}
+
+pre_remove() {
+	# lpr
+	/opt/brother/Printers/dcpj572dw/inf/setupPrintcapij dcpj572dw -e
+	
+	# cupswrapper
+	/opt/brother/Printers/dcpj572dw/cupswrapper/cupswrapperdcpj572dw -e
+}
+
+op=$1
+shift
+
+$op "$@"
+
