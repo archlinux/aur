@@ -1,10 +1,10 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
 pkgname=ygopro-koishipro
-pkgver=2019.5.28
+pkgver=2019.6.8
 pkgrel=1
 _pkgrel=1
-name="Overture"
-zipFile=KoishiPro-linux-full-Overture.zip
+name="Realidea"
+zipFile="KoishiPro-linux-full-$name.zip"
 pkgdesc="Link compatable ygopro client with AI"
 arch=('x86_64')
 url='https://github.com/purerosefallen/ygopro'
@@ -13,7 +13,7 @@ depends=('mono' 'libevent')
 makedepends=('patchelf')
 source=("https://github.com/purerosefallen/ygopro/releases/download/$name/$zipFile")
 noextract=($zipFile)
-sha256sums=('dd0ee3db573180089c3e4b760178f98a4d04eff5b294af7060360fc68f7dee5d')
+sha256sums=('9fde870812dd16d8b66ea6521fd5e0718fa2ecbacc7dd312ef93a124f0122c76')
 options=('!strip' 'emptydirs')
 
 prepare(){
