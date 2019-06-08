@@ -2,7 +2,7 @@
 
 pkgname=sardi-icons
 pkgver=9.7
-pkgrel=1
+pkgrel=2
 _destname="/usr/share/icons/"
 pkgdesc="Sardi is an icon collection for any linux distro with 6 different circular icons and 10 different kind of folders. "
 arch=('any')
