@@ -1,6 +1,6 @@
 pkgbase = emacs-harfbuzz-git
-	pkgdesc = GNU Emacs, git checkout from the harfbuzz branch
-	pkgver = 27.0.50.r136526
+	pkgdesc = GNU Emacs, git checkout with harfbuzz enabled
+	pkgver = 27.0.50.r136722
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = emacs-harfbuzz-git
 	conflicts = emacs
 	options = docs
 	options = !emptydirs
-	source = git://git.savannah.gnu.org/emacs.git#branch=harfbuzz
+	source = git://git.savannah.gnu.org/emacs.git
 	sha256sums = SKIP
 
 pkgname = emacs-harfbuzz-git

@@ -1,9 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-harfbuzz-git
-pkgver=27.0.50.r136526
+pkgver=27.0.50.r136722
 pkgrel=1
-pkgdesc="GNU Emacs, git checkout from the harfbuzz branch"
+pkgdesc="GNU Emacs, git checkout with harfbuzz enabled"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
@@ -12,7 +12,7 @@ makedepends=('git' 'texlive-core')
 conflicts=('emacs')
 options=('docs' '!emptydirs')
 provides=('emacs' 'emacs-seq')
-source=("git://git.savannah.gnu.org/emacs.git#branch=harfbuzz")
+source=("git://git.savannah.gnu.org/emacs.git")
 sha256sums=('SKIP')
 
 pkgver() {
