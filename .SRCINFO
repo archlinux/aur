@@ -1,0 +1,14 @@
+pkgbase = python-pyqtdatavisualization
+	pkgdesc = Set of Python bindings for The Qt Company's Qt Data Visualization library
+	pkgver = 5.12
+	pkgrel = 1
+	url = https://www.riverbankcomputing.com/software/pyqtdatavisualization
+	arch = x86_64
+	license = GPL
+	makedepends = sip
+	depends = qt5-3d
+	source = https://www.riverbankcomputing.com/static/Downloads/PyQtDataVisualization/5.12/PyQtDataVisualization_gpl-5.12.tar.gz
+	sha256sums = 279f86c70e2447704c5b7358fe2592b36eeaf4ad9d9f95e0e51f734711818777
+
+pkgname = python-pyqtdatavisualization
+
