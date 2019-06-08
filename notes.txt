@@ -1,4 +1,0 @@
-after installation, to increase the amount of ram available to the program, edit /bin/mage-client or /bin/mage-server
-change the 512 in "-Xmx512m" to the amount of ram(in MB) you want to make available
-
-if the program starts but only displays a grey screen, try the wmname package to change the name of the current window manager. some java programs don't work properly with certain window managers

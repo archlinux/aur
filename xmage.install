@@ -1,0 +1,18 @@
+pkgname='xmage'
+
+post_install() {
+	echo
+	echo "==> ${pkgname}'s files are located in /usr/share/xmage"
+	echo "==> If you wish to increase the amount of RAM available"
+	echo "==> to xmage, edit /bin/mage-client or /bin/mage-server"
+	echo "==> and change the 1024 in "-Xmx1024m" to the amount"
+	echo "==> of RAM(in MB) you wish to make available"
+	echo
+}
+
+post_upgrade() {
+	echo
+	echo "==> Release notes can be found at"
+	echo "==> https://github.com/magefree/mage/wiki/Release-changes"
+	echo
+}
