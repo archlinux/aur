@@ -1,0 +1,19 @@
+pkgbase = cpdf-git
+	pkgdesc = A command line toolkit for Portable Document Format
+	pkgver = 2.2.1.r45.g9cb5347
+	pkgrel = 1
+	url = https://github.com/johnwhitington/cpdf-source
+	arch = x86_64
+	license = custom
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	makedepends = camlpdf-git
+	makedepends = git
+	depends = glibc
+	conflicts = cpdf-bin
+	conflicts = cpdf
+	source = git+https://github.com/johnwhitington/cpdf-source.git
+	sha256sums = SKIP
+
+pkgname = cpdf-git
+
