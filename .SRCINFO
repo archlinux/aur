@@ -7,7 +7,7 @@ pkgbase = crema-git
 	license = GPL3
 	depends = aurutils
 	depends = devtools
-	depends = rsnyc
+	depends = rsync
 	source = git://github.com/mipimipi/crema.git
 	md5sums = SKIP
 
