@@ -1,0 +1,21 @@
+pkgbase = jsoncpp-git
+	pkgdesc = C++ library for interacting with JSON
+	pkgver = 1.8.4.r139.g5b91551
+	pkgrel = 1
+	url = https://github.com/open-source-parsers/jsoncpp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = custom
+	makedepends = git
+	makedepends = meson
+	makedepends = python
+	depends = gcc-libs
+	provides = jsoncpp
+	conflicts = jsoncpp
+	options = staticlibs
+	source = git+https://github.com/open-source-parsers/jsoncpp.git
+	sha256sums = SKIP
+
+pkgname = jsoncpp-git
+
