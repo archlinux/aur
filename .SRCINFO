@@ -1,8 +1,8 @@
 pkgbase = juffed-qt5-git
 	pkgdesc = A lightweight cross-platform text editor. Development version.
-	pkgver = 0.10.94.g058ed92
-	pkgrel = 2
-	url = https://github.com/gdelmondo/juffed
+	pkgver = 0.10.95.g8106b7d
+	pkgrel = 1
+	url = https://gitlab.com/stefanhusmann/juffed-qt5
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -11,18 +11,12 @@ pkgbase = juffed-qt5-git
 	makedepends = qt5-tools
 	depends = enca
 	depends = qscintilla-qt5
-	provides = juffed=0.10.94.g058ed92
-	provides = juffed-plugins=0.10.94.g058ed92
+	provides = juffed=0.10.95.g8106b7d
+	provides = juffed-plugins=0.10.95.g8106b7d
 	conflicts = juffed
 	conflicts = juffed-git
-	source = git+https://github.com/gdelmondo/juffed.git
-	source = fix_qscintilla.patch
-	source = fix_qscintilla_lexer.patch::https://github.com/Mezomish/juffed/commit/5315aee51213a68f946b1c387d513bc2a5e67560.patch
-	source = qt511.patch
+	source = git+https://gitlab.com/stefanhusmann/juffed-qt5.git
 	sha512sums = SKIP
-	sha512sums = c2515c0f25a8a282af1242ecd5e3f98336e2226a935d56a826e724072cf4ae9961b34b6853a2b7204bff9428e8d7ae52fd158eaf438ee163e27953a5935d5293
-	sha512sums = 213548d50c0eecf4bb10b584c8715a8b72c79b7b39b40ad999eb6d52e4c857eead104e46987aec87c984de124e24319b4224094715a7a75e8fe2b8646a539865
-	sha512sums = 09e458baac69e79bb984b4f8f5ac3267f99029c4db408826239c58064b4afd8e3d1c0853ea7f00eeb52e7441b583fe8886a94e9c3d681207857b7abac524191a
 
 pkgname = juffed-qt5-git
 
