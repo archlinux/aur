@@ -1,18 +1,17 @@
 # Maintainer: Brett Cornwall <ainola@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=swaybg
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Wallpaper tool for Wayland compositors'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/swaywm/swaybg'
-license=('MIT')
-makedepends=(
-    'meson'
-    'ninja'
-    'scdoc'
-    'wayland-protocols'
-)
+license=(MIT)
+makedepends=(meson
+             ninja
+             scdoc
+             wayland-protocols)
 depends=(
     'wayland'
     'cairo'
@@ -36,5 +35,7 @@ build() {
 package() {
     DESTDIR="$pkgdir/" ninja -C build install
     install -Dm644 "$pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm644 "$pkgname-$pkgver/README.md" -t "$pkgdir/usr/share/docs/$pkgname"
+    install -Dm644 "$pkgname-$pkgver/README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
+
+# vim: ts=2 sw=2 et:
