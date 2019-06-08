@@ -1,6 +1,6 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 
-pkgver=0.86
+pkgver=_
 pkgrel=1
 pkgname=telepresence-git
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster - http://www.telepresence.io"
@@ -20,6 +20,10 @@ depends=(
 
 source=("src::git+https://github.com/datawire/telepresence.git")
 md5sums=('SKIP')
+
+pkgver() {
+  git describe --abbrev=0
+}
 
 package(){
   cd ${srcdir}/src
