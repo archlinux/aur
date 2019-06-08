@@ -72,11 +72,6 @@ package() {
   mkdir -p "$pkgdir"
   DESTDIR="$pkgdir" ./mach install
   
-  # laziness
-  rm "$pkgdir/usr/bin/waterfox"
-  mv "$pkgdir/opt/waterfox" "$pkgdir/opt/waterfox-alpha"
-  ln -s "/opt/waterfox-alpha/waterfox" "$pkgdir/usr/bin/waterfox-alpha"
-
   install -Dm644 ../vendor.js "$pkgdir/opt/waterfox-alpha/browser/defaults/preferences/vendor.js"
 
   for i in 16 32 64 48 128; do
