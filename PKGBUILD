@@ -2,7 +2,7 @@
 
 _name=prettier
 pkgname=nodejs-$_name
-pkgver=1.17.1
+pkgver=1.18.2
 pkgrel=1
 pkgdesc='An opinionated code formatter'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('jq' 'npm')
 source=("https://registry.npmjs.org/$_name/-/$_name-$pkgver.tgz")
-sha256sums=('8af8ef1b2b54a091181330ea0d67df27f1ff3e2b2958eca2f140f5573cdbd160')
+sha256sums=('8d16af3cd65f9c2a275a46d69d22cc5cf7a6b0c00015f62507ba23757ffd11ba')
 
 package() {
   npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_name-$pkgver.tgz"
