@@ -7,7 +7,7 @@ pkgdesc="Documentation for Ginga"
 arch=('i686' 'x86_64')
 url="https://ejeschke.github.io/ginga/"
 license=('BSD')
-makedepends=("python-${_pyname}=${pkgver}" 'python-astropy-helpers>=3.1' 'python-sphinx-astropy')
+makedepends=("python-${_pyname}=${pkgver}" 'python-astropy-helpers>=3.1' 'python-sphinx-astropy' 'python-sphinx_rtd_theme')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('8063b6400f1faf5f32e3769bd13a8563')
 
