@@ -1,12 +1,13 @@
 pkgbase = dot-templater-git
 	pkgdesc = Templates a folder of dotfiles, supporting feature flags and string substitutions
-	pkgver = r41.f1e6edb
+	pkgver = r77.35a27dd
 	pkgrel = 1
 	url = https://github.com/kesslern/dot-templater
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = cargo
 	depends = glibc
 	provides = dot-templater-git
 	conflicts = dot-templater-git
