@@ -3,6 +3,7 @@ pkgname=vulkan-amdgpu-pro
 pkgver=19.10_785425
 pkgver_=${pkgver//_/-}-ubuntu-18.04
 pkgrel=1
+pkgdesc='AMDGPU PRO Driver for Vulkan®'
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
@@ -23,13 +24,13 @@ build() {
 }
 
 package() {
-  install -m755 -d "${pkgdir}"/usr/lib
-  install -m755 -d "${pkgdir}"/usr/share/vulkan/icd.d
-  install -m755 -d "${pkgdir}"/usr/share/licenses/vulkan-amdgpu-pro
+  install -m755 -d ${pkgdir}/usr/lib
+  install -m755 -d ${pkgdir}/usr/share/vulkan/icd.d
+  install -m755 -d ${pkgdir}/usr/share/licenses/vulkan-amdgpu-pro
 
-  install opt/amdgpu-pro/lib/x86_64-linux-gnu/amdvlk64.so "${pkgdir}"/usr/lib/
-  install opt/amdgpu-pro/etc/vulkan/icd.d/amd_icd64.json "${pkgdir}"/usr/share/vulkan/icd.d/
-  install usr/share/doc/vulkan-amdgpu-pro/copyright "${pkgdir}"/usr/share/licenses/vulkan-amdgpu-pro/
+  install opt/amdgpu-pro/lib/x86_64-linux-gnu/amdvlk64.so ${pkgdir}/usr/lib/
+  install opt/amdgpu-pro/etc/vulkan/icd.d/amd_icd64.json ${pkgdir}/usr/share/vulkan/icd.d/
+  install usr/share/doc/vulkan-amdgpu-pro/copyright ${pkgdir}/usr/share/licenses/vulkan-amdgpu-pro/
 
   sed -i "s/\/opt\/amdgpu-pro\/lib\/x86_64-linux-gnu/\/usr\/lib/g" "${pkgdir}"/usr/share/vulkan/icd.d/amd_icd64.json
 }
