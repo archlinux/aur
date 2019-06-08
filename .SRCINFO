@@ -1,27 +1,19 @@
 pkgbase = matcha-gtk-theme
 	pkgdesc = A flat design themes for GNOME, MATE, Openbox, Unity, XFCE, Budgie
-	pkgver = 20190310
-	pkgrel = 2
+	pkgver = 20190605
+	pkgrel = 1
 	url = https://www.gnome-look.org/p/1187179
 	arch = any
 	license = GPL3
 	depends = gtk-engine-murrine
 	depends = gtk-engines
 	depends = gtk3
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1552201134/s/9c6e0cd3e0ffb5da503830f4e4a10381882c1350e6aef7469f2fc9e7b090490e7b1b016546cca39c10194f9dfdb13b469b7d99e1f3141e49357db2042c3f2c6b/t/1554165902/u/Matcha-sea.tar.xz
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1552201139/s/9c6e0cd3e0ffb5da503830f4e4a10381882c1350e6aef7469f2fc9e7b090490e7b1b016546cca39c10194f9dfdb13b469b7d99e1f3141e49357db2042c3f2c6b/t/1554165902/u/Matcha-dark-sea.tar.xz
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1552201209/s/9c6e0cd3e0ffb5da503830f4e4a10381882c1350e6aef7469f2fc9e7b090490e7b1b016546cca39c10194f9dfdb13b469b7d99e1f3141e49357db2042c3f2c6b/t/1554165902/u/Matcha-dark-azul.tar.xz
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1552201168/s/9c6e0cd3e0ffb5da503830f4e4a10381882c1350e6aef7469f2fc9e7b090490e7b1b016546cca39c10194f9dfdb13b469b7d99e1f3141e49357db2042c3f2c6b/t/1554165902/u/Matcha-dark-aliz.tar.xz
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1552201215/s/9c6e0cd3e0ffb5da503830f4e4a10381882c1350e6aef7469f2fc9e7b090490e7b1b016546cca39c10194f9dfdb13b469b7d99e1f3141e49357db2042c3f2c6b/t/1554165902/u/Matcha-azul.tar.xz
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1552201145/s/9c6e0cd3e0ffb5da503830f4e4a10381882c1350e6aef7469f2fc9e7b090490e7b1b016546cca39c10194f9dfdb13b469b7d99e1f3141e49357db2042c3f2c6b/t/1554165902/u/Matcha-aliz.tar.xz
-	source = https://dl.opendesktop.org/api/files/downloadfile/id/1517242250/s/9c6e0cd3e0ffb5da503830f4e4a10381882c1350e6aef7469f2fc9e7b090490e7b1b016546cca39c10194f9dfdb13b469b7d99e1f3141e49357db2042c3f2c6b/t/1554165902/u/Matcha-icon-theme.tar.xz
-	sha256sums = 619862130fb86ae4a2cba8c367612d3d292b966ba8ec5aba70c3fab9e588f0ac
-	sha256sums = e8696c5870a6bc9de60057ba621857c664f2a93f786229e4e7167dc10a760c02
-	sha256sums = 86669c86fe885c492f62471a90c51d8bddcb406fd13576f90b3b45c7ea46a3f5
-	sha256sums = bfc0a2fe24a452c910c410a9185bc2ae4408e3d013ddae0408a7b7eebb4a9945
-	sha256sums = f3ba8ce4d51fda1017be0c6c970bb68c3ca147e3dadeec014f1a3110a900287b
-	sha256sums = 672b30f47cf9226ee4e24694889cb38ccd1660df3639656384fc77425e37523a
-	sha256sums = 067193e09a3ec9058717bd93b9a64e74dcd66f6ff9c60e5193d1729a39fe3086
+	source = https://dl.opendesktop.org/api/files/download/id/1559729670/s/1632a24201b0b62b0a6278ba4de58a24431fd6a17024eded98edb6c9d0a6d9f1cb724516ae3f2a16fdd76f896de656f072a129d9413be375e82871cbd8fdd04b/t/1560014414/lt/download/Matcha-sea.tar.xz
+	source = https://dl.opendesktop.org/api/files/download/id/1559728977/s/1632a24201b0b62b0a6278ba4de58a24431fd6a17024eded98edb6c9d0a6d9f1cb724516ae3f2a16fdd76f896de656f072a129d9413be375e82871cbd8fdd04b/t/1560014414/lt/download/Matcha-azul.tar.xz
+	source = https://dl.opendesktop.org/api/files/download/id/1559729711/s/1632a24201b0b62b0a6278ba4de58a24431fd6a17024eded98edb6c9d0a6d9f1cb724516ae3f2a16fdd76f896de656f072a129d9413be375e82871cbd8fdd04b/t/1560014414/lt/download/Matcha-aliz.tar.xz
+	sha256sums = 4099b09e80c7df60de0a99862903c1082e1ae7cc726a89916316f8b5f55f6347
+	sha256sums = a2cd4048e495a1bf7d7277f2deedca1bb3fa7d33c7ca46ad282859399e30a070
+	sha256sums = 928e0e4b0caee0e9d158353fe962bdc89949e0a06b46f458aeec30c2d6a678e9
 
 pkgname = matcha-gtk-theme
 
