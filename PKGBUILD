@@ -6,11 +6,16 @@ pkgdesc="More private and optimized Firefox fork. Alpha (gecko68) branch. CREATE
 arch=('i686' 'x86_64')
 license=('MPL')
 url="https://www.waterfoxproject.org/"
-depends=('gtk2' 'libffi' 'libvpx' 'gtk3' 'mozilla-common' 'libxt' 'startup-notification'
-         'dbus-glib' 'alsa-lib' 'ffmpeg' 'desktop-file-utils' 'hicolor-icon-theme'
-         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font' 'cbindgen')
-makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13' 'clang' 'llvm' 'cargo')
+depends=(gtk3 libffi libvpx icu libevent mozilla-common libxt startup-notification mime-types dbus-glib
+         ffmpeg nss ttf-font libpulse)
+makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
+             xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
+             python nodejs python2-psutil cbindgen nasm)
+optdepends=('libnotify: Notification integration'
+            'pulseaudio: Audio support'
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English')
+options=(!emptydirs !makeflags)
 provides=()
 conflicts=('waterfox-alpha-bin')
 install=waterfox-alpha.install
@@ -19,15 +24,13 @@ source=(git://github.com/MrAlex94/Waterfox#branch=gecko68
         mozconfig
         waterfox-alpha.desktop
         ignore_bad_validator.patch
-        disable-synth-dammit.patch
         vendor.js)
 sha512sums=('SKIP'
-            '2462c2ca8451d542b1ca7d344c34500372e95fea7d882b47cd64d2315aefce773af4803a475b9678a71bc0a647d12785e1892505798a1c5709d215690af85518'
+            'b63bfbce4cceef1751f9332d3e9583aa58c1df5b3cd09ce7be9803cdbaf321fdd98c8aa81b5a4b4e9c61814748a2b8a977c241427e1d7d07a0774d32bef59f2d'
             'a133c3667bc11b3d19b6a1c9379f0112eca6a59df4096f476e480782de7fd395784de935c6c19b16051a4d5507b0c7f020cb35728f5a4dceb60474a931525673'
             'ab2aced2e371afad317ab3ffb3e8161c457f022327e182d426aa2ba4142112060225ced4610eb2525e1c739a4e56ad4e7cf78cc102232cf01cf06d0224a9c09d'
-            'd58c856c1614dfd674a3c4c79f6dd237c0417dbf37c89a269a8744bad46bff4c707a5e319872762f8bd05c2dd532ffa225490dfafaab784c70131c72614b0d4e'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
-            
+
 # don't compress the package - we're just going to uncompress during install in a moment
 PKGEXT='.pkg.tar'   
            
@@ -47,19 +50,6 @@ prepare() {
   # the below is a really horrible thing to do but it allows commas in our optimizations to work
   patch -Np1 -i "${srcdir}/ignore_bad_validator.patch"
   
-  # and this is a hacky workaround so we can build without html5 and 
-  # speex support - also in .mozconfig if you want to build with it, comment both out
-  warning "Applying patch to facilitate build without speex and html5 voice synth."
-  warning "To build with it, please edit the .mozconfig and adjust the options to enable what you need: "
-  warning "		ac_add_options --disable-accessibility"
-  warning "		ac_add_options --disable-synth-speechd"
-  warning "		ac_add_options --disable-webspeech=1"
-  warning "Then, comment out the disable-synth-dammit.patch line in the PKGBUILD."
-  warning "Press ENTER if you want to build now or CTRL+C to abort..."
-  read
-	
-  patch -Np1 -i "${srcdir}/disable-synth-dammit.patch"
-  
   mkdir -p "$srcdir/path"
 }
 
@@ -68,8 +58,13 @@ build() {
 
   export PATH="$srcdir/path:$PATH"
   export PYTHON="/usr/bin/python2"
+  export MOZ_NOSPAM=1
+  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 
-  ./mach build
+  # LTO needs more open files
+  ulimit -n 4096
+
+  xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
 }
 
 package() {

@@ -4,6 +4,7 @@ export CXX=clang++
 export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
+export MOZ_PGO=1
 mk_add_options AUTOCLOBBER=1
 
 export CPPFLAGS=""
@@ -29,6 +30,9 @@ X=$(($(getconf _NPROCESSORS_ONLN 2>/dev/null || getconf NPROCESSORS_ONLN)*3/2))
 mk_add_options MOZ_MAKE_FLAGS=-j${X%.*}
 fi
 
+ac_add_options "MOZ_ALLOW_LEGACY_EXTENSIONS=1"
+
+ac_add_options MOZ_PGO=1
 ac_add_options --enable-strip
 ac_add_options --enable-hardening
 
@@ -38,15 +42,15 @@ ac_add_options --libdir=/opt
 ac_add_options --enable-rust-simd # on x86 requires SSE2
 
 ac_add_options --enable-gold
-ac_add_options --disable-jemalloc
-ac_add_options --enable-lto=thin # full lto is slower, while thin still probably nets all the usual benefits
+#ac_add_options --disable-jemalloc
+ac_add_options --enable-lto
 ac_add_options --enable-release
 ac_add_options --enable-application=browser
 ac_add_options --enable-eme=widevine
 ac_add_options --enable-update-channel=aurora
 
-ac_add_options --with-app-name=waterfox
-ac_add_options --with-app-basename=Waterfox
+ac_add_options --with-app-name=waterfox-alpha
+ac_add_options --with-app-basename=Waterfox-Alpha
 ac_add_options --with-branding=browser/branding/alpha
 ac_add_options --with-distribution-id=net.waterfox
 
@@ -75,8 +79,8 @@ ac_add_options --enable-default-toolkit=cairo-gtk3
 
 # Features
 ac_add_options --disable-accessibility
-ac_add_options --disable-synth-speechd
-ac_add_options --disable-webspeech=1
+#ac_add_options --disable-synth-speechd
+#ac_add_options --disable-webspeech=1
 ac_add_options --disable-gpsd
 ac_add_options --disable-debug
 ac_add_options --disable-dmd
@@ -86,7 +90,6 @@ ac_add_options --disable-eme
 ac_add_options --disable-js-shell
 ac_add_options --disable-updater
 ac_add_options --disable-verify-mar
-ac_add_options --disable-webspeech
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-webrtc
 ac_add_options --disable-tests
