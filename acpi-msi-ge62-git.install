@@ -1,0 +1,9 @@
+post_install(){
+    echo "---------------- Notification ---------------------"
+    echo 
+    echo "The cpio image is installed to /boot/acpi_override.img"
+    echo
+    echo "Don't forget adding \"initrd /acpi_override.img\" to your bootloader"
+    echo
+    echo "---------------------------------------------------"
+}

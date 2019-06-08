@@ -1,0 +1,15 @@
+pkgbase = acpi-msi-ge62-git
+	pkgdesc = patched DSDT/SSDTs for MSI-GE62.
+	pkgver = r14.f4ca582
+	pkgrel = 1
+	url = https://github.com/edward-p/ACPI-MSI-GE62
+	install = acpi-msi-ge62-git.install
+	arch = any
+	makedepends = git
+	makedepends = acpica
+	makedepends = cpio
+	source = acpi-msi-ge62-git::git+https://github.com/edward-p/ACPI-MSI-GE62.git
+	sha512sums = SKIP
+
+pkgname = acpi-msi-ge62-git
+
