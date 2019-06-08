@@ -6,8 +6,8 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=ypserv
-pkgver=4.0
-pkgrel=6
+pkgver=4.1
+pkgrel=1
 pkgdesc='Linux NIS Server'
 arch=('i686' 'x86_64')
 url='https://github.com/thkukuk/ypserv'
@@ -15,7 +15,7 @@ license=('GPL2')
 makedepends=('libxslt' 'libxml2' 'docbook-xml' 'docbook-xsl')
 depends=('gawk' 'yp-tools' 'libsystemd')
 backup=('etc/ypserv.conf' 'etc/netgroup' 'etc/securenets' 'etc/yp/Makefile')
-source=("$url/archive/$pkgname-$pkgver.tar.gz"
+source=("$url/releases/download/v$pkgver/ypserv-$pkgver.tar.xz"
         'ypxfrd.service'
         'ypserv.service'
         'yppasswdd.service'
@@ -28,20 +28,20 @@ source=("$url/archive/$pkgname-$pkgver.tar.gz"
         'ypserv.conf')
 
 prepare() {
-  cd $pkgname-$pkgname-$pkgver
+  cd $pkgname-$pkgver
   sed -i -r -e 's,AC_CHECK_HEADERS\(crypt.h\),AC_CHECK_HEADERS([paths.h crypt.h]),' \
       configure.ac
-  ./autogen.sh
+  autoreconf -fiv
 }
 
 build() {
-  cd $pkgname-$pkgname-$pkgver
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr --sbindir=/usr/bin
   make V=0
 }
 
 package() {
-  cd $pkgname-$pkgname-$pkgver
+  cd $pkgname-$pkgver
   make DESTDIR="${pkgdir}" install
   install -D -m644 etc/netgroup "${pkgdir}"/etc/netgroup
   install -D -m644 etc/ypserv.conf "${pkgdir}"/etc/ypserv.conf
@@ -60,7 +60,7 @@ package() {
   rm -fr "${pkgdir}/var"
 }
 
-md5sums=('0b2cf49154881b65d37e44f89e163071'
+md5sums=('27df9000c34cb300e9b6425cd299cb2f'
          '0639cc2e8f667272335649eeede77206'
          '3428dcc728b2ac6c4edda9f43e834238'
          '9ff147310a5b83749357b6587cccdf34'
