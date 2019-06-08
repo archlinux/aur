@@ -1,6 +1,6 @@
 pkgname=openmodelica-omc
-pkgver=1.11.0
-pkgrel=2
+pkgver=1.13.2
+pkgrel=1
 
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ _group=OpenModelica
 _name=OMCompiler
 _tag=v${pkgver}
 
-depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'sundials' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'qjson' 'suitesparse' 'boost-libs')
+depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'sundials' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'suitesparse' 'boost-libs')
 
 makedepends=('gcc-fortran' 'boost' 'clang' 'cmake' 'java-environment' 'antlr2' 'git' 'expat' 'ncurses' 'readline' 'opencl-headers' 'imagemagick')
 
