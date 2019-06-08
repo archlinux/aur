@@ -48,7 +48,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.29.0_88_g317d3ac266
+pkgver=0.29.0_334_gfbe267150d
 pkgrel=1
 _waf_version=2.0.9
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
@@ -117,7 +117,7 @@ for feature in "${_opt_features[@]}"; do
       ;;
     vulkan)
       makedepends+=('vulkan-headers')
-      depends+=('vulkan-icd-loader')
+      depends+=('libplacebo')
       ;;
     shaderc|uchardet|rubberband)
       depends+=("$feature")
