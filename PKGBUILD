@@ -9,7 +9,7 @@ license=("Apache 2.0")
 url="https://github.com/philwo/bazelisk"
 makedepends=("bazel")
 
-source=("bazelisk.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=("f48b6d2af79ae89dc6963929d9624a16daa3a77423c930cda8ca3412a1c99ef3")
 
 build() {

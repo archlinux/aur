@@ -1,4 +1,4 @@
 bazelisk-*.pkg.tar.xz
-bazelisk.tar.gz
+*.tar.gz
 pkg/
 src/
