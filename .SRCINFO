@@ -1,0 +1,22 @@
+pkgbase = libcloudstorage
+	pkgdesc = C++ library providing access to files located in various cloud services
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://code.videolan.org/videolan/libcloudstorage
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = crypto++
+	depends = curl
+	depends = fuse3
+	depends = jsoncpp
+	depends = libmicrohttpd
+	depends = mega-sdk
+	depends = tinyxml2
+	source = https://code.videolan.org/videolan/libcloudstorage/-/archive/1.2/libcloudstorage-1.2.tar.bz2
+	source = 0001-Fix-compilation-with-newer-crypto.patch
+	sha256sums = 2ce657cb03ad46cc97b11db1acf13ee1abe0b22869eb602358b34743617d3a4e
+	sha256sums = a12406b7e429fa6fa7ed60f85a4a7bb936664890886003b3a86f462b007af373
+
+pkgname = libcloudstorage
+

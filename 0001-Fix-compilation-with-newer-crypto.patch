@@ -1,0 +1,25 @@
+From 7bf715455f30fd5f3e1935f5d2f497ce29c7510b Mon Sep 17 00:00:00 2001
+From: Chocobo1 <Chocobo1@users.noreply.github.com>
+Date: Sun, 9 Jun 2019 01:15:36 +0800
+Subject: [PATCH] Fix compilation with newer crypto++
+
+---
+ src/Utility/CryptoPP.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Utility/CryptoPP.cpp b/src/Utility/CryptoPP.cpp
+index 5900024..a2b3939 100644
+--- a/src/Utility/CryptoPP.cpp
++++ b/src/Utility/CryptoPP.cpp
+@@ -42,7 +42,7 @@ std::string CryptoPP::sha256(const std::string& message) {
+ std::string CryptoPP::hmac_sha256(const std::string& key,
+                                   const std::string& message) {
+   std::string mac;
+-  ::CryptoPP::HMAC<::CryptoPP::SHA256> hmac((byte*)key.c_str(), key.length());
++  ::CryptoPP::HMAC<::CryptoPP::SHA256> hmac((::CryptoPP::byte*)key.c_str(), key.length());
+   ::CryptoPP::StringSource(
+       message, true,
+       new ::CryptoPP::HashFilter(hmac, new ::CryptoPP::StringSink(mac)));
+-- 
+2.21.0
+
