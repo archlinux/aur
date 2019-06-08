@@ -39,7 +39,6 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
 sha256sums=('SKIP'
             '6e9ec5f9c6fc5b191f9dec85b82d58eb2a51577b989bc7852e6b254d56ff13e8'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
             '3961c09993c442df97832866ddaea5bcc1ade1313beb313b5ceba60166933016'
             '065244d3f6d88c48b7afec313b7da5a3a04377076e198954cda7951500530b84'
