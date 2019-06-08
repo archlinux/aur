@@ -12,7 +12,7 @@ pkgbase=network-manager-applet-indicator
 pkgname=(network-manager-applet-indicator nm-connection-editor-indicator libnma-indicator)
 pkgdesc="Applet for managing network connections, with Appindicator/StatusNotifierItem support from GNOME GitLab"
 url="https://wiki.gnome.org/Projects/NetworkManager/"
-pkgver=1.8.21dev+3+gb4c365b1
+pkgver=1.8.22
 pkgrel=1
 arch=(x86_64)
 license=(GPL LGPL)
@@ -20,7 +20,7 @@ depends=(libappindicator-gtk3)
 makedepends=(libsecret libnotify libmm-glib intltool gobject-introspection git gtk-doc meson
              libnm gcr gtk3 iso-codes mobile-broadband-provider-info)
 #source=("git+https://gitlab.gnome.org/GNOME/network-manager-applet.git")
-_commit=b4c365b136e25e69c3550a9984f8f3cbec4bc073  # bg/wifi-dialog-free
+_commit=b9f22d35aa2c6356e29e2e646298797ad90f5bdc # tags/1.8.22^0
 source=("git+https://gitlab.gnome.org/GNOME/network-manager-applet.git#commit=$_commit")
 sha256sums=('SKIP')
 
