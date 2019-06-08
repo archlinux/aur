@@ -8,7 +8,7 @@ pkgdesc="BSD-licensed HEALPix for Astropy"
 arch=('i686' 'x86_64')
 url="http://astropy-healpix.readthedocs.io/"
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools' 'python2-numpy' 'python-astropy' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-sphinx-astropy')
+makedepends=('python-setuptools' 'python2-setuptools' 'python2-numpy' 'python-astropy' 'python-astropy-helpers>=3.1' 'python-astropy-helpers<3.2' 'python2-astropy-helpers' 'python-sphinx-astropy')
 checkdepends=('python-pytest-astropy'
               'python2-pytest32'
               'python2-healpy'
