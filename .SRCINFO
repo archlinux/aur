@@ -1,6 +1,6 @@
 pkgbase = php-ioncube_loader
 	pkgdesc = Loader for PHP files encoded with ionCube PHP Encoder
-	pkgver = 10.3.2
+	pkgver = 10.3.5
 	pkgrel = 1
 	url = http://www.ioncube.com/
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = php-ioncube_loader
 	license = CUSTOM
 	depends = php
 	backup = etc/php/conf.d/00-ioncube_loader.ini
-	source_i686 = ioncube_loader-i686-10.3.2.tar.gz::https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86.tar.gz
-	sha256sums_i686 = 0552889aa235b9d12a677204d156079d7e2c738f2784a7d368d1d96dcb823b5c
-	source_x86_64 = ioncube_loader-x86_64-10.3.2.tar.gz::https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
-	sha256sums_x86_64 = 50dc6011199e08eb4762732a146196fed727ef6543fc0a06fa1396309726aebe
+	source_i686 = ioncube_loader-i686-10.3.5.tar.gz::https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86.tar.gz
+	sha256sums_i686 = 54ad9bc7d941b13b4a9122e01bfb0b6135e1f5d7470ed934ca6875e212a049b7
+	source_x86_64 = ioncube_loader-x86_64-10.3.5.tar.gz::https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
+	sha256sums_x86_64 = 8cf25eda73949192d2dec4ac0405ec0245523fdb2d2816e8b4b3a54069e85df3
 
 pkgname = php-ioncube_loader
 
