@@ -1,7 +1,7 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 
 pkgname=cpuminer-opt
-pkgver=3.9.2.3
+pkgver=3.9.2.4
 pkgrel=1
 pkgdesc='Optimized multi-algo CPU miner'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('curl' 'gmp' 'jansson' 'openssl')
 provides=('cpuminer' 'cpuminer-multi')
 conflicts=('cpuminer' 'cpuminer-multi' 'cpuminer-multi-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JayDDee/cpuminer-opt/archive/v$pkgver.tar.gz")
-sha256sums=('5b1aa4934f8c51212303117006b947afa517e251fe41cc429206711bd87d64e8')
+sha256sums=('bb36f0ba970b876ac1e4f17297f08e8aeaf66758324e22cfa9a330c0e107ccf1')
 
 build() {
   cd "$pkgname-$pkgver"
