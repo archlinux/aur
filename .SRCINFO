@@ -1,0 +1,16 @@
+pkgbase = grub-theme-tela-git
+	pkgdesc = Tela grub theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/vinceliuice/grub2-themes
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = grub
+	provides = grub-theme-tela
+	conflicts = grub-theme-tela
+	source = grub-theme-tela::git+https://github.com/vinceliuice/grub2-themes.git
+	md5sums = SKIP
+
+pkgname = grub-theme-tela-git
+
