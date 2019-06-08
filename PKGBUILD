@@ -15,10 +15,9 @@ depends=('aurutils' 'devtools' 'rsync')
 optdepends=('gnupg')
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "%s.r%s.g%s" "$(git describe)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
   cd "$srcdir/$_pkgname"
-
   install -Dm755 -t "$pkgdir/usr/bin/" "$_pkgname"
 }
