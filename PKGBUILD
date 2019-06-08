@@ -12,7 +12,7 @@ depends=(grub)
 makedepends=(git)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("${pkgname%-*}::git+https://github.com/vinceliuice/grub2-themes.git")
+source=("$_pkgname::git+https://github.com/vinceliuice/grub2-themes.git")
 md5sums=(SKIP)
 
 pkgver() {
