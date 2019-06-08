@@ -5,7 +5,7 @@
 
 pkgname=ankama-launcher
 pkgver=2.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A multi-game portal for all Ankama games.'
 url='https://www.ankama.com/en/launcher'
 
@@ -16,8 +16,8 @@ optdepends=('wine: to play Dofus'
             'java-environment: to play Wakfu')
 options=('!strip')
 source=('ankama-launcher.desktop.patch')
-source_i686=('https://ankama.akamaized.net/zaap/installers/production/Ankama%20Launcher-Setup-i386.AppImage')
-source_x86_64=('https://ankama.akamaized.net/zaap/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage')
+source_i686=("${pkgname}-${pkgver}-i386.AppImage::https://ankama.akamaized.net/zaap/installers/production/Ankama%20Launcher-Setup-i386.AppImage")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::https://ankama.akamaized.net/zaap/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage")
 md5sums=('f4a3bd087a326c9d31f6c945e7ddbe0b')
 md5sums_i686=('43582538704d96540145186ea8626e1b')
 md5sums_x86_64=('2563723d9467705b683f3e26428458a0')
@@ -27,7 +27,7 @@ md5sums_x86_64=('2563723d9467705b683f3e26428458a0')
 
 prepare() {
     cd "${srcdir}"
-    mv "Ankama%20Launcher-Setup-${LARCH}.AppImage" "ankama-launcher.AppImage"
+    mv "${pkgname}-${pkgver}-${LARCH}.AppImage" "ankama-launcher.AppImage"
     7z e "${srcdir}/ankama-launcher.AppImage" "zaap.desktop"
     7z e "${srcdir}/ankama-launcher.AppImage" "usr/share/icons/hicolor/128x128/apps/zaap.png"
 
