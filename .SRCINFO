@@ -1,0 +1,22 @@
+pkgbase = ccpnmr
+	pkgdesc = An interactive NMR spectrum visualisation, resonance assignment and analysis program
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://www.ccpn.ac.uk
+	arch = x86_64
+	license = LGPL2.1
+	license = custom
+	makedepends = sed
+	makedepends = gcc
+	depends = tcsh
+	depends = python2
+	depends = freeglut
+	depends = glu
+	depends = tk
+	optdepends = python2-numpy: extends Analysis functionality
+	optdepends = tix: used in ARIA
+	source = http://www.ccpn.ac.uk/download/ccpnmr/analysis2.4.2.tar.gz
+	sha256sums = 14941131033cbd4b0b13d6d4fe3f9253360a7c2ace8ece9194be00c1fe4b2903
+
+pkgname = ccpnmr
+
