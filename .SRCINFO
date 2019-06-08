@@ -1,4 +1,5 @@
 pkgbase = vulkan-amdgpu-pro
+	pkgdesc = AMDGPU PRO Driver for Vulkan®
 	pkgver = 19.10_785425
 	pkgrel = 1
 	url = http://www.amd.com
