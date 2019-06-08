@@ -1,0 +1,23 @@
+From: Ole Streicher <olebole@debian.org>
+Date: Wed, 12 Sep 2018 13:22:38 +0200
+Subject: Fix numpy doctest incompatibility
+
+---
+ hips/tiles/tile.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hips/tiles/tile.py b/hips/tiles/tile.py
+index bafd0fa..ea56fac 100644
+--- a/hips/tiles/tile.py
++++ b/hips/tiles/tile.py
+@@ -80,8 +80,8 @@ class HipsTileMeta:
+     HipsTileMeta(order=3, ipix=450, file_format='fits', frame='icrs', width=512)
+     >>> tile_meta.skycoord_corners
+     <SkyCoord (ICRS): (ra, dec) in deg
+-    [( 264.375, -24.62431835), ( 258.75 , -30.        ),
+-    ( 264.375, -35.68533471), ( 270.   , -30.        )]>
++        [(264.375, -24.62431835), (258.75 , -30.        ),
++         (264.375, -35.68533471), (270.   , -30.        )]>
+     >>> tile_meta.tile_default_url
+     'Norder3/Dir0/Npix450.fits'
+     >>> tile_meta.tile_default_path.as_posix()

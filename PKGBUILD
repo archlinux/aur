@@ -3,20 +3,24 @@ pkgbase=python-hips
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python astronomy package for HiPS"
 arch=('i686' 'x86_64')
 url="https://hips.readthedocs.io/"
 license=('BSD')
-makedepends=('python-setuptools' 'python-astropy' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy' 'python-scikit-image' 'python-astropy-healpix' 'python-tqdm')
-#checkdepends=('python-pytest-astropy' 'python-cloudpickle' 'python-dask')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('9acf7a722837ba9d61f85d5710415ece')
+makedepends=('python-setuptools' 'python-astropy' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy' 'python-sphinx_rtd_theme' 'python-scikit-image' 'python-astropy-healpix' 'python-tqdm')
+checkdepends=('python-pytest-astropy')
+#'python-dask')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        'Fix-numpy-doctest-incompatibility.patch')
+md5sums=('9acf7a722837ba9d61f85d5710415ece'
+         'c0c026ad536e73dca0ea0cad151ebf6c')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     sed -i -e '/auto_use/s/True/False/' setup.cfg
+    patch -Np1 -i "${srcdir}/Fix-numpy-doctest-incompatibility.patch"
 }
 
 build() {
@@ -27,11 +31,11 @@ build() {
     python setup.py build_docs
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}-py2
-#
-#    python2 setup.py test
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    python setup.py test
+}
 
 package_python-hips() {
     depends=('python>=3.6' 'python-astropy>=1.3' 'python-astropy-healpix>=0.2' 'python-scikit-image>=0.12' 'python-pillow>=4.0')
