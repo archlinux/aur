@@ -1,7 +1,7 @@
 pkgbase = foliate
 	pkgdesc = A simple and modern GTK eBook reader
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://johnfactotum.github.io/foliate/
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = foliate
 	depends = gjs
 	depends = webkit2gtk
 	depends = libsoup
+	optdepends = hyphen: Auto-hyphenation support
+	optdepends = hyphen-en: Hyphenation rules for English; you may choose package for your language
 	provides = foliate
 	conflicts = foliate-git
 	source = https://github.com/johnfactotum/foliate/archive/1.2.1.tar.gz
