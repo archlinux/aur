@@ -26,6 +26,9 @@ depends=('qt5-svg'
          'libmediainfo'
          'libraw'
          )
+makedepends=('git'
+             'qt5-tools'
+             )
 sha256sums=('SKIP'
             'SKIP'
             'c0abfeafb541509923c85d253f6f64dae8a49e9ae4b067f5c0c484ff1d924403'
