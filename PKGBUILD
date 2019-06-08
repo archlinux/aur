@@ -1,5 +1,5 @@
 pkgname=openmodelica-omshell
-pkgver=1.11.0
+pkgver=1.13.2
 pkgrel=1
 
 pkgdesc="The Open Source Modelica Suite - OpenModelica Shell"
@@ -12,7 +12,7 @@ _group=OpenModelica
 _name=OMShell
 _commit=0cdc045cf0313aa613c65e1db7df2c28654eadb8
 
-depends=('openmodelica-omc' 'java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'sundials' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'qjson' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-svg' 'qt5-tools')
+depends=('openmodelica-omc' 'java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'sundials' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-svg' 'qt5-tools')
 
 makedepends=('gcc-fortran' 'boost' 'clang' 'cmake' 'java-environment' 'antlr2' 'git' 'expat' 'ncurses' 'readline' 'opencl-headers' 'imagemagick')
 
