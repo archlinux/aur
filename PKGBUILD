@@ -14,6 +14,8 @@ sha1sums=('7ccdb4b4487b43bb428c32994092c00ca14f594a'
 sha1sums_x86_64=('46a9d93cdf72776350e3facdfff733d01f764e83')
 source_x86_64=("http://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver//./_}_linux64.tar.gz")
 depends=('vulkan-icd-loader' 'qt5-base' 'qt5-x11extras')
+conflicts=(vulkan-caps-viewer)
+provides=(vulkan-caps-viewer)
 
 package() {
   # App
