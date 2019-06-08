@@ -2,12 +2,12 @@
 
 pkgname=libcloudstorage-git
 pkgver=1.2.r385.gf7b5d81
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library providing access to files located in various cloud services"
 arch=('i686' 'x86_64')
 url="https://code.videolan.org/videolan/libcloudstorage"
 license=('LGPL')
-depends=('boost-libs' 'crypto++' 'curl' 'fuse2' 'jsoncpp' 'libmicrohttpd' 'mega-sdk' 'tinyxml2')
+depends=('boost-libs' 'crypto++' 'curl' 'fuse3' 'jsoncpp' 'libmicrohttpd' 'mega-sdk' 'tinyxml2')
 makedepends=('git' 'boost')
 provides=('libcloudstorage')
 conflicts=('libcloudstorage')

@@ -1,7 +1,7 @@
 pkgbase = libcloudstorage-git
 	pkgdesc = C++ library providing access to files located in various cloud services
 	pkgver = 1.2.r385.gf7b5d81
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.videolan.org/videolan/libcloudstorage
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = libcloudstorage-git
 	depends = boost-libs
 	depends = crypto++
 	depends = curl
-	depends = fuse2
+	depends = fuse3
 	depends = jsoncpp
 	depends = libmicrohttpd
 	depends = mega-sdk
