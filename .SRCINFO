@@ -8,6 +8,7 @@ pkgbase = crema-git
 	depends = aurutils
 	depends = devtools
 	depends = rsync
+	optdepends = gnupg
 	source = git://github.com/mipimipi/crema.git
 	md5sums = SKIP
 
