@@ -1,0 +1,16 @@
+pkgbase = grub-theme-stylish-git
+	pkgdesc = Stylish grub theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/vinceliuice/grub2-themes
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = grub
+	provides = grub-theme-stylish
+	conflicts = grub-theme-stylish
+	source = grub-theme-stylish::git+https://github.com/vinceliuice/grub2-themes.git
+	md5sums = SKIP
+
+pkgname = grub-theme-stylish-git
+
