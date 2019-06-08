@@ -18,6 +18,8 @@ checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-benchmark' 'pyt
 provides=('borg')
 conflicts=('borg')
 install=borg-venv.install
+# msgpack-python: https://pypi.org/project/msgpack-python/
+# llfuse: https://pypi.org/project/llfuse/
 source=("https://github.com/borgbackup/borg/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"{,.asc}
         'https://files.pythonhosted.org/packages/8a/20/6eca772d1a5830336f84aca1d8198e5a3f4715cd1c7fc36d3cc7f7185091/msgpack-python-0.5.6.tar.gz'
         'https://files.pythonhosted.org/packages/75/b4/5248459ec0e7e1608814915479cb13e5baf89034b572e3d74d5c9219dd31/llfuse-1.3.6.tar.bz2')
