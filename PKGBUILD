@@ -4,7 +4,7 @@
 _basename=gst-plugins-ugly
 pkgname="lib32-$_basename"
 pkgver=1.14.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer Multimedia Framework Ugly Plugins (32-bit)"
 arch=('x86_64')
 license=('LGPL')
@@ -14,8 +14,14 @@ depends=('lib32-gst-plugins-base-libs' 'lib32-libdvdread'
          'lib32-libcdio' 'lib32-x264' 'lib32-opencore-amr' 'gst-plugins-ugly')
 makedepends=('python' 'lib32-x264' 'autoconf-archive' 'git' 'valgrind-multilib')
 _commit=e1bf2aa184f83ff9fd5b7850c460129100ac6d1a  # tags/1.14.4^0
-source=("git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-ugly#commit=$_commit"
-        "gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common")
+
+#source=("git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-ugly#commit=$_commit"
+#        "gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common")
+# I'm not sure if I'm just unlucky or whatever, the git server from freedesktop is too slow
+# So switch to github mirrors
+source=("git+https://github.com/freedesktop/gstreamer-gst-plugins-ugly.git#commit=$_commit"
+        "gst-common::git+https://github.com/freedesktop/gstreamer-common.git")
+
 sha256sums=('SKIP'
             'SKIP')
 pkgver() {
@@ -60,10 +66,10 @@ build() {
   make
 }
 
-check() {
-  cd $_basename
-  make check
-}
+#check() {
+#  cd $_basename
+#  make check
+#}
 
 package() {
   cd $_basename
