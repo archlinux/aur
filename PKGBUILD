@@ -19,7 +19,6 @@ build() {
 
 package() {
   cd "$srcdir"/PyQtDataVisualization_gpl-$pkgver
-  mkdir -p "$pkgdir"/usr/lib/python3.7/site-packages/
   make install INSTALL_ROOT="${pkgdir}" -j1
 }
 
