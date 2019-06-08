@@ -3,8 +3,7 @@
 _pkgbasename=memtest86
 pkgname=$_pkgbasename-efi
 pkgver=8.2
-#_build=1000
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, thorough, stand alone memory test as an EFI application"
 arch=('any')
 url="http://www.memtest86.com"
@@ -14,13 +13,13 @@ optdepends=('efibootmgr: to add a new EFI boot entry'
 	'grub: to add MemTest86 entry in GRUB2 menu')
 backup=(etc/$pkgname/$pkgname.conf)
 install=$pkgname.install
-source=(#"https://www.passmark.com/ftp/$_pkgbasename-usb-$pkgver.$_build.zip"
-	"$pkgname-$pkgver.zip::https://www.memtest86.com/downloads/$_pkgbasename-usb.zip"
+source=(#"$pkgname-$pkgver.zip::https://www.memtest86.com/downloads/$_pkgbasename-usb.zip"
+	"$pkgname-$pkgver.zip::https://github.com/X0rg/AUR-packages/raw/master/files/$_pkgbasename-usb.zip"
 	"memtest86-efi"
 	"memtest86-efi.conf"
 	"memtest86-efi-update.hook"
 	"memtest86-efi-remove.hook")
-sha512sums=('1d2d8f1c37f97c87032449db955ce9a6ca328643f65a9fd5fb30b05374d6f2bcf63c3515abd81785882beea1f8528874ebdc46b564855946f05493c761b76b74'
+sha512sums=('78e92597c2154b978d779ab78bca020fc3a4854773b847a3dd71f736e3565faadd2dd097f8e5dff5c20aaf7e397b29476e8102479b919f3212c48fe0529fd177'
             '9e4919d3a1d2435c3feed718b422be7206ec639268d79aee2ac419e9665d134829f507506da33903da547f73d22e0833335118cbe04cda0c5bbfc7e64aa3bd51'
             '947df5f141bdb00a007a796c74f862d6ca41f74b4e5b28d1a444b4b8e538114e7f404f54420508639a77e554c2477ad324570ada0462c9fd7b058ed51e0ea8d8'
             '6952376b601b84da5fba14a7a5316d37b6083bae20f68f5b90b22d2728a19bf6d1fb367cf1adecfb82bf03e339b7dbf91f6d23f0d59731f89cf45240f16d5614'
