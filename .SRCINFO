@@ -1,6 +1,6 @@
 pkgbase = fence-agents
 	pkgdesc = OCF fence agents for rgmanager and pacemaker
-	pkgver = 4.2.1
+	pkgver = 4.3.3
 	pkgrel = 1
 	url = http://clusterlabs.org/
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = fence-agents
 	depends = python-requests
 	depends = python-boto3
 	depends = python-suds
-	source = fence-agents-4.2.1.tar.gz::https://github.com/ClusterLabs/fence-agents/archive/v4.2.1.tar.gz
-	sha512sums = 1de82a66b92fd585b4349e6881328614e4cd85013fd8db5fe2fee72efb7a5850ad96de9f177de977d6c7ccbdf6c76a8659e4e0f092c0ee36463d681effabfa43
+	source = fence-agents-4.3.3.tar.gz::https://github.com/ClusterLabs/fence-agents/archive/v4.3.3.tar.gz
+	sha512sums = 7d110b577ddbc288a44125434c5e20528e0622c1939a3d4c13fcc98d237abf3d716018b0d633d399a6988ace7062138c56602064256457b392539c035c018a44
 
 pkgname = fence-agents
 
