@@ -1,19 +1,20 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r123.4dc99dd
+pkgver=r157.5a5206c
 pkgrel=1
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
 license=('custom')
-depends=('openssh' 'xdg-utils' 'xkeyboard-config' 'pulseaudio' 'xxd-standalone')
+depends=('openssh' 'xdg-utils' 'xkeyboard-config' 'pulseaudio' 'xxd' 'packagekit')
 install=cros-container-guest-tools.install
 url="https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools"
-source=("git+${url}" 'cros-sftp-conditions.conf' 'cros-garcon-conditions.conf' 'cros-locale.sh' 'cros-garcon.hook')
+source=("git+${url}" 'cros-sftp-conditions.conf' 'cros-garcon-conditions.conf' 'cros-locale.sh' 'cros-garcon.hook' 'cros-logind-override.conf')
 sha1sums=('SKIP'
           '0827ce6d673949a995be2d69d4974ddd9bdf16f1'
           'd326cd35dcf150f9f9c8c7d6336425ec08ad2433'
           '8586cf72dacdcca82022519467065f70fe4a3294'
-          '9a68893cadf9190e99cadc4c781ba43e45104b1e')
+          '9a68893cadf9190e99cadc4c781ba43e45104b1e'
+          '0c21f6c85ecbe8f822c378c7e4d5b3165e56eb3a')
 
 pkgver() {
 	cd ${srcdir}/${_pkgname}
@@ -86,6 +87,10 @@ package() {
 					 ${pkgdir}/usr/lib/systemd/system/cros-sftp.service
 	ln -sf ../cros-sftp.service \
 		   ${pkgdir}/usr/lib/systemd/system/multi-user.target.wants/cros-sftp.service
+
+	# workaround for https://github.com/systemd/systemd/issues/12401
+	install -m644 -D ${srcdir}/cros-logind-override.conf \
+			${pkgdir}/usr/lib/systemd/system/systemd-logind.service.d/cros-logind-override.conf
 
 	# add drop-in for cros-sftp to check if required ssh artifacts were bind-mounted before starting
 	install -m644 -D ${srcdir}/cros-sftp-conditions.conf \
