@@ -1,5 +1,5 @@
 pkgname=openmodelica-omplot
-pkgver=1.11.0
+pkgver=1.13.2
 pkgrel=1
 
 pkgdesc="The Open Source Modelica Suite - OpenModelica Plot"
@@ -12,7 +12,7 @@ _group=OpenModelica
 _name=OMPlot
 _commit=8e9e7fd085ebb6d43674e33f9d516988a2194ce9
 
-depends=('openmodelica-omc' 'openmodelica-qwt' 'java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'sundials' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'qjson' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-svg' 'qt5-tools')
+depends=('openmodelica-omc' 'openmodelica-qwt' 'java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'sundials' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-svg' 'qt5-tools')
 
 makedepends=('openmodelica-qwt' 'gcc-fortran' 'boost' 'clang' 'cmake' 'java-environment' 'antlr2' 'git' 'expat' 'ncurses' 'readline' 'opencl-headers' 'imagemagick')
 
