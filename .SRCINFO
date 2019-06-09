@@ -1,0 +1,15 @@
+pkgbase = gllock-git
+	pkgdesc = Not so simple opengl based X display locker utility
+	pkgver = r64.c77658b
+	pkgrel = 1
+	url = https://github.com/kuravih/gllock
+	arch = x86_64
+	license = MIT
+	depends = git
+	depends = xorgproto
+	depends = glew
+	source = git+https://github.com/kuravih/gllock.git
+	md5sums = SKIP
+
+pkgname = gllock-git
+

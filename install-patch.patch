@@ -1,0 +1,49 @@
+From b7548cf91a3eccbdf66e7702241f1047d8a4c724 Mon Sep 17 00:00:00 2001
+From: Aaron Moore <aaron@atamisk.net>
+Date: Sun, 9 Jun 2019 09:04:12 -0400
+Subject: [PATCH] Removed symlink to user's home directory.
+
+---
+ Makefile  | 3 +--
+ config.mk | 4 ++--
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 979f943..deba568 100644
+--- a/Makefile
++++ b/Makefile
+@@ -42,8 +42,7 @@ install: all
+ 	@cp -f gllock ${DESTDIR}${PREFIX}/bin
+ 	@chmod 755 ${DESTDIR}${PREFIX}/bin/gllock
+ 	@chmod u+s ${DESTDIR}${PREFIX}/bin/gllock
+-	@ln -sr shaders ${SHADER_LOCATION}
+-
++	@install -Dt ${DESTDIR}${SHADER_LOCATION} shaders/* 
+ uninstall:
+ 	@echo removing executable file from ${DESTDIR}${PREFIX}/bin
+ 	@rm -f ${DESTDIR}${PREFIX}/bin/gllock
+diff --git a/config.mk b/config.mk
+index ce5cbf6..23e8408 100644
+--- a/config.mk
++++ b/config.mk
+@@ -4,7 +4,7 @@ VERSION = 0.1-alpha
+ # Customize below to fit your system
+ 
+ # paths
+-SHADER_LOCATION = $(HOME)/.gllock
++SHADER_LOCATION = /usr/lib/gllock/shaders/
+ 
+ # shader
+ # FRGMNT_SHADER = blur.fragment.glsl
+@@ -14,7 +14,7 @@ FRGMNT_SHADER = circle.fragment.glsl
+ # FRGMNT_SHADER = ascii.fragment.glsl
+ # FRGMNT_SHADER = crt.fragment.glsl
+ 
+-PREFIX = /usr/local
++PREFIX = /usr
+ 
+ X11INC = /usr/X11R6/include
+ X11LIB = /usr/X11R6/lib
+-- 
+2.21.0
+
