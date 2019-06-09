@@ -1,12 +1,11 @@
 pkgbase = flif
 	pkgdesc = Free Lossless Image Format
 	pkgver = 0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/FLIF-hub/FLIF/
-	arch = i686
 	arch = x86_64
 	license = LGPL3
-	license = APACHE
+	license = Apache
 	depends = gcc-libs
 	depends = libpng
 	depends = sdl2
@@ -14,8 +13,10 @@ pkgbase = flif
 	optdepends = apng-utils: for apng2flif tool
 	source = flif-0.3.tar.gz::https://github.com/FLIF-hub/FLIF/archive/v0.3.tar.gz
 	source = flif-use-build-flags.patch
+	source = flif-remove-apt-get-references-from-tools.patch
 	sha256sums = aa02a62974d78f8109cff21ecb6d805f1d23b05b2db7189cfdf1f0d97ff89498
 	sha256sums = d8cdb93f4f1e63487d65d23c1c96bf79acff1277532cbcfd88ca05932655d871
+	sha256sums = c516d92d4724e319af79bb1ac5d3dde81dac359fd4a02af1ee71239a49d58710
 
 pkgname = flif
 
