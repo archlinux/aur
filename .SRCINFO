@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-adaptive-git
 	pkgdesc = InputStream client for adaptive streams for Kodi 18+
-	pkgver = 2.3.15.r1.gb76c81f
+	pkgver = 2.3.21.Leia.r0.g4b275ed
 	pkgrel = 1
 	url = https://github.com/peak3d/inputstream.adaptive
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = kodi-addon-inputstream-adaptive-git
 	depends = expat
 	provides = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive
-	source = kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git
+	source = kodi-addon-inputstream-adaptive-git::git+https://github.com/peak3d/inputstream.adaptive.git#branch=Leia
 	md5sums = SKIP
 
 pkgname = kodi-addon-inputstream-adaptive-git
