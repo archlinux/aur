@@ -1,6 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-photutils
-pkgname=('python-photutils' 'python-photutils-doc')
+_pyname=${pkgbase#python-}
+pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=0.6
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
@@ -9,22 +10,22 @@ url="http://photutils.readthedocs.io/en/latest/"
 license=('BSD')
 makedepends=('cython'
              'python-astropy'
-             'python-astropy-helpers'
+             'python-astropy-helpers<3.2'
              'python-scikit-learn'
              'python-scikit-image'
              'python-sphinx-astropy')
 checkdepends=('python-pytest-astropy')
-source=("https://files.pythonhosted.org/packages/source/p/photutils/photutils-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('2898c758e5075d47b60e886303dd28fd')
 
 prepare() {
-    cd ${srcdir}/photutils-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     sed -i -e '/auto_use/s/True/False/' setup.cfg
 }
 
 build() {
-    cd ${srcdir}/photutils-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py build --use-system-libraries --offline
 
     msg "Building Docs"
@@ -32,7 +33,8 @@ build() {
 }
 
 check() {
-    cd ${srcdir}/photutils-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
+
     python setup.py test
 }
 
@@ -44,7 +46,7 @@ package_python-photutils() {
                 'python-matplotlib>=1.3: For full functionality'
                 'python-photutils-doc: Documentation for python-photutils'
                 'python-pytest-astropy: For testing')
-    cd ${srcdir}/photutils-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
@@ -53,7 +55,7 @@ package_python-photutils() {
 
 package_python-photutils-doc() {
     pkgdesc="Documentation for Python Photutils module"
-    cd ${srcdir}/photutils-${pkgver}/docs/_build
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
