@@ -1,25 +1,23 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
-# pstoedit compiled without ImageMagick dependency
-
 _srcname=pstoedit
 pkgname=pstoedit-nomagick
-pkgver=3.73
-pkgrel=2
+pkgver=3.74
+pkgrel=1
 pkgdesc='Translates PS/PDF graphics to other vector formats (no ImageMagick dependency)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.pstoedit.net/'
 license=('GPL')
 depends=(
     # official repositories:
-        'gcc-libs' 'gd' 'ming' 'libzip' 'plotutils' 'ghostscript'
+        'gcc-libs' 'gd' 'ming' 'libzip' 'zlib' 'plotutils' 'ghostscript'
     # AUR:
         'libemf'
 )
 provides=('pstoedit')
 conflicts=('pstoedit')
 source=("https://sourceforge.net/projects/pstoedit/files/pstoedit/${pkgver}/${_srcname}-${pkgver}.tar.gz")
-sha256sums=('ad31d13bf4dd1b9e2590dccdbe9e4abe74727aaa16376be85cd5d854f79bf290')
+sha256sums=('353242fa4a3a73c3c856d1122a4d258a12be869707629603807e27137566990c')
 
 build() {
     cd "${_srcname}-${pkgver}"
@@ -35,6 +33,12 @@ build() {
         --with-pptx
         
     make
+}
+
+check() {
+    cd "${_srcname}-${pkgver}"
+    
+    make check
 }
 
 package() {
