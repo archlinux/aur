@@ -1,5 +1,5 @@
 pkgbase = i3-gaps-fullscreen-next-git
-	pkgdesc = A fork of i3wm tiling window manager (development branch) with more features, including gaps
+	pkgdesc = A fork of a fork of i3wm tiling window manager, with multi-monitor fullscreen workaround for VMWare, mpv, etc.
 	pkgver = 4.16.1.r178.g31c0f1b8
 	pkgrel = 1
 	url = https://github.com/Airblader/i3/tree/gaps-next
