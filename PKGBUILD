@@ -1,14 +1,14 @@
 # Contributor: Dave Reisner <d@falconindy.com>
 
 pkgname=expac-git
-pkgver=3.9.g7a73405
+pkgver=9.2.g6be7fe1
 pkgrel=1
 pkgdesc="pacman database extraction utility"
 arch=('i686' 'x86_64')
 url="http://github.com/falconindy/expac"
 license=('MIT')
 depends=('pacman')
-makedepends=('git' 'perl')
+makedepends=('git' 'meson' 'perl')
 conflicts=('expac')
 provides=('expac')
 source=('git://github.com/falconindy/expac.git')
@@ -23,13 +23,16 @@ pkgver() {
 build() {
   cd expac
 
-  make
+  [[ -d build ]] && meson_args+=(--wipe)
+
+  meson build "${meson_args[@]}"
+  ninja -C build
 }
 
 package() {
   cd expac
 
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  DESTDIR=$pkgdir ninja -C build
 }
 
 # vim: ft=sh syn=sh et
