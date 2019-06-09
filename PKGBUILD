@@ -16,10 +16,10 @@ makedepends=("java-environment" "premake")
 source=("https://deb-multimedia.org/pool/main/a/aacskeys/${pkgname}_${pkgver}.orig.tar.gz"
 	"https://deb-multimedia.org/pool/main/a/aacskeys/${pkgname}_${pkgver}-${_dmover}.diff.gz")
 sha1sums=('8790f0d4098d6bc83304ad2136cc9681374df83a'
-	  '481c737983332a4a38aab0b292ba0cd958bb629c')
+          '481c737983332a4a38aab0b292ba0cd958bb629c')
 
 prepare() {
-
+  zcat ${pkgname}_${pkgver}-${_dmover}.diff.gz > ${srcdir}/${pkgname}_${pkgver}-${_dmover}.diff
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i "${srcdir}/${pkgname}_${pkgver}-${_dmover}.diff"
 
