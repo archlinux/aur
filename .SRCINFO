@@ -1,7 +1,7 @@
 pkgbase = nvidia-beta-dkms
 	pkgdesc = NVIDIA driver sources for linux (beta version)
 	pkgver = 430.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -16,7 +16,13 @@ pkgbase = nvidia-beta-dkms
 	provides = nvidia-beta=430.14
 	conflicts = nvidia
 	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/430.14/NVIDIA-Linux-x86_64-430.14-no-compat32.run
+	source = FS62142.patch
+	source = 0001-nvidia-beta-dkms-change-dkms-conf.patch
+	source = 0002-nvidia-beta-dkms-linux-rt-gift.patch
 	sha256sums = 0f583a277b1731cb8327510b75dba9cf7adf5c781247e4f48bcc9f358253278f
+	sha256sums = c961006882afb691410c017c239e2c2ef61badb88f15735d37112b513ef0a99d
+	sha256sums = 066045f1e5bd25f5488ab37c2ad13e12c7827d2439569ef5c26826c92dfa4250
+	sha256sums = 25e29ee166552523366278d94ba69a7895cd50321cf402a9f69598b16a9e2827
 
 pkgname = nvidia-beta-dkms
 

@@ -10,7 +10,7 @@
 
 pkgname=nvidia-beta-dkms
 pkgver=430.14
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA driver sources for linux (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -21,48 +21,41 @@ optdepends=('linux-headers: build the module for Arch kernel'
             'linux-lts-headers: build the module for LTS Arch kernel')
 provides=("nvidia=${pkgver}" "nvidia-dkms=${pkgver}" "nvidia-beta=${pkgver}")
 conflicts=('nvidia')
-_srcname="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
-source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_srcname}.run")
-sha256sums=('0f583a277b1731cb8327510b75dba9cf7adf5c781247e4f48bcc9f358253278f')
+_pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
+source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
+        'FS62142.patch'
+        '0001-nvidia-beta-dkms-change-dkms-conf.patch'
+        '0002-nvidia-beta-dkms-linux-rt-gift.patch')
+sha256sums=('0f583a277b1731cb8327510b75dba9cf7adf5c781247e4f48bcc9f358253278f'
+            'c961006882afb691410c017c239e2c2ef61badb88f15735d37112b513ef0a99d'
+            '066045f1e5bd25f5488ab37c2ad13e12c7827d2439569ef5c26826c92dfa4250'
+            '25e29ee166552523366278d94ba69a7895cd50321cf402a9f69598b16a9e2827')
 
 prepare() {
     # extract the source file
-    [ -d "$_srcname" ] && rm -rf "$_srcname"
-    printf '%s\n' "  -> Self-Extracting ${_srcname}.run..."
-    sh "${_srcname}.run" --extract-only
+    [ -d "$_pkg" ] && rm -rf "$_pkg"
+    printf '%s\n' "  -> Self-Extracting ${_pkg}.run..."
+    sh "${_pkg}.run" --extract-only
     
-    # update dkms.conf
-    cd "${_srcname}/kernel"
-    sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
-    sed -i 's/__JOBS/`nproc`/' dkms.conf
-    sed -i 's/__DKMS_MODULES//' dkms.conf
-    sed -i '$iBUILT_MODULE_NAME[0]="nvidia"\
-DEST_MODULE_LOCATION[0]="/kernel/drivers/video"\
-BUILT_MODULE_NAME[1]="nvidia-uvm"\
-DEST_MODULE_LOCATION[1]="/kernel/drivers/video"\
-BUILT_MODULE_NAME[2]="nvidia-modeset"\
-DEST_MODULE_LOCATION[2]="/kernel/drivers/video"\
-BUILT_MODULE_NAME[3]="nvidia-drm"\
-DEST_MODULE_LOCATION[3]="/kernel/drivers/video"' dkms.conf
-
-    # gift for linux-rt guys
-    sed -i 's/NV_EXCLUDE_BUILD_MODULES/IGNORE_PREEMPT_RT_PRESENCE=1 NV_EXCLUDE_BUILD_MODULES/' dkms.conf
+    cd "$_pkg"
+    patch -Np1 -i "${srcdir}/0001-nvidia-beta-dkms-change-dkms-conf.patch"
+    patch -Np1 -i "${srcdir}/0002-nvidia-beta-dkms-linux-rt-gift.patch"
+    
+    # fix https://bugs.archlinux.org/task/62142
+    patch -Np1 -i "${srcdir}/FS62142.patch"
 }
 
 package() {
-    cd "${_srcname}/kernel"
+    cd "$_pkg"
     
-    # directories creation
-    install -d "${pkgdir}/usr/lib/modprobe.d/"
-    install -d "${pkgdir}/usr/src/nvidia-${pkgver}/"
+    mkdir -p "${pkgdir}/usr/src"
     
     # install
-    cp -dr --no-preserve='ownership' * "${pkgdir}/usr/src/nvidia-${pkgver}/"
+    cp -dr --no-preserve='ownership' kernel "${pkgdir}/usr/src/nvidia-${pkgver}"
     
     # blacklist nouveau driver
     printf '%s\n' 'blacklist nouveau' | install -D -m644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
     
     # license
-    cd "${srcdir}/${_srcname}"
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 "${srcdir}/${_pkg}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
