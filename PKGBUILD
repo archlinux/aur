@@ -8,7 +8,7 @@ pkgdesc="Python based tools for spherical geometry"
 arch=('i686' 'x86_64')
 url="http://www.stsci.edu/resources/software_hardware/stsci_python"
 license=('BSD')
-makedepends=('python-setuptools' 'qd>=2.3.7' 'python-astropy>=3.1' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy')
+makedepends=('python-setuptools' 'qd>=2.3.7' 'python-astropy>=3.1' 'python-astropy-helpers>=3.1' 'python-astropy-helpers<3.2' 'python-sphinx-astropy')
 checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_doc_warning.patch')
