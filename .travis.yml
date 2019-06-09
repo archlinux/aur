@@ -37,6 +37,7 @@ arch:
 # check for (opt|)depends update
   - |
     build_deps=$(. PKGBUILD; IFS=$'\n'; echo -e "${depends[*]}\n${makedepends[*]}"; )
+    build_deps=$(for pkg in $build_deps; do pacman -S --print-format '%n' $pkg|tail -1; done|sort -u;)
     echo -e "Build dependency:\n${build_deps[*]}"
     new_deps_ver=$(for pkg in $build_deps; do pacman -S --print-format '%n %v' $pkg|tail -1; done;)
     echo -e "Pacman dependency versions:\n$new_deps_ver"
