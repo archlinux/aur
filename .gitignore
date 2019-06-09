@@ -1,0 +1,6 @@
+pkg/
+src/
+abcpp-*.tar.gz
+abcpp-*.pkg.tar.xz
+abcpp-*.src.tar.gz
+.AURINFO
