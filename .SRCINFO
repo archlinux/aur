@@ -31,11 +31,7 @@ pkgbase = mutter-781835-workaround
 	provides = mutter
 	conflicts = mutter
 	source = mutter-781835-workaround::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=13a1624c1050c91cd4d8a298f7a10fafe56fe9e5
-	source = 0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
-	source = 216.patch
 	sha256sums = SKIP
-	sha256sums = 842162bf8cec5d69fdb80c85fd152ddd3db6a9179d11d6f81d486f79814838c0
-	sha256sums = ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756
 
 pkgname = mutter-781835-workaround
 

@@ -22,12 +22,8 @@ provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
 _commit=13a1624c1050c91cd4d8a298f7a10fafe56fe9e5 # tags/3.32.2^5
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
-        216.patch)
-sha256sums=('SKIP'
-            '842162bf8cec5d69fdb80c85fd152ddd3db6a9179d11d6f81d486f79814838c0'
-            'ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756')
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -99,9 +95,6 @@ prepare() {
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1534089
-  patch -Np1 -i ../0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
 }
 
 build() {
