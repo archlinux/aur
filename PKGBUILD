@@ -1,8 +1,8 @@
 # Maintainer: Florian Jacob <projects+arch AT florianjacob )DOT( de>
 # Maintainer: Jake <aur@ja-ke.tech>
 pkgname=earlyoom
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="Early OOM Daemon for Linux"
 arch=('any')
 url="https://github.com/rfjakob/earlyoom"
@@ -12,8 +12,8 @@ source=(
 	"https://github.com/rfjakob/$pkgname/archive/v$pkgver.tar.gz"
 	"earlyoom.1.gz"
 )
-sha512sums=('45edc7064f227fce3ed6fdc9e524a8a117f8a9de50d98c9e75f31c193a1820804df8d9fac02c4ee1daabd3c2018bbeb422611ca29971e1c11f86446de8c96bc1'
-            '768cae91fb74e5b06abb9c90ae9220c8809cb53d75d90d81483725a13aa99e617933bb030e970ceb078a1dcba3e4d2c22f96ed3958762115969c11154af63afd')
+sha512sums=('c5de742289e82c2098bd88c61dcb3e20eb022905a015b4894c95a4de3978ce18d794a9e7c17c97851ca9f8888728908f7bf978c014b3b69799bffa8b546d258a'
+            '3c2d14866a70a7f1711fe85e444e64ab4b1191e3e0fb4aaf730e424d951e3bcf823c5b22153ad8c7bb0c9231b0878eadbcea56967e91230da698432c6783b478')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -27,5 +27,7 @@ package() {
 	install -Dm644 earlyoom.1.gz "${pkgdir}/usr/share/man/man1/earlyoom.1.gz"
 	
 	cd "$pkgname-$pkgver"	
-	make install DESTDIR="${pkgdir}" PREFIX="/usr" SYSTEMDDIR="/usr/lib/systemd"
+	make install-bin install-default earlyoom.service DESTDIR="${pkgdir}" PREFIX="/usr"
+	
+	install -Dm 644 earlyoom.service "${pkgdir}/usr/lib/systemd/system/earlyoom.service"
 }

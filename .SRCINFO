@@ -1,15 +1,15 @@
 pkgbase = earlyoom
 	pkgdesc = Early OOM Daemon for Linux
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 1
 	url = https://github.com/rfjakob/earlyoom
 	arch = any
 	license = MIT
 	backup = etc/default/earlyoom
-	source = https://github.com/rfjakob/earlyoom/archive/v1.2.tar.gz
+	source = https://github.com/rfjakob/earlyoom/archive/v1.3.tar.gz
 	source = earlyoom.1.gz
-	sha512sums = 45edc7064f227fce3ed6fdc9e524a8a117f8a9de50d98c9e75f31c193a1820804df8d9fac02c4ee1daabd3c2018bbeb422611ca29971e1c11f86446de8c96bc1
-	sha512sums = 768cae91fb74e5b06abb9c90ae9220c8809cb53d75d90d81483725a13aa99e617933bb030e970ceb078a1dcba3e4d2c22f96ed3958762115969c11154af63afd
+	sha512sums = c5de742289e82c2098bd88c61dcb3e20eb022905a015b4894c95a4de3978ce18d794a9e7c17c97851ca9f8888728908f7bf978c014b3b69799bffa8b546d258a
+	sha512sums = 3c2d14866a70a7f1711fe85e444e64ab4b1191e3e0fb4aaf730e424d951e3bcf823c5b22153ad8c7bb0c9231b0878eadbcea56967e91230da698432c6783b478
 
 pkgname = earlyoom
 
