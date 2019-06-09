@@ -33,8 +33,8 @@ package_python2-sncosmo() {
                 'python2-emcee: For MCMC light curve parameter estimation in sncosmo.mcmc_lc'
                 'python2-nestle: For nested sampling light curve parameter estimation in sncosmo.nest_lc'
                 'python2-corner: For plotting results from the samplers sncosmo.mcmc_lc and sncosmo.nest_lc'
-                'python2-pytest<3.7: For testing')
-#               'python-sncosmo-doc: Documentation for SNCosmo')
+                'python2-pytest<3.7: For testing'
+                'python2-sncosmo-doc: Documentation for SNCosmo')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"

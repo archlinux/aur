@@ -21,4 +21,5 @@ pkgname = python2-sncosmo
 	optdepends = python2-nestle: For nested sampling light curve parameter estimation in sncosmo.nest_lc
 	optdepends = python2-corner: For plotting results from the samplers sncosmo.mcmc_lc and sncosmo.nest_lc
 	optdepends = python2-pytest<3.7: For testing
+	optdepends = python2-sncosmo-doc: Documentation for SNCosmo
 
