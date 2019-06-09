@@ -3,7 +3,7 @@
 
 pkgname=swaylock
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 license=("MIT")
 pkgdesc="Screen locker for Wayland"
 makedepends=(
@@ -39,5 +39,5 @@ build() {
 package() {
     DESTDIR="$pkgdir/" ninja -C build install
     install -Dm644 "$pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm644 "$pkgname-$pkgver/README.md" -t "$pkgdir/usr/share/docs/$pkgname"
+    install -Dm644 "$pkgname-$pkgver/README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
