@@ -3,9 +3,9 @@
 
 pkgname=libemf
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Library implementation of ECMA-234 API for the generation of enhanced metafiles'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://libemf.sourceforge.net/'
 license=('GPL' 'LGPL')
 depends=('gcc-libs')
