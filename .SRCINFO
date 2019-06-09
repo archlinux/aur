@@ -1,0 +1,18 @@
+pkgbase = python2-sncosmo-doc
+	pkgdesc = Documentation for SNCosmo
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://sncosmo.readthedocs.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2-sncosmo=1.8.2
+	makedepends = python2-sphinx_rtd_theme
+	makedepends = python2-sphinx-gallery
+	makedepends = python2-iminuit
+	makedepends = python2-numpydoc
+	source = https://files.pythonhosted.org/packages/source/s/sncosmo/sncosmo-1.8.2.tar.gz
+	md5sums = 3b18d131d1e254b729a978a1a2f0fa38
+
+pkgname = python2-sncosmo-doc
+
