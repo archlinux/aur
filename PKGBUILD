@@ -162,6 +162,7 @@ package() {
     sed -Ei 's|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g' $desktopFile
     sed -Ei 's|^(\s*Exec=).*|\1/usr/bin/Mathematica %F|g' $desktopFile
     printf 'Categories=Science;Math;NumericalAnalysis;DataVisualization;' >> $desktopFile
+    printf 'StartupWMClass=Mathematica;' >> $desktopFile
     cp $desktopFile ${pkgdir}/usr/share/applications/
     cp wolfram-all.directory ${pkgdir}/usr/share/desktop-directories/
     cp *.xml ${pkgdir}/usr/share/mime/packages/
