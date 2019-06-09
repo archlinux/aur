@@ -11,7 +11,9 @@ pkgbase = croc
 	conflicts = croc-bin
 	conflicts = croc-git
 	source = https://github.com/schollz/croc/archive/v6.0.7.tar.gz
+	source = croc.service
 	sha256sums = a3f8aa856d5f0358c4c0d25d01e973be9d128aab7a0b90184d178986d9a8d054
+	sha256sums = cf074568f16c7b86870a89a0a2d8e488e3837223cca071a911085d814d6f2194
 
 pkgname = croc
 
