@@ -2,7 +2,7 @@
 
 _gonamespc='github.com/schollz/croc'
 pkgname=croc
-pkgver=6.0.6
+pkgver=6.0.7
 pkgrel=1
 pkgdesc="Easily and securely send things from one computer to another."
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('croc')
 conflicts=('croc-bin' 'croc-git')
 #options=()
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('811eee0713b5bdf408dd53a31eff19372da833d46ff36357499c8df4109ec44b')
+sha256sums=('a3f8aa856d5f0358c4c0d25d01e973be9d128aab7a0b90184d178986d9a8d054')
 
 prepare() {
 	if [ ! $(wc -w <<< $srcdir) == 1 ]; then echo srcdir can\'t contain spaces because of trimpath; return 1; fi
