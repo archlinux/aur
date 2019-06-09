@@ -1,4 +1,4 @@
-# Maintainer: Alexandre Moine < nobrakal at cthugha dot org >
+# Maintainer: Alexandre Moine < nobrakal at moine dot org >
 # Contributor: Tasos Latsas < tlatsas2000 at gmail dot com >
 
 pkgname=t4kcommon
@@ -6,7 +6,7 @@ pkgver=0.1.1
 pkgrel=4
 pkgdesc="Common library for code shared by TuxType and TuxMath"
 arch=('i686' 'x86_64')
-url="http://tux4kids.alioth.debian.org/"
+url="https://github.com/tux4kids/t4kcommon"
 license=('GPL')
 depends=('sdl_image' 'sdl_mixer' 'sdl_pango' 'sdl_net' 'librsvg')
 makedepends=('make')
