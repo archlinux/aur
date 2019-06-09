@@ -1,0 +1,14 @@
+pkgbase = bliss-rust-git
+	pkgdesc = Batteries included .gitignore management tool
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/ajmwagar/bliss
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = git
+	source = git://github.com/ajmwagar/bliss
+	md5sums = SKIP
+
+pkgname = bliss-rust-git
+
