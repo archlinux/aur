@@ -3,7 +3,7 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Georgi Manov <root@lynxsome.com>
+# Maintainer: Georgi Manov <lobo1@abv.bg>
 pkgname=norwester-otf
 pkgver=1.2
 pkgrel=1
