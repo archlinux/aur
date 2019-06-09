@@ -3,9 +3,9 @@
 pkgname=libfpx
 pkgver=1.3.1.10
 _srcver="$(printf '%s' "$pkgver" | sed -E s'/(\.)([0-9]*)$/-\2/')"
-pkgrel=2
+pkgrel=3
 pkgdesc='FlashPIX OpenSource Toolkit'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.imagemagick.org/download/delegates/'
 license=('custom')
 depends=('gcc-libs')
