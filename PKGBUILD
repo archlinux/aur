@@ -1,7 +1,7 @@
 # Maintainer: Edward Pacman <edward AT edward-p dot xyz>
 
 pkgname=acpi-msi-ge62-git
-pkgver=r14.f4ca582
+pkgver=r17.eb7d8f3
 pkgrel=1
 pkgdesc="patched DSDT/SSDTs for MSI-GE62."
 arch=('any')
