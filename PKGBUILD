@@ -5,7 +5,7 @@ _gituser="AndreaCrotti"
 _gitrepo="yasnippet-snippets"
 
 pkgname=emacs-yasnippet-snippets-git
-pkgver=0.11.r0.g69cc1c1
+pkgver=0.11.r2.g15e4b08
 pkgrel=1
 pkgdesc="Collection of yasnippet snippets for many languages"
 url="https://github.com/${_gituser}/${_gitrepo}"

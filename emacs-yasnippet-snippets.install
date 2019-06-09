@@ -6,7 +6,7 @@ cat << EOF
 
 
 (add-to-list 'yas-snippet-dirs "/usr/share/emacs/snippets/yasnippet-snippets" t)
-(yas-load-directory "/usr/share/emacs/snippets/yasnippets-snippets" t)
+(yas-load-directory "/usr/share/emacs/snippets/yasnippet-snippets" t)
 
 EOF
 }
