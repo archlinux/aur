@@ -1,0 +1,21 @@
+pkgbase = hm-svn
+	pkgdesc = HEVC Test Model - the reference software for HEVC (svn version)
+	pkgver = 16.20.r4998
+	pkgrel = 1
+	url = https://hevc.hhi.fraunhofer.de/
+	arch = x86_64
+	license = BSD
+	makedepends = subversion
+	makedepends = nasm
+	depends = gcc-libs
+	provides = hm
+	conflicts = hm
+	source = hm::svn+https://hevc.hhi.fraunhofer.de/svn/svn_HEVCSoftware/branches/HM-dev/
+	source = 0001-hm-svn-fix-build-with-gcc8.patch
+	source = 0002-hm-svn-use-arch-flags.patch
+	sha256sums = SKIP
+	sha256sums = 1fc52f8507902c7ee315bb7fbe42914dd4b0b49251d237b2e024e6e776ba02c3
+	sha256sums = da19d17edfb2acac3feaedaf8169d84da3b6675de4c70b32d9a3d3144b9fc59f
+
+pkgname = hm-svn
+
