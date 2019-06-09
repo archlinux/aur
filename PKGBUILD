@@ -3,7 +3,7 @@ pkgbase=python-pyspeckit
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
 pkgver=0.1.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolkit for fitting and manipulating spectroscopic data in python"
 arch=('i686' 'x86_64')
 url="https://pyspeckit.readthedocs.io/"
@@ -11,9 +11,11 @@ license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-astropy' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-sphinx-astropy')
 checkdepends=('tk' 'python-pytest-astropy' 'python-spectral-cube')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-        'correct_doc_examples.patch')
+        'correct_doc_examples.patch'
+        'fix_for_new_matplotlib.patch')
 md5sums=('e276915c2865e0e64dc132a3b9cb0b23'
-         'b1ea9f4f4d2c467c26c34293bfbd387f')
+         'b1ea9f4f4d2c467c26c34293bfbd387f'
+         'e1fb3919d6d3ae5e34fbbdcf95d5aae6')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -21,6 +23,7 @@ prepare() {
     sed -i -e '/auto_use/s/True/False/' setup.cfg
     patch -Np1 -i "${srcdir}/correct_doc_examples.patch"
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
+    patch -Np1 -i "${srcdir}/fix_for_new_matplotlib.patch"
 }
 
 build() {
