@@ -1,0 +1,14 @@
+pkgbase = nvidia-gpu-switch
+	pkgdesc = Tool to switch on/off Nvidia laptop GPU for compute, without optirun.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/xdever/linux_gpu_switch
+	arch = any
+	license = Apache
+	depends = nvidia
+	depends = bbswitch
+	source = git+https://github.com/xdever/linux_gpu_switch#commit=aa6ea2c52e1c83fcb633cd3f26a8bde47b5ced07
+	md5sums = SKIP
+
+pkgname = nvidia-gpu-switch
+
