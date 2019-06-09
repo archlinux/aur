@@ -1,5 +1,5 @@
 pkgname=mingw-w64-speexdsp
-pkgver=1.2rc3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="DSP library derived from Speex (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('staticlibs' '!strip' '!buildflags')
 source=("http://downloads.xiph.org/releases/speex/speexdsp-$pkgver.tar.gz")
-md5sums=('70d9d31184f7eb761192fd1ef0b73333')
+sha256sums=('682042fc6f9bee6294ec453f470dadc26c6ff29b9c9e9ad2ffc1f4312fd64771')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
