@@ -1,6 +1,6 @@
 pkgbase = balena-cli-git
 	pkgdesc = balena.io command line interface, development version
-	pkgver = 10.9.3
+	pkgver = 11.0.7.r0.gf8a9c10a
 	pkgrel = 1
 	url = https://balena.io/
 	arch = x86_64
