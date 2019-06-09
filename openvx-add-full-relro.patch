@@ -1,0 +1,16 @@
+diff -Naurp a/cmake_utils/CMake_linux_tools.cmake b/cmake_utils/CMake_linux_tools.cmake
+--- a/cmake_utils/CMake_linux_tools.cmake	2017-12-20 16:30:30.000000000 +0000
++++ b/cmake_utils/CMake_linux_tools.cmake	2019-06-09 13:11:12.189253983 +0000
+@@ -95,10 +95,10 @@ set( CMAKE_CXX_FLAGS_RELEASE
+ set( CMAKE_CXX_FLAGS_RELWITHDEBINFO         "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} ${ADD_C_FLAGS_RELWITHDEBINFO}")
+ 
+ # Linker switches - EXE
+-set( CMAKE_EXE_LINKER_FLAGS                 "${INIT_LINKER_FLAGS}")
++set( CMAKE_EXE_LINKER_FLAGS                 "${CMAKE_EXE_LINKER_FLAGS} ${INIT_LINKER_FLAGS}")
+ 
+ # Linker switches - DLL
+-set( CMAKE_SHARED_LINKER_FLAGS              "${INIT_LINKER_FLAGS} ${ADD_CMAKE_EXE_LINKER_FLAGS}")
++set( CMAKE_SHARED_LINKER_FLAGS              "${CMAKE_SHARED_LINKER_FLAGS} ${INIT_LINKER_FLAGS} ${ADD_CMAKE_EXE_LINKER_FLAGS}")
+ 
+ message(STATUS "\n\n** ** ** COMPILER Definitions ** ** **")
+ message(STATUS "CMAKE_C_COMPILER        = ${CMAKE_C_COMPILER}")

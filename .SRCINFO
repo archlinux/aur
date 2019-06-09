@@ -1,20 +1,19 @@
 pkgbase = openvx
 	pkgdesc = An open, royalty-free standard for cross platform acceleration of computer vision applications
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.khronos.org/openvx/
-	arch = i686
 	arch = x86_64
-	license = APACHE
+	license = Apache
 	makedepends = cmake
 	makedepends = python
 	depends = gcc-libs
-	provides = libopenvx.so
-	provides = libvxu.so
 	noextract = openvx_sample_1.2.tar.bz2
 	source = https://www.khronos.org/registry/OpenVX/sample/openvx_sample_1.2.tar.bz2
+	source = openvx-add-full-relro.patch
 	source = openvx.pc
 	sha256sums = 8f61203572668f7719bc9f86bc24ca06c51a98531ca7941264bd7cbbaa7b9aaa
+	sha256sums = 1f85fb4b4729bf59ae8bf8a251991d52faac4d216e41937bd6c0d48a41f0b946
 	sha256sums = 92c695748c9be151c5eca9fc61da742fc391b45a623fb851ac56b80b5ab6cd40
 
 pkgname = openvx

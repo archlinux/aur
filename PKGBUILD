@@ -1,19 +1,20 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=openvx
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An open, royalty-free standard for cross platform acceleration of computer vision applications'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.khronos.org/openvx/'
-license=('APACHE')
+license=('Apache')
 depends=('gcc-libs')
 makedepends=('cmake' 'python')
-provides=('libopenvx.so' 'libvxu.so')
 source=("https://www.khronos.org/registry/OpenVX/sample/openvx_sample_${pkgver}.tar.bz2"
-        "${pkgname}.pc")
+        'openvx-add-full-relro.patch'
+        'openvx.pc')
 noextract=("openvx_sample_${pkgver}.tar.bz2")
 sha256sums=('8f61203572668f7719bc9f86bc24ca06c51a98531ca7941264bd7cbbaa7b9aaa'
+            '1f85fb4b4729bf59ae8bf8a251991d52faac4d216e41937bd6c0d48a41f0b946'
             '92c695748c9be151c5eca9fc61da742fc391b45a623fb851ac56b80b5ab6cd40')
 
 prepare() {
@@ -22,17 +23,17 @@ prepare() {
     
     # extract source file to a directory in the format ${pkgname}-${pkgver}
     tar xf ../"openvx_sample_${pkgver}.tar.bz2" --strip 1
+    
+    # add full relro
+    patch -Np1 -i "${srcdir}/openvx-add-full-relro.patch"
 }
 
 build() {
     cd "${pkgname}-${pkgver}"
     
-    [ "$CARCH" = 'x86_64' ] && _architecture='64'
-    [ "$CARCH" = 'i686'   ] && _architecture='32'
-    
     python Build.py \
         --os='Linux' \
-        --arch="$_architecture" \
+        --arch='64' \
         --conf='Release' \
         --gen='Unix Makefiles' \
         --build='True' \
@@ -45,25 +46,18 @@ build() {
 }
 
 package() {
-    [ "$CARCH" = 'x86_64' ] && _architecture='x64'
-    [ "$CARCH" = 'i686'   ] && _architecture='x32'
-    
-    # directories creation
-    mkdir -p "${pkgdir}/usr/"{include/VX,lib}
-    
-    # includes
-    cd "${pkgname}-${pkgver}/install/Linux/${_architecture}/Release/include/VX"
-    install -m644 * "${pkgdir}/usr/include/VX"
+    # headers
+    mkdir -p "${pkgdir}/usr/include"
+    cd "${pkgname}-${pkgver}/install/Linux/x64/Release/include"
+    cp -a * "${pkgdir}/usr/include"
     
     # libraries
-    cd "${srcdir}/${pkgname}-${pkgver}/install/Linux/${_architecture}/Release/bin"
-    install -m755 *.so "${pkgdir}/usr/lib"
+    cd "${srcdir}/${pkgname}-${pkgver}/install/Linux/x64/Release/bin"
+    install -D -m755 *.so* -t "${pkgdir}/usr/lib"
     
     # pkgconfig
-    cd "$srcdir"
-    install -D -m644 "${pkgname}.pc" "${pkgdir}/usr/lib/pkgconfig/${pkgname}.pc"
+    install -D -m644 "${srcdir}/${pkgname}.pc" -t "${pkgdir}/usr/lib/pkgconfig"
     
     # license
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
