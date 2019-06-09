@@ -1,0 +1,21 @@
+diff -Naurp a/build.sh b/build.sh
+--- a/build.sh	2019-04-28 20:38:04.000000000 +0000
++++ b/build.sh	2019-04-28 20:40:47.942736577 +0000
+@@ -146,7 +146,7 @@ die_usage() {
+     echo
+     echo "Options"
+     echo "  --clean     Don't build, just clean up all generated files and directories."
+-    echo "  --fast      Use 'make -j4' when compiling"
++    echo "  --fast      Use 'make -j<threads+1>' when compiling"
+     echo "  --help      Display this help text."
+     echo "  --rebuild   Don't reconfigure, just run make again."
+     echo
+@@ -164,7 +164,7 @@ die_usage() {
+ for arg in $* ; do
+     case $arg in
+         "--fast")
+-            FAST="-j4" ;;
++            FAST="-j$(($(nproc)+1))" ;;
+         "--help")
+             die_usage ;;
+         "--rebuild")

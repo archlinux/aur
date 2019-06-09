@@ -1,0 +1,24 @@
+diff -Naurp a/linux-x86-32.Makefile b/linux-x86-32.Makefile
+--- a/linux-x86-32.Makefile	2019-04-28 20:32:41.000000000 +0000
++++ b/linux-x86-32.Makefile	2019-04-28 20:36:08.000000000 +0000
+@@ -2,7 +2,7 @@ SONAME=libavbin.so.$(AVBIN_VERSION)
+ LIBNAME=$(OUTDIR)/$(SONAME)
+ 
+ CFLAGS += -fPIC
+-LDFLAGS += -shared -soname $(SONAME) -zmuldefs
++LDFLAGS += -shared -soname $(SONAME) -zmuldefs -O1 --sort-common --as-needed -z relro -z now -O1 --sort-common --as-needed -z relro -z now
+ 
+ STATIC_LIBS = -whole-archive \
+               $(BACKEND_DIR)/libavformat/libavformat.a \
+diff -Naurp a/linux-x86-64.Makefile b/linux-x86-64.Makefile
+--- a/linux-x86-64.Makefile	2019-04-28 20:32:47.000000000 +0000
++++ b/linux-x86-64.Makefile	2019-04-28 20:36:08.000000000 +0000
+@@ -2,7 +2,7 @@ SONAME=libavbin.so.$(AVBIN_VERSION)
+ LIBNAME=$(OUTDIR)/$(SONAME)
+ 
+ CFLAGS += -fPIC
+-LDFLAGS += -shared -soname $(SONAME) -Bsymbolic -zmuldefs
++LDFLAGS += -shared -soname $(SONAME) -Bsymbolic -zmuldefs -O1 --sort-common --as-needed -z relro -z now -O1 --sort-common --as-needed -z relro -z now
+ 
+ STATIC_LIBS = -whole-archive \
+               $(BACKEND_DIR)/libavformat/libavformat.a \
