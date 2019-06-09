@@ -1,9 +1,9 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_gitcommit=6685e3945edec224c8133fb62f1f347b4f7be07d
+_gitcommit=e852d591c1fbf57381eeb6922bd9675698cb26a0
 
 pkgname=rst2pdf
-pkgver=0.95.dev0+2+${_gitcommit:0:7}
+pkgver=0.95.dev0+3+${_gitcommit:0:7}
 pkgrel=1
 pkgdesc="Convert reStructured Text to PDF via ReportLab."
 url="https://rst2pdf.org"
