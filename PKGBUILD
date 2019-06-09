@@ -7,7 +7,7 @@ pkgdesc="Make some beautiful corner plots of samples"
 arch=('any')
 url="http://corner.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('python2-setuptools' 'python2-matplotlib' 'python2-sphinx')
+makedepends=('python2-setuptools' 'python2-matplotlib' 'python2-sphinx' 'python2-sphinx_rtd_theme')
 checkdepends=('python2-pytest' 'python2-pandas' 'python2-nose')
 source=("https://github.com/dfm/corner.py/archive/v${pkgver}.tar.gz"
         'corner-doc.patch')
