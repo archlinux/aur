@@ -1,16 +1,14 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
-# AutoTrace compiled without ImageMagick dependency
-
 _srcname=autotrace
 pkgname=autotrace-nomagick
 pkgver=0.31.1
-pkgrel=7
+pkgrel=8
 pkgdesc='A program for converting bitmap to vector graphics (no ImageMagick dependency)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://autotrace.sourceforge.net/'
 license=('GPL' 'LGPL')
-depends=('ming' 'pstoedit-nomagick')
+depends=('libpng' 'ming' 'pstoedit-nomagick')
 provides=('autotrace')
 conflicts=('autotrace')
 source=("http://sourceforge.net/projects/autotrace/files/AutoTrace/${pkgver}/${_srcname}-${pkgver}.tar.gz"
@@ -37,12 +35,12 @@ prepare() {
     patch -Np1 -i "${srcdir}/autotrace-0.31.1-pstoedit-detection-fix.patch"
     patch -Np0 -i "${srcdir}/autotrace-0.31.1-swf-output.patch"
     patch -Np1 -i "${srcdir}/autotrace-0002-Fixed-underquoted-AM_PATH_AUTOTRACE-definition.patch"
+    
+    autoreconf -fis
 }
 
 build() {
     cd "${_srcname}-${pkgver}"
-    
-    autoreconf -fis
     
     ./configure \
         --prefix='/usr' \

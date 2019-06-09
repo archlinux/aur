@@ -1,12 +1,12 @@
 pkgbase = autotrace-nomagick
 	pkgdesc = A program for converting bitmap to vector graphics (no ImageMagick dependency)
 	pkgver = 0.31.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://autotrace.sourceforge.net/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
+	depends = libpng
 	depends = ming
 	depends = pstoedit-nomagick
 	provides = autotrace
