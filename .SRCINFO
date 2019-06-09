@@ -1,9 +1,8 @@
 pkgbase = libumem-git
 	pkgdesc = A port of the Solaris libumem memory allocator
 	pkgver = 1.0.r15.g3fc772c
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/omniti-labs/portableumem/
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
