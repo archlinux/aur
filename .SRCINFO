@@ -1,12 +1,11 @@
 pkgbase = flif-git
 	pkgdesc = Free Lossless Image Format (git version)
 	pkgver = 0.3.r96.g74ea92b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FLIF-hub/FLIF/
-	arch = i686
 	arch = x86_64
 	license = LGPL3
-	license = APACHE
+	license = Apache
 	makedepends = git
 	depends = gcc-libs
 	depends = libpng
@@ -18,7 +17,11 @@ pkgbase = flif-git
 	provides = flif
 	conflicts = flif
 	source = git+https://github.com/FLIF-hub/FLIF.git
+	source = flif-git-fix-makefile-target-install-pixbufloader.patch
+	source = flif-git-remove-apt-get-references-from-tools.patch
 	sha256sums = SKIP
+	sha256sums = 4d166a2f462b6d250202f6adf3b7280871fe98bc5385a851135d2473785d5399
+	sha256sums = c516d92d4724e319af79bb1ac5d3dde81dac359fd4a02af1ee71239a49d58710
 
 pkgname = flif-git
 

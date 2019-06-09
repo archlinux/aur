@@ -1,0 +1,22 @@
+diff -Naurp a/tools/apng2flif b/tools/apng2flif
+--- a/tools/apng2flif	2017-04-28 15:46:54.000000000 +0000
++++ b/tools/apng2flif	2019-03-05 15:42:29.000000000 +0000
+@@ -13,7 +13,6 @@ fi
+ if ! $APNGDIS 2>/dev/null |grep -q APNG
+ then
+    echo "APNG Disassembler not found, please install it first!"
+-   echo "sudo apt-get install apngdis"
+    exit 1
+ fi
+ 
+diff -Naurp a/tools/gif2flif b/tools/gif2flif
+--- a/tools/gif2flif	2017-04-28 15:46:54.000000000 +0000
++++ b/tools/gif2flif	2019-03-05 15:42:29.000000000 +0000
+@@ -13,7 +13,6 @@ fi
+ if ! $CONVERT -version 2>/dev/null >/dev/null
+ then
+    echo "ImageMagick not found, please install it first!"
+-   echo "sudo apt-get install imagemagick"
+    exit 1
+ fi
+ 

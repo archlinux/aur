@@ -1,0 +1,27 @@
+diff -Naurp a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2019-06-09 02:07:26.000000000 +0000
++++ b/src/Makefile	2019-06-09 02:07:49.000000000 +0000
+@@ -96,10 +96,10 @@ install-libflif$(LIBEXT): libflif$(LIBEX
+ # There is no prefix here because gdk-pixbuf will not search /usr/local for loadrs
+ # while it sucks, it's the truth
+ install-libpixbufloader-flif$(LIBEXT): libpixbufloader-flif$(LIBEXT) install-libflif$(LIBEXT)
+-	install -c -d /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders
+-	install -c -m 755 -s libpixbufloader-flif$(LIBEXT) /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/
+-	gdk-pixbuf-query-loaders --update-cache
+-	xdg-mime install --novendor flif-mime.xml
++	install -c -d $(PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders
++	install -c -m 755 -s libpixbufloader-flif$(LIBEXT) $(PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders/
++	#gdk-pixbuf-query-loaders --update-cache
++	#xdg-mime install --novendor flif-mime.xml
+ 
+ install-pixbufloader: install-libpixbufloader-flif$(LIBEXT)
+ 
+@@ -131,7 +131,7 @@ uninstall:
+ 	rm -f $(PREFIX)/lib/libflif$(LIBEXTV)
+ 	rm -f $(PREFIX)/lib/libflif_dec$(LIBEXTV)
+ 	rm -f $(PREFIX)/share/man/man1/flif.1
+-	rm -f /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-flif$(LIBEXT)
++	rm -f $(PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-flif$(LIBEXT)
+ 
+ clean:
+ 	rm -f flif dflif lib*flif*$(LIBEXT)* viewflif flif.asan flif.dbg flif.prof flif.stats test-interface $(FILES_O) flif.o library/flif-interface.o
