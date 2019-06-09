@@ -21,7 +21,7 @@ checkdepends=(xorg-server-xvfb)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-_commit=13a1624c1050c91cd4d8a298f7a10fafe56fe9e5 # tags/3.32.2^5
+_commit=07c9cd498df4082fc79b9a920e539f420d659cbf # tags/3.32.2^7
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
