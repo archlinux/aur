@@ -15,11 +15,11 @@ _qdepth='32'
 pkgbase=imagemagick-full-git
 pkgname=('imagemagick-full-git' 'imagemagick-full-doc-git')
 _srcname=ImageMagick
-pkgver=7.0.8.47.r15663.g0b437bf28
+pkgver=7.0.8.50.r15714.g84a30c031
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features, git version)"
-url='http://www.imagemagick.org/'
+url='https://www.imagemagick.org/'
 license=('custom')
 makedepends=(
     # official repositories:
