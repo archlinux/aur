@@ -8,24 +8,27 @@
 
 pkgname=unknown-horizons
 pkgver=2019.1
-pkgrel=1
+pkgrel=2
 pkgdesc="2D realtime strategy simulation with an emphasis on economy and city building."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.unknown-horizons.org/"
 license=('GPL' 'CCPL')
 changelog=.CHANGELOG
 depends=('fife' 'python-pillow' 'python-yaml' 'python-future')
-makedepends=('intltool')
+makedepends=('intltool' 'python-setuptools')
 conflicts=('unknown-horizons-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
 sha512sums=('87ae37442ee0b80130c7a75c7eeb7c0ef6c50f3e6b2616db32e6381ace5068729ab7086edefc00eefd3b89e85f9a05fb6c4d05f2a2adc46fa928e5c2a29b72db')
 
+# unknown-horizons build system misses a few files if the build step is seperated from the install
+# step
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    python setup.py build --quiet
+    # HOME=. python setup.py build
+    HOME=. python horizons/engine/generate_atlases.py 2048
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build --quiet
+    HOME=. python setup.py install --root="$pkgdir/" --optimize=1 #--skip-build
 }
