@@ -1,7 +1,7 @@
 # Maintainer: tioguda <guda.flavio@gmail.com>
 
 pkgname=slimbookbattery
-pkgver=3.8beta
+pkgver=3.9beta
 pkgrel=1
 pkgdesc="Slimbook Battery. Is a battery optimization application for portable devices that can increase the battery life by 50%. For this purpose, the third-party software (TLP and others) is used to manage and configure the system resources."
 arch=('any')
@@ -14,7 +14,7 @@ backup=('etc/systemd/system/suspend-sedation.service')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
-sha512sums=('fc469e6fcff5fbcc5e960612ef2ff2caedb15b4ec8ffe105cb19709093cb2c694583e30f6a64d3edf06c026416bf242922e6971918884db0a5293972596d1f70')
+sha512sums=('1c8a7688e42ae4b46df0cadbd1fb93c095658045780d1c00ab2c091f085f637f20ac791a4aad13e4280a7d670b9436dc680afb71032ffdb1710770b813caa58a')
 
 package(){
     # Extract package data
