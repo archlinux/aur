@@ -3,7 +3,7 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr
 pkgver=2.4.0
-pkgrel=12
+pkgrel=13
 pkgdesc="'open' digital satellite receiver and timer controlled video disk recorder"
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -52,7 +52,12 @@ _patches=('vdr-2.4.0-01-fix-svdrp-modt-recflag.diff'
           'vdr-2.4.0-34-fix-repeat-kbd.diff'
           'vdr-2.4.0-35-add-workaround-rst.diff'
           'vdr-2.4.0-36-fix-assert-free-disk-space.diff'
-          'vdr-2.4.0-37-chg-max-pixmap-size.diff')
+          'vdr-2.4.0-37-chg-max-pixmap-size.diff'
+          'vdr-2.4.0-38-chg-playerbufsize.diff'
+          'vdr-2.4.0-39-fix-card-index-vs-device-number.diff'
+          'vdr-2.4.0-40-fix-wrong-variable-name.diff'
+          'vdr-2.4.0-41-chg-skins-message-to-queue.diff'
+          'vdr-2.4.0-42-fix-nit-dvbs2-backwards-compatibility-mode.diff')
 source=("ftp://ftp.tvdr.de/vdr/${pkgname}-${pkgver}.tar.bz2"
         "${_patches[@]/#/ftp://ftp.tvdr.de/vdr/Developer/Patches/vdr-2.4/}"
         'MainMenuHooks-v1_0_2.diff::https://www.vdr-portal.de/index.php?attachment/30330'
@@ -110,6 +115,11 @@ md5sums=('12c6a3abeadfa915fcfe736bb047a3ab'
          '9672cf0df47f1dc376acf4a08daec77e'
          '4c85e400104313ee56daa60b71b2228f'
          'a64c0f0f4484411150da828bca9e0c82'
+         '97fb7ca598ac649d04f174e77540e3d9'
+         '2b3431dcf3793f5a194a36d6c46ce401'
+         'cce4b6d4de6db679b59ffb22cbdf15f0'
+         '79327528572382a58d01f7c8017e3034'
+         'e2511a1e8414b2f75cb401632201a10f'
          '301c9b9766ed5182b07f1debc79abc21'
          'de3dcdea1a4282211c6dac370019548b'
          'fc450f75037b8712673db4969a1dd758'
