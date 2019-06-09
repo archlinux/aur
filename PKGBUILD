@@ -1,7 +1,7 @@
 _npmname=pnpm
-_npmver=3.1.0
+_npmver=3.4.1
 pkgname=nodejs-pnpm
-pkgver=3.1.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Fast, disk space efficient package manager"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=('npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('d98935b1d6000c41e053fabe372643fa7bedf945daa2601d5cb18fe10c10c0fe')
+sha256sums=('d81559b1c254b249aa1cdc3d5020c420950860e5187df9b7b882ad70f24f6b5e')
 
 package() {
   cd $srcdir
