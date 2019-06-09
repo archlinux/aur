@@ -54,10 +54,7 @@ prepare() {
 
   # Consolidate all frame throttling into clutter-stage-cogl
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/363
-  h_first=$(git log --oneline --all | grep "clutter/stage-cogl: Remove magic numbers" | tail -n 1 | awk '{print $1}') # Sorry guys
-  h_last=$(git log --oneline --all | grep 'clutter/master-clock: Remove fallback throttles' | tail -n 1 | awk '{print $1}') # Sorry guys
-  echo "Found $h_first^$h_last for MR363"
-  git cherry-pick -n $h_first^..$h_last
+  git cherry-pick -n 912a9ecf^..e415cc53
 
   # clutter/stage-cogl: Reschedule update on present
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281
@@ -98,7 +95,7 @@ prepare() {
 
   # cogl: Remove GLX "threaded swap wait" used on Nvidia [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/602
-  git cherry-pick -n 88ee2f51
+  git cherry-pick -n fd2a7562
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
