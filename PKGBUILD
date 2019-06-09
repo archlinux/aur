@@ -1,9 +1,10 @@
 # Maintainer: robertfoster
 # Contributor: kurych
 # Contributor: redfish
+# Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.24.0.r5.gd231f944
+pkgver=2.26.0.r7.g85eeba14
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +12,7 @@ url="https://github.com/PurpleI2P/i2pd"
 license=('BSD')
 depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib')
 makedepends=('git' 'boost' 'cmake')
-source=("${pkgname%%-git}::git+https://github.com/PurpleI2P/i2pd#branch=master")
+source=("${pkgname%%-git}::git+https://github.com/PurpleI2P/i2pd#branch=openssl")
 install="${pkgname%%-git}.install"
 
 backup=("etc/${pkgname%%-git}/${pkgname%%-git}.conf"

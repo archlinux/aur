@@ -1,6 +1,6 @@
 pkgbase = i2pd-git
 	pkgdesc = Simplified C++ implementation of I2P client
-	pkgver = 2.24.0.r5.gd231f944
+	pkgver = 2.26.0.r7.g85eeba14
 	pkgrel = 1
 	url = https://github.com/PurpleI2P/i2pd
 	install = i2pd.install
@@ -17,11 +17,11 @@ pkgbase = i2pd-git
 	depends = miniupnpc
 	depends = openssl
 	depends = zlib
-	provides = i2pd=2.24.0.r5.gd231f944
+	provides = i2pd=2.26.0.r7.g85eeba14
 	conflicts = i2pd
 	backup = etc/i2pd/i2pd.conf
 	backup = etc/i2pd/tunnels.conf
-	source = i2pd::git+https://github.com/PurpleI2P/i2pd#branch=master
+	source = i2pd::git+https://github.com/PurpleI2P/i2pd#branch=openssl
 	md5sums = SKIP
 
 pkgname = i2pd-git
