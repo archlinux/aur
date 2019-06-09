@@ -2,7 +2,7 @@
 
 pkgname=('handbrake-nvenc' 'handbrake-nvenc-cli')
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
