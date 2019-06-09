@@ -1,0 +1,18 @@
+pkgbase = turtl-core-rs
+	pkgdesc = Turtl's logic core, built in Rust
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/turtl/core-rs
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	depends = libsodium
+	depends = openssl-1.0
+	source = https://github.com/turtl/core-rs/archive/774fa361d021d9ef5237d32d09515ab7b2a32ad2.tar.gz
+	source = vars.mk
+	sha256sums = 71c1caf3aeb6245040abb0ee063b574dd6ece6314c60edabbe4299a11df49b68
+	sha256sums = c4e7469d1a080786b71618bc812cf038a7c70881641f06cb8ae7f2d76de08e3c
+
+pkgname = turtl-core-rs
+
