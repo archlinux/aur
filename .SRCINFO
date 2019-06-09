@@ -1,17 +1,18 @@
 pkgbase = abcm2ps
 	pkgdesc = Convert ABC music notation files to PostScript from the commandline
-	pkgver = 8.13.22
+	pkgver = 8.14.4
 	pkgrel = 1
 	url = http://moinejf.free.fr/
 	arch = i686
 	arch = x86_64
 	groups = abc
 	license = GPL
+	makedepends = python-docutils
 	depends = pango
 	depends = freetype2
 	conflicts = abcm2ps-devel
-	source = abcm2ps-8.13.22.tar.gz::https://github.com/leesavide/abcm2ps/archive/v8.13.22.tar.gz
-	sha256sums = 9a1379fd93fcf2d87d580c85b43ca1930a4bc412c291be551af1035d08f26c36
+	source = abcm2ps-8.14.4.tar.gz::https://github.com/leesavide/abcm2ps/archive/v8.14.4.tar.gz
+	sha256sums = ce2708550725c2ec54022b4c4a076dad7ea7f33d9cd588e7df58bb5c989eccb4
 
 pkgname = abcm2ps
 

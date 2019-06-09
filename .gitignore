@@ -1,0 +1,6 @@
+pkg/
+src/
+abcm2ps-*.tar.gz
+abcm2ps-*.pkg.tar.xz
+abcm2ps-*.src.tar.gz
+.AURINFO
