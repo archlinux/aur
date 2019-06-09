@@ -8,7 +8,7 @@ pkgdesc="Astropy affilated package for region handling"
 arch=('i686' 'x86_64')
 url="http://astropy-regions.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'cython2' 'python-astropy>=1.3' 'python2-astropy>=1.3' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-sphinx-astropy' 'python-shapely')
+makedepends=('cython' 'cython2' 'python-astropy>=1.3' 'python2-astropy>=1.3' 'python-astropy-helpers>=3.1'  'python-astropy-helpers<3.2' 'python2-astropy-helpers' 'python-sphinx-astropy' 'python-shapely')
 checkdepends=('python-pytest-astropy' 'python-astropy-healpix')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('b2f0b08cdaa2b40519de665f9af2a25a')
