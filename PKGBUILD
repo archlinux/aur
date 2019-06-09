@@ -1,18 +1,20 @@
-# Maintainer: Christoph J. Thompson <thompsonc at protonmail dot ch>
+# Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
+#
+# Upstream: https://git.metalpunks.info/arch-ports
 
 pkgname=hexchat-otr-git
-pkgver=r50.ga7a6016
-pkgrel=2
+pkgver=r52.g22d5495
+pkgrel=1
 pkgdesc="OTR support for hexchat"
 url="https://github.com/TingPing/hexchat-otr"
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('hexchat' 'libotr>=4.1.0')
-makedepends=('git' 'gnome-common')
+makedepends=('git' 'meson')
 conflicts=('hexchat-otr')
 provides=('hexchat-otr')
 source=("${pkgname}::git+${url}")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
@@ -23,12 +25,11 @@ pkgver() {
 
 build() {
   cd "${pkgname}"
-  ./autogen.sh
-  CFLAGS="${CFLAGS}" ./configure --prefix="/usr"
-  make
+  arch-meson build -D local_install=false
+  ninja -C build
 }
 
 package() {
   cd "${pkgname}"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
