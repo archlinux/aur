@@ -2,14 +2,13 @@
 
 pkgname=rockchip-mpp
 pkgver=20171218
-pkgrel=2
+pkgrel=3
 pkgdesc='Rockchip Media Process Platform (MPP)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/rockchip-linux/mpp/'
-license=('APACHE')
+license=('Apache')
 depends=('gcc-libs')
 makedepends=('cmake')
-options=('!staticlibs')
 source=("${pkgname}-${pkgver}".tar.gz::"https://github.com/rockchip-linux/mpp/archive/release_${pkgver}.tar.gz")
 sha256sums=('03b4f093e23fa480c3c46a07059fb297d352e5b3d050f4da4869c1ade8adc125')
 
@@ -18,28 +17,9 @@ build() {
     
     cmake \
         -DAVSD_TEST:BOOL='OFF' \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
-        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
-        -DCMAKE_INSTALL_BINDIR:PATH='bin' \
-        -DCMAKE_INSTALL_DATAROOTDIR:PATH='share' \
-        -DCMAKE_INSTALL_INCLUDEDIR:PATH='include' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
-        -DCMAKE_INSTALL_LOCALSTATEDIR:PATH='var' \
-        -DCMAKE_INSTALL_MANDIR:PATH='share/man' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_INSTALL_SBINDIR:PATH='sbin' \
-        -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
-        -DENABLE_AVSD:BOOL='ON' \
-        -DENABLE_H263D:BOOL='ON' \
-        -DENABLE_H264D:BOOL='ON' \
-        -DENABLE_H264E:BOOL='ON' \
-        -DENABLE_H265D:BOOL='ON' \
-        -DENABLE_JPEGD:BOOL='ON' \
-        -DENABLE_JPEGE:BOOL='ON' \
-        -DENABLE_MPEG2D:BOOL='ON' \
-        -DENABLE_MPEG4D:BOOL='ON' \
-        -DENABLE_VP8D:BOOL='ON' \
-        -DENABLE_VP9D:BOOL='ON' \
         -DH264D_TEST:BOOL='OFF' \
         -DH265D_TEST:BOOL='OFF' \
         -DJPEGD_TEST:BOOL='OFF' \
@@ -72,5 +52,5 @@ package() {
     make DESTDIR="$pkgdir" install
     
     # remove static libs that are not removed by '!staticlibs' option
-    rm -f "$pkgdir"/usr/lib/*.a
+    rm "$pkgdir"/usr/lib/lib*_static.a
 }
