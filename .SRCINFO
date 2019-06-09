@@ -1,4 +1,4 @@
-pkgbase = dwm-baitinq
+pkgbase = dwm-baitinq-git
 	pkgdesc = Simple window manager (baitinq version)
 	pkgver = 1
 	pkgrel = 1
@@ -11,7 +11,7 @@ pkgbase = dwm-baitinq
 	depends = libxft
 	provides = dwm
 	conflicts = dwm
-	source = git://github.com/Baitinq/dwm.git
+	source = git://github.com/$author/$_gitname.git
 	sha256sums = SKIP
 
 pkgname = dwm-baitinq-git
