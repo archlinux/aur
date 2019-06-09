@@ -3,7 +3,7 @@
 _gonamespc='github.com/schollz/croc'
 pkgname=croc
 pkgver=6.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily and securely send things from one computer to another."
 arch=('x86_64')
 url="https://${_gonamespc}"

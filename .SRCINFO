@@ -1,7 +1,7 @@
 pkgbase = croc
 	pkgdesc = Easily and securely send things from one computer to another.
 	pkgver = 6.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/schollz/croc
 	arch = x86_64
 	license = MIT
