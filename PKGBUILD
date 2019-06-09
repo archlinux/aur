@@ -3,7 +3,7 @@
 
 pkgname=t4kcommon
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Common library for code shared by TuxType and TuxMath"
 arch=('i686' 'x86_64')
 url="http://tux4kids.alioth.debian.org/"

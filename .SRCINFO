@@ -1,7 +1,7 @@
 pkgbase = t4kcommon
 	pkgdesc = Common library for code shared by TuxType and TuxMath
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://tux4kids.alioth.debian.org/
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,10 @@ pkgbase = t4kcommon
 	options = !docs
 	source = https://github.com/tux4kids/t4kcommon/archive/upstream/0.1.1.tar.gz
 	source = libpng15.patch
+	source = https://sources.debian.org/data/main/t/t4kcommon/0.1.1-6/debian/patches/916060_bugfix.patch
 	sha256sums = be4cadbcf2728ed6efb1c71e96c209184a7829b65af3625d9410a29fb2fd775a
 	sha256sums = 9a778a6bbe6f1c95b5ad1418a35bb41dbdbe3afb6520745eb9bd34dfa7a27dbf
+	sha256sums = 1d5bb9a9cf809f26508e4611fb564e050b554036a679ec28b79827785a3f46c8
 
 pkgname = t4kcommon
 
