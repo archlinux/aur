@@ -1,0 +1,13 @@
+diff -Naurp a/nvidia-settings.desktop b/nvidia-settings.desktop
+--- a/nvidia-settings.desktop	2019-05-08 00:56:46.000000000 +0000
++++ b/nvidia-settings.desktop	2019-06-08 16:30:13.000000000 +0000
+@@ -3,7 +3,7 @@ Type=Application
+ Encoding=UTF-8
+ Name=NVIDIA X Server Settings
+ Comment=Configure NVIDIA X Server Settings
+-Exec=__UTILS_PATH__/nvidia-settings
+-Icon=__PIXMAP_PATH__/nvidia-settings.png
++Exec=/usr/bin/nvidia-settings
++Icon=/usr/share/pixmaps/nvidia-settings.png
+ Categories=Settings;HardwareSettings;
+ 
