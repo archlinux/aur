@@ -15,7 +15,7 @@ conflicts=('dwm')
 provides=('dwm')
 
 # include config.h and any patches you want to have applied here
-source=('git://github.com/$author/$_gitname.git')
+source=('git://github.com/Baitinq/dwm.git')
 sha256sums=('SKIP')
 
 
