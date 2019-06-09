@@ -1,8 +1,8 @@
 pkgbase = xorg-server-dev
 	pkgdesc = Xorg X server - bleeding edge version
-	pkgver = 1.20.3
-	pkgrel = 2
-	url = http://xorg.freedesktop.org
+	pkgver = 1.20.5
+	pkgrel = 1
+	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
 	license = custom
@@ -38,8 +38,8 @@ pkgbase = xorg-server-dev
 	makedepends = wayland-protocols
 	makedepends = egl-wayland
 	makedepends = meson
-	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.3.tar.bz2
-	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.3.tar.bz2.sig
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.5.tar.bz2
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.5.tar.bz2.sig
 	source = xwayland-config.h.meson.in::https://cgit.freedesktop.org/xorg/xserver/plain/include/xwayland-config.h.meson.in?id=xorg-server-1.20.0
 	source = xserver-autobind-hotplug.patch
 	source = 0001-v2-FS-58644.patch
@@ -50,7 +50,7 @@ pkgbase = xorg-server-dev
 	validpgpkeys = C383B778255613DFDB409D91DB221A6900000011
 	validpgpkeys = DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3
 	validpgpkeys = 995ED5C8A6138EB0961F18474C09DD83CAAA50B2
-	sha512sums = ee44554f86df4297f54c5871fe7a18954eeef4338775a25f36d6577b279c4775f61128da71b86cfaeadcc080838d6749dede138d4db178866579da2056543fba
+	sha512sums = 625f0626b122cf95600abe382c3217348999357a0e2d2443092f1b67cff1c98d7ef09303884ceaeac181e0555dc56b0d4d44bda45cc464dac2d9a50c5b32d631
 	sha512sums = SKIP
 	sha512sums = d707e0870367de2665c3b82f09564d17ed3f62c9e8b4bd471c11af1fb1e9249e306e92c7961a04e355756eec9f5271bc8e66999e56c73c31bc9da4127ff30a8e
 	sha512sums = d84f4d63a502b7af76ea49944d1b21e2030dfd250ac1e82878935cf631973310ac9ba1f0dfedf10980ec6c7431d61b7daa4b7bbaae9ee477b2c19812c1661a22
@@ -60,12 +60,12 @@ pkgbase = xorg-server-dev
 	sha512sums = de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22
 
 pkgname = xorg-server-dev
-	pkgdesc = Xorg X server - bleeding edge version
+	pkgdesc = Xorg X server
 	install = xorg-server-dev.install
 	depends = libepoxy
 	depends = libxfont2
 	depends = pixman
-	depends = xorg-server-common-dev
+	depends = xorg-server-common
 	depends = libunwind
 	depends = dbus
 	depends = libgl
@@ -74,12 +74,10 @@ pkgname = xorg-server-dev
 	depends = libpciaccess
 	depends = libdrm
 	depends = libxshmfence
-	provides = xorg-server=1.20.3
 	provides = X-ABI-VIDEODRV_VERSION=24.0
 	provides = X-ABI-XINPUT_VERSION=24.1
 	provides = X-ABI-EXTENSION_VERSION=10.0
 	provides = x-server
-	conflicts = xorg-server
 	conflicts = nvidia-utils<=331.20
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
@@ -87,26 +85,24 @@ pkgname = xorg-server-dev
 	replaces = xf86-video-modesetting
 
 pkgname = xorg-server-xephyr-dev
-	pkgdesc = A nested X server that runs as an X application - bleeding edge version
+	pkgdesc = A nested X server that runs as an X application
 	depends = libxfont2
 	depends = libgl
 	depends = libepoxy
 	depends = libunwind
-	depends = libsystemd
+	depends = systemd-libs
 	depends = libxv
 	depends = pixman
-	depends = xorg-server-common-dev
+	depends = xorg-server-common
 	depends = xcb-util-image
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = xcb-util-keysyms
 	depends = nettle
 	depends = libtirpc
-	provides = xorg-server-xephyr=1.20.3
-	conflicts = xorg-server-xephyr
 
 pkgname = xorg-server-xdmx-dev
-	pkgdesc = Distributed Multihead X Server and utilities - bleeding edge version
+	pkgdesc = Distributed Multihead X Server and utilities
 	depends = libxfont2
 	depends = libxi
 	depends = libxaw
@@ -114,62 +110,50 @@ pkgname = xorg-server-xdmx-dev
 	depends = libdmx
 	depends = libxfixes
 	depends = pixman
-	depends = xorg-server-common-dev
+	depends = xorg-server-common
 	depends = nettle
-	provides = xorg-server-xdmx=1.20.3
-	conflicts = xorg-server-xdmx
 
 pkgname = xorg-server-xvfb-dev
-	pkgdesc = Virtual framebuffer X server - bleeding edge version
+	pkgdesc = Virtual framebuffer X server
 	depends = libxfont2
 	depends = libunwind
 	depends = pixman
-	depends = xorg-server-common-dev
+	depends = xorg-server-common
 	depends = xorg-xauth
 	depends = libgl
 	depends = nettle
-	provides = xorg-server-xvfb=1.20.3
-	conflicts = xorg-server-xvfb
 
 pkgname = xorg-server-xnest-dev
-	pkgdesc = A nested X server that runs as an X application - bleeding edge version
+	pkgdesc = A nested X server that runs as an X application
 	depends = libxfont2
 	depends = libxext
 	depends = pixman
-	depends = xorg-server-common-dev
+	depends = xorg-server-common
 	depends = nettle
 	depends = libtirpc
-	provides = xorg-server-xnest=1.20.3
-	conflicts = xorg-server-xnest
 
 pkgname = xorg-server-xwayland-dev
-	pkgdesc = run X clients under wayland - bleeding edge version
+	pkgdesc = run X clients under wayland
 	depends = libxfont2
 	depends = libepoxy
 	depends = libunwind
-	depends = libsystemd
+	depends = systemd-libs
 	depends = libgl
 	depends = pixman
-	depends = xorg-server-common-dev
+	depends = xorg-server-common
 	depends = nettle
 	depends = libtirpc
-	provides = xorg-server-xwayland=1.20.3
-	conflicts = xorg-server-xwayland
 
 pkgname = xorg-server-common-dev
-	pkgdesc = Xorg server common files - bleeding edge version
+	pkgdesc = Xorg server common files
 	depends = xkeyboard-config
 	depends = xorg-xkbcomp
 	depends = xorg-setxkbmap
-	provides = xorg-server-common=1.20.3
-	conflicts = xorg-server-common
 
 pkgname = xorg-server-devel-dev
-	pkgdesc = Development files for the X.Org X server - bleeding edge version
+	pkgdesc = Development files for the X.Org X server
 	depends = xorgproto
 	depends = mesa
 	depends = libpciaccess
 	depends = xorg-util-macros
-	provides = xorg-server-devel=1.20.3
-	conflicts = xorg-server-devel
 
