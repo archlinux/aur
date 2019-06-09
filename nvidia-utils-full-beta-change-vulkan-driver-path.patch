@@ -1,0 +1,12 @@
+diff -Naurp a/nvidia_icd.json.template b/nvidia_icd.json.template
+--- a/nvidia_icd.json.template	2019-05-08 00:55:21.000000000 +0000
++++ b/nvidia_icd.json.template	2019-06-08 15:56:37.000000000 +0000
+@@ -1,7 +1,7 @@
+ {
+     "file_format_version" : "1.0.0",
+     "ICD": {
+-        "library_path": "__NV_VK_ICD__",
++        "library_path": "libGLX_nvidia.so.0",
+         "api_version" : "1.1.99"
+     }
+ }
