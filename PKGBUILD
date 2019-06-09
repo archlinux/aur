@@ -11,7 +11,7 @@ source=("http://thbeck.de/Download/TAK_${pkgver}.zip"
 	"http://thbeck.de/Impressum.html"
         tak takc)
 md5sums=('b503af1b39e39429eb00ac13878c6a8f'
-         '61f7b1f95fac8bdd400c99669b2131d4'
+         'SKIP'
          '06236173635d79e7efbf864030f2c4cd'
          '4cc05b24ebcde8ed15504f844f8431ff')
 
