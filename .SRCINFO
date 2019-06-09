@@ -1,0 +1,13 @@
+pkgbase = shiftpressed
+	pkgdesc = Detect if shift is pressed in the console
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/shiftpressed
+	arch = any
+	license = custom:Public Domain
+	makedepends = gcc
+	source = shiftpressed.c
+	sha256sums = f0c5327edf12f63eb74fe6a88928eb926664338eb7da60c8ebce80aabccb3645
+
+pkgname = shiftpressed
+
