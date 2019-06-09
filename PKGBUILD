@@ -3,7 +3,7 @@
 # Remove the --enable-openmp flag below if you do not want parallelization.
 
 pkgname=python-graph-tool
-pkgver=2.27
+pkgver=2.28
 pkgrel=1
 pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
@@ -17,16 +17,10 @@ provides=(python3-graph-tool)
 conflicts=(python3-graph-tool)
 replaces=(python3-graph-tool)
 options=(!libtool)
-source=("https://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2"
-        "https://git.skewed.de/count0/graph-tool/commit/0407f41a35b6be7c670927fb5dc578cbd0e88be4.diff"
-	"https://git.skewed.de/count0/graph-tool/commit/aa39e4a6b42d43fac30c841d176c75aff92cc01a.diff")
-sha256sums=('4740c69720dfbebf8fb3e77057b3e6a257ccf0432cdaf7345f873247390e4313'
-            '94559544ad95753a13ee701c02af706c8b296c54af2c1706520ec96e24aa6d39'
-            '5a4ea386342c2de9422da5b07dd4272d47d2cdbba99d9b258bff65a69da562c1')
+source=("https://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2")
+sha256sums=('a2dbe0c926c058b1a6f696a05b9d9b65a3ceed57b8b6b0fe1474076bca9f8111')
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
-  patch -Np1 -i "${srcdir}/0407f41a35b6be7c670927fb5dc578cbd0e88be4.diff"
-  patch -Np1 -i "${srcdir}/aa39e4a6b42d43fac30c841d176c75aff92cc01a.diff"
   ./configure --enable-openmp --prefix=/usr --docdir="/usr/share/doc/$pkgname"
 }
 
