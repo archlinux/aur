@@ -1,59 +1,53 @@
 pkgbase = nvidia-utils-beta
-	pkgdesc = NVIDIA driver utilities and libraries (beta version)
+	pkgdesc = NVIDIA drivers utilities (beta version)
 	pkgver = 430.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nvidia.com/
 	arch = x86_64
-	license = custom:NVIDIA
+	license = custom
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/430.14/NVIDIA-Linux-x86_64-430.14-no-compat32.run
+	source = https://download.nvidia.com/XFree86/Linux-430.14/430.14/NVIDIA-Linux-x86_64-430.14-no-compat32.run
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils-beta.sysusers
+	source = nvidia-utils-beta-change-vulkan-driver-path.patch
+	source = nvidia-settings-beta-change-desktop-paths.patch
 	sha256sums = 0f583a277b1731cb8327510b75dba9cf7adf5c781247e4f48bcc9f358253278f
 	sha256sums = 089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182
 	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
+	sha256sums = 57e2393228b09b85d91b9d095b85899178f6fd4b456cbb7ea39093d07e7c7ca7
+	sha256sums = 633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a
 
 pkgname = nvidia-utils-beta
-	pkgdesc = NVIDIA driver utilities and libraries (beta version)
 	install = nvidia-utils-beta.install
 	depends = xorg-server
-	depends = mesa>=17.0.2-2
-	optdepends = gtk2: nvidia-settings (GTK+ v2)
-	optdepends = gtk3: nvidia-settings (GTK+ v3)
-	optdepends = opencl-nvidia-beta: OpenCL support
-	optdepends = xorg-server-devel: nvidia-xconfig
-	optdepends = egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.1.2)
+	depends = libglvnd
+	depends = egl-wayland
+	optdepends = nvidia-settings-beta: for the configuration tool
+	optdepends = xorg-server-devel: for nvidia-xconfig
+	optdepends = opencl-nvidia-beta: for OpenCL support
 	provides = nvidia-utils=430.14
-	provides = nvidia-settings=430.14
-	provides = libglvnd
 	provides = vulkan-driver
-	conflicts = nvidia-utils
-	conflicts = nvidia-settings
-	conflicts = libglvnd
-
-pkgname = nvidia-egl-wayland-beta
-	pkgdesc = NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.1.2) for 'nvidia-utils-beta'
-	depends = nvidia-utils-beta
-	provides = egl-wayland
-	conflicts = egl-wayland
-
-pkgname = nvidia-libgl-beta
-	pkgdesc = NVIDIA driver library symlinks for 'nvidia-utils-beta'
-	depends = nvidia-utils-beta
+	provides = opengl-driver
 	provides = nvidia-libgl=430.14
-	provides = libgl
-	provides = libegl
-	provides = libgles
+	provides = nvidia-libgl-beta=430.14
+	conflicts = nvidia-utils
 	conflicts = nvidia-libgl
-	conflicts = libgl
-	conflicts = libegl
-	conflicts = libgles
+	replaces = nvidia-libgl
 
 pkgname = opencl-nvidia-beta
-	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-beta'
+	pkgdesc = OpenCL implemention for NVIDIA (beta version)
 	depends = zlib
+	depends = nvidia-utils-beta>=430.14
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-nvidia=430.14
 	provides = opencl-driver
 	conflicts = opencl-nvidia
+
+pkgname = nvidia-settings-beta
+	pkgdesc = Tool for configuring the NVIDIA graphics driver (beta version)
+	depends = nvidia-utils-beta>=430.14
+	depends = gtk3
+	provides = nvidia-settings=430.14
+	provides = nvidia-settings-beta=430.14
+	conflicts = nvidia-settings
 
