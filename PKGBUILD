@@ -2,7 +2,7 @@
 # Maintainer: Michael Lass <bevan@bi-co.net>
 
 pkgname=sslyze
-pkgver=2.0.6
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Fast and full-featured SSL scanner."
 arch=('i686' 'x86_64')
@@ -10,19 +10,18 @@ url='https://github.com/nabla-c0d3/sslyze'
 license=('AGPL3')
 depends=('python')
 makedepends=('python-pip')
-options=('!strip')
 source=("https://github.com/nabla-c0d3/sslyze/archive/${pkgver}.tar.gz"
         "sslyze")
-sha256sums=('7b16da8c7c29be4454172d0d89f8caf2ad5003dbd6fd83d39b8df946a19c3447'
-            '8d2ffc47d608ce439b683500c9dde94b953535b499ef72dfcd548f45faa71fb2')
+sha256sums=('bcc2e7dfd32c7b8b0734b0f1138a469bc601918440519239193f8e90c815c233'
+            '042db33726a889a64910121f2098e10e6a5ebf4a102a54d09d9a27ed363a8e5d')
 
 package() {
+	cd "$srcdir/${pkgname}-${pkgver}"
+
 	# Install files in /opt
-	mkdir -p "$pkgdir/opt/sslyze"
-	cp -a $srcdir/${pkgname}-${pkgver}/. $pkgdir/opt/sslyze
-	/usr/bin/pip install $pkgdir/opt/sslyze --target $pkgdir/opt/sslyze/lib
+	install -dm755 "$pkgdir/opt/sslyze"
+	/usr/bin/pip install . --target "$pkgdir/opt/sslyze/"
 
 	# Create an indirect launcher in /usr/bin
-	mkdir -p "$pkgdir/usr/bin"
-	install -Dm 755 "$srcdir/sslyze" "$pkgdir/usr/bin/sslyze"
+	install -Dm755 "$srcdir/sslyze" "$pkgdir/usr/bin/sslyze"
 }

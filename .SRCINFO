@@ -1,6 +1,6 @@
 pkgbase = sslyze
 	pkgdesc = Fast and full-featured SSL scanner.
-	pkgver = 2.0.6
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/nabla-c0d3/sslyze
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = sslyze
 	makedepends = python-pip
 	depends = python
 	options = !strip
-	source = https://github.com/nabla-c0d3/sslyze/archive/2.0.6.tar.gz
+	source = https://github.com/nabla-c0d3/sslyze/archive/2.1.2.tar.gz
 	source = sslyze
-	sha256sums = 7b16da8c7c29be4454172d0d89f8caf2ad5003dbd6fd83d39b8df946a19c3447
-	sha256sums = 8d2ffc47d608ce439b683500c9dde94b953535b499ef72dfcd548f45faa71fb2
+	sha256sums = bcc2e7dfd32c7b8b0734b0f1138a469bc601918440519239193f8e90c815c233
+	sha256sums = 042db33726a889a64910121f2098e10e6a5ebf4a102a54d09d9a27ed363a8e5d
 
 pkgname = sslyze
 
