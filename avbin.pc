@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: AVbin
+Description: A C library that provides a wrapper around Libav’s video and audio decoding functionality
+Version: 11
+Libs: -L${libdir} -lavbin
+Cflags: -I${includedir} 
