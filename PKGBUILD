@@ -3,7 +3,7 @@ pkgbase=python-specutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('i686' 'x86_64')
 url="http://specutils.readthedocs.io/"
@@ -29,11 +29,12 @@ build() {
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
+
     python setup.py test
 }
 
 package_python-specutils() {
-    depends=('python' 'python-astropy')
+    depends=('python' 'python-gwcs')
     optdepends=('python-specutils-doc: Documentation for Specutils')
 #               'python-pytest-astropy: For testing')
     cd ${srcdir}/${_pyname}-${pkgver}
