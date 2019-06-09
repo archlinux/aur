@@ -2,7 +2,7 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-2018-complete
-pkgver=2018.6
+pkgver=2018.7
 pkgrel=3
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -18,7 +18,7 @@ makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
         GMXRC.bash.cmakein.patch)
-sha1sums=('2d47ff8fa96e8efd7a9cfae2776af7cd587ee92f'
+sha1sums=('bf90510d31150a78acb4ee79f99191686fdf0a36'
           '014b2cbfa13db9b495c88f653805c330747117dc')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
@@ -43,6 +43,9 @@ build() {
         -DGMX_DOUBLE=ON \
         -DGMX_BUILD_OWN_FFTW=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON
+        #-DGMX_SIMD=AVX_512 \
+        #-DGMX_SIMD=AVX2_256 \
+        #-DGMX_SIMD=AVX_256 \
   make
 
   msg2 "Building the single precision files"
@@ -53,6 +56,9 @@ build() {
         -DBUILD_SHARED_LIBS=ON \
         -DGMX_BUILD_OWN_FFTW=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON
+        #-DGMX_SIMD=AVX_512 \
+        #-DGMX_SIMD=AVX2_256 \
+        #-DGMX_SIMD=AVX_256 \
   make
 }
 
