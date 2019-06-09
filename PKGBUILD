@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.8.beta7.r0.g716fb69754
+pkgver=8.8.rc0.r0.g2393acebc3
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -78,7 +78,7 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # make 'sage -notebook=jupyter' work with our python3 jupyter-notebook package
   patch -p1 -i ../sagemath-python3-notebook.patch
-# fix three.js plotting backend
+# use correct online three.js version
   patch -p1 -i ../sagemath-threejs.patch
 
 # Upstream patches  
@@ -95,20 +95,17 @@ prepare(){
 
 # use python2
   sed -e 's|sage-python23|python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
-  sed -e 's|cython {OPT}|cython2 {OPT}|' -e 's|python setup.py|python2 setup.py|' -i src/sage/misc/cython.py
   sed -e 's|exec ipython\b|exec ipython2|' -e 's|cygdb|cygdb2|g' -i src/bin/sage
   sed -e "s|'cython'|'cython2'|" -i src/bin/sage-cython
-  sed -e 's|"python"|"python2"|' -i src/sage/env.py
 }
 
 build() {
   cd sage/src
 
-  export CC=gcc
-  export SAGE_ROOT="$PWD"
-  export SAGE_SRC="$PWD"
-  export SAGE_NUM_THREADS=10
-
+  export CC=gcc \
+         SAGE_ROOT="$PWD" \
+         SAGE_SRC="$PWD" \
+         SAGE_NUM_THREADS=10
   python2 setup.py build
 }
 
@@ -119,10 +116,9 @@ package_sagemath-git() {
 
   cd sage/src
 
-  export SAGE_ROOT="$PWD"
-  export SAGE_LOCAL="/usr"
-  export SAGE_EXTCODE="$PWD"/ext
-
+  export SAGE_ROOT="$PWD" \
+         SAGE_LOCAL="/usr" \
+         SAGE_EXTCODE="$PWD"/ext
   python2 setup.py install --root="$pkgdir" --optimize=1
 
   mkdir -p "$pkgdir"/usr/bin
@@ -154,10 +150,10 @@ package_sagemath-jupyter-git() {
 
   cd sage/src
 
-  export SAGE_ROOT="$PWD"
-  export SAGE_LOCAL="/usr"
-
+  export SAGE_ROOT="$PWD" \
+         SAGE_LOCAL="/usr"
   python2 -c "from sage.repl.ipython_kernel.install import SageKernelSpec; SageKernelSpec.update(prefix='$pkgdir/usr')"
+
 # fix symlinks to assets
   for _i in $(ls ext/notebook-ipython); do
     rm "$pkgdir"/usr/share/jupyter/kernels/sagemath/$_i
