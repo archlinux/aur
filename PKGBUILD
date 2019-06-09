@@ -32,7 +32,7 @@ build() {
 package() {
   cd expac
 
-  DESTDIR=$pkgdir ninja -C build
+  DESTDIR=$pkgdir ninja -C build install
 }
 
 # vim: ft=sh syn=sh et
