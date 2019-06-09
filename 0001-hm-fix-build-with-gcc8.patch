@@ -1,0 +1,14 @@
+diff -Naurp a/build/linux/common/makefile.base b/build/linux/common/makefile.base
+--- a/build/linux/common/makefile.base	2018-07-12 13:14:54.000000000 +0000
++++ b/build/linux/common/makefile.base	2019-06-09 13:48:00.616470452 +0000
+@@ -47,8 +47,8 @@ endif
+ 
+ # default cpp flags for all configurations
+ #CPPFLAGS          = -Wall $(DEFS) -I$(CURDIR)/$(INC_DIR) $(USER_INC_DIRS)
+-CPPFLAGS          = $(DEFS) -I$(CURDIR)/$(INC_DIR) $(USER_INC_DIRS) -Wall -Wshadow -Wno-sign-compare -Werror -std=c++11
+-CFLAGS          = $(DEFS) -I$(CURDIR)/$(INC_DIR) $(USER_INC_DIRS) -Wall -Wshadow -Wno-sign-compare -Werror
++CPPFLAGS          = $(DEFS) -I$(CURDIR)/$(INC_DIR) $(USER_INC_DIRS) -Wall -Wshadow -Wno-sign-compare -std=c++11
++CFLAGS          = $(DEFS) -I$(CURDIR)/$(INC_DIR) $(USER_INC_DIRS) -Wall -Wshadow -Wno-sign-compare
+ 
+ ########## 
+ # enforce 32-bit build : 1=yes, 0=no

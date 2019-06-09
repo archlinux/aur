@@ -1,0 +1,100 @@
+diff -Naurp a/build/linux/common/makefile.base b/build/linux/common/makefile.base
+--- a/build/linux/common/makefile.base	2019-06-09 14:04:51.000000000 +0000
++++ b/build/linux/common/makefile.base	2019-06-09 14:06:58.251352310 +0000
+@@ -46,36 +46,36 @@ endif
+ #########################################################
+ 
+ # default cpp flags for all configurations
+-#CPPFLAGS          = -Wall $(DEFS) -I$(CURDIR)/$(INC_DIR) $(USER_INC_DIRS)
+-CPPFLAGS          = $(DEFS) -I$(CURDIR)/$(INC_DIR) $(USER_INC_DIRS) -Wall -Wshadow -Wno-sign-compare -std=c++11
+-CFLAGS          = $(DEFS) -I$(CURDIR)/$(INC_DIR) $(USER_INC_DIRS) -Wall -Wshadow -Wno-sign-compare
++#CXXFLAGS          = -Wall $(DEFS) -I$(CURDIR)/$(INC_DIR) $(USER_INC_DIRS)
++CXXFLAGS          += $(DEFS) -I$(CURDIR)/$(INC_DIR) $(USER_INC_DIRS) -Wall -Wshadow -Wno-sign-compare -std=c++11
++CFLAGS          += $(DEFS) -I$(CURDIR)/$(INC_DIR) $(USER_INC_DIRS) -Wall -Wshadow -Wno-sign-compare
+ 
+ ########## 
+ # enforce 32-bit build : 1=yes, 0=no
+ ##########
+ M32?= 0
+ ifeq ($(M32),1)
+-CPPFLAGS+=-m32
++CXXFLAGS+=-m32
+ endif
+ ##########
+ 
+ ifeq ($(HIGHBITDEPTH), 1)
+-CPPFLAGS+="-DRExt__HIGH_BIT_DEPTH_SUPPORT=1"
++CXXFLAGS+="-DRExt__HIGH_BIT_DEPTH_SUPPORT=1"
+ endif
+ 
+ ifeq ($(EXTENSION_360_VIDEO), 1)
+-  CPPFLAGS+=-DEXTENSION_360_VIDEO=1
++  CXXFLAGS+=-DEXTENSION_360_VIDEO=1
+ else
+-  CPPFLAGS+=-DEXTENSION_360_VIDEO=0
++  CXXFLAGS+=-DEXTENSION_360_VIDEO=0
+ endif
+ 
+ #
+ # debug cpp flags
+-DEBUG_CPPFLAGS    = -g  -D_DEBUG
++DEBUG_CXXFLAGS    = -g  -D_DEBUG
+ DEBUG_CFLAGS    = -g  -D_DEBUG
+ #
+ # release cpp
+-RELEASE_CPPFLAGS  =  -O3 -Wuninitialized
++RELEASE_CXXFLAGS  =  -O3 -Wuninitialized
+ RELEASE_CFLAGS  =  -O3 -Wuninitialized
+ 
+ 
+@@ -113,7 +113,7 @@ endif
+ ifeq ($(CONFIG), LIBRARY)
+ # linker flags for library
+ # LDFLAGS           = $(ALL_LDFLAGS) -shared -Wl,-Bsymbolic
+-LDFLAGS           = $(ALL_LDFLAGS) -shared
++LDFLAGS           += $(ALL_LDFLAGS) -shared
+ #
+ # debug linker flags for library
+ DEBUG_LDFLAGS     = -Wl,-soname,lib$(PRJ_NAME)d.so.$(VER)
+@@ -124,7 +124,7 @@ RELEASE_LDFLAGS   = -Wl,-soname,lib$(PRJ
+ else
+ ifeq ($(CONFIG), CONSOLE)
+ # linker flags for console
+-LDFLAGS           = $(ALL_LDFLAGS)
++LDFLAGS           += $(ALL_LDFLAGS)
+ #
+ # debug linker flags for console
+ DEBUG_LDFLAGS     =
+@@ -208,28 +208,28 @@ $(OBJ_DIR)/%.d.o: $(SRC_DIR4)/%.asm
+ # see also: http://make.paulandlesley.org/autodep.html
+ #    2005-01-25 Steffen Kamp (kamp@ient.rwth-aachen.de), RWTH Aachen
+ define COMPILE_AND_DEPEND_RELEASE
+-        $(CPP) -c -MMD -MF $(OBJ_DIR)/$*.r.d -MT $(OBJ_DIR)/$*.r.o $(CPPFLAGS) $(RELEASE_CPPFLAGS) -o $@ $(CURDIR)/$<
++        $(CPP) -c -MMD -MF $(OBJ_DIR)/$*.r.d -MT $(OBJ_DIR)/$*.r.o $(CXXFLAGS) $(RELEASE_CXXFLAGS) $(CPPFLAGS) -o $@ $(CURDIR)/$<
+         @cp $(OBJ_DIR)/$*.r.d $(OBJ_DIR)/$*.r.P; \
+                 sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
+                 -e '/^$$/ d' -e 's/$$/ :/' < $(OBJ_DIR)/$*.r.d >> $(OBJ_DIR)/$*.r.P; \
+                 rm -f $(OBJ_DIR)/$*.r.d
+ endef
+ define COMPILE_AND_DEPEND_DEBUG
+-        $(CPP) -c -MMD -MF $(OBJ_DIR)/$*.d.d -MT $(OBJ_DIR)/$*.d.o $(CPPFLAGS) $(DEBUG_CPPFLAGS) -o $@ $(CURDIR)/$<
++        $(CPP) -c -MMD -MF $(OBJ_DIR)/$*.d.d -MT $(OBJ_DIR)/$*.d.o $(CXXFLAGS) $(DEBUG_CXXFLAGS) $(CPPFLAGS) -o $@ $(CURDIR)/$<
+         @cp $(OBJ_DIR)/$*.d.d $(OBJ_DIR)/$*.d.P; \
+                 sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
+                 -e '/^$$/ d' -e 's/$$/ :/' < $(OBJ_DIR)/$*.d.d >> $(OBJ_DIR)/$*.d.P; \
+                 rm -f $(OBJ_DIR)/$*.d.d
+ endef
+ define COMPILE_AND_DEPEND_RELEASE_C
+-        $(CC) -c -MMD -MF $(OBJ_DIR)/$*.r.d -MT $(OBJ_DIR)/$*.r.o $(CFLAGS) $(RELEASE_CFLAGS) -o $@ $(CURDIR)/$<
++        $(CC) -c -MMD -MF $(OBJ_DIR)/$*.r.d -MT $(OBJ_DIR)/$*.r.o $(CFLAGS) $(RELEASE_CFLAGS) $(CPPFLAGS) -o $@ $(CURDIR)/$<
+         @cp $(OBJ_DIR)/$*.r.d $(OBJ_DIR)/$*.r.P; \
+                 sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
+                 -e '/^$$/ d' -e 's/$$/ :/' < $(OBJ_DIR)/$*.r.d >> $(OBJ_DIR)/$*.r.P; \
+                 rm -f $(OBJ_DIR)/$*.r.d
+ endef
+ define COMPILE_AND_DEPEND_DEBUG_C
+-        $(CC) -c -MMD -MF $(OBJ_DIR)/$*.d.d -MT $(OBJ_DIR)/$*.d.o $(CFLAGS) $(DEBUG_CFLAGS) -o $@ $(CURDIR)/$<
++        $(CC) -c -MMD -MF $(OBJ_DIR)/$*.d.d -MT $(OBJ_DIR)/$*.d.o $(CFLAGS) $(DEBUG_CFLAGS) $(CPPFLAGS) -o $@ $(CURDIR)/$<
+         @cp $(OBJ_DIR)/$*.d.d $(OBJ_DIR)/$*.d.P; \
+                 sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
+                 -e '/^$$/ d' -e 's/$$/ :/' < $(OBJ_DIR)/$*.d.d >> $(OBJ_DIR)/$*.d.P; \

@@ -1,0 +1,18 @@
+pkgbase = hm
+	pkgdesc = HEVC Test Model - the reference software for HEVC
+	pkgver = 16.20
+	pkgrel = 1
+	url = https://hevc.hhi.fraunhofer.de/
+	arch = x86_64
+	license = BSD
+	makedepends = nasm
+	depends = gcc-libs
+	source = hm-16.20.zip::https://hevc.hhi.fraunhofer.de/trac/hevc/browser/tags/HM-16.20?rev=4994&format=zip
+	source = 0001-hm-fix-build-with-gcc8.patch
+	source = 0002-hm-use-arch-flags.patch
+	sha256sums = 021ac73a08c23c4053f08636d3a435a1da02a56066f9f6e4710a7afadc154a9e
+	sha256sums = 1fc52f8507902c7ee315bb7fbe42914dd4b0b49251d237b2e024e6e776ba02c3
+	sha256sums = da19d17edfb2acac3feaedaf8169d84da3b6675de4c70b32d9a3d3144b9fc59f
+
+pkgname = hm
+
