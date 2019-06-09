@@ -1,7 +1,7 @@
 pkgbase = croc-bin
 	pkgdesc = Easily and securely send things from one computer to another.
 	pkgver = 6.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/schollz/croc
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,9 @@ pkgbase = croc-bin
 	conflicts = croc
 	conflicts = croc-git
 	source = https://github.com/schollz/croc/releases/download/v6.0.7/croc_6.0.7_linux-64bit.tar.gz
+	source = croc.service
 	sha256sums = 196c60603e6abc59d02e22ddf877e2eb880500174fa1cfec0e7bbcb43afac7fd
+	sha256sums = cf074568f16c7b86870a89a0a2d8e488e3837223cca071a911085d814d6f2194
 
 pkgname = croc-bin
 
