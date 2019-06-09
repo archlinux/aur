@@ -2,21 +2,28 @@
 
 pkgname=kvazaar
 pkgver=1.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc='An open-source HEVC encoder'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://ultravideo.cs.tut.fi/#encoder'
 license=('LGPL')
 depends=('glibc' 'gcc-libs' 'crypto++')
-makedepends=('yasm')
-provides=('libkvazaar.so')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ultravideo/kvazaar/archive/v${pkgver}.tar.gz"
+makedepends=('git' 'yasm')
+checkdepends=('ffmpeg' 'hm')
+BUILDENV=('!check')
+source=("git+https://github.com/ultravideo/kvazaar.git#tag=v${pkgver}"
+        'git+https://github.com/ultravideo/greatest.git'
         'kvazaar-crypto++6.0.0.patch')
-sha256sums=('480ecfd9b4d2b7d21b355e4a35fcf47b4db7a3b0315b6219d93733db42392bd9'
+sha256sums=('SKIP'
+            'SKIP'
             '02396099561b9c87462420ee6b16706237c7502938c1b3ab9fc3797ea2ec568a')
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
+    cd kvazaar
+    
+    git submodule init
+    git config --local submodule.greatest.url "${srcdir}/greatest"
+    git submodule update
     
     patch -Np1 -i "${srcdir}/kvazaar-crypto++6.0.0.patch"
     
@@ -24,21 +31,23 @@ prepare() {
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd kvazaar
     
     ./configure \
         --prefix='/usr' \
-        --enable-largefile \
-        --enable-static='no' \
-        --enable-shared='yes' \
-        --enable-fast-install='yes' \
         --with-cryptopp
         
     make
 }
 
+check() {
+    cd kvazaar
+    
+    make check
+}
+
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd kvazaar
     
     make DESTDIR="$pkgdir" install
 }
