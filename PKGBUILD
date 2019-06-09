@@ -2,9 +2,9 @@
 
 pkgbase=linux-new
 _srcname=linux
-gitver=v5.2-rc3
-pkgver=5.2.rc3
-pkgrel=2
+gitver=v5.2-rc4
+pkgver=5.2.rc4
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
