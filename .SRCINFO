@@ -1,6 +1,6 @@
 pkgbase = reptyr-git
 	pkgdesc = Utility for taking an existing running program and attaching it to a new terminal
-	pkgver = 0.6.2.66.g3f46356
+	pkgver = 0.7.0.r2.gd2b0b06
 	pkgrel = 1
 	url = https://github.com/nelhage/reptyr
 	arch = x86_64

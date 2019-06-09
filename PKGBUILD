@@ -1,7 +1,8 @@
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=reptyr-git
-pkgver=0.6.2.66.g3f46356
+pkgver=0.7.0.r2.gd2b0b06
 pkgrel=1
 pkgdesc='Utility for taking an existing running program and attaching it to a new terminal'
 arch=('x86_64')
@@ -16,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags |sed 's+-+.+g'|sed 's+^reptyr.++'  
+  git describe --tags | sed 's+^reptyr.++' | sed "s+-+.r+" | tr - .  
 }
 
 prepare() {
