@@ -2,7 +2,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-glib-networking
-pkgver=2.60.2
+pkgver=2.60.3
 pkgrel=1
 pkgdesc='Network-related giomodules for glib'
 arch=(x86_64)
@@ -15,10 +15,15 @@ depends=(
   lib32-libproxy
 )
 makedepends=(
-  ca-certificates
   git
-  intltool
   meson
+  lib32-openssl
+)
+checkdepends=(
+  ca-certificates
+)
+optdepends=(
+  'lib32-openssl: Alternative backend'
 )
 source=(git+https://gitlab.gnome.org/GNOME/glib-networking.git#tag=${pkgver})
 sha256sums=('SKIP')
@@ -29,12 +34,16 @@ build() {
 
   arch-meson glib-networking build \
     --libdir=/usr/lib32 \
-    --libexecdir=/usr/lib32/glib-networking
+    -D openssl=enabled
   ninja -C build
 }
 
+check() {
+  meson test -C build --print-errorlogs
+}
+
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" meson install -C build
   rm -rf "${pkgdir}"/usr/{lib,share}
 }
 
