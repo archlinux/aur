@@ -1,6 +1,6 @@
 # Maintainer: Árni Daugr <arnidg@protonmail.ch>
 pkgname=futhark-git
-pkgver=0.10.2.r82.gcb04266f8
+pkgver=0.11.1.r1.g34b0ec388
 pkgrel=1
 pkgdesc='A data-parallel functional programming language'
 arch=('x86_64')
