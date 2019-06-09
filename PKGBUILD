@@ -8,7 +8,7 @@ pkgdesc="Pytest plugin for Qt (PyQt4, PyQt5 and PySide) application testing"
 arch=('i686' 'x86_64')
 url="https://pytest-qt.readthedocs.io/"
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-sphinx')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
 checkdepends=('python-pytest' 'python2-pytest' 'python-pyqt5' 'python2-pyqt5')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'correct_underline.patch')
