@@ -1,6 +1,6 @@
 # Maintainer: Victor <victor@xirion.net>
 pkgname=k9s-bin
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc='Kubernetes CLI To Manage Your Clusters In Style!'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/derailed/k9s'
 license=('Apache')
 provides=('k9s')
 source=("https://github.com/derailed/k9s/releases/download/${pkgver}/k9s_${pkgver}_Linux_x86_64.tar.gz")
-md5sums=('bf8174f48845d6bb61951da2ff9add55')
+md5sums=('3dd9ba4a7872319aa71602b53a31d6ea')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
