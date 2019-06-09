@@ -8,7 +8,7 @@ pkgdesc="An interactive astronomical 1D spectra analysis tool"
 arch=('i686' 'x86_64')
 url="https://specviz.readthedocs.io/"
 license=('BSD')
-makedepends=('python-setuptools' 'python-pytest' 'python-pyqtgraph' 'python-astropy>=3.1' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy')
+makedepends=('python-setuptools' 'python-pytest' 'python-pyqtgraph' 'python-astropy>=3.1' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy' 'python-sphinx_rtd_theme')
 checkdepends=('python-qtawesome' 'python-click' 'python-asteval' 'python-specutils' 'python-pytest-qt' 'python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('d59bee1575057390719f9db69191ccc6')
