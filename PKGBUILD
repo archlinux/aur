@@ -1,4 +1,4 @@
-# Maintainer: Alexandre Moine < nobrakal at cthugha dot org >
+# Maintainer: Alexandre Moine < nobrakal at moine dot org >
 # Contributor: Tasos Latsas < tlatsas2000 at gmail dot com >
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: arjan <arjan@archlinux.org>
@@ -7,10 +7,10 @@
 
 pkgname=tuxmath
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An arcade game that helps kids practice their math facts"
 arch=('i686' 'x86_64')
-url="http://tux4kids.alioth.debian.org/tuxmath/"
+url="https://github.com/tux4kids/tuxmath/"
 license=('GPL' 'custom:OFL' 'custom')
 depends=('t4kcommon')
 makedepends=('make')

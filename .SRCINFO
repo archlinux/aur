@@ -1,8 +1,8 @@
 pkgbase = tuxmath
 	pkgdesc = An arcade game that helps kids practice their math facts
 	pkgver = 2.0.3
-	pkgrel = 2
-	url = http://tux4kids.alioth.debian.org/tuxmath/
+	pkgrel = 3
+	url = https://github.com/tux4kids/tuxmath/
 	arch = i686
 	arch = x86_64
 	license = GPL
