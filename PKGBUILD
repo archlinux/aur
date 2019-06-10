@@ -4,15 +4,14 @@
 pkgname=memsource-editor
 _pkg=MemsourceEditor
 pkgver=6.230.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A CAT translation tool, requires Memsource subscription"
 arch=('x86_64')
 license=('custom')
 url="http://www.memsource.com/"
 install=${pkgname}.install
 
-depends=('qt4'
-         'bzip2'
+depends=('bzip2'
          'libsm'
          'libx11'
          'libxrender'
