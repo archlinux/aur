@@ -2,7 +2,7 @@
 
 pkgname=system76-driver-git
 pkgver=19.04.8.r2.g12fc202
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -45,13 +45,13 @@ sha256sums=('SKIP'
             '20c9ee9420fd23cd719dfb8a35cb57c434df0d7e6a1ca8c79c8b900eec2f3dd0')
 
 pkgver() {
-	cd ${pkgname}
+	cd "${srcdir}/${pkgname}"
 
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd ${pkgname}
+	cd "${srcdir}/${pkgname}"
 
 	# patch for cli version - enable override vendor/model via /etc/system76-daemon.json
 	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/cli.patch
@@ -64,21 +64,19 @@ prepare() {
 
 	# Use xhost for GUI apps on Wayland
 	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/wayland.patch
-
-    # Fix-up location paths
-    find . -type f -exec sed -i -re "s|/usr/lib/system76-driver/|/usr/lib/system76-driver-git/|g" "{}" \;
 }
 
 package() {
-    cd ${pkgname}
+	cd "${srcdir}/${pkgname}"
 
 	# Build and install base package
 	python setup.py install --prefix=/usr --root=${pkgdir} --optimize=1
 
 	# Install daemons and executables
-	install -m755 -D system76-daemon ${pkgdir}/usr/lib/${pkgname}/system76-daemon
-	install -m755 -D system76-backlight-daemon ${pkgdir}/usr/lib/${pkgname}/system76-backlight-daemon
-	install -m755 -D system76-firmware-dialog ${pkgdir}/usr/lib/${pkgname}/system76-firmware-dialog
+	install -m755 -D system76-daemon ${pkgdir}/usr/lib/system76-driver/system76-daemon
+	install -m755 -D system76-backlight-daemon ${pkgdir}/usr/lib/system76-driver/system76-backlight-daemon
+	install -m755 -D system76-firmware-dialog ${pkgdir}/usr/lib/system76-driver/system76-firmware-dialog
+
 	install -m755 -D system76-driver-pkexec ${pkgdir}/usr/bin/system76-driver-pkexec
 	install -m755 -D system76-firmware ${pkgdir}/usr/bin/system76-firmware
 	install -m755 -D system76-firmware-pkexec ${pkgdir}/usr/bin/system76-firmware-pkexec
@@ -89,7 +87,7 @@ package() {
 	install -m644 -D debian/system76-driver-backlight.service ${pkgdir}/usr/lib/systemd/user/system76-backlight.service
 
 	# Install scripts and configuration
-	install -m755 -D system76-nm-restart ${pkgdir}/usr/lib/${pkgname}/system76-nm-restart
+	install -m755 -D system76-nm-restart ${pkgdir}/usr/lib/system76-driver/system76-nm-restart
 	install -m644 -D com.system76.pkexec.system76-driver.policy ${pkgdir}/usr/share/polkit-1/actions/com.system76.pkexec.system76-driver.policy
 	install -m644 -D com.system76.pkexec.system76-firmware.policy ${pkgdir}/usr/share/polkit-1/actions/com.system76.pkexec.system76-firmware.policy
 
@@ -98,9 +96,8 @@ package() {
 	install -m644 -D system76-firmware.desktop ${pkgdir}/usr/share/applications/system76-firmware.desktop
 
 	# Create /var/lib/system76-driver directory for brightness settings saving
-	install -m755 -d ${pkgdir}/var/lib/${pkgname}
+	install -m755 -d ${pkgdir}/var/lib/system76-driver
 
 	# Clean up
 	rm -rf ${pkgdir}/usr/lib/python*/site-packages/system76driver/{__pycache__,tests}
 }
-
