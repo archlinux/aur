@@ -30,13 +30,14 @@ sha512sums=('SKIP'
 
 prepare() {
     cd "$srcdir/$pkgname/hub"
+
     npm --cache "${srcdir}/npm-cache" install
 }
 
 build() {
-    export NODE_ENV="production"
-
     cd "$srcdir/$pkgname/hub"
+
+    export NODE_ENV="production"
     npm run build
 }
 
