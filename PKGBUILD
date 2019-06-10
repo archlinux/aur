@@ -4,7 +4,7 @@
 pkgname=cpuminer-multi
 _commit=6d51b16863064e2d42bc87f2ad6ccee30a454102
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-algo CPUMiner & Reference Cryptonote Miner (JSON-RPC 2.0)'
 arch=('x86_64')
 url="https://github.com/tpruvot/$pkgname"
@@ -20,6 +20,7 @@ build() {
   #cd "$pkgname-$pkgver-multi"
   cd "$pkgname-$_commit"
 
+  CFLAGS+=' -Wa,--noexecstack'
   ./autogen.sh
   ./configure --prefix=/usr --with-crypto --with-curl
   make
