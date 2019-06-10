@@ -1,12 +1,12 @@
 pkgbase = nvidia-utils-beta
 	pkgdesc = NVIDIA drivers utilities (beta version)
 	pkgver = 430.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://download.nvidia.com/XFree86/Linux-430.14/430.14/NVIDIA-Linux-x86_64-430.14-no-compat32.run
+	source = https://download.nvidia.com/XFree86/Linux-x86_64/430.14/NVIDIA-Linux-x86_64-430.14-no-compat32.run
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils-beta.sysusers
 	source = nvidia-utils-beta-change-vulkan-driver-path.patch
