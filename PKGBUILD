@@ -33,6 +33,7 @@ build() {
 package() {
     cd "$_gitname"
     make PREFIX=/usr DESTDIR="$pkgdir" install
+    mkdir -p "$pkgdir/usr/share/$pkgname"
     cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
     chmod -R 777 "$pkgdir/usr/share/$pkgname"
     chmod +x "$pkgdir/usr/share/$pkgname/scripts/dwm-status"
