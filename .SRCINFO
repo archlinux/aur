@@ -1,0 +1,19 @@
+pkgbase = python-efm8boot
+	pkgdesc = library for writing to efm8 factory bootloader
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/ahtn/python-efm8boot
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-easyhid
+	depends = python-intelhex
+	depends = python-crcmod
+	provides = python-efm8boot
+	conflicts = python-efm8boot
+	source = python-efm8boot-0.0.8.tar.gz::https://github.com/ahtn/python-efm8boot/archive/0.0.8.tar.gz
+	sha512sums = b12bde82331a2a4f0e23e62b473eb68c4968e6fa6f3081ea944fd59ef523c69e6c7cde210277e84cb00d45068a6146bbdc88cda38930e0dde9283acbf54eab88
+
+pkgname = python-efm8boot
+
