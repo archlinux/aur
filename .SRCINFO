@@ -1,14 +1,14 @@
 pkgbase = nuovext-icon-theme
 	pkgdesc = nuoveXT2 icon theme
 	pkgver = 0.1.0
-	pkgrel = 1
-	url = https://github.com/redtide/nuovext-icon-theme
+	pkgrel = 2
+	url = https://github.com/redtide/icon-theme-nuovext
 	install = nuovext-icon-theme.install
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = gtk-update-icon-cache
-	source = git://github.com/redtide/nuovext-icon-theme.git
+	source = git://github.com/redtide/icon-theme-nuovext.git
 	md5sums = SKIP
 
 pkgname = nuovext-icon-theme
