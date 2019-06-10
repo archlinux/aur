@@ -13,7 +13,7 @@ depends=()
 makedepends=("git" "gcc")
 
 source=("${_pkgname}::git+https://github.com/aioobe/eta.git")
-sha512sums=("SKIP")
+sha512sums=('SKIP')
 
 
 pkgver() {
