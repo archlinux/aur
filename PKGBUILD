@@ -3,7 +3,7 @@
 
 _gitname=default-settings
 _author=elementary
-pkgname=pantheon-session
+pkgname=pantheon-default-settings
 pkgver=5.1.0
 pkgrel=1
 pkgdesc="Default settings for Pantheon"

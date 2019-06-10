@@ -1,4 +1,4 @@
-pkgbase = pantheon-session
+pkgbase = pantheon-default-settings
 	pkgdesc = Default settings for Pantheon
 	pkgver = 5.1.0
 	pkgrel = 1
@@ -13,8 +13,8 @@ pkgbase = pantheon-session
 	depends = ttf-opensans
 	provides = default-settings
 	conflicts = default-settings-git
-	source = pantheon-session-5.1.0.tar.gz::https://github.com/elementary/default-settings/archive/5.1.0.tar.gz
+	source = pantheon-default-settings-5.1.0.tar.gz::https://github.com/elementary/default-settings/archive/5.1.0.tar.gz
 	md5sums = f67cf1db96f7e97450480f056908c56a
 
-pkgname = pantheon-session
+pkgname = pantheon-default-settings
 
