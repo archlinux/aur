@@ -2,8 +2,8 @@
 
 _pkgname=bumblebee-status
 pkgname=bumblebee-status-git
-pkgver=r752.1a507ec
-pkgrel=2
+pkgver=r1093.210075f
+pkgrel=1
 pkgdesc="A modular, theme-able status line generator for the i3 window manager."
 arch=('any')
 url="https://github.com/tobi-wan-kenobi/bumblebee-status"
@@ -25,7 +25,8 @@ optdepends=('xorg-xbacklight: To display a displays brightness'
     'mpc: Control a MPD instance'
     'dbus: Dependency of the bluetooth module'
     'bluez: Dependency of the bluetooth module'
-    'blueman: Dependency of the bluetooth module')
+    'blueman: Dependency of the bluetooth module'
+    'python-pytz: Dependency of the datetimetz/datetz/timetz module')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
