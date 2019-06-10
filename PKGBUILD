@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mesa
-pkgver=19.0.5
+pkgver=19.0.6
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-dlfcn' 'mingw-w64-llvm')
 options=('staticlibs' '!strip' '!buildflags')
 validpgpkeys=('71C4B75620BC75708B4BDB254C95FAAB3EB073EC') # Dylan Baker <dylan@pnwbakers.com>
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig} mingw-posix.patch)
-sha256sums=('6aecb7f67c136768692fb3c33a54196186c6c4fcafab7973516a355e1a54f831' SKIP SKIP)
+sha256sums=('2db2f2fcaa4048b16e066fad76b8a93944f7d06d329972b0f5fd5ce692ce3d24' SKIP SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-mesa
 	pkgdesc = An open-source implementation of the OpenGL specification (mingw-w64)
-	pkgver = 19.0.5
+	pkgver = 19.0.6
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = any
@@ -13,11 +13,11 @@ pkgbase = mingw-w64-mesa
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = https://mesa.freedesktop.org/archive/mesa-19.0.5.tar.xz
-	source = https://mesa.freedesktop.org/archive/mesa-19.0.5.tar.xz.sig
+	source = https://mesa.freedesktop.org/archive/mesa-19.0.6.tar.xz
+	source = https://mesa.freedesktop.org/archive/mesa-19.0.6.tar.xz.sig
 	source = mingw-posix.patch
 	validpgpkeys = 71C4B75620BC75708B4BDB254C95FAAB3EB073EC
-	sha256sums = 6aecb7f67c136768692fb3c33a54196186c6c4fcafab7973516a355e1a54f831
+	sha256sums = 2db2f2fcaa4048b16e066fad76b8a93944f7d06d329972b0f5fd5ce692ce3d24
 	sha256sums = SKIP
 	sha256sums = SKIP
 
