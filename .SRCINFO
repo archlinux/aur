@@ -1,0 +1,15 @@
+pkgbase = linggle-git
+	pkgdesc = A CLI tool of Linggle implemented in rust.
+	pkgver = r11.acf52f6
+	pkgrel = 1
+	url = https://github.com/OIdiotLin/linggle-rust
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/OIdiotLin/linggle-rust.git
+	md5sums = SKIP
+
+pkgname = linggle-git
+
