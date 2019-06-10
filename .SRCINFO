@@ -1,13 +1,13 @@
 pkgbase = ntag
-pkgdesc = Audio file tag editor, created with JavaFX
-pkgver = 1.1.2
-pkgrel = 1
-url = https://github.com/nrittsti/ntag
-arch = x86_64
-license = GPL3
-depends = jre-openjdk
-source = https://github.com/nrittsti/ntag/releases/download/v1.1.2/ntag-1.1.2-linux_bin.tar.gz
-md5sums = f53cb7f61aba5822daa20d6e80f3110b
+	pkgdesc = Audio file tag editor, created with JavaFX
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/nrittsti/ntag
+	arch = x86_64
+	license = GPL3
+	depends = jre-openjdk
+	source = https://github.com/nrittsti/ntag/releases/download/v1.2.0/ntag-1.2.0-linux_bin.tar.gz
+	md5sums = a4b079a9aa884ef35bac6da03fdd4361
 
 pkgname = ntag
 
