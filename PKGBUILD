@@ -74,14 +74,12 @@ depends=(
 	'wingpanel-indicator-bluetooth'
 	'wingpanel-indicator-datetime'
 	'wingpanel-indicator-keyboard'
-	'wingpanel-indicator-network'
-	'wingpanel-indicator-nightlight'
+	'wingpanel-indicator-network'	
 	'wingpanel-indicator-notifications'
 	'wingpanel-indicator-power'
-	'wingpanel-indicator-privacy'
 	'wingpanel-indicator-session'
 	'wingpanel-indicator-sound')
-optdepends=()
+optdepends=('wingpanel-indicator-a11y' 'wingpanel-indicator-nightlight' 'wingpanel-indicator-privacy')
 makedepends=('git' 'meson' 'ninja' 'vala>=0.40.3-1')
 provides=("${pkgname}")
 conflicts=('pantheon-meta')

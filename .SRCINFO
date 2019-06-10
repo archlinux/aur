@@ -75,12 +75,13 @@ pkgbase = pantheon-meta
 	depends = wingpanel-indicator-datetime
 	depends = wingpanel-indicator-keyboard
 	depends = wingpanel-indicator-network
-	depends = wingpanel-indicator-nightlight
 	depends = wingpanel-indicator-notifications
 	depends = wingpanel-indicator-power
-	depends = wingpanel-indicator-privacy
 	depends = wingpanel-indicator-session
 	depends = wingpanel-indicator-sound
+	optdepends = wingpanel-indicator-a11y
+	optdepends = wingpanel-indicator-nightlight
+	optdepends = wingpanel-indicator-privacy
 	provides = pantheon-meta
 	conflicts = pantheon-meta
 
