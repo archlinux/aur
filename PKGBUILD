@@ -17,22 +17,13 @@ conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 md5sums=("eed62f6670d8b34c16d54a3713ee2fea")
 
-prepare() {
-  cd "${srcdir}/${_gitname}-${pkgver}"
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
-}
-
 build() {
-  cd "${_gitname}-${pkgver}/build"
-  arch-meson ../"${_gitname}-${pkgver}"
-  ninja
+    cd "${_gitname}-${pkgver}/"
+    meson . _build --prefix=/usr
+    ninja -C _build
 }
 
 package() {
-  cd "${_gitname}-${pkgver}/build"
-
-  DESTDIR="${pkgdir}" ninja install
+    cd "${_gitname}-${pkgver}/"
+    DESTDIR="${pkgdir}" ninja -C _build install
 }
