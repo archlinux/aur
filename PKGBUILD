@@ -38,7 +38,7 @@ depends=(
 	'pantheon-polkit-agent'
 	'pantheon-print'
 	'pantheon-screenshot'
-	'pantheon-session-git'
+	'pantheon-session'
 	'pantheon-shortcut-overlay'
 	'pantheon-terminal'
 	'pantheon-videos'
