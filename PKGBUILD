@@ -1,9 +1,9 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildstream-git
-pkgver=1.3.0+1528+g174f5394
+pkgver=1.3.0+2341+g9a5cca34
 pkgrel=1
 pkgdesc="Framework for modelling build pipelines in a declarative YAML format"
-arch=('any')
+arch=('x86_64')
 url="https://wiki.gnome.org/Projects/BuildStream/"
 license=('LGPL')
 depends=(bubblewrap ostree python-click python-jinja
@@ -12,7 +12,7 @@ depends=(bubblewrap ostree python-click python-jinja
          python-ruamel-yaml0.15.51 python-ujson
          # specific host site dependencies
          bzr git lzip python-arpy)
-makedepends=(python-setuptools git)
+makedepends=(python-setuptools cython git)
 provides=('buildstream')
 conflicts=('buildstream')
 source=("git+https://gitlab.com/BuildStream/buildstream.git")

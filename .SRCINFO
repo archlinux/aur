@@ -1,11 +1,12 @@
 pkgbase = buildstream-git
 	pkgdesc = Framework for modelling build pipelines in a declarative YAML format
-	pkgver = 1.3.0+1528+g174f5394
+	pkgver = 1.3.0+2341+g9a5cca34
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/BuildStream/
-	arch = any
+	arch = x86_64
 	license = LGPL
 	makedepends = python-setuptools
+	makedepends = cython
 	makedepends = git
 	depends = bubblewrap
 	depends = ostree
