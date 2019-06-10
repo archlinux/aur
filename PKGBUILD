@@ -1,4 +1,6 @@
 # Maintainer: David Birks <david@tellus.space>
+# Contributor: Victor Demonchy <demonchy.v@gmail.com>
+# Contributor: Wael Nasreddine <wael.nasreddine@gmail.com>
 
 pkgname=kubetail
 pkgver=1.6.8
