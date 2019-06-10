@@ -1,4 +1,5 @@
 # Maintainer: David Birks <david@tellus.space>
+# Contributor: David Stark <david@starkers.org>
 
 pkgname=dive
 pkgver=0.7.2
