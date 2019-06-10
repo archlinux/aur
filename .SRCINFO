@@ -1,0 +1,14 @@
+pkgbase = protondb-to-steam-library-git
+	pkgdesc = Pull ratings from ProtonDB and import them into your Steam library as tags.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/CorruptComputer/ProtonDB-to-Steam-Library
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-vdf
+	source = git+https://github.com/CorruptComputer/ProtonDB-to-Steam-Library.git
+	md5sums = SKIP
+
+pkgname = protondb-to-steam-library-git
+
