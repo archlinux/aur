@@ -1,7 +1,7 @@
 pkgbase = cpuminer-opt
 	pkgdesc = Optimized multi-algo CPU miner
 	pkgver = 3.9.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JayDDee/cpuminer-opt
 	arch = x86_64
 	license = GPL

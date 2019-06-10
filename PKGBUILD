@@ -2,7 +2,7 @@
 
 pkgname=cpuminer-opt
 pkgver=3.9.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Optimized multi-algo CPU miner'
 arch=('x86_64')
 url='https://github.com/JayDDee/cpuminer-opt'
@@ -16,6 +16,7 @@ sha256sums=('bb36f0ba970b876ac1e4f17297f08e8aeaf66758324e22cfa9a330c0e107ccf1')
 build() {
   cd "$pkgname-$pkgver"
 
+  CFLAGS+=' -Wa,--noexecstack'
   ./autogen.sh
   ./configure --prefix=/usr --with-crypto --with-curl
   make
