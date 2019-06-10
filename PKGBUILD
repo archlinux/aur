@@ -1,8 +1,8 @@
 # Maintainer: jem <jem ΑΤ seethis DΟΤ link>
 pkgname=keyplusd-git
 _gitname=keyplus
-pkgver=v0.2.0.beta.r407.g37c9804
-pkgrel=3
+pkgver=0.3.3.r77.gb9cc778
+pkgrel=1
 epoch=
 pkgdesc="keyboard remapping tool that emulates keyplus firmware"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ validpgpkeys=()
 
 pkgver() {
     cd $_gitname
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --match "*.*.*" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
