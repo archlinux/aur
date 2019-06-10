@@ -1,7 +1,7 @@
 # Maintainer: Tinu Weber <http://ayekat.ch>
 
 pkgname=makemetapkg
-pkgver=0.7.8
+pkgver=0.8
 pkgrel=1
 arch=(any)
 
@@ -14,7 +14,7 @@ license=(GPL3)
 # https://gitlab.com/ayekat/PKGBUILDs/tree/pacman-hacks
 conflicts=(remakepkg)
 
-depends=(coreutils sed)
+depends=(coreutils)
 makedepends=(asciidoc git)
 
 changelog='changelog'
@@ -26,18 +26,14 @@ _tools='makemetapkg metapkg'
 
 build() {
   cd pacman-hacks
-  make clean
-  make PREFIX=/usr SCRIPTS="$_tools" MANPAGES="$_tools"
+  make \
+    PREFIX=/usr \
+    SCRIPTS="$_tools" \
+    MANPAGES="$_tools"
 }
 
 package() {
-  # Remark: Since makemetapkg ends up calling makepkg at some point, the
-  # upstream author assumes that everything necessary for running makepkg is
-  # installed (i.e. the base-devel group). Since we cannot depend on base-devel
-  # directly (since it's only a group), but to avoid having to list everything
-  # in that group explicitly here, we just take a wild guess about which
-  # packages in base-devel we REALLY need:
-  depends+=(bash fakeroot pacman sh)
+  depends+=(bash fakeroot pacman sed sh)
 
   cd pacman-hacks
   make \

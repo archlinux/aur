@@ -1,6 +1,6 @@
 pkgbase = makemetapkg
 	pkgdesc = Create meta-packages for pacman
-	pkgver = 0.7.8
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://gitlab.com/ayekat/pacman-hacks
 	changelog = changelog
@@ -9,16 +9,15 @@ pkgbase = makemetapkg
 	makedepends = asciidoc
 	makedepends = git
 	depends = coreutils
-	depends = sed
 	conflicts = remakepkg
-	source = git+https://gitlab.com/ayekat/pacman-hacks.git#tag=v0.7.8
+	source = git+https://gitlab.com/ayekat/pacman-hacks.git#tag=v0.8
 	sha256sums = SKIP
 
 pkgname = makemetapkg
 	depends = coreutils
-	depends = sed
 	depends = bash
 	depends = fakeroot
 	depends = pacman
+	depends = sed
 	depends = sh
 
