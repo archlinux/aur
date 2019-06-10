@@ -1,0 +1,11 @@
+diff -Naurp a/validate/tests/check/Makefile.am b/validate/tests/check/Makefile.am
+--- a/validate/tests/check/Makefile.am	2019-06-09 21:10:54.000000000 +0000
++++ b/validate/tests/check/Makefile.am	2019-06-09 21:13:08.665217590 +0000
+@@ -27,7 +27,6 @@ SUPPRESSIONS = $(top_srcdir)/common/gst.
+ clean-local: clean-local-check
+ 
+ check_PROGRAMS = \
+-	validate/padmonitor \
+ 	validate/monitoring \
+ 	validate/reporting \
+ 	validate/overrides
