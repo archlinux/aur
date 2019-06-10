@@ -1,21 +1,21 @@
 # Maintainer: SaMaLerO <smlr[at]ukr[dot]net>
 # Co-Maintainer: McModder <aur @ modder.pw>
 pkgname=tlauncher
-pkgver=1.110.4
+pkgver=1.111.1
 pkgrel=1
 epoch=1
 pkgdesc='TLauncher is freeware launcher of Minecraft.'
 url='https://tlaun.ch'
-arch=('x86_64' 'i686')
+arch=('any')
 license=('GPLv3')
 depends=('java-runtime>=8' 'xorg-xrandr')
 #makedepends=('jq')
-#_checksum=$(curl -sL 'http://cdn.turikhay.ru/tlauncher/legacy_beta/bootstrap.json' | jq -r '.update.bootstrap.downloads.JAR.checksum')
+#_checksum=$(curl -sL 'https://cdn.turikhay.ru/tlauncher/legacy_beta/bootstrap.json' | jq -r '.update.bootstrap.downloads.JAR.checksum')
 _checksum='972758e1c5cad62861844a94f2830a14c7e795975108cd3d31de729285c53eb6' # mark out-of-date if you'll get 404
 # try to change repo if default sends 404
-source=(#"http://turikhay.ru/tlauncher/legacy_beta/bootstrap/${_checksum}.jar"
-        #"http://u.tlauncher.ru/legacy_beta/bootstrap/${_checksum}.jar"
-        "http://tlauncherrepo.com/legacy_beta/bootstrap/${_checksum}.jar"
+source=(#"https://turikhay.ru/tlauncher/legacy_beta/bootstrap/${_checksum}.jar"
+        #"https://u.tlauncher.ru/legacy_beta/bootstrap/${_checksum}.jar"
+        "https://tlauncherrepo.com/legacy_beta/bootstrap/${_checksum}.jar"
         'tlauncher.desktop'
         'tlauncher.install')
 noextract=("${_checksum}.jar")
