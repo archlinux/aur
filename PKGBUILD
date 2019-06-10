@@ -14,7 +14,7 @@ makedepends=("git")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}::git+https://gitlab.com/LionessAlana/${_pkgname}.git")
-sha512sums=("SKIP")
+sha512sums=('SKIP')
 
 
 pkgver() {
