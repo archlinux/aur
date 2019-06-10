@@ -98,7 +98,7 @@ _local_qt5_repo="${local_qt5_repo}"
 _pkgvermajmin="5.13"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="beta3"
+_dev_suffix="rc"
 pkgrel=1
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
@@ -288,6 +288,7 @@ fi
 #-journald \
 _core_configure_options=" \
                  -ltcg \
+                 -pkg-config \
                  -prefix ${_installprefix} \
                  -opengl ${_opengl_variant} \
                  -no-xcb \
@@ -310,7 +311,7 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-_tar_xz_sha256="0118ef63c69bc5265c4310e5ab262242eb8ec7160c54f2e5a619204982b10a9f"
+_tar_xz_sha256="5febada464e27908e03d3d177389060d89821ecc3a4ac684a28e389d570a8b4b"
 #_tar_xz_sha256="356f42d9087718f22f03d13d0c2cdfb308f91dc3cf0c6318bed33f2094cd9d6c"
 
 source=("git://github.com/sirspudd/mkspecs.git")
@@ -327,7 +328,7 @@ if ${_use_mesa}; then
   _profiled_gpu_fn=qpi-mesa.sh
   _additional_configure_flags="$_additional_configure_flags -gbm -kms"
 else
-  _additional_configure_flags="$_additional_configure_flags -no-gbm -no-kms"
+  _additional_configure_flags="$_additional_configure_flags -no-gbm"
   if $_building && ([[ -f ${__eglpkgconfigpath} ]] || [[ -f ${__glespkgconfigpath} ]]); then
     echo "Mesa is about to eat our communal poodle; delete egl.pc and glesv2.pc in your sysroot"
     exit 1
@@ -414,6 +415,10 @@ fi
   rm -Rf ${_bindir}
   mkdir -p ${_bindir}
   cd ${_bindir}
+
+  # Fuck debian multi-arch dead
+  export PKG_CONFIG_LIBDIR=${_sysroot}/usr/lib/$(${_toolchain}gcc -dumpmachine)/pkgconfig/:${_sysroot}/usr/lib/pkgconfig/
+  export PKG_CONFIG_SYSROOT_DIR=${_sysroot}
 
   # Too bleeding big
   # -developer-build \
