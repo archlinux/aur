@@ -1,0 +1,30 @@
+--- utils.cpp	2017-09-16 18:05:05.050328507 +0000
++++ utils.cpp	2017-09-16 18:22:49.796658537 +0000
+@@ -271,6 +271,7 @@
+ char* get_runtime_path() {
+   static char path[PATH_MAX];
+   static byte query = 1;
++  int len;
+ 
+   #ifdef __APPLE__
+     strcpy(path, "./");
+@@ -278,15 +279,12 @@
+   #endif
+ 
+   if(query) {
+-    if(readlink("/proc/self/exe", path, PATH_MAX ) <= 0) {
++    len = readlink("/proc/self/cwd", path, PATH_MAX);
++    if (len <= 0) {
+       return NULL;
+     }
+-    char* path_end = strrchr(path, '/');
+-    if(path_end == NULL) {
+-      return NULL;
+-    }
+-    path_end++;
+-    *path_end=0;
++    path[len] = '/';
++    path[len+1] = '\0';
+     query = 0;
+   }
+   return path;

@@ -1,0 +1,14 @@
+
+[Unit]
+Description=Firmware for OpenSprinkler on a Raspberry Pi
+After=network-online.target
+
+[Service]
+User=opensprinkler
+Group=opensprinkler
+WorkingDirectory=/var/lib/opensprinkler
+ExecStart=/usr/bin/opensprinkler
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

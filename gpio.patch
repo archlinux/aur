@@ -1,0 +1,10 @@
+--- gpio.cpp	2017-09-16 22:30:43.024838955 +0000
++++ gpio.cpp	2017-09-16 22:30:25.845324303 +0000
+@@ -244,6 +244,7 @@
+ 
+   if (1 != write(fd, &value_str[LOW==value?0:1], 1)) {
+     DEBUG_PRINT("failed to write value on pin ");
++    exit(1);
+   }
+ }
+ 

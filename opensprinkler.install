@@ -1,0 +1,10 @@
+post_install() {
+  systemd-sysusers opensprinkler.conf
+  mkdir -p /var/lib/opensprinkler/
+  chown -R opensprinkler:opensprinkler /var/lib/opensprinkler
+}
+
+post_remove() {
+  echo "Remember that the following directories aren't removed."
+  echo "  -> /var/lib/opensprinkler"
+}

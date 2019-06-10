@@ -1,0 +1,9 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!opensprinkler.install
+!opensprinkler.service
+!opensprinkler.sysusers
+!cwd.patch
+!gpio.patch
