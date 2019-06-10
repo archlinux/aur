@@ -8,11 +8,13 @@ pkgbase = clrmamepro
 	license = custom
 	makedepends = icoutils
 	depends = wine
+	depends = hicolor-icon-theme
+	depends = xdg-utils
 	source = https://mamedev.emulab.it/clrmamepro/binaries/cmp4035_32.zip
 	source = clrmamepro
 	source = clrmamepro.desktop
 	sha256sums = 3debfd1bdfa354e34863deca6097222e5c0b6313ac74c55112713ae6ac23c1a3
-	sha256sums = 466f1cd863e85915f8355463a1062e394296228b17cbdfe101357b3266b988f5
+	sha256sums = 497a4a5cfe5daf8ac576f8169e611c6433b73e5019a7a8e4b0a230e531f9cdc4
 	sha256sums = 8d92a074639a43cb5d7ed69df999d059dd81fca9f3967a58873db0acafb0d95b
 
 pkgname = clrmamepro
