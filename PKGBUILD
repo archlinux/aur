@@ -8,7 +8,8 @@ pkgdesc='Utilities for encoding and decoding binaries files in MIME format mail 
 arch=('i686' 'x86_64')
 url='http://ftp.andrew.cmu.edu/pub/mpack/'
 license=('GPL')
-source=("http://ftp.andrew.cmu.edu/pub/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+# Does upstream have a new home? No idea... Let's use an archive for now.
+source=("https://fossies.org/linux/misc/old/${pkgname}-${pkgver}.tar.gz"
 	'gcc4-fixes.patch')
 sha256sums=('274108bb3a39982a4efc14fb3a65298e66c8e71367c3dabf49338162d207a94c'
             '72cda1b1b2f28ab7d25dcefd03d8027711fd18c1bb9bf3b52eac36068f59b170')
