@@ -12,11 +12,9 @@ arch=(i686 x86_64)
 url="https://gmt.soest.hawaii.edu/"
 license=('LGPL')
 makedepends=('cmake' 'ninja')
-depends=('gdal' 'fftw' 'lapack')
+depends=('gdal' 'fftw' 'lapack' 'python-sphinx')
 optdepends=(
     'ghostscript'
-    'python-sphinx'
-    'python2-sphinx'
     'gmt-coast: coastlines'
     'gmt-dcw: digital chart of the world polygon map')
 conflicts=('gmt4' 'gmt')
