@@ -1,6 +1,6 @@
 # Maintainer: jem <jem ΑΤ seethis DΟΤ link>
 pkgname=keyplus-git
-pkgver=v0.2.0.beta.r408.g1aa7e81
+pkgver=0.3.3.r77.gb9cc778
 pkgrel=1
 epoch=
 pkgdesc="keyboard firmware library and tools"
@@ -36,7 +36,7 @@ _srcdir="keyplus/host-software"
 
 pkgver() {
     cd $_srcdir
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --match "*.*.*" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

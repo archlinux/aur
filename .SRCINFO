@@ -1,6 +1,6 @@
 pkgbase = keyplus-git
 	pkgdesc = keyboard firmware library and tools
-	pkgver = v0.2.0.beta.r408.g1aa7e81
+	pkgver = 0.3.3.r77.gb9cc778
 	pkgrel = 1
 	url = https://github.com/ahtn/keyplus/
 	arch = any
