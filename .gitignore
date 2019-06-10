@@ -1,0 +1,5 @@
+pkg
+src
+libsqrl
+*~
+*.tar.xz

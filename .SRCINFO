@@ -1,0 +1,18 @@
+pkgbase = libsqrl-git
+	pkgdesc = A SQRL Authentication library
+	pkgver = 20180430.135f6ba
+	pkgrel = 1
+	url = https://github.com/Novators/libsqrl
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = uriparser
+	depends = libsodium
+	provides = libsqrl
+	conflicts = libsqrl
+	source = git+https://github.com/Novators/libsqrl.git
+	md5sums = SKIP
+
+pkgname = libsqrl-git
+
