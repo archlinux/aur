@@ -1,6 +1,6 @@
 pkgbase = dprox
 	pkgdesc = a lightweight DNS proxy server, compatible with dnsmasq-china-list
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/bjin/dprox
 	arch = x86_64
@@ -16,10 +16,8 @@ pkgbase = dprox
 	depends = haskell-streaming-commons
 	depends = haskell-unordered-containers
 	optdepends = dnsmasq-china-list-git: configuration file for easy deployment
-	source = https://hackage.haskell.org/packages/archive/dprox/0.1.0/dprox-0.1.0.tar.gz
-	source = dprox.service
-	sha512sums = 3573683851e2451061842de95b6847160f2d967648aa0c47ae0b57600a5012f1f6357b0a91343a1dcb4d0aca1b883086da02d6d113b56de8e5aef2c971158c58
-	sha512sums = 41c31e1f575175a06c541a1bb730af90a06a151ac718fe6ccac64baf3043527a4a13124fadbe3b9a20b8760f211320de210cb5596dad57bed8c0d01574d4af06
+	source = https://hackage.haskell.org/packages/archive/dprox/0.1.1/dprox-0.1.1.tar.gz
+	sha512sums = b17a0cb16fe3d4f2cd18c72c9befccd5908db501d7623221742435e6a241c94e17e27c346556b73e5b57eca02ca68cb46a63c579312b65b94fc87b5b71488973
 
 pkgname = dprox
 
