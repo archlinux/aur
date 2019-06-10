@@ -1,6 +1,6 @@
 pkgbase = drill-search-gtk-bin
 	pkgdesc = Search files without indexing, but clever crawling (GTK version)
-	pkgver = 1.209
+	pkgver = 1.213
 	pkgrel = 1
 	url = https://www.drill.santamorena.me/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = drill-search-gtk-bin
 	depends = gtk3
 	provides = drill-search-gtk-bin
 	conflicts = drill-search-gtk-bin
-	source = https://github.com/yatima1460/Drill/releases/download/1.209/Drill-ui-linux-1.209-x86_64.deb
-	md5sums = 819843cf4d3192c0832dde417d27547c
+	source = https://github.com/yatima1460/Drill/releases/download/1.213/Drill-ui-linux-1.213-x86_64.deb
+	md5sums = 85bbf83542504f95eb50d2f00bdc4418
 
 pkgname = drill-search-gtk-bin
 
