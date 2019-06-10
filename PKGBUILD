@@ -13,7 +13,7 @@ license=("GPL")
 depends=("yakuake")
 
 source=("https://github.com/noahadvs/yakuake-breeze_perfect_dark/archive/v${pkgver}.tar.gz")
-sha512sums=("383f330f0ac01cf7d348c543bf5c4e951b4d444b761940e863f3ca7afd4be5960ca91b170186207f55dc9ca5419a9f3a1928a473bc5955be7e80b6ef4c8da77a")
+sha512sums=('383f330f0ac01cf7d348c543bf5c4e951b4d444b761940e863f3ca7afd4be5960ca91b170186207f55dc9ca5419a9f3a1928a473bc5955be7e80b6ef4c8da77a')
 
 
 prepare() {
