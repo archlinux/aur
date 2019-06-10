@@ -20,7 +20,7 @@ optdepends=('pantheon-default-settings')
 provides=("${_gitname}")
 conflicts=("${_gitname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=("88abf99e0feffe27c9f92a5ec218c408")
+md5sums=("acba82053719804cf5751e27c36ab26b")
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"

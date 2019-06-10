@@ -22,7 +22,7 @@ pkgbase = pantheon-session
 	provides = session-settings
 	conflicts = session-settings-git
 	source = pantheon-session-5.0.3.tar.gz::https://github.com/elementary/session-settings/archive/5.0.3.tar.gz
-	md5sums = 88abf99e0feffe27c9f92a5ec218c408
+	md5sums = acba82053719804cf5751e27c36ab26b
 
 pkgname = pantheon-session
 
