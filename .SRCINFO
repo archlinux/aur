@@ -1,13 +1,13 @@
-pkgbase = shiftpressed
-	pkgdesc = Detect if shift is pressed in the console
+pkgbase = shift-not-pressed
+	pkgdesc = Detect if shift is NOT pressed in the console
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://aur.archlinux.org/packages/shiftpressed
+	url = https://aur.archlinux.org/packages/shift-not-pressed
 	arch = any
 	license = custom:Public Domain
 	makedepends = gcc
-	source = shiftpressed.c
-	sha256sums = f0c5327edf12f63eb74fe6a88928eb926664338eb7da60c8ebce80aabccb3645
+	source = shift-not-pressed.c
+	sha256sums = 7191bd1b8632c877d4473735d60196b6709c1bb26336065b9fd4ba4cb4ce8184
 
-pkgname = shiftpressed
+pkgname = shift-not-pressed
 

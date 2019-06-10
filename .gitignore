@@ -1,5 +1,5 @@
 *
 !PKGBUILD
-!shiftpressed.c
+!shift-not-pressed.c
 !.gitignore
 !.SRCINFO
