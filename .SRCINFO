@@ -1,13 +1,13 @@
 pkgbase = vegeta-bin
 	pkgdesc = Vegeta is a versatile HTTP load testing tool built out of a need to drill HTTP services with a constant request rate. It can be used both as a command line utility and a library.
-	pkgver = 12.4.0
+	pkgver = 12.5.0
 	pkgrel = 1
 	url = https://github.com/tsenart/vegeta
 	arch = x86_64
 	license = MIT
-	source = vegeta-12.4.0-linux-amd64.tar.gz::https://github.com/tsenart/vegeta/releases/download/cli/v12.4.0/vegeta-12.4.0-linux-amd64.tar.gz
+	source = vegeta-12.5.0-linux-amd64.tar.gz::https://github.com/tsenart/vegeta/releases/download/cli/v12.5.0/vegeta-12.5.0-linux-amd64.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/tsenart/vegeta/master/LICENSE
-	sha256sums = 2aec62d8da42197ec48354ec16290235ae6a9ec1d7399b34b4524159f4e3724c
+	sha256sums = 7ef06962edeb993229fc2e48cafb48d5902e88819626320be71828f4bf38b5c9
 	sha256sums = 374db7067e9e238a74a5c3d25d9f17d5a6fb885e4b6392897ceffcabb274fd7c
 
 pkgname = vegeta-bin
