@@ -2,17 +2,17 @@
 # Contributor: sebfry <sebfry -at- gmail -dot- com>
 
 pkgname=python-pyqtchart
-pkgver=5.11.3
-pkgrel=2
+pkgver=5.12
+pkgrel=1
 pkgdesc="Python bindings for the Qt Charts library"
 url="https://www.riverbankcomputing.com/software/pyqtchart/"
 depends=('python-pyqt5' 'qt5-charts' 'sip')
 license=('GPL3')
 arch=('i686' 'x86_64')
 source=(
-    "https://sourceforge.net/projects/pyqt/files/PyQtChart/PyQtChart-$pkgver/PyQtChart_gpl-$pkgver.tar.gz"
+    "https://www.riverbankcomputing.com/static/Downloads/PyQtChart/$pkgver/PyQtChart_gpl-$pkgver.tar.gz"
 )
-sha256sums=('89abf5e48c79c4db42a01f80433bb97d64b117f801be5e4cb0b9839efc99472f')
+sha256sums=('aceac6a09f81dfb1a58bb571ac87ce5284237b1204c4030f63ab6bab273bc0d7')
 
 
 build() {
