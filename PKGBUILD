@@ -2,7 +2,7 @@
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
 
 pkgname=mod_jk
-pkgver=1.2.43
+pkgver=1.2.46
 pkgrel=1
 pkgdesc="The Apache Tomcat Connector"
 arch=('i686' 'x86_64')
@@ -25,5 +25,5 @@ package() {
 	install -m755 apache-2.0/mod_jk.so $pkgdir/usr/lib/httpd/modules
 }
 
-sha1sums=('04136649eca7ea42a31564021a7f8959dbcb9822')
-sha512sums=('eee06e5eaadd237aa98cd0f6a15c4d8f96edb3b4d8b6b8d9cbdd91abc6b89b50aa75132d76b87791d1800b904d84aea03bafabbe5697541e5ec66bf07cc507f4')
+sha1sums=('a18c3a8a218d11ea220e6f8a9ae3cdd89dd96e1e')
+sha512sums=('3d8e1bdb9c2e0753366242ade47cc986a2fee496f51430acd6837d6a1dbca3b0f7557b8b45dc18f77200bb22a9ec454f48a523a5717022a7316ec448d26bd158')
