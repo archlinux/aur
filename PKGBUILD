@@ -6,7 +6,6 @@ pkgver=r40.7ad1275
 pkgrel=1
 pkgdesc="A super-minimal info script written in bash"
 arch=("any")
-
 url="https://gitlab.com/LionessAlana/aurafetch"
 license=("GPL3")
 
@@ -14,14 +13,13 @@ depends=("xorg-xprop" "grep" "awk")
 makedepends=("git")
 conflicts=("${_pkgname}")
 
-source=(
-    "${_pkgname}::git+https://gitlab.com/LionessAlana/${_pkgname}.git"
-)
-sha512sums=(
-    "SKIP"
-)
+source=("${_pkgname}::git+https://gitlab.com/LionessAlana/${_pkgname}.git")
+sha512sums=("SKIP")
+
+
 pkgver() {
     cd "${_pkgname}"
+
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
