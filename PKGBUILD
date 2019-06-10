@@ -1,4 +1,6 @@
 # Maintainer: David Birks <david@tellus.space>
+# Contributor: Simon Doppler (dopsi) <dop.simon@gmail.com>
+# Contributor: dpeukert
 
 pkgname=marktext
 pkgver=0.14.0
