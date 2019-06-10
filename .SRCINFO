@@ -1,0 +1,21 @@
+pkgbase = pantheon-print
+	pkgdesc = Simple shim for printing support via Contractor
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/elementary/print
+	arch = any
+	groups = pantheon-stable
+	license = GPL3
+	depends = cairo
+	depends = contractor
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = pango
+	provides = pantheon-print
+	conflicts = pantheon-print-git
+	source = pantheon-print-0.1.3.tar.gz::https://github.com/elementary/print/archive/0.1.3.tar.gz
+	md5sums = eed62f6670d8b34c16d54a3713ee2fea
+
+pkgname = pantheon-print
+
