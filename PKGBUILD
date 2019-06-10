@@ -1,6 +1,6 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 pkgname=amdvlk
-pkgver=2019.Q2.4
+pkgver=2019.Q2.5
 pkgrel=1
 pkgdesc='AMDVLK - AMD Open Source Driver for Vulkan®'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('vulkan-icd-loader')
 conflicts=('amdvlk-git' 'amdvlk-deb' 'vulkan-amdgpu-pro' 'amdgpu-pro-vulkan')
 provides=('amdvlk' 'vulkan-driver')
 source=(https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-${pkgver}/amdvlk_${pkgver}_amd64.deb)
-sha256sums=('050121b1ba01054aeca36cde01dc81ff3b35159dc158d1830424f32f8219477d')
+sha256sums=('3086094e1157a6ab6cf18a9b2364ff30643ee82f0daa7a856e285c6242d090cf')
 
 build() {
   cd $srcdir
