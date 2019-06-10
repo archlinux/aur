@@ -1,0 +1,18 @@
+pkgbase = python-pyfavicon
+	pkgdesc = Async favicon fetcher
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.org/pypi/pyfavicon
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-aiohttp
+	depends = python-pillow
+	depends = python-beautifulsoup4
+	source = https://pypi.org/packages/source/p/pyfavicon/pyfavicon-0.1.1.tar.gz
+	source = LICENSE
+	sha256sums = fdd5a222f08488824877d8a00a272657c4e66bbe115520d1d68e6d9892ba8e97
+	sha256sums = a689f5eb9e5b1e7d691031376a8be4961e551ee2173e5f1dc65b335d20469197
+
+pkgname = python-pyfavicon
+
