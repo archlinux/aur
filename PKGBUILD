@@ -82,6 +82,7 @@ depends=(
 	'wingpanel-indicator-session'
 	'wingpanel-indicator-sound')
 optdepends=()
+makedepends=('git' 'meson' 'ninja' 'vala<0.42.0')
 provides=("${pkgname}")
 conflicts=('pantheon-meta')
 
