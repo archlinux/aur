@@ -26,14 +26,12 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}/${_gitname}-${pkgver}/build"
+  cd build
 
   DESTDIR="${pkgdir}" ninja install
 }
 
 build() {
-  cd "${srcdir}/${_gitname}-${pkgver}/build"
-
   arch-meson ../"${pkgname}"
   ninja
 }
