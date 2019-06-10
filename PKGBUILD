@@ -1,18 +1,19 @@
 # Maintainer: Joel Pettersson <petterssonjoel@gmail.com>
 
 pkgname=bruteforce-luks
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Try to find the password of a LUKS encrypted volume.'
 arch=('x86_64')
 url='https://github.com/glv2/bruteforce-luks'
 license=('GPL3')
 depends=('cryptsetup')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/glv2/bruteforce-luks/archive/$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.sig::https://github.com/glv2/bruteforce-luks/releases/download/$pkgver/$pkgname-$pkgver.tar.gz.sig")
-sha256sums=('a6008ed1bfd016ef796e1984f156270b1f96be29caea72d8b06bd1d255679b31'
-            '2402040a2f756facc7077a09be84686bc186341f1233dfddd208b513d5220219')
-validpgpkeys=('8D7B2F5D0B2576447752AFAF3142FA49A297039D') # Guillaume LE VAILLANT <guillaume.le.vaillant@openmailbox.org>
+source=("$pkgname-$pkgver.tar.xz::https://github.com/glv2/bruteforce-luks/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
+        "$pkgname-$pkgver.tar.xz.sig::https://github.com/glv2/bruteforce-luks/releases/download/$pkgver/$pkgname-$pkgver.tar.xz.sig")
+sha256sums=('85c902c581194703a4f72648372d49108f1e921aec9cd337b2d3a5d1c960dbb9'
+            'e29d587e9d6fd3d0c9e2cda5feb6dea21a23fc24d6f4a4a80b538800a0779b2a')
+
+validpgpkeys=('245302B1BAB1F867FDCA96BC8F3F861F82EB7A9A') # Guillaume LE VAILLANT <glv@posteo.net>
 
 prepare() {
 	cd "$pkgname-$pkgver"
