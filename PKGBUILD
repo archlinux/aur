@@ -2,8 +2,8 @@
 
 pkgname=foliate-git
 _name=foliate
-pkgver=99.a37760f
-pkgrel=2
+pkgver=110.76112ff
+pkgrel=1
 pkgdesc="A simple and modern GTK eBook reader"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://johnfactotum.github.io/foliate/"
