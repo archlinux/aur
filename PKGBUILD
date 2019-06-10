@@ -2,14 +2,14 @@
 pkgname=keyplusd-git
 _gitname=keyplus
 pkgver=v0.2.0.beta.r407.g37c9804
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="keyboard remapping tool that emulates keyplus firmware"
 arch=('i686' 'x86_64')
 url="https://github.com/ahtn/keyplus/tree/master/ports/linux"
 license=('MIT')
 groups=()
-depends=('systemd' 'libevdev')
+depends=('keyplus' 'systemd' 'libevdev')
 makedepends=('git' 'make' 'gcc' 'python')
 checkdepends=()
 optdepends=()

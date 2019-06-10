@@ -1,7 +1,7 @@
 pkgbase = keyplusd-git
 	pkgdesc = keyboard remapping tool that emulates keyplus firmware
 	pkgver = v0.2.0.beta.r407.g37c9804
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ahtn/keyplus/tree/master/ports/linux
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = keyplusd-git
 	makedepends = make
 	makedepends = gcc
 	makedepends = python
+	depends = keyplus
 	depends = systemd
 	depends = libevdev
 	provides = keyplusd
