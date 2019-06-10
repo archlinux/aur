@@ -1,5 +1,5 @@
 pkgbase = pantheon-session
-	pkgdesc = Session settings for Pantheon Stable
+	pkgdesc = Session settings for Pantheon
 	pkgver = 5.0.3
 	pkgrel = 1
 	url = https://github.com/elementary/session-settings

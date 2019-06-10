@@ -6,7 +6,7 @@ _author=elementary
 pkgname=pantheon-session
 pkgver=5.0.3
 pkgrel=1
-pkgdesc="Session settings for Pantheon Stable"
+pkgdesc="Session settings for Pantheon"
 arch=('any')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
@@ -23,7 +23,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 md5sums=("acba82053719804cf5751e27c36ab26b")
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${_gitname}-${pkgver}"
 
   mkdir -p "${pkgdir}"/{etc/xdg,usr/share/{gnome-session,pantheon}}
   cp -dr --no-preserve='ownership' applications "${pkgdir}"/usr/share/pantheon/
