@@ -1,0 +1,19 @@
+pkgbase = phoneinfoga
+	pkgdesc = Advanced information gathering & OSINT tool for phone numbers.
+	pkgver = v1.6.7.r23.g7fa5127
+	pkgrel = 1
+	url = https://github.com/sundowndev/PhoneInfoga/wiki
+	arch = any
+	license = GPL
+	depends = python3
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-html5lib
+	depends = python-phonenumbers
+	depends = python-urllib3
+	depends = python-colorama
+	source = git+https://github.com/sundowndev/PhoneInfoga
+	md5sums = SKIP
+
+pkgname = phoneinfoga
+
