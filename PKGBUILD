@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=76.0.3806.1
+pkgver=76.0.3809.12
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -82,12 +82,9 @@ source=(
 
         # Misc Patches.
         'enable-vaapi.patch' # Use Saikrishna Arcot patch again :https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/4d40b58013b518373b2544d486d3de40796edd36/debian/patches/enable_vaapi_on_linux_2.diff'
-        'https://raw.githubusercontent.com/chromium/crashpad/master/third_party/lss/BUILD.gn'
-        'https://raw.githubusercontent.com/chromium/crashpad/master/third_party/lss/lss.h'
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
         'chromium-skia-harmony-r1.patch'
-        'WebPushSubscription_null_ptr.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1631411/revisions/2/patch?download'
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -98,12 +95,9 @@ sha256sums=(
 
             # Misc Patches
             '36e78ad3e6fdd4b8c402d3dd5e38413fd1f33fb992c6522af29a02b0f617ee22'
-            '56e516480b2f0ff6806068df2a77ebb2cabe211c7d3e7d390396e66df3d40a09'
-            '986e5bd28abcc5f7d0c0587bb850f3b4edb8a91eeebf82b3c329752455fa1606'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '0dd2fea50a93b26debce63c762c0291737b61816ba5b127ef923999494142b78'
-            '01aab7827a1082f73bd6d68723ef8658aa7ad615949c7d420edb703fdf688337'
             )
 install=chromium-dev.install
 
@@ -181,6 +175,7 @@ _keeplibs=(
            'third_party/cld_3'
            'third_party/closure_compiler'
            'third_party/crashpad'
+           'third_party/crashpad/crashpad/third_party/lss'
            'third_party/crashpad/crashpad/third_party/zlib'
            'third_party/crc32c'
            'third_party/cros_system_api'
@@ -343,6 +338,7 @@ _flags=(
         'closure_compile=false'
         'clang_use_chrome_plugins=true'
         'use_gold=false'
+        'use_dbus=true'
         )
 
 if [ "${_wayland}" = "1" ]; then
@@ -474,9 +470,6 @@ prepare() {
   msg2 "Patching the sources"
 
   # Misc patches.
-  # turn back lss.h. see https://chromium-review.googlesource.com/c/crashpad/crashpad/+/1559309
-  cp ${srcdir}/BUILD.gn third_party/lss/BUILD.gn
-  cp ${srcdir}/lss.h third_party/lss/lss.h
 
   # Pats to chromium dev's about why always they forget add/remove missing build rules.
   # Not this time (?).
@@ -504,12 +497,12 @@ prepare() {
   # https://crbug.com/473866.
   patch -p1 -i "${srcdir}/chromium-widevine-r4.patch"
 
-  # https://chromium-review.googlesource.com/c/chromium/src/+/1631411
-  base64 -d ${srcdir}/WebPushSubscription_null_ptr.patch.base64 | patch -p1 -i -
-
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
   ln -sf /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
+
+  # Enable StatusNotifier by default.
+  sed 's|FEATURE_DISABLED_BY_DEFAULT|FEATURE_ENABLED_BY_DEFAULT|g' -i chrome/browser/ui/views/status_icons/status_icon_linux_wrapper.cc
 
   # Use the file at run time instead of effectively compiling it in.
   sed 's|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g' -i services/device/usb/BUILD.gn
@@ -518,7 +511,7 @@ prepare() {
   sed "s|fuse-ld=lld|fuse-ld=${_clang_path}${_lld}|g" -i build/config/compiler/BUILD.gn
 
   # Setup bundled ffmpeg.
-  # add build verbose output
+  # Add build verbose output.
   sed "s|'make', '-j|'make', 'V=1', '-j|g" -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
   # Use system opus.
   rm -fr third_party/opus/src/include
