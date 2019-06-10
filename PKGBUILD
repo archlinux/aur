@@ -25,14 +25,14 @@ prepare() {
   mkdir build
 }
 
-package() {
-  cd build
-
-  DESTDIR="${pkgdir}" ninja install
-}
-
 build() {
-  arch-meson ../"${pkgname}"
+  cd "${_gitname}-${pkgver}/build"
+  arch-meson ../"${_gitname}-${pkgver}"
   ninja
 }
 
+package() {
+  cd "${_gitname}-${pkgver}/build"
+
+  DESTDIR="${pkgdir}" ninja install
+}
