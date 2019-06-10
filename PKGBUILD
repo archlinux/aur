@@ -10,7 +10,7 @@ _runc_patch_commit='6635b4f0c6af3810594d2770f662f34ddc15b40d'
 _runc_path='gopath/src/github.com/opencontainers/runc'
 
 pkgrel=1
-pkgdesc='NVIDIA container runtime'
+pkgdesc='NVIDIA opencontainer runtime fork to expose GPU devices to containers.'
 arch=('x86_64')
 url='https://github.com/NVIDIA/nvidia-container-runtime'
 license=('BSD')
