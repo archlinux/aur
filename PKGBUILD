@@ -16,7 +16,7 @@ conflicts=("fisher")
 
 install=fisher-git.install
 source=("git+https://github.com/jorgebucaran/fisher.git#branch=${_branch}")
-sha512sums=("SKIP")
+sha512sums=('SKIP')
 
 
 pkgver() {
