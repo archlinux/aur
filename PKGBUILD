@@ -18,9 +18,10 @@ install=fisher-git.install
 source=("git+https://github.com/jorgebucaran/fisher.git#branch=${_branch}")
 sha512sums=("SKIP")
 
+
 pkgver() {
     cd "fisher"
-    
+
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
