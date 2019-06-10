@@ -1,14 +1,14 @@
 # Maintainer: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-2.8-bin
-pkgver=2.80.190413.14884cda1ff5
+pkgver=2.80.190609.030c7df19da9
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('i686' 'x86_64')
 url="https://www.blender.org"
 license=('GPL')
-# dependencies copied from https://www.archlinux.org/packages/community/x86_64/blender/ minus python
-depends=('libpng' 'libtiff' 'openexr' 'desktop-file-utils'
-         'shared-mime-info' 'hicolor-icon-theme' 'xdg-utils' 'glew' 'openjpeg'
+# dependencies copied from https://www.archlinux.org/packages/community/x86_64/blender/
+depends=('libpng' 'libtiff' 'openexr' 'python' 'desktop-file-utils' 'python-requests'
+         'shared-mime-info' 'hicolor-icon-theme' 'xdg-utils' 'glew' 'openjpeg' 'python-numpy'
          'freetype2' 'openal' 'ffmpeg' 'fftw' 'boost-libs' 'opencollada' 'alembic'
          'openimageio' 'libsndfile' 'jack' 'opencolorio' 'openshadinglanguage'
          'jemalloc' 'libspnav' 'ptex' 'opensubdiv' 'openvdb' 'log4cplus' 'sdl2')
@@ -17,7 +17,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 # use different url per version to trigger rebuilds when package updates.
 # using $pkgver instead of $_inc is not possible (see comments on AUR-website)
-_inc=1904
+_inc=1906
 source=("download$_inc::https://builder.blender.org/download/")
 md5sums=('SKIP')
 
@@ -41,6 +41,8 @@ build() {
 	cd "$srcdir"
 	wget -O- "https://builder.blender.org/download//$_full" | tar xj
 	cd "${_full%.tar.bz2}"
+	# Remove included Python installation, so system Python is used instead
+	rm -rf "$_upstreamversion/python"
 	sed -i 's/=blender/=blender-2.8/' blender.desktop
 	sed -i 's/=Blender/=Blender-2.8/' blender.desktop
 	for f in icons/*/apps/blender.* ; do chmod 644 $f && mv $f "${f%.*}-2.8.${f#*.}" ; done
@@ -49,7 +51,6 @@ TryExec=blender-2.8-thumbnailer.py
 Exec=blender-2.8-thumbnailer.py %u %o
 MimeType=application/x-blender;
 ' > blender.thumbnailer
-	sed -i '1s;^;#!/usr/share/blender/'"$_upstreamversion"'/python/bin/python3.7m\n;' blender-thumbnailer.py
 	echo -e '#!/bin/bash\nexec /usr/share/blender/blender $@' > blender-2.8
 	echo -e '#!/bin/bash\nexec /usr/share/blender/blender-softwaregl $@' > blender-2.8-softwaregl
 }
