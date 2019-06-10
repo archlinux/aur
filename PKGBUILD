@@ -17,11 +17,13 @@ sha512sums=("74adf796feede3e40feaedd982e7bf4f7f625701ca92c0edc1c5bc388009c73bb2f
 
 build() {
     cd "plasma-applet-bandwidth-monitor-${pkgver}"
+
     cmake -DCMAKE_INSTALL_PREFIX=/usr 
     make
 }
 
 package() {
     cd "plasma-applet-bandwidth-monitor-${pkgver}"
+
     make DESTDIR="$pkgdir/" install
 }
