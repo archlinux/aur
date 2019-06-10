@@ -3,13 +3,13 @@
 pkgname=teamspeak3-kde-wrapper
 pkgver=0.1
 pkgrel=1
-pkgdesc='Wrapper script that fixes the bug that URLs do not open on KDE'
-arch=('any')
-license=('GPL3')
+pkgdesc="Wrapper script that fixes the bug that URLs do not open on KDE"
+arch=("any")
+license=("GPL3")
 
-depends=('bash' 'teamspeak3' 'kinit' 'qt5-tools')
+depends=("bash" "teamspeak3" "kinit" "qt5-tools")
 makedepends=()
-provides=('kts3wrap')
+provides=("kts3wrap")
 
 source=("kts3wrap"
         "kts3wrap.desktop"
@@ -26,4 +26,3 @@ package() {
     install -v -m755 -D "xdg-open" "$pkgdir/opt/kts3wrap-bin/xdg-open"
     install -v -m644 -D "kts3wrap.desktop" "$pkgdir/usr/share/applications/kts3wrap.desktop"
 }
-
