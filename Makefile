@@ -2,7 +2,7 @@ default: build
 
 build: namcap
 	makepkg
-	mksrcinfo
+	makepkg --printsrcinfo > .SRCINFO
 
 clean:
 	git clean -fd
