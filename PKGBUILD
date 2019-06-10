@@ -1,6 +1,6 @@
 # Maintainer: Jake <aur@ja-ke.tech>
 pkgname=nwjs-ffmpeg-codecs-bin
-pkgver=0.38.1
+pkgver=0.38.4
 pkgrel=1
 pkgdesc="Additional proprietary codecs for nw.js from ffmpeg"
 arch=('x86_64')
