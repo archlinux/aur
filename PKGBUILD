@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.7.5
+pkgver=1.7.7
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
