@@ -15,13 +15,13 @@ source=(git://github.com/redtide/$reponame.git)
 md5sums=('SKIP')
 
 build() {
-  cd $pkgname
+  cd $reponame
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $pkgname
+  cd $reponame
   make DESTDIR="$pkgdir" install
 }
