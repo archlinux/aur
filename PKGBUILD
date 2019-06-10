@@ -3,18 +3,18 @@
 pkgname=img-matrix-git
 pkgver=r5.e70734d
 pkgrel=1
-pkgdesc='Script that generates tiles from images and combines them in a html file.'
-arch=('any')
-url='https://gitlab.com/Scrumplex/img-matrix'
-license=('GPL3')
+pkgdesc="Script that generates tiles from images and combines them in a html file."
+arch=("any")
+url="https://gitlab.com/Scrumplex/img-matrix"
+license=("GPL3")
 
-depends=('bash' 'imagemagick')
-makedepends=('git')
-provides=('img-matrix')
-conflicts=('img-matrix')
+depends=("bash" "imagemagick")
+makedepends=("git")
+provides=("img-matrix")
+conflicts=("img-matrix")
 
 source=("git+https://gitlab.com/Scrumplex/img-matrix.git")
-sha512sums=("SKIP")
+sha512sums=('SKIP')
 
 
 pkgver() {
