@@ -4,7 +4,7 @@
 _pkgauthor=kubeless
 _upstream_pkgname=kubeless
 pkgname=kubeless
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A Kubernetes-native serverless framework that lets you deploy small bits of code without having to worry about the underlying infrastructure plumbing."
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=(
   "git"
   "wget"
 )
-_builddepends_bins_path="/tmp/build/bin"
+_builddepends_bins_path="$HOME/tmp/build/bin"
 provides=()
 conflicts=()
 replaces=()
@@ -36,13 +36,34 @@ url="https://github.com/${_pkgauthor}/${_upstream_pkgname}"
 # https://github.com/kubeless/kubeless/archive/v1.0.0.tar.gz
 source=("${pkgname}::git+https://github.com/${_pkgauthor}/${_upstream_pkgname}.git"
   "LICENSE::https://raw.githubusercontent.com/${_pkgauthor}/${_upstream_pkgname}/master/LICENSE")
-sha256sums=(
-  "SKIP"
-  "SKIP"
-)
+sha256sums=('SKIP'
+            'fdcee9e38cea79678ee1fa2cb86ce9889eea24899b526911dc982bf4519113b2')
 
 
 prepare() {
+
+  local OP="prepare"
+
+  if [ "$PKGBUILD_DEBUG" = "true" ];
+  then
+	  cd "${srcdir}/${_upstream_pkgname}"
+
+	  echo "pkgver: $(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+
+    echo "running function: $OP"
+    echo "user: $(whoami)"
+    echo "CWD: $CWD"
+    echo "PWD: $PWD"
+    echo "CI: $CI"
+    echo "PKGBUILD_DEBUG: $PKGBUILD_DEBUG"
+    echo "BUILDDIR: $BUILDDIR"
+    echo "PKGDEST: $PKGDEST"
+    echo "SRCDEST: $SRCDEST"
+    echo "SRCPKGDEST: $SRCPKGDEST"
+    echo "LOGDEST: $LOGDEST"
+    echo "PACKAGER: $PACKAGER"
+  fi
+
   # https://github.com/kubeless/kubeless/blob/master/Makefile#L104-L113
   # have to copy/paste this section because the upstream maintainers are using sudo during this section of the Makefile
   mkdir -p "${pkgdir}/usr/local/bin"
@@ -63,8 +84,27 @@ prepare() {
 }
 
 build() {
+  local OP="build"
+
+  if [ "$PKGBUILD_DEBUG" = "true" ];
+  then
+    echo "running function: $OP"
+    echo "user: $(whoami)"
+    echo "CWD: $CWD"
+    echo "PWD: $PWD"
+    echo "CI: $CI"
+    echo "PKGBUILD_DEBUG: $PKGBUILD_DEBUG"
+    echo "BUILDDIR: $BUILDDIR"
+    echo "PKGDEST: $PKGDEST"
+    echo "SRCDEST: $SRCDEST"
+    echo "SRCPKGDEST: $SRCPKGDEST"
+    echo "LOGDEST: $LOGDEST"
+    echo "PACKAGER: $PACKAGER"
+  fi
+
   export GOPATH="${srcdir}/gopath"
   export PATH="${_builddepends_bins_path}:${PATH}"
+  export CGO_ENABLED=0
   cd "${srcdir}/gopath/src/github.com/${_pkgauthor}/${pkgname}"
   # https://github.com/kubeless/kubeless/blob/master/.circleci/config.yml#L77-L105
   go get -u golang.org/x/lint/golint
@@ -85,6 +125,23 @@ build() {
 
 
 package() {
+  local OP="package"
+
+  if [ "$PKGBUILD_DEBUG" = "true" ];
+  then
+    echo "running function: $OP"
+    echo "user: $(whoami)"
+    echo "CWD: $CWD"
+    echo "PWD: $PWD"
+    echo "CI: $CI"
+    echo "PKGBUILD_DEBUG: $PKGBUILD_DEBUG"
+    echo "BUILDDIR: $BUILDDIR"
+    echo "PKGDEST: $PKGDEST"
+    echo "SRCDEST: $SRCDEST"
+    echo "SRCPKGDEST: $SRCPKGDEST"
+    echo "LOGDEST: $LOGDEST"
+    echo "PACKAGER: $PACKAGER"
+  fi
   install -Dm755 "${srcdir}/gopath/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
   mkdir -p "${pkgdir}/usr/share/licenses/${_upstream_pkgname}"
