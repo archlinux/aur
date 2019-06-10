@@ -1,0 +1,19 @@
+pkgbase = python-xusbboot
+	pkgdesc = python scripts for flashing atxmega xusb-boot bootloader
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/ahtn/xusb-boot
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-easyhid
+	depends = python-intelhex
+	depends = python-hexdump
+	provides = python-xusbboot
+	conflicts = python-xusbboot
+	source = python-xusbboot-0.0.2.tar.gz::https://github.com/ahtn/xusb-boot/archive/py-0.0.2.tar.gz
+	sha512sums = 6eb07ba738dac235f1bac85be9a5b43af670294a62d0216235f138e62602ed84ad6f455d7af90aa4e6ee3711420b3f207368a214e7af187cdb0670a072c8ec94
+
+pkgname = python-xusbboot
+
