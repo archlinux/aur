@@ -1,6 +1,6 @@
 # Maintainer: David Beley <dbeley@protonmail.com>
 pkgname=lastfm_cg-git
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
