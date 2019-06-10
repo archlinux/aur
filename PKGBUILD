@@ -28,7 +28,7 @@ build() {
       target=".amd64"
     fi
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    msiexec /i "${srcdir}"/python-${pkgver}${target}.msi /qb TARGETDIR=$PWD
+    ${_arch}-msiexec /i "${srcdir}"/python-${pkgver}${target}.msi /qb TARGETDIR=$PWD
 
     # https://bugs.python.org/issue11722
     sed -i "s|#if defined(MS_WIN64)|#if defined(MS_WIN64) \|\| defined(__MINGW64__)|g" include/pyconfig.h
