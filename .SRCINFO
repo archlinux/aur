@@ -1,6 +1,6 @@
 pkgbase = ly
 	pkgdesc = TUI display manager
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/cylgom/ly
 	arch = i686
@@ -8,12 +8,11 @@ pkgbase = ly
 	license = custom:WTFPL
 	makedepends = unzip
 	depends = pam
-	depends = xorg-xinit
 	depends = xorg-xauth
 	conflicts = ly-git
 	conflicts = python-ly-git
-	source = https://github.com/cylgom/ly/releases/download/0.2.1/ly_0.2.1.zip
-	md5sums = 4dcc18944efc71e55a13e0e442d98fbb
+	source = https://github.com/cylgom/ly/releases/download/v0.3.0/ly_0.3.0.zip
+	md5sums = e3ebb9c21f68bb3ddff75068a847e7cc
 
 pkgname = ly
 
