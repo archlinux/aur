@@ -1,6 +1,6 @@
 pkgbase = ly-git
 	pkgdesc = TUI display manager
-	pkgver = 0.2.1.r0.g7557e0f
+	pkgver = v0.3.0.r0.g61fd099
 	pkgrel = 1
 	url = https://github.com/cylgom/ly
 	arch = i686
@@ -9,15 +9,10 @@ pkgbase = ly-git
 	license = custom:WTFPL
 	makedepends = git
 	depends = pam
-	depends = xorg-xinit
 	depends = xorg-xauth
 	conflicts = ly
 	conflicts = python-ly-git
 	source = git+https://github.com/cylgom/ly.git
-	source = git+https://github.com/cylgom/termbox-next.git
-	source = git+https://github.com/benhoyt/inih.git
-	md5sums = SKIP
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = ly-git

@@ -1,18 +1,16 @@
 # Maintainer: cylgom <cylgom@gmail.com>
 pkgname=ly-git
-pkgver=0.2.1.r0.g7557e0f
+pkgver=v0.3.0.r0.g61fd099
 pkgrel=1
 pkgdesc="TUI display manager"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/cylgom/ly"
 license=('custom:WTFPL')
 makedepends=('git')
-depends=('pam' 'xorg-xinit' 'xorg-xauth')
+depends=('pam' 'xorg-xauth')
 conflicts=('ly' 'python-ly-git')
-source=('git+https://github.com/cylgom/ly.git'
-	'git+https://github.com/cylgom/termbox-next.git'
-	'git+https://github.com/benhoyt/inih.git')
-md5sums=('SKIP' 'SKIP' 'SKIP')
+source=('git+https://github.com/cylgom/ly.git')
+md5sums=('SKIP')
 
 pkgver() {
 	cd ly
@@ -21,7 +19,7 @@ pkgver() {
 
 prepare() {
 	cd ly
-	git submodule update --init --recursive
+	make github
 }
 
 build() {
