@@ -18,22 +18,23 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 md5sums=("eed62f6670d8b34c16d54a3713ee2fea")
 
 prepare() {
+  cd "${srcdir}/${_gitname}-${pkgver}"
   if [[ -d build ]]; then
     rm -rf build
   fi
   mkdir build
 }
 
+package() {
+  cd "${srcdir}/${_gitname}-${pkgver}/build"
+
+  DESTDIR="${pkgdir}" ninja install
+}
+
 build() {
-  cd build
+  cd "${srcdir}/${_gitname}-${pkgver}/build"
 
   arch-meson ../"${pkgname}"
   ninja
-}
-
-package() {
-  cd build
-
-  DESTDIR="${pkgdir}" ninja install
 }
 
