@@ -1,0 +1,19 @@
+pkgbase = python-kp_boot_32u4
+	pkgdesc = tools for working with the kp_boot_32u4 bootloader
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/ahtn/kp_boot_32u4
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-easyhid
+	depends = python-intelhex
+	depends = python-hexdump
+	provides = python-kp_boot_32u4
+	conflicts = python-kp_boot_32u4
+	source = python-kp_boot_32u4-0.0.3.tar.gz::https://github.com/ahtn/kp_boot_32u4/archive/py-0.0.3.tar.gz
+	sha512sums = 33af88f8868da157fd2d5f3c0b728fb412828aff9d2bebccf36a899b533afeacd9977e71e1aefd19f44bd9091d3227591cd45f577d258682acb22f9d7f89dfd0
+
+pkgname = python-kp_boot_32u4
+
