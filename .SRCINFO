@@ -1,6 +1,6 @@
 pkgbase = gcstar
 	pkgdesc = A collection management application
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = http://www.gcstar.org
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = gcstar
 	depends = perl-datetime-format-strptime
 	depends = perl-gdgraph
 	depends = perl-mp3-info
-	source = https://launchpad.net/gcstar/1.7/1.7.1/+download/gcstar-1.7.1.tar.gz
-	sha256sums = da2c90071a61bf42f4c6e9f6ddee6eb9b60b8f9af711c435cd24d44735429f3d
+	source = https://gitlab.com/Kerenoc/GCstar/-/archive/v1.7.2/GCstar-v1.7.2.tar.bz2
+	sha256sums = 0f0ff1a8ac7dcd9ce6c83ebc46692260b8a1c123918227a97883e24db4952ee0
 
 pkgname = gcstar
 

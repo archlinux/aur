@@ -3,7 +3,8 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=gcstar
-pkgver=1.7.1
+_pkgname=GCstar
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="A collection management application"
 arch=('any')
@@ -17,12 +18,12 @@ depends=('gtk2-perl' 'perl-libwww' 'perl-xml-simple'
 	 'perl-archive-zip' 'perl-datetime-format-strptime'
 	 'perl-gdgraph' 'perl-mp3-info')
 # 'perl-ogg-vorbis-header-pureperl' 'perl-mp3-tag'
-source=(https://launchpad.net/gcstar/1.7/1.7.1/+download/gcstar-$pkgver.tar.gz)
-sha256sums=('da2c90071a61bf42f4c6e9f6ddee6eb9b60b8f9af711c435cd24d44735429f3d')
+source=(https://gitlab.com/Kerenoc/GCstar/-/archive/v$pkgver/${_pkgname}-v$pkgver.tar.bz2)
+sha256sums=('0f0ff1a8ac7dcd9ce6c83ebc46692260b8a1c123918227a97883e24db4952ee0')
 
 package() {
-  cd gcstar
-  ./install  --prefix="$pkgdir"/usr
+  cd ${_pkgname}-v$pkgver/$pkgname
+  perl ./install --text --prefix="$pkgdir"/usr
   install -D -m644 "$pkgdir"/usr/share/gcstar/icons/gcstar_256x256.png \
                    "$pkgdir"/usr/share/pixmaps/gcstar.png
   install -D -m644 "$pkgdir"/usr/share/gcstar/icons/gcstar_32x32.png \
