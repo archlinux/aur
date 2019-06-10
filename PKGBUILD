@@ -5,7 +5,7 @@ _pkgauthor=kubeless
 _upstream_pkgname=kubeless
 pkgname=kubeless-bin
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Kubernetes-native serverless framework that lets you deploy small bits of code without having to worry about the underlying infrastructure plumbing."
 arch=('x86_64')
 _goarch="amd64"
@@ -34,7 +34,7 @@ sha256sums=('cb1cd4b748c10ba896f4e00a35055303ec19143b8cf79a6b174110c1e84ec998'
             '21c1c45306453b53e6d22a7356367d76d33d80e50eb22d8ee7e0d0416b43b7c5'
             '95c1abd4d39f56caecf1234b8d0574552f1e2bd15d42ed09aaf7d8d54340cfb6'
             'b4f0e2eeca068370627d91670190b67324c26603a67b8af7cdf7d1e10f596c86'
-            '374db7067e9e238a74a5c3d25d9f17d5a6fb885e4b6392897ceffcabb274fd7c')
+            'fdcee9e38cea79678ee1fa2cb86ce9889eea24899b526911dc982bf4519113b2')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin/"
