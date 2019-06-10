@@ -7,7 +7,7 @@
 
 pkgname=python2-autobahn
 pkgver=19.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Real-time framework for Web, Mobile & Internet of Things'
 arch=(any)
 url='https://crossbar.io/autobahn/'
@@ -45,4 +45,5 @@ package() {
   cd "$srcdir/autobahn-$pkgver"
   AUTOBAHN_USE_NVX=1 python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mv "$pkgdir/usr/bin/wamp" "$pkgdir/usr/bin/wamp2"
 }
