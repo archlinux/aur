@@ -1,4 +1,5 @@
 # Maintainer: David Birks <david@tellus.space>
+# Contributor: Jacob Mason <jacob@jacobmason.net>
 
 pkgname=jx
 pkgver=2.0.224
