@@ -1,0 +1,26 @@
+pkgbase = keyplus-git
+	pkgdesc = keyboard firmware library and tools
+	pkgver = v0.2.0.beta.r408.g1aa7e81
+	pkgrel = 1
+	url = https://github.com/ahtn/keyplus/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python
+	depends = python-ruamel-yaml
+	depends = python-intelhex
+	depends = python-hexdump
+	depends = python-colorama
+	depends = python-cstruct
+	depends = python-easyhid
+	depends = python-xusbboot
+	depends = python-efm8boot
+	depends = python-kp_boot_32u4
+	optdepends = keyplusd-git: keyplus emulator support
+	provides = keyplus
+	conflicts = keyplus
+	source = git+https://github.com/ahtn/keyplus.git
+	md5sums = SKIP
+
+pkgname = keyplus-git
+
