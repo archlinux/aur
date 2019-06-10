@@ -16,7 +16,7 @@ optdepends=('libsodium: sodium crypto support')
 options=('!strip')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shadowsocksrr/electron-ssr/archive/v$pkgver.tar.gz"
-        'https://raw.githubusercontent.com/erguotou520/electron-ssr/master/LICENSE'
+        'https://raw.githubusercontent.com/shadowsocksrr/electron-ssr/master/LICENSE'
         'electron-ssr.desktop'
         'build.patch'
         'electron-ssr.sh')
