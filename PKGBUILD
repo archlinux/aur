@@ -8,7 +8,7 @@ license=('APACHE')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=('go-pie' 'git')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('831c355573549e692b7cbed8d73798b5497a7e283497d64617acb60a612553c5')
+sha256sums=('26eb1a8a33d63d88e8db4ed7c1112584c8432b9d53fc594c69cc8d7cd4cc7f79')
 
 build() {
   cd "$pkgname-$pkgver"
