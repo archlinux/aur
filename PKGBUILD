@@ -1,4 +1,5 @@
 # Maintainer: David Birks <david@tellus.space>
+# Contributor: Skunnyk <skunnyk@archlinux.fr>
 
 pkgname=castnow-git
 pkgver=r199.4ccb1e0
