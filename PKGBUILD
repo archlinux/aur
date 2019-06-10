@@ -2,7 +2,7 @@
 
 pkgname=protondb-to-steam-library-git
 _pkgname=ProtonDB-to-Steam-Library
-pkgver=0.0.0
+pkgver=r22.c26c79d
 pkgrel=1
 pkgdesc="Pull ratings from ProtonDB and import them into your Steam library as tags."
 arch=('any')
@@ -14,6 +14,12 @@ depends=(
 )
 source=(git+https://github.com/CorruptComputer/$_pkgname.git)
 md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   cd "$srcdir/$_pkgname"
