@@ -3,16 +3,17 @@ _name="balena"
 _module="${_name}-sdk"
 _fullname="${_module}-python"
 pkgname=("python-${_name}" "python2-${_name}")
-pkgver=7.7.2
+pkgver=7.8.1
 pkgrel="1"
 pkgdesc="Balena SDK for Python"
 arch=("any")
 url="https://github.com/balena-io/balena-sdk-python"
+_github_url="https://github.com/balena-io/balena-sdk-python"
 license=("Apache")
 makedepends=("python-setuptools" "python2-setuptools")
 provides=("python-${_name}" "python2-${_name}")
 source=("https://github.com/balena-io/${_fullname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b738bf537c12433cc7578568d2dc419b7c2d78e239cd4f1430fa3ac3cff6e479')
+sha256sums=('5a031d460c4486f895890904057c37c55d193d696f60dbba05767ad6dbdbd87b')
 
 prepare() {
     cp -a "${srcdir}/${_fullname}-${pkgver}" "${srcdir}/${_fullname}-${pkgver}-python2"
@@ -30,6 +31,7 @@ package_python-balena() {
     "python-twisted>=18.7.0"
     "python-pyotp>=2.2.5"
     "python-pyopenssl>=18.0.0"
+    "python-semver"
     "python-service-identity"
     "python-requests>=2.19.1")
     cd "${srcdir}/${_fullname}-${pkgver}"
@@ -41,6 +43,7 @@ package_python2-balena() {
     "python2-twisted>=18.7.0"
     "python2-pyotp>=2.2.5"
     "python2-pyopenssl>=18.0.0"
+    "python2-semver"
     "python2-service-identity"
     "python2-requests>=2.19.1")
     cd "${srcdir}/${_fullname}-${pkgver}-python2"
