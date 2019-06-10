@@ -3,11 +3,12 @@
 # Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 
 pkgname=etcher
-pkgver=1.5.45
+pkgver=1.5.46
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64)
 url='https://etcher.io'
+_github_url='https://github.com/balena-io/etcher'
 license=(Apache)
 depends=(electron gtk2 libxtst libxss gconf nss alsa-lib)
 makedepends=(npm python2 git jq)
