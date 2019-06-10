@@ -7,7 +7,7 @@
 
 pkgname=selinux-refpolicy-src
 _origname=refpolicy
-pkgver=20190201
+pkgver=20190609
 pkgrel=1
 pkgdesc="SELinux reference policy sources"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('linux-hardened: Linux kernel with SELinux support'
 makedepends=('python' 'checkpolicy>=2.8' 'policycoreutils>=2.8'
              'libsepol>=2.8' 'libsemanage>=2.8')
 source=("https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_${pkgver}/${_origname}-2.${pkgver}.tar.bz2")
-sha256sums=('ed620dc91c4e09eee6271b373f7c61a364a82ea57bd2dc86ca1f7075304e2843')
+sha256sums=('67bd1213e9d014ada15512028bb7f35ef6610c2d209cc5117b8577474aa6147f')
 
 package() {
   cd "${srcdir}/${_origname}"
