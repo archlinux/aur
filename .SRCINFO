@@ -1,11 +1,10 @@
 pkgbase = git-open-git
-	pkgdesc = Open a repo website in your browser. Development version.
+	pkgdesc = Type `git open` to open the GitHub page or website for a repository in your browser.
 	pkgver = r200.4ca1990
 	pkgrel = 1
 	url = https://github.com/paulirish/git-open
-	arch = any
+	arch = x86_64
 	license = MIT
-	makedepends = npm
 	depends = git
 	depends = xdg-utils
 	conflicts = nodejs-git-open
