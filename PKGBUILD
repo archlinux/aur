@@ -17,6 +17,7 @@ install=fisher.install
 source=("https://github.com/jorgebucaran/fisher/archive/${pkgver}.tar.gz")
 sha512sums=('cac0e9b3913721be6538a346ec82167732e333b4edcba515a72595977f734c15fade447fc52191451120074f561b9d4cac1589220b802fdfac53a0ead7e9b303')
 
+
 package() {
     cd "${pkgname}-${pkgver}"
 
