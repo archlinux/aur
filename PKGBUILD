@@ -1,7 +1,7 @@
 # Maintainer: Tinu Weber <http://ayekat.ch>
 
 pkgname=remakepkg
-pkgver=0.7.8
+pkgver=0.8
 pkgrel=1
 arch=(any)
 
@@ -14,7 +14,7 @@ license=(GPL3)
 # https://gitlab.com/ayekat/PKGBUILDs/tree/pacman-hacks
 conflicts=(makemetapkg)
 
-depends=(coreutils sed)
+depends=(coreutils)
 makedepends=(asciidoc git)
 
 changelog='changelog'
@@ -28,12 +28,11 @@ _tools='diffrepo getpkg pkgmirror remakepkg repkg'
 
 build() {
   cd pacman-hacks
-  make clean
   make PREFIX=/usr SCRIPTS="$_tools" MANPAGES="$_tools"
 }
 
 package() {
-  depends+=(bash curl expac grep gzip fakeroot libarchive pacman sh vi)
+  depends+=(bash curl expac grep gzip fakeroot libarchive pacman sed sh vi)
 
   cd pacman-hacks
   make \
