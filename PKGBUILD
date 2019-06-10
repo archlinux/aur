@@ -6,11 +6,11 @@ pkgver=1.34
 pkgrel=1
 pkgdesc="EditorConfig plugin for Geany"
 arch=('x86_64' 'i686')
-url="https://github.com/redtide/$_pkgname"
+url="https://github.com/redtide/$pkgname"
 license=('GPL')
 depends=("geany>=$pkgver" 'editorconfig-core-c')
 source=(
-    "$pkgname"::"git+https://github.com/redtide/$_pkgname"
+    "$pkgname"::"git+https://github.com/redtide/$pkgname"
 )
 md5sums=(
     'SKIP'

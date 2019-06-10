@@ -2,13 +2,13 @@ pkgbase = geany-plugin-editorconfig
 	pkgdesc = EditorConfig plugin for Geany
 	pkgver = 1.34
 	pkgrel = 1
-	url = https://github.com/redtide/editorconfig-geany
+	url = https://github.com/redtide/geany-plugin-editorconfig
 	arch = x86_64
 	arch = i686
 	license = GPL
 	depends = geany>=1.34
 	depends = editorconfig-core-c
-	source = geany-plugin-editorconfig::git+https://github.com/redtide/editorconfig-geany
+	source = geany-plugin-editorconfig::git+https://github.com/redtide/geany-plugin-editorconfig
 	md5sums = SKIP
 
 pkgname = geany-plugin-editorconfig
