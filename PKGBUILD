@@ -266,16 +266,6 @@ if $_uber_minimal; then
     _additional_configure_flags="$_additional_configure_flags \
         -no-ico \
         -no-glib \
-        -no-fontconfig \
-        -qt-freetype \
-        -qt-harfbuzz \
-    "
-else
-    _additional_configure_flags="$_additional_configure_flags \
-        -fontconfig \
-        -system-freetype \
-        -system-harfbuzz \
-        -system-pcre \
     "
 fi
 
@@ -288,6 +278,11 @@ fi
 #-journald \
 _core_configure_options=" \
                  -ltcg \
+                 -qt-freetype \
+                 -qt-harfbuzz \
+                 -qt-libpng \
+                 -qt-libjpeg \
+                 -qt-pcre \
                  -pkg-config \
                  -prefix ${_installprefix} \
                  -opengl ${_opengl_variant} \
