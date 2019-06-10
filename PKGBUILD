@@ -1,7 +1,7 @@
 # Maintainer: Muhkoenig
 
 pkgname=minikube-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A tool that makes it easy to run Kubernetes locally"
 url="https://github.com/kubernetes/minikube"
@@ -18,7 +18,7 @@ makedepends=()
 provides=('minikube')
 conflicts=('minikube')
 source=(minikube_$pkgver::https://storage.googleapis.com/minikube/releases/v$pkgver/minikube-linux-amd64)
-sha256sums=('43ce88a10c7b57f5e4f83e5a1485e13e4ad537bfb20f7d57364f66450b872634')
+sha256sums=('4596c0daabfe637912e2372c41cc11116ca053a1f7045af8a731265e45f9ca83')
 
 package() {
   install -Dm755 minikube_$pkgver "$pkgdir/usr/bin/minikube"
