@@ -3,8 +3,8 @@
 
 pkgname=sdfat-dkms
 pkgver=2.1.8.2
-pkgrel=1
-pkgdesc='FAT12/16/32(VFAT)/64(exFAT) filesytems kernel module - use with DKMS'
+pkgrel=2
+pkgdesc='FAT12/16/32(VFAT)/64(exFAT) file systems kernel module - use with DKMS'
 arch=('any')
 url='https://github.com/tbk/kernel-sdfat'
 license=('GPL-2.0-only')
