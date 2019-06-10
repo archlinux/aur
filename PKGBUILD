@@ -37,6 +37,7 @@ sha512sums=('d0e29f3290a2eb5a54a245c3dd87139b7758772320ab5efd0d93d3ca90904b43549
 
 prepare() {
     cd "ElectronPlayer-$pkgver"
+
     yarn --cache-folder "${srcdir}/yarn-cache" 
 }
 
@@ -44,7 +45,6 @@ build() {
     cd "ElectronPlayer-$pkgver"
 
     # We are not using system Electron as we need widevinecdm and an older Electron version
-
     npx electron-builder --linux dir
 
     # Delete darwin (macOS) widevine libs
