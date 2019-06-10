@@ -1,9 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=system76-io-dkms-git
-_pkgname=system76-io-dkms
-pkgver=r20.e58ff7f
-pkgrel=2
+pkgver=r26.ea5f61a
+pkgrel=1
 pkgdesc="This DKMS driver provides airplane mode, keyboard backlight, and fan support for System76 laptops"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-io-dkms"
@@ -11,13 +10,13 @@ license=('GPL3')
 depends=('dkms')
 conflicts=(system76-io-dkms)
 provides=(system76-io-dkms)
-source=("${_pkgname}::git+https://github.com/pop-os/${_pkgname}.git"
+source=("${pkgname}::git+https://github.com/pop-os/system76-io-dkms"
         'system76-io.conf')
 sha256sums=('SKIP'
             'aac9100aba28a0a6716b6b2012858ce996a5f710e1f1e02628da1cff2ef2bdd2')
 
 pkgver() {
-	cd ${srcdir}/${_pkgname}
+	cd ${srcdir}/${pkgname}
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
@@ -25,9 +24,9 @@ pkgver() {
 
 package() {
 	# Installation directory
-	local install_dir="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+	local install_dir="${pkgdir}/usr/src/${pkgname%%-git}-${pkgver}"
 
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${pkgname}"
 
 	# Install source files
 	for file in {Makefile,*.c,*.h}; do
