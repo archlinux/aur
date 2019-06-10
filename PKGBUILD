@@ -2,7 +2,7 @@
 # Maintainer: Pavel Sevecek <sevecek at sirrah.troja.mff.cuni.cz>
 
 pkgname=opensph
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Smoothed particle hydrodynamics library and visualization tools."
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ prepare() {
 build() {
     mkdir -p build
     cd build
-    qmake CONFIG+=release -spec linux-g++ ${srcdir}/sph/sph.pro
+    qmake CONFIG+=release CONFIG+=use_tbb -spec linux-g++ ${srcdir}/sph/sph.pro
     make
 }
 
