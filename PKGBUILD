@@ -5,7 +5,7 @@
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 
 pkgname=sqlite-jdbc
-pkgver=3.25.2
+pkgver=3.27.2.1
 pkgrel=1
 pkgdesc='JDBC driver for SQLite'
 arch=(x86_64)
@@ -13,7 +13,7 @@ url=https://github.com/xerial/sqlite-jdbc
 license=(Apache)
 makedepends=(maven)
 source=("https://github.com/xerial/sqlite-jdbc/archive/${pkgver}.tar.gz")
-sha256sums=('b6bd6c2ac17d37bc425ffd4d92d1b8df67e47819b95ece1065a63a6998b6a453')
+sha256sums=('37f09ac4a4e1b7debbfa95391b6c2405e5830bab9aa952bb7378302f29673666')
 
 prepare() {
   # remove unused sqlite binaries
