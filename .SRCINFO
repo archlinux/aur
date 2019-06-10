@@ -1,12 +1,14 @@
 pkgbase = amethyst
 	pkgdesc = A lightweight source code editor with tree-view navigation
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://byuu.org
 	arch = x86_64
 	license = ISC
 	license = GPL3
 	depends = gtksourceview2
+	backup = usr/share/amethyst/mimetypes.bml
+	backup = usr/share/amethyst/settings.bml
 	source = https://files.byuu.org/releases/amethyst_v3r2.tar.xz
 	source = amethyst-release.patch
 	source = LICENSE
