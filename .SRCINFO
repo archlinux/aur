@@ -1,0 +1,18 @@
+pkgbase = python-easyhid
+	pkgdesc = simple library for reading/writing to HID devices
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://github.com/ahtn/python-easyhid
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-cffi
+	depends = hidapi
+	provides = python-easyhid
+	conflicts = python-easyhid
+	source = python-easyhid-0.0.10.tar.gz::https://github.com/ahtn/python-easyhid/archive/0.0.10.tar.gz
+	sha512sums = 17f21c16699e45972d9a7a87719e16ec4f60a2a9d0b863a94ac092c585fee682d75adc2cbc3bc5f000a1b8299869526c7644d585bf9ef3a5de653e48d756f75b
+
+pkgname = python-easyhid
+
