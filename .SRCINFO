@@ -1,0 +1,15 @@
+pkgbase = duration-git
+	pkgdesc = Shows how long a process is already running
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mstruebing/duration
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = duration
+	source = git+https://github.com/mstruebing/duration
+	md5sums = SKIP
+
+pkgname = duration-git
+
