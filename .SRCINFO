@@ -1,20 +1,20 @@
 pkgbase = kubeless-bin
 	pkgdesc = A Kubernetes-native serverless framework that lets you deploy small bits of code without having to worry about the underlying infrastructure plumbing.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/kubeless/kubeless
 	arch = x86_64
 	license = Apache
-	source = kubeless-1.0.2.zip::https://github.com/kubeless/kubeless/releases/download/v1.0.2/kubeless_linux-amd64.zip
-	source = kubeless-non-rbac-v1.0.2.yaml::https://github.com/kubeless/kubeless/releases/download/v1.0.2/kubeless-non-rbac-v1.0.2.yaml
-	source = kubeless-openshift-v1.0.2.yaml::https://github.com/kubeless/kubeless/releases/download/v1.0.2/kubeless-openshift-v1.0.2.yaml
-	source = kubeless-v1.0.2.yaml::https://github.com/kubeless/kubeless/releases/download/v1.0.2/kubeless-v1.0.2.yaml
+	source = kubeless-1.0.3.zip::https://github.com/kubeless/kubeless/releases/download/v1.0.3/kubeless_linux-amd64.zip
+	source = kubeless-non-rbac-v1.0.3.yaml::https://github.com/kubeless/kubeless/releases/download/v1.0.3/kubeless-non-rbac-v1.0.3.yaml
+	source = kubeless-openshift-v1.0.3.yaml::https://github.com/kubeless/kubeless/releases/download/v1.0.3/kubeless-openshift-v1.0.3.yaml
+	source = kubeless-v1.0.3.yaml::https://github.com/kubeless/kubeless/releases/download/v1.0.3/kubeless-v1.0.3.yaml
 	source = LICENSE::https://raw.githubusercontent.com/kubeless/kubeless/master/LICENSE
-	sha256sums = 99897555d4ac5a31c62ce1ee806e1a05d1eeaee62b6851ad79d7eef586ea7faa
-	sha256sums = 218bdf1f389121365ba47b8ed597ca10e75db1c004b48458504a9bc6ed09f131
-	sha256sums = 02107c484b74f9bd0d13b66e0a45981ee0e7d4a9024a1da0f9a1e6ca6b739ede
-	sha256sums = 3ebe31dc64ce67ff353e6ff6e377fd668fa984751a89bb3c475116d0db1f0742
-	sha256sums = fdcee9e38cea79678ee1fa2cb86ce9889eea24899b526911dc982bf4519113b2
+	sha256sums = cb1cd4b748c10ba896f4e00a35055303ec19143b8cf79a6b174110c1e84ec998
+	sha256sums = 21c1c45306453b53e6d22a7356367d76d33d80e50eb22d8ee7e0d0416b43b7c5
+	sha256sums = 95c1abd4d39f56caecf1234b8d0574552f1e2bd15d42ed09aaf7d8d54340cfb6
+	sha256sums = b4f0e2eeca068370627d91670190b67324c26603a67b8af7cdf7d1e10f596c86
+	sha256sums = 374db7067e9e238a74a5c3d25d9f17d5a6fb885e4b6392897ceffcabb274fd7c
 
 pkgname = kubeless-bin
 
