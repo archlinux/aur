@@ -5,7 +5,7 @@
 
 pkgname=bzip2-git
 pkgver=r66.ad723d6
-pkgrel=1
+pkgrel=2
 pkgdesc="A parallel, SMP-based, bzip2-compatible compression utility"
 arch=('i686' 'x86_64')
 url="http://lbzip2.org/"
@@ -38,4 +38,9 @@ check() {
 package() {
   cd "$srcdir/$_gitname"
   DESTDIR="$pkgdir" meson install -C builddir
+
+  cd "$pkgdir/usr/lib"
+  if [ ! -e libbz2.so.1.0 ]; then
+    ln -s libbz2.so.1 libbz2.so.1.0
+  fi
 }
