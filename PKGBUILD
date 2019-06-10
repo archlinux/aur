@@ -1,4 +1,5 @@
 # Maintainer: David Birks <david@tellus.space>
+# Contributor: Giga300 <giga300@protonmail.com>
 
 pkgname=luna
 pkgver=3.1.0
