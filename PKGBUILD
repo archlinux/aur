@@ -4,7 +4,7 @@
 
 _target=sh3eb-elf
 pkgname=${_target}-binutils
-pkgver=2.31.1
+pkgver=2.32
 pkgrel=1
 pkgdesc="GNU binary utilities for the ${_target} target."
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=('zlib' 'flex')
 source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-sha256sums=('ffcc382695bf947da6135e7436b8ed52d991cf270db897190f19d6f9838564d0')
+sha256sums=('de38b15c902eb2725eac6af21183a5f34ea4634cb0bcef19612b50e5ed31072d')
 
 prepare() {
   cd "${srcdir}/binutils-${pkgver}"
