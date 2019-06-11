@@ -1,22 +1,7 @@
 pkgbase = perl-tie-cache
 	pkgdesc = LRU Cache in memory
 	pkgver = 0.21
-	pkgrel = 1
-	url = http://search.cpan.org/~chamas/Tie-Cache-0.21/
-	arch = any
-	license = GPL
-	license = PerlArtistic
-	depends = perl>=5.10.0
-	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/C/CH/CHAMAS/Tie-Cache-0.21.tar.gz
-	md5sums = 8210f295e8676c8540a5934f88bf5fed
-
-pkgname = perl-tie-cache
-
-pkgbase = perl-tie-cache
-	pkgdesc = LRU Cache in memory
-	pkgver = 0.21
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/~chamas/Tie-Cache-0.21/
 	arch = any
 	license = GPL
