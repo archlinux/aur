@@ -3,7 +3,7 @@
 
 pkgname=exact-image
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast image manipulation programs"
 arch=('i686' 'x86_64')
 url="http://exactcode.com/opensource/exactimage/"
@@ -20,7 +20,7 @@ prepare() {
 	cd "$pkgname-$pkgver"
 	patch -p1 -i "$srcdir"/$pkgname-c-98.patch
 	patch -p1 -i "$srcdir"/$pkgname-types.patch
-	sed -i 's+site_perl+5.28/vendor_perl+' api/perl/Makefile
+	sed -i 's+site_perl+5.30/vendor_perl+' api/perl/Makefile
 }
 
 build() {
