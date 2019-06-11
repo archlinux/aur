@@ -1,14 +1,4 @@
 post_install() {
-    getent group murmur > /dev/null || groupadd -r -g 122 murmur 1>/dev/null
-    getent passwd murmur > /dev/null || useradd -r -u 122 -d /var/lib/murmur -g murmur -s /bin/false murmur 1>/dev/null
-
-    chown -R murmur:murmur /var/lib/murmur
-
     echo "Don't forget to set the superuser password:"
     echo "    murmurd -ini /etc/murmur.ini -supw <your-password>"
-}
-
-post_remove() {
-    getent passwd murmur > /dev/null && userdel murmur 1>/dev/null
-    getent group murmur > /dev/null && groupdel murmur 1>/dev/null
 }
