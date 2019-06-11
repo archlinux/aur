@@ -4,9 +4,9 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 pkgname=mingw-w64-glib2
-pkgver=2.60.3
+pkgver=2.60.4
 pkgrel=1
-_commit=0f6191d02a8e1ca7b08ffe0ccc4def88855baeae  # tags/2.60.3^0
+_commit=6672d0cbed1f2bc87ca27ab69290900ff838224e  # tags/2.60.4^0
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
 depends=(mingw-w64-libffi mingw-w64-pcre mingw-w64-gettext mingw-w64-zlib)
