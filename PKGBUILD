@@ -5,33 +5,36 @@
 
 _pkgname=icu
 pkgname=${_pkgname}55
-pkgver=55.1
-pkgrel=3
+pkgver=55.2
+pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=('i686' 'x86_64')
 url="http://www.icu-project.org/"
 license=('custom:"icu"')
-depends=('gcc-libs>=4.7.1-5' 'sh')
+depends=('gcc-libs' 'sh')
 makedepends=('clang')
-source=(http://downloads.sourceforge.net/project/icu/ICU4C/55.1/icu4c-55_1-src.tgz)
-sha256sums=('e16b22cbefdd354bec114541f7849a12f8fc2015320ca5282ee4fd787571457b')
+source=('https://github.com/unicode-org/icu/releases/download/release-55-2/icu4c-55_2-src.tgz')
+sha256sums=('eda2aa9f9c787748a2e2d310590720ca8bcc6252adf6b4cfb03b65bef9d66759')
 
 build() {
-  cd ${srcdir}/${_pkgname}/source
+  cd "${srcdir}/${_pkgname}/source"
   ./configure --prefix=/usr \
 	--sysconfdir=/etc \
 	--mandir=/usr/share/man
   make
 }
 
+check() {
+  cd "${srcdir}/${_pkgname}/source"
+  make check
+}
+
 package() {
-  cd ${srcdir}/${_pkgname}/source
-  make -j1 DESTDIR=${pkgdir} install
+  cd "${srcdir}/${_pkgname}/source"
+  make DESTDIR="$pkgdir/" install
   rm -r "${pkgdir}"/usr/{bin,include,sbin,share,lib/*so,lib/icu/{Makefile.inc,current,pkgdata.inc}}
   rm -r "${pkgdir}/usr/lib/pkgconfig"
 
   # Install license
-  install -Dm644 ${srcdir}/${_pkgname}/license.html ${pkgdir}/usr/share/licenses/${pkgname}/license.html
+  install -Dm644 "${srcdir}/${_pkgname}/license.html" "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
 }
-
-# vim:set ts=2 sw=2 et:
