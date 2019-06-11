@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=cmtp-responder-git
-pkgver=r240.3218119b9b
+pkgver=r244.a10d015c37
 pkgrel=1
 pkgdesc="Media Transfer Protocol daemon (responder) written in C, with minimal dependencies"
 arch=('x86_64')
@@ -22,9 +22,6 @@ pkgver() {
 }
 
 prepare() {
-  sed 's/-Werror-implicit-function-declaration/-Werror=implicit-function-declaration/' -i cmtp-responder/CMakeLists.txt
-  sed '/cmtp-responder.conf/d' -i cmtp-responder/CMakeLists.txt
-
   if [ -d build ]
   then
     msg2 "Build dir already exist; doing an incremental build"
@@ -33,7 +30,7 @@ prepare() {
   fi
 
   cmake \
-    -DCMAKE_BUILD_DESCRIPTORS=true \
+    -DBUILD_DESCRIPTORS=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -S cmtp-responder -B build

@@ -1,6 +1,6 @@
 pkgbase = cmtp-responder-git
 	pkgdesc = Media Transfer Protocol daemon (responder) written in C, with minimal dependencies
-	pkgver = r240.3218119b9b
+	pkgver = r244.a10d015c37
 	pkgrel = 1
 	url = https://github.com/cmtp-responder/cmtp-responder
 	arch = x86_64
