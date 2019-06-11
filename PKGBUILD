@@ -1,18 +1,18 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=elfx86exts
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Decode ELF and MachO binaries and print out which instruction set extensions they use"
 arch=('x86_64')
 url="https://github.com/pkgw/elfx86exts"
 license=(MIT)
 makedepends=(cargo)
-source=("$pkgname.tar.tar"::https://crates.io/api/v1/crates/elfx86exts/$pkgver/download)
-sha512sums=('6329c457d91f3bc106b722500b040eaadf078f32e3d0205a9d700ce19ccce12059a75660aafd4160e48485701eed6459309ee6dcda7df7da2ffe1840b0ddb28c')
+source=("$pkgname.tar.gz"::https://github.com/pkgw/elfx86exts/archive/v${pkgver}.tar.gz)
+sha512sums=('5304e83b4496ac0c2fb4c8dd35e346da814d494aefbbf516dee50c61cbc5477dabfd1c0da09de4e6a513b3ed5861e389a00a984fcbc46d856a69282010fc1607')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release
+  cargo build --release --locked
 }
 
 check() {
