@@ -1,11 +1,11 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
 _pkgname=sway
-pkgver=r5893.e6fbb3c6
+pkgver=r5942.3f77591b
 pkgrel=1
 license=("MIT")
 pkgdesc="i3-compatible Wayland compositor"
-makedepends=("meson" "git" "scdoc" "wayland-protocols")
+makedepends=("meson" "git" "scdoc" "wayland-protocols" "ninja")
 depends=(
 	"json-c" "pcre" "wlroots-git" "cairo" "pango" "gdk-pixbuf2" "pam"
 	"xorg-server-xwayland" "swaybg-git"
@@ -20,7 +20,7 @@ optdepends=(
 arch=("i686" "x86_64")
 url="https://swaywm.org"
 source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git")
-sha1sums=("SKIP")
+sha512sums=('SKIP')
 provides=("sway")
 conflicts=("sway")
 options=(debug !strip)
@@ -32,11 +32,14 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
-	meson -Dwerror=false --prefix /usr "$srcdir/build"
 }
 
 build() {
 	cd "$_pkgname"
+	meson \
+		-Dwerror=false \
+		--prefix /usr \
+		"$srcdir/build"
 	ninja -C "$srcdir/build"
 }
 
