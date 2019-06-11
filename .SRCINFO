@@ -1,7 +1,7 @@
 pkgbase = vim-x11
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor (X11 support, no GUI)
 	pkgver = 8.1.1467
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vim.org
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = vim-x11
 	makedepends = lua
 	makedepends = gawk
 	makedepends = tcl
-	depends = vim-runtime=8.1.1467-1
+	depends = vim-runtime=8.1.1467-2
 	depends = gpm
 	depends = acl
 	optdepends = python2: Python 2 language support
@@ -24,7 +24,7 @@ pkgbase = vim-x11
 	optdepends = lua: Lua language support
 	optdepends = perl: Perl language support
 	optdepends = tcl: Tcl language support
-	provides = vim=8.1.1467-1
+	provides = vim=8.1.1467-2
 	provides = xxd
 	conflicts = vim-minimal
 	conflicts = vim
