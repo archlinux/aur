@@ -1,14 +1,14 @@
 pkgbase = libics
 	pkgdesc = Image Cytometry Standard file reading and writing.
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://svi-opensource.github.io/libics/
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	depends = zlib
-	source = https://github.com/svi-opensource/libics/archive/1.6.2.tar.gz
-	sha256sums = 0dfe1a00579d9e320e2bd81137cee4b534e971c35964ec99656a9410cc45a84a
+	source = libics-1.6.3.tar.gz::https://github.com/svi-opensource/libics/archive/1.6.3.tar.gz
+	sha256sums = 28d5537237bb9adab1756cff69aac26fd82281f833315d5510ebe6e6b2815ea9
 
 pkgname = libics
 
