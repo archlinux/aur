@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 275582 2017-12-22 23:33:04Z arojas $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# ContributorMaintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
+# Maintainer:  Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gcstar
 _pkgname=GCstar
 pkgver=1.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection management application"
 arch=('any')
 url="http://www.gcstar.org"
@@ -17,7 +17,7 @@ depends=('gtk2-perl' 'perl-libwww' 'perl-xml-simple'
 	 'perl-gd' 'perl-date-calc' 'perl-lwp-protocol-https'
 	 'perl-archive-zip' 'perl-datetime-format-strptime'
 	 'perl-gdgraph' 'perl-mp3-info')
-# 'perl-ogg-vorbis-header-pureperl' 'perl-mp3-tag'
+optdepends=('perl-image-exiftool:  to retrieve data from a mkv file')
 source=(https://gitlab.com/Kerenoc/GCstar/-/archive/v$pkgver/${_pkgname}-v$pkgver.tar.bz2)
 sha256sums=('0f0ff1a8ac7dcd9ce6c83ebc46692260b8a1c123918227a97883e24db4952ee0')
 
