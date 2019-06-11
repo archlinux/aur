@@ -3,7 +3,7 @@
 
 pkgname='perl-mojo-pg'
 pkgver='4.13'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Mojolicious ♥ PostgreSQL"
 arch=('any')
 license=('PerlArtistic' 'GPL')

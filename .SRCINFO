@@ -1,7 +1,7 @@
 pkgbase = perl-mojo-pg
 	pkgdesc = Mojolicious ♥ PostgreSQL
 	pkgver = 4.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Mojo-Pg
 	arch = any
 	license = PerlArtistic
