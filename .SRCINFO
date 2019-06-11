@@ -1,0 +1,33 @@
+pkgbase = lib32-nvidia-340xx-utils
+	pkgver = 340.107
+	pkgrel = 3
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://us.download.nvidia.com/XFree86/Linux-x86/340.107/NVIDIA-Linux-x86-340.107.run
+	sha512sums = 0add713942bcdb639d19b5c36f5e0cea14f9e07490191d46dfeba0515ede7700fd8e9467ec531d38329fe1e76bf45905e70e0d440e7bc2dc79c1d767eab03338
+
+pkgname = lib32-nvidia-340xx-utils
+	pkgdesc = NVIDIA drivers utilities (32-bit)
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	depends = nvidia-340xx-utils
+	optdepends = lib32-opencl-nvidia-340xx
+	provides = lib32-libgl
+	provides = lib32-libegl
+	provides = lib32-libgles
+	provides = lib32-nvidia-340xx-libgl
+	provides = lib32-nvidia-utils
+	conflicts = lib32-nvidia-340xx-libgl
+	conflicts = lib32-nvidia-utils
+	replaces = lib32-nvidia-340xx-libgl
+
+pkgname = lib32-opencl-nvidia-340xx
+	pkgdesc = OpenCL implemention for NVIDIA (32-bit)
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = lib32-opencl-driver
+	conflicts = lib32-opencl-nvidia
+
