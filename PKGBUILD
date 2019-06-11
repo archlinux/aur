@@ -1,9 +1,9 @@
 # Maintainer: Amish <contact at via dot aur>
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname=perl-encode-detect
 pkgver=1.01
-pkgrel=5
+pkgrel=6
 pkgdesc="An Encode::Encoding subclass that detects the encoding of data"
 _dist=Encode-Detect
 arch=('any')
@@ -36,5 +36,3 @@ package() {
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
-
-# vim:set ts=2 sw=2 et:
