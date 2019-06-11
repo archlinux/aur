@@ -1,17 +1,17 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=tenshi-rs
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc='Unbound local-zone generator for curated hosts files'
-arch=(aarch64 arm armv6h armv7h i686 x86_64)
+arch=(aarch64 armv6h armv7h i686 x86_64)
 url=https://github.com/flacks/tenshi
 license=(GPL3)
-makedepends=(rust)
+makedepends=(cargo)
 optdepends=('sudo: to write to destination as another user')
 conflicts=(tenshi-rs-git)
 source=($url/archive/$pkgver.tar.gz)
-sha512sums=('b5affe3b5cae81e9359c7e7a5a516b7e80e2a0e115f82a9aef29b5a934e5482d7ec5aea321367aa26bc7c19ae0d2ffb05253d5ea4767dd08bf4f87283bb87fcd')
+sha512sums=('cc5536f12af71a3f0df8fac7f754eba2ff35e13083815bf309f81775065ff20bc5d02baa0b95194009201a94b00c95c28783511f170befb7cc13fd2f55e9aa1d')
 
 build() {
   cd tenshi-$pkgver
@@ -20,7 +20,7 @@ build() {
 
 package() {
   cd tenshi-$pkgver
-  install -D target/release/tenshi "$pkgdir"/usr/bin/tenshi-rs
-  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/tenshi-rs
-  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/tenshi-rs
+  install -D target/release/tenshi -t "$pkgdir"/usr/bin
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/tenshi
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/tenshi
 }
