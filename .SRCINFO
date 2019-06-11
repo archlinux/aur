@@ -19,6 +19,7 @@ pkgbase = waterfox-kde
 	makedepends = rust
 	makedepends = clang
 	makedepends = llvm
+	makedepends = git
 	depends = gtk3
 	depends = gtk2
 	depends = libxt
@@ -35,6 +36,7 @@ pkgbase = waterfox-kde
 	depends = nspr>=4.15
 	depends = hicolor-icon-theme
 	depends = jemalloc
+	depends = libevent
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support

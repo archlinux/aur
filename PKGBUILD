@@ -10,9 +10,9 @@ arch=('x86_64')
 license=('MPL')
 url="https://www.waterfox.net/"
 depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
-         'nss>=3.34' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr>=4.15' 'hicolor-icon-theme' 'jemalloc')
+         'nss>=3.34' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr>=4.15' 'hicolor-icon-theme' 'jemalloc' 'libevent')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf' 'inetutils' 'xorg-server-xvfb'
-             'autoconf2.13' 'rust' 'clang' 'llvm')
+             'autoconf2.13' 'rust' 'clang' 'llvm' 'git')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -73,7 +73,7 @@ export CXX=clang++
 export LDFLAGS="-Wl,-z,norelro,-O3,--sort-common,--as-needed,--relax,-z,combreloc,-z,global,--no-omagic"
 
 ac_add_options --enable-optimize="-O3 -msse2 -mfpmath=sse -march=native -mtune=native -fcolor-diagnostics -w"
-ac_add_options --target=x86_64-pc-linux-gnu
+ac_add_options --target=$CARCH-pc-linux-gnu
 
 ac_add_options --enable-alsa
 ac_add_options --enable-pulseaudio
@@ -156,7 +156,7 @@ export MOZ_ENABLE_PROFILER_SPS=
 export MOZ_PROFILING=
 END
 
-  msg "Patching for KDE"
+  echo "Patching for KDE"
   #patch -Np1 -i "../mozilla-kde-$_patchrev.patch"
   #patch -Np1 -i "../waterfoxproject-kde-56.2.0.patch"
   #patch -Np1 -i "../firefox-kde-$_patchrev.patch"
@@ -166,7 +166,7 @@ END
   patch -Np1 -i "../pgo_fix_missing_kdejs.patch"
 
   # https://bugs.archlinux.org/task/52183
-  msg "Patching for Jack"
+  echo "Patching for Jack"
   patch -Np1 -i ../jack-system-ports.patch
 
 }
