@@ -11,7 +11,9 @@ pkgbase = dwm-baitinq-git
 	depends = libxft
 	provides = dwm
 	conflicts = dwm
-	source = git://github.com/Baitinq/dwm.git
+	source = git://github.com/$author/$_gitname.git
+	md5sums = SKIP
+	sha1sums = SKIP
 	sha256sums = SKIP
 
 pkgname = dwm-baitinq-git
