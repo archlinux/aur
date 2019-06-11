@@ -78,7 +78,9 @@ depends=(
 	'wingpanel-indicator-notifications'
 	'wingpanel-indicator-power'
 	'wingpanel-indicator-session'
-	'wingpanel-indicator-sound')
+	'wingpanel-indicator-sound'
+	'xorg'
+	)
 optdepends=('wingpanel-indicator-a11y' 'wingpanel-indicator-nightlight' 'wingpanel-indicator-privacy')
 makedepends=('git' 'meson' 'ninja' 'vala>=0.40.3-1')
 provides=("${pkgname}")
