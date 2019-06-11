@@ -1,14 +1,14 @@
 pkgbase = mseed2ascii
 	pkgdesc = Convert miniSEED seismic time series to ASCII.
-	pkgver = 2.4
+	pkgver = 2.6
 	pkgrel = 1
 	url = https://github.com/iris-edu/mseed2ascii
 	arch = x86_64
 	license = GPL3
 	depends = libmseed
 	depends = zlib
-	source = mseed2ascii-2.4.tar.gz::https://github.com/iris-edu/mseed2ascii/archive/v2.4.tar.gz
-	sha256sums = 73543b42607e00ab0c5ac6f1a2b147a13c1703697cc63a7c7987b49543453abb
+	source = mseed2ascii-2.6.tar.gz::https://github.com/iris-edu/mseed2ascii/archive/v2.6.tar.gz
+	sha256sums = c0e0d8561567079171f6066c56256b67c43b544a78fc00f7b2cde5d3d490bea1
 
 pkgname = mseed2ascii
 

@@ -2,7 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=mseed2ascii
-pkgver=2.4
+pkgver=2.6
 pkgrel=1
 pkgdesc="Convert miniSEED seismic time series to ASCII."
 arch=("x86_64")
@@ -10,7 +10,7 @@ url="https://github.com/iris-edu/mseed2ascii"
 license=('GPL3')
 depends=('libmseed' 'zlib')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('73543b42607e00ab0c5ac6f1a2b147a13c1703697cc63a7c7987b49543453abb')
+sha256sums=('c0e0d8561567079171f6066c56256b67c43b544a78fc00f7b2cde5d3d490bea1')
 
 prepare() {
   cd "${pkgname}-${pkgver}/src"
