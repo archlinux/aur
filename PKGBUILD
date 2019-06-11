@@ -19,7 +19,7 @@ source=(
     "tos.html"
 )
 sha256sums=('4e765a1af3621ac70efd1d63ff17910845c5bed3d87ba80d2095a077e9e10d9b'
-            'f6c6b61a0eef6be796b2c249acf6cf79c5693f5aacb81b10f1a6457b4e4f45fb'
+            'a64e00e3fb2f3d3b81e0f4492e339ab72c61572f4e70b2268edd94c9e69acf1b'
             '9c969cc82314240860737dc09d48970271c798c9b1116ceb91556f75959788a2')
 
 prepare() {
