@@ -8,8 +8,8 @@ pkgname=('nvidia-full-beta-all'
          'nvidia-settings-full-beta-all'
          'lib32-nvidia-utils-full-beta-all'
          'lib32-opencl-nvidia-full-beta-all')
-pkgver=430.14
-pkgrel=2
+pkgver=430.26
+pkgrel=1
 pkgdesc='Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -23,7 +23,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'FS62142.patch'
         'nvidia-utils-full-beta-all-change-vulkan-driver-path.patch'
         'nvidia-settings-full-beta-all-change-desktop-paths.patch')
-sha256sums=('00d46ffaf3e1e430081ddbd68b74cc361cd1328e8944224dfe69630dd8540f17'
+sha256sums=('66ab94a94436732e6e9e8a95a0f5418759a4c2abd2ede65a9472a8de08edcee6'
             '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             'c961006882afb691410c017c239e2c2ef61badb88f15735d37112b513ef0a99d'
@@ -57,8 +57,8 @@ prepare() {
     
     # create a build directory for each installed kernel
     local _kernel
-    local _kernels
-    _kernels=($(find /usr/lib/modules/extramodules-*/version -exec cat {} +))
+    local -a _kernels
+    mapfile -t _kernels < <(find /usr/lib/modules/extramodules-*/version -exec cat {} +)
     for _kernel in "${_kernels[@]}"
     do
         cp -a kernel "kernel-${_kernel}"
@@ -74,8 +74,8 @@ prepare() {
 
 build() {
     local _kernel
-    local _kernels
-    _kernels=($(find /usr/lib/modules/extramodules-*/version -exec cat {} +))
+    local -a _kernels
+    mapfile -t _kernels < <(find /usr/lib/modules/extramodules-*/version -exec cat {} +)
     
     for _kernel in "${_kernels[@]}"
     do
@@ -92,11 +92,11 @@ package_nvidia-full-beta-all() {
     conflicts=('nvidia')
     
     local _dir
-    local _kerndir
     local _kernel
-    _kerndir=($(find /usr/lib/modules -maxdepth 1 -type d -name 'extramodules-*'))
+    local -a _kerndirs
+    mapfile -t -d '' _kerndirs < <(find /usr/lib/modules -maxdepth 1 -type d -name 'extramodules-*' -print0)
     
-    for _dir in "${_kerndir[@]}"
+    for _dir in "${_kerndirs[@]}"
     do
         _kernel="$(cat "${_dir}/version")"
         
