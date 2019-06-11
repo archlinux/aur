@@ -5,7 +5,7 @@
 pkgname=gcstar
 _pkgname=GCstar
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection management application"
 arch=('any')
 url="http://www.gcstar.org"
@@ -14,7 +14,7 @@ depends=('gtk2-perl' 'perl-libwww' 'perl-xml-simple'
 	 'perl-net-snmp' 'perl-xml-parser' 'perl-switch'
 	 'perl-xml-libxml' 'perl-sort-naturally'
 	 'perl-http-message' 'perl-http-date' 'perl-http-cookies'
-	 'perl-gd' 'perl-date-calc'
+	 'perl-gd' 'perl-date-calc' 'perl-lwp-protocol-https'
 	 'perl-archive-zip' 'perl-datetime-format-strptime'
 	 'perl-gdgraph' 'perl-mp3-info')
 # 'perl-ogg-vorbis-header-pureperl' 'perl-mp3-tag'
