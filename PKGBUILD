@@ -42,7 +42,7 @@ prepare() {
 
   # Geometric (OpenGL-less) picking
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
-  git cherry-pick -n bfdf54fa
+  git cherry-pick -n eddfdfcd
 
   # clutter/stage-cogl: Don't skip over the next frame
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/520
@@ -91,7 +91,7 @@ prepare() {
 
   # cogl: Remove GLX "threaded swap wait" used on Nvidia [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/602
-  git cherry-pick -n fd2a7562
+  git cherry-pick -n dfb1ef0c
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
