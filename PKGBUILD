@@ -44,18 +44,15 @@ build() {
     --disable-shared \
     --disable-nls \
     --disable-threads \
-    --enable-languages=c,c++ \
+    --enable-languages=c++ \
     --enable-multilib \
-    --with-system-zlib \
     --with-newlib \
     --with-local-prefix=/usr/${_target} \
     --with-sysroot=/usr/${_target} \
     --with-as=/usr/bin/${_target}-as \
     --with-ld=/usr/bin/${_target}-ld \
-    --disable-libgomp \
-    --disable-libssp \
-    --enable-interwork \
-    --enable-addons
+    --disable-namespaces \
+    --disable-libgcc-rebuild
 
   make all-target-libstdc++-v3
 }
