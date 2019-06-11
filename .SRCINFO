@@ -1,7 +1,7 @@
 pkgbase = perl-apache-session
 	pkgdesc = A persistence framework for session data
 	pkgver = 1.93
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Apache-Session
 	arch = any
 	license = GPL
