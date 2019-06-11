@@ -1,14 +1,12 @@
-# Maintainer:  <fr@nz>
+# Maintainer:  kngfr <9bcfbc1ca230857ba09584697f20708a@kngfr.de>
 pkgname=phoneinfoga
 _reponame=PhoneInfoga
-pkgver=v1.6.7.r23.g7fa5127
+pkgver=v1.6.7.r49.g74baad0
 pkgrel=1
-#epoch=
 pkgdesc="Advanced information gathering & OSINT tool for phone numbers."
 arch=('any')
 url="https://github.com/sundowndev/PhoneInfoga/wiki"
 license=('GPL')
-#groups=()
 depends=('python3'
 	 'python-requests'
 	 'python-beautifulsoup4'
@@ -16,43 +14,13 @@ depends=('python3'
 	 'python-phonenumbers'
 	 'python-urllib3'
 	 'python-colorama')
-#makedepends=()
-#checkdepends=()
-#optdepends=()
-#provides=()
-#conflicts=()
-#replaces=()
-#backup=()
-#options=()
-#install=
-#changelog=
 source=("git+https://github.com/sundowndev/PhoneInfoga")
 md5sums=('SKIP')
-#noextract=()
 
 pkgver() {
   cd "$srcdir/$_reponame"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
-#prepare() {
-#  cd "$srcdir/$pkgname-$pkgver"
-#
-#  patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-#}
-
-#build() {
-#  cd "$srcdir/$pkgname"
-#
-#  ./configure --prefix=/usr
-#  make
-#}
-
-#check() {
-#  cd "$srcdir/$pkgname-$pkgver"
-#
-#  make -k check
-#}
 
 package() {
   cd "$srcdir/$_reponame"
@@ -62,9 +30,8 @@ package() {
   install -Dt "$pkgdir"/usr/share/"$pkgname"/scanners "$srcdir/$_reponame"/scanners/*
   install -D config.example.py "$pkgdir"/usr/share/"$pkgname"/config.py
 
-  printf "#!/bin/sh\npython3 '/usr/share/$pkgname/phoneinfoga.py'" > "$srcdir/$_reponame"/phoneinfoga
+  printf "#!/bin/sh\npython3 '/usr/share/$pkgname/phoneinfoga.py' "'$@' > "$srcdir/$_reponame"/phoneinfoga
   install -Dm755 "$srcdir/$_reponame"/phoneinfoga "$pkgdir"/usr/bin/phoneinfoga
-
   
   install -Dt "$pkgdir"/usr/share/licenses/"$pkgname" LICENSE
 }
