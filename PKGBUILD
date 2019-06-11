@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=intel-graphics-compiler-bin
-pkgver=1.0.7
-_build=2061
+pkgver=1.0.8
+_build=2114
 pkgrel=1
 epoch=1
 pkgdesc='Intel Graphics Compiler for OpenCL (pre-compiled binaries)'
@@ -22,10 +22,10 @@ noextract=("intel-igc-core_${pkgver}-${_build}_amd64.deb"
            "intel-igc-media_${pkgver}-${_build}_amd64.deb"
            "intel-igc-opencl-devel_${pkgver}-${_build}_amd64.deb"
            "intel-igc-opencl_${pkgver}-${_build}_amd64.deb")
-sha256sums=('2dc7f40dfb0a8db4149dddff5beee311fbeb323ec30d7a4c36babe4590ace433'
-            'cd78ac42d6df4a65d34b68795fdafe8ae578995c98a739b30a2c0d3bc5169a4b'
-            'f061cb229057338574cb77d8f7514cd13cc694d42f6779254b4f05dfa057f489'
-            '5abee8a04d82ddf2cd3faf55920a4e3c490dcd48570c3208fc9c980c42951c91'
+sha256sums=('9ca0ab7629c21f247fe78774a91dee43b410f4e1b463871066388bf59dc39e31'
+            '0c8dd387adcba6e41e189df1404200c5ef1dbaf3701fe6b2830d3b60eb32295a'
+            '79c0f7a66819bbe4e0e1d9025143285a3289c0093225d3e45b9c24211d3c0de1'
+            'bf8b6b4f42f86596e9cfaaaa735c7ca5abe8935cd42725b0b97f266c5773423c'
             '4099c7bc8a69e9e9c82f898e75870435cc0ca989a816a8ba6e38faabc88f0c36')
 
 prepare() {
