@@ -1,7 +1,7 @@
 pkgbase = firefly-iii
 	pkgdesc = PHP personal finances manager
 	pkgver = 4.7.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/firefly-iii/firefly-iii
 	install = firefly-iii.install
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=firefly-iii
 pkgver=4.7.17
-pkgrel=1
+pkgrel=2
 pkgdesc='PHP personal finances manager'
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -28,10 +28,12 @@ package() {
 
     cp -v .env.example "$pkgdir/etc/webapps/$pkgname/.env"
     cp -v .deploy/*/.env* "$pkgdir/etc/webapps/$pkgname"
-
+    
     for i in '' '.docker' '.sandstorm' '.heroku' ; do
         mv -v "$pkgdir/etc/webapps/$pkgname/.env$i" "$pkgdir/etc/webapps/$pkgname/config.env$i"
     done
+
+    ln -s "/etc/webapps/$pkgname/config.env" "$pkgdir/usr/share/webapps/$pkgname/.env"
 }
 
 # vim:ts=4:sw=4:expandtab
