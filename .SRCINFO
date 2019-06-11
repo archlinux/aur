@@ -1,7 +1,7 @@
 pkgbase = perl-uri-query
 	pkgdesc = class providing URI query string manipulation
 	pkgver = 0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/URI::Query
 	arch = any
 	license = PerlArtistic

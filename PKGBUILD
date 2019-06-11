@@ -2,7 +2,7 @@
 
 pkgname='perl-uri-query'
 pkgver='0.16'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="class providing URI query string manipulation"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -35,7 +35,7 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
   make test
 }
 
