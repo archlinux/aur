@@ -2,7 +2,7 @@
 # Contributor: greyltc
 
 pkgname=cbang-git
-pkgver=1.3.2.r10.g89a48d3
+pkgver=1.3.2.r23.g8adc7f7
 pkgrel=1
 pkgdesc="A library of cross-platform C++ utilities"
 arch=('x86_64')
@@ -17,7 +17,6 @@ depends=(
   'zlib'
   'bzip2'
   'expat'
-  'mariadb-libs'
 )
 makedepends=(
   'git'
