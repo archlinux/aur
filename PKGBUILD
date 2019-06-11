@@ -47,8 +47,15 @@ depends=(
 )
 
 _dir="geometry-${pkgver}/tf"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry/archive/${pkgver}.tar.gz")
-sha256sums=('61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry/archive/${pkgver}.tar.gz"
+        CMakeLists-signal.patch)
+sha256sums=('61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4'
+            'ab139685eaa571c7e1b3ef527bb9ef367ba05ab7f859602a5d6ed59359459e2d')
+
+prepare() {
+  cd "${srcdir}/${_dir}"
+  patch -uN CMakeLists.txt ../../CMakeLists-signal.patch || return 1
+}
 
 build() {
 	# Use ROS environment variables.
