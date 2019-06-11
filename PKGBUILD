@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock at openss7 dot org>
 
 pkgname=perl-ev-glib
-pkgver='2.01'
-pkgrel=12
+pkgver=2.01
+pkgrel=13
 pkgdesc="Embed the glib main loop into EV"
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/perldoc?EV::Glib'
