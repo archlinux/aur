@@ -1,6 +1,6 @@
 pkgbase = linggle-git
 	pkgdesc = A CLI tool of Linggle implemented in rust.
-	pkgver = r11.acf52f6
+	pkgver = 0.1.1.r0.g7f81bc5
 	pkgrel = 1
 	url = https://github.com/OIdiotLin/linggle-rust
 	arch = x86_64

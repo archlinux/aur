@@ -1,6 +1,6 @@
 # Maintainer: H.D. Lin <oidiotlin@gmail.com>
 pkgname=linggle-git
-pkgver=r11.acf52f6
+pkgver=0.1.1.r0.g7f81bc5
 pkgrel=1
 url="https://github.com/OIdiotLin/linggle-rust"
 _gitname="linggle-rust"
@@ -14,8 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd $_gitname
-    # git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
