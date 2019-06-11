@@ -3,12 +3,13 @@
 
 pkgname=perl-imager-qrcode
 pkgver=0.034
-pkgrel=3
+pkgrel=6
 pkgdesc='Imager-QRCode for Perl'
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~kurihara/Imager-QRCode-${pkgver}/"
 license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-imager' 'qrencode')
+makedepends=('perl-module-install')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/K/KU/KURIHARA/Imager-QRCode-${pkgver}.tar.gz")
 sha256sums=('ed370829552dcdf17a073bc477a1cb5782731d500d63f415bf4886152047d475')
