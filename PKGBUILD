@@ -19,7 +19,7 @@ prepare() {
 
 build() {
     cd "$srcdir/broker"
-    ./configure --disable-python --disable-docs --disable-tests --enable-debug --with-log-level=TRACE
+    ./configure --disable-python --disable-docs --disable-tests --enable-debug
     make -j7
 }
 
