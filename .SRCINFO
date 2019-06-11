@@ -1,7 +1,7 @@
 pkgbase = msp430-elf-libstdc++
 	pkgdesc = The GNU C++ Standard Library for the msp430-elf target.
 	pkgver = 9.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64

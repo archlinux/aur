@@ -4,7 +4,7 @@
 _target="msp430-elf"
 pkgname=${_target}-libstdc++
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU C++ Standard Library for the ${_target} target."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
