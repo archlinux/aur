@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 pkgname=amdvlk
 pkgver=2019.Q2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='AMDVLK - AMD Open Source Driver for Vulkan®'
 arch=('x86_64')
 url='https://github.com/GPUOpen-Drivers/AMDVLK'
