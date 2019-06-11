@@ -2,9 +2,8 @@
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=flif
-_srcname=FLIF
 pkgver=0.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Free Lossless Image Format'
 arch=('x86_64')
 url='https://github.com/FLIF-hub/FLIF/'
@@ -24,7 +23,7 @@ sha256sums=('aa02a62974d78f8109cff21ecb6d805f1d23b05b2db7189cfdf1f0d97ff89498'
             'c516d92d4724e319af79bb1ac5d3dde81dac359fd4a02af1ee71239a49d58710')
 
 prepare() {
-    cd "${_srcname}-${pkgver}"
+    cd "FLIF-${pkgver}"
     
     # use build flags
     patch -Np1 -i "${srcdir}/flif-use-build-flags.patch"
@@ -34,33 +33,30 @@ prepare() {
 }
 
 build() {
-    cd "${_srcname}-${pkgver}/src"
+    cd "FLIF-${pkgver}/src"
     
     make all decoder viewflif test-interface
     
 }
 
 check() {
-    cd "${_srcname}-${pkgver}/testFiles"
+    cd "FLIF-${pkgver}/src"
     
     local _image
-    local _images
-    _images=($(find -type f -name '*'))
+    local -a _images
+    mapfile -t -d '' _images < <(find "${srcdir}/FLIF-${pkgver}/testFiles" -type f -print0)
     
-    cd "${srcdir}/${_srcname}-${pkgver}/src"
-    
-    export LD_LIBRARY_PATH="${srcdir}/${_srcname}-${pkgver}/src"
+    export LD_LIBRARY_PATH="${srcdir}/FLIF-${pkgver}/src"
     
     for _image in "${_images[@]}"
     do
-        _image="${_image#./}"
-        printf '%s\n' "  -> Testing with image '${_image}'..."
-        ./test-interface "../${_image}"
+        printf '%s\n' "  -> Testing with image '${_image##*/}'..."
+        ./test-interface "$_image"
     done
 }
 
 package() {
-    cd "${_srcname}-${pkgver}/src"
+    cd "FLIF-${pkgver}/src"
     
     make PREFIX="${pkgdir}/usr" install{,-dev,-decoder,-viewflif}
 }
