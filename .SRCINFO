@@ -1,0 +1,15 @@
+pkgbase = python2-rq-scheduler
+	pkgdesc = Small package that adds job scheduling capabilities to RQ.
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/rq/rq-scheduler/
+	arch = any
+	license = MIT
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2-rq
+	source = https://github.com/rq/rq-scheduler/archive/v0.8.3.tar.gz
+	sha256sums = a5551ac6bcc97eb791c0375b55f6cab975882e42dd4d5c1f361f77202fe9b5bb
+
+pkgname = python2-rq-scheduler
+
