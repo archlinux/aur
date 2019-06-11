@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='nginx-vts-exporter'
-pkgver='0.10.3'
+pkgver='0.10.4'
 pkgrel='1'
 pkgdesc='Simple server that scrapes Nginx vts stats and exports them via HTTP for Prometheus consumption'
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.service")
-sha256sums=('a07e0a6170ac490f96a8e505795dcbfa0233976cf1efd36057014cff49622d95'
+sha256sums=('936d4c0e55a14c789bfc22a4bc9e9979535c2e523762bd78315c25fb3f53ec2d'
             '7838c08b3299d2d6d5bb0b6c281f1fcee8f9dc254bfb5e1a8d59699e52495f06')
 
 prepare() {
