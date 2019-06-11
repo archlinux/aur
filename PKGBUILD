@@ -1,6 +1,6 @@
 # Maintainer: leogx9r
 pkgname=gtk-theme-windows10-dark-git
-pkgver=39e1cc6
+pkgver=7f2121c
 pkgrel=1
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines. Keeps upstream with master branch."
 arch=('any')
