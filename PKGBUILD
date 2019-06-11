@@ -1,6 +1,6 @@
 pkgname=('alacritty-git' 'alacritty-terminfo-git')
 _pkgname="alacritty"
-pkgver=0.3.2.1203.gf3cc7c4
+pkgver=0.3.3.1233.g0b88b9f
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/jwilm/alacritty"
@@ -11,7 +11,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname/alacritty
-	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 package_alacritty-git() {
