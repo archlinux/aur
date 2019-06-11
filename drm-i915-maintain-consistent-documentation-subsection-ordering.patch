@@ -1,0 +1,86 @@
+From 551bd3368a7b3cfef01edaade8970948d178d40a Mon Sep 17 00:00:00 2001
+From: Jonathan Corbet <corbet@lwn.net>
+Date: Thu, 23 May 2019 10:06:46 -0600
+Subject: drm/i915: Maintain consistent documentation subsection ordering
+
+From: Jonathan Corbet <corbet@lwn.net>
+
+commit 551bd3368a7b3cfef01edaade8970948d178d40a upstream.
+
+With Sphinx 2.0 (or prior versions with the deprecation warnings fixed) the
+docs build fails with:
+
+  Documentation/gpu/i915.rst:403: WARNING: Title level inconsistent:
+
+  Global GTT Fence Handling
+  ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  reST markup error:
+  Documentation/gpu/i915.rst:403: (SEVERE/4) Title level inconsistent:
+
+I "fixed" it by changing the subsections in i915.rst, but that didn't seem
+like the correct change.  It turns out that a couple of i915 files create
+their own subsections in kerneldoc comments using apostrophes as the
+heading marker:
+
+  Layout
+  ''''''
+
+That breaks the normal subsection marker ordering, and newer Sphinx is
+rather more strict about enforcing that ordering.  So fix the offending
+comments to make Sphinx happy.
+
+(This is unfortunate, in that kerneldoc comments shouldn't need to be aware
+of where they might be included in the heading hierarchy, but I don't see
+a better way around it).
+
+Cc: stable@vger.kernel.org  # v4.14+
+Acked-by: Jani Nikula <jani.nikula@intel.com>
+Signed-off-by: Jonathan Corbet <corbet@lwn.net>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+---
+ drivers/gpu/drm/i915/i915_reg.h          |    6 +++---
+ drivers/gpu/drm/i915/intel_workarounds.c |    2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+--- a/drivers/gpu/drm/i915/i915_reg.h
++++ b/drivers/gpu/drm/i915/i915_reg.h
+@@ -32,7 +32,7 @@
+  * macros. Do **not** mass change existing definitions just to update the style.
+  *
+  * Layout
+- * ''''''
++ * ~~~~~~
+  *
+  * Keep helper macros near the top. For example, _PIPE() and friends.
+  *
+@@ -78,7 +78,7 @@
+  * style. Use lower case in hexadecimal values.
+  *
+  * Naming
+- * ''''''
++ * ~~~~~~
+  *
+  * Try to name registers according to the specs. If the register name changes in
+  * the specs from platform to another, stick to the original name.
+@@ -96,7 +96,7 @@
+  * suffix to the name. For example, ``_SKL`` or ``_GEN8``.
+  *
+  * Examples
+- * ''''''''
++ * ~~~~~~~~
+  *
+  * (Note that the values in the example are indented using spaces instead of
+  * TABs to avoid misalignment in generated documentation. Use TABs in the
+--- a/drivers/gpu/drm/i915/intel_workarounds.c
++++ b/drivers/gpu/drm/i915/intel_workarounds.c
+@@ -37,7 +37,7 @@
+  *    costly and simplifies things. We can revisit this in the future.
+  *
+  * Layout
+- * ''''''
++ * ~~~~~~
+  *
+  * Keep things in this file ordered by WA type, as per the above (context, GT,
+  * display, register whitelist, batchbuffer). Then, inside each type, keep the
