@@ -5,7 +5,6 @@ url='http://ros.org/wiki/qt_gui_cpp'
 
 pkgname='ros-melodic-qt-gui-cpp'
 pkgver='0.3.11'
-_pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -36,9 +35,9 @@ depends=(
 	tinyxml
 )
 
-_dir="qt_gui_core-release-release-melodic-qt_gui_cpp-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/melodic/qt_gui_cpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('fbbba01e82d3c63dfeab0fdc9caac8916de97295a8e8c08e715dc965e69dc545')
+_dir="qt_gui_core-${pkgver}/qt_gui_cpp"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/qt_gui_core/archive/${pkgver}.tar.gz")
+sha256sums=('708873d6b5a2e4543435e8a1a2349de8eb41937aaf78b9dbcbe08b4a1dc12da2')
 
 build() {
 	# Use ROS environment variables.
