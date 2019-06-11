@@ -1,10 +1,8 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
-_commit='f93fe9bfd94884cec2ba711897222e0df5569a53'
-
 pkgname=nccl
-pkgver=2.4.6
+pkgver=2.4.7
 pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
@@ -12,7 +10,7 @@ url='https://developer.nvidia.com/nccl/'
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'cuda')
-source=("$pkgname"::"git+https://github.com/NVIDIA/nccl.git#commit=${_commit}")
+source=("$pkgname"::"git+https://github.com/NVIDIA/nccl.git#tag=v${pkgver}-1")
 sha256sums=('SKIP')
 
 prepare() {
