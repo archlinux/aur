@@ -3,9 +3,12 @@
 post_install() {
     chown -R turtl:turtl /var/lib/turtl
     echo ":: Turtle needs a dedicated PostgreSQL user/db set up for it."
-    echo "   Once it's set up, edit /var/www/turtl/server/config/config.yaml"
+    echo "   Once it's set up, edit /usr/share/webapps/turtl/config/config.yaml"
     echo "   to make 'connstr' match your user/db."
     echo "   e.g.: postgres://turtl:strongpassword@127.0.0.1:5432/turtl"
+    echo
+    echo "   Visit https://wiki.archlinux.org/index.php/PostgreSQL"
+    echo "   to know how to install and configure PostgreSQL"
     echo
     echo ":: Take a look into 'uploads' and 's3' in config.yaml,"
     echo "   you may need to modify them to match your needs."
@@ -14,7 +17,7 @@ post_install() {
     echo "   to any long string you want."
     echo 
     echo ":: Then, initialize the database"
-    echo "   cd /var/www/turtl/server"
+    echo "   cd /usr/share/webapps/turtl"
     echo "   ./scripts/init-db.sh"
     echo 
     echo ":: Finnaly, start the server: systemctl start turtl.service"
