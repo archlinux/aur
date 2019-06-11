@@ -3,8 +3,8 @@
 # Contributor: Ng Oon-Ee
 
 pkgname=nvidia-beta-all
-pkgver=430.14
-pkgrel=2
+pkgver=430.26
+pkgrel=1
 pkgdesc='NVIDIA drivers for all kernels on the system (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -17,7 +17,7 @@ options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'FS62142.patch')
-sha256sums=('0f583a277b1731cb8327510b75dba9cf7adf5c781247e4f48bcc9f358253278f'
+sha256sums=('a7dfb1bdd7591f42bbe501b8a9a80349415bdb51723db3cd11b08ce2e2d4679c'
             'c961006882afb691410c017c239e2c2ef61badb88f15735d37112b513ef0a99d')
 
 prepare() {
@@ -29,8 +29,8 @@ prepare() {
     
     # create a build directory for each installed kernel
     local _kernel
-    local _kernels
-    _kernels=($(find /usr/lib/modules/extramodules-*/version -exec cat {} +))
+    local -a _kernels
+    mapfile -t _kernels < <(find /usr/lib/modules/extramodules-*/version -exec cat {} +)
     for _kernel in "${_kernels[@]}"
     do
         cp -a kernel "kernel-${_kernel}"
@@ -46,8 +46,8 @@ prepare() {
 
 build() {
     local _kernel
-    local _kernels
-    _kernels=($(find /usr/lib/modules/extramodules-*/version -exec cat {} +))
+    local -a _kernels
+    mapfile -t _kernels < <(find /usr/lib/modules/extramodules-*/version -exec cat {} +)
     
     for _kernel in "${_kernels[@]}"
     do
@@ -60,11 +60,11 @@ build() {
 
 package() {
     local _dir
-    local _kerndir
     local _kernel
-    _kerndir=($(find /usr/lib/modules -maxdepth 1 -type d -name 'extramodules-*'))
+    local -a _kerndirs
+    mapfile -t -d '' _kerndirs < <(find /usr/lib/modules -maxdepth 1 -type d -name 'extramodules-*' -print0)
     
-    for _dir in "${_kerndir[@]}"
+    for _dir in "${_kerndirs[@]}"
     do
         _kernel="$(cat "${_dir}/version")"
         
