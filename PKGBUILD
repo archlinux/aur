@@ -4,7 +4,7 @@
 
 pkgname='perl-mojolicious'
 pkgver='8.17'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Real-time web framework"
 arch=('any')
 license=('PerlArtistic' 'GPL')

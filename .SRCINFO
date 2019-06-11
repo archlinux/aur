@@ -1,7 +1,7 @@
 pkgbase = perl-mojolicious
 	pkgdesc = Real-time web framework
 	pkgver = 8.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Mojolicious
 	arch = any
 	license = PerlArtistic
