@@ -1,0 +1,17 @@
+pkgbase = libluv
+	pkgdesc = libuv bindings for luajit and lua 5.1/5.2.
+	pkgver = 1.29.1
+	pkgrel = 2
+	url = https://github.com/luvit/luv
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = cmake
+	makedepends = luajit
+	depends = luajit
+	provides = libluv
+	source = https://github.com/luvit/luv/releases/download/1.29.1-2/luv-1.29.1-2.tar.gz
+	sha256sums = 866e6c82f3eb4ae73222b835c7621d1b8f6b4271b5cee8dd00729338cfef9d47
+
+pkgname = libluv
+
