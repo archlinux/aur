@@ -1,0 +1,3 @@
+ATTRS{idVendor}=="2047",ATTRS{idProduct}=="0010",MODE="0666"
+ATTRS{idVendor}=="2047",ATTRS{idProduct}=="0013",MODE="0666"
+ATTRS{idVendor}=="2047",ATTRS{idProduct}=="0203",MODE="0666"
