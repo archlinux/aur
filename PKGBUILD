@@ -1,7 +1,7 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=firefly-iii
 pkgver=4.7.17
-pkgrel=3
+pkgrel=4
 pkgdesc='PHP personal finances manager'
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -36,6 +36,7 @@ package() {
     ln -s "/etc/webapps/$pkgname/config.env" "$pkgdir/usr/share/webapps/$pkgname/.env"
     rm -rf "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
     mkdir -p "$pkgdir/var/cache/$pkgname"
+    chown http:http "$pkgdir/var/cache/$pkgname"
     ln -s "/var/cache/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
 }
 
