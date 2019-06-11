@@ -1,0 +1,24 @@
+pkgbase = termius-beta
+	pkgdesc = Desktop SSH Client
+	pkgver = 4.2.7
+	pkgrel = 1
+	url = https://www.termius.com/
+	arch = x86_64
+	license = custom
+	makedepends = squashfs-tools
+	depends = gtk3
+	depends = nss
+	depends = libxtst
+	depends = gconf
+	depends = pulseaudio
+	depends = gnutls
+	depends = libxss
+	source = termius-beta-4.2.7.snap::https://api.snapcraft.io/api/v1/snaps/download/yyZzRdoyiRz3EM7iuvjhaIjDfnlFJcZs_64.snap
+	source = termius-beta.desktop
+	source = tos.html
+	sha256sums = 3ff6f8dfab1955be6c2398a55c36df3cf8345e41f9b5b27f60d514b23080fefb
+	sha256sums = 3bc6261d5749c5c9795dbcf3d23476d83c2f4251aa2ec6b1293a6022adaecf68
+	sha256sums = 9c969cc82314240860737dc09d48970271c798c9b1116ceb91556f75959788a2
+
+pkgname = termius-beta
+
