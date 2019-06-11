@@ -1,10 +1,10 @@
 # CPAN Name  : Net-RawIP
 # Contributor: Anonymous
 
-pkgname='perl-net-rawip'
+pkgname=perl-net-rawip
 _cpanname='Net-RawIP'
-pkgver='0.25'
-pkgrel='11'
+pkgver=0.25
+pkgrel=12
 pkgdesc="Perl extension to manipulate raw IP packets with interface to B<libpcap>"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
