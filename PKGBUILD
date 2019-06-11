@@ -1,12 +1,12 @@
-# Maintainer:
-# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
-# Contributor: Maxime Gauduin <alucryd@gmail.com>
-# Contributor: Dave Reisner <dreisner@archlinux.org>
-# Contributor: Alexander Fehr <pizzapunk gmail com>
+# Maintainer:  Eivind Eide <xenofil AT gmail DOT com>
+# Contributor: Alexander F Rødseth <xyproto AT archlinux DOT org>
+# Contributor: Maxime Gauduin <alucryd AT gmail DOT com>
+# Contributor: Dave Reisner <dreisner AT archlinux DOT org>
+# Contributor: Alexander Fehr <pizzapunk AT gmail DOT com>
 
 pkgname=rubyripper
-pkgver=0.6.2
-pkgrel=10
+pkgver=0.7.0rc2
+pkgrel=1
 pkgdesc='Secure audiodisc ripper'
 arch=('any')
 url='http://code.google.com/p/rubyripper/'
@@ -21,9 +21,13 @@ optdepends=('ruby-gtk2: GTK+ GUI'
             'mp3gain: MP3 ReplayGain support'
             'vorbisgain: Ogg Vorbis ReplayGain support'
             'normalize: Normalization support'
-            'cdrdao: Advanced TOC analysis')
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/rubyripper/rubyripper-$pkgver.tar.bz2")
-sha256sums=('817a800ba9a8eca9a8130fad861913c8ebdc4ec3011135e216b41007fc989ebb')
+            'cdrdao: Advanced TOC analysis'
+            'sox: Correct pre-emphasis with sox'
+            'wavpack: WavPack encoding support'
+            'opus-tools: Opus encoding support'
+            'neroaacenc-bin: Nero AAC encoding support')
+source=("https://github.com/bleskodev/rubyripper/archive/v$pkgver.tar.gz")
+sha256sums=('977089c4a262936f9acf82ad1ab5932de97523ba31b61b5ccc1279a94eaea6ae')
 
 build() {
   cd "${pkgname}-${pkgver}"
