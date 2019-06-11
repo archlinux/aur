@@ -29,7 +29,7 @@ package() {
     cp -v .env.example "$pkgdir/etc/webapps/$pkgname/.env"
     cp -v .deploy/*/.env* "$pkgdir/etc/webapps/$pkgname"
 
-	for i in '' '.docker' '.sandstorm' '.heroku' ; do
+    for i in '' '.docker' '.sandstorm' '.heroku' ; do
         mv -v "$pkgdir/etc/webapps/$pkgname/.env$i" "$pkgdir/etc/webapps/$pkgname/config.env$i"
     done
 }
