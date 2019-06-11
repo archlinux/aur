@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=4.0.0b1.r1972.gd579bb5de
+pkgver=4.0.0b2.r298.gf0e625450
 pkgrel=1
 arch=('any')
 url="https://www.spyder-ide.org/"
@@ -40,6 +40,7 @@ package_spyder-git() {
   # Note: 'ipython2-notebook' nor 'jupyter'/'jupyter-nbconvert' contain a Python 2 version of Nbconvert
   #'icu'
   #TODO 'python2-qdarkstyle'
+  #TODO 'python2-diff-match-patch'
   depends=('python2-atomicwrites'
            'python2-chardet'
            'python2-jedi'
@@ -91,6 +92,7 @@ package_spyder3-git() {
   depends=('jupyter-nbconvert'
            'python-atomicwrites'
            'python-chardet'
+           'python-diff-match-patch'
            'python-jedi'
            'python-keyring'
            'python-language-server'
