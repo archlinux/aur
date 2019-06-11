@@ -14,7 +14,7 @@ optdepends=(
 )
 
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('88494f362aa1a0a9acdff763ab3b2af132a5e3ddaa280d3714c50de7afd13ee517d9e9f73da149c4ff6993674efb346e829b0c7e047f0848f5b0bdb43a2ce9c0')
+sha512sums=('637e8eb332a144a26abdd4278799d1e24bb186ca5031ec94c46b2f3fb01a8536e94378db20df17bc085ce6460516576a54ac644cd595b95934455411a0016182')
 
 build() {
 	export GO111MODULE=on
