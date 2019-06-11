@@ -20,9 +20,10 @@ sha256sums=('SKIP')
 
 
 pkgver() {
-    cd "$_gitname"
-    printf '0.r%s.%s' \
-        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitname"
+
+  # Get the version number.
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
