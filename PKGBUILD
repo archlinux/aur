@@ -2,9 +2,9 @@
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
-pkgname='perl-event'
-pkgver='1.26'
-pkgrel='3'
+pkgname=perl-event
+pkgver=1.27
+pkgrel=1
 pkgdesc="Event loop processing"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -12,7 +12,7 @@ options=('!emptydirs')
 makedepends=()
 url='http://search.mcpan.org/dist/Event'
 source=("http://search.mcpan.org/CPAN/authors/id/E/ET/ETJ/Event-${pkgver}.tar.gz")
-md5sums=('a7d576cf90288333a5470bf98bdb948a')
+md5sums=('efb3756fa9aed5337f1c5ec56eee8613')
 _distdir="Event-${pkgver}"
 
 build() {
