@@ -1,4 +1,5 @@
 # Maintainer: David Birks <david@tellus.space>
+# Contributor: David Stark <david@starkers.org>
 
 pkgver=0.99
 pkgrel=1
