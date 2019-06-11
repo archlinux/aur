@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock at openss7 dot org>
 
 pkgname=perl-io-interface
-pkgver='1.09'
-pkgrel=6
+pkgver=1.09
+pkgrel=7
 pkgdesc="Perl extension for access to network card configuration information"
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/perldoc?IO::Interface'
