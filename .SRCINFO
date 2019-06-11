@@ -1,7 +1,7 @@
 pkgbase = perl-string-trim
 	pkgdesc = trim whitespace from your strings
 	pkgver = 0.005
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/String::Trim
 	arch = any
 	license = PerlArtistic
