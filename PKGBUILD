@@ -4,8 +4,7 @@ pkgdesc="ROS - This stack provides Python bindings for Qt."
 url='http://ros.org/wiki/python_qt_binding'
 
 pkgname='ros-melodic-python-qt-binding'
-pkgver='0.3.4'
-_pkgver_patch=0
+pkgver='0.3.5'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -31,9 +30,9 @@ depends=(
 	python-pyqt5
 )
 
-_dir="python_qt_binding-release-release-melodic-python_qt_binding-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/python_qt_binding-release/archive/release/melodic/python_qt_binding/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('bca9bfa241d85e5720d0c84ec2b44bd2715bfb48d7e4d8ca70c4cad313abddde')
+_dir="python_qt_binding-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/python_qt_binding/archive/${pkgver}.tar.gz")
+sha256sums=('98c7116daa637d8abda1f86613ffba9cacf066fe6ed071f2fbf09e2e1860f843')
 
 build() {
 	# Use ROS environment variables.
