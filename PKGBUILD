@@ -1,25 +1,37 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: tardo ... nagi-fanboi*net
 
-pkgname=recoverdm
-pkgver=0.20
-pkgrel=4
-pkgdesc="helps to recover disks with bad sectors"
+set -u
+pkgname='recoverdm'
+pkgver='0.20'; _commit='8ecb7438b6902c040db05313bea57eb093838143'
+pkgrel='4'
+pkgdesc='recover damaged CD DVD and disks with bad sectors'
 arch=('x86_64')
-url="http://www.vanheusden.com/recoverdm/"
+url='http://www.vanheusden.com/recoverdm/'
 license=('GPL')
-depends=(glibc)
-source=(https://www.vanheusden.com/recoverdm/${pkgname}-${pkgver}.tgz)
-sha256sums=('0fd4bc3ce4360a12f69c1440bc31ffd29f0e88f38b9279fb4a783a173d4f6f4c')
+depends=('glibc')
+_giturl='https://github.com/flok99/recoverdm'
+#_srcdir="${pkgname}-${pkgver}"
+_srcdir="${pkgname}-${_commit}"
+source=(
+  #"https://www.vanheusden.com/recoverdm/${pkgname}-${pkgver}.tgz"
+  "${pkgname}-${pkgver}-github.tgz::${_giturl}/archive/${_commit}.tar.gz"
+)
+md5sums=('ee948c9ee2436fb5bc3ecfe0f0509d89')
+sha256sums=('1e34231e79337058a15db563aa9551c4366ee4652879e587edec059e28e55438')
 
 build() {
-  cd "$srcdir"/$pkgname-${pkgver}
+  set -u
+  cd "${_srcdir}"
   make
+  set +u
 }
 
 package() {
-  cd "$srcdir"/$pkgname-${pkgver}
-  install -Dm0755 mergebad "$pkgdir"/usr/bin/mergebad
-  install -Dm0755 recoverdm "$pkgdir"/usr/bin/recoverdm
+  set -u
+  cd "${_srcdir}"
+  install -Dpm0755 'mergebad' 'recoverdm' -t "${pkgdir}/usr/bin/"
+  set +u
 }
+set +u
