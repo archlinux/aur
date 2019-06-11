@@ -1,13 +1,15 @@
 pkgbase = libcoap-git
 	pkgdesc = C-Implementation of CoAP
-	pkgver = r867.771f013
-	pkgrel = 1
+	pkgver = r1628.a5ffdf3
+	pkgrel = 2
 	url = https://libcoap.net/
 	arch = x86
 	arch = x86_64
 	license = BSD2
 	license = GPL2
 	makedepends = git
+	makedepends = doxygen
+	makedepends = asciidoc
 	provides = libcoap
 	conflicts = libcoap
 	source = libcoap::git://github.com/obgm/libcoap.git

@@ -1,12 +1,12 @@
 pkgname=libcoap-git
 _gitname=libcoap
-pkgver=r867.771f013
-pkgrel=1
+pkgver=r1628.a5ffdf3
+pkgrel=2
 pkgdesc="C-Implementation of CoAP"
 arch=('x86' 'x86_64')
 url="https://libcoap.net/"
 license=('BSD2' 'GPL2')
-makedepends=('git')
+makedepends=('git' 'doxygen' 'asciidoc')
 provides=('libcoap')
 conflicts=('libcoap')
 source=("$_gitname::git://github.com/obgm/libcoap.git")
