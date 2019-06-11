@@ -1,14 +1,14 @@
 pkgbase = icu58
 	pkgdesc = International Components for Unicode library
-	pkgver = 58.2
-	pkgrel = 2
+	pkgver = 58.3
+	pkgrel = 1
 	url = http://www.icu-project.org/
 	arch = i686
 	arch = x86_64
 	license = custom:"icu"
 	depends = gcc-libs>=4.7.1-5
-	source = https://vorboss.dl.sourceforge.net/project/icu/ICU4C/58.2/icu4c-58_2-src.tgz
-	sha256sums = 2b0a4410153a9b20de0e20c7d8b66049a72aef244b53683d0d7521371683da0c
+	source = https://github.com/unicode-org/icu/releases/download/release-58-3/icu4c-58_3-src.tgz
+	sha256sums = 2680f3c547cd26cba1d7ebd819cd336ff92cf444a270e195fd3b10bfdf22276c
 
 pkgname = icu58
 
