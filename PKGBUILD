@@ -1,9 +1,10 @@
-# Maintainer: metscoin <mets_coin@outlook.com>
+# Maintainer: Jordan Day (FryDay) < jordanday444 at gmail dot com>
+# Contributor: metscoin <mets_coin@outlook.com>
 # shellcheck disable=SC2034
 
 pkgname=raven-qt
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://ravencoin.org/"
 license=('MIT')

@@ -1,7 +1,7 @@
 pkgbase = raven-qt
 	pkgdesc = Cryptocurrency wallet(QT)
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ravencoin.org/
 	install = raven-qt.install
 	arch = i686
