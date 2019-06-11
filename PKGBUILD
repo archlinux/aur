@@ -3,7 +3,7 @@
 # Contributor: Morris Jobke <hey AT morrisjobke DOT de>
 
 pkgname=dokku
-pkgver=0.16.4
+pkgver=0.17.7
 pkgrel=1
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
@@ -27,7 +27,7 @@ source=(
   "https://github.com/dokku/dokku/archive/v${pkgver}.zip"
   "${pkgname}.install"
 )
-sha256sums=('ab9c3fa60f65788f80f7447a76ed02d62d682820d326286f6cd9ca1e2aaa16a8'
+sha256sums=('d689135724577473f25711029d0fdd4e8baeb801325b6203a2a25b17814d28fd'
             'c2d7561e5e9931b13421af629672fe417ab36db0f803cadacbf3614507cc0601')
 install="${pkgname}.install"
 
