@@ -1,11 +1,12 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
+# Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=tuhi-git
 pkgver=20190608
 pkgrel=1
 pkgdesc="DBus daemon to access Wacom SmartPad devices"
 arch=('any')
-depends=(python-svgwrite)
+depends=('python' 'python-svgwrite' 'python-xdg')
 makedepends=('git' 'python-setuptools')
 url="https://github.com/tuhiproject/tuhi"
 license=('GPL2')
@@ -17,9 +18,14 @@ pkgver() {
   git log -1 --format="%cd" --date=short | sed "s|-||g"
 }
 
+build() {
+  cd ${pkgname%-git}
+  python setup.py build
+}
+
 package() {
   cd ${pkgname%-git}
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm755 tools/tuhi-live.py "${pkgdir}/usr/bin/tuhi-live.py"
   install -Dm755 tools/tuhi-kete-sandboxed.py "${pkgdir}/usr/bin/tuhi-kete-sandboxed.py"
   install -Dm755 tools/kete.py "${pkgdir}/usr/bin/kete.py"
