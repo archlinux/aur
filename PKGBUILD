@@ -1,8 +1,8 @@
 # Maintainer: Hendrik Werner <hendrik.to@gmail.com>
 
 pkgname=battery_warning
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='Warn if the battery capacity drops too low'
 arch=('x86_64')
 url='https://github.com/Hendrikto/battery_warning'
