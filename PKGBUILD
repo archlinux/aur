@@ -1,7 +1,7 @@
 # Maintainer: Gergely Imreh <imrehg@gmail.com>
 pkgname=('casefile')
-pkgver=4.1.13.11516
-_pkgver1=${pkgver%.*.*}
+pkgver=4.2.3.12223
+_pkgver1=${pkgver%.*}
 _pkgver2=${_pkgver1//.}
 pkgrel=1
 pkgdesc="Offline intelligence application, allowing analysts to examine links between offline data"
@@ -11,7 +11,7 @@ url="https://www.paterva.com/web7/buy/maltego-clients/casefile.php"
 depends=('java-environment=8')
 optdepends=('perl')
 source=(https://www.paterva.com/malv${_pkgver2}/Maltego.v${pkgver}.deb)
-sha256sums=('1c23119b81b30ff956fa48b7a590acda49a1b81b6c497c4036897042eee499aa')
+sha256sums=('747eaf663524f016546c7e1c8790124ff91b7f6d6a07442403c9d607f588f786')
 
 package() {
  ar x "${srcdir}/Maltego.v${pkgver}.deb"
