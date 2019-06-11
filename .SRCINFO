@@ -1,15 +1,15 @@
 pkgbase = perl-geoip
 	pkgdesc = GeoIP Perl API
-	pkgver = 1.50
-	pkgrel = 4
+	pkgver = 1.51
+	pkgrel = 1
 	url = https://github.com/maxmind/geoip-api-perl
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = geoip
 	provides = cassandra
-	source = https://github.com/maxmind/geoip-api-perl/archive/v1.50.zip
-	md5sums = 32a7c8775d7b7748f9b940c4fa0bc233
+	source = https://github.com/maxmind/geoip-api-perl/archive/v1.51.zip
+	md5sums = 2eb8f7202d3b77d86f7248af61860c90
 
 pkgname = perl-geoip
 
