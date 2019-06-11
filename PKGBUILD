@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mysqltuner
-pkgver=1.7.13
-_commit='dab1e7e960c9b2bf49040f3fa33538669d34e431'
+pkgver=1.7.15
+_commit='037f7208faf92c223447dfce9251ca317f1f3edb'
 pkgrel=1
 pkgdesc='MySQLTuner - review configuration quickly and make adjustments to increase performance and stability'
 arch=('any')
