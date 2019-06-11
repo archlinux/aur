@@ -3,7 +3,7 @@
 _pkgname=icu
 pkgname=${_pkgname}62
 pkgver=62.2
-pkgrel=1
+pkgrel=0
 pkgdesc="International Components for Unicode library"
 arch=('i686' 'x86_64')
 url="http://www.icu-project.org/"
