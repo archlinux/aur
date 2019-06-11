@@ -5,11 +5,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=73.0.3683.86
-pkgrel=4
+pkgver=75.0.3770.80
+pkgrel=1
 _launcher_ver=6
-_release_sha=5fe448ea2471245e64adf805d93b358dd9478fa2
-_igalia_sha=9acc2112d690af6caf4c5b8d4152b5724a760639
+_meta_browser_sha=7061c141b3c4430448fc5dd06ada469972545a0c
 pkgdesc="Chromium built with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -28,32 +27,22 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium-drirc-disable-10bpc-color-configs.conf
+        meta-browser.tar.gz::https://github.com/OSSystems/meta-browser/archive/7061c141b3c4430448fc5dd06ada469972545a0c.tar.gz
         chromium-system-icu.patch
-        chromium-vaapi.patch
-        chromium-color_utils-use-std-sqrt.patch
-        chromium-media-fix-build-with-libstdc++.patch
-        chromium-avoid-log-flooding-in-GLSurfacePresentationHelper.patch
+        libstdc-do-not-assume-unique_ptr-has-ostream-operator.patch
+        chromium-fix-window-flash-for-some-WMs.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch
-        chromium-ozone-wayland.patch::https://github.com/mirror/chromium/compare/${_release_sha}...Igalia:${_igalia_sha}.patch
-        chromium-ozone-scale.patch
-        chromium-algorithm-header.patch::https://github.com/chromium/chromium/commit/6c0254a78043e32441dbc2e6d4893590dd0d1953.patch
-        chromium-vaapi-build.patch::https://github.com/Igalia/chromium/commit/cdb2e638d4488936c80a2c1b506eecf95ffbee02.patch)
-sha256sums=('9ebb731576d25901cee5505f3458cf7780b0a39243743d7779f66514716bbfa3'
+        Added-HiDPI-support-for-Ozone-Wayland.patch)
+sha256sums=('da828bc8d887821380b461abfbbd0e17538c211d56f240f03711b918c77a66d6'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
+            'd40faa58be527dd0dcf3c433d1dc94da841c7338d045fd8a52c2256727714042'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
-            'e87ede45edf39ac19e56ac1ae49c9d1f5f5130e5838bcbb4c3d4fb16e55575c0'
-            'b3b6f5147d519c586cbdaf3b227dd1719676fa3a65edd6f08989087afd287afa'
-            'f51fe91427d8638c5551746d2ec7de99e8059dd76889cfeaee8ca3d8fed62265'
-            'f2b12ccf83a8e0adda4a87ae5c983df5e092ccf1f9a6f2e05799ce4d451dbda1'
+            'e309dfd9d790f32cb1d23103726ac25e405b6ae6757a1c957a8395667d753908'
+            '183d8cc712f0bcf1afcb01ce90c4c104a4c8d8070a06f94974a28b007d9e2ce4'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
-            'fcb58a760e2dc6c4b2746c12832edd8dfe54dc37113e01b3b5bc108fbeec4c8a'
-            '814b441cbb922e895e39b801776e2ee38bd42f6f476887c8b0fd1f6bde34e6b2'
-            '97b9662947460343dd208779e4bb33b3ad955edd4bc84c4fd87edd51e6064e86'
-            '4ed0ac74fef8b63fa5dfd0de02a02cc4a7667898a90ec5365651645777934c14')
+            'b6b258a6d3b42731c9375395b4e6e896edef00617d5b7028c348a5d2dbb14eb7')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -90,6 +79,36 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
+_wayland_patches=(
+  '0001-ozone-wayland-Factored-the-clipboard-logic-out-of-Wa.patch'
+  '0002-Convert-wayland-buffer-to-the-new-shared-memory-API.patch'
+  '0003-Migrate-WaylandCanvasSurface-to-the-new-shared-memor.patch'
+  '0004-ozone-wayland-Ease-the-buffer-swap-and-maintenance.patch'
+  '0005-ozone-wayland-Fix-presentation-feedback-flags.patch'
+  '0006-wayland-Do-not-release-shared-memory-fd-when-passing.patch'
+  '0007-ozone-wayland-Don-t-wait-for-frame-callback-after-su.patch'
+  '0008-ozone-wayland-Do-not-add-window-if-manager-does-not-.patch '
+  '0009-ozone-wayland-Fix-NativeGpuMemoryBuffers-usage.patch'
+  '0010-ozone-wayland-Add-immediate-release-support.patch'
+  '0011-ozone-wayland-Wrap-wl_shm-to-WaylandShm.patch'
+  '0012-ozone-wayland-Shm-Proxy-make-mojo-calls-on-the-gpu-t.patch'
+  '0013-ozone-wayland-Shm-add-buffer_id.patch'
+  '0014-ozone-wayland-Unite-Wayland-ShmBufferManager-and-Buf.patch'
+  '0015-ozone-wayland-Stop-providing-WaylandConnection-throu.patch'
+  '0016-ozone-wayland-Improve-logging-when-creating-gbm-buff.patch'
+  '0017-ozone-wayland-Establish-BufferManagerGpu-and-BufferM.patch'
+  '0018-ozone-wayland-Use-new-shmen-API-when-loading-keymap.patch'
+  '0019-ozone-wayland-Prepare-WaylandCanvasSurface-for-compl.patch'
+  '0020-ozone-wayland-Reset-surface-contents-in-a-safe-way.patch'
+  '0021-Ozone-Wayland-Manager-make-mojo-calls-on-IO-thread.patch'
+  '0022-ozone-wayland-Manager-tests-exercise-tests-with-mojo.patch'
+  '0023-ozone-wayland-Fix-broken-software-rendering-path.patch'
+  '0001-v4l2_device-CanCreateEGLImageFrom-support-all-ARM-So.patch'
+  '0001-Add-support-for-V4L2VDA-on-Linux.patch'
+  '0002-Add-mmap-via-libv4l-to-generic_v4l2_device.patch'
+  '0001-ozone-wayland-Fix-method-prototype-match.patch'
+)
+
 prepare() {
   cd "$srcdir/chromium-$pkgver"
 
@@ -103,17 +122,11 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/libxml_utils.cc
 
-  # https://crbug.com/819294#c88
-  patch -Np1 -i ../chromium-color_utils-use-std-sqrt.patch
+  # https://chromium-review.googlesource.com/1584292
+  patch -Np1 -i ../libstdc-do-not-assume-unique_ptr-has-ostream-operator.patch
 
-  # https://crbug.com/931373
-  patch -d media -Np1 -i ../../chromium-media-fix-build-with-libstdc++.patch
-
-  # https://crbug.com/879929
-  patch -Np1 -i ../chromium-avoid-log-flooding-in-GLSurfacePresentationHelper.patch
-
-  # Enable VAAPI on Linux
-  # patch -Np1 -i ../chromium-vaapi.patch
+  # https://crbug.com/956061
+  patch -Np1 -i ../chromium-fix-window-flash-for-some-WMs.patch
 
   # Load Widevine CDM if available
   patch -Np1 -i ../chromium-widevine.patch
@@ -124,17 +137,15 @@ prepare() {
   # https://bugs.gentoo.org/661880#c21
   patch -Np1 -i ../chromium-system-icu.patch
 
-  # https://github.com/mirror/chromium/compare/36f8ce7e1dc05b379a1de75320ebd5d50bdc2fab...Igalia:ozone-wayland-stable/72.0.3626.81.patch
-  patch -Np1 -i ../chromium-ozone-wayland.patch
+  # chromium-ozone-wayland
+  for PATCH in ${_wayland_patches[@]}
+  do
+    echo "Applying $PATCH"
+    patch -Np1 -i $srcdir/meta-browser-${_meta_browser_sha}/recipes-browser/chromium/chromium-ozone-wayland/${PATCH}
+  done
 
-  # https://chromium-review.googlesource.com/c/chromium/src/+/1472617
-  patch -Np1 -i ../chromium-ozone-scale.patch
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/1454356
-  patch -Np1 -i ../chromium-algorithm-header.patch
-
-  # https://github.com/Igalia/chromium/issues/511
-  patch -Np1 -i ../chromium-vaapi-build.patch
+  # https://chromium-review.googlesource.com/c/chromium/src/+/1647154
+  patch -Np1 -i ../Added-HiDPI-support-for-Ozone-Wayland.patch
 
   # Remove compiler flags not supported by our system clang
   sed -i \
@@ -200,7 +211,9 @@ build() {
     'enable_widevine=true'
     'use_ozone=true'
     'ozone_platform_wayland=true'
+    'ozone_auto_platforms=false'
     'use_xkbcommon=true'
+    'use_system_libwayland=true'
     'use_system_minigbm=true'
     'use_system_libdrm=true'
     'use_vaapi=false'
@@ -224,6 +237,8 @@ build() {
     CFLAGS+='   -fno-unwind-tables -fno-asynchronous-unwind-tables'
     CXXFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
     CPPFLAGS+=' -DNO_UNWIND_TABLES'
+  else
+    _flags+=('symbol_level=1')
   fi
 
   gn gen out/Release --args="${_flags[*]}" --script-executable=/usr/bin/python2
@@ -241,9 +256,6 @@ package() {
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
-
-  install -Dm644 ../chromium-drirc-disable-10bpc-color-configs.conf \
-    "$pkgdir/usr/share/drirc.d/10-chromium.conf"
 
   install -Dm644 chrome/installer/linux/common/desktop.template \
     "$pkgdir/usr/share/applications/chromium.desktop"

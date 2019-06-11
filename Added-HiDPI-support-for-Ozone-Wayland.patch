@@ -1,0 +1,969 @@
+commit c6b0f1086062d2949eae1c6c4446050db4273195
+Author: Alexander Dunaev <adunaev@igalia.com>
+Date:   Mon Jun 10 08:28:04 2019 +0000
+
+    [ozone/wayland] Added HiDPI support for Ozone/Wayland.
+    
+    Wayland operates in DIP but the platform level works with physical pixels
+    so it's the application's responsibility to render properly and translate
+    locations and sizes to physical pixels and back.
+    
+    This CL introduces the behaviour required to support HiDPI screens:
+    * The backing buffer now takes the scale factor taken from the output device.
+    * Windows update their buffer scale when moved between displays that have
+      different scale factor, or when properties of the display are changed.
+    * Windows translate DIP to physical pixels and back, where necessary.
+    
+    R=msisov@igalia.com, rjkroege@chromium.org
+    
+    Bug: 910797
+    Change-Id: I1acb96ebc306194c13865149e026bcfdfb8046bf
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1647154
+    Reviewed-by: Maksim Sisov <msisov@igalia.com>
+    Reviewed-by: Robert Kroeger <rjkroege@chromium.org>
+    Commit-Queue: Alexander Dunaev <adunaev@igalia.com>
+    Cr-Commit-Position: refs/heads/master@{#667537}
+
+diff --git a/ui/ozone/platform/wayland/host/wayland_connection.cc b/ui/ozone/platform/wayland/host/wayland_connection.cc
+index 477ee110a0de..72617b5f37a3 100644
+--- a/ui/ozone/platform/wayland/host/wayland_connection.cc
++++ b/ui/ozone/platform/wayland/host/wayland_connection.cc
+@@ -160,6 +160,16 @@ WaylandWindow* WaylandConnection::GetCurrentKeyboardFocusedWindow() const {
+   return nullptr;
+ }
+ 
++std::vector<WaylandWindow*> WaylandConnection::GetWindowsOnOutput(
++    uint32_t output_id) {
++  std::vector<WaylandWindow*> result;
++  for (auto entry : window_map_) {
++    if (entry.second->GetEnteredOutputsIds().count(output_id) > 0)
++      result.push_back(entry.second);
++  }
++  return result;
++}
++
+ void WaylandConnection::AddWindow(gfx::AcceleratedWidget widget,
+                                   WaylandWindow* window) {
+   DCHECK(buffer_manager_host_);
+diff --git a/ui/ozone/platform/wayland/host/wayland_connection.h b/ui/ozone/platform/wayland/host/wayland_connection.h
+index 65c13332c7a2..9ae6527337c6 100644
+--- a/ui/ozone/platform/wayland/host/wayland_connection.h
++++ b/ui/ozone/platform/wayland/host/wayland_connection.h
+@@ -62,6 +62,9 @@ class WaylandConnection : public PlatformEventSource,
+   WaylandWindow* GetWindowWithLargestBounds() const;
+   WaylandWindow* GetCurrentFocusedWindow() const;
+   WaylandWindow* GetCurrentKeyboardFocusedWindow() const;
++  // TODO(crbug.com/971525): remove this in favor of targeted subscription of
++  // windows to their outputs.
++  std::vector<WaylandWindow*> GetWindowsOnOutput(uint32_t output_id);
+   void AddWindow(gfx::AcceleratedWidget widget, WaylandWindow* window);
+   void RemoveWindow(gfx::AcceleratedWidget widget);
+ 
+@@ -163,7 +166,7 @@ class WaylandConnection : public PlatformEventSource,
+   // xdg_shell_listener
+   static void Ping(void* data, xdg_shell* shell, uint32_t serial);
+ 
+-  std::map<gfx::AcceleratedWidget, WaylandWindow*> window_map_;
++  base::flat_map<gfx::AcceleratedWidget, WaylandWindow*> window_map_;
+ 
+   wl::Object<wl_display> display_;
+   wl::Object<wl_registry> registry_;
+diff --git a/ui/ozone/platform/wayland/host/wayland_output.cc b/ui/ozone/platform/wayland/host/wayland_output.cc
+index 0b36d955ed45..701f1678b19c 100644
+--- a/ui/ozone/platform/wayland/host/wayland_output.cc
++++ b/ui/ozone/platform/wayland/host/wayland_output.cc
+@@ -11,14 +11,10 @@
+ 
+ namespace ui {
+ 
+-namespace {
+-constexpr float kDefaultScaleFactor = 1.0f;
+-}
+-
+ WaylandOutput::WaylandOutput(const uint32_t output_id, wl_output* output)
+     : output_id_(output_id),
+       output_(output),
+-      device_scale_factor_(kDefaultScaleFactor),
++      scale_factor_(kDefaultScaleFactor),
+       rect_in_physical_pixels_(gfx::Rect()) {}
+ 
+ WaylandOutput::~WaylandOutput() = default;
+@@ -38,7 +34,7 @@ void WaylandOutput::Initialize(Delegate* delegate) {
+ void WaylandOutput::TriggerDelegateNotification() const {
+   DCHECK(!rect_in_physical_pixels_.IsEmpty());
+   delegate_->OnOutputHandleMetrics(output_id_, rect_in_physical_pixels_,
+-                                   device_scale_factor_);
++                                   scale_factor_);
+ }
+ 
+ // static
+@@ -82,7 +78,7 @@ void WaylandOutput::OutputHandleScale(void* data,
+                                       int32_t factor) {
+   WaylandOutput* wayland_output = static_cast<WaylandOutput*>(data);
+   if (wayland_output)
+-    wayland_output->device_scale_factor_ = factor;
++    wayland_output->scale_factor_ = factor;
+ }
+ 
+ }  // namespace ui
+diff --git a/ui/ozone/platform/wayland/host/wayland_output.h b/ui/ozone/platform/wayland/host/wayland_output.h
+index 464689eadf7d..36f8c89fc1e0 100644
+--- a/ui/ozone/platform/wayland/host/wayland_output.h
++++ b/ui/ozone/platform/wayland/host/wayland_output.h
+@@ -36,12 +36,15 @@ class WaylandOutput {
+ 
+   uint32_t output_id() const { return output_id_; }
+   bool has_output(wl_output* output) const { return output_.get() == output; }
++  int32_t scale_factor() const { return scale_factor_; }
+ 
+   // Tells if the output has already received physical screen dimensions in the
+   // global compositor space.
+   bool is_ready() const { return !rect_in_physical_pixels_.IsEmpty(); }
+ 
+  private:
++  static constexpr int32_t kDefaultScaleFactor = 1;
++
+   // Callback functions used for setting geometric properties of the output
+   // and available modes.
+   static void OutputHandleGeometry(void* data,
+@@ -68,7 +71,7 @@ class WaylandOutput {
+ 
+   const uint32_t output_id_ = 0;
+   wl::Object<wl_output> output_;
+-  float device_scale_factor_;
++  int32_t scale_factor_ = kDefaultScaleFactor;
+   gfx::Rect rect_in_physical_pixels_;
+ 
+   Delegate* delegate_ = nullptr;
+diff --git a/ui/ozone/platform/wayland/host/wayland_output_manager.cc b/ui/ozone/platform/wayland/host/wayland_output_manager.cc
+index 38dad071ff53..1f403f4928a7 100644
+--- a/ui/ozone/platform/wayland/host/wayland_output_manager.cc
++++ b/ui/ozone/platform/wayland/host/wayland_output_manager.cc
+@@ -26,10 +26,7 @@ void WaylandOutputManager::AddWaylandOutput(const uint32_t output_id,
+   // Make sure an output with |output_id| has not been added yet. It's very
+   // unlikely to happen, unless a compositor has a bug in the numeric names
+   // representation of global objects.
+-  auto output_it = std::find_if(output_list_.begin(), output_list_.end(),
+-                                [output_id](const auto& output) {
+-                                  return output->output_id() == output_id;
+-                                });
++  auto output_it = GetOutputItById(output_id);
+   DCHECK(output_it == output_list_.end());
+   auto wayland_output = std::make_unique<WaylandOutput>(output_id, output);
+   WaylandOutput* wayland_output_ptr = wayland_output.get();
+@@ -44,10 +41,7 @@ void WaylandOutputManager::AddWaylandOutput(const uint32_t output_id,
+ }
+ 
+ void WaylandOutputManager::RemoveWaylandOutput(const uint32_t output_id) {
+-  auto output_it = std::find_if(output_list_.begin(), output_list_.end(),
+-                                [output_id](const auto& output) {
+-                                  return output->output_id() == output_id;
+-                                });
++  auto output_it = GetOutputItById(output_id);
+ 
+   // Check the comment in the WaylandConnetion::GlobalRemove.
+   if (output_it == output_list_.end())
+@@ -89,6 +83,13 @@ uint32_t WaylandOutputManager::GetIdForOutput(wl_output* output) const {
+   return output_it->get()->output_id();
+ }
+ 
++WaylandOutput* WaylandOutputManager::GetOutput(uint32_t id) const {
++  auto output_it = GetOutputItById(id);
++  // This is unlikely to happen, but better to be explicit here.
++  DCHECK(output_it != output_list_.end());
++  return output_it->get();
++}
++
+ void WaylandOutputManager::OnWaylandOutputAdded(uint32_t output_id) {
+   if (wayland_screen_)
+     wayland_screen_->OnOutputAdded(output_id);
+@@ -107,4 +108,11 @@ void WaylandOutputManager::OnOutputHandleMetrics(uint32_t output_id,
+                                             scale_factor);
+ }
+ 
++WaylandOutputManager::OutputList::const_iterator
++WaylandOutputManager::GetOutputItById(uint32_t id) const {
++  return std::find_if(
++      output_list_.begin(), output_list_.end(),
++      [id](const auto& item) { return item->output_id() == id; });
++}
++
+ }  // namespace ui
+diff --git a/ui/ozone/platform/wayland/host/wayland_output_manager.h b/ui/ozone/platform/wayland/host/wayland_output_manager.h
+index 812323281eaf..f05828a6d90b 100644
+--- a/ui/ozone/platform/wayland/host/wayland_output_manager.h
++++ b/ui/ozone/platform/wayland/host/wayland_output_manager.h
+@@ -39,6 +39,9 @@ class WaylandOutputManager : public WaylandOutput::Delegate {
+       WaylandConnection* connection);
+ 
+   uint32_t GetIdForOutput(wl_output* output) const;
++  WaylandOutput* GetOutput(uint32_t id) const;
++
++  WaylandScreen* wayland_screen() const { return wayland_screen_.get(); }
+ 
+  private:
+   void OnWaylandOutputAdded(uint32_t output_id);
+@@ -49,7 +52,11 @@ class WaylandOutputManager : public WaylandOutput::Delegate {
+                              const gfx::Rect& new_bounds,
+                              int32_t scale_factor) override;
+ 
+-  std::vector<std::unique_ptr<WaylandOutput>> output_list_;
++  using OutputList = std::vector<std::unique_ptr<WaylandOutput>>;
++
++  OutputList::const_iterator GetOutputItById(uint32_t id) const;
++
++  OutputList output_list_;
+ 
+   // Non-owned wayland screen instance.
+   base::WeakPtr<WaylandScreen> wayland_screen_;
+diff --git a/ui/ozone/platform/wayland/host/wayland_screen.cc b/ui/ozone/platform/wayland/host/wayland_screen.cc
+index e53a95932ef1..694c13f4e4d2 100644
+--- a/ui/ozone/platform/wayland/host/wayland_screen.cc
++++ b/ui/ozone/platform/wayland/host/wayland_screen.cc
+@@ -23,14 +23,12 @@ WaylandScreen::WaylandScreen(WaylandConnection* connection)
+ WaylandScreen::~WaylandScreen() = default;
+ 
+ void WaylandScreen::OnOutputAdded(uint32_t output_id) {
+-  display::Display new_display(output_id);
+-  display_list_.AddDisplay(std::move(new_display),
++  display_list_.AddDisplay(display::Display(output_id),
+                            display::DisplayList::Type::NOT_PRIMARY);
+ }
+ 
+ void WaylandScreen::OnOutputRemoved(uint32_t output_id) {
+-  display::Display primary_display = GetPrimaryDisplay();
+-  if (primary_display.id() == output_id) {
++  if (output_id == GetPrimaryDisplay().id()) {
+     // First, set a new primary display as required by the |display_list_|. It's
+     // safe to set any of the displays to be a primary one. Once the output is
+     // completely removed, Wayland updates geometry of other displays. And a
+@@ -49,9 +47,10 @@ void WaylandScreen::OnOutputRemoved(uint32_t output_id) {
+ 
+ void WaylandScreen::OnOutputMetricsChanged(uint32_t output_id,
+                                            const gfx::Rect& new_bounds,
+-                                           float device_pixel_ratio) {
++                                           int32_t device_pixel_ratio) {
+   display::Display changed_display(output_id);
+-  changed_display.set_device_scale_factor(device_pixel_ratio);
++  if (!display::Display::HasForceDeviceScaleFactor())
++    changed_display.set_device_scale_factor(device_pixel_ratio);
+   changed_display.set_bounds(new_bounds);
+   changed_display.set_work_area(new_bounds);
+ 
+@@ -81,6 +80,9 @@ void WaylandScreen::OnOutputMetricsChanged(uint32_t output_id,
+   display_list_.UpdateDisplay(
+       changed_display, is_primary ? display::DisplayList::Type::PRIMARY
+                                   : display::DisplayList::Type::NOT_PRIMARY);
++
++  for (auto* window : connection_->GetWindowsOnOutput(output_id))
++    window->UpdateBufferScale(true);
+ }
+ 
+ base::WeakPtr<WaylandScreen> WaylandScreen::GetWeakPtr() {
+@@ -99,13 +101,13 @@ display::Display WaylandScreen::GetPrimaryDisplay() const {
+ 
+ display::Display WaylandScreen::GetDisplayForAcceleratedWidget(
+     gfx::AcceleratedWidget widget) const {
+-  auto* wayland_window = connection_->GetWindow(widget);
++  auto* window = connection_->GetWindow(widget);
+   // A window might be destroyed by this time on shutting down the browser.
+-  if (!wayland_window)
++  if (!window)
+     return GetPrimaryDisplay();
+ 
+-  const std::set<uint32_t> entered_outputs_ids =
+-      wayland_window->GetEnteredOutputsIds();
++  const auto* parent_window = window->parent_window();
++  const std::set<uint32_t> entered_outputs_ids = window->GetEnteredOutputsIds();
+   // Although spec says a surface receives enter/leave surface events on
+   // create/move/resize actions, this might be called right after a window is
+   // created, but it has not been configured by a Wayland compositor and it has
+@@ -114,14 +116,19 @@ display::Display WaylandScreen::GetDisplayForAcceleratedWidget(
+   // events immediately, which can result in empty container of entered ids
+   // (check comments in WaylandWindow::RemoveEnteredOutputId). In this case,
+   // it's also safe to return the primary display.
+-  if (entered_outputs_ids.empty())
++  // A child window will most probably enter the same display than its parent
++  // so we return the parent's display if there is a parent.
++  if (entered_outputs_ids.empty()) {
++    if (parent_window)
++      return GetDisplayForAcceleratedWidget(parent_window->GetWidget());
+     return GetPrimaryDisplay();
++  }
+ 
+   DCHECK(!display_list_.displays().empty());
+ 
+   // A widget can be located on two or more displays. It would be better if the
+-  // most in pixels occupied display was returned, but it's impossible to do in
+-  // Wayland. Thus, return the one, which was the very first used.
++  // most in DIP occupied display was returned, but it's impossible to do so in
++  // Wayland. Thus, return the one that was used the earliest.
+   for (const auto& display : display_list_.displays()) {
+     if (display.id() == *entered_outputs_ids.begin())
+       return display;
+diff --git a/ui/ozone/platform/wayland/host/wayland_screen.h b/ui/ozone/platform/wayland/host/wayland_screen.h
+index f395b9b496fd..c81b47a3ecd1 100644
+--- a/ui/ozone/platform/wayland/host/wayland_screen.h
++++ b/ui/ozone/platform/wayland/host/wayland_screen.h
+@@ -29,7 +29,7 @@ class WaylandScreen : public PlatformScreen {
+   void OnOutputRemoved(uint32_t output_id);
+   void OnOutputMetricsChanged(uint32_t output_id,
+                               const gfx::Rect& bounds,
+-                              float device_pixel_ratio);
++                              int32_t output_scale);
+ 
+   base::WeakPtr<WaylandScreen> GetWeakPtr();
+ 
+diff --git a/ui/ozone/platform/wayland/host/wayland_screen_unittest.cc b/ui/ozone/platform/wayland/host/wayland_screen_unittest.cc
+index 54e72fb5c916..f93ac20d51e0 100644
+--- a/ui/ozone/platform/wayland/host/wayland_screen_unittest.cc
++++ b/ui/ozone/platform/wayland/host/wayland_screen_unittest.cc
+@@ -223,9 +223,8 @@ TEST_P(WaylandScreenTest, OutputPropertyChanges) {
+   EXPECT_EQ(observer.GetAndClearChangedMetrics(), changed_values);
+   EXPECT_EQ(observer.GetDisplay().bounds(), new_rect);
+ 
+-  const float new_scale_value = 2.0f;
+-  wl_output_send_scale(output_->resource(), new_scale_value);
+-  wl_output_send_done(output_->resource());
++  const int32_t new_scale_value = 2;
++  output_->SetScale(new_scale_value);
+ 
+   Sync();
+ 
+@@ -580,6 +579,23 @@ TEST_P(WaylandScreenTest, GetCursorScreenPoint) {
+   EXPECT_EQ(gfx::Point(1912, 1071), platform_screen_->GetCursorScreenPoint());
+ }
+ 
++// Checks that the surface that backs the window receives new scale of the
++// output that it is in.
++TEST_P(WaylandScreenTest, SetBufferScale) {
++  // Place the window onto the output.
++  wl_surface_send_enter(surface_->resource(), output_->resource());
++
++  // Change the scale of the output.  Windows looking into that output must get
++  // the new scale and update scale of their buffers.
++  const int32_t kNewScale = 3;
++  EXPECT_CALL(*surface_, SetBufferScale(kNewScale));
++  output_->SetScale(kNewScale);
++
++  Sync();
++
++  EXPECT_EQ(window_->buffer_scale(), kNewScale);
++}
++
+ INSTANTIATE_TEST_SUITE_P(XdgVersionV5Test,
+                          WaylandScreenTest,
+                          ::testing::Values(kXdgShellV5));
+diff --git a/ui/ozone/platform/wayland/host/wayland_window.cc b/ui/ozone/platform/wayland/host/wayland_window.cc
+index 153c8e87e124..193bd2a66150 100644
+--- a/ui/ozone/platform/wayland/host/wayland_window.cc
++++ b/ui/ozone/platform/wayland/host/wayland_window.cc
+@@ -123,7 +123,11 @@ WaylandWindow* WaylandWindow::FromSurface(wl_surface* surface) {
+ bool WaylandWindow::Initialize(PlatformWindowInitProperties properties) {
+   DCHECK(xdg_shell_objects_factory_);
+ 
+-  bounds_ = properties.bounds;
++  // Properties contain DIP bounds but the buffer scale is initially 1 so it's
++  // OK to assign.  The bounds will be recalculated when the buffer scale
++  // changes.
++  DCHECK_EQ(buffer_scale_, 1);
++  bounds_px_ = properties.bounds;
+   opacity_ = properties.opacity;
+ 
+   surface_.reset(wl_compositor_create_surface(connection_->compositor()));
+@@ -140,6 +144,10 @@ bool WaylandWindow::Initialize(PlatformWindowInitProperties properties) {
+     case ui::PlatformWindowType::kPopup:
+       parent_window_ = GetParentWindow(properties.parent_widget);
+ 
++      // Popups need to know their scale earlier to position themselves.
++      DCHECK(parent_window_);
++      SetBufferScale(parent_window_->buffer_scale_, false);
++
+       // TODO(msisov, jkim): Handle notification windows, which are marked
+       // as popup windows as well. Those are the windows that do not have
+       // parents and pop up when the browser receives a notification.
+@@ -160,10 +168,35 @@ bool WaylandWindow::Initialize(PlatformWindowInitProperties properties) {
+   PlatformEventSource::GetInstance()->AddPlatformEventDispatcher(this);
+   delegate_->OnAcceleratedWidgetAvailable(GetWidget());
+ 
++  // Will do nothing for popups because they have got their scale above.
++  UpdateBufferScale(false);
++
+   MaybeUpdateOpaqueRegion();
+   return true;
+ }
+ 
++void WaylandWindow::UpdateBufferScale(bool update_bounds) {
++  DCHECK(connection_->wayland_output_manager());
++  const auto* screen = connection_->wayland_output_manager()->wayland_screen();
++  DCHECK(screen);
++  const auto widget = GetWidget();
++
++  int32_t new_scale = 0;
++  if (parent_window_) {
++    new_scale = parent_window_->buffer_scale_;
++  } else if (widget == gfx::kNullAcceleratedWidget) {
++    new_scale = screen->GetPrimaryDisplay().device_scale_factor();
++  } else {
++    // This is the main window that is fully set up so we can ask which display
++    // we are at currently.
++    new_scale =
++        connection_->wayland_output_manager()
++            ->GetOutput(screen->GetDisplayForAcceleratedWidget(widget).id())
++            ->scale_factor();
++  }
++  SetBufferScale(new_scale, update_bounds);
++}
++
+ gfx::AcceleratedWidget WaylandWindow::GetWidget() const {
+   if (!surface_)
+     return gfx::kNullAcceleratedWidget;
+@@ -175,7 +208,7 @@ std::set<uint32_t> WaylandWindow::GetEnteredOutputsIds() const {
+ }
+ 
+ void WaylandWindow::CreateXdgPopup() {
+-  if (bounds_.IsEmpty())
++  if (bounds_px_.IsEmpty())
+     return;
+ 
+   // TODO(jkim): Consider how to support DropArrow window on tabstrip.
+@@ -193,11 +226,11 @@ void WaylandWindow::CreateXdgPopup() {
+ 
+   DCHECK(parent_window_ && !xdg_popup_);
+ 
+-  auto bounds = AdjustPopupWindowPosition();
++  auto bounds_px = AdjustPopupWindowPosition();
+ 
+   xdg_popup_ = xdg_shell_objects_factory_->CreateXDGPopup(connection_, this);
+-  if (!xdg_popup_ ||
+-      !xdg_popup_->Initialize(connection_, surface(), parent_window_, bounds)) {
++  if (!xdg_popup_ || !xdg_popup_->Initialize(connection_, surface(),
++                                             parent_window_, bounds_px)) {
+     CHECK(false) << "Failed to create xdg_popup";
+   }
+ 
+@@ -234,22 +267,24 @@ void WaylandWindow::CreateAndShowTooltipSubSurface() {
+   }
+ 
+   DCHECK(tooltip_subsurface_);
+-  wl_subsurface_set_position(tooltip_subsurface_.get(), bounds_.x(),
+-                             bounds_.y());
++  // Convert position to DIP.
++  wl_subsurface_set_position(tooltip_subsurface_.get(),
++                             bounds_px_.x() / buffer_scale_,
++                             bounds_px_.y() / buffer_scale_);
+   wl_subsurface_set_desync(tooltip_subsurface_.get());
+   wl_surface_commit(parent_window_->surface());
+   connection_->ScheduleFlush();
+ }
+ 
+ void WaylandWindow::ApplyPendingBounds() {
+-  if (pending_bounds_.IsEmpty())
++  if (pending_bounds_dip_.IsEmpty())
+     return;
+   DCHECK(xdg_surface_);
+ 
+-  SetBounds(pending_bounds_);
+-  xdg_surface_->SetWindowGeometry(bounds_);
++  SetBoundsDip(pending_bounds_dip_);
++  xdg_surface_->SetWindowGeometry(pending_bounds_dip_);
+   xdg_surface_->AckConfigure();
+-  pending_bounds_ = gfx::Rect();
++  pending_bounds_dip_ = gfx::Rect();
+   connection_->ScheduleFlush();
+ 
+   // Opaque region is based on the size of the window. Thus, update the region
+@@ -293,9 +328,17 @@ void WaylandWindow::Show() {
+   }
+ 
+   if (!xdg_popup_) {
++    // When showing a sub-menu after it has been previously shown and hidden,
++    // Wayland sends SetBounds prior to Show, and |bounds_px| takes the pixel
++    // bounds.  This makes a difference against the normal flow when the
++    // window is created (see |Initialize|).  To equalize things, rescale
++    // |bounds_px_| to DIP.  It will be adjusted while creating the popup.
++    bounds_px_ = gfx::ScaleToRoundedRect(bounds_px_, 1.0 / buffer_scale_);
+     CreateXdgPopup();
+     connection_->ScheduleFlush();
+   }
++
++  UpdateBufferScale(false);
+ }
+ 
+ void WaylandWindow::Hide() {
+@@ -322,15 +365,25 @@ void WaylandWindow::Close() {
+ 
+ void WaylandWindow::PrepareForShutdown() {}
+ 
+-void WaylandWindow::SetBounds(const gfx::Rect& bounds) {
+-  if (bounds == bounds_)
++void WaylandWindow::SetBounds(const gfx::Rect& bounds_px) {
++  // TODO(crbug.com/958314): figure out if this return is legitimate.
++  //
++  // The X11 implementation says that even if the pixel bounds didn't change, we
++  // still need to forward this call to the delegate, and that the device scale
++  // factor may have changed which effectively changes the bounds.  Perhaps we
++  // need to do the same here.
++  //
++  // After this is resolved, update test expectations for calls to
++  // delegate's OnBoundsChanged.
++  if (bounds_px_ == bounds_px)
+     return;
+-  bounds_ = bounds;
+-  delegate_->OnBoundsChanged(bounds);
++  bounds_px_ = bounds_px;
++
++  delegate_->OnBoundsChanged(bounds_px_);
+ }
+ 
+ gfx::Rect WaylandWindow::GetBounds() {
+-  return bounds_;
++  return bounds_px_;
+ }
+ 
+ void WaylandWindow::SetTitle(const base::string16& title) {
+@@ -452,12 +505,12 @@ void WaylandWindow::ConfineCursorToBounds(const gfx::Rect& bounds) {
+   NOTIMPLEMENTED();
+ }
+ 
+-void WaylandWindow::SetRestoredBoundsInPixels(const gfx::Rect& bounds) {
+-  restored_bounds_ = bounds;
++void WaylandWindow::SetRestoredBoundsInPixels(const gfx::Rect& bounds_px) {
++  restored_bounds_px_ = bounds_px;
+ }
+ 
+ gfx::Rect WaylandWindow::GetRestoredBoundsInPixels() const {
+-  return restored_bounds_;
++  return restored_bounds_px_;
+ }
+ 
+ bool WaylandWindow::CanDispatchEvent(const PlatformEvent& event) {
+@@ -488,6 +541,10 @@ uint32_t WaylandWindow::DispatchEvent(const PlatformEvent& native_event) {
+   Event* event = static_cast<Event*>(native_event);
+ 
+   if (event->IsLocatedEvent()) {
++    // Wayland sends locations in DIP so they need to be translated to
++    // physical pixels.
++    event->AsLocatedEvent()->set_location_f(gfx::ScalePoint(
++        event->AsLocatedEvent()->location_f(), buffer_scale_, buffer_scale_));
+     auto copied_event = Event::Clone(*event);
+     UpdateCursorPositionFromEvent(std::move(copied_event));
+   }
+@@ -569,11 +626,13 @@ void WaylandWindow::HandleSurfaceConfigure(int32_t width,
+   // explicitly set the bounds to the current desired ones or the previous
+   // bounds.
+   if (width > 1 && height > 1) {
+-    pending_bounds_ = gfx::Rect(0, 0, width, height);
++    pending_bounds_dip_ = gfx::Rect(0, 0, width, height);
+   } else if (is_normal) {
+-    pending_bounds_.set_size(restored_bounds_.IsEmpty()
+-                                 ? GetBounds().size()
+-                                 : restored_bounds_.size());
++    pending_bounds_dip_.set_size(gfx::ScaleToRoundedSize(
++        restored_bounds_px_.IsEmpty() ? GetBounds().size()
++                                      : restored_bounds_px_.size(),
++
++        1.0 / buffer_scale_));
+   }
+ 
+   if (state_changed) {
+@@ -585,8 +644,8 @@ void WaylandWindow::HandleSurfaceConfigure(int32_t width,
+     if (is_normal) {
+       SetRestoredBoundsInPixels({});
+     } else if (old_state == PlatformWindowState::PLATFORM_WINDOW_STATE_NORMAL ||
+-               restored_bounds_.IsEmpty()) {
+-      SetRestoredBoundsInPixels(bounds_);
++               restored_bounds_px_.IsEmpty()) {
++      SetRestoredBoundsInPixels(bounds_px_);
+     }
+ 
+     delegate_->OnWindowStateChanged(state_);
+@@ -598,9 +657,13 @@ void WaylandWindow::HandleSurfaceConfigure(int32_t width,
+   MaybeTriggerPendingStateChange();
+ }
+ 
+-void WaylandWindow::HandlePopupConfigure(const gfx::Rect& bounds) {
++void WaylandWindow::HandlePopupConfigure(const gfx::Rect& bounds_dip) {
+   DCHECK(xdg_popup());
+-  gfx::Rect new_bounds = bounds;
++  DCHECK(parent_window_);
++
++  SetBufferScale(parent_window_->buffer_scale_, true);
++
++  gfx::Rect new_bounds_dip = bounds_dip;
+ 
+   // It's not enough to just set new bounds. If it is a menu window, whose
+   // parent is a top level window aka browser window, it can be flipped
+@@ -618,10 +681,10 @@ void WaylandWindow::HandlePopupConfigure(const gfx::Rect& bounds) {
+     gfx::Rect parent_bounds = parent_window_->GetBounds();
+     // The menu window is flipped along y-axis and have x,-y origin. Shift the
+     // parent top level window instead.
+-    if (new_bounds.y() < 0) {
++    if (new_bounds_dip.y() < 0) {
+       // Move parent bounds along y-axis.
+-      parent_bounds.set_y(-(new_bounds.y()));
+-      new_bounds.set_y(0);
++      parent_bounds.set_y(-(new_bounds_dip.y() * buffer_scale_));
++      new_bounds_dip.set_y(0);
+     } else {
+       // If the menu window is located at correct origin from the browser point
+       // of view, return the top level window back to 0,0.
+@@ -633,11 +696,15 @@ void WaylandWindow::HandlePopupConfigure(const gfx::Rect& bounds) {
+     // Thus, the location must be translated to be relative to the top level
+     // window, which automatically becomes the same as relative to an origin of
+     // a display.
+-    new_bounds = TranslateBoundsToTopLevelCoordinates(
+-        new_bounds, parent_window_->GetBounds());
+-    DCHECK(new_bounds.y() >= 0);
++    new_bounds_dip = gfx::ScaleToRoundedRect(
++        TranslateBoundsToTopLevelCoordinates(
++            gfx::ScaleToRoundedRect(new_bounds_dip, buffer_scale_),
++            parent_window_->GetBounds()),
++        1.0 / buffer_scale_);
++    DCHECK(new_bounds_dip.y() >= 0);
+   }
+-  SetBounds(new_bounds);
++
++  SetBoundsDip(new_bounds_dip);
+ }
+ 
+ void WaylandWindow::OnCloseRequest() {
+@@ -685,6 +752,26 @@ void WaylandWindow::OnDragSessionClose(uint32_t dnd_action) {
+   connection_->ResetPointerFlags();
+ }
+ 
++void WaylandWindow::SetBoundsDip(const gfx::Rect& bounds_dip) {
++  SetBounds(gfx::ScaleToRoundedRect(bounds_dip, buffer_scale_));
++}
++
++void WaylandWindow::SetBufferScale(int32_t new_scale, bool update_bounds) {
++  DCHECK_GT(new_scale, 0);
++
++  if (new_scale == buffer_scale_)
++    return;
++
++  auto old_scale = buffer_scale_;
++  buffer_scale_ = new_scale;
++  if (update_bounds)
++    SetBoundsDip(gfx::ScaleToRoundedRect(bounds_px_, 1.0 / old_scale));
++
++  DCHECK(surface());
++  wl_surface_set_buffer_scale(surface(), buffer_scale_);
++  connection_->ScheduleFlush();
++}
++
+ bool WaylandWindow::IsMinimized() const {
+   return state_ == PlatformWindowState::PLATFORM_WINDOW_STATE_MINIMIZED;
+ }
+@@ -740,14 +827,28 @@ void WaylandWindow::AddSurfaceListener() {
+ }
+ 
+ void WaylandWindow::AddEnteredOutputId(struct wl_output* output) {
++  // Wayland does weird things for popups so instead of tracking outputs that
++  // we entered or left, we take that from the parent window and ignore this
++  // event.
++  if (xdg_popup())
++    return;
++
+   const uint32_t entered_output_id =
+       connection_->wayland_output_manager()->GetIdForOutput(output);
+   DCHECK_NE(entered_output_id, 0u);
+   auto result = entered_outputs_ids_.insert(entered_output_id);
+   DCHECK(result.first != entered_outputs_ids_.end());
++
++  UpdateBufferScale(true);
+ }
+ 
+ void WaylandWindow::RemoveEnteredOutputId(struct wl_output* output) {
++  // Wayland does weird things for popups so instead of tracking outputs that
++  // we entered or left, we take that from the parent window and ignore this
++  // event.
++  if (xdg_popup())
++    return;
++
+   const uint32_t left_output_id =
+       connection_->wayland_output_manager()->GetIdForOutput(output);
+   auto entered_output_id_it = entered_outputs_ids_.find(left_output_id);
+@@ -759,6 +860,8 @@ void WaylandWindow::RemoveEnteredOutputId(struct wl_output* output) {
+   // output only if it was stored before.
+   if (entered_output_id_it != entered_outputs_ids_.end())
+     entered_outputs_ids_.erase(entered_output_id_it);
++
++  UpdateBufferScale(true);
+ }
+ 
+ void WaylandWindow::UpdateCursorPositionFromEvent(
+@@ -807,11 +910,14 @@ gfx::Rect WaylandWindow::AdjustPopupWindowPosition() const {
+                             ? parent_window_->parent_window_
+                             : parent_window_;
+   DCHECK(parent_window);
++  DCHECK(buffer_scale_ == parent_window->buffer_scale_);
++
+   // Chromium positions windows in screen coordinates, but Wayland requires them
+   // to be in local surface coordinates aka relative to parent window.
+-  const gfx::Rect parent_bounds = parent_window_->GetBounds();
++  const gfx::Rect parent_bounds_px =
++      gfx::ScaleToRoundedRect(parent_window_->GetBounds(), 1.0 / buffer_scale_);
+   gfx::Rect new_bounds =
+-      TranslateBoundsToParentCoordinates(bounds_, parent_bounds);
++      TranslateBoundsToParentCoordinates(bounds_px_, parent_bounds_px);
+ 
+   // Chromium may decide to position nested menu windows on the left side
+   // instead of the right side of parent menu windows when the size of the
+@@ -835,7 +941,8 @@ gfx::Rect WaylandWindow::AdjustPopupWindowPosition() const {
+       // Position the child menu window on the right side of the parent window
+       // and let the Wayland compositor decide how to do constraint
+       // adjustements.
+-      int new_x = parent_bounds.width() - (new_bounds.width() + new_bounds.x());
++      int new_x =
++          parent_bounds_px.width() - (new_bounds.width() + new_bounds.x());
+       new_bounds.set_x(new_x);
+     }
+   }
+@@ -852,7 +959,7 @@ void WaylandWindow::MaybeUpdateOpaqueRegion() {
+ 
+   wl::Object<wl_region> region(
+       wl_compositor_create_region(connection_->compositor()));
+-  wl_region_add(region.get(), 0, 0, bounds_.width(), bounds_.height());
++  wl_region_add(region.get(), 0, 0, bounds_px_.width(), bounds_px_.height());
+   wl_surface_set_opaque_region(surface(), region.get());
+ 
+   connection_->ScheduleFlush();
+diff --git a/ui/ozone/platform/wayland/host/wayland_window.h b/ui/ozone/platform/wayland/host/wayland_window.h
+index be9bb33481e7..f54115e0aef8 100644
+--- a/ui/ozone/platform/wayland/host/wayland_window.h
++++ b/ui/ozone/platform/wayland/host/wayland_window.h
+@@ -51,10 +51,19 @@ class WaylandWindow : public PlatformWindow,
+ 
+   bool Initialize(PlatformWindowInitProperties properties);
+ 
++  // Updates the surface buffer scale of the window.  Top level windows take
++  // scale according to the scale of their current display or the primary one if
++  // their widget is not yet created, children inherit scale from their parent.
++  // The method recalculates window bounds appropriately if asked to do so
++  // (this is not needed upon window initialization).
++  void UpdateBufferScale(bool update_bounds);
++
+   wl_surface* surface() const { return surface_.get(); }
+   XDGSurfaceWrapper* xdg_surface() const { return xdg_surface_.get(); }
+   XDGPopupWrapper* xdg_popup() const { return xdg_popup_.get(); }
+ 
++  WaylandWindow* parent_window() const { return parent_window_; }
++
+   gfx::AcceleratedWidget GetWidget() const;
+ 
+   // Returns the list of wl_outputs aka displays, which this window occupies.
+@@ -89,6 +98,8 @@ class WaylandWindow : public PlatformWindow,
+   void set_has_implicit_grab(bool value) { has_implicit_grab_ = value; }
+   bool has_implicit_grab() const { return has_implicit_grab_; }
+ 
++  int32_t buffer_scale() const { return buffer_scale_; }
++
+   bool is_active() const { return is_active_; }
+ 
+   // WmMoveResizeHandler
+@@ -128,6 +139,10 @@ class WaylandWindow : public PlatformWindow,
+   bool CanDispatchEvent(const PlatformEvent& event) override;
+   uint32_t DispatchEvent(const PlatformEvent& event) override;
+ 
++  // Handles the configuration events coming from the surface (see
++  // |XDGSurfaceWrapperV5::Configure| and
++  // |XDGSurfaceWrapperV6::ConfigureTopLevel|.  The width and height come in
++  // DIP of the output that the surface is currently bound to.
+   void HandleSurfaceConfigure(int32_t widht,
+                               int32_t height,
+                               bool is_maximized,
+@@ -146,6 +161,9 @@ class WaylandWindow : public PlatformWindow,
+   void OnDragSessionClose(uint32_t dnd_action);
+ 
+  private:
++  void SetBoundsDip(const gfx::Rect& bounds_dip);
++  void SetBufferScale(int32_t scale, bool update_bounds);
++
+   bool IsMinimized() const;
+   bool IsMaximized() const;
+   bool IsFullscreen() const;
+@@ -213,14 +231,27 @@ class WaylandWindow : public PlatformWindow,
+ 
+   base::OnceCallback<void(int)> drag_closed_callback_;
+ 
+-  gfx::Rect bounds_;
+-  gfx::Rect pending_bounds_;
+-  // The bounds of the window before it went maximized or fullscreen.
+-  gfx::Rect restored_bounds_;
++  // These bounds attributes below have suffices that indicate units used.
++  // Wayland operates in DIP but the platform operates in physical pixels so
++  // our WaylandWindow is the link that has to translate the units.  See also
++  // comments in the implementation.
++  //
++  // Bounds that will be applied when the window state is finalized.  The window
++  // may get several configuration events that update the pending bounds, and
++  // only upon finalizing the state is the latest value stored as the current
++  // bounds via |ApplyPendingBounds|.  Measured in DIP because updated in the
++  // handler that receives DIP from Wayland.
++  gfx::Rect pending_bounds_dip_;
++  // Current bounds of the platform window.
++  gfx::Rect bounds_px_;
++  // The bounds of the platform window before it went maximized or fullscreen.
++  gfx::Rect restored_bounds_px_;
++
+   bool has_pointer_focus_ = false;
+   bool has_keyboard_focus_ = false;
+   bool has_touch_focus_ = false;
+   bool has_implicit_grab_ = false;
++  int32_t buffer_scale_ = 1;
+ 
+   // Stores current states of the window.
+   ui::PlatformWindowState state_;
+@@ -236,7 +267,14 @@ class WaylandWindow : public PlatformWindow,
+ 
+   bool is_tooltip_ = false;
+ 
+-  // Stores the list of entered outputs that the window is currently in.
++  // For top level window, stores the list of entered outputs that the window
++  // is currently in.
++  //
++  // Not used by popups.  When sub-menus are hidden and shown again, Wayland
++  // 'repositions' sub-menus to wrong outputs by sending them leave and enter
++  // events so their list of entered outputs becomes meaningless after they have
++  // been hidden at least once.  To determine which output the popup belongs to,
++  // we ask its parent.
+   std::set<uint32_t> entered_outputs_ids_;
+ 
+   DISALLOW_COPY_AND_ASSIGN(WaylandWindow);
+diff --git a/ui/ozone/platform/wayland/host/xdg_popup_wrapper_v6.cc b/ui/ozone/platform/wayland/host/xdg_popup_wrapper_v6.cc
+index a17719ea848f..742f8d46a71c 100644
+--- a/ui/ozone/platform/wayland/host/xdg_popup_wrapper_v6.cc
++++ b/ui/ozone/platform/wayland/host/xdg_popup_wrapper_v6.cc
+@@ -257,8 +257,10 @@ zxdg_positioner_v6* XDGPopupWrapperV6::CreatePositioner(
+     menu_type = MenuType::TYPE_3DOT_PARENT_MENU;
+ 
+   // Place anchor to the end of the possible position.
+-  gfx::Rect anchor_rect =
+-      GetAnchorRect(menu_type, bounds, parent_window->GetBounds());
++  gfx::Rect anchor_rect = GetAnchorRect(
++      menu_type, bounds,
++      gfx::ScaleToRoundedRect(parent_window->GetBounds(),
++                              1.0 / parent_window->buffer_scale()));
+ 
+   zxdg_positioner_v6_set_anchor_rect(positioner, anchor_rect.x(),
+                                      anchor_rect.y(), anchor_rect.width(),
+@@ -284,11 +286,10 @@ void XDGPopupWrapperV6::Configure(void* data,
+   // Wayland requires doing so in respect to parent window's origin. To properly
+   // place windows, the bounds are translated and adjusted according to the
+   // Wayland compositor needs during WaylandWindow::CreateXdgPopup call.
+-  gfx::Rect new_bounds(x, y, width, height);
+   WaylandWindow* window =
+       static_cast<XDGPopupWrapperV6*>(data)->wayland_window_;
+   DCHECK(window);
+-  window->HandlePopupConfigure(new_bounds);
++  window->HandlePopupConfigure({x, y, width, height});
+ }
+ 
+ // static
+diff --git a/ui/ozone/platform/wayland/test/mock_surface.cc b/ui/ozone/platform/wayland/test/mock_surface.cc
+index 9d2333683a41..b086bdc85416 100644
+--- a/ui/ozone/platform/wayland/test/mock_surface.cc
++++ b/ui/ozone/platform/wayland/test/mock_surface.cc
+@@ -47,6 +47,10 @@ void Commit(wl_client* client, wl_resource* resource) {
+   GetUserDataAs<MockSurface>(resource)->Commit();
+ }
+ 
++void SetBufferScale(wl_client* client, wl_resource* resource, int32_t scale) {
++  GetUserDataAs<MockSurface>(resource)->SetBufferScale(scale);
++}
++
+ void DamageBuffer(struct wl_client* client,
+                   struct wl_resource* resource,
+                   int32_t x,
+@@ -67,7 +71,7 @@ const struct wl_surface_interface kMockSurfaceImpl = {
+     SetInputRegion,   // set_input_region
+     Commit,           // commit
+     nullptr,          // set_buffer_transform
+-    nullptr,          // set_buffer_scale
++    SetBufferScale,   // set_buffer_scale
+     DamageBuffer,     // damage_buffer
+ };
+ 
+diff --git a/ui/ozone/platform/wayland/test/mock_surface.h b/ui/ozone/platform/wayland/test/mock_surface.h
+index 1ea9c52dea27..d283e44b2fe9 100644
+--- a/ui/ozone/platform/wayland/test/mock_surface.h
++++ b/ui/ozone/platform/wayland/test/mock_surface.h
+@@ -37,6 +37,7 @@ class MockSurface : public ServerObject {
+   MOCK_METHOD4(Damage,
+                void(int32_t x, int32_t y, int32_t width, int32_t height));
+   MOCK_METHOD0(Commit, void());
++  MOCK_METHOD1(SetBufferScale, void(int32_t scale));
+   MOCK_METHOD4(DamageBuffer,
+                void(int32_t x, int32_t y, int32_t width, int32_t height));
+ 
+diff --git a/ui/ozone/platform/wayland/test/test_output.cc b/ui/ozone/platform/wayland/test/test_output.cc
+index 4abdc319e2e2..bbc6475cc078 100644
+--- a/ui/ozone/platform/wayland/test/test_output.cc
++++ b/ui/ozone/platform/wayland/test/test_output.cc
+@@ -31,4 +31,9 @@ void TestOutput::OnBind() {
+   wl_output_send_done(resource());
+ }
+ 
++void TestOutput::SetScale(int32_t factor) {
++  wl_output_send_scale(resource(), factor);
++  wl_output_send_done(resource());
++}
++
+ }  // namespace wl
+diff --git a/ui/ozone/platform/wayland/test/test_output.h b/ui/ozone/platform/wayland/test/test_output.h
+index bbd6848c9b75..8dffd41cae22 100644
+--- a/ui/ozone/platform/wayland/test/test_output.h
++++ b/ui/ozone/platform/wayland/test/test_output.h
+@@ -20,6 +20,8 @@ class TestOutput : public GlobalObject {
+   const gfx::Rect GetRect() { return rect_; }
+   void OnBind() override;
+ 
++  void SetScale(int32_t factor);
++
+  private:
+   gfx::Rect rect_;
+ 
+diff --git a/ui/ozone/platform/wayland/test/wayland_test.cc b/ui/ozone/platform/wayland/test/wayland_test.cc
+index f8946442ecaa..1da8b15b54bb 100644
+--- a/ui/ozone/platform/wayland/test/wayland_test.cc
++++ b/ui/ozone/platform/wayland/test/wayland_test.cc
+@@ -6,6 +6,8 @@
+ 
+ #include "base/run_loop.h"
+ #include "ui/events/ozone/layout/keyboard_layout_engine_manager.h"
++#include "ui/ozone/platform/wayland/host/wayland_output_manager.h"
++#include "ui/ozone/platform/wayland/host/wayland_screen.h"
+ #include "ui/ozone/platform/wayland/test/mock_surface.h"
+ #include "ui/platform_window/platform_window_init_properties.h"
+ 
+@@ -42,6 +44,8 @@ WaylandTest::~WaylandTest() {}
+ void WaylandTest::SetUp() {
+   ASSERT_TRUE(server_.Start(GetParam()));
+   ASSERT_TRUE(connection_->Initialize());
++  screen_ = connection_->wayland_output_manager()->CreateWaylandScreen(
++      connection_.get());
+   EXPECT_CALL(delegate_, OnAcceleratedWidgetAvailable(_))
+       .WillOnce(SaveArg<0>(&widget_));
+   PlatformWindowInitProperties properties;
+diff --git a/ui/ozone/platform/wayland/test/wayland_test.h b/ui/ozone/platform/wayland/test/wayland_test.h
+index 0acdf07c39b3..85a095dfd309 100644
+--- a/ui/ozone/platform/wayland/test/wayland_test.h
++++ b/ui/ozone/platform/wayland/test/wayland_test.h
+@@ -28,6 +28,8 @@ class MockSurface;
+ 
+ namespace ui {
+ 
++class WaylandScreen;
++
+ const uint32_t kXdgShellV5 = 5;
+ const uint32_t kXdgShellV6 = 6;
+ 
+@@ -53,6 +55,7 @@ class WaylandTest : public ::testing::TestWithParam<uint32_t> {
+   std::unique_ptr<WaylandSurfaceFactory> surface_factory_;
+   std::unique_ptr<WaylandBufferManagerGpu> buffer_manager_gpu_;
+   std::unique_ptr<WaylandConnection> connection_;
++  std::unique_ptr<WaylandScreen> screen_;
+   std::unique_ptr<WaylandWindow> window_;
+   gfx::AcceleratedWidget widget_ = gfx::kNullAcceleratedWidget;
+ 
