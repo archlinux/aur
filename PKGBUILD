@@ -4,7 +4,7 @@
 pkgname='perl-asa'
 _cpanname='asa'
 pkgver='1.03'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Lets your class/object say it works like something else.'
 arch=('any')
 license=('PerlArtistic' 'GPL')

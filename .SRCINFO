@@ -1,7 +1,7 @@
 pkgbase = perl-asa
 	pkgdesc = Lets your class/object say it works like something else.
 	pkgver = 1.03
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/~adamk/asa-1.03/
 	arch = any
 	license = PerlArtistic
