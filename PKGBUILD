@@ -2,15 +2,15 @@
 
 _pkgname=icu
 pkgname=${_pkgname}62
-pkgver=62.1
+pkgver=62.2
 pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=('i686' 'x86_64')
 url="http://www.icu-project.org/"
 license=('custom:"icu"')
 depends=('gcc-libs>=4.7.1-5')
-source=(http://download.icu-project.org/files/${_pkgname}4c/${pkgver}/${_pkgname}4c-${pkgver//./_}-src.tgz)
-md5sums=('490ad9d920158e0314e10ba74ae9a150')
+source=(https://github.com/unicode-org/${_pkgname}/releases/download/release-${pkgver//./-}/${_pkgname}4c-${pkgver//./_}-src.tgz)
+md5sums=('b26c157dee099d89bfdf6d31c0ccbd30')
 
 build() {
   cd ${srcdir}/${_pkgname}/source
