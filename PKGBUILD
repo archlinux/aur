@@ -3,12 +3,12 @@
 
 pkgname=termius-beta
 pkgver=4.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
 arch=('x86_64')
 license=('custom')
-depends=('gtk3' 'nss' 'libxtst' 'gconf' 'pulseaudio' 'gnutls' 'libxss')
+depends=('gconf' 'libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' 'libxss')
 makedepends=('squashfs-tools')
 # Get latest version + link from https://uappexplorer.com/snap/ubuntu/termius-beta || snap info termius-beta || run the following
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-beta | jq '.download_url' -r
@@ -19,7 +19,7 @@ source=(
     "tos.html"
 )
 sha256sums=('3ff6f8dfab1955be6c2398a55c36df3cf8345e41f9b5b27f60d514b23080fefb'
-            '3bc6261d5749c5c9795dbcf3d23476d83c2f4251aa2ec6b1293a6022adaecf68'
+            'cd9d14924c7721042640d6db1fbdc882b156d756bd906cd09193221b59f979f5'
             '9c969cc82314240860737dc09d48970271c798c9b1116ceb91556f75959788a2')
 
 prepare() {

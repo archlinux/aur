@@ -1,9 +1,10 @@
 [Desktop Entry]
 Name=Termius Beta
 Comment=Desktop SSH Client
-Exec=termius-beta
+Exec=termius-beta %U
 Terminal=false
 Type=Application
 StartupNotify=true
 Icon=termius-beta
+StartupWMClass=Termius Beta
 Categories=System;TerminalEmulator;
