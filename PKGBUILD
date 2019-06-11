@@ -3,11 +3,12 @@
 
 pkgname=perl-text-qrcode
 pkgver=0.04
-pkgrel=2
+pkgrel=5
 pkgdesc='Text-QRCode for Perl'
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~kurihara/Text-QRCode-${pkgver}/"
 license=('PerlArtistic' 'GPL')
+makedepends=('perl-module-install')
 depends=('perl' 'qrencode')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/K/KU/KURIHARA/Text-QRCode-${pkgver}.tar.gz")

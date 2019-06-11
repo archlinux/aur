@@ -1,12 +1,13 @@
 pkgbase = perl-text-qrcode
 	pkgdesc = Text-QRCode for Perl
 	pkgver = 0.04
-	pkgrel = 2
+	pkgrel = 5
 	url = http://search.cpan.org/~kurihara/Text-QRCode-0.04/
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-module-install
 	depends = perl
 	depends = qrencode
 	options = !emptydirs
