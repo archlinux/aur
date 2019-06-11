@@ -2,7 +2,7 @@
 
 author=Baitinq
 pkgname=dwm-baitinq-git
-_gitname=dwm
+pkgbase=dwm
 pkgver=1
 pkgrel=1
 pkgdesc='Simple window manager (baitinq version)'
@@ -15,26 +15,26 @@ conflicts=('dwm')
 provides=('dwm')
 
 # include config.h and any patches you want to have applied here
-source=("git://github.com/$author/$_gitname.git")
+source=("git://github.com/$author/$pkgbase.git")
 
 md5sums=('SKIP')
 sha1sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$pkgbase"
 
   # Get the version number.
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$_gitname"
+    cd "$pkgbase"
     make
 }
 
 package() {
-    cd "$_gitname"
+    cd "$pkgbase"
     make PREFIX=/usr DESTDIR="$pkgdir" install
     mkdir -p "$pkgdir/usr/share/$pkgname"
     cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"

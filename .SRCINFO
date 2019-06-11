@@ -1,4 +1,4 @@
-pkgbase = dwm-baitinq-git
+pkgbase = dwm
 	pkgdesc = Simple window manager (baitinq version)
 	pkgver = 1
 	pkgrel = 1
