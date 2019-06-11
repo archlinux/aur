@@ -10,7 +10,7 @@ source android-env.sh ${_android_arch}
 
 pkgname=android-${_android_arch}-qt5
 pkgver=5.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 5 for Android"
 arch=('any')
 url='https://www.qt.io'
@@ -47,7 +47,7 @@ case "$_android_arch" in
                     "android-x86-system-image: AVD support")
         ;;
     x86-64)
-        optdepends=("android-google-apis-x86-64: AVD support"
+        SKIPoptdepends=("android-google-apis-x86-64: AVD support"
                     "android-x86-64-system-image: AVD support")
         ;;
     *)
@@ -61,7 +61,7 @@ source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkg
         "0001-Fix-clang-build.patch"
         "0002-Disable-mapbox.patch")
 md5sums=('38017e0ed88b9baba063bd723d9ca8b2'
-         '0b19ddef193baddb656d3170635e6de6'
+         '6bba1ddffbf1d3ce0c4887ce8b8b1fc4'
          '20d8bdd24102e9011b561b7361394728')
 
 prepare() {
