@@ -4,7 +4,7 @@
 pkgname="murmur-static"
 pkgver=1.3.0rc1
 _pkgver=1.3.0-rc1
-pkgrel=3
+pkgrel=4
 pkgdesc="The voice chat application server for Mumble (static version)"
 arch=("i686" "x86_64")
 url="http://www.mumble.info/"
@@ -26,15 +26,16 @@ sha512sums=('07e52e8d47384dbd6222434eece10f96b17f01f15af2ac95cd249373c3c968df21e
 package() {
 	cd "${srcdir}/${pkgname}_x86-${_pkgver}"
 
-        sed -e "1i# vi:ft=cfg" \
+        sed -e "1i; vi:ft=cfg" \
             -e "s|database=|database=/var/db/murmur/murmur.sqlite|" \
+            -e "s|^ice=|;ice=|" \
             -e "s|;logfile=murmur.log|logfile=|" \
             -e "s|;uname=|uname=murmur|" \
             -i murmur.ini
 
         install -dm755 ${pkgdir}/var/db/murmur
         install -dm755 ${pkgdir}/var/lib             # compatibility with
-        ln -s ../db/murmur ${pkgdir}/var/lib/murmur  # murmur-static <= 1.3.0rc1-1
+        ln -s ../db/murmur ${pkgdir}/var/lib/murmur  # murmur-static <= 1.3.0rc1-2
 	install -Dm755 murmur.x86 ${pkgdir}/usr/bin/murmurd
 	install -Dm644 murmur.ini ${pkgdir}/etc/murmur.ini
 	install -Dm644 README ${pkgdir}/usr/share/doc/murmur/README
