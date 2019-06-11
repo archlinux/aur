@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gauche-git
-pkgver=0.9.6r10470
+pkgver=0.9.8_rc1.r11350
 pkgrel=1
 epoch=1
 pkgdesc="R7RS Scheme implementation developed to be a handy script interpreter"
@@ -23,7 +23,7 @@ options=('!makeflags' '!emptydirs')
 pkgver() {
   cd "$_gitname"
   _appver=$(awk -F, '/AC_INIT/ {print $2}' configure.ac|tr -d [])
-  printf %sr%s $(echo $_appver) $(git rev-list --count HEAD)
+  printf %s.r%s $(echo $_appver) $(git rev-list --count HEAD)
 }
   
 build() {
