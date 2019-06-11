@@ -5,7 +5,7 @@
 
 pkgname='ripit'
 pkgver='4.0.0_rc_20161009'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Command line tool to rip tracks from audio cds and encode them'
 arch=('any')
 url='https://www.ripit.pl'

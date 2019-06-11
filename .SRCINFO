@@ -1,7 +1,7 @@
 pkgbase = ripit
 	pkgdesc = Command line tool to rip tracks from audio cds and encode them
 	pkgver = 4.0.0_rc_20161009
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.ripit.pl
 	arch = any
 	license = GPL
