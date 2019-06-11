@@ -1,7 +1,7 @@
 # Contributor: ordoban <dirk.langer@vvovgonik.de>
 pkgname='perl-crypt-ecb'
 pkgver='2.21'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Use block ciphers using ECB mode within perl scripts"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
   make test
 }
 

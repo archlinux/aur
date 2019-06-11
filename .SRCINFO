@@ -1,7 +1,7 @@
 pkgbase = perl-crypt-ecb
 	pkgdesc = Use block ciphers using ECB mode within perl scripts
 	pkgver = 2.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/Crypt::ECB
 	arch = any
 	license = PerlArtistic
