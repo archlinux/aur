@@ -3,12 +3,12 @@
 
 pkgname=termius
 pkgver=4.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
 arch=('x86_64')
 license=('custom')
-depends=('gtk3' 'nss' 'libxtst' 'gconf' 'pulseaudio' 'gnutls' 'libxss')
+depends=('gconf' 'libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' 'libxss')
 makedepends=('squashfs-tools')
 # Get latest version + link from https://uappexplorer.com/snap/ubuntu/termius-app || snap info termius-app || run the following
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-app | jq '.download_url' -r
