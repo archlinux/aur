@@ -2,15 +2,16 @@
 
 _pkgname=icu
 pkgname=${_pkgname}57
-pkgver=57.1
+pkgver=57.2
 pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=('i686' 'x86_64')
 url="http://www.icu-project.org/"
 license=('custom:"icu"')
 depends=('gcc-libs>=4.7.1-5')
-source=(http://download.icu-project.org/files/${_pkgname}4c/${pkgver}/${_pkgname}4c-${pkgver//./_}-src.tgz)
-sha256sums=('ff8c67cb65949b1e7808f2359f2b80f722697048e90e7cfc382ec1fe229e9581')
+source=(https://github.com/unicode-org/${_pkgname}/releases/download/release-${pkgver//./-}/${_pkgname}4c-${pkgver//./_}-src.tgz)
+#source=(http://download.icu-project.org/files/${_pkgname}4c/${pkgver}/${_pkgname}4c-${pkgver//./_}-src.tgz)
+sha256sums=('623f04b921827a041f42d52495a6f8eee6565a9b7557051ac68e099123ff28dc')
 
 build() {
   cd ${srcdir}/${_pkgname}/source
