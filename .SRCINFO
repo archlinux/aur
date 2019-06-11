@@ -1,6 +1,6 @@
 pkgbase = perl-rinci
 	pkgdesc = Language-neutral metadata for your code entities
-	pkgver = 1.1.87
+	pkgver = 1.1.91
 	pkgrel = 1
 	url = https://metacpan.org/release/Rinci
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = perl-rinci
 	depends = perl-defhash
 	depends = perl-sah
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Rinci-1.1.87.tar.gz
-	sha512sums = 73be6b8f5e36bed304cbf2d64ffed7b5df3b1eee654d6514df36687be577e3e1ca63e46015a437d6880068e8d03d4c5c02b95d18eafec6af32146e5d5ffaa47b
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Rinci-1.1.91.tar.gz
+	sha512sums = 2575416c2eb9c38333d3436873ffc21c71aa2f695bc50a31fefc9bc390aa5dec375bdf8485157e8a43c5332b56cab70f3bec63f8288dc70efd4a5c3b48988286
 
 pkgname = perl-rinci
 
