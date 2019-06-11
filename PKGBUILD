@@ -1,4 +1,4 @@
-# Contributor: Andrew Rabert <draje@nullsum.net>
+# Contributor: Andrew Rabert <ar@nullsum.net>
 
 pkgname=scrcpy
 pkgver=1.9
