@@ -1,0 +1,23 @@
+pkgbase = vivado
+	pkgdesc = FPGA/CPLD design suite for Xilinx devices
+	pkgver = 2018.3
+	pkgrel = 1
+	url = https://www.xilinx.com/products/design-tools/vivado.html
+	arch = x86_64
+	license = custom
+	depends = ncurses5-compat-libs
+	depends = libpng12
+	depends = lib32-libpng12
+	depends = gtk2
+	depends = fxload
+	depends = digilent.adept.runtime
+	depends = digilent.adept.utilities
+	depends = xterm
+	options = !strip
+	source = file:///Xilinx_Vivado_SDK_2018.3_1207_2324.tar.gz
+	source = spoof_homedir.c
+	md5sums = 8a3a75f26d0e20de21fc673ad9d40d0f
+	md5sums = 69d14ad64f6ec44e041eaa8ffcb6f87c
+
+pkgname = vivado
+
