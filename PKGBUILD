@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-pkgver=4.0.7
+pkgver=4.0.8
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
@@ -17,7 +17,7 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('7216c4db5a4bbf0913bfe501300bf8c7')
+md5sums=('4f91a6ba8876c5191d89d7982b2034d1')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -65,7 +65,6 @@ package() {
 	   "$pkgdir/usr/share/man/man1/yum-debug-dump.1" \
 	   "$pkgdir/usr/share/man/man1/yum-debug-restore.1" \
 	   "$pkgdir/usr/share/man/man1/yumdownloader.1" \
-	   "$pkgdir/usr/share/man/man5/yum-changelog.conf.5" \
 	   "$pkgdir/usr/share/man/man5/yum-versionlock.conf.5" \
 	   "$pkgdir/usr/share/man/man8/yum-copr.8" \
 	   "$pkgdir/usr/share/man/man8/yum-versionlock.8"
