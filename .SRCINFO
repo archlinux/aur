@@ -1,6 +1,6 @@
 pkgbase = dnf
 	pkgdesc = Package manager forked from Yum, using libsolv as a dependency resolver
-	pkgver = 4.2.6
+	pkgver = 4.2.7
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf
 	arch = any
@@ -10,12 +10,13 @@ pkgbase = dnf
 	makedepends = bash-completion
 	makedepends = cmake
 	makedepends = python-sphinx
-	depends = libdnf>=0.32.0
+	depends = libdnf>=0.35.1
 	depends = libcomps>=0.1.8
 	depends = libmodulemd>=1.4.0
 	depends = python
 	depends = python-gpgme
 	depends = rpm-org>=4.14.0
+	optdepends = python-unbound: for gpgkey_dns_verification option
 	options = !emptydirs
 	backup = etc/dnf/automatic.conf
 	backup = etc/dnf/dnf.conf
@@ -24,8 +25,8 @@ pkgbase = dnf
 	backup = etc/dnf/protected.d/yum.conf
 	backup = etc/libreport/events.d/collect_dnf.conf
 	backup = etc/logrotate.d/dnf
-	source = https://github.com/rpm-software-management/dnf/archive/4.2.6/dnf-4.2.6.tar.gz
-	md5sums = a5b1a47bb02aa00a51e6de42c74d37bc
+	source = https://github.com/rpm-software-management/dnf/archive/4.2.7/dnf-4.2.7.tar.gz
+	md5sums = f0c0765cb2b04baa6e5fa0b5556f8e40
 
 pkgname = dnf
 
