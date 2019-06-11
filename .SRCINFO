@@ -9,9 +9,9 @@ pkgbase = imagewriter
 	depends = qt5-base
 	depends = udisks2
 	optdepends = xdg-su: NEEDED by non-KDE users!
-	optdepends = kdebase-runtime: provides kdesu
+	optdepends = kdesu: privilege elevation for KDE users
 	source = http://download.opensuse.org/tumbleweed/repo/src-oss/src/imagewriter-1.10.1432200249.1d253d9-1.4.src.rpm
-	sha512sums = 01c465797b3eba2f4bea6bb54c18b7dbcaee97226a8de4a6ce53596a6245d1731363ce040526f878e2bbdbd54b8d5a044658a3c65805adcd6c9698296f859215
+	sha512sums = 4fc4e67782b92a9c6be779376eaaae2c8d1bec3c6ee7c2f1aa554fbb4c32d67df04de2f8101bcedda3456fe586dca4bed807cc9405c677e919e7ab3a3f92475e
 
 pkgname = imagewriter
 

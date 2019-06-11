@@ -10,7 +10,7 @@ url='https://github.com/mbarringer/imagewriter'
 license=('GPL2')
 depends=('qt5-base' 'udisks2')
 optdepends=('xdg-su: NEEDED by non-KDE users!'
-	    'kdebase-runtime: provides kdesu')
+	    'kdesu: privilege elevation for KDE users')
 source=("http://download.opensuse.org/tumbleweed/repo/src-oss/src/$pkgname-$pkgver-${_release}.src.rpm")
 sha512sums=('4fc4e67782b92a9c6be779376eaaae2c8d1bec3c6ee7c2f1aa554fbb4c32d67df04de2f8101bcedda3456fe586dca4bed807cc9405c677e919e7ab3a3f92475e')
 
