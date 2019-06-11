@@ -5,8 +5,8 @@
 
 pkgname=perl-net-libdnet
 _cpanname="Net-Libdnet"
-pkgver=0.98
-pkgrel=9
+pkgver=0.99
+pkgrel=1
 pkgdesc="Binding for Dug Song's libdnet"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_cpanname}"
@@ -15,7 +15,7 @@ depends=('perl-class-gomor' 'libdnet')
 makedepends=('perl-extutils-makemaker')
 options=('!emptydirs')
 source=("http://www.cpan.org/authors/id/G/GO/GOMOR/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('556bb84c712f0b65b8c0b252cae4fc16')
+md5sums=('c838677154b730f47f9a5c6b679fe296')
 
 build() {
   cd $_cpanname-$pkgver

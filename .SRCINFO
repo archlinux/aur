@@ -1,7 +1,7 @@
 pkgbase = perl-net-libdnet
 	pkgdesc = Binding for Dug Song's libdnet
-	pkgver = 0.98
-	pkgrel = 9
+	pkgver = 0.99
+	pkgrel = 1
 	url = https://metacpan.org/release/Net-Libdnet
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = perl-net-libdnet
 	depends = perl-class-gomor
 	depends = libdnet
 	options = !emptydirs
-	source = http://www.cpan.org/authors/id/G/GO/GOMOR/Net-Libdnet-0.98.tar.gz
-	md5sums = 556bb84c712f0b65b8c0b252cae4fc16
+	source = http://www.cpan.org/authors/id/G/GO/GOMOR/Net-Libdnet-0.99.tar.gz
+	md5sums = c838677154b730f47f9a5c6b679fe296
 
 pkgname = perl-net-libdnet
 
