@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/petsam/$pkgname/archive/$_p
 sha256sums=('b249aa9b3f6cde6a578a946114b633d6fa944c8b9be5d813deb51d5ba0860df5')
 
 package() {
-	cd "$pkgname-v$_pkgver"
+	cd "$pkgname-$_pkgver"
 	install -d $pkgdir/usr/share/prettygrub
 	cp -r templates  $pkgdir/usr/share/prettygrub/
 	install -Dm755 prettygrub $pkgdir/usr/bin/prettygrub
