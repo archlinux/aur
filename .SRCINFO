@@ -1,6 +1,6 @@
 pkgbase = plplot
 	pkgdesc = A cross-platform software package for creating scientific plots
-	pkgver = 5.14.0
+	pkgver = 5.15.0
 	pkgrel = 1
 	url = http://plplot.sourceforge.net/
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = plplot
 	optdepends = cairo: displays plots and save to different file formats
 	options = !libtool
 	options = !makeflags
-	source = http://downloads.sourceforge.net/sourceforge/plplot/plplot-5.14.0.tar.gz
-	md5sums = 244883879f24a2324f536d624168870d
+	source = http://downloads.sourceforge.net/sourceforge/plplot/plplot-5.15.0.tar.gz
+	md5sums = 36aec5bfadc2e207cf8ee39f573c9303
 
 pkgname = plplot
 
