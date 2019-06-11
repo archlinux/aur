@@ -2,8 +2,8 @@
 
 pkgname=origin-client
 pkgdesc="Openshift client"
-pkgver=3.11.0
-pkgrel=4
+pkgver=4.1.0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/openshift/origin"
 license=('Apache')
