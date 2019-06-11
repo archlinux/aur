@@ -3,6 +3,7 @@
 
 pkgname="murmur-static"
 pkgver=1.3.0rc1
+_pkgver=1.3.0-rc1
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble (static version)"
 arch=("i686" "x86_64")
@@ -13,7 +14,7 @@ conflicts=("murmur" "murmur-git" "murmur-ice")
 options=("!strip")
 backup=("etc/murmur.ini")
 install="murmur.install"
-source=("http://mumble.info/snapshot/murmur-static_x86-1.3.0-rc1.tar.bz2" 
+source=("http://mumble.info/snapshot/murmur-static_x86-${_pkgver}.tar.bz2"
         "murmur.service"
         "murmurd.1")
 sha512sums=('07e52e8d47384dbd6222434eece10f96b17f01f15af2ac95cd249373c3c968df21e985b0309060397152b3a9112dd08c4b100cce2cdc6eaf78e0d5dc3684a20e'
@@ -21,7 +22,7 @@ sha512sums=('07e52e8d47384dbd6222434eece10f96b17f01f15af2ac95cd249373c3c968df21e
             '98bcb96e98b3cdbd07be20774978bd309e7cbc3279e0bbf5682794689d7ad5aeb09bb332540c965f5d93be61bdbd9e23fd9074d9b1a4ff2d55c6176365f69142')
 
 package() {
-	cd "${srcdir}/${pkgname}_x86-1.3.0-rc1"
+	cd "${srcdir}/${pkgname}_x86-${_pkgver}"
 
 	sed -e "s|database=|database=/var/lib/murmur/murmur.sqlite|" \
 	    -e "s|dbus=session|#dbus=session|" \
@@ -37,4 +38,3 @@ package() {
 	install -Dm644 ${srcdir}/murmur.service ${pkgdir}/usr/lib/systemd/system/murmur.service
 	install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
-
