@@ -2,7 +2,7 @@
 pkgname='scbd-git'
 _gitname='book-downloader'
 _pkgname='scbd'
-pkgver=r56.4d71e57
+pkgver=r57.db66796
 pkgrel=1
 pkgdesc='Simple C Book Downloader, also create a reference file for LaTeX (.bib)'
 arch=('any')
@@ -25,4 +25,3 @@ package() {
 	 install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	 install -Dm644 "../README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
-

@@ -1,6 +1,6 @@
 pkgbase = scbd-git
 	pkgdesc = Simple C Book Downloader, also create a reference file for LaTeX (.bib)
-	pkgver = r56.4d71e57
+	pkgver = r57.db66796
 	pkgrel = 1
 	url = https://github.com/josecleiton/book-downloader
 	arch = any
