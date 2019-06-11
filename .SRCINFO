@@ -1,6 +1,6 @@
 pkgbase = git-prompt-rs-git
 	pkgdesc = Fast git prompt for various shells written in rust
-	pkgver = 57
+	pkgver = 62
 	pkgrel = 1
 	url = https://github.com/aignas/git-prompt-rs
 	arch = i686
