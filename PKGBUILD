@@ -4,11 +4,11 @@
 
 pkgname=raven-qt
 pkgver=2.2.2
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://ravencoin.org/"
 license=('MIT')
-pkgdesc="Cryptocurrency wallet(QT)"
+pkgdesc="Ravencoin Core Cryptocurrency Wallet (QT)"
 depends=('openssl-1.0' 'boost-libs' 'libevent' 'db4.8' 'qt5-base' 'protobuf')
 optdepends=('miniupnpc: Automatic UPnP port mapping' 'qrencode: For generating QR codes within the GUI' 'zeromq: Send notifications via zeromq')
 makedepends=(boost qt5-tools)
