@@ -4,7 +4,7 @@
 # his PKGBUILD that served as a base for this one
 
 pkgname=virt-backup
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Automatic backups for Libvirt"
 arch=(any)
@@ -20,18 +20,17 @@ depends=(
   python-arrow
   python-defusedxml
   python-lxml
-  python-tqdm
   python-yaml
 )
 options=(!emptydirs)
-source=("https://github.com/Anthony25/virt-backup/archive/${pkgver}.tar.gz")
-sha256sums=('ad9f7666af00e62ced722443d0b010b4b19b190ecbf24f053b5e7f0ece45e09c')
+source=("https://github.com/Anthony25/virt-backup/archive/v${pkgver}.tar.gz")
+sha256sums=('9139dab9de2b864132ac34c9057af124e93768deb7a7c04d43550a966b814e60')
 
 package() {
   cd "${srcdir}/virt-backup-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 
-	install -D -m644 example/virt-backup-clean.service "$pkgdir/usr/lib/systemd/system/virt-backup-clean.service"
+  install -D -m644 example/virt-backup-clean.service "$pkgdir/usr/lib/systemd/system/virt-backup-clean.service"
 }
 
 # vim:set ts=2 sw=2 et:
