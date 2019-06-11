@@ -2,7 +2,7 @@
 
 pkgname=vscodium-bin
 pkgver=1.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64')
 url="https://github.com/VSCodium/vscodium"
@@ -21,7 +21,7 @@ source=(
         ${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/${pkgver}/VSCodium-linux-x64-${pkgver}.tar.gz
        )
 noextract=("${pkgname}-${pkgver}-${pkgrel}.tar.gz")
-sha256sums=('44c07450999d260672edfd34215fde0ca11829a38f89592f4d1f035e1dd5012a'
+sha256sums=('7275ddd94fc356374ca2a883bd1210863a8f2e5ad2f3e6194a42240941d119a4'
             'ee95f23cc1526ba1444e9df392dee7ce7da1250c315ff0c04392c92ad941128b')
 
 prepare() {
@@ -33,7 +33,8 @@ package() {
     install -d -m755 ${pkgdir}/usr/bin
     install -d -m755 ${pkgdir}/usr/share/{${pkgname},applications,pixmaps}
     cp -r ${srcdir}/${pkgname} ${pkgdir}/usr/share
-    ln -s /usr/share/${pkgname}/bin/vscodium ${pkgdir}/usr/bin/vscodium
+    ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/codium
+    ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/vscodium
     install -D -m644 vscodium-bin.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
     install -D -m644 ${srcdir}/${pkgname}/resources/app/resources/linux/code.png \
             ${pkgdir}/usr/share/pixmaps/vscodium.png
