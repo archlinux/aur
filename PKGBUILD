@@ -1,5 +1,4 @@
 # Maintainer: Phillip Smith <pkgbuild@phs.id.au>
-# http://github.com/fukawi2/aur-packages
 # Contributor: gregor <gregor@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
@@ -15,19 +14,21 @@
 
 pkgname=dump
 pkgver=0.4b46
-pkgrel=1
+pkgrel=2
 pkgdesc="Standard *nix for performing backups to tapedrive from ext2 and ext3 filesystems"
 arch=('i686' 'x86_64')
 url="http://dump.sourceforge.net/"
 license=('BSD')
 depends=('e2fsprogs')
-makedepends=('autoconf' 'automake' 'pkg-config')
+makedepends=('autoconf' 'automake' 'pkg-config' 'openssl-1.0')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('4c463f797e7e8a1112fabf5cbf8e1855')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
 
+  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
+  CFLAGS+=" -I/usr/include/openssl-1.0" \
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --with-manowner=root \
@@ -43,7 +44,7 @@ build() {
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
-  
+
   make prefix="$pkgdir"/usr install
 
   # the upstream Makefile doesn't care for --sbindir to work with
