@@ -3,7 +3,7 @@
 
 pkgname=perl-text-csv-xs
 pkgver=1.39
-pkgrel=1
+pkgrel=2
 pkgdesc="Comma-separated values manipulation routines"
 _dist=Text-CSV_XS
 arch=('any')
