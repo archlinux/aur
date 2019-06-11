@@ -2,9 +2,8 @@
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=flif-git
-_srcname=FLIF
 pkgver=0.3.r96.g74ea92b
-pkgrel=2
+pkgrel=3
 pkgdesc='Free Lossless Image Format (git version)'
 arch=('x86_64')
 url='https://github.com/FLIF-hub/FLIF/'
@@ -27,7 +26,7 @@ sha256sums=('SKIP'
             'c516d92d4724e319af79bb1ac5d3dde81dac359fd4a02af1ee71239a49d58710')
 
 prepare() {
-    cd "${_srcname}"
+    cd FLIF
     
     # fix Makefile target install-pixbufloader
     patch -Np1 -i "${srcdir}/flif-git-fix-makefile-target-install-pixbufloader.patch"
@@ -37,40 +36,37 @@ prepare() {
 }
 
 pkgver() {
-    cd "$_srcname"
+    cd FLIF
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "${_srcname}/src"
+    cd FLIF/src
     
     make all decoder viewflif pixbufloader test-interface
     
 }
 
 check() {
-    cd "${_srcname}/testFiles"
+    cd FLIF/src
     
     local _image
-    local _images
-    _images=($(find -type f -name '*'))
+    local -a _images
+    mapfile -t -d '' _images < <(find "${srcdir}/FLIF/testFiles" -type f -print0)
     
-    cd "${srcdir}/${_srcname}/src"
-    
-    export LD_LIBRARY_PATH="${srcdir}/${_srcname}/src"
+    export LD_LIBRARY_PATH="${srcdir}/FLIF/src"
     
     for _image in "${_images[@]}"
     do
-        _image="${_image#./}"
-        printf '%s\n' "  -> Testing with image '${_image}'..."
-        ./test-interface "../${_image}"
+        printf '%s\n' "  -> Testing with image '${_image##*/}'..."
+        ./test-interface "$_image"
     done
 }
 
 package() {
-    cd "${_srcname}/src"
+    cd FLIF/src
     
     make PREFIX="${pkgdir}/usr" install{,-dev}
     make PREFIX="${pkgdir}/usr" install{-decoder,-viewflif,-pixbufloader}

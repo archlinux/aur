@@ -1,7 +1,7 @@
 pkgbase = flif-git
 	pkgdesc = Free Lossless Image Format (git version)
 	pkgver = 0.3.r96.g74ea92b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FLIF-hub/FLIF/
 	arch = x86_64
 	license = LGPL3
