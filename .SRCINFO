@@ -1,6 +1,6 @@
 pkgbase = python-mcipc
 	pkgdesc = Python 3 library and scripts for the RCON and Query protocol
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/coNQP/mcipc
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-mcipc
 	makedepends = python-setuptools
 	makedepends = python-setuptools-git
 	depends = python
-	source = mcipc::git+https://github.com/coNQP/mcipc.git#tag=1.0.7
+	source = mcipc::git+https://github.com/coNQP/mcipc.git#tag=1.0.8
 	md5sums = SKIP
 
 pkgname = python-mcipc
