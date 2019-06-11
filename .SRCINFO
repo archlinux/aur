@@ -1,0 +1,17 @@
+pkgbase = loopp-git
+	pkgdesc = A music creation tool, intended for live use
+	pkgver = 1.2.1_git
+	pkgrel = 1
+	url = https://loopp.soundship.de/
+	arch = x86_64
+	groups = pro-audio
+	license = GPL3
+	makedepends = meson
+	depends = jack
+	depends = liblo
+	depends = ntk
+	source = loopp-git-master.tar.gz::https://git.netzspielplatz.de/soundship/loopp/-/archive/master/loopp-master.tar.gz
+	sha512sums = SKIP
+
+pkgname = loopp-git
+
