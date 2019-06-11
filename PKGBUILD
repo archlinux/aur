@@ -3,8 +3,8 @@
 
 pkgname=perl-net-interface
 _cpanname=Net-Interface
-pkgver=1.012
-pkgrel=10
+pkgver=1.016
+pkgrel=1
 pkgdesc="Net::Interface - Perl extension to access network interfaces    "
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_cpanname}"
@@ -13,7 +13,8 @@ options=('!emptydirs')
 makedepends=('perl-extutils-depends' 'perl-module-install')
 source=("http://cpan.metacpan.org/authors/id/M/MI/MIKER/${_cpanname}-${pkgver}.tar.gz"
 	'inc.patch')
-md5sums=('cfa0c390c506996c004fb5b214fc4a7c')
+md5sums=('339079deafeb8720c569bae51dac4a0d'
+         '3240db69ec69d45d4a9f768171f6f24e')
 
 build() {
   cd ${_cpanname}-${pkgver}
@@ -37,7 +38,3 @@ package() {
   find "$pkgdir" -name '*.pod' -delete
   _perl_depends
 }
-
-
-md5sums=('cfa0c390c506996c004fb5b214fc4a7c'
-         '3240db69ec69d45d4a9f768171f6f24e')
