@@ -4,8 +4,7 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='http://ros.org/wiki/rviz'
 
 pkgname='ros-melodic-rviz'
-pkgver='1.13.1'
-_pkgver_patch=0
+pkgver='1.13.3'
 arch=('any')
 pkgrel=1
 license=('BSD, Creative Commons')
@@ -89,9 +88,9 @@ depends=(
 	python-sip
 )
 
-_dir="rviz-release-release-melodic-rviz-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/melodic/rviz/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2c457a91f490ceb954760c23f8cc8d8edab3089cae59fa3b335191d96802ae0d')
+_dir="rviz-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rviz/archive/${pkgver}.tar.gz")
+sha256sums=('c9d9f1e64246e61754ca1a44344e6e258026d660bd0d5ec1969b040fc6cbf629')
 
 build() {
 	# Use ROS environment variables.
