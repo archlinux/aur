@@ -1,0 +1,16 @@
+pkgbase = python-africanelephantdatabasedatadownloader
+	pkgdesc = Download data from the African Elephant Database
+	pkgver = 0.0.0
+	pkgrel = 0
+	url = https://gitlab.com/helics-lab/python-africanelephantdatabasedatadownloader
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	makedepends = python-versioneer
+	depends = python-beautifulsoup4
+	depends = python-geopandas
+	depends = python-requests
+	depends = python-shapely
+
+pkgname = python-africanelephantdatabasedatadownloader
+
