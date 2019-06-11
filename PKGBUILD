@@ -1,15 +1,12 @@
-# Maintainer: Dan Ziemba <zman0900@gmail.com>
-# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-# Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
-# Contributor: Matt Coffin <mcoffin13 at gmail.com>
+# Maintainer: Matt Coffin <mcoffin13@gmail.com>
 
 pkgname=bzip2-git
 pkgver=r66.ad723d6
-pkgrel=2
+pkgrel=3
 pkgdesc="A parallel, SMP-based, bzip2-compatible compression utility"
 arch=('i686' 'x86_64')
-url="http://lbzip2.org/"
-license=('GPL3')
+url="https://sourceware.org/bzip2/"
+license=('custom')
 depends=('glibc')
 makedepends=('perl' 'git' 'meson' 'ninja')
 provides=('bzip2')
@@ -26,7 +23,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  meson builddir --prefix=/usr
+  meson \
+    --prefix=/usr \
+    --buildtype release \
+    builddir
   ninja -C builddir
 }
 
@@ -38,6 +38,8 @@ check() {
 package() {
   cd "$srcdir/$_gitname"
   DESTDIR="$pkgdir" meson install -C builddir
+
+  install -D -m644 -t "$pkgdir/usr/share/licenses/$pkgname" ./COPYING
 
   cd "$pkgdir/usr/lib"
   if [ ! -e libbz2.so.1.0 ]; then
