@@ -6,7 +6,7 @@ pkgver=2.1.0
 pkgrel=1
 pkgdesc="Google Drive CLI Client"
 arch=('x86_64' 'i686')
-url="https://github.com/prasmussen/gdrive"
+url="https://github.com/gdrive-org/gdrive"
 license=('MIT')
 makedepends=('git' 'go' 'godep')
 options=('!strip' '!emptydirs')
@@ -26,11 +26,12 @@ prepare() {
 }
 
 build() {
+  #GOPATH="$srcdir/build" go install -fix -v -x $_gourl
   GOPATH="$srcdir/build" go install -v -x $_gourl
 }
 
 #check() {
-#  GOPATH="$srcdir/build" go test -v -x $_gourl
+#  GOPATH="$srcdir/build" go test -fix -v -x $_gourl
 #}
 
 package() {
