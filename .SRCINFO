@@ -1,7 +1,7 @@
 pkgbase = lemonldap-ng
 	pkgdesc = A modular WebSSO (Single Sign On) based on Apache::Session modules
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lemonldap-ng.org/
 	arch = any
 	license = GPL

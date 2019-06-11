@@ -1,7 +1,7 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 pkgname=lemonldap-ng
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular WebSSO (Single Sign On) based on Apache::Session modules"
 arch=(any)
 url="https://lemonldap-ng.org/"
