@@ -5,19 +5,19 @@ _author="Daniel P. Berrange"
 _perlmod="sys-virt"
 _cpanname='Sys-Virt'
 pkgname=perl-${_perlmod}
-pkgver=3.0.0
-pkgrel=5
+pkgver=5.2.0
+pkgrel=1
 pkgdesc="Represent and manage a libvirt hypervisor connection"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Sys-Virt/"
 license=('GPL' 'PerlArtistic')
 depends=('libvirt')
-makedepends=('perl-test-pod-coverage' 'perl-xml-xpath')
-source=("http://www.cpan.org/authors/id/D/DA/DANBERR/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('2d5673dd8929957513f951a63a0ae2b1')
+makedepends=('perl-test-pod-coverage' 'perl-xml-xpath' 'perl-module-build')
+source=("http://www.cpan.org/authors/id/D/DA/DANBERR/${_cpanname}-v${pkgver}.tar.gz")
+md5sums=('a80ae2ba6aa28a403c2a352386ac6c1f')
 
 build() {
-  cd ${_cpanname}-${pkgver}
+  cd ${_cpanname}-v${pkgver}
 
   # From Fedora spec file - generation of spec file causes make to segfault
   sed -i -e '/Sys-Virt\.spec/d' Makefile.PL
@@ -41,7 +41,7 @@ fi
 }
 
 package() {
-  cd ${_cpanname}-${pkgver}
+  cd ${_cpanname}-v${pkgver}
   make PERL_MM_USE_DEFAULT=1 DESTDIR="${pkgdir}/" install
 
   # From Fedora RPM spec file - remove empty '.packlist' and '*.bs' files
