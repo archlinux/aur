@@ -2,7 +2,7 @@
 # Contributors: Se7endAY, Nathan Owe <ndowens04 at gmail>
 
 pkgname=bozohttpd
-pkgver=20181215
+pkgver=20190228
 pkgrel=1
 pkgdesc="A small and secure HTTP version 1.1 server"
 arch=('i686' 'x86_64' 'armv6h')
@@ -18,7 +18,7 @@ source=("http://www.eterna.com.au/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
 	'sample_perl.cgi'
 	'LICENSE'
 )
-sha256sums=('634adda4e8ee561791a31f80d2ee6369a555848a13078588e0338e34d8072817'
+sha256sums=('4e1653cadb13068ceb6025daa1c93a5d44d4e6726a8fe91172f962958e4eafb6'
             '8333eccd1c35d5001342c6130112105f1f6633ca70a7ca3c0d9ca4ccfe03db2c'
             '660240d1b3389591a0320bc7ccc0b8bcb0c8b2a533177bb0836b2f4db4569bb9'
             '11f5ea1a3a0d84bcf49418406533e4f43ce2285125f9a4194ce5e76e3f89a748'
