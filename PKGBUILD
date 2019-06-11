@@ -2,21 +2,22 @@
 # Contributor: Anton Shestakov <engored*ya.ru>
 
 pkgname=hqx
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="A fast, high-quality magnification filter designed for pixel art."
 arch=('i686' 'x86_64')
 url="https://github.com/grom358/hqx"
 license=('LGPL')
 depends=('devil')
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/hqx/hqx-1.1.tar.gz")
-sha256sums=('cc18f571fb4bc325317892e39ecd5711c4901831926bc93296de9ebb7b2f317b')
+source=(hqx-$pkgver.tar.gz::"https://github.com/grom358/hqx/archive/v$pkgver.tar.gz")
+sha256sums=('5a44f1745b7fb0321c1d244822d79505df7cf85cfe383ee70b16f5bcd6803396')
 
 build() {
   cd $pkgname-$pkgver
 
+  autoreconf -fi
   ./configure --prefix=/usr
-  make -j1
+  make
 }
 
 package() {
