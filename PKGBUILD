@@ -8,7 +8,7 @@ pkgdesc='Python 3 library and scripts for the RCON and Query protocol'
 arch=('any')
 url="https://github.com/coNQP/${_pkgbase}"
 license=('GPLv3')
-depends=('python' 'python-docopt')
+depends=('python')
 makedepends=('git' 'python' 'python-setuptools' 'python-setuptools-git')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
 md5sums=('SKIP')
