@@ -5,14 +5,14 @@
 pkgname=perl-gnome2-wnck+
 _cpanname=Gnome2-Wnck
 pkgver=0.16
-pkgrel=11
+pkgrel=14
 pkgdesc="Perl interface to the Window Navigator Construction Kit (improved)"
 arch=('i686' 'x86_64')
 license=("GPL" "PerlArtistic")
 url="http://search.cpan.org/dist/${_cpanname}"
 provides=('perl-gnome2-wnck')
 conflicts=('perl-gnome2-wnck')
-depends=('gtk2-perl' 'libwnck+')
+depends=('perl>=0' 'gtk2-perl' 'libwnck+')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig'
 'perl-class-load-xs'
 'perl-class-xsaccessor'
@@ -60,6 +60,6 @@ fi
 package() {
   cd ${_cpanname}-${pkgver}
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
   _perl_depends
 }
