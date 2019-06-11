@@ -5,9 +5,8 @@ url='http://www.ros.org/wiki/tf'
 
 pkgname='ros-melodic-tf'
 pkgver='1.12.0'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -47,9 +46,9 @@ depends=(
 	graphviz
 )
 
-_dir="geometry-release-release-melodic-tf-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/melodic/tf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('00d706fa94be4c4348556e8985dae8be407e76aae3f767e92dbd35e206f5ab03')
+_dir="geometry-${pkgver}/tf"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry/archive/${pkgver}.tar.gz")
+sha256sums=('61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4')
 
 build() {
 	# Use ROS environment variables.
