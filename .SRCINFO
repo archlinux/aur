@@ -81,7 +81,6 @@ pkgbase = pantheon-meta
 	depends = wingpanel-indicator-sound
 	depends = xorg-server
 	depends = xorg-xinit
-	depends = xorg-server-utils
 	optdepends = wingpanel-indicator-a11y
 	optdepends = wingpanel-indicator-nightlight
 	optdepends = wingpanel-indicator-privacy

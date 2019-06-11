@@ -81,7 +81,6 @@ depends=(
 	'wingpanel-indicator-sound'
 	'xorg-server'
 	'xorg-xinit'
-	'xorg-server-utils'
 	)
 optdepends=('wingpanel-indicator-a11y' 'wingpanel-indicator-nightlight' 'wingpanel-indicator-privacy')
 makedepends=('git' 'meson' 'ninja' 'vala>=0.40.3-1')
