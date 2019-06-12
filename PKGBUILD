@@ -2,7 +2,7 @@
 
 _pkgname=obsh
 pkgname=${_pkgname}-git
-pkgver=20190512
+pkgver=20190612
 pkgrel=1
 pkgdesc="A tiny bash script for finding SSH servers in your local network."
 url="https://github.com/notthebee/obsh/blob/master/obsh"
