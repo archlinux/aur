@@ -6,7 +6,6 @@ pkgbase = python-hips
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest-astropy
 	makedepends = python-setuptools
 	makedepends = python-astropy
 	makedepends = python-astropy-helpers>=3.1
@@ -31,6 +30,7 @@ pkgname = python-hips
 	optdepends = python-aiohttp: Used for fetching HiPS tiles.
 	optdepends = python-hips-doc: Documentation for Python HIPS module
 	optdepends = python-pytest-astropy: For testing
+	optdepends = python-astropy<3.2: For testing
 
 pkgname = python-hips-doc
 	pkgdesc = Documentation for Python HIPS module
