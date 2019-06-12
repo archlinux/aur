@@ -34,7 +34,6 @@ build() {
         --enable-shared \
         --enable-sdl-mixer \
         --enable-fcmp=all \
-        --enable-sys-lua
 
     make
 }
