@@ -2,7 +2,7 @@
 
 pkgname='perl-moosex-methodattributes'
 pkgver='0.31'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="code attribute introspection"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -14,7 +14,7 @@ source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-MethodAttribut
 md5sums=('fa9202b179c438844c3bea2ca7ecfe9d')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+    export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
@@ -23,14 +23,12 @@ build() {
     cd "${srcdir}/MooseX-MethodAttributes-$pkgver"
     /usr/bin/perl Makefile.PL
     make
-  )
 }
 
 check() {
   cd "${srcdir}/MooseX-MethodAttributes-$pkgver"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
+  make test
 }
 
 package() {
