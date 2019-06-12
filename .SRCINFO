@@ -1,7 +1,7 @@
 pkgbase = keyplusd-git
 	pkgdesc = keyboard remapping tool that emulates keyplus firmware
-	pkgver = 0.3.3.r77.gb9cc778
-	pkgrel = 1
+	pkgver = 0.4.0a1.r2.g9793bd3
+	pkgrel = 2
 	url = https://github.com/ahtn/keyplus/tree/master/ports/linux
 	arch = i686
 	arch = x86_64

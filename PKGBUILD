@@ -1,8 +1,8 @@
 # Maintainer: jem <jem ΑΤ seethis DΟΤ link>
 pkgname=keyplusd-git
 _gitname=keyplus
-pkgver=0.3.3.r77.gb9cc778
-pkgrel=1
+pkgver=0.4.0a1.r2.g9793bd3
+pkgrel=2
 epoch=
 pkgdesc="keyboard remapping tool that emulates keyplus firmware"
 arch=('i686' 'x86_64')
@@ -43,6 +43,6 @@ build() {
 package() {
     cd $_gitname
     cd ports/linux
-    make DESTDIR="$pkgdir/" PREFIX=/usr install
+    make DESTDIR="$pkgdir/" PREFIX=/usr install NO_USER=1
     install -Dm 644 ../../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
