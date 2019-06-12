@@ -4,7 +4,7 @@
 
 _pkgname='concourse'
 pkgname="${_pkgname}-bin"
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc='Concourse is a pipeline-based CI system written in Go.'
 arch=(x86_64)
@@ -14,7 +14,7 @@ provides=("${_pkgname}")
 replaces=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 source=("https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tgz")
-sha512sums=('e9561c47b50e07064d843c8f21dedb1d57b26a52dcc688b4c59a53db9a7d34bae56d4cb1309f3c65d030c69c969ad4559f87b3287a39552210f8434246b64fae')
+sha512sums=('75c2167c330b2a5e5c096b1ecfcd99258ad8c5d4a7a618eb76685b653e032a10f39aec309e29cf3e989b0090d7bcae9c2d3c9688a0ac9a19b46971716a1a17fe')
 
 package() {
   install -dm755 "${pkgdir}/opt"
