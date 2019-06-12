@@ -4,7 +4,7 @@
 
 pkgname=ldapjdk
 _gitname=ldap-sdk
-pkgver=4.20.0
+pkgver=4.21.0
 pkgrel=1
 pkgdesc="The Mozilla LDAP Java SDK"
 arch=(any)
@@ -13,7 +13,7 @@ license=(Mozilla GPL LGPL)
 depends=(java-runtime jss)
 makedepends=(apache-ant java-environment)
 source=("https://github.com/dogtagpki/${_gitname}/archive/v${pkgver}.tar.gz")
-sha512sums=('f04530a314e91f7be6f5fbcb847a5a2554ca3e8131dc8cd8888f4ace01e7da86fa044b78299b937c49723f82f0c55cf81c3f4f249c11932f9a70cb0a7e9e9f84')
+sha512sums=('c1a01c179d5f2f7635327124439089b68c387e9f93038072feff719624f913fa0efbfa6bad71f9229bc3314e732b020e007cc60d942fed06a2a6bf1ea40d5f7b')
 
 build() {
   cd "${_gitname}-${pkgver}"
