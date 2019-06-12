@@ -9,7 +9,7 @@ url="http://zytrax.org/"
 license=('MIT')
 makedepends=('scons' 'gcc')
 depends=('gtkmm3' 'libpulse')
-optdepends=('vst-plugins')
+optdepends=('vst-plugins: Package group for vst plugins')
 source=(
     "$pkgname::git://github.com/reduz/zytrax.git"
     "zytrax.desktop"
