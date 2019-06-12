@@ -1,15 +1,15 @@
 # Maintainer: Daurnimator <quae@daurnimator.com>
 
 pkgname=(lua-luaossl lua51-luaossl lua52-luaossl)
-pkgver=20181207
+pkgver=20190612
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://25thandclement.com/~william/projects/luaossl.html'
 license=('MIT')
 makedepends=('lua' 'lua51' 'lua52')
 depends=('openssl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wahern/luaossl/archive/rel-$pkgver.tar.gz")
-md5sums=('ac047aaffa7846eefbf0d75709ecc89f')
+md5sums=('f7960de30931a60ac5eb1196a340772c')
 
 build() {
 	cd luaossl-rel-$pkgver;
