@@ -50,16 +50,21 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20190603.r0.gae3cad8f39cc
+pkgver=20190612.r0.g81a72c79224f
 _srcname=linux-next
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'git')
+_lucjanver=5.1
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git"
+        "${_lucjanpath}/arch-patches-v3/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+        "${_lucjanpath}/arch-patches-v3/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -358,7 +363,9 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            '6f08c5c576f385b43b186a09d09c869fb8e314dc3bda30fb27a8e4d62ff866d4f24bb240ed628d99629286b5ce93319b87d8f23b182e80ded4b1e0ebca0e9506'
+            '2f7a1939c8e9e86b39a3385ef33f1fb738e507ae771696f57d5fa2032a46438c50e5ce54ad607643dffa0d544d401fc40616db9e88defcf7719f32efa3cdbefc'
+            'ad3f2c10467341fcbf0f6a636aef0bf216d9c0d993d79ce3825e5432ad8261e6e596772931a6ac090742cf7299bdf72730e75184efc9502246ed521d79214034'
+            'ab361b61a7d3d2f57f699984ab334d003f8f945361941c33bc8a4c9101a70a1881a17bc457157d73fc95209b9f3fb91cd40b112070718e3b4582d997747e355d'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
