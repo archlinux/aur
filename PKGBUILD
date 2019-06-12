@@ -2,7 +2,7 @@
 
 pkgname='perl-parse-mime'
 pkgver='1.005'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Parse mime-types, match against media ranges'
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -30,7 +30,7 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
   make test
 }
 

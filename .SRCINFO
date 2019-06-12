@@ -1,7 +1,7 @@
 pkgbase = perl-parse-mime
 	pkgdesc = Parse mime-types, match against media ranges
 	pkgver = 1.005
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/Parse::MIME
 	arch = any
 	license = PerlArtistic
