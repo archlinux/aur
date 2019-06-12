@@ -1,9 +1,9 @@
 # Maintainer: fyr <wildefur@gmail.com>
 pkgname=mmutils-git
-pkgver=1.0.r5.g7268faa
+pkgver=1.1.r5.g7268faa
 pkgrel=1
 pkgdesc="A set of utilities for querying xrandr monitor information"
-url="https://github.com/pockata/mmutils"
+url="http://github.com/pockata/mmutils"
 arch=('i686' 'x86_64')
 license=('ISC')
 depends=('libxcb' 'xcb-util' 'xcb-util-wm' 'libwm-git')
