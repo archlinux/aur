@@ -1,6 +1,6 @@
 pkgbase = sway-git
 	pkgdesc = i3-compatible Wayland compositor
-	pkgver = r5893.e6fbb3c6
+	pkgver = r5942.3f77591b
 	pkgrel = 1
 	url = https://swaywm.org
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = sway-git
 	makedepends = git
 	makedepends = scdoc
 	makedepends = wayland-protocols
+	makedepends = ninja
 	depends = json-c
 	depends = pcre
 	depends = wlroots-git
@@ -29,7 +30,7 @@ pkgbase = sway-git
 	options = debug
 	options = !strip
 	source = sway::git+https://github.com/swaywm/sway.git
-	sha1sums = SKIP
+	sha512sums = SKIP
 
 pkgname = sway-git
 
