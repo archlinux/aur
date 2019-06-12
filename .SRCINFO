@@ -9,8 +9,7 @@ pkgbase = python-spherical_geometry
 	makedepends = python-setuptools
 	makedepends = qd>=2.3.7
 	makedepends = python-astropy>=3.1
-	makedepends = python-astropy-helpers>=3.1
-	makedepends = python-astropy-helpers<3.2
+	makedepends = python-astropy-helpers31
 	makedepends = python-sphinx-astropy
 	source = https://files.pythonhosted.org/packages/source/s/spherical_geometry/spherical_geometry-1.2.9.tar.gz
 	source = fix_doc_warning.patch
