@@ -6,7 +6,7 @@
 pkgname=nvidia-340xx-ck
 pkgver=340.107
 _extramodules=extramodules-ck
-pkgrel=71
+pkgrel=72
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -23,7 +23,7 @@ source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Lin
 sha256sums=('6dc6f183c69c414670d8adef0286a2362eedd6e16ec6dfae811e48ea4a4505dc'
             '5ba7e6d5e502882c3534d1d8578f7fd29fdf3d2aeb49206efa7b3514a7e3e821'
             '236a1d1dc9adc1cafec828f0650d5a15f1f6d0fa27905dab58ca072a46f159fa'
-            '58c1201dc774525cba74c3a0042f4049b7a251381e00539746b936d2ec39f0de')
+            '2b0e69814bfaee6b227bbf15d89d056ab27d84bd325248614e27cb5fa33a63a1')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 prepare() {
