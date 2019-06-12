@@ -1,6 +1,6 @@
 pkgbase = haskell-semigroups
 	pkgdesc = Anything that associates
-	pkgver = 0.18.5
+	pkgver = 0.19
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/semigroups
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = haskell-semigroups
 	depends = haskell-nats
 	depends = haskell-text
 	depends = haskell-unordered-containers
-	source = http://hackage.haskell.org/packages/archive/semigroups/0.18.5/semigroups-0.18.5.tar.gz
-	sha256sums = ab2a96af6e81e31b909c37ba65f436f1493dbf387cfe0de10b6586270c4ce29d
+	source = http://hackage.haskell.org/packages/archive/semigroups/0.19/semigroups-0.19.tar.gz
+	sha256sums = 399d033b02853094a11a1d78e9ab05140f00af4b56fede405c66032f466b2cba
 
 pkgname = haskell-semigroups
 
