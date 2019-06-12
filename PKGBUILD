@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-base
-pkgver=0.12.0
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="Full standard library replacement for OCaml"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('ocaml' 'ocaml-sexplib0')
 makedepends=('dune')
 options=('!strip')
 source=("https://github.com/janestreet/base/archive/v${pkgver}.tar.gz")
-sha512sums=('5b5c543c1b5380b9725419e33cb0da4f523bac607d7952965a891ec28f2e42ed9817506d04964780bbe3cd5aaae9376005b2b976a371950eca2023011afde9ca')
+sha512sums=('d36a1cf6ffe91b7c51a53deedec529f27c235a01d99934e22cafa7554f91e1fe8e4599ca2c4483fe8910a80b8ee013877bd1e87ee65e0361648f22fb3a8b46c7')
 
 build() {
   cd "${srcdir}/base-${pkgver}"
