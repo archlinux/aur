@@ -2,11 +2,11 @@
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 # Contributor: Filip Brcic < brcha at gna dot org >
 
-_commit=a330c6184fe9c7f67495f8d4563b11d51a6dccc7  # tags/dbus-1.12.14^0
+_commit=23cc709db8fab94f11fa48772bff396b20aea8b0  # tags/dbus-1.12.16^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-dbus
-pkgver=1.12.14
+pkgver=1.12.16
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system (mingw-w64)"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=('mingw-w64-configure'
              'git')
 provides=('mingw-w64-libdbus')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=${_commit}")
+source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
