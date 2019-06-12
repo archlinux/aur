@@ -1,9 +1,9 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer: Cedric Girard <cgirard.archlinux@valinor.fr>
 _author=GFLEWIS
 _perlmod=ServiceNow-SOAP
 pkgname=perl-servicenow-soap
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A better Perl API for ServiceNow "
 arch=('any')
 url="https://metacpan.org/release/$_perlmod"
@@ -18,7 +18,7 @@ depends=(
   )
 options=(!emptydirs)
 source=(http://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
-md5sums=('61f2562d63bc6b9fa9033df607121491')
+sha256sums=('c2a35ddfe7ab4fd64d9553c53e6a1b5559b2fe8cd6aa54b30ccf44a1165c7949')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"

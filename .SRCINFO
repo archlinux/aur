@@ -1,7 +1,7 @@
 pkgbase = perl-servicenow-soap
 	pkgdesc = A better Perl API for ServiceNow
 	pkgver = 0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/ServiceNow-SOAP
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = perl-servicenow-soap
 	depends = perl-xml-simple
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/G/GF/GFLEWIS/ServiceNow-SOAP-0.16.tar.gz
-	md5sums = 61f2562d63bc6b9fa9033df607121491
+	sha256sums = c2a35ddfe7ab4fd64d9553c53e6a1b5559b2fe8cd6aa54b30ccf44a1165c7949
 
 pkgname = perl-servicenow-soap
 
