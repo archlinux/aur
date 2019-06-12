@@ -1,0 +1,8 @@
+pkg
+src
+
+COPYRIGHT.txt
+
+*.tar.xz
+*.tar.gz
+*.tar.bz2
