@@ -1,12 +1,12 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=newbreeze-git
-pkgver=v3.rc3.r3.1e5e459
+pkgver=v3.0.0.rc6.2.r3.a4bd3d3
 pkgrel=1
 pkgdesc="A fast and light-weight file manager based on Qt"
 arch=('x86_64')
 url="https://gitlab.com/marcusbritanicus/NewBreeze"
 license=('GPL')
-depends=('qt5-base' 'qt5-webengine' 'poppler' 'vlc' 'djvulibre' 'poppler-qt5' 'ffmpegthumbnailer')
+depends=('qt5-base' 'jbig2dec' 'qt5-webengine' 'poppler' 'vlc' 'djvulibre' 'poppler-qt5' 'ffmpegthumbnailer')
 makedepends=('git' 'qt5-base' 'qscintilla-qt5') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")

@@ -1,6 +1,6 @@
 pkgbase = newbreeze-git
 	pkgdesc = A fast and light-weight file manager based on Qt
-	pkgver = v3.rc3.r3.1e5e459
+	pkgver = v3.0.0.rc6.2.r3.a4bd3d3
 	pkgrel = 1
 	url = https://gitlab.com/marcusbritanicus/NewBreeze
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = newbreeze-git
 	makedepends = qt5-base
 	makedepends = qscintilla-qt5
 	depends = qt5-base
+	depends = jbig2dec
 	depends = qt5-webengine
 	depends = poppler
 	depends = vlc
