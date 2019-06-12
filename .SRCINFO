@@ -1,7 +1,7 @@
 pkgbase = perl-lwp-consolelogger
 	pkgdesc = LWP tracing and debugging
 	pkgver = 0.000039
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/LWP::ConsoleLogger
 	arch = any
 	license = PerlArtistic

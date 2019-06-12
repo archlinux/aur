@@ -2,7 +2,7 @@
 
 pkgname='perl-lwp-consolelogger'
 pkgver='0.000039'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="LWP tracing and debugging"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -152,7 +152,7 @@ sha512sums=('d3d160f26938d966ac1c3044e410c8c5e8016265cda121738a68ea3e66d6a0bd52c
 _distdir="LWP-ConsoleLogger-$pkgver"
 
 build() {
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."                  \
       PERL_AUTOINSTALL=--skipdeps                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
