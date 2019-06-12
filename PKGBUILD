@@ -2,7 +2,7 @@
 
 pkgname=ecal
 pkgver=5.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64')
 url="https://github.com/continental/ecal"
@@ -30,7 +30,7 @@ build() {
 		     -DGIT_REVISION_MINOR=3 \
 		     -DGIT_REVISION_PATCH=2 \
 		     -DECAL_THIRDPARTY_BUILD_PROTOBUF=OFF
-	make -j
+	make
 }
 
 package() {
