@@ -1,11 +1,11 @@
 pkgname="buici-clock"
 pkgver="0.4.9.4"
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalistic clock for X"
 arch=("x86_64" "i686")
 license=("GPL v2")
 
-depends=('xorg-server-devel')
+depends=('xorg-server-devel' 'xorg-xprop')
 makedepends=("m4")
 
 source=(

@@ -1,7 +1,7 @@
 pkgbase = buici-clock
 	pkgdesc = A minimalistic clock for X
 	pkgver = 0.4.9.4
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = i686
 	license = GPL v2
