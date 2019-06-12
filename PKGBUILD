@@ -1,5 +1,5 @@
 pkgname=angular-cli
-pkgver=8.0.1
+pkgver=8.0.2
 pkgrel=1
 pkgdesc="CLI tool for Angular"
 arch=(any)
