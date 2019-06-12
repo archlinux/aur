@@ -1,10 +1,10 @@
 diff --git a/python-package/setup.py b/python-package/setup.py
-index d4b6aa6b..a96660fa 100644
+index 30e0d070..f96ef69e 100644
 --- a/python-package/setup.py
 +++ b/python-package/setup.py
-@@ -5,27 +5,9 @@ import sys
- import os
+@@ -8,28 +8,9 @@ import os
  from setuptools import setup, find_packages
+ 
  # import subprocess
 -sys.path.insert(0, '.')
  
@@ -27,22 +27,23 @@ index d4b6aa6b..a96660fa 100644
 -        continue
 -
 -print("Install libxgboost from: %s" % LIB_PATH)
- # Please use setup_pip.py for generating and deploying pip installation
- # detailed instruction in setup_pip.py
- setup(name='xgboost',
-@@ -43,7 +25,6 @@ setup(name='xgboost',
+-
+ # Get dmlc tracker script
+ shutil.copy('../dmlc-core/tracker/dmlc_tracker/tracker.py', 'xgboost/')
+ 
+@@ -50,7 +31,6 @@ setup(name='xgboost',
        # this will use MANIFEST.in during install where we specify additional files,
        # this is the golden line
        include_package_data=True,
 -      data_files=[('xgboost', LIB_PATH)],
        license='Apache-2.0',
-       classifiers=['License :: OSI Approved :: Apache Software License'],
-       url='https://github.com/dmlc/xgboost')
+       classifiers=['License :: OSI Approved :: Apache Software License',
+                    'Development Status :: 5 - Production/Stable',
 diff --git a/python-package/xgboost/libpath.py b/python-package/xgboost/libpath.py
-index d87922c0..2752c504 100644
+index a313a1b8..f161d50a 100644
 --- a/python-package/xgboost/libpath.py
 +++ b/python-package/xgboost/libpath.py
-@@ -21,7 +21,8 @@ def find_lib_path():
+@@ -20,7 +20,8 @@ def find_lib_path():
      """
      curr_path = os.path.dirname(os.path.abspath(os.path.expanduser(__file__)))
      # make pythonpack hack: copy this directory one level upper for setup.py
