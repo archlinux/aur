@@ -1,5 +1,5 @@
 pkgbase = linux-ck
-	pkgver = 5.1.8
+	pkgver = 5.1.9
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = linux-ck
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.8.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.8.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.9.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.9.tar.sign
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -18,17 +18,19 @@ pkgbase = linux-ck
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.1/5.1-ck1/patch-5.1-ck1.xz
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+	source = 0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = d0164ffcc6e2ab3a96cc771d3fbdf2f8b49a2597ec4da9a06df590b0fe87a6ec
+	sha256sums = 58c9eca99c3dd2fff5b559302996c985c3f3f2aad0b99b2172a61c4df7122a79
 	sha256sums = SKIP
-	sha256sums = 7af14b92ef808cb57b4a09156e5cd3a6e32c31fc5eb942ec4b1402426a22cf0e
+	sha256sums = e3d57571bd886f1dbd79f0a85a1a193a1ace0f332abc60e59f14697dbebf993d
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
 	sha256sums = f8d18a34f6b17ec8e5f2a7354383ca627e0fd00b5578c1ee7d9808a34f33c724
 	sha256sums = 91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3
+	sha256sums = 63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9
 
 pkgname = linux-ck
 	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.192
@@ -38,12 +40,12 @@ pkgname = linux-ck
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-ck=5.1.8
+	provides = linux-ck=5.1.9
 	backup = etc/mkinitcpio.d/linux-ck.preset
 
 pkgname = linux-ck-headers
 	pkgdesc = Header files and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.1.8
-	provides = linux-headers=5.1.8
+	provides = linux-ck-headers=5.1.9
+	provides = linux-headers=5.1.9
 

@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.1.8-arch1
+_srcver=5.1.9-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -81,20 +81,22 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.1/5.1-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('d0164ffcc6e2ab3a96cc771d3fbdf2f8b49a2597ec4da9a06df590b0fe87a6ec'
+sha256sums=('58c9eca99c3dd2fff5b559302996c985c3f3f2aad0b99b2172a61c4df7122a79'
             'SKIP'
-            '7af14b92ef808cb57b4a09156e5cd3a6e32c31fc5eb942ec4b1402426a22cf0e'
+            'e3d57571bd886f1dbd79f0a85a1a193a1ace0f332abc60e59f14697dbebf993d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             'f8d18a34f6b17ec8e5f2a7354383ca627e0fd00b5578c1ee7d9808a34f33c724'
-            '91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3')
+            '91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3'
+            '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
