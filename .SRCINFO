@@ -6,6 +6,7 @@ pkgbase = cb-bin
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
+	depends = libxcb
 	provides = cb
 	conflicts = cb-git
 	conflicts = cb
