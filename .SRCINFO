@@ -1,14 +1,14 @@
 pkgbase = spring-boot-cli
 	pkgdesc = Spring Boot CLI
-	pkgver = 2.1.3
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://spring.io/projects/spring-boot
 	arch = any
 	license = Apache
 	depends = bash
 	depends = java-environment>=8
-	source = https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/2.1.3.RELEASE/spring-boot-cli-2.1.3.RELEASE-bin.tar.gz
-	sha256sums = 162b76d68e641ab5804d66fafbccacc2b82df5eca4c1083f5f532e0abd9bc3dd
+	source = https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/2.1.5.RELEASE/spring-boot-cli-2.1.5.RELEASE-bin.tar.gz
+	sha256sums = c4d07caaae149059e70a0096d61be3c46f73f0c4590277dd8006fd3decbba50e
 
 pkgname = spring-boot-cli
 
