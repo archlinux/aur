@@ -3,7 +3,7 @@
 # Contributor: Yonathan Dossow <ydossow@archlinux.cl>
 
 pkgname=jss
-pkgver=4.5.3
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Network Security Services for Java (JSS) is a Java interface to NSS"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ depends=('java-runtime' 'nspr' 'nss' 'slf4j' 'java-commons-codec' 'java-commons-
 makedepends=('java-environment' 'cmake')
 source=("https://github.com/dogtagpki/jss/archive/v${pkgver}.tar.gz"
         'paths.patch')
-sha512sums=('6a5d5065803a36a42f15c19fa870edf4844d650911c690a8033288ee0e2e6e115868de39a7c9c955e068568a859baf5fb3e8e970b4167dfc19782bb661ab6d71'
+sha512sums=('9568f783a75e7fa994ea2a0a85dee02000146b19fd4270dff844c6edbefe04f4ddc0886d6c19450b8d33a4595e67f8ab45a4e8f5194c383fc0ee5344243577c2'
             '93a5ad83c590d82283fe83d08e9c9b2bb489b0b89361aed9eb86163d59cc74dd07b63905d36c11e3181f01377b270839ce68600fcec7f31d2ce59c780a181499')
 
 prepare() {
