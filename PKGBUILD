@@ -25,7 +25,11 @@ prepare() {
   mkdir build
   cd build
   export PREFIX="$pkgdir"
-  qmake ../VulkanCapsViewer-$pkgver/vulkanCapsViewer.pro
+  qmake \
+    QMAKE_CFLAGS="$CFLAGS" \
+    QMAKE_CXXFLAGS="$CXXFLAGS" \
+    QMAKE_LFLAGS="$LDFLAGS" \
+    ../VulkanCapsViewer-$pkgver
 }
 
 build() {
