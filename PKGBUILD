@@ -1,18 +1,17 @@
-# PKGBUILD for android-libvorbis
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 _android_arch=armv7a-eabi
-source android-env.sh ${_android_arch}
+source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-libvorbis
 pkgver=1.3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Vorbis codec library (android)"
 arch=('any')
 url="http://xiph.org"
 license=('custom')
 depends=("android-${_android_arch}-libogg")
-makedepends=('android-pkg-config')
+makedepends=('android-configure')
 options=(!strip !buildflags staticlibs)
 source=("http://downloads.xiph.org/releases/vorbis/libvorbis-${pkgver}.tar.gz"
         'configure.patch')
@@ -28,20 +27,7 @@ prepare() {
 build() {
     cd "${srcdir}"/libvorbis-${pkgver}
 
-    export CC=${ANDROID_CC}
-    export CXX=${ANDROID_CXX}
-    target=${_android_arch/x86-/x86_}-linux-android
-
-    ./configure \
-        --host=${target} \
-        --target=${target} \
-        --build="$CHOST" \
-        --prefix=${ANDROID_LIBS} \
-        --libdir=${ANDROID_LIBS}/lib \
-        --includedir=${ANDROID_LIBS}/include \
-        --enable-shared \
-        --enable-static
-
+    android-${_android_arch}-configure
     make $MAKEFLAGS
 }
 
@@ -49,7 +35,7 @@ package() {
     cd "${srcdir}"/libvorbis-${pkgver}
 
     make DESTDIR="$pkgdir" install
-    rm -r "${pkgdir}"/${ANDROID_LIBS}/share
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_LIBS}/lib/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_LIBS}/lib/*.a
+    rm -r "${pkgdir}"/${ANDROID_PREFIX_SHARE}
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
 }
