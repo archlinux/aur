@@ -4,12 +4,12 @@ pkgbase = epics-base
 	pkgrel = 1
 	url = https://epics-controls.org
 	arch = any
+	groups = epics
 	license = EPICS Open License
 	depends = readline
 	depends = ncurses
 	depends = clang
 	depends = perl
-	options = buildflags
 	source = https://github.com/epics-base/epics-base/archive/R7.0.2.2.tar.gz
 	md5sums = 2f222803cb62f90bc7832fb16d829646
 

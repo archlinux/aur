@@ -6,15 +6,10 @@ pkgdesc="Experimental Physics and Industrial Control System -- base"
 arch=('any')
 url="https://epics-controls.org"
 license=('EPICS Open License')
+groups=('epics')
 depends=('readline' 'ncurses' 'clang' 'perl')
 source=("https://github.com/epics-base/epics-base/archive/R${pkgver}.tar.gz")
 md5sums=('2f222803cb62f90bc7832fb16d829646')
-options=(buildflags)
-
-#CPPFLAGS="-D_FORTIFY_SOURCE=2"
-#CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong"
-#CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong"
-#LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro"
 
 prepare() {
   cd "$srcdir/${pkgname}-R${pkgver}"
@@ -51,18 +46,6 @@ package() {
   pushd "${pkgdir}/usr/bin"
   cp --symbolic-link "${_ARCH}"/* .
   popd
-  #rm -rf "${_ARCH_BIN}"
-  
-
-  # find the architecture specific library directory
-  #_ARCH_LIB=$(find "$pkgdir/usr/lib/" -mindepth 1 \( -name perl -o -name pkgconfig \) -prune -o -type d -print)
-
-  # remove the architecture specific library directory
-  #pushd "${_ARCH_LIB}"
-  #ln -s * ..
-  #mv * ..
-  #popd
-  #rm -rf "${_ARCH_BIN}"
 
   rm "$pkgdir/usr/include/link.h" # owned by glibc
 }
