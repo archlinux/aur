@@ -3,7 +3,7 @@ pkgbase=python-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=2.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('i686' 'x86_64')
 url="https://asdf.readthedocs.io/en/latest/"
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python>=3.3'
              'python-setuptools'
              'python-numpy>=1.8'
-             'python-jsonschema>=2.3.0'
+             'python-jsonschema26'
              'python-yaml>=3.10'
              'python-six>=1.9.0'
              'python-astropy-helpers>=3.1'
@@ -45,10 +45,9 @@ check() {
 }
 
 package_python-asdf() {
-    depends=('python>=3.3' 'python-numpy>=1.8' 'python-jsonschema>=2.3.0' 'python-yaml>=3.10' 'python-six>=1.9.0' 'python-semantic-version>=2.3.1')
+    depends=('python>=3.3' 'python-numpy>=1.8' 'python-jsonschema26' 'python-yaml>=3.10' 'python-six>=1.9.0' 'python-semantic-version>=2.3.1')
     optdepends=('python-astropy>=3.0: Support for units, time, transform, wcs, or running the tests'
                 'python-lz4: Support for lz4 compression'
-                'python-pytest: For testing'
                 'python-asdf-doc: Documentation for Python-ASDF')
 #               'python-pytest-astropy: For testing')
     cd ${srcdir}/${_pyname}-${pkgver}
