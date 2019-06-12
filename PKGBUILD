@@ -6,14 +6,13 @@
 # - disable eudev dependency
 # - disable udev in _CONFIGUREOPTS
 # - explicitly disable all udev options when building lvm2
-# - enable options only for udev rules
 # - add 'provides' and 'conflicts' fields for packages
 # - lvm2_hook: add vgchange command
 
 pkgbase=lvm2-noudev
 pkgname=('lvm2-noudev' 'device-mapper-noudev')
-pkgver=2.02.184
-pkgrel=4
+pkgver=2.02.185
+pkgrel=1
 arch=('x86_64')
 url='https://sourceware.org/lvm2/'
 license=('GPL2' 'LGPL2.1')
@@ -27,8 +26,21 @@ source=("git+https://sourceware.org/git/lvm2.git#tag=v${pkgver//./_}?signed"
         '11-dm-initramfs.rules')
 sha256sums=('SKIP'
             'cc51940a8437f3c8339bb9cec7e929b2cc0852ffc8a0b2463e6f67ca2b9950f6'
-            '2ecaabfa13dd09d0e3d7b3439147fbd93e3c87a418b676fa55647f9319ada667'
+            'a6e88d4457ff49a1df5b1d243c5e245d33832855c8804e99c50b30c3e56a8a80'
             'e10f24b57582d6e2da71f7c80732a62e0ee2e3b867fe84591ccdb53e80fa92e0')
+
+_backports=(
+)
+
+prepare() {
+  cd lvm2/
+
+  local _c
+  for _c in "${_backports[@]}"; do
+    git log --oneline -1 "${_c}"
+    git show "${_c}" -- ':(exclude)WHATS_NEW' | git apply
+  done
+}
 
 build() {
   local _CONFIGUREOPTS=(
@@ -58,12 +70,12 @@ build() {
 
   cd lvm2/
 
-  ./configure "${_CONFIGUREOPTS[@]}" --enable-udev-systemd-background-jobs=no --enable-udev_rules=no --enable-udev_sync=no --enable-udev-rule-exec-detection=no
+  ./configure "${_CONFIGUREOPTS[@]}" --enable-udev-systemd-background-jobs=no
   make
 
   # Build legacy udev rule for initramfs
   cd ../lvm2-initramfs
-  ./configure "${_CONFIGUREOPTS[@]}" --enable-udev-systemd-background-jobs=no --enable-udev_rules --enable-udev_sync
+  ./configure "${_CONFIGUREOPTS[@]}" --enable-udev-systemd-background-jobs=no
   cd udev
   make 69-dm-lvm-metad.rules
 }
@@ -84,7 +96,7 @@ package_device-mapper-noudev() {
 
 package_lvm2-noudev() {
   pkgdesc="Logical Volume Manager 2 utilities"
-  depends=('bash' "device-mapper>=${pkgver}" 'libeudev' 'libutil-linux' 'readline' 'thin-provisioning-tools')
+  depends=('bash' "device-mapper>=${pkgver}" 'libutil-linux' 'readline' 'thin-provisioning-tools')
   conflicts=('lvm' 'mkinitcpio<0.7' 'lvm2')
   provides=('lvm2')
   backup=('etc/lvm/lvm.conf'
