@@ -5,9 +5,8 @@ url='http://www.ros.org/wiki/laser_pipeline'
 
 pkgname='ros-melodic-laser-pipeline'
 pkgver='1.6.3'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -30,9 +29,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="laser_pipeline-release-release-melodic-laser_pipeline-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/laser_pipeline-release/archive/release/melodic/laser_pipeline/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5d831b4e5ff12088b034f71202b7202c5d4fff9717d4a58acd5843e279f242d7')
+_dir="laser_pipeline-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_pipeline/archive/${pkgver}.tar.gz")
+sha256sums=('6af841344ecd0c42808772bf0d8022e4dc6281cb225d37c67999f503111bbfb8')
 
 build() {
 	# Use ROS environment variables.
