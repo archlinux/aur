@@ -9,7 +9,7 @@ pkgbase = python-astroscrappy
 	checkdepends = python-pytest-astropy
 	makedepends = cython>=0.21
 	makedepends = python-astropy
-	makedepends = python-astropy-helpers<3.2
+	makedepends = python-astropy-helpers31
 	makedepends = python-sphinx-astropy
 	source = https://files.pythonhosted.org/packages/source/a/astroscrappy/astroscrappy-1.0.8.tar.gz
 	md5sums = eb68a7c81ea8d4370eab66e9c7859576
