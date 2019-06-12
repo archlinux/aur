@@ -1,6 +1,6 @@
 pkgbase = nadeshiko
 	pkgdesc = A Linux tool to cut short videos with ffmpeg
-	pkgver = 2.7
+	pkgver = 2.8.6
 	pkgrel = 1
 	url = https://github.com/deterenkelt/nadeshiko
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = nadeshiko
 	optdepends = libnotify: desktop notifications
 	optdepends = mpv: nadeshiko-mpv script
 	optdepends = gtk3: nadeshiko-mpv script
-	source = nadeshiko-2.7.tar.gz::https://github.com/deterenkelt/nadeshiko/archive/v2.7.tar.gz
-	sha256sums = a14ebffcfcf94ec3f23a4dcf2b79a3ee9af57518a69cb16a718efb6d33ffa6cc
+	source = nadeshiko-2.8.6.tar.gz::https://github.com/deterenkelt/nadeshiko/archive/v2.8.6.tar.gz
+	sha256sums = bb2b712adac814a1cc81fb8a09f9c59664c15cad83ff62eeec248bdedbefd5cd
 
 pkgname = nadeshiko
 
