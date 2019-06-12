@@ -23,5 +23,5 @@ target=${target/x86-/x86_}-linux-android
     --libdir=${ANDROID_PREFIX_LIB} \
     --includedir=${ANDROID_PREFIX_INCLUDE} \
     --enable-shared \
-    --enable-static
+    --enable-static \
     "$@"

@@ -1,5 +1,5 @@
 pkgname=android-configure
-pkgver=1
+pkgver=2
 pkgrel=1
 arch=(any)
 pkgdesc="configure wrapper for Android (android)"
