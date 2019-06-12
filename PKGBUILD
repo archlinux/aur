@@ -2,7 +2,7 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=8.6.1.r0.g17dffc5b
+pkgver=8.6.1.r50.g74244e29
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
@@ -22,7 +22,6 @@ optdepends=('v4l-utils: Extra formats support for webcams'
             'libpulse: Audio playback (Recommended)'
             'alsa-lib: Audio playback'
             'jack: Audio playback'
-            'qt5-multimedia: Audio playback'
             'libuvc: Camera capture'
             'polkit: Root privileges for virtual camera module (Recommended)'
             'kde-cli-tools: Root privileges for virtual camera module'
