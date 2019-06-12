@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://imexam.readthedocs.io/"
 license=('BSD' 'MIT')
 makedepends=('cython' 'python-ginga' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy' 'xpa')
-checkdepends=('python-pytest-astropy' 'python-photutils')
+#checkdepends=('python-pytest-astropy' 'python-photutils')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'use_system_xpa.patch')
 md5sums=('009489ebdcd6f3a66736b4035b7aa313'
@@ -30,11 +30,11 @@ build() {
     python setup.py build_docs
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    python setup.py test
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    python setup.py test
+#}
 
 package_python-imexam() {
     depends=('python>=3.5' 'python-astropy' 'python-matplotlib')
@@ -42,7 +42,9 @@ package_python-imexam() {
                 'xpa: For connection with DS9'
                 'ds9: For DS9 viewer support'
                 'python-photutils: For photometry features'
-                'python-imexam-doc: Documentation for imexam')
+                'python-imexam-doc: Documentation for imexam'
+                'python-pytest-astropy: For testing'
+                'python-astropy<3.2: For testing')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" licenses/{LICENSE.rst,LICENSE_MIT.txt}
