@@ -7,8 +7,8 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=3.0.6
-pkgrel=5
+pkgver=3.0.7.1
+pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
@@ -92,22 +92,16 @@ replaces=('vlc' 'vlc-plugin' 'vlc-git')
 options=('!emptydirs')
 source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         update-vlc-plugin-cache.hook
-        lua53_compat.patch
-        vlc-libvpx18.patch
-        vlc-sftp-libssh2.patch)
-sha512sums=('7c72e98f30ce5c5a94d74e097fa9960442f89240079b042a729f8a33dd7fedee2538c86c99738ccef2eb27f29055f0221d4c70316e3312c5ebba9565eaa15c52'
+        lua53_compat.patch)
+sha512sums=('6b99ae0564630a7a7ca9187c3bb954c601e384522ce93460b73f2dbf31787ce5828daca9f31c781b97db77872d76b6a3e871ff3401d70f1b5829fee7c4e847fd'
             '80357bae69e32b353d3784932d854e294906798e14faffb87c3383c3b6f6bdc57cbabb9c6e3f3c1adf0f8ddbb24153e72104c963cf1934970c2983c96daef9df'
-            '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f'
-            '4392415e49232be0d1d39e70f15307b9fec01dfb6e720d4978e415b4798a13f20c401e6c7a7a099e164332ffa9555a01e9bb1ee6fa48fb9a83d497d6411d6a04'
-            '6cd985a4b999f89e2aabb2527fb08895f51b6be0133fb09bcfc89d9ea108be3757ee2d6d0c7b1e47de83c68558f02852b3f90b033756cfeaff7d749767c33c19')
+            '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f')
 
 prepare() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed -e 's|-Werror-implicit-function-declaration||g' -i configure
   patch -Np1 < "${srcdir}/lua53_compat.patch"
-  patch -Np1 < "${srcdir}/vlc-libvpx18.patch"
-  patch -Np1 < "${srcdir}/vlc-sftp-libssh2.patch"
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
 }
