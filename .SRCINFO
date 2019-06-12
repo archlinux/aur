@@ -7,7 +7,9 @@ pkgbase = gtk-theme-windows10-dark-git
 	license = GPL
 	depends = gtk-engine-murrine
 	source = Windows-10-Dark::git+https://github.com/B00merang-Project/Windows-10-Dark.git#branch=master
+	source = taskbar.patch
 	sha1sums = SKIP
+	sha1sums = b76d10fb8e8c1e132715b4aca62d1ffd37e2a908
 
 pkgname = gtk-theme-windows10-dark-git
 
