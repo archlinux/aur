@@ -1,16 +1,14 @@
 # Maintainer: Krzysztof Wloch <wloszekk [at] gmail [dot] com>
 
 pkgname=jpnevulator
-pkgver=2.1.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="Jpnevulator is a nice serial sniffer and you can use it to send data on a serial line too."
-arch=('i686' 'x86_64')
-url="http://jpnevulator.snarl.nl/"
+arch=('x86_64')
+url="https://jpnevulator.snarl.nl/"
 license=('GPL')
-depends=('glibc')
-makedepends=('setuptools')
-source=(http://jpnevulator.snarl.nl/download/jpnevulator-$pkgver.tgz)
-md5sums=('a2a5c27c5cdea7d22d7fc8f10cbef183')
+source=(https://jpnevulator.snarl.nl/download/jpnevulator-$pkgver.tgz)
+sha256sums=('752f4f0f2e7b2d0d799b41c7522458629cbf532e151fe79f3856becc3ba127f6')
 
 build() {
 	cd $srcdir/"${pkgname}"-"${pkgver}"
