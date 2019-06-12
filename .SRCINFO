@@ -1,0 +1,17 @@
+pkgbase = zrep-expire-git
+	pkgdesc = Zrep snapshot expiration tool (v2)
+	pkgver = r16.16a51bc
+	pkgrel = 1
+	url = https://github.com/isaaceindhoven/zrep-expire
+	arch = any
+	license = APACHE2.0
+	makedepends = git
+	depends = python
+	depends = python-parsedatetime
+	provides = zrep-expire
+	conflicts = zrep-expire
+	source = git+https://github.com/isaaceindhoven/zrep-expire.git
+	md5sums = SKIP
+
+pkgname = zrep-expire-git
+
