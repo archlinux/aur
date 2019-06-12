@@ -2,7 +2,7 @@
 
 _pyname=conda-build
 pkgname=python-conda-build
-pkgver=3.13.0
+pkgver=3.18.2
 pkgrel=1
 pkgdesc="Commands and tools for building conda packages"
 arch=('any')
@@ -12,20 +12,26 @@ depends=(
   'patchelf'
   'python'
   'python-beautifulsoup4'
+  'python-chardet'
   'python-conda'
   'python-conda-verify'
   'python-filelock'
-  'python-future'
-  'python-glob2-git'
+  'python-future' # may be unneeded now
+  'python-glob2-git' # may be unneeded now
   'python-jinja'
+  'python-libarchive-c'
   'python-pkginfo'
+  'python-psutil'
+  'python-pytz'
   'python-requests'
+  'python-six'
+  'python-tqdm'
   'python-yaml'
 )
 provides=("$_pyname")
 options=(!emptydirs)
 source=(https://github.com/conda/$_pyname/archive/$pkgver.tar.gz)
-sha512sums=('f9842c004aa4bba944ab202a486a7de9eaa02887990035e141eb14ef7362c7fe4330b696808875130ec94c581ead0877bcb82cb5e4de2a8cb27b5661754fa6e9')
+sha512sums=('b0fd94db0add4589a756d28019107269d185219d96c3deffb6cd9b7780c8924ff0bdda89b00fde28536fca8f8c78bb6543dd87f7a2993b226206d91eb05de63d')
 
 package() {
   cd "$srcdir/${_pyname}-$pkgver"
