@@ -1,0 +1,14 @@
+pkgbase = libxls
+	pkgdesc = Read binary Excel files from C/C++
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/libxls/libxls
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = libxls-1.5.1.tar.gz::https://github.com/libxls/libxls/archive/v1.5.1.tar.gz
+	sha512sums = 2120294c62c792ff01f566eaf4aac57b70a403246f3e890b45949e6fa87e37eabf11a5bc2a726ab2bb9eb967c951d6d74858eb08b22b53258bcf6c11a4dbd2ae
+
+pkgname = libxls
+
