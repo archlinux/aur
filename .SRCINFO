@@ -1,0 +1,20 @@
+pkgbase = ecal
+	pkgdesc = enhanced Communication Abstraction Layer
+	pkgver = 5.3.2
+	pkgrel = 1
+	url = https://github.com/continental/ecal
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = asio
+	depends = protobuf
+	depends = qt5-base
+	depends = simpleini
+	depends = tclap
+	source = https://github.com/continental/ecal/archive/v5.3.2.tar.gz
+	source = ecal-v5.3.2-archlinux-fabs.patch
+	sha256sums = cde3b92df167640e94e60bd0a6eff4f6520b43b27059568694283b07250f892c
+	sha256sums = bbbb519e72f177c03a10a6d5fc820e4aebba91de965ccf3e8176ea1851e427c6
+
+pkgname = ecal
+

@@ -1,0 +1,54 @@
+diff --git a/README.md b/README.md
+index 460aaff..d4d2940 100644
+--- a/README.md
++++ b/README.md
+@@ -102,11 +102,14 @@ You need
+ 
+ #### Qt 5
+ 
+-Install Qt5 by starting the installer and selecting `msvc2015 32-bit` and `msvc2015 64-bit` from the latest Qt5 version. Create an environment variable `QT5_ROOT_DIRECTORY` that points to the directory containing the architecture-specific folders. It should look like this:
++Install Qt5 by starting the installer and selecting `msvc2015 32-bit` and `msvc2015 64-bit` (VS2015) or `msvc2017 32-bit` and `msvc2017 64-bit` (VS2017) from the latest Qt5 version. Create an environment variable `QT5_ROOT_DIRECTORY` that points to the directory containing the architecture-specific folders. It should look like this:
+ 
+     %QT5_ROOT_DIRECTORY%
+       ├ msvc2015
+-      └ msvc2015_64
++      ├ msvc2015_64
++      ├ msvc2017
++      └ msvc2017_64
++      
+ 
+ #### Build eCAL
+ 
+@@ -292,7 +295,7 @@ void OnReceive(const char* topic_name_, const std::string& message_)
+ }
+ 
+ // create subscriber
+-eCAL::eCAL::string::Subscriber<std::string> sub("foo");
++eCAL::string::CSubscriber<std::string> sub("foo");
+ 
+ // register subscriber callback function
+ auto callback = std::bind(OnReceive, std::placeholders::_1, std::placeholders::_2);
+diff --git a/app/mon/eCALMon/src/Widgets/Models/ProcessTreeItem.cpp b/app/mon/eCALMon/src/Widgets/Models/ProcessTreeItem.cpp
+index d59a80f..4e03b2a 100644
+--- a/app/mon/eCALMon/src/Widgets/Models/ProcessTreeItem.cpp
++++ b/app/mon/eCALMon/src/Widgets/Models/ProcessTreeItem.cpp
+@@ -22,6 +22,7 @@
+ #include <QColor>
+ #include <QFont>
+ 
++#include <math.h>
+ #include <cfloat>
+ 
+ #include "ItemDataRoles.h"
+diff --git a/samples/cpp/services/math_server/src/math_server.cpp b/samples/cpp/services/math_server/src/math_server.cpp
+index 855deb4..04ae434 100644
+--- a/samples/cpp/services/math_server/src/math_server.cpp
++++ b/samples/cpp/services/math_server/src/math_server.cpp
+@@ -23,6 +23,7 @@
+ #include <iostream>
+ #include <chrono>
+ #include <thread>
++#include <math.h>
+ #include <cfloat>
+ 
+ #include "math.pb.h"
