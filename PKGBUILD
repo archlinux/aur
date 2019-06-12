@@ -8,8 +8,8 @@ pkgdesc="A tool for manipulating and utilizing two dimensional gaussian beams wi
 arch=('i686' 'x86_64')
 url="https://radio-beam.readthedocs.io/"
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-astropy' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-sphinx-astropy')
-checkdepends=('python-pytest-astropy' 'python-astropy-helpers<3.2' 'python2-pytest<3.7' 'python2-astropy')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-astropy' 'python-astropy-helpers31' 'python2-astropy-helpers' 'python-sphinx-astropy')
+checkdepends=('python-pytest-astropy' 'python2-pytest<3.7' 'python2-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "python2-${_pyname}.install")
 md5sums=('268a38a8196a824bb69c815cdd35fe3a'

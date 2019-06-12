@@ -7,13 +7,12 @@ pkgbase = python-radio_beam
 	arch = x86_64
 	license = BSD
 	checkdepends = python-pytest-astropy
-	checkdepends = python-astropy-helpers<3.2
 	checkdepends = python2-pytest<3.7
 	checkdepends = python2-astropy
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	makedepends = python-astropy
-	makedepends = python-astropy-helpers>=3.1
+	makedepends = python-astropy-helpers31
 	makedepends = python2-astropy-helpers
 	makedepends = python-sphinx-astropy
 	source = https://files.pythonhosted.org/packages/source/r/radio_beam/radio_beam-0.3.1.tar.gz
