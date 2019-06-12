@@ -1,6 +1,6 @@
 pkgbase = python-pystan
 	pkgdesc = Python interface to Stan, a package for Bayesian inference.
-	pkgver = 2.18.1.0
+	pkgver = 2.19.0.0
 	pkgrel = 1
 	url = http://mc-stan.org/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = python-pystan
 	license = GPLv3
 	depends = python-numpy
 	depends = cython
-	source = https://files.pythonhosted.org/packages/source/p/pystan/pystan-2.18.1.0.tar.gz
-	sha256sums = f8d50218d00848bff7cc9f33471eb5c0cf0f84af0a807963349a7931bb782b46
+	source = https://files.pythonhosted.org/packages/source/p/pystan/pystan-2.19.0.0.tar.gz
+	sha256sums = b85301b960d5991918b40bd64a4e9321813657a9fc028e0f39edce7220a309eb
 
 pkgname = python-pystan
 
