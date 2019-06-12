@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://www.linphone.org"
 license=('GPL')
 depends=('bcg729-git' 'belcard-git' 'belle-sip-git' 'belr-git' 'bzrtp-git'
-    'linphone-git' 'libpulse' 'libxv' 'mediastreamer-git' 'minizip2=2.3.3'
+    'linphone-git' 'libpulse' 'libxv' 'mediastreamer-git' 'minizip2-2.3.3'
     'ortp-git' 'libsoup' 'libnotify' 'qt5-svg' 'qt5-quickcontrols'
     'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-tools')
 makedepends=('cmake' 'pkg-config' 'python-pystache')

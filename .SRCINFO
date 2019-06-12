@@ -17,7 +17,7 @@ pkgbase = linphone-desktop-git
 	depends = libpulse
 	depends = libxv
 	depends = mediastreamer-git
-	depends = minizip2=2.3.3
+	depends = minizip2-2.3.3
 	depends = ortp-git
 	depends = libsoup
 	depends = libnotify
