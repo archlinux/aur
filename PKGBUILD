@@ -1,23 +1,18 @@
-# PKGBUILD for android-libvpx
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 _android_arch=aarch64
-source android-env.sh ${_android_arch}
+source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-libvpx
 pkgver=1.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc="VP8 and VP9 codec (android)"
 arch=('any')
 url="http://www.webmproject.org/"
 license=('BSD')
-
-if [ -z "${ANDROID_NO_DEPS}" ]; then
-    depends=('android-ndk')
-fi
-
+depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
-makedepends=('android-pkg-config' 'yasm')
+makedepends=('android-environment' 'android-pkg-config' 'yasm')
 source=(https://github.com/webmproject/libvpx/archive/v${pkgver}.tar.gz)
 sha256sums=('86df18c694e1c06cc8f83d2d816e9270747a0ce6abe316e93a4f4095689373f6')
 
@@ -47,8 +42,8 @@ build() {
 
     ./configure \
         --target=${target} \
-        --prefix=${ANDROID_LIBS} \
-        --libdir=${ANDROID_LIBS}/lib \
+        --prefix=${ANDROID_PREFIX} \
+        --libdir=${ANDROID_PREFIX_LIB} \
         --enable-static \
         --disable-install-bins \
         --disable-docs \
@@ -68,5 +63,5 @@ package() {
     cd "${srcdir}"/libvpx-${pkgver}
 
     make DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_LIBS}/lib/*.a
+    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
 }
