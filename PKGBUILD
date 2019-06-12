@@ -5,9 +5,8 @@ url='http://ros.org/wiki/laser_filters'
 
 pkgname='ros-melodic-laser-filters'
 pkgver='1.8.6'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -44,9 +43,16 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="laser_filters-release-release-melodic-laser_filters-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/laser_filters-release/archive/release/melodic/laser_filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7429472a08b080cae1e101e9e96443b884791926ad59479c553809669347d46e')
+_dir="laser_filters-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_filters/archive/${pkgver}.tar.gz"
+  CMakeLists-signal.patch)
+sha256sums=('c9678edee036ddb42a2dea1e71609763b44d6d1618fe384b204f3caa7d77ea3d'
+            'bf96a9ab678f7811ba2d99cb07e0eaaa0a7c03f5604878970ba3acda18931a3c')
+
+prepare() {
+  cd "${srcdir}/${_dir}"
+  patch -uN CMakeLists.txt ../../CMakeLists-signal.patch || return 1
+}
 
 build() {
 	# Use ROS environment variables.
