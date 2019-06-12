@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=rivet-hg
-pkgver=r6396.6af72c1a196d
+pkgver=r7248.4e530be4f27e
 pkgrel=1
 pkgdesc="A particle physics package for data analysis and validation of Monte Carlo event generators -- latest build from hg-repo"
 arch=('x86_64' 'i686')
@@ -8,21 +8,18 @@ url="http://rivet.hepforge.org"
 license=('GPL3')
 conflicts=('rivet')
 provides=('rivet')
-depends=('python' 'yoda>=1.7.1' 'fastjet' 'gsl' 'hepmc')
+depends=('python' 'yoda' 'fastjet' 'gsl' 'hepmc' 'fastjet-contrib')
 optdepends=('texlive-core: Plotting functionality'
             'ghostscript: PDF plot output'
             'imagemagick: PNG plot output'
             'python2: For Python2 module in addition to Python3')
 makedepends=('cython')
-source=('hg+https://rivet.hepforge.org/hg/rivet')
+source=('rivet::hg+https://phab.hepforge.org/source/rivethg#branch=multiweight-merge27')
 md5sums=('SKIP')
 
 build() {
 	cd "$srcdir/rivet"
         autoreconf -i
-        ## need to rebuild Python extension code with up-to-date Cython for Python 3.7
-        ## will eventually be fixed upstream
-        touch pyext/rivet/*.pyx
 	./configure --prefix=/usr
 	make
 }
