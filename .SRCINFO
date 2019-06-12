@@ -6,7 +6,6 @@ pkgbase = python-spherical_geometry
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest-astropy
 	makedepends = python-setuptools
 	makedepends = qd>=2.3.7
 	makedepends = python-astropy>=3.1
@@ -25,6 +24,7 @@ pkgname = python-spherical_geometry
 	depends = python-astropy>=0.4
 	optdepends = python-spherical_geometry-doc: Documentation for Spherical Geometry Toolkit
 	optdepends = python-pytest-astropy: For testing suite
+	optdepends = python-astropy<3.2: For testing
 
 pkgname = python-spherical_geometry-doc
 	pkgdesc = Documentation for Python Spherical Geometry Toolkit
