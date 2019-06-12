@@ -44,25 +44,29 @@ fi
 export ANDROID_PLATFORM=${ANDROID_NDK_HOME}/platforms/$ANDROID_NDK_PLATFORM
 export ANDROID_TOOLCHAIN=${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64
 export ANDROID_SYSROOT=${ANDROID_TOOLCHAIN}/sysroot
-export ANDROID_CROSS_PREFIX=$ANDROID_TOOLCHAIN/bin/
+export ANDROID_CROSS_PREFIX=$ANDROID_TOOLCHAIN/bin
 export ANDROID_PKGCONFIG=android-${_android_arch}-pkg-config
 
 case "$_android_arch" in
     aarch64)
-        export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}aarch64-linux-android${ANDROID_MINIMUM_PLATFORM}-
-        export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}aarch64-linux-android-
+        export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/aarch64-linux-android${ANDROID_MINIMUM_PLATFORM}-
+        export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}/aarch64-linux-android-
+        export ANDROID_ABI=arm64-v8a
         ;;
     armv7a-eabi)
-        export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}armv7a-linux-androideabi${ANDROID_MINIMUM_PLATFORM}-
-        export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}arm-linux-androideabi-
+        export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/armv7a-linux-androideabi${ANDROID_MINIMUM_PLATFORM}-
+        export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}/arm-linux-androideabi-
+        export ANDROID_ABI=armeabi-v7a
         ;;
     x86)
-        export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}i686-linux-android${ANDROID_MINIMUM_PLATFORM}-
-        export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}i686-linux-android-
+        export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/i686-linux-android${ANDROID_MINIMUM_PLATFORM}-
+        export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}/i686-linux-android-
+        export ANDROID_ABI=x86
         ;;
     x86-64)
-        export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}x86_64-linux-android${ANDROID_MINIMUM_PLATFORM}-
-        export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}x86_64-linux-android-
+        export ANDROID_TOOLS_COMPILER_PREFIX=${ANDROID_CROSS_PREFIX}/x86_64-linux-android${ANDROID_MINIMUM_PLATFORM}-
+        export ANDROID_TOOLS_PREFIX=${ANDROID_CROSS_PREFIX}/x86_64-linux-android-
+        export ANDROID_ABI=x86_64
         ;;
 esac
 
@@ -73,9 +77,15 @@ export ANDROID_AS=${ANDROID_TOOLS_PREFIX}as
 export ANDROID_NM=${ANDROID_TOOLS_PREFIX}nm
 export ANDROID_RANLIB=${ANDROID_TOOLS_PREFIX}ranlib
 export ANDROID_STRIP=${ANDROID_TOOLS_PREFIX}strip
-export ANDROID_LIBS=/opt/android-libs/${_android_arch}
-export PKG_CONFIG_SYSROOT_DIR=${ANDROID_LIBS}
-export PKG_CONFIG_LIBDIR=${PKG_CONFIG_SYSROOT_DIR}/lib/pkgconfig:${PKG_CONFIG_SYSROOT_DIR}/share/pkgconfig
+export ANDROID_PREFIX=/opt/android-libs/${_android_arch}
+export ANDROID_PREFIX_USR=${ANDROID_PREFIX}/usr
+export ANDROID_PREFIX_BIN=${ANDROID_PREFIX}/bin
+export ANDROID_PREFIX_INCLUDE=${ANDROID_PREFIX}/include
+export ANDROID_PREFIX_LIB=${ANDROID_PREFIX}/lib
+export ANDROID_PREFIX_ETC=${ANDROID_PREFIX}/etc
+export ANDROID_PREFIX_SHARE=${ANDROID_PREFIX}/share
+export PKG_CONFIG_SYSROOT_DIR=${ANDROID_PREFIX}
+export PKG_CONFIG_LIBDIR=${ANDROID_PREFIX_LIB}/pkgconfig:${ANDROID_PREFIX_SHARE}/pkgconfig
 
 ndk_version() {
     grep 'Pkg.Revision' ${ANDROID_NDK_HOME}/source.properties | awk '{print $3}'
