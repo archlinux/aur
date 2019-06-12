@@ -3,7 +3,7 @@
 
 pkgname='perl-test-env'
 pkgver='1.084'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="test the environment"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -30,7 +30,7 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
   make test
 }
 
