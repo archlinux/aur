@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=yoda-hg
-pkgver=r1479.e335e6743a5e
+pkgver=r1530.5893d36df5d9
 pkgrel=1
 pkgdesc="A particle physics package for data analysis (specifically histogramming) classes -- latest build from hg-repo."
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ optdepends=('python2: For Python2 module in addition to Python3')
 makedepends=('cython')
 conflicts=('yoda')
 provides=('yoda')
-source=('hg+https://yoda.hepforge.org/hg/yoda')
+source=('yoda::hg+https://phab.hepforge.org/source/yodahg')
 md5sums=('SKIP')
 
 build() {
