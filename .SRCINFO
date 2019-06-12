@@ -1,14 +1,28 @@
 pkgbase = drill-search
-	pkgdesc = Search files without indexing, but clever crawling
-	pkgver = 1.199
+	pkgver = 1.237
 	pkgrel = 1
 	url = https://www.drill.santamorena.me/
 	arch = x86_64
 	license = GPL2
-	provides = drill-search
-	conflicts = drill-search
-	source = https://github.com/yatima1460/Drill/releases/download/1.199/Drill-ui-linux-1.199-x86_64.deb
-	md5sums = 6d7befe042e4553880bef3b3308bea11
+	makedepends = dmd
+	makedepends = dub
+	source = drill-search-1.237.tar.gz::https://github.com/yatima1460/Drill/archive/1.237.tar.gz
+	source = drill-search
+	source = drill-search-gtk.desktop
+	source = drill-search-gtk.svg
+	source = DRILL_VERSION
+	sha256sums = 95c20baadf7334ca7d32f018796f3027f892e946ac219a34c74207404c9f3e10
+	sha256sums = b875f928546aee7855cb1db9afc8ab3f1a8a34d43de5bbd62f7076d7ba9f3917
+	sha256sums = 21a6d19b8198816b3a6e406198ee6e4d5ab0da134df26b8342837e810ccc26a9
+	sha256sums = cbfbcebb2957223eaa9c915780a5d0ac47c1fac70b7944f49e8ffcfe740edc53
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
-pkgname = drill-search
+pkgname = drill-search-cli
+	pkgdesc = Search files without indexing, but clever crawling (CLI version)
+	conflicts = drill-search-cli-bin
+
+pkgname = drill-search-gtk
+	pkgdesc = Search files without indexing, but clever crawling (GTK version)
+	depends = gtk3
+	conflicts = drill-search-gtk-bin
 

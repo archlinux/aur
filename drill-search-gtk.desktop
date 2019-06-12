@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Drill
+Type=Application
+Comment=Search files without using indexing, but clever crawling
+Icon=drill-search-gtk
+Exec=/usr/bin/drill-search-gtk
+TryExec=/usr/bin/drill-search-gtk
+Terminal=false
+Categories=Application;Utility;
+Keywords=Search;FileSearch;File Search;Find;Search;
