@@ -1,0 +1,18 @@
+#!/bin/sh
+# kernel-install hook
+# https://www.freedesktop.org/software/systemd/man/kernel-install.html
+
+# note: this hook must run after 50-mkinitcpio.install because it creates "$3"/initrd
+
+case "$1" in
+    add)
+        secure-boot KERNEL="$2" INITRAMFS="$3"/initrd install
+        ;;
+    remove)
+        # this is not implemented yet
+        # secure-boot KERNEL="$2" INITRAMFS="$3"/initrd remove
+        ;;
+esac
+
+
+# vim: set ft=sh ts=4 sw=4 et:

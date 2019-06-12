@@ -1,7 +1,7 @@
 pkgbase = secure-boot
 	pkgdesc = secure-boot tool
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://github.com/gdamjan/secure-boot
 	arch = any
 	license = GPL
@@ -14,8 +14,12 @@ pkgbase = secure-boot
 	depends = systemd
 	source = secure-boot
 	source = secure-boot.hook
-	md5sums = 97e13f4798bed1d4bd3d7f409198e570
-	md5sums = 1313074db7ddeac0c115e44c7b16f218
+	source = fwupd.hook
+	source = 95-secure-boot.install
+	sha256sums = 8140d52cce7ca1424dcfdf57e5bf5e162671710764ddb66d3112f40236c39f0f
+	sha256sums = 9252561fd43bc707e062ce266f7e55ceff9cd56ad00bde003ba93a61aaf27922
+	sha256sums = 70466aa19cb38aedb210fb16a893f317412c9fc6f15169958583709d2954c67b
+	sha256sums = 62da3ec34fa9370d6877fe371e3536bab6255b2fb5353ef6c0e1adf4c555adcf
 
 pkgname = secure-boot
 

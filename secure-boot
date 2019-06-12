@@ -6,14 +6,17 @@ ESP       := /boot
 EFIDIR    := /EFI/Secure
 EFIBOOTDEVICE :=
 
-SIGNER    := ArchSecureBoot
+# deprecated, use KERNEL. for backward compatibility til 2.0
 SUFFIX    := linux
-KERNEL    := /boot/vmlinuz-${SUFFIX}
-INITRAMFS := /boot/initramfs-${SUFFIX}.img
+
+SIGNER    := ArchSecureBoot
+KERNEL    := ${SUFFIX}
+VMLINUZ   := /boot/vmlinuz-${KERNEL}
+INITRAMFS := /boot/initramfs-${KERNEL}.img
 EFISTUB   := /usr/lib/systemd/boot/efi/linuxx64.efi.stub
 UCODE     := /boot/intel-ucode.img
 CMDLINE   := /etc/kernel/cmdline
-DESTFILE  := secure-boot-${SUFFIX}.efi
+DESTFILE  := secure-boot-${KERNEL}.efi
 EFIBOOTMGR := efibootmgr
 
 -include /etc/secure-boot/config.mk
@@ -27,15 +30,17 @@ ifdef EFIBOOTDEVICE
 EFIBOOTMGR += -d $(EFIBOOTDEVICE)
 endif
 
+.PHONY: default clean update install
+
 default:
-	@echo Make targets: keys, install, update
+	@echo Make targets: install, update, gen-keys, enroll
 
 clean:
 	rm -rf $(BUILDDIR)
 
 update:  $(BOOTDIR)/${DESTFILE}
 install: update
-	$(EFIBOOTMGR) -c -l '${EFIDIRFAT}\${DESTFILE}' -L 'SecureBoot ${SUFFIX}'
+	$(EFIBOOTMGR) -c -l '${EFIDIRFAT}\${DESTFILE}' -L 'SecureBoot ${KERNEL}'
 
 $(BOOTDIR)/${DESTFILE}: $(BUILDDIR)/combined-boot-signed.efi
 	@mkdir -p $(BOOTDIR)
@@ -56,7 +61,7 @@ $(BUILDDIR)/combined-boot.efi: $(BUILDDIR)/cmdline.txt $(BUILDDIR)/initramfs.img
 	objcopy \
 	        --add-section .osrel=/etc/os-release --change-section-vma .osrel=0x20000 \
 	        --add-section .cmdline=$(BUILDDIR)/cmdline.txt --change-section-vma .cmdline=0x30000 \
-	        --add-section .linux=$(KERNEL) --change-section-vma .linux=0x40000 \
+	        --add-section .linux=$(VMLINUZ) --change-section-vma .linux=0x40000 \
 	        --add-section .initrd=$(BUILDDIR)/initramfs.img --change-section-vma .initrd=0x3000000 \
 	        $(EFISTUB) $@
 
@@ -64,15 +69,23 @@ $(BUILDDIR)/combined-boot-signed.efi: $(BUILDDIR)/combined-boot.efi $(KEYSDIR)/d
 	sbsign --key $(KEYSDIR)/db.key --cert $(KEYSDIR)/db.crt --output $@ $<
 
 
-# shortcuts
+.PHONY: build sign enroll gen-keys
+
 build:   $(BUILDDIR)/combined-boot.efi
 sign:    $(BUILDDIR)/combined-boot-signed.efi
 
+enroll: gen-keys
+	efi-updatevar -e -f $(KEYSDIR)/KEK.esl KEK
+	efi-updatevar -e -f $(KEYSDIR)/db.esl db
+	efi-updatevar -f $(KEYSDIR)/PK.auth PK
 
-### setup keys.
-### need run only once.
+gen-keys: $(KEYSDIR)/PK.auth $(KEYSDIR)/KEK.auth $(KEYSDIR)/db.auth
 
-keys: $(KEYSDIR)/PK.auth $(KEYSDIR)/KEK.auth $(KEYSDIR)/db.auth
+
+
+####
+#### key building - typically only once in a lifetime
+####
 
 $(KEYSDIR)/%.crt: $(KEYSDIR)/%.key;
 $(KEYSDIR)/%.key: COMMONNAME = $(SIGNER) $(basename $(notdir $@))
@@ -99,5 +112,4 @@ $(KEYSDIR)/db.auth: $(KEYSDIR)/KEK.crt $(KEYSDIR)/db.esl
 
 
 .PRECIOUS: $(KEYSDIR)/%.key $(KEYSDIR)/%.crt $(KEYSDIR)/%.esl
-.PHONY: default clean install
 .DEFAULT: default

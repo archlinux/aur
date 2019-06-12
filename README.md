@@ -25,7 +25,7 @@ use that file as a template for other kernels too (this procedure should converg
 Options can be put in `/etc/secure-boot/config.mk` (in makefile format). See the top lines of [secure-boot](secure-boot) for the
 possible options. You can also specify them on the command line:
 
-* `secure-boot SUFFIX=linux-lts update` will sign and setup the -lts kernel (also -git, -zen, etc) - but make sure to setup
+* `secure-boot KERNEL=linux-lts update` will sign and setup the -lts kernel (also linux-git, linux-zen, etc) - but make sure to setup
   the pacman hook for those too.
 * by default the script expects a cpu microcode archive exists at `/boot/intel-ucode.img`, and packs it to the common initramfs.
   Use `secure-boot UCODE= update` to disable it.

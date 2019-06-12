@@ -3,6 +3,8 @@ Operation = Install
 Operation = Upgrade
 Type = Package
 Target = linux
+Target = usr/lib/initcpio/*
+Target = boot/intel-ucode.img
 
 [Action]
 When = PostTransaction
