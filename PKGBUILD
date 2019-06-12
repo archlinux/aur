@@ -1,9 +1,9 @@
 pkgname=ruri
-pkgver=1.0.9
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A CRC32 checker with file name checking."
 arch=(any)
-url="https://github.com/Timmy1e/ruri"
+url="https://gitlab.com/Timmy1e/ruri"
 license=(GPL3)
 depends=(
   "python"
