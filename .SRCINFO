@@ -1,21 +1,21 @@
 pkgbase = zend-debugger
 	pkgdesc = Zend Debugger extension for PHP
-	pkgver = 8.0.0
-	pkgrel = 2
+	pkgver = 2018.10.02
+	pkgrel = 1
 	url = http://www.zend.com/en/products/studio/downloads#Linux
 	install = zend-debugger.install
-	arch = i686
 	arch = x86_64
 	license = custom
-	depends = php>=5.6
+	makedepends = unzip
+	depends = php>=7.2
 	provides = zend-debugger
 	conflicts = zend-debugger
-	source = http://downloads.zend.com/studio_debugger/2014_12_10/ZendDebugger-linux-i386.tar.gz
+	source = http://downloads.zend.com/studio_debugger/2018_10_02/ZendDebugger-deb-x86_64-php-71-php-72.zip
 	source = zend_debugger.ini
 	source = zend-debugger.install
-	md5sums = 947fd450785147b37333438bd18244ea
+	md5sums = fc88dfa4e146f363f92a1d1c488fe67f
 	md5sums = ed5430a12114428be83fa3fb08e740b1
-	md5sums = 68b3c506355e9f6f975c6a37dd3437f5
+	md5sums = 57932796c1b412b1c3d06372f5bc9a9e
 
 pkgname = zend-debugger
 
