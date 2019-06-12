@@ -1,11 +1,12 @@
 pkgbase = grandorgue-git
-	pkgdesc = git-version of the Virtual Pipe Organ GrandOrgue
-	pkgver = 1.0
+	pkgdesc = git-version of the Virtual Pipe Organ Software GrandOrgue
+	pkgver = 2019.03.31.00.00.00
 	pkgrel = 1
 	url = https://github.com/e9925248/grandorgue
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2+
+	makedepends = gcc
 	makedepends = cmake
 	makedepends = git
 	makedepends = docbook-xsl
@@ -18,6 +19,8 @@ pkgbase = grandorgue-git
 	depends = alsa-lib
 	depends = libglvnd
 	depends = jack
+	depends = zlib
+	depends = libsystemd
 	source = git+https://github.com/e9925248/grandorgue.git#branch=master
 	md5sums = SKIP
 

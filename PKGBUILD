@@ -1,33 +1,34 @@
 # Maintainer: Klaus Fröhlich <arch@sclause.net>
 
 pkgname=grandorgue-git
-pkgver=1.0
+pkgver=2019.03.31.00.00.00
 _branch=master
 pkgrel=1
-pkgdesc='git-version of the Virtual Pipe Organ GrandOrgue'
+pkgdesc='git-version of the Virtual Pipe Organ Software GrandOrgue'
 arch=('i686' 'x86_64')
 url='https://github.com/e9925248/grandorgue'
-license=('GPL')
+license=('GPL2+')
 depends=(fftw
   wavpack
   wxgtk2
   alsa-lib
   libglvnd
-  jack)
-makedepends=(cmake
+  jack
+  zlib
+  libsystemd)
+makedepends=(gcc
+  cmake
   git
   docbook-xsl
   zip
   po4a
   gettext)
-#optdepends=('lame: MP3 export')
-#install=musescore.install
 source=("git+$url.git#branch=$_branch")
 md5sums=('SKIP')
 
 pkgver() {
   cd grandorgue
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git log -1 --pretty=%aI | sed 's/\+.*//g;s/[^0-9]/\./g'
 }
 
 build() {
