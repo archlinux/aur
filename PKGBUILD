@@ -2,7 +2,7 @@
 # Contributor: Albakham <contact@geber.ga>
 
 pkgname=protonmail-desktop-unofficial
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Unofficial app that emulates a native client for the ProtonMail e-mail service"
 arch=(any)
@@ -16,10 +16,9 @@ options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/protonmail-desktop/application/archive/v$pkgver.tar.gz
         $pkgname.sh
         $pkgname.desktop)
-sha256sums=('488e1a6221bf10ae2ead04b0d5157033f945b7d371623cab85fffcf4fd423632'
+sha256sums=('cce2d6754a1f459b24e8b64b0c16da36f944a1d622a00cb44712554f29eeab51'
             'e559e107e78fb29fed68fe7c9d5f0ab464c3f092148770ce10672514464fe843'
-            '372ba6fd198e0460cba360e93175890d4ede0e41c69cc6a485777c3f7da51b09')
-
+            'f718cb9a690a373834a1a93e888d53a69ed8c835a454e537adf63d9a1564b3e1')
 build() {
   cd application-$pkgver
   npm uninstall eslint gulp-sass --save
