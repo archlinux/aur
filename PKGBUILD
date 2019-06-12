@@ -1,7 +1,7 @@
 # Maintainer: Colin Adler <cadler@coder.com>
 
 pkgname=code-server
-pkgver=1.1140_vsc1.33.1
+pkgver=1.1156_vsc1.33.1
 pkgrel=0
 pkgdesc="Run VS Code on a remote server"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(glibc net-tools)
 _ghtag=${pkgver//_/-}
 _dirname=code-server${_ghtag}-linux-x64
 source=(${url}/releases/download/${_ghtag}/${_dirname}.tar.gz)
-sha512sums=('d93e0add97366019394ede36e53cb642b5751d0da1a4fef9d8efb25873999175e9401634d46dce86b8e381f02607a2cde91e8bf3422bd47c7d37fb9e1b7acaae')
+sha512sums=('60e9f6cecf7681899a71cda7fcb7acb3d8e0b50ee819f3971d9f207a816e4273162d1374e143dd61e9029c3c7add73d33db98df7bab882758d1968188fd83dee')
 options=('!strip')
 
 package() {
