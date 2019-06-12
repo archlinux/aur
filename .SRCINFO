@@ -1,0 +1,14 @@
+pkgbase = obsh-git
+	pkgdesc = A tiny bash script for finding SSH servers in your local network.
+	pkgver = 20190512
+	pkgrel = 1
+	url = https://github.com/notthebee/obsh/blob/master/obsh
+	arch = any
+	makedepends = git
+	depends = nmap
+	provides = obsh
+	source = git+https://github.com/notthebee/obsh.git
+	md5sums = SKIP
+
+pkgname = obsh-git
+
