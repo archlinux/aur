@@ -7,7 +7,7 @@ pkgdesc="Documentation for Python pyregion module"
 arch=('i686' 'x86_64')
 url="http://pyregion.readthedocs.io/"
 license=('MIT')
-makedepends=("python-${_pyname}=${pkgver}" 'python-astropy' 'python-astropy-helpers>=3.1' 'python-astropy-helpers<3.2' 'python-sphinx-astropy')
+makedepends=("python-${_pyname}=${pkgver}" 'python-astropy' 'python-astropy-helpers31' 'python-sphinx-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('c228b133a1573d2017e0857a9fbf23c5')
 
