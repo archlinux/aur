@@ -1,9 +1,9 @@
 pkgbase = python-torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision
-	pkgver = 0.2.2
-	pkgrel = 6
+	pkgver = 0.3.0
+	pkgrel = 2
 	url = https://github.com/pytorch/vision
-	arch = any
+	arch = x86_64
 	license = BSD
 	checkdepends = python-pytest
 	checkdepends = python-scipy
@@ -14,8 +14,8 @@ pkgbase = python-torchvision
 	depends = python-scipy
 	depends = python-six
 	depends = python-tqdm
-	source = torchvision-0.2.2.tar.gz::https://github.com/pytorch/vision/archive/v0.2.2.tar.gz
-	sha512sums = 2831391b71257ae4daacd4e7d3f933a910fad548df8df1a70d2358947244de59a70ceb76c544ed3eb1bd07b9e170640234f49b4743d9bb9da0e2b33861c36849
+	source = https://github.com/pytorch/vision/archive/v0.3.0.tar.gz
+	sha512sums = a402221827319c9792e7ff8edb8218737e09b8dade186a3b7adeb7501f2f60d030e0cc22e5b78163368056370daea4682da0748c72a736df0f4ee4443a8150fe
 
 pkgname = python-torchvision
 
