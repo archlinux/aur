@@ -21,7 +21,7 @@ makedepends=('mingw-w64-configure'
              'json-c'
              'python-six')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://anongit.freedesktop.org/git/fontconfig#commit=${_commit}"
+source=("git+https://gitlab.freedesktop.org/fontconfig/fontconfig.git#commit=${_commit}"
         "0007-pkgconfig.mingw.patch")
 sha256sums=('SKIP'
             'af373531873da46d0356305da5444c1ec74f443cd2635ea2db6b7dadd1561f5b')
