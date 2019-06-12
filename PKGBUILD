@@ -1,6 +1,6 @@
 pkgname=ruri
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CRC32 checker with file name checking."
 arch=(any)
 url="https://gitlab.com/Timmy1e/ruri"
@@ -14,9 +14,9 @@ makedepends=(
   "python-pip"
 )
 build() {
-  pip install --isolated --no-deps --ignore-installed --root="$srcdir/" "ruri==${pkgver}"
+  pip3 install --isolated --no-deps --ignore-installed --no-warn-script-location --root="$srcdir/" "ruri==${pkgver}"
 }
 package() {
   cp -R $srcdir/* $pkgdir/
-  python -O -m compileall "${pkgdir}/"
+  python3 -O -m compileall "${pkgdir}/"
 }
