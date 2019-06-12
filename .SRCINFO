@@ -1,11 +1,12 @@
 pkgbase = mailto-uri
 	pkgdesc = creates mailto URIs
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/mailto-uri/
 	arch = any
 	license = GPL3
 	depends = python-argparse
+	depends = python-frontmatter
 	source = https://files.pythonhosted.org/packages/source/m/mailto-uri/mailto-uri-1.1.0.tar.gz
 	md5sums = 9258120726e18573ea11f24769a414dc
 
