@@ -1,0 +1,23 @@
+pkgbase = python-astropy-helpers31
+	pkgdesc = Utilities used for building the Astropy python library for astronomy
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://astropy-helpers.readthedocs.io/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-sphinx-astropy
+	source = https://github.com/astropy/astropy-helpers/archive/v3.1.1.tar.gz
+	source = use_system_astropy_helpers.patch
+	md5sums = 69be038c5b31aa43b41470ec9e6e9f41
+	md5sums = 13cd66eec7da36e18d5db09fe9dfd3a5
+
+pkgname = python-astropy-helpers31
+	optdepends = python-astropy-helpers-doc=3.1.1: Documentation for Astropy helpers
+	provides = python-astropy-helpers=3.1.1
+	conflicts = python-astropy-helpers
+
+pkgname = python-astropy-helpers31-doc
+	pkgdesc = Documentation for Astropy helpers
+	provides = python-astropy-helpers-doc=3.1.1
+
