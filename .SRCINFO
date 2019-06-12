@@ -1,0 +1,27 @@
+pkgbase = python-astropy31
+	pkgdesc = A community python library for astronomy
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = http://www.astropy.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cython
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-h5py
+	depends = cfitsio
+	depends = expat
+	depends = wcslib
+	depends = erfa
+	depends = python-jinja
+	provides = python-astropy=3.1.2
+	conflicts = python-pyfits
+	conflicts = python-vo
+	conflicts = python-astropy
+	source = https://files.pythonhosted.org/packages/source/a/astropy/astropy-3.1.2.tar.gz
+	md5sums = 2e197984c6ab44672b807bc25ce4b03f
+
+pkgname = python-astropy31
+
