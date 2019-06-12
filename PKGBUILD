@@ -8,13 +8,13 @@ pkgdesc="BSD-licensed HEALPix for Astropy"
 arch=('i686' 'x86_64')
 url="http://astropy-healpix.readthedocs.io/"
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools' 'python2-numpy' 'python-astropy' 'python-astropy-helpers>=3.1' 'python-astropy-helpers<3.2' 'python2-astropy-helpers' 'python-sphinx-astropy')
-#checkdepends=('python-pytest-astropy'
-#              'python2-pytest32'
-#              'python2-healpy'
-#              'python-healpy'
-#              'python2-hypothesis'
-#              'python-hypothesis')
+makedepends=('python-setuptools' 'python2-setuptools' 'python2-numpy' 'python-astropy' 'python-astropy-helpers31' 'python2-astropy-helpers' 'python-sphinx-astropy')
+checkdepends=('python2-pytest32'
+#             'python-pytest-astropy'
+              'python2-healpy'
+#             'python-healpy'
+#             'python-hypothesis'
+              'python2-hypothesis')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "python2-${_pyname}.install"
         'fix_deprecation_warning.patch')
@@ -43,17 +43,17 @@ build() {
     python setup.py build_docs
 }
 
-#check() {
-#    msg "Checking Python3"
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#    python setup.py test
-#
-#    if [ -z $(pacman -Qsq python2-pytest-cov) ]; then
-#        msg "Checking Python2"
-#        cd ${srcdir}/${_pyname}-${pkgver}-py2
-#        python2 setup.py test
-#    fi
-#}
+check() {
+#   msg "Checking Python3"
+#   cd ${srcdir}/${_pyname}-${pkgver}
+#   python setup.py test
+
+    if [ -z $(pacman -Qsq python2-pytest-cov) ]; then
+#       msg "Checking Python2"
+        cd ${srcdir}/${_pyname}-${pkgver}-py2
+        python2 setup.py test
+    fi
+}
 
 package_python2-astropy-healpix() {
     depends=('python2>=2.7' 'python2-numpy>=1.10' 'python2-astropy>=1.2')
