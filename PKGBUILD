@@ -2,7 +2,7 @@
 
 _basename=freeciv
 pkgname=freeciv-git
-pkgver=r23947.b487f15267
+pkgver=r24065.8e266126ba
 pkgrel=1
 pkgdesc="A multiuser clone of the famous Microprose game of Civilization"
 arch=('x86_64')
