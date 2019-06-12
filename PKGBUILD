@@ -5,7 +5,7 @@
 
 pkgname=firefox-esr52
 pkgver=52.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Standalone web browser from mozilla.org, Extended Support Release 52.x with NPAPI support'
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -14,7 +14,8 @@ depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-typ
          'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'nss' 'hunspell'
          'sqlite' 'ttf-font' 'icu')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'libpulse' 'inetutils' 'xorg-server-xvfb' 'autoconf2.13' 'rust')
+             'libpulse' 'inetutils' 'xorg-server-xvfb' 'autoconf2.13' 'rust'
+             'patch')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
@@ -86,7 +87,8 @@ prepare() {
 
   # https://hg.mozilla.org/releases/mozilla-esr60/rev/2f39b32593bd
   # https://svnweb.freebsd.org/ports/head/www/firefox/files/patch-bug1435212?view=markup&pathrev=468159
-  patch -Np0 -i "${srcdir}/ffmpeg4.patch"
+  gzip --keep --decompress --to-stdout "${srcdir}/ffmpeg4.patch.gz" > ffmpeg4.patch
+  patch -Np0 -i "ffmpeg4.patch"
 
   echo -n "${_google_api_key}" >google-api-key
   echo -n "${_mozilla_api_key}" >mozilla-api-key
