@@ -2,7 +2,7 @@
 
 _pkgname=meld
 pkgname=$_pkgname-git
-pkgver=3.19.1.6.g23b6fea8
+pkgver=3.20.0.350.gb6d17fe6
 pkgrel=1
 _realver=3.19.1
 pkgdesc='Visual diff and merge tool'
