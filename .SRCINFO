@@ -1,0 +1,14 @@
+pkgbase = blush
+	pkgdesc = Grep with colours
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/arsham/blush
+	arch = x86_64
+	license = MIT
+	provides = blush
+	conflicts = blush
+	source = https://github.com/arsham/blush/releases/download/v0.5.3/blush_linux_v0.5.3.tar.gz
+	sha256sums = 48a6af626b94e98a3de13b28cf1b0210b9f78b913a79df6e3013bc59019447d5
+
+pkgname = blush
+
