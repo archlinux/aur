@@ -5,7 +5,7 @@ Requires=network-online.target
 After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/nomad agent -config /etc/nomad -data-dir=/var/lib/nomad
+ExecStart=/usr/bin/nomad agent -config /etc/nomad
 
 [Install]
 WantedBy=multi-user.target

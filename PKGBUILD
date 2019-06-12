@@ -3,7 +3,7 @@
 
 pkgname=nomad-bin
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A distributed, highly available, datacenter-aware scheduler'
 arch=('x86_64')
 url="https://nomadproject.io/"

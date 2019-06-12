@@ -4,6 +4,7 @@
 # https://www.nomadproject.io/docs/agent/config.html
 
 bind_addr = "0.0.0.0"
+data_dir  = "/var/lib/nomad"
 
 leave_on_interrupt = true
 leave_on_terminate = true
