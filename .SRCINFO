@@ -1,13 +1,14 @@
 pkgbase = cb
 	pkgdesc = Command line interface to manage clipboard
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yaa110/cb
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
+	depends = libxcb
 	provides = cb
 	conflicts = cb-git
 	conflicts = cb-bin
