@@ -1,9 +1,9 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer: Cedric Girard <cgirard.archlinux@valinor.fr>
 _author=HMBRAND
 _perlmod=DBD-CSV
 pkgname=perl-dbd-csv
 pkgver=0.54
-pkgrel=1
+pkgrel=2
 pkgdesc="DBI driver for CSV files"
 arch=('any')
 url="http://search.cpan.org/~$_author/$_perlmod/"
@@ -15,7 +15,7 @@ depends=('perl>=5.10.0'
 )
 options=(!emptydirs)
 source=(http://cpan.perl.org/modules/by-authors/id/H/HM/$_author/$_perlmod-$pkgver.tgz)
-md5sums=('dc91dbf5e8b4aaa07cb583a4a82a4656')
+sha256sums=('bc597cd7195e5a023e2b3413d8dc614602b9b3f279f436027881796464d4f0be')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
