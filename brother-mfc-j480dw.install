@@ -3,7 +3,7 @@ post_install() {
 }
 
 post_upgrade() {
-echo "Restart CUPS to load the new files"
-echo "You can now register your new printer using the web interface at:"
-echo "  http://localhost:631/"
+	printf 'Restart CUPS to load new driver files:\n'
+	printf '    sudo systemctl restart org.cups.cupsd\n'
+	printf 'You can register your printer via the web interface at http://localhost:631/'
 }
