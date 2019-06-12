@@ -7,12 +7,13 @@ arch=('i686' 'x86_64')
 url="https://github.com/jeromerobert/hmat-oss"
 depends=('cblas' 'lapack')
 makedepends=('cmake')
-source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz")
-sha1sums=('ea50bc4ee9eabd42fb81757c5549a2e592a4a434')
+source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz" set_num_threads.patch)
+sha1sums=('ea50bc4ee9eabd42fb81757c5549a2e592a4a434' SKIP)
 
 prepare() {
   cd $pkgname-$pkgver
   sed -i "s|\-Werror||g" CMakeLists.txt
+  patch -p1 -i "$srcdir"/set_num_threads.patch
 }
 
 
