@@ -1,7 +1,7 @@
 pkgbase = perl-taint-util
 	pkgdesc = Perl module to test for and flip the taint flag without regex matches or eval
 	pkgver = 0.08
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/pod/Taint::Util
 	arch = i686
 	arch = x86_64
