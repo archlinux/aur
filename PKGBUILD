@@ -1,14 +1,15 @@
 # Maintainer: robertfoster
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: redfish
 
 pkgbase=python-base58
 pkgname=("$pkgbase" "${pkgbase/-/2-}")
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin-compatible Base58 and Base58Check implementation"
 arch=('any')
 depends=('python' 'python2')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
 url="https://github.com/keis/base58"
 license=('MIT')
 options=(!emptydirs)
