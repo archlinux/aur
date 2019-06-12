@@ -5,8 +5,8 @@
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 
 pkgname=tor-browser-dev
-pkgver=9.0a1
-pkgrel=2
+pkgver=9.0a2
+pkgrel=1
 pkgdesc="Tor Browser Bundle (alpha version; locale-aware international PKGBUILD)"
 arch=('i686' 'x86_64')
 _idstr32='linux32'
