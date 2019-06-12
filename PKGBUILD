@@ -2,20 +2,20 @@
 # Contributor: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=build2
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="build2 build system"
 arch=(i686 x86_64)
 url="https://build2.org/"
 license=('MIT')
-makedepends=(clang wget)
+makedepends=(wget)
 source=("https://download.build2.org/$pkgver/build2-toolchain-$pkgver.tar.xz")
-sha256sums=('d41d516cc09b7d8af877fbd1f279cf36358b33288498131476284232891b8d60')
+sha256sums=('653bb75f31ca05760eba62bb6727d11a9f0d8ce4aa2fc1fb996d7ef6e76a4938')
 
 build() {
   cd build2-toolchain-$pkgver
   mkdir -p install
-  ./build.sh --trust yes --install-dir `pwd`/install clang++
+  ./build.sh --trust yes --install-dir `pwd`/install g++
 }
 
 package() {
