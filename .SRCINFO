@@ -1,6 +1,6 @@
 pkgbase = grub-git
 	pkgdesc = GNU GRand Unified Bootloader (2)
-	pkgver = 2.02.r304.g63d568ed2
+	pkgver = 2.04.rc1.r19.g4e7b5bb3b
 	pkgrel = 1
 	url = https://www.gnu.org/software/grub/
 	install = grub-git.install
@@ -31,18 +31,18 @@ pkgbase = grub-git
 	conflicts = grub
 	backup = etc/default/grub
 	backup = etc/grub.d/40_custom
-	source = grub::git://git.savannah.gnu.org/grub.git
-	source = grub-extras::git://git.savannah.gnu.org/grub-extras.git
-	source = gnulib::git://git.sv.gnu.org/gnulib.git
+	source = grub::git+https://git.savannah.gnu.org/git/grub.git
+	source = grub-extras::git+https://git.savannah.gnu.org/git/grub-extras.git
+	source = gnulib::git+https://git.savannah.gnu.org/git/gnulib.git
 	source = 10_linux-detect-archlinux-initramfs.patch
 	source = add-GRUB_COLOR_variables.patch
 	source = grub.default
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3
+	sha256sums = 171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4
 	sha256sums = a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29
-	sha256sums = 9ca2414266fadd0b1aafc850c1c26a48760fbc95f1913ab8b36f1e54483b31fd
+	sha256sums = fd2e5f5453f3e44a2cb640c796b85cd70da8359c703f94cd531d457ede8c77fa
 
 pkgname = grub-git
 

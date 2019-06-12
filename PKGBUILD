@@ -17,7 +17,7 @@ _build_platforms="i386-pc ${_target_arch}-efi"
 [[ "${_grub_emu_build}" == "1" ]] && _build_platforms+=" ${_target_arch}-emu"
 
 pkgname="grub-git"
-pkgver=2.02.r304.g63d568ed2
+pkgver=2.04.rc1.r19.g4e7b5bb3b
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2)"
 arch=('x86_64' 'i686')
@@ -43,18 +43,18 @@ conflicts=("${pkgname%-*}")
 backup=('etc/default/grub'
         'etc/grub.d/40_custom')
 install="${pkgname}.install"
-source=("grub::git://git.savannah.gnu.org/grub.git"
-        "grub-extras::git://git.savannah.gnu.org/grub-extras.git"
-        "gnulib::git://git.sv.gnu.org/gnulib.git"
+source=("grub::git+https://git.savannah.gnu.org/git/grub.git"
+        "grub-extras::git+https://git.savannah.gnu.org/git/grub-extras.git"
+        "gnulib::git+https://git.savannah.gnu.org/git/gnulib.git"
         '10_linux-detect-archlinux-initramfs.patch'
         'add-GRUB_COLOR_variables.patch'
         'grub.default')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3'
+            '171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
-            '9ca2414266fadd0b1aafc850c1c26a48760fbc95f1913ab8b36f1e54483b31fd')
+            'fd2e5f5453f3e44a2cb640c796b85cd70da8359c703f94cd531d457ede8c77fa')
  
 prepare() {
     cd grub
@@ -92,20 +92,26 @@ build() {
     cd grub
     export GRUB_CONTRIB="$srcdir"/grub-extras
     export GNULIB_SRCDIR="$srcdir"/gnulib
-    ./bootstrap
 
     # Undefined references to __stack_chk_fail
     CFLAGS=${CFLAGS/-fstack-protector-strong}
 
     # Undefined references to _GLOBAL_OFFSET_TABLE_
     CFLAGS=${CFLAGS/-fno-plt}
-    
+
+    ./bootstrap
+
     for _arch in $_build_platforms; do
         mkdir "$srcdir"/grub/build_"$_arch"
         cd "$srcdir"/grub/build_"$_arch"
 
         # Explicitly set ac_cv_header_sys_sysmacros_h
         # https://savannah.gnu.org/bugs/index.php?55520
+
+        # * _FORTIFY_SOURCE requires compiling with optimization warnings
+        #   become errors due to a -Werror added during ./configure tests.
+        #   This results in an incorrect configuration and only by adding -O2
+        #   to CPPFLAGS does this problem seem to be worked around.
         ../configure --with-platform="${_arch##*-}" \
                 --target="${_arch%%-*}"  \
                 --prefix="/usr" \
@@ -120,6 +126,7 @@ build() {
                 --enable-nls \
                 --disable-silent-rules \
                 --disable-werror \
+                CPPFLAGS="$CPPFLAGS -O2" \
                 ac_cv_header_sys_sysmacros_h=yes
         make
     done
