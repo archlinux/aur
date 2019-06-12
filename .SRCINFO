@@ -1,7 +1,7 @@
 pkgbase = perl-number-misc
 	pkgdesc = handy utilities for numbers
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Number-Misc
 	arch = any
 	license = PerlArtistic

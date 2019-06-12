@@ -2,7 +2,7 @@
 
 pkgname='perl-number-misc'
 pkgver='1.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="handy utilities for numbers"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -17,7 +17,7 @@ sha512sums=('f160de841bc895481f6d9422ed639391fd9e9b65239e3c0adf25b63e88902e76080
 _distdir="Number-Misc-$pkgver"
 
 build() {
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                   \
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."                  \
       PERL_AUTOINSTALL=--skipdeps                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
