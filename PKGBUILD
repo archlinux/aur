@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://astropy-regions.readthedocs.io/en/latest/"
 license=('BSD')
 makedepends=('cython' 'cython2' 'python-astropy>=1.3' 'python2-astropy>=1.3' 'python-astropy-helpers>=3.1'  'python-astropy-helpers<3.2' 'python2-astropy-helpers' 'python-sphinx-astropy' 'python-shapely')
-checkdepends=('python-pytest-astropy' 'python-astropy-healpix')
+#checkdepends=('python-pytest-astropy' 'python-astropy-healpix')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('b2f0b08cdaa2b40519de665f9af2a25a')
 
@@ -33,15 +33,15 @@ build() {
     python setup.py build_docs
 }
 
-check() {
-#   msg "Checking Python3"
-    cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py test
-
-#   msg "Checking Python2"
-#   cd ${srcdir}/${_pyname}-${pkgver}-py2
-#   python2 setup.py test
-}
+#check() {
+##   msg "Checking Python3"
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#    python setup.py test
+#
+##   msg "Checking Python2"
+##   cd ${srcdir}/${_pyname}-${pkgver}-py2
+##   python2 setup.py test
+#}
 
 package_python2-regions() {
     depends=('python2>=2.7' 'python2-numpy>=1.9' 'python2-astropy>=1.3')
@@ -58,8 +58,9 @@ package_python-regions() {
     depends=('python>=3.4' 'python-numpy>=1.9' 'python-astropy>=1.3')
     optdepends=('python-matplotlib>=1.5: Plotting support'
                 'python-shapely: Managing geometric objects'
-                'python-regions-doc: Documentation for AstroPy Regions')
-#               'python-pytest-astropy: For testing')
+                'python-regions-doc: Documentation for AstroPy Regions'
+                'python-pytest-astropy: For testing'
+                'python-astropy<3.2: For testing')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --use-system-libraries --offline
