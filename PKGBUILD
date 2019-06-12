@@ -1,4 +1,4 @@
-# Maintainer: Nathaniel Stickney <nstickney@gmail.com>
+# Maintainer: Stick <stick at stma dot is>
 # Contributor: Eric Lehmann <katyl@katyl.info>
 # Contributor: Peter Vasil <mail@petervasil.net>
 # shellcheck disable=SC2034,SC2148,SC2154
