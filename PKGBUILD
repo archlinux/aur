@@ -3,15 +3,15 @@
 # shellcheck disable=2148
 
 pkgname='mailto-uri'
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="creates mailto URIs"
 arch=('any')
 url="https://pypi.org/project/mailto-uri/"
 license=('GPL3')
 depends=('python-argparse' 'python-frontmatter')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('9258120726e18573ea11f24769a414dc')
+md5sums=('dc34bdd508abb156115480e6775f9cc7')
 
 build() {
   # shellcheck disable=2154
