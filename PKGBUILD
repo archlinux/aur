@@ -2,7 +2,7 @@
 
 pkgname='perl-text-simpletable-autowidth'
 pkgver='0.09'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Simple eyecandy ASCII tables with auto-width selection"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -35,7 +35,7 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="-"
   make test
 }
 
