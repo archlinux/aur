@@ -1,14 +1,14 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 pkgname=rpgp-git
 pkgdesc="Pure rust implementation of OpenPGP "
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
-_gittag="v${pkgver}-alpha"
+_gittag="${pkgver}"
 arch=('any')
 url="https://github.com/deltachat/deltachat-desktop"
 license=('APACHE' 'MIT')
 depends=('gcc-libs')
-makedepends=('rustup')
+makedepends=('rustup' 'git')
 
 prepare() {
     cd "$srcdir"
