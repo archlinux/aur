@@ -1,6 +1,6 @@
 pkgbase = fcitx-mozc-neologd-ut
 	pkgver = 2.23.2815.102.20190530.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
 	arch = x86_64
