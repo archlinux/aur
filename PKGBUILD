@@ -6,7 +6,7 @@ pkgname='viewvc'
 #_pkgno='49241'; pkgver='1.0.13'
 #_pkgno='49392'; pkgver='1.1.23'
 #_pkgno='49471'; pkgver='1.1.24'
-pkgver='1.1.26'
+pkgver='1.1.27'
 pkgrel='1'
 pkgdesc='web-based vcs version control repository browsing, formerly viewcvs'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ _verwatch=("${url}/releases.atom" "\s\+<title>ViewVC \([^<]\+\)</title>.*" 'f') 
 #source=("${url}/files/documents/3330/${_pkgno}/${pkgname}-${pkgver}.tar.gz")
 _srcdir="${pkgname}-${pkgver}"
 source=("${_srcdir}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('aa5b911a91d597b211a3c826c2d6eb7f7b7b7d09f27ecb64e22a75e1faf42713')
+sha256sums=('00d6ea604f3b987c2cff834678b92ab1191e2009c5fdbc0e87d1b7f2226496e4')
 
 package() {
   set -u
