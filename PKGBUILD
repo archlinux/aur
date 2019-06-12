@@ -9,8 +9,8 @@ url='https://github.com/luvit/luv'
 license=('apache')
 provides=('libluv')
 conflicts=()
-depends=('luajit')
-makedepends=('cmake' 'luajit')
+depends=('luajit' 'libuv')
+makedepends=('cmake' 'luajit' 'libuv')
 source=('https://github.com/luvit/luv/releases/download/1.29.1-2/luv-1.29.1-2.tar.gz')
 sha256sums=('866e6c82f3eb4ae73222b835c7621d1b8f6b4271b5cee8dd00729338cfef9d47')
 
