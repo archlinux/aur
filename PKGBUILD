@@ -10,7 +10,7 @@ url="http://photutils.readthedocs.io/en/latest/"
 license=('BSD')
 makedepends=('cython'
              'python-astropy'
-             'python-astropy-helpers<3.2'
+             'python-astropy-helpers31'
              'python-scikit-learn'
              'python-scikit-image'
              'python-sphinx-astropy')
