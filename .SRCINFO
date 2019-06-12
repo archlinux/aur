@@ -1,6 +1,6 @@
 pkgbase = wxmaxima-git
 	pkgdesc = A document based interface for the computer algebra system Maxima.
-	pkgver = 19.05.2r8.gd36f45759
+	pkgver = 19.05.7.r105.g106a1b03b
 	pkgrel = 1
 	url = https://wxmaxima-developers.github.io/wxmaxima/
 	arch = i686
