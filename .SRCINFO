@@ -1,6 +1,6 @@
 pkgbase = matrix-synapse-git
 	pkgdesc = Matrix reference homeserver
-	pkgver = 1.0.0rc1.r2.g8dc1eb669
+	pkgver = 1.0.0.r26.g7e68691ce
 	pkgrel = 1
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
@@ -10,6 +10,7 @@ pkgbase = matrix-synapse-git
 	checkdepends = python-jinja
 	checkdepends = python-mock
 	checkdepends = python-parameterized
+	checkdepends = python-bleach
 	makedepends = git
 	depends = python-jsonschema
 	depends = python-twisted
