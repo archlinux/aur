@@ -1,0 +1,13 @@
+post_install() {
+	echo "****************************************************************************************************"
+	echo -e "\tA systemd service unit (lmgrd.service) is provided for convenient\n"
+	echo -e "\twhich assumes that all license files (*.lic) located in /etc/lmgrd/licenses\n"
+	echo -e "\tDocumentation refers to:\n"
+	echo -e "\t\thttps://www.mathworks.com/matlabcentral/answers/uploaded_files/5871/LicenseAdministration.pdf\n"
+	echo -e "\tYou should have got an up-to-date version with your MATLAB installer or ISO file.\n"
+	echo "****************************************************************************************************"
+}
+
+post_upgrade() {
+	post_install
+}

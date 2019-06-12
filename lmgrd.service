@@ -1,0 +1,16 @@
+[Unit]
+Description=FLEXnet License Manager daemon (lmgrd) for MATLAB
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/lmgrd -c /etc/lmgrd/licenses
+ExecStop=/usr/bin/lmutil lmdown -c /etc/lmgrd/licenses -q
+KillMode=none
+Restart=on-failure
+RestartSec=60
+User=nobody
+
+[Install]
+WantedBy=multi-user.target
+

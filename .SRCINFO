@@ -1,0 +1,21 @@
+pkgbase = lmgrd
+	pkgdesc = FLEXnet License Manager (lmgrd) for MATLAB
+	pkgver = 11.16.2.1
+	pkgrel = 1
+	url = https://www.mathworks.com/support/install/license_manager_files.html
+	install = lmgrd.install
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = ld-lsb
+	depends = gcc-libs
+	conflicts = autodesk-nlm
+	conflicts = flexnet
+	noextract = lmgrd-11.16.2.1.zip
+	source = lmgrd-11.16.2.1.zip::http://ssd.mathworks.com/supportfiles/downloads/R2019a/license_manager/R2019a/daemons/glnxa64/mathworks_network_license_manager_glnxa64.zip
+	source = lmgrd.service
+	sha512sums = a2b072e7bca0bcb3b7e424edf0bf9fd87fd22b16a347d072530165f7eb119c1d54f3e498d5fbfa8372ac2c674d2e66f8ff16754b606f847e94a54723477356ff
+	sha512sums = 639f4c2b1640ceb243cf1fdbc4a60ed8e472d0d30c51e09e56c645e7ced9d4e0ef5693504df143b79802658cf50978056109804dd780bfeaca04477e4735ccd3
+
+pkgname = lmgrd
+
