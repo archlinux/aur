@@ -14,8 +14,7 @@ pkgbase = python-gammapy
 	checkdepends = python-astropy-healpix
 	makedepends = python-setuptools
 	makedepends = python-numpy
-	makedepends = python-astropy-helpers>=3.1
-	makedepends = python-astropy-helpers<3.2
+	makedepends = python-astropy-helpers31
 	source = https://files.pythonhosted.org/packages/source/g/gammapy/gammapy-0.12.tar.gz
 	md5sums = cf0b476948029fbef2c8ded365f0b57a
 

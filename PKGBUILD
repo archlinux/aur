@@ -9,7 +9,7 @@ pkgdesc="A Python package for gamma-ray astronomy"
 arch=('i686' 'x86_64')
 url="https://gammapy.org/"
 license=('BSD')
-makedepends=('python-setuptools' 'python-numpy' 'python-astropy-helpers>=3.1' 'python-astropy-helpers<3.2')
+makedepends=('python-setuptools' 'python-numpy' 'python-astropy-helpers31')
 #'python-sphinx-astropy' 'python-sphinx_rtd_theme' 'python-nbsphinx' 'python-sphinx-click' 'python-click' 'python-yaml' 'python-regions' 'python-naima')
 checkdepends=('python-pytest-astropy'
               'python-astropy'
