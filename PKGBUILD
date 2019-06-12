@@ -6,17 +6,18 @@ pkgver=9.0.4+309+g0e83fdbe
 _d2j=2.0
 _yajsw=12.12
 _hfsx=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Software reverse engineering framework (git)'
 arch=(x86_64)
-url=https://github.com/NationalSecurityAgency/ghidra
+url=https://www.nsa.gov/ghidra
+_git=https://github.com/NationalSecurityAgency/ghidra
 license=(Apache)
 provides=(ghidra)
 conflicts=(ghidra ghidra-bin)
 depends=('java-environment>=11' bash)
 makedepends=(gradle unzip bison flex)
-source=(git+$url
-        git+$url-data
+source=(git+$_git
+        git+$_git-data
         https://github.com/pxb1988/dex2jar/releases/download/$_d2j/dex-tools-$_d2j.zip
         https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/android4me/AXMLPrinter2.jar
         https://sourceforge.net/projects/yajsw/files/yajsw/yajsw-stable-$_yajsw/yajsw-stable-$_yajsw.zip
@@ -67,11 +68,11 @@ EOF
   ln -sf ghidra ../ghidra.bin
   install -Dm 644 ../yajsw-stable-$_yajsw.zip -t Ghidra/Features/GhidraServer
 
-  # Ignore lack of licensing for YAJSW zip, packed FID datasets, and the native binaries
-  sed -i '/FileTree tree/a\\t\texclude "yajsw-stable-**.zip"\n\t\texclude "src/main/fidb/**.fidb"\n\t\texclude "os/linux64/**"' gradle/support/ip.gradle
-
   # Add FID datasets
   install -Dm 644 ../ghidra-data/FunctionID/*.fidb -t Ghidra/Features/FunctionID/src/main/fidb
+
+  # Ignore lack of licensing for YAJSW zip, packed FID datasets, and the native binaries
+  sed -i '/FileTree tree/a\\t\texclude "yajsw-stable-**.zip"\n\t\texclude "src/main/fidb/**.fidb"\n\t\texclude "os/linux64/**"' gradle/support/ip.gradle
 }
 
 build() {
@@ -92,5 +93,6 @@ package() {
   unzip -u build/dist/ghidra_${_appver}_${_relname}_$(date +"%Y%m%d")_linux64.zip -d "$pkgdir"/opt
   mv "$pkgdir"/opt/ghidra{_${_appver}_${_relname},}
   ln -s /opt/ghidra/ghidraRun "$pkgdir"/usr/bin/ghidra
+  ln -s /opt/ghidra/support/analyzeHeadless "$pkgdir"/usr/bin/ghidra-analyzeHeadless
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/ghidra
 }
