@@ -4,28 +4,26 @@
 # Contributor: Douglas Soares de Andrade <douglas at archlinux dot org>
 
 pkgname=lib32-avahi
-pkgver=0.7
+pkgver=0.7+18+g1b5f401
 pkgrel=1
 pkgdesc='Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour (32-bit)'
 arch=('x86_64')
 url='https://github.com/lathiat/avahi'
 license=('LGPL')
 depends=("${pkgname#lib32-}" 'expat' 'lib32-gdbm' 'lib32-glib2' 'lib32-libcap' 'lib32-libdaemon' 'lib32-dbus')
-makedepends=('gcc-multilib' 'git' 'gobject-introspection' 'gtk-sharp-2' 'intltool' 'lib32-gtk2' 'lib32-gtk3' 'lib32-qt4'
-             'pygtk' 'python-dbus' 'python2-dbus' 'python-gobject' 'mono' 'xmltoman')
+makedepends=('gcc-multilib' 'git' 'gobject-introspection' 'gtk-sharp-2' 'intltool' 'lib32-gtk2' 'lib32-gtk3'
+             'pygtk' 'python-dbus' 'python-gobject' 'mono' 'xmltoman')
 optdepends=('lib32-gtk3: gtk3 bindings'
-            'lib32-gtk2: gtk2 bindings'
-            'lib32-qt4: qt4 bindings')
+            'lib32-gtk2: gtk2 bindings')
 options=(!emptydirs)
-_commit=6242e5f0fe001b7de2ccaa9431db279b2ee76b83  # tags/v0.7
-source=("git+$url#tag=$_commit"
-        '0001-avahi-python-Use-the-agnostic-DBM-interface.patch')
-sha256sums=('SKIP'
-            '5e2347d73349cee56c17ef53b69418d0b083e2fe26d19af61ef2ba55ef43cf16')
+_commit=1b5f401f64d7bed40c4335b0327acf4125da3086  # pull/115/merge~2
+source=("git+$url#tag=$_commit")
+sha256sums=('SKIP')
 
 prepare() {
   cd ${pkgname#lib32-}
-  patch -Np1 -i ../0001-avahi-python-Use-the-agnostic-DBM-interface.patch
+  # CVE-2017-6519 CVE-2018-100084
+  git cherry-pick -n e111def44a7df4624a4aa3f85fe98054bffb6b4f
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -42,7 +40,7 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 #  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
-  export MOC_QT4=/usr/bin/moc-qt4 PYTHON=/usr/bin/python3
+  export PYTHON=/usr/bin/python3
 
   cd ${pkgname#lib32-}
   ./configure \
@@ -53,13 +51,14 @@ build() {
     --sbindir=/usr/bin \
     --libdir=/usr/lib32 \
     --disable-monodoc \
-    --disable-qt3 \
+    --disable-qt4 \
+    --disable-qt5 \
     --enable-compat-libdns_sd \
     --with-distro=archlinux \
     --with-avahi-priv-access-group=network \
     --with-autoipd-user=avahi \
     --with-autoipd-group=avahi \
-    --with-systemdsystemunitdir=/usr/lib/systemd/system
+    --with-systemdsystemunitdir=/usr/lib/systemd/system 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   
   make
