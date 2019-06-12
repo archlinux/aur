@@ -1,4 +1,5 @@
-# Maintainer: Vaporeon <vaporeon@vaporeon.io>
+# Maintainer: Jonpas <jonpas33@gmail.com>
+# Previous Maintainer: Vaporeon <vaporeon@vaporeon.io>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 
@@ -7,30 +8,24 @@ pkgname=(qemu-patched qemu-patched-headless qemu-patched-arch-extra qemu-patched
          qemu-patched-block-{iscsi,rbd,gluster} qemu-patched-guest-agent)
 _pkgname=qemu
 pkgdesc="A generic and open source machine emulator and virtualizer - Patched for extra functionality"
-pkgver=3.1.0
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
-url="http://wiki.qemu.org/"
+url="https://wiki.qemu.org/"
 _headlessdeps=(seabios gnutls libpng libaio numactl jemalloc xfsprogs libnfs
                lzo snappy curl vde2 libcap-ng spice libcacard usbredir)
 depends=(virglrenderer sdl2 vte3 libpulse "${_headlessdeps[@]}")
-makedepends=(spice-protocol python2 ceph libiscsi glusterfs)
-source=("$url/download/${_pkgname}-${pkgver}.tar.xz"{,.sig}
+makedepends=(spice-protocol python2 ceph libiscsi glusterfs python-sphinx)
+source=(https://download.qemu.org/qemu-$pkgver.tar.xz{,.sig}
         qemu-ga.service
         65-kvm.rules
-        allow_elf64.patch
-        pa-fixes.patch
-        cpu-pinning.patch::https://github.com/saveriomiroddi/qemu-pinning/commit/cf5294579e4b43e9bea7d681154dc1737e56e323.patch
-        pcie-enhanced-link-speed-and-width.patch::https://patchwork.kernel.org/series/43129/mbox/)
-sha256sums=('6a0508df079a0a33c2487ca936a56c12122f105b8a96a44374704bef6c69abfc'
+        fix-mic-lag.patch::https://github.com/jonpas/qemu/commit/535f7071e0754ad50c9d28de67c4dbed041d8603.patch)
+sha256sums=('13a93dfe75b86734326f8d5b475fde82ec692d5b5a338b4262aeeb6b0fa4e469'
             'SKIP'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
             'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
-            '59751f1ed26ea61b2a37ebee4be6979e584a450b611282138a0893aa9173e2e4'
-            '848b1766b3ea6e75f0e1c69a1e964131f3884bf31e940f3bf7cf7e0737bcd0da'
-            'a6e9c046555aca07a234ab2ec75223bfb3fb156eab37331a418b7de66d25331e'
-            '49f697aa8858692b6a0bc7b43fe569f83b7bcc1b5976634e08c202eccbc35e67')
+            'a3f5490e4d608068c0a46c99e11918bdb623980e40c1d116c4ccef88614bc198')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
 case $CARCH in
@@ -45,11 +40,8 @@ prepare() {
   cd ${_pkgname}-${pkgver}
   sed -i 's/vte-2\.90/vte-2.91/g' configure
 
-  patch -p1 < ../allow_elf64.patch
-  # FS#60141
-  patch -p1 < ../cpu-pinning.patch
-  patch -p1 < ../pa-fixes.patch
-  patch -p1 < ../pcie-enhanced-link-speed-and-width.patch
+  # https://www.reddit.com/r/VFIO/comments/bgpuod/qemu_40_has_been_released/enmvwjp/
+  patch -p1 < ../fix-mic-lag.patch
 }
 
 build() {
@@ -82,8 +74,8 @@ _build() (
     --libexecdir=/usr/lib/qemu \
     --python=/usr/bin/python2 \
     --smbd=/usr/bin/smbd \
-    --with-sdlabi=2.0 \
     --enable-modules \
+    --enable-sdl \
     --enable-jemalloc \
     "${@:2}"
 
@@ -240,5 +232,3 @@ package_qemu-patched-guest-agent() {
   install -Dm644 qemu-ga.service "$pkgdir/usr/lib/systemd/system/qemu-ga.service"
   install -Dm755 "$srcdir/${_pkgname}-${pkgver}/scripts/qemu-guest-agent/fsfreeze-hook" "$pkgdir/etc/qemu/fsfreeze-hook"
 }
-
-# vim:set ts=2 sw=2 et:
