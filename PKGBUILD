@@ -3,7 +3,7 @@
 
 pkgname='perl-throwable-sugarfactory'
 pkgver='0.152700'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="build a library of syntax-sugared Throwable-based exceptions"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -31,7 +31,7 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
   make test
 }
 
