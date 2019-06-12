@@ -6,7 +6,7 @@
 
 pkgname=chromium-ozone
 pkgver=75.0.3770.80
-pkgrel=1
+pkgrel=2
 _launcher_ver=6
 _meta_browser_sha=7061c141b3c4430448fc5dd06ada469972545a0c
 pkgdesc="Chromium built with patches for wayland support via Ozone"
@@ -213,7 +213,6 @@ build() {
     'ozone_platform_wayland=true'
     'ozone_auto_platforms=false'
     'use_xkbcommon=true'
-    'use_system_libwayland=true'
     'use_system_minigbm=true'
     'use_system_libdrm=true'
     'use_vaapi=false'
