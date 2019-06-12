@@ -1,7 +1,7 @@
 # Maintainer: Ryan Chan <ryan at rycwo dot xyz>
 
 pkgname="lemons"
-pkgver="0.4.0"
+pkgver="0.5.0"
 pkgrel=1
 pkgdesc="Output script for lemonbar"
 arch=("any")
@@ -17,9 +17,9 @@ depends=(
 	"pulseaudio-alsa"
 	"bspwm"
 	"iw")
-optdepends=("ttf-dejavu: for a nice default font")
+optdepends=("otf-sfmono: for a nice default font")
 source=("https://git.sr.ht/~rycwo/""$pkgname""/archive/""$pkgver"".tar.gz")
-sha256sums=('175d7b5661f5403f038488d4bd5cad102fa23d884f6821e363518f4092ef436c')
+sha256sums=('ddd1981aa586c59ee5e9cc4fc88de5a8f252bb3bc9abf9b7354106b7e5d3f420')
 
 package() {
 	cd "$srcdir""/""$pkgname""-""$pkgver"
