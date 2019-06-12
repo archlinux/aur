@@ -1,9 +1,9 @@
 # Maintainer: Damien Molinier <damien-43\N{COMMERCIAL AT}gmx.fr>
 
 pkgname=vim-lawrencium
-_hgnode=78176bdfe0be
+_hgnode=06f4d2c01fd6
 _hglatesttag=0.3.1
-_hglatesttagdistance=60
+_hglatesttagdistance=62
 pkgver="${_hglatesttag}+${_hglatesttagdistance}+${_hgnode}"
 pkgrel=1
 pkgdesc='Mercurial Wrapper For Vim'
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('vim' 'mercurial')
 groups=('vim-plugins')
 source=("${pkgname}-${_hgnode}.zip::https://bitbucket.org/ludovicchabant/vim-lawrencium/get/${_hgnode}.zip")
-sha512sums=('ec67ea943d10a48bde10b829e0bf47bfae3e7c85f24dff2529f61eec708acefc849ddc0fb7c03c4dd18d6f9f98dbf41b77f5e0db57b145ef96fc41500c0beac6')
+sha512sums=('afc6b81f071b242282ef6c573f63c3851e5b5de1765eb83234abc2bff7bf1b6dddb8bb18798b49183b270a89bb812c78129f07c019d596ea17c837b6150327e0')
 
 package () {
   cd "${srcdir}/ludovicchabant-vim-lawrencium-${_hgnode}"

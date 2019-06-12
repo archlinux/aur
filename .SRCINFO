@@ -1,6 +1,6 @@
 pkgbase = vim-lawrencium
 	pkgdesc = Mercurial Wrapper For Vim
-	pkgver = 0.3.1+60+78176bdfe0be
+	pkgver = 0.3.1+62+06f4d2c01fd6
 	pkgrel = 1
 	url = https://bolt80.com/lawrencium/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = vim-lawrencium
 	license = MIT
 	depends = vim
 	depends = mercurial
-	source = vim-lawrencium-78176bdfe0be.zip::https://bitbucket.org/ludovicchabant/vim-lawrencium/get/78176bdfe0be.zip
-	sha512sums = ec67ea943d10a48bde10b829e0bf47bfae3e7c85f24dff2529f61eec708acefc849ddc0fb7c03c4dd18d6f9f98dbf41b77f5e0db57b145ef96fc41500c0beac6
+	source = vim-lawrencium-06f4d2c01fd6.zip::https://bitbucket.org/ludovicchabant/vim-lawrencium/get/06f4d2c01fd6.zip
+	sha512sums = afc6b81f071b242282ef6c573f63c3851e5b5de1765eb83234abc2bff7bf1b6dddb8bb18798b49183b270a89bb812c78129f07c019d596ea17c837b6150327e0
 
 pkgname = vim-lawrencium
 
