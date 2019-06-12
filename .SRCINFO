@@ -6,12 +6,6 @@ pkgbase = python-astropy-healpix
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest-astropy
-	checkdepends = python2-pytest32
-	checkdepends = python2-healpy
-	checkdepends = python-healpy
-	checkdepends = python2-hypothesis
-	checkdepends = python-hypothesis
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	makedepends = python2-numpy
@@ -32,6 +26,8 @@ pkgname = python-astropy-healpix
 	depends = python-numpy>=1.10
 	depends = python-astropy>=1.2
 	optdepends = python-astropy-healpix-doc: Documentation for Astropy-HEALPix
+	optdepends = python-pytest-astropy: For testing
+	optdepends = python-astropy<3.2: For testing
 
 pkgname = python2-astropy-healpix
 	install = python2-astropy-healpix.install
