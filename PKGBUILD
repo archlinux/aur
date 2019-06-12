@@ -3,7 +3,7 @@
 
 pkgname='perl-log-dispatch-array'
 pkgver='1.003'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="log events to an array (reference)"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -32,7 +32,7 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
-   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+   export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
     make test
   
 }
