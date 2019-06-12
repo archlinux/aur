@@ -5,9 +5,8 @@ url='http://ros.org/wiki/laser_assembler'
 
 pkgname='ros-melodic-laser-assembler'
 pkgver='1.7.6'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -44,9 +43,16 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="laser_assembler-release-release-melodic-laser_assembler-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/laser_assembler-release/archive/release/melodic/laser_assembler/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e9f578692846ccaf041da048fcfcef51d1a421a2869c94d2970541af319d3823')
+_dir="laser_assembler-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_assembler/archive/${pkgver}.tar.gz"
+  CMakeLists-signal.patch)
+sha256sums=('f9b5c23f7eac7406dd3d0e4a095864335b18a25611fd28f3279763339d7bd94f'
+            '1c050096b3e5edf41da7ef88db915f5690f5b6903e7d46c65a1655204f49039c')
+
+prepare() {
+  cd "${srcdir}/${_dir}"
+  patch -uN CMakeLists.txt ../../CMakeLists-signal.patch || return 1
+}
 
 build() {
 	# Use ROS environment variables.
