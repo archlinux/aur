@@ -1,7 +1,7 @@
 # Maintainer: Zach Zundel <me+aur at zachzundel dot com>
 # Contributor: Christian Sarazin <archlinux at offlinehoster dot de>
 pkgname=boxcli-git
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 epoch=1
 arch=('any')
@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-    cd boxcli/dist/box-v2.2.0
-    sudo tar xvf box-v2.2.0-linux-x64.tar.gz --directory /usr/lib
+    cd boxcli/dist/box-v2.3.0
+    sudo tar xvf box-v2.3.0-linux-x64.tar.gz --directory /usr/lib
     sudo ln -s /usr/lib/box/bin/box /usr/bin/box
 }
