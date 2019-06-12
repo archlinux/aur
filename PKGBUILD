@@ -7,7 +7,7 @@
 _bldtype=Release
 
 _mozcver=2.23.2815.102
-_dicver=20190401
+_dicver=20190530
 _revision=1
 
 _pkgbase=mozc
@@ -20,17 +20,22 @@ url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
 makedepends=('clang' 'ninja' 'pkg-config' 'python2' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
 
-source=('https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F23%2F23921%2Fmozc-neologd-ut-2.23.2815.102.20190401.1.tar.xz'
+source=('https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F24%2F24261%2Fmozc-neologd-ut-2.23.2815.102.20190530.1.tar.xz'
+		add-new-japanese-era.patch
         # https://github.com/google/mozc/issues/441#issue-321728877
         fix-for-gcc81.patch
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
 
 sha1sums=('SKIP'
+          '94502348e60659765d3e6ae2780d07e5104a06a2'
           '2bad0705a0a09d8d5a79c874b59c485052da2b38'
           '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d')
 
 prepare() {
   cd mozc-neologd-ut-${pkgver}/src
+
+  # add a new Japanese era
+  patch -Np2 -i "${srcdir}/add-new-japanese-era.patch"
 
   # fix for gcc-8.1
   patch -Np2 -i "${srcdir}/fix-for-gcc81.patch"
