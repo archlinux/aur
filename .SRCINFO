@@ -1,7 +1,7 @@
 pkgbase = perl-mojolicious-plugin-i18n
 	pkgdesc = Internationalization Plugin for Mojolicious
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/Mojolicious::Plugin::I18N
 	arch = any
 	license = PerlArtistic

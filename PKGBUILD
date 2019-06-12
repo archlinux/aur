@@ -2,7 +2,7 @@
 
 pkgname='perl-mojolicious-plugin-i18n'
 pkgver='1.6'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Internationalization Plugin for Mojolicious"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -34,7 +34,7 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
   make test
 }
 
