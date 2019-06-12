@@ -2,7 +2,7 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.0.4+259+g8cdfe79d
+pkgver=9.0.4+309+g0e83fdbe
 _d2j=2.0
 _yajsw=12.12
 _hfsx=0.21
@@ -14,7 +14,7 @@ license=(Apache)
 provides=(ghidra)
 conflicts=(ghidra ghidra-bin)
 depends=('java-environment>=11' bash)
-makedepends=(gradle unzip)
+makedepends=(gradle unzip bison flex)
 source=(git+$url
         git+$url-data
         https://github.com/pxb1988/dex2jar/releases/download/$_d2j/dex-tools-$_d2j.zip
