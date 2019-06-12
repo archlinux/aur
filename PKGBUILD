@@ -2,7 +2,7 @@
 
 pkgname='perl-moox-strictconstructor'
 pkgver='0.010'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Make your Moo-based object constructors blow up on unknown attributes.'
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -34,7 +34,7 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
   make test
 }
 
