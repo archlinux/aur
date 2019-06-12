@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=hepmc3
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A particle physics package for storing collision events from Monte Carlo generators."
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ makedepends=('cmake')
 optdepends=('root: ROOT I/O support')
 source=("https://hepmc.web.cern.ch/hepmc/releases/HepMC3-${pkgver}.tar.gz")
 noextract=()
-md5sums=('91b09010fe8d98f1329093d0b0cf8dcf')
+md5sums=('a9cfc6e95eff5c13a0a5a9311ad75aa7')
 
 build() {
         cd "$srcdir/HepMC3-$pkgver"
