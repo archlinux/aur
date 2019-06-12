@@ -6,27 +6,15 @@ pkgname=fennel
 _pkgver='0.2.1-2'
 pkgver=0.2.1_2
 pkgrel=2
-epoch=
 pkgdesc="A Lua Lisp language"
 arch=('x86_64')
 url="https://github.com/bakpakin/Fennel"
 license=('MIT')
-groups=()
 depends=('lua')
-makedepends=()
-checkdepends=()
-optdepends=()
 provides=(fennel)
 conflicts=(fennel)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("fennel-${_pkgver}.tar.gz::https://github.com/bakpakin/Fennel/archive/${_pkgver}.tar.gz")
-noextract=()
 sha512sums=('cd09af8b0902ec56023a00695d83c149a0176106ad638d74edc8d44c9149047bf3bd7feb067617a410837e6650dc180df6cbdfaf1f37b499497964bcd09c66f4')
-validpgpkeys=()
 
 package() {
 	cd "$srcdir/Fennel-${_pkgver}"
