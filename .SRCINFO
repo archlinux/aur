@@ -12,8 +12,7 @@ pkgbase = python-reproject
 	makedepends = cython2
 	makedepends = python-astropy>=2.0
 	makedepends = python2-astropy>=2.0
-	makedepends = python-astropy-helpers>=3.1
-	makedepends = python-astropy-helpers<3.2
+	makedepends = python-astropy-helpers31
 	makedepends = python2-astropy-helpers
 	makedepends = python-astropy-healpix>=0.2
 	makedepends = python2-astropy-healpix>=0.2
