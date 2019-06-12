@@ -3,7 +3,7 @@
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 
 pkgname=phoronix-test-suite-milestone
-pkgver=8.8.0m2
+pkgver=8.8.0m3
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux, milestone version"
 arch=(any)
@@ -21,9 +21,8 @@ optdepends=('php-gd'
             'openmpi: required for universe-cli test suite')
 provides=(phoronix-test-suite)
 conflicts=(phoronix-test-suite)
-install=${pkgname}.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v${pkgver}.tar.gz")
-sha256sums=('ddd6d74fe4332e62e7d03492342c28fd381f358280fc99aa38ce34ceed1954d6')
+sha256sums=('7419b4f69db4adc44aaec85d8783cd30bd337efdc9a151830fcf168ca5530a9c')
 
 package() {
   cd "${srcdir}/phoronix-test-suite-${pkgver}"
