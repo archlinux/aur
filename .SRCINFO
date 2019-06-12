@@ -6,12 +6,9 @@ pkgbase = python-naima
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest-astropy
 	checkdepends = python2-pytest<3.7
 	checkdepends = python2-astropy
-	checkdepends = python-corner
 	checkdepends = python2-corner
-	checkdepends = python-yaml
 	checkdepends = python2-yaml
 	checkdepends = python2-emcee
 	makedepends = python-setuptools
@@ -31,7 +28,8 @@ pkgname = python-naima
 	depends = python-corner
 	optdepends = python-sherpa: For using Sherpa models
 	optdepends = python-naima-doc: Documentation for Naima
-	optdepends = python-pytest: For testing
+	optdepends = python-pytest-astropy: For testing
+	optdepends = python-astropy<3.2: For testing
 
 pkgname = python2-naima
 	depends = python2>=2.7
