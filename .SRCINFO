@@ -1,7 +1,7 @@
 pkgbase = libsolv
 	pkgdesc = Library for solving packages and reading repositories
-	pkgver = 0.7.4
-	pkgrel = 3
+	pkgver = 0.7.5
+	pkgrel = 1
 	url = https://github.com/openSUSE/libsolv
 	arch = i686
 	arch = x86_64
@@ -21,10 +21,8 @@ pkgbase = libsolv
 	optdepends = perl: for perl bindings
 	optdepends = python: for python bindings
 	optdepends = ruby: for ruby bindings
-	source = https://github.com/openSUSE/libsolv/archive/0.7.4/libsolv-0.7.4.tar.gz
-	source = libsolv-0.7.4-fix-for-swig-4.patch::https://bugzilla.redhat.com/attachment.cgi?id=1565131
-	md5sums = 8798e1b32d7c5e3a99e8b26b6b8818b5
-	md5sums = 027174a79ffa99a13eb26885e9a2aa61
+	source = https://github.com/openSUSE/libsolv/archive/0.7.5/libsolv-0.7.5.tar.gz
+	md5sums = 6455a940bf40070b15dcffa00423044a
 
 pkgname = libsolv
 
