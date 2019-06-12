@@ -1,7 +1,7 @@
 pkgbase = perl-test-toolbox
 	pkgdesc = tools for testing
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Test-Toolbox
 	arch = any
 	license = PerlArtistic

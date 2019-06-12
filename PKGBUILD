@@ -2,7 +2,7 @@
 
 pkgname='perl-test-toolbox'
 pkgver='0.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="tools for testing"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -17,7 +17,7 @@ sha512sums=('99d711a7cce4ac3a4fd37f4b7fc91cf75c5d4978ff83cd084599ed6c1818d22b30a
 _distdir="Test-Toolbox-$pkgver"
 
 build() {
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                   \
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."                  \
       PERL_AUTOINSTALL=--skipdeps                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
