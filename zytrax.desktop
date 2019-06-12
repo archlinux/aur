@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Zytrax
+Comment=Easy to use, tracker-inspired music sequencer
+Exec=/usr/bin/zytrax %U
+Icon=zytrax
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Midi;
