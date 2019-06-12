@@ -8,8 +8,8 @@
 # Contributor: r4sas
 
 pkgname=i2pd
-pkgver=2.25.0
-pkgrel=3
+pkgver=2.26.0
+pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/PurpleI2P/$pkgname"
@@ -90,4 +90,4 @@ package(){
 	chmod -R o= $pkgdir/${_home_dest}
 }
 
-md5sums=('e345dd69800998c378c00ae6bfa82eff')
+md5sums=('78713dce154fb093281cf444265c2e83')
