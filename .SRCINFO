@@ -1,14 +1,14 @@
 pkgbase = drill-search-cli-bin
 	pkgdesc = Search files without indexing, but clever crawling (CLI version)
-	pkgver = 1.230
+	pkgver = 1.237
 	pkgrel = 1
 	url = https://www.drill.santamorena.me/
 	arch = x86_64
 	license = GPL2
 	provides = drill-search-cli-bin
-	conflicts = drill-search-cli-bin
-	source = https://github.com/yatima1460/Drill/releases/download/1.230/Drill-CLI-linux-x86_64-release-1.230.deb
-	md5sums = e8d853b674272dd07aa4235326c40bac
+	conflicts = drill-search-cli
+	source = https://github.com/yatima1460/Drill/releases/download/1.237/Drill-CLI-linux-x86_64-release-1.237.deb
+	md5sums = f79a50c899cf8044466f5e724f431fdd
 
 pkgname = drill-search-cli-bin
 
