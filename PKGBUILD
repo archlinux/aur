@@ -4,11 +4,11 @@ name=meshroom
 #fragment="#commit=9bd70ed8ace83c6dde174178e17c5147bb50248f"
 fragment="#branch=develop"
 pkgname=${name}-git
-pkgver=2018.1.0.r26.ga110bf9
+pkgver=2019.1.0.r48.ge3d9c6c
 pkgrel=1
 pkgdesc="Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework."
 arch=('i686' 'x86_64')
-url="http://alicevision.github.io/"
+url="https://alicevision.github.io/"
 license=('MPL2')
 groups=()
 _depends_qt=(python-pyside2 qt5-quickcontrols{,2} qt5-3d qt5-graphicaleffects qt5-imageformats qt5-location qt5-svg)
@@ -19,11 +19,13 @@ source=("${name}::git+https://github.com/alicevision/meshroom.git${fragment}"
         "voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git"
         "git+https://github.com/alicevision/QtOIIO.git"
         "git+https://github.com/alicevision/qmlAlembic.git"
+        "remove-branch-name-from-version.patch"
         )
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+         '5dc4ee1be284170e943ef7c4492ba3ea')
 
 pkgver() {
   cd "$name"
@@ -38,6 +40,7 @@ prepare() {
   sed -i "s:'ALICEVISION_SENSOR_DB', '':'ALICEVISION_SENSOR_DB', '/usr/share/aliceVision/sensor_width_camera_database.txt':g" meshroom/nodes/aliceVision/*.py
   sed -i '1 i\#include <cmath>' ${srcdir}/QtOIIO/src/jetColorMap.hpp
   sed -i 's|imageformats|plugins/imageformats|' ${srcdir}/QtOIIO/src/imageIOHandler/CMakeLists.txt
+  git apply -v ${srcdir}/remove-branch-name-from-version.patch
 }
 
 build() {
