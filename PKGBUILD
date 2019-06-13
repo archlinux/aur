@@ -1,18 +1,19 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
-_pkgname=openbook-desktop
+_pkgname=openspace-desktop
 _pkgver=0.0.43-2
 pkgname="${_pkgname}-bin"
 pkgver="${_pkgver//-/_}"
 pkgrel=1
-pkgdesc="Desktop client for Openbook"
+pkgdesc="Desktop client for Openspace"
 arch=('x86_64')
-url="https://gitlab.com/999eagle/openbook-desktop"
+url="https://gitlab.com/999eagle/openspace-desktop"
 license=('AGPL3')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+replaces=('openbook-desktop-bin')
 depends=('libxcursor' 'libxinerama' 'libxrandr' 'libxxf86vm' 'sqlite' 'bash' 'gtk3')
-source=("${_pkgname}-${_pkgver}.zip::https://gitlab.com/999eagle/openbook-desktop/-/jobs/artifacts/${_pkgver}/download?job=release-linux")
+source=("${_pkgname}-${_pkgver}.zip::https://gitlab.com/999eagle/openspace-desktop/-/jobs/artifacts/${_pkgver}/download?job=release-linux")
 sha256sums=('2ef3e61f2584cd38faa99f19bc7a988df12f4adf42b61940d248759092ad68c8')
 
 package() {
@@ -33,7 +34,7 @@ package() {
 	for size in 32 64 256; do
 		path="${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
 		install -d "${path}"
-		ln -s "/opt/${_pkgname}/assets/openbook-o-logo_transparent_${size}.png" "${path}/${_pkgname}.png"
+		ln -s "/opt/${_pkgname}/assets/openspace-o-logo_transparent_${size}.png" "${path}/${_pkgname}.png"
 	done
 }
 
