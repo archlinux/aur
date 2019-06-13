@@ -5,13 +5,13 @@
 _pkgname=firefox
 _channel=nightly
 _lang=zh-TW
-_pkgver=65.0a1
+_pkgver=69.0a1
 
 pkgname=${_pkgname}-${_channel}-${_lang/TW/tw}
-pkgver=65.0a1.20181126234942
+pkgver=69.0a1.20190613095633
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org, nightly build (zh-TW)'
-url='http://www.mozilla.org/projects/firefox'
+url='https://www.mozilla.org/en-US/firefox/'
 screenshot="http://people.mozilla.org/~shorlander/blog-images/australis-linux.png"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')

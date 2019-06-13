@@ -1,8 +1,8 @@
 pkgbase = firefox-nightly-zh-tw
 	pkgdesc = Standalone web browser from mozilla.org, nightly build (zh-TW)
-	pkgver = 65.0a1.20181126234942
+	pkgver = 69.0a1.20190613095633
 	pkgrel = 1
-	url = http://www.mozilla.org/projects/firefox
+	url = https://www.mozilla.org/en-US/firefox/
 	arch = x86_64
 	license = MPL
 	license = GPL
@@ -16,15 +16,15 @@ pkgbase = firefox-nightly-zh-tw
 	depends = gtk3
 	depends = sqlite
 	depends = dbus-glib
-	provides = firefox=65.0a1
+	provides = firefox=69.0a1
 	provides = firefox-nightly
 	conflicts = firefox-nightly
-	source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-65.0a1.zh-TW.linux-x86_64.tar.bz2
-	source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-65.0a1.zh-TW.linux-x86_64.tar.bz2.asc
+	source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-69.0a1.zh-TW.linux-x86_64.tar.bz2
+	source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-69.0a1.zh-TW.linux-x86_64.tar.bz2.asc
 	source = firefox-nightly.desktop
 	source = firefox-nightly-safe.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha512sums = 9d11047c38ae429b338ab7bf063e775932859b264c6c56ac3e5e851aae61a3d0b693fcc4dfd013a8bb3316f00bf07b6648981ee9b3c9d41c3b49bcfa81a99cd3
+	sha512sums = 7a9168d3c0e6948f2e45c5710f3e94a14e0dcbe9618d2e7672646aa0ef4d433fc592947e5fe7ed46a5eb4d18e5418dd8b610a681d16e9e773504993c4caf3950
 	sha512sums = SKIP
 	sha512sums = 8591fdea03adac7f2a52bc10631730a2bbc15e1d5f254768fb161176ad8fe1059f253bcb8fa17d8d63ca3c27f0580520c7ebfc4415ffd7061cc479b3a369d659
 	sha512sums = dadbd2daaaf6470f62a4f847a9c9ef9e171eb7359113c47f9d31cf100475d48422aca6a236c9ee7a996971d867ed421c7079bd2b069aef12c6745663092b1e38
