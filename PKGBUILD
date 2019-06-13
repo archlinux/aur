@@ -2,7 +2,7 @@
 
 pkgname=albert-git
 pkgver=v0.16.1.r7.g34c00d7
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('any')
 url="https://github.com/albertlauncher"
@@ -36,13 +36,13 @@ prepare() {
 
 	cd "${srcdir}"/albert
 	git submodule init
-	git config submodule.plugins.url "${srcdir}"/plugins
+	git config submodule.plugins.url "${srcdir}/plugins"
 	git submodule update plugins
 
-	cd "${srcdir}"/albert/plugins
+	cd "${srcdir}/albert/plugins"
 	git submodule init
-	git config submodule.python/pybind11.url ${srcdir}/pybind11
-	git config submodule.python/share/modules.url ${srcdir}/python
+	git config submodule.python/pybind11.url "${srcdir}/pybind11"
+	git config submodule.python/share/modules.url "${srcdir}/python"
 	git submodule update python/pybind11 python/share/modules
 }
 
