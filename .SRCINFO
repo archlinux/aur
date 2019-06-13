@@ -1,6 +1,6 @@
 pkgbase = alibaba-puhuiti
 	pkgdesc = Alibaba PuHuiTi fonts
-	pkgver = 1.00
+	pkgver = 1.01
 	pkgrel = 2
 	url = https://alibabafont.taobao.com
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Yangtse Su <yangtsesu@gmail.com>
 
 pkgname=(alibaba-puhuiti alibaba-sans)
-pkgver=1.00
+pkgver=1.01
 pkgrel=2
 pkgdesc="Alibaba PuHuiTi fonts"
 arch=('any')
@@ -18,7 +18,6 @@ package_alibaba-puhuiti() {
 }
 
 package_alibaba-sans() {
-  pkgver=1.01
   pkgdesc="Alibaba Sans fonts"
 
   cd '阿里巴巴普惠体（中西文完整版）'
