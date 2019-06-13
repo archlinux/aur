@@ -1,0 +1,28 @@
+pkgbase = ga-impi
+	pkgdesc = Global Arrays Toolkit for Intel MPI
+	pkgver = 5.7
+	pkgrel = 1
+	url = https://github.com/GlobalArrays/ga
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = intel-compiler-base
+	makedepends = intel-fortran-compiler
+	depends = intel-mkl
+	depends = intel-mpi
+	depends = libfabric
+	provides = ga-impi
+	provides = ga
+	provides = libarmci
+	provides = libga
+	conflicts = ga-openmpi
+	conflicts = ga-mpich
+	source = https://github.com/GlobalArrays/ga/releases/download/v5.7/ga-5.7.tar.gz
+	source = ga.pc
+	source = ga.sh
+	sha256sums = 3ed1ab47adfda7bceb7beca12fc05a2e1631732f0e55bbaf9036dad4e3da4774
+	sha256sums = c266d6ec471753ce525454e08d872e0553124f70d53c4aa381990c40e1edc74a
+	sha256sums = 5aa7a3b5e188e271cbc5eb7f5e5c2b603953bef4e22f1e786c498a607c400edd
+
+pkgname = ga-impi
+

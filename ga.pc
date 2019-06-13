@@ -1,0 +1,12 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/ga/include
+
+Name: ga
+Description: Global Arrays is a portable Non-Uniform Memory Access (NUMA) shared-memory programming environment for distributed and shared memory computers.
+URL: https://github.com/GlobalArrays/ga
+Version: 5.7.1
+Requires:
+Cflags: -I${includedir}
+Libs: -L${libdir} -lga
