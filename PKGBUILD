@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=anydesk-test
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support - Playground-Version"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ conflicts=('anydesk')
 source_i686=("http://download.anydesk.com/linux/anydesk_${pkgver}-1_i386.deb" "https://download.anydesk.com/linux/anydesk-${pkgver}-i686.tar.gz")
 source_x86_64=("http://download.anydesk.com/linux/anydesk_${pkgver}-1_amd64.deb" "https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
 
-sha256sums_i686=('bb680cf99fc9a5e88721b833d34c0aed82b5cb5953685c0e8ddcf8b2398128eb' '97905b6d678a0289cc4ea387525648d2b125363f979bb7de63d8af6f21037463')
-sha256sums_x86_64=('4339c58c228ce7518f72dd3ab3a0cebf8ac012061a11633d8caacda461f06499' '3c1c694ea990d7bbc1bd10ec60502cb6801d042bbbaee82ca0f6d8f114869ca1')
+sha256sums_i686=('6ad6dcfc2be3ab9e15dd66d61361ca6bb02e4b1ef9a79c4fddd1aefe7a7ad295' '6aff74caf96481fc6488ee4f951b61f17577d703b759488f698640bcd24ac63e')
+sha256sums_x86_64=('48017c917de72bfd14f00854f489c0d61fa2246f1893fa4b37d58459dc1a779e' 'edf0b040c00d90c370d4d53ab2bb0dd4f2257050bcf6d665fc3f7f2c243fae7e')
 
 package() {
     cd "${pkgdir}"
