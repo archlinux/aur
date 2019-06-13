@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="UNixize Filename -- replace annoying anti-unix characters in filenames"
 license=('MIT')
 source=("https://github.com/io12/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('b39055b646630f7eef4c8abe50bc5213')
+md5sums=('5180ce43da9e0272db95dc98f65e4f3d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

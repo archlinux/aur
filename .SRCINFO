@@ -10,7 +10,7 @@ pkgbase = unf
 	makedepends = rust
 	makedepends = cargo
 	source = https://github.com/io12/unf/archive/0.1.1.tar.gz
-	md5sums = b39055b646630f7eef4c8abe50bc5213
+	md5sums = 5180ce43da9e0272db95dc98f65e4f3d
 
 pkgname = unf
 
