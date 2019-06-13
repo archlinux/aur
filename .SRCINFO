@@ -1,0 +1,22 @@
+pkgbase = fltk-git
+	pkgdesc = Graphical user interface toolkit for X (Git version)
+	pkgver = 1.4.0.r8558.aa9f0a696
+	pkgrel = 1
+	url = http://www.fltk.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = libjpeg
+	depends = libpng
+	depends = zlib
+	depends = libxinerama
+	depends = libxft
+	depends = libxcursor
+	provides = fltk
+	conflicts = fltk
+	source = fltk::git+https://github.com/fltk/fltk.git
+	sha256sums = SKIP
+
+pkgname = fltk-git
+
