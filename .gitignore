@@ -1,0 +1,6 @@
+pcbmode/
+pkg/
+src/
+*.tar
+*.tar.xz
+*.src.tar.gz
