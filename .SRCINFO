@@ -1,12 +1,13 @@
 pkgbase = ecal
 	pkgdesc = enhanced Communication Abstraction Layer
 	pkgver = 5.3.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/continental/ecal
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = doxygen
+	makedepends = graphviz
 	makedepends = simpleini
 	depends = asio
 	depends = protobuf

@@ -2,13 +2,13 @@
 
 pkgname=ecal
 pkgver=5.3.2
-pkgrel=6
+pkgrel=7
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64')
 url="https://github.com/continental/ecal"
 license=('Apache')
 depends=('asio' 'protobuf' 'qt5-base' 'tclap')
-makedepends=('cmake' 'doxygen' 'simpleini')
+makedepends=('cmake' 'doxygen' 'graphviz' 'simpleini')
 optdepends=()
 source=(https://github.com/continental/ecal/archive/v$pkgver.tar.gz
         ecal-v5.3.2-archlinux-fabs.patch)
