@@ -2,7 +2,7 @@
 
 pkgname=ecal
 pkgver=5.3.2
-pkgrel=5
+pkgrel=6
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64')
 url="https://github.com/continental/ecal"
@@ -22,11 +22,12 @@ prepare() {
 
 build() {
 	cd $pkgname-$pkgver
+	sed -i /set\(eCAL_VERSION_STRING\ /s/\$\{eCAL_VERSION_MAYOR\}.\$\{eCAL_VERSION_MINOR\}.\$\{eCAL_VERSION_PATCH\}/"$pkgver"/g CMakeLists.txt
 	mkdir -p _build
 	cd _build
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-		     -DCMAKE_BUILD_TYPE=Release \
-		     -DECAL_THIRDPARTY_BUILD_PROTOBUF=OFF
+		 -DCMAKE_BUILD_TYPE=Release \
+		 -DECAL_THIRDPARTY_BUILD_PROTOBUF=OFF
 	make
 }
 
