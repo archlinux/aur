@@ -3,7 +3,7 @@
 
 pkgname=hb-downloader
 pkgver=0.5.0h
-pkgrel=7
+pkgrel=8
 pkgdesc="An unofficial library for querying the Humble Bundle API"
 arch=('any')
 url="https://github.com/saik0/humblebundle-python"
@@ -25,7 +25,7 @@ package() {
     install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
     install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
     install -Dm 644 hb-downloader-settings.yaml -T "$pkgdir/etc/hb_downloader.yaml"
-    install -Dm 755 hb-downloader.py -T "$pkgdir/usr/bin/hb_downloader"
+    install -Dm 755 hb-downloader.py -T "$pkgdir/usr/bin/hb-downloader"
 
     python setup.py install --root="$pkgdir/" 
 }
