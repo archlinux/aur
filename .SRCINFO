@@ -1,5 +1,5 @@
 pkgbase = unf
-	pkgdesc = UNixize Filename -- replace annoying anti-unix characters in filenames\n
+	pkgdesc = UNixize Filename -- replace annoying anti-unix characters in filenames
 	pkgver = 0.1.0
 	pkgrel = 1
 	arch = i686
