@@ -1,6 +1,6 @@
 pkgbase = python-dictcc
 	pkgdesc = commandline tool for dict.cc
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/randomn4me/dictcc/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = python-dictcc
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-tabulate
-	provides = python-dictcc=1.5-1
-	source = https://github.com/randomn4me/dictcc/archive/1.5.tar.gz
-	md5sums = f5feda49f310d7a7cf8b974fe649c28a
+	provides = python-dictcc=1.6-1
+	source = https://github.com/randomn4me/dictcc/archive/1.6.tar.gz
+	md5sums = d8d72b4c1da2b6450e897511e12008b2
 
 pkgname = python-dictcc
 
