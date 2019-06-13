@@ -1,0 +1,14 @@
+pkgbase = unf
+	pkgdesc = UNixize Filename -- replace annoying anti-unix characters in filenames\n
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+
+pkgname = unf
+
