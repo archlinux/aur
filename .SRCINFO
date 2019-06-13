@@ -1,0 +1,14 @@
+pkgbase = mymedia
+	pkgdesc = Application to stream local media to amazon alexa enabled devices
+	pkgver = 1.3.122.0
+	pkgrel = 1
+	url = http://mymediaalexa.com
+	arch = x86_64
+	depends = gcc-libs
+	source = https://s3.amazonaws.com/bizmodeller/MyMediaForAlexa/Release+1.3.122.0/mymedia_1.3.122.0-1_amd64.deb
+	source = mymedia.service
+	sha512sums = 44380bc05316cd849598b88d91c21e6a486b129c2396439d46dbe80edd09676d3c6dd5e8c1bcd08cd438aa2fac1aeddce29ea8591d5d5cd10f9051c1dc4739bc
+	sha512sums = 21cb504727dabcc435648291854d37cd53620baf3e1fd6725f33fd25a2eeda16bac76534c22e56ea70e214c4b15177ed43f7bc187dbc59f9b60aa4f857759b41
+
+pkgname = mymedia
+

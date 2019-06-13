@@ -1,0 +1,12 @@
+[Unit]
+Description=My Media for Alexa
+After=syslog.target
+
+[Service]
+#Environment=HOME=/opt/mymedia
+ExecStart=/opt/mymedia/MyMediaForAlexa
+WorkingDirectory=/opt/mymedia
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
