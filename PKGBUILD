@@ -2,7 +2,7 @@
 
 _pkgname=pcov
 pkgname=php-$_pkgname-git
-pkgver=v1.0.4.r0.g1679440
+pkgver=v1.0.6.r0.g3546be8
 pkgrel=1
 pkgdesc="PCOV - CodeCoverage compatible driver for PHP"
 arch=('i686' 'x86_64')
