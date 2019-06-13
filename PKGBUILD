@@ -4,8 +4,7 @@ pkgdesc="ROS - image_pipeline fills the gap between getting raw images from a ca
 url='http://www.ros.org/wiki/image_pipeline'
 
 pkgname='ros-melodic-image-pipeline'
-pkgver='1.12.23'
-_pkgver_patch=0
+pkgver='1.13.0'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -34,9 +33,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="image_pipeline-release-release-melodic-image_pipeline-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/image_pipeline/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a6e5d39fd81ad438d67124e646c3da415e14afb3d0e59931e0d40433a6c1ea77')
+_dir="image_pipeline-${pkgver}/image_pipeline"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz")
+sha256sums=('3c2309d421acf354ca69a7c814ceec7c8b24732c31a7f1c47a055aedd95cb1c4')
 
 build() {
 	# Use ROS environment variables.
