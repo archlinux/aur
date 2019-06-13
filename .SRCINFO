@@ -1,6 +1,6 @@
 pkgbase = python-black-git
-	pkgdesc = Uncompromising code formatter
-	pkgver = 18.9b0.r13.ge4e59f8
+	pkgdesc = Uncompromising Python code formatter
+	pkgver = 19.3b0.r51.g1bbb01b
 	pkgrel = 1
 	url = https://github.com/ambv/black
 	arch = any
@@ -12,6 +12,8 @@ pkgbase = python-black-git
 	depends = python-click
 	depends = python-setuptools
 	depends = python-toml
+	depends = python-typed-ast
+	optdepends = python-aiohttp: for the blackd HTTP server
 	provides = python-black
 	conflicts = python-black
 	source = python-black-git::git+https://github.com/ambv/black.git
