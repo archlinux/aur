@@ -1,7 +1,7 @@
 pkgbase = turtl-server-git
 	pkgdesc = The secure, collaborative notebook's server
 	pkgver = r211.babccca
-	pkgrel = 1
+	pkgrel = 2
 	url = https://turtlapp.com/
 	install = turtl-server-git.install
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = turtl-server-git
 	makedepends = npm
 	depends = nodejs
 	depends = postgresql
+	provides = turtl-server
 	conflicts = turtl-server
 	source = turtl-server-git::git+https://github.com/turtl/server.git
 	source = turtl-server-git.install

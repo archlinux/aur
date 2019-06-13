@@ -2,13 +2,14 @@
 
 pkgname=turtl-server-git
 pkgver=r211.babccca
-pkgrel=1
+pkgrel=2
 pkgdesc="The secure, collaborative notebook's server"
 arch=('any')
 url="https://turtlapp.com/"
 license=('AGPL')
 depends=('nodejs' 'postgresql')
 makedepends=('git' 'npm')
+provides=('turtl-server')
 conflicts=('turtl-server')
 install=$pkgname.install
 source=("$pkgname::git+https://github.com/turtl/server.git"
