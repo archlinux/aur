@@ -3,8 +3,8 @@
 # Original Contributor: Bob Finch <w9ya@qrparci.net>
 
 pkgname=qrq
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="CW trainer for Linux/Unix - similar to the DOS Classic RUFZ"
 arch=('i686' 'x86_64')
 url="http://fkurz.net/ham/qrq.html"
@@ -38,9 +38,9 @@ package() {
 	install -D -m 644 $pkgname.png $pkgdir/usr/share/pixmaps
 	install -D -m 644 ../$pkgname.desktop $pkgdir/usr/share/applications
 }
-md5sums=('8ab3354d3c91c991db2654f8a6c766eb'
+md5sums=('989164c23fe3427452dd5815aa380b54'
          'cded2f3c98941155a3d25166d8c2c3cd'
          'cf71bf05a420e3b541e0235e08dd2b2e')
-sha256sums=('92988a33b7eddb3941cf91a285a57f4f0872722adf003350a8afe2caf83159a1'
+sha256sums=('306ef7f8e0bbb16bdddc58a5d9c357e9b05c1a5c8a52680e5bae093a4064e945'
             'cebb10477dabc2ea20937a1b1aafcbacc751bb9a2b62992712c473a4f737860e'
             '034e9114291270b7ab3a7006f465019658d6fb505b52b6b475694e0d369fa848')
