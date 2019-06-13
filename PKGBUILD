@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname}-R${pkgver}"
-  make
+  make FINAL_LOCATION=/usr
 }
 
 check() {
@@ -33,19 +33,45 @@ check() {
 
 package() {
   cd "$srcdir/${pkgname}-R${pkgver}"
-  echo "FINAL_LOCATION=/usr" >> configure/CONFIG_SITE.local
-  echo "INSTALL_LOCATION="${pkgdir}/usr"" >> configure/CONFIG_SITE.local
-  make realclean  # TODO: figure out a way to do this where we don't build everything twice...
-  make
+  
+  #make INSTALL_LOCATION="${pkgdir}/usr"
   
   # figure out what architecture EPICS is installing for
-  _ARCH=$(basename "$(find "$pkgdir/usr/bin/" -mindepth 1 -type d)")
+  _ARCH=$(perl -CSD src/tools/EpicsHostArch.pl)
+
+  mkdir -p "${pkgdir}/usr"
+
+  cp -a db "${pkgdir}/usr"
+  cp -a dbd "${pkgdir}/usr"
+  cp -a include "${pkgdir}/usr"
+  cp -a cfg "${pkgdir}/usr"
+  cp -a bin "${pkgdir}/usr"
+  cp -a lib "${pkgdir}/usr"
   
-  msg2 ${_ARCH}
-  # link bins to where they belong
-  pushd "${pkgdir}/usr/bin"
-  cp --symbolic-link "${_ARCH}"/* .
-  popd
+  mv "${pkgdir}/usr/bin/${_ARCH}"/* "${pkgdir}/usr/bin"/.
+  rm -rf "${pkgdir}/usr/bin/${_ARCH}"
+  find "${pkgdir}/usr/bin" -type f -exec strip --strip-all {} \; 2>/dev/null
+
+  mv "${pkgdir}/usr/lib/${_ARCH}"/* "${pkgdir}/usr/lib"/.
+  rm -rf "${pkgdir}/usr/lib/${_ARCH}"
+  find "${pkgdir}/usr/lib" -type f -exec strip --strip-all {} \; 2>/dev/null
+
+  # just strip everything because makepkg can't for whatever reason
+  find "${pkgdir}" -type f -exec strip --strip-all {} \; 2>/dev/null
+
+  # fix refs to $srcdir
+  #sed 's,^prefix=.*,prefix=/usr,' -i "${pkgdir}/usr/lib/pkgconfig/epics-base-${_ARCH}.pc"
+  #sed 's,^prefix=.*,prefix=/usr,' -i "${pkgdir}/usr/lib/pkgconfig/epics-base.pc"
+
+  # fix bindir and libdir
+  sed 's,^bindir=.*,bindir=${prefix}/bin,' -i "${pkgdir}/usr/lib/pkgconfig/epics-base-${_ARCH}.pc"
+  sed 's,^libdir=.*,libdir=${prefix}/lib,' -i "${pkgdir}/usr/lib/pkgconfig/epics-base-${_ARCH}.pc"
+  sed 's,^bindir=.*,bindir=${prefix}/bin,' -i "${pkgdir}/usr/lib/pkgconfig/epics-base.pc"
+  sed 's,^libdir=.*,libdir=${prefix}/lib,' -i "${pkgdir}/usr/lib/pkgconfig/epics-base.pc"
+
+  # fix refs to $pkgdir
+  #perl -pi -e "s,{pkgdir}/usr/lib/${_ARCH},/usr/lib," "$pkgdir/usr/bin/caRepeater"
+  #bbe -e "s,${pkgdir}/usr/lib/${_ARCH},/usr/lib," "$pkgdir/usr/bin/caRepeater" > "$pkgdir/usr/bin/caRepeater".new
 
   rm "$pkgdir/usr/include/link.h" # owned by glibc
 }
