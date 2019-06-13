@@ -21,5 +21,5 @@ check() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cargo install --path . --root "${pkgdir}"/usr
+  install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 }
