@@ -2,7 +2,7 @@
 
 pkgname=perl-tk-gbarr
 pkgver=2.08
-pkgrel=6
+pkgrel=7
 pkgdesc='Perl/CPAN Module Tk::TFrame,Cloth,NumEntry,NumEntryPlain,FireButton'
 arch=('any')
 url='http://metacpan.org/release/Tk-GBARR'
