@@ -11,9 +11,13 @@ pkgbase = opentx-companion-bin
 	depends = qt5-multimedia>=5.6.0beta
 	depends = qt5-svg>=5.6.0beta
 	depends = sdl>=1.2.11
+	provides = companion
+	conflicts = companion
+	conflicts = companion9x-svn
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://downloads.open-tx.org/2.2/release/companion/linux/companion22_2.2.3_amd64.deb
 	sha512sums_x86_64 = a4f68062b0a86d07f9fe7541f7c4e383e050baef058b8de8294ee18fc365dbfe5ffe5bece5d8c430a822a0096282eb454c08cd5fa72e1af8b66afeac68695868
 
 pkgname = opentx-companion-bin
+
