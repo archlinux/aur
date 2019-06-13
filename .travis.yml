@@ -6,8 +6,8 @@ branches:
 
 cache:
   directories:
-  - .ccache
-  - .arch-cache
+  - ~/.ccache
+  - ~/.pkg-cache
   - AUR-repo
   - LuxCore.git
 
@@ -19,9 +19,9 @@ services:
 - docker
 
 arch:
-  cache:
-  - ccache: true
-  - pacman-cache: true
+  mount:
+  - ~/.ccache:~/.ccache
+  - ~/.pkg-cache:/var/cache/pacman/pkg
   repos:
   - bartus=https://github.com/bartoszek/AUR-repo/raw/master
   packages:
@@ -53,28 +53,28 @@ arch:
      old_deps_ver=$(echo "$build_info"|grep -f <(echo "$build_deps" ))
      printf "%-50s %50s\n" "BUILDINFO dependency versions" "PACMAN dependency versions"
      dep_update=$(diff -y -W 100 --tabsize=4 <(echo "$old_deps_ver"|sort) <(echo "$new_deps_ver"|sort) >&2; echo $?;)
-# check commit update
-  - 'force_update=$(git log --pretty=%B -1|egrep -q "\[(force|rebuild)\]"; echo $?)'
 # check version
   - |
      makepkg -od --skipinteg
      new_pkgver=$(. PKGBUILD; [[ -v epoch ]] && echo -n $epoch:; echo $pkgver-$pkgrel)
      old_pkgver=$(. PKGBUILD; pacman -S --print-format %v $pkgname|tail -n1)
 # skipp build if:
-#   1. no new version
-#   2. no dependency update
-#   3. no force update
-  - '[[ "$new_pkgver" == "$old_pkgver" && $next_update != 0 && $force_update != 0 && dep_update != 0 ]] && { echo -e "Current version is up to date!\nNext force update in $next_update days!"; exit 0; }'
+#   1. cron build
+#   2. no new version
+#   3. no dependency update
+  - |
+     [[ "$TRAVIS_EVENT_TYPE" == "cron" && "$new_pkgver" == "$old_pkgver" && $next_update != 0 && $dep_update != 0 ]] && { echo -e "Current version is up to date!\nNext force update in $next_update days!"; exit 0; }
 # exit with makepkg return code
   - |
      set -o pipefail
      makepkg -s --noconfirm TRAVIS=1 MAKEFLAGS='-j2' 2>&1 |ts -s '[%.T]'
-     makepkg_ret=$?  ccache -s
+     makepkg_ret=$?
+     ccache -s
      exit $makepkg_ret
 
 script:
 - "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/pacman-pkg-cache/arch-travis.sh | bash"
-- "echo 'pacman pkg cache size: ' $(du -h .arch-cache|cut -f1) in $(ls .arch-cache|wc -l) files"
+- "echo 'pacman pkg cache size: ' $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
 
 deploy:
   on:
