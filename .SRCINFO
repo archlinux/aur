@@ -1,6 +1,6 @@
 pkgbase = chromedriver
 	pkgdesc = Standalone server which implements WebDriver's wire protocol (for google-chrome)
-	pkgver = 75.0.3770.8
+	pkgver = 75.0.3770.90
 	pkgrel = 1
 	url = https://sites.google.com/a/chromium.org/chromedriver/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = chromedriver
 	depends = gconf
 	optdepends = google-chrome
 	conflicts = chromium
-	source = chromedriver_75.0.3770.8_linux64.zip::http://chromedriver.storage.googleapis.com/75.0.3770.8/chromedriver_linux64.zip
-	md5sums = ee28a86911127498409dc8623d39ea94
+	source = chromedriver_75.0.3770.90_linux64.zip::http://chromedriver.storage.googleapis.com/75.0.3770.90/chromedriver_linux64.zip
+	md5sums = 5cebc8cdd79bba758f8975e72b3a28f0
 
 pkgname = chromedriver
 
