@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-hunspell
 	pkgdesc = Spell checker and morphological analyzer library and program (mingw-w64)
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hunspell.github.io/
 	arch = any
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = mingw-w64-hunspell
 	makedepends = mingw-w64-readline
 	makedepends = mingw-w64-wine
 	depends = mingw-w64-gettext
-	depends = mingw-w64-ncurses
+	depends = mingw-w64-pdcurses
 	depends = mingw-w64-readline
 	options = !strip
 	options = !buildflags
@@ -20,8 +20,10 @@ pkgbase = mingw-w64-hunspell
 	options = !emptydirs
 	source = hunspell-1.7.0.tar.gz::https://github.com/hunspell/hunspell/archive/v1.7.0.tar.gz
 	source = 01-relocate.patch
+	source = 02-fix-link-with-pdcurses.patch
 	sha256sums = bb27b86eb910a8285407cf3ca33b62643a02798cf2eef468c0a74f6c3ee6bc8a
 	sha256sums = b3a978749ef723481286e6237944729b6965bc57eacc5407b5f7fedf7d6aa8a1
+	sha256sums = 260432a8f01525e83124c79e375cc9f0692b1a6c97773add4c69b8efe081cf1d
 
 pkgname = mingw-w64-hunspell
 
