@@ -6,7 +6,7 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-hynix       # Build kernel with a different name
-_srcver=5.1.6-arch1
+_srcver=5.1.9-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
