@@ -7,7 +7,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+_makenconfig=y
 
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_tag=5.1.9-arch1
+_srcver_tag=5.1.8-arch1
 pkgver="${_srcver_tag//-/.}"
 pkgrel=1
 arch=(x86_64)
