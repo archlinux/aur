@@ -1,7 +1,7 @@
 pkgbase = veles-git
 	pkgdesc = Binary data analysis and visualization tool
 	pkgver = 2018.05.0.r0.ge65de5a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codisec.com/veles
 	arch = x86_64
 	license = APLv2
