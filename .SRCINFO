@@ -9,9 +9,7 @@ pkgbase = gnome-shell-extension-caffeine-plus-git
 	makedepends = git
 	depends = gnome-shell
 	source = gnome-shell-extension-caffeine-plus-git::git+https://github.com/tonylambiris/gnome-shell-extension-caffeine-plus.git
-	source = add-gnome-3.32-support.patch
 	sha256sums = SKIP
-	sha256sums = 878673dc9bd181cbd93312709eb62753a13c76ab9729cad752f8bc49467fbe8a
 
 pkgname = gnome-shell-extension-caffeine-plus-git
 
