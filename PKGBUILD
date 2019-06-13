@@ -55,34 +55,28 @@ build() {
 }
 
 package() {
-  #make install DESTDIR="$pkgdir"
-  #make install DESTDIR="$pkgdir"
-  install -d "$pkgdir"/usr/lib
-  install -m 555 openvr/bin/linux64/libopenvr_api.so "$pkgdir/usr/lib"
-  install -m 555 openvr/bin/linux64/libopenvr_api.a "$pkgdir/usr/lib"
+  cd openvr
+  make install DESTDIR="$pkgdir"
+  install -m 555 bin/linux64/libopenvr_api.so "$pkgdir/usr/lib"
 
-  #make install DESTDIR="$pkgdir" #There is no installer for the samples
+  # Install examples
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/shaders"
 
+  cd samples
 
-  install -m 755 "$srcdir/openvr/samples/bin/linux64/hellovr_vulkan" "$pkgdir/usr/bin"
-  for shader in "$srcdir/openvr/samples/bin/shaders/"*.spv
+  install -m 755 "bin/linux64/hellovr_vulkan" "$pkgdir/usr/bin"
+  for shader in "bin/shaders/"*.spv
   do
     install -m 755 "$shader" "$pkgdir/usr/shaders"
   done
 
-  install -m 755 "$srcdir/openvr/samples/bin/linux64/hellovr_opengl" "$pkgdir/usr/bin"
-  install -m 755 "$srcdir/openvr/samples/bin/hellovr_actions.json" "$pkgdir/usr/"
-  install -m 755 "$srcdir/openvr/samples/bin/cube_texture.png" "$pkgdir/usr/" #TODO: fix source code to look in proper place
-  install -m 755 "$srcdir/openvr/samples/bin/linux64/helloworldoverlay" "$pkgdir/usr/bin"
-  install -m 755 "$srcdir/openvr/samples/bin/linux64/tracked_camera_openvr_sample" "$pkgdir/usr/bin"
-  
-  #install -m 755 "$srcdir/build/samples/hellovr_opengl/run_hellovr.sh" "$pkgdir/usr/bin/run_hellovr.sh"
-  
-  install -d "$pkgdir/usr/include/"
-  cp -ra "$srcdir/openvr/headers"/* "$pkgdir/usr/include/"
-  #install "$srcdir/openvr/headers"/* "$pkgdir/usr/include/"
+  install -m 755 "bin/linux64/hellovr_opengl" "$pkgdir/usr/bin"
+  install -m 755 "bin/hellovr_actions.json" "$pkgdir/usr/"
+  install -m 755 "bin/linux64/helloworldoverlay" "$pkgdir/usr/bin"
+  install -m 755 "bin/linux64/tracked_camera_openvr_sample" "$pkgdir/usr/bin"
+  #TODO: fix source code to look in proper place
+  install -m 755 "bin/cube_texture.png" "$pkgdir/usr/"
   
 }
 
