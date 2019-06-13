@@ -5,7 +5,7 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -143,23 +143,29 @@ package_python-pytorch() {
 }
 
 package_python-pytorch-opt() {
+  pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CPU optimizations)"
+  conflicts=(python-pytorch)
+  provides=(python-pytorch)
+
   cd "${srcdir}/${_pkgname}-${pkgver}-opt"
   _package
 }
 
 package_python-pytorch-cuda() {
-  depends+=('cuda' 'cudnn')
-  provides=('python-pytorch')
-  conflicts=('python-pytorch')
+  pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CUDA)"
+  depends+=(cuda cudnn)
+  conflicts=(python-pytorch)
+  provides=(python-pytorch)
 
   cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
   _package
 }
 
 package_python-pytorch-opt-cuda() {
-  depends+=('cuda' 'cudnn')
-  provides=('python-pytorch')
-  conflicts=('python-pytorch')
+  pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CUDA and CPU optimizations)"
+  depends+=(cuda cudnn)
+  conflicts=(python-pytorch)
+  provides=(python-pytorch python-pytorch-cuda)
 
   cd "${srcdir}/${_pkgname}-${pkgver}-opt-cuda"
   _package
