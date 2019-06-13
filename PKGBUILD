@@ -20,7 +20,6 @@ sha256sums=('95c20baadf7334ca7d32f018796f3027f892e946ac219a34c74207404c9f3e10'
 
 package_drill-search-cli() {
 	pkgdesc="Search files without indexing, but clever crawling (CLI version)"
-	conflicts=("$pkgname-bin")
 
 	cd "Drill-$pkgver/Source/Frontend/CLI"
 	dub build -b release
@@ -37,7 +36,6 @@ package_drill-search-cli() {
 package_drill-search-gtk() {
 	pkgdesc="Search files without indexing, but clever crawling (GTK version)"
 	depends=('gtk3')
-	conflicts=("$pkgname-bin")
 
 	cd "Drill-$pkgver/Source/Frontend/GTK"
 	dub build -b release

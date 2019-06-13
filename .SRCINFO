@@ -19,10 +19,8 @@ pkgbase = drill-search
 
 pkgname = drill-search-cli
 	pkgdesc = Search files without indexing, but clever crawling (CLI version)
-	conflicts = drill-search-cli-bin
 
 pkgname = drill-search-gtk
 	pkgdesc = Search files without indexing, but clever crawling (GTK version)
 	depends = gtk3
-	conflicts = drill-search-gtk-bin
 
