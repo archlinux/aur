@@ -1,6 +1,6 @@
 # Maintainer: Frédéric Potvin <frederic.potvin@platform.sh>
 pkgname=platformsh-cli
-pkgver='3.41.1'
+pkgver='3.42.0'
 pkgrel=1
 pkgdesc="Platform.sh CLI"
 arch=('any')
@@ -18,8 +18,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/platformsh/platformsh-cli/releases/download/v3.41.1/platform.phar")
-sha256sums=('700ee2b7450ee9008d1d824dae7d9d745a7c0122af445e8eb086fc5048536175')
+source=("https://github.com/platformsh/platformsh-cli/releases/download/v3.42.0/platform.phar")
+sha256sums=('f73859a23a2361e687735fa9c75f234cba3a98caab0f20f6b03c45e6d5759ccf')
 noextract=('platform.phar')
 
 build() {
