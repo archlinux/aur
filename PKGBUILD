@@ -1,6 +1,6 @@
 pkgname=openwsman
 pkgver=2.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Opensource Implementation of WS-Management"
 arch=('i686' 'x86_64')
 url="https://$pkgname.github.io/"
