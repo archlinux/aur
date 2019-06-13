@@ -1,7 +1,7 @@
 pkgbase = wineasio-git
 	pkgdesc = WineASIO provides an ASIO to JACK driver for WINE.
 	pkgver = r50.4b23797
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jhernberg/wineasio
 	install = wineasio.install
 	arch = i686
