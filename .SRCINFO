@@ -1,7 +1,7 @@
 pkgbase = perl-net-pcap
 	pkgdesc = Perl/CPAN Module Net::Pcap
 	pkgver = 0.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Net-Pcap
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,11 @@ pkgbase = perl-net-pcap
 	source = http://cpan.metacpan.org/authors/id/S/SA/SAPER/Net-Pcap-0.18.tar.gz
 	source = makefile.patch
 	source = listdatalinks.patch
+	source = pcapapi.patch
 	md5sums = 18d7298dca72b53271d68646c34b6a39
 	md5sums = 9a8647b3eaacfed4a0d49cd74f20f8b7
 	md5sums = 8c982b3e323f67cc718d9bffc7843548
+	md5sums = 61d809cea0de225f859b9f6971ea27ed
 
 pkgname = perl-net-pcap
 
