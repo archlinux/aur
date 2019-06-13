@@ -4,8 +4,8 @@ _android_arch=x86
 source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-speexdsp
-pkgver=1.2rc3
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="DSP library derived from Speex (android)"
 arch=(any)
 url="http://www.speexdsp.org"
@@ -14,7 +14,7 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("http://downloads.xiph.org/releases/speex/speexdsp-$pkgver.tar.gz")
-md5sums=('70d9d31184f7eb761192fd1ef0b73333')
+md5sums=('b722df341576dc185d897131321008fc')
 
 prepare() {
     check_ndk_version_ge_than 18.0
