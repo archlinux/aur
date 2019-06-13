@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-speexdsp
 	pkgdesc = DSP library derived from Speex (android)
-	pkgver = 1.2rc3
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = http://www.speexdsp.org
 	arch = any
 	license = BSD
@@ -11,8 +11,8 @@ pkgbase = android-armv7a-eabi-speexdsp
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://downloads.xiph.org/releases/speex/speexdsp-1.2rc3.tar.gz
-	md5sums = 70d9d31184f7eb761192fd1ef0b73333
+	source = http://downloads.xiph.org/releases/speex/speexdsp-1.2.0.tar.gz
+	md5sums = b722df341576dc185d897131321008fc
 
 pkgname = android-armv7a-eabi-speexdsp
 
