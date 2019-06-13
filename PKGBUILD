@@ -3,7 +3,7 @@
 pkgname=cb-git
 _pkgname=cb
 pkgver=0.1.0.r1.g036df74
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="https://github.com/yaa110/cb"
 license=("MIT")
@@ -12,7 +12,7 @@ pkgdesc='Command line interface to manage clipboard'
 
 source=("$_pkgname::git://github.com/yaa110/cb.git")
 sha512sums=('SKIP')
-makedepends=('rust')
+makedepends=('rust' 'python3')
 depends=('gcc-libs' 'libxcb')
 conflicts=('cb' 'cb-bin')
 provides=('cb')
