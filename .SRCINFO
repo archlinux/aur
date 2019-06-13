@@ -9,6 +9,7 @@ pkgbase = newbreeze-git
 	makedepends = qt5-base
 	makedepends = qscintilla-qt5
 	depends = qt5-base
+	depends = qscintilla-qt5
 	depends = jbig2dec
 	depends = qt5-webengine
 	depends = poppler
