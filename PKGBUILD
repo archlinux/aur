@@ -91,7 +91,7 @@ prepare() {
 
   # cogl: Remove GLX "threaded swap wait" used on Nvidia [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/602
-  git cherry-pick -n dfb1ef0c
+  git cherry-pick -n f12eddc1
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
