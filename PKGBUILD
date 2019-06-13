@@ -5,11 +5,8 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-#_pkgver=26.1.92
-#__pkgver=${_pkgver/-*}
-_pkgver=26.2-rc1
-__pkgver=${_pkgver/-rc1}
-pkgver=26.1.92.1~really26.2rc1 #Yeah yeah, this is an ugly lie but I can't be clever today. Send some dried nuts this way.
+_pkgver=26.2.90
+pkgver=$_pkgver
 pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('x86_64')
@@ -19,7 +16,7 @@ depends=('gpm' 'm17n-lib' 'gtk3' 'libmagick6' 'gnutls')
 provides=('emacs')
 conflicts=('emacs')
 source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig})
-sha512sums=('27c5551adb0641dee6bbd962dcefece6465f0ce1c37da1be0ab56966e04c277ad8db35763ce56fd35a4643f60c6576c36aa27cac695f62bd4e4e7501d09654b5'
+sha512sums=('66e53ae2a6d89505111e7bc9b7a6e6324a9a5577d1ad8905244dbc8619b21ea410b20bd8bab0442ec226f7a0d5f2292e01171189517736e4fa5e0e15eba51074'
             'SKIP')
 validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199' '28D3BED851FDF3AB57FEF93C233587A47C207910')
 
