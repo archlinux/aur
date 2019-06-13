@@ -2,7 +2,7 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix-git
-pkgver=0.9.24.r1546535491.5a566b5a
+pkgver=0.9.27.r1560437770.3e7c410d
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -25,7 +25,7 @@ pkgver()
 }
 
 _pkgname=${pkgname%-git}
-# template start; name=lix; version=1.4;
+# template start; name=lix; version=1.5;
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
@@ -48,8 +48,8 @@ _dubv=(	"4.0.4+5.2.0"   # allegro
 
 # let makepkg handle dub packages
 # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git_Submodules
-source+=(   "${_pkgname}-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
-            "${_pkgname}.desktop"
+source+=(   "$_pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
+            "$_pkgname.desktop"
             )
 sha512sums+=(   '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425'
                 '375b1439d9398371a3f58a92bfc0901b86bd89140aae431c7d9405bd2fb36ebcdb22b2686fea72d88b23a4ab94b138b4d742d8fd2965d8ec0542d2f8f64ed0c2'
@@ -81,101 +81,109 @@ sha512sums+=(   'SKIP'
 
 _build()
 {
-    cd "${srcdir}/${_pkgname}" || exit
+    cd "$srcdir/$_pkgname" || exit
     _r=0
 
     # add local dependencies to search path
-    dub add-path "${srcdir}"
+    dub add-path "$srcdir"
 
-    # ensure with --cache=local dub stays outside the users home directory
-    dub $@ --cache=local || _r="$?"
+    dub "$@" \
+        `# ensure dub stays outside the users home directory:` \
+            --cache=local \
+        `# Runs multiple compiler instances in parallel, if possible:` \
+            --parallel \
+        `# Forces a recompilation even if the target is up to date:` \
+            --force \
+        `# Specifies the compiler binary to use:` \
+            --compiler=ldc \
+        `# force FHS compatibility:` \
+            --build=releaseXDG \
+        || _r="$?"
 
     # remove local dependencies from search path so dub won't find them
     # later again
-    dub remove-path "${srcdir}"
+    dub remove-path "$srcdir"
 
     # removes any cached metadata like the list of available packages
     # and their latest version
     dub clean-caches
 
-    if [[ "${_r}" != 0 ]]
+    if [[ "$_r" != 0 ]]
     then
         # dub failed so we also fail after we removed the local dependencies
-        return "${_r}"
+        return "$_r"
     fi
 }
 
 build()
 {
-    cd "${srcdir}/${_pkgname}" || exit
-
-    # force FHS compatibility with 'releaseXDG'
-    _build build --force --build=releaseXDG
+    cd "$srcdir/$_pkgname" || exit
+    _build build
 }
 
 check()
 {
-    cd "${srcdir}/${_pkgname}" || exit
-    _build test --parallel
+    cd "$srcdir/$_pkgname" || exit
+    _build test
 }
 
 package()
 {
-    cd "${srcdir}" || exit
+    cd "$srcdir" || exit
 
     # install application entry
     install -Dm644 \
         `# SRCFILE:` \
-            "${_pkgname}.desktop" \
+            "$_pkgname.desktop" \
         `# DSTFILE:` \
-            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+            "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-    cd "${_pkgname}" || exit
+    cd "$_pkgname" || exit
 
     # install application entry icon
     install -Dm644 \
         `# SRCFILE:` \
             "data/images/${_pkgname}_logo.svg" \
         `# DSTFILE:` \
-            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+            "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 
     # install license text
     install -Dm644 \
         `# SRCFILE:` \
             "doc/copying.txt" \
         `# DSTFILE:` \
-            "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
+            "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
 
     # install man page
     install -Dm644 \
         `# SRCFILE:` \
             "doc/lix.6" \
         `# DSTFILE:` \
-            "${pkgdir}/usr/share/man/man6/lix.6"
+            "$pkgdir/usr/share/man/man6/lix.6"
 
     # install binary
     install -Dm755 \
         `# SRCFILE:` \
-            "bin/${_pkgname}" \
+            "bin/$_pkgname" \
         `# DSTFILE:` \
-            "${pkgdir}/usr/bin/${_pkgname}"
+            "$pkgdir/usr/bin/$_pkgname"
 
     # remove unimportant files
     # https://raw.githubusercontent.com/SimonN/LixD/master/doc/build/package.txt
-    rm -r "${srcdir}/${_pkgname}/doc/build"
+    rm -r "$srcdir/$_pkgname/doc/build"
 
     # https://lists.archlinux.org/pipermail/aur-general/2011-November/016777.html
     # make directories
     mkdir -p \
-        "${pkgdir}/usr/share/${_pkgname}" \
-        "${pkgdir}/usr/share/doc/${_pkgname}"
+        "$pkgdir/usr/share/$_pkgname" \
+        "$pkgdir/usr/share/doc/$_pkgname"
 
     # copy documentary
     cp -dpr --no-preserve=ownership \
         `# SRCFILES:` \
             "doc/." \
         `# DSTDIR:` \
-            "${pkgdir}/usr/share/doc/${_pkgname}/"
+            "$pkgdir/usr/share/doc/$_pkgname/"
 
     # copy game files
     cp -dpr --no-preserve=ownership \
@@ -183,8 +191,8 @@ package()
             "data" \
             "images" \
             "levels" \
-            "${srcdir}/music" \
+            "$srcdir/music" \
         `# DSTDIR:` \
-            "${pkgdir}/usr/share/${_pkgname}"
+            "$pkgdir/usr/share/$_pkgname"
 }
 # template end;
