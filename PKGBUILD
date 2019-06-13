@@ -3,6 +3,7 @@
 pkgname=armadillo
 pkgver=9.500.2
 _pkgver=9.500.2                     # For use with RC releases, to replace the - with _
+
 pkgrel=1
 pkgdesc="C++ linear algebra library"
 arch=('i686' 'x86_64')
