@@ -2,23 +2,25 @@
 # Contributor: Michael Eckert <michael.eckert@linuxmail.org>
 
 pkgname=deltarpm
-pkgver=3.6.1
-pkgrel=2
+pkgver=3.6.2
+pkgrel=1
 pkgdesc="Create deltas between rpms"
 arch=('i686' 'x86_64')
-license=('BSD')
+license=('custom:BSD')
 url="https://github.com/rpm-software-management/$pkgname"
-depends=('rpm-org' 'zlib')
+depends=('rpm-org' 'zlib' 'zstd')
 makedepends=('python2' 'python')
 optdepends=('python2: for python2 module'
-            'python:  for python3 module')
+            'python: for python3 module')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('c48086229bdfcf5af890f104231180c6')
+md5sums=('495fb5d807bba6b10d1ecba49cf707a0')
 
 build() {
 	cd "$pkgname-$pkgver"
-	make PYTHONS='python2 python' \
-	     LDFLAGS="${LDFLAGS}"     \
+	make CPPFLAGS="$CPPFLAGS"     \
+	     CFLAGS="$CFLAGS -fPIC -DWITH_ZSTD=1" \
+	     LDFLAGS="$LDFLAGS"       \
+	     PYTHONS='python2 python' \
 	     prefix=/usr              \
 	     zlibbundled=''           \
 	     zlibldflags='-lz'        \

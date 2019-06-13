@@ -1,19 +1,20 @@
 pkgbase = deltarpm
 	pkgdesc = Create deltas between rpms
-	pkgver = 3.6.1
-	pkgrel = 2
+	pkgver = 3.6.2
+	pkgrel = 1
 	url = https://github.com/rpm-software-management/deltarpm
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = custom:BSD
 	makedepends = python2
 	makedepends = python
 	depends = rpm-org
 	depends = zlib
+	depends = zstd
 	optdepends = python2: for python2 module
 	optdepends = python: for python3 module
-	source = https://github.com/rpm-software-management/deltarpm/archive/3.6.1/deltarpm-3.6.1.tar.gz
-	md5sums = c48086229bdfcf5af890f104231180c6
+	source = https://github.com/rpm-software-management/deltarpm/archive/3.6.2/deltarpm-3.6.2.tar.gz
+	md5sums = 495fb5d807bba6b10d1ecba49cf707a0
 
 pkgname = deltarpm
 
