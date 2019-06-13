@@ -1,7 +1,7 @@
 pkgbase = anydesk
 	pkgdesc = 'AnyDesk Free' is an All-In-One Software for Remote Support
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://anydesk.de
 	arch = i686
 	arch = x86_64
