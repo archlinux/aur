@@ -2,7 +2,7 @@
 
 pkgname=anydesk-test
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support - Playground-Version"
 arch=('i686' 'x86_64')
 url="https://anydesk.de"
@@ -21,6 +21,9 @@ package() {
     cd "${pkgdir}"
     tar xf "${srcdir}/data.tar.gz"
     install -m755 "${srcdir}/anydesk-${pkgver}/anydesk" "${pkgdir}/usr/bin/anydesk"
+    #
+    # temporary fix for wrong permissions on subdirs:
+    find "${pkgdir}" -type d -exec chmod 755 {} \;
     #
     msg2 "\e[1;32mAnyDesk now has a systemd file for unattendant access: anydesk.service \e[0m"
     install -D -m 644 "${pkgdir}/usr/share/anydesk/files/systemd/anydesk.service" "${pkgdir}/usr/lib/systemd/system/anydesk.service"
