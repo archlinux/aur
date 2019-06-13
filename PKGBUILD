@@ -6,12 +6,20 @@ makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="UNixize Filename -- replace annoying anti-unix characters in filenames"
 license=('MIT')
+source=("https://github.com/io12/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('b39055b646630f7eef4c8abe50bc5213')
 
 build() {
-    return 0
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cargo build --release --locked
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cargo test --release --locked
 }
 
 package() {
-    cd $srcdir
-    cargo install --root="$pkgdir" --git=https://github.com/io12/unf
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cargo install --path . --root "${pkgdir}"/usr
 }

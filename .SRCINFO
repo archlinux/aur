@@ -9,6 +9,8 @@ pkgbase = unf
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	source = https://github.com/io12/unf/archive/0.1.0.tar.gz
+	md5sums = b39055b646630f7eef4c8abe50bc5213
 
 pkgname = unf
 
