@@ -9,6 +9,8 @@ arch=('x86_64')
 url="http://www.open-tx.org/"
 license=('GPL')
 depends=('hicolor-icon-theme' 'qt5-base>=5.7.0' 'qt5-multimedia>=5.6.0beta' 'qt5-svg>=5.6.0beta' 'sdl>=1.2.11')
+provides=('companion')
+conflicts=('companion' 'companion9x-svn')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://downloads.open-tx.org/2.2/release/companion/linux/companion22_${pkgver}_amd64.deb")
