@@ -4,10 +4,10 @@
 # Contributor: Renchi Raju <renchi@green.tam.uiuc.edu>
 
 pkgname=emacs-pretest
+pkgver=26.2.90
 _pkgname=emacs
-_pkgver=26.2.90
-pkgver=$_pkgver
-pkgrel=1
+_pkgver=$pkgver
+pkgrel=2
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -15,13 +15,13 @@ license=('GPL3')
 depends=('gpm' 'm17n-lib' 'gtk3' 'libmagick6' 'gnutls')
 provides=('emacs')
 conflicts=('emacs')
-source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig})
+source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver.tar.xz{,.sig})
 sha512sums=('66e53ae2a6d89505111e7bc9b7a6e6324a9a5577d1ad8905244dbc8619b21ea410b20bd8bab0442ec226f7a0d5f2292e01171189517736e4fa5e0e15eba51074'
             'SKIP')
-validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199' '28D3BED851FDF3AB57FEF93C233587A47C207910')
+validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199' '28D3BED851FDF3AB57FEF93C233587A47C207910' 'D405AA2C862C54F17EEE6BE0E8BCD7866AFCF978')
 
 build() {
-  cd "$srcdir"/$_pkgname-$__pkgver
+  cd "$srcdir"/$_pkgname-$_pkgver
 
 # Else imagemagick is not detected.
 export PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig
@@ -47,7 +47,7 @@ export PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig
 }
 
 package() {
-  cd "$srcdir"/$_pkgname-$__pkgver
+  cd "$srcdir"/$_pkgname-$_pkgver
   make DESTDIR="$pkgdir" install
 
   # remove conflict with ctags package
