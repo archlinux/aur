@@ -1,7 +1,7 @@
 # Maintainer: alzeih <alzeih@users.noreply.github.com>
 
 pkgname='pass-pwned-git'
-pkgver=r11.884856e
+pkgver=v0.1.0.r0.8e4a88b
 pkgrel=1
 pkgdesc="Password-Store extension for Have I Been Pwned? Pwned Passwords v2 API"
 arch=('any')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
