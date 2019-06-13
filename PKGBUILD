@@ -1,7 +1,7 @@
 # Maintainer: <xris_pop@yahoo.ca>
 _pkgname=shr-moe-screenshot
 pkgname=$_pkgname-git
-pkgver=1.0.1.r0.2f860053
+pkgver=1.0.2.r0.7e153b41
 pkgrel=1
 pkgdesc="This is a command-line tool that takes a regular screenshot using either PNG, JPG, or a video capture using MP4, WebM, APNG and uploads it to shr.moe"
 arch=('any')
