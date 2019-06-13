@@ -1,17 +1,18 @@
 pkgbase = r-forcats
 	pkgdesc = Tools for working with categorical variables.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/forcats/index.html
+	url = https://cran.r-project.org/package=forcats
 	arch = i686
 	arch = x86_64
 	license = GPL-3
 	depends = r>=3.1
+	depends = r-ellipsis
 	depends = r-magrittr
 	depends = r-rlang
 	depends = r-tibble
-	source = http://cran.r-project.org/src/contrib/forcats_0.3.0.tar.gz
-	md5sums = 9e8ef180bf65b20b1085707ab8ed5224
+	source = http://cran.r-project.org/src/contrib/forcats_0.4.0.tar.gz
+	md5sums = 45a41b86264c1722c2ab65cdc8c138ee
 
 pkgname = r-forcats
 
