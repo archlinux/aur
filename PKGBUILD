@@ -28,7 +28,3 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     ln -sf "/opt/draw.io/draw.io" "${pkgdir}/usr/bin/draw.io"
 }
-
-check() {
-    draw.io --help > /dev/null
-}
