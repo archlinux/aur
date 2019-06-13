@@ -32,11 +32,10 @@ prepare() {
 build() {
   cd "${srcdir}/hunspell-${pkgver}"
   for _arch in ${_architectures}; do
-    CPPFLAGS+=" -I/usr/${_arch}/include/pdcurses"
-    CFLAGS+=" -I/usr/${_arch}/include/pdcurses"
-    CXXFLAGS+=" -I/usr/${_arch}/include/pdcurses"
-
     mkdir -p build-${_arch} && pushd build-${_arch}
+    CPPFLAGS+=" -I/usr/${_arch}/include/pdcurses" \
+    CFLAGS+=" -I/usr/${_arch}/include/pdcurses" \
+    CXXFLAGS+=" -I/usr/${_arch}/include/pdcurses" \
     ${_arch}-configure \
       --disable-rpath \
       --with-ui \
