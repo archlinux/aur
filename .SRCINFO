@@ -1,7 +1,7 @@
 pkgbase = hb-downloader
 	pkgdesc = An unofficial library for querying the Humble Bundle API
 	pkgver = 0.5.0h
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/saik0/humblebundle-python
 	arch = any
 	license = MIT
