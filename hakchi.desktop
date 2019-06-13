@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Hakchi v1
+Comment=Tool that allows you to add more games to your NES/SNES Classic Mini v1
+Path=/usr/bin
+Exec=hakchi-gui
+Icon=hakchi
+Terminal=false
+Categories=Utility
+
