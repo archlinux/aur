@@ -1,0 +1,14 @@
+diff --git a/src/ui/mainwindowwithdetachabledockwidgets.cc b/src/ui/mainwindowwithdetachabledockwidgets.cc
+index 15e7e17..05a81e9 100644
+--- a/src/ui/mainwindowwithdetachabledockwidgets.cc
++++ b/src/ui/mainwindowwithdetachabledockwidgets.cc
+@@ -603,7 +603,8 @@ void MainWindowWithDetachableDockWidgets::updateActiveDockWidget() {
+ 
+   QList<DockWidget*> dock_widgets = findChildren<DockWidget*>();
+   for (auto dock_widget : dock_widgets) {
+-    if (mark_active_dock_widget_ && active_dock_widget_ == dock_widget) {
++    // always force emptystylesheet to fix veles crashes
++    if (false && mark_active_dock_widget_ && active_dock_widget_ == dock_widget) {
+       dock_widget->setStyleSheet(
+           QString("%1::title {"
+                   "background : palette(highlight);"

@@ -2,26 +2,30 @@
 
 pkgname=(veles-git python-veles-git)
 pkgver=2018.05.0.r0.ge65de5a
-pkgrel=2
+pkgrel=3
 pkgdesc='Binary data analysis and visualization tool'
 url='https://codisec.com/veles'
+arch=('x86_64')
 license=('APLv2')
-source=(
-  'git+https://github.com/codilime/veles.git'
-  'fix_qt5_use_modules.patch'
+source=("git+https://github.com/codilime/veles.git"
+        "fix_qt5_use_modules.patch"
+        "always_force_emptystylesheet.patch"
 )
 sha256sums=('SKIP'
-            '13a352f860723304dc2ae664f0f2a4ba29f872e7cc65334409dbb6475f9473c0')
-arch=('x86_64')
+            '13a352f860723304dc2ae664f0f2a4ba29f872e7cc65334409dbb6475f9473c0'
+            'e7378aee4e5a08a1930a84b755ee9ee5da4cebab435343dcbb0ff46ada9ca6fa')
 
 pkgver() {
   cd "${srcdir}/veles"
+
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/veles"
-  patch -Np1 -i ../fix_qt5_use_modules.patch
+	cd "${srcdir}/veles"
+
+	patch -Np1 -i "${srcdir}/fix_qt5_use_modules.patch"
+	patch -Np1 -i "${srcdir}/always_force_emptystylesheet.patch"
 }
 
 build() {
@@ -30,10 +34,12 @@ build() {
   mkdir -p "${srcdir}/veles/build"
   cd "${srcdir}/veles/build"
 
+  export CC=clang CXX=clang++
+
   cmake -Wno-dev .. \
 	  -DCMAKE_VERBOSE_MAKEFILE=ON \
-	  -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}/usr" \
-	  -DCMAKE_BUILD_TYPE=MinSizeRel
+	  -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+	  -DCMAKE_BUILD_TYPE=Debug
 }
 
 package_veles-git() {
@@ -47,7 +53,7 @@ package_veles-git() {
   cd "${srcdir}/veles/build"
 
   # Install the program
-  make install
+  make DESTDIR="${pkgdir}" install
 }
 
 package_python-veles-git() {
@@ -56,5 +62,5 @@ package_python-veles-git() {
 
   cd "${srcdir}/veles/python"
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
