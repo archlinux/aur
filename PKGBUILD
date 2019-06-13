@@ -2,7 +2,7 @@
 
 pkgname=ecal
 pkgver=5.3.2
-pkgrel=4
+pkgrel=5
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64')
 url="https://github.com/continental/ecal"
@@ -26,9 +26,6 @@ build() {
 	cd _build
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
 		     -DCMAKE_BUILD_TYPE=Release \
-		     -DGIT_REVISION_MAYOR=5 \
-		     -DGIT_REVISION_MINOR=3 \
-		     -DGIT_REVISION_PATCH=2 \
 		     -DECAL_THIRDPARTY_BUILD_PROTOBUF=OFF
 	make
 }
@@ -38,5 +35,6 @@ package() {
 	cd _build
 	DESTDIR="$pkgdir" make install
 	mv "$pkgdir/usr/lib" "$pkgdir/usr/lib32"
-	mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib" 
+	mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
+        mv "$pkgdir/usr/etc" "$pkgdir/etc"	
 }
