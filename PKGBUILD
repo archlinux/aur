@@ -2,8 +2,9 @@
 # Contributor: François M. <francois5537 @ gmail.com>
 
 ## Dynamically retrieve the download url
-_manager_source=$(wget -o /dev/null http://www.manager.io/desktop/download/ubuntu/ -O - \
-    | grep -o -P 'https://.*Manager\.deb' | tail -n1
+_manager_source=$(wget -o /dev/null http://www.manager.io/download/latest/Manager.deb -O - \
+    | grep -o -P 'https://[a-zA-Z0-9]+\.cloudfront\.net/[0-9]+\.[0-9]+\.[0-9]+/Manager\.deb' \
+    | tail -n1
 )
 pkgname=manager-accounting
 pkgver=$(echo "${_manager_source}" \
