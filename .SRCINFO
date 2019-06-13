@@ -1,6 +1,6 @@
 pkgbase = i3lock-fancier-rapid
 	pkgdesc = A cleaner implementation of i3lock-fancy-rapid
-	pkgver = r10.df18859
+	pkgver = r15.9870172
 	pkgrel = 1
 	url = https://github.com/Bowero/i3lock-fancier-rapid
 	arch = x86_64

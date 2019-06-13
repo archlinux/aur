@@ -2,7 +2,7 @@
 
 _pkgname=i3lock-fancier-rapid
 pkgname=$_pkgname
-pkgver=r10.df18859
+pkgver=r15.9870172
 pkgrel=1
 pkgdesc="A cleaner implementation of i3lock-fancy-rapid"
 arch=('x86_64')
