@@ -5,7 +5,7 @@ source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=4.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Complete solution to record, convert and stream audio and video (android)"
 arch=('any')
 url="http://ffmpeg.org/"
@@ -15,6 +15,7 @@ depends=("android-${_android_arch}-bzip2"
          "android-${_android_arch}-libtheora"
          "android-${_android_arch}-libvorbis"
          "android-${_android_arch}-libvpx"
+         "android-${_android_arch}-libwebp"
          "android-${_android_arch}-opus"
          "android-${_android_arch}-speex"
          "android-${_android_arch}-zlib")
@@ -93,6 +94,7 @@ build() {
         --enable-libtheora
         --enable-libvorbis
         --enable-libvpx
+        --enable-libwebp
         --enable-libopus
         --enable-zlib"
 
