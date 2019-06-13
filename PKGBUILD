@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@ctrl-d.org>
 
 pkgname=dprox
-pkgver=0.1.2
+pkgver=0.1.2.1
 pkgrel=1
 pkgdesc="a lightweight DNS proxy server, compatible with dnsmasq-china-list"
 url="https://github.com/bjin/dprox"
@@ -12,7 +12,7 @@ depends=('ghc-libs' 'haskell-attoparsec' 'haskell-dns' 'haskell-iproute' 'haskel
 makedepends=('ghc' 'haskell-hspec')
 optdepends=('dnsmasq-china-list-git: configuration file for easy deployment')
 source=("https://hackage.haskell.org/packages/archive/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('052fd5c47f59bc77ac30364c4d1ba4397ab9c5fface61b3b1db0fdbb4a28f3ca7d1e074227efbc01d17f8b32556cd040470a1cfb303fe4f152f3a7b9763536af')
+sha512sums=('24bacb9ab594f571fc07c715f53fa1130bc5206fcf2a7d7ab00cbfa7c3f1f43f87a9131d75b5c02b18c13a7afd7cea2a5ec0d3346c811cfaeceedd1130725ecb')
 
 prepare() {
     cd $pkgname-$pkgver
