@@ -7,16 +7,23 @@
 pkgbase=lib32-bluez-libs
 pkgname=("${pkgbase}" 'lib32-bluez-plugins')
 pkgver=5.50
-pkgrel=1
+pkgrel=2
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('LGPL2.1')
 makedepends=('lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2' 'lib32-systemd')
-source=("http://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar."{xz,sign})
+source=("https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar."{xz,sign}
+        "refresh_adv_manager_for_non-LE_devices.diff")
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('5ffcaae18bbb6155f1591be8c24898dc12f062075a40b538b745bfd477481911'
-            'SKIP')
+sha512sums=('64a680e4b3c270bc2439610c91ad2aef36131d84401e4bbdf6c2b7ec8708a19dfc942b31b9189c38a97ca072c761c669ae1aace5f4ff5d06de3ccbf33184be45'
+            'SKIP'
+            'c6ef673956963725edc52d667648e51df5b99f820e87705096b4b9338e8a4540722e734f1e8e67998c2fbbefec30645ff1fa064789c8a858f770d1214399561d')
 validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
+
+prepare() {
+  cd "bluez-${pkgver}"
+  patch -Np1 -i ../refresh_adv_manager_for_non-LE_devices.diff
+}
 
 build() {
   # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
@@ -35,6 +42,7 @@ build() {
     --localstatedir=/var \
     --libdir=/usr/lib32 \
     --libexecdir=/usr/lib32 \
+    --with-dbusconfdir=/usr/share/dbus-1 \
     --disable-monitor \
     --disable-cups \
     --disable-obex \
