@@ -1,7 +1,7 @@
 pkgbase = perl-coro
 	pkgdesc = CPAN/Coro - the only real threads in perl
-	pkgver = 6.514
-	pkgrel = 3
+	pkgver = 6.54
+	pkgrel = 1
 	url = https://metacpan.org/release/Coro
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = perl-coro
 	depends = perl-common-sense
 	depends = perl-guard>=0.5
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Coro-6.514.tar.gz
-	md5sums = 13ddcc56e44ecaebb5c5e651e6cf8b0c
+	source = http://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Coro-6.54.tar.gz
+	md5sums = aaf5ca766a7323feaab7c9aea77e6ea8
 
 pkgname = perl-coro
 
