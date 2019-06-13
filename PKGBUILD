@@ -6,7 +6,7 @@ source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-libpng
 pkgver=1.6.37
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of routines used to create PNG format graphics (android)"
 arch=('any')
 url="http://www.libpng.org/pub/png/libpng.html"
@@ -26,12 +26,19 @@ prepare() {
     # see http://sourceforge.net/projects/libpng-apng/
     gzip -dkf ../libpng-$pkgver-apng.patch
     patch -Np0 -i ../libpng-$pkgver-apng.patch
+    sed -i "s/libpng@PNGLIB_MAJOR@@PNGLIB_MINOR@/libpng/g" libpng.pc.in
+    sed -i "s/-lpng@PNGLIB_MAJOR@@PNGLIB_MINOR@/\-lpng/g" libpng.pc.in
+    sed -i "s/libpng@PNGLIB_MAJOR@@PNGLIB_MINOR@/libpng/g" Makefile.in
 }
 
 build() {
     cd "$srcdir/libpng-$pkgver"
 
-    android-${_android_arch}-configure
+    android-${_android_arch}-configure \
+        --disable-unversioned-links \
+        --disable-unversioned-libpng-pc \
+        --disable-unversioned-libpng-config
+
     make $MAKEFLAGS
 }
 
@@ -39,8 +46,11 @@ package () {
     cd "${srcdir}/libpng-${pkgver}"
 
     make DESTDIR="$pkgdir" install
+    sed -i "s|include/libpng|include|g" "${pkgdir}"/${ANDROID_PREFIX_LIB}/pkgconfig/libpng.pc
     rm -r "${pkgdir}"/${ANDROID_PREFIX_BIN}
     rm -r "${pkgdir}"/${ANDROID_PREFIX_SHARE}
+    mv -f "${pkgdir}"/${ANDROID_PREFIX_INCLUDE}/libpng/* "${pkgdir}"/${ANDROID_PREFIX_INCLUDE}/
+    rm -r "${pkgdir}"/${ANDROID_PREFIX_INCLUDE}/libpng
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
 }
