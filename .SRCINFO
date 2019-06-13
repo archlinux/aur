@@ -1,6 +1,6 @@
 pkgbase = unf
 	pkgdesc = UNixize Filename -- replace annoying anti-unix characters in filenames
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = unf
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/io12/unf/archive/0.1.0.tar.gz
+	source = https://github.com/io12/unf/archive/0.1.1.tar.gz
 	md5sums = b39055b646630f7eef4c8abe50bc5213
 
 pkgname = unf
