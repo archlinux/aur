@@ -6,8 +6,8 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=0.165.0
-pkgrel=2
+pkgver=0.165.1
+pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
 url="https://github.com/openSUSE/osc"
@@ -24,7 +24,7 @@ conflicts=('osc-git' 'osc-bash-completion' 'zsh-completion-osc')
 replaces=('osc-bash-completion' 'zsh-completion-osc')
 source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
         "_osc")
-sha256sums=('5595ecd326976549d597953804c630b3d93e538a6b3747aa3b8b5a095d321f71'
+sha256sums=('538e7afd6deac6b67d21ae9989d55991f0633fe9b464dace5c01024a0eca6095'
             '2b045e03d2fdce12683ceb9792d491a32f00b256045456412e7bc18c8726218a')
 
 prepare() {
