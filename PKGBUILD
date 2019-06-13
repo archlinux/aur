@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=netcap-git
-pkgver=v0.3.9.r22.g232ecd0
+pkgver=v0.3.9.r106.g6bbb8d6
 pkgrel=1
 pkgdesc='A framework for secure and scalable network traffic analysis'
 url="https://github.com/dreadl0ck/netcap"
@@ -37,16 +37,24 @@ build() {
 	mkdir -p build
 
 	export GOPATH="${srcdir}/go"
-	go build \
-		-ldflags "-s -w" \
-		-gcflags="all=-trimpath=${GOPATH}/src" \
-		-asmflags="all=-trimpath=${GOPATH}/src" \
-		-o build/netcapture ./cmd
+	for i in cmd/*; do
+		msg2 "Compiling $i..."
+
+		go build \
+			-ldflags "-s -w" \
+			-gcflags="all=-trimpath=${GOPATH}/src" \
+			-asmflags="all=-trimpath=${GOPATH}/src" \
+		-o "build/${i//\//.}" "./$i"
+	done
 }
 
 package() {
 	cd "${srcdir}/go/src/github.com/dreadl0ck/netcap"
 
-	install -Dm755 "build/netcapture" "${pkgdir}/usr/bin/netcapture"
+	for i in build/cmd.*; do
+		msg2 "Installing $i..."
+
+		install -Dm755 "$i" "${pkgdir}/usr/bin/$(basename $i)"
+	done
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
