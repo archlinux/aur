@@ -1,0 +1,17 @@
+pkgbase = digraph-git
+	pkgdesc = A vim-style digraph parser.
+	pkgver = r3.2b9a056
+	pkgrel = 1
+	url = https://github.com/vxid/digraph
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	source = digraph-git::git+https://github.com/vxid/digraph.git
+	md5sums = SKIP
+
+pkgname = digraph-git
+
