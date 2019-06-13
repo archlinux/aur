@@ -3,7 +3,7 @@
 
 pkgname=parsoid-git
 _pkgname=parsoid
-pkgver=v0.3.0.r2010.gc900a0c7d
+pkgver=v0.3.0.r2680.g77baf2568
 pkgrel=1
 pkgdesc="A bidirectional wikitext parser and runtime"
 arch=('any')
@@ -46,7 +46,7 @@ package() {
     cp localsettings.example.js localsettings.js    
     cp config.example.yaml config.yaml
     mkdir -p "${pkgdir}/usr/share/webapps/${_pkgname}"
-    tar c --exclude=.git . | tar x -C "${pkgdir}/usr/share/webapps/${_pkgname}/"
+    tar c --exclude=.git --exclude=*~ . | tar x -C "${pkgdir}/usr/share/webapps/${_pkgname}/"
     install -Dm644 "${srcdir}/parsoid.service" "${pkgdir}/usr/lib/systemd/system/parsoid.service"
     install -D "COPYING.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "$srcdir"/parsoid.sysusers "$pkgdir"/usr/lib/sysusers.d/parsoid.conf
