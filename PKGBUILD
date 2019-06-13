@@ -6,7 +6,7 @@
 # Contributor: uuwe
 pkgname=openswan-git
 _pkgname=openswan
-pkgver=2.6.51.1.r6.gc2fd33323
+pkgver=2.6.51.3.r106.g56e81f917
 pkgrel=1
 pkgdesc='Open Source implementation of IPsec for the Linux operating system'
 url='https://www.openswan.org'
@@ -20,7 +20,7 @@ conflicts=($_pkgname 'ipsec-tools')
 options=('!makeflags')
 backup=('etc/ipsec.conf'
         'etc/ipsec.d/policies/'{block,clear,clear-or-private,private,private-or-clear})
-source=("$pkgname::git+https://github.com/xelerance/Openswan.git#branch=2.6.52dev"
+source=("$pkgname::git+https://github.com/xelerance/Openswan.git#branch=2.6.52"
         'openswan.service')
 md5sums=('SKIP'
          '8195505574c86f990cec2fb85ac9a780')
