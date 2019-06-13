@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=osmid
-pkgver=0.6.5
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="A lightweight, portable, easy to use tool to convert MIDI to OSC and OSC to MIDI"
 arch=('x86_64')
@@ -10,7 +10,7 @@ groups=('pro-audio')
 depends=('alsa-lib' 'gcc-libs')
 makedepends=('cmake' 'libx11')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/llloret/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('dd5e8db519cade60e5847ee02d9d19ac1b70ebfbc91eaefd0022382fdde3a6a924b73ec1683f350b348ba1343d0bb6405543722528660e69414d49132273f3ad')
+sha512sums=('50b06658762445853222f9766767017dc6027a798307c45919d6928b28e55d19b6c1886144c4f952f042ef26d41b7fb07b535877ca09cacf4cadcbec336b28c8')
 
 prepare() {
   cd "$pkgname-$pkgver"
