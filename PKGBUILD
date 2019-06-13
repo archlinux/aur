@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-sly-git
-pkgver=2.21.40.g710d4be4
-pkgrel=2
+pkgver=2.21.r67.g893a939a
+pkgrel=1
 pkgdesc="Common Lisp IDE for Emacs. Fork of slime."
 arch=('any')
 url="https://github.com/joaotavora/sly"
@@ -17,7 +17,7 @@ options=('!makeflags')
 
 pkgver() {
   cd ${pkgname%-git}
-  echo $(git describe --tags | cut -c15- | tr - .)
+  echo $(git describe --tags | cut -c15- | sed 's+-+.r+' | tr - .)
 }
 
 build() {
