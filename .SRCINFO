@@ -1,0 +1,20 @@
+pkgbase = android-armv7a-eabi-libtiff
+	pkgdesc = Library for manipulation of TIFF images (android)
+	pkgver = 4.0.10
+	pkgrel = 1
+	url = http://www.simplesystems.org/libtiff/
+	arch = any
+	license = custom
+	makedepends = android-configure
+	depends = android-armv7a-eabi-libjpeg-turbo
+	depends = android-armv7a-eabi-zlib
+	depends = android-armv7a-eabi-xz
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://download.osgeo.org/libtiff/tiff-4.0.10.tar.gz
+	sha256sums = 2c52d11ccaf767457db0c46795d9c7d1a8d8f76f68b0b800a3dfe45786b996e4
+
+pkgname = android-armv7a-eabi-libtiff
+
