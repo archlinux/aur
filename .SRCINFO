@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop-preview-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary version from RStudio official repository)
 	pkgver = 1.2.1541
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.rstudio.org/
 	arch = x86_64
 	license = GPL
