@@ -2,13 +2,13 @@
 
 pkgname=edgetpu_api
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Coral Edge TPU runtime and Python library'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://coral.withgoogle.com/'
 license=('Apache')
 options=(!strip)
-depends=('python' 'python-pip' 'python-pillow' 'python-numpy' 'libunwind')
+depends=('python' 'python-pip' 'python-pillow' 'python-numpy' 'libunwind' 'libc++')
 source=("https://dl.google.com/coral/${pkgname}/${pkgname}_${pkgver}.tar.gz")
 sha256sums=('82324ac028fda707926b756cc97430c8d7f5ffa39940ba74d373de7d9dc90c86')
 
