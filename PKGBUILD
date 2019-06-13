@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=pakku-git
-pkgver=0.13r7.gfbb01f7
+pkgver=0.13.r8.g1f6a5c6
 pkgrel=1
 pkgdesc='Pacman wrapper with AUR support with latest changes from github repo'
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags|sed 's+-+r+'|tr - .| cut -c2-
+  git describe --tags|sed 's+-+.r+'|tr - .| cut -c2-
 }
 
 build() {
