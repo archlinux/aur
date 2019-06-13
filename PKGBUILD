@@ -1,0 +1,46 @@
+# Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
+# Contributor: pingplug < aur at pingplug dot me >
+# Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
+# Contributor: bubla < matej dot tyc at gmail dot com >
+
+_android_arch=x86-64
+source android-env ${_android_arch}
+
+pkgname=android-${_android_arch}-libtiff
+pkgver=4.0.10
+pkgrel=1
+pkgdesc="Library for manipulation of TIFF images (android)"
+arch=('any')
+url="http://www.simplesystems.org/libtiff/"
+license=('custom')
+depends=("android-${_android_arch}-libjpeg-turbo"
+         "android-${_android_arch}-zlib"
+         "android-${_android_arch}-xz")
+options=(!strip !buildflags staticlibs !emptydirs)
+makedepends=('android-configure')
+source=("http://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz")
+sha256sums=('2c52d11ccaf767457db0c46795d9c7d1a8d8f76f68b0b800a3dfe45786b996e4')
+
+build() {
+    cd "${srcdir}/tiff-${pkgver}"
+    export CFLAGS="-fno-strict-aliasing"
+    export CXXFLAGS="-fno-strict-aliasing"
+
+    android-${_android_arch}-configure \
+        --disable-jbig \
+        --without-x
+
+    make $MAKEFLAGS
+}
+
+package() {
+    cd "${srcdir}/tiff-${pkgver}"
+
+    make DESTDIR="$pkgdir" install
+    cp libtiff/{tiffiop,tif_dir}.h "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/"
+    cp libtiff/tif_config.h "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/"
+    rm -r "${pkgdir}"/${ANDROID_PREFIX_BIN}
+    rm -r "${pkgdir}"/${ANDROID_PREFIX_SHARE}
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+}
