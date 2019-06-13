@@ -2,8 +2,8 @@
 
 pkgname=platformsh-cli-git
 _pkgname=${pkgname%-git}
-pkgver=3.42.0
-pkgrel=1
+pkgver=a47308373d4f5ba1a0be83607c2c22efa0124ae00e8925e1bb16abd497f9878d
+pkgrel=3.42.1
 pkgdesc="The unified tool for managing your Platform.sh services from the command line."
 arch=('any')
 url="https://github.com/platformsh/$_pkgname"
