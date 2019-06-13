@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-babl
-pkgver=0.1.64
+pkgver=0.1.66
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format conversion library (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://ftp.gtk.org/pub/babl/${pkgver%.*}/babl-${pkgver}.tar.bz2")
-sha256sums=('bb774d30b403511b95aa42f833a3562580c3b7cf3187f0923748d17775d158bf')
+sha256sums=('369dd89345489a3949e83d5ad63295029088230626f64a05e530761b176fa163')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
