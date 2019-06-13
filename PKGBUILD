@@ -4,8 +4,8 @@
 
 _pkgname=epiphany
 pkgname=epiphany-unstable
-pkgver=3.33.1
-pkgrel=0
+pkgver=3.33.3
+pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
 url="https://wiki.gnome.org/Apps/Web"
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(docbook-xml startup-notification lsb-release gobject-introspection 
              appstream-glib git meson)
 checkdepends=(xorg-server-xvfb)
 groups=(gnome)
-_commit=fc0c1e210762b3170d0f1aa41af0340c676e3a93  # tags/3.33.1^0
+_commit=a714192d4f0f12074aa55568359f2e5db9b4f21f  # tags/3.33.3^0
 source=("git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=$_commit")
 sha256sums=('SKIP')
 conflicts=(epiphany epiphany-git)
