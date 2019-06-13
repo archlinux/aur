@@ -3,17 +3,16 @@
 # Contributor: Tobias Powalowski <tpowa at archlinux dot org>
 
 pkgname=lib32-pciutils
-pkgver=3.5.4
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="PCI bus configuration space access library (32-bit)"
 arch=('x86_64')
-url="http://mj.ucw.cz/sw/pciutils/"
+url="https://mj.ucw.cz/sw/pciutils/"
 license=('GPL2')
 depends=("${pkgname#lib32-}" 'lib32-kmod' 'lib32-systemd')
 makedepends=('gcc-multilib')
-source=("ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/${pkgname#lib32-}-${pkgver}.tar.gz"
-        "ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/${pkgname#lib32-}-${pkgver}.tar.gz.sign")
-sha512sums=('cd3ed843b8b2a31f92234be6a59bb02cd5268afad7e353872f588df281984af5129b4a9e363332bcf173dd71fda2091e501237fbd4fc39575cfe0472456d4a34'
+source=("ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/${pkgname#lib32-}-${pkgver}.tar.gz"{,.sign})
+sha512sums=('ab2bab26dd11f941286593135b751b811fa6199d4b5fb8a18e74f72709ea598ab0c0efa31ad6ca70949966dcf80cdfb16d53e5d339b773c69e0a12f132bb8577'
             'SKIP')
 validpgpkeys=('5558F9399CD7836850553C6EC28E7847ED70F82D') # Martin Mares <mj@ucw.cz>
 
