@@ -2,7 +2,7 @@
 
 _name=gzdoom
 pkgname=${_name}-legacy
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support (legacy version)'
 arch=('i686' 'x86_64')
