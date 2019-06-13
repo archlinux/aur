@@ -14,9 +14,12 @@ pkgbase = wineasio-git
 	provides = wineasio
 	conflicts = wineasio
 	source = wineasio-git::git+https://github.com/jhernberg/wineasio
+	source = unicode.h
 	sha256sums = SKIP
+	sha256sums = a552e487cba95883a15db612ae646df5d502a39afd7c4805b4ca0b549cc2f522
 	depends_x86_64 = lib32-jack
 	makedepends_x86_64 = gcc-multilib
+	makedepends_x86_64 = mingw-w64-headers
 
 pkgname = wineasio-git
 
