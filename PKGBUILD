@@ -2,14 +2,21 @@
 
 _gitname=gym
 pkgname=python-${_gitname}-git
-pkgver=r761.efeadfd
+pkgver=r1034.f380a0e8
 pkgrel=1
 pkgdesc="A toolkit for developing and comparing reinforcement learning algorithms."
 arch=('any')
 url="https://gym.openai.com"
 license=('MIT')
-depends=('python' 'python-numpy>=1.10.4' 'python-requests>=2.0' 'python-six')
+depends=(
+  'python'
+  'python-numpy>=1.10.4'
+  'python-pyglet'
+  'python-requests>=2.0'
+  'python-six'
+)
 makedepends=('git')
+provides=('python-gym')
 source=("git+https://github.com/openai/$_gitname")
 md5sums=('SKIP')
 
