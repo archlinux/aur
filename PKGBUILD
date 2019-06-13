@@ -1,14 +1,14 @@
-# Maintainer: Tobias Borgert <tobias.borgertt@gmail.com>
+# Maintainer: Tobias Borgert <tobias.borgert@gmail.com>
 
 pkgname=ecal
 pkgver=5.3.2
-pkgrel=7
+pkgrel=8
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64')
 url="https://github.com/continental/ecal"
 license=('Apache')
-depends=('asio' 'protobuf' 'qt5-base' 'tclap')
-makedepends=('cmake' 'doxygen' 'graphviz' 'simpleini')
+depends=('protobuf' 'qt5-base')
+makedepends=('asio' 'cmake' 'doxygen' 'graphviz' 'simpleini' 'tclap')
 optdepends=()
 source=(https://github.com/continental/ecal/archive/v$pkgver.tar.gz
         ecal-v5.3.2-archlinux-fabs.patch)
