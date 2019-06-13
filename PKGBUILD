@@ -1,18 +1,18 @@
 # Maintainer: Juan Simón <play4pro@protonmail.com>
 
 pkgname=drill-search-gtk-bin
-pkgver=1.230
-pkgrel=0
+pkgver=1.237
+pkgrel=1
 pkgdesc="Search files without indexing, but clever crawling (GTK version)"
 url="https://www.drill.santamorena.me/"
 arch=('x86_64')
 license=('GPL2')
 depends=('gtk3')
 provides=("${pkgname}")
-conflicts=("${provides[@]}")
+conflicts=('drill-search-gtk')
 source=("https://github.com/yatima1460/Drill/releases/download/$pkgver/Drill-GTK-linux-x86_64-release-$pkgver.deb")
 
-md5sums=('79f380c37878322832fcb5d03099bd21')
+md5sums=('e1bbc0538d27961b72bf6e11e06bc596')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir"/
