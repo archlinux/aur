@@ -2,15 +2,16 @@
 # Contributor: rbrt
 
 pkgname=klystrack-git
-pkgver=1.7.5.r3.gf24c982
-pkgrel=1
+pkgver=1.7.5.r25.gc136d33
+pkgrel=2
 pkgdesc="Tracker for making chiptune-like music on a modern computer"
 arch=('i686' 'x86_64')
 url="http://kometbomb.github.io/klystrack/"
 license=('MIT')
 groups=()
+options=(!makeflags)
 depends=('sdl2_image' 'sdl2_mixer')
-makedepends=('git' 'gendesk')
+makedepends=('git')
 provides=('klystrack')
 conflicts=('klystrack')
 source=('git://github.com/kometbomb/klystrack' 'git://github.com/kometbomb/klystron')
@@ -25,17 +26,13 @@ pkgver() {
 }
 
 prepare() {
-  gendesk -f -n 
-  touch "$srcdir/klystrack/src/version.h"
-  touch "$srcdir/klystron/src/version.h"
-  # prevent treating warnings as errors
-  sed -i 's/-Werror//' "$srcdir/klystron/Makefile"
-  sed -i 's/-Werror//' "$srcdir/klystrack/Makefile"
   # klystron is submodule of klystrack
   cd "$srcdir/$_gitname" #i.e. klystrack
   git submodule init
   git config submodule.klystron.url "$srcdir/klystron"
   git submodule update
+  # path to default song
+  sed -i 's/Default.kt/\/usr\/share\/klystrack\/Default\.kt/' "$srcdir/klystrack/src/main.c"
 }
 
 build() {
@@ -57,7 +54,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/man/man1"
   gzip -ck doc/klystrack.1 > "$pkgdir/usr/share/man/man1/klystrack.1.gz"
   # .desktop file
-  install -Dm644 "../klystrack.desktop" "$pkgdir/usr/share/applications/klystrack.desktop"
+  install -Dm644 "linux/klystrack.desktop" "$pkgdir/usr/share/applications/klystrack.desktop"
   install -Dm644 "icon/256x256.png" "$pkgdir/usr/share/pixmaps/klystrack.png"
 }
 
