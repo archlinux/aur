@@ -85,7 +85,7 @@ _gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
-    "git+${_repo_url}#branch=master"
+    "git+${_repo_url}#branch=bcachefs-v5.0"
     "git+${_repo_url_gcc_patch}"
     config         # the main kernel config file
     60-linux.hook  # pacman hook for depmod

@@ -11,7 +11,7 @@ pkgbase = linux-bcachefs-git
 	makedepends = libelf
 	makedepends = xmlto
 	options = !strip
-	source = git+https://github.com/koverstreet/bcachefs#branch=master
+	source = git+https://github.com/koverstreet/bcachefs#branch=bcachefs-v5.0
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
 	source = 60-linux.hook
