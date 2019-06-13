@@ -1,4 +1,3 @@
-# PKGCONFIG for android-qt5
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 # Contributor: Jiaxi Hu <sftrytry _AT_ gmail _DOT_ com>
 # Contributor: jimmy00784 <jimmy00784@gmail.com>
@@ -6,16 +5,17 @@
 # Contributor: Martchus <martchus@gmx.net>
 
 _android_arch=armv7a-eabi
-source android-env.sh ${_android_arch}
+source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-qt5
 pkgver=5.12.3
-pkgrel=2
+pkgrel=4
 pkgdesc="Qt 5 for Android"
 arch=('any')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL')
-makedepends=('libgl'
+makedepends=('android-environment'
+             'libgl'
              'sqlite'
              'zlib'
              'python2'
@@ -47,7 +47,7 @@ case "$_android_arch" in
                     "android-x86-system-image: AVD support")
         ;;
     x86-64)
-        SKIPoptdepends=("android-google-apis-x86-64: AVD support"
+        optdepends=("android-google-apis-x86-64: AVD support"
                     "android-x86-64-system-image: AVD support")
         ;;
     *)
@@ -112,9 +112,9 @@ build() {
         -confirm-license
         -opensource
         -silent
-        -prefix ${ANDROID_LIBS}
-        -examplesdir ${ANDROID_LIBS}/share/qt5/examples
-        -testsdir ${ANDROID_LIBS}/share/qt5/tests
+        -prefix ${ANDROID_PREFIX}
+        -examplesdir ${ANDROID_PREFIX_SHARE}/qt5/examples
+        -testsdir ${ANDROID_PREFIX_SHARE}/qt5/tests
         -xplatform android-clang
         -nomake tests
         -nomake examples
@@ -154,11 +154,10 @@ package() {
     cd ${_pkgfqn}
 
     make INSTALL_ROOT=${pkgdir} install
-    STRIP=${ANDROID_NDK_HOME}/toolchains/${toolchain}/prebuilt/linux-x86_64/${stripFolder}/bin/strip
-    find ${pkgdir}/${ANDROID_LIBS}/bin -type f ! -name '*.pl' -exec strip -s {} \;
-    find ${pkgdir}/${ANDROID_LIBS}/lib -type f -name 'lib*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
-#    find ${pkgdir}/${ANDROID_LIBS}/lib -type f \( -name 'lib*.a' ! -name 'libQt5Bootstrap.a' ! -name 'libQt5QmlDevTools.a' \) -exec ${ANDROID_STRIP} -g {} \;
-    find ${pkgdir}/${ANDROID_LIBS}/plugins -type f -name 'lib*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
-    find ${pkgdir}/${ANDROID_LIBS}/qml -type f -name 'lib*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
-    sed -i '/QMAKE_PRL_BUILD_DIR/d' ${pkgdir}/${ANDROID_LIBS}/lib/lib*.prl
+    find ${pkgdir}/${ANDROID_PREFIX_BIN} -type f ! -name '*.pl' -exec strip -s {} \;
+    find ${pkgdir}/${ANDROID_PREFIX_LIB} -type f -name 'lib*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
+#    find ${pkgdir}/${ANDROID_PREFIX_LIB} -type f \( -name 'lib*.a' ! -name 'libQt5Bootstrap.a' ! -name 'libQt5QmlDevTools.a' \) -exec ${ANDROID_STRIP} -g {} \;
+    find ${pkgdir}/${ANDROID_PREFIX}/plugins -type f -name 'lib*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
+    find ${pkgdir}/${ANDROID_PREFIX}/qml -type f -name 'lib*.so' -exec ${ANDROID_STRIP} -g --strip-unneeded {} \;
+    sed -i '/QMAKE_PRL_BUILD_DIR/d' ${pkgdir}/${ANDROID_PREFIX_LIB}/lib*.prl
 }

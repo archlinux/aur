@@ -1,13 +1,14 @@
 pkgbase = android-armv7a-eabi-qt5
 	pkgdesc = Qt 5 for Android
 	pkgver = 5.12.3
-	pkgrel = 2
+	pkgrel = 4
 	url = https://www.qt.io
 	install = android-armv7a-eabi-qt5.install
 	arch = any
 	groups = android-qt5
 	license = GPL3
 	license = LGPL
+	makedepends = android-environment
 	makedepends = libgl
 	makedepends = sqlite
 	makedepends = zlib
