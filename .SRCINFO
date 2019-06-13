@@ -1,0 +1,25 @@
+pkgbase = libpcap-symbols
+	pkgdesc = A system-independent interface for user-level packet capture (with symbols)
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://www.tcpdump.org/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = flex
+	makedepends = bluez-libs
+	depends = glibc
+	depends = libnl
+	depends = sh
+	depends = libusbx
+	depends = dbus
+	provides = libpcap=1.9.0
+	conflicts = libpcap
+	options = !strip
+	source = https://www.tcpdump.org/release/libpcap-1.9.0.tar.gz
+	source = mgmt.h
+	sha256sums = 2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019
+	sha256sums = 7c85da5330ce7ecb6934795c02c652b9e344461302cf74804a4692c3e2e1e7e2
+
+pkgname = libpcap-symbols
+
