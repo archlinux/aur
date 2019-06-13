@@ -8,7 +8,7 @@
 
 pkgname=mutter-781835-workaround
 pkgver=3.32.2+10+g8b79c83ad
-pkgrel=2
+pkgrel=3
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -92,6 +92,10 @@ prepare() {
   # cogl: Remove GLX "threaded swap wait" used on Nvidia [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/602
   git cherry-pick -n f12eddc1
+
+  # compositor: Don't emit size-changed when only position changes
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/568
+  git cherry-pick -n 00d8337d
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
