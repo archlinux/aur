@@ -1,7 +1,8 @@
+# Maintainer: Zanny <lordzanny@gmail.com>
 # Maintainer: ProfessorKaos64 <mdeguzis@gmail.com>
-# Mod: http://www.moddb.com/mods/brutal-doom
+
 pkgname=brutal-doom
-pkgver=21.2018.02.24
+pkgver=21
 pkgrel=1
 pkgdesc="Brutal Doom via the GzDoom engine."
 arch=(any)
@@ -11,50 +12,35 @@ depends=('gzdoom')
 optdepends=('doomseeker')
 makedepends=('git')
 source=(
-		'http://packages.libregeek.org/game-files/brutal-doom/bd21testfeb24.pk3'
-		'http://packages.libregeek.org/game-files/brutal-doom/DoomMetalVol4.wad'
-        'http://packages.libregeek.org/game-files/brutal-doom/bd21-changelog.txt'
-		'gzdoom.ini'
-		'http://packages.libregeek.org/game-files/brutal-doom/README.md'
-		'http://packages.libregeek.org/game-files/brutal-doom/manual.rtf'
+		'http://doomshack.org/uploads/brutalv21.7z'
+		'https://doomshack.org/uploads/DoomMetalVol4.zip'
 		'brutal-doom'
-		'brutal-doom.install'
+		'gzdoom.ini'
 		'brutal-doom.png'
 		'brutal-doom.desktop'
 )
-noextract=('bd21testfeb24.pk3')
-md5sums=(
-			'd67380ac1a0af2e3094894d71625f9e5'
-			'ce4e136fa6309327f17b9c828c69d843'
-			'52dfc347e01afd80f80a7863ada729b1'
-			'275d4b469d1305b72a9af0c0a15a0f1c'
-			'd389f10370dfde975cb32e127385d237'
-			'07ece7ee7141dc62b3253c7d1e200620'
-			'e5097664c5be7b3895df588e086c6351'
-			'f0b8b097b26db054cc1fd70c7c3d83e7'
-			'bf85967c850adba3498cdba580a4e081'
-			'3ab16e25014b173b5c9d09a4df2d167b'
+noextract=('brutalv21.pk3')
+sha1sums=(
+			'3260fccd428d9b8e9327e36978f80dc48fe31000'
+			'5bad2150ea3c2b0368371d6c26b12ca15c25d4e4'
+			'0255b97eb04619e43d65774eaccc257863ecdb36'
+			'8207776f36fd46a0ee85b72b047e79484e2079f3'
+			'0259b3c20a2749f28c8add5cd55755c51bd2cef6'
+			'1f9e71edef0131d24f0aced422ba7b7cb8573a1c'
 	    )
-install=$pkgname.install
 
 package() {
+    cd $srcdir
 
-	install -d "$pkgdir/usr/bin"
-	install -d "$pkgdir/usr/share/games/$pkgname"
-	install -d "$pkgdir/usr/share/pixmaps"
-	install -d "$pkgdir/usr/share/applications"
+	install -Dm644 "brutalv21.pk3" "$pkgdir/usr/share/games/$pkgname/brutal-doom.pk3"
+	install -m644 "DoomMetalVol4.wad" "$pkgdir/usr/share/games/$pkgname/doom-metal.wad"
+    install -m644 "gzdoom.ini" "$pkgdir/usr/share/games/$pkgname/gzdoom.ini"
 
-	msg2 "Installing launcher"
-	install -m755 "brutal-doom" "$pkgdir/usr/bin/brutal-doom"
+	install -Dm644 "BRUTAL DOOM MANUAL.rtf" "$pkgdir/usr/share/doc/$pkgname/manual.rtf"
+	install -m644 "bd21 changelog.txt" "$pkgdir/usr/share/doc/$pkgname/changelog.txt"
 
-	msg2 "Installing bd21testfeb24.pk3 and DoomMetalVol4.wad..."
-	install -m644 "$srcdir/bd21testfeb24.pk3" "$pkgdir/usr/share/games/$pkgname/bd21testfeb24.pk3"
-	install -m644 "$srcdir/DoomMetalVol4.wad" "$pkgdir/usr/share/games/$pkgname/DoomMetalVol4.wad"
-	install -m644 "$srcdir/manual.rtf" "$pkgdir/usr/share/games/$pkgname/manual.rtf"
-	install -m644 "README.md" "$pkgdir/usr/share/games/$pkgname/README.md"
-	install -m644 "$srcdir/brutal-doom.png" "$pkgdir/usr/share/pixmaps/brutal-doom.png"
-	install -m644 "$srcdir/brutal-doom.desktop" "$pkgdir/usr/share/applications/brutal-doom.desktop"
-
-	msg2 "Installing configuration files..."
-	install -m777 "gzdoom.ini" "$pkgdir/usr/share/games/$pkgname/gzdoom.ini"
+	install -Dm644 "brutal-doom.png" "$pkgdir/usr/share/pixmaps/brutal-doom.png"
+	install -Dm644 "brutal-doom.desktop" "$pkgdir/usr/share/applications/brutal-doom.desktop"
+	
+    install -Dm755 "brutal-doom" "$pkgdir/usr/bin/brutal-doom"
 }

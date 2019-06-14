@@ -1,3 +1,14 @@
 #!/bin/bash
 
-gzdoom -config /usr/share/games/brutal-doom/gzdoom.ini
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    XDG_CONFIG_HOME="$HOME/.config"
+fi
+
+if  [ ! -f "$XDG_CONFIG_HOME/brutal-doom/gzdoom.ini" ]; then
+    if [ ! -d "$XDG_CONFIG_HOME/brutal-doom" ]; then
+        mkdir "$XDG_CONFIG_HOME/brutal-doom"
+    fi
+    cp "/usr/share/games/brutal-doom/gzdoom.ini" "$XDG_CONFIG_HOME/brutal-doom/"
+fi
+
+gzdoom -config "$XDG_CONFIG_HOME/brutal-doom/gzdoom.ini"
