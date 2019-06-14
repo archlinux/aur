@@ -6,8 +6,6 @@ pkgbase = python-astroplan
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-matplotlib
-	checkdepends = python-pytest-mpl
 	makedepends = cython
 	makedepends = python-astropy>=1.3
 	makedepends = python-pytz

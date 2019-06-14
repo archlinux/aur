@@ -15,7 +15,7 @@ makedepends=('cython'
 #            'python-sphinx'
 #            'python-matplotlib'
 #            'python-astroquery')
-checkdepends=('python-matplotlib' 'python-pytest-mpl')
+#checkdepends=('python-matplotlib' 'python-pytest-mpl')
 source=("https://files.pythonhosted.org/packages/source/a/astroplan/astroplan-${pkgver}.tar.gz"
         'correct_ephem_name.patch'
         'disable_failing_assertion.patch'
@@ -42,11 +42,11 @@ build() {
 #   python setup.py build_docs
 }
 
-check() {
-    cd ${srcdir}/astroplan-${pkgver}
-
-    python setup.py test
-}
+#check() {
+#    cd ${srcdir}/astroplan-${pkgver}
+#
+#    python setup.py test
+#}
 
 package_python-astroplan() {
     depends=('python>=3.5' 'python-numpy>=1.10' 'python-astropy>=1.3' 'python-pytz')
