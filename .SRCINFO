@@ -1,6 +1,6 @@
 pkgbase = sh-elf-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for SuperH target
-	pkgver = 8.2.0
+	pkgver = 9.1.0
 	pkgrel = 1
 	url = http://gcc.gnu.org/
 	arch = x86_64
@@ -18,10 +18,13 @@ pkgbase = sh-elf-gcc
 	optdepends = sh-elf-newlib: Standard C library (sh-elf target)
 	options = !emptydirs
 	options = !strip
-	source = https://gcc.gnu.org/pub/gcc/releases/gcc-8.2.0/gcc-8.2.0.tar.xz
-	source = http://isl.gforge.inria.fr/isl-0.19.tar.bz2
-	sha512sums = 64898a165f67e136d802a92e7633bf1b06c85266027e52127ea025bf5fc2291b5e858288aac0bdba246e6cdf7c6ec88bc8e0e7f3f6f1985f4297710cafde56ed
-	sha512sums = 08f4db964d9e02ec8aa9779378ed76e0ddf1d56f81f87664dbf787555ce496cdc87e836f8a51ae137f45e648c604870cce07ee45919eafb549e404afb8f27083
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-9.1.0/gcc-9.1.0.tar.xz
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-9.1.0/gcc-9.1.0.tar.xz.sig
+	source = http://isl.gforge.inria.fr/isl-0.21.tar.bz2
+	validpgpkeys = 33C235A34C46AA3FFB293709A328C3A2C3C45C06
+	sha512sums = b6134df027e734cee5395afd739fcfa4ea319a6017d662e54e89df927dea19d3fff7a6e35d676685383034e3db01c9d0b653f63574c274eeb15a2cb0bc7a1f28
+	sha512sums = SKIP
+	sha512sums = 48f3b8d90550e8ab28837b5757f87bf99cddec67769877e04942abef69bbe526ef4c863951d55dd89a6027dc09df48988c8df6029782f990aa4d5b67e65f6d53
 
 pkgname = sh-elf-gcc
 
