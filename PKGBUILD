@@ -34,7 +34,7 @@ package() {
   install -D -m644 -t "${install_dir}/" "${srcdir}/dkms.conf"
  
   # Install source files
-  for file in {Makefile,dkms.conf,*.c,*.h}; do
+  for file in {Makefile,*.c,*.h}; do
     [ -f "$file" ] || continue
     install -D -m644 -t "${install_dir}/" "${file}"
   done
