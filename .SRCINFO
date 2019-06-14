@@ -1,0 +1,19 @@
+pkgbase = 3dslicer-bin
+	pkgdesc = A multi-platform, free open source software package for visualization and medical image computing
+	pkgver = 4.10.2
+	pkgrel = 1
+	url = https://www.slicer.org
+	arch = x86_64
+	license = BSD
+	makedepends = gendesk
+	depends = dbus
+	depends = glib2
+	provides = 3dslicer
+	conflicts = 3dslicer
+	source = 3dslicer-bin-4.10.2.tar.gz::https://download.slicer.org/bitstream/1023242
+	source = 3dslicer.svg::https://www.slicer.org/w/images/9/9f/3DSlicerLogo-HorizontalF.svg
+	sha512sums = 36f1b175f987e7d1e288f08d55c6942e494f1234bfdfb4ffae8517bb1711418c6ae3d5efd3f57dc31a7f65c451c8324d8c09d4de697b6b81d0a85ec48299c686
+	sha512sums = 67986a7bd90c95c4a91ddaecd86ceb3b54729f62c7e19ba3559f6180659902275a2f5a794cada3e9412664fb97cc6d57a02055826c4c135f2005d2c92d0ef878
+
+pkgname = 3dslicer-bin
+
