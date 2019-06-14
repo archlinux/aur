@@ -1,0 +1,21 @@
+pkgbase = luminos-greeter
+	pkgdesc = Customizable LightDM Webkit Greeter
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/linuxaddict89/luminos-greeter
+	arch = any
+	license = GPLv2
+	makedepends = meson
+	makedepends = vala
+	depends = lightdm
+	depends = webkit2gtk
+	depends = glib2
+	depends = libsoup
+	depends = json-glib
+	depends = libgee
+	provides = luminos-greeter
+	source = git://github.com/linuxaddict89/luminos-greeter.git
+	md5sums = SKIP
+
+pkgname = luminos-greeter
+
