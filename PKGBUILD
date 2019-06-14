@@ -1,5 +1,4 @@
-# Maintainer: KingofToasters <themanhimself at sgregoratto dot me>
-
+# Maintainer: KingofToasters <dev at sgregoratto dot me>
 pkgname=igor
 pkgver=1.595
 pkgrel=1
