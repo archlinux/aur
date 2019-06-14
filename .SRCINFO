@@ -1,6 +1,6 @@
 pkgbase = safecoin-git
 	pkgdesc = Safecoin daemon & client
-	pkgver = 0.28
+	pkgver = 0.36
 	pkgrel = 1
 	url = https://safecoin.org/
 	arch = x86_64
