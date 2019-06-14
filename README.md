@@ -8,6 +8,15 @@ nextcloud and other programs.
 
 ### Installation
 
+**Arch User repository**
+
+You can install _sydf_ using your favourite package manager:
+```sh
+yay -S sydf
+```
+
+**Manual**
+
 Run these commands in your terminal to set up _sydf_ system-wide:
 ```sh
 # Install latest version

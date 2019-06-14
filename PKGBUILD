@@ -1,6 +1,6 @@
 # Maintainer: Filip Parag <aur@filiparag.com>
 pkgname=sydf
-pkgver=0.1.r3.g527d662
+pkgver=0.1
 pkgrel=1
 epoch=
 pkgdesc="Symlink Your Damn Files"
