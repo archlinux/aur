@@ -4,9 +4,10 @@ _pkgname=mapper
 _branch=dev
 _use_gh_api=true
 wl_project=${_orgname}
+wl_hz="https://hosted.weblate.org/healthz/"
 wl_dl="https://hosted.weblate.org/download/${wl_project}"
 pkgname=${_orgname,,}-${_pkgname}-git
-pkgver=20190608.1pre.r5158.9193bd50
+pkgver=20190610.2pre.r5162.a6565398
 pkgrel=1
 pkgdesc='Map drawing program from OpenOrienteering'
 arch=('i686' 'x86_64')
@@ -61,15 +62,17 @@ wl_update() {
 prepare() {
   cd ${_pkgname}-${_branch}/translations
 
-  rename nb nb_NO *_nb.ts
-  rename CN Hans *_zh_CN.ts
+  if [ "`curl $wl_hz`" = "ok" ]; then
+    rename nb nb_NO *_nb.ts
+    rename CN Hans *_zh_CN.ts
 
-  wl_update ${_pkgname} ${_orgname}_
-  wl_update map-symbols map_symbols_
-  wl_update qt qt_
+    wl_update ${_pkgname} ${_orgname}_
+    wl_update map-symbols map_symbols_
+    wl_update qt qt_
 
-  rename nb_NO nb *_nb_NO.ts
-  rename Hans CN *_zh_Hans.ts
+    rename nb_NO nb *_nb_NO.ts
+    rename Hans CN *_zh_Hans.ts
+  fi
 }
 
 build() {
