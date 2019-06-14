@@ -12,7 +12,7 @@ arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('gtk3' 'webkit2gtk' 'gtkspell3')
 makedepends=('autoconf' 'automake' 'intltool')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha512sums=('700b11f449b63ec1bc8fecf0d2df3ed18bc7078472de0f3ee034c28e3e096eb61559529cc094c76fc8a9959bbb3e5f159d621ad9739d857b0d9b8d7ff386deaa')
 
 build() {
