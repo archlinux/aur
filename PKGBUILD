@@ -2,29 +2,33 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=zfs-utils
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=("i686" "x86_64")
 url="https://zfsonlinux.org/"
 license=('CDDL')
+optdepends=('python: for arcstat/arc_summary/dbufstat')
 makedepends=("git")
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
-sha256sums=('0fd92e87f4b9df9686f18e2ac707c16b2eeaf00f682d41c20ea519f3a0fe4705'
+sha256sums=('0af79fde44b7b8ecb94d5166ce2e4fff7409c20ed874c2d759db92909e6c2799'
             'SKIP'
             'da1cdc045d144d2109ec7b5d97c53a69823759d8ecff410e47c3a66b69e6518d'
             'f95ad1a5421ccbb8b01f448373f46cfd1f718361a82c2687a597325cf9827e3e')
+b2sums=('f18268656381c20af6bd18421636a1c56633c7eafaf91b1308d15508d5f4bdcfa5dfbb4e09d0302ac3de9d6a4f69718fe9c3d083ed5b3ab2a32c6fb7a1db624b'
+        'SKIP'
+        '570e995bba07ea0fb424dff191180b8017b6469501964dc0b70fd51e338a4dad260f87cc313489866cbfd1583e4aac2522cf7309c067cc5314eb83c37fe14ff3'
+        '491a7f20b0c6b4ce4fcedab617b2d7a4f2a01f1bc8f1ae57efde2fb22c2ab09a1107a8f4877b95c27576fe4216d01f181936787f51ce532bb13c5806badf7519')
 validpgpkeys=('4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027'  # Tony Hutter (GPG key for signing ZFS releases) <hutter2@llnl.gov>
               'C33DF142657ED1F7C328A2960AB9E991C6AF658B') # Brian Behlendorf <behlendorf1@llnl.gov>
 
 prepare() {
     cd "${srcdir}"/zfs-${pkgver}
 
-    autoreconf -fi
     # pyzfs is not built, but build system tries to check for python anyway
-    ln -s /bin/true python3-fake
+    ln -sf /bin/true python3-fake
 }
 
 build() {
