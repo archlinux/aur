@@ -18,48 +18,48 @@ sha512sums=('SKIP'
 
 pkgver()
 {
-	cd "${srcdir}/${pkgname%-git}" || exit
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/${pkgname%-git}" || exit
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 _pkgname=${pkgname%-git}
-# template start; name=opsu; version=0.3;
+# template start; name=opsu; version=0.4;
 pkgdesc="An open source osu!-client written in Java."
 arch=('any')
 url="https://itdelatrisu.github.io/opsu/"
 license=('GPL3')
 depends=('java-runtime' 'bash' 'hicolor-icon-theme'
-		 'xorg-xrandr'	# is a dependency for LWJGL. Had to search around for the fix after the
-		 				# application was throwing an unhandled exception because it couldn't
-		 				# detect monitors. Any chance this could be added to the dep list?
-		 				# https://aur.archlinux.org/account/SajeOne
-		 )
+         'xorg-xrandr'	# "[…] is a dependency for LWJGL. Had to search around for the fix after the
+                        # application was throwing an unhandled exception because it couldn't
+                        # detect monitors. Any chance this could be added to the dep list?"
+                        # https://aur.archlinux.org/account/SajeOne
+         )
 optdepends=('ffmpeg: Background video playback')
 makedepends=('java-environment' 'java-web-start' 'gradle' 'git')
 
 build()
 {
-	cd "${srcdir}/${_pkgname}" || exit
+    cd "$srcdir/$_pkgname" || exit
 
-	# keep dependencies outside users home by setting GRADLE_USER_HOME
-	GRADLE_USER_HOME=. gradle jar -PXDG=true -PexcludeFFmpeg
+    # keep dependencies outside users home by setting GRADLE_USER_HOME
+    GRADLE_USER_HOME="$srcdir/gradle" gradle jar -PXDG=true -PexcludeFFmpeg
 }
 
 package()
 {
-	# cut pkgver
-	_pkgver=$(git -C "${srcdir}/${_pkgname}" describe --tags | sed 's/-.*//')
+    # cut pkgver
+    _pkgver=$(git -C "$srcdir/$_pkgname" describe --tags | sed 's/-.*//')
 
-	install -Dm644	"${srcdir}/${_pkgname}/build/libs/${_pkgname}-${_pkgver}.jar" \
-					"${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
-					
-	install -Dm644	"${srcdir}/${_pkgname}/res/logo.png" \
-					"${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.png"
-					
-	install -Dm644	"${_pkgname}.desktop" \
-					"${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-					
-	install -Dm755	"${_pkgname}.sh" \
-					"${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644	"$srcdir/$_pkgname/build/libs/$_pkgname-$_pkgver.jar" \
+                    "$pkgdir/usr/share/java/$_pkgname/$_pkgname.jar"
+
+    install -Dm644	"$srcdir/$_pkgname/res/logo.png" \
+                    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.png"
+
+    install -Dm644	"$_pkgname.desktop" \
+                    "$pkgdir/usr/share/applications/$_pkgname.desktop"
+
+    install -Dm755	"$_pkgname.sh" \
+                    "$pkgdir/usr/bin/$_pkgname"
 }
 # template end;
