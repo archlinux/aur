@@ -1,6 +1,6 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 pkgname=ibmcloud-cli
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc="Command line client for IBM Cloud"
 arch=('x86_64' 'i686')
@@ -41,3 +41,5 @@ package() {
 
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums_x86_64=('d9c289b369b7d4110ac614dd2f813283b527c01f423585be842d414ea3e9ee12')
+sha256sums_i686=('79326695e5a8bf1938cd178fffaea389b8abcc7c4d2048d900ee1fe55b3be0ff')
