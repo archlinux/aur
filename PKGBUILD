@@ -12,7 +12,7 @@ source=(
 )
 md5sums=('134bea2832e8e74c1646eb09f375b008'
 )
-
+options=('!strip')
 package() {
   cd ${srcdir}
   cp -r opt usr ${pkgdir}
