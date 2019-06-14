@@ -1,6 +1,6 @@
 pkgbase = stack-static
 	pkgdesc = The Haskell Tool Stack (linked statically)
-	pkgver = 1.9.3
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/commercialhaskell/stack
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = stack-static
 	replaces = stack-bin
 	replaces = haskell-stack
 	source = stack.bash
-	source = https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-linux-x86_64-static.tar.gz
-	source = https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-linux-x86_64-static.tar.gz.asc
-	validpgpkeys = C5705533DA4F78D8664B5DC0575159689BEFB442
+	source = https://github.com/commercialhaskell/stack/releases/download/v2.1.1/stack-2.1.1-linux-x86_64-static.tar.gz
+	source = https://github.com/commercialhaskell/stack/releases/download/v2.1.1/stack-2.1.1-linux-x86_64-static.tar.gz.asc
+	validpgpkeys = 2C6A674E85EE3FB896AFC9B965101FF31C5C154D
 	sha256sums = df46833a748574d01f38d4120e5021ee6fac9b8a70995674ca0bd2cacbd3e3c2
-	sha256sums = c9bf6d371b51de74f4bfd5b50965966ac57f75b0544aebb59ade22195d0b7543
+	sha256sums = fffb6996312be9c45227aea2fbde4b0ed71c9e9cb52aeefb78f585e3ddd14e9f
 	sha256sums = SKIP
 
 pkgname = stack-static
