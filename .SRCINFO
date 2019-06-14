@@ -1,0 +1,16 @@
+pkgbase = pc
+	pkgdesc = Command line client for pastebins
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/swalladge/pc
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = pc-v0.1.0.tar.gz::https://github.com/swalladge/pc/archive/v0.1.0.tar.gz
+	sha256sums = fd3f7ba3d5400563acf3b600b05244f3c81fa09593c2b51942cbd9aeddb0e699
+
+pkgname = pc
+
