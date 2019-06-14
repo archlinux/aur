@@ -1,0 +1,16 @@
+pkgbase = sidequest
+	pkgdesc = Easily sideload apps onto your standalone android VR headset
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/the-expanse/SideQuest
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	provides = sidequest
+	source = https://github.com/the-expanse/SideQuest/releases/download/0.3.4/SideQuest-linux-x64.tar.gz
+	md5sums = cd58ea36d26d7fd5229913ab54921b1c
+
+pkgname = sidequest
+
