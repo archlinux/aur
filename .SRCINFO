@@ -1,5 +1,5 @@
 pkgbase = baidunetdisk
-	pkgdesc = Baidubetdisk Client, converted from .rpm package
+	pkgdesc = Baidunetdisk Client, converted from .rpm package
 	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://pan.baidu.com/
