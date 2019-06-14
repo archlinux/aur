@@ -3,13 +3,14 @@
 pkgname=librepcb-appimage
 pkgver=0.1.1
 _pkgver=${pkgver/_/-}
-pkgrel=3
+pkgrel=4
 pkgdesc="A free EDA software to develop printed circuit boards (binary AppImage version)"
 arch=('x86_64')
 url="http://librepcb.org/"
 license=('GPL')
 depends=('desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 provides=('librepcb')
+conflicts=('librepcb')
 _appimage="librepcb-${_pkgver}-linux-${arch[0]}.AppImage"
 noextract=("${_appimage}")
 options=('!strip' '!emptydirs')
