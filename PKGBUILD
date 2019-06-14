@@ -6,7 +6,7 @@
 
 pkgname=tcllib
 pkgver=1.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of pure-Tcl extensions."
 arch=('any')
 url="http://core.tcl.tk/tcllib/"
@@ -23,5 +23,7 @@ package(){
 	-no-examples -no-html \
 	-no-wait  -no-gui
   install -Dm644 license.terms "$pkgdir"/usr/share/licenses/$pkgname/COPYING
-  rm -f "$pkgdir"/usr/share/man/mann/{try,string,variable,zlib,coroutine}.n
+  for manp in graph; do
+    mv "$pkgdir"/usr/share/man/mann/{,tcllib-}$manp.n
+  done
 }

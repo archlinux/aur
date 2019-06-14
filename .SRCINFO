@@ -1,7 +1,7 @@
 pkgbase = tcllib
 	pkgdesc = Set of pure-Tcl extensions.
 	pkgver = 1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://core.tcl.tk/tcllib/
 	arch = any
 	license = bsd
