@@ -1,7 +1,7 @@
 pkgbase = sydf
 	pkgdesc = Symlink Your Damn Files
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/filiparag/sydf
 	arch = any
 	license = GPL
