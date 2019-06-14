@@ -3,7 +3,7 @@
 # Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 pkgname=mandoc-cvs
-pkgver=20190314
+pkgver=20190612
 pkgrel=1
 pkgdesc='A suite of tools compiling mdoc from the OpenBSD project'
 license=('custom: ISC')
@@ -25,7 +25,6 @@ prepare() {
   msg2 "As of 2019-03, the fingerprint of mandoc.bsd.lv is zj94mkQU15j7Hh4YalZHbEO2m4jm2ZVW0cuva+OpKvg."
   msg2 "Do NOT continue connecting if these do not match."
   CVS_RSH=ssh cvs -d anoncvs@mandoc.bsd.lv:/cvs checkout -d "$pkgname" -P mandoc
-  cp "${srcdir}/configure.local" $pkgname
 }
 
 pkgver() {
@@ -39,6 +38,7 @@ pkgver() {
 }
 
 build() {
+  cp "${srcdir}/configure.local" $pkgname
   cd $pkgname
   ./configure
   make
