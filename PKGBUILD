@@ -1,11 +1,10 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=crossc-git
-_srcname=crossc
 pkgver=1.6.0.r0.g98689d7
-pkgrel=3
+pkgrel=4
 pkgdesc='Portable C wrapper for SPIRV-Cross (git version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/rossy/crossc/'
 license=('APACHE')
 depends=('gcc-libs')
@@ -18,7 +17,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-    cd "$_srcname"
+    cd crossc
     
     git submodule init
     git config --local 'submodule.SPIRV-Cross.url' "${srcdir}/SPIRV-Cross"
@@ -26,20 +25,20 @@ prepare() {
 }
 
 pkgver() {
-    cd "$_srcname"
+    cd crossc
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$_srcname"
+    cd crossc
     
     make
 }
 
 package() {
-    cd "$_srcname"
+    cd crossc
     
     local _file
     local _lib
