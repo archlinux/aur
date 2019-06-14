@@ -6,9 +6,10 @@ _pkgname=GPXSee
 _branch=master
 _use_gh_api=true
 wl_project=${_pkgname}
+wl_hz="https://hosted.weblate.org/healthz/"
 wl_dl="https://hosted.weblate.org/download/${wl_project}"
 pkgname=${_pkgname,,}-git
-pkgver=7.8.r1663.b7f2eeab
+pkgver=7.8.r1675.d574710b
 pkgrel=1
 pkgdesc='GPS log file viewer and analyzer'
 arch=('i686' 'x86_64')
@@ -65,10 +66,12 @@ prepare() {
 
   sed -i "s/\(VERSION = \).*/\1${pkgver}/" gpxsee.pro
 
-  cd lang
-  rename nb nb_NO *_nb.ts
-  wl_update Translations ${_pkgname,,}_
-  rename nb_NO nb *_nb_NO.ts
+  if [ "`curl $wl_hz`" = "ok" ]; then
+    cd lang
+    rename nb nb_NO *_nb.ts
+    wl_update Translations ${_pkgname,,}_
+    rename nb_NO nb *_nb_NO.ts
+  fi
 }
 
 build() {
