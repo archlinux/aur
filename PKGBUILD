@@ -4,7 +4,7 @@
 
 _basename=libinput
 pkgname=libinput-nosmoothing
-pkgver=1.12.6
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="Input device management and event handling library (with patch to disable graphics tablet smoothing)"
 url="https://www.freedesktop.org/wiki/Software/libinput/"
@@ -20,7 +20,7 @@ optdepends=('gtk3: libinput debug-gui'
             'python-evdev: libinput measure')
 source=(https://freedesktop.org/software/$_basename/$_basename-$pkgver.tar.xz{,.sig}
         disable-tablet-smoothing.patch)
-sha512sums=('02ad90c77a0c8c27fd96ec34e1546c5f0947ced49bad386372c1ef7c41b3b2157c39020f0766f20aaf2ab3c97128567e169279bea21115ced39499dda325d2ef'
+sha512sums=('26f11c5274c26acc38b9b5729195010c0799a9563f1eb0e0cd67e323f8ed73b0fc8db8584ec8fdf1b726417f64c2daeb54832167079832626c8c1190fccf459f'
             'SKIP'
             'SKIP')
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
