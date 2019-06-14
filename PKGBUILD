@@ -1,7 +1,7 @@
 # Maintainer: 3DA4C300 <3DA4C300@protonmail.com>
 
 pkgname=safecoin-git
-pkgver=0.28
+pkgver=0.36
 pkgrel=1
 pkgdesc="Safecoin daemon & client"
 arch=("x86_64")
