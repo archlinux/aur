@@ -1,8 +1,8 @@
 # Maintainer: Thomas Oster <mail@thomas-oster.de>
 pkgname=zrep-expire-git
-pkgver=r16.16a51bc
+pkgver=r23.1328444
 pkgrel=1
-pkgdesc="Zrep snapshot expiration tool (v2) (with patches from t-oster)"
+pkgdesc="Zrep snapshot expiration tool (v2)"
 arch=(any)
 url="https://github.com/isaaceindhoven/zrep-expire"
 license=('APACHE2.0')
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/t-oster/zrep-expire.git')
+source=('git+https://github.com/isaaceindhoven/zrep-expire.git')
 noextract=()
 md5sums=('SKIP')
 
