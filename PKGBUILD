@@ -11,17 +11,17 @@ sha512sums=('SKIP')
 
 pkgver()
 {
-	# https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
-	cd "${pkgname%-git}" || exit
-	(
-		set -o pipefail
-		
-		# version with unix committer date to bypass git squashes
-		printf "%s.r%s.%s" \
-			"$(< src/net/version.d sed -rn 's/.*_gameVersion = Version\(([0-9]+), ([0-9]+), ([0-9]+)\).*/\1.\2.\3/p')" \
-			"$(git show -s --format=%ct HEAD)" \
-			"$(git rev-parse --short HEAD)"
-	)
+    # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
+    cd "${pkgname%-git}" || exit
+    (
+        set -o pipefail
+
+        # version with unix committer date to bypass git squashes
+        printf "%s.r%s.%s" \
+            "$(< src/net/version.d sed -rn 's/.*_gameVersion = Version\(([0-9]+), ([0-9]+), ([0-9]+)\).*/\1.\2.\3/p')" \
+            "$(git show -s --format=%ct HEAD)" \
+            "$(git rev-parse --short HEAD)"
+    )
 }
 
 _pkgname=${pkgname%-git}
