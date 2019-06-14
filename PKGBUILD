@@ -1,12 +1,12 @@
 # Maintainer: Samuel Walladge <samuel@swalladge.net>
 pkgname=pc
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line client for pastebins"
 arch=('i686' 'x86_64')
 url="https://github.com/swalladge/pc"
 license=('APACHE' 'MIT')
-makedepends=('cargo' 'git')
+makedepends=('cargo')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/swalladge/pc/archive/v${pkgver}.tar.gz")
 sha256sums=('fd3f7ba3d5400563acf3b600b05244f3c81fa09593c2b51942cbd9aeddb0e699')
 
