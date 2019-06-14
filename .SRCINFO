@@ -1,7 +1,7 @@
 pkgbase = ecal
 	pkgdesc = enhanced Communication Abstraction Layer
 	pkgver = 5.3.2
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/continental/ecal
 	arch = x86_64
 	license = Apache
