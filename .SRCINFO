@@ -1,0 +1,12 @@
+pkgbase = gumboscript
+	pkgdesc = A simple programing language
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = gumbocoin.com/gumboscript
+	arch = any
+	depends = java-runtime-common
+	source = gumboscript-0.0.5.tar.gz::https://github.com/mee42/GumboScript/archive/v0.0.5.tar.gz
+	md5sums = 3d01cdf59e5097e30724c44adbde264d
+
+pkgname = gumboscript
+
