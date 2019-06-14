@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-pkgver=74.0.3717.0
+pkgver=76.0.3800.0
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-developer"
 arch=('x86_64')
@@ -13,10 +13,11 @@ makedepends=(
   'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
   'xdg-utils' 'gn'
 )
+options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('854cd404b365fd07610ac29002e5eb9e42255c1935c87ea6b73be2b1db73b8296c692dc50a61c78438087f34118e62dbd2553d877e04fad0d26c6ce56ca6ed2a')
+sha512sums=('b63e484082c6496b54d9a8ee0dcba64f0463836d84cc9a462c4330010cc7604b25cd65aaa157635a2943ca870b502b88fa3fb051c1cd47268a3bc5db98150762')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -34,14 +35,14 @@ prepare() {
 build() {
   cd "$srcdir/chromium-$pkgver"
 
-  #python2 tools/clang/scripts/update.py --without-android
+  python2 tools/clang/scripts/update.py
 
-  #export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$srcdir/path:$PATH"
+  export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$srcdir/path:$PATH"
 
-  #export CC="clang"
-  #export CXX="clang++"
+  export CC="clang"
+  export CXX="clang++"
 
-  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true enable_ac3_eac3_audio_demuxing=true use_gnome_keyring=false use_sysroot=false use_gold=false use_allocator=\"none\" linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false is_clang=false clang_use_chrome_plugins=false is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=false use_lld=false use_jumbo_build=false"
+  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true enable_ac3_eac3_audio_demuxing=true use_gnome_keyring=false use_sysroot=false use_gold=false use_allocator=\"none\" linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false is_clang=true clang_use_chrome_plugins=true is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=false use_lld=false use_jumbo_build=false"
 
   #(
     #cd third_party/ffmpeg
