@@ -3,7 +3,7 @@
 _pkgname=dh-dyndns
 pkgname=$_pkgname-git
 pkgver=0.2.r1.66b7d75
-pkgrel=1
+pkgrel=2
 pkgdesc='Dynamic DNS script for DreamHost'
 arch=('any')
 url='https://github.com/pissedoffadmins/dh-dyndns'
@@ -23,5 +23,5 @@ pkgver() {
 package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 dh-dyndns "$pkgdir/usr/bin/dh-dyndns"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/README.md"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/${_pkgname}/README.md"
 }
