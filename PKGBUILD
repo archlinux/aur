@@ -80,7 +80,7 @@ package()
     install -Dm 644 "$srcdir/$_pkgname.desktop" \
                     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-    install -Dm 644	"misc/$_pkgname.png" \
+    install -Dm 644 "misc/$_pkgname.png" \
                     "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
 }
 
