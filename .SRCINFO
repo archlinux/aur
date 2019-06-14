@@ -1,6 +1,6 @@
 pkgbase = syslog-ng-git
 	pkgdesc = Enhanced system logging daemon
-	pkgver = 3.20.1.r201.gbd42c0fdc
+	pkgver = 3.21.1.r139.g442a3e22a
 	pkgrel = 1
 	url = https://www.syslog-ng.com/products/open-source-log-management/
 	arch = x86_64
@@ -25,6 +25,8 @@ pkgbase = syslog-ng-git
 	makedepends = geoip
 	makedepends = libmaxminddb
 	makedepends = mongo-c-driver
+	makedepends = net-snmp
+	makedepends = librdkafka
 	makedepends = java-environment=8
 	makedepends = gradle
 	makedepends = python
@@ -49,6 +51,8 @@ pkgbase = syslog-ng-git
 	optdepends = geoip: for the GeoIP plugin
 	optdepends = libmaxminddb: for the GeoIP2 plugin
 	optdepends = mongo-c-driver: for the MongoDB plugin
+	optdepends = net-snmp: for the SNMP plugin
+	optdepends = librdkafka: for the Kafka C plugin
 	optdepends = java-runtime-headless: for Java-based plugins
 	optdepends = python: for Python-based plugins
 	provides = syslog-ng
