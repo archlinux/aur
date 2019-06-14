@@ -1,12 +1,12 @@
 pkgbase = inspircd
-	pkgdesc = A stable, modern and lightweight IRC daemon
-	pkgver = 2.0.27
+	pkgdesc = A modular C++ IRC daemon (ircd).
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = http://www.inspircd.org/
 	install = inspircd.install
 	arch = any
 	license = GPL2
-	makedepends = pkg-config
+	makedepends = pkgconf
 	makedepends = libmariadbclient
 	makedepends = sqlite3
 	makedepends = libldap
@@ -25,9 +25,9 @@ pkgbase = inspircd
 	optdepends = geoip: m_geoip
 	provides = inspircd
 	conflicts = inspircd
-	source = https://github.com/inspircd/inspircd/archive/v2.0.27.tar.gz
+	source = https://github.com/inspircd/inspircd/archive/v3.1.0.tar.gz
 	source = inspircd.service
-	sha512sums = 56f03c3259fad54365e97fd82f4e309edc60b641ccadd7916d04156fd157858f79930c8b9df99aa98c5505f76ab19e6bcd150ae5ed04d2bddfff572e18226cdd
+	sha512sums = 77e5602115d612be6bb1dc0123f5fde2e6ff0547376de04cd5c24de9376797654bbd62a01d058b6f27858bd338ae9126cdd0dcd8571ba0c33afc1f3e166e000c
 	sha512sums = 5a16a7c237693ffc6a108358f339b6aa2451fb16430561848ae869f890199b38fab6a13640bcc35cf1d07e32d7e5fff405d88668ee05ddaffc2ef61cb42ee832
 
 pkgname = inspircd
