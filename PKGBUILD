@@ -26,8 +26,8 @@
 # wrap the `getpwuid()` function and modify the original return value for uid==0.
 
 pkgname=vivado
-pkgver=2018.3
-_more_ver=1207_2324
+pkgver=2019.1
+_more_ver=0524_1430
 pkgrel=1
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
@@ -46,7 +46,7 @@ source=("file:///Xilinx_Vivado_SDK_${pkgver}_${_more_ver}.tar.gz"
         'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('8a3a75f26d0e20de21fc673ad9d40d0f'
+md5sums=('47388a71dc5962a4b8d76e752928616e'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 options=('!strip')
