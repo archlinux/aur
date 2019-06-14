@@ -1,6 +1,6 @@
 --- server/Makefile.orig	2019-05-30 17:01:26.463718143 +0000
 +++ server/Makefile	2019-05-30 17:01:13.127062905 +0000
-@@ -173,36 +173,37 @@
+@@ -173,36 +173,36 @@
  	rm -rf $(CORE_FONTS) $(OUTPUT) $(GRUNT_FILES)
  
  install:
