@@ -1,11 +1,10 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=mpv-full-git
-_srcname=mpv
-pkgver=0.29.1.r331.g4d001bb30d
+pkgver=0.29.1.r338.g6aecd10eba
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL3')
 url='https://mpv.io/'
 depends=(
@@ -17,7 +16,7 @@ depends=(
         'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader' 'shaderc'
         'libplacebo'
     # AUR:
-        'mujs' 'rsound' 'crossc'
+        'mujs' 'rsound' 'spirv-cross'
 )
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
@@ -29,8 +28,14 @@ options=('!emptydirs')
 source=('git+https://github.com/mpv-player/mpv.git')
 sha256sums=('SKIP')
 
+prepare() {
+    cd mpv
+    
+    ./bootstrap.py
+}
+
 pkgver() {
-    cd "$_srcname"
+    cd mpv
     
     local _version
     local _revision
@@ -44,9 +49,7 @@ pkgver() {
 }
 
 build() {
-    cd "$_srcname"
-    
-    ./bootstrap.py
+    cd mpv
     
     ./waf configure \
         --color='yes' \
@@ -138,7 +141,7 @@ build() {
         --enable-jpeg \
         --disable-direct3d \
         --enable-shaderc \
-        --enable-crossc \
+        --enable-spirv-cross \
         --disable-d3d11 \
         --disable-rpi \
         --disable-ios-gl \
@@ -168,7 +171,7 @@ build() {
 }
 
 package() {
-    cd "$_srcname"
+    cd mpv
     
     ./waf install --destdir="$pkgdir"
     
