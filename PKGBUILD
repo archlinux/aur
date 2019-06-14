@@ -1,17 +1,17 @@
 # Maintainer: Zhanibek Adilbekov <zhnaibek.adilbekov@pm.me>
 # Original Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=gibo
-pkgver=2.1.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A shell script for easily accessing gitignore boilerplates"
 url="https://github.com/simonwhitaker/gibo"
 arch=('any')
-install="$pkgname.install"
+install=$pkgname.install
 license=('custom:UNLICENSE')
 source=("https://github.com/simonwhitaker/$pkgname/archive/$pkgver.tar.gz"
         "$pkgname.install")
-md5sums=('e60be99fafc2d1f27152062e4e776ac3'
-		'b1b49419e90f7b7f0e84a214ecfdbfef')
+md5sums=('881ed9e518b5aab2a6c40d83e960d9c8'
+         'b1b49419e90f7b7f0e84a214ecfdbfef')
 
 package() {
 	cd "$pkgname-$pkgver"
