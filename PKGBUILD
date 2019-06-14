@@ -11,7 +11,7 @@ depends=('python' 'python-pip' 'python-pyqt5' 'python-requests')
 makedepends=('git' 'python-setuptools')
 provides=("fpakman")
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('aa90ee6635c617c2cf48ee9932c242c9855f53c13415793ccbc3dd0eb111e3e777ef19bf923f3a1389e369ac5e1ecf1a4bdfd2c549c3535c6aa17fb691976427')
+sha512sums=('7f0c3d4af0fe2ea519c85f06ba2b41b9215bb94551e94886649fc6fea67d383265e3678fe116a3bbbb89ef9a2cf31b6ab951ca68c2cd4b72d34772973706d156')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
