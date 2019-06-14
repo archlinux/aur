@@ -1,0 +1,3 @@
+post_install() {
+        echo "User manual: http://download.oddlabs.com/tribaltrouble_manual.pdf"
+}
