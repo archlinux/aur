@@ -1,16 +1,15 @@
 pkgbase = crossc
 	pkgdesc = Portable C wrapper for SPIRV-Cross
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rossy/crossc/
-	arch = i686
 	arch = x86_64
 	license = APACHE
 	makedepends = git
 	depends = gcc-libs
-	source = crossc-1.6.0.tar.gz::https://github.com/rossy/crossc/archive/v1.6.0.tar.gz
-	source = SPIRV-Cross-git::git+https://github.com/KhronosGroup/SPIRV-Cross.git#commit=bfeb388edfb63c9a927e517b634abaaa5bfb1caf
-	sha256sums = 2af9f6f5433b735de8a598cb9288a4085aff8586a1eea2df14a1dfe50c92769c
+	source = git+https://github.com/rossy/crossc.git#tag=v1.6.0
+	source = git+https://github.com/KhronosGroup/SPIRV-Cross.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = crossc
