@@ -1,0 +1,17 @@
+pkgbase = wsa-git
+	pkgdesc = GPUOpen-Drivers Window System Agent
+	pkgver = r8.f558403
+	pkgrel = 1
+	url = https://github.com/GPUOpen-Drivers/wsa
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	provides = wsa
+	conflicts = wsa
+	source = wsa::git+https://github.com/GPUOpen-Drivers/wsa.git
+	sha256sums = SKIP
+
+pkgname = wsa-git
+
