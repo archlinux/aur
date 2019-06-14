@@ -6,20 +6,12 @@ pkgbase = python-jsonschema26
 	arch = any
 	license = MIT
 	checkdepends = python-twisted
-	checkdepends = python2-twisted
 	checkdepends = python-mock
-	checkdepends = python2-mock
 	checkdepends = python-strict-rfc3339
-	checkdepends = python2-strict-rfc3339
 	checkdepends = python-rfc3987
-	checkdepends = python2-rfc3987
 	checkdepends = python-webcolors
-	checkdepends = python2-webcolors
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	makedepends = python2-functools32
 	makedepends = python-vcversioner
-	makedepends = python2-vcversioner
 	source = python-jsonschema26-2.6.0.tar.bz2::https://github.com/Julian/jsonschema/archive/v2.6.0.tar.gz
 	sha512sums = 863888fa70d7ae000530dcb405455d370a42c75b1e72970724d56397a1364da9198adb655ddebb6e8570b4bcf6ee17d26b712db86ddad15f65132dc9774e7255
 
@@ -27,10 +19,4 @@ pkgname = python-jsonschema26
 	depends = python-setuptools
 	provides = python-jsonschema=2.6.0
 	conflicts = python-jsonschema
-
-pkgname = python2-jsonschema26
-	depends = python2-setuptools
-	depends = python2-functools32
-	provides = python2-jsonschema=2.6.0
-	conflicts = python2-jsonschema
 
