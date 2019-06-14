@@ -1,15 +1,13 @@
 pkgbase = mantisbt
 	pkgdesc = Web-based issue tracking system
-	pkgver = 2.21.0
+	pkgver = 2.21.1
 	pkgrel = 1
 	url = https://www.mantisbt.org/
 	install = mantisbt.install
 	arch = any
 	license = GPL2
 	depends = php
-	optdepends = apache: run in webserver
 	optdepends = curl: interface Twitter
-	optdepends = lighttpd: run in webserver
 	optdepends = mariadb: use local MySQL server
 	optdepends = php-fpm: run in fastCGI process manager
 	optdepends = php-gd: generate captcha
@@ -21,10 +19,14 @@ pkgbase = mantisbt
 	backup = etc/webapps/mantisbt/custom_relationships_inc.php
 	backup = etc/webapps/mantisbt/custom_functions_inc.php
 	backup = etc/webapps/mantisbt/custom_constants_inc.php
-	source = https://downloads.sourceforge.net/project/mantisbt/mantis-stable/2.21.0/mantisbt-2.21.0.tar.gz
-	source = tmpfiles.conf
-	sha512sums = c93044cb49f1ed5cc7abd91b16cef3ead4844c0b869026db174372268c002b6ba3a3e79ccb723be569665740063071fe92165f0fc0286a5cdabdf84be0ab1486
-	sha512sums = e0c3fc92a3a61f86f780e5e30ccefe751ef0f16727a44006f8c7dae53951abaa0b8c6e0dc3e807668e0fe78252296996a6123cc5d5bf8427055ae07efe3bd37e
+	source = https://downloads.sourceforge.net/project/mantisbt/mantis-stable/2.21.1/mantisbt-2.21.1.tar.gz
+	source = mantisbt.sysusers
+	source = mantisbt.tmpfiles
+	source = mantisbt.uwsgi
+	sha512sums = cc7f9c46a55753e08ddde6c351139f6c8f77fd23e35ffc2668fbe393d80054138442d6db3cfde1087ee52ce1a4441661aaa1f3acdd1ea1d718b31a6b86144bf8
+	sha512sums = 3fd4e7faad7774892abfd20006ae3efcd7b0ba315447da9cea8d7352d5fd1e7f0c558d3855ad4e667a0bfe6ae0d95d12c848a78d53312521a7f551f2edca723e
+	sha512sums = b1b9145d1ba423055d5e45734a9d74c639b75ae5b5d580024b50626332a74830dd39b976de590549ff1c47c400ba4e1c20b27b69fb140f7d8527d8d281d0c7bd
+	sha512sums = 1b36d8956986360306eb15a9279c54eba46e74dfe0623dc26b3be3e8f409ab4f0afe6b34a9001cbeb9f33452fec5ccc8089a53352fa885894cc262ca9c12bc39
 
 pkgname = mantisbt
 

@@ -1,0 +1,2 @@
+z /etc/webapps/mantisbt/config_inc.php 0640 root mantisbt
+d %t/mantisbt - mantisbt mantisbt

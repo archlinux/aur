@@ -1,12 +1,24 @@
 pre_upgrade() {
   cd /usr/share/webapps/mantisbt
-  cp mantis_offline.php.sample mantis_offline.php
+  ln -sv mantis_offline.php.sample mantis_offline.php
 }
 
 post_upgrade() {
-  echo "Please follow the steps from 2.5.2 onwards at: https://mantisbt.org/docs/master/en-US/Admin_Guide/html-desktop/#admin.install.upgrade"
-  echo "After upgrading, bring MantisBT back to normal operation mode by deleting mantis_offline.php as follows:"
-  echo "rm /usr/share/webapps/mantisbt/mantis_offline.php"
+  local new_package_version="$1"
+  local old_package_version="$2"
+  if [ "$(vercmp "${old_package_version}" "2.22.1")" -le 0 ]; then
+cat <<EOF
+The webapp now needs to be run as its own user/group: mantisbt/mantisbt.
+EOF
+  fi
+
+  if [ "$(vercmp "${new_package_version}" "2.5.2")" -ge 0 ]; then
+cat <<EOF
+Follow the upgrade steps:
+https://mantisbt.org/docs/master/en-US/Admin_Guide/html-desktop/#admin.install.upgrade
+Afterwards, remove /usr/share/webapps/mantisbt/mantis_offline.php.
+EOF
+  fi
 }
 
 # vim: ts=2 sw=2 et:
