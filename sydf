@@ -1,0 +1,432 @@
+#! /bin/env bash
+
+SYDFCONFIG=$HOME/.config/sydf.conf
+SYDFDIR=""
+SYDFTRACKER=""
+if [ -f "$SYDFCONFIG" ]; then
+	SYDFDIR=`cat "$SYDFCONFIG"`
+	SYDFTRACKER="$SYDFDIR/.sydf"
+elif [[ $1 != "init" ]]; then
+	echo "sydf needs to be initialized"
+	exit
+fi
+
+# PATH
+# Sanitizes received path and converts it to absolute path
+# TODO: add support for paths containing '..' and '.'
+function path {
+
+	P=""
+	if [ -z "$1" ] || [ "$1" = "." ]; then
+		P="$PWD"
+	elif [ "${1:0:1}" = "/" ]; then
+		P="$1"
+	else
+		P="$PWD/$1"
+	fi
+
+	if [ "${P: -1}" = "/" ]; then
+		P="${P::-1}"
+	fi
+
+	echo $P
+
+}
+
+# INIT
+# Checks whether current user has their sydf directory configured
+# If not, provided path is used and saved into the config file
+function init {
+	
+	DIR=`path "$1"`;
+
+	if [[ -z "$1" ]]; then
+		DIR="$HOME/.sydf"
+	fi
+
+	if [ -e "$SYDFCONFIG" ]; then
+		if [ "$DIR" = `cat "$SYDFCONFIG"` ]; then
+			echo "sydf is already configured to use this directory"
+		else
+			echo "sydf is configured to use another directory"
+		fi
+	else
+		echo "$DIR" > "$SYDFCONFIG"
+		mkdir -p "$DIR"
+		touch "$DIR/.sydf"
+	fi
+
+}
+
+# TRACKDIR
+# When a directory is linked using syfd, it needs to remember that for future
+# hooks, because in contrary, it would link all files inside recursively.
+# This function provides interface to .sydf directory tracking list file
+function trackdir {
+
+	if [ $1 = "add" ]; then
+		grep -qxF "$2#" "$SYDFTRACKER" || echo "$2#" >> "$SYDFTRACKER"
+	elif [ $1 = "del" ]; then
+		sed -i "\|$2\#|d" "$SYDFTRACKER"
+	elif [ $1 = "has" ]; then
+		grep -n "$2#" "$SYDFTRACKER" | cut -f1 -d:
+	elif [ $1 = "sub" ]; then
+		for dir in `cat $SYDFTRACKER`; do
+			if [[ "$2" == "${dir:0:-1}"* ]]; then
+				echo "${dir:0:-1}"
+			fi
+		done
+	fi
+
+}
+
+# ADD
+# Moves given file or directory to syfd and symlinks it back to the the original
+# path afterwards. In case of a directory, it gets added to tracking list
+function add {
+
+	if [[ -z "${@}" ]]; then
+		echo "no files selected to add"
+	fi
+
+	for file in "${@}"; do
+
+		FILEPATH=`path "$file"`
+		FILE="${FILEPATH:1}"
+		DIR=`dirname "$FILE"`
+
+		if [ -e "$SYDFDIR/$FILE" ]; then
+			echo "'$file' is already managed using sydf"
+		elif [ -f "$FILEPATH" ] && [ ! -L "$file" ]; then
+
+			mkdir -p "$SYDFDIR/$DIR"
+			mv "/$FILE" "$SYDFDIR/$FILE"
+			ln -s "$SYDFDIR/$FILE" "/$FILE"
+
+		elif [ -d "$FILEPATH" ] && [ ! -L "$file" ]; then
+
+			mkdir -p "$SYDFDIR/$DIR"
+			mv "/$FILE" "$SYDFDIR/$FILE"
+			ln -s "$SYDFDIR/$FILE" "/$FILE"
+
+			trackdir add "/$FILE"
+
+		else
+			echo "'$file' cannot be added to sydf"
+		fi
+	done
+
+}
+
+# REMOVE
+# Removes the symlink and moves given file or directory from syfd back to 
+# original path. In case of an untracked directory, all children are removed
+# recursively. In case of a file inside linked (tracked) directory, user is
+# prompted if they want optimal restructuring
+# TODO: restructuring
+function remove {
+
+	if [[ -z "${@}" ]]; then
+		echo "no files selected to remove"
+	fi
+
+	for file in "${@}"; do
+		
+		FILEPATH=`path "$file"`
+		FILE="${FILEPATH:1}"
+		DIR=`dirname "$FILE"`
+
+		if [ -f "$SYDFDIR/$FILE" ]; then
+
+			if [ `trackdir sub "$FILEPATH"` ]; then
+				
+				echo "removing file inside linked directory is not supported"
+
+			else
+			
+				rm "$FILEPATH"
+				mv "$SYDFDIR/$FILE" "$FILEPATH"
+
+			fi
+
+		elif [ -d "$SYDFDIR/$FILE" ]; then
+			
+			if [ `trackdir has "$FILEPATH"` ]; then
+				
+				rm "$FILEPATH"
+				mv "$SYDFDIR/$FILE" "$FILEPATH"
+				trackdir del "$FILEPATH"
+
+			else
+				
+				for link in `find "$FILEPATH" -type l`; do
+					remove "$link"
+				done
+
+			fi
+
+		else
+			echo "'$file' is not managed using sydf"
+		fi
+	done
+
+	cleanup
+
+}
+
+# CLEANUP
+# Find and remove all unused directories inside sydf folder
+function cleanup {
+	
+	local file
+	for file in `find "$SYDFDIR/$1"  -maxdepth 1 ! -path "$SYDFDIR/$1" \
+				 ! -path "$SYDFTRACKER" -printf "$1/%P\n"`; do
+		
+		if [ ! -L /$file ]; then
+			if [ -z "`ls -A $SYDFDIR/$file`" ]; then
+				rmdir "$SYDFDIR/$file"
+			else
+				cleanup $file
+				if [ -z "`ls -A $SYDFDIR/$file`" ]; then
+					rmdir "$SYDFDIR/$file"
+				fi
+			fi
+		fi
+
+	done
+
+}
+
+# LIST
+# List all files inside sydf directory
+function list {
+
+	find "$SYDFDIR" -type f ! -path "$SYDFDIR" ! -path "$SYDFTRACKER" \
+		  -printf "$1%P\n"; 
+
+}
+
+# SNAPSHOT
+# Create a snapshot of sydf directory inside /tmp/sydf and return its path
+function snapshot {
+
+	RANDSTR=`head /dev/urandom | tr -dc A-Za-z0-9 | head -c 16 ; echo ''`
+	TMPDIR="/tmp/sydf/snapshot_$RANDSTR"
+	mkdir -p $TMPDIR
+
+	cp -rp "$SYDFDIR/"* "$TMPDIR"
+	cp -rp "$SYDFTRACKER" "$TMPDIR"
+
+	echo "$TMPDIR"
+
+}
+
+# SAFELINK
+# Safely link source to target. If target already exists, user is prompted if 
+# they want to replace it. All replaced files and directories are moved to .old
+# directory inside sydf directory
+# TODO: move files to .old gracefully
+function safelink {
+
+	SOURCE=$1
+	TARGET=$2
+
+	if [ -e $TARGET ]; then
+		if [ `prompt "'$TARGET' exists, replace?" Yn` = "no" ]; then
+			return
+		else
+			mkdir -p "$SYDFDIR/.old`dirname \"$TARGET\"`"
+			mv "$TARGET" "$SYDFDIR/.old$TARGET"
+		fi
+	fi
+	ln -s "$SOURCE" "$TARGET"
+
+}
+
+# HOOK
+# Try linking all files and directories inside sydf directory to their 
+# appropriate places in the system. Tracked directory list is used to restore
+# previos directory linking state
+function hook {
+
+	local file
+	for file in `find "$SYDFDIR/$1" -maxdepth 1 ! -path "$SYDFDIR/$1" \
+				 ! -path "$SYDFTRACKER" -printf "$1/%P\n"`; do
+		
+		FILEPATH="$SYDFDIR$file"
+		DIR=`dirname "$FILEPATH"`
+
+		if [ -f $FILEPATH ] && [ -z `trackdir sub "$file"` ]; then
+
+			mkdir -p "$DIR"
+			safelink "$FILEPATH" "$file"
+
+		elif [ -z `trackdir has "$file"` ]; then
+
+			hook "$file"
+
+		else
+			
+			safelink "$FILEPATH" "$file"
+
+		fi
+
+	done
+
+}
+
+# UNHOOK
+# Remove all sydf symlinks from the system for current user and restore files. 
+# Snapshot is created so after moving files back, they can still be present in
+# the sydf folder
+function unhook {
+
+	if [ ! -d "$SYDFDIR" ] || [ -z "`ls -A $SYDFDIR -I .sydf`" ]; then
+		return
+	fi
+
+	SNAPSHOT=`snapshot`
+
+	if [ `unhook_` -gt 0 ]; then
+
+		mv $SNAPSHOT/* "$SYDFDIR"
+		mv $SNAPSHOT/.sydf "$SYDFDIR"
+
+		rmdir $SNAPSHOT
+
+	fi
+
+}
+
+# UNHOOK_
+# Helper function to recursively unhook all files and directories by issuing
+# their removal from the sydf directory
+function unhook_ {
+
+	local file
+	local count
+	
+	if [ -z $2 ]; then
+		count=0
+	fi
+
+	for file in `find "$SYDFDIR/$1"  -maxdepth 1 ! -path "$SYDFDIR/$1" \
+				 ! -path "$SYDFTRACKER" -printf "$1/%P\n"`; do
+		
+		if [ -L "/$file" ]; then
+			remove "$file"
+			count=$(( $count + 1 ))
+		else
+			count=`unhook_ "$file" $count`
+		fi
+
+	done
+
+	echo $count
+
+}
+
+# PROMPT
+# Prompt user with yes/no question
+function prompt {
+
+	YN=""
+	DEFAULT=""
+	case "$2" in
+		Yn)
+			YN="Y/n";
+			DEFAULT="yes";;
+		yN)
+			YN="y/N";
+			DEFAULT="no";;
+		*)
+			YN="y/n";;
+	esac
+
+	while true; do
+
+		read -p "$1 [$YN]: " ANSWER
+
+		case "$ANSWER" in
+			y|Y)
+				echo "yes";
+				break;;
+			n|N)
+				echo "no";
+				break;;
+			*)
+				if [ $DEFAULT ]; then
+					echo $DEFAULT;
+					break;
+				fi
+		esac
+
+	done
+
+}
+
+# HELP
+# Print sydf usage manual
+function help {
+
+	printf \
+"NAME
+  sydf - symlink your damn files
+
+DESCRIPTION
+  sydf is a system-wide file linker
+
+COMMANDS
+  init
+      Initialize sydf directory for current user
+  add
+      Add files and directories
+  remove
+      Remove files and directories
+  list
+      List all managed files and directories
+  hook
+      Attempts to link all managed files
+  unhook
+      Reverts all symbolic links\n"
+}
+
+case $1 in
+
+	init)
+		init $2;
+		;;
+	add)
+		add ${@:2};
+		;;
+	remove)
+		remove ${@:2};
+		;;
+	list)
+		list /;
+		;;
+	hook)
+		hook;
+		;;
+	unhook)
+		unhook;
+		;;
+
+	# Debug functions
+	path)
+		path ${@:2};
+		;;
+	cleanup)
+		cleanup;
+		;;
+	snapshot)
+		snapshot;
+		;;
+	trackdir)
+		trackdir ${@:2};
+		;;
+	*)
+		help;
+		;;
+
+esac
