@@ -1,0 +1,13 @@
+pkgbase = aspell-vi
+	pkgdesc = Vietnamese dictionary for aspell
+	pkgver = 0.01.1
+	pkgrel = 1
+	url = http://aspell.net/
+	arch = x86_64
+	license = custom
+	depends = aspell
+	source = ftp://ftp.gnu.org/gnu/aspell/dict/vi/aspell6-vi-0.01.1-1.tar.bz2
+	sha512sums = d6b0a85ea3edf3193327f6df1b9c24947663fe711f060f10122e2c60aea2717d70277fd516fa685d9886c725baeebfc72d3f33e240ee8d182be669da716bb5c5
+
+pkgname = aspell-vi
+
