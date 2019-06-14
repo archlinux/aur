@@ -1,35 +1,35 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=avif-git
-pkgver=0.1.3.r3.g127822c
+pkgver=0.2.0.r3.g9c502a4
 pkgrel=1
 pkgdesc="Library for encoding and decoding .avif files"
 arch=('i686' 'x86_64')
-url="https://github.com/joedrago/avif"
+url="https://github.com/AOMediaCodec/libavif"
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'cmake' 'nasm')
 provides=('avif')
 conflicts=('avif')
 options=('staticlibs')
-source=("git+https://github.com/joedrago/avif.git")
+source=("git+https://github.com/AOMediaCodec/libavif.git")
 sha256sums=('SKIP')
 
 
 prepare() {
-  cd "avif"
+  cd "libavif"
 
   git submodule update --init --recursive
 }
 
 pkgver() {
-  cd "avif"
+  cd "libavif"
 
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "avif"
+  cd "libavif"
 
   mkdir -p "_build" && cd "_build"
   cmake \
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-  cd "avif"
+  cd "libavif"
 
   install -Dm755 "_build"/{avifdec,avifenc} -t "$pkgdir/usr/bin"
 

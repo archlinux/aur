@@ -1,8 +1,8 @@
 pkgbase = avif-git
 	pkgdesc = Library for encoding and decoding .avif files
-	pkgver = 0.1.3.r3.g127822c
+	pkgver = 0.2.0.r3.g9c502a4
 	pkgrel = 1
-	url = https://github.com/joedrago/avif
+	url = https://github.com/AOMediaCodec/libavif
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -13,7 +13,7 @@ pkgbase = avif-git
 	provides = avif
 	conflicts = avif
 	options = staticlibs
-	source = git+https://github.com/joedrago/avif.git
+	source = git+https://github.com/AOMediaCodec/libavif.git
 	sha256sums = SKIP
 
 pkgname = avif-git
