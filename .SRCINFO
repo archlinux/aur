@@ -1,7 +1,7 @@
 pkgbase = pjproject
 	pkgdesc = Open source SIP stack and media stack
-	pkgver = 2.8
-	pkgrel = 4
+	pkgver = 2.9
+	pkgrel = 1
 	url = http://www.pjsip.org/
 	arch = i686
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = pjproject
 	makedepends = speex
 	makedepends = swig
 	makedepends = util-linux
-	source = http://www.pjsip.org/release/2.8/pjproject-2.8.tar.bz2
+	source = http://www.pjsip.org/release/2.9/pjproject-2.9.tar.bz2
 	source = 0001-Don-t-build-Java-bindings.patch
 	source = 0002-Query-python-executable-for-actual-version-in-use.patch
-	sha256sums = 503d0bd7f9f13dc1492ac9b71b761b1089851fbb608b9a13996edc3c42006f79
-	sha256sums = 74bdd3f404bf27dc00c235caada2d9c4b0b43e44febc8905b507c815384cf8fb
-	sha256sums = caa187ae9b75964bbf1a79996b6e89321ff83bc910fd5bbdac33924a2bdb0cfb
+	md5sums = 66757078e7bd7cf316acb0425c2fdd6f
+	md5sums = 84f243ca0469ee9079e01622b622d65f
+	md5sums = feabd9629dd9ab619fbb56894e2e43f4
 
 pkgname = pjproject
 	depends = openssl
