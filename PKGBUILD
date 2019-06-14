@@ -2,7 +2,7 @@
 
 pkgname=slurp-git
 pkgver=1
-pkgrel=5
+pkgrel=6
 pkgdesc='Select a region in a Wayland compositor'
 arch=('x86_64')
 url='https://github.com/emersion/slurp'
