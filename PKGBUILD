@@ -21,7 +21,10 @@ pkgver() {
 
 build() {
     cd slurp
-    meson --prefix=/usr build
+    meson \
+        --prefix=/usr \
+        --buildtype release \
+        build
     ninja -C build
 }
 
