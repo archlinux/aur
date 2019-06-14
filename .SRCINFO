@@ -14,7 +14,7 @@ pkgbase = libinput-nosmoothing
         optdepends = gtk3: libinput debug-gui
         optdepends = python-pyudev: libinput measure
         optdepends = python-evdev: libinput measure
-        provides = libinput=1.12.6
+        provides = libinput=1.13.2
         conflicts = libinput
         source = https://freedesktop.org/software/libinput/libinput-1.13.2.tar.xz
         source = https://freedesktop.org/software/libinput/libinput-1.13.2.tar.xz.sig
