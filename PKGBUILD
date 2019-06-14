@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=75.0.3770.90
-pkgrel=1
+pkgrel=2
 _launcher_ver=6
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="https://www.chromium.org/Home"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
-         'desktop-file-utils' 'hicolor-icon-theme')
+         'pipewire' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
              'clang' 'lld' 'gn' 'java-runtime-headless')
 optdepends=('pepper-flash: support for Flash content'
@@ -146,6 +146,8 @@ build() {
     'fieldtrial_testing_like_official_build=true'
     'ffmpeg_branding="Chrome"'
     'proprietary_codecs=true'
+    'rtc_use_pipewire=true'
+    'rtc_link_pipewire=true'
     'link_pulseaudio=true'
     'use_gnome_keyring=false'
     'use_sysroot=false'
