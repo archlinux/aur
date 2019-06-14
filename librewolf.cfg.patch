@@ -1,0 +1,95 @@
+diff --git a/settings/settings/librewolf.cfg b/settings/settings/librewolf.cfg
+index 5e9c80f..94de823 100644
+--- a/settings/settings/librewolf.cfg
++++ b/settings/settings/librewolf.cfg
+@@ -370,10 +370,10 @@ lockPref("browser.sessionstore.interval", 60000);
+ // ----------------------------------------------------------------------------------------------------
+ 
+ // Pref : Forms auto fill
+-lockPref("extensions.formautofill.addresses.enabled", false);
+-lockPref("extensions.formautofill.available", "off");
+-lockPref("extensions.formautofill.creditCards.enabled", false);
+-lockPref("extensions.formautofill.heuristics.enabled", false);
++defaultPref("extensions.formautofill.addresses.enabled", false);
++defaultPref("extensions.formautofill.available", "off");
++defaultPref("extensions.formautofill.creditCards.enabled", false);
++defaultPref("extensions.formautofill.heuristics.enabled", false);
+ 
+ // Pref : Require manual intervention to autofill known username/passwords sign-in forms
+ // http://kb.mozillazine.org/Signon.autofillForms
+@@ -1429,22 +1429,22 @@ lockPref("extensions.getAddons.compatOverides.url", "");
+ // https://services.addons.mozilla.org/api/v3/addons/compat-override/?guid=%IDS%&lang=%LOCALE%
+ 
+ // Pref :
+-lockPref("extensions.getAddons.get.url", "");
++defaultPref("extensions.getAddons.get.url", "https://services.addons.mozilla.org/api/v3/addons/search/?guid=%IDS%&lang=%LOCALE%");
+ // Default Value
+ // https://services.addons.mozilla.org/api/v3/addons/search/?guid=%IDS%&lang=%LOCALE%
+ 
+ // Pref :
+-lockPref("extensions.getAddons.langpacks.url", "");
++defaultPref("extensions.getAddons.langpacks.url", "https://services.addons.mozilla.org/api/v3/addons/language-tools/?app=firefox&type=language&appversion=%VERSION%");
+ // Default Value
+ // https://services.addons.mozilla.org/api/v3/addons/language-tools/?app=firefox&type=language&appversion=%VERSION%
+ 
+ // Pref :
+-lockPref("extensions.getAddons.link.url", "");
++defaultPref("extensions.getAddons.link.url", "https://addons.mozilla.org/%LOCALE%/firefox/");
+ // Default Value
+ // https://addons.mozilla.org/%LOCALE%/firefox/
+ 
+ // Pref :
+-lockPref("extensions.getAddons.search.browseURL", "");
++defaultPref("extensions.getAddons.search.browseURL", "https://addons.mozilla.org/%LOCALE%/firefox/search?q=%TERMS%&platform=%OS%&appver=%VERSION%");
+ // Default Value
+ // https://addons.mozilla.org/%LOCALE%/firefox/search?q=%TERMS%&platform=%OS%&appver=%VERSION%
+ 
+@@ -1479,7 +1479,7 @@ lockPref("browser.newtabpage.activity-stream.fxaccounts.endpoint", "");
+ // https://accounts.firefox.com/
+ 
+ // Pref :
+-lockPref("extensions.update.url", "");
++defaultPref("extensions.update.url", "https://versioncheck.addons.mozilla.org/update/VersionCheck.php?reqVersion=REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&maxAppVersion=ITEM_MAXAPPVERSION%&status=%ITEM_STATUS%&appID=%APP_ID%&appVersion=%APP_VERSION%&appOS=APP_OS%&appABI=%APP_ABI%&locale=%APP_LOCALE%&currentAppVersion=CURRENT_APP_VERSION%&updateType=%UPDATE_TYPE%&compatMode=%COMPATIBILITY_MODE%");
+ // Default Value
+ // https://versioncheck.addons.mozilla.org/update/VersionCheck.php?reqVersion=
+ // %REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&maxAppVersion=
+@@ -2075,7 +2075,7 @@ lockPref("app.releaseNotesURL", "");
+ 
+ // Pref :
+ lockPref("app.update.auto", false);
+-lockPref("extensions.update.autoUpdateDefault", false);
++defaultPref("extensions.update.autoUpdateDefault", false);
+ lockPref("app.update.staging.enabled", false);
+ lockPref("app.update.silent", false);
+ lockPref("app.update.lastUpdateTime.telemetry_modules_ping", 0);
+@@ -2189,10 +2189,10 @@ lockPref("extensions.blocklist.itemURL", "");
+ lockPref("extensions.blocklist.url", "");
+ 
+ // Pref :
+-lockPref("extensions.update.background.url", "");
++defaultPref("extensions.update.background.url", "https://versioncheck-bg.addons.mozilla.org/update/VersionCheck.php?reqVersion=%REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&maxAppVersion=%ITEM_MAXAPPVERSION%&status=%ITEM_STATUS%&appID=%APP_ID%&appVersion=%APP_VERSION%&appOS=%APP_OS%&appABI=%APP_ABI%&locale=%APP_LOCALE%&currentAppVersion=%CURRENT_APP_VERSION%&updateType=%UPDATE_TYPE%&compatMode=%COMPATIBILITY_MODE%");
+ 
+ // Pref :
+-lockPref("extensions.getAddons.showPane", false);
++defaultPref("extensions.getAddons.showPane", false);
+ 
+ // Pref :
+ lockPref("extensions.webservice.discoverURL", "");
+@@ -2484,7 +2484,7 @@ lockPref("security.dialog_enable_delay", 700);
+ 
+ // Pref : Opt-out of add-on metadata updates
+ // https://blog.mozilla.org/addons/how-to-opt-out-of-add-on-metadata-updates/
+-lockPref("extensions.getAddons.cache.enabled", false);
++defaultPref("extensions.getAddons.cache.enabled", false);
+ 
+ // Pref : Opt-out of themes (Persona) updates
+ // https://support.mozilla.org/t5/Firefox/how-do-I-prevent-autoamtic-updates-in-a-50-user-environment/td-p/144287
+@@ -2517,7 +2517,7 @@ lockPref("plugin.sessionPermissionNow.intervalInMinutes", 0);
+ 
+ // Pref : Updates addons automatically
+ // https://blog.mozilla.org/addons/how-to-turn-off-add-on-updates/
+-lockPref("extensions.update.enabled", false);
++defaultPref("extensions.update.enabled", false);
+ 
+ // Pref : Enable add-on and certificate blocklists (OneCRL) from Mozilla
+ // Updated at interval defined in extensions.blocklist.interval (default: 86400)
