@@ -1,9 +1,8 @@
 pkgbase = mpv-full
 	pkgdesc = A free, open source, and cross-platform media player (with all possible libs)
 	pkgver = 0.29.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://mpv.io/
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = mesa

@@ -1,13 +1,12 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
-_srcname=mpv
 _wafver=2.0.9
 
 pkgname=mpv-full
 pkgver=0.29.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL3')
 url='https://mpv.io/'
 depends=(
@@ -28,19 +27,19 @@ optdepends=('youtube-dl: for video-sharing websites playback'
 provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
-source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz"
+source=("mpv-${pkgver}.tar.gz"::"https://github.com/mpv-player/mpv/archive/v${pkgver}.tar.gz"
         "https://waf.io/waf-${_wafver}")
 sha256sums=('f9f9d461d1990f9728660b4ccb0e8cb5dce29ccaa6af567bec481b79291ca623'
             '2a8e0816f023995e557f79ea8940d322bec18f286917c8f9a6fa2dc3875dfa48')
 
 prepare() {
-    cd "${_srcname}-${pkgver}"
+    cd "mpv-${pkgver}"
     
     install -m755 "${srcdir}/waf-${_wafver}" waf
 }
 
 build() {
-    cd "${_srcname}-${pkgver}"
+    cd "mpv-${pkgver}"
     
     ./waf configure \
         --color='yes' \
@@ -160,7 +159,7 @@ build() {
 }
 
 package() {
-    cd "${_srcname}-${pkgver}"
+    cd "mpv-${pkgver}"
     
     ./waf install --destdir="$pkgdir"
     
