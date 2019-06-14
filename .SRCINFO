@@ -1,8 +1,9 @@
 pkgbase = vcpkg-git
-	pkgdesc = VC++ Packaging Tool
-	pkgver = r6122.15f455e3
+	pkgdesc = VC++ Pcakaging Tool
+	pkgver = r8538.b03f62e0e
 	pkgrel = 1
 	url = https://github.com/Microsoft/vcpkg
+	install = vcpkg-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -10,7 +11,11 @@ pkgbase = vcpkg-git
 	provides = vcpkg
 	conflicts = vcpkg
 	source = git+https://github.com/Microsoft/vcpkg.git
+	source = vcpkg.sh
+	source = vcpkg-git.install
 	sha512sums = SKIP
+	sha512sums = 9028f5f3f6915894f69924e49cddaee3cb670d39c03b56599d858cf278ca0f2e977363a2682d9a12a837d18508050f7009c1e61c4e572045d24a2bf93658fbc6
+	sha512sums = 9b113b12b9005193fa59b60dd33f5a589897b166bc0611ff18a6437727b922decaf0a26cec40aaa4a9a52bfb76a7dd7b3ecd7401f9dfe89a1684aaf7649427f6
 
 pkgname = vcpkg-git
 
