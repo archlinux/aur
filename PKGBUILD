@@ -12,7 +12,7 @@ arch=('any')
 url="http://core.tcl.tk/tcllib/"
 license=('bsd')
 depends=('tcl')
-source=(https://github.com/tcltk/tcllib/archive/tcllib-${pkgver/./-}.tar.gz)
+source=("https://core.tcl-lang.org/tcllib/uv/tcllib-${pkgver/./-}.tar.gz")
 sha256sums=('f0977ed98a6555266461a818d2814ff11f35f90412d394e13bf3da686cc93ca0')
 
 package(){
