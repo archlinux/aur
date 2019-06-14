@@ -3,11 +3,13 @@
 pkgname=kotlin-language-server
 pkgver=0.1.13
 _commit=e3df0185ebcdf9502051fd806e45a9469e9d41e4
-pkgrel=1
+pkgrel=2
 pkgdesc="Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol"
 arch=(any)
 url="https://github.com/fwcd/KotlinLanguageServer.git"
 license=('MIT')
+conflicts=('kotlin-language-server-git')
+provides=('kotlin-language-server')
 depends=('java-runtime')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/fwcd/KotlinLanguageServer.git#commit=$_commit")
