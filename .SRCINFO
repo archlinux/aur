@@ -1,0 +1,17 @@
+pkgbase = dh-dyndns-git
+	pkgdesc = Dynamic DNS script for DreamHost
+	pkgver = 0.2.r1.66b7d75
+	pkgrel = 1
+	url = https://github.com/pissedoffadmins/dh-dyndns
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = wget
+	provides = dh-dyndns
+	conflicts = dh-dyndns
+	source = git+https://github.com/pissedoffadmins/dh-dyndns.git
+	md5sums = SKIP
+
+pkgname = dh-dyndns-git
+
