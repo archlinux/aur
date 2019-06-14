@@ -1,9 +1,10 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgbase=dotnet-core-preview
 pkgname=('dotnet-host-preview' 'dotnet-runtime-preview' 'aspnet-runtime-preview' 'dotnet-sdk-preview')
-pkgver=3.0.0+100+preview.011568
+pkgver=3.0.0+100+preview.012264
 pkgrel=1
 arch=('x86_64')
 url='https://www.microsoft.com/net/core'
@@ -14,12 +15,12 @@ makedepends=(
 )
 options=('staticlibs')
 source=(
-  'https://download.visualstudio.microsoft.com/download/pr/7e4b403c-34b3-4b3e-807c-d064a7857fe8/95c738f08e163f27867e38c602a433a1/dotnet-sdk-3.0.100-preview5-011568-linux-x64.tar.gz'
-  'https://download.visualstudio.microsoft.com/download/pr/cd52bfa4-0260-479c-a32d-b4435c8ccda8/943c20feec33b778685d733064d8ddb1/aspnetcore-runtime-3.0.0-preview5-19227-01-linux-x64.tar.gz'
+  'https://download.visualstudio.microsoft.com/download/pr/72ce4d40-9063-4a2e-a962-0bf2574f75d1/5463bb92cff4f9c76935838d1efbc757/dotnet-sdk-3.0.100-preview6-012264-linux-x64.tar.gz'
+  'https://download.visualstudio.microsoft.com/download/pr/ea4b23b0-d7dc-4d39-8de4-d4c89e1f9551/bfe628fcb8f19d4c97c75d1217af1a8b/aspnetcore-runtime-3.0.0-preview6.19307.2-linux-x64.tar.gz'
   'dotnet.sh'
 )
-sha256sums=('24178c79c280b67068961dcec1db93e59b006b7dcbf4e860efd140661868a47e'
-            'b16c4de7f32eef1508ab0e6b6d378459feea22bd0f477a2c35d8c4246422288e'
+sha256sums=('5149eeee283cc226186d311df664de5eb96a52d1e37a61ae58abf3b0a3d66d5c'
+            '24c009363c072f6c76687ce686b4aa3d72b4eb5eaf1a3ceb85bdff6807719b28'
             'f4cb02490234b853946477f82514f0c6247b55b08b2e85fae98e99a6e6974edd')
 
 package_dotnet-host-preview() {
