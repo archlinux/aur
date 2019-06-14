@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/Genymobile/scrcpy'
 license=('Apache')
 depends=('ffmpeg' 'sdl2')
-makedepends=('gcc' 'meson')
+makedepends=('gcc' 'meson' 'pkgconf')
 optdepends=('android-tools: required if adb is not already installed')
 source=("https://github.com/Genymobile/scrcpy/archive/v${pkgver}.tar.gz"
         "https://github.com/Genymobile/scrcpy/releases/download/v${pkgver}/scrcpy-server-v${pkgver}.jar")
