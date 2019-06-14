@@ -7,12 +7,12 @@ _cpanname=Term-ExtendedColor
 pkgver=0.224
 pkgrel=7
 pkgdesc="Like Term::ANSIColor, but for the extended colorset"
-url='http://search.cpan.org/dist/Term-ExtendedColor'
+url='https://search.cpan.org/dist/Term-ExtendedColor'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 depends=('perl>=5.10.0')
 options=('!emptydirs')
-source=(${pkgname}-${pkgver}.tar.gz::http://search.cpan.org/CPAN/authors/id/W/WO/WOLDRICH/${_cpanname}-${pkgver}.tar.gz)
+source=(${pkgname}-${pkgver}.tar.gz::https://search.cpan.org/CPAN/authors/id/W/WO/WOLDRICH/${_cpanname}-${pkgver}.tar.gz)
 sha512sums=('d4d5ccd3b1a8ffd4a15fa360bbcda0167fcce1fcc128da5fc23e05f891e3e1e403250c43d358ce16f6cab7034a67d76cc3bd8ed2926185f75208cd6d3b9d4547')
 
 build() {
