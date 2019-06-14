@@ -2,7 +2,7 @@
 
 pkgname=homebridge-git
 _gitname=homebridge
-pkgver=0.4.32.r13.ga00a52d
+pkgver=0.4.46.r16.g84b4733
 pkgrel=1
 pkgdesc="HomeKit support for the impatient"
 arch=('any')
