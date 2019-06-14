@@ -24,7 +24,9 @@ pkgver() {
 build() {
 	cd $pkgname
     # TODO: QTC_BUILD=/usr
-	QTC_SOURCE=/usr/src/qtcreator QTC_BUILD=build/usr qmake LIBS+="-L/usr/lib/qtcreator -L/usr/lib/qtcreator/plugins"
+	QTC_SOURCE=/usr/src/qtcreator QTC_BUILD=build/usr \
+        KSYNTAXHIGHLIGHTING_LIB_DIR=/usr/lib KSYNTAXHIGHLIGHTING_INCLUDE_DIR=/usr/include/KF5/KSyntaxHighlighting \
+        qmake LIBS+="-L/usr/lib/qtcreator -L/usr/lib/qtcreator/plugins"
 	make
 }
 
