@@ -1,9 +1,9 @@
-# Maintainer: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
+# Maintainer: nous(at)artixlinux.org
 
 pkgname=input-veikk-dkms
 _pkgname=input-veikk
 pkgver=r34.63d8367
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux driver providing pressure sensitivity for VEIKK drawing tablets (S640, A50, A30)"
 arch=('i686' 'x86_64')
 url="https://github.com/jlam55555/veikk-s640-driver"
