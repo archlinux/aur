@@ -3,13 +3,13 @@
 pkgname=slimit2
 _srcname=slimit
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A JavaScript minifier written in Python (uses python2)'
 arch=('any')
-url="https://github.com/rspivak/slimit/"
+url='https://github.com/rspivak/slimit/'
 license=('MIT')
-depends=('python2' 'python2-ply')
-makedepends=('python2-setuptools' 'python2-sphinx')
+depends=('python2' 'python2-ply' 'python2-setuptools')
+makedepends=('python2-sphinx')
 source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/rspivak/slimit/archive/0.8.1.tar.gz")
 sha256sums=('015fc1917c0eff834514fcedd4251275a3dacb10df1b49549277fe5e19de1ddf')
 
