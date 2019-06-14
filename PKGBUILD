@@ -23,7 +23,7 @@ arch=('any')
 url="https://itdelatrisu.github.io/opsu/"
 license=('GPL3')
 depends=('java-runtime' 'bash' 'hicolor-icon-theme'
-         'xorg-xrandr'	# "[…] is a dependency for LWJGL. Had to search around for the fix after the
+         'xorg-xrandr'  # "[…] is a dependency for LWJGL. Had to search around for the fix after the
                         # application was throwing an unhandled exception because it couldn't
                         # detect monitors. Any chance this could be added to the dep list?"
                         # https://aur.archlinux.org/account/SajeOne
@@ -44,16 +44,16 @@ package()
     # cut pkgver
     _pkgver=$(git -C "$srcdir/$_pkgname" describe --tags | sed 's/-.*//')
 
-    install -Dm644	"$srcdir/$_pkgname/build/libs/$_pkgname-$_pkgver.jar" \
+    install -Dm644  "$srcdir/$_pkgname/build/libs/$_pkgname-$_pkgver.jar" \
                     "$pkgdir/usr/share/java/$_pkgname/$_pkgname.jar"
 
-    install -Dm644	"$srcdir/$_pkgname/res/logo.png" \
+    install -Dm644  "$srcdir/$_pkgname/res/logo.png" \
                     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.png"
 
-    install -Dm644	"$_pkgname.desktop" \
+    install -Dm644  "$_pkgname.desktop" \
                     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-    install -Dm755	"$_pkgname.sh" \
+    install -Dm755  "$_pkgname.sh" \
                     "$pkgdir/usr/bin/$_pkgname"
 }
 # template end;
