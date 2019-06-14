@@ -8,10 +8,13 @@ pkgbase = wsa-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
+	depends = wayland
 	provides = wsa
 	conflicts = wsa
-	source = wsa::git+https://github.com/GPUOpen-Drivers/wsa.git
+	source = wsa::git+https://github.com/GPUOpen-Drivers/wsa.git#branch=master
+	source = 0001-install-headers.patch
 	sha256sums = SKIP
+	sha256sums = df079c020c45534e4015753e319f28345e269821b1abf2a3fea55627252dcd78
 
 pkgname = wsa-git
 

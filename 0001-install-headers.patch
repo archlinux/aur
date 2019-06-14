@@ -1,0 +1,19 @@
+diff --git a/wayland/CMakeLists.txt b/wayland/CMakeLists.txt
+index 531b67e..8053174 100755
+--- a/wayland/CMakeLists.txt
++++ b/wayland/CMakeLists.txt
+@@ -42,9 +42,12 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-error=deprecated-declarations -Wno-depr
+ set(SOURCES src/wsa_wayland.c)
+ 
+ add_library(amdgpu_wsa_wayland SHARED ${SOURCES})
++set_target_properties(amdgpu_wsa_wayland PROPERTIES PUBLIC_HEADER "../inc/wsa.h")
+ 
+ target_include_directories ( amdgpu_wsa_wayland PUBLIC ${WAYLAND_INCLUDE_DIRS} )
+ target_link_libraries ( amdgpu_wsa_wayland PUBLIC ${WAYLAND_LDFLAGS} )
+ 
+-install(TARGETS amdgpu_wsa_wayland DESTINATION ${CMAKE_INSTALL_LIBDIR})
+-
++install(TARGETS amdgpu_wsa_wayland
++	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++	PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
++)

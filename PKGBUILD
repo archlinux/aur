@@ -15,7 +15,7 @@ arch=('x86_64')
 url="https://github.com/GPUOpen-Drivers/wsa"
 license=('custom')
 groups=()
-depends=()
+depends=('wayland')
 makedepends=('git' 'cmake' 'ninja') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -23,9 +23,11 @@ replaces=()
 backup=()
 options=()
 install=
-source=('wsa::git+https://github.com/GPUOpen-Drivers/wsa.git')
+source=('wsa::git+https://github.com/GPUOpen-Drivers/wsa.git#branch=master'
+        '0001-install-headers.patch')
 noextract=()
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'df079c020c45534e4015753e319f28345e269821b1abf2a3fea55627252dcd78')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
@@ -34,6 +36,11 @@ pkgver() {
 	cd "$srcdir/wsa"
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$srcdir/wsa"
+	patch -p1 < ../../0001-install-headers.patch
 }
 
 build() {
