@@ -28,11 +28,11 @@ pkgver() {
 # step
 build() {
     cd "$srcdir/${pkgname%-git}"
-    # HOME=. python setup.py build
-    HOME=. python horizons/engine/generate_atlases.py 2048
+    # HOME="$srcdir/python" python setup.py build
+    HOME="$srcdir/python" python horizons/engine/generate_atlases.py 2048
 }
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    HOME=. python setup.py install --root="$pkgdir/" --optimize=1 #--skip-build
+    HOME="$srcdir/python" python setup.py install --root="$pkgdir/" --optimize=1 #--skip-build
 }
