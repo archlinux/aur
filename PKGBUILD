@@ -6,8 +6,8 @@
 
 pkgbase=iup
 pkgname=('iup' 'lua-iup' 'lua51-iup' 'lua52-iup')
-pkgver=3.26
-pkgrel=2
+pkgver=3.27
+pkgrel=1
 pkgdesc="C cross platform GUI toolkit"
 arch=('x86_64')
 url="https://www.tecgraf.puc-rio.br/iup/"
@@ -28,12 +28,10 @@ makedepends=('lsb-release'
 source=(
   "https://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Sources.tar.gz"
   "https://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Docs.pdf"
-  "tecmake-fix-Linux5-build.patch"
 )
 
-md5sums=('446668073d9a87c57f4e5d682b8663f4'
-         '78341ce38463a168a2a14f59c58808f5'
-         '057b075a25ff818e8f928a85a739398c')
+md5sums=('9593adf226daef7befd3768bc4741156'
+         '9fc7af8b68256a020b858ccaec4ea8f5')
 
 prepare() {
   # Link iupview statically
@@ -46,10 +44,6 @@ prepare() {
   # Add RUN_PATH variable to be able to set DT_RUNPATH
   sed 's/$(ECHO)$(LINKER)/& $(RUN_PATH)/' -i "$srcdir"/iup/tecmake.mak
   sed 's/$(ECHO)$(LD)/& $(RUN_PATH)/' -i "$srcdir"/iup/tecmake.mak
-
-  # patch for building for kernel 5.x
-  # temporary - until it is fixed in upstream
-  patch -p0 < "$srcdir"/tecmake-fix-Linux5-build.patch
 }
 
 _lua_iup_build_helper() {
