@@ -1,7 +1,7 @@
 # Maintainer: Steven De Bondt <egnappah at gmail dot com>
 
 pkgbase=geoipdatabase_reloaded
-pkgver=1.2019.05
+pkgver=1.2019.06
 pkgrel=1
 arch=('x86_64')
 url="https://dev.maxmind.com/geoip/geoip2/geolite2/"
@@ -22,8 +22,8 @@ source=('http://nhameh.ovh/varia/python2-pygeoip-0.3.2-4-any.pkg.tar.xz'
 	'http://nhameh.ovh/varia/python2-ipaddr-2.2.0-1-any.pkg.tar.xz'
         # the main kernel config files
         'git+https://github.com/sherpya/geolite2legacy/')
-sha256sums=('SKIP'
-		'SKIP'
+sha256sums=('c068bb67aa7b25c829e295c1a90cddbec3863968ab8551e3d3d3b4f72884c6ab'
+		'65db23b9fb288b53978ae4593fb23ed59dee4de2ca2bac601da9e841de187ddf'
 		'SKIP')
 
 pkgver() {
@@ -69,7 +69,7 @@ build() {
 }
 
 package() {
-	pkgdesc="Compiles the newest geoip databases for counties and cities from maxmind and installs them on your system"
+	pkgdesc="Compiles the newest geoip databases for countries and cities from maxmind and installs them on your system"
 	echo -e "${BYELLOW}Installing the GeoIP Databases files in the right location${NOCOLOR}"
 	mkdir -p ../pkg/$pkgbase/usr/share/GeoIP
 	cp output/* ../pkg/$pkgbase/usr/share/GeoIP/
