@@ -19,24 +19,22 @@ source=("$pkgver-d14f232.tar.gz::https://github.com/$_githubname/$_githubname/ar
 sha512sums=('6fafca8e75b7f8a374b74c9e75cfa63208277f976ef9efcdb1da5c94a1ef46dacd320afe0b9dbd83a1ce8acb078a28d687328b3c4ba8227510f492e5a8df9373')
 
 build() {
-  # cd "$_githubname-$pkgver"
-  cd "$_githubname-d14f232f4cd9a00b05d6872957070e8c020f515d"
-  [[ -d "build" ]] && rm -r "build"
-  mkdir -p "build" && cd "build"
-  cmake \
+    # cd "$_githubname-$pkgver"
+    cd "$_githubname-d14f232f4cd9a00b05d6872957070e8c020f515d"
+    [[ -d "build" ]] && rm -r "build"
+    mkdir -p "build" && cd "build"
+    cmake \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     ..
-  make
-  # If compilation seems to stall at 99% for ages, do not abort!
-  # While not perfectly convenient, that is to be expected from
-  # SWIG. Eventually, you'll reach the holy triple-digit land.
+    make
+    # If compilation seems to stall at 99% for ages, do not abort!
+    # While not perfectly convenient, that is to be expected from
+    # SWIG. Eventually, you'll reach the holy triple-digit land.
 }
 
 package() {
-  # cd "$_githubname-$pkgver"
-  cd "$_githubname-d14f232f4cd9a00b05d6872957070e8c020f515d"
-  cd "build"
-  make DESTDIR="$pkgdir" install
+    # cd "$_githubname-$pkgver"
+    cd "$_githubname-d14f232f4cd9a00b05d6872957070e8c020f515d"
+    cd "build"
+    make DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
