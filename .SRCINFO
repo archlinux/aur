@@ -46,3 +46,54 @@ pkgbase = nimf
 
 pkgname = nimf
 
+pkgbase = nimf
+	pkgdesc = Nimf is an input method framework.
+	pkgver = 2019.06.07
+	pkgrel = 1
+	url = https://gitlab.com/nimf-i18n/nimf
+	arch = any
+	license = LGPL3
+	makedepends = binutils
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = make
+	makedepends = glib2
+	makedepends = intltool
+	makedepends = gtk3
+	makedepends = gtk2
+	makedepends = qt4
+	makedepends = qt5-base
+	makedepends = libappindicator-gtk3
+	makedepends = librsvg
+	makedepends = noto-fonts-cjk
+	makedepends = libhangul
+	makedepends = anthy
+	makedepends = librime
+	makedepends = libxkbcommon
+	makedepends = wayland
+	makedepends = libxklavier
+	makedepends = m17n-lib
+	makedepends = m17n-db
+	makedepends = gtk-doc
+	depends = glib2
+	depends = gtk3
+	depends = gtk2
+	depends = qt4
+	depends = qt5-base
+	depends = libappindicator-gtk3
+	depends = libhangul
+	depends = anthy
+	depends = librime
+	depends = libxkbcommon
+	depends = wayland
+	depends = libxklavier
+	depends = m17n-lib
+	depends = m17n-db
+	optdepends = brise: Rime schema repository
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = nimf-master::git+https://gitlab.com/nimf-i18n/nimf#commit=d27ab903205c4842782c1b26d84882c980cea7db
+	md5sums = SKIP
+
+pkgname = nimf
+
