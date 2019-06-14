@@ -2,23 +2,25 @@
 
 _target=arm-linux-gnueabi
 pkgname=$_target-gcc
-_pkgver=8.2.0
+_pkgver=9.1.0
 #_snapshot=8-20180824
 pkgver=$_pkgver${_snapshot/*-/+}
-_islver=0.19
+_islver=0.21
 pkgrel=1
-pkgdesc="The GNU Compiler Collection - cross compiler for ARM target"
-arch=('x86_64' 'i686' 'armv7h')
+pkgdesc='The GNU Compiler Collection - cross compiler for ARM target'
+arch=(x86_64 i686 armv7h)
 url='http://gcc.gnu.org/'
 license=(GPL LGPL FDL)
 depends=($_target-binutils libmpc zlib)
 makedepends=(gmp mpfr)
 options=(!emptydirs !strip)
-source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgver/gcc-$_pkgver.tar.xz
+source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgver/gcc-$_pkgver.tar.xz{,.sig}
         #https://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
         http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
-sha512sums=('64898a165f67e136d802a92e7633bf1b06c85266027e52127ea025bf5fc2291b5e858288aac0bdba246e6cdf7c6ec88bc8e0e7f3f6f1985f4297710cafde56ed'
-            '08f4db964d9e02ec8aa9779378ed76e0ddf1d56f81f87664dbf787555ce496cdc87e836f8a51ae137f45e648c604870cce07ee45919eafb549e404afb8f27083')
+sha512sums=('b6134df027e734cee5395afd739fcfa4ea319a6017d662e54e89df927dea19d3fff7a6e35d676685383034e3db01c9d0b653f63574c274eeb15a2cb0bc7a1f28'
+            'SKIP'
+            '48f3b8d90550e8ab28837b5757f87bf99cddec67769877e04942abef69bbe526ef4c863951d55dd89a6027dc09df48988c8df6029782f990aa4d5b67e65f6d53')
+validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
 
 if [ -n "$_snapshot" ]; then
   _basedir=gcc-$_snapshot
@@ -37,11 +39,11 @@ prepare() {
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" "$srcdir"/$_basedir/{libiberty,gcc}/configure
 
-  mkdir $srcdir/build-gcc
+  mkdir $srcdir/gcc-build
 }
 
 build() {
-  cd build-gcc
+  cd gcc-build
 
   # using -pipe causes spurious test-suite failures
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
@@ -74,15 +76,13 @@ build() {
     --with-mpc \
     --with-isl \
     --with-libelf \
-    --enable-gnu-indirect-function \
-    --with-pkgversion='Parabola Repository' \
-    --with-bugurl='https://labs.parabola.nu/'
+    --enable-gnu-indirect-function
 
   make $MAKEFLAGS all-gcc
 }
 
 package() {
-  cd build-gcc
+  cd gcc-build
 
   make DESTDIR="$pkgdir" install-gcc
 
