@@ -25,23 +25,23 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-	git clone $source "$pkgname-$pkgver"
+	git clone $source "$pkgname-git"
 }
 
 pkgver() {
-  cd "$pkgname-$pkgver"
+	cd "$pkgname-git"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	chmod +x "$pkgname-$pkgver/sydf"
+	chmod +x "$pkgname-git/sydf"
 }
 
 check() {
-	test -f "$pkgname-$pkgver/sydf"
+	test -f "$pkgname-git/sydf"
 }
 
 package() {
 	mkdir -p ${pkgdir}/usr/bin
-	cp "$pkgname-$pkgver/sydf"	${pkgdir}/usr/bin
+	cp "$pkgname-git/sydf"	${pkgdir}/usr/bin
 }
