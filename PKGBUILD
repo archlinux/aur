@@ -34,5 +34,9 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 
+	if [ -f LICENSE ]; then
+		install -D -m 644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	fi
+
 	DESTDIR="$pkgdir/" ninja -C build install
 }
