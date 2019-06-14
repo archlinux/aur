@@ -9,7 +9,7 @@ url="https://github.com/mrooney/mintapi"
 license=(The MIT License)
 makedepends=("python" "python-pip")
 build() {
-  pip install --no-deps --target="mintapi" mintapi==1.39
+  pip install --target="mintapi" mintapi==1.39
 }
 package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
