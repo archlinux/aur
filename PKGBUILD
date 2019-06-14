@@ -3,14 +3,13 @@
 _pyname=conda-package-handling
 pkgname=python-${_pyname}
 pkgver=1.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Create and extract conda package of various formats"
 arch=('any')
 url="https://github.com/conda/conda-package-handling"
 license=('BSD')
 depends=(
   'python'
-  'python-conda'
   'python-six'
 )
 options=(!emptydirs)

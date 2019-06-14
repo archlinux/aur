@@ -1,12 +1,11 @@
 pkgbase = python-conda-package-handling
 	pkgdesc = Create and extract conda package of various formats
 	pkgver = 1.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/conda/conda-package-handling
 	arch = any
 	license = BSD
 	depends = python
-	depends = python-conda
 	depends = python-six
 	options = !emptydirs
 	source = https://github.com/conda/conda-package-handling/archive/1.3.4.tar.gz
