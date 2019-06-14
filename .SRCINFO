@@ -1,0 +1,12 @@
+pkgbase = baidunetdisk
+	pkgdesc = Baidubetdisk Client, converted from .rpm package
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://pan.baidu.com/
+	arch = x86_64
+	license = custom
+	source = https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/baidunetdisk_linux_2.0.1.rpm
+	md5sums = 134bea2832e8e74c1646eb09f375b008
+
+pkgname = baidunetdisk
+
