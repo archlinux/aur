@@ -1,0 +1,12 @@
+pkgbase = mn88472-firmware
+	pkgdesc = Firmware for Panasonic MN88472 DVB-T/T2/C demodulator
+	pkgver = 151102
+	pkgrel = 1
+	url = http://www.astrometa.com.tw/integrated_en.html
+	arch = any
+	license = unknown
+	source = mn88472-firmware-151102::http://palosaari.fi/linux/v4l-dvb/firmware/MN88472/02/latest/dvb-demod-mn88472-02.fw
+	md5sums = 088b891ac9273ff8c6818fca27b24d81
+
+pkgname = mn88472-firmware
+
