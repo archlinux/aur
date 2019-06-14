@@ -3,7 +3,7 @@
 
 pkgname=brisk-menu-git
 _gitname=brisk
-pkgver=v0.5.0.r31.g3d5e639
+pkgver=v0.5.0.r34.g9d2732b
 pkgrel=1
 pkgdesc='Modern, efficient menu for the MATE Desktop Environment - git version'
 arch=('i686' 'x86_64')
