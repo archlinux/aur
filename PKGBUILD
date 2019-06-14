@@ -2,8 +2,8 @@
 # Maintainer: Gegrely Imreh <imrehg@gmail.com>
 
 pkgname=balena-engine
-pkgver=18.9.5
-pkgrel=2
+pkgver=18.9.6
+pkgrel=1
 epoch=1
 pkgdesc='A Moby-based container engine for the Internet of Things'
 arch=('x86_64' 'i686')

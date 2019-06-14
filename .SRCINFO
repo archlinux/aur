@@ -1,7 +1,7 @@
 pkgbase = balena-engine
 	pkgdesc = A Moby-based container engine for the Internet of Things
-	pkgver = 18.9.5
-	pkgrel = 2
+	pkgver = 18.9.6
+	pkgrel = 1
 	epoch = 1
 	url = https://www.balena.io/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = balena-engine
 	optdepends = lxc: lxc backend support
 	options = !strip
 	options = !buildflags
-	source = git+https://github.com/balena-os/balena-engine.git#tag=v18.9.5
+	source = git+https://github.com/balena-os/balena-engine.git#tag=v18.9.6
 	source = balena-engine.sysusers
 	source = 80-balena-engine.rules
 	sha256sums = SKIP
