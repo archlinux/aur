@@ -24,8 +24,8 @@ sha256sums=(
 )
 
 prepare() {
-    cd "$srcdir/$pkgname-$_commit"
-    patch -Ni "$srcdir/0001-Fix-setup-syntax.patch" # missing comma
+	cd "$srcdir/$pkgname-$_commit"
+	patch -Ni "$srcdir/0001-Fix-setup-syntax.patch" # missing comma
 	patch -Ni "$srcdir/0002-Remove-pymodules.patch" # find_packages is enough
 	patch -Ni "$srcdir/0003-Add-entry-point.patch" # add entry point to /usr/bin
 	# Rename and move main.py to its own subdirectory in order for find_packages to be able to pick it up and to not pollute the main site-packages directory
