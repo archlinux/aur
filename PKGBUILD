@@ -37,14 +37,14 @@ build()
     cd "$srcdir/${pkgname%-git}" || exit
     cmake -DCMAKE_INSTALL_PREFIX=/usr
     make
-#	make docs
+    # make docs
 }
 
-#check()
-#{
-#	cd "$srcdir/$pkgname"
-#	ctest
-#}
+# check()
+# {
+#     cd "$srcdir/$pkgname"
+#     ctest
+# }
 
 package()
 {
