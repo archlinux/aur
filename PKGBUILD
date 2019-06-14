@@ -4,7 +4,7 @@
 pkgname=mingw-w64-libsigc++
 _pkgname=libsigc++
 pkgver=2.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Libsigc++ implements a full callback system for use in widget libraries - V2 (mingw-w64)"
 arch=('any')
 url="https://libsigcplusplus.github.io/libsigcplusplus/"
@@ -22,11 +22,6 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
-      --prefix=/usr/${_arch} \
-      --build=$CHOST \
-      --host=${_arch} \
-      --enable-shared \
-      --enable-static \
       --disable-documentation \
       ..
     make
