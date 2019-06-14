@@ -28,3 +28,4 @@ d %S/librenms/storage/framework/views/ 0755 librenms librenms
 z %S/librenms/storage/framework/views/* 0640 librenms librenms
 d %S/librenms/storage/logs/ 0755 librenms librenms
 z %S/librenms/storage/logs/* 0640 librenms librenms
+d %t/librenms - librenms librenms

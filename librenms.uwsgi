@@ -1,0 +1,47 @@
+[uwsgi]
+procname-master = %n
+plugins = php
+master = true
+socket = /run/%n/%n.sock
+stats = /run/%n/%n-stats.sock
+uid = librenms
+gid = librenms
+processes = 10
+cheaper = 4
+cheaper-step = 1
+idle = 600
+die-on-idle = true
+
+; reload whenever this config file changes
+touch-reload = %p
+
+php-allowed-ext = .php
+php-docroot = /usr/share/webapps/%n/html
+php-index = index.php
+php-set = date.timezone=Europe/Berlin
+php-set = open_basedir=:/dev/urandom:/etc/webapps/%n:/usr/bin/fping:/usr/bin/fping6:/usr/bin/rrdtool:/usr/bin/snmpbulkwalk:/usr/bin/snmpget:/usr/bin/snmpgetnext:/usr/bin/snmpwalk:/usr/share/webapps/%n:/proc/meminfo:/run/redis/redis.sock:/var/lib/%n:/var/log/%n:/tmp/
+php-set = session.save_path=/tmp
+php-set = session.gc_maxlifetime  21600
+php-set = session.gc_divisor  500
+php-set = session.gc_probability  1
+php-set = post_max_size=32M
+php-set = upload_max_filesize=4M
+php-set = always_populate_raw_post_data=-1
+php-set = mbstring.func_overload=0
+php-set = max_input_time=300
+php-set = max_execution_time=300
+php-set = memory_limit=256M
+php-set = session.auto_start=0
+php-set = zend_extension=opcache
+php-set = opcache.enable=1
+php-set = opcache.enable_cli=1
+php-set = opcache.interned_strings_buffer=8
+php-set = opcache.max_accelerated_files=10000
+php-set = opcache.memory_consumption=128
+php-set = opcache.save_comments=1
+php-set = opcache.revalidate_freq=1
+
+php-set = extension=gd
+php-set = extension=mysqli
+php-set = extension=pdo_mysql
+

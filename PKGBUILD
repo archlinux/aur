@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 # Contributor: Nils Czernia <nils[at]czserver[dot]de>
 pkgname=librenms
-pkgver=1.48.1
+pkgver=1.52
 pkgrel=1
 pkgdesc='Autodiscovering PHP/MySQL/SNMP based network monitoring'
 arch=('any')
@@ -18,13 +18,14 @@ backup=("etc/webapps/${pkgname}/config.php"
         "etc/webapps/${pkgname}/.env"
         "etc/php/conf.d/${pkgname}.ini"
         "etc/cron.d/${pkgname}")
-# TODO: add uwsgi example
 source=("${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
+        "${pkgname}.uwsgi"
         "apache.example.conf"
         "nginx.example.conf")
 sha512sums=('19fa542b7597adeccdb94add97102a86ba4a238ba44e999c6e8d186cb7d5ed0523893559719e0b8036acd90cdc1a908497c3027ed49b028fba729ed61ad34052'
-            'e462785a695a19ee4104b48ef321e5d597f6e7469c15f362062d8a4eebe2eddca5584e4739046655a448caa7c4402625d88479fae562be859ed3a6e7d4766b23'
+            'ce020d1a85b9c897dacceb45840aae30e305b65d96854e19a4a58e3ddbc1c78694de1a8665a51c2fb53929f8f52c94bc0d918ab3fd06ede4935e8a617e755f24'
+            'f575ed35f6fa1ae9ffd2b7c00e292de574e4a62e60fba7b653e9f55f4d987959be08331c08afa7afe8a616eb9f3a35f304912416f07ea170b70887bf8ff94c2f'
             '150aa9912d25502d9397f0c4a6831363c79c1603ff65151d4efc0061516ee19586f3cc38f08f9e60530176c103c845d0cc1a46f685cb22c1a8a7cb8db4ab6274'
             'cde868416a13353290e4063c937e13b029e616abe3416e4e7c906bbd8000f871429546335470bbc2b219c1bcc95d6ee0f79481ee765c7351bbed6487ad42fee4')
 
@@ -115,6 +116,9 @@ package() {
   # tmpfiles.d
   install -vDm 644 ../${pkgname}.tmpfiles \
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  # uwsgi
+  install -vDm 644 ../${pkgname}.uwsgi \
+    "${pkgdir}/etc/uwsgi/${pkgname}.ini"
   # logs
   ln -sv "/var/log/${pkgname}" "${pkgdir}/usr/share/webapps/${pkgname}/logs"
   # cache
