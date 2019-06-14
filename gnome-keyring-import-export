@@ -1,2 +1,0 @@
-#!/usr/bin/sh
-exec python2 '/usr/lib/gnome-keyring-import-export/gnome_keyring_import_export.py' $@

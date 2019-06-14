@@ -1,23 +1,17 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='gnome-keyring-import-export-hg'
-pkgver='r15.db0c7ce80e60'
-pkgrel='3'
-pkgdesc='Simple script for exporting gnome2 (seahorse) keyrings, and re-importing on another machine.'
+pkgver='r19.657ba95e254c'
+pkgrel=1
+pkgdesc='Simple script for exporting gnome2 (seahorse) keyrings, using the SecretService API'
 arch=('any')
 url='https://bitbucket.org/spookylukey/gnome-keyring-import-export'
 license=('unknown')
-depends=('python2' 'pygtk' 'python2-gnomekeyring' 'python2-lxml')
+depends=('python' 'python-secretstorage')
 makedepends=('mercurial')
-provides=('gnome-keyring-import-export')
+provides=('secret-storage-import-export')
 conflicts=('gnome-keyring-import-export')
-source=(
-	"$pkgname::hg+https://bitbucket.org/spookylukey/gnome-keyring-import-export"
-	'gnome-keyring-import-export'
-)
-sha256sums=(
-	'SKIP'
-	'94332a7c3a6774e47453dde54b0663bb4bf5d2f38782f737aa65abc8980d18e3'
-)
+source=("$pkgname::hg+https://bitbucket.org/spookylukey/gnome-keyring-import-export")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -26,8 +20,5 @@ pkgver() {
 
 package() {
 	install -dm755 "$pkgdir/usr/bin/"
-	install -dm755 "$pkgdir/usr/lib/gnome-keyring-import-export"
-
-	install -m755 "$srcdir/gnome-keyring-import-export" "$pkgdir/usr/bin"
-	install -m644 "$srcdir/$pkgname/gnome_keyring_import_export.py" "$pkgdir/usr/lib/gnome-keyring-import-export"
+	install -m755 "$srcdir/$pkgname/secret_storage_import_export.py" "$pkgdir/usr/bin/secret-storage-import-export"
 }
