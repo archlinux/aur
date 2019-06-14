@@ -73,7 +73,6 @@ package() {
 	echo -e "${BYELLOW}Installing the GeoIP Databases files in the right location${NOCOLOR}"
 	mkdir -p ../pkg/$pkgbase/usr/share/GeoIP
 	cp output/* ../pkg/$pkgbase/usr/share/GeoIP/
-	
 }
 
 pkgname=("${pkgbase}")
