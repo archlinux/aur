@@ -4,7 +4,7 @@ pkgbase=slimit-git
 pkgname=('slimit-git' 'slimit2-git')
 _srcname=slimit
 pkgver=0.8.1.r12.g3533eba
-pkgrel=2
+pkgrel=3
 pkgdesc='A JavaScript minifier written in Python'
 arch=('any')
 url='https://github.com/rspivak/slimit/'
@@ -51,7 +51,7 @@ check() {
 }
 
 package_slimit-git() {
-    depends=('python' 'python-ply')
+    depends=('python' 'python-ply' 'python-setuptools')
     provides=('slimit')
     conflicts=('slimit')
     
@@ -78,8 +78,8 @@ package_slimit-git() {
 }
 
 package_slimit2-git() {
-    pkgdesc='A JavaScript minifier written in Python (python2 version)'
-    depends=('python2' 'python2-ply')
+    pkgdesc+=' (python2 version)'
+    depends=('python2' 'python2-ply' 'python2-setuptools')
     provides=('slimit2')
     conflicts=('slimit2')
     
