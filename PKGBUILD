@@ -12,8 +12,8 @@ arch=('any')
 url="http://core.tcl.tk/tcllib/"
 license=('bsd')
 depends=('tcl')
-source=("https://core.tcl-lang.org/tcllib/uv/tcllib-${pkgver/./-}.tar.gz")
-sha256sums=('f0977ed98a6555266461a818d2814ff11f35f90412d394e13bf3da686cc93ca0')
+source=("https://core.tcl-lang.org/tcllib/uv/tcllib-$pkgver.tar.gz")
+sha256sums=('01fe87cf1855b96866cf5394b6a786fd40b314022714b34110aeb6af545f6a9c')
 
 package(){
   cd "$srcdir"/tcllib-tcllib-${pkgver/./-}
