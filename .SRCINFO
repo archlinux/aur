@@ -1,7 +1,7 @@
 pkgbase = iup
 	pkgdesc = C cross platform GUI toolkit
 	pkgver = 3.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tecgraf.puc-rio.br/iup/
 	arch = x86_64
 	license = MIT
@@ -19,8 +19,10 @@ pkgbase = iup
 	makedepends = lua52-cd
 	source = https://downloads.sourceforge.net/project/iup/3.26/Docs%20and%20Sources/iup-3.26_Sources.tar.gz
 	source = https://downloads.sourceforge.net/project/iup/3.26/Docs%20and%20Sources/iup-3.26_Docs.pdf
+	source = tecmake-fix-Linux5-build.patch
 	md5sums = 446668073d9a87c57f4e5d682b8663f4
 	md5sums = 78341ce38463a168a2a14f59c58808f5
+	md5sums = 057b075a25ff818e8f928a85a739398c
 
 pkgname = iup
 	pkgdesc = C cross platform GUI toolkit
