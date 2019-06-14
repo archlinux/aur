@@ -1,7 +1,7 @@
 # Maintainer: Joop Kiefte <joop@kiefte.net>
 pkgname=ruby-textplay-git
-pkgver=r87.88f7871
-pkgrel=3
+pkgver=r88.eb06aa6
+pkgrel=1
 pkgdesc="Convert fountain screenplays to Final Draft and HTML format, and convert HTML to PDF."
 arch=('any')
 url="https://www.olivertaylor.net/"
@@ -9,7 +9,7 @@ license=('custom:textplay')
 depends=('ruby')
 makedepends=('git') 
 optdepends=('ttf-courier-prime: To print screenplays in the expected font'
-	    'python-weasyprint: To create a PDF version from the output if you don''t want to use PrinceXML'
+	    'python-weasyprint: To create a PDF version from the output'
             'princexml: The PDF package textplay was written for, commercial - free version creates watermark')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
