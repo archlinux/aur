@@ -1,0 +1,17 @@
+pkgbase = g930-battery-percentage-git
+	pkgdesc = Print battery percentage of a Logitech G930 wireless headset
+	pkgver = r15.0b1e831
+	pkgrel = 1
+	url = https://github.com/Roliga/g930-battery-percentage
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = hidapi
+	optdepends = libnotify: g930-battery-notify support
+	provides = g930-battery-percentage
+	conflicts = g930-battery-percentage
+	source = g930-battery-percentage::git+https://github.com/Roliga/g930-battery-percentage.git
+	md5sums = SKIP
+
+pkgname = g930-battery-percentage-git
+
