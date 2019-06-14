@@ -57,15 +57,29 @@ build() {
   export LDFLAGS=${LDFLAGS/,-z,now}
 
   msg "building xgl..."
-  cd drivers/xgl
-  cmake -G Ninja -H. -Bbuilds/Release64 \
-	  -DCMAKE_BUILD_TYPE=Release \
-	  -DBUILD_WAYLAND_SUPPORT=On \
-	  -DBUILD_WSA=On
+  pushd drivers/xgl > /dev/null
+  cmake \
+    -G Ninja \
+    -H. \
+    -B builds/Release64 \
+    -DBUILD_WAYLAND_SUPPORT=On \
+    -DCMAKE_BUILD_TYPE=Release
 
   cd builds/Release64
   ninja
   msg "building xgl finished!"
+  popd > /dev/null
+
+  #msg "building spvgen"
+  #pushd drivers/spvgen > /dev/null
+  #cmake \
+  #  -G Ninja \
+  #  -B builds/Release64 \
+  #  -DCMAKE_BUILD_TYPE=Release \
+  #  .
+  #cd builds/Release64
+  #ninja
+  #msg "building spvgen finished!"
 }
 
 package() {
@@ -73,7 +87,7 @@ package() {
   install -m755 -d "${pkgdir}"/usr/share/licenses/amdvlk-git
   install -m755 -d "${pkgdir}"/etc/amd
 
-  install drivers/xgl/builds/Release64/icd/amdvlk64.so "${pkgdir}"/usr/lib/
+  install -D -t "$pkgdir/usr/lib" drivers/xgl/builds/Release64/icd/amdvlk64.so
   install -D -m644 -t "${pkgdir}/usr/share/vulkan/icd.d" drivers/AMDVLK/json/Redhat/amd_icd64.json
   install -D -m644 -t "${pkgdir}/usr/share/licenses/amdvlk-git" drivers/AMDVLK/LICENSE.txt
 
