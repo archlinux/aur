@@ -27,24 +27,18 @@ prepare() {
 }
 
 build() {
-    pwd
-    ls
     cd "GumboScript-$pkgver"
-    pwd
-    ls
-	./gradlew shadowJar
+    ./gradlew shadowJar
 }
 
 package() {
-	cd "GumboScript-$pkgver"
-	echo "pkgdir:$pkgdir"
-
+    cd "GumboScript-$pkgver"
     mkdir "$pkgdir/usr"
-	mkdir "$pkgdir/usr/bin"
-	install "./bin/gumboscript" "$pkgdir/usr/bin/gumboscript"
+    mkdir "$pkgdir/usr/bin"
+    install "./bin/gumboscript" "$pkgdir/usr/bin/gumboscript"
 
     mkdir "$pkgdir/opt"
-	mkdir "$pkgdir/opt/gumboscript"
-	install "./build/libs/gumboscript-all.jar" "$pkgdir/opt/gumboscript/gumboscript.jar"
+    mkdir "$pkgdir/opt/gumboscript"
+    install "./build/libs/gumboscript-all.jar" "$pkgdir/opt/gumboscript/gumboscript.jar"
 }
 md5sums=('af7c2a6a9e00a4cd2ad52cc66ac1e1f1')
