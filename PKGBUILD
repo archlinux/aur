@@ -7,7 +7,7 @@ pkgname=librewolf
 _pkgname=LibreWolf
 pkgver=67.0.2
 _bundle=c9edc4fbdfc8a0a5656e43d0afda6df03b93de7c
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -33,7 +33,7 @@ source=(https://hg.cdn.mozilla.net/mozilla-unified/${_bundle}.zstd-max.hg
 sha256sums=('a27eda97cfbc546bd156249490e72ef5cbb96a1d5921efa1131b565bcc938c0c'
             'd0673786a6a1f1b9f6f66a3a1356afa33f1f18f59dabd92bd193c88c52a1d04c'
             'ad6b1bc47687c8f094a0b8dd077b13099d43fc95469b73ec9890e642512d474e'
-            '4c09f4e90003a063d9a3aaf100ecb7872c0a4ffbe0a5271640553418471902eb'
+            '14988a699a57354530c5aaee4d760436a8828bc4e7d2766e5c90729e9a369a9a'
             'SKIP')
 
 prepare() {

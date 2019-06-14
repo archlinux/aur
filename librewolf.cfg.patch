@@ -1,7 +1,33 @@
 diff --git a/settings/settings/librewolf.cfg b/settings/settings/librewolf.cfg
-index 5e9c80f..94de823 100644
+index 4e8adb1..249f516 100644
 --- a/settings/settings/librewolf.cfg
 +++ b/settings/settings/librewolf.cfg
+@@ -107,14 +107,14 @@ lockPref("general.config.filename", "librewolf.cfg");
+ // http://kb.mozillazine.org/Network.cookie.cookieBehavior#1
+ // Blocking 3rd-party cookies breaks a number of payment gateways
+ // CIS 2.5.1
+-lockPref("network.cookie.cookieBehavior", 1);
++defaultPref("network.cookie.cookieBehavior", 1);
+ 
+ // Pref : Cookies expires at the end of the session (when the browser closes)
+ // http://kb.mozillazine.org/Network.cookie.lifetimePolicy#2
+ // 0=until they expire (default)
+ // 2=until you close Firefox
+ // 3=for n days
+-lockPref("network.cookie.lifetimePolicy", 2);
++defaultPref("network.cookie.lifetimePolicy", 0);
+ 
+ // Pref : Disable Cookie Exception Button
+ // WARNING Bug !!! This lock the button whether its false or true
+@@ -136,7 +136,7 @@ lockPref("network.cookie.leave-secure-alone", true); // default: true
+ // nonsecureSessionOnly=true. This allows you to keep HTTPS cookies, but session-only HTTP ones
+ // [1] https://feeding.cloud.geek.nz/posts/tweaking-cookies-for-privacy-in-firefox/
+ // [2] http://kb.mozillazine.org/Network.cookie.thirdparty.sessionOnly
+-lockPref("network.cookie.thirdparty.sessionOnly", true); // default : false
++defaultPref("network.cookie.thirdparty.sessionOnly", true); // default : false
+ lockPref("network.cookie.thirdparty.nonsecureSessionOnly", true); // (FF58+) // default false
+ 
+ // Also check "User Settings : Track Protection" for other cookies settings
 @@ -370,10 +370,10 @@ lockPref("browser.sessionstore.interval", 60000);
  // ----------------------------------------------------------------------------------------------------
  
@@ -17,6 +43,15 @@ index 5e9c80f..94de823 100644
  
  // Pref : Require manual intervention to autofill known username/passwords sign-in forms
  // http://kb.mozillazine.org/Signon.autofillForms
+@@ -780,7 +780,7 @@ lockPref("privacy.resistFingerprinting", true);
+ // [NOTE] As a side-effect in FF57-59 this allowed extensions to work on AMO. In FF60+ you also need
+ // to sanitize or clear extensions.webextensions.restrictedDomains (see 2662) to keep that side-effect
+ // [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1384330,1406795,1415644,1453988
+-lockPref("privacy.resistFingerprinting.block_mozAddonManager", true);
++defaultPref("privacy.resistFingerprinting.block_mozAddonManager", true);
+ 
+ // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ // Section : Locale/Time/UserAgent
 @@ -1429,22 +1429,22 @@ lockPref("extensions.getAddons.compatOverides.url", "");
  // https://services.addons.mozilla.org/api/v3/addons/compat-override/?guid=%IDS%&lang=%LOCALE%
  
