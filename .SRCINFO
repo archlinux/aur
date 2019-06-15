@@ -11,6 +11,7 @@ pkgbase = libretro-mupen64plus-nx-git
 	groups = libretro
 	license = GPL3
 	makedepends = git
+	makedepends = nasm
 	depends = libglvnd
 	depends = libpng
 	source = mupen64plus-libretro-nx::git://github.com/libretro/mupen64plus-libretro-nx.git
