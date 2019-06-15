@@ -1,6 +1,6 @@
 pkgbase = python-fuzzysearch
 	pkgdesc = A Python library for fuzzy substring searches
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/taleinat/fuzzysearch
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-fuzzysearch
 	depends = python
 	conflicts = python-fuzzysearch
 	conflicts = python-fuzzysearch-git
-	source = python-fuzzysearch-0.6.1.tar.gz::https://github.com/taleinat/fuzzysearch/archive/v0.6.1.tar.gz
-	md5sums = d741f2b79cd8db1296f875d18885008b
+	source = python-fuzzysearch-0.6.2.tar.gz::https://github.com/taleinat/fuzzysearch/archive/v0.6.2.tar.gz
+	md5sums = 3a39cfa979faafbde6259980d96af9f9
 
 pkgname = python-fuzzysearch
 
