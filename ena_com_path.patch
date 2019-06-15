@@ -1,0 +1,10 @@
+diff --git a/kernel/linux/ena/Makefile b/kernel/linux/ena/Makefile
+index 370ee4b..26ab4c2 100644
+--- a/kernel/linux/ena/Makefile
++++ b/kernel/linux/ena/Makefile
+@@ -1,4 +1,4 @@
+-ENA_COM_PATH=../common/ena_com/
++ENA_COM_PATH=./common/ena_com/
+ 
+ obj-m += ena.o
+ ena-objs := ena_netdev.o \

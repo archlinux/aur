@@ -1,0 +1,16 @@
+pkgbase = amzn-drivers-ena-dkms
+	pkgdesc = Linux kernel driver for Elastic Network Adapter (ENA)
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/amzn/amzn-drivers
+	arch = x86_64
+	license = GPL
+	source = https://github.com/amzn/amzn-drivers/archive/ena_linux_2.1.1.zip
+	source = ena_com_path.patch
+	sha256sums = eafc35121139068dfdfe7f3ca5fe8adec8652a5eca1718d26fc584917c8d07a0
+	sha256sums = a37ccca26a6da38041c3eaef54973d65b516b6e639e2299d60f830268fa75d9e
+
+pkgname = amzn-drivers-ena-dkms
+	depends = dkms
+	provides = AMZN-DRIVERS-ENA-MODULE
+
