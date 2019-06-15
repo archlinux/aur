@@ -3,13 +3,13 @@
 # Previous Maintainer: Stephan Wienczny <stephan@wienczny.de>
 
 pkgname=dbeaver-ee
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="A universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support"
 arch=('i686' 'x86_64')
 url="http://dbeaver.com/"
 license=("Commercial")
-depends=('java-runtime>=1.6' 'gtk2' 'gtk-update-icon-cache')
+depends=('java-runtime>=1.8' 'gtk3' 'gtk-update-icon-cache')
 install=dbeaver-ee.install
 
 source=(dbeaver-ee.desktop dbeaver-ee.install)
@@ -17,8 +17,8 @@ source_i686=(http://dbeaver.com/files/${pkgver}/dbeaver-ee-${pkgver}-linux.gtk.x
 source_x86_64=(http://dbeaver.com/files/${pkgver}/dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz)
 sha256sums=('453912912ae8377b16ef74a3e7d93ea588792ee8f7054a573e9fe9b93cd9265f'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
-sha256sums_i686=('c0d7de7178c1265e1206e4229cc8df7776aa7613eafbd261c0dae08c705f58eb')
-sha256sums_x86_64=('c56f1e4b52a88f4e86592f66e3c32e8e512c148042b3f529722979ca9cab40ab')
+sha256sums_i686=('fb0c5cac80b9f4b9d8a051937ed6e157e8e618bd5efae52541092db4f942a604')
+sha256sums_x86_64=('0d357d3e955d60ee58f72368e1807ffd3bcaf6c772c4394f006e09cb8450dce5')
 
 noextract=("dbeaver-ee-${pkgver}-linux.gtk.x86.tar.gz"
            "dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz")
