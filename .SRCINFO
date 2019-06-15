@@ -1,0 +1,20 @@
+pkgbase = libretro-mupen64plus-nx-git
+	pkgdesc = libretro port of Mupen64 Plus with GLideN64
+	pkgver = 148.96608ba
+	pkgrel = 1
+	url = https://github.com/libretro/mupen64plus-libretro-nx
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	groups = libretro
+	license = GPL3
+	makedepends = git
+	depends = libglvnd
+	depends = libpng
+	source = mupen64plus-libretro-nx::git://github.com/libretro/mupen64plus-libretro-nx.git
+	md5sums = SKIP
+
+pkgname = libretro-mupen64plus-nx-git
+
