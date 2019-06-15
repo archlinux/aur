@@ -1,6 +1,6 @@
 pkgbase = photoflare
 	pkgdesc = Quick, simple but powerful Cross Platform image editor.
-	pkgver = 1.5.8.1
+	pkgver = 1.5.9
 	pkgrel = 1
 	url = http://photoflare.io/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = photoflare
 	depends = qt5-base
 	optdepends = qt5-imageformats: support for tiff, webp, and more image formats
 	replaces = photofiltrelx
-	source = photoflare-1.5.8.1.tar.gz::https://github.com/PhotoFlare/photoflare/archive/v1.5.8.1.tar.gz
-	sha256sums = 125665512597fd5c3697b784aefcb7443141ff7a1af0641f48e382ab2634d038
+	source = photoflare-1.5.9.tar.gz::https://github.com/PhotoFlare/photoflare/archive/v1.5.9.tar.gz
+	sha256sums = 6a869dbea696ce40e5b0d4a2b58215e1a0fb4aa5406e12608183141b995f422c
 
 pkgname = photoflare
 
