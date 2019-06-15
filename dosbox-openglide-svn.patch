@@ -1,0 +1,2642 @@
+diff -Nawurp a/configure.ac b/configure.ac
+--- a/configure.ac	2019-06-15 00:25:54.000000000 +0000
++++ b/configure.ac	2019-06-15 00:40:57.000000000 +0000
+@@ -557,7 +557,7 @@ int main(int argc,char * argv[]) {
+ dnl Some target detection and actions for them
+ case "$host" in
+     *-*-cygwin* | *-*-mingw32*)
+-       LIBS="$LIBS -lwinmm"
++       LIBS="$LIBS -lwinmm -lshlwapi"
+        AC_DEFINE(C_DIRECTSERIAL, 1, [ Define to 1 if you want serial passthrough support (Win32, Posix and OS/2 only).])
+        if test x$have_sdl_net_lib = xyes -a x$have_sdl_net_h = xyes ; then
+          LIBS="$LIBS -lws2_32"
+diff -Nawurp a/include/glidedef.h b/include/glidedef.h
+--- a/include/glidedef.h	1970-01-01 00:00:00.000000000 +0000
++++ b/include/glidedef.h	2019-06-15 00:25:58.000000000 +0000
+@@ -0,0 +1,179 @@
++/*
++ *  Copyright (C) 2002-2007  The DOSBox Team
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, write to the Free Software
++ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++ */
++
++#ifndef GLIDEDEF_H
++#define GLIDEDEF_H
++
++#ifdef DOSBOX_DOSBOX_H
++struct GLIDE_Block
++{
++    bool splash;
++    bool enabled;
++    bool * fullscreen;
++    Bit16u width, height;
++    class GLIDE_PageHandler * lfb_pagehandler;
++    GLIDE_Block():enabled(false),fullscreen(0),width(0),height(0),lfb_pagehandler((GLIDE_PageHandler*)0) { }
++};
++extern GLIDE_Block glide;
++extern void GLIDE_ResetScreen(bool update=false);
++extern void GLIDE_DisableScreen(void);
++#endif
++
++#define GLIDE_LFB		0x60000000
++#define GLIDE_BUFFERS		3			/* Front, Back, AUX */
++#define GLIDE_PAGE_BITS		11			/* =2048 pages per buffer, should be enough for 1600x1200x4 */
++#define GLIDE_PAGES		(GLIDE_BUFFERS*(1<<GLIDE_PAGE_BITS))
++
++#ifdef __3DFX_H__
++/* If you change these defines, don't forget to change the table in glide.h and compile a matching GLIDE2X.OVL */
++
++#define	_grAADrawLine8			0	// void grAADrawLine(GrVertex *va, GrVertex *vb)
++#define	_grAADrawPoint4			1	// void grAADrawPoint(GrVertex *p)
++#define	_grAADrawPolygon12		2	// void grAADrawPolygon(int nVerts, const int ilist[], const GrVertex vlist[])
++#define	_grAADrawPolygonVertexList8	3	// void grAADrawPolygonVertexList(int nVerts, const GrVertex vlist[])
++#define	_grAADrawTriangle24		4	// void grAADrawTriangle(GrVertex *a, GrVertex *b, GrVertex *c, FxBool antialiasAB, FxBool antialiasBC, FxBool antialiasCA)
++#define	_grAlphaBlendFunction16		5	// void grAlphaBlendFunction(GrAlphaBlendFnc_t rgb_sf, GrAlphaBlendFnc_t rgb_df, GrAlphaBlendFnc_t alpha_sf, GrAlphaBlendFnc_t alpha_df)
++#define	_grAlphaCombine20		6	// void grAlphaCombine(GrCombineFunction_t func, GrCombineFactor_t factor, GrCombineLocal_t local, GrCombineOther_t other, FxBool invert)
++#define	_grAlphaControlsITRGBLighting4	7	// void grAlphaControlsITRGBLighting(FxBool enable)
++#define	_grAlphaTestFunction4		8	// void grAlphaTestFunction(GrCmpFnc_t function)
++#define	_grAlphaTestReferenceValue4	9	// void grAlphaTestReferenceValue(GrAlpha_t value)
++#define	_grBufferClear12		10	// void grBufferClear(GrColor_t color, GrAlpha_t alpha, FxU16 depth)
++#define	_grBufferNumPending0		11	// int grBufferNumPending(void)
++#define	_grBufferSwap4			12	// void grBufferSwap(int swap_interval)
++#define	_grCheckForRoom4		13	// void grCheckForRoom(FxI32 n)
++#define	_grChromakeyMode4		14	// void grChromakeyMode(GrChromakeyMode_t mode)
++#define	_grChromakeyValue4		15	// void grChromakeyValue(GrColor_t value)
++#define	_grClipWindow16			16	// void grClipWindow(FxU32 minx, FxU32 miny, FxU32 maxx, FxU32 maxy)
++#define	_grColorCombine20		17	// void grColorCombine(GrCombineFunction_t func, GrCombineFactor_t factor, GrCombineLocal_t local, GrCombineOther_t other, FxBool invert)
++#define	_grColorMask8			18	// void grColorMask(FxBool rgb, FxBool alpha)
++#define	_grConstantColorValue416	19	// void grConstantColorValue4(float a, float r, float g, float b)
++#define	_grConstantColorValue4		20	// void grConstantColorValue(GrColor_t color)
++#define	_grCullMode4			21	// void grCullMode(GrCullMode_t mode)
++#define	_grDepthBiasLevel4		22	// void grDepthBiasLevel(FxI16 level)
++#define	_grDepthBufferFunction4		23	// void grDepthBufferFunction(GrCmpFnc_t func)
++#define	_grDepthBufferMode4		24	// void grDepthBufferMode(GrDepthBufferMode_t mode)
++#define	_grDepthMask4			25	// void grDepthMask(FxBool enable)
++#define	_grDisableAllEffects0		26	// void grDisableAllEffects(void)
++#define	_grDitherMode4			27	// void grDitherMode(GrDitherMode_t mode)
++#define	_grDrawLine8			28	// void grDrawLine(const GrVertex *a, const GrVertex *b)
++#define	_grDrawPlanarPolygon12		29	// void grDrawPlanarPolygon(int nVerts, int ilist[], const GrVertex vlist[])
++#define	_grDrawPlanarPolygonVertexList8 30	// void grDrawPlanarPolygonVertexList(int nVerts, const GrVertex vlist[])
++#define	_grDrawPoint4			31	// void grDrawPoint(const GrVertex *a)
++#define	_grDrawPolygon12		32	// void grDrawPolygon(int nVerts, int ilist[], const GrVertex vlist[])
++#define	_grDrawPolygonVertexList8	33	// void grDrawPolygonVertexList(int nVerts, const GrVertex vlist[])
++#define	_grDrawTriangle12		34	// void grDrawTriangle(const GrVertex *a, const GrVertex *b, const GrVertex *c)
++#define	_grErrorSetCallback4		35	// void grErrorSetCallback(void (*function)(const char *string, FxBool fatal))
++#define	_grFogColorValue4		36	// void grFogColorValue(GrColor_t value)
++#define	_grFogMode4			37	// void grFogMode(GrFogMode_t mode)
++#define	_grFogTable4			38	// void grFogTable(const GrFog_t table[GR_FOG_TABLE_SIZE])
++#define	_grGammaCorrectionValue4	39	// void grGammaCorrectionValue(float value)
++#define	_grGlideGetState4		40	// void grGlideGetState(GrState *state)
++#define	_grGlideGetVersion4		41	// void grGlideGetVersion(char version[80])
++#define	_grGlideInit0			42	// void grGlideInit(void)
++#define	_grGlideSetState4		43	// void grGlideSetState(const GrState *state)
++#define	_grGlideShamelessPlug4		44	// void grGlideShamelessPlug(const FxBool on)
++#define	_grGlideShutdown0		45	// void grGlideShutdown(void)
++#define	_grHints8			46	// void grHints(GrHint_t type, FxU32 hintMask)
++#define	_grLfbConstantAlpha4		47	// void grLfbConstantAlpha(GrAlpha_t alpha)
++#define	_grLfbConstantDepth4		48	// void grLfbConstantDepth(FxU16 depth)
++#define	_grLfbLock24			49	// FxBool grLfbLock(GrLock_t type, GrBuffer_t buffer, GrLfbWriteMode_t writeMode, GrOriginLocation_t origin, FxBool pixelPipeline, GrLfbInfo_t *info)
++#define	_grLfbReadRegion28		50	// FxBool grLfbReadRegion(GrBuffer_t src_buffer, FxU32 src_x, FxU32 src_y, FxU32 src_width, FxU32 src_height, FxU32 dst_stride, void *dst_data)
++#define	_grLfbUnlock8			51	// FxBool grLfbUnlock(GrLock_t type, GrBuffer_t buffer)
++#define	_grLfbWriteColorFormat4		52	// void grLfbWriteColorFormat(GrColorFormat_t colorFormat)
++#define	_grLfbWriteColorSwizzle8	53	// void grLfbWriteColorSwizzle(FxBool swizzleBytes, FxBool swapWords)
++#define	_grLfbWriteRegion32		54	// FxBool grLfbWriteRegion(GrBuffer_t dst_buffer, FxU32 dst_x, FxU32 dst_y, GrLfbSrcFmt_t src_format, FxU32 src_width, FxU32 src_height, FxU32 src_stride, void *src_data)
++#define	_grRenderBuffer4		55	// void grRenderBuffer(GrBuffer_t buffer)
++#define	_grResetTriStats0		56	// void grResetTriStats()
++#define	_grSplash20			57	// void grSplash(float x, float y, float width, float height, FxU32 frame)
++#define	_grSstConfigPipeline12		58	//
++#define	_grSstControl4			59	// FxBool grSstControl(FxU32 code)
++#define	_grSstIdle0			60	// void grSstIdle(void)
++#define	_grSstIsBusy0			61	// FxBool grSstIsBusy(void)
++#define	_grSstOrigin4			62	// void grSstOrigin(GrOriginLocation_t origin)
++#define	_grSstPerfStats4		63	// void grSstPerfStats(GrSstPerfStats_t *pStats)
++#define	_grSstQueryBoards4		64	// FxBool grSstQueryBoards(GrHwConfiguration *hwConfig)
++#define	_grSstQueryHardware4		65	// FxBool grSstQueryHardware(GrHwConfiguration *hwConfig)
++#define	_grSstResetPerfStats0		66	// void grSstResetPerfStats(void)
++#define	_grSstScreenHeight0		67	// FxU32 grSstScreenHeight(void)
++#define	_grSstScreenWidth0		68	// FxU32 grSstScreenWidth(void)
++#define	_grSstSelect4			69	// void grSstSelect(int which_sst)
++#define	_grSstStatus0			70	// FxU32 grSstStatus(void)
++#define	_grSstVRetraceOn0		71	// FxBool grSstVRetraceOn(void)
++#define	_grSstVidMode8			72	//
++#define	_grSstVideoLine0		73	// FxU32 grSstVideoLine(void)
++#define	_grSstWinClose0			74	// void grSstWinClose(void)
++#define	_grSstWinOpen28			75	// FxBool grSstWinOpen(FxU32 hwnd, GrScreenResolution_t res, GrScreenRefresh_t ref, GrColorFormat_t cformat, GrOriginLocation_t org_loc, int num_buffers, int num_aux_buffers)
++#define	_grTexCalcMemRequired16		76	// FxU32 grTexCalcMemRequired(GrLOD_t smallLod, GrLOD_t largeLod, GrAspectRatio_t aspect, GrTextureFormat_t format)
++#define	_grTexClampMode12		77	// void grTexClampMode(GrChipID_t tmu, GrTextureClampMode_t sClampMode, GrTextureClampMode_t tClampMode)
++#define	_grTexCombine28			78	// void grTexCombine(GrChipID_t tmu, GrCombineFunction_t rgb_function, GrCombineFactor_t rgb_factor, GrCombineFunction_t alpha_function, GrCombineFactor_t alpha_factor, FxBool rgb_invert, FxBool alpha_invert)
++#define	_grTexCombineFunction8		79	// void grTexCombineFunction(GrChipID_t tmu, GrTextureCombineFnc_t fnc)
++#define	_grTexDetailControl16		80	// void grTexDetailControl(GrChipID_t tmu, int lodBias, FxU8 detailScale, float detailMax)
++#define	_grTexDownloadMipMap16		81	// void grTexDownloadMipMap(GrChipID_t tmu, FxU32 startAddress, FxU32 evenOdd, GrTexInfo *info)
++#define	_grTexDownloadMipMapLevel32	82	// void grTexDownloadMipMapLevel(GrChipID_t tmu, FxU32 startAddress, GrLOD_t thisLod, GrLOD_t largeLod, GrAspectRatio_t aspectRatio, GrTextureFormat_t format, FxU32 evenOdd, void *data)
++#define	_grTexDownloadMipMapLevelPartial40 83	// void grTexDownloadMipMapLevelPartial(GrChipID_t tmu, FxU32 startAddress, GrLOD_t thisLod, GrLOD_t largeLod, GrAspectRatio_t aspectRatio, GrTextureFormat_t format, FxU32 evenOdd, void *data, int start, int end)
++#define	_grTexDownloadTable12		84	// void grTexDownloadTable(GrChipID_t tmu, GrTexTable_t type, void *data)
++#define	_grTexDownloadTablePartial20	85	// void grTexDownloadTablePartial(GrChipID_t tmu, GrTexTable_t type, void *data, int start, int end)
++#define	_grTexFilterMode12		86	// void grTexFilterMode(GrChipID_t tmu, GrTextureFilterMode_t minFilterMode, GrTextureFilterMode_t magFilterMode)
++#define	_grTexLodBiasValue8		87	// void grTexLodBiasValue(GrChipID_t tmu, float bias)
++#define	_grTexMaxAddress4		88	// FxU32 grTexMaxAddress(GrChipID_t tmu)
++#define	_grTexMinAddress4		89	// FxU32 grTexMinAddress(GrChipID_t tmu)
++#define	_grTexMipMapMode12		90	// void grTexMipMapMode(GrChipID_t tmu, GrMipMapMode_t mode, FxBool lodBlend)
++#define	_grTexMultibase8		91	// void grTexMultibase(GrChipID_t tmu, FxBool enable)
++#define	_grTexMultibaseAddress20	92	// void grTexMultibaseAddress(GrChipID_t tmu, GrTexBaseRange_t range, FxU32 startAddress, FxU32 evenOdd, GrTexInfo *info)
++#define	_grTexNCCTable8			93	// void grTexNCCTable(GrChipID_t tmu, GrNCCTable_t table)
++#define	_grTexSource16			94	// void grTexSource(GrChipID_t tmu, FxU32 startAddress, FxU32 evenOdd, GrTexInfo *info)
++#define	_grTexTextureMemRequired8	95	// FxU32 grTexTextureMemRequired(FxU32 evenOdd, GrTexInfo *info)
++#define	_grTriStats8			96	// void grTriStats(FxU32 *trisProcessed, FxU32 *trisDrawn)
++#define	_gu3dfGetInfo8			97	// FxBool gu3dfGetInfo(const char *filename, Gu3dfInfo *info)
++#define	_gu3dfLoad8			98	// FxBool gu3dfLoad(const char *filename, Gu3dfInfo *info)
++#define	_guAADrawTriangleWithClip12	99	// void guAADrawTriangleWithClip(const GrVertex *va, const GrVertex *vb, const GrVertex *vc)
++#define	_guAlphaSource4			100	// void guAlphaSource(GrAlphaSource_t mode)
++#define	_guColorCombineFunction4	101	// void guColorCombineFunction(GrColorCombineFnc_t func)
++#define	_guDrawPolygonVertexListWithClip8 102	// void guDrawPolygonVertexListWithClip(int nverts, const GrVertex vlist[])
++#define	_guDrawTriangleWithClip12	103	// void guDrawTriangleWithClip(const GrVertex *va, const GrVertex *vb, const GrVertex *vc)
++#define	_guEncodeRLE1616		104	//
++#define	_guEndianSwapBytes4		105	//
++#define	_guEndianSwapWords4		106	//
++#define	_guFogGenerateExp28		107	// void guFogGenerateExp2(GrFog_t fogTable[GR_FOG_TABLE_SIZE], float density)
++#define	_guFogGenerateExp8		108	// void guFogGenerateExp(GrFog_t fogTable[GR_FOG_TABLE_SIZE], float density)
++#define	_guFogGenerateLinear12		109	// void guFogGenerateLinear(GrFog_t fogTable[GR_FOG_TABLE_SIZE], float nearW, float farW)
++#define	_guFogTableIndexToW4		110	// float guFogTableIndexToW(int i)
++#define	_guMPDrawTriangle12		111	//
++#define	_guMPInit0			112	//
++#define	_guMPTexCombineFunction4	113	//
++#define	_guMPTexSource8			114	//
++#define	_guMovieSetName4		115	//
++#define	_guMovieStart0			116	//
++#define	_guMovieStop0			117	//
++#define	_guTexAllocateMemory60		118	// GrMipMapId_t guTexAllocateMemory(GrChipID_t tmu, FxU8 evenOddMask, int width, int height, GrTextureFormat_t format, GrMipMapMode_t mmMode, GrLOD_t smallLod, GrLOD_t largeLod, GrAspectRatio_t aspectRatio, GrTextureClampMode_t sClampMode, GrTextureClampMode_t tClampMode, GrTextureFilterMode_t minFilterMode, GrTextureFilterMode_t magFilterMode, float lodBias, FxBool lodBlend)
++#define	_guTexChangeAttributes48	119	// FxBool guTexChangeAttributes(GrMipMapID_t mmid, int width, int height, GrTextureFormat_t format, GrMipMapMode_t mmMode, GrLOD_t smallLod, GrLOD_t largeLod, GrAspectRatio_t aspectRatio, GrTextureClampMode_t sClampMode, GrTextureClampMode_t tClampMode, GrTextureFilterMode_t minFilterMode, GrTextureFilterMode_t magFilterMode)
++#define	_guTexCombineFunction8		120	// void guTexCombineFunction(GrChipID_t tmu, GrTextureCombineFnc_t func)
++#define	_guTexCreateColorMipMap0	121	//
++#define	_guTexDownloadMipMap12		122	// void guTexDownloadMipMap(GrMipMapId_t mmid, const void *src, const GuNccTable *nccTable)
++#define	_guTexDownloadMipMapLevel12	123	// void guTexDownloadMipMapLevel(GrMipMapId_t mmid, GrLOD_t lod, const void **src)
++#define	_guTexGetCurrentMipMap4		124	// GrMipMapId_t guTexGetCurrentMipMap (GrChipID_t tmu)
++#define	_guTexGetMipMapInfo4		125	// GrMipMapInfo *guTexGetMipMapInfo(GrMipMapId_t mmid)
++#define	_guTexMemQueryAvail4		126	// FxU32 guTexMemQueryAvail(GrChipID_t tmu)
++#define	_guTexMemReset0			127	// void guTexMemReset(void)
++#define	_guTexSource4			128	// void guTexSource(GrMipMapId_t mmid)
++#define	_ConvertAndDownloadRle64	129	// void ConvertAndDownloadRle(GrChipID_t tmu, FxU32 startAddress, GrLOD_t thisLod, GrLOD_t largeLod, GrAspectRatio_t aspectRatio, GrTextureFormat_t format, FxU32 evenOdd, FxU8 *bm_data, long  bm_h, FxU32 u0, FxU32 v0, FxU32 width, FxU32 height, FxU32 dest_width, FxU32 dest_height, FxU16 *tlut)
++#define GLIDE_MAX			129
++
++#endif // __3DFX_H__
++
++#endif // GLIDEDEF_H
+diff -Nawurp a/include/glide.h b/include/glide.h
+--- a/include/glide.h	1970-01-01 00:00:00.000000000 +0000
++++ b/include/glide.h	2019-06-15 00:25:58.000000000 +0000
+@@ -0,0 +1,331 @@
++/*
++ *  Copyright (C) 2002-2007  The DOSBox Team
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, write to the Free Software
++ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++ */
++
++#ifndef DOSBOX_GLIDE_H
++#define DOSBOX_GLIDE_H
++
++#define __3DFX_H__
++
++/*
++** basic data types
++*/
++typedef Bit8u   FxU8;
++typedef Bit8s   FxI8;
++typedef Bit16u  FxU16;
++typedef Bit16s  FxI16;
++typedef Bit32u  FxU32;
++typedef Bit32s  FxI32;
++typedef Bit32s  FxBool;
++typedef float   FxFloat;
++typedef double  FxDouble;
++
++/*
++** color types
++*/
++typedef Bit32u                       FxColor_t;
++typedef struct { float r, g, b, a; } FxColor4;
++
++/*
++** fundamental types
++*/
++#define FXTRUE    1
++#define FXFALSE   0
++
++/*
++** helper macros
++*/
++#define FXUNUSED( a ) ((void)(a))
++#define FXBIT( i )    ( 1L << (i) )
++
++#define FX_ENTRY
++#define FX_GLIDE_NO_FUNC_PROTO
++
++#if defined (WIN32)
++#define FX_CALL __stdcall
++#else
++#define FX_CALL
++#endif
++
++#include <openglide/sdk2_glide.h>
++#include "glidedef.h"
++
++// Careful with structures containing pointers
++//
++// GrTexInfo; GrLfbInfo_t; Gu3dfInfo; GrMipMapInfo;
++//
++
++// Some glide structs might have different size in guest 32-bit DOS (pointers)
++typedef struct {
++    Bit32s		smallLod;
++    Bit32s		largeLod;
++    Bit32s		aspectRatio;
++    Bit32s		format;
++    PhysPt		data;
++} DBGrTexInfo;
++
++typedef struct {
++    Bit32s		size;
++    PhysPt		lfbPtr;
++    Bit32u		strideInBytes;
++    Bit32s		writeMode;
++    Bit32s		origin;
++} DBGrLfbInfo_t;
++
++typedef struct {
++    Gu3dfHeader 	header;
++    GuTexTable		table;
++    PhysPt		data;
++    Bit32u		mem_required;
++} DBGu3dfInfo;
++
++typedef struct {
++    const char * name;
++    const Bit8u parms;
++} GLIDE_TABLE;
++
++typedef void (FX_CALL *pfunc0)		(void);
++typedef void (FX_CALL *pfunc1i)		(FxU32);
++typedef void (FX_CALL *pfunc1p)		(void*);
++typedef void (FX_CALL *pfunc1f)		(float);
++typedef void (FX_CALL *pfunc2i)		(FxU32, FxU32);
++typedef void (FX_CALL *pfunc1i1p)	(FxU32, void*);
++typedef void (FX_CALL *pfunc2p)		(void*, void*);
++typedef void (FX_CALL *pfunc1i1f)	(FxU32, float);
++typedef void (FX_CALL *pfunc1p1f)	(void*, float);
++typedef void (FX_CALL *pfunc3i)		(FxU32, FxU32, FxU32);
++typedef void (FX_CALL *pfunc2i1p)	(FxU32, FxU32, void*);
++typedef void (FX_CALL *pfunc1i2p)	(FxU32, void*, void*);
++typedef void (FX_CALL *pfunc3p)		(void*, void*, void*);
++typedef void (FX_CALL *pfunc1p2f)	(void*, float, float);
++typedef void (FX_CALL *pfunc4i)		(FxU32, FxU32, FxU32, FxU32);
++typedef void (FX_CALL *pfunc3i1p)	(FxU32, FxU32, FxU32, void*);
++typedef void (FX_CALL *pfunc3i1f)	(FxU32, FxU32, FxU32, float);
++typedef void (FX_CALL *pfunc4f)		(float, float, float, float);
++typedef void (FX_CALL *pfunc5i)		(FxU32, FxU32, FxU32, FxU32, FxU32);
++typedef void (FX_CALL *pfunc2i1p2i)	(FxU32, FxU32, void*, FxU32, FxU32);
++typedef void (FX_CALL *pfunc4f1i)	(float, float, float, float, FxU32);
++typedef void (FX_CALL *pfunc3p3i)	(void*, void*, void*, FxU32, FxU32, FxU32);
++typedef void (FX_CALL *pfunc7i)		(FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, FxU32);
++typedef void (FX_CALL *pfunc7i1p)	(FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, void*);
++typedef void (FX_CALL *pfunc7i1p2i)	(FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, void*,
++					    FxU32, FxU32);
++typedef void (FX_CALL *pfunc7i1p7i1p)	(FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, void*,
++					    FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, void*);
++
++typedef FxU32 (FX_CALL *prfunc0)		(void);
++typedef FxU32 (FX_CALL *prfunc1i)	(FxU32);
++typedef FxU32 (FX_CALL *prfunc1p)	(void*);
++typedef FxU32 (FX_CALL *prfunc2i)	(FxU32, FxU32);
++typedef FxU32 (FX_CALL *prfunc1i1p)	(FxU32, void*);
++typedef FxU32 (FX_CALL *prfunc2p)	(void*, void*);
++typedef FxU32 (FX_CALL *prfunc4i)	(FxU32, FxU32, FxU32, FxU32);
++typedef FxU32 (FX_CALL *prfunc5i1p)	(FxU32, FxU32, FxU32, FxU32, FxU32, void*);
++typedef FxU32 (FX_CALL *prfunc7i)	(FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, FxU32);
++typedef FxU32 (FX_CALL *prfunc1p6i)	(void*, FxU32, FxU32, FxU32, FxU32, FxU32, FxU32);
++typedef FxU32 (FX_CALL *prfunc6i1p)	(FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, void*);
++typedef FxU32 (FX_CALL *prfunc7i1p)	(FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, void*);
++typedef FxU32 (FX_CALL *prfunc12i)	(FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, FxU32,
++					    FxU32, FxU32, FxU32, FxU32, FxU32);
++typedef FxU32 (FX_CALL *prfunc13i1f1i)	(FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, FxU32, FxU32,
++					    FxU32, FxU32, FxU32, FxU32, FxU32, float, FxU32);
++
++typedef void* (FX_CALL *prptfunc1i)	(FxU32);
++typedef float (FX_CALL *pffunc1i)	(FxU32);
++
++typedef union {
++    pfunc0	grFunction0;
++    pfunc1i	grFunction1i;
++    pfunc1p	grFunction1p;
++    pfunc1f	grFunction1f;
++    pfunc2i	grFunction2i;
++    pfunc1i1p	grFunction1i1p;
++    pfunc2p	grFunction2p;
++    pfunc1i1f	grFunction1i1f;
++    pfunc1p1f	grFunction1p1f;
++    pfunc3i	grFunction3i;
++    pfunc2i1p	grFunction2i1p;
++    pfunc1i2p	grFunction1i2p;
++    pfunc3p	grFunction3p;
++    pfunc1p2f	grFunction1p2f;
++    pfunc4i	grFunction4i;
++    pfunc3i1p	grFunction3i1p;
++    pfunc3i1f	grFunction3i1f;
++    pfunc4f	grFunction4f;
++    pfunc5i	grFunction5i;
++    pfunc2i1p2i	grFunction2i1p2i;
++    pfunc4f1i	grFunction4f1i;
++    pfunc3p3i	grFunction3p3i;
++    pfunc7i	grFunction7i;
++    pfunc7i1p	grFunction7i1p;
++    pfunc7i1p2i	grFunction7i1p2i;
++    pfunc7i1p7i1p grFunction7i1p7i1p;
++
++    prfunc0	grRFunction0;
++    prfunc1i	grRFunction1i;
++    prfunc1p	grRFunction1p;
++    prfunc2i	grRFunction2i;
++    prfunc1i1p	grRFunction1i1p;
++    prfunc2p	grRFunction2p;
++    prfunc4i	grRFunction4i;
++    prfunc5i1p	grRFunction5i1p;
++    prfunc7i	grRFunction7i;
++    prfunc1p6i	grRFunction1p6i;
++    prfunc6i1p	grRFunction6i1p;
++    prfunc7i1p	grRFunction7i1p;
++    prfunc12i	grRFunction12i;
++    prfunc13i1f1i grRFunction13i1f1i;
++
++    prptfunc1i	grRPTFunction1i;
++
++    pffunc1i	grFFunction1i;
++} FncPointers;
++
++static const GLIDE_TABLE grTable[] = {
++    { "grAADrawLine", 8 },
++    { "grAADrawPoint", 4 },
++    { "grAADrawPolygon", 12 },
++    { "grAADrawPolygonVertexList", 8 },
++    { "grAADrawTriangle", 24 },
++    { "grAlphaBlendFunction", 16 },
++    { "grAlphaCombine", 20 },
++    { "grAlphaControlsITRGBLighting", 4 },
++    { "grAlphaTestFunction", 4 },
++    { "grAlphaTestReferenceValue", 4 },
++    { "grBufferClear", 12 },
++    { "grBufferNumPending", 0 },
++    { "grBufferSwap", 4 },
++    { "grCheckForRoom", 4 },
++    { "grChromakeyMode", 4 },
++    { "grChromakeyValue", 4 },
++    { "grClipWindow", 16 },
++    { "grColorCombine", 20 },
++    { "grColorMask", 8 },
++    { "grConstantColorValue4", 16 },
++    { "grConstantColorValue", 4 },
++    { "grCullMode", 4 },
++    { "grDepthBiasLevel", 4 },
++    { "grDepthBufferFunction", 4 },
++    { "grDepthBufferMode", 4 },
++    { "grDepthMask", 4 },
++    { "grDisableAllEffects", 0 },
++    { "grDitherMode", 4 },
++    { "grDrawLine", 8 },
++    { "grDrawPlanarPolygon", 12 },
++    { "grDrawPlanarPolygonVertexList", 8 },
++    { "grDrawPoint", 4 },
++    { "grDrawPolygon", 12 },
++    { "grDrawPolygonVertexList", 8 },
++    { "grDrawTriangle", 12 },
++    { "grErrorSetCallback", 4 },
++    { "grFogColorValue", 4 },
++    { "grFogMode", 4 },
++    { "grFogTable", 4 },
++    { "grGammaCorrectionValue", 4 },
++    { "grGlideGetState", 4 },
++    { "grGlideGetVersion", 4 },
++    { "grGlideInit", 0 },
++    { "grGlideSetState", 4 },
++    { "grGlideShamelessPlug", 4 },
++    { "grGlideShutdown", 0 },
++    { "grHints", 8 },
++    { "grLfbConstantAlpha", 4 },
++    { "grLfbConstantDepth", 4 },
++    { "grLfbLock", 24 },
++    { "grLfbReadRegion", 28 },
++    { "grLfbUnlock", 8 },
++    { "grLfbWriteColorFormat", 4 },
++    { "grLfbWriteColorSwizzle", 8 },
++    { "grLfbWriteRegion", 32 },
++    { "grRenderBuffer", 4 },
++    { "grResetTriStats", 0 },
++    { "grSplash", 20 },
++    { "grSstConfigPipeline", 12 },
++    { "grSstControl", 4 },
++    { "grSstIdle", 0 },
++    { "grSstIsBusy", 0 },
++    { "grSstOrigin", 4 },
++    { "grSstPerfStats", 4 },
++    { "grSstQueryBoards", 4 },
++    { "grSstQueryHardware", 4 },
++    { "grSstResetPerfStats", 0 },
++    { "grSstScreenHeight", 0 },
++    { "grSstScreenWidth", 0 },
++    { "grSstSelect", 4 },
++    { "grSstStatus", 0 },
++    { "grSstVRetraceOn", 0 },
++    { "grSstVidMode", 8 },
++    { "grSstVideoLine", 0 },
++    { "grSstWinClose", 0 },
++    { "grSstWinOpen", 28 },
++    { "grTexCalcMemRequired", 16 },
++    { "grTexClampMode", 12 },
++    { "grTexCombine", 28 },
++    { "grTexCombineFunction", 8 },
++    { "grTexDetailControl", 16 },
++    { "grTexDownloadMipMap", 16 },
++    { "grTexDownloadMipMapLevel", 32 },
++    { "grTexDownloadMipMapLevelPartial", 40 },
++    { "grTexDownloadTable", 12 },
++    { "grTexDownloadTablePartial", 20 },
++    { "grTexFilterMode", 12 },
++    { "grTexLodBiasValue", 8 },
++    { "grTexMaxAddress", 4 },
++    { "grTexMinAddress", 4 },
++    { "grTexMipMapMode", 12 },
++    { "grTexMultibase", 8 },
++    { "grTexMultibaseAddress", 20 },
++    { "grTexNCCTable", 8 },
++    { "grTexSource", 16 },
++    { "grTexTextureMemRequired", 8 },
++    { "grTriStats", 8 },
++    { "gu3dfGetInfo", 8 },
++    { "gu3dfLoad", 8 },
++    { "guAADrawTriangleWithClip", 12 },
++    { "guAlphaSource", 4 },
++    { "guColorCombineFunction", 4 },
++    { "guDrawPolygonVertexListWithClip", 8 },
++    { "guDrawTriangleWithClip", 12 },
++    { "guEncodeRLE16", 16 },
++    { "guEndianSwapBytes", 4 },
++    { "guEndianSwapWords", 4 },
++    { "guFogGenerateExp2", 8 },
++    { "guFogGenerateExp", 8 },
++    { "guFogGenerateLinear", 12 },
++    { "guFogTableIndexToW", 4 },
++    { "guMPDrawTriangle", 12 },
++    { "guMPInit", 0 },
++    { "guMPTexCombineFunction", 4 },
++    { "guMPTexSource", 8 },
++    { "guMovieSetName", 4 },
++    { "guMovieStart", 0 },
++    { "guMovieStop", 0 },
++    { "guTexAllocateMemory", 60 },
++    { "guTexChangeAttributes", 48 },
++    { "guTexCombineFunction", 8 },
++    { "guTexCreateColorMipMap", 0 },
++    { "guTexDownloadMipMap", 12 },
++    { "guTexDownloadMipMapLevel", 12 },
++    { "guTexGetCurrentMipMap", 4 },
++    { "guTexGetMipMapInfo", 4 },
++    { "guTexMemQueryAvail", 4 },
++    { "guTexMemReset", 0 },
++    { "guTexSource", 4 },
++    { "ConvertAndDownloadRle", 64 }
++};
++
++#endif // DOSBOX_GLIDE_H
+diff -Nawurp a/include/mem.h b/include/mem.h
+--- a/include/mem.h	2019-06-15 00:25:57.000000000 +0000
++++ b/include/mem.h	2019-06-15 00:25:58.000000000 +0000
+@@ -152,6 +152,8 @@ static INLINE Bit32u phys_readd(PhysPt a
+ 
+ void MEM_BlockWrite(PhysPt pt,void const * const data,Bitu size);
+ void MEM_BlockRead(PhysPt pt,void * data,Bitu size);
++void MEM_BlockWrite32(PhysPt pt,void * data,Bitu size);
++void MEM_BlockRead32(PhysPt pt,void * data,Bitu size);
+ void MEM_BlockCopy(PhysPt dest,PhysPt src,Bitu size);
+ void MEM_StrCopy(PhysPt pt,char * data,Bitu size);
+ 
+diff -Nawurp a/src/dosbox.cpp b/src/dosbox.cpp
+--- a/src/dosbox.cpp	2019-06-15 00:25:56.000000000 +0000
++++ b/src/dosbox.cpp	2019-06-15 00:25:58.000000000 +0000
+@@ -81,6 +81,7 @@ void PCI_Init(Section*);
+ 
+ void KEYBOARD_Init(Section*);	//TODO This should setup INT 16 too but ok ;)
+ void JOYSTICK_Init(Section*);
++void GLIDE_Init(Section*);
+ void MOUSE_Init(Section*);
+ void SBLASTER_Init(Section*);
+ void GUS_Init(Section*);
+@@ -744,6 +745,17 @@ void DOSBOX_Init(void) {
+ 	Pmulti_remain->Set_help("see serial1");
+ 
+ 
++	secprop=control->AddSection_prop("glide",&GLIDE_Init,true);
++	Pbool = secprop->Add_bool("glide",Property::Changeable::WhenIdle,false);
++	Pbool->Set_help("Enable glide emulation: true,false.");
++	//Phex = secprop->Add_hex("grport",Property::Changeable::WhenIdle,0x600);
++	//Phex->Set_help("I/O port to use for host communication.");
++	Pstring = secprop->Add_string("lfb",Property::Changeable::WhenIdle,"full_noaux");
++	Pstring->Set_help("LFB access: full,full_noaux,read,read_noaux,write,write_noaux,none.\n"
++		"OpenGlide does not support locking aux buffer, please use _noaux modes.");
++	Pbool = secprop->Add_bool("splash",Property::Changeable::WhenIdle,true);
++	Pbool->Set_help("Show 3dfx splash screen (requires 3dfxSpl2.dll).");
++
+ 	/* All the DOS Related stuff, which will eventually start up in the shell */
+ 	secprop=control->AddSection_prop("dos",&DOS_Init,false);//done
+ 	secprop->AddInitFunction(&XMS_Init,true);//done
+diff -Nawurp a/src/gui/sdlmain.cpp b/src/gui/sdlmain.cpp
+--- a/src/gui/sdlmain.cpp	2019-06-15 00:25:54.000000000 +0000
++++ b/src/gui/sdlmain.cpp	2019-06-15 00:25:58.000000000 +0000
+@@ -49,6 +49,7 @@
+ #include "cpu.h"
+ #include "cross.h"
+ #include "control.h"
++#include "glidedef.h"
+ 
+ #define MAPPERFILE "mapper-" VERSION ".map"
+ //#define DISABLE_JOYSTICK
+@@ -438,6 +439,10 @@ check_gotbpp:
+ 
+ 
+ void GFX_ResetScreen(void) {
++	if(glide.enabled) {
++		GLIDE_ResetScreen(true);
++		return;
++	}
+ 	GFX_Stop();
+ 	if (sdl.draw.callback)
+ 		(sdl.draw.callback)( GFX_CallBackReset );
+@@ -846,6 +851,9 @@ void GFX_SwitchFullScreen(void) {
+ 		sticky_keys(true); //restore sticky keys to default state in windowed mode.
+ #endif
+ 	}
++	if (glide.enabled)
++		GLIDE_ResetScreen();
++	else
+ 	GFX_ResetScreen();
+ }
+ 
+@@ -1663,7 +1671,7 @@ void GFX_Events() {
+ 			throw(0);
+ 			break;
+ 		case SDL_VIDEOEXPOSE:
+-			if (sdl.draw.callback) sdl.draw.callback( GFX_CallBackRedraw );
++			if ((sdl.draw.callback) && (!glide.enabled)) sdl.draw.callback( GFX_CallBackRedraw );
+ 			break;
+ #ifdef WIN32
+ 		case SDL_KEYDOWN:
+@@ -2103,6 +2111,7 @@ int main(int argc, char* argv[]) {
+ 			if (strcmp(sdl_drv_name,"windib")==0) LOG_MSG("SDL_Init: Starting up with SDL windib video driver.\n          Try to update your video card and directx drivers!");
+ 		}
+ #endif
++	glide.fullscreen = &sdl.desktop.fullscreen;
+ 	sdl.num_joysticks=SDL_NumJoysticks();
+ 
+ 	/* Parse configuration files */
+diff -Nawurp a/src/hardware/glide.cpp b/src/hardware/glide.cpp
+--- a/src/hardware/glide.cpp	1970-01-01 00:00:00.000000000 +0000
++++ b/src/hardware/glide.cpp	2019-06-15 00:25:58.000000000 +0000
+@@ -0,0 +1,1962 @@
++/*
++ *  Copyright (C) 2002-2013  The DOSBox Team
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU Library General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, write to the Free Software
++ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++ */
++
++#include "dosbox.h"
++#include "inout.h"
++#include "mem.h"
++#include "paging.h"
++#include "glide.h"
++#include "setup.h"
++#include "vga.h"
++#include "dos_inc.h"		/* for Drives[] */
++#include "control.h"
++#include "../dos/drives.h"
++
++#include <iomanip>
++#include <sstream>
++using namespace std;
++
++#include "SDL.h"
++
++#if defined (WIN32)
++#include "SDL_syswm.h"
++#include <windows.h>
++#include <Shlwapi.h>
++
++#ifdef _MSC_VER
++#pragma comment( lib, "Shlwapi" )
++#endif
++
++#else // *nix
++#include <dlfcn.h>
++
++#include <dirent.h>
++#include <errno.h>
++
++#endif
++
++extern void GFX_Stop(void);
++extern void GFX_ResetScreen(void);
++extern const char* RunningProgram;
++
++static float int_to_float(const Bit32u i)
++{
++    float f;
++    Bit32u i_native = SDL_SwapLE32(i);
++    SDL_memcpy(&f, &i_native, 4);
++    return f;
++}
++
++#define SAFE_DELETE(p)	{ if(p) { delete p; p = NULL; } }
++
++#define G_OK	1
++#define G_FAIL	0
++
++// Print debug messages
++#define LOG_GLIDE 0
++
++void VFILE_Remove(const char *name);
++static void process_msg(Bitu);
++
++/** Global Variables **/
++GLIDE_Block glide;
++
++//  Pointers to loaded routines
++static FncPointers FP;
++static void ** fn_pt=NULL;
++
++// Shared memory
++static Bit32u param[20];
++
++// Pointer to return value
++static PhysPt ret;
++static Bit16u ret_value;
++
++// Temporary texture buffer
++static Bit32u texsize=0;
++static void* texmem=NULL;
++
++static HostPt hwnd=NULL;
++static char lfbacc=0;
++
++// Tomb Rider shadow hack
++static Bit8u tomb = 0;
++static FxI32 GrOriginLocation = 0;
++
++#if defined (WIN32)
++static HINSTANCE hdll=NULL;	//  Handle to glide2x lib file
++#else
++static void * hdll=NULL;
++#endif
++
++#if LOG_GLIDE
++static int GLIDE_count[GLIDE_MAX+2];
++#endif
++
++static Bitu read_gl(Bitu port,Bitu iolen)
++{
++    Bitu r=ret_value;
++#if LOG_GLIDE
++    if(ret_value == G_OK)
++	LOG_MSG("Glide:Port read. Return address: 0x%x, value: %d", ret, mem_readd(ret));
++    else if(ret_value == G_FAIL)
++	LOG_MSG("Glide:Port read. Return address: 0x%x, value: %d. Writing G_FAIL to port", ret, mem_readd(ret));
++    else
++	LOG_MSG("Glide:Port read. Returning %hu", ret_value);
++#endif
++
++    ret_value = ret_value >> 8;
++
++    return r;
++}
++
++static void write_gl(Bitu port,Bitu val,Bitu iolen)
++{
++    static Bit16u glsegment = 0;
++
++    ret = 0;
++    ret_value = G_FAIL;
++    FP.grFunction0 = NULL;
++
++    // Allocate shared memory (80 bytes)
++    if(val > GLIDE_MAX) {
++	if(glsegment==0) {
++	    glsegment=DOS_GetMemory(5);
++#if LOG_GLIDE
++	    LOG_MSG("Glide:Memory allocated at 0x%x (segment: %hu)", glsegment<<4, glsegment);
++#endif
++	}
++	ret_value=glsegment;
++	LOG_MSG("Glide:Activated");
++	return;
++    }
++
++    // Process function parameters (80 bytes)
++    MEM_BlockRead32(PhysMake(glsegment,0), param, 80);
++    process_msg(val);
++
++//  LOG_MSG("Glide:Function %s executed OK", grTable[val].name);
++}
++
++class GLIDE_PageHandler : public PageHandler {
++private:
++    PhysPt base_addr[GLIDE_BUFFERS];	// GLIDE_LFB physical address
++    PhysPt lin_addr[GLIDE_BUFFERS];	// GLIDE_LFB linear address
++    HostPt lfb_addr[GLIDE_BUFFERS];	// Address offset from base_addr for the readable/writable buffers
++
++    /* Calculate physical address for access */
++    #define LFB_getAddr(addr) (lfb_addr[((addr - base_addr[0])>>12)>>GLIDE_PAGE_BITS]+addr)
++
++public:
++
++    FxU8 locked[GLIDE_BUFFERS];
++
++    GLIDE_PageHandler(HostPt addr, PhysPt phyaddr = GLIDE_LFB) {
++
++	if(addr == NULL) {
++	    LOG_MSG("Glide:NULL address passed to pagehandler!");
++	}
++
++	/* Set base addresses */
++	for(int i = 0; i < GLIDE_BUFFERS; i++) {
++	    locked[i] = 0;
++	    base_addr[i] = phyaddr;
++	    phyaddr += ((1<<GLIDE_PAGE_BITS)<<12);
++
++	    /* store offset from base address */
++	    lfb_addr[i] = (addr == NULL) ? NULL : (addr - base_addr[i]);
++	}
++
++	flags=PFLAG_READABLE|PFLAG_WRITEABLE|PFLAG_NOCODE;
++	PAGING_UnlinkPages(base_addr[0]>>12, GLIDE_PAGES);
++#if LOG_GLIDE
++	LOG_MSG("Glide:GLIDE_PageHandler installed at 0x%x", base_addr[0]);
++#endif
++    }
++
++    ~GLIDE_PageHandler() {
++#if LOG_GLIDE
++	LOG_MSG("Glide:Resetting page handler at 0x%x", base_addr[0]);
++#endif
++	PAGING_UnlinkPages(base_addr[0]>>12, GLIDE_PAGES);
++    }
++
++    void SetLFBAddr(HostPt addr, Bitu buffer) {
++	if(buffer >= GLIDE_BUFFERS) return;
++
++	addr = addr - base_addr[buffer];	/* Calculate offset for current buffer */
++
++	if(addr != lfb_addr[buffer]) {
++	    lfb_addr[buffer] = addr;
++#if LOG_GLIDE
++	    LOG_MSG("Glide:LFB for buffer %d offset set to 0x%p (addr: 0x%p), clear TLB", buffer, lfb_addr[buffer], addr+base_addr[buffer]);
++#endif
++	    PAGING_UnlinkPages(base_addr[buffer]>>12, 1<<GLIDE_PAGE_BITS);
++	}
++    }
++
++    PhysPt GetPhysPt(Bitu buffer = 0) {
++	if(buffer >= GLIDE_BUFFERS) return base_addr[0];
++	return base_addr[buffer];
++    }
++
++    void SetLinPt(PhysPt linaddr) {
++	for(int i = 0; i < GLIDE_BUFFERS; i++) {
++	    lin_addr[i] = linaddr;
++	    linaddr += ((1<<GLIDE_PAGE_BITS)<<12);
++	}
++    }
++
++    PhysPt GetLinPt(Bitu buffer = 0) {
++	if(buffer >= GLIDE_BUFFERS) return lin_addr[0];
++	return lin_addr[buffer];
++    }
++
++    Bitu readb(PhysPt addr) {
++//	LOG_MSG("Glide:Read from 0x%p", LFB_getAddr(addr));
++	return *(Bit8u *)(LFB_getAddr(addr));
++    }
++
++    Bitu readw(PhysPt addr) {
++//	LOG_MSG("Glide:Read from 0x%p", LFB_getAddr(addr));
++	return *(Bit16u *)(LFB_getAddr(addr));
++    }
++
++    Bitu readd(PhysPt addr) {
++//	LOG_MSG("Glide:Read from 0x%p", LFB_getAddr(addr));
++	return *(Bit32u *)(LFB_getAddr(addr));
++    }
++
++    void writeb(PhysPt addr,Bitu val) {
++//	LOG_MSG("Glide:Write to 0x%p", LFB_getAddr(addr));
++	*(Bit8u *)(LFB_getAddr(addr))=(Bit8u)val;
++    }
++
++    void writew(PhysPt addr,Bitu val) {
++//	LOG_MSG("Glide:Write to 0x%p", LFB_getAddr(addr));
++	*(Bit16u *)(LFB_getAddr(addr))=(Bit16u)val;
++    }
++
++    void writed(PhysPt addr,Bitu val) {
++//	LOG_MSG("Glide:Write to 0x%p", LFB_getAddr(addr));
++	*(Bit32u *)(LFB_getAddr(addr))=(Bit32u)val;
++    }
++
++    HostPt GetHostReadPt(Bitu phys_page) {
++	Bitu buffer = (((phys_page<<12) - base_addr[0])>>12)>>GLIDE_PAGE_BITS;
++#if LOG_GLIDE
++	// This only makes sense if full lfb access is used...
++	if (!locked[buffer]) LOG_MSG("Glide:Read from unlocked LFB at: 0x%x", phys_page<<12);
++#endif
++//	LOG_MSG("Glide:GetHostReadPt called with %d, returning 0x%p", phys_page, LFB_getAddr((phys_page*MEM_PAGESIZE)));
++	return lfb_addr[buffer]+(phys_page<<12);
++    }
++
++    HostPt GetHostWritePt(Bitu phys_page) {
++	Bitu buffer = (((phys_page<<12) - base_addr[0])>>12)>>GLIDE_PAGE_BITS;
++#if LOG_GLIDE
++	// This only makes sense if full lfb access is used...
++	if (!locked[buffer]) LOG_MSG("Glide:Write to unlocked LFB at: 0x%x", phys_page<<12);
++#endif
++//	LOG_MSG("Glide:GetHostWritePt called with %d, returning 0x%p", phys_page, LFB_getAddr((phys_page*MEM_PAGESIZE)));
++	return lfb_addr[buffer]+(phys_page<<12);
++    }
++
++    #undef LFB_getAddr
++};
++
++class GLIDE: public Module_base {
++private:
++    AutoexecObject autoexecline;
++    // Glide port
++    Bitu glide_base;
++    Bit8u *ovl_data;
++public:
++    GLIDE(Section* configuration):Module_base(configuration),glide_base(0),ovl_data(NULL) {
++	Section_prop * section=static_cast<Section_prop *>(configuration);
++
++	if(!section->Get_bool("glide")) return;
++	std::string str = section->Get_string("lfb");
++	lowcase(str);
++	if(str == "none") {
++	    LOG_MSG("Glide:Disabled LFB access");
++	    lfbacc=0;
++	} else if(str == "read_noaux") {
++	    LOG_MSG("Glide:LFB access: read-only (no aux)");
++	    lfbacc=1;
++	} else if(str == "write_noaux") {
++	    LOG_MSG("Glide:LFB access: write-only (no aux)");
++	    lfbacc=2;
++	} else if(str == "full_noaux") {
++	    LOG_MSG("Glide:LFB access: read-write (no aux)");
++	    lfbacc=3;
++	} else if(str == "read") {
++	    LOG_MSG("Glide:LFB access: read-only");
++	    lfbacc=5;
++	} else if(str == "write") {
++	    LOG_MSG("Glide:LFB access: write-only");
++	    lfbacc=6;
++	} else {
++	    LOG_MSG("Glide:LFB access: read-write");
++	    lfbacc=7;
++	}
++
++	// Load glide2x.dll
++#if defined(WIN32)
++	hdll = LoadLibrary("glide2x.dll");
++#elif defined(MACOSX)
++	hdll = dlopen("libglide2x.dylib", RTLD_NOW);
++#else
++	hdll = dlopen("libglide2x.so", RTLD_NOW);
++#endif
++
++	if(!hdll) {
++	    LOG_MSG("Glide:Unable to load glide2x library, glide emulation disabled");
++	    return;
++	}
++
++	// Allocate some temporary space
++	texmem = (void*)malloc(1600*1200*4);
++	if(texmem == NULL) {
++	    LOG_MSG("Glide:Unable to allocate texture memory, glide disabled");
++	    return;
++	}
++
++	glide.lfb_pagehandler = new GLIDE_PageHandler((HostPt)texmem);
++	if(!glide.lfb_pagehandler) {
++	    LOG_MSG("Glide:Failed to install page handler, glide disabled!");
++	    free(texmem); texmem = NULL;
++	    return;
++	}
++
++	// Load glide2x.ovl if possible, so it is available on the Z: drive
++	const char ovl_name[] = "glide2x.ovl";
++
++#if defined (WIN32)
++	// Windows is simple, the search is case insensitive
++	FILE * ovl = fopen(ovl_name, "rb");
++
++	// if not successful try to specifically search dosbox directory
++	if (ovl == NULL) {
++	    char * path = (char*)texmem;
++	    GetModuleFileName(NULL, path, 32768);
++	    // strip "\dosbox.exe" from path
++	    PathRemoveFileSpec(path);
++	    strcat(path, "\\"); strcat(path, ovl_name);
++	    ovl = fopen(path, "rb");
++	}
++
++#else
++	// Try a bit harder in *nix, perform case insensitive search and check /usr/share/dosbox as well
++	DIR * pdir; struct dirent * pfile;
++	char * path = (char*)texmem;
++	FILE * ovl = NULL;
++
++	const char * const dirname[] = { "./", "/usr/share/dosbox/", NULL };
++
++	for (int i = 0; dirname[i]; i++) {
++	    if((pdir = opendir(dirname[i]))) {
++		while(pfile = readdir(pdir)) {
++		    if(!strcasecmp(pfile->d_name, ovl_name)) {
++			strcpy(path, dirname[i]); strcat(path, pfile->d_name);
++			ovl = fopen(path, "rb");
++			if(ovl) break;
++		    }
++		}
++		closedir(pdir);
++		if(ovl) break;
++	    }
++	}
++#endif
++
++	long ovl_size = 0;
++
++	if(ovl == NULL) {
++	    LOG_MSG("Glide:GLIDE2X.OVL could not be found, make sure correct (compatible) version is in the game directory!");
++	} else {
++	    fseek(ovl, 0, SEEK_END);
++	    ovl_size=ftell(ovl);
++	    ovl_data=(Bit8u*)malloc(ovl_size);
++	    fseek(ovl, 0, SEEK_SET);
++	    fread(ovl_data, sizeof(char), ovl_size, ovl);
++	    fclose(ovl);
++	}
++
++#if LOG_GLIDE
++	SDL_memset(GLIDE_count, 0, sizeof(GLIDE_count));
++#endif
++
++	// Allocate memory for dll pointers
++	fn_pt = (void**)malloc(sizeof(void*)*(GLIDE_MAX+1));
++	if(fn_pt == NULL) {
++	    LOG_MSG("Glide:Unable to allocate memory, glide disabled");
++	    free(texmem); texmem = NULL;
++	    if(ovl_data) free(ovl_data); ovl_data = NULL;
++	    return;
++	}
++
++	for(int i=0; i<(GLIDE_MAX+1); i++) {
++#if defined(WIN32)
++	    ostringstream temp;
++	    // Add function decoration
++	    temp << "_" << grTable[i].name << "@" << (Bitu)grTable[i].parms;
++	    fn_pt[i] = (void*)(GetProcAddress(hdll, temp.str().c_str()));
++#else
++	    fn_pt[i] = (void*)(dlsym(hdll, grTable[i].name));
++#endif
++#if LOG_GLIDE
++	    if(fn_pt[i] == NULL) {
++		LOG_MSG("Glide:Warning, unable to load %s from glide2x", grTable[i].name);
++	    }
++#endif
++	}
++
++	//glide_base=section->Get_hex("grport");
++	glide_base=0x600;	// Anybody else got a better idea?
++
++	IO_RegisterReadHandler(glide_base,read_gl,IO_MB);
++	IO_RegisterWriteHandler(glide_base,write_gl,IO_MB);
++
++	ostringstream temp;
++	temp << "SET GLIDE=" << hex << glide_base << ends;
++
++	autoexecline.Install(temp.str());
++	glide.splash = section->Get_bool("splash");
++
++#if defined (WIN32)
++	// Get hwnd information
++	SDL_SysWMinfo wmi;
++	SDL_VERSION(&wmi.version);
++	if(SDL_GetWMInfo(&wmi)) {
++	    hwnd = (HostPt)wmi.window;
++	} else {
++	    LOG_MSG("SDL:Error retrieving window information");
++	}
++#endif
++
++	if(ovl_data) {
++	    VFILE_Register("GLIDE2X.OVL", ovl_data, ovl_size);
++	}
++    }
++
++    ~GLIDE() {
++	if(glide.enabled) {
++	    // void grGlideShutdown(void)
++	    FP.grFunction0 = (pfunc0)fn_pt[_grGlideShutdown0];
++	    if(FP.grFunction0) FP.grFunction0();
++	    glide.enabled = false;
++	}
++
++	SAFE_DELETE(glide.lfb_pagehandler);
++	if(fn_pt)
++	    free(fn_pt); fn_pt = NULL;
++	if(texmem)
++	    free(texmem); texmem = NULL;
++
++	if(glide_base) {
++	    IO_FreeReadHandler(glide_base,IO_MB);
++	    IO_FreeWriteHandler(glide_base,IO_MB);
++	}
++
++	if(hdll) {
++#if defined (WIN32)
++	    FreeLibrary(hdll);
++#else
++	    dlclose(hdll);
++#endif
++	    hdll = NULL;
++	}
++
++	VFILE_Remove("GLIDE2X.OVL");
++	if(ovl_data) free(ovl_data);
++    }
++};
++
++static GLIDE* test;
++void GLIDE_ShutDown(Section* sec) {
++    delete test;
++}
++
++void GLIDE_Init(Section* sec) {
++    test = new GLIDE(sec);
++    sec->AddDestroyFunction(&GLIDE_ShutDown,true);
++}
++
++void GLIDE_ResetScreen(bool update)
++{
++#if LOG_GLIDE
++	LOG_MSG("Glide:ResetScreen");
++#endif
++	VGA_SetOverride(true);
++	GFX_Stop();
++
++	// OpenGlide will resize the window on it's own (using SDL)
++	if(glide.width && (
++#ifdef WIN32
++	// dgVoodoo needs a little help :)
++	// Most other wrappers render fullscreen by default
++	  (GetProcAddress(hdll, "DispatchDosNT") != NULL) ||
++#endif
++	// and resize when mapper and/or GUI finish
++	  update)) {
++	    SDL_SetVideoMode(glide.width,glide.height,0,
++		(glide.fullscreen[0]?SDL_FULLSCREEN:0)|SDL_ANYFORMAT|SDL_SWSURFACE);
++	}
++}
++
++void GLIDE_DisableScreen(void)
++{
++	glide.enabled = false;	/* if not disabled, GFX_ResetScreen() will call GLIDE_ResetScreen() */
++	VGA_SetOverride(false);
++	GFX_ResetScreen();
++}
++
++static bool GetFileName(char * filename)
++{
++    localDrive	*ldp;
++    Bit8u	drive;
++    char	fullname[DOS_PATHLENGTH];
++
++    // Get full path
++    if(!DOS_MakeName(filename,fullname,&drive)) return false;
++
++#if LOG_GLIDE
++    LOG_MSG("Glide:Fullname: %s", fullname);
++#endif
++
++    // Get real system path
++    ldp = dynamic_cast<localDrive*>(Drives[drive]);
++    if(ldp == NULL) return false;
++
++    ldp->GetSystemFilename(filename,fullname);
++#if LOG_GLIDE
++    LOG_MSG("Glide:System path: %s", filename);
++#endif
++    return true;
++}
++
++typedef FxBool (FX_CALL *pfxSplashInit)(FxU32 hWnd, FxU32 screenWidth, FxU32 screenHeight,
++					FxU32 numColBuf, FxU32 numAuxBuf, GrColorFormat_t colorFormat);
++typedef void (FX_CALL *pfxSplash)(float x, float y, float w, float h, FxU32 frameNumber);
++
++static void grSplash(void)
++{
++#ifdef WIN32
++    FxU32 screenWidth = glide.width, screenHeight = glide.height;
++    HINSTANCE dll = LoadLibrary("3dfxSpl2.dll");
++    if(dll == NULL) {
++	return;
++    }
++
++    pfxSplashInit fxSplashInit = (pfxSplashInit)GetProcAddress(dll, "_fxSplashInit@24");
++    pfxSplash fxSplash = (pfxSplash)GetProcAddress(dll, "_fxSplash@20");
++
++    if((fxSplashInit == NULL) || (fxSplash == NULL)) {
++	FreeLibrary(dll);
++	return;
++    }
++
++    if (screenWidth == 0) {
++	screenWidth = 640;
++	screenHeight = 480;
++    }
++
++    fxSplashInit(0, screenWidth, screenHeight, 2, 1, GR_COLORFORMAT_ABGR);
++    fxSplash(0, 0, screenWidth, screenHeight, 0);
++
++    // OpenGlide does not restore this state
++    FP.grFunction1i = (pfunc1i)fn_pt[_grSstOrigin4];
++    if(FP.grFunction1i) {
++	FP.grFunction1i(GrOriginLocation);
++    }
++
++    FreeLibrary(dll);
++#endif
++}
++
++static void process_msg(Bitu value)
++{
++    GrLfbInfo_t   lfbinfo;
++    DBGrLfbInfo_t dblfbinfo;
++
++    GrTexInfo     texinfo;
++    DBGrTexInfo   dbtexinfo;
++
++    Gu3dfInfo     guinfo;
++    DBGu3dfInfo   dbguinfo;
++
++    GrVertex      vertex[3];
++
++    GrMipMapInfo * mipmap;
++
++    // Temporary memory used in functions
++    FxI32	* ilist = (FxI32*)texmem;
++    FxU16	* ptr16 = (FxU16*)texmem;
++
++    // Filename translation
++    char	  filename[512];
++
++    // Used so that the pagehandler returns the same address after buffer swap
++    static char	  b_swap = 0;
++
++    // Return value address
++    ret = param[0];
++    Bitu i = value;
++    Bitu buffer;
++    FxU32 j, k;
++
++    if((i > GLIDE_MAX) || (fn_pt[i] == NULL)) {
++	LOG_MSG("Glide:Invalid function pointer for call %s", (i > GLIDE_MAX) ? "(invalid)" : grTable[i].name);
++	return;
++    }
++
++#if LOG_GLIDE
++    LOG_MSG("Glide:Processing call %s (%d), return address: 0x%x", grTable[i].name, value, ret);
++    GLIDE_count[i]++;
++#endif
++
++    switch (value) {
++
++    case _grAADrawLine8:
++	// void grAADrawLine(GrVertex *va, GrVertex *vb)
++	FP.grFunction2p = (pfunc2p)fn_pt[i];
++	MEM_BlockRead32(param[1], &vertex[0], sizeof(GrVertex));
++	MEM_BlockRead32(param[2], &vertex[1], sizeof(GrVertex));
++	FP.grFunction2p(&vertex[0], &vertex[1]);
++	break;
++    case _grAADrawPoint4:
++	// void grAADrawPoint(GrVertex *p)
++	FP.grFunction1p = (pfunc1p)fn_pt[i];
++	MEM_BlockRead32(param[1], &vertex[0], sizeof(GrVertex));
++	FP.grFunction1p(&vertex[0]);
++	break;
++    case _grAADrawPolygon12:
++	// void grAADrawPolygon(int nVerts, const int ilist[], const GrVertex vlist[])
++	FP.grFunction1i2p = (pfunc1i2p)fn_pt[i];
++	i = sizeof(FxI32)*param[1];
++	MEM_BlockRead32(param[2], ilist, i);
++
++	// Find the number of vertices (?)
++	k = 0;
++	for(j = 0; j < param[1]; j++) {
++	    if(ilist[j] > k)
++		k = ilist[j];
++	}
++	k++;
++
++	MEM_BlockRead32(param[3], ilist+i, sizeof(GrVertex)*k);
++	FP.grFunction1i2p(param[1], ilist, ilist+i);
++	break;
++    case _grAADrawPolygonVertexList8:
++	// void grAADrawPolygonVertexList(int nVerts, const GrVertex vlist[])
++	FP.grFunction1i1p = (pfunc1i1p)fn_pt[i];
++	MEM_BlockRead32(param[2], texmem, sizeof(GrVertex)*param[1]);
++	FP.grFunction1i1p(param[1], texmem);
++	break;
++    case _grAADrawTriangle24:
++	// void grAADrawTriangle(GrVertex *a, GrVertex *b, GrVertex *c,
++	//	FxBool antialiasAB, FxBool antialiasBC, FxBool antialiasCA)
++	FP.grFunction3p3i = (pfunc3p3i)fn_pt[i];
++	MEM_BlockRead32(param[1], &vertex[0], sizeof(GrVertex));
++	MEM_BlockRead32(param[2], &vertex[1], sizeof(GrVertex));
++	MEM_BlockRead32(param[3], &vertex[2], sizeof(GrVertex));
++	FP.grFunction3p3i(&vertex[0], &vertex[1], &vertex[2], param[4], param[5], param[6]);
++	break;
++    case _grAlphaBlendFunction16:
++	// void grAlphaBlendFunction(GrAlphaBlendFnc_t rgb_sf, GrAlphaBlendFnc_t rgb_df,
++	//		GrAlphaBlendFnc_t alpha_sf, GrAlphaBlendFnc_t alpha_df)
++	if(tomb == 1) {
++	    if((FP.grFunction1i = (pfunc1i)fn_pt[_grConstantColorValue4]))
++		FP.grFunction1i(0x7f000000);
++	} else if(tomb == 2) {
++	    float color1 = 127.0;
++	    float color2 = 0.0;
++	    if((FP.grFunction4f = (pfunc4f)fn_pt[_grConstantColorValue416]))
++		FP.grFunction4f(color1, color2, color2, color2);
++	}
++	FP.grFunction4i = (pfunc4i)fn_pt[i];
++	FP.grFunction4i(param[1], param[2], param[3], param[4]);
++	break;
++    case _grAlphaCombine20:
++	// void grAlphaCombine(GrCombineFunction_t func, GrCombineFactor_t factor,
++	//		GrCombineLocal_t local, GrCombineOther_t other, FxBool invert)
++	FP.grFunction5i = (pfunc5i)fn_pt[i];
++	FP.grFunction5i(param[1], param[2], param[3], param[4], param[5]);
++	break;
++    case _grAlphaControlsITRGBLighting4:
++	// void grAlphaControlsITRGBLighting(FxBool enable)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grAlphaTestFunction4:
++	// void grAlphaTestFunction(GrCmpFnc_t function)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grAlphaTestReferenceValue4:
++	// void grAlphaTestReferenceValue(GrAlpha_t value)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grBufferClear12:
++	// void grBufferClear(GrColor_t color, GrAlpha_t alpha, FxU16 depth)
++	FP.grFunction3i = (pfunc3i)fn_pt[i];
++	FP.grFunction3i(param[1], param[2], param[3]);
++	break;
++    case _grBufferNumPending0:
++	// int grBufferNumPending(void)
++	FP.grRFunction0 = (prfunc0)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction0());
++	ret_value = G_OK;
++	break;
++    case _grBufferSwap4:
++	// void grBufferSwap(int swap_interval)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	/* Breaks Extreme Assault (which always writes to same address ?) */
++	//if(!(glide.lfb_pagehandler->locked[0] || glide.lfb_pagehandler->locked[1])) b_swap = !b_swap;
++#if LOG_GLIDE
++	LOG_MSG("Glide:BufferSwap (0x%x)", b_swap);
++#endif
++	break;
++    case _grCheckForRoom4:
++	// void grCheckForRoom(FxI32 n)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grChromakeyMode4:
++	// void grChromakeyMode(GrChromakeyMode_t mode)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grChromakeyValue4:
++	// void grChromakeyValue(GrColor_t value)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grClipWindow16:
++	// void grClipWindow(FxU32 minx, FxU32 miny, FxU32 maxx, FxU32 maxy)
++	FP.grFunction4i = (pfunc4i)fn_pt[i];
++	FP.grFunction4i(param[1], param[2], param[3], param[4]);
++	break;
++    case _grColorCombine20:
++	// void grColorCombine(GrCombineFunction_t func, GrCombineFactor_t factor,
++	//		GrCombineLocal_t local, GrCombineOther_t other, FxBool invert)
++	FP.grFunction5i = (pfunc5i)fn_pt[i];
++	FP.grFunction5i(param[1], param[2], param[3], param[4], param[5]);
++	break;
++    case _grColorMask8:
++	// void grColorMask(FxBool rgb, FxBool alpha)
++	FP.grFunction2i = (pfunc2i)fn_pt[i];
++	FP.grFunction2i(param[1], param[2]);
++	break;
++    case _grConstantColorValue416:
++	// void grConstantColorValue4(float a, float r, float g, float b)
++	FP.grFunction4f = (pfunc4f)fn_pt[i];
++	FP.grFunction4f(int_to_float(param[1]), int_to_float(param[2]), int_to_float(param[3]), int_to_float(param[4]));
++	break;
++    case _grConstantColorValue4:
++	// void grConstantColorValue(GrColor_t color)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grCullMode4:
++	// void grCullMode(GrCullMode_t mode)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grDepthBiasLevel4:
++	// void grDepthBiasLevel(FxI16 level)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grDepthBufferFunction4:
++	// void grDepthBufferFunction(GrCmpFnc_t func)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grDepthBufferMode4:
++	// void grDepthBufferMode(GrDepthBufferMode_t mode)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grDepthMask4:
++	// void grDepthMask(FxBool enable)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grDisableAllEffects0:
++	// void grDisableAllEffects(void)
++	FP.grFunction0 = (pfunc0)fn_pt[i];
++	FP.grFunction0();
++	break;
++    case _grDitherMode4:
++	// void grDitherMode(GrDitherMode_t mode)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grDrawLine8:
++	// void grDrawLine(const GrVertex *a, const GrVertex *b)
++	FP.grFunction2p = (pfunc2p)fn_pt[i];
++	MEM_BlockRead32(param[1], &vertex[0], sizeof(GrVertex));
++	MEM_BlockRead32(param[2], &vertex[1], sizeof(GrVertex));
++	FP.grFunction2p(&vertex[0], &vertex[1]);
++	break;
++    case _grDrawPlanarPolygon12:
++	// void grDrawPlanarPolygon(int nVerts, int ilist[], const GrVertex vlist[])
++	FP.grFunction1i2p = (pfunc1i2p)fn_pt[i];
++	i = sizeof(FxI32)*param[1];
++	MEM_BlockRead32(param[2], ilist, i);
++
++	// Find the number of vertices (?)
++	k = 0;
++	for(j = 0; j < param[1]; j++) {
++	    if(ilist[j] > k)
++		k = ilist[j];
++	}
++	k++;
++
++	MEM_BlockRead32(param[3], ilist+i, sizeof(GrVertex)*k);
++	FP.grFunction1i2p(param[1], ilist, ilist+i);
++	break;
++    case _grDrawPlanarPolygonVertexList8:
++	// void grDrawPlanarPolygonVertexList(int nVertices, const GrVertex vlist[])
++	FP.grFunction1i1p = (pfunc1i1p)fn_pt[i];
++	MEM_BlockRead32(param[2], texmem, sizeof(GrVertex)*param[1]);
++	FP.grFunction1i1p(param[1], texmem);
++	break;
++    case _grDrawPoint4:
++	// void grDrawPoint(const GrVertex *a)
++	FP.grFunction1p = (pfunc1p)fn_pt[i];
++	MEM_BlockRead32(param[1], &vertex[0], sizeof(GrVertex));
++	FP.grFunction1p(&vertex[0]);
++	break;
++    case _grDrawPolygon12:
++	// void grDrawPolygon(int nVerts, int ilist[], const GrVertex vlist[])
++	FP.grFunction1i2p = (pfunc1i2p)fn_pt[i];
++	i = sizeof(FxI32)*param[1];
++	MEM_BlockRead32(param[2], ilist, i);
++
++	// Find the number of vertices (?)
++	k = 0;
++	for(j = 0; j < param[1]; j++) {
++	    if(ilist[j] > k)
++		k = ilist[j];
++	}
++	k++;
++
++	MEM_BlockRead32(param[3], ilist+i, sizeof(GrVertex)*k);
++	FP.grFunction1i2p(param[1], ilist, ilist+i);
++	break;
++    case _grDrawPolygonVertexList8:
++	// void grDrawPolygonVertexList(int nVerts, const GrVertex vlist[])
++	FP.grFunction1i1p = (pfunc1i1p)fn_pt[i];
++	MEM_BlockRead32(param[2], texmem, sizeof(GrVertex)*param[1]);
++	FP.grFunction1i1p(param[1], texmem);
++	break;
++    case _grDrawTriangle12:
++	// void grDrawTriangle(const GrVertex *a, const GrVertex *b, const GrVertex *c)
++	FP.grFunction3p = (pfunc3p)fn_pt[i];
++	MEM_BlockRead32(param[1], &vertex[0], sizeof(GrVertex));
++	MEM_BlockRead32(param[2], &vertex[1], sizeof(GrVertex));
++	MEM_BlockRead32(param[3], &vertex[2], sizeof(GrVertex));
++	FP.grFunction3p(&vertex[0], &vertex[1], &vertex[2]);
++	break;
++/*
++    case _grErrorSetCallback4:
++	// void grErrorSetCallback(void (*function)(const char *string, FxBool fatal))
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(*param[1]);
++	break;
++*/
++    case _grFogColorValue4:
++	// void grFogColorValue(GrColor_t value)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grFogMode4:
++	// void grFogMode(GrFogMode_t mode)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grFogTable4:
++	// void grFogTable(const GrFog_t grTable[GR_FOG_TABLE_SIZE])
++	FP.grFunction1p = (pfunc1p)fn_pt[i];
++	MEM_BlockRead32(param[1], texmem, sizeof(GrFog_t)*GR_FOG_TABLE_SIZE);
++	FP.grFunction1p(texmem);
++	break;
++    case _grGammaCorrectionValue4:
++	// void grGammaCorrectionValue(float value)
++	FP.grFunction1f = (pfunc1f)fn_pt[i];
++	FP.grFunction1f(int_to_float(param[1]));
++	break;
++    case _grGlideGetState4:
++	// void grGlideGetState(GrState *state)
++	FP.grFunction1p = (pfunc1p)fn_pt[i];
++	MEM_BlockRead32(param[1], texmem, sizeof(GrState));
++	FP.grFunction1p(texmem);
++	MEM_BlockWrite32(param[1], texmem, sizeof(GrState));
++	break;
++    case _grGlideGetVersion4:
++	// void grGlideGetVersion(char version[80])
++	FP.grFunction1p = (pfunc1p)fn_pt[i];
++	FP.grFunction1p(filename);
++	k = 0;
++	do {
++	    mem_writeb(param[1]++, filename[k++]);
++	} while(filename[k] != '\0');
++	mem_writeb(param[1], '\0');
++	break;
++    case _grGlideInit0:
++	// void grGlideInit(void)
++	if(glide.enabled) break;	/* Tie Break Tennis */
++	FP.grFunction0 = (pfunc0)fn_pt[i];
++	FP.grFunction0();
++
++	// Enable Tomb Rider displaying shadow
++	if(!strncasecmp(RunningProgram, "Tombub", 6)) tomb = 2;
++	else if(!strncasecmp(RunningProgram, "Tomb", 4)) tomb = 1;
++	else tomb = 0;
++
++	// Send LFB to the OVL (so it can map it in linear address)
++	if(mem_readd(param[1]) == 0xFFFFF1FB) {		// Find LFB magic
++	    mem_writed(param[1], glide.lfb_pagehandler->GetPhysPt());
++	    mem_writed(param[2], GLIDE_PAGES);
++	} else {
++	    LOG_MSG("Glide:Detected incompatible guest ovl/dll!");
++	}
++	break;
++    case _grGlideSetState4:
++	// void grGlideSetState(const GrState *state)
++	FP.grFunction1p = (pfunc1p)fn_pt[i];
++	MEM_BlockRead32(param[1], texmem, sizeof(GrState));
++	FP.grFunction1p(texmem);
++	MEM_BlockWrite32(param[1], texmem, sizeof(GrState));
++	break;
++    case _grGlideShamelessPlug4:
++	// void grGlideShamelessPlug(const FxBool on)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grGlideShutdown0: {
++	// void grGlideShutdown(void)
++	if(glide.enabled) {
++	    FP.grFunction0 = (pfunc0)fn_pt[_grSstWinClose0];
++	    FP.grFunction0();
++	    GLIDE_DisableScreen();
++	}
++	FP.grFunction0 = (pfunc0)fn_pt[i];
++	FP.grFunction0();
++
++	Section_prop *section=static_cast<Section_prop *>(control->GetSection("glide"));
++	if (section) glide.splash = section->Get_bool("splash");
++
++#if LOG_GLIDE
++	for(j=0;j<(GLIDE_MAX+1);j++) {
++	    if(GLIDE_count[j]) {
++		LOG_MSG("Glide:%6d calls function %s (%d)", GLIDE_count[j], grTable[j].name, j);
++	    }
++	}
++	LOG_MSG("Glide: %d framebuffer locks (%d read, %d write)", GLIDE_count[_grLfbLock24],
++	    GLIDE_count[GLIDE_MAX+1], GLIDE_count[_grLfbLock24] - GLIDE_count[GLIDE_MAX+1]);
++	SDL_memset(GLIDE_count, 0, sizeof(GLIDE_count));
++#endif
++	break;
++	}
++    case _grHints8:
++	// void grHints(GrHints_t type, FxU32 hintMask)
++	FP.grFunction2i = (pfunc2i)fn_pt[i];
++	FP.grFunction2i(param[1], param[2]);
++	break;
++    case _grLfbConstantAlpha4:
++	// void grLfbConstantAlpha(GrAlpha_t alpha)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grLfbConstantDepth4:
++	// void grLfbConstantDepth(FxU16 depth)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grLfbLock24:
++	// FxBool grLfbLock(GrLock_t type, GrBuffer_t buffer, GrLfbWriteMode_t writeMode,
++	//		GrOriginLocation_t origin, FxBool pixelPipeline, GrLfbInfo_t *info)
++	FP.grRFunction5i1p = (prfunc5i1p)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++
++	buffer = (Bitu)param[2];
++	if (buffer >= GLIDE_BUFFERS) {
++	    LOG_MSG("Glide:Invalid buffer passed in grLfbLock (%d)", buffer);
++	    return;
++	}
++
++	// Buffer address should stay the same after BufferSwap, so check which buffer to lock
++	// (currently disabled, see _grBufferSwap4)
++	//if (buffer < 2) buffer = buffer ^ b_swap;
++
++	// Read parameters
++	MEM_BlockRead32(param[6], &dblfbinfo, sizeof(DBGrLfbInfo_t));
++	lfbinfo.size = sizeof(GrLfbInfo_t);
++	lfbinfo.origin = dblfbinfo.origin;
++	lfbinfo.lfbPtr = texmem;
++
++	k = FXTRUE;
++	j = param[1]&1; j++;
++	j = j&lfbacc;				// Check LFB access (j = 0 : fake lock)
++	if((buffer > 1) && (lfbacc < 4)) j = 0;	// Disable access to AUX buffers
++
++	if(j) {
++		// Lock the buffer
++		k = FP.grRFunction5i1p(param[1], param[2], param[3], param[4], param[5], &lfbinfo);
++		if(k == FXTRUE) {
++		    glide.lfb_pagehandler->locked[buffer]++;
++		    dblfbinfo.writeMode = lfbinfo.writeMode;
++		    dblfbinfo.strideInBytes = lfbinfo.strideInBytes;
++		    dblfbinfo.lfbPtr = glide.lfb_pagehandler->GetLinPt(buffer);
++		    MEM_BlockWrite32(param[6], &dblfbinfo, sizeof(DBGrLfbInfo_t));
++		} else {
++		    LOG_MSG("Glide:LFB Lock failed!");
++		    //k = FXFALSE;	// Lock failed ?
++		}
++	} else {
++		// else lock is faked (texmem used for read/write)
++		if(param[3] == GR_LFBWRITEMODE_ANY) dblfbinfo.writeMode = GR_LFBWRITEMODE_565;
++		else dblfbinfo.writeMode = param[3];
++
++		if(param[4] == GR_ORIGIN_ANY) dblfbinfo.origin = GR_ORIGIN_UPPER_LEFT;
++		else dblfbinfo.origin = param[4];
++
++		dblfbinfo.strideInBytes = ((glide.width>0) ? glide.width : 1600) * 4;
++		dblfbinfo.lfbPtr = glide.lfb_pagehandler->GetLinPt(buffer);
++
++		//if(!(param[1]&GR_LFB_WRITE_ONLY)) SDL_memset(texmem, 0, 1600*1200*4);	// Clear memory on read-lock
++
++		MEM_BlockWrite32(param[6], &dblfbinfo, sizeof(DBGrLfbInfo_t));
++	}
++
++	// Set LFB address for page handler to read from/write to
++	glide.lfb_pagehandler->SetLFBAddr((HostPt)lfbinfo.lfbPtr, buffer);
++	if(dblfbinfo.strideInBytes > 1600*4) LOG_MSG("Glide:WARNING LFB stride (%d) is larger than max supported: %d!", dblfbinfo.strideInBytes, 1600*4);
++
++	if(param[1]&GR_LFB_WRITE_ONLY) {	// Is a write-only lock
++#if LOG_GLIDE
++		LOG_MSG("Glide:W/O lock (%d). %s LFB: 0x%p. Returning 0x%x (stride: %d)", param[2], (j ? "Real" : "Fake"),
++			lfbinfo.lfbPtr, dblfbinfo.lfbPtr, dblfbinfo.strideInBytes);
++#endif
++	} else {	// Is a read-only lock
++#if LOG_GLIDE
++		LOG_MSG("Glide:R/O lock (%d). %s LFB: 0x%p. Returning 0x%x (stride: %d)", param[2], (j ? "Real" : "Fake"),
++			lfbinfo.lfbPtr, dblfbinfo.lfbPtr, dblfbinfo.strideInBytes);
++		GLIDE_count[GLIDE_MAX+1]++;
++#endif
++	}
++
++	mem_writed(ret, k);
++	ret_value = G_OK;
++	break;
++    case _grLfbReadRegion28:
++	// FxBool grLfbReadRegion(GrBuffer_t src_buffer, FxU32 src_x, FxU32 src_y, FxU32 src_width,
++	//		FxU32 src_height, FxU32 dst_stride, void *dst_data)
++	FP.grRFunction6i1p = (prfunc6i1p)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction6i1p(param[1], param[2], param[3], param[4], param[5], param[6], ptr16));
++	MEM_BlockWrite(param[7], ptr16, param[5]*param[6]);
++	ret_value = G_OK;
++	break;
++    case _grLfbUnlock8:
++	// FxBool grLfbUnlock(GrLock_t type, GrBuffer_t buffer)
++	FP.grRFunction2i = (prfunc2i)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle (%d)!", _grLfbUnlock8);
++	    return;
++	}
++	k = FXTRUE;
++	buffer = param[2];
++	if (buffer < 2) buffer = buffer ^ b_swap;
++#if LOG_GLIDE
++	LOG_MSG("Glide:LFB unlock buffer (%d), %d locks active", param[2], glide.lfb_pagehandler->locked[buffer]);
++#endif
++	if(glide.lfb_pagehandler->locked[buffer]) {
++	    k = FP.grRFunction2i(param[1], param[2]);
++	    glide.lfb_pagehandler->locked[buffer]--;
++	    glide.lfb_pagehandler->SetLFBAddr((HostPt)texmem, buffer);	// Reset page handler and clear TLB
++	} else {
++	    //k = FXFALSE;
++	}
++	mem_writed(ret, k);
++	ret_value = G_OK;
++	break;
++    case _grLfbWriteColorFormat4:
++	// void grLfbWriteColorFormat(GrColorFormat_t colorFormat)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grLfbWriteColorSwizzle8:
++	// void grLfbWriteColorSwizzle(FxBool swizzleBytes, FxBool swapWords)
++	FP.grFunction2i = (pfunc2i)fn_pt[i];
++	FP.grFunction2i(param[1], param[2]);
++	break;
++    case _grLfbWriteRegion32:
++	// FxBool grLfbWriteRegion(GrBuffer_t dst_buffer, FxU32 dst_x, FxU32 dst_y,
++	//	GrLfbSrcFmt_t src_format, FxU32 src_width, FxU32 src_height, FxU32 src_stride, void *src_data)
++	FP.grRFunction7i1p = (prfunc7i1p)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++
++	MEM_BlockRead(param[8], ptr16, param[6]*param[7]);
++	mem_writed(ret, FP.grRFunction7i1p(param[1], param[2], param[3], param[4], param[5], param[6], param[7], ptr16));
++	ret_value = G_OK;
++	break;
++    case _grRenderBuffer4:
++	// void grRenderBuffer(GrBuffer_t buffer)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grResetTriStats0:
++	// void grResetTriStats()
++	FP.grFunction0 = (pfunc0)fn_pt[i];
++	FP.grFunction0();
++	break;
++    case _grSplash20:
++	// void grSplash(float x, float y, float width, float height, FxU32 frame)
++	FP.grFunction4f1i = (pfunc4f1i)fn_pt[i];
++	FP.grFunction4f1i(int_to_float(param[1]), int_to_float(param[2]), int_to_float(param[3]), int_to_float(param[4]), param[5]);
++	break;
++/*
++    case _grSstConfigPipeline12:
++	//
++	FP.grFunction3i = (pfunc3i)fn_pt[i];
++	FP.grFunction3i();
++	break;
++*/
++    case _grSstControl4:
++	// FxBool grSstControl(FxU32 code)
++	FP.grRFunction1i = (prfunc1i)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction1i(param[1]));
++	ret_value = G_OK;
++	break;
++    case _grSstIdle0:
++	// void grSstIdle(void)
++	FP.grFunction0 = (pfunc0)fn_pt[i];
++	FP.grFunction0();
++	break;
++    case _grSstIsBusy0:
++	// FxBool grSstIsBusy(void)
++	FP.grRFunction0 = (prfunc0)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction0());
++	ret_value = G_OK;
++	break;
++    case _grSstOrigin4:
++	// void grSstOrigin(GrOriginLocation_t origin)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	GrOriginLocation = param[1];
++	break;
++    case _grSstPerfStats4:
++	// void grSstPerfStats(GrSstPerfStats_t *pStats)
++	FP.grFunction1p = (pfunc1p)fn_pt[i];
++	MEM_BlockRead32(param[1], texmem, sizeof(GrSstPerfStats_t));
++	FP.grFunction1p(texmem);
++	MEM_BlockWrite32(param[1], texmem, sizeof(GrSstPerfStats_t));
++	break;
++    case _grSstQueryBoards4:
++	// FxBool grSstQueryBoards(GrHwConfiguration *hwConfig)
++	FP.grRFunction1p = (prfunc1p)fn_pt[i];
++	MEM_BlockRead32(param[1], texmem, sizeof(GrHwConfiguration));
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction1p(texmem));
++	MEM_BlockWrite32(param[1], texmem, sizeof(GrHwConfiguration));
++	ret_value = G_OK;
++	break;
++    case _grSstQueryHardware4:
++	// FxBool grSstQueryHardware(GrHwConfiguration *hwConfig)
++	FP.grRFunction1p = (prfunc1p)fn_pt[i];
++	MEM_BlockRead32(param[1], texmem, sizeof(GrHwConfiguration));
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction1p(texmem));
++	MEM_BlockWrite32(param[1], texmem, sizeof(GrHwConfiguration));
++	ret_value = G_OK;
++	break;
++    case _grSstResetPerfStats0:
++	// void grSstResetPerfStats(void)
++	FP.grFunction0 = (pfunc0)fn_pt[i];
++	FP.grFunction0();
++	break;
++    case _grSstScreenHeight0:
++	// FxU32 grSstScreenHeight(void)
++	FP.grRFunction0 = (prfunc0)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction0());
++	ret_value = G_OK;
++	break;
++    case _grSstScreenWidth0:
++	// FxU32 grSstScreenWidth(void)
++	FP.grRFunction0 = (prfunc0)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction0());
++	ret_value = G_OK;
++	break;
++    case _grSstSelect4:
++	// void grSstSelect(int which_sst)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _grSstStatus0:
++	// FxU32 grSstStatus(void)
++	FP.grRFunction0 = (prfunc0)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction0());
++	ret_value = G_OK;
++	break;
++    case _grSstVRetraceOn0:
++	// FxBool grSstVRetraceOn(void)
++	FP.grRFunction0 = (prfunc0)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction0());
++	ret_value = G_OK;
++	break;
++/*
++    case _grSstVidMode8:
++	//
++	FP.grFunction2i = (pfunc2i)fn_pt[i];
++	FP.grFunction2i();
++	break;
++*/
++    case _grSstVideoLine0:
++	// FxU32 grSstVideoLine(void)
++	FP.grRFunction0 = (prfunc0)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction0());
++	ret_value = G_OK;
++	break;
++    case _grSstWinClose0:
++	// void grSstWinClose(void)
++	FP.grFunction0 = (pfunc0)fn_pt[i];
++	FP.grFunction0();
++	if(glide.enabled) {
++	    GLIDE_DisableScreen();
++	}
++	break;
++    case _grSstWinOpen28:
++	// FxBool grSstWinOpen(FxU32 hwnd, GrScreenResolution_t res, GrScreenRefresh_t ref,
++	//	GrColorFormat_t cformat, GrOriginLocation_t org_loc, int num_buffers, int num_aux_buffers)
++	FP.grRFunction1p6i = (prfunc1p6i)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++
++	/* Tie Break Tennis */
++	if(glide.enabled) {
++	    LOG_MSG("Glide:grSstWinOpen called when glide is active!");
++	    mem_writed(ret, FXTRUE);
++	    ret_value = G_OK;
++	    break;
++	}
++
++	// Check for successful memory map
++	if(mem_readd(param[10]) == 0) {
++	    LOG_MSG("Glide:LFB memory map failed, using default LFB address!");
++	    // Write physical address instead, it can crash but it just might work
++	    mem_writed(param[10], glide.lfb_pagehandler->GetPhysPt());
++	}
++
++	glide.enabled = true;
++	glide.width = param[8];
++	glide.height = param[9];
++	GrOriginLocation = param[5];
++
++	// Resize window and disable updates
++	GLIDE_ResetScreen();
++
++	k = FP.grRFunction1p6i(hwnd, param[2], param[3], param[4], param[5], param[6], param[7]);
++	if(k == FXFALSE) {
++	    LOG_MSG("Glide:grSstWinOpen failed!");
++	    GLIDE_DisableScreen();
++	    mem_writed(ret, FXFALSE);
++	    ret_value = G_OK;
++	    break;
++	}
++
++	mem_writed(ret, k);
++	if(glide.splash) {
++	    grSplash();
++	    glide.splash = false;
++	}
++
++	glide.lfb_pagehandler->SetLinPt(mem_readd(param[10]));
++	LOG_MSG("Glide:Resolution:%dx%d, LFB at 0x%x (physical) / 0x%x (linear)",
++		glide.width, glide.height, glide.lfb_pagehandler->GetPhysPt(), glide.lfb_pagehandler->GetLinPt());
++	ret_value = G_OK;
++	break;
++    case _grTexCalcMemRequired16:
++	// FxU32 grTexCalcMemRequired(GrLOD_t smallLod, GrLOD_t largeLod, GrAspectRatio_t aspect,
++	//	    GrTextureFormat_t format)
++	FP.grRFunction4i = (prfunc4i)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction4i(param[1], param[2], param[3], param[4]));
++	ret_value = G_OK;
++	break;
++    case _grTexClampMode12:
++	// void grTexClampMode(GrChipID_t tmu, GrTextureClampMode_t sClampMode, GrTextureClampMode_t tClampMode)
++	FP.grFunction3i = (pfunc3i)fn_pt[i];
++	FP.grFunction3i(param[1], param[2], param[3]);
++	break;
++    case _grTexCombine28:
++	// void grTexCombine(GrChipID_t tmu, GrCombineFunction_t rgb_function, GrCombineFactor_t rgb_factor,
++	//	GrCombineFunction_t alpha_function, GrCombineFactor_t alpha_factor, FxBool rgb_invert,
++	//	FxBool alpha_invert)
++	FP.grFunction7i = (pfunc7i)fn_pt[i];
++	FP.grFunction7i(param[1], param[2], param[3], param[4], param[5], param[6], param[7]);
++	break;
++    case _grTexCombineFunction8:
++	// void grTexCombineFunction(GrChipID_t tmu, GrTextureCombineFnc_t fnc)
++	FP.grFunction2i = (pfunc2i)fn_pt[i];
++	FP.grFunction2i(param[1], param[2]);
++	break;
++    case _grTexDetailControl16:
++	// void grTexDetailControl(GrChipID_t tmu, int lodBias, FxU8 detailScale, float detailMax)
++	FP.grFunction3i1f = (pfunc3i1f)fn_pt[i];
++	FP.grFunction3i1f(param[1], param[2], param[3], int_to_float(param[4]));
++	break;
++    case _grTexDownloadMipMap16:
++	// void grTexDownloadMipMap(GrChipID_t tmu, FxU32 startAddress, FxU32 evenOdd, GrTexInfo *info)
++	FP.grRFunction1i1p = (prfunc1i1p)fn_pt[_grTexTextureMemRequired8];
++	if(FP.grRFunction1i1p == NULL) {
++	    LOG_MSG("Glide:Unable to get pointer to grTexTextureMemRequired");
++	    return;
++	}
++
++	MEM_BlockRead32(param[4], &dbtexinfo, sizeof(DBGrTexInfo));
++
++	texinfo.smallLod = dbtexinfo.smallLod;
++	texinfo.largeLod = dbtexinfo.largeLod;
++	texinfo.aspectRatio = dbtexinfo.aspectRatio;
++	texinfo.format = dbtexinfo.format;
++	texinfo.data = NULL;
++
++	// grTexTextureMemRequired
++	texsize = FP.grRFunction1i1p(param[3], &texinfo);
++	MEM_BlockRead(dbtexinfo.data, texmem, texsize);
++	texinfo.data = texmem;
++
++	FP.grFunction3i1p = (pfunc3i1p)fn_pt[i];
++	FP.grFunction3i1p(param[1], param[2], param[3], &texinfo);
++	break;
++    case _grTexDownloadMipMapLevel32:
++	// void grTexDownloadMipMapLevel(GrChipID_t tmu, FxU32 startAddress, GrLOD_t thisLod,
++	//	GrLOD_t largeLod, GrAspectRatio_t aspectRatio, GrTextureFormat_t format,
++	//	FxU32 evenOdd, void *data)
++	FP.grRFunction1i1p = (prfunc1i1p)fn_pt[_grTexTextureMemRequired8];
++	if(FP.grRFunction1i1p == NULL) {
++	    LOG_MSG("Glide:Unable to get pointer to grTexTextureMemRequired");
++	    return;
++	}
++
++	texinfo.smallLod = param[3];
++	texinfo.largeLod = param[3];		// Calculate only thisLod
++	texinfo.aspectRatio = param[5];
++	texinfo.format = param[6];
++	texinfo.data = NULL;
++
++	// grTexTextureMemRequired
++	texsize = FP.grRFunction1i1p(param[7], &texinfo);
++	MEM_BlockRead(param[8], texmem, texsize);
++
++#if LOG_GLIDE
++	LOG_MSG("Read %d (%d %d %d %d %d) bytes of texture data", texsize, param[3], param[4], param[5], param[6], param[7]);
++#endif
++
++	FP.grFunction7i1p = (pfunc7i1p)fn_pt[i];
++	FP.grFunction7i1p(param[1], param[2], param[3], param[4], param[5], param[6], param[7], texmem);
++	break;
++    case _grTexDownloadMipMapLevelPartial40:
++	// FX_ENTRY void FX_CALL grTexDownloadMipMapLevelPartial(GrChipID_t tmu, FxU32 startAddress,
++	//    GrLOD_t thisLod, GrLOD_t largeLod, GrAspectRatio_t aspectRatio, GrTextureFormat_t format,
++	//    FxU32 evenOdd, void *data, int start, int end);
++	FP.grRFunction1i1p = (prfunc1i1p)fn_pt[_grTexTextureMemRequired8];
++	if(FP.grRFunction1i1p == NULL) {
++	    LOG_MSG("Glide:Unable to get pointer to grTexTextureMemRequired");
++	    return;
++	}
++
++	texinfo.smallLod = param[3];
++	texinfo.largeLod = param[3];		// Calculate only thisLod
++	texinfo.aspectRatio = param[5];
++	texinfo.format = param[6];
++	texinfo.data = NULL;
++
++	// grTexTextureMemRequired
++	texsize = FP.grRFunction1i1p(param[7], &texinfo);
++	MEM_BlockRead(param[8], texmem, texsize);
++
++	FP.grFunction7i1p2i = (pfunc7i1p2i)fn_pt[i];
++	FP.grFunction7i1p2i(param[1], param[2], param[3], param[4], param[5], param[6], param[7], texmem,
++			    param[9], param[10]);
++	break;
++    case _grTexDownloadTable12:
++	// void grTexDownloadTable(GrChipID_t tmu, GrTexTable_t type, void *data)
++	FP.grFunction2i1p = (pfunc2i1p)fn_pt[i];
++
++	if(param[2] == GR_TEXTABLE_PALETTE) {
++	    MEM_BlockRead32(param[3], texmem, sizeof(GuTexPalette));
++	} else { // GR_TEXTABLE_NCC0 or GR_TEXTABLE_NCC1
++	    MEM_BlockRead32(param[3], texmem, sizeof(GuNccTable));
++	}
++
++	FP.grFunction2i1p(param[1], param[2], texmem);
++	break;
++    case _grTexDownloadTablePartial20:
++	// void grTexDownloadTablePartial(GrChipID_t tmu, GrTexTable_t type, void *data, int start, int end)
++	FP.grFunction2i1p2i = (pfunc2i1p2i)fn_pt[i];
++
++	if(param[2] == GR_TEXTABLE_PALETTE) {
++	    MEM_BlockRead32(param[3], texmem, sizeof(GuTexPalette));
++	    FP.grFunction2i1p2i(param[1], param[2], texmem, param[4], param[5]);
++	} else { // GR_TEXTABLE_NCC0 or GR_TEXTABLE_NCC1
++	    LOG_MSG("Glide:Downloading partial NCC tables is not supported!");
++	}
++
++	break;
++    case _grTexFilterMode12:
++	// void grTexFilterMode(GrChipID_t tmu, GrTextureFilterMode_t minFilterMode,
++	//	GrTextureFilterMode_t magFilterMode)
++	FP.grFunction3i = (pfunc3i)fn_pt[i];
++	FP.grFunction3i(param[1], param[2], param[3]);
++	break;
++    case _grTexLodBiasValue8:
++	// void grTexLodBiasValue(GrChipID_t tmu, float bias)
++	FP.grFunction1i1f = (pfunc1i1f)fn_pt[i];
++	FP.grFunction1i1f(param[1], int_to_float(param[2]));
++	break;
++    case _grTexMaxAddress4:
++	// FxU32 grTexMaxAddress(GrChipID_t tmu)
++	FP.grRFunction1i = (prfunc1i)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction1i(param[1]));
++	ret_value = G_OK;
++	break;
++    case _grTexMinAddress4:
++	// FxU32 grTexMinAddress(GrChipID_t tmu)
++	FP.grRFunction1i = (prfunc1i)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction1i(param[1]));
++	ret_value = G_OK;
++	break;
++    case _grTexMipMapMode12:
++	// void grTexMipMapMode(GrChipID_t tmu, GrMipMapMode_t mode, FxBool lodBlend)
++	FP.grFunction3i = (pfunc3i)fn_pt[i];
++	FP.grFunction3i(param[1], param[2], param[3]);
++	break;
++    case _grTexMultibase8:
++	// void grTexMultibase(GrChipID_t tmu, FxBool enable)
++	FP.grFunction2i = (pfunc2i)fn_pt[i];
++	FP.grFunction2i(param[1], param[2]);
++	break;
++/*
++    case _grTexMultibaseAddress20:
++	// void grTexMultibaseAddress(GrChipID_t tmu, GrTexBaseRange_t range, FxU32 startAddress,
++	//	FxU32 evenOdd, GrTexInfo *info)
++	FP.grFunction4i1p = (pfunc4i1p)fn_pt[i];
++
++	// This is a bit more complicated since *info contains a pointer to data
++	texinfo = (GrTexInfo*)param[5];
++	data = (PhysPt)texinfo->data;			// Store for later reference
++	texinfo->data = VIRTOREAL(data);
++#if LOG_GLIDE
++	if(log_func[value-_grAADrawLine8] == 1) {
++	    LOG_MSG("Glide:Replacing pointer 0x%x with 0x%x in function %d", data, texinfo->data, _grTexMultibaseAddress20);
++	    log_func[value-_grAADrawLine8] = 2;
++	}
++#endif
++	FP.grFunction20(param[1], param[2], param[3], param[4], (int)texinfo);
++	texinfo->data = (void*)data;			// Change the pointer back
++	break;
++*/
++    case _grTexNCCTable8:
++	// void grTexNCCTable(GrChipID_t tmu, GrNCCTable_t table)
++	FP.grFunction2i = (pfunc2i)fn_pt[i];
++	FP.grFunction2i(param[1], param[2]);
++	break;
++    case _grTexSource16:
++	// void grTexSource(GrChipID_t tmu, FxU32 startAddress, FxU32 evenOdd, GrTexInfo *info)
++	FP.grFunction3i1p = (pfunc3i1p)fn_pt[i];
++
++	// Copy the data from DB struct
++	MEM_BlockRead32(param[4], &dbtexinfo, sizeof(DBGrTexInfo));
++
++	texinfo.smallLod = dbtexinfo.smallLod;
++	texinfo.largeLod = dbtexinfo.largeLod;
++	texinfo.aspectRatio = dbtexinfo.aspectRatio;
++	texinfo.format = dbtexinfo.format;
++	// Should the data pointer be filled ?
++
++	FP.grFunction3i1p(param[1], param[2], param[3], &texinfo);
++	break;
++    case _grTexTextureMemRequired8:
++	// FxU32 grTexTextureMemRequired(FxU32 evenOdd, GrTexInfo *info)
++	FP.grRFunction1i1p = (prfunc1i1p)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++
++	// Copy the data from DB struct
++	MEM_BlockRead32(param[2], &dbtexinfo, sizeof(DBGrTexInfo));
++
++	texinfo.smallLod = dbtexinfo.smallLod;
++	texinfo.largeLod = dbtexinfo.largeLod;
++	texinfo.aspectRatio = dbtexinfo.aspectRatio;
++	texinfo.format = dbtexinfo.format;
++
++	mem_writed(ret, FP.grRFunction1i1p(param[1], &texinfo));
++
++	ret_value = G_OK;
++	break;
++    case _grTriStats8:
++	// void grTriStats(FxU32 *trisProcessed, FxU32 *trisDrawn)
++	FP.grFunction2p = (pfunc2p)fn_pt[i];
++	MEM_BlockRead32(param[1], ilist, sizeof(FxU32));
++	MEM_BlockRead32(param[2], ilist + 1, sizeof(FxU32));
++	FP.grFunction2p(ilist, ilist + 1);
++	MEM_BlockWrite32(param[1], ilist, sizeof(FxU32));
++	MEM_BlockWrite32(param[2], ilist + 1, sizeof(FxU32));
++	break;
++    case _gu3dfGetInfo8:
++	// FxBool gu3dfGetInfo(const char *filename, Gu3dfInfo *info)
++	FP.grRFunction2p = (prfunc2p)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	MEM_StrCopy(param[1], filename, 512);
++
++#if LOG_GLIDE
++	LOG_MSG("Glide:Filename info found in gu3dfGetInfo: %s", filename);
++#endif
++	if(!GetFileName(filename)) break;
++	mem_writed(ret, FP.grRFunction2p(filename, &guinfo));
++
++	// Copy the data back to DB struct if successful
++	if(mem_readd(ret)) {
++	    MEM_BlockRead32(param[2], &dbguinfo, sizeof(DBGu3dfInfo));
++	    dbguinfo.header.width = (Bit32u)guinfo.header.width;
++	    dbguinfo.header.height = (Bit32u)guinfo.header.height;
++	    dbguinfo.header.small_lod = (Bit32s)guinfo.header.small_lod;
++	    dbguinfo.header.large_lod = (Bit32s)guinfo.header.large_lod;
++	    dbguinfo.header.aspect_ratio = (Bit32s)guinfo.header.aspect_ratio;
++	    dbguinfo.header.format = (Bit32s)guinfo.header.format;
++	    dbguinfo.mem_required = (Bit32u)guinfo.mem_required;
++	    MEM_BlockWrite32(param[2], &dbguinfo, sizeof(DBGu3dfInfo));
++	}
++
++	ret_value = G_OK;
++	break;
++    case _gu3dfLoad8:
++	// FxBool gu3dfLoad(const char *filename, Gu3dfInfo *info)
++	FP.grRFunction2p = (prfunc2p)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++
++	// Although glide ref specifies *info should be filled by gu3dfGetInfo before calling gu3dfLoad,
++	// OpenGlide will re-read the header in gu3dfLoad as well
++	MEM_BlockRead32(param[2], &dbguinfo, sizeof(DBGu3dfInfo));
++	MEM_StrCopy(param[1], filename, 512);
++
++#if LOG_GLIDE
++	LOG_MSG("Glide:Filename info found in gu3dfLoad: %s", filename);
++#endif
++	if(!GetFileName(filename)) break;
++
++	guinfo.data = texmem;
++	mem_writed(ret, FP.grRFunction2p(filename, &guinfo));
++
++	// Copy the data back to DB struct if successful
++	if(mem_readd(ret)) {
++	    for(j=0;j<256;j++)
++		dbguinfo.table.palette.data[j] = (Bit32u)guinfo.table.palette.data[j];
++	    MEM_BlockWrite(dbguinfo.data, guinfo.data, guinfo.mem_required);
++	}
++
++	MEM_BlockWrite32(param[2], &dbguinfo, sizeof(DBGu3dfInfo));
++	ret_value = G_OK;
++	break;
++    case _guAADrawTriangleWithClip12:
++	// void guAADrawTriangleWithClip(const GrVertex *va, const GrVertex *vb, const GrVertex *vc)
++	FP.grFunction3p = (pfunc3p)fn_pt[i];
++	MEM_BlockRead32(param[1], &vertex[0], sizeof(GrVertex));
++	MEM_BlockRead32(param[2], &vertex[1], sizeof(GrVertex));
++	MEM_BlockRead32(param[3], &vertex[2], sizeof(GrVertex));
++	FP.grFunction3p(&vertex[0], &vertex[1], &vertex[2]);
++	break;
++    case _guAlphaSource4:
++	// void guAlphaSource(GrAlphaSourceMode_t mode)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _guColorCombineFunction4:
++	// void guColorCombineFunction(GrColorCombineFunction_t func)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _guDrawPolygonVertexListWithClip8:
++	// void guDrawPolygonVertexListWithClip(int nverts, const GrVertex vlist[])
++	FP.grFunction1i1p = (pfunc1i1p)fn_pt[i];
++	MEM_BlockRead32(param[2], texmem, sizeof(GrVertex)*param[1]);
++	FP.grFunction1i1p(param[1], texmem);
++	break;
++    case _guDrawTriangleWithClip12:
++	// void guDrawTriangleWithClip(const GrVertex *va, const GrVertex *vb, const GrVertex *vc)
++	FP.grFunction3p = (pfunc3p)fn_pt[i];
++	MEM_BlockRead32(param[1], &vertex[0], sizeof(GrVertex));
++	MEM_BlockRead32(param[2], &vertex[1], sizeof(GrVertex));
++	MEM_BlockRead32(param[3], &vertex[2], sizeof(GrVertex));
++	FP.grFunction3p(&vertex[0], &vertex[1], &vertex[2]);
++	break;
++/*
++    case _guEncodeRLE1616:
++	//
++	FP.grFunction16 = (pfunc16)fn_pt[i];
++	FP.grFunction16();
++	break;
++    case _guEndianSwapBytes4:
++	//
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i();
++	break;
++    case _guEndianSwapWords4:
++	//
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i();
++	break;
++*/
++    case _guFogGenerateExp28:
++	// void guFogGenerateExp2(GrFog_t fogTable[GR_FOG_TABLE_SIZE], float density)
++	FP.grFunction1p1f = (pfunc1p1f)fn_pt[i];
++	FP.grFunction1p1f(texmem, int_to_float(param[2]));
++	MEM_BlockWrite32(param[1], texmem, GR_FOG_TABLE_SIZE*sizeof(GrFog_t));
++	break;
++    case _guFogGenerateExp8:
++	// void guFogGenerateExp(GrFog_t fogTable[GR_FOG_TABLE_SIZE], float density)
++	FP.grFunction1p1f = (pfunc1p1f)fn_pt[i];
++	FP.grFunction1p1f(texmem, int_to_float(param[2]));
++	MEM_BlockWrite32(param[1], texmem, GR_FOG_TABLE_SIZE*sizeof(GrFog_t));
++	break;
++    case _guFogGenerateLinear12:
++	// void guFogGenerateLinear(GrFog_t fogTable[GR_FOG_TABLE_SIZE], float nearW, float farW)
++	FP.grFunction1p2f = (pfunc1p2f)fn_pt[i];
++	FP.grFunction1p2f(texmem, int_to_float(param[2]), int_to_float(param[3]));
++	MEM_BlockWrite32(param[1], texmem, GR_FOG_TABLE_SIZE*sizeof(GrFog_t));
++	break;
++    case _guFogTableIndexToW4: {
++	// float guFogTableIndexToW(int i)
++	FP.grFFunction1i = (pffunc1i)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	float tmp = FP.grFFunction1i(param[1]);
++	SDL_memcpy(&j, &tmp, 4);
++	mem_writed(ret, SDL_SwapLE32(j));
++	ret_value = G_OK;
++	break;
++    }
++/*
++    case _guMPDrawTriangle12:
++	//
++	FP.grFunction3i = (pfunc3i)fn_pt[i];
++	FP.grFunction3i();
++	break;
++    case _guMPInit0:
++	//
++	FP.grFunction0 = (pfunc0)fn_pt[i];
++	FP.grFunction0();
++	break;
++    case _guMPTexCombineFunction4:
++	//
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i();
++	break;
++    case _guMPTexSource8:
++	//
++	FP.grFunction2i = (pfunc2i)fn_pt[i];
++	FP.grFunction2i();
++	break;
++    case _guMovieSetName4:
++	//
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i();
++	break;
++    case _guMovieStart0:
++	//
++	FP.grFunction0 = (pfunc0)fn_pt[i];
++	FP.grFunction0();
++	break;
++    case _guMovieStop0:
++	//
++	FP.grFunction0 = (pfunc0)fn_pt[i];
++	FP.grFunction0();
++	break;
++*/
++    case _guTexAllocateMemory60:
++	// GrMipMapId_t guTexAllocateMemory(GrChipID_t tmu, FxU8 evenOddMask, int width, int height,
++	//	    GrTextureFormat_t format, GrMipMapMode_t mmMode, GrLOD_t smallLod, GrLOD_t largeLod,
++	//	    GrAspectRatio_t aspectRatio, GrTextureClampMode_t sClampMode,
++	//	    GrTextureClampMode_t tClampMode, GrTextureFilterMode_t minFilterMode,
++	//	    GrTextureFilterMode_t magFilterMode, float lodBias, FxBool lodBlend)
++	FP.grRFunction13i1f1i = (prfunc13i1f1i)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction13i1f1i(param[1], param[2], param[3], param[4], param[5], param[6], param[7],
++			    param[8], param[9], param[10], param[11], param[12], param[13], int_to_float(param[14]), param[15]));
++	ret_value = G_OK;
++	break;
++    case _guTexChangeAttributes48:
++	// FxBool guTexChangeAttributes(GrMipMapID_t mmid, int width, int height, GrTextureFormat_t format,
++	//	    GrMipMapMode_t mmMode, GrLOD_t smallLod, GrLOD_t largeLod, GrAspectRatio_t aspectRatio,
++	//	    GrTextureClampMode_t sClampMode, GrTextureClampMode_t tClampMode,
++	//	    GrTextureFilterMode_t minFilterMode, GrTextureFilterMode_t magFilterMode)
++	FP.grRFunction12i = (prfunc12i)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction12i(param[1], param[2], param[3], param[4], param[5], param[6], param[7],
++			param[8], param[9], param[10], param[11], param[12]));
++	ret_value = G_OK;
++	break;
++    case _guTexCombineFunction8:
++	// void guTexCombineFunction(GrChipID_t tmu, GrTextureCombineFnc_t func)
++	FP.grFunction2i = (pfunc2i)fn_pt[i];
++	FP.grFunction2i(param[1], param[2]);
++	break;
++/*
++    case _guTexCreateColorMipMap0:
++	//
++	FP.grFunction0 = (pfunc0)fn_pt[i];
++	FP.grFunction0();
++	break;
++*/
++    case _guTexDownloadMipMap12:
++	// void guTexDownloadMipMap(GrMipMapId_t mmid, const void *src, const GuNccTable *nccTable)
++	FP.grRPTFunction1i = (prptfunc1i)fn_pt[_guTexGetMipMapInfo4];
++	mipmap = (GrMipMapInfo*)FP.grRPTFunction1i(param[1]);
++
++	if(mipmap) {
++	    texinfo.aspectRatio = mipmap->aspect_ratio;
++	    texinfo.format      = mipmap->format;
++	    texinfo.largeLod    = mipmap->lod_max;
++	    texinfo.smallLod    = mipmap->lod_min;
++
++	    FP.grRFunction1i1p = (prfunc1i1p)fn_pt[_grTexTextureMemRequired8];
++	    if(FP.grRFunction1i1p == NULL) {
++		LOG_MSG("Glide:Unable to get pointer to grTexTextureMemRequired");
++		return;
++	    }
++
++	    texsize = FP.grRFunction1i1p(mipmap->odd_even_mask, &texinfo);
++
++	    MEM_BlockRead(param[2], texmem, texsize);
++	    MEM_BlockRead32(param[3], (Bit8u*)texmem+texsize, sizeof(GuNccTable));
++
++	    FP.grFunction1i2p = (pfunc1i2p)fn_pt[i];
++	    FP.grFunction1i2p(param[1], texmem, (Bit8u*)texmem+texsize);
++	} else {
++	    LOG_MSG("Glide:Unable to get GrMipMapInfo pointer");
++	}
++	break;
++/*
++    case _guTexDownloadMipMapLevel12:
++	// void guTexDownloadMipMapLevel(GrMipMapId_t mmid, GrLOD_t lod, const void **src)
++	FP.grFunction2i1p = (pfunc2i1p)fn_pt[i];
++	FP.grFunction2i1p(param[1], param[2], *param[3]);
++	break;
++*/
++    case _guTexGetCurrentMipMap4:
++	// GrMipMapId_t guTexGetCurrentMipMap(GrChipID_t tmu)
++	FP.grRFunction1i = (prfunc1i)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction1i(param[1]));
++	ret_value = G_OK;
++	break;
++/*
++    case _guTexGetMipMapInfo4:
++	// GrMipMapInfo *guTexGetMipMapInfo(GrMipMapId_t mmid)
++	FP.grRFunction4 = (prfunc4)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction4(param[1]));
++	ret_value = G_OK;
++	break;
++*/
++    case _guTexMemQueryAvail4:
++	// FxU32 guTexMemQueryAvail(GrChipID_t tmu)
++	FP.grRFunction1i = (prfunc1i)fn_pt[i];
++	if(ret == 0) {
++	    LOG_MSG("Glide:Invalid return value handle for %s!", grTable[i].name);
++	    return;
++	}
++	mem_writed(ret, FP.grRFunction1i(param[1]));
++	ret_value = G_OK;
++	break;
++    case _guTexMemReset0:
++	// void guTexMemReset(void)
++	FP.grFunction0 = (pfunc0)fn_pt[i];
++	FP.grFunction0();
++	break;
++    case _guTexSource4:
++	// void guTexSource(GrMipMapId_t mmid)
++	FP.grFunction1i = (pfunc1i)fn_pt[i];
++	FP.grFunction1i(param[1]);
++	break;
++    case _ConvertAndDownloadRle64: {
++	// void ConvertAndDownloadRle(GrChipID_t tmu, FxU32 startAddress, GrLOD_t thisLod, GrLOD_t largeLod,
++	//				GrAspectRatio_t aspectRatio, GrTextureFormat_t format, FxU32 evenOdd,
++	//				FxU8 *bm_data, long  bm_h, FxU32 u0, FxU32 v0, FxU32 width, FxU32 height,
++	//				FxU32 dest_width, FxU32 dest_height, FxU16 *tlut)
++
++#if LOG_GLIDE
++	LOG_MSG("Glide: RLE width: %d, height: %d, bm_h: %d, u0: %d, v0: %d, dest %dx%d",
++	    param[12], param[13], param[9], param[10], param[11], param[14], param[15]);
++#endif
++
++	FxU8 c;
++	FxU32 scount = 0;
++	FxU32 dcount = 0;
++
++	FxU16 * src = ptr16 + param[14]*param[15];
++	FxU32 offset = 4 + param[9];
++
++	// Line offset (v0)
++	for(j = 0; j < param[11]; j++ ) {
++	    offset += mem_readb(param[8]+4+j);
++	}
++
++	// Write height lines
++	for(k = 0; k < param[13]; k++) {
++
++	    // Decode one RLE line
++	    scount = offset;
++	    while((c = mem_readb(param[8]+scount)) != 0xE0) {
++
++		if(c > 0xE0) {
++		    for(int count = 0; count < (c&0x1f); count++) {
++
++			// tlut is FxU16*
++			src[dcount] = mem_readw(param[16]+(mem_readb(param[8]+scount+1)<<1));
++			dcount++;
++		    }
++		    scount += 2;
++
++		} else {
++		    src[dcount] = mem_readw(param[16]+(c<<1));
++		    dcount++; scount++;
++		}
++	    }
++
++	    // Copy Line into destination texture, offset u0
++	    SDL_memcpy(ptr16 + (k*param[14]), src + param[10], sizeof(FxU16)*param[14]);
++	    offset += mem_readb(param[8] + 4 + j++);
++	    dcount = 0;
++	}
++
++	// One additional line
++	if(param[13] < param[15])
++	    SDL_memcpy(ptr16 + (k*param[14]), src + param[10], sizeof(FxU16)*param[14]);
++
++	// Download decoded texture
++	texinfo.smallLod = param[3];
++	texinfo.largeLod = param[4];
++	texinfo.aspectRatio = param[5];
++	texinfo.format = param[6];
++	texinfo.data = ptr16;
++
++	// void grTexDownloadMipMap(GrChipID_t tmu, FxU32 startAddress, FxU32 evenOdd, GrTexInfo *info)
++	FP.grFunction3i1p = (pfunc3i1p)fn_pt[_grTexDownloadMipMap16];
++	if(FP.grFunction3i1p == NULL) {
++	    LOG_MSG("Glide:Unable to get pointer to grTexDownloadMipMap");
++	    break;
++	}
++	FP.grFunction3i1p(param[1], param[2], param[7], &texinfo);
++	break;
++    }
++    default:
++	LOG_MSG("Glide:Unsupported glide call %s", grTable[i].name);
++	break;
++
++    }	/* switch */
++}	/* process_msg() */
+diff -Nawurp a/src/hardware/Makefile.am b/src/hardware/Makefile.am
+--- a/src/hardware/Makefile.am	2019-06-15 00:25:57.000000000 +0000
++++ b/src/hardware/Makefile.am	2019-06-15 00:25:58.000000000 +0000
+@@ -10,6 +10,6 @@ libhardware_a_SOURCES = adlib.cpp dma.cp
+                         memory.cpp mixer.cpp pcspeaker.cpp pci_bus.cpp pic.cpp sblaster.cpp tandy_sound.cpp timer.cpp \
+ 			vga.cpp vga_attr.cpp vga_crtc.cpp vga_dac.cpp vga_draw.cpp vga_gfx.cpp vga_other.cpp \
+ 			vga_memory.cpp vga_misc.cpp vga_seq.cpp vga_xga.cpp vga_s3.cpp vga_tseng.cpp vga_paradise.cpp \
+-			cmos.cpp disney.cpp gus.cpp mpu401.cpp ipx.cpp ipxserver.cpp dbopl.cpp
++			cmos.cpp disney.cpp gus.cpp mpu401.cpp ipx.cpp ipxserver.cpp dbopl.cpp glide.cpp
+ 
+ 
+diff -Nawurp a/src/hardware/memory.cpp b/src/hardware/memory.cpp
+--- a/src/hardware/memory.cpp	2019-06-15 00:25:55.000000000 +0000
++++ b/src/hardware/memory.cpp	2019-06-15 00:25:58.000000000 +0000
+@@ -23,6 +23,7 @@
+ #include "setup.h"
+ #include "paging.h"
+ #include "regs.h"
++#include "glidedef.h"
+ 
+ #include <string.h>
+ 
+@@ -140,6 +141,8 @@ PageHandler * MEM_GetPageHandler(Bitu ph
+ 	} else if ((phys_page>=memory.lfb.start_page+0x01000000/4096) &&
+ 				(phys_page<memory.lfb.start_page+0x01000000/4096+16)) {
+ 		return memory.lfb.mmiohandler;
++	} else if (glide.enabled && (phys_page>=(GLIDE_LFB>>12)) && (phys_page<(GLIDE_LFB>>12)+GLIDE_PAGES)) {
++		return (PageHandler*)glide.lfb_pagehandler;
+ 	}
+ 	return &illegal_page_handler;
+ }
+@@ -191,6 +194,24 @@ void MEM_BlockWrite(PhysPt pt,void const
+ 	}
+ }
+ 
++void MEM_BlockRead32(PhysPt pt,void * data,Bitu size) {
++	Bit32u * write=(Bit32u *) data;
++	size>>=2;
++	while (size--) {
++		*write++=mem_readd_inline(pt);
++		pt+=4;
++	}
++}
++
++void MEM_BlockWrite32(PhysPt pt,void * data,Bitu size) {
++	Bit32u * read=(Bit32u *) data;
++	size>>=2;
++	while (size--) {
++		mem_writed_inline(pt,*read++);
++		pt+=4;
++	}
++}
++
+ void MEM_BlockCopy(PhysPt dest,PhysPt src,Bitu size) {
+ 	mem_memcpy(dest,src,size);
+ }

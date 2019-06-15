@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Dosbox
+Comment=DOS emulator for running DOS games
+Path=/usr/bin
+Exec=dosbox
+Icon=dosbox
+Terminal=false
+StartupNotify=false
+Categories=Emulator;Game;
