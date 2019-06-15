@@ -15,7 +15,7 @@ url="https://github.com/libretro/mupen64plus-libretro-nx"
 license=('GPL3')
 groups=('libretro')
 depends=('libglvnd' 'libpng')
-makedepends=('git')
+makedepends=('git' 'nasm')
 source=("${_gitname}::git://github.com/libretro/${_gitname}.git")
 md5sums=('SKIP')
 
