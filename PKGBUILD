@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=darknet-alexeyab-git
 pkgver=r1341.f058244
-pkgrel=2
+pkgrel=3
 pkgdesc='YOLO: Real Time Object Detection Neural Network Library (AlexeyAB fork)'
 arch=('i686' 'x86_64')
 url='https://github.com/AlexeyAB/darknet'
@@ -48,7 +48,13 @@ package() {
 
   # bin
   mkdir $pkgdir/usr/bin
-  cp $srcdir/${_name}/build-release/{darknet,uselib,uselib_track} $pkgdir/usr/bin/
+
+  # Check if opencv is installed
+  if (pacman -Qqs opencv >/dev/null) ; then
+    cp $srcdir/${_name}/build-release/{darknet,uselib,uselib_track} $pkgdir/usr/bin/
+  else
+    cp $srcdir/${_name}/build-release/{darknet,uselib} $pkgdir/usr/bin/
+  fi
 
   # include
   mkdir -p $pkgdir/usr/include/darknet
