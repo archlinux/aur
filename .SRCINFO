@@ -1,0 +1,14 @@
+pkgbase = groovy-language-server-git
+	pkgdesc = A language server for Groovy
+	pkgver = r67.610f81b
+	pkgrel = 1
+	url = https://github.com/prominic/groovy-language-server
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = java-runtime
+	source = git+https://github.com/prominic/groovy-language-server
+	md5sums = SKIP
+
+pkgname = groovy-language-server-git
+
