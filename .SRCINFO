@@ -1,0 +1,15 @@
+pkgbase = xci2nsp-git
+	pkgdesc = XCI to NSP converter
+	pkgver = 1.0.0.1.r1.g87b08da
+	pkgrel = 1
+	url = https://gitlab.com/roothorick/dedbae
+	arch = any
+	license = ISC
+	makedepends = git
+	provides = xci2nsp
+	conflicts = xci2nsp
+	source = git+https://gitlab.com/roothorick/dedbae.git
+	sha256sums = SKIP
+
+pkgname = xci2nsp-git
+
