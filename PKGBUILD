@@ -2,7 +2,7 @@
 # Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=cinnamon-control-center-slim
-pkgver=4.0.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="The Control Center for Cinnamon"
 arch=('x86_64')
@@ -13,9 +13,8 @@ conflicts=('cinnamon-control-center')
 replaces=('cinnamon-control-center')
 depends=('cinnamon-settings-daemon' 'cinnamon-menus' 'colord' 'libgnomekbd')
 optdepends=('cinnamon-translations: i18n'
-            'gnome-color-manager: for color management tasks'
-            'gnome-online-accounts: for the online accounts module')
-makedepends=('gnome-online-accounts' 'intltool' 'python')
+            'gnome-color-manager: for color management tasks')
+makedepends=('intltool' 'python')
 options=('!emptydirs')
 source=("${pkgname%-*}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
@@ -35,6 +34,7 @@ build() {
                 --enable-systemd \
                 --disable-networkmanager \
                 --disable-modemmanager \
+                --disable-onlineaccounts \
                 --disable-documentation
 
     #https://bugzilla.gnome.org/show_bug.cgi?id=656229
