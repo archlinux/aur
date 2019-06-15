@@ -7,9 +7,8 @@ pkgbase = python-bashlex
 	arch = x86_64
 	license = GPL3
 	depends = python
-	options = !emptydirs
 	source = https://github.com/idank/bashlex/archive/0.14.tar.gz
-	md5sums = 4a62a72f6743fe9c5e2a63d6600fd3a1
+	sha256sums = d32d1f929e2299660b5a7258068ac3708046c41d806223c8ecdc00b893548b2a
 
 pkgname = python-bashlex
 
