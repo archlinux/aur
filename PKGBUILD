@@ -2,14 +2,24 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-canary-git
-pkgver=r11825.b13709107
+pkgver=r11849.7abd66d92
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/yuzu-emu/yuzu-canary"
 license=('GPL2')
-depends=('shared-mime-info' 'desktop-file-utils' 'sdl2' 'qt5-base' 'qt5-multimedia' 'qt5-tools' 'libxkbcommon-x11')
-makedepends=('git' 'cmake' 'python')
+depends=('shared-mime-info'
+         'desktop-file-utils'
+         'sdl2'
+         'qt5-base'
+         'qt5-multimedia'
+         'qt5-tools'
+         'libxkbcommon-x11'
+         'libzip'
+         'zlib')
+makedepends=('git'
+             'cmake'
+             'python')
 optdepends=('qt5-wayland: for Wayland support')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-canary")
 md5sums=('SKIP')
@@ -54,5 +64,10 @@ check() {
 
 package() {
 	cd "$srcdir/$_pkgname/build"
+	
 	make DESTDIR="$pkgdir/" install
+	
+	# Temporary fix until yuzu fixes the zlib and libzip patch they pushed yesterday
+	cd "$pkgdir/usr"
+	rm -rf include lib lib64 share/man share/pkgconfig
 }
