@@ -27,10 +27,10 @@ build_aur () {
     su - builder -c "(cd ${build_dir}; makepkg -s --noconfirm)" >/dev/null
     sed -i 's/%wheel ALL=(ALL) NO/# %wheel ALL=(ALL) NO/' /etc/sudoers
 
-    echo " => Adding ${package} to local AUR hosting directory ${OFFLINE_MIRROR_PATH}"
-    mkdir -p "${OFFLINE_MIRROR_PATH}/os/x86_64"
-    sh -c "cp *.xz ${OFFLINE_MIRROR_PATH}/os/x86_64"
-    sh -c "repo-add ${OFFLINE_MIRROR_PATH}/os/x86_64/arch_offline.db.tar.gz ${OFFLINE_MIRROR_PATH}/os/x86_64/*.xz"
+    echo " => Adding ${package} to local AUR hosting directory ${offline_mirror_path}"
+    mkdir -p "${offline_mirror_path}/os/x86_64"
+    sh -c "cp *.xz ${offline_mirror_path}/os/x86_64"
+    sh -c "repo-add ${offline_mirror_path}/os/x86_64/arch_offline.db.tar.gz ${offline_mirror_path}/os/x86_64/*.xz"
 
     ## Long term storage inside the ISO? (if we want to install from CD to disk or host it to others)
     # sh -c "mv *.xz ${old_dir}/$2/$1.pkg.tar.xz"
@@ -73,7 +73,7 @@ patch_in_local_mirror() {
     cat <<EOF >> ${work_dir}/pacman.conf
 [arch_offline]
 SigLevel = Optional TrustAll
-Server = file://${OFFLINE_MIRROR_PATH}/os/x86_64/
+Server = file://${offline_mirror_path}/os/x86_64/
 EOF
 }
 

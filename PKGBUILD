@@ -1,5 +1,6 @@
 # Maintainer: Anton Hvornum <anton.feeds+AUR@gmail.com>
 # makepkg --printsrcinfo > .SRCINFO
+# TODO: lower case all variables, just so we don't mess something up and poke people in the eye.
 _owner=Torxed
 _name=archiso-offline-releng
 pkgname=$_name
@@ -20,7 +21,7 @@ sha256sums=('SKIP')
 # target function chain is where in the build process to inject our own chain right before.
 TARGET_FUNCTION="make_iso()"
 TARGET_FUNCTION_CHAIN="make_customize_airootfs"
-OFFLINE_MIRROR_PATH='${script_path}/${work_dir}/x86_64/airootfs/srv/http/arch_offline'
+OFFLINE_MIRROR_PATH="${script_path}/${work_dir}/x86_64/airootfs/srv/http/arch_offline"
 
 prepare() {
     mkdir -p "$srcdir/usr/share/archiso/configs/offline_releng"
@@ -42,13 +43,14 @@ build() {
 	CHAIN_INJECT+="run_once install_aur\n"
 	CHAIN_INJECT+="run_once finalize_offline\n"
 
-	# Patch in the functions right before $TARGET_FUNCTION.
+	# Patch in the functions right before $TARGET_FUNCTION and migrate over the OFFLINE_MIRROR_PATH.
 	# TODO: use sed to replace a fancy variable in offline_function.sh and insert $TARGET_FUNCTION,
 	#       since now it's hard coded and if we change in here, it won't work after this `ed` oneliner.
 	printf '%s\n' "/${TARGET_FUNCTION}/r $srcdir/${_name}/offline_functions.sh" 1 "/${TARGET_FUNCTION}/d" w | ed "$srcdir/usr/share/archiso/configs/offline_releng/build.sh"
+	sed -i "s;verbose=;offline_mirror_path=${OFFLINE_MIRROR_PATH}\n&;" "$srcdir/usr/share/archiso/configs/offline_releng/build.sh"
 
 	# Patch in the function calls before $TARGET_FUNCTION_CHAIN
-	sed -i "s/${TARGET_FUNCTION_CHAIN}/${CHAIN_INJECT}&/" "$srcdir/usr/share/archiso/configs/offline_releng/build.sh"
+	sed -i "s/run_once ${TARGET_FUNCTION_CHAIN}/${CHAIN_INJECT}\n&/" "$srcdir/usr/share/archiso/configs/offline_releng/build.sh"
 }
 
 package() {
