@@ -6,4 +6,4 @@ Terminal=false
 Exec=/usr/bin/jmeter
 Categories=Development;WebDevelopment;Utility;
 StartupNotify=true
-StartupWMClass=code
+StartupWMClass=jmeter
