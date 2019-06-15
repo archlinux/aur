@@ -1,26 +1,29 @@
-#Maintainer: Plague-doctor <plague at privacyrequired dot com >
+# Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=freetube-bin
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="An open source desktop YouTube player built with privacy in mind."
 arch=('x86_64')
 url="https://github.com/FreeTubeApp/FreeTube"
+file="FreeTube-$pkgver-linux.tar.xz"
 license=('GPL')
 options=("!strip" "staticlibs")
 source=(
     "freetube-bin.desktop"
-    "$pkgname-$pkgver-$pkgrel.zip"::"https://github.com/FreeTubeApp/FreeTube/releases/download/v$pkgver-beta/FreeTube-linux-x64.zip"
+    "freetube-bin-icon.png"
+    "$pkgname-$pkgver-$pkgrel.tar.xz"::"$url/releases/download/v$pkgver-beta/$file"
     )
 
 package() {
     install -d "$pkgdir/"{usr/bin,/usr/share/pixmaps,usr/share/applications,opt}
-    cp -R $srcdir/FreeTube-linux-x64 $pkgdir/opt/$pkgname
-    ln -s /opt/$pkgname/FreeTube $pkgdir/usr/bin/$pkgname
-    install -Dm644 "$srcdir/FreeTube-linux-x64/resources/app/src/icons/iconColor.png" "${pkgdir}/usr/share/pixmaps/$pkgname.png"
+    cp -R $srcdir/FreeTube-$pkgver $pkgdir/opt/$pkgname
+    ln -s /opt/$pkgname/freetube $pkgdir/usr/bin/$pkgname
+    install -Dm644 "freetube-bin-icon.png" "${pkgdir}/usr/share/pixmaps/$pkgname.png"
     install -Dm644 "freetube-bin.desktop" "${pkgdir}/usr/share/applications/$pkgname.desktop"
 }
 
 
 md5sums=('e6ae90f67b51efc28cbc249aefc7fc28'
-         '1bfca76b8e4c3e0bad8eb02cdf9ecd71')
+         '226826376032a3253ebba9f1ed2e58fd'
+         'bbb1db1b67d17f5dfc42287b304228f2')
