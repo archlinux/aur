@@ -2,7 +2,7 @@
 pkgname=dwm-uleenucks-git
 _pkgname=dwm
 pkgdesc="dwm with uleenucks personalisations"
-pkgver=6.1.18.gceac8c9
+pkgver=6.2
 pkgver(){
   cd $_pkgname
   git describe --tags |sed 's/-/./g'
@@ -23,14 +23,12 @@ epoch=1
 source=("$_pkgname::git+http://git.suckless.org/dwm"
         config.def.h.x200s
         config.def.h.x230
-        config.def.h.work
         compile.sh
         dwm-6.1-center.diff)
 
 sha512sums=('SKIP'
             'acc21d9e3997936a9255e6ac3722e82af0d3ebffafb02ee96bbf61a46429a9c223587d8fb0f1801c022b6b7d10d12ace854a35c1b2fc4e44f5fb08f06c28c3b3'
             'ebf52693f4e55fc2cac9a8505687826a06deb968b68fad55cb52592620602889c4e48e0ec40a9df8ed617deca646b939fd060bb6eb110f91868fdec10d1d285a'
-            '45359b529cce3869aef0409cbaa385c15dcb672e2ac89dcff5833259e90ce4c82c523346af9f2255f64f0a15cc4e4ba9b7745271094c4a6f91a21719e411c388'
             '91c6cf589cb5d897afc4d9dea9858cf86dab3eee09fc1b837c25d714112a84ffbc65d6d434ee62266cbc7aa6efea7de0805058a667a06caaa1f31e296c842c70'
             '383a79385d6444ff503d1a81ed13a52db06d253857a8ee955ab0ef669df6e6da501cc0e35a2549472f271684de13de3a3fb2d6843cd596842f9fbc0e0ad53d66')
 
