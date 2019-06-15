@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv7h')
 url='https://gitlab.com/qdre'
 license=('MIT')
 groups=('qdre')
-depends=('qt5-base' 'qt5-x11extras' 'glib2' 'gnome-menus' 'libgtop' 'exiv2' 'kcrash' 'kwindowsystem' 'qrencode')
+depends=('qt5-base' 'qt5-x11extras' 'glib2' 'gnome-menus' 'libgtop' 'exiv2' 'kcrash' 'kwindowsystem' 'qrencode' 'libxcb')
 makedepends=('fakeroot' 'make' 'gcc' 'cmake' 'git')
 optdepends=('drkonqi')
 # options=(!strip debug)
@@ -16,10 +16,6 @@ source=("git+https://gitlab.com/qdre/qdre.git#branch=master")
 sha1sums=("SKIP")
 
 prepare() {
-    pushd qdre
-    git submodule init
-    git submodule update
-    popd
     mkdir -p build
 }
 
