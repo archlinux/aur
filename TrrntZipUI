@@ -1,0 +1,3 @@
+#!/bin/sh
+export MONO_PATH="${MONO_PATH:+${MONO_PATH}:}/usr/lib/torrentzip.net"
+exec mono $MONO_OPTIONS /usr/lib/torrentzip.net/TrrntZipUI.exe "$@"

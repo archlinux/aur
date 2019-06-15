@@ -1,0 +1,40 @@
+diff -Nawurp a/Trrntzip/TorrentZipRebuild.cs b/Trrntzip/TorrentZipRebuild.cs
+--- a/Trrntzip/TorrentZipRebuild.cs	2019-06-14 01:54:19.000000000 +0000
++++ b/Trrntzip/TorrentZipRebuild.cs	2019-06-14 01:51:24.000000000 +0000
+@@ -36,10 +36,10 @@ namespace Trrntzip
+             int bufferSize = buffer.Length;
+ 
+             string filename = originalZipFile.ZipFilename;
+-            string tmpFilename = Path.GetDirectoryName(filename) + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(filename) + ".tmp";
++            string tmpFilename = Path.Combine(Path.GetDirectoryName(filename),Path.GetFileNameWithoutExtension(filename) + ".tmp");
+ 
+             string outExt = outputType == zipType.zip ? ".zip" : ".7z";
+-            string outfilename = Path.GetDirectoryName(filename) + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(filename) + outExt;
++            string outfilename = Path.Combine(Path.GetDirectoryName(filename), Path.GetFileNameWithoutExtension(filename) + outExt);
+ 
+             if (inputType != outputType)
+             {
+diff -Nawurp a/TrrntZipCMD/TrrntZipCMD.csproj b/TrrntZipCMD/TrrntZipCMD.csproj
+--- a/TrrntZipCMD/TrrntZipCMD.csproj	2019-06-14 01:54:19.000000000 +0000
++++ b/TrrntZipCMD/TrrntZipCMD.csproj	2019-06-14 01:51:24.000000000 +0000
+@@ -55,7 +55,7 @@
+       <Project>{ff8a7a0a-6319-49e0-a6e6-df3754bffdd1}</Project>
+       <Name>RVIO</Name>
+     </ProjectReference>
+-    <ProjectReference Include="..\trrntzip\Trrntzip.csproj">
++    <ProjectReference Include="..\Trrntzip\Trrntzip.csproj">
+       <Project>{21822412-a4ce-4a55-bd41-aaea753753f1}</Project>
+       <Name>Trrntzip</Name>
+     </ProjectReference>
+diff -Nawurp a/TrrntZipUI/TrrntZipUI.csproj b/TrrntZipUI/TrrntZipUI.csproj
+--- a/TrrntZipUI/TrrntZipUI.csproj	2019-06-14 01:54:19.000000000 +0000
++++ b/TrrntZipUI/TrrntZipUI.csproj	2019-06-14 01:51:24.000000000 +0000
+@@ -123,7 +123,7 @@
+       <Project>{ff8a7a0a-6319-49e0-a6e6-df3754bffdd1}</Project>
+       <Name>RVIO</Name>
+     </ProjectReference>
+-    <ProjectReference Include="..\trrntzip\Trrntzip.csproj">
++    <ProjectReference Include="..\Trrntzip\Trrntzip.csproj">
+       <Project>{21822412-a4ce-4a55-bd41-aaea753753f1}</Project>
+       <Name>Trrntzip</Name>
+     </ProjectReference>

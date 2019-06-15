@@ -1,0 +1,12 @@
+diff -Nawurp a/TrrntZipUI/TrrntZipUI.csproj b/TrrntZipUI/TrrntZipUI.csproj
+--- a/TrrntZipUI/TrrntZipUI.csproj	2019-06-14 00:54:34.000000000 +0000
++++ b/TrrntZipUI/TrrntZipUI.csproj	2019-06-14 00:55:54.876336260 +0000
+@@ -83,7 +83,7 @@
+     <Compile Include="FrmTrrntzip.cs">
+       <SubType>Form</SubType>
+     </Compile>
+-    <Compile Include="FrmTrrntzip.designer.cs">
++    <Compile Include="frmTrrntzip.designer.cs">
+       <DependentUpon>FrmTrrntzip.cs</DependentUpon>
+     </Compile>
+     <Compile Include="Program.cs" />

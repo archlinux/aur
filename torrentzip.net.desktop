@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=TorrentZip.NET
+Comment=Torrentzip utility with mutli core processing capability
+Path=/usr/bin
+Exec=TrrntZipUI
+Icon=torrentzip.net.png
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Application;Utilities;

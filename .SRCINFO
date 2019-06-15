@@ -1,0 +1,29 @@
+pkgbase = torrentzip.net
+	pkgdesc = Torrentzip utility with mutli core processing capability
+	pkgver = 1.0.4.0
+	pkgrel = 1
+	url = http://www.romvault.com/trrntzip/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = imagemagick
+	depends = mono
+	depends = sh
+	depends = hicolor-icon-theme
+	source = git+https://github.com/RomVault/RVWorld.git#commit=7513f4e2f15fbe485c76cac90ab2d29dea2a5281
+	source = TrrntZip.NET
+	source = TrrntZipUI
+	source = torrentzip.net.desktop
+	source = torrentzip.net-no-ilmerge.patch
+	source = torrentzip.net-fix-case.patch
+	source = torrentzip.net-linux-fix.patch
+	sha256sums = SKIP
+	sha256sums = fcec85063da4f78dc853f443493709458ae627aaf8968476c7ea02056b0982b0
+	sha256sums = af32f3a2609a9eae37a2c836b0a4961230cfdffec6080d23fc94c5a0c4a181f0
+	sha256sums = ab1f7bd79b7f255ee93b7986e3b8674eb32150c1043e349f351db2c29788aebe
+	sha256sums = 6173068d16ca19f6b8e29cf176d0633a5b4a81b2986bd36a85e0fe5fa095a9f6
+	sha256sums = 5f54911530550c5e4379422cbacea6258c7a0e07429b3530a12a6daad157585e
+	sha256sums = 170fc46eb2af90ad47a76bbc3827219f024fe9b5df95b317202396ec299ae06d
+
+pkgname = torrentzip.net
+
