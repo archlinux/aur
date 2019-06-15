@@ -1,7 +1,7 @@
 pkgbase = baidunetdisk
 	pkgdesc = Baidunetdisk Client, converted from .rpm package
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pan.baidu.com/
 	arch = x86_64
 	license = custom

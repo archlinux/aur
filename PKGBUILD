@@ -1,7 +1,7 @@
 # Maintainer: yaminogame <yaminogame at live dot com>
 pkgname=baidunetdisk
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Baidunetdisk Client, converted from .rpm package"
 arch=("x86_64")
 url="http://pan.baidu.com/"
