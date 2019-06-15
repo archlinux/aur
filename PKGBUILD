@@ -51,7 +51,7 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.1
-_minor=9
+_minor=10
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -81,6 +81,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/arch-patches-v3/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches-v3/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
+        "${_lucjanpath}/arch-patches-v4/0001-bcache-fix-stack-corruption-by-PRECEDING_KEY.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -374,14 +375,15 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('2ce5f3abe57c80e84956481c86559448e2d66fb776a17095b7f14c477b8f9fb36864fcb739306707c09f8c8d7a1e88962053c354c5fc33ade15004e2b1ca2df8'
+sha512sums=('c8fbd34053af1a2a7ecddb00127ef1bb699d2b413eed95576fe9b98ceba424a292a44f4ba45726f66e9a7f105bae1b6d843b97383dbaed9a62d0d76e068a82d8'
             'SKIP'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '08409bca9c5e92840635b3bdd2267f5177334a29e5460d5e52e62ed3bf228b5bd9e6ac27491570a5d627faadeba558e5eab4c8789525fa57c9c20891ea75261e'
             '6d8f5f5999de7639da38385c48c8617baf1a74a986d648eb555f1e5213dc29ab52313f8f14a71330b678b577fbf0c1a40740cb6cab27f440fb2288b053bc6d8d'
             '2f7a1939c8e9e86b39a3385ef33f1fb738e507ae771696f57d5fa2032a46438c50e5ce54ad607643dffa0d544d401fc40616db9e88defcf7719f32efa3cdbefc'
             'ad3f2c10467341fcbf0f6a636aef0bf216d9c0d993d79ce3825e5432ad8261e6e596772931a6ac090742cf7299bdf72730e75184efc9502246ed521d79214034'
-            'cded7012b1b1931c8754b0bbcaa27e95a8be72541500f29af1e4ca3335d92085762611535ad672af5787d96a01139f2c62536b1c541d2835e57eb5319d8d51c2'
+            '640c99326b202e633f4d323772b580c7ba562d7d7b3c95dfa57b09315541ac285326faf72c25f95645f79bd77498b17b958b15eb2cf312863f15ff223157f918'
+            '5f9e5abd1e0b27d0aff87de2ba23be51da6beb723d646df7920fa32775965319feb7c4b0fbda18f0ea80c8ccf6aceda418e90773acaea0df2756b18c80d71740'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
