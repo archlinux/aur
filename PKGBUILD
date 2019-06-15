@@ -3,7 +3,7 @@
 pkgname=java-language-server-git
 _pkgname=java-language-server
 pkgver=0.2.19.r1227.ce5b939
-pkgrel=1
+pkgrel=2
 pkgdesc="Java language server using the Java compiler API"
 arch=('any')
 url="https://github.com/georgewfraser/java-language-server.git"
@@ -26,6 +26,7 @@ pkgver() {
 }
 
 build() {
+    export JAVA_HOME="/usr/lib/jvm/default"
     cd "${srcdir}/${_pkgname}"
     ./scripts/link_mac.sh
 }
