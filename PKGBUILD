@@ -4,8 +4,7 @@ pkgdesc="ROS - A simple viewer for ROS image topics."
 url='http://www.ros.org/wiki/image_view'
 
 pkgname='ros-melodic-image-view'
-pkgver='1.12.23'
-_pkgver_patch=0
+pkgver='1.13.0'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -50,9 +49,16 @@ depends=(
 	gtk2
 )
 
-_dir="image_pipeline-release-release-melodic-image_view-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/image_view/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('db828d83d6f3afbd0b9478c6311ea0da425a062269e91a001da1aaadcdabd5b4')
+_dir="image_pipeline-${pkgver}/image_view"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz"
+        CMakeLists-opencv.patch)
+sha256sums=('3c2309d421acf354ca69a7c814ceec7c8b24732c31a7f1c47a055aedd95cb1c4'
+            'd5525cc488989fbc49e151eccbc790888ec73c781ff1ab43e559e2c70f1b86d3')
+
+prepare() {
+  cd "${srcdir}/${_dir}"
+  patch -uN CMakeLists.txt ../../../CMakeLists-opencv.patch || return 1
+}
 
 build() {
 	# Use ROS environment variables.
