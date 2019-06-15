@@ -8,7 +8,7 @@ post_install() {
 ==>
 ==>   export FBFONT=/usr/share/kbd/consolefonts/ter-216n.psf.gz
 ==>
-==> Once you've done that logout and log back in to get your ~/.profile file
+==> Once this is done, log out and log back in to get your ~/.profile file
 ==> read and the FBFONT variable exported.
 ==>
 ==> NOTE: If you place this export in your ~/.zshrc or your ~/.bashrc file, you
