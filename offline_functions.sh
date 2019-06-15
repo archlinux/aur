@@ -94,3 +94,5 @@ SigLevel = Optional TrustAll
 Server = file:///srv/http/arch_offline/os/x86_64/
 EOF
 }
+
+make_iso()

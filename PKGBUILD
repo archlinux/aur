@@ -34,19 +34,18 @@ build() {
 	## and line numbers/content changes. As long as the overall work-flow of build.sh
 	## stays intact, we'll have a greater success of injecting the offline functions.
 
-	BUILD_FUNCTIONS=$(<offline_functions.sh)
+	BUILD_FUNCTIONS=$(<$srcdir/${_name}/offline_functions.sh)
 
-	read -r -d '' CHAIN_INJECT <<-"EOT"
-run_once make_aur_packages
-run_once make_offline_mirror
-run_once patch_in_local_mirror
-run_once install_aur
-run_once finalize_offline
-
-EOT
+	CHAIN_INJECT="run_once make_aur_packages\n"
+	CHAIN_INJECT+="run_once make_offline_mirror\n"
+	CHAIN_INJECT+="run_once patch_in_local_mirror\n"
+	CHAIN_INJECT+="run_once install_aur\n"
+	CHAIN_INJECT+="run_once finalize_offline\n"
 
 	# Patch in the functions right before $TARGET_FUNCTION.
-	sed -i "s/${TARGET_FUNCTION}/${BUILD_FUNCTIONS}&/" "$srcdir/usr/share/archiso/configs/offline_releng/build.sh"
+	# TODO: use sed to replace a fancy variable in offline_function.sh and insert $TARGET_FUNCTION,
+	#       since now it's hard coded and if we change in here, it won't work after this `ed` oneliner.
+	printf '%s\n' "/${TARGET_FUNCTION}/r $srcdir/${_name}/offline_functions.sh" 1 "/${TARGET_FUNCTION}/d" w | ed "$srcdir/usr/share/archiso/configs/offline_releng/build.sh"
 
 	# Patch in the function calls before $TARGET_FUNCTION_CHAIN
 	sed -i "s/${TARGET_FUNCTION_CHAIN}/${CHAIN_INJECT}&/" "$srcdir/usr/share/archiso/configs/offline_releng/build.sh"
