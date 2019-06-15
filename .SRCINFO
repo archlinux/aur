@@ -5,8 +5,11 @@ pkgbase = baidunetdisk
 	url = http://pan.baidu.com/
 	arch = x86_64
 	license = custom
+	options = !strip
 	source = https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/baidunetdisk_linux_2.0.1.rpm
+	source = https://pan.baidu.com/disk/duty/index.html
 	md5sums = 134bea2832e8e74c1646eb09f375b008
+	md5sums = SKIP
 
 pkgname = baidunetdisk
 
