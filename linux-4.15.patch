@@ -1,0 +1,357 @@
+diff -r -U3 old/common_shell new/common_shell
+--- old/common_shell	2016-12-15 20:27:22.000000000 +0000
++++ new/common_shell	2019-06-15 16:13:26.154950323 +0000
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ 
+ # Common shell routines used by the top level install script (SDK and driver
+ # disks) and also from the OS specific scripts in the SDK (also contains
+diff -r -U3 old/install_rh new/install_rh
+--- old/install_rh	2016-12-15 20:27:24.000000000 +0000
++++ new/install_rh	2019-06-15 16:13:26.154950323 +0000
+@@ -1,4 +1,4 @@
+-#!/bin/sh 
++#!/bin/bash
+ 
+ #  Script to install the driver into the /lib/modules tree for RedHat distros. 
+ #  By default new drivers will be installed for the currently running kernel.
+diff -r -U3 old/install_suse new/install_suse
+--- old/install_suse	2016-12-15 20:27:24.000000000 +0000
++++ new/install_suse	2019-06-15 16:13:26.154950323 +0000
+@@ -1,4 +1,4 @@
+-#!/bin/sh 
++#!/bin/bash
+ 
+ #  Script to install the driver into the /lib/modules tree for SuSE distros. 
+ #  By default new drivers will be installed for the currently running kernel.
+Only in new: linux-4.15.patch
+diff -r -U3 old/Makefile new/Makefile
+--- old/Makefile	2016-12-15 20:27:24.000000000 +0000
++++ new/Makefile	2019-06-15 20:26:28.867082834 +0000
+@@ -20,7 +20,7 @@
+ RC_USER=$(shell whoami)
+ RC_DATE=$(shell /bin/date)
+ RC_BUILD_DATE=$(shell /bin/date +'%b %d %Y')
+-PLATFORM=$(shell uname -i)
++PLATFORM=$(shell uname -m)
+ 
+ EXTRA_CFLAGS += -D__LINUX__
+ EXTRA_CFLAGS += -DRC_AHCI_SUPPORT -DRC_AMD_AHCI -DRC_AHCI_AUTOSENSE
+@@ -89,7 +89,7 @@
+ 
+ obj-m := rcraid.o
+ 
+-rcraid-objs := rc_init.o rc_msg.o rc_mem_ops.o rc_event.o rc_config.o rcblob.${PLATFORM} \
++rcraid-objs := rc_init.o rc_msg.o rc_mem_ops.o rc_event.o rc_config.o rcblob.${PLATFORM}.o \
+ 	       vers.o
+ 
+ .PHONY:	$(obj)/vers.c
+@@ -98,6 +98,7 @@
+ 
+ # hack to avoid warning about missing .rcblob.cmd file when modpost tries to
+ # find all the sources
+-.PHONY: $(obj)/rcblob.${PLATFORM}
+-$(obj)/rcblob.${PLATFORM}:
++.PHONY: $(obj)/rcblob.${PLATFORM}.o
++$(obj)/rcblob.${PLATFORM}.o:
++	ln -sf `basename $@ .o` $@
+ 	@( echo "cmd_$@ := true"; echo "dep_$@ := \\"; echo "	$@ \\"; echo "" ) > $(obj)/.`basename $@`.cmd
+Only in new: modules.order
+Only in new: Module.symvers
+diff -r -U3 old/rc_adapter.h new/rc_adapter.h
+--- old/rc_adapter.h	2016-12-15 20:27:30.000000000 +0000
++++ new/rc_adapter.h	2019-06-15 16:13:26.154950323 +0000
+@@ -40,7 +40,9 @@
+ #define MAX_HBA             8
+ #define MAX_TOTAL_PORTS     (MAX_HBA * MAX_PORTS_PER_HA)
+ #define MAX_ARRAY           32
++#ifndef SECTOR_SIZE
+ #define SECTOR_SIZE         512
++#endif
+ 
+ #define PCI_CFG_SIZE    256
+ typedef struct rc_hw_info {
+Only in new: rcblob.x86_64.o
+Only in new: .rcblob.x86_64.o.cmd
+Only in new: rc_config.o
+Only in new: .rc_config.o.cmd
+Only in new: rc_event.o
+Only in new: .rc_event.o.cmd
+diff -r -U3 old/rc_init.c new/rc_init.c
+--- old/rc_init.c	2016-12-15 20:27:32.000000000 +0000
++++ new/rc_init.c	2019-06-15 16:14:38.121619162 +0000
+@@ -165,11 +165,15 @@
+ static int  rc_eh_hba_reset(struct scsi_cmnd * scmd);
+ 
+ void        rc_shutdown_adapter(rc_adapter_t *adapter);
+-int         rc_ioctl(struct scsi_device * scsi_dev_ptr, int cmd, void *arg);
++int         rc_ioctl(struct scsi_device * scsi_dev_ptr, unsigned int cmd, void *arg);
+ void        rc_dump_scp(struct scsi_cmnd * scp);
+ const char *rc_info(struct Scsi_Host *host_ptr);
+ void        rc_timeout(int to);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ void        rc_timeout_done(unsigned long data);
++#else
++void        rc_timeout_done(struct timer_list * t);
++#endif
+ static int  rc_slave_cfg(struct scsi_device *sdev);
+ int         rc_bios_params(struct scsi_device *sdev, struct block_device *bdev,
+ 			   sector_t capacity, int geom[]);
+@@ -342,7 +346,9 @@
+ #if LINUX_VERSION_CODE == KERNEL_VERSION(2,6,24)
+ 	.use_sg_chaining =         ENABLE_SG_CHAINING,
+ #endif
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0)
+ 	.use_clustering =          ENABLE_CLUSTERING,
++#endif
+ 	.slave_configure =         rc_slave_cfg,
+ };
+ 
+@@ -1964,7 +1970,7 @@
+ 
+ int
+ rc_ioctl (struct scsi_device * scsi_dev_ptr,
+-	  int cmd,
++	  unsigned int cmd,
+ 	  void *arg)
+ {
+ 	char direction = 'w';
+@@ -2383,12 +2389,20 @@
+ }
+ 
+ void
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ rc_timeout_done(unsigned long data)
++#else
++rc_timeout_done(struct timer_list *t)
++#endif
+ {
+ 	rc_softstate_t *state;
+-
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	state = (rc_softstate_t *)data;
+ 	init_timer(&state->rc_timeout);
++#else
++	state = from_timer(state, t, rc_timeout);
++	timer_setup(&state->rc_timeout, rc_timeout_done, 0);
++#endif
+ 	up(&state->rc_timeout_sema);
+ }
+ 
+@@ -2402,10 +2416,15 @@
+ 	 * set up timeout
+ 	 */
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	init_timer(&state->rc_timeout);
+ 	state->rc_timeout.expires = jiffies  + to;
+ 	state->rc_timeout.data = (unsigned long)state;
+ 	state->rc_timeout.function = rc_timeout_done;
++#else
++	timer_setup(&state->rc_timeout, rc_timeout_done, 0);
++	state->rc_timeout.expires = jiffies + to;
++#endif
+ 	add_timer(&state->rc_timeout);
+ 	down(&state->rc_timeout_sema);
+ }
+Only in new: rc_init.o
+Only in new: .rc_init.o.cmd
+diff -r -U3 old/rc_mem_ops.c new/rc_mem_ops.c
+--- old/rc_mem_ops.c	2016-12-15 20:27:34.000000000 +0000
++++ new/rc_mem_ops.c	2019-06-15 16:13:26.158283657 +0000
+@@ -19,6 +19,7 @@
+  *
+  ****************************************************************************/
+ 
++#include "linux/signal.h"
+ #include "linux/vmalloc.h"
+ #include "linux/wait.h"
+ #include "linux/sched.h"
+Only in new: rc_mem_ops.o
+Only in new: .rc_mem_ops.o.cmd
+diff -r -U3 old/rc_msg.c new/rc_msg.c
+--- old/rc_msg.c	2016-12-15 20:27:34.000000000 +0000
++++ new/rc_msg.c	2019-06-15 16:13:26.158283657 +0000
+@@ -37,10 +37,18 @@
+ 
+ void rc_msg_send_srb_function (rc_softstate_t *state, int function_code);
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ void rc_msg_timer(unsigned long data);
++#else
++void rc_msg_timer(struct timer_list * t);
++#endif
+ 
+ void rc_msg_timeout(int to);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ void rc_msg_timeout_done(unsigned long data);
++#else
++void rc_msg_timeout_done(struct timer_list * t);
++#endif
+ 
+ void rc_msg_isr(rc_adapter_t *adapter);
+ void rc_msg_schedule_dpc(void);
+@@ -200,15 +208,24 @@
+ int32_t
+ rc_vprintf(uint32_t severity, const char *format, va_list ar)
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
++	struct timespec ts;
++#else
+ 	struct timeval tv;
+-        static int rc_saw_newline=1;
++#endif
++	static int rc_saw_newline=1;
+ 
+ 	if (severity > rc_msg_level)
+ 		return 0;
+ 
+         if (severity && rc_saw_newline) {
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0))
++		getnstimeofday(&ts);
++		printk("rcraid: (%li.%06li) ", ts.tv_sec, ts.tv_nsec / 1000);
++#else
+ 		do_gettimeofday(&tv);
+ 		printk("rcraid: (%li.%06li) ", tv.tv_sec, tv.tv_usec);
++#endif
+ 	}
+ 
+         rc_saw_newline = strchr(format, '\n') ? 1 : 0;
+@@ -1226,10 +1243,15 @@
+ 	/*
+ 	 * intialize the periodic timer for the OSIC
+ 	 */          
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 
+ 	init_timer(&state->timer);
+ 	state->timer.expires = jiffies  + state->timer_interval ;
+ 	state->timer.data = (unsigned long)state;
+ 	state->timer.function = rc_msg_timer;
++#else
++	timer_setup(&state->timer, rc_msg_timer, 0);
++	state->timer.expires = jiffies + state->timer_interval;	
++#endif
+ 	state->state |= ENABLE_TIMER;
+  
+ 	add_timer(&state->timer);
+@@ -1257,13 +1279,20 @@
+ 	return(0);
+ }
+ void
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 
+ rc_msg_timer(unsigned long data)
++#else
++rc_msg_timer(struct timer_list * t)
++#endif
+ {
+ 	rc_softstate_t *state;
+ 	rc_send_arg_t    args;
+ 
+-
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 
+ 	state = (rc_softstate_t *)data;
++#else
++	state = from_timer(state, t, timer);
++#endif
+ 
+ 	if ((state->state & ENABLE_TIMER) == 0)
+ 		return;
+@@ -1271,10 +1300,15 @@
+ 	/*
+ 	 * set up timeout
+ 	 */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 	 
+ 	init_timer(&state->timer);
+ 	state->timer.expires = jiffies  + state->timer_interval;
+ 	state->timer.data = (unsigned long)state;
+ 	state->timer.function = rc_msg_timer;
++#else
++	timer_setup(&state->timer, rc_msg_timer,0);
++	state->timer.expires = jiffies + state->timer_interval;
++#endif
+ 	add_timer(&state->timer);
+ 
+ 	spin_lock(&state->osic_lock);
+@@ -2342,12 +2376,21 @@
+ 
+ 
+ void
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 	 
+ rc_msg_timeout_done(unsigned long data)
++#else
++rc_msg_timeout_done(struct timer_list * t)
++#endif
+ {
+ 	rc_softstate_t *state;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 	 
+ 	state = (rc_softstate_t *)data;
+ 	init_timer(&state->msg_timeout);
++#else
++	state = from_timer(state, t, msg_timeout);
++	timer_setup(&state->msg_timeout, rc_msg_timeout_done, 0);
++#endif
+ 	up(&state->msg_timeout_sema);
+ }
+ 
+@@ -2361,10 +2404,15 @@
+ 	 * set up timeout
+ 	 */
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)	 	 
+ 	init_timer(&state->msg_timeout);
+ 	state->msg_timeout.expires = jiffies  + to;
+ 	state->msg_timeout.data = (unsigned long)state;
+ 	state->msg_timeout.function = rc_msg_timeout_done;
++#else
++	timer_setup(&state->msg_timeout, rc_msg_timeout_done, 0);
++	state->msg_timeout.expires = jiffies  + to;	
++#endif
+ 	add_timer(&state->msg_timeout);
+ 	down(&state->msg_timeout_sema);
+ 
+@@ -2373,8 +2421,11 @@
+ void 
+ rc_msg_access_ok(rc_access_ok_t accessOk)
+ {
+-
+-    accessOk.returnStatus = access_ok( VERIFY_WRITE , accessOk.access_location, accessOk.access_size);        
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0)
++    accessOk.returnStatus = access_ok( accessOk.access_location, accessOk.access_size);
++#else
++    accessOk.returnStatus = access_ok( VERIFY_WRITE , accessOk.access_location, accessOk.access_size);
++#endif
+ }
+ 
+ 
+Only in new: rc_msg.o
+Only in new: .rc_msg.o.cmd
+Only in new: rcraid.ko
+Only in new: .rcraid.ko.cmd
+Only in new: rcraid.mod.c
+Only in new: rcraid.mod.o
+Only in new: .rcraid.mod.o.cmd
+Only in new: rcraid.o
+Only in new: .rcraid.o.cmd
+Only in new: .tmp_versions
+diff -r -U3 old/uninstall_rh new/uninstall_rh
+--- old/uninstall_rh	2016-12-15 20:27:38.000000000 +0000
++++ new/uninstall_rh	2019-06-15 16:13:26.158283657 +0000
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ 
+ #
+ # Script to remove the driver(s) from an existing SuSE linux install
+diff -r -U3 old/uninstall_suse new/uninstall_suse
+--- old/uninstall_suse	2016-12-15 20:27:38.000000000 +0000
++++ new/uninstall_suse	2019-06-15 16:13:26.158283657 +0000
+@@ -1,4 +1,4 @@
+-#!/bin/sh 
++#!/bin/bash
+ #
+ # Script to remove the driver(s) from an existing SuSE linux install
+ # 
+Only in new: vers.c
+Only in new: vers.o
+Only in new: .vers.o.cmd

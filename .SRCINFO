@@ -1,0 +1,19 @@
+pkgbase = rcraid-dkms
+	pkgdesc = AMD AM4 socket X370 chipset motherbroad NVMe/SATA RAID driver (DKMS)
+	pkgver = 17.2.1
+	pkgrel = 1
+	url = https://www.amd.com/en/support/chipsets/amd-socket-am4/x370
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-headers>=4.15
+	depends = dkms
+	source = manual://raid_linux_driver_8_01_00_039_public.zip
+	source = dkms.conf
+	source = linux-4.15.patch
+	md5sums = f5692d2ef952f8c903af90cdd9eb3ce6
+	md5sums = 3a14dcc84daf257a62727bcde1882edf
+	md5sums = 461866e715a1fded49a3f7c043a173d7
+
+pkgname = rcraid-dkms
+
