@@ -1,0 +1,34 @@
+From c8c605e7bd97f04b204fb2ebcf360a68d4b93ff1 Mon Sep 17 00:00:00 2001
+From: Andrew Shadura <andrew.shadura@collabora.co.uk>
+Date: Mon, 17 Oct 2016 18:24:22 +0200
+Subject: [PATCH] Make comboboxes look nicer.
+
+---
+ gtk-3.0/gtk-widgets.css | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/gtk-3.0/gtk-widgets.css b/gtk-3.0/gtk-widgets.css
+index d85729d..02261eb 100644
+--- a/gtk-3.0/gtk-widgets.css
++++ b/gtk-3.0/gtk-widgets.css
+@@ -1154,6 +1154,11 @@ combobox arrow {
+ 	min-height: 16px;
+ 	min-width: 16px;
+ }
++
++combobox arrow:disabled {
++	background-color: transparent;
++}
++
+ combobox entry.combo,
+ combobox button.combo {
+ 	padding: 5px 5px 5px 5px;
+@@ -1206,7 +1211,7 @@ combobox > .linked > button.combo:focus:hover:last-child,
+ combobox > .linked > button.combo:disabled:last-child {
+ 	border-image-width: 3px 3px 4px 0;
+ 	border-radius: 0 3px 3px 0;
+-	border-width: 0;
++	border-width: 0 1;
+ }
+ combobox > .linked > entry.combo:only-child,
+ combobox > .linked > button.combo:only-child,

@@ -1,0 +1,22 @@
+From 15adb99320ab9d67d0c48267564e9bc68bebe60d Mon Sep 17 00:00:00 2001
+From: Chris Burroughs <chris.burroughs@gmail.com>
+Date: Tue, 8 Jan 2019 11:26:46 -0500
+Subject: [PATCH] https://github.com/jpfleury/clearlooks-phenix/issues/37
+
+---
+ gtk-3.0/gtk-widgets.css | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gtk-3.0/gtk-widgets.css b/gtk-3.0/gtk-widgets.css
+index 756bdf9..80768b3 100644
+--- a/gtk-3.0/gtk-widgets.css
++++ b/gtk-3.0/gtk-widgets.css
+@@ -1211,7 +1211,7 @@ combobox > .linked > button.combo:focus:hover:last-child,
+ combobox > .linked > button.combo:disabled:last-child {
+ 	border-image-width: 3px 3px 4px 0;
+ 	border-radius: 0 3px 3px 0;
+-	border-width: 0 1;
++	border-width: 0 1px;
+ }
+ combobox > .linked > entry.combo:only-child,
+ combobox > .linked > button.combo:only-child,

@@ -1,0 +1,47 @@
+From df4f5bf3a35423eff1d8f8f84edad05e931b0ef7 Mon Sep 17 00:00:00 2001
+From: Andrew Shadura <andrew.shadura@collabora.co.uk>
+Date: Mon, 17 Oct 2016 18:23:55 +0200
+Subject: [PATCH] Fix menus.
+
+---
+ gtk-3.0/gtk-widgets.css | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/gtk-3.0/gtk-widgets.css b/gtk-3.0/gtk-widgets.css
+index 5f5b057..d85729d 100644
+--- a/gtk-3.0/gtk-widgets.css
++++ b/gtk-3.0/gtk-widgets.css
+@@ -1594,7 +1594,7 @@ menu,
+ 	font-weight: normal;
+ 	background-color: @menu_bg_color;
+ 	color: @menu_fg_color;
+-	padding: 1px;
++	padding: 0px;
+ 	border-style: solid;
+ 	border-width: 1px;
+ 	border-color: @menu_border_color;
+@@ -1630,7 +1630,7 @@ menu button:disabled,
+ menubar,
+ .menubar {
+ 	border-style: none;
+-	padding: 4px;
++	padding: 0px;
+ 	-GtkWidget-window-dragging: true;
+ 	background-image: -gtk-gradient (linear,
+ 	                  left top,
+@@ -2539,8 +2539,13 @@ decoration {
+ 	box-shadow: none;
+ }
+ 
+-window decoration {
+-	border: solid 2px @insensitive_border_color;
++window.background decoration {
++    border: solid 2px @insensitive_border_color;
++}
++
++combobox window.background decoration,
++menuitem window.background decoration {
++    border: none 0 transparent;
+ }
+ 
+ tooltip.csd decoration {

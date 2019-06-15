@@ -1,0 +1,21 @@
+From e41be36dae630028437fbcba3ab6b4d458e83490 Mon Sep 17 00:00:00 2001
+From: Andrew Shadura <andrew.shadura@collabora.co.uk>
+Date: Mon, 17 Oct 2016 18:25:07 +0200
+Subject: [PATCH] Remove strange padding from horisontal stack switchers.
+
+---
+ gtk-3.0/gtk-widgets.css | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/gtk-3.0/gtk-widgets.css b/gtk-3.0/gtk-widgets.css
+index 02261eb..756bdf9 100644
+--- a/gtk-3.0/gtk-widgets.css
++++ b/gtk-3.0/gtk-widgets.css
+@@ -2582,7 +2582,6 @@ headerbar {
+ 
+ headerbar.titlebar > stackswitcher.linked.stack-switcher > button,
+ headerbar.titlebar > stackswitcher.linked.stack-switcher > button:checked:hover {
+-	padding: 6px 12px;
+ 	border-width: 1px 1px 1px 0px;
+ }
+ 
