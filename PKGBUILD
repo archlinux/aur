@@ -2,16 +2,16 @@
 
 pkgname=ddnet-git
 pkgver=12.5.r15.g9c9264db8
-pkgrel=1
-pkgdesc="DDraceNetwork, a cooperative racing mod of Teeworlds"
+pkgrel=2
+pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom:BSD' 'CCPL:by-nc-sa')
 depends=('sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libwebsockets' 'pnglite')
 makedepends=('git' 'cmake' 'ninja' 'python' 'imagemagick' 'gendesk')
 checkdepends=('gtest')
-optdepends=('ddnet-skins: more skins for your tee'
-            'ddnet-maps-git: have all DDNet maps available offline')
+optdepends=('ddnet-skins: A collection with more than 700 custom tee skins.'
+            'ddnet-maps-git: All the maps used on the official DDNet Servers')
 provides=('ddnet')
 conflicts=('ddnet')
 source=("git+https://github.com/ddnet/ddnet")
@@ -47,7 +47,7 @@ prepare() {
     gendesk --pkgname="DDNet-Server" --name="DDNet Server"          \
             --pkgdesc="DDNet Server" --terminal=true                \
             --icon="ddnet-server"    --categories="Game;ArcadeGame" \
-            --exec='sh -c "DDNet-Server -f /usr/share/ddnet/autoexec_server.cfg"'
+            --exec='sh -c "cd /usr/share/ddnet/data && DDNet-Server"'
 
       # Create icon files' structure, for installing in package(). How:
       # For each png file, check its dimensions (e.g. 128 x 128) using
@@ -90,10 +90,6 @@ package() {
     for f in $(find prep -type f -name '*.png'); do
         install -Dvm644 $f "$pkgdir/usr/share/icons/hicolor"/${f/prep\/}
     done
-
-      # Install Server default configuration file
-    install -dvm755 "$pkgdir/usr/share/ddnet/"
-    install -vm644 DDNet-$pkgver/autoexec_server.cfg "$pkgdir/usr/share/ddnet/"
 
       # Install license file
     install -dvm755 "$pkgdir/usr/share/licenses/$pkgname/"
