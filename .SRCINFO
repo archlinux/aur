@@ -9,8 +9,8 @@ pkgbase = xfce4-multiload-ng-plugin-gtk3
 	makedepends = intltool
 	depends = gtk3
 	depends = cairo
-	depends = libxfce4util>=4.12.0
-	depends = xfce4-panel>=4.12.0
+	depends = libxfce4util
+	depends = xfce4-panel
 	depends = multiload-ng-common
 	conflicts = xfce4-multiload-ng-plugin-gtk2
 	conflicts = xfce4-multiload-ng-plugin-gtk2-git
