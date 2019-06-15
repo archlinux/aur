@@ -1,0 +1,5 @@
+deepspeech.h
+libdeepspeech-*.pkg.tar.xz
+native_client.*.tar.xz
+pkg/
+src/

@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Brown <brown.benjam@husky.neu.edu>
 pkgname=libdeepspeech
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A TensorFlow implementation of Baidu's DeepSpeech architecture - C++ native client + devel files."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -16,23 +16,23 @@ _raw_base_url="https://raw.githubusercontent.com/mozilla/DeepSpeech/v$pkgver/"
 source_x86_64=("$_src_base_url/native_client.amd64.cpu.linux.tar.xz"
                "$_raw_base_url/native_client/deepspeech.h"
                "libdeepspeech.pc")
-sha512sums_x86_64=('91d892f3f40d0cf68118a0b71514fd31a452b9ad75a3689754b26bc5bcf852514188c42188e777741ca1ddbd43c11844d15cf63dc8ddf695c4c1dd5401b156a2'
-                   '083412518064900cfd6987551b7eede7f40265a40ebc4c5948ef969e826be9477c3bca4fd7e899277e697d74577a31a67815183754474c5faab0302f1cae9105'
-                   'de9e90971809865594ddd32e6687115c74ce2968e61121eca40bf5c8114b49d5c0e3c82b19b871b78b14c372d4954eadc2c3961944ed0821d4e52032f6b6534f')
+sha512sums_x86_64=('0698b7cc63f15ee703962850f2860e6e5c11c0884258f664671c1d02a3664eea93970957c4770f2897afba68ca211b4ebeda30bac99a1fbf96c814d12f7a2ed0'
+                   'c204b3a533acb4b308d7d7e10eec8dc9ad73e5da7a340fdbf2082d3c7c58c0e4dd0764693e62b05ceccd8b2859e0ecde2a658bc0d0b8c2f98a7204cdffc9748d'
+                   '031c4b9b4bf0a6deb81c165fe1f4ac5f0a9a9c4d581650e75c6ae14b6069973fcadfc421c986cad70051d4c01214790a1782423ae08d4afdc9a2a2d8ddc84cfb')
 # armv7h
 source_armv7h=("$_src_base_url/native_client.rpi3.cpu.linux.tar.xz"
                "$_raw_base_url/native_client/deepspeech.h"
                "libdeepspeech.pc")
-sha512sums_armv7h=('ab086d52a9df951e8a3c8f3cb37ffe926d77ae8ad56061a6ccb0b67e41456152d3883cecdc0fa7d0270df5b539e4e5669056f62e2f7a30f67bc5edb1c15eaf99'
-                   '083412518064900cfd6987551b7eede7f40265a40ebc4c5948ef969e826be9477c3bca4fd7e899277e697d74577a31a67815183754474c5faab0302f1cae9105'
-                   'de9e90971809865594ddd32e6687115c74ce2968e61121eca40bf5c8114b49d5c0e3c82b19b871b78b14c372d4954eadc2c3961944ed0821d4e52032f6b6534f')
+sha512sums_armv7h=('151b14acb15d1bf829c30e623bfe72cb0258c21a8cada6214cc8dfaf8fc8679d161ffb34d43d5ba7124c68361495a71745601e4071bf5ec1757aabb66b5975e9'
+                   'c204b3a533acb4b308d7d7e10eec8dc9ad73e5da7a340fdbf2082d3c7c58c0e4dd0764693e62b05ceccd8b2859e0ecde2a658bc0d0b8c2f98a7204cdffc9748d'
+                   '031c4b9b4bf0a6deb81c165fe1f4ac5f0a9a9c4d581650e75c6ae14b6069973fcadfc421c986cad70051d4c01214790a1782423ae08d4afdc9a2a2d8ddc84cfb')
 # aarch64
 source_aarch64=("$_src_base_url/native_client.arm64.cpu.linux.tar.xz"
                 "$_raw_base_url/native_client/deepspeech.h"
                 "libdeepspeech.pc")
-sha512sums_aarch64=('792d0faae203c22dfa774e9881814a68dadd0d854c284d36efd4ba40fad05ebcb1f7060e6bf9f803ffdb6dd1837394a7d0526989321919133a0a7445c42a124f'
-                   '083412518064900cfd6987551b7eede7f40265a40ebc4c5948ef969e826be9477c3bca4fd7e899277e697d74577a31a67815183754474c5faab0302f1cae9105'
-                   'de9e90971809865594ddd32e6687115c74ce2968e61121eca40bf5c8114b49d5c0e3c82b19b871b78b14c372d4954eadc2c3961944ed0821d4e52032f6b6534f')
+sha512sums_aarch64=('85319e129e1b8fc38c55327ae6524ea0514661f65d21b18a79bbe871b672a5530a784e2304c0205011f22045cab2b10b0d67f1edcc4d7d5da73e0c82b2503b64'
+                   'c204b3a533acb4b308d7d7e10eec8dc9ad73e5da7a340fdbf2082d3c7c58c0e4dd0764693e62b05ceccd8b2859e0ecde2a658bc0d0b8c2f98a7204cdffc9748d'
+                   '031c4b9b4bf0a6deb81c165fe1f4ac5f0a9a9c4d581650e75c6ae14b6069973fcadfc421c986cad70051d4c01214790a1782423ae08d4afdc9a2a2d8ddc84cfb')
 
 package() {
 	mkdir -p "$pkgdir/usr/lib"
