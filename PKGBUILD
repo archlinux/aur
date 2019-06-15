@@ -1,6 +1,6 @@
 # Maintainer: badcasa <sebastian.stueber [at] t-online [dot] de>
 pkgname=isabelle
-pkgver=2018
+pkgver=2019
 pkgrel=1
 pkgdesc="A generic proof assistant. It allows mathematical formulas to be expressed in a formal language and provides tools for proving those formulas in a logical calculus."
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ if test "$CARCH" == x86_64; then
                'lib32-gcc-libs: for improved performance of Poly/ML on x86_64 machines')
 fi
 optdepends=('texlive-core: document preparation')
-source=(https://www.cl.cam.ac.uk/research/hvg/Isabelle/dist/Isabelle${pkgver//_/-}_app.tar.gz
-        isabelle.desktop)
-   
+source=(https://www.cl.cam.ac.uk/research/hvg/Isabelle/dist/Isabelle${pkgver//_/-}_linux.tar.gz
+         isabelle.desktop)
+            
 # required Packages are automatically build on the first run
 #         
 # build() {
@@ -32,6 +32,5 @@ package() {
 	cp -r * $pkgdir/opt/isabelle/
 	$pkgdir/opt/isabelle/bin/isabelle install -d /opt/isabelle $pkgdir/usr/bin
 }
-
-md5sums=('fb99915f96873001305e4b5d5e5a72f4'
+md5sums=('475b5be365477bf2ed035eeaf780c07e'
          'd33d0dd09e9105f4f043bd5e59458481')

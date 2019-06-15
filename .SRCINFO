@@ -1,6 +1,6 @@
 pkgbase = isabelle
 	pkgdesc = A generic proof assistant. It allows mathematical formulas to be expressed in a formal language and provides tools for proving those formulas in a logical calculus.
-	pkgver = 2018
+	pkgver = 2019
 	pkgrel = 1
 	url = https://www.cl.cam.ac.uk/research/hvg/Isabelle/
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = isabelle
 	depends = perl-libwww
 	depends = python2
 	optdepends = texlive-core: document preparation
-	source = https://www.cl.cam.ac.uk/research/hvg/Isabelle/dist/Isabelle2018_app.tar.gz
+	source = https://www.cl.cam.ac.uk/research/hvg/Isabelle/dist/Isabelle2019_linux.tar.gz
 	source = isabelle.desktop
-	md5sums = fb99915f96873001305e4b5d5e5a72f4
+	md5sums = 475b5be365477bf2ed035eeaf780c07e
 	md5sums = d33d0dd09e9105f4f043bd5e59458481
 
 pkgname = isabelle
