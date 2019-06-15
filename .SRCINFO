@@ -1,0 +1,22 @@
+pkgbase = bzip2-rustify-git
+	pkgdesc = A parallel, SMP-based, bzip2-compatible compression utility (rustify branch)
+	pkgver = r60.25f6f5f
+	pkgrel = 1
+	url = http://lbzip2.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = perl
+	makedepends = git
+	makedepends = make
+	makedepends = autoconf
+	makedepends = autoconf-archive
+	makedepends = cargo
+	depends = glibc
+	provides = bzip2
+	conflicts = bzip2
+	source = bzip2::git+https://gitlab.com/federicomenaquintero/bzip2.git#branch=rustify
+	sha256sums = SKIP
+
+pkgname = bzip2-rustify-git
+
