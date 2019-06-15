@@ -1,0 +1,18 @@
+pkgbase = fofimon
+	pkgdesc = Monitor selected folders and files for modifications
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://www.efanomars.com/utilities/fofimon
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python
+	depends = glibmm
+	source = git+https://gitlab.com/efanomars/fofimon.git#commit=19a3213321bcd6fa837d70bbde3128a402a0a517
+	sha512sums = SKIP
+
+pkgname = fofimon
+
