@@ -1,6 +1,6 @@
 pkgbase = lucky-git
 	pkgdesc = A Crystal web framework that catches bugs for you, runs incredibly fast, and helps you write code that lasts.
-	pkgver = 0.14.0.r34.29b103b
+	pkgver = 0.15.0.r0.6796508
 	pkgrel = 1
 	url = https://luckyframework.org/
 	arch = x86_64
