@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+
+Exec=java -jar /opt/sse-file-pc/ssefencgui.jar
+Icon=/opt/sse-file-pc/icon.png
+
+Name=SSEFilePC
+Categories=Utility;

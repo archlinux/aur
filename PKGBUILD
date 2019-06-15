@@ -7,16 +7,15 @@ arch=('any')
 url="https://paranoiaworks.mobi/"
 license=('Apache' 'MIT')
 depends=('java-runtime>=8')
-source=("https://annimon.com/aur/sse/SSEFilePC.zip"
-"https://annimon.com/aur/sse/icon.png"
-"https://annimon.com/aur/sse/sse.desktop"
+source=("https://paranoiaworks.mobi/download/files/SSEFilePC.zip"
+"icon.png"
+"sse.desktop"
 )
 md5sums=('SKIP' 'SKIP' 'SKIP')
 package() {
-	mkdir -p $pkgdir/usr/share/licenses/$pkgname
-	mkdir -p $pkgdir/usr/share/applications
-	mkdir -p $pkgdir/opt/$pkgname
-	install -Dm0644 $srcdir/SSEFilePC/license.txt $pkgdir/usr/share/licenses/$pkgname
-	install -Dm0666 $srcdir/SSEFilePC/*.jar icon.png $pkgdir/opt/$pkgname
-	install -Dm0755 $srcdir/sse.desktop $pkgdir/usr/share/applications
+	install -Dm0644 $srcdir/SSEFilePC/license.txt $pkgdir/usr/share/licenses/$pkgname/license.txt
+	install -Dm0644 $srcdir/SSEFilePC/ssefenc.jar $pkgdir/opt/$pkgname/ssefenc.jar
+	install -Dm0644 $srcdir/SSEFilePC/ssefencgui.jar $pkgdir/opt/$pkgname/ssefencgui.jar
+	install -Dm0644 $srcdir/icon.png $pkgdir/opt/$pkgname/icon.png
+	install -Dm0755 $srcdir/sse.desktop $pkgdir/usr/share/applications/sse.desktop
 }
