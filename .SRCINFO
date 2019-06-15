@@ -1,0 +1,21 @@
+pkgbase = stmm-input-xi
+	pkgdesc = Device input event library - xi floating keyboards
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://www.efanomars.com/libraries/stmm-input-xi
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python
+	depends = stmm-input
+	depends = gtkmm
+	depends = libx11
+	depends = libxi
+	source = git+https://gitlab.com/efanomars/stmm-input-xi.git#commit=8db82705374ab32a25b59f76b3d12d3ed57cd75d
+	sha512sums = SKIP
+
+pkgname = stmm-input-xi
+
