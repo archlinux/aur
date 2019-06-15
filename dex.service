@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenID Connect Identity (OIDC) and OAuth 2.0 Provider with Pluggable Connectors
+Requires=network.target
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/dex serve /etc/dex.yaml
+WorkingDirectory=/usr/share/dex
+User=dex
+Group=dex
+ProtectSystem=full
+
+[Intall]
+WantedBy=multi-user.target
