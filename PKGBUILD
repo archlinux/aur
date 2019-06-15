@@ -2,14 +2,15 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: TDY <tdy@archlinux.info>
 # Contributor: Olaf Leidinger <leidola@newcon.de>
-# Maintainer: zoe <chp321 [at] gmail [dot] com>
+# Contributor: zoe <chp321 [at] gmail [dot] com>
+# Maintainer: PhotonX <michael dot kogan at gmx dot net>
 
 pkgname=perl-gtk2-imageview
 pkgver=0.05
 pkgrel=10
 pkgdesc="Perl bindings to the GtkImageView image viewer widget"
 arch=('i686' 'x86_64')
-url="http://search.cpan.org/dist/Gtk2-ImageView/"
+url="https://metacpan.org/release/Gtk2-ImageView"
 license=('LGPL3')
 depends=('perl' 'cairo-perl' 'glib-perl' 'gtk2-perl' 'gtkimageview')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
