@@ -1,0 +1,118 @@
+From 8703e08f50a7b405e29a8a2893903714f630daa8 Mon Sep 17 00:00:00 2001
+From: Ralph Plawetzki <ralph@purejava.org>
+Date: Sun, 26 May 2019 10:16:54 +0200
+Subject: [PATCH 1/1] Make file extension for encrypted files configurable.
+
+---
+ data/org.gnome.seahorse.nautilus.gschema.xml |  5 +++
+ tool/seahorse-util.c                         | 47 +++++++++++++++++---
+ tool/seahorse-util.h                         |  2 +
+ 3 files changed, 49 insertions(+), 5 deletions(-)
+
+diff --git a/data/org.gnome.seahorse.nautilus.gschema.xml b/data/org.gnome.seahorse.nautilus.gschema.xml
+index dc8b37e..65848ad 100644
+--- a/data/org.gnome.seahorse.nautilus.gschema.xml
++++ b/data/org.gnome.seahorse.nautilus.gschema.xml
+@@ -15,5 +15,10 @@
+ 			<summary>Use armor mode when encrypting</summary>
+ 			<description>Use PGP ASCII armor mode when encrypting or signing files.</description>
+ 		</key>
++		<key name="encryption-extension" type="s">
++			<default>'.pgp'</default>
++			<summary>File extension for encrypted files.</summary>
++			<description>File extension for encrypted files. Configurable for compatibility reasons to other platforms.</description>
++		</key>
+ 	</schema>
+ </schemalist>
+diff --git a/tool/seahorse-util.c b/tool/seahorse-util.c
+index 0ff1bd9..5e51eb3 100644
+--- a/tool/seahorse-util.c
++++ b/tool/seahorse-util.c
+@@ -522,6 +522,38 @@ seahorse_util_chooser_save_prompt (GtkWidget *dialog)
+     return uri;
+ }
+ 
++/**
++ * lookup_encryption_extension:
++ *
++ * Helps to determine the extension for %SEAHORSE_CRYPT_SUFFIX. The extension string
++ * is looked up in the gesetting encryption-extension. A valid extension is a dot '.'
++ * followed by three characters.
++ *
++ * Returns: the gesetting encryption-extension if valid. NULL otherwise
++ **/
++gchar*
++lookup_encryption_extension ()
++{
++    gchar *gsext;
++    GSettings *seahorse_tool_settings = NULL;
++    GRegex *regex = NULL;
++    GMatchInfo *match_info;
++
++    seahorse_tool_settings = g_settings_new ("org.gnome.seahorse.nautilus");
++
++    gsext = g_settings_get_string(seahorse_tool_settings, "encryption-extension");
++    regex = g_regex_new ("^\\.\\w\\w\\w$", G_REGEX_OPTIMIZE, 0, NULL);
++    g_regex_match (regex, gsext, 0, &match_info);
++
++    g_object_unref (seahorse_tool_settings);
++    seahorse_tool_settings = NULL;
++
++    if (g_match_info_matches (match_info))
++        return gsext;
++    else
++        return NULL;
++}
++
+ /**
+  * seahorse_util_add_suffix:
+  * @ctx: Gpgme Context
+@@ -530,9 +562,10 @@ seahorse_util_chooser_save_prompt (GtkWidget *dialog)
+  * @prompt: Overwrite prompt text
+  *
+  * Constructs a new path for a file based on @path plus a suffix determined by
+- * @suffix. If ASCII Armor is enabled, the suffix will be '.asc'. Otherwise the
+- * suffix will be '.pgp' if @suffix is %SEAHORSE_CRYPT_SUFFIX or '.sig' if
+- * @suffix is %SEAHORSE_SIG_SUFFIX.
++ * @suffix. If ASCII Armor is enabled, the suffix will be '.asc'. If @suffix is
++ * %SEAHORSE_CRYPT_SUFFIX the suffix can either be what is defined in the gsetting
++ * encryption-extension or will fallback to '.pgp'. If @suffix is %SEAHORSE_SIG_SUFFIX
++ * the suffix will be '.sig'.
+  *
+  * Returns: A new path with the suffix appended to @path. NULL if prompt cancelled
+  **/
+@@ -540,12 +573,16 @@ gchar*
+ seahorse_util_add_suffix (const gchar *path, SeahorseSuffix suffix, const gchar *prompt)
+ {
+     GtkWidget *dialog;
+-    const gchar *ext;
++    gchar *ext;
+     gchar *uri;
+     gchar *t;
+ 
+     if (suffix == SEAHORSE_CRYPT_SUFFIX)
+-        ext = SEAHORSE_EXT_PGP;
++        {
++            ext = lookup_encryption_extension ();
++            if (ext == NULL)
++                ext = SEAHORSE_EXT_PGP;
++        }
+     else
+         ext = SEAHORSE_EXT_SIG;
+ 
+diff --git a/tool/seahorse-util.h b/tool/seahorse-util.h
+index 9052856..970b2f7 100644
+--- a/tool/seahorse-util.h
++++ b/tool/seahorse-util.h
+@@ -30,6 +30,8 @@
+ 
+ #include "config.h"
+ 
++extern GSettings *seahorse_tool_settings;
++
+ typedef enum {
+     SEAHORSE_CRYPT_SUFFIX,
+     SEAHORSE_SIG_SUFFIX,
+-- 
+2.21.0
+
