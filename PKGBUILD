@@ -3,7 +3,7 @@
 
 pkgname=ddnet
 pkgver=12.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.tw"
@@ -37,7 +37,7 @@ prepare() {
     gendesk --pkgname="DDNet-Server" --name="DDNet Server"          \
             --pkgdesc="DDNet Server" --terminal=true                \
             --icon="ddnet-server"    --categories="Game;ArcadeGame" \
-            --exec='sh -c "DDNet-Server -f /usr/share/ddnet/autoexec_server.cfg"'
+            --exec='sh -c "cd /usr/share/ddnet/data && DDNet-Server"'
 
       # Create icon files' structure, for installing in package(). How:
       # For each png file, check its dimensions (e.g. 128 x 128) using
@@ -79,10 +79,6 @@ package() {
     for f in $(find prep -type f -name '*.png'); do
         install -Dvm644 $f "$pkgdir/usr/share/icons/hicolor"/${f/prep\/}
     done
-
-    # Install Server default configuration file
-    install -dvm755 "$pkgdir/usr/share/ddnet/"
-    install -vm644 DDNet-$pkgver/autoexec_server.cfg "$pkgdir/usr/share/ddnet/"
 
       # Install license file
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
