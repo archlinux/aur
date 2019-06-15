@@ -1,17 +1,17 @@
 pkgbase = jmeter
 	pkgdesc = Java application designed to load test functional behavior and measure performance
-	pkgver = 5.1
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = http://jmeter.apache.org/
 	arch = any
 	license = apache
 	depends = java-environment>=8
 	options = !strip
-	source = http://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.1.tgz
+	source = http://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.1.1.tgz
 	source = jmeter.desktop
 	validpgpkeys = C4923F9ABFB2F1A06F08E88BAC214CAA0612B399
-	sha512sums = c9d50ec3d44754abdb0fa7850e119fb2103f88e8c390de01697faf7998e3c3a4de929cf5ead069a9ec47643ca6c51aed7ab964483656a89e0b50a9e2ea7018b6
-	sha512sums = 6379c230a3b2a61539eec5c9cbc18babfc927cdfbb9468d46ff0334b64fccf1cbf5cba0f351d9a871c68a98e3bf1f9c22a992434bc4ffcc2743c185be93bb318
+	sha256sums = 844d510fe04aaf62269311f18117d75c959148bb9f0fc76b4047abc8a8edb4ae
+	sha256sums = 3f039d5a34c55ce5d884bffb252cec8d88ceec367620b0ab42b201f8e45a2218
 
 pkgname = jmeter
 
