@@ -1,14 +1,14 @@
 pkgbase = xdcc
 	pkgdesc = xdcc file downloader
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://git.sr.ht/~dax/xdcc
 	arch = x86_64
 	license = ISC
 	makedepends = go
 	makedepends = scdoc
-	source = https://git.sr.ht/~dax/xdcc/archive/0.1.1.tar.gz
-	md5sums = 4e4b203d26ef6b4b7c7143d19db19e65
+	source = https://git.sr.ht/~dax/xdcc/archive/0.2.0.tar.gz
+	md5sums = 2d8ff51074319033dbd1686962962fe9
 
 pkgname = xdcc
 
