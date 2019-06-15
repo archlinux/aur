@@ -6,7 +6,7 @@
 
 pkgname=tcllib
 pkgver=1.19
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of pure-Tcl extensions."
 arch=('any')
 url="http://core.tcl.tk/tcllib/"
@@ -16,7 +16,7 @@ source=("https://core.tcl-lang.org/tcllib/uv/tcllib-$pkgver.tar.gz")
 sha256sums=('01fe87cf1855b96866cf5394b6a786fd40b314022714b34110aeb6af545f6a9c')
 
 package(){
-  cd "$srcdir"/tcllib-tcllib-${pkgver/./-}
+  cd "$srcdir"/tcllib-$pkgver
   tclsh installer.tcl -pkg-path "$pkgdir"/usr/lib/tcllib \
 	-app-path "$pkgdir"/usr/bin \
 	-nroff-path "$pkgdir"/usr/share/man/mann \
