@@ -3,7 +3,7 @@
 pkgname=seahorse-nautilus-ext
 pkgver=3.11.92+57+g390364d
 pkgrel=1
-pkgdesc="PGP encryption and signing for nautilus"
+pkgdesc="PGP encryption and signing for nautilus with configurable extension for encrypted files"
 arch=(x86_64)
 url="https://gitlab.gnome.org/purejava/seahorse-nautilus/tree/encrypt-ext-conf"
 license=(GPL)

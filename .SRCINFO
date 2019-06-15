@@ -1,5 +1,5 @@
 pkgbase = seahorse-nautilus-ext
-	pkgdesc = PGP encryption and signing for nautilus
+	pkgdesc = PGP encryption and signing for nautilus with configurable extension for encrypted files
 	pkgver = 3.11.92+57+g390364d
 	pkgrel = 1
 	url = https://gitlab.gnome.org/purejava/seahorse-nautilus/tree/encrypt-ext-conf
