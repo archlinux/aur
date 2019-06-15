@@ -1,36 +1,31 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 _pkgname=ion
-pkgname=$_pkgname-git
-pkgver=r912.2e4bd37
+pkgname=ion-git
+pkgver=r1869.9bc52a5
 pkgrel=1
 pkgdesc="The Ion Shell. Compatible with Redox and Linux. (Git version)"
 arch=("x86_64" "i686")
-url="https://github.com/redox-os/ion"
+url="https://gitlab.redox-os.org/redox-os/ion"
 license=('MIT')
-makedepends=('git' 'cargo')
+makedepends=('git' 'rust')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=ion-git.install
-source=('git+https://github.com/redox-os/ion.git')
+source=('git+https://gitlab.redox-os.org/redox-os/ion.git')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$_pkgname
+  cd $_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $srcdir/$_pkgname
-  cargo build --release
-}
-
-check() {
-  cd $srcdir/$_pkgname
-  cargo test
+  cd $_pkgname
+  RUSTUP=0 make
 }
 
 package() {
-  cd $srcdir/$_pkgname
-  install -Dm755 target/release/ion $pkgdir/usr/bin/ion
+  cd $_pkgname
+  make install prefix="$pkgdir"/usr
 }
