@@ -1,7 +1,7 @@
 # Maintainer: Matthijs Tadema <M dot J dot Tadema dot protonmail dot com>
 pkgname=python-pycg_bonds
 _pkgname=pycg_bonds
-pkgver=0.1.1
+pkgver=0.2
 _release="alpha"
 pkgrel=1
 pkgdesc="Render coarse grained molecular structures in PyMOL"

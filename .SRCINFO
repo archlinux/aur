@@ -1,14 +1,14 @@
 pkgbase = python-pycg_bonds
 	pkgdesc = Render coarse grained molecular structures in PyMOL
-	pkgver = 0.1.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/mjtadema/pycg_bonds/
 	arch = any
 	license = MIT
 	depends = python>=3
 	depends = pymol>=2
-	source = pycg_bonds-0.1.1-alpha.tar.gz::https://github.com/mjtadema/pycg_bonds/archive/v0.1.1-alpha.tar.gz
-	source = https://github.com/mjtadema/pycg_bonds/releases/download/v0.1.1-alpha/pycg_bonds-0.1.1-alpha.tar.gz.sig
+	source = pycg_bonds-0.2-alpha.tar.gz::https://github.com/mjtadema/pycg_bonds/archive/v0.2-alpha.tar.gz
+	source = https://github.com/mjtadema/pycg_bonds/releases/download/v0.2-alpha/pycg_bonds-0.2-alpha.tar.gz.sig
 	validpgpkeys = 7101E1F6DFB5E1408C551AB1D66124EB8F2BB7B7
 	md5sums = SKIP
 	md5sums = SKIP
