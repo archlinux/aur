@@ -1,16 +1,16 @@
 pkgbase = letskencrypt
 	pkgdesc = Secure Let's Encrypt client
-	pkgver = 0.1.5
+	pkgver = 0.1.16
 	pkgrel = 1
 	url = https://kristaps.bsd.lv/letskencrypt/
 	arch = x86_64
 	arch = i686
 	license = BSD
 	depends = libbsd
-	source = https://github.com/kristapsdz/letskencrypt-portable/archive/VERSION_0_1_5.tar.gz
-	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.3.5.tar.gz
-	sha512sums = 82fa4e8b79a4f0c697340ac05125b7f037d713f90d824539409dac6c40c9206ad6fc918bdf935f7e60e1ba10a832a0e8b596ab3a926699f5994170356859d20d
-	sha512sums = b73271ee05ba1bdffbfde02f17a33acf38738a4dfbe69be1bdd8f13a1f03a5fdab4c62a5f62f94c4128ad0d7ad1e6796e554c772d9f0563c61b7da75a8bb1e23
+	source = https://github.com/kristapsdz/letskencrypt-portable/archive/VERSION_0_1_16.tar.gz
+	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.9.2.tar.gz
+	sha512sums = 0b8dc0e0e2b4dda518f951fac3a1cce72c962abd6a15fb0e39d548ee24637b25d9f90312e6da0817e22adab7d0e5a4ddd86f65ae50c109cb2241481471c6bd80
+	sha512sums = b43e73e47c1f14da3c702ab42f29f1d67645a4fa425441337bd6c125b481ef78a40fd13e6b34dadb2af337e1c0c190cfb616186d4db9c9a743a37e594b9b8033
 
 pkgname = letskencrypt
 
