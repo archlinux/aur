@@ -1,7 +1,7 @@
 pkgname=nsight
 pkgver=2019.3.1
 _pkgver=${pkgver//\./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone application for the debugging and profiling of graphics applications"
 arch=(x86_64)
 url="https://developer.nvidia.com/nsight-graphics"
@@ -20,7 +20,7 @@ prepare() {
   sh "NVIDIA_Nsight_Graphics_${pkgver}.run" --noexec --target ${pkgname}
   # Clearing the registering of VK_LAYER_NV_nomad, do it manually in package
   echo "" > ${srcdir}/${pkgname}/pkg/host/linux-desktop-nomad-x64/VK_LAYER_NV_nomad.sh
-  
+
   # Remove libs in favor of system from depends
   # openssl
   #rm ${srcdir}/${pkgname}/pkg/host/linux-desktop-nomad-x64/libcrypto.so.1.0.0
@@ -84,7 +84,7 @@ package() {
   ./install-linux.pl -noprompt -targetpath=${pkgdir}/opt/${pkgname}
 
   install -dm 755 "${pkgdir}"/usr/bin
-  ln -s ${pkgdir}/opt/nsight/host/linux-desktop-nomad-x64/nv-nsight-gfx "${pkgdir}"/usr/bin
+  ln -s /opt/nsight/host/linux-desktop-nomad-x64/nv-nsight-gfx "${pkgdir}"/usr/bin
 
   install -Dt "${pkgdir}/usr/share/vulkan/implicit_layer.d" -m644 "${srcdir}/${pkgname}/pkg/target/linux-desktop-nomad-x64/VK_LAYER_NV_nomad_release_public_${_pkgver}.json"
 
