@@ -1,0 +1,18 @@
+pkgbase = stmm-input
+	pkgdesc = Device input event library
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://www.efanomars.com/libraries/stmm-input
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python
+	depends = gtkmm
+	source = git+https://gitlab.com/efanomars/stmm-input.git#commit=5ffe3c386557fdf9b4e7576414a644e430a7a428
+	sha512sums = SKIP
+
+pkgname = stmm-input
+
