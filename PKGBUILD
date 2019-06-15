@@ -1,5 +1,5 @@
 pkgname=basilisk
-pkgver=2019.03.27
+pkgver=2019.06.08
 pkgrel=1
 pkgdesc="Standalone web browser forked from mozilla.org, UXP version"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('libnotify: Notification integration')
 options=('!emptydirs')
 source=("https://github.com/MoonchildProductions/UXP/archive/v$pkgver.tar.gz"
         "basilisk.desktop")
-sha256sums=('d1d614fa5f3682ad6bd05f9a9ae2b9089de10df2bdd245528ed867d2fce563a4'
+sha256sums=('ff0c6e093fbab2ecd86fc36d2e4ee9d95d2645e3906c7450ba4876b3bbff3e44'
             '1fdc855349da4e3728b202f411ad1d1c3fdc01e616161603175ab1573df1e6a9')
 
 prepare() {
