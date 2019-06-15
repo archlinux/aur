@@ -1,12 +1,13 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=terminate
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal terminal emulator based on VTE"
 arch=("any")
 url="https://git.sr.ht/~craftyguy/terminate"
 license=("GPL3")
 depends=("vte3" "vte-common")
+makedepends=("gcc" "meson" "ninja" "scdoc")
 provides=("${pkgname}")
 backup=("etc/terminate/config")
 source=("https://git.sr.ht/~craftyguy/${pkgname}/archive/${pkgver}.tar.gz")

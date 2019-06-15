@@ -1,10 +1,14 @@
 pkgbase = terminate
 	pkgdesc = Minimal terminal emulator based on VTE
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~craftyguy/terminate
 	arch = any
 	license = GPL3
+	makedepends = gcc
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
 	depends = vte3
 	depends = vte-common
 	provides = terminate
