@@ -1,7 +1,7 @@
 pkgbase = chbg-bin
 	pkgdesc = Periodically change background image in X11. Can be a slideshow screensaver too
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://chbg.sourceforge.net/about.html
 	arch = x86_64
 	license = GPLv2
@@ -10,8 +10,8 @@ pkgbase = chbg-bin
 	provides = chbg
 	conflicts = chbg
 	conflicts = chbg-git
-	source = chbg-bin-2.0.1::http://ftp.gwdg.de/pub/opensuse/repositories/home:/zhonghuaren/Fedora_28/x86_64/chbg-2.0.1-29.1.x86_64.rpm
-	md5sums = 2dd751245bb079f3233acb9203948bec
+	source = chbg-bin-2.0.1::https://raw.githubusercontent.com/rpmsphere/x86_64/master/c/chbg-2.0.1-29.1.x86_64.rpm
+	md5sums = a30ed5f9859e4026fce745e7d6696ed1
 
 pkgname = chbg-bin
 
