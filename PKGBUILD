@@ -1,12 +1,12 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.1.0.r123.231e80e
+pkgver=0.1.0.r125.d6b3a71
 pkgrel=1
 pkgdesc="Open source tag compiler for Halo Custom Edition"
 makedepends=('cmake' 'git')
 arch=('i686' 'x86_64')
-url="https://opencarnage.net/index.php?/topic/7489-invader/"
+url="https://github.com/Kavawuvi/Invader"
 license=('GPL')
 source=('git+https://github.com/Kavawuvi/Invader.git')
 sha256sums=('SKIP')
