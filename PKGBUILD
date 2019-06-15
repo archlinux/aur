@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=darknet-alexeyab-git
-pkgver=r1330.378d49e
+pkgver=r1341.f058244
 pkgrel=1
 pkgdesc='YOLO: Real Time Object Detection Neural Network Library (AlexeyAB fork)'
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/AlexeyAB/darknet'
 license=('YOLO')
 depends=()
 optdepends=('cuda' 'cudnn' 'opencv')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'vtk')
 _name=darknet
 provides=('darknet')
 conflicts=('')
@@ -37,12 +37,14 @@ build() {
 
   msg "Building the project"
   make -j4
-  make install
 }
 
 
 package() {
   msg "Installing files"
+
+  #cd "${srcdir}/${_name}/build-release/"
+  #make install
 
   # Create usr directory
   mkdir $pkgdir/usr
@@ -52,12 +54,12 @@ package() {
   cp $srcdir/${_name}/build-release/{darknet,uselib,uselib_track} $pkgdir/usr/bin/
 
   # include
-  mkdir $pkgdir/usr/include
-  cp -r $srcdir/${_name}/include/darknet $pkgdir/usr/include/
+  mkdir $pkgdir/usr/include/
+  cp -r $srcdir/${_name}/include/darknet $pkgdir/usr/include/darknet
 
   # lib
   mkdir $pkgdir/usr/lib
-  cp $srcdir/${_name}/libdark.so $pkgdir/usr/lib/
+  cp $srcdir/${_name}/build-release/libdark.so $pkgdir/usr/lib/
 
   # share
   cp -r $srcdir/${_name}/share $pkgdir/usr/
