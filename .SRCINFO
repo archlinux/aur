@@ -1,21 +1,19 @@
 pkgbase = drill-search
-	pkgver = 1.237
+	pkgver = 1.252
 	pkgrel = 1
 	url = https://www.drill.santamorena.me/
 	arch = x86_64
 	license = GPL2
 	makedepends = dmd
 	makedepends = dub
-	source = drill-search-1.237.tar.gz::https://github.com/yatima1460/Drill/archive/1.237.tar.gz
+	source = drill-search-1.252.tar.gz::https://github.com/yatima1460/Drill/archive/1.252.tar.gz
 	source = drill-search
 	source = drill-search-gtk.desktop
 	source = drill-search-gtk.svg
-	source = DRILL_VERSION
-	sha256sums = 95c20baadf7334ca7d32f018796f3027f892e946ac219a34c74207404c9f3e10
+	sha256sums = 87270864419d11bbb1619e7ef6347611c1d64d17cd06833f46e3f8a0037a6ad5
 	sha256sums = b875f928546aee7855cb1db9afc8ab3f1a8a34d43de5bbd62f7076d7ba9f3917
 	sha256sums = 21a6d19b8198816b3a6e406198ee6e4d5ab0da134df26b8342837e810ccc26a9
 	sha256sums = cbfbcebb2957223eaa9c915780a5d0ac47c1fac70b7944f49e8ffcfe740edc53
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = drill-search-cli
 	pkgdesc = Search files without indexing, but clever crawling (CLI version)
