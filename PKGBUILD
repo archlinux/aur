@@ -1,22 +1,22 @@
 # Maintainer: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
-heidisqlrelease=5539
-shortpkgver=10.1
+heidisqlrelease=5599
+shortpkgver=10.2
 pkgname=heidisql
 pkgver=${shortpkgver}.0.${heidisqlrelease}
 pkgrel=1
-pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases. This package uses the latest nightly build (32bit) on top of the portable version, and uses Wine."
+pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases. This package uses the latest nightly build (64bit) on top of the portable version, and uses Wine."
 arch=(any)
 url="http://www.heidisql.com/"
 license=('GPL')
 depends=(bash wine)
 makedepends=(unzip)
-source=("http://www.heidisql.com/downloads/releases/HeidiSQL_${shortpkgver}_32_Portable.zip"
-        "http://www.heidisql.com/builds/heidisql32.r${heidisqlrelease}.exe"
+source=("http://www.heidisql.com/downloads/releases/HeidiSQL_${shortpkgver}_64_Portable.zip"
+        "http://www.heidisql.com/builds/heidisql64.r${heidisqlrelease}.exe"
         "${pkgname}.png"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('e57bac6d01a7c1c028ef727b19909944'
-         'd9b884aacf74330654d67e56769fce64'
+md5sums=('c7168af8bbbc0b45c689de3da112c4b0'
+         '91a1d2dddf1483f98895516d9924eeeb'
          'df3673bc694beceb8ed6cfeace6b6c3f'
          'ea4fc6959a315ef5c2bf8e22c479e22a'
          '4500794df628bc141afa07ae65f85289')
@@ -25,10 +25,10 @@ noextract=("HeidiSQL_${shortpkgver}_Portable.zip")
 package() {
   # Unzip files from the .zip file
   install -d -m755 ${pkgdir}/usr/share/$pkgname
-  unzip "$srcdir/HeidiSQL_${shortpkgver}_32_Portable.zip" -d "$srcdir/unzipped"
+  unzip "$srcdir/HeidiSQL_${shortpkgver}_64_Portable.zip" -d "$srcdir/unzipped"
   
   # Overwrite with nightly build file
-  cp "$srcdir/heidisql32.r${heidisqlrelease}.exe" "$srcdir/unzipped/heidisql.exe"
+  cp "$srcdir/heidisql64.r${heidisqlrelease}.exe" "$srcdir/unzipped/heidisql.exe"
   
   # Install files
   cp -ra "$srcdir/unzipped/"* "${pkgdir}/usr/share/${pkgname}"
