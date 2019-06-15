@@ -1,7 +1,7 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=createrepo_c
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="A C implementation of createrepo, a tool to create yum repositories"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('bash-completion' 'cmake' 'doxygen'
 checkdepends=('python-nose')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('fb655e130661da56319fb53cd3f196f4')
+md5sums=('395d685e079cc2c52b19f6a2d461204a')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -28,28 +28,27 @@ build() {
 	cmake -DCMAKE_BUILD_TYPE=Release \
 	      -DCMAKE_C_FLAGS="$CFLAGS $CPPFLAGS" \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DCMAKE_INSTALL_LIBDIR=lib \
 	      -DPYTHON_DESIRED=3 \
 	      -DWITH_LIBMODULEMD=ON \
 	      -DWITH_ZCHUNK=ON \
 	      ..
 
-	make VERBOSE=1
+	make
 	make doc
 }
 
 check() {
 	cd "$pkgname-$pkgver"/build
+
 	make tests
 	make ARGS="-V" test
 }
 
 package() {
 	cd "$pkgname-$pkgver"/build
+
 	make DESTDIR="$pkgdir/" install
-	if [[ $CARCH == x86_64 ]]; then
-		mv "$pkgdir/"usr/lib64/* "$pkgdir/"usr/lib
-		rmdir "$pkgdir/"usr/lib64
-	fi
 
 	install -Dp -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
