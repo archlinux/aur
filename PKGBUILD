@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=darknet-alexeyab-git
 pkgver=r1341.f058244
-pkgrel=1
+pkgrel=2
 pkgdesc='YOLO: Real Time Object Detection Neural Network Library (AlexeyAB fork)'
 arch=('i686' 'x86_64')
 url='https://github.com/AlexeyAB/darknet'
@@ -21,10 +21,7 @@ pkgver() {
   cd "$_name"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
-build() {
-
-  # Creating build directory
+build() { # Creating build directory
   cd "${srcdir}/${_name}/"
   mkdir -p "build-release"
   cd "build-release"
@@ -54,15 +51,15 @@ package() {
   cp $srcdir/${_name}/build-release/{darknet,uselib,uselib_track} $pkgdir/usr/bin/
 
   # include
-  mkdir $pkgdir/usr/include/
-  cp -r $srcdir/${_name}/include/darknet $pkgdir/usr/include/darknet
+  mkdir -p $pkgdir/usr/include/darknet
+  cp -r $srcdir/${_name}/include/{darknet.h,yolo_v2_class.hpp} $pkgdir/usr/include/darknet
 
   # lib
   mkdir $pkgdir/usr/lib
   cp $srcdir/${_name}/build-release/libdark.so $pkgdir/usr/lib/
 
   # share
-  cp -r $srcdir/${_name}/share $pkgdir/usr/
+  #cp -r $srcdir/${_name}/share $pkgdir/usr/
 
   chown -R root:root $pkgdir/usr
   chmod -R 755 $pkgdir/usr
