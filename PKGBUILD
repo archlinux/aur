@@ -1,11 +1,11 @@
 pkgname=vtk-git
-pkgver=8.2.0.2155.g955aceec0f
+pkgver=8.2.0.2422.g2a132fa0b9
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization'
 arch=('i686' 'x86_64')
 url='http://www.vtk.org'
 license=('BSD')
-depends=('jsoncpp' 'libxt' 'double-conversion' 'glew' 'hdf5' 'python')
+depends=('jsoncpp' 'libxt' 'double-conversion' 'glew' 'hdf5' 'python' 'proj')
 makedepends=('git' 'cmake' 'doxygen' 'boost' 'java-environment' 'utf8cpp')
 provides=("vtk")
 conflicts=("vtk")
@@ -43,7 +43,7 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_jpeg=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_jsoncpp=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libxml2=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_lz4=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_lzma=ON \
