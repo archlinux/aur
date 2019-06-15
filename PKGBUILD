@@ -16,7 +16,7 @@ arch=('i686' 'x86_64')
 # Use github archive instead of pypi because it contains tests
 source=("https://github.com/vmprof/$_reponame/archive/$pkgver.tar.gz"
         "pep-479.patch")
-sha256sums=('d569c715cf68dcf02a65d2ba7f922538350b8f7fbd91529df67e0a71d1ffa2db'
+sha256sums=('39ec09f84df30e9af566d1eefe8d53bfd89758febd3336e73e3648d1556e4108'
             '6df41198c903a4b6575e2bfdce9a1548909b318ab06f715c442a6608668815ec')
 
 prepare() {
