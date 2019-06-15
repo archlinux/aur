@@ -2,11 +2,11 @@
 # Maintainer: Eduardo Bart <edub4rt@gmail.com>
 
 pkgname=apcctrl
-pkgver=0.8.15
+pkgver=0.8.21
 pkgrel=1
 pkgdesc="Power mangement and controlling for Brazil APC's nobreaks"
 arch=(x86_64)
-url="http://www.apcctrl.org"
+url="http://www.apcctrl.com.br"
 license=('GPL')
 depends=('gcc-libs' 'systemd-sysvcompat' 'libusb-compat')
 makedepends=('pkgconfig' 'gd' 'gconf' 'gtk2')
@@ -18,7 +18,7 @@ backup=(etc/apcctrl/apcctrl.conf
         etc/apcctrl/onbattery
         etc/apcctrl/apccontrol)
 source=(https://ufpr.dl.sourceforge.net/project/apcctrl/$pkgname-$pkgver.tar.gz)
-sha256sums=('66e9ed51de409caee2bfddb3b80ab6dec9ab8b2e5c5544764fee4fb8b4f593af')
+sha256sums=('ad3bc43de922f25e98db6e97390034600d094b257458b25ee8677b1c63b0f1bf')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

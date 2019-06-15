@@ -1,8 +1,8 @@
 pkgbase = apcctrl
 	pkgdesc = Power mangement and controlling for Brazil APC's nobreaks
-	pkgver = 0.8.15
+	pkgver = 0.8.21
 	pkgrel = 1
-	url = http://www.apcctrl.org
+	url = http://www.apcctrl.com.br
 	arch = x86_64
 	license = GPL
 	makedepends = pkgconfig
@@ -19,8 +19,8 @@ pkgbase = apcctrl
 	backup = etc/apcctrl/offbattery
 	backup = etc/apcctrl/onbattery
 	backup = etc/apcctrl/apccontrol
-	source = https://ufpr.dl.sourceforge.net/project/apcctrl/apcctrl-0.8.15.tar.gz
-	sha256sums = 66e9ed51de409caee2bfddb3b80ab6dec9ab8b2e5c5544764fee4fb8b4f593af
+	source = https://ufpr.dl.sourceforge.net/project/apcctrl/apcctrl-0.8.21.tar.gz
+	sha256sums = ad3bc43de922f25e98db6e97390034600d094b257458b25ee8677b1c63b0f1bf
 
 pkgname = apcctrl
 
