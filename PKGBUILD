@@ -1,19 +1,20 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Maintainer: Ryozuki <ryo@ryozuki.xyz>
 
 pkgname=ddnet
-pkgver=12.4.3
+pkgver=12.5
 pkgrel=1
-pkgdesc="DDraceNetwork, a cooperative racing mod of Teeworlds"
+pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom:BSD' 'CCPL:by-nc-sa')
 depends=('sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libwebsockets' 'pnglite')
 makedepends=('cmake' 'ninja' 'python' 'imagemagick' 'gendesk')
 checkdepends=('gtest')
-optdepends=('ddnet-skins: more skins for your tee'
-            'ddnet-maps-git: have all DDNet maps available offline')
+optdepends=('ddnet-skins: A collection with more than 700 custom tee skins.'
+            'ddnet-maps-git: All the maps used on the official DDNet Servers.')
 source=("https://ddnet.tw/downloads/DDNet-$pkgver.tar.xz")
-sha256sums=('2983249f56f224d417be0f1bac82a2db619a4a3da671a8fe494cc9171c95472a')
+sha256sums=('d407c024e082142d26198370b7b53f9e09cb3ba9d291272c8717d2c98d750874')
 
 # Set 1 to enable MySQL support and add dependencies
 _enable_mysql=0
@@ -31,23 +32,18 @@ prepare() {
 
       # Extract icons in .png from .ico (name must be lowercase)
     convert ../DDNet-$pkgver/other/icons/DDNet-Server.ico ddnet-server.png
-    convert ../DDNet-$pkgver/other/icons/DDNet.ico        ddnet.png
 
-      # Generate .desktop files
-    gendesk --pkgname="DDNet" --pkgdesc="DDNet"           \
-            --icon="ddnet" --categories="Game;ArcadeGame" \
-            --mimetypes="x-scheme-handler/ddnet"          \
-            --exec="DDNet %u"
+      # Generate the server .desktop file
     gendesk --pkgname="DDNet-Server" --name="DDNet Server"          \
             --pkgdesc="DDNet Server" --terminal=true                \
             --icon="ddnet-server"    --categories="Game;ArcadeGame" \
-            --exec='sh -c "cd /usr/share/ddnet/data && DDNet-Server"'
+            --exec='sh -c "DDNet-Server -f /usr/share/ddnet/autoexec_server.cfg"'
 
       # Create icon files' structure, for installing in package(). How:
       # For each png file, check its dimensions (e.g. 128 x 128) using
       # the output of 'file' command. Then double-check the 's' as a
       # number, then install it into  a "size/filename.png" notation
-    for f in ddnet-?.png ddnet-server-?.png; do
+    for f in ddnet-server-?.png; do
         s=$(file $f | cut -d' ' -f5)
         if [ ! -z "${s##*[!0-9]*}" ]; then
             install -Dm644 $f ${s}x${s}/apps/${f/-[0-9]/}
@@ -77,13 +73,16 @@ package() {
 
       # Install desktop files and folder
     install -dvm755 "$pkgdir/usr/share/applications/"
-    install -vm644 prep/DDNet.desktop        "$pkgdir/usr/share/applications/"
     install -vm644 prep/DDNet-Server.desktop "$pkgdir/usr/share/applications/"
 
       # Install icon files and folders
     for f in $(find prep -type f -name '*.png'); do
         install -Dvm644 $f "$pkgdir/usr/share/icons/hicolor"/${f/prep\/}
     done
+
+    # Install Server default configuration file
+    install -dvm755 "$pkgdir/usr/share/ddnet/"
+    install -vm644 DDNet-$pkgver/autoexec_server.cfg "$pkgdir/usr/share/ddnet/"
 
       # Install license file
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
