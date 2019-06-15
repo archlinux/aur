@@ -1,7 +1,7 @@
 # Maintainer: phiresky <phireskyde+aur@gmail.com>
 
 pkgname=ripgrep-all
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 arch=(x86_64)
 pkgdesc="rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc."
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('ripgrep' 'pandoc' 'poppler' 'ffmpeg')
 archivename="ripgrep_all-${pkgver}-${arch}-unknown-linux-musl"
 source=("https://github.com/phiresky/ripgrep-all/releases/download/${pkgver}/${archivename}.tar.gz")
-sha1sums=('e9208c6542029d426a74802415be3754e5093256')
+sha1sums=('e23085ee9b01f55169dade64f531b3dc139c8d0c')
 
 package() {
   cd "$srcdir/$archivename"
