@@ -1,0 +1,93 @@
+diff -Naurp a/src/trrntzip.c b/src/trrntzip.c
+--- a/src/trrntzip.c	2018-11-28 19:04:19.000000000 +0000
++++ b/src/trrntzip.c	2018-11-28 19:24:32.381504615 +0000
+@@ -65,7 +65,7 @@ WORKSPACE *AllocateWorkspace (void);
+ void FreeWorkspace (WORKSPACE * ws);
+ int StringCompare (const void *str1, const void *str2);
+ char **GetFileList (unzFile UnZipHandle, char **FileNameArray, int *piElements);
+-int CheckZipStatus (unz64_s * UnzipStream, WORKSPACE * ws);
++int CheckZipStatus (unzFile UnZipHandle, WORKSPACE * ws);
+ int ShouldFileBeRemoved(int iArray, WORKSPACE * ws);
+ int ZipHasDirEntry (WORKSPACE * ws);
+ int MigrateZip (const char *zip_path, const char * pDir, WORKSPACE * ws, MIGRATE * mig);
+@@ -204,28 +204,27 @@ GetFileList (unzFile UnZipHandle, char *
+ }
+ 
+ int
+-CheckZipStatus (unz64_s * UnzipStream, WORKSPACE * ws)
++CheckZipStatus (unzFile UnZipHandle, WORKSPACE * ws)
+ {
+   unsigned long checksum, target_checksum = 0;
+-  off_t ch_length = UnzipStream->size_central_dir;
+-  off_t ch_offset = UnzipStream->central_pos - UnzipStream->size_central_dir;
++  unz64_s *UnZipStream = (unz64_s *) UnZipHandle;
++  off_t ch_length = UnZipStream->size_central_dir;
++  off_t ch_offset = UnZipStream->central_pos - UnZipStream->size_central_dir;
+   off_t i = 0;
+   char comment_buffer[COMMENT_LENGTH + 1];
+   char *ep = NULL;
+   unsigned char x;
+-  FILE *f = (FILE *) UnzipStream->filestream;
++  FILE *f = (FILE *) UnZipStream->filestream;
+ 
+   // Quick check that the file at least appears to be a zip file.
+   rewind (f);
+   if (fgetc (f) != 'P' && fgetc (f) != 'K')
+     return STATUS_ERROR;
+ 
+-  // Assume a TZ style archive comment and read it in. This is located at the very end of the file.
+-  comment_buffer[COMMENT_LENGTH] = 0;
+-  if (fseeko (f, -COMMENT_LENGTH, SEEK_END))
+-    return STATUS_ERROR;
+-
+-  fread (comment_buffer, 1, COMMENT_LENGTH, f);
++  // unzGetGlobalComment will null term the buffer for us and return the length of the string
++  if (unzGetGlobalComment (UnZipHandle, comment_buffer, COMMENT_LENGTH + 1) != COMMENT_LENGTH) {
++    return STATUS_BAD_COMMENT;
++  }
+ 
+   // Check static portion of comment.
+   if (strncmp (gszApp, comment_buffer, COMMENT_LENGTH - 8))
+@@ -238,10 +237,6 @@ CheckZipStatus (unz64_s * UnzipStream, W
+   if (errno || ep != comment_buffer + COMMENT_LENGTH)
+     return STATUS_BAD_COMMENT;
+ 
+-  // Comment checks out so seek to 4 before it...
+-  if (fseeko (f, -(COMMENT_LENGTH + 4), SEEK_END))
+-    return STATUS_ERROR;
+-
+   if (ch_length > ws->iCheckBufSize)
+   {
+     ws->pszCheckBuf = realloc (ws->pszCheckBuf, ch_length + 1024);
+@@ -254,8 +249,9 @@ CheckZipStatus (unz64_s * UnzipStream, W
+   // Skip to start of the central header, and read it in.
+   if (fseeko (f, ch_offset, SEEK_SET))
+     return STATUS_ERROR;
+- 
+-  fread (ws->pszCheckBuf, 1, ch_length, f);
++
++  if (fread (ws->pszCheckBuf, 1, ch_length, f) != ch_length)
++    return STATUS_ERROR;
+ 
+   // Calculate the crc32 of the central header.
+   checksum = crc32 (crc32 (0L, NULL, 0), ws->pszCheckBuf, ch_length);
+@@ -333,7 +329,6 @@ MigrateZip (const char *zip_path, const
+ {
+   unz_file_info64 ZipInfo;
+   unzFile UnZipHandle = NULL;
+-  unz64_s *UnzipStream = NULL;
+   zipFile ZipHandle = NULL;
+   int zip64 = 0;
+ 
+@@ -390,10 +385,8 @@ MigrateZip (const char *zip_path, const
+     return TZ_ERR;
+   }
+ 
+-  UnzipStream = (unz64_s *) UnZipHandle;
+-
+   // Check if zip is non-TZ or altered-TZ
+-  rc = CheckZipStatus (UnzipStream, ws);
++  rc = CheckZipStatus (UnZipHandle, ws);
+ 
+   switch (rc)
+   {

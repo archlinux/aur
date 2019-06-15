@@ -1,0 +1,20 @@
+pkgbase = torrentzip-svn
+	pkgdesc = Create identical zip archives over multiple systems (svn version)
+	pkgver = 0.9.r9
+	pkgrel = 1
+	url = https://sourceforge.net/projects/trrntzip/
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = dos2unix
+	depends = zlib
+	optdepends = python2: for purgecruft utility
+	provides = torrentzip
+	conflicts = torrentzip
+	source = torrentzip::svn+https://svn.code.sf.net/p/trrntzip/code/
+	source = torrentzip-svn-fix-comment.patch
+	sha256sums = SKIP
+	sha256sums = e5ebb5a77a57bd852c2697c9ea8f451844170f0764710e5850d6c8afef739f4c
+
+pkgname = torrentzip-svn
+
