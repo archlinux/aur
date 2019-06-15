@@ -1,0 +1,14 @@
+pkgbase = ubo-extra-git
+	pkgdesc = A companion extension to uBlock Origin for chromium-based browsers.
+	pkgver = 2.81
+	pkgrel = 1
+	url = https://github.com/gorhill/uBO-Extra.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = ubo-extra
+	source = ubo-extra::git+https://github.com/gorhill/uBO-Extra.git
+	sha512sums = SKIP
+
+pkgname = ubo-extra-git
+

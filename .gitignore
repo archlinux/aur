@@ -1,0 +1,5 @@
+/ubo-extra/
+/ubo-extra-git-*.log
+/ubo-extra-git-*.pkg.tar.xz
+/src/
+/pkg/
