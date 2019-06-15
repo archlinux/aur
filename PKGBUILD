@@ -1,7 +1,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet-git
-pkgver=12.1.r32.g826a7781a
+pkgver=12.5.r15.g9c9264db8
 pkgrel=1
 pkgdesc="DDraceNetwork, a cooperative racing mod of Teeworlds"
 arch=('x86_64')
@@ -41,24 +41,19 @@ prepare() {
     cd prep
 
       # Extract icons in .png from .ico (name must be lowercase)
-    convert ../ddnet/other/icons/DDNet-Server.ico ddnet-server.png
-    convert ../ddnet/other/icons/DDNet.ico        ddnet.png
+    convert ../DDNet-$pkgver/other/icons/DDNet-Server.ico ddnet-server.png
 
-      # Generate .desktop files
-    gendesk --pkgname="DDNet" --pkgdesc="DDNet"           \
-            --icon="ddnet" --categories="Game;ArcadeGame" \
-            --mimetypes="x-scheme-handler/ddnet"          \
-            --exec="DDNet %u"
+      # Generate the server .desktop file
     gendesk --pkgname="DDNet-Server" --name="DDNet Server"          \
             --pkgdesc="DDNet Server" --terminal=true                \
             --icon="ddnet-server"    --categories="Game;ArcadeGame" \
-            --exec='sh -c "cd /usr/share/ddnet/data && DDNet-Server"'
+            --exec='sh -c "DDNet-Server -f /usr/share/ddnet/autoexec_server.cfg"'
 
       # Create icon files' structure, for installing in package(). How:
       # For each png file, check its dimensions (e.g. 128 x 128) using
       # the output of 'file' command. Then double-check the 's' as a
       # number, then install it into  a "size/filename.png" notation
-    for f in ddnet-?.png ddnet-server-?.png; do
+    for f in ddnet-server-?.png; do
         s=$(file $f | cut -d' ' -f5)
         if [ ! -z "${s##*[!0-9]*}" ]; then
             install -Dm644 $f ${s}x${s}/apps/${f/-[0-9]/}
@@ -66,6 +61,7 @@ prepare() {
         fi
     done
 }
+
 
 build() {
     cd build
@@ -88,13 +84,16 @@ package() {
 
       # Install desktop files and folder
     install -dvm755 "$pkgdir/usr/share/applications/"
-    install -vm644 prep/DDNet.desktop        "$pkgdir/usr/share/applications/"
     install -vm644 prep/DDNet-Server.desktop "$pkgdir/usr/share/applications/"
 
       # Install icon files and folders
     for f in $(find prep -type f -name '*.png'); do
         install -Dvm644 $f "$pkgdir/usr/share/icons/hicolor"/${f/prep\/}
     done
+
+      # Install Server default configuration file
+    install -dvm755 "$pkgdir/usr/share/ddnet/"
+    install -vm644 DDNet-$pkgver/autoexec_server.cfg "$pkgdir/usr/share/ddnet/"
 
       # Install license file
     install -dvm755 "$pkgdir/usr/share/licenses/$pkgname/"
