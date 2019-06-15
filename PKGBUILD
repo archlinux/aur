@@ -1,7 +1,7 @@
 # Maintainer: emersion <contact emersion fr>
 pkgname=grim-git
 _pkgname=grim
-pkgver=r37.1d6c877
+pkgver=r69.fb7261f
 pkgrel=1
 license=('MIT')
 pkgdesc='Grab images from a Wayland compositor'
@@ -18,6 +18,7 @@ source=("${pkgname%-*}::git+https://github.com/emersion/grim.git")
 sha1sums=('SKIP')
 provides=('grim')
 conflicts=('grim')
+options=(debug !strip)
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
