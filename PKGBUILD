@@ -3,13 +3,13 @@
 
 _pkgname=ingen
 pkgname="${_pkgname}-git"
-pkgver=0.5.1.r2762.26e33ec7
+pkgver=0.5.1.r2789.f48f9d69
 pkgrel=1
 pkgdesc="A modular plugin host for JACK and LV2."
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/${_pkgname}/"
 license=('GPL')
-depends=('alsa-lib' 'ganv' 'jack' 'lilv>=0.21.5' 'lv2>=1.15.4' 'portaudio'
+depends=('alsa-lib' 'ganv>=1.5.0' 'jack' 'lilv>=0.21.5' 'lv2>=1.15.4' 'portaudio'
          'raul>=0.8.10' 'suil>=0.8.7' 'serd>=0.30' 'sord>=0.12.0')
 makedepends=('python2')
 optdepends=(
