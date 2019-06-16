@@ -25,12 +25,11 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-	git clone $source "$pkgname-git"
+    git clone -b "$pkgver" --depth 1 "$source" "$pkgname-git"
 }
 
 pkgver() {
-	cd "$pkgname-git"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    echo "$pkgver"
 }
 
 build() {
