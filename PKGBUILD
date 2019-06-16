@@ -1,32 +1,14 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
 pkgname='barvinok'
-pkgver=0.41
-pkgrel=2
+pkgver=0.41.1
+pkgrel=1
 pkgdesc='A library for counting the number of integer points in parametric and non-parametric polytopes'
 arch=('x86_64')
-url='http://freecode.com/projects/barvinok'
+url='http://barvinok.gforge.inria.fr/'
 license=('GPL')
-depends=('ntl' 'isl>0.17' 'isl<0.19' 'polylib-gmp')
-source=("http://barvinok.gforge.inria.fr/$pkgname-$pkgver.tar.xz"
-        'fix-missing-isl-include.patch')
-md5sums=('a5496a4a93f3f1f26fef07189e12314f'
-         '44a312463a5688031d26e615b8a22594')
-
-prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    # because we are building with system ISL, we need to correct a minor oversight, which
-    # is that a dummy library is generated to wrap around all the ISL functions - for bundled
-    # or build case, the linking is handled correctly. For system case the linking does not
-    # include the correct include path. This patch adds the missing include path.
-    patch -p0 < ../fix-missing-isl-include.patch
-
-    # rebuild autotools
-    msg2 "rebuilding build scripts and makefiles"
-    aclocal
-    automake --add-missing
-    autoconf
-}
+depends=('ntl' 'isl>0.19' 'polylib-gmp')
+source=("http://barvinok.gforge.inria.fr/$pkgname-$pkgver.tar.xz")
+md5sums=('61a08e4461c4c1936d4d18cb99a2ae22')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
