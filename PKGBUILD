@@ -1,8 +1,8 @@
 # Maintainer: RedTide <redtid3@gmail.com>
 
 pkgname=sfizz-git
-pkgver=r42.a01d394
-pkgrel=2
+pkgver=r44.cb30e9a
+pkgrel=1
 pkgdesc="Juce based SFZ format sampler"
 url="https://github.com/sfztools/sfizz"
 arch=('x86_64')
