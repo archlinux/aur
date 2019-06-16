@@ -7,9 +7,9 @@ pkgbase = sse-file-pc
 	license = Apache
 	license = MIT
 	depends = java-runtime>=8
-	source = https://annimon.com/aur/sse/SSEFilePC.zip
-	source = https://annimon.com/aur/sse/icon.png
-	source = https://annimon.com/aur/sse/sse.desktop
+	source = https://paranoiaworks.mobi/download/files/SSEFilePC.zip
+	source = icon.png
+	source = sse.desktop
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
