@@ -1,13 +1,13 @@
 pkgbase = gns3-gui
 	pkgdesc = GNS3 network simulator. Graphical user interface package.
 	pkgver = 2.1.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GNS3/gns3-gui
 	arch = any
 	groups = gns3
 	license = GPL3
 	makedepends = python-setuptools
-	depends = python-jsonschema
+	depends = python-jsonschema26
 	depends = gns3-converter
 	depends = python-raven
 	depends = python-psutil

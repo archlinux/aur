@@ -4,14 +4,14 @@
 
 pkgname=gns3-gui
 pkgver=2.1.21
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
 url='https://github.com/GNS3/gns3-gui'
 license=('GPL3')
 groups=('gns3')
 makedepends=('python-setuptools')
-depends=('python-jsonschema' 'gns3-converter' 'python-raven' 'python-psutil'
+depends=('python-jsonschema26' 'gns3-converter' 'python-raven' 'python-psutil'
          'python-pyqt5' 'python-sip' 'qt5-svg' 'qt5-websockets' 'desktop-file-utils')
 optdepends=('gns3-server: GNS3 backend. Manages emulators such as Dynamips, VirtualBox or Qemu/KVM.'
             'dynamips: Cisco router emulator.'
