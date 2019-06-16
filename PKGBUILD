@@ -1,4 +1,5 @@
 # Maintainer: Andrea Berlingieri <andrea.berlingieri42 at gmail dot com>
+_pkgname=ocaml-http
 pkgname=ocaml-http-git
 pkgver=0.1.6
 pkgrel=1
@@ -12,19 +13,19 @@ source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/$pkgname"
+	cd "${srcdir}/$_pkgname"
     git describe --abbrev=0 | sed 's/^v//'
 }
 
 build() {
-	cd "${srcdir}/$pkgname"
+	cd "${srcdir}/$_pkgname"
     make all opt
 }
 
 package() {
     OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
     mkdir -p "$OCAMLFIND_DESTDIR"
-	cd "${srcdir}/$pkgname"
+	cd "${srcdir}/$_pkgname"
     env DESTDIR="${pkgdir}" \
         OCAMLFIND_DESTDIR="$OCAMLFIND_DESTDIR" \
         OCAMLFIND_LDCONF="ignore" \
