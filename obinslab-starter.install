@@ -2,22 +2,29 @@ post_install() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 
 	# Link to the binary
-	ln -sf '/opt/Obinslab Starter/obinslab-starter' '/usr/bin/obinslab-starter'
+	ln -sf '/opt/obinslab-starter/obinslab-starter' '/usr/bin/obinslab-starter'
 	update-desktop-database -q
 
 	# Necessary udev rules for non-root access to AP or AP2
-	cat >/etc/udev/rules.d/obinslab-starter.rules <<-EOF
+	cat >/etc/udev/rules.d/obinslab-kdb.rules <<-EOF
 	SUBSYSTEM=="input", GROUP="input", MODE="0666"
+
 	# For ANNE PRO 2
-	SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8008",
-	MODE="0666", GROUP="plugdev"
-	KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8008",
-	MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8008",MODE="0666", GROUP="plugdev"
+	KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8008",MODE="0666", GROUP="plugdev"
+
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8009",MODE="0666", GROUP="plugdev"
+	KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8009",MODE="0666", GROUP="plugdev"
+
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="a292",MODE="0666", GROUP="plugdev"
+	KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="a292",MODE="0666", GROUP="plugdev"
+
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="a293",MODE="0666", GROUP="plugdev"
+	KERNEL=="hidraw*", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="a293",MODE="0666", GROUP="plugdev"
+
 	## For ANNE PRO
-	SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5710",
-	MODE="0666", GROUP="plugdev"
-	KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5710",
-	MODE="0666", GROUP="plugdev"
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5710",MODE="0666", GROUP="plugdev"
+	KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5710",MODE="0666", GROUP="plugdev"
 	EOF
 	# Reload existing udev rules
 	sudo udevadm control --reload-rule
@@ -35,6 +42,6 @@ post_remove() {
 	update-desktop-database -q
 
 	# Delete udev rule and reload
-	rm -f '/etc/udev/rules.d/obinslab-starter.rules'
+	rm -f '/etc/udev/rules.d/obinslab-kdb.rules'
 	sudo udevadm control --reload-rule
 }

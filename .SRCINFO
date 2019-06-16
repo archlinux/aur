@@ -16,8 +16,10 @@ pkgbase = obinslab-starter
 	depends = nss
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = http://releases.obins.net/occ/linux/deb/ObinslabStarter_1.0.11_x64.deb
-	sha256sums_x86_64 = 8e05bb0c88fce3c1c5b3fa4b5c8d008d70a66b8181b3cc9055b9e6fd15173ba0
+	source_x86_64 = http://releases.obins.net/occ/linux/tar/ObinslabStarter_1.0.11_x64.tar.gz
+	source_x86_64 = deb_extra_files_obins.tar.gz
+	sha256sums_x86_64 = 00e5d37cbbee1b43ac825d162b4c8092c41dcf70c5f94bd456477e48eb04f75a
+	sha256sums_x86_64 = c1d61e5b9ec27236fc506e7cf5d1748a1d5b02ebf966fc7b0a0089672b287801
 
 pkgname = obinslab-starter
 
