@@ -2,7 +2,7 @@
 
 pkgname=vscodium-bin
 pkgver=1.35.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64')
 url="https://github.com/VSCodium/vscodium"
