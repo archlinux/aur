@@ -10,6 +10,7 @@ pkgbase = godot-export-templates-git
 	makedepends = scons
 	makedepends = pulseaudio
 	makedepends = clang
+	makedepends = pkgconf
 	depends = glu
 	depends = libxcursor
 	depends = libxinerama
