@@ -1,14 +1,14 @@
 pkgbase = libmodule
 	pkgdesc = C linux library to build simple and modular projects
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/FedeDP/libmodule
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	source = libmodule-4.1.0.tar.gz::https://github.com/FedeDP/libmodule/archive/4.1.0.tar.gz
-	sha256sums = 14294e63e3ff26ddbf80ca359e3d78ea3a1207692fc137a8020ec1fbe0ec47bd
+	source = libmodule-4.2.0.tar.gz::https://github.com/FedeDP/libmodule/archive/4.2.0.tar.gz
+	sha256sums = 8bab8e23e324df7ffec6377a966ff71ced2c7de1bc59dfd806748fd9fcf5c51f
 
 pkgname = libmodule
 
