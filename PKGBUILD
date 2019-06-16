@@ -9,7 +9,7 @@ pkgdesc='Godot export templates'
 url='https://godotengine.org/'
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('git' 'scons' 'pulseaudio' 'clang')
+makedepends=('git' 'scons' 'pulseaudio' 'clang' 'pkgconf')
 depends=('glu' 'libxcursor' 'libxinerama' 'alsa-lib' 'freetype2' 'mesa')
 _arch=''
 if test "$CARCH" == x86_64; then
