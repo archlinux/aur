@@ -1,10 +1,11 @@
 pkgbase = kde-thumbnailer-odf
-	pkgdesc = Thumbnailer to show ODF (OpenDocument Format) previews in KDE file managers.
+	pkgdesc = Thumbnailer to show ODF (OpenDocument Format) previews in KDE file managers
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kde-apps.org/content/show.php?content=110864
 	arch = x86_64
 	arch = i686
+	arch = armv7h
 	license = LGPL3
 	makedepends = extra-cmake-modules
 	depends = kio
