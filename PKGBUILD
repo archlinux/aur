@@ -1,6 +1,6 @@
 # Maintainer: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 pkgname=ffmpeg-normalize
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="Audio normalization using ffmpeg."
 arch=(any)
@@ -9,8 +9,8 @@ license=(MIT)
 depends=(ffmpeg python python-tqdm)
 makedepends=(python-setuptools python-pypandoc)
 conflicts=("${pkgname}-git")
-source=("https://files.pythonhosted.org/packages/source/f/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('f914fabcfbadb7586f4b2171babfb77648abe88e2e479367b24b6fb8b7bbc60fb105998d85fa64ef0d13071d82700938115c2a64186c0ed222402d12826221d0')
+source=("https://github.com/slhck/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('4bad8f7e09e14c8ec62eb908712ed2336653648a940b04a314090ede574015f75407aa5d0e07dad480d8c9f596a7fd7448e5227ac23af99116a2deedb498afe5')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
