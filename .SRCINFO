@@ -1,6 +1,6 @@
 pkgbase = ripgrep-all
 	pkgdesc = rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
-	pkgver = 0.8.9
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/phiresky/ripgrep-all
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = ripgrep-all
 	depends = pandoc
 	depends = poppler
 	depends = ffmpeg
-	source = https://github.com/phiresky/ripgrep-all/releases/download/0.8.9/ripgrep_all-0.8.9-x86_64-unknown-linux-musl.tar.gz
-	sha1sums = e23085ee9b01f55169dade64f531b3dc139c8d0c
+	source = https://github.com/phiresky/ripgrep-all/releases/download/0.9.1/ripgrep_all-0.9.1-x86_64-unknown-linux-musl.tar.gz
+	sha1sums = 06b0ae148c522f8ec77549b0a64d3ca9e5c9c8ad
 
 pkgname = ripgrep-all
 
