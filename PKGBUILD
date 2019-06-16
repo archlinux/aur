@@ -10,7 +10,7 @@ url='https://godotengine.org/'
 license=('MIT')
 arch=('i686' 'x86_64')
 makedepends=('git' 'scons' 'pulseaudio' 'clang' 'pkgconf')
-depends=('glu' 'libxcursor' 'libxinerama' 'alsa-lib' 'freetype2' 'mesa')
+depends=('godot')
 
 source=(
   "git://github.com/godotengine/${_gitname}.git#branch=master"
