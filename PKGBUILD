@@ -1,7 +1,7 @@
 # Maintainer: tristero <crf8472@web.de>
 
 pkgname=libarcstk-git
-pkgver=r135.e995eac
+pkgver=r169.fb1513e
 pkgrel=1
 pkgdesc='Library to calculate and verify AccurateRip checksums and ids'
 arch=('x86_64')
