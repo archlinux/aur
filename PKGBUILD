@@ -1,6 +1,6 @@
 # Maintainer: Andrea Berlingieri <andrea.berlingieri42 at gmail dot com>
 pkgname=ocaml-http
-pkgver=0.1.6
+pkgver=r68.c13be78
 pkgrel=1
 pkgdesc="OCaml library that lets you to write simple HTTP daemons"
 arch=('x86_64')
@@ -14,6 +14,11 @@ makedepends=('ocaml' 'ocaml-findlib' 'ocamlnet' 'ocaml-pcre')
 source=("git+$url.git")
 #noextract=()
 md5sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd "${srcdir}/$pkgname"
