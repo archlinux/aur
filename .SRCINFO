@@ -18,6 +18,7 @@ pkgbase = matita
 	makedepends = camlp5
 	makedepends = autoconf
 	makedepends = make
+	makedepends = help2man
 	depends = libglade
 	depends = gtksourceview2
 	optdepends = yelp: for the online helper
