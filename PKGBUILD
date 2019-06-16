@@ -1,6 +1,6 @@
 # Maintainer: Alex Wilson <alex at cooperi dot net>
 pkgname=pivy
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Tools for using PIV smartcards/Yubikeys with ssh-agent and disk encryption"
 url="https://github.com/arekinath/pivy"
@@ -10,8 +10,10 @@ source=(
 	"https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.7.4.tar.gz")
 arch=(x86 x86_64)
 depends=(libbsd pcsclite libedit)
-makedepends=()
-sha256sums=('8f426fab331534ea96f3b4eef3df5ce963c2a4de6906160943066b33698d2046'
+optdepends=('cryptsetup: LUKS encrypted disk support (pivy-luks)'
+	    'zfs-utils: ZFS encrypted pool/fs support (pivy-zfs)')
+makedepends=(cryptsetup zfs-utils json-c)
+sha256sums=('51e3651a0fae8fe150157130c7380efb29c57b00ba6371c765484e0ae82a9906'
             '1e3a9fada06c1c060011470ad0ff960de28f9a0515277d7336f7e09362517da6')
 
 prepare() {
@@ -20,10 +22,10 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	make prefix=/usr
+	make prefix=/usr USE_ZFS=yes USE_LUKS=yes
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	make prefix=/usr DESTDIR="$pkgdir/" install
+	make prefix=/usr DESTDIR="$pkgdir/" USE_ZFS=yes USE_LUKS=yes install
 }
