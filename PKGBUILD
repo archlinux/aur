@@ -1,7 +1,7 @@
 # Maintainer: Balazs Mezei <mezei92@gmail.com>
 pkgname=zmninja
-pkgver=1.3.057
-_customver=1.3.57
+pkgver=1.3.061
+_customver=1.3.61
 pkgrel=1
 pkgdesc="High performance, cross platform ionic app for Home/Commerical Security Surveillance using ZoneMinder or other NVRs"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('custom:cc-by-nc-sa-4.0' 'custom')
 depends=('gconf')
 _zmninja_file="zmninjapro.$_customver.AppImage"
 source=("https://github.com/pliablepixels/zmNinja/releases/download/v$pkgver/$_zmninja_file" "zmninja.desktop" "cc-by-nc-sa-4.0.txt" "LICENSE" "zmninja.png")
-sha256sums=("b4909a3da7f945fb1728eac50f4f4ae648c84ce577abc70c75ddc1df2d7bc30a" "SKIP" "SKIP" "SKIP" "SKIP")
+sha256sums=("ffed6bff763cc7547d0b20ef02cbde7cf083f243bba13e6198068cd161c2c8af" "SKIP" "SKIP" "SKIP" "SKIP")
 
 build() {
 	:
