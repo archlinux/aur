@@ -1,13 +1,14 @@
 pkgbase = tribal-trouble-git
 	pkgdesc = Real-time strategy game that pits natives of tropical islands against invading Vikings
 	pkgver = 20190420
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/team-penguin/tribaltrouble
 	install = tribaltrouble.install
 	arch = x86_64
 	license = GPL
 	makedepends = ant
 	makedepends = gendesk
+	makedepends = mercurial
 	depends = java-runtime
 	options = !strip
 	source = git+https://github.com/team-penguin/tribaltrouble.git
