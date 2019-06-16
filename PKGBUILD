@@ -15,12 +15,12 @@ source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgbase"
+  cd "$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgbase"
+  cd "$_pkgname"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   /usr/bin/perl Makefile.PL
@@ -28,14 +28,14 @@ build() {
 }
 
 check() {
-  cd "$pkgbase"
+  cd "$_pkgname"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   make test
 }
 
 package() {
-  cd "$pkgbase"
+  cd "$_pkgname"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=site DESTDIR=$pkgdir/
   /usr/bin/find $startdir/pkg -name '.packlist' -delete
