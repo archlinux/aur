@@ -5,10 +5,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=75.0.3770.80
-pkgrel=2
+pkgver=75.0.3770.90
+pkgrel=1
 _launcher_ver=6
-_meta_browser_sha=7061c141b3c4430448fc5dd06ada469972545a0c
+_meta_browser_sha=e7dbbbbd8eb80722bb32453cbb29f8fd8041be81
 pkgdesc="Chromium built with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -27,16 +27,16 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        meta-browser.tar.gz::https://github.com/OSSystems/meta-browser/archive/7061c141b3c4430448fc5dd06ada469972545a0c.tar.gz
+        meta-browser-${_meta_browser_sha}.tar.gz::https://github.com/OSSystems/meta-browser/archive/${_meta_browser_sha}.tar.gz
         chromium-system-icu.patch
         libstdc-do-not-assume-unique_ptr-has-ostream-operator.patch
         chromium-fix-window-flash-for-some-WMs.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch
         Added-HiDPI-support-for-Ozone-Wayland.patch)
-sha256sums=('da828bc8d887821380b461abfbbd0e17538c211d56f240f03711b918c77a66d6'
+sha256sums=('b1b59abbe19ecb88c17d99fa68f5c1c5585a5d66c100858f944aa3b93b943839'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'd40faa58be527dd0dcf3c433d1dc94da841c7338d045fd8a52c2256727714042'
+            '433d9942cc6479cd75c1000d7f01e89df160108140311a6594eb4c0391add533'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
             'e309dfd9d790f32cb1d23103726ac25e405b6ae6757a1c957a8395667d753908'
             '183d8cc712f0bcf1afcb01ce90c4c104a4c8d8070a06f94974a28b007d9e2ce4'
@@ -213,6 +213,7 @@ build() {
     'ozone_platform_wayland=true'
     'ozone_auto_platforms=false'
     'use_xkbcommon=true'
+    'use_system_libwayland=true'
     'use_system_minigbm=true'
     'use_system_libdrm=true'
     'use_vaapi=false'
