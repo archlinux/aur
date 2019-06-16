@@ -1,0 +1,13 @@
+post_install() {
+  echo ">>    If you want to reduce potential privacy leaks even further, you should consider"
+  echo ">>    clearing a few settings required for updating/searching extensions:"
+  echo ">>    extensions.getAddons.get.url"
+  echo ">>    extensions.getAddons.langpacks.url"
+  echo ">>    extensions.getAddons.link.url"
+  echo ">>    extensions.getAddons.search.browseURL"
+  echo ">>    extensions.update.url"
+  echo ">>    extensions.update.background.url"
+  echo ">>    If you do wish to install extensions the 'regular way',"
+  echo ">>    a few more tweaks might be needed."
+  echo ">>    I've kept the relevant settings unlocked for that specific reason."
+}

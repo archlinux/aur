@@ -1,0 +1,35 @@
+pkgbase = librewolf-bin
+	pkgdesc = Community-maintained fork of Librefox: a privacy and security-focused browser
+	pkgver = 67.0.2
+	pkgrel = 4
+	url = https://LibreWolf.gitlab.io
+	install = librewolf-bin.install
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = gtk3
+	depends = mozilla-common
+	depends = libxt
+	depends = startup-notification
+	depends = mime-types
+	depends = dbus-glib
+	depends = ffmpeg
+	depends = nss
+	depends = ttf-font
+	depends = libpulse
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = libnotify: Notification integration
+	optdepends = pulseaudio: Audio support
+	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = hunspell-en_US: Spell checking, American English
+	provides = librewolf
+	conflicts = librewolf
+	options = !emptydirs
+	source = librewolf-bin.desktop
+	source = https://gitlab.com/librewolf-community/LibreWolf-Arch/uploads/aa3638c02c65c90d5f84618703926abd/librewolf-67.0.2-4-x86_64.pkg.tar.xz
+	sha256sums = ad6b1bc47687c8f094a0b8dd077b13099d43fc95469b73ec9890e642512d474e
+	sha256sums = c9451425670deaa2eaf2eca0ed911a711131d0d0123b38f182ed7d80c9979735
+
+pkgname = librewolf-bin
+
