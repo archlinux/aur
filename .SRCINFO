@@ -1,5 +1,5 @@
 pkgbase = clean-chroot-manager
-	pkgdesc = Wrapper scripts for managing clean chroots.
+	pkgdesc = Wrapper for managing clean chroot builds with local repo therein.
 	pkgver = 2.96
 	pkgrel = 1
 	url = https://github.com/graysky2/clean-chroot-manager

@@ -3,7 +3,7 @@
 pkgname=clean-chroot-manager
 pkgver=2.96
 pkgrel=1
-pkgdesc='Wrapper scripts for managing clean chroots.'
+pkgdesc='Wrapper for managing clean chroot builds with local repo therein.'
 arch=('any')
 url='https://github.com/graysky2/clean-chroot-manager'
 license=('MIT')
