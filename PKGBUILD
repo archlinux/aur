@@ -1,5 +1,5 @@
 # Maintainer: Andrea Berlingieri <andrea.berlingieri42 at gmail dot com>
-pkgname=ocaml-http
+pkgname=ocaml-http-git
 pkgver=0.1.6
 pkgrel=1
 pkgdesc="OCaml library that lets you to write simple HTTP daemons"
