@@ -3,7 +3,7 @@
 
 pkgname=ccl-git
 epoch=1
-pkgver=1.12.dev.3.44.g8fa7fdfc
+pkgver=1.12.dev.5.3.gb5233ade
 pkgrel=1
 pkgdesc="The Clozure Common Lisp implementation"
 url="http://ccl.clozure.com/"
@@ -15,21 +15,19 @@ makedepends=('git' 'subversion')
 provides=('common-lisp' 'cl-asdf' 'ccl')
 conflicts=('ccl-bin' 'ccl')
 _arch=64
-source=("git+https://github.com/Clozure/ccl.git" http://svn.clozure.com/publicsvn/openmcl/trunk/source/scripts/get-binaries)
-sha1sums=('SKIP'
-          '3160281c3c8ed63b0019fa00139026d9fdb3259e')
+source=("git+https://github.com/Clozure/ccl.git" https://github.com/Clozure/ccl/releases/download/v1.12-dev.5/linuxx86.tar.gz)
+sha256sums=('SKIP'
+            'abf692f4a05a6667306f2b885128ff4c493b6ab4c0c470e92f9d93ddfbf211df')
+noextract=('linuxx86.tar.gz')
 
 pkgver() {
   cd ccl
   git describe --tags|tr - .|cut -c2-
-  #printf %s.%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
-  sed -i "s+svn export+svn export --force+" get-binaries
   cd ccl
-  chmod 700 ../get-binaries
-  ../get-binaries linuxx86 
+  bsdtar xf "$srcdir"/linuxx86.tar.gz
 }
 
 build() {

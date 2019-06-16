@@ -1,6 +1,6 @@
 pkgbase = ccl-git
 	pkgdesc = The Clozure Common Lisp implementation
-	pkgver = 1.12.dev.3.44.g8fa7fdfc
+	pkgver = 1.12.dev.5.3.gb5233ade
 	pkgrel = 1
 	epoch = 1
 	url = http://ccl.clozure.com/
@@ -15,10 +15,11 @@ pkgbase = ccl-git
 	provides = ccl
 	conflicts = ccl-bin
 	conflicts = ccl
+	noextract = linuxx86.tar.gz
 	source = git+https://github.com/Clozure/ccl.git
-	source = http://svn.clozure.com/publicsvn/openmcl/trunk/source/scripts/get-binaries
-	sha1sums = SKIP
-	sha1sums = 3160281c3c8ed63b0019fa00139026d9fdb3259e
+	source = https://github.com/Clozure/ccl/releases/download/v1.12-dev.5/linuxx86.tar.gz
+	sha256sums = SKIP
+	sha256sums = abf692f4a05a6667306f2b885128ff4c493b6ab4c0c470e92f9d93ddfbf211df
 
 pkgname = ccl-git
 
