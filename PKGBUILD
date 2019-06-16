@@ -1,5 +1,6 @@
 # Maintainer: Bradley Cicenas <bradley@vektor.nyc>
 pkgname=tcolors
+_pkgname=tcolors
 pkgver=0.1
 pkgrel=1
 pkgdesc="Commandline color picker and palette builder"
@@ -13,28 +14,24 @@ makedepends=(
 )
 
 source=(
-	"tcolors::git://github.com/bcicen/tcolors.git"
+	"$_pkgname::git://github.com/bcicen/tcolors.git#tag=v${pkgver}"
 )
 
-md5sums=(
-	'SKIP'
-)
+md5sums=('SKIP')
+backup=()
 
-backup=(
-)
-
-pkgver() {
-	cat "$srcdir/$pkgname/VERSION"
+pkgbuild() {
+	git log -1 --format=%cd.%h --date=short|tr -d -
 }
 
 build() {
 	cd "$srcdir/$pkgname"
 
 	echo "Running 'go mod download'..."
-  go mod download
+	go mod download
 
 	echo "Running 'go build'..."
-  go build -ldflags "-w -X main.version=${pkgver}-${pkgrel}" -o tcolors
+	go build -ldflags "-w -X main.version=${pkgver}-${pkgrel} -X main.build=$(pkgbuild)" -o tcolors
 }
 
 package() {

@@ -8,7 +8,7 @@ pkgbase = tcolors
 	license = GPL
 	makedepends = go
 	makedepends = git
-	source = tcolors::git://github.com/bcicen/tcolors.git
+	source = tcolors::git://github.com/bcicen/tcolors.git#tag=v0.1
 	md5sums = SKIP
 
 pkgname = tcolors
