@@ -1,0 +1,17 @@
+pkgbase = chordpro
+	pkgdesc = Reference implementation of the ChordPro standard for musical lead sheets.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/ChordPro/chordpro
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	makedepends = git
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = git+https://github.com/ChordPro/chordpro.git
+	md5sums = SKIP
+
+pkgname = chordpro-git
+
