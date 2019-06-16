@@ -37,15 +37,16 @@ pkgbase = arbtt
 	makedepends = haskell-unix
 	makedepends = haskell-x11
 	depends = ghc
-	depends = haskell-aeson>=0.1
 	depends = haskell-aeson<=1.5
+	depends = haskell-aeson>=0.1
+	depends = haskell-bytestring-progress
+	depends = haskell-conduit
 	depends = haskell-pcre-light
 	depends = haskell-strict
-	depends = haskell-terminal-progress-bar>=0.4.0
 	depends = haskell-terminal-progress-bar<0.5.0
-	depends = haskell-conduit
-	depends = haskell-bytestring-progress
+	depends = haskell-terminal-progress-bar>=0.4.0
 	depends = haskell-terminal-size
+	depends = haskell-utf8-string
 	depends = haskell-x11
 	provides = haskell-arbtt
 	conflicts = haskell-arbtt
