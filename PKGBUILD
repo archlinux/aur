@@ -1,5 +1,6 @@
 # Maintainer: web.de jan.stuehler
-pkgname=chordpro
+_pkgname=chordpro
+pkgname=chordpro-git
 pkgbase=chordpro-git
 pkgver=1
 pkgrel=1
