@@ -21,10 +21,9 @@ sha1sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgbase"
-
-  # Get the version number.
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgbase"
+    printf '0.r%s.%s' \
+        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
