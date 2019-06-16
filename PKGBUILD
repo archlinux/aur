@@ -8,11 +8,7 @@ url="https://github.com/sacerdot/ocaml-http"
 license=('GPL2')
 #depends=()
 makedepends=('ocaml' 'ocaml-findlib' 'ocamlnet' 'ocaml-pcre')
-#options=()
-#install=
-#changelog=
 source=("git+$url.git")
-#noextract=()
 md5sums=('SKIP')
 
 pkgver() {
