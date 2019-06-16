@@ -17,17 +17,17 @@
 #
 pkgbase="zfs-linux-hardened"
 pkgname=("zfs-linux-hardened" "zfs-linux-hardened-headers")
-_zfsver="0.8.0"
+_zfsver="0.8.1"
 _kernelver="5.1.9.a-1"
 _extramodules="5.1.9.a-1-hardened"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
-makedepends=("python" "linux-hardened-headers=${_kernelver}")
+makedepends=("linux-hardened-headers=${_kernelver}")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
-sha256sums=("0fd92e87f4b9df9686f18e2ac707c16b2eeaf00f682d41c20ea519f3a0fe4705")
+sha256sums=("0af79fde44b7b8ecb94d5166ce2e4fff7409c20ed874c2d759db92909e6c2799")
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux-hardened=${_kernelver}")
 
