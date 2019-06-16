@@ -1,0 +1,17 @@
+pkgbase = ocaml-expat
+	pkgdesc = An ocaml wrapper for the Expat XML parsing library
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://mmzeeman.home.xs4all.nl/ocaml/
+	changelog = ChangeLog
+	arch = x86_64
+	license = custom
+	makedepends = ocaml
+	makedepends = expat
+	makedepends = ocaml-findlib
+	depends = expat
+	source = https://mmzeeman.home.xs4all.nl/ocaml/ocaml-expat-0.9.1.tar.gz
+	md5sums = 17aa00a46c5edeb815f1b0555bad7ed2
+
+pkgname = ocaml-expat
+

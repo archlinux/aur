@@ -1,0 +1,60 @@
+ocaml-expat-0.9.0
+
+  - Small makefile improvements.
+
+ocaml-expat-0.1.0
+
+  - Made the installation independant of the use of ocamlopt. 
+
+ocaml-expat-0.0.8
+
+  - Added findlib support
+
+ocaml-expat-0.0.7
+
+  - Add Olivier Andrieu's option handling fix, 
+  
+  - Included XML_STATUS_OK defines required by older versions of Expat
+    (also flagged by Olivier Andrieu)
+
+ocaml-expat-0.0.6
+
+  - Fixed a problem with the handling alloc_custom. Store_field, which is
+    illegal. This could cause segfaults when the GC thinks it has to do
+    something. Thanks go to Xavier Leroy.
+
+  - Added a sanity check to parse_sub
+
+ocaml-expat-0.0.5
+
+  - Fixed a memory leak
+
+ocaml-expat-0.0.4
+
+  - Added support for external entity reference handling.
+
+  - Made the error codes shorter by removing the redundant "XML_ERROR_".
+
+ocaml-expat-0.0.3
+
+  - Added default handler
+
+  - Added cdata handlers
+
+  - Added parse_sub call, which allows the parse of a substring, suggested
+    by Alain Frisch.
+
+  - Initialize handlers to Val_unit before a register_global_root
+	
+ocaml-expat-0.0.2
+
+  - Add Olivier Andrieu's garbage collection, and finalization bug
+    fix.
+	
+  - Enabled tests which fail with expat_1.95.5, but succeed with
+    expat_1.95.6 (a counting problem)
+	
+ocaml-expat-0.0.1
+
+  - First release of ocaml-expat
+	
