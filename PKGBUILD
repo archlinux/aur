@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=viper4linux-gui
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="Unofficial UI for Viper4Linux"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('viper4linux' 'qt5-base' 'mesa')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ThePBone/Viper4Linux-GUI/archive/$pkgver.tar.gz"
 		"viper4linux-gui.desktop")
-sha256sums=('9edbe2140f507b58a4da860665001a0e1fe8361856081988446d643c49fab788'
+sha256sums=('73cbceb59f6b11ff80090ea5671145aebd2b7dbcd2069c7309c3345adb430741'
             '012e8b24684d876240b3fd6d62741b236cd41bfbcaaf9b41bbe9f8375ca7df71')
 
 build() {
