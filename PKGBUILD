@@ -11,12 +11,6 @@ license=('MIT')
 arch=('i686' 'x86_64')
 makedepends=('git' 'scons' 'pulseaudio' 'clang' 'pkgconf')
 depends=('glu' 'libxcursor' 'libxinerama' 'alsa-lib' 'freetype2' 'mesa')
-_arch=''
-if test "$CARCH" == x86_64; then
-  _arch=('64')
-else
-  _arch=('32')
-fi
 
 source=(
   "git://github.com/godotengine/${_gitname}.git#branch=master"
@@ -39,15 +33,15 @@ build() {
 
   # 64 bit x11 client
   scons platform=x11 tools=no target=release bits=64 CXX=clang++ -j$(nproc)
-  scons platform=x11 tools=no target=release_debug bits=64 CXX=clang++ -j$(nproc)
+  #scons platform=x11 tools=no target=release_debug bits=64 CXX=clang++ -j$(nproc)
   
   # 64 bit headless server
   scons platform=server tools=no target=release bits=64 CXX=clang++ -j$(nproc)
-  scons platform=server tools=no target=release_debug bits=64 CXX=clang++ -j$(nproc)
+  #scons platform=server tools=no target=release_debug bits=64 CXX=clang++ -j$(nproc)
 
   # 32 bit
-  scons platform=x11 tools=no target=release bits=32 CXX=clang++ -j$(nproc)
-  scons platform=x11 tools=no target=release_debug bits=32 CXX=clang++ -j$(nproc)
+  #scons platform=x11 tools=no target=release bits=32 CXX=clang++ -j$(nproc)
+  #scons platform=x11 tools=no target=release_debug bits=32 CXX=clang++ -j$(nproc)
 }
 
 package() {
