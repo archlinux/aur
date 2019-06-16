@@ -8,6 +8,7 @@ pkgbase = oscar-git
 	license = GPL
 	makedepends = git
 	makedepends = glu
+	depends = qt5-tools
 	depends = qt5-serialport
 	provides = oscar
 	source = git+https://gitlab.com/pholy/OSCAR-code.git

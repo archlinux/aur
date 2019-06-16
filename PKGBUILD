@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url="https://gitlab.com/pholy/OSCAR-code"
 license=('GPL')
 depends=(
+  'qt5-tools'
   'qt5-serialport'
 )
 makedepends=(
