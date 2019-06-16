@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=('drill-search-cli' 'drill-search-gtk')
 pkgbase=drill-search
-pkgver=1.252
+pkgver=1.253
 pkgrel=1
 arch=('x86_64')
 url="https://www.drill.santamorena.me/"
@@ -11,7 +11,7 @@ source=("$pkgbase-$pkgver.tar.gz::https://github.com/yatima1460/Drill/archive/$p
 	"$pkgbase"
 	"$pkgbase-gtk.desktop"
 	"$pkgbase-gtk.svg")
-sha256sums=('87270864419d11bbb1619e7ef6347611c1d64d17cd06833f46e3f8a0037a6ad5'
+sha256sums=('dcad7fee6ad9fd6ed0765178ecbab145f8a831cb2f1d89686a131ef91f052620'
             'b875f928546aee7855cb1db9afc8ab3f1a8a34d43de5bbd62f7076d7ba9f3917'
             '21a6d19b8198816b3a6e406198ee6e4d5ab0da134df26b8342837e810ccc26a9'
             'cbfbcebb2957223eaa9c915780a5d0ac47c1fac70b7944f49e8ffcfe740edc53')
