@@ -1,7 +1,7 @@
 # Maintainer: web.de jan.stuehler
-pkgname=chordpro-git
+pkgname=chordpro
 pkgbase=chordpro-git
-pkgver=0
+pkgver=1
 pkgrel=1
 pkgdesc='Reference implementation of the ChordPro standard for musical lead sheets.'
 arch=('i686' 'x86_64')
