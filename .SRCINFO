@@ -1,4 +1,4 @@
-pkgbase = chordpro
+pkgbase = chordpro-git
 	pkgdesc = Reference implementation of the ChordPro standard for musical lead sheets.
 	pkgver = 0
 	pkgrel = 1
