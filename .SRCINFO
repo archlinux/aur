@@ -1,0 +1,18 @@
+pkgbase = trackless
+	pkgdesc = Changes your mac address of ALL interfaces so your privacy can be enhanced.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/Baitinq/trackless.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = macchanger
+	depends = bash
+	provides = trackless
+	source = git://github.com/Baitinq/trackless.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = trackless-git
+
