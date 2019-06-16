@@ -2,7 +2,7 @@
 
 pkgname=ghq-bin
 pkgver=0.12.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Remote repository management made easy. Pre-compiled."
 arch=('x86_64')
 url="https://github.com/motemen/ghq"
