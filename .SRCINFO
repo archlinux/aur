@@ -1,6 +1,6 @@
 pkgbase = gimp-develop-git
 	pkgdesc = GNU Image Manipulation Program (non-conflicting git version)
-	pkgver = 2.99.1.r2537.47d2b685a6
+	pkgver = 2.99.1.r2541.5160f51676
 	pkgrel = 1
 	epoch = 1
 	url = https://www.gimp.org
@@ -12,7 +12,6 @@ pkgbase = gimp-develop-git
 	makedepends = git
 	makedepends = gutenprint>=5.0.0
 	makedepends = intltool>=0.40.1
-	makedepends = gnome-python>=2.16.2
 	makedepends = alsa-lib>=1.0.0
 	makedepends = libxslt
 	makedepends = glib-networking

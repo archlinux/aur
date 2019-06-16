@@ -7,7 +7,7 @@
 pkgname=gimp-develop-git
 _pkgname=${pkgname%-develop-git}
 epoch=1
-pkgver=2.99.1.r2537.47d2b685a6
+pkgver=2.99.1.r2541.5160f51676
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (non-conflicting git version)"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ depends=(
 	'cairo>=1.14.0'
 	'appstream-glib>=0.7.7'
 	)
-makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1' 'gnome-python>=2.16.2'
+makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1'
              'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm' 'webkit2gtk'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib')
