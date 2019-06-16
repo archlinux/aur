@@ -2,7 +2,7 @@
 pkgname=nvidia-system-monitor-git
 _pkgname=nvidia-system-monitor
 pkgver=v1.0beta1
-pkgrel=1
+pkgrel=2
 pkgdesc="Task Manager for Linux for Nvidia graphics cards"
 arch=('x86_64')
 url="https://github.com/congard/${_pkgname}"
@@ -15,7 +15,6 @@ md5sums=('SKIP' 'SKIP')
 
 build() {
     cd $srcdir/${_pkgname}
-    sed -i 's/src\/html/\/usr\/share\/doc\/$pkgname\/html/g' src/constants.h
     ./make.sh
 }
 
