@@ -2,12 +2,12 @@
 
 _pkgname=electronplayer
 pkgname=$_pkgname
-pkgver=2.0.4
-pkgrel=2
+pkgver=2.0.6
+pkgrel=1
 pkgdesc="An Electron-based web video player, supporting multiple services"
 arch=(any)
 url="https://github.com/oscartbeaumont/ElectronPlayer"
-license=("MIT" "custom")
+license=("custom:MIT")
 
 depends=("c-ares"
          "ffmpeg"
@@ -31,12 +31,14 @@ conflicts=("$_pkgname-git")
 
 source=("https://github.com/oscartbeaumont/ElectronPlayer/archive/v${pkgver}.tar.gz"
         "${_pkgname}.desktop")
-sha512sums=('d0e29f3290a2eb5a54a245c3dd87139b7758772320ab5efd0d93d3ca90904b43549c58635b1e352c16c161b68f26a09e1b11c98eae68c273db300236bca490a4'
+sha512sums=('75c60242cdf55280e4f5f1ee0623538b5005d093cdee9dbe9d4977ddffb05bc3fc6c6b1f05dfa38248d2a384df1f7bac5a7519d31e3ee3a9ef26670c9f5fb4ff'
             '280a252895e641f4bd009b4acf7f9f42959f0b9d51424ea71bf564600533de3867a652efd9d982643c34907bb5e57fa677e6c73315cb69a2f12dfd52e6f09f03')
 
 
 prepare() {
     cd "ElectronPlayer-$pkgver"
+
+    cp "package.linux.json" "package.json"
 
     yarn --cache-folder "${srcdir}/yarn-cache" 
 }
@@ -44,11 +46,8 @@ prepare() {
 build() {
     cd "ElectronPlayer-$pkgver"
 
-    # We are not using system Electron as we need widevinecdm and an older Electron version
+    # We are not using system Electron as we need castlabs Electron (not yet packaged)
     npx electron-builder --linux dir
-
-    # Delete darwin (macOS) widevine libs
-    rm -rf "dist/linux-unpacked/resources/app.asar.unpacked/node_modules/electron-widevinecdm/widevine/darwin_x64"
 }
 
 package() {
