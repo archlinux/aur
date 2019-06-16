@@ -25,9 +25,9 @@ arch:
   repos:
   - bartus=https://github.com/bartoszek/AUR-repo/raw/master
   packages:
-# disable to prevent `package-cleanup.hook`
-# - ccache
-# - moreutils
+  - ccache
+  - moreutils
+  - bc
   script:
 # prepare ENV:
 #   1. multithreading: 
@@ -39,7 +39,6 @@ arch:
      echo 'COMPRESSXZ=(xz -T 0 -c -z -)' >> PKGBUILD
      echo "MAKEFLAGS='-j2'" >> PKGBUILD
      sudo mkdir /etc/pacman.d/hooks/ && sudo ln -s /dev/null /etc/pacman.d/hooks/package-cleanup.hook
-     sudo pacman -S --noconfirm ccache moreutils bc
 # check interval update
   - |
      update_offset=$(. PKGBUILD; sha1sum <<< "$pkgname"|sed -e "s/[a-z -]//g" -e "s/^0*//"|echo `cat`%$update_interval|bc)
@@ -73,7 +72,7 @@ arch:
      exit $makepkg_ret
 
 script:
-- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/pacman-pkg-cache/arch-travis.sh | bash"
+- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/pacman-pkg-cache/arch-travis.sh |sed 's:mikkeloscar/arch-travis:bartoszek/arch-travis-bartus:'| bash"
 - "echo 'pacman pkg cache size: ' $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
 
 deploy:
