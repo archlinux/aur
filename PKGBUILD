@@ -1,5 +1,6 @@
-# Maintainer: Florian Jacob <projects+arch AT florianjacob )DOT( de>
 # Maintainer: Jake <aur@ja-ke.tech>
+# Contributor: Florian Jacob <projects+arch AT florianjacob )DOT( de>
+
 pkgname=earlyoom
 pkgver=1.3
 pkgrel=1
@@ -14,6 +15,12 @@ source=(
 )
 sha512sums=('c5de742289e82c2098bd88c61dcb3e20eb022905a015b4894c95a4de3978ce18d794a9e7c17c97851ca9f8888728908f7bf978c014b3b69799bffa8b546d258a'
             '3c2d14866a70a7f1711fe85e444e64ab4b1191e3e0fb4aaf730e424d951e3bcf823c5b22153ad8c7bb0c9231b0878eadbcea56967e91230da698432c6783b478')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    # remove useless command for Arch package
+    sed -i "/systemctl/d;/chcon/d" Makefile
+}
 
 build() {
 	cd "$pkgname-$pkgver"
