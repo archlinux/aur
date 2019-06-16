@@ -1,13 +1,13 @@
 pkgbase = vim-perl-support
 	pkgdesc = Perl-IDE offers easiest way to do all of the above, saving lot of time and keystrokes.
 	pkgver = 5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vim.org/scripts/script.php?script_id=556
 	arch = any
 	groups = vim-plugins
 	license = GPL2
 	depends = perl
-	depends = vim-vim-support
+	depends = vim-vim-support>=2.4
 	optdepends = perl-perl-tags: to generate Ctags style tags for Perl sourcecode
 	optdepends = perl-devel-smallprof: to run per-line Perl profiler
 	optdepends = perl-critic: Critique Perl source code for best-practices
