@@ -1,5 +1,5 @@
 diff --git a/settings/settings/librewolf.cfg b/settings/settings/librewolf.cfg
-index 4e8adb1..249f516 100644
+index 4e8adb1..34a0ba7 100644
 --- a/settings/settings/librewolf.cfg
 +++ b/settings/settings/librewolf.cfg
 @@ -107,14 +107,14 @@ lockPref("general.config.filename", "librewolf.cfg");
@@ -52,7 +52,18 @@ index 4e8adb1..249f516 100644
  
  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  // Section : Locale/Time/UserAgent
-@@ -1429,22 +1429,22 @@ lockPref("extensions.getAddons.compatOverides.url", "");
+@@ -1087,7 +1087,9 @@ lockPref("extensions.webextensions.identity.redirectDomain", "");
+ // Pref : CSP Settings For Extensions I/II : Extension Firewall Feature
+ // Uncomment to disable network for the extensions
+ // Enable-Firewall-Feature-In-The-Next-Line extensions-firewall >>>>>>
+-lockPref("extensions.webextensions.base-content-security-policy", "default-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; script-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; object-src 'self' moz-extension: blob: filesystem:;");
++defaultPref("extensions.webextensions.base-content-security-policy", "default-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; script-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; object-src 'self' moz-extension: blob: filesystem:;");
++// original value:
++// "script-src 'self' https://* moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; object-src 'self' https://* moz-extension: blob: filesystem:;"
+ 
+ // Pref : CSP Settings For Extensions II/II : Extension Firewall Feature
+ // This value is applied after the first one (just ignore this)
+@@ -1429,22 +1431,22 @@ lockPref("extensions.getAddons.compatOverides.url", "");
  // https://services.addons.mozilla.org/api/v3/addons/compat-override/?guid=%IDS%&lang=%LOCALE%
  
  // Pref :
@@ -79,7 +90,7 @@ index 4e8adb1..249f516 100644
  // Default Value
  // https://addons.mozilla.org/%LOCALE%/firefox/search?q=%TERMS%&platform=%OS%&appver=%VERSION%
  
-@@ -1479,7 +1479,7 @@ lockPref("browser.newtabpage.activity-stream.fxaccounts.endpoint", "");
+@@ -1479,7 +1481,7 @@ lockPref("browser.newtabpage.activity-stream.fxaccounts.endpoint", "");
  // https://accounts.firefox.com/
  
  // Pref :
@@ -88,7 +99,7 @@ index 4e8adb1..249f516 100644
  // Default Value
  // https://versioncheck.addons.mozilla.org/update/VersionCheck.php?reqVersion=
  // %REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&maxAppVersion=
-@@ -2075,7 +2075,7 @@ lockPref("app.releaseNotesURL", "");
+@@ -2075,7 +2077,7 @@ lockPref("app.releaseNotesURL", "");
  
  // Pref :
  lockPref("app.update.auto", false);
@@ -97,7 +108,7 @@ index 4e8adb1..249f516 100644
  lockPref("app.update.staging.enabled", false);
  lockPref("app.update.silent", false);
  lockPref("app.update.lastUpdateTime.telemetry_modules_ping", 0);
-@@ -2189,10 +2189,10 @@ lockPref("extensions.blocklist.itemURL", "");
+@@ -2189,10 +2191,10 @@ lockPref("extensions.blocklist.itemURL", "");
  lockPref("extensions.blocklist.url", "");
  
  // Pref :
@@ -110,7 +121,7 @@ index 4e8adb1..249f516 100644
  
  // Pref :
  lockPref("extensions.webservice.discoverURL", "");
-@@ -2484,7 +2484,7 @@ lockPref("security.dialog_enable_delay", 700);
+@@ -2484,7 +2486,7 @@ lockPref("security.dialog_enable_delay", 700);
  
  // Pref : Opt-out of add-on metadata updates
  // https://blog.mozilla.org/addons/how-to-opt-out-of-add-on-metadata-updates/
@@ -119,7 +130,7 @@ index 4e8adb1..249f516 100644
  
  // Pref : Opt-out of themes (Persona) updates
  // https://support.mozilla.org/t5/Firefox/how-do-I-prevent-autoamtic-updates-in-a-50-user-environment/td-p/144287
-@@ -2517,7 +2517,7 @@ lockPref("plugin.sessionPermissionNow.intervalInMinutes", 0);
+@@ -2517,7 +2519,7 @@ lockPref("plugin.sessionPermissionNow.intervalInMinutes", 0);
  
  // Pref : Updates addons automatically
  // https://blog.mozilla.org/addons/how-to-turn-off-add-on-updates/

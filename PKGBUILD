@@ -7,7 +7,7 @@ pkgname=librewolf
 _pkgname=LibreWolf
 pkgver=67.0.2
 _bundle=c9edc4fbdfc8a0a5656e43d0afda6df03b93de7c
-pkgrel=2
+pkgrel=4
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -33,7 +33,7 @@ source=(https://hg.cdn.mozilla.net/mozilla-unified/${_bundle}.zstd-max.hg
 sha256sums=('a27eda97cfbc546bd156249490e72ef5cbb96a1d5921efa1131b565bcc938c0c'
             'd0673786a6a1f1b9f6f66a3a1356afa33f1f18f59dabd92bd193c88c52a1d04c'
             'ad6b1bc47687c8f094a0b8dd077b13099d43fc95469b73ec9890e642512d474e'
-            '14988a699a57354530c5aaee4d760436a8828bc4e7d2766e5c90729e9a369a9a'
+            '49d7e6071afcc5de5aa802bbb49810a7502fe31063dde9e2887b6837cab694ce'
             'SKIP')
 
 prepare() {
@@ -67,7 +67,7 @@ END
 
 
   local ICON_FILE_PATH=$srcdir/$pkgname/branding/icon/icon.svg;
-  local BRANDING_FOLDER_PATH=$srcdir/$pkgname/browser/source_files/browser/branding/librewolf;
+  local BRANDING_FOLDER_PATH=$srcdir/$pkgname/browser/resources/source_files/browser/branding/librewolf;
 
   # generate icons and moves them to the branding folder
   echo Generating icons from $ICON_FILE_PATH and moving to $BRANDING_FOLDER_PATH;
@@ -125,7 +125,7 @@ ac_add_options --disable-gconf
 ac_add_options --disable-updater
 END
 
-  cp -r ${srcdir}/${pkgname}/browser/source_files/{docshell,browser} ./
+  cp -r ${srcdir}/${pkgname}/browser/resources/source_files/{docshell,browser} ./
 }
 
 
