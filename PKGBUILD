@@ -2,41 +2,36 @@
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=nted
-pkgver=1.10.18
-pkgrel=5
+pkgname=nted-git
+pkgver=1.10.19.r2.g6af6374
+pkgrel=1
 pkgdesc="A free music score editor for Linux."
 arch=('i686' 'x86_64')
 depends=('harfbuzz' 'gdk-pixbuf2' 'pango' 'gtk2' 'alsa-lib')
-makedepends=('gcc49')
+makedepends=('git')
 license=('GPL')
-url="http://http.debian.net/debian/pool/main/n/nted/"
+url="https://gitlab.com/stefanhusmann/nted"
 options=('!libtool' '!strip' '!makeflags')
-source=("http://urchlay.naptime.net/~urchlay/src/nted-$pkgver.tar.gz"
-	"http://http.debian.net/debian/pool/main/n/nted/nted_$pkgver-12.debian.tar.xz")
-md5sums=('0ca7aa23109171ab643a9b552487bd4b'
-         'ca741156f6633603c84fe3e8e74d0555')
+conflicts=('nted')
+provides=('nted')
+source=("git+$url")
+md5sums=('SKIP')
 
-prepare() {
-  cd $pkgname-$pkgver
-  
-  for i in `head -10 $srcdir/debian/patches/series`
-  do
-    patch -p1 < "$srcdir"/debian/patches/$i || true
-  done
-  mv configure.in configure.ac
+pkgver() {
+  cd ${pkgname%-git}
+  echo $(git describe --always|sed s+-+.r+|tr - .)
 }
-
+  
 build() {
-  cd $pkgname-$pkgver
+  cd ${pkgname%-git}
   aclocal
   automake --add-missing
   autoreconf
-  CXX=g++-4.9 CXXFLAGS=" -O2 -std=c++11 -Wno-narrowing" ./configure --prefix=/usr 
+  CXXFLAGS=" -O2 -std=c++11 -Wno-narrowing -fpermissive" ./configure --prefix=/usr 
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd ${pkgname%-git}
   make DESTDIR="$pkgdir" install
 }
