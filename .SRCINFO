@@ -1,7 +1,7 @@
 pkgbase = arachnophilia
 	pkgdesc = A web page development workshop and general programming tool
 	pkgver = 5.5.2935
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.arachnoid.com/arachnophilia/index.php
 	arch = any
 	license = GPL
