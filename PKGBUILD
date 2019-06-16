@@ -1,7 +1,7 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
 _pkgname=openspace-desktop
-_pkgver=0.0.43-2
+_pkgver=0.0.44
 pkgname="${_pkgname}-bin"
 pkgver="${_pkgver//-/_}"
 pkgrel=1
@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 replaces=('openbook-desktop-bin')
 depends=('libxcursor' 'libxinerama' 'libxrandr' 'libxxf86vm' 'sqlite' 'bash' 'gtk3')
 source=("${_pkgname}-${_pkgver}.zip::https://gitlab.com/999eagle/openspace-desktop/-/jobs/artifacts/${_pkgver}/download?job=release-linux")
-sha256sums=('2ef3e61f2584cd38faa99f19bc7a988df12f4adf42b61940d248759092ad68c8')
+sha256sums=('f958ba8cb6b998ccc5fb5e996d402a6d0da764fdf1729aa66366cfdff0b51b14')
 
 package() {
 	# Main files

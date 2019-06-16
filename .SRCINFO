@@ -1,6 +1,6 @@
 pkgbase = openspace-desktop-bin
 	pkgdesc = Desktop client for Openspace
-	pkgver = 0.0.43_2
+	pkgver = 0.0.44
 	pkgrel = 1
 	url = https://gitlab.com/999eagle/openspace-desktop
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = openspace-desktop-bin
 	provides = openspace-desktop
 	conflicts = openspace-desktop
 	replaces = openbook-desktop-bin
-	source = openspace-desktop-0.0.43-2.zip::https://gitlab.com/999eagle/openspace-desktop/-/jobs/artifacts/0.0.43-2/download?job=release-linux
-	sha256sums = 2ef3e61f2584cd38faa99f19bc7a988df12f4adf42b61940d248759092ad68c8
+	source = openspace-desktop-0.0.44.zip::https://gitlab.com/999eagle/openspace-desktop/-/jobs/artifacts/0.0.44/download?job=release-linux
+	sha256sums = f958ba8cb6b998ccc5fb5e996d402a6d0da764fdf1729aa66366cfdff0b51b14
 
 pkgname = openspace-desktop-bin
 
