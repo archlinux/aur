@@ -1,0 +1,15 @@
+pkgbase = ulex08
+	pkgdesc = OCaml lexer generator with Unicode support - CamlP5 version - version 0.8
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://www.cduce.org/download.html
+	arch = x86_64
+	license = custom
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	makedepends = camlp5
+	source = ulex08-0.8::http://deb.debian.org/debian/pool/main/u/ulex0.8/ulex0.8_0.8.orig.tar.gz
+	md5sums = baf9fe9fc381c7824a2e0e368da5fa13
+
+pkgname = ulex08
+

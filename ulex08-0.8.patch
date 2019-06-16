@@ -1,0 +1,127 @@
+diff --git a/META b/META
+index 1a3ce10..b2f25ef 100644
+--- a/META
++++ b/META
+@@ -1,5 +1,5 @@
+-version = "0.7"
+-requires = "camlp4"
++version = "0.8"
++requires = "camlp5"
+ description = "Runtime support for ulex"
+ archive(byte) = "ulexing.cma"
+ archive(native) = "ulexing.cmxa"
+diff --git a/Makefile b/Makefile
+index 44ddf92..283f8bb 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,8 +4,9 @@ all: ulexing.cma pa_ulex.cma
+ all.opt: ulexing.cma ulexing.cmxa pa_ulex.cma
+ 
+ 
++DESTDIR=
+ install: all
+-	ocamlfind install ulex META $(wildcard *.mli) $(wildcard *.cmi) $(wildcard *.a) $(wildcard *.cma) $(wildcard *.cmxa)
++	ocamlfind install -destdir $(DESTDIR) ulex08 META $(wildcard *.mli) $(wildcard *.cmi) $(wildcard *.a) $(wildcard *.cma) $(wildcard *.cmxa)
+ 
+ uninstall:
+ 	ocamlfind remove ulex
+@@ -19,7 +20,7 @@ ulexing.cmxa: $(ULEXING)
+ 	ocamlopt -a -o ulexing.cmxa $(ULEXING)
+ 
+ pa_ulex.cma: $(ULEX)
+-	ocamlc -a -o pa_ulex.cma -pp 'camlp4o pa_extend.cmo q_MLast.cmo' -I +camlp4 $(ULEX)
++	ocamlc -a -o pa_ulex.cma -pp 'camlp5o pa_macro.cmo pa_extend.cmo q_MLast.cmo' -I +camlp5 $(ULEX)
+ 
+ pa_ulex.ml: pa_ulex.ml.src
+ 	ocaml mk_pa_ulex.ml
+@@ -28,14 +29,14 @@ clean:
+ 	rm -f *.cm* *~ test custom_ulexing *.o *.a *.html *.css pa_ulex.ml
+ 
+ view_test: pa_ulex.cma
+-	camlp4o ./pa_ulex.cma pr_o.cmo -sep "\n" test.ml
++	camlp5o ./pa_ulex.cma pr_o.cmo -sep "\n" test.ml
+ 
+ run_test: ulexing.cma pa_ulex.cma
+-	ocamlc -o test -pp 'camlp4o ./pa_ulex.cma' ulexing.cma test.ml
++	ocamlc -o test -pp 'camlp5o ./pa_ulex.cma' ulexing.cma test.ml
+ 	./test
+ 
+ custom_ulexing: ulexing.cma pa_ulex.cma
+-	ocamlc -o custom_ulexing -pp 'camlp4o ./pa_ulex.cma' ulexing.cma custom_ulexing.ml
++	ocamlc -o custom_ulexing -pp 'camlp5o ./pa_ulex.cma' ulexing.cma custom_ulexing.ml
+ 
+ 
+ doc:
+diff --git a/README b/README
+index f5eee7b..52080e0 100644
+--- a/README
++++ b/README
+@@ -142,7 +142,7 @@ Installation:
+ 
+ Compilation of OCaml files with lexer specifications:
+ 
+-  ocamlfind ocamlc -c -package ulex -syntax camlp4o my_file.ml
++  ocamlfind ocamlc -c -package ulex -syntax camlp5o my_file.ml
+ 
+ When linking, you must also include the ulex package:
+   ocamlfind ocamlc -o my_prog -linkpkg -package ulex my_file.cmo
+diff --git a/mk_pa_ulex.ml b/mk_pa_ulex.ml
+index e9d7159..c36c84c 100644
+--- a/mk_pa_ulex.ml
++++ b/mk_pa_ulex.ml
+@@ -1,10 +1,4 @@
+ let s = float_of_string (String.sub (Sys.ocaml_version) 0 4) in
+-if (s < 3.09) then (
+   print_endline "Old camlp4 (loc)";
+   Sys.command "sed s/_loc/loc/ < pa_ulex.ml.src > pa_ulex.ml"
+-)
+-else  (
+-  print_endline "New camlp4 (_loc)";
+-  Sys.command "cp pa_ulex.ml.src pa_ulex.ml"
+-)
+ 
+diff --git a/pa_ulex.ml.src b/pa_ulex.ml.src
+index a56bd01..643fcad 100644
+--- a/pa_ulex.ml.src
++++ b/pa_ulex.ml.src
+@@ -1,4 +1,4 @@
+-let _loc = (Lexing.dummy_pos,Lexing.dummy_pos)
++let _loc = Stdpp.dummy_loc
+ 
+ (* Named regexp *)
+ 
+@@ -135,6 +135,8 @@ let call_state auto state =
+       <:expr< $lid:f$ lexbuf >>
+ 	
+ 
++let vala_None = IFDEF STRICT THEN Ploc.VaVal None ELSE None END
++
+ let gen_state auto _loc i (part,trans,final) = 
+   let f = Printf.sprintf "__ulex_state_%i" i in
+   let p = partition_name part in
+@@ -142,11 +144,11 @@ let gen_state auto _loc i (part,trans,final) =
+     Array.mapi 
+       (fun i j ->
+ 	 <:patt< $int:string_of_int i$ >>,
+-	 None,
++	 vala_None,
+ 	 call_state auto j
+       ) trans in
+   let cases = Array.to_list cases in
+-  let cases = cases @ [<:patt< _ >>, None, <:expr< Ulexing.backtrack lexbuf >>] in
++  let cases = cases @ [<:patt< _ >>, vala_None, <:expr< Ulexing.backtrack lexbuf >>] in
+   let body = 
+     <:expr< match ($lid:p$ (Ulexing.next lexbuf)) 
+     with [ $list:cases$ ] >> in
+@@ -165,9 +167,9 @@ let gen_definition _loc l =
+   let rs = Array.map fst brs in
+   let auto = Ulex.compile rs in
+ 
+-  let cases = Array.mapi (fun i (_,e) -> <:patt< $int:string_of_int i$ >>, None, e) brs in
++  let cases = Array.mapi (fun i (_,e) -> <:patt< $int:string_of_int i$ >>, vala_None, e) brs in
+   let cases = Array.to_list cases in
+-  let cases = cases @ [<:patt< _ >>, None, <:expr< raise Ulexing.Error >>] in
++  let cases = cases @ [<:patt< _ >>, vala_None, <:expr< raise Ulexing.Error >>] in
+   let actions = <:expr< match __ulex_state_0 lexbuf with [ $list:cases$ ] >> in
+   let states = Array.mapi (gen_state auto _loc) auto in
+   let states = List.flatten (Array.to_list states) in
