@@ -39,7 +39,7 @@ build() {
   scons platform=server tools=no target=release bits=64 CXX=clang++ -j$(nproc)
   #scons platform=server tools=no target=release_debug bits=64 CXX=clang++ -j$(nproc)
 
-  # 32 bit
+  # 32 bit x11
   #scons platform=x11 tools=no target=release bits=32 CXX=clang++ -j$(nproc)
   #scons platform=x11 tools=no target=release_debug bits=32 CXX=clang++ -j$(nproc)
 }
@@ -47,11 +47,18 @@ build() {
 package() {
   cd "${srcdir}"/${_gitname}
   mkdir -p "${pkgdir}"/usr/share/godot/templates/
+
+  # 64 bit x11
   install -Dm755 bin/godot.x11.opt.64.llvm "${pkgdir}"/usr/share/godot/templates/
-  install -Dm755 bin/godot.x11.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
+  #install -Dm755 bin/godot.x11.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
+
+  # 64 bit server
   install -Dm755 bin/godot_server.x11.opt.64 "${pkgdir}"/usr/share/godot/templates/
-  install -Dm755 bin/godot_server.x11.opt.debug.64 "${pkgdir}"/usr/share/godot/templates/
-  install -Dm755 bin/godot.x11.opt.32.llvm "${pkgdir}"/usr/share/godot/templates/
-  install -Dm755 bin/godot.x11.opt.debug.32.llvm "${pkgdir}"/usr/share/godot/templates/
+  #install -Dm755 bin/godot_server.x11.opt.debug.64 "${pkgdir}"/usr/share/godot/templates/
+
+  # 32 bit x11
+  #install -Dm755 bin/godot.x11.opt.32.llvm "${pkgdir}"/usr/share/godot/templates/
+  #install -Dm755 bin/godot.x11.opt.debug.32.llvm "${pkgdir}"/usr/share/godot/templates/
+
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${_pkgname}"/LICENSE
 }
