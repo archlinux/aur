@@ -3,21 +3,17 @@
 
 pkgname='ip2geo'
 pkgver='1.1.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Import ipgeo data to files for nginx geoip module'
 arch=('x86_64' 'i686')
 url="https://github.com/m-messiah/${pkgname}"
 license=('MIT')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('43efca4fe6450db72c82c3c95cb5860941a60abc1f8adf1325d8f2f5c3999449')
+sha256sums=('9737a36de0503f2c8f81ce72bac20c09c8d35890ba100ddbe3054aca5c79d702')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # https://github.com/m-messiah/ip2geo/issues/28
-  echo -e "\nconst VERSION = \"${pkgver}\"" >> version.go
-
   export GOPATH="${srcdir}/gopath"
   export GOBIN="${GOPATH}/bin"
   mkdir -p "${GOPATH}/src/github.com/m-messiah"
