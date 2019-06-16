@@ -11,12 +11,7 @@ pkgbase = godot-export-templates-git
 	makedepends = pulseaudio
 	makedepends = clang
 	makedepends = pkgconf
-	depends = glu
-	depends = libxcursor
-	depends = libxinerama
-	depends = alsa-lib
-	depends = freetype2
-	depends = mesa
+	depends = godot
 	source = git://github.com/godotengine/godot.git#branch=master
 	sha256sums = SKIP
 
