@@ -1,13 +1,12 @@
 pkgbase = linode-dynamic-dns
 	pkgdesc = Update Linode DNS records to point to local IPv4 and IPv6 addresses.
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/nvllsvm/linode-dynamic-dns
 	arch = any
 	depends = python>=3.6
-	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/l/linode-dynamic-dns/linode-dynamic-dns-0.5.0.tar.gz
-	sha256sums = c1016c73fe707d23fb060720bc6978ba4ac931403bc0f0472a90bd914bb57db5
+	source = https://files.pythonhosted.org/packages/source/l/linode-dynamic-dns/linode-dynamic-dns-0.6.0.tar.gz
+	sha256sums = 29695535f462cf796f41f420c34230491201cf0674cd385d69b000d92c49f9ce
 
 pkgname = linode-dynamic-dns
 
