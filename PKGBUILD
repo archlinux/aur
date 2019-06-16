@@ -18,11 +18,11 @@ source=("$_pkgname-$pkgver.jar::http://www.arachnoid.com/$pkgname/$_pkgname.jar"
 	"http://www.arachnoid.com/arachnophilia/index.php"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('45440320ba882afdc98376ec38c38fc9'
-         'b2c3dc9852bff89756c89f957089374f'
-         '6dd37d79c9653c886b56b2db4bae627e'
-         'a41385032fe3a726321d02cd85f9ba55'
-         '27010dd0f2b690ca78392dffcc25f210')
+sha256sums=('7ac597715fc1ec5d46cdde9d6a584a2d612da0b30d7a6e2349dfd754f27b4480'
+            'b170b0beb4fee26fb9f60529cf87d418396571459b95210b19437596407d3426'
+            'eb6fe0eac651f11b29b05106eb99e91c0c491d318c70e91039cbc386ca2918b3'
+            'e1ae7e1cdfcf66011fae5f4e2e1c46b4f00fb2ea58edf74ba146896f04d70c98'
+            '6b772081e74eb9551102f6331bc3f4114d1dcfdea7798b9cc1a5ff8c2d73a422')
 DLAGENTS=('http::/usr/bin/curl -A "Mozilla/4.0" -kfLC - --retry 3 --retry-delay 3 -o %o %u')
 noextract=("$_pkgname-$pkgver.jar")
 
