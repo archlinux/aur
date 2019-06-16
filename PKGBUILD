@@ -6,7 +6,7 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=('gcc49-alternative-multilib' 'gcc49-alternative-libs-multilib' 'lib32-gcc49-alternative-libs')
-pkgver=4.9.3
+pkgver=4.9.4
 _pkgver=4.9
 _islver=0.12.2
 _cloogver=0.18.1
@@ -24,7 +24,7 @@ source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
         #ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz)
-md5sums=('6f831b4d251872736e8e9cc09746f327'
+md5sums=('87c24a4090c1577ba817ec6882602491'
          'e039bfcfb6c2ab039b8ee69bf883e824'
          'e34fca0540d840e5d0f6427e98c92252')
 
@@ -55,10 +55,14 @@ prepare() {
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
-  patch -p1 -i ${startdir}/cfns.h.diff
+#  patch -p1 -i ${startdir}/cfns.h.diff
   patch -p1 -i ${startdir}/ucontext_t.patch
   patch -p1 -i ${startdir}/sigaltstack.patch
   patch -p1 -i ${startdir}/libsanitizer.patch
+  patch -p1 -i ${startdir}/ustat.patch
+
+  (cd libgcc; ln -sf gthr-posix.h gthr-default.h)
+  (cd libgcc; ln -sf config/i386/linux-unwind.h md-unwind-support.h)
 
   mkdir -p ${srcdir}/gcc-build
 }
