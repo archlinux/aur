@@ -20,8 +20,10 @@ package() {
 	install -dm755 "$_DESTDIR"
 
 	bsdtar -xf $pkgname-$pkgver.zip \
-		--exclude README.mkd.old \
-		--exclude Makefile \
 		--exclude config.mk \
+		--exclude Makefile \
+		--exclude README.mkd \
+		--exclude README.mkd.old \
+		--exclude test.vim \
 		--directory "$_DESTDIR"
 }
