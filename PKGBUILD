@@ -1,15 +1,15 @@
 # Maintainer: RedTide <redtid3@gmail.com>
 
 pkgname=sfizz
-pkgver=r42.a01d394
-pkgrel=2
+pkgver=r44.cb30e9a
+pkgrel=1
 pkgdesc="Juce based SFZ format sampler"
 url="https://github.com/sfztools/sfizz"
 arch=('x86_64')
 license=('GPL3')
 makedepends=('git' 'juce')
 source=(
-    "$pkgname"::"git+https://github.com/sfztools/sfizz#commit=a01d394"
+    "$pkgname"::"git+https://github.com/sfztools/sfizz#commit=cb30e9a"
 )
 md5sums=(
     'SKIP'
