@@ -8,7 +8,7 @@ _android_platform=22 # https://developer.android.com/about/dashboards/
 _android_platform_arch=arch-arm64
 _android_platform_dir=android-$_android_platform/${_android_platform_arch}
 _pkgname=openssl
-_ver=1.1.1b
+_ver=1.1.1c
 _pref=/opt/android-libs/$_pkg_arch
 
 # export Android configuration
@@ -33,10 +33,11 @@ replaces=("android-$_pkgname-$_android_arch")
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"
         "https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz.asc"
         'setenv-android.sh')
-sha256sums=('5c557b023230413dfb0756f3137a13e6d726838ccd1430888ad15bfb2b43ea4b'
+sha256sums=('f6fb3079ad15076154eda9413fed42877d668e7069d9b87396d0804fdb3f4c90'
             'SKIP'
             'SKIP')
-validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
+validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
+              '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
 
 build() {
 	cd "$srcdir/$_pkgname-$_ver"
