@@ -1,13 +1,13 @@
 pkgbase = dpic
 	pkgdesc = A pic language interpreter
-	pkgver = 2019.01.01
+	pkgver = 2019.06.15
 	pkgrel = 1
 	url = http://www.ece.uwaterloo.ca/~aplevich/dpic/
 	arch = x86_64
 	arch = i686
 	license = BSD
-	source = https://ece.uwaterloo.ca/~aplevich/dpic/dpic-2019.01.01.tar.gz
-	sha256sums = 4f4309a316bef6060204e4ea04e8cc28aae97fb29f31a337ce50fa09a6a5d5c9
+	source = https://ece.uwaterloo.ca/~aplevich/dpic/dpic-2019.06.15.tar.gz
+	sha256sums = e7096408e547a40fdecdb92cab67db5499e737678c499f29fc23baa00b25d603
 
 pkgname = dpic
 

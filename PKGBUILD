@@ -1,6 +1,7 @@
+# Maintainer: Iru Cai <https://vimacs.wehack.space>
 # Contributor: Pierpaolo Valerio <gondsman@techgeek.co.in>
 pkgname=dpic
-pkgver=2019.01.01
+pkgver=2019.06.15
 pkgrel=1
 pkgdesc="A pic language interpreter"
 arch=('x86_64' 'i686')
@@ -8,13 +9,11 @@ url="http://www.ece.uwaterloo.ca/~aplevich/dpic/"
 license=('BSD')
 makedepends=()
 source=("https://ece.uwaterloo.ca/~aplevich/dpic/dpic-$pkgver.tar.gz")
-sha256sums=('4f4309a316bef6060204e4ea04e8cc28aae97fb29f31a337ce50fa09a6a5d5c9')
+sha256sums=('e7096408e547a40fdecdb92cab67db5499e737678c499f29fc23baa00b25d603')
 
 build() {
-  mv "$srcdir/$pkgname-$pkgver" "$srcdir/$pkgname"
-  cd "$srcdir/$pkgname"
-  ./configure --prefix=/usr
-  make
+  cd "$srcdir/$pkgname-$pkgver"
+  make PREFIX=/usr
 }
 
 package() {
