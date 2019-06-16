@@ -20,6 +20,7 @@ pkgbase = matita
 	makedepends = make
 	makedepends = help2man
 	makedepends = gmetadom
+	makedepends = ocaml-mysql
 	depends = libglade
 	depends = gtksourceview2
 	optdepends = yelp: for the online helper
