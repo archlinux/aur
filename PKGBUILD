@@ -5,12 +5,12 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
-depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'python-numpy' 'protobuf')
+depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'python-numpy' 'protobuf' 'ffmpeg')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver")
 sha256sums=('SKIP')
@@ -37,64 +37,56 @@ prepare() {
 
   export CC=gcc
   export CXX=g++
+  export VERBOSE=1
   export PYTORCH_BUILD_VERSION="${pkgver}"
   export PYTORCH_BUILD_NUMBER=1
-  export USE_MKLDNN=0
-  # export BUILD_CUSTOM_PROTOBUF=0
-  # export BUILD_SHARED_LIBS=0
-  export USE_GFLAGS=1
-  export USE_GLOG=1
-  export BUILD_BINARY=1
-  export USE_OPENCV=1
-  export USE_SYSTEM_NCCL=1
+
+  # Check tools/setup_helpers/cmake.py, setup.py and CMakeLists.txt for a list of flags that can be set via env vars.
+  export USE_MKLDNN=OFF
+  # export BUILD_CUSTOM_PROTOBUF=OFF
+  # export BUILD_SHARED_LIBS=OFF
+  export USE_FFMPEG=ON
+  export USE_GFLAGS=ON
+  export USE_GLOG=ON
+  export BUILD_BINARY=ON
+  export USE_OPENCV=ON
+  export USE_SYSTEM_NCCL=ON
+  export CUDAHOSTCXX=g++
+  export CUDA_HOME=/opt/cuda
+  export CUDNN_LIB_DIR=/usr/lib
+  export CUDNN_INCLUDE_DIR=/usr/include
+  export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
+  export TORCH_CUDA_ARCH_LIST="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
 }
 
 build() {
   echo "Building without cuda and without non-x86-64 optimizations"
   export NO_CUDA=1
   export WITH_CUDNN=0
-
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  sed -i "s/march=native/march=x86-64/g" cmake/MiscCheck.cmake
   python setup.py build
 
 
   echo "Building without cuda and with non-x86-64 optimizations"
   export NO_CUDA=1
   export WITH_CUDNN=0
-
   cd "${srcdir}/${_pkgname}-${pkgver}-opt"
-  sed -i "s/march=native/march=haswell/g" cmake/MiscCheck.cmake
+  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
   python setup.py build
 
 
   echo "Building with cuda and without non-x86-64 optimizations"
   export NO_CUDA=0
   export WITH_CUDNN=1
-  export CUDAHOSTCXX=g++
-  export CUDA_HOME=/opt/cuda
-  export CUDNN_LIB_DIR=/usr/lib
-  export CUDNN_INCLUDE_DIR=/usr/include
-  export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-  export TORCH_CUDA_ARCH_LIST="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
-
   cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
-  sed -i "s/march=native/march=x86-64/g" cmake/MiscCheck.cmake
   python setup.py build
 
 
-  echo "Building with cuda and without non-x86-64 optimizations"
+  echo "Building with cuda and with non-x86-64 optimizations"
   export NO_CUDA=0
   export WITH_CUDNN=1
-  export CUDAHOSTCXX=g++
-  export CUDA_HOME=/opt/cuda
-  export CUDNN_LIB_DIR=/usr/lib
-  export CUDNN_INCLUDE_DIR=/usr/include
-  export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-  export TORCH_CUDA_ARCH_LIST="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
-
   cd "${srcdir}/${_pkgname}-${pkgver}-opt-cuda"
-  sed -i "s/march=native/march=haswell/g" cmake/MiscCheck.cmake
+  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
   python setup.py build
 }
 
