@@ -3,16 +3,16 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=minitube
-pkgver=2.9
-pkgrel=3
-pkgdesc="A native YouTube client in Qt. Watch YouTube videos without Flash Player"
+pkgver=3.1
+pkgrel=1
+pkgdesc="A YouTube desktop application"
 arch=('x86_64')
 url='https://flavio.tordini.org/minitube'
 license=('GPL3')
-depends=('phonon-qt5' 'qt5-declarative' 'hicolor-icon-theme')
+depends=('mpv' 'qt5-declarative' 'qt5-x11extras')
 makedepends=('qt5-tools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/flaviotordini/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('94bac1b7cb1b3388256d088bfb9ffdfe75cc3c1624f60722cedd561015e1afa96351d4ac55b6be27bb5e00641cd7e3198cf2285a0e9b0c586d62d1a7a8c510c9')
+source=("https://github.com/flaviotordini/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+sha512sums=('a72b237affb51a23e7bc004323854722e4774856d3c80e7058a675ad165ad3577f2cd029037b7ab46756ff15cdc5f9573ed11bc9ff6645c380d159558eba273f')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -22,4 +22,6 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   make install INSTALL_ROOT="${pkgdir}/"
+  install -vDm 644 {AUTHORS,CHANGES,README.md,TODO} \
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
