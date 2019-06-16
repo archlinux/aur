@@ -1,46 +1,30 @@
-# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
-# shellcheck disable=2034
-# shellcheck disable=2148
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: Contributor ("wookietreiber") <christian.krause@mailbox.org>
 
 _gemname=bindata
 pkgname=ruby-$_gemname
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
-pkgdesc="declarative way to read and write binary file formats"
+pkgdesc="Declarative way to read and write structured binary data"
 arch=('any')
-url="http://bindata.rubyforge.org"
+url="https://github.com/dmendel/bindata"
 license=('custom')
 depends=('ruby')
-makedepends=('ruby-rdoc')
-source=(
-  "https://rubygems.org/downloads/$_gemname-$pkgver.gem"
-  "$_gemname-$pkgver-LICENSE::https://github.com/dmendel/bindata/blob/v$pkgver/COPYING"
-)
-noextract=("$_gemname-$pkgver.gem")
-sha256sums=(
-  '5953836e884b629ab0bcb6102d201fcb9b776431ce7165ab8b9375df4f48be4f'
-  'SKIP'
-)
+makedepends=('ruby-rdoc' 'ruby-rake' 'git')
+options=(!emptydirs)
+source=("${_gemname}-${pkgver}.tar.gz"::"https://github.com/dmendel/bindata/archive/v${pkgver}.tar.gz")
+sha256sums=('a4271967ca82a82ae785c713c639785a8ece9114341205c3800cf0d0b0b65f26')
+
+build() {
+  cd "${srcdir}/${_gemname}-${pkgver}"
+  gem build ${_gemname}.gemspec
+}
 
 package() {
-  _gemdir="$(ruby -e'puts Gem.default_dir')"
-
-  # shellcheck disable=2154
-  gem \
-    install \
-    --ignore-dependencies \
-    --no-user-install \
-    -i "$pkgdir/$_gemdir" \
-    -n "$pkgdir/usr/bin" \
-    $_gemname-$pkgver.gem
-
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-
-  rmdir \
-    "$pkgdir/usr/lib/ruby/gems/2.5.0/extensions" \
-    "$pkgdir/usr/lib/ruby/gems/2.5.0/cache" \
-    "$pkgdir/usr/lib/ruby/gems/2.5.0/build_info"
-
-  # shellcheck disable=2154
-  install -Dm644 "$srcdir"/$_gemname-$pkgver-LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  cd "${srcdir}/${_gemname}-${pkgver}"
+  local _gemdir="$(gem env gemdir)"
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
+  install -Dm644 README.md ChangeLog.rdoc -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 }

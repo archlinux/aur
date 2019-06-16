@@ -1,17 +1,17 @@
 pkgbase = ruby-bindata
-	pkgdesc = declarative way to read and write binary file formats
-	pkgver = 2.4.3
+	pkgdesc = Declarative way to read and write structured binary data
+	pkgver = 2.4.4
 	pkgrel = 1
-	url = http://bindata.rubyforge.org
+	url = https://github.com/dmendel/bindata
 	arch = any
 	license = custom
 	makedepends = ruby-rdoc
+	makedepends = ruby-rake
+	makedepends = git
 	depends = ruby
-	noextract = bindata-2.4.3.gem
-	source = https://rubygems.org/downloads/bindata-2.4.3.gem
-	source = bindata-2.4.3-LICENSE::https://github.com/dmendel/bindata/blob/v2.4.3/COPYING
-	sha256sums = 5953836e884b629ab0bcb6102d201fcb9b776431ce7165ab8b9375df4f48be4f
-	sha256sums = SKIP
+	options = !emptydirs
+	source = bindata-2.4.4.tar.gz::https://github.com/dmendel/bindata/archive/v2.4.4.tar.gz
+	sha256sums = a4271967ca82a82ae785c713c639785a8ece9114341205c3800cf0d0b0b65f26
 
 pkgname = ruby-bindata
 
