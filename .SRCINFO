@@ -1,15 +1,15 @@
 pkgbase = insect
 	pkgdesc = High precision scientific calculator with support for physical units
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/sharkdp/insect
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = insect-5.0.0.tgz
-	source = http://registry.npmjs.org/insect/-/insect-5.0.0.tgz
-	sha1sums = e46cabf9c37b4b4e5a716f2ed73b58f7f7bc68b2
+	noextract = insect-5.1.0.tgz
+	source = http://registry.npmjs.org/insect/-/insect-5.1.0.tgz
+	sha1sums = 4b6a209cd0347409cd5ce9478b3326683fc37ead
 
 pkgname = insect
 
