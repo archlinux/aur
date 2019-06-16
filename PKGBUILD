@@ -4,7 +4,7 @@
 
 pkgname=perl-bsd-resource
 pkgver=1.2911
-pkgrel=2
+pkgrel=3
 pkgdesc="getrusage(), s/getrlimit(), s/getpriority()"
 arch=('x86_64')
 license=('PerlArtistic' 'GPL')
