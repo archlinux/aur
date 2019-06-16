@@ -1,0 +1,54 @@
+From 435ed5853b9451ab8fdfff722545c57a8f154625 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 18 Feb 2017 13:49:14 +0100
+Subject: [PATCH] Defuse root block
+
+While the main point is correct as any application running in the same
+X session (not sandboxed) can use kate's capability to open a console,
+we allow (even encourage) running YaST on X11 as root.
+That way it's only an impact on usability.
+---
+ kate/main.cpp   | 3 +--
+ kwrite/main.cpp | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+Index: kate-19.03.60git.20181224T024634~7203979fc/kate/main.cpp
+===================================================================
+--- kate-19.03.60git.20181224T024634~7203979fc.orig/kate/main.cpp	2018-12-25 09:49:15.867478873 +0100
++++ kate-19.03.60git.20181224T024634~7203979fc/kate/main.cpp	2018-12-25 09:49:19.231424088 +0100
+@@ -61,13 +61,8 @@
+ #ifndef Q_OS_WIN
+     // Prohibit using sudo or kdesu (but allow using the root user directly)
+     if (getuid() == 0) {
+-        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
+-            std::cout << "Executing Kate with sudo is not possible due to unfixable security vulnerabilities." << std::endl;
+-            return EXIT_FAILURE;
+-        } else if (!qEnvironmentVariableIsEmpty("KDESU_USER")) {
+-            std::cout << "Executing Kate with kdesu is not possible due to unfixable security vulnerabilities." << std::endl;
+-            return EXIT_FAILURE;
+-        }
++        std::cout << "THIS IS POTENTIALLY INSECURE!\nTo edit files as root please use:" << std::endl;
++        std::cout << "SUDO_EDITOR=kwrite sudoedit <file>" << std::endl;
+     }
+ #endif
+     /**
+Index: kate-19.03.60git.20181224T024634~7203979fc/kwrite/main.cpp
+===================================================================
+--- kate-19.03.60git.20181224T024634~7203979fc.orig/kwrite/main.cpp	2018-12-25 09:49:19.231424088 +0100
++++ kate-19.03.60git.20181224T024634~7203979fc/kwrite/main.cpp	2018-12-25 09:50:32.302253532 +0100
+@@ -52,13 +52,8 @@
+ #ifndef Q_OS_WIN
+     // Prohibit using sudo or kdesu (but allow using the root user directly)
+     if (getuid() == 0) {
+-        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
+-            std::cout << "Executing KWrite with sudo is not possible due to unfixable security vulnerabilities." << std::endl;
+-            return EXIT_FAILURE;
+-        } else if (!qEnvironmentVariableIsEmpty("KDESU_USER")) {
+-            std::cout << "Executing KWrite with kdesu is not possible due to unfixable security vulnerabilities." << std::endl;
+-            return EXIT_FAILURE;
+-        }
++       std::cout << "THIS IS POTENTIALLY INSECURE!\nTo edit files as root please use:" << std::endl;
++       std::cout << "SUDO_EDITOR=kwrite sudoedit <file>" << std::endl;
+     }
+ #endif
+     /**
