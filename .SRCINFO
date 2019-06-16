@@ -1,0 +1,16 @@
+pkgbase = ocaml-http
+	pkgdesc = OCaml library that lets you to write simple HTTP daemons
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/sacerdot/ocaml-http
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	makedepends = ocamlnet
+	makedepends = ocaml-pcre
+	source = git+https://github.com/sacerdot/ocaml-http.git
+	md5sums = SKIP
+
+pkgname = ocaml-http
+
