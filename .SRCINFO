@@ -1,6 +1,6 @@
 pkgbase = jgrasp
 	pkgdesc = Lightweight development environment written in Java.
-	pkgver = 2.0.5_03
+	pkgver = 2.0.5_06
 	pkgrel = 1
 	url = http://jgrasp.org
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = jgrasp
 	makedepends = gcc
 	depends = java-environment-openjdk>=8
 	options = !strip
-	source = http://www.jgrasp.org/dl4g/jgrasp/jgrasp205_03.zip
+	source = http://www.jgrasp.org/dl4g/jgrasp/jgrasp205_06.zip
 	source = jgrasp
 	source = jGRASP.desktop
 	source = LICENSE

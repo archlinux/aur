@@ -1,7 +1,7 @@
 # Maintainer: Zion Nimchuk <zionnimchuk@gmail.com>
 pkgname=jgrasp
 _version=2.0.5
-_version_postfix=03
+_version_postfix=06
 pkgver=${_version}"_"${_version_postfix}
 pkgrel=1
 pkgdesc="Lightweight development environment written in Java."
