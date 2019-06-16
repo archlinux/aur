@@ -2,9 +2,9 @@
 pkgname=tclkit
 pkgver=8.6.4
 _tcl_tag=tip-412
-_tk_tag=core_8_6_4
+_tk_tag=core-8-6-4
 _kit_tag=8.6.4-9
-pkgrel=9
+pkgrel=10
 pkgdesc="single-file executable that provides a complete Tcl and Tk runtime"
 arch=('i686' 'x86_64')
 url="https://github.com/patthoyts/kitgen"
@@ -15,8 +15,8 @@ source=("https://github.com/stiefel40k/kitgen/archive/${_kit_tag}.tar.gz"
 	"tk.tar.gz::https://github.com/tcltk/tk/archive/${_tk_tag}.tar.gz"
 	"tcl.tar.gz::https://github.com/tcltk/tcl/archive/${_tcl_tag}.tar.gz")
 md5sums=('ee23c17052b6e482cb845739363bb9c0'
-         '4f9b416d393f6b45b972d506a23ed36d'
-         '9297de5538175b98c000b98ccc469290')
+         '4139d98489f61faa8112f62fcee1a9de'
+         '444a352dd36404e4a5c2b4e4c5408195')
 
 build() {
   mv "kitgen-${_kit_tag}" kitgen
