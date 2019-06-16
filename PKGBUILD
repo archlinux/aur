@@ -1,69 +1,66 @@
 # Maintainer: Mckol <mckol363@gmail.com>
 
+export GIT_LFS_SKIP_SMUDGE=1
 pkgname=veloren-git
-pkgver=0.1.0.r380.8c6b5ab
+pkgver=0.2.0.r191.132d1a6
 pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
 url="https://veloren.net/"
 license=('GPL3')
 options=('!strip')
-depends=('bash')
+depends=()
 makedepends=(
     'git'
-    'rustup'
+    'git-lfs'
+    'rust-nightly'
 )
 provides=("$pkgname")
-conflicts=("$pkgname")
+conflicts=("$pkgname" "veloren")
+_repo_url="https://gitlab.com/veloren/veloren.git"
 source=(
-    "$pkgname::git+https://gitlab.com/veloren/game.git"
-    "assets_voxygen::git+https://gitlab.com/veloren/assets/voxygen.git"
-    "assets_world::git+https://gitlab.com/veloren/assets/world.git"
+    "$pkgname"::"git+$_repo_url"
     "voxygen.desktop"
     "voxygen.png"
 )
 noextract=("voxygen.desktop" "voxygen.png")
 sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            '79950e7d39b1a14a7b218b0da9abe723dffc7a37421fb76e86446e1993e09bf037559803b4825a8c083d2fdb7a85c96c971f5e6eacf690fffec462673a6b24e7'
+            '27e4e25dc7f7f149873da28414b176c19c27d4c8d656a7f2ab11648137d75e2ec7d0ed07066e5384525123eace34debe1417d16f3e86a2b4ccf06f7c77fa052e'
             'b5e5cbf28ab0e335f5a0fc93511fc9936360432a36e35cc876761601abacf257299deb0af6b3d9081143b700f6663c4f603970155dd4dacedb7a9672cde1dc94')
+
 pkgver() {
     cd "$srcdir/$pkgname"
     git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {
+    unset GIT_LFS_SKIP_SMUDGE
     cd "$srcdir/$pkgname"
-    git submodule init assets/world
-    git submodule init assets/voxygen
-    git config submodule.assets/voxygen.url "$srcdir/assets_voxygen"
-    git config submodule.assets/world.url "$srcdir/assets_world"
-    git submodule update
+    git remote set-url origin "$_repo_url"
+    git lfs install
+    git lfs fetch
+    git lfs checkout
 }
 
 build() {
-    rustup toolchain install nightly
-    _original_toolchain="$(rustup show active-toolchain)"
-    rustup default nightly-2018-12-02
     cd "$srcdir/$pkgname/voxygen"
-    VELOREN_ASSETS=/usr/share/veloren/assets/ VOXYGEN_SHADERS=/usr/share/veloren/shaders/ cargo build --release
+    cargo build --release
     cd "$srcdir/$pkgname/server-cli"
-    VELOREN_ASSETS=/usr/share/veloren/assets/ cargo build --release
-    rustup default "${_original_toolchain}"
+    cargo build --release
 }
 
 package() {
     mkdir -p "$pkgdir/usr/share/veloren"
     mkdir -p "$pkgdir/usr/bin"
-    mkdir -p "$pkgdir/usr/share/pixmaps"
-    mkdir -p "$pkgdir/usr/share/applications/veloren"
     cp -r "$srcdir/$pkgname/assets" "$pkgdir/usr/share/veloren/"
     cp -r "$srcdir/$pkgname/voxygen/shaders" "$pkgdir/usr/share/veloren/"
-    cp "$srcdir/$pkgname/target/release/voxygen" "$pkgdir/usr/bin/veloren-voxygen"
+    cp "$srcdir/$pkgname/target/release/veloren-voxygen" "$pkgdir/usr/bin/"
     chmod +x "$pkgdir/usr/bin/veloren-voxygen"
-    cp "$srcdir/$pkgname/target/release/server-cli" "$pkgdir/usr/bin/veloren-server"
-    chmod +x "$pkgdir/usr/bin/veloren-server"
+    cp "$srcdir/$pkgname/target/release/veloren-server-cli" "$pkgdir/usr/bin/"
+    chmod +x "$pkgdir/usr/bin/veloren-server-cli"
+
+    mkdir -p "$pkgdir/usr/share/pixmaps"
+    mkdir -p "$pkgdir/usr/share/applications/veloren"
     cp "$srcdir/voxygen.desktop" "$pkgdir/usr/share/applications/veloren/"
     cp "$srcdir/voxygen.png" "$pkgdir/usr/share/pixmaps/"
 }

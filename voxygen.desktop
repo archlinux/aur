@@ -4,6 +4,7 @@ Type=Application
 Name=Voxygen
 Comment=Official Veloren Client
 Exec=veloren-voxygen
+Path=/usr/share/veloren/
 Categories=Game
 Keywords=veloren
 Terminal=true
