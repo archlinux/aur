@@ -35,7 +35,7 @@ depends=(
 	'cairo>=@_cairo_version@'
 	'appstream-glib>=@_appstream_glib_version@'
 	)
-makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1' 'gnome-python>=2.16.2'
+makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1'
              'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm' 'webkit2gtk'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib')
