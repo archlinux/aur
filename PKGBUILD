@@ -3,7 +3,7 @@
 
 _pkgname="raul"
 pkgname="${_pkgname}-git"
-pkgver=0.8.10.r589.e0049be
+pkgver=0.8.10.r592.045e70d
 pkgrel=1
 epoch=1
 pkgdesc="Realtime Audio Utility Library aimed at audio and musical applications"
@@ -12,7 +12,7 @@ url="http://drobilla.net/software/raul/"
 license=('GPL3')
 depends=()
 makedepends=('doxygen' 'git' 'python')
-provides=("$_pkgname")
+provides=("$_pkgname" "$_pkgname=${pkgver//.r*/}")
 conflicts=("$_pkgname")
 source=("${_pkgname}::git+http://git.drobilla.net/${_pkgname}.git")
 sha256sums=('SKIP')
