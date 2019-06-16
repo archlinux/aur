@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('libglade' 'gtksourceview2')
 optdepends=('yelp: for the online helper')
 makedepends=('ocaml' 'ocaml-findlib' 'ocaml-expat' 'lablgtk2' 'gtksourceview2' 'ocamlnet'
-'ocaml-http-git' 'ulex08' 'ocaml-camlzip' 'camlp5' 'autoconf' 'make' 'help2man')
+'ocaml-http-git' 'ulex08' 'ocaml-camlzip' 'camlp5' 'autoconf' 'make' 'help2man' 'gmetadom')
 #install="$pkgname.install"
 changelog=ChangeLog
 source=("http://matita.cs.unibo.it/sources/matita-0.99.3.tar.gz" "matita.desktop"
