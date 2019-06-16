@@ -8,7 +8,7 @@ url="https://loopp.soundship.de/"
 license=('GPL3')
 groups=('pro-audio')
 depends=('jack' 'liblo' 'ntk')
-makedepends=('meson')
+makedepends=('meson git')
 source=($pkgname::git+https://git.netzspielplatz.de/soundship/loopp.git)
 sha512sums=(SKIP)
 
