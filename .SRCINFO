@@ -1,0 +1,32 @@
+pkgbase = matita
+	pkgdesc = An experimental, interactive theorem prover
+	pkgver = 0.99.3
+	pkgrel = 1
+	url = http://matita.cs.unibo.it/index.shtml
+	changelog = ChangeLog
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	makedepends = ocaml-expat
+	makedepends = lablgtk2-with-glade
+	makedepends = gtksourceview2
+	makedepends = ocamlnet
+	makedepends = ocaml-http
+	makedepends = ulex08
+	makedepends = ocaml-camlzip
+	makedepends = camlp5
+	makedepends = autoconf
+	makedepends = make
+	depends = libglade
+	depends = gtksourceview2
+	optdepends = yelp: for the online helper
+	source = http://matita.cs.unibo.it/sources/matita-0.99.3.tar.gz
+	source = matita.desktop
+	source = matita-0.99.3.patch
+	md5sums = aed44d9f10570f672de0224175b2b28b
+	md5sums = 2470d80aa45b6bc50dabf9cd7a2625ca
+	md5sums = 0cb6cb42d76c75a79b519f0287488a7f
+
+pkgname = matita
+

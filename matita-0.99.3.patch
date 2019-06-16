@@ -1,0 +1,20 @@
+From: Enrico Tassi <gareuselesinge@debian.org>
+Date: Tue, 24 May 2016 22:13:25 +0200
+Subject: remove dependency on mysql
+
+---
+ configure.ac | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index c38cc89..1140368 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -63,7 +63,6 @@ gdome2 \
+ http \
+ lablgtk2 \
+ lablgtk2.sourceview2 \
+-mysql \
+ netstring \
+ ulex08 \
+ zip \
