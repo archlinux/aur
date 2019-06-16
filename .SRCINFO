@@ -1,7 +1,7 @@
 pkgbase = taglib-extras
 	pkgdesc = Additional taglib plugins
 	pkgver = 1.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://developer.kde.org/~wheeler/taglib.html
 	arch = x86_64
 	license = LGPL
