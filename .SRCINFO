@@ -1,0 +1,16 @@
+pkgbase = dua
+	pkgdesc = A tool to conveniently learn about the disk usage of directories, fast!
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://github.com/Byron/dua-cli
+	arch = any
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = ncurses
+	conflicts = dua-git
+	source = https://github.com/Byron/dua-cli/archive/v2.1.3.tar.gz
+	sha512sums = dbdec4f13f4898574a53c5ab9f5fedf5fa3d4b2b8c05966f23bf9be953ef26af0e8bcb26872583ce3247588986003f8f7c8fb408562e47f0d33ce8fb4f2ec12f
+
+pkgname = dua
+
