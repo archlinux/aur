@@ -2,7 +2,7 @@
 pkgname=('drill-search-cli' 'drill-search-gtk')
 pkgbase=drill-search
 pkgver=1.253
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.drill.santamorena.me/"
 license=('GPL2')
@@ -21,12 +21,20 @@ prepare() {
 	sed -i "s/0.0.0/$pkgver/g" DRILL_VERSION
 }
 
+build() {
+	cd "Drill-$pkgver/Source/Frontend/CLI"
+	dub build --parallel -b release
+	
+	cd .. && cd GTK
+	dub build --parallel -b release
+	
+	dub clean-caches
+}
+
 package_drill-search-cli() {
 	pkgdesc="Search files without indexing, but clever crawling (CLI version)"
-
-	cd "Drill-$pkgver/Source/Frontend/CLI"
-	dub build --parallel --force -b release
 	
+	cd "Drill-$pkgver/Source/Frontend/CLI"
 	install -d $pkgdir/{opt/$pkgname,usr/bin}
 	cp -r Build/Drill-CLI-linux-$arch-release/Assets $pkgdir/opt/$pkgname
 	install -Dm755 Build/Drill-CLI-linux-$arch-release/$pkgname $pkgdir/opt/$pkgname/$pkgname
@@ -37,10 +45,8 @@ package_drill-search-cli() {
 package_drill-search-gtk() {
 	pkgdesc="Search files without indexing, but clever crawling (GTK version)"
 	depends=('gtk3')
-
-	cd "Drill-$pkgver/Source/Frontend/GTK"
-	dub build --parallel --force -b release
 	
+	cd "Drill-$pkgver/Source/Frontend/GTK"
 	install -d $pkgdir/{opt/$pkgname,usr/bin}
 	cp -r Build/Drill-GTK-linux-$arch-release/Assets $pkgdir/opt/$pkgname
 	install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
