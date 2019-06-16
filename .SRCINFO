@@ -1,0 +1,16 @@
+pkgbase = garfield-git
+	pkgdesc = Simple, customizable garfield emulator.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sarahkittyy/garfield
+	arch = any
+	license = MIT
+	makedepends = cmake>=3.13
+	makedepends = gcc>=8.0
+	makedepends = git>=2.0
+	provides = garfield
+	source = garfield-git::git+https://github.com/sarahkittyy/garfield.git
+	md5sums = SKIP
+
+pkgname = garfield-git
+
