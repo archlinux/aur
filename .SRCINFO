@@ -1,4 +1,4 @@
-pkgbase = ocaml-http
+pkgbase = ocaml-http-git
 	pkgdesc = OCaml library that lets you to write simple HTTP daemons
 	pkgver = 0.1.6
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = ocaml-http
 	source = git+https://github.com/sacerdot/ocaml-http.git
 	md5sums = SKIP
 
-pkgname = ocaml-http
+pkgname = ocaml-http-git
 
