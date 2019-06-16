@@ -1,6 +1,6 @@
 # Maintainer: mexus <gilaldpellaeon@gmail.com>
 pkgname=dua-cli
-pkgver=1.1.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A tool to conveniently learn about the disk usage of directories, fast!"
 arch=('x86_64')
