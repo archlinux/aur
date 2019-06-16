@@ -22,7 +22,7 @@ pkgver() {
 build() {
   cd "$_pkgname"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  export PERL_MM_USE_DEFAULT=1
   /usr/bin/perl Makefile.PL
   /usr/bin/make
 }
