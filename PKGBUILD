@@ -2,17 +2,17 @@
 
 pkgname=qdre-git
 pkgver=0.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Qt Desktop Regular Environment (early development)'
 arch=('i686' 'x86_64' 'armv7h')
-url='https://gitlab.com/qdre'
+url='https://gitlab.com/zaps166/qdre'
 license=('MIT')
 groups=('qdre')
 depends=('qt5-base' 'qt5-x11extras' 'glib2' 'gnome-menus' 'libgtop' 'exiv2' 'kcrash' 'kwindowsystem' 'qrencode' 'libxcb')
 makedepends=('fakeroot' 'make' 'gcc' 'cmake' 'git')
 optdepends=('drkonqi')
 # options=(!strip debug)
-source=("git+https://gitlab.com/qdre/qdre.git#branch=master")
+source=("git+https://gitlab.com/zaps166/qdre.git#branch=master")
 sha1sums=("SKIP")
 
 prepare() {
