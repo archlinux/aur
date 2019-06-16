@@ -8,7 +8,7 @@
 _pkgbase=vlc
 pkgname=vlc-debug
 pkgver=3.0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (Debug package)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
@@ -93,8 +93,8 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'aom: AOM AV1 codec'
             'srt: SRT input/output plugin'
             'dav1d: dav1d AV1 decoder')
-conflicts=('vlc' 'vlc-plugin' 'vlc-git')
-replaces=('vlc' 'vlc-plugin' 'vlc-git')
+conflicts=('vlc' 'vlc-plugin' 'vlc-git' 'vlc-nox')
+replaces=('vlc' 'vlc-plugin' 'vlc-git' 'vlc-nox')
 options=('!emptydirs' 'debug' '!strip')
 source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         update-vlc-plugin-cache.hook
