@@ -4,13 +4,13 @@
 pkgname=vim-perl-support
 pkgver=5.4
 _src_id=24473
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl-IDE offers easiest way to do all of the above, saving lot of time and keystrokes.'
 arch=('any')
 url='https://www.vim.org/scripts/script.php?script_id=556'
 license=('GPL2')
 groups=(vim-plugins)
-depends=(perl vim-vim-support)
+depends=('perl' 'vim-vim-support>=2.4')
 optdepends=(
 	'perl-perl-tags: to generate Ctags style tags for Perl sourcecode'
 	'perl-devel-smallprof: to run per-line Perl profiler'
@@ -31,9 +31,13 @@ package() {
 	install -dm755 "$pkgdir/$_vim_dir"
 
 	bsdtar -xf $pkgname-$pkgver.zip \
-		--exclude syntax/template.vim \
+		--exclude autoload/mmtemplates/config.vim \
 		--exclude autoload/mmtemplates/core.vim \
+		--exclude autoload/mmtemplates/wizard.vim \
 		--exclude doc/templatesupport.txt \
+		--exclude ftdetect/template.vim \
+		--exclude ftplugin/template.vim \
+		--exclude syntax/template.vim \
 		--directory "$pkgdir/$_vim_dir"
 
 	# note: exclusions should be inside vim-vim-support package
