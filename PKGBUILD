@@ -9,8 +9,8 @@ pkgdesc="Desktop client for Openspace"
 arch=('x86_64')
 url="https://gitlab.com/999eagle/openspace-desktop"
 license=('AGPL3')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname}" "openbook-desktop")
+conflicts=("${_pkgname}" "openbook-desktop-bin")
 replaces=('openbook-desktop-bin')
 depends=('libxcursor' 'libxinerama' 'libxrandr' 'libxxf86vm' 'sqlite' 'bash' 'gtk3')
 source=("${_pkgname}-${_pkgver}.zip::https://gitlab.com/999eagle/openspace-desktop/-/jobs/artifacts/${_pkgver}/download?job=release-linux")

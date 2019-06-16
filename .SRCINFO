@@ -13,7 +13,9 @@ pkgbase = openspace-desktop-bin
 	depends = bash
 	depends = gtk3
 	provides = openspace-desktop
+	provides = openbook-desktop
 	conflicts = openspace-desktop
+	conflicts = openbook-desktop-bin
 	replaces = openbook-desktop-bin
 	source = openspace-desktop-0.0.44.zip::https://gitlab.com/999eagle/openspace-desktop/-/jobs/artifacts/0.0.44/download?job=release-linux
 	sha256sums = f958ba8cb6b998ccc5fb5e996d402a6d0da764fdf1729aa66366cfdff0b51b14
