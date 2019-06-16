@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('libglade' 'gtksourceview2')
 optdepends=('yelp: for the online helper')
 makedepends=('ocaml' 'ocaml-findlib' 'ocaml-expat' 'lablgtk2-with-glade' 'gtksourceview2' 'ocamlnet'
-'ocaml-http' 'ulex08' 'ocaml-camlzip' 'camlp5' 'autoconf' 'make')
+'ocaml-http-git' 'ulex08' 'ocaml-camlzip' 'camlp5' 'autoconf' 'make')
 #install="$pkgname.install"
 changelog=ChangeLog
 source=("http://matita.cs.unibo.it/sources/matita-0.99.3.tar.gz" "matita.desktop"
@@ -44,4 +44,11 @@ package() {
     rm ${pkgdir}/usr/share/matita/matita ${pkgdir}/usr/share/matita/matitac \
     ${pkgdir}/usr/share/matita/matitaclean
     install -Dm 644 ../../matita.desktop ${pkgdir}/usr/share/applications/matita.desktop
+    mkdir -p ${pkgdir}/usr/share/man/man1/
+	help2man --name="Matita interative theorem prover - batch compiler" -N \
+ 		${pkgdir}/usr/bin/matitac \
+ 		| gzip -9 > ${pkgdir}/usr/share/man/man1/matitac.1.gz
+ 	help2man --name="Matita interative theorem prover - cleanup tool" -N \
+ 		${pkgdir}/usr/bin/matitaclean \
+ 		| gzip -9 > ${pkgdir}/usr/share/man/man1/matitaclean.1.gz
 }
