@@ -2,7 +2,7 @@
 
 pkgname=cling-nightly
 _pkgname=cling
-_build_date=2019-05-18
+_build_date=2019-06-15
 pkgver=0.5.${_build_date//-}
 pkgrel=1
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
@@ -20,7 +20,7 @@ source=(
     "${pkgname}-${pkgver}.tar.bz2::https://root.cern.ch/download/cling/cling_${_build_date}_sources.tar.bz2"
 )
 sha256sums=(
-    "4ae3d66154e0a4e5dd0dc44028ed86fdb9b5ad6f4d1ca022d824131d37250c48"
+    "2fe9c2a831c392c22678534f5f34df961399af3766972615cb21b62da113b39d"
 )
 _num_cores=$(getconf _NPROCESSORS_ONLN)
 
