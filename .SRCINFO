@@ -1,6 +1,6 @@
 pkgbase = python-falcon
 	pkgdesc = An unladen web framework for building APIs and app backends.
-	pkgver = 1.4.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://falconframework.org
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = python-falcon
 	makedepends = python-setuptools
 	makedepends = cython2
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/f/falcon/falcon-1.4.1.tar.gz
-	sha256sums = 3981f609c0358a9fcdb25b0e7fab3d9e23019356fb429c635ce4133135ae1bc4
+	source = https://files.pythonhosted.org/packages/source/f/falcon/falcon-2.0.0.tar.gz
+	sha256sums = eea593cf466b9c126ce667f6d30503624ef24459f118c75594a69353b6c3d5fc
 
 pkgname = python-falcon
 	depends = python-six>=1.4.0

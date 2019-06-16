@@ -6,7 +6,7 @@ _module="$_name"
 #_check=1
 
 pkgname=("python-$_module" "python2-$_module")
-pkgver=1.4.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="An unladen web framework for building APIs and app backends."
 arch=("i686" "x86_64")
@@ -30,7 +30,7 @@ if [[ -v _check ]]; then
                   "python2-yaml")
 fi
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('3981f609c0358a9fcdb25b0e7fab3d9e23019356fb429c635ce4133135ae1bc4')
+sha256sums=('eea593cf466b9c126ce667f6d30503624ef24459f118c75594a69353b6c3d5fc')
 
 build() {
     cd "$_name-$pkgver"
