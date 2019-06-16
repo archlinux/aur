@@ -6,8 +6,10 @@ pkgbase = cameramonitor-quiet
 	arch = i686
 	arch = x86_64
 	license = GPL2
+        depends = dbus
         makedepends = cargo
         makedepends = rust
+        makedepends = clang
 	source = git+https://github.com/YanDoroshenko/cameramonitor-quiet.git
 	sha256sums = SKIP
 

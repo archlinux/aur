@@ -5,8 +5,8 @@ pkgdesc="A little monitor to check if your Webcam is On"
 url="https://github.com/YanDoroshenko/cameramonitor-quiet"
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=()
-makedepends=('cargo' 'rust')
+depends=('dbus')
+makedepends=('cargo' 'rust' 'clang')
 source=("git+https://github.com/YanDoroshenko/cameramonitor-quiet.git")
 sha256sums=('SKIP')
 
