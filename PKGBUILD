@@ -53,8 +53,8 @@ package() {
   install -Dm644 bin/godot.x11.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
 
   # 64 bit server
-  install -Dm644 bin/godot_server.x11.opt.64 "${pkgdir}"/usr/share/godot/templates/
-  install -Dm644 bin/godot_server.x11.opt.debug.64 "${pkgdir}"/usr/share/godot/templates/
+  install -Dm644 bin/godot_server.x11.opt.64.llvm "${pkgdir}"/usr/share/godot/templates/
+  install -Dm644 bin/godot_server.x11.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
 
   # 32 bit x11
   #install -Dm644 bin/godot.x11.opt.32.llvm "${pkgdir}"/usr/share/godot/templates/
