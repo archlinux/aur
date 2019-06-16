@@ -1,14 +1,14 @@
 pkgbase = gns3-server
 	pkgdesc = GNS3 network simulator, Server package
 	pkgver = 2.1.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GNS3/gns3-server
 	install = gns3-server.install
 	arch = x86_64
 	groups = gns3
 	license = GPL3
 	makedepends = python-setuptools
-	depends = python-jsonschema
+	depends = python-jsonschema26
 	depends = python-aiohttp-gns3
 	depends = python-aiohttp-cors-gns3
 	depends = python-yarl-gns3
