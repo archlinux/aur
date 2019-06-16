@@ -13,5 +13,5 @@ pkgbase = cameramonitor-quiet-git
 	source = git+https://github.com/YanDoroshenko/cameramonitor-quiet.git
 	sha256sums = SKIP
 
-pkgname = cameramonitor-quiet
+pkgname = cameramonitor-quiet-git
 
