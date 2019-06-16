@@ -1,0 +1,30 @@
+pkgbase = espressomd-git
+	pkgdesc = ESPResSo is a software package for performing and analyzing Molecular Dynamics simulations.
+	pkgver = 3.4.dev.r12688.f5dade55b
+	pkgrel = 1
+	url = http://espressomd.org/wordpress/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc>=5
+	makedepends = boost>=1.67
+	makedepends = cmake>=3.4
+	makedepends = fftw>=3
+	makedepends = openmpi>=1.2
+	depends = python>=3
+	depends = python-numpy
+	depends = python-opengl
+	depends = python-sphinx>=1.6.6
+	depends = python-sphinx<2.1.0
+	depends = python-sphinxcontrib-bibtex>=0.3.5
+	depends = python-mdanalysis>=0.16
+	optdepends = cuda: Build with NVIDIA GPU support
+	optdepends = hdf5: File format to store scientific data
+	optdepends = hdf5-openmpi: File format to store scientific data (openmpi version)
+	provides = espressomd
+	conflicts = espressomd
+	source = espressomd::git+https://github.com/espressomd/espresso.git
+	md5sums = SKIP
+
+pkgname = espressomd-git
+
