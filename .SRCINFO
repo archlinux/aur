@@ -1,13 +1,11 @@
 pkgbase = vim-perl-support
 	pkgdesc = Perl-IDE offers easiest way to do all of the above, saving lot of time and keystrokes.
-	pkgver = 5.3.2
-	pkgrel = 2
-	url = http://vim.org/scripts/script.php?script_id=556
-	install = vimdoc.install
+	pkgver = 5.4
+	pkgrel = 1
+	url = https://www.vim.org/scripts/script.php?script_id=556
 	arch = any
 	groups = vim-plugins
 	license = GPL2
-	depends = vim-runtime
 	depends = perl
 	depends = vim-vim-support
 	optdepends = perl-perl-tags: to generate Ctags style tags for Perl sourcecode
@@ -16,9 +14,10 @@ pkgbase = vim-perl-support
 	optdepends = perl-devel-fastprof: to run "fast" perl per-line profiler
 	optdepends = perl-devel-nytprof: Powerful fast feature-rich perl source code profiler
 	optdepends = perl-tidy: Parses and beautifies perl source
+	noextract = vim-perl-support-5.4.zip
 	options = !emptydirs
-	source = vim-perl-support-5.3.2.zip::http://www.vim.org/scripts/download_script.php?src_id=22459
-	sha256sums = 78544a59adb00af2e29d3b69816255b8671d57bbb9cba23b1236b4e2d6294be7
+	source = vim-perl-support-5.4.zip::http://www.vim.org/scripts/download_script.php?src_id=24473
+	sha256sums = 40cadfcb64433557ad793ec71f0947fae6ec38b9d4b4af2e6ed0ee7b77156125
 
 pkgname = vim-perl-support
 

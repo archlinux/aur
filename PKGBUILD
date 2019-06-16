@@ -1,50 +1,42 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
+# Maintainer: 3ED <krzysztofas /at/ protonmail /\./ com>
 # Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# vim:set ts=2 sw=2 et ft=sh tw=100:
 
 pkgname=vim-perl-support
-pkgver=5.3.2
-_src_id=22459
-pkgrel=2
+pkgver=5.4
+_src_id=24473
+pkgrel=1
 pkgdesc='Perl-IDE offers easiest way to do all of the above, saving lot of time and keystrokes.'
 arch=('any')
-url='http://vim.org/scripts/script.php?script_id=556'
+url='https://www.vim.org/scripts/script.php?script_id=556'
 license=('GPL2')
 groups=(vim-plugins)
-depends=(vim-runtime perl vim-vim-support)
+depends=(perl vim-vim-support)
 optdepends=(
-  'perl-perl-tags: to generate Ctags style tags for Perl sourcecode'
-  'perl-devel-smallprof: to run per-line Perl profiler'
-  'perl-critic: Critique Perl source code for best-practices'
-  'perl-devel-fastprof: to run "fast" perl per-line profiler'
-  'perl-devel-nytprof: Powerful fast feature-rich perl source code profiler'
-  'perl-tidy: Parses and beautifies perl source'
+	'perl-perl-tags: to generate Ctags style tags for Perl sourcecode'
+	'perl-devel-smallprof: to run per-line Perl profiler'
+	'perl-critic: Critique Perl source code for best-practices'
+	'perl-devel-fastprof: to run "fast" perl per-line profiler'
+	'perl-devel-nytprof: Powerful fast feature-rich perl source code profiler'
+	'perl-tidy: Parses and beautifies perl source'
 )
 options=(!emptydirs)
-install='vimdoc.install'
 source=("$pkgname-$pkgver.zip::http://www.vim.org/scripts/download_script.php?src_id=$_src_id")
+sha256sums=('40cadfcb64433557ad793ec71f0947fae6ec38b9d4b4af2e6ed0ee7b77156125')
+noextract=("$pkgname-$pkgver.zip")
 
 package() {
 	cd "$srcdir"
 	_vim_dir='/usr/share/vim/vimfiles'
 
-  install -dm755 $pkgdir/$_vim_dir
+	install -dm755 "$pkgdir/$_vim_dir"
 
-  tar -c ./  --exclude $pkgname-$pkgver.zip \
-    | tar -x -C $pkgdir/$_vim_dir
+	bsdtar -xf $pkgname-$pkgver.zip \
+		--exclude syntax/template.vim \
+		--exclude autoload/mmtemplates/core.vim \
+		--exclude doc/templatesupport.txt \
+		--directory "$pkgdir/$_vim_dir"
 
-	#mv $pkgdir/${_vim_dir}/README.perlsupport \
-	#	$pkgdir/${_vim_dir}/perl-support/doc/README.perlsupport
+	# note: exclusions should be inside vim-vim-support package
 
-  #conflict with vim-vim-support
-  #rm -f $pkgdir/${_vim_dir}/{autoload/mmtemplates/core.vim,doc/templatesupport.txt}
-  rm -f "$pkgdir"/usr/share/vim/vimfiles/syntax/template.vim \
-    "$pkgdir"/usr/share/vim/vimfiles/autoload/mmtemplates/core.vim \
-    "$pkgdir"/usr/share/vim/vimfiles/doc/templatesupport.txt
-
-
-  #fix perm
-#  find $pkgdir/$_vim_dir -type d -exec chmod 0755 '{}' ';'
-#  chmod o+r $pkgdir/${_vim_dir}/perl-support/doc/*
+	chmod -R a=,a+rX,u+w "$pkgdir/"
 }
-sha256sums=('78544a59adb00af2e29d3b69816255b8671d57bbb9cba23b1236b4e2d6294be7')
