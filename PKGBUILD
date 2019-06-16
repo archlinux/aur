@@ -1,19 +1,19 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonnet-git
-pkgver=r200.edf5dbe
-pkgrel=2
-pkgdesc='Sonnet'
+pkgver=r470.8f98ba4
+pkgrel=1
+pkgdesc='Spelling framework for Qt5'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/sonnet'
 license=('LGPL')
 depends=('qt5-base')
-makedepends=('extra-cmake-modules-git' 'qt5-tools' 'hunspell' 'aspell' 'hspell' 'git') # 'livvoikko'
+makedepends=('extra-cmake-modules' 'qt5-tools' 'hunspell' 'aspell' 'hspell' 'git') # 'livvoikko'
 optdepends=('hunspell: spell checking via hunspell' 'aspell: spell checking via aspell' 'hspell: spell checking for Hebrew')
  # 'libvoikko: spell checking for Finnish via Voikko')
 groups=('kf5')
-conflicts=(sonnet)
-provides=(sonnet)
+conflicts=('sonnet')
+provides=('sonnet')
 source=('git://anongit.kde.org/sonnet.git')
 md5sums=('SKIP')
 
@@ -22,11 +22,8 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
+  [[ -d build ]] || mkdir build
   cd build
   cmake ../sonnet \
     -DCMAKE_BUILD_TYPE=Release \
