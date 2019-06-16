@@ -1,29 +1,36 @@
 # Maintainer: 3ED <krzysztof1987 _at_ gmail _dot_ com>
 
 pkgname=vim-bash-support
-pkgver=4.2.1
-_srcid=21804
+pkgver=4.3
+_srcid=24452
 pkgrel=1
 pkgdesc='BASH-IDE - Write and run BASH-scripts using menus and hotkeys. '
 arch=('any')
-url='http://vim.sourceforge.net/scripts/script.php?script_id=365'
+url='https://www.vim.org/scripts/script.php?script_id=365'
 license=('custom:vim')
-depends=('vim-vim-support')
+depends=('vim-vim-support>=2.4')
 optdepends=('bashdb: bash debugger')
-install='vimdoc.install'
 source=("${pkgname}-${pkgver}.zip::http://www.vim.org/scripts/download_script.php?src_id=$_srcid")
+sha256sums=('f63cd5ec6989e80618e5170f820e67a9256047426783cbbccb56aaddefdd44ae')
 noextract=("${pkgname}-${pkgver}.zip")
-sha256sums=('67aab863783dd72ba9a963b3e2c0e1754cd93795cf661fdeb5e699b1b3841742')
 
 package() {
-  _DESTDIR="$pkgdir"/usr/share/vim/vimfiles
+	cd "$srcdir"
+	_DESTDIR="$pkgdir"/usr/share/vim/vimfiles
 
-  install -dm755 "${_DESTDIR}"
-  bsdtar -xf ${pkgname}-${pkgver}.zip -C "${_DESTDIR}" \
-    --exclude "autoload/mmtemplates/core.vim" \
-    --exclude "doc/templatesupport.txt" \
-    --exclude "syntax/template.vim"
+	install -dm755 "${_DESTDIR}"
 
-  # Fix perms
-  chmod -R a=r,a+X,u+w "${_DESTDIR}"
+	bsdtar -xf ${pkgname}-${pkgver}.zip \
+		--exclude "autoload/mmtemplates/core.vim" \
+		--exclude "autoload/mmtemplates/config.vim" \
+		--exclude "autoload/mmtemplates/wizard.vim" \
+		--exclude "doc/templatesupport.txt" \
+		--exclude "ftdetect/template.vim" \
+		--exclude "ftplugin/template.vim" \
+		--exclude "syntax/template.vim" \
+		--directory "${_DESTDIR}"
+
+	# note: exclusions should be included inside vim-vim-support
+
+	chmod -R a=r,a+X,u+w "${_DESTDIR}"
 }
