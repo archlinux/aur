@@ -1,0 +1,47 @@
+--- /usr/lib/initcpio/hooks/zfs	2019-06-14 20:01:07.000000000 -0700
++++ ./zfs-pivy.hook	2019-06-17 11:36:28.995485785 -0700
+@@ -43,6 +43,15 @@
+     # export encription root to be used by other hooks (SSH)
+     echo "${encryptionroot}" > /.encryptionroot
+ 
++    # if the dataset has an ebox, use pivy-zfs to unlock it
++    if [ "$(zfs get -H -o source rfd77:ebox "${dataset}")" == "local" ]; then
++        # loop until pivy-zfs unlock succeeds
++        while [ "$(zfs get -H -o value keystatus "${encryptionroot}")" != "available" ] &&
++          ! eval pivy-zfs unlock "${encryptionroot}"; do
++            sleep 2
++        done
++    fi
++
+     # loop until we get the correct password or key is unlocked by another vector (SSH for instance)
+     while [ "$(zfs get -H -o value keystatus "${encryptionroot}")" != "available" ] &&
+       ! eval zfs load-key "${encryptionroot}"; do
+@@ -125,6 +134,17 @@
+     # Wait 15 seconds for ZFS devices to show up
+     [ "${zfs_wait}" = "" ] && ZFS_WAIT="15" || ZFS_WAIT="${zfs_wait}"
+ 
++    # Start pcscd, in case we want it for pivy-zfs
++    pcscd
++    while [[ ! -f /run/pcscd/pcscd.pid ]]; do
++        sleep 0.2
++    done
++    pcscd_pid=$(cat /run/pcscd/pcscd.pid)
++    kill_pcscd() {
++        kill $pcscd_pid
++    }
++    trap kill_pcscd EXIT
++
+     case ${root} in
+         # root=zfs
+         "zfs")
+@@ -184,6 +204,10 @@
+     set_flags
+     # only run zpool import, if flags were set (cache file found / zfs_import_dir specified)
+     [ ! "${ZPOOL_IMPORT_FLAGS}" = "" ] && zpool import ${ZPOOL_IMPORT_FLAGS} -N -a ${ZPOOL_FORCE}
++    # loop through all imported pools and if they have encryption at the root, unlock them now
++    for x in $(zpool list -Ho name); do
++        zfs_decrypt_fs "$x"
++    done
+ }
+ 
+ # vim:set ts=4 sw=4 ft=sh et:

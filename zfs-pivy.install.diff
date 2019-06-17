@@ -1,0 +1,27 @@
+--- /usr/lib/initcpio/install/zfs	2019-06-14 20:01:07.000000000 -0700
++++ ./zfs-pivy.install	2019-06-17 11:28:32.631104239 -0700
+@@ -22,13 +22,22 @@
+         zstreamdump \
+         /lib/udev/vdev_id \
+         /lib/udev/zvol_id \
+-        findmnt
++        findmnt \
++        pcscd \
++        pivy-zfs \
++        pivy-box \
++        pivy-tool
+ 
+     map add_file \
+         /lib/udev/rules.d/60-zvol.rules \
+         /lib/udev/rules.d/69-vdev.rules \
+         /lib/udev/rules.d/90-zfs.rules \
+-        /lib/libgcc_s.so.1
++        /lib/libgcc_s.so.1 \
++        /etc/libccid_Info.plist \
++        /usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist \
++        /usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Linux/libccid.so \
++        /usr/lib/libfl.so.2 \
++        /usr/lib/libusb-1.0.so.0
+ 
+     map add_dir \
+         /etc/zfs/zed.d
