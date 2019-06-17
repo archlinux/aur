@@ -23,10 +23,10 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.1.7-arch1
+_srcver=5.1.10-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
-_bmqversion=095
+_bmqversion=096
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
@@ -43,21 +43,25 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   "0001_$_bmq_patch::https://gitlab.com/alfredchen/bmq/raw/master/5.1/${_bmq_patch}"
-  "0002_$_uksm_patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.1/uksm-pf/0001-uksm-5.1-initial-submission.patch"
-  "0003_uksm_5.1.fix.patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.1/uksm-pf-fix/0001-uksm-5.1-apply-52d1e606ee733.patch"
-  "0004_enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  "0002_5.1_bmq096_debug::https://gitlab.com/alfredchen/bmq/raw/master/5.1/5.1_bmq096_debug.patch"
+  "0003_fix_ffs_usage::https://gitlab.com/alfredchen/linux-bmq/commit/3606d92b4e7dd913f485fb3b5ed6c641dcdeb838.patch"
+  "0004_$_uksm_patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.1/uksm-pf/0001-uksm-5.1-initial-submission.patch"
+  "0005_uksm_5.1.fix.patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.1/uksm-pf-fix/0001-uksm-5.1-apply-52d1e606ee733.patch"
+  "0006_enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('4487fd93edd9e768146d4d2fb5ee5e1a8d63e3da3e122e50732a2a86a28be934'
-            '12684e82ea015a4c54e924e537d0203b3e3ba7e20ecf9167b48ed99fd53ae4a9'
+sha256sums=('91c3737b1793fa06c62aad6ce90d4c66b6dd15fb2071b35fba32f1d915d70ca2'
+            '7fa1fcc652c7c44edbd98eabe3d9c639ba6af99bd340e267edf5706c92cd1775'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '0d66538886e3888b1bd0e7b6b4281d240b74b929cbe7242400b4c056adcde6bb'
+            '48be5e7f27d4a0570bd31f37ed1ad35241ff7f427dae5513cab875c7b44aeb08'
+            '17dac9dd145fc437f7f7269d4394d645a8335576daa545b237891db8bd24cd97'
+            '280a7772f894ba93e37f80ff55f1548d7546a11bdee0e53af19f2bb1f7038d6f'
             '088c5d7fb0ccfcecb7553358c6dea46395b410368dffae3b87a66ed0779e7623'
             '06d5ea7472c2af577ec1ab756dccead814609f5989f8eabe3cfa1181d5c07923'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d')
