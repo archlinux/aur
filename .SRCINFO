@@ -1,0 +1,14 @@
+pkgbase = keepkey-udev
+	pkgdesc = Udev rules to connect a keepkey hardware wallet to your linux box
+	pkgver = 1
+	pkgrel = 1
+	url = https://shapeshift.io/keepkey/
+	install = keepkey-udev.install
+	arch = any
+	license = GPL
+	depends = udev
+	source = https://raw.githubusercontent.com/keepkey/udev-rules/master/51-usb-keepkey.rules
+	sha256sums = 37d466ed3f86d44c2512a7d67c457e3c9fde26252f06765aff2948a121d29448
+
+pkgname = keepkey-udev
+
