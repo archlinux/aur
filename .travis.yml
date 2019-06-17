@@ -28,17 +28,17 @@ arch:
   - ccache
   - moreutils
   - bc
-  script:
-# prepare ENV:
-#   1. multithreading: 
-#   1.1 COMPRESSXZ=(-xz -T0), can't be passed to makepkg as bash dosn't support array in `export` statement.
-#   1.2 MAKEFLAGS='-j2'
-#   2. override `package-cleanup.hook` to preserve cache for travis.
+  before_install:
+#   Override `package-cleanup.hook` to preserve cache for travis.
+#   Enable ccache
+#   Multithreaded build and compress
   - |
-     echo 'options+=(ccache)' >> PKGBUILD
-     echo 'COMPRESSXZ=(xz -T 0 -c -z -)' >> PKGBUILD
-     echo "MAKEFLAGS='-j2'" >> PKGBUILD
-     sudo mkdir /etc/pacman.d/hooks/ && sudo ln -s /dev/null /etc/pacman.d/hooks/package-cleanup.hook
+     sudo mkdir /etc/pacman.d/hooks/
+     sudo ln -s /dev/null /etc/pacman.d/hooks/package-cleanup.hook
+     sudo sed -i '/#MAKEFLAGS=/c MAKEFLAGS="-j2"' /etc/makepkg.conf
+     sudo sed -i '/^BUILDENV/s/\!ccache/ccache/' /etc/makepkg.conf
+     sudo sed -i '/^COMPRESSXZ/s/\xz/xz -T 2/' /etc/makepkg.conf
+  script:
 # check interval update
   - |
      update_offset=$(. PKGBUILD; sha1sum <<< "$pkgname"|sed -e "s/[a-z -]//g" -e "s/^0*//"|echo `cat`%$update_interval|bc)
