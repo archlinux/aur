@@ -1,5 +1,5 @@
 pkgbase = iptables-fullconenat
-	pkgdesc = Linux kernel packet control tool
+	pkgdesc = Linux kernel packet control tool with FULLCONENAT support/
 	pkgver = 1.8.2
 	pkgrel = 1
 	epoch = 1
@@ -53,10 +53,10 @@ pkgbase = iptables-fullconenat
 	sha1sums = SKIP
 
 pkgname = iptables-fullconenat
-	pkgdesc = Linux kernel packet control tool (using legacy interface)
+	pkgdesc = Linux kernel packet control tool with FULLCONENAT support/ (using legacy interface)
 
 pkgname = iptables-fullconenat-nft
-	pkgdesc = Linux kernel packet control tool (using nft interface)
+	pkgdesc = Linux kernel packet control tool with FULLCONENAT support/ (using nft interface)
 	depends = libnftnl
 	depends = libpcap
 	depends = libnfnetlink
