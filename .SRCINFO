@@ -1,0 +1,24 @@
+pkgbase = rga
+	pkgdesc = rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/phiresky/ripgrep-all
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = AGPL
+	makedepends = rust
+	makedepends = cargo
+	depends = ripgrep
+	depends = ffmpeg
+	depends = pandoc
+	depends = poppler
+	depends = tesseract
+	depends = graphicsmagick
+	conflicts = rga-git
+	source = https://github.com/phiresky/ripgrep-all/archive/0.9.1.tar.gz
+	sha512sums = 59e65e8f8f6c2d9281dd143144aeb6e79b2db0d726efec26c46f8005968c9fa59fd5f44f4e6cc1bbd34c2c4296680fc71eed7c3cd2294f9eda76eaf8daea113f
+
+pkgname = rga
+
