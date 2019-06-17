@@ -4,13 +4,13 @@
 
 pkgname='perl-test-cleannamespaces'
 pkgver='0.24'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Check for uncleaned imports"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 checkdepends=('perl-file-pushd' 'perl-test-needs')
-depends=('perl-file-find-rule' 'perl-file-find-rule-perl' 'perl-module-runtime' 'perl-package-stash>=0.14' 'perl-role-tiny>=1.003000' 'perl-sub-exporter' 'perl-sub-identify' 'perl-test-deep' 'perl-test-requires' 'perl-test-tester' 'perl-test-warnings>=0.009' 'perl-namespace-clean')
+depends=('perl-file-find-rule' 'perl-file-find-rule-perl' 'perl-module-runtime' 'perl-package-stash>=0.14' 'perl-role-tiny>=1.003000' 'perl-sub-exporter' 'perl-sub-identify' 'perl-test-deep' 'perl-test-requires' 'perl-test-simple>=1.302162' 'perl-test-warnings>=0.009' 'perl-namespace-clean')
 makedepends=()
 url='http://search.mcpan.org/dist/Test-CleanNamespaces'
 source=("http://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/Test-CleanNamespaces-$pkgver.tar.gz")
