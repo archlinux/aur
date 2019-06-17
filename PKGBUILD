@@ -3,10 +3,10 @@
 
 pkgname=wire-desktop-beta
 _pkgname=${pkgname%-beta}
-pkgver=3.8.2894
+pkgver=3.9.2895
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
-arch=('x86_64')
+arch=('any')
 url='https://wire.com/'
 license=('GPL3')
 depends=('electron' 'xdg-utils')
@@ -15,7 +15,7 @@ optdepends=('emoji-font: colorful emoji')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wireapp/${_pkgname}/archive/linux/${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/wireapp/${_pkgname}/releases/download/linux%2F${pkgver}/${_pkgname}-linux-${pkgver}.tar.gz.sig"
         "${pkgname}.desktop")
-sha256sums=('3def5aa10578bc8be33505377a16c9485e5d31aa370ee1d7eb39a9c78dc33e3d'
+sha256sums=('852de3b3eddce0611432d1249303a6e99bdf1450ac26aa60858e216b10562e6f'
             'SKIP'
             '35e522978ac21f7aa2f67faa712037d8999482eed1b88953dbea5420a9b13196')
 validpgpkeys=('ABBA007D6E14E2DB5B283C45D599C1AA126762B1')
