@@ -1,0 +1,19 @@
+pkgbase = shiromino-git
+	pkgdesc = Diverse and challenging puzzle/action game with stylistic roots in the arcade.
+	pkgver = r48.ab921e7
+	pkgrel = 1
+	url = https://github.com/FelicityVi/shiromino
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = pkgconf
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	conflicts = shiromino
+	source = git+https://github.com/FelicityVi/shiromino.git
+	sha256sums = SKIP
+
+pkgname = shiromino-git
+
