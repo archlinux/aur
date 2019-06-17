@@ -1,9 +1,9 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
 pkgname=ygopro-koishipro
-pkgver=2019.6.8
+pkgver=2019.6.17
 pkgrel=1
 _pkgrel=1
-name="Realidea"
+name="Mermaid"
 zipFile="KoishiPro-linux-full-$name.zip"
 pkgdesc="Link compatable ygopro client with AI"
 arch=('x86_64')
@@ -11,9 +11,9 @@ url='https://github.com/purerosefallen/ygopro'
 license=('GPL2')
 depends=('mono' 'libevent')
 makedepends=('patchelf')
-source=("https://github.com/purerosefallen/ygopro/releases/download/$name/$zipFile")
+source=("$url/releases/download/$name/$zipFile")
 noextract=($zipFile)
-sha256sums=('9fde870812dd16d8b66ea6521fd5e0718fa2ecbacc7dd312ef93a124f0122c76')
+sha256sums=('2d22d09356b356b0ce9fb21142964a05ccf7c90a0a2744377c24435070f689b0')
 options=('!strip' 'emptydirs')
 
 prepare(){

@@ -1,6 +1,6 @@
 pkgbase = ygopro-koishipro
 	pkgdesc = Link compatable ygopro client with AI
-	pkgver = 2019.6.8
+	pkgver = 2019.6.17
 	pkgrel = 1
 	url = https://github.com/purerosefallen/ygopro
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = ygopro-koishipro
 	makedepends = patchelf
 	depends = mono
 	depends = libevent
-	noextract = KoishiPro-linux-full-Realidea.zip
+	noextract = KoishiPro-linux-full-Mermaid.zip
 	options = !strip
 	options = emptydirs
-	source = https://github.com/purerosefallen/ygopro/releases/download/Realidea/KoishiPro-linux-full-Realidea.zip
-	sha256sums = 9fde870812dd16d8b66ea6521fd5e0718fa2ecbacc7dd312ef93a124f0122c76
+	source = https://github.com/purerosefallen/ygopro/releases/download/Mermaid/KoishiPro-linux-full-Mermaid.zip
+	sha256sums = 2d22d09356b356b0ce9fb21142964a05ccf7c90a0a2744377c24435070f689b0
 
 pkgname = ygopro-koishipro
 
