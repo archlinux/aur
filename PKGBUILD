@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Moreira
 
 pkgname=fpakman-staging
-pkgver=0.1.0.S.2
+pkgver=0.1.0.S.3
 pkgrel=1
 pkgdesc="GUI for Flatpak applications management"
 arch=('any')
@@ -22,7 +22,8 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
 
-  python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
+  # python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
+  python3 setup.py install --user --optimize=1 || return 1
   
   python3 aur/register_app.py
 }
