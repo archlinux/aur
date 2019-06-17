@@ -6,7 +6,7 @@ Wants=network.target
 User=cloudflared
 Group=cloudflared
 Type=simple
-ExecStart=/usr/bin/cloudflared proxy-dns --port 5300
+ExecStart=/usr/bin/cloudflared proxy-dns --port 5300 --no-autoupdate
 Restart=on-failure
 
 [Install]

@@ -21,8 +21,8 @@ source_armv6h=("https://bin.equinox.io/a/gEZP5gmXUU9/cloudflared-2019.6.0-linux-
 source_armv7h=("https://bin.equinox.io/a/gEZP5gmXUU9/cloudflared-2019.6.0-linux-arm.tar.gz")
 sha256sums=('6a486a0f6c00e87cce1caf0aa8db45ea9fefd0bf91d9be6fc44460160dc0dbda'
             '4e06eb54143d872f73707ed2bba2ba2198649d3066df741bd0cfda5d1a5f334d'
-            '407ff5e3f3fdfa3440bac2d4c8cb191493be37fa3bad388e7ab49ffd07c83f21'
-            'bc40e3f7e1b21b93a949a1b1c05639584943d9ce9cc7ccb96612688eeb9fd206')
+            '791ec5bebea5863544f5e0db0d9184a5bbb75e66725f7505e83e252f51d84376'
+            '7f6251ade23609189516375a1e8155e8457dd36e35ce24435e552dc6af0ad7a7')
 sha256sums_x86_64=('524528ed564f1ac62ce25856b80efad5d56a37201af65a27d47ee9d5440a650c')
 sha256sums_i686=('4ad5ec9b744754491b3bbfe71d5130f7a4fcd4bea5224387a5bd0ccf460cf236')
 sha256sums_armv6h=('5b45543e1e2b1bde7259d042144bb06fffcea480e8cddf4a93e7bb7cb660a71b')
