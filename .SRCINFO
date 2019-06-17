@@ -8,8 +8,8 @@ pkgbase = ros-melodic-ros-environment
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	source = ros-melodic-ros-environment-1.2.1-0.tar.gz::https://github.com/ros-gbp/ros_environment-release/archive/release/melodic/ros_environment/1.2.1-0.tar.gz
-	sha256sums = 2bb4a8d5947bd81fb1b6f7b1e9e822e69ccf99bec2cca7a68fd654017e69993f
+	source = ros-melodic-ros-environment-1.2.1.tar.gz::https://github.com/ros/ros_environment/archive/1.2.1.tar.gz
+	sha256sums = 7b27acb70791779a57b082ad6e9170adbaf0a19ebde7d0aebf705210a676d39d
 
 pkgname = ros-melodic-ros-environment
 
