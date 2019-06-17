@@ -2,8 +2,9 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=uniconvertor2-git
-pkgver=r3912.d0ed814e
+pkgver=r373.0f33c1c
 pkgrel=1
+epoch=1
 pkgdesc="A universal vector graphics translator"
 url="https://sk1project.net/"
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ depends=('lcms2' 'cairo' 'libmagick' 'pango' 'python2-cairo'
 makedepends=('git' 'python2')
 provides=('uniconvertor')
 conflicts=('uniconvertor')
-source=("${pkgname%-*}"::'git://github.com/sk1project/sk1-wx.git')
+source=("${pkgname%-*}"::'git://github.com/sk1project/uniconvertor.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,10 +24,10 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-*}"
-  LANG=en_US.UTF-8 python2 setup-uc2.py build
+  LANG=en_US.UTF-8 python2 setup.py build
 }
 
 package() {
   cd "${srcdir}/${pkgname%-*}"
-  LANG=en_US.UTF-8 python2 setup-uc2.py install --root="$pkgdir"
+  LANG=en_US.UTF-8 python2 setup.py install --root="$pkgdir"
 }
