@@ -1,0 +1,16 @@
+pkgbase = libpgm-git
+	pkgdesc = OpenPGM: implementation of the Pragmatic General Multicast (PGM, RFC3208)
+	pkgver = r1232.fcc46a11
+	pkgrel = 1
+	url = https://www.freshports.org/net/openpgm/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = python2
+	depends = glibc
+	provides = libpgm
+	conflicts = libpgm
+	source = git+https://github.com/steve-o/openpgm.git
+	sha256sums = SKIP
+
+pkgname = libpgm-git
+
