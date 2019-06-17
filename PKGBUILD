@@ -1,7 +1,7 @@
 # Maintainer: Stijn Seghers <stijnseghers at gmail dot com>
 
 pkgname=mangband
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='A free online multiplayer real-time roguelike game, derived from the single player game Angband (ncurses-only)'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL' 'custom')
 depends=('ncurses5-compat-libs')
 
 source=("http://mangband.org/download/${pkgname}-${pkgver}.tar.gz")
-md5sums=('a39d2b3f8098052c9a3afa058c021924')
+md5sums=('4cb550a19535de739d014d1a6e57353c')
 
 
 build() {
