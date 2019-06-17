@@ -2,16 +2,16 @@
 pkgbase=python-regions
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Astropy affilated package for region handling"
 arch=('i686' 'x86_64')
 url="http://astropy-regions.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('cython' 'cython2' 'python-astropy>=1.3' 'python2-astropy>=1.3' 'python-astropy-helpers31' 'python2-astropy-helpers' 'python-sphinx-astropy' 'python-shapely')
-#checkdepends=('python-pytest-astropy' 'python-astropy-healpix')
+makedepends=('cython' 'cython2' 'python-astropy>=1.3' 'python2-astropy>=1.3' 'python-astropy-helpers' 'python2-astropy-helpers' 'python-sphinx-astropy' 'python-shapely')
+checkdepends=('python-pytest-astropy' 'python-astropy-healpix')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('b2f0b08cdaa2b40519de665f9af2a25a')
+md5sums=('d1bb0818478d4eca71abefbdfa6373bc')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -33,15 +33,15 @@ build() {
     python setup.py build_docs
 }
 
-#check() {
-##   msg "Checking Python3"
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#    python setup.py test
-#
-##   msg "Checking Python2"
-##   cd ${srcdir}/${_pyname}-${pkgver}-py2
-##   python2 setup.py test
-#}
+check() {
+#   msg "Checking Python3"
+    cd ${srcdir}/${_pyname}-${pkgver}
+    python setup.py test
+
+#   msg "Checking Python2"
+#   cd ${srcdir}/${_pyname}-${pkgver}-py2
+#   python2 setup.py test
+}
 
 package_python2-regions() {
     depends=('python2>=2.7' 'python2-numpy>=1.9' 'python2-astropy>=1.3')
