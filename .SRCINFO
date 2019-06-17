@@ -1,0 +1,19 @@
+pkgbase = fpakman-staging
+	pkgdesc = GUI for Flatpak applications management
+	pkgver = 0.1.0.S.01
+	pkgrel = 1
+	url = https://github.com/vinifmor/fpakman
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pip
+	depends = python-pyqt5
+	depends = python-requests
+	provides = fpakman
+	source = https://github.com/vinifmor/fpakman/archive/staging.zip
+	sha512sums = SKIP
+
+pkgname = fpakman-staging
+
