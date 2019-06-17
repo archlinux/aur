@@ -3,7 +3,7 @@
 pkgbase=python-pre-commit
 pkgname=(python-pre-commit python2-pre-commit)
 pypi_name=pre_commit
-pkgver=1.16.1
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="A framework for managing and maintaining multi-language pre-commit hooks."
 arch=('any')
