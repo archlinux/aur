@@ -2,11 +2,11 @@
 
 pkgname=hg-evolve
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible evolution of Mercurial history'
 arch=('any')
 license=('GPL2')
-depends=('mercurial<5.1')
+depends=('mercurial')
 #groups=('hgext')
 url='https://www.mercurial-scm.org/doc/evolution/'
 source=("https://files.pythonhosted.org/packages/source/h/hg-evolve/hg-evolve-${pkgver}.tar.gz")
