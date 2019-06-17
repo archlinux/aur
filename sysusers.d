@@ -1,1 +1,1 @@
-u cloudflared - "Cloudflare Argo Tunnel Daemon" /var/lib/cloudflared
+u cloudflared - "Cloudflare Argo Tunnel Daemon"

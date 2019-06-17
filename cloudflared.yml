@@ -1,3 +1,2 @@
 hostname: tunnel.yourdomain.com
 url: https://localhost:8000
-logfile: /var/log/cloudflared.log
