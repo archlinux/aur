@@ -1,10 +1,10 @@
 pkgbase = haconiwa-git
 	pkgdesc = MRuby on Container / A Linux container runtime using mruby DSL for configuration, control and hooks http://haconiwa.mruby.org/
-	pkgver = v0.10.2.r15.g375a79b
+	pkgver = v0.10.2
 	pkgrel = 1
 	url = https://github.com/haconiwa/haconiwa
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = git
 	makedepends = libcgroup
 	makedepends = criu
