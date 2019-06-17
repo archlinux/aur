@@ -5,7 +5,7 @@
 # Maintainer: Uffe Jakobsen <microtop@starion.dk>
 #
 pkgname=tass64
-pkgver=1.53.1515
+pkgver=1.54.1900
 pkgrel=1
 epoch=
 pkgdesc="tass64 is cross (turbo) assembler targeting the MOS 65xx series of micro processors (6502/65C02/R65C02/W65C02/65CE02/65816/DTV/65EL02)"
@@ -28,30 +28,32 @@ install=
 changelog=
 source=("http://sourceforge.net/projects/tass64/files/source/${_pkgname}-${pkgver}-src.zip")
 noextract=()
-md5sums=('8630b666f975c53450108ba377196893')
+md5sums=('a06434a6c8b82baafaa72126a2f7ef0e')
 
 
-prepare() {
-  cd "$srcdir/$_pkgname-$pkgver-src"
+prepare()
+{
+  cd "${srcdir}/${_pkgname}-${pkgver}-src"
 }
 
-build() {
-  cd "$srcdir/$_pkgname-$pkgver-src"
+build()
+{
+  cd "${srcdir}/${_pkgname}-${pkgver}-src"
   make -w --trace
 }
 
-check() {
-  cd "$srcdir/$_pkgname-$pkgver-src"
+check()
+{
+  cd "${srcdir}/${_pkgname}-${pkgver}-src"
   #make -w --trace -k check
 }
 
-package() {
-  cd "$srcdir/$_pkgname-$pkgver-src"
-  install -d -m 755 "$pkgdir/usr/local/bin/"
-  install -m 755 64tass "$pkgdir/usr/local/bin/tass64"
-  install -d -m 755 "$pkgdir/usr/local/doc/tass64/"
-  install -m 755 README "$pkgdir/usr/local/doc/tass64/"
-  install -m 755 README.html "$pkgdir/usr/local/doc/tass64/"
+package()
+{
+  cd "${srcdir}/${_pkgname}-${pkgver}-src"
+  make DESTDIR="${pkgdir}" install
 }
 
+#
 # EOF
+#
