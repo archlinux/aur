@@ -1,15 +1,15 @@
 #
-# PKGBUILD for dxa65
+# PKGBUILD: dxa65
 #
 # Contributor: Uffe Jakobsen <uffe@uffe.org>
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 #
 pkgname=dxa65
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 epoch=
 pkgdesc="Disassembler for MOS 6502 and compatible CPUs"
-arch=('i686', 'x86_64')
+arch=('i686' 'x86_64')
 _pkgname=dxa
 url="http://www.floodgap.com/retrotech/xa#dxa"
 license=('GPL')
@@ -27,24 +27,28 @@ install=
 changelog=
 source=(http://www.floodgap.com/retrotech/xa/dists/${_pkgname}-${pkgver}.tar.gz)
 noextract=()
-md5sums=('4fb88a7eda5939472b3a1d1c48b057fc')
+md5sums=('3a7993751bcb94e5f9081cc2f27eee1d')
 
 
-prepare() {
+prepare()
+{
   cd "$srcdir/${_pkgname}-${pkgver}"
 }
 
-build() {
+build()
+{
   cd "${srcdir}/${_pkgname}-${pkgver}"
   make
 }
 
-check() {
+check()
+{
   cd "${srcdir}/${_pkgname}-${pkgver}"
   #make -k check
 }
 
-package() {
+package()
+{
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   mkdir -p ${pkgdir}/usr/local/bin
@@ -57,4 +61,6 @@ package() {
 
 }
 
+#
 # EOF
+#
