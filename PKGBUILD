@@ -6,7 +6,7 @@
 
 pkgname=pick
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fuzzy search tool for the command line'
 arch=('i686' 'x86_64')
 url='https://github.com/calleerlandsson/pick'
@@ -19,7 +19,8 @@ sha256sums=('668c863751f94ad90e295cf861a80b4d94975e06645f401d7f82525e607c0266')
 build()
 {
   cd "${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
+  #./configure --prefix=/usr
+  PREFIX=/usr ./configure
   make
 }
 
