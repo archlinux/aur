@@ -4,7 +4,7 @@
 
 pkgname=balena-etcher
 _pkgname=etcher
-pkgver=1.5.50
+pkgver=1.5.34
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64)
@@ -40,9 +40,9 @@ prepare() {
 
 build() {
   cd "${_pkgname}"
-  git apply -v "${srcdir}/use-electron-4.1.5.patch"
+  #git apply -v "${srcdir}/use-electron-4.1.5.patch"
   export NPM_VERSION=$(npm --version)
-  make electron-develop || /bin/true
+  make electron-develop #|| /bin/true
   make webpack
   npm prune --production
 }
