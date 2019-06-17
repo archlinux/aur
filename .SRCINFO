@@ -1,7 +1,7 @@
 pkgbase = suplemon
 	pkgdesc = Console text editor with multi cursor support.
-	pkgver = 0.1.64
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/richrd/suplemon/
 	arch = any
 	license = MIT
