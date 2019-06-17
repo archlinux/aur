@@ -1,7 +1,7 @@
 pkgbase = kodi-addon-inputstream-adaptive
 	pkgdesc = InputStream client for adaptive streams for Kodi 18+
-	pkgver = 2.3.20
-	pkgrel = 2
+	pkgver = 2.3.22
+	pkgrel = 1
 	url = https://github.com/peak3d/inputstream.adaptive
 	arch = x86_64
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = kodi-addon-inputstream-adaptive
 	makedepends = cmake
 	depends = kodi-platform
 	conflicts = kodi-addon-inputstream-adaptive
-	source = kodi-addon-inputstream-adaptive-2.3.20.tar.gz::https://github.com/peak3d/inputstream.adaptive/archive/2.3.20-Leia.tar.gz
-	sha256sums = 7689921a7157f66911d235808a458db43abcc8bf4d0ebc86d7f58659df6139e8
+	source = kodi-addon-inputstream-adaptive-2.3.22.tar.gz::https://github.com/peak3d/inputstream.adaptive/archive/2.3.22-Leia.tar.gz
+	sha256sums = 2c21abeead9dc172de297c47930f62050f382c449682cbdb6c70c7e19a2d561b
 
 pkgname = kodi-addon-inputstream-adaptive
 
