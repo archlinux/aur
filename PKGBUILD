@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=python-rasterio
 _pyname=rasterio
-pkgver=1.0.13
+pkgver=1.0.24
 pkgrel=1
 pkgdesc='Python library for reading and writing geospatial raster data.'
 url='https://github.com/mapbox/rasterio'
@@ -22,4 +22,4 @@ package() {
   install -Dm755 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('3e09ac6a9f82e4c0c45a455fe96121271883341f72985d56501dcc4a3847d3f7')
+sha256sums=('3ffa4e0e5fe195d81eee83731afdba62e816b3aff3fce791fcd87b9976b1eda0')
