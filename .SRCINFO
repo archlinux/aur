@@ -1,0 +1,13 @@
+pkgbase = perl-file-loadlines
+	pkgdesc = load the contents of a text file into an array of lines
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/File-LoadLines
+	arch = any
+	license = PerlArtistic
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/J/JV/JV/File-LoadLines-0.02.tar.gz
+	sha512sums = be7c567b4bba99f4aa12601d6dd0dc60956eac661f956ab9a820272148e477c7c24dfbbcdeff4e816492bcdcf9650077dbe309205aa21e802aa1dcc00f2ff5d1
+
+pkgname = perl-file-loadlines
+
