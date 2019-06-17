@@ -6,7 +6,7 @@
 #
 pkgname=tass64
 pkgver=1.54.1900
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="tass64 is cross (turbo) assembler targeting the MOS 65xx series of micro processors (6502/65C02/R65C02/W65C02/65CE02/65816/DTV/65EL02)"
 arch=('i686' 'x86_64')
@@ -51,7 +51,7 @@ check()
 package()
 {
   cd "${srcdir}/${_pkgname}-${pkgver}-src"
-  make DESTDIR="${pkgdir}" install
+  make prefix=/usr DESTDIR="${pkgdir}" install
 }
 
 #
