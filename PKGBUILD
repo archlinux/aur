@@ -1,6 +1,6 @@
 pkgname="teensy-loader"
 pkgver=1.40
-pkgrel=1
+pkgrel=2
 pkgdesc="The Teensy Loader makes getting code into your Teensy easy."
 arch=("x86_64")
 url="https://www.pjrc.com/teensy/loader.html"
@@ -14,7 +14,7 @@ source=(
 )
 sha256sums=(
     "b4e26c4717afae5dee397fa3a0660a3e499e573e5edab259c5fd52beb221032e"
-    "031de0b26991b5a3b19c497d9c0a17f86c40c55d925b9d07d19ab89f2286469d"
+    "7c17bb6dcef244fbf8bc9bd85a7eb812eebe60f6a6a3d47bceddde84c77c5914"
 )
 
 package() {
