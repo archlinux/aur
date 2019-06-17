@@ -1,7 +1,7 @@
 pkgbase = opentx-companion-bin
 	pkgdesc = Models and settings editor for the OpenTX open source firmware.
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.open-tx.org/
 	install = opentx-companion-bin.install
 	arch = x86_64

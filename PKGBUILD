@@ -3,7 +3,7 @@
 # Contributor: Alex
 pkgname=('opentx-companion-bin')
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Models and settings editor for the OpenTX open source firmware."
 arch=('x86_64')
 url="http://www.open-tx.org/"
@@ -24,11 +24,11 @@ package(){
 	# Fix directories structure differencies
 	cd "${pkgdir}"
 
-	mkdir usr/bin 2> /dev/null; mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
+	mv usr/local/bin usr/bin
+	mv lib usr/lib
+
 	sed -i -e 's:^Exec=/usr/local/bin/:Exec=/usr/bin/:g' "usr/share/applications/companion22.desktop"
 	sed -i -e 's:^Exec=/usr/local/bin/:Exec=/usr/bin/:g' "usr/share/applications/simulator22.desktop"
-	mkdir -p usr/lib 2> /dev/null; mv lib/* usr/lib; rm -rf lib
-	mv usr/local/lib/* usr/lib; rm -rf usr/local/lib
 
 	cd ..
 
