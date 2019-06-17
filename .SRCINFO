@@ -1,0 +1,13 @@
+pkgbase = perl-app-packager
+	pkgdesc = Abstraction for Packagers
+	pkgver = 1.430
+	pkgrel = 1
+	url = https://metacpan.org/release/App-Packager
+	arch = any
+	license = unknown
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/J/JV/JV/App-Packager-1.430.tar.gz
+	sha512sums = 3e4d8ac03614f6fa77a881f62d5ebad03b999ac2fb8f8441b1417f45a4a6e2c33d79d106f0d2017c9819a5136d9bf4e062e59780d700ad2d80717bc3a5e25d39
+
+pkgname = perl-app-packager
+
