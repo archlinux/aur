@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Moreira
 
 pkgname=fpakman-staging
-pkgver=0.1.0.14
+pkgver=0.1.0.15
 pkgrel=1
 pkgdesc="GUI for Flatpak applications management"
 arch=('any')
@@ -27,6 +27,6 @@ package() {
   
   python3 aur/register_app.py
 
-  mkdir ~/.local/share/fpakman/resources
+  mkdir -p ~/.local/share/fpakman/resources
   cp -rf fpakman/resources ~/.local/share/fpakman/resources
 }
