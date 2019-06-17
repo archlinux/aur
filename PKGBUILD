@@ -1,13 +1,13 @@
 # Maintainer: Thomas Gatzweiler <thomas.gatzweiler@gmail.com>
 pkgname=qlog-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r1.28d827f
+pkgver=r2.c705f4c
 pkgrel=1
 pkgdesc="Amateur radio logbook software"
 arch=("x86_64" "i686")
 url="https://github.com/7h0ma5/QLog"
 license=('GPL')
 groups=()
-depends=('qt5-base' 'hamlib')
+depends=('qt5-base' 'qt5-charts' 'hamlib')
 makedepends=('git' 'qt5-tools')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
