@@ -27,7 +27,7 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -Dm 755 ghq-$pkgver "$pkgdir/usr/bin/ghq"
+  install -Dm 755 ghq "$pkgdir/usr/bin/ghq"
   install -Dm 644 zsh/_ghq "$pkgdir/usr/share/zsh/site-functions/_ghq"
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/ghq/LICENSE"
 }
