@@ -1,4 +1,5 @@
 # Maintainer: Kohei Morita <mrtc0@ssrf.in>
+pkgbase=haconiwa
 pkgname=haconiwa-git
 pkgver=v0.10.2.r15.g375a79b
 pkgrel=1
