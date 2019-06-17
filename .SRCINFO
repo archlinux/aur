@@ -1,6 +1,6 @@
 pkgbase = mullvad-vpn
 	pkgdesc = VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy
-	pkgver = 2019.4
+	pkgver = 2019.5
 	pkgrel = 1
 	url = https://www.mullvad.net
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = mullvad-vpn
 	replaces = mullvad-vpn-old
 	source = mullvad-daemon.service
 	source = mullvad-vpn.desktop
-	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2019.4/MullvadVPN-2019.4_x86_64.rpm
+	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2019.5/MullvadVPN-2019.5_x86_64.rpm
 	md5sums = ed3a49275addbd5f2098a33bd605f1d3
 	md5sums = 9628b4f93e72f5cca0a47087ae10b0fd
-	md5sums = c43ae5246794f95f7124351472edecda
+	md5sums = af23574a334f99c3a08eb2811961b997
 
 pkgname = mullvad-vpn
 
