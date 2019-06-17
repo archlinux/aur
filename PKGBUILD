@@ -1,20 +1,23 @@
 #
-# vasm PKGBUILD
+# PKGBUILD: vasm
 #
 # Maintainer: uffe Jakobsen <_uffe_-at-_uffe_-_dot_-_org>
+#
 
-_pkgver="1_8d"
+_pkgver="1_8f"
 
 pkgname=vasm
-pkgver=1.8d
+pkgver=1.8f
 pkgrel=1
 pkgdesc="Portable and retargetable 6502 6800 arm c16x jagrisc m68k ppc test tr3200 vidcore x86 z80 assembler."
 arch=('i686' 'x86_64')
 url="http://sun.hasenbraten.de/vasm/"
 license=('custom')
 depends=()
-source=(http://server.owl.de/~frank/tags/${pkgname}${_pkgver}.tar.gz)
-md5sums=('03c2715f4c15330d3fde4b23b02b5c60')
+#source=(http://server.owl.de/~frank/tags/${pkgname}${_pkgver}.tar.gz)
+source=(http://sun.hasenbraten.de/vasm/release/vasm.tar.gz)  # ${pkgname}${_pkgver}.tar.gz
+md5sums=('cd93d72c36600672d1c3fe039bafbbbf')
+
 
 CPU_LIST="6502 6800 arm c16x jagrisc m68k ppc test tr3200 vidcore x86 z80"
 SYNTAX_LIST="std madmac mot oldstyle" # test
