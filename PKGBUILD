@@ -5,7 +5,7 @@
 # Maintainer: jooch <jooch AT gmx DOT com>
 
 pkgname=freefilesync
-pkgver=10.12
+pkgver=10.13
 pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
@@ -15,15 +15,13 @@ depends=(wxgtk webkit2gtk boost-libs)
 makedepends=(boost unzip)
 source=(
 	"FreeFileSync_${pkgver}_Source.zip::${url}/download/FreeFileSync_${pkgver}_Source.zip"		#ffs
-	revert_resources_path.patch
 	revert_xdg_config_path.patch
 	FreeFileSync.desktop
 	RealTimeSync.desktop
 	)
 
-sha256sums=('55b915c47f2dff5c376ed7b6297bae449ab71179bab026a776dea123aaa65407'
-            '052ef5bf5eb11730499f4b81cd7e70f990fff3cfcc2f7059b84981e7ededc361'
-            'fef8aa099a27c277b76f1229651ed2324355528482c8f115e09c39269bbf4bdd'
+sha256sums=('6460362e56e846535ffa07eb5e087fac1efa04c34dd8f5c323c570f7e960b72a'
+            'e74b4abdf04c58004e52f77afee762e4c3d72d4ca42de4cc42cbc930cbec0e32'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830')
 	 
@@ -38,9 +36,6 @@ prepare() {
 # wxgtk < 3.1.0
     # Revert to classic config path
     patch --binary -p1 -i revert_xdg_config_path.patch
-
-# Revert change to resources path of portable version
-    patch --binary -p1 -i revert_resources_path.patch
 
 # edit lines to remove functions that require wxgtk 3.1.x  
     sed -e 's:m_textCtrlOfflineActivationKey->ForceUpper:// &:g' -i 'FreeFileSync/Source/ui/small_dlgs.cpp'
@@ -78,14 +73,17 @@ build() {
 
 package() {
     bindir="${pkgdir}/usr/bin"
-    appsharedir="${pkgdir}/usr/share/FreeFileSync"
+    appdir="${pkgdir}/opt/FreeFileSync"
     appdocdir="${pkgdir}/usr/share/doc/FreeFileSync"
 
     cd "${srcdir}/FreeFileSync/Build"
-    install -t "${bindir}" -Dm755 Bin/FreeFileSync Bin/RealTimeSync
-    install -t "${appsharedir}/Misc" -Dm644 Misc/*
-    install -t "${appsharedir}/Languages" -Dm644 Languages/*.lng
-    install -t "${pkgdir}/usr/share/pixmaps" -Dm644 Misc/FreeFileSync.png Misc/RealTimeSync.png
+    install -t "${appdir}/Bin" -Dm755 Bin/*
+    mkdir -p "${bindir}"
+    ln -s /opt/FreeFileSync/Bin/{FreeFileSync,RealTimeSync} "${bindir}"
+
+    cp -rT Resources "${appdir}/Resources"
+    find "${appdir}/Resources" -type f -print0 | xargs -0 chmod 644
+    install -t "${pkgdir}/usr/share/pixmaps" -Dm644 Resources/FreeFileSync.png Resources/RealTimeSync.png
 
     cd "${srcdir}"
     install -d "${appdocdir}"
