@@ -23,12 +23,12 @@ build() {
   cd "$GOPATH/src/github.com/minio/mc"
   sed -i "s/Version.*/Version = \"${pkgver//./-}${_timever}\"/g" cmd/build-constants.go
   sed -i "s/ReleaseTag.*/ReleaseTag = \"RELEASE.${_pkgver}\"/g" cmd/build-constants.go
-  sed -i "s/CommitID.*/CommitID = \"$(git rev-parse HEAD | cut -c1-12)\"/g" cmd/build-constants.g
+  sed -i "s/CommitID.*/CommitID = \"$(git rev-parse HEAD)\"/g" cmd/build-constants.go
 
   GO111MODULE=on go build
 }
 
 package() {
-  install -Dm755 go/github.com/minio/mc "$pkgdir/usr/bin/mcli"
+  install -Dm755 go/src/github.com/minio/mc/mc "$pkgdir/usr/bin/mcli"
 }
 # vim:set ts=2 sw=2 et:
