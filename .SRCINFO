@@ -15,8 +15,8 @@ pkgbase = ros-melodic-class-loader
 	depends = boost
 	depends = console-bridge
 	depends = poco
-	source = ros-melodic-class-loader-0.4.1-0.tar.gz::https://github.com/ros-gbp/class_loader-release/archive/release/melodic/class_loader/0.4.1-0.tar.gz
-	sha256sums = 09c3d35e5afb806c612e843ef15078b97a0a6051174a45712d38c38345eae4a5
+	source = ros-melodic-class-loader-0.4.1.tar.gz::https://github.com/ros/class_loader/archive/0.4.1.tar.gz
+	sha256sums = 3f31c9acb3c2b8e72b32bfae23f11abd7e0329789857e3833d300194a2e73961
 
 pkgname = ros-melodic-class-loader
 

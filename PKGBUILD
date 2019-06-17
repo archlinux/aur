@@ -5,7 +5,6 @@ url='http://ros.org/wiki/class_loader'
 
 pkgname='ros-melodic-class-loader'
 pkgver='0.4.1'
-_pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -34,9 +33,9 @@ depends=(
 	poco
 )
 
-_dir="class_loader-release-release-melodic-class_loader-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/class_loader-release/archive/release/melodic/class_loader/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('09c3d35e5afb806c612e843ef15078b97a0a6051174a45712d38c38345eae4a5')
+_dir="class_loader-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/class_loader/archive/${pkgver}.tar.gz")
+sha256sums=('3f31c9acb3c2b8e72b32bfae23f11abd7e0329789857e3833d300194a2e73961')
 
 build() {
 	# Use ROS environment variables.
