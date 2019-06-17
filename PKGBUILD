@@ -27,5 +27,5 @@ package() {
   
   python3 aur/register_app.py
 
-  cp -rf fpakman/resources ~/.local/share/fpakman/
+  cp -rf fpakman/resources ~/.local/share/fpakman/resources
 }
