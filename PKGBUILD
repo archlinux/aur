@@ -11,7 +11,7 @@
 
 pkgname=chromium-vaapi
 pkgver=75.0.3770.90
-pkgrel=2
+pkgrel=3
 _launcher_ver=6
 pkgdesc="Chromium with VA-API support to enable hardware acceleration"
 arch=('x86_64')
@@ -35,6 +35,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-vaapi.patch
         chromium-system-icu.patch
         libstdc-do-not-assume-unique_ptr-has-ostream-operator.patch
+        disallow-partial-swaps-for-linux-based-on-gl_version.patch
         chromium-fix-window-flash-for-some-WMs.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
@@ -44,6 +45,7 @@ sha256sums=('b1b59abbe19ecb88c17d99fa68f5c1c5585a5d66c100858f944aa3b93b943839'
             '4befcfa310db89736c890dd41e698a6a77ecec8b6f75077ddbae4a1c0ba80092'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
             'e309dfd9d790f32cb1d23103726ac25e405b6ae6757a1c957a8395667d753908'
+            '1e4686de75c019f38a3ed947463e429a777d5387fd29310deef2108c58617b07'
             '183d8cc712f0bcf1afcb01ce90c4c104a4c8d8070a06f94974a28b007d9e2ce4'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3')
@@ -101,6 +103,9 @@ prepare() {
 
   # Enable VAAPI on Linux
   patch -Np1 -i ../chromium-vaapi.patch
+
+  # https://crbug.com/973216
+  patch -Np1 -i ../disallow-partial-swaps-for-linux-based-on-gl_version.patch
 
   # https://crbug.com/956061
   patch -Np1 -i ../chromium-fix-window-flash-for-some-WMs.patch
