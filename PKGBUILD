@@ -9,18 +9,17 @@
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
 pkgname=vlc-git
-pkgver=4.0.0.r8361.gf2fd2df5d0
+pkgver=4.0.0.r8388.gb425adb06c
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64')
 license=('LGPL2.1' 'GPL2')
-# TODO: libplacebo https://github.com/haasn/libplacebo/commit/65ddefbadc3481a7835baa23701a7a2992ca2768
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
-         'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' #'libplacebo'
+         'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
          'wayland-protocols' 'libidn' 'aribb24' 'qt5-quickcontrols2' 'qt5-graphicaleffects')
 makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
@@ -225,11 +224,12 @@ build() {
               --enable-kwallet \
               --disable-update-check \
               --enable-notify \
-              --disable-libplacebo \
+              --enable-libplacebo \
               --enable-vlc \
               --enable-aribsub \
               --enable-aom \
-              --enable-srt
+              --enable-srt \
+              --enable-dav1d
   make
 }
 
