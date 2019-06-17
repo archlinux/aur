@@ -1,12 +1,12 @@
 pkgbase = openrocket
 	pkgdesc = A free and fully featured rocket flight simulator - 6 degrees of freedom
 	pkgver = 15.03
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openrocket.info/
 	arch = any
 	license = GPL3
-	depends = java-environment
-	depends = bash
+	depends = java-environment=8
+	depends = desktop-file-utils
 	noextract = OpenRocket-15.03.jar
 	source = https://github.com/openrocket/openrocket/releases/download/release-15.03/OpenRocket-15.03.jar
 	source = openrocket.1

@@ -5,12 +5,12 @@
 pkgname=openrocket
 _pkgname=OpenRocket
 pkgver=15.03
-pkgrel=2
+pkgrel=3
 pkgdesc="A free and fully featured rocket flight simulator - 6 degrees of freedom"
 arch=('any')
 url=http://openrocket.info/
 license=('GPL3')
-depends=('java-environment' 'bash')
+depends=('java-environment=8' 'desktop-file-utils')
 source=("https://github.com/$pkgname/$pkgname/releases/download/release-$pkgver/$_pkgname-15.03.jar"
         $pkgname.1
 	de_debian.tar.gz)
