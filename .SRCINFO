@@ -8,8 +8,8 @@ pkgbase = gandi-automatic-dns
 	depends = openssl
 	optdepends = net-tools: to discover external IP on interface using ifconfig
 	optdepends = bind-tools: to discover external IP via DNS request using dig
-	source = https://github.com/brianpcurran/gandi-automatic-dns/archive/v1.3.3.tar.gz
-	sha256sums = 3dbd31ceb6b5b40e65cb1673ccc61af442e365013749f33e3e38ae6782bdbfa3
+	source = https://github.com/brianpcurran/gandi-automatic-dns/archive/v1.3.3-1.tar.gz
+	sha256sums = f444aa0b598cb68a3735ed993f471811c239e41af43c7f0c831f5adbf6676674
 
 pkgname = gandi-automatic-dns
 
