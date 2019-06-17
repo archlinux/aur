@@ -7,4 +7,4 @@ cp "$TRAVIS_BUILD_DIR/$file_name" $(pwd)
 git add "$file_name"
 git status
 git commit -a -m "$pkgname $pkgver" -m "build_log: $TRAVIS_BUILD_WEB_URL" 
-git pull --rebase && git push
+git pull --rebase && git push || true
