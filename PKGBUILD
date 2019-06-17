@@ -10,8 +10,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=75.0.3770.80
-pkgrel=1
+pkgver=75.0.3770.90
+pkgrel=2
 _launcher_ver=6
 pkgdesc="Chromium with VA-API support to enable hardware acceleration"
 arch=('x86_64')
@@ -19,7 +19,7 @@ url="https://www.chromium.org/Home"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
-         'desktop-file-utils' 'hicolor-icon-theme')
+         'pipewire' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
              'clang' 'lld' 'gn' 'java-runtime-headless')
 optdepends=('pepper-flash: support for Flash content'
@@ -38,7 +38,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-fix-window-flash-for-some-WMs.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('da828bc8d887821380b461abfbbd0e17538c211d56f240f03711b918c77a66d6'
+sha256sums=('b1b59abbe19ecb88c17d99fa68f5c1c5585a5d66c100858f944aa3b93b943839'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '4befcfa310db89736c890dd41e698a6a77ecec8b6f75077ddbae4a1c0ba80092'
@@ -161,6 +161,8 @@ build() {
     'fieldtrial_testing_like_official_build=true'
     'ffmpeg_branding="Chrome"'
     'proprietary_codecs=true'
+    'rtc_use_pipewire=true'
+    'rtc_link_pipewire=true'
     'link_pulseaudio=true'
     'use_gnome_keyring=false'
     'use_sysroot=false'
