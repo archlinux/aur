@@ -4,7 +4,7 @@
 
 pkgname=taglib-extras
 pkgver=1.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Additional taglib plugins"
 arch=('x86_64' 'aarch64')
 url="https://developer.kde.org/~wheeler/taglib.html"
