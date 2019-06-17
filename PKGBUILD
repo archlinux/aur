@@ -1,13 +1,13 @@
 # Maintainer: Oscar Shrimpton <oscar.shrimpton.personal@gmail.com>
 pkgname=autopsy
 pkgver=4.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensic tools'
 arch=(x86_64)
 url='http://www.sleuthkit.org/autopsy/'
 license=('Apache-2.0')
-skver=4.6.5
-depends=(java-runtime testdisk sleuthkit 'sleuthkit-java=4.6.5-1' java-openjfx)
+_skver=4.6.6
+depends=(java-runtime testdisk sleuthkit 'sleuthkit-java=4.6.6' java-openjfx)
 makedepends=()
 optdepends=('opencv: media files (64-bit)')
 source=(https://github.com/sleuthkit/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip Autopsy.desktop)
@@ -21,8 +21,8 @@ package() {
   cp -r * $pkgdir/usr/share/${pkgname}/
 
   # copy sleuthkit jar into autopsy
-  rm -f $pkgdir/usr/share/${pkgname}/${pkgname}/modules/ext/sleuthkit-postgresql-4.6.6.jar
-  ln -s /usr/share/java/sleuthkit-$skver.jar $pkgdir/usr/share/${pkgname}/${pkgname}/modules/ext/sleuthkit-postgresql-4.6.6.jar
+  rm -f $pkgdir/usr/share/${pkgname}/${pkgname}/modules/ext/sleuthkit-postgresql-${_skver}.jar
+  ln -s /usr/share/java/sleuthkit-${_skver}.jar $pkgdir/usr/share/${pkgname}/${pkgname}/modules/ext/sleuthkit-postgresql-${_skver}.jar
 
   # overwrite bin/autopsy with proper permissions
   install -m755 bin/autopsy $pkgdir/usr/share/${pkgname}/bin/autopsy
