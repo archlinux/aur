@@ -1,0 +1,34 @@
+pkgbase = flashplugin-debug
+	pkgdesc = Adobe Flash Player debugger
+	pkgver = 32.0.0.207
+	pkgrel = 1
+	url = https://www.adobe.com/support/flashplayer/debug_downloads.html
+	arch = x86_64
+	license = custom
+	license = LGPL
+	noextract = flash_player_npapi_linux_debug_32.0.0.207.x86_64.tar.gz
+	noextract = flash_player_ppapi_linux_debug_32.0.0.207.x86_64.tar.gz
+	options = !strip
+	source = flash_player_npapi_linux_debug_32.0.0.207.x86_64.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_npapi_linux_debug.x86_64.tar.gz
+	source = flash_player_ppapi_linux_debug_32.0.0.207.x86_64.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_ppapi_linux_debug.x86_64.tar.gz
+	sha256sums = fb705577e53d312dbac63d58a88f8dbdf56a9df2a7d42b96c749e4ab14a6ad6c
+	sha256sums = d00c5400af536836a138ec084a65e4374cd8c3f9d33d5b0a2871fe95ac0615f4
+
+pkgname = flashplugin-debug
+	pkgdesc = Adobe Flash Player debugger NPAPI
+	depends = libxt
+	depends = gtk2
+	depends = nss
+	depends = curl
+	depends = hicolor-icon-theme
+	optdepends = libvdpau: GPU acceleration on Nvidia cards
+	provides = flashplugin=32.0.0.207
+	conflicts = flashplugin
+
+pkgname = pepper-flash-debug
+	pkgdesc = Adobe Flash Player debugger PPAPI
+	depends = gcc-libs
+	optdepends = flashplugin-debug: settings utility
+	provides = pepper-flash=32.0.0.207
+	conflicts = pepper-flash
+
