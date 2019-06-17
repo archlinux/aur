@@ -5,8 +5,8 @@
 
 _srcname=vlc
 pkgname=vlc-decklink
-pkgver=3.0.6
-pkgrel=3
+pkgver=3.0.7.1
+pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (with decklink support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
@@ -97,17 +97,11 @@ replaces=('vlc-plugin')
 options=('!emptydirs')
 source=("https://download.videolan.org/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.xz"{,.asc}
         'update-vlc-plugin-cache.hook'
-        'lua53_compat.patch'
-        'vlc-libvpx18.patch'::'https://github.com/videolan/vlc-3.0/commit/2688feb2742a6021ca211ae5c106b12c3d822946.patch'
-        'vlc-libssh2-ecdsa.patch'::'https://github.com/videolan/vlc-3.0/commit/db381f6edeac9d70b7545a72bc2840f42266d655.patch'
-        'vlc-decklink-fix-build-with-sdk-11.patch')
-sha256sums=('18c16d4be0f34861d0aa51fbd274fb87f0cab3b7119757ead93f3db3a1f27ed3'
+        'lua53_compat.patch')
+sha256sums=('0655804371096772f06104b75c21cde8a76e3b6c8a2fdadc97914f082c6264f5'
             'SKIP'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
-            'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
-            '8b7b4cb3982f2dd16bbe8ab53f4d42c70ff9ca7145daab72a61118ce12cb3564'
-            '99e85191e972d0939ee62498f47da6820020e01e834a733a995f665fd1ccef45'
-            'be1ae99f62304d5291eecd181175d593b5a26a4192021528624e88d96ecf3c74')
+            'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa')
 validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Signing Key
 
 prepare() {
