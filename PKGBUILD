@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster (milk/milkii on Freenode)
 # Contributor:  VirtualTam <virtualtam@flibidi.net>
 pkgname=openav-luppp-git
-pkgver=1.1.1.r15.gbe14f40
+pkgver=continuous.master.r0.g0d3ce19
 pkgrel=1
 pkgdesc="Luppp is a live performance tool, created by OpenAV productions (unstable development package)"
 arch=('i686' 'x86_64')
@@ -23,13 +23,13 @@ pkgver() {
 
 build(){
   cd ${_gitname}
-  cmake ./ -DCMAKE_INSTALL_PREFIX="/usr" -DRELEASE_BUILD=1
-  make
+  meson build
+  cd build
+  ninja
 }
 
 package() {
   cd ${_gitname}
-  make DESTDIR=${pkgdir} install
-  install -Dm644 "resources/metadata/luppp.desktop" "${pkgdir}/usr/share/applications/luppp.desktop"
-  install -Dm644 "resources/icons/luppp.png" "${pkgdir}/usr/share/luppp/luppp.png"
+  cd build
+  DESTDIR="$pkgdir/" ninja install
 }
