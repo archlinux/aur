@@ -14,16 +14,16 @@ source=('haconiwa-git::git+https://github.com/haconiwa/haconiwa')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname}"
+  cd "$srcdir/${pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/${pkgname}"
+  cd "$srcdir/${pkgname}"
   make
 }
 
 package() {
-	cd "$srcdir/${pkgname}"
+  cd "$srcdir/${pkgname}"
   make PREFIX="${pkgdir}/usr/" install
 }
