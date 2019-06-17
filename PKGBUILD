@@ -2,7 +2,7 @@
 
 pkgname=zettlr
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url="https://www.zettlr.com"
@@ -33,8 +33,8 @@ package() {
     cp -r --no-preserve=ownership --preserve=mode source/* "$pkgdir"/usr/lib/$pkgname/
 
     # Remove unneeded addin
-    find $pkgdir/usr/lib/zettlr -name "fonts" -exec rm -rfv "{}"\;
-    find $pkgdir/usr/lib/zettlr -name ".gitignore" -or -name ".eslintrc.json" -or -name ".npmignore" -exec rm -rfv "{}"\;
+    find $pkgdir/usr/lib/zettlr -name "fonts" -exec rm -rfv {} +
+    find $pkgdir/usr/lib/zettlr -name ".gitignore" -or -name ".eslintrc.json" -or -name ".npmignore" -exec rm -rfv {} +
 
     install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname <<END
 #!/bin/bash
