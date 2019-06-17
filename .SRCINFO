@@ -1,6 +1,6 @@
 pkgbase = sfizz-git
 	pkgdesc = Juce based SFZ format sampler
-	pkgver = r44.cb30e9a
+	pkgver = r51.14bace7
 	pkgrel = 1
 	url = https://github.com/sfztools/sfizz
 	arch = x86_64
