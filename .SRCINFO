@@ -1,4 +1,4 @@
-pkgbase = haconiwa-git
+pkgbase = haconiwa
 	pkgdesc = MRuby on Container / A Linux container runtime using mruby DSL for configuration, control and hooks http://haconiwa.mruby.org/
 	pkgver = v0.10.2
 	pkgrel = 1
