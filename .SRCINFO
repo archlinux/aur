@@ -1,7 +1,7 @@
 pkgbase = foliate-git
 	pkgdesc = A simple and modern GTK eBook reader
-	pkgver = 151.371af80
-	pkgrel = 2
+	pkgver = 152.004411b
+	pkgrel = 1
 	url = https://johnfactotum.github.io/foliate/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = foliate-git
 	arch = armv7h
 	arch = aarch64
 	license = GPL-3.0
-	makedepends = gettext
 	makedepends = meson
 	makedepends = ninja
 	depends = gjs>=1.54.0
