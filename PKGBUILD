@@ -11,7 +11,7 @@ depends=()
 url='https://metacpan.org/release/File-LoadLines'
 source=('https://cpan.metacpan.org/authors/id/J/JV/JV/File-LoadLines-0.02.tar.gz')
 sha512sums=('be7c567b4bba99f4aa12601d6dd0dc60956eac661f956ab9a820272148e477c7c24dfbbcdeff4e816492bcdcf9650077dbe309205aa21e802aa1dcc00f2ff5d1')
-_distdir="File-Loadlines-0.02"
+_distdir="File-LoadLines-0.02"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
