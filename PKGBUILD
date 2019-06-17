@@ -5,7 +5,7 @@
 
 pkgname=cmake-format
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Source code formatter for CMake listfiles'
 arch=('any')
 url='https://github.com/cheshirekow/cmake_format'
@@ -15,6 +15,6 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/cheshirekow/cmake_format/ar
 sha512sums=('bcfab5d40c27e6670fca6560e8e3e044de3609238edfe66c924a3d446de92282f985aa6f1a885a5069b425dc61ef8c3ba2f2052532822863a3c283ae5b6cb0f5')
 
 package() {
-  cd "$srcdir/cmake_format-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
+	cd "$srcdir/cmake_format-$pkgver"
+	python setup.py install --root="$pkgdir" --optimize=1
 }
