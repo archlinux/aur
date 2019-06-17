@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Moreira
 
 pkgname=fpakman-staging
-pkgver=0.1.0.S.9
+pkgver=0.1.0.S.10
 pkgrel=1
 pkgdesc="GUI for Flatpak applications management"
 arch=('any')
