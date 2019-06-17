@@ -4,6 +4,7 @@ pkgbase = taglib-extras
 	pkgrel = 6
 	url = https://developer.kde.org/~wheeler/taglib.html
 	arch = x86_64
+	arch = aarch64
 	license = LGPL
 	makedepends = cmake
 	depends = taglib
