@@ -7,7 +7,7 @@ pkgrel=1
 arch=('any')
 url="https://github.com/KeyLo99/k3rmit"
 license=('GPL3')
-depends=('git' 'gtk3>=3.18.9' 'vte3>=0.42.5')
+depends=('gtk3>=3.18.9' 'vte3>=0.42.5')
 makedepends=('cmake')
 source=('git://github.com/KeyLo99/k3rmit.git')
 sha256sums=('SKIP')

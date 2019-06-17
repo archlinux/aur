@@ -6,7 +6,6 @@ pkgbase = k3rmit-git
 	arch = any
 	license = GPL3
 	makedepends = cmake
-	depends = git
 	depends = gtk3>=3.18.9
 	depends = vte3>=0.42.5
 	source = git://github.com/KeyLo99/k3rmit.git
