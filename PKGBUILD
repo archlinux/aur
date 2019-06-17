@@ -3,9 +3,9 @@
 
 pkgname=jdk12-openj9-bin
 _jdkver=12
-_openj9ver=0.13.0
-_majorver=${_jdkver}
-_buildvershort=33
+_openj9ver=0.14.1
+_majorver=${_jdkver}.0.1
+_buildvershort=12
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_majorver}b${_buildver//-/_}
 pkgrel=1
@@ -23,7 +23,7 @@ provides=(
   "java-runtime-headless-openjdk=${_jdkver}"
 )
 source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_majorver}%2B${_buildver}/OpenJDK${_jdkver}U-jdk_x64_linux_openj9_${_majorver}_${_buildver}.tar.gz")
-sha256sums=('d61a7a211b314aab9d79bc003b8ce86d5651e705912a24e369a44ae5206afed5')
+sha256sums=('78091b44f3e2350888f0c73c9eb8f98dbc6fcb55b04692b067070c02bfeb4ec1')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
