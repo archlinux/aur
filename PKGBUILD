@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Moreira
 
 pkgname=fpakman-staging
-pkgver=0.1.0.S.7
+pkgver=0.1.0.S.8
 pkgrel=1
 pkgdesc="GUI for Flatpak applications management"
 arch=('any')
@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('python' 'python-pip' 'python-pyqt5' 'python-requests')
 makedepends=('git' 'python-setuptools')
 provides=("fpakman")
+conflicts=('fpakman')
 source=("${url}/archive/staging.zip")
 sha512sums=('SKIP')
 

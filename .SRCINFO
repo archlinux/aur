@@ -1,6 +1,6 @@
 pkgbase = fpakman-staging
 	pkgdesc = GUI for Flatpak applications management
-	pkgver = 0.1.0.S.7
+	pkgver = 0.1.0.S.8
 	pkgrel = 1
 	url = https://github.com/vinifmor/fpakman
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = fpakman-staging
 	depends = python-pyqt5
 	depends = python-requests
 	provides = fpakman
+	conflicts = fpakman
 	source = https://github.com/vinifmor/fpakman/archive/staging.zip
 	sha512sums = SKIP
 
