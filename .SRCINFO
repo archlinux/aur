@@ -6,7 +6,6 @@ pkgbase = chordpro-git
 	arch = any
 	license = Artistic2.0
 	depends = git
-	depends = perl
 	depends = perl-string-interpolate
 	depends = perl-font-ttf
 	depends = perl-image-info
