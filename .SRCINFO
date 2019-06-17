@@ -1,6 +1,6 @@
 pkgbase = editorconfig-geany
 	pkgdesc = EditorConfig plugin for Geany
-	pkgver = 0.1.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/editorconfig/editorconfig-geany
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = editorconfig-geany
 	license = GPL
 	depends = geany
 	depends = editorconfig-core-c
-	source = https://github.com/editorconfig/editorconfig-geany/archive/ed7b2449c7ec3c903d56c2f5c4c66a094b9f10f8.tar.gz
-	sha256sums = b00a6443166a93da6a0c647b82c357e33aa0ce387e5036ce69657b35ff7983c8
+	source = editorconfig-geany-0.2.tar.gz::https://github.com/editorconfig/editorconfig-geany/archive/v0.2.tar.gz
+	sha256sums = 4b0c37eb534613e7454c1e068179db5b262cf9e5aa00681802787231e1b35edf
 
 pkgname = editorconfig-geany
 
