@@ -1,7 +1,7 @@
 # Maintainer: RedTide <redtid3@gmail.com>
 
 pkgname=sfizz
-pkgver=r44.cb30e9a
+pkgver=r51.14bace7
 pkgrel=1
 pkgdesc="Juce based SFZ format sampler"
 url="https://github.com/sfztools/sfizz"
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('GPL3')
 makedepends=('git' 'juce')
 source=(
-    "$pkgname"::"git+https://github.com/sfztools/sfizz#commit=cb30e9a"
+    "$pkgname"::"git+https://github.com/sfztools/sfizz#commit=14bace7"
 )
 md5sums=(
     'SKIP'
@@ -29,6 +29,7 @@ build() {
 package() {
     cd "$srcdir/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}/resources/linux/sfizz.desktop" "${pkgdir}/usr/share/applications/sfizz.desktop"
+    install -Dm644 "${srcdir}/${pkgname}/resources/linux/sfizz.appdata.xml" "${pkgdir}/usr/share/metainfo/sfizz.appdata.xml"
     install -Dm644 "${srcdir}/${pkgname}/resources/icons/icon_256px.png" "${pkgdir}/usr/share/pixmaps/sfizz.png"
     install -Dm755 "${srcdir}/${pkgname}/Builds/LinuxMakefile/build/sfizz" "${pkgdir}/usr/bin/sfizz"
     install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/sfizz/LICENSE"
