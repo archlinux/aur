@@ -5,13 +5,13 @@
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=insight-toolkit
-pkgver=4.13.1
-pkgrel=10
+pkgver=5.0.0
+pkgrel=11
 pkgdesc='Cross-platform system that provides developers with an extensive suite of software tools for image analysis'
 arch=('i686' 'x86_64')
 url='http://www.itk.org/'
 license=('APACHE')
-depends=('fftw' 'libjpeg-turbo' 'libpng' 'zlib' 'libtiff' 'gdcm' 'expat' 'hdf5-cpp-fortran' 'gtest')
+depends=('fftw' 'libjpeg-turbo' 'libpng' 'zlib' 'libtiff' 'gdcm' 'expat' 'hdf5-cpp-fortran' 'gtest' 'eigen')
 optdepends=('python2: build python wrapping'
             'ruby'
             'tcl: build tcl wrapping (currently not supported)'
@@ -23,8 +23,8 @@ optdepends=('python2: build python wrapping'
             'clang: for swig'
 	    'castxml-git: for ITK')
 makedepends=('cmake')
-source=("http://downloads.sourceforge.net/project/itk/itk/${pkgver:0:4}/InsightToolkit-${pkgver}.tar.xz")
-sha512sums=('faeb33875e00fb8380192a6772ecab2e713a0a5dd2879a15e862690f25302627c7370b646eea68367d215bf4eb6f7eb06b32cd05e18d031e853229fc23943d8b')
+source=("https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightToolkit-${pkgver}.tar.xz")
+sha512sums=('942a68c72d4a51ceecf052a7dec4eab8aa62bbfc4b0cb20eee4aa28d99f1d52463c51c51aec79dac9304dbbcdfc09178d0f791a67a4a7a9eb411eb1c1078d816')
 
 _usepython=false
 
