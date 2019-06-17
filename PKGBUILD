@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=imposm
 _gitname=imposm3
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Imports OpenStreetMap data into PostGIS"
 arch=('x86_64')
@@ -43,4 +43,4 @@ package() {
   install -m755 "$pkgname" "$pkgdir/usr/bin/imposm"
 }
 
-sha256sums=('25e51653e9ecbfd4558832c94e049360f6a08b81ba5d3ddb5f049cedfdb50674')
+sha256sums=('eefe5512acdf319fd228337dec294461453b358885b3e395a6cbcbd492aa9cae')
