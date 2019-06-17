@@ -1,7 +1,7 @@
 pkgbase = azote
 	pkgdesc = Wallpaper manager for Sway, i3 and some other WMs
 	pkgver = 0.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nwg-piotr/azote
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,8 @@ pkgbase = azote
 	depends = python-pillow
 	depends = wget
 	depends = feh
+	depends = xorg-xrandr
+	depends = wmctrl
 	source = https://github.com/nwg-piotr/azote/archive/v0.0.2.tar.gz
 	md5sums = 84cb5f23bbf18612195e13a0b8f07c64
 
