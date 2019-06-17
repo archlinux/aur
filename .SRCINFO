@@ -1,6 +1,6 @@
 pkgbase = aerc
 	pkgdesc = Email Client for your Terminal
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/aerc
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = aerc
 	depends = python-colorama
 	provides = aerc
 	conflicts = aerc
-	source = aerc::git+https://git.sr.ht/~sircmpwn/aerc#tag=0.1.1
+	source = aerc::git+https://git.sr.ht/~sircmpwn/aerc#tag=0.1.2
 	sha512sums = SKIP
 
 pkgname = aerc
