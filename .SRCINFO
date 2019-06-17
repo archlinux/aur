@@ -1,15 +1,19 @@
 pkgbase = zettlr
 	pkgdesc = A markdown editor for writing academic texts and taking notes
-	pkgver = 1.3.0.b2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://www.zettlr.com
 	arch = x86_64
 	license = GPL
 	makedepends = yarn
+	makedepends = git
 	depends = electron
+	depends = ttf-webhostinghub-glyphs
+	depends = otf-crimson-text
 	optdepends = pandoc: For exporting to various format
 	optdepends = texlive-bin: For Latex support
-	source = zettlr::git+https://github.com/Zettlr/Zettlr.git#tag=v1.3.0-beta.2
+	optdepends = ttf-lato: Display output in a more comfortable way
+	source = zettlr::git+https://github.com/Zettlr/Zettlr.git#tag=v1.3.0
 	sha1sums = SKIP
 
 pkgname = zettlr
