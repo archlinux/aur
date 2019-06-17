@@ -1,0 +1,27 @@
+pkgbase = gnome-network-displays-git
+	pkgdesc = Miracast implementation for GNOME
+	pkgver = r97.9d3bed6
+	pkgrel = 1
+	url = https://github.com/benzea/gnome-network-displays
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = appstream-glib
+	depends = desktop-file-utils
+	depends = faac
+	depends = gst-plugins-ugly
+	depends = gst-rtsp-server
+	depends = libpulse
+	depends = networkmanager
+	depends = python-gobject
+	depends = x264
+	provides = gnome-network-displays
+	conflicts = gnome-network-displays
+	conflicts = gnome-screencast
+	replaces = gnome-screencast
+	source = git+https://github.com/benzea/gnome-network-displays
+	sha256sums = SKIP
+
+pkgname = gnome-network-displays-git
+
