@@ -2,7 +2,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=sk1-git
-pkgver=r4149.66a602b5
+pkgver=r5030.c93f39e0
 pkgrel=1
 pkgdesc="An open source vector graphics editor for prepress"
 url="https://sk1project.net/"
@@ -23,10 +23,10 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-*}"
-  LANG=en_US.UTF-8 python2 setup-sk1.py build
+  LANG=en_US.UTF-8 python2 setup.py build
 }
 
 package() {
   cd "${srcdir}/${pkgname%-*}"
-  LANG=en_US.UTF-8 python2 setup-sk1.py install --root="$pkgdir"
+  LANG=en_US.UTF-8 python2 setup.py install --root="$pkgdir"
 }
