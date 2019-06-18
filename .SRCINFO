@@ -9,7 +9,6 @@ pkgbase = zfs-dkms-git
 	makedepends = git
 	depends = zfs-utils-git=2019.06.14.r5200.gc1b5801bb
 	depends = lsb-release
-	depends = python
 	depends = dkms
 	provides = zfs
 	provides = zfs-headers
