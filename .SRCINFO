@@ -1,40 +1,39 @@
 pkgbase = ogre-1.9
 	pkgdesc = Scene-oriented, flexible 3D engine written in C++
-	pkgver = 1.9.0
-	pkgrel = 17
+	pkgver = 1.9.1
+	pkgrel = 1
 	url = http://www.ogre3d.org
-	install = ogre-1.9.install
-	arch = i686
 	arch = x86_64
 	license = custom:MIT
-	makedepends = boost
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = ttf-dejavu
 	makedepends = mesa
-	makedepends = mercurial
-	depends = boost-libs
+	makedepends = python
+	makedepends = swig
+	makedepends = systemd
 	depends = freeimage
 	depends = freetype2
 	depends = libxaw
 	depends = libxrandr
+	depends = openexr
 	depends = nvidia-cg-toolkit
 	depends = zziplib
-	depends = ois
+	depends = sdl2
 	depends = glu
 	depends = tinyxml
-	source = hg+http://bitbucket.org/sinbad/ogre#tag=v1-9-0
-	source = ogre-template-fix.patch::https://bitbucket.org/sinbad/ogre/commits/a24ac4afbbb9dc5ff49a61634af50da11ba8fb97/raw/
-	source = ogre-cmake30.patch::https://bitbucket.org/sinbad/ogre/commits/d84bce645d3dd439188d3d29d8da51c51765a085/raw/
-	md5sums = SKIP
-	md5sums = 3debee4514a33a0a642370aecdc41975
-	md5sums = 116fb8009c8d4b499f9a885052cc0ea6
+	provides = ogre
+	provides = ogre-docs
+	source = https://github.com/OGRECave/ogre/archive/v1.9.1.tar.gz
+	sha512sums = 69e1ea27ef3126ac0e09be9c1f8a9fc762630cd236ce6c3352a550ad977925387b1dfb9d124cc27bb8ac5231e036155451db988a26de6fb2df6da6f7d961115d
 
 pkgname = ogre-1.9
 	optdepends = cppunit: unit testing
-	optdepends = intel-tbb: better threading support
-	optdepends = poco: portability
-	optdepends = boost: for developing using ogre
+	optdepends = python: python bindings
 	optdepends = ogre-docs: documentation
+
+pkgname = ogre-docs-1.9
+	pkgdesc = Documentation for ogre
+	depends = 
 
