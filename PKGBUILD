@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=cmb
-pkgver=2.0
+pkgver=3.9.2
 pkgrel=1
 pkgdesc="combinatorics utility"
 url="https://fraubsd.org/cmb"
 arch=('x86_64')
 license=('BSD')
-makedepends=('awk' "libcmb>=$pkgver")
-depends=('openssl' "libcmb>=$pkgver")
+makedepends=('awk' 'libcmb')
+depends=('openssl' 'libcmb')
 source=("git+https://github.com/FrauBSD/pkgcenter")
 sha256sums=('SKIP')
 
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd pkgcenter/depend/cmb
-  make
+  make || msg2 "Try upgrading libcmb and building cmb again afterwards"
 }
 
 package() {
