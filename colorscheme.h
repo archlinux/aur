@@ -1,6 +1,6 @@
 /* bg opacity # Have alpha problems
 */
-unsigned int alpha = 0xe6;
+float alpha = 0.9;
 
 
 /* Terminal colors (16 first used in escape sequence) */

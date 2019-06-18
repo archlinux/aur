@@ -1,8 +1,19 @@
+From 9f80f67b6238c58d2e3e209ed1c4f872d9ea7ccd Mon Sep 17 00:00:00 2001
+From: Sai Praneeth Reddy <spr.mora04@gmail.com>
+Date: Sat, 5 Jan 2019 18:13:04 +0530
+Subject: [PATCH] Update base patch to 0.8.1
+
+Read borderpx from Xresources too
+---
+ config.def.h | 36 ++++++++++++++++++++++++
+ x.c          | 78 +++++++++++++++++++++++++++++++++++++++++++++++++---
+ 2 files changed, 110 insertions(+), 4 deletions(-)
+
 diff --git a/config.def.h b/config.def.h
-index 82b1b09..471fe57 100644
+index 823e79f..f960cac 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -150,6 +150,41 @@ static unsigned int mousebg = 0;
+@@ -150,6 +150,42 @@ static unsigned int mousebg = 0;
   */
  static unsigned int defaultattr = 11;
  
@@ -37,6 +48,7 @@ index 82b1b09..471fe57 100644
 +		{ "blinktimeout", INTEGER, &blinktimeout },
 +		{ "bellvolume",   INTEGER, &bellvolume },
 +		{ "tabspaces",    INTEGER, &tabspaces },
++		{ "borderpx",     INTEGER, &borderpx },
 +		{ "cwscale",      FLOAT,   &cwscale },
 +		{ "chscale",      FLOAT,   &chscale },
 +};
@@ -45,7 +57,7 @@ index 82b1b09..471fe57 100644
   * Internal mouse shortcuts.
   * Beware that overloading Button1 will disable the selection.
 diff --git a/x.c b/x.c
-index c0bd890..1f6f88b 100644
+index 0422421..6e9b061 100644
 --- a/x.c
 +++ b/x.c
 @@ -14,6 +14,7 @@
@@ -76,7 +88,7 @@ index c0bd890..1f6f88b 100644
  /* X modifiers */
  #define XK_ANY_MOD    UINT_MAX
  #define XK_NO_MOD     0
-@@ -781,8 +795,8 @@ xclear(int x1, int y1, int x2, int y2)
+@@ -783,8 +797,8 @@ xclear(int x1, int y1, int x2, int y2)
  void
  xhints(void)
  {
@@ -87,7 +99,7 @@ index c0bd890..1f6f88b 100644
  	XWMHints wm = {.flags = InputHint, .input = 1};
  	XSizeHints *sizeh;
  
-@@ -1001,8 +1015,6 @@ xinit(int cols, int rows)
+@@ -1005,8 +1019,6 @@ xinit(int cols, int rows)
  	pid_t thispid = getpid();
  	XColor xmousefg, xmousebg;
  
@@ -96,7 +108,7 @@ index c0bd890..1f6f88b 100644
  	xw.scr = XDefaultScreen(xw.dpy);
  	xw.vis = XDefaultVisual(xw.dpy, xw.scr);
  
-@@ -1866,6 +1878,59 @@ run(void)
+@@ -1870,6 +1882,59 @@ run(void)
  	}
  }
  
@@ -156,7 +168,7 @@ index c0bd890..1f6f88b 100644
  void
  usage(void)
  {
-@@ -1939,6 +2004,11 @@ run:
+@@ -1943,6 +2008,11 @@ run:
  
  	setlocale(LC_CTYPE, "");
  	XSetLocaleModifiers("");
@@ -168,3 +180,6 @@ index c0bd890..1f6f88b 100644
  	cols = MAX(cols, 1);
  	rows = MAX(rows, 1);
  	tnew(cols, rows);
+-- 
+2.20.1
+

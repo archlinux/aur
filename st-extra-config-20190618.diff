@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index f8cdc14..b3b198c 100644
+index c5f8e92..a2a3150 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -1,12 +1,13 @@
@@ -29,18 +29,52 @@ index f8cdc14..b3b198c 100644
  
 @@ -32,7 +33,7 @@ static float chscale = 1.0;
   *
-  * More advanced example: " `'\"()[]{}"
+  * More advanced example: L" `'\"()[]{}"
   */
--char *worddelimiters = " ";
-+char *worddelimiters = " '`\"()[]{}<>|-";
+-wchar_t *worddelimiters = L" ";
++wchar_t *worddelimiters = L" '`\"()[]{}<>|-";
  
  /* selection timeouts (in milliseconds) */
  static unsigned int doubleclicktimeout = 300;
-@@ -80,46 +81,7 @@ char *termname = "st-256color";
+@@ -42,7 +43,7 @@ static unsigned int tripleclicktimeout = 600;
+ int allowaltscreen = 1;
+ 
+ /* frames per second st should at maximum draw to the screen */
+-static unsigned int xfps = 120;
++static unsigned int xfps = 300;
+ static unsigned int actionfps = 30;
+ 
+ /*
+@@ -62,17 +63,17 @@ static unsigned int cursorthickness = 2;
+  *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
+  * 0: disable (render all U25XX glyphs normally from the font).
+  */
+-const int boxdraw = 0;
+-const int boxdraw_bold = 0;
++const int boxdraw = 1;
++const int boxdraw_bold = 1;
+ 
+ /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
+-const int boxdraw_braille = 0;
++const int boxdraw_braille = 1;
+ 
+ /*
+  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
+  * it
+  */
+-static int bellvolume = 0;
++static int bellvolume = 10;
+ 
+ /* default TERM value */
+ char *termname = "st-256color";
+@@ -92,50 +93,7 @@ char *termname = "st-256color";
   *
   *	stty tabs
   */
 -unsigned int tabspaces = 8;
+-
+-/* bg opacity */
+-float alpha = 0.8;
 -
 -/* Terminal colors (16 first used in escape sequence) */
 -static const char *colorname[] = {
@@ -69,6 +103,7 @@ index f8cdc14..b3b198c 100644
 -	/* more colors can be added after 255 to use with DefaultXX */
 -	"#cccccc",
 -	"#555555",
+-	"black",
 -};
 -
 -
@@ -77,14 +112,14 @@ index f8cdc14..b3b198c 100644
 - * foreground, background, cursor, reverse cursor
 - */
 -unsigned int defaultfg = 7;
--unsigned int defaultbg = 0;
+-unsigned int defaultbg = 258;
 -static unsigned int defaultcs = 256;
 -static unsigned int defaultrcs = 257;
 +unsigned int tabspaces = 4;
  
  /*
   * Default shape of cursor
-@@ -128,7 +90,7 @@ static unsigned int defaultrcs = 257;
+@@ -146,7 +104,7 @@ static unsigned int defaultrcs = 257;
   * 6: Bar ("|")
   * 7: Snowman ("☃")
   */
@@ -93,37 +128,3 @@ index f8cdc14..b3b198c 100644
  
  /*
   * Default columns and rows numbers
-@@ -176,8 +138,9 @@ static Shortcut shortcuts[] = {
- 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
- 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
- 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
-+	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
- 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
--	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
-+	{ TERMMOD,              XK_U,           iso14755,       {.i =  0} },
- };
- 
- /*
-diff --git a/st.1 b/st.1
-index 81bceff..871405a 100644
---- a/st.1
-+++ b/st.1
-@@ -151,6 +151,9 @@ Decrease font size.
- .B Ctrl-Shift-Home
- Reset to default font size.
- .TP
-+.B Shift-Insert
-+Paste from primary selection (middle mouse button).
-+.TP
- .B Ctrl-Shift-y
- Paste from primary selection (middle mouse button).
- .TP
-@@ -160,7 +163,7 @@ Copy the selected text to the clipboard selection.
- .B Ctrl-Shift-v
- Paste from the clipboard selection.
- .TP
--.B Ctrl-Shift-i
-+.B Ctrl-Shift-u
- Launch dmenu to enter a unicode codepoint and send the corresponding glyph
- to st.
- .SH CUSTOMIZATION

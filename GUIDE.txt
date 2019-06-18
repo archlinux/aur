@@ -1,4 +1,6 @@
 *** DO NOT FORGET TO RUN 'updpkgsums' AFTER MODFIYING AND BEFORE 'makepkg' ***
+*** Outdated. Only for my use, probably. ***
+
 
 ScrollBack:
 	Use Terminal Multiplexers ( tmux , screen , etc).

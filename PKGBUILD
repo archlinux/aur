@@ -4,7 +4,7 @@
 
 pkgname=st-patched-git
 _pkgname=st
-pkgver=0.8.1.r6.gdc3b5ba
+pkgver=0.8.2.r13.gcaa1d8f
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X with patches and easy configurable colorscheme'
 arch=('i686' 'x86_64')
@@ -17,26 +17,30 @@ optdepends=('dmenu: for unicode input'
             'otf-fantasque-sans-mono: default defined font' )
 
 _patches=(
-    "https://st.suckless.org/patches/vertcenter/st-vertcenter-20180320-6ac8c8a.diff"
-    "https://st.suckless.org/patches/hidecursor/st-hidecursor-0.8.diff"
+    "https://st.suckless.org/patches/anysize/st-anysize-0.8.1.diff"
     "st-blinking-cursor-20180605.diff"
-    "st-extra-config-20180605.diff"
-    "st-alpha-20180605.diff"
-    "colorscheme.h"
-#    "st-Xresources-20180605.diff"
+    "st-boxdraw_v2-0.8.2.diff"
+    "st-hidecursor-0.8.1.diff"
+    "st-vertcenter-20180320-6ac8c8a.diff"
+    "st-xresources-20190105-3be4cf1.diff"
+    "st-alpha-20190618.diff"              # Modified for compatibility
+    "st-extra-config-20190618.diff"       # Modified for compatibility
+    "colorscheme.h"                       # Modified for compatibility
 )
 
 source=("git://git.suckless.org/st"
     "${_patches[@]}")
     
 md5sums=('SKIP'
-         '51106ec8ff04d64029401421bbc57ab5'
-         '8749ced53fc11d7a979fa8fa21d66de4'
+         '9effc30b79e07c3dc9d2a1e41b9dd6d1'
          'bd291b0947263c56ae3504c989c64f12'
-         'ece72b176f2bd50c81691358cafd8316'
-         '4aa9ff746b8bedd4363b02b688381627'
-         '6b8949529ed5e4aac70bfb0cd5cf0423'
-         )
+         '00c12113227c95cdcc2fdce01ef58780'
+         '7b6f4a1efe7987b8f5554b4ec16082f9'
+         '51106ec8ff04d64029401421bbc57ab5'
+         '11e28f38988de5141bfdf0da8cbfde8a'
+         'b5476e67b47668833412295d76f31bab'
+         'ea6926266fc2eb9bc86478d90a9096e3'
+         '8467590de9ba28b79f5bbe74b17ca5a5')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
