@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Moreira
 
 pkgname=fpakman-staging
-pkgver=0.1.0.22
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="GUI for Flatpak applications management"
 arch=('any')
@@ -16,16 +16,11 @@ sha512sums=('SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}"
-
   python3 setup.py build
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-
   python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
-  
   python3 aur/register_app.py
-
-  cp -r fpakman/resources ~/.local/share/fpakman
 }
