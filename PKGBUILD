@@ -1,6 +1,6 @@
 # Maintainer: peippo <christoph.fink@gmail.com>
 
-pkgname=python-africanelephantdatabasedatadownloader
+pkgname="python-africanelephantdatabasedatadownloader"
 pkgver=0.0.0
 pkgrel=0
 
