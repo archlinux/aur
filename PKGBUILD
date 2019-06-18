@@ -5,12 +5,13 @@ _orgname=tumic0
 _pkgname=GPXSee
 _branch=master
 _use_gh_api=true
-wl_project=${_pkgname}
-wl_hz="https://hosted.weblate.org/healthz/"
-wl_dl="https://hosted.weblate.org/download/${wl_project}"
+_gh_api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
+_wl_project=${_pkgname}
+_wl_hz="https://hosted.weblate.org/healthz/"
+_wl_dl="https://hosted.weblate.org/download/${_wl_project}"
 pkgname=${_pkgname,,}-git
-pkgver=7.9.r1676.811f5f86
-pkgrel=1
+pkgver=7.9.r0.g811f5f8
+pkgrel=2
 pkgdesc='GPS log file viewer and analyzer'
 arch=('i686' 'x86_64')
 url='https://www.gpxsee.org/'
@@ -18,7 +19,7 @@ license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
 if [ "${_use_gh_api}" = true ]; then
-  makedepends+=('python')
+  makedepends+=('jq')
 else
   makedepends+=('git')
 fi
@@ -34,31 +35,25 @@ fi
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}-${_branch}
-
   if [ "${_use_gh_api}" = true ]; then
-    api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
-    base='928e259d'
-    head=$(curl -s "${api_url}/git/refs/heads/${_branch}" | \
-      python -c "import sys, json; print(json.load(sys.stdin)['object']['sha'][:8])")
-    count=$(curl -s "${api_url}/compare/${base}...${head}" | \
-      python -c "import sys, json; print(json.load(sys.stdin)['total_commits'] + 1)")
-    release=$(curl -s "${api_url}/tags" | \
-      python -c "import sys, json; r = json.load(sys.stdin)[0]; print(r['name'])")
-  else
-    release="$(git describe --tags $(git rev-list --tags --max-count=1))"
-    count="$(git rev-list --count HEAD)"
-    head="$(git rev-parse --short HEAD)"
-  fi
+    read -r tag_name tag_sha <<<$(curl -s "${_gh_api_url}/tags" | \
+      jq -r '.[0]|[.name,.commit.sha]|@sh' | sed "s/'//g")
+    head=$(curl -s "${_gh_api_url}/git/refs/heads/${_branch}" | \
+      jq -r '.object.sha')
+    count=$(curl -s "${_gh_api_url}/compare/${tag_sha}...${head}" | \
+      jq -r '.total_commits')
 
-  release=${release//-/.} # pkgver is not allowed to contain hyphens
-  printf "%s.r%s.%s" "${release}" "${count}" "${head}"
+    printf "%s.r%s.g%.7s" "${tag_name}" "${count}" "${head}"
+  else
+    cd ${_pkgname}-${_branch}
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  fi
 }
 
 wl_update() {
   find . -name "${2}*.ts" -a ! -name "*_en.ts" | \
     xargs basename -s .ts | \
-    xargs -P 0 -I{} sh -c "curl -so \$1.ts $wl_dl/${1}/\${1#${2}}/" -- {}
+    xargs -P 0 -I{} sh -c "curl -so \$1.ts ${_wl_dl}/${1}/\${1#${2}}/" -- {}
 }
 
 prepare() {
@@ -66,7 +61,7 @@ prepare() {
 
   sed -i "s/\(VERSION = \).*/\1${pkgver}/" gpxsee.pro
 
-  if [ "`curl $wl_hz`" = "ok" ]; then
+  if [ "`curl ${_wl_hz}`" = "ok" ]; then
     cd lang
     rename nb nb_NO *_nb.ts
     wl_update Translations ${_pkgname,,}_
