@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="The definitive testing tool for Python. Born under the banner of Behavior Driven Development."
 arch=('any')
 license=('MIT')
-url="http://nestorsalceda.github.io/mamba"
+url="https://nestorsalceda.github.io/mamba"
 makedepends=('python-setuptools' 'python2-setuptools' 'python-clint' 'python2-clint'
              'python-coverage' 'python2-coverage' 'python-watchdog' 'python2-watchdog')
 checkdepends=('python-doublex-expects' 'python2-doublex-expects')
