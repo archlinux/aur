@@ -1,0 +1,292 @@
+Author: Bruno Santos <brunomanuelsantos@tecnico.ulisboa.pt>
+Date:   Tue Jun 18 18:37:17 2019 +0200
+
+    Fix compilation against newer kernel driver's API
+
+    do_gettimeofday() is deprecated because of the year 2038 overflow. Since
+    this driver uses it extensively and it's no longer available in recent
+    kernels, we need to convert it to something else.
+
+    The code could be improved, this is a least effort, half scripted fix.
+
+diff --git a/can-ibxxx_socketcan/ixx_pci_core.c b/can-ibxxx_socketcan/ixx_pci_core.c
+index d6d4228..7f019fb 100644
+--- a/can-ibxxx_socketcan/ixx_pci_core.c
++++ b/can-ibxxx_socketcan/ixx_pci_core.c
+@@ -235,24 +235,14 @@ void ixxat_dump_mem(char *prompt, void *p, int l)
+         DUMP_WIDTH, 1, p, l, false);
+ }
+ 
+-static void ixxat_pci_add_us(struct timeval *tv, u64 delta_us)
++static void ixxat_pci_add_us(ktime_t *tv, u64 delta_us)
+ {
+-        /* number of s. to add to final time */
+-        u32 delta_s = div_u64(delta_us, 1000000);
+-
+-        delta_us -= delta_s * 1000000;
+-
+-        tv->tv_usec += delta_us;
+-        if (tv->tv_usec >= 1000000) {
+-                tv->tv_usec -= 1000000;
+-                delta_s++;
+-        }
+-        tv->tv_sec += delta_s;
++        tv += delta_us * 100;
+ }
+ 
+ void ixxat_pci_get_ts_tv(struct ixx_pci_priv *dev, u32 ts, ktime_t *k_time)
+ {
+-        struct timeval tv = dev->time_ref.tv_host_0;
++        ktime_t tv = dev->time_ref.tv_host_0;
+ 
+         if (ts < dev->time_ref.ts_dev_last) {
+                 ixxat_pci_update_ts_now(dev, ts);
+@@ -261,7 +251,7 @@ void ixxat_pci_get_ts_tv(struct ixx_pci_priv *dev, u32 ts, ktime_t *k_time)
+         dev->time_ref.ts_dev_last = ts;
+         ixxat_pci_add_us(&tv, ts - dev->time_ref.ts_dev_0);
+ 
+-        *k_time = timeval_to_ktime(tv);
++        *k_time = tv;
+ }
+ 
+ void ixxat_pci_update_ts_now(struct ixx_pci_priv *dev, u32 hw_time_base)
+@@ -278,7 +268,7 @@ void ixxat_pci_update_ts_now(struct ixx_pci_priv *dev, u32 hw_time_base)
+ void ixxat_pci_set_ts_now(struct ixx_pci_priv *dev, u32 hw_time_base)
+ {
+         dev->time_ref.ts_dev_0 = hw_time_base;
+-        do_gettimeofday(&dev->time_ref.tv_host_0);
++        dev->time_ref.tv_host_0 = ktime_get_real();
+         dev->time_ref.ts_dev_last = hw_time_base;
+ }
+ 
+@@ -543,9 +533,9 @@ static int ixxat_pci_set_datatiming(struct net_device *netdev)
+ 
+ static const struct net_device_ops ixxat_pci_netdev_ops = { .ndo_open =
+                 ixxat_pci_ndo_open, .ndo_stop = ixxat_pci_ndo_stop,
+-                .ndo_start_xmit = ixxat_pci_ndo_start_xmit, 
++                .ndo_start_xmit = ixxat_pci_ndo_start_xmit,
+ #ifdef CANFD_CAPABLE
+-.ndo_change_mtu = can_change_mtu, 
++.ndo_change_mtu = can_change_mtu,
+ #endif
+ };
+ 
+@@ -664,7 +654,7 @@ static void ixxat_pci_disconnect(struct pci_dev *dev)
+                 char name[IFNAMSIZ];
+                 printk("ixxat_pci_disconnect\n");
+                 strncpy(name, netdev->name, IFNAMSIZ);
+-                
++
+                 priv_prev_siblings = priv->prev_siblings;
+ 
+                 priv->next_siblings = NULL;
+@@ -672,12 +662,12 @@ static void ixxat_pci_disconnect(struct pci_dev *dev)
+                         priv->adapter->dev_free(priv);
+ 
+                 unregister_netdev(netdev);
+-                
++
+                 if (!priv_prev_siblings) {
+                         pci_set_drvdata(dev, NULL);
+                         pci_disable_device(dev);
+                 }
+-                
++
+                 free_candev(netdev);
+         }
+ }
+diff --git a/can-ibxxx_socketcan/ixx_pci_core.h b/can-ibxxx_socketcan/ixx_pci_core.h
+index 8e94b34..0f0f3e2 100644
+--- a/can-ibxxx_socketcan/ixx_pci_core.h
++++ b/can-ibxxx_socketcan/ixx_pci_core.h
+@@ -241,7 +241,7 @@ struct ixx_canfd_msg {
+ } __packed;
+ 
+ struct ixx_time_ref {
+-        struct timeval tv_host_0;
++        ktime_t tv_host_0;
+         u32 ts_dev_0;
+         u32 ts_dev_last;
+ };
+diff --git a/can-ibxxx_socketcan/ixx_pci_ib_active.c b/can-ibxxx_socketcan/ixx_pci_ib_active.c
+index 6cc4985..cd0c50a 100644
+--- a/can-ibxxx_socketcan/ixx_pci_ib_active.c
++++ b/can-ibxxx_socketcan/ixx_pci_ib_active.c
+@@ -369,7 +369,7 @@ static int ixx_act_ib_xxx_rcv_cmd(struct ixx_pci_interface *intf, u32 *rx_fifo,
+         u32* res_size;
+         struct ixx_dal_req *res_dal_req;
+         u32 read_index, write_index, data_offset;
+-        struct timeval start, end;
++        ktime_t start, end;
+         size_t dal_size = sizeof(struct ixx_dal_req);
+ 
+         write_index = rx_fifo[CAN_IB2X0_PCR_RES_WRITE_IDX];
+@@ -378,10 +378,10 @@ static int ixx_act_ib_xxx_rcv_cmd(struct ixx_pci_interface *intf, u32 *rx_fifo,
+         if (rx_fifo[CAN_IB2X0_PCR_RES_DIR] != CAN_IB2X0_PCR_RESDIR_DTOH)
+                 return -EBADSLT;
+ 
+-        do_gettimeofday(&start);
++        start = ktime_get_real();
+         end = start;
+ 
+-        while ((end.tv_usec - start.tv_usec) < CAN_IB2X0_CMD_TIMEOUT_US) {
++        while ((end - start) < (CAN_IB2X0_CMD_TIMEOUT_US * 100)) {
+                 if (++read_index == rx_fifo[CAN_IB2X0_PCR_RES_NUM_OBJ])
+                         read_index = 0;
+ 
+@@ -437,8 +437,9 @@ static int ixx_act_ib_xxx_rcv_cmd(struct ixx_pci_interface *intf, u32 *rx_fifo,
+ 
+                 return dal_res->ret_code;
+ 
+-                cmd_continue: do_gettimeofday(&end);
+-        }
++		cmd_continue:
++			end = ktime_get_real();
++	}
+ 
+         return err;
+ }
+diff --git a/usb-to-can_socketcan/ixx_usb_core.c b/usb-to-can_socketcan/ixx_usb_core.c
+index 5d542a3..696e5d4 100644
+--- a/usb-to-can_socketcan/ixx_usb_core.c
++++ b/usb-to-can_socketcan/ixx_usb_core.c
+@@ -94,24 +94,14 @@ void ixxat_dump_mem(char *prompt, void *p, int l)
+         DUMP_WIDTH, 1, p, l, false);
+ }
+ 
+-static void ixxat_usb_add_us(struct timeval *tv, u64 delta_us)
++static void ixxat_usb_add_us(ktime_t *tv, u64 delta_us)
+ {
+-        /* number of s. to add to final time */
+-        u32 delta_s = div_u64(delta_us, 1000000);
+-
+-        delta_us -= delta_s * 1000000;
+-
+-        tv->tv_usec += delta_us;
+-        if (tv->tv_usec >= 1000000) {
+-                tv->tv_usec -= 1000000;
+-                delta_s++;
+-        }
+-        tv->tv_sec += delta_s;
++        *tv += delta_us * 100;
+ }
+ 
+ void ixxat_usb_get_ts_tv(struct ixx_usb_device *dev, u32 ts, ktime_t *k_time)
+ {
+-        struct timeval tv = dev->time_ref.tv_host_0;
++        ktime_t tv = dev->time_ref.tv_host_0;
+ 
+         if (ts < dev->time_ref.ts_dev_last) {
+                 ixxat_usb_update_ts_now(dev, ts);
+@@ -121,7 +111,7 @@ void ixxat_usb_get_ts_tv(struct ixx_usb_device *dev, u32 ts, ktime_t *k_time)
+         ixxat_usb_add_us(&tv, ts - dev->time_ref.ts_dev_0);
+ 
+         if(k_time)
+-                *k_time = timeval_to_ktime(tv);
++                *k_time = tv;
+ }
+ 
+ void ixxat_usb_update_ts_now(struct ixx_usb_device *dev, u32 hw_time_base)
+@@ -138,7 +128,7 @@ void ixxat_usb_update_ts_now(struct ixx_usb_device *dev, u32 hw_time_base)
+ void ixxat_usb_set_ts_now(struct ixx_usb_device *dev, u32 hw_time_base)
+ {
+         dev->time_ref.ts_dev_0 = hw_time_base;
+-        do_gettimeofday(&dev->time_ref.tv_host_0);
++        dev->time_ref.tv_host_0 = ktime_get_real();
+         dev->time_ref.ts_dev_last = hw_time_base;
+ }
+ 
+@@ -178,7 +168,7 @@ static void ixxat_usb_read_bulk_callback(struct urb *urb)
+         /* protect from any incoming empty msgs */
+         if ((urb->actual_length > 0) && (dev->adapter->dev_decode_buf)) {
+                 /* handle these kinds of msgs only if _start callback called */
+-                if (dev->state & IXXAT_USB_STATE_STARTED) 
++                if (dev->state & IXXAT_USB_STATE_STARTED)
+                         err = dev->adapter->dev_decode_buf(dev, urb);
+         }
+ 
+@@ -633,7 +623,7 @@ static int ixxat_usb_get_berr_counter(const struct net_device *netdev,
+ {
+         struct ixx_usb_device* dev = (struct ixx_usb_device*) netdev_priv(
+                         netdev);
+-  
++
+         *bec = dev->bec;
+ 
+         return 0;
+@@ -641,9 +631,9 @@ static int ixxat_usb_get_berr_counter(const struct net_device *netdev,
+ 
+ static const struct net_device_ops ixx_usb_netdev_ops = { .ndo_open =
+                 ixxat_usb_ndo_open, .ndo_stop = ixxat_usb_ndo_stop,
+-                .ndo_start_xmit = ixxat_usb_ndo_start_xmit, 
++                .ndo_start_xmit = ixxat_usb_ndo_start_xmit,
+ #ifdef CANFD_CAPABLE
+-                .ndo_change_mtu = can_change_mtu, 
++                .ndo_change_mtu = can_change_mtu,
+ #endif
+                                                         };
+ 
+@@ -689,7 +679,7 @@ static int ixxat_usb_create_dev(struct ixx_usb_adapter *ixx_usb_adapter,
+         dev->adapter = ixx_usb_adapter;
+         dev->ctrl_idx = ctrl_idx;
+         dev->state = IXXAT_USB_STATE_CONNECTED;
+-        
++
+         ep_off = ixx_usb_adapter->has_bgi_ep ? 1 : 0;
+ 
+         /* Add +1 because of the bgi endpoint */
+@@ -701,7 +691,7 @@ static int ixxat_usb_create_dev(struct ixx_usb_adapter *ixx_usb_adapter,
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 19, 3)
+         dev->can.data_bittiming_const = &ixx_usb_adapter->data_bittiming_const;
+ #endif
+-  
++
+         dev->can.do_set_bittiming = ixxat_usb_set_bittiming;
+         dev->can.do_set_mode = ixxat_usb_set_mode;
+         dev->can.do_get_berr_counter = ixxat_usb_get_berr_counter;
+@@ -782,7 +772,7 @@ static void ixxat_usb_disconnect(struct usb_interface *intf)
+                 dev->next_siblings = NULL;
+                 if (dev->adapter->dev_free)
+                         dev->adapter->dev_free(dev);
+-                    
++
+                 free_candev(netdev);
+                 dev_dbg(&intf->dev, "%s removed\n", name);
+         }
+@@ -824,12 +814,12 @@ static int ixxat_usb_probe(struct usb_interface *intf,
+                 if (err)
+                         return err;
+         }
+-  
++
+         if (ixx_usb_adapter->dev_power) {
+                 err = ixx_usb_adapter->dev_power(usb_dev, IXXAT_USB_POWER_WAKEUP);
+                 if (err)
+                         return err;
+-          
++
+                 /* Give usb device some time to start its can controllers */
+                 msleep(500);
+         }
+@@ -880,7 +870,7 @@ static int __init ixx_usb_init(void)
+ 
+ static int ixxat_usb_do_device_exit(struct device *d, void *arg)
+ {
+-        struct usb_interface 
++        struct usb_interface
+                 *intf = (struct usb_interface*)to_usb_interface(d);
+         struct ixx_usb_device *dev;
+ 
+diff --git a/usb-to-can_socketcan/ixx_usb_core.h b/usb-to-can_socketcan/ixx_usb_core.h
+index 60dc02d..577f276 100644
+--- a/usb-to-can_socketcan/ixx_usb_core.h
++++ b/usb-to-can_socketcan/ixx_usb_core.h
+@@ -193,7 +193,7 @@ struct ixx_usb_adapter {
+ };
+ 
+ struct ixx_time_ref {
+-        struct timeval tv_host_0;
++        ktime_t tv_host_0;
+         u32 ts_dev_0;
+         u32 ts_dev_last;
+ };
