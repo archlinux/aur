@@ -2,7 +2,7 @@
 pkgname=trinnity-git
 _srcname=trinnity
 pkgver=0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="C++ library of CNN primitive operations"
 arch=('any')
 url="https://bitbucket.org/STG-TCD/trinnity"
@@ -30,8 +30,8 @@ source=("${_srcname}"::"git+https://bitbucket.org/STG-TCD/${_srcname}")
 md5sums=("SKIP")
 
 package() {
-  make -C $srcdir/* DESTDIR=$pkgdir doc
-  make -C $srcdir/* DESTDIR=$pkgdir install
-  make -C $srcdir/* DESTDIR=$pkgdir install-arm32
-  make -C $srcdir/* DESTDIR=$pkgdir install-arm64
+  make -C ${srcdir}/* DESTDIR=${pkgdir}/usr doc
+  make -C ${srcdir}/* DESTDIR=${pkgdir}/usr install
+  make -C ${srcdir}/* DESTDIR=${pkgdir}/usr install-arm32
+  make -C ${srcdir}/* DESTDIR=${pkgdir}/usr install-arm64
 }
