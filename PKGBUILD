@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-satip
 pkgver=2.4.0
-_vdrapi=2.4.0
-pkgrel=1
+_vdrapi=2.4.1
+pkgrel=2
 pkgdesc="Integrates SAT>IP network devices seamlessly into VDR"
 url="http://www.saunalahti.fi/rahrenbe/vdr/satip/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
