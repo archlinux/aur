@@ -14,11 +14,7 @@ pkgbase = python-cytoolz
 
 pkgname = python-cytoolz
 	depends = python
-	provides = python-toolz
-	conflicts = python-toolz
 
 pkgname = python2-cytoolz
 	depends = python2
-	provides = python2-toolz
-	conflicts = python2-toolz
 
