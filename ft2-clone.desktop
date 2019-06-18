@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Fasttracker II Clone
+GenericName=Chiptune Tracker
+Comment=A clone of the original Fasttracker2
+Exec=ft2-clone
+Icon=ft2-clone
+Terminal=false
+Type=Application
+Categories=Game;
