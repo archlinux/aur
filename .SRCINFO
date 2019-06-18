@@ -1,7 +1,7 @@
 pkgbase = thunderbird-beta-bin
 	pkgdesc = Standalone Mail/News reader - Bleeding edge binary version
 	pkgver = 68.0b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-beta-bin.install
 	arch = x86_64
