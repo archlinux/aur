@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-favorites
 pkgver=0.0.2
-_vdrapi=2.4.0
-pkgrel=15
+_vdrapi=2.4.1
+pkgrel=16
 pkgdesc="Implements a favorite channels menu"
 url="http://www.vdr-portal.de/board1-news/board2-vdr-news/p1039565-announce-vdr-favorites-0-0-2/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
