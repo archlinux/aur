@@ -1,27 +1,55 @@
-# Maintainer: Gaël Donval <gdonval+aur at google mail>
+# Maintainer: Jingbei Li <i@jingbei.li>
+# Contributor: Francois Boulogne <fboulogne at april dot org>
 # Contributor: Gaël Donval <gdonval+aur at google mail>
-
-
 pkgbase='python-cytoolz'
-pkgname='python-cytoolz'
-pkgver=0.8.0
-pkgrel=3
-pkgdesc="A high performance Cython implementation of Toolz functional utilities."
-arch=('i686' 'x86_64')
-url="https://github.com/pytoolz"
+pkgname=('python-cytoolz' 'python2-cytoolz')
+_pkgname=cytoolz
+pkgver=0.9.0
+pkgrel=5
+pkgdesc="Cython implementation of the toolz package, which provides high performance utility functions for iterables, functions, and dictionaries."
+arch=('x86_64')
+url="https://github.com/pytoolz/cytoolz"
 license=('BSD')
-depends=('python' "python-toolz=$pkgver")
-makedepends=('python-setuptools' 'cython>=0.17')
-source=("https://pypi.org/packages/source/c/cytoolz/cytoolz-${pkgver}.tar.gz"
-        "cytoolz_LICENSE::https://github.com/pytoolz/cytoolz/raw/master/LICENSE.txt")
-sha256sums=('2239890c8fe2da3eba82947c6a68cfa406e5a5045911c9ab3de8113462372629'
-            'SKIP')
+makedepends=('cython' 'cython2' 'python-setuptools' 'python2-setuptools')
+source=("$url/archive/${pkgver}.tar.gz")
+sha256sums=('177d6bcf76d60efeb5fa04c151e8c2e53a2679d380f1d316b0fd3a1cdffd75fb')
+
+prepare() {
+  cd "$srcdir/"
+  cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
+  cd "${_pkgname}-${pkgver}-py2"
+  sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
+    -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+    -e "s|#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
+    -i $(find . -name '*.py')
+}
+
+build() {
+  msg "Building Python 2"
+  cd "$srcdir/${_pkgname}-${pkgver}-py2"
+  python2 setup.py build
+
+  msg "Building Python 3"
+  cd "$srcdir/${_pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package_python2-cytoolz() {
+  depends=('python2')
+  provides=('python2-toolz')
+  conflicts=('python2-toolz')
+  cd "$srcdir/${_pkgname}-${pkgver}-py2"
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
 
 package_python-cytoolz() {
-  install -D -m644 cytoolz_LICENSE "${pkgdir}/usr/share/licenses/python-cytoolz/LICENSE"
-  cd "${srcdir}"/cytoolz-$pkgver
+  depends=('python')
+  provides=('python-toolz')
+  conflicts=('python-toolz')
+  cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-  install -D -m644 README.rst "${pkgdir}/usr/share/doc/python-cytoolz/README"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:ts=2:sw=2:et:

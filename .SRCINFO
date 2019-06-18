@@ -1,19 +1,24 @@
 pkgbase = python-cytoolz
-	pkgdesc = A high performance Cython implementation of Toolz functional utilities.
-	pkgver = 0.8.0
-	pkgrel = 3
-	url = https://github.com/pytoolz
-	arch = i686
+	pkgdesc = Cython implementation of the toolz package, which provides high performance utility functions for iterables, functions, and dictionaries.
+	pkgver = 0.9.0
+	pkgrel = 5
+	url = https://github.com/pytoolz/cytoolz
 	arch = x86_64
 	license = BSD
+	makedepends = cython
+	makedepends = cython2
 	makedepends = python-setuptools
-	makedepends = cython>=0.17
-	depends = python
-	depends = python-toolz=0.8.0
-	source = https://pypi.org/packages/source/c/cytoolz/cytoolz-0.8.0.tar.gz
-	source = cytoolz_LICENSE::https://github.com/pytoolz/cytoolz/raw/master/LICENSE.txt
-	sha256sums = 2239890c8fe2da3eba82947c6a68cfa406e5a5045911c9ab3de8113462372629
-	sha256sums = SKIP
+	makedepends = python2-setuptools
+	source = https://github.com/pytoolz/cytoolz/archive/0.9.0.tar.gz
+	sha256sums = 177d6bcf76d60efeb5fa04c151e8c2e53a2679d380f1d316b0fd3a1cdffd75fb
 
 pkgname = python-cytoolz
+	depends = python
+	provides = python-toolz
+	conflicts = python-toolz
+
+pkgname = python2-cytoolz
+	depends = python2
+	provides = python2-toolz
+	conflicts = python2-toolz
 
