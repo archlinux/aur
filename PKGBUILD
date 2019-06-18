@@ -11,7 +11,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20190604
+pkgver=20190617
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -45,6 +45,7 @@ optdepends=('desktop-file-utils: update desktop icon'
             'gtk-update-icon-cache: update desktop icon'
             'python-amodem: air-gapped transaction signing over audio modem'
             'python-btchip: Ledger hardware wallet support'
+            'python-ckcc-protocol: Coldcard wallet hardware support'
             'python-hidapi: Digital Bitbox hardware wallet support'
             'python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
             'python-keepkey: KeepKey hardware wallet support'

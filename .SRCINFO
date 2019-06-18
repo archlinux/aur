@@ -1,6 +1,6 @@
 pkgbase = electrum-git
 	pkgdesc = Lightweight Bitcoin wallet
-	pkgver = 20190604
+	pkgver = 20190617
 	pkgrel = 1
 	url = https://github.com/spesmilo/electrum
 	install = electrum.install
@@ -36,6 +36,7 @@ pkgbase = electrum-git
 	optdepends = gtk-update-icon-cache: update desktop icon
 	optdepends = python-amodem: air-gapped transaction signing over audio modem
 	optdepends = python-btchip: Ledger hardware wallet support
+	optdepends = python-ckcc-protocol: Coldcard wallet hardware support
 	optdepends = python-hidapi: Digital Bitbox hardware wallet support
 	optdepends = python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes
 	optdepends = python-keepkey: KeepKey hardware wallet support
