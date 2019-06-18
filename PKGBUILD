@@ -1,7 +1,7 @@
 # Maintainer: Térence Clastres <t.clastres@gmail.com>
 
 pkgname=giada-git
-pkgver=v0.15.3.r71.g3a104597
+pkgver=v0.15.4.r2.g251c67c3
 pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=('x86_64')
@@ -13,9 +13,11 @@ makedepends=('gendesk' 'imagemagick')
 checkdepends=('catch2')
 conflicts=('giada' 'giada-vst')
 source=("giada-git::git+https://github.com/monocasual/giada.git"
-         "git+https://github.com/WeAreROLI/JUCE.git")
+         "JUCE-5.2.3.tar.gz::https://github.com/WeAreROLI/JUCE/archive/5.3.2.tar.gz"
+          gcc9-fix.diff)
 sha512sums=('SKIP'
-            'SKIP')
+            'f968a622306e12542c0971fd4cac5c311d70304d63fef8a177e8624a3f43916254122cf5d068974bf062a59d95fd6df97400a3d2ff950b117399cc667b976b9d'
+            '0b011913f031930d3540daf2bec8df66b345f59c79d1666a6447f5b1be0b0e59cfd855bd6ec581118cd6949f24aba8e4c503ad73f0fe5a4bb1882b60ed3cd41f')
 
 pkgver() {
   cd "$pkgname"
@@ -24,11 +26,9 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  
-  git submodule init src/deps/juce
-  git config submodule.src/deps/juce.url $srcdir/JUCE
-  git submodule update src/deps/juce
 
+  cp -r ../JUCE-5.3.2/modules/ src/deps/juce/
+  patch -p2 -i ../../../../../gcc9-fix.diff -d src/deps/juce/modules/
 
   autoreconf -vfi
   # XDG desktop file
