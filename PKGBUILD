@@ -3,7 +3,7 @@
 
 pkgname=python-pillow-simd
 pkgver=5.3.0.post1
-pkgrel=1
+pkgrel=2
 epoch=1
 _appname=Pillow-SIMD
 _py3basever=3.7m
@@ -20,7 +20,7 @@ makedepends=('python-setuptools' 'freetype2' 'libraqm' 'libwebp' 'tk')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/P/$_appname/$_appname-$pkgver.tar.gz")
 conflicts=('python-pillow')
-provides=('python-pillow')
+provides=('python-pillow=5.3.0')
 
 build() {
   cd "$srcdir/$_appname-$pkgver"
