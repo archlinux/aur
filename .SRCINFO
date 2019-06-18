@@ -1,0 +1,18 @@
+pkgbase = aisl-git
+	pkgdesc = Asynchronous Internet Server Library
+	pkgver = 1.0.3
+	pkgrel = 1
+	epoch = 1
+	url = https://lowenware.com/aisl/
+	arch = i686
+	arch = x86_64
+	license = CCPL
+	makedepends = git
+	depends = openssl
+	provides = libaisl
+	conflicts = libaisl
+	source = git+https://github.com/lowenware/aisl.git
+	md5sums = SKIP
+
+pkgname = aisl-git
+
