@@ -3,7 +3,7 @@
 message(){
   echo "In order to be run by a non-root user, nethogs needs the cap_net_admin and cap_net_raw capabilities. These can be set on the executable by using the setcap command, as follows:
 
-sudo setcap \"cap_net_admin,cap_net_raw+pe\" /usr/local/sbin/nethogs
+sudo setcap \"cap_net_admin,cap_net_raw+pe\" /usr/bin/nethogs
 "
 }
 
