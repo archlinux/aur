@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/pytoolz/toolz"
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("$url/archive/0.9.0.tar.gz")
+source=("$url/archive/${pkgver}.tar.gz")
 sha256sums=('9173e5e9450ded2d1d177cae610e523228cf6c8c19e2f9d0394ca93284f1de43')
 
 prepare() {
