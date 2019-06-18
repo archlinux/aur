@@ -1,6 +1,6 @@
 pkgbase = browsh
 	pkgdesc = A fully-modern text-based browser, rendering to TTY and browsers
-	pkgver = 1.5.0
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://www.brow.sh
 	arch = x86_64
@@ -14,16 +14,16 @@ pkgbase = browsh
 	makedepends = go-bindata
 	makedepends = dep
 	makedepends = git
-	depends = firefox>=57
+	depends = firefox>=63
 	optdepends = upx: compress binary
 	conflicts = browsh-bin
 	conflicts = browsh-git
-	noextract = browsh-1.5.0-an.fx.xpi
+	noextract = browsh-1.5.2-an.fx.xpi
 	options = !strip
-	source = https://github.com/browsh-org/browsh/archive/v1.5.0.tar.gz
-	source = https://github.com/browsh-org/browsh/releases/download/v1.5.0/browsh-1.5.0-an.fx.xpi
-	sha512sums = 1ba4ac0e5d217201d626f62a7dd91dc6364e81b1ba633221d23b21f231334e8d241dfa9827d8dc064502838a6bfc1232b915678120eb3dd6ad99c75c5d51fe39
-	sha512sums = 1e8efff581313c73e993c74a24cfe577b2694abdf259ca647d6fa88d4bf7930e6f3641444f5178f3c5166a8a32930a0f75cdb780a0fcb4581bdea0ecbb8c942c
+	source = https://github.com/browsh-org/browsh/archive/v1.5.2.tar.gz
+	source = https://github.com/browsh-org/browsh/releases/download/v1.5.2/browsh-1.5.2-an.fx.xpi
+	sha256sums = c1a39b8982caa3cf96d67ff4e8b2d6fd80746a8f3ddd13f0650cbc875ca7b8fd
+	sha256sums = c3b475953de61a930c12c89cde3d2630e511b28ddbd21da7830e02173df32a2d
 
 pkgname = browsh
 
