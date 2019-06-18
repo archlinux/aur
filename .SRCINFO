@@ -12,6 +12,7 @@ pkgbase = openkj-git
 	depends = qt5-multimedia
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
+	depends = taglib-extras
 	provides = openkj=latest
 	conflicts = openkj
 	source = git+https://github.com/OpenKJ/OpenKJ.git
