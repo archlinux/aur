@@ -1,7 +1,7 @@
 pkgbase = authenticator
 	pkgdesc = 2FA code generator for GNOME
 	pkgver = 3.32.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/World/Authenticator
 	arch = any
 	license = GPL3
@@ -16,6 +16,7 @@ pkgbase = authenticator
 	depends = python-beautifulsoup4
 	depends = python-yoyo-migrations
 	depends = python-requests
+	depends = libhandy
 	source = authenticator::git+https://gitlab.gnome.org/World/Authenticator.git?unsigned#tag=3.32.1
 	source = git+https://gitlab.gnome.org/GNOME/libgd.git
 	sha256sums = SKIP
