@@ -1,0 +1,24 @@
+pkgbase = cutback
+	pkgdesc = Backup system with the goal of creating smaller, more focused backups
+	pkgver = 0.0.1_pre
+	pkgrel = 1
+	url = http://RyanScottLewis.github.io/cutback
+	arch = x86_64
+	license = MIT
+	depends = tar
+	depends = findutils
+	optdepends = bzip2: bzip compression
+	optdepends = gzip: gzip compression
+	optdepends = lrzip: lrzip compression
+	optdepends = lz4: lz4 compression
+	optdepends = lzip: lzip compression
+	optdepends = lzma: lzma compression
+	optdepends = lzop: lzop compression
+	optdepends = xz: xz compression
+	optdepends = pv: command progress viewing
+	backup = etc/xdg/cutback/config.yml
+	source = https://github.com/RyanScottLewis/cutback/releases/download/0.0.1-pre/cutback-linux-x86_64-0.0.1-pre.tar.gz
+	sha512sums = b5e1cadd95bb1d973de8e3d48419e705d2e1a83aa20cdd408ae75497c257b6b07326db7897a779936375a487f06c03030b26a6572ead9214f0ad366def494eb3
+
+pkgname = cutback
+
