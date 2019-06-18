@@ -1,7 +1,7 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 pkgname=azuredatastudio
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Azure Data Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW (formerly SQL Operations Studio)."
 arch=('x86_64')
 url="https://github.com/Microsoft/azuredatastudio"
@@ -12,26 +12,34 @@ optdepends=('krb5: Windows authentication support')
 provides=('sqlops')
 conflicts=('sqlops')
 options=('staticlibs')
-source=("https://github.com/Microsoft/${pkgname}/releases/download/${pkgver}/${pkgname}-linux-${pkgver}.tar.gz"
-        "${pkgname}.desktop")
+source=("https://github.com/Microsoft/azuredatastudio/releases/download/${pkgver}/azuredatastudio-linux-${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/microsoft/azuredatastudio/${pkgver}/resources/linux/code.desktop")
 sha256sums=('4ad580e1741694a0c6055e099ea06ed90ba852395215dbf211d705443a9df029'
-            '4f7fa4bbc74249a1494f4df6aaba8e60c670a478c78bd73b4f0d19e4c802f5c5')
+            'fdf6f3a119e06d91bcbef2babc3b8b1730ae7e69756cac0dc40af8920bbeb194')
+
+prepare() {
+  sed -i "s|/usr/share/@@NAME@@/@@NAME@@|@@NAME@@|g
+          s|@@NAME_SHORT@@|${pkgname}|g
+          s|@@NAME_LONG@@|Azure Data Studio|g
+          s|@@NAME@@|${pkgname}|g
+          s|@@ICON@@|${pkgname}|g
+          s|inode/directory;||" code.desktop
+}
 
 package() {
   install -d "${pkgdir}/opt/${pkgname}"
-  cp -a "${pkgname}-linux-x64/"* "${pkgdir}/opt/${pkgname}"
+  cp -a "azuredatastudio-linux-x64/"* "${pkgdir}/opt/${pkgname}"
 
   # Symlink the startup script in /usr/bin
   install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/bin/azuredatastudio" "${pkgdir}/usr/bin/${pkgname}"
   # Also add an alias for the previous name to hopefully not break things too much
-  ln -s "/opt/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/sqlops"
+  ln -s "/opt/${pkgname}/bin/azuredatastudio" "${pkgdir}/usr/bin/sqlops"
 
   # Add the icon and desktop file
-  install -D -m644 "${pkgname}-linux-x64/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
-  install -D -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  sed -i "s/@@pkgname@@/${pkgname}/g" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -D -m644 "azuredatastudio-linux-x64/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+  install -D -m644 code.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   # Install the license file
-  install -D -m644 "${pkgname}-linux-x64/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "azuredatastudio-linux-x64/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
