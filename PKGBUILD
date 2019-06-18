@@ -2,10 +2,11 @@
 
 pkgname=(veles-git python-veles-git)
 pkgver=2018.05.0.r0.ge65de5a
-pkgrel=4
+pkgrel=5
 pkgdesc='Binary data analysis and visualization tool'
 url='https://codisec.com/veles'
 arch=('x86_64')
+makedepends=('clang')
 license=('APLv2')
 source=("git+https://github.com/codilime/veles.git"
         "fix_qt5_use_modules.patch"
