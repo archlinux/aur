@@ -1,0 +1,16 @@
+pkgbase = pamac-qt-aur
+	pkgdesc = Pamac-QT is a GUI for libalpm (pacman) with AUR and Appstream support
+	pkgver = 0.2.0.r7.g56427be
+	pkgrel = 1
+	url = https://gitlab.manjaro.org/applications/pamac-qt
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	provides = pamac-qt
+	conflicts = pamac-qt
+	source = pamac-qt-aur::git+https://gitlab.manjaro.org/applications/pamac-qt.git
+	md5sums = SKIP
+
+pkgname = pamac-qt-aur
+
