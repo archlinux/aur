@@ -7,13 +7,13 @@
 
 pkgname=python2-autobahn
 pkgver=19.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Real-time framework for Web, Mobile & Internet of Things'
 arch=(any)
 url='https://crossbar.io/autobahn/'
 license=(MIT)
 depends=(python2-twisted python2-six python2-txaio python2-trollius python2-wsaccel)
-makedepends=(python2-setuptools python2-msgpack python2-pynacl python2-trollius)
+makedepends=(python2-setuptools python2-msgpack python2-pynacl python2-trollius python2-cryptography)
 checkdepends=(python2-mock python2-pytest)
 optdepends=(
   'python2-msgpack: MsgPack serializer support'
