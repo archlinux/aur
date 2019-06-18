@@ -2,13 +2,13 @@
 
 pkgname=perl-file-extattr
 pkgver='1.09'
-pkgrel='3'
+pkgrel='5'
 pkgdesc="Perl extension for accessing extended attributes of files"
 arch=("i686" "x86_64" "arm")
 url="http://search.cpan.org/dist/File-ExtAttr"
 license=('GPL' 'PerlArtistic')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/R/RI/RICHDAWE/File-ExtAttr-${pkgver}.tar.gz"
+source=("https://cpan.metacpan.org/authors/id/R/RI/RICHDAWE/File-ExtAttr-${pkgver}.tar.gz"
         "0001-Port-Linux-to-sys-xattr.h.patch"
         "0002-Remove-dependency-on-attr-library-on-Linux.patch")
 sha512sums=('eca00420bef313ac711bf1d64323e051acc8eb77ab8e267067f586e78dc42d43f685fe571c7856186c998e939dd2761d24650c61297c24486bc005dddf6b4bb3'
@@ -44,7 +44,7 @@ check() {
 package() {
   prepare_environment
   make install
-  find "$pkgdir" -type f -name '*.so' -exec strip {} \+
+  find "$pkgdir" -type f -name '*.so' -exec strip {} \+ # 'strip' option doesn't work because files are read-only
   find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
