@@ -1,0 +1,16 @@
+pkgbase = ttf-bevan
+	pkgdesc = Bevan is a web font design based on a number of old pre-digital typeface designs.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/vernnobile/BevanFont
+	install = ttf.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	source = git+https://github.com/vernnobile/BevanFont.git
+	source = ttf.install
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ttf-bevan
+
