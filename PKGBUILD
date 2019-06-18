@@ -1,13 +1,15 @@
-# Maintainer: Brendan Szymanski <brendan.szymanski1@gmail.com>
+# Maintainer: bscubed <bscubed@pm.me>
 
-_pkgname=yuzu
-pkgname=$_pkgname-canary-git
-pkgver=r11849.7abd66d92
+_pkgname='yuzu-canary'
+pkgname="$_pkgname-git"
+pkgver=r11855.d070fd91a
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/yuzu-emu/yuzu-canary"
 license=('GPL2')
+provides=('yuzu' 'yuzu-cmd')
+conflicts=('yuzu-git')
 depends=('shared-mime-info'
          'desktop-file-utils'
          'sdl2'
@@ -66,8 +68,4 @@ package() {
 	cd "$srcdir/$_pkgname/build"
 	
 	make DESTDIR="$pkgdir/" install
-	
-	# Temporary fix until yuzu fixes the zlib and libzip patch they pushed yesterday
-	cd "$pkgdir/usr"
-	rm -rf include lib lib64 share/man share/pkgconfig
 }
