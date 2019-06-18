@@ -2,12 +2,14 @@
 # Contributor: Joe Hillenbrand <joehillen@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: lantw44 (at) gmail (dot) com
-
-pkgname=guix-git
-pkgver=v1.0.1.r840.gc8535731b8
+_pkgname=guix
+pkgname=${_pkgname}-git
+pkgver=1.0.1.r856.g1e609b78c7
 pkgrel=1
 pkgdesc="A purely functional package manager"
 arch=('i686' 'x86_64')
+url="https://www.gnu.org/software/guix/"
+license=('GPL3')
 depends=(
   'bzip2'
   'glibc'
@@ -37,24 +39,22 @@ optdepends=(
   'fish: completions'
   'emacs: emacs interface'
   'guile-ssh: to offload builds to other machines')
-url="https://www.gnu.org/software/guix/"
-license=('GPL3')
-source=(git://git.sv.gnu.org/guix.git)
+provides=("${_pkgname}=${pkgver}")
+conflicts=(${_pkgname})
+source=("git://git.sv.gnu.org/${_pkgname}.git")
 sha256sums=('SKIP')
-provides=('guix')
-conflicts=('guix')
-install=guix.install
+install="${_pkgname}.install"
 
 pkgver() {
-  cd ${pkgname%-git}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${_pkgname}
+  git describe --long | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${pkgname%-git}
+  cd ${_pkgname}
 
-  _bash_compl="--with-bash-completion-dir=\"$(pkg-config --variable=completionsdir bash-completion)\"" || _bash_compl=""
-  _fish_compl="--with-fish-completion-dir=\"$(pkg-config --variable=completionsdir fish)\"" || _fish_compl=""
+  local bash_completion_dir="$(pkg-config --variable=completionsdir bash-completion)"
+  local fish_completion_dir="$(pkg-config --variable=completionsdir fish)"
 
   msg2 'Building...'
   ./bootstrap
@@ -65,15 +65,15 @@ build() {
     --sysconfdir=/etc \
     --sharedstatedir=/usr/share/guix \
     --localstatedir=/var \
-    $_bash_compl \
-    $_fish_compl \
+    --with-bash-completion-dir="${bash_completion_dir}" \
+    --with-fish-completion-dir="${fish_completion_dir}" \
     --disable-rpath \
     --with-gnu-ld
   make
 }
 
 package() {
-  cd ${pkgname%-git}
+  cd ${_pkgname}
 
   make DESTDIR="${pkgdir}" install
 
