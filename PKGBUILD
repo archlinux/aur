@@ -2,14 +2,14 @@
 
 pkgname=cpuminer-opt
 pkgver=3.9.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Optimized multi-algo CPU miner'
 arch=('x86_64')
 url='https://github.com/JayDDee/cpuminer-opt'
 license=('GPL')
 depends=('curl' 'gmp' 'jansson' 'openssl')
 provides=('cpuminer' 'cpuminer-multi')
-conflicts=('cpuminer' 'cpuminer-multi' 'cpuminer-multi-git')
+conflicts=('cpuminer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JayDDee/cpuminer-opt/archive/v$pkgver.tar.gz")
 sha256sums=('43eddc0edd9fbc062358f7a79f8c19fef67627c02a9f3a23a9214b9660c1d9a6')
 
