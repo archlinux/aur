@@ -1,17 +1,18 @@
-# Maintainer: Benjamin Chretien <chretien+aur at lirmm dot fr>
-# Contributor: Sean Greenslade <zootboysean@gmail.com>
+# Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
 
-pkgdesc='Utilities for building arch packages for ROS stacks.'
-url="https://github.com/bchretien/arch-ros-stacks"
+pkgdesc='Utilities for building Arch packages for ROS stacks.'
+url="https://github.com/ros-melodic-arch/ros-build-tools-py3"
 
-pkgname='ros-build-tools'
-pkgver='0.2.0'
+pkgname='ros-build-tools-py3'
+pkgver='0.2.1'
 arch=('any')
 pkgrel=1
 license=('BSD')
 makedepends=()
-depends=()
-optdepends=('python2')
+optdepends=('python3')
+depends=('bash')
+provides=('ros-build-tools')
+conflicts=('ros-build-tools')
 
 pkg_destination_dir="/usr/share/ros-build-tools"
 
@@ -20,7 +21,6 @@ source=('fix-python-scripts.sh'
         'create-arch-ros-package-legacy.sh'
         'PKGBUILD.rostemplate'
         'get_stack_dependencies.py'
-        'generate_packages_makefile.py'
         'generate-python-patch.sh'
         'clear-ros-env.sh')
 
