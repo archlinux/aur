@@ -1,0 +1,21 @@
+pkgbase = openkj-git
+	pkgdesc = Open KJ - Cross-platform open source karaoke hosting software
+	pkgver = latest
+	pkgrel = 1
+	url = https://openkj.org/
+	install = openkj.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = git
+	depends = qt5-multimedia
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	provides = openkj=latest
+	conflicts = openkj
+	source = git+https://github.com/OpenKJ/OpenKJ.git
+	md5sums = SKIP
+
+pkgname = openkj-git
+
