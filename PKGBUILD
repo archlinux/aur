@@ -44,8 +44,8 @@ package() {
   ln -s libwasmer_runtime_c_api.so.${pkgver} "$pkgdir"/usr/lib/libwasmer_runtime_c_api.so
 
   # wapm completions
-  install -Dm755 wapm-bash-completions "$pkgdir"/usr/share/bash-completion/completions/wapm
-  install -Dm755 wapm-zsh-completions "$pkgdir"/usr/share/zsh/site-functions/_wapm
+  install -Dm644 wapm-bash-completions "$pkgdir"/usr/share/bash-completion/completions/wapm
+  install -Dm644 wapm-zsh-completions "$pkgdir"/usr/share/zsh/site-functions/_wapm
 
   # license
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
