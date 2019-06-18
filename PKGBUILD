@@ -4,8 +4,8 @@
 pkgname=vdr-vdrmanager
 pkgver=0.15
 _gitver=0398f105bcc166d2695f3b8b2f91327c04acca48
-_vdrapi=2.4.0
-pkgrel=1
+_vdrapi=2.4.1
+pkgrel=2
 pkgdesc="Allows remote programming VDR using VDR-Manager running on Android devices"
 url="http://projects.vdr-developer.org/projects/vdr-manager"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
