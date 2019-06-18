@@ -3,7 +3,7 @@
 pkgname=fpakman
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="GUI for Flatpak applications management"
+pkgdesc="GUI for Flatpak applications management."
 arch=('any')
 url="https://github.com/vinifmor/fpakman"
 license=('GPL3')
