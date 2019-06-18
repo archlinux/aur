@@ -2,9 +2,9 @@
 
 pkgname_=truffleruby
 pkgname=${pkgname_}-bin
-pkgver_=19.0.0
+pkgver_=19.0.2
 pkgver=${pkgver_/-/_}
-pkgrel=2
+pkgrel=1
 pkgdesc='Graal based, high-performance implementation of the Ruby language'
 arch=('x86_64')
 url='https://github.com/oracle/truffleruby'
@@ -15,7 +15,7 @@ optdepends=()
 provides=("$pkgname_")
 conflicts=("$pkgname_")
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver_}/ruby-installable-svm-linux-amd64-${pkgver_}.jar")
-sha256sums=('e35dd0c0f0240c345d7382fd3e43ee7421479ba8917989169c77a950816eb394')
+sha256sums=('fd7dd327ec42023abc9d2390cc655b246b8459fefa7037cc837c24dd1ef11c8a')
 
 package() {
     local file eq permissions mode name target
