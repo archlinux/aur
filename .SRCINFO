@@ -13,7 +13,7 @@ pkgbase = fpakman-staging
 	depends = python-requests
 	provides = fpakman
 	conflicts = fpakman
-	source = https://github.com/vinifmor/fpakman/archive/staging.zip
+	source = https://github.com/vinifmor/fpakman/archive/4e81563faf861a37b8ca6f00fafe6131f77c9560.zip
 	sha512sums = SKIP
 
 pkgname = fpakman-staging
