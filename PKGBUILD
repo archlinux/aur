@@ -25,7 +25,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  git fetch --tags && git checkout tags/v0.6.1.1 -b v0.6.1.1
   USE_SINGLE_BUILDDIR=1 make
 }
 
