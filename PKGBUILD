@@ -4,8 +4,8 @@
 pkgname=vdr-mpv
 pkgver=0.0.4_6_g559ef4b
 _commit=559ef4b794bb52d577c69e8ed3fcce34e10cd3f0
-_vdrapi=2.4.0
-pkgrel=3
+_vdrapi=2.4.1
+pkgrel=4
 pkgdesc="mpv player plugin for VDR"
 url="http://projects.vdr-developer.org/projects/plg-mpv"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
