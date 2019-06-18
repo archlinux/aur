@@ -4,8 +4,8 @@
 pkgname=vdr-skinflatplus
 pkgver=0.6.0.r12.g5a8c1819
 _gitver=5a8c1819d963bc78c317b98dd2e77be68bad1549
-_vdrapi=2.4.0
-pkgrel=1
+_vdrapi=2.4.1
+pkgrel=2
 pkgdesc="Simple and slim skin for VDR"
 url="http://projects.vdr-developer.org/projects/plg-skinflatplus"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
