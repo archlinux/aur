@@ -4,8 +4,8 @@
 pkgname=vdr-graphlcd
 pkgver=1.0.0.r0.ga6c8e3d
 _gitver=a6c8e3d4383ae164e26149888bbdc91cbd448ba8
-_vdrapi=2.4.0
-pkgrel=2
+_vdrapi=2.4.1
+pkgrel=3
 epoch=1
 pkgdesc="VDR Plugin to support graphical LC displays"
 url="http://projects.vdr-developer.org/projects/show/graphlcd"
