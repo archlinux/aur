@@ -1,1 +1,6 @@
 bcachefs-tools
+*.xz
+*.gz
+*.pkg.tar*
+pkg
+src
