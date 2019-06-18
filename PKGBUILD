@@ -2,7 +2,7 @@
 
 pkgname=reposurgeon
 pkgver=3.46
-pkgrel=1
+pkgrel=2
 pkgdesc="Performs surgery on version control repositories."
 arch=('x86_64')
 url="http://www.catb.org/esr/$pkgname/"

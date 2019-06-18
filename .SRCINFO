@@ -1,9 +1,9 @@
 pkgbase = reposurgeon
 	pkgdesc = Performs surgery on version control repositories.
 	pkgver = 3.46
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.catb.org/esr/reposurgeon/
-	arch = any
+	arch = x86_64
 	license = BSD
 	makedepends = asciidoc
 	makedepends = go
