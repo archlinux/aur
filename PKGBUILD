@@ -1,11 +1,11 @@
-# Maintainer: onny <onny@project-insanity.org>
+# Maintainer: Tiago Casal Ribeiro <tiago@casalribeiro.com>
 # Contributor: onny <onny@project-insanity.org>
 
 pkgname=fon-flash
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A new program based on AP51 flash, for flashing La Fonera and Atheros chipset compatible devices"
-url=('http://www.gargoyle-router.com/wiki/doku.php?id=fon_flash')
+url='http://www.gargoyle-router.com/wiki/doku.php?id=fon_flash'
 arch=('i686' 'x86_64')
 license=('GPL2')
 makedepends=('libpcap')
