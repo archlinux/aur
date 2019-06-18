@@ -1,7 +1,7 @@
 # Maintainer: Roey Darwish Dror <roey.ghost@gmail.com>
 
 pkgname=alma
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Create Arch Linux based live USB'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust')
 depends=('gptfdisk' 'parted' 'arch-install-scripts' 'dosfstools' 'coreutils' 'util-linux')
 optdepends=('cryptsetup: for root filesystem encryption')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6b7cda499977c03f4c5a44610e9e1e5e9c4e1ffd0a1ff537130084eaf6523391')
+sha256sums=('8619cd7aaad21bc57144716012fb78e448aa8e5e4a6378f7f3f147d24bb92a0d')
 
 build() {
   cd "$pkgname-$pkgver"
