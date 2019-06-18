@@ -1,8 +1,8 @@
-pkgbase = gitkraken
-	pkgdesc = The intuitive, fast, and beautiful cross-platform Git client.
+pkgbase = gitkraken-standalone
+	pkgdesc = Stand-alone version of GitKraken for labs and computers without internet access (requires license file).
 	pkgver = 6.0.0
 	pkgrel = 1
-	url = https://www.gitkraken.com/
+	url = https://support.gitkraken.com/standalone/standalone/
 	arch = x86_64
 	license = custom
 	depends = gtk2
@@ -16,16 +16,17 @@ pkgbase = gitkraken
 	depends = rtmpdump
 	optdepends = git-lfs: git-lfs support
 	provides = gitkraken
-	source = gitkraken-6.0.0.tar.gz::https://release.axocdn.com/linux/GitKraken-v6.0.0.tar.gz
+	conflicts = gitkraken
+	source = gitkraken-standalone-6.0.0.tar.gz::https://release.axocdn.com/linux-standalone/GitKraken-v6.0.0.tar.gz
 	source = GitKraken.desktop
 	source = gitkraken.png
 	source = eula.html
 	source = gitkraken.sh
-	sha256sums = 5b1c2278404d7c2864a75274c5c59fe03392b07f48edd7d21c0549fdd2205df3
+	sha256sums = 8d7f66b8cfe66b55968e1997a06bde1f458bda501e416ebdaa24a9715ad59823
 	sha256sums = 81b32ad2fae47fcdf8adb4fdb5c734430ed993f712e75bd62297ae8540fdf889
 	sha256sums = a2b3551f83bcbe56da961615f066bb736cd15d98e41c93b3b4add0d56606d902
 	sha256sums = 9566342308bf35b56e626fa1b0d716eb16991712cc43b617c4f0d95e005311d1
 	sha256sums = 6e6c6ac37287e1ec5d5266689a49d18899488be901b21f5cb9749f545453626f
 
-pkgname = gitkraken
+pkgname = gitkraken-standalone
 

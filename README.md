@@ -1,5 +1,5 @@
-# Gitkraken AUR Package
-[![Build Status](https://travis-ci.org/Azd325/gitkraken.svg?branch=master)](https://travis-ci.org/Azd325/gitkraken)
+# Gitkraken-standalone AUR Package
+Forked from [Azd325](https://travis-ci.org/Azd325/gitkraken)'s GitKraken AUR repository with changes required to build/install the [stand-alone version](https://support.gitkraken.com/standalone/standalone).
 
 ## Update package
 
