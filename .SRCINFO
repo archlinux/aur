@@ -1,4 +1,4 @@
-pkgbase = st-ckyln
+pkgbase = st-ckyln-git
 	pkgdesc = Simple Terminal from suckless.org (Fork)
 	pkgver = v20190618.2.gb454b64
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = st-ckyln
 	source = git+https://git.ckyln.com/cemkeylan/st.git
 	md5sums = SKIP
 
-pkgname = st-ckyln
+pkgname = st-ckyln-git
 
