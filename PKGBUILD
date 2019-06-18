@@ -7,7 +7,7 @@ pkgrel=3
 pkgdesc="HTTP request/response parser for Python"
 arch=('x86_64')
 license=('MIT')
-url="http://github.com/benoitc/http-parser"
+url="https://github.com/benoitc/http-parser"
 makedepends=('python-setuptools' 'python2-setuptools' 'cython' 'git')
 checkdepends=('python-pytest' 'python2-pytest')
 source=("git+https://github.com/benoitc/http-parser.git#tag=$pkgver")
