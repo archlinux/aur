@@ -1,11 +1,12 @@
 pkgbase = please-bin
 	pkgdesc = A cross-language build system with an emphasis on high performance, extensibility and reproduceability
-	pkgver = 13.3.2
+	pkgver = 13.8.0
 	pkgrel = 1
 	url = https://please.build/
 	arch = x86_64
 	license = Apache
-	source_x86_64 = https://github.com/thought-machine/please/releases/download/v13.3.2/please_13.3.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = b3106ae149fd5a5dcf79738f9c265a01f52e778e5eadbe6c84c83cad55ea3fb5
+	source_x86_64 = https://github.com/thought-machine/please/releases/download/v13.8.0/please_13.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a9a2658c7270346d452f3a4cc5cfff5d057495d641d20f55b71c4804bb00cf72
 
 pkgname = please-bin
+
