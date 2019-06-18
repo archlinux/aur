@@ -22,5 +22,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
-  python3 arch/register_app.py
+  python3 aur/register_app.py
 }
