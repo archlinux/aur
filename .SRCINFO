@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Librefox: a privacy and security-focused browser
 	pkgver = 67.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://LibreWolf.gitlab.io
 	arch = x86_64
 	license = MPL
@@ -51,10 +51,10 @@ pkgbase = librewolf
 	source = 0001-bz-1521249.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-bz-1521249.patch?h=packages/firefox
 	source = librewolf.desktop
 	source = librewolf.cfg.patch
-	source = git+https://gitlab.com/librewolf-community/librewolf.git
+	source = git+https://gitlab.com/librewolf-community/librewolf.git#commit=db65e6a9
 	sha256sums = a27eda97cfbc546bd156249490e72ef5cbb96a1d5921efa1131b565bcc938c0c
 	sha256sums = d0673786a6a1f1b9f6f66a3a1356afa33f1f18f59dabd92bd193c88c52a1d04c
-	sha256sums = ad6b1bc47687c8f094a0b8dd077b13099d43fc95469b73ec9890e642512d474e
+	sha256sums = 0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b
 	sha256sums = 49d7e6071afcc5de5aa802bbb49810a7502fe31063dde9e2887b6837cab694ce
 	sha256sums = SKIP
 

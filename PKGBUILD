@@ -7,7 +7,7 @@ pkgname=librewolf
 _pkgname=LibreWolf
 pkgver=67.0.2
 _bundle=c9edc4fbdfc8a0a5656e43d0afda6df03b93de7c
-pkgrel=4
+pkgrel=5
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -28,11 +28,11 @@ source=(https://hg.cdn.mozilla.net/mozilla-unified/${_bundle}.zstd-max.hg
         "0001-bz-1521249.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-bz-1521249.patch?h=packages/firefox"
         $pkgname.desktop
         $pkgname.cfg.patch
-        git+https://gitlab.com/${pkgname}-community/${pkgname}.git)
+        "git+https://gitlab.com/${pkgname}-community/${pkgname}.git#commit=db65e6a9")
         # "hg+$_repo#tag=FIREFOX_${_pkgver//./_}_RELEASE"
 sha256sums=('a27eda97cfbc546bd156249490e72ef5cbb96a1d5921efa1131b565bcc938c0c'
             'd0673786a6a1f1b9f6f66a3a1356afa33f1f18f59dabd92bd193c88c52a1d04c'
-            'ad6b1bc47687c8f094a0b8dd077b13099d43fc95469b73ec9890e642512d474e'
+            '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
             '49d7e6071afcc5de5aa802bbb49810a7502fe31063dde9e2887b6837cab694ce'
             'SKIP')
 
@@ -66,19 +66,18 @@ END
   # cd ${srcdir}/mozilla-unified
 
 
-  local ICON_FILE_PATH=$srcdir/$pkgname/branding/icon/icon.svg;
-  local BRANDING_FOLDER_PATH=$srcdir/$pkgname/browser/resources/source_files/browser/branding/librewolf;
+  local ICON_FOLDER=$srcdir/$pkgname/branding/icon
+  local BRANDING_FOLDER=$srcdir/$pkgname/browser/resources/source_files/browser/branding/librewolf
 
   # generate icons and moves them to the branding folder
   echo Generating icons from $ICON_FILE_PATH and moving to $BRANDING_FOLDER_PATH;
-  inkscape --without-gui --file=$ICON_FILE_PATH --export-png=$BRANDING_FOLDER_PATH/default16.png --export-width=16 --export-height=16;
-  inkscape --without-gui --file=$ICON_FILE_PATH --export-png=$BRANDING_FOLDER_PATH/default32.png --export-width=32 --export-height=32;
-  inkscape --without-gui --file=$ICON_FILE_PATH --export-png=$BRANDING_FOLDER_PATH/default48.png --export-width=48 --export-height=48;
-  inkscape --without-gui --file=$ICON_FILE_PATH --export-png=$BRANDING_FOLDER_PATH/default64.png --export-width=64 --export-height=64;
-  inkscape --without-gui --file=$ICON_FILE_PATH --export-png=$BRANDING_FOLDER_PATH/default128.png --export-width=128 --export-height=128;
-  inkscape --without-gui --file=$ICON_FILE_PATH --export-png=$BRANDING_FOLDER_PATH/VisualElements_70.png --export-width=70 --export-height=70;
-  inkscape --without-gui --file=$ICON_FILE_PATH --export-png=$BRANDING_FOLDER_PATH/VisualElements_150.png --export-width=150 --export-height=150;
-
+  inkscape --without-gui --file=$ICON_FOLDER/icon.svg --export-png=$BRANDING_FOLDER/default16.png --export-width=16 --export-height=16
+  inkscape --without-gui --file=$ICON_FOLDER/icon.svg --export-png=$BRANDING_FOLDER/default32.png --export-width=32 --export-height=32
+  inkscape --without-gui --file=$ICON_FOLDER/icon.svg --export-png=$BRANDING_FOLDER/default48.png --export-width=48 --export-height=48
+  inkscape --without-gui --file=$ICON_FOLDER/icon.svg --export-png=$BRANDING_FOLDER/default64.png --export-width=64 --export-height=64
+  inkscape --without-gui --file=$ICON_FOLDER/icon.svg --export-png=$BRANDING_FOLDER/default128.png --export-width=128 --export-height=128
+  inkscape --without-gui --file=$ICON_FOLDER/icon.svg --export-png=$BRANDING_FOLDER/VisualElements_70.png --export-width=70 --export-height=70
+  inkscape --without-gui --file=$ICON_FOLDER/icon.svg --export-png=$BRANDING_FOLDER/VisualElements_150.png --export-width=150 --export-height=150
 
   cat >.mozconfig <<END
 ac_add_options --enable-application=browser
