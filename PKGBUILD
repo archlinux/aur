@@ -1,9 +1,10 @@
-# Maintainer: Joe Hillenbrand <joehillen@gmail.com>
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
+# Contributor: Joe Hillenbrand <joehillen@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: lantw44 (at) gmail (dot) com
 
 pkgname=guix-git
-pkgver=v0.15.0.r2345.gd8d8844ec
+pkgver=v1.0.1.r840.gc8535731b8
 pkgrel=1
 pkgdesc="A purely functional package manager"
 arch=('i686' 'x86_64')
@@ -60,7 +61,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
-    --libexecdir=/usr/lib/guix \
+    --libexecdir=/usr/lib \
     --sysconfdir=/etc \
     --sharedstatedir=/usr/share/guix \
     --localstatedir=/var \
