@@ -8,4 +8,13 @@
 +$(package)_dependencies=$(rust_crates)
  $(package)_patches=cargo.config 0001-Start-using-cargo-clippy-for-CI.patch remove-dev-dependencies.diff
  
- ifeq ($(host_os),mingw32)
+ $(package)_rust_target=$(if $(rust_rust_target_$(canonical_host)),$(rust_rust_target_$(canonical_host)),$(canonical_host))
+@@ -33,7 +33,7 @@
+ endef
+ 
+ define $(package)_build_cmds
+-  $(host_prefix)/native/bin/cargo build --package librustzcash $($(package)_build_opts)
++  cargo build --package librustzcash $($(package)_build_opts)
+ endef
+ 
+ define $(package)_stage_cmds
