@@ -8,10 +8,10 @@ pkgdesc="A peer-to-peer network based market place on the blockchain. This packa
 arch=('x86_64')
 url="https://syscoin.org"
 license=('MIT')
-depends=('miniupnpc' 'db4.8' 'protobuf' 'libevent' 'qt5-base' 'boost-libs' 'qrencode' 'zeromq')
+depends=('boost-libs' 'db4.8' 'dbus' 'harfbuzz' 'libevent' 'libxext' 'protobuf' 'qrencode' 'qt5-base' 'openssl-1.0')
 optdepends=('miniupnpc: Firewall-jumping support'
  'zeromq: Allows generating ZMQ notifications')
-makedepends=('qt5-base' 'qt5-tools' 'pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool' 'openssl-1.0')
+makedepends=('pkg-config' 'git' 'boost' 'gcc' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
 source=("git+https://github.com/syscoin/syscoin.git#tag=$pkgver")
 sha256sums=('SKIP')
 
