@@ -11,8 +11,6 @@ pkgbase = linux-drm-next-git
 	makedepends = bc
 	makedepends = libelf
 	makedepends = git
-	makedepends = python-sphinx
-	makedepends = graphviz
 	options = !strip
 	source = linux-drm-next-git::git://anongit.freedesktop.org/drm/drm#branch=drm-next
 	source = config

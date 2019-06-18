@@ -17,7 +17,7 @@ pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/drm/drm'
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
+makedepends=(xmlto kmod inetutils bc libelf git)
 options=('!strip')
 source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
   config         # the main kernel config file
