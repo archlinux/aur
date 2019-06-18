@@ -1,0 +1,4 @@
+post_install() {
+  echo "The beacon service must be running for beacon to work."
+  echo "Configure /etc/beacon/config.yml, enable and start beacon.service."
+}

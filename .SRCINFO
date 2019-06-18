@@ -1,0 +1,16 @@
+pkgbase = beacon
+	pkgdesc = Tiny system utility reporting CPU, memory, uptime to logs, cloudwatch, http
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/shazbits/beacon
+	install = beacon.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/shazbits/beacon/archive/v1.1.0.tar.gz
+	source = beacon.service
+	sha256sums = ac309ac8419fe4ee02b204421a8462ce28308c77d9fc42358d2d94504176d1c1
+	sha256sums = c1e33e6fbb2320fe0ea13e3ca95edbbf779686785a0f6304f32a49dbed97ed9f
+
+pkgname = beacon
+
