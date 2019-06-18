@@ -1,11 +1,12 @@
 pkgbase = dbgl
 	pkgdesc = An open-source, free, multi-platform frontend for DOSBox (DOSBox binaries not included)
 	pkgver = 0.82
-	pkgrel = 1
+	pkgrel = 2
 	url = http://members.quicknet.nl/blankendaalr/dbgl/
 	arch = any
 	license = GPL
 	depends = java-runtime>=7
+	depends = java-runtime<9
 	depends = gtk2
 	optdepends = dosbox: necessary to run DOS games
 	source = http://members.quicknet.nl/blankendaalr/dbgl/download/dbgl082_generic.tar.gz
