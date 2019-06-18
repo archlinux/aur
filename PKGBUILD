@@ -3,16 +3,18 @@
 # Derived from official Chromium and Inox PKGBUILDS and ungoogled-chromium buildkit
 
 pkgname=ungoogled-chromium
-pkgver=72.0.3626.122
-pkgrel=1
+pkgver=75.0.3770.80
+_rev=1
+_archver=fd5c39f86aadb4b7fe7724aa6b05000218cbbfe6
+pkgrel=${_rev}
 _launcher_ver=6
-pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency"
+pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
-         'desktop-file-utils' 'hicolor-icon-theme' 'jsoncpp')
+         'desktop-file-utils' 'hicolor-icon-theme' 'jsoncpp' 'openjpeg2')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git'
              'clang' 'lld' 'gn' 'llvm' 'quilt')
 optdepends=('pepper-flash: support for Flash content'
@@ -26,10 +28,12 @@ provides=('chromium')
 conflicts=('chromium')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        https://github.com/Eloston/ungoogled-chromium/archive/$pkgver-$pkgrel.tar.gz)
-sha256sums=('07b6562afafa0ea56ac039ceafe8a64a67a671c5766e6325f33fa8f22fd40449'
+        https://github.com/Eloston/ungoogled-chromium/archive/$pkgver-$pkgrel.tar.gz
+        https://github.com/ungoogled-software/ungoogled-chromium-archlinux/archive/${_archver}.tar.gz)
+sha256sums=('da828bc8d887821380b461abfbbd0e17538c211d56f240f03711b918c77a66d6'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '911d56232c647f64648c55d90d342b03169bbbd36f8786de4b07c1f69a35afc0')
+            'a50251006b0056cad5b80216060002b7f979ace69c97799a3412d10a0fc19afb'
+            '1f917c3dc3948fb37784994195233e8929fe65433ea18cf83545cf81ae61a34f')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -61,17 +65,18 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 prepare() {
-  local _buildkit_cli="$srcdir/$pkgname-$pkgver-$pkgrel/run_buildkit_cli.py"
-  local _config_bundle="$srcdir/$pkgname-$pkgver-$pkgrel/config_bundles/archlinux"
+  _ungoogled_archlinux_repo="$srcdir/$pkgname-archlinux-${_archver}"
+  _ungoogled_repo="$srcdir/$pkgname-$pkgver-$pkgrel"
+  _utils="${_ungoogled_repo}/utils"
 
   cd "$srcdir/chromium-$pkgver"
 
   msg2 'Pruning binaries'
-  python "$_buildkit_cli" prune -b "$_config_bundle" ./
+  python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
   msg2 'Applying patches'
-  python "$_buildkit_cli" patches apply -b "$_config_bundle" ./
+  python "$_utils/patches.py" apply ./ "$_ungoogled_repo/patches" "$_ungoogled_archlinux_repo/patches"
   msg2 'Applying domain substitution'
-  python "$_buildkit_cli" domains apply -b "$_config_bundle" -c domainsubcache.tar.gz ./
+  python "$_utils/domain_substitution.py" apply -r "$_ungoogled_repo/domain_regex.list" -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
@@ -97,6 +102,9 @@ prepare() {
 }
 
 build() {
+  _ungoogled_archlinux_repo="$srcdir/$pkgname-archlinux-${_archver}"
+  _ungoogled_repo="$srcdir/$pkgname-$pkgver-$pkgrel"
+
   make -C chromium-launcher-$_launcher_ver
 
   cd "$srcdir/chromium-$pkgver"
@@ -113,11 +121,10 @@ build() {
 
   mkdir -p out/Default
 
-  local _buildkit_cli="$srcdir/$pkgname-$pkgver-$pkgrel/run_buildkit_cli.py"
-  local _config_bundle="$srcdir/$pkgname-$pkgver-$pkgrel/config_bundles/archlinux"
-
-  python "$_buildkit_cli" gnargs print -b "$_config_bundle" \
-    > "$srcdir/chromium-$pkgver/out/Default/args.gn"
+  # Assemble GN flags
+  cp "$_ungoogled_repo/flags.gn" "out/Default/args.gn"
+  printf '\n' >> "out/Default/args.gn"
+  cat "$_ungoogled_archlinux_repo/flags.archlinux.gn" >> "out/Default/args.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
@@ -140,7 +147,7 @@ package() {
 
   install -D out/Default/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -Dm4755 out/Default/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
-  ln -s /usr/lib/$pkgname/chromedriver "$pkgdir/usr/bin/chromedriver"
+  ln -s /usr/lib/${pkgname#ungoogled-}/chromedriver "$pkgdir/usr/bin/chromedriver"
 
   install -Dm644 chrome/installer/linux/common/desktop.template \
     "$pkgdir/usr/share/applications/chromium.desktop"
