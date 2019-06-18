@@ -38,6 +38,8 @@ pkgver() {
 	# The data in `latest` is a pretty-printed JSON.
 	# We could parse it using `jq` package, but let's not introduce extra dependencies
 	# for such trivial case.
+	# FIXME: sometimes we get an HTML page in the `latest` file,
+	# despite it should be JSON.
 	cat latest | grep -Po '(?<="tag_name":)\s*"[0-9.]*"' | tr -d '" '
 }
 
