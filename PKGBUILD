@@ -50,4 +50,7 @@ package() {
 
 	sed -e "s/-O0//" \
 		-i "$installDir/Makefile"
+
+	# Remove .git folder
+	rm -rf "$installDir/.git"
 }
