@@ -2,8 +2,8 @@
 
 pkgname=rua
 pkgver=0.13.10
-pkgrel=1
-pkgdesc='secure AUR helper written in Rust'
+pkgrel=2
+pkgdesc='secure AUR helper written in Rust, supporting offline builds, filesystem isolation and more'
 url='https://github.com/vn971/rua'
 source=("https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('cargo')
 depends=('bubblewrap' 'git')
 
-#options+=(!strip)  # uncomment to have readable stack traces
+#options+=(!strip)  # uncomment if you want readable stack traces
 
 sha256sums=(f25daf5fca1771e469762f7af1e4a75387d96fddc4d46d066bdfa4dd1a73d3b3)
 

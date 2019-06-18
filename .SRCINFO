@@ -1,7 +1,7 @@
 pkgbase = rua
-	pkgdesc = secure AUR helper written in Rust
+	pkgdesc = secure AUR helper written in Rust, supporting offline builds, filesystem isolation and more
 	pkgver = 0.13.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vn971/rua
 	arch = x86_64
 	arch = i686
