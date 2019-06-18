@@ -2,8 +2,8 @@
 
 _pkgname=nfancurve
 pkgname=${_pkgname}-git
-pkgver=v016.r12.gea6fcf8
-pkgrel=2
+pkgver=v018.r0.ga470eeb
+pkgrel=1
 pkgdesc="A small and lightweight Bash script for using a custom fan curve in Linux for NVIDIA GPUs"
 arch=("any")
 url="https://github.com/nan0s7/nfancurve"
@@ -27,6 +27,10 @@ pkgver() {
 package() {
     cd "${_pkgname}"
 
-    install -m755 -D "temp.sh" "$pkgdir/usr/bin/nfancurve"
-    install -m644 -D "config" "$pkgdir/usr/share/doc/${_pkgname}/config.example"
+    install -Dm755 "temp.sh" "$pkgdir/usr/bin/nfancurve"
+    install -Dm644 "config" "$pkgdir/usr/share/doc/${_pkgname}/config.example"
+
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/${_pkgname}/README.md"
+    install -Dm644 "USAGE.md" "$pkgdir/usr/share/doc/${_pkgname}/USAGE.md"
+    install -Dm644 "LICENCE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }
