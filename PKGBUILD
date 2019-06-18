@@ -4,7 +4,7 @@
 _target="msp430-elf"
 pkgname=${_target}-libstdc++
 pkgver=9.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU C++ Standard Library for the ${_target} target."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -69,8 +69,7 @@ package() {
 
   make DESTDIR="${pkgdir}" install-target-libstdc++-v3
 
-  rm -rf "${pkgdir}/usr/share/man/man7/"
-  rm -rf "${pkgdir}/usr/share/info"
+  rm -rf "${pkgdir}/usr/share"
   rm -rf "${pkgdir}/usr/lib"
 
   # strip it manually
