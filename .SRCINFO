@@ -1,6 +1,6 @@
 pkgbase = fpakman
 	pkgdesc = GUI for Flatpak applications management
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/vinifmor/fpakman
 	arch = any
@@ -12,8 +12,9 @@ pkgbase = fpakman
 	depends = python-pyqt5
 	depends = python-requests
 	provides = fpakman
-	source = https://github.com/vinifmor/fpakman/archive/0.1.0.tar.gz
-	sha512sums = d39c11331fd3a4765ca421b4c6a1b5c4afba80d7367209c741317485219c725af3c140d28fa02d1285af0062cbd85e273301f765255013bac2770bef3503cb84
+	conflicts = fpakman-staging
+	source = https://github.com/vinifmor/fpakman/archive/0.2.0.tar.gz
+	sha512sums = 070a9bb38c078f63f4a4dc9ce7992e0dcd8717bf8d025512d19dc9d25a8b14b77a90d8fc9c6ccf08b0120a106164edfb4cf6f1099600d72ca2d5bf01a4249ade
 
 pkgname = fpakman
 
