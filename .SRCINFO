@@ -1,0 +1,16 @@
+pkgbase = adplay-git
+	pkgdesc = AdPlug's UNIX console-based frontend
+	pkgver = 1.8.2.gccd1b88
+	pkgrel = 1
+	url = https://github.com/adplug/adplay-unix
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = adplug-git
+	provides = adplay
+	conflicts = adplay
+	source = adplay-unix::git+https://github.com/adplug/adplay-unix.git#branch=master
+	md5sums = SKIP
+
+pkgname = adplay-git
+
