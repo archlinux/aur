@@ -4,7 +4,7 @@
 pkgname=gnutls-guile
 _pkgname=gnutls
 pkgver=3.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A library which provides a secure layer over a reliable transport layer"
 arch=('x86_64')
 license=('GPL3' 'LGPL2.1')
@@ -13,7 +13,7 @@ options=('!zipman')
 depends=('gcc-libs' 'libtasn1' 'readline' 'zlib' 'nettle' 'p11-kit' 'libidn2'
          'libidn2.so' 'libunistring' guile)
 checkdepends=('net-tools')
-provides=($_pkgname)
+provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/${_pkgname}-${pkgver}.tar.xz{,.sig})
 sha256sums=('aa81944e5635de981171772857e72be231a7e0f559ae0292d2737de475383e83'
