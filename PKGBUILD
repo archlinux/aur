@@ -1,7 +1,7 @@
 # Maintainer:  kngfr <9bcfbc1ca230857ba09584697f20708a@kngfr.de>
 pkgname=phoneinfoga
 _reponame=PhoneInfoga
-pkgver=v1.10.9.r3.g65adcb8
+pkgver=v1.6.7.r49.g74baad0
 pkgrel=1
 pkgdesc="Advanced information gathering & OSINT tool for phone numbers."
 arch=('any')
@@ -13,8 +13,7 @@ depends=('python3'
 	 'python-html5lib'
 	 'python-phonenumbers'
 	 'python-urllib3'
-	 'python-colorama'
-	 'python-html5lib')
+	 'python-colorama')
 source=("git+https://github.com/sundowndev/PhoneInfoga")
 md5sums=('SKIP')
 
