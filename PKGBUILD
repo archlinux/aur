@@ -2,9 +2,9 @@
 
 pkgname=loccount
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Count source lines of code in a project."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.catb.org/esr/$pkgname/"
 license=('BSD')
 makedepends=('asciidoc' 'go' 'xmlto')

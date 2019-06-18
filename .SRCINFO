@@ -1,9 +1,8 @@
 pkgbase = loccount
 	pkgdesc = Count source lines of code in a project.
 	pkgver = 2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.catb.org/esr/loccount/
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = asciidoc
