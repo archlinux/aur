@@ -1,0 +1,21 @@
+pkgbase = mkinitcpio-knockencryptssh
+	pkgdesc = Remotely unlock LUKS over SSH with keyfile support by port-knocking first
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/actra-development-oss/mkinitcpio-knockencryptssh
+	install = mkinitcpio-knockencryptssh.install
+	arch = any
+	license = MIT
+	depends = mkinitcpio
+	depends = knockd
+	depends = inotify-tools
+	depends = cryptsetup
+	depends = device-mapper
+	depends = gawk
+	depends = bash
+	backup = etc/knockencryptssh/knockd.conf
+	source = https://raw.githubusercontent.com/actra-development-oss/mkinitcpio-knockencryptssh/master/mkinitcpio-knockencryptssh.tar.gz
+	md5sums = fdc6570659e482210dae8978b11f0357
+
+pkgname = mkinitcpio-knockencryptssh
+
