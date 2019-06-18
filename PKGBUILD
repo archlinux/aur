@@ -14,7 +14,7 @@ conflicts=("${_pkgname}-git")
 
 install=${_pkgname}.install
 source=("${_pkgname}-${pkgver}::https://github.com/nan0s7/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('372f5dd5b1b0dd20d5483d89fdc380e9cdb51a4b69361712e7b9019c9f46e8575c3ba87221bcce3187244285523fd51a43420f492ea3c1285a42ee12d6263a59')
+sha512sums=('2d04a1313c00d4f691f24f55e0681ef02c49bd346257efa6f5c194483f0ab7611bc533b5b42c8364ca8a6be0804bcb725c8f384f5069dc4b547279df785225ec')
 
 
 package() {
@@ -25,5 +25,5 @@ package() {
 
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/${_pkgname}/README.md"
     install -Dm644 "USAGE.md" "$pkgdir/usr/share/doc/${_pkgname}/USAGE.md"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 "LICENCE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }
