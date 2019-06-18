@@ -6,23 +6,24 @@ _pkgname=bitbox
 _upkgname=BitBox
 pkgname=bitbox-wallet-app-appimage
 pkgver=4.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="BitBox cryptocurrency hardware wallet desktop app with Bitcoin, Segwit, Bech32 and native Litecoin support in an AppImage"
 arch=('x86_64')
 url="https://shiftcrypto.ch/"
 license=('Apache')
-depends=('hicolor-icon-theme' 'zlib')
+depends=('hicolor-icon-theme' 'zlib' 'bitbox-udev')
 makedepends=('p7zip')
 noextract=("$_pkgname-$pkgver.AppImage")
 options=('!strip')
 validpgpkeys=('2260E48288882C76AFAA319D67A2B160F74DB275')
 
 source=("https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$pkgver/$_upkgname-$pkgver-$arch.AppImage"{,.asc}
-	"bitbox.svg")
+	"bitbox.svg"
+	"https://raw.githubusercontent.com/digitalbitbox/bitbox-wallet-app/master/LICENSE")
 sha256sums=('fdade79676df16644f25d99de77f3107de495e8a94eab53e4e320c783d74b086'
             'SKIP'
-            'd6ca9430782d88b6bc80450ad8a2781c208aa5bda9f90e22a4659c9dc7975f25')
-
+            'd6ca9430782d88b6bc80450ad8a2781c208aa5bda9f90e22a4659c9dc7975f25'
+            '7b89151aa6b525d1b370d8224fe9191f1ad6a3b9e0beb02c745585b5e1dd02d5')
 prepare() {
     cd "${srcdir}"
     7z x "${srcdir}/$_upkgname-$pkgver-$CARCH.AppImage" $_pkgname.desktop
@@ -37,4 +38,5 @@ package() {
     install -Dm644 "$_pkgname.svg"                         "${pkgdir}/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
     mkdir "${pkgdir}/usr/bin"
     ln -s "/opt/$_upkgname/$_upkgname.AppImage" "${pkgdir}/usr/bin/$_pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
