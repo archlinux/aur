@@ -1,7 +1,7 @@
 pkgbase = python-mistralclient
 	pkgdesc = Mistral Client Library
-	pkgver = 3.8.0
-	pkgrel = 2
+	pkgver = 3.9.0
+	pkgrel = 1
 	url = https://docs.openstack.org/python-mistralclient/
 	arch = any
 	license = Apache
@@ -22,8 +22,8 @@ pkgbase = python-mistralclient
 	depends = python-requests
 	depends = python-six
 	depends = python-stevedore
-	source = https://github.com/openstack/python-mistralclient/archive/3.8.0.tar.gz
-	sha512sums = 1fabfc93d68651bde207122d74fc5b810670bed31d3e9beb52aa89b978ac23e141e0dfd2bb2f1561c64b3e3cca8a5311897efc35a9543faebffbeb4de2bc900e
+	source = https://github.com/openstack/python-mistralclient/archive/3.9.0.tar.gz
+	sha512sums = ced72eca05953b206d3eafc43cf08365ef6e495abffad3b73133f36ea6b7d60f74f49d49f96afbabed3ab38017618c36657245382e57d2064b67853cbd8c5a8b
 
 pkgname = python-mistralclient
 
