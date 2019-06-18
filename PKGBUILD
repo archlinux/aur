@@ -6,7 +6,7 @@
 
 _name=lmms
 pkgname=lmms-git
-pkgver=1.2.0.rc7.r9.g5c362e51a
+pkgver=1.2.0.r3.g3ada5b8a1
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio.'
 arch=('x86_64')
@@ -42,10 +42,16 @@ prepare() {
   # setting lib dir
   sed -e 's|lib64|lib|g' -i cmake/modules/DetectMachine.cmake
   # setting proper DESTDIR based install path for bash-completion
-  sed -e 's/\(${BASHCOMP_USER\)/\\$DESTDIR\1/g' -i cmake/modules/BashCompletion.cmake
+  #sed -e 's/\(${BASHCOMP_USER\)/\\$DESTDIR\1/g' -i cmake/modules/BashCompletion.cmake
+  #above commented beacuse of variable duplication (cmake module already puts $DESTDIR in shellfile,so replacing  ${BASHCOMP_USER_PATH} with $DESTDIR is reduntant)
+  sed -e 's/\(${BASHCOMP_USER\)/\1/g' -i cmake/modules/BashCompletion.cmake
 }
 
 build() {
+  #first we patch the generated destdir in shell
+  #echo "Patching dir for autocompletion."
+  #patch < fix_bash_completion_dir.patch
+  #echo "Done"
   cd "${_name}/build"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DWANT_QT5=ON \
