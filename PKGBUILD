@@ -2,8 +2,8 @@
 
 pkgbase=domjudge
 pkgname=('domjudge-domserver' 'domjudge-docs' 'domjudge-judgehost' 'domjudge-submit')
-pkgver=7.0.1
-pkgrel=2
+pkgver=7.0.2
+pkgrel=1
 pkgdesc="an automated judge system to run programming contests"
 arch=("$CARCH")
 url="http://www.domjudge.org/"
@@ -21,7 +21,7 @@ source=(
         domjudge-judgehostd.service
         domjudge-judgehostd@.service
         domjudge-cgroup.service)
-sha256sums=('e17029235fee301aa438cc3607855619f2d06fc7c42963451c665be45514c2cc'
+sha256sums=('0c311c18dc505fd5cbc231bc7740842058e7d1c2e8eb400995a55420b3740a57'
             'c0dfd31c0d19856df324057ffb4f81d50fe765c48026d419ceaea71864663532'
             '06faeeea3e3abda5a53a9ae150c6289cd49062c9a22129436640d11a9948eed5'
             '9ed301acc46bcc4de0ac38fc7fa9abe13912deb64ff549dd68ada54b9158f680'
@@ -74,7 +74,7 @@ package_domjudge-submit() {
 package_domjudge-domserver() {
     arch=('any')
     depends=('curl' 'php' 'php-gd' 'php-intl' 'unzip' 'zip' 'apache')
-    backup=('etc/domserver/apache.conf' 'etc/domserver/common-config.php' 'etc/domserver/dbpasswords.secret' 'etc/domserver/domjudge-fpm.conf' 'etc/domserver/domserver-config.php' 'etc/domserver/domserver-static.php' 'etc/domserver/import-forwardfeed.yaml' 'etc/domserver/initial_admin_password.secret' 'etc/domserver/nginx-conf' 'etc/domserver/nginx-conf-inner' 'etc/domserver/restapi.secret' 'etc/domserver/verdicts.php')
+    backup=('etc/domserver/apache.conf' 'etc/domserver/common-config.php' 'etc/domserver/dbpasswords.secret' 'etc/domserver/domjudge-fpm.conf' 'etc/domserver/domserver-config.php' 'etc/domserver/domserver-static.php' 'etc/domserver/import-forwardfeed.yaml' 'etc/domserver/initial_admin_password.secret' 'etc/domserver/nginx-conf' 'etc/domserver/nginx-conf-inner' 'etc/domserver/restapi.secret' 'etc/domserver/verdicts.php' 'var/lib/domserver/webapp/app/config/parameters.yml')
     install=domjudge-domserver.install
     cd "$srcdir/domjudge-$pkgver"
     make install-domserver DESTDIR="$pkgdir"/
@@ -82,6 +82,8 @@ package_domjudge-domserver() {
     echo "" > "$pkgdir/etc/domserver/initial_admin_password.secret"
     echo "" > "$pkgdir/etc/domserver/restapi.secret"
     echo "" > "$pkgdir/etc/domserver/dbpasswords.secret"
+    # install the password generating util for the php config
+    install -Dm 755 "$srcdir/domjudge-$pkgver/etc/gensymfonyparams" "$pkgdir/etc/domserver/gensymfonyparams"
     install -Dm 644 "$srcdir/domjudge-domserver.conf" "$pkgdir/usr/lib/sysusers.d/domjudge-domserver.conf"
 }
 

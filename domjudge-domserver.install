@@ -3,9 +3,13 @@ clear_cache(){
 }
 
 post_install(){
-	/etc/domserver/genadminpassword > /etc/domserver/initial_admin_password.secret
-	/etc/domserver/genrestapicredentials > /etc/domserver/restapi.secret
-	/etc/domserver/gendbpasswords > /etc/domserver/dbpasswords.secret
+    /etc/domserver/genadminpassword > /etc/domserver/initial_admin_password.secret
+    /etc/domserver/genrestapicredentials > /etc/domserver/restapi.secret
+    /etc/domserver/gendbpasswords > /etc/domserver/dbpasswords.secret
+    /etc/domserver/gensymfonyparams \
+        /var/lib/domserver/webapp/app/config/parameters.yml.dist \
+        /etc/domserver/dbpasswords.secret \
+        > /var/lib/domserver/webapp/app/config/parameters.yml
 }
 
 pre_remove(){
