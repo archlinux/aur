@@ -1,6 +1,6 @@
 # Maintainer: Remi Gacogne <rgacogne-arch at archlinux dot org>
 pkgname=powerdns-recursor-git
-pkgver=r13393.4461bb7c3
+pkgver=r17040.d26856a32
 pkgrel=1
 pkgdesc='Resolving DNS server'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 source=("${pkgname}::git+https://github.com/PowerDNS/pdns")
 sha512sums=('SKIP')
 makedepends=('boost' 'git' 'pandoc' 'python-virtualenv' 'ragel' 'systemd')
-depends=('boost-libs' 'libsodium' 'libsystemd' 'lua' 'openssl' 'protobuf' )
+depends=('boost-libs' 'fstrm' 'libsodium' 'libsystemd' 'luajit' 'net-snmp' 'openssl' 'protobuf' )
 provides=('powerdns-recursor')
 conflicts=('powerdns-recursor')
 backup=('etc/powerdns/recursor.conf')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "${pkgname}/pdns/recursordist"
-  ./bootstrap
+  autoreconf -i
   ./configure \
       --prefix=/usr \
       --sbindir=/usr/bin \
@@ -29,8 +29,9 @@ build() {
       --disable-silent-rules \
       --enable-reproducible \
       --enable-systemd \
-      --enable-protobuf \
-      --enable-libsodium
+      --with-protobuf \
+      --with-lua=luajit \
+      --with-libsodium
   make
 }
 
