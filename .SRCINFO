@@ -1,19 +1,19 @@
 pkgbase = libtool-git
 	pkgdesc = A generic library support script (git version)
-	pkgver = 2.4.6+42.gb88cebd5
+	pkgver = 2.4.6+44.gb9b44533
 	pkgrel = 1
 	url = http://www.gnu.org/software/libtool
 	arch = i686
 	arch = x86_64
 	groups = base-devel
 	license = GPL
-	makedepends = gcc=8.2.1+20180831
+	makedepends = gcc=9.1.0
 	depends = sh
 	depends = tar
 	depends = glibc
-	provides = libtool=2.4.6+42.gb88cebd5
-	provides = libltdl=2.4.6+42.gb88cebd5
-	provides = libtool-multilib=2.4.6+42.gb88cebd5
+	provides = libtool=2.4.6+44.gb9b44533
+	provides = libltdl=2.4.6+44.gb9b44533
+	provides = libtool-multilib=2.4.6+44.gb9b44533
 	conflicts = libtool
 	conflicts = libltdl
 	conflicts = libtool-multilib

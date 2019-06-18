@@ -5,9 +5,9 @@
 # NOTE: requires rebuilt with each new gcc version
 
 pkgname=libtool-git
-pkgver=2.4.6+42.gb88cebd5
+pkgver=2.4.6+44.gb9b44533
 pkgrel=1
-_gccver=8.2.1+20180831
+_gccver=9.1.0
 pkgdesc="A generic library support script (git version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/libtool"
