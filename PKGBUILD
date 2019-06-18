@@ -1,17 +1,18 @@
-# Maintainer: Benjamin Chretien <chretien+aur at lirmm dot fr>
-# Contributor: Sean Greenslade <zootboysean@gmail.com>
+# Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
 
-pkgdesc='Utilities for building arch packages for ROS stacks.'
-url="https://github.com/bchretien/arch-ros-stacks"
+pkgdesc='Utilities for building Arch packages for ROS stacks.'
+url="https://github.com/ros-melodic-arch/ros-build-tools-py3"
 
-pkgname='ros-build-tools'
-pkgver='0.2.0'
+pkgname='ros-build-tools-py3'
+pkgver='0.2.1'
 arch=('any')
 pkgrel=1
 license=('BSD')
 makedepends=()
-depends=()
-optdepends=('python2')
+optdepends=('python3')
+depends=('bash')
+provides=('ros-build-tools')
+conflicts=('ros-build-tools')
 
 pkg_destination_dir="/usr/share/ros-build-tools"
 
@@ -20,7 +21,6 @@ source=('fix-python-scripts.sh'
         'create-arch-ros-package-legacy.sh'
         'PKGBUILD.rostemplate'
         'get_stack_dependencies.py'
-        'generate_packages_makefile.py'
         'generate-python-patch.sh'
         'clear-ros-env.sh')
 
@@ -40,6 +40,5 @@ md5sums=('ed01573e0ecc0f7ca451d7e2849cc5ee'
          'ac82eca7efc9f0ff7e8b976a83692868'
          'f3378832c3ba121f7c9e17dc43c8b1d4'
          'd257f7f20384e894b0431ee61068aa96'
-         '563c9d1320a3a997db25d3087303dcfb'
          '8d6d7eb89a12c449497b209f1a06655b'
          '07f5253eb3f8cb5295c32026a20ab6c0')
