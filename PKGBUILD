@@ -1,8 +1,8 @@
 # Maintainer: kumen
 pkgname="stm32cubeide"
-pkgver=1.0.0
-_pkgver_ext="$pkgver"_2872_20190423_2022
-pkgrel=3
+pkgver=1.0.1
+_pkgver_ext="$pkgver"_3139_20190612_1256
+pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 depends=('java-runtime' 'jlink-software-and-documentation')
@@ -26,8 +26,8 @@ fi
 
 source=("local://en.st-stm32cubeide_${_pkgver_ext}_amd64.sh.zip"
 	$pkgname.desktop)
-sha256sums=('28929f7260e9be6350e4a45ce53c590f85a3096891dc80a4657c022c42a3949a'
-	'9f034695b98dd8aec59aec9f51e78a7daffd601aacf9a302b5f46de84c7ad9f1')
+sha256sums=('eaeafc730019681cea8d6be7368aba2ef43a722eabf52046aca7aec092112350'
+	'2bc15c3ccb6b3bed692fbc1caeb4d73efe7300f44193cff16bbe7768313904b6')
 
 prepare(){
 	cd "$srcdir"
@@ -79,3 +79,6 @@ package() {
 	mv ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.0.0.201904231240/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.0.0.201904231240/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template.old
 }
 
+#
+# makepkg --printsrcinfo > .SRCINFO
+#
