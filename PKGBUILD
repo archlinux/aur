@@ -11,7 +11,7 @@ pkgbase=linux-rt-lts       # Build kernel with a different name
 _pkgver=4.19.50
 _rtpatchver=rt22
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=('GPL2')
@@ -24,6 +24,7 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  bcache_fix.patch
   config         # the main kernel config file
   60-${pkgbase}.hook  # pacman hook for depmod
   90-${pkgbase}.hook  # pacman hook for initramfs regeneration
@@ -42,6 +43,7 @@ sha256sums=('a9987423918abd20ee68d6e9b14b7225eaca8a586bf75fb56c49f6e1e47ce01e'
             'fc842d2e108cd4f21c168de3e3e75f41e43e519dd4dffbc3230bed67e9d24b89'
             'SKIP'
             '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
+            'fe00e6f26f167b2041f4e60588cc60ab8169f26efb4a7c47ee7d60320e4ca27d'
             '203221ce5e835e55f87585340ca7e50b3a8eefbb58161570479a1cf88963e2b7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
