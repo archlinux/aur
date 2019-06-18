@@ -5,6 +5,7 @@ pkgbase = veles-git
 	url = https://codisec.com/veles
 	arch = x86_64
 	license = APLv2
+	makedepends = cmake
 	makedepends = clang
 	source = git+https://github.com/codilime/veles.git
 	source = fix_qt5_use_modules.patch
