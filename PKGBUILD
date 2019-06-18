@@ -1,10 +1,10 @@
-# Maintainer: Brendan Szymanski <brendan.szymanski1@gmail.com>
+# Maintainer: bscubed <bscubed@pm.me>
 
-_pkgname=citra
-pkgname=$_pkgname-canary-git
+_pkgname=citra-canary
+pkgname=$_pkgname-git
 pkgver=r7867.d9f100569
 pkgrel=1
-pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger written in C++"
+pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra-canary/tree/master"
 license=('GPL2')
