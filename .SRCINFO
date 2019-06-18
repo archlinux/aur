@@ -1,6 +1,6 @@
 pkgbase = linux-drm-next-git
 	pkgdesc = Linux kernel with DRM patches
-	pkgver = 5.2.840566.91c1ead6aee2
+	pkgver = 5.2.840803.2454fcea338a
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm
 	arch = x86_64
