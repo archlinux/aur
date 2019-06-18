@@ -1,20 +1,18 @@
 pkgbase = python-toolz
 	pkgdesc = A set of utility functions for iterators, functions, and dictionaries.
 	pkgver = 0.9.0
-	pkgrel = 4
-	url = https://github.com/pytoolz
+	pkgrel = 5
+	url = https://github.com/pytoolz/toolz
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = cython
-	makedepends = gcc
-	depends = python
-	source = https://pypi.org/packages/source/t/toolz/toolz-0.9.0.tar.gz
-	source = https://github.com/pytoolz/cytoolz/archive/0.9.0.tar.gz
-	sha256sums = 929f0a7ea7f61c178bd951bdae93920515d3fbdbafc8e6caf82d752b9b3b31c9
-	sha256sums = 177d6bcf76d60efeb5fa04c151e8c2e53a2679d380f1d316b0fd3a1cdffd75fb
+	makedepends = python2-setuptools
+	source = https://github.com/pytoolz/toolz/archive/0.9.0.tar.gz
+	sha256sums = 9173e5e9450ded2d1d177cae610e523228cf6c8c19e2f9d0394ca93284f1de43
 
 pkgname = python-toolz
+	depends = python
 
-pkgname = python-cytoolz
+pkgname = python2-toolz
+	depends = python2
 
