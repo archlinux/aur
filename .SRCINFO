@@ -4,7 +4,6 @@ pkgbase = zfs-linux-vfio-git
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = python
 	makedepends = linux-vfio-headers=5.1.4.arch1-1
 	makedepends = git
 	depends = kmod
