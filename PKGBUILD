@@ -4,8 +4,8 @@
 # Contributor: Yarema aka Knedlyk <yupadmin at gmail dot com>
 pkgname=vdr-channelscan
 pkgver=1.0.2
-_vdrapi=2.4.0
-pkgrel=1
+_vdrapi=2.4.1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Channel scanner for VDR"
 url="http://www.forum.free-x.de/wbb/index.php?page=Thread&threadID=1745"
