@@ -5,9 +5,8 @@ url='http://www.ros.org/'
 
 pkgname='ros-melodic-ros-environment'
 pkgver='1.2.1'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Apache License 2.0')
 
 ros_makedepends=(
@@ -27,9 +26,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros_environment-release-release-melodic-ros_environment-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_environment-release/archive/release/melodic/ros_environment/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2bb4a8d5947bd81fb1b6f7b1e9e822e69ccf99bec2cca7a68fd654017e69993f')
+_dir="ros_environment-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_environment/archive/${pkgver}.tar.gz")
+sha256sums=('7b27acb70791779a57b082ad6e9170adbaf0a19ebde7d0aebf705210a676d39d')
 
 build() {
 	# Use ROS environment variables.
