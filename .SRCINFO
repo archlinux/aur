@@ -1,6 +1,6 @@
 pkgbase = plecs-blockset
 	pkgdesc = PLECS integration into MATLAB/Simulink (license needed / 30-days free trial)
-	pkgver = v4.2.6
+	pkgver = v4.3.1
 	pkgrel = 1
 	url = http://www.plexim.com/de/products/plecs_blockset
 	arch = x86_64
@@ -13,15 +13,15 @@ pkgbase = plecs-blockset
 	source = plecs-blockset.desktop
 	source = plecs-blockset.png
 	source = plecs-blockset.sh
-	source = plecs-blockset-v4.2.6-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-blockset-4-2-6_linux64.tar.gz
+	source = plecs-blockset-v4.3.1-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-blockset-4-3-1_linux64.tar.gz
 	md5sums = 381be723bc77af74c5aca5f070d5925c
 	md5sums = 8ed62f1ce2de47c761c9244531dc154e
 	md5sums = fa37afb26f11e1dd331e886eb175a2ef
-	md5sums = c479fbcd1d3b2b8d7c2f6502daaff67e
+	md5sums = a0b6cccbd9014ecb2547b242ea5ac910
 	sha1sums = ad2dcabb5ef5c51d48809df6645d4c0b74aabe6e
 	sha1sums = e1d9007695acbf40ce55b47f3724c4de8b5ac270
 	sha1sums = fc44048d6defd161e850bb18bdc132b3dcee6242
-	sha1sums = 4f7de4c1680432536ee12b0940aa3df154a58af2
+	sha1sums = bdf8f2b437db87adc693d4d3007c85c2f370bd66
 
 pkgname = plecs-blockset
 
