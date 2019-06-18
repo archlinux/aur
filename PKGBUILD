@@ -2,7 +2,7 @@
 
 _pkgname=citra-canary
 pkgname=$_pkgname-git
-pkgver=r7867.d9f100569
+pkgver=r7868.526123f8e
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -34,6 +34,9 @@ build() {
 	export TRAVIS=true
 	export TRAVIS_REPO_SLUG=citra-emu/citra-canary
 	export TRAVIS_TAG=$(git describe --tags)
+	
+	# Fix for an issue some users are facing when compiling with GCC
+	CXXFLAGS+=" -DFMT_USE_USER_DEFINED_LITERALS=0"
 	
 	mkdir -p build
 	cd build
