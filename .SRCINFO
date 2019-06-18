@@ -2,6 +2,7 @@ pkgbase = unf
 	pkgdesc = UNixize Filename -- replace annoying anti-unix characters in filenames
 	pkgver = 0.1.1
 	pkgrel = 1
+	url = https://github.com/io12/unf
 	arch = i686
 	arch = x86_64
 	arch = armv6h
