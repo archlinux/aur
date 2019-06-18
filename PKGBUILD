@@ -8,15 +8,15 @@ _pkgver="1_8f"
 
 pkgname=vasm
 pkgver=1.8f
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable and retargetable 6502 6800 arm c16x jagrisc m68k ppc test tr3200 vidcore x86 z80 assembler."
 arch=('i686' 'x86_64')
 url="http://sun.hasenbraten.de/vasm/"
 license=('custom')
 depends=()
-#source=(http://server.owl.de/~frank/tags/${pkgname}${_pkgver}.tar.gz)
-source=(http://sun.hasenbraten.de/vasm/release/vasm.tar.gz)  # ${pkgname}${_pkgver}.tar.gz
-md5sums=('cd93d72c36600672d1c3fe039bafbbbf')
+#source=(http://sun.hasenbraten.de/vasm/release/vasm.tar.gz) # latest unversioned source url
+source=(http://server.owl.de/~frank/tags/${pkgname}${_pkgver}.tar.gz)
+md5sums=('0de568efff19670838dbe9f1da24c28d')
 
 
 CPU_LIST="6502 6800 arm c16x jagrisc m68k ppc test tr3200 vidcore x86 z80"
