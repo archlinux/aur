@@ -5,7 +5,7 @@
 pkgname=st-patched-git
 _pkgname=st
 pkgver=0.8.2.r13.gcaa1d8f
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple virtual terminal emulator for X with patches and easy configurable colorscheme'
 arch=('i686' 'x86_64')
 url='https://st.suckless.org/'
@@ -40,7 +40,7 @@ md5sums=('SKIP'
          '11e28f38988de5141bfdf0da8cbfde8a'
          'b5476e67b47668833412295d76f31bab'
          'ea6926266fc2eb9bc86478d90a9096e3'
-         '8467590de9ba28b79f5bbe74b17ca5a5')
+         '8f858ab6c8b80c983e0315f4ba6d5dbc')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
