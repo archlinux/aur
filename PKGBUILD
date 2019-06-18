@@ -1,29 +1,38 @@
-# Maintainer: Milian Reichardt <mreichardt95@gmail.com>
-pkgname=cpuminer-multi-git
-pkgver=v1.3.1.multi.r7.g7495361
+# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: Milian Reichardt <mreichardt95@gmail.com>
+
+_pkgname=cpuminer-multi
+pkgname=$_pkgname-git
+pkgver=1.3.5.r20.gc207355
+pkgrel=4
+pkgdesc='Multi-algo CPUMiner & Reference Cryptonote Miner (JSON-RPC 2.0) - git version'
+arch=('x86_64')
+url="https://github.com/tpruvot/$_pkgname"
+license=('GPL')
+depends=('curl' 'jansson' 'openssl')
+makedepends=('git')
+provides=('cpuminer' 'cpuminer-multi')
+conflicts=('cpuminer')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "cpuminer-multi"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$_pkgname"
+
+  git describe --long | sed 's/^v//;s/-multi-\([0-9]*-g[0-9A-Fa-f]*\)$/-r\1/;s/-/./g'
 }
-pkgrel=3
-pkgdesc="Multi-algo CPUMiner & Reference Cryptonote Miner (JSON-RPC 2.0) - GIT checkout"
-arch=('i686' 'x86_64')
-url="https://github.com/tpruvot/cpuminer-multi/"
-license=('GPLv2')
-replaces=('cpuminer-multi')
-depends=('curl' 'jansson')
-source=("git+https://github.com/tpruvot/cpuminer-multi.git")
-md5sums=('SKIP')
 
 build() {
-	cd "$srcdir/cpuminer-multi/"
-	./autogen.sh
-	./configure --with-crypto --with-curl --bindir=/usr/bin --libdir=/usr/lib --mandir=/usr/share/man
-	make
+  cd "$srcdir/$_pkgname"
+
+  CFLAGS+=' -Wa,--noexecstack'
+  ./autogen.sh
+  ./configure --prefix=/usr --with-crypto --with-curl
+  make
 }
 
 package() {
-	cd "$srcdir/cpuminer-multi/"
-	make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$_pkgname"
+
+  make DESTDIR="$pkgdir/" install
 }
