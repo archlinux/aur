@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-neutrinoepg
 pkgver=0.3.6
-_vdrapi=2.4.0
-pkgrel=16
+_vdrapi=2.4.1
+pkgrel=17
 pkgdesc="Neat EPG-Viewer for VDR"
 url="http://projects.vdr-developer.org/projects/plg-neutrinoepg"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
