@@ -1,7 +1,7 @@
 pkgbase = jsonnet
 	pkgdesc = The data templating language
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jsonnet.org/
 	arch = x86_64
 	license = Apache

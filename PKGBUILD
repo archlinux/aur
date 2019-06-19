@@ -1,7 +1,7 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=jsonnet
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The data templating language'
 arch=('x86_64')
 url='https://jsonnet.org/'
@@ -32,6 +32,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/lib" "$pkgdir/usr/include"
 
   install -m755 jsonnet "$pkgdir/usr/bin/jsonnet"
+  install -m755 jsonnetfmt "$pkgdir/usr/bin/jsonnetfmt"
   install -m755 libjsonnet.so "$pkgdir/usr/lib/libjsonnet.so"
   install -m755 libjsonnet++.so "$pkgdir/usr/lib/libjsonnet++.so"
   install -m644 include/libjsonnet.h "$pkgdir/usr/include/libjsonnet.h"
