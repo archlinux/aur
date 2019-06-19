@@ -1,0 +1,13 @@
+pkgbase = cppi
+	pkgdesc = GNU Cppi indents C preprocessor directives to reflect their nesting, among other regularizations.
+	pkgver = 1.18
+	pkgrel = 1
+	url = https://www.gnu.org/software/cppi/
+	arch = any
+	license = GPL3
+	depends = gawk
+	source = https://ftp.gnu.org/gnu/cppi/cppi-1.18.tar.xz
+	md5sums = 720f4e442287283a02979ba43a44366e
+
+pkgname = cppi
+
