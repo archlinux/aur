@@ -1,0 +1,16 @@
+pkgbase = xontrib-prompt-vi-mode-git
+	pkgdesc = vi-mode status formatter for xonsh prompt
+	pkgver = r35.ef05c35
+	pkgrel = 1
+	url = https://github.com/t184256/xontrib-prompt-vi-mode
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python3
+	provides = xontrib-prompt-vi-mode
+	source = git+https://github.com/t184256/xontrib-prompt-vi-mode
+	sha256sums = SKIP
+
+pkgname = xontrib-prompt-vi-mode-git
+
