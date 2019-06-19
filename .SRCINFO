@@ -1,7 +1,7 @@
 pkgbase = noto-fonts-sc
 	pkgdesc = Noto CJK-SC fonts for Simplified Chinese
 	pkgver = 2.001
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://www.google.com/get/noto/help/cjk/
 	install = noto-fonts-sc.install
@@ -11,8 +11,10 @@ pkgbase = noto-fonts-sc
 	depends = xorg-font-utils
 	source = https://github.com/googlefonts/noto-cjk/raw/NotoSansV2.001/NotoSansCJKsc-Regular.otf
 	source = https://github.com/googlefonts/noto-cjk/raw/NotoSansV2.001/NotoSansMonoCJKsc-Regular.otf
+	source = https://github.com/googlefonts/noto-cjk/raw/NotoSansV2.001/LICENSE
 	sha256sums = ee85a1e4126e287a373625cce025b3235cdebf96f71b78f5ef165893c6f8c99f
 	sha256sums = 1be3c018da41e6545090882625457c9a5d01a03a9115a6be49820d154585989a
+	sha256sums = 6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2
 
 pkgname = noto-fonts-sc
 
