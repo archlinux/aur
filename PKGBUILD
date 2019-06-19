@@ -1,5 +1,5 @@
 pkgname="google-calendar-nativefier"
-pkgver="0.2"
+pkgver="0.3"
 pkgrel="1"
 pkgdesc="The Google Calendar app helps you spend less time managing your schedule and more time enjoying it."
 arch=("x86_64")
@@ -31,7 +31,7 @@ package() {
   cp -rL "$srcdir/$instname-linux-"* "$pkgdir/opt/$pkgname"
 
   ln -sf "/opt/$pkgname/$instname" "$pkgdir/usr/bin/$instname"
-  ln -sf "/opt/$pkgname/resources/app/icon.png" "$pkgdir/usr/share/pixmaps/$instname.png"
+  ln -sf "/opt/$pkgname/resources/app/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
   chmod 777 "$pkgdir/opt/$pkgname/resources/app/nativefier.json"
 }

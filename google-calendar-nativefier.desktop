@@ -3,6 +3,6 @@ Type=Application
 Name=Google Calendar
 Comment=The Google Calendar app helps you spend less time managing your schedule and more time enjoying it.
 Exec=google-calendar
-Icon=google-calendar
+Icon=google-calendar-nativefier
 Terminal=false
 Categories=Productivity;Calendar;Google;Nativefier;
