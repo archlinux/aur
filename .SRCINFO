@@ -1,15 +1,16 @@
 pkgbase = style50
-	pkgdesc = Style check tool for CS50 / CS50x (Harvard College's Introduction to Computer Science I)
-	pkgver = 2.1.4
+	pkgdesc = This is style50, with which code can be checked against the CS50 style guide
+	pkgver = 2.6.4
 	pkgrel = 1
-	url = https://manual.cs50.net/style/
+	url = https://github.com/cs50/style50
 	arch = any
-	license = CCPL
-	depends = java-runtime
-	source = http://mirror.cs50.net/appliance50/2015/debs/dists/trusty/main/binary-i386/style50_2.1.4-1_i386.deb
-	source = style50
-	md5sums = cc705554b5a1a51951a19fa1696ed2e6
-	md5sums = 1faa45e25def1e194cf8c1e365c03e73
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	optdepends = astyle: To style check C, C++, or Java code
+	source = https://files.pythonhosted.org/packages/source/s/style50/style50-2.6.4.tar.gz
+	sha256sums = f97c7c46669030ff3da99bf17339b05f957469251ab92e34281cbd24753f22f0
 
 pkgname = style50
+	depends = python
 

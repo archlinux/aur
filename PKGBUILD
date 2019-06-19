@@ -1,22 +1,32 @@
-# Maintainer: Peter Lamby <peterlamby@web.de>
-pkgname=style50
-pkgver=2.1.4
-pkgrel=1
-pkgdesc="Style check tool for CS50 / CS50x (Harvard College's Introduction to Computer Science I)"
-arch=('any')
-url="https://manual.cs50.net/style/"
-license=('CCPL')
-source=("http://mirror.cs50.net/appliance50/2015/debs/dists/trusty/main/binary-i386/style50_2.1.4-1_i386.deb"
-        "style50")
-depends=('java-runtime')
-md5sums=('cc705554b5a1a51951a19fa1696ed2e6'
-         '1faa45e25def1e194cf8c1e365c03e73')
+# Generated using pip2pkgbuild - https://github.com/wenLiangcan/pip2pkgbuild
+# Maintainer: MayorBender <7480812+kingy9000@users.noreply.github.com>
+# Contributor: Peter Lamby <peterlamby@web.de>
 
-prepare() {
-	ar p style50_"$pkgver"-"$pkgrel"_i386.deb data.tar.xz | unxz | tar -x -C "$srcdir"
+pkgname=style50
+_module='style50' # PyPi specific
+pkgver=2.6.4
+pkgrel=1
+pkgdesc="This is style50, with which code can be checked against the CS50 style guide"
+arch=('any')
+url="https://github.com/cs50/style50"
+license=('GPL')
+depends=('python')
+makedepends=('python-setuptools')
+optdepends=('astyle: To style check C, C++, or Java code')
+source=(
+	"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz"
+)
+sha256sums=(
+	'8bb68f0be72660411976ab1742c759845f981eefe0f21edb1533882a1833c8a0'
+)
+
+build() {
+	cd "${srcdir}/${_module}-${pkgver}"
+	python setup.py build
 }
 
 package() {
-	install -Dm755 "$srcdir"/style50 "$pkgdir"/usr/bin/style50
-	install -Dm655 "$srcdir"/opt/style50/opt/style50.jar "$pkgdir"/opt/style50/style50.jar
+	depends+=()
+	cd "${srcdir}/${_module}-${pkgver}"
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
