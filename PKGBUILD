@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-virtualkeyboard
-_qtver=5.12.4
+_qtver=5.13.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('33ac0356f916995fe5a91582e12b4c4f730c705808ea3c14e75c6e350e8131e6')
+sha256sums=('91483feb79c648ec8820a238ee2a12cf1aa117e8f3a5b06d069450e0c9ad42e9')
 
 prepare() {
   mkdir -p build
