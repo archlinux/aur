@@ -1,7 +1,7 @@
 pkgbase = nvidia-390xx-ck
 	pkgdesc = NVIDIA drivers for linux-ck, 390xx legacy branch.
 	pkgver = 390.116
-	pkgrel = 30
+	pkgrel = 31
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
