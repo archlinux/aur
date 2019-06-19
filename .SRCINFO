@@ -1,0 +1,14 @@
+pkgbase = fspm
+	pkgdesc = The FinlayScript6 Package Manager
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = java-runtime
+	depends = bash
+	source = git://github.com/thatmadhacker/FSPM.git
+	md5sums = SKIP
+
+pkgname = fspm
+
