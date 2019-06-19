@@ -1,7 +1,7 @@
 pkgbase = jsonnet-bundler-bin
 	pkgdesc = jsonnet package manager
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jsonnet-bundler/jsonnet-bundler
 	arch = x86_64
 	license = Apache
