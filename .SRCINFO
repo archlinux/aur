@@ -1,0 +1,15 @@
+pkgbase = obmenu
+	pkgdesc = Openbox menu editor.
+	pkgver = 1.0
+	pkgrel = 12
+	url = http://obmenu.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = pygtk
+	depends = openbox
+	source = https://downloads.sourceforge.net/obmenu/obmenu-1.0.tar.gz
+	md5sums = 710036a5edc9886d6d563ce46c747432
+
+pkgname = obmenu
+
