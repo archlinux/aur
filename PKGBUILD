@@ -3,12 +3,12 @@
 
 pkgname=lmod
 pkgver=8.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Environment modules system based on Lua that handles MODULEPATH hierarchical problem. Supports also legacy TCL modules"
 arch=('x86_64')
 url="https://github.com/TACC/Lmod"
 license=('custom')
-depends=('bash' 'lua-filesystem' 'lua-posix' 'tcl')
+depends=('bash' 'lua-filesystem' 'lua-posix' 'procps-ng' 'tcl')
 optdepends=('tcsh: supported shell'
             'zsh: supported shell')
 conflicts=('lmod-git' 'env-modules-tcl')
