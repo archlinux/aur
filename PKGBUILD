@@ -1,38 +1,34 @@
-pkgname="google-calendar-nativefier"
-pkgver="0.5"
-pkgrel="1"
-pkgdesc="The Google Calendar app helps you spend less time managing your schedule and more time enjoying it."
-arch=("x86_64")
-license=("MIT")
-url="https://calendar.google.com/"
-source=("${pkgname}.png" "${pkgname}.desktop")
-makedepends=("nodejs" "npm" "nodejs-nativefier")
-sha256sums=("SKIP" "SKIP")
+pkgname=google-calendar-nativefier
+pkgver=0.6
+pkgrel=1
+pkgdesc="Electron wrapper for the Google Calendar web application"
+arch=(x86_64)
+license=(MIT)
+url=https://calendar.google.com
+source=($pkgname.png
+        $pkgname.desktop)
+makedepends=(nodejs nodejs-nativefier npm)
+sha256sums=('f1bb8a24f4d009a4ae31a22bedcc9c54224542288a33cd301fa1d1348cbbac09'
+            '05512fbf7028c19cb766ce7c3dff05975670cc2a4bc187928504723b3fee83d9')
 
-instname="google-calendar"
+_instname=google-calendar
 
 build() {
-    cd "${srcdir}"
-
     nativefier "https://calendar.google.com/" \
-      --icon "${pkgname}.png" \
+      --icon $pkgname.png \
       --maximize \
       --internal-urls "(accounts|calendar)\.google" \
       --name "Google Calendar"
 }
 
 package() {
-  install -dm644 "$pkgdir/opt/"
-  install -dm644 "$pkgdir/usr/bin"
-  install -dm644 "$pkgdir/usr/share/pixmaps"
-  install -dm644 "$pkgdir/usr/share/applications"
+    install -d "$pkgdir"/opt "$pkgdir"/usr/{bin,share/pixmaps}
+    install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$_instname.desktop
 
-  install -m644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$instname.desktop"
-  cp -rL "$srcdir/$instname-linux-"* "$pkgdir/opt/$pkgname"
+    cp -rL $_instname-linux-* "$pkgdir"/opt/$pkgname
+    ln -sf /opt/$pkgname/$_instname "$pkgdir"/usr/bin/$_instname
+    ln -sf /opt/$pkgname/resources/app/icon.png "$pkgdir"/usr/share/pixmaps/$_instname.png
 
-  ln -sf "/opt/$pkgname/$instname" "$pkgdir/usr/bin/$instname"
-  ln -sf "/opt/$pkgname/resources/app/icon.png" "$pkgdir/usr/share/pixmaps/$instname.png"
-
-  chmod 777 "$pkgdir/opt/$pkgname/resources/app/nativefier.json"
+    chmod 666 "$pkgdir"/opt/$pkgname/resources/app/nativefier.json
 }
 

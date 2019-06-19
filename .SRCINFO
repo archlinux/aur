@@ -1,17 +1,17 @@
 pkgbase = google-calendar-nativefier
-	pkgdesc = The Google Calendar app helps you spend less time managing your schedule and more time enjoying it.
-	pkgver = 0.5
+	pkgdesc = Electron wrapper for the Google Calendar web application
+	pkgver = 0.6
 	pkgrel = 1
-	url = https://calendar.google.com/
+	url = https://calendar.google.com
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs
-	makedepends = npm
 	makedepends = nodejs-nativefier
+	makedepends = npm
 	source = google-calendar-nativefier.png
 	source = google-calendar-nativefier.desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = f1bb8a24f4d009a4ae31a22bedcc9c54224542288a33cd301fa1d1348cbbac09
+	sha256sums = 05512fbf7028c19cb766ce7c3dff05975670cc2a4bc187928504723b3fee83d9
 
 pkgname = google-calendar-nativefier
 
