@@ -4,7 +4,7 @@
 
 pkgname=netradiant-git
 pkgver=r1875.9cd54a17
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GTKRadiant fork) - git version'
 url='https://gitlab.com/xonotic/netradiant'
@@ -12,7 +12,7 @@ license=('GPL' 'BSD' 'LGPL')
 arch=('i686' 'x86_64')
 depends=('gtk2' 'gtkglext' 'minizip' 'libjpeg-turbo' 'libwebp')
 makedepends=('git' 'svn' 'wget' 'unzip' 'cmake' 'make')
-provides=('netradiant' 'q3map2' 'q3data')
+provides=('netradiant' 'q3map2' 'q3data' 'q2map' 'qdata3' 'h2data')
 source=("${pkgname}::git://git.xonotic.org/xonotic/netradiant.git")
 sha256sums=('SKIP')
 
@@ -46,7 +46,7 @@ package() {
 
     cmake --build build -- install
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/netradiant-git/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Map mime type doesn't work and produces a pacman warning
     rm -r ${pkgdir}/usr/share/mime/
