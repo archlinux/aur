@@ -1,0 +1,16 @@
+pkgbase = xontrib-z-git
+	pkgdesc = Port of z to xonsh. Tracks your most used directories, based on 'frecency'.
+	pkgver = x
+	pkgrel = 1
+	url = https://github.com/astronouth7303/xontrib-z
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python3
+	provides = xontrib-z
+	source = git+https://github.com/astronouth7303/xontrib-z
+	sha256sums = SKIP
+
+pkgname = xontrib-z-git
+
