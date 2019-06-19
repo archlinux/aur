@@ -1,5 +1,5 @@
 pkgname=picard-git
-pkgver=2.0.5dev1.r304.gfa693041
+pkgver=2.1.3.r358.g69400627
 pkgrel=1
 pkgdesc="MusicBrainz tagging application"
 arch=('i686' 'x86_64')
@@ -8,7 +8,8 @@ license=('GPL')
 depends=('python-pyqt5' 'python-mutagen')
 optdepends=('python-discid: CD-Lookup feature'
             'chromaprint: AcoustID integration'
-            'qt5-translations: Translated Qt5 components')
+            'qt5-translations: Translated Qt5 components'
+            'qt5-multimedia: Built‐in media player')
 makedepends=('git')
 provides=("picard=$pkgver")
 conflicts=('picard' 'picard-qt' 'picard-bzr')
