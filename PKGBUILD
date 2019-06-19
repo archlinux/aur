@@ -1,7 +1,7 @@
 # Maintainer: HampusM (hampusm.business.mail@gmail.com)
 pkgname=tic-tac-toe-term
-pkgver=1.0
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc="A easy way for you to play Tic-Tac-Toe in any terminal."
 arch=(any)
 url="https://github.com/Hampusm/$pkgname"
