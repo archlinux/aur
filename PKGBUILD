@@ -6,7 +6,7 @@
 pkgname=jetty
 pkgver=9.4.19
 _timestamp=v20190610
-pkgrel=1
+pkgrel=2
 pkgdesc="Jetty is a pure Java-based HTTP server and Java Servlet container"
 arch=('any')
 url="http://www.eclipse.org/jetty/"
@@ -18,12 +18,16 @@ _dluri="http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/$pkgv
 source=("$_distname.tar.gz::$_dluri"
 	jetty.default
 	jetty.logrotate
-	jetty.service)
+	jetty.service
+        jetty.sysusers
+        jetty.tmpfiles)
 sha256sums=('9a8b3dab90a33598010eb6a4be5328930a5b839806d0b2db557f027ad8d784a3'
             'e5b425043a379bde57fd37c498ff8efb822325b7606b149cc09a53737ab4297d'
             'da0402440e0a3b66e55387700b2c178c294dc65cc4a7bd079c622343845adecb'
-            'b27ef0342c3b22fbf1e3e7d104e23670b53eab9b648c1882cf295bd82ccadc66')
-install=$pkgname.install
+            'b27ef0342c3b22fbf1e3e7d104e23670b53eab9b648c1882cf295bd82ccadc66'
+            '5664891275f3e489f85efd85b9740e36265f5ed3cf9512d245c500bdc31b568a'
+            'b421e99f731635a68e59dabab803d1bbaecf11d338f17837cf0bb37c6bf32e6e')
+
 
 package() {
 	cd "$srcdir/$_distname"
@@ -49,6 +53,8 @@ package() {
 	install -Dm644 "$srcdir/jetty.default" "$pkgdir/etc/default/jetty"
 	install -Dm644 "$srcdir/jetty.logrotate" "$pkgdir/etc/logrotate.d/jetty"
 	install -Dm644 "$srcdir/jetty.service" "$pkgdir/usr/lib/systemd/system/jetty.service"
+	install -Dm644 "$srcdir/jetty.sysusers" "$pkgdir/usr/lib/sysusers.d/jetty.conf"
+	install -Dm644 "$srcdir/jetty.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/jetty.conf"
 
 	sed -i 's|su - |su -s /bin/sh - |' "$pkgdir/usr/share/jetty/bin/jetty.sh"
 

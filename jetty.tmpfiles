@@ -1,0 +1,4 @@
+d /usr/share/jetty       0755 jetty jetty
+d /var/log/jetty         0755 jetty jetty
+d /var/lib/jetty/webapps 0755 jetty jetty
+
