@@ -6,13 +6,13 @@
 
 _pkgname=fcitx5-chewing
 pkgname=$_pkgname-git
-pkgver=r102.3960e7b
+pkgver=r103.8a8299d
 pkgrel=2
 pkgdesc="Fcitx5 addon for Chewing"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/fcitx/fcitx5-chewing"
 license=('GPL')
-depends=('libchewing-git' 'fcitx5-git' 'hicolor-icon-theme')
+depends=('libchewing-git' 'fcitx5' 'hicolor-icon-theme')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 makedepends=('extra-cmake-modules' 'git')
