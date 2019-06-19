@@ -1,2 +1,5 @@
 *.gz
 *.xz
+tags
+src
+pkg

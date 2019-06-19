@@ -1,0 +1,12 @@
+diff --unified --recursive --text ./package.orig/gscreenshot-2.10.1/setup.py ./package.new/gscreenshot-2.10.1/setup.py
+--- ./setup.py	2019-06-19 19:16:45.618375805 -0300
++++ ./setup.py	2019-06-19 19:14:19.723356083 -0300
+@@ -5,7 +5,7 @@
+ import os
+ 
+ install_requires = [
+-    'pillow',
++    'pillow-simd',
+     ]
+ 
+ test_requires = [

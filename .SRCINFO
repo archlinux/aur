@@ -1,5 +1,5 @@
-pkgbase = gscreenshot
-	pkgdesc = A simple screenshot tool supporting multiple backends
+pkgbase = gscreenshot-simd
+	pkgdesc = A simple screenshot tool supporting multiple backends (fork using python-pillow-simd)
 	pkgver = 2.10.1
 	pkgrel = 1
 	url = https://github.com/thenaterhood/gscreenshot
@@ -7,7 +7,7 @@ pkgbase = gscreenshot
 	license = GPL
 	makedepends = fakeroot
 	depends = python
-	depends = python-pillow
+	depends = python-pillow-simd
 	depends = scrot
 	depends = pygtk
 	depends = gtk3
@@ -16,8 +16,12 @@ pkgbase = gscreenshot
 	optdepends = slop: improved region and window selection
 	optdepends = xclip: command line clipboard support
 	optdepends = xdg-utils: for opening screenshot files from gscreenshot
+	provides = gscreenshot
+	conflicts = gscreenshot
 	source = https://github.com/thenaterhood/gscreenshot/archive/v2.10.1.tar.gz
+	source = setup.py.patch
 	sha256sums = 0cbc20700cc02854624b4745e87fe8f68f48b5b8b629b169df02514e7149d6b3
+	sha256sums = 5f9fb71c32a76f2e93c3403c7f6c081ed8ee0dd3cf1b81eeeebc85ec926a2e32
 
-pkgname = gscreenshot
+pkgname = gscreenshot-simd
 
