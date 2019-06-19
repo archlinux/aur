@@ -3,7 +3,7 @@
 
 pkgname=brutal-doom
 pkgver=21
-pkgrel=1
+pkgrel=2
 pkgdesc="Brutal Doom via the GzDoom engine."
 arch=(any)
 url="http://www.moddb.com/mods/brutal-doom"
@@ -13,7 +13,7 @@ optdepends=('doomseeker')
 makedepends=('git')
 source=(
 		'http://doomshack.org/uploads/brutalv21.7z'
-		'https://doomshack.org/uploads/DoomMetalVol4.zip'
+		'https://static.allfearthesentinel.net/wads/doommetalvol5.wad'
 		'brutal-doom'
 		'gzdoom.ini'
 		'brutal-doom.png'
@@ -22,7 +22,7 @@ source=(
 noextract=('brutalv21.pk3')
 sha1sums=(
 			'3260fccd428d9b8e9327e36978f80dc48fe31000'
-			'5bad2150ea3c2b0368371d6c26b12ca15c25d4e4'
+			'de01ec06563a442ed04649f5062cd1b61cfc1917'
 			'0255b97eb04619e43d65774eaccc257863ecdb36'
 			'8207776f36fd46a0ee85b72b047e79484e2079f3'
 			'0259b3c20a2749f28c8add5cd55755c51bd2cef6'
@@ -33,7 +33,7 @@ package() {
     cd $srcdir
 
 	install -Dm644 "brutalv21.pk3" "$pkgdir/usr/share/games/$pkgname/brutal-doom.pk3"
-	install -m644 "DoomMetalVol4.wad" "$pkgdir/usr/share/games/$pkgname/doom-metal.wad"
+	install -m644 "doommetalvol5.wad" "$pkgdir/usr/share/games/$pkgname/doom-metal.wad"
     install -m644 "gzdoom.ini" "$pkgdir/usr/share/games/$pkgname/gzdoom.ini"
 
 	install -Dm644 "BRUTAL DOOM MANUAL.rtf" "$pkgdir/usr/share/doc/$pkgname/manual.rtf"
