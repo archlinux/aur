@@ -42,7 +42,7 @@ prepare() {
 
   # Geometric (OpenGL-less) picking
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
-  git cherry-pick -n e702cbc7
+  git cherry-pick -n 00b4dace
 
   # clutter/stage-cogl: Don't skip over the next frame
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/520
@@ -50,7 +50,7 @@ prepare() {
 
   # Consolidate all frame throttling into clutter-stage-cogl
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/363
-  git cherry-pick -n 912a9ecf^..e415cc53
+  git cherry-pick -n 912a9ecf^..1dbf25af
 
   # clutter/stage-cogl: Reschedule update on present
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/281
