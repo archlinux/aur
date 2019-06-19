@@ -49,9 +49,21 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/96
   git cherry-pick -n 39f10eaa^..6e704ee1
 
-  # Mild performance improvements on style changes
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/524
-  # git cherry-pick -n fb04dafb^..94995e9c
+  # Refine the app menu a bit
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/406
+  git cherry-pick -n ffaca005^..56a36165
+
+  # iconGrid: Hide children outside allocation loop
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/566
+  git cherry-pick -n 520cea93
+
+  # appDisp allocation cycle fix
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/581
+  git cherry-pick -n c1c45f95
+
+  # iconGrid: Fix animation glitch
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/582
+  git cherry-pick -n b4797956
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
