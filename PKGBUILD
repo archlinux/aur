@@ -24,7 +24,7 @@ backup=('etc/webapps/mediagoblin/paste_local.ini' 'etc/webapps/mediagoblin/media
 install=mediagoblin.install
 makedepends=('git' 'automake')
 source=(
-  'mediagoblin::git://git.savannah.gnu.org/mediagoblin.git#branch=stable'
+  'mediagoblin::git+https://git.savannah.gnu.org/git/mediagoblin.git#branch=stable'
   'mediagoblin-paster.service'
   'mediagoblin-celeryd.service'
   'paste_local.ini'
