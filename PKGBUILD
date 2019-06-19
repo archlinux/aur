@@ -8,7 +8,7 @@ pkgdesc="UNixize Filename -- replace annoying anti-unix characters in filenames"
 license=('MIT')
 url="https://github.com/io12/unf"
 source=("https://github.com/io12/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('7655cdb6697e477a2992e301632b7d56')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
