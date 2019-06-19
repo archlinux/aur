@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.1.11-arch1
+_srcver=5.1.12-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -82,13 +82,12 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.1/5.1-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
-  0003-bcache-fix-stack-corruption-by-PRECEDING_KEY.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('11fd93207290272389ad284b8b042041d088fbee0ed5798e933bf8e91697d219'
+sha256sums=('7159819d298a84acefeaedfd155be20477b92fda194a5f51547a2f1abffd79ab'
             'SKIP'
             'e11dfcd89ff21c31c7f01d567c0629d079f9d86f21a10694a08a4cf8f16a5f60'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
