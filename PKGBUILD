@@ -1,15 +1,15 @@
 # Maintainer: David Birks <david@tellus.space>
 # Contributor: David Stark <david@starkers.org>
 
-pkgver=0.99
+pkgver=0.100
 pkgrel=1
 pkgname=telepresence
 pkgdesc='Local development against a remote Kubernetes or OpenShift cluster'
 arch=('x86_64')
 license=('Apache')
 url='https://github.com/telepresenceio/telepresence'
-source=("https://github.com/telepresenceio/telepresence/archive/${pkgver}.tar.gz")
-sha256sums=('c4a44fa70437290437f76077c494507b1723c38512a8827996095545ba9773a3')
+source=("$pkgname-$pkgver::https://github.com/telepresenceio/telepresence/archive/${pkgver}.tar.gz")
+sha256sums=('e7a26b60100b88fd44cbf9d1d0cf7d871892256575b42bde9ff154b32f0b009f')
 makedepends=('git')
 depends=('conntrack-tools' 'fuse2' 'socat' 'sshfs' 'torsocks')
 
