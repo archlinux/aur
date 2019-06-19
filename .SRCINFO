@@ -1,15 +1,15 @@
 pkgbase = jump-bin
 	pkgdesc = Navigate faster by learning your habits
-	pkgver = 0.22.0
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/gsamokovarov/jump
 	install = jump.install
 	arch = x86_64
 	license = MIT
 	provides = jump
-	noextract = jump-bin-0.22.0.deb
-	source = jump-bin-0.22.0.deb::https://github.com/gsamokovarov/jump/releases/download/v0.22.0/jump_0.22.0_amd64.deb
-	md5sums = 5062c561d03c10754edd802f6e7a65d6
+	noextract = jump-bin-0.23.0.deb
+	source = jump-bin-0.23.0.deb::https://github.com/gsamokovarov/jump/releases/download/v0.23.0/jump_0.23.0_amd64.deb
+	md5sums = 4512951ae52ec14a6b5584ea5923d7a5
 
 pkgname = jump-bin
 
