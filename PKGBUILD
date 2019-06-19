@@ -1,4 +1,4 @@
-# Maintainer: Eduardo Escobar <eduardoeae(at)gmail.com>
+# Maintainer: Eduardo Escobar <eduardoeae@gmail.com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: ViNS <gladiator@fastwebnet.it>
 # Contributor: Daenyth
@@ -23,13 +23,13 @@ pkgver() {
 }
 
 prepare() {
-	cd "$_pkgname"
+  cd "$_pkgname"
   sed -i "s|/sbin|/bin|" src/MakeApp.mk
   sed -i "s|/local||"  Makefile
 }
 
 build() {
-	cd "$_pkgname"
+  cd "$_pkgname"
   unset CFLAGS
   unset CXXFLAGS
   make prefix="/usr"
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-	cd "$_pkgname"
+  cd "$_pkgname"
   make prefix="/usr" DESTDIR="$pkgdir" install
   make prefix="/usr" DESTDIR="$pkgdir" install_lib
 }
