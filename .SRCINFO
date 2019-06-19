@@ -1,0 +1,19 @@
+pkgbase = divvydroid-git
+	pkgdesc = Application to screencast and remote control Android devices (git version)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/maxrd2/divvydroid
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = ffmpeg
+	depends = android-tools
+	conflicts = divvydroid
+	source = git+https://github.com/maxrd2/divvydroid.git
+	sha256sums = SKIP
+
+pkgname = divvydroid-git
+
