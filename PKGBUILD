@@ -22,8 +22,8 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p $srcdir/src/github.com/coreos
-  ln -sf $srcdir/$pkgname $srcdir/src/github.com/coreos
+  mkdir -p $srcdir/src/github.com/poseidon
+  ln -sf $srcdir/$pkgname $srcdir/src/github.com/poseidon
 }
 
 build() {
