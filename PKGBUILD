@@ -27,7 +27,8 @@ build() {
 package() {
     cd ${_pkgname}-${pkgver}
 
-    install -Dm755 libpbf.so ${pkgdir}/usr/lib/qt/plugins/imageformats/libpbf.so
+    make INSTALL_ROOT="${pkgdir}" install
+
     install -Dm644 ../Qt5Gui_QPbfPlugin.cmake ${pkgdir}/usr/lib/cmake/Qt5Gui/Qt5Gui_QPbfPlugin.cmake
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
