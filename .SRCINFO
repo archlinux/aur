@@ -1,7 +1,7 @@
 pkgbase = gstreamer0.10-fluendo
 	pkgdesc = GStreamer 0.10 fluendo mpegdemux plugin
 	pkgver = 0.10.85
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fluendo.com/products.php?product=plugins
 	arch = i686
 	arch = x86_64

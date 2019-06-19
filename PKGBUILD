@@ -1,10 +1,11 @@
-# Maintainer: Pablo Lezaeta <prflr88 (arroba) gmail (dot) com<
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Pablo Lezaeta <prflr88 (arroba) gmail (dot) com<
 # Contributor: peace4all <markspost at rocketmail dot com>
 # Contributor: jase
 
 pkgname=gstreamer0.10-fluendo
 pkgver=0.10.85
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer 0.10 fluendo mpegdemux plugin"
 provides=("gstreamer0.10-fluendo-mpegdemux")
 arch=('i686' 'x86_64')
