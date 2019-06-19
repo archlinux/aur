@@ -10,7 +10,7 @@ license=('MIT')
 provides=("$_pkgname")
 install=$_pkgname.install
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb")
-md5sums=('4fa6d9394fa18f8334005001b0016493')
+md5sums=('4512951ae52ec14a6b5584ea5923d7a5')
 noextract=("$pkgname-$pkgver.deb")
 
 prepare() {
