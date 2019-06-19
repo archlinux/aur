@@ -1,5 +1,5 @@
 pkgname="google-calendar-nativefier"
-pkgver="0.1"
+pkgver="0.2"
 pkgrel="1"
 pkgdesc="The Google Calendar app helps you spend less time managing your schedule and more time enjoying it."
 arch=("x86_64")
@@ -17,7 +17,7 @@ build() {
     nativefier "https://calendar.google.com/" \
       --icon "${pkgname}.png" \
       --maximize \
-      --internal-urls ".*" \
+      --internal-urls "^a" \
       --name "Google Calendar"
 }
 
