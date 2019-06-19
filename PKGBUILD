@@ -4,7 +4,7 @@ _pkgname=fmf
 pkgbase="python-${_pkgname}"
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=('GPL2')
 pkgdesc='Flexible Metadata Format.'
@@ -18,11 +18,13 @@ prepare() {
 }
 
 package_python-fmf() {
+  depends=('python-pyaml')
   cd ${_pkgname}-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-fmf() {
+  depends=('python2-pyaml')
   cd ${_pkgname}-$pkgver-py2
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
