@@ -5,7 +5,7 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -96,37 +96,29 @@ _package() {
 
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  pytorchpath="usr/lib/python$(get_pyver)/site-packages/torch"
+  install -d "${pkgdir}/usr/lib"
 
   # put CMake files in correct place
-  install -d "${pkgdir}/usr/lib/cmake"
-  pytorchpath="usr/lib/python$(get_pyver)/site-packages/torch"
-  mv "${pkgdir}/${pytorchpath}/share/cmake"/* \
-     "${pkgdir}/usr/lib/cmake/"
+  mv "${pkgdir}/${pytorchpath}/share/cmake" "${pkgdir}/usr/lib/cmake"
 
   # put C++ API in correct place
-  install -d "${pkgdir}/usr/include"
-  install -d "${pkgdir}/usr/lib/pytorch"
-  mv "${pkgdir}/${pytorchpath}/include"/* "${pkgdir}/usr/include/"
-  mv "${pkgdir}/${pytorchpath}/lib"/*.so* "${pkgdir}/usr/lib/pytorch/"
+  mv "${pkgdir}/${pytorchpath}/include" "${pkgdir}/usr/include"
+  mv "${pkgdir}/${pytorchpath}/lib"/*.so* "${pkgdir}/usr/lib/"
 
   # clean up duplicates
   # TODO: move towards direct shared library dependecy of:
   #   c10, caffe2, libcpuinfo, CUDA RT, gloo, GTest, Intel MKL,
   #   NVRTC, ONNX, protobuf, libthreadpool, QNNPACK
-  rm -rf "${pkgdir}/${pytorchpath}/share/cmake"
-  rm -rf "${pkgdir}/${pytorchpath}/include"
   rm -rf "${pkgdir}/usr/include/pybind11"
 
   # python module is hardcoded to look there at runtime
   ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
-  find "${pkgdir}"/usr/lib/pytorch -type f -name "*.so*" -print0 | while read -rd $'\0' _lib; do
+  find "${pkgdir}"/usr/lib -type f -name "*.so*" -print0 | while read -rd $'\0' _lib; do
     ln -s ${_lib#"$pkgdir"} "${pkgdir}/${pytorchpath}/lib/"
   done
-
-  # ldconfig
-  install -d "${pkgdir}/etc/ld.so.conf.d"
-  echo '/usr/lib/pytorch' > "${pkgdir}/etc/ld.so.conf.d/pytorch.conf"
 }
 
 package_python-pytorch() {
