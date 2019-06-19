@@ -1,0 +1,14 @@
+pkgbase = finlayscript6
+	pkgdesc = The official FinlayScript6 interpreter
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = java-runtime
+	depends = bash
+	source = git://github.com/thatmadhacker/FinlayScript6.git
+	md5sums = SKIP
+
+pkgname = finlayscript6
+
