@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.1.10-arch1 Kernel Configuration
+# Linux/x86 5.1.12-arch1 Kernel Configuration
 #
 
 #
@@ -6064,6 +6064,7 @@ CONFIG_CHASH=m
 # CONFIG_CHASH_SELFTEST is not set
 CONFIG_DRM_NOUVEAU=m
 CONFIG_NOUVEAU_DEBUG=5
+CONFIG_NOUVEAU_LEGACY_CTX_SUPPORT=y
 CONFIG_NOUVEAU_DEBUG_DEFAULT=3
 # CONFIG_NOUVEAU_DEBUG_MMU is not set
 CONFIG_DRM_NOUVEAU_BACKLIGHT=y
