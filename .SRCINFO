@@ -1,7 +1,7 @@
 pkgbase = broadcom-wl-ck
 	pkgdesc = Broadcom 802.11abgn hybrid Linux networking device driver for linux-ck.
 	pkgver = 6.30.223.271
-	pkgrel = 137
+	pkgrel = 138
 	url = https://www.broadcom.com/support/download-search/?pf=Wireless+LAN+Infrastructure
 	arch = x86_64
 	license = custom
