@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=freefem++-git
+pkgname=freefem-git
 pkgver=4.3.1r20190619
 epoch=1
 pkgrel=1
