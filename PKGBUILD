@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=9.0.0_r317728.b9b64468cac
+pkgver=9.0.0_r319391.1885747498c
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -136,7 +136,7 @@ package_llvm-minimal-git() {
         # Needed for multilib (https://bugs.archlinux.org/task/29951)
         # Header stub is taken from Fedora
         mv "$pkgdir"/usr/include/llvm/Config/llvm-config{,-64}.h
-        cp "$srcdir"/llvm-config.h "$pkgdir"/usr/include/llvm/Config/llvm-config.h
+        install -Dm644 "$srcdir"/llvm-config.h "$pkgdir"/usr/include/llvm/Config/llvm-config.h
     fi
 
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
