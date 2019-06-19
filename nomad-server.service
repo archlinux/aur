@@ -1,0 +1,11 @@
+[Unit]
+Description=Nomad cluster scheduling server agent
+Documentation=https://www.nomadproject.io/docs/agent/
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/nomad agent -server -config /etc/nomad/server.conf
+
+[Install]
+WantedBy=multi-user.target
