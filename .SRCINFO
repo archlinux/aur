@@ -1,7 +1,7 @@
 pkgbase = colin
 	pkgdesc = Tool to check generic rules/best-practices for containers/images/dockerfiles.
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/user-cont/colin
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = colin
 	depends = python
 	depends = python-click
 	depends = python-six
-	depends = python-dockerfile_parse
+	depends = python-dockerfile-parse
 	depends = python-fmf
 	depends = python-pyaml
 	optdepends = podman: for checking image target-type
