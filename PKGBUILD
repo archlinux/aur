@@ -1,9 +1,9 @@
-# Maintainer: Michael Picht <michael.picht@ussenterprise.de>
+# Maintainer: Michael Picht <mipi@fsfe.org>
 
 _pkgorg=github.com/mipimipi
 pkgname=crema-git
 _pkgname=crema
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Manage your custom Arch Linux repositories"
 arch=('any')
