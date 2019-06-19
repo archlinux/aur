@@ -2,13 +2,13 @@
 
 pkgname=gimp-plugin-arrow
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="easy drawing of arbitrary arrows into an image or a new layer"
 arch=('any')
 url="http://registry.gimp.org/node/20269"
 license=('GPLv2+')
 depends=('gimp')
-source=('http://registry.gimp.org/files/arrow.scm')
+source=('https://github.com/pixlsus/registry.gimp.org_static/raw/master/registry.gimp.org/files/arrow.scm')
 md5sums=('b4884e98af53ac04b619c661cf6d5bec')
 
 
