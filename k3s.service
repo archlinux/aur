@@ -1,11 +1,10 @@
 [Unit]
 Description=Lightweight Kubernetes
 Documentation=https://k3s.io
-After=network.target
+After=network-online.target
 
 [Service]
-ExecStartPre=-/sbin/modprobe br_netfilter
-ExecStartPre=-/sbin/modprobe overlay
+Type=notify
 ExecStart=/usr/bin/k3s server
 KillMode=process
 Delegate=yes
@@ -13,6 +12,8 @@ LimitNOFILE=infinity
 LimitNPROC=infinity
 LimitCORE=infinity
 TasksMax=infinity
+TimeoutStartSec=0
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
