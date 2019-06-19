@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-5.1
-_stable=5.1.9
-_patchver=5.1.10
+_stable=5.1.11
+_patchver=5.1.12
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -24,22 +24,24 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
+  0003-bcache-fix-stack-corruption-by-PRECEDING_KEY.patch
   # Arch-Linux-kernel-vx.xx.x-arch1.patch is not needed for rc1
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('58c9eca99c3dd2fff5b559302996c985c3f3f2aad0b99b2172a61c4df7122a79'
+sha256sums=('11fd93207290272389ad284b8b042041d088fbee0ed5798e933bf8e91697d219'
             'SKIP'
-            '6f7126b58e71375f873fce8c177efb6fe7e99586b401544a0970e8d380e8b6f3'
+            'b8da5ae4d706b9a6144da10abd21e87cc2547a000093c776401027880ce9c302'
             'SKIP'
             '2e555646f47002c3e76e2a8405d33a64fcc8cf060ef5430881a5d144d8e3bc98'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '4fb1ddb2d03db2f6d9d11ba5b4dbc6abcdf5a9a6dd94c94634aa032690c48629'
-            '1625f1a883c38e64e84ad769714a18991e824d9a271ba5862600df32a5761aec')
+            '1625f1a883c38e64e84ad769714a18991e824d9a271ba5862600df32a5761aec'
+            '0c6fcda6bf2d56358b557c1b8a0de6e1e40cc75df161eb2daf6841652cd431de')
 
 _kernelname=${pkgbase#linux}
 
