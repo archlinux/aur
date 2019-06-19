@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.7.7
+pkgver=1.7.8
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'f37f7827e10557d1e74b58b81eb0d17102e1c0f193d129e6e8edbbf7284f5867'
-            '838dd05c2ac4bcd5391204c67e592ec522765ca75ff779ecffd90f60623feec2'
+            'a591dea408717915fb2c023ddccb83c7bf1f718ec047452456ecd73ec6daae8c'
             '95efc9cd84c2c26bddd832ef8c88637353ed9ba9d9068f183b7ee48ba25d1cc7'
             '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
             '3f23161f8239893e82d2a4f655cb80523a558a4e7869a6683802c2f434b68bbf'
@@ -82,11 +82,11 @@ prepare() {
     patch -Np1    -i "$srcdir/no-gtk2.patch"
     patch -R -Np1 -i "$srcdir/demibold.patch"
     patch -Np1    -i "$srcdir/Use-system-wide-font.patch"
-    patch -Np1 -i "$srcdir/tdesktop_lottie_animation_qtdebug.patch"
+    patch -Np1    -i "$srcdir/tdesktop_lottie_animation_qtdebug.patch"
 
     cd "$srcdir/tdesktop"
     cd "Telegram/ThirdParty/qtlottie"
-    patch -Np1 -i "$srcdir/tdesktop_qtlottie_qtdebug.patch"
+    patch -Np1    -i "$srcdir/tdesktop_qtlottie_qtdebug.patch"
 
     cd "$srcdir/tdesktop"
     cd "Telegram/ThirdParty/libtgvoip"
