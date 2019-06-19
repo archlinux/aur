@@ -1,0 +1,28 @@
+pkgbase = freefem
+	pkgdesc = A PDE oriented language using the finite element method
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = https://freefem.org/index.html
+	arch = x86_64
+	license = LGPL
+	makedepends = texlive-core
+	makedepends = gcc-fortran
+	depends = fftw
+	depends = freeglut
+	depends = glu
+	depends = suitesparse
+	depends = hdf5
+	depends = gsl
+	depends = openmpi
+	depends = lapack
+	depends = arpack
+	depends = parmetis
+	depends = python
+	provides = freefem++
+	conflicts = freefem++
+	options = !makeflags
+	source = freefem-4.2.1.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v4.2.1.tar.gz
+	sha256sums = be6ee15fb7dc31a51438220bcb8a179f92013fbf0d97501c27b232d117c293bd
+
+pkgname = freefem
+
