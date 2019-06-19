@@ -1,7 +1,7 @@
 # Contributor: dtag <dtag00@gmail.com>
 
 pkgname=ceres-solver-git
-pkgver=r1457.54ba6c27
+pkgver=r1467.db1f5b57
 pkgrel=1
 pkgdesc="Solver for nonlinear least squares problems"
 arch=('i686' 'x86_64')
@@ -20,7 +20,9 @@ options=('staticlibs')
 _cmakeopts=('-D CMAKE_BUILD_TYPE=Release'
             '-D CMAKE_INSTALL_PREFIX=/usr'
             '-D EIGENSPARSE=ON'
-            '-D BUILD_SHARED_LIBS=ON')
+            '-D BUILD_SHARED_LIBS=ON'
+            '-D BUILD_TESTING=OFF'
+            '-D BUILD_EXAMPLES=OFF')
 
 pkgver() {
     cd "$srcdir/$pkgname"

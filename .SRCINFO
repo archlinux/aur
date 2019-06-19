@@ -1,6 +1,6 @@
 pkgbase = ceres-solver-git
 	pkgdesc = Solver for nonlinear least squares problems
-	pkgver = r1457.54ba6c27
+	pkgver = r1467.db1f5b57
 	pkgrel = 1
 	url = http://ceres-solver.org/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = ceres-solver-git
 	depends = eigen>=3.3.4
 	depends = suitesparse>=4.4.5
 	optdepends = openmp
-	provides = ceres-solver=r1457.54ba6c27
+	provides = ceres-solver=r1467.db1f5b57
 	conflicts = ceres-solver
 	options = staticlibs
 	source = ceres-solver-git::git+https://github.com/ceres-solver/ceres-solver.git
