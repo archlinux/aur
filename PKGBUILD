@@ -3,7 +3,7 @@
 
 pkgname=ssvnc
 pkgver=1.0.29
-pkgrel=7
+pkgrel=8
 pkgdesc="SSL/SSH VNC viewer"
 arch=('i686' 'x86_64')
 url="http://www.karlrunge.com/x11vnc/ssvnc.html"
@@ -13,13 +13,16 @@ depends=('libjpeg>=7' 'libxaw' 'openssl' 'java-runtime' 'tk' 'tcl' 'stunnel')
 makedepends=('imake' 'java-environment')
 optdepends=('perl' 'xterm' 'smbclient' 'avahi' 'stunnel')
 source=(http://downloads.sf.net/sourceforge/$pkgname/$pkgname-$pkgver.src.tar.gz
-        openssl1.1.patch)
+        openssl1.1.patch
+        Makefile.patch)
 md5sums=('52201aeb0417c2a0fe83639e52da6ae5'
-         '6a119a5748a231f63c96044a2761845f')
+         '6a119a5748a231f63c96044a2761845f'
+         '7d35673003f4f25a046c48f803e76e65')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p1 < "$srcdir/openssl1.1.patch"
+  patch -p0 < "../../Makefile.patch"
 }
 
 build() {

@@ -1,0 +1,11 @@
+diff -aur ultraftp.orig/Makefile ultraftp/Makefile
+--- ultraftp.orig/Makefile	2019-06-19 18:37:41.913323155 +0200
++++ ultraftp/Makefile	2019-06-19 18:37:47.759989787 +0200
+@@ -3,7 +3,6 @@
+ SOURCES = $(shell echo *.java)
+ CLASSES = $(SOURCES:%.java=%.class)
+ ARCHIVE = ultraftp.jar
+-JC_ARGS = -target 1.4 -source 1.4
+ 
+ all: $(CLASSES) $(ARCHIVE)
+ 
