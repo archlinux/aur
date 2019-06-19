@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=breeze-plymouth
-pkgver=5.16.0
+pkgver=5.16.1
 pkgrel=1
 pkgdesc="Breeze theme for plymouth"
 arch=(any)
