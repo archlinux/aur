@@ -1,0 +1,15 @@
+pkgbase = nodejs-jsondiffpatch
+	pkgdesc = diff and patch JavaScript objects (JSON)
+	pkgver = 0.3.11
+	pkgrel = 1
+	url = https://github.com/benjamine/jsondiffpatch
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = jsondiffpatch-0.3.11.tgz
+	source = http://registry.npmjs.org/jsondiffpatch/-/jsondiffpatch-0.3.11.tgz
+	sha512sums = 5e2dc8ca076dfc11a19a5e9b754161803922d5380eb29de11b78a21f72adccff826a1b4671d3df2912e59d96d2c3eddbd6e99992198aaea5d481470a7a7ca1b4
+
+pkgname = nodejs-jsondiffpatch
+
