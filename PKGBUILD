@@ -2,7 +2,7 @@
 # Contributor: filthyAUR
 
 pkgname=losslesscut
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Crossplatform GUI tool for lossless trimming/cutting of video/audio files"
 arch=('x86_64')
@@ -24,4 +24,5 @@ package()
   install -Dm644 icon.svg "$pkgdir"/usr/share/pixmaps/$pkgname.svg
   }
 
-md5sums_x86_64=('d2da40d2f7e1cb55611f7585db7acc89' '460a126a50892d91bdc53de7fa3bc182')
+md5sums_x86_64=('eb112b89da5da0c5a0d1210ade80656e'
+                '460a126a50892d91bdc53de7fa3bc182')
