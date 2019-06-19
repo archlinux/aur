@@ -1,12 +1,12 @@
 # Maintainer: JSH <jsh 6 7 8 9 at gmail dot com>
 pkgname=rasterview-git
 pkgver=v1.7.1.r2.g5e741e6
-pkgrel=1
+pkgrel=2
 pkgdesc="A CUPS, PWG, and Apple raster file viewer"
 arch=('x86_64')
 url="https://github.com/michaelrsweet/rasterview"
 license=('APACHE')
-depends=('fltk')
+depends=('fltk>=1.3')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
