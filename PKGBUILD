@@ -2,13 +2,16 @@
 
 pkgname=pamac-qt-aur
 pkgver=0.2.0.r7.g56427be
-pkgrel=1
+pkgrel=2
 pkgdesc="Pamac-QT is a GUI for libalpm (pacman) with AUR and Appstream support"
 url="https://gitlab.manjaro.org/applications/pamac-qt"
 arch=('x86_64')
 license=('GPL3')
 makedepends=('git')
-depends=('qt5-base')
+# ATM I'm forced to include as dependancy also the GTK3 version, since there is
+# no separated libpamac.
+depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2'
+         'glib2>=2.42' 'dbus-glib' 'pacman>=5.1' 'pamac-aur')
 provides=('pamac-qt')
 conflicts=('pamac-qt')
 source=(
