@@ -1,0 +1,20 @@
+pkgbase = python-dockerfile-parse
+	pkgdesc = Python library for parsing Dockerfile files.
+	pkgver = 0.0.14
+	pkgrel = 1
+	url = https://github.com/containerbuildsystem/dockerfile-parse
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/containerbuildsystem/dockerfile-parse/archive/0.0.14.tar.gz
+	sha512sums = e58012aaeaec469034b91797852ac898d058e474744afa61cf3745b8c8e5ed81480cfc15f7217a191b240568dcdf992037f9fc8ead223cc330398554020a7047
+
+pkgname = python-dockerfile-parse
+	depends = python-six
+
+pkgname = python2-dockerfile-parse
+	depends = python2-six
+
