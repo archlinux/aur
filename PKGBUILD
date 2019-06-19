@@ -2,7 +2,7 @@
 
 pkgname=mcmojave-circle-icon-theme-git
 _gitname=McMojave-circle
-pkgver=21.47b3420
+pkgver=32.c4d99d8
 pkgrel=1
 pkgdesc="MacOSX Mojave like circle icon theme for linux desktops."
 arch=('any')
@@ -23,5 +23,7 @@ pkgver() {
 package() {
     cd "${srcdir}/${_gitname}"
     install -dm755 "${pkgdir}/usr/share/icons"
-    ./install.sh -d "${pkgdir}/usr/share/icons"
+    ./install.sh  \
+    	--all \
+    	--dest "${pkgdir}/usr/share/icons"
 }
