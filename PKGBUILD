@@ -96,8 +96,7 @@ sha256sums=('7159819d298a84acefeaedfd155be20477b92fda194a5f51547a2f1abffd79ab'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             'f8d18a34f6b17ec8e5f2a7354383ca627e0fd00b5578c1ee7d9808a34f33c724'
             '91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3'
-            '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9'
-            '0c6fcda6bf2d56358b557c1b8a0de6e1e40cc75df161eb2daf6841652cd431de')
+            '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}

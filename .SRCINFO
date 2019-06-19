@@ -31,7 +31,6 @@ pkgbase = linux-ck
 	sha256sums = f8d18a34f6b17ec8e5f2a7354383ca627e0fd00b5578c1ee7d9808a34f33c724
 	sha256sums = 91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3
 	sha256sums = 63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9
-	sha256sums = 0c6fcda6bf2d56358b557c1b8a0de6e1e40cc75df161eb2daf6841652cd431de
 
 pkgname = linux-ck
 	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.192
