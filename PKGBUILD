@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-netspeed-git
 _gitname=NetSpeed
-pkgver=85.1f0dfe0
+pkgver=106.9c72b1c
 pkgrel=1
 pkgdesc="Gnome shell extension to display internet speed"
 arch=('any')

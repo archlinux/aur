@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-netspeed-git
 	pkgdesc = Gnome shell extension to display internet speed
-	pkgver = 85.1f0dfe0
+	pkgver = 106.9c72b1c
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/104/netspeed
 	install = gnome-shell-extension-netspeed-git.install
