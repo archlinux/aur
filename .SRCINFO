@@ -1,8 +1,8 @@
 pkgbase = matchbox
 	pkgdesc = Network boot and provision Container Linux clusters
-	pkgver = 0.7.0
-	pkgrel = 3
-	url = https://coreos.com/matchbox/docs/latest/
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/poseidon/matchbox
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -12,7 +12,7 @@ pkgbase = matchbox
 	license = Apache
 	makedepends = go
 	makedepends = git
-	source = git+https://github.com/coreos/matchbox.git#commit=08f4e9908b167fba608e60169ec6a803df9db37f
+	source = git+https://github.com/poseidon/matchbox.git#commit=b97328b6ecaf9938ffec77a1a7df61b12517e0e0
 	source = matchbox.sysusers
 	source = matchbox.tmpfiles
 	sha256sums = SKIP

@@ -1,14 +1,14 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 pkgname=matchbox
-pkgver=0.7.0
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Network boot and provision Container Linux clusters"
 arch=("x86_64" "i686" "arm" "armv6h" "armv7h" "aarch64")
-url="https://coreos.com/matchbox/docs/latest/"
+url="https://github.com/poseidon/matchbox"
 license=('Apache')
 makedepends=('go' 'git')
-_goname=github.com/coreos/$pkgname
-_commit=08f4e9908b167fba608e60169ec6a803df9db37f # 0.7.0
+_goname=github.com/poseidon/$pkgname
+_commit=b97328b6ecaf9938ffec77a1a7df61b12517e0e0 # 0.8.0
 source=("git+https://$_goname.git#commit=$_commit"
         "matchbox.sysusers"
         "matchbox.tmpfiles")
