@@ -1,6 +1,6 @@
 pkgbase = python-berliner-git
 	pkgdesc = Tools for Padova+PARSEC stellar tracks & isochrones
-	pkgver = r41.d47e5d0
+	pkgver = r42.ce488b4
 	pkgrel = 1
 	url = https://github.com/hypergravity/berliner
 	arch = i686
