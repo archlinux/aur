@@ -1,17 +1,17 @@
 pkgbase = libcs50
 	pkgdesc = Harvard's cs50 C library
-	pkgver = 8.1.2
+	pkgver = 9.0.1
 	pkgrel = 1
-	url = https://cs50.harvard.edu/
+	url = https://github.com/cs50/libcs50
 	arch = i686
 	arch = x86_64
 	groups = cs50
-	license = unknown
+	license = MIT
 	makedepends = asciidoctor
-	source = libcs50-8.1.2.tar.gz::https://github.com/cs50/libcs50/archive/v8.1.2.tar.gz
+	source = libcs50-9.0.1.tar.gz::https://github.com/cs50/libcs50/archive/v9.0.1.tar.gz
 	source = Makefile.patch
-	sha256sums = 886e1aade1ef985c566ed9001f90c378c7ebe8d5b5b67932eac7e94c1a83abbb
-	sha256sums = 43e487367882c54cb258dac3cfc98227918cff59ebc6a2965e18cf3a186b9f10
+	sha256sums = 9fd723b62af0b562a1e47c1f5d44cc786d47ca4607776e3a52b407de5cb5ebd5
+	sha256sums = 4a10efd4f4f6b6bb18152a4f28497f7f8562aaa5aaf50c401d308827b922ef3f
 
 pkgname = libcs50
 

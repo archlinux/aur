@@ -1,20 +1,24 @@
-# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Maintainer: MayorBender <7480812+kingy9000@users.noreply.github.com>
+# Contributor: Dan Beste <dan.ray.beste@gmail.com>
+# Contributor: Justine Paul <jestine-paul@dsi.a-star.edu.sg>
+# Contributor: justinus <jestine.paul@gmail.com>
 
 pkgname='libcs50'
-pkgver=8.1.2
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="Harvard's cs50 C library"
 arch=('i686' 'x86_64')
-url='https://cs50.harvard.edu/'
-license=('unknown')
+url='https://github.com/cs50/libcs50'
+license=('MIT')
 groups=('cs50')
 makedepends=('asciidoctor')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/cs50/${pkgname}/archive/v${pkgver}.tar.gz"
-  'Makefile.patch')
+  'Makefile.patch'
+)
 sha256sums=(
-  '886e1aade1ef985c566ed9001f90c378c7ebe8d5b5b67932eac7e94c1a83abbb'
-  '43e487367882c54cb258dac3cfc98227918cff59ebc6a2965e18cf3a186b9f10'
+  '9fd723b62af0b562a1e47c1f5d44cc786d47ca4607776e3a52b407de5cb5ebd5'
+  '4a10efd4f4f6b6bb18152a4f28497f7f8562aaa5aaf50c401d308827b922ef3f'
 )
 
 prepare() {
