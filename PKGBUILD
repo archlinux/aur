@@ -3,10 +3,8 @@
 
 pkgname=gmt6
 _pkgname=gmt
-_pkgdate=20190618
-pkgver=6.0.0_${_pkgdate}
+pkgver=6.0.0rc1
 pkgrel=1
-pkghashver=d44f184e22ef2cb9abdee4ebd11373c5825942ec
 pkgdesc="Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps."
 arch=(i686 x86_64)
 url="https://gmt.soest.hawaii.edu/"
@@ -24,11 +22,11 @@ install='gmt.install'
 #source=("ftp://ftp.iris.washington.edu/pub/gmt/${_pkgname}-${pkgver}-src.tar.xz")
 #source=("ftp://ftp.iag.usp.br/pub/gmt/${_pkgname}-${pkgver}-src.tar.xz")
 #source=("https://mirrors.ustc.edu.cn/gmt/${_pkgname}-${pkgver}-src.tar.xz")
-source=("https://github.com/GenericMappingTools/${_pkgname}/archive/${pkghashver}.tar.gz")
-sha256sums=('3f8fae79a253e50eb40707abdb4edea64a7192c135ef07a09b1ea933c0e00bde')
+source=("https://github.com/GenericMappingTools/${_pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('89622b333462a19872a28021fc9013d7ee9e45223b98c0ea96dfa9e9c955a57f')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkghashver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   sed -i 's/\*\.1\.gz/\*\.1gmt\.gz/g' doc/rst/CMakeLists.txt
   sed -i 's/\*\.3\.gz/\*\.3gmt\.gz/g' doc/rst/CMakeLists.txt
   sed -i 's/\*\.5\.gz/\*\.5gmt\.gz/g' doc/rst/CMakeLists.txt
@@ -47,7 +45,7 @@ build() {
     -DGMT_DOCDIR=share/doc/gmt \
     -DCMAKE_BUILD_TYPE=Release \
     -GNinja \
-    "${srcdir}/${_pkgname}-${pkghashver}"
+    "${srcdir}/${_pkgname}-${pkgver}"
   export MAKEFLAGS="-j$(nproc)"
   ninja || return 1
 }
