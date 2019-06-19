@@ -1,7 +1,7 @@
 # Maintainer: Ilias Stamatis <stamatis.iliass at gmail dot com>
 
 pkgname=django-recaptcha
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Django reCAPTCHA form field/widget integration app"
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/praekelt/django-recaptcha'
 license=('BSD')
 depends=('python-django')
 source=("https://github.com/praekelt/django-recaptcha/archive/${pkgver}.tar.gz")
-sha256sums=('b40d3c49033985e7b68fd8dceb7661aa41eed8d2e7f3134f2f21b6f69b0e7f2c')
+sha256sums=('dfb8ea7c63134a7199b6d92ace0bc8a75c03a5b2ff5193ba46554c41aec26be6')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
