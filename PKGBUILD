@@ -1,4 +1,7 @@
 # Maintainer: Eduardo Escobar <eduardoeae(at)gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
+# Contributor: ViNS <gladiator@fastwebnet.it>
+# Contributor: Daenyth
 pkgname=nethogs-git
 _pkgname=nethogs
 pkgver=v0.8.5.r59.ga46b3d6
@@ -31,11 +34,6 @@ build() {
   unset CXXFLAGS
   make prefix="/usr"
   make prefix="/usr" libnethogs
-}
-
-check() {
-	cd "$_pkgname"
-	make -k check
 }
 
 package() {
