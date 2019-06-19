@@ -46,7 +46,7 @@ package() {
 
     cmake --build build -- install
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/netradiant/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/netradiant-git/LICENSE"
 
     # Map mime type doesn't work and produces a pacman warning
     rm -r ${pkgdir}/usr/share/mime/
