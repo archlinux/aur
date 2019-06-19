@@ -3,7 +3,7 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r1838.92e4e444
+pkgver=r1875.9cd54a17
 pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GTKRadiant fork) - git version'
@@ -39,9 +39,6 @@ build() {
     -DGAMEPACKS_NAME_LIST=none
 
     cmake --build build -- -j$(nproc)
-
-    # This step is needed again for CMake to detect the gamepacks it has to install
-    cmake -H. -Bbuild
 }
 
 package() {
@@ -53,17 +50,4 @@ package() {
 
     # Map mime type doesn't work and produces a pacman warning
     rm -r ${pkgdir}/usr/share/mime/
-    
-    # Fix (some of) the included gamepacks so they work with the official
-    # Archlinux packages. Normally we would do this in prepare(), but this
-    # is not an viable option, as the Makefile initiates the download and
-    # update of the gamepacks. So we would need to call the referenced
-    # download script ourselves in prepare() and modify the Makefile so it
-    # doesn't try to do it in build() too. Not worth it. Don't forget to
-    # comment the lines for the gamepacks that you don't use, otherwise
-    # the sed command will fail.
-
-    sed -i -e '/enginepath_linux/c\  enginepath_linux="/usr/share/nexuiz/"' "${pkgdir}/usr/share/netradiant/games/nexuiz.game"
-    sed -i -e '/enginepath_linux/c\  enginepath_linux="/opt/warsow/"' "${pkgdir}/usr/share/netradiant/games/warsow.game"
-    sed -i -e '/enginepath_linux/c\  enginepath_linux="/usr/share/xonotic/"' "${pkgdir}/usr/share/netradiant/games/xonotic.game"
 }
