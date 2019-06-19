@@ -1,4 +1,4 @@
-pkgbase = freefem++-git
+pkgbase = freefem-git
 	pkgdesc = A PDE oriented language using the finite element method from git
 	pkgver = 4.3.1r20190619
 	pkgrel = 1
@@ -27,5 +27,5 @@ pkgbase = freefem++-git
 	source = FreeFem::git+https://github.com/FreeFem/FreeFem-sources.git#branch=develop
 	md5sums = SKIP
 
-pkgname = freefem++-git
+pkgname = freefem-git
 
