@@ -1,0 +1,18 @@
+pkgbase = python-fmf
+	pkgdesc = Flexible Metadata Format.
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/psss/fmf
+	arch = any
+	license = GPL2
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/psss/fmf/archive/0.7.tar.gz
+	sha512sums = c0ba80405acfd975184a1804485862454cccff187d0b0c5ae8dd656147cd9b48e69381829933f380611a84c6f4309f55e4ef7696b6291bea78e4eb623212f455
+
+pkgname = python-fmf
+
+pkgname = python2-fmf
+
