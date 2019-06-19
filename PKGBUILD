@@ -1,11 +1,11 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
 # Maintainer: tkashkin
 # Maintainer: neuromancer
-# Contributor: friday (github)
+# Contributor: friday
 # Contributor: Robert Stoffers <rstoffers@gmail.com>
 
 pkgname=gamehub
-_pkgver=0.13.1-1-master
+_pkgver=0.14.0-2-master
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle. Designed for Pantheon Shell"
@@ -16,7 +16,7 @@ depends=(libgranite.so gtk3 glib2 libgee libsoup json-glib sqlite webkit2gtk lib
 makedepends=(meson ninja vala)
 options=(!strip debug)
 source=("GameHub-$pkgver.tar.gz::https://github.com/tkashkin/GameHub/archive/${_pkgver}.tar.gz")
-sha256sums=('387412b6203b1e68bfec27ef7fab46e5dbf7e9cd5cebce6b6698a00e67d9b7e0')
+sha256sums=('81a536128f5d704baae9feb97e086296599da0bb765eb39c6b0fffd9a6907527')
 
 build() {
   cd "GameHub-$_pkgver"
