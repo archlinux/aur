@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='wgmgr'
-pkgver=1.4.6
+pkgver=1.4.8
 pkgrel=1
 pkgdesc='Manages WireGuard PKIs for VPN-like deployments'
 arch=('any')
