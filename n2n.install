@@ -1,0 +1,9 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  # the n2n user will be used by the supernode and edge services
+  getent group n2n >/dev/null || groupadd -r n2n
+  getent passwd n2n >/dev/null || useradd -M -N -d / -g n2n -r -s /sbin/nologin n2n
+}
