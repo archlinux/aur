@@ -7,10 +7,22 @@ pkgbase = style50
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
+	depends = autopep8
+	depends = icdiff
+	depends = python-jsbeautifier
+	depends = python-magic-ahupp
+	depends = python-pycodestyle
+	depends = python-termcolor
 	optdepends = astyle: To style check C, C++, or Java code
 	source = https://files.pythonhosted.org/packages/source/s/style50/style50-2.6.4.tar.gz
-	sha256sums = f97c7c46669030ff3da99bf17339b05f957469251ab92e34281cbd24753f22f0
+	sha256sums = 8bb68f0be72660411976ab1742c759845f981eefe0f21edb1533882a1833c8a0
 
 pkgname = style50
 	depends = python
+	depends = autopep8
+	depends = icdiff
+	depends = python-jsbeautifier
+	depends = python-magic-ahupp
+	depends = python-pycodestyle
+	depends = python-termcolor
 
