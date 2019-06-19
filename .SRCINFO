@@ -1,19 +1,20 @@
 pkgbase = binaryen-git
-	pkgdesc = Compiler infrastructure and toolchain library for WebAssembly, in C++
-	pkgver = 20170508
+	pkgdesc = Compiler infrastructure and toolchain library for WebAssembly
+	pkgver = r4335.g06698d7a3
 	pkgrel = 1
 	url = https://github.com/WebAssembly/binaryen
 	arch = i686
 	arch = x86_64
-	license = MIT
-	makedepends = emscripten
+	license = apache
 	makedepends = git
-	makedepends = python2
 	makedepends = cmake
+	depends = gcc-libs
 	provides = binaryen
 	conflicts = binaryen
-	source = git://github.com/WebAssembly/binaryen.git
-	md5sums = SKIP
+	source = git+https://github.com/WebAssembly/binaryen.git
+	source = binaryen.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/binaryen.sh?h=packages/binaryen
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = binaryen-git
 

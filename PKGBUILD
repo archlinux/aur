@@ -1,36 +1,53 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Former maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+
 pkgname=binaryen-git
-pkgver=20170508
+pkgver=r4335.g06698d7a3
 pkgrel=1
-pkgdesc="Compiler infrastructure and toolchain library for WebAssembly, in C++"
-arch=(i686 x86_64)
+pkgdesc="Compiler infrastructure and toolchain library for WebAssembly"
+arch=('i686' 'x86_64')
 url="https://github.com/WebAssembly/binaryen"
-license=('MIT')
-depends=()
-makedepends=('emscripten' 'git' 'python2' 'cmake')
-provides=(binaryen)
-conflicts=(binaryen)
-source=('git://github.com/WebAssembly/binaryen.git')
-md5sums=(SKIP)
+license=('apache')
+depends=('gcc-libs')
+makedepends=('git' 'cmake')
+#checkdepends=('python2')
+provides=('binaryen')
+conflicts=('binaryen')
+source=("git+https://github.com/WebAssembly/binaryen.git"
+        "binaryen.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/binaryen.sh?h=packages/binaryen")
+sha256sums=('SKIP'
+            'SKIP')
+
+
+pkgver() {
+  cd "binaryen"
+
+  _rev=$(git rev-list --count --all)
+  _hash=$(git rev-parse --short HEAD)
+  printf "r%s.g%s" "$_rev" "$_hash"
+}
 
 build() {
-  cd binaryen
+  cd "binaryen"
 
-  rm -rf build && mkdir build
-  cd build
-
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib
+  mkdir -p "_build" && cd "_build"
+  cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
+    "../"
   make
 }
 
-package() {
-  cd binaryen/build
+check() {
+  cd "binaryen/_build"
 
-  make DESTDIR=${pkgdir} install
-
-  install -Dm644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  #python2 ../check.py
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd "binaryen"
+
+  make -C "_build" DESTDIR="$pkgdir" install
+  install -Dm755 "$srcdir/binaryen.sh" -t "$pkgdir/etc/profile.d"
+}
