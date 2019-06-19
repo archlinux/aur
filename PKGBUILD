@@ -1,13 +1,15 @@
-# Maintainer: Maciej Mazur <mamciek@gmail.com>
+# Maintainer: Jay Ta'ala <jay@jaytaala.com>
+# Contributor: Maciej Mazur <mamciek@gmail.com>
+
 pkgname=alttab-git
 _name=alttab
-pkgver=v1.0.3.10.gf51b590
+pkgver=v1.4.0.16.g6ff9d46
 pkgrel=1
 pkgdesc="The task switcher for minimalistic window managers or standalone X11 session"
 url="https://github.com/sagb/alttab"
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('libx11' 'libxmu' 'libxft')
+depends=('libx11' 'libxmu' 'libxft' 'libxrender' 'libxrandr' 'libpng' 'uthash')
 makedepends=('autoconf' 'automake')
 source=("git+https://github.com/sagb/alttab.git#branch=master")
 sha1sums=('SKIP')
@@ -21,6 +23,7 @@ build() {
 	pwd
 	ls -al
 	cd "$_name"
+	./bootstrap.sh
 	./configure --prefix=/usr
 	make
 }
