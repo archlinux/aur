@@ -4,19 +4,19 @@
 
 pkgname=gtk-theme-elementary
 _realname=stylesheet
-pkgver=5.2.1
+pkgver=5.2.3
 pkgrel=1
 pkgdesc="The official elementary GTK theme designed to be smooth, attractive, fast, and usable."
 arch=('any')
-url="https://launchpad.net/egtk"
+url="https://github.com/elementary/stylesheet"
 license=('GPL3')
 groups=('pantheon')
 optdepends=('elementary-icon-theme: the elementary icon theme')
 conflicts=('elementary-gtk-theme' 'egtk-bzr')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/elementary/$_realname/archive/$pkgver.tar.gz")
-sha256sums=('b6104a5380a77ea1634706afb749b6ea482e98af970d134fe00a7b0fcb841934')
+sha256sums=('ddc4250110b427dc5485ebb316361ef7595b5b78f7b0f9792ab61b33fa3cc3dd')
 
 package() {
     install -d "$pkgdir/usr/share/themes"
-    mv $srcdir/"$_realname-$pkgver/elementary" $pkgdir/usr/share/themes/
+    mv "$srcdir/$_realname-$pkgver/elementary" "$pkgdir/usr/share/themes/"
 }

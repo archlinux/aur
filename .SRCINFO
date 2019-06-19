@@ -1,16 +1,16 @@
 pkgbase = gtk-theme-elementary
 	pkgdesc = The official elementary GTK theme designed to be smooth, attractive, fast, and usable.
-	pkgver = 5.2.1
+	pkgver = 5.2.3
 	pkgrel = 1
-	url = https://launchpad.net/egtk
+	url = https://github.com/elementary/stylesheet
 	arch = any
 	groups = pantheon
 	license = GPL3
 	optdepends = elementary-icon-theme: the elementary icon theme
 	conflicts = elementary-gtk-theme
 	conflicts = egtk-bzr
-	source = gtk-theme-elementary-5.2.1.tar.gz::https://github.com/elementary/stylesheet/archive/5.2.1.tar.gz
-	sha256sums = b6104a5380a77ea1634706afb749b6ea482e98af970d134fe00a7b0fcb841934
+	source = gtk-theme-elementary-5.2.3.tar.gz::https://github.com/elementary/stylesheet/archive/5.2.3.tar.gz
+	sha256sums = ddc4250110b427dc5485ebb316361ef7595b5b78f7b0f9792ab61b33fa3cc3dd
 
 pkgname = gtk-theme-elementary
 
