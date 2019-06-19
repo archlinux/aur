@@ -5,9 +5,9 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=67.0.2
-_bundle=c9edc4fbdfc8a0a5656e43d0afda6df03b93de7c
-pkgrel=5
+pkgver=67.0.3
+_bundle=82a145adddad6ef0a8434fd25e049c60a3b87276
+pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -30,7 +30,7 @@ source=(https://hg.cdn.mozilla.net/mozilla-unified/${_bundle}.zstd-max.hg
         $pkgname.cfg.patch
         "git+https://gitlab.com/${pkgname}-community/${pkgname}.git#commit=db65e6a9")
         # "hg+$_repo#tag=FIREFOX_${_pkgver//./_}_RELEASE"
-sha256sums=('a27eda97cfbc546bd156249490e72ef5cbb96a1d5921efa1131b565bcc938c0c'
+sha256sums=('bd5b8f18580fc6db443d274808aef5a21c193a0d55b53112c06c7af8f81d6f55'
             'd0673786a6a1f1b9f6f66a3a1356afa33f1f18f59dabd92bd193c88c52a1d04c'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
             '49d7e6071afcc5de5aa802bbb49810a7502fe31063dde9e2887b6837cab694ce'
