@@ -1,0 +1,15 @@
+pkgbase = wgroute
+	pkgdesc = A tiny script to use if you want to route all of your packets through WireGuard without wg-quick
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/RONTheCookie/wgroute
+	arch = any
+	license = MIT
+	makedepends = make
+	depends = iproute2
+	depends = wireguard-tools
+	source = wgroute-1.0.1.tar.gz::https://github.com/RONTheCookie/wgroute/archive/1.0.1.tar.gz
+	sha256sums = e9d65aaa36560dd21f552b9755552a079e8e7c6118a75629dd7f430b53a387eb
+
+pkgname = wgroute
+
