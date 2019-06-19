@@ -1,0 +1,13 @@
+pkgbase = tic-tac-toe-term
+	pkgdesc = A easy way for you to play Tic-Tac-Toe in any terminal.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Hampusm/tic-tac-toe-term
+	arch = any
+	license = GPL
+	depends = glibc
+	source = git://github.com/Hampusm/tic-tac-toe-term
+	md5sums = SKIP
+
+pkgname = tic-tac-toe-term
+
