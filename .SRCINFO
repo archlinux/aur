@@ -1,6 +1,6 @@
 pkgbase = google-calendar-nativefier
 	pkgdesc = The Google Calendar app helps you spend less time managing your schedule and more time enjoying it.
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://calendar.google.com/
 	arch = x86_64
