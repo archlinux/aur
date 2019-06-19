@@ -2,7 +2,7 @@
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=broot
-pkgver=0.8.1
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='Fuzzy Search + tree + cd'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('864f013f42bc36704621f6f171bd29703585681ef871052e0f2940dc9bfb0f88')
+sha256sums=('68a191091eda1ed5eb5aa5fccae03c1bf69c232f1e0294e7382ee079bb27e368')
 
 build() {
   cd $pkgname-$pkgver
