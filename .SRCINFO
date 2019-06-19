@@ -1,7 +1,7 @@
 pkgbase = ceres-solver
 	pkgdesc = Solver for nonlinear least squares problems
 	pkgver = 1.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ceres-solver.org/
 	arch = i686
 	arch = x86_64

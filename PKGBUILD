@@ -2,7 +2,7 @@
 
 pkgname=ceres-solver
 pkgver=1.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Solver for nonlinear least squares problems"
 arch=('i686' 'x86_64')
 url="http://ceres-solver.org/"
@@ -19,7 +19,9 @@ _cmakeopts=('-D CMAKE_BUILD_TYPE=Release'
             '-D CMAKE_INSTALL_PREFIX=/usr'
             '-D EIGENSPARSE=ON'
             '-D CXX11=ON'
-            '-D BUILD_SHARED_LIBS=ON')
+            '-D BUILD_SHARED_LIBS=ON'
+            '-D BUILD_TESTING=OFF'
+            '-D BUILD_EXAMPLES=OFF')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
