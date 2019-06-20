@@ -1,0 +1,26 @@
+pkgbase = zenpower-dkms-git
+	pkgdesc = Linux kernel driver for reading sensors for AMD Zen family CPUs
+	pkgver = 6.56daa91
+	pkgrel = 1
+	url = https://github.com/ocerman/zenpower
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = linux-headers
+	depends = make
+	depends = gcc
+	depends = linux
+	depends = dkms
+	provides = zenpower
+	source = zenpower::git+https://github.com/ocerman/zenpower.git
+	source = Makefile
+	source = dkms.conf
+	source = zenpower.conf
+	sha256sums = SKIP
+	sha256sums = f7f2c87bfed0d4a921d196948b77f9c9d75357b6c3396b72ad9eac9db1720580
+	sha256sums = 9eb35ca8dcff02744dd3256238f22bfe6ebaf1636867aabed4c40a31073c4e1e
+	sha256sums = 92c26ef5cd6f8a632f2d8cb12e9da8c4452cb0432ffe543733f13e67d6531d04
+
+pkgname = zenpower-dkms-git
+
