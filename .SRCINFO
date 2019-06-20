@@ -1,0 +1,96 @@
+pkgbase = gcc8
+	pkgdesc = The GNU Compiler Collection
+	pkgver = 8.3.0
+	pkgrel = 1
+	url = https://gcc.gnu.org
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	checkdepends = dejagnu
+	checkdepends = inetutils
+	makedepends = binutils
+	makedepends = libmpc
+	makedepends = gcc-ada
+	makedepends = doxygen
+	makedepends = lib32-glibc
+	makedepends = lib32-gcc-libs
+	makedepends = python
+	makedepends = subversion
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/gcc/gcc-8.3.0/gcc-8.3.0.tar.xz
+	source = https://isl.gforge.inria.fr/isl-0.21.tar.bz2
+	source = c89
+	source = c99
+	sha256sums = 64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c
+	sha256sums = 939f524d62ea7738c505aee4cb355107c57c3cc748fa90af2092cf9925687839
+	sha256sums = 1ec3372373d0e20b9f32057c0e90ad776086f5d407b388b78b9699a272bf5a3f
+	sha256sums = 30e17222514da5a225272aca3da79bdf3e088656a6a00a7cc6ceab91bea1e032
+
+pkgname = gcc8
+	pkgdesc = The GNU Compiler Collection - C and C++ frontends
+	groups = base-devel
+	depends = gcc8-libs=8.3.0-1
+	depends = binutils>=2.28
+	depends = libmpc
+	optdepends = lib32-gcc8-libs: for generating code for 32-bit ABI
+	provides = gcc8-multilib
+	replaces = gcc8-multilib
+	options = !emptydirs
+	options = staticlibs
+
+pkgname = gcc8-libs
+	pkgdesc = Runtime libraries shipped by GCC
+	groups = base
+	depends = glibc>=2.27
+	provides = gcc8-libs-multilib
+	provides = libgo.so
+	provides = libgfortran.so
+	provides = libubsan.so
+	provides = libasan.so
+	provides = libtsan.so
+	provides = liblsan.so
+	replaces = gcc8-libs-multilib
+	options = !emptydirs
+	options = !strip
+
+pkgname = gcc8-fortran
+	pkgdesc = Fortran front-end for GCC
+	depends = gcc8=8.3.0-1
+	provides = gcc8-fortran-multilib
+	replaces = gcc8-fortran-multilib
+
+pkgname = gcc8-objc
+	pkgdesc = Objective-C front-end for GCC
+	depends = gcc8=8.3.0-1
+	provides = gcc8-objc-multilib
+	replaces = gcc8-objc-multilib
+
+pkgname = gcc8-ada
+	pkgdesc = Ada front-end for GCC (GNAT)
+	depends = gcc8=8.3.0-1
+	provides = gcc8-ada-multilib
+	replaces = gcc8-ada-multilib
+	options = !emptydirs
+	options = staticlibs
+
+pkgname = gcc8-go
+	pkgdesc = Go front-end for GCC
+	depends = gcc8=8.3.0-1
+	provides = go=1.10.1
+	provides = gcc8-go-multilib
+	conflicts = go
+	replaces = gcc8-go-multilib
+
+pkgname = lib32-gcc8-libs
+	pkgdesc = 32-bit runtime libraries shipped by GCC
+	groups = multilib-devel
+	depends = lib32-glibc>=2.27
+	provides = libgo.so
+	provides = libgfortran.so
+	provides = libubsan.so
+	provides = libasan.so
+	options = !emptydirs
+	options = !strip
+
