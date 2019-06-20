@@ -3,12 +3,16 @@
 pkgname=julia-datastructures
 _pkgname=DataStructures
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Julia implementation of Data structures'
 arch=(any)
 url=https://github.com/JuliaCollections/DataStructures.jl
 license=(MIT)
-depends=(julia julia-compat julia-loadpath) # julia-primes) circular dependency for check()
+depends=(julia
+  julia-compat
+  julia-loadpath
+  julia-orderedcollections
+) # julia-primes) circular dependency for check()
 makedepends=(julia-distrohelper)
 
 _commit=8a0711a36f83df30c8cc7c8ff240a58fbbd85570
