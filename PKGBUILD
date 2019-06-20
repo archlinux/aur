@@ -4,14 +4,16 @@
 pkgbase=('monero-git')
 pkgname=('monero-git' 'libmonero-wallet-git')
 _gitname='monero'
-pkgver=0.14.0.0
+pkgver=0.14.1.0
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
 
-depends=('boost-libs>=1.45'  'openssl' 'libunwind' 'readline' 'zeromq' 'pcsclite')
+depends=('boost-libs>=1.45'  'openssl' 'libunwind' 'readline' 'zeromq' 'pcsclite'
+	 'hidapi' 'protobuf')
 makedepends=('git' 'cmake' 'boost' 'gtest' 'qt5-tools')
+checkdepends=('python-requests')
 
 pkgdesc="Peer-to-peer anonymous digital currency (daemon, CLI wallet, and wallet API library)"
 _upstream=https://github.com/monero-project/monero.git
@@ -39,8 +41,6 @@ prepare() {
        # To apply PRs
        #git remote add up $_upstream
        #git pull --no-edit up refs/pull/xxxx/head
-
-       git pull --no-edit origin refs/pull/4159/head # fixes #4228
 }
 
 CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=$_buildtype "
@@ -87,7 +87,9 @@ check() {
 	#  * coretests, hash-variant2-int-sqrt take too long (~25000s, 250s)
 	#  * libwallet_api_tests fail (Issue #895)
 	#  * unit_tests were run separately above
-	CTEST_ARGS+="-E 'core_tests|hash-variant2-int-sqrt|libwallet_api_tests|unit_tests'"
+	#  * functional_tests_rpc: take too lon (~1000s on ARM)
+	#  * cnv4-jit: take too lon (~1000s on ARM)
+	CTEST_ARGS+="-E 'core_tests|hash-variant2-int-sqrt|libwallet_api_tests|unit_tests|functional_tests_rpc|cnv4-jit'"
 	echo ">>> NOTE: some tests excluded: $CTEST_ARGS"
 
 	make ARGS="$CTEST_ARGS" test
