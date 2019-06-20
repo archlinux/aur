@@ -3,7 +3,7 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 pkgname="wp-desktop"
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
@@ -15,8 +15,8 @@ provides=("${pkgname}")
 source_i686=("wp-desktop-linux-i686-$pkgver.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps")
 source_x86_64=("wp-desktop-linux-x64-$pkgver.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps")
 
-sha256sums_i686=('920aa2b12d671281026f5d1bd58c8caafdaa9d1b9d0456c115f453e95513e61d')
-sha256sums_x86_64=('920aa2b12d671281026f5d1bd58c8caafdaa9d1b9d0456c115f453e95513e61d')
+sha256sums_i686=('69d036a5f95b5c49b34b005a4b9c4ec19c1ee4a090cf29733d6b73acd3fe69b9')
+sha256sums_x86_64=('69d036a5f95b5c49b34b005a4b9c4ec19c1ee4a090cf29733d6b73acd3fe69b9')
 
 _wpcom_desktop="[Desktop Entry]
 Name=WordPress.com
