@@ -1,0 +1,22 @@
+pkgbase = ttf-win10
+	pkgdesc = Microsoft Windows 10 TrueType fonts
+	pkgver = 18362.30.190401
+	pkgrel = 1
+	url = https://docs.microsoft.com/en-us/typography/
+	arch = any
+	license = custom
+	makedepends = p7zip
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-mkfontscale
+	depends = xorg-mkfontdir
+	provides = ttf-font
+	conflicts = ttf-vista-fonts
+	conflicts = ttf-ms-win8
+	conflicts = ttf-win7-fonts
+	conflicts = ttf-office-2007-fonts
+	source = https://software-download.microsoft.com/download/pr/18362.30.190401-1528.19h1_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso
+	sha256sums = ab4862ba7d1644c27f27516d24cb21e6b39234eb3301e5f1fb365a78b22f79b3
+
+pkgname = ttf-win10
+
