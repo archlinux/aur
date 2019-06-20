@@ -12,7 +12,7 @@
 #   git -C dbus remote set-url origin https://gitlab.freedesktop.org/dbus/dbus.git
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
-pkgver=1.12.14
+pkgver=1.12.16
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -21,7 +21,7 @@ license=(GPL custom)
 groups=('selinux')
 depends=(systemd-libs-selinux expat audit)
 makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive graphviz audit libselinux)
-_commit=a330c6184fe9c7f67495f8d4563b11d51a6dccc7  # tags/dbus-1.12.14^0
+_commit=23cc709db8fab94f11fa48772bff396b20aea8b0  # tags/dbus-1.12.16^0
 source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=$_commit")
 sha256sums=('SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
