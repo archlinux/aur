@@ -1,22 +1,21 @@
 pkgbase = xfe-arch
 	pkgdesc = An MS-Explorer like file manager for X with Archlinux xfp support.
-	pkgver = 1.42
+	pkgver = 1.43
 	pkgrel = 1
 	url = http://roland65.free.fr/xfe
-	install = xfe.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
 	depends = fox
 	depends = desktop-file-utils
-	optdepends = yaourt: xfp archlinux support
-	provides = xfe=1.42
+	depends = xcb-util
+	provides = xfe=1.43
 	conflicts = xfe
-	source = http://downloads.sourceforge.net/sourceforge/xfe/xfe-1.42.tar.gz
-	source = arch-yaourt.patch
-	md5sums = 34326f185070db02e7419f85f7967cdf
-	md5sums = 680403ddc2a748b2fb304080b945ac45
+	source = http://downloads.sourceforge.net/sourceforge/xfe/xfe-1.43.tar.gz
+	source = arch-pacman.patch
+	md5sums = 1aedf48862c5170695714f18b3e7a398
+	md5sums = 109d9a6de10865a7f2104c43d8eef94a
 
 pkgname = xfe-arch
 

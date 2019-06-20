@@ -1,7 +1,7 @@
-diff -up src/xfe-1.42/src/FilePanel.cpp.orig src/xfe-1.42/src/FilePanel.cpp
---- src/xfe-1.42/src/FilePanel.cpp.orig	2016-07-27 03:48:17.000000000 -0600
-+++ src/xfe-1.42/src/FilePanel.cpp	2017-03-30 19:47:29.000000000 -0600
-@@ -4474,27 +4474,32 @@ long FilePanel::onCmdPopupMenu(FXObject*
+diff -up src/xfe-1.43/src/FilePanel.cpp.orig src/xfe-1.43/src/FilePanel.cpp
+--- src/xfe-1.43/src/FilePanel.cpp.orig	2018-05-16 09:28:02.000000000 -0600
++++ src/xfe-1.43/src/FilePanel.cpp	2019-06-19 18:28:48.000000000 -0600
+@@ -4481,27 +4481,32 @@ long FilePanel::onCmdPopupMenu(FXObject*
              // Last and before last file extensions
              FXString ext1 = name.rafter('.', 1).lower();
              FXString ext2 = name.rafter('.', 2).lower();
@@ -37,7 +37,7 @@ diff -up src/xfe-1.42/src/FilePanel.cpp.orig src/xfe-1.42/src/FilePanel.cpp
              {
                  ar = true;
                  new FXMenuCommand(menu, _("&Extract here"), archexticon, current, FilePanel::ID_EXTRACT_HERE);
-@@ -4507,7 +4512,7 @@ long FilePanel::onCmdPopupMenu(FXObject*
+@@ -4514,7 +4519,7 @@ long FilePanel::onCmdPopupMenu(FXObject*
                  new FXMenuCommand(menu, _("E&xtract to..."), archexticon, current, FilePanel::ID_EXTRACT);
              }
  #if defined(linux)
@@ -46,7 +46,7 @@ diff -up src/xfe-1.42/src/FilePanel.cpp.orig src/xfe-1.42/src/FilePanel.cpp
              {
                  ar = true;
                  new FXMenuCommand(menu, _("&View"), packageicon, current, FilePanel::ID_VIEW);
-@@ -5359,6 +5364,7 @@ long FilePanel::onCmdPkgInstall(FXObject
+@@ -5382,6 +5387,7 @@ long FilePanel::onCmdPkgInstall(FXObject
  
          // Command to perform
          FXString ext = FXPath::extension(name);
@@ -54,18 +54,18 @@ diff -up src/xfe-1.42/src/FilePanel.cpp.orig src/xfe-1.42/src/FilePanel.cpp
          if (comparecase(ext, "rpm") == 0)
          {
              cmd = "rpm -Uvh " + path;
-@@ -5367,6 +5373,10 @@ long FilePanel::onCmdPkgInstall(FXObject
+@@ -5390,6 +5396,10 @@ long FilePanel::onCmdPkgInstall(FXObject
          {
              cmd = "dpkg -i "+ path;
          }
 +        else if (comparecase(ext3, "pkg.tar.xz") == 0)
 +        {
-+            cmd = "yaourt -U "+ path;
++            cmd = "sudo pacman -U "+ path;
 +        }
  
          // Wait cursor
          getApp()->beginWaitCursor();
-@@ -5406,6 +5416,7 @@ long FilePanel::onCmdPkgUninstall(FXObje
+@@ -5429,6 +5439,7 @@ long FilePanel::onCmdPkgUninstall(FXObje
  
          // Command to perform
          FXString ext = FXPath::extension(name);
@@ -73,34 +73,34 @@ diff -up src/xfe-1.42/src/FilePanel.cpp.orig src/xfe-1.42/src/FilePanel.cpp
          if (comparecase(ext, "rpm") == 0)
          {
              name = name.section('-', 0);
-@@ -5416,6 +5427,11 @@ long FilePanel::onCmdPkgUninstall(FXObje
+@@ -5439,6 +5450,11 @@ long FilePanel::onCmdPkgUninstall(FXObje
              name = name.section('_', 0);
              cmd = "dpkg -r "+ name;
          }
 +        else if (comparecase(ext3, "pkg.tar.xz") == 0)
 +        {
 +            name = name.section('-', 0);
-+            cmd = "yaourt -R " + name;
++            cmd = "sudo pacman -R " + name;
 +        }
  
          // Wait cursor
          getApp()->beginWaitCursor();
-@@ -5902,9 +5918,13 @@ long FilePanel::onCmdPkgQuery(FXObject*
+@@ -5925,9 +5941,13 @@ long FilePanel::onCmdPkgQuery(FXObject*
      {
          cmd = "rpm -qf " + ::quote(file);
      }
 +    else if (pkg_format == PKG_PKG)
 +    {
-+        cmd = "yaourt -Qo " + ::quote(file);
++        cmd = "pacman -Qo " + ::quote(file);
 +    }
      else
      {
 -        MessageBox::error(this, BOX_OK, _("Error"), _("No compatible package manager (rpm or dpkg) found!"));
-+        MessageBox::error(this, BOX_OK, _("Error"), _("No compatible package manager (rpm,  dpkg or yaourt) found!"));
++        MessageBox::error(this, BOX_OK, _("Error"), _("No compatible package manager (rpm, dpkg or pacman) found!"));
          return(0);
      }
  
-@@ -5958,6 +5978,13 @@ long FilePanel::onCmdPkgQuery(FXObject*
+@@ -5984,6 +6004,13 @@ long FilePanel::onCmdPkgQuery(FXObject*
      {
          if (str.find(' ') != -1) // Space character exists in the string
          {
@@ -114,9 +114,9 @@ diff -up src/xfe-1.42/src/FilePanel.cpp.orig src/xfe-1.42/src/FilePanel.cpp
              str = "";
          }
      }
-diff -up src/xfe-1.42/src/help.h.orig src/xfe-1.42/src/help.h
---- src/xfe-1.42/src/help.h.orig	2015-11-28 04:41:59.000000000 -0700
-+++ src/xfe-1.42/src/help.h	2017-03-30 19:47:29.000000000 -0600
+diff -up src/xfe-1.43/src/help.h.orig src/xfe-1.43/src/help.h
+--- src/xfe-1.43/src/help.h.orig	2016-11-07 01:04:00.000000000 -0700
++++ src/xfe-1.43/src/help.h	2019-06-19 18:28:48.000000000 -0600
 @@ -49,7 +49,7 @@
      - Panels synchronization and switching\n \
      - Integrated text editor and viewer (X File Write, Xfw)\n \
@@ -126,26 +126,26 @@ diff -up src/xfe-1.42/src/help.h.orig src/xfe-1.42/src/help.h
      - Custom shell scripts (like Nautilus scripts)\n \
      - Search files and directories\n \
      - Natural sort order (foo10.txt comes after foo2.txt...)\n \
-diff -up src/xfe-1.42/src/main.cpp.orig src/xfe-1.42/src/main.cpp
---- src/xfe-1.42/src/main.cpp.orig	2015-12-15 06:55:15.000000000 -0700
-+++ src/xfe-1.42/src/main.cpp	2017-03-30 19:47:29.000000000 -0600
-@@ -333,6 +333,7 @@ int main(int argc, char* argv[])
+diff -up src/xfe-1.43/src/main.cpp.orig src/xfe-1.43/src/main.cpp
+--- src/xfe-1.43/src/main.cpp.orig	2018-05-16 09:57:11.000000000 -0600
++++ src/xfe-1.43/src/main.cpp	2019-06-19 18:28:48.000000000 -0600
+@@ -334,6 +334,7 @@ int main(int argc, char* argv[])
      // For package query on Linux systems, try to guess if the default package format is deb or rpm:
      //   - if dpkg exists then the system uses deb packages
      //   - else if rpm exists, then the system uses rpm packages
-+    //   - else if yaourt exists, then the system uses pkg packages
++    //   - else if pacman exists, then the system uses pkg packages
      //   - else another (unsupported) package manager is used
  
-     FXString cmd = "dpkg --version";
-@@ -353,7 +354,17 @@ int main(int argc, char* argv[])
+     cmd = "dpkg --version";
+@@ -354,7 +355,17 @@ int main(int argc, char* argv[])
          }
          else
          {
 -            pkg_format = OTHER_PKG; // other (unsupported) package system
-+            cmd = "yaourt --version";
++            cmd = "pacman --version";
 +            str = getCommandOutput(cmd);
 +
-+            if (str.find("yaourt") != -1)
++            if (str.find("pacman") != -1)
 +            {
 +                pkg_format = PKG_PKG; // pkg based system
 +            }
@@ -156,9 +156,9 @@ diff -up src/xfe-1.42/src/main.cpp.orig src/xfe-1.42/src/main.cpp
          }
      }
  #endif
-diff -up src/xfe-1.42/src/Properties.cpp.orig src/xfe-1.42/src/Properties.cpp
---- src/xfe-1.42/src/Properties.cpp.orig	2015-12-16 03:17:47.000000000 -0700
-+++ src/xfe-1.42/src/Properties.cpp	2017-03-30 19:47:29.000000000 -0600
+diff -up src/xfe-1.43/src/Properties.cpp.orig src/xfe-1.43/src/Properties.cpp
+--- src/xfe-1.43/src/Properties.cpp.orig	2018-02-19 02:28:23.000000000 -0700
++++ src/xfe-1.43/src/Properties.cpp	2019-06-19 18:28:48.000000000 -0600
 @@ -169,7 +169,7 @@ PropertiesBox::PropertiesBox(FXWindow* w
      FXString    grpid, usrid;
      FXLabel*    sizelabel = NULL;
@@ -189,10 +189,10 @@ diff -up src/xfe-1.42/src/Properties.cpp.orig src/xfe-1.42/src/Properties.cpp
      {
          editlbl = _("Install/Upgrade:");
      }
-diff -up src/xfe-1.42/src/SearchPanel.cpp.orig src/xfe-1.42/src/SearchPanel.cpp
---- src/xfe-1.42/src/SearchPanel.cpp.orig	2016-07-27 03:46:58.000000000 -0600
-+++ src/xfe-1.42/src/SearchPanel.cpp	2017-03-30 19:47:29.000000000 -0600
-@@ -2263,14 +2263,15 @@ long SearchPanel::onCmdPopupMenu(FXObjec
+diff -up src/xfe-1.43/src/SearchPanel.cpp.orig src/xfe-1.43/src/SearchPanel.cpp
+--- src/xfe-1.43/src/SearchPanel.cpp.orig	2018-05-16 05:37:15.000000000 -0600
++++ src/xfe-1.43/src/SearchPanel.cpp	2019-06-19 18:28:48.000000000 -0600
+@@ -2270,14 +2270,15 @@ long SearchPanel::onCmdPopupMenu(FXObjec
              // Last and before last file extensions
              FXString ext1 = name.rafter('.', 1).lower();
              FXString ext2 = name.rafter('.', 2).lower();
@@ -210,7 +210,7 @@ diff -up src/xfe-1.42/src/SearchPanel.cpp.orig src/xfe-1.42/src/SearchPanel.cpp
              {
                  ar = true;
                  new FXMenuCommand(menu, _("&Extract here"), archexticon, this, SearchPanel::ID_EXTRACT);
-@@ -2281,7 +2282,7 @@ long SearchPanel::onCmdPopupMenu(FXObjec
+@@ -2288,7 +2289,7 @@ long SearchPanel::onCmdPopupMenu(FXObjec
                  new FXMenuCommand(menu, _("E&xtract to..."), archexticon, this, SearchPanel::ID_EXTRACT);
              }
  #if defined(linux)
@@ -219,22 +219,22 @@ diff -up src/xfe-1.42/src/SearchPanel.cpp.orig src/xfe-1.42/src/SearchPanel.cpp
              {
                  ar = true;
                  new FXMenuCommand(menu, _("&View"), packageicon, this, SearchPanel::ID_VIEW);
-@@ -4319,9 +4320,13 @@ long SearchPanel::onCmdPkgQuery(FXObject
+@@ -4326,9 +4327,13 @@ long SearchPanel::onCmdPkgQuery(FXObject
      {
          cmd = "rpm -qf " + ::quote(file);
      }
 +    else if (pkg_format == PKG_PKG)
 +    {
-+        cmd = "yaourt -Qo " + ::quote(file);
++        cmd = "pacman -Qo " + ::quote(file);
 +    }
      else
      {
 -        MessageBox::error(this, BOX_OK, _("Error"), _("No compatible package manager (rpm or dpkg) found!"));
-+        MessageBox::error(this, BOX_OK, _("Error"), _("No compatible package manager (rpm, dpkg or yaourt) found!"));
++        MessageBox::error(this, BOX_OK, _("Error"), _("No compatible package manager (rpm, dpkg or pacman) found!"));
          return(0);
      }
  
-@@ -4378,6 +4383,13 @@ long SearchPanel::onCmdPkgQuery(FXObject
+@@ -4388,6 +4393,13 @@ long SearchPanel::onCmdPkgQuery(FXObject
              str = "";
          }
      }
@@ -248,15 +248,15 @@ diff -up src/xfe-1.42/src/SearchPanel.cpp.orig src/xfe-1.42/src/SearchPanel.cpp
  
      // Display the related output message
      FXString message;
-@@ -4426,5 +4438,4 @@ long SearchPanel::onUpdPkgQuery(FXObject
+@@ -4436,5 +4448,4 @@ long SearchPanel::onUpdPkgQuery(FXObject
      return(1);
  }
  
 -
  #endif
-diff -up src/xfe-1.42/src/xfedefs.h.orig src/xfe-1.42/src/xfedefs.h
---- src/xfe-1.42/src/xfedefs.h.orig	2016-07-27 05:27:41.000000000 -0600
-+++ src/xfe-1.42/src/xfedefs.h	2017-03-30 19:47:29.000000000 -0600
+diff -up src/xfe-1.43/src/xfedefs.h.orig src/xfe-1.43/src/xfedefs.h
+--- src/xfe-1.43/src/xfedefs.h.orig	2018-05-15 06:35:05.000000000 -0600
++++ src/xfe-1.43/src/xfedefs.h	2019-06-19 18:28:48.000000000 -0600
 @@ -294,6 +294,7 @@
  // Package format
  #define DEB_PKG      0
@@ -266,14 +266,14 @@ diff -up src/xfe-1.42/src/xfedefs.h.orig src/xfe-1.42/src/xfedefs.h
 +#define OTHER_PKG    3
  
  #endif
-diff -up src/xfe-1.42/src/XFilePackage.cpp.orig src/xfe-1.42/src/XFilePackage.cpp
---- src/xfe-1.42/src/XFilePackage.cpp.orig	2015-12-15 06:53:31.000000000 -0700
-+++ src/xfe-1.42/src/XFilePackage.cpp	2017-03-30 20:51:59.000000000 -0600
+diff -up src/xfe-1.43/src/XFilePackage.cpp.orig src/xfe-1.43/src/XFilePackage.cpp
+--- src/xfe-1.43/src/XFilePackage.cpp.orig	2015-12-15 06:53:31.000000000 -0700
++++ src/xfe-1.43/src/XFilePackage.cpp	2019-06-19 18:28:48.000000000 -0600
 @@ -32,6 +32,7 @@
  char**   args;
  FXbool   dpkg = false;
  FXbool   rpm = false;
-+FXbool   yaourt = false;
++FXbool   pacman = false;
  FXColor  highlightcolor;
  FXbool   allowPopupScroll = false;
  FXuint   single_click;
@@ -308,7 +308,7 @@ diff -up src/xfe-1.42/src/XFilePackage.cpp.orig src/xfe-1.42/src/XFilePackage.cp
      }
 +    else if (comparecase(ext3, "pkg.tar.xz") == 0)
 +    {
-+        cmd = "yaourt -U "+filename;
++        cmd = "sudo pacman -U "+filename;
 +    }
      else
      {
@@ -330,7 +330,7 @@ diff -up src/xfe-1.42/src/XFilePackage.cpp.orig src/xfe-1.42/src/XFilePackage.cp
 +        // Get package name
 +        package = FXPath::name(filename);
 +        package = package.section('-', 0);
-+        cmd = "yaourt -R "+ package;
++        cmd = "sudo pacman -R "+ package;
 +    }
      else
      {
@@ -350,7 +350,7 @@ diff -up src/xfe-1.42/src/XFilePackage.cpp.orig src/xfe-1.42/src/XFilePackage.cp
 +    else if (comparecase(ext3, "pkg.tar.xz") == 0)
 +    {
 +        errorflag = false;
-+        cmd = "yaourt -Qlp "+::quote(filename);
++        cmd = "pacman -Qlp "+::quote(filename);
 +    }
      else if (errorflag == false)
      {
@@ -371,7 +371,7 @@ diff -up src/xfe-1.42/src/XFilePackage.cpp.orig src/xfe-1.42/src/XFilePackage.cp
 +    {
 +        errorflag = false;
 +        buf += _("[PKG package]\n");
-+        cmd = "yaourt -Qip "+::quote(filename);
++        cmd = "pacman -Qip "+::quote(filename);
 +    }
      else if (errorflag == false)
      {
@@ -389,7 +389,7 @@ diff -up src/xfe-1.42/src/XFilePackage.cpp.orig src/xfe-1.42/src/XFilePackage.cp
  
      // Test the existence of the Debian package manager (dpkg)
      // and the RedHat package manager (rpm)
-+    // and the ArchLinux package manager (yaourt)
++    // and the ArchLinux package manager (pacman)
      FXString cmd = "dpkg --version";
      FXString str = getCommandOutput(cmd);
  
@@ -397,20 +397,20 @@ diff -up src/xfe-1.42/src/XFilePackage.cpp.orig src/xfe-1.42/src/XFilePackage.cp
          rpm = true;
      }
  
-+    cmd = "yaourt --version";
++    cmd = "pacman --version";
 +    str = getCommandOutput(cmd);
 +
-+    if (str.find("yaourt") != -1)
++    if (str.find("pacman") != -1)
 +    {
-+        yaourt = true;
++        pacman = true;
 +    }
 +
      // No package manager was found
 -    if ((dpkg == false) && (rpm == false))
-+    if ((dpkg == false) && (rpm == false) && (yaourt == false))
++    if ((dpkg == false) && (rpm == false) && (pacman == false))
      {
 -        MessageBox::error(window, BOX_OK, _("Error"), _("No compatible package manager (rpm or dpkg) found!"));
-+        MessageBox::error(window, BOX_OK, _("Error"), _("No compatible package manager (rpm, dpkg or yaourt) found!"));
++        MessageBox::error(window, BOX_OK, _("Error"), _("No compatible package manager (rpm, dpkg or pacman) found!"));
          exit(EXIT_FAILURE);
      }
  
