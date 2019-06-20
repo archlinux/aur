@@ -1,22 +1,23 @@
 # Maintainer: Petr Mrázek <petr@mojang.com>
 pkgname=minecraft-launcher-beta
-pkgver=2.1.2339
+pkgver=2.1.5195
 pkgrel=1
-pkgdesc="Official Minecraft Launcher - Beta"
+pkgdesc="Official Minecraft Launcher Beta"
 arch=('x86_64')
 url="https://mojang.com/"
 license=('All rights reserved')
-depends=('java-runtime=8' 'xorg-xrandr' 'libxss' 'alsa-lib' 'gtk2' 'gconf' 'libxtst' 'nss')
+depends=('java-runtime=8' 'xorg-xrandr' 'libxss' 'libx11' 'libxcb' 'alsa-lib' 'gtk2' 'gconf' 'libxtst' 'nss')
 optdepends=('flite: narrator support')
+conflicts=('minecraft-launcher')
 source=(
 https://launcher.mojang.com/download/linux/x86_64/minecraft-launcher_${pkgver}.tar.gz
-minecraft-launcher-beta.desktop
-minecraft-launcher-beta.svg
+minecraft-launcher.desktop
+minecraft-launcher.svg
 )
 sha256sums=(
-'892771341c0133f6ea11dbb033e6b4ce79db7e5ef84d684a132cb9cb57e87ab4'
-'9a00dc84bf9c14e0ccc29cd92882197854a3bd732e64d93a92b0330726ec4960'
-'35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71'
+'8c95721733197f3e58a2cba6809b751a758de41cf85c9c5d475b76be94db2bc9'
+'677e2442a1ae83cc58d8d403666e508129e97dbed37fdfafdceac6101dc0dee7'
+'58200e6464bdb26d640be0c4c1ac20384a627b46ed912da1844cd8ad32c0a3b8'
 )
 
 build() {
@@ -32,11 +33,11 @@ package () {
   mkdir -p "opt"
   mkdir -p "usr/bin"
 
-  install -Dm644 "$srcdir/minecraft-launcher-beta.svg"    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/minecraft-launcher-beta.svg"
+  install -Dm644 "$srcdir/minecraft-launcher.svg"    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/minecraft-launcher.svg"
 
-  install -Dm644 "$srcdir/minecraft-launcher-beta.desktop"    "$pkgdir/usr/share/applications/minecraft-launcher-beta.desktop"
+  install -Dm644 "$srcdir/minecraft-launcher.desktop"    "$pkgdir/usr/share/applications/minecraft-launcher.desktop"
 
-  cp -Rv "$srcdir/minecraft-launcher" "$pkgdir/opt/$pkgname"
-  ln -s "/opt/$pkgname/minecraft-launcher" "$pkgdir/usr/bin/$pkgname"
+  cp -Rv "$srcdir/minecraft-launcher" "$pkgdir/opt/minecraft-launcher"
+  ln -s "/opt/minecraft-launcher/minecraft-launcher" "$pkgdir/usr/bin/minecraft-launcher"
 
 }
