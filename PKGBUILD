@@ -97,6 +97,10 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/568
   git cherry-pick -n 00d8337d
 
+  # Fix background texture corruption when resuming from suspend on Nvidia
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/600
+  git cherry-pick -n 87b86262^..eabb1842
+
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
 }
