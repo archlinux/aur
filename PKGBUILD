@@ -5,21 +5,20 @@
 
 pkgname=dosbox-djcrx
 pkgver=2.05
-pkgrel=8
+pkgrel=9
 pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.delorie.com/djgpp/"
 depends=('glibc' 'gcc-libs')
 license=('GPL' 'LGPL' 'custom:djgpp')
-source=("http://www.delorie.com/pub/djgpp/current/v2/djcrx${pkgver//./}.zip"
-        "http://www.delorie.com/pub/djgpp/current/v2/djlsr${pkgver//./}.zip"
+source=("ftp://www.delorie.com/pub/djgpp/current/v2/djcrx${pkgver//./}.zip"
+        "ftp://www.delorie.com/pub/djgpp/current/v2/djlsr${pkgver//./}.zip"
         ttyscrn.patch
         nmemalign.patch
         fseeko64.patch
         asm.patch
         dxegen.patch
-        gcc-no-werror.patch
-        environ.c)
+	djgpp-djcrx-gcccompat.patch)
 makedepends=('dosbox-gcc')
 sha256sums=('22274ed8d5ee57cf7ccf161f5e1684fd1c0192068724a7d34e1bde168041ca60'
             '80690b6e44ff8bc6c6081fca1f4faeba1591c4490b76ef0ec8b35847baa5deea'
@@ -28,8 +27,7 @@ sha256sums=('22274ed8d5ee57cf7ccf161f5e1684fd1c0192068724a7d34e1bde168041ca60'
             '536684b0152f7ad77b99bcc5ea535ca8339832399c4582b944ccd882e4b261a1'
             '693810c3242f4e23cdc55d3101281721da9407851e5d29459ad59405e534b916'
             'SKIP'
-            'e768d4f2ac8c5b2f21afd7a0dddfc1921377a6675ca099e78baffe9ecab081db'
-            '4d5a1448a12fdcebc37578da8a29a1924f68495d4c27b75297ead8ac0542e816')
+            'SKIP')
 options=('!buildflags' '!strip')
 _target='i586-pc-msdosdjgpp'
 
@@ -37,13 +35,8 @@ prepare() {
   sed -i "s/i586-pc-msdosdjgpp/$_target/" src/makefile.def src/dxe/makefile.dxe
   sed -i 's/ln/ln -f/' src/dxe/makefile.dxe
 
-  # enable building without an ldscript
-  ln -fs ../../../environ.c src/libc/crt0/environ.c
-  sed -i '/dfinfo\.c/ a \
-SRC += environ.c' src/libc/crt0/makefile
-
-  # fix build with gcc > 6
-  patch -Np0 < gcc-no-werror.patch
+  # fix build with gcc >= 8 
+  patch -Np1 < djgpp-djcrx-gcccompat.patch
 
   # gcc provides its own float.h which masks this one
   ln -fs float.h include/djfloat.h
