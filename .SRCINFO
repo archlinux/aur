@@ -1,0 +1,15 @@
+pkgbase = stardict-dictd_www.dict.org_gcide
+	pkgdesc = The Collaborative International Dictionary of English for stardict et al. from huzheng.org
+	pkgver = 5.2.4.2
+	pkgrel = 3
+	url = http://download.huzheng.org
+	arch = any
+	license = GPL
+	optdepends = sdcv: command line dictionary.
+	provides = stardict-dictd_www.dict.org_gcide
+	conflicts = stardict-dictd_www.dict.org_gcide
+	source = http://download.huzheng.org/dict.org/stardict-dictd_www.dict.org_gcide-2.4.2.tar.bz2
+	sha512sums = f9090f8d3629cf4bf3df99939bfad25b0b1a4e6d8971a381f9566672bcb2e00191dde6ccd1c184b868a0f53df2aa8ab6402290d3d083cd35016ea85340ada78b
+
+pkgname = stardict-dictd_www.dict.org_gcide
+
