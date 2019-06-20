@@ -4,13 +4,13 @@
 
 pkgname=mkl-dnn
 pkgver=0.19
-pkgrel=1
+pkgrel=2
 _mklmlver=2019.0.5.20190502
 pkgdesc="Intel® Math Kernel Library for Deep Neural Networks"
 arch=(x86_64)
 url=https://github.com/intel/mkl-dnn
 license=('APACHE')
-makedepends=('cmake>=2.8' 'doxygen>=1.8.5' 'graphviz')
+makedepends=('cmake>=2.8' 'doxygen>=1.8.5' 'graphviz' 'patchelf')
 optdepends=('intel-mkl: Intel MKL small library for Intel OpenMP linking'
             'intel-compiler-base: Intel OpenMP runtime linking')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/intel/$pkgname/archive/v$pkgver.tar.gz"
@@ -33,18 +33,22 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/build"
-  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
+  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_INSTALL_LIBDIR="lib" -DCMAKE_INSTALL_RPATH="/usr/lib/mklml" -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
   make
   make doc
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver/build"
-  make test
+  ctest
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/build"
   make install
-  mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib" 
+  mkdir -p $pkgdir/usr/lib/mklml
+  
+  # Move libiomp5 so that it doesnt conflict with openmp package
+  mv "$pkgdir/usr/lib/libiomp5.so" "$pkgdir/usr/lib/mklml"  
+  patchelf --set-rpath /usr/lib/mklml "$pkgdir/usr/lib/libmklml_intel.so"
 }
