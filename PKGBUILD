@@ -1,38 +1,25 @@
-# Maintainer: Bruce Zhang
-# Contributor: RemiliaForever <remilia AT koumakan DOT cc>
-
+# Maintainer: Shane <lyx_shane@outlook.com>
 pkgname=xmind-zen
-pkgver=201807162014
-pkgrel=3
-pkgdesc="XMind - The most popular mind mapping software"
-arch=('x86_64')
-url="http://www.xmind.net"
-license=('EPL' 'LGPL')
-depends=('electron2')
-provides=('xmind')
-conflicts=('xmind')
-source=("https://dl3.xmind.net/XMind-ZEN-for-Linux-64bit.rpm")
-sha256sums=('0ded9e1bcf15a7cb1aa4c2e364c6b627f1e0cc68c976b850ee9737a35123bc1d')
+pkgver=2019
+pkgrel=06
+pkgdesc="xmind zen converted from .rpm package"
+arch=("x86_64")
+url="https://www.xmind.cn/"
+license=('custom')
+depends=()
 
-prepare() {
-    sed -i 's/"\/opt\/XMind ZEN\/XMind"/XMind/' "$srcdir/usr/share/applications/XMind.desktop"
-    echo "#!/usr/bin/env sh
-exec electron2 /usr/share/xmind-zen/app \$@    
-" > "$srcdir/XMind.sh"
-}
+source=(
+	"http://dl2.xmind.cn/XMind-ZEN-for-Linux-64bit.rpm"
+	"https://www.xmind.cn/terms/index.html"
+)
+
+md5sums=('fe6357e885b72400a597416ac3d0f314'
+	 'SKIP')
+
+options=('!strip')
 
 package() {
-    # Install resources
-    cd "$srcdir/opt/XMind ZEN/resources/app"
-    find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/xmind-zen/app/{}" \;
-
-    # Install start script
-    install -Dm755 "$srcdir/XMind.sh" "$pkgdir/usr/bin/XMind"
-
-    # Install desktop file
-    install -Dm644 "$srcdir/usr/share/applications/XMind.desktop" "$pkgdir/usr/share/applications/XMind.desktop"
-
-    # Install icons
-    cd "$srcdir/usr/share/icons/hicolor"
-    find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/icons/hicolor/{}" \;
+  cd ${srcdir}
+  cp -r opt usr ${pkgdir}
+  install -Dm644 index.html ${pkgdir}/usr/share/licenses/$pkgname/license.html
 }

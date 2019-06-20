@@ -1,16 +1,15 @@
 pkgbase = xmind-zen
-	pkgdesc = XMind - The most popular mind mapping software
-	pkgver = 201807162014
-	pkgrel = 3
-	url = http://www.xmind.net
+	pkgdesc = xmind zen converted from .rpm package
+	pkgver = 2019
+	pkgrel = 06
+	url = https://www.xmind.cn/
 	arch = x86_64
-	license = EPL
-	license = LGPL
-	depends = electron2
-	provides = xmind
-	conflicts = xmind
-	source = https://dl3.xmind.net/XMind-ZEN-for-Linux-64bit.rpm
-	sha256sums = 0ded9e1bcf15a7cb1aa4c2e364c6b627f1e0cc68c976b850ee9737a35123bc1d
+	license = custom
+	options = !strip
+	source = http://dl2.xmind.cn/XMind-ZEN-for-Linux-64bit.rpm
+	source = https://www.xmind.cn/terms/index.html
+	md5sums = fe6357e885b72400a597416ac3d0f314
+	md5sums = SKIP
 
 pkgname = xmind-zen
 
