@@ -1,6 +1,6 @@
 pkgbase = waterfox-kde-bin
 	pkgdesc = Free, open and private browser with openSUSE's patches for better integration with KDE
-	pkgver = 56.2.10.1
+	pkgver = 56.2.11
 	pkgrel = 1
 	url = https://www.waterfox.net/
 	install = waterfox-kde-bin.install
@@ -23,12 +23,12 @@ pkgbase = waterfox-kde-bin
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = pulseaudio: Audio support
 	optdepends = alsa-lib: Audio support
-	provides = waterfox=56.2.10.1
+	provides = waterfox=56.2.11
 	conflicts = waterfox
 	options = !emptydirs
 	options = !strip
-	source = waterfox-kde-56.2.10.1-0-x86_64.pkg.tar.xz::https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/Arch/x86_64/waterfox-kde-56.2.10.1-0-x86_64.pkg.tar.xz
-	sha256sums = 4aab446e4175c975135734183b3aa7f95732c2b794f866a83e0328901a2fe381
+	source = waterfox-kde-56.2.11-0-x86_64.pkg.tar.xz::https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/Arch/x86_64/waterfox-kde-56.2.11-0-x86_64.pkg.tar.xz
+	sha256sums = 20784e106f78aeebefb8105ed5edc94cb0a39d583e5a0b69e28f01c6f15d8a10
 
 pkgname = waterfox-kde-bin
 
