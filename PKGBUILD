@@ -4,7 +4,7 @@
 
 pkgname=theia-next
 pkgver=20190620
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://www.theia-ide.org/'
 license=('EPL2')
@@ -20,7 +20,7 @@ source=(
 #"${_ms_python_vsix}::https://github.com/microsoft/vscode-python/releases/download/${_ms_python_version}/ms-python-release.vsix"
 sha1sums=('1e84fc34576beac0d376c9970af1d2403a6c731f')
 #noextract=("${_ms_python_vsix}")
-options=(!strip)
+options=(!strip) #to speed up build
 
 #prepare() {
   #mkdir -p plugins

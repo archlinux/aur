@@ -1,6 +1,6 @@
 pkgbase = theia-next
 	pkgver = 20190620
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.theia-ide.org/
 	arch = any
 	license = EPL2
