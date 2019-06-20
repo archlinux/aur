@@ -4,7 +4,7 @@
 #
 _pkgname="mate-window-applets"
 pkgname="mate-window-buttons-applet"
-pkgver=19.10.0
+pkgver=19.10.2
 pkgrel=1
 pkgdesc="Modern free desktop icon theme whose design is based around the\
  use of bold colours and simple geometric shapes to compose icons with\
@@ -18,7 +18,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 options=('!strip')
 source=("mate-window-applets-${pkgver}::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ab7bea2ee38dc325c37e6ccad30224bd3265adbf02630dc426d6c23b3d446b1d')
+sha256sums=('b537273f9b68427555d148a32b7fb87bf5a148ea697c5717a297f1c462a31b2d')
 
 build() {
     cd "${_pkgname}-${pkgver}"
