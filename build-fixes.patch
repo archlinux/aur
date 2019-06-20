@@ -1,46 +1,22 @@
---- qt-linux/ts3soundboard_linux.pro_orig	2017-06-25 13:04:17.367485782 +0200
-+++ qt-linux/ts3soundboard_linux.pro	2017-06-25 13:05:46.234153803 +0200
-@@ -20,7 +20,12 @@
- CONFIG(debug, release|debug):DEFINES += _DEBUG
- CONFIG(release, release|debug):DEFINES += NDEBUG
+--- src/inputfileffmpeg.cpp_orig	2019-06-20 14:42:36.187742498 +0200
++++ src/inputfileffmpeg.cpp	2019-06-20 14:43:27.288343432 +0200
+@@ -416,7 +416,7 @@
  
--INCLUDEPATH += ../include
-+INCLUDEPATH += /opt/qt5.6/include
-+INCLUDEPATH += /opt/qt5.6/include/QtWidgets
-+INCLUDEPATH += /opt/qt5.6/include/QtGui
-+INCLUDEPATH += /opt/qt5.6/include/QtNetwork
-+INCLUDEPATH += /opt/qt5.6/include/QtCore
-+INCLUDEPATH += /usr/include/teamspeak3
+ 	if(properFrames == 0)
+ 	{
+-		if(m_codecCtx->codec->capabilities & CODEC_CAP_DELAY && m_convertedSamples < m_decodedSamplesTargetSR)
++		if(m_codecCtx->codec->capabilities & AV_CODEC_CAP_DELAY && m_convertedSamples < m_decodedSamplesTargetSR)
+ 		{
+ 			// Some codecs will cause frames to be buffered up in the decoding process. If the CODEC_CAP_DELAY flag
+ 			// is set, there can be buffered up frames that need to be flushed, so we'll do that
+--- qt-linux/ts3soundboard_linux.pro_orig	2019-06-20 14:48:44.728813522 +0200
++++ qt-linux/ts3soundboard_linux.pro	2019-06-20 14:48:51.490788441 +0200
+@@ -36,7 +36,7 @@
  
- LIBS += -L$(TS3DIR)
- 
-@@ -29,7 +34,7 @@
-     -lavutil \
-     -lswresample
+ QMAKE_CXXFLAGS += -Wno-unused-parameter
  
 -QMAKE_POST_LINK += "cp $${DESTDIR}/lib$${TARGET}.so $(TS3DIR)/plugins"
 +#QMAKE_POST_LINK += "cp $${DESTDIR}/lib$${TARGET}.so $(TS3DIR)/plugins"
  
- 
  include(./ts3soundboard.pri)
---- src/peakmeter.h_orig	2017-06-25 13:09:23.183737983 +0200
-+++ src/peakmeter.h	2017-06-25 13:10:14.383142304 +0200
-@@ -5,6 +5,7 @@
- // All rights reserved
- // Contact: rp_soundboard@mgraefe.de
- //----------------------------------
-+#include <math.h>
- 
- #pragma once
- #ifndef rpsbsrc__peakmeter_H__
---- src/UpdateChecker.h_orig	2017-07-22 13:25:43.865108011 +0200
-+++ src/UpdateChecker.h	2017-07-22 13:26:21.277227454 +0200
-@@ -39,7 +39,7 @@
- 
- public:
- 	explicit UpdateChecker(QObject *parent = NULL);
--	void startCheck(bool explicitCheck = true, ConfigModel *config = false);
-+	void startCheck(bool explicitCheck = true, ConfigModel *config = NULL);
- 	static QByteArray getUserAgent();
- 	static void setUserAgent(QNetworkRequest &request);
  
