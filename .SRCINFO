@@ -1,14 +1,14 @@
 pkgbase = zsh-pure-prompt
 	pkgdesc = Pretty, minimal and fast ZSH prompt
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/sindresorhus/pure
 	arch = any
 	license = MIT
 	depends = git
 	depends = zsh
-	source = https://github.com/sindresorhus/pure/archive/v1.9.0.tar.gz
-	sha256sums = ec9f990f422ff2d07162178c4e54743a8a5cb88cd2345be858e1ff4a299dc9a7
+	source = https://github.com/sindresorhus/pure/archive/v1.10.0.tar.gz
+	sha256sums = 4cc52be91741d4254b62ab93c4ec9aaab07384ad2cff23ecebcee48e5861e887
 
 pkgname = zsh-pure-prompt
 
