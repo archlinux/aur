@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=nnn-git
-pkgver=2.4.r142.g6892ba6
+pkgver=2.5.r50.gc07288e
 pkgrel=1
 pkgdesc='A lightweight terminal file browser'
 arch=(x86_64)
@@ -38,16 +38,16 @@ prepare() {
 
 build() {
   cd nnn
-  make nnn
+  make
 }
 
 package() {
   cd nnn
   make DESTDIR="$pkgdir" PREFIX=/usr install
 
-  install -Dm644 scripts/auto-completion/fish/nnn.fish "$pkgdir"/usr/share/fish/vendor_completions.d/nnn.fish
-  install -Dm644 scripts/auto-completion/bash/nnn-completion.bash "$pkgdir"/usr/share/bash-completion/completions/nnn
-  install -Dm644 scripts/auto-completion/zsh/_nnn "$pkgdir"/usr/share/zsh/site-functions/_nnn
+  install -Dm644 misc/auto-completion/fish/nnn.fish "$pkgdir"/usr/share/fish/vendor_completions.d/nnn.fish
+  install -Dm644 misc/auto-completion/bash/nnn-completion.bash "$pkgdir"/usr/share/bash-completion/completions/nnn
+  install -Dm644 misc/auto-completion/zsh/_nnn "$pkgdir"/usr/share/zsh/site-functions/_nnn
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

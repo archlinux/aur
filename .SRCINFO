@@ -1,6 +1,6 @@
 pkgbase = nnn-git
 	pkgdesc = A lightweight terminal file browser
-	pkgver = 2.4.r142.g6892ba6
+	pkgver = 2.5.r50.gc07288e
 	pkgrel = 1
 	url = https://github.com/jarun/nnn
 	arch = x86_64
