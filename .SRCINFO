@@ -1,13 +1,20 @@
 pkgbase = theia-next
 	pkgver = 20190620
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.theia-ide.org/
 	arch = any
 	license = EPL2
 	depends = nodejs
+	noextract = ms-python.python-2019.5.18875.vsix
 	options = !strip
+	source = theia
 	source = package.json
+	source = ms-python.python-2019.5.18875.vsix::https://github.com/microsoft/vscode-python/releases/download/2019.5.18875/ms-python-release.vsix
+	source = Go-0.11.0.vsix::https://github.com/microsoft/vscode-go/releases/download/0.11.0/Go-0.11.0.vsix
+	sha1sums = 1155980968a6c82fe8a77c29284761bb0de63785
 	sha1sums = 1e84fc34576beac0d376c9970af1d2403a6c731f
+	sha1sums = 2b0672378cbc96e5cfa778b19b8f0ae92f67686a
+	sha1sums = 5e8066e914792f8d2793e495ce386cd6b2df1afa
 
 pkgname = theia-next
 
