@@ -1,6 +1,6 @@
 pkgbase = waifu2x-converter-cpp-cuda-git
 	pkgdesc = Image Super-Resolution for Anime-Style-Art. (re-implementation in C++ using OpenCV). with CUDA support (GIT Version)
-	pkgver = v5.2.4.102.gaed8bd4
+	pkgver = v5.2.4.208.g0895745
 	pkgrel = 1
 	url = https://github.com/DeadSix27/waifu2x-converter-cpp
 	arch = x86_64
