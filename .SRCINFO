@@ -1,6 +1,6 @@
 pkgbase = kvazaar-git
 	pkgdesc = An open-source HEVC encoder (git version)
-	pkgver = 1.2.0.r313.g933ff6ed
+	pkgver = 1.2.0.r318.g75b25955
 	pkgrel = 1
 	url = http://ultravideo.cs.tut.fi/#encoder
 	arch = x86_64
@@ -16,10 +16,8 @@ pkgbase = kvazaar-git
 	conflicts = kvazaar
 	source = git+https://github.com/ultravideo/kvazaar.git
 	source = git+https://github.com/ultravideo/greatest.git
-	source = kvazaar-git-disable-test-external-symbols.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 3a4dd1b38d58751381b24c81a86c21df7cfdc85ba5c6a13d879f112e463189b9
 
 pkgname = kvazaar-git
 
