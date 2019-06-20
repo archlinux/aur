@@ -1,6 +1,6 @@
 pkgbase = dosbox-gcc
 	pkgdesc = djgpp cross-compiler for the dosbox environment
-	pkgver = 8.3.0
+	pkgver = 9.1.0
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = dosbox-gcc
 	options = !strip
 	options = staticlibs
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/gcc/gcc-8.3.0/gcc-8.3.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-9.1.0/gcc-9.1.0.tar.xz
 	source = http://www.delorie.com/pub/djgpp/current/v2/djcrx205.zip
 	source = http://isl.gforge.inria.fr/isl-0.18.tar.xz
 	source = https://zlib.net/zlib-1.2.11.tar.gz

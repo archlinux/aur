@@ -3,7 +3,7 @@
 # Contributor: janezz55
 
 pkgname=dosbox-gcc
-pkgver=8.3.0
+pkgver=9.1.0
 _target="i586-pc-msdosdjgpp"
 _islver=0.18
 _djver=2.05
