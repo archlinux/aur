@@ -1,6 +1,6 @@
 pkgbase = libfabric
 	pkgdesc = OpenFabrics Alliance fabric service interface communication library
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = libfabric
 	license = GPL2
 	license = BSD
 	depends = glibc
-	source = https://github.com/ofiwg/libfabric/releases/download/v1.7.1/libfabric-1.7.1.tar.gz
-	sha256sums = 312e62c57f79b7274f89c41823932c00b15f1cc8de9c1f8dce17cd7fdae66fa1
+	source = https://github.com/ofiwg/libfabric/releases/download/v1.7.2/libfabric-1.7.2.tar.gz
+	sha256sums = 5290d2f971eef77556e1ed47df47aa006df3bf6d565b77adbe1604ac26bd9eda
 
 pkgname = libfabric
 

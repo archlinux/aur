@@ -1,7 +1,7 @@
 # Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=libfabric
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='OpenFabrics Alliance fabric service interface communication library'
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'BSD')
 depends=('glibc')
 source=("https://github.com/ofiwg/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('312e62c57f79b7274f89c41823932c00b15f1cc8de9c1f8dce17cd7fdae66fa1')
+sha256sums=('5290d2f971eef77556e1ed47df47aa006df3bf6d565b77adbe1604ac26bd9eda')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
