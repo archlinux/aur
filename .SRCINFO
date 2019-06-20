@@ -1,7 +1,7 @@
 pkgbase = mirrorlist-manager
 	pkgdesc = A Qt frontend for easy mirrorlist management
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 3
 	url = https://github.com/Rizwan-Hasan/ArchLinux-Mirrorlist-Manager
 	arch = x86_64
 	license = GPL3
@@ -12,10 +12,10 @@ pkgbase = mirrorlist-manager
 	depends = pyqt5-common>=5.11.2
 	depends = python-pandas>=0.23.4
 	depends = pacman-contrib
-	source = Mirorlist-Manager.tar.gz::https://github.com/Rizwan-Hasan/ArchLinux-Mirrorlist-Manager/archive/v1.1.tar.gz
+	source = Mirorlist-Manager.tar.gz::https://github.com/Rizwan-Hasan/ArchLinux-Mirrorlist-Manager/archive/v1.2.tar.gz
 	source = mirrorist-manager.desktop.in
 	source = setup.py
-	md5sums = 23ffd224f2d1f22f5fc4ffeff311aa02
+	md5sums = 27bc85d102f073649e1f4b8735ab49e7
 	md5sums = af01b7c426062910c37e65b98df7f207
 	md5sums = f966222c78f492343e8f336bae1bdbf0
 

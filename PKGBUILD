@@ -1,8 +1,8 @@
 # Maintainer: Rizwan Hasan <rizwan.hasan486@gmail.com>
 
 pkgname=mirrorlist-manager
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=3
 pkgdesc="A Qt frontend for easy mirrorlist management"
 arch=('x86_64')
 url="https://github.com/Rizwan-Hasan/ArchLinux-Mirrorlist-Manager"
@@ -12,7 +12,7 @@ makedepends=('cython>=0.28.5')
 source=(Mirorlist-Manager.tar.gz::"https://github.com/Rizwan-Hasan/ArchLinux-Mirrorlist-Manager/archive/v${pkgver}.tar.gz"
                              	  "mirrorist-manager.desktop.in"
                              	  "setup.py")
-md5sums=('23ffd224f2d1f22f5fc4ffeff311aa02' 
+md5sums=('27bc85d102f073649e1f4b8735ab49e7' 
 		 'af01b7c426062910c37e65b98df7f207'
 		 'f966222c78f492343e8f336bae1bdbf0')
 
