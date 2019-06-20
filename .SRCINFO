@@ -1,6 +1,6 @@
 pkgbase = tflint
 	pkgdesc = A linter for Terraform code
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/wata727/tflint
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = tflint
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = https://github.com/wata727/tflint/releases/download/v0.8.1/tflint_linux_386.zip
-	md5sums = 9dfae54f6683a90713bc9622c3b12f7e
+	source = https://github.com/wata727/tflint/releases/download/v0.8.2/tflint_linux_386.zip
+	md5sums = 98062baf10862a6ceb9f438c64e376e8
 
 pkgname = tflint
 
