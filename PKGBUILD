@@ -31,7 +31,7 @@ package() {
     cd "${_pkgname}-${pkgver}/build"
     export DESTDIR="${pkgdir}"
     ninja install
-    cp -a ../data/icons/* "${pkgdir}/usr/share/icons/"
+    cp -a ../data/pixmaps/* "${pkgdir}/usr/share/icons/"
     install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
