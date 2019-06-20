@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-libsass
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="C implementation of Sass CSS preprocessor (library) (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("libsass-${pkgver}.tar.gz"::"https://github.com/sass/libsass/archive/${pkgver}.tar.gz")
-sha256sums=('b4b962a30bcd99adf0162a8eac7e1be94612b1c19912237f53d9a2c11d375169')
+sha256sums=('18d6e866ba2430cccae2551f384aca253a84592c692ce7146550f1d4f273b7d7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
