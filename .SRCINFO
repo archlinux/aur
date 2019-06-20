@@ -1,6 +1,6 @@
 pkgbase = tidb-bin
 	pkgdesc = A distributed NewSQL database compatible with MySQL protocol
-	pkgver = 2.1.11
+	pkgver = 2.1.12
 	pkgrel = 1
 	url = https://github.com/pingcap/tidb
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tidb-bin
 	conflicts = tikv-pd
 	options = strip
 	options = debug
-	source = https://download.pingcap.org/tidb-v2.1.11-linux-amd64.tar.gz
+	source = https://download.pingcap.org/tidb-v2.1.12-linux-amd64.tar.gz
 	source = pd.service
 	source = tidb.service
 	source = tikv.service
@@ -25,7 +25,7 @@ pkgbase = tidb-bin
 	source = pd.toml
 	source = tidb.toml
 	source = tikv.toml
-	sha256sums = 14f865c5012be0425ef2c67cc46d7a7e9d6e0c185f3a3e99b8880737fed4be64
+	sha256sums = 8850e0dc2f8aedb2107d7cdfecb7040dcaea03e132049a17eeaa51675bedc3c1
 	sha256sums = b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924
 	sha256sums = 22318c19bb89ff5a0852df5186cc1496214cd49f2264192413a326d1e8c93dc9
 	sha256sums = 870b8eaf83bc0d22b05b0f3a7890660e483cf77bb1d84bc50ad04fb23068cd8c
@@ -41,9 +41,9 @@ pkgbase = tidb-bin
 
 pkgname = tidb-bin
 	install = tidb.install
-	provides = tidb-server=2.1.11
-	provides = tikv-server=2.1.11
-	provides = pd-server=2.1.11
+	provides = tidb-server=2.1.12
+	provides = tikv-server=2.1.12
+	provides = pd-server=2.1.12
 
 pkgname = tidb-bin-utils
 	optdepends = go-tools: provides goyacc
