@@ -3,7 +3,7 @@
 
 _plug=waifu2x-w2xc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r7.0.g4128c53
+pkgver=r8.0.gec6da15
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -12,7 +12,9 @@ license=('GPL2')
 depends=('vapoursynth'
          'waifu2x-converter-cpp'
          )
-makedepends=('git')
+makedepends=('git'
+             'meson'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-${_plug}.git")
@@ -25,24 +27,18 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd "${_plug}"
-  ./autogen.sh
 }
 
 build() {
   cd build
-  ../"${_plug}"/configure \
-    --prefix=/usr \
-    --libdir=/usr/lib/vapoursynth
+  arch-meson "../${_plug}" \
+    --libdir /usr/lib/vapoursynth
 
-  make
+  ninja
 }
 
 package(){
-  make -C build DESTDIR="${pkgdir}" install
-  cp -R "${_plug}/Waifu2x-w2xc/models" ${pkgdir}/usr/lib/vapoursynth/models
-  chmod -R a+w "${pkgdir}/usr/lib/vapoursynth/models"
+  DESTDIR="${pkgdir}" ninja -C build install
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
