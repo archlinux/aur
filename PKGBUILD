@@ -2,10 +2,10 @@
 
 pkgname=apoo
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An environment for a first course in assembly language programming"
 arch=('any')
-url="http://www.ncc.up.pt/Apoo/"
+url="http://www.dcc.fc.up.pt/~nam/apoo/"
 license=('GPL')
 depends=('pygtk>=2.10' 'desktop-file-utils')
 makedepends=('gendesk')
