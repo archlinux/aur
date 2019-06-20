@@ -11,6 +11,7 @@ pkgbase = tidal-music-linux-git
 	depends = npm
 	depends = electron
 	provides = tidal-music-linux
+	replaces = tidal-music-linux-bin
 	source = git+https://github.com/Bunkerbewohner/tidal-music-linux.git
 	source = tidal-music-linux.desktop
 	source = tidal

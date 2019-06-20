@@ -2,6 +2,7 @@
 
 pkgname=tidal-music-linux-git
 _pkgname=tidal-music-linux
+replaces=('tidal-music-linux-bin')
 pkgver=2.0
 pkgrel=1
 pkgdesc='An electron based wrapper around the Tidal web player for Linux'
