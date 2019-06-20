@@ -12,20 +12,23 @@ if `pacman -Qq gcc-go >/dev/null 2>/dev/null`
 then
 	USING_GCCGO=y
 	GOFLAGS="-gccgoflags -O2"
+	depends=('gcc-libs')
+	makedepends=('gcc-go>=9.1.0')
+else
+	makedepends=('go>=1.12')
 fi
 
 pkgname=caddy-with-cgi
 _pkgbase=caddy
 pkgver=1.0.0
 _cgiver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS, with caddy-cgi plugin and gcc-go support'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
 license=('Apache')
 backup=('etc/caddy/caddy.conf')
 install='caddy.install'
-makedepends=('go>=1.12')
 provides=('caddy')
 conflicts=('caddy')
 source=("https://$_gopkgname/archive/v$pkgver/$_pkgbase-$pkgver.tar.gz"
@@ -44,7 +47,7 @@ sha256sums=('1c8b435a79e21b9832c7a8a88c44e70bc80434ca3719853d2b1092ffbbbbff7d'
 	'69e25def317a6172011472bd060655142f3085a0c81392f8a7a9c42b6a58bbd9'
 	'bd4d912d083be176727882ccc1bbe577a27cc160db09238e5edc05ba458aebce'
 	'80520b80ccabf077a3269f6a1bf55faa3811ef5adce115131b35ef2044d37b64'
-	'f3f9fa975a174928d727f3040fa28e2fbd073b1f4ebd3a68fa43b0aebb90eb64'
+	'03c676ed4cd6467310ba47c8a8874a95a773263115d56001f220c1972e4a3230'
 	'19aa631a55d74aba2c79749c9ae67d7465d1428a072b303aedf1194190778347')
 
 prepare() {
