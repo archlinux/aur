@@ -5,8 +5,8 @@ pkgbase=faiss-git
 pkgname=('faiss-git' 'python-faiss-git' 'python2-faiss-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
-license=('BSD')
-pkgver=v1.5.1.r10.g5d1ed5b
+license=('MIT')
+pkgver=v1.5.2.r5.gd224d11
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
@@ -31,6 +31,9 @@ build() {
   ./configure --prefix=/usr --with-python=python2 --without-cuda
   mv makefile.inc makefile2.inc
   ./configure --prefix=/usr --with-python=python --without-cuda
+  make clean
+  make -C python clean
+  make -C python2 clean
   make
   make -C python
   make -C python2
@@ -42,6 +45,7 @@ package_faiss-git() {
   conflicts=('faiss')
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="$pkgdir" install
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python-faiss-git() {
@@ -52,6 +56,7 @@ package_python-faiss-git() {
 
   cd "${srcdir}/${_pkgname}/python"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-faiss-git() {
@@ -62,4 +67,5 @@ package_python2-faiss-git() {
 
   cd "${srcdir}/${_pkgname}/python2"
   python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
