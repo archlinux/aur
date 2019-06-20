@@ -2,14 +2,14 @@
 
 pkgname='scaleft-client-tools'
 pkgdesc='ScaleFT(TM) client tools'
-pkgver=1.39.2
+pkgver=1.40.1
 pkgrel=1
 arch=('x86_64')
 url="https://scaleft.com"
 license=('custom')
 depends=('glibc')
 source=("https://pkg.scaleft.com/rpm/${pkgname}-${pkgver}-${pkgrel}.${arch}.rpm")
-sha256sums=('b0904e2b21ab9a114a7a49143f9e48bd521338600963c9f9cce4c2beaf2225dc')
+sha256sums=('79fa6133e56e988de469d1e5b6d665de2c650bd64e04b2d8de3a8352759f467b')
 
 package() {
   install -Dm0755 usr/bin/sft ${pkgdir}/usr/bin/sft
