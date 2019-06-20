@@ -6,9 +6,7 @@ _pkgname="mate-window-applets"
 pkgname="mate-window-buttons-applet"
 pkgver=19.10.2
 pkgrel=1
-pkgdesc="Modern free desktop icon theme whose design is based around the\
- use of bold colours and simple geometric shapes to compose icons with\
- pixel perfect rendering."
+pkgdesc="An applet for mate-panel to shows the close,minimize,actions in a panel."
 url="https://github.com/ubuntu-mate/mate-window-applets"
 arch=('any')
 license=('GPL3')
