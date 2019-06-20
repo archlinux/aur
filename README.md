@@ -1,4 +1,4 @@
-# qt-sdk-raspberry-pi: AUR recipe for consistent creation of Qt sdks for various targets
+# AUR recipe for consistent creation of Qt SDKS for various targets
 
 What started out as the intention to facilitate Qt cross platform development for the Raspberry Pi has grown legs and now been extended to:
 
