@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-sassc
 	pkgdesc = C implementation of Sass CSS preprocessor (mingw-w64)
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = http://libsass.org/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mingw-w64-sassc
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = sassc-3.6.0.tar.gz::https://github.com/sass/sassc/archive/3.6.0.tar.gz
-	sha256sums = dac8d83339c3c8fc6b9599e2ff1e0a0ae833ab0e65d4370b9c69bde18f8ec676
+	source = sassc-3.6.1.tar.gz::https://github.com/sass/sassc/archive/3.6.1.tar.gz
+	sha256sums = 8cee391c49a102b4464f86fc40c4ceac3a2ada52a89c4c933d8348e3e4542a60
 
 pkgname = mingw-w64-sassc
 
