@@ -1,6 +1,6 @@
 pkgbase = waterfox-kde
 	pkgdesc = Free, open and private browser with openSUSE's patches for better integration with KDE
-	pkgver = 56.2.10.1
+	pkgver = 56.2.11
 	pkgrel = 1
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -43,12 +43,12 @@ pkgbase = waterfox-kde
 	optdepends = alsa-lib: Audio support
 	optdepends = jack: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = waterfox=56.2.10.1
+	provides = waterfox=56.2.11
 	conflicts = waterfox
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#commit=d7201d404758aa6222f80502e3dcdf016fc87a31
+	source = git+https://github.com/MrAlex94/Waterfox.git#commit=11a3012d04715ee371a1d1a5909871f6c26e1e69
 	source = waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/waterfox.desktop
 	source = waterfox-install-dir.patch
 	source = kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js
@@ -59,6 +59,7 @@ pkgbase = waterfox-kde
 	source = waterfox-kde-56.2.10.1.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/waterfox-kde-56.2.10.1.patch
 	source = dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/dont-statically-link-libstdc%2B%2B.patch
 	source = pgo_fix_missing_kdejs.patch
+	source = UnsortedError.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/UnsortedError.patch
 	sha256sums = SKIP
 	sha256sums = 6e9ec5f9c6fc5b191f9dec85b82d58eb2a51577b989bc7852e6b254d56ff13e8
 	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
@@ -70,6 +71,7 @@ pkgbase = waterfox-kde
 	sha256sums = b55833542edf8cad2b73cf36dac6c667e588dcf79a99b570c5eca645698b80f7
 	sha256sums = 877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8
 	sha256sums = bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e
+	sha256sums = 3b20230c42ac68cdb751c3bd7758a1a45006e00aec8558c33c96d8c4bebbd47f
 
 pkgname = waterfox-kde
 
