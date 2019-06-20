@@ -1,8 +1,8 @@
-# Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
+# Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mce'
-pkgver='1.837'
+pkgver='1.838'
 pkgrel='1'
 pkgdesc="Many-Core Engine for Perl providing parallel processing capabilities"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl>=5.008')
 makedepends=()
 url='https://metacpan.org/release/MCE'
-source=('http://search.cpan.org/CPAN/authors/id/M/MA/MARIOROY/MCE-1.837.tar.gz')
-md5sums=('1ebf6d971af03c68ac2b72fedd4c0a7d')
-sha512sums=('41f7f39d4eecf5e495cbbaf453d1f10c9ed72aab75bcdf30d4ff9fbb5c61a9a326a9088f50b438f248de5c93927438b49d886fc6816fb0f4ac620abff0a9727e')
-_distdir="MCE-1.837"
+source=('http://search.cpan.org/CPAN/authors/id/M/MA/MARIOROY/MCE-1.838.tar.gz')
+md5sums=('55691df4b05cc38476924387aef188d1')
+sha512sums=('33db263a5b8b8eea73dbec2fff9dc0c92fbd075215f0c6a9e21621530cb7f93a23939a02211fe0481c8ba22c2d470437e716f6d2328b7b568cb1bd17b280dc65')
+_distdir="MCE-1.838"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
