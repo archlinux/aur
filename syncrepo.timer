@@ -1,0 +1,10 @@
+[Unit]
+Description=Hourly repository sync
+
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

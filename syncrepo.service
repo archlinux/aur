@@ -1,0 +1,30 @@
+[Unit]
+Description=Sync the ArchLinux Mirror with syncrepo
+Documentation=https://wiki.archlinux.org/index.php/DeveloperWiki:NewMirrors
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=/usr/lib/syncrepo/syncrepo.conf
+EnvironmentFile=-/etc/conf.d/syncrepo
+ExecStart=/usr/bin/syncrepo
+
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+
+# Hardening
+CapabilityBoundingSet=~CAP_SYS_ADMIN
+
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+PrivateMounts=true
+PrivateTmp=true
+
+RestrictSUIDSGID=true
+NoNewPrivileges=true
+
+ReadOnlyPaths=/
+ReadWritePaths=/srv
