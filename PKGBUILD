@@ -6,7 +6,7 @@
 pkgbase=python-visdom-git
 _pkgbase="visdom"
 pkgname=(python-visdom-git python2-visdom-git)
-pkgver=r260.caf4119
+pkgver=r274.35a3576
 pkgrel=1
 arch=(any)
 url='https://github.com/facebookresearch/visdom'
@@ -22,7 +22,7 @@ source=("git+https://github.com/facebookresearch/visdom.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "visdom"
+  cd "${_pkgbase}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -31,10 +31,10 @@ depends=('python-websocket-client' 'python-numpy' 'python-scipy' 'python-request
 provides=('python-visdom')
 conflicts=('python-visdom')
 install='visdom.install'
-  cd "${srcdir}/visdom"
+  cd "${srcdir}/${_pkgbase}"
   python setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  chmod -R 775 $pkgdir/usr/lib/python3.7/site-packages/visdom
+  chmod -R 775 "${pkgdir}/usr/lib/python3.7/site-packages/${_pkgbase}"
 }
 
 package_python2-visdom-git() {
@@ -42,9 +42,9 @@ depends=('python2-websocket-client' 'python2-numpy' 'python2-scipy' 'python2-req
 provides=('python2-visdom')
 conflicts=('python2-visdom')
 install='visdom2.install'
-  cd "${srcdir}/visdom"
+  cd "${srcdir}/${_pkgbase}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
-  mv $pkgdir/usr/bin/visdom $pkgdir/usr/bin/visdom2
+  mv "${pkgdir}/usr/bin/visdom" "${pkgdir}/usr/bin/visdom2"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  chmod -R 775 $pkgdir/usr/lib/python2.7/site-packages/visdom
+  chmod -R 775 "${pkgdir}/usr/lib/python2.7/site-packages/${_pkgbase}"
 }
