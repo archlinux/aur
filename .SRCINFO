@@ -1,0 +1,29 @@
+pkgbase = zotero-git
+	pkgdesc = Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
+	pkgver = r10416.f38ae9425
+	pkgrel = 1
+	url = http://www.zotero.org
+	arch = x86_64
+	license = GPL3
+	makedepends = npm
+	makedepends = wget
+	makedepends = zip
+	makedepends = unzip
+	makedepends = python2
+	makedepends = python
+	makedepends = rsync
+	depends = dbus-glib
+	depends = gtk3
+	depends = nss
+	depends = libxt
+	conflicts = zotero
+	replaces = zotero
+	source = zotero-client::git+https://github.com/zotero/zotero
+	source = zotero-build::git+https://github.com/zotero/zotero-build
+	source = zotero-standalone-build::git+https://github.com/zotero/zotero-standalone-build
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = zotero-git
+
