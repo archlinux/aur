@@ -1,10 +1,10 @@
 pkgbase = faiss-cuda-git
-	pkgver = v1.5.1.r10.g5d1ed5b
+	pkgver = v1.5.2.r5.gd224d11
 	pkgrel = 1
 	url = https://github.com/facebookresearch/faiss
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = MIT
 	makedepends = git
 	makedepends = python
 	makedepends = python2

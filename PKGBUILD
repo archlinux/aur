@@ -7,8 +7,8 @@ pkgbase=faiss-cuda-git
 pkgname=('faiss-cuda-git' 'python-faiss-cuda-git' 'python2-faiss-cuda-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
-license=('BSD')
-pkgver=v1.5.1.r10.g5d1ed5b
+license=('MIT')
+pkgver=v1.5.2.r5.gd224d11
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
@@ -43,6 +43,9 @@ build() {
   sh -c "./configure $_CONF_FLAGS --with-python=python2" # what an ugliness! I don't know how to do it better though
   mv makefile.inc makefile2.inc
   sh -c "./configure $_CONF_FLAGS --with-python=python"
+  make clean
+  make -C python clean
+  make -C python2 clean
   make 			# build faiss
   make -C python  	# build python package
   make -C python2 	# build python2 package
@@ -54,6 +57,7 @@ package_faiss-cuda-git() {
   conflicts=('faiss')
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="$pkgdir" install
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python-faiss-cuda-git() {
@@ -64,6 +68,7 @@ package_python-faiss-cuda-git() {
 
   cd "${srcdir}/${_pkgname}/python"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-faiss-cuda-git() {
@@ -74,4 +79,5 @@ package_python2-faiss-cuda-git() {
 
   cd "${srcdir}/${_pkgname}/python2"
   python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
