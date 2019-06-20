@@ -1,7 +1,7 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
 pkgname=obsuite-git
-pkgver=r117.c007096
+pkgver=r160.72978fc
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -14,7 +14,7 @@ optdepends=('alsa-utils: sound module'
             'pulseaudio-alsa: sound module'
             'xorg-xbacklight: brightness module'
             'systemd: lid switch inhibit'
-            'upower: ac state change bus signal')
+            'upower: ac state change signal, keyboard backlight')
 source=("git+https://gitlab.com/william.belanger/${pkgname%-git}.git")
 md5sums=("SKIP")
 

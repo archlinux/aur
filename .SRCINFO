@@ -1,6 +1,6 @@
 pkgbase = obsuite-git
 	pkgdesc = Collection of system indicators and utilities for custom desktop environments
-	pkgver = r117.c007096
+	pkgver = r160.72978fc
 	pkgrel = 1
 	url = https://gitlab.com/william.belanger/obsuite
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = obsuite-git
 	optdepends = pulseaudio-alsa: sound module
 	optdepends = xorg-xbacklight: brightness module
 	optdepends = systemd: lid switch inhibit
-	optdepends = upower: ac state change bus signal
+	optdepends = upower: ac state change signal, keyboard backlight
 	provides = obsuite
 	conflicts = obsuite
 	source = git+https://gitlab.com/william.belanger/obsuite.git
