@@ -1,6 +1,6 @@
 pkgbase = colmap
 	pkgdesc = COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
-	pkgver = 3.6dev2
+	pkgver = 3.6.dev.2
 	pkgrel = 1
 	url = https://colmap.github.io/
 	install = colmap.install
@@ -25,12 +25,14 @@ pkgbase = colmap
 	optdepends = cuda-toolkit: for cuda sfm/mvs acceleration
 	source = colmap::git+https://github.com/colmap/colmap.git#tag=3.6-dev.2
 	source = nvm-export.patch
+	source = gcc9.patch
 	source = colmap.install
 	source = vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin
 	source = vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin
 	source = vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words1M.bin
 	md5sums = SKIP
 	md5sums = 1542bbbaa7951dbf0b2472354b4b493d
+	md5sums = c14369d73fabb219537f6cb424c5edee
 	md5sums = ebb1dc43e014a1e720a06422c6248a40
 	md5sums = 65b200a06e15205bda713c8553953c50
 	md5sums = 57e1c8073d9085631911e060c3802bd2
