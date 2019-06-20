@@ -1,0 +1,13 @@
+pkgbase = skyflash-bin
+	pkgdesc = Skywire Node microSD / TFcard setup utility. skycoin.net
+	pkgver = 0.0.4beta
+	pkgrel = 1
+	url = https://github.com/skycoin/skyflash
+	arch = any
+	makedepends = gzip
+	source = https://github.com/skycoin/skyflash/releases/download/Skyflash-v0.0.4-beta1-Linux/skyflash-gui_linux64-static.gz
+	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
+	sha256sums = f3b918e9ad9d1ff3a02dd6f25b942a4a66e37c77163b25829ae4a648f44fd833
+
+pkgname = skyflash-bin
+
