@@ -1,9 +1,6 @@
-# Maintainer: SneakySnake <radiantstatue@gmail.com>
-# Submit issues/pull requests at https://github.com/crumblingstatue/aur-mingw-w64-sdl2
-
 pkgname=mingw-w64-sdl2
 pkgver=2.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) (mingw-w64)'
 license=('MIT')
 url='http://libsdl.org'
@@ -14,15 +11,15 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 source=("${url}/release/SDL2-${pkgver}.tar.gz")
 sha256sums=('255186dc676ecd0c1dbf10ec8a2cc5d6869b5079d8a38194c2aecdff54b324b1')
-options=(staticlibs !strip !buildflags)
+options=(staticlibs '!strip' '!buildflags')
 
 build() {
+  export MINGW_LDFLAGS="-s"
   cd "${srcdir}/SDL2-${pkgver}"
   for _arch in ${_archs[@]}; do
-    unset LDFLAGS
     mkdir build-${_arch} -p
     pushd build-${_arch}
-    ${_arch}-configure --enable-render-d3d=no
+    ${_arch}-cmake ..
     make
     popd
   done
@@ -38,9 +35,8 @@ package() {
     make DESTDIR="${pkgdir}" install
     find "${pkgdir}/usr/${_arch}/bin" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}/lib" -name "*.a"   -exec ${_arch}-strip -g {} \;
-    rm   "${pkgdir}/usr/${_arch}/share" -r
-    ln -s         "/usr/${_arch}/bin/sdl2-config" \
-         "${pkgdir}/usr/bin/${_arch}-sdl2-config"
+    cp "${pkgdir}/usr/${_arch}/lib/libSDL2-static.a" "${pkgdir}/usr/${_arch}/lib/libSDL2.a"
+    #ln -s         "/usr/${_arch}/bin/sdl2-config" "${pkgdir}/usr/bin/${_arch}-sdl2-config"
     popd
   done
 }
