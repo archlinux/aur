@@ -1,6 +1,6 @@
 pkgbase = tidal-music-linux-git
 	pkgdesc = An electron based wrapper around the Tidal web player for Linux
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/Bunkerbewohner/tidal-music-linux
 	arch = x86_64
@@ -14,11 +14,9 @@ pkgbase = tidal-music-linux-git
 	source = git+https://github.com/Bunkerbewohner/tidal-music-linux.git
 	source = tidal-music-linux.desktop
 	source = tidal
-	source = pepperflash-path.patch
 	sha256sums = SKIP
-	sha256sums = e19e840451f261f3e074da6633be787ebcbf5091b98f96d114141d2b602422fc
+	sha256sums = ca8c35585f0f67acf5a311c8127d2f77b022d419ced26df123349ad194557a72
 	sha256sums = 5cf0a00a9eb28019a6126491ddfc4b5455bcd44d43be05f81544d438dface390
-	sha256sums = b4e00a68ffa44ed84d76d3731ad09ded4120d464e6ad286de20df572c92f7147
 
 pkgname = tidal-music-linux-git
 

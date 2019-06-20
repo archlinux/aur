@@ -2,7 +2,7 @@
 
 pkgname=tidal-music-linux-git
 _pkgname=tidal-music-linux
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc='An electron based wrapper around the Tidal web player for Linux'
 arch=('x86_64')
@@ -12,48 +12,41 @@ license=('MIT')
 depends=('pepper-flash' 'nodejs' 'git' 'npm' 'electron')
 provides=("${_pkgname}")
 source=(
-	'git+https://github.com/Bunkerbewohner/tidal-music-linux.git'
-	"${_pkgname}.desktop"
-	'tidal'
-	'pepperflash-path.patch'
+  'git+https://github.com/Bunkerbewohner/tidal-music-linux.git'
+  "${_pkgname}.desktop"
+  'tidal'
 )
 sha256sums=(
-	'SKIP'
-	'e19e840451f261f3e074da6633be787ebcbf5091b98f96d114141d2b602422fc'
-	'5cf0a00a9eb28019a6126491ddfc4b5455bcd44d43be05f81544d438dface390'
-	'b4e00a68ffa44ed84d76d3731ad09ded4120d464e6ad286de20df572c92f7147'
+  'SKIP'
+  'ca8c35585f0f67acf5a311c8127d2f77b022d419ced26df123349ad194557a72'
+  '5cf0a00a9eb28019a6126491ddfc4b5455bcd44d43be05f81544d438dface390'
 )
 
-prepare() {
-	pushd "${srcdir}/${_pkgname}"
-	patch -p1 < "${srcdir}/pepperflash-path.patch"
-	popd
-}
-
 build() {
-	pushd "${srcdir}/${_pkgname}"
-	npm install
-	popd
+  pushd "${srcdir}/${_pkgname}"
+  npm install --production
+  popd
 }
 
 package() {
-	# license
-	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-	mv "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+  # license
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  mv "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 
-	# source
-	mkdir -p "${pkgdir}/usr/share/${pkgname}"
-	cp -v "${srcdir}/${_pkgname}/icon.png" "${pkgdir}/usr/share/${pkgname}"
-	cp -v "${srcdir}/${_pkgname}/main.js" "${pkgdir}/usr/share/${pkgname}"
-	cp -v "${srcdir}/${_pkgname}/index.html" "${pkgdir}/usr/share/${pkgname}"
-	cp -rv "${srcdir}/${_pkgname}/node_modules" "${pkgdir}/usr/share/${pkgname}"
-	cp -v "${srcdir}/${_pkgname}/preload.js" "${pkgdir}/usr/share/${pkgname}"
-	cp -v "${srcdir}/${_pkgname}/style.css" "${pkgdir}/usr/share/${pkgname}"
+  # source
+  mkdir -p "${pkgdir}/usr/share/${pkgname}"
+  cp -v "${srcdir}/${_pkgname}/icon.png" "${pkgdir}/usr/share/${pkgname}"
+  cp -v "${srcdir}/${_pkgname}/main.js" "${pkgdir}/usr/share/${pkgname}"
+  cp -v "${srcdir}/${_pkgname}/index.html" "${pkgdir}/usr/share/${pkgname}"
+  cp -rv "${srcdir}/${_pkgname}/node_modules" "${pkgdir}/usr/share/${pkgname}"
+  cp -v "${srcdir}/${_pkgname}/preload.js" "${pkgdir}/usr/share/${pkgname}"
+  cp -v "${srcdir}/${_pkgname}/style.css" "${pkgdir}/usr/share/${pkgname}"
+  cp -v "${srcdir}/${_pkgname}/pepper-paths.json" "${pkgdir}/usr/share/${pkgname}"
 
-	# bin
-	mkdir -p "${pkgdir}/usr/bin"
-	install -D "tidal" "${pkgdir}/usr/bin/tidal"
+  # bin
+  mkdir -p "${pkgdir}/usr/bin"
+  install -D "tidal" "${pkgdir}/usr/bin/tidal"
 
-	# .desktop
-	install -D "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  # .desktop
+  install -D "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
