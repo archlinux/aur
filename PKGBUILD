@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
-_npmname=webpack
-pkgname=nodejs-webpack
-pkgver=4.34.0
+pkgname=webpack
+pkgver=4.35.0
+_cliver=3.3.4
 pkgrel=1
 pkgdesc="JavaScript bundler (CommonJs, AMD, ES6 modules, CSS, Images, JSON, CoffeeScript, LESS)"
 arch=(any)
@@ -10,18 +10,22 @@ license=(MIT)
 depends=('nodejs')
 optdepends=()
 makedepends=('npm')
-source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-noextract=($_npmname-$pkgver.tgz)
-sha256sums=('0896c4cd7f46f8adf86eea880579e95d4f59ea7e9f630d8903675b3a8efd21e7')
+replaces=('nodejs-webpack')
+source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz
+    https://registry.npmjs.org/$pkgname-cli/-/$pkgname-cli-$_cliver.tgz)
+noextract=($pkgname-$pkgver.tgz $pkname-cli-$_cliver.tgz)
+sha256sums=('167e9750086fa8944c95030d76922ebf32b28bc86a9c781cc256ae2f5276d71a'
+            'a62c5f0836f3a8f66bbaea806c7230af8f46f8c101031a03ed8c4fb5f7d3e8d1')
 
 package() {
   cd $srcdir
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+  npm install -g --prefix "$pkgdir/usr" $pkgname@$pkgver
+  npm install -g --prefix "$pkgdir/usr" $pkgname-cli@$_cliver
   find "$pkgdir"/usr -type d -exec chmod 755 {} +
-  install -Dm755 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$_npmdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
