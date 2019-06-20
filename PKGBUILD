@@ -5,7 +5,7 @@
 
 pkgname=dosbox-djcrx
 pkgver=2.05
-pkgrel=9
+pkgrel=10
 pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.delorie.com/djgpp/"
