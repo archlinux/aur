@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=pyside2
-_qtver=5.12.3
+_qtver=5.12.4
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -32,7 +32,7 @@ provides=(python-pyside2)
 replaces=(python-pyside2)
 _pkgfqn=pyside-setup-everywhere-src-${_qtver}
 source=("https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz")
-sha256sums=('4f7aab7d4bbaf1b3573cc989d704e87b0de55cce656ae5e23418a88baa4c6842')
+sha256sums=('4a64ed11eb22af46db02615f9b1f597de0feaf8555cf41f355ec2b366d5bc2b4')
 
 prepare() {
   mkdir -p build
@@ -43,8 +43,7 @@ build() {
   cmake ../${_pkgfqn}/sources/pyside2 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTS=OFF \
-    -DPYTHON_EXECUTABLE=/usr/bin/python \
-    -DCMAKE_BUILD_TYPE=None # https://bugreports.qt.io/browse/PYSIDE-980
+    -DPYTHON_EXECUTABLE=/usr/bin/python
   make
 }
 
