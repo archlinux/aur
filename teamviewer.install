@@ -1,7 +1,7 @@
 _opt_AutoStart=0
 
 post_install() {
-  systemctl daemon-reload
+  #systemctl daemon-reload
   if [ "${_opt_AutoStart}" -eq 0 ]; then
     if ! systemctl -q is-active 'teamviewerd.service'; then
       echo "The Teamviewer daemon must be running for Teamviewer to work."
@@ -28,7 +28,7 @@ pre_upgrade() {
 
 post_remove() {
   rm -rf /opt/teamviewer
-  systemctl daemon-reload
+  #systemctl daemon-reload
 }
 
 # vim: ts=2 sw=2 et:
