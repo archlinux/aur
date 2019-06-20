@@ -3,12 +3,12 @@
 
 pkgname=mrrescue
 pkgver=1.02e
-pkgrel=1
+pkgrel=2
 pkgdesc="An arcade styled 2d action game centered around evacuating civilians from burning buildings."
 arch=('any')
 url="http://tangramgames.dk/games/mrrescue/"
 license=('CCPL:by-sa' 'zlib')
-depends=('love')
+depends=('love10')
 makedepends=('gendesk')
 source=("https://github.com/SimonLarsen/mrrescue/releases/download/$pkgver/$pkgname$pkgver.love")
 md5sums=('08f236a0f296f70fafa67be2ef20e254')
@@ -18,7 +18,7 @@ prepare() {
 	# Generate desktop file
 	gendesk -f -n --name "Mr. Rescue" --pkgname "$pkgname" --pkgdesc "$pkgdesc"
 	# Generate run script
-	echo -e "#!/bin/sh\nexec love /usr/share/$pkgname/$pkgname-$pkgver.love" > $pkgname.sh
+	echo -e "#!/bin/sh\nexec love10 /usr/share/$pkgname/$pkgname-$pkgver.love" > $pkgname.sh
 }
 
 package() {
