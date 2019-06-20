@@ -15,8 +15,10 @@ md5sums=('d27455bbefe361d53c95ba9d746f52a6')
 _categories="Education;Science;ComputerScience;"
 
 prepare() {
-
-  gendesk
+  gendesk -f -n \
+          --pkgname "$pkgname" \
+	  --pkgdesc "$pkgdesc" \
+	  --categories "$_categories"
   
   cd "$pkgname-$pkgver"
 
