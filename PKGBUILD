@@ -3,7 +3,7 @@
 
 _basename=imagemagick
 pkgname=lib32-imagemagick
-pkgver=7.0.8.48
+pkgver=7.0.8.49
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (32-bit)"
 url="https://www.imagemagick.org/"
@@ -18,7 +18,7 @@ _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 source=(https://www.imagemagick.org/download/releases/$_tarname.tar.xz{,.asc}
         arch-fonts.diff
         IM7-GS-policy.patch)
-sha256sums=('e9cf8d166614ab07253f36f236b8fd4832683414f6a961a64ebad357fb6a92a4'
+sha256sums=('3ab140e46390e63731298d7ddb21c06d4a21cf09673b2e911aea605f4489cbab'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73'
             'f20c09860da65a4259ec9627ceeca7d993949b7460fa199c5ffd874633814cf6')
