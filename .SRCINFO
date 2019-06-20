@@ -1,6 +1,6 @@
 pkgbase = vte3-ng
 	pkgdesc = Enhanced Virtual Terminal Emulator widget for use with GTK3 (patched with support for fullwidth emoji)
-	pkgver = 0.54.2.a
+	pkgver = 0.56.2.a
 	pkgrel = 1
 	url = https://github.com/thestinger/vte-ng
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = vte3-ng
 	depends = gtk3
 	depends = vte-common
 	depends = pcre2
-	provides = vte3=0.54.2
+	provides = vte3=0.56.2
 	provides = vte3-ng
 	conflicts = vte3
 	options = !emptydirs
-	source = https://github.com/thestinger/vte-ng/archive/0.54.2.a.tar.gz
-	sha256sums = 9da06c9e993da78f9a89298aa829ebc3e125e0532661d09520909c170017af5e
+	source = https://github.com/thestinger/vte-ng/archive/0.56.2.a.tar.gz
+	sha256sums = 28162f4318cb51a74070dbcc57b6900f7a1de2616cab843a2431fd5cb67fccb3
 
 pkgname = vte3-ng
 
