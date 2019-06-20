@@ -1,14 +1,8 @@
---- plugin.pro_orig	2017-04-25 08:04:08.631660146 +0200
-+++ plugin.pro	2017-04-25 08:05:23.537204787 +0200
-@@ -11,8 +11,13 @@
- TARGET   = notification_plugin
+--- plugin.pro_orig	2019-06-20 14:29:45.696978230 +0200
++++ plugin.pro	2019-06-20 14:29:53.580495818 +0200
+@@ -12,7 +12,7 @@
  TEMPLATE = lib
  
-+INCLUDEPATH += /opt/qt5.6/include
-+INCLUDEPATH += /opt/qt5.6/include/QtWidgets
-+INCLUDEPATH += /opt/qt5.6/include/QtGui
-+INCLUDEPATH += /opt/qt5.6/include/QtSql
-+INCLUDEPATH += /opt/qt5.6/include/QtCore
  INCLUDEPATH += src
 -INCLUDEPATH += includes/pluginsdk/include
 +INCLUDEPATH += /usr/include/teamspeak3
