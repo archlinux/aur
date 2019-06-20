@@ -1,17 +1,19 @@
 # Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=mstflint
-pkgver=4.11.0.3
-_pkgver=4.11.0-3
+pkgver=4.12.0.1
+_pkgver=4.12.0-1
 pkgrel=1
 pkgdesc='OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards (without inband support)'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"OpenIB.org BSD"')
-depends=('python')
+depends=('python' 'sqlite')
 makedepends=('git')
 source=("git+https://github.com/Mellanox/${pkgname}#tag=v${_pkgver}")
 sha256sums=('SKIP')
+# Prevent: strip:./usr/lib/libreg_access.a(libtools_layouts.a): Unable to recognise the format of file: file format not recognized
+options=(!strip)
 
 #The release tarballs cannot be used cleanly on Arch
 #Reported upstream: https://github.com/Mellanox/mstflint/issues/6
@@ -25,13 +27,6 @@ sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}"
-
-  #disable Werror, so can compile with recent gcc
-  for file in cmdif/Makefile.am configure.ac ext_libs/muparser/Makefile.am \
-              ext_libs/sqlite/Makefile.am mft_utils/Makefile.am reg_access/Makefile.am \
-              tools_res_mgmt/Makefile.am; do
-    sed -i 's/Werror/Wno-error/g' $file
-  done
 
   ./autogen.sh
   ./configure --prefix=/usr \
