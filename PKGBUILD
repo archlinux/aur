@@ -10,7 +10,7 @@ _djver=2.05
 _pthver=3.14
 _zlver=1.2.11
 _wattver="2.2-dev.10"
-pkgrel=1
+pkgrel=2
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -21,7 +21,7 @@ makedepends=('unzip')
 optdepends=('dosbox-djcrx: headers and utilities')
 options=('!strip' 'staticlibs' '!emptydirs')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-$pkgver.tar.xz"
-        "http://www.delorie.com/pub/djgpp/current/v2/djcrx${_djver//./}.zip"
+        "ftp://www.delorie.com/pub/djgpp/current/v2/djcrx${_djver//./}.zip"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
         "https://zlib.net/zlib-${_zlver}.tar.gz"
         "http://www.watt-32.net/watt32s-${_wattver}.zip"
