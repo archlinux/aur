@@ -1,6 +1,6 @@
 pkgbase = chromium-dev
 	pkgdesc = The open-source project behind Google Chrome (Dev Channel)
-	pkgver = 76.0.3809.12
+	pkgver = 77.0.3824.6
 	pkgrel = 1
 	url = http://www.chromium.org
 	install = chromium-dev.install
@@ -38,17 +38,16 @@ pkgbase = chromium-dev
 	optdepends = kdialog: Needed for file dialogs in KF5
 	optdepends = kwalletmanager: Needed for storing passwords in KWallet5
 	optdepends = ttf-font: For some typography
-	optdepends = libappindicator-gtk3: Needed for show systray icon in the panel on GTK3 Desktop based
 	optdepends = libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users
 	optdepends = libva-mesa-driver: HW video acceleration for Nouveau, R600 and RadeonSI users
 	optdepends = libva-intel-driver: HW video acceleration for Intel G45 and HD users
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-76.0.3809.12.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-77.0.3824.6.tar.xz
 	source = git+https://github.com/foutrelis/chromium-launcher.git
 	source = chromium-dev.svg
 	source = enable-vaapi.patch
 	source = chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium
 	source = chromium-skia-harmony-r1.patch
-	sha256sums = 973b2109a73ffcb7f8d93bd89f5b6cc15c6ea721c82d13a77e555a2883e4fa83
+	sha256sums = f7025bc7954df55373c695898f86c0f89d11ff61d594ee466b99e78edeb5f505
 	sha256sums = SKIP
 	sha256sums = dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1
 	sha256sums = 36e78ad3e6fdd4b8c402d3dd5e38413fd1f33fb992c6522af29a02b0f617ee22

@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=76.0.3809.12
+pkgver=77.0.3824.6
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -66,8 +66,6 @@ optdepends=(
             'kwalletmanager: Needed for storing passwords in KWallet5'
             #
             'ttf-font: For some typography'
-            #
-            'libappindicator-gtk3: Needed for show systray icon in the panel on GTK3 Desktop based'
             #
             'libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
             'libva-mesa-driver: HW video acceleration for Nouveau, R600 and RadeonSI users'
@@ -228,6 +226,7 @@ _keeplibs=(
            'third_party/node'
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
            'third_party/openscreen'
+           'third_party/openscreen/src/third_party/tinycbor'
            'third_party/ots'
            'third_party/pdfium'
            'third_party/pdfium/third_party/agg23'
@@ -281,7 +280,7 @@ _keeplibs=(
            'third_party/webrtc/rtc_base/third_party/sigslot'
            'third_party/widevine'
            'third_party/woff2'
-           'third_party/zlib/google'
+           'third_party/zlib'
            'url/third_party/mozilla'
            'v8/src/third_party/siphash'
            'v8/src/third_party/valgrind'
@@ -372,7 +371,7 @@ _use_system=(
              're2'
              'snappy'
              'yasm'
-             'zlib'
+#              'zlib'
              )
 
 # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn).
@@ -500,9 +499,6 @@ prepare() {
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
   ln -sf /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
-
-  # Enable StatusNotifier by default.
-  sed 's|FEATURE_DISABLED_BY_DEFAULT|FEATURE_ENABLED_BY_DEFAULT|g' -i chrome/browser/ui/views/status_icons/status_icon_linux_wrapper.cc
 
   # Use the file at run time instead of effectively compiling it in.
   sed 's|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g' -i services/device/usb/BUILD.gn
