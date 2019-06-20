@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# But not these files...
+!hashboot.install
+!PKGBUILD
+!.gitignore
+!.SRCINFO

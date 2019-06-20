@@ -1,0 +1,19 @@
+pkgbase = hashboot
+	pkgdesc = Check integrity of files in /boot
+	pkgver = 0.9.14
+	pkgrel = 1
+	url = https://schlomp.space/tastytea/hashboot
+	install = hashboot.install
+	arch = any
+	license = custom:The Hug-Ware License
+	makedepends = asciidoc
+	depends = systemd
+	depends = bash
+	source = https://schlomp.space/tastytea/hashboot/releases/download/0.9.14/hashboot-0.9.14.tar.gz
+	source = https://schlomp.space/tastytea/hashboot/releases/download/0.9.14/hashboot-0.9.14.tar.gz.sig
+	validpgpkeys = F7301ADFC9ED262448C42B64242E5AC4DA587BF9
+	sha512sums = 7b3134abf0a615e8d6b4b56da5b6210abff3d1ebc25a5d286f764754e4f28bfc883dda29bfabc20aec5d3da1298da5b252ea9e5436b2f53e3fdfec4bac2285bd
+	sha512sums = a738939599ed14f97058f5d0df5a70946452183dc976b79dc769a3a5affe08fa8ad2f332b2c01f03e6875f0485782df58a0f45df7ab4872dd1c2a4a00f58a725
+
+pkgname = hashboot
+

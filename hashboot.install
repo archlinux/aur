@@ -1,0 +1,8 @@
+post_install() {
+  printf " ==> hashboot: NOTICE! You must enable the systemd service \"hashboot.service\" and generate the initial hashboot files with the command \"sudo hashboot index\"."
+}
+
+post_remove() {
+  rm -f /etc/hashboot.cfg
+  rm -rf /var/lib/hashboot/
+}
