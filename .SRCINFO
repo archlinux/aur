@@ -1,0 +1,18 @@
+pkgbase = python-pynat
+	pkgdesc = Discover external IP addresses and NAT topologies using STUN.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/arantonitis/pynat
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/pynat/pynat-0.6.1.tar.gz
+	sha256sums = db107c85f7c8c5368e93dbf1dff21f88cabbd30f288a0c07c699bf3cb6319e67
+
+pkgname = python-pynat
+	depends = python
+
+pkgname = python2-pynat
+	depends = python2
+
