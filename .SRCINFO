@@ -1,0 +1,28 @@
+pkgbase = xmrig-wownero
+	pkgdesc = High Perf CryptoNote CPU Miner. Wownero RandomX Algorithm and No Donate patch added
+	pkgver = 2.15.4
+	pkgrel = 1
+	url = https://github.com/SChernykh/xmrig
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc7
+	depends = libuv
+	depends = openssl
+	conflicts = xmrig-bin
+	conflicts = xmrig
+	conflicts = xmrig-donateless
+	backup = etc/xmrig/xmrig.conf
+	source = https://github.com/wownero/RandomWOW/archive/1.0.3-wow.tar.gz
+	source = xmrig.service
+	source = xmrig.sysusers
+	source = https://github.com/SChernykh/xmrig/archive/xmrig-2.15.4-beta2-randomwow.tar.gz
+	sha256sums = 6bf1aedaf22bf819fb306ef2f27ea2d4cc3712295d448c74cf7a02aad70dc7dd
+	sha256sums = 1c4fa2898b1252507e885c4bfa2d8d5b20bce2069cb5f703bb084066d560a770
+	sha256sums = d8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6
+	sha256sums = 886d288aec868410109299019d5ee4cfe9b6127a3c84aa644edd0e7a15811d6f
+
+pkgname = xmrig-wownero
+
