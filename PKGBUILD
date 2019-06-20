@@ -1,7 +1,7 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 
 pkgname='monero-wallet-qt'
-_monerover=0.14.0.0
+_monerover=0.14.1.0
 pkgver=${_monerover}
 pkgrel=1
 arch=('x86_64' 'i686')
@@ -53,6 +53,6 @@ package() {
     install -D -m644 "$srcdir/$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('6dab90fbb908dc8fc9889d110ea87d5d1b0f1e802b57f316e0dd59ff0dfcd8b1'
+sha256sums=('4904ae0af59160f2e0aa2a8ba20bb0751fde7ffd824e2e484a0b9d056c060137'
             '68de913110996c232a284004057f2655c1798472670e31524f86b005f6bf07a8'
             '76fbeb62810f9f0281320e5b5309395d3239f1dcb8f08b71b98e8a4c06e33e98')
