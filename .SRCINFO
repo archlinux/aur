@@ -1,14 +1,14 @@
 pkgbase = k3s-bin
 	pkgdesc = Lightweight Kubernetes
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://k3s.io
 	arch = x86_64
 	license = Apache
 	conflicts = k3s-git
-	source = k3s-0.6.0::https://github.com/rancher/k3s/releases/download/v0.6.0/k3s
+	source = k3s-0.6.1::https://github.com/rancher/k3s/releases/download/v0.6.1/k3s
 	source = k3s.service
-	sha256sums = d1ffefe9fa8de45236c9394b5622c8e67319acda5b70ee8a83496325eeb27359
+	sha256sums = df7ff885145cf58a8c32e5c7b66eb2659708d433f360e36b59350c431bf81e46
 	sha256sums = 34a7f893878c5f72dfc7f89fafde5936f5813179b24f0a7e74f385b024d31d6c
 
 pkgname = k3s-bin
