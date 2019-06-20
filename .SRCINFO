@@ -1,0 +1,13 @@
+pkgbase = theia-next
+	pkgver = 20190620
+	pkgrel = 1
+	url = https://www.theia-ide.org/
+	arch = any
+	license = EPL2
+	depends = nodejs
+	options = !strip
+	source = package.json
+	sha1sums = 1e84fc34576beac0d376c9970af1d2403a6c731f
+
+pkgname = theia-next
+
