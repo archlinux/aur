@@ -4,7 +4,7 @@
 _pkgname=glib
 pkgname=lib32-glib
 pkgver=1.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Common C routines used by Gtk+ and other libs (32-bit)"
 arch=('x86_64')
 url="http://www.gtk.org/"
@@ -14,8 +14,10 @@ makedepends=('gcc-multilib')
 options=('!makeflags')
 install=glib.install
 source=(ftp://ftp.gnome.org/pub/gnome/sources/glib/1.2/${_pkgname}-${pkgver}.tar.gz
+	https://src.fedoraproject.org/rpms/glib/raw/master/f/glib-1.2.10-gcc9.patch
 	gcc340.patch aclocal-fixes.patch glib1-autotools.patch)
 sha1sums=('e5a9361c594608d152d5d9650154c2e3260b87fa'
+          '9e675101003cd97da0b42bf04fc6489197a822c7'
           'a2cc224a66aeffdcac16ebd9e8af18143cf54918'
           'ae4438cf56c0c9264ee36f6973fb445f9a820be0'
           '8a25fde3c79567262b3024f4e74c9ca4ee8a6279')
@@ -23,6 +25,7 @@ sha1sums=('e5a9361c594608d152d5d9650154c2e3260b87fa'
 prepare() {
   cd ${_pkgname}-${pkgver}
   patch -Np1 -i "${srcdir}/gcc340.patch"
+  patch -Np0 -i "${srcdir}/glib-1.2.10-gcc9.patch"
   patch -Np0 -i "${srcdir}/aclocal-fixes.patch"
   patch -Np1 -i "${srcdir}/glib1-autotools.patch"
   sed -i -e 's/ifdef[[:space:]]*__OPTIMIZE__/if 0/' glib.h
