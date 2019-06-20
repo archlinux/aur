@@ -1,21 +1,22 @@
-# Maintainer:  TwoLeaves < ohneherren at gmail dot com >
+# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mame2010-git
-pkgver=116.a4537c3
-
+pkgver=380.c87309d
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-pkgdesc="libretro implementation of MAME 2010. (Arcade)"
+pkgdesc="Late 2010 version of MAME (0.139) for libretro. Compatible with MAME 0.139 romsets. (Arcade)"
 url="https://github.com/libretro/mame2010-libretro"
 license=('custom:MAME License')
+groups=('libretro')
+depends=('zlib' 'glibc' 'libretro-core-info')
 makedepends=('git' 'python2')
 
 _libname=mame2010_libretro
 _gitname=mame2010-libretro
 source=("git+https://github.com/libretro/${_gitname}.git"
         "https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
-md5sums=('SKIP'
-         'SKIP')
+sha256sums=('SKIP'
+	'SKIP')
 
 pkgver() {
   cd "${_gitname}"
