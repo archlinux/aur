@@ -57,7 +57,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -80,6 +80,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+        "${_lucjanpath}/zen-patches/0001-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -381,7 +382,8 @@ sha512sums=('61ca35f47994a0a904bbac1afa6d75c7ce9647f44cbb61ac0c564ddd9dc9a331d7b
             '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '560920b4ebf8d7b753f058a41da62d20fde1e4b42a42e73be11461d3fe25b59bc36250a66d9c1c6e3c499426b237427af5ba7586daa7c549d2cf7bb7087932a1'
-            '17e85ed5227b679884987f3a3ab8420eb5c10d2204d13ddc7f6bfbf4b75345234729b3db4c15e14bad04dd39c83f6979d5638230b84dfe667a363b9c50cf1d97'
+            '957b144ccb04cb6b491bf85bba9eb4f4dc86c8ec9e74bee64b64a0fe17afb1647ad21f090f8bbe655a894f5e84698eb6dd556bdefa30b8caceb7f1d7ee0354fe'
+            '7685713697bda64f548078cfd948246c3ff1354454977c83348f598ea208c5190ff32ce9770e0cfd150d233b5d8fa452eab8a7901b0cd92bc72eae81d3a64055'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'

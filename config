@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.19.11-arch1 Kernel Configuration
+# Linux/x86 4.19.50-arch1 Kernel Configuration
 #
 
 #
@@ -170,6 +170,7 @@ CONFIG_NAMESPACES=y
 CONFIG_UTS_NS=y
 CONFIG_IPC_NS=y
 CONFIG_USER_NS=y
+CONFIG_USER_NS_UNPRIVILEGED=y
 CONFIG_PID_NS=y
 CONFIG_NET_NS=y
 CONFIG_CHECKPOINT_RESTORE=y
