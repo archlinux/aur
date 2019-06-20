@@ -4,25 +4,27 @@
 pkgname=ghcup-git
 _pkgname=ghcup
 
-pkgver=0.0.6.r13.gd0eae9a
+pkgver=0.0.7.r70.gb56597a
+pkgrel=3
+
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-pkgrel=2
 license=('BSD')
 depends=()
 pkgdesc='Painless installation of GHC toolchain'
-url='https://github.com/haskell/ghcup'
+url='https://gitlab.haskell.org/haskell/ghcup'
 arch=('any')
 md5sums=('SKIP')
 
-source=('git://github.com/haskell/ghcup.git')
+source=('git+https://gitlab.haskell.org/haskell/ghcup.git')
 
 package() {
     mkdir -p $pkgdir/usr/bin
     mkdir -p $pkgdir/usr/share
+    install $srcdir/ghcup/ghcup $pkgdir/usr/bin
     cp -r $srcdir/ghcup $pkgdir/usr/share
-    ln -s /usr/share/ghcup/ghcup $pkgdir/usr/bin/ghcup
+    rm -fr $pkgdir/usr/share/ghcup/.git*
 }
