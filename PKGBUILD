@@ -8,7 +8,7 @@
 
 pkgname=mutter-781835-workaround
 pkgver=3.32.2+11+ga3a97621b
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -59,7 +59,7 @@ prepare() {
   # clutter: Deliver events sooner when possible
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168
   # still has issues with 1000Hz mice
-  # git cherry-pick -n ae8fc614
+  # git cherry-pick -n 657cb4b5
 
   # Resource scale computation optimizations
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/493
@@ -91,7 +91,7 @@ prepare() {
 
   # cogl: Remove GLX "threaded swap wait" used on Nvidia [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/602
-  git cherry-pick -n f12eddc1
+  git cherry-pick -n -X theirs df38ad3c
 
   # compositor: Don't emit size-changed when only position changes
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/568
