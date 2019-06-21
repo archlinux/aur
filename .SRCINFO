@@ -1,0 +1,15 @@
+pkgbase = mitalk
+	pkgdesc = MiTalk Messenger
+	pkgver = 4.0.13
+	pkgrel = 1
+	url = http://www.miliao.com/
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = p7zip
+	makedepends = sed
+	source = appimage::https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_4.0.13.AppImage
+	md5sums = 692fc2549674c10a86c01d9b13d8bea3
+
+pkgname = mitalk
+
