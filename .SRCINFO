@@ -1,15 +1,15 @@
 pkgbase = plant
 	pkgdesc = tree but for arbitrary data
-	pkgver = 1.0.4
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/qbe/plant
 	arch = any
 	license = GPL3
 	depends = python
-	source = https://github.com/qbe/plant/archive/v1.0.4.tar.gz
-	md5sums = 5ca8e6df0ed19f989ec8cdcb534e8cff
-	sha1sums = 0e87428c19fdb6ceaf2f52017d57649d5a7a4952
-	sha256sums = a12dcf7af9c6a5997be090fda6b3d131b9be88603e6a00e5d2f03e5f810e11f1
+	source = https://github.com/qbe/plant/archive/v1.0.6.tar.gz
+	md5sums = 93b359f9155ba99965fdb95c90c64004
+	sha1sums = a391040e2b01ed56bd6bf6451f4a8176e45154c0
+	sha256sums = 3f93d43a73591644718dffcbb6e4ef47619d330eec9bb1e9b8be5f5b0d7397a7
 
 pkgname = plant
 
