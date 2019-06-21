@@ -1,6 +1,6 @@
 # This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 
-# Maintainer: Manuel Reimer <manuel.reimer@gxm.de>
+# Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgbase=vdr
 pkgname=(vdr vdr-examples)
 pkgver=2.4.1
