@@ -21,7 +21,7 @@ depends=(
     'xdg-utils'
 )
 source=(
-    'ftp://zyiot.top/pub/aur/browser360-cn-stable_10.0.2001.0-2_amd64.deb'
+    'https://github.com/redchenjs/aur-packages/raw/master/browser360/browser360-cn-stable_10.0.2001.0-2_amd64.deb'
 )
 md5sums=(
     'cd23bd055b040cb055907288e4623ddc'
