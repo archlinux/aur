@@ -1,7 +1,7 @@
 # Maintainer: Callum Parsey <neoninteger@protonmail.com>
 pkgname=turtl-core-rs
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Turtl's logic core, built in Rust"
 arch=("i686" "x86_64")
 url="https://github.com/turtl/core-rs"
@@ -30,44 +30,76 @@ build() {
 }
 
 check() {
+	cd "core-rs-${_commithash}"
 	export TURTL_DB_CONNSTR="postgres://turtl:turtl@localhost:5432/turtl"
 	export TURTL_UPLOADS_LOCAL="$PWD/turtl-uploads"
 
-	echo "- Creating PostgreSQL database cluster..."
-	mkdir turtl-db turtl-uploads
-	initdb -D turtl-db -A trust > /dev/null
+	log() {
+		echo -e "  $(tput setaf 4)$(tput bold)->$(tput sgr0) $(tput bold)$@$(tput sgr0)"
+	}
 
-	echo "- Starting PostgreSQL server..."
-	pg_ctl start -D turtl-db -o '-c unix_socket_directories=/tmp' > /dev/null
+	init_dirs() {
+		mkdir turtl-db turtl-uploads
+	}
 
-	echo "- Creating role/database for Turtl server..."
-	psql -q -h /tmp -d postgres -c "CREATE USER turtl WITH PASSWORD 'turtl'"
-	psql -q -h /tmp -d postgres -c "CREATE DATABASE turtl"
+	init_database() {
+		log "Initializing PostgreSQL database cluster..."
+		initdb -D turtl-db -A trust
 
-	echo "- Initializing Turtl server database/upload directory..."
-	bash -c "cd /usr/share/webapps/turtl && scripts/init-db.sh" > /dev/null
-	bash -c "cd /usr/share/webapps/turtl && node tools/populate-test-data.js" > /dev/null
+		log "Starting PostgreSQL server..."
+		pg_ctl start -D turtl-db -o "-c unix_socket_directories=/tmp"
+	}
 
-	echo "- Starting Turtl server..."
-	node /usr/share/webapps/turtl/server.js > /dev/null &
-	sleep 2
+	configure_turtl_server() {
+		log "Configuring database for Turtl server..."
+		psql -h /tmp -d postgres -c "CREATE USER turtl WITH PASSWORD 'turtl'"
+		psql -h /tmp -d postgres -c "CREATE DATABASE turtl"
+		bash -c "cd /usr/share/webapps/turtl && scripts/init-db.sh"
+		bash -c "cd /usr/share/webapps/turtl && node tools/populate-test-data.js"
 
-	echo "- Generating core-rs configuration..."
-	cd "core-rs-${_commithash}"
-	sed '/^  endpoint: /c\  endpoint: "http://localhost"' config.yaml.default > config.yaml
+		log "Starting Turtl server..."
+		node /usr/share/webapps/turtl/server.js &
+		sleep 2
+	}
 
-	echo "- Running core-rs tests..."
-	make test
+	run_tests() {
+		log "Running tests..."
+		sed '/^  endpoint: /c\  endpoint: ""' config.yaml.default > config.yaml
+		make test-st
+	}
 
-	echo "- Shutting down Turtl server..."
-	cd ..
-	kill %1
+	stop_turtl_server() {
+		log "Stopping Turtl server..."
+		kill %1
+	}
 
-	echo "- Shutting down PostgreSQL server..."
-	pg_ctl stop -D turtl-db > /dev/null
+	stop_database() {
+		log "Stopping PostgreSQL server..."
+		pg_ctl stop -D turtl-db
+	}
 
-	echo "- Cleaning up..."
-	rm -rf turtl-db turtl-uploads "core-rs-${_commithash}/config.yaml"
+	remove_dirs() {
+		log "Cleaning up..."
+		rm -rf turtl-db turtl-uploads config.yaml
+	}
+
+	init_dirs
+
+	trap "remove_dirs" ERR
+	init_database
+	trap - ERR
+
+	trap "stop_database && remove_dirs" ERR
+	configure_turtl_server
+	trap - ERR
+
+	trap "stop_turtl_server && stop_database && remove_dirs" ERR
+	run_tests
+	trap - ERR
+
+	stop_turtl_server
+	stop_database
+	remove_dirs
 }
 
 package() {
