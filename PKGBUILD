@@ -2,7 +2,7 @@
 
 _pkgname='yuzu-canary'
 pkgname="$_pkgname-git"
-pkgver=r11855.d070fd91a
+pkgver=r11874.dfac63de3
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -47,12 +47,15 @@ build() {
 	export TRAVIS_REPO_SLUG=yuzu-emu/yuzu-canary
 	export TRAVIS_TAG=$(git describe --tags)
 	
-	mkdir -p build
-	cd build
+	# Hopefully temporary fix for a compilation error involving fmt
+	CXXFLAGS+=" -DFMT_USE_USER_DEFINED_LITERALS=0"
+	
+	mkdir -p build && cd build
 	cmake .. \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DCMAKE_BUILD_TYPE=Release \
 	  -DYUZU_USE_BUNDLED_UNICORN=ON \
+	  -DYUZU_USE_QT_WEB_ENGINE=ON \
+	  -DCMAKE_BUILD_TYPE=Release \
 	  -DYUZU_ENABLE_COMPATIBILITY_REPORTING=ON \
 	  -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
 	  -DUSE_DISCORD_PRESENCE=ON
