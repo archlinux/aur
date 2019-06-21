@@ -4,7 +4,7 @@
 
 pkgname=mkl-dnn
 pkgver=0.19
-pkgrel=3
+pkgrel=4
 _mklmlver=2019.0.5.20190502
 pkgdesc="Intel® Math Kernel Library for Deep Neural Networks"
 arch=(x86_64)

@@ -1,13 +1,14 @@
 pkgbase = mkl-dnn
 	pkgdesc = Intel® Math Kernel Library for Deep Neural Networks
 	pkgver = 0.19
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/intel/mkl-dnn
 	arch = x86_64
 	license = APACHE
 	makedepends = cmake>=2.8
 	makedepends = doxygen>=1.8.5
 	makedepends = graphviz
+    makedepends = patchelf
 	optdepends = intel-mkl
 	optdepends = intel-compiler-base
 	source = mkl-dnn-0.19.tar.gz::https://github.com/intel/mkl-dnn/archive/v0.19.tar.gz
