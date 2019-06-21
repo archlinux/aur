@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.1.0-arch1 Kernel Configuration
+# Linux/x86 5.1.8-arch1 Kernel Configuration
 #
 
 #
@@ -167,6 +167,7 @@ CONFIG_NAMESPACES=y
 CONFIG_UTS_NS=y
 CONFIG_IPC_NS=y
 CONFIG_USER_NS=y
+CONFIG_USER_NS_UNPRIVILEGED=y
 CONFIG_PID_NS=y
 CONFIG_NET_NS=y
 CONFIG_CHECKPOINT_RESTORE=y
