@@ -1,5 +1,5 @@
 pkgbase = chromium-no-extras
-	pkgdesc = Chromium without hangout services, widevine, pipewire
+	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
 	pkgver = 75.0.3770.100
 	pkgrel = 2
 	url = https://www.chromium.org/Home
