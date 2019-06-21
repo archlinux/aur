@@ -1,0 +1,29 @@
+pkgbase = xf86-video-dummy-xpra-patch
+	pkgdesc = X.org dummy video driver with xpra constant dpi and pointer limits patches applied
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = x86_64
+	groups = xorg-drivers
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=24.0
+	makedepends = xf86dgaproto
+	depends = glibc
+	provides = xf86-video-dummy=0.3.8
+	conflicts = xorg-server<1.20
+	conflicts = X-ABI-VIDEODRV_VERSION<24
+	conflicts = X-ABI-VIDEODRV_VERSION>=25
+	conflicts = xf86-video-dummy
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-dummy-0.3.8.tar.bz2
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-dummy-0.3.8.tar.bz2.sig
+	source = 0002-Constant-DPI.patch
+	source = 0003-fix-pointer-limits.patch
+	validpgpkeys = 7B27A3F1A6E18CD9588B4AE8310180050905E40C
+	sha256sums = 3712bb869307233491e4c570732d6073c0dc3d99adfdb9977396a3fdf84e95b9
+	sha256sums = SKIP
+	sha256sums = fb9afb69d1bd8afda34975d53ecab98e491798d1d1d3299b03ef7c03f3c90eaa
+	sha256sums = 7cb0cc92da80466fd4ad9ffaae0c7a4be69afe0977939bb51d48f9e3c02736c0
+
+pkgname = xf86-video-dummy-xpra-patch
+
