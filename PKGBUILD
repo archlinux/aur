@@ -2,7 +2,7 @@
 # Contributor: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=objectively-git
-pkgver=r590.c0211d5
+pkgver=r597.517407e
 pkgrel=1
 pkgdesc="Ultra-lightweight object oriented framework for GNU C."
 arch=('i686' 'x86_64')

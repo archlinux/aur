@@ -1,6 +1,6 @@
 pkgbase = objectively-git
 	pkgdesc = Ultra-lightweight object oriented framework for GNU C.
-	pkgver = r590.c0211d5
+	pkgver = r597.517407e
 	pkgrel = 1
 	url = https://github.com/jdolan/Objectively
 	arch = i686
