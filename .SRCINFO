@@ -1,7 +1,7 @@
 pkgbase = lib32-icu48
 	pkgdesc = International Components for Unicode library, version 4.8
 	pkgver = 4.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.icu-project.org/
 	arch = i686
 	arch = x86_64

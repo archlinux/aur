@@ -4,7 +4,7 @@
 pkgname=lib32-icu48
 _pkgname=icu
 pkgver=4.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="International Components for Unicode library, version 4.8"
 arch=(i686 x86_64)
 url="http://www.icu-project.org/"
