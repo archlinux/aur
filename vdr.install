@@ -1,0 +1,42 @@
+_common() {
+  if diff /etc/skel/.xinitrc /home/vdr/.xinitrc > /dev/null 2>&1 ||
+    [ ! -e /home/vdr/.xinitrc ]; then
+
+    cat <<'EOF' > /home/vdr/.xinitrc
+#!/bin/sh
+#
+# ~/.xinitrc
+#
+# Executed by startx (run your window manager from here)
+
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+# exec gnome-session
+# exec startkde
+# exec startxfce4
+# ...or the Window Manager of your choice
+kill -STOP "$$" # Comment this when using a window manager
+EOF
+  fi
+}
+
+post_install() {
+  #Add vdr user
+  systemd-sysusers
+
+  # systemd-sysusers doesn't create our homedirectory...
+  mkdir -m 0711 -p /home/vdr
+  chown vdr:vdr /home/vdr
+
+  _common
+}
+
+post_upgrade() {
+  echo "Remember!! VDR has to run after all DVB devices are initialized"
+  echo "To generate a template rule for systemd run 'vdr-gensddropin"
+}
