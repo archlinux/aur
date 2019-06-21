@@ -1,6 +1,6 @@
 pkgbase = plant-git
 	pkgdesc = tree but for arbitrary data
-	pkgver = 1.0.3
+	pkgver = v1.0.6
 	pkgrel = 1
 	url = https://github.com/qbe/plant
 	arch = any

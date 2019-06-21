@@ -1,7 +1,7 @@
 # Maintainer: Lukas Hannen <plant dot software dot c at hannen dot at>
 
 pkgname=plant-git
-pkgver=v1.0.3
+pkgver=v1.0.6
 pkgrel=1
 pkgdesc="tree but for arbitrary data"
 arch=(any)
