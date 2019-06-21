@@ -20,12 +20,9 @@ md5sums=(
 package() {
     tar -xf "${srcdir}"/data.tar.xz -C "${pkgdir}"/
 
-    mv "${pkgdir}"/usr/local/* "${pkgdir}"/usr/
-    rmdir "${pkgdir}"/usr/local/
-
     mv "${pkgdir}"/usr/lib/x86_64-linux-gnu/* "${pkgdir}"/usr/lib/
     rmdir "${pkgdir}"/usr/lib/x86_64-linux-gnu/
 
-    mkdir "${pkgdir}"/usr/bin/
-    ln -s /usr/share/360zip/360zip.sh "${pkgdir}"/usr/bin/360zip
+    mkdir "${pkgdir}"/usr/local/bin/
+    ln -s /usr/local/share/360zip/360zip.sh "${pkgdir}"/usr/local/bin/360zip
 }
