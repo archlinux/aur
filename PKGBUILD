@@ -1,4 +1,5 @@
-# Maintainer: ajs124 < aur AT ajs124 DOT de >
+# Maintainer: xythrez <yuydevel at protonmail com>
+# Contributer: ajs124 < aur AT ajs124 DOT de >
 # Contributer: meyithi <mail at meyithi dot com>
 # Contributer: sl1pkn07 <sl1pkn07 at gmail dot com>
 # Contributer: yannsen <ynnsen at gmail dot com>
@@ -6,7 +7,7 @@
 pkgname=unigine-heaven
 _pkgname=Unigine_Heaven
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unigine Benchmark"
 arch=('i686' 'x86_64')
 url="http://www.unigine.com"
@@ -20,10 +21,10 @@ sha512sums=('f075968d9812c7bd6a19cd27c48612203ce81f48b14ba56239419957fd3342adb31
 [ "${CARCH}" = "x86_64" ] && _arch=x64
 
 build() {
-  sh "${_pkgname}"-"${pkgver}".run --target "${pkgname}" --noexec
+  sh "${_pkgname}"-"${pkgver}".run -- --target "${pkgname}" --noexec
 }
 package() {
-  cd "${srcdir}"/"${pkgname}"
+  cd "${srcdir}"/"${_pkgname}-${pkgver}"
   install -d "${pkgdir}"/opt/"${pkgname}"/bin/
   install -m775 bin/*_"${_arch}"* "${pkgdir}"/opt/"${pkgname}"/bin/
   cp -R data "${pkgdir}"/opt/"${pkgname}"/
