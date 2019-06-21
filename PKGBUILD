@@ -1,7 +1,7 @@
 # Maintainer: Jian Zeng <anonymousknight96 AT gmail.com>
 
 pkgname=cargo-edit
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='A utility for managing cargo dependencies from the command line.'
 arch=('i686' 'x86_64')
