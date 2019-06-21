@@ -1,14 +1,14 @@
 pkgbase = python-schedule
 	pkgdesc = Python job scheduling for humans.
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/dbader/schedule
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=2.3
-	source = https://files.pythonhosted.org/packages/source/s/schedule/schedule-0.5.0.tar.gz
-	sha256sums = 1003a07c2dce12828c25a03a611a7371cedfa956e5f1b4abc32bcc94eb5a335b
+	source = https://files.pythonhosted.org/packages/source/s/schedule/schedule-0.6.0.tar.gz
+	sha256sums = f9fb5181283de4db6e701d476dd01b6a3dd81c38462a54991ddbb9d26db857c9
 
 pkgname = python-schedule
 
