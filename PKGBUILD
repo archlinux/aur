@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libssh2
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A library implementing the SSH2 protocol as defined by Internet Drafts (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ makedepends=(mingw-w64-configure)
 depends=(mingw-w64-crt mingw-w64-openssl)
 options=(staticlibs !strip !buildflags)
 source=("$url/download/${pkgname#mingw-w64-}-$pkgver.tar.gz")
-md5sums=('3d1147cae66e2959ea5441b183de1b1c')
+sha256sums=('d5fb8bd563305fd1074dda90bd053fb2d29fc4bce048d182f96eaa466dfadafd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
