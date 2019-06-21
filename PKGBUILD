@@ -25,8 +25,9 @@ package() {
     chmod 755 "${pkgdir}"/opt/
     chmod 755 "${pkgdir}"/opt/mitalk/
     chmod 755 "${pkgdir}"/opt/mitalk/米聊
-    chmod 755 "${pkgdir}"/opt/mitalk/usr/
     chmod 755 "${pkgdir}"/opt/mitalk/lib/
+    chmod 755 "${pkgdir}"/opt/mitalk/usr/
+    chmod 755 "${pkgdir}"/opt/mitalk/usr/lib/
     chmod 755 "${pkgdir}"/opt/mitalk/locales/
     chmod 755 "${pkgdir}"/opt/mitalk/resources/
     chmod 755 "${pkgdir}"/opt/mitalk/swiftshader/
