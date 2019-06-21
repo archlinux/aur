@@ -1,0 +1,21 @@
+pkgbase = scm_breeze-git
+	pkgdesc = Streamline your SCM workflow.
+	pkgver = v1.0.0.r316.g134d101
+	pkgrel = 1
+	url = https://github.com/scmbreeze/scm_breeze
+	install = scm_breeze-git.install
+	arch = any
+	license = MIT
+	depends = git
+	optdepends = ruby: improve performance of scm_breeze
+	optdepends = bash: shell integration
+	optdepends = zsh: shell integration
+	source = scm_breeze-git::git+git://github.com/scmbreeze/scm_breeze.git
+	source = scmbDir-location.patch
+	source = no-updates.patch
+	sha1sums = SKIP
+	sha1sums = d5379956705ba32215237072b953741006bb1d2e
+	sha1sums = 4212a7ccff97bcef809cb96591059d66b44b0b68
+
+pkgname = scm_breeze-git
+

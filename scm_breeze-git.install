@@ -1,0 +1,23 @@
+post_install() {
+	echo 'To install scm_breeze for the current user, run `install-scm-breeze`.'
+}
+
+pre_upgrade() {
+	mkdir -p "tmp/scm_breeze-git/$1"
+	cp usr/share/scm_breeze/{,git.}scmbrc.example "tmp/scm_breeze-git/$1"
+}
+
+post_upgrade() {
+	tmpdir="tmp/scm_breeze-git/$1"
+	for prefix in "" "git."; do
+		filename="${prefix}scmbrc"
+		difference=$(diff -u {$tmpdir,usr/share/scm_breeze}/$filename.example --label $1 --label $2)
+		if [ -n "$difference" ]; then
+			echo -e "\nFile $filename has changed. Consider upgrading ~/.$filename. Showing diff:"
+			echo -e "\n$difference\n";
+		fi
+		rm $tmpdir/$filename.example
+	done
+	rm -d $tmpdir
+	rm -d tmp/scm_breeze-git
+}

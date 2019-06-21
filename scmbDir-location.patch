@@ -1,0 +1,23 @@
+:100755 100755 dd025ef 0000000 M	install.sh
+
+diff --git a/install.sh b/install.sh
+index dd025ef..9641124 100755
+--- a/install.sh
++++ b/install.sh
+@@ -1,14 +1,8 @@
+ #!/bin/bash
+-#locate the dir where this script is stored
+-export scmbDir="$( cd -P "$( dirname "$0" )" && pwd )"
+-
+-# Symlink to ~/.scm_breeze if installing from another path
+-if [ "$scmbDir" != "$HOME/.scm_breeze" ]; then
+-  ln -fs "$scmbDir" "$HOME/.scm_breeze"
+-fi
++export scmbDir="/usr/share/scm_breeze"
+ 
+ # This loads SCM Breeze into the shell session.
+-exec_string="[ -s \"$HOME/.scm_breeze/scm_breeze.sh\" ] && source \"$HOME/.scm_breeze/scm_breeze.sh\""
++exec_string="[ -s \"$scmbDir/scm_breeze.sh\" ] && source \"$scmbDir/scm_breeze.sh\""
+ 
+ # Add line to bashrc, zshrc, and bash_profile if not already present.
+ added_to_profile=false
