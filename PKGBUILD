@@ -1,17 +1,17 @@
 # Maintainer: Lukas Hannen <plant dot software dot c at hannen dot at>
 
 pkgname=plant
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="tree but for arbitrary data"
 arch=(any)
 url="https://github.com/qbe/plant"
 license=('GPL3')
 depends=('python')
-source=('https://github.com/qbe/plant/archive/v1.0.6.tar.gz')
-md5sums=('93b359f9155ba99965fdb95c90c64004')
-sha1sums=('a391040e2b01ed56bd6bf6451f4a8176e45154c0')
-sha256sums=('3f93d43a73591644718dffcbb6e4ef47619d330eec9bb1e9b8be5f5b0d7397a7')
+source=('https://github.com/qbe/plant/archive/v1.0.7.tar.gz')
+md5sums=('5f8f826691ec1e78b599d98f6c45a7e2')
+sha1sums=('759389363f38701861c4c9b20c7c6add0e64551c')
+sha256sums=('c1b32b3d6808f0bda5a02bcfc956ed4b404d49d630f443b5d1a8a4762153b472')
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	install -Dm 755 plant "$pkgdir/usr/bin/plant"
