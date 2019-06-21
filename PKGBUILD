@@ -1,14 +1,14 @@
-# Maintainer: Kelsey Maes <kelseymaes at outlook dot com>
+# Maintainer: pallxk <aur at pallxk dot com>
 
 pkgname=python-azure-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Azure SDK for Python"
 arch=('any')
 url="https://github.com/Azure/azure-sdk-for-python"
 license=('MIT')
 depends=('python-azure-storage' 'python-msrestazure')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 provides=('python-azure')
 conflicts=('python-azure')
 source=("git+https://github.com/Azure/azure-sdk-for-python.git")
