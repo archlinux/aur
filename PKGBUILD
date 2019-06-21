@@ -3,7 +3,7 @@
 # Contributor: Wang Jiajun <amesists@gmail.com>
 
 pkgname=kdesrc-build-git
-pkgver=r2050.d8df6b7
+pkgver=r2051.a9d08e8
 pkgrel=1
 pkgdesc="A script to build KDE software from KDE's source repositories"
 url='https://kdesrc-build.kde.org/'
