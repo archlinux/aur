@@ -1,6 +1,6 @@
 pkgbase = scm_breeze-git
 	pkgdesc = Streamline your SCM workflow.
-	pkgver = v1.0.0.r316.g134d101
+	pkgver = 1.0.0.r316.g134d101
 	pkgrel = 1
 	url = https://github.com/scmbreeze/scm_breeze
 	install = scm_breeze-git.install

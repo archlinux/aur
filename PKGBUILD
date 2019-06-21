@@ -2,7 +2,7 @@
 
 _pkgname="scm_breeze"
 pkgname="$_pkgname-git"
-pkgver=v1.0.0.r316.g134d101
+pkgver=1.0.0.r316.g134d101
 pkgrel=1
 pkgdesc='Streamline your SCM workflow.'
 arch=('any')
@@ -22,7 +22,7 @@ sha1sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
