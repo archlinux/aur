@@ -8,12 +8,9 @@ pkgdesc='Filtering reverse-HTTP proxy'
 arch=(i686 x86_64)
 url=https://github.com/asciimoo/filtron
 license=(AGPL3)
-conflicts=(filtron-git)
 makedepends=(git go)
 optdepends=('searx: A privacy-respecting, hackable metasearch engine'
-            'searx-git: A privacy-respecting, hackable metasearch engine (git)'
-            'morty: Privacy-aware web content sanitizer proxy-as-a-service'
-            'morty-git: Privacy-aware web content sanitizer proxy-as-a-service (git)')
+            'morty: Privacy-aware web content sanitizer proxy-as-a-service')
 install=filtron.install
 source=(git+$url#commit=$_commit
         filtron.service
