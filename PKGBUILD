@@ -1,6 +1,6 @@
 # Maintainer: Kenny MacDermid <kenny.macdermid@gmail.com>
 pkgname=sshoot
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Manage multiple sshuttle VPN sessions."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'python-pyaml' 'python-prettytable' 'python-argcomplete'
   'python-xdg')
 makedepends=('python-setuptools')
 source=("https://github.com/albertodonato/sshoot/archive/v${pkgver}.tar.gz")
-sha256sums=('5ba286af71e411ae3a274f0ffcd1d3caca226609b77999e37cab36267b2216c4')
+sha256sums=('5b56ce916f7f90525356434ae61a6f5ef0c990e035c0273a59643cbad47f9313')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
