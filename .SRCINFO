@@ -1,6 +1,6 @@
 pkgbase = gitin
 	pkgdesc = Commit/branch/workdir explorer for git
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/isacikgoz/gitin
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = gitin
 	makedepends = go
 	makedepends = git
 	depends = libgit2
-	source = gitin-0.2.0.tar.gz::https://github.com/isacikgoz/gitin/archive/v0.2.0.tar.gz
-	sha256sums = f7e3b44bfabe3832e32e4db8bb842d1a03d08c3eaeedb16f2cd6c9e10a3e335f
+	source = gitin-0.2.1.tar.gz::https://github.com/isacikgoz/gitin/archive/v0.2.1.tar.gz
+	sha256sums = 1a94182b808e72bab32e12b6023c530e7e9a0aeecb7f0b09ca380fa29f7bfe0a
 
 pkgname = gitin
 

@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=gitin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Commit/branch/workdir explorer for git"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('libgit2')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/isacikgoz/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f7e3b44bfabe3832e32e4db8bb842d1a03d08c3eaeedb16f2cd6c9e10a3e335f')
+sha256sums=('1a94182b808e72bab32e12b6023c530e7e9a0aeecb7f0b09ca380fa29f7bfe0a')
 
 prepare() {
 	export GOPATH="$srcdir/go"
