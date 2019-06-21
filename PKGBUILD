@@ -7,7 +7,7 @@ pkgdesc='A Gtk+ theme based on Material Design Refresh'
 arch=('any')
 url='https://gitlab.com/tista500/plata-theme'
 license=('CCPL' 'GPL2')
-makedepends=('git' 'inkscape' 'libxml2' 'parallel' 'sassc' 'zip')
+makedepends=('git' 'inkscape' 'libxml2' 'marco' 'parallel' 'sassc' 'zip')
 optdepends=('gtk-engine-murrine: for gtk2 themes'
             'ttf-roboto: Recommended font')
 source=("git+https://gitlab.com/tista500/plata-theme.git#tag=${pkgver}")

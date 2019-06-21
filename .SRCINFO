@@ -9,6 +9,7 @@ pkgbase = plata-theme
 	makedepends = git
 	makedepends = inkscape
 	makedepends = libxml2
+	makedepends = marco
 	makedepends = parallel
 	makedepends = sassc
 	makedepends = zip
