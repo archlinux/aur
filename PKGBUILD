@@ -2,7 +2,7 @@
 # Contributor: Reventlov <contact+aur at volcanis dot me>
 
 pkgname=searx-git
-pkgver=0.15.0+r77+rg8189b0d1
+pkgver=0.15.0+r77+g8189b0d1
 pkgrel=1
 pkgdesc='Privacy-respecting metasearch engine (git)'
 arch=(any)
@@ -36,7 +36,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd searx
-  git describe --tags | sed 's/v//;s/-/+r/g'
+  git describe --tags | sed 's/v//;s/-/+/g;s/+/+r/'
 }
 
 prepare() {
