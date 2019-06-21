@@ -1,6 +1,6 @@
 pkgbase = iota-trinity-wallet
 	pkgdesc = The IOTA Trinity Wallet
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://trinity.iota.org/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = iota-trinity-wallet
 	validpgpkeys = 466385BD0B40D9550F93C04746A440CCE5664A64
 	md5sums = ebf2fc6a46b006ded903b6591c8f5897
 	sha512sums = eac7d8322ce501a0352d8998cd9fe53bd33c836f1fc9f1b775573bd741a2b402f66f82785f747b72702add15320e5cee8f62482bf2882176af57a9f5b3b0af0f
-	source_x86_64 = https://github.com/iotaledger/trinity-wallet/releases/download/0.6.1/trinity-desktop-0.6.1.AppImage
-	source_x86_64 = https://github.com/iotaledger/trinity-wallet/releases/download/0.6.1/trinity-desktop-0.6.1.AppImage.asc
-	sha256sums_x86_64 = 504c7deca3a0d58f22a774b36ae7407e8f7e09bd8f5ba70c29acc67849590dc0
+	source_x86_64 = https://github.com/iotaledger/trinity-wallet/releases/download/0.6.2/trinity-desktop-0.6.2.AppImage
+	source_x86_64 = https://github.com/iotaledger/trinity-wallet/releases/download/0.6.2/trinity-desktop-0.6.2.AppImage.asc
+	sha256sums_x86_64 = 53e6e3d0bf70671d4d14c86ecf02eedee31ebb1cafd2317302c3187443272719
 	sha256sums_x86_64 = SKIP
 
 pkgname = iota-trinity-wallet
