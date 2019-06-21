@@ -1,7 +1,7 @@
 # Maintainer: architekton <architekton350@gmail.com>
 
 pkgname=amass
-pkgver=3.0.4
+pkgver=3.0.15
 pkgrel=1
 pkgdesc="In-depth subdomain enumeration written in Go"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/OWASP/Amass"
 license=('Apache')
 makedepends=('go' 'git')
 source=(Amass-$pkgver.tar.gz::https://github.com/OWASP/Amass/archive/${pkgver}.tar.gz)
-sha512sums=('2685eae50f205379e5c4adb5cbabb927b097615e0af05fc4a46982ff3e079f6734cb0cea8613f74bef7b4385a88531b38d6726ad2b1f963f38e2babb766a2f27')
+sha512sums=('cfb577cbfd71da12a56273a99e823f93273cc73e24f2e4c5a499aae3e6e88bfd73a0d43a556254882bba6f7b68868385d55051e0711c2d26d6639bc8b79ed2d1')
 
 
 prepare() {
@@ -44,7 +44,7 @@ package() {
 
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  cp -a --no-preserve=ownership "$GOPATH/src/github.com/OWASP/Amass/"{wordlists/,examples/,snapcraft.yaml} "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership "$GOPATH/src/github.com/OWASP/Amass/"{wordlists/,examples/} "${pkgdir}/usr/share/${pkgname}"
 
   chmod 644 "${pkgdir}/usr/share/${pkgname}/"{wordlists/*,examples/*}
 }
