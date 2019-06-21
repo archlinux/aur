@@ -1,6 +1,6 @@
 pkgbase = korla-icon-theme
 	pkgdesc = SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/bikass/korla
 	install = korla-icon-theme.install
@@ -10,8 +10,8 @@ pkgbase = korla-icon-theme
 	optdepends = hicolor-icon-theme: fallback Freedesktop.org Hicolor icon theme
 	optdepends = breeze-icons: fallback Breeze icon theme
 	optdepends = gnome-icon-theme: fallback Gnome icon theme
-	source = https://github.com/bikass/korla/archive/v1.1.2.tar.gz
-	md5sums = 311279f81547dfe5c1c5ae10f2dfd048
+	source = https://github.com/bikass/korla/archive/v1.1.3.tar.gz
+	md5sums = 9c93e139d054b1f0922bf1cf53bed303
 
 pkgname = korla-icon-theme
 
