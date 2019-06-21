@@ -1,16 +1,16 @@
 pkgbase = python-maxminddb
-	pkgdesc = Python MaxMind DB reader extension
+	pkgdesc = Module for reading MaxMind DB files
 	pkgver = 1.4.1
 	pkgrel = 2
-	url = http://maxminddb.readthedocs.org/
+	url = https://maxminddb.readthedocs.io
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
 	depends = libmaxminddb
-	options = !emptydirs
-	source = maxminddb-1.4.1.tar.gz::https://github.com/maxmind/MaxMind-DB-Reader-python/archive/v1.4.1.tar.gz
+	source = https://github.com/maxmind/MaxMind-DB-Reader-python/archive/v1.4.1.tar.gz
 	md5sums = b8ead710583b23e82073190f053c5a21
+	sha512sums = 94bee89a0ef9d24f937f12f79dc8b9686be46ba3aeedc5538cc0c2ff4379ad2eb0bb84914849d3baa9120d4bbdb3abc215e30efd237a2c6d5fc0161e7e40c0d6
 
 pkgname = python-maxminddb
 
