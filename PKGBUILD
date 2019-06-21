@@ -11,9 +11,7 @@ provides=(filtron)
 conflicts=(filtron)
 makedepends=(git go)
 optdepends=('searx: A privacy-respecting, hackable metasearch engine'
-            'searx-git: A privacy-respecting, hackable metasearch engine (git)'
-            'morty: Privacy-aware web content sanitizer proxy-as-a-service'
-            'morty-git: Privacy-aware web content sanitizer proxy-as-a-service (git)')
+            'morty: Privacy-aware web content sanitizer proxy-as-a-service')
 install=filtron.install
 source=(git+$url
         filtron.service
