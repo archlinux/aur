@@ -5,11 +5,11 @@
 # Contributor: Roozbeh Shafiee <Roozbeh@Roozbeh.us>
 
 pkgname=choqok-git
-pkgver=v1.6.0.r104.g6e1caf68
+pkgver=v1.6.0.r106.gd8a53169
 pkgrel=1
 pkgdesc='Microblogging client for KDE with support for Pump.io, GNU social and Twitter.com - git version'
 arch=(i686 x86_64)
-url='http://choqok.gnufolks.org/'
+url='https://choqok.kde.org/'
 license=(GPL)
 depends=(knotifyconfig kcmutils kemoticons qt5-networkauth)
 makedepends=(extra-cmake-modules git kdoctools python qca-qt5)
