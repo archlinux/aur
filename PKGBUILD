@@ -2,7 +2,7 @@
 # Contributor: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=objectivelymvc-git
-pkgver=r830.85150c0
+pkgver=r837.21df6b0
 pkgrel=1
 pkgdesc="Object oriented MVC framework for OpenGL, SDL2 and GNU C. Inspired by Apple's AppKit."
 arch=('i686' 'x86_64')
