@@ -2,17 +2,14 @@
 
 pkgname=morty
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Privacy-aware web content sanitizer proxy-as-a-service'
 arch=(i686 x86_64)
 url=https://github.com/asciimoo/morty
 license=(AGPL3)
 conflicts=(morty-git)
-depends=(openssl)
 makedepends=(go)
-optdepends=('searx: A privacy-respecting, hackable metasearch engine'
-            'searx-git: A privacy-respecting, hackable metasearch engine (git)')
-install=morty.install
+optdepends=('searx: A privacy-respecting, hackable metasearch engine')
 source=($url/archive/v$pkgver.tar.gz
         morty.service)
 sha512sums=('10b08b07dfa54adf1b465311d1cf57ea46ecd09800ebba8d053abeb8f2b660685700bb665dba2741de3f17fa6c27a2c70a56d5a615c8734ca1ec8d3929260b88'
