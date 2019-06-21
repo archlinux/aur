@@ -11,9 +11,11 @@ depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent'
 makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13')
 options=('!emptydirs')
 source=("https://github.com/MoonchildProductions/UXP/archive/v$pkgver.tar.gz"
-        "https://github.com/MoonchildProductions/UXP/commit/9ded0778ee548fd8837bb35bdb5617cae0a791d1.patch")
+        "https://github.com/MoonchildProductions/UXP/commit/9ded0778ee548fd8837bb35bdb5617cae0a791d1.patch"
+        "xpconnect-disable-Werror.patch")
 sha256sums=('ff0c6e093fbab2ecd86fc36d2e4ee9d95d2645e3906c7450ba4876b3bbff3e44'
-            '159d14773306b7e07dc3480c4ad4694e52406fb71b15e3ef53a9096749d9dd42')
+            '159d14773306b7e07dc3480c4ad4694e52406fb71b15e3ef53a9096749d9dd42'
+            'eadadb6bbd3a223c51f2e709e623146a367b898861c62df1291bcfe01c897485')
 
 prepare() {
   cd "$srcdir/UXP-$pkgver"
