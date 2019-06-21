@@ -30,11 +30,11 @@ md5sums=(
 package() {
     tar -xf "${srcdir}"/data.tar.xz -C "${pkgdir}"/
     # remove cron
-    rm -rf "${pkgdir}"/etc
+    rm -rf "${pkgdir}"/etc/
     # install icons
     for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
         install -Dm644 "${pkgdir}"/opt/browser360/product_logo_${i/x*}.png \
-                        "${pkgdir}"/usr/share/icons/hicolor/$i/apps/${pkgname}.png
+                       "${pkgdir}"/usr/share/icons/hicolor/$i/apps/${pkgname}.png
     done
     rm "${pkgdir}"/opt/browser360/product_logo_*
 }
