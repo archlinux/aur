@@ -28,8 +28,7 @@ md5sums=(
 )
 
 package() {
-    cd "${srcdir}"
-    tar -xf data.tar.xz -C "${pkgdir}"
+    tar -xf "${srcdir}"/data.tar.xz -C "${pkgdir}"/
     # remove cron
     rm -rf "${pkgdir}"/etc
     # install icons
