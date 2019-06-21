@@ -3,29 +3,25 @@
 
 pkgname=lib32-icu48
 _pkgname=icu
-pkgver=4.8.1.1
-pkgrel=5
+pkgver=4.8.2
+pkgrel=1
 pkgdesc="International Components for Unicode library, version 4.8"
 arch=(i686 x86_64)
 url="http://www.icu-project.org/"
 license=('custom:"icu"')
 depends=('lib32-gcc-libs>=4.7.1-5')
 
-source=("http://download.icu-project.org/files/${_pkgname}4c/${pkgver}/${_pkgname}4c-${pkgver//./_}-src.tgz"
+source=("https://github.com/unicode-org/${_pkgname}/releases/download/release-${pkgver//./-}/${_pkgname}4c-${pkgver//./_}-src.tgz"
         "malayalam-rendering.patch"
-        "CVE-2011-4599.patch"
         "indic-ccmp.patch"
         "mlym-crash.patch"
-        "CVE-2013-0900.patch"
-        "fix-test.diff")
+        "CVE-2013-0900.patch")
 
-md5sums=('ea93970a0275be6b42f56953cd332c17'
-         '9581cfaccbf93b6d6f7f7644bebcdafa'
-         '835c9e3ae0b76aa88a6ce144a42a3bce'
-         '6602e6d9727376174cbb1b688e5e3325'
-         'a6a9daa1e3655c5058148af8903a443b'
-         '9528996e1e2099bb79d25fbd799a511e'
-         '766a677946f50029e0c01f5b8d30afec')
+sha256sums=('4c70131bcb87205622ed9a3349175f287d2b677f29a389b47da46c6e50b29373'
+         '564c15b78512085bd72261b37c98fdc47247ee00e4f17509b6cd3cc3bd2ce40a'
+         '7dd3719b9f1ed6c197088a2b5c17285480c1e2941a248ac2d173122a02c4b500'
+         '9cf60a03d5d6e41028395a1c4031843b60e03f4860e11afa8b92fd6670870e22'
+         'ffa998b285706b3c665cd73a0c6889892402bb96a83c1661fec9e57960ae4aa0')
 
 prepare() {
   cd ${srcdir}/icu/source
@@ -35,11 +31,9 @@ prepare() {
   # http://ftp.us.debian.org/debian/pool/main/i/icu/icu_4.8.1.1-12.debian.tar.gz
 
   patch -p2 -i ../../malayalam-rendering.patch
-  patch -p2 -i ../../CVE-2011-4599.patch
   patch -p2 -i ../../indic-ccmp.patch
   patch -p2 -i ../../mlym-crash.patch
   patch -p2 -i ../../CVE-2013-0900.patch
-  patch -p2 -i ../../fix-test.diff
 }
 
 build() {
