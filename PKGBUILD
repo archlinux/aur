@@ -13,5 +13,5 @@ noextract=('wfrcrdrbind')
 md5sums=('SKIP')
 
 package() {
-	install -Dm755 "${srcdir}/wfrcrfrbind" "${pkgdir}/usr/bin/wfrcrdrbind"
+	install -Dm755 "${srcdir}/wfrcrdrbind" "${pkgdir}/usr/bin/wfrcrdrbind"
 }
