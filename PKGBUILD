@@ -11,7 +11,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('fontconfig' 'libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font' 'systemd' 'ncurses')
 source=("ftp://ftp.tvdr.de/vdr/${pkgbase}-${pkgver}.tar.bz2"
-        'MainMenuHooks-v1_0_2.diff::https://www.vdr-portal.de/index.php?attachment/30330'
+        'vdr-MainMenuHooks.patch'
         '00-vdr.conf' '50-hello.conf' '50-pictures.conf'
         '60-create-dvb-device-units.rules'
         'gen-sddropin'
@@ -20,7 +20,7 @@ source=("ftp://ftp.tvdr.de/vdr/${pkgbase}-${pkgver}.tar.bz2"
         'vdr.service'
         'vdr.sysuser')
 md5sums=('b2897fe6b6e6711d512a69642b1b8ec1'
-         '301c9b9766ed5182b07f1debc79abc21'
+         '292e065582d97ed1ae4977a2a7b6091d'
          'de3dcdea1a4282211c6dac370019548b'
          'fc450f75037b8712673db4969a1dd758'
          'f00583e3f5507b0ff935b4d5919e7df2'
@@ -43,8 +43,7 @@ prepare() {
   echo 'LIRC_DEVICE  = /run/lirc/lircd' >> Make.config
 
   # Custom extensions
-  sed -i 's/NULL, 0, true/NULL, 0, OpenSubMenus/g' "$srcdir/MainMenuHooks-v1_0_2.diff"
-  patch -p1 -i "$srcdir/MainMenuHooks-v1_0_2.diff"
+  patch -p1 -i "$srcdir/vdr-MainMenuHooks.patch"
 
   # Don't install plugins with VDR
   sed -i '/^install: /s/install-plugins //' Makefile
