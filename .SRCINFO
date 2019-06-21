@@ -1,6 +1,6 @@
 pkgbase = hunter-holy
 	pkgdesc = ranger-like file browser written in Rust (holy branch)
-	pkgver = 1.2.1
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/rabite0/hunter
 	arch = i686
@@ -13,12 +13,19 @@ pkgbase = hunter-holy
 	depends = gst-plugins-ugly
 	depends = gst-libav
 	optdepends = nerd-fonts-complete: supported icon pack
+	optdepends = bat: syntax highlighting
+	optdepends = highlight: syntax highlighting
+	optdepends = p7zip: archive support
+	optdepends = w3m: HTML support
+	optdepends = links: HTML support
+	optdepends = elinks: HTML support
+	optdepends = lynx: HTML support
+	optdepends = poppler: PDF support
+	optdepends = mupdf-tools: PDF support
 	provides = hunter
 	conflicts = hunter
-	conflicts = hunter-git
-	conflicts = hunter-holy-git
-	source = https://github.com/rabite0/hunter/archive/v1.2.1-holy.tar.gz
-	sha512sums = f13443e9b5e730d1f1ada33cde5e14f20446f87453dd53a46eb281cb9e5a2b507bdc0291f2ee1417b0213adfa540292cabf6ceedc79a66f935bfb5c96fb7a460
+	source = https://github.com/rabite0/hunter/archive/v1.2.3-holy.tar.gz
+	sha512sums = 805561a541e6aa95eff1a64d7e686564d5727fe5179f813dd618a3382d1605057d73a3bd1d58311fd755b78c25295a7215f8aa01447c10074cfc70599c6c84d5
 
 pkgname = hunter-holy
 
