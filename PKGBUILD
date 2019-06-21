@@ -2,11 +2,11 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.0.4+309+g0e83fdbe
+pkgver=9.0.4+352+gcafbb77d
 _d2j=2.0
 _yajsw=12.12
 _hfsx=0.21
-pkgrel=2
+pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
 arch=(x86_64)
 url=https://www.nsa.gov/ghidra
@@ -77,11 +77,8 @@ EOF
 
 build() {
   cd ghidra
-  msg2 'Unpacking YAJSW...'
   gradle yajswDevUnpack
-  msg2 'Building native components...'
   gradle prebuildNatives_linux64
-  msg2 'Building full package...'
   gradle buildGhidra
 }
 
