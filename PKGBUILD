@@ -27,5 +27,5 @@ package() {
     rmdir "${pkgdir}"/usr/lib/x86_64-linux-gnu/
 
     mkdir "${pkgdir}"/usr/bin/
-    ln -s "${pkgdir}"/usr/share/360zip/360zip.sh "${pkgdir}"/usr/bin/360zip
+    ln -s /usr/share/360zip/360zip.sh "${pkgdir}"/usr/bin/360zip
 }
