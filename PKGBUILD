@@ -22,9 +22,11 @@ md5sums=(
 package() {
     7z x mitalk.appimage -o"${pkgdir}"/opt/mitalk/
 
+    chmod 755 "${pkgdir}"/opt/mitalk/米聊
+    chmod 755 "${pkgdir}"/opt/mitalk/AppRun
+
     chmod 755 "${pkgdir}"/opt/
     chmod 755 "${pkgdir}"/opt/mitalk/
-    chmod 755 "${pkgdir}"/opt/mitalk/米聊
     chmod 755 "${pkgdir}"/opt/mitalk/lib/
     chmod 755 "${pkgdir}"/opt/mitalk/usr/
     chmod 755 "${pkgdir}"/opt/mitalk/usr/lib/
@@ -39,15 +41,13 @@ package() {
                        "${pkgdir}"/usr/share/icons/hicolor/$i/apps/mitalk.png
     done
 
-    mv "${pkgdir}"/opt/mitalk/米聊 "${pkgdir}"/opt/mitalk/mitalk
-
     sed -i "s/Icon=米聊/Icon=mitalk/" "${pkgdir}"/opt/mitalk/米聊.desktop
-    sed -i "s/Exec=AppRun/Exec=\/opt\/mitalk\/mitalk/" "${pkgdir}"/opt/mitalk/米聊.desktop
+    sed -i "s/Exec=AppRun/Exec=\/opt\/mitalk\/AppRun/" "${pkgdir}"/opt/mitalk/米聊.desktop
 
     install -Dm644 "${pkgdir}"/opt/mitalk/米聊.desktop "${pkgdir}"/usr/share/applications/mitalk.desktop
 
-    rm "${pkgdir}"/opt/mitalk/米聊.*
-    rm "${pkgdir}"/opt/mitalk/AppRun
+    rm "${pkgdir}"/opt/mitalk/米聊.png
+    rm "${pkgdir}"/opt/mitalk/米聊.desktop
 
     rm -r "${pkgdir}"/opt/mitalk/usr/share/
     rm -r "${pkgdir}"/opt/mitalk/resources/app.asar.unpacked/
