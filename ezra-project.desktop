@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Ezra Project
+Comment=Bible study software focussing on topical study based on keywords
+Exec=ezra-project
+Terminal=false
+Type=Application
+Icon=ezra-project
