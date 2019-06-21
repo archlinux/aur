@@ -6,7 +6,7 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.0.6
+pkgver=4.0.7
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz")
-sha256sums=('a46a2a054454d4b78f3de9debac550ce89e44bac8fe587e055c0efa87fa494f6')
+sha256sums=('9d8719680c1f9f16e63228c019c2b7f36ff3a8255c77d0a7fae25332217f4154')
 
 build() {
   cd "Electron-Cash-${pkgver}"
