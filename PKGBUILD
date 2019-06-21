@@ -2,7 +2,7 @@
 # Contributor: Reventlov <contact+aur at volcanis dot me>
 
 pkgname=searx-git
-pkgver=0.15.0+47+ga80a2d05
+pkgver=0.15.0+77+g8189b0d1
 pkgrel=1
 pkgdesc='Privacy-respecting metasearch engine (git)'
 arch=(any)
@@ -21,13 +21,10 @@ depends=(python2-certifi
          python2-pysocks)
 makedepends=(git openssl)
 optdepends=('filtron: Filtering reverse-HTTP proxy'
-            'filtron-git: Filtering reverse-HTTP proxy (git)'
-            'morty: Privacy-aware web content sanitizer proxy-as-a-service'
-            'morty-git: Privacy-aware web content sanitizer proxy-as-a-service (git)')
+            'morty: Privacy-aware web content sanitizer proxy-as-a-service')
 provides=(searx)
 conflicts=(searx)
 backup=(etc/searx.conf)
-install=searx.install
 source=(git+https://github.com/asciimoo/searx
         searx.service
         searx.sysusers.d
@@ -47,21 +44,6 @@ prepare() {
 
   # Allow newer versions of Python 2 libraries since we like to break stuff
   sed -i 's/==/>=/g' requirements.txt
-
-  # Generate super secret key
-  sed -i "s/ultrasecretkey\" # change this!/`openssl rand -hex 32`\"/" searx/settings.yml
-
-  # Add Morty key if it's installed
-  msg2 'Checking for Morty...'
-  if [ -f /usr/bin/morty ]; then
-    sed -i "s/your_morty_proxy_key/`cat /usr/lib/systemd/system/morty.service |
-        grep key | awk '{print $5}'`/" searx/settings.yml &&
-      msg2 'Morty found; added key to searx settings.'
-  else
-    msg2 'Morty not found.'
-  fi
-
-  sleep 4
 }
 
 package() {
