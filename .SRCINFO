@@ -1,14 +1,14 @@
 pkgbase = gobuster
         pkgdesc = A directory/file & DNS busting tool.
-        pkgver = 2.0.1
-        pkgrel = 4
+        pkgver = 3.0.1
+        pkgrel = 5
         url = https://github.com/OJ/gobuster
         arch = x86_64
         license = Apache
         makedepends = go>=1.10
         makedepends = git
-        source = gobuster-2.0.1.tar.gz::https://github.com/OJ/gobuster/archive/v2.0.1.tar.gz
-        sha256sums = 2409acffe1fa46424a1de465bca1d3d026bdaba9a7e6bccc1d934f7ae51c24e0
+        source = gobuster-3.0.1.tar.gz::https://github.com/OJ/gobuster/archive/v3.0.1.tar.gz
+        sha256sums = 9c70c73b4c08b02d1fc722cd82eda3d8ce683de53b08c8bddd31fc5c4d90a977<Paste>
 
 pkgname = gobuster
 
