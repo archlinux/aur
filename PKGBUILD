@@ -10,9 +10,9 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
-_pkgmajor=2.33
-pkgver=${_pkgmajor}.2
-pkgrel=1
+_pkgmajor=2.34
+pkgver=${_pkgmajor}
+pkgrel=2
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url='https://github.com/karelzak/util-linux'
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgbase
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('631be8eac6cf6230ba478de211941d526808dba3cd436380793334496013ce97'
+sha256sums=('743f9d0c7252b6db246b659c1e1ce0bd45d8d4508b4dfa427bbb4a3e9b9f62b5'
             'SKIP'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
             'fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20'
@@ -46,6 +46,12 @@ sha256sums=('631be8eac6cf6230ba478de211941d526808dba3cd436380793334496013ce97'
 build() {
   cd "${pkgbase/-selinux}-$pkgver"
 
+  # We ship Debian's hardlink in package 'hardlink', Fedora's hardlink was
+  # merged in util-linux. For now we disable the latter, but let's dicuss
+  # the details:
+  # https://bugs.archlinux.org/task/62896
+  # https://github.com/karelzak/util-linux/issues/808
+
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib \
@@ -58,6 +64,7 @@ build() {
     --enable-chfn-chsh \
     --enable-write \
     --enable-mesg \
+    --disable-hardlink \
     --with-selinux \
     --with-python=3
 
