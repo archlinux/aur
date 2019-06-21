@@ -12,7 +12,6 @@ pkgbase = basilisk
 	makedepends = python2
 	makedepends = yasm
 	makedepends = mesa
-	makedepends = gconf
 	makedepends = autoconf2.13
 	depends = gtk2
 	depends = libxt
@@ -35,13 +34,11 @@ pkgbase = basilisk
 	depends = libffi
 	depends = cairo
 	depends = pixman
-	depends = sqlite
-	optdepends = libnotify: Notification integration
 	options = !emptydirs
 	source = https://github.com/MoonchildProductions/UXP/archive/v2019.06.08.tar.gz
-	source = basilisk.desktop
+	source = https://github.com/MoonchildProductions/UXP/commit/9ded0778ee548fd8837bb35bdb5617cae0a791d1.patch
 	sha256sums = ff0c6e093fbab2ecd86fc36d2e4ee9d95d2645e3906c7450ba4876b3bbff3e44
-	sha256sums = 1fdc855349da4e3728b202f411ad1d1c3fdc01e616161603175ab1573df1e6a9
+	sha256sums = 159d14773306b7e07dc3480c4ad4694e52406fb71b15e3ef53a9096749d9dd42
 
 pkgname = basilisk
 
