@@ -2,7 +2,7 @@
 
 _pkgname='yuzu'
 pkgname="$_pkgname-git"
-pkgver=r11844.c7b5c245e
+pkgver=r11863.80a8456af
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -44,6 +44,9 @@ build() {
 	export TRAVIS=true
 	export TRAVIS_REPO_SLUG=yuzu-emu/yuzu
 	export TRAVIS_TAG=$(git describe --tags)
+	
+	# Hopefully temporary fix for a compilation error involving fmt
+	CXXFLAGS+=" -DFMT_USE_USER_DEFINED_LITERALS=0"
 	
 	mkdir -p build
 	cd build
