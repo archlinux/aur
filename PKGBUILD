@@ -2,7 +2,7 @@
 
 pkgname=hunter
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='ranger-like file browser written in Rust'
 arch=(i686 x86_64)
 url=https://github.com/rabite0/hunter
