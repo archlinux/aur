@@ -1,0 +1,17 @@
+pkgbase = wfrcrdrbind-git
+	pkgdesc = Binding to simplify wf-recorder
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/varshitbhat/wfrcrdrbind
+	arch = any
+	license = GPLv3
+	depends = wf-recorder-git
+	depends = libnotify
+	depends = slurp
+	depends = xdg-user-dirs
+	noextract = wfrcrdrbind
+	source = https://gitlab.com/varshitbhat/wfrcrdrbind/raw/master/wfrcrdrbind
+	md5sums = SKIP
+
+pkgname = wfrcrdrbind-git
+
