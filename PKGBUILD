@@ -2,11 +2,11 @@
 
 gitname=alpine
 pkgname=$gitname-git
-pkgver=2.21.9999.298.7f7ec82
+pkgver=2.21.9999.351.d5f1993
 pkgrel=1
 pkgdesc="Fork of the PINE mail client (git)"
 arch=('i686' 'x86_64')
-url='http://patches.freeiz.com/alpine/'
+url='https://web.archive.org/web/20170425022958/http://patches.freeiz.com/alpine/'
 license=('APACHE')
 depends=(
     'gettext'
