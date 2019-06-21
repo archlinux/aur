@@ -6,6 +6,7 @@ pkgbase = sanoid
 	arch = any
 	license = GPL
 	depends = perl
+	depends = perl-capture-tiny
 	depends = perl-config-inifiles
 	optdepends = pv: progress bars
 	optdepends = lzop: compression

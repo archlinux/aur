@@ -8,7 +8,9 @@ arch=('any')
 url='https://github.com/jimsalterjrs/sanoid'
 license=('GPL')
 backup=('etc/sanoid/sanoid.conf')
-depends=('perl' 'perl-config-inifiles')
+depends=('perl'
+         'perl-capture-tiny'
+         'perl-config-inifiles')
 optdepends=('pv: progress bars'
             'lzop: compression'
             'mbuffer: stream buffering')
