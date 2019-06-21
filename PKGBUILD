@@ -1,6 +1,6 @@
 # Maintainer: Hokuto <abrahamhokuto@outlook.com>
 
-pkgver=20190414
+pkgver=20190621
 pkgrel=1
 pkgname=windows-xp-themes-git
 _pkgname=Windows-XP-master
@@ -9,7 +9,7 @@ arch=('any')
 url='https://github.com/B00merang-Project/WinXP-themes'
 license=('GPL')
 source=("https://github.com/B00merang-Project/Windows-XP/archive/master.zip")
-sha256sums=('6d9e17a482ab837e456494400b3810d986eac58509b59a738d03032d61a91724')
+sha256sums=('5f6d1029e3c0afc600051437c65b1a26ab72d96fff3775f152da3b391e868aa0')
 
 package() {
 	cd $srcdir/$_pkgname
