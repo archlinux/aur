@@ -2,7 +2,7 @@
 
 pkgname=wfrcrdrbind-git
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Binding to simplify wf-recorder"
 arch=('any')
 url="https://gitlab.com/varshitbhat/wfrcrdrbind"

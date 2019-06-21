@@ -1,7 +1,7 @@
 pkgbase = wfrcrdrbind-git
 	pkgdesc = Binding to simplify wf-recorder
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/varshitbhat/wfrcrdrbind
 	arch = any
 	license = GPLv3
