@@ -4,7 +4,7 @@
 # Contributor: Marcel Huber <marcelhuberfoo at gmail dot com>
 
 pkgname=gerrit
-pkgver=2.16.7
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A web-based code review tool built on top of the Git version control system"
 arch=(any)
@@ -25,7 +25,7 @@ source=(http://gerrit-releases.storage.googleapis.com/gerrit-$pkgver.war
         gerrit.conf
         gerrit.systemd)
 noextract=(gerrit.war)
-sha256sums=('de0b730ac038b928950d23346852663111c29e85985152dc3c206a2c1d61f269'
+sha256sums=('0870a90e934ee7bad5781858d9c12d675a019f89e00afcfb47a0555b2945a65d'
             '35becf2754e3779c750b2889909349160c2b0584ec201f6cfb5cf2c42e6fc598'
             'be1d205c6a0f3b24aad3c385f8188c64bfa3a9799ecf8ce5e089149af991a645')
 package() {
