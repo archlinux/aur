@@ -1,7 +1,7 @@
 pkgbase = mkl-dnn
 	pkgdesc = Intel® Math Kernel Library for Deep Neural Networks
 	pkgver = 0.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/intel/mkl-dnn
 	arch = x86_64
 	license = APACHE

@@ -4,7 +4,7 @@
 
 pkgname=mkl-dnn
 pkgver=0.19
-pkgrel=2
+pkgrel=3
 _mklmlver=2019.0.5.20190502
 pkgdesc="Intel® Math Kernel Library for Deep Neural Networks"
 arch=(x86_64)
@@ -28,7 +28,7 @@ prepare() {
   ln -sf "$srcdir"/mklml_lnx_$_mklmlver external/
 
   # Allow compilation to succeed despite warnings
-  # sed -i '58s| -Werror||' cmake/platform.cmake
+   sed -i '66s|-Werror||' cmake/platform.cmake
 }
 
 build() {
