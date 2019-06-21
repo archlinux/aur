@@ -6,6 +6,7 @@ pkgbase = python-schedule
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	depends = python>=2.3
 	source = https://files.pythonhosted.org/packages/source/s/schedule/schedule-0.6.0.tar.gz
 	sha256sums = f9fb5181283de4db6e701d476dd01b6a3dd81c38462a54991ddbb9d26db857c9
