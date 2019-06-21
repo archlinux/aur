@@ -3,14 +3,13 @@
 pkgname=kpatch
 pkgver=0.6.3
 _commit=f4ed9ff76997114ed838a3b964508d721f19f293
-pkgrel=1
+pkgrel=2
 pkgdesc="Live kernel patching"
 arch=(i686 x86_64)
 url=https://github.com/dynup/kpatch
 license=(GPL2)
 depends=(elfutils)
 makedepends=(gcc)
-conflicts=(kpatch-git)
 source=($url/archive/$_commit.tar.gz)
 sha512sums=('a51f46f4c34b1f2322a5e22349684f5c90bb5d7eb5f173d636ef649d4159ff68697773dfdb977d54506b67294bdea1ea0df6a45947c7c2e82d7f130a366269f7')
 
