@@ -36,10 +36,16 @@ build() {
 check() {
 	cd "core-rs-${_commithash}"
 
+	# Echoes a blue arrow followed by a bolded log message, much like the
+	# verbose printing that makepkg itself does
 	log() {
 		echo -e "  $(tput setaf 4)$(tput bold)->$(tput sgr0) $(tput bold)$@$(tput sgr0)"
 	}
 
+	# Create the directories for the PostgreSQL database cluster, Turtl server
+	# copy and Turtl server upload contents. Copy the core-rs and server
+	# configuration files, initialize the database cluster and start a
+	# PostgreSQL server instance within it.
 	init_database() {
 		log "Creating directories and copying configuration files..."
 		mkdir turtl-db turtl-server turtl-server/config turtl-uploads
@@ -53,6 +59,13 @@ check() {
 		pg_ctl start -D turtl-db -o "-c unix_socket_directories=/tmp"
 	}
 
+	# Copy the Turtl server executable files into our temporary directory. This
+	# allows us to run the server with our own configuration file rather than
+	# having to patch a user-controlled configuration. Then create a user and
+	# database for the Turtl server to use, populate this database with the
+	# test suite data, and finally start running the Turtl server as a
+	# background task. Sleep for 2 seconds to ensure the server is up before
+	# continuing.
 	configure_turtl_server() {
 		log "Copying Turtl server files..."
 		cd turtl-server
@@ -76,26 +89,46 @@ check() {
 		cd ..
 	}
 
+	# Run the cargo test suite for core-rs
 	run_tests() {
 		log "Running tests..."
 		make test-st
 	}
 
+	# Send SIGTERM to the Turtl server task to make it quit
 	stop_turtl_server() {
 		log "Stopping Turtl server..."
 		kill %1
 	}
 
+	# Shut down the PostgreSQL server. There is a directory change in here just
+	# in case the function was called as a result of an error during
+	# configure_turtl_server() in which the directory is not the same as what
+	# is expected here.
 	stop_database() {
 		cd "$srcdir/core-rs-${_commithash}"
 		log "Stopping PostgreSQL server..."
 		pg_ctl stop -D turtl-db
 	}
 
+	# Delete the created folders for the Turtl server and database, as they
+	# are no longer necessary.
 	remove_dirs() {
 		log "Cleaning up..."
 		rm -rf turtl-db turtl-server turtl-uploads config.yaml
 	}
+
+	# The default behaviour in makepkg is that, if a command returns with a
+	# non-zero exit status, the script will stop execution and makepkg will
+	# exit. This means that if a command such as 'make test-st' fails, the
+	# script will exit before the database/Turtl servers have been shut down,
+	# meaning they will keep running. By trapping errors like this, it is
+	# possible to override makepkg's default behaviour and run the necessary
+	# shutdown routines should a command fail. In the below examples, if an
+	# error occurs during the configure_turtl_server() step (i.e. the
+	# temporary directories and database cluster have been created, and the SQL
+	# server is running) the proper shutdown routines are run from the trap to
+	# stop the SQL server and clean up the directories.
 
 	trap "remove_dirs" ERR
 	init_database
