@@ -1,6 +1,6 @@
 pkgbase = ocaml-zip
 	pkgdesc = ZIP and gzip library for OCaml
-	pkgver = 1.07
+	pkgver = 1.08
 	pkgrel = 1
 	url = https://github.com/xavierleroy/camlzip
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = ocaml-zip
 	depends = zlib
 	options = !strip
 	options = staticlibs
-	source = https://github.com/xavierleroy/camlzip/archive/rel107.tar.gz
-	md5sums = 8babccb584dfd4eb7b98901122e818a9
+	source = https://github.com/xavierleroy/camlzip/archive/rel108.tar.gz
+	md5sums = a2a394a39ad96c3b2e2a9a6f5197a2e3
 
 pkgname = ocaml-zip
 
