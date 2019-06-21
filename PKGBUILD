@@ -1,8 +1,8 @@
-# Maintainer: Jean Lucas <jean@4ray.co
+# Maintainer: Jean Lucas <jean@4ray.co>
 # Contributor: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 pkgname=kpatch-git
-pkgver=0.6.3
+pkgver=0.6.3+42+gd3a50c4
 pkgrel=1
 pkgdesc="Live kernel patching (git)"
 arch=(i686 x86_64)
