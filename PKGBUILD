@@ -11,7 +11,6 @@ arch=(i686 x86_64 armv7h)
 url=https://github.com/coturn/coturn
 license=(BSD)
 depends=(libevent postgresql-libs libmariadbclient hiredis sqlite)
-conflicts=(coturn-git)
 install=turnserver.install
 backup=(etc/turnserver/turnserver.conf)
 source=($url/archive/$pkgver.tar.gz
@@ -39,7 +38,7 @@ check() {
 }
 
 package() {
-  install -Dm 644 turnserver.service "$pkgdir"/usr/lib/systemd/system/turnserver.service
+  install -Dm 644 turnserver.service -t "$pkgdir"/usr/lib/systemd/system
   install -Dm 644 turnserver.sysusers.d "$pkgdir"/usr/lib/sysusers.d/turnserver.conf
   install -Dm 644 turnserver.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/turnserver.conf
 
