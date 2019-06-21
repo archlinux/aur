@@ -19,7 +19,6 @@ optdepends=('nerd-fonts-complete: supported icon pack'
             'lynx: HTML support'
             'poppler: PDF support'
             'mupdf-tools: PDF support')
-conflicts=(hunter-holy)
 source=($url/archive/v$pkgver.tar.gz)
 sha512sums=('507cb50fa5d8243c95fa1f12c008541d5b0edd7a8353f47be7dce53e771e3a469405426d332d8e23181dfb4b5e3e2fbbe906bc2d48c8e2ca3f905f6325b4ae94')
 
