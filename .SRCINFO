@@ -1,6 +1,6 @@
 pkgbase = quetoo-data-git
 	pkgdesc = Quetoo is a Free first person shooter for Mac, PC and Linux.
-	pkgver = r310.df1af05
+	pkgver = r313.c040044
 	pkgrel = 1
 	url = http://quetoo.org
 	arch = any
