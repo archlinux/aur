@@ -6,10 +6,10 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.27.2
+pkgver=1.27.3
 pkgrel=1
 _cqzchannel=release
-_cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
+_cqzbuildid=$(curl -s "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
 #_cqzbuildid=20190507112044
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
@@ -25,7 +25,7 @@ optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
         '0001-bz-1521249.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-bz-1521249.patch?h=packages/firefox&id=e58550cb74099902903a8514d9a54e7060259bac')
-sha256sums=('5910daa2ff914d172f0f58dbb33a1a905fe5926265d0506712127945f76d9891'
+sha256sums=('8c27ddc2f2d449562795aff47cf07bb1b0ded6dcb1a3bd22d58a2597e8178b7c'
             'd0673786a6a1f1b9f6f66a3a1356afa33f1f18f59dabd92bd193c88c52a1d04c')
 options=(!emptydirs !makeflags)
 
