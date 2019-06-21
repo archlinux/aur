@@ -44,7 +44,7 @@ package() {
 
   # Launchers
   ln -s /opt/$_pkgname/thunderbird "$pkgdir"/usr/bin/$_pkgname
-  ln -sf thunderbird "$pkgdir"/opt/$_pkgname/thunderbird-bin
+  # ln -sf thunderbird "$pkgdir"/opt/$_pkgname/thunderbird-bin
 
   # vendor.js
   _vendorjs="$pkgdir/opt/$_pkgname/defaults/preferences/vendor.js"
