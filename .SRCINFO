@@ -1,13 +1,15 @@
 pkgbase = libdecaf
 	pkgdesc = A 448-bit Edwards curve
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/ed448goldilocks/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	source = https://sourceforge.net/projects/ed448goldilocks/files/libdecaf-1.0.0.tgz
+	source = fix-warnings.patch
 	sha256sums = a332d09731c9af9bef071ae7aa700a0ae59161bc94d78ace32fe21dd4c328d04
+	sha256sums = a3618955de5972e388490c8f8ea1d46aac242bc148e2bd81bac56c9b1b4dcbad
 
 pkgname = libdecaf
 
