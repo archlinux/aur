@@ -3,18 +3,18 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=sejda-desktop
-pkgver=5.2.7
-pkgrel=2
+pkgver=5.3.1
+pkgrel=1
 license=('custom:EULA')
 pkgdesc='PDF editor'
 arch=('x86_64')
 url='http://www.sejda.com/desktop'
 source=("https://sejda-cdn.com/downloads/sejda-desktop_${pkgver}_amd64.deb")
-sha512sums=('c578f1eaee2c8b2d30de3837ba0a91dd12dea2fe1a165bbad9e9aa82354d5365023b028e32be07f9d6bfff0cf927d90955b9c15196c70accff683d56f5b4372d')
+sha512sums=('34a6382e7e8cf41fbc6dac0aef15912e4671eb4592591b9809c6473a4d8d137b6ba53b5b933e041e5125ba146b40bd68785d934a5aac4aca01a9e82595ba7336')
 options=(!strip)
 
 package() {
-  bsdtar -xf data.tar.xz -C "${pkgdir}"
+  bsdtar -xf data.tar.gz -C "${pkgdir}"
   install -d "${pkgdir}/usr/bin"
   ln -s "${pkgdir}/opt/sejda-desktop/sejda-desktop" "${pkgdir}/usr/bin/sejda-desktop"
 
