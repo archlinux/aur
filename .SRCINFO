@@ -1,6 +1,6 @@
 pkgbase = st-ckyln-git
 	pkgdesc = Simple Terminal from suckless.org (Fork)
-	pkgver = v20190618.2.gb454b64
+	pkgver = v20190618.4.gec7c036
 	pkgrel = 1
 	url = https://git.ckyln.com/cemkeylan/st
 	arch = i686

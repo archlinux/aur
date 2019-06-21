@@ -3,7 +3,7 @@
 pkgname=st-ckyln-git
 _pkgname=st
 pkgrel=1
-pkgver=v20190618.2.gb454b64
+pkgver=v20190618.4.gec7c036
 pkgdesc="Simple Terminal from suckless.org (Fork)"
 url="https://git.ckyln.com/cemkeylan/st"
 arch=('i686' 'x86_64')
