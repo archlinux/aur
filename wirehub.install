@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+post_install() {
+  if ! test -f /etc/wirehub/config.sk
+  then
+    wh genkey | tee /etc/wirehub/config.sk | wh pubkey | tee /etc/wirehub/config.k
+    chmod 0600 /etc/wirehub/config.sk
+    chmod 0644 /etc/wirehub/config.k
+  fi
+}

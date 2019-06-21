@@ -1,0 +1,23 @@
+[Unit]
+# https://unix.stackexchange.com/questions/159641/systemd-restart-service-when-ip-address-changed
+Description=Wirehub %i config
+Documentation=https://github.com/Gawen/WireHub
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/wirehub/%i
+ConditionPathExists=/etc/wirehub/%i.sk
+
+[Service]
+Type=simple
+Environment=FG=1
+EnvironmentFile=-/etc/default/wirehub
+EnvironmentFile=-/etc/default/wirehub@%i
+ExecStart=/usr/bin/wh up /etc/wirehub/%i private-key /etc/wirehub/%i.sk interface wh-%i $OPTS 
+ExecStopPost=-/bin/rm -f /var/run/wirehub/wh-%i.sock
+RemainAfterExit=no
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+

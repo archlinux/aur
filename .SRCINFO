@@ -1,0 +1,33 @@
+pkgbase = wirehub
+	pkgdesc = Decentralized, peer-to-peer and secure overlay networks
+	pkgver = 0.0.20190129
+	pkgrel = 1
+	url = https://github.com/Gawen/WireHub
+	install = wirehub.install
+	arch = x86_64
+	license = GPL
+	makedepends = lua
+	makedepends = libsodium
+	makedepends = libpcap
+	makedepends = miniupnpc
+	depends = glibc
+	depends = wireguard-tools
+	depends = lua
+	depends = libsodium
+	depends = libpcap
+	depends = miniupnpc
+	backup = etc/wirehub/config
+	backup = etc/default/wirehub
+	source = https://github.com/Gawen/WireHub/archive/0.0.20190129.tar.gz
+	source = https://git.zx2c4.com/WireGuard/snapshot/WireGuard-0.0.20190406.tar.xz
+	source = wirehub@.service
+	source = wirehub.default
+	source = wirehub.install
+	sha256sums = 3132f75dff7a35a32dcdbf78e69b48f15ac9734b4562bbd31ee9e686c498b392
+	sha256sums = 2f06f3adf70b95e74a7736a22dcf6e9ef623b311a15b7d55b5474e57c3d0415b
+	sha256sums = 6d65143844f061ab17210a0930d5e2951edf6120df322aab2a35a79af494bd01
+	sha256sums = f9486f91ab46e6b6fe3c9c6280d4a0e21e1a915ba2aabdb80dc6935e247142ad
+	sha256sums = fcf0bc04f5768a79303fdee3425a658dd2993fb8f496e6d68c4038847602d6b2
+
+pkgname = wirehub
+
