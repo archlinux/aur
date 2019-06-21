@@ -1,6 +1,6 @@
 pkgbase = windows-xp-icons-git
 	pkgdesc = Remake of classic YlmfOS theme with some mods for icons to scale right
-	pkgver = r21.c6c00dd
+	pkgver = r22.e9c2704
 	pkgrel = 1
 	url = https://github.com/B00merang-Project/WinXP-Icons
 	arch = any

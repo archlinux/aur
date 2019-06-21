@@ -2,7 +2,7 @@
 # Contributor: Hokuto <abrahamhokuto@outlook.com>
 
 pkgname=windows-xp-icons-git
-pkgver=r21.c6c00dd
+pkgver=r22.e9c2704
 pkgrel=1
 pkgdesc="Remake of classic YlmfOS theme with some mods for icons to scale right"
 arch=('any')
