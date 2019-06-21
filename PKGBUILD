@@ -71,7 +71,7 @@ build() {
     -Dharfbuzz=true \
     -Dwl=true \
     -Dnetwork-backend=connman \
-    -Devas-loaders-disabler= \
+    -Devas-loaders-disabler=json \
     -Dbindings= \
     -Dbuild-examples=false \
     -Dbuild-tests=false \
