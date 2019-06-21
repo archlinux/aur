@@ -2,7 +2,7 @@
 
 pkgname=ipxe-git
 pkgver=1.0.0.r2710.g1cdf56f7
-pkgrel=2
+pkgrel=3
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
 url='http://www.ipxe.org/'
@@ -73,6 +73,9 @@ prepare() {
 
 build() {
 	cd ipxe/src/
+
+	NO_WERROR=1
+	export NO_WERROR
 
 	# default targets (ipxe.{lkrn,dsk,iso,usb}, undionly.kpxe)
 	make all
