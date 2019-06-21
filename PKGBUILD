@@ -1,22 +1,22 @@
-# Maintainer: Shane <lyx_shane@outlook.com>
+# Maintainer: Shane <shanelyx@outlook.com>
 pkgname=xmind-zen
-pkgver=2019
-pkgrel=06
-pkgdesc="xmind zen converted from .rpm package"
+pkgver=20190622
+pkgrel=1
+pkgdesc="converted from .rpm package on xmind.cn. please modify the website to xmind.net for non-Chinese users"
 arch=("x86_64")
 url="https://www.xmind.cn/"
 license=('custom')
-depends=()
-
+depends=('gconf')
 source=(
 	"http://dl2.xmind.cn/XMind-ZEN-for-Linux-64bit.rpm"
 	"https://www.xmind.cn/terms/index.html"
 )
 
 md5sums=('fe6357e885b72400a597416ac3d0f314'
-	 'SKIP')
+    'SKIP'
+)
 
-options=('!strip')
+#options=('!strip')
 
 package() {
   cd ${srcdir}
