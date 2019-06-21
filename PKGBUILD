@@ -2,29 +2,28 @@
 
 pkgname=kpatch
 pkgver=0.6.3
-_commit=f4ed9ff76997114ed838a3b964508d721f19f293
-pkgrel=2
+pkgrel=3
 pkgdesc="Live kernel patching"
 arch=(i686 x86_64)
 url=https://github.com/dynup/kpatch
 license=(GPL2)
 depends=(elfutils)
 makedepends=(gcc)
-source=($url/archive/$_commit.tar.gz)
-sha512sums=('a51f46f4c34b1f2322a5e22349684f5c90bb5d7eb5f173d636ef649d4159ff68697773dfdb977d54506b67294bdea1ea0df6a45947c7c2e82d7f130a366269f7')
+source=($url/archive/v$pkgver.tar.gz)
+sha512sums=('0d266dd837ad651d7f46047cf2c8de527d08274a885a154c53354f4b3c5679d91c766d7d42294ffe71cc548e5ee865c7555f24001882b806f2fb48825f9b0c06')
 
 prepare() {
   # Fix search structure
-  sed -i 's/libexec/lib/g' kpatch-$_commit/kpatch-build/kpatch-build
+  sed -i 's/libexec/lib/g' kpatch-$pkgver/kpatch-build/kpatch-build
 }
 
 build() {
-  cd kpatch-$_commit
+  cd kpatch-$pkgver
   make 
 }
 
 package() {
-  cd kpatch-$_commit
+  cd kpatch-$pkgver
   make DESTDIR="$pkgdir" install
 
   cd "$pkgdir"

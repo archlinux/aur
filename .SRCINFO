@@ -1,15 +1,15 @@
 pkgbase = kpatch
 	pkgdesc = Live kernel patching
 	pkgver = 0.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dynup/kpatch
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = gcc
 	depends = elfutils
-	source = https://github.com/dynup/kpatch/archive/f4ed9ff76997114ed838a3b964508d721f19f293.tar.gz
-	sha512sums = a51f46f4c34b1f2322a5e22349684f5c90bb5d7eb5f173d636ef649d4159ff68697773dfdb977d54506b67294bdea1ea0df6a45947c7c2e82d7f130a366269f7
+	source = https://github.com/dynup/kpatch/archive/v0.6.3.tar.gz
+	sha512sums = 0d266dd837ad651d7f46047cf2c8de527d08274a885a154c53354f4b3c5679d91c766d7d42294ffe71cc548e5ee865c7555f24001882b806f2fb48825f9b0c06
 
 pkgname = kpatch
 
