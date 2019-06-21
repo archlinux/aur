@@ -1,0 +1,16 @@
+pkgbase = nodejs-webpack-cli
+	pkgdesc = CLI for webpack & friends
+	pkgver = 3.3.4
+	pkgrel = 1
+	url = https://github.com/webpack/webpack-cli#readme
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	optdepends = nodejs-webpack
+	noextract = webpack-cli-3.3.4.tgz
+	source = https://registry.npmjs.org/webpack-cli/-/webpack-cli-3.3.4.tgz
+	sha256sums = de27e281c48a897b8c219cb093e261d5f6afe44a
+
+pkgname = nodejs-webpack-cli
+
