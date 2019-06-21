@@ -1,4 +1,0 @@
-post_install() {
-  sed -i "s/ultrasecretkey/` openssl rand -hex 32`/" /usr/lib/systemd/system/morty.service
-  echo "Morty key is `cat /usr/lib/systemd/system/morty.service | grep key | awk '{print $5}'` and can be found at /usr/lib/systemd/system/morty.service"
-}
