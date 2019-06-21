@@ -11,8 +11,12 @@ pkgbase = turtl-core-rs
 	depends = libsodium
 	depends = openssl-1.0
 	source = https://github.com/turtl/core-rs/archive/774fa361d021d9ef5237d32d09515ab7b2a32ad2.tar.gz
+	source = config-client.yaml
+	source = config-server.yaml
 	source = vars.mk
 	sha256sums = 71c1caf3aeb6245040abb0ee063b574dd6ece6314c60edabbe4299a11df49b68
+	sha256sums = f5400e9c80c935915212e818f05eab8d3d542a54ed89e153c20a6c0fa00d8e1a
+	sha256sums = ef42f08759af7ce12a06ba168877e74835e1bcdc2c4dca3aea9435b5983961e2
 	sha256sums = 8dd67ffa28f833baa88c57ecabcc0c5e020d53b5a5516034478a0883be29193d
 
 pkgname = turtl-core-rs

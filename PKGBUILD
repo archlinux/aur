@@ -16,8 +16,12 @@ checkdepends=("turtl-server")
 _commithash="774fa361d021d9ef5237d32d09515ab7b2a32ad2"
 
 source=("https://github.com/turtl/core-rs/archive/${_commithash}.tar.gz"
+        "config-client.yaml"
+        "config-server.yaml"
         "vars.mk")
 sha256sums=("71c1caf3aeb6245040abb0ee063b574dd6ece6314c60edabbe4299a11df49b68"
+            "f5400e9c80c935915212e818f05eab8d3d542a54ed89e153c20a6c0fa00d8e1a"
+            "ef42f08759af7ce12a06ba168877e74835e1bcdc2c4dca3aea9435b5983961e2"
             "8dd67ffa28f833baa88c57ecabcc0c5e020d53b5a5516034478a0883be29193d")
 
 prepare() {
@@ -31,18 +35,17 @@ build() {
 
 check() {
 	cd "core-rs-${_commithash}"
-	export TURTL_DB_CONNSTR="postgres://turtl:turtl@localhost:5432/turtl"
-	export TURTL_UPLOADS_LOCAL="$PWD/turtl-uploads"
 
 	log() {
 		echo -e "  $(tput setaf 4)$(tput bold)->$(tput sgr0) $(tput bold)$@$(tput sgr0)"
 	}
 
-	init_dirs() {
-		mkdir turtl-db turtl-uploads
-	}
-
 	init_database() {
+		log "Creating directories and copying configuration files..."
+		mkdir turtl-db turtl-server turtl-server/config turtl-uploads
+		cp ../config-client.yaml config.yaml
+		cp ../config-server.yaml turtl-server/config/config.yaml
+
 		log "Initializing PostgreSQL database cluster..."
 		initdb -D turtl-db -A trust
 
@@ -51,20 +54,30 @@ check() {
 	}
 
 	configure_turtl_server() {
+		log "Copying Turtl server files..."
+		cd turtl-server
+		cp -r /usr/share/webapps/turtl/controllers controllers
+		cp -r /usr/share/webapps/turtl/helpers helpers
+		cp -r /usr/share/webapps/turtl/models models
+		cp -r /usr/share/webapps/turtl/node_modules node_modules
+		cp -r /usr/share/webapps/turtl/scripts scripts
+		cp -r /usr/share/webapps/turtl/tools tools
+		cp /usr/share/webapps/turtl/server.js server.js
+
 		log "Configuring database for Turtl server..."
 		psql -h /tmp -d postgres -c "CREATE USER turtl WITH PASSWORD 'turtl'"
 		psql -h /tmp -d postgres -c "CREATE DATABASE turtl"
-		bash -c "cd /usr/share/webapps/turtl && scripts/init-db.sh"
-		bash -c "cd /usr/share/webapps/turtl && node tools/populate-test-data.js"
+		scripts/init-db.sh
+		node tools/populate-test-data.js
 
 		log "Starting Turtl server..."
-		node /usr/share/webapps/turtl/server.js &
+		node server.js &
 		sleep 2
+		cd ..
 	}
 
 	run_tests() {
 		log "Running tests..."
-		sed '/^  endpoint: /c\  endpoint: ""' config.yaml.default > config.yaml
 		make test-st
 	}
 
@@ -74,26 +87,25 @@ check() {
 	}
 
 	stop_database() {
+		cd "$srcdir/core-rs-${_commithash}"
 		log "Stopping PostgreSQL server..."
 		pg_ctl stop -D turtl-db
 	}
 
 	remove_dirs() {
 		log "Cleaning up..."
-		rm -rf turtl-db turtl-uploads config.yaml
+		rm -rf turtl-db turtl-server turtl-uploads config.yaml
 	}
-
-	init_dirs
 
 	trap "remove_dirs" ERR
 	init_database
 	trap - ERR
 
-	trap "stop_database && remove_dirs" ERR
+	trap "stop_database; remove_dirs" ERR
 	configure_turtl_server
 	trap - ERR
 
-	trap "stop_turtl_server && stop_database && remove_dirs" ERR
+	trap "stop_turtl_server; stop_database; remove_dirs" ERR
 	run_tests
 	trap - ERR
 
