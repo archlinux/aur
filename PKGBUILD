@@ -25,6 +25,7 @@ package() {
     chmod 755 "${pkgdir}"/opt/
     chmod 755 "${pkgdir}"/opt/mitalk/
     chmod 755 "${pkgdir}"/opt/mitalk/米聊
+    chmod 755 "${pkgdir}"/opt/mitalk/usr/
     chmod 755 "${pkgdir}"/opt/mitalk/lib/
     chmod 755 "${pkgdir}"/opt/mitalk/locales/
     chmod 755 "${pkgdir}"/opt/mitalk/resources/
@@ -47,6 +48,6 @@ package() {
     rm "${pkgdir}"/opt/mitalk/米聊.*
     rm "${pkgdir}"/opt/mitalk/AppRun
 
-    rm -r "${pkgdir}"/opt/mitalk/usr/
+    rm -r "${pkgdir}"/opt/mitalk/usr/share/
     rm -r "${pkgdir}"/opt/mitalk/resources/app.asar.unpacked/
 }
