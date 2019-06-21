@@ -3,7 +3,7 @@
 
 pkgname=searx-git
 pkgver=0.15.0+77+g8189b0d1
-pkgrel=1
+pkgrel=2
 pkgdesc='Privacy-respecting metasearch engine (git)'
 arch=(any)
 url=https://asciimoo.github.io/searx/
@@ -19,7 +19,7 @@ depends=(python2-certifi
          python2-yaml
          python2-requests
          python2-pysocks)
-makedepends=(git openssl)
+makedepends=(git)
 optdepends=('filtron: Filtering reverse-HTTP proxy'
             'morty: Privacy-aware web content sanitizer proxy-as-a-service')
 provides=(searx)
