@@ -3,15 +3,15 @@
 # https://wiki.archlinux.org/index.php/Electron_package_guidelines
 
 pkgname=ezra-project-git
-pkgver=0.7.1.r84.g435b258
+pkgver=0.8.1.r0.g2ec8c58
 _branch='master'
 pkgrel=1
 pkgdesc="a bible study software focussing on topical study based on keywords/tags"
 arch=('x86_64')
 url="https://github.com/tobias-klein/ezra-project"
 license=('GPL3')
-depends=('electron' 'nodejs' 'sword-svn')
-makedepends=('npm' 'git')
+depends=('electron' 'nodejs')
+makedepends=('npm' 'git' 'sword')
 source=("git://github.com/tobias-klein/${pkgname%-git}.git#branch=$_branch"
         'ezra-project.sh'
         'ezra-project.desktop')
