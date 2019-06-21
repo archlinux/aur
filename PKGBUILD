@@ -4,7 +4,7 @@ _setPrefix="/usr"
 _setLibdir="$_setPrefix/lib"
 _pkgbase=icu
 _pkgmaj=51
-_pkgmin=2
+_pkgmin=3
 pkgrel=1
 
 pkgname=$_pkgbase$_pkgmaj
@@ -15,9 +15,9 @@ url="http://www.icu-project.org/"
 license=('custom:"icu"')
 depends=('gcc-libs>=4.7.1-5')
 
-source=("http://download.icu-project.org/files/${_pkgbase}4c/${pkgver}/${_pkgbase}4c-${pkgver//./_}-src.tgz")
+source=("https://github.com/unicode-org/${_pkgbase}/releases/download/release-${pkgver//./-}/${_pkgbase}4c-${pkgver//./_}-src.tgz")
 
-md5sums=('072e501b87065f3a0ca888f1b5165709')
+sha256sums=('cdc58f7b4ac62202770a3e29d9e7526e86bf9b8dfa3aebfa09f8263e315f3c58')
 
 build() {
   cd ${srcdir}/icu/source
