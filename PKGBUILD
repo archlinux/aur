@@ -16,14 +16,14 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname=('google-compute-engine' 'google-compute-engine-oslogin')
-pkgver=20190416
+pkgver=20190522
 pkgrel=1
 arch=('any' 'x86_64')
 url='https://github.com/GoogleCloudPlatform/compute-image-packages'
 license=('Apache')
 makedepends=('curl' 'json-c' 'pam' 'python-boto' 'python-distro' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/compute-image-packages/archive/$pkgver.tar.gz")
-sha256sums=('cef65af726b7c32db9035266804e0393b54196fabd1007026554bae2d9540de4')
+sha256sums=('8cfb338c3c768ea7e76e479728a1438b2f10b0df13bddd70c9fbcbfc1273efd6')
 
 build() {
 	cd "compute-image-packages-$pkgver/packages"
