@@ -5,13 +5,15 @@
 pkgname=ezra-project-git
 pkgver=0.8.1.r0.g2ec8c58
 _branch='master'
-pkgrel=1
+pkgrel=2
 pkgdesc="a bible study software focussing on topical study based on keywords/tags"
 arch=('x86_64')
 url="https://github.com/tobias-klein/ezra-project"
 license=('GPL3')
 depends=('electron' 'nodejs')
 makedepends=('npm' 'git' 'sword')
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
 source=("git://github.com/tobias-klein/${pkgname%-git}.git#branch=$_branch"
         'ezra-project.sh'
         'ezra-project.desktop')
@@ -33,7 +35,6 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    # npm run rebuild-linux
     $(npm bin)/electron-rebuild -f -w node-sword-interface -v $_electron
 }
 
