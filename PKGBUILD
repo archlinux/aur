@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=hunter
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='ranger-like file browser written in Rust'
 arch=(i686 x86_64)
@@ -9,10 +9,19 @@ url=https://github.com/rabite0/hunter
 license=(WTFPL)
 depends=(file xdg-utils gst-plugins-bad gst-plugins-ugly gst-libav)
 makedepends=(rust-nightly)
-optdepends=('nerd-fonts-complete: supported icon pack')
-conflicts=(hunter-git hunter-holy hunter-holy-git)
+optdepends=('nerd-fonts-complete: supported icon pack'
+            'bat: syntax highlighting'
+            'highlight: syntax highlighting'
+            'p7zip: archive support'
+            'w3m: HTML support'
+            'links: HTML support'
+            'elinks: HTML support'
+            'lynx: HTML support'
+            'poppler: PDF support'
+            'mupdf-tools: PDF support')
+conflicts=(hunter-holy)
 source=($url/archive/v$pkgver.tar.gz)
-sha512sums=('58646eb0e353d235eede2efa034dde9b5b6892eee82d64f938233faf250e019ae6a5b02162b77a9b979bf6f3adc8b71333bda0f1711d830845d01a14b21c7833')
+sha512sums=('507cb50fa5d8243c95fa1f12c008541d5b0edd7a8353f47be7dce53e771e3a469405426d332d8e23181dfb4b5e3e2fbbe906bc2d48c8e2ca3f905f6325b4ae94')
 
 build() {
   cd hunter-$pkgver
