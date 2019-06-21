@@ -2,7 +2,7 @@
 
 pkgname=lynda-dl
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to download courses from Lynda'
 arch=(any)
 url=https://github.com/r0oth3x49/lynda-dl
@@ -12,7 +12,6 @@ depends=(python-requests
          python-colorama
 	 python-unidecode
          python-pyopenssl)
-conflicts=(lynda-dl-git)
 source=($url/archive/v$pkgver.tar.gz
         setup.py)
 sha512sums=('29ab76a2bac6fa07c453ef578d754a1ef1cfaf643251a8d3203a11f93f85128445112fa54fd9e9933d35bea71dc3746bdfc00e71dbc13944de1b024ef6394b11'
