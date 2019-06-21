@@ -1,10 +1,10 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=opencorsairlink
-pkgver=0+r179+f92ba8c
+pkgver=0+179+gf92ba8c
 _commit=f92ba8cae34cd5fc396e987cb7326ad65f7acaf3
-pkgrel=3
-pkgdesc="Status and control utility for Corsair Link products"
+pkgrel=1
+pkgdesc='Status and control utility for Corsair Link products'
 arch=(i686 x86_64)
 url=https://github.com/audiohacked/OpenCorsairLink
 license=(GPL2)
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd OpenCorsairLink
-  printf 0+%s+%s r$(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  printf 0+%s+%s $(git rev-list --count HEAD) g$(git rev-parse --short HEAD)
 }
 
 build() {

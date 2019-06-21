@@ -1,7 +1,7 @@
 pkgbase = opencorsairlink
 	pkgdesc = Status and control utility for Corsair Link products
-	pkgver = 0+r179+f92ba8c
-	pkgrel = 3
+	pkgver = 0+179+gf92ba8c
+	pkgrel = 1
 	url = https://github.com/audiohacked/OpenCorsairLink
 	arch = i686
 	arch = x86_64
