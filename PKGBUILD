@@ -2,8 +2,8 @@ _pkgbase=adobe-source-han-mono
 pkgbase=$_pkgbase-fonts
 pkgname=($_pkgbase-jp-fonts $_pkgbase-kr-fonts $_pkgbase-cn-fonts $_pkgbase-tw-fonts $_pkgbase-hk-fonts $_pkgbase-otc-fonts)
 pkgver=1.002
-pkgrel=1
-pkgdesc='Adobe Source Han Mono - A set of Pan-CJK fonts designed to complement Source Mono Pro'
+pkgrel=2
+pkgdesc='Adobe Source Han Mono - A set of Pan-CJK fonts designed to complement Source Code Pro'
 arch=('any')
 license=('custom:OFL')
 url='https://github.com/adobe-fonts/source-han-mono'
@@ -112,32 +112,26 @@ function _package {
     case "$1" in
         $_pkgbase-jp-fonts)
             fonts=(${_jp[@]})
-            cd $srcdir/JP
             _fontconfig_filename=44-source-han-sans-jp.conf
             pkgdesc="Adobe Source Han Mono OTF - Japanese OpenType/CFF fonts";;
         $_pkgbase-kr-fonts)
             fonts=(${_kr[@]})
-            cd $srcdir/KR
             _fontconfig_filename=44-source-han-sans-kr.conf
             pkgdesc="Adobe Source Han Mono OTF - Korean OpenType/CFF fonts";;
         $_pkgbase-cn-fonts)
             fonts=(${_cn[@]})
-            cd $srcdir/CN
             _fontconfig_filename=44-source-han-sans-cn.conf
             pkgdesc="Adobe Source Han Mono OTF - Simplified Chinese OpenType/CFF fonts";;
         $_pkgbase-tw-fonts)
             fonts=(${_tw[@]})
-            cd $srcdir/TW
             _fontconfig_filename=44-source-han-sans-tw.conf
             pkgdesc="Adobe Source Han Mono OTF - Traditional Chinese (Taiwan) OpenType/CFF fonts";;
         $_pkgbase-hk-fonts)
             fonts=(${_hk[@]})
-            cd $srcdir/HK
             _fontconfig_filename=44-source-han-sans-hk.conf
             pkgdesc="Adobe Source Han Mono OTF - Traditional Chinese (Hong Kong) OpenType/CFF fonts";;
         $_pkgbase-otc-fonts)
             fonts=(${_otc[@]})
-            cd $srcdir
             _fontconfig_filename=44-source-han-sans-otc.conf
             pkgdesc="Adobe Source Han Mono - Pan-CJK OpenType/CFF Collection fonts";;
     esac
@@ -147,7 +141,7 @@ function _package {
 
     # Install fonts
     for font in "${fonts[@]}"; do
-        install -m644 "$font" "$pkgdir/usr/share/fonts/adobe-source-han-sans"
+        install -m644 "$srcdir/$font" "$pkgdir/usr/share/fonts/adobe-source-han-sans"
     done
 
     # Install fontconfig fix
