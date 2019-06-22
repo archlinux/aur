@@ -1,6 +1,6 @@
 pkgbase = nodejs-gatsby-cli
 	pkgdesc = The Gatsby command line interface
-	pkgver = 2.6.7
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-cli
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = nodejs-gatsby-cli
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = gatsby-cli-2.6.7.tgz
-	source = https://registry.npmjs.org/gatsby-cli/-/gatsby-cli-2.6.7.tgz
-	md5sums = 779333b3ef57486fc343939d168121fd
+	noextract = gatsby-cli-2.7.0.tgz
+	source = https://registry.npmjs.org/gatsby-cli/-/gatsby-cli-2.7.0.tgz
+	md5sums = 0bf58f5e4ffcd1ad0b96e79cf3452b34
 
 pkgname = nodejs-gatsby-cli
 
