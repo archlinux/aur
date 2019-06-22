@@ -3,7 +3,7 @@
 pkgname=next-browser-git
 _pkgname=next-browser
 pkgver=1.1.0.14.gc645350
-pkgrel=2
+pkgrel=1
 pkgdesc="Keyboard-oriented, Common Lisp extensible web-browser"
 arch=('i686' 'x86_64')
 url="https://next.atlas.engineer"
