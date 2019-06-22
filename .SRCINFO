@@ -1,0 +1,17 @@
+pkgbase = amdvlk-bin
+	pkgdesc = AMDVLK (Stable DEB Release) - AMD Open Source Driver for Vulkan®
+	pkgver = 2019.Q2.5
+	pkgrel = 4
+	url = https://github.com/GPUOpen-Drivers/AMDVLK
+	arch = x86_64
+	license = MIT
+	depends = vulkan-icd-loader
+	provides = amdvlk
+	provides = vulkan-driver
+	conflicts = amdvlk-git
+	conflicts = amdvlk-deb
+	source = https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-2019.Q2.5/amdvlk_2019.Q2.5_amd64.deb
+	sha256sums = 3086094e1157a6ab6cf18a9b2364ff30643ee82f0daa7a856e285c6242d090cf
+
+pkgname = amdvlk-bin
+
