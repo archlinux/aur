@@ -1,4 +1,4 @@
-# Maintainer: Pierre Neidhardt <mail@ambrevar.xyz
+# Maintainer: Cillian Berragan <cjberragan@gmail.com>
 
 pkgname=next-browser-git
 _pkgname=next-browser
