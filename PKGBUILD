@@ -2,13 +2,13 @@
 pkgname=rar2fs
 pkgver=1.27.2
 _unrarver=5.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fuse file system for reading Rar archives"
 arch=("i686" "x86_64")
 license=("GPLv3")
 url="https://github.com/hasse69/rar2fs"
 url="https://hasse69.github.io/rar2fs/"
-depends=("fuse3" "libunrar")
+depends=("fuse2" "libunrar")
 makedepends=("libunrar")
 source=("https://github.com/hasse69/rar2fs/releases/download/v$pkgver/rar2fs-$pkgver.tar.gz"
         "http://www.rarlab.com/rar/unrarsrc-$_unrarver.tar.gz")
