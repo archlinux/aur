@@ -3,7 +3,7 @@
 # Contributor sumt <sumt at sci dot fi>
 
 pkgname=yle-dl
-pkgver=20190502
+pkgver=20190614
 pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=('php: for downloading live TV and certain news broadcasts'
             'wget: for some rare streams')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-${pkgver}.tar.gz")
-sha256sums=('9cb413b9153880f5c4fb0c3c35cbd7a4e1dd404a1d96460ae340e95758b01fa1')
+sha256sums=('c8c88cd6d48426623c008ccbe6efec1d06e61a9316dda82313070589469303bb')
 
 build() {
   cd $pkgname-$pkgver
