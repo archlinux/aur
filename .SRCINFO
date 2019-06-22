@@ -1,6 +1,6 @@
 pkgbase = ada-web-server
 	pkgdesc = A complete embeddable Web application framework for Ada.
-	pkgver = 2018
+	pkgver = 2019
 	pkgrel = 1
 	url = http://libre.adacore.com/tools/aws
 	arch = i686
@@ -9,12 +9,11 @@ pkgbase = ada-web-server
 	license = GPL
 	makedepends = gprbuild
 	makedepends = texlive-bin
-	depends = gcc-ada>=8.2.1
-	depends = gcc-ada<9.0.0
+	depends = gcc-ada
 	depends = asis
 	provides = aws
-	source = http://mirrors.cdn.adacore.com/art/5b0819e0c7a447df26c27abd
-	sha1sums = 4ef71505336b2a5019081ac820e93d9854390c53
+	source = http://mirrors.cdn.adacore.com/art/5cdf85a031e87aa2cdf16b19
+	sha1sums = 110b3f623b4487874a714d3cf29aa945680766a6
 
 pkgname = ada-web-server
 

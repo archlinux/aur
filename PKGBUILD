@@ -1,28 +1,27 @@
 # Maintainer: Rod Kay   <charlie5 on #ada at freenode.net>
 
-_pkgname=aws
 pkgname=ada-web-server
-pkgver=2018
+pkgver=2019
 pkgrel=1
 pkgdesc="A complete embeddable Web application framework for Ada."
 
 arch=(i686 x86_64)
-url=http://libre.adacore.com/tools/$_pkgname
+url=http://libre.adacore.com/tools/aws
 license=(GPL)
 groups=(gcc-ada)
 
-depends=('gcc-ada>=8.2.1' 'gcc-ada<9.0.0' 'asis')
+depends=('gcc-ada' 'asis')
 makedepends=(gprbuild texlive-bin)
 
-provides=($_pkgname)
+provides=(aws)
 
-source=(http://mirrors.cdn.adacore.com/art/5b0819e0c7a447df26c27abd)
-sha1sums=('4ef71505336b2a5019081ac820e93d9854390c53')
+source=('http://mirrors.cdn.adacore.com/art/5cdf85a031e87aa2cdf16b19')
+sha1sums=('110b3f623b4487874a714d3cf29aa945680766a6')
 
 
 build() 
 {
-    cd $srcdir/$_pkgname-gpl-2018-src
+    cd $srcdir/aws-2019-20190512-18AB9-src
 
     make setup
     make build
@@ -34,7 +33,7 @@ build()
 
 package() 
 {
-    cd $srcdir/$_pkgname-gpl-2018-src
+    cd $srcdir/aws-2019-20190512-18AB9-src
 
     make DESTDIR="$pkgdir" install
 
