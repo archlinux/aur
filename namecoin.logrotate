@@ -1,4 +1,4 @@
-/srv/namecoin/debug.log
+/var/lib/namecoin/debug.log
 {
         rotate 5
         copytruncate

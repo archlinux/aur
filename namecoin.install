@@ -1,27 +1,29 @@
 _bc_user=namecoin
 _bc_group=namecoin
 
+_datadir=/var/lib/namecoin
+
 post_install() {
   _mkuser
   # disable Copy-On-Write (btrfs directories only)
-  for _dir in /srv/namecoin; do
+  for _dir in $_datadir; do
     _is_btrfs "$_dir" && _disable_cow "$_dir"
   done
-  mkdir -p /srv/namecoin
-  chown -R $_bc_user:$_bc_group /etc/namecoin /srv/namecoin
+  mkdir -p $_datadir
+  chown -R $_bc_user:$_bc_group /etc/namecoin $_datadir
   printf "%b\n" "$namecoin"
 }
 
 post_upgrade() {
   _mkuser
-  mkdir -p /srv/namecoin
-  chown -R $_bc_user:$_bc_group /etc/namecoin /srv/namecoin
+  mkdir -p $_datadir
+  chown -R $_bc_user:$_bc_group /etc/namecoin $_datadir
   printf "%b\n" "$namecoin"
 }
 
 post_remove() {
   _rmuser
-  rm -rf /srv/namecoin
+  rm -rf $_datadir
 }
 
 
@@ -116,7 +118,7 @@ read -d '' namecoin <<'EOF'
 ##      $ namecoin-cli getmininginfo                                  ##
 ##                                                                    ##
 ##  Config:        /etc/namecoin/namecoin.conf                        ##
-##  Blockchain:    /srv/namecoin                                      ##
+##  Blockchain:    /var/lib/namecoin                                  ##
 ##  Documentation: /usr/share/doc/namecoin                            ##
 ##                                                                    ##
 ########################################################################

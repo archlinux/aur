@@ -8,7 +8,7 @@ User=namecoin
 Group=namecoin
 ExecStart=/usr/bin/namecoind -daemon=0                       \
                             -conf=/etc/namecoin/namecoin.conf \
-                            -datadir=/srv/namecoin          \
+                            -datadir=/var/lib/namecoin      \
                             -reindex                        \
                             -pid=/run/namecoind.pid
 ExecReload=/usr/bin/kill -HUP $MAINPID
