@@ -6,7 +6,7 @@ _pkgname=fcitx5-qt
 pkgbase=$_pkgname-git
 pkgname=(fcitx5-qt5-git fcitx5-qt4-git)
 pkgver=r135.9ac0796
-pkgrel=4
+pkgrel=6
 pkgdesc="Fcitx Qt Library"
 arch=('x86_64')
 url="https://gitlab.com/fcitx/fcitx5-qt"
@@ -38,8 +38,8 @@ _mv_pkg(){
 
 package_fcitx5-qt5-git(){
   depends=('fcitx5-git' 'qt5-x11extras' 'qt5-quickcontrols')
-  provides=('fcitx5-qt5')
-  conflicts=('fcitx5-qt5')
+  provides=('fcitx5-qt5' 'fcitx5-qt')
+  conflicts=('fcitx5-qt5' 'fcitx5-qt')
   pkgdesc="Fcitx Qt Library, for Qt5"
 
   cd /tmp/$_pkgname
