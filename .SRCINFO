@@ -1,0 +1,18 @@
+pkgbase = vlang-git
+	pkgdesc = Simple, fast, safe language created for developing maintainable software
+	pkgver = r44.4e24681
+	pkgrel = 1
+	url = https://vlang.io
+	arch = x86_64
+	license = MIT
+	depends = glfw
+	depends = libfreetype.so
+	depends = libcurl.so
+	conflicts = v
+	source = git+https://github.com/vlang/v.git
+	source = https://vlang.io/v.c
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vlang-git
+
