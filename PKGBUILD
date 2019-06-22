@@ -70,10 +70,12 @@ build() {
 }
 
 package() {
+
+
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
-  install -Dm0444 "${srcdir}/../frr-init-functions" "${pkgdir}/usr/bin/"
+  install -Dm0444 "${startdir}/frr-init-functions" "${pkgdir}/usr/bin/"
 
   pushd "redhat"
   sed -ri 's|/var/run/frr|/run/frr|g' "${pkgname}.logrotate"
