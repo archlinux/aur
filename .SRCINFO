@@ -1,6 +1,6 @@
 pkgbase = firefox-unbranded-bin
 	pkgdesc = Standalone web browser from mozilla.org - Unbranded version
-	pkgver = 67.0.3
+	pkgver = 67.0.4
 	pkgrel = 1
 	url = https://wiki.mozilla.org/Add-ons/Extension_Signing#Unbranded_Builds
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = firefox-unbranded-bin
 	optdepends = networkmanager: location detection via available WiFi networks
 	optdepends = speech-dispatcher: text-to-speech
 	optdepends = startup-notification: support for FreeDesktop Startup Notification
-	provides = firefox=67.0.3
+	provides = firefox=67.0.4
 	conflicts = firefox
-	source = https://queue.taskcluster.net/v1/task/V8FCEKjPRny6zz41l6_pGA/runs/0/artifacts/public/build/target.tar.bz2
+	source = https://queue.taskcluster.net/v1/task/OzOcWy0QSOmY-GMj7g_qXA/runs/0/artifacts/public/build/target.tar.bz2
 	source = firefox.desktop
-	sha256sums = fa947dbb0e1bbcbe6c4db19cf5ca9cb66ddb9266dc500bad0b81013a8dc1ac23
+	sha256sums = b8f5ea2978c710bd778d42d90aabcd74072bfc6bf8067584d6b1b217d1294ff2
 	sha256sums = 4a783dca1f88e003c72f32d22719a0915f3fa576adbc492240e7cc250246ce10
 
 pkgname = firefox-unbranded-bin
