@@ -6,7 +6,7 @@
 # Contributor: Ariel Popper <a@arielp.com>
 
 pkgname=postgresql-9.6
-pkgver=9.6.13
+pkgver=9.6.14
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
@@ -27,7 +27,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql.logrotate
         postgresql.service
         postgresql-check-db-dir)
-sha256sums=('ecbed20056296a65b6a4f5526c477e3ae5cc284cb01a15507785ddb23831e9a4'
+sha256sums=('3f08c265c9ae814f727461408ab24fdf3d954c4f7ae42d9c97b3c7e03fc31a22'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
