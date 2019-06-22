@@ -39,7 +39,7 @@ package()
 	install -m755 -d "${pkgdir}/usr/share/${_pkgname}"
 	install -m755 -d "${pkgdir}/usr/share/applications"
 	install -m755 -d "${pkgdir}/usr/share/icons"
-	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/deploy/doc" "$pkgdir/usr/share/doc/${_pkgname}/"
+	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/deploy/doc/Mandelbulber_Manual.pdf" "$pkgdir/usr/share/doc/${_pkgname}/"
 	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/opencl" "$pkgdir/usr/share/${_pkgname}/opencl"
 	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/deploy/share/mandelbulber2/data" "$pkgdir/usr/share/${_pkgname}/data"
 	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/deploy/share/mandelbulber2/examples" "$pkgdir/usr/share/${_pkgname}/examples"
