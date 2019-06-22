@@ -1,0 +1,20 @@
+--- a/lib/python3.7/site-packages/flup-1.0.3-py3.7.egg/flup/server/paste_factory.py	2019-06-22 14:36:32.738706639 -0400
++++ b/lib/python3.7/site-packages/flup-1.0.3-py3.7.egg/flup/server/paste_factory.py	2019-06-22 14:51:07.064597983 -0400
+@@ -4,7 +4,7 @@
+ from flup.server import NoDefault
+
+ def asbool(obj):
+-    if isinstance(obj, (str, unicode)):
++    if isinstance(obj, (bytes, str)):
+         obj = obj.strip().lower()
+         if obj in ['true', 'yes', 'on', 'y', 't', '1']:
+             return True
+@@ -16,7 +16,7 @@
+     return bool(obj)
+
+ def aslist(obj, sep=None, strip=True):
+-    if isinstance(obj, (str, unicode)):
++    if isinstance(obj, (bytes, str)):
+         lst = obj.split(sep)
+         if strip:
+             lst = [v.strip() for v in lst]

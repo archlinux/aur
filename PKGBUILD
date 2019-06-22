@@ -30,13 +30,15 @@ source=(
   'paste_local.ini'
   'mediagoblin_local.ini'
   'mediagoblin-tmpfiles.conf'
+  'flup_python3.patch'
 )
 sha256sums=('SKIP'
             '2a02c90dcc8f69ac2a072044d3e4281347ed048c2610cb2e11295e4876cfb409'
             'f636d02f86d2dab5ecc901be5b0f7c42366500393f22dfdc7e354ca299fca65a'
             'ac914d60886d9bf53d3f40b8b00a60d46ada1cac9130210e045a4776d898e884'
             '9adf338f5dbfb94ee7ae29433091b6991a1fa39a6135a8295f9f1cc1fde0edc1'
-            'abb6c4c4e54d4372adfe67ab22371ad625505098311955e5ae8e34102b059d47')
+            'abb6c4c4e54d4372adfe67ab22371ad625505098311955e5ae8e34102b059d47'
+            '361507f41b732beeb124805096b8c5d34ac220cee763ca0863b265524a7f84f6')
 
 pkgver() {
   cd "$srcdir/mediagoblin"
@@ -56,6 +58,7 @@ build() {
   ./configure --with-python3
   make || make
   ./bin/easy_install flup
+  patch -p 1 -i "$srcdir/flup_python3.patch"
 }
 
 package() {
