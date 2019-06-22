@@ -63,7 +63,7 @@ _rev_override="n"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=53
+_minor=55
 _srcname=linux-${_major}
 _clr=${_major}.48-48
 pkgbase=linux-clear-lts2018
@@ -340,7 +340,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            'b53b5da09d4b1aebe0095c15367d4a39760fce61e61d7cd86f638b22a243d5db'
+            '6b572393d79379cc7d7e9bd55170b2d4fc76745ad9f15c0b893a6749167f63f5'
             'SKIP'
             '553858de4315d267d1f259d1146db028eec5112a797379a7a83f5c8a22e626b3'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
