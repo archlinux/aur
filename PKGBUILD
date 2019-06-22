@@ -1,7 +1,7 @@
 # Maintainer: Alex Gentilucci <alexander.gentilucci@gmail.com>
 pkgname=ft2-clone
-pkgver=b159
-pkgrel=2
+pkgver=b160
+pkgrel=1
 epoch=
 pkgdesc="A portable Fasttracker II clone written in C."
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('gcc' 'libicns')
 depends=('alsa-lib' 'sdl2')
 source=("https://16-bits.org/ft2clone-$pkgver-code.zip"
         "ft2-clone.desktop")
-sha512sums=('3a53ac32a15742eb1d4bacf0c1906cbf96c81e7f13d9bcdd5e6907fb1d393c46353afd7da651148f3e54da866737ad5b5e95cb3edd63579eee3d6a7aedece3af'
+sha512sums=('dfa022336e9aedbe423af3e0e9166c985710371a32076d26c4ae0fd94985a948563d0ce8b7d8add1c594594a0a90cedc771c9f878e2cb401c4bf5e7553a52576'
             'e095a21dd5165b130426b3df0735f00b34694ea3eb5b0b93699d89cb503b3fd0cff7b15f214d123643a0c323e988185fdfbf5452e971970957cebd4a5da1033e')
 
 build() {
