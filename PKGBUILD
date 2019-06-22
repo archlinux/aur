@@ -3,7 +3,7 @@ pkgver=1.1.0
 pkgrel=1
 pkgdesc="A programming font with cursive italics and ligatures."
 arch=(any)
-url="https://github.com/rubjo/victor-mono"
+url="https://rubjo.github.io/victor-mono"
 source=(
     "https://github.com/rubjo/victor-mono/raw/v$pkgver/public/VictorMonoAll.zip"
 )
