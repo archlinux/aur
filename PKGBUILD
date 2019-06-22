@@ -2,7 +2,7 @@
 #Contributor: Martin Friedrich <npanic@acid.wtf>
 pkgname=mandelbulber2-opencl-git
 _pkgname=mandelbulber2
-pkgver=20190429
+pkgver=20190622
 pkgrel=1
 pkgdesc="3D application designed to render 3D fractals such as the Mandelbulb, Mandelbox, BulbBox, JuliaBulb, Menger Sponge, and Iterated Function Systems. Git version."
 arch=('any')
@@ -35,10 +35,11 @@ package()
 
 	install -m755 -d "${pkgdir}/usr/bin"
 	install -D -m644 "${srcdir}/${_pkgname}/${_pkgname}/deploy/linux/mandelbulber2.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
+	install -m755 -d "${pkgdir}/usr/share/doc/${_pkgname}"
 	install -m755 -d "${pkgdir}/usr/share/${_pkgname}"
 	install -m755 -d "${pkgdir}/usr/share/applications"
 	install -m755 -d "${pkgdir}/usr/share/icons"
+	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/deploy/doc" "$pkgdir/usr/share/doc/${_pkgname}/"
 	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/opencl" "$pkgdir/usr/share/${_pkgname}/opencl"
 	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/deploy/share/mandelbulber2/data" "$pkgdir/usr/share/${_pkgname}/data"
 	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/deploy/share/mandelbulber2/examples" "$pkgdir/usr/share/${_pkgname}/examples"
