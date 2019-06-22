@@ -2,7 +2,7 @@
 
 pkgname=namecoin-core
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Namecoin Core headless P2P node"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://namecoin.org"
