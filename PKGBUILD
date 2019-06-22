@@ -1,8 +1,8 @@
 # Maintainer : Immae <ismael.bouya@normalesup.org>
 
 pkgname=mediagoblin-git
-pkgver=0.9.0.r16.gcd465ebf
-pkgrel=4
+pkgver=0.9.0.r255.g09cd88b0
+pkgrel=1
 pkgdesc='A free software media publishing platform'
 arch=('i686' 'x86_64')
 url='http://mediagoblin.org'

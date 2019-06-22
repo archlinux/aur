@@ -1,7 +1,7 @@
 pkgbase = mediagoblin-git
 	pkgdesc = A free software media publishing platform
-	pkgver = 0.9.0.r16.gcd465ebf
-	pkgrel = 4
+	pkgver = 0.9.0.r255.g09cd88b0
+	pkgrel = 1
 	url = http://mediagoblin.org
 	install = mediagoblin.install
 	arch = i686
