@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Moreira
 
 pkgname=fpakman-staging
-pkgver=0.2.0.6
+pkgver=0.2.1.0
 pkgrel=1
 pkgdesc="GUI for Flatpak applications management"
 arch=('any')
@@ -11,16 +11,16 @@ depends=('python' 'python-pip' 'python-pyqt5' 'python-requests')
 makedepends=('git' 'python-setuptools')
 provides=("fpakman")
 conflicts=('fpakman')
-source=("${url}/archive/10e69d1c3cdb62a9bd79e8c20bdbf15271d13a4d.zip")
+source=("${url}/archive/02cbafb487db8802bab8e153735b1aff9df448ca.zip")
 sha512sums=('SKIP')
 
 build() {
-  cd "${srcdir}/fpakman-10e69d1c3cdb62a9bd79e8c20bdbf15271d13a4d"
+  cd "${srcdir}/fpakman-02cbafb487db8802bab8e153735b1aff9df448ca"
   python3 setup.py build
 }
 
 package() {
-  cd "${srcdir}/fpakman-10e69d1c3cdb62a9bd79e8c20bdbf15271d13a4d"
+  cd "${srcdir}/fpakman-02cbafb487db8802bab8e153735b1aff9df448ca"
   python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
   python3 aur/register_app.py
 }
