@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=opencorsairlink-testing
-pkgver=0+207+g6560584
-_commit=656058442cba29e59043f411c290c5bf3a198713
+pkgver=0+208+ge8d79e6
+_commit=e8d79e6d7d1173d7f59776660f9817c97c5ae96b
 pkgrel=1
 pkgdesc='Status and control utility for Corsair Link products (testing branch)'
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ makedepends=(git libdrm pkg-config)
 provides=(opencorsairlink)
 conflicts=(opencorsairlink)
 source=(git+$url#commit=$_commit)
-sha512sums=(SKIP)
+sha512sums=('SKIP')
 
 pkgver() {
   cd OpenCorsairLink
