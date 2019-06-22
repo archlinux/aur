@@ -1,0 +1,26 @@
+--- ali.adb-orig	2019-06-23 05:38:00.742172886 +1000
++++ ali.adb	2019-06-23 05:38:23.382873117 +1000
+@@ -161,7 +161,7 @@
+      (IS_Rec : Invocation_Signature_Record) return Bucket_Range_Type;
+    --  Obtain the hash of key IS_Rec
+ 
+-   package Sig_Map is new Dynamic_Hash_Tables
++   package Sig_Map is new Dynamic_HTable
+      (Key_Type              => Invocation_Signature_Record,
+       Value_Type            => Invocation_Signature_Id,
+       No_Value              => No_Invocation_Signature,
+@@ -170,13 +170,12 @@
+       Compression_Threshold => 0.3,
+       Compression_Factor    => 2,
+       "="                   => "=",
+-      Destroy_Value         => Destroy,
+       Hash                  => Hash);
+ 
+    --  The following map relates invocation signature records to invocation
+    --  signature ids.
+ 
+-   Sig_To_Sig_Map : constant Sig_Map.Dynamic_Hash_Table :=
++   Sig_To_Sig_Map : constant Sig_Map.Instance :=
+                       Sig_Map.Create (500);
+ 
+    --  The folowing table maps declaration placement kinds to character codes

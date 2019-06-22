@@ -2,7 +2,7 @@
 # Contributor: Pierre-Marie de Rodat <pmderodat@kawie.fr>
 
 pkgname=gnat_util
-pkgver=2018
+pkgver=2019
 pkgrel=1
 pkgdesc="Internal GNAT compiler components used by (at least) ASIS."
 
@@ -10,13 +10,22 @@ arch=('i686' 'x86_64')
 url="https://libre.adacore.com/"
 license=('GPL V3.0 without any Runtime Exception')
 
-depends=('gcc-ada>=8.2.1' 'gcc-ada<9.0.0')
-makedepends=('gprbuild>=2018')
+depends=('gcc-ada')
+makedepends=('gprbuild')
 
-source=('http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a6b')
-sha1sums=('462a1304d1ed1ee5a37bfc6e956fa8b07896b715')
+source=('http://mirrors.cdn.adacore.com/art/5cdf8e5031e87a8f1d425090'
+        'ali.adb-patch')
+sha1sums=('ccd37abcc9fbbe89b782dbe789b77278cb1d3789'
+          '2a29832fec08f4f94ddf79b61ed7d40a87a3f8ed')
 
-_pkg_src_dir="$pkgname-gpl-$pkgver-src"
+_pkg_src_dir="gnat_util-2019-20190517-194CA-src"
+
+
+prepare()
+{
+  cd "$srcdir/$_pkg_src_dir"
+  patch -Np0 -i "$srcdir/ali.adb-patch"
+}
 
 
 build()
