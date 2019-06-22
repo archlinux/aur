@@ -1,9 +1,9 @@
 # Maintainer: hcra <hcra at u53r dot space>
 
 pkgname=netrw-bin
-_pkgname=netrw
+_pkgname=${pkgname##-bin}
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple tool for transporting data without a server."
 arch=('x86_64' 'i686')
 url="https://mamuti.net/netrw"
@@ -19,9 +19,9 @@ package() {
 	install -Dm755 "nr" "$pkgdir/usr/bin/nr"
 	install -Dm755 "nw" "$pkgdir/usr/bin/nw"
 
-	install -Dm644 "AUTHORS" "$pkgdir/usr/share/doc/netrw/AUTHORS"
-	install -Dm644 "COPYING" "$pkgdir/usr/share/doc/netrw/COPYING"
-	install -Dm644 "NEWS" "$pkgdir/usr/share/doc/netrw/NEWS"
-	install -Dm644 "README" "$pkgdir/usr/share/doc/netrw/README"
-	install -Dm644 "THANKS" "$pkgdir/usr/share/doc/netrw/THANKS"
+	install -Dm644 "AUTHORS" "$pkgdir/usr/share/doc/$_pkgname/AUTHORS"
+	install -Dm644 "COPYING" "$pkgdir/usr/share/doc/$_pkgname/COPYING"
+	install -Dm644 "NEWS" "$pkgdir/usr/share/doc/$_pkgname/NEWS"
+	install -Dm644 "README" "$pkgdir/usr/share/doc/$_pkgname/README"
+	install -Dm644 "THANKS" "$pkgdir/usr/share/doc/$_pkgname/THANKS"
 }
