@@ -3,12 +3,12 @@
 
 pkgname=openmodelica-git
 pkgver=1.14.0.dev.r334.g4e226ae04
-pkgrel=2
+pkgrel=3
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
 license=('OSMC-PL')
-depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'sundials' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'qjson' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-svg' 'qt5-tools' 'gnuplot')
+depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'qjson' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-svg' 'qt5-tools' 'gnuplot')
 makedepends=('autoconf' 'automake' 'libtool' 'gcc' 'gcc-fortran-multilib' 'boost' 'clang' 'cmake' 'jre7-openjdk' 'antlr2' 'subversion' 'lib32-expat' 'lib32-ncurses' 'lib32-readline')
 provides=('openmodelica')
 conflicts=('openmodelica' 'openmodelica-svn' 'openmodelica-dev')
@@ -21,7 +21,6 @@ prepare() {
         echo "***** CLONING COMPLETED!!!!! ****"
     fi
     cd "$srcdir/$pkgname"
-    sed -i 's,../,https://github.com/OpenModelica/,g' .gitmodules
     git submodule sync
     git submodule update --init --recursive
     cd "$srcdir"
