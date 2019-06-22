@@ -1,0 +1,15 @@
+pkgbase = nodejs-shadow-cljs
+	pkgdesc = ClojureScript compilation made easy http://shadow-cljs.org/
+	pkgver = 2.8.39
+	pkgrel = 1
+	url = http://shadow-cljs.org/
+	arch = any
+	license = EPL
+	makedepends = npm
+	depends = nodejs
+	noextract = shadow-cljs-2.8.39.tgz
+	source = https://registry.npmjs.org/shadow-cljs/-/shadow-cljs-2.8.39.tgz
+	sha256sums = 7166d44d37d975e7fe19403d52698b33f18cb13a9a2970e5a4f998e4e7fee30b
+
+pkgname = nodejs-shadow-cljs
+
