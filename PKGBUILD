@@ -5,23 +5,25 @@
 # Contributor: <damir at archlinux dot org>
 
 pkgname=ms-sys
-pkgver=2.4.1
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 epoch=1
-pkgdesc='Used to create Microsoft compatible boot records'
-arch=('i686' 'x86_64')
+pkgdesc='Write Microsoft-compatible boot records (MBR and PBR)'
+arch=('x86_64')
 url=http://ms-sys.sourceforge.net/
 license=('GPL')
 conflicts=('ms-sys-devel')
-source=("http://prdownloads.sourceforge.net/ms-sys/ms-sys-$pkgver.tar.gz")
-sha512sums=('28b8c58432c579a79d17ce458fe94351d8df211fe4f7b355281fb2146580b49e51a8ae335227b962db24489e66b1ceaa9ca7e40ad72ec5198f24bdf7bb2e3be4')
+source=("https://sourceforge.net/projects/$pkgname/files/$pkgname-$pkgver.tar.gz")
+sha512sums=('f49790813712b9fd9f63273a7571edbdacb855d93d26dfe1da94d35b656c0ec0574ec43b3cad0f363fa4ec18bd29b81a440d592dc8148b15b18bb8a28c35fbbe')
 
 build() {
-  cd ms-sys-$pkgver
+  cd $pkgname-$pkgver
+
   make
 }
 
 package() {
-  cd ms-sys-$pkgver
+  cd $pkgname-$pkgver
+
   make PREFIX=/usr MANDIR=/usr/share/man DESTDIR="$pkgdir" install
 }
