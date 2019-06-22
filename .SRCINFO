@@ -5,8 +5,6 @@ pkgbase = python-rebulk
 	url = https://github.com/Toilal/rebulk
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	makedepends = python-pytest-runner
@@ -16,10 +14,12 @@ pkgbase = python-rebulk
 	sha256sums = e03325363d586f4c2e25a636061d64760e8d4202a6921d71fe4ace89307de8b6
 
 pkgname = python-rebulk
+	depends = python
 	depends = python-six
 	depends = python-regex
 
 pkgname = python2-rebulk
+	depends = python2
 	depends = python2-six
 	depends = python2-regex
 	depends = python2-ordereddict
