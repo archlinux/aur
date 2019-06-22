@@ -1,0 +1,28 @@
+diff -Naur firefox-52.9.0esr.orig/js/src/jsapi-tests/testPrintf.cpp firefox-52.9.0esr/js/src/jsapi-tests/testPrintf.cpp
+--- firefox-52.9.0esr.orig/js/src/jsapi-tests/testPrintf.cpp	2017-04-11 04:13:16.000000000 +0200
++++ firefox-52.9.0esr/js/src/jsapi-tests/testPrintf.cpp	2019-06-22 20:55:06.354236156 +0200
+@@ -55,7 +55,6 @@
+     CHECK(print_one("27270", "%zu", (size_t) 27270));
+     CHECK(print_one("27270", "%" PRIuSIZE, (size_t) 27270));
+     CHECK(print_one("hello", "he%so", "ll"));
+-    CHECK(print_one("(null)", "%s", zero()));
+     CHECK(print_one("0", "%p", (char *) 0));
+     CHECK(print_one("h", "%c", 'h'));
+     CHECK(print_one("1.500000", "%f", 1.5f));
+diff -Naur firefox-52.9.0esr.orig/js/xpconnect/src/XPCWrappedNative.cpp firefox-52.9.0esr/js/xpconnect/src/XPCWrappedNative.cpp
+--- firefox-52.9.0esr.orig/js/xpconnect/src/XPCWrappedNative.cpp	2018-06-21 20:53:54.000000000 +0200
++++ firefox-52.9.0esr/js/xpconnect/src/XPCWrappedNative.cpp	2019-06-22 20:56:41.481045308 +0200
+@@ -2215,10 +2215,9 @@
+             name = JS_sprintf_append(name, "%s", array[1]->GetNameString());
+         } else {
+             for (uint16_t i = 0; i < count; i++) {
+-                const char* fmt = (i == 0) ?
+-                                    "(%s" : (i == count-1) ?
+-                                        ", %s)" : ", %s";
+-                name = JS_sprintf_append(name, fmt,
++                name = JS_sprintf_append(name, (i == 0) ?
++                                         "(%s" : (i == count-1) ?
++                                         ", %s)" : ", %s",
+                                          array[i]->GetNameString());
+             }
+         }

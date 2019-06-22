@@ -5,7 +5,7 @@
 
 pkgname=firefox-esr52
 pkgver=52.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Standalone web browser from mozilla.org, Extended Support Release 52.x with NPAPI support'
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -33,7 +33,8 @@ source=("https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefo
         "${pkgname}.sh"
         "mozconfig"
         "vendor.js"
-        "distribution.ini")
+        "distribution.ini"
+        "gcc9_format-overflow.patch")
 sha256sums=('c01d09658c53c1b3a496e353a24dad03b26b81d3b1d099abc26a06f81c199dd6'
             '9efd02ff78c31f8690a12401faac2605dffcac12eaf11e1791ec4221570c2746'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
@@ -46,7 +47,8 @@ sha256sums=('c01d09658c53c1b3a496e353a24dad03b26b81d3b1d099abc26a06f81c199dd6'
             'fc0bc82aa88b15ce9ebf35d2d12750e2cd3b6bd93d5fc7b52b596f76e0e58608'
             '1c17c99ffc7ddf83d79ee76a91927a55a45bb6bd459bcff3baf79c5ad5748645'
             '3c039dbfdcf63022812b51f35289b176b26b4a9933da073f8788fde02be9fdcd'
-            '8ae5b7cd1f7092f13859b632e1e5f69948b2801e0459fdf29c745c89f8eeb823')
+            '8ae5b7cd1f7092f13859b632e1e5f69948b2801e0459fdf29c745c89f8eeb823'
+            'b66a84af7cc1809fe9dd0d7737f6043be2919ebe0a2c752cca483d67957ad431')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -70,20 +72,20 @@ prepare() {
   # Remove dangling old-configure file in the source package
   rm "old-configure"
 
-  patch -Np1 -i "../firefox-install-dir.patch"
+  patch -Np1 -i "${srcdir}/firefox-install-dir.patch"
   sed -i 's#^installdir .*#installdir = $(libdir)/firefox-esr52#' "config/baseconfig.mk"
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
-  patch -Np1 -i "../fix-wifi-scanner.diff"
+  patch -Np1 -i "${srcdir}/fix-wifi-scanner.diff"
 
   # https://bugs.archlinux.org/task/54395 // https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
-  patch -Np1 -i "../0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch"
+  patch -Np1 -i "${srcdir}/0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch"
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1384062
-  patch -Np1 -i "../make_SystemResourceMonitor.stop_more_resilient_to_errors.patch"
+  patch -Np1 -i "${srcdir}/make_SystemResourceMonitor.stop_more_resilient_to_errors.patch"
 
   # https://hg.mozilla.org/mozilla-central/rev/ae7e3082d862
-  patch -Np1 -i "../use_noexcept_in_mozalloc.patch"
+  patch -Np1 -i "${srcdir}/use_noexcept_in_mozalloc.patch"
 
   # https://hg.mozilla.org/releases/mozilla-esr60/rev/2f39b32593bd
   # https://svnweb.freebsd.org/ports/head/www/firefox/files/patch-bug1435212?view=markup&pathrev=468159
@@ -95,6 +97,12 @@ prepare() {
   install -m 644 "${srcdir}/mozconfig" ".mozconfig"
   # Fix path for Google API and Mozilla API keys
   sed -i "s#\$SOURCE#${PWD}#" ".mozconfig"
+
+  # Fix for GCC 9 and format overflow incompatibilities
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1514781
+  # https://forum.palemoon.org/viewtopic.php?t=21745
+  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=925781
+  patch -Np1 -i "${srcdir}/gcc9_format-overflow.patch"
 }
 
 build() {
