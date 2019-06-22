@@ -4,7 +4,7 @@ pkgbase=linux-slim
 _srcname=linux
 gitver=v5.2-rc5
 pkgver=5.2.rc5
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -21,7 +21,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         "${pkgbase}.preset")
 sha256sums=('SKIP'
             #config.x86_64
-            '7b44106280ee093e05dc81558d46a0c0ee2f92e15e625788d6249f2b42d5d53e'
+            '79924c40af974b9f629c9c7f5d1a1c43166f1ed434ca07f875949a40edf9f7e4'
             #.preset file
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367')
 
@@ -57,8 +57,8 @@ prepare() {
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
-  make olddefconfig # old config from previous kernel, defaults for new options
-  # ... or manually edit .config
+  #make olddefconfig # old config from previous kernel, defaults for new options
+  # config was manually staged.
 }
 
 build() {
