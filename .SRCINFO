@@ -1,6 +1,6 @@
 pkgbase = skippy-xd-git
 	pkgdesc = A full-screen task-switcher for X11, similar to Apple's Expose.
-	pkgver = 2016.10.20.r26.8a5723b
+	pkgver = v2016.10.20.26.g8a5723b
 	pkgrel = 1
 	url = https://github.com/dreamcat4/skippy-xd
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = skippy-xd-git
 	depends = xorg-server
 	provides = skippy-xd
 	conflicts = skippy-xd
-	source = skippy-xd::git://github.com/dreamcat4/skippy-xd.git
+	source = skippy-xd-git::git+https://github.com/dreamcat4/skippy-xd.git#branch=master
 	sha256sums = SKIP
 
 pkgname = skippy-xd-git

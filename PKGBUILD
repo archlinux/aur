@@ -1,35 +1,32 @@
+# Maintainer: Jay Ta'ala <jay@jaytaala.com>
 # Contributor: Fredy García <frealgagu at gmail dot com>
 # Contributor: Florent H. CARRÉ <colundrum@gmail.com>
 
 pkgname=skippy-xd-git
-pkgver=2016.10.20.r26.8a5723b
+pkgver=v2016.10.20.26.g8a5723b
 pkgrel=1
 pkgdesc="A full-screen task-switcher for X11, similar to Apple's Expose."
 arch=("i686" "x86_64")
-url="https://github.com/dreamcat4/${pkgname%-git}"
+url="https://github.com/dreamcat4/skippy-xd"
 license=("GPL")
 depends=("giflib" "libjpeg" "libxcomposite" "libxft" "libxinerama" "xorg-server")
 makedepends=("git")
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git://github.com/dreamcat4/${pkgname%-git}.git")
+provides=("skippy-xd")
+conflicts=("skippy-xd")
+source=("${pkgname}::git+https://github.com/dreamcat4/skippy-xd.git#branch=master")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
-  (
-    set -o pipefail
-    git describe --long --tags 2> /dev/null | sed "s/^[A-Za-z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
-    printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
-  )
+	cd "${srcdir}/${pkgname}"
+	git describe --tags | sed 's/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/${pkgname}"
   make PREFIX=/usr
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}" install
 }
