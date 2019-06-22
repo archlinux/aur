@@ -1,16 +1,16 @@
 pkgbase = gnatcoll-readline
 	pkgdesc = GNAT Components Collection - Binding to readline
-	pkgver = 2018
-	pkgrel = 2
+	pkgver = 2019
+	pkgrel = 1
 	url = https://github.com/AdaCore/gnatcoll-bindings/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gprbuild>=2018
+	makedepends = gprbuild
 	depends = readline
-	depends = gnatcoll-core>=2018
-	source = http://mirrors.cdn.adacore.com/art/5b0ce9cfc7a4475261f97ca5
-	sha1sums = 42682c885e4a02bb03786aa9ece3a4214ca419f8
+	depends = gnatcoll-core
+	source = http://mirrors.cdn.adacore.com/art/5cdf8afa31e87a8f1d425054
+	sha1sums = 964ece4f78755a2fb3c1c84cec2c375cda66bd98
 
 pkgname = gnatcoll-readline
 
