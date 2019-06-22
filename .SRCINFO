@@ -1,6 +1,6 @@
 pkgbase = netease-cloud-music-gtk-bin
 	pkgdesc = Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/gmg137/netease-cloud-music-gtk
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = netease-cloud-music-gtk-bin
 	depends = openssl
 	optdepends = osdlyrics: Show lyrics
 	conflicts = netease-cloud-music-gtk
-	noextract = netease-cloud-music-gtk-0.5.0-1.x86_64.tar.xz
-	source = https://github.com/gmg137/netease-cloud-music-gtk/releases/download/0.5.0/netease-cloud-music-gtk-0.5.0-1.x86_64.tar.xz
-	source = https://github.com/gmg137/netease-cloud-music-gtk/raw/0.5.0/README.md
-	source = https://github.com/gmg137/netease-cloud-music-gtk/raw/0.5.0/LICENSE
-	sha256sums = 8333fc0d3700f9373778dd9deaebe8fea494f312e8fa03fce5ad2adc3c5a8d08
+	noextract = netease-cloud-music-gtk-0.6.0-1.x86_64.rpm
+	source = https://github.com/gmg137/netease-cloud-music-gtk/releases/download/0.6.0/netease-cloud-music-gtk-0.6.0-1.x86_64.rpm
+	source = https://github.com/gmg137/netease-cloud-music-gtk/raw/0.6.0/README.md
+	source = https://github.com/gmg137/netease-cloud-music-gtk/raw/0.6.0/LICENSE
+	sha256sums = 054b992f1377d1fd0dc47d4c9b8bd98a7921f3141d84a3791ce84b7f9a785c4a
 	sha256sums = e7868e8602ec34d4ed424c058f8f5babf3df90ac9a9016fcb3ab7d359edfb072
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
