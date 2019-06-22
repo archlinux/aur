@@ -3,7 +3,7 @@
 
 pkgname=neru-icon-classic-theme
 pkgver=2.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Classic theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-classic-theme"
@@ -44,6 +44,7 @@ prepare() {
 	ln -s system-file-manager.svg neru-classic-light/32x32/apps/nautilus-actions-config-tool.svg
 	ln -s system-file-manager.svg neru-classic-light/32x32/apps/redhat-filemanager.svg
 	ln -s system-file-manager.svg neru-classic-light/32x32/apps/user-file-manager.svg
+	ln -s utilities-terminal.svg neru-classic-light/32x32/apps/org.gnome.Terminal.svg
 }
 
 package() {
