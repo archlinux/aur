@@ -29,7 +29,7 @@
 
 _appname=cocos2d-x
 pkgname=cocos2d-x-src
-pkgver=3.17.1
+pkgver=3.17.2
 pkgrel=1
 pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')

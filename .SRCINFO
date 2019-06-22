@@ -1,6 +1,6 @@
 pkgbase = cocos2d-x-src
 	pkgdesc = Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X
-	pkgver = 3.17.1
+	pkgver = 3.17.2
 	pkgrel = 1
 	url = https://cocos2d-x.org/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = cocos2d-x-src
 	depends = libpng
 	depends = freetype2
 	depends = python2
-	source = git+https://github.com/cocos2d/cocos2d-x#tag=cocos2d-x-3.17.1
+	source = git+https://github.com/cocos2d/cocos2d-x#tag=cocos2d-x-3.17.2
 	source = https://github.com/cocos2d/cocos2d-x-3rd-party-libs-bin/archive/metal-support-2.tar.gz
 	source = cocos2d-x.sh
 	source = cocos2d-x.csh
