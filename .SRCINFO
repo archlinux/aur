@@ -1,6 +1,6 @@
 pkgbase = thunderbird-bin
 	pkgdesc = Standalone Mail/News reader - Bleeding edge binary version
-	pkgver = 60.7.0
+	pkgver = 60.7.2
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-bin.install
@@ -16,16 +16,16 @@ pkgbase = thunderbird-bin
 	optdepends = hunspell: Spell checking
 	optdepends = hyphen: Hyphenation
 	optdepends = libcanberra: Sound support
-	provides = thunderbird=60.7.0
+	provides = thunderbird=60.7.2
 	conflicts = thunderbird
 	source = thunderbird-bin.desktop
 	source = vendor.js
 	sha512sums = 2f2da27d0d677cfee9ed2ff9da74c4e779150d26e369cb6816f2b1962b38af7d0728c9c362304138212b45e9580f65847c3a011b9bd3417a26b1b48c00cabe8d
 	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
-	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/releases/60.7.0/linux-x86_64/en-US/thunderbird-60.7.0.tar.bz2
-	sha512sums_x86_64 = 0bf5bbbaf76c1dd304eda6ad175f3fdc4fbe9f56ed11bac4b6855f13c2cbd5ddd635c364d8f9660542a20d4bf8d3a8b18b4398280d15ad47afc4fa88d321d5bb
-	source_i686 = https://ftp.mozilla.org/pub/thunderbird/releases/60.7.0/linux-i686/en-US/thunderbird-60.7.0.tar.bz2
-	sha512sums_i686 = 631d84e772069bfe192f7db3fde5113595201b56340b8284fbd3c26c58ce67e93c2e52bdbe95c8378fa1b99f6d26d4ba6d2cc5851321251dc84c5d375773824c
+	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/releases/60.7.2/linux-x86_64/en-US/thunderbird-60.7.2.tar.bz2
+	sha512sums_x86_64 = 1bb2e0449a0bc4021c46d0ca1f291d926b57277db4ecd89e6712eed9fbc6b2aed84e5bfe54885ab08f796e6909288b8159f7e843ba7183d2cc3f67cddda45f57
+	source_i686 = https://ftp.mozilla.org/pub/thunderbird/releases/60.7.2/linux-i686/en-US/thunderbird-60.7.2.tar.bz2
+	sha512sums_i686 = 82a20230237ff8e1997dced5a704f2ddcb2d08bd9dc8615a324a75179287c0bb7fb8a56a07feed62c36b6e5845fbfc6a70d0f8b70ed2cfa9f7769fc01a5e5546
 
 pkgname = thunderbird-bin
 
