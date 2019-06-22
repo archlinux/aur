@@ -1,6 +1,6 @@
 # Maintainer: Vianney le Clément de Saint-Marcq <code@quartic.eu>
 pkgname=git-publish
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Prepare and store patch revisions as git tags"
 arch=('any')
@@ -9,13 +9,11 @@ license=('MIT')
 depends=('python' 'git')
 makedepends=('perl')
 source=("https://github.com/stefanha/git-publish/archive/v${pkgver}.tar.gz")
-md5sums=('0b22af41f0405e02e67c3ddb3a5363a8')
-sha1sums=('6699eec0b276e98b4dc809e532ca50a83ff2832c')
-sha256sums=('46482fe1d17ba64895f0d5834633be2154476c4a1f023762bffe92a7c6a6b7ba')
+sha256sums=('f33c687b1472ba1405087124df00bc228e892d9c561b3b57d33553aeb72c3687')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  pod2man -c "Git Manual" git-publish.pod > git-publish.1
+  pod2man -c "Git Manual" -r "git-publish ${pkgver}" git-publish.pod > git-publish.1
 }
 
 package() {

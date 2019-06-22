@@ -1,6 +1,6 @@
 pkgbase = git-publish
 	pkgdesc = Prepare and store patch revisions as git tags
-	pkgver = 1.4.4
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/stefanha/git-publish
 	arch = any
@@ -8,10 +8,8 @@ pkgbase = git-publish
 	makedepends = perl
 	depends = python
 	depends = git
-	source = https://github.com/stefanha/git-publish/archive/v1.4.4.tar.gz
-	md5sums = 0b22af41f0405e02e67c3ddb3a5363a8
-	sha1sums = 6699eec0b276e98b4dc809e532ca50a83ff2832c
-	sha256sums = 46482fe1d17ba64895f0d5834633be2154476c4a1f023762bffe92a7c6a6b7ba
+	source = https://github.com/stefanha/git-publish/archive/v1.5.0.tar.gz
+	sha256sums = f33c687b1472ba1405087124df00bc228e892d9c561b3b57d33553aeb72c3687
 
 pkgname = git-publish
 
