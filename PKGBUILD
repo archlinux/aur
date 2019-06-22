@@ -1,4 +1,4 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgbase=python-backoff
 pkgname=('python-backoff')
