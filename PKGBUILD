@@ -6,7 +6,7 @@
 pkgname='libcs50'
 pkgver=9.0.1
 pkgrel=1
-pkgdesc="Harvard's cs50 C library"
+pkgdesc="CS50 Library for C"
 arch=('i686' 'x86_64')
 url='https://github.com/cs50/libcs50'
 license=('MIT')

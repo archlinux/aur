@@ -1,5 +1,5 @@
 pkgbase = libcs50
-	pkgdesc = Harvard's cs50 C library
+	pkgdesc = CS50 Library for C
 	pkgver = 9.0.1
 	pkgrel = 1
 	url = https://github.com/cs50/libcs50
