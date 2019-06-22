@@ -2,7 +2,7 @@ _pkgbase=adobe-source-han-mono
 pkgbase=$_pkgbase-fonts
 pkgname=($_pkgbase-jp-fonts $_pkgbase-kr-fonts $_pkgbase-cn-fonts $_pkgbase-tw-fonts $_pkgbase-hk-fonts $_pkgbase-otc-fonts)
 pkgver=1.002
-pkgrel=3
+pkgrel=4
 pkgdesc='Adobe Source Han Mono - A set of Pan-CJK fonts designed to complement Source Code Pro'
 arch=('any')
 license=('custom:OFL')
@@ -112,27 +112,27 @@ function _package {
     case "$1" in
         $_pkgbase-jp-fonts)
             fonts=(${_jp[@]})
-            _fontconfig_filename=44-source-han-sans-jp.conf
+            _fontconfig_filename=44-source-han-mono-jp.conf
             pkgdesc="Adobe Source Han Mono OTF - Japanese OpenType/CFF fonts";;
         $_pkgbase-kr-fonts)
             fonts=(${_kr[@]})
-            _fontconfig_filename=44-source-han-sans-kr.conf
+            _fontconfig_filename=44-source-han-mono-kr.conf
             pkgdesc="Adobe Source Han Mono OTF - Korean OpenType/CFF fonts";;
         $_pkgbase-cn-fonts)
             fonts=(${_cn[@]})
-            _fontconfig_filename=44-source-han-sans-cn.conf
+            _fontconfig_filename=44-source-han-mono-cn.conf
             pkgdesc="Adobe Source Han Mono OTF - Simplified Chinese OpenType/CFF fonts";;
         $_pkgbase-tw-fonts)
             fonts=(${_tw[@]})
-            _fontconfig_filename=44-source-han-sans-tw.conf
+            _fontconfig_filename=44-source-han-mono-tw.conf
             pkgdesc="Adobe Source Han Mono OTF - Traditional Chinese (Taiwan) OpenType/CFF fonts";;
         $_pkgbase-hk-fonts)
             fonts=(${_hk[@]})
-            _fontconfig_filename=44-source-han-sans-hk.conf
+            _fontconfig_filename=44-source-han-mono-hk.conf
             pkgdesc="Adobe Source Han Mono OTF - Traditional Chinese (Hong Kong) OpenType/CFF fonts";;
         $_pkgbase-otc-fonts)
             fonts=(${_otc[@]})
-            _fontconfig_filename=44-source-han-sans-otc.conf
+            _fontconfig_filename=44-source-han-mono-otc.conf
             pkgdesc="Adobe Source Han Mono - Pan-CJK OpenType/CFF Collection fonts";;
     esac
 
