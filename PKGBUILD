@@ -3,19 +3,18 @@
 pkgname=oxy
 pkgver=3.0.0+105+g891cedf
 _commit=891cedf8fd9945fbccd9e67f6644a80bc4963d81
-pkgrel=1
+pkgrel=2
 pkgdesc='SSH-alike that uses the Noise protocol'
 arch=(i686 x86_64)
 url=https://github.com/oxy-secure/oxy
 license=(BSD)
 makedepends=(git rust)
-conflicts=(oxy-git)
 source=(git+$url#commit=$_commit)
-sha512sums=(SKIP)
+sha512sums=('SKIP')
 
 pkgver() {
   cd oxy
-  echo "$(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2 | sed s/-/+/)+$(git rev-list --count HEAD)+g$(git describe --always)"
+  printf %s+%s+g%s $(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2 | sed s/-/+/) $(git rev-list --count HEAD) $(git describe --always)
 }
 
 build() {
