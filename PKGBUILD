@@ -6,7 +6,7 @@ name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 fragment="#branch=dev"
 pkgname=${name}-git
-pkgver=3.6.dev.1.r47.gc423ca9
+pkgver=3.6.dev.2.r13.g6af3d8b
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
