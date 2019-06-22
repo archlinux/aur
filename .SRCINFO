@@ -1,0 +1,16 @@
+pkgbase = python-cashier
+	pkgdesc = Persistent caching for python functions.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/atmb4u/cashier
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/c/cashier/cashier-1.3.zip
+	sha256sums = dcc8e150d0bbd58294fb82f665e70cc94afa11b26d41ddf48863ae78f40a7e23
+
+pkgname = python-cashier
+
+pkgname = python2-cashier
+
