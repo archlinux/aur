@@ -1,8 +1,8 @@
 # Maintainer: Amish <contact at via dot aur>
 
-pkgname='squidanalyzer'
-pkgver='6.6'
-pkgrel='4'
+pkgname=squidanalyzer
+pkgver=6.6
+pkgrel=5
 pkgdesc="Squid proxy native log analyser and reports generator"
 arch=('any')
 url='http://squidanalyzer.darold.net/'
