@@ -7,7 +7,7 @@
 pkgname=chromium-no-extras
 _pkgname=chromium
 pkgver=75.0.3770.100
-pkgrel=2
+pkgrel=3
 _launcher_ver=6
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
 arch=('x86_64')
@@ -220,7 +220,7 @@ package() {
 
   cp \
     out/Release/{chrome_{100,200}_percent,resources}.pak \
-    out/Release/{*.bin} \
+    out/Release/*.bin \
     "$pkgdir/usr/lib/chromium/"
   install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
 
