@@ -1,8 +1,8 @@
 # Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=libphutil
-pkgver=2019.20
-_commit=1185300a23d9b0a611ecaf8c99e90c92097f5c67
+pkgver=2019.25.1
+_commit=b675a06bf7419ff3b64448cb310e7557530446db
 pkgrel=1
 pkgdesc='A collection of PHP utility classes'
 arch=('any')
