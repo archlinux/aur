@@ -1,0 +1,14 @@
+pkgbase = check_systemd_status
+	pkgdesc = Script to check current system state as perceived by systemd
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/kbabioch/check_systemd_status
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	source = git+https://github.com/kbabioch/check_systemd_status.git#tag=v2
+	sha256sums = SKIP
+
+pkgname = check_systemd_status
+
