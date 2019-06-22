@@ -1,5 +1,5 @@
 pkgbase = 360zip
-	pkgdesc = A PeaZip based archiver utility from Qihoo 360
+	pkgdesc = 360Zip
 	pkgver = 1.0.0.1010
 	pkgrel = 1
 	url = http://yasuo.360.cn/
