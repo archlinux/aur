@@ -2,7 +2,7 @@
 # Contributor: Dmitrij D. Czarkoff <czarkoff@gmail.com>
 
 pkgname=baresip
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="portable and modular SIP User-Agent with audio and video support"
 arch=('i686' 'x86_64' 'armv6h')
@@ -31,7 +31,7 @@ optdepends=('alsa-lib: (alsa module)'
 makedepends=(${optdepends[@]/%:*/})
 source=("http://creytiv.com/pub/$pkgname-$pkgver.tar.gz"
         "baresip-flags.patch")
-sha256sums=('e1fae11ea9e6dc861bb2c43d6bef641778945aad86581d58bc4b0ea64b8d28e2'
+sha256sums=('c8005466b4947e28bc48ceb3d99608c782109970c2653b9d0eb0900d4695300c'
             '55af521d77e105bb519f60464b2e50b83da15eb8549c18dabefa15215b22fa92')
 
 prepare() {
