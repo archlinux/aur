@@ -1,6 +1,6 @@
 pkgbase = searx-git
 	pkgdesc = Privacy-respecting metasearch engine (git)
-	pkgver = 0.15.0+r77+g8189b0d1
+	pkgver = 0.15.0+77+g8189b0d1
 	pkgrel = 1
 	url = https://asciimoo.github.io/searx/
 	arch = any
