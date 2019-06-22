@@ -1,6 +1,6 @@
 pkgbase = retext-git
 	pkgdesc = A simple editor for Markdown and ReStructuredText markup languages.
-	pkgver = 7.0.0.r100.g5bc778e
+	pkgver = 7.1.0.r1110.7fdc3ad
 	pkgrel = 1
 	url = https://github.com/retext-project/retext
 	arch = any

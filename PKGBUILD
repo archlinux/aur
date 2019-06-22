@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=retext-git
-pkgver=7.0.0.r100.g5bc778e
+pkgver=7.1.0.r1110.7fdc3ad
 pkgrel=1
 pkgdesc="A simple editor for Markdown and ReStructuredText markup languages."
 arch=('any')
@@ -31,34 +31,31 @@ sha256sums=('SKIP'
             '6fef80cccb14813d9cc74810c397a6cd7831d1ca243536759a47c6e8b6cc977a')
 
 pkgver() {
-	cd $pkgname
-	( set -o pipefail
-	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+  cd $pkgname
+  printf "%s.r%s.%s" "$(awk -F\= '/^VERSION/ {print $2}' setup.py | tr -d \' | tr -d [:blank:])" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build () {
-	cd $pkgname/locale
-	lrelease-qt5 *.ts
+  cd $pkgname/locale
+  lrelease-qt5 *.ts
 }
 
 package () {
-	cd $pkgname
-	python setup.py install --root="$pkgdir"
-
-	# install icons
-	for size in 16 22 24 32 48 128; do
-		mkdir -p "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps
-		convert -resize $size icons/retext.png "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/retext.png
-	done
-	install -Dm644 icons/retext.svg "$pkgdir"/usr/share/icons/scalable/apps/retext.svg
-
-	# install mime files
-	install -Dm644 "$srcdir"/x-retext-markdown.xml "$pkgdir"/usr/share/mime/packages/x-retext-markdown.xml
-	install -Dm644 "$srcdir"/x-retext-rst.xml "$pkgdir"/usr/share/mime/packages/x-retext-rst.xml
-
-	# install desktop file
-	install -Dm644 "$srcdir"/retext.desktop "$pkgdir"/usr/share/applications/retext.desktop
+  cd $pkgname
+  python setup.py install --root="$pkgdir"
+  
+  # install icons
+  for size in 16 22 24 32 48 128; do
+    install -d "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps
+    convert -resize $size icons/retext.png "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/retext.png
+  done
+  install -Dm644 icons/retext.svg "$pkgdir"/usr/share/icons/scalable/apps/retext.svg
+  
+  # install mime files
+  install -Dm644 "$srcdir"/x-retext-markdown.xml "$pkgdir"/usr/share/mime/packages/x-retext-markdown.xml
+  install -Dm644 "$srcdir"/x-retext-rst.xml "$pkgdir"/usr/share/mime/packages/x-retext-rst.xml
+  
+  # install desktop file
+  install -Dm644 "$srcdir"/retext.desktop "$pkgdir"/usr/share/applications/retext.desktop
 }
 
