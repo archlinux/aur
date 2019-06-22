@@ -1,18 +1,18 @@
 pkgbase = gnatcoll-core
 	pkgdesc = Gnat components collection - Core packages.
-	pkgver = 2018
-	pkgrel = 2
+	pkgver = 2019
+	pkgrel = 1
 	url = https://github.com/AdaCore/gnatcoll-core/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gprbuild>=2018
-	depends = libgpr>=2018
+	makedepends = gprbuild
+	depends = libgpr
 	provides = gnatcoll-core
 	conflicts = gnatcoll
 	conflicts = gnatcoll-core-git
-	source = http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a99
-	sha1sums = 213105933eb2deb4d08f6b5beab518ad6c70fbac
+	source = http://mirrors.cdn.adacore.com/art/5cdf8ae231e87a8f1d425052
+	sha1sums = 99ea2dc09e018deb14f15c00e8c4b7b21f94c94f
 
 pkgname = gnatcoll-core
 
