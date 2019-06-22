@@ -1,12 +1,12 @@
 pkgbase = netrw-bin
 	pkgdesc = Simple tool for transporting data without a server.
 	pkgver = 1.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mamuti.net/netrw
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	source = https://mamuti.net/files/netrw-bin/x86/netrw-bin-x86-1.3.2.tar.bz2
+	source = https://mamuti.net/files/netrw/x86/netrw-x86-1.3.2.tar.bz2
 	sha1sums = 5037207bac70588b108e99c90628d649276dcf86
 
 pkgname = netrw-bin

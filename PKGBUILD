@@ -1,9 +1,9 @@
 # Maintainer: hcra <hcra at u53r dot space>
 
 pkgname=netrw-bin
-_pkgname=${pkgname##-bin}
+_pkgname=netrw
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple tool for transporting data without a server."
 arch=('x86_64' 'i686')
 url="https://mamuti.net/netrw"
