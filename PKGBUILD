@@ -1,4 +1,4 @@
-# Maintainer: Barry Smith <smithbarry@gmx.com>
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=throttled
 pkgver=0.6
