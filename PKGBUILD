@@ -1,23 +1,24 @@
 # Maintainer: Rod Kay <charlie5 on #ada at freenode.net>
 
 pkgname=gtkada
-pkgver=2018
-pkgrel=2
+pkgver=2019
+pkgrel=1
 
 pkgdesc='Ada bindings for the Gtk+ library.'
 url='https://github.com/AdaCore/gtkada'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('gcc-ada>=8.2.1' 'gcc-ada<9.0.0' 'gtk3')
-makedepends=('gprbuild>=2018')
+depends=('gcc-ada' 'gtk3')
+makedepends=('gprbuild')
 
-source=('http://mirrors.cdn.adacore.com/art/5b065d07c7a447497530ba7e')
-sha1sums=('8f293b3f1b1842566adb8d165f032336fe7aca54')
+source=('http://mirrors.cdn.adacore.com/art/5ce7f58931e87adb2d312c53')
+sha1sums=('eac201014c9d51fb36cb8346cec8e90ec51536d0')
+
 
 build()
 {
-    cd gtkada-gpl-2018-src
+    cd $srcdir/gtkada-2019-20190424-19D98-src
 
     export LIBRARY_TYPE=relocatable
 
@@ -30,9 +31,10 @@ build()
     make -j1 PROCESSORS=1 GPRBUILD_SWITCHES=-R
 }
 
+
 package()
 {
-    cd gtkada-gpl-2018-src
+    cd $srcdir/gtkada-2019-20190424-19D98-src
 
     make -j1 PROCESSORS=1 DESTDIR="$pkgdir" install
 }
