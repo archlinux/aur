@@ -2,7 +2,7 @@
 
 pkgname=mediagoblin-git
 pkgver=0.9.0.r16.gcd465ebf
-pkgrel=2
+pkgrel=3
 pkgdesc='A free software media publishing platform'
 arch=('i686' 'x86_64')
 url='http://mediagoblin.org'
@@ -24,7 +24,7 @@ backup=('etc/webapps/mediagoblin/paste_local.ini' 'etc/webapps/mediagoblin/media
 install=mediagoblin.install
 makedepends=('git' 'automake')
 source=(
-  'mediagoblin::git+https://git.savannah.gnu.org/git/mediagoblin.git#branch=stable'
+  'mediagoblin::git+https://git.savannah.gnu.org/git/mediagoblin.git'
   'mediagoblin-paster.service'
   'mediagoblin-celeryd.service'
   'paste_local.ini'
