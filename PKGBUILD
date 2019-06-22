@@ -1,7 +1,7 @@
 # Maintainer: Gaeulbyul <aeiou256 at gmail dot com>
 
 pkgname=ttf-neodgm
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="TrueType port of a good-old Korean bitmap font, with enhancements."
 arch=('any')
@@ -9,7 +9,7 @@ url="http://dalgona.hontou.moe/neodgm/"
 license=('OFL')
 install=ttf-neodgm.install
 source=("https://github.com/Dalgona/neodgm/releases/download/v${pkgver}/neodgm.ttf")
-sha256sums=('43fc32a5bc35a044ea44c705e7fd1dface317f2f88dfad2c2db69ecb4f7acad9')
+sha256sums=('fb4344511dec62d6519319142520d11faaee538b9212aa4a6b9dbf399e91eabe')
 
 package()
 {
