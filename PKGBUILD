@@ -2,7 +2,7 @@
 
 
 pkgname=ksmoothdock
-pkgver=5.11
+pkgver=5.12
 pkgrel=1
 pkgdesc='A cool desktop panel for KDE Plasma 5'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('kxmlgui')
 makedepends=('cmake' 'extra-cmake-modules' 'python')
 source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3c064848dba4ad7892cdb98cf39265e68314ca4e7f5d53597d67e8597af2e94c')
+sha256sums=('2b0d28fb777d02bffefb3913bbce81fd8c6d95d7cc8d3e63ce917b58d5f9a167')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
