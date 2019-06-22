@@ -15,7 +15,8 @@ depends=('python'
          'python-distro'
          'python-urllib3')
 
-optdepend=('grafana: display of pretty graphs'
+optdepend=('plex-media-server: media server for tv shows, movies and more.'
+           'grafana: display of pretty graphs'
            'influxdb: storage of data')
 
 source=("varken-${pkgver}.tar.gz::https://github.com/Boerderij/Varken/archive/${pkgver}.tar.gz"
