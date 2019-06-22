@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Desktop image viewer. View thousands of images in a zoomable, pannable grid."
 arch=('x86_64' 'i686')
 url="https://github.com/google/pix-image-viewer"
-license=('MIT')
+license=('Apache-2.0')
 depends=()
 makedepends=('cargo' 'git' 'clang')
 optdepends=()
@@ -25,5 +25,5 @@ build() {
 
 package() {
 	cd $pkgname
-	install -D -m755 "$srcdir/$pkgname/target/release/pix" "$pkgdir/usr/bin/pix"
+	install -D -m755 "$srcdir/$pkgname/target/release/pix" "$pkgdir/usr/bin/pix-image-viewer"
 }
