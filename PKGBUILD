@@ -4,7 +4,7 @@ pkgver=5.1.0
 pkgrel=1
 pkgdesc="Library providing the Kiwix software core"
 license=('GPL3')
-arch=('any')
+arch=('armv7h' 'i686' 'x86_64')
 depends=('libzim>=5.0.0' 'pugixml' 'mustache' 'xapian-core' 'aria2')
 makedepends=('meson')
 url='https://github.com/kiwix/kiwix-lib'
