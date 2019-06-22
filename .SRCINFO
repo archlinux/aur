@@ -1,18 +1,20 @@
 pkgbase = libcs50-git
-	pkgdesc = CS50 Library for C
-	pkgver = 8.1.0.r0.gafba85d
+	pkgdesc = CS50 Library for C (development version)
+	pkgver = 9.0.1.r0.g3d83ff0
 	pkgrel = 1
-	url = https://cs50.harvard.edu/
+	url = https://github.com/cs50/libcs50
 	arch = x86_64
 	arch = i686
 	groups = cs50
-	license = unknown
+	license = MIT
 	makedepends = asciidoctor
 	makedepends = git
 	provides = libcs50
 	conflicts = libcs50
 	source = git+https://github.com/cs50/libcs50.git#branch=master
+	source = Makefile.patch
 	sha256sums = SKIP
+	sha256sums = 4a10efd4f4f6b6bb18152a4f28497f7f8562aaa5aaf50c401d308827b922ef3f
 
 pkgname = libcs50-git
 

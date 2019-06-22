@@ -1,0 +1,13 @@
+--- a/Makefile
++++ b/Makefile
+@@ -46,10 +46,6 @@
+ 	cp -r $(filter-out deb, $(wildcard build/*)) $(DESTDIR)
+ 	cp -r $(MANS) $(DESTDIR)/$(MANDIR)
+ 
+-ifeq ($(OS),Linux)
+-	ldconfig $(DESTDIR)/lib
+-endif
+-
+ .PHONY: clean
+ clean:
+ 	rm -rf build

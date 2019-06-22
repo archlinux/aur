@@ -1,54 +1,58 @@
-# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Maintainer: MayorBender <7480812+kingy9000@users.noreply.github.com>
+# Contributor: Dan Beste <dan.ray.beste@gmail.com>
+# Contributor: Justine Paul <jestine-paul@dsi.a-star.edu.sg>
 
 pkgname='libcs50-git'
 _gitname='libcs50'
-pkgver=8.1.0.r0.gafba85d
+pkgver=9.0.1.r0.g3d83ff0
 pkgrel=1
-pkgdesc="CS50 Library for C"
+pkgdesc="CS50 Library for C (development version)"
 arch=('x86_64' 'i686')
-url="https://cs50.harvard.edu/"
-license=('unknown')
+url="https://github.com/cs50/libcs50"
+license=('MIT')
 groups=('cs50')
 makedepends=('asciidoctor' 'git')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
-source=('git+https://github.com/cs50/libcs50.git#branch=master')
-sha256sums=('SKIP')
+source=(
+  'git+https://github.com/cs50/libcs50.git#branch=master'
+  'Makefile.patch'
+)
+sha256sums=(
+  'SKIP'
+  '4a10efd4f4f6b6bb18152a4f28497f7f8562aaa5aaf50c401d308827b922ef3f'
+)
 
 pkgver() {
   cd "${_gitname}"
 
-  git describe --tags --long           \
-    | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
-    | sed 's/v//'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_query_jobs() {
-  echo "${MAKEFLAGS}" \
-    | grep -Eo "\-j.?[0-9]+"
-}
+prepare() {
+  cd "${_gitname}"
 
-_set_jobs() {
-  echo $MAKEFLAGS \
-    | sed "s/$(_query_jobs)/-j 1/"
+  patch < "${srcdir}/Makefile.patch"
 }
 
 build() {
   cd "${_gitname}"
-  
-  # Override makeflags:
-  local MAKEFLAGS=$(_set_jobs)
 
-  make
+  # TODO: Get this fixed upstream. We should not have to unset our $CFLAGS and
+  #       $MAKEFLAGS.
+  CFLAGS= MAKEFLAGS= make
 }
 
 package() {
   cd "${_gitname}"
 
- install -d "${pkgdir}/usr"
- install -d "${pkgdir}/usr/share/man/man3"
- cp -rp build/* "${pkgdir}/usr/"
- cp -rp debian/docs/* "${pkgdir}/usr/share/man/man3/"
+  # TODO: Get this fixed upstream. We should not have to unset our $CFLAGS and
+  #       $MAKEFLAGS.
+  CFLAGS= MAKEFLAGS= DESTDIR="${pkgdir}/usr" make install
+
+  rm "${pkgdir}/usr/src/cs50.c"
+  install -d -m 755 "${pkgdir}/usr/src/libcs50"
+  install -m 644 src/cs50.c src/cs50.h -t "${pkgdir}/usr/src/libcs50"
 }
 
 # vim: ts=2 sw=2 et:
