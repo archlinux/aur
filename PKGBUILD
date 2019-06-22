@@ -3,21 +3,21 @@
 # Contributor: Earnestly <zibeon AT googlemail.com>
 
 pkgname=gprbuild-bootstrap
-pkgver=2018
-pkgrel=3
+pkgver=2019
+pkgrel=1
 pkgdesc="Static GPRbuild to bootstrap XML/Ada and GPRbuild itself"
 arch=('i686' 'x86_64')
 url='https://github.com/AdaCore/gprbuild/'
 license=('GPL3')
-depends=('gcc-ada>=8.2.1' 'gcc-ada<9.0.0')
+depends=('gcc-ada')
 
-source=('http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a68'
-        'http://mirrors.cdn.adacore.com/art/5b0819dec7a447df26c27a40')
-sha1sums=(f2cfc62fc05ae510e7e3aa7138d27ccb38096bdd
-          6b01f6c7ac9d0766320738bef1d32894b34195e8)
+source=('http://mirrors.cdn.adacore.com/art/5cdf8e8031e87a8f1d425093'
+        'http://mirrors.cdn.adacore.com/art/5cdf916831e87a8f1d4250b5')
+sha1sums=(0c03c05cef70b85144ba0e624a46e8952183b666
+          ce0b67754f149cd230ba842effeff0ab3033ed0c)
 
 prepare() {
-    cd "$srcdir/gprbuild-gpl-2018-src"
+    cd "$srcdir/gprbuild-2019-20190517-194D8-src"
 
     # GPRbuild hard-codes references to /usr/libexec, but ArchLinux packages
     # must use /usr/lib instead.
@@ -28,7 +28,7 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/gprbuild-gpl-2018-src"
+    cd "$srcdir/gprbuild-2019-20190517-194D8-src"
 
     export GNATMAKEFLAGS="-j$(nproc)"
     export DESTDIR="$srcdir/bootstrap"
@@ -36,7 +36,7 @@ build() {
     ./bootstrap.sh \
         --prefix=/usr \
         --libexecdir=/lib \
-        --with-xmlada="$srcdir/xmlada-gpl-2018-src"
+        --with-xmlada="$srcdir/xmlada-2019-20190429-19B9D-src"
 }
 
 package() {
