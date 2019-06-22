@@ -1,5 +1,5 @@
 pkgbase = python-backoff
-	pkgdesc = A library that provides mapping objects that allow their elements to be accessed both as keys and as attributes.
+	pkgdesc = Function decoration for backoff and retry.
 	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/litl/backoff
