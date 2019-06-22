@@ -3,14 +3,14 @@
 
 pkgname='frr'
 pkgver='7.0.1'
-pkgrel='1'
+pkgrel='3'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('any')
 url="https://frrouting.org/"
 license=('GPL2')
 depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'pam' 'json-c' 'net-snmp'
 	 'rtrlib' 'libyang' 'libunwind')
-makedepends=('net-snmp' 'bison' 'c-ares' 'perl-xml-libxml' 'python-sphinx')
+makedepends=('patch' 'gcc' 'net-snmp' 'bison' 'c-ares' 'perl-xml-libxml' 'python-sphinx')
 checkdepends=('python-pytest')
 optdepends=('rsyslog: syslog support')
 conflicts=('quagga' 'babeld' 'quagga_cumulus')
@@ -22,12 +22,16 @@ source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.ta
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}_6.0_systemd_arch.patch"
-        "${pkgname}_7.0_Archlinux.patch")
+        "${pkgname}_7.0_Archlinux.patch"
+	"000-rem-rec.patch"
+	"frr-init-functions")
 sha256sums=('5b74fc2c730e9973eab03546415f8dd7b36fa00fbf0bc856458266773dd5ae6d'
             '9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89'
             '9d98a0b5d7016cb66fe3cbec234f70327f0a961de47f7eae39a5bd4477b072ce'
-            '93b2cb90ca438841db38d582708e12d4bed77f498e1a494057a804b31bdc323a')
+            '3ea1ac3f8fa1bd6f2946b065057464eb04b7ae6c17d181291bbeecf266735dbb'
+            '1cd3780604fba90fcbce9c0fc69e261a4a22abe123faf155035ab359bc0d151f'
+            'e6e2592a8b0b18f7f173186fb4ebf23e642b3d912179f0bb36251962ca64cd7a')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
@@ -37,6 +41,7 @@ prepare() {
 
   # https://github.com/FRRouting/frr/issues/4167
   patch -p1 -i "${srcdir}/${pkgname}_7.0_Archlinux.patch"
+  patch -p1 -i "${srcdir}/000-rem-rec.patch"
 
   autoreconf -fvi
   ./configure \
@@ -68,6 +73,8 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
+  install -Dm0444 "${srcdir}/../frr-init-functions" "${pkgdir}/usr/bin/"
+
   pushd "redhat"
   sed -ri 's|/var/run/frr|/run/frr|g' "${pkgname}.logrotate"
   install -Dm0644 "${pkgname}.logrotate" "${pkgdir}/etc/logrotate.d/${pkgname}"
@@ -93,4 +100,17 @@ package() {
   popd
 
   chown -R 177:177 "${pkgdir}/etc/frr"
+
+  pushd "${pkgdir}/usr/bin"
+    for file in frr frr-reload frrcommon.sh frrinit.sh watchfrr.sh;
+    do
+      sed -ri 's|/lib/lsb/init-functions|/usr/bin/frr-init-functions|g' "$file";
+    done
+    sed -ri 's|C_PATH/daemons\"|C_PATH/daemons.conf\"|g' frrcommon.sh
+    sed -ri 's|load_old_config \"\$C_PATH/daemons.conf\"|load_old_config \"\$C_PATH/daemons\"|g' frrcommon.sh
+  popd
+
+  pushd "${pkgdir}/usr/lib/systemd/system"
+    sed -ri 's|frrinit.sh|frr|g' frr.service
+  popd
 }
