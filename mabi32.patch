@@ -1,0 +1,12 @@
+diff -aur src.pristine/gcc-9.1.0/gcc/config/mips/t-elf src.new/gcc-9.1.0/gcc/config/mips/t-elf
+--- src.pristine/gcc-9.1.0/gcc/config/mips/t-elf	2019-06-18 22:52:15.188659537 -0400
++++ src.new/gcc-9.1.0/gcc/config/mips/t-elf	2019-06-22 22:19:42.534512297 -0400
+@@ -18,6 +18,6 @@
+ 
+ # Build the libraries for both hard and soft floating point
+ 
+-MULTILIB_OPTIONS = msoft-float EL/EB
+-MULTILIB_DIRNAMES = soft-float el eb
++MULTILIB_OPTIONS = mabi=32 msoft-float EL/EB
++MULTILIB_DIRNAMES = 32 soft-float el eb
+ MULTILIB_MATCHES = EL=mel EB=meb msingle-float=m4650
