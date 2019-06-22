@@ -1,0 +1,14 @@
+{
+  "root": "/usr/share/webapps/solid-server/data",
+  "dbPath": "/usr/share/webapps/solid-server/.db",
+  "configPath": "/etc/solid-server",
+
+  "port": "8443",
+  "webid": true,
+  "multiuser": false,
+  "mount": "/",
+
+  "serverUri": "https://localhost:8443",
+  "sslKey": "/dev/null",
+  "sslCert": "/dev/null"
+}
