@@ -1,6 +1,6 @@
 pkgbase = python-debian
 	pkgdesc = Python modules to work with Debian-related data formats
-	pkgver = 0.1.34
+	pkgver = 0.1.35
 	pkgrel = 1
 	url = http://packages.debian.org/sid/python-debian
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-debian
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = http://ftp.debian.org/debian/pool/main/p/python-debian/python-debian_0.1.34.tar.xz
-	sha256sums = 8c9633111a2e0eb2669dee8d0304ad149c1782a5c7a68953ca9b21cc69811224
+	source = http://ftp.debian.org/debian/pool/main/p/python-debian/python-debian_0.1.35.tar.xz
+	sha256sums = 8389db5710cefa912241355e030a3f2e6c9f4a46b64b03d0e90caa46a4fbaaa9
 
 pkgname = python-debian
 	depends = python-chardet
