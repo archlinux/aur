@@ -1,17 +1,20 @@
 # Maintainer: basigur
+# Origin: Sadrlimanov Ramil Rashitovich
 
 pkgname=neru-icon-classic-theme
 pkgver=2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Classic theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-classic-theme"
 license=('LGPL3')
-depends=('gtk-update-icon-cache' 'librsvg' 'hicolor-icon-theme')
-replaces=('neru-icon-classic-theme')
-conflicts=()
-source=("https://github.com/chistota/"${pkgname}"/archive/v"${pkgver}".tar.gz")
-sha512sums=('5D3EF71C869DD6F63B010FE1E5BBA57018EA5310A7F707D7897319E5B2631C3D4BD12E4CFBCF77CD430CB6A887DFA41888C214EA26B29DD3A9E77991114B7A9B')
+depends=('gtk-update-icon-cache')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chistota/"${pkgname}"/archive/v"${pkgver}".tar.gz")
+
+md5sums=('265525887608c3358a792de266954d0e')
+sha1sums=('33328744c5e5a2e02ec9e67743098693eafc7f75')
+sha256sums=('f03e19d145cc7582933ac2c89cfccfd73e2a63f776fab0838629d7b98dcebfb2')
+sha512sums=('5d3ef71c869dd6f63b010fe1e5bba57018ea5310a7f707d7897319e5b2631c3d4bd12e4cfbcf77cd430cb6a887dfa41888c214ea26b29dd3a9e77991114b7a9b')
 
 
 prepare() {
@@ -41,32 +44,20 @@ prepare() {
 	ln -s system-file-manager.svg neru-classic-light/32x32/apps/nautilus-actions-config-tool.svg
 	ln -s system-file-manager.svg neru-classic-light/32x32/apps/redhat-filemanager.svg
 	ln -s system-file-manager.svg neru-classic-light/32x32/apps/user-file-manager.svg
-
-
-	gtk-update-icon-cache neru-classic-light/
-	gtk-update-icon-cache neru-classic-dark/
-	gtk-update-icon-cache neru-classic-light-green/
-	gtk-update-icon-cache neru-classic-dark-green/
-	gtk-update-icon-cache neru-classic-light-yellow/
-	gtk-update-icon-cache neru-classic-dark-yellow/
-
-	gtk-update-icon-cache neru-classic-light-gray/
-	gtk-update-icon-cache neru-classic-dark-gray/
-	gtk-update-icon-cache neru-classic-light-red/
-	gtk-update-icon-cache neru-classic-dark-red/
 }
 
 package() {
 	cd "$srcdir"/"${pkgname}-${pkgver}"
 
 	install -d "$pkgdir/usr/share/icons"
-	install -d "$pkgdir/usr/share/doc/${pkgname}"
-	install -d "$pkgdir/usr/share/licenses/${pkgname}"
-
 	cp -r neru-classic-* "$pkgdir"/usr/share/icons/
 
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	cp -r LICENSE "$pkgdir"/usr/share/licenses/"${pkgname}"/
-	cp -r {'README.md','AUTHORS','screenshot.svg','screenshot.png'} "$pkgdir"/usr/share/doc/"${pkgname}"/
-
+    local _res
+    for _res in README.md AUTHORS screenshot.svg screenshot.png
+    do
+	install -Dm644 "${_res}" "${pkgdir}/usr/share/doc/${pkgname}/${_res}"
+    done
 }
+
