@@ -13,6 +13,7 @@ pkgbase = next-browser-git
 	depends = sqlite
 	depends = glib-networking
 	depends = gsettings-desktop-schemas
+	depends = libfixposix
 	optdepends = gstreamer: for HTML5 audio/video
 	optdepends = gst-plugins-base: for HTML5 audio/video
 	optdepends = gst-plugins-good: for HTML5 audio/video
@@ -26,3 +27,4 @@ pkgbase = next-browser-git
 	sha256sums = SKIP
 
 pkgname = next-browser-git
+
