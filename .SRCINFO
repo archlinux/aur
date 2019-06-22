@@ -13,3 +13,5 @@ pkgbase = python-schedule
 
 pkgname = python-schedule
 
+pkgname = python2-schedule
+

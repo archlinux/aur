@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com
 # Contributor: Dylan Whichard <dylan@whichard.com>
 
-pkgname=('python-schedule')
+pkgname=('python-schedule' 'python2-schedule')
 _name=${pkgname#python-}
 pkgver=0.6.0
 pkgrel=1
