@@ -1,14 +1,24 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 pkgname="traktarr-git"
-pkgver=r1.b12b190
+pkgver=r1.1a1737f
 pkgrel=1
 pkgdesc="Use Trakt to add shows to Sonarr and movies to Radarr."
 arch=(any)
 url="https://github.com/l3uddz/traktarr"
 license=('GPL3')
-depends=('python' 'python-schedule' 'python-click' 'python-requests' 'python-attrdict')
+
+depends=('python'
+         'python-backoff'
+         'python-schedule'
+         'python-click'
+         'python-requests'
+         'python-pyfiglet'
+         'python-cashier'
+         'python-attrdict')
+
 optdepends=('sonarr: TV download automation for usenet and torrents.'
             'radarr: Movie download automation for usenet and torrents.')
+
 provides=('traktarr')
 conflicts=('traktarr')
 
