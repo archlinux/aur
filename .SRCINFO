@@ -1,7 +1,7 @@
 pkgbase = rtags
 	pkgdesc = A client/server application that indexes C/C++ code
-	pkgver = 2.31
-	pkgrel = 2
+	pkgver = 2.33
+	pkgrel = 1
 	url = https://github.com/Andersbakken/rtags
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = rtags
 	optdepends = bash-completion: for bash completion
 	optdepends = zlib
 	conflicts = rtags-git
-	source = git+https://github.com/Andersbakken/rtags.git#tag=v2.31
+	source = git+https://github.com/Andersbakken/rtags.git#tag=v2.33
 	source = git+https://github.com/Andersbakken/rct.git
 	source = rdm.service
 	source = rdm.socket
