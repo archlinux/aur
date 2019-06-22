@@ -8,6 +8,8 @@
 
 # HTML documentation
 _BUILD_DOC=0
+# Copy 'examples' to /usr/share/examples/lammps
+_INSTALL_EXAMPLES=0
 # KIM package
 _ENABLE_KIM=0
 # Use Intel compilers
@@ -20,7 +22,7 @@ _ENABLE_OMP=0
 _pkgname=lammps
 pkgname=${_pkgname}-git
 pkgver=r13672.f7cbdcf99
-pkgrel=3
+pkgrel=4
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
@@ -38,14 +40,14 @@ sha512sums=('SKIP')
 
 # process the build settings from above
 if (( $_ENABLE_INTEL_COMPILER )); then
-    _feature_args+=('-DCMAKE_C_COMPILER=icc')
-    _feature_args+=('-DCMAKE_C_FLAGS=-xHost -O3 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -restrict')
-    _feature_args+=('-DCMAKE_CXX_COMPILER=icpc')
-    _feature_args+=('-DCMAKE_CXX_FLAGS=-xHost -O3 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -restrict')
-    _feature_args+=('-DCMAKE_Fortran_COMPILER=ifort')
+    _feature_args+=('-DCMAKE_C_COMPILER=mpiicc')
+    _feature_args+=('-DCMAKE_C_FLAGS=-xHost -O2 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high')
+    _feature_args+=('-DCMAKE_CXX_COMPILER=mpiicpc')
+    _feature_args+=('-DCMAKE_CXX_FLAGS=-fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -O2 -DLMP_INTEL_USELRT -DLMP_USE_MKL_RNG')
+    _feature_args+=('-DCMAKE_Fortran_COMPILER=mpiifort')
 fi
 if (( $_BUILD_DOC )); then
-    makedepends+=('python-sphinx' 'lammpsdoc')
+    makedepends+=('python-sphinx')
 fi
 if (( $_ENABLE_KIM )); then
     depends+=('kim-api>=2.0.2')
@@ -91,7 +93,7 @@ build() {
     do
       tmp=${file%.*} # Strips the '.txt' extension
       fname=${tmp##*/} # Strips the path prefixing the file-name
-      txt2rst ${file} > "rst/${fname}.rst"
+      ../doc/utils/converters/lammpsdoc/txt2rst.py ${file} > "rst/${fname}.rst"
     done
 
     # Generate HTML from ReStructuredText files
@@ -116,4 +118,11 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static/fonts" "html/_static/fonts/"*
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html/_static/js" "html/_static/js/"*.js
   fi
+  if (( $_INSTALL_EXAMPLES )) ; then
+    mkdir -p "${pkgdir}/usr/share/examples/lammps"
+    cp -r "../examples/"* "${pkgdir}/usr/share/examples/lammps/"
+    find "${pkgdir}/usr/share/examples/lammps/" -type f -exec chmod 644 '{}' +
+  fi
+  install -Dm644 "../tools/vim/lammps.vim" "${pkgdir}/usr/share/vim/vimfiles/syntax/lammps.vim"
+  install -Dm644 "../tools/vim/filetype.vim" "${pkgdir}/usr/share/vim/vimfiles/ftdetect/lammps.vim"
 }
