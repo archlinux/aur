@@ -14,7 +14,7 @@ depends=(
     'qt5-base'
 )
 source=(
-    'https://github.com/redchenjs/aur-packages/raw/master/360zip/360zip_1.0.0.1010_amd64.deb'
+    'https://packages.deepin.com/deepin/pool/non-free/3/360zip/360zip_1.0.0.1010_amd64.deb'
 )
 md5sums=(
     'b368ad91d6c3667a6b3cdead857a90c9'
