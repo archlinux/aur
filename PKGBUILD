@@ -3,7 +3,7 @@
 pkgname=360zip
 pkgver=1.0.0.1010
 pkgrel=1
-pkgdesc="360Zip"
+pkgdesc="360Zip Archiver"
 arch=('x86_64')
 url="http://yasuo.360.cn/"
 license=('custom')

@@ -1,5 +1,5 @@
 pkgbase = 360zip
-	pkgdesc = 360Zip
+	pkgdesc = 360Zip Archiver
 	pkgver = 1.0.0.1010
 	pkgrel = 1
 	url = http://yasuo.360.cn/
