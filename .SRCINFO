@@ -1,0 +1,20 @@
+pkgbase = dingtalk
+	pkgdesc = 钉钉桌面版，基于electron和钉钉网页版开发，支持Windows、Linux和macOS
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/nashaofu/dingtalk
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = jq
+	makedepends = moreutils
+	makedepends = npm
+	depends = electron
+	provides = dingtalk
+	conflicts = dingtalk-electron
+	conflicts = dingtalk-git
+	source = dingtalk-2.1.0.src.tar.gz::https://github.com/nashaofu/dingtalk/archive/v2.1.0.tar.gz
+	sha256sums = cbe01b4aef5bef399fdcde9343e5bbe3bc7e767f36a9999f217b033c74ef85dc
+
+pkgname = dingtalk
+
