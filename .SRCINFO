@@ -1,7 +1,7 @@
 pkgbase = 360zip
 	pkgdesc = 360Zip Archiver
 	pkgver = 1.0.0.1010
-	pkgrel = 1
+	pkgrel = 2
 	url = http://yasuo.360.cn/
 	arch = x86_64
 	license = custom

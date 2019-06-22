@@ -2,7 +2,7 @@
 
 pkgname=360zip
 pkgver=1.0.0.1010
-pkgrel=1
+pkgrel=2
 pkgdesc="360Zip Archiver"
 arch=('x86_64')
 url="http://yasuo.360.cn/"
@@ -25,4 +25,7 @@ package() {
 
     mkdir "${pkgdir}"/usr/local/bin/
     ln -s /usr/local/share/360zip/360zip.sh "${pkgdir}"/usr/local/bin/360zip
+
+    install -Dm644 "${pkgdir}"/usr/local/share/icons/360zip.png \
+                   "${pkgdir}"/usr/share/icons/360zip.png
 }
