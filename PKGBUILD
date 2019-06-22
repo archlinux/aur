@@ -3,7 +3,7 @@
 # Contributor: SirClueless
 
 pkgname=libtcod
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=1
 pkgdesc="Roguelike graphics/utility library"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('sdl2')
 #makedepends=()
 source=("https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('b6706cd128ac07ca905eff5d262f0190')
+md5sums=('daca5e5b74056a42dea0753e90cf3c22')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver/build/autotools"
