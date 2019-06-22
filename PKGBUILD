@@ -14,7 +14,7 @@ depends=('python' 'python-gevent>=1.1.0' 'python-gevent-websocket'
 	'python-base58' 'python-merkletools'
 	'python-pyelliptic>=2.0.1'
 	'python-bencode.py' 'python-coincurve'
-	'python-bitcoinlib'
+	'python-bitcoinlib' 'python-maxminddb'
 	'geoip2-database')
 optdepends=('tor: anonymity'
 	    'namecoin-core: local name resolution')
