@@ -86,11 +86,6 @@ package() {
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
 
-sha256sums=('14b381f59b6f768b2d293658327a92d3'
-         '5248a01217a58e4a91e5cf5dd4002a12'
-         '2ca92d94c329bf54b8df70f22c27ba98'
-         '5a5aca0d121066eff20e5431f4b89a48'
-         '1f3e4182d57987e4f42962cd2da94661')
 sha256sums=('b9e56cebd6756ad8ff7c8f6c9e633cb56cb139c7c4437189945b3f25acbe0082'
             '97e7b8e5d402eef231e20b62436d830a955c87f389b20ea663bf5a6b8f7b0ff7'
             '45f70de4b665fc598420494b5af4982e737f3353b20b0a7c0829e35610aadfc9'
