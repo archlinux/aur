@@ -2,10 +2,10 @@
 
 pkgname=browser360
 pkgver=10.0.2001.0
-pkgrel=2
+pkgrel=3
 pkgdesc="360 Security Browser"
 arch=('x86_64')
-url="https://browser.360.cn/se/"
+url="https://browser.360.cn/se/linux/"
 license=('custom')
 depends=(
     'ca-certificates'
@@ -21,10 +21,10 @@ depends=(
     'xdg-utils'
 )
 source=(
-    'https://github.com/redchenjs/aur-packages/raw/master/browser360/browser360-cn-stable_10.0.2001.0-2_amd64.deb'
+    'https://down.360safe.com/gc/browser360-cn-stable_10.0.2001.0-1_amd64.deb'
 )
 md5sums=(
-    'cd23bd055b040cb055907288e4623ddc'
+    'f441827dc69590b0af35267fe33ad8d7'
 )
 
 package() {
