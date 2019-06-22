@@ -73,6 +73,9 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd $_srcname
 
+  # Workaround GCC 9 build, source: https://www.linuxquestions.org/questions/slackware-14/make-linux-4-19-42-error-4175653720/
+  export LANG=en_US.UTF-8
+
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
