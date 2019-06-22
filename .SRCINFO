@@ -1,0 +1,16 @@
+pkgbase = vlang
+	pkgdesc = Simple, fast, safe language created for developing maintainable software
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://vlang.io
+	arch = x86_64
+	license = custom
+	depends = glfw
+	depends = libfreetype.so
+	depends = libcurl.so
+	conflicts = v
+	source = http://vlang.io/early_v_patreon.zip
+	sha256sums = 15fe4835674fc66694d13e8e9700a65803b34696d255c207690ba33c2ac24f77
+
+pkgname = vlang
+
