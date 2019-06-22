@@ -1,0 +1,18 @@
+pkgbase = brother-dcpj577n
+	pkgdesc = Brother DCP-J577N CUPS driver
+	pkgver = 1.0.5
+	pkgrel = 0
+	url = http://brother.co.jp/
+	install = brother-dcpj577n.install
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = cups
+	depends = a2ps
+	source = fix_lp.patch
+	source = https://download.brother.com/welcome/dlf104037/dcpj577npdrv-1.0.5-0.i386.rpm
+	md5sums = 0123659bafc46e84ca66316dc511f0f8
+	md5sums = 23c3134e53d7a38778ba8b0fe2e93d64
+
+pkgname = brother-dcpj577n
+

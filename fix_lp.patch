@@ -1,0 +1,11 @@
+--- opt/brother/Printers/dcpj577n/inf/setupPrintcapij.old	2019-06-15 22:55:31.673344065 +0900
++++ opt/brother/Printers/dcpj577n/inf/setupPrintcapij	2019-06-15 22:55:46.776677529 +0900
+@@ -34,7 +34,7 @@
+ 	if [ ! -d $SPOOLER_NAME ]; then
+ 	        mkdir -p $SPOOLER_NAME
+ 	fi
+-	chown lp $SPOOLER_NAME
++	chown root $SPOOLER_NAME
+ 	chgrp lp $SPOOLER_NAME
+ 	chmod 700 $SPOOLER_NAME
+ 
