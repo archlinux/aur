@@ -3,7 +3,7 @@
 
 _appname=freecad
 pkgname="${_appname}-git"
-pkgver=0.19pre.r168.gd4f01c440
+pkgver=0.19pre.r633.g063582241
 pkgrel=1
 epoch=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -23,7 +23,7 @@ source=("${pkgname}::git+https://github.com/FreeCAD/FreeCAD.git"
         "freecad.desktop"
         "freecad.xml")
 md5sums=('SKIP'
-         '7e781d41e90a1c137930e47672996a52'
+         '9e958fe0b5267a8eae2433731b949a24'
          'c2f4154c8e4678825411de8e7fa54c6b')
 
 pkgver() {
