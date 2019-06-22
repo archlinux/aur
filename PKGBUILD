@@ -5,13 +5,12 @@
 
 pkgname=coturn
 pkgver=4.5.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Open-source implementation of TURN and STUN server'
 arch=(i686 x86_64 armv7h)
 url=https://github.com/coturn/coturn
 license=(BSD)
 depends=(libevent postgresql-libs libmariadbclient hiredis sqlite)
-install=turnserver.install
 backup=(etc/turnserver/turnserver.conf)
 source=($url/archive/$pkgver.tar.gz
         turnserver.service

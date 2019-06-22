@@ -1,9 +1,8 @@
 pkgbase = coturn
 	pkgdesc = Open-source implementation of TURN and STUN server
 	pkgver = 4.5.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/coturn/coturn
-	install = turnserver.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
