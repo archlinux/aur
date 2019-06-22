@@ -6,8 +6,8 @@ pkgbase = sphinxcontrib-adadomain
 	arch = any
 	license = BSD
 	depends = python2-sphinx
-	source = https://files.pythonhosted.org/packages/6d/eb/e7b774c4c254236fdb86fcb743f5d123abda5f3de90050952cb00ce0b54d/sphinxcontrib-adadomain-0.2.tar.gz
-	sha256sums = 42bb33aa4adcd43ff6b43a3fe7b305428abd8dfb7a76b1dc44a5392c5359ed76
+	source = https://bitbucket.org/tkoskine/sphinxcontrib-adadomain/get/b467b5bb918b.zip
+	sha256sums = b7680ae711290c9a300234dccb6afad0956b1a6af011ee6ae4dbf2f152aeef10
 
 pkgname = sphinxcontrib-adadomain
 
