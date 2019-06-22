@@ -1,17 +1,15 @@
 pkgbase = libadalang-tools
 	pkgdesc = Libadalang-based tools: gnatpp, gnatmetric and gnatstub
-	pkgver = 2018
-	pkgrel = 2
+	pkgver = 2019
+	pkgrel = 1
 	url = https://github.com/AdaCore/libadalang-tools
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gprbuild>=2018
-	depends = libadalang>=2018
-	source = http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a59
-	source = workaround-gnat-bug.patch
-	sha1sums = 034e5443a94336f6aca020c916ddf8f30598f8bf
-	sha1sums = 366bc80b768bbb15993b3e896c7aa28ee6f8b2da
+	makedepends = gprbuild
+	depends = libadalang
+	source = http://mirrors.cdn.adacore.com/art/5cdf8f4e31e87a8f1d42509f
+	sha1sums = 6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d
 
 pkgname = libadalang-tools
 

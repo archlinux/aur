@@ -1,32 +1,25 @@
-# Maintainer: Rod Kay <charlie5 on #ada at freenode.net>
+# Maintainer:  Rod Kay               <charlie5  on #ada at freenode.net>
 # Contributor: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=libadalang-tools
-pkgver=2018
-pkgrel=2
+pkgver=2019
+pkgrel=1
 
 pkgdesc="Libadalang-based tools: gnatpp, gnatmetric and gnatstub"
 url='https://github.com/AdaCore/libadalang-tools'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('libadalang>=2018')
-makedepends=("gprbuild>=2018")
+depends=('libadalang')
+makedepends=('gprbuild')
 
-source=('http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a59'
-        'workaround-gnat-bug.patch')
-sha1sums=('034e5443a94336f6aca020c916ddf8f30598f8bf'
-          '366bc80b768bbb15993b3e896c7aa28ee6f8b2da')
+source=('http://mirrors.cdn.adacore.com/art/5cdf8f4e31e87a8f1d42509f')
+sha1sums=('6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d')
 
-prepare()
-{
-    cd "$srcdir/libadalang-tools-src"
-    patch -Np0 -i "$srcdir/workaround-gnat-bug.patch"
-}
 
 build() 
 {
-    cd "$srcdir/libadalang-tools-src"
+    cd "$srcdir/libadalang-tools-2019-20190517-195C4-src"
 
     # In order to build the generated library, Langkit expects the QUEX_PATH to
     # be set.
@@ -37,7 +30,7 @@ build()
 
 package()
 {
-    cd "$srcdir/libadalang-tools-src"
+    cd "$srcdir/libadalang-tools-2019-20190517-195C4-src"
 
     mkdir -p "$pkgdir/usr/bin"
     for program in gnatpp gnatmetric gnatstub
