@@ -1,7 +1,7 @@
 pkgbase = awj-git
 	pkgdesc = script that enables interactive selection and execution of aws-cli commands by using peco
 	pkgver = r4.660fb41
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/daisuke-awaji/awj
 	arch = any
 	license = MIT

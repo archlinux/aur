@@ -1,15 +1,36 @@
---- awj/awj.orig	2019-06-22 09:07:44.727964804 +0900
-+++ awj/awj	2019-06-22 09:07:56.707819483 +0900
-@@ -1,4 +1,3 @@
+--- awj.orig	2019-06-22 09:23:35.661342954 +0900
++++ awj	2019-06-22 09:24:45.857170666 +0900
+@@ -1,17 +1,3 @@
 -awj() {
-   $(echo "describe_stacks
- describe_stack_url
- describe_change_set_url
-@@ -10,7 +9,6 @@
- describe_s3
- describe_logs
- describe_aws_batch_jobs" | peco)
+-  $(echo "describe_stacks
+-describe_stack_url
+-describe_change_set_url
+-describe_ec2
+-describe_elb
+-describe_alb
+-describe_lambda
+-describe_rds
+-describe_s3
+-describe_logs
+-describe_aws_batch_jobs" | peco)
 -}
-
+-
  describe_stacks() {
    STACK_NAME=`aws cloudformation describe-stacks | \
+       jq -r '.Stacks[] | [.StackName, .StackStatus] | @tsv' | \
+@@ -92,3 +78,15 @@
+     echo "$JOB"
+     aws batch describe-job-definitions --job-definition-name $JOB
+ }
++
++$(echo "describe_stacks
++describe_stack_url
++describe_change_set_url
++describe_ec2
++describe_elb
++describe_alb
++describe_lambda
++describe_rds
++describe_s3
++describe_logs
++describe_aws_batch_jobs" | peco)
