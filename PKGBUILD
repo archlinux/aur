@@ -67,6 +67,10 @@ package() {
   msg2 'Installing namecoin...'
   make DESTDIR="$pkgdir" install
 
+  # Rename files left over from forking, because conflict with btc packages
+  mv $pkgdir/usr/share/man/man1/{bitcoind,namecoind}.1
+  mv $pkgdir/usr/share/man/man1/{bitcoin,namecoin}-cli.1
+
   msg2 'Installing namecoin.conf...'
   install -Dm 600 "$srcdir/namecoin.conf" -t "$pkgdir/etc/namecoin"
 
