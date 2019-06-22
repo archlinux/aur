@@ -1,6 +1,6 @@
 pkgbase = python2-advancedhtmlparser
 	pkgdesc = Fast Indexed python2 HTML parser which builds a DOM node tree, providing common getElementsBy* functions for scraping, testing, modification, and formatting
-	pkgver = 8.1.5
+	pkgver = 8.1.6
 	pkgrel = 1
 	url = http://github.com/kata198/AdvancedHTMLParser
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python2-advancedhtmlparser
 	depends = python2-setuptools
 	depends = python2
 	optdepends = python2-queryablelist: Support for advanced "filter" functions
-	source = https://github.com/kata198/AdvancedHTMLParser/archive/8.1.5.tar.gz
-	sha512sums = f89ef9a490668f697f7d0c89c3a72d0e36adae4e1844188dabab4ba0f9d8eecd78762ae481da427c156efb0e47e3bd8bf1af77d03f5d0d79412e2b568cfd182a
+	source = https://github.com/kata198/AdvancedHTMLParser/archive/8.1.6.tar.gz
+	sha512sums = 5d3e331935bb28624efe13316620a0e41f4a39eff4ec000dba81f716b17a6b15ee3afaf6db915f7db9f635a699f490a721858dd0480186f1cb871fc3d29db3a7
 
 pkgname = python2-advancedhtmlparser
 
