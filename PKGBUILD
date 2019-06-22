@@ -2,7 +2,7 @@
 # Contributor: Arthur Țițeică / arthur dot titeica with gmail
 
 pkgname=morty-git
-pkgver=0.2.0+r12+gfe94d9a
+pkgver=0.2.0+12+gfe94d9a
 pkgrel=1
 pkgdesc='Privacy-aware web content sanitizer proxy-as-a-service (git)'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=(AGPL3)
 provides=(morty)
 conflicts=(morty)
 makedepends=(git go)
-optdepends=('searx: A privacy-respecting, hackable metasearch engine')
+optdepends=('searx: Privacy-respecting, hackable metasearch engine')
 source=(git+$url
         morty.service)
 sha512sums=('SKIP'
@@ -19,7 +19,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd morty
-  git describe --tags | sed 's/v//;s/-/+/g;s/+/+r/'
+  git describe --tags | sed 's/v//;s/-/+/g'
 }
 
 build() {
