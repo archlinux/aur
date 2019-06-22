@@ -12,6 +12,7 @@ url='https://github.com/cs50/libcs50'
 license=('MIT')
 groups=('cs50')
 makedepends=('asciidoctor')
+conflicts=('libcs50-git')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/cs50/${pkgname}/archive/v${pkgver}.tar.gz"
   'Makefile.patch'

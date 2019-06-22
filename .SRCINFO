@@ -8,6 +8,7 @@ pkgbase = libcs50
 	groups = cs50
 	license = MIT
 	makedepends = asciidoctor
+	conflicts = libcs50-git
 	source = libcs50-9.0.1.tar.gz::https://github.com/cs50/libcs50/archive/v9.0.1.tar.gz
 	source = Makefile.patch
 	sha256sums = 9fd723b62af0b562a1e47c1f5d44cc786d47ca4607776e3a52b407de5cb5ebd5
