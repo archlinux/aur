@@ -1,7 +1,7 @@
 # Maintainer: Aidan Coward <aidan -dot- coward -at- gmail -dot- com>
 
 pkgname=xmage
-pkgver=1.4.36V2
+pkgver=1.4.36V3
 pkgrel=1
 _java_version=8u201
 _java_dir=jre1.8.0_201
@@ -25,7 +25,7 @@ source=("http://xmage.de/files/xmage_${pkgver}.zip"
 	"http://xmage.today/java/jre-8u201-linux-x64.tar.gz"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt')
 
-sha256sums=("2c92c3ad3db30b10bb66676b3399f686e4e318accfd3784fdd1bca77b59718f9" 
+sha256sums=("b029cacec713d96c1464918a6dbe5b8efd018bf22c9fb7b288fa805d8f951837" 
 	"12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352"
 	"SKIP")
 
