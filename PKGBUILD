@@ -1,7 +1,7 @@
 _pkgname=awj
 pkgname=${_pkgname}-git
 pkgver=r4.660fb41
-pkgrel=1
+pkgrel=2
 pkgdesc='script that enables interactive selection and execution of aws-cli commands by using peco'
 arch=('any')
 url='https://github.com/daisuke-awaji/awj'
@@ -14,6 +14,10 @@ sha512sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+   patch patch awj/awj ../PATCH
 }
 
 package() {

@@ -1,0 +1,15 @@
+--- awj/awj.orig	2019-06-22 09:07:44.727964804 +0900
++++ awj/awj	2019-06-22 09:07:56.707819483 +0900
+@@ -1,4 +1,3 @@
+-awj() {
+   $(echo "describe_stacks
+ describe_stack_url
+ describe_change_set_url
+@@ -10,7 +9,6 @@
+ describe_s3
+ describe_logs
+ describe_aws_batch_jobs" | peco)
+-}
+
+ describe_stacks() {
+   STACK_NAME=`aws cloudformation describe-stacks | \
