@@ -1,11 +1,12 @@
-# Maintainer: Anselmo L. S. Melo <anselmolsm@gmail.com>
+# Maintainer: Lin Rs <LinRs@users.noreply.github.com>
+# Contributor: Anselmo L. S. Melo <anselmolsm@gmail.com>
 # Contributor: mortzu <me@mortzu.de>
 # Contributor: David Manouchehri <d@32t.ca>
 # Submitter: fluffylime <fluffylime@gmail.com>
 
 pkgname=redsocks
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Transparent redirector of any TCP connection to proxy using your firewall'
 arch=('i686' 'x86_64')
 url='http://darkk.net.ru/redsocks/'
@@ -22,14 +23,16 @@ backup=('etc/redsocks.conf'
 source=('https://github.com/darkk/redsocks/archive/release-'$pkgver'.tar.gz'
         'redsocks.conf'
         'redsocks.tmpfiles'
+	'redsocks.sysusers'
         'redsocks.rules'
         'redsocks')
 
-md5sums=('bb5e9c46192dcb00be10eb688d79fce3'
-         'ed8b0090ded9de0940b1cd7539c78422'
-         '9be5e8bea768b1a8fdec55a8e8af33fd'
-         '04702a7faf31d707d3df4c116bd58a6d'
-         '165271c067ed550e9c6da4439d29c5f7')
+sha256sums=('bbeb531d7f1986d7102f1bd6733dacce41d3f3ba7d604f1aab61c63e0ba2ee62'
+            '090882eb124d30d8a009cf42983df7bed96e57b5ba6797fda50229a725407d2e'
+            '91a106814e357175df925f4044d18bdc6dfe5cae8e45f9db69d26f93493b32d9'
+            '165e9da4331d7b5575df2690b60647f835a1089d4059db6cc7eea078963f8c74'
+            'f217ee901c04fa9f58c096e92280dc36495a319de01943c8c5611be2b81809e9'
+            '2ecbb1024610381a9ba8e7e2c27d57b3fa65281a72e0d411bf46aa4978d782c2')
 
 build() {
   cd $pkgname"-release-"$pkgver
@@ -43,6 +46,7 @@ package() {
   install -Dm644 "$srcdir/redsocks" "$pkgdir/etc/conf.d/redsocks"
   install -Dm644 "$srcdir/redsocks.conf" "$pkgdir/etc/redsocks.conf"
   install -Dm644 "$srcdir/redsocks.rules" "$pkgdir/etc/iptables/redsocks.rules"
+  install -Dm644 "$srcdir/redsocks.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 "$srcdir/redsocks.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/redsocks.conf"
 
   install -Dm755 "redsocks" "$pkgdir/usr/bin/redsocks"
