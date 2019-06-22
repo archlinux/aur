@@ -3,13 +3,13 @@
 
 pkgname=obs-studio
 pkgver=23.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://obsproject.com"
 license=('GPL2')
 depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls'
-         'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache')
+         'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache')
 makedepends=('cmake' 'libfdk-aac' 'libxcomposite' 'x264' 'vlc' 'swig' 'python' 'luajit')
 optdepends=('libfdk-aac: FDK AAC codec support'
             'libxcomposite: XComposite capture support'
