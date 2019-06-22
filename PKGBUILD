@@ -2,8 +2,8 @@
 
 # General package information
 pkgname=wtwitch
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Terminal user interface for Twitch"
 url="https://gitlab.com/krathalan/wtwitch"
 license=("GPL3")
@@ -14,9 +14,9 @@ makedepends=("asciidoc")
 depends=("bash" "jq" "streamlink" "wget")
 
 # Download information
-source=("${url}/uploads/93e5e3d5ff9087a501cacaf0ac006888/wtwitch-1.0.0-2.tar.gz" "${url}/uploads/479acc6c01759ac3bdd623036927cc73/wtwitch-1.0.0-2.tar.gz.sig")
+source=("${url}/uploads/6d9c362d796f36a17f2710fdc9da5260/wtwitch-1.0.1-1.tar.gz" "${url}/uploads/c45b81329b53de5f93e373e07616226b/wtwitch-1.0.1-1.tar.gz.sig")
 validpgpkeys=("0CE6D5B52BD80B4EDB8DF343546BFAE445159FFC")
-sha256sums=("89facb5179577ca8393d175309f15607ff4da0476d147127d4b666e5c87da0a9" "586a59b4bf0e211ecb87ab4f4623f4139dae17fb1fa8710f0638a2ddac197404")
+sha256sums=("aaf038bf2afff5690f2f4d07a4f67faa134e72830f337e60290c8bee4b6299a3" "23ac904abe94a00cf316596395d8c92adc53fe3c27cfd314c934e6040ba90b1d")
 
 prepare() {
   # Build manpage from asciidoc
