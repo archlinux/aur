@@ -1,11 +1,11 @@
 _pkgname=open-uri-context-menu
 pkgname=gedit-$_pkgname-git
 pkgver=r40.fcb008b
-pkgrel=1
+pkgrel=2
 pkgdesc="Gedit plugin that adds context menu item to open an URI at the pointer position."
 arch=("any")
 url="https://github.com/jpfleury/$_pkgname"
-depends=("gedit")
+depends=('gedit' 'xdg-utils')
 source=("git+$url.git")
 sha256sums=('SKIP')
 license=("GPL3")
