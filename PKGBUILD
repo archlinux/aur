@@ -3,7 +3,7 @@
 pkgname=browser360
 pkgver=10.0.2001.0
 pkgrel=2
-pkgdesc="A Chromium based web browser from Qihoo 360"
+pkgdesc="360 Security Browser"
 arch=('x86_64')
 url="https://browser.360.cn/se/"
 license=('custom')

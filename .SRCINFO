@@ -1,5 +1,5 @@
 pkgbase = browser360
-	pkgdesc = A Chromium based web browser from Qihoo 360
+	pkgdesc = 360 Security Browser
 	pkgver = 10.0.2001.0
 	pkgrel = 2
 	url = https://browser.360.cn/se/
