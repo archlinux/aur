@@ -1,8 +1,9 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
+# Contributor: Joey Dumont <joey.dumont@gmail.com>
 
 _target=mips64-elf
 pkgname=${_target}-binutils
-pkgver=2.31.1
+pkgver=2.32
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 url="http://www.gnu.org/software/binutils/"
@@ -10,7 +11,7 @@ arch=('x86_64')
 license=('GPL')
 depends=('zlib')
 source=("ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz")
-sha256sums=('5d20086ecf5752cc7d9134246e9588fa201740d540f7eb84d795b1f7a93bca86')
+sha256sums=('0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04')
 
 prepare() {
   cd binutils-${pkgver}
@@ -31,10 +32,10 @@ build() {
     --enable-64-bit-bfd \
     --enable-plugins \
     --disable-gold \
-    --disable-multilib \
+    --enable-multilib \
     --disable-nls \
     --disable-shared \
-    --disable-werror \
+    --disable-werror
 
   make
 }

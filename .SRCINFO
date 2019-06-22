@@ -1,13 +1,13 @@
 pkgbase = mips64-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files (mips64-elf)
-	pkgver = 2.31.1
+	pkgver = 2.32
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL
 	depends = zlib
-	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.31.1.tar.xz
-	sha256sums = 5d20086ecf5752cc7d9134246e9588fa201740d540f7eb84d795b1f7a93bca86
+	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.32.tar.xz
+	sha256sums = 0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04
 
 pkgname = mips64-elf-binutils
 
