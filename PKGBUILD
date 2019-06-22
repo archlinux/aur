@@ -22,23 +22,14 @@ md5sums=(
 package() {
     7z x mitalk.appimage -o"${pkgdir}"/opt/mitalk/
 
-    chmod 755 "${pkgdir}"/opt/mitalk/米聊
-    chmod 755 "${pkgdir}"/opt/mitalk/AppRun
-
-    chmod 755 "${pkgdir}"/opt/
-    chmod 755 "${pkgdir}"/opt/mitalk/
-    chmod 755 "${pkgdir}"/opt/mitalk/lib/
-    chmod 755 "${pkgdir}"/opt/mitalk/usr/
-    chmod 755 "${pkgdir}"/opt/mitalk/usr/lib/
-    chmod 755 "${pkgdir}"/opt/mitalk/locales/
-    chmod 755 "${pkgdir}"/opt/mitalk/resources/
-    chmod 755 "${pkgdir}"/opt/mitalk/swiftshader/
+    chmod -R 755 "${pkgdir}"/opt/
 
     for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
         convert -adaptive-resize $i "${pkgdir}"/opt/mitalk/usr/share/icons/hicolor/0x0/apps/米聊.png \
                                     "${pkgdir}"/opt/mitalk/usr/share/icons/hicolor/0x0/apps/mitalk_$1.png
         install -Dm644 "${pkgdir}"/opt/mitalk/usr/share/icons/hicolor/0x0/apps/mitalk_$1.png \
                        "${pkgdir}"/usr/share/icons/hicolor/$i/apps/mitalk.png
+        rm "${pkgdir}"/opt/mitalk/usr/share/icons/hicolor/0x0/apps/mitalk_$1.png
     done
 
     sed -i "s/Icon=米聊/Icon=mitalk/" "${pkgdir}"/opt/mitalk/米聊.desktop
@@ -49,6 +40,5 @@ package() {
     rm "${pkgdir}"/opt/mitalk/米聊.png
     rm "${pkgdir}"/opt/mitalk/米聊.desktop
 
-    rm -r "${pkgdir}"/opt/mitalk/usr/share/
     rm -r "${pkgdir}"/opt/mitalk/resources/app.asar.unpacked/
 }
