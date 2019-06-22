@@ -1,5 +1,6 @@
 pkg/
 src/
 *.tar.xz
+*.patch
 *.pkg.tar*
 *.log

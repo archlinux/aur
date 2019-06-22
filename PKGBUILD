@@ -3,14 +3,14 @@
 # Headless by: K900 <me@0upti.me>
 
 pkgname=qt5-base-headless
-_qtver=5.12.4
+_qtver=5.13.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
 url='https://www.qt.io/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework - headless build (no QtGui or QtWidgets)'
-depends=('sqlite' 'libproxy' 'double-conversion' 'pcre2' 'glib2' 'icu')
+depends=('sqlite' 'libproxy' 'double-conversion' 'pcre2' 'glib2' 'icu' 'zstd')
 makedepends=('mariadb-libs' 'sqlite' 'unixodbc' 'postgresql-libs' 'dbus')
 optdepends=('postgresql-libs: PostgreSQL driver'
             'mariadb-libs: MariaDB driver'
@@ -21,8 +21,10 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 conflicts=('qtchooser' 'qt5-base')
 provides=('qt5-base')
 _pkgfqn="qtbase-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('20fbc7efa54ff7db9552a7a2cdf9047b80253c1933c834f35b0bc5c1ae021195')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+        qtbase-zlib-compression.patch::"https://code.qt.io/cgit/qt/qtbase.git/patch/?id=cbdc9a77")
+sha256sums=('ff6964b3b528cd3b1d21bcf3470006e8e5cbe69591923f982871d886ea0488fe'
+            '9300d8ab7abe4145e92eea75178a26ad3d5a71b0646665c3776ca2c375dd1233')
 
 prepare() {
   cd ${_pkgfqn}
@@ -33,6 +35,8 @@ prepare() {
     mkspecs/common/gcc-base.conf
   sed -i -e "s|^\(QMAKE_LFLAGS_RELEASE.*\)|\1 ${LDFLAGS}|" \
     mkspecs/common/g++-unix.conf
+
+  patch -p1 -i ../qtbase-zlib-compression.patch # Change the default compression back to zlib for backwards compatibility
 }
 
 build() {
@@ -54,6 +58,7 @@ build() {
     -dbus-linked \
     -system-harfbuzz \
     -journald \
+    -no-mimetype-database \
     -no-use-gold-linker \
     -reduce-relocations \
     \
