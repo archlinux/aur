@@ -3,21 +3,21 @@
 # Contributor: Earnestly <zibeon AT googlemail.com>
 
 pkgname=gprbuild
-pkgver=2018
-pkgrel=4
+pkgver=2019
+pkgrel=1
 pkgdesc="Builder for multi-language systems"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
 license=('GPL3')
-depends=('libgpr>=2018')
-makedepends=('gprbuild-bootstrap>=2018')
-provides=("gprbuild-bootstrap=2018")
-conflicts=("gprbuild-bootstrap=2018" "gprbuild-bootstrap-git" "gprbuild-git")
+depends=('libgpr')
+makedepends=('gprbuild-bootstrap')
+provides=("gprbuild-bootstrap")
+conflicts=("gprbuild-bootstrap" "gprbuild-bootstrap-git" "gprbuild-git")
 
-source=('http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a68'
+source=('http://mirrors.cdn.adacore.com/art/5cdf8e8031e87a8f1d425093'
         'relocatable-build.patch'
         'expose-cargs-and-largs-makefile.patch')
-sha1sums=('f2cfc62fc05ae510e7e3aa7138d27ccb38096bdd'
+sha1sums=('0c03c05cef70b85144ba0e624a46e8952183b666'
           '4aaab0df8b611750d2cb35973ed28823fb233989'
           'db88bcb65d1a5f41c5b30e0c3dea996c47c4f5b9')
 
@@ -25,7 +25,7 @@ sha1sums=('f2cfc62fc05ae510e7e3aa7138d27ccb38096bdd'
 DEBUG_CFLAGS="-g"
 
 prepare() {
-    cd "$srcdir/gprbuild-gpl-2018-src"
+    cd "$srcdir/gprbuild-2019-20190517-194D8-src"
 
     patch -Np1 -i "$srcdir/relocatable-build.patch"
     patch -Np1 -i "$srcdir/expose-cargs-and-largs-makefile.patch"
@@ -39,7 +39,7 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/gprbuild-gpl-2018-src"
+    cd "$srcdir/gprbuild-2019-20190517-194D8-src"
 
     # Make using a single job (-j1) to avoid the same file being compiled at the same time.
     make -j1 prefix=/usr BUILD=production setup
@@ -47,7 +47,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/gprbuild-gpl-2018-src"
+    cd "$srcdir/gprbuild-2019-20190517-194D8-src"
 
     # Make one install at a time to avoid GPRinstall reading/writing to
     # the same installed project files at the same time.
