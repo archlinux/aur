@@ -6,7 +6,7 @@ name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 fragment="#tag=3.6-dev.2"
 pkgname=${name}
-pkgver=3.6.dev.2
+pkgver=3.6dev2
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -22,7 +22,6 @@ fi
 install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
         "nvm-export.patch"
-        "gcc9.patch"
         "${pkgname}.install"
         "vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin"
         "vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin"
@@ -30,7 +29,6 @@ source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
         )
 md5sums=('SKIP'
          '1542bbbaa7951dbf0b2472354b4b493d'
-         'c14369d73fabb219537f6cb424c5edee'
          'ebb1dc43e014a1e720a06422c6248a40'
          '65b200a06e15205bda713c8553953c50'
          '57e1c8073d9085631911e060c3802bd2'
@@ -43,7 +41,7 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/${pkgname}
-  git apply -v ${srcdir}/*.patch
+  git apply ${srcdir}/nvm-export.patch
 }
 
 
