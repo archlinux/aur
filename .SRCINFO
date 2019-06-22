@@ -1,0 +1,14 @@
+pkgbase = python-backoff
+	pkgdesc = A library that provides mapping objects that allow their elements to be accessed both as keys and as attributes.
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/litl/backoff
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/b/backoff/backoff-1.8.0.tar.gz
+	sha256sums = c7187f15339e775aec926dc6e5e42f8a3ad7d3c2b9a6ecae7b535000f70cd838
+
+pkgname = python-backoff
+
