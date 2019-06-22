@@ -1,0 +1,18 @@
+pkgbase = stklos
+	pkgdesc = Free R5RS Scheme system.
+	pkgver = 1.20
+	pkgrel = 1
+	url = http://www.stklos.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = readline
+	depends = gmp
+	depends = pcre
+	depends = libffi
+	depends = gc
+	source = http://www.stklos.net/download/stklos-1.20.tar.gz
+	md5sums = 335c32ee58407835e0cccd0fcc484008
+
+pkgname = stklos
+
