@@ -1,5 +1,5 @@
 pkgbase = varken
-	pkgdesc = Manage and download subtitles for Sonarr and Radarr.
+	pkgdesc = Varken is a standalone application to aggregate data from the Plex ecosystem into InfluxDB using Grafana for a frontend.
 	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/morpheus65535/varken

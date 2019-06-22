@@ -3,7 +3,7 @@
 pkgname=varken
 pkgver=1.7.1
 pkgrel=1
-pkgdesc="Manage and download subtitles for Sonarr and Radarr."
+pkgdesc="Varken is a standalone application to aggregate data from the Plex ecosystem into InfluxDB using Grafana for a frontend."
 arch=('any')
 url="https://github.com/morpheus65535/varken"
 license=('GPL3')
@@ -17,7 +17,6 @@ depends=('python'
 
 optdepend=('grafana: display of pretty graphs'
            'influxdb: storage of data')
-
 
 source=("varken-${pkgver}.tar.gz::https://github.com/Boerderij/Varken/archive/${pkgver}.tar.gz"
         'varken.service'
