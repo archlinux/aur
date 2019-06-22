@@ -1,9 +1,10 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
+# Contributor: Joey Dumont <joey.dumont@gmail.com>
 
 _target=mips64-elf
 pkgname=${_target}-gcc-stage1
-pkgver=8.2.0
-_islver=0.19
+pkgver=9.1.0
+_islver=0.21
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=('x86_64')
@@ -14,9 +15,11 @@ makedepends=('gmp' 'mpfr')
 optdepends=("${_target}-newlib: Standard C library optimized for embedded systems")
 options=('!emptydirs' '!strip' )
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
-		"http://isl.gforge.inria.fr/isl-${_islver}.tar.xz")
-sha256sums=('196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080'
-            '6d6c1aa00e2a6dfc509fa46d9a9dbe93af0c451e196a670577a148feecf6b8a5')
+		"http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
+    "mabi32.patch")
+sha256sums=('79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0'
+            '777058852a3db9500954361e294881214f6ecd4b594c00da5eee974cd6a54960'
+            '368e2287adba14718dbd84dc75b2a7a2f65cb907e988b56813640ea8d9d2e951')
 
 prepare() {
   cd gcc-${pkgver}
@@ -30,6 +33,9 @@ prepare() {
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
   mkdir "${srcdir}"/build-gcc
+
+  # patch multilib support for mabi=32
+  patch --strip=2 --input=${srcdir}/mabi32.patch
 }
 
 build() {
@@ -43,6 +49,7 @@ build() {
     --target=${_target} \
     --host=$CHOST \
     --build=$CHOST \
+    --with-arch=from-abi \
     --with-sysroot=/usr/${_target} \
     --libdir=/usr/lib \
     --libexecdir=/usr/lib \
@@ -66,7 +73,7 @@ build() {
     --disable-libssp \
     --disable-libunwind-exceptions \
     --disable-libvtv \
-    --disable-multilib \
+    --enable-multilib \
     --disable-nls \
     --disable-shared \
     --disable-threads \
