@@ -1,8 +1,8 @@
 From 85e804380738537bbc9afeb658c1218040c68cfa Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Tue, 1 Mar 2016 22:19:14 +0100
-Subject: [PATCH 5/8] compositor-drm: Gracefully handle vblank and flip invalid
- timestamps
+Subject: [PATCH 05/10] compositor-drm: Gracefully handle vblank and flip
+ invalid timestamps
 X-NVConfidentiality: public
 
 Instant query for vblank timestamp may always fail, resulting in

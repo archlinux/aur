@@ -1,7 +1,7 @@
 From 5076208fd90be98deff790f0f4429cfe54f1457a Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Thu, 18 May 2017 14:35:36 -0700
-Subject: [PATCH 7/8] compositor: Process stream attach requests with
+Subject: [PATCH 07/10] compositor: Process stream attach requests with
  wl_eglstream_controller
 X-NVConfidentiality: public
 

@@ -1,7 +1,7 @@
 From 73bc85fbde7c65d3a667982301877238d3c02bf8 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Thu, 28 Jan 2016 19:37:10 +0100
-Subject: [PATCH 6/8] compositor-drm: Add support for EGLDevice+EGLOutput
+Subject: [PATCH 06/10] compositor-drm: Add support for EGLDevice+EGLOutput
 X-NVConfidentiality: public
 
 As previously stated, EGLDevice and EGLOutput will provide means

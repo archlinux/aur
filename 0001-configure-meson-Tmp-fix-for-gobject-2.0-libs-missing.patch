@@ -1,8 +1,8 @@
 From e1486fee47785c094e93eca336684ab38bcb16bc Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Tue, 26 Mar 2019 15:34:12 -0700
-Subject: [PATCH 1/8] configure/meson: Tmp fix for gobject-2.0 libs missing in
- pango pkgconfig
+Subject: [PATCH 01/10] configure/meson: Tmp fix for gobject-2.0 libs missing
+ in pango pkgconfig
 X-NVConfidentiality: public
 
 This fixes the following build error, until the pango pkgconfig is
