@@ -5,7 +5,7 @@ _pkgname=qt-gtk-platform-plugin
 pkgname=${_pkgname}-git
 provides=($_pkgname)
 conflicts=($_pkgname)
-pkgver=20180218.def7d52
+pkgver=20190427.da0e695
 pkgrel=1
 pkgdesc='GTK platform backend for Qt'
 arch=('any')
@@ -27,9 +27,14 @@ build() {
 
 package() {
   local env_dir=${pkgdir}/usr/share/gdm/env.d/
+  local pacman_hook_dir=${pkgdir}/etc/pacman.d/hooks
   local env_file=${startdir}/qt-force-gtk-platform.env
+  local hook_file=${startdir}/100-qt-gtk-platform-plugin-git.hook
 
-  mkdir -p $env_dir
+  mkdir -p ${env_dir} ${pacman_hook_dir}
+
+  # FIXME: assumption riddled and does not permit input at present
+  #cp ${hook_file} ${pacman_hook_dir}
   cp ${env_file} ${env_dir}
 
   cd "${srcdir}/gtkplatform"

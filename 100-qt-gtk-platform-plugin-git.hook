@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = qt5-base
+
+[Action]
+Description = Updating qt-gtk-platform-plugin-git
+When = PostTransaction
+Exec = /usr/bin/sudo -u #1000 /usr/bin/yay -S qt-gtk-platform-plugin-git
