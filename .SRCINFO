@@ -1,5 +1,5 @@
 pkgbase = linux-pds
-	pkgver = 5.1.12.arch1
+	pkgver = 5.1.14.arch1
 	pkgrel = 1
 	url = https://git.archlinux.org/linux.git/log/?h=v
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = linux-pds
 	makedepends = libelf
 	makedepends = git
 	options = !strip
-	source = git+https://git.archlinux.org/linux?signed#tag=v5.1.12-arch1
+	source = git+https://git.archlinux.org/linux?signed#tag=v5.1.14-arch1
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
 	source = 60-linux.hook
@@ -44,11 +44,11 @@ pkgname = linux-pds
 
 pkgname = linux-pds-headers
 	pkgdesc = Header files and scripts for building modules for Linux-pds kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	provides = linux-pds-headers=5.1.12.arch1
-	provides = linux-headers=5.1.12.arch1
+	provides = linux-pds-headers=5.1.14.arch1
+	provides = linux-headers=5.1.14.arch1
 
 pkgname = linux-pds-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-pds kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	provides = linux-pds-docs=5.1.12.arch1
-	provides = linux-docs=5.1.12.arch1
+	provides = linux-pds-docs=5.1.14.arch1
+	provides = linux-docs=5.1.14.arch1
 
