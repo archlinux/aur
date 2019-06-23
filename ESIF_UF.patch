@@ -1,0 +1,10 @@
+--- Makefile	2018-05-22 01:09:03.000000000 +0800
++++ Makefile.patched	2019-06-23 09:15:17.260343325 +0800
+@@ -43,7 +43,6 @@
+ CPPFLAGS += -DESIF_FEAT_OPT_COMPRESS
+ 
+ CFLAGS  += -Wno-multichar
+-CFLAGS  += -Werror
+ 
+ # Compile Flags added for security purposes
+ CFLAGS  += -fPIE
