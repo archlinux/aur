@@ -1,0 +1,33 @@
+Bug: https://bugzilla.gnome.org/show_bug.cgi?id=630063
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=597414
+
+--- a/wnck/wnck.defs
++++ b/wnck/wnck.defs
+@@ -100,7 +100,7 @@
+   )
+ )
+ 
+-(define-enum WindowState
++(define-flags WindowState
+   (in-module "Wnck")
+   (c-name "WnckWindowState")
+   (gtype-id "WNCK_TYPE_WINDOW_STATE")
+@@ -121,7 +121,7 @@
+   )
+ )
+ 
+-(define-enum WindowActions
++(define-flags WindowActions
+   (in-module "Wnck")
+   (c-name "WnckWindowActions")
+   (gtype-id "WNCK_TYPE_WINDOW_ACTIONS")
+@@ -184,7 +184,7 @@
+   )
+ )
+ 
+-(define-enum WindowMoveResizeMask
++(define-flags WindowMoveResizeMask
+   (in-module "Wnck")
+   (c-name "WnckWindowMoveResizeMask")
+   (gtype-id "WNCK_TYPE_WINDOW_MOVE_RESIZE_MASK")
+

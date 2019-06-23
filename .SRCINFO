@@ -1,0 +1,38 @@
+pkgbase = gnome-python-desktop
+	pkgver = 2.32.0
+	pkgrel = 19
+	url = https://www.gnome.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = intltool
+	makedepends = pkg-config
+	makedepends = gnome-python
+	makedepends = libwnck
+	makedepends = libgnome-keyring
+	source = https://download.gnome.org/sources/gnome-python-desktop/2.32/gnome-python-desktop-2.32.0.tar.bz2
+	source = 01_wnck_enums.patch
+	sha256sums = 09dbd580bf3b0ef60f91b090eafe6d08ddcc50a609e2b425a7f8eca46d4e0ee9
+	sha256sums = e21823dcc1a16174dbf9e48d99c6d3b29fded24ac65dfa55cae9981380a91759
+
+pkgname = gnome-python-desktop
+	pkgdesc = Python bindings for the GNOME desktop environment
+	depends = python2-gnomekeyring
+	depends = python2-wnck
+	depends = gnome-python
+
+pkgname = python2-gnomekeyring
+	pkgdesc = Python bindings for libgnome-keyring
+	depends = pygtk
+	depends = libgnome-keyring
+	conflicts = python-gnomekeyring<=2.32.0-10
+	replaces = python-gnomekeyring<=2.32.0-10
+
+pkgname = python2-wnck
+	pkgdesc = Python bindings for libwnck
+	depends = pygtk
+	depends = libwnck
+	conflicts = python-wnck<=2.32.0-10
+	replaces = python-wnck<=2.32.0-10
+
