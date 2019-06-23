@@ -9,11 +9,11 @@ pkgbase = wtwitch
 	depends = jq
 	depends = streamlink
 	depends = wget
-	source = https://gitlab.com/krathalan/wtwitch/uploads/ba91a9075897c67e025eb846c1e9832a/wtwitch-1.0.1-2.tar.gz
-	source = https://gitlab.com/krathalan/wtwitch/uploads/33e4c2515005eeca2f1901a0b41b6f68/wtwitch-1.0.1-2.tar.gz.sig
+	source = https://gitlab.com/krathalan/wtwitch/uploads/f8ca485efbff1bd2f23cc19f4b8da036/wtwitch-1.0.2-1.tar.gz
+	source = https://gitlab.com/krathalan/wtwitch/uploads/a428ff76227f0a9cdd6c5fc350b9e9b9/wtwitch-1.0.2-1.tar.gz.sig
 	validpgpkeys = 0CE6D5B52BD80B4EDB8DF343546BFAE445159FFC
-	sha256sums = c3f948207b4f68300d03e0b14085fc628c8eeb4f32e7c28e77a941be27b93a7e
-	sha256sums = 25ad51a9f8d7cb71a0dd2b81ddf8b688265451da46788e25fc2b7cbdc0c9288c
+	sha256sums = d20b3de91608c59a59a6b74f1bbbbdd4eef63a055d74cd134a88325f2a8634d7
+	sha256sums = 2e3dd155e8ff4999c2e0b67b6f02fd3fa394f9c9d66690956dea4a7856fa9b78
 
 pkgname = wtwitch
 
