@@ -1,0 +1,10 @@
+diff -u --recursive --text WereSync-1.1.5/src/weresync/resources/weresync.service WereSync-1.1.5.patch/src/weresync/resources/weresync.service
+--- WereSync-1.1.5/src/weresync/resources/weresync.service	2019-06-15 18:46:49.000000000 -0400
++++ WereSync-1.1.5.patch/src/weresync/resources/weresync.service	2019-06-23 12:10:13.270067125 -0400
+@@ -5,4 +5,4 @@
+ [Service]
+ Type=dbus
+ BusName=net.manilas.weresync.DriveCopier
+-ExecStart=/usr/local/bin/weresync-daemon
+\ No newline at end of file
++ExecStart=/usr/bin/weresync-daemon

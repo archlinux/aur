@@ -1,6 +1,6 @@
 pkgbase = weresync
 	pkgdesc = Incrementally clone linux drives
-	pkgver = 1.0.7
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/DonyorM/weresync
 	arch = any
@@ -11,9 +11,24 @@ pkgbase = weresync
 	depends = python
 	depends = python-parse
 	depends = python-yapsy
+	depends = python-dbus
+	depends = rsync
+	depends = gptfdisk
+	depends = parted
+	optdepends = polkit
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/W/WereSync/WereSync-1.0.7.tar.gz
-	md5sums = e86bf6cd5a6708ae9d1ad30a5e710951
+	source = https://files.pythonhosted.org/packages/source/W/WereSync/WereSync-1.1.5.tar.gz
+	source = setup.patch
+	source = net.manilas.weresync.service.policy
+	source = weresync-daemon-gui.sh
+	source = weresync.1
+	source = service.patch
+	md5sums = dd6bb35d298f51d4f8e06a0bf2aab925
+	md5sums = 46119cd590cfe73d630a22061444278b
+	md5sums = 331aabe242015106d7d153d60a26f472
+	md5sums = a9d5b2748b5cfb26398ea27e42a49bfc
+	md5sums = 0703a7fcc6b42abdc880960005d995a8
+	md5sums = 21ae7729f0df95cec8e37ae70d8fe59d
 
 pkgname = weresync
 

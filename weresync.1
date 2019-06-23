@@ -1,0 +1,213 @@
+.\" Man page generated from reStructuredText.
+.
+.TH WERESYNC 1 "June 30th, 2017" "1.0" "admin"
+.SH NAME
+weresync \- clone linux drives incrementally
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.\" Manpage documentation for WereSync. This should be converted to the groff format using rst2man.py
+.
+.sp
+weresync\-gui \- GUI interface for the weresync program.
+.SH SYNOPSIS
+.INDENT 0.0
+.TP
+.B weresync [ options ] [\fB\-g\fP \fIROOT_PARTITION\fP] [\fB\-B\fP \fIBOOT_PARTITION\fP]
+[\fB\-E\fP \fIEFI_PARTITION\fP] [\fB\-L\fP \fIBOOTLOADER\fP]
+[\fB\-l\fP \fILVM_SOURCE\fP [\fILVM_TARGET\fP]]
+source target
+.UNINDENT
+.sp
+\fBweresync\-gui\fP
+.sp
+\fBweresync\-daemon\fP
+.SH DESCRIPTION
+.sp
+WereSync clones linux drives incrementally producing a bootable clone. Clones
+produced by WereSync will have different UUIDs than the original drive, but
+WereSync will update the fstab and bootloader to allow the clone to properly
+boot. Clones can be created with one command or one button click, using
+\fIweresync\fP or \fIweresync\-gui\fP respectively, after the daemon in \fIweresync\-daemon\fP
+has been started as root.
+.SH OPTIONS*
+.IP "System Message: WARNING/2 (weresync.1.rst:, line 42)"
+Title underline too short.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+OPTIONS*
+\-\-\-\-\-\-\-
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+The \fIweresync\-gui\fP command takes no arguments. These arguments apply to the \fIweresync\fP command.
+.INDENT 0.0
+.TP
+.B \-\-h\fP,\fB  \-\-help
+Displays help message.
+.TP
+.B \-C\fP,\fB  \-\-check\-and\-partition
+Checks if all partitions are large enough and formatted correctly to allow drive to be copied. If the partitions are not valid, the target drive will be re\-partitioned and reformatted. If unset, no checking occurs.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-s, \-\-source\-mask \fIMASK\fP
+A string to be passed to format() that will produce a partition identifier (/dev/sda1 or such) of the source drive when passed two arguments: the identifier ("/dev/sda") and a partition number in that order. Defaults to "{0}{1}"
+.TP
+.B \-t, \-\-target\-mask \fIMASK\fP
+A string to be passed to format() that will produce a partition identifier (/dev/sda1 or such) of the source drive when passed two arguments: the identifier ("/dev/sda") and a partition number in that order. Defaults to "{0}{1}".
+.TP
+.B \-e, \-\-excluded\-partitions \fILIST\fP
+A list of comma separated partition numbers that should not be searched or copied at any time. These partitions will still be formatted if \-C is passed. Defaults to empty.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-b\fP,\fB  \-\-break\-on\-error
+If passed the program will halt if there are any errors copying. This flag is not recommended because it will halt even if encountering a normal issue, like a swap partition.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-g, \-\-root\-partition \fIPART_NUM\fP
+The partition mounted on /. It is recommended to pass this always, but WereSync will attempt to find the main partition even if it is not passed.
+.TP
+.B \-B, \-\-boot\-partition \fIPART_NUM\fP
+The partition that should be mounted on /boot of the grub_partition. If you have a separate boot partition, you must use this flag.
+.TP
+.B \-E, \-\-efi\-partition \fIPART_NUM\fP
+The partition that should be mounted on /boot/efi of the grub_partition. If passed this will create the /boot/efi folder if it does not exist and pass it to grub. Required if you have an EFI partition.
+.TP
+.B \-m, \-\-source\-mount \fIDIR\fP
+The directory to mount partitions from the source drive on. Cannot be the same as \-\-target\-mount. If unset, WereSync generates a randomly named directory in the /tmp dir.
+.TP
+.B \-M, \-\-target\-mount \fIDIR\fP
+The directory to mount partitions from the target drive on. Cannot be the same as \-\-source\-mount. If unset, WereSync generates a randomly named directory in the /tmp dir.
+.TP
+.B \-r, \-\-rsync\-args \fIRSYNC_ARGS\fP
+The arguments to be passed to the rsync instance used to copy files. Defaults to "\-aAXxH \-\-delete"
+.TP
+.B \-l, \-\-lvm \fISOURCE\fP [\fITARGET\fP]
+This argument expects either one or two arguments specifying the logical volume groups to copy from and to, respectively. If no target VG is passed, WereSync will use the VG SOURCE\-copy. If the target does not exist, WereSync will create it.
+.TP
+.B \-L, \-\-bootloader \fIBOOTLOADER\fP
+The plugin to use to install the bootloader. Such plugins can be found
+at the bottom of the help message. Defaults to using the "uuid_copy"
+plugin.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-v\fP,\fB  \-\-verbose
+Makes WereSync increase output and include more minor details.
+.TP
+.B \-d\fP,\fB  \-\-debug
+Causes a huge amount of output, useful for debugging the program. Usually not needed for casual use.
+.UNINDENT
+.SH COPYRIGHT
+.sp
+Copyright 2016 Daniel Manila
+.sp
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+.nf
+
+.in +2
+\fI\%http://www.apache.org/licenses/LICENSE\-2.0\fP
+
+.in -2
+.fi
+.sp
+.sp
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+.SH EXAMPLES
+.sp
+To copy /dev/sda to /dev/sdb on a UEFI system use:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+sudo weresync \-C \-L grub2 \-E 1 \-g 2 /dev/sda /dev/sdb
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+This example uses grub2 as the bootloader (for most other UEFI bootloaders use
+\fB\-L uuid_copy\fP or omit the \fB\-L\fP option all together)
+with the efi partition on /dev/sda1, and the root partition on /dev/sda2.
+.sp
+Subsequent copies should omit the \fB\-C\fP option, since it could cause weresync
+to repartition /dev/sdb again, thus deleting existing data and making weresync\(aqs
+incremental abilities useless.
+.sp
+To copy /dev/sda to /dev/sdb on a BIOS/Legacy system use:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+sudo weresync \-C \-L grub2 \-g 1 /dev/sda /dev/sdb
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+This example uses grub2 as the bootloader (other bootloaders, such as syslinux,
+may be passed to the \fB\-L\fP option) and has the root partition on /dev/sda1.
+The omittance of the \fB\-E\fP option signals to WereSync that this is not a
+a UEFI drive.
+.sp
+As above, subsequent copies should be initiated without the \fB\-C\fP option.
+.sp
+The gui can simply be run with:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+sudo weresync\-gui
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SH SEE ALSO
+.sp
+Full documentation can be found at WereSync\(aqs documentation on Read The Docs:
+\fI\%https://weresync.readthedocs.io/en/master/\fP
+.SH AUTHOR
+Daniel Manila <dmv@springwater7.org>
+.\" Generated by docutils manpage writer.
+.
