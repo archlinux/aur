@@ -15,8 +15,7 @@ source=(
 	"git://github.com/JLErvin/berry.git#branch=master"
 	berry.desktop
 )
-sha256sums=(	'SKIP',
-		'SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 # For later.
 #install -D -m644 ../berry.desktop "${pkgdir}/usr/share/xsessions/"
