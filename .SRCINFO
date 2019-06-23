@@ -1,0 +1,21 @@
+pkgbase = veloren
+	pkgdesc = An open-world, open-source multiplayer voxel RPG
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://veloren.net/
+	arch = x86_64
+	license = GPL3
+	provides = veloren
+	conflicts = veloren
+	noextract = voxygen.desktop
+	noextract = voxygen.png
+	options = !strip
+	source = veloren::https://gitlab.com/veloren/veloren/-/jobs/220570217/artifacts/raw/commit-linux-debug.tar.bz2
+	source = voxygen.desktop
+	source = voxygen.png
+	sha512sums = 7c7f5030de97a73d6510d7ed405ac293d027d5cabc70b7a0954734ad764ab2b63b023ead9d27fd3f3e2fdcbb82f3e097d7381324083ae3d2bf6ec9b71f1cde14
+	sha512sums = 27e4e25dc7f7f149873da28414b176c19c27d4c8d656a7f2ab11648137d75e2ec7d0ed07066e5384525123eace34debe1417d16f3e86a2b4ccf06f7c77fa052e
+	sha512sums = b5e5cbf28ab0e335f5a0fc93511fc9936360432a36e35cc876761601abacf257299deb0af6b3d9081143b700f6663c4f603970155dd4dacedb7a9672cde1dc94
+
+pkgname = veloren
+
