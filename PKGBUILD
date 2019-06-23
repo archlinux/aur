@@ -2,7 +2,7 @@
 pkgname=ocaml-camlzip
 _pkgname=camlzip
 pkgver=1.06
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides easy access to compressed files in ZIP, GZIP and JAR format"
 arch=('i686' 'x86_64')
 license=('custom: LGPL-2.1+ with OCaml linking exception')
@@ -30,6 +30,6 @@ package() {
   env DESTDIR=${pkgdir} \
     OCAMLFIND_DESTDIR=${pkgdir}$(ocamlfind printconf destdir) \
     OCAMLFIND_LDCONF=ignore \
-  	ocamlfind install zip META *.mli *.a *.cmi *.cma $(wildcard *.cmxa) $(wildcard *.so)
+      ocamlfind install zip META *.mli *.a *.cmi *.cma *.cmxa *.so
 
 }

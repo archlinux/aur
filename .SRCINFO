@@ -1,7 +1,7 @@
 pkgbase = ocaml-camlzip
 	pkgdesc = Provides easy access to compressed files in ZIP, GZIP and JAR format
 	pkgver = 1.06
-	pkgrel = 2
+	pkgrel = 3
 	url = http://forge.ocamlcore.org/projects/camlzip/
 	arch = i686
 	arch = x86_64
