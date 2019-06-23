@@ -3,8 +3,8 @@
 pkgname=caffe-cuda-git
 _srcname=caffe
 pkgver=1.0.r134.g04ab089db
-pkgrel=1
-pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (with cuda, git version)'
+pkgrel=2
+pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (with cuda support, git version)'
 arch=('x86_64')
 url='https://caffe.berkeleyvision.org/'
 license=('BSD')
@@ -29,7 +29,7 @@ source=('git+https://github.com/BVLC/caffe.git'
         'Makefile.config'
         'caffe-git-opencv4-fix.patch')
 sha256sums=('SKIP'
-            'd022edfc85f43f0f094240ef4852fbd62eb60aab9792a674b259860253207314'
+            'ec7e3ce95966682b6fa05ec98b4fc924f4cef15358ddf17f076d36ea01e4fb18'
             '2072c8ca1393b53ef280a15c43af940cc9bf1419ae32b3d8a6541b10b8cb50e9')
 
 prepare() {
