@@ -1,0 +1,15 @@
+pkgbase = python-pqdict
+	pkgdesc = A Pythonic indexed priority queue
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/nvictus/priority-queue-dictionary
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	source = https://github.com/nvictus/priority-queue-dictionary/archive/v1.0.tar.gz
+	sha256sums = 811f3912a7ffe36d37b973f57eb0ef9c5abcf0407d22325a2bed0653e1a5766c
+
+pkgname = python-pqdict
+	depends = python
+	depends = kafka
+
