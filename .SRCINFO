@@ -1,6 +1,6 @@
 pkgbase = xontrib-prompt-vi-mode-git
 	pkgdesc = vi-mode status formatter for xonsh prompt
-	pkgver = r35.ef05c35
+	pkgver = r5.ed31f52
 	pkgrel = 1
 	url = https://github.com/t184256/xontrib-prompt-vi-mode
 	arch = any
