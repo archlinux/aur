@@ -10,7 +10,7 @@ _neovim="n"
 
 _name='deoplete-jedi'
 pkgname="${_name}-git"
-pkgver=r341.55471c2
+pkgver=r343.afd01dc
 pkgrel=1
 pkgdesc="jedi add-on for deoplete completion plugin for neovim"
 arch=('any')
@@ -27,10 +27,11 @@ options=()
 source=(
 'git+https://github.com/deoplete-plugins/deoplete-jedi'              # deopletejedi
 'git+https://github.com/davidhalter/jedi.git'             # jedi
+'git+https://github.com/davidhalter/typeshed.git'             # jedi
 'git+https://github.com/davidhalter/parso.git'            # parso
 )
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "${srcdir}/${_name}"
@@ -42,6 +43,9 @@ prepare() {
 
     deopletejedi=("jedi" "parso")
     gitprepare "deoplete-jedi" "rplugin/python3/deoplete/vendored/" "${deopletejedi[@]}"
+
+    deopletejeditypeshed=("typeshed")
+    gitprepare "deoplete-jedi/rplugin/python3/deoplete/vendored/jedi" "jedi/third_party/" "${deopletejeditypeshed[@]}"
 }
 
 gitprepare() {
@@ -68,15 +72,29 @@ gitprepare() {
 
 package() {
   if [ "$_neovim" = "y" ]; then
-    mkdir -p "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete"
-    cp -r "${srcdir}/${_name}/rplugin/python3/deoplete/"{sources,vendored} \
+    mkdir -p "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete/vendored/jedi"
+    mkdir -p "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete/vendored/parso"
+    cp -r "${srcdir}/${_name}/rplugin/python3/deoplete/vendored/parso/parso" \
+      "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete/vendored/parso/"
+    cp -r "${srcdir}/${_name}/rplugin/python3/deoplete/vendored/jedi/jedi" \
+      "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete/vendored/jedi/"
+    cp -r "${srcdir}/${_name}/rplugin/python3/deoplete/vendored/jedi/jedi/third_party/typeshed"{stdlib,third_party} \
+      "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete/vendored/jedi/jedi/third_party/typeshed/"
+    cp -r "${srcdir}/${_name}/rplugin/python3/deoplete/sources" \
       "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete/"
   fi
 
   if [ "$_vim" = "y" ]; then
-    mkdir -p "$pkgdir/usr/share/vim/vimfiles/rplugin/python3/deoplete"
-    cp -r "${srcdir}/${_name}/rplugin/python3/deoplete/"{sources,vendored} \
-      "$pkgdir/usr/share/vim/vimfiles/rplugin/python3/deoplete/"
+    mkdir -p "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete/vendored/jedi"
+    mkdir -p "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete/vendored/parso"
+    cp -r "${srcdir}/${_name}/rplugin/python3/deoplete/vendored/parso/parso" \
+      "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete/vendored/parso/"
+    cp -r "${srcdir}/${_name}/rplugin/python3/deoplete/vendored/jedi/jedi" \
+      "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete/vendored/jedi/"
+    cp -r "${srcdir}/${_name}/rplugin/python3/deoplete/vendored/jedi/jedi/third_party/typeshed/"{stdlib,third_party} \
+      "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete/vendored/jedi/jedi/third_party/typeshed/"
+    cp -r "${srcdir}/${_name}/rplugin/python3/deoplete/sources" \
+      "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete/"
   fi
 
     install -D -m644 "${srcdir}/${_name}/README.md" $pkgdir/usr/share/doc/$pkgname/README.md
