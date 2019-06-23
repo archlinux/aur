@@ -28,7 +28,8 @@ build()
     # Disable RPATH usage with -R.
     # Only use a single job (-j1) to prevent the same file being compiled simultaneously
     # which results in build artifacts being overwritten.
-    make -j1 PROCESSORS=1 GPRBUILD_SWITCHES=-R
+    #
+    make -j1 PROCESSORS=5 GPRBUILD_SWITCHES=-R
 }
 
 
