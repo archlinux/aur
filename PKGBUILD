@@ -5,7 +5,7 @@ pkgbase=vdr
 pkgname=(vdr vdr-examples)
 pkgver=2.4.1
 _vdrapi=2.4.1
-pkgrel=13
+pkgrel=14
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
@@ -65,6 +65,7 @@ package_vdr() {
   conflicts=('runvdr-extreme')
   provides=("vdr-api=$_vdrapi")
   install='vdr.install'
+  options=(emptydirs)
   backup=('etc/vdr/conf.d/00-vdr.conf'
           'var/lib/vdr/camresponses.conf'
           'var/lib/vdr/channels.conf'
@@ -74,7 +75,10 @@ package_vdr() {
           'var/lib/vdr/sources.conf'
           'var/lib/vdr/svdrphosts.conf')
 
+  # Ship this one empty so it's there even without plugin packages installed
   mkdir -p "$pkgdir/etc/vdr/conf.avail"
+  # This one has to be shipped empty or some plugins (streamdev) fail to build
+  mkdir -p "$pkgdir/usr/lib/vdr/plugins"
 
   install -Dm644 00-vdr.conf "$pkgdir/etc/vdr/conf.d/00-vdr.conf"
   install -Dm644 60-create-dvb-device-units.rules "$pkgdir/usr/lib/udev/rules.d/60-create-dvb-device-units.rules"
