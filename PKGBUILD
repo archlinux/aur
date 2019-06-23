@@ -3,7 +3,7 @@
 # Based on PMS PKGBUILD
 
 pkgname=ums
-pkgver=8.1.0
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 8."
 arch=('i686' 'x86_64')
@@ -20,12 +20,12 @@ optdepends=("vlc: Internet video/audio support"
             "lib32-glibc: tsMuxeR support")
 backup=(opt/ums/UMS.conf \
         opt/ums/WEB.conf)
-#source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver.tgz"
-source=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/$pkgver/UMS-$pkgver.tgz"
+source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver.tgz"
+#source=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/$pkgver/UMS-$pkgver.tgz"
         'ums.desktop'
         'ums.service'
         'ums.timer')
-sha256sums=('f389f95fa2ad3bde99d8d7c2147b7b48108b2f004da1f949030588fa7020c4b5'
+sha256sums=('f13d3d72ff3633be810105d64d124c86ef9e967a821827420872e03a1a9c5011'
             '0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
             '1f6efefa58dde9148396bd9236a6985db0fa27f1c767067b52bfae1832f32284'
             '7fd36db71f39fde3d515c697101190f979b308d910b3c4210b90422669683ab0')
