@@ -1,0 +1,10 @@
+--- gnatdoc/src/xref-docgen.adb-orig	2019-06-23 11:57:13.239946896 +1000
++++ gnatdoc/src/xref-docgen.adb	2019-06-23 11:57:38.337413506 +1000
+@@ -20,6 +20,7 @@
+ with Ada.Strings.Maps;          use Ada.Strings.Maps;
+ with GNATCOLL.Utils;            use GNATCOLL.Utils;
+ with GNAT.Strings;              use GNAT.Strings;
++with GNAT.Expect;               use GNAT.Expect;
+ with Language_Handlers;         use Language_Handlers;
+ with Language.Tree;             use Language.Tree;
+ with Language.Tree.Database;    use Language.Tree.Database;

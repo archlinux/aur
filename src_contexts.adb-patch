@@ -1,0 +1,18 @@
+--- src_editor/src/src_contexts.adb-orig	2019-06-23 11:30:15.904969485 +1000
++++ src_editor/src/src_contexts.adb	2019-06-23 11:46:45.469952414 +1000
+@@ -26,6 +26,7 @@
+ with GNAT.Regexp;                use GNAT.Regexp;
+ with GNAT.Regpat;                use GNAT.Regpat;
+ with GNAT.Strings;
++with GNAT.Expect;                use GNAT.Expect;
+ with GNATCOLL.Projects;          use GNATCOLL.Projects;
+ with GNATCOLL.Traces;            use GNATCOLL.Traces;
+ with GNATCOLL.Utils;             use GNATCOLL.Utils;
+@@ -398,7 +399,6 @@
+          --  Whether the final range should or should not be scanned.
+ 
+          Matches       : Match_Array (0 .. 0);
+-
+       begin
+          Section_End := Buffer'Last;
+ 

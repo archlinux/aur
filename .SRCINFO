@@ -1,32 +1,36 @@
 pkgbase = gnat-gps
 	pkgdesc = GNAT Programming Studio for Ada
-	pkgver = 2018
-	pkgrel = 2
+	pkgver = 2019
+	pkgrel = 1
 	url = http://libre.adacore.com/libre/tools/gps
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gprbuild>=2018
+	makedepends = gprbuild
 	depends = clang
-	depends = libadalang>=2018
-	depends = gnatcoll-xref>=2018
-	depends = gnatcoll-python>=2018
-	depends = gnatcoll-db2ada>=2018
-	depends = gnatcoll-gnatinspect>=2018
-	depends = gtkada>=2018
+	depends = libadalang
+	depends = gnatcoll-xref
+	depends = gnatcoll-python
+	depends = gnatcoll-db2ada
+	depends = gnatcoll-gnatinspect
+	depends = gtkada
 	depends = gnome-icon-theme
 	depends = gnome-icon-theme-extras
 	depends = gnome-icon-theme-symbolic
 	depends = python2-gobject
 	depends = python2-jedi
-	source = http://mirrors.cdn.adacore.com/art/5b0cf627c7a4475261f97ceb
-	source = http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a59
+	source = https://github.com/AdaCore/gps/archive/3b331d05ecf8b0d0e76d0b264c8f5c4fa7bca3d3.zip
+	source = http://mirrors.cdn.adacore.com/art/5cdf8f4e31e87a8f1d42509f
 	source = patch-Makefile.in
 	source = patch-docs-Makefile.in
-	sha1sums = c6e883cdadb96d274906674b8697652e66ff8201
-	sha1sums = 034e5443a94336f6aca020c916ddf8f30598f8bf
+	source = xref-docgen.adb-patch
+	source = src_contexts.adb-patch
+	sha1sums = 203427f62483f7fda557a0be4bac9045a55b351d
+	sha1sums = 6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d
 	sha1sums = 763584d9a931887eff11151310504c02df279224
 	sha1sums = 60813145324cd5ea9f081648da10cffd99f87586
+	sha1sums = e166ed6513465f59f433eac8f759afcd190ab853
+	sha1sums = bd80d0f84c128e1e0d6a1aa3ac4b419226a4c616
 
 pkgname = gnat-gps
 
