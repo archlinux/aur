@@ -1,7 +1,7 @@
 pkgbase = ocamlfuse
 	pkgdesc = An ocaml binding for fuse.
 	pkgver = 2.7.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/astrada/ocamlfuse/
 	arch = x86_64
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = ocamlfuse
 	makedepends = dune
 	makedepends = fuse
 	options = staticlibs
-	source = https://github.com/astrada/ocamlfuse/archive/v2.7.1_cvs6.tar.gz
-	sha256sums = 9445845a23475032a7a8e15d7d10bce2d781d4b2725ac34c420b44854a83074b
+	source = https://github.com/astrada/ocamlfuse/archive/master.zip
+	sha256sums = 3e610dc52442900aae6b684c1afb0f2b990da10bbceca5413889ed71689a0967
 
 pkgname = ocamlfuse
 
