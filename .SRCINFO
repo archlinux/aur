@@ -1,7 +1,7 @@
 pkgbase = dptf
 	pkgdesc = Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)
 	pkgver = 8.4.10401
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel/dptf
 	arch = x86_64
 	license = custom

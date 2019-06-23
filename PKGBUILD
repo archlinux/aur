@@ -1,7 +1,7 @@
 # Maintainer: Nick Cao <nickcao@nichi.co>
 pkgname='dptf'
 pkgver='8.4.10401'
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)'
 arch=('x86_64')
 url='https://github.com/intel/dptf'
@@ -38,4 +38,5 @@ package() {
 	install -Dm644 $srcdir/dptf/ESIF/Products/ESIF_WS/Linux/esif_ws.so $pkgdir/usr/share/dptf/ufx64
 	mkdir -p $pkgdir/lib/systemd/system
 	install -Dm644 $srcdir/dptf/ESIF/Packages/Installers/linux/dptf.service $pkgdir/lib/systemd/system
+	install -Dm644 $srcdir/dptf/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
