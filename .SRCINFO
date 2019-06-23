@@ -17,6 +17,7 @@ pkgbase = libadalang
 	depends = python2-enum34
 	depends = python-psutil
 	depends = python2-docutils
+	depends = python2-funcy
 	depends = autopep8
 	depends = yapf
 	conflicts = libadalang-git

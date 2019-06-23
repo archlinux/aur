@@ -11,7 +11,8 @@ license=('GPL')
 
 depends=("gnatcoll-iconv" "gnatcoll-gmp"
          "quex-for_libadalang" "python2-mako" "python-yaml" "python-sphinx"
-         "python-coverage" "python2-enum34" "python-psutil" "python2-docutils" "autopep8" "yapf")
+         "python-coverage" "python2-enum34" "python-psutil" "python2-docutils" "python2-funcy"
+         "autopep8" "yapf")
 
 makedepends=("gprbuild")
 
