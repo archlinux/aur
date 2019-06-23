@@ -23,4 +23,5 @@ package() {
   python setup.py install --root=${pkgdir}
   install -Dm644 ../COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
+
 sha256sums=('SKIP')
