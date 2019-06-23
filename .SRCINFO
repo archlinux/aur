@@ -8,6 +8,7 @@ pkgbase = libadalang
 	license = GPL
 	makedepends = gprbuild
 	depends = gnatcoll-iconv
+	depends = gnatcoll-gmp
 	depends = quex-for_libadalang
 	depends = python2-mako
 	depends = python-yaml
