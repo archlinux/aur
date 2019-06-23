@@ -3,7 +3,7 @@
 # Contributor: Alim Gokkaya <alimgokkaya at gmail dot com>
 
 pkgname=librdkafka
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Apache Kafka C driver library'
 url="https://github.com/edenhill/librdkafka"
@@ -12,7 +12,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/edenhill/librdkafka/a
 arch=('x86_64')
 depends=(zlib libsasl zstd)
 makedepends=(python openssl lz4 rapidjson)
-sha256sums=('b2a2defa77c0ef8c508739022a197886e0644bd7bf6179de1b68bdffb02b3550')
+sha256sums=('123b47404c16bcde194b4bd1221c21fdce832ad12912bd8074f88f64b2b86f2b')
 
 build() {
   cd $srcdir/librdkafka-$pkgver
