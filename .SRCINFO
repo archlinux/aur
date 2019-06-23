@@ -1,7 +1,7 @@
 pkgbase = yakyak-git
 	pkgdesc = Desktop client for Google Hangouts
-	pkgver = v1.2.0.r916.g5a3ccfe
-	pkgrel = 2
+	pkgver = v1.2.0.r990.g3c12942
+	pkgrel = 1
 	url = https://github.com/yakyak/yakyak
 	arch = x86_64
 	arch = i686
@@ -21,14 +21,14 @@ pkgbase = yakyak-git
 	depends = icu
 	provides = yakyak
 	conflicts = yakyak
-	noextract = electron-v1.4.10-linux-x64.zip
+	noextract = electron-v4.1.4-linux-x64.zip
 	source = yakyak::git+https://github.com/yakyak/yakyak#branch=master
 	source = yakyak.desktop
 	sha256sums = SKIP
 	sha256sums = ba537052daca0bacd1f957792c24150eade47bba296423a7a7d48e92f3946587
-	source_x86_64 = https://github.com/atom/electron/releases/download/v1.4.10/electron-v1.4.10-linux-x64.zip
-	sha256sums_x86_64 = ce6bf2fa183a5f3bae6bac2bd3d48cbbfa289a2dad45282dedd1a27731f4b564
-	source_i686 = https://github.com/atom/electron/releases/download/v1.4.10/electron-v1.4.10-linux-ia32.zip
+	source_x86_64 = https://github.com/atom/electron/releases/download/v4.1.4/electron-v4.1.4-linux-x64.zip
+	sha256sums_x86_64 = c62add4ae9811abaab0306f6d595f17511b4275f08a6f12c81a429758fc19e16
+	source_i686 = https://github.com/atom/electron/releases/download/v4.1.4/electron-v4.1.4-linux-ia32.zip
 	sha256sums_i686 = 192c4602198eb94e8d0b2b8188af90222131d8d1f9d9155b341ae5722f9202a3
 
 pkgname = yakyak-git
