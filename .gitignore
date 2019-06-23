@@ -1,0 +1,4 @@
+pkg/
+src/
+parzip-*.zip
+parzip-*.tar.xz
