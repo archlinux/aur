@@ -1,20 +1,21 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 _kvv="$(pacman -Qi linux-lts316|awk '/^Version/{print$3}')"
+_kvv="${_kvv:-3.16.69-1}"
 _kvr="${_kvv:+${_kvv}-lts316}"
 _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 pkgname=openss7-modules-lts316-git
 _pkgname=openss7-modules-lts316
-pkgver=1.1.8.63.g45f1b08cd
-pkgrel=2
+pkgver=1.1.8.182.g5bbd5830b
+pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS 3.16} Kernel Modules)"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
 license=('AGPL3')
 depends=("linux-lts316${_kvv:+=$_kvv}")
 #depends=("openss7-git" "linux-lts316${_kvv:+=$_kvv}")
-makedepends=('doxygen' 'gcc-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
+makedepends=('git' 'doxygen' 'gcc-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
 	     'gnupg' 'gnuplot' 'imagemagick' 'latex2html'
-             'linux-lts316' 'linux-lts316-headers' 'gcc5'
+             'linux-lts316' 'linux-lts316-headers'
              'lsof' 'net-snmp' 'openssl' 'swig' 'systemd' 'tcl' 'texlive-bin'
 	     'texlive-core' 'transfig' 'gawk' 'java-environment' 'lm_sensors'
              'popt')
@@ -44,8 +45,6 @@ build() {
   _cache_file=../$CARCH-$_kvr-config.cache
 
   ./configure \
-      GCC="gcc-5" \
-      KCC="gcc-5" \
       CPPFLAGS="$CPPFLAGS" \
       CFLAGS="$CFLAGS" \
       CXXFLAGS="$CXXFLAGS" \
@@ -76,7 +75,7 @@ build() {
       --with-gnu-ld \
       --disable-docs \
       --disable-tools
-  make
+  make -j1
 }
 
 package() {
