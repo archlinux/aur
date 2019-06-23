@@ -3,9 +3,10 @@
 _pkg=pygmt
 pkgbase=python-${_pkg,,}
 pkgname=("python-${_pkg,,}")
-pkghashver=997b88c855c12ffacd2c4b911f3fa83244ce8d7b
-pkgver=0.0.1a0_${pkghashver}
-pkgrel=4
+pkghashver=d84f308928ac209ab870a74151b8d0db4844be13
+pkgdate=20190623
+pkgver=0.0.1a0_${pkgdate}
+pkgrel=1
 pkgdesc="Python interface to the Generic Mapping Tools C library"
 arch=('x86_64')
 url="https://www.pygmt.org"
@@ -19,7 +20,7 @@ optdepends=('gmt-coast' 'gmt-dcw' 'ipython' 'python-matplotlib' 'jupyter' 'pytho
             'python-nbsphinx' 'python-numpydoc')
 
 source=("https://github.com/GenericMappingTools/${_pkg,,}/archive/${pkghashver}.tar.gz")
-sha256sums=('990145de2d61df5d02f784e406a217138ee029f559454bcf7eb12a28f6258a60')
+sha256sums=('701889cf7fa90de00da450e7c0b87b5349fdc23b8dd3245cc9712c8e7477d996')
 
 build() {
     cd ${_pkg}-${pkghashver}
