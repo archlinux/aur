@@ -9,6 +9,7 @@ pkgdesc="This is submit50, with which you can submit solutions to problems for C
 arch=('any')
 url="https://github.com/cs50/submit50"
 license=('GPL')
+groups=('cs50')
 depends=('python' 'python-pexpect')
 makedepends=('python-setuptools' 'python-pip')
 
