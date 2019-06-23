@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd "${pkgname}/build" || exit 1
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_FLAGS="-Wno-deprecated-copy" ..
   cmake --build .
 }
 
