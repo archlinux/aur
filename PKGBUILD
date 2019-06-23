@@ -10,6 +10,7 @@ pkgdesc="This is style50, with which code can be checked against the CS50 style 
 arch=('any')
 url="https://github.com/cs50/style50"
 license=('GPL')
+groups=('cs50')
 depends=('python' 'autopep8' 'icdiff' 'python-jsbeautifier' 'python-magic-ahupp' 'python-pycodestyle' 'python-termcolor')
 makedepends=('python-setuptools')
 optdepends=('astyle: To style check C, C++, or Java code')
