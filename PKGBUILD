@@ -82,7 +82,7 @@ _kernelname=${pkgbase#linux}
 : ${_kernelname:=-lqx}
 
 pkgver() {
-  printf ${pkgver}
+  printf ${_major}.${_minor}_${_patchrel}
 }
 
 prepare() {
