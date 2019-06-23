@@ -1,11 +1,20 @@
 --- MEA.py
 +++ MEA.py
+@@ -6236,7 +6236,7 @@
+    HUFFMAN_SYMBOLS = {}
+    HUFFMAN_UNKNOWNS = {}
+    mapping_types = {'code' : 0x20, 'data' : 0x60}
+-   huffman_dict = os.path.join(mea_dir, 'Huffman.dat')
++   huffman_dict = '/usr/lib/meanalyzer/Huffman.dat'
+
+    # Check if Huffman dictionary version is supported
+    if (cse_variant, cse_major) in [('CSME', 11), ('CSSPS', 4)] : dict_version = 11
 @@ -7110,7 +7110,7 @@
  arg_num = len(sys.argv)
- 
+
  # Set dependencies paths
 -db_path = os.path.join(mea_dir, 'MEA.dat')
 +db_path = '/usr/lib/meanalyzer/MEA.dat'
- 
+
  # Check if dependencies exist
  depend_db = os.path.isfile(db_path)

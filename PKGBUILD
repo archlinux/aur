@@ -2,22 +2,22 @@
 # Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=meanalyzer-git
-pkgver=r155.r0.g51b7a16
+pkgver=1.86.0.r166.r0.g36d1698
 pkgrel=1
 pkgdesc='Intel Management Engine firmware analysis tool'
 arch=('any')
 url='https://github.com/platomav/MEAnalyzer'
-branch='master'
+_branch='master'
 license=('GPL3')
-depends=('python-colorama' 'python-prettytable' 'python-huffman11-git' 'python-crccheck')
+depends=('python-colorama' 'python-crccheck')
 makedepends=('dos2unix' 'git')
-source=("${pkgname}::git+${url}#branch=${branch}"
+source=("${pkgname}::git+${url}#branch=${_branch}"
         'db-location.patch'
-	'change-mea_dir.patch'
-	'https://github.com/platomav/PTable/archive/boxchar.zip')
+        'change-mea_dir.patch'
+        'https://github.com/platomav/PTable/archive/boxchar.zip')
 sha256sums=('SKIP'
             'd6c820300071011041654d4d076c0a3594ca1443e7c93894ae512535a0f38de7'
-            'da169c2384682e5c0b4634ed8d8d1a589ae099d73aa97e95f1c8a63fe2c7c1c9'
+            '23a9cd5ece78ba32f18fac8698330e444d3c194db042345611b166a28502fb98'
             'd8783384fa8e2d84bbd641cf01438f40b29fecf88d79340551789b435333e8b4')
 
 pkgver() {
@@ -35,8 +35,9 @@ prepare() {
 package() {
   cd "${srcdir}/PTable-boxchar"
   python setup.py install --root="$pkgdir/" --optimize=1
-  
+
   cd "${srcdir}/${pkgname}"
   install -Dm644 MEA.dat "${pkgdir}"/usr/lib/meanalyzer/MEA.dat
+  install -Dm644 Huffman.dat "${pkgdir}"/usr/lib/meanalyzer/Huffman.dat
   install -Dm755 MEA.py "${pkgdir}"/usr/bin/meanalyzer
 }
