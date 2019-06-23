@@ -12,7 +12,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('avahi' 'dbus-glib' 'git' 'glu' 'libcec' 'libextractor' 'libxrandr' 'mesa' "vdr-api=${_vdrapi}" 'xine-lib')
 _plugname=${pkgname//vdr-/}
-source=("git://git.code.sf.net/p/xineliboutput/git#commit=$_gitver"
+source=("$pkgbase::git://git.code.sf.net/p/xineliboutput/git#commit=$_gitver"
         'xineliboutput_fix_vdrversion_check.diff'
         "50-$_plugname.conf")
 md5sums=('SKIP'
