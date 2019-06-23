@@ -7,7 +7,7 @@
 # and install them as we would other apps, for convenience sake.
 pkgname=koreader-appimage
 pkgver=2019.06
-pkgrel=1
+pkgrel=2
 
 pkgdesc="An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats"
 arch=('x86_64')
@@ -30,7 +30,7 @@ prepare() {
     7z x "${srcdir}/koreader.AppImage" koreader.desktop
     mkdir -p usr/share/pixmaps usr/share/applications opt/appimages
     mv koreader.png usr/share/pixmaps
-    patch -Np0 <../koreader.patch
+    sed -i 's@Exec=.*@Exec=/opt/appimages/koreader.AppImage %u@' koreader.desktop
     mv koreader.desktop usr/share/applications
     cp koreader.AppImage opt/appimages/
 }

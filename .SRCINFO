@@ -1,7 +1,7 @@
 pkgbase = koreader-appimage
 	pkgdesc = An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats
 	pkgver = 2019.06
-	pkgrel = 1
+	pkgrel = 2
 	url = http://koreader.rocks/
 	install = koreader-appimage.install
 	arch = x86_64
