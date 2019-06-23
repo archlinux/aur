@@ -1,6 +1,6 @@
 # Maintainer: t-onoz <t [dot] onozuka [dot] 1990 [at] (g-mail)>>
 pkgname=nagome-electron
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="NicoNama comment viewer"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=("https://github.com/diginatu/$pkgname/releases/download/v$pkgver/$pkgnam
 "https://raw.githubusercontent.com/diginatu/$pkgname/master/images/icon.png"
 "https://raw.githubusercontent.com/diginatu/nagome-electron/master/LICENSE"
 "$pkgname.desktop")
-md5sums=('8e7241017b10fd240187b63ed98b7a4c'
+md5sums=('91d1724855df402651ee117b23fea05c'
          'dcf67353e015d7489f5b771e0c9e8ffe'
          '726fff92b313b3d527d0075756e34892'
          '1db0c25395efc437035a1c087d308268')
@@ -20,6 +20,7 @@ package() {
   mkdir -p "$pkgdir/opt/" "$pkgdir/usr/bin"
   cp -R "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
 
+  chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
