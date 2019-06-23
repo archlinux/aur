@@ -1,12 +1,15 @@
 pkgbase = vlang-git
 	pkgdesc = Simple, fast, safe language created for developing maintainable software
 	pkgver = r76.b6948ad
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vlang.io
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = glfw
+	depends = glibc
+	optdepends = glfw
+	optdepends = libfreetype.so
+	optdepends = libcurl.so
 	conflicts = v
 	conflicts = vlang
 	source = git+https://github.com/vlang/v.git

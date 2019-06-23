@@ -3,13 +3,14 @@
 
 pkgname=vlang-git
 pkgver=r76.b6948ad
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
 license=('MIT')
 makedepends=('git')
-depends=('glfw')
+depends=('glibc')
+optdepends=('glfw' 'libfreetype.so' 'libcurl.so')
 conflicts=('v' 'vlang')
 source=('git+https://github.com/vlang/v.git'
         'https://vlang.io/v.c')
