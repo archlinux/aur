@@ -4,7 +4,7 @@
 _name=i3ipc-python
 pkgname=python-i3ipc
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An improved Python library to control i3wm'
 arch=('any')
 url="https://github.com/acrisci/${pkgname}"
@@ -24,7 +24,7 @@ build() {
 package() {
     cd "${_name}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -Dm644 -t "${pkgdir}/usr/share/${pkgname}/examples" examples/*.py
+    install -Dm755 -t "${pkgdir}/usr/share/doc/${pkgname}/examples" examples/*.py
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 

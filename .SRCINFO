@@ -1,7 +1,7 @@
 pkgbase = python-i3ipc
 	pkgdesc = An improved Python library to control i3wm
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/acrisci/python-i3ipc
 	arch = any
 	license = BSD
