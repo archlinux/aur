@@ -1,0 +1,94 @@
+diff --git a/conf/bumblebee.conf.in b/conf/bumblebee.conf.in
+index a4d0717..80f861d 100644
+--- a/conf/bumblebee.conf.in
++++ b/conf/bumblebee.conf.in
+@@ -54,6 +54,8 @@ AllowFallbackToIGC=@CONF_FALLBACKSTART@
+ # Module name to load, defaults to Driver if empty or unset
+ KernelDriver=@CONF_DRIVER_MODULE_NVIDIA@
+ PMMethod=@CONF_PM_METHOD@
++# toggle kernel driver forced unloading on idle
++AlwaysUnloadKernelDriver=true
+ # colon-separated path to the nvidia libraries
+ LibraryPath=@CONF_LDPATH_NVIDIA@
+ # comma-separated path of the directory containing nvidia_drv.so and the
+@@ -65,5 +67,7 @@ XorgConfFile=@BBCONFDIR@/xorg.conf.nvidia
+ [driver-nouveau]
+ KernelDriver=nouveau
+ PMMethod=@CONF_PM_METHOD@
++# toggle kernel driver forced unloading on idle
++AlwaysUnloadKernelDriver=true
+ XorgConfFile=@BBCONFDIR@/xorg.conf.nouveau
+ 
+diff --git a/src/bbconfig.c b/src/bbconfig.c
+index 1dff5e0..00c0193 100644
+--- a/src/bbconfig.c
++++ b/src/bbconfig.c
+@@ -458,6 +458,10 @@ void bbconfig_parse_conf_driver(GKeyFile *bbcfg, char *driver) {
+       g_free(module_name);
+     }
+   }
++  key = "AlwaysUnloadKernelDriver";
++  if (g_key_file_has_key(bbcfg, section, key, NULL)) {
++    bb_config.force_driver_unload = g_key_file_get_boolean(bbcfg, section, key, NULL);
++  }
+   key = "LibraryPath";
+   if (g_key_file_has_key(bbcfg, section, key, NULL)) {
+     free_and_set_value(&bb_config.ld_path, g_key_file_get_string(bbcfg, section, key, NULL));
+diff --git a/src/bbconfig.h b/src/bbconfig.h
+index 5596b64..2519c19 100644
+--- a/src/bbconfig.h
++++ b/src/bbconfig.h
+@@ -142,6 +142,7 @@ struct bb_config_struct {
+     char * module_name; /* Kernel module to be loaded for the driver.
+                                     * If empty, driver will be used. This is
+                                     * for Ubuntu which uses nvidia-current */
++    int force_driver_unload; /* Force driver unload, even without active PM method */
+     int card_shutdown_state;
+ #ifdef WITH_PIDFILE
+     char *pid_file; /* pid file for storing the daemons PID */
+diff --git a/src/bbsecondary.c b/src/bbsecondary.c
+index 71a6b73..9378b07 100644
+--- a/src/bbsecondary.c
++++ b/src/bbsecondary.c
+@@ -217,24 +217,31 @@ bool start_secondary(bool need_secondary) {
+ static void switch_and_unload(void)
+ {
+   char driver[BUFFER_SIZE];
++  int unload_driver = 0;
+ 
+-  if (bb_config.pm_method == PM_DISABLED && bb_status.runmode != BB_RUN_EXIT) {
++  if (bb_config.pm_method == PM_DISABLED && !bb_config.force_driver_unload && bb_status.runmode != BB_RUN_EXIT) {
+     /* do not disable the card if PM is disabled unless exiting */
+     return;
+   }
+ 
+   //if card is on and can be switched, switch it off
++  if (switcher && switcher->need_driver_unloaded) {
++    /* do not unload the drivers nor disable the card if the card is not on */
++    if (switcher->status() != SWITCH_ON) {
++      return;
++    }
++    unload_driver = 1;
++  }
++
++  if (unload_driver || bb_config.force_driver_unload) {
++    /* unload the driver loaded by the graphica card */
++    if (pci_get_driver(driver, pci_bus_id_discrete, sizeof driver)) {
++      module_unload(driver);
++    }
++  }
++
+   if (switcher) {
+     if (switcher->need_driver_unloaded) {
+-      /* do not unload the drivers nor disable the card if the card is not on */
+-      if (switcher->status() != SWITCH_ON) {
+-        return;
+-      }
+-      /* unload the driver loaded by the graphica card */
+-      if (pci_get_driver(driver, pci_bus_id_discrete, sizeof driver)) {
+-        module_unload(driver);
+-      }
+-
+       //only turn card off if no drivers are loaded
+       if (pci_get_driver(NULL, pci_bus_id_discrete, 0)) {
+         bb_log(LOG_DEBUG, "Drivers are still loaded, unable to disable card\n");

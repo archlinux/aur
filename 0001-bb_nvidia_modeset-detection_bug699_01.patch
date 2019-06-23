@@ -1,0 +1,24 @@
+From 5636b24fa86a005a5d2e30bd794516db13ccba56 Mon Sep 17 00:00:00 2001
+From: Abuzer Rafey <abuzer@rafey.ch>
+Date: Tue, 8 Dec 2015 07:00:32 -0500
+Subject: [PATCH] Dirty fix for issue #699
+
+---
+ src/module.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/module.c b/src/module.c
+index f7b99fa..6b6cb09 100644
+--- a/src/module.c
++++ b/src/module.c
+@@ -96,7 +96,9 @@ int module_unload(char *driver) {
+     int retries = 30;
+     bb_log(LOG_INFO, "Unloading %s driver\n", driver);
+     char *mod_argv[] = {
+-      "rmmod",
++      "modprobe",
++      "-r",
++      "nvidia_modeset",
+       driver,
+       NULL
+     };

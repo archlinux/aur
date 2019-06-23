@@ -1,0 +1,76 @@
+From dbbf20a38aa2bffb10c4e8af583b34dff6bfe721 Mon Sep 17 00:00:00 2001
+From: Abuzer Rafey <abuzer@rafey.ch>
+Date: Wed, 9 Dec 2015 21:26:29 -0500
+Subject: [PATCH] Fix nvidia_uvm just like nvidia_modeset
+
+---
+ src/module.c | 35 +++++++++++++++++++++++++++--------
+ 1 file changed, 27 insertions(+), 8 deletions(-)
+
+diff --git a/src/module.c b/src/module.c
+index eea0139..b5a4d79 100644
+--- a/src/module.c
++++ b/src/module.c
+@@ -93,19 +93,18 @@ int module_load(char *module_name, char *driver) {
+  */
+ int module_unload(char *driver) {
+ 
+-  if (module_is_loaded(driver) == 1 &&
+-            module_is_loaded("nvidia_modeset") == 1) {
++  if (module_is_loaded("nvidia_uvm") == 1) {
+     int retries = 30;
+-    bb_log(LOG_INFO, "Unloading %s driver\n", driver);
++    bb_log(LOG_INFO, "Unloading nvidia_uvm driver\n");
+     char *mod_argv[] = {
+       "modprobe",
+       "-r",
+-      "nvidia-modeset",
+-      driver,
++      "nvidia_uvm",
++      "nvidia_modeset",
+       NULL
+     };
+     bb_run_fork_wait(mod_argv, 10);
+-    while (retries-- > 0 && module_is_loaded(driver) == 1) {
++    while (retries-- > 0 && module_is_loaded("nvidia_uvm") == 1) {
+       usleep(100000);
+     }
+     if (module_is_loaded(driver) == 1) {
+@@ -113,7 +112,27 @@ int module_unload(char *driver) {
+       return 0;
+     }
+   }
+-    else if (module_is_loaded(driver) == 1) {
++
++  else if (module_is_loaded("nvidia_modeset") == 1) {
++    int retries = 30;
++    bb_log(LOG_INFO, "Unloading nvidia_modeset driver\n");
++    char *mod_argv[] = {
++      "modprobe",
++      "-r",
++      "nvidia_modeset",
++      NULL
++    };
++    bb_run_fork_wait(mod_argv, 10);
++    while (retries-- > 0 && module_is_loaded("nvidia_modeset") == 1) {
++      usleep(100000);
++    }
++    if (module_is_loaded(driver) == 1) {
++      bb_log(LOG_ERR, "Unloading %s driver timed out.\n", driver);
++      return 0;
++    }
++  }
++
++  else if (module_is_loaded(driver) == 1) {
+       int retries = 30;
+       bb_log(LOG_INFO, "Unloading %s driver\n", driver);
+       char *mod_argv[] = {
+@@ -130,7 +149,7 @@ int module_unload(char *driver) {
+         bb_log(LOG_ERR, "Unloading %s driver timed out.\n", driver);
+         return 0;
+       }
+-    }
++  }
+   return 1;
+ }
+ 

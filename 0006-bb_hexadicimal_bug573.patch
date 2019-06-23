@@ -1,0 +1,23 @@
+From 2073f8537412aa47755eb6f3f22a114403e5285b Mon Sep 17 00:00:00 2001
+From: Peter Wu <peter@lekensteyn.nl>
+Date: Wed, 16 Apr 2014 18:19:01 +0200
+Subject: [PATCH] Fix devices with a bus larger than 9 (GH-573)
+
+The `-isolateDevice` option accepts a PCI ID in decimal format, not hex.
+---
+ src/bbsecondary.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/bbsecondary.c b/src/bbsecondary.c
+index 71a6b73..6b635ee 100644
+--- a/src/bbsecondary.c
++++ b/src/bbsecondary.c
+@@ -138,7 +138,7 @@ bool start_secondary(bool need_secondary) {
+   if (!bb_is_running(bb_status.x_pid)) {
+     char pci_id[12];
+     static char *x_conf_file;
+-    snprintf(pci_id, 12, "PCI:%02x:%02x:%o", pci_bus_id_discrete->bus,
++    snprintf(pci_id, 12, "PCI:%02d:%02d:%o", pci_bus_id_discrete->bus,
+             pci_bus_id_discrete->slot, pci_bus_id_discrete->func);
+     if (!x_conf_file) {
+       x_conf_file = xorg_path_w_driver(bb_config.x_conf_file, bb_config.driver);
