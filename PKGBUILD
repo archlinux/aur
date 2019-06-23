@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgbase=python-backoff
-pkgname=('python-backoff')
+pkgname=('python-backoff' 'python2-backoff')
 _name=${pkgname#python-}
 pkgver=1.8.0
 pkgrel=1

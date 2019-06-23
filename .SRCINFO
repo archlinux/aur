@@ -12,3 +12,5 @@ pkgbase = python-backoff
 
 pkgname = python-backoff
 
+pkgname = python2-backoff
+
