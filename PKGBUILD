@@ -37,7 +37,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/dont-statically-link-libstdc%2B%2B.patch"
         pgo_fix_missing_kdejs.patch
         "UnsortedError.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/UnsortedError.patch"
-        "rust-simd.patch::https://patch-diff.githubusercontent.com/raw/MrAlex94/Waterfox/pull/1043.diff")
+        "rust-simd.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/rust-simd.patch")
 sha256sums=('SKIP'
             '6e9ec5f9c6fc5b191f9dec85b82d58eb2a51577b989bc7852e6b254d56ff13e8'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
