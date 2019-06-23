@@ -3,7 +3,7 @@
 
 pkgname=vlang-git
 pkgver=r76.b6948ad
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -45,8 +45,8 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 compiler/v "$pkgdir/usr/bin/v"
     install -d "$pkgdir/usr/lib/vlang" "$pkgdir/usr/share/vlang"
-    mv examples "$pkgdir/usr/share/vlang/"
-    rm -r LICENSE README.md compiler
+    cp -a examples "$pkgdir/usr/share/vlang/"
     cp -a * "$pkgdir/usr/lib/vlang/"
+    rm -r "$pkgdir/usr/lib/vlang/"{LICENSE,README.md,compiler,examples}
 }
 
