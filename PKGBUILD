@@ -1,27 +1,23 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Joel Teichroeb <joel@teichroeb.net>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=folly-git
-pkgver=2016.12.19.00.r112.g0ea1868e
+pkgver=2019.06.17.00.r21.gefaea2394
 pkgrel=1
 pkgdesc='Folly is an open-source C++ library developed and used at Facebook'
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url='https://github.com/facebook/folly'
-license=(Apache)
-conflicts=(folly)
-provides=(folly)
-replaces=(folly)
-depends=(google-glog gflags double-conversion libevent boost-libs jemalloc xz lz4 zstd snappy)
-makedepends=(git boost python2)
+license=('Apache')
+conflicts=('folly')
+provides=('folly')
+depends=('google-glog' 'gflags' 'double-conversion' 'libevent' 'boost-libs' 'jemalloc' 'xz' 'lz4' 'zstd' 'snappy')
+makedepends=('git' 'boost' 'python2')
 source=(
   git+https://github.com/facebook/folly.git
-  gtest-1.7.0.zip::https://github.com/google/googletest/archive/release-1.7.0.zip
 )
-# that sucks that the project downloads gtests sources, it should use system libraries
-# https://github.com/facebook/folly/issues/48
-md5sums=('SKIP'
-         'ef5e700c8a0f3ee123e2e0209b8b4961')
+md5sums=('SKIP')
 
 pkgver() {
   cd folly
@@ -31,23 +27,19 @@ pkgver() {
 prepare() {
   cd folly/folly
   find -name '*.py' -exec sed -i 's|^#!/usr/bin/env python$|#!/usr/bin/env python2|' {} \;
-
-  cd test
-  ln -sf $srcdir/googletest-release-1.7.0 gtest-1.7.0
 }
 
 build() {
-  CPPFLAGS="$CPPFLAGS -I/usr/include/double-conversion"
-
-  cd folly/folly
-  autoreconf --install
-  # disable shared libs as double-conversion does not have shared libs
-  ./configure --prefix=/usr # --enable-shared
-  make
+  cd folly
+  cmake . \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC"
 }
 
 package() {
-  cd folly/folly
+  cd folly
   make DESTDIR="$pkgdir" install
 }
 
