@@ -1,0 +1,20 @@
+
+Configuration options:
+
+    Orientation:
+        0: no rotation (default)
+        1: rotate right 90 deg
+        2: rotate 180 deg (left-handed mode)
+        3: rotate left 90 deg
+    Screen mapping (all values in integers percents, e.g., 45):
+        Left: left boundary (default: 0)
+        Top: top boundary (default: 0)
+        Right: right boundary (default: 100)
+        Bottom: bottom boundary (default: 100)
+    Pressure mapping:
+        0: linear mapping (p_out = p_raw) (default)
+        1: constant function, half pressure (p_out = p_max / 2)
+        2: power function, n=1/2 (p_out = sqrt(p_raw))
+        3: power function, n=2 (p_out = p_raw^2)
+        4: linear mapping, reduced input pressure (p_out = min(4/3 * p_raw, p_max))
+
