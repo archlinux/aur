@@ -8,7 +8,7 @@ pkgdesc="Yet Another Japanese Dependency Structure Analyzer"
 url="https://taku910.github.io/cabocha/"
 arch=('x86_64' 'i686')
 license=('LGPL2.1' 'BSD')
-#depends=('crfpp' 'mecab' 'mecab-ipadic')
+depends=('crfpp' 'mecab' 'mecab-ipadic')
 makedepends=('git')
 source=('git+https://github.com/taku910/cabocha.git')
 
