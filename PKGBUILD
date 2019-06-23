@@ -1,19 +1,18 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_manjaro dot+org>
 
 pkgname=mapton
-pkgver=0.8.0
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Some kind of map application"
 arch=(any)
 url="https://mapton.org"
 license=('Apache')
-depends=('java-runtime>=8' 'java-openjfx')
-makedepends=('git' 'jdk8-openjdk' 'maven')
+makedepends=('git' 'jre8-openjdk' 'jdk8-openjdk' 'java-openjfx' 'maven')
 
-_commit=2091754f0454155d72a32d3004e4789ed5f1f3ad
+_commit=1cb5a943593498ca92544b097a60e05351430487
 source=(git+https://github.com/trixon/mapton.git#commit=$_commit
         mapton.desktop
-        git+https://github.com/trixon/almond3.git#commit=3f16b553bb4dad3ecf72508e5d9e5cee17da934a
+        git+https://github.com/trixon/almond3.git#commit=2019f5ca723e4a7372fdf81ee9e0199c32da1204
         git+https://github.com/rterp/GMapsFX.git#commit=4623d3f768e8ad78fc50ee32dd204d236e01059f)
 sha256sums=('SKIP'
             '303620b07b9a48324acfa2541a1f93fe5630cca7919cd5b5b1141f0ffe7b6cd7'
@@ -43,6 +42,7 @@ build() {
 }
 
 package() {
+	depends=('java-runtime>=8' 'java-openjfx')
 	cd mapton/application/target/mapton
 
 	# Initial target directories
