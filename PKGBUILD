@@ -3,7 +3,7 @@
 
 pkgname=vlang-git
 pkgver=r76.b6948ad
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -29,7 +29,7 @@ prepare() {
         "s|os__home_dir(), tos2(\"/code/v/\")|tos2(\"${current_dir}\"), tos2(\"/\")|g" \
         v.c
     sed -i \
-        "s|mut lang_dir = os.home_dir() + '/code/v/'|mut lang_dir = '/usr/lib/v/'|g" \
+        "s|mut lang_dir = os.home_dir() + '/code/v/'|mut lang_dir = '/usr/lib/vlang'|g" \
         main.v
 }
 
