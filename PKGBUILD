@@ -81,10 +81,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-lqx}
 
-pkgver() {
-  printf ${_major}.${_minor}_${_patchrel}
-}
-
 prepare() {
     cd ${_srcname}
 
