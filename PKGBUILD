@@ -1,6 +1,6 @@
 # Maintainer: Tong Chunli<t.cunly at 163 dot com>
 pkgname=python-pytest-repeat
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="pytest-repeat is a plugin for py.test that makes it easy to repeat a single test, or multiple tests, a specific number of times."
 arch=(any)
@@ -8,8 +8,8 @@ url="https://pypi.org/project/pytest-repeat"
 license=('BSD')
 depends=('python-six' 'python-attrs' 'python-atomicwrites' 'python-pluggy' 'python-more-itertools' 'python-pytest')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/a2/87/992d24e12645abdb1dc20cad27d062285ba70b2d315defef518ee4912486/pytest-repeat-$pkgver.tar.gz")
-sha256sums=('637e68dd615e850b47b2dee0edf72bcede44de6a5335837fe2980daaf0cdab2b')
+source=("https://files.pythonhosted.org/packages/1a/ef/a721646e592e834ad93e1c880956b3d6ff060c623c2e317170f5747d9c71/pytest-repeat-0.8.0.tar.gz")
+sha256sums=('52bc413ab1a772e72c953a5592196ddd266fd2e76280eaac0c2a8378e9ac6dd9')
 
 package() {
     cd ${srcdir}/pytest-repeat-${pkgver}
