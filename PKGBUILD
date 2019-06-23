@@ -1,6 +1,6 @@
 # Maintainer: Tong Chunli<t.cunly at 163 dot com>
 pkgname=python-colcon-library-path
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="An extension for colcon-core to set an environment variable to find shared libraries at runtime."
 arch=(any)
@@ -8,8 +8,8 @@ url="https://pypi.org/project/colcon-library-path/"
 license=('Apache')
 depends=('python-colcon-core')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/5e/3d/b9778bdb0150e4202a476f707db740adf7d080010fceeb66235bf9ad4acf/colcon-library-path-$pkgver.tar.gz")
-sha256sums=('a7148fe0b2dd7be92a2e9cdd9ead09a1c5febb92d3d1ae241983b232a3302f0a')
+source=(https://files.pythonhosted.org/packages/7a/72/1427af79ac1265103b58ff6fbacd75d325f590ec0e3c1c98027ebd1fff12/colcon-library-path-0.2.1.tar.gz)
+sha256sums=('8288fc911aab5682771b45fff6437adefefbd30adf38acd2adffeccf4a24e9e2')
 
 
 package() {
