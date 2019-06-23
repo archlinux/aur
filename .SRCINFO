@@ -1,6 +1,6 @@
 pkgbase = xontrib-z-git
 	pkgdesc = Port of z to xonsh. Tracks your most used directories, based on 'frecency'.
-	pkgver = x
+	pkgver = r35.ef05c35
 	pkgrel = 1
 	url = https://github.com/astronouth7303/xontrib-z
 	arch = any
