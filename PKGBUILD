@@ -1,18 +1,20 @@
-# Maintainer: nosada <ngsksdt@gmail.com>
+# Maintainer: NOGISAKA Sadata <ngsksdt@gmail.com>
+# vim:set ts=2 sw=2 et:
 
 pkgname=cabocha
 pkgver=0.69
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet Another Japanese Dependency Structure Analyzer"
 url="https://taku910.github.io/cabocha/"
 arch=('x86_64' 'i686')
 license=('LGPL2.1' 'BSD')
-depends=('crfpp' 'mecab' 'mecab-ipadic')
-source=("${pkgname}-${pkgver}.tar.bz2::https://googledrive.com/host/0B4y35FiV1wh7cGRCUUJHVTNJRnM/cabocha-0.69.tar.bz2")
-sha1sums=("9196098628c5d1f0b83b371a03352b6652c04001")
+#depends=('crfpp' 'mecab' 'mecab-ipadic')
+makedepends=('git')
+source=('git+https://github.com/taku910/cabocha.git')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}
+  autoreconf -vif
 
   # '--with-charset=UTF8' and '--enable-utf8-only' is optional.
   # you can remove it (see INSTALL in source directory)
@@ -21,16 +23,15 @@ build() {
 }
 
 check() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}
   make check
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}
 
   make DESTDIR=${pkgdir} install
-  install -Dm644 COPYING \
-    ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
+  install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
 
-# vim:set ts=2 sw=2 et:
+sha256sums=('SKIP')
