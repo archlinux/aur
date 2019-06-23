@@ -49,8 +49,7 @@ sha256sums=('SKIP'
             'b55833542edf8cad2b73cf36dac6c667e588dcf79a99b570c5eca645698b80f7'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
-            '3b20230c42ac68cdb751c3bd7758a1a45006e00aec8558c33c96d8c4bebbd47f'
-            'f456baeb64bfceebc5ff45239851f167f08fb82ed35e33408fe7b215b3c139ee')
+            'b0623cffd2d51347b7955e0daef62f1c74955f6a31630eedbfb10c601c87d34b')
 
 prepare() {
   mkdir path
