@@ -34,9 +34,9 @@ prepare() {
 
 build() {
     cd v/compiler
+    #make # segfault -std=c11
     cc -std=gnu11 -w -o vc v.c
     ./vc -o v .
-    #make # segfault
 }
 
 package() {
@@ -45,7 +45,7 @@ package() {
     install -Dm755 compiler/v "$pkgdir/usr/bin/v"
     install -d "$pkgdir/usr/lib/vlang" "$pkgdir/usr/share/vlang"
     mv examples "$pkgdir/usr/share/vlang/"
-    rm -r {LICENSE,README.md,compiler}
+    rm -r LICENSE README.md compiler
     cp -a * "$pkgdir/usr/lib/vlang/"
 }
 
