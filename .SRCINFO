@@ -1,6 +1,6 @@
 pkgbase = optimus-manager-git
 	pkgdesc = Management utility to handle GPU switching for Optimus laptops (Git version)
-	pkgver = 1.0.r16.g994f8f4
+	pkgver = 1.1.r0.g7a39c34
 	pkgrel = 1
 	url = https://github.com/Askannz/optimus-manager
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = optimus-manager-git
 	depends = xorg-xrandr
 	optdepends = bbswitch: alternative power switching method
 	optdepends = xf86-video-intel: provides the Xorg intel driver
-	provides = optimus-manager=1.0.r16.g994f8f4
+	provides = optimus-manager=1.1.r0.g7a39c34
 	conflicts = optimus-manager
 	backup = etc/optimus-manager/xorg-intel.conf
 	backup = etc/optimus-manager/xorg-nvidia.conf
