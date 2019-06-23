@@ -14,12 +14,12 @@ makedepends=('python-setuptools' 'git')
 source=('git+https://github.com/taku910/cabocha.git')
 
 build() {
-  cd ${srcdir}/${pkgname}/python
+  cd ${srcdir}/${_pkgname}/python
   python setup.py build_ext
 }
 
 package() {
-  cd ${srcdir}/${pkgname}/python
+  cd ${srcdir}/${_pkgname}/python
   python setup.py install --root=${pkgdir}
   install -Dm644 ../COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
