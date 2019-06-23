@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=meteo-gtk
 pkgver=0.9.7
-pkgrel=4
+pkgrel=5
 pkgdesc="A forecast application using OpenWeatherMap API"
 arch=('any')
 url="https://gitlab.com/bitseater/meteo"
 license=('GPL3')
-depends=('gtk3' 'libsoup' 'json-glib' 'geocode-glib' 'webkit2gtk' 'libappindicator-gtk3')
+depends=('gtk3' 'geocode-glib' 'webkit2gtk' 'libappindicator-gtk3')
 makedepends=('meson' 'vala' 'appstream-glib')
+optdepends=('gnome-shell-extension-appindicator')
 provides=('meteo')
 conflicts=('meteo')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/bitseater/meteo/-/archive/$pkgver/meteo-$pkgver.tar.gz")
