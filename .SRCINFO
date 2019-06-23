@@ -1,6 +1,6 @@
 pkgbase = mysql
 	pkgdesc = Fast SQL database server, community edition
-	pkgver = 8.0.15
+	pkgver = 8.0.16
 	pkgrel = 1
 	url = https://www.mysql.com/products/community/
 	arch = x86_64
@@ -19,20 +19,18 @@ pkgbase = mysql
 	makedepends = re2
 	makedepends = rapidjson
 	makedepends = protobuf
-	options = !libtool
-	options = !ccache
-	source = https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.15.tar.gz
-	source = mysqld-post.sh
-	source = mysqld-tmpfile.conf
-	source = mysqld.service
+	source = https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.16.tar.gz
 	source = my-default.cnf
 	source = mysql-ld.so.conf
-	sha256sums = 95dbdb54c3967feefb255b96458b089a601e4de238bcc1f328b066018ee47db0
-	sha256sums = 368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd
-	sha256sums = 2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd
-	sha256sums = 50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556
-	sha256sums = 3cc3ba4149fb2f9e823601b9a414ff5b28a2a52f20bc68c74cc0505cf2d1832d
+	source = mysql.sysconfig
+	source = mysqld_service.patch
+	source = systemd-sysusers-tmpfiles.patch
+	sha256sums = 7c936aa7bc9f4c462b24bade2e9abe1b3a6869ea19c46e78ec0a9b2a87a3d17f
+	sha256sums = 6bc24ae510f6b6bbad6b3edda2d0028b29292937b482274a4c2fae335f4de328
 	sha256sums = e1c23fa0971a13d998f2790379b68c475438d05b6d6f2691b99051dbf497567f
+	sha256sums = 203dcd22fea668477ac7123dbd9909fae72d3d07f8855417a669a9c94db072ae
+	sha256sums = 8fbedfc2c5fe271ed13217feeceeac00202d2cb135e4283eeee2f9a13d6251af
+	sha256sums = 9e585631cfe95da9d18df6c64fca370c0aff2b2cda5dc29f694579dab9d9f561
 
 pkgname = mysql
 	pkgdesc = Fast SQL database server, community edition
@@ -47,19 +45,22 @@ pkgname = mysql
 	depends = lz4
 	depends = libevent
 	depends = protobuf
-	provides = mariadb=8.0.15
-	provides = mysql=8.0.15
+	depends = systemd-libs
+	optdepends = perl-dbd-mysql: for mysqlhotcopy, mysql_convert_table_format and mysql_setpermission
+	provides = mariadb=8.0.16
+	provides = mysql=8.0.16
 	conflicts = mariadb
 	options = emptydirs
 	backup = etc/mysql/my.cnf
+	backup = etc/conf.d/mysql.conf
 
 pkgname = libmysqlclient
 	pkgdesc = MySQL client libraries
 	depends = libsasl
 	depends = zlib
-	provides = libmariadbclient=8.0.15
-	provides = libmysqlclient=8.0.15
-	provides = mariadb-libs=8.0.15
+	provides = libmariadbclient=8.0.16
+	provides = libmysqlclient=8.0.16
+	provides = mariadb-libs=8.0.16
 	conflicts = libmariadbclient
 	conflicts = mariadb-libs
 
@@ -71,7 +72,7 @@ pkgname = mysql-clients
 	depends = jemalloc
 	depends = libedit
 	depends = lz4
-	provides = mariadb-clients=8.0.15
-	provides = mysql-clients=8.0.15
+	provides = mariadb-clients=8.0.16
+	provides = mysql-clients=8.0.16
 	conflicts = mariadb-clients
 
