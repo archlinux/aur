@@ -1,16 +1,16 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=locarna
-pkgver=1.8.11
+pkgver=1.9.2.2
 pkgrel=1
 pkgdesc='Global and Local Alignment of RNAs'
 arch=('i686' 'x86_64')
 url="http://www.bioinf.uni-freiburg.de/Software/LocARNA/"
 license=('GPL3')
-depends=('viennarna>=2.3.1')
+depends=('viennarna>=2.3.5')
 checkdepends=()
-source=("http://www.bioinf.uni-freiburg.de/Software/LocARNA/Releases/$pkgname-$pkgver.tar.gz")
-md5sums=('2148fd8bf3175da6d8ef73eb7f03fa70')
+source=("https://github.com/s-will/LocARNA/releases/download/v${pkgver}/$pkgname-${pkgver}.tar.gz")
+md5sums=('24901cf57d3ef4a615f1f7b886d08eb3')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
