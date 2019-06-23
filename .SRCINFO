@@ -4,6 +4,7 @@ pkgbase = check50
 	pkgrel = 1
 	url = https://github.com/cs50/check50
 	arch = any
+	groups = cs50
 	license = GPL
 	makedepends = python-setuptools
 	depends = python

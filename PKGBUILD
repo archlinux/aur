@@ -10,6 +10,7 @@ pkgdesc="This is check50, with which you can check solutions to problems for CS5
 arch=('any')
 url="https://github.com/cs50/check50"
 license=('GPL')
+groups=('cs50');
 depends=('python' 'submit50')
 makedepends=('python-setuptools')
 source=(
