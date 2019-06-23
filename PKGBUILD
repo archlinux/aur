@@ -1,9 +1,9 @@
 # Maintainer: whoami <whoami@systemli.org>
-# Contributor: Jefferson <jgmdev@gmail.com>
+# Contributor: Jefferson González <jgmdev@gmail.com>
 
 pkgname=vlang-git
-pkgver=r76.b6948ad
-pkgrel=6
+pkgver=r79.ebc3fb9
+pkgrel=1
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -36,8 +36,9 @@ prepare() {
 build() {
     cd v/compiler
     #make # segfault -std=c11
-    cc ${CFLAGS} -std=gnu11 -w -o vc v.c ${LDFLAGS}
+    cc -std=gnu11 -w -o vc v.c
     ./vc -o v .
+    ./v -o v .
 }
 
 package() {
