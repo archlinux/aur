@@ -14,6 +14,7 @@ pkgbase = python-colcon-core
 	depends = python-pytest-cov
 	depends = python-distlib
 	depends = python-notify2
+	depends = python-empy
 	source = https://files.pythonhosted.org/packages/70/55/2a1effeac1707632ccb8121f920f4b142fa6e43ce967ce17897e94ce5352/colcon-core-0.3.22.tar.gz
 	sha256sums = b3f04e14168675914e87fde3d0999279499fe61203109419782408c371f58be1
 
