@@ -23,7 +23,7 @@ source=("https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
          "$pkgname.db"
          "$pkgname.conf")
 md5sums=('1c0df5fa42e7f7b89c7e704fdc1b5154'
-         '47418a1424e50806e0dfe21a519b5b5c'
+         'a42d0abc4bd088e7b1f905ac536e34d2'
          '5faa64558cc0a5888923fcf77c299fa7'
          'f3e42ec6f04180c6d6972998bf172a41'
          '0495c002b7d5dce303d451e4cd2fede5'
