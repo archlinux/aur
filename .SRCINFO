@@ -1,0 +1,14 @@
+pkgbase = submit50
+	pkgdesc = This is submit50, with which you can submit solutions to problems for CS50.
+	pkgver = 2.4.11
+	pkgrel = 1
+	url = https://github.com/cs50/submit50
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	depends = python-pexpect
+
+pkgname = submit50
+
