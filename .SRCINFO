@@ -1,16 +1,16 @@
 pkgbase = gnatcoll-postgres
 	pkgdesc = GNAT Components Collection - Postgres database support
-	pkgver = 2018
-	pkgrel = 2
+	pkgver = 2019
+	pkgrel = 1
 	url = https://github.com/AdaCore/gnatcoll-db/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gprbuild>=2018
-	depends = gnatcoll-sql>=2018
+	makedepends = gprbuild
+	depends = gnatcoll-sql
 	depends = postgresql
-	source = http://mirrors.cdn.adacore.com/art/5b0ce9cbc7a4475263382be6
-	sha1sums = 85c90002bb506e3e72e38d2e6604734402d23a32
+	source = https://github.com/AdaCore/gnatcoll-db/archive/master.zip
+	sha1sums = dc4186e802daa71ab88170cd91708738c170d2fb
 
 pkgname = gnatcoll-postgres
 
