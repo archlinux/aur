@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=eva
-pkgver=0.2.3
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='simple calculator REPL, similar to bc(1)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 conflicts=('eva-git')
 makedepends=('rust' 'cargo')
 source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('34ef8b7a7484689a602ab98e1f73d230f6020090b9d8e71a5f16a192c42ebbe9')
+sha256sums=('0560cf35cfe79ec4dbc57c1d8d9818c94871d92af896a7644fda3ebedd4d6065')
 
 build() {
   cd "$pkgname-$pkgver"
