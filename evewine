@@ -2,7 +2,7 @@
 
 . /opt/evesetup/lib/evelauncher.shlib
 
-check_custom_wine
+check_wine
 
 if [ -x "$WINEPATH/${0#*eve}" ] ;then
     WINECMD=$WINEPATH/${0#*eve}

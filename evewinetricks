@@ -2,7 +2,7 @@
 
 . /opt/evesetup/lib/evelauncher.shlib
 
-check_custom_wine
+check_wine
 
 env WINEPREFIX=$WINEPREFIX \
     WINE=$WINEPATH/wine $(which winetricks) "$@"

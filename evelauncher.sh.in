@@ -44,34 +44,6 @@ check_steam() {
     fi
 }
 
-check_wine() {
-
-    check_custom_wine
-
-    INSTWINE=$(cat $WINEPREFIX/.update-timestamp 2>/dev/null) || true
-    WINEINFP=$(readlink -f $CUSTOMWP)
-    WINECONF=$(find ${WINEINFP%/bin*}/share -name 'wine.inf' 2>/dev/null) || true
-    WINEDATE=$(ls -l --time-style=+%s "$WINECONF" 2>/dev/null | cut -d' ' -f6)
-    if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
-	desktop_msg "Preparing wine in $WINEPREFIX"
-	env WINEPREFIX=$WINEPREFIX \
-	    WINEDEBUG=-all \
-	    WINEDLLOVERRIDES="mscoree,mshtml,winemenubuilder.exe=d" \
-	    $WINEPATH/wine wineboot
-	WINETRP=$(grep -v win[x1..9] $WINEPREFIX/winetricks.log 2>/dev/null | uniq)
-	rm $WINEPREFIX/winetricks.log 2>/dev/null || true
-	if [ "x$WINETRP" != "x" ] ;then
-	    env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
-		$(which winetricks) -q --force $WINETRP >/dev/null
-	fi
-	env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
-	    $(which winetricks) -q --force win10 >/dev/null
-    fi
-    env WINEPREFIX=$WINEPREFIX $WINEPATH/wine reg add \
-	'HKEY_CURRENT_USER\Software\Wine\FileOpenAssociations' \
-	/v Enable /d N /f >/dev/null
-}
-
 ELVER=""
 QTVER="5.11"
 SHAREDIR=""
