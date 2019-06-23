@@ -2,13 +2,13 @@
 # Ex-Maintainer: Max Falk <gmdfalk at gmail dot com>
 
 pkgname=rocketchat-server
-pkgver=1.0.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="The Ultimate Open Source WebChat Platform"
 arch=("any")
 url="https://rocket.chat"
 license=("MIT")
-depends=("npm" "nodejs" "mongodb" "graphicsmagick" "curl" "python2" "gcc")
+depends=("npm" "nodejs-lts-carbon" "mongodb" "graphicsmagick" "curl" "python2" "gcc")
 makedepends=()
 optdepends=()
 backup=("etc/rocketchat/${pkgname}.conf")
@@ -20,7 +20,7 @@ source=("rocketchat-${pkgver}::https://releases.rocket.chat/latest/download"
     "rocketchat-server.conf"
     "rocketchat-user.conf"
 "rocketchat.service")
-sha512sums=('00e737402837f22342fe1b6612fefc285065b83e198f0d519f96f7a7c04929335e63985218e2bc6d8622ddbd328ed2d3f09229d16d24cf8a0337fae858f1b58e'
+sha512sums=('b80933d8c90baec174bb718237c5fbd56a6597c9a9b29c590fda2437306232ab60af6adb7eb66ff9b6a0f1b94013c4d59064b254ffa1d5a395efb8b39d6b700a'
     '6700fae043f59881c0c8821db176a8d9cbbf7f047bd48750dbcd7abd7c531831436f910a28745b40d4d2fcbb7d2081b5512a5ee23ea6355bb065fde3b0672edc'
     '4ff8899a47612a81f73c1c6449fb30a7ddfb0b199756db7f73e0a3078cf818b88e481fd828296b148a348d137ae529ce591d6c2bd6b57ae9278188e715086b59'
     '0086f72f16a594116586d4b6783b104f7bba779e4f8e31e5988c7fa67e1c7d9fc95215d0a04c4f24c72b4183774a9768a29b05c828990125dd4a3379a69aa648'
