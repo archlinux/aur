@@ -1,0 +1,15 @@
+pkgbase = python2-funcy
+	pkgdesc = Pyhton2 funcy library.
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://github.com/Suor/funcy
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2-pip
+	depends = python2
+	source = https://github.com/Suor/funcy/archive/1.12.tar.gz
+	sha1sums = ebdd0f28763930e94f48dac54afe44834c51535e
+
+pkgname = python2-funcy
+
