@@ -1,14 +1,14 @@
 pkgbase = python-colcon-package-selection
 	pkgdesc = An extension for colcon-core to select a subset of packages for processing.
-	pkgver = 0.2.1
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://pypi.org/project/colcon-package-selection
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-colcon-core
-	source = https://files.pythonhosted.org/packages/8f/56/a44e9c778905c2ed98101e8366460f9a4b5c13bad3aa0157627fe385dcc5/colcon-package-selection-0.2.1.tar.gz
-	sha256sums = 04fc346341d599321cf4efd17da6730888142482e6ec721d6fc30a04d3750125
+	source = https://files.pythonhosted.org/packages/44/06/e711df6598847437a62368bc581b8beddbea788f73641db08e0be05f22cb/colcon-package-selection-0.2.4.tar.gz
+	sha256sums = aaf3a93516c0b6e3233475a417aaf828914e4d600e3848323f0833b72e917d88
 
 pkgname = python-colcon-package-selection
 
