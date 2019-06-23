@@ -5,7 +5,7 @@ _enabletests=0
 
 _pkgname=shadowsocks
 pkgname="${_pkgname}-git"
-pkgver=2.9.1.r24.ge332ec9
+pkgver=2.9.1.r25.g5ff694b
 pkgrel=1
 pkgdesc="A lightweight tunnel proxy"
 license=('Apache')
@@ -19,7 +19,7 @@ makedepends=('git')
 optdepends=('libsodium: For salsa20 and chacha20 support')
 checkdepends=('python-coverage' 'python-pyflakes' 'libsodium' 'python-nose' 'dante' 'procps-ng' 'util-linux')
 install=${_pkgname}.install
-source=("${_pkgname}::git+${_url}.git"
+source=("${_pkgname}::git+${_url}.git#branch=master"
         "shadowsocks@.service"
         "shadowsocks-server@.service")
 sha512sums=('SKIP'
@@ -30,14 +30,10 @@ pkgver(){
   git -C "${_pkgname}" describe --long --tags | sed "s/-/.r/;s/-/./g"
 }
 
-prepare(){
-  git -C "${_pkgname}" checkout master
-}
-
 check() {
   cd shadowsocks
   if [ ${_enabletests} -eq 1 ]; then
-	echo Running tests, this might take a while...
+    echo Running tests, this might take a while...
     tests/jenkins.sh || warning "Tests failed"
   else
     echo Tests have been disabled, set _enabletests to 1 if you want to run them.

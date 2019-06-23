@@ -1,6 +1,6 @@
 pkgbase = shadowsocks-git
 	pkgdesc = A lightweight tunnel proxy
-	pkgver = 2.9.1.r24.ge332ec9	
+	pkgver = 2.9.1.r25.g5ff694b
 	pkgrel = 1
 	url = https://github.com/shadowsocks/shadowsocks/tree/master
 	install = shadowsocks.install
@@ -19,7 +19,7 @@ pkgbase = shadowsocks-git
 	optdepends = libsodium: For salsa20 and chacha20 support
 	provides = shadowsocks
 	conflicts = shadowsocks
-	source = shadowsocks::git+https://github.com/shadowsocks/shadowsocks.git
+	source = shadowsocks::git+https://github.com/shadowsocks/shadowsocks.git#branch=master
 	source = shadowsocks@.service
 	source = shadowsocks-server@.service
 	sha512sums = SKIP
