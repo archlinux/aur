@@ -44,7 +44,7 @@ else
   _pkgname='urbackup-server'
 fi
 pkgname="${_pkgname}-git"
-pkgver=2.3.2.r207.g51daaa7e
+pkgver=2.3.7.r103.gaa4f4b17
 pkgrel=1
 pkgdesc='Client/Server network backup for Windows Workgroups and Linux, builds server or client'
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
@@ -70,7 +70,7 @@ _branchf='dev'
 source=("git+https://github.com/uroni/urbackup_backend.git#branch=${_branchb}" "git+https://github.com/uroni/urbackup_frontend_wx.git#branch=${_branchf}")
 #source=("git+https://github.com/uroni/urbackup_backend.git#commit=9df2ba394f29ee86ad56fdd93179768aca3691fa" "git+https://github.com/uroni/urbackup_frontend_wx.git#commit=70378bf100c5d88e3342a4448c11a0cce83edc30")
 source+=("${_scripts[@]}" 'defaults_client')
-_cryptopp='cryptopp565.zip'
+_cryptopp='cryptopp700.zip'
 source+=("https://www.cryptopp.com/${_cryptopp}")
 noextract=("${_cryptopp}")
 sha256sums=('SKIP'
@@ -82,7 +82,7 @@ sha256sums=('SKIP'
             'd5b462879e7c80139688c9d20ce1b1fe553386df9459def5e1d093d3a13d71fb'
             '0ffb3bbbf5faf939564681d24786767a4706132f2f081b7a870ecc718a8e9413'
             'd77fa6ad67141ae5cb4c3c6953783ce54aaaa3c1f2fe5bb28cd20948ddda12c4'
-            'a75ef486fe3128008bbb201efee3dcdcffbe791120952910883b26337ec32c34')
+            'a4bc939910edd3d29fb819a6fc0dfdc293f686fa62326f61c56d72d0a366ceb0')
 if [ "${_opt_BuildClient}" -ne 0 ]; then
   unset install
   if [ "${_opt_Headless}" -eq 0 ]; then
@@ -233,7 +233,7 @@ prepare() {
   popd > /dev/null
 
   # Change wget to symlink
-  sed -e 's:^\s*wget :ln -s "../../\${CRYPTOPP_NAME}" # &:g' \
+  sed -e 's:^\s*wget :ln -s "'"${startdir}"'/\${CRYPTOPP_NAME}" # &:g' \
       -e '# Fix CRLF -> LF' \
       -e 's:unzip -:&a:g' \
     -i 'download_cryptopp.sh'
@@ -280,13 +280,19 @@ EOF
           -e 's:^\(\s*\)./configure.*$:  ./configure --prefix="/usr" --sbindir="/usr/bin" --localstatedir="/var" --enable-headless:g' \
         -i 'build_client.Arch.sh'
     fi
+    set +e; msg2 'Build Client'; set -e
+    set -x
     sh -u -e 'build_client.Arch.sh'
+    set +x
   else
     rm -f 'client' # in case we switch from client to server
     sed -e '# Fix configure line' \
-        -e 's:^\(\s*\)./configure.*$:  ./configure --prefix="/usr" --sbindir="/usr/bin" --sysconfdir="/etc" --localstatedir="/var" --enable-packaging --with-mountvhd:g' \
+        -e 's:^\(\s*\)./configure.*$:& --prefix="/usr" --sbindir="/usr/bin" --sysconfdir="/etc" --localstatedir="/var" --enable-packaging --with-mountvhd:g' \
       -i 'build_server.Arch.sh'
+    set +e; msg2 'Build Server'; set -e
+    set -x
     sh -u -e 'build_server.Arch.sh'
+    set +x
   fi
   rm 'build_server.Arch.sh' 'build_client.Arch.sh'
   set +u
