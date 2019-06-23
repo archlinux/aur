@@ -2,12 +2,12 @@
 
 pkgname=moonlight-qt
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GameStream client for PCs (Windows, Mac, and Linux)'
 arch=('x86_64')
 license=('GPL')
-url='https://moonlight-stream.com'
-depends=('qt5-base' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-svg' 'ffmpeg' 'qt5-multimedia' 'sdl2_ttf')
+url='https://moonlight-stream.org'
+depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-svg' 'ffmpeg' 'sdl2_ttf')
 makedepends=('git')
 optdepends=('libva-intel-driver: hardware acceleration for Intel GPUs')
 source=("git+https://github.com/moonlight-stream/${pkgname}.git#tag=v${pkgver}")
