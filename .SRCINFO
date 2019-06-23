@@ -1,9 +1,8 @@
 pkgbase = vim-fugitive-git
-	pkgdesc = A git wrapper so awesome, it should be illegal.
-	pkgver = 1.2.245.gc99f0ff
+	pkgdesc = A vim git wrapper so awesome, it should be illegal.
+	pkgver = 2.5.139.g6d42c7d
 	pkgrel = 1
-	url = http://www.vim.org/scripts/script.php?script_id=2975
-	install = vimdoc.install
+	url = https://github.com/tpope/vim-fugitive
 	arch = any
 	groups = vim-plugins
 	license = custom:vim
@@ -12,7 +11,7 @@ pkgbase = vim-fugitive-git
 	depends = git
 	provides = vim-fugitive
 	conflicts = vim-fugitive
-	source = vim-fugitive::git://github.com/tpope/vim-fugitive.git
+	source = vim-fugitive::git+https://github.com/tpope/vim-fugitive.git
 	sha256sums = SKIP
 
 pkgname = vim-fugitive-git

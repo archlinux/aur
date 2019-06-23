@@ -1,35 +1,36 @@
-# Maintainer: Sam Stuewe <halosghost at archlinux dot info>
+# Maintainer: Yiyao Yu <yuydevel at protonmail dot com>
+# Contributor: Sam Stuewe <halosghost at archlinux dot info>
 # Contributor: M Rawash <mrawash@gmail.com>
 # Contributor: János Illés <ijanos@gmail.com>
-_name=vim-fugitive
-pkgname="${_name}-git"
-pkgver=1.2.245.gc99f0ff
+_pkgname=vim-fugitive
+pkgname="${_pkgname}-git"
+pkgver=2.5.139.g6d42c7d
 pkgrel=1
-pkgdesc='A git wrapper so awesome, it should be illegal.'
+pkgdesc='A vim git wrapper so awesome, it should be illegal.'
 arch=('any')
-url='http://www.vim.org/scripts/script.php?script_id=2975'
+url='https://github.com/tpope/vim-fugitive'
 license=('custom:vim')
 groups=('vim-plugins')
 depends=('vim' 'git')
 conflicts=('vim-fugitive')
 provides=('vim-fugitive')
 makedepends=('git')
-install='vimdoc.install'
-source=("${_name}::git://github.com/tpope/${_name}.git")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_name}"
+  cd "${srcdir}/${_pkgname}"
   echo "$(git describe --always|cut -d 'v' -f2|sed -e 's|-|.|g' )"
 }
 
 package() {
-  cd "${srcdir}/${_name}"
+  cd "${srcdir}/${_pkgname}"
 
-  installpath="${pkgdir}/usr/share/vim/vimfiles"
+  find autoload doc ftdetect plugin syntax -type f -exec \
+    install -Dm 644 '{}' "${pkgdir}/usr/share/vim/vimfiles/{}" \;
 
-  install -Dm644 doc/fugitive.txt "$installpath/doc/fugitive.txt"
-  install -Dm644 plugin/fugitive.vim "$installpath/plugin/fugitive.vim"
+  install -Dm 644 doc/fugitive.txt \
+    "${pkgdir}/usr/share/licenses/${_pkgname}/fugitive.txt"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set et ts=2 sw=2 tw=79:
