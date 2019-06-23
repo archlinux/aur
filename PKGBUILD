@@ -1,7 +1,7 @@
 # Maintainer: Nick Cao <nickcao@nichi.co>
 pkgname='dptf'
 pkgver='8.4.10401'
-pkgrel=2
+pkgrel=3
 pkgdesc='Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)'
 arch=('x86_64')
 url='https://github.com/intel/dptf'
@@ -28,15 +28,14 @@ build() {
 	make
 }
 package() {
-	mkdir -p $pkgdir/usr/share/dptf/ufx64
-	install -Dm644 $srcdir/dptf/DPTF/Linux/build/x64/release/Dptf*.so $pkgdir/usr/share/dptf/ufx64
-	mkdir -p $pkgdir/etc/dptf
-	install -Dm644 $srcdir/dptf/ESIF/Packages/DSP/dsp.dv $pkgdir/etc/dptf
-	mkdir -p $pkgdir/usr/bin
-	install -Dm644 $srcdir/dptf/ESIF/Products/ESIF_UF/Linux/esif_ufd $pkgdir/usr/bin
-	install -Dm644 $srcdir/dptf/ESIF/Products/ESIF_CMP/Linux/esif_cmp.so $pkgdir/usr/share/dptf/ufx64
-	install -Dm644 $srcdir/dptf/ESIF/Products/ESIF_WS/Linux/esif_ws.so $pkgdir/usr/share/dptf/ufx64
-	mkdir -p $pkgdir/lib/systemd/system
-	install -Dm644 $srcdir/dptf/ESIF/Packages/Installers/linux/dptf.service $pkgdir/lib/systemd/system
+	install -Dm644 $srcdir/dptf/DPTF/Linux/build/x64/release/Dptf.so $pkgdir/usr/share/dptf/ufx64/Dptf.so
+	install -Dm644 $srcdir/dptf/DPTF/Linux/build/x64/release/DptfPolicyActive.so $pkgdir/usr/share/dptf/ufx64/DptfPolicyActive.so
+	install -Dm644 $srcdir/dptf/DPTF/Linux/build/x64/release/DptfPolicyCritical.so $pkgdir/usr/share/dptf/ufx64/DptfPolicyCritical.so
+	install -Dm644 $srcdir/dptf/DPTF/Linux/build/x64/release/DptfPolicyPassive.so $pkgdir/usr/share/dptf/ufx64/DptfPolicyPassive.so
+	install -Dm644 $srcdir/dptf/ESIF/Products/ESIF_CMP/Linux/esif_cmp.so $pkgdir/usr/share/dptf/ufx64/esif_cmp.so
+	install -Dm644 $srcdir/dptf/ESIF/Products/ESIF_WS/Linux/esif_ws.so $pkgdir/usr/share/dptf/ufx64/esif_ws.so
+	install -Dm644 $srcdir/dptf/ESIF/Packages/DSP/dsp.dv $pkgdir/etc/dptf/dsp.dv
+	install -Dm744 $srcdir/dptf/ESIF/Products/ESIF_UF/Linux/esif_ufd $pkgdir/usr/bin/esif_ufd
+	install -Dm644 $srcdir/dptf/ESIF/Packages/Installers/linux/dptf.service $pkgdir/usr/lib/systemd/system/dptf.service
 	install -Dm644 $srcdir/dptf/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
