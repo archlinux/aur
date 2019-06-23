@@ -2,7 +2,7 @@
 
 _pkgname=berry
 pkgname=berry-git
-#pkgbase=berry-git
+pkgbase=berry
 pkgver=git+8d72619
 pkgrel=1
 pkgdesc="A healthy, bite-sized window manager written over the XLib Library"
@@ -15,25 +15,22 @@ source=(
 	"git://github.com/JLErvin/berry.git#branch=master"
 	berry.desktop
 )
-sha256sums=(
-	'SKIP'
-	'SKIP'
-)
+sha256sums=(	'SKIP',
+		'SKIP')
 
 # For later.
 #install -D -m644 ../berry.desktop "${pkgdir}/usr/share/xsessions/"
 
 build() {
-	# Build the package.
 	cd ${_pkgname}/
 	make
 }
 
 package() {
-	# ...and install.
 	cd ${_pkgname}/
 	make DESTDIR="$pkgdir/" install
 	
 	cd man/
 	make DESTDIR="$pkgdir/" install
 }
+										
