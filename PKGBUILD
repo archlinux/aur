@@ -2,7 +2,7 @@
 
 pkgname=fightcade2
 pkgver=2.0.12
-pkgrel=2
+pkgrel=3
 pkgdesc='The best way to play your favorite retro games with or against any other player in the world.'
 url='https://play.fightcade.com/'
 arch=('any')
@@ -33,5 +33,9 @@ package() {
 	install -dm755 $pkgdir/opt/
 	install -Dm644 "$srcdir/Fightcade2/fc2-electron/resources/app/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	msg "Copying files..."
 	rsync -r --chmod=755 $srcdir/Fightcade2/* $pkgdir/opt/$pkgname/
+	msg "Changing emulators configs permissions..."
+	chmod 777 "$pkgdir/opt/$pkgname/emulator/snes9x/fcadesnes9x.conf"
+	chown -R $USER $pkgdir/opt/$pkgname/emulator/fba/config/
 }

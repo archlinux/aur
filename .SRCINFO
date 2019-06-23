@@ -1,7 +1,7 @@
 pkgbase = fightcade2
 	pkgdesc = The best way to play your favorite retro games with or against any other player in the world.
 	pkgver = 2.0.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://play.fightcade.com/
 	arch = any
 	license = custom
