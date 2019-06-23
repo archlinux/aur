@@ -1,3 +1,9 @@
+4.5.12 (2019-06-21 15:20:41)
+
+    Improves switch / case statement detection for ARM 32bits,
+    Adds a way to change operand format options on multiple selection,
+    Provides more information about the issue when the debugger cannot be started.
+
 4.5.11 (2019-05-06 14:58:44)
 
     Fixes an issue in the search feature where results in segments with no sections were not found.
