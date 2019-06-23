@@ -1,0 +1,5 @@
+pkg/
+src/
+srtune/
+*.tar.gz
+*.xz
