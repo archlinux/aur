@@ -1,0 +1,14 @@
+post_upgrade() {
+    cat << EOF
+
+This package installs nvidia-exporter for use with Prometheus. It exports GPU
+information from NVIDIA graphics cards.
+
+To start this service, type: sudo systemctl start nvidia-exporter
+
+To enable the service on boot, type: sudo systemctl enable nvidia-exporter
+
+The service exposes metrics on port 9401.
+
+EOF
+}

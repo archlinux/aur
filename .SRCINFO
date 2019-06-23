@@ -1,0 +1,17 @@
+pkgbase = nvidia-exporter-git
+	pkgdesc = Query information about the installed Nvidia GPUs.
+	pkgver = r4.f38931eea308
+	pkgrel = 1
+	url = https://github.com/BugRoger/nvidia-exporter
+	install = nvidia-exporter.install
+	arch = x86_64
+	license = Apache
+	makedepends = go-pie
+	depends = glibc
+	source = git+https://github.com/BugRoger/nvidia-exporter
+	source = nvidia-exporter.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nvidia-exporter-git
+

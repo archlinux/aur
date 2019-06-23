@@ -1,0 +1,11 @@
+[Unit]
+Description=NVIDIA Node Exporter
+After=prometheus.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/nvidia-exporter
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
