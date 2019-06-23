@@ -1,0 +1,24 @@
+diff -ru blockattack-game-2.5.0-orig/source/code/ReadKeyboard.cpp blockattack-game-2.5.0/source/code/ReadKeyboard.cpp
+--- blockattack-game-2.5.0-orig/source/code/ReadKeyboard.cpp	2019-05-25 16:06:13.000000000 +0200
++++ blockattack-game-2.5.0/source/code/ReadKeyboard.cpp	2019-06-23 10:47:51.021461071 +0200
+@@ -22,7 +22,7 @@
+ */
+ 
+ #include "ReadKeyboard.h"
+-#include "utf8.h"
++#include <utf8cpp/utf8.h>
+ #include <iostream>
+ 
+ ReadKeyboard::ReadKeyboard(void) {
+diff -ru blockattack-game-2.5.0-orig/source/code/sago/SagoTextBox.cpp blockattack-game-2.5.0/source/code/sago/SagoTextBox.cpp
+--- blockattack-game-2.5.0-orig/source/code/sago/SagoTextBox.cpp	2019-05-25 16:06:13.000000000 +0200
++++ blockattack-game-2.5.0/source/code/sago/SagoTextBox.cpp	2019-06-23 10:47:12.214334136 +0200
+@@ -26,7 +26,7 @@
+ #include "SagoTextField.hpp"
+ #include <vector>
+ #include <iostream>
+-#include "utf8.h"
++#include <utf8cpp/utf8.h>
+ #include <algorithm>
+ 
+ namespace sago {
