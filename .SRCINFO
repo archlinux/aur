@@ -1,0 +1,13 @@
+pkgbase = amqp-cpp
+	pkgdesc = C++ library for asynchronous non-blocking communication with RabbitMQ
+	pkgver = 4.1.4
+	pkgrel = 1
+	url = https://github.com/CopernicaMarketingSoftware/AMQP-CPP
+	arch = any
+	license = Apache2.0
+	makedepends = cmake
+	source = https://github.com/CopernicaMarketingSoftware/AMQP-CPP/archive/v4.1.4.tar.gz
+	sha256sums = 1e0d070d980e44a2293a94c416b5690ffc529e0246cc2ef079dec59773b9708b
+
+pkgname = amqp-cpp
+
