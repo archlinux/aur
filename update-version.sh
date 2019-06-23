@@ -10,4 +10,6 @@ SHA256SUM=`curl -fsSL ${SHA256URL} | cut -d ' ' -f1`
 sed -i -e "s/pkgver=.*/pkgver=${VERSION}/" PKGBUILD
 sed -i -e "s/sha256sums_x86_64=.*/sha256sums_x86_64=(\"${SHA256SUM}\")/" PKGBUILD
 
-git commit -m "Updating to ${VERSION}" ./PKGBUILD
+makepkg --printsrcinfo > .SRCINFO
+
+git commit -m "Updating to ${VERSION}" ./PKGBUILD ./.SRCINFO
