@@ -1,0 +1,15 @@
+pkgbase = kde-thumbnailer-mp4cover
+	pkgdesc = MP4 video cover art thumbnail generator
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/velnias75/kde-thumbnailer-mp4cover
+	arch = x86_64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	depends = kio
+	depends = taglib
+	source = https://launchpad.net/~velnias/+archive/ubuntu/velnias/+sourcefiles/kde-thumbnailer-mp4cover/0.1-2~bionic/kde-thumbnailer-mp4cover_0.1.orig.tar.xz
+	sha512sums = 0890305fe7ca2b56883cb6dd8953c5dd00085b1cd20a5f8deda16d6be5b230a59e4832d6c4d7419a7ea1554878e3c2057d90b73b71ad77eecf60afb66783afc3
+
+pkgname = kde-thumbnailer-mp4cover
+
