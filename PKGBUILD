@@ -1,18 +1,19 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 _kvv="$(pacman -Qi linux-lts44|awk '/^Version/{print$3}')"
+_kvv="${_kvv:-4.4.182-1}"
 _kvr="${_kvv:+${_kvv}-lts44}"
 _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 pkgname=openss7-modules-lts44-git
 _pkgname=openss7-modules-lts44
-pkgver=1.1.8.63.g45f1b08cd
-pkgrel=3
+pkgver=1.1.8.183.gefa3160b3
+pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS 4.4} Kernel Modules)"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
 license=('AGPL3')
 depends=("linux-lts44${_kvv:+=$_kvv}")
 #depends=("openss7-git" "linux-lts44${_kvv:+=$_kvv}")
-makedepends=('doxygen' 'gcc-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
+makedepends=('git' 'doxygen' 'gcc-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
 	     'gnupg' 'gnuplot' 'imagemagick' 'latex2html'
              'linux-lts44' 'linux-lts44-headers'
              'lsof' 'net-snmp' 'openssl' 'swig' 'systemd' 'tcl' 'texlive-bin'
@@ -74,7 +75,7 @@ build() {
       --with-gnu-ld \
       --disable-docs \
       --disable-tools
-  make
+  make -j1
 }
 
 package() {
