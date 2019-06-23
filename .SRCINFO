@@ -60,7 +60,6 @@ pkgbase = waterfox-kde
 	source = dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/dont-statically-link-libstdc%2B%2B.patch
 	source = pgo_fix_missing_kdejs.patch
 	source = UnsortedError.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/UnsortedError.patch
-	source = rust-simd.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/rust-simd.patch
 	sha256sums = SKIP
 	sha256sums = 6e9ec5f9c6fc5b191f9dec85b82d58eb2a51577b989bc7852e6b254d56ff13e8
 	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
@@ -73,7 +72,6 @@ pkgbase = waterfox-kde
 	sha256sums = 877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8
 	sha256sums = bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e
 	sha256sums = 3b20230c42ac68cdb751c3bd7758a1a45006e00aec8558c33c96d8c4bebbd47f
-	sha256sums = b0623cffd2d51347b7955e0daef62f1c74955f6a31630eedbfb10c601c87d34b
 
 pkgname = waterfox-kde
 
