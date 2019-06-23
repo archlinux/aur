@@ -1,6 +1,6 @@
 # Maintainer: Tong Chunli<t.cunly at 163 dot com>
 pkgname=python-colcon-package-information
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="An extension for colcon-core to provide information about the packages."
 arch=(any)
@@ -8,8 +8,8 @@ url="https://pypi.org/project/colcon-package-information/"
 license=('Apache')
 depends=('python-colcon-core')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/70/54/1d3d1aa86a6b9e53155665e04d2b177051145aaeea598ac0ba2ecc47d48a/colcon-package-information-$pkgver.tar.gz")
-sha256sums=('906f40e468fe7ee2a9c7bbbdb73efa37e85a59faaa7c141446fd350ed23deefb')
+source=(https://files.pythonhosted.org/packages/2d/34/3571034051350571b4c885258ddb9b600ddd6abcd8cf94799f314e97a961/colcon-package-information-0.2.2.tar.gz)
+sha256sums=('4d34a0c05ca6c94679ef37b8166895f41343919de051bb884af8010c10afdcfa')
 
 
 package() {
