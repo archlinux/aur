@@ -1,7 +1,7 @@
 pkgbase = glapse
 	pkgdesc = Take desktop screenshots and glue them to make a time lapse video in GNU/Linux
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/glapse/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = glapse
 	depends = python2
 	depends = pygtk
 	depends = scrot
-	source = http://glapse.googlecode.com/files/glapse-0.3.tar.gz
-	md5sums = 2cdc7d6966d2a52f547f1b42082299e2
+	depends = ffmpeg
+	source = https://github.com/dsaltares/glapse/archive/9c52d22dc763b390e6de4660fab85b66c9cd6d1d.zip
+	sha256sums = cf88939b9873df6658eda67795d56dc0879ced89dde7bffb14cbbe8cde79812d
 
 pkgname = glapse
 
