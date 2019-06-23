@@ -2,7 +2,7 @@
 
 pkgname=amdvlk
 pkgver=2019.Q2.5
-pkgrel=6
+pkgrel=7
 
 _llpc_commit=ddb909580e9996356c3bbe23bc1b14c44987eb4c
 _xgl_commit=96d84068b622b2c3ce8cf9aa8ff597260aa5ad3f
@@ -42,7 +42,6 @@ prepare() {
   ln -sf ${srcdir}/llpc-${_llpc_commit} ${srcdir}/llpc
   ln -sf ${srcdir}/llvm-${_llvm_commit} ${srcdir}/llvm
   ln -sf ${srcdir}/spvgen-${_spvgen_commit} ${srcdir}/spvgen
-  
 }
 
 build() {
@@ -51,25 +50,13 @@ build() {
   #export gcc8 executables because it doesn't build with gcc9 yet
   export CC=/usr/bin/gcc-8
   export CXX=/usr/bin/g++-8
-  
-  #linking to needed executables... there's probably a mistake in gcc8, so I link the needed executables for now.
-  msg "link gcc8 files (sudo)"
-  sudo ln -sf /usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/cc1-8 /usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/cc1        
-  sudo ln -sf /usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/cc1plus-8 /usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/cc1plus
-  sudo ln -sf /usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/lto1-8 /usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/lto1
-  
+   
   cmake -H. -Bbuilds/Release64 \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_WAYLAND_SUPPORT=On
 
   cd builds/Release64
   make
-  
-  #remove links
-  msg "remove linked gcc8 files (sudo)"
-  sudo rm /usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/cc1 
-  sudo rm /usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/cc1plus
-  sudo rm /usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/lto1
 }
 
 package() {
