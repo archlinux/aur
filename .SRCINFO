@@ -1,7 +1,7 @@
 pkgbase = wtwitch
 	pkgdesc = Terminal user interface for Twitch
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://gitlab.com/krathalan/wtwitch
 	arch = any
 	license = GPL3
