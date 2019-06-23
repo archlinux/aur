@@ -13,7 +13,7 @@ depends=()
 makedepends=(
     'git'
     'git-lfs'
-    'rust-nightly'
+    'rustup'
 )
 provides=("$pkgname")
 conflicts=("$pkgname" "veloren")
@@ -40,6 +40,7 @@ prepare() {
     git lfs install
     git lfs fetch
     git lfs checkout
+    rustup toolchain install nightly
 }
 
 build() {
