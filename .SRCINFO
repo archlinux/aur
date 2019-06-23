@@ -1,6 +1,6 @@
 pkgbase = srtune-git
 	pkgdesc = Fast and lightweight subtitle file manipulator capable of correcting time shift, drift, and cuts. (command line tool)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://git.ondrovo.com/MightyPork/srtune
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = srtune-git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
-	source = git+https://git.ondrovo.com/MightyPork/srtune.git#tag=0.2
+	source = git+https://git.ondrovo.com/MightyPork/srtune.git#tag=0.3
 	md5sums = SKIP
 
 pkgname = srtune-git
