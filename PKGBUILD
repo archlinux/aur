@@ -5,7 +5,7 @@
 
 _gemname=railties
 pkgname=ruby-$_gemname
-pkgver=5.2.2
+pkgver=5.2.3
 pkgrel=1
 pkgdesc='Tools for creating, working with, and running Rails applications.'
 arch=(any)
@@ -14,7 +14,7 @@ license=(MIT)
 depends=(ruby ruby-activesupport ruby-actionpack ruby-thor)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha1sums=('c14475048029c3896763b8b49a73be303b3610f8')
+sha1sums=('2a0c7f8779c291adbeebdd8fa28a46c39237d333')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
