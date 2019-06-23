@@ -54,6 +54,7 @@ prepare()
 
   ## Move lal-tools into the GPS source tree.
   #
+  rm -fr $srcdir/gps-$gps_version/laltools
   mv $srcdir/libadalang-tools-2019-20190517-195C4-src $srcdir/gps-$gps_version/laltools
 }
 
