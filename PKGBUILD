@@ -145,7 +145,7 @@ ac_add_options --disable-webrtc
 # If you want to have gamepad support, comment this line:
 ac_add_options --disable-gamepad
 
-ac_add_options --disable-stylo # you can comment this if you've rust<=1.33
+#ac_add_options --disable-stylo
 
 # Enable wanted features
 ac_add_options --enable-jemalloc
