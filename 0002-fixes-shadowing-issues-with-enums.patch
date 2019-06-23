@@ -1,0 +1,2190 @@
+From 7d402476104b7611b2ff7ed0770d9e8282c572a3 Mon Sep 17 00:00:00 2001
+From: Zerophase <mikelojkovic@gmail.com>
+Date: Fri, 14 Jun 2019 14:20:51 -0500
+Subject: [PATCH 2/2] fixes shadowing issues with enums
+
+---
+ .../Private/SpeedTreeImportFactory.cpp        |   4 +-
+ .../AlembicLibrary/Private/AbcImporter.cpp    |   2 +-
+ .../ProceduralMeshComponentDetails.cpp        |   2 +-
+ /* .../Private/HierarchicalLODUtilities.cpp      |   2 +- */
+ .../Private/MeshMergeUtilities.cpp            |   2 +-
+ .../Private/ProxyGenerationProcessor.cpp      |   2 +-
+ .../MeshUtilities/Private/MeshUtilities.cpp   |   6 +-
+ .../Profiler/Private/ProfilerDataSource.cpp   |  57 ++++----
+ .../Profiler/Private/ProfilerDataSource.h     |  18 +--
+ .../Profiler/Private/Widgets/SDataGraph.cpp   |   2 +-
+ .../Profiler/Private/Widgets/SEventGraph.cpp  |  47 +++----
+ .../MaterialEditor/Private/MaterialEditor.cpp |  22 +--
+ ...erialEditorInstanceDetailCustomization.cpp |   6 +-
+ .../Private/MaterialPropertyHelpers.cpp       |   8 +-
+ .../Private/SMaterialLayersFunctionsTree.cpp  |   4 +-
+ .../Source/Editor/Matinee/Private/Matinee.cpp |  42 +++---
+ .../Editor/Matinee/Private/MatineeActions.h   |   4 +-
+ .../Editor/Matinee/Private/MatineeMenus.cpp   |  78 +++++------
+ .../Private/Factories/EditorFactories.cpp     |   4 +-
+ .../Private/Fbx/FbxStaticMeshImport.cpp       |   2 +-
+ .../UnrealEd/Private/StaticMeshEdit.cpp       |   8 +-
+ .../MaterialFunctionThumbnailRenderer.cpp     |   4 +-
+ .../VREditor/Public/VREditorInteractor.h      |  21 +--
+ .../Editor/VREditor/VREditorInteractor.cpp    |  16 +--
+ .../Tiles/WorldTileCollectionModel.cpp        |   2 +-
+ .../Runtime/Engine/Classes/Engine/Engine.h    |  77 ++++++-----
+ .../Engine/Classes/Engine/StaticMesh.h        | 126 +++++++++---------
+ .../Classes/Materials/MaterialFunction.h      |   4 +-
+ .../Materials/MaterialFunctionInstance.h      |   4 +-
+ .../Materials/MaterialFunctionInterface.h     |  19 +--
+ .../Components/StaticMeshComponent.cpp        |   2 +-
+ .../Runtime/Engine/Private/GameInstance.cpp   |   2 +-
+ .../Engine/Private/GameViewportClient.cpp     |  12 +-
+ .../Private/Materials/MaterialExpressions.cpp |  10 +-
+ .../Runtime/Engine/Private/PendingNetGame.cpp |   2 +-
+ .../Runtime/Engine/Private/StaticMesh.cpp     |   2 +-
+ .../Runtime/Engine/Private/UnrealEngine.cpp   |  18 +--
+ .../Private/MovieSceneSequencePlayer.cpp      |  10 +-
+ .../Public/MovieSceneSequencePlayer.h         |   5 +-
+ .../Private/Common/StatsCollector.h           |   2 +-
+ .../OpenGLDrv/Private/OpenGLUniformBuffer.cpp |   2 +-
+ .../OpenGLDrv/Private/OpenGLVertexBuffer.cpp  |   2 +-
+ .../Source/Runtime/OpenGLDrv/Public/OpenGL.h  |   2 +-
+ .../Source/Runtime/OpenGLDrv/Public/OpenGL3.h |  10 +-
+ .../OpenGLDrv/Public/OpenGLResources.h        |   4 +-
+ 45 files changed, 347 insertions(+), 333 deletions(-)
+
+diff --git a/Engine/Plugins/Editor/SpeedTreeImporter/Source/SpeedTreeImporter/Private/SpeedTreeImportFactory.cpp b/Engine/Plugins/Editor/SpeedTreeImporter/Source/SpeedTreeImporter/Private/SpeedTreeImportFactory.cpp
+index 5fd4228a025..8520f493dd1 100644
+--- a/Engine/Plugins/Editor/SpeedTreeImporter/Source/SpeedTreeImporter/Private/SpeedTreeImportFactory.cpp
++++ b/Engine/Plugins/Editor/SpeedTreeImporter/Source/SpeedTreeImporter/Private/SpeedTreeImportFactory.cpp
+@@ -1973,7 +1973,7 @@ UObject* USpeedTreeImportFactory::FactoryCreateBinary7(UClass* InClass, UObject*
+ 				}
+ 
+ 				//Set the Imported version before calling the build
+-				StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion;
++				StaticMesh->ImportVersion = StaticMesh::EImportStaticMeshVersion::LastVersion;
+ 
+ 				StaticMesh->Build();
+ 
+@@ -2347,7 +2347,7 @@ UObject* USpeedTreeImportFactory::FactoryCreateBinary8(UClass* InClass, UObject*
+ 		}
+ 
+ 		//Set the Imported version before calling the build
+-		StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion;
++		StaticMesh->ImportVersion = StaticMesh::EImportStaticMeshVersion::LastVersion;
+ 		StaticMesh->Build();
+ 
+ 		// collision objects
+diff --git a/Engine/Plugins/Experimental/AlembicImporter/Source/AlembicLibrary/Private/AbcImporter.cpp b/Engine/Plugins/Experimental/AlembicImporter/Source/AlembicLibrary/Private/AbcImporter.cpp
+index cfca9a9955a..9d52334ebf9 100644
+--- a/Engine/Plugins/Experimental/AlembicImporter/Source/AlembicLibrary/Private/AbcImporter.cpp
++++ b/Engine/Plugins/Experimental/AlembicImporter/Source/AlembicLibrary/Private/AbcImporter.cpp
+@@ -247,7 +247,7 @@ UStaticMesh* FAbcImporter::CreateStaticMeshFromSample(UObject* InParent, const F
+ 		StaticMesh->CommitMeshDescription(LODIndex);
+ 
+ 		//Set the Imported version before calling the build
+-		StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion;
++		StaticMesh->ImportVersion = StaticMesh::EImportStaticMeshVersion::LastVersion;
+ 
+ 		// Build the static mesh (using the build setting etc.) this generates correct tangents using the extracting smoothing group along with the imported Normals data
+ 		StaticMesh->Build(false);
+diff --git a/Engine/Plugins/Runtime/ProceduralMeshComponent/Source/ProceduralMeshComponentEditor/Private/ProceduralMeshComponentDetails.cpp b/Engine/Plugins/Runtime/ProceduralMeshComponent/Source/ProceduralMeshComponentEditor/Private/ProceduralMeshComponentDetails.cpp
+index 68bd724e6bc..f48097656cf 100644
+--- a/Engine/Plugins/Runtime/ProceduralMeshComponent/Source/ProceduralMeshComponentEditor/Private/ProceduralMeshComponentDetails.cpp
++++ b/Engine/Plugins/Runtime/ProceduralMeshComponent/Source/ProceduralMeshComponentEditor/Private/ProceduralMeshComponentDetails.cpp
+@@ -269,7 +269,7 @@ FReply FProceduralMeshComponentDetails::ClickedOnConvertToStaticMesh()
+ 				}
+ 
+ 				//Set the Imported version before calling the build
+-				StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion;
++				StaticMesh->ImportVersion = StaticMesh::EImportStaticMeshVersion::LastVersion;
+ 
+ 				// Build mesh from source
+ 				StaticMesh->Build(false);
+/* diff --git a/Engine/Source/Developer/HierarchicalLODUtilities/Private/HierarchicalLODUtilities.cpp b/Engine/Source/Developer/HierarchicalLODUtilities/Private/HierarchicalLODUtilities.cpp */
+/* index 1fd032e63ef..c58bade5ae7 100644 */
+/* --- a/Engine/Source/Developer/HierarchicalLODUtilities/Private/HierarchicalLODUtilities.cpp */
+/* +++ b/Engine/Source/Developer/HierarchicalLODUtilities/Private/HierarchicalLODUtilities.cpp */
+/* @@ -312,7 +312,7 @@ UStaticMesh* CreateImposterStaticMesh(UStaticMeshComponent* InComponent, UMateri */
+     /* StaticMesh->StaticMaterials = { InMaterial }; */
+ 
+     /* //Set the Imported version before calling the build */
+/* -		StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion; */
+/* +		StaticMesh->ImportVersion = StaticMesh::EImportStaticMeshVersion::LastVersion; */
+ 
+     /* StaticMesh->PostEditChange(); */
+ 
+diff --git a/Engine/Source/Developer/MeshMergeUtilities/Private/MeshMergeUtilities.cpp b/Engine/Source/Developer/MeshMergeUtilities/Private/MeshMergeUtilities.cpp
+index f787722bb03..cc5b4e8e69f 100644
+--- a/Engine/Source/Developer/MeshMergeUtilities/Private/MeshMergeUtilities.cpp
++++ b/Engine/Source/Developer/MeshMergeUtilities/Private/MeshMergeUtilities.cpp
+@@ -2574,7 +2574,7 @@ void FMeshMergeUtilities::MergeComponentsToStaticMesh(const TArray<UPrimitiveCom
+ 		StaticMesh->OriginalSectionInfoMap.CopyFrom(SectionInfoMap);
+ 
+ 		//Set the Imported version before calling the build
+-		StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion;
++		StaticMesh->ImportVersion = StaticMesh::EImportStaticMeshVersion::LastVersion;
+ 		StaticMesh->LightMapResolution = InSettings.bComputedLightMapResolution ? DataTracker.GetLightMapDimension() : InSettings.TargetLightMapResolution;
+ 
+ #if WITH_EDITOR
+diff --git a/Engine/Source/Developer/MeshMergeUtilities/Private/ProxyGenerationProcessor.cpp b/Engine/Source/Developer/MeshMergeUtilities/Private/ProxyGenerationProcessor.cpp
+index 7f04aaaaafd..c8cfdd6bc56 100644
+--- a/Engine/Source/Developer/MeshMergeUtilities/Private/ProxyGenerationProcessor.cpp
++++ b/Engine/Source/Developer/MeshMergeUtilities/Private/ProxyGenerationProcessor.cpp
+@@ -277,7 +277,7 @@ void FProxyGenerationProcessor::ProcessJob(const FGuid& JobGuid, FProxyGeneratio
+ 	}
+ 
+ 	//Set the Imported version before calling the build
+-	StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion;
++	StaticMesh->ImportVersion = StaticMesh::EImportStaticMeshVersion::LastVersion;
+ 
+ 	// setup section info map
+ 	TPolygonGroupAttributesConstRef<FName> PolygonGroupImportedMaterialSlotNames = Data->RawMesh.PolygonGroupAttributes().GetAttributesRef<FName>(MeshAttribute::PolygonGroup::ImportedMaterialSlotName);
+diff --git a/Engine/Source/Developer/MeshUtilities/Private/MeshUtilities.cpp b/Engine/Source/Developer/MeshUtilities/Private/MeshUtilities.cpp
+index 79adce36b1d..3d45f78ba64 100644
+--- a/Engine/Source/Developer/MeshUtilities/Private/MeshUtilities.cpp
++++ b/Engine/Source/Developer/MeshUtilities/Private/MeshUtilities.cpp
+@@ -561,7 +561,7 @@ UStaticMesh* FMeshUtilities::ConvertMeshesToStaticMesh(const TArray<UMeshCompone
+ 			}
+ 			
+ 			//Set the Imported version before calling the build
+-			StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion;
++			StaticMesh->ImportVersion = StaticMesh::EImportStaticMeshVersion::LastVersion;
+ 
+ 			// Set light map coordinate index to match DstLightmapIndex
+ 			StaticMesh->LightMapCoordinateIndex = LightMapIndex;
+@@ -2309,7 +2309,7 @@ void FMeshUtilities::BuildStaticMeshVertexAndIndexBuffers(
+ 
+ 		// Put the indices in the material index buffer.
+ 		uint32 SectionIndex = 0;
+-		if (ImportVersion < RemoveStaticMeshSkinxxWorkflow)
++		if (ImportVersion < StaticMesh::RemoveStaticMeshSkinxxWorkflow)
+ 		{
+ 			SectionIndex = FMath::Clamp(RawMesh.FaceMaterialIndices[FaceIndex], 0, OutPerSectionIndices.Num() - 1);
+ 		}
+@@ -2715,7 +2715,7 @@ public:
+ 				const int32 MaterialIndex = MaterialIndices[Index];
+ 				FStaticMeshSection* Section = new(LODModel.Sections) FStaticMeshSection();
+ 				Section->MaterialIndex = MaterialIndex;
+-				if (ImportVersion < RemoveStaticMeshSkinxxWorkflow)
++				if (ImportVersion < StaticMesh::RemoveStaticMeshSkinxxWorkflow)
+ 				{
+ 					MaterialToSectionMapping.Add(MaterialIndex, MaterialIndex);
+ 				}
+diff --git a/Engine/Source/Developer/Profiler/Private/ProfilerDataSource.cpp b/Engine/Source/Developer/Profiler/Private/ProfilerDataSource.cpp
+index daefe07c24b..c1200bd4e9b 100644
+--- a/Engine/Source/Developer/Profiler/Private/ProfilerDataSource.cpp
++++ b/Engine/Source/Developer/Profiler/Private/ProfilerDataSource.cpp
+@@ -27,7 +27,7 @@ const int32 FTimeAccuracy::_FPS120 = 120;
+ FGraphDataSource::FGraphDataSource( const TSharedRef<FProfilerSession>& InProfilerSession, const uint32 InStatID ) 
+ 	: FGraphDataSourceDescription( InStatID )
+ 	, ThisCachedDataByIndex()
+-	, ThisCachedDataByTime( FTimeAccuracy::FPS060 )
++	, ThisCachedDataByTime( FTimeAccuracy::Type::FPS060 )
+ 	, ProfilerSession( InProfilerSession ) 
+ {
+ 	const TSharedRef<FProfilerStatMetaData> MetaData = ProfilerSession->GetMetaData();
+@@ -220,7 +220,7 @@ FName FEventGraphConsts::FakeRoot = TEXT("FakeRoot");
+ 	FEventGraphSample
+ -----------------------------------------------------------------------------*/
+ 
+-FEventProperty FEventGraphSample::Properties[ EEventPropertyIndex::InvalidOrMax ] =
++FEventProperty FEventGraphSample::Properties[ (int)EEventPropertyIndex::InvalidOrMax ] =
+ {
+ 	// Properties
+ 	FEventProperty( EEventPropertyIndex::StatName, TEXT( "StatName" ), STRUCT_OFFSET( FEventGraphSample, _StatName ), EEventPropertyFormatters::Name ),
+@@ -264,41 +264,42 @@ void FEventGraphSample::InitializePropertyManagement()
+ 	static bool bInitialized = false;
+ 	if( !bInitialized )
+ 	{
++		// FIXME remove (int) conversions
+ 		NamedProperties = TMapBuilder<FName,const FEventProperty*>()
+ 			// Properties
+-			.Add( TEXT( "StatName" ), &Properties[EEventPropertyIndex::StatName] )
+-			.Add( TEXT( "InclusiveTimeMS" ), &Properties[EEventPropertyIndex::InclusiveTimeMS] )
+-			.Add( TEXT( "InclusiveTimePct" ), &Properties[EEventPropertyIndex::InclusiveTimePct] )
+-			.Add( TEXT( "ExclusiveTimeMS" ), &Properties[EEventPropertyIndex::ExclusiveTimeMS] )
+-			.Add( TEXT( "ExclusiveTimePct" ), &Properties[EEventPropertyIndex::ExclusiveTimePct] )
+-			.Add( TEXT( "NumCallsPerFrame" ), &Properties[EEventPropertyIndex::NumCallsPerFrame] )
++			.Add( TEXT( "StatName" ), &Properties[(int)EEventPropertyIndex::StatName] )
++			.Add( TEXT( "InclusiveTimeMS" ), &Properties[(int)EEventPropertyIndex::InclusiveTimeMS] )
++			.Add( TEXT( "InclusiveTimePct" ), &Properties[(int)EEventPropertyIndex::InclusiveTimePct] )
++			.Add( TEXT( "ExclusiveTimeMS" ), &Properties[(int)EEventPropertyIndex::ExclusiveTimeMS] )
++			.Add( TEXT( "ExclusiveTimePct" ), &Properties[(int)EEventPropertyIndex::ExclusiveTimePct] )
++			.Add( TEXT( "NumCallsPerFrame" ), &Properties[(int)EEventPropertyIndex::NumCallsPerFrame] )
+ 
+ 			// Special none property
+-			.Add( NAME_None, &Properties[EEventPropertyIndex::None] )
++			.Add( NAME_None, &Properties[(int)EEventPropertyIndex::None] )
+ 
+-			.Add( TEXT( "MinInclusiveTimeMS" ), &Properties[EEventPropertyIndex::MinInclusiveTimeMS] )
+-			.Add( TEXT( "MaxInclusiveTimeMS" ), &Properties[EEventPropertyIndex::MaxInclusiveTimeMS] )
+-			.Add( TEXT( "AvgInclusiveTimeMS" ), &Properties[EEventPropertyIndex::AvgInclusiveTimeMS] )	
++			.Add( TEXT( "MinInclusiveTimeMS" ), &Properties[(int)EEventPropertyIndex::MinInclusiveTimeMS] )
++			.Add( TEXT( "MaxInclusiveTimeMS" ), &Properties[(int)EEventPropertyIndex::MaxInclusiveTimeMS] )
++			.Add( TEXT( "AvgInclusiveTimeMS" ), &Properties[(int)EEventPropertyIndex::AvgInclusiveTimeMS] )
+ 
+-			.Add( TEXT( "MinNumCallsPerFrame" ), &Properties[EEventPropertyIndex::MinNumCallsPerFrame] )
+-			.Add( TEXT( "MaxNumCallsPerFrame" ), &Properties[EEventPropertyIndex::MaxNumCallsPerFrame] )
+-			.Add( TEXT( "AvgNumCallsPerFrame" ), &Properties[EEventPropertyIndex::AvgNumCallsPerFrame] )
++			.Add( TEXT( "MinNumCallsPerFrame" ), &Properties[(int)EEventPropertyIndex::MinNumCallsPerFrame] )
++			.Add( TEXT( "MaxNumCallsPerFrame" ), &Properties[(int)EEventPropertyIndex::MaxNumCallsPerFrame] )
++			.Add( TEXT( "AvgNumCallsPerFrame" ), &Properties[(int)EEventPropertyIndex::AvgNumCallsPerFrame] )
+ 
+-			.Add( TEXT( "ThreadName" ), &Properties[EEventPropertyIndex::ThreadName] )
+-			.Add( TEXT( "ThreadDurationMS" ), &Properties[EEventPropertyIndex::ThreadDurationMS] )
+-			.Add( TEXT( "FrameDurationMS" ), &Properties[EEventPropertyIndex::FrameDurationMS] )
+-			.Add( TEXT( "ThreadPct" ), &Properties[EEventPropertyIndex::ThreadPct] )
+-			.Add( TEXT( "FramePct" ), &Properties[EEventPropertyIndex::FramePct] )
+-			.Add( TEXT( "ThreadToFramePct" ), &Properties[EEventPropertyIndex::ThreadToFramePct] )
+-			.Add( TEXT( "GroupName" ), &Properties[EEventPropertyIndex::GroupName] )
++			.Add( TEXT( "ThreadName" ), &Properties[(int)EEventPropertyIndex::ThreadName] )
++			.Add( TEXT( "ThreadDurationMS" ), &Properties[(int)EEventPropertyIndex::ThreadDurationMS] )
++			.Add( TEXT( "FrameDurationMS" ), &Properties[(int)EEventPropertyIndex::FrameDurationMS] )
++			.Add( TEXT( "ThreadPct" ), &Properties[(int)EEventPropertyIndex::ThreadPct] )
++			.Add( TEXT( "FramePct" ), &Properties[(int)EEventPropertyIndex::FramePct] )
++			.Add( TEXT( "ThreadToFramePct" ), &Properties[(int)EEventPropertyIndex::ThreadToFramePct] )
++			.Add( TEXT( "GroupName" ), &Properties[(int)EEventPropertyIndex::GroupName] )
+ 
+ 			// Booleans
+-			.Add( TEXT( "bIsHotPath" ), &Properties[EEventPropertyIndex::bIsHotPath] )
+-			.Add( TEXT( "bIsFiltered" ), &Properties[EEventPropertyIndex::bIsFiltered] )
+-			.Add( TEXT( "bIsCulled" ), &Properties[EEventPropertyIndex::bIsCulled] )
++			.Add( TEXT( "bIsHotPath" ), &Properties[(int)EEventPropertyIndex::bIsHotPath] )
++			.Add( TEXT( "bIsFiltered" ), &Properties[(int)EEventPropertyIndex::bIsFiltered] )
++			.Add( TEXT( "bIsCulled" ), &Properties[(int)EEventPropertyIndex::bIsCulled] )
+ 
+ 			// Booleans internal
+-			.Add( TEXT( "bNeedNotCulledChildrenUpdate" ), &Properties[EEventPropertyIndex::bNeedNotCulledChildrenUpdate] )
++			.Add( TEXT( "bNeedNotCulledChildrenUpdate" ), &Properties[(int)EEventPropertyIndex::bNeedNotCulledChildrenUpdate] )
+ 			;
+ 	
+ 		// Make sure that the minimal property manager has been initialized.
+@@ -308,8 +309,8 @@ void FEventGraphSample::InitializePropertyManagement()
+ 		check( NamedProperties.FindChecked( NAME_None )->Name == NAME_None );
+ 		check( NamedProperties.FindChecked( NAME_None )->Offset == INDEX_NONE );
+ 
+-		check( FEventGraphSample::Properties[ EEventPropertyIndex::None ].Name == NAME_None );
+-		check( FEventGraphSample::Properties[ EEventPropertyIndex::None ].Offset == INDEX_NONE );
++		check( FEventGraphSample::Properties[ (int)EEventPropertyIndex::None ].Name == NAME_None );
++		check( FEventGraphSample::Properties[ (int)EEventPropertyIndex::None ].Offset == INDEX_NONE );
+ 	}
+ }
+ 
+diff --git a/Engine/Source/Developer/Profiler/Private/ProfilerDataSource.h b/Engine/Source/Developer/Profiler/Private/ProfilerDataSource.h
+index 7c33291671e..fd83cf9896e 100644
+--- a/Engine/Source/Developer/Profiler/Private/ProfilerDataSource.h
++++ b/Engine/Source/Developer/Profiler/Private/ProfilerDataSource.h
+@@ -43,7 +43,7 @@ struct FProfilerScratchArea : public TThreadSingleton<FProfilerScratchArea>
+ 
+ struct FTimeAccuracy
+ {
+-	enum Type
++	enum class Type
+ 	{
+ 		FPS008,
+ 		FPS015,
+@@ -56,20 +56,20 @@ struct FTimeAccuracy
+ 
+ 	static const float AsFrameTime( Type InTimeAccuracy )
+ 	{
+-		static const float FrameTimeTable[InvalidOrMax] = {1000.0f/_FPS008,1000.0f/_FPS015,1000.0f/_FPS030,1000.0f/_FPS060,1000.0f/_FPS120};
+-		return FrameTimeTable[InTimeAccuracy];
++		static const float FrameTimeTable[(int)Type::InvalidOrMax] = {1000.0f/_FPS008,1000.0f/_FPS015,1000.0f/_FPS030,1000.0f/_FPS060,1000.0f/_FPS120};
++		return FrameTimeTable[(int)InTimeAccuracy];
+ 	}
+ 
+ 	static const float AsInvFrameTime( Type InTimeAccuracy )
+ 	{
+-		static const float FPSInvTable[InvalidOrMax] = {0.001f*_FPS008,0.001f*_FPS015,0.001f*_FPS030,0.001f*_FPS060,0.001f*_FPS120};
+-		return FPSInvTable[InTimeAccuracy];
++		static const float FPSInvTable[(int)Type::InvalidOrMax] = {0.001f*_FPS008,0.001f*_FPS015,0.001f*_FPS030,0.001f*_FPS060,0.001f*_FPS120};
++		return FPSInvTable[(int)InTimeAccuracy];
+ 	}
+ 
+ 	static const int32 AsFPSCounter( Type InTimeAccuracy )
+ 	{
+-		static const int32 FPSTable[InvalidOrMax] = {_FPS008,_FPS015,_FPS030,_FPS060,_FPS120};
+-		return FPSTable[InTimeAccuracy];
++		static const int32 FPSTable[(int)Type::InvalidOrMax] = {_FPS008,_FPS015,_FPS030,_FPS060,_FPS120};
++		return FPSTable[(int)InTimeAccuracy];
+ 	}
+ 
+ private:
+@@ -690,7 +690,7 @@ protected:
+ -----------------------------------------------------------------------------*/
+ 
+ /** Enumerates event graph columns index. */
+-enum EEventPropertyIndex
++enum class EEventPropertyIndex
+ {
+ 	/** Stat name must be the first column, because of the expander arrow. */
+ 	StatName,
+@@ -968,7 +968,7 @@ public:
+ 
+ protected:
+ 	/** Contains all properties of the event graph sample class. */
+-	static FEventProperty Properties[ EEventPropertyIndex::InvalidOrMax ];
++	static FEventProperty Properties[ (int)EEventPropertyIndex::InvalidOrMax ];
+ 
+ 	/** Contains all properties of the event graph sample class, indexed by the name of the property, stored as FName -> FEventProperty&. */
+ 	static TMap<FName,const FEventProperty*> NamedProperties;
+diff --git a/Engine/Source/Developer/Profiler/Private/Widgets/SDataGraph.cpp b/Engine/Source/Developer/Profiler/Private/Widgets/SDataGraph.cpp
+index a9f8bac6524..b730423cac1 100644
+--- a/Engine/Source/Developer/Profiler/Private/Widgets/SDataGraph.cpp
++++ b/Engine/Source/Developer/Profiler/Private/Widgets/SDataGraph.cpp
+@@ -204,7 +204,7 @@ SDataGraph::SDataGraph()
+ 
+ 	, ViewMode( EDataGraphViewModes::Index )
+ 	, MultiMode( EDataGraphMultiModes::OneLinePerDataSource )
+-	, TimeBasedAccuracy( FTimeAccuracy::FPS060 )
++	, TimeBasedAccuracy( FTimeAccuracy::Type::FPS060 )
+ 	, DistanceBetweenPoints( 4 )
+ 
+ 	, NumDataPoints( 0 )
+diff --git a/Engine/Source/Developer/Profiler/Private/Widgets/SEventGraph.cpp b/Engine/Source/Developer/Profiler/Private/Widgets/SEventGraph.cpp
+index 5e8644a4dae..8b8c68f45be 100644
+--- a/Engine/Source/Developer/Profiler/Private/Widgets/SEventGraph.cpp
++++ b/Engine/Source/Developer/Profiler/Private/Widgets/SEventGraph.cpp
+@@ -71,16 +71,17 @@ namespace EEventGraphViewModes
+ 
+ struct FEventGraphColumns
+ {
++	// FIXME remove (int) conversion
+ 	/** Default constructor. */
+ 	FEventGraphColumns()
+-		: NumColumns( EEventPropertyIndex::None+1 )
++		: NumColumns( (int)EEventPropertyIndex::None+1 )
+ 	{
+ 		// Make event property is initialized.
+ 		FEventGraphSample::InitializePropertyManagement();
+ 
+ 		Collection = new FEventGraphColumn[NumColumns];
+ 
+-		Collection[EEventPropertyIndex::StatName] = FEventGraphColumn
++		Collection[(int)EEventPropertyIndex::StatName] = FEventGraphColumn
+ 		(
+ 			EEventPropertyIndex::StatName,
+ 			TEXT( "name" ),
+@@ -91,7 +92,7 @@ struct FEventGraphColumns
+ 			0.0f
+ 		);
+ 
+-		Collection[EEventPropertyIndex::InclusiveTimeMS] = FEventGraphColumn
++		Collection[(int)EEventPropertyIndex::InclusiveTimeMS] = FEventGraphColumn
+ 		(
+ 			EEventPropertyIndex::InclusiveTimeMS,
+ 			TEXT( "inc" ),
+@@ -102,7 +103,7 @@ struct FEventGraphColumns
+ 			72.0f
+ 		);
+ 
+-		Collection[EEventPropertyIndex::InclusiveTimePct] = FEventGraphColumn
++		Collection[(int)EEventPropertyIndex::InclusiveTimePct] = FEventGraphColumn
+ 		(
+ 			EEventPropertyIndex::InclusiveTimePct,
+ 			TEXT( "inc%" ),
+@@ -113,7 +114,7 @@ struct FEventGraphColumns
+ 			72.0f
+ 		);
+ 
+-		Collection[EEventPropertyIndex::ExclusiveTimeMS] = FEventGraphColumn
++		Collection[(int)EEventPropertyIndex::ExclusiveTimeMS] = FEventGraphColumn
+ 		(
+ 			EEventPropertyIndex::ExclusiveTimeMS,
+ 			TEXT( "exc" ),
+@@ -124,7 +125,7 @@ struct FEventGraphColumns
+ 			72.0f
+ 		);
+ 
+-		Collection[EEventPropertyIndex::ExclusiveTimePct] = FEventGraphColumn
++		Collection[(int)EEventPropertyIndex::ExclusiveTimePct] = FEventGraphColumn
+ 		(
+ 			EEventPropertyIndex::ExclusiveTimePct,
+ 			TEXT( "exc%" ),
+@@ -135,7 +136,7 @@ struct FEventGraphColumns
+ 			72.0f
+ 		);
+ 
+-		Collection[EEventPropertyIndex::NumCallsPerFrame] = FEventGraphColumn
++		Collection[(int)EEventPropertyIndex::NumCallsPerFrame] = FEventGraphColumn
+ 		(
+ 			EEventPropertyIndex::NumCallsPerFrame,
+ 			TEXT( "calls" ),
+@@ -147,7 +148,7 @@ struct FEventGraphColumns
+ 		);
+ 
+ 		// Fake column used as a default column for NAME_None
+-		Collection[EEventPropertyIndex::None] = FEventGraphColumn
++		Collection[(int)EEventPropertyIndex::None] = FEventGraphColumn
+ 		(
+ 			EEventPropertyIndex::None,
+ 			TEXT( "None" ),
+@@ -159,13 +160,13 @@ struct FEventGraphColumns
+ 		);
+ 
+ 		ColumnNameToIndexMapping = TMapBuilder<FName, const FEventGraphColumn*>()
+-			.Add( TEXT( "StatName" ), &Collection[EEventPropertyIndex::StatName] )
+-			.Add( TEXT( "InclusiveTimeMS" ), &Collection[EEventPropertyIndex::InclusiveTimeMS] )
+-			.Add( TEXT( "InclusiveTimePct" ), &Collection[EEventPropertyIndex::InclusiveTimePct] )
+-			.Add( TEXT( "ExclusiveTimeMS" ), &Collection[EEventPropertyIndex::ExclusiveTimeMS] )
+-			.Add( TEXT( "ExclusiveTimePct" ), &Collection[EEventPropertyIndex::ExclusiveTimePct] )
+-			.Add( TEXT( "NumCallsPerFrame" ), &Collection[EEventPropertyIndex::NumCallsPerFrame] )
+-			.Add( NAME_None, &Collection[EEventPropertyIndex::None] )
++			.Add( TEXT( "StatName" ), &Collection[(int)EEventPropertyIndex::StatName] )
++			.Add( TEXT( "InclusiveTimeMS" ), &Collection[(int)EEventPropertyIndex::InclusiveTimeMS] )
++			.Add( TEXT( "InclusiveTimePct" ), &Collection[(int)EEventPropertyIndex::InclusiveTimePct] )
++			.Add( TEXT( "ExclusiveTimeMS" ), &Collection[(int)EEventPropertyIndex::ExclusiveTimeMS] )
++			.Add( TEXT( "ExclusiveTimePct" ), &Collection[(int)EEventPropertyIndex::ExclusiveTimePct] )
++			.Add( TEXT( "NumCallsPerFrame" ), &Collection[(int)EEventPropertyIndex::NumCallsPerFrame] )
++			.Add( NAME_None, &Collection[(int)EEventPropertyIndex::None] )
+ 			;
+ 	}
+ 
+@@ -495,7 +496,7 @@ public:
+ 			SNew( SEventGraphTableCell, SharedThis(this), OwnerEventGraph )
+ 			.Visibility( this, &SEventGraphTableRow::IsColumnVisible, ColumnID )
+ 			.ColumnID( ColumnID )
+-			.IsEventNameColumn( ColumnID == FEventGraphColumns::Get().Collection[EEventPropertyIndex::StatName].ID )
++			.IsEventNameColumn( ColumnID == FEventGraphColumns::Get().Collection[(int)EEventPropertyIndex::StatName].ID )
+ 			.EventPtr( EventPtr )
+ 			.OnSetHoveredTableCell( this, &SEventGraphTableRow::OnSetHoveredTableCell )
+ 		];
+@@ -2106,7 +2107,7 @@ void SEventGraph::TreeViewHeaderRow_CreateColumnArgs( const uint32 ColumnIndex )
+ void SEventGraph::InitializeAndShowHeaderColumns()
+ {
+ 	ColumnSortMode = EColumnSortMode::Descending;
+-	ColumnBeingSorted = FEventGraphColumns::Get().Collection[EEventPropertyIndex::InclusiveTimeMS].ID;
++	ColumnBeingSorted = FEventGraphColumns::Get().Collection[(int)EEventPropertyIndex::InclusiveTimeMS].ID;
+ 
+ 	for (uint32 ColumnIndex = 0; ColumnIndex < FEventGraphColumns::Get().NumColumns; ColumnIndex++)
+ 	{
+@@ -2287,7 +2288,7 @@ void SEventGraph::ContextMenu_ExpandHotPath_Execute()
+ 	FEventGraphSamplePtr EventPtr = SelectedItems[0];
+ 
+ 	ColumnSortMode = EColumnSortMode::Descending;
+-	ColumnBeingSorted = FEventGraphColumns::Get().Collection[EEventPropertyIndex::InclusiveTimeMS].ID;
++	ColumnBeingSorted = FEventGraphColumns::Get().Collection[(int)EEventPropertyIndex::InclusiveTimeMS].ID;
+ 	SortEvents();
+ 	
+ 	// Clear hot path
+@@ -2424,7 +2425,7 @@ bool SEventGraph::ContextMenu_SortMode_IsChecked( const EColumnSortMode::Type In
+ void SEventGraph::ContextMenu_ResetColumns_Execute()
+ {
+ 	ColumnSortMode = EColumnSortMode::Descending;
+-	ColumnBeingSorted = FEventGraphColumns::Get().Collection[EEventPropertyIndex::InclusiveTimeMS].ID;
++	ColumnBeingSorted = FEventGraphColumns::Get().Collection[(int)EEventPropertyIndex::InclusiveTimeMS].ID;
+ 
+ 	for( uint32 ColumnIndex = 0; ColumnIndex < FEventGraphColumns::Get().NumColumns; ColumnIndex++ )
+ 	{
+@@ -2553,12 +2554,12 @@ void SEventGraph::ShowEventsInViewMode( const TArray<FEventGraphSamplePtr>& Even
+ 	if( NewViewMode == EEventGraphViewModes::FlatInclusive || NewViewMode == EEventGraphViewModes::FlatInclusiveCoalesced || NewViewMode == EEventGraphViewModes::Hierarchical )
+ 	{
+ 		ColumnIndex = EEventPropertyIndex::InclusiveTimeMS;
+-		SetSortModeForColumn( FEventGraphColumns::Get().Collection[ColumnIndex].ID, EColumnSortMode::Descending );
++		SetSortModeForColumn( FEventGraphColumns::Get().Collection[(int)ColumnIndex].ID, EColumnSortMode::Descending );
+ 	}
+ 	else if( NewViewMode == EEventGraphViewModes::FlatExclusive || NewViewMode == EEventGraphViewModes::FlatExclusiveCoalesced )
+ 	{
+ 		ColumnIndex = EEventPropertyIndex::ExclusiveTimeMS;
+-		SetSortModeForColumn( FEventGraphColumns::Get().Collection[ColumnIndex].ID, EColumnSortMode::Descending );
++		SetSortModeForColumn( FEventGraphColumns::Get().Collection[(int)ColumnIndex].ID, EColumnSortMode::Descending );
+ 	}
+ 
+ 	ScrollToTheSlowestSelectedEvent( ColumnIndex );
+@@ -2589,7 +2590,7 @@ void SEventGraph::ScrollToTheSlowestSelectedEvent( EEventPropertyIndex ColumnInd
+ 	if( SelectedEvents.Num() > 0 )
+ 	{
+ 		// Sort events by the inclusive or the exclusive time, depends on the view mode.
+-		const FEventGraphColumn& Column = FEventGraphColumns::Get().Collection[ColumnIndex];
++		const FEventGraphColumn& Column = FEventGraphColumns::Get().Collection[(int)ColumnIndex];
+ 		FEventArraySorter::Sort( SelectedEvents, Column.ID, EEventCompareOps::Greater );
+ 
+ 		// Scroll to the the slowest item.
+@@ -2804,7 +2805,7 @@ void SEventGraph::GenerateTopEvents( const TSet< FEventGraphSamplePtr >& EventPt
+ 	}
+ 
+ 	// Sort events by the inclusive time.
+-	const FEventGraphColumn& Column = FEventGraphColumns::Get().Collection[EEventPropertyIndex::InclusiveTimeMS];
++	const FEventGraphColumn& Column = FEventGraphColumns::Get().Collection[(int)EEventPropertyIndex::InclusiveTimeMS];
+ 	FEventArraySorter::Sort( EventPtrArray, Column.ID, EEventCompareOps::Greater );
+ 
+ 	// Calculate total time for the top events.
+diff --git a/Engine/Source/Editor/MaterialEditor/Private/MaterialEditor.cpp b/Engine/Source/Editor/MaterialEditor/Private/MaterialEditor.cpp
+index 4f4bd83593f..1d63f41f3f4 100644
+--- a/Engine/Source/Editor/MaterialEditor/Private/MaterialEditor.cpp
++++ b/Engine/Source/Editor/MaterialEditor/Private/MaterialEditor.cpp
+@@ -576,12 +576,12 @@ void FMaterialEditor::InitMaterialEditor( const EToolkitMode::Type Mode, const T
+ 				{
+ 					switch (MaterialFunction->GetMaterialFunctionUsage())
+ 					{
+-					case(EMaterialFunctionUsage::MaterialLayer):
++					case(Materials::EMaterialFunctionUsage::MaterialLayer):
+ 					{
+ 						OutputPlacement = FVector2D(300, 269);
+ 						break;
+ 					}
+-					case(EMaterialFunctionUsage::MaterialLayerBlend):
++					case(Materials::EMaterialFunctionUsage::MaterialLayerBlend):
+ 					{
+ 						OutputPlacement = FVector2D(275, 269);
+ 						break;
+@@ -591,7 +591,7 @@ void FMaterialEditor::InitMaterialEditor( const EToolkitMode::Type Mode, const T
+ 					}
+ 				}
+ 				UMaterialExpression* Expression;
+-				if (MaterialFunction->GetMaterialFunctionUsage() == EMaterialFunctionUsage::Default)
++				if (MaterialFunction->GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::Default)
+ 				{
+ 					Expression = CreateNewMaterialExpression(UMaterialExpressionFunctionOutput::StaticClass(), OutputPlacement, false, true);
+ 					SetPreviewExpression(Expression);
+@@ -606,7 +606,7 @@ void FMaterialEditor::InitMaterialEditor( const EToolkitMode::Type Mode, const T
+ 					bMaterialDirty = false;
+ 				}
+ 				// We can check the usage here and add the appropriate inputs too (e.g. Layer==1MA, Blend==2MA)
+-				if (MaterialFunction->GetMaterialFunctionUsage() == EMaterialFunctionUsage::MaterialLayer)
++				if (MaterialFunction->GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::MaterialLayer)
+ 				{
+ 					UMaterialExpression* Input = CreateNewMaterialExpression(UMaterialExpressionFunctionInput::StaticClass(), FVector2D(-350, 300), false, true);
+ 					if (Input)
+@@ -628,7 +628,7 @@ void FMaterialEditor::InitMaterialEditor( const EToolkitMode::Type Mode, const T
+ 						}
+ 					}
+ 				}
+-				else if (MaterialFunction->GetMaterialFunctionUsage() == EMaterialFunctionUsage::MaterialLayerBlend)
++				else if (MaterialFunction->GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::MaterialLayerBlend)
+ 				{
+ 					// "Top layer" should be below "bottom layer" on the graph, to align with B on blend nodes
+ 					UMaterialExpression* InputTop = CreateNewMaterialExpression(UMaterialExpressionFunctionInput::StaticClass(), FVector2D(-300, 400), false, true);
+@@ -1908,7 +1908,7 @@ void FMaterialEditor::UpdateMaterialinfoList_Old()
+ 				int32 NumOutputs = 0;
+ 				// For Material Layers
+ 
+-				if (MaterialFunction->GetMaterialFunctionUsage() == EMaterialFunctionUsage::MaterialLayer)
++				if (MaterialFunction->GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::MaterialLayer)
+ 				{
+ 					// Material layers must have a single MA input and output only
+ 					for (UMaterialExpression* Expression : *MaterialFunction->GetFunctionExpressions())
+@@ -1940,7 +1940,7 @@ void FMaterialEditor::UpdateMaterialinfoList_Old()
+ 						CompileErrors.Add(TEXT("Layer graphs require a single material attributes output and optionally, a single material attributes input."));
+ 					}
+ 				}
+-				else if (MaterialFunction->GetMaterialFunctionUsage() == EMaterialFunctionUsage::MaterialLayerBlend)
++				else if (MaterialFunction->GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::MaterialLayerBlend)
+ 				{
+ 					// Material layer blends can have two MA inputs and single MA output only
+ 					for (UMaterialExpression* Expression : *MaterialFunction->GetFunctionExpressions())
+@@ -1999,7 +1999,7 @@ void FMaterialEditor::UpdateMaterialinfoList_Old()
+ 			}
+ 
+ 			// Only show general info if there are no errors and stats are enabled - Stats show for Materials, layers and blends
+-		if (CompileErrors.Num() == 0 && (!MaterialFunction || MaterialFunction->GetMaterialFunctionUsage() != Default))
++		if (CompileErrors.Num() == 0 && (!MaterialFunction || MaterialFunction->GetMaterialFunctionUsage() != Materials::Default))
+ 			{
+ 			TArray<FMaterialStatsUtils::FShaderInstructionsInfo> Results;
+ 			TArray<FMaterialStatsUtils::FShaderInstructionsInfo> EmptyMaterialResults;
+@@ -4838,10 +4838,10 @@ FGraphAppearanceInfo FMaterialEditor::GetGraphAppearance() const
+ 	{
+ 		switch (MaterialFunction->GetMaterialFunctionUsage())
+ 		{
+-		case EMaterialFunctionUsage::MaterialLayer:
++		case Materials::EMaterialFunctionUsage::MaterialLayer:
+ 			AppearanceInfo.CornerText = LOCTEXT("AppearanceCornerText_MaterialLayer", "MATERIAL LAYER");
+ 			break;
+-		case EMaterialFunctionUsage::MaterialLayerBlend:
++		case Materials::EMaterialFunctionUsage::MaterialLayerBlend:
+ 			AppearanceInfo.CornerText = LOCTEXT("AppearanceCornerText_MaterialLayerBlend", "MATERIAL LAYER BLEND");
+ 			break;
+ 		default:
+@@ -4921,7 +4921,7 @@ bool FMaterialEditor::CheckExpressionRemovalWarnings(const TArray<UEdGraphNode*>
+ 				FunctionWarningString += FunctionInput->InputName.ToString();
+ 			}
+ 
+-			if (FunctionOutput && MaterialFunction && MaterialFunction->GetMaterialFunctionUsage() == EMaterialFunctionUsage::Default)
++			if (FunctionOutput && MaterialFunction && MaterialFunction->GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::Default)
+ 			{
+ 				if (!bFirstExpression)
+ 				{
+diff --git a/Engine/Source/Editor/MaterialEditor/Private/MaterialEditorInstanceDetailCustomization.cpp b/Engine/Source/Editor/MaterialEditor/Private/MaterialEditorInstanceDetailCustomization.cpp
+index 1a2df215b75..63b5d4f1193 100644
+--- a/Engine/Source/Editor/MaterialEditor/Private/MaterialEditorInstanceDetailCustomization.cpp
++++ b/Engine/Source/Editor/MaterialEditor/Private/MaterialEditorInstanceDetailCustomization.cpp
+@@ -107,7 +107,7 @@ void FMaterialInstanceParameterDetails::CustomizeDetails(IDetailLayoutBuilder& D
+ 	{
+ 		// Customize Parent property so we can check for recursively set parents
+ 		bool bShowParent = false;
+-		if(MaterialEditorInstance->SourceFunction->GetMaterialFunctionUsage() != EMaterialFunctionUsage::Default)
++		if(MaterialEditorInstance->SourceFunction->GetMaterialFunctionUsage() != Materials::EMaterialFunctionUsage::Default)
+ 		{
+ 			bShowParent = true;
+ 		}
+@@ -691,7 +691,7 @@ bool FMaterialInstanceParameterDetails::OnShouldSetAsset(const FAssetData& Asset
+ {
+ 	if (MaterialEditorInstance->bIsFunctionPreviewMaterial)
+ 	{
+-		if (MaterialEditorInstance->SourceFunction->GetMaterialFunctionUsage() == EMaterialFunctionUsage::Default)
++		if (MaterialEditorInstance->SourceFunction->GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::Default)
+ 		{
+ 			return false;
+ 		}
+@@ -732,7 +732,7 @@ bool FMaterialInstanceParameterDetails::OnShouldSetAsset(const FAssetData& Asset
+ void FMaterialInstanceParameterDetails::OnAssetChanged(const FAssetData & InAssetData, TSharedRef<IPropertyHandle> InHandle)
+ {
+ 	if (MaterialEditorInstance->bIsFunctionPreviewMaterial &&
+-		MaterialEditorInstance->SourceFunction->GetMaterialFunctionUsage() != EMaterialFunctionUsage::Default)
++		MaterialEditorInstance->SourceFunction->GetMaterialFunctionUsage() != Materials::EMaterialFunctionUsage::Default)
+ 	{
+ 		UMaterialFunctionInterface* NewParent = Cast<UMaterialFunctionInterface>(InAssetData.GetAsset());
+ 		if (NewParent != nullptr)
+diff --git a/Engine/Source/Editor/MaterialEditor/Private/MaterialPropertyHelpers.cpp b/Engine/Source/Editor/MaterialEditor/Private/MaterialPropertyHelpers.cpp
+index fe435557316..4efa570860a 100644
+--- a/Engine/Source/Editor/MaterialEditor/Private/MaterialPropertyHelpers.cpp
++++ b/Engine/Source/Editor/MaterialEditor/Private/MaterialPropertyHelpers.cpp
+@@ -540,13 +540,13 @@ FReply FMaterialPropertyHelpers::OnClickedSaveNewFunctionInstance(class UMateria
+ 
+ 		
+ 		UObject* Child;
+-		if (Object->GetMaterialFunctionUsage() == EMaterialFunctionUsage::MaterialLayer)
++		if (Object->GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::MaterialLayer)
+ 		{
+ 			UMaterialFunctionMaterialLayerInstanceFactory* LayerFactory = NewObject<UMaterialFunctionMaterialLayerInstanceFactory>();
+ 			LayerFactory->InitialParent = Object;
+ 			Child = AssetToolsModule.Get().CreateAssetWithDialog(Name, FPackageName::GetLongPackagePath(PackageName), UMaterialFunctionMaterialLayerInstance::StaticClass(), LayerFactory);
+ 		}
+-		else if (Object->GetMaterialFunctionUsage() == EMaterialFunctionUsage::MaterialLayerBlend)
++		else if (Object->GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::MaterialLayerBlend)
+ 		{
+ 			UMaterialFunctionMaterialLayerBlendInstanceFactory* BlendFactory = NewObject<UMaterialFunctionMaterialLayerBlendInstanceFactory>();
+ 			BlendFactory->InitialParent = Object;
+@@ -630,13 +630,13 @@ FReply FMaterialPropertyHelpers::OnClickedSaveNewLayerInstance(class UMaterialFu
+ 
+ 
+ 		UObject* Child;
+-		if (Object->GetMaterialFunctionUsage() == EMaterialFunctionUsage::MaterialLayer)
++		if (Object->GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::MaterialLayer)
+ 		{
+ 			UMaterialFunctionMaterialLayerInstanceFactory* LayerFactory = NewObject<UMaterialFunctionMaterialLayerInstanceFactory>();
+ 			LayerFactory->InitialParent = Object;
+ 			Child = AssetToolsModule.Get().CreateAssetWithDialog(Name, FPackageName::GetLongPackagePath(PackageName), UMaterialFunctionMaterialLayerInstance::StaticClass(), LayerFactory);
+ 		}
+-		else if (Object->GetMaterialFunctionUsage() == EMaterialFunctionUsage::MaterialLayerBlend)
++		else if (Object->GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::MaterialLayerBlend)
+ 		{
+ 			UMaterialFunctionMaterialLayerBlendInstanceFactory* BlendFactory = NewObject<UMaterialFunctionMaterialLayerBlendInstanceFactory>();
+ 			BlendFactory->InitialParent = Object;
+diff --git a/Engine/Source/Editor/MaterialEditor/Private/SMaterialLayersFunctionsTree.cpp b/Engine/Source/Editor/MaterialEditor/Private/SMaterialLayersFunctionsTree.cpp
+index 935f05c7425..7c2f633b71d 100644
+--- a/Engine/Source/Editor/MaterialEditor/Private/SMaterialLayersFunctionsTree.cpp
++++ b/Engine/Source/Editor/MaterialEditor/Private/SMaterialLayersFunctionsTree.cpp
+@@ -356,14 +356,14 @@ void SMaterialLayersFunctionsInstanceTreeItem::Construct(const FArguments& InArg
+ 			EMaterialParameterAssociation PreviewAssociation = EMaterialParameterAssociation::GlobalParameter;
+ 			if (AssetObject)
+ 			{
+-				if (Cast<UMaterialFunctionInterface>(AssetObject)->GetMaterialFunctionUsage() == EMaterialFunctionUsage::MaterialLayer)
++				if (Cast<UMaterialFunctionInterface>(AssetObject)->GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::MaterialLayer)
+ 				{
+ 					PreviewIndex = StackParameterData->ParameterInfo.Index;
+ 					PreviewAssociation = EMaterialParameterAssociation::LayerParameter;
+ 					Tree->UpdateThumbnailMaterial(PreviewAssociation, PreviewIndex);
+ 					ThumbnailIndex = PreviewIndex;
+ 				}
+-				if (Cast<UMaterialFunctionInterface>(AssetObject)->GetMaterialFunctionUsage() == EMaterialFunctionUsage::MaterialLayerBlend)
++				if (Cast<UMaterialFunctionInterface>(AssetObject)->GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::MaterialLayerBlend)
+ 				{
+ 					PreviewIndex = StackParameterData->ParameterInfo.Index;
+ 					PreviewAssociation = EMaterialParameterAssociation::BlendParameter;
+diff --git a/Engine/Source/Editor/Matinee/Private/Matinee.cpp b/Engine/Source/Editor/Matinee/Private/Matinee.cpp
+index 1643ee68e53..7fe12d3dd30 100644
+--- a/Engine/Source/Editor/Matinee/Private/Matinee.cpp
++++ b/Engine/Source/Editor/Matinee/Private/Matinee.cpp
+@@ -1205,15 +1205,15 @@ void FMatinee::BindCommands()
+ 	ToolkitCommands->MapAction( Commands.ExportAnimGroupFBX, FExecuteAction::CreateSP(this, &FMatinee::OnContextGroupExportAnimFBX) );
+ 	ToolkitCommands->MapAction( 
+ 		Commands.GroupDuplicate, 
+-		FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::DuplicateGroup),
+-		FCanExecuteAction::CreateSP(this, &FMatinee::CanCreateNewGroup, FMatineeCommands::EGroupAction::DuplicateGroup)
++		FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::Type::DuplicateGroup),
++		FCanExecuteAction::CreateSP(this, &FMatinee::CanCreateNewGroup, FMatineeCommands::EGroupAction::Type::DuplicateGroup)
+ 		);
+ 	ToolkitCommands->MapAction( Commands.GroupDelete, FExecuteAction::CreateSP(this, &FMatinee::OnContextGroupDelete), FCanExecuteAction::CreateSP(this, &FMatinee::CanGroupDelete) );
+ 	ToolkitCommands->MapAction( Commands.GroupCreateTab, FExecuteAction::CreateSP(this, &FMatinee::OnContextGroupCreateTab), FCanExecuteAction::CreateSP(this, &FMatinee::CanGroupCreateTab) );
+ 	ToolkitCommands->MapAction( Commands.GroupRemoveFromTab, FExecuteAction::CreateSP(this, &FMatinee::OnContextGroupRemoveFromTab) );
+ 	ToolkitCommands->MapAction( 
+ 		Commands.RemoveFromGroupFolder, 
+-		FExecuteAction::CreateSP(this, &FMatinee::OnContextGroupChangeGroupFolder, FMatineeCommands::EGroupAction::RemoveFromGroupFolder, -1) 
++		FExecuteAction::CreateSP(this, &FMatinee::OnContextGroupChangeGroupFolder, FMatineeCommands::EGroupAction::Type::RemoveFromGroupFolder, -1)
+ 		);
+ 
+ 	//Track Context Menu
+@@ -1228,13 +1228,13 @@ void FMatinee::BindCommands()
+ 	ToolkitCommands->MapAction( Commands.ExportAnimTrackFBX, FExecuteAction::CreateSP(this, &FMatinee::OnContextTrackExportAnimFBX) );
+ 
+ 	//Background Context Menu
+-	ToolkitCommands->MapAction( Commands.NewFolder, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::NewFolder) );
+-	ToolkitCommands->MapAction( Commands.NewEmptyGroup, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::NewEmptyGroup) );
+-	ToolkitCommands->MapAction( Commands.NewCameraGroup, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::NewCameraGroup) );
+-	ToolkitCommands->MapAction( Commands.NewParticleGroup, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::NewParticleGroup) );
+-	ToolkitCommands->MapAction( Commands.NewSkeletalMeshGroup, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::NewSkeletalMeshGroup) );
+-	ToolkitCommands->MapAction( Commands.NewLightingGroup, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::NewLightingGroup) );
+-	ToolkitCommands->MapAction( Commands.NewDirectorGroup, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::NewDirectorGroup) );
++	ToolkitCommands->MapAction( Commands.NewFolder, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::Type::NewFolder) );
++	ToolkitCommands->MapAction( Commands.NewEmptyGroup, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::Type::NewEmptyGroup) );
++	ToolkitCommands->MapAction( Commands.NewCameraGroup, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::Type::NewCameraGroup) );
++	ToolkitCommands->MapAction( Commands.NewParticleGroup, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::Type::NewParticleGroup) );
++	ToolkitCommands->MapAction( Commands.NewSkeletalMeshGroup, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::Type::NewSkeletalMeshGroup) );
++	ToolkitCommands->MapAction( Commands.NewLightingGroup, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::Type::NewLightingGroup) );
++	ToolkitCommands->MapAction( Commands.NewDirectorGroup, FExecuteAction::CreateSP(this, &FMatinee::OnContextNewGroup, FMatineeCommands::EGroupAction::Type::NewDirectorGroup) );
+ 
+ 	// Menu
+ 	ToolkitCommands->MapAction(Commands.ToggleCurveEditor,
+@@ -1249,11 +1249,11 @@ void FMatinee::BindCommands()
+ 		);
+ 
+ 	//Key Context Menu
+-	ToolkitCommands->MapAction( Commands.KeyModeCurveAuto, FExecuteAction::CreateSP(this, &FMatinee::OnContextKeyInterpMode, FMatineeCommands::EKeyAction::KeyModeCurveAuto) );
+-	ToolkitCommands->MapAction( Commands.KeyModeCurveAutoClamped, FExecuteAction::CreateSP(this, &FMatinee::OnContextKeyInterpMode, FMatineeCommands::EKeyAction::KeyModeCurveAutoClamped) );
+-	ToolkitCommands->MapAction( Commands.KeyModeCurveBreak, FExecuteAction::CreateSP(this, &FMatinee::OnContextKeyInterpMode, FMatineeCommands::EKeyAction::KeyModeCurveBreak) );
+-	ToolkitCommands->MapAction( Commands.KeyModeLinear, FExecuteAction::CreateSP(this, &FMatinee::OnContextKeyInterpMode, FMatineeCommands::EKeyAction::KeyModeLinear) );
+-	ToolkitCommands->MapAction( Commands.KeyModeConstant, FExecuteAction::CreateSP(this, &FMatinee::OnContextKeyInterpMode, FMatineeCommands::EKeyAction::KeyModeConstant) );
++	ToolkitCommands->MapAction( Commands.KeyModeCurveAuto, FExecuteAction::CreateSP(this, &FMatinee::OnContextKeyInterpMode, FMatineeCommands::EKeyAction::Type::KeyModeCurveAuto) );
++	ToolkitCommands->MapAction( Commands.KeyModeCurveAutoClamped, FExecuteAction::CreateSP(this, &FMatinee::OnContextKeyInterpMode, FMatineeCommands::EKeyAction::Type::KeyModeCurveAutoClamped) );
++	ToolkitCommands->MapAction( Commands.KeyModeCurveBreak, FExecuteAction::CreateSP(this, &FMatinee::OnContextKeyInterpMode, FMatineeCommands::EKeyAction::Type::KeyModeCurveBreak) );
++	ToolkitCommands->MapAction( Commands.KeyModeLinear, FExecuteAction::CreateSP(this, &FMatinee::OnContextKeyInterpMode, FMatineeCommands::EKeyAction::Type::KeyModeLinear) );
++	ToolkitCommands->MapAction( Commands.KeyModeConstant, FExecuteAction::CreateSP(this, &FMatinee::OnContextKeyInterpMode, FMatineeCommands::EKeyAction::Type::KeyModeConstant) );
+ 	ToolkitCommands->MapAction( Commands.KeySetTime, FExecuteAction::CreateSP(this, &FMatinee::OnContextSetKeyTime) );
+ 	ToolkitCommands->MapAction( Commands.KeySetValue, FExecuteAction::CreateSP(this, &FMatinee::OnContextSetValue) );
+ 	ToolkitCommands->MapAction( Commands.KeySetBool, FExecuteAction::CreateSP(this, &FMatinee::OnContextSetBool) );
+@@ -1266,19 +1266,19 @@ void FMatinee::BindCommands()
+ 	ToolkitCommands->MapAction( Commands.ToggleKeyFlip, FExecuteAction::CreateSP(this, &FMatinee::OnFlipToggleKey) );
+ 
+ 	ToolkitCommands->MapAction( Commands.KeySetConditionAlways, 
+-		FExecuteAction::CreateSP(this, &FMatinee::OnKeyContext_SetCondition, FMatineeCommands::EKeyAction::ConditionAlways),
++		FExecuteAction::CreateSP(this, &FMatinee::OnKeyContext_SetCondition, FMatineeCommands::EKeyAction::Type::ConditionAlways),
+ 		FCanExecuteAction(),
+-		FIsActionChecked::CreateSP(this, &FMatinee::KeyContext_IsSetConditionToggled, FMatineeCommands::EKeyAction::ConditionAlways)
++		FIsActionChecked::CreateSP(this, &FMatinee::KeyContext_IsSetConditionToggled, FMatineeCommands::EKeyAction::Type::ConditionAlways)
+ 		);
+ 	ToolkitCommands->MapAction( Commands.KeySetConditionGoreEnabled, 
+-		FExecuteAction::CreateSP(this, &FMatinee::OnKeyContext_SetCondition, FMatineeCommands::EKeyAction::ConditionGoreEnabled),
++		FExecuteAction::CreateSP(this, &FMatinee::OnKeyContext_SetCondition, FMatineeCommands::EKeyAction::Type::ConditionGoreEnabled),
+ 		FCanExecuteAction(),
+-		FIsActionChecked::CreateSP(this, &FMatinee::KeyContext_IsSetConditionToggled, FMatineeCommands::EKeyAction::ConditionGoreEnabled)
++		FIsActionChecked::CreateSP(this, &FMatinee::KeyContext_IsSetConditionToggled, FMatineeCommands::EKeyAction::Type::ConditionGoreEnabled)
+ 		);
+ 	ToolkitCommands->MapAction( Commands.KeySetConditionGoreDisabled, 
+-		FExecuteAction::CreateSP(this, &FMatinee::OnKeyContext_SetCondition, FMatineeCommands::EKeyAction::ConditionGoreDisabled),
++		FExecuteAction::CreateSP(this, &FMatinee::OnKeyContext_SetCondition, FMatineeCommands::EKeyAction::Type::ConditionGoreDisabled),
+ 		FCanExecuteAction(),
+-		FIsActionChecked::CreateSP(this, &FMatinee::KeyContext_IsSetConditionToggled, FMatineeCommands::EKeyAction::ConditionGoreDisabled)
++		FIsActionChecked::CreateSP(this, &FMatinee::KeyContext_IsSetConditionToggled, FMatineeCommands::EKeyAction::Type::ConditionGoreDisabled)
+ 		);
+ 
+ 	ToolkitCommands->MapAction( Commands.AnimKeyLoop, FExecuteAction::CreateSP(this, &FMatinee::OnSetAnimKeyLooping, true) );
+diff --git a/Engine/Source/Editor/Matinee/Private/MatineeActions.h b/Engine/Source/Editor/Matinee/Private/MatineeActions.h
+index b594c3eff45..70a41fa067e 100644
+--- a/Engine/Source/Editor/Matinee/Private/MatineeActions.h
++++ b/Engine/Source/Editor/Matinee/Private/MatineeActions.h
+@@ -195,7 +195,7 @@ public:
+ 	/** Action Types */
+ 	struct EGroupAction
+ 	{
+-		enum Type
++		enum class Type
+ 		{
+ 			NewFolder, 
+ 			NewEmptyGroup,
+@@ -213,7 +213,7 @@ public:
+ 
+ 	struct EKeyAction
+ 	{
+-		enum Type
++		enum class Type
+ 		{
+ 			KeyModeCurveAuto,
+ 			KeyModeCurveAutoClamped, 
+diff --git a/Engine/Source/Editor/Matinee/Private/MatineeMenus.cpp b/Engine/Source/Editor/Matinee/Private/MatineeMenus.cpp
+index 1852ff0b0d4..4b493e23148 100644
+--- a/Engine/Source/Editor/Matinee/Private/MatineeMenus.cpp
++++ b/Engine/Source/Editor/Matinee/Private/MatineeMenus.cpp
+@@ -245,10 +245,10 @@ void FMatinee::OnMenuAddKey()
+ 
+ void FMatinee::OnContextNewGroup( FMatineeCommands::EGroupAction::Type InActionId)
+ {
+-	const bool bIsNewFolder = (InActionId == FMatineeCommands::EGroupAction::NewFolder); 
+-	const bool bDirGroup = (InActionId == FMatineeCommands::EGroupAction::NewDirectorGroup); 
+-	const bool bDuplicateGroup = (InActionId == FMatineeCommands::EGroupAction::DuplicateGroup); 
+-	const bool bLightingGroup = (InActionId == FMatineeCommands::EGroupAction::NewLightingGroup); 
++	const bool bIsNewFolder = (InActionId == FMatineeCommands::EGroupAction::Type::NewFolder);
++	const bool bDirGroup = (InActionId == FMatineeCommands::EGroupAction::Type::NewDirectorGroup);
++	const bool bDuplicateGroup = (InActionId == FMatineeCommands::EGroupAction::Type::DuplicateGroup);
++	const bool bLightingGroup = (InActionId == FMatineeCommands::EGroupAction::Type::NewLightingGroup);
+ 
+ 	// Only one director group is allowed
+ 	if (bDirGroup && IData->FindDirectorGroup())
+@@ -333,9 +333,9 @@ bool FMatinee::CanCreateNewGroup( FMatineeCommands::EGroupAction::Type InActionI
+ void FMatinee::NewGroupPopup( FMatineeCommands::EGroupAction::Type InActionId, AActor* GroupActor, TArray<AActor *> OtherActorsToAddToGroup )
+ {
+ 	// Find out if we want to make a 'Director' group.
+-	const bool bIsNewFolder = (InActionId == FMatineeCommands::EGroupAction::NewFolder); 
+-	const bool bDirGroup = (InActionId == FMatineeCommands::EGroupAction::NewDirectorGroup); 
+-	const bool bDuplicateGroup = (InActionId == FMatineeCommands::EGroupAction::DuplicateGroup); 
++	const bool bIsNewFolder = (InActionId == FMatineeCommands::EGroupAction::Type::NewFolder);
++	const bool bDirGroup = (InActionId == FMatineeCommands::EGroupAction::Type::NewDirectorGroup);
++	const bool bDuplicateGroup = (InActionId == FMatineeCommands::EGroupAction::Type::DuplicateGroup);
+ 
+ 	// If not a director group - ask for a name.
+ 	if(!bDirGroup)
+@@ -344,32 +344,32 @@ void FMatinee::NewGroupPopup( FMatineeCommands::EGroupAction::Type InActionId, A
+ 		FText DefaultNewGroupName;
+ 		switch( InActionId )
+ 		{
+-		case FMatineeCommands::EGroupAction::NewCameraGroup: 
++		case FMatineeCommands::EGroupAction::Type::NewCameraGroup:
+ 			DialogName = LOCTEXT( "NewGroupName", "New Group Name" );
+ 			DefaultNewGroupName = LOCTEXT( "NewCameraGroup", "NewCameraGroup" );
+ 			break;
+ 
+-		case FMatineeCommands::EGroupAction::NewParticleGroup: 
++		case FMatineeCommands::EGroupAction::Type::NewParticleGroup:
+ 			DialogName = LOCTEXT( "NewGroupName", "New Group Name" );
+ 			DefaultNewGroupName = LOCTEXT( "NewParticleGroup", "NewParticleGroup" );
+ 			break;
+ 
+-		case FMatineeCommands::EGroupAction::NewSkeletalMeshGroup: 
++		case FMatineeCommands::EGroupAction::Type::NewSkeletalMeshGroup:
+ 			DialogName = LOCTEXT( "NewGroupName", "New Group Name" );
+ 			DefaultNewGroupName = LOCTEXT( "NewSkeletalMeshGroup", "NewSkeletalMeshGroup" );
+ 			break;
+ 
+-		case FMatineeCommands::EGroupAction::NewLightingGroup: 
++		case FMatineeCommands::EGroupAction::Type::NewLightingGroup:
+ 			DialogName = LOCTEXT( "NewGroupName", "New Group Name" );
+ 			DefaultNewGroupName = LOCTEXT( "NewLightingGroup", "NewLightingGroup" );
+ 			break;
+ 
+-		case FMatineeCommands::EGroupAction::NewFolder: 
++		case FMatineeCommands::EGroupAction::Type::NewFolder:
+ 			DialogName = LOCTEXT( "NewFolderName", "New Folder Name" );
+ 			DefaultNewGroupName = LOCTEXT( "NewFolder", "NewFolder" );
+ 			break;
+ 
+-		case FMatineeCommands::EGroupAction::DuplicateGroup: 
++		case FMatineeCommands::EGroupAction::Type::DuplicateGroup:
+ 			// When duplicating, we use unlocalized text 
+ 			// at the moment. So, the spaces are needed.
+ 			DialogName = LOCTEXT( "NewGroupName", "New Group Name" );
+@@ -421,9 +421,9 @@ void FMatinee::NewGroupPopupTextCommitted(
+ 	//note: we don't need to check commit type... handled by GetNewNamePopup
+ 
+ 	FName NewGroupName = FName(*InText.ToString().Left(NAME_SIZE));
+-	const bool bIsNewFolder = (InActionId == FMatineeCommands::EGroupAction::NewFolder); 
+-	const bool bDirGroup = (InActionId == FMatineeCommands::EGroupAction::NewDirectorGroup); 
+-	const bool bDuplicateGroup = (InActionId == FMatineeCommands::EGroupAction::DuplicateGroup); 
++	const bool bIsNewFolder = (InActionId == FMatineeCommands::EGroupAction::Type::NewFolder);
++	const bool bDirGroup = (InActionId == FMatineeCommands::EGroupAction::Type::NewDirectorGroup);
++	const bool bDuplicateGroup = (InActionId == FMatineeCommands::EGroupAction::Type::DuplicateGroup);
+ 
+ 	TMap<UInterpGroup*, FName> DuplicateGroupToNameMap;
+ 	if (bDuplicateGroup && GroupToDuplicate != NULL)
+@@ -485,7 +485,7 @@ void FMatinee::NewGroupPopupTextCommitted(
+ 	// if there's no group actor
+ 	if ( !GroupActor )
+ 	{
+-		if( InActionId == FMatineeCommands::EGroupAction::NewCameraGroup )
++		if( InActionId == FMatineeCommands::EGroupAction::Type::NewCameraGroup )
+ 		{
+ 			// find the first perspective viewport - if one exists
+ 			FLevelEditorViewportClient* ViewportClient = NULL;
+@@ -581,15 +581,15 @@ void FMatinee::NewGroupPopupTextCommitted(
+ 			// For Camera or Skeletal Mesh groups, add a Movement track
+ 			// FIXME: this doesn't work like this anymore
+ 			// if you'd like to create multiple groups at once
+-			if( InActionId == FMatineeCommands::EGroupAction::NewCameraGroup || 
+-				InActionId == FMatineeCommands::EGroupAction::NewSkeletalMeshGroup )
++			if( InActionId == FMatineeCommands::EGroupAction::Type::NewCameraGroup ||
++				InActionId == FMatineeCommands::EGroupAction::Type::NewSkeletalMeshGroup )
+ 			{
+ 				int32 NewTrackIndex = INDEX_NONE;
+ 				AddTrackToGroup( NewGroup, UInterpTrackMove::StaticClass(), NULL, false, NewTrackIndex );
+ 			}
+ 
+ 			// For Camera groups, add a Float Property track for FOV
+-			if (InActionId == FMatineeCommands::EGroupAction::NewCameraGroup)
++			if (InActionId == FMatineeCommands::EGroupAction::Type::NewCameraGroup)
+ 			{
+ 				// Set the property name for the new track.  This is a global that will be used when setting everything up.
+ 				SetTrackAddPropName( FName( TEXT( "FOVAngle" ) ) );
+@@ -599,7 +599,7 @@ void FMatinee::NewGroupPopupTextCommitted(
+ 			}
+ 
+ 			// For Lighting groups, add a Movement, Brightness, Light Color, and Radius Property track
+-			if ( InActionId == FMatineeCommands::EGroupAction::NewLightingGroup )
++			if ( InActionId == FMatineeCommands::EGroupAction::Type::NewLightingGroup )
+ 			{
+ 				UInterpTrack* NewMovTrack = NewObject<UInterpTrackMove>(NewGroup, NAME_None, RF_Transactional);
+ 				const int32 TrackIndex = NewGroup->InterpTracks.Add(NewMovTrack);
+@@ -629,14 +629,14 @@ void FMatinee::NewGroupPopupTextCommitted(
+ 			}
+ 
+ 			// For Skeletal Mesh groups, add an Anim track
+-			if( InActionId == FMatineeCommands::EGroupAction::NewSkeletalMeshGroup)
++			if( InActionId == FMatineeCommands::EGroupAction::Type::NewSkeletalMeshGroup)
+ 			{
+ 				int32 NewTrackIndex = INDEX_NONE;
+ 				AddTrackToGroup( NewGroup, UInterpTrackAnimControl::StaticClass(), NULL, false, NewTrackIndex );
+ 			}
+ 
+ 			// For Particle groups, add a Toggle track
+-			if( InActionId == FMatineeCommands::EGroupAction::NewParticleGroup )
++			if( InActionId == FMatineeCommands::EGroupAction::Type::NewParticleGroup )
+ 			{
+ 				int32 NewTrackIndex = INDEX_NONE;
+ 				AddTrackToGroup( NewGroup, UInterpTrackToggle::StaticClass(), NULL, false, NewTrackIndex );
+@@ -1188,7 +1188,7 @@ void FMatinee::OnCreateCameraActorAtCurrentCameraLocation()
+ {	
+ 	// no actor to add
+ 	TArray<AActor *> OtherActorsToAddToGroup;
+-	NewGroupPopup( FMatineeCommands::EGroupAction::NewCameraGroup, NULL, OtherActorsToAddToGroup );
++	NewGroupPopup( FMatineeCommands::EGroupAction::Type::NewCameraGroup, NULL, OtherActorsToAddToGroup );
+ }
+ 
+ /** Called when the "Launch Custom Preview Viewport" is pressed */
+@@ -2097,7 +2097,7 @@ void FMatinee::OnContextGroupChangeGroupFolder( FMatineeCommands::EGroupAction::
+ 	check( HasAGroupSelected() );
+ 
+ 	// Figure out if we're moving the active group to a new group, or if we simply want to unparent it
+-	const bool bIsParenting =  ( InActionId != FMatineeCommands::EGroupAction::RemoveFromGroupFolder ); 
++	const bool bIsParenting =  ( InActionId != FMatineeCommands::EGroupAction::Type::RemoveFromGroupFolder );
+ 
+ 	// Figure out which direction we're moving things: A group to the selected folder?  Or, the selected group
+ 	// to a folder?
+@@ -2107,7 +2107,7 @@ void FMatinee::OnContextGroupChangeGroupFolder( FMatineeCommands::EGroupAction::
+ 	if( bIsParenting )
+ 	{
+ 		bIsMovingSelectedGroupToFolder =
+-			(InActionId == FMatineeCommands::EGroupAction::MoveActiveGroupToFolder);
++			(InActionId == FMatineeCommands::EGroupAction::Type::MoveActiveGroupToFolder);
+ 		bIsMovingGroupToSelectedFolder = !bIsMovingSelectedGroupToFolder;
+ 	}
+ 
+@@ -2233,23 +2233,23 @@ void FMatinee::OnContextKeyInterpMode( FMatineeCommands::EKeyAction::Type InActi
+ 		FInterpEdSelKey& SelKey = Opt->SelectedKeys[i];
+ 		UInterpTrack* Track = SelKey.Track;
+ 
+-		if (InActionId == FMatineeCommands::EKeyAction::KeyModeLinear) 
++		if (InActionId == FMatineeCommands::EKeyAction::Type::KeyModeLinear)
+ 		{
+ 			Track->SetKeyInterpMode( SelKey.KeyIndex, CIM_Linear );
+ 		}
+-		else if (InActionId == FMatineeCommands::EKeyAction::KeyModeCurveAuto) 
++		else if (InActionId == FMatineeCommands::EKeyAction::Type::KeyModeCurveAuto)
+ 		{
+ 			Track->SetKeyInterpMode( SelKey.KeyIndex, CIM_CurveAuto );
+ 		}
+-		else if (InActionId == FMatineeCommands::EKeyAction::KeyModeCurveAutoClamped) 
++		else if (InActionId == FMatineeCommands::EKeyAction::Type::KeyModeCurveAutoClamped)
+ 		{
+ 			Track->SetKeyInterpMode( SelKey.KeyIndex, CIM_CurveAutoClamped );
+ 		}
+-		else if(InActionId == FMatineeCommands::EKeyAction::KeyModeCurveBreak) 
++		else if(InActionId == FMatineeCommands::EKeyAction::Type::KeyModeCurveBreak)
+ 		{
+ 			Track->SetKeyInterpMode( SelKey.KeyIndex, CIM_CurveBreak );
+ 		}
+-		else if(InActionId == FMatineeCommands::EKeyAction::KeyModeConstant) 
++		else if(InActionId == FMatineeCommands::EKeyAction::Type::KeyModeConstant)
+ 		{
+ 			Track->SetKeyInterpMode( SelKey.KeyIndex, CIM_Constant );
+ 		}
+@@ -3713,15 +3713,15 @@ void FMatinee::OnKeyContext_SetCondition( FMatineeCommands::EKeyAction::Type InC
+ 
+ 			switch( InCondition )
+ 			{
+-			case FMatineeCommands::EKeyAction::ConditionAlways: 
++			case FMatineeCommands::EKeyAction::Type::ConditionAlways:
+ 					VisibilityKey.ActiveCondition = EVTC_Always;
+ 					break;
+ 
+-			case FMatineeCommands::EKeyAction::ConditionGoreEnabled: 
++			case FMatineeCommands::EKeyAction::Type::ConditionGoreEnabled:
+ 					VisibilityKey.ActiveCondition = EVTC_GoreEnabled;
+ 					break;
+ 
+-			case FMatineeCommands::EKeyAction::ConditionGoreDisabled: 
++			case FMatineeCommands::EKeyAction::Type::ConditionGoreDisabled:
+ 					VisibilityKey.ActiveCondition = EVTC_GoreDisabled;
+ 					break;
+ 			}
+@@ -3745,21 +3745,21 @@ bool FMatinee::KeyContext_IsSetConditionToggled( FMatineeCommands::EKeyAction::T
+ 
+ 			switch( InCondition )
+ 			{
+-			case FMatineeCommands::EKeyAction::ConditionAlways: 
++			case FMatineeCommands::EKeyAction::Type::ConditionAlways:
+ 				if (VisibilityKey.ActiveCondition != EVTC_Always)
+ 				{
+ 					return false;
+ 				}
+ 				break;
+ 
+-			case FMatineeCommands::EKeyAction::ConditionGoreEnabled: 
++			case FMatineeCommands::EKeyAction::Type::ConditionGoreEnabled:
+ 				if (VisibilityKey.ActiveCondition != EVTC_GoreEnabled)
+ 				{
+ 					return false;
+ 				}
+ 				break;
+ 
+-			case FMatineeCommands::EKeyAction::ConditionGoreDisabled: 
++			case FMatineeCommands::EKeyAction::Type::ConditionGoreDisabled:
+ 				if (VisibilityKey.ActiveCondition != EVTC_GoreDisabled)
+ 				{
+ 					return false;
+@@ -5643,7 +5643,7 @@ TSharedPtr<SWidget> FMatinee::CreateGroupMenu()
+ 					FText::FromString( CurrentParent.Group->GroupName.ToString() ),
+ 					FText::GetEmpty(),
+ 					FSlateIcon(),
+-					FUIAction(FExecuteAction::CreateSP( InMatinee, &FMatinee::OnContextGroupChangeGroupFolder, FMatineeCommands::EGroupAction::MoveActiveGroupToFolder, CurrentParent.GroupIndex))
++					FUIAction(FExecuteAction::CreateSP( InMatinee, &FMatinee::OnContextGroupChangeGroupFolder, FMatineeCommands::EGroupAction::Type::MoveActiveGroupToFolder, CurrentParent.GroupIndex))
+ 					);
+ 			}
+ 		}
+@@ -5679,7 +5679,7 @@ TSharedPtr<SWidget> FMatinee::CreateGroupMenu()
+ 						FText::GetEmpty(),
+ 						FSlateIcon(),
+ 						FUIAction(
+-							FExecuteAction::CreateSP(InMatinee, &FMatinee::OnContextGroupChangeGroupFolder, FMatineeCommands::EGroupAction::MoveGroupToActiveFolder, CurrentGroupInfo.GroupIndex)
++							FExecuteAction::CreateSP(InMatinee, &FMatinee::OnContextGroupChangeGroupFolder, FMatineeCommands::EGroupAction::Type::MoveGroupToActiveFolder, CurrentGroupInfo.GroupIndex)
+ 							)
+ 						);
+ 
+diff --git a/Engine/Source/Editor/UnrealEd/Private/Factories/EditorFactories.cpp b/Engine/Source/Editor/UnrealEd/Private/Factories/EditorFactories.cpp
+index 2f9a962f004..061af01d3d2 100644
+--- a/Engine/Source/Editor/UnrealEd/Private/Factories/EditorFactories.cpp
++++ b/Engine/Source/Editor/UnrealEd/Private/Factories/EditorFactories.cpp
+@@ -529,7 +529,7 @@ UObject* UMaterialFunctionMaterialLayerFactory::FactoryCreateNew(UClass* Class,U
+ 	UMaterialFunctionMaterialLayer* Function = NewObject<UMaterialFunctionMaterialLayer>(InParent, UMaterialFunctionMaterialLayer::StaticClass(), Name, Flags);
+ 	if (Function)
+ 	{
+-		Function->SetMaterialFunctionUsage(EMaterialFunctionUsage::MaterialLayer);
++		Function->SetMaterialFunctionUsage(Materials::EMaterialFunctionUsage::MaterialLayer);
+ 	}
+ 	return Function;
+ }
+@@ -556,7 +556,7 @@ UObject* UMaterialFunctionMaterialLayerBlendFactory::FactoryCreateNew(UClass* Cl
+ 	UMaterialFunctionMaterialLayerBlend* Function = NewObject<UMaterialFunctionMaterialLayerBlend>(InParent, UMaterialFunctionMaterialLayerBlend::StaticClass(), Name, Flags);
+ 	if (Function)
+ 	{
+-		Function->SetMaterialFunctionUsage(EMaterialFunctionUsage::MaterialLayerBlend);
++		Function->SetMaterialFunctionUsage(Materials::EMaterialFunctionUsage::MaterialLayerBlend);
+ 	}
+ 	return Function;
+ }
+diff --git a/Engine/Source/Editor/UnrealEd/Private/Fbx/FbxStaticMeshImport.cpp b/Engine/Source/Editor/UnrealEd/Private/Fbx/FbxStaticMeshImport.cpp
+index 4f756102639..3c2664b3d41 100644
+--- a/Engine/Source/Editor/UnrealEd/Private/Fbx/FbxStaticMeshImport.cpp
++++ b/Engine/Source/Editor/UnrealEd/Private/Fbx/FbxStaticMeshImport.cpp
+@@ -1709,7 +1709,7 @@ UStaticMesh* UnFbx::FFbxImporter::ImportStaticMeshAsSingle(UObject* InParent, TA
+ 
+ 		//Set the Imported version before calling the build
+ 		//We set it here because the remap index is build in RestoreExistingMeshSettings call before the build
+-		StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion;
++		StaticMesh->ImportVersion = StaticMesh::EImportStaticMeshVersion::LastVersion;
+ 
+ 		if (ExistMeshData && InStaticMesh)
+ 		{
+diff --git a/Engine/Source/Editor/UnrealEd/Private/StaticMeshEdit.cpp b/Engine/Source/Editor/UnrealEd/Private/StaticMeshEdit.cpp
+index 4ea9ecc49a4..fd4eade2118 100644
+--- a/Engine/Source/Editor/UnrealEd/Private/StaticMeshEdit.cpp
++++ b/Engine/Source/Editor/UnrealEd/Private/StaticMeshEdit.cpp
+@@ -614,7 +614,7 @@ UStaticMesh* CreateStaticMesh(FMeshDescription& RawMesh,TArray<FStaticMaterial>&
+ 	}
+ 
+ 	//Set the Imported version before calling the build
+-	StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion;
++	StaticMesh->ImportVersion = StaticMesh::EImportStaticMeshVersion::LastVersion;
+ 
+ 	StaticMesh->Build();
+ 	StaticMesh->MarkPackageDirty();
+@@ -837,7 +837,7 @@ UStaticMesh* CreateStaticMeshFromBrush(UObject* Outer, FName Name, ABrush* Brush
+ 	}
+ 
+ 	//Set the Imported version before calling the build
+-	StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion;
++	StaticMesh->ImportVersion = StaticMesh::EImportStaticMeshVersion::LastVersion;
+ 
+ 	StaticMesh->Build();
+ 	StaticMesh->MarkPackageDirty();
+@@ -1286,11 +1286,11 @@ void RestoreExistingMeshSettings(ExistingStaticMeshData* ExistingMesh, UStaticMe
+ 	//We need to fill the import version remap before building the mesh since the
+ 	//static mesh component will be register at the end of the build.
+ 	//We do the remap of the material override in the static mesh component in OnRegister()
+-	if(ExistingMesh->ImportVersion != EImportStaticMeshVersion::LastVersion)
++	if(ExistingMesh->ImportVersion != StaticMesh::EImportStaticMeshVersion::LastVersion)
+ 	{
+ 		uint32 MaterialMapKey = 0;
+ 		TArray<int32> ImportRemapMaterial;
+-		MaterialMapKey = ((uint32)((ExistingMesh->ImportVersion & 0xffff) << 16) | (uint32)(EImportStaticMeshVersion::LastVersion & 0xffff));
++		MaterialMapKey = ((uint32)((ExistingMesh->ImportVersion & 0xffff) << 16) | (uint32)(StaticMesh::EImportStaticMeshVersion::LastVersion & 0xffff));
+ 		//Avoid matching a material more then once
+ 		TArray<int32> MatchIndex;
+ 		ImportRemapMaterial.AddZeroed(ExistingMesh->ExistingMaterials.Num());
+diff --git a/Engine/Source/Editor/UnrealEd/Private/ThumbnailRendering/MaterialFunctionThumbnailRenderer.cpp b/Engine/Source/Editor/UnrealEd/Private/ThumbnailRendering/MaterialFunctionThumbnailRenderer.cpp
+index b8a0fda99a3..1c62a29bf1d 100644
+--- a/Engine/Source/Editor/UnrealEd/Private/ThumbnailRendering/MaterialFunctionThumbnailRenderer.cpp
++++ b/Engine/Source/Editor/UnrealEd/Private/ThumbnailRendering/MaterialFunctionThumbnailRenderer.cpp
+@@ -37,13 +37,13 @@ void UMaterialFunctionThumbnailRenderer::Draw(UObject* Object, int32 X, int32 Y,
+ 		}
+ 
+ 		UMaterialInterface* PreviewMaterial = bIsFunctionInstancePreview ? MatFuncInst->GetPreviewMaterial() : MatFunc->GetPreviewMaterial();
+-		EMaterialFunctionUsage FunctionUsage = bIsFunctionInstancePreview ? MatFuncInst->GetMaterialFunctionUsage() : MatFunc->GetMaterialFunctionUsage();
++		Materials::EMaterialFunctionUsage FunctionUsage = bIsFunctionInstancePreview ? MatFuncInst->GetMaterialFunctionUsage() : MatFunc->GetMaterialFunctionUsage();
+ 		UThumbnailInfo* ThumbnailInfo = bIsFunctionInstancePreview ? MatFuncInst->ThumbnailInfo : MatFunc->ThumbnailInfo;
+ 
+ 		if (PreviewMaterial)
+ 		{
+ 				PreviewMaterial->ThumbnailInfo = ThumbnailInfo;
+-				if (FunctionUsage == EMaterialFunctionUsage::MaterialLayerBlend)
++				if (FunctionUsage == Materials::EMaterialFunctionUsage::MaterialLayerBlend)
+ 				{
+ 					PreviewMaterial->SetShouldForcePlanePreview(true);
+ 				}
+diff --git a/Engine/Source/Editor/VREditor/Public/VREditorInteractor.h b/Engine/Source/Editor/VREditor/Public/VREditorInteractor.h
+index 93598fddcd6..df1612ce051 100644
+--- a/Engine/Source/Editor/VREditor/Public/VREditorInteractor.h
++++ b/Engine/Source/Editor/VREditor/Public/VREditorInteractor.h
+@@ -25,14 +25,17 @@ enum class EControllerType : uint8
+ 
+ /** Directions the trackpad can be swiped to */
+ UENUM( BlueprintType )
+-enum ETouchSwipeDirection
++namespace VRE
+ {
+-	None = 0,
+-	Left = 1,
+-	Right = 2,
+-	Up = 3,
+-	Down = 4
+-};
++	enum ETouchSwipeDirection
++	{
++		None = 0,
++		Left = 1,
++		Right = 2,
++		Up = 3,
++		Down = 4
++	};
++}
+ 
+ /**
+  * VREditor default interactor
+@@ -339,7 +342,7 @@ private:
+ 
+ 
+ 	/** Start undo or redo from swipe for the Vive */
+-	void UndoRedoFromSwipe( const ETouchSwipeDirection InSwipeDirection );
++	void UndoRedoFromSwipe( const VRE::ETouchSwipeDirection InSwipeDirection );
+ 
+ 	//
+ 	// General input @todo: VREditor: Should this be general (non-UI) in interactordata ?
+@@ -456,7 +459,7 @@ protected:
+ 	FVector2D InitialTouchPosition;
+ 
+ 	/** Latest swipe direction on the trackpad */
+-	ETouchSwipeDirection LastSwipe;
++	VRE::ETouchSwipeDirection LastSwipe;
+ 
+ 	/** The mode that owns this interactor */
+ 	UPROPERTY()
+diff --git a/Engine/Source/Editor/VREditor/VREditorInteractor.cpp b/Engine/Source/Editor/VREditor/VREditorInteractor.cpp
+index 12b9ee16c4a..3e240d311be 100644
+--- a/Engine/Source/Editor/VREditor/VREditorInteractor.cpp
++++ b/Engine/Source/Editor/VREditor/VREditorInteractor.cpp
+@@ -147,7 +147,7 @@ UVREditorInteractor::UVREditorInteractor() :
+ 	bIsTriggerPressed( false ),
+ 	bHasTriggerBeenReleasedSinceLastPress( true ),
+ 	InitialTouchPosition(FVector2D::ZeroVector),
+-	LastSwipe(ETouchSwipeDirection::None),
++	LastSwipe(VRE::ETouchSwipeDirection::None),
+ 	VRMode( nullptr )
+ {
+ }
+@@ -794,12 +794,12 @@ void UVREditorInteractor::PreviewInputKey( class FEditorViewportClient& Viewport
+ 			{
+ 				if (SwipeDelta.X > 0)
+ 				{
+-					LastSwipe = ETouchSwipeDirection::Right;
++					LastSwipe = VRE::ETouchSwipeDirection::Right;
+ 					UndoRedoFromSwipe( LastSwipe );
+ 				}
+ 				else if (SwipeDelta.X < 0)
+ 				{
+-					LastSwipe = ETouchSwipeDirection::Left;
++					LastSwipe = VRE::ETouchSwipeDirection::Left;
+ 					UndoRedoFromSwipe( LastSwipe );
+ 				}
+ 			}
+@@ -807,11 +807,11 @@ void UVREditorInteractor::PreviewInputKey( class FEditorViewportClient& Viewport
+ 			{
+ 				if (SwipeDelta.Y > 0)
+ 				{
+-					LastSwipe = ETouchSwipeDirection::Up;
++					LastSwipe = VRE::ETouchSwipeDirection::Up;
+ 				}
+ 				else if (SwipeDelta.Y < 0)
+ 				{
+-					LastSwipe = ETouchSwipeDirection::Down;
++					LastSwipe = VRE::ETouchSwipeDirection::Down;
+ 				}
+ 			}
+ 		}
+@@ -1627,7 +1627,7 @@ void UVREditorInteractor::UpdateRadialMenuInput( const float DeltaTime )
+ 	}
+ }
+ 
+-void UVREditorInteractor::UndoRedoFromSwipe( const ETouchSwipeDirection InSwipeDirection )
++void UVREditorInteractor::UndoRedoFromSwipe( const VRE::ETouchSwipeDirection InSwipeDirection )
+ {
+ 	EViewportInteractionDraggingMode DraggingMode = GetDraggingMode();
+ 	if (GetControllerType() == EControllerType::Laser &&
+@@ -1638,12 +1638,12 @@ void UVREditorInteractor::UndoRedoFromSwipe( const ETouchSwipeDirection InSwipeD
+ 		DraggingMode != EViewportInteractionDraggingMode::AssistingDrag &&
+ 		!VRMode->IsAimingTeleport())
+ 	{
+-		if (InSwipeDirection == ETouchSwipeDirection::Left)
++		if (InSwipeDirection == VRE::ETouchSwipeDirection::Left)
+ 		{
+ 			VRMode->GetWorldInteraction().Undo();
+ 			bFlickActionExecuted = true;
+ 		}
+-		else if (InSwipeDirection == ETouchSwipeDirection::Right)
++		else if (InSwipeDirection == VRE::ETouchSwipeDirection::Right)
+ 		{
+ 			VRMode->GetWorldInteraction().Redo();
+ 			bFlickActionExecuted = true;
+diff --git a/Engine/Source/Editor/WorldBrowser/Private/Tiles/WorldTileCollectionModel.cpp b/Engine/Source/Editor/WorldBrowser/Private/Tiles/WorldTileCollectionModel.cpp
+index 517b0bfb786..ca585ab8cd0 100644
+--- a/Engine/Source/Editor/WorldBrowser/Private/Tiles/WorldTileCollectionModel.cpp
++++ b/Engine/Source/Editor/WorldBrowser/Private/Tiles/WorldTileCollectionModel.cpp
+@@ -2156,7 +2156,7 @@ bool FWorldTileCollectionModel::GenerateLODLevels(FLevelModelList InLevelList, i
+ 				StaticMesh->StaticMaterials.Add(FStaticMaterial(StaticLandscapeMaterial));
+ 
+ 				//Set the Imported version before calling the build
+-				StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion;
++				StaticMesh->ImportVersion = StaticMesh::EImportStaticMeshVersion::LastVersion;
+ 			}
+ 			FMeshDescription& LandscapeRawMesh = *(StaticMesh->CreateMeshDescription(0));
+ 		
+diff --git a/Engine/Source/Runtime/Engine/Classes/Engine/Engine.h b/Engine/Source/Runtime/Engine/Classes/Engine/Engine.h
+index b41fbf66768..8230d2abb29 100644
+--- a/Engine/Source/Runtime/Engine/Classes/Engine/Engine.h
++++ b/Engine/Source/Runtime/Engine/Classes/Engine/Engine.h
+@@ -90,17 +90,20 @@ enum EFullyLoadPackageType
+  * Enumerates transition types.
+  */
+ UENUM()
+-enum ETransitionType
++namespace ET
+ {
+-	TT_None,
+-	TT_Paused,
+-	TT_Loading,
+-	TT_Saving,
+-	TT_Connecting,
+-	TT_Precaching,
+-	TT_WaitingToConnect,
+-	TT_MAX,
+-};
++	enum ETransitionType
++	{
++		TT_None,
++		TT_Paused,
++		TT_Loading,
++		TT_Saving,
++		TT_Connecting,
++		TT_Precaching,
++		TT_WaitingToConnect,
++		TT_MAX,
++	};
++}
+ 
+ 
+ UENUM()
+@@ -115,20 +118,20 @@ enum EConsoleType
+ enum class EDynamicResolutionStatus
+ {
+ 	// Dynamic resolution is not supported by this platform.
+-	Unsupported,
+-
++			Unsupported,
++	
+ 	// Dynamic resolution is disabled by project setting cvar r.DynamicRes.OperationMode=0 or disabled by game user
+ 	// settings with r.DynamicRes.OperationMode=1.
+-	Disabled,
+-
++			Disabled,
++	
+ 	// Dynamic resolution has been paused by game thread.
+-	Paused,
+-
++			Paused,
++	
+ 	// Dynamic resolution is currently enabled.
+-	Enabled,
+-
++			Enabled,
++	
+ 	// Forced enabled at static resolution fraction for profiling purpose with r.DynamicRes.TestScreenPercentage.
+-	DebugForceEnabled,
++			DebugForceEnabled,
+ };
+ 
+ /** Information about the state of dynamic resolution. */
+@@ -136,11 +139,11 @@ struct FDynamicResolutionStateInfos
+ {
+ 	// Status of dynamic resolution.
+ 	EDynamicResolutionStatus Status;
+-
++	
+ 	// Approximation of the resolution fraction being applied. This is only an approximation because
+ 	// of non (and unecessary) thread safety of this value between game thread, and render thread.
+ 	float ResolutionFractionApproximation;
+-
++	
+ 	// Maximum resolution fraction set, always MaxResolutionFraction >= ResolutionFractionApproximation.
+ 	float ResolutionFractionUpperBound;
+ };
+@@ -151,29 +154,29 @@ USTRUCT()
+ struct FFullyLoadedPackagesInfo
+ {
+ 	GENERATED_USTRUCT_BODY()
+-
++	
+ 	/** When to load these packages */
+ 	UPROPERTY()
+ 	TEnumAsByte<enum EFullyLoadPackageType> FullyLoadType;
+-
++	
+ 	/** When this map or gametype is loaded, the packages in the following array will be loaded and added to root, then removed from root when map is unloaded */
+ 	UPROPERTY()
+ 	FString Tag;
+-
++	
+ 	/** The list of packages that will be fully loaded when the above Map is loaded */
+ 	UPROPERTY()
+ 	TArray<FName> PackagesToLoad;
+-
++	
+ 	/** List of objects that were loaded, for faster cleanup */
+ 	UPROPERTY()
+ 	TArray<class UObject*> LoadedObjects;
+-
+-
++	
++	
+ 	FFullyLoadedPackagesInfo()
+-		: FullyLoadType(0)
++			: FullyLoadType(0)
+ 	{
+ 	}
+-
++	
+ };
+ 
+ 
+@@ -182,23 +185,23 @@ USTRUCT()
+ struct FLevelStreamingStatus
+ {
+ 	GENERATED_USTRUCT_BODY()
+-
++	
+ 	UPROPERTY()
+ 	FName PackageName;
+-
++	
+ 	UPROPERTY()
+ 	uint32 bShouldBeLoaded:1;
+-
++	
+ 	UPROPERTY()
+ 	uint32 bShouldBeVisible:1;
+-
++	
+ 	UPROPERTY()
+ 	uint32 LODIndex;
+-
+-
++	
++	
+ 	/** Constructors */
+ 	FLevelStreamingStatus(FName InPackageName, bool bInShouldBeLoaded, bool bInShouldBeVisible, int32 InLODIndex)
+-	: PackageName(InPackageName), bShouldBeLoaded(bInShouldBeLoaded), bShouldBeVisible(bInShouldBeVisible), LODIndex(InLODIndex)
++			: PackageName(InPackageName), bShouldBeLoaded(bInShouldBeLoaded), bShouldBeVisible(bInShouldBeVisible), LODIndex(InLODIndex)
+ 	{}
+ 	FLevelStreamingStatus()
+ 	{
+@@ -1443,7 +1446,7 @@ public:
+ 
+ 	/** The current transition type. */
+ 	UPROPERTY()
+-	TEnumAsByte<enum ETransitionType> TransitionType;
++	TEnumAsByte<enum ET::ETransitionType> TransitionType;
+ 
+ 	/** The current transition description text. */
+ 	UPROPERTY()
+diff --git a/Engine/Source/Runtime/Engine/Classes/Engine/StaticMesh.h b/Engine/Source/Runtime/Engine/Classes/Engine/StaticMesh.h
+index 0d3d2e1b0d1..676de42d98b 100644
+--- a/Engine/Source/Runtime/Engine/Classes/Engine/StaticMesh.h
++++ b/Engine/Source/Runtime/Engine/Classes/Engine/StaticMesh.h
+@@ -443,36 +443,38 @@ struct FStaticMaterial
+ 	FMeshUVChannelInfo			UVChannelData;
+ };
+ 
+-
+-enum EImportStaticMeshVersion
++namespace StaticMesh
+ {
+-	// Before any version changes were made
+-	BeforeImportStaticMeshVersionWasAdded,
+-	// Remove the material re-order workflow
+-	RemoveStaticMeshSkinxxWorkflow,
+-	VersionPlusOne,
+-	LastVersion = VersionPlusOne - 1
+-};
++	enum EImportStaticMeshVersion
++	{
++		// Before any version changes were made
++		BeforeImportStaticMeshVersionWasAdded,
++		// Remove the material re-order workflow
++		RemoveStaticMeshSkinxxWorkflow,
++		VersionPlusOne,
++		LastVersion = VersionPlusOne - 1
++	};
++}
+ 
+ USTRUCT()
+ struct FMaterialRemapIndex
+ {
+ 	GENERATED_USTRUCT_BODY()
+-
++	
+ 	FMaterialRemapIndex()
+ 	{
+ 		ImportVersionKey = 0;
+ 	}
+-
++	
+ 	FMaterialRemapIndex(uint32 VersionKey, TArray<int32> RemapArray)
+-	: ImportVersionKey(VersionKey)
+-	, MaterialRemap(RemapArray)
++			: ImportVersionKey(VersionKey)
++			, MaterialRemap(RemapArray)
+ 	{
+ 	}
+-
++	
+ 	UPROPERTY()
+ 	uint32 ImportVersionKey;
+-
++	
+ 	UPROPERTY()
+ 	TArray<int32> MaterialRemap;
+ };
+@@ -480,62 +482,62 @@ struct FMaterialRemapIndex
+ struct FStaticMeshDescriptionConstAttributeGetter
+ {
+ 	ENGINE_API FStaticMeshDescriptionConstAttributeGetter(const FMeshDescription* InMeshDescription)
+-		: MeshDescription(InMeshDescription)
++			: MeshDescription(InMeshDescription)
+ 	{}
+-
++	
+ 	const FMeshDescription* MeshDescription;
+-
++	
+ 	ENGINE_API TVertexAttributesConstRef<FVector> GetPositions() const { return MeshDescription->VertexAttributes().GetAttributesRef<FVector>(MeshAttribute::Vertex::Position); }
+-
++	
+ 	ENGINE_API TVertexInstanceAttributesConstRef<FVector> GetNormals() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<FVector>(MeshAttribute::VertexInstance::Normal); }
+-
++	
+ 	ENGINE_API TVertexInstanceAttributesConstRef<FVector> GetTangents() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<FVector>(MeshAttribute::VertexInstance::Tangent); }
+-
++	
+ 	ENGINE_API TVertexInstanceAttributesConstRef<float> GetBinormalSigns() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<float>(MeshAttribute::VertexInstance::BinormalSign); }
+-
++	
+ 	ENGINE_API TVertexInstanceAttributesConstRef<FVector4> GetColors() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<FVector4>(MeshAttribute::VertexInstance::Color); }
+-
++	
+ 	ENGINE_API TVertexInstanceAttributesConstRef<FVector2D> GetUVs() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<FVector2D>(MeshAttribute::VertexInstance::TextureCoordinate); }
+-
++	
+ 	ENGINE_API TEdgeAttributesConstRef<bool> GetEdgeHardnesses() const { return MeshDescription->EdgeAttributes().GetAttributesRef<bool>(MeshAttribute::Edge::IsHard); }
+-
++	
+ 	ENGINE_API TEdgeAttributesConstRef<float> GetEdgeCreaseSharpnesses() const { return MeshDescription->EdgeAttributes().GetAttributesRef<float>(MeshAttribute::Edge::CreaseSharpness); }
+-
++	
+ 	ENGINE_API TPolygonGroupAttributesConstRef<FName> GetPolygonGroupImportedMaterialSlotNames() { return MeshDescription->PolygonGroupAttributes().GetAttributesRef<FName>(MeshAttribute::PolygonGroup::ImportedMaterialSlotName); }
+ };
+ 
+ struct FStaticMeshDescriptionAttributeGetter
+ {
+ 	ENGINE_API FStaticMeshDescriptionAttributeGetter(FMeshDescription* InMeshDescription)
+-		: MeshDescription(InMeshDescription)
++			: MeshDescription(InMeshDescription)
+ 	{}
+ 	
+ 	FMeshDescription* MeshDescription;
+-
++	
+ 	ENGINE_API TVertexAttributesRef<FVector> GetPositions() const { return MeshDescription->VertexAttributes().GetAttributesRef<FVector>(MeshAttribute::Vertex::Position); }
+ 	ENGINE_API TVertexAttributesConstRef<FVector> GetPositionsConst() const { return MeshDescription->VertexAttributes().GetAttributesRef<FVector>(MeshAttribute::Vertex::Position); }
+-
++	
+ 	ENGINE_API TVertexInstanceAttributesRef<FVector> GetNormals() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<FVector>(MeshAttribute::VertexInstance::Normal); }
+ 	ENGINE_API TVertexInstanceAttributesConstRef<FVector> GetNormalsConst() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<FVector>(MeshAttribute::VertexInstance::Normal); }
+-
++	
+ 	ENGINE_API TVertexInstanceAttributesRef<FVector> GetTangents() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<FVector>(MeshAttribute::VertexInstance::Tangent); }
+ 	ENGINE_API TVertexInstanceAttributesConstRef<FVector> GetTangentsConst() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<FVector>(MeshAttribute::VertexInstance::Tangent); }
+-
++	
+ 	ENGINE_API TVertexInstanceAttributesRef<float> GetBinormalSigns() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<float>(MeshAttribute::VertexInstance::BinormalSign); }
+ 	ENGINE_API TVertexInstanceAttributesConstRef<float> GetBinormalSignsConst() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<float>(MeshAttribute::VertexInstance::BinormalSign); }
+-
++	
+ 	ENGINE_API TVertexInstanceAttributesRef<FVector4> GetColors() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<FVector4>(MeshAttribute::VertexInstance::Color); }
+ 	ENGINE_API TVertexInstanceAttributesConstRef<FVector4> GetColorsConst() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<FVector4>(MeshAttribute::VertexInstance::Color); }
+-
++	
+ 	ENGINE_API TVertexInstanceAttributesRef<FVector2D> GetUVs() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<FVector2D>(MeshAttribute::VertexInstance::TextureCoordinate); }
+ 	ENGINE_API TVertexInstanceAttributesConstRef<FVector2D> GetUVsConst() const { return MeshDescription->VertexInstanceAttributes().GetAttributesRef<FVector2D>(MeshAttribute::VertexInstance::TextureCoordinate); }
+-
++	
+ 	ENGINE_API TEdgeAttributesRef<bool> GetEdgeHardnesses() const { return MeshDescription->EdgeAttributes().GetAttributesRef<bool>(MeshAttribute::Edge::IsHard); }
+ 	ENGINE_API TEdgeAttributesConstRef<bool> GetEdgeHardnessesConst() const { return MeshDescription->EdgeAttributes().GetAttributesRef<bool>(MeshAttribute::Edge::IsHard); }
+ 	
+ 	ENGINE_API TEdgeAttributesRef<float> GetEdgeCreaseSharpnesses() const { return MeshDescription->EdgeAttributes().GetAttributesRef<float>(MeshAttribute::Edge::CreaseSharpness); }
+ 	ENGINE_API TEdgeAttributesConstRef<float> GetEdgeCreaseSharpnessesConst() const { return MeshDescription->EdgeAttributes().GetAttributesRef<float>(MeshAttribute::Edge::CreaseSharpness); }
+-
++	
+ 	ENGINE_API TPolygonGroupAttributesRef<FName> GetPolygonGroupImportedMaterialSlotNames() { return MeshDescription->PolygonGroupAttributes().GetAttributesRef<FName>(MeshAttribute::PolygonGroup::ImportedMaterialSlotName); }
+ 	ENGINE_API TPolygonGroupAttributesConstRef<FName> GetPolygonGroupImportedMaterialSlotNamesConst() { return MeshDescription->PolygonGroupAttributes().GetAttributesRef<FName>(MeshAttribute::PolygonGroup::ImportedMaterialSlotName); }
+ };
+/* @@ -561,24 +563,24 @@ class UStaticMesh : public UStreamableRenderAsset, public IInterface_CollisionDa */
+   /* [>* Notification when anything changed <] */
+   /* DECLARE_MULTICAST_DELEGATE(FOnMeshChanged); */
+ /* #endif */
+/* - */
+/* +	 */
+   /* [>* Pointer to the data used to render this static mesh. <] */
+   /* TUniquePtr<class FStaticMeshRenderData> RenderData; */
+/* - */
+/* +	 */
+   /* [>* Pointer to the occluder data used to rasterize this static mesh for software occlusion. <] */
+   /* TUniquePtr<class FStaticMeshOccluderData> OccluderData; */
+ 
+ /* #if WITH_EDITORONLY_DATA */
+   /* static const float MinimumAutoLODPixelError; */
+/* - */
+/* +	 */
+   /* [>* Imported raw mesh bulk data. <] */
+   /* UPROPERTY() */
+   /* TArray<FStaticMeshSourceModel> SourceModels; */
+/* - */
+/* +	 */
+   /* [>* Map of LOD+Section index to per-section info. <] */
+   /* UPROPERTY() */
+   /* FMeshSectionInfoMap SectionInfoMap; */
+/* - */
+/* +	 */
+   /* /** */
+    /* * We need the OriginalSectionInfoMap to be able to build mesh in a non destructive way. Reduce has to play with SectionInfoMap in case some sections disappear. */
+    /* * This member will be update in the following situation */
+/* @@ -589,80 +591,80 @@ class UStaticMesh : public UStreamableRenderAsset, public IInterface_CollisionDa */
+    /* */ */
+   /* UPROPERTY() */
+   /* FMeshSectionInfoMap OriginalSectionInfoMap; */
+/* - */
+/* +	 */
+   /* [>* The LOD group to which this mesh belongs. <] */
+   /* UPROPERTY(EditAnywhere, AssetRegistrySearchable, Category=LodSettings) */
+   /* FName LODGroup; */
+/* - */
+/* +	 */
+   /**
+    * If non-negative, specify the maximum number of streamed LODs. Only has effect if
+    * mesh LOD streaming is enabled for the target platform.
+    */
+   /* UPROPERTY() */
+   /* FPerPlatformInt NumStreamedLODs; */
+/* - */
+/* +	 */
+   /* [> The last import version <] */
+   /* UPROPERTY() */
+   /* int32 ImportVersion; */
+/* - */
+/* +	 */
+   /* UPROPERTY() */
+   /* TArray<FMaterialRemapIndex> MaterialRemapIndexPerImportVersion; */
+   
+   /* [> The lightmap UV generation version used during the last derived data build <] */
+   /* UPROPERTY() */
+   /* int32 LightmapUVVersion; */
+/* - */
+/* +	 */
+   /* [>* If true, the screen sizees at which LODs swap are computed automatically. <] */
+   /* UPROPERTY() */
+   /* uint8 bAutoComputeLODScreenSize : 1; */
+/* - */
+/* +	 */
+   /**
+   * If true on post load we need to calculate Display Factors from the
+   * loaded LOD distances.
+   */
+   /* uint8 bRequiresLODDistanceConversion : 1; */
+/* - */
+/* +	 */
+   /**
+    * If true on post load we need to calculate resolution independent Display Factors from the
+    * loaded LOD screen sizes.
+    */
+   /* uint8 bRequiresLODScreenSizeConversion : 1; */
+/* - */
+/* +	 */
+   /* [>* Materials used by this static mesh. Individual sections index in to this array. <] */
+   /* UPROPERTY() */
+   /* TArray<UMaterialInterface*> Materials_DEPRECATED; */
+ 
+ /* #endif // #if WITH_EDITORONLY_DATA */
+/* - */
+/* +	 */
+   /* [>* Minimum LOD to use for rendering.  This is the default setting for the mesh and can be overridden by component settings. <] */
+   /* UPROPERTY() */
+   /* FPerPlatformInt MinLOD; */
+/* - */
+/* +	 */
+   /* [>* Bias multiplier for Light Propagation Volume lighting <] */
+   /* UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=StaticMesh, meta=(UIMin = "0.0", UIMax = "3.0")) */
+   /* float LpvBiasMultiplier; */
+/* - */
+/* +	 */
+   /* UPROPERTY() */
+   /* TArray<FStaticMaterial> StaticMaterials; */
+/* - */
+/* +	 */
+   /* UPROPERTY() */
+   /* float LightmapUVDensity; */
+/* - */
+/* +	 */
+   /* UPROPERTY(EditAnywhere, Category=StaticMesh, meta=(ClampMax = 4096, ToolTip="The light map resolution", FixedIncrement="4.0")) */
+   /* int32 LightMapResolution; */
+/* - */
+/* +	 */
+   /* [>* The light map coordinate index <] */
+   /* UPROPERTY(EditAnywhere, AdvancedDisplay, Category=StaticMesh, meta=(ToolTip="The light map coordinate index", UIMin = "0", UIMax = "3")) */
+   /* int32 LightMapCoordinateIndex; */
+/* - */
+/* +	 */
+   /* [>* Useful for reducing self shadowing from distance field methods when using world position offset to animate the mesh's vertices. <] */
+   /* UPROPERTY(EditAnywhere, AdvancedDisplay, Category = StaticMesh) */
+   /* float DistanceFieldSelfShadowBias; */
+/* - */
+/* +	 */
+   /* // Physics data. */
+   /* UPROPERTY(EditAnywhere, transient, duplicatetransient, Instanced, Category = StaticMesh) */
+   /* class UBodySetup* BodySetup; */
+/* - */
+/* +	 */
+   /* /**  */
+    /* *	Specifies which mesh LOD to use for complex (per-poly) collision.  */
+    /* *	Sometimes it can be desirable to use a lower poly representation for collision to reduce memory usage, improve performance and behaviour. */
+/* @@ -670,24 +672,24 @@ class UStaticMesh : public UStreamableRenderAsset, public IInterface_CollisionDa */
+    /* */ */
+   /* UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = StaticMesh, meta=(DisplayName="LOD For Collision")) */
+   /* int32 LODForCollision; */
+/* - */
+/* +	 */
+   /** 
+    * Whether to generate a distance field for this mesh, which can be used by DistanceField Indirect Shadows.
+    * This is ignored if the project's 'Generate Mesh Distance Fields' setting is enabled.
+    */
+   /* UPROPERTY(EditAnywhere, Category=StaticMesh) */
+   /* uint8 bGenerateMeshDistanceField : 1; */
+/* - */
+/* +	 */
+   /* /** If true, strips unwanted complex collision data aka kDOP tree when cooking for consoles. */
+     /* On the Playstation 3 data of this mesh will be stored in video memory. */ */
+   /* UPROPERTY() */
+   /* uint8 bStripComplexCollisionForConsole_DEPRECATED:1; */
+/* - */
+/* +	 */
+   /* /** If true, mesh will have NavCollision property with additional data for navmesh generation and usage. */
+       /* Set to false for distant meshes (always outside navigation bounds) to save memory on collision data. */ */
+   /* UPROPERTY(EditAnywhere, AdvancedDisplay, Category=Navigation) */
+   /* uint8 bHasNavigationData:1; */
+/* - */
+/* +	 */
+   /* /**	 */
+     /* Mesh supports uniformly distributed sampling in constant time. */
+     /* Memory cost is 8 bytes per triangle. */
+/* @@ -707,7 +709,7 @@ public: */
+    /* */ */
+   /* UPROPERTY(EditAnywhere, AdvancedDisplay, Category = StaticMesh) */
+   /* uint8 bAllowCPUAccess:1; */
+/* - */
+/* +	 */
+   /* /** */
+    /* * If true, a GPU buffer containing required data for uniform mesh surface sampling will be created at load time. */
+    /* * It is created from the cpu data so bSupportUniformlyDistributedSampling is also required to be true. */
+diff --git a/Engine/Source/Runtime/Engine/Classes/Materials/MaterialFunction.h b/Engine/Source/Runtime/Engine/Classes/Materials/MaterialFunction.h
+index db44daa9c26..1a11c3f4a85 100644
+--- a/Engine/Source/Runtime/Engine/Classes/Materials/MaterialFunction.h
++++ b/Engine/Source/Runtime/Engine/Classes/Materials/MaterialFunction.h
+@@ -83,10 +83,10 @@ public:
+ 	virtual void PostLoad() override;
+ 	//~ End UObject Interface.
+ 
+-	void SetMaterialFunctionUsage(EMaterialFunctionUsage Usage) { MaterialFunctionUsage = Usage; }
++	void SetMaterialFunctionUsage(Materials::EMaterialFunctionUsage Usage) { MaterialFunctionUsage = Usage; }
+ 
+ 	//~ Begin UMaterialFunctionInterface interface
+-	virtual EMaterialFunctionUsage GetMaterialFunctionUsage() override { return MaterialFunctionUsage; }
++	virtual Materials::EMaterialFunctionUsage GetMaterialFunctionUsage() override { return MaterialFunctionUsage; }
+ 
+ #if WITH_EDITOR
+ 	/** Recursively update all function call expressions in this function, or in nested functions. */
+diff --git a/Engine/Source/Runtime/Engine/Classes/Materials/MaterialFunctionInstance.h b/Engine/Source/Runtime/Engine/Classes/Materials/MaterialFunctionInstance.h
+index 6687d8bef4c..605637fbf91 100644
+--- a/Engine/Source/Runtime/Engine/Classes/Materials/MaterialFunctionInstance.h
++++ b/Engine/Source/Runtime/Engine/Classes/Materials/MaterialFunctionInstance.h
+@@ -23,10 +23,10 @@ class UMaterialFunctionInstance : public UMaterialFunctionInterface
+ 		Base = GetBaseFunction();
+ 	}
+ 
+-	virtual EMaterialFunctionUsage GetMaterialFunctionUsage() override
++	virtual Materials::EMaterialFunctionUsage GetMaterialFunctionUsage() override
+ 	{
+ 		UMaterialFunctionInterface* BaseFunction = GetBaseFunction();
+-		return BaseFunction ? BaseFunction->GetMaterialFunctionUsage() : EMaterialFunctionUsage::Default;
++		return BaseFunction ? BaseFunction->GetMaterialFunctionUsage() : Materials::EMaterialFunctionUsage::Default;
+ 	}
+ 
+ 	/** Parent function. */
+diff --git a/Engine/Source/Runtime/Engine/Classes/Materials/MaterialFunctionInterface.h b/Engine/Source/Runtime/Engine/Classes/Materials/MaterialFunctionInterface.h
+index eba1223ff82..b1de0cdfd39 100644
+--- a/Engine/Source/Runtime/Engine/Classes/Materials/MaterialFunctionInterface.h
++++ b/Engine/Source/Runtime/Engine/Classes/Materials/MaterialFunctionInterface.h
+@@ -20,12 +20,15 @@ struct FPropertyChangedEvent;
+ 
+ /** Usage set on a material function determines feature compatibility and validation. */
+ UENUM()
+-enum EMaterialFunctionUsage
++namespace Materials
+ {
+-	Default,
+-	MaterialLayer,
+-	MaterialLayerBlend
+-};
++	enum EMaterialFunctionUsage
++	{
++		Default,
++		MaterialLayer,
++		MaterialLayerBlend
++	};
++}
+ 
+ /**
+  * A Material Function is a collection of material expressions that can be reused in different materials
+@@ -46,11 +49,11 @@ class UMaterialFunctionInterface : public UObject
+ protected:
+ 	/** The intended usage of this function, required for material layers. */
+ 	UPROPERTY(AssetRegistrySearchable)
+-	TEnumAsByte<enum EMaterialFunctionUsage> MaterialFunctionUsage;
++	TEnumAsByte<enum Materials::EMaterialFunctionUsage> MaterialFunctionUsage;
+ 
+ public:
+-	virtual EMaterialFunctionUsage GetMaterialFunctionUsage()
+-		PURE_VIRTUAL(UMaterialFunctionInterface::GetMaterialFunctionUsage,return EMaterialFunctionUsage::Default;);
++	virtual Materials::EMaterialFunctionUsage GetMaterialFunctionUsage()
++		PURE_VIRTUAL(UMaterialFunctionInterface::GetMaterialFunctionUsage,return Materials::EMaterialFunctionUsage::Default;);
+ 
+ 	virtual void UpdateFromFunctionResource()
+ 		PURE_VIRTUAL(UMaterialFunctionInterface::UpdateFromFunctionResource,);
+diff --git a/Engine/Source/Runtime/Engine/Private/Components/StaticMeshComponent.cpp b/Engine/Source/Runtime/Engine/Private/Components/StaticMeshComponent.cpp
+index 983aad302a4..5c269bcca73 100644
+--- a/Engine/Source/Runtime/Engine/Private/Components/StaticMeshComponent.cpp
++++ b/Engine/Source/Runtime/Engine/Private/Components/StaticMeshComponent.cpp
+@@ -180,7 +180,7 @@ UStaticMeshComponent::UStaticMeshComponent(const FObjectInitializer& ObjectIniti
+ 	SectionIndexPreview = INDEX_NONE;
+ 	SelectedEditorMaterial = INDEX_NONE;
+ 	MaterialIndexPreview = INDEX_NONE;
+-	StaticMeshImportVersion = BeforeImportStaticMeshVersionWasAdded;
++	StaticMeshImportVersion = StaticMesh::BeforeImportStaticMeshVersionWasAdded;
+ 	bCustomOverrideVertexColorPerLOD = false;
+ 	bDisplayVertexColors = false;
+ #endif
+diff --git a/Engine/Source/Runtime/Engine/Private/GameInstance.cpp b/Engine/Source/Runtime/Engine/Private/GameInstance.cpp
+index 52bda3a959a..a6f0bbe7713 100644
+--- a/Engine/Source/Runtime/Engine/Private/GameInstance.cpp
++++ b/Engine/Source/Runtime/Engine/Private/GameInstance.cpp
+@@ -320,7 +320,7 @@ FGameInstancePIEResult UGameInstance::StartPlayInEditorGameInstance(ULocalPlayer
+ 
+ 		if (EditorEngine->Browse(*WorldContext, FURL(&BaseURL, *URLString, (ETravelType)TRAVEL_Absolute), Error) == EBrowseReturnVal::Pending)
+ 		{
+-			EditorEngine->TransitionType = TT_WaitingToConnect;
++			EditorEngine->TransitionType = ET::TT_WaitingToConnect;
+ 		}
+ 		else
+ 		{
+diff --git a/Engine/Source/Runtime/Engine/Private/GameViewportClient.cpp b/Engine/Source/Runtime/Engine/Private/GameViewportClient.cpp
+index a2657215d11..ca8b4f56f40 100644
+--- a/Engine/Source/Runtime/Engine/Private/GameViewportClient.cpp
++++ b/Engine/Source/Runtime/Engine/Private/GameViewportClient.cpp
+@@ -2474,22 +2474,22 @@ void UGameViewportClient::DrawTransition(UCanvas* Canvas)
+ 	{
+ 		switch (GetOuterUEngine()->TransitionType)
+ 		{
+-		case TT_Loading:
++		case ET::TT_Loading:
+ 			DrawTransitionMessage(Canvas, NSLOCTEXT("GameViewportClient", "LoadingMessage", "LOADING").ToString());
+ 			break;
+-		case TT_Saving:
++		case ET::TT_Saving:
+ 			DrawTransitionMessage(Canvas, NSLOCTEXT("GameViewportClient", "SavingMessage", "SAVING").ToString());
+ 			break;
+-		case TT_Connecting:
++		case ET::TT_Connecting:
+ 			DrawTransitionMessage(Canvas, NSLOCTEXT("GameViewportClient", "ConnectingMessage", "CONNECTING").ToString());
+ 			break;
+-		case TT_Precaching:
++		case ET::TT_Precaching:
+ 			DrawTransitionMessage(Canvas, NSLOCTEXT("GameViewportClient", "PrecachingMessage", "PRECACHING").ToString());
+ 			break;
+-		case TT_Paused:
++		case ET::TT_Paused:
+ 			DrawTransitionMessage(Canvas, NSLOCTEXT("GameViewportClient", "PausedMessage", "PAUSED").ToString());
+ 			break;
+-		case TT_WaitingToConnect:
++		case ET::TT_WaitingToConnect:
+ 			DrawTransitionMessage(Canvas, TEXT("Waiting to connect...")); // Temp - localization of the FString messages is broke atm. Loc this when its fixed.
+ 			break;
+ 		}
+diff --git a/Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp b/Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp
+index 61faf4fba20..63335b946a6 100644
+--- a/Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp
++++ b/Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp
+@@ -5604,7 +5604,7 @@ bool UMaterialExpressionMaterialAttributeLayers::ValidateLayerConfiguration(FMat
+ 		
+ 		if (Layer)
+ 		{
+-			if (Layer->GetMaterialFunctionUsage() != EMaterialFunctionUsage::MaterialLayer)
++			if (Layer->GetMaterialFunctionUsage() != Materials::EMaterialFunctionUsage::MaterialLayer)
+ 			{
+ 				COMPILER_OR_LOG_ERROR(TEXT("Layer %i, %s, not set for layer usage."), LayerIndex, *Layer->GetName());
+ 				bIsValid = false;
+@@ -5641,7 +5641,7 @@ bool UMaterialExpressionMaterialAttributeLayers::ValidateLayerConfiguration(FMat
+ 		
+ 		if (Blend)
+ 		{
+-			if (Blend->GetMaterialFunctionUsage() != EMaterialFunctionUsage::MaterialLayerBlend)
++			if (Blend->GetMaterialFunctionUsage() != Materials::EMaterialFunctionUsage::MaterialLayerBlend)
+ 			{
+ 				COMPILER_OR_LOG_ERROR(TEXT("Blend %i, %s, not set for layer blend usage."), BlendIndex, *Blend->GetName());
+ 				bIsValid = false;
+@@ -10154,7 +10154,7 @@ void UMaterialExpressionCustom::Serialize(FStructuredArchive::FRecord Record)
+ ///////////////////////////////////////////////////////////////////////////////
+ UMaterialFunctionInterface::UMaterialFunctionInterface(const FObjectInitializer& ObjectInitializer)
+ 	: Super(ObjectInitializer)
+-	, MaterialFunctionUsage(EMaterialFunctionUsage::Default)
++	, MaterialFunctionUsage(Materials::EMaterialFunctionUsage::Default)
+ {
+ }
+ 
+@@ -10560,7 +10560,7 @@ bool UMaterialFunction::ValidateFunctionUsage(FMaterialCompiler* Compiler, const
+ 	int32 NumOutputs = 0;
+ 
+ #if WITH_EDITOR
+-	if (GetMaterialFunctionUsage() == EMaterialFunctionUsage::MaterialLayer)
++	if (GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::MaterialLayer)
+ 	{
+ 		// Material layers must have a single MA input and output only
+ 		for (UMaterialExpression* Expression : FunctionExpressions)
+@@ -10596,7 +10596,7 @@ bool UMaterialFunction::ValidateFunctionUsage(FMaterialCompiler* Compiler, const
+ 			bHasValidOutput = false;
+ 		}
+ 	}
+-	else if (GetMaterialFunctionUsage() == EMaterialFunctionUsage::MaterialLayerBlend)
++	else if (GetMaterialFunctionUsage() == Materials::EMaterialFunctionUsage::MaterialLayerBlend)
+ 	{
+ 		// Material layer blends can have up to two MA inputs and single MA output only
+ 		for (UMaterialExpression* Expression : FunctionExpressions)
+diff --git a/Engine/Source/Runtime/Engine/Private/PendingNetGame.cpp b/Engine/Source/Runtime/Engine/Private/PendingNetGame.cpp
+index bdd4f671121..4ac5f1493f9 100644
+--- a/Engine/Source/Runtime/Engine/Private/PendingNetGame.cpp
++++ b/Engine/Source/Runtime/Engine/Private/PendingNetGame.cpp
+@@ -150,7 +150,7 @@ void UPendingNetGame::LoadMapCompleted(UEngine* Engine, FWorldContext& Context,
+ 	else
+ 	{
+ 		// Show connecting message, cause precaching to occur.
+-		Engine->TransitionType = TT_Connecting;
++		Engine->TransitionType = ET::TT_Connecting;
+ 
+ 		Engine->RedrawViewports(false);
+ 
+diff --git a/Engine/Source/Runtime/Engine/Private/StaticMesh.cpp b/Engine/Source/Runtime/Engine/Private/StaticMesh.cpp
+index 3cd18526729..118e36ff14b 100644
+--- a/Engine/Source/Runtime/Engine/Private/StaticMesh.cpp
++++ b/Engine/Source/Runtime/Engine/Private/StaticMesh.cpp
+@@ -2479,7 +2479,7 @@ UStaticMesh::UStaticMesh(const FObjectInitializer& ObjectInitializer)
+ 	bHasNavigationData=true;
+ #if WITH_EDITORONLY_DATA
+ 	bAutoComputeLODScreenSize=true;
+-	ImportVersion = EImportStaticMeshVersion::BeforeImportStaticMeshVersionWasAdded;
++	ImportVersion = StaticMesh::EImportStaticMeshVersion::BeforeImportStaticMeshVersionWasAdded;
+ 	LODForOccluderMesh = -1;
+ 	NumStreamedLODs.Default = -1;
+ #endif // #if WITH_EDITORONLY_DATA
+diff --git a/Engine/Source/Runtime/Engine/Private/UnrealEngine.cpp b/Engine/Source/Runtime/Engine/Private/UnrealEngine.cpp
+index 3a771896442..95cdda8c8b3 100644
+--- a/Engine/Source/Runtime/Engine/Private/UnrealEngine.cpp
++++ b/Engine/Source/Runtime/Engine/Private/UnrealEngine.cpp
+@@ -12069,9 +12069,9 @@ void UEngine::TickWorldTravel(FWorldContext& Context, float DeltaSeconds)
+ 			}
+ 		}
+ 	}
+-	else if (TransitionType == TT_WaitingToConnect)
++	else if (TransitionType == ET::TT_WaitingToConnect)
+ 	{
+-		TransitionType = TT_None;
++		TransitionType = ET::TT_None;
+ 	}
+ 
+ 	return;
+@@ -12177,7 +12177,7 @@ bool UEngine::LoadMap( FWorldContext& WorldContext, FURL URL, class UPendingNetG
+ 
+ 		if(!URL.HasOption(TEXT("quiet")) )
+ 		{
+-			TransitionType = TT_Loading;
++			TransitionType = ET::TT_Loading;
+ 			TransitionDescription = URL.Map;
+ 			if (URL.HasOption(TEXT("Game=")))
+ 			{
+@@ -12196,7 +12196,7 @@ bool UEngine::LoadMap( FWorldContext& WorldContext, FURL URL, class UPendingNetG
+ 				LoadMapRedrawViewports();
+ 			}
+ 
+-			TransitionType = TT_None;
++			TransitionType = ET::TT_None;
+ 		}
+ 
+ 		// Clean up networking
+@@ -12881,10 +12881,10 @@ void UEngine::LoadPackagesFully(UWorld * InWorld, EFullyLoadPackageType FullyLoa
+ void UEngine::UpdateTransitionType(UWorld *CurrentWorld)
+ {
+ 	// Update the transition screen.
+-	if(TransitionType == TT_Connecting)
++	if(TransitionType == ET::TT_Connecting)
+ 	{
+ 		// Check to see if all players have finished connecting.
+-		TransitionType = TT_None;
++		TransitionType = ET::TT_None;
+ 
+ 		FWorldContext &Context = GetWorldContextFromWorldChecked(CurrentWorld);
+ 		if (Context.OwningGameInstance != NULL)
+@@ -12894,16 +12894,16 @@ void UEngine::UpdateTransitionType(UWorld *CurrentWorld)
+ 				if(!(*It)->PlayerController)
+ 				{
+ 					// This player has not received a PlayerController from the server yet, so leave the connecting screen up.
+-					TransitionType = TT_Connecting;
++					TransitionType = ET::TT_Connecting;
+ 					break;
+ 				}
+ 			}
+ 		}
+ 	}
+-	else if(TransitionType == TT_None || TransitionType == TT_Paused)
++	else if(TransitionType == ET::TT_None || TransitionType == ET::TT_Paused)
+ 	{
+ 		// Display a paused screen if the game is paused.
+-		TransitionType = (CurrentWorld->GetWorldSettings()->Pauser != NULL) ? TT_Paused : TT_None;
++		TransitionType = (CurrentWorld->GetWorldSettings()->Pauser != NULL) ? ET::TT_Paused : ET::TT_None;
+ 	}
+ }
+ 
+diff --git a/Engine/Source/Runtime/MovieScene/Private/MovieSceneSequencePlayer.cpp b/Engine/Source/Runtime/MovieScene/Private/MovieSceneSequencePlayer.cpp
+index 31349c2d94c..f9850e97ae5 100644
+--- a/Engine/Source/Runtime/MovieScene/Private/MovieSceneSequencePlayer.cpp
++++ b/Engine/Source/Runtime/MovieScene/Private/MovieSceneSequencePlayer.cpp
+@@ -210,7 +210,7 @@ void UMovieSceneSequencePlayer::Pause()
+ 	{
+ 		if (bIsEvaluating)
+ 		{
+-			LatentActions.Emplace(FLatentAction::Pause);
++			LatentActions.Emplace(FLatentAction::EType::Pause);
+ 			return;
+ 		}
+ 
+@@ -279,7 +279,7 @@ void UMovieSceneSequencePlayer::StopInternal(FFrameTime TimeToResetTo)
+ 	{
+ 		if (bIsEvaluating)
+ 		{
+-			LatentActions.Emplace(FLatentAction::Stop, TimeToResetTo);
++			LatentActions.Emplace(FLatentAction::EType::Stop, TimeToResetTo);
+ 			return;
+ 		}
+ 
+@@ -886,11 +886,11 @@ void UMovieSceneSequencePlayer::ApplyLatentActions()
+ 	{
+ 		switch (LatentAction.Type)
+ 		{
+-		case FLatentAction::Stop:          StopInternal(LatentAction.Position); continue;
+-		case FLatentAction::Pause:         Pause();                             continue;
++		case FLatentAction::EType::Stop:          StopInternal(LatentAction.Position); continue;
++		case FLatentAction::EType::Pause:         Pause();                             continue;
+ 		}
+ 
+-		check(LatentAction.Type == FLatentAction::Update);
++		check(LatentAction.Type == FLatentAction::EType::Update);
+ 		switch (LatentAction.UpdateMethod)
+ 		{
+ 		case EUpdatePositionMethod::Play:  PlayToFrame( LatentAction.Position); continue;
+diff --git a/Engine/Source/Runtime/MovieScene/Public/MovieSceneSequencePlayer.h b/Engine/Source/Runtime/MovieScene/Public/MovieSceneSequencePlayer.h
+index 4b02049aead..2362d0e00a5 100644
+--- a/Engine/Source/Runtime/MovieScene/Public/MovieSceneSequencePlayer.h
++++ b/Engine/Source/Runtime/MovieScene/Public/MovieSceneSequencePlayer.h
+@@ -204,6 +204,7 @@ public:
+ 	UFUNCTION(BlueprintCallable, Category="Game|Cinematic")
+ 	void Scrub();
+ 
++	//TODO Fix Stop, Pause, Update
+ 	/** Stop playback and move the cursor to the end (or start, for reversed playback) of the sequence. */
+ 	UFUNCTION(BlueprintCallable, Category="Game|Cinematic")
+ 	void Stop();
+@@ -630,14 +631,14 @@ protected:
+ 
+ 	struct FLatentAction
+ 	{
+-		enum EType { Stop, Pause, Update };
++		enum class EType { Stop, Pause, Update };
+ 
+ 		FLatentAction(EType InType, FFrameTime DesiredTime = 0)
+ 			: Type(InType)
+ 		{}
+ 
+ 		FLatentAction(EUpdatePositionMethod InUpdateMethod, FFrameTime DesiredTime)
+-			: Type(Update), UpdateMethod(InUpdateMethod), Position(DesiredTime)
++			: Type(EType::Update), UpdateMethod(InUpdateMethod), Position(DesiredTime)
+ 		{}
+ 
+ 		EType                 Type;
+diff --git a/Engine/Source/Runtime/Online/BuildPatchServices/Private/Common/StatsCollector.h b/Engine/Source/Runtime/Online/BuildPatchServices/Private/Common/StatsCollector.h
+index 1830c07fa1b..2b27f2f1d34 100644
+--- a/Engine/Source/Runtime/Online/BuildPatchServices/Private/Common/StatsCollector.h
++++ b/Engine/Source/Runtime/Online/BuildPatchServices/Private/Common/StatsCollector.h
+@@ -5,7 +5,7 @@
+ 
+ namespace BuildPatchServices
+ {
+-	enum EStatFormat
++	enum class EStatFormat
+ 	{
+ 		// Using the AccumulateTimeBegin and End functions, measured in cycles
+ 		Timer,
+diff --git a/Engine/Source/Runtime/OpenGLDrv/Private/OpenGLUniformBuffer.cpp b/Engine/Source/Runtime/OpenGLDrv/Private/OpenGLUniformBuffer.cpp
+index 2a858159bae..ebf3bf8ef2d 100644
+--- a/Engine/Source/Runtime/OpenGLDrv/Private/OpenGLUniformBuffer.cpp
++++ b/Engine/Source/Runtime/OpenGLDrv/Private/OpenGLUniformBuffer.cpp
+@@ -346,7 +346,7 @@ static void SuballocateUBO( uint32 Size, GLuint& Resource, uint32& Offset, uint8
+ 	if (FOpenGL::SupportsBufferStorage() && OpenGLConsoleVariables::bUBODirectWrite)
+ 	{
+ 		FOpenGL::BufferStorage( GL_UNIFORM_BUFFER, GetUBOPoolSize(), NULL, GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT );
+-		Pool.Pointer = (uint8*)FOpenGL::MapBufferRange(GL_UNIFORM_BUFFER, 0, GetUBOPoolSize(), FOpenGL::RLM_WriteOnlyPersistent);
++		Pool.Pointer = (uint8*)FOpenGL::MapBufferRange(GL_UNIFORM_BUFFER, 0, GetUBOPoolSize(), FOpenGL::EResourceLockMode::RLM_WriteOnlyPersistent);
+ 	}
+ 	else
+ 	{
+diff --git a/Engine/Source/Runtime/OpenGLDrv/Private/OpenGLVertexBuffer.cpp b/Engine/Source/Runtime/OpenGLDrv/Private/OpenGLVertexBuffer.cpp
+index 4503c83b539..7237c6ea54b 100644
+--- a/Engine/Source/Runtime/OpenGLDrv/Private/OpenGLVertexBuffer.cpp
++++ b/Engine/Source/Runtime/OpenGLDrv/Private/OpenGLVertexBuffer.cpp
+@@ -61,7 +61,7 @@ void* GetAllocation( void* Target, uint32 Size, uint32 Offset, uint32 Alignment
+ 			FOpenGL::GenBuffers(1, &PoolVB);
+ 			glBindBuffer(GL_COPY_READ_BUFFER, PoolVB);
+ 			FOpenGL::BufferStorage(GL_COPY_READ_BUFFER, PerFrameMax * 4, NULL, GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
+-			PoolPointer = (uint8*)FOpenGL::MapBufferRange(GL_COPY_READ_BUFFER, 0, PerFrameMax * 4, FOpenGL::RLM_WriteOnlyPersistent);
++			PoolPointer = (uint8*)FOpenGL::MapBufferRange(GL_COPY_READ_BUFFER, 0, PerFrameMax * 4, FOpenGL::EResourceLockMode::RLM_WriteOnlyPersistent);
+ 
+ 			FreeSpace = PerFrameMax * 4;
+ 
+diff --git a/Engine/Source/Runtime/OpenGLDrv/Public/OpenGL.h b/Engine/Source/Runtime/OpenGLDrv/Public/OpenGL.h
+index ea5b2a455d2..7c8007a6ad5 100644
+--- a/Engine/Source/Runtime/OpenGLDrv/Public/OpenGL.h
++++ b/Engine/Source/Runtime/OpenGLDrv/Public/OpenGL.h
+@@ -51,7 +51,7 @@ struct FPlatformOpenGLContext;
+ class FOpenGLBase
+ {
+ public:
+-	enum EResourceLockMode
++	enum class EResourceLockMode
+ 	{
+ 		RLM_ReadWrite,
+ 		RLM_ReadOnly,
+diff --git a/Engine/Source/Runtime/OpenGLDrv/Public/OpenGL3.h b/Engine/Source/Runtime/OpenGLDrv/Public/OpenGL3.h
+index 871cd065f76..290ea841040 100644
+--- a/Engine/Source/Runtime/OpenGLDrv/Public/OpenGL3.h
++++ b/Engine/Source/Runtime/OpenGLDrv/Public/OpenGL3.h
+@@ -142,23 +142,23 @@ struct FOpenGL3 : public FOpenGLBase
+ 		GLenum Access;
+ 		switch ( LockMode )
+ 		{
+-			case RLM_ReadOnly:
++			case EResourceLockMode::RLM_ReadOnly:
+ 				Access = GL_MAP_READ_BIT;
+ 				break;
+-			case RLM_WriteOnly:
++			case EResourceLockMode::RLM_WriteOnly:
+ 				Access = (GL_MAP_INVALIDATE_BUFFER_BIT | GL_MAP_WRITE_BIT);
+ #if 1
+ 				// Temp workaround for synchrnoization when a UBO is discarded while being referenced
+ 				Access |= GL_MAP_UNSYNCHRONIZED_BIT;
+ #endif
+ 				break;
+-			case RLM_WriteOnlyUnsynchronized:
++			case EResourceLockMode::RLM_WriteOnlyUnsynchronized:
+ 				Access = (GL_MAP_WRITE_BIT | GL_MAP_UNSYNCHRONIZED_BIT);
+ 				break;
+-			case RLM_WriteOnlyPersistent:
++			case EResourceLockMode::RLM_WriteOnlyPersistent:
+ 				Access = (GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
+ 				break;
+-			case RLM_ReadWrite:
++			case EResourceLockMode::RLM_ReadWrite:
+ 			default:
+ 				Access = (GL_MAP_READ_BIT | GL_MAP_WRITE_BIT);
+ 		}
+diff --git a/Engine/Source/Runtime/OpenGLDrv/Public/OpenGLResources.h b/Engine/Source/Runtime/OpenGLDrv/Public/OpenGLResources.h
+index 94021a865f5..3aa2317c959 100644
+--- a/Engine/Source/Runtime/OpenGLDrv/Public/OpenGLResources.h
++++ b/Engine/Source/Runtime/OpenGLDrv/Public/OpenGLResources.h
+@@ -618,7 +618,7 @@ public:
+ 
+ 		if ( bUseMapBuffer)
+ 		{
+-			FOpenGL::EResourceLockMode LockMode = bReadOnly ? FOpenGL::RLM_ReadOnly : FOpenGL::RLM_WriteOnly;
++			FOpenGL::EResourceLockMode LockMode = bReadOnly ? FOpenGL::EResourceLockMode::RLM_ReadOnly : FOpenGL::EResourceLockMode::RLM_WriteOnly;
+ 			Data = static_cast<uint8*>( FOpenGL::MapBufferRange( Type, InOffset, InSize, LockMode ) );
+ //			checkf(Data != NULL, TEXT("FOpenGL::MapBufferRange Failed, glError %d (0x%x)"), glGetError(), glGetError());
+ 
+@@ -685,7 +685,7 @@ public:
+ 
+ 		if ( bUseMapBuffer)
+ 		{
+-			FOpenGL::EResourceLockMode LockMode = bDiscard ? FOpenGL::RLM_WriteOnly : FOpenGL::RLM_WriteOnlyUnsynchronized;
++			FOpenGL::EResourceLockMode LockMode = bDiscard ? FOpenGL::EResourceLockMode::RLM_WriteOnly : FOpenGL::EResourceLockMode::RLM_WriteOnlyUnsynchronized;
+ 			Data = static_cast<uint8*>( FOpenGL::MapBufferRange( Type, InOffset, InSize, LockMode ) );
+ 			LockOffset = InOffset;
+ 			LockSize = InSize;
+-- 
+2.22.0
+

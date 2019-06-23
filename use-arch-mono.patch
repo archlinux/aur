@@ -3,7 +3,7 @@
 @@ -12,16 +12,19 @@
  
  IS_MONO_INSTALLED=0
- MONO_VERSION_PATH=`which mono` || true
+ MONO_VERSION_PATH=$(command -v mono) || true
 +UE_USE_SYSTEM_MONO=1
  if [ "$UE_USE_SYSTEM_MONO" == "1" ] && [ ! $MONO_VERSION_PATH == "" ] && [ -f $MONO_VERSION_PATH ]; then
  	# If Mono is installed, check if it's 4.0.2 or higher

@@ -10,7 +10,7 @@
 
 pkgname='unreal-engine'
 install="$pkgname.install"
-pkgver=4.21.2
+pkgver=4.22.3
 # shellcheck disable=SC2034
 {
   pkgrel=1
@@ -30,6 +30,8 @@ pkgver=4.21.2
     'ignore-clang50-install.patch'
     'use-arch-mono.patch'
     'clang-70-support.patch'
+    '0001-Updates-UBT-Linux-tool-chain-for-supporting-clang-8.patch'
+    '0002-fixes-shadowing-issues-with-enums.patch'
   )
 
 sha256sums=('SKIP'
@@ -38,8 +40,10 @@ sha256sums=('SKIP'
             '1dd876fa48c6fb4fcd4ccbdb8ed4ceccfa294685911e91be58bbc5e95726c279'
             '9654226ef3318389aa8fe15f3d4d14e7ac2113520ee5ebf2899d42273a2a6fb0'
             '71a7304deebb00234c323eed9a73cdbd022099ba65f62fc90e78069eceed1f5d'
-            '006bfc6dc6c4258b55768cac34a3c42f033a2777332272d8c47c340282bf400f'
-            'deb74af4561beb2eb62fdc3bee45347785b9bd07443939ad0bf0f1fd9f72a859')
+            'c2a8ba1aba8fbda51270ec49e745ffba96e89cd627efe0d6a801d7629494a620'
+            '5d86920545fa341a7ae39f198bab61ef2e41b165f41805c2b64c137599eff61e'
+            '926c513cc59dcbde0dbac44b6201089a0381ea992ef3353919c049a25fa6c364'
+            '871e1a95f1761a613cfc2f0209f22e4afbacd102f2d3239bf27e3b16202e28ad')
 
   # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
   options=(strip staticlibs)
@@ -56,7 +60,9 @@ prepare() {
   patch "$srcdir/UnrealEngine/Setup.sh" recompile-version-selector.patch
 
   pushd "$srcdir/UnrealEngine" > /dev/null
-  patch -p1 -i ../clang-70-support.patch 
+    patch -p1 -i ../clang-70-support.patch 
+    patch -p1 -i ../0001-Updates-UBT-Linux-tool-chain-for-supporting-clang-8.patch
+    patch -p1 -i ../0002-fixes-shadowing-issues-with-enums.patch 
   popd > /dev/null
 
   cp "$srcdir/Makefile" "$srcdir/UnrealEngine/Makefile"

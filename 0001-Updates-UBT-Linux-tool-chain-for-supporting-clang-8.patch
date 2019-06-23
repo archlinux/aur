@@ -1,0 +1,29 @@
+From 7fc25807e40a76c31e2a11ceb19b136c0baf68bd Mon Sep 17 00:00:00 2001
+From: Zerophase <mikelojkovic@gmail.com>
+Date: Fri, 14 Jun 2019 14:20:26 -0500
+Subject: [PATCH 1/2] Updates UBT Linux tool chain for supporting clang 8
+
+---
+ .../Platform/Linux/LinuxToolChain.cs          | 26 +++++++++----------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
+index 3665228dd4b..de4346698a2 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
+@@ -176,10 +176,10 @@ namespace UnrealBuildTool
+ 				throw new BuildException("Unable to build: no compatible clang version found. Please run Setup.sh");
+ 			}
+ 			// prevent unknown clangs since the build is likely to fail on too old or too new compilers
+-			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 70 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 60)
++			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 80 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 60)
+ 			{
+ 				throw new BuildException(
+-					string.Format("This version of the Unreal Engine can only be compiled with clang 7.0 and 6.0. clang {0} may not build it - please use a different version.",
++					string.Format("This version of the Unreal Engine can only be compiled with clang 8.0, 7.0, and 6.0. clang {0} may not build it - please use a different version.",
+ 						CompilerVersionString)
+ 					);
+ 			}
+-- 
+2.22.0
+
