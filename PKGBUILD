@@ -14,7 +14,7 @@ depends=(ruby ruby-activesupport ruby-builder ruby-erubis ruby-rails-html-saniti
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('d04c4367fd41a2d8767be08e9caadc617e6f825025079854562100145b82f055')
+sha256sums=('9064ef94411d98cf7c7cc0fb179319b92a880f51f8e0671cceaf8081dccb89ec')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
