@@ -3,7 +3,7 @@
 
 pkgname=vlang-git
 pkgver=r76.b6948ad
-pkgrel=5
+pkgrel=6
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -36,7 +36,7 @@ prepare() {
 build() {
     cd v/compiler
     #make # segfault -std=c11
-    cc ${CFLAGS} -std=gnu11 -w -o vc v.c
+    cc ${CFLAGS} -std=gnu11 -w -o vc v.c ${LDFLAGS}
     ./vc -o v .
 }
 
