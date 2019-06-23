@@ -1,4 +1,5 @@
 # Maintainer: whoami <whoami@systemli.org>
+# Contributor: Jefferson <jgmdev@gmail.com>
 
 pkgname=vlang-git
 pkgver=r76.b6948ad
