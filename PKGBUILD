@@ -1,27 +1,31 @@
-# Maintainer: Peter Lamby <peterlamby@web.de>
+# Generated using pip2pkgbuild - https://github.com/wenLiangcan/pip2pkgbuild
+# Maintainer: MayorBender <7480812+kingy9000@users.noreply.github.com>
+# Contributor: Peter Lamby <peterlamby@web.de>
+
 pkgname=check50
-pkgver=1.19
+_module='check50' # PyPI specific
+pkgver=2.2.6
 pkgrel=1
-pkgdesc="Code check tool for CS50 / CS50x (Harvard College's Introduction to Computer Science I)"
+pkgdesc="This is check50, with which you can check solutions to problems for CS50."
 arch=('any')
-url="https://github.com/jthurner/check50"
-license=('CCPL')
-depends=('nodejs')
-source=("$pkgname"::'git://github.com/jthurner/check50.git#commit=a41738d664ad9a04f6da645bb1069d2abff8ce65')
-md5sums=('SKIP')
+url="https://github.com/cs50/check50"
+license=('GPL')
+depends=('python' 'submit50')
+makedepends=('python-setuptools')
+source=(
+	"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz"
+)
+sha256sums=(
+	'c3430446de5f03a9016d1bb45a09ebe5577d03d386c58b7a5e560d6299a222c7'
+)
 
-prepare() {
-    #fix file permissions
-    find "$srcdir/$pkgname/SOURCES/opt/" -type f -exec chmod 644 {} \;
-
-    #overwrite php launcher
-    echo -e '#!/bin/sh\nexec /usr/bin/node /opt/check50/bin/check50.js "$@"' > "$srcdir/$pkgname/SOURCES/opt/check50/bin/check50"
-    chmod 755 "$srcdir/$pkgname/SOURCES/opt/check50/bin/check50"
+build() {
+	cd "${srcdir}/${_module}-${pkgver}"
+	python setup.py build
 }
 
-
 package() {
-    install -dm755 "$pkgdir/usr/bin"
-    cp -a "$srcdir/$pkgname/SOURCES/opt/" "$pkgdir"
-    ln -s "/opt/check50/bin/check50" "$pkgdir/usr/bin/check50"
+	depends+=()
+	cd "${srcdir}/${_module}-${pkgver}"
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }

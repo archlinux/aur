@@ -1,13 +1,17 @@
 pkgbase = check50
-	pkgdesc = Code check tool for CS50 / CS50x (Harvard College's Introduction to Computer Science I)
-	pkgver = 1.19
+	pkgdesc = This is check50, with which you can check solutions to problems for CS50.
+	pkgver = 2.2.6
 	pkgrel = 1
-	url = https://github.com/jthurner/check50
+	url = https://github.com/cs50/check50
 	arch = any
-	license = CCPL
-	depends = nodejs
-	source = check50::git://github.com/jthurner/check50.git#commit=a41738d664ad9a04f6da645bb1069d2abff8ce65
-	md5sums = SKIP
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = submit50
+	source = https://files.pythonhosted.org/packages/source/c/check50/check50-2.2.6.tar.gz
+	sha256sums = c3430446de5f03a9016d1bb45a09ebe5577d03d386c58b7a5e560d6299a222c7
 
 pkgname = check50
+	depends = python
+	depends = submit50
 
