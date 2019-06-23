@@ -1,4 +1,4 @@
-# Maintainer: nosada <ngsksdt@gmail.com>
+# Maintainer: NOGISAKA Sadata <ngsksdt@gmail.com>
 
 pkgname=python2-nltk_contrib-git
 _pkgname=nltk_contrib
