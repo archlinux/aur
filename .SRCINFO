@@ -1,0 +1,15 @@
+pkgbase = daggy
+	pkgdesc = Run multiple commands on remote servers simultaneously and save output locally
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://docs.daggy.dev/
+	arch = x86_64
+	license = MIT
+	depends = qt5-base
+	depends = botan
+	depends = yaml-cpp
+	source = daggy-1.1.1.tar.gz::https://github.com/synacker/daggy/archive/1.1.1.tar.gz
+	sha256sums = f83763e202a61b4cae615eba7b5a496788794d36985e918855d0745c626a5ff6
+
+pkgname = daggy
+
