@@ -1,7 +1,7 @@
 # Maintainer: Robin Lange <robin dot langenc at gmail dot com>
 # Contributor: Robin Lange <robin dot langenc at gmail dot com>
 pkgname=optimus-manager-git
-pkgver=1.0.r3.g685c3ae
+pkgver=1.0.r16.g994f8f4
 pkgrel=1
 pkgdesc="Management utility to handle GPU switching for Optimus laptops (Git version)"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/Askannz/optimus-manager"
 license=('MIT')
 conflicts=("optimus-manager")
 provides=("optimus-manager=$pkgver")
-depends=('python' 'python-setuptools' 'python-dbus' 'mesa-demos' 'xorg-xrandr')
+depends=('python3' 'python-setuptools' 'python-dbus' 'mesa-demos' 'xorg-xrandr')
 optdepends=('bbswitch: alternative power switching method'
             'xf86-video-intel: provides the Xorg intel driver')
 makedepends=('python-setuptools' 'git')
@@ -30,7 +30,7 @@ pkgver() {
 build() {
  
   cd "${srcdir}/optimus-manager/"
-  python setup.py build
+  python3 setup.py build
  
 }
  
@@ -64,6 +64,6 @@ package() {
   install -Dm755 config/xsetup-intel.sh "$pkgdir/etc/optimus-manager/xsetup-intel.sh"
   install -Dm755 config/xsetup-nvidia.sh "$pkgdir/etc/optimus-manager/xsetup-nvidia.sh"
  
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
  
 } 
