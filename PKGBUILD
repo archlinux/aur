@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=screencast-git
-pkgver=1.5.0.r5.g1d03061
+pkgver=1.5.0.r25.g5a52a8a
 pkgrel=1
 pkgdesc='Command line interface to record a X11 desktop (git version)'
 arch=('any')
@@ -20,6 +20,7 @@ optdepends=('bc: fade effect support'
             'advancecomp: watermark optimization support'
             'bash-completion: bash-completion support')
 makedepends=('git')
+checkdepends=('xorg-server-xvfb' 'bc' 'imagemagick' 'ttf-dejavu')
 provides=('screencast')
 conflicts=('screencast')
 source=('git+https://github.com/bermond/screencast.git')
@@ -35,6 +36,11 @@ pkgver() {
 build() {
     cd screencast
     make
+}
+
+check() {
+    cd screencast
+    xvfb-run -n 71 --server-args='-screen 0 1024x768x24' make USEDISPLAY=':71.0' AUDIOIN='none' test
 }
 
 package() {
