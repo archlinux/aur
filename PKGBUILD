@@ -2,8 +2,8 @@
 
 pkgbase=linux-new
 _srcname=linux
-gitver=v5.2-rc5
-pkgver=5.2.rc5
+gitver=v5.2-rc6
+pkgver=5.2.rc6
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
