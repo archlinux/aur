@@ -5,7 +5,7 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -35,8 +35,8 @@ prepare() {
   cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-cuda"
   cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt-cuda"
 
-  export CC=gcc
-  export CXX=g++
+  export CC=gcc-8
+  export CXX=g++-8
   export VERBOSE=1
   export PYTORCH_BUILD_VERSION="${pkgver}"
   export PYTORCH_BUILD_NUMBER=1
@@ -51,7 +51,7 @@ prepare() {
   export BUILD_BINARY=ON
   export USE_OPENCV=ON
   export USE_SYSTEM_NCCL=ON
-  export CUDAHOSTCXX=g++
+  export CUDAHOSTCXX=g++-8
   export CUDA_HOME=/opt/cuda
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
