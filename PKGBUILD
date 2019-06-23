@@ -4,7 +4,7 @@
 
 pkgname=waterfox-kde
 pkgver=56.2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -36,7 +36,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-kde-56.2.10.1.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/waterfox-kde-56.2.10.1.patch"
         "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/dont-statically-link-libstdc%2B%2B.patch"
         pgo_fix_missing_kdejs.patch
-        "UnsortedError.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/UnsortedError.patch")
+        "UnsortedError.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/UnsortedError.patch"
+        "rust-simd.patch::https://patch-diff.githubusercontent.com/raw/MrAlex94/Waterfox/pull/1043.diff")
 sha256sums=('SKIP'
             '6e9ec5f9c6fc5b191f9dec85b82d58eb2a51577b989bc7852e6b254d56ff13e8'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -48,7 +49,8 @@ sha256sums=('SKIP'
             'b55833542edf8cad2b73cf36dac6c667e588dcf79a99b570c5eca645698b80f7'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
-            '3b20230c42ac68cdb751c3bd7758a1a45006e00aec8558c33c96d8c4bebbd47f')
+            '3b20230c42ac68cdb751c3bd7758a1a45006e00aec8558c33c96d8c4bebbd47f'
+            'f456baeb64bfceebc5ff45239851f167f08fb82ed35e33408fe7b215b3c139ee')
 
 prepare() {
   mkdir path
@@ -70,6 +72,8 @@ prepare() {
   patch -Np1 -i ../no-plt.diff
 
   patch -Np1 -i ../UnsortedError.patch
+
+  patch -Np1 -i ../rust-simd.patch
 
   cat >.mozconfig <<END
 export CC=clang
@@ -145,12 +149,12 @@ ac_add_options --disable-stylo # you can comment this if you've rust<=1.33
 
 # Enable wanted features
 ac_add_options --enable-jemalloc
-#ac_add_options --enable-stylo=build # you can enable it if you've rust<=1.33
+ac_add_options --enable-stylo=build
 ac_add_options --with-pthreads
 ac_add_options --enable-strip
 ac_add_options --enable-startup-notification
 ac_add_options --enable-release
-#ac_add_options --enable-rust-simd # you can enable it if you've rust<=1.33
+ac_add_options --enable-rust-simd
 
 ac_add_options --enable-application=browser
 ac_add_options --enable-eme=widevine
