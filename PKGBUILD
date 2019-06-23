@@ -3,9 +3,9 @@
 _gitname=CoreFreq
 pkgname=corefreq-git
 realname=corefreq
-pkgver=1.56
+pkgver=1.57
 pkgrel=1
-pkgdesc="CoreFreq, a processor monitoring software with a kernel module inside."
+pkgdesc="CoreFreq, Processor monitoring software with BIOS like functionalities"
 arch=('x86_64')
 url='https://github.com/cyring/CoreFreq'
 license=('GPL2')
