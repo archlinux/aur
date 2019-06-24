@@ -1,6 +1,6 @@
 pkgbase = conky-nvidia
 	pkgdesc = Lightweight system monitor for X
-	pkgver = 1.11.3
+	pkgver = 1.11.4
 	pkgrel = 1
 	url = http://conky.sourceforge.net/
 	arch = i686
@@ -28,8 +28,8 @@ pkgbase = conky-nvidia
 	depends = libpulse
 	provides = conky
 	conflicts = conky
-	source = https://github.com/brndnmtthws/conky/archive/v1.11.3.tar.gz
-	md5sums = 935541d13da2032afc2c4c2457b266a4
+	source = https://github.com/brndnmtthws/conky/archive/v1.11.4.tar.gz
+	md5sums = 7c27fc56d8c9a0d5a79e89cec69b61d4
 
 pkgname = conky-nvidia
 
