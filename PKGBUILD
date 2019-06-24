@@ -8,7 +8,7 @@
 
 _target="powerpc-linux-gnu"
 pkgname=${_target}-glibc-headers
-pkgver=2.27
+pkgver=2.29
 pkgrel=1
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
@@ -17,12 +17,11 @@ license=(GPL LGPL)
 depends=("${_target}-linux-api-headers>=4.16.1-1")
 makedepends=("${_target}-gcc-stage1>=8.1.0-1")
 options=(!buildflags !strip staticlibs)
-_commit=23158b08a0908f381459f273a984c6fd328363cb
-#source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig})
-validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8) # Carlos O'Donell
-md5sums=('898cd5656519ffbc3a03fe811dd89e82'
-         'SKIP')
+sha256sums=('f3eeb8d57e25ca9fc13c2af3dae97754f9f643bc69229546828e3a240e2af04b'
+            'SKIP')
+validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # "Carlos O'Donell <carlos@systemhalted.org>"
+              BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
 
 prepare() {
   mkdir -p glibc-build
