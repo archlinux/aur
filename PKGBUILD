@@ -2,7 +2,7 @@
 
 pkgname=texlive-tlpdb
 pkgver=2019
-pkgrel=1
+pkgrel=2
 pkgdesc='The texlive package database (texlive.tlpdb)'
 arch=('any')
 
@@ -15,7 +15,7 @@ source=(
   http://tug.ctan.org/systems/texlive/tlnet/tlpkg/texlive.tlpdb
 )
 sha512sums=(
-  '0e9fdef51236fe527b8f23ff973117289e1ef5bbf3e67e4e1e398bc0029d14ee6f9dd26a01c555021a75da4e926edfe9836008df1d73151c75d55cabc997f11a'
+  'SKIP'
 )
 noextract=(
   texlive.tlpdb
