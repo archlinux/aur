@@ -3,7 +3,7 @@
 _themename=arch-solarized
 _pkgname="plymouth-theme-${_themename}"
 pkgname="${_pkgname}-git"
-pkgver=r6.72c069a
+pkgver=r14.f1749f6
 pkgrel=1
 pkgdesc='A Plymouth theme with a solarized-dark arch linux logo.'
 arch=('any')
@@ -26,4 +26,8 @@ package() {
   install -Dm644 img/bg.png "${_themedir}/img/bg.png"
   install -Dm644 "${_themename}.plymouth" "${_themedir}/${_themename}.plymouth"
   install -Dm644 "${_themename}.script" "${_themedir}/${_themename}.script"
+  install -Dm644 img/box.png "${_themedir}/img/box.png"
+  install -Dm644 img/bullet.png "${_themedir}/img/bullet.png"
+  install -Dm644 img/entry.png "${_themedir}/img/entry.png"
+  install -Dm644 img/lock.png "${_themedir}/img/lock.png"
 }
