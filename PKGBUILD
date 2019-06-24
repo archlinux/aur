@@ -2,7 +2,7 @@
 
 pkgname=libtas-git
 pkgdesc="Tool-assisted speedrunning utility for Linux-native binaries"
-pkgver=1.3.4.r50.bf6b209
+pkgver=1.3.4.r62.670b3d0
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -31,7 +31,7 @@ prepare() {
 build() {
   cd "libTAS"
 
-  ./configure --prefix=/usr --enable-silent-rules
+  ./configure --prefix=/usr
   make
 }
 
