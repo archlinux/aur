@@ -12,8 +12,14 @@ post_install() {
     #setting branch
     git checkout python3.7
     
+    #create 000 machine file
+    echo "ETHOSCOPE_000" > /etc/machine-name
+    echo "ETHOSCOPE_000" > /etc/hostname
+    
     echo "enabling DEVICE specific systemd service files"
     systemctl enable ethoscope_device.service ethoscope_update.service
+    
+    echo "Please reboot the PI now."
     
 }
 
