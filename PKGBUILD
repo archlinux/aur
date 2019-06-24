@@ -2,12 +2,11 @@
 
 pkgname=zerotwo
 pkgver=0.6.2+beta
-pkgrel=3
+pkgrel=4
 pkgdesc='AniList anime tracker written with Electron & Vue.js'
 arch=(i686 x86_64)
 url=https://www.zerotwo.org
 license=(GPL3)
-conflicts=(zerotwo-bin zerotwo-git)
 makedepends=(npm)
 source=(https://github.com/NicoAiko/zerotwo/archive/v${pkgver/+/-}.tar.gz
         zerotwo.desktop)
@@ -21,7 +20,7 @@ build() {
   # Generate them at https://anilist.co/settings/developer
   _api_id=
   _api_secret=
-  if [ -z $_api_id ] || [ -z $_api_secret ] ; then
+  if [ -z $_api_id ] || [ -z $_api_secret ]; then
     echo "AniList API client ID and secret must be manually set for ZeroTwo to function properly. Quitting..."
     exit
   fi
@@ -42,7 +41,7 @@ package() {
   cp -a linux-unpacked "$pkgdir"/usr/share/zerotwo
   ln -s /usr/share/zerotwo/zerotwo-ui "$pkgdir"/usr/bin/zerotwo
 
-  for i in 16 32 64 128 256 512 1024 ; do
+  for i in 16 32 64 128 256 512 1024; do
     install -Dm 644 icons/ZeroTwoAppIcon_$i* "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/zerotwo.png
   done
 }
