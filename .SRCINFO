@@ -7,8 +7,8 @@ pkgbase = eksctl
 	license = Apache
 	depends = kubectl
 	conflicts = eksctl-bin
-	source = eksctl-0.1.38.tar.gz::https://github.com/weaveworks/eksctl/releases/download/0.1.38/eksctl_Linux_amd64.tar.gz
-	sha256sums = 3991f6938d783d7ce9217ca2b0f84241befb7d4ade7cda119934979df7f90364
+	source = eksctl-0.1.38.tar.gz::https://github.com/weaveworks/eksctl/archive/0.1.38.tar.gz
+	sha256sums = 1eb06bab31118e52084fc148d9995af48b2558ff0ac854de2be0abb21835b695
 
 pkgname = eksctl
 
