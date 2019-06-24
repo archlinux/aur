@@ -1,7 +1,7 @@
-From ed68f6d00e47bdca93859b36a3c78f6fb555cd25 Mon Sep 17 00:00:00 2001
+From 368a44faef065d4c45415f13c9b51be0d618b3d5 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Mon, 2 May 2016 15:56:37 +0200
-Subject: [PATCH 02/10] gl-renderer: Add EGLDevice enumeration support
+Subject: [PATCH 1/6] gl-renderer: Add EGLDevice enumeration support
 X-NVConfidentiality: public
 
 EGLDevice provides means to enumerate native devices.
