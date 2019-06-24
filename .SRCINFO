@@ -1,7 +1,7 @@
 pkgbase = vlang-git
 	pkgdesc = Simple, fast, safe language created for developing maintainable software
-	pkgver = r79.ebc3fb9
-	pkgrel = 1
+	pkgver = r85.7cd99dd
+	pkgrel = 2
 	url = https://vlang.io
 	arch = x86_64
 	license = MIT

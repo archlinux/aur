@@ -2,8 +2,8 @@
 # Contributor: Jefferson González <jgmdev@gmail.com>
 
 pkgname=vlang-git
-pkgver=r79.ebc3fb9
-pkgrel=1
+pkgver=r85.7cd99dd
+pkgrel=2
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -22,22 +22,33 @@ pkgver() {
 }
 
 prepare() {
-    mv v.c v/compiler/
+    mv v.c v/compiler
     cd v && current_dir=$(pwd)
     cd compiler
     sed -i \
         "s|os__home_dir(), tos2(\"/code/v/\")|tos2(\"${current_dir}\"), tos2(\"/\")|g" \
         v.c
+    sed -i 's/!os.dir_exists(lang_dir)/false/g' main.v
+
+    cp main.v{,.b}
+    sed -i \
+        "s|mut lang_dir = os.home_dir() + '/code/v/'|mut lang_dir = '${current_dir}'|g" \
+        main.v
     sed -i \
         "s|mut lang_dir = os.home_dir() + '/code/v/'|mut lang_dir = '/usr/lib/vlang'|g" \
-        main.v
+        main.v.b
 }
 
 build() {
     cd v/compiler
     #make # segfault -std=c11
     cc -std=gnu11 -w -o vc v.c
+
+    # bootstraping
     ./vc -o v .
+
+    mv main.v.b main.v
+    # recompile itself
     ./v -o v .
 }
 
@@ -50,4 +61,3 @@ package() {
     cp -a * "$pkgdir/usr/lib/vlang/"
     rm -r "$pkgdir/usr/lib/vlang/"{LICENSE,README.md,compiler,examples}
 }
-
