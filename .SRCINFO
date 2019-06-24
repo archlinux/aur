@@ -1,17 +1,17 @@
 pkgbase = dell-smm-hwmon-i8kutils
 	pkgdesc = Patched version of the dell-smm-hwmon kernel module and smm executable. This allows to disable the bios fan controller on some dell laptops so that the i8kutils driver can work without conflicts.
-	pkgver = 4.9.34
-	pkgrel = 2
+	pkgver = 5.1.14
+	pkgrel = 1
 	url = https://github.com/vitorafsr/i8kutils/issues/6/
 	install = dell-smm-hwmon-i8kutils.install
 	arch = any
 	license = GPL
-	makedepends = linux49-headers
-	depends = linux49
-	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.9.34.tar.xz
+	makedepends = linux-headers
+	depends = linux
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.1.14.tar.xz
 	source = dell-smm-hwmon.patch
 	source = smm.c
-	md5sums = 92aaa07c90e1c7de60fcdd8a9726dd59
+	md5sums = a55212a18f49a028db389963379a3100
 	md5sums = ccfe8a74d9cbf587d5a9cb395cae2834
 	md5sums = a5e33f4c632c3055bd51853edeef51fc
 
