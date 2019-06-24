@@ -1,6 +1,6 @@
 pkgbase = kvmd
 	pkgdesc = The main Pi-KVM daemon
-	pkgver = 0.179
+	pkgver = 0.180
 	pkgrel = 1
 	url = https://github.com/pi-kvm/kvmd
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = kvmd
 	depends = raspberrypi-io-access
 	optdepends = dkms
 	optdepends = tc358743-dkms
-	source = https://github.com/pi-kvm/kvmd/archive/v0.179.tar.gz
+	source = https://github.com/pi-kvm/kvmd/archive/v0.180.tar.gz
 	md5sums = SKIP
 
 pkgname = kvmd
