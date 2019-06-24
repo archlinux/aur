@@ -1,20 +1,16 @@
-# Maintainer: procrastinator
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Contributor: procrastinator <pseudoj2@gmail.com>
 
 pkgname=ttf-essays
-pkgver=2.001
-pkgrel=2
+pkgver=2.100
+pkgrel=1
 pkgdesc="A font based on the typeface used in a 1743 English translation of Montaigne's Essays."
 arch=('any')
 license=('LGPL')
-url="http://www.thibault.org/fonts/essays/"
-install=ttf.install
+url="https://www.thibault.org/fonts/essays/"
 depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
-source=("http://www.thibault.org/fonts/essays/essays1743-$pkgver-1-ttf.tar.gz")
-sha256sums=('83a293f52dc0767adc5c57c619d99db0a5e1ba6fcdfa240ca719aa5643f10c5d')
-
-build() {
-  /bin/true
-}
+source=("https://www.thibault.org/fonts/essays/essays1743-${pkgver}-1-ttf.tar.gz")
+sha256sums=('94b336fbf5ea092a050144f88300c68235f9891c66e97e036b03d285fec03fa8')
 
 package() {
   cd "$srcdir/essays1743"
