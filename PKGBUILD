@@ -25,7 +25,7 @@ build() {
 
   export GOPATH="$srcdir"/gopath
   cd gopath/src/github.com/weaveworks/eksctl
-  go build ./cmd/eksctl
+  go build -ldflags="-X github.com/weaveworks/eksctl/pkg/version.gitTag=$pkgver" ./cmd/eksctl
 }
 
 package() {
