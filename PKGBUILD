@@ -2,8 +2,8 @@
 # Maintainer: Sean V Kelley <seanvk@posteo.de>
 
 pkgname=libyami-utils
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=3
 pkgdesc="Intel VA-API Media Applications and Scripts for libyami"
 arch=('i686' 'x86_64')
 url="https://github.com/01org/libyami-utils"
@@ -11,12 +11,12 @@ license=('Apache')
 depends=('libbsd' 'libyami' 'ffmpeg')
 options=('!emptydirs')
 changelog=
-source=($url/archive/libyami-$pkgver.tar.gz)
-sha256sums=('0b5cebeb677d3a6b162347017fcb2d42405a66d30c194dd26a80827a4d6b22cc')
+source=($url/archive/$pkgver.tar.gz)
+sha256sums=('9264b45dceb62b96fb428814c7ef2b16994654c1f5d4807e993d496c16375b79')
 
 build() {
 	export LD_RUN_PATH='$ORIGIN/lib/'
-	cd $pkgname-libyami-$pkgver
+	cd $pkgname-$pkgver
 	sh autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     	--with-package-name="Libyami Media Utils (Arch Linux)" \
     	--with-package-origin="http://www.archlinux.org/" \
@@ -28,11 +28,11 @@ build() {
 }
 
 check() {
-	cd "$pkgname-libyami-$pkgver"
+	cd "$pkgname-$pkgver"
 	make check
 }
 
 package() {
-	cd "$pkgname-libyami-$pkgver"
+	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
