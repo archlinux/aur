@@ -1,8 +1,9 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: Sauyon Lee <aur@sauyon.com>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Stunts <f.pinamartins@gmail.com>
 
 pkgname=hangups
-pkgver=0.4.6
+pkgver=0.4.9
 pkgrel=1
 pkgdesc='The first third-party instant messaging client for Google Hangouts'
 arch=('any')
@@ -12,7 +13,7 @@ depends=('python-aiohttp' 'python-appdirs' 'python-configargparse'
          'python-mechanicalsoup' 'python-protobuf' 'python-readlike'
          'python-reparser' 'python-requests' 'python-setuptools' 'python-urwid')
 source=("https://files.pythonhosted.org/packages/source/h/hangups/hangups-$pkgver.tar.gz")
-sha512sums=('643f9a5073a06a4dc85c582e9dac7503d4da74a6b87f09357623ad298c8b097071cb59f89ed32d54e1235c14605d36768b5abbd069d879b19b405c281d033bc8')
+sha512sums=('6a72b77e412cab79b6821f31b50cce6f5546d7e2a4bce66988207b148d09081b8b5d3fed8684d95722ddc2788fd5e24c0cf362a9ff7bf3f30dbc4066fe2f3624')
 
 prepare() {
   cd hangups-$pkgver
