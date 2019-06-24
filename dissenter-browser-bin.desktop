@@ -106,11 +106,12 @@ Comment[zh_CN]=访问互联网
 Comment[zh_HK]=連線到網際網路
 Comment[zh_TW]=連線到網際網路
 StartupNotify=true
-StartupWMClass=dissenter-browser
 TryExec=dissenter-browser
 Exec=dissenter-browser %U
 Terminal=false
-Icon=dissenter
+Icon=dissenter=dissenter-browser
+StartupWMName
+StartupWMClass=dissenter-browser
 Type=Application
 Categories=Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
