@@ -5,8 +5,8 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=67.0.3
-_bundle=82a145adddad6ef0a8434fd25e049c60a3b87276
+pkgver=67.0.4
+_bundle=ae67b187427ebaa695597d65de077c886fe37b7a
 pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
@@ -28,12 +28,12 @@ source=(https://hg.cdn.mozilla.net/mozilla-unified/${_bundle}.zstd-max.hg
         "0001-bz-1521249.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-bz-1521249.patch?h=packages/firefox"
         $pkgname.desktop
         $pkgname.cfg.patch
-        "git+https://gitlab.com/${pkgname}-community/${pkgname}.git#commit=db65e6a9")
+        "git+https://gitlab.com/${pkgname}-community/${pkgname}.git#commit=634710ed")
         # "hg+$_repo#tag=FIREFOX_${_pkgver//./_}_RELEASE"
-sha256sums=('bd5b8f18580fc6db443d274808aef5a21c193a0d55b53112c06c7af8f81d6f55'
+sha256sums=('8fb3423714095b206103649cb179f4997b6f85a616994e106146df19aee778f7'
             'd0673786a6a1f1b9f6f66a3a1356afa33f1f18f59dabd92bd193c88c52a1d04c'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
-            '49d7e6071afcc5de5aa802bbb49810a7502fe31063dde9e2887b6837cab694ce'
+            'b4bfff32d4a385f5075e0cc4df72574c51c68aad3ec4182eb582f95bee59cabf'
             'SKIP')
 
 prepare() {

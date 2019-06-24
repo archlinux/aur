@@ -1,15 +1,15 @@
 diff --git a/settings/settings/librewolf.cfg b/settings/settings/librewolf.cfg
-index 4e8adb1..34a0ba7 100644
+index befdb47..54b6841 100644
 --- a/settings/settings/librewolf.cfg
 +++ b/settings/settings/librewolf.cfg
-@@ -107,14 +107,14 @@ lockPref("general.config.filename", "librewolf.cfg");
+@@ -91,14 +91,14 @@ lockPref("general.config.filename", "librewolf.cfg");
  // http://kb.mozillazine.org/Network.cookie.cookieBehavior#1
  // Blocking 3rd-party cookies breaks a number of payment gateways
  // CIS 2.5.1
 -lockPref("network.cookie.cookieBehavior", 1);
 +defaultPref("network.cookie.cookieBehavior", 1);
  
- // Pref : Cookies expires at the end of the session (when the browser closes)
+ // Pref : Cookies expire at the end of the session (when the browser closes)
  // http://kb.mozillazine.org/Network.cookie.lifetimePolicy#2
  // 0=until they expire (default)
  // 2=until you close Firefox
@@ -18,8 +18,8 @@ index 4e8adb1..34a0ba7 100644
 +defaultPref("network.cookie.lifetimePolicy", 0);
  
  // Pref : Disable Cookie Exception Button
- // WARNING Bug !!! This lock the button whether its false or true
-@@ -136,7 +136,7 @@ lockPref("network.cookie.leave-secure-alone", true); // default: true
+ // WARNING Bug !!! This locks the button regardless of its value
+@@ -120,7 +120,7 @@ lockPref("network.cookie.leave-secure-alone", true); // default: true
  // nonsecureSessionOnly=true. This allows you to keep HTTPS cookies, but session-only HTTP ones
  // [1] https://feeding.cloud.geek.nz/posts/tweaking-cookies-for-privacy-in-firefox/
  // [2] http://kb.mozillazine.org/Network.cookie.thirdparty.sessionOnly
@@ -28,7 +28,7 @@ index 4e8adb1..34a0ba7 100644
  lockPref("network.cookie.thirdparty.nonsecureSessionOnly", true); // (FF58+) // default false
  
  // Also check "User Settings : Track Protection" for other cookies settings
-@@ -370,10 +370,10 @@ lockPref("browser.sessionstore.interval", 60000);
+@@ -353,10 +353,10 @@ lockPref("browser.sessionstore.interval", 60000);
  // ----------------------------------------------------------------------------------------------------
  
  // Pref : Forms auto fill
@@ -41,9 +41,16 @@ index 4e8adb1..34a0ba7 100644
 +defaultPref("extensions.formautofill.creditCards.enabled", false);
 +defaultPref("extensions.formautofill.heuristics.enabled", false);
  
- // Pref : Require manual intervention to autofill known username/passwords sign-in forms
+ // Pref : Require manual intervention to autofill known username/passwords in sign-in forms
  // http://kb.mozillazine.org/Signon.autofillForms
-@@ -780,7 +780,7 @@ lockPref("privacy.resistFingerprinting", true);
+@@ -757,13 +757,13 @@ lockPref("dom.w3c_pointer_events.enabled", false);
+ // Pref : Enable hardening against various fingerprinting vectors (Tor Uplift project)
+ // https://wiki.mozilla.org/Security/Tor_Uplift/Tracking
+ // https://bugzilla.mozilla.org/show_bug.cgi?id=1333933
+-lockPref("privacy.resistFingerprinting", true);
++defaultPref("privacy.resistFingerprinting", true);
+ 
+ // Pref : 4503 : disable mozAddonManager Web API (FF57+)
  // [NOTE] As a side-effect in FF57-59 this allowed extensions to work on AMO. In FF60+ you also need
  // to sanitize or clear extensions.webextensions.restrictedDomains (see 2662) to keep that side-effect
  // [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1384330,1406795,1415644,1453988
@@ -52,18 +59,26 @@ index 4e8adb1..34a0ba7 100644
  
  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  // Section : Locale/Time/UserAgent
-@@ -1087,7 +1087,9 @@ lockPref("extensions.webextensions.identity.redirectDomain", "");
+@@ -789,7 +789,7 @@ lockPref("intl.regional_prefs.use_os_locales", false);
+ 
+ // Pref : Locale and useragent.
+ // Already applied by resistFingerprinting ?
+-lockPref("intl.locale.requested", "en-US");
++defaultPref("intl.locale.requested", "en-US");
+ 
+ // Pref : Spoof User-agent (disabled)
+ // Disabled to make resistFingerprinting efficient
+@@ -1073,7 +1073,8 @@ lockPref("extensions.webextensions.identity.redirectDomain", "");
  // Pref : CSP Settings For Extensions I/II : Extension Firewall Feature
  // Uncomment to disable network for the extensions
  // Enable-Firewall-Feature-In-The-Next-Line extensions-firewall >>>>>>
 -lockPref("extensions.webextensions.base-content-security-policy", "default-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; script-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; object-src 'self' moz-extension: blob: filesystem:;");
-+defaultPref("extensions.webextensions.base-content-security-policy", "default-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; script-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; object-src 'self' moz-extension: blob: filesystem:;");
-+// original value:
-+// "script-src 'self' https://* moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; object-src 'self' https://* moz-extension: blob: filesystem:;"
++// defaultPref("extensions.webextensions.base-content-security-policy", "default-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; script-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; object-src 'self' moz-extension: blob: filesystem:;");
++defaultPref("extensions.webextensions.base-content-security-policy", "script-src 'self' https://* moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; object-src 'self' https://* moz-extension: blob: filesystem:;");
  
  // Pref : CSP Settings For Extensions II/II : Extension Firewall Feature
  // This value is applied after the first one (just ignore this)
-@@ -1429,22 +1431,22 @@ lockPref("extensions.getAddons.compatOverides.url", "");
+@@ -1415,22 +1416,22 @@ lockPref("extensions.getAddons.compatOverides.url", "");
  // https://services.addons.mozilla.org/api/v3/addons/compat-override/?guid=%IDS%&lang=%LOCALE%
  
  // Pref :
@@ -90,7 +105,7 @@ index 4e8adb1..34a0ba7 100644
  // Default Value
  // https://addons.mozilla.org/%LOCALE%/firefox/search?q=%TERMS%&platform=%OS%&appver=%VERSION%
  
-@@ -1479,7 +1481,7 @@ lockPref("browser.newtabpage.activity-stream.fxaccounts.endpoint", "");
+@@ -1465,7 +1466,7 @@ lockPref("browser.newtabpage.activity-stream.fxaccounts.endpoint", "");
  // https://accounts.firefox.com/
  
  // Pref :
@@ -99,7 +114,7 @@ index 4e8adb1..34a0ba7 100644
  // Default Value
  // https://versioncheck.addons.mozilla.org/update/VersionCheck.php?reqVersion=
  // %REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&maxAppVersion=
-@@ -2075,7 +2077,7 @@ lockPref("app.releaseNotesURL", "");
+@@ -2061,7 +2062,7 @@ lockPref("app.releaseNotesURL", "");
  
  // Pref :
  lockPref("app.update.auto", false);
@@ -108,7 +123,7 @@ index 4e8adb1..34a0ba7 100644
  lockPref("app.update.staging.enabled", false);
  lockPref("app.update.silent", false);
  lockPref("app.update.lastUpdateTime.telemetry_modules_ping", 0);
-@@ -2189,10 +2191,10 @@ lockPref("extensions.blocklist.itemURL", "");
+@@ -2175,10 +2176,10 @@ lockPref("extensions.blocklist.itemURL", "");
  lockPref("extensions.blocklist.url", "");
  
  // Pref :
@@ -121,18 +136,18 @@ index 4e8adb1..34a0ba7 100644
  
  // Pref :
  lockPref("extensions.webservice.discoverURL", "");
-@@ -2484,7 +2486,7 @@ lockPref("security.dialog_enable_delay", 700);
+@@ -2470,7 +2471,7 @@ lockPref("security.dialog_enable_delay", 700);
  
  // Pref : Opt-out of add-on metadata updates
  // https://blog.mozilla.org/addons/how-to-opt-out-of-add-on-metadata-updates/
 -lockPref("extensions.getAddons.cache.enabled", false);
 +defaultPref("extensions.getAddons.cache.enabled", false);
  
- // Pref : Opt-out of themes (Persona) updates
+ // Pref : Opt-out of theme (Persona) updates
  // https://support.mozilla.org/t5/Firefox/how-do-I-prevent-autoamtic-updates-in-a-50-user-environment/td-p/144287
-@@ -2517,7 +2519,7 @@ lockPref("plugin.sessionPermissionNow.intervalInMinutes", 0);
+@@ -2503,7 +2504,7 @@ lockPref("plugin.sessionPermissionNow.intervalInMinutes", 0);
  
- // Pref : Updates addons automatically
+ // Pref : Update addons automatically
  // https://blog.mozilla.org/addons/how-to-turn-off-add-on-updates/
 -lockPref("extensions.update.enabled", false);
 +defaultPref("extensions.update.enabled", false);
