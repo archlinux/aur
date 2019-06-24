@@ -2,7 +2,7 @@ pkgbase = dtfp-git
 	pkgdesc = Tool for partners
 	pkgver = 0.0.1
 	pkgrel = 1
-	url = https://git.unarelith.net/Unarelith/dtfp
+	url = ssh://git@git.unarelith.net/Unarelith/dtfp
 	install = dtfp-git.install
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = dtfp-git
 	depends = python-pip
 	depends = python-virtualenv
 	provides = dtfp
-	source = dtfp::git+https://git.unarelith.net/Unarelith/dtfp.git
+	source = dtfp::git+ssh://git@git.unarelith.net/Unarelith/dtfp.git
 	md5sums = SKIP
 
 pkgname = dtfp-git
