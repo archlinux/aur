@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Moreira
 
 pkgname=fpakman-staging
-pkgver=0.2.1.4
+pkgver=0.2.1.5
 pkgrel=1
 pkgdesc="GUI for Flatpak applications management"
 arch=('any')
@@ -24,5 +24,6 @@ package() {
   python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
 
   mkdir -p $pkgdir/usr/share/applications
+  cd $pkgdir/usr/share/applications
   python3 aur/desktop_entry.py
 }
