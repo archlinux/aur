@@ -3,7 +3,7 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=amdvlk-git
-pkgver=r43.6d9d93a
+pkgver=r76.96d8406
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -27,15 +27,21 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
             
+prepare() {
+  # Don't turn Werror on for people will build with more recent compilers than you have. Just don't.
+  for i in xgl/icd/CMakeLists.txt llpc/CMakeLists.txt llpc/imported/metrohash/CMakeLists.txt llvm/utils/benchmark/CMakeLists.txt llvm/utils/benchmark/test/CMakeLists.txt pal/src/core/imported/addrlib/CMakeLists.txt pal/src/core/imported/vam/CMakeLists.txt pal/shared/gpuopen/cmake/AMD.cmake
+  do
+    sed -i "s/-Werror//g" "$srcdir"/$i
+  done
+
+  # On my system this adds -isystem=/include, which breaks gcc's ability to find stdlib.h
+  sed -i "s/if(LLVM_WITH_Z3)/if(FALSE)/g" "$srcdir"/llvm/lib/Support/CMakeLists.txt
+}
+
 pkgver() {
   XGL_VER=$(cd xgl; printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
   #PAL_VER=$(cd pal; printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
   echo "$XGL_VER"
-}
-
-prepare() {
-  # fix building with commit f609020
-  sed -i "s/<drm/<libdrm/g" pal/src/core/os/lnx/display/displayWindowSystem.h
 }
 
 build() {
@@ -49,7 +55,9 @@ build() {
   cmake -H. -Bbuilds/Release64 \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_WAYLAND_SUPPORT=On \
-    -DBUILD_WSA=On
+    -DBUILD_WSA=On \
+    -DBUILD_XLIB_XRANDR_SUPPORT=On \
+    || true
 
   cd builds/Release64
   make
