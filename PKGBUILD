@@ -1,7 +1,7 @@
 #Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 
 pkgname=docker-compose-bin
-pkgver=1.24.0
+pkgver=1.24.1
 pkgrel=1
 pkgdesc="Pythonless package of a a tool for defining and running multi-container applications"
 depends=('docker')
@@ -14,8 +14,8 @@ source=(
 )
 url="https://github.com/docker/compose"
 license=("Apache")
-sha256sums=('bee6460f96339d5d978bb63d17943f773e1a140242dfa6c941d5e020a302c91b'
-            '31933e401d295812617f23377f63fc2b8da13d8456b61a60cec0e02afcad5672')
+sha256sums=('cfb3439956216b1248308141f7193776fcf4b9c9b49cbbe2fb07885678e2bb8a'
+            '63a0e0d3819ff77aebd3d5ea30f77b36475ed522c4dabed2eb10636e35aa9370')
 
 package() {
   cd "$srcdir"
