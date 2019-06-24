@@ -1,7 +1,7 @@
 # Maintainer: Colin Adler <cadler@coder.com>
 
 pkgname=sail
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=0
 pkgdesc='A universal workflow for reproducible, project-defined development environments.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 )
 
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('637e8eb332a144a26abdd4278799d1e24bb186ca5031ec94c46b2f3fb01a8536e94378db20df17bc085ce6460516576a54ac644cd595b95934455411a0016182')
+sha512sums=('56fe76bde41d2f5d0b8777b85dcb726a324908cd9b60d93ac5aceb361d1f5cc4694396c0561b9545ca8b6d4f99975f4c89a6f6427ae12b067261aa9feacfa23f')
 
 build() {
 	export GO111MODULE=on
