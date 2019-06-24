@@ -6,7 +6,7 @@ pkgdesc="Library providing the Kiwix software core"
 license=('GPL3')
 arch=('armv7h' 'i686' 'x86_64')
 depends=('libzim>=5.0.0' 'pugixml' 'mustache' 'xapian-core' 'aria2')
-makedepends=('meson')
+makedepends=('meson' 'gtest')
 url='https://github.com/kiwix/kiwix-lib'
 source=("https://github.com/kiwix/kiwix-lib/archive/${pkgver}.tar.gz")
 sha256sums=(573e1176e351fedc8b49c7746aef10746bf13c9f5a1df18186e0e6589215c546)
