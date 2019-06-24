@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=lynda-dl-git
-pkgver=0.3+3+gafa9782
+pkgver=0.3+11+gbfa3fbe
 pkgrel=1
 pkgdesc='Tool to download courses from Lynda (git)'
 arch=(any)
@@ -12,11 +12,10 @@ depends=(python-requests
          python-colorama
 	 python-unidecode
          python-pyopenssl)
+provides=(lynda-dl)
 conflicts=(lynda-dl)
-source=(git+$url
-        setup.py)
-sha512sums=('SKIP'
-            '3e76a6678bf00708437fab400ded30d2169a88180ea77d51badecba14ba7649645791500e7d0649be15c25f7980c6d17f8f3a3a4bbf65782dac29556266ec6ee')
+source=(git+$url)
+sha512sums=('SKIP')
 
 pkgver() {
   cd lynda-dl
@@ -25,8 +24,7 @@ pkgver() {
 
 package() {
   cd lynda-dl
-  cp ../setup.py .
   mv lynda-dl.py lynda/lynda_dl.py
   python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/lynda-dl/LICENSE
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/lynda-dl
 }
