@@ -1,6 +1,6 @@
 pkgbase = rust-nightly-bin
 	pkgdesc = Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.
-	pkgver = 1.30.0_2018.09.04
+	pkgver = 1.37.0_2019.06.23
 	pkgrel = 1
 	url = https://www.rust-lang.org/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = rust-nightly-bin
 	license = Apache
 	license = custom
 	depends = gcc-libs
-	depends = llvm-svn
+	depends = llvm-git
 	depends = zlib
 	depends = sh
 	provides = rust
@@ -28,7 +28,7 @@ pkgbase = rust-nightly-bin
 	conflicts = rust-docs
 	options = staticlibs
 	options = !strip
-	source = rust-nightly-1.30.0_2018.09.04-x86_64-unknown-linux-gnu.tar.gz::https://static.rust-lang.org/dist/rust-nightly-x86_64-unknown-linux-gnu.tar.gz
+	source = rust-nightly-1.37.0_2019.06.23-x86_64-unknown-linux-gnu.tar.gz::https://static.rust-lang.org/dist/rust-nightly-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = SKIP
 
 pkgname = rust-nightly-bin
