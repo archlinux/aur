@@ -1,8 +1,8 @@
 pkgbase = st-ckyln-git
 	pkgdesc = Simple Terminal from suckless.org (Fork)
-	pkgver = v20190618.4.gec7c036
+	pkgver = v20190619
 	pkgrel = 1
-	url = https://git.ckyln.com/cemkeylan/st
+	url = https://git.ckyln.com/st
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = st-ckyln-git
 	depends = libxft
 	provides = st
 	conflicts = st
-	source = git+https://git.ckyln.com/cemkeylan/st.git
+	source = git+https://git.ckyln.com/st
 	md5sums = SKIP
 
 pkgname = st-ckyln-git
