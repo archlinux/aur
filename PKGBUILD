@@ -3,9 +3,9 @@
 pkgname=mingw-w64-gtkmm
 _pkgname=gtkmm
 pkgver=2.24.5
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ bindings for GTK+ 2 (mingw-w64)"
-url="http://www.gtkmm.org/"
+url="https://www.gtkmm.org/"
 arch=('any')
 license=('LGPL')
 depends=('mingw-w64-gtk2' 'mingw-w64-pangomm' 'mingw-w64-atkmm')

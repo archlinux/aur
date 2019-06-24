@@ -1,8 +1,8 @@
 pkgbase = mingw-w64-gtkmm
 	pkgdesc = C++ bindings for GTK+ 2 (mingw-w64)
 	pkgver = 2.24.5
-	pkgrel = 1
-	url = http://www.gtkmm.org/
+	pkgrel = 2
+	url = https://www.gtkmm.org/
 	arch = any
 	license = LGPL
 	makedepends = mingw-w64-configure
