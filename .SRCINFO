@@ -1,13 +1,14 @@
 pkgbase = bluetooth-autoconnect
 	pkgdesc = A service to automatically connect to all paired and trusted bluetooth devices
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jrouleau/bluetooth-autoconnect
 	arch = any
 	license = MIT
 	depends = bluez
 	depends = python
 	depends = python-dbus
+	depends = python-gobject
 	optdepends = pulseaudio: auto connect bluetooth headsets/speakers
 	source = https://github.com/jrouleau/bluetooth-autoconnect/archive/v1.1.tar.gz
 	sha256sums = 9145247d3e4a1466fe3448a6973dba782239dc111b629a61885a115b125d5b7e
