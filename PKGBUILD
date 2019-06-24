@@ -5,7 +5,7 @@
 
 pkgbase=linux-apparmor
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=5.0.8-arch1
+_srcver=5.0.9-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
