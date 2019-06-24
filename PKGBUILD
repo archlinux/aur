@@ -23,14 +23,16 @@ source=(https://github.com/AdaCore/gps/archive/3b331d05ecf8b0d0e76d0b264c8f5c4fa
         patch-Makefile.in
         patch-docs-Makefile.in
         xref-docgen.adb-patch
-        src_contexts.adb-patch)
+        src_contexts.adb-patch
+        gps.desktop)
 
 sha1sums=('203427f62483f7fda557a0be4bac9045a55b351d'
           '6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d'
           '763584d9a931887eff11151310504c02df279224'
           '60813145324cd5ea9f081648da10cffd99f87586'
           'e166ed6513465f59f433eac8f759afcd190ab853'
-          'bd80d0f84c128e1e0d6a1aa3ac4b419226a4c616')
+          'bd80d0f84c128e1e0d6a1aa3ac4b419226a4c616'
+          '1f4ee00408551af23eec12488188016ffee17c72')
 
 gps_version="3b331d05ecf8b0d0e76d0b264c8f5c4fa7bca3d3"
 
@@ -86,4 +88,9 @@ package()
   export PATH=$srcdir/gps/temp_bin:$PATH
 
   make DESTDIR="$pkgdir/" install
+
+  ## Add the desktop config.
+  #
+  mkdir -p               $pkgdir/usr/share/applications
+  cp $srcdir/gps.desktop $pkgdir/usr/share/applications
 }

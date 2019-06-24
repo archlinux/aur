@@ -25,12 +25,14 @@ pkgbase = gnat-gps
 	source = patch-docs-Makefile.in
 	source = xref-docgen.adb-patch
 	source = src_contexts.adb-patch
+	source = gps.desktop
 	sha1sums = 203427f62483f7fda557a0be4bac9045a55b351d
 	sha1sums = 6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d
 	sha1sums = 763584d9a931887eff11151310504c02df279224
 	sha1sums = 60813145324cd5ea9f081648da10cffd99f87586
 	sha1sums = e166ed6513465f59f433eac8f759afcd190ab853
 	sha1sums = bd80d0f84c128e1e0d6a1aa3ac4b419226a4c616
+	sha1sums = 1f4ee00408551af23eec12488188016ffee17c72
 
 pkgname = gnat-gps
 
