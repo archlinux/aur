@@ -2,8 +2,8 @@
 # Contributor: Jefferson González <jgmdev@gmail.com>
 
 pkgname=vlang-git
-pkgver=r85.7cd99dd
-pkgrel=2
+pkgver=r96.baa4f9d
+pkgrel=1
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -26,7 +26,7 @@ prepare() {
     cd v && current_dir=$(pwd)
     cd compiler
     sed -i \
-        "s|os__home_dir(), tos2(\"/code/v/\")|tos2(\"${current_dir}\"), tos2(\"/\")|g" \
+        "s|os__home_dir(), tos2(\"/code/v/\")|tos2(\"${current_dir}\"), tos2(\"\")|g" \
         v.c
     sed -i 's/!os.dir_exists(lang_dir)/false/g' main.v
 
@@ -41,11 +41,7 @@ prepare() {
 
 build() {
     cd v/compiler
-    #make # segfault -std=c11
-    cc -std=gnu11 -w -o vc v.c
-
-    # bootstraping
-    ./vc -o v .
+    make
 
     mv main.v.b main.v
     # recompile itself
