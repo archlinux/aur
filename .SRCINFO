@@ -1,13 +1,12 @@
 pkgbase = klient-jpk-2.0
 	pkgdesc = A tool for submitting JPK files to Ministerstwo Finansów
 	pkgver = 1.0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.podatki.gov.pl/jednolity-plik-kontrolny/aplikacje-do-pobrania/
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = java-openjfx
-	depends = java-runtime
+	depends = java8-openjfx
 	source = http://www.mf.gov.pl/documents/764034/5134536/TransmitterResources_1_0_4_2_lib.update
 	source = http://www.mf.gov.pl/documents/764034/5134536/TransmitterLauncher_1_0_4_3_lib.update
 	source = https://www.podatki.gov.pl/media/1150/mfcsfp.cer
@@ -17,7 +16,7 @@ pkgbase = klient-jpk-2.0
 	sha256sums = 28047564fdcd996386172241007ccee31eaedea53bf70cdad84b0997069865d6
 	sha256sums = 1c0d261240ebf7d936c8ba1f572ef509548a1c7a5cad535a63e4061e0078a043
 	sha256sums = c539940e74493d559cf494313e3a0a72626be86bc31ef3cb8c3da1323640063b
-	sha256sums = 1867c95b8465c6ace79451a0924ca86e9c0ce4061af78fbaafc364c16a28fbca
+	sha256sums = 19234d788ccaf35186eefb6a1bf204f405b358c1432e76e6304291f833c0405c
 	sha256sums = 6956d9c2e1e587ce33f77e497557c80b512cb1ba0c3d6b4d0512476c309a97cc
 	sha256sums = adf917711012ef3a8d2e8d1289d9deaa33d1eee6f7f5245fd7abeae35dd4b700
 

@@ -1,12 +1,12 @@
 # Maintainer: Konrad Borowski <konrad@borowski.pw>
 pkgname=klient-jpk-2.0
 pkgver=1.0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for submitting JPK files to Ministerstwo Finansów"
 arch=('i686' 'x86_64')
 url="https://www.podatki.gov.pl/jednolity-plik-kontrolny/aplikacje-do-pobrania/"
 license=(custom)
-depends=(java-openjfx java-runtime)
+depends=(java8-openjfx)
 source=('http://www.mf.gov.pl/documents/764034/5134536/TransmitterResources_1_0_4_2_lib.update'
         'http://www.mf.gov.pl/documents/764034/5134536/TransmitterLauncher_1_0_4_3_lib.update'
         'https://www.podatki.gov.pl/media/1150/mfcsfp.cer'
@@ -14,7 +14,7 @@ source=('http://www.mf.gov.pl/documents/764034/5134536/TransmitterResources_1_0_
 sha256sums=('28047564fdcd996386172241007ccee31eaedea53bf70cdad84b0997069865d6'
             '1c0d261240ebf7d936c8ba1f572ef509548a1c7a5cad535a63e4061e0078a043'
             'c539940e74493d559cf494313e3a0a72626be86bc31ef3cb8c3da1323640063b'
-            '1867c95b8465c6ace79451a0924ca86e9c0ce4061af78fbaafc364c16a28fbca')
+            '19234d788ccaf35186eefb6a1bf204f405b358c1432e76e6304291f833c0405c')
 
 if [ "${CARCH}" = 'i686' ]; then
     source+=("$pkgname-$pkgver.sh::https://www.podatki.gov.pl/media/3056/klient_jpk_2-i386.sh"
