@@ -1,7 +1,8 @@
 pkgbase = touchpad-indicator-git
 	pkgdesc = An indicator for the touchpad
-	pkgver = r96.3ed32d6
+	pkgver = r95.48ab61a
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/atareao/Touchpad-Indicator
 	arch = any
 	license = GPL3
@@ -19,7 +20,7 @@ pkgbase = touchpad-indicator-git
 	depends = xorg-xinput
 	provides = touchpad-indicator
 	conflicts = touchpad-indicator
-	source = git+https://github.com/atareao/Touchpad-Indicator.git
+	source = git+https://github.com/atareao/Touchpad-Indicator.git#commit=48ab61aa6d74c96fa6150abc93fba8c6e4c896f0
 	sha256sums = SKIP
 
 pkgname = touchpad-indicator-git
