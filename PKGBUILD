@@ -5,7 +5,7 @@
 
 pkgbase=linux-apparmor
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=5.0.13-arch1
+_srcver=5.1-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -28,7 +28,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '5eb7fb6aa90386735e5d8ee9528e82e12ba89875de058ffa4bf0a844ae055d58'
+            'd1ad8403bfc9681bddf42300b1b51d8975506b91e791e341f839797513208eff'
             '728ea88383ce6c542e2969246036f454395d5412779ffb5299639610b82b21f1'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
