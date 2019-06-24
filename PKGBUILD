@@ -68,7 +68,7 @@ _srcname=linux-${_major}
 _clr=${_major}.10-783
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -127,6 +127,10 @@ CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
         msg2 "Enabling ACPI Rev Override Possible..."
         sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
         fi
+
+    ### Set CONFIG_HIBERNATION to make hibernation possible
+        msg2 "Make hibernation possible..."
+        sed -i "s|# CONFIG_HIBERNATION is not set|CONFIG_HIBERNATION=y|g" ./.config
 
         make olddefconfig
 
