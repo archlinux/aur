@@ -4,7 +4,7 @@ pkgver=2.0.0
 pkgrel=1
 pkgdesc="kiwix command line tools"
 license=('GPL3')
-arch=('any')
+arch=('armv7h' 'i686' 'x86_64')
 replaces=('kiwix-cli-git')
 depends=('kiwix-lib>=5.1.0' 'libmicrohttpd')
 makedepends=('meson')
