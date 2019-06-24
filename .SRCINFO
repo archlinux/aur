@@ -1,0 +1,14 @@
+pkgbase = stancli
+	pkgdesc = A cli utility for send arbitrary messages to nats-streaming
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/vasyahuyasa/stancli
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = stancli-0.0.1.tar.gz::https://github.com/vasyahuyasa/stancli/archive/v0.0.1.tar.gz
+	sha1sums = bbb2e4ee61189a61ecd433297e43d6b8524c5616
+
+pkgname = stancli
+
