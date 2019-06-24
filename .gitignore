@@ -1,4 +1,4 @@
 *.tar.gz
 *.tar.xz
+/yandex-disk-indicator-git/
 /src/
-/pkg/
