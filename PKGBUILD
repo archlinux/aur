@@ -55,17 +55,8 @@ package()
 
   # Install the Python binding
   #
-#  cd build/python
-#  python2 setup.py install --root="$pkgdir"
-
+  cd build/python
+  python2 setup.py install --root="$pkgdir"
 
   rm -fr $pkgdir/usr/python
-
-
-#  mkdir -p $pkgdir/usr/lib/python2.7/site-packages
-
-#  mv $pkgdir/usr/python/libadalang.py \
-#     $pkgdir/usr/lib/python2.7/site-packages
-
-#  rmdir $pkgdir/usr/python
 }
