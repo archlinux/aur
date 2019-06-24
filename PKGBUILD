@@ -2,7 +2,7 @@
 # Contributor: Jefferson González <jgmdev@gmail.com>
 
 pkgname=vlang-git
-pkgver=r119.b9cb3d5
+pkgver=r121.97b21fb
 pkgrel=1
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
@@ -41,7 +41,12 @@ prepare() {
 
 build() {
     cd v/compiler
-    make
+
+    # wget https://vlang.io/v.c is security hole
+    #make 
+
+    cc -std=gnu11 -w -o vc v.c
+    ./vc -o v .
 
     mv main.v.b main.v
     # recompile itself
