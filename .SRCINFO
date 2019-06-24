@@ -1,6 +1,6 @@
 pkgbase = gbcc-git
 	pkgdesc = A Game Boy Color emulator written in C
-	pkgver = r243.96b7858
+	pkgver = r249.53a1d18
 	pkgrel = 1
 	url = https://github.com/philj56/GBCC
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gbcc-git
 	makedepends = scdoc
 	depends = sdl2
 	depends = libpng
-	depends = glew
+	depends = libepoxy
 	depends = openal
 	provides = gbcc
 	conflicts = gbcc
