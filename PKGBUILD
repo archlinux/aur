@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz-bin
 _vendorname=cliqz
-pkgver=1.27.2
+pkgver=1.27.3
 _cqzbuildid=$(curl "http://repository.cliqz.com.s3.amazonaws.com/dist/release/$pkgver/lastbuildid")
 #_cqzbuildid=20190508134915
 pkgrel=2
