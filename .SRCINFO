@@ -1,6 +1,6 @@
 pkgbase = obsuite-git
 	pkgdesc = Collection of system indicators and utilities for custom desktop environments
-	pkgver = r164.f8349fd
+	pkgver = r169.f29bc4b
 	pkgrel = 1
 	url = https://gitlab.com/william.belanger/obsuite
 	arch = any
