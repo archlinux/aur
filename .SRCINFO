@@ -1,13 +1,14 @@
-pkgbase = bme280
+pkgbase = python-bme280
 	pkgdesc = Python Driver for the BME280 Temperature/Pressure/Humidity Sensor from Bosch
 	pkgver = 0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kbrownlees/bme280
 	arch = any
 	license = custom
 	depends = python
+	conflicts = bme280
 	source = bme280-0.5.tar.gz::https://github.com/kbrownlees/bme280/archive/v0.5.tar.gz
 	sha512sums = 4dbfc2571b1079e7d5d1c29e80540f4fba46b9497de4953c67636ff75b20d3eebe0fb29244285e2e0f1e6f42c5f798d1a3105523cbeebcd61c7af9b5493032fc
 
-pkgname = bme280
+pkgname = python-bme280
 
