@@ -7,31 +7,27 @@
 
 _target="powerpc-linux-gnu"
 pkgname="${_target}-gcc"
-pkgver=8.2.0
-_majorver=${pkgver:0:1}
-_islver=0.19
+pkgver=9.1.0
+_majorver=${pkgver}
+_islver=0.21
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
 depends=("${_target}-binutils>=2.30-1" "${_target}-glibc>=2.27-1" libmpc elfutils zlib)
+makedepends=(gmp mpfr)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs !distcc !strip)
 conflicts=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 replaces=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 provides=("${_target}-gcc-stage1=${pkgver}" "${_target}-gcc-stage2=${pkgver}")
-#source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
-source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
+source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
-sha256sums=('196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080'
-            'd59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8')
-validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
-              13975A70E63C361C73AE69EF6EEB81F8981C74C7) # richard.guenther@gmail.com
-
-_svnrev=259195
-_svnurl=svn://gcc.gnu.org/svn/gcc/branches/gcc-${_majorver}-branch
-_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
+sha256sums=('79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0'
+            SKIP
+            'd18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859')
+validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
