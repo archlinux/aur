@@ -1,6 +1,6 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source virtual modular synthesizer
-	pkgver = 0.6.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://vcvrack.com/
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = vcvrack
 	makedepends = git
 	makedepends = cmake
 	makedepends = mesa
+	makedepends = zip
 	depends = curl
 	depends = glew
 	depends = gtk2
@@ -24,7 +25,10 @@ pkgbase = vcvrack
 	depends = libgl
 	depends = jack
 	depends = libpulse
-	source = vcvrack::git+https://github.com/VCVRack/Rack.git#tag=v0.6.0
+	provides = vcvrack-fundamental
+	conflicts = vcvrack-fundamental
+	source = vcvrack::git+https://github.com/VCVRack/Rack.git#tag=v1.0.0
+	source = fundamental::git+https://github.com/VCVRack/Fundamental.git
 	source = git+https://github.com/AndrewBelt/osdialog.git
 	source = git+https://github.com/AndrewBelt/oui-blendish.git
 	source = git+https://github.com/glfw/glfw.git
@@ -32,6 +36,7 @@ pkgbase = vcvrack
 	source = git+https://github.com/memononen/nanovg.git
 	source = git+https://github.com/thestk/rtaudio.git
 	source = vcvrack.sh
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
