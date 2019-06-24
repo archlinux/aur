@@ -2,7 +2,7 @@
 
 pkgname=miniserve
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to serve files via HTTP"
 arch=('x86_64')
 url="https://github.com/svenstaro/miniserve"
