@@ -1,4 +1,4 @@
-#Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
+# Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 # Contributor: Joey Dumont <joey.dumont@gmail.com>
 
 _target=mips64-elf
@@ -59,6 +59,9 @@ build() {
     --without-included-gettext \
     --enable-checking=release \
     --enable-languages=c,c++ \
+    --enable-lto \
+    --enable-multilib \
+    --enable-plugin \
     --disable-decimal-float \
     --disable-gold \
     --disable-libatomic \
@@ -71,13 +74,10 @@ build() {
     --disable-libssp \
     --disable-libunwind-exceptions \
     --disable-libvtv \
-    --enable-multilib \
     --disable-nls \
     --disable-shared \
     --disable-threads \
-    --disable-werror \
-    --enable-lto \
-    --enable-plugin \
+    --disable-werror
 
   make
 }
