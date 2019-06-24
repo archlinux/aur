@@ -43,7 +43,9 @@ pre_remove() {
 
 }
 
-## arg 1:  the old package version
-#post_remove() {
-	# do something here
-#}
+# arg 1:  the old package version
+post_remove() {
+    #removes the git directorie just in case
+    rm -rf /opt/ethoscope-node
+    rm -rf /srv/git/ethoscope.git
+}
