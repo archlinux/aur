@@ -3,11 +3,12 @@ _orgname=OpenOrienteering
 _pkgname=mapper
 _branch=dev
 _use_gh_api=true
-wl_project=${_orgname}
-wl_hz="https://hosted.weblate.org/healthz/"
-wl_dl="https://hosted.weblate.org/download/${wl_project}"
+_gh_api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
+_wl_project=${_orgname}
+_wl_hz="https://hosted.weblate.org/healthz/"
+_wl_dl="https://hosted.weblate.org/download/${_wl_project}"
 pkgname=${_orgname,,}-${_pkgname}-git
-pkgver=20190610.2pre.r5162.a6565398
+pkgver=20190622.5.r17.g0eeb2ea2
 pkgrel=1
 pkgdesc='Map drawing program from OpenOrienteering'
 arch=('i686' 'x86_64')
@@ -16,7 +17,7 @@ license=('GPL3')
 depends=('qt5-base>=5.6' 'polyclipping>=6.1.3a' 'proj>=4.9.2' 'gdal')
 makedepends=('cmake>=3.2' 'qt5-tools>=5.6' 'doxygen' 'libcups')
 if [ "${_use_gh_api}" = true ]; then
-  makedepends+=('python')
+  makedepends+=('jq')
 else
   makedepends+=('git')
 fi
@@ -32,37 +33,32 @@ fi
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}-${_branch}
-
   if [ "${_use_gh_api}" = true ]; then
-    api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
-    base='8a8986ec'
-    head=$(curl -s "$api_url/git/refs/heads/${_branch}" | \
-      python -c "import sys, json; print(json.load(sys.stdin)['object']['sha'][:8])")
-    count=$(curl -s "$api_url/compare/${base}...${head}" | \
-      python -c "import sys, json; print(json.load(sys.stdin)['total_commits'] + 1)")
-    release=$(curl -s "$api_url/releases" | \
-      python -c "import sys, json; r = json.load(sys.stdin)[0]; print(r['tag_name'] + ('pre' if r['prerelease'] else ''))")
-  else
-    release="$(git describe --tags $(git rev-list --tags --max-count=1))"
-    count="$(git rev-list --count HEAD)"
-    head="$(git rev-parse --short HEAD)"
-  fi
+    read -r tag_name tag_sha <<<$(curl -s "${_gh_api_url}/tags" | \
+      jq -r '.[0]|[.name,.commit.sha]|@sh' | sed "s/'//g")
+    head=$(curl -s "${_gh_api_url}/git/refs/heads/${_branch}" | \
+      jq -r '.object.sha')
+    count=$(curl -s "${_gh_api_url}/compare/${tag_sha}...${head}" | \
+      jq -r '.total_commits')
 
-  release=${release//-/.} # pkgver is not allowed to contain hyphens
-  printf "%s.r%s.%s" "${release#?}" "${count}" "${head}"
+    tag_name=${tag_name//-/.} # pkgver is not allowed to contain hyphens
+    printf "%s.r%s.g%.8s" "${tag_name#?}" "${count}" "${head}"
+  else
+    cd ${_pkgname}-${_branch}
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  fi
 }
 
 wl_update() {
   find . -name "${2}*.ts" -a ! -name "*template*" | \
     xargs basename -s .ts | \
-    xargs -P 0 -I{} sh -c "curl -so \$1.ts $wl_dl/${1}/\${1#${2}}/" -- {}
+    xargs -P 0 -I{} sh -c "curl -so \$1.ts ${_wl_dl}/${1}/\${1#${2}}/" -- {}
 }
 
 prepare() {
   cd ${_pkgname}-${_branch}/translations
 
-  if [ "`curl $wl_hz`" = "ok" ]; then
+  if [ "`curl ${_wl_hz}`" = "ok" ]; then
     rename nb nb_NO *_nb.ts
     rename CN Hans *_zh_CN.ts
 
