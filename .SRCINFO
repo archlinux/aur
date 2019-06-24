@@ -1,0 +1,13 @@
+pkgbase = notes-cli-bin
+	pkgdesc = Small markdown note taking commandline application written in go.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/rhysd/notes-cli
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = notes-cli-1.6.0.zip::https://github.com/rhysd/notes-cli/releases/download/v1.6.0/notes_linux_amd64.zip
+	sha1sums = 17560a53fb3cf3e172c8ae5efd7d624878479023
+
+pkgname = notes-cli-bin
+
