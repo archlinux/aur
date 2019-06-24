@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=wasmer-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=0
 pkgdesc='Universal WebAssembly runtime'
 arch=(x86_64)
@@ -11,8 +11,8 @@ depends=(bash)
 conflicts=(wasmer wapm libwasmer_runtime_c_api.so.${pkgver})
 provides=(wasmer wapm libwasmer_runtime_c_api.so.${pkgver})
 source=(
-  "https://github.com/wasmerio/wasmer/releases/download/${pkgver}/wasmer-linux-amd64.tar.gz"
-  "https://github.com/wasmerio/wasmer/releases/download/${pkgver}/libwasmer_runtime_c_api.so"
+  "wasmer-linux-amd64-${pkgver}.tar.gz"::"https://github.com/wasmerio/wasmer/releases/download/${pkgver}/wasmer-linux-amd64.tar.gz"
+  "libwasmer_runtime_c_api.so.${pkgver}"::"https://github.com/wasmerio/wasmer/releases/download/${pkgver}/libwasmer_runtime_c_api.so"
   "https://raw.githubusercontent.com/wasmerio/wasmer/${pkgver}/LICENSE"
   wapm.sh
   logo.sh
@@ -40,7 +40,7 @@ package() {
   ln -s wapm.sh "$pkgdir"/usr/bin/wapm
 
   # libraries
-  install -Dm755 libwasmer_runtime_c_api.so "$pkgdir"/usr/lib/libwasmer_runtime_c_api.so.${pkgver}
+  install -Dm755 libwasmer_runtime_c_api.so.${pkgver} "$pkgdir"/usr/lib/libwasmer_runtime_c_api.so.${pkgver}
   ln -s libwasmer_runtime_c_api.so.${pkgver} "$pkgdir"/usr/lib/libwasmer_runtime_c_api.so
 
   # wapm completions
