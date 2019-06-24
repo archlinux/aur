@@ -1,4 +1,4 @@
-#Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
+# Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 # Contributor: Joey Dumont <joey.dumont@gmail.com>
 
 _target=mips64-elf
@@ -25,12 +25,12 @@ build()
     --prefix=/usr \
     --target=${_target} \
     --enable-lto \
+    --enable-multilib \
     --disable-libssp \
     --disable-nls \
     --disable-shared \
     --disable-threads \
-    --disable-werror \
-    --enable-multilib
+    --disable-werror
 
   make
 }
