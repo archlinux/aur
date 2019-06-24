@@ -3,8 +3,9 @@ _orgname=BourgeoisLab
 _pkgname=GPXLab
 _branch=master
 _use_gh_api=true
+_gh_api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
 pkgname=${_pkgname,,}-git
-pkgver=0.5.0.r39.ced9bb91
+pkgver=0.5.0.r2.gced9bb9
 pkgrel=1
 pkgdesc='Program to show and manipulate GPS tracks'
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
 if [ "${_use_gh_api}" = true ]; then
-  makedepends+=('python')
+  makedepends+=('jq')
 else
   makedepends+=('git')
 fi
@@ -27,35 +28,26 @@ fi
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}-${_branch}
-
   if [ "${_use_gh_api}" = true ]; then
-    api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
-    base='30fb6d1'
-    head=$(curl -s "${api_url}/git/refs/heads/${_branch}" | \
-      python -c "import sys, json; print(json.load(sys.stdin)['object']['sha'][:8])")
-    count=$(curl -s "${api_url}/compare/${base}...${head}" | \
-      python -c "import sys, json; print(json.load(sys.stdin)['total_commits'] + 1)")
-    release=$(curl -s "${api_url}/tags" | \
-      python -c "import sys, json; r = json.load(sys.stdin)[0]; print(r['name'])")
+    read -r tag_name tag_sha <<<$(curl -s "${_gh_api_url}/tags" | \
+      jq -r '.[0]|[.name,.commit.sha]|@sh' | sed "s/'//g")
+    head=$(curl -s "${_gh_api_url}/git/refs/heads/${_branch}" | \
+      jq -r '.object.sha')
+    count=$(curl -s "${_gh_api_url}/compare/${tag_sha}...${head}" | \
+      jq -r '.total_commits')
+
+    tag_name=${tag_name//-/.} # pkgver is not allowed to contain hyphens
+    printf "%s.r%s.g%.7s" "${tag_name#?}" "${count}" "${head}"
   else
-    release="$(git describe --tags $(git rev-list --tags --max-count=1))"
-    count="$(git rev-list --count HEAD)"
-    head="$(git rev-parse --short HEAD)"
+    cd ${_pkgname}-${_branch}
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   fi
-
-  release=${release//-/.} # pkgver is not allowed to contain hyphens
-  printf "%s.r%s.%s" "${release#?}" "${count}" "${head}"
-}
-
-prepare() {
-  cd ${_pkgname}-${_branch}
-
-  sed -i "s/\(VERSION = \).*/\1${pkgver}/" GPXLab/GPXLab.pro
 }
 
 build() {
   cd ${_pkgname}-${_branch}
+
+  sed -i "s/\(VERSION = \).*/\1${pkgver}/" GPXLab/GPXLab.pro
 
   lrelease GPXLab/GPXLab.pro
   qmake GPXLab.pro
