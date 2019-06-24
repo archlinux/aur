@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /opt/intang/
+./bin/intangd $1

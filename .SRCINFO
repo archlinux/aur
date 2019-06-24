@@ -1,0 +1,23 @@
+pkgbase = intang
+	pkgdesc = INTANG is research project for circumventing the "TCP reset attack"
+	pkgver = r20.479bebd
+	pkgrel = 1
+	url = https://github.com/seclab-ucr/INTANG
+	arch = x86_64
+	license = GPLv3
+	depends = libnetfilter_queue
+	depends = libnfnetlink
+	depends = redis
+	depends = hiredis
+	depends = libev
+	optdepends = python-redis
+	optdepends = python-scapy
+	source = git+https://github.com/seclab-ucr/INTANG.git
+	source = intang-start
+	source = intang-stop
+	md5sums = SKIP
+	md5sums = 76ce07438e87b6a83b7270fe5006bdd7
+	md5sums = 250a9e999242ae55ddf470c7bd174587
+
+pkgname = intang
+
