@@ -13,12 +13,12 @@ pkgbase = icu4j
 	source = https://github.com/unicode-org/icu/releases/download/release-64-2/icu4j-64_2-docs.jar
 	source = https://github.com/unicode-org/icu/releases/download/release-64-2/icu4j-charset-64_2.jar
 	source = https://github.com/unicode-org/icu/releases/download/release-64-2/icu4j-localespi-64_2.jar
-	source = https://github.com/unicode-org/icu/blob/master/icu4c/LICENSE
+	source = icu4j-license::https://github.com/unicode-org/icu/blob/master/icu4c/LICENSE
 	sha256sums = ec5a7d92495a2c0f0a09506aef935cca6a68ce8ac18fbae105381a38288127e3
 	sha256sums = 739432de83b518d277774a49ed8c76176eb9779ec19045613d186e594024a1e7
 	sha256sums = 29ada0a78857c0ce4915052174e26457156f3934670890c3c574b7a9570cbdcc
 	sha256sums = f224d66b9a3f3e03260837a58c18ab07ca30241462c297aea444704df20683fe
-	sha256sums = 7859ce4ecd67afed92177412dbb2e3817d5b63ae83b035140f411f0ed40c39c7
+	sha256sums = 87dc0324ed781e74a6564e446fc317d2e1d406d1d1aee1e53b5251d762d5b4d4
 
 pkgname = icu4j
 
