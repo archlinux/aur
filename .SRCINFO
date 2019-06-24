@@ -1,7 +1,7 @@
 pkgbase = stancli
 	pkgdesc = A cli utility for send arbitrary messages to nats-streaming
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vasyahuyasa/stancli
 	arch = i686
 	arch = x86_64
