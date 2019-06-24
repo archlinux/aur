@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=stf
-pkgver=3.4.0
-pkgrel=3
+pkgver=3.4.1
+pkgrel=1
 pkgdesc='Web application for controlling and managing Android devices'
 arch=(i686 x86_64)
 url=https://openstf.io
