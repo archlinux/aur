@@ -6,7 +6,7 @@
 
 pkgname=lib32-libshout
 _pkgname=libshout
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Library for accessing a shoutcast/icecast server (32 bit)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ url="http://www.icecast.org/"
 options=('!emptydirs')
 license=('LGPL')
 source=("https://downloads.xiph.org/releases/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('b7a33377d716a95c9159f0922d04e596')
+md5sums=('2623ebf5bdf00517d2a7fd17d70c31aa')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
