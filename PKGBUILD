@@ -3,22 +3,21 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=elisa-git
-pkgver=0.2.0.r25.g2f45606
+pkgver=0.4.0.r61.gbe00ded
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="A simple music player for KDE aiming to provide a nice experience for its users"
-url="https://cgit.kde.org/elisa.git/"
+url="https://community.kde.org/Elisa"
 license=(GPL3 custom:"Qt Company GPL Exception 1.0")
-depends=(qt5-quickcontrols qt5-quickcontrols2
-         kcmutils baloo)
+depends=(qt5-quickcontrols2 kcmutils baloo kirigami2)
 makedepends=(git python extra-cmake-modules kdoctools)
 provides=(elisa)
 conflicts=(elisa)
-source=("${pkgname}::git://anongit.kde.org/elisa.git")
-md5sums=('SKIP')
+source=("git+https://anongit.kde.org/elisa.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd elisa
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -28,7 +27,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../${pkgname} \
+  cmake ../elisa \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
@@ -39,6 +38,6 @@ package(){
   cd build
   make DESTDIR="$pkgdir" install
 
-  cd "$srcdir/$pkgname"
-  install -Dm644 LICENSE.GPL3-EXCEPT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.GPL3-EXCEPT"
+  cd "$srcdir"/elisa
+  install -Dm644 LICENSE.GPL3-EXCEPT "$pkgdir/usr/share/licenses/$pkgname/LICENSE.GPL3-EXCEPT"
 }

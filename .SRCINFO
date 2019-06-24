@@ -1,8 +1,8 @@
 pkgbase = elisa-git
 	pkgdesc = A simple music player for KDE aiming to provide a nice experience for its users
-	pkgver = 0.2.0.r25.g2f45606
+	pkgver = 0.4.0.r61.gbe00ded
 	pkgrel = 1
-	url = https://cgit.kde.org/elisa.git/
+	url = https://community.kde.org/Elisa
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -11,14 +11,14 @@ pkgbase = elisa-git
 	makedepends = python
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
-	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = kcmutils
 	depends = baloo
+	depends = kirigami2
 	provides = elisa
 	conflicts = elisa
-	source = elisa-git::git://anongit.kde.org/elisa.git
-	md5sums = SKIP
+	source = git+https://anongit.kde.org/elisa.git
+	sha512sums = SKIP
 
 pkgname = elisa-git
 
