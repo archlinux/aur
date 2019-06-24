@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 pkgname=pymol-git
 _pkgname=pymol
-pkgver=r4455.9ac17c0a
+pkgver=r4456.dc015754
 pkgrel=1
 pkgdesc="Molecular visualization system on an Open Source foundation"
 arch=('x86_64')
@@ -11,9 +11,10 @@ depends=('freetype2' 'glew' 'glm' 'glut' 'python-numpy' 'tcsh')
 makedepends=('desktop-file-utils' 'gendesk' 'libmmtf' 'msgpack-c' 'git')
 optdepends=('python-pmw: pmw based UI'
             'python-pyqt5: Qt5 based UI'
-			'freemol-svn: MPEG rendering')
+			'mjpegtools: MPEG encoding')
 conflicts=('pymol')
 provides=('pymol')
+install="$pkgname.install"
 source=("git+https://github.com/schrodinger/pymol-open-source.git"
 		${_pkgname}.png::"https://c.fsdn.com/allura/p/pymol/icon")
 md5sums=('SKIP'
