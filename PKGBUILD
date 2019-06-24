@@ -1,6 +1,6 @@
 # Maintainer: phiresky <phireskyde+aur@gmail.com>
 
-pkgname=ripgrep-all
+pkgname=rga-bin
 pkgver=0.9.2
 pkgrel=1
 arch=(x86_64)
