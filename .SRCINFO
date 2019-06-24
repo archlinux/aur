@@ -1,6 +1,6 @@
 pkgbase = linux-apparmor
 	pkgver = 5.1.5.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.archlinux.org/linux.git/log/?h=v5.1.5-arch1
 	arch = x86_64
 	license = GPL2
