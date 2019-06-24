@@ -1,0 +1,23 @@
+pkgbase = glabels3-gnubarcode
+	pkgdesc = Creating labels and business cards the very easy way. Now with GNU barcode support.
+	pkgver = 3.4.1
+	pkgrel = 6
+	url = https://glabels.org/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = python
+	depends = iec16022
+	depends = qrencode
+	depends = zint
+	provides = glabels
+	conflicts = glabels
+	source = https://download.gnome.org/sources/glabels/3.4/glabels-3.4.1.tar.xz
+	source = ftp://ftp.gnu.org/gnu/barcode/barcode-0.99.tar.xz
+	sha256sums = 18e457298abb1c617187361109eeae769317686303fc07726af31e11519c5938
+	sha256sums = e87ecf6421573e17ce35879db8328617795258650831affd025fba42f155cdc6
+
+pkgname = glabels3-gnubarcode
+
