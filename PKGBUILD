@@ -10,8 +10,8 @@ _wl_project=${_pkgname}
 _wl_hz="https://hosted.weblate.org/healthz/"
 _wl_dl="https://hosted.weblate.org/download/${_wl_project}"
 pkgname=${_pkgname,,}-git
-pkgver=7.9.r0.g811f5f8
-pkgrel=2
+pkgver=7.9.r3.g255f4ca
+pkgrel=1
 pkgdesc='GPS log file viewer and analyzer'
 arch=('i686' 'x86_64')
 url='https://www.gpxsee.org/'
@@ -59,8 +59,6 @@ wl_update() {
 prepare() {
   cd ${_pkgname}-${_branch}
 
-  sed -i "s/\(VERSION = \).*/\1${pkgver}/" gpxsee.pro
-
   if [ "`curl ${_wl_hz}`" = "ok" ]; then
     cd lang
     rename nb nb_NO *_nb.ts
@@ -71,6 +69,8 @@ prepare() {
 
 build() {
   cd ${_pkgname}-${_branch}
+
+  sed -i "s/\(VERSION = \).*/\1${pkgver}/" gpxsee.pro
 
   lrelease gpxsee.pro
   qmake PREFIX=/usr gpxsee.pro
