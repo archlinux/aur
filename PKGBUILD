@@ -1,43 +1,40 @@
-# Maintainer: Mahmud Ridwan <m[at]hjr265[dot]me>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Mahmud Ridwan <m[at]hjr265[dot]me>
+
 pkgname=ibus-avro-git
-pkgver=20150925
+epoch=1
+pkgver=1.0.r8.gfe50959
 pkgrel=1
 pkgdesc="Avro Phonetic Bangla typing for Linux"
 url="http://linux.omicronlab.com"
-arch=('x86_64' 'i686')
-license=('MPL')
-depends=('ibus' 'gjs')
-makedepends=('autoconf' 'automake')
-install=$pkgname.install
+arch=(any)
+license=(MPL)
+depends=(ibus gjs)
+makedepends=(git autoconf automake)
+source=("git+https://github.com/sarim/ibus-avro")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname%-git}
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd ${pkgname%-git}
+  aclocal
+  autoconf
+  automake --add-missing
+}
 
 build() {
-  cd "$srcdir"
-
-  if [ -e $pkgname ]; then
-    cd $pkgname
-    git pull
-    git checkout develop
-  else
-    git clone -b develop git://github.com/sarim/ibus-avro.git $pkgname
-    cd $pkgname
-  fi
-
-  aclocal || return 1
-  autoconf || return 1
-
-  automake --add-missing
+  cd ${pkgname%-git}
   ./configure --prefix=/usr
-
-  make || return 1
+  make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-
+  cd ${pkgname%-git}
   make DESTDIR="$pkgdir" installdeb
-  install -Dm644 MPL-1.1.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-
-  sed -i 's|<layout>bn</layout>|<layout>us</layout>|' "$pkgdir/usr/share/ibus/component/ibus-avro.xml"
-
   rmdir "$pkgdir/usr/libexec"
+  sed -i 's|<layout>bn</layout>|<layout>us</layout>|' "$pkgdir/usr/share/ibus/component/ibus-avro.xml"
 }
