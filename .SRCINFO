@@ -1,6 +1,6 @@
 pkgbase = vlang-git
 	pkgdesc = Simple, fast, safe language created for developing maintainable software
-	pkgver = r96.baa4f9d
+	pkgver = r119.b9cb3d5
 	pkgrel = 1
 	url = https://vlang.io
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = vlang-git
 	conflicts = v
 	conflicts = vlang
 	source = git+https://github.com/vlang/v.git
-	source = https://vlang.io/v.c
+	source = git+https://github.com/vlang/vc.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 

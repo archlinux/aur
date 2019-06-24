@@ -2,7 +2,7 @@
 # Contributor: Jefferson González <jgmdev@gmail.com>
 
 pkgname=vlang-git
-pkgver=r96.baa4f9d
+pkgver=r119.b9cb3d5
 pkgrel=1
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc')
 optdepends=('glfw' 'libfreetype.so' 'libcurl.so')
 conflicts=('v' 'vlang')
 source=('git+https://github.com/vlang/v.git'
-        'https://vlang.io/v.c')
+        'git+https://github.com/vlang/vc.git')
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 prepare() {
-    mv v.c v/compiler
+    cp vc/v.c v/compiler
     cd v && current_dir=$(pwd)
     cd compiler
     sed -i \
@@ -55,5 +55,5 @@ package() {
     install -d "$pkgdir/usr/lib/vlang" "$pkgdir/usr/share/vlang"
     cp -a examples "$pkgdir/usr/share/vlang/"
     cp -a * "$pkgdir/usr/lib/vlang/"
-    rm -r "$pkgdir/usr/lib/vlang/"{LICENSE,README.md,compiler,examples}
+    rm -r "$pkgdir/usr/lib/vlang/"{LICENSE,*.md,*.yml,compiler,examples}
 }
