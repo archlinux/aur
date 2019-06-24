@@ -6,7 +6,6 @@ pkgbase = kubectl-beta-bin
 	arch = x86_64
 	license = Apache
 	provides = kubectl
-	provides = kubectl-bin
 	conflicts = kubectl
 	conflicts = kubectl-bin
 	conflicts = kubernetes>=1.4.6
