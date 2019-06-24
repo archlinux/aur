@@ -1,0 +1,21 @@
+pkgbase = termius-app
+	pkgdesc = the SSH client that works on Desktop
+	pkgver = 4.7.2
+	pkgrel = 1
+	url = https://www.termius.com/
+	arch = x86_64
+	license = GPL
+	depends = desktop-file-utils
+	depends = gconf
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk2
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	noextract = Termius.deb
+	source = https://www.termius.com/download/linux/Termius.deb
+	md5sums = 2b82c796e2b9bf17f14d93d31511e097
+
+pkgname = termius-app
+
