@@ -5,17 +5,17 @@
 # Contributor: Gilbert Kennen <gilbert firewatcher org>
 
 pkgname=elixir-git
-pkgver=1.9.0rc0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="a functional meta-programming aware language built on top of the Erlang VM"
-elixirver="1.9.0-rc.0"
+elixirver="1.9.0"
 url="http://elixir-lang.org"
 arch=('any')
 license=('Apache' 'custom:EPL')
 depends=('erlang-nox')
 checkdepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/elixir-lang/elixir/archive/v$elixirver.tar.gz")
-sha256sums=('fa019ba18556f53bfb77840b0970afd116517764251704b55e419becb0b384cf')
+sha256sums=('dbf4cb66634e22d60fe4aa162946c992257f700c7db123212e7e29d1c0b0c487')
 
 build() {
   cd elixir-"$elixirver"
