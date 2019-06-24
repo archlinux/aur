@@ -1,4 +1,4 @@
-# Maintainer: Nils Czernia <nils@czserver.de>
+# Maintainer: Dominic Brekau <aur@dominic.brekau.de>
 pkgname=python2-pyst
 _pkgname=pyst
 pkgver=0.6.50
@@ -7,6 +7,7 @@ pkgdesc="a python interface to asterisk"
 arch=('any')
 url="http://sourceforge.net/projects/pyst/"
 license=('GPL')
+depends=('python2')
 conflicts=()
 options=(!emptydirs)
 source=(http://sourceforge.net/projects/pyst/files/pyst/${pkgver}/${_pkgname}-${pkgver}.tar.gz/download)
