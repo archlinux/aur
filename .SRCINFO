@@ -1,8 +1,8 @@
 pkgbase = mingw-w64-gtkmm3
 	pkgdesc = C++ bindings for GTK+ 3 (mingw-w64)
 	pkgver = 3.24.1
-	pkgrel = 1
-	url = http://www.gtkmm.org/
+	pkgrel = 2
+	url = https://www.gtkmm.org/
 	arch = any
 	license = LGPL
 	makedepends = mingw-w64-configure

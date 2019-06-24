@@ -3,9 +3,9 @@
 pkgname=mingw-w64-gtkmm3
 _pkgname=gtkmm3
 pkgver=3.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ bindings for GTK+ 3 (mingw-w64)"
-url="http://www.gtkmm.org/"
+url="https://www.gtkmm.org/"
 arch=('any')
 license=('LGPL')
 depends=('mingw-w64-gtk3' 'mingw-w64-pangomm' 'mingw-w64-atkmm')
