@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-libpaper
 _pkgname=libpaper
-pkgver=1.1.26
+pkgver=1.1.27
 pkgrel=1
 _suffix=
 pkgdesc="Library for handling paper characteristics (mingw-w64)"
@@ -14,7 +14,7 @@ makedepends=('mingw-w64-configure' 'gettext')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://http.debian.net/debian/pool/main/libp/libpaper/${_pkgname}_${pkgver}${_suffix}.tar.gz"
         "001-no-undefined.patch")
-sha256sums=('a6950b67df66a53e974ffe0baec9a52775b909dd2c51497139af2af4e46519b1'
+sha256sums=('04ef86d8c8badf77f8ee0102d3a50f8069d1fd07819f9e1c1af07e2da35ee66d'
             'a77784a1a2dce1bf0155ee0cd889157fdbb67024e2967d3b0466a39849ac75f0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
