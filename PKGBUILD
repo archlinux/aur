@@ -1,9 +1,10 @@
-# Maintainer: Jan Dolinar <dolik.rce@gmail.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Jan Dolinar <dolik.rce@gmail.com>
 
 pkgbase=upp
 pkgname=(upp theide umk)
-pkgver=10804
-pkgrel=3
+pkgver=13068
+pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
 url="http://www.ultimatepp.org"
@@ -15,19 +16,19 @@ optdepends=('libnotify: Enables compiling gtk-styled apps' 'sox: Enables playing
 replaces=()
 backup=()
 options=(!makeflags emptydirs !strip)
-source=("http://downloads.sourceforge.net/project/upp/upp/2017.1/upp-x11-src-$pkgver.tar.gz"
+source=("http://downloads.sourceforge.net/project/upp/upp/2019.1/upp-x11-src-$pkgver.tar.gz"
         'GCC.bm'
         'license.txt'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/theide.1'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/umk.1'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/mkfile')
 noextract=()
-md5sums=('20f1f01c8b3238a3e02a89bcc76a7aac'
-         'a1b57c2231b6b0fa8070941fa4accf72'
-         'b214709f096e4f50d61f50988359241e'
-         'e60222794f4421da5917192df7045e42'
-         '574815e7f273e2653ea46b07395244be'
-         '9ad99eb6ead298341b6698e505067d7c')
+sha256sums=('031a52880f7c47c762f7e7645cdae978e3fd7de2237aaa45c0ec1d096c4fb962'
+            '5c0955ef99bc08d4c79b96a470bc17eb2ae3bed5f0d66d86eff7fb726629ae79'
+            '880ad22b3a7cef8adc2750553e5b7b785ec926168f50e01bacddcae52c07e71a'
+            'cdb98e08996a809c9a323f83768edde6a22a6aad73d9ed6a193f70ac78a8b123'
+            'ce881f93471bcb65a7cc4cb4d539579fda67c783b810289ab45a02113146f645'
+            '45be7a52fb5db25c09b3851c708f2d21022240667e3d2cf39b4f614c9ad01078')
 
 # uncomment this to true to build theide with simpler GUI (with no GTK dependecies)
 #USE_NOGTK=false
