@@ -17,13 +17,9 @@ sha1sums=('bbb2e4ee61189a61ecd433297e43d6b8524c5616')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   CGO_ENABLED=0 go build
-  ls -la
-  pwd
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  ls -la
-  pwd
   install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
