@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
 pkgname=trellis-git
-pkgver=r483.69b48a5
+pkgver=r518.ec54b23
 pkgrel=1
 pkgdesc='Tools and scripts which allow you to document the bit-stream format of Lattice ECP5 series FPGAs'
 arch=('i686' 'x86_64')
@@ -22,7 +22,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/trellis"
-  rsync -a --exclude='.*' "$srcdir/database/" database/
+  git submodule init
+  git config submodule.database.url "$srcdir/database"
+  git submodule update
 }
 
 build() {
