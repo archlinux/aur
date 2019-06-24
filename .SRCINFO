@@ -1,6 +1,6 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS); Long Term Release
-	pkgver = 3.4.8
+	pkgver = 3.4.9
 	pkgrel = 1
 	url = https://qgis.org/
 	arch = x86_64
@@ -36,10 +36,10 @@ pkgbase = qgis-ltr
 	optdepends = python-pygments: MetaSearch plugin
 	optdepends = python-numpy: Processing plugin
 	optdepends = python-yaml: Processing plugin
-	provides = qgis=3.4.8
+	provides = qgis=3.4.9
 	conflicts = qgis
-	source = https://qgis.org/downloads/qgis-3.4.8.tar.bz2
-	md5sums = d1fa97e8e278f2767c0ee68a5e297596
+	source = https://qgis.org/downloads/qgis-3.4.9.tar.bz2
+	md5sums = 7b0839498e244a2e08353346d4c2edf6
 
 pkgname = qgis-ltr
 
