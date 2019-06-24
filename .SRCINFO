@@ -1,0 +1,37 @@
+pkgbase = ethoscope-node
+	pkgdesc = A platform from monitoring animal behaviour in real time from a raspberry pi
+	pkgver = r1702.g1c43fc3
+	pkgrel = 1
+	url = http://lab.gilest.ro/ethoscope
+	install = ethoscope-node.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gcc-fortran
+	makedepends = rsync
+	makedepends = wget
+	makedepends = fping
+	makedepends = ntp
+	makedepends = openssh
+	makedepends = mariadb
+	makedepends = dnsmasq
+	depends = python-pip
+	depends = python-numpy
+	depends = python-bottle
+	depends = python-pyserial
+	depends = python-mysql-connector
+	depends = python-netifaces
+	depends = python-cherrypy
+	depends = python-eventlet
+	depends = python-gitpython
+	depends = python-scapy
+	depends = python-dnspython
+	depends = python-greenlet
+	depends = python-monotonic
+	depends = scapy
+	provides = ethoscope
+	source = ethoscope-node::git+https://github.com/gilestrolab/ethoscope.git
+	md5sums = SKIP
+
+pkgname = ethoscope-node
+

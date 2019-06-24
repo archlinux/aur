@@ -1,0 +1,49 @@
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+# arg 1:  the new package version
+post_install() {
+    echo "changing the remote GIT source to local BARE created during installation"
+    cd /opt/ethoscope-node
+    git remote set-url origin /srv/git/ethoscope.git
+
+    #setting branch
+    git checkout python3.7
+    
+    echo "enabling NODE specific systemd service files"
+    systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service 
+    echo "enabling the GIT server on the node"
+    systemctl enable git-daemon.socket
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    echo "changing the remote GIT source to local BARE created during installation"
+    cd /opt/ethoscope-node
+    git remote set-url origin /srv/git/ethoscope.git
+
+    #setting branch
+    git checkout python3.7
+}
+
+# arg 1:  the old package version
+pre_remove() {
+    echo "disabling systemd service files"
+    systemctl disable ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service
+    systemctl disable git-daemon.socket
+
+}
+
+## arg 1:  the old package version
+#post_remove() {
+	# do something here
+#}
