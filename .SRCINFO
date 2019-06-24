@@ -1,6 +1,6 @@
 pkgbase = matrix-synapse-git
 	pkgdesc = Matrix reference homeserver
-	pkgver = 1.0.0.r26.g7e68691ce
+	pkgver = 1.0.0.r153.g28604ab03
 	pkgrel = 1
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
@@ -57,7 +57,7 @@ pkgbase = matrix-synapse-git
 	md5sums = SKIP
 	md5sums = 276a99050f40601089255ea168bb7620
 	md5sums = ecd9f66fb57fe1a2e1e2df07a460a35b
-	md5sums = 9c6b82545e5ca8ee36a9740bb706b67e
+	md5sums = 7e9d9982e9f1862857b57e652c605563
 
 pkgname = matrix-synapse-git
 
