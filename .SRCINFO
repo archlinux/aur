@@ -1,0 +1,17 @@
+pkgbase = python-ttrss-python-git
+	pkgdesc = A python library for the Tiny Tiny RSS web API
+	pkgver = 0.5.r8.g3d2d26d
+	pkgrel = 1
+	url = https://ttrss-python.readthedocs.io
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-requests
+	provides = ttrss-python
+	conflicts = ttrss-python
+	source = git+https://github.com/Vassius/ttrss-python.git
+	md5sums = SKIP
+
+pkgname = python-ttrss-python-git
+
