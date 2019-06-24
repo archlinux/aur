@@ -15,11 +15,11 @@ _jdk_update=202
 _jdk_build=1483.37
 pkgver=${_java_ver}.u${_jdk_update}.b${_jdk_build}
 _repo_ver=jb${_java_ver}u${_jdk_update}-b${_jdk_build}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/JetBrains/jdk8u'
 license=('custom')
-makedepends=('java-environment=8' 'cpio' 'unzip' 'zip'
+makedepends=('java-environment=8' 'cpio' 'unzip' 'zip' 'gcc8'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=https://github.com/JetBrains/jdk8u
 source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
@@ -78,7 +78,7 @@ build() {
   export DISABLE_HOTSPOT_OS_VERSION_CHECK=ok
 
   install -d -m 755 "${srcdir}/${_prefix}/"
-  sh configure \
+  CC=gcc-8 CXX=g++-8 sh configure \
     --prefix="${srcdir}/${_prefix}" \
     --with-update-version="${_jdk_update}" \
     --with-build-number="b${_jdk_build}" \
