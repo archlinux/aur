@@ -1,0 +1,18 @@
+pkgbase = wps-office-dictionary-pt_pt
+	pkgdesc = Portuguese dictionary for WPS Office
+	pkgver = 1
+	pkgrel = 1
+	url = http://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/
+	arch = any
+	groups = wps-office-dictionaries
+	license = GPL
+	license = LGPL
+	license = MPL
+	depends = wps-office
+	depends = hunspell-pt_pt
+	conflicts = wps-office-extension-portuguese-dictionary
+	source = dict.conf
+	sha256sums = ae3703630cde429ee8d7fadd0981a37b67c856bbb5847b98d2d6f6bfc4ddd213
+
+pkgname = wps-office-dictionary-pt_pt
+
