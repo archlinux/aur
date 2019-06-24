@@ -2,7 +2,7 @@
 
 pkgname=gr-rds-git
 _gitname=gr-rds
-pkgver=r220.201f32b
+pkgver=r278.f1c584a
 pkgrel=1
 pkgdesc="An FM-RDS Receiver for GNU Radio"
 arch=('i686' 'x86_64')
@@ -20,6 +20,7 @@ pkgver() {
 
 build() {
   cd ${srcdir}/${_gitname}/
+  git checkout maint-3.7
   mkdir -p build
   cd build/
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
