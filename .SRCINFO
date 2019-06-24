@@ -1,6 +1,6 @@
 pkgbase = powerpc64-linux-gnu-glibc
 	pkgdesc = GNU C Library (powerpc64-linux-gnu)
-	pkgver = 2.27
+	pkgver = 2.29
 	pkgrel = 1
 	url = http://www.gnu.org/software/libc/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = powerpc64-linux-gnu-glibc
 	makedepends = powerpc64-linux-gnu-gcc-stage2>=8.1.0-1
 	makedepends = gperf
 	depends = powerpc64-linux-gnu-linux-api-headers>=4.16.1-1
-	provides = powerpc64-linux-gnu-glibc-headers=2.27
+	provides = powerpc64-linux-gnu-glibc-headers=2.29
 	provides = powerpc64-linux-gnu-eglibc
 	conflicts = powerpc64-linux-gnu-glibc-headers
 	conflicts = powerpc64-linux-gnu-eglibc
@@ -17,13 +17,14 @@ pkgbase = powerpc64-linux-gnu-glibc
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.27.tar.xz
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.27.tar.xz.sig
-	source = bz20338.patch
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.29.tar.xz
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.29.tar.xz.sig
+	source = powerpc-hack.patch
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
-	md5sums = 898cd5656519ffbc3a03fe811dd89e82
-	md5sums = SKIP
-	md5sums = dc0d3ad59aeaaf591b085a77de6e03e9
+	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
+	sha256sums = f3eeb8d57e25ca9fc13c2af3dae97754f9f643bc69229546828e3a240e2af04b
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = powerpc64-linux-gnu-glibc
 
