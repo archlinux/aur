@@ -9,6 +9,7 @@ arch=('x86_64')
 license=('Apache')
 url='https://github.com/weaveworks/eksctl'
 depends=('kubectl')
+makedepends=('go')
 conflicts=('eksctl-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/weaveworks/eksctl/archive/$pkgver.tar.gz")
 sha256sums=('1eb06bab31118e52084fc148d9995af48b2558ff0ac854de2be0abb21835b695')

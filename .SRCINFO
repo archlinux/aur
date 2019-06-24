@@ -5,6 +5,7 @@ pkgbase = eksctl
 	url = https://github.com/weaveworks/eksctl
 	arch = x86_64
 	license = Apache
+	makedepends = go
 	depends = kubectl
 	conflicts = eksctl-bin
 	source = eksctl-0.1.38.tar.gz::https://github.com/weaveworks/eksctl/archive/0.1.38.tar.gz
