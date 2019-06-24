@@ -8,8 +8,8 @@
 
 _target="powerpc64-linux-gnu"
 pkgname=${_target}-binutils
-pkgver=2.30
-pkgrel=1
+pkgver=2.32
+pkgrel=2
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/binutils/'
@@ -17,16 +17,10 @@ license=(GPL)
 depends=(glibc zlib)
 checkdepends=(dejagnu bc)
 options=(staticlibs !distcc !ccache)
-source=(http://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig}
-        0001-PR22741-objcopy-segfault-on-fuzzed-COFF-object.patch
-        0002-PR22829-objcopy-strip-removes-PT_GNU_RELRO-from-lld-.patch
-        0003-PR22836-r-s-doesnt-work-with-g3-using-GCC-7.patch)
+source=(http://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
-md5sums=('ffc476dd46c96f932875d1b2e27e929f'
-         'SKIP'
-         '469164f3c93a0e92a697537b60c9806c'
-         '0c679b37e90fb23de60a4d28329b956a'
-         '53b5682e09c0a27e9994c3efdfe01d29')
+md5sums=('0d174cdaf85721c5723bf52355be41e6'
+         'SKIP')
 
 prepare() {
   mkdir -p binutils-build
@@ -36,15 +30,6 @@ prepare() {
 
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
-
-  # https://sourceware.org/bugzilla/show_bug.cgi?id=22741
-  patch -p1 -i "$srcdir/0001-PR22741-objcopy-segfault-on-fuzzed-COFF-object.patch"
-
-  # https://sourceware.org/bugzilla/show_bug.cgi?id=22829
-  patch -p1 -i "$srcdir/0002-PR22829-objcopy-strip-removes-PT_GNU_RELRO-from-lld-.patch"
-
-  # https://sourceware.org/bugzilla/show_bug.cgi?id=22836
-  patch -p1 -i "$srcdir/0003-PR22836-r-s-doesnt-work-with-g3-using-GCC-7.patch"
 }
 
 build() {
@@ -92,4 +77,6 @@ package() {
   # Remove unwanted files
   rm -rf "$pkgdir/usr/share"
   rm -f "$pkgdir/usr/bin/"{ar,as,ld,nm,objdump,ranlib,readelf,strip,objcopy}
+  rm -f "$pkgdir"/usr/lib/ldscripts/elf32*
+  rm -f "$pkgdir"/usr/lib/ldscripts/elf64l*
 }
