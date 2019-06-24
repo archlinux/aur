@@ -1,9 +1,11 @@
+# Maintainer: Andrew Sun <adsun701@gmail.com>
+
 pkgname=mingw-w64-gf2x
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for multiplying polynomials over the binary field (mingw-w64)"
 arch=('any')
-url="http://gforge.inria.fr/projects/gf2x/"
+url="https://gforge.inria.fr/projects/gf2x/"
 license=('GPL' 'LGPL')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')

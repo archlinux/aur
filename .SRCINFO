@@ -1,8 +1,8 @@
 pkgbase = mingw-w64-gf2x
 	pkgdesc = A library for multiplying polynomials over the binary field (mingw-w64)
 	pkgver = 1.2
-	pkgrel = 1
-	url = http://gforge.inria.fr/projects/gf2x/
+	pkgrel = 2
+	url = https://gforge.inria.fr/projects/gf2x/
 	arch = any
 	license = GPL
 	license = LGPL
