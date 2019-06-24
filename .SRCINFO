@@ -21,6 +21,7 @@ pkgbase = chromium-vaapi-bin
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	depends = libva
+	depends = pipewire
 	depends = icu
 	depends = libxml2
 	depends = fontconfig

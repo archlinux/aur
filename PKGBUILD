@@ -10,7 +10,7 @@ conflicts=('chromium' 'chromium-vaapi')
 
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
-         'desktop-file-utils' 'hicolor-icon-theme' 'libva')
+         'desktop-file-utils' 'hicolor-icon-theme' 'libva' 'pipewire')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
