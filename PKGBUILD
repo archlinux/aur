@@ -10,7 +10,8 @@ license=('custom')
 depends=('freetype2' 'glew' 'glm' 'glut' 'python-numpy' 'tcsh')
 makedepends=('desktop-file-utils' 'gendesk' 'libmmtf' 'msgpack-c' 'git')
 optdepends=('python-pmw: pmw based UI'
-            'python-pyqt5: Qt5 based UI')
+            'python-pyqt5: Qt5 based UI'
+			'freemol-svn: MPEG rendering')
 conflicts=('pymol')
 provides=('pymol')
 source=("git+https://github.com/schrodinger/pymol-open-source.git"
