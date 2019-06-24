@@ -1,8 +1,9 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
+# Contributor: Joey Dumont <joey.dumont@gmail.com>
 
 _target=mips64-elf
 pkgname=${_target}-newlib
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A C library intended for use on embedded systems (${_target})"
 arch=('any')
@@ -11,7 +12,7 @@ license=('BSD')
 makedepends=("${_target}-gcc-stage1")
 options=( '!strip' '!emptydirs')
 source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}.tar.gz")
-sha256sums=('c8566335ee74e5fcaeb8595b4ebd0400c4b043d6acb3263ecb1314f8f5501332')
+sha256sums=('fb4fa1cc21e9060719208300a61420e4089d6de6ef59cf533b57fe74801d102a')
 
 build()
 {
@@ -29,6 +30,7 @@ build()
     --disable-shared \
     --disable-threads \
     --disable-werror \
+    --enable-multilib
 
   make
 }
