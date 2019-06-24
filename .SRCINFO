@@ -1,0 +1,19 @@
+pkgbase = checkersland
+	pkgdesc = Сheckers program for playing with computer or people via the Internet
+	pkgver = 20190607
+	pkgrel = 1
+	url = http://checkersland.com/
+	install = checkersland.install
+	arch = x86_64
+	license = freeware
+	makedepends = gendesk
+	depends = java-runtime
+	source = http://checkersland.com/download/checkersland.jar
+	source = checkersland
+	source = checkersland.png
+	md5sums = 312ef7e667519732dcca5163cf308766
+	md5sums = 2c37881e0f34ed66bb4bf862116787c6
+	md5sums = 904461219a50a4fe6631dfe55731c2d9
+
+pkgname = checkersland
+
