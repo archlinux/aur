@@ -1,4 +1,6 @@
 # Maintainer: Henry78 <henry78@gmx.at>
+# Mainteiner: Donald Webster <fryfrog@gmail.com>
+
 pkgname=runrestic
 pkgver=0.3.2
 pkgrel=1
