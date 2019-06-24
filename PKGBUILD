@@ -1,4 +1,4 @@
-#Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
+# Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 # Contributor: Joey Dumont <joey.dumont@gmail.com>
 
 _target=mips64-elf
@@ -30,9 +30,9 @@ build() {
     --with-gnu-as \
     --with-gnu-ld \
     --enable-64-bit-bfd \
+    --enable-multilib \
     --enable-plugins \
     --disable-gold \
-    --enable-multilib \
     --disable-nls \
     --disable-shared \
     --disable-werror
