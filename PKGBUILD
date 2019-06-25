@@ -23,7 +23,7 @@ backup=()
 options=('!strip' 'staticlibs' '!emptydirs' '!buildflags')
 #source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-       "https://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+       "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
         bz90397.patch
         bz90949.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
@@ -31,7 +31,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
 sha256sums=('79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0'
             'SKIP'
-            '939f524d62ea7738c505aee4cb355107c57c3cc748fa90af2092cf9925687839'
+            'd18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859'
             'cc20d05bcc6cb35bf0944b391f0b0380af375f2a8a03ce1cd67835884bc41fac'
             'c860819e730faf1621e1286ebe3a0179df6e25182b81a9ca0a3db02633982a14')
 
