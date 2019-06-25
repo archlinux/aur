@@ -1,7 +1,7 @@
 pkgbase = bochs-sdl
 	pkgdesc = A portable x86 PC emulation software package, including GUI debugger, with sdl support
 	pkgver = 2.6.9
-	pkgrel = 3
+	pkgrel = 4
 	url = http://bochs.sourceforge.net/
 	arch = x86_64
 	license = LGPL

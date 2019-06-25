@@ -1,9 +1,9 @@
-# Maintainer: Phi11ipus <phi11ipus AT protonmail DOT com>
+# Maintainer: Phi11ipus <phi11ipus AT bensherman DOT io>
 # Modified from PKGBUILD in official repositories
 
 pkgname=bochs-sdl
 pkgver=2.6.9
-pkgrel=3
+pkgrel=4
 pkgdesc="A portable x86 PC emulation software package, including GUI debugger, with sdl support"
 arch=('x86_64')
 url="http://bochs.sourceforge.net/"
