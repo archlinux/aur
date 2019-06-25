@@ -1,6 +1,6 @@
 pkgbase = python-dask
 	pkgdesc = Minimal task scheduling abstraction
-	pkgver = 1.2.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/dask/dask
 	arch = any
@@ -12,7 +12,14 @@ pkgbase = python-dask
 	checkdepends = python-sparse
 	checkdepends = python-pytest
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pandas
+	depends = python-toolz
+	depends = python-cloudpickle
+	depends = python-partd>=0.3.8
+	depends = python-yaml
 	optdepends = python-bcolz
 	optdepends = python-bokeh
 	optdepends = python-cachey
@@ -26,25 +33,8 @@ pkgbase = python-dask
 	optdepends = python-s3fs: S3 support
 	optdepends = python-gcsfs: Google Cloud Storage fs support
 	optdepends = python-zarr
-	source = https://github.com/dask/dask/archive/1.2.2.tar.gz
-	sha256sums = cfc7ed33dbb1ea4fea57f2ac0c9152dbb776348a7adb957ab5afc4ee4aff1907
+	source = https://github.com/dask/dask/archive/2.0.0.tar.gz
+	sha256sums = 2cbbbf2b3c8dbd922b30df9eb19f8e420f839b3829ffa8978484160591b6c83c
 
 pkgname = python-dask
-	depends = python
-	depends = python-numpy
-	depends = python-scipy
-	depends = python-pandas
-	depends = python-toolz
-	depends = python-cloudpickle
-	depends = python-partd>=0.3.8
-	depends = python-yaml
-
-pkgname = python2-dask
-	depends = python2-numpy
-	depends = python2-scipy
-	depends = python2-pandas
-	depends = python2-toolz
-	depends = python2-cloudpickle
-	depends = python2-partd>=0.3.8
-	depends = python2-yaml
 
