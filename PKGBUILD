@@ -3,12 +3,12 @@
 
 pkgname='perl-pod-projectdocs'
 pkgver='0.52'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="generates CPAN like pod pages"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-accessor>=0' 'perl-class-data-inheritable>=0' 'perl-json>=2.04' 'perl-readonly>=0' 'perl-template-toolkit>=0' 'perl-uri>=0' 'perl-moose>=0')
+depends=('perl-class-accessor>=0' 'perl-class-data-inheritable>=0' 'perl-json>=2.04' 'perl-readonly>=0' 'perl-template-toolkit>=0' 'perl-uri>=0' 'perl-moose>=0' 'perl>=5.30')
 makedepends=()
 url='https://metacpan.org/release/Pod-ProjectDocs'
 source=("http://search.cpan.org/CPAN/authors/id/M/MG/MGRUNER/Pod-ProjectDocs-${pkgver}.tar.gz")
