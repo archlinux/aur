@@ -2,11 +2,11 @@
 
 pkgname='gnunet-webui-git'
 _appname='gnunet-webui'
-pkgver='r18.560b397'
+pkgver='r14.da35c82'
 pkgrel=1
-pkgdesc="Java-based Web interface for GNUnet"
+pkgdesc='Web user interface for GNUnet'
 arch=('any')
-url="https://gnunet.org/gnunetwebui"
+url="https://gnunet.org"
 license=('GPL')
 provides=("${_appname}")
 conflicts=("${_appname}")

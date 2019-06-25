@@ -1,8 +1,8 @@
 pkgbase = gnunet-webui-git
-	pkgdesc = Java-based Web interface for GNUnet
-	pkgver = r18.560b397
+	pkgdesc = Web user interface for GNUnet
+	pkgver = r14.da35c82
 	pkgrel = 1
-	url = https://gnunet.org/gnunetwebui
+	url = https://gnunet.org
 	install = gnunet-webui.install
 	arch = any
 	license = GPL
