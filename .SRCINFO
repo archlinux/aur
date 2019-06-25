@@ -1,0 +1,16 @@
+pkgbase = spike-git
+	pkgdesc = Spike, a RISC-V ISA Simulator
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/riscv/riscv-isa-sim
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = dtc
+	conflicts = fesvr
+	replaces = fesvr
+	source = git+https://github.com/riscv/riscv-isa-sim
+	md5sums = SKIP
+
+pkgname = spike-git
+
