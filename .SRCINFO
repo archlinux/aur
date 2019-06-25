@@ -1,0 +1,15 @@
+pkgbase = evdoublebind
+	pkgdesc = small evdev keyboard key macro binding and XKB generator for doublebindings
+	pkgver = r19.83b636f
+	pkgrel = 1
+	url = https://github.com/exrok/evdoublebind
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = libxkbcommon
+	source = git+https://github.com/exrok/evdoublebind.git
+	sha512sums = SKIP
+
+pkgname = evdoublebind
+
