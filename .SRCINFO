@@ -1,13 +1,14 @@
 pkgbase = borgmatic
-	pkgdesc = A wrapper script for Borg backup software that creates and prunes backups
+	pkgdesc = Simple, configuration-driven backup software for servers and workstations
 	pkgver = 1.3.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://torsion.org/borgmatic/
 	install = borgmatic.install
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = borg
+	depends = python-colorama
 	depends = python-pykwalify
 	depends = python-ruamel-yaml
 	source = borgmatic-1.3.11.tar.gz::https://projects.torsion.org/witten/borgmatic/archive/1.3.11.tar.gz
