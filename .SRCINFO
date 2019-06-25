@@ -1,6 +1,6 @@
 pkgbase = python-asciimatics
 	pkgdesc = A cross platform package to do curses-like operations, plus higher level APIs and widgets to create text UIs and ASCII art animations.
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://pypi.org/project/asciimatics
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-asciimatics
 	depends = python-future
 	depends = python-setuptools-scm
 	depends = python-pillow
-	source = https://files.pythonhosted.org/packages/source/a/asciimatics/asciimatics-1.10.0.tar.gz
-	md5sums = 361c578f57d1c92e40ba0a9cd6c63e55
+	source = https://files.pythonhosted.org/packages/source/a/asciimatics/asciimatics-1.11.0.tar.gz
+	md5sums = 9abc134166e6a83671b379dc03830a3f
 
 pkgname = python-asciimatics
 
