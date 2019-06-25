@@ -1,0 +1,162 @@
+From 24aae504e2833e46f3808f38cea60c5e3178e175 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Tue, 25 Jun 2019 22:31:39 +0200
+Subject: [PATCH 1/4] meson: Fix library version
+
+Setting soversion means the soname ends in '22.4.0' instead of the
+expected '22'. So we want the *soversion* to be '22' and the *version*
+to be '22.4.0'.
+
+We only need to set the version as meson can derive the soversion from
+it.
+---
+ gdata/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdata/meson.build b/gdata/meson.build
+index 87cb702a..d221800c 100644
+--- a/gdata/meson.build
++++ b/gdata/meson.build
+@@ -142,7 +142,7 @@ libgdata_lib = shared_library(
+   link_args: ldflags,
+   link_depends: symbol_map,
+   install: true,
+-  soversion: gdata_soversion,
++  version: gdata_soversion,
+   gnu_symbol_visibility: 'default',
+ )
+ 
+-- 
+2.21.0
+
+
+From af4195cda796dba6a9285e733c3e356cf6f7a21e Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Tue, 25 Jun 2019 22:31:40 +0200
+Subject: [PATCH 2/4] meson: Fix gettext build
+
+Set the proper package name for both the code and the MO files.
+---
+ meson.build    | 2 +-
+ po/meson.build | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 7d2f5254..a11c117b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -52,7 +52,7 @@ config_h.set_quoted('VERSION', gdata_version)
+ # Globally define _GNU_SOURCE and therefore enable the GNU extensions
+ config_h.set('_GNU_SOURCE', true)
+ 
+-config_h.set_quoted('GETTEXT_PACKAGE', 'intltest')
++config_h.set_quoted('GETTEXT_PACKAGE', 'gdata')
+ 
+ gnome = import('gnome')
+ pkgconfig = import('pkgconfig')
+diff --git a/po/meson.build b/po/meson.build
+index c5849b6d..082eb58f 100644
+--- a/po/meson.build
++++ b/po/meson.build
+@@ -1 +1 @@
+-i18n.gettext('libgdata', preset: 'glib')
++i18n.gettext('gdata', preset: 'glib')
+-- 
+2.21.0
+
+
+From be94375e0d164dcc2486e39e7acbace6df12965c Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Tue, 25 Jun 2019 22:31:40 +0200
+Subject: [PATCH 3/4] meson: Use set instead of set10
+
+The code uses #ifdef, which tests for definedness, not the define's
+value.
+---
+ meson.build | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index a11c117b..26ac64f8 100644
+--- a/meson.build
++++ b/meson.build
+@@ -93,7 +93,7 @@ libsoup_dep = dependency('libsoup-2.4', version: '>= 2.42.0')
+ gdata_deps += libsoup_dep
+ # libsoup 2.47.3 is needed for the new SoupServer API; but it contained a bug in
+ # soup_server_set_ssl_cert_file() which was only fixed in 2.55.90.
+-config_h.set10('HAVE_LIBSOUP_2_55_90', libsoup_dep.version().version_compare('>= 2.55.90'))
++config_h.set('HAVE_LIBSOUP_2_55_90', libsoup_dep.version().version_compare('>= 2.55.90'))
+ 
+ # Check for gtk
+ gtk_dep_req_version = '>= 2.91.2'
+@@ -116,7 +116,7 @@ if enable_goa
+   gdata_deps += goa_dep
+   gdata_private_deps += dependency('gcr-base-3')
+ endif
+-config_h.set10('HAVE_GOA', goa_dep.found())
++config_h.set('HAVE_GOA', goa_dep.found())
+ 
+ # Enable always building tests (default: yes) enable_always_build_tests = get_option('always_build_tests')
+ # Install test programs (default: no)
+@@ -127,7 +127,7 @@ if always_build_tests
+   libuhttpmock_dep = dependency('libuhttpmock-0.0', version: '>= 0.5.0')
+ 
+   gdk_pixbuf_dep = dependency('gdk-pixbuf-2.0', version: '>= 2.14')
+-  config_h.set10('HAVE_GDK_PIXBUF', gdk_pixbuf_dep.found())
++  config_h.set('HAVE_GDK_PIXBUF', gdk_pixbuf_dep.found())
+ endif
+ 
+ check_functions = [
+@@ -143,7 +143,7 @@ check_functions += [
+ ]
+ 
+ foreach func: check_functions
+-  config_h.set10('HAVE_' + func.to_upper(), cc.has_function(func))
++  config_h.set('HAVE_' + func.to_upper(), cc.has_function(func))
+ endforeach
+ 
+ check_headers = [
+-- 
+2.21.0
+
+
+From f3156178498beb6e64b001ed255b064c32682d39 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Tue, 25 Jun 2019 22:31:40 +0200
+Subject: [PATCH 4/4] meson: Fix handling of 'gnome' option
+
+HAVE_GNOME needs to be defined. Also move the gcr dep from the 'goa'
+option.
+---
+ meson.build | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 26ac64f8..9edfeca2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -105,7 +105,12 @@ gtk_dep = dependency(
+ )
+ 
+ # GNOME support, which pulls in gcr-base-3 to provide non-pageable memory
+-enable_gnome = get_option('gnome')
++gcr_dep = dependency('gcr-base-3', required: get_option('gnome'))
++enable_gnome = gcr_dep.found()
++if enable_gnome
++  gdata_private_deps += dependency('gcr-base-3')
++endif
++config_h.set('HAVE_GNOME', gcr_dep.found())
+ 
+ # Check for goa
+ # GNOME Online Accounts support -- only used if GNOME support is also enabled
+@@ -114,7 +119,6 @@ goa_dep = dependency('goa-1.0', version: '>= 3.8', required: get_option('goa'))
+ enable_goa = goa_dep.found()
+ if enable_goa
+   gdata_deps += goa_dep
+-  gdata_private_deps += dependency('gcr-base-3')
+ endif
+ config_h.set('HAVE_GOA', goa_dep.found())
+ 
+-- 
+2.21.0
+

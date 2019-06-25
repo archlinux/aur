@@ -2,17 +2,19 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=libgdata
-pkgver=0.17.9
+pkgver=0.17.10
 pkgrel=1
 pkgdesc="GLib-based library for accessing online service APIs using the GData protocol"
 url="https://wiki.gnome.org/Projects/libgdata"
-arch=('x86_64')
-license=('GPL')
-depends=('libsoup' 'liboauth' 'gcr' 'gnome-online-accounts')
-makedepends=('intltool' 'gobject-introspection' 'vala' 'uhttpmock' 'git' 'gtk-doc' 'autoconf-archive')
-_commit=60f2269178d7a6449e2ffdf7fdf82d96a5aff0d4  # tags/0.17.9^0
-source=("git+https://gitlab.gnome.org/GNOME/libgdata.git#commit=$_commit")
-sha256sums=('SKIP')
+arch=(x86_64)
+license=(GPL)
+depends=(libsoup liboauth gcr gnome-online-accounts)
+makedepends=(gobject-introspection vala uhttpmock git gtk-doc meson)
+_commit=f54d68f961015f85595b956ff0143a6ee0c41ff7  # tags/0.17.10^0
+source=("git+https://gitlab.gnome.org/GNOME/libgdata.git#commit=$_commit"
+        9.patch)
+sha256sums=('SKIP'
+            '1198980475de88a62d4868f89a5b5418dfa77befc40cf14716b240dd9685b61b')
 
 pkgver() {
   cd $pkgname
@@ -21,22 +23,22 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  NOCONFIGURE=1 ./autogen.sh
+
+  # https://gitlab.gnome.org/GNOME/libgdata/merge_requests/9
+  patch -Np1 -i ../9.patch
 }
 
 build() {
-  cd $pkgname
-  ./configure --prefix=/usr --disable-static --enable-gtk-doc
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  arch-meson $pkgname build -D installed_tests=false -D man=true
+  ninja -C build
 }
 
 check() {
-  cd $pkgname
-  make check
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
+
+# vim:set sw=2 et:
