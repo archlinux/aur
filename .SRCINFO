@@ -1,7 +1,7 @@
 pkgbase = ttf-webhostinghub-glyphs
 	pkgdesc = WebHostingHub Glyphs icon font by webhostinghub.com
 	pkgver = 1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.webhostinghub.com/glyphs/
 	arch = any
 	license = OFL
