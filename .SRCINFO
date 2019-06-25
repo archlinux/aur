@@ -1,7 +1,7 @@
 pkgbase = gosearch-git
-	pkgdesc = A fast, real-time file searching program for linux (Linux 5.1+)
+	pkgdesc = A fast, real-time file searching program for Linux 5.1+
 	pkgver = r51.10a3ea1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ozeidan/gosearch
 	install = gosearch.install
 	arch = x86_64
