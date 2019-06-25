@@ -1,0 +1,96 @@
+# Maintainer: Jiuyang Liu <liujiuyang1994@gmail.com>
+
+# Follow the upstream of https://github.com/sifive/freedom-tools/blob/master/Makefile
+
+_target=riscv-sifive-elf
+pkgname=$_target-gcc
+pkgver=9.1.0
+pkgrel=1
+pkgdesc='Cross compiler for 32-bit and 64-bit RISC-V'
+arch=('x86_64')
+url='https://gcc.gnu.org/'
+license=('GPL' 'LGPL' 'FDL')
+groups=('risc-v')
+depends=("$_target-binutils" "libmpc" "$_target-newlib")
+options=('!emptydirs' '!strip')
+makedepends=('python')
+source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz"
+        "0001-SiFive-CLIC-patches-for-preemptible-and-stack-swappi.patch"
+        "0002-Finish-CLIC-support-resolving-patch-merge-error-and-.patch"
+        "0003-RISC-V-Add-short-forward-branch-optimization-for-sif.patch"
+        "0004-Remove-libgloss.patch")
+md5sums=('6069ae3737cf02bf2cb44a391ef0e937'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
+
+prepare() {
+  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
+  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" \
+    "$srcdir/gcc-$pkgver/"{libiberty,gcc}/configure
+
+  rm -rf "$srcdir/gcc-build"
+  mkdir "$srcdir/gcc-build"
+  export GCC_MULTILIB="rv32e-ilp32e--c rv32em-ilp32e--c rv32eac-ilp32e-- rv32emac-ilp32e-- rv32i-ilp32--c rv32im-ilp32--c rv32iac-ilp32-- rv32imac-ilp32-- rv32imaf-ilp32f-- rv32imafc-ilp32f-rv32imafdc- rv32imafdc-ilp32d-- rv64imac-lp64-- rv64imafc-lp64f-rv64imafdc- rv64imafdc-lp64d--"
+  IFS=$' '
+  cd $srcdir/gcc-$pkgver/gcc/config/riscv/
+  ./multilib-generator $GCC_MULTILIB > t-elf-multilib
+  cd $srcdir/gcc-$pkgver
+  echo "patch unmerged work from SiFive."
+  patch --forward --strip=1 --input="${srcdir}/0001-SiFive-CLIC-patches-for-preemptible-and-stack-swappi.patch"
+  patch --forward --strip=1 --input="${srcdir}/0002-Finish-CLIC-support-resolving-patch-merge-error-and-.patch"
+  patch --forward --strip=1 --input="${srcdir}/0003-RISC-V-Add-short-forward-branch-optimization-for-sif.patch"
+  patch --forward --strip=1 --input="${srcdir}/0004-Remove-libgloss.patch"
+}
+
+build() {
+  cd gcc-build
+
+  # TODO: nano gcc variant
+  "$srcdir/gcc-$pkgver/configure" \
+    --disable-libgomp \
+    --disable-libmudflap \
+    --disable-libquadmath \
+    --disable-libssp \
+    --disable-nls \
+    --disable-shared \
+    --disable-threads \
+    --enable-checking=yes \
+    --enable-languages=c,c++ \
+    --enable-multilib \
+    --enable-tls \
+    --libexecdir=/usr/lib \
+    --prefix=/usr \
+    --target=$_target \
+    --with-abi="ilp32" \
+    --with-arch="rv32imac" \
+    --with-native-system-header-dir=/include \
+    --with-newlib \
+    --with-pkgversion='Arch Repository' \
+    --with-python-dir=share/gcc-riscv-sifive-elf \
+    --with-sysroot=/usr/$_target \
+    --with-system-zlib \
+    CFLAGS="-O2" \
+    CXXFLAGS="-O2" \
+    CFLAGS_FOR_TARGET="-Os -mcmodel=medany" \
+    CXXFLAGS_FOR_TARGET="-Os -mcmodel=medany"
+  make INHIBIT_LIBC_CFLAGS='-DUSE_TM_CLONE_REGISTRY=0'
+}
+
+package() {
+  make -C gcc-build DESTDIR="$pkgdir" install-gcc install-target-libgcc
+
+  # Strip target binaries
+  find "$pkgdir/usr/lib/gcc/$_target/" -type f \
+    -and \( -name \*.a -or -name \*.o \) -exec $_target-objcopy \
+    -R .comment -R .note -R .debug_info -R .debug_aranges -R .debug_pubnames \
+    -R .debug_pubtypes -R .debug_abbrev -R .debug_line -R .debug_str \
+    -R .debug_ranges -R .debug_loc '{}' \;
+
+  # Strip host binaries
+  find "$pkgdir/usr/bin/" "$pkgdir/usr/lib/gcc/$_target/" -type f \
+    -and \( -executable \) -exec strip '{}' \;
+  # Remove files that conflict with host gcc package
+  rm -r "$pkgdir/usr/share/"{man/man7,info}
+}
