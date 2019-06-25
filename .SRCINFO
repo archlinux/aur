@@ -1,6 +1,6 @@
 pkgbase = electronmail-bin
 	pkgdesc = Unofficial desktop app for several E2E encrypted email providers
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/vladimiry/ElectronMail
 	install = electronmail-bin.install
@@ -25,9 +25,9 @@ pkgbase = electronmail-bin
 	depends = gnome-keyring
 	provides = electronmail
 	conflicts = electronmail
-	source = https://github.com/vladimiry/ElectronMail/releases/download/v3.5.0/electron-mail-3.5.0-linux-x64.pacman
+	source = https://github.com/vladimiry/ElectronMail/releases/download/v3.6.0/electron-mail-3.6.0-linux-x64.pacman
 	source = LICENSE
-	md5sums = 9f07e72ea66aa8b905929a30d377ac14
+	md5sums = 52dc4e36a8312fc82efcb2f6d59f28d3
 	md5sums = fc680045f40b19ce3c3e771aeb08bbd3
 
 pkgname = electronmail-bin
