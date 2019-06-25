@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Python library for the BME680 gas, temperature, humidity, and pressure sensor."
 arch=('any')
 # pimoroni bme680 python source code url
-url="https://github.com/DreamingRaven/bme680-python"
+url="https://github.com/pimoroni/${_pkgsrcname}"
 # set what branch you would like to pull from
 _branch="master"
 license=('MIT') # MIT is a special case store a copy in /usr/share/pkgname
@@ -22,7 +22,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${_pkgsrcname}::git+https://github.com/pimoroni/${_pkgsrcname}#branch=${_branch}")
+source=("${_pkgsrcname}::git+${url}#branch=${_branch}")
 noextract=()
 md5sums=('SKIP')
 
