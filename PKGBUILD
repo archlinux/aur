@@ -4,14 +4,14 @@
 # Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost
-pkgver=5.11.1
+pkgver=5.12.0
 pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://mattermost.com'
 license=('AGPL' 'Apache')
 
-makedepends=('git' 'go-pie' 'libpng' 'npm' 'python2' 'curl' 'wget')
+makedepends=('git' 'go-pie' 'libpng' 'npm' 'python2' 'curl')
 # Experiencing issues with gifsicle and mozjpeg on non x64 architectures.
 if [ "$CARCH" != 'x86_64' ]; then
     makedepends+=('gifsicle' 'mozjpeg')
@@ -25,14 +25,12 @@ backup=("etc/webapps/${pkgname}/config.json")
 source=(
     ${pkgname}-server-${pkgver}.tar.gz::"https://github.com/${pkgname}/${pkgname}-server/archive/v${pkgver}.tar.gz"
     ${pkgname}-webapp-${pkgver}.tar.gz::"https://github.com/${pkgname}/${pkgname}-webapp/archive/v${pkgver}.tar.gz"
-    "mattermost-ldflags.patch"
     "${pkgname}.service"
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
 )
-sha512sums=('1c6b515e63b336f53b8c3f119eb13bb60f2e63b082eef40b29d3b70750f35f605e1790ba49b5f618551b3cfe68fc4fe14454ae099ca35bdc271c7bb5307b37c3'
-            '55daa6de32d6f04dbc5b2e5e944474649181827ecb592fefec4ad5f6dd98955f6643d6ffcc08170b25487becee38399cb998b34d40fb9d3d73b5c1d36ee9fae0'
-            'ac952eae873aa09ba7bdf1e7abc618f0dc6982fa85df298261ab71ccf71f66c95846dade400e05d731f2c5ee2c6f4332d6f78d737026c9f098f1e03f419bee00'
+sha512sums=('d5682e375744ef0f6c61bbcd89e880d9e7757c3aa15141e56eea180d820c3e2a961d291ec7a2ea3df9cf34934efaeaba550ea1b3caf14e69eaebf14dcacf2fea'
+            'eed102df35d8e825e352decf7606beb3e2d3d3437b1598216f7637c56f9c14c35e958609b34929c369628ee3c1fa0559d1153642fcb858983f50e91b70cea005'
             '6fc1b41f1ddcc44dab3e1f6bc15b7566e7c33132346b7eb0bc91d9709b4cec89ae969a57a57b6097c75868af21f438c2affda5ba1507f485c8689ab8004efd70'
             'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
             'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9')
@@ -63,10 +61,6 @@ prepare() {
     ln -s "${srcdir}"/${pkgname}-server ${pkgname}-server
     ln -s "${srcdir}"/${pkgname}-webapp ${pkgname}-webapp
     cd ${pkgname}-server
-
-    # Pass Arch Linux's Go compilation flags to Mattermost in order to take
-    # into account advanced features like PIE.
-    patch < "${srcdir}"/mattermost-ldflags.patch
 
     # We are not using docker, no need to stop it.
     sed -r -i Makefile \
@@ -103,8 +97,7 @@ prepare() {
     # Enforce build hash to Arch Linux (Enterprise hash is already set to
     # none), instead of the official git hash value.
     sed -r -i Makefile \
-        -e "s/^(\s*)BUILD_HASH(_ENTERPRISE)? =.*/\1BUILD_HASH\2 = ${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)/" \
-        -e 's/-X (.*)(\$\(BUILD_HASH(_ENTERPRISE)?\))(.*)/-X '\''\1\2'\''\4/'
+        -e "s/^(\s*)BUILD_HASH(_ENTERPRISE)? =.*/\1BUILD_HASH\2 = ${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)/"
     cd "${srcdir}/${pkgname}-webapp"
     sed -r -i webpack.config.js \
         -e "s/^(\s*)COMMIT_HASH:(.*),$/\1COMMIT_HASH: JSON.stringify\(\"${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)\"\),/"
@@ -125,6 +118,9 @@ build() {
     # step via its build-client make instruction.
 
     cd "${srcdir}"/src/github.com/${pkgname}/${pkgname}-server
+
+    export LDFLAGS='-linkmode external -extldflags -s -w'
+
     # Prevent the build to crash when some dependencies are not met or
     # outdated. This clean the webapp as well (cf. mattermost-server/Makefile,
     # clean target).
