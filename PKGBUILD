@@ -5,7 +5,7 @@
 
 pkgname='borgmatic'
 pkgver=1.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, configuration-driven backup software for servers and workstations'
 arch=('any')
 url='https://torsion.org/borgmatic/'
