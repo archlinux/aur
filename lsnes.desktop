@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=lsnes
+Comment=SNES and Game Boy emulator with re-recording
+Exec=lsnes
+Categories=Game;Emulator;

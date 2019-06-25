@@ -1,0 +1,22 @@
+pkgbase = lsnes-git
+	pkgdesc = SNES and Game Boy emulator with re-recording (TAS) support
+	pkgver = 2.beta24.r3.88160be5
+	pkgrel = 1
+	url = http://tasvideos.org/Lsnes.html
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = git
+	depends = boost-libs
+	depends = curl
+	depends = ffmpeg
+	depends = lua
+	depends = portaudio
+	depends = wxgtk2
+	source = git+https://repo.or.cz/lsnes.git
+	source = lsnes.desktop
+	sha512sums = SKIP
+	sha512sums = e11ce8bdd4c1a200a5320625c3f496a9cc81094b95d97246b95fd063562df4f2f15a914f05e53e239c0bf9f57495129cfad5286119918f3681d27263fd342c76
+
+pkgname = lsnes-git
+
