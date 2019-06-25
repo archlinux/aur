@@ -17,6 +17,10 @@ sha1sums_x86_64=('c5740e8a36169c2210fe94185d0b8db8cb757ffb')
 package() {
   cd "${srcdir}"
 
+  # Script modifies the running user's files; let's delete that code
+  # without changing the line numbers
+  sed 's,^.*~/.local/share/applications.*$,,' -i "${_basename}".sh
+
   install -dm755 "${pkgdir}"/opt/"${pkgname}"
   sh "${_basename}".sh \
     --skip-license \
