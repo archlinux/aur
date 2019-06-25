@@ -1,0 +1,17 @@
+pkgbase = manjaro-icewm-settings-minimal
+	pkgdesc = Manjaro Linux icewm settings (minimal)
+	pkgver = 20190625
+	pkgrel = 1
+	url = https://github.com/colin969/manjaro-icewm-settings-minimal
+	arch = any
+	groups = icewm-manjaro
+	license = GPL
+	makedepends = git
+	depends = icewm
+	depends = manjaro-base-skel
+	depends = nerd-fonts-terminus
+	source = git+https://github.com/colin969/manjaro-icewm-settings-minimal.git
+	sha256sums = SKIP
+
+pkgname = manjaro-icewm-settings-minimal
+
