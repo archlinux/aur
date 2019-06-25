@@ -6,8 +6,8 @@
 _pkgname=Minecraft-Overviewer
 pkgname=(${_pkgname,,}{,-docs}-git)
 pkgver=0.14.0.r3.4b84780
-pkgrel=1
-pkgdesc="Render large resolution images of a Minecraft map with a Google Maps powered interface"
+pkgrel=2
+pkgdesc="Render large resolution images of a Minecraft map with a web UI"
 arch=('x86_64' 'i686')
 url="https://github.com/overviewer/${_pkgname}"
 license=('GPL3')

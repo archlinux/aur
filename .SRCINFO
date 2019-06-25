@@ -1,7 +1,7 @@
 pkgbase = minecraft-overviewer-git
-	pkgdesc = Render large resolution images of a Minecraft map with a Google Maps powered interface
+	pkgdesc = Render large resolution images of a Minecraft map with a web UI
 	pkgver = 0.14.0.r3.4b84780
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/overviewer/Minecraft-Overviewer
 	arch = x86_64
 	arch = i686
