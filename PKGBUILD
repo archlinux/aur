@@ -1,20 +1,21 @@
-# Maintainer: Mauricio López Coria <mauricio dot pronet at gmail dot com>
+# Maintainer: Aloxaf <aloxafx at gmail dot com>
+# Contributor: Mauricio López Coria <mauricio dot pronet at gmail dot com>
 # Contributor: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=peazip-gtk2-portable
-pkgver=6.7.0
+pkgver=6.8.1
 pkgrel=1
 pkgdesc="Natively compiled 64-bit GTK2 archiver utility, portable version with no dependencies"
 arch=(x86_64)
 url=http://www.peazip.org/peazip-linux-64.html
 license=(LGPL3)
-depends=(gtk2)
+depends=('gtk2' 'lib32-gcc-libs')
 provides=('peazip')
 conflicts=('peazip-gtk2' 'peazip-qt')
 options=('!strip')
 install=peazip.install
 source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip_portable-$pkgver.LINUX.x86_64.GTK2.tar.gz")
-sha256sums=('a99e31e4411bec1468faed08072765cdcd6bb017f6aea9374028772ab342bef4')
+sha256sums=('a1879be7dc187dacd54f62b784a51441d3b0f13d57cec03920f155f8d7bb7e08')
 
 package() {
   _srcpea="$srcdir/peazip_portable-$pkgver.LINUX.x86_64.GTK2"
@@ -32,11 +33,17 @@ package() {
     _octal=$(stat -c "%a" "$_file")
     install -Dm"${_octal}" "$_file" "$_pkgres/$_file"
   done
+
+  # set default language
+  # lang=chs
+  # _octal=$(stat -c "%a" "lang/$lang.txt")
+  # install -Dm"${_octal}" "lang/$lang.txt" "$_pkgres/lang/default.txt"
+
   cd "$srcdir"
 
   install -d "$pkgdir/usr/bin/"
-  for _file in ${pkgdir}/opt/${pkgname}/{peazip,res/pea,res/pealauncher}; do
-    ln -sf "$_file" "$pkgdir/usr/bin/$(basename "$_file")"
+  for _file in {peazip,res/pea}; do
+    ln -sf "/opt/${pkgname}/$_file" "$pkgdir/usr/bin/$(basename "$_file")"
   done
 
   desktop-file-install -m 755 "$srcdir/peazip.desktop" --dir "$pkgdir/usr/share/applications/"

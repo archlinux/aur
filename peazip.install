@@ -18,7 +18,6 @@ post_install() {
     note "Creating Symlinks in /usr/bin"
     ln -sf /opt/peazip-gtk2-portable/peazip /usr/bin/peazip
     ln -sf /opt/peazip-gtk2-portable/res/pea /usr/bin/pea
-    ln -sf /opt/peazip-gtk2-portable/res/pealauncher /usr/bin/pealauncher
     note "Updating desktop MIME database"
     update-desktop-database -q
 }
@@ -34,7 +33,6 @@ post_remove() {
     note "Removing old links and folders"
     rm -f /usr/bin/peazip
     rm -f /usr/bin/pea
-    rm -f /usr/bin/pealauncher
     rm -rdf /opt/peazip-gtk2-portable
     note "Updating desktop MIME database"
     update-desktop-database -q
