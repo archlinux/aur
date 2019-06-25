@@ -1,0 +1,18 @@
+pkgbase = gnunet-groupchat-git
+	pkgdesc = A simple client-server chat system, using GNUnet and CADET
+	pkgver = r25.811ca95
+	pkgrel = 1
+	url = http://gnunet.org
+	install = gnunet-groupchat.install
+	arch = any
+	license = GPL
+	makedepends = nim
+	makedepends = nimble
+	depends = gnunet
+	provides = gnunet-groupchat
+	conflicts = gnunet-groupchat
+	source = git+https://gnunet.org/git/groupchat.git
+	md5sums = SKIP
+
+pkgname = gnunet-groupchat-git
+

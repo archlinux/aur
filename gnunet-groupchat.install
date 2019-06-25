@@ -1,0 +1,24 @@
+post_install() {
+
+	echo
+	echo 'How to run GNUnet Groupchat'
+	echo '==========================='
+	echo
+	echo 'Server'
+	echo '------'
+	echo '`./groupchat --config:<PATH-TO-GNUNET-CONFIG> --port:<SHARED-SECRET-STRING>`'
+	echo
+	echo 'EXAMPLE:'
+	echo '`./groupchat --config:~/.config/gnunet.conf --port:welcome`'
+	echo
+	echo '(Server will need to share its Peer-ID with clients. You can find your Peer-ID by running `gnunet-peerinfo -s`)'
+	echo
+	echo 'Client'
+	echo '------'
+	echo '`./groupchat --config:<PATH-TO-GNUNET-CONFIG> --server:<SERVER'\''S-PEER-ID> --port:<SHARED-SECRET-STRING>`'
+	echo
+	echo 'EXAMPLE:'
+	echo '`./groupchat --config:~/.config/gnunet.conf --server:P4T5GHS1PCZ06R82D3KW8Z8J1113BQZWAWGYHTZ8G1ZXMWXQGAVG --port:welcome`'
+	echo
+
+}
