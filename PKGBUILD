@@ -11,8 +11,8 @@ depends=('fontconfig')
 makedepends=('fontforge')
 source=('https://www.webhostinghub.com/glyphs/resources/whhg-font.zip'
         'rename.pe')
-md5sums=('09993f3df25fa9edfca8b856b23c1425'
-         '7bc7028a94156a621b151a0bedfc1eb1')
+sha256sums=('c299b4c0fc02a2cc4b8efe8ddeb5cc9d13fcd5f86bcb83d4ff35326a82f9db97'
+            'e26a38873f73098c1c51420bcffc064c78d7f63fe2f0b009be4aea91ac7c3dab')
 
 package() {
   install -d $pkgdir/usr/share/fonts/TTF/
