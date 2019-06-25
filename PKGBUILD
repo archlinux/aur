@@ -11,6 +11,7 @@ url="http://www.lihaoyi.com/mill/index.html"
 license=('MIT')
 makedepends=('mill' 'scala')
 depends=('bash' 'java-environment')
+replaces=('mill')
 source=("git+https://github.com/lihaoyi/mill.git")
 md5sums=('SKIP')
 
