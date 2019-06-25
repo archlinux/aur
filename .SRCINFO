@@ -1,7 +1,7 @@
 pkgbase = axmud
 	pkgdesc = GTK3 Multi-User Dungeon (MUD) client
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://axmud.sourceforge.io/
 	arch = any
 	license = GPL3
@@ -24,6 +24,7 @@ pkgbase = axmud
 	depends = perl-x11-wmctrl
 	optdepends = sox
 	optdepends = timidity++
+	options = !emptydirs
 	source = axmud-1.2.0.tar.gz::https://downloads.sourceforge.net/project/axmud/Axmud-1.2.0/Games-Axmud-1.2.0.tar.gz
 	source = axmud.desktop
 	sha256sums = bc0f7cece3c28f9b5dc79b2c9bb1fcb5377962331c1320c6f12e5c5b43a85da9
