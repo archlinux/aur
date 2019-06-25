@@ -1,14 +1,13 @@
 # Maintainer: Juan Simón <play4pro@protonmail.com>
 
 pkgname=gosearch-git
-pkgver=r49.f8254a3
-pkgrel=2
-pkgdesc="A fast, real-time file searching program for linux"
+pkgver=r51.10a3ea1
+pkgrel=1
+pkgdesc="A fast, real-time file searching program for linux (Linux 5.1+)"
 url="https://github.com/ozeidan/gosearch"
 arch=('x86_64')
 license=('GPL3')
 makedepends=(go-pie git)
-depends=('linux>=5.1')
 provides=("${pkgname%-git}")
 conflicts=("${provides[@]}")
 source=("${pkgname}::git+${url}")
