@@ -3,11 +3,11 @@
 pkgname=perl-x11-wmctrl
 _relpkg=X11-WMCtrl
 pkgver=0.03
-pkgrel=1
+pkgrel=2
 conflicts=('')
 replaces=('')
 pkgdesc="Perl wrapper for the wmctrl program"
-depends=('perl')
+depends=('perl' 'wmctrl')
 license=('GPL' 'PerlArtistic')
 url="https://metacpan.org/pod/X11::WMCtrl"
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/G/GB/GBROWN/$_relpkg-$pkgver.tar.gz")
