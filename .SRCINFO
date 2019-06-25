@@ -1,6 +1,6 @@
 pkgbase = python-gpflow
 	pkgdesc = Gaussian process methods in tensorflow
-	pkgver = 1.3.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/GPflow/GPflow
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-gpflow
 	depends = python-pandas
 	depends = python-scipy
 	depends = python-multipledispatch
-	source = https://github.com/GPflow/GPflow/archive/v1.3.0.tar.gz
-	sha256sums = c3603a93de848107cbc8ef1b8e768a6ea181da37eda5ffc0f69079dbd1021ed9
+	source = https://github.com/GPflow/GPflow/archive/v1.4.1.tar.gz
+	sha256sums = 07e7f96d663aa3ad380c49a0964c1764e0e6969564d52a47077e83604d92af91
 
 pkgname = python-gpflow
 
