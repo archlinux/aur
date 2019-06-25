@@ -1,0 +1,15 @@
+pkgbase = gnunet-secushare-git
+	pkgdesc = Experimental code for SecuShare (PSYC on top of GNUnet's cryptographic routing)
+	pkgver = r5.245de27
+	pkgrel = 1
+	url = http://gnunet.org
+	arch = any
+	license = GPL
+	depends = gnunet
+	provides = gnunet-secushare
+	conflicts = gnunet-secushare
+	source = git+https://gnunet.org/git/gnunet-secushare.git
+	md5sums = SKIP
+
+pkgname = gnunet-secushare-git
+
