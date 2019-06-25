@@ -1,0 +1,15 @@
+pkgbase = kwin-scripts-window-colors
+	pkgdesc = KWin script that sends to Latte, window color schemes
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/psifidotos/kwinscript-window-colors
+	arch = any
+	license = GPL2
+	depends = kwin
+	provides = kwin-scripts-window-colors
+	conflicts = kwin-scripts-window-colors-git
+	source = kwin-scripts-window-colors-0.2.src.tar.gz::https://github.com/psifidotos/kwinscript-window-colors/archive/v0.2.tar.gz
+	sha256sums = 76af7dcfb7dda669dff22ccb3c252b4e760caa95c4728cfcc9bfb0bb0e6ceb5c
+
+pkgname = kwin-scripts-window-colors
+
