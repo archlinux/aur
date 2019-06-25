@@ -1,0 +1,12 @@
+pkgbase = netmask
+	pkgdesc = The swiss army knife of addressing
+	pkgver = 2.4
+	pkgrel = 1
+	url = http://trap.mtview.ca.us/~talby/
+	arch = x86_64
+	license = GPL2
+	source = http://trap.mtview.ca.us/~talby/netmask_2.4.tar.gz
+	sha256sums = 316b1169614303a692074d5a7e59c3e4e208bbec1cb961c47b13018b9008d34e
+
+pkgname = netmask
+
