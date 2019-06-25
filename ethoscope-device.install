@@ -16,8 +16,73 @@ post_install() {
     echo "ETHOSCOPE_000" > /etc/machine-name
     echo "ETHOSCOPE_000" > /etc/hostname
     
+    #create a default wlan0 file
+    echo 'Description=ethoscope_wifi network' > /etc/netctl/wlan0
+    echo 'Interface=wlan0' >> /etc/netctl/wlan0
+    echo 'Connection=wireless' >> /etc/netctl/wlan0
+    echo 'Security=wpa' >> /etc/netctl/wlan0
+    echo 'IP=dhcp' >> /etc/netctl/wlan0
+    echo 'TimeoutDHCP=60' >> /etc/netctl/wlan0
+    echo "ESSID=ETHOSCOPE_WIFI" >> /etc/netctl/wlan0
+    echo "Key=ETHOSCOPE_1234" >> /etc/netctl/wlan0
+    
+    #creates a default eth0 file
+    echo 'Description=eth0 Network' > /etc/netctl/eth0
+    echo 'Interface=eth0' >> /etc/netctl/eth0
+    echo 'Connection=ethernet' >> /etc/netctl/eth0
+    echo 'IP=dhcp' >> /etc/netctl/eth0
+    
+    #use netctl instead of netword
+    systemctl disable systemd-networkd
+    ip link set eth0 down
+    
+    #setting up wifi
+    netctl-auto enable wlan0
+    netctl-auto start wlan0
+    systemctl enable netctl-auto@wlan0.service
+    systemctl start netctl-auto@wlan0.service
+    systemctl enable netctl-ifplugd@wlan0.service
+    systemctl start netctl-ifplugd@wlan0.service
+    netctl enable eth0
+    netctl start eth0
+    systemctl enable netctl@eth0.service
+    systemctl start netctl@eth0.service
+    systemctl enable netctl-ifplugd@eth0.service
+    systemctl start netctl-ifplugd@eth0.service
+    #device service
+    
+    #configure the NTP file
+    echo 'server node' > /etc/ntp.conf
+    echo 'server 127.127.1.0' >> /etc/ntp.conf
+    echo 'fudge 127.127.1.0 stratum 10' >> /etc/ntp.conf
+    echo 'restrict default kod limited nomodify nopeer noquery notrap' >> /etc/ntp.conf
+    echo 'restrict 127.0.0.1' >> /etc/ntp.conf
+    echo 'restrict ::1' >> /etc/ntp.conf
+    echo 'driftfile /var/lib/ntp/ntp.drift' >> /etc/ntp.conf
+    
     echo "enabling DEVICE specific systemd service files"
-    systemctl enable ethoscope_device.service ethoscope_update.service
+    systemctl enable ethoscope_device.service ethoscope_update.service 
+    systemctl enable ntpd.service mysqld.service fake-hwclock fake-hwclock-save.timer sshd.service
+    
+    #mysql stuff
+    mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+    systemctl enable mysqld.service
+    mysql -u root -e "CREATE USER 'ethoscope'@'localhost' IDENTIFIED BY 'ethoscope'"
+    mysql -u root -e "CREATE USER 'ethoscope'@'%' IDENTIFIED BY 'ethoscope'"
+    mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'ethoscope'@'localhost' WITH GRANT OPTION";
+    mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'ethoscope'@'%' WITH GRANT OPTION";
+    
+    #install picamera settings
+    echo 'start_file=start_x.elf' > /boot/config.txt
+    echo 'fixup_file=fixup_x.dat' >> /boot/config.txt
+    echo 'disable_camera_led=1' >> /boot/config.txt
+    echo 'gpu_mem=256' >> /boot/config.txt
+    echo 'cma_lwm=' >> /boot/config.txt
+    echo 'cma_hwm=' >> /boot/config.txt
+    echo 'cma_offline_start=' >> /boot/config.txt
+    echo 'Loading bcm2835 module'
+    echo "bcm2835-v4l2" > /etc/modules-load.d/picamera.conf
+    
     
     echo "Please reboot the PI now."
     
