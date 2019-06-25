@@ -1,15 +1,13 @@
 pkgbase = ttf-webhostinghub-glyphs
 	pkgdesc = WebHostingHub Glyphs icon font by webhostinghub.com
 	pkgver = 1.0
-	pkgrel = 3
-	url = http://www.webhostinghub.com/glyphs/
-	install = ttf-webhostinghub-glyphs.install
+	pkgrel = 4
+	url = https://www.webhostinghub.com/glyphs/
 	arch = any
 	license = OFL
 	makedepends = fontforge
 	depends = fontconfig
-	depends = xorg-font-utils
-	source = http://www.webhostinghub.com/glyphs/resources/whhg-font.zip
+	source = https://www.webhostinghub.com/glyphs/resources/whhg-font.zip
 	md5sums = 09993f3df25fa9edfca8b856b23c1425
 
 pkgname = ttf-webhostinghub-glyphs
