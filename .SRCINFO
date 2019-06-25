@@ -1,0 +1,18 @@
+pkgbase = zr-git
+	pkgdesc = quick, simple zsh package manager
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/jedahan/zr
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MPL-2.0
+	makedepends = rust
+	makedepends = cargo
+	depends = git
+	source = git+https://github.com/jedahan/zr.git
+	md5sums = SKIP
+
+pkgname = zr-git
+
