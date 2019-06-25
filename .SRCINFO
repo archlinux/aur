@@ -7,12 +7,9 @@ pkgbase = gitzone
 	license = AGPL3
 	depends = perl
 	depends = bind
-	depends = zsh
 	backup = etc/gitzone.conf
 	source = gitzone-1.1::https://github.com/dyne/gitzone/archive/v1.1.tar.gz
-	source = posix.patch
 	sha256sums = 446599b3d1cc305be3e160dc39211e4ef35d30f0c8fcf0780cb9e21e652a6c20
-	sha256sums = 2997b6870db95c882129c0c6fb49c8b908b6f5ca1a2d30677b49d92b53f7dd25
 
 pkgname = gitzone
 
