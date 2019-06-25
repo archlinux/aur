@@ -1,4 +1,4 @@
-# Maintainer: lod
+# Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=lib32-amdvlk
 pkgver=2019.Q2.5
@@ -16,7 +16,7 @@ license=('MIT')
 depends=('vulkan-icd-loader')
 provides=('lib32-amdvlk' 'lib32-vulkan-driver')
 conflicts=('lib32-vulkan-amdvlk' 'lib32-amdvlk' 'lib32-amdvlk-git')
-makedepends=('cmake' 'dri2proto' 'gcc' 'gcc-libs' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-libxml2' 'libxrandr' 'python' 'wayland' 'xorg-server-devel' 'ninja')
+makedepends=('cmake' 'dri2proto' 'gcc' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-libxml2' 'libxrandr' 'python' 'wayland' 'xorg-server-devel' 'ninja')
 
 source=(https://github.com/GPUOpen-Drivers/AMDVLK/archive/v-${pkgver}.tar.gz
         https://github.com/GPUOpen-Drivers/llpc/archive/${_llpc_commit}.tar.gz
@@ -48,7 +48,7 @@ build() {
   cd xgl
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
  
- cmake -H. -Bbuilds/Release \
+  cmake -H. -Bbuilds/Release \
     -DCMAKE_C_FLAGS=-m32 \
     -DCMAKE_CXX_FLAGS=-m32 \
     -DCMAKE_BUILD_TYPE=Release \
@@ -57,8 +57,7 @@ build() {
     -DBUILD_WAYLAND_SUPPORT=On \
     -G Ninja
     
-  cd builds/Release
-  ninja
+  ninja -C builds/Release
 }
 
 package() {
