@@ -1,6 +1,6 @@
 pkgbase = python-pytest-csv
 	pkgdesc = CSV output for pytest.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/nicoulaj/pytest-csv
 	arch = x86_64
@@ -9,10 +9,8 @@ pkgbase = python-pytest-csv
 	makedepends = python2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/p/pytest-csv/pytest-csv-2.0.1.tar.gz
-	md5sums = 5209dec4ab71fdd94ab99eb27ae53698
-	sha256sums = fdc8c669ef8b6225e93836b03d9955c28f4b401da323073f446500847adc31b0
-	sha512sums = 33ef73e685af34373876516c64afe533008cc7497f63d8a6a4db82081d3fba2831ab84ea38614660d39091ecfa17c99c10e17bcff56dd92a3cb1161d722f5bbd
+	source = https://files.pythonhosted.org/packages/source/p/pytest-csv/pytest-csv-2.0.2.tar.gz
+	sha512sums = 5157c7a6b7cb22ff781002f0e1065222fbd4345d3f6fe24abea5059059d3559e3488e023047538d4cc49dbe3a7bf2f2fc543d4626e927bbcb35d841dac04abbe
 
 pkgname = python-pytest-csv
 
