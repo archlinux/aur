@@ -1,30 +1,29 @@
 # Maintainer: Jeremy Asuncion <jeremyasuncion808@gmail.com>
-
+  
 pkgname='refind-theme-regular-git'
-pkgver='r26.3e2f6ac'
+pkgver=r42.7a282d0
 pkgrel=1
 pkgdesc="A simplistic clean and minimal theme for rEFInd"
 arch=('any')
-url="https://github.com/munlik/refind-theme-regular"
+url="https://github.com/bobafetthotmail/refind-theme-regular"
 license=('AGPL3' 'custom:OFL' 'custom:Ubuntu Font License 1.0')
 depends=('refind-efi')
 makedepends=('git')
-source=('git+https://github.com/munlik/refind-theme-regular')
+source=('git+https://github.com/bobafetthotmail/refind-theme-regular')
 md5sums=('SKIP')
 
-_name=${pkgname%-git}
-
 pkgver() {
-  cd "${srcdir}/${_name}"
+  cd "${pkgname%-git}"
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  local refind_home="${pkgdir}/boot/EFI/refind"
+   # Specify path to the refind directory
+  _refind_home="$pkgdir/boot/EFI/refind"
 
-  mkdir -p "${refind_home}"
-  cp -r "${srcdir}/${_name}" "${refind_home}"
-  chmod -R 644 "${refind_home}/${_name}"
+  install -D "$srcdir/${pkgname%-git}/theme.conf" "$_refind_home/${pkgname%-git}/theme.conf"
+  cp -r "$srcdir/${pkgname%-git}/fonts" "$_refind_home/${pkgname%-git}"
+  cp -r "$srcdir/${pkgname%-git}/icons" "$_refind_home/${pkgname%-git}"
 
-  echo 'Remember to add "include refind-theme-regular/theme.conf" to your refind.conf file'
+  warning 'To enable the theme add "include refind-theme-regular/theme.conf" at the end of refind.conf, and comment out or delete any other themes you might have installed.'
 }
