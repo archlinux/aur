@@ -1,5 +1,5 @@
 pkgname=icglue
-pkgver=3.0
+pkgver=3.2
 pkgrel=1
 pkgdesc="a Tcl-Library for scripted HDL generation"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ depends=('glib2' 'tcl' 'pkg-config')
 makedepends=('make' 'gcc' 'inkscape')
 optdepends=('nagelfar: for vim syntastics functionality')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/icglue/${pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=('40bdc362e29dd79e45d0eb02cc73f72e')
+md5sums=('b279a901bfa5ca62e9d620bf9e4b7ed7')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
