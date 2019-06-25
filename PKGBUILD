@@ -39,7 +39,6 @@ build() {
         --enable-avx \
         --enable-long-phy-address \
         --enable-disasm \
-        --enable-pcidev \
         --enable-usb \
         --enable-debugger \
         --with-sdl
