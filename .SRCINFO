@@ -1,6 +1,7 @@
 pkgbase = minecraft-overviewer
+	pkgdesc = Render large resolution images of a Minecraft map with a web UI
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/overviewer/Minecraft-Overviewer
 	arch = x86_64
 	license = GPL3
