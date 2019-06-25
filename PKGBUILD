@@ -8,7 +8,7 @@ pkgdesc='a curses-based mastodon client modeled off usenet news readers & pine, 
 arch=('any')
 url="https://github.com/enkiv2/fern"
 license=('BSD3')
-depends=('python-mastodon')
+depends=('python2-mastodon')
 makedepends=('git')
 provides=("$_gitname")
 source=("$_gitname::git+https://github.com/enkiv2/fern.git#branch=master")
