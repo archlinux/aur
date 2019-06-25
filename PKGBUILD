@@ -1,0 +1,68 @@
+# Maintainer: Jiuyang Liu <liujiuyang1994@gmail.com>
+
+# Follow the upstream of https://github.com/sifive/freedom-tools/blob/master/Makefile
+
+_target=riscv-sifive-elf
+pkgname=$_target-newlib
+pkgver=3.1.0
+pkgrel=1
+pkgdesc='A C standard library implementation intended for use on embedded systems (RISC-V bare metal)'
+arch=(x86_64)
+url='https://sourceware.org/newlib/'
+license=(BSD)
+makedepends=($_target-gcc-stage1)
+options=(!emptydirs !strip)
+source=("http://sourceware.org/pub/newlib/newlib-$pkgver.tar.gz")
+md5sums=('f84263b7d524df92a9c9fb30b79e0134')
+
+prepare() {
+  rm -rf $srcdir/build-{newlib,newlib-nano}
+  mkdir $srcdir/build-{newlib,newlib-nano}
+}
+
+build() {
+  cd $srcdir/build-newlib
+  ../newlib-$pkgver/configure \
+    --target=$_target \
+    --prefix=/usr \
+    --enable-newlib-io-c99-formats \
+    --enable-newlib-io-long-double \
+    --enable-newlib-io-long-long \
+    CFLAGS_FOR_TARGET="-Os -mcmodel=medany" \
+    CXXFLAGS_FOR_TARGET="-Os -mcmodel=medany"
+  make
+
+  cd $srcdir/build-newlib-nano
+  ../newlib-$pkgver/configure \
+    --target=$_target \
+    --prefix=/usr \
+    --disable-newlib-fseek-optimization \
+    --disable-newlib-fvwrite-in-streamio \
+    --disable-newlib-supplied-syscalls \
+    --disable-newlib-unbuf-stream-opt \
+    --disable-newlib-wide-orient \
+    --disable-nls \
+    --enable-lite-exit \
+    --enable-newlib-global-atexit \
+    --enable-newlib-nano-formatted-io \
+    --enable-newlib-nano-malloc \
+    --enable-newlib-reent-small \
+    --enable-newlib-register-fini \
+    CFLAGS_FOR_TARGET="-Os -ffunction-sections -fdata-sections -mcmodel=medany" \
+    CXXFLAGS_FOR_TARGET="-Os -ffunction-sections -fdata-sections -mcmodel=medany"
+  make
+}
+
+package() {
+  cd "$srcdir"/build-newlib-nano
+  make DESTDIR="$pkgdir" install
+  find "$pkgdir" -regex ".*/lib\(c\|g\|rdimon\)\.a" -exec rename .a _nano.a '{}' \;
+  install -d "$pkgdir"/usr/$_target/include/newlib-nano
+  install -m644 -t "$pkgdir"/usr/$_target/include/newlib-nano "$pkgdir"/usr/$_target/include/newlib.h
+
+  cd "$srcdir"/build-newlib
+  make DESTDIR="$pkgdir" install
+  find "$pkgdir"/usr/$_target/lib \( -name "*.a" -or -name "*.o" \) -exec $_target-objcopy -R .comment -R .note -R .debug_info -R .debug_aranges -R .debug_pubnames -R .debug_pubtypes -R .debug_abbrev -R .debug_line -R .debug_str -R .debug_ranges -R .debug_loc '{}' \;
+  install -d "$pkgdir"/usr/share/licenses/$pkgname/
+  install -m644 -t "$pkgdir"/usr/share/licenses/$pkgname/ "$srcdir"/newlib-$pkgver/COPYING*
+}

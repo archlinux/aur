@@ -1,0 +1,15 @@
+pkgbase = riscv-sifive-elf-newlib
+	pkgdesc = A C standard library implementation intended for use on embedded systems (RISC-V bare metal)
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://sourceware.org/newlib/
+	arch = x86_64
+	license = BSD
+	makedepends = riscv-sifive-elf-gcc-stage1
+	options = !emptydirs
+	options = !strip
+	source = http://sourceware.org/pub/newlib/newlib-3.1.0.tar.gz
+	md5sums = f84263b7d524df92a9c9fb30b79e0134
+
+pkgname = riscv-sifive-elf-newlib
+
