@@ -1,6 +1,6 @@
 pkgbase = eclipse-platform
 	pkgdesc = A minimal installation suitable for complete per-user customization with the built-in Eclipse package manager
-	pkgver = 4.11
+	pkgver = 4.12
 	pkgrel = 1
 	url = https://www.eclipse.org
 	arch = x86_64
@@ -8,15 +8,15 @@ pkgbase = eclipse-platform
 	depends = java-environment>=8
 	depends = unzip
 	depends = webkit2gtk
-	provides = eclipse=4.11
+	provides = eclipse=4.12
 	conflicts = eclipse
 	options = !strip
-	source = http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.11-201903070500/eclipse-platform-4.11-linux-gtk-x86_64.tar.gz&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.12-201906051800/eclipse-platform-4.12-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.sh
 	source = eclipse.desktop
-	sha512sums = 64e2f05bf6fe5267022292c099d8ec5bdb66ee4f8a6575dbf21fcba5e29450ebf8ccec269bdbacbf465cfcc8488724aa56c11d3fc994af49c9b933379bc2a586
+	sha512sums = d5045fd13d73b163faa379804a0f6edd213b4ff7934702ab1213f2212f0d01ea5b2cf85dfc26e363449fb5073dddcae4e55d97ddc31e2cef39861bc4254d1f31
 	sha512sums = 71393b01c2774654e1b3348ceedd6b110c7f1b26da93da40dac653ce2103a34997ec0e9e7fd4e977d869c149d19ef39f59738717cc6762e39b0bc0e7d53df4ac
-	sha512sums = 108dc86934db22a9bfddae8087f8bca9a9b8add3863bc43fefe1224bc790ab2a2c13224c61f373a8a5a34ca0b6f01a9f0c50c220c5f099eccde78d3a945db434
+	sha512sums = 71b047a89f984d858506386d159673e229f06c8c9ac970f085fbefde0996ed9d2569b1f74f4d897571115692649d22f2a9a2f8c475a98f355eaea42b5ec6c74a
 
 pkgname = eclipse-platform
 
