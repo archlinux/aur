@@ -1,0 +1,21 @@
+pkgbase = riscv-sifive-elf-gdb
+	pkgdesc = The GNU Debugger for the RISC-V (bare-metal) target
+	pkgver = 8.3
+	pkgrel = 1
+	url = http://www.gnu.org/software/gdb/
+	arch = x86_64
+	license = GPL3
+	depends = xz
+	depends = ncurses
+	depends = expat
+	depends = python
+	depends = guile2.0
+	depends = gdb-common
+	depends = mpfr
+	optdepends = stlink: for debugging over STLINK
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/gdb/gdb-8.3.tar.xz
+	md5sums = bbd95b2f9b34621ad7a19a3965476314
+
+pkgname = riscv-sifive-elf-gdb
+

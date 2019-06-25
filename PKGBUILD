@@ -1,0 +1,59 @@
+# Maintainer: Jiuyang Liu <liujiuyang1994@gmail.com>
+
+# Follow the upstream of https://github.com/sifive/freedom-tools/blob/master/Makefile
+
+_target=riscv-sifive-elf
+pkgname=$_target-gdb
+pkgver=8.3
+pkgrel=1
+pkgdesc='The GNU Debugger for the RISC-V (bare-metal) target'
+arch=(x86_64)
+url='http://www.gnu.org/software/gdb/'
+license=(GPL3)
+depends=(xz ncurses expat python guile2.0 gdb-common mpfr)
+optdepends=('stlink: for debugging over STLINK')
+options=(!emptydirs)
+source=("https://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz")
+md5sums=('bbd95b2f9b34621ad7a19a3965476314')
+
+
+prepare() {
+  cd gdb-$pkgver
+  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+}
+
+build() {
+  cd gdb-$pkgver
+
+  ./configure \
+    --disable-binutils \
+    --disable-gas \
+    --disable-gold \
+    --disable-gprof \
+    --disable-ld \
+    --disable-werror \
+    --enable-gdb \
+    --prefix=/usr \
+    --target=$_target \
+    --with-expat=yes \
+    --with-gmp=no \
+    --with-mpc=no \
+    --with-mpfr=no \
+    --with-python=no \
+    CFLAGS="-O2" \
+    CXXFLAGS="-O2"
+
+  make
+}
+
+package() {
+  cd gdb-$pkgver
+
+  make -C gdb DESTDIR=$pkgdir install
+
+  # Following files conflict with 'gdb'/'gdb-common' packages
+  rm -r $pkgdir/usr/include/gdb/
+  rm -r $pkgdir/usr/share/gdb/
+  rm -r $pkgdir/usr/share/info/
+  rm -r $pkgdir/usr/share/man/man5/
+}
