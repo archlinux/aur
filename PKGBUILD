@@ -2,7 +2,7 @@
 pkgname=netmask
 pkgver=2.4
 pkgrel=1
-pkgdesc="The swiss army knife of addressing"
+pkgdesc="The swiss army knife of addressing."
 arch=('x86_64')
 url="http://trap.mtview.ca.us/~talby/"
 license=('GPL2')
@@ -19,12 +19,12 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  
+
   make -k check
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  
+
   make DESTDIR="$pkgdir/" install
 }
