@@ -16,6 +16,11 @@ post_install() {
     systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service 
     echo "enabling the GIT server on the node"
     systemctl enable git-daemon.socket
+
+    #changing hostname on node
+    echo "node" > /etc/hostname
+
+    #PLEASE REBOOT NOW.
 }
 
 ## arg 1:  the new package version
