@@ -1,5 +1,5 @@
 pkgname="google-keep-nativefier"
-pkgver="0.2"
+pkgver="0.3"
 pkgrel="1"
 pkgdesc="Quickly capture what's on your mind and get a reminder later at the right place or time. Speak a voice memo on the go and have it automatically transcribed."
 arch=("x86_64")
