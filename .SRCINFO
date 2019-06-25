@@ -1,0 +1,29 @@
+pkgbase = xtensa-esp32-elf-gcc-bin
+	pkgdesc = ESP32 Toolchain
+	pkgver = 8.2.0_esp32_2019r1
+	pkgrel = 1
+	url = https://esp-idf.readthedocs.io/en/latest/get-started/linux-setup.html
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = glibc
+	depends = gcc
+	depends = git
+	depends = make
+	depends = ncurses
+	depends = flex
+	depends = bison
+	depends = gperf
+	depends = python2-pyserial
+	depends = python2-cryptography
+	depends = python2-future
+	depends = python2-pyparsing
+	depends = python2-pyelftools
+	conflicts = gcc-xtensa-esp32-elf-bin
+	options = !strip
+	options = staticlibs
+	source = https://dl.espressif.com/dl/xtensa-esp32-elf-gcc8_2_0-esp32-2019r1-linux-amd64.tar.gz
+	sha256sums = 39db59b13f25e83e53c55f56979dbfce77b7f23126ad79de833509ad902d3f0a
+
+pkgname = xtensa-esp32-elf-gcc-bin
+
