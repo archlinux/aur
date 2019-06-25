@@ -1,7 +1,7 @@
 pkgbase = qsyncthingtray-lite
 	pkgdesc = tray app for syncthing - without the default embedded web interface
 	pkgver = 0.5.8.r17.g11936bc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sieren/QSyncthingTray
 	arch = i686
 	arch = x86_64
