@@ -2,7 +2,7 @@
 
 pkgname=gitzone
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 url=https://github.com/dyne/gitzone
 pkgdesc='git-based zone management tool for static and dynamic domains'
 arch=('any')

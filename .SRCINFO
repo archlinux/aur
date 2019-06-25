@@ -1,7 +1,7 @@
 pkgbase = gitzone
 	pkgdesc = git-based zone management tool for static and dynamic domains
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dyne/gitzone
 	arch = any
 	license = AGPL3
