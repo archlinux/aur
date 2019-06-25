@@ -3,9 +3,9 @@
 # Contributor: Eric Le Bras <eric.lebras@gmail.com>
 
 pkgname=impro-visor
-pkgver=10.1
-_ver_src=1010 # FFS!
-_ver_bin=10_1 # FFS!!
+pkgver=10.2
+_ver_src=1020 # FFS!
+_ver_bin=10_2 # FFS!!
 pkgrel=1
 pkgdesc="Jazz Improvisation Advisor for the Improviser"
 arch=('any')
@@ -20,8 +20,8 @@ source=("https://downloads.sourceforge.net/impro-visor/Impro-Visor%20${pkgver}%2
 		"directories.patch")
 noextract=("improvisor${_ver_src}-src.zip")
 OPTIONS=(!strip)
-sha1sums=('36219ad87b42b58eb35124f158212bd9c9b5e7ae'
-          'aa7f607ac3765ce4f23f6f8ced5a9ef6bcfe7b1f'
+sha1sums=('4583b47ef7048c226eb7c249e2d73c1457a8b11c'
+          'b3c0d23ad8245a11aab7ccd88888fc01d9402a72'
           '69bbb3475ad3da37266b7e9dd4a6485b233054f2'
           '416b29ae38cb3f8d4589a0ab506c5b52063dae35'
           'e4922056ccb13ac9dad09a8e6c3b9cf228f5238c')
