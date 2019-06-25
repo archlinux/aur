@@ -2,15 +2,15 @@
 
 pkgbase='ivre'
 pkgname=('ivre' 'ivre-web' 'ivre-docs' 'python-ivre' 'python2-ivre')
-pkgver=0.9.12
-pkgrel=6
+pkgver=0.9.13
+pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
 url='https://ivre.rocks/'
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cea-sec/$pkgname/v$pkgver/pkg/apache/ivre.conf")
-sha256sums=('e0d9df1d61d8483ed266738b70c33366b8860d0cc4a864d04924f91ab8abc4ca'
+sha256sums=('056388ea0b6da1205ec531f9689043b91449d5b18a658345389de6e30d34f8f7'
             '1befe4daf20ccdf1b1906de244df2de5519843210e95491f3d8fe62ec660848c')
 
 prepare() {
