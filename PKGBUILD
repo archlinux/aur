@@ -5,31 +5,30 @@
 pkgname=cydia-impactor
 _pkgname=Impactor
 pkgver=0.9.52
-pkgrel=1
+pkgrel=2
 pkgdesc='A GUI tool for working with mobile devices'
 arch=('i686' 'x86_64')
 url='http://www.cydiaimpactor.com'
 license=('unknown')
-depends=('fontconfig' 'gtk2' 'libsm' 'libudev0-shim' 'ncurses5-compat-libs')
-makedepends=('gendesk')
-source=('http://www.cydiaimpactor.com/logo.png')
-source_i686=("https://cache.saurik.com/impactor/l32/Impactor32_$pkgver.tgz")
-source_x86_64=("https://cache.saurik.com/impactor/l64/Impactor64_$pkgver.tgz")
-sha256sums=('3585f8a8f8b9b5104e1bd5b95f3b3604da33f9659085be310af18d70d6f0a84f')
+depends=('atk' 'cairo' 'fontconfig' 'freetype2' 'gdk-pixbuf2' 'gtk2' 'libsm' 'libudev0-shim' 'libx11' 'ncurses5-compat-libs' 'pango')
+makedepends=('gendesk' 'libicns' 'p7zip')
+source=("https://cache.saurik.com/impactor/mac/${_pkgname}_$pkgver.dmg")
+source_i686=("https://cache.saurik.com/impactor/l32/${_pkgname}32_$pkgver.tgz")
+source_x86_64=("https://cache.saurik.com/impactor/l64/${_pkgname}64_$pkgver.tgz")
+sha256sums=('9db548074424473c5804d1118d27cd4f052db8b53b3e7c3261c1a903f521cbf1')
 sha256sums_i686=('135218c123214a419b0a18dcae84ec1eeb47fa90515c509ad68aa6ec1091449f')
 sha256sums_x86_64=('23b758162a34c6160021e6f82193df76bfbcc09f9476e492b76b130bb4e9e323')
 
-prepare() {
-  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name 'Cydia Impactor' --exec $_pkgname --categories 'Utility;'
+build() {
+  gendesk -f -n --pkgname $_pkgname --pkgdesc "$pkgdesc" --name 'Cydia Impactor' --categories 'Utility'
+  7z e -y ${_pkgname}_$pkgver.dmg $_pkgname/$_pkgname.app/Contents/Resources/$_pkgname.icns || true
+  icns2png -x -d 32 -s 1024 $_pkgname.icns
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  install -m755 $_pkgname "$pkgdir/usr/bin"
-  install -m644 $_pkgname.{dat,pem} "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/lib"
-  install -m755 $_pkgname.so "$pkgdir/usr/lib"
-
-  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 logo.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm755 -t "$pkgdir/usr/bin" $_pkgname
+  install -Dm644 -t "$pkgdir/usr/bin" $_pkgname.{dat,pem}
+  install -Dm755 -t "$pkgdir/usr/lib" $_pkgname.so
+  install -Dm644 -t "$pkgdir/usr/share/applications" "$_pkgname.desktop"
+  install -Dm644 ${_pkgname}_1024x1024x32.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
