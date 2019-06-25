@@ -1,6 +1,6 @@
 pkgbase = linux-clear-lts2017
-	pkgver = 4.14.129
-	pkgrel = 2
+	pkgver = 4.14.130
+	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-lts2017
 	arch = x86_64
 	license = GPL2
@@ -14,7 +14,7 @@ pkgbase = linux-clear-lts2017
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.14.129.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.14.130.xz
 	source = linux-clear-lts2017::git+https://github.com/clearlinux-pkgs/linux-lts2017.git#tag=4.14.129-46
 	source = intel-ucode-20190618.tar.gz::https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-20190618.tar.gz
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
@@ -26,7 +26,7 @@ pkgbase = linux-clear-lts2017
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
 	sha256sums = SKIP
-	sha256sums = 7f64e22f9db25c555ef38be0be3fbec4d35482dd80dff96f274a2994d32aec44
+	sha256sums = 0d1af619766f80a8869274937d6a03769512db148f79ead72f6ef8ebc1682f8f
 	sha256sums = SKIP
 	sha256sums = 74ec7415988d40fa53686d994cf8cb27accdbd35c5373c4c3afc2e93372ebba5
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
