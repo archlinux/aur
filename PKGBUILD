@@ -1,8 +1,8 @@
 # Maintainer: Tobias Borgert <tobias.borgert@gmail.com>
 
 pkgname=ecal-shecal
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="shell for eCAL"
 arch=('x86_64')
 url="https://github.com/Blutkoete/shecal"
@@ -11,7 +11,7 @@ depends=('ecal')
 makedepends=('boost' 'cmake')
 optdepends=()
 source=(https://github.com/Blutkoete/shecal/archive/v$pkgver.tar.gz)
-sha256sums=('1b083491aec3b9345c1d4d698a528400cfda9f49d5253e6e8674a5ce598ede27')
+sha256sums=('9d40daf0bc86fa9746cb2e591f1be62cca5bd356ea7423f0a869a0222ca92e95')
 
 build() {
 	cd shecal-$pkgver
