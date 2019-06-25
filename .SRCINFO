@@ -1,0 +1,17 @@
+pkgbase = riscv-sifive-elf-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the RISC-V (bare-metal) target
+	pkgver = 2.32
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils/
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.32.tar.xz
+	source = 0001-Add-support-for-SiFive-CLIC-CSRs.patch
+	source = 0002-RISC-V-Compress-3-operand-beq-bne-against-x0.patch
+	md5sums = 0d174cdaf85721c5723bf52355be41e6
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = riscv-sifive-elf-binutils
+

@@ -1,0 +1,70 @@
+# Maintainer: Jiuyang Liu <liujiuyang1994@gmail.com>
+
+# Follow the upstream of https://github.com/sifive/freedom-tools/blob/master/Makefile
+
+_target=riscv-sifive-elf
+pkgname=$_target-binutils
+pkgver=2.32
+pkgrel=1
+pkgdesc='A set of programs to assemble and manipulate binary and object files for the RISC-V (bare-metal) target'
+arch=(x86_64)
+url='http://www.gnu.org/software/binutils/'
+license=(GPL)
+depends=(zlib)
+source=("https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz"
+        "0001-Add-support-for-SiFive-CLIC-CSRs.patch"
+        "0002-RISC-V-Compress-3-operand-beq-bne-against-x0.patch")
+md5sums=('0d174cdaf85721c5723bf52355be41e6'
+         'SKIP'
+         'SKIP')
+
+prepare() {
+  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
+  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" \
+    "$srcdir/binutils-$pkgver/libiberty/configure"
+  cd $srcdir/binutils-$pkgver
+  echo "patch unmerged work from SiFive."
+  patch --forward --strip=1 --input="${srcdir}/0001-Add-support-for-SiFive-CLIC-CSRs.patch"
+  patch --forward --strip=1 --input="${srcdir}/0002-RISC-V-Compress-3-operand-beq-bne-against-x0.patch"
+}
+
+build() {
+  cd binutils-$pkgver
+
+  unset CPPFLAGS
+
+  ./configure \
+    --disable-gdb \
+    --disable-libdecnumber \
+    --disable-libreadline \
+    --disable-sim \
+    --disable-werror \
+    --prefix=/usr \
+    --target=$_target \
+    --with-expat=yes \
+    --with-gmp=no \
+    --with-mpc=no \
+    --with-mpfr=no \
+    --with-python=no \
+    --with-sysroot=/usr/$_target \
+    CFLAGS="-O2" \
+    CXXFLAGS="-O2"
+
+  make
+}
+
+check() {
+  # unset LDFLAGS as testsuite makes assumptions about which ones are active
+  # do not abort on errors - manually check log files
+  make -C "binutils-$pkgver" LDFLAGS="" -k check
+}
+
+package() {
+  make -C "binutils-$pkgver" DESTDIR="$pkgdir" install
+
+  # Remove file conflicting with host binutils and manpages for MS Windows tools
+  #rm "$pkgdir"/usr/share/man/man1/arm-none-eabi-{dlltool,windres,windmc}*
+
+  # Remove info documents that conflict with host version
+  rm -r "$pkgdir/usr/share/"{info,locale}
+}
