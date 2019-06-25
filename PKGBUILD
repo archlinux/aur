@@ -17,7 +17,7 @@ build() {
     nativefier "https://keep.google.com/" \
       --icon "${pkgname}.png" \
       --maximize \
-      --internal-urls ".*" \
+      --internal-urls "(accounts|calendar)\.google" \
       --name "Google Keep"
 }
 
