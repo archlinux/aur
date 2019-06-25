@@ -1,6 +1,6 @@
 pkgbase = randomx-git
 	pkgdesc = RandomX: The proof of work algorithm based on random code execution
-	pkgver = r267.37e9e77
+	pkgver = r289.1f62d78
 	pkgrel = 1
 	url = https://github.com/tevador/RandomX
 	arch = x86_64
