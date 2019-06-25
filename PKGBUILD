@@ -3,7 +3,7 @@
 pkgname=python2-gsutil
 _pkgname=${pkgname#python2-}
 pkgver=4.39
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool for interacting with cloud storage services.'
 arch=('any')
 url="https://cloud.google.com/storage/docs/$_pkgname"

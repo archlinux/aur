@@ -1,14 +1,14 @@
 pkgbase = python2-gsutil
 	pkgdesc = A command line tool for interacting with cloud storage services.
-	pkgver = 4.29
-	pkgrel = 1
+	pkgver = 4.39
+	pkgrel = 2
 	url = https://cloud.google.com/storage/docs/gsutil
 	arch = any
 	license = Apache
 	makedepends = python2-setuptools
 	depends = python2
-	source = https://files.pythonhosted.org/packages/source/g/gsutil/gsutil-4.29.tar.gz
-	md5sums = 6f798dc01cd5c058f20dfa1cb1aaa81c
+	source = https://files.pythonhosted.org/packages/source/g/gsutil/gsutil-4.39.tar.gz
+	md5sums = 565f4eac3c71095fe612252e304fb0ff
 
 pkgname = python2-gsutil
 
