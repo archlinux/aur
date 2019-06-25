@@ -3,8 +3,7 @@
 
 _target=arm-none-eabi
 pkgname=$_target-newlib-linaro-git
-pkgver=3.0.0.18387.a9cfb33b6
-_pkgver=20180831
+pkgver=3.1.0
 pkgrel=1
 _libname=newlib
 _upstream_ver=snapshot-$pkgver
@@ -12,20 +11,13 @@ pkgdesc='A C standard library implementation intended for use on embedded system
 arch=(any)
 url='http://www.sourceware.org/newlib/'
 license=(BSD)
-makedepends=($_target-gcc 'cloog-git')
+makedepends=($_target-gcc 'cloog')
 options=(!emptydirs !strip)
 provides=($_target-newlib)
-source=("git+http://git.linaro.org/toolchain/newlib.git#tag=newlib-snapshot-$_pkgver")
+conflicts=('arm-none-eabi-newlib-linaro')
+source=("git+http://git.linaro.org/toolchain/newlib.git#tag=newlib-$pkgver")
 sha1sums=('SKIP')
 
-
-pkgver() {
-  cd "$srcdir/${_libname}"
-  printf "%s.%s.%s" \
-    "$(git tag -l|grep -P '.+\..+\.\d+'|sed -r 's|v?([0-9\.]+)(-.+)?|\1|g'|sort -V -r|head -n1)" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)" |cut -d "-" -f2 
-}
 
 build() {
 
@@ -38,6 +30,9 @@ build() {
     --disable-nls \
     --enable-newlib-io-long-long \
     --enable-newlib-register-fini \
+    --enable-lto \
+    --enable-gold=yes \
+    --enable-ld=yes \
     --enable-newlib-reent-small           \
     --disable-newlib-fvwrite-in-streamio  \
     --disable-newlib-fseek-optimization   \
@@ -49,6 +44,12 @@ build() {
     --enable-newlib-nano-formatted-io
   make
 }
+
+check() {
+  cd "$srcdir/${_libname}/"
+  make -j5 check
+}
+
 
 package() {
   cd "$srcdir/${_libname}/"
