@@ -6,11 +6,11 @@
 pkgname='borgmatic'
 pkgver=1.3.11
 pkgrel=1
-pkgdesc='A wrapper script for Borg backup software that creates and prunes backups'
+pkgdesc='Simple, configuration-driven backup software for servers and workstations'
 arch=('any')
 url='https://torsion.org/borgmatic/'
 license=('GPL3')
-depends=('borg' 'python-pykwalify' 'python-ruamel-yaml')
+depends=('borg' 'python-colorama' 'python-pykwalify' 'python-ruamel-yaml')
 makedepends=('python-setuptools')
 install="${pkgname}.install"
 source=(
