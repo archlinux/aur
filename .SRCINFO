@@ -1,6 +1,6 @@
 pkgbase = megasync
 	pkgdesc = Easy automated syncing between your computers and your MEGA cloud drive
-	pkgver = 4.1.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/meganz/MEGAsync
 	arch = i686
@@ -22,8 +22,8 @@ pkgbase = megasync
 	depends = qt5-base
 	depends = ffmpeg
 	optdepends = sni-qt: fix systray issue on KDE and LXQt
-	source = git+https://github.com/meganz/MEGAsync.git#tag=v4.1.1.0_Linux
-	source = meganz-sdk::git+https://github.com/meganz/sdk.git#commit=30853f9834a147e7e67011ab91e78674a7963add
+	source = git+https://github.com/meganz/MEGAsync.git#tag=v4.2.0_ArchLinux
+	source = meganz-sdk::git+https://github.com/meganz/sdk.git#commit=8fa7940db5d4cd6d36f52f340961018a846a8544
 	sha256sums = SKIP
 	sha256sums = SKIP
 
