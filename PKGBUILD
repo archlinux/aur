@@ -8,7 +8,6 @@ _llpc_commit=ddb909580e9996356c3bbe23bc1b14c44987eb4c
 _xgl_commit=96d84068b622b2c3ce8cf9aa8ff597260aa5ad3f
 _pal_commit=135258ac31901e1293fea5e2f599659ee438ba1f
 _llvm_commit=b9910c8bfcccc63c07c959963fa567120d11f024
-_spvgen_commit=64013f150c2d41965a3d36fa159b55fba52b727a
 
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -23,15 +22,13 @@ source=(https://github.com/GPUOpen-Drivers/AMDVLK/archive/v-${pkgver}.tar.gz
         https://github.com/GPUOpen-Drivers/llpc/archive/${_llpc_commit}.tar.gz
         https://github.com/GPUOpen-Drivers/xgl/archive/${_xgl_commit}.tar.gz
         https://github.com/GPUOpen-Drivers/pal/archive/${_pal_commit}.tar.gz
-        https://github.com/GPUOpen-Drivers/llvm/archive/${_llvm_commit}.tar.gz
-        https://github.com/GPUOpen-Drivers/spvgen/archive/${_spvgen_commit}.tar.gz)
+        https://github.com/GPUOpen-Drivers/llvm/archive/${_llvm_commit}.tar.gz)
   
 sha256sums=('4017d5ef9deacbbe0d1d952ce9f79242212f1ac94c39ed4daf267cb703618974'
             '32e6f6e330a7ff82bd7840e43a81d7950878c9eae93f0e1e376c37c27426c244'
             '49f6cfd63f89db1a2cbf1bb5be882919af45443e057efb1715785e0983b3cd32'
             'dfebaf29c6dedb9c6fcbe4d02407a4267703aa7ae570d105ef146f2df455486f'
-            '8b0052682f0665e18ea3f4b7a9b533dce95949c366c0d82a9e388056706383ae'
-            '01b156285b25c4f84fc098f334b3959d8fd1d7f77589618449288506eadb92d4')
+            '8b0052682f0665e18ea3f4b7a9b533dce95949c366c0d82a9e388056706383ae')
             
 prepare() {
   ln -sf ${srcdir}/AMDVLK-v-${pkgver} ${srcdir}/AMDVLK
@@ -39,7 +36,6 @@ prepare() {
   ln -sf ${srcdir}/pal-${_pal_commit} ${srcdir}/pal
   ln -sf ${srcdir}/llpc-${_llpc_commit} ${srcdir}/llpc
   ln -sf ${srcdir}/llvm-${_llvm_commit} ${srcdir}/llvm
-  ln -sf ${srcdir}/spvgen-${_spvgen_commit} ${srcdir}/spvgen
   
   #remove -Werror to build with gcc9 
   for i in xgl/icd/CMakeLists.txt llpc/CMakeLists.txt llpc/imported/metrohash/CMakeLists.txt llvm/utils/benchmark/CMakeLists.txt pal/src/core/imported/addrlib/CMakeLists.txt pal/src/core/imported/vam/CMakeLists.txt pal/shared/gpuopen/cmake/AMD.cmake
