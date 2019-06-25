@@ -3,7 +3,7 @@
 pkgname=cloudfusion-git
 _pkgname=CloudFusion
 pkgver=7.5.19.r0.gc4b9412
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux file system (FUSE) to access Dropbox, Sugarsync, Amazon S3, Google Storage, Google Drive or WebDAV servers.'
 arch=('any')
 url="http://joe42.github.com/$_pkgname"
@@ -47,11 +47,6 @@ pkgver() {
     git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v\.//' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-check() {
-  cd "$_pkgname"
-  python2 setup.py test
 }
 
 package() {

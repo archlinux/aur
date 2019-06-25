@@ -1,7 +1,7 @@
 pkgbase = cloudfusion-git
 	pkgdesc = Linux file system (FUSE) to access Dropbox, Sugarsync, Amazon S3, Google Storage, Google Drive or WebDAV servers.
 	pkgver = 7.5.19.r0.gc4b9412
-	pkgrel = 1
+	pkgrel = 2
 	url = http://joe42.github.com/CloudFusion
 	arch = any
 	license = GPL
