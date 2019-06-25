@@ -1,14 +1,13 @@
 pkgbase = morty
 	pkgdesc = Privacy-aware web content sanitizer proxy-as-a-service
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/asciimoo/morty
 	arch = i686
 	arch = x86_64
 	license = AGPL3
 	makedepends = go
 	optdepends = searx: A privacy-respecting, hackable metasearch engine
-	conflicts = morty-git
 	source = https://github.com/asciimoo/morty/archive/v0.2.0.tar.gz
 	source = morty.service
 	sha512sums = 10b08b07dfa54adf1b465311d1cf57ea46ecd09800ebba8d053abeb8f2b660685700bb665dba2741de3f17fa6c27a2c70a56d5a615c8734ca1ec8d3929260b88
