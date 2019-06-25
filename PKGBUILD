@@ -2,7 +2,7 @@
 
 pkgname=fpaste
 pkgver=0.3.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A cli frontend for the fpaste.org pastebin'
 arch=('any')
 url='https://pagure.io/fpaste'
@@ -16,4 +16,4 @@ package() {
 	install -D -m644 'docs/man/en/fpaste.1' "$pkgdir/usr/share/man/man1/fpaste.1"
 }
 
-sha256sums=('02ea176b45baa856c073a3544f32bbf7683d5e2d16422e64ad75c0fbd9d42198')
+sha256sums=('f3209772af898d58df586dcf408eceb20d7d1ab42c8ed2689a4e0140e25c4052')
