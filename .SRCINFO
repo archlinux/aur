@@ -1,0 +1,36 @@
+pkgbase = axmud
+	pkgdesc = GTK3 Multi-User Dungeon (MUD) client
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://axmud.sourceforge.io/
+	arch = any
+	license = GPL3
+	license = LGPL3
+	depends = glib2
+	depends = gtk3
+	depends = wmctrl
+	depends = perl-archive-extract
+	depends = perl-archive-zip
+	depends = perl-file-copy-recursive
+	depends = perl-file-homedir
+	depends = perl-file-sharedir
+	depends = perl-file-sharedir-install
+	depends = perl-goocanvas2
+	depends = perl-gtk3
+	depends = perl-io-socket-inet6
+	depends = perl-io-socket-ssl
+	depends = perl-ipc-run
+	depends = perl-json
+	depends = perl-net-openssh
+	depends = perl-path-tiny
+	depends = perl-regexp-ipv6
+	depends = perl-x11-wmctrl
+	optdepends = sox
+	optdepends = timidity++
+	source = axmud-1.2.0.tar.gz::https://downloads.sourceforge.net/project/axmud/Axmud-1.2.0/Games-Axmud-1.2.0.tar.gz
+	source = axmud.desktop
+	sha256sums = bc0f7cece3c28f9b5dc79b2c9bb1fcb5377962331c1320c6f12e5c5b43a85da9
+	sha256sums = ff608e34d1da13eddaf8be64880a24ad204f710a081410188b25be8b2dcd89dd
+
+pkgname = axmud
+

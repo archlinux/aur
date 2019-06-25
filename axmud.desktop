@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Axmud
+Comment=Axmud MUD Client
+Exec=axmud.pl
+Type=Application
+Icon=axmud.png
+Terminal=false
