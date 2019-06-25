@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-cannonball-git
-pkgver=339.b687c7f
+pkgver=342.0f3566a
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="libretro version of Cannonball - An Enhanced OutRun Engine"
