@@ -20,7 +20,9 @@ pkgbase = python2-graph-tool
 	optdepends = python2-matplotlib: graph drawing
 	options = !libtool
 	source = https://downloads.skewed.de/graph-tool/graph-tool-2.28.tar.bz2
+	source = https://git.skewed.de/count0/graph-tool/commit/c3a5066bc256e5d7ed450f89b324e84eb42fb511.diff
 	sha256sums = a2dbe0c926c058b1a6f696a05b9d9b65a3ceed57b8b6b0fe1474076bca9f8111
+	sha256sums = 3e3480b8b3c0018651c8e91e236f88af93e61d75aca87f4d2b3f606966133618
 
 pkgname = python2-graph-tool
 
