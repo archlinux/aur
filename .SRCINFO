@@ -13,3 +13,18 @@ pkgbase = ecal-shecal
 
 pkgname = ecal-shecal
 
+pkgbase = ecal-shecal
+	pkgdesc = shell for eCAL
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Blutkoete/shecal
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	makedepends = cmake
+	depends = ecal
+	source = https://github.com/Blutkoete/shecal/archive/v0.2.1.tar.gz
+	sha256sums = 0ae551e7fcc9c7b86d33143fa92436e68040dbcaf4459eb4f8ce4f37b91ccfab
+
+pkgname = ecal-shecal
+
