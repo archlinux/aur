@@ -1,7 +1,7 @@
 pkgbase = mxnet
 	pkgdesc = Flexible and Efficient Library for Deep Learning
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mxnet.io/
 	arch = x86_64
 	license = Apache
@@ -11,7 +11,6 @@ pkgbase = mxnet
 	makedepends = cuda
 	makedepends = cudnn
 	makedepends = cython
-	makedepends = gcc7
 	makedepends = git
 	makedepends = gtk3
 	makedepends = gtkglext
