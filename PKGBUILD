@@ -1,20 +1,18 @@
 # Maintainer: George Raven <GeorgeRavenCommunity AT pm dot me>
 pkgname=python-pimoroni-bme680-git
 _pkgsrcname="bme680-python"
+url="https://github.com/pimoroni/${_pkgsrcname}"
 
 pkgver=v1.0.5.r14.91434ca
-
 pkgrel=1
 pkgdesc="Python library for the BME680 gas, temperature, humidity, and pressure sensor."
 arch=('any')
-# pimoroni bme680 python source code url
-url="https://github.com/pimoroni/${_pkgsrcname}"
-# set what branch you would like to pull from
-_branch="master"
+
+_branch="master" # sets the branch desired to pull and swap to later on
 license=('MIT') # MIT is a special case store a copy in /usr/share/pkgname
 groups=()
 depends=("python")
-makedepends=("git") # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=("git")
 optdepends=()
 provides=()
 conflicts=()
@@ -22,6 +20,7 @@ replaces=()
 backup=()
 options=()
 install=
+
 source=("${_pkgsrcname}::git+${url}#branch=${_branch}")
 noextract=()
 md5sums=('SKIP')
