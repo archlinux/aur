@@ -1,6 +1,6 @@
 pkgbase = mqtt-explorer-appimage
 	pkgdesc = Explore your message queues.
-	pkgver = 0.2.6
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/thomasnordquist/MQTT-Explorer
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = mqtt-explorer-appimage
 	conflicts = mqtt-explorer
 	noextract = MQTT-Explorer.AppImage
 	options = !strip
-	source = MQTT-Explorer.AppImage::https://github.com/thomasnordquist/MQTT-Explorer/releases/download/v0.2.6/MQTT-Explorer-0.2.6-x86_64.AppImage
+	source = MQTT-Explorer.AppImage::https://github.com/thomasnordquist/MQTT-Explorer/releases/download/v0.3.0/MQTT-Explorer-0.3.0-x86_64.AppImage
 	source = mqtt-explorer.desktop
 	source = mqtt-explorer.png
-	sha256sums = f2f97256ed6f7bf0f9cd0145f4b086b57792158e183b18cc1a7273bd67511023
+	sha256sums = d04cdc4cfb6e34dd6ed34c31731f9461955bf01c92a6b10c8c897943c8c8a8ff
 	sha256sums = SKIP
 	sha256sums = SKIP
 
