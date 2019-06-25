@@ -1,6 +1,6 @@
 pkgbase = system76-power-git
 	pkgdesc = System76 Power Management
-	pkgver = r197.5d67e5a
+	pkgver = r199.9641eaf
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-power
 	install = system76-power-git.install
