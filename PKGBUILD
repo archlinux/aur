@@ -3,7 +3,7 @@ pkgbase=python-sphinx-gallery
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Sphinx extension to automatically generate an examples gallery"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 #'python-sphinx' 'python-pillow' 'python-scipy' 'python-seaborn')
 checkdepends=('python-pytest-cov' 'python2-pytest-cov' 'python-matplotlib' 'python2-matplotlib' 'python-pillow' 'python2-pillow' 'python-sphinx' 'python2-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('7e00b6f945fa67b83b699c11397abfbc')
+md5sums=('1f3e578107ca253a184889733a4fbcea')
 
 prepare() {
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
