@@ -1,8 +1,8 @@
 # Maintainer: Spyros Stathopoulos <spystath [AT] gmail [DOT] com>
 
 pkgname=nvfancontrol
-pkgver=0.4.0
-_pkgver=0.4.0
+pkgver=0.4.1
+_pkgver=0.4.1
 pkgrel=1
 pkgdesc="NVidia dynamic fan control"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('nvidia: For GTX 4xx or newer cards'
             'nvidia-340xx: For G8x, G9x and GTX 2xx cards')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/foucault/${pkgname}/archive/${_pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://github.com/foucault/${pkgname}/releases/download/${_pkgver}/${pkgname}-${_pkgver}.tar.gz.asc")
-sha256sums=('a8a106614473546d6bf00ba2d649531b8e521f6d669469e15d5a44253f54bf32'
+sha256sums=('eaf53d75fd850a09dd56cdc480724e6a01b2ef4fcca0d7b8cee11b934ffc142f'
             'SKIP')
 validpgpkeys=('391572CF5690CAF60BB320C6A68E5115BB817582') # Spyros Stathopoulos
 

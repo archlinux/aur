@@ -1,6 +1,6 @@
 pkgbase = nvfancontrol
 	pkgdesc = NVidia dynamic fan control
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/foucault/nvfancontrol
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = nvfancontrol
 	depends = libxext
 	optdepends = nvidia: For GTX 4xx or newer cards
 	optdepends = nvidia-340xx: For G8x, G9x and GTX 2xx cards
-	source = nvfancontrol-0.4.0.tar.gz::https://github.com/foucault/nvfancontrol/archive/0.4.0.tar.gz
-	source = nvfancontrol-0.4.0.tar.gz.asc::https://github.com/foucault/nvfancontrol/releases/download/0.4.0/nvfancontrol-0.4.0.tar.gz.asc
+	source = nvfancontrol-0.4.1.tar.gz::https://github.com/foucault/nvfancontrol/archive/0.4.1.tar.gz
+	source = nvfancontrol-0.4.1.tar.gz.asc::https://github.com/foucault/nvfancontrol/releases/download/0.4.1/nvfancontrol-0.4.1.tar.gz.asc
 	validpgpkeys = 391572CF5690CAF60BB320C6A68E5115BB817582
-	sha256sums = a8a106614473546d6bf00ba2d649531b8e521f6d669469e15d5a44253f54bf32
+	sha256sums = eaf53d75fd850a09dd56cdc480724e6a01b2ef4fcca0d7b8cee11b934ffc142f
 	sha256sums = SKIP
 
 pkgname = nvfancontrol
