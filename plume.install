@@ -1,0 +1,8 @@
+post_install() {
+  chown plume:plume /usr/share/webapps/plume -R
+}
+
+post_upgrade() {
+  echo "Your need to upgrade database by runing ."
+  echo "sudo -su plume diesel migration run"
+}
