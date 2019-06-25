@@ -1,0 +1,17 @@
+pkgbase = xybrid-git
+	pkgdesc = hybrid tracker/DAW
+	pkgver = 3282b2e
+	pkgrel = 1
+	url = https://gitlab.com/zetaPRIME/xybrid/
+	arch = any
+	license = LGPL2
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-multimedia
+	conflicts = xybrid
+	source = xybrid::git+https://gitlab.com/zetaPRIME/xybrid.git
+	md5sums = SKIP
+
+pkgname = xybrid-git
+
