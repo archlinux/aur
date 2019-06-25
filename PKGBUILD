@@ -58,11 +58,11 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DLLVM_TARGET_ARCH:STRING=i686 \
     -DLLVM_DEFAULT_TARGET_TRIPLE="i686-pc-linux-gnu" \
+    -DBUILD_WAYLAND_SUPPORT=On \
     -G Ninja
     
   cd builds/Release
   ninja
-  
 }
 
 package() {
