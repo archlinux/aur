@@ -1,4 +1,4 @@
-# Maintainer: Donald Carr <sirspudd at gmail dot com>
+# Maintainer: Donald Carr <d at chaos-reins dot com>
 
 # set -x
 
@@ -98,8 +98,8 @@ _local_qt5_repo="${local_qt5_repo}"
 _pkgvermajmin="5.13"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="rc3"
-pkgrel=3
+_dev_suffix=""
+pkgrel=4
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -152,6 +152,7 @@ case ${_piver} in
 5)
   # https://developer.nvidia.com/embedded/dlc/kernel-gcc-6-4-tool-chain
   # took forever to find one that worked
+  #_toolchain="/usr/bin/aarch64-linux-gnu-"
   _toolchain="/opt/gcc-linaro-6.4.1-2017.08-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-"
   _float=false
   _mkspec="linux-jetson-nano-g++"
@@ -306,7 +307,7 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-_tar_xz_sha256="7a78efe372f4f9c0158afd82275a1f846f3c62dc19b55b2121f451d0f2bf3433"
+_tar_xz_sha256="2cba31e410e169bd5cdae159f839640e672532a4687ea0f265f686421e0e86d6"
 #_tar_xz_sha256="356f42d9087718f22f03d13d0c2cdfb308f91dc3cf0c6318bed33f2094cd9d6c"
 
 source=("git://github.com/sirspudd/mkspecs.git")
