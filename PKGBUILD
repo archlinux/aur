@@ -2,7 +2,7 @@
 
 pkgname=xorgxrdp
 pkgver=0.2.10
-pkgrel=1
+pkgrel=3
 pkgdesc="Xorg drivers for xrdp"
 arch=('i686' 'x86_64')
 url="https://github.com/neutrinolabs/xorgxrdp"
