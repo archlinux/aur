@@ -1,7 +1,7 @@
 # Maintainer: David Donahue <david at donahue6 dot us>
 pkgname=repocalc
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="An ncurses RPN calculator"
 arch=('any')
 url="https://github.com/drdonahue/repocalc"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('ncurses' 'glibc')
 makedepends=('gcc' 'pkgconf')
 source=("https://github.com/drdonahue/repocalc/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ae3f147a0c1d00f246b642397d2e2ac15390a5105b4e269326e3aa80bd6e646e')
+sha256sums=('a095e12af0222bb0aca0f42d1d06b8ca92a46348a491c0dbf3d8952501795d97')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
