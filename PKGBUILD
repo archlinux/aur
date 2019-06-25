@@ -7,7 +7,7 @@
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.0.7
-pkgrel=1
+pkgrel=2
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -33,6 +33,7 @@ depends=(
   'python-requests'
   'python-six'
   'qt5-base'
+  'qt5-svg'
 )
 optdepends=(
   'python-btchip: Ledger hardware wallet support'

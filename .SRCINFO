@@ -1,7 +1,7 @@
 pkgbase = electron-cash
 	pkgdesc = Lightweight Bitcoin Cash wallet
 	pkgver = 4.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.electroncash.org/
 	arch = any
 	license = MIT
@@ -24,6 +24,7 @@ pkgbase = electron-cash
 	depends = python-requests
 	depends = python-six
 	depends = qt5-base
+	depends = qt5-svg
 	optdepends = python-btchip: Ledger hardware wallet support
 	optdepends = python-hidapi: Digital Bitbox hardware wallet support
 	optdepends = python-matplotlib: plot transaction history in graphical mode
