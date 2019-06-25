@@ -1,6 +1,6 @@
 pkgbase = platformio-git
 	pkgdesc = A cross-platform code builder and library manager
-	pkgver = v3.6.4.r31.g31d4706a
+	pkgver = v3.6.7.r280.g2c3d8ce6
 	pkgrel = 1
 	url = http://platformio.org/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = platformio-git
 	depends = python-setuptools
 	depends = python-arrow
 	depends = python-bottle
-	depends = python-click-5.1
+	depends = python-click
 	depends = python-colorama
 	depends = python-lockfile
 	depends = python-pyserial
