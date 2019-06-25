@@ -1,18 +1,19 @@
 pkgbase = minecraft-overviewer
-	pkgver = 0.13.88
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/overviewer/Minecraft-Overviewer
 	arch = x86_64
-	license = GPL
-	makedepends = python2-sphinx
-	depends = python2
-	depends = python2-pillow
-	depends = python2-numpy
-	source = https://github.com/overviewer/Minecraft-Overviewer/archive/f1c7ab93f19c9fb30d4bc14d4921da0e6b1c352a.tar.gz
-	sha512sums = 87477a6f4a96a65690a7087d1201cf3c0eee61432af385c25b0343f70e911147d22141b83edeb1bff2777d4f8f3deb931b009b8c7838fe1be030be0d1b7f0b73
+	license = GPL3
+	makedepends = python-sphinx
+	depends = python
+	depends = python-pillow
+	depends = python-numpy
+	source = https://github.com/overviewer/Minecraft-Overviewer/archive/4b847808eb8befaf67a5191f0d4a60de5fda888b.tar.gz
+	sha512sums = 3303308010e1a9dc6205ce3e2db077af36c365fcc93ea68a07bd3a7085c6dde0b79642adc085f9a03d6e3a2080ef1117b971195ba4381b74a8166943b08bd660
 
 pkgname = minecraft-overviewer
 
 pkgname = minecraft-overviewer-docs
 	arch = any
+	depends = 
 

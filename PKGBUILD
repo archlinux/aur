@@ -5,33 +5,40 @@
 
 _pkgname=Minecraft-Overviewer
 pkgname=(${_pkgname,,} ${_pkgname,,}-docs)
-pkgver=0.13.88
-_gitcommit=f1c7ab93f19c9fb30d4bc14d4921da0e6b1c352a
+pkgver=0.14.0
+_gitcommit=4b847808eb8befaf67a5191f0d4a60de5fda888b
 pkgrel=1
 pkgdec="Render a Minecraft map with a Google Maps interface"
 arch=('x86_64')
 url="https://github.com/overviewer/${_pkgname}"
-license=('GPL')
-depends=('python2' 'python2-pillow' 'python2-numpy')
-makedepends=('python2-sphinx')
+license=('GPL3')
+depends=('python' 'python-pillow' 'python-numpy')
+makedepends=('python-sphinx')
 source=("$url/archive/$_gitcommit.tar.gz")
-sha512sums=('87477a6f4a96a65690a7087d1201cf3c0eee61432af385c25b0343f70e911147d22141b83edeb1bff2777d4f8f3deb931b009b8c7838fe1be030be0d1b7f0b73')
+sha512sums=('3303308010e1a9dc6205ce3e2db077af36c365fcc93ea68a07bd3a7085c6dde0b79642adc085f9a03d6e3a2080ef1117b971195ba4381b74a8166943b08bd660')
+
+prepare() {
+	cd "${_pkgname}-$_gitcommit"
+
+	sed -i -e 's/python2/python/' overviewer_core/progressbar.py
+}
 
 build() {
 	cd "${_pkgname}-$_gitcommit"
-	python2 setup.py build
+	python setup.py build
 
 	cd ./docs
-	make SPHINXBUILD=sphinx-build2 html
+	make html
 }
 
 package_minecraft-overviewer() {
 	cd "${_pkgname}-$_gitcommit"
-	python2 setup.py install --prefix=/usr --root="$pkgdir"
+	python setup.py install --prefix=/usr --root="$pkgdir"
 }
 
 package_minecraft-overviewer-docs() {
 	arch=('any')
+	depends=()
 	cd "${_pkgname}-$_gitcommit/docs/_build/html"
 
 	install -d "$pkgdir/usr/share/doc/${pkgbase}/html"
