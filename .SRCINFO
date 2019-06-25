@@ -1,14 +1,11 @@
 pkgbase = axmud
 	pkgdesc = GTK3 Multi-User Dungeon (MUD) client
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://axmud.sourceforge.io/
 	arch = any
 	license = GPL3
 	license = LGPL3
-	depends = glib2
-	depends = gtk3
-	depends = wmctrl
 	depends = perl-archive-extract
 	depends = perl-archive-zip
 	depends = perl-file-copy-recursive

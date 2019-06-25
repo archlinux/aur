@@ -3,12 +3,12 @@ pkgname=axmud
 _relname="Axmud"
 _relpkg="Games-$_relname"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3 Multi-User Dungeon (MUD) client"
 arch=('any')
 url="https://axmud.sourceforge.io/"
 license=('GPL3' 'LGPL3')
-depends=('glib2' 'gtk3' 'wmctrl' 'perl-archive-extract' 'perl-archive-zip' 'perl-file-copy-recursive' 'perl-file-homedir' 'perl-file-sharedir' 'perl-file-sharedir-install' 'perl-goocanvas2' 'perl-gtk3' 'perl-io-socket-inet6' 'perl-io-socket-ssl' 'perl-ipc-run' 'perl-json' 'perl-net-openssh' 'perl-path-tiny' 'perl-regexp-ipv6' 'perl-x11-wmctrl')
+depends=('perl-archive-extract' 'perl-archive-zip' 'perl-file-copy-recursive' 'perl-file-homedir' 'perl-file-sharedir' 'perl-file-sharedir-install' 'perl-goocanvas2' 'perl-gtk3' 'perl-io-socket-inet6' 'perl-io-socket-ssl' 'perl-ipc-run' 'perl-json' 'perl-net-openssh' 'perl-path-tiny' 'perl-regexp-ipv6' 'perl-x11-wmctrl')
 optdepends=('sox' 'timidity++')
 source=("$pkgname-$pkgver.tar.gz::https://downloads.sourceforge.net/project/$pkgname/$_relname-$pkgver/$_relpkg-$pkgver.tar.gz" axmud.desktop)
 
@@ -31,8 +31,8 @@ package() {
   install -Dm644 "$srcdir/$_relpkg-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/$_relpkg-$pkgver/COPYING.LESSER" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.LESSER"
 
-  # Remove .packlist and perllocal.pod files
   find ${pkgdir} -name '.packlist' -delete
   find ${pkgdir} -name 'perllocal.pod' -delete
+  rm -fr "$pkgdir/usr/lib"
 }
 # vim: ts=2 sw=2 et:
