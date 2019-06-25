@@ -22,12 +22,14 @@ build() {
 
 check() {
   cd "$_pkgname-$pkgver"
-  
+
   python2 setup.py test
 }
 
 package() {
   cd "$_pkgname-$pkgver"
-  
+
   python2 setup.py install --root="$pkgdir" --optimize=1
+  find $pkgdir -type f -exec chmod 0644 {} +
+  find $pkgdir -type d -exec chmod 0755 {} +
 }
