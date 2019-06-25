@@ -83,6 +83,8 @@ prepare() {
 
   cd "$srcdir/chromium-${_chromium_version}"
 
+  msg2 'Fixing compile time bug on gcc9'
+  patch -p1 --igonre-whitespaces -i ../../gcc-9-fix.patch --no-backup-if-mismatch
   msg2 'Pruning binaries'
   python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
   msg2 'Applying patches'
