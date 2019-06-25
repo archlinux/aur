@@ -17,7 +17,7 @@ license=('MIT')
 depends=('vulkan-icd-loader')
 provides=('vulkan-amdvlk' 'vulkan-driver')
 conflicts=('amdvlk-git' 'amdvlk-deb' 'amdvlk-bin')
-makedepends=('cmake' 'dri2proto' 'gcc8' 'libdrm' 'libxml2' 'libxrandr' 'python' 'wayland' 'xorg-server-devel')
+makedepends=('cmake' 'dri2proto' 'gcc8' 'libdrm' 'libxml2' 'libxrandr' 'ninja' 'python' 'wayland' 'xorg-server-devel')
 
 source=(amdPalSettings.cfg
         https://github.com/GPUOpen-Drivers/AMDVLK/archive/v-${pkgver}.tar.gz
@@ -46,17 +46,17 @@ prepare() {
 
 build() {
   cd xgl
-
+  
   #export gcc8 executables because it doesn't build with gcc9 yet
   export CC=/usr/bin/gcc-8
   export CXX=/usr/bin/g++-8
    
   cmake -H. -Bbuilds/Release64 \
     -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_WAYLAND_SUPPORT=On
+    -DBUILD_WAYLAND_SUPPORT=On \
+    -G Ninja
 
-  cd builds/Release64
-  make
+  ninja -j 6 -l 6 -C builds/Release64
 }
 
 package() {
