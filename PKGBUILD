@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=proaudio-meta
-pkgver=2019.02.03
+pkgver=2019.06.25
 pkgrel=1
 pkgdesc="Metapackage for most useful audio production software"
 arch=("x86_64")
@@ -36,5 +36,6 @@ depends=("jack2-dbus"
          "mda.lv2"
          "lsp-plugins"
          "dpf-plugins"
+         "dragonfly-reverb"
          "noise-repellent"
          "guitarix2")
