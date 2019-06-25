@@ -1,7 +1,7 @@
 pkgbase = netmask
-	pkgdesc = The swiss army knife of addressing
+	pkgdesc = The swiss army knife of addressing.
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://trap.mtview.ca.us/~talby/
 	arch = x86_64
 	license = GPL2
