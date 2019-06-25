@@ -1,7 +1,7 @@
 # Maintainer: Leo Verto <leotheverto+aur@gmail.com>
 pkgname=netmask
 pkgver=2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The swiss army knife of addressing."
 arch=('x86_64')
 url="http://trap.mtview.ca.us/~talby/"
@@ -17,7 +17,7 @@ build() {
   make
 }
 
-package() {
+check() {
   cd "$pkgname-$pkgver"
 
   make -k check
