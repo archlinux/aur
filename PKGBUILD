@@ -2,15 +2,16 @@
 
 pkgname=snapcraft
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Build Ubuntu snappy packages."
 arch=('any')
 url="http://snapcraft.io"
 license=('GPL')
 depends=('python-apt' 'python-requests-oauthlib' 'python-ssoclient' 'python-progressbar'
          'python-requests-toolbelt' 'python-petname' 'python-jsonschema' 'python-yaml'
-         'python-magic' 'python-docopt' 'python-tabulate' 'python-pymacaroons-pynacl'
-         'python-simplejson' 'python-libarchive-c' 'python-debian')
+         'python-magic' 'python-docopt' 'python-tabulate' 'python-pymacaroons'
+         'python-simplejson' 'python-libarchive-c' 'python-debian' 'python-pysha3'
+         'python-requests-unixsocket' 'python-pylxd')
 makedepends=('python-setuptools')
 optdepends=('lxd')
 options=(!emptydirs)
