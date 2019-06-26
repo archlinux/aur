@@ -1,0 +1,23 @@
+pkgbase = flexbv-unstable-bin
+	pkgdesc = FlexBV Professional Boardview (unstable version)
+	pkgver = R1145
+	pkgrel = 1
+	url = https://pldaniels.com/flexbv/
+	arch = x86_64
+	license = custom
+	depends = sdl2
+	depends = fontconfig
+	depends = sqlite
+	depends = zlib
+	depends = gtk3
+	depends = libpng
+	provides = flexbv-bin
+	conflicts = flexbv-bin
+	conflicts = flexbv-unstable-bin
+	source = https://pldaniels.com/flexbv/alpha/FlexBV-R1145-linux.tar.gz
+	source = flexbv.sh
+	md5sums = 231c8c66e7819b2b1439bf984ffa0165
+	md5sums = 1487cbd7315654d30f9133b210d2d55b
+
+pkgname = flexbv-unstable-bin
+
