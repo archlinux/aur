@@ -1,8 +1,8 @@
 
 pkgname=python-django-geojson
 _pkgname=django-geojson
-pkgver=2.11.0
-_pkgver=2.11.0
+pkgver=2.12.0
+_pkgver=2.12.0
 pkgrel=1
 pkgdesc="django-geojson is a collection of helpers to (de)serialize (Geo)Django objects into GeoJSON."
 arch=(any)
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('python' 'python-django')
 makedepends=('python-distribute')
 source=(https://github.com/makinacorpus/$_pkgname/archive/$_pkgver.tar.gz)
-md5sums=('9b54eaf26d054bb43101b8ded17d0b80')
+md5sums=('3a4f5204882c4570d358e856d19216cc')
 
 package() {
   cd "$_pkgname-$_pkgver"
