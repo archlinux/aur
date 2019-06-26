@@ -49,7 +49,7 @@ build() {
 
   # Build Signal
   yarn generate
-  SIGNAL_ENV=production yarn build-release --dir
+  yarn build-release --dir
 }
 
 package() {
