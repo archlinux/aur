@@ -59,19 +59,19 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_tag=5.0.21
-pkgver="${_srcver_tag}.arch1"
+_srcver_tag=5.0.21-arch1
+pkgver="${_srcver_tag//-/.}"
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
 license=(GPL2)
 makedepends=(
-    bc
-    git
-    inetutils
-    kmod
-    libelf
     xmlto
+    kmod
+    inetutils
+    bc
+    libelf
+    git
 )
 options=('!strip')
 
@@ -91,6 +91,7 @@ source=(
     60-linux.hook  # pacman hook for depmod
     90-linux.hook  # pacman hook for initramfs regeneration
     linux.preset   # standard config files for mkinitcpio ramdisk
+    "add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch"
 )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886'    # Linus Torvalds
@@ -101,7 +102,8 @@ sha512sums=('SKIP'
             '5ad7d43b56255c6130deb130bd327f273575f085c81effb9f433d09f13ba90ac6d2cee9d1c7c55fe7a78980bf393fcd06cb4f71b6057ed298e46ffd2b33bcdb5'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            '097f15592a78d1eb400ac57a64a48bc11339664c627b42c094176d7b2cccbccd4fab536e9ba9b2c1198fdc9178d9c25aa5173f18428e4f7679078fbf418bf273')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -114,15 +116,15 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "$_kernelname" > localversion.20-pkgname
 
+    # msg2 "Adding patches from Arch Linux kernel repository..."
+    # git remote add arch_stable https://git.archlinux.org/linux.git || true
+    # git pull --no-edit arch_stable "v${_srcver_tag}"
+
     msg2 "Adding patches from Linux upstream kernel repository..."
     git remote add upstream_stable https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git || true
-    git pull --no-edit upstream_stable v${_srcver_tag}
+    git pull --no-edit upstream_stable v"${_srcver_tag//-arch*/}"
 
-    msg2 "Adding patches from Arch Linux kernel repository..."
-    git remote add arch_stable https://git.archlinux.org/linux.git || true
-    # git pull --no-edit arch_stable "v${_srcver_tag}-arch1"
-    git fetch arch_stable "v5.0.13-arch1"
-    git cherry-pick 1ce49fc24c97401dda96f916e0aec1be26e480a8
+    patch -Np1 -i "${srcdir}/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch"
     sed -i -e "s/^EXTRAVERSION =.*/EXTRAVERSION = -arch1/" Makefile
 
     # https://github.com/graysky2/kernel_gcc_patch
@@ -172,11 +174,11 @@ build() {
 _package() {
     pkgdesc="The ${pkgbase/linux/Linux} kernel and modules ${_pkgdesc_extra}"
     depends=(
-        bcachefs-tools-git
         coreutils
-        kmod
         linux-firmware
+        kmod
         mkinitcpio
+        bcachefs-tools-git
     )
     optdepends=('crda: to set the correct wireless channels of your country')
     backup=("etc/mkinitcpio.d/$pkgbase.preset")
