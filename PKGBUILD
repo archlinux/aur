@@ -12,7 +12,7 @@
 
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
-pkgver=5.12.3
+pkgver=5.13.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
@@ -24,13 +24,11 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Ensure-QML-dev-tools-is-built-as-static-library.patch'
-        '0002-Ensure-static-plugins-are-exported.patch'
-        '0003-Prevent-exporting-QML-parser-symbols-on-static-build.patch')
-sha256sums=('839881cd6996e35c351bc7d560372ebb91e61f3688957c33248c4f31ea007fa7'
-            'a21b730e650a9ebe3cdb72fccef909da783df3dc45fbd063e8c37f3618b3655d'
-            'b0c26b559483e740dae038d630b5994805642ef8673edacad7b244019c5b83ab'
-            '747db2313fc5759c913ebb920b717c990361075622fff11d242843526ea75fa8')
+        '0001-Ensure-static-plugins-are-exported.patch'
+        '0002-Prevent-exporting-QML-parser-symbols-on-static-build.patch')
+sha256sums=('b9e8780aef0af4a60e64dcc405bdf5c03a04b28e3b94d5c2e69d0006db566ba9'
+            'd324b621d5947676ea8938f90c0e001b6c6b2f04bb95b4d66efd0f1529d41d3c'
+            'b68381599c53a84404d75ddc3c0535fea91a01bdc57c1d1c23a64d120c3174c6')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -57,16 +55,6 @@ build() {
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
       ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config}
 
-      # search paths for host standard library (/usr/lib) and for Qt5Bootstrap (/usr/$_arch/lib) are not set correctly by qmake
-      # hence we need insert those paths manually
-      make qmake_all
-      find ./src/qmldevtools -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
-      find . -type f -iname 'Makefile' -exec sed -i "s|-L$PWD/lib -L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib -L$PWD/lib /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
-      find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
-      #[ ${_config##*=} == 'shared' ] && local _ext='so' || local _ext='a'
-      local _ext='a'
-      find . -type f -iname 'Makefile' -exec sed -i "s|-L$PWD/lib -lQt5QmlDevTools|-L/usr/lib -L$PWD/lib ${srcdir}/${_pkgfqn}/build-${_arch}-${_config##*=}/lib/libQt5QmlDevTools.${_ext}|g" {} \;
-      find . -type f -iname 'Makefile' -exec sed -i "s|-lQt5QmlDevTools|-L/usr/lib ${srcdir}/${_pkgfqn}/build-${_arch}-${_config##*=}/lib/libQt5QmlDevTools.${_ext}|g" {} \;
       make
       popd
     done
