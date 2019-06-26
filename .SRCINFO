@@ -3,7 +3,6 @@ pkgbase = otf-ipaexfont
 	pkgver = 004.01
 	pkgrel = 1
 	url = http://ipafont.ipa.go.jp/
-	install = otf.install
 	arch = any
 	license = custom
 	depends = fontconfig

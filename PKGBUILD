@@ -11,7 +11,6 @@ license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-ipaex')
 replaces=('ttf-ipaex')
-install=otf.install
 source=(https://oscdl.ipa.go.jp/IPAexfont/IPAexfont${_pkgver}.zip)
 sha1sums=('57583c2be5dbfa06648ab0ae4937d7903b32595c')
 
