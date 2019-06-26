@@ -4,13 +4,13 @@
 _target=arm-none-eabi
 pkgname=$_target-linaro-binutils
 pkgver=2.32
-pkgrel=1
+pkgrel=2
 #_commit=2bd25930
 pkgdesc='A set of pograms to assemble and manipulate binary and object files for the ARM EABI target with extra flags'
 arch=(x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
-depends=('isl' 'cloog' 'gmp' 'mpc' 'mpfr' 'zlib')
+depends=('isl>=0.14' 'cloog' 'gmp' 'mpc' 'mpfr' 'zlib')
 provides=('arm-none-eabi-binutils')
 conflicts=('arm-none-eabi-binutils')
 source=(ftp://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
@@ -29,7 +29,7 @@ build() {
 
   if [ "${CARCH}" != "i686" ]; then
     # enabling gold linker at i686 makes the install fail
-    enable_gold='--enable-gold=yes'
+    enable_gold='--enable-gold'
   fi
 
   ./configure --target=$_target \
