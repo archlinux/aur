@@ -1,5 +1,5 @@
 pkgbase = lib32-amdvlk
-	pkgdesc = AMD's standalone Vulkan driver
+	pkgdesc = AMDVLK - AMD Open Source Driver for Vulkan® (32 Bit)
 	pkgver = 2019.Q2.5
 	pkgrel = 1
 	url = https://github.com/GPUOpen-Drivers
@@ -8,7 +8,6 @@ pkgbase = lib32-amdvlk
 	makedepends = cmake
 	makedepends = dri2proto
 	makedepends = gcc
-	makedepends = gcc-libs
 	makedepends = lib32-gcc-libs
 	makedepends = lib32-libdrm
 	makedepends = lib32-libxml2
@@ -28,13 +27,11 @@ pkgbase = lib32-amdvlk
 	source = https://github.com/GPUOpen-Drivers/xgl/archive/96d84068b622b2c3ce8cf9aa8ff597260aa5ad3f.tar.gz
 	source = https://github.com/GPUOpen-Drivers/pal/archive/135258ac31901e1293fea5e2f599659ee438ba1f.tar.gz
 	source = https://github.com/GPUOpen-Drivers/llvm/archive/b9910c8bfcccc63c07c959963fa567120d11f024.tar.gz
-	source = https://github.com/GPUOpen-Drivers/spvgen/archive/64013f150c2d41965a3d36fa159b55fba52b727a.tar.gz
 	sha256sums = 4017d5ef9deacbbe0d1d952ce9f79242212f1ac94c39ed4daf267cb703618974
 	sha256sums = 32e6f6e330a7ff82bd7840e43a81d7950878c9eae93f0e1e376c37c27426c244
 	sha256sums = 49f6cfd63f89db1a2cbf1bb5be882919af45443e057efb1715785e0983b3cd32
 	sha256sums = dfebaf29c6dedb9c6fcbe4d02407a4267703aa7ae570d105ef146f2df455486f
 	sha256sums = 8b0052682f0665e18ea3f4b7a9b533dce95949c366c0d82a9e388056706383ae
-	sha256sums = 01b156285b25c4f84fc098f334b3959d8fd1d7f77589618449288506eadb92d4
 
 pkgname = lib32-amdvlk
 
