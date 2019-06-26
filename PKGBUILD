@@ -13,7 +13,7 @@ _spirvtools_commit=ce19e217bc82e1dbd631b6a555b1874432f3a05f
 _spirvheaders_commit=c4f8f65792d4bf2657ca751904c511bbcf2ac77b
 _glslang_commit=4e6b9ea32900b7bae6728eb8167657cdae7b16dc
 
-pkgdesc="AMDVLK - AMD Open Source Driver for Vulkan®"
+pkgdesc='AMDVLK - AMD Open Source Driver for Vulkan®'
 arch=('x86_64')
 url='https://github.com/GPUOpen-Drivers'
 license=('MIT')
@@ -69,7 +69,7 @@ build() {
     -G Ninja
     
   msg "build amdvlk64.so"
-  #ninja -C builds/Release64
+  ninja -C builds/Release64
   
   msg "build spvgen.so"
   ninja -C builds/Release64 spvgen
