@@ -6,7 +6,7 @@ url="https://github.com/elliptic-shiho/primefac-fork"
 arch=('any')
 license=('MIT')
 provides=('python-primefac')
-confilcts==('python-primefac')
+confilcts=('python-primefac')
 depends=('python')
 makedepends=('python-setuptools')
 source=("git+https://github.com/elliptic-shiho/primefac-fork.git")
