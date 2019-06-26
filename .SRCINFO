@@ -1,6 +1,6 @@
 pkgbase = arm-none-eabi-gcc60-linaro
 	pkgdesc = The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target.
-	pkgver = 6.4_2018.04
+	pkgver = 6.5_2018.12
 	pkgrel = 1
 	url = https://releases.linaro.org/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = arm-none-eabi-gcc60-linaro
 	makedepends = expect
 	makedepends = flex
 	makedepends = bison
-	depends = arm-none-eabi-linaro-binutils
-	depends = isl19
+	depends = arm-none-eabi-linaro-binutils>=2.26-1
+	depends = isl>=0.14
 	depends = mpc
 	depends = gmp
 	depends = cloog
@@ -26,16 +26,16 @@ pkgbase = arm-none-eabi-gcc60-linaro
 	options = !strip
 	options = zipman
 	options = docs
-	source = http://snapshots.linaro.org/components/toolchain/gcc-linaro/6.4-2018.04/gcc-linaro-snapshot-6.4-2018.04.tar.xz
+	source = http://releases.linaro.org/components/toolchain/gcc-linaro/6.5-2018.12/gcc-linaro-6.5-2018.12.tar.xz
 	source = 0200-gcc-no-exceptions.patch
 	source = 0300-gcc-multilib2.patch
-	source = 0400-enable-with-multilib-list-for-arm.patch
 	source = 1039-libcc1-fix-libcc1-s-install-path-and-rpath.patch
-	sha256sums = b557579608963941647d06281a08a4499216957ceae6f02e040c32cdda3bca22
+	source = 0400-enable-with-multilib-list-for-arm.patch
+	sha256sums = 3c5a620e36d61752136197d9abe231ab37f5bc9c500410d21b75b4322df305ef
 	sha256sums = 76eab14830216c774291d2ac35d4b4690f3273aa8c630a2c1546f02538847d8a
 	sha256sums = c9b6bc1dd53f9b4b80f5fdacdef94c9fce0e516c16fb78063107b66ba2e9fdd1
-	sha256sums = 9447a8fd40d7c1e238b8e9790b739492de5feaa489d61f4ecdab863e5ea1975a
 	sha256sums = fa08269d6a748631b07b55a5fe00fa518b2f6e04356a3d6634c60f3c3ece3b07
+	sha256sums = 9447a8fd40d7c1e238b8e9790b739492de5feaa489d61f4ecdab863e5ea1975a
 
 pkgname = arm-none-eabi-gcc60-linaro
 
