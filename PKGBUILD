@@ -1,6 +1,8 @@
+# Maintainer: Jose Riha <jose1711 gmail com>
+
 pkgname=microemulator
 pkgver=2.0.4
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="This is Java 2 Micro Edition (J2ME) CLDC/MIDP Emulator."
 url="https://sourceforge.net/projects/microemulator/"

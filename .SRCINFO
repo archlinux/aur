@@ -1,7 +1,7 @@
 pkgbase = microemulator
 	pkgdesc = This is Java 2 Micro Edition (J2ME) CLDC/MIDP Emulator.
 	pkgver = 2.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/microemulator/
 	arch = any
 	license = GPL
