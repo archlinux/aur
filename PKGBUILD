@@ -1,7 +1,7 @@
 # maintainer: odknt <oda.kenta.hj at gmail.com>
 pkgname=bspwmbar
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight status bar for bspwm'
 arch=(x86_64)
 license=('ISC')
@@ -10,7 +10,7 @@ depends=(bspwm alsa-lib libxft fontconfig)
 optdepends=('ttf-nerd-fonts-symbols: default prefix icons font')
 source=("https://github.com/odknt/bspwmbar/archive/v${pkgver}.tar.gz"
         'config.h')
-sha256sums=('31bd8f2ec6bcd47867ecb42ff104a73b52a244c1bf19cff8e5060cf27a696b6c'
+sha256sums=('692f8ae470365ed188f38cfc843a7574fb19e3013384aa6ded65ac0400a5c02a'
             'SKIP')
 
 prepare() {
