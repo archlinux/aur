@@ -1,14 +1,14 @@
 pkgbase = python-pylibgen
 	pkgdesc = Python interface to Library Genesis.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://pypi.org/project/pylibgen/
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pylibgen/pylibgen-2.0.1.tar.gz
-	sha256sums = 3c2a82b47cb7225dcf4ecea27081b0185ae4d195499140cdbb9597d914e1ae9e
+	source = https://files.pythonhosted.org/packages/source/p/pylibgen/pylibgen-2.0.2.tar.gz
+	sha256sums = 87b28a27fa7c1912e2b38020262dd6086b292d670b0c08d76baecbcd7678b9ee
 
 pkgname = python-pylibgen
 
