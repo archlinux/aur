@@ -1,6 +1,6 @@
 pkgbase = pamac-aur-git
 	pkgdesc = A Gtk3 frontend for libalpm - git version
-	pkgver = 7.4.0.r24.g3bcb34d
+	pkgver = 7.4.0.r25.ge88a0a7
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = i686
@@ -31,7 +31,6 @@ pkgbase = pamac-aur-git
 	optdepends = pamac-aur-tray-appindicator-git: tray icon for KDE
 	provides = pamac
 	conflicts = pamac
-	replaces = pamac
 	options = !emptydirs
 	source = git+https://gitlab.manjaro.org/applications/pamac.git
 	sha256sums = SKIP
