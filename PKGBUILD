@@ -2,7 +2,7 @@
 # Contributor: speps <speps dot archlinux dot org>
 
 pkgname=qxmledit
-pkgver=0.9.12
+pkgver=0.9.13
 pkgrel=1
 pkgdesc="Simple XML editor and XSD viewer"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3' 'LGPL3')
 depends=('qt5-svg' 'glu' 'qt5-scxml' 'qt5-xmlpatterns')
 makedepends=('freeglut')
 source=("http://downloads.sourceforge.net/project/qxmledit/QXmlEdit-$pkgver/qxmledit-$pkgver-src.tgz")
-sha256sums=('d7636daf8a4623b7b325df4dde358fc28113e11de457b0b91136d05029b06952')
+sha256sums=('4448bde2a7acc2fb1e8754f27b4e73d923bd47c5231b174e957f01feb1947b2b')
 
 
 build() {
