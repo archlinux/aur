@@ -8,7 +8,7 @@
 
 _qt_module=qtwebchannel
 pkgname=mingw-w64-qt5-webchannel
-pkgver=5.12.3
+pkgver=5.13.0
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients (mingw-w64)'
@@ -21,7 +21,7 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 groups=('mingw-w64-qt5')
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('72d1620bcc94e14caa91ddf344c84cd1288aa9479e00b1bb3b5e51f92efe088a')
+sha256sums=('7f6260c73bca968511ab2facfbb14b4d8cc7a9c5b2d0f9211e7390ed8fb52b9a')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
