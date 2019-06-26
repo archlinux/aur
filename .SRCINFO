@@ -1,6 +1,6 @@
 pkgbase = python-pytest-html
 	pkgdesc = Plugin for generating HTML reports for pytest results
-	pkgver = 1.20.0
+	pkgver = 1.21.1
 	pkgrel = 1
 	url = https://github.com/pytest-dev/pytest-html
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-pytest-html
 	depends = python-pytest>=3.0
 	depends = python-pytest-metadata
 	optdepends = python-ansi2html: ANSI code support
-	source = https://files.pythonhosted.org/packages/source/p/pytest-html/pytest-html-1.20.0.tar.gz
-	sha256sums = a7c65cdd9d5e4d09cef2f500ca801f80c1110204f24e5b84d019c6f919b15e9e
+	source = https://files.pythonhosted.org/packages/source/p/pytest-html/pytest-html-1.21.1.tar.gz
+	sha256sums = ac405ca2fc4a55b83ca59319c69552f9bc870db2378e851633970bfc7fb93928
 
 pkgname = python-pytest-html
 
