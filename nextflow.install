@@ -1,0 +1,4 @@
+post_install() {
+    NXF_HOME="${HOME}/.local/share/nextflow"
+    /usr/bin/nextflow
+}
