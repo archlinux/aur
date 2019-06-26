@@ -1,16 +1,16 @@
 # Maintainer: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=libbufr
-pkgver=11.0.0
+pkgver=11.3.0
 pkgrel=1
 pkgdesc="NCEP library to encode or decode BUFR messages"
 arch=(i686 x86_64)
-url="http://www.nco.ncep.noaa.gov/sib/decoders/BUFRLIB/"
+url="https://www.emc.ncep.noaa.gov/index.php?branch=BUFRLIB"
 license=('Custom')
 options=('staticlibs')
 makedepends=(gcc-fortran)
-source=('http://www.nco.ncep.noaa.gov/sib/decoders/BUFRLIB/BUFRLIB_v11-0-0.tar'
+source=('https://www.emc.ncep.noaa.gov/BUFRLIB/docs/BUFRLIB_v11-3-0.tar'
         'LICENSE')
-md5sums=('885d691ab923a140aa23cc4b0b2fb6a7'
+md5sums=('57b5bc85dff2b64125463dc43e207d5a'
          'f9f43492185682b834428d79f718f28e')
 
 build() {
@@ -23,8 +23,7 @@ build() {
   export FCFLAGS="${CFLAGS} -fdollar-ok"
   export AR=ar
   export ARFLAGS=-rv
-  sed -i bufrlib.PRM -e 's/	/      /g'
-  cpp -P -DNORMAL_BUILD -DDYNAMIC_ALLOCATION bufrlib.PRM bufrlib.prm
+  sed -i bufrlib.prm -e 's/	/      /g'
   for file in *.c
   do
     echo "compiling $file"

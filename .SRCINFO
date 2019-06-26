@@ -1,16 +1,16 @@
 pkgbase = libbufr
 	pkgdesc = NCEP library to encode or decode BUFR messages
-	pkgver = 11.0.0
+	pkgver = 11.3.0
 	pkgrel = 1
-	url = http://www.nco.ncep.noaa.gov/sib/decoders/BUFRLIB/
+	url = https://www.emc.ncep.noaa.gov/index.php?branch=BUFRLIB
 	arch = i686
 	arch = x86_64
 	license = Custom
 	makedepends = gcc-fortran
 	options = staticlibs
-	source = http://www.nco.ncep.noaa.gov/sib/decoders/BUFRLIB/BUFRLIB_v11-0-0.tar
+	source = https://www.emc.ncep.noaa.gov/BUFRLIB/docs/BUFRLIB_v11-3-0.tar
 	source = LICENSE
-	md5sums = 885d691ab923a140aa23cc4b0b2fb6a7
+	md5sums = 57b5bc85dff2b64125463dc43e207d5a
 	md5sums = f9f43492185682b834428d79f718f28e
 
 pkgname = libbufr
