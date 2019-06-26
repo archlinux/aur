@@ -2,7 +2,7 @@
 _npmname=ark-desktop-wallet-linux-x64
 _appname=ark-desktop-wallet
 pkgname=ark-desktop
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Multi Platform Ark Desktop Wallet"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-  "43219cfda7c97c99bdbcffa95227961f6c98838d8ff5a7d4c733e1bae3aa5c7b"
+  "e7ccba6278836d668f81d223e69d7543d56b9c157ae3f99f36e24cb5bbb7c05f"
   "d8cbf62914f8ca53cce3d6405d19f138f00fa83ba7dee8863dbb3bd741d83e85"
   "c35f69986f8a5194ad2980d088fa4e1e00b9c2792c3c6bbc0327d1fa7c4b8822"
   "8ca038afc96c8d1604711fd22f7fc3f75bb7004eac1090e109af843554c9a31e"
