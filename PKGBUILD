@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <jkraehemann@gmail.com>
 pkgname=gsequencer
-pkgver=2.1.77
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="Advanced Gtk+ Sequencer"
 arch=('x86_64' 'i686')
@@ -15,9 +15,9 @@ depends=('fftw' 'ladspa' 'dssi' 'lv2' 'libsndfile' 'libsamplerate' 'libinstpatch
 checkdepends=('cunit' 'xorg-server-xvfb')
 provides=('gsequencer' 'midi2xml')
 conflicts=('midi2xml')
-source=("https://download.savannah.gnu.org/releases/gsequencer/2.1.x/$pkgname-$pkgver.tar.gz")
+source=("https://download.savannah.gnu.org/releases/gsequencer/2.2.x/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('5870073853ad06c63bc6429027551024')
+md5sums=('54a465deae19b3ade257f3c68fac3dee')
 validpgpkeys=()
 
 prepare() {
