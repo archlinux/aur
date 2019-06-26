@@ -1,0 +1,17 @@
+pkgbase = sam-rewritten
+	pkgdesc = Steam Achievement Manager For Linux. Rewritten in C++.
+	pkgver = r36.f332129
+	pkgrel = 1
+	url = https://github.com/PaulCombal/SamRewritten
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = steam
+	depends = yajl
+	depends = gtk3
+	depends = glibc
+	source = git+https://github.com/PaulCombal/SamRewritten.git
+	md5sums = SKIP
+
+pkgname = sam-rewritten
+
