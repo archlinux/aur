@@ -28,6 +28,6 @@ package() {
 
   cd "${srcdir}"
   install -dm755 "${pkgdir}/etc/profile.d"
-  sed "s#@PATH@#/opt/${pkgname}/bin/#" "${pkgname}.sh" > "${pkgdir}/etc/profile.d/${pkgname}.sh"
+  sed "s#@PATH@#/opt/${pkgname}/#" "${pkgname}.sh" > "${pkgdir}/etc/profile.d/${pkgname}.sh"
   chmod 755 "${pkgdir}/etc/profile.d/${pkgname}.sh"
 }
