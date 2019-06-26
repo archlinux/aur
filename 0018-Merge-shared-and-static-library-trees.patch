@@ -1,22 +1,38 @@
-From 814b3a23dd94818101265df95b1051987faf440d Mon Sep 17 00:00:00 2001
+From 8d8cfe560697425a01b786aee113082495d6c85f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
-Subject: [PATCH 21/34] Merge shared and static library trees
+Subject: [PATCH 18/33] Merge shared and static library trees
 
 Allow installation of shared and static build in the same prefix
 ---
- configure.pri                     |  9 +++++++++
- mkspecs/features/default_post.prf | 11 +++++++++++
- mkspecs/features/qt.prf           | 17 +++++++++++++++++
- mkspecs/features/spec_pre.prf     | 11 ++++++++---
- qmake/generators/makefile.cpp     |  9 ++++++---
- 5 files changed, 51 insertions(+), 6 deletions(-)
+ configure.pri                      | 16 +++++++++++++++-
+ mkspecs/features/default_post.prf  | 11 +++++++++++
+ mkspecs/features/device_config.prf |  9 ++++++++-
+ mkspecs/features/qt.prf            | 17 +++++++++++++++++
+ mkspecs/features/spec_pre.prf      | 11 ++++++++---
+ qmake/generators/makefile.cpp      |  9 ++++++---
+ qtbase.pro                         | 10 ++++++++--
+ 7 files changed, 73 insertions(+), 10 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index 131aa868c2..75203c4572 100644
+index 81133da3d7..927fcbe132 100644
 --- a/configure.pri
 +++ b/configure.pri
-@@ -1318,3 +1318,12 @@ defineTest(createConfigStatus) {
+@@ -657,7 +657,12 @@ defineTest(qtConfOutput_machineTuple) {
+ 
+ defineTest(qtConfOutput_commitOptions) {
+     # qdevice.pri needs to be written early, because the compile tests require it.
+-    write_file($$QT_BUILD_TREE/mkspecs/qdevice.pri, $${currentConfig}.output.devicePro)|error()
++    shared|actually_a_shared_build {
++        DEVICE_PRI_SUFFIX = .pri
++    } else {
++        DEVICE_PRI_SUFFIX = .static.pri
++    }
++    write_file($$QT_BUILD_TREE/mkspecs/qdevice$$DEVICE_PRI_SUFFIX, $${currentConfig}.output.devicePro)|error()
+ }
+ 
+ # type (empty or 'host'), option name, default value
+@@ -1350,3 +1355,12 @@ defineTest(createConfigStatus) {
  
  QMAKE_POST_CONFIGURE += \
      "createConfigStatus()"
@@ -30,7 +46,7 @@ index 131aa868c2..75203c4572 100644
 +    CONFIG += no_smart_library_merge
 +}
 diff --git a/mkspecs/features/default_post.prf b/mkspecs/features/default_post.prf
-index fbf1f3b8df..c261c46e72 100644
+index 9df99b8648..9c1dd6a735 100644
 --- a/mkspecs/features/default_post.prf
 +++ b/mkspecs/features/default_post.prf
 @@ -1,5 +1,16 @@
@@ -50,11 +66,31 @@ index fbf1f3b8df..c261c46e72 100644
  contains(TEMPLATE, ".*(lib|app)"):CONFIG += have_target
  
  !have_target:!force_qt: CONFIG -= qt
+diff --git a/mkspecs/features/device_config.prf b/mkspecs/features/device_config.prf
+index c15559e174..dd09ac749d 100644
+--- a/mkspecs/features/device_config.prf
++++ b/mkspecs/features/device_config.prf
+@@ -4,7 +4,14 @@
+ # supposed to be influenced by -device-option then.
+ host_build: return()
+ 
+-DEVICE_PRI = $$[QT_HOST_DATA/get]/mkspecs/qdevice.pri
++shared|actually_a_shared_build {
++    DEVICE_PRI = $$[QT_HOST_DATA/get]/mkspecs/qdevice.pri
++} else {
++    DEVICE_PRI = $$[QT_HOST_DATA/get]/mkspecs/qdevice.static.pri
++    !exists($$DEVICE_PRI) {
++        DEVICE_PRI = $$[QT_HOST_DATA/get]/mkspecs/qdevice.pri
++    }
++}
+ exists($$DEVICE_PRI):include($$DEVICE_PRI)
+ unset(DEVICE_PRI)
+ 
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index d8d5acaafd..167b8dbf2c 100644
+index 3a71376029..bbada46c29 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
-@@ -238,6 +238,23 @@ for(ever) {
+@@ -232,6 +232,23 @@ for(ever) {
              !isEmpty(MODULE_WINRT_CAPABILITIES_DEVICE): \
                  WINRT_MANIFEST.capabilities_device_default += $$MODULE_WINRT_CAPABILITIES_DEVICE
          }
@@ -101,7 +137,7 @@ index 51ea3a8321..275e080ae4 100644
  QMAKE_EXT_YACC          = .y
  
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index b005da931e..e0c42131f8 100644
+index fedbaaf601..fd3b5c405a 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
 @@ -3247,6 +3247,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
@@ -127,6 +163,41 @@ index b005da931e..e0c42131f8 100644
      }
  
      t << endl;
+diff --git a/qtbase.pro b/qtbase.pro
+index c0ce0972ef..5a2deaf31d 100644
+--- a/qtbase.pro
++++ b/qtbase.pro
+@@ -20,6 +20,12 @@ CLEAN_DEPS += qmake-clean
+ # recursive distclean proceeds, including beyond qtbase.
+ DISTCLEAN_DEPS += qmake-clean
+ 
++shared|actually_a_shared_build {
++    DEVICE_PRI_SUFFIX = .pri
++} else {
++    DEVICE_PRI_SUFFIX = .static.pri
++}
++
+ # Files created by configure.
+ # config.status (and configure.cache, which is the same for Windows)
+ # are omitted for convenience of rebuilds.
+@@ -27,7 +33,7 @@ QMAKE_DISTCLEAN += \
+     config.summary \
+     config.tests/.qmake.cache \
+     mkspecs/qconfig.pri \
+-    mkspecs/qdevice.pri \
++    mkspecs/qdevice$$DEVICE_PRI_SUFFIX \
+     mkspecs/qmodule.pri \
+     src/corelib/global/qconfig.h \
+     src/corelib/global/qconfig_p.h \
+@@ -78,7 +84,7 @@ prefix_build|!equals(PWD, $$OUT_PWD) {
+ mkspecs.path = $$[QT_HOST_DATA]/mkspecs
+ mkspecs.files = \
+     $$OUT_PWD/mkspecs/qconfig.pri $$OUT_PWD/mkspecs/qmodule.pri \
+-    $$OUT_PWD/mkspecs/qdevice.pri \
++    $$OUT_PWD/mkspecs/qdevice$$DEVICE_PRI_SUFFIX \
+     $$files($$PWD/mkspecs/*)
+ mkspecs.files -= $$PWD/mkspecs/modules $$PWD/mkspecs/modules-inst
+ INSTALLS += mkspecs
 -- 
-2.21.0
+2.22.0
 

@@ -1,0 +1,34 @@
+From a3f19f84f5f7776ec509c84fb10cb9609c0c67fe Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Mon, 24 Jun 2019 13:51:02 +0200
+Subject: [PATCH 33/33] Prevent 'Cannot find feature windows_vulkan_sdk'
+
+---
+ mkspecs/common/windows-vulkan.conf            | 2 +-
+ mkspecs/features/win32/windows_vulkan_sdk.prf | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/mkspecs/common/windows-vulkan.conf b/mkspecs/common/windows-vulkan.conf
+index da061422dc..a5a8ec68d2 100644
+--- a/mkspecs/common/windows-vulkan.conf
++++ b/mkspecs/common/windows-vulkan.conf
+@@ -1,2 +1,2 @@
+-load(windows_vulkan_sdk)
++load(win32/windows_vulkan_sdk)
+ QMAKE_LIBS_VULKAN       =
+diff --git a/mkspecs/features/win32/windows_vulkan_sdk.prf b/mkspecs/features/win32/windows_vulkan_sdk.prf
+index 6c08e28fe9..a80b0602a8 100644
+--- a/mkspecs/features/win32/windows_vulkan_sdk.prf
++++ b/mkspecs/features/win32/windows_vulkan_sdk.prf
+@@ -1,7 +1,7 @@
+ isEmpty(QMAKE_INCDIR_VULKAN) {
+     # Pick up the VULKAN_SDK env var set by the LunarG SDK so that the Vulkan
+     # headers are found out-of-the-box on typical Windows setups.
+-    QMAKE_INCDIR_VULKAN = $$(VULKAN_SDK)\\include
++    # QMAKE_INCDIR_VULKAN = $$(VULKAN_SDK)/include
+ 
+     # Do not export the include dir but resolve it on every qmake call.
+     QMAKE_EXPORT_INCDIR_VULKAN = -
+-- 
+2.22.0
+

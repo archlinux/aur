@@ -1,21 +1,21 @@
-From ff46ecb2fdcfc203d55e9fcef8b29c62742c61ae Mon Sep 17 00:00:00 2001
+From 5eb2e0e33778a15ff05a2891e6752af573bca2e5 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:25:40 +0200
-Subject: [PATCH 16/34] Rename qtmain to qt5main
+Subject: [PATCH 15/33] Rename qtmain to qt5main
 
 Prevents conflict with mingw-w64-qt4 package
 ---
  mkspecs/common/g++-win32.conf      | 2 +-
  mkspecs/features/create_cmake.prf  | 4 ++--
- mkspecs/features/win32/windows.prf | 2 +-
+ mkspecs/features/win32/windows.prf | 4 ++--
  src/winmain/winmain.pro            | 2 +-
- 4 files changed, 5 insertions(+), 5 deletions(-)
+ 4 files changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index 07e2b6a88e..5bfbcfdca6 100644
+index 5208d22bd6..1a058b787f 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
-@@ -86,7 +86,7 @@ QMAKE_LIBS_OPENGL       = -lglu32 -lopengl32 -lgdi32 -luser32
+@@ -84,7 +84,7 @@ QMAKE_LIBS_OPENGL       = -lglu32 -lopengl32 -lgdi32 -luser32
  QMAKE_LIBS_OPENGL_ES2   = -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME} -ld3d9 -ldxguid -lgdi32 -luser32
  QMAKE_LIBS_OPENGL_ES2_DEBUG = -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME} -ld3d9 -ldxguid -lgdi32 -luser32
  QMAKE_LIBS_COMPAT       = -ladvapi32 -lshell32 -lcomdlg32 -luser32 -lgdi32 -lws2_32
@@ -25,10 +25,10 @@ index 07e2b6a88e..5bfbcfdca6 100644
  QMAKE_IDL               = $${CROSS_COMPILE}widl
  QMAKE_LIB               = $${CROSS_COMPILE}ar -rc
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 6bf1380716..74a9160628 100644
+index 2ab7775fea..6bc621ce27 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
-@@ -229,8 +229,8 @@ mac {
+@@ -234,8 +234,8 @@ mac {
      CMAKE_LIB_FILE_LOCATION_RELEASE = $${CMAKE_QT_STEM}.dll
  
      mingw {
@@ -40,18 +40,20 @@ index 6bf1380716..74a9160628 100644
          !isEmpty(CMAKE_STATIC_TYPE) {
              CMAKE_STATIC_WINDOWS_BUILD = "true"
 diff --git a/mkspecs/features/win32/windows.prf b/mkspecs/features/win32/windows.prf
-index ecb167bf18..7c9368c3b3 100644
+index 272170d428..17f3ef9c2d 100644
 --- a/mkspecs/features/win32/windows.prf
 +++ b/mkspecs/features/win32/windows.prf
-@@ -5,7 +5,7 @@ contains(TEMPLATE, ".*app") {
+@@ -5,8 +5,8 @@ contains(TEMPLATE, ".*app") {
      mingw:DEFINES += QT_NEEDS_QMAIN
  
      qt:for(entryLib, $$list($$unique(QMAKE_LIBS_QT_ENTRY))) {
 -        isEqual(entryLib, -lqtmain) {
-+        isEqual(entryLib, -lqt5main): {
-             !contains(QMAKE_DEFAULT_LIBDIRS, $$QT.core.libs): \
-                 QMAKE_LIBS += -L$$QT.core.libs
-             CONFIG(debug, debug|release): QMAKE_LIBS += $${entryLib}$${QT_LIBINFIX}d
+-            lib = $$QT.core.libs/$${QMAKE_PREFIX_STATICLIB}qtmain$$QT_LIBINFIX$$qtPlatformTargetSuffix().$$QMAKE_EXTENSION_STATICLIB
++        isEqual(entryLib, -lqt5main) {
++            lib = $$QT.core.libs/$${QMAKE_PREFIX_STATICLIB}qt5main$$QT_LIBINFIX$$qtPlatformTargetSuffix().$$QMAKE_EXTENSION_STATICLIB
+             PRE_TARGETDEPS += $$lib
+             QMAKE_LIBS += $$lib
+         } else {
 diff --git a/src/winmain/winmain.pro b/src/winmain/winmain.pro
 index 9cb6ab0c59..4327ba365e 100644
 --- a/src/winmain/winmain.pro
@@ -66,5 +68,5 @@ index 9cb6ab0c59..4327ba365e 100644
  
  CONFIG += static
 -- 
-2.21.0
+2.22.0
 

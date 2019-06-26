@@ -19,14 +19,15 @@ in the package.
 ## Variants
 There are different variants of the package which can be selected by simply adjusting pkgname:
 
-| Package name                                    | Customization                                                          |
-| ----------------------------------------------- | -----------------------------------------------------------------------|
-| mingw-w64-qt5-base or mingw-w64-qt5-base-opengl | using native OpenGL                                                    |
-| mingw-w64-qt5-base-angle                        | using ANGLE rather than native OpenGL                                  |
-| mingw-w64-qt5-base-dynamic                      | allows choosing between ANGLE and native OpenGL dynamically at runtime |
-| mingw-w64-qt5-base-noopenql                     | no OpenGL support                                                      |
+| Package name                                            | Customization                                                          |
+| ------------------------------------------------------- | -----------------------------------------------------------------------|
+| mingw-w64-qt5-base-dynamic, mingw-w64-qt5-base-dynamic  | allows choosing between ANGLE and native OpenGL dynamically at runtime |
+| mingw-w64-qt5-base-opengl                               | using native OpenGL                                                    |
+| mingw-w64-qt5-base-angle                                | using ANGLE rather than native OpenGL                                  |
+| mingw-w64-qt5-base-noopenql                             | no OpenGL support                                                      |
 
 * The variants are conflicting (and hence can not be installed at the same time).
+* It is also possible to use the software rasterizer provided by mingw-w64-mesa as a drop-in replacement for the regular OpenGL libraries.
 * See also: http://doc.qt.io/qt-5/windows-requirements.html#dynamically-loading-graphics-drivers
 
 ## Static libraries
