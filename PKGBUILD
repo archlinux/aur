@@ -12,7 +12,7 @@
 
 pkgname=bitwig-studio-beta
 _pkgname=bitwig-studio
-pkgver=3.0beta7
+pkgver=3.0beta8
 _pkgver=3.0
 pkgrel=1
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
@@ -28,7 +28,7 @@ provides=('bitwig-studio')
 options=(!strip)
 #source=("https://downloads.bitwig.com/beta/${_pkgver}/bitwig-studio-${pkgver}.deb")
 source=("local://bitwig-studio-${pkgver}.deb")
-sha256sums=('ff4ac181883c7c28989aa5e12ed499c6cf99009923d7718f1155a440eaea50cc')
+sha256sums=('b7b1d55eef194d9a9e63a9e1b3aa2d24a02cdd43e32b7acaf02b979b3f8917b1')
 
 prepare() {
 	msg2 "Unpacking archive contents..."
