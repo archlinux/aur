@@ -47,7 +47,7 @@ prepare() {
 build() {
   cd xgl
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
- 
+  
   cmake -H. -Bbuilds/Release \
     -DCMAKE_C_FLAGS=-m32 \
     -DCMAKE_CXX_FLAGS=-m32 \
@@ -57,17 +57,17 @@ build() {
     -DBUILD_WAYLAND_SUPPORT=On \
     -G Ninja
     
-  ninja -C builds/Release
+  ninja -j 6 -l 6 -C builds/Release
 }
 
 package() {
   install -m755 -d ${pkgdir}/usr/lib32
   install -m755 -d ${pkgdir}/usr/share/vulkan/icd.d
-  install -m755 -d ${pkgdir}/usr/share/licenses/lib32-amdvlk
+  install -m755 -d ${pkgdir}/usr/share/licenses/${pkgname}
   
   install xgl/builds/Release/icd/amdvlk32.so ${pkgdir}/usr/lib32/
   install AMDVLK/json/Redhat/amd_icd32.json ${pkgdir}/usr/share/vulkan/icd.d/
-  install AMDVLK/LICENSE.txt ${pkgdir}/usr/share/licenses/lib32-amdvlk/
+  install AMDVLK/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/
 
   sed -i "s/\/lib/\/lib32/g" ${pkgdir}/usr/share/vulkan/icd.d/amd_icd32.json
 } 
