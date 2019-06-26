@@ -1,19 +1,19 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=pyright
-pkgver=1.0.40
+pkgver=1.0.41
 pkgrel=1
 pkgdesc="Type checker for the Python language"
 arch=('any')
-url="https://github.com/Microsoft/pyright"
+url="https://github.com/microsoft/pyright"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=(
-  "https://github.com/Microsoft/pyright/archive/${pkgver}.tar.gz"
+  "${url}/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-  '09dbc6ba8a93f325e6e2893ea02782ac0b6b99975a5ae86d8dbd11f129b17a3c'
+  '130bbd0937b882d2010e84e7e063eb45eea056d856089b628a76745558a54c3a'
 )
 
 prepare() {

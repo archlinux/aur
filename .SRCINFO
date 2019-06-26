@@ -1,14 +1,14 @@
 pkgbase = pyright
 	pkgdesc = Type checker for the Python language
-	pkgver = 1.0.40
+	pkgver = 1.0.41
 	pkgrel = 1
-	url = https://github.com/Microsoft/pyright
+	url = https://github.com/microsoft/pyright
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://github.com/Microsoft/pyright/archive/1.0.40.tar.gz
-	sha256sums = 09dbc6ba8a93f325e6e2893ea02782ac0b6b99975a5ae86d8dbd11f129b17a3c
+	source = https://github.com/microsoft/pyright/archive/1.0.41.tar.gz
+	sha256sums = 130bbd0937b882d2010e84e7e063eb45eea056d856089b628a76745558a54c3a
 
 pkgname = pyright
 
