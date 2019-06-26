@@ -101,7 +101,7 @@ build() {
   sed -i '/ENABLE_IF_LINKS(DEAL_II_LINKER_FLAGS "-Wl,--as-needed")/d' \
       ${srcdir}/${_realname}-$pkgver/cmake/setup_compiler_flags_gnu.cmake
 
-  sed -i '121ifedisableexcept(FE_INVALID);\n' \
+  sed -i '122ifedisableexcept(FE_INVALID);\n' \
       ${srcdir}/${_realname}-$pkgver/tests/quick_tests/scalapack.cc
 
 
@@ -141,9 +141,11 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # delete extra files that deal.II installs into the top level directory
-  rm "${pkgdir}/${installation_prefix}/LICENSE"
+  rm "${pkgdir}/${installation_prefix}/LICENSE.md"
   rm "${pkgdir}/${installation_prefix}/README.md"
+  rm "${pkgdir}/${installation_prefix}/detailed.log"
+  rm "${pkgdir}/${installation_prefix}/summary.log"
 
   install -D -m755 "${srcdir}/build/deal-ii.sh" "${pkgdir}/etc/profile.d/deal-ii.sh"
-  install -D -m644 "${srcdir}/${_realname}-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/${_realname}-$pkgver/LICENSE"
+  install -D -m644 "${srcdir}/${_realname}-$pkgver/LICENSE.md" "${pkgdir}/usr/share/licenses/${_realname}-$pkgver/LICENSE.md"
 }
