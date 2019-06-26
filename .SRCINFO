@@ -1,12 +1,14 @@
 pkgbase = stack-client
 	pkgdesc = The STACK Client provides file sync to desktop clients.
 	pkgver = 2.4.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.transip.nl/stack/
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = extra-cmake-modules
+	makedepends = frameworkintegration
 	depends = qtkeychain
 	depends = qt5-webkit
 	depends = hicolor-icon-theme
