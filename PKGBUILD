@@ -1,8 +1,8 @@
 # Maintainer: Luis Sarmiento <Luis.Sarmiento-ala-nuclear.lu.se>
 
 pkgname=upak
-pkgver=10.6.8
-pkgrel=8
+pkgver=10.6.8 # <-- current source doesn't have a version. We keep the last known one
+pkgrel=9
 pkgdesc="HRIBF Data Acquisition and analysis."
 url="ftp://ftp.phy.ornl.gov/pub/upak/README.html"
 arch=('x86_64')
@@ -10,31 +10,20 @@ license=('unknown')
 depends=('libx11' 'tcsh' 'bash')
 makedepends=('gcc-fortran>=4.2')
 options=(staticlibs emptydirs)
-source=("ftp://ftp.phy.ornl.gov/pub/${pkgname}/${pkgname}-src.tar.gz"
-  "Dscanor.Makefile.patch"
+source=("ftp://ftp.phy.ornl.gov/pub/${pkgname}/${pkgname}-src.tgz"
   "upak.install")
-md5sums=('bcdddfd685f4a19cd93452be18de238b'
-         'ec5128392e9f7b52a3e5dc5650cd7de5'
+md5sums=('6fda860ff33eda39c2914f34453ce96b'
          '7d8e9e7ec0f6ed54683a65f640899e20')
+
+
 install="${pkgname}.install"
-
-prepare() {
-
-  #
-  #  diff -puN src/upak/Dscanor/Makefile Dscanor.Makefile > Dscanor.Makefile.patch
-  #
-  msg 'patch Dscanor Makefile'
-  cd "${srcdir}/${pkgname}/Dscanor"
-  patch -Np3 < ${srcdir}/Dscanor.Makefile.patch
-
-}
 
 package() {
 
   ## compile
   cd "${srcdir}/${pkgname}"
   make clean
-  make -j1 INSTALLDIR="${pkgdir}/usr/bin" all
+  make -j1 INSTALLDIR="${pkgdir}/usr/bin" all  # <-- this already goes to ${pkgdir} therefore must be package() not build()
 
   ## documentation (0)
   _DOCDIR=${pkgdir}/usr/share/doc/${pkgname}
