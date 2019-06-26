@@ -4,7 +4,7 @@
 pkgname=deal-ii
 _realname=dealii
 pkgver=9.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="http://www.dealii.org/"
