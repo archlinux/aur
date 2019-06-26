@@ -4,7 +4,7 @@ _srcname=canta-kde
 pkgname=canta-kde-git
 pkgdesc="Canta theme for kde plasma desktop"
 pkgver=r6.e2e8841
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/vinceliuice/Canta-kde"
 license=('GPL')
@@ -23,19 +23,25 @@ pkgver() {
     )
 }
 
-prepare(){
-    cd "${srcdir}/${_srcname}"
-    sed -i 's,$HOME/.local/share,'"${pkgdir}"'/usr/share,g' install.sh
-    sed -i 's,$HOME/.config,'"${pkgdir}"'/usr/share,g' install.sh
-
-}
 package() {
-    #Install kde theme
     cd "${srcdir}/${_srcname}"
-    mkdir -p "${pkgdir}/usr/share/"{aurorae/themes,color-schemes,plasma/desktoptheme,plasma/look-and-feel}
-    ./install.sh
     
-    #Install sddm theme
+    mkdir -p "${pkgdir}/usr/share/"{aurorae/themes,color-schemes,plasma/desktoptheme,plasma/look-and-feel,Kvantum}
+
+    _AURORAE_DIR="${pkgdir}/usr/share/aurorae/themes"
+    _SCHEMES_DIR="${pkgdir}/usr/share/color-schemes"
+    _PLASMA_DIR="${pkgdir}/usr/share/plasma/desktoptheme"
+    _LOOKFEEL_DIR="${pkgdir}/usr/share/plasma/look-and-feel"
+    _KVANTUM_DIR="${pkgdir}/usr/share/Kvantum"
+
+    cp -r aurorae/Canta-* ${_AURORAE_DIR}
+    cp -r color-schemes/*.colors ${_SCHEMES_DIR}
+    cp -r Kvantum/Canta-* ${_KVANTUM_DIR}
+    cp -r plasma/desktoptheme/Canta-* ${_PLASMA_DIR}
+    cp -r plasma/look-and-feel/com.github.vinceliuice.* ${_LOOKFEEL_DIR}
+    cp color-schemes/Cantadark.colors ${_PLASMA_DIR}/Canta-dark/colors
+    cp color-schemes/Cantalight.colors ${_PLASMA_DIR}/Canta-light/colors
+
     cd sddm
     mkdir -p "${pkgdir}/usr/share/sddm/themes"
     cp -ur Canta "${pkgdir}/usr/share/sddm/themes"

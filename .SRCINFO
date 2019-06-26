@@ -1,7 +1,7 @@
 pkgbase = canta-kde-git
 	pkgdesc = Canta theme for kde plasma desktop
 	pkgver = r6.e2e8841
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/Canta-kde
 	arch = any
 	license = GPL
