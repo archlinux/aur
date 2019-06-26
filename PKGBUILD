@@ -1,7 +1,7 @@
 # Maintainer: Shayne Hartford<shayneehartford@gmail.com>
 
 pkgbase=linux-zen-vfio
-_srcver=5.1.5-zen1
+_srcver=5.1.15-zen1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -25,7 +25,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '6c77a0f9ed82e92cdd1c39a823501d6affd3ca134defbed11bd0ccdf7193a26b'
+            'f6ae545b0ee0860ed7e6181778e829edac23b30486b20a6359577eee1a6952b9'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
