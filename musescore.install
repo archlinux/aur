@@ -1,10 +1,6 @@
 warning() {
   echo ""
-  echo ">>> WARNING: This is a development build!"
-  echo "    Scores created with this version are likely incompatible with MuseScore stable releases."
-  echo ""
-  echo ">>> NOTE: MuseScore and MuseScore-dev can be installed alongside."
-  echo "    Run by executing 'mscore-dev'
+  echo ">>> NOTE: Launch by executing 'mscore-dev'."
   "
 }
 post_install() {

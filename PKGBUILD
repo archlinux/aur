@@ -2,7 +2,7 @@
 
 pkgname=musescore-dev
 _pkgname=MuseScore
-pkgver=r14890.5f7747303
+pkgver=r16111.4b6aa73e3
 _branch=master
 pkgrel=1
 pkgdesc='Development branch of the sheet music editor MuseScore'
@@ -33,6 +33,8 @@ makedepends=(
   texlive-core
 )
 optdepends=('lame: MP3 export')
+conflicts=('musescore')
+provides=('musescore')
 install=musescore.install
 source=("git+$url.git#branch=$_branch")
 md5sums=('SKIP')
