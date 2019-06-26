@@ -1,11 +1,12 @@
 pkgbase = rescuetime2
 	pkgdesc = Application time-tracking for Linux. Stable version
 	pkgver = 2.14.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.rescuetime.com
 	arch = i686
 	arch = x86_64
 	license = proprietary
+	makedepends = gendesk
 	depends = qt5-base
 	depends = xorg-xprop
 	depends = xprintidle
