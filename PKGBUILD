@@ -1,6 +1,6 @@
 # Maintainer: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=nccmp
-pkgver=1.8.3.1
+pkgver=1.8.5.0
 pkgrel=1
 pkgdesc="nccmp compares two NetCDF files bitwise or with a user defined tolerance"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ license=('GPL')
 groups=(science)
 depends=(netcdf)
 source=(https://gitlab.com/remikz/nccmp/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('6e3caef483f0b44544c1a825899f989a')
+md5sums=('4f5483ca08bb3097d434e124a04742db')
  
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
