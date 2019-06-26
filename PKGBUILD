@@ -3,7 +3,7 @@
 pkgbase=python-olm
 pkgname=('python-olm' 'python2-olm')
 pkgver=3.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='python bindings for the olm cryptographic ratchet library'
 arch=('any')
 url='https://gitlab.matrix.org/matrix-org/olm'
@@ -27,13 +27,13 @@ build() {
 }
 
 package_python-olm() {
-  depends=('python-cffi')
+  depends+=('python-cffi')
   cd "$srcdir"/$pkgbase-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 package_python2-olm() {
-  depends=('python2-cffi')
+  depends+=('python2-cffi')
 
   cd "$srcdir"/$pkgbase-$pkgver-py2
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
