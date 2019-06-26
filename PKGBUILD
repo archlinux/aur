@@ -2,7 +2,7 @@
 
 pkgname=protondb-to-steam-library-git
 _pkgname=ProtonDB-to-Steam-Library
-pkgver=r22.c26c79d
+pkgver=r35.64524da
 pkgrel=2
 pkgdesc="Pull ratings from ProtonDB and import them into your Steam library as tags."
 arch=('any')
