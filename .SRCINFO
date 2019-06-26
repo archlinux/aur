@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgver = 5.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -15,7 +15,7 @@ pkgbase = linux-clear
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.1.15.xz
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.1.14-788
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.1.15-791
 	source = intel-ucode-20190618.tar.gz::https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-20190618.tar.gz
 	source = enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	source = 60-linux.hook
