@@ -5,7 +5,7 @@
 
 pkgname=pistache-git
 _name=${pkgname%-git}
-pkgver=223.7184600
+pkgver=985.c5927e1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Modern and elegant HTTP and REST framework for C++'
@@ -26,9 +26,6 @@ pkgver() {
 build() {
   cd "${srcdir}/${_name}"
 
-  # since this is only a small lib and ABI seems very unstable at this point
-  # it should be ok to build it only as a static lib for now
-
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DPISTACHE_BUILD_TESTS=true \
@@ -44,4 +41,5 @@ check() {
 package() {
   cd "${srcdir}/${_name}"
   make DESTDIR="${pkgdir}" install
+  mv ${pkgdir}/usr/lib{64,}
 }

@@ -1,6 +1,6 @@
 pkgbase = pistache-git
 	pkgdesc = Modern and elegant HTTP and REST framework for C++
-	pkgver = 223.7184600
+	pkgver = 985.c5927e1
 	pkgrel = 1
 	url = https://github.com/oktal/pistache
 	arch = i686
