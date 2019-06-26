@@ -1,7 +1,7 @@
-From 9ae3b38009637d7455dc7c30295beb9de8f137fc Mon Sep 17 00:00:00 2001
+From bfd5f5495a87d9a9d0bbf40e2bcc6b0108c34947 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:27:28 +0200
-Subject: [PATCH 17/34] Build dynamic host libraries
+Subject: [PATCH 16/33] Build dynamic host libraries
 
 This came initially from Fedora, not sure whether
 it makes sense to keep it. Regular Arch package
@@ -37,5 +37,5 @@ index c3ed27d979..30d2114aa1 100644
 -INSTALLS = lib
 +INSTALLS += lib
 -- 
-2.21.0
+2.22.0
 

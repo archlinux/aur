@@ -1,7 +1,7 @@
-From 70435bc3ad5e60f9330a833094635e73eb9bc6a8 Mon Sep 17 00:00:00 2001
+From 3887b9693805365272de6101eab5c332862960e3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:54:12 +0200
-Subject: [PATCH 05/34] Make sure *.pc files are installed correctly
+Subject: [PATCH 04/33] Make sure *.pc files are installed correctly
 
 ---
  qmake/generators/makefile.cpp          | 8 ++++++--
@@ -10,7 +10,7 @@ Subject: [PATCH 05/34] Make sure *.pc files are installed correctly
  3 files changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index ab261d02f1..aa4c96be49 100644
+index b634ec622b..aac53cd0ea 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
 @@ -3230,7 +3230,7 @@ MakefileGenerator::openOutput(QFile &file, const QString &build) const
@@ -49,7 +49,7 @@ index 350ebd377a..d0c234b864 100644
      void writePkgConfigFile();   // for pkg-config
  
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index 208af1327f..5a37b218de 100644
+index 16f9361d13..d9887cd36d 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -753,7 +753,7 @@ QString Win32MakefileGenerator::defaultInstall(const QString &t)
@@ -62,5 +62,5 @@ index 208af1327f..5a37b218de 100644
                      uninst.append("\n\t");
                  uninst.append("-$(DEL_FILE) " + escapeFilePath(dst_pc));
 -- 
-2.21.0
+2.22.0
 

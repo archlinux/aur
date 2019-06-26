@@ -1,7 +1,7 @@
-From 2fb77d4fad4edc257562f29347e1279c001b3f89 Mon Sep 17 00:00:00 2001
+From 03ff76b96327c037910f0f6c41a95960aa6d6b18 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 May 2018 03:47:14 +0200
-Subject: [PATCH 33/34] Disable hardware randomizer for 32-bit
+Subject: [PATCH 32/33] Disable hardware randomizer for 32-bit
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -45,5 +45,5 @@ index 917a91098e..c770a3e19b 100644
  #else
      return false;
 -- 
-2.21.0
+2.22.0
 

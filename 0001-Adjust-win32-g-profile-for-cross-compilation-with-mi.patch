@@ -1,7 +1,7 @@
-From 9a22842c6ec7d34b1edba1a18411e73bf90a1567 Mon Sep 17 00:00:00 2001
+From 07a334d39698cc7d2826ed1b5b6cb9b67dd4def8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
-Subject: [PATCH 01/34] Adjust win32-g++ profile for cross compilation with
+Subject: [PATCH 01/33] Adjust win32-g++ profile for cross compilation with
  mingw-w64
 
 Adding a new, separate mkspec instead of patching the existing one
@@ -19,7 +19,7 @@ Also see the following issues:
  3 files changed, 39 insertions(+), 21 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index f0df324b64..07e2b6a88e 100644
+index c3a1f3a373..5208d22bd6 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
 @@ -8,18 +8,24 @@
@@ -50,15 +50,15 @@ index f0df324b64..07e2b6a88e 100644
  # can't add 'DEFINES += WIN64' and 'QMAKE_COMPILER_DEFINES += _WIN64' defines for
  # x86_64 platform similar to 'msvc-desktop.conf' toolchain, because, unlike for MSVC,
  # 'QMAKE_TARGET.arch' is inherently unavailable.
-@@ -34,6 +40,7 @@ QMAKE_CFLAGS_SSE2      += -mstackrealign
- QMAKE_CXXFLAGS_RTTI_ON  = -frtti
- QMAKE_CXXFLAGS_RTTI_OFF = -fno-rtti
+@@ -32,6 +38,7 @@ QMAKE_YACCFLAGS         = -d
+ QMAKE_CFLAGS_SSE2      += -mstackrealign
+ 
  QMAKE_CXXFLAGS_EXCEPTIONS_ON = -fexceptions -mthreads
 +QMAKE_CXXFLAGS_EXCEPTIONS_OFF = -fno-exceptions
  
  QMAKE_INCDIR            =
  
-@@ -43,40 +50,51 @@ QMAKE_RUN_CXX           = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $obj $src
+@@ -41,40 +48,51 @@ QMAKE_RUN_CXX           = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $obj $src
  QMAKE_RUN_CXX_IMP       = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
  
  QMAKE_LFLAGS_EXCEPTIONS_ON = -mthreads
@@ -143,10 +143,10 @@ index 4630ec4602..3f9fdc72b1 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}clang++
 diff --git a/mkspecs/win32-g++/qmake.conf b/mkspecs/win32-g++/qmake.conf
-index 5e9923357f..67805c29a7 100644
+index 5de482f23b..3c3d22c699 100644
 --- a/mkspecs/win32-g++/qmake.conf
 +++ b/mkspecs/win32-g++/qmake.conf
-@@ -12,11 +12,11 @@ include(../common/g++-win32.conf)
+@@ -13,11 +13,11 @@ include(../common/windows-desktop.conf)
  # modifications to g++-win32.conf
  
  QMAKE_CC                = $${CROSS_COMPILE}gcc
@@ -161,5 +161,5 @@ index 5e9923357f..67805c29a7 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
 -- 
-2.21.0
+2.22.0
 
