@@ -69,7 +69,7 @@ build() {
     -G Ninja
     
   msg "build amdvlk64.so"
-  ninja -C builds/Release64
+  #ninja -C builds/Release64
   
   msg "build spvgen.so"
   ninja -C builds/Release64 spvgen
@@ -78,13 +78,13 @@ build() {
 package() {
   install -m755 -d ${pkgdir}/usr/lib
   install -m755 -d ${pkgdir}/usr/share/vulkan/icd.d
-  install -m755 -d ${pkgdir}/usr/share/licenses/amdvlk-git
+  install -m755 -d ${pkgdir}/usr/share/licenses/${pkgname}
   install -m755 -d ${pkgdir}/etc/amd
 
   install xgl/builds/Release64/icd/amdvlk64.so ${pkgdir}/usr/lib/
   install xgl/builds/Release64/spvgen/spvgen.so ${pkgdir}/usr/lib/
   install AMDVLK/json/Redhat/amd_icd64.json ${pkgdir}/usr/share/vulkan/icd.d/
-  install AMDVLK/LICENSE.txt ${pkgdir}/usr/share/licenses/amdvlk-git/
+  install AMDVLK/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/
   install amdPalSettings.cfg ${pkgdir}/etc/amd/
 
   sed -i "s/\/lib64/\/lib/g" ${pkgdir}/usr/share/vulkan/icd.d/amd_icd64.json
