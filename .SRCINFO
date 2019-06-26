@@ -1,6 +1,6 @@
 pkgbase = signal
 	pkgdesc = Private messenger for the desktop
-	pkgver = 1.25.2
+	pkgver = 1.25.1
 	pkgrel = 1
 	url = https://github.com/signalapp/Signal-Desktop
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = signal
 	depends = openssl-1.0
 	conflicts = signal-desktop-beta-bin
 	conflicts = signal-desktop-bin
-	source = signal-git-repo::git+https://github.com/signalapp/Signal-Desktop.git#tag=v1.25.2
+	source = signal-git-repo::git+https://github.com/signalapp/Signal-Desktop.git#tag=v1.25.1
 	source = signal.sh
 	source = signal.desktop
 	source = signal-tray.desktop
