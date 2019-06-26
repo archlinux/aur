@@ -1,6 +1,6 @@
 pkgbase = python-django-leaflet
 	pkgdesc = django-leaflet allows you to use Leaflet in your Django projects.
-	pkgver = 0.23.0
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/django-leaflet
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-django-leaflet
 	makedepends = python-distribute
 	depends = python
 	depends = python-django
-	source = https://github.com/makinacorpus/django-leaflet/archive/0.23.0.tar.gz
-	md5sums = 155e403fb9f6d7871a613f9151df16ba
+	source = https://github.com/makinacorpus/django-leaflet/archive/0.24.0.tar.gz
+	md5sums = 6abece6fcd7c110b5800440465d2d434
 
 pkgname = python-django-leaflet
 
