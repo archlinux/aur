@@ -14,7 +14,7 @@ _mapboxcfg='QT.global.disabled_features+=geoservices_mapboxgl'
 
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
-pkgver=5.12.3
+pkgver=5.13.0
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
@@ -27,8 +27,8 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch')
-sha256sums=('52d589be2852ada0c000b06cc411b61e521cd0797470be567fd1625bcc9d75c6'
-            'f67989072e3f7628dc9e5dd7a47574e31c95bd7a0352de5be0bfd25d97be5a63')
+sha256sums=('205a47d259841b3879c59d3054d8b1098d3b0e7b45c64ad327daedefb4421414'
+            '9a6f99066138a990213565d8debfd3724c9c25110bbd65d4bb2c31db575989a7')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
