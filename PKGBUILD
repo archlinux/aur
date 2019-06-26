@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=basis-universal-git
-pkgver=r186.92bc0de0ea
+pkgver=1.08+19.gbbbce07039
 pkgrel=1
 pkgdesc="Basis Universal GPU Texture Codec"
 arch=('x86_64')
@@ -15,9 +15,7 @@ conflicts=(basis-universal)
 
 pkgver() {
   cd basis_universal
-  printf 'r%d.%s' \
-    $(git rev-list --count HEAD) \
-    $(git rev-parse --short=10 HEAD)
+  git describe --long --abbrev=10 --tags | sed 's/-/+/; s/-/./'
 }
 
 prepare() {
