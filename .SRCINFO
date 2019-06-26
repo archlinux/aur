@@ -1,6 +1,6 @@
 pkgbase = trilium-bin
 	pkgdesc = A hierarchical note taking application built on modern technologies.
-	pkgver = 0.33.3
+	pkgver = 0.33.4
 	pkgrel = 1
 	url = https://github.com/zadam/trilium
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = trilium-bin
 	depends = nss
 	depends = lib32-gcc-libs
 	depends = gtk3
-	source = https://github.com/zadam/trilium/releases/download/v0.33.3/trilium-linux-x64-0.33.3.tar.xz
-	sha512sums = 2e1a2460b18add6084adf595a2097c8a04c37d3453dfd1fe3da9170ef869edc8a486d924004b97ff7732280ab012feb825bee19b4501b06aa3fdc21f53c80ccf
+	source = https://github.com/zadam/trilium/releases/download/v0.33.4/trilium-linux-x64-0.33.4.tar.xz
+	sha512sums = 1aa0acd551f634270203ad7d257249aa052c5debfc3d3336ee32d318599b243fd9f615f6fcfda89a50f11058856adbe830cee616234707137feb3cd4cfb4c90f
 
 pkgname = trilium-bin
 
