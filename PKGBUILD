@@ -19,7 +19,7 @@ md5sums=(
 )
 
 package() {
-    7z x MiTalk_${pkgver}.AppImage -o"${pkgdir}"/opt/mitalk/
+    7z x MiTalk_"${pkgver}".AppImage -o"${pkgdir}"/opt/mitalk/
 
     chmod -R 755 "${pkgdir}"/opt/
 
