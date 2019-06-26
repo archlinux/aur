@@ -33,6 +33,6 @@ package() {
     cp -dr --no-preserve=ownership ./* "${pkgdir}/usr/lib/${_pkgname}/"
     
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/usr/lib/${_pkgname}/bin/launch.sh" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/usr/lib/${_pkgname}/bin/launch.sh" "${pkgdir}/usr/bin/sam-rewritten"
 }
  
