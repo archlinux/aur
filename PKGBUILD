@@ -2,7 +2,7 @@
 
 pkgname=tv
 pkgver=1.9.13
-pkgrel=5
+pkgrel=6
 pkgdesc="Spectra- and matrix-analysis program developed at IKP, Köln, Germany"
 url="http://www.ikp.uni-koeln.de/misc/doc/Tv_user-manual/Tv_user-manual.html"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ depends=('mfile' 'xaw3d')
 makedepends=('latex2html')
 options=('!emptydirs')
 
-source=("http://www.ikp.uni-koeln.de/src/${pkgname}-${pkgver}.tar.gz")
+source=("https://web.archive.org/web/20110707105717/http://www.ikp.uni-koeln.de/src/${pkgname}-${pkgver}.tar.gz")
 md5sums=('5b739a811abe604cbe4160e4402796dc')
 
 build() {
