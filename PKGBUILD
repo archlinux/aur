@@ -8,7 +8,7 @@
 
 _qt_module=qtcharts
 pkgname="mingw-w64-qt5-charts"
-pkgver=5.12.3
+pkgver=5.13.0
 pkgrel=1
 arch=('any')
 pkgdesc="Provides a set of easy to use chart components (mingw-w64)"
@@ -21,7 +21,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('820c94b2bf5d73e921fe99be1e3a03a6f012d96574a08e504d68db237522b3a9')
+sha256sums=('04e381ec287edf230583eb32fbcde40bce62119d3eabbe2978f4ce8366e36b27')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
