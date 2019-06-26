@@ -9,9 +9,9 @@ _xgl_commit=96d84068b622b2c3ce8cf9aa8ff597260aa5ad3f
 _pal_commit=135258ac31901e1293fea5e2f599659ee438ba1f
 _llvm_commit=b9910c8bfcccc63c07c959963fa567120d11f024
 
-pkgdesc="AMD's standalone Vulkan driver"
+pkgdesc='AMDVLK - AMD Open Source Driver for Vulkan® (32 Bit)'
 arch=(x86_64)
-url="https://github.com/GPUOpen-Drivers"
+url='https://github.com/GPUOpen-Drivers'
 license=('MIT')
 depends=('vulkan-icd-loader')
 provides=('lib32-amdvlk' 'lib32-vulkan-driver')
