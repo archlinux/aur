@@ -36,9 +36,9 @@ package() {
         rm "${pkgdir}"/opt/mitalk/usr/share/icons/hicolor/0x0/apps/mitalk_$1.png
     done
 
-    sed -i "s/米聊/mitalk/" "${pkgdir}"/opt/mitalk/AppRun
-    sed -i "s/Icon=米聊/Icon=mitalk/" "${pkgdir}"/opt/mitalk/米聊.desktop
-    sed -i "s/Exec=AppRun/Exec=\/opt\/mitalk\/AppRun/" "${pkgdir}"/opt/mitalk/米聊.desktop
+    sed -i "s/米聊/mitalk/g" "${pkgdir}"/opt/mitalk/AppRun
+    sed -i "s/Icon=米聊/Icon=mitalk/g" "${pkgdir}"/opt/mitalk/米聊.desktop
+    sed -i "s/Exec=AppRun/Exec=\/opt\/mitalk\/AppRun/g" "${pkgdir}"/opt/mitalk/米聊.desktop
 
     install -Dm644 "${pkgdir}"/opt/mitalk/米聊.desktop "${pkgdir}"/usr/share/applications/mitalk.desktop
 
