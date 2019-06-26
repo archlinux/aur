@@ -1,6 +1,6 @@
 pkgbase = gandom-fonts
 	pkgdesc = A beautiful Persian font based on Samim font.
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://rastikerdar.github.io/gandom-font/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = gandom-fonts
 	conflicts = ttf-gandom
 	conflicts = gandom-fonts
 	replaces = ttf-gandom
-	source = gandom-fonts-0.7.zip::https://github.com/rastikerdar/gandom-font/releases/download/v0.7/gandom-font-v0.7.zip
-	sha256sums = 822ec15f79c3c7bb9f4d338925e904f9ee4feda857bea31e38cc42c717a7cb82
+	source = gandom-fonts-0.8.zip::https://github.com/rastikerdar/gandom-font/releases/download/v0.8/gandom-font-v0.8.zip
+	sha256sums = a02f88ef41938332dc07a174af554494631ef756d076799ea18d1e6af2e5af66
 
 pkgname = gandom-fonts
 
