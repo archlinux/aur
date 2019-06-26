@@ -1,13 +1,13 @@
 # Maintainer: Thomas Dagenais <exrok@i64.dev>
 pkgname=evdoublebind
-pkgver=r19.83b636f
+pkgver=r21.54434dd
 pkgrel=1
 pkgdesc="small evdev keyboard key macro binding and XKB generator for doublebindings"
 arch=('x86_64')
 url="https://github.com/exrok/evdoublebind"
 license=('MIT')
 depends=('libxkbcommon')
-makedepends=('git' 'make')
+makedepends=('git' 'make' 'linux-headers')
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
