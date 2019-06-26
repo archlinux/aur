@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-svg
 	pkgdesc = Classes for displaying the contents of SVG files (mingw-w64)
-	pkgver = 5.12.3
+	pkgver = 5.13.0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = mingw-w64-qt5-svg
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.12/5.12.3/submodules/qtsvg-everywhere-src-5.12.3.tar.xz
-	sha256sums = f666438dbf6816b7534e539b95e3fa4405f11d7e2e2bbcde34f2db5ae0f27dc2
+	source = https://download.qt.io/official_releases/qt/5.13/5.13.0/submodules/qtsvg-everywhere-src-5.13.0.tar.xz
+	sha256sums = 0f568e20d13418c6d8e395db2ce4d2d706d3fb470cd665853e3637a29fde0eaf
 
 pkgname = mingw-w64-qt5-svg
 
