@@ -3,7 +3,7 @@
 _srcname=canta-kde
 pkgname=canta-kde-git
 pkgdesc="Canta theme for kde plasma desktop"
-pkgver=r4.f40c04d
+pkgver=r6.e2e8841
 pkgrel=1
 arch=('any')
 url="https://github.com/vinceliuice/Canta-kde"
@@ -30,8 +30,14 @@ prepare(){
 
 }
 package() {
+    #Install kde theme
     cd "${srcdir}/${_srcname}"
     mkdir -p "${pkgdir}/usr/share/"{aurorae/themes,color-schemes,plasma/desktoptheme,plasma/look-and-feel}
-    ./install.sh 
+    ./install.sh
+    
+    #Install sddm theme
+    cd sddm
+    mkdir -p "${pkgdir}/usr/share/sddm/themes"
+    cp -ur Canta "${pkgdir}/usr/share/sddm/themes"
 }
 
