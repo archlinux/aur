@@ -8,7 +8,7 @@
 
 _qt_module=qtremoteobjects
 pkgname="mingw-w64-qt5-remoteobjects"
-pkgver=5.12.3
+pkgver=5.13.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Inter-process communication (IPC) module developed for Qt (mingw-w64)"
@@ -21,7 +21,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('3475a409127739930e0bf833cea5f7f605adc66ab25fac39b72ce4bf3039cc42')
+sha256sums=('24b2fc953ab4db7f46d8b7da38fef2483b2e9a51ea6836007077947e246fdadc')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
