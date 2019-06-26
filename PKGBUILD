@@ -2,7 +2,7 @@
 pkgname=amdvlk-bin
 pkgver=2019.Q2.5
 pkgrel=3
-pkgdesc='AMDVLK (Stable DEB Release) - AMD Open Source Driver for Vulkan®'
+pkgdesc='Open-source Vulkan driver for AMD Radeon™ graphics adapters (Stable DEB Release)'
 arch=('x86_64')
 url='https://github.com/GPUOpen-Drivers/AMDVLK'
 license=('MIT')
@@ -15,7 +15,6 @@ sha256sums=('81dd70606621713217de5a4cc2aabf6b9e34d4324b5eaaf0429e4f88c9b60b42'
             '3086094e1157a6ab6cf18a9b2364ff30643ee82f0daa7a856e285c6242d090cf')
 
 build() {
-  cd $srcdir
   ar -x ${srcdir}/amdvlk_${pkgver}_amd64.deb
   tar -xJf ${srcdir}/data.tar.xz
 }

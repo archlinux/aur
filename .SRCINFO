@@ -1,5 +1,5 @@
 pkgbase = amdvlk-bin
-	pkgdesc = AMDVLK (Stable DEB Release) - AMD Open Source Driver for Vulkan®
+	pkgdesc = Open-source Vulkan driver for AMD Radeon™ graphics adapters (Stable DEB Release)
 	pkgver = 2019.Q2.5
 	pkgrel = 3
 	url = https://github.com/GPUOpen-Drivers/AMDVLK
