@@ -12,14 +12,14 @@ makedepends=(
     'sed'
 )
 source=(
-    'https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_4.0.19.AppImage'
+    'https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_'${pkgver}'.AppImage'
 )
 md5sums=(
     'b6d92c52d2c0f27e55a07b5f1255669e'
 )
 
 package() {
-    7z x MiTalk_4.0.19.AppImage -o"${pkgdir}"/opt/mitalk/
+    7z x MiTalk_${pkgver}.AppImage -o"${pkgdir}"/opt/mitalk/
 
     chmod -R 755 "${pkgdir}"/opt/
 
