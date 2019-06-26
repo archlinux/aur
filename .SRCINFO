@@ -1,0 +1,18 @@
+pkgbase = auru-git
+	pkgdesc = AUR Utility - Check foreign packages (typically installed w/ pacman -U) for available updates in AUR and upstream websites
+	pkgver = r2.855ffb5
+	pkgrel = 1
+	url = https://github.com/semeion/auru
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-html2text
+	depends = curl
+	depends = jq
+	depends = expac
+	optdepends = fzf
+	source = git+https://github.com/semeion/auru.git
+	sha256sums = SKIP
+
+pkgname = auru-git
+
