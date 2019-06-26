@@ -2,28 +2,27 @@
 # Contributor: Ezra Sharp <nicekiwi@gmail.com>
 
 pkgname=webissues-client
-_pkgname=webissues
 pkgver=1.1.5
 pkgrel=2
 pkgdesc="An open source, multi-platform system for issue tracking and team collaboration."
-arch=("any")
+arch=("x86_64")
 url="http://webissues.mimec.org/"
 license=("GPL3")
 depends=("qt5-base>=5.6.2")
 conflicts=("webissues")
 provides=("webissues")
-source=("http://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.bz2")
-md5sums=("1cfb2162ce5223238b1999bfd8bad51d")
+source=("https://github.com/mimecorg/webissues-client/archive/v1.1.5.tar.gz")
+sha256sums=("7781b26ffefb6fcd05acc7d0b6a02ec237007496d85eb78b185701c245fca895")
 
 build() {
-    cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 
     ./configure -prefix /usr -destdir "$pkgdir" -system-sqlite
     make
 }
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     make DESTDIR="$pkgdir" install
 }
 
