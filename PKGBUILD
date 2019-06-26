@@ -3,8 +3,6 @@
 pkgname=xmage
 pkgver=1.4.36V3
 pkgrel=1
-_java_version=8u201
-_java_dir=jre1.8.0_201
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
 
@@ -12,22 +10,33 @@ arch=('any')
 url="http://xmage.de"
 license=('MIT')
 
-makedepends=('detox')
-optdepends=('wmname: change window manager name for compatibility with certain WMs')
-install="${pkgname}.install"
-
-# Due to compatibility issues with the current version of java in the repositories,
-# xmage now installs a dedicated version of java to /usr/share/xmage/java
-# and therefore currently does not depend on the jre8-openjdk package
-# depends=('jre8-openjdk')
 
 source=("http://xmage.de/files/xmage_${pkgver}.zip"
-	"http://xmage.today/java/jre-8u201-linux-x64.tar.gz"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt')
 
 sha256sums=("b029cacec713d96c1464918a6dbe5b8efd018bf22c9fb7b288fa805d8f951837" 
-	"12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352"
 	"SKIP")
+
+###########################
+# x86_64 ONLY
+# Due to compatibility issues with the current version of java in the repositories,
+# xmage now installs a dedicated version of java to /usr/share/xmage/java
+# for all other architectures, the xmage package requires only jre8-openjdk
+###########################
+
+if [[ "$CARCH" == 'x86_64' ]]; then
+		source+=('http://xmage.today/java/jre-8u201-linux-x64.tar.gz')
+		sha256sums+=('12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352')
+		_java_version=8u201
+		_java_dir=jre1.8.0_201
+
+	else
+		depends=('jre8-openjdk')
+fi
+
+makedepends=('detox')
+optdepends=('wmname: change window manager name for compatibility with certain WMs')
+install="${pkgname}.install"
 
 package() {
 
@@ -48,9 +57,11 @@ package() {
 	sed -i '2i cd /usr/share/xmage/mage-client' mage-client/startClient-unix-lib.sh
 	sed -i '2i cd /usr/share/xmage/mage-server' mage-server/startServer-unix-lib.sh
 
-	msg2 "changing location of java binary..."
-	sed -i "s|java|/usr/share/xmage/${_java_dir}/bin/java|g" mage-client/startClient-unix-lib.sh
-	sed -i "s|java|/usr/share/xmage/${_java_dir}/bin/java|g" mage-server/startServer-unix-lib.sh
+if [[ "$CARCH" == 'x86_64' ]]; then
+		msg2 "x86_64 architecture detected, changing location of java binary..."
+		sed -i "s|java|/usr/share/xmage/${_java_dir}/bin/java|g" mage-client/startClient-unix-lib.sh
+		sed -i "s|java|/usr/share/xmage/${_java_dir}/bin/java|g" mage-server/startServer-unix-lib.sh
+fi
 
 	msg2 "increasing default memory limit of client and server"
 	sed -i 's|-Xmx512m|-Xmx1024m|g' mage-client/startClient-unix-lib.sh

@@ -9,11 +9,11 @@ pkgbase = xmage
 	makedepends = detox
 	optdepends = wmname: change window manager name for compatibility with certain WMs
 	source = http://xmage.de/files/xmage_1.4.36V3.zip
-	source = http://xmage.today/java/jre-8u201-linux-x64.tar.gz
 	source = https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt
+	source = http://xmage.today/java/jre-8u201-linux-x64.tar.gz
 	sha256sums = b029cacec713d96c1464918a6dbe5b8efd018bf22c9fb7b288fa805d8f951837
-	sha256sums = 12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352
 	sha256sums = SKIP
+	sha256sums = 12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352
 
 pkgname = xmage
 
