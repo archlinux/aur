@@ -1,6 +1,6 @@
 pkgbase = goesimage
 	pkgdesc = Download the latest image from a NOAA Geostationary Operational Environment Satellite and set it as the desktop background.
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/pigmonkey/goesimage
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = goesimage
 	depends = feh
 	depends = imagemagick
 	depends = curl
-	source = goesimage-0.1.2.tar.gz::https://github.com/pigmonkey/goesimage/archive/0.1.2.tar.gz
-	md5sums = 8e398b6a0d8dfe5f2971fbf65e7e89d1
+	source = goesimage-0.1.3.tar.gz::https://github.com/pigmonkey/goesimage/archive/0.1.3.tar.gz
+	md5sums = cbd1556908897dd77137751c10a09752
 
 pkgname = goesimage
 
