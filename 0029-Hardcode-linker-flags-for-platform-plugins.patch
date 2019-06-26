@@ -1,11 +1,11 @@
-From c64b26908cc7cdeb19bb41fab98f328174ccfea0 Mon Sep 17 00:00:00 2001
+From cdfab1e716f840d0f1db934246219865054572b7 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 23:42:30 +0100
-Subject: [PATCH 31/34] Hardcode linker flags for platform plugins
+Subject: [PATCH 29/33] Hardcode linker flags for platform plugins
 
 Otherwise incorrect order of libs leads to errors
-when building libqminimal.dll, libqoffscreen.dll
-and libqwindows.dll
+when building libqminimal.dll, libqoffscreen.dll,
+libqwindows.dll and libqdirect2d.dll
 ---
  src/plugins/platforms/direct2d/direct2d.pro   | 30 ++++++++++++++---
  src/plugins/platforms/minimal/minimal.pro     | 15 +++++++--
@@ -14,7 +14,7 @@ and libqwindows.dll
  4 files changed, 73 insertions(+), 18 deletions(-)
 
 diff --git a/src/plugins/platforms/direct2d/direct2d.pro b/src/plugins/platforms/direct2d/direct2d.pro
-index 9764272632..7310958323 100644
+index 9764272632..25994da1da 100644
 --- a/src/plugins/platforms/direct2d/direct2d.pro
 +++ b/src/plugins/platforms/direct2d/direct2d.pro
 @@ -1,12 +1,32 @@
@@ -31,9 +31,9 @@ index 9764272632..7310958323 100644
 +# Fix linker error when building libqdirect2d.dll by specifying linker flags for
 +# required modules manually (otherwise order is messed)
 +LIBS += \
-+    -lQt5EventDispatcherSupport \
-+    -lQt5FontDatabaseSupport \
-+    -lQt5ThemeSupport \
++    $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5EventDispatcherSupport.$${QMAKE_EXTENSION_STATICLIB} \
++    $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5FontDatabaseSupport.$${QMAKE_EXTENSION_STATICLIB} \
++    $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5ThemeSupport.$${QMAKE_EXTENSION_STATICLIB} \
 +    -lfreetype -lole32 -lgdi32 -luuid
 +# However, this workaround leads to the necessity of specifying include dirs manually
 +INCLUDEPATH += \
@@ -42,21 +42,21 @@ index 9764272632..7310958323 100644
 +    $$QT_SOURCE_TREE/include/QtThemeSupport/$${QT_VERSION}
 +# Same for private support libs for accessibility and vulkan, if those are enabled
 +qtConfig(accessibility) {
-+    LIBS += -lQt5AccessibilitySupport
++    LIBS += $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5AccessibilitySupport.$${QMAKE_EXTENSION_STATICLIB}
 +    INCLUDEPATH += $$QT_SOURCE_TREE/include/QtAccessibilitySupport/$${QT_VERSION}
 +}
 +qtConfig(vulkan) {
-+    LIBS += -lQt5VulkanSupport
++    LIBS += $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5VulkanSupport.$${QMAKE_EXTENSION_STATICLIB}
 +    INCLUDEPATH += $$QT_SOURCE_TREE/include/QtVulkanSupport/$${QT_VERSION}
 +}
 +# Also add Qt5WindowsUIAutomationSupport - it seems to link against it
-+LIBS += -lQt5WindowsUIAutomationSupport
++LIBS += $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5WindowsUIAutomationSupport.$${QMAKE_EXTENSION_STATICLIB}
 +INCLUDEPATH += $$QT_SOURCE_TREE/include/Qt5WindowsUIAutomationSupport/$${QT_VERSION}
  
  LIBS += -ldwmapi -lversion -lgdi32
  QMAKE_USE_PRIVATE += dwrite_1 d2d1_1 d3d11_1 dxgi1_2
 diff --git a/src/plugins/platforms/minimal/minimal.pro b/src/plugins/platforms/minimal/minimal.pro
-index a1a2da547b..7ef91b574d 100644
+index a1a2da547b..e32225d9b9 100644
 --- a/src/plugins/platforms/minimal/minimal.pro
 +++ b/src/plugins/platforms/minimal/minimal.pro
 @@ -1,8 +1,19 @@
@@ -70,8 +70,8 @@ index a1a2da547b..7ef91b574d 100644
 +# Fix linker error when building libqminimal.dll by specifying linker flags for
 +# required modules manually (otherwise order is messed)
 +LIBS += \
-+    -lQt5EventDispatcherSupport \
-+    -lQt5FontDatabaseSupport \
++    $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5EventDispatcherSupport.$${QMAKE_EXTENSION_STATICLIB} \
++    $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5FontDatabaseSupport.$${QMAKE_EXTENSION_STATICLIB} \
 +    -lfreetype -lole32 -lgdi32 -luuid
 +# However, this workaround leads to the necessity of specifying include dirs manually
 +INCLUDEPATH += \
@@ -82,7 +82,7 @@ index a1a2da547b..7ef91b574d 100644
  DEFINES += QT_NO_FOREACH
  
 diff --git a/src/plugins/platforms/offscreen/offscreen.pro b/src/plugins/platforms/offscreen/offscreen.pro
-index 392ee8bed1..f1f266e2c2 100644
+index f226132592..d8ab86b322 100644
 --- a/src/plugins/platforms/offscreen/offscreen.pro
 +++ b/src/plugins/platforms/offscreen/offscreen.pro
 @@ -1,8 +1,18 @@
@@ -96,8 +96,8 @@ index 392ee8bed1..f1f266e2c2 100644
 +# Fix linker error when building libqoffscreen.dll by specifying linker flags for
 +# required modules manually (otherwise order is messed)
 +LIBS += \
-+    -lQt5EventDispatcherSupport \
-+    -lQt5FontDatabaseSupport \
++    $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5EventDispatcherSupport.$${QMAKE_EXTENSION_STATICLIB} \
++    $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5FontDatabaseSupport.$${QMAKE_EXTENSION_STATICLIB} \
 +    -lfreetype -lole32 -lgdi32 -luuid
 +# However, this workaround leads to the necessity of specifying include dirs manually
 +INCLUDEPATH += \
@@ -107,7 +107,7 @@ index 392ee8bed1..f1f266e2c2 100644
  DEFINES += QT_NO_FOREACH
  
 diff --git a/src/plugins/platforms/windows/windows.pro b/src/plugins/platforms/windows/windows.pro
-index 174bc7b609..e66488e364 100644
+index 174bc7b609..285d90c6d3 100644
 --- a/src/plugins/platforms/windows/windows.pro
 +++ b/src/plugins/platforms/windows/windows.pro
 @@ -1,14 +1,28 @@
@@ -127,9 +127,9 @@ index 174bc7b609..e66488e364 100644
 +# Fix linker error when building libqwindows.dll by specifying linker flags for
 +# required modules manually (otherwise order is messed)
 +LIBS += \
-+    -lQt5EventDispatcherSupport \
-+    -lQt5FontDatabaseSupport \
-+    -lQt5ThemeSupport \
++    $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5EventDispatcherSupport.$${QMAKE_EXTENSION_STATICLIB} \
++    $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5FontDatabaseSupport.$${QMAKE_EXTENSION_STATICLIB} \
++    $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5ThemeSupport.$${QMAKE_EXTENSION_STATICLIB} \
 +    -lfreetype -lole32 -lgdi32 -ldwmapi
 +# However, this workaround leads to the necessity of specifying include dirs manually
 +INCLUDEPATH += \
@@ -138,16 +138,16 @@ index 174bc7b609..e66488e364 100644
 +    $$QT_SOURCE_TREE/include/QtThemeSupport/$${QT_VERSION}
 +# Same for private support libs for accessibility and vulkan, if those are enabled
 +qtConfig(accessibility) {
-+    LIBS += -lQt5AccessibilitySupport
++    LIBS += $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5AccessibilitySupport.$${QMAKE_EXTENSION_STATICLIB}
 +    INCLUDEPATH += $$QT_SOURCE_TREE/include/QtAccessibilitySupport/$${QT_VERSION}
 +}
 +qtConfig(vulkan) {
-+    LIBS += -lQt5VulkanSupport
++    LIBS += $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5VulkanSupport.$${QMAKE_EXTENSION_STATICLIB}
 +    INCLUDEPATH += $$QT_SOURCE_TREE/include/QtVulkanSupport/$${QT_VERSION}
 +}
  
  include(windows.pri)
  
 -- 
-2.21.0
+2.22.0
 
