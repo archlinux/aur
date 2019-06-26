@@ -1,6 +1,6 @@
 pkgbase = rofi-file-browser-extended-git
 	pkgdesc = A plugin to use rofi as a file browser
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/marvinkreis/rofi-file-browser-extended
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Marvin Kreis <MarvinKreis@web.de>
 
 pkgname=rofi-file-browser-extended-git
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A plugin to use rofi as a file browser"
 arch=("x86_64")
