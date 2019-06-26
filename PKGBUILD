@@ -1,27 +1,39 @@
 # Maintainer: Luis Sarmiento < lgsarmientop-ala-unal.edu.co >
 
 pkgname=mfile
-pkgver=1.0.7
+_pkgname=libmfile
+_user=jmayer
+pkgver=r57.a18a066
 pkgrel=1
 pkgdesc="System independent reading and writing of n-dimensional spectra"
-url="http://www.ikp.uni-koeln.de/misc/doc/Tv_user-manual/node223.html"
-arch=('x86_64' 'i686')
-license=('custom') 
+url="https://gitlab.ikp.uni-koeln.de/${_user}/${_pkgname}"
+arch=('x86_64')
+license=('BSD')
+makedepends=('git')
 depends=('glibc')
 options=('!emptydirs')
 
-source=("http://www.ikp.uni-koeln.de/src/lib${pkgname}-${pkgver}.tar.gz")
-md5sums=('558259d6fd032f7ad99afe365fb355f8')
+source=(${_pkgname}::git+https://gitlab.ikp.uni-koeln.de/${_user}/${_pkgname}.git)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd ${srcdir}/${_pkgname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-	cd ${srcdir}/lib${pkgname}-${pkgver}
-	./configure --prefix=/usr
-	make
+  cd ${srcdir}
+  rm -rf build
+  mkdir build
+  cd build
+  cmake ${srcdir}/${_pkgname}
+  make
+  make test ARGS="-V"
 }
 
 package() {
-	  cd ${srcdir}/lib${pkgname}-${pkgver}
-	  make DESTDIR=${pkgdir} install
+  cd ${srcdir}/build
+  make DESTDIR=${pkgdir} install
 
-	  install -Dm644 ${srcdir}/lib${pkgname}-${pkgver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 ${srcdir}/${_pkgname}/license.md "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
