@@ -5,7 +5,6 @@ pkgbase = openjk-bin
 	url = https://github.com/JACoders/OpenJK
 	arch = x86_64
 	license = GPL
-	makedepends = tr
 	depends = libgl
 	depends = openal
 	depends = zlib
