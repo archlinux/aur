@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 _pkgname='bitw'
 pkgname="$_pkgname-git"
-pkgver='r29.c019359'
+pkgver='r30.b2f1cee'
 pkgrel='1'
 pkgdesc='Minimalist BitWarden client with Secret Service API implementation'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -18,6 +18,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
+	export GOPATH="$srcdir/gopath"
 	go build -gcflags "all=-trimpath=$PWD" -asmflags "all=-trimpath=$PWD" -ldflags "-extldflags $LDFLAGS" -o "$_pkgname" .
 }
 
