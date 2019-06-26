@@ -20,7 +20,7 @@ license=('MIT')
 depends=('vulkan-icd-loader')
 provides=('vulkan-amdvlk' 'vulkan-driver')
 conflicts=('amdvlk-git' 'amdvlk-deb' 'amdvlk-bin')
-makedepends=('cmake' 'dri2proto' 'gcc8' 'libdrm' 'libxml2' 'libxrandr' 'ninja' 'python' 'wayland' 'xorg-server-devel')
+makedepends=('cmake' 'dri2proto' 'gcc' 'libdrm' 'libxml2' 'libxrandr' 'ninja' 'python' 'wayland' 'xorg-server-devel')
 
 source=(amdPalSettings.cfg
         https://github.com/GPUOpen-Drivers/AMDVLK/archive/v-${pkgver}.tar.gz
@@ -54,14 +54,16 @@ prepare() {
   ln -sf ${srcdir}/SPIRV-Tools-${_spirvtools_commit} ${srcdir}/spvgen/external/SPIRV-tools
   ln -sf ${srcdir}/SPIRV-Headers-${_spirvheaders_commit} ${srcdir}/spvgen/external/SPIRV-tools/external/SPIRV-Headers
   ln -sf ${srcdir}/glslang-${_glslang_commit} ${srcdir}/spvgen/external/glslang
+
+  #replace -Werror with -Wno-error=unused-variable to build with gcc9 
+  for i in xgl/icd/CMakeLists.txt llpc/CMakeLists.txt llpc/imported/metrohash/CMakeLists.txt llvm/utils/benchmark/CMakeLists.txt pal/src/core/imported/addrlib/CMakeLists.txt pal/src/core/imported/vam/CMakeLists.txt pal/shared/gpuopen/cmake/AMD.cmake
+  do
+    sed -i "s/-Werror/-Wno-error=unused-variable/g" "$srcdir"/$i
+  done
 }
 
 build() {
   cd xgl
-  
-  #export gcc8 executables because it doesn't build with gcc9 yet
-  export CC=/usr/bin/gcc-8
-  export CXX=/usr/bin/g++-8
 
   cmake -H. -Bbuilds/Release64 \
     -DCMAKE_BUILD_TYPE=Release \
