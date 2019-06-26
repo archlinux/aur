@@ -1,5 +1,5 @@
 pkgbase = lib32-amdvlk
-	pkgdesc = AMDVLK - AMD Open Source Driver for Vulkan® (32 Bit)
+	pkgdesc = Open-source Vulkan driver for AMD Radeon™ graphics adapters (32 Bit)
 	pkgver = 2019.Q2.5
 	pkgrel = 1
 	url = https://github.com/GPUOpen-Drivers
