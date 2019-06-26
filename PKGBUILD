@@ -1,7 +1,7 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=modfname
-pkgver='1.0.4'
+pkgver='1.1.2'
 pkgrel='1'
 pkgdesc='file and folder name modifier on the all system'
 arch=('any')
@@ -10,9 +10,9 @@ license=('MIT')
 depends=('python>=3')
 makedepends=('python' 'python-setuptools')
 
-source=("https://files.pythonhosted.org/packages/source/m/modfname/modfname-1.0.4.tar.gz")
-sha256sums=('4bad49db379a4378ac5d7f3a13422d77aead1ec9b67fdf40b92eb264093cce84')
-#source#=("file:///$MHOME/dev/python/modfname/dist/modfname-1.0.4.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/m/modfname/modfname-1.1.2.tar.gz")
+sha256sums=('f2d7d4637caf6ff958675b33fa64396b992d6fce8d18219bafb152191304083f')
+#source#=("file:///$MHOME/dev/python/modfname/dist/modfname-1.1.2.tar.gz")
 #sha256sums#=("SKIP")
 
 build() {
