@@ -3,7 +3,7 @@
 pkgbase=python-uproot-methods
 _pkgbase=uproot-methods
 pkgname=('python2-uproot-methods' 'python-uproot-methods')
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Pythonic mix-ins for ROOT classes"
 arch=('any')
@@ -13,7 +13,7 @@ url="https://github.com/scikit-hep/uproot-methods"
 license=('BSD')
 
 source=("${url}/archive/${pkgver}.zip")
-sha256sums=('c2cd1aeac350b48013af072f669b193b892947457a20166652f2c1edd22d249a')
+sha256sums=('ecd83aa88209ea99dab8c8158d1c61ca8c65ed3d8bb3b5a9acfe31f2a5712cc0')
 
 prepare() {
     cd "${srcdir}"
