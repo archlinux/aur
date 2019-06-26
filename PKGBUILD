@@ -32,10 +32,18 @@ package() {
   ln -s /opt/"${pkgname}"/gfxbench_gl "${pkgdir}"/usr/bin/"${pkgname}"
 
   install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
-  ln -s /opt/"${pkgname}"/copyright "${pkgdir}"/usr/share/licenses/"${pkgname}"
+  mv "${pkgdir}"/opt/"${pkgname}"/copyright "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+  install -Dm644 -t "${pkgdir}"/usr/share/applications/ "${pkgdir}"/opt/"${pkgname}"/gfxbench_gl.desktop
+  rm "${pkgdir}"/opt/"${pkgname}"/gfxbench_gl.desktop
+
+  install -Dm644 -t "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/ "${pkgdir}"/opt/"${pkgname}"/gfxbench_gl.png
+  rm "${pkgdir}"/opt/"${pkgname}"/gfxbench_gl.png
 
   # Fix path
-  sed -i "s#${pkgdir}##" "${pkgdir}"/opt/"${pkgname}"/gfxbench_gl.desktop
+  sed -i "s#${pkgdir}##" "${pkgdir}"/usr/share/applications/gfxbench_gl.desktop
+  sed -i 's#^Icon=.*$#Icon=/usr/share/icons/hicolor/128x128/apps/gfxbench_gl.png#' \
+    "${pkgdir}"/usr/share/applications/gfxbench_gl.desktop
 
   # Remove unnecessary local copies of libs
   rm "${pkgdir}"/opt/"${pkgname}"/libQt5*
