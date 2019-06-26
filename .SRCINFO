@@ -1,6 +1,6 @@
 pkgbase = python2-awkward
 	pkgdesc = Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy
-	pkgver = 0.10.3
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/scikit-hep/awkward-array
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python2-awkward
 	makedepends = python2-pytest-runner
 	makedepends = python2-setuptools
 	depends = python2-numpy
-	source = https://github.com/scikit-hep/awkward-array/archive/0.10.3.zip
-	sha256sums = f75c104c9a83c9c7375d15127ffa8b3efd08f99e6276e670353869a61464bbbe
+	source = https://github.com/scikit-hep/awkward-array/archive/0.11.1.zip
+	sha256sums = 6cd10a33b4b1feb805a5bd7ffdcdfb49bb31740263171a77bb03913fe7c81614
 
 pkgname = python2-awkward
 
