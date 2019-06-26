@@ -1,8 +1,8 @@
 pkgbase = bcloud
 	pkgdesc = Baidu Pan client for Linux Desktop users
-	pkgver = 3.9.1
+	pkgver = 3.9.4
 	pkgrel = 1
-	url = https://github.com/Yufeikang/bcloud
+	url = https://github.com/poplite/bcloud
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -18,8 +18,8 @@ pkgbase = bcloud
 	depends = libappindicator-gtk3
 	depends = libnotify
 	conflicts = bcloud-git
-	source = git+https://github.com/Yufeikang/bcloud.git#tag=v3.9.1
-	sha256sums = SKIP
+	source = https://github.com/poplite/bcloud/archive/v3.9.4.tar.gz
+	sha256sums = fce56763bda46ecc372685f4cb881766596cd1f8bcca21b0ed2a5fe9c3531ddb
 
 pkgname = bcloud
 
