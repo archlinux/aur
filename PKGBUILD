@@ -2,7 +2,7 @@
 
 pkgname=python2-intervaltree
 _pkgname=intervaltree
-pkgver=2.1.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Library providing a mutable, self-balancing interval tree for Python.'
 arch=(any)
@@ -11,7 +11,7 @@ license=('custom:Apache2')
 depends=(python2-sortedcontainers)
 makedepends=(python2-setuptools)
 source=("https://github.com/chaimleib/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=(ad4020de1066461e46eb777a15ce4bd4)
+md5sums=('6649c473dba63462ae2779668afab8f4')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
