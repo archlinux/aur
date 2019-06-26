@@ -1,6 +1,6 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
 pkgname=metview
-pkgver=5.5.0
+pkgver=5.5.3
 pkgrel=2
 pkgdesc="ECMWF interactive meteorological application"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ options=()
 install=
 source=(https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-${pkgver}-Source.tar.gz)
 noextract=()
-md5sums=('72c6c22325b25692dc0b55433384fa3e')
+md5sums=('efcdd55136df50c6d5a64fe499307bd7')
 
 build() {
   cd Metview-${pkgver}-Source
@@ -26,6 +26,7 @@ build() {
   ln -sf /usr/include/tirpc/netconfig.h mars-client/src
   mkdir -p build && cd build
   cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CC_COMPILER=/usr/bin/gcc \
+    -DCMAKE_EXE_LINKER_FLAGS="-llapack" \
     -Dmagics_DIR=/usr/share/magics/cmake \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
     -DCMAKE_INSTALL_DATADIR=/usr/share \
