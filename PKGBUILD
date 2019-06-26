@@ -5,7 +5,7 @@ _gitname=pyspectral
 
 pkgname=python2-pyspectral
 pkgrel=1
-pkgver=v0.6.4
+pkgver=v0.8.6.53.g2d86cf1
 pkgdesc="Passive sensor on a meteorological satellite relative spectral response"
 arch=('any')
 url="https://pyspectral.readthedocs.org/"
@@ -36,7 +36,7 @@ package() {
   cd "$srcdir/$_gitname"
   python2 setup.py install --root="$pkgdir" --optimize=1
   mkdir -p $pkgdir/usr/share/licenses/python2-pyspectral
-  cp LICENSE $pkgdir/usr/share/licenses/python2-pyspectral
+  cp LICENSE.txt $pkgdir/usr/share/licenses/python2-pyspectral/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
