@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=gnome-inform7
 pkgver=6M62
-pkgrel=3
+pkgrel=4
 pkgdesc="GNOME port of the Inform 7 IDE for the Inform 7 programming language for interactive fiction"
 arch=('i686' 'x86_64')
 url="https://github.com/ptomato/gnome-inform7"
@@ -13,7 +13,7 @@ makedepends=('autoconf>=2.60' 'automake>=1.10' 'graphviz'
              'intltool' 'pkgconfig' 'texlive-core')
 options=('!libtool')
 install="${pkgname}.install"
-source=("http://inform7.com/download/content/${pkgver}/I7_${pkgver}_Linux_all.tar.gz"
+source=("http://inform7.com/apps/${pkgver}/I7_${pkgver}_Linux_all.tar.gz"
         "https://github.com/ptomato/${pkgname}/releases/download/${pkgver}/Gnome_UI_Source_${pkgver}.tar.xz")
 md5sums=('cf8a251a3531eadf29d9490c2bb53802'
          '71a4c55329e154e4cb667b5c114296d3')

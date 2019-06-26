@@ -1,7 +1,7 @@
 pkgbase = gnome-inform7
 	pkgdesc = GNOME port of the Inform 7 IDE for the Inform 7 programming language for interactive fiction
 	pkgver = 6M62
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ptomato/gnome-inform7
 	install = gnome-inform7.install
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = gnome-inform7
 	depends = gst-plugins-bad
 	depends = gst-plugins-good
 	options = !libtool
-	source = http://inform7.com/download/content/6M62/I7_6M62_Linux_all.tar.gz
+	source = http://inform7.com/apps/6M62/I7_6M62_Linux_all.tar.gz
 	source = https://github.com/ptomato/gnome-inform7/releases/download/6M62/Gnome_UI_Source_6M62.tar.xz
 	md5sums = cf8a251a3531eadf29d9490c2bb53802
 	md5sums = 71a4c55329e154e4cb667b5c114296d3
