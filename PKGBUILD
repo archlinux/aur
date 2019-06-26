@@ -4,7 +4,7 @@ pkgver=19.04.1
 pkgrel=0
 pkgdesc="A DSL for data-driven computational pipelines"
 arch=('any')
-url="https://nextflow.io"
+url="https://www.nextflow.io"
 license=('Apache')
 depends=('java-runtime>=8')
 source=("https://github.com/nextflow-io/nextflow/releases/download/v${pkgver}/nextflow")
