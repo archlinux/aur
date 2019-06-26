@@ -1,6 +1,6 @@
 pkgname='holo'
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalistic configuration management'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://holocm.org'
@@ -11,7 +11,7 @@ optdepends=(
     'openssh: to provision SSH public keys'
     'shadow: to provision user accounts and groups'
 )
-makedepends=('go' 'perl')
+makedepends=('go' 'perl' 'git' 'openssh')
 provides=(
     # required for holo-build packages that have a holo-$PLUGIN dependency when there are files below /usr/share/holo/$PLUGIN/
     "holo-files=${pkgver}"
