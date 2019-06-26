@@ -1,6 +1,6 @@
 pkgbase = qgroundcontrol
 	pkgdesc = Micro air vehicle ground control station.
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = http://qgroundcontrol.org/
 	arch = x86_64
@@ -39,10 +39,10 @@ pkgbase = qgroundcontrol
 	depends = qt5-quickcontrols2
 	depends = qt5-location
 	depends = qt5-svg
-	source = qgroundcontrol-3.5.2.tar.gz::https://github.com/mavlink/qgroundcontrol/archive/v3.5.2.tar.gz
-	source = mavlink-v2.0-qgc3.5.2.zip::https://github.com/mavlink/c_library_v2/archive/d240d0986710045663894aebcea89e71ce981ee4.zip
-	source = gps-drivers-qgc3.5.2.zip::https://github.com/PX4/GpsDrivers/archive/2a4865adc3808687d6c6f550f497a02eb920c382.zip
-	sha256sums = 195e1749cabbc69589df401a6af03f86796c3953ef78055418d8c734448d7685
+	source = qgroundcontrol-3.5.3.tar.gz::https://github.com/mavlink/qgroundcontrol/archive/v3.5.3.tar.gz
+	source = mavlink-v2.0-qgc3.5.3.zip::https://github.com/mavlink/c_library_v2/archive/d240d0986710045663894aebcea89e71ce981ee4.zip
+	source = gps-drivers-qgc3.5.3.zip::https://github.com/PX4/GpsDrivers/archive/2a4865adc3808687d6c6f550f497a02eb920c382.zip
+	sha256sums = 730204053818280792efd658e2b03aa95ddf24c97b502dcb3068516339785ed2
 	sha256sums = 65c0fc60be9435375f74990a5c83fb0cdef6d15c100245759d2465d480a5b9b5
 	sha256sums = 1ab58c633edcfff9288bd868bf33e2c9990afa27fa5df8f1731675d98a4ce6e4
 
