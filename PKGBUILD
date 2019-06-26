@@ -2,7 +2,7 @@
 
 pkgname=gfxbench
 pkgver=4.0.13
-pkgrel=4
+pkgrel=5
 pkgdesc="Unified graphics benchmark based on DXBenchmark (DirectX) and GLBenchmark (OpenGL ES)"
 url='https://gfxbench.com/'
 arch=('i686' 'x86_64')

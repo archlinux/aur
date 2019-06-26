@@ -1,7 +1,7 @@
 pkgbase = gfxbench
 	pkgdesc = Unified graphics benchmark based on DXBenchmark (DirectX) and GLBenchmark (OpenGL ES)
 	pkgver = 4.0.13
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gfxbench.com/
 	arch = i686
 	arch = x86_64
