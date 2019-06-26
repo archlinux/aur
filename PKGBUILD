@@ -7,7 +7,7 @@
 
 _pkgname=libpaper
 pkgname=lib32-${_pkgname}
-pkgver=1.1.27
+pkgver=1.1.28
 pkgrel=1
 pkgdesc='Library for handling paper characteristics (32-bit)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ license=('GPL')
 depends=('lib32-glibc' 'libpaper')
 makedepends=('gcc-multilib')
 source=("http://ftp.de.debian.org/debian/pool/main/libp/${_pkgname}/${_pkgname}_${pkgver}.tar.gz")
-sha256sums=('04ef86d8c8badf77f8ee0102d3a50f8069d1fd07819f9e1c1af07e2da35ee66d')
+sha256sums=('c8bb946ec93d3c2c72bbb1d7257e90172a22a44a07a07fb6b802a5bb2c95fddc')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
