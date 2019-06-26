@@ -2,9 +2,9 @@
 # Contributor: synapse84 <synapse84 at gmail dot com>
 
 pkgname=mumble-snapshot
-pkgver=1.3.0_rc1
+pkgver=1.3.0_rc2
 _dirname=1.3.0
-pkgrel=3
+pkgrel=1
 # use epoch since rc naming scheme won't be recogniced as new version
 epoch=1
 pkgdesc="A high quality voice chat program."
@@ -19,7 +19,7 @@ conflicts=('mumble')
 #source=("https://dl.mumble.info/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig} # git snapshots
 source=("https://dl.mumble.info/mumble-${pkgver//_/-}.tar.gz"{,.sig}) # release canidate
 validpgpkeys=('56D0B23AE00B1EE9A8BAAC0F5B8CF87BB893449B')
-sha256sums=('6f447745e164cc9ddef33f85ba0a3fc52d235eae3bfca588f387c699fe9eca59'
+sha256sums=('258643a73997dc192ec9cc1175a55082e432ae21e4283bef27ffa331e85a0380'
             'SKIP')
 
 build() {
