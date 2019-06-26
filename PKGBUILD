@@ -1,17 +1,17 @@
 # Maintainer: Philip Abernethy<chais.z3r0@gmail.com>
 pkgname=sdl-jstest-git
 _gitname=sdl-jstest
-pkgver=27.2647ade
+pkgver=82.aafbdb1
 pkgver() {
 	cd "${_gitname}"
 #	printf "%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple SDL joystick test application for the command line."
 url="https://github.com/Grumbel/sdl-jstest"
 arch=('x86_64' 'i686')
-license=('GPLv3 or any later version')
+license=('GPL3')
 depends=('sdl' 'ncurses' 'docbook2x')
 makedepends=('git')
 provides=('sdl-jstest')
@@ -24,6 +24,7 @@ sha512sums=('SKIP'
 
 build() {
 	cd "${srcdir}/${_gitname}"
+	git submodule update --init --remote --recursive
 	cmake ./
 	make ${provides[0]}
 }
