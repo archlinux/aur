@@ -1,5 +1,5 @@
 # Maintainer: Simon Tas <simon.tas.st@gmail.com>
-pkgname="sam-rewritten"
+pkgname="sam-rewritten-git"
 _pkgname="SamRewritten"
 pkgver=r36.f332129
 pkgrel=1

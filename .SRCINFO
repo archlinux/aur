@@ -1,4 +1,4 @@
-pkgbase = sam-rewritten
+pkgbase = sam-rewritten-git
 	pkgdesc = Steam Achievement Manager For Linux. Rewritten in C++.
 	pkgver = r36.f332129
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = sam-rewritten
 	source = git+https://github.com/PaulCombal/SamRewritten.git
 	md5sums = SKIP
 
-pkgname = sam-rewritten
+pkgname = sam-rewritten-git
 
