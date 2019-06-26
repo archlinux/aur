@@ -1,3 +1,4 @@
+# Maintainer: Robosky <fangyuhao0612@gmail.com>
 # Contributor: wszqkzqk <wszqkzqk@gmail.com>
 
 pkgname=bcloud
@@ -7,7 +8,6 @@ pkgdesc='Baidu Pan client for Linux Desktop users'
 url='https://github.com/poplite/bcloud'
 arch=('any')
 license=('GPL3')
-makedepends=('git')
 depends=('python' 'python-keyring' 'python-urllib3' 'python-gobject'  'python-dbus'  'python-cssselect' 'python-lxml' 'python-crypto' 'python-pyinotify' 'libappindicator-gtk3' 'libnotify')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('fce56763bda46ecc372685f4cb881766596cd1f8bcca21b0ed2a5fe9c3531ddb')

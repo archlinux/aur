@@ -5,7 +5,6 @@ pkgbase = bcloud
 	url = https://github.com/poplite/bcloud
 	arch = any
 	license = GPL3
-	makedepends = git
 	depends = python
 	depends = python-keyring
 	depends = python-urllib3
