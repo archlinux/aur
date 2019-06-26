@@ -1,15 +1,15 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 
 pkgname=wlay-git
-pkgver=r20.4e30475
+pkgver=r21.7018252
 pkgrel=1
 pkgdesc="Graphical output management for Wayland"
 
 arch=('i686' 'x86_64')
 url="https://github.com/atx/wlay"
 license=('MIT')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'wayland' 'glfw-wayland' 'glew-wayland')
-depends=('wayland' 'glfw-wayland' 'glew-wayland')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'wayland' 'glfw-wayland' 'glew-wayland' 'libepoxy')
+depends=('wayland' 'glfw-wayland' 'glew-wayland' 'libepoxy')
 provides=('wlay')
 conflicts=('wlay')
 source=('wlay::git+https://github.com/atx/wlay.git')
