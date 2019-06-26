@@ -4,8 +4,8 @@
 # Contributor: Dr.Egg <rwhite@archlinux.us>
 
 pkgname=musescore-git
-pkgver=3.0.r0.gc1a5e4c88
-_branch=3.0
+pkgver=3.2.r6.gf8dfe6d5c
+_branch=3.2.1
 pkgrel=1
 pkgdesc='git-version of the sheet music editor MuseScore'
 arch=('i686' 'x86_64')
@@ -31,6 +31,8 @@ makedepends=(  cmake
   qt5-script
   texlive-core)
 optdepends=('lame: MP3 export')
+conflicts=('musescore')
+provides=('musescore')
 install=musescore.install
 source=("git+$url.git#branch=$_branch")
 md5sums=('SKIP')
