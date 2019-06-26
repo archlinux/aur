@@ -1,17 +1,16 @@
-# Maintainer: Alex Peltzer <alexpe.aur@mailbox.org>
-
+# Maintainer: mh00h <matt.halbert@gmail.com>
 pkgname=nextflow
-pkgver=0.32.0
+pkgver=19.04.1
 pkgrel=0
-pkgdesc="A DSL for data-driven computational pipelines."
+pkgdesc="A DSL for data-driven computational pipelines"
 arch=('any')
 url="https://nextflow.io"
-license=('GPL-3')
-depends=('java-environment>=8')
+license=('Apache')
+depends=('java-runtime>=8')
 source=("https://github.com/nextflow-io/nextflow/releases/download/v${pkgver}/nextflow")
-md5sums=('2bdf64056c2f615cfb3e96c06a0cfc79')
+md5sums=('a5ff593271290274e1baaff3f1e980fe')
 
 package() {
-	install -D -m755 "${srcdir}/nextflow" "${pkgdir}/usr/bin/nextflow"
+    NXF_HOME="${HOME}/.local/share/nextflow"
+    install -D -m755 "${srcdir}/nextflow" "${pkgdir}/usr/bin/nextflow"
 }
-
