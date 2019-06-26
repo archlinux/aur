@@ -1,20 +1,21 @@
-From 83340c970109edc6400a8f74f1728affec4024c5 Mon Sep 17 00:00:00 2001
+From 0f3da1317f28a882c705fcf3f13c419601b96467 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
-Subject: [PATCH 20/34] Use *.dll.a as import lib extension
+Subject: [PATCH 19/33] Use *.dll.a as import lib extension
 
 The variables used here are provided by
-mingw-w64 specific mkspec
+g++-win32.conf
 ---
  mkspecs/features/create_cmake.prf      |  5 +++--
+ mkspecs/features/qt.prf                | 15 ++++++++++++---
  qmake/generators/win32/winmakefile.cpp | 15 +++++++++++----
- 2 files changed, 14 insertions(+), 6 deletions(-)
+ 3 files changed, 26 insertions(+), 9 deletions(-)
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 74a9160628..7694d1c7ae 100644
+index 6bc621ce27..226dc93c4d 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
-@@ -240,8 +240,9 @@ mac {
+@@ -245,8 +245,9 @@ mac {
              CMAKE_PRL_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}d.prl
              CMAKE_PRL_FILE_LOCATION_RELEASE = lib$${CMAKE_QT_STEM}.prl
          } else {
@@ -26,8 +27,37 @@ index 74a9160628..7694d1c7ae 100644
          }
      } else {
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}d.lib
+diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
+index bbada46c29..d6299d8eed 100644
+--- a/mkspecs/features/qt.prf
++++ b/mkspecs/features/qt.prf
+@@ -213,12 +213,21 @@ for(ever) {
+                 LIBS$$var_sfx += -framework $$framework
+             } else {
+                 lib = $$MODULE_MODULE$$qtPlatformTargetSuffix()
+-                win32|contains(MODULE_CONFIG, staticlib) {
++                contains(MODULE_CONFIG, staticlib) {
+                     lib = $$MODULE_LIBS/$$QMAKE_PREFIX_STATICLIB$${lib}.$$QMAKE_EXTENSION_STATICLIB
+                     PRE_TARGETDEPS += $$lib
+                 } else {
+-                    lib = $$MODULE_LIBS/$$QMAKE_PREFIX_SHLIB$${lib}.$$QMAKE_EXTENSION_SHLIB
+-                }
++                    win32 {
++                        shared|actually_a_shared_build {
++                            lib = $$MODULE_LIBS/$$QMAKE_PREFIX_STATICLIB$${lib}.$$QMAKE_EXTENSION_IMPORTLIB
++                        } else {
++                            lib = $$MODULE_LIBS/$$QMAKE_PREFIX_STATICLIB$${lib}.$$QMAKE_EXTENSION_STATICLIB
++                        }
++                        PRE_TARGETDEPS += $$lib
++                    } else {
++                        lib = $$MODULE_LIBS/$$QMAKE_PREFIX_SHLIB$${lib}.$$QMAKE_EXTENSION_SHLIB
++                    }
++		}
+                 LIBS$$var_sfx += $$lib
+             }
+         }
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index 5a37b218de..29bf9441f7 100644
+index d9887cd36d..4f1a4344df 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -80,9 +80,13 @@ Win32MakefileGenerator::parseLibFlag(const ProString &flag, ProString *arg)
@@ -62,5 +92,5 @@ index 5a37b218de..29bf9441f7 100644
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
 -- 
-2.21.0
+2.22.0
 
