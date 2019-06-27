@@ -3,7 +3,7 @@
 
 pkgname=balena-cli
 pkgdesc='balena.io command line interface'
-pkgver=11.3.6
+pkgver=11.4.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://balena.io/'
@@ -17,7 +17,7 @@ options=(!strip)
 optdepends=('python: balena-preload')
 optdepends_x86_64=('lib32-glibc: emulated builds')
 replaces=('resin-cli')
-sha256sums=('3cd1cd6f235f577547c5de37dc327185341a3106e1f1e1f93dce8fc69aa74d91')
+sha256sums=('ed94acbb53c11000af077cc9a6a7d12b6b2b49a1177e9c3faa84cee41caf8fc2')
 
 package() {
   npm install --global --only=production --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
