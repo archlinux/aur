@@ -111,9 +111,6 @@ options=('!emptydirs')
 source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-${_suffix_}.tar.xz"
         'update-vlc-plugin-cache.hook'
         '0001-lua-Fix-build-using-lua-5.3.patch'
-        '1-3-placebo-update-for-new-tone-mapping-desaturation-algo.patch'
-        '2-3-placebo-update-for-new-peak-detection-algo.patch'
-        '3-3-opengl-update-libplacebo-call-for-changed-API.patch'
         'find-deps.py')
 
 pkgver() {
