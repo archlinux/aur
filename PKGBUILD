@@ -1,7 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=mitalk
-pkgver=4.0.19
+pkgver=4.0.21
 pkgrel=1
 pkgdesc="MiTalk Messenger"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     'https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_'${pkgver}'.AppImage'
 )
 md5sums=(
-    'b6d92c52d2c0f27e55a07b5f1255669e'
+    '20f61c47978d7ac0bb8f833244c96be6'
 )
 
 package() {
