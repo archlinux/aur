@@ -4,16 +4,11 @@ _pkgname=icewind-dale-enhanced-edition
 pkgver=2.1.0.5
 pkgrel=1
 pkgdesc="Icewind Dale: Enhanced Edition is a classic RPG running through the Spine of the World of the Forgotten Realms. GOG Version. Linux native."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.gog.com/game/icewind_dale_enhanced_edition"
 license=('custom')
-if [[ $CARCH == i686 ]]; then
-  depends=('glibc' 'alsa-lib' 'libgl' 'libjson' 'openssl-1.0')
-  optdepends=('libpulse: pulseaudio support')
-else
-  depends=('lib32-glibc' 'lib32-alsa-lib' 'lib32-libgl' 'lib32-libjson' 'lib32-openssl-1.0')
-  optdepends=('lib32-libpulse: pulseaudio support')
-fi
+depends=('lib32-glibc' 'lib32-alsa-lib' 'lib32-libgl' 'lib32-libjson' 'lib32-openssl-1.0')
+optdepends=('lib32-libpulse: pulseaudio support')
 changelog=ChangeLog
 source=("local://gog_icewind_dale_enhanced_edition_${pkgver}.sh"
 	"${pkgname}"
