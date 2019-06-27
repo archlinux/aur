@@ -1,0 +1,19 @@
+pkgbase = python-neupy
+	pkgdesc = A Tensorflow based python library for prototyping and building neural networks
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = http://neupy.com/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-tensorflow
+	depends = python-scipy
+	depends = python-progressbar
+	depends = python-graphviz
+	source = python-neupy-0.8.2.tar.gz::https://github.com/itdxer/neupy/archive/v0.8.2.tar.gz
+	sha512sums = a120b21b49cd7ce97d79fae6f0e7fe83b8760e18cfffa0adcfc1d89440bffee1eb85bdac6c21f4c17528a65954ac0ccc21fc1e42e1a45c38b27620f237358392
+
+pkgname = python-neupy
+
