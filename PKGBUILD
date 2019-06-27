@@ -4,7 +4,7 @@
 
 pkgname=yosys-git
 pkgrel=1
-pkgver=r4323.266511b2
+pkgver=r5298.0d2b87e3
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64' 'i686')
 url='http://www.clifford.at/yosys/'
@@ -25,6 +25,8 @@ build(){
     cd ${srcdir}/yosys
     mv ../abc ./
     make config-gcc
+    echo "ENABLE_LIBYOSYS=1" >> Makefile.conf
+    echo "ENABLE_PYOSYS=1" >> Makefile.conf
     make
 }
 
@@ -35,7 +37,7 @@ pkgver() {
 
 package() {
     cd ${srcdir}/yosys
-    make PREFIX=$pkgdir/usr/ install
+    make PREFIX=$pkgdir/usr/ PYTHON_PREFIX=$pkgdir/usr/ install
 
     install -D -m 644 \
     "${srcdir}/LICENSE" \
