@@ -6,13 +6,13 @@
 
 
 pkgname=shadowsocks-libev-git
-pkgver=3.2.5.r37.ge3e0f2a
+pkgver=3.3.0.r7.g42d4cb1
 pkgrel=1
 pkgdesc='A lightweight secured socks5 proxy for embedded devices and low end boxes'
 arch=(x86_64)
 url='https://github.com/shadowsocks/shadowsocks-libev'
 license=(GPL3)
-depends=(libcap mbedtls libsodium libev c-ares pcre libcorkipset libbloom)
+depends=(c-ares libbloom libcap libcorkipset libev libsodium mbedtls pcre)
 makedepends=(asciidoc git xmlto)
 provides=(shadowsocks-libev)
 conflicts=(shadowsocks-libev)
