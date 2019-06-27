@@ -13,7 +13,7 @@
 
 pkgname=subtitlecomposer
 pkgver=0.6.6
-pkgrel=3
+pkgrel=6
 pkgdesc="A KDE subtitle editor"
 arch=('i686' 'x86_64')
 url="https://github.com/maxrd2/${pkgname}"
@@ -38,7 +38,7 @@ optdepends=('mplayer: MPlayer backend'
 
 source=("https://github.com/maxrd2/${pkgname}/archive/v${pkgver}.tar.gz"
         '0001-Use-target_link_libraries-instead-of-qt5_use_modules.patch::https://github.com/Martchus/subtitlecomposer/commit/cca0ff13c5bab516c073f9457277bdbf5fe1fd9a.patch')
-sha256sums=('6cd1d74f7934cdaa5d492f47da4143bd096a6196f2afcb2827cada9a3cdb2ea4'
+sha256sums=('8c957db7078676636f05e798219ff1052a52014ce7593dc660c345196f803ae4'
             '8952257e4798ba009e721a1a8b5f929b03de8e733dbfa201b20fd8edd83cea99')
 
 prepare() {
