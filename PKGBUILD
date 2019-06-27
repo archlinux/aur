@@ -3,12 +3,12 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-# Optionally select if you would like to use JBR11 or NO-JBR. The default is JBR8.
+# Optionally select if you would like to use JBR8 or NO-JBR. The default is JBR11.
 # See more https://blog.jetbrains.com/idea/2019/02/whats-new-in-intellij-idea-2019-1-eap-3/
 #
 # Note - available options:
-# 1. <empty> JBR 8 (default)
-# 2. jbr11 JBR 11
+# 1. <empty> JBR 11 (default)
+# 2. jbr8 JBR 8
 # 3. no-jbr No bundled JBR included (make sure you provide a Java runtime)
 _JBR=
 
@@ -16,7 +16,7 @@ _JBR=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=192.5281.24
+_buildver=192.5438.14
 _veryear=2019
 _verrelease=2
 _verextra=
