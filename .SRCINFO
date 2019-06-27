@@ -1,6 +1,6 @@
 pkgbase = insomnia-src
 	pkgdesc = Cross-platform HTTP and GraphQL Client (Build from source)
-	pkgver = 6.5.1
+	pkgver = 6.5.4
 	pkgrel = 1
 	url = https://github.com/getinsomnia/insomnia
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = insomnia-src
 	depends = electron
 	provides = insomnia
 	conflicts = insomnia
-	source = insomnia-6.5.1.src.tar.gz::https://github.com/getinsomnia/insomnia/archive/v6.5.1.tar.gz
-	sha256sums = a63e8956236c109d02dc2947a8c6a404e15f3adc04fe17a9e0d7d59ad2dfce49
+	source = insomnia-6.5.4.src.tar.gz::https://github.com/getinsomnia/insomnia/archive/v6.5.4.tar.gz
+	sha256sums = b22d7932d25356beb5658beb0e8bc65863d0595a2df91ef1d7ce3678678f40c3
 
 pkgname = insomnia-src
 

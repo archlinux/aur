@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=insomnia-src
 _name=insomnia
-pkgver=6.5.1
+pkgver=6.5.4
 pkgrel=1
 pkgdesc="Cross-platform HTTP and GraphQL Client (Build from source)"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ depends=('electron')
 provides=("$_name")
 conflicts=("$_name")
 source=("$_name-$pkgver.src.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a63e8956236c109d02dc2947a8c6a404e15f3adc04fe17a9e0d7d59ad2dfce49')
+sha256sums=('b22d7932d25356beb5658beb0e8bc65863d0595a2df91ef1d7ce3678678f40c3')
 
 prepare() {
 	cd "$_name-$pkgver/packages/insomnia-app"
