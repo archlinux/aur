@@ -60,6 +60,10 @@ _localmodcfg=
 # with `CONFIG_ACPI_REV_OVERRIDE_POSSIBLE`. Set next variable to `y` to enable.
 _rev_override="n"
 
+# Enable ACS override patch (patch needs to be enabled with kernel command line options)
+# https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF#Bypassing_the_IOMMU_groups_(ACS_override_patch)
+_enable_acs_override="y"
+
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.1
@@ -68,7 +72,7 @@ _srcname=linux-${_major}
 _clr=${_major}.15-791
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -83,6 +87,7 @@ source=(
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "intel-ucode-${_ucode}.tar.gz::https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-${_ucode}.tar.gz"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  'add-acs-overrides.patch::https://aur.archlinux.org/cgit/aur.git/plain/add-acs-overrides.patch?h=linux-vfio'
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
   '99-linux.hook'  # pacman hook for remove initramfs
@@ -146,6 +151,12 @@ CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
         if [ "${_enable_gcc_more_v}" = "y" ]; then
         msg2 "Enabling additional gcc CPU optimizations..."
         patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
+        fi
+
+    ### Enable ACS override patch
+        if [ "${_enable_acs_override}" = "y" ]; then
+        msg2 "Enabling ACS override patch..."
+        patch -Np1 -i "$srcdir/add-acs-overrides.patch"
         fi
 
     ### Get kernel version
@@ -344,6 +355,7 @@ sha256sums=('d06a7be6e73f97d1350677ad3bae0ce7daecb79c2c2902aaabe806f7fa94f041'
             'SKIP'
             '74ec7415988d40fa53686d994cf8cb27accdbd35c5373c4c3afc2e93372ebba5'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
+            'dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37'
