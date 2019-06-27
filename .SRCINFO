@@ -1,7 +1,7 @@
 pkgbase = pamac-aur-git
 	pkgdesc = A Gtk3 frontend for libalpm - git version
 	pkgver = 7.4.0.r28.g5e9a58e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = i686
 	arch = x86_64
@@ -38,7 +38,6 @@ pkgbase = pamac-aur-git
 pkgname = pamac-aur-git
 	install = pamac.install
 	conflicts = pamac-aur
-	replaces = pamac-aur
 	backup = etc/pamac.conf
 
 pkgname = pamac-aur-tray-appindicator-git
@@ -46,5 +45,4 @@ pkgname = pamac-aur-tray-appindicator-git
 	depends = pamac-aur-git
 	depends = libappindicator-gtk3
 	conflicts = pamac-aur-tray-indicator
-	replaces = pamac-aur-tray-indicator
 
