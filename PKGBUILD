@@ -1,7 +1,7 @@
 # Maintainer: ibrahim Tunali<ibrahimtunali@gmail.com>
 pkgname=git-secret
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A bash-tool to store your private data inside a git repository"
 arch=('any')
 url="https://github.com/sobolevn/git-secret"
@@ -51,7 +51,6 @@ package() {
   cd "$srcdir/$_gitname-build"
   install -D -m644 man/man1/*.1 -t $pkgdir/usr/share/man/man1/
   install -D -m644 man/man7/*.7 -t $pkgdir/usr/share/man/man7/
-  install -D -m755 git-secret.plugin.zsh -t $pkgdir/usr/share/zsh/plugins/
   install -D -m755 git-secret -t $pkgdir/usr/bin/
 }
 
