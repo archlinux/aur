@@ -1,0 +1,19 @@
+pkgbase = go-tip
+	pkgdesc = Core compiler tools for the Go programming language
+	pkgver = 1.13beta1
+	pkgrel = 1
+	url = https://golang.org/
+	arch = x86_64
+	license = BSD
+	provides = go
+	conflicts = go
+	source = https://storage.googleapis.com/golang/go1.13beta1.linux-amd64.tar.gz
+	source = https://storage.googleapis.com/golang/go1.13beta1.linux-amd64.tar.gz.asc
+	validpgpkeys = EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796
+	sha512sums = b623d833764349d114caa41c86ac9383f121fc12e38cc30a0c50f9ec29f8a63d95c91d1037c4702c98dbfda1ba685ec2b1ea7f86e084e08b28a2a93094ef941b
+	sha512sums = SKIP
+
+pkgname = go-tip
+	options = !strip
+	options = staticlibs
+
