@@ -1,15 +1,19 @@
-# Maintainer Holger Obermaier
+# Maintainer: Holger Obermaier
 pkgname="password-gorilla"
-realpkgname="gorilla"
+_realpkgname="gorilla"
 pkgver="1.5.3.7"
-pkgrel=6
+pkgrel=7
 pkgdesc="A cross-platform password manager."
 arch=('x86_64')
 url="https://github.com/zdia/gorilla/wiki/"
 license=('GPL2')
+depends=(
+    'glibc'
+    'hicolor-icon-theme'
+)
 source=(
-    "http://gorilla.dp100.com/downloads/${realpkgname}1537_64.bin"
-    "http://gorilla.dp100.com/downloads/${realpkgname}-1.5.3.7.zip"
+    "http://gorilla.dp100.com/downloads/${_realpkgname}1537_64.bin"
+    "http://gorilla.dp100.com/downloads/${_realpkgname}-1.5.3.7.zip"
 )
 sha256sums=(
     '19f4cfa9f76a04d6c5427b0049f8e2d5833367676b71d12f2c0205c0483739a6'
@@ -30,7 +34,7 @@ package() {
     local man_dir="${pkgdir}/usr/share/man/man1"
 
     # source directory structure
-    local srcdir_deb="${srcdir}/${realpkgname}-${pkgver}/utilities/make-deb.data"
+    local srcdir_deb="${srcdir}/${_realpkgname}-${pkgver}/utilities/make-deb.data"
 
     # binary
     install -D --preserve-timestamps --verbose --mode=u=rwx,go=rx "${srcdir}/gorilla1537_64.bin" "${bin_dir}/password-gorilla"
