@@ -1,6 +1,6 @@
 pkgbase = devhub
 	pkgdesc = TweetDeck for GitHub - Android, iOS, Web & Desktop
-	pkgver = 0.90.1
+	pkgver = 0.92.0
 	pkgrel = 1
 	url = https://github.com/devhubapp/devhub
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = devhub
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop default (xdg-email, xdg-open)
 	provides = devhub
-	source = devhub-0.90.1.src.tar.gz::https://github.com/devhubapp/devhub/archive/v0.90.1.tar.gz
-	sha256sums = 9a7177e35488009934ab6089824743cac7678610acc0bda6ff9f7c3bb1711a9c
+	source = devhub-0.92.0.src.tar.gz::https://github.com/devhubapp/devhub/archive/v0.92.0.tar.gz
+	sha256sums = e167129c80e70a5587579064b2e370f74d5e8e890a9af8c7b35e4cafc8c1c91a
 
 pkgname = devhub
 
