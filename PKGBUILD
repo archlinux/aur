@@ -1,6 +1,6 @@
 # Maintainer: ibrahim Tunali<ibrahimtunali@gmail.com>
 pkgname=git-secret
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="A bash-tool to store your private data inside a git repository"
 arch=('any')
