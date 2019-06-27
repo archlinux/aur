@@ -1,0 +1,16 @@
+pkgbase = libindi_ardust4
+	pkgdesc = INDI driver for an Arduino USB/ST-4 Interface
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tliff/indi_ardust4
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	source = https://github.com/tliff/indi_ardust4/archive/master.zip
+	source = indi_ardust4.xml
+	sha256sums = ac85f0de095fd79160f5591e3ff86fbd3c2b7e950d97576cadf266cee93e90f8
+	sha256sums = feca490bc85c2f95ccb9d2e82112eca383f4fe89d344d69f59eddab95d7d0ba3
+
+pkgname = libindi_ardust4
+

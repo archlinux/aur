@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<driversList>
+<devGroup group="Telescopes">
+        <device label="Arduino based USB to ST-4" manufacturer="DIY">
+		<driver name="Arduino ST-4 Mount">indi_ardust4</driver>
+                <version>1.0</version>
+	</device>
+</devGroup>
+</driversList>
