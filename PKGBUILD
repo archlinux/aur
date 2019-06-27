@@ -11,7 +11,7 @@ epoch=1
 _majver=9
 _minver=0
 _ver=${_majver}.${_minver}
-_tnyver=94
+_tnyver=96
 pkgver=${_ver}.${_tnyver}
 pkgrel=1
 arch=('x86_64')
@@ -23,7 +23,7 @@ options=('!strip')
 
 source=("mosek-${pkgver}.tar.bz2::https://download.mosek.com/stable/${pkgver}/mosektools${_mosekarch}.tar.bz2")
 
-sha512sums=('9baa824a76c3d87ad704a2b320fcff72331fe022aeedad8561b5e1c38ad921580a3d54742fc9d5d7b0551deba1a6547cf4e88c4a923b711f7f42ea88902b39a3')
+sha512sums=('c2540f21f837b63630afb533f7d42afb622246e3100e5600b53375c7b4fb8a22068025b5f670f68fab78e38c51442d94a74c3ebd348d6539cf10eb3042085dc6')
 
 package() {
 	# Install shared libraries.
