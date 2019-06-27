@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=listen1-desktop
-pkgver=2.1.5
-pkgrel=3
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="one for all free music in china (Build from source)"
 arch=('x86_64' 'i686')
 url="https://github.com/listen1/listen1_desktop"
