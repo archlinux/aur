@@ -11,6 +11,9 @@ makedepends=(
     'p7zip'
     'sed'
 )
+depends=(
+    'xorg-xrandr'
+)
 source=(
     'https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_'${pkgver}'.AppImage'
 )

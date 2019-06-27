@@ -7,6 +7,7 @@ pkgbase = mitalk
 	license = custom
 	makedepends = p7zip
 	makedepends = sed
+	depends = xorg-xrandr
 	source = https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_4.0.19.AppImage
 	md5sums = b6d92c52d2c0f27e55a07b5f1255669e
 
