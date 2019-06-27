@@ -2,7 +2,7 @@
 # Maintainer: Drew Liszewski
 pkgname=emulationstation-themes
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="EmulationStation themes pack"
 arch=('any')
 url="http://aloshi.com/emulationstation"
