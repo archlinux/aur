@@ -2,6 +2,4 @@ post_install() {
   echo ""
   echo ">> Please see the documentation on how to set up printers with tea4cups."
   echo ""
-  echo ">> Please create the directoy /var/spool/tea4cups, chown it to cups 
-user and chmod 740 it."
 }

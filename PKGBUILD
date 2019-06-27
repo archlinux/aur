@@ -1,8 +1,8 @@
 pkgname=tea4cups-py3-git
 _pkgname=tea4cups-py3
-pkgver=r12.65b5c3a
+pkgver=3.1.5_alpha+65b5c3a
 
-pkgrel=2
+pkgrel=1
 pkgdesc="A unofficial python3 fork of Tea4cups"
 
 url="https://gitlab.com/dadosch/tea4cups/tree/python3/"
@@ -34,14 +34,26 @@ sha256sums=(
   'SKIP'                                                             # svn+http://svn.pykota.com/tea4cups/trunk
   '6221890bbd1ab3806efeec8624161c80742d1c5fce24c9094e4f8f8466ba2923' # doc_from_website.txt
   'SKIP'                                                             # doc_debianwiki.html
-  'ef3106de3e751109dcad9f3261fe608aff09fc6dea18451dfca2a4841ffccf7a' # "${install}"
+  '315c82e6e9d352ecb32d511c9290790ac2a52e60e82d4727bff350fcf03aacf0' # "${install}"
 )
+
+_tea4cups_spool='/var/spool/tea4cups' # Should match that which get's defined by applying "${srcdir}/tea4cups-spool-directory.patch".
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
+  _ver="$(cat tea4cups | sed -n -E 's|^[[:space:]]*__version__[[:space:]]*=[[:space:]]*(.*)$|\1|p' | tr -d \"\' | tr '-' '_')"
+  _git="$(git rev-parse --short HEAD)"
 
+  if [ -z ${_ver} ]; then
+    echo "Error: Could not determine software version. Aborting." >&2
+    exit 1
+  fi
+  if [ -z ${_git} ]; then
+    echo "Error: Could not determine Git revision. Aborting." >&2
+    exit 1
+  fi
   # Get the version number.
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "${_ver}+${_git}"
 }
 
 
@@ -77,4 +89,8 @@ package() {
   install -v -m 755 -D clean.sh         "${pkgdir}/usr/share/doc/${_pkgname}/clean.sh"
   
   install -v -m 644 -D "COPYING"        "${pkgdir}/usr/share/licenses/${pkgname}/GPL2.txt"
+
+  msg2 "Creating our own spool directory '${_tea4cups_spool}' ..."
+  install -v -d -m775 "${pkgdir}${_tea4cups_spool}"
+  chown cups:cups "${pkgdir}${_tea4cups_spool}"
 }
