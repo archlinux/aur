@@ -1,7 +1,8 @@
-# Maintainer: Tim Rakowski <tim.rakowski@gmail.com>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 # Contributor: marauder <abhinav.kssk@gmail.com>
 pkgname=ignition-tools
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Ignition tools provide the ign command line tool that accepts multiple subcommands."
 arch=('any')
@@ -13,9 +14,9 @@ depends=('ruby')
 optdepends=()
 conflicts=()
 source=("https://bitbucket.org/ignitionrobotics/ign-tools/get/${pkgname}_${pkgver}.tar.bz2")
-sha256sums=('c347edd7ecf44a360ae1285f34d33ac121a627562b2cf6b44f04ddb99417453b')
+sha256sums=('06c4207dee0242cf4e9d8ed01b1b145a1812b4e223f616b3591eb27e2da5781a')
 
-_dir="ignitionrobotics-ign-tools-e775d6356667"
+_dir="ignitionrobotics-ign-tools-d86279474605"
 
 build() {
   cd "$srcdir/$_dir"
