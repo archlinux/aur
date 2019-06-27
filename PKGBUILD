@@ -1,9 +1,9 @@
-# Maintainer: Jake <ja.ke@posteo.de>
+# Maintainer: Jake <aur@ja-ke.tech>
 # Contributor: Alexander Scharinger
 # Contributor: Tristan Webb <t2webb@ucsd.edu>
 # Contributor Sindwiller
 pkgname=pyspread
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A cross-platform Python spreadsheet application. Python 2.7 version"
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=('python2-gnupginterface: for opening files without approval' # in AU
 options=(!emptydirs)
 source=("https://github.com/manns/pyspread/archive/v${pkgver}.tar.gz"
         "$pkgname.desktop")
-sha512sums=('46fc9e487876c1e903b4f25c7f29423901ce9580bb3916f60fac8358d76cfcd78b4315de191aaf41745331eac899422693e3b1fb259df79ba6d8c02f53553ff6'
+sha512sums=('e9be7edfede1d150fbe72edf9eab16ce39c3d3fb844345628194541d2386a33203a18d8081b02b8ee7b7821a35f0990da01225256dbdfc353f64eeae4738a534'
             '9411c1c4c9c68132bdc05fc028b4a3d1dade65502a21c64bcd093f94fe7ed6e7dee3f34a2a423da263f73dd5f20c1fcbfb0734ec60e5789057296dd8d48895d2')
 
 package() {  
