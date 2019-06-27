@@ -2,8 +2,8 @@
 # Maintainer: Felix Morgner <felix.morgner@gmail.com>
 
 pkgname=cevelop
-pkgver=1.11.1
-_srctimestamp=201902151304
+pkgver=1.12.0
+_srctimestamp=201906270918
 pkgrel=1
 pkgdesc="The C++ IDE for professional developers"
 license=('custom')
@@ -26,7 +26,7 @@ sha256sums=('65b469797c38ca09bc16bcb940138091def2d30079fa09028b8756c1040c5c85'
             '98ab055ecde507b6603743ab40db3dfdb6d6b3b24cb5fff244982ae641d865a0'
             'd99f2f3b58aef682fcab7d1cedf20fc4fc44152c6b964af49212a9e7f4d35def'
             'ebd2b54d0487de845093cabda98d5e0977f436fc10d40f15d2cb1598084222e4')
-sha256sums_x86_64=('ff4eb8f736c6f429779885084067477d8b09ac5a7ae49295b94895478abfc858')
+sha256sums_x86_64=('d061fe71e96f0cd963a2aafef1befdb71ebc3bb827e469d99b91875f1536a25a')
 
 prepare() {
   gendesk -n --pkgname "$pkgname" \
