@@ -5,7 +5,7 @@
 
 pkgname=gsettings-desktop-schemas-dev
 _realpkgname=gsettings-desktop-schemas
-pkgver=3.32.0
+pkgver=3.33.0
 pkgrel=1
 pkgdesc="Shared GSettings schemas for the desktop"
 arch=(x86_64)
