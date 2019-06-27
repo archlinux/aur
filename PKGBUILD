@@ -1,14 +1,14 @@
 # Maintainer: Dmytro Bubon (quaardvark) <dmitry.bubon at gmail dot com>
 
 pkgbase=linux-cx2072x   # Build kernel with CX2072x support
-_srcver=4.20_cx2072x
+_srcver=5.1_cx2072x
 _srcname="linux-$_srcver"
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/heikomat/linux/tree/cx2072x"
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
+makedepends=(xmlto kmod inetutils bc libelf git)
 options=('!strip')
 source=(
   "https://github.com/heikomat/linux/archive/v$_srcver.tar.gz"
@@ -23,9 +23,9 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('2b3d30efddfe22f5a160f6ca757ec17403078a2adb4fe5db6b307695e0dc8256'
-            '3f72b50a40e98737a6195b6d2b3c8c301007d40730bc4ec37fdf9e57dceb6fb9'
-            'd66d56cd119f02951c1db89c17f52a09140e1e177c36eaebdaf77710e1e095c8'
+sha256sums=('ccf40bdeb5c8f77f4d5a379667c75b287a8e46c593b105c2911b66a8354764dd'
+            'd8eac4a183fbc5a6391a21beb9be1c9b24b7ff2deeb3cedb8b4635722ddcede9'
+            '702967d73e83f35c3c83b83fb6cd76a01912bce7993f89fda1004ee12816e924'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -61,7 +61,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make bzImage modules
 }
 
 _package() {
@@ -78,8 +78,8 @@ _package() {
   cd $_srcname
 
   # install cx2072 ALSA configs
-  install -Dm644 ./cx2072x_fixes_and_manual/chtcx2072x/HiFi.conf "$pkgdir/usr/share/alsa/ucm/chtcx2072x/HiFi.conf"
-  install -Dm644 ./cx2072x_fixes_and_manual/chtcx2072x/chtcx2072x.conf "$pkgdir/usr/share/alsa/ucm/chtcx2072x/chtcx2072x.conf"
+  install -Dm644 ./cx2072x_fixes_and_manual/bytcht-cx2072x//HiFi.conf "$pkgdir/usr/share/alsa/ucm/bytcht-cx2072x/HiFi.conf"
+  install -Dm644 ./cx2072x_fixes_and_manual/bytcht-cx2072x//bytcht-cx2072x.conf "$pkgdir/usr/share/alsa/ucm/bytcht-cx2072x/bytcht-cx2072x.conf"
 
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
@@ -215,18 +215,6 @@ _package-docs() {
   msg2 "Installing documentation..."
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
-
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
-
-  msg2 "Moving HTML docs..."
-  local src dst
-  while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
