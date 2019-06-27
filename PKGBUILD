@@ -1,7 +1,7 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=3.18.r8.g8519a9ea+wine.3.18.r75.ge55aca8f49
+pkgver=4.11.r3.g3ad04757+wine.4.11.r138.g6e97461580
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
@@ -49,6 +49,11 @@ makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
     'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
     'sdl2'                  'lib32-sdl2'
+    'vkd3d'                 'lib32-vkd3d'
+    'sane'
+    'libgphoto2'
+    'gsm'
+    'ffmpeg'
     'samba'
     'opencl-headers'
     'vulkan-headers'
@@ -75,14 +80,19 @@ optdepends=(
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
     'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
     'sdl2'                  'lib32-sdl2'
+    'vkd3d'                 'lib32-vkd3d'
+    'sane'
+    'libgphoto2'
+    'gsm'
+    'ffmpeg'
     'cups'
     'samba'
     'dosbox'
 )
 options=('staticlibs')
-install="$pkgname".install
-source=('wine-git'::'git://source.winehq.org/git/wine.git'
-        "$pkgname"::'git+https://github.com/wine-staging/wine-staging.git'
+install="${pkgname}.install"
+source=('git://source.winehq.org/git/wine.git'
+        'git+https://github.com/wine-staging/wine-staging.git'
         '30-win32-aliases.conf'
         'wine-binfmt.conf')
 sha256sums=('SKIP'
@@ -114,44 +124,50 @@ else
 fi
 
 prepare() {
-    cd 'wine-git'
+    # delete old build dirs (from previous builds) and make new ones
+    rm    -rf "$pkgname"-{32,64}-build
+    mkdir -p  "$pkgname"-32-build
+    [ "$CARCH" = 'x86_64' ] && mkdir "$pkgname"-64-build
+    
+    cd wine
     
     # restore the wine tree to its git origin state, without wine-staging patches
     # (necessary for reapllying wine-staging patches in succedent builds,
     # otherwise the patches will fail to be reapplied)
     printf '%s\n' '  -> Cleaning wine source code tree...'
-    git reset --hard HEAD      # restore tracked files
-    git clean -xdf             # delete untracked files
+    git reset --hard HEAD  # restore tracked files
+    git clean -xdf         # delete untracked files
     
     # change back to the wine upstream commit that this version of wine-staging is based in
     printf '%s\n' '  -> Changing wine HEAD to the wine-staging base commit...'
-    git checkout "$(../"$pkgname"/patches/patchinstall.sh --upstream-commit)"
+    git checkout "$(../wine-staging/patches/patchinstall.sh --upstream-commit)"
     
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+    
+    # apply all wine-staging patches
+    printf '%s\n' '  -> Applying wine-staging patches...'
+    cd "${srcdir}/wine-staging/patches"
+    ./patchinstall.sh DESTDIR="${srcdir}/wine" --all
 }
 
 pkgver() {
-    cd "$pkgname"
-    local _staging_tag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
-    local _staging_version="$(git describe --long --tags \
-                                | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/' \
-                                | sed "s/^latest.release/${_staging_tag}/")"
-    cd "${srcdir}/wine-git"
-    local _wine_version="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
+    local _staging_tag
+    local _staging_version
+    local _wine_version
+    
+    cd wine-staging
+    _staging_tag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
+    _staging_version="$(git describe --long --tags \
+                          | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/' \
+                          | sed "s/^latest.release/${_staging_tag}/")"
+    cd "${srcdir}/wine"
+    _wine_version="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
     
     printf '%s+%s' "$_staging_version" "$_wine_version"
 }
 
 build() {
-    # delete old build dirs (from previous builds) and make new ones
-    rm    -rf "$pkgname"-{32,64}-build
-    mkdir -p  "$pkgname"-32-build
-    
-    # apply all wine-staging patches
-    printf '%s\n' '  -> Applying wine-staging patches...'
-    ./"${pkgname}"/patches/patchinstall.sh DESTDIR="${srcdir}/wine-git" --all
-    
     # workaround for FS#55128
     # https://bugs.archlinux.org/task/55128
     # https://bugs.winehq.org/show_bug.cgi?id=43530
@@ -160,18 +176,17 @@ build() {
     
     # build wine-staging 64-bit
     # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
-    if [ "$CARCH" = "x86_64" ] 
+    if [ "$CARCH" = 'x86_64' ] 
     then
         printf '%s\n' '  -> Building Wine-64...'
-        mkdir -p "$pkgname"-64-build
         cd  "$pkgname"-64-build
-        ../wine-git/configure \
-                        --prefix='/usr' \
-                        --libdir='/usr/lib' \
-                        --with-x \
-                        --with-gstreamer \
-                        --enable-win64 \
-                        --with-xattr
+        ../wine/configure \
+                    --prefix='/usr' \
+                    --libdir='/usr/lib' \
+                    --with-x \
+                    --with-gstreamer \
+                    --enable-win64 \
+                    --with-xattr
         make
         local _wine32opts=(
                     '--libdir=/usr/lib32'
@@ -183,12 +198,12 @@ build() {
     # build wine-staging 32-bit
     printf '%s\n' '  -> Building Wine-32...'
     cd "${srcdir}/${pkgname}"-32-build
-    ../wine-git/configure \
-                    --prefix='/usr' \
-                    --with-x \
-                    --with-gstreamer \
-                    --with-xattr \
-                    "${_wine32opts[@]}"
+    ../wine/configure \
+                --prefix='/usr' \
+                --with-x \
+                --with-gstreamer \
+                --with-xattr \
+                "${_wine32opts[@]}"
     make
 }
 

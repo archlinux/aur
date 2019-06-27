@@ -1,6 +1,6 @@
 pkgbase = wine-staging-git
 	pkgdesc = A compatibility layer for running Windows programs (staging branch, git version)
-	pkgver = 3.18.r8.g8519a9ea+wine.3.18.r75.ge55aca8f49
+	pkgver = 4.11.r3.g3ad04757+wine.4.11.r138.g6e97461580
 	pkgrel = 1
 	url = https://www.wine-staging.com/
 	install = wine-staging-git.install
@@ -61,6 +61,12 @@ pkgbase = wine-staging-git
 	makedepends = lib32-vulkan-icd-loader
 	makedepends = sdl2
 	makedepends = lib32-sdl2
+	makedepends = vkd3d
+	makedepends = lib32-vkd3d
+	makedepends = sane
+	makedepends = libgphoto2
+	makedepends = gsm
+	makedepends = ffmpeg
 	makedepends = samba
 	makedepends = opencl-headers
 	makedepends = vulkan-headers
@@ -135,18 +141,24 @@ pkgbase = wine-staging-git
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = sdl2
 	optdepends = lib32-sdl2
+	optdepends = vkd3d
+	optdepends = lib32-vkd3d
+	optdepends = sane
+	optdepends = libgphoto2
+	optdepends = gsm
+	optdepends = ffmpeg
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.18.r75.ge55aca8f49
-	provides = wine-wow64=3.18.r75.ge55aca8f49
-	provides = wine-git=3.18.r75.ge55aca8f49
-	provides = wine-staging=3.18.r8.g8519a9ea
+	provides = wine=4.11.r138.g6e97461580
+	provides = wine-wow64=4.11.r138.g6e97461580
+	provides = wine-git=4.11.r138.g6e97461580
+	provides = wine-staging=4.11.r3.g3ad04757
 	conflicts = wine
 	conflicts = wine-wow64
 	options = staticlibs
-	source = wine-git::git://source.winehq.org/git/wine.git
-	source = wine-staging-git::git+https://github.com/wine-staging/wine-staging.git
+	source = git://source.winehq.org/git/wine.git
+	source = git+https://github.com/wine-staging/wine-staging.git
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	sha256sums = SKIP
