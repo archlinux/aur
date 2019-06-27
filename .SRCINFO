@@ -1,6 +1,6 @@
 pkgbase = wine-git
 	pkgdesc = A compatibility layer for running Windows programs (git version)
-	pkgver = 3.18.r75.ge55aca8f49
+	pkgver = 4.11.r138.g6e97461580
 	pkgrel = 1
 	url = https://www.winehq.org/
 	install = wine-git.install
@@ -55,9 +55,16 @@ pkgbase = wine-git
 	makedepends = lib32-gst-plugins-base-libs
 	makedepends = vulkan-icd-loader
 	makedepends = lib32-vulkan-icd-loader
-	makedepends = samba
-	makedepends = opencl-headers
+	makedepends = vkd3d
+	makedepends = lib32-vkd3d
+	makedepends = sdl2
+	makedepends = lib32-sdl2
+	makedepends = libgphoto2
+	makedepends = sane
+	makedepends = gsm
 	makedepends = vulkan-headers
+	makedepends = opencl-headers
+	makedepends = samba
 	makedepends = fontconfig
 	makedepends = lib32-fontconfig
 	makedepends = lcms2
@@ -84,6 +91,8 @@ pkgbase = wine-git
 	makedepends = lib32-gcc-libs
 	makedepends = libpcap
 	makedepends = lib32-libpcap
+	makedepends = faudio
+	makedepends = lib32-faudio
 	makedepends = desktop-file-utils
 	optdepends = giflib
 	optdepends = lib32-giflib
@@ -121,18 +130,25 @@ pkgbase = wine-git
 	optdepends = lib32-gst-plugins-base-libs
 	optdepends = vulkan-icd-loader
 	optdepends = lib32-vulkan-icd-loader
+	optdepends = vkd3d
+	optdepends = lib32-vkd3d
+	optdepends = sdl2
+	optdepends = lib32-sdl2
+	optdepends = libgphoto2
+	optdepends = sane
+	optdepends = gsm
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=3.18.r75.ge55aca8f49
-	provides = bin32-wine=3.18.r75.ge55aca8f49
-	provides = wine-wow64=3.18.r75.ge55aca8f49
+	provides = wine=4.11.r138.g6e97461580
+	provides = bin32-wine=4.11.r138.g6e97461580
+	provides = wine-wow64=4.11.r138.g6e97461580
 	conflicts = wine
 	conflicts = bin32-wine
 	conflicts = wine-wow64
 	replaces = bin32-wine
 	options = staticlibs
-	source = wine-git::git://source.winehq.org/git/wine.git
+	source = git://source.winehq.org/git/wine.git
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	sha256sums = SKIP
@@ -166,5 +182,7 @@ pkgname = wine-git
 	depends = lib32-gcc-libs
 	depends = libpcap
 	depends = lib32-libpcap
+	depends = faudio
+	depends = lib32-faudio
 	depends = desktop-file-utils
 

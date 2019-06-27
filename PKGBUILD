@@ -1,9 +1,9 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Sidney Crestani <sidneycrestani@archlinux.net>
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=3.18.r75.ge55aca8f49
+pkgver=4.11.r138.g6e97461580
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('i686' 'x86_64')
@@ -23,6 +23,7 @@ _depends=(
     'libsm'                 'lib32-libsm'
     'gcc-libs'              'lib32-gcc-libs'
     'libpcap'               'lib32-libpcap'
+    'faudio'                'lib32-faudio'
     'desktop-file-utils'
 )
 makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
@@ -47,9 +48,14 @@ makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'libxslt'               'lib32-libxslt'
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
     'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
-    'samba'
-    'opencl-headers'
+    'vkd3d'                 'lib32-vkd3d'
+    'sdl2'                  'lib32-sdl2'
+    'libgphoto2'
+    'sane'
+    'gsm'
     'vulkan-headers'
+    'opencl-headers'
+    'samba'
 )
 optdepends=(
     'giflib'                'lib32-giflib'
@@ -70,13 +76,18 @@ optdepends=(
     'libxslt'               'lib32-libxslt'
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
     'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
+    'vkd3d'                 'lib32-vkd3d'
+    'sdl2'                  'lib32-sdl2'
+    'libgphoto2'
+    'sane'
+    'gsm'
     'cups'
     'samba'
     'dosbox'
 )
 options=('staticlibs')
-install="$pkgname".install
-source=("$pkgname"::'git://source.winehq.org/git/wine.git'
+install="${pkgname}.install"
+source=('git://source.winehq.org/git/wine.git'
         '30-win32-aliases.conf'
         'wine-binfmt.conf')
 sha256sums=('SKIP'
@@ -99,22 +110,23 @@ else
 fi
 
 prepare() {
-    cd "$pkgname"
+    # delete old build dirs (from previous builds) and make new ones
+    rm    -rf "$pkgname"-{32,64}-build
+    mkdir -p  "$pkgname"-32-build
+    [ "$CARCH" = 'x86_64' ] && mkdir "$pkgname"-64-build
+    
+    cd wine
     
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd wine
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^wine.//;s/^v//;s/\.rc/rc/'
 }
 
 build() {
-    # delete old build dirs (from previous builds) and make new ones
-    rm    -rf "$pkgname"-{32,64}-build
-    mkdir -p  "$pkgname"-32-build
-    
     # workaround for FS#55128
     # https://bugs.archlinux.org/task/55128
     # https://bugs.winehq.org/show_bug.cgi?id=43530
@@ -126,36 +138,29 @@ build() {
     if [ "$CARCH" = 'x86_64' ] 
     then
         printf '%s\n' '  -> Building Wine-64...'
-
-        mkdir "$pkgname"-64-build
         cd    "$pkgname"-64-build
-        
-        ../"$pkgname"/configure \
-                          --prefix='/usr' \
-                          --libdir='/usr/lib' \
-                          --with-x \
-                          --with-gstreamer \
-                          --enable-win64
+        ../wine/configure \
+                    --prefix='/usr' \
+                    --libdir='/usr/lib' \
+                    --with-x \
+                    --with-gstreamer \
+                    --enable-win64
         make
-        
         local _wine32opts=(
                     '--libdir=/usr/lib32'
                     "--with-wine64=${srcdir}/${pkgname}-64-build"
         )
-        
         export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
     fi
     
     # build wine 32-bit
     printf '%s\n' '  -> Building Wine-32...'
-    
     cd "${srcdir}/${pkgname}"-32-build
-    
-    ../"$pkgname"/configure \
-                      --prefix='/usr' \
-                      --with-x \
-                      --with-gstreamer \
-                      ${_wine32opts[@]}
+    ../wine/configure \
+                --prefix='/usr' \
+                --with-x \
+                --with-gstreamer \
+                ${_wine32opts[@]}
     make
 }
 
@@ -178,9 +183,7 @@ package() {
     
         # package wine 64-bit
         printf '%s\n' '  -> Packaging Wine-64...'
-        
         cd "${srcdir}/${pkgname}"-64-build
-        
         make prefix="$pkgdir/usr" \
              libdir="$pkgdir/usr/lib" \
              dlldir="$pkgdir/usr/lib/wine" install
