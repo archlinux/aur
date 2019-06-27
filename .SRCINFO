@@ -1,6 +1,6 @@
 pkgbase = atlassian-jira-lts
 	pkgdesc = Bug tracking, issue tracking and project management software (Enterprise Release)
-	pkgver = 7.13.3
+	pkgver = 7.13.4
 	pkgrel = 1
 	url = https://www.atlassian.com/software/jira
 	install = jira.install
@@ -11,7 +11,7 @@ pkgbase = atlassian-jira-lts
 	conflicts = atlassian-jira
 	backup = etc/conf.d/jira
 	backup = etc/webapps/atlassian-jira/server.xml
-	source = https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-core-7.13.3.tar.gz
+	source = https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-core-7.13.4.tar.gz
 	source = jira.conf.d
 	source = jira.service
 	sha256sums = a6ede8d87a216180b35baf0ec82657e88d4de9700af9296b0f5261e3044bc56c
