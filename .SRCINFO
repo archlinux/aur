@@ -1,7 +1,7 @@
 pkgbase = aranym
 	pkgdesc = Atari Running on Any Machine
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://aranym.github.io
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = aranym
 	depends = bash
 	depends = sdl_image
 	depends = mpfr
-	source = http://downloads.sourceforge.net/sourceforge/aranym/aranym_1.0.2.orig.tar.gz
-	md5sums = 4eeaf781e41785d83b966df44dead249
+	source = http://downloads.sourceforge.net/sourceforge/aranym/aranym_1.1.0.orig.tar.gz
+	md5sums = 876eeadc81c16ee30717503a7b4f55b5
 
 pkgname = aranym
 

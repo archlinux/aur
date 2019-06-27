@@ -5,15 +5,15 @@
 # Contributor: Giovanni Condello <condellog@gmail.com>
 
 pkgname=aranym
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Atari Running on Any Machine"
 url="https://aranym.github.io"
 depends=('gcc-libs' 'bash' 'sdl_image' 'mpfr')
 arch=('i686' 'x86_64')
 license=('GPL')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/"$pkgname"_"$pkgver".orig.tar.gz)
-md5sums=('4eeaf781e41785d83b966df44dead249')
+md5sums=('876eeadc81c16ee30717503a7b4f55b5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
