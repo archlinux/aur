@@ -1,7 +1,7 @@
-# Maintainer: Laurent Carlier <lordheavym@gmail.com>
+# Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=libclc-git
-pkgver=r505.0023627
+pkgver=r585.9f6204e
 pkgrel=1
 epoch=1
 groups=('mesagit')
@@ -12,7 +12,7 @@ license=('MIT')
 provides=('libclc')
 replaces=('libclc-amdgpu-git')
 conflicts=('libclc-amdgpu-git')
-makedepends=('clang-svn' 'git' 'python2')
+makedepends=('clang-git' 'git' 'python2')
 options=('staticlibs')
 source=('libclc::git+http://llvm.org/git/libclc.git')
 md5sums=(SKIP)
