@@ -1,7 +1,7 @@
 pkgbase = nest
 	pkgdesc = Simulator for spiking neural network models
-	pkgver = 2.16.0
-	pkgrel = 3
+	pkgver = 2.18.0
+	pkgrel = 1
 	url = https://www.nest-simulator.org/
 	arch = x86_64
 	license = GPL
@@ -14,8 +14,8 @@ pkgbase = nest
 	optdepends = python-numpy
 	optdepends = python-scipy
 	optdepends = python-matplotlib
-	source = nest-2.16.0.tar.gz::https://github.com/nest/nest-simulator/archive/v2.16.0.tar.gz
-	sha256sums = abfeb61719dec54da9477be035bef1d9d764f4e7663f63f6a6d9211f967e0490
+	source = nest-2.18.0.tar.gz::https://github.com/nest/nest-simulator/archive/v2.18.0.tar.gz
+	sha256sums = 34534dce281f462fd6275acd1e783d5c6a59c4a8e0e10088098b1d46c3da4914
 
 pkgname = nest
 
