@@ -2,7 +2,6 @@
 pkgname=fcitx-qt4
 pkgver=4.2.9.6
 pkgrel=1
-epoch=3
 pkgdesc="This is a fcitx-qt4 package for software that depends on fcitx-qt4."
 arch=("x86_64")
 url="https://fcitx-im.org"
