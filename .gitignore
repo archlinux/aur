@@ -1,0 +1,4 @@
+/pkg
+/src
+/boringtun-git
+*.pkg.tar.xz

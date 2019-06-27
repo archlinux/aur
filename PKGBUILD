@@ -1,21 +1,21 @@
 pkgname=boringtun-git
-pkgver=0.2.0.9.g201682d
+pkgver=0.2.0.8.g37be474
 pkgrel=1
 pkgdesc="Userspace WireGuard® Implementation in Rust"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/cloudflare/boringtun"
 license=('BSD-3-Clause')
-depends=()
+depends=('gcc-libs')
 makedepends=('cargo' 'git')
-optdepends=()
+optdepends=('wireguard-tools: tools and scripts for interface setup')
 provides=('boringtun')
 conflicts=('boringtun')
-source=($pkgname::git+https://github.com/cloudflare/boringtun)
+source=($pkgname::git+https://github.com/cloudflare/boringtun.git)
 sha256sums=('SKIP')
 
 pkgver() {
 	cd $pkgname
-	echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD).g$(git describe --always)
+	echo "$(git describe --long --tags | sed 's/^v//;s/-/./g')"
 }
 
 build() {
