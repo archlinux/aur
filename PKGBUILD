@@ -2,7 +2,7 @@
 # Contributor: Jacob Mason <jacob@jacobmason.net>
 
 pkgname=jx
-pkgver=2.0.340
+pkgver=2.0.346
 pkgrel=1
 pkgdesc='Command line tool for working with Jenkins X'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/jenkins-x/jx'
 license=('Apache')
 depends=('go>=1.11.4')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jenkins-x/jx/archive/v$pkgver.tar.gz")
-sha256sums=('2769767bfcfa74d6b68467d928add643ce95dedb144d951ab8df962ffd1a18e5')
+sha256sums=('b0bad3f3a28eec3099a7d81f5dc8c42414fbceea4eeee3068ea8594eec4af5d5')
 
 prepare() {
   mkdir -p gopath/src/github.com/jenkins-x
