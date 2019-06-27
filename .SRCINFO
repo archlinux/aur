@@ -1,0 +1,17 @@
+pkgbase = async
+	pkgdesc = A tool to run shell commands in parallel.
+	pkgver = 0.1.1
+	pkgrel = 0
+	url = https://github.com/ctbur/async
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/ctbur/async/archive/v0.1.1.tar.gz
+	sha512sums = 29200938bafe9a753ff790f8f10c22d03d86fbaaf9d6acffa1cd8fe800821b702366f0a465d7a05cf7e209be3e5988d6e6782a448fd78febb46156801628e892
+
+pkgname = async
+
