@@ -1,0 +1,24 @@
+pkgbase = tau-editor-git
+	pkgdesc = GTK frontend for the Xi text editor, written in Rus
+	pkgver = v0.8.1.r104.0523ba8
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/tau
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = rust
+	depends = xi-core-git
+	depends = glib2
+	depends = pango
+	depends = gtk3
+	depends = cairo
+	depends = gdk-pixbuf2
+	provides = tau-editor
+	conflicts = tau-editor
+	source = git+https://gitlab.gnome.org/World/tau
+	sha256sums = SKIP
+
+pkgname = tau-editor-git
+
