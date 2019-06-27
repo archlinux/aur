@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=imewlconverter-bin
 _name=imewlconverter
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="一款开源免费的输入法词库转换程序"
 arch=('x86_64' 'i686')
@@ -11,10 +11,10 @@ depends=('dotnet-runtime')
 provides=('imewlconverter')
 conflicts=('imewlconverter')
 source=(
-	"$pkgname-$pkgver.src.tar.gz::https://github.com/studyzy/imewlconverter/releases/download/v$pkgver/Release_V${pkgver}_Linux_macOS.tar.gz"
+	"$pkgname-$pkgver.src.zip::https://github.com/studyzy/imewlconverter/releases/download/V$pkgver/Release_V${pkgver}_Linux_MacOS.zip"
 	"imewlconverter.sh"
 )
-sha256sums=('68bfa97f1b4970e44859d3374ffad71dbf105925ef0b552e8763553ac2aa89dc'
+sha256sums=('a5ac8dc1ff875a3d99e17ef56fceb6dcdd6425a744791c9e22f4e1fe9885927f'
             '296106ea5016fba53925eba966f9efa10563d46e570dbdd3832356a02a718247')
 
 package() {
