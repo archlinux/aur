@@ -2,18 +2,18 @@
 
 pkgname=writeas-cli
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Write.as command line interface"
 arch=('x86_64')
 url='https://write.as/apps/cli'
 license=('GPL3')
 depends=('glibc')
 makedepends=('go')
-source=("https://github.com/writeas/writeas-cli/releases/download/v${pkgver}/writeas_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('994ff7ff23e0ed771fb3457775d11ad98c13116cbfa0898175486300589a35e1')
+source=("https://github.com/writeas/writeas-cli/archive/v${pkgver}.tar.gz")
+sha256sums=('9f3838a78915861cf367b2d80d0e4d63bba74e0c58bdab53f55838a1646ad3f7')
 
 build() {
-	cd ${pkgname}
+	cd ${pkgname}-${pkgver}
 	go build \
 		-gcflags "all=-trimpath=${PWD}" \
 		-asmflags "all=-trimpath=${PWD}" \
@@ -22,5 +22,5 @@ build() {
 }
 
 package() {
-	install -Dm755 "${srcdir}/${pkgname}/writeas" "${pkgdir}/usr/bin/writeas"
+	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/writeas" "${pkgdir}/usr/bin/writeas"
 }

@@ -1,14 +1,14 @@
 pkgbase = writeas-cli
 	pkgdesc = Write.as command line interface
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://write.as/apps/cli
 	arch = x86_64
 	license = GPL3
 	makedepends = go
 	depends = glibc
-	source = https://github.com/writeas/writeas-cli/releases/download/v2.0.0/writeas_2.0.0_linux_amd64.tar.gz
-	sha256sums = 994ff7ff23e0ed771fb3457775d11ad98c13116cbfa0898175486300589a35e1
+	source = https://github.com/writeas/writeas-cli/archive/v2.0.0.tar.gz
+	sha256sums = 9f3838a78915861cf367b2d80d0e4d63bba74e0c58bdab53f55838a1646ad3f7
 
 pkgname = writeas-cli
 
