@@ -1,0 +1,6 @@
+post_upgrade() {
+  echo "*****************************************************************"
+  echo "==> Remove obsolete package cache files:"
+  echo "    rm -rf $HOME/.dub/packages/{datefmt-*,gtk-d-*}"    
+  echo "*****************************************************************"
+}
