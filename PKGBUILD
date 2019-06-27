@@ -7,7 +7,7 @@ pkgname=teensyduino
 pkgver=1.46
 _pkgver=1.46
 _arduino=1.8.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Arduino SDK with Teensyduino"
 arch=('i686' 'x86_64')
 url="http://www.pjrc.com/teensy/teensyduino.html"
@@ -31,7 +31,7 @@ source_x86_64+=("http://downloads.arduino.cc/arduino-${_arduino}-linux64.tar.xz"
 sha256sums=('473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68'
             '270b55353eb438d3790c7245e5ae16ff8bac9f98cfe927d6c9f2146a34499323'
             'SKIP'
-            '031de0b26991b5a3b19c497d9c0a17f86c40c55d925b9d07d19ab89f2286469d'
+            '7c17bb6dcef244fbf8bc9bd85a7eb812eebe60f6a6a3d47bceddde84c77c5914'
             '25980feb5927b8bea8b8e999f5002e110825b1bc3d546fa902c2db5c824d33f3')
 sha256sums_i686=('f5cadd3467c183bf6f10bd981a84581fe9861cacfaad951f65f9a6f68c1a8a7e'
                  '5c8e7f4bf66bee803de089628e57f1c406106de28343095da25c14388b6487af')

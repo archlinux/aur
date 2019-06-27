@@ -1,7 +1,7 @@
 pkgbase = teensyduino
 	pkgdesc = Arduino SDK with Teensyduino
 	pkgver = 1.46
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pjrc.com/teensy/teensyduino.html
 	install = teensyduino.install
 	arch = i686
@@ -32,7 +32,7 @@ pkgbase = teensyduino
 	sha256sums = 473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68
 	sha256sums = 270b55353eb438d3790c7245e5ae16ff8bac9f98cfe927d6c9f2146a34499323
 	sha256sums = SKIP
-	sha256sums = 031de0b26991b5a3b19c497d9c0a17f86c40c55d925b9d07d19ab89f2286469d
+	sha256sums = 7c17bb6dcef244fbf8bc9bd85a7eb812eebe60f6a6a3d47bceddde84c77c5914
 	sha256sums = 25980feb5927b8bea8b8e999f5002e110825b1bc3d546fa902c2db5c824d33f3
 	source_i686 = http://downloads.arduino.cc/arduino-1.8.9-linux32.tar.xz
 	source_i686 = TeensyduinoInstall_146_i686::http://www.pjrc.com/teensy/td_146/TeensyduinoInstall.linux32
