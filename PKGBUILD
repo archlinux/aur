@@ -14,10 +14,8 @@ source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/listen1/listen1_desktop/archive/v$pkgver.tar.gz"
 	"git://github.com/listen1/listen1_chrome_extension.git"
 )
-sha256sums=(
-	'98ad6b76f5bce93447fa1fe8eefa278ae809249449e0f6348de3314f130d7d01'
-	'SKIP'
-)
+sha256sums=('80e24af81a9303fe6496b832b77fa342b1cb366d68dc3f332936941714a1f4fb'
+            'SKIP')
 
 prepare() {
 	cd "${pkgname/-/_}-$pkgver"
