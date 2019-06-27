@@ -6,7 +6,7 @@ url='http://ros.org/wiki/rviz'
 pkgname='ros-melodic-rviz'
 pkgver='1.13.3'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD, Creative Commons')
 
 ros_makedepends=(
@@ -117,7 +117,16 @@ build() {
 		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
 		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
+
+	make || {
+	# Replace $$[QT_INSTALL_LIBS] with hardcoded /usr/lib/ for proper linking
+	# Fix courtesy of astier:
+	#  https://aur.archlinux.org/packages/ros-melodic-rviz/#comment-698298
+	# Relevant upstream issue:
+	#  https://github.com/ros-visualization/rviz/issues/1382
+	sed -i 's/$$\[QT_INSTALL_LIBS\]/\/usr\/lib/' ${srcdir}/build/devel/bin/sip/rviz_sip/Makefile
 	make
+	}
 }
 
 package() {
