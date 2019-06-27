@@ -6,7 +6,7 @@
 
 pkgname=aranym
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Atari Running on Any Machine"
 url="https://aranym.github.io"
 depends=('gcc-libs' 'bash' 'sdl_image' 'mpfr')
@@ -18,13 +18,10 @@ md5sums=('876eeadc81c16ee30717503a7b4f55b5')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # aranym-jit isn't available for x86_64 architecture
-  if [ "$CARCH" == "i686" ]; then
-    ./configure --prefix=/usr --disable-sdl2 --enable-usbhost --mandir=/usr/share/man --disable-nat-debug --enable-jit-compiler --enable-nfjpeg
-    make
-    mv aranym aranym-jit
-    make clean
-  fi
+  ./configure --prefix=/usr --disable-sdl2 --enable-usbhost --mandir=/usr/share/man --disable-nat-debug --enable-jit-compiler --enable-nfjpeg
+  make
+  mv aranym aranym-jit
+  make clean
 
   ./configure --prefix=/usr --disable-sdl2 --enable-usbhost --mandir=/usr/share/man --disable-nat-debug --enable-fullmmu --enable-lilo --enable-fixedvideoram --enable-nfjpeg
   make
@@ -40,10 +37,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  if [ "$CARCH" == "i686" ]; then
-    install aranym-jit "$pkgdir"/usr/bin
-  fi
-
+  install aranym-jit "$pkgdir"/usr/bin
   install aranym-mmu "$pkgdir"/usr/bin
   install aratapif "$pkgdir"/usr/bin
   install -D contrib/icon-32.png \
