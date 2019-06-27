@@ -1,8 +1,8 @@
 # Maintainer: Konstantin Gribov <grossws@gmail.com>
 
 pkgname=cfssl
-pkgver=1.3.2
-pkgrel=4
+pkgver=1.3.3
+pkgrel=1
 pkgdesc="CloudFlare PKI and TLS toolkit"
 arch=('i686' 'x86_64')
 url="https://cfssl.org/"
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cloudflare/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('69ddddb25beebe65e6fe316b9ab3472eae1cd21b2f377447ddc104624233e419')
+sha256sums=('299ff47700ca323d1b18a691c189afe7d610ede75f08c6935afb409c01fa006b')
 
 _prefix=github.com/cloudflare/${pkgname}
 
