@@ -6,8 +6,9 @@ _orgname=viking-gps
 _pkgname=viking
 _branch=master
 _use_gh_api=true
+_gh_api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
 pkgname=${_pkgname}-git
-pkgver=1.7.r3415.bdb31987
+pkgver=1.7.r46.gbdb31987
 pkgrel=1
 pkgdesc='GTK+2 application to manage GPS data'
 arch=('i686' 'x86_64')
@@ -16,7 +17,7 @@ license=('GPL2')
 depends=('curl' 'file' 'gpsd' 'gtk2' 'libgexiv2' 'mapnik' 'liboauth')
 makedepends=('boost' 'gnome-doc-utils' 'intltool' 'gtk-doc')
 if [ "${_use_gh_api}" = true ]; then
-  makedepends+=('python')
+  makedepends+=('jq')
 else
   makedepends+=('git')
 fi
@@ -31,26 +32,19 @@ fi
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}-${_branch}
-
   if [ "${_use_gh_api}" = true ]; then
-    api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
-    base='029f2f53'
-    head=$(curl -s "${api_url}/git/refs/heads/${_branch}" | \
-      python -c "import sys, json; print(json.load(sys.stdin)['object']['sha'][:8])")
-    count=$(curl -s "${api_url}/compare/${base}...${head}" | \
-      python -c "import sys, json; print(json.load(sys.stdin)['total_commits'] + 1)")
-    release=$(curl -s "${api_url}/tags" | \
-      python -c "import sys, json; r = json.load(sys.stdin)[0]; print(r['name'])")
-  else
-    release="$(git describe --tags $(git rev-list --tags --max-count=1))"
-    count="$(git rev-list --count HEAD)"
-    head="$(git rev-parse --short HEAD)"
-  fi
+    read -r tag_name tag_sha <<<$(curl -s "${_gh_api_url}/tags" | \
+      jq -r '.[0]|[.name,.commit.sha]|@sh' | sed "s/'//g")
+    head=$(curl -s "${_gh_api_url}/git/refs/heads/${_branch}" | \
+      jq -r '.object.sha')
+    count=$(curl -s "${_gh_api_url}/compare/${tag_sha}...${head}" | \
+      jq -r '.total_commits')
 
-  release=${release#viking-}
-  release=${release//-/.} # pkgver is not allowed to contain hyphens
-  printf "%s.r%s.%s" "${release}" "${count}" "${head}"
+    printf "%s.r%s.g%.8s" "${tag_name#viking-}" "${count}" "${head}"
+  else
+    cd ${_pkgname}-${_branch}
+    git describe --long | sed 's/viking-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  fi
 }
 
 prepare() {
