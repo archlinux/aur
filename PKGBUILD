@@ -1,9 +1,10 @@
 # Maintainer:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Contributor: Julian Mehne <julian (dot) mehne (at) posteo (dot) de>
 # Contributor: renyuneyun <renyuneyun (at) gmail (dot) com>
 
 _name=octave_kernel
 pkgname=jupyter-${_name}
-pkgver=0.31.0
+pkgver=0.31.1
 pkgrel=1
 pkgdesc="A Jupyter kernel for Octave"
 arch=('any')
@@ -12,10 +13,16 @@ license=('BSD')
 depends=('jupyter' 'jupyter-metakernel' 'jupyter-notebook' 'octave')
 makedepends=('python-pip')
 optdepends=('gnuplot: for making plots' 'jupyterlab: JupyterLab computational environment')
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/${_name}/${_name/-/_}-${pkgver}-py3-none-any.whl")
-sha256sums=('3bec024eed29105af73f6110bb12c8aa6146415743606c91f1b91547a35f4b7c')
+source=("https://github.com/Calysto/octave_kernel/archive/v${pkgver}.tar.gz")
+sha256sums=('b1aa363d3d3858da9c6c7813123de5ce5a9a78aedb4ce872169bb48eb7aedb1d')
 
+build() {
+  cd "$srcdir"/$_name-${pkgver}
+  python setup.py build
+}
 
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
+  cd "$srcdir"/$_name-${pkgver}
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
