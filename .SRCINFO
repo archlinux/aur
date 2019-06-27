@@ -1,6 +1,6 @@
 pkgbase = goofys-bin
 	pkgdesc = Goofys is a high performance Amazon S3 backend filey-system interface
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/kahing/goofys/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = goofys-bin
 	license = Apache
 	depends = go
 	depends = fuse
-	source = https://github.com/kahing/goofys/releases/download/v0.19.0/goofys
-	md5sums = e01f516f3239f2fd6f96841e380f529b
+	source = https://github.com/kahing/goofys/releases/download/v0.20.0/goofys
+	md5sums = 6284c651df782d30090b0ea250899af2
 
 pkgname = goofys-bin
 
