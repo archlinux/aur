@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('azote')
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Wallpaper manager for Sway, i3 and some other WMs"
 arch=('x86_64')
@@ -9,9 +9,9 @@ license=('GPL3')
 depends=('python' 'python-setuptools' 'python-gobject' 'python-pillow' 'gtk3' 'wget' 'feh' 'xorg-xrandr' 'wmctrl')
 optdepends=('python-send2trash: trash support')
 
-source=("https://github.com/nwg-piotr/azote/archive/v1.0.0.tar.gz")
+source=("https://github.com/nwg-piotr/azote/archive/v1.1.0.tar.gz")
 
-md5sums=('3f41a42a6ba9f3c8b0fd1edb3a1c7125')
+md5sums=('7e0e2cab90875c0e5841e3d3a87b7005')
 
 package() {
   install -D -t "$pkgdir"/usr/bin "$pkgname"-"$pkgver"/dist/azote
