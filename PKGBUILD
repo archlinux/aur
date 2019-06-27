@@ -6,7 +6,7 @@
 # Contributor: Malte Rabenseifner <malte@zearan.de>
 
 pkgname=murmur-snapshot-ice
-pkgver=1.3.0_rc1
+pkgver=1.3.0_rc2
 _dirname=1.3.0
 pkgrel=1
 epoch=1
@@ -24,7 +24,7 @@ install=murmur.install
 source=("https://dl.mumble.info/mumble-${pkgver//_/-}.tar.gz"{,.sig}
 	murmur.tmpfilesd
 	murmur.sysusers)
-sha256sums=('6f447745e164cc9ddef33f85ba0a3fc52d235eae3bfca588f387c699fe9eca59'
+sha256sums=('258643a73997dc192ec9cc1175a55082e432ae21e4283bef27ffa331e85a0380'
             'SKIP'
             '25bf2dbd7574459724b4621fb93c09484dc7520297fa1d0f247a19b592d8cb8e'
             'ff58059e77eb73a5c9ad8eb4ad8d8d7c865f3ae1fb6cb236a729f742da95d83d')
