@@ -1,0 +1,13 @@
+pkgbase = dellfan-git
+	pkgdesc = User space utility to control the fan speed on Dell Laptops
+	pkgver = r2.fe2ec69
+	pkgrel = 1
+	url = https://github.com/clopez/dellfan
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = git+https://github.com/clopez/dellfan.git
+	sha256sums = SKIP
+
+pkgname = dellfan-git
+
