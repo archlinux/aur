@@ -3,7 +3,7 @@
 pkgname=tela-icon-theme-git
 _gitname=Tela-icon-theme
 pkgdesc="A flat colorful Design icon theme."
-pkgver=112.8fae00d0
+pkgver=122.ca23fc93
 pkgrel=1
 arch=('any')
 url="https://github.com/vinceliuice/${_gitname}"
