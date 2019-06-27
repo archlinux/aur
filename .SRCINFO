@@ -1,6 +1,6 @@
 pkgbase = atlassian-confluence-lts
 	pkgdesc = Enterprise wiki (Enterprise Release)
-	pkgver = 6.13.4
+	pkgver = 6.13.6
 	pkgrel = 1
 	url = https://www.atlassian.com/software/confluence
 	install = confluence.install
@@ -11,10 +11,10 @@ pkgbase = atlassian-confluence-lts
 	conflicts = atlassian-confluence
 	backup = etc/conf.d/confluence
 	backup = etc/webapps/atlassian-confluence/server.xml
-	source = http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-6.13.4.tar.gz
+	source = http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-6.13.6.tar.gz
 	source = confluence.conf.d
 	source = confluence.service
-	sha256sums = 46141d82f4455bfe181c2bdcef1b03919f26dede042df065faf5c9aa55741d6f
+	sha256sums = de386b2dfdff984c8894ec37056098e7700a3967c4d7a80391af076e87f27242
 	sha256sums = a6304ba13a8ab1e27761bd3be71d05d2c2e3d61ea308316f4a04723ea4b30fc1
 	sha256sums = d51ad7cb3eb8a4d5553a26fd5567867345bb4ae9a10876fc2bee7b6ab8800824
 
