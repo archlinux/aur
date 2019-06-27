@@ -109,8 +109,8 @@ StartupNotify=true
 TryExec=dissenter-browser
 Exec=dissenter-browser %U
 Terminal=false
-Icon=dissenter=dissenter-browser
-StartupWMName
+Icon=dissenter
+StartupWMName=dissenter-browser
 StartupWMClass=dissenter-browser
 Type=Application
 Categories=Network;WebBrowser;
