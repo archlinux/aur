@@ -1,0 +1,34 @@
+pkgbase = bsnes-hd
+	pkgdesc = Nintendo SNES emulator, featuring HD Mode 7 and Widescreen.
+	pkgver = beta7.r0.g8533686
+	pkgrel = 1
+	url = https://github.com/DerKoun/bsnes-hd
+	arch = x86_64
+	license = GPL3
+	depends = alsa-lib
+	depends = cairo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = gtksourceview2
+	depends = libao
+	depends = libgl
+	depends = libpulse
+	depends = libx11
+	depends = libxext
+	depends = libxv
+	depends = openal
+	depends = pango
+	depends = sdl
+	depends = libudev.so
+	depends = sdl2
+	conflicts = bsnes
+	conflicts = bsnes-classic
+	conflicts = higan-bsnes
+	source = git+https://github.com/DerKoun/bsnes-hd.git
+	md5sums = SKIP
+
+pkgname = bsnes-hd
+
