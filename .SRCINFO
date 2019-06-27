@@ -1,5 +1,5 @@
 pkgbase = kodi-git
-	pkgver = 18.2rc1.r264.gf5636182c08
+	pkgver = r53029.31f7b14ec61
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -92,15 +92,15 @@ pkgname = kodi-git
 	depends = python2-pillow
 	depends = python2-simplejson
 	depends = xorg-xdpyinfo
+	depends = shairplay
 	depends = kodi-git-bin
 	optdepends = afpfs-ng: Apple shares support
 	optdepends = bluez: Blutooth support
 	optdepends = python2-pybluez: Bluetooth support
 	optdepends = libplist: AirPlay support
 	optdepends = pulseaudio: PulseAudio support
-	optdepends = shairplay: AirPlay support
 	optdepends = upower: Display battery level
-	provides = kodi=18.2rc1.r264.gf5636182c08
+	provides = kodi=r53029.31f7b14ec61
 	conflicts = kodi
 
 pkgname = kodi-git-bin
@@ -151,7 +151,7 @@ pkgname = kodi-git-wayland
 	depends = tinyxml
 	depends = waylandpp
 	depends = kodi-git
-	provides = kodi-git-bin=18.2rc1.r264.gf5636182c08
+	provides = kodi-git-bin=r53029.31f7b14ec61
 	conflicts = kodi-wayland
 
 pkgname = kodi-git-gbm
@@ -177,14 +177,14 @@ pkgname = kodi-git-gbm
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-git
-	provides = kodi-git-bin=18.2rc1.r264.gf5636182c08
+	provides = kodi-git-bin=r53029.31f7b14ec61
 	provides = kodi-gbm
 	conflicts = kodi-gbm
 
 pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
 	optdepends = python2: most eventclients are implemented in python2
-	provides = kodi-eventclients=18.2rc1.r264.gf5636182c08
+	provides = kodi-eventclients=r53029.31f7b14ec61
 	conflicts = kodi-eventclients
 
 pkgname = kodi-git-tools-texturepacker
@@ -193,12 +193,12 @@ pkgname = kodi-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=18.2rc1.r264.gf5636182c08
+	provides = kodi-tools-texturepacker=r53029.31f7b14ec61
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-git-dev
 	pkgdesc = Kodi dev files (master branch)
 	depends = kodi-git
-	provides = kodi-dev=18.2rc1.r264.gf5636182c08
+	provides = kodi-dev=r53029.31f7b14ec61
 	conflicts = kodi-dev
 

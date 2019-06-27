@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 _gitname='xbmc'
-pkgver=18.2rc1.r264.gf5636182c08
+pkgver=r53029.31f7b14ec61
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -99,7 +99,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$_gitname"
-  git describe --long --tags | sed 's/\([^-]*-\)/r/2;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -214,7 +214,7 @@ package_kodi-git() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch)"
   depends=(
     'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python2-pycryptodome'
-    'python2-pillow' 'python2-simplejson' 'xorg-xdpyinfo'
+    'python2-pillow' 'python2-simplejson' 'xorg-xdpyinfo' 'shairplay'
     "$pkgbase-bin"
   )
   optdepends=(
@@ -223,7 +223,6 @@ package_kodi-git() {
     'python2-pybluez: Bluetooth support'
     'libplist: AirPlay support'
     'pulseaudio: PulseAudio support'
-    'shairplay: AirPlay support'
     'upower: Display battery level'
   )
   provides=("kodi=${pkgver}")
