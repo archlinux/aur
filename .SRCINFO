@@ -1,13 +1,13 @@
 pkgbase = apache-poi
 	pkgdesc = A Java library for Microsoft Documents
-	pkgver = 3.17
-	pkgrel = 2
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = http://poi.apache.org/
 	arch = any
 	license = APACHE
 	optdepends = java-runtime-common
-	source = http://mirror.hosting90.cz/apache/poi/release/bin/poi-bin-3.17-20170915.tar.gz
-	sha256sums = c28e15f3b66bcf9a5f7d13b40ac32610f5d5e0abec85367cca69f85df9ca949c
+	source = http://mirror.hosting90.cz/apache/poi/release/bin/poi-bin-4.1.0-20190412.tar.gz
+	sha256sums = d8db4f8228d87935ca46b0af72db68ad83f45b31d885e67b089d195b5ee800bb
 
 pkgname = apache-poi
 
