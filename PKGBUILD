@@ -2,13 +2,13 @@
 
 pkgname=fightcade2
 pkgver=2.0.12
-pkgrel=3
+pkgrel=4
 pkgdesc='The best way to play your favorite retro games with or against any other player in the world.'
 url='https://play.fightcade.com/'
 arch=('any')
 license=('custom')
 depends=(wine lib32-mpg123)
-makedepends=(gendesk sed)
+makedepends=(gendesk sed rsync)
 source=(https://play.fightcade.com/download/fightcade2-linux64-v2.0.12.tar.gz)
 md5sums=('8efa181b26a01b5d2b633d9e3146cd69')
 
