@@ -1,0 +1,19 @@
+pkgbase = helm-vst-bin
+	pkgdesc = Helm - VST and LV2 versions
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://tytel.org/helm
+	arch = x86_64
+	groups = vst-plugins
+	license = GPL3
+	provides = helm
+	conflicts = helm
+	conflicts = helm-git
+	options = !strip
+	options = !libtool
+	options = !emptydirs
+	source = https://tytel.org/static/dist/helm_0.9.0_amd64_r.deb
+	sha256sums = aedf8b676657f72782513e5ad5f9c61a6bc21fe9357b23052928adafa8215eca
+
+pkgname = helm-vst-bin
+
