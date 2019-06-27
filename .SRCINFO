@@ -1,7 +1,7 @@
 pkgbase = insomnia-src
 	pkgdesc = Cross-platform HTTP and GraphQL Client (Build from source)
 	pkgver = 6.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/getinsomnia/insomnia
 	arch = x86_64
 	arch = i686
