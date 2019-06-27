@@ -1,13 +1,31 @@
 pkgbase = emulationstation-themes
 	pkgdesc = EmulationStation themes pack
-	pkgver = 0.1
-	pkgrel = 2
+	pkgver = 0.2
+	pkgrel = 1
 	url = http://aloshi.com/emulationstation
 	install = emulationstation-themes.install
 	arch = any
 	license = WTFPL
-	source = emulationstation-themes-0.1.zip::http://www.aloshi.com/es_downloads/es_themes_jan_20_2013.zip
-	md5sums = d72d30690bce0f00ca6c276bbc5ff816
+	makedepends = git
+	noextract = es_themes_jan_20_2013.zip
+	source = https://aloshi.com/es_downloads/es_themes_jan_20_2013.zip
+	source = https://emulationstation.org/downloads/themes/simple_latest.zip
+	source = git+https://github.com/RetroPie/es-theme-carbon-centered.git
+	source = git+https://github.com/RetroPie/es-theme-carbon-nometa.git
+	source = git+https://github.com/RetroPie/es-theme-clean-look.git
+	source = git+https://github.com/RetroPie/es-theme-color-pi.git
+	source = git+https://github.com/RetroPie/es-theme-simple-dark.git
+	source = git+https://github.com/RetroPie/es-theme-simplified-static-canela.git
+	source = git+https://github.com/RetroPie/es-theme-turtle-pi.git
+	sha256sums = f6430cf382cbd9dbd17ef864ae47993d5c912c6a0023f8189d98809aebe49b79
+	sha256sums = 567cc78d4aec1ef13893834c7e73c3eea91f50d096468c1ae40c973c502471ea
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = emulationstation-themes
 
