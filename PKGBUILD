@@ -1,7 +1,7 @@
 # Maintainer: FoolEcho <foolecho@gmail.com>
 pkgname=gog-icewind-dale-enhanced-edition
 _pkgname=icewind-dale-enhanced-edition
-pkgver=2.1.0.5
+pkgver=2.5.17.23121
 pkgrel=1
 pkgdesc="Icewind Dale: Enhanced Edition is a classic RPG running through the Spine of the World of the Forgotten Realms. GOG Version. Linux native."
 arch=('x86_64')
@@ -10,10 +10,10 @@ license=('custom')
 depends=('lib32-glibc' 'lib32-alsa-lib' 'lib32-libgl' 'lib32-libjson' 'lib32-openssl-1.0')
 optdepends=('lib32-libpulse: pulseaudio support')
 changelog=ChangeLog
-source=("local://gog_icewind_dale_enhanced_edition_${pkgver}.sh"
+source=("local://icewind_dale_enhanced_edition_en_${pkgver//./_}.sh"
 	"${pkgname}"
 	"${pkgname}.desktop")
-md5sums=('fc7244f4793eec365b8ac41d91a4edbb'
+md5sums=('bdfcd244568916123c243fb95de1d08b'
          '0ccf31e1428606487b2ea9079e69da03'
 	 'e9f0eff0f1eb6d151ae935ceef1337f1')
 PKGEXT=.pkg.tar
