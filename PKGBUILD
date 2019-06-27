@@ -2,7 +2,7 @@
 
 pkgname=async
 pkgver=0.1.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A tool to run shell commands in parallel."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/ctbur/async"
@@ -24,7 +24,7 @@ build() {
 #}
 
 package() {
-  cd "${srcdir}/ripgrep-all-${pkgver}"
+  cd "${srcdir}/async-${pkgver}"
   install -Dm 755 "target/release/async" "${pkgdir}/usr/bin/async"
 }
 
