@@ -29,7 +29,7 @@ db_root = "/var/lib/grin/main/chain_data"
 api_http_addr = "127.0.0.1:3413"
 
 #path of the secret token used by the API to authenticate the calls
-#comment it to disable basic auth
+#comment the it to disable basic auth
 api_secret_path = "/var/lib/grin/main/.api_secret"
 
 #The chain type, which defines the genesis block and the set of cuckoo
@@ -97,7 +97,7 @@ seeding_type = "DNSSeed"
 #ban_window = 10800
 
 #maximum number of peers
-#peer_max_count = 25
+#peer_max_count = 125
 
 #preferred minimum number of peers (we'll actively keep trying to add peers
 #until we get to at least this number
@@ -136,14 +136,14 @@ mineable_max_weight = 40000
 #########################################
 [server.dandelion_config]
 
-#dandelion relay time (choose new relay peer every n secs)
-relay_secs = 600
+#dandelion epoch duration
+epoch_secs = 600
 
 #fluff and broadcast after embargo expires if tx not seen on network
 embargo_secs = 180
 
-#run dandelion stem/fluff processing every n secs (stem tx aggregation in this window)
-patience_secs = 10
+#dandelion aggregation period in secs
+aggregation_secs = 30
 
 #dandelion stem probability (stem 90% of the time, fluff 10% of the time)
 stem_probability = 90
@@ -172,6 +172,30 @@ wallet_listener_url = "http://127.0.0.1:3415"
 
 #whether to ignore the reward (mostly for testing)
 burn_reward = false
+
+
+#########################################
+### WEBHOOK CONFIGURATION             ###
+#########################################
+[server.webhook_config]
+
+#The url where a POST request will be sent when a new block is accepted by our node.
+#block_accepted_url = "http://127.0.0.1:8080/acceptedblock"
+
+#The url where a POST request will be sent when a new transaction is received by a peer.
+#tx_received_url = "http://127.0.0.1:8080/tx"
+
+#The url where a POST request will be sent when a new header is received by a peer.
+#header_received_url = "http://127.0.0.1:8080/header"
+
+#The url where a POST request will be sent when a new block is received by a peer.
+#block_received_url = "http://127.0.0.1:8080/block"
+
+#The number of worker threads that will be assigned to making the http requests.
+nthreads = 4
+
+#The timeout of the http request in seconds.
+timeout = 10
 
 
 #########################################
