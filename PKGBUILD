@@ -2,9 +2,9 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=miredo
-pkgver=1.2.6+r149+g5db176c
-pkgrel=2
-_commit='5db176c6aae10fe3d743738244c82f0b52f80cd7'
+pkgver=1.2.6+r158+g509603a
+pkgrel=1
+_commit='509603ab416cd8f57e9227d09a8a80289df1a9f1'
 pkgdesc='Teredo client and server.'
 arch=('x86_64')
 url='https://www.remlab.net/miredo/'
