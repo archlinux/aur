@@ -1,6 +1,6 @@
 post_install() {
-    echo "Make symbolic links to relevant themes from /usr/share/EmulationStation/themes to ~/.emulationstation"
-    echo "Example: ln -s /usr/share/EmulationStation/themes/snes ~/.emulationstation/"
+    echo "Make symbolic links to relevant themes from /usr/share/EmulationStation/themes to ~/.emulationstation/themes"
+    echo "Example: ln -s /usr/share/EmulationStation/themes/snes ~/.emulationstation/themes/"
     echo
 }
 

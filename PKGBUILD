@@ -11,7 +11,7 @@ groups=()
 makedepends=()
 depends=()
 install='emulationstation-themes.install'
-source=("${pkgname}-${pkgver}.zip::http://www.aloshi.com/es_downloads/es_themes_jan_20_2013.zip")
+source=("${pkgname}-${pkgver}.zip::https://aloshi.com/es_downloads/es_themes_jan_20_2013.zip")
 md5sums=('d72d30690bce0f00ca6c276bbc5ff816')
 
 package() {
