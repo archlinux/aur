@@ -1,0 +1,15 @@
+pkgbase = grub-linux-default-hook
+	pkgdesc = Patch grub to make vmlinuz-linux the first entry
+	pkgver = 1.0
+	pkgrel = 1
+	install = grub-linux-default-hook.install
+	arch = any
+	license = MIT
+	depends = grub
+	source = grub-linux-default-hook.hook
+	source = grub-linux-default-hook.patch
+	sha256sums = bd7e0363d770c3898224a8d101f63979fa607042dc3621ecf98f638e0241858f
+	sha256sums = 95a8c61846665b029d3d11cdb77b9208103fb55375e34032debac6cef2ecce39
+
+pkgname = grub-linux-default-hook
+

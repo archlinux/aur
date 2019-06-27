@@ -1,0 +1,17 @@
+patch_file=/usr/share/grub-linux-default-hook/grub-linux-default-hook.patch
+
+post_install() {
+  patch -p0 <"$patch_file"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  patch -R -p0 <"$patch_file"
+}
+
+pre_upgrade() {
+  pre_remove
+}

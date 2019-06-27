@@ -1,0 +1,23 @@
+--- /etc/grub.d/10_linux
++++ /etc/grub.d/10_linux
+@@ -184,8 +184,20 @@
+ submenu_indentation=""
+ 
+ is_top_level=true
++default_kernel_grabbed=false
++default_kernel_name="/boot/vmlinuz-linux"
+ while [ "x$list" != "x" ] ; do
+   linux=`version_find_latest $list`
++  if ! $default_kernel_grabbed; then
++    for i in $list; do
++      if [ $i == $default_kernel_name ]
++      then
++        linux=$default_kernel_name
++        break
++      fi
++    done
++    default_kernel_grabbed=true
++  fi
+   gettext_printf "Found linux image: %s\n" "$linux" >&2
+   basename=`basename $linux`
+   dirname=`dirname $linux`
