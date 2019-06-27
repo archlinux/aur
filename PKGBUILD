@@ -3,11 +3,11 @@ pkgname=script-communicator
 pkgver=5.10
 _pkgver=0${pkgver/./_}
 pkgrel=1
-pkgdesc="ScriptCommunicator is a scriptable terminal with Serial/TCP/UDP/SPI/CAN support"
+pkgdesc="A Qt5-based scriptable terminal with Serial/TCP/UDP/SPI/CAN support"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/scriptcommunicator/"
 license=('GPL3')
-depends=('qt5-script' 'qt5-serialport')
+depends=('qt5-script' 'qt5-serialport' 'qt5-multimedia')
 makedepends=('qt5-tools')
 
 source=("https://github.com/szieke/ScriptCommunicator_serial-terminal/archive/Release_${_pkgver}.zip"
