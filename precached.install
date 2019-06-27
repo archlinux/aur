@@ -1,7 +1,3 @@
-post_install() {	
-	# systemctl preset precached precached-prime-caches
-}
-
 pre_remove() {
 	systemctl stop precached.service
 }
