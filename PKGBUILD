@@ -9,7 +9,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt       # Build kernel with a different name
 _pkgver=5.0.21
-_rtpatchver=rt13
+_rtpatchver=rt14
 pkgver="${_pkgver}_${_rtpatchver}"
 pkgrel=1
 arch=('x86_64')
@@ -39,7 +39,7 @@ validpgpkeys=(
 )
 sha256sums=('98d307a546c95a215dee675ffa4b63c2a7a29e7af839f0d8dfb96dbb61aac2d7'
             'SKIP'
-            'b5f608bac9d4b007878cc0da8998b0a5030e64c2b7ac7b685e216759e79322ee'
+            '43281c769c1e259e8752a5980b1b3765bffaf1642bda5c901b7a44bab890695a'
             'SKIP'
             '30a4badcefbbe4cdf9090f8b1b923fc00f0a607b16706ae832c8ea863b75f533'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -74,7 +74,7 @@ prepare() {
   msg2 "Setting config..."
   cp ../config .config
   make olddefconfig
-  #make menuconfig # CLI menu for configuration
+#  make menuconfig # CLI menu for configuration
 
   make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
