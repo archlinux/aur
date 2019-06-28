@@ -1,8 +1,9 @@
-# Maintainer: Kevin Houdebert <kevin@qwazerty.eu>
+# Maintainer: Laurent Zhu <laurent.zhu@epita.fr>
+# Contributor: Kevin Houdebert <kevin@qwazerty.eu>
 
 _pkgname=nolimips
 pkgname=${_pkgname}-git
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc='Nolimips is a MIPS-based simulator with "infinitely many registers".'
 url="https://www.lrde.epita.fr/wiki/Nolimips"
