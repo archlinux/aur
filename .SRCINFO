@@ -1,0 +1,16 @@
+pkgbase = konica-minolta-bizhub-c368-series
+	pkgdesc = CUPS PostScript printer driver for bizhub C658 C558 C458 C368 C308 C258
+	pkgver = 110001.0000
+	pkgrel = 1
+	url = https://www.konicaminolta.eu/en/business-solutions/support/download-center.html
+	arch = any
+	license = custom:konica minolta commercial license
+	makedepends = gzip
+	depends = cups
+	source = https://o.cses.konicaminolta.com/file/Default.aspx?FilePath=DL/201806/07062011/IT5PPDLinux_1100010000MU.zip
+	source = LICENSE
+	sha256sums = d16a4cdce996c6a63376b6a9c4d33280ac0ff3bdbd88a006af88ebd3627accbb
+	sha256sums = 10884cdf2badf6d9749038e56d25bb46175568ddcadfdc98a6c8b1739d66568f
+
+pkgname = konica-minolta-bizhub-c368-series
+
