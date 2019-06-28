@@ -4,7 +4,7 @@
 
 pkgname=perl-webservice-musicbrainz
 _pkgname=WebService-MusicBrainz
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Web service API to MusicBrainz database"
 arch=('any')
@@ -15,8 +15,7 @@ provides=('perl-webservice-musicbrainz')
 conflicts=('perl-webservice-musicbrainz' 'perl-webservice-musicbrainz0')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/B/BF/BFAIST/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('eaa9acddf9f71040d8e9ac081e57b2b0')
-sha512sums=('91442fe4696a4f9ac1434cc9dc8d3a16d2e3a8ccd3434f5e4ac642ffba0d56db6583175283c0a1a75365cdc65dbb4516bfa6182be568de16767fba3676f2368b')
+sha512sums=('b1dfa497b460fb56702905518d3f2de0f5af0f4003be9ce983954673b0abc8a67215a77079a2989fca2c0228409788ff3f767302659003f544e6bbd56ab6df24')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
