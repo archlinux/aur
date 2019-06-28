@@ -1,7 +1,9 @@
 PACKAGE_NAME="i2c-ch341"
 PACKAGE_VERSION="#MODULE_VERSION#"
-MAKE[0]="make KVERSION=$kernelver BUILD_KERNEL=$kernelver"
-CLEAN="make clean"
+
+MAKE[0]="make -C ${kernel_source_dir} SUBDIRS=${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build modules"
+CLEAN="make -C ${kernel_source_dir} SUBDIRS=${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build clean"
+
 BUILT_MODULE_NAME[0]="i2c-ch341"
 DEST_MODULE_LOCATION[0]="/extramodules"
 AUTOINSTALL="yes"

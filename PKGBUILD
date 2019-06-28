@@ -1,6 +1,6 @@
 pkgname=i2c-ch341-dkms
 pkgver=20190628
-pkgrel=1
+pkgrel=2
 pkgdesc="CH341 USB-I2C adapter driver"
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url='https://github.com/gmarco/i2c-ch341'
 source=("git://github.com/gmarco/i2c-ch341.git"
         'dkms.conf.in')
 md5sums=('SKIP'
-         '0da84fec2ce486418e60bd2c3a1a3754')
+         'dbfd5f4d69879a6e66d3bb369d206b0e')
 
 package() {
   cd ${srcdir}/i2c-ch341
