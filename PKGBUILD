@@ -1,6 +1,6 @@
 pkgname=sdformat
-pkgver=8.1.0
-pkgrel=1
+pkgver=8.2.0
+pkgrel=0
 pkgdesc="SDF Converter for gazebo"
 arch=('i686' 'x86_64')
 url="http://sdformat.org/"
@@ -10,7 +10,7 @@ optdepends=('urdfdom')
 makedepends=('cmake' 'doxygen' 'ignition-cmake' 'ignition-tools' 'ruby>=1.9.1')
 
 source=("http://osrf-distributions.s3.amazonaws.com/${pkgname}/releases/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('03765ae901cda256346bf8cf3916609a92bc252ab1d0f811c4553b28bb535067')
+sha256sums=('8622b851e79fe807af358bdef2b2349705e3199a153e7d0151fc895fd18237f9')
 
 prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
