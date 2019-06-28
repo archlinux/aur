@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt5
 	pkgdesc = Qt 5 for Android
-	pkgver = 5.12.4
+	pkgver = 5.13.0
 	pkgrel = 1
 	url = https://www.qt.io
 	install = android-aarch64-qt5.install
@@ -31,10 +31,10 @@ pkgbase = android-aarch64-qt5
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://download.qt-project.org/official_releases/qt/5.12/5.12.4/single/qt-everywhere-src-5.12.4.tar.xz
+	source = http://download.qt-project.org/official_releases/qt/5.13/5.13.0/single/qt-everywhere-src-5.13.0.tar.xz
 	source = 0001-Fix-clang-build.patch
 	source = 0002-Disable-mapbox.patch
-	md5sums = dda95b0239d13c5276834177af3a8588
+	md5sums = 3c168d9a3a08248ff36f4f54c82e437f
 	md5sums = SKIP
 	md5sums = SKIP
 
