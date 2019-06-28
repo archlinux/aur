@@ -1,7 +1,7 @@
 pkgbase = blackeye-git
 	pkgdesc = The most complete phishing tool, 32 website templates + 1 customizable
 	pkgver = r27.gdfcd597
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thelinuxchoice/blackeye
 	install = blackeye.install
 	arch = any

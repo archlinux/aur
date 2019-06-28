@@ -1,8 +1,9 @@
-# Maintainer: Kr1ss <kr1ss.x@yandex.com>
+# Maintainer :  Kr1ss $(sed s/\+/./g\;s/\-/@/ <<<\<kr1ss+x-yandex+com\>)
 
-pkgname='blackeye-git'
+
+pkgname=blackeye-git
 pkgver=r27.gdfcd597
-pkgrel=1
+pkgrel=2
 pkgdesc='The most complete phishing tool, 32 website templates + 1 customizable'
 arch=('any')
 url='https://github.com/thelinuxchoice/blackeye'
@@ -35,14 +36,15 @@ prepare() {
 package() {
     cd "$srcdir/${pkgname%-git}"
     install -dm755 "$pkgdir"/usr/{bin,share/{,doc/}"${pkgname%-git}"}
-    cp -r --no-preserve=ownership "${pkgname%-git}.sh" README.md LICENSE sites "$pkgdir/usr/share/${pkgname%-git}/"
+    install -m755 "${pkgname%-git}.sh" "$pkgdir/usr/share/${pkgname%-git}/"
+    cp -r --no-preserve=ownership README.md LICENSE sites "$pkgdir/usr/share/${pkgname%-git}/"
     ln -s "/usr/share/${pkgname%-git}/README.md" "$pkgdir/usr/share/doc/${pkgname%-git}/"
     cat >"$pkgdir/usr/bin/${pkgname%-git}" <<-EOF
-		#!/bin/bash
-		
-		cp -sur /usr/share/blackeye "\${XDG_CACHE_HOME:-\$HOME/.cache}/"
+		#!/bin/sh
+
+		cp -sufr /usr/share/blackeye "\${XDG_CACHE_HOME:-\$HOME/.cache}/"
 		cd "\${XDG_CACHE_HOME:-\$HOME/.cache}/blackeye"
-		bash blackeye.sh
+		./blackeye.sh
 		cd - >/dev/null
 	EOF
     chmod +x "$pkgdir/usr/bin/${pkgname%-git}"
