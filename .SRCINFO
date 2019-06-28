@@ -1,8 +1,8 @@
 pkgbase = sanic
-	pkgdesc = Command line tool for creating clusters on Amazon EKS
+	pkgdesc = An all-in-one tool to develop, build, and deploy your Docker/Kubernetes projects
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/weaveworks/eksctl
+	url = https://github.com/distributed-containers-inc/sanic
 	arch = x86_64
 	license = Apache
 	makedepends = go

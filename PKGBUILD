@@ -1,12 +1,12 @@
 # Maintainer: David Birks <david@tellus.space>
 
 pkgname=sanic
-pkgdesc='Command line tool for creating clusters on Amazon EKS'
+pkgdesc='An all-in-one tool to develop, build, and deploy your Docker/Kubernetes projects'
 pkgver=1.0.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
-url='https://github.com/weaveworks/eksctl'
+url='https://github.com/distributed-containers-inc/sanic'
 depends=('kubectl' 'docker')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/distributed-containers-inc/sanic/archive/v$pkgver.tar.gz")
