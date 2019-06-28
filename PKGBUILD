@@ -1,6 +1,6 @@
 # Maintainer: Darren Ldl <darrenldldev@gmail.com>
 pkgname=blkar
-pkgver=7.1.1
+pkgver=7.2.0
 pkgrel=1
 epoch=
 pkgdesc="Archive with forward error correction and sector level recoverability"
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 checkdepends=('cargo')
 source=("https://github.com/darrenldl/blockyarchive/archive/v${pkgver}.tar.gz")
-sha256sums=('e39ab6a16c8eaefb7596cc7595b9e61e2bb238a751cc7f77e46f6a134b37e054')
+sha256sums=('6c73941bed0ae624da48cfa4803e0e3de80266dac743151ec81c781faa913770')
 
 build() {
   cd "blockyarchive-$pkgver"
