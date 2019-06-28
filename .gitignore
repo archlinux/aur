@@ -1,5 +1,6 @@
 src
 pkg
-*.xz
 *.deb
+*.log
 *.tar
+*.tar.xz
