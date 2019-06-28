@@ -1,4 +1,4 @@
-# Maintainer: David Harrigan <dharrigan@gmail.com>
+# Maintainer: David Harrigan <dharrigan [@] gmail [dot] com>
 
 pkgname=clj-kondo-bin
 pkgver=2019.06.23_alpha
