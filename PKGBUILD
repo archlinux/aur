@@ -1,9 +1,10 @@
-# Maintainer: Kevin Houdebert <kevin@qwazerty.eu>
+# Maintainer: Laurent Zhu <laurent.zhu@epita.fr>
+# Contributor: Kevin Houdebert <kevin@qwazerty.eu>
 
 _pkgname=monoburg
 pkgname=${_pkgname}-git
-pkgver=1.0.6.12.g111a578
-pkgrel=3
+pkgver=1.0.7
+pkgrel=1
 pkgdesc='MonoBURG is a tree-rewriting system originating from Mono.'
 url='https://www.lrde.epita.fr/wiki/MonoBURG'
 arch=('x86_64' 'i686')
@@ -22,7 +23,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-
   ./bootstrap
   ./configure --prefix=/usr
   make
