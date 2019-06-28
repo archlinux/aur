@@ -3,7 +3,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.9.67
+pkgver=5.9.69
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -41,21 +41,16 @@ optdepends=(
 )
 options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
-        "use-clang.patch"
         "use-libtirpc-headers.patch"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch")
-sha256sums=('e1f19c2b447703efb1eb1bf40908526c588da32619614649c5b608ee1cf29e0a'
-            '1e6e4d9110ca1e939d62eb68e89deb03facc41a5d7d0bde3aa6e4e5fff768346'
+sha256sums=('6eefd28f898920a8dd264c9ac2dbf011f102a7c59aafe8d38d89acd4ee0133cc'
             '0dfa3014bc6a66989564c7da2d963681f5d129eb0be28153744693dd533e4909'
             '6c29e825e06d1c3aec4afd915718b8c46da705d1411a94f7c0f777b888a9b50d'
             '045e4b4c444d1a37dffdcecb87e5245188fadf68444f9a4b14207a5b98671344')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-
-  # https://github.com/kmatheussen/radium/issues/1222
-  patch -p1 < "${srcdir}/use-clang.patch"
 
   # glibc-2.27 deprecated legacy rpc, header files for libpd are in libtirpc
   patch -p1 < "${srcdir}/use-libtirpc-headers.patch"
@@ -74,8 +69,8 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
-  RADIUM_QT_VERSION=5 make packages
-  RADIUM_QT_VERSION=5 BUILDTYPE=RELEASE ./build_linux.sh
+  RADIUM_USE_CLANG=1 RADIUM_QT_VERSION=5 make packages
+  RADIUM_USE_CLANG=1 RADIUM_QT_VERSION=5 BUILDTYPE=RELEASE ./build_linux.sh
 }
 
 package() {
