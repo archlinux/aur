@@ -1,44 +1,29 @@
-# Contributor: Sapphira Armageddos <shadowkyogre@aim.com>
-pkgbase=mse-mtg
-pkgname=("$pkgbase" "$pkgbase-new" "$pkgbase-m15")
-pkgver=2.0.0
-pkgrel=9
-pkgdesc="Magic: the Gathering templates for Magic Set Editor."
+# Maintainer Sean Anderson <seanga2@gmail.com>
+pkgname=mse-mtg-m15-highres
+pkgver=1.0
+pkgrel=1
+pkgdesc="300 dpi Magic: the Gathering templates for Magic Set Editor."
 arch=(any)
-url="http://magicseteditor.sourceforge.net"
+url="https://old.reddit.com/r/mpcproxies/comments/budzyg/mpcformatted_magic_set_editor_template/"
 license=('freeware')
 depends=('magicseteditor')
 conflicts=("mse-mtg-phyrexian" "magicseteditor-mtg-base")
-source=('http://downloads.sourceforge.net/project/msetemps/Magic%20-%20Recently%20Printed%20Styles.mse-installer'
-        'http://downloads.sourceforge.net/project/msetemps/Magic%20-%20Tarkir%20Update.mse-installer')
+source=('https://dancing-electron.netlify.com/magic-m15-altered.zip'
+	'https://dancing-electron.netlify.com/magic-m15-mainframe-planeswalker.zip'
+	'https://dancing-electron.netlify.com/magic-m15-mainframe-dfc.zip'
+	'https://dancing-electron.netlify.com/magic-m15-leveler-improved.zip'
+	'https://dancing-electron.netlify.com/magic-m15-fullart-lands.zip')
+md5sums=('8bff117776beb56396708404de8e6c36'
+	'0e8d1dd595ea503c19edc66200f4584b'
+	'c86878c19d727f1a02c9518b7b04dc73'
+	'5f061030b6d55d9bd822324bbc0c2032'
+	'0e541d3d804bdb61783ba4a7ebded05c')
 
-package_mse-mtg() {
-	pkgdesc="Magic: the Gathering base game and symbol fonts for Magic Set Editor."
+package() {
 	cd "$srcdir"
 	mkdir -p "$pkgdir/usr/share/magicseteditor/data"
-	cp -r ./magic.mse-game "$pkgdir/usr/share/magicseteditor/data"
-	cp -r ./magic-{blends,default-image,future-common,identity-new,watermarks}.mse-include "$pkgdir/usr/share/magicseteditor/data"
-	cp -r ./magic-mana-{large,small{,-grey}}.mse-symbol-font "$pkgdir/usr/share/magicseteditor/data"
-}
-
-package_mse-mtg-new()
-{
-	depends=('mse-mtg')
-	pkgdesc="Magic: the Gathering Modern templates for Magic Set Editor."
-	cd "$srcdir"
-	mkdir -p "$pkgdir/usr/share/magicseteditor/data"
-	cp -r ./magic-new*.mse-style "$pkgdir/usr/share/magicseteditor/data"
-}
-
-package_mse-mtg-m15()
-{
-	depends=('mse-mtg')
-	pkgdesc="Magic: the Gathering M15 templates for Magic Set Editor."
-	cd "$srcdir"
-	mkdir -p "$pkgdir/usr/share/magicseteditor/data"
-	cp -r ./magic-m15*.mse-style "$pkgdir/usr/share/magicseteditor/data"
+	
+	cp -r ./magic-m15-{altered,fullart-lands,leveler-improved,mainframe-dfc,mainframe-planeswalker}.mse-style "$pkgdir/usr/share/magicseteditor/data"
 }
 
 # vim:set ts=2 sw=2
-md5sums=('5ca37f7fb47fb10565b8a2c617d968e8'
-         '7bed025a7b878a3af060a9cb47139bb9')
