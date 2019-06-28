@@ -5,7 +5,7 @@ pkgdesc="Eye protection utility. Change brightness, color temperature and color 
 arch=('i686' 'x86_64')
 url="https://github.com/ueberchild/iris-flower"
 license=('GPL3')
-depends=('libx11' 'libxrandr')
+makedepends=('libx11' 'libxrandr')
 source=("https://github.com/ueberchild/iris-flower/blob/master/iris-flower.c")
 
 build() {
@@ -15,5 +15,5 @@ build() {
 
 package() {
   cd "$srcdir/"
-  install -D iris-flower "$pkgdir/usr/bin/sct"
+  install -D iris-flower "$pkgdir/usr/bin/iris-flower"
 }
