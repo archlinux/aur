@@ -1,15 +1,14 @@
 pkgbase = gnome-keyring-import-export-hg
 	pkgdesc = Simple script for exporting gnome2 (seahorse) keyrings, using the SecretService API
 	pkgver = r19.657ba95e254c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/spookylukey/gnome-keyring-import-export
 	arch = any
 	license = unknown
 	makedepends = mercurial
 	depends = python
 	depends = python-secretstorage
-	provides = secret-storage-import-export
-	conflicts = gnome-keyring-import-export
+	provides = gnome-keyring-import-export
 	source = gnome-keyring-import-export-hg::hg+https://bitbucket.org/spookylukey/gnome-keyring-import-export
 	sha256sums = SKIP
 
