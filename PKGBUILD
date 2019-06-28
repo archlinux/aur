@@ -16,7 +16,7 @@ url='https://kontact.kde.org'
 license=(LGPL)
 makedepends=(git extra-cmake-modules mariadb postgresql qt5-tools boost kdesignerplugin kio kitemmodels)
 source=("git+https://anongit.kde.org/akonadi.git")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
 
@@ -51,7 +51,7 @@ package_libakonadi-git() {
 }
 
 package_akonadi-git() {
-	depends=(libakonadi)
+	depends=(libakonadi-git)
 	optdepends=('mariadb: MariaDB backend'
 	            'postgresql: PostgreSQL backend')
 	conflicts=("${pkgname%-git}")

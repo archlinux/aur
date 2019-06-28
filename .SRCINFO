@@ -17,10 +17,10 @@ pkgbase = akonadi-git
 	source = git+https://anongit.kde.org/akonadi.git
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = akonadi-git
-	depends = libakonadi
+	depends = libakonadi-git
 	optdepends = mariadb: MariaDB backend
 	optdepends = postgresql: PostgreSQL backend
 	provides = akonadi=19.04.2.r97.g7f39ff12d
