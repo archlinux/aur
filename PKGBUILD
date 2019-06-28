@@ -7,16 +7,17 @@
 pkgname='bluez-utils-compat'
 _pkgbase='bluez'
 pkgver=5.50
-pkgrel=3
+pkgrel=6
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
 license=('GPL2')
 pkgdesc="Development and debugging utilities for the bluetooth protocol stack. Includes deprecated tools."
 depends=('dbus' 'systemd' 'glib2')
+makedepends=('libical' 'alsa-lib' 'ell')
+optdepends=('ell: for btpclient')
 conflicts=('bluez-hcidump' 'bluez-utils' 'bluez-hcitool')
-provides=('bluez-hcidump' 'bluez-utils')
+provides=('bluez-hcidump' 'bluez-utils' 'bluez-hcitool')
 replaces=('bluez-hcidump' 'bluez<=4.101')
-makedepends=('dbus' 'libical' 'systemd')
 source=("https://www.kernel.org/pub/linux/bluetooth/${_pkgbase}-${pkgver}.tar."{xz,sign}
         'refresh_adv_manager_for_non-LE_devices.diff::https://git.archlinux.org/svntogit/packages.git/plain/trunk/refresh_adv_manager_for_non-LE_devices.diff?h=packages/bluez')
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
@@ -38,7 +39,11 @@ build() {
           --sysconfdir=/etc \
           --localstatedir=/var \
           --libexecdir=/usr/lib \
+          --with-dbusconfdir=/usr/share \
+          --enable-btpclient \
+          --enable-midi \
           --enable-sixaxis \
+          --enable-mesh \
           --enable-experimental \
           --enable-library \
           --enable-deprecated # to enable deprectated tools
