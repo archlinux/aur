@@ -5,17 +5,17 @@
 # Contributor: Wink Saville <wink at saville dot com>
 
 pkgname=hypre
-pkgver=2.15.1
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="A library for solving large, sparse linear systems on massively parallel computers"
 arch=('x86_64')
-url="http://acts.nersc.gov/hypre"
+url="https://www.llnl.gov/casc/hypre/"
 license=('lgpl')
 depends=('superlu' 'superlu_dist')
 makedepends=('gcc-fortran')
-source=(https://github.com/LLNL/hypre/archive/v${pkgver}.tar.gz
+source=(https://github.com/hypre-space/hypre/archive/v${pkgver}.tar.gz
         hypre-config-fix.patch)
-sha512sums=('5be677727b815b2eb0cd711b65ff6b4ef798f42023ec2831e66bfbba7de0288208c67257734641b40f884868e8b0db97bb12d4d3ea27e97e36041eacc7ac9fa2'
+sha512sums=('3c08658aa9c55724c658584d829a3243445f853f416d3140840c97daa882ecd3712535213b8d9cdf2eb81e67e66e53e809a1275781446133c985b5a1a2b9fd4f'
             '280f1577b20ae13f94b5c98fc05836a6784285bdb34a2622230861b02b464793ce915a81378838c0a222fd8d4341c40ae658ca5ff2099ec10d08a67f8cfa150d')
 
 prepare() {
