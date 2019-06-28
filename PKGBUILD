@@ -1,6 +1,6 @@
 pkgname=spi-config-dkms
 pkgver=20190628
-pkgrel=1
+pkgrel=2
 pkgdesc="spi board configuration without having to recompile the kernel"
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url='https://github.com/msperl/spi-config'
 source=("git+https://github.com/msperl/spi-config.git"
         'dkms.conf.in')
 md5sums=('SKIP'
-         '332867a6ee6f165c6d27004d16ea5f4c')
+         '797b68e988862d7c10bb8cfb2eeaa5e8')
 
 package() {
   cd ${srcdir}/spi-config
