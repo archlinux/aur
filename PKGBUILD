@@ -33,7 +33,7 @@ package() {
   # Install the program.
   mkdir -p "$pkgdir/usr/share/$_gitname"
   install -Dm755 smart-wallpaper "${pkgdir}/usr/bin/$_gitname"
-  chmod +x "$pkgdir/usr/bin/$pkgbase"
+  chmod +x "$pkgdir/usr/bin/$_gitname"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_gitname"
   chmod -R 777 "$pkgdir/usr/share/$_gitname"
 
