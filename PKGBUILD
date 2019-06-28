@@ -1,8 +1,9 @@
-# Maintainer: Tim Rakowski <tim.rakowski@gmail.com>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 # Contributor: Johannes Wienke <languitar@semipol.de>
 # Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 pkgname=ignition-transport
-pkgver=4.0.0
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="The transport library combines ZeroMQ with Protobufs to create a fast and efficient message passing system. Asynchronous message publication and subscription is provided along with service calls and discovery."
 arch=('i686' 'x86_64')
@@ -13,10 +14,10 @@ depends=('protobuf' 'protobuf-c' 'zeromq' 'ignition-msgs' 'ignition-tools' 'libu
 makedepends=('ignition-cmake' 'util-linux')
 optdepends=()
 conflicts=()
-source=("https://bitbucket.org/ignitionrobotics/ign-transport/get/${pkgname}4_${pkgver}.tar.bz2")
-md5sums=('998a3e080af324a5f789a8406ef390de')
+source=("https://bitbucket.org/ignitionrobotics/ign-transport/get/${pkgname}7_${pkgver}.tar.bz2")
+sha256sums=('dbc9a0ec8f5e014ebc73bb9e49450d0275441ea2e4c5615757af75b0f4f38ee3')
 
-_dir="ignitionrobotics-ign-transport-add6058e5b8c"
+_dir="ignitionrobotics-ign-transport-bcdce70c7bb5"
 
 build() {
   cd "${srcdir}/${_dir}"
