@@ -1,0 +1,16 @@
+pkgbase = httpflow-git
+	pkgdesc = Packet capture and analysis utility similar to tcpdump for HTTP
+	pkgver = r45.14ec857
+	pkgrel = 1
+	url = https://github.com/six-ddc/httpflow
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libpcap
+	depends = zlib
+	depends = pcre
+	source = httpflow-git::git+https://github.com/six-ddc/httpflow.git
+	sha256sums = SKIP
+
+pkgname = httpflow-git
+
