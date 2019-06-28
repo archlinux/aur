@@ -9,29 +9,28 @@ pkgrel=1
 epoch=2
 pkgdesc='A light-weight HTTP proxy daemon for POSIX operating systems.'
 arch=('i686' 'x86_64')
-url='https://banu.com/tinyproxy/'
+url='https://tinyproxy.github.io/'
 license=('GPL')
 makedepends=('asciidoc' 'git')
 provides=('tinyproxy')
 conflicts=('tinyproxy')
 backup=('etc/tinyproxy/tinyproxy.conf')
 source=('tinyproxy.tmpfiles.conf' 'tinyproxy.service'
-	"git://git.banu.com/tinyproxy.git")
+        "git://github.com/tinyproxy/tinyproxy.git")
 md5sums=('3c2764578f26581346fe312da0519a3e'
          '8e97b05cc8c87f7efefbf957e77c7f18'
          'SKIP')
 
 pkgver() {
 	cd "$_gitname"
-#	git log -1 --format="%cd" --date=short | sed 's|-|.|g'
-	git describe | sed 's|-|.|g'
+	git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-        cd "$srcdir/$_gitname"
+	cd "$srcdir/$_gitname"
 	./autogen.sh
-        ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-transparent --sbindir=/usr/bin
-        make
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-transparent --sbindir=/usr/bin
+	make
 }
 
 package() {
