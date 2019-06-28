@@ -1,15 +1,14 @@
-pkgbase = herbstluftwm-git
-	pkgdesc = Manual tiling window manager for X
-	pkgver = 0.7.0.r53.g23ae16a
+pkgbase = herbstluftwm-winterbreeze-git
+	pkgdesc = Manual tiling window manager for X - winterbreeze branch
+	pkgver = 0.7.2.r809.gcf7a170c
 	pkgrel = 1
-	epoch = 1
 	url = http://herbstluftwm.org
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = asciidoc
-	depends = glib2>=2.24
+	makedepends = cmake
 	depends = libx11
 	depends = libxinerama
 	optdepends = bash: needed by most scripts
@@ -19,8 +18,9 @@ pkgbase = herbstluftwm-git
 	optdepends = dzen2-xft-xpm-xinerama-git: view icons as tags
 	provides = herbstluftwm
 	conflicts = herbstluftwm
-	source = herbstluftwm-git::git://github.com/herbstluftwm/herbstluftwm
+	conflicts = herbstluftwm-git
+	source = herbstluftwm::git://github.com/herbstluftwm/herbstluftwm#branch=winterbreeze
 	md5sums = SKIP
 
-pkgname = herbstluftwm-git
+pkgname = herbstluftwm-winterbreeze-git
 
