@@ -1,11 +1,11 @@
 pkgbase = python-bashlex
 	pkgdesc = Python port of the parser used internally by GNU bash
 	pkgver = 0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/idank/bashlex
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
+	makedepends = perl
 	depends = python
 	source = https://github.com/idank/bashlex/archive/0.14.tar.gz
 	sha256sums = d32d1f929e2299660b5a7258068ac3708046c41d806223c8ecdc00b893548b2a
