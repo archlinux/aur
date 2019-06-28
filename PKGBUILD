@@ -7,6 +7,7 @@ url="https://github.com/ueberchild/iris-flower"
 license=('GPL3')
 makedepends=('libx11' 'libxrandr')
 source=("https://github.com/ueberchild/iris-flower/blob/master/iris-flower.c")
+md5sums=('42ca45d3af1d540c77b61c11411df95a')
 
 build() {
 	cd "$srcdir/"
