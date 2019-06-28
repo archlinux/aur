@@ -1,0 +1,17 @@
+pkgbase = amdmemorytweak-git
+	pkgdesc = Read and modify memory timings on AMD graphics cards
+	pkgver = 37.5915978
+	pkgrel = 1
+	url = https://github.com/Eliovp/amdmemorytweak
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	depends = pciutils
+	provides = amdmemorytweak
+	source = amdmemorytweak::git+https://github.com/Eliovp/amdmemorytweak.git
+	sha256sums = SKIP
+
+pkgname = amdmemorytweak-git
+
