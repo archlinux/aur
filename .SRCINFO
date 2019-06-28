@@ -1,6 +1,6 @@
 pkgbase = tela-icon-theme-git
 	pkgdesc = A flat colorful Design icon theme.
-	pkgver = 122.ca23fc93
+	pkgver = 125.a8779878
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Tela-icon-theme
 	arch = any
