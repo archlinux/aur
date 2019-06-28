@@ -13,7 +13,7 @@ url='https://github.com/msperl/spi-config'
 source=("git+https://github.com/msperl/spi-config.git"
         'dkms.conf.in')
 md5sums=('SKIP'
-         '98b3c3eb1aef6cf87b2df29a74a5ef56')
+         '332867a6ee6f165c6d27004d16ea5f4c')
 
 package() {
   cd ${srcdir}/spi-config
