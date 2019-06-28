@@ -1,0 +1,14 @@
+pkgbase = wiwos20
+	pkgdesc = S20 socket manager
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.stikonas.eu/andrius/s20
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	source = wiwos20::git+https://git.stikonas.eu/andrius/s20.git
+	md5sums = SKIP
+
+pkgname = wiwos20
+
