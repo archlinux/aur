@@ -1,12 +1,12 @@
 # $Id$
-# Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Albakham <contact@geber.ga>
 
 pkgname=protonmail-desktop
-pkgver=0.5.8
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Unofficial app that emulates a native client for the ProtonMail e-mail service"
 arch=(any)
-url="http://protondesktop.com/"
+url="https://github.com/protonmail-desktop/application"
 license=(MIT)
 depends=(electron)
 makedepends=(npm)
@@ -14,14 +14,13 @@ options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/protonmail-desktop/application/archive/v$pkgver.tar.gz
         $pkgname.sh
         $pkgname.desktop)
-sha256sums=('ed9ef67d5444cc6d1da949843ca5b92ae5f0cb02d34a172a08dfaffae0fd26ae'
+sha256sums=('cce2d6754a1f459b24e8b64b0c16da36f944a1d622a00cb44712554f29eeab51'
             'f830633b18a59b7d2a7787e9f0b4d8de802522e0c7732d1032ced354ab861532'
             '4482041b9daabaf1ad4225e775cdb694078f1e17d026a3f9dbe72731b3bbec0d')
 
 build() {
   cd application-$pkgver
   sed -i '/"postinstall"/d' package.json
-  sed -i '/initiateAutoUpdater/d' src/background.js
   npm uninstall eslint gulp-sass --save
   npm install eslint gulp-sass --save-dev
   npm run build
