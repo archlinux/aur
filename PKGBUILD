@@ -6,12 +6,12 @@
 
 pkgname=hypre
 pkgver=2.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for solving large, sparse linear systems on massively parallel computers"
 arch=('x86_64')
 url="https://www.llnl.gov/casc/hypre/"
 license=('lgpl')
-depends=('superlu' 'superlu_dist')
+depends=('superlu' 'superlu_dist' 'openmpi')
 makedepends=('gcc-fortran')
 source=(https://github.com/hypre-space/hypre/archive/v${pkgver}.tar.gz
         hypre-config-fix.patch)
@@ -31,7 +31,7 @@ build() {
     
   # disable internal superlu and fei for now, not sure yet how to get it to use external superlu
   CFLAGS="${CFLAGS} -fopenmp" CXXFLAGS="${CXXFLAGS} -fopenmp" LDFLAGS="${LDFLAGS} -lgomp" \
-  ./configure --prefix="${pkgdir}/usr" --enable-shared \
+  ./configure --prefix="${pkgdir}/usr" --includedir="${pkgdir}/usr/include/hypre" --enable-shared \
       --with-superlu --with-superlu-include=/usr/include/superlu --with-superlu-lib="-lsuperlu" \
       --with-dsuperlu --with-dsuperlu-include=/usr/include/superlu_dist --with-dsuperlu-lib="-lsuperlu_dist" \
       --with-fei --with-blas --with-lapack --with-openmp --enable-fortran --with-mli --with-MPI
