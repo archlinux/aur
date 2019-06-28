@@ -2,13 +2,13 @@
 
 pkgname=slimbookbattery
 pkgver=3.9beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Slimbook Battery. Is a battery optimization application for portable devices that can increase the battery life by 50%. For this purpose, the third-party software (TLP and others) is used to manage and configure the system resources."
 arch=('any')
 url="http://slimbook.es"
 license=('Creative Commons BY-NC-ND 3.0')
 groups=()
-depends=('bash-completion' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gobject-introspection-runtime' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libappindicator-gtk3' 'libnotify' 'python' 'python-dbus' 'python-gobject' 'python-pillow' 'tlp' 'tlp-rdw')
+depends=('bash-completion' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gobject-introspection-runtime' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libappindicator-gtk3' 'libnotify' 'python' 'python-dbus' 'python-gobject' 'python-pillow' 'tlp' 'tlp-rdw' 'xorg-xdpyinfo')
 optdepends=('gnome-shell-extension-appindicator:    Integrates AppIndicators into GNOME Shell')
 backup=('etc/systemd/system/suspend-sedation.service')
 options=('!strip' '!emptydirs')
