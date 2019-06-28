@@ -1,8 +1,8 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=ntpsec
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.1.4
+pkgrel=1
 pkgdesc="Security-hardened Network Time Protocol implementation"
 arch=('i686' 'x86_64')
 url="https://www.ntpsec.org/"
@@ -19,7 +19,7 @@ source=("ftp://ftp.ntpsec.org/pub/releases/$pkgname-$pkgver.tar.gz"
         "ftp://ftp.ntpsec.org/pub/releases/$pkgname-$pkgver.tar.gz.asc"
         use-arch-pool.patch
         ntpsec.sysusers)
-sha512sums=('83d2d3bc59202f1e5f3e76eeb6810e575e24c6f392f20c25732a6881a0a0a9f72453b76b294399351ec4baf88bc64da089dc1340aee38576021659f81bcd0e19'
+sha512sums=('1b74e7cb87e189137e1b66b52ce89498e0061a10abf017c36bfdecb4aefe9c3fb6e8fd7819a9f822fb946dca6ae20ee724b2aed35e03d73f8e3015d8818d02db'
             'SKIP'
             '7edb1d2dd41b135fa489de1802ea9b4079e9cb6556fa6457924bf7363bef7375987b9e4bb6507730ad906199ba55a44103d0655ad1f517b0426083be5b3e218c'
             'ac4ce13fe88a383382abb92cb34ab231467cbc9dcb8ac8780480d467f295ddf65e217b6415bbadabd8c7ac9832b0fd9058b837946aa2d5dcfd9f3bb81cff6b31')
@@ -48,7 +48,7 @@ build() {
         --enable-leap-smear
   ./waf build
 
-  a2x -f text docs/copyright.txt
+  a2x -f text docs/copyright.adoc
 }
 
 check() {
