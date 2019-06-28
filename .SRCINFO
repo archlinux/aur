@@ -1,6 +1,6 @@
 pkgbase = qgis-git
 	pkgdesc = Geographic Information System (GIS) that supports vector, raster & database formats - Development master
-	pkgver = 3.7.0_master.r54615.7f95991edf
+	pkgver = 3.9.0_master.r54615.7f95991edf
 	pkgrel = 1
 	url = http://qgis.org/
 	arch = i686
