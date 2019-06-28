@@ -12,6 +12,5 @@ source=("https://raw.githubusercontent.com/oefd/$pkgname/$_commit/vultr-hook.py"
 sha256sums=('43c495691b0eb56d11f1d63beb6ecd5d24c8b7c4919af1282db1d3269c551e0f')
 
 package() {
-	install -dm755 "$pkgdir/usr/bin"
-	install -m755 "$srcdir/vultr-hook.py" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$srcdir/vultr-hook.py" "$pkgdir/usr/bin/$pkgname"
 }
