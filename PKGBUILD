@@ -1,24 +1,19 @@
-# Maintainer: Doron Behar <doron.behar@gmail.com>
+# Contributor: Doron Behar <doron.behar@gmail.com>
+# Maintainer: hexchain <i@hexchain.org>
 
 pkgname=compiledb
-pkgver=0.9.8
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Tool for generating Clang's JSON Compilation Database file for GNU make-based build systems"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/nickdiego/compiledb-generator"
 license=('GPL3')
-depends=('python' 'python-click' 'python-bashlex')
-makedepends=()
-provides=()
-conflicts=()
+depends=('python' 'python-click' 'python-bashlex' 'python-shutilwhich')
 replaces=(compiledb-generator)
-backup=()
-options=(!emptydirs)
-install=
-source=(${url}/archive/v${pkgver}.tar.gz)
-md5sums=('79a001db1b4a3c98e6ad12d8a6b43347')
+source=("${url}/archive/v${pkgver}.tar.gz")
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+    cd "$srcdir/$pkgname-$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1
 }
+sha256sums=('2950eb6e6fa425a92a92cb79e1489cf94c1aff6fb39b1ff5f8ce1467039b9771')
