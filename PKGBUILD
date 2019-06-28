@@ -10,7 +10,6 @@ source=('https://fontlibrary.org/assets/downloads/railway-sans/9f707f44ac7fca4fb
 sha256sums=('b47c3a14813fed0898b9d7ec9300b58ee0f91155fcdaa1dca4e78647d4ee92a0')
 
 package() {
-	install -dm755 "$pkgdir/usr/share/fonts/"{O,T}'TF'
-	install -m644 "$srcdir/OTF/"*'.otf' "$pkgdir/usr/share/fonts/OTF/"
-	install -m644 "$srcdir/TTF/"*'.ttf' "$pkgdir/usr/share/fonts/TTF/"
+	install -Dm644 "$srcdir/OTF/"*'.otf' "$pkgdir/usr/share/fonts/OTF/"
+	install -Dm644 "$srcdir/TTF/"*'.ttf' "$pkgdir/usr/share/fonts/TTF/"
 }
