@@ -1,6 +1,6 @@
 pkgbase = wd5741
 	pkgdesc = Firmware update utility for WD Red drives
-	pkgver = 1
+	pkgver = 20131220
 	pkgrel = 1
 	url = https://support.wdc.com/downloads.aspx?p=201&lang=en
 	arch = x86_64
