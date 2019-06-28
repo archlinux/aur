@@ -1,0 +1,15 @@
+--- src/components/Makefile_comp_tests.target.in	2019-03-04 19:56:23.000000000 +0000
++++ src/components/Makefile_comp_tests.target.in	2019-06-28 16:55:41.886419500 +0100
+@@ -11,7 +11,11 @@
+ SHLIB   = @SHLIB@
+ PAPILIB = $(datadir)/@LINKLIB@
+ TESTLIB = $(testlibdir)/libtestlib.a
++ifeq ($(NAME),cuda)
++LDFLAGS = -Xlinker $(subst -Wl$(,),,@LDFLAGS@) @LDL@
++else
+ LDFLAGS = @LDFLAGS@ @LDL@
++endif
+ CC	= @CC@
+ F77	= @F77@
+ CC_R	= @CC_R@
+
