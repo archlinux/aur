@@ -1,0 +1,23 @@
+pkgbase = udemy-dl-git
+	pkgdesc = A utility to download courses from udemy for personal offline use
+	pkgver = v0.5.r59.gc56a725
+	pkgrel = 1
+	url = https://github.com/r0oth3x49/udemy-dl
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-colorama
+	depends = python-unidecode
+	depends = python-six
+	depends = python-pyopenssl
+	provides = udemy-dl
+	conflicts = udemy-dl
+	source = udemy-dl-git::git+https://github.com/r0oth3x49/udemy-dl.git
+	source = setup.py
+	sha256sums = SKIP
+	sha256sums = cc22a6b83b949b502ed951832845cae42703432dbf7ca2336d19991b946eb983
+
+pkgname = udemy-dl-git
+
