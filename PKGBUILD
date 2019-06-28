@@ -2,7 +2,7 @@
 
 pkgbase=cutelyst
 pkgname=('cutelyst' 'cutelyst-docs')
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A Web Framework built on top of Qt, using the simple approach of Catalyst (Perl) framework."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('LGPL2.1')
 depends=('qt5-base' 'grantlee' 'uwsgi')
 makedepends=('pkgconf' 'cmake' 'doxygen' 'graphviz')
 source=("https://github.com/cutelyst/cutelyst/archive/v${pkgver}.tar.gz")
-sha512sums=('78848d6d4e79149d9e9ae07211875dd212eb046bcdde7cde0bd781ed89d006247b21bc7a37c4e028d0982bb0f69654d469eb37b857dc0d585e9adc79ecd6291d')
+sha512sums=('1731e7991e06b0b21619aa6e0546c8f6289cec16619ad1d5aa7741efea17d05b324ed52a58bbd28be088fd1ceab9a4597e0b1d0df56c27ac263bc31b14ead3b7')
 
 build() {
   mkdir -p "$srcdir/${pkgname}-${pkgver}/build"
