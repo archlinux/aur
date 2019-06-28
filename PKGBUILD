@@ -1,7 +1,7 @@
 # Maintainer: Ian Young <ian at iangreenleaf dot com>
 
 pkgname=duplicacy
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A new generation cloud backup tool based on lock-free deduplication"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gilbertchen/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('bfdfa7887ffed4c2e465d6922b2761e068715343f5e50dfd580914b7ef1df8b2')
+sha256sums=('fdf2b418f3eb3351a6f56ac2694d53add2a95e729f9853fdab07788c00cbdce2')
 
 prepare() {
   cd "$pkgname-$pkgver/$pkgname"
