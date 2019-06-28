@@ -1,20 +1,21 @@
 pkgbase = gog-vampire-the-masquerade-bloodlines
 	pkgdesc = Vampire®: The Masquerade - Bloodlines™. GOG version (Wine).
-	pkgver = 1.2_up10_22135
+	pkgver = 1.2_up10.2_28160
 	pkgrel = 1
+	epoch = 1
 	url = https://www.gog.com/game/vampire_the_masquerade_bloodlines
 	arch = x86_64
 	license = custom
 	makedepends = innoextract
 	makedepends = unzip
 	depends = wine
-	source = file://setup_vampire_the_masquerade_-_bloodlines_1.2_(up_10.0)_(22135).exe
-	source = file://setup_vampire_the_masquerade_-_bloodlines_1.2_(up_10.0)_(22135)-1.bin
+	source = file://setup_vampire_the_masquerade_-_bloodlines_1.2_(up_10.2)_(28160).exe
+	source = file://setup_vampire_the_masquerade_-_bloodlines_1.2_(up_10.2)_(28160)-1.bin
 	source = file://vampire-the-masquerade-bloodlines.bash
 	source = file://vampire-the-masquerade-bloodlines.desktop
-	sha256sums = 660687df598d03866011e103680030e8c29aa165d9088fa05aae7c90f28bdf5b
-	sha256sums = b69f90787295c8780973ea3bf599b1089ac09b4bcd97a622fc89bbffeb65685d
-	sha256sums = 83dc8c11b71e060824061fca50523542af9735a115318689f3fb9cae22bf05cc
+	sha256sums = ecfaa084616cf90dec39a80c772556006bedeb5a9a9eee2e7a56521f8bedf130
+	sha256sums = e4c7375aa688ea441a43ee879707aa594bea83587ceda200fa4e9ff1912b993a
+	sha256sums = 71df164eddfdfca2f08e5765597a59d8e550c58e132ca188886a9841a7e9eec1
 	sha256sums = af3096274bd636907b9a588d5ecadc102c72a36da4040958833183da54100d43
 
 pkgname = gog-vampire-the-masquerade-bloodlines
