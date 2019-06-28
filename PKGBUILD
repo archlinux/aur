@@ -2,12 +2,13 @@
 pkgname=python-pylogix-git
 _pkgname=pylogix
 pkgver=r171.2fd71c5
-pkgrel=1
+pkgrel=2
 pkgdesc="Read/Write data from Allen Bradley Compact/Control Logix PLC's"
 arch=(any)
 url="https://github.com/dmroeder/pylogix"
 license=('Apache-2.0')
-makedepends=('git')
+depends=('python')
+makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
