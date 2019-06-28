@@ -5,4 +5,4 @@ Name=clrmamepro
 Comment=A ROM manager
 Exec=clrmamepro
 Icon=clrmamepro
-Categories=Utility;
+Categories=Application;Game
