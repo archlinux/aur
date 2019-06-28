@@ -1,0 +1,14 @@
+pkgbase = iris-flower
+	pkgdesc = Eye protection utility. Change brightness, color temperature and color scheme on X11
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ueberchild/iris-flower
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libx11
+	depends = libxrandr
+	source = https://github.com/ueberchild/iris-flower/blob/master/iris-flower.c
+
+pkgname = iris-flower
+
