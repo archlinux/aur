@@ -4,7 +4,7 @@
 # Forked from https://aur.archlinux.org/packages/nuget4/
 
 pkgname=nuget-nightly
-pkgver=5.2.0.preview2.6051
+pkgver=5.2.0.rtm.6067
 pkgrel=1
 pkgdesc="Package manager for .NET (nightly version)"
 arch=('any')
@@ -13,8 +13,8 @@ license=('apache')
 depends=('mono>=5.0.0' 'sh')
 makedepends=('xmlstarlet')
 conflicts=('nuget' 'nuget2' 'nuget3' 'nuget4' 'nuget5')
-provides=('nuget')
-source=('https://dotnet.myget.org/F/nuget-build/api/v2/package/NuGet.CommandLine'
+provides=('nuget' "nuget=${pkgver}")
+source=("NuGet.CommandLine.$((((RANDOM)*32768+RANDOM)*32768+RANDOM)).nupkg"::'https://dotnet.myget.org/F/nuget-build/api/v2/package/NuGet.CommandLine'
         'nuget')
 install="${pkgname}.install"
 sha384sums=('SKIP'

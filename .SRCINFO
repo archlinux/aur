@@ -1,6 +1,6 @@
 pkgbase = nuget-nightly
 	pkgdesc = Package manager for .NET (nightly version)
-	pkgver = 5.2.0.preview2.6051
+	pkgver = 5.2.0.rtm.6067
 	pkgrel = 1
 	url = http://www.nuget.org
 	install = nuget-nightly.install
@@ -10,12 +10,13 @@ pkgbase = nuget-nightly
 	depends = mono>=5.0.0
 	depends = sh
 	provides = nuget
+	provides = nuget=5.2.0.rtm.6067
 	conflicts = nuget
 	conflicts = nuget2
 	conflicts = nuget3
 	conflicts = nuget4
 	conflicts = nuget5
-	source = https://dotnet.myget.org/F/nuget-build/api/v2/package/NuGet.CommandLine
+	source = NuGet.CommandLine.20271119065801.nupkg::https://dotnet.myget.org/F/nuget-build/api/v2/package/NuGet.CommandLine
 	source = nuget
 	sha384sums = SKIP
 	sha384sums = caf34ef83623a2cb6107e067af4af1dcc150d4802f2926d974e15a9ee7fb735a6785b7fd5313a31edbd6f81cb5c51799
