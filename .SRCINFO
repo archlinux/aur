@@ -1,0 +1,15 @@
+pkgbase = sanic
+	pkgdesc = Command line tool for creating clusters on Amazon EKS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/weaveworks/eksctl
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = kubectl
+	depends = docker
+	source = sanic-1.0.0.tar.gz::https://github.com/distributed-containers-inc/sanic/archive/v1.0.0.tar.gz
+	sha256sums = 4754b9392ae6f73f77249a1fa2d16672301375f3035a56f115a79043647a2dff
+
+pkgname = sanic
+
