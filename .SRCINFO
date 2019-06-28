@@ -6,6 +6,7 @@ pkgbase = libdecaf
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = python
 	source = https://sourceforge.net/projects/ed448goldilocks/files/libdecaf-1.0.0.tgz
 	source = fix-warnings.patch
 	sha256sums = a332d09731c9af9bef071ae7aa700a0ae59161bc94d78ace32fe21dd4c328d04
