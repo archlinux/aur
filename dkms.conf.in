@@ -1,0 +1,7 @@
+PACKAGE_NAME="spi-config"
+PACKAGE_VERSION="#MODULE_VERSION#"
+MAKE[0]="make KVERSION=$kernelver BUILD_KERNEL=$kernelver"
+CLEAN="make clean"
+BUILT_MODULE_NAME[0]="spi-config"
+DEST_MODULE_LOCATION[0]="/extras"
+AUTOINSTALL="yes"
