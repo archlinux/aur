@@ -1,0 +1,6 @@
+src
+pkg
+EULA.pdf
+*.part
+*.src.tar.gz
+*.pkg.tar.xz
