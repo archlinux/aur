@@ -1,0 +1,18 @@
+pkgbase = wmamixer
+	pkgdesc = an ALSA mixer dockapp for Window Maker
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/gryf/wmamixer
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	depends = libxext
+	depends = libxpm
+	depends = libx11
+	depends = alsa-lib
+	source = wmamixer-1.0.tar.gz::https://github.com/gryf/wmamixer/archive/1.0.tar.gz
+	sha256sums = cccdf0ed4ae0482b16c49560626ad1eea77130fbbfe9e2c971cf49c3d4beb280
+
+pkgname = wmamixer
+
