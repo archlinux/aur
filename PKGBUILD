@@ -2,17 +2,17 @@
 pkgbase=python-spherical_geometry
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.2.9
-pkgrel=2
+pkgver=1.2.11
+pkgrel=1
 pkgdesc="Python based tools for spherical geometry"
 arch=('i686' 'x86_64')
 url="http://www.stsci.edu/resources/software_hardware/stsci_python"
 license=('BSD')
-makedepends=('python-setuptools' 'qd>=2.3.7' 'python-astropy>=3.1' 'python-astropy-helpers31' 'python-sphinx-astropy')
+makedepends=('python-setuptools' 'qd>=2.3.7' 'python-astropy>=3.1' 'python-astropy-helpers' 'python-sphinx-astropy')
 #checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_doc_warning.patch')
-md5sums=('6c82d0d4b6510efd4b67318125d9d9b5'
+md5sums=('ecec9cc8b3ec35199ebac6c7bf6b2b15'
          '4cffeb20c8e88870eae7188104308a35')
 
 prepare() {
