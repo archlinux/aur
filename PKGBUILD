@@ -15,7 +15,7 @@ source=("https://mamedev.emulab.it/clrmamepro/binaries/cmp${pkgver//./}_32.zip"
         "clrmamepro.desktop")
 sha256sums=('3debfd1bdfa354e34863deca6097222e5c0b6313ac74c55112713ae6ac23c1a3'
             '497a4a5cfe5daf8ac576f8169e611c6433b73e5019a7a8e4b0a230e531f9cdc4'
-            '8d92a074639a43cb5d7ed69df999d059dd81fca9f3967a58873db0acafb0d95b')
+            '830794b34205387cf69594cf555698ae888574a2f0dcbe63e7e49d1d40dcdeff')
 
 build() {
   wrestool -x -n 500 -o . cmpro.exe
