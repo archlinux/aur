@@ -1,0 +1,14 @@
+pkgbase = python-pydvdid
+	pkgdesc = A pure Python implementation of the Windows API IDvdInfo2::GetDiscID method, as used by Windows Media Center to compute a 'practically unique' 64-bit CRC for metadata retrieval.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/sjwood/pydvdid
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pydvdid/pydvdid-1.1.tar.gz
+	sha256sums = a3494f2bdab325de1e1f3441af134f8c3c287c0aa3a54d4acbfa857900e9d8d9
+
+pkgname = python-pydvdid
+
