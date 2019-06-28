@@ -2,7 +2,7 @@
 
 author=Baitinq
 pkgname=smart-wallpaper-git
-pkgbase=smart-wallpaper
+_gitname=smart-wallpaper
 pkgver=0
 pkgrel=1
 pkgdesc='Simple script to set a different wallpaper when its daytime/nightime.'
@@ -14,27 +14,27 @@ optdepends=('geolocate')
 makedepends=('git')
 provides=('smart-wallpaper')
 
-source=("git://github.com/$author/$pkgbase.git")
+source=("git://github.com/$author/$_gitname.git")
 
 md5sums=('SKIP')
 sha1sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_gitname"
 
   # Get the version number.
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_gitname"
 
   # Install the program.
-  mkdir -p "$pkgdir/usr/share/$pkgbase"
-  install -Dm755 smart-wallpaper "${pkgdir}/usr/bin/$pkgbase"
+  mkdir -p "$pkgdir/usr/share/$_gitname"
+  install -Dm755 smart-wallpaper "${pkgdir}/usr/bin/$_gitname"
   chmod +x "$pkgdir/usr/bin/$pkgbase"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgbase"
-  chmod -R 777 "$pkgdir/usr/share/$pkgbase"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_gitname"
+  chmod -R 777 "$pkgdir/usr/share/$_gitname"
 
 }
