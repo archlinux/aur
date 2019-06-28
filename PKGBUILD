@@ -2,8 +2,8 @@
 # Maintainer: Stephan Springer <buzo+arch@Lini.de>
 
 pkgname=signal-desktop-bin
-pkgver=1.25.1
-pkgrel=2
+pkgver=1.25.3
+pkgrel=1
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
 url='https://github.com/signalapp/Signal-Desktop'
@@ -13,9 +13,8 @@ optdepends=('hunspell-en_US: US English hunspell dictionaries')
 provides=('signal-desktop')
 conflicts=('signal')
 options=('!strip')
-#source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_${pkgver}_amd64.deb")
-source=("https://buzo.eu/mirror/signal-desktop/signal-desktop_${pkgver}_amd64.deb")
-sha256sums=('97863be20e80d72537d5ea169202eb4c123f285ca8be7c3490b8aa91b6be0585')
+source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_${pkgver}_amd64.deb")
+sha256sums=('2319a0171198890bbf30c8e7ba777cc564904189b71f631cefb19fd4c88df738')
 
 package() {
   # extract package data
