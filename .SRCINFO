@@ -1,0 +1,13 @@
+pkgbase = libplctag
+	pkgdesc = This library provides a portable and simple API for accessing Allen-Bradley PLC data over Ethernet
+	pkgver = 2.0.17
+	pkgrel = 1
+	url = https://github.com/kyle-github/libplctag
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	source = https://github.com/kyle-github/libplctag/archive/v2.0.17.tar.gz
+	sha512sums = c17616713884aa00333af0750799371481cd06cb30e5915d367b25ea3770a678cabf15c1d500c8a601e73b8fd218005e39ba131aed100539e3066e4ccda81bfc
+
+pkgname = libplctag
+
