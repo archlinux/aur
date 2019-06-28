@@ -2,7 +2,7 @@
 
 _pkgname=ytt
 pkgname=${_pkgname}-git
-pkgver=r40.32ed30c
+pkgver=r113.c6e9032
 pkgrel=1
 pkgdesc="YAML templating tool that works on YAML structure instead of text"
 url="https://get-ytt.io/"
@@ -16,34 +16,47 @@ provides=("ytt")
 conflicts=("ytt")
 
 pkgver() {
-	cd "${srcdir}/src/k14s/${_pkgname}"
+	cd "${srcdir}/src/github.com/k14s/${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	rm -rf "${srcdir}/src/k14s/${_pkgname}"
-	mkdir -p "${srcdir}/src/k14s/${_pkgname}"
-	mv -T "${srcdir}/${_pkgname}" "${srcdir}/src/k14s/${_pkgname}"
+	rm -rf "${srcdir}/src/github.com/k14s/${_pkgname}"
+	mkdir -p "${srcdir}/src/github.com/k14s/${_pkgname}"
+	mv -T "${srcdir}/${_pkgname}" "${srcdir}/src/github.com/k14s/${_pkgname}"
 }
 
 build() {
-	cd "${srcdir}/src/k14s/${_pkgname}"
+	cd "${srcdir}/src/github.com/k14s/${_pkgname}"
 
 	export GOPATH="${srcdir}"
-	export PATH="${srcdir}/bin:$PATH"
 
-	# Get dep
-	go get -u github.com/golang/dep/cmd/dep
+	# Build ytt without website assets
+	go build -o ytt ./cmd/ytt/...
 
-	# Install dependencies
-	dep ensure
+	# Use ytt to build website assets
+	mkdir -p tmp
+	build_values_path="../../${BUILD_VALUES:-./hack/build-values-default.yml}"
+	(
+		cd pkg/website
+		./../../ytt \
+			-f . \
+			-f ../../examples/playground \
+			-f $build_values_path \
+			--file-mark 'alt-example**/*:type=data' \
+			--file-mark 'example**/*:type=data' \
+			--file-mark 'generated.go.txt:exclusive-for-output=true' \
+			--output ../../tmp/
+	)
+	mv tmp/generated.go.txt pkg/website/generated.go
 
-	# Build ytt
-	go build -o ytt ./cmd/ytt
+	# Rebuild ytt with website assets
+	rm -f ./ytt
+	go build -o ytt ./cmd/ytt/...
 }
 
 package() {
-	cd "${srcdir}/src/k14s/${_pkgname}"
+	cd "${srcdir}/src/github.com/k14s/${_pkgname}"
 	install -Dm755 "${_pkgname}" "${pkgdir}"/usr/bin/${_pkgname}
 	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE
 }
