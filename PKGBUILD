@@ -64,8 +64,8 @@ build() {
 
 	make || {
 	# Replace $$[QT_INSTALL_LIBS] with hardcoded /usr/lib/ for proper linking
-  # Relevant issue:
-  #  https://github.com/ros-melodic-arch/ros-melodic-qt-gui-cpp/issues/4
+	# Relevant issue:
+	#  https://github.com/ros-melodic-arch/ros-melodic-qt-gui-cpp/issues/4
 	sed -i 's/$$\[QT_INSTALL_LIBS\]/\/usr\/lib/' ${srcdir}/build/sip/qt_gui_cpp_sip/Makefile
 	make
 	}
