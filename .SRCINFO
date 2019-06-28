@@ -1,28 +1,27 @@
 pkgbase = xfconf-devel
 	pkgdesc = A simple client-server configuration storage and query system
-	pkgver = 4.13.7
-	pkgrel = 3
+	pkgver = 4.13.8
+	pkgrel = 1
 	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64
 	groups = xfce4-devel
 	license = GPL2
-	makedepends = perl-extutils-depends
-	makedepends = perl-extutils-pkgconfig
-	makedepends = glib-perl
 	makedepends = intltool
 	makedepends = gtk-doc
 	makedepends = chrpath
+	makedepends = vala
+	makedepends = gobject-introspection
 	makedepends = python
 	depends = libxfce4util
 	depends = dbus
-	provides = xfconf=4.13.7
+	provides = xfconf=4.13.8
 	conflicts = xfconf
 	options = !emptydirs
-	source = https://archive.xfce.org/src/xfce/xfconf/4.13/xfconf-4.13.7.tar.bz2
+	source = https://archive.xfce.org/src/xfce/xfconf/4.13/xfconf-4.13.8.tar.bz2
 	source = xfconf-warn.sh
 	source = xfconf-warn.hook
-	sha256sums = 5deb13fc48a4116f5ebdee5c21d0fd3deb85bec2f69602beb3c3adb4f85e5bde
+	sha256sums = 55e2441c4ff78a7006fabb59647f7bc1f190cbb82327b93ba063ff624a896591
 	sha256sums = dffa297eb6ef0fbe56c37b7396186cb85e1dd6249d28e2fc0b8fc5254926bcb7
 	sha256sums = 0cfbfecb042dabe5a6e80ac96ce863db12e0c38a7cedb66e2bfbe9a5463469a7
 

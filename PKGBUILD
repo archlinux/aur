@@ -2,24 +2,23 @@
 
 _pkgname=xfconf
 pkgname=${_pkgname}-devel
-pkgver=4.13.7
-pkgrel=3
+pkgver=4.13.8
+pkgrel=1
 pkgdesc="A simple client-server configuration storage and query system"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4-devel')
 depends=('libxfce4util' 'dbus')
-makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig' 'glib-perl'
-             'intltool' 'gtk-doc' 'chrpath' 'python') #for gdbus-codegen
-#optdepends=('xfconf4.12: Legacy xfconf libraries')
+makedepends=('intltool' 'gtk-doc' 'chrpath' 'vala' 'gobject-introspection' 'python') #for gdbus-codegen
+#makedepends+=('perl-extutils-depends' 'perl-extutils-pkgconfig' 'glib-perl'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2"
        'xfconf-warn.sh'
        'xfconf-warn.hook')
-sha256sums=('5deb13fc48a4116f5ebdee5c21d0fd3deb85bec2f69602beb3c3adb4f85e5bde'
+sha256sums=('55e2441c4ff78a7006fabb59647f7bc1f190cbb82327b93ba063ff624a896591'
             'dffa297eb6ef0fbe56c37b7396186cb85e1dd6249d28e2fc0b8fc5254926bcb7'
             '0cfbfecb042dabe5a6e80ac96ce863db12e0c38a7cedb66e2bfbe9a5463469a7')
 #install='xfconf.install'
@@ -34,9 +33,10 @@ build() {
     --localstatedir=/var \
     --disable-static \
     --enable-gtk-doc \
-    --with-perl-options=INSTALLDIRS="vendor" \
     --disable-debug \
     --enable-gsettings-backend
+#    --enable-perl-bindings \
+#    --with-perl-options=INSTALLDIRS="vendor"
   make
 }
 
