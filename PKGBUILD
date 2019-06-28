@@ -52,8 +52,8 @@ package_libakonadi-git() {
 
 package_akonadi-git() {
 	depends=(libakonadi)
-	optdepends=('mariadb: MariaDB backend')
-	optdepends=('postgresql: PostgreSQL backend')
+	optdepends=('mariadb: MariaDB backend'
+	            'postgresql: PostgreSQL backend')
 	conflicts=("${pkgname%-git}")
 	provides=("${pkgname%-git}=${pkgver}")
 

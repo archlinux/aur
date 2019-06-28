@@ -21,6 +21,7 @@ pkgbase = akonadi-git
 
 pkgname = akonadi-git
 	depends = libakonadi
+	optdepends = mariadb: MariaDB backend
 	optdepends = postgresql: PostgreSQL backend
 	provides = akonadi=19.04.2.r97.g7f39ff12d
 	conflicts = akonadi
