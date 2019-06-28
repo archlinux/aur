@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-cpugraph-plugin
 pkgname=${_pkgname}-devel
-pkgver=1.0.90
+pkgver=1.0.91
 pkgrel=1
 pkgdesc="CPU graph plugin for the Xfce4 panel"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('intltool')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/panel-plugins/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('08e7a8ca378285335b7c5eaf1a550de52ef2935f06822f862a155c5342ca7560')
+sha256sums=('3f5fcde40f0225213b30dbb41ee54507e5ca3145a798d50ea1026a68f5cc727d')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
