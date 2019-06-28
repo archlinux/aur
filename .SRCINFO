@@ -1,4 +1,4 @@
-pkgbase = smart-wallpaper
+pkgbase = smart-wallpaper-git
 	pkgdesc = Simple script to set a different wallpaper when its daytime/nightime.
 	pkgver = 0
 	pkgrel = 1
