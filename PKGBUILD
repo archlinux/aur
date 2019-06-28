@@ -1,7 +1,7 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 pkgname=pgformatter-git
 _gitname=pgformatter
-pkgver=68e2f7a
+pkgver=1e65db3
 pkgrel=1
 pkgdesc="Correctly indent PostgreSQL queries"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
