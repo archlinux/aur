@@ -3,15 +3,16 @@
 pkgname=tidal-music-linux-git
 _pkgname=tidal-music-linux
 replaces=('tidal-music-linux-bin')
-pkgver=2.0
+pkgver=3.0
 pkgrel=1
 pkgdesc='An electron based wrapper around the Tidal web player for Linux'
 arch=('x86_64')
 url='https://github.com/Bunkerbewohner/tidal-music-linux'
 license=('MIT')
 # dunno if needed: libxtst alsa-lib gconf libnotify gtk2 nss
-depends=('pepper-flash' 'nodejs' 'git' 'npm' 'electron')
-provides=("${_pkgname}")
+depends=('pepper-flash' 'electron')
+makedepends=('nodejs' 'git' 'npm')
+provides=('tidal')
 source=(
   'git+https://github.com/Bunkerbewohner/tidal-music-linux.git'
   "${_pkgname}.desktop"
