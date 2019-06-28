@@ -1,14 +1,15 @@
-# Maintainer: Kevin Houdebert <kevin@qwazerty.eu>
+# Maintainer: Laurent Zhu <laurent.zhu@epita.fr>
+# Contributor: Kevin Houdebert <kevin@qwazerty.eu>
 
 _pkgname=havm
 pkgname=${_pkgname}-git
-pkgver=0.27
+pkgver=0.28
 pkgrel=1
 pkgdesc='HAVM is a Tree intermediate language interpreter.'
 url='https://www.lrde.epita.fr/wiki/Havm'
 arch=('x86_64' 'i686')
 license=('GPL3')
-makedepends=('git' 'ghc')
+makedepends=('git' 'ghc' 'ghc-static')
 depends=('libffi' 'gmp')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
