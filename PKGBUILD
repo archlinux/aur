@@ -1,19 +1,19 @@
-pkgname=iris-flower
+pkgname=iris-flower-wayland
 pkgver=1.0
 pkgrel=1
-pkgdesc="Eye protection utility. Change brightness, color temperature and color scheme on X11"
+pkgdesc="Eye protection utility. Change brightness, color temperature and color scheme on Wayland"
 arch=('i686' 'x86_64')
-url="https://github.com/ueberchild/iris-flower"
+url="https://github.com/ueberchild/iris-flower-wayland"
 license=('GPL3')
-depends=('libx11' 'libxrandr')
-source=("https://github.com/ueberchild/iris-flower/blob/master/iris-flower.c")
+depends=('ddccontrol')
+source=("https://github.com/ueberchild/iris-flower-wayland/blob/master/iris-flower-wayland.c")
 
 build() {
 	cd "$srcdir/"
-	cc -Wall -std=c99 -o iris-flower iris-flower.c -lX11 -lXrandr
+	cc -Wall -std=c99 -o iris-flower-wayland iris-flower-wayland.c
 }
 
 package() {
   cd "$srcdir/"
-  install -D iris-flower "$pkgdir/usr/bin/sct"
+  install -D iris-flower-wayland "$pkgdir/usr/bin/iris-flower-wayland"
 }
