@@ -1,6 +1,6 @@
 pkgbase = veloren-git
 	pkgdesc = An open-world, open-source multiplayer voxel RPG
-	pkgver = 0.2.0.r191.132d1a6
+	pkgver = 0.2.0.r313.cbcccbe
 	pkgrel = 1
 	url = https://veloren.net/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = veloren-git
 	source = voxygen.desktop
 	source = voxygen.png
 	sha512sums = SKIP
-	sha512sums = 27e4e25dc7f7f149873da28414b176c19c27d4c8d656a7f2ab11648137d75e2ec7d0ed07066e5384525123eace34debe1417d16f3e86a2b4ccf06f7c77fa052e
+	sha512sums = fac3e0f636e691b872cd68e3b67af021ee748da96246ba38543570b092bbf9dab686d62f838fafa50ce407ac39fe0710420148c424fd526873a05a259158d2d9
 	sha512sums = b5e5cbf28ab0e335f5a0fc93511fc9936360432a36e35cc876761601abacf257299deb0af6b3d9081143b700f6663c4f603970155dd4dacedb7a9672cde1dc94
 
 pkgname = veloren-git

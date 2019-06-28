@@ -2,7 +2,7 @@
 
 export GIT_LFS_SKIP_SMUDGE=1
 pkgname=veloren-git
-pkgver=0.2.0.r191.132d1a6
+pkgver=0.2.0.r313.cbcccbe
 pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
@@ -25,7 +25,7 @@ source=(
 )
 noextract=("voxygen.desktop" "voxygen.png")
 sha512sums=('SKIP'
-            '27e4e25dc7f7f149873da28414b176c19c27d4c8d656a7f2ab11648137d75e2ec7d0ed07066e5384525123eace34debe1417d16f3e86a2b4ccf06f7c77fa052e'
+            'fac3e0f636e691b872cd68e3b67af021ee748da96246ba38543570b092bbf9dab686d62f838fafa50ce407ac39fe0710420148c424fd526873a05a259158d2d9'
             'b5e5cbf28ab0e335f5a0fc93511fc9936360432a36e35cc876761601abacf257299deb0af6b3d9081143b700f6663c4f603970155dd4dacedb7a9672cde1dc94')
 
 pkgver() {
