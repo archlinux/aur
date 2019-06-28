@@ -2,14 +2,14 @@
 
 pkgname=wlay-git
 pkgver=r21.7018252
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical output management for Wayland"
 
 arch=('i686' 'x86_64')
 url="https://github.com/atx/wlay"
 license=('MIT')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'wayland' 'glfw-wayland' 'glew-wayland' 'libepoxy')
-depends=('wayland' 'glfw-wayland' 'glew-wayland' 'libepoxy')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'wayland' 'glfw-wayland' 'libepoxy')
+depends=('wayland' 'glfw-wayland' 'libepoxy')
 provides=('wlay')
 conflicts=('wlay')
 source=('wlay::git+https://github.com/atx/wlay.git')
