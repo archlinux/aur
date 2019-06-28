@@ -1,7 +1,7 @@
 pkgbase = railway-sans-font
 	pkgdesc = An open source version of Edward Johnston's Timeless Typeface for London Underground of 1916
 	pkgver = 20170421
-	pkgrel = 4
+	pkgrel = 5
 	url = https://fontlibrary.org/en/font/railway-sans
 	arch = any
 	license = custom:SIL Open Font License v1.1
