@@ -1,0 +1,14 @@
+pkgbase = cleardns
+	pkgdesc = another clean DNS
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPLv3
+	makedepends = go
+	source = cleardns.go
+	source = cleardns.service
+	md5sums = 77e84fb9011607c22532bb4e93dfee3c
+	md5sums = b8f005496cc95eaeb6e083f076253e9c
+
+pkgname = cleardns
+

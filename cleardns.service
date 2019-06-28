@@ -1,0 +1,10 @@
+[Unit]
+Description=cleardns
+After=network.target
+
+[Service]
+ExecStart=/opt/cleardns -t 1200 -l 127.0.0.54:53
+ExecStop=killall cleardns
+
+[Install]
+WantedBy=multi-user.target
