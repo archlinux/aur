@@ -2,7 +2,7 @@
 pkgname=viper4linux-gui
 pkgver=1.10
 pkgrel=1
-pkgdesc="Unofficial UI for Viper4Linux"
+pkgdesc="Official UI for Viper4Linux"
 arch=('any')
 url="https://github.com/ThePBone/Viper4Linux-GUI"
 license=('GPL3')
