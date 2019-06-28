@@ -13,6 +13,7 @@ url='https://github.com/CrimsonAS/gtkplatform'
 license=('LGPL3')
 source=("git://github.com/CrimsonAS/gtkplatform.git")
 sha256sums=('SKIP')
+install=${pkgname}.install
 
 pkgver () {
   cd "${srcdir}/gtkplatform"
@@ -26,7 +27,7 @@ build() {
 }
 
 package() {
-  local env_dir=${pkgdir}/usr/share/gdm/env.d/
+  local env_dir=${pkgdir}/usr/share/qt-gtk-platform-plugin
   local pacman_hook_dir=${pkgdir}/etc/pacman.d/hooks
   local env_file=${startdir}/qt-force-gtk-platform.env
   local hook_file=${startdir}/100-qt-gtk-platform-plugin-git.hook
