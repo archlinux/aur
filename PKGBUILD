@@ -1,6 +1,6 @@
 pkgname=umr-git
 epoch=1
-pkgver=r19.ccd0ec4
+pkgver=r332.5909d8c
 pkgrel=1
 pkgdesc='userspace debugging and diagnostic tool for AMD GPUs using the AMDGPU kernel driver'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('git' 'cmake')
 provides=('umr')
 conflicts=('umr')
-source=('git://anongit.freedesktop.org/amd/umr')
+source=('git+https://gitlab.freedesktop.org/tomstdenis/umr.git')
 sha256sums=('SKIP')
 #options=(debug "!strip")
 
