@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" "$pkgbase-bin" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=18.4rc1pre01
+pkgver=18.4rc1pre02
 _major=18.3
 pkgrel=1
 arch=('x86_64')
@@ -79,6 +79,7 @@ source=(
   cpuinfo
   000-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch
   001-PR16305.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16305.patch
+  002-PR16313.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16313.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -101,7 +102,8 @@ sha256sums=('4f265901c00f582beb8d6ad96c9c303e5ab82611e828c7121ae822b07c0915cc'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
             '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb'
-            'a162fee84b8c7a52d5120874fa81cbf0534e5f993a1bb33b842a071186191698')
+            'a162fee84b8c7a52d5120874fa81cbf0534e5f993a1bb33b842a071186191698'
+            'db2a285d0ef635e9cad6c8cace1937e39f0393bc2efbc724203c3cf580471951')
 
 prepare() {
   # force python 'binary' as python2
