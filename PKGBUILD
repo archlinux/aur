@@ -9,7 +9,7 @@ url='https://github.com/AdaCore/libadalang-tools'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('libadalang')
+depends=('libadalang-git')
 makedepends=('git')
 
 source=('git+https://github.com/AdaCore/libadalang-tools.git')

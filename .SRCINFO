@@ -7,7 +7,7 @@ pkgbase = libadalang-tools-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = libadalang
+	depends = libadalang-git
 	source = git+https://github.com/AdaCore/libadalang-tools.git
 	sha1sums = SKIP
 
