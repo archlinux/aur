@@ -9,7 +9,6 @@ pkgbase = smart-wallpaper-git
 	depends = bash
 	depends = redshift
 	depends = feh
-	optdepends = geolocate
 	provides = smart-wallpaper
 	source = git://github.com/Baitinq/smart-wallpaper.git
 	md5sums = SKIP

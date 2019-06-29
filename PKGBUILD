@@ -10,7 +10,6 @@ url='https://github.com/Baitinq/smart-wallpaper.git'
 arch=('any')
 license=('GPL')
 depends=('bash' 'redshift' 'feh')
-optdepends=('geolocate')
 makedepends=('git')
 provides=('smart-wallpaper')
 
