@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kglobalaccel
-pkgver=5.37.0
+pkgver=5.45.0
 pkgrel=1
 arch=(any)
 pkgdesc="Add support for global workspace shortcuts (mingw-w64)"
@@ -9,12 +9,19 @@ groups=(mingw-w64-kf5)
 makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
-source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kglobalaccel-${pkgver}.tar.xz"{,.sig})
-sha256sums=('4b373660976ba8c5e0fed74ddfc61dd8629757a849a5ea29a3c2166cf2c004b5'
-            'SKIP')
+source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kglobalaccel-${pkgver}.tar.xz"{,.sig}
+        "fix-moc.patch")
+sha256sums=('d5336124af365f784e3753264828f43a71f1e7b00780bb7df6bafadcdbe595c7'
+            'SKIP'
+            '6da3377088a6d8ac2f01b76a6cc4e5d78b1c3245d8449b0681d2367355826647')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+	cd kglobalaccel-$pkgver
+	patch -Np1 -i ../fix-moc.patch
+}
 
 build() {
 	cd kglobalaccel-$pkgver
