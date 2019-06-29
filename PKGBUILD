@@ -10,6 +10,7 @@ url='https://github.com/Baitinq/smart-wallpaper.git'
 arch=('any')
 license=('GPL')
 depends=('bash' 'redshift' 'feh')
+optdepends=('gifsicle: support for animated backgrounds (.gif)')
 makedepends=('git')
 provides=('smart-wallpaper')
 

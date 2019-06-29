@@ -9,6 +9,7 @@ pkgbase = smart-wallpaper-git
 	depends = bash
 	depends = redshift
 	depends = feh
+	optdepends = gifsicle: support for animated backgrounds (.gif)
 	provides = smart-wallpaper
 	source = git://github.com/Baitinq/smart-wallpaper.git
 	md5sums = SKIP
