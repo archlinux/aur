@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-gcc-bin
 pkgver=9.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross GCC for the MinGW-w64 cross-compiler (pre-compiled)"
 arch=('x86_64')
 url="https://gcc.gnu.org/"
@@ -12,8 +12,8 @@ depends=('zlib' 'libmpc' 'mingw-w64-crt' 'mingw-w64-binutils' 'mingw-w64-winpthr
 provides=("mingw-w64-gcc=${pkgver}" "mingw-w64-gcc-base")
 conflicts=('mingw-w64-gcc')
 options=('!strip' 'staticlibs' '!emptydirs' '!buildflags')
-source=("https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-gcc/mingw-w64-gcc-$pkgver-2.tar.xz")
-md5sums=('04e780fdf6fdc0ada4bb01ce6c893327')
+source=("https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-gcc/mingw-w64-gcc-$pkgver-3.tar.xz")
+md5sums=('a6cdcb49022034ad1dc08614764597ae')
 
 package() {
 	cd "mingw-w64-gcc/"

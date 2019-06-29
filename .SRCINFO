@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gcc-bin
 	pkgdesc = Cross GCC for the MinGW-w64 cross-compiler (pre-compiled)
 	pkgver = 9.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gcc.gnu.org/
 	arch = x86_64
 	groups = mingw-w64-toolchain
@@ -20,8 +20,8 @@ pkgbase = mingw-w64-gcc-bin
 	options = staticlibs
 	options = !emptydirs
 	options = !buildflags
-	source = https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-gcc/mingw-w64-gcc-9.1.0-2.tar.xz
-	md5sums = 04e780fdf6fdc0ada4bb01ce6c893327
+	source = https://sourceforge.net/projects/mingw-w64-builds/files/mingw-w64-gcc/mingw-w64-gcc-9.1.0-3.tar.xz
+	md5sums = a6cdcb49022034ad1dc08614764597ae
 
 pkgname = mingw-w64-gcc-bin
 
