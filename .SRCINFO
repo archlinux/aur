@@ -1,6 +1,6 @@
 pkgbase = libadalang-tools-git
 	pkgdesc = Libadalang-based tools: gnatpp, gnatmetric and gnatstub
-	pkgver = r289.08279035
+	pkgver = r446.3e283b06
 	pkgrel = 1
 	url = https://github.com/AdaCore/libadalang-tools
 	arch = i686
@@ -9,9 +9,7 @@ pkgbase = libadalang-tools-git
 	makedepends = git
 	depends = libadalang
 	source = git+https://github.com/AdaCore/libadalang-tools.git
-	source = workaround-gnat-bug.patch
 	sha1sums = SKIP
-	sha1sums = 6af5ca1df6e6a6eae076450a7fb89fc44bcddab8
 
 pkgname = libadalang-tools-git
 

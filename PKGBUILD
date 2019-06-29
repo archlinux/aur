@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=libadalang-tools-git
-pkgver=r289.08279035
+pkgver=r446.3e283b06
 pkgrel=1
 
 pkgdesc="Libadalang-based tools: gnatpp, gnatmetric and gnatstub"
@@ -12,22 +12,14 @@ license=('GPL')
 depends=('libadalang')
 makedepends=('git')
 
-source=('git+https://github.com/AdaCore/libadalang-tools.git'
-        'workaround-gnat-bug.patch')
-sha1sums=('SKIP'
-          '6af5ca1df6e6a6eae076450a7fb89fc44bcddab8')
+source=('git+https://github.com/AdaCore/libadalang-tools.git')
+sha1sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
     printf "r%s.%s" \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
-}
-
-prepare()
-{
-    cd "$srcdir/${pkgname%-git}"
-    patch -Np0 -i "$srcdir/workaround-gnat-bug.patch"
 }
 
 build() 
