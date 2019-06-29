@@ -29,7 +29,7 @@ fi
 # Thanks to sl1pkn07 on AUR for tracking down the actual URL for me!
 # ...Which of course no longer works. Thanks to grawity for providing the FreeBSD dist mirror link.
 #source=("https://square-r00t.net/files/arch/${pkgname}/${pkgver}_${_pkgname}.zip"
-source=("http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_${_pkgname}.zip"
+source=("https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_${_pkgname}.zip"
 #source=("http://ftp2.za.freebsd.org/pub/FreeBSD/distfiles/${pkgver}_${_pkgname}.zip"
 	"${pkgver}_${_pkgname}.zip.sig")
 sha512sums=('2018c8b40d7371077f01bbe586ed1135d683823b9d243fde14d45404c8bab8328f36e19ac91eb876666a174a7cce7e95a2a75485f70681460cda4c9b65d4d579'
