@@ -1,0 +1,10 @@
+pkgbase = mingw-w64-docbook-wrapper
+	pkgdesc = Symlink system docbook-* packages (mingw-w64)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://docbook.org/
+	arch = any
+	license = custom
+
+pkgname = mingw-w64-docbook-wrapper
+
