@@ -1,0 +1,45 @@
+diff -Nawurp a/amitools/tools/geotool.py b/amitools/tools/geotool.py
+--- a/amitools/tools/geotool.py	2019-06-21 16:49:43.000000000 +0000
++++ b/amitools/tools/geotool.py	2019-06-29 14:09:16.111152186 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2.7
++#!/usr/bin/env python
+ 
+ from __future__ import absolute_import
+ from __future__ import print_function
+diff -Nawurp a/amitools/tools/rdbtool.py b/amitools/tools/rdbtool.py
+--- a/amitools/tools/rdbtool.py	2019-06-21 16:49:43.000000000 +0000
++++ b/amitools/tools/rdbtool.py	2019-06-29 14:09:24.111043044 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2.7
++#!/usr/bin/env python
+ # rdbtool
+ # swiss army knife for rdb disk images or devices
+ 
+diff -Nawurp a/amitools/tools/xdfscan.py b/amitools/tools/xdfscan.py
+--- a/amitools/tools/xdfscan.py	2019-06-21 16:49:43.000000000 +0000
++++ b/amitools/tools/xdfscan.py	2019-06-29 14:09:28.464317106 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2.7
++#!/usr/bin/env python
+ # xdfscan
+ # quickly scan large sets of Amiga disk image files
+ 
+diff -Nawurp a/amitools/tools/xdftool.py b/amitools/tools/xdftool.py
+--- a/amitools/tools/xdftool.py	2019-06-21 16:49:43.000000000 +0000
++++ b/amitools/tools/xdftool.py	2019-06-29 14:09:32.760925361 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2.7
++#!/usr/bin/env python
+ # xdftool
+ # swiss army knife for adf and hdf amiga disk images
+ 
+diff -Nawurp a/amitools/util/BlkDevTools.py b/amitools/util/BlkDevTools.py
+--- a/amitools/util/BlkDevTools.py	2019-06-21 16:49:43.000000000 +0000
++++ b/amitools/util/BlkDevTools.py	2019-06-29 14:09:39.364169091 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2.7
++#!/usr/bin/env python
+ # based heavily on "iops" by Benjamin Schweizer
+ # https://github.com/gopher/iops
+ 

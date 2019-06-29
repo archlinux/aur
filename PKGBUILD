@@ -3,28 +3,28 @@
 # Contributor: Guilherme Calé <gui@cabritacale.eu>
 
 pkgname=fs-uae-launcher
-pkgver=2.8.3
-pkgrel=3
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='Graphical user interface for the fs-uae Amiga emulator'
 arch=('any')
 url='https://fs-uae.net/launcher/'
 license=('GPL2')
-depends=('fs-uae' 'python' 'python-setuptools' 'python-pyqt5' 'python-six'
+depends=("fs-uae>=${pkgver}" 'python' 'python-setuptools' 'python-pyqt5' 'python-six'
          'hicolor-icon-theme')
 optdepends=('p7zip: for .7z file support'
             'python-lhafile: for .lha file support')
 source=("https://fs-uae.net/stable/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        'remove_inbuilt_six.patch'
-        'fs-uae-launcher.patch')
-sha256sums=('8ce764031013516daab76e996eff9e9fdead6c0f00b4e497fc927f7719d8a233'
-            '4cdbcc3c522517cfa59d5296372afae7e22832673b94cd328bef151ec4db5f23'
-            'e151b62ce6b998e129fcd6881f50cf3f2c2cad76bd13e3cb09b219b6fd9617cd')
+        'fs-uae-launcher-fix-install-path.patch'
+        'fs-uae-launcher-remove-python2.patch')
+sha256sums=('ee7ea368f1c8a58755cdd79f091a84ffe4e4d5b50d5523ed892f9d07be41e905'
+            '15463d3d3ed5bdc4fb614cea91b93e7678eccce0696c66ac28c194dd7558e3fa'
+            'dcb9be9e6881ec8102d230d54ac1dbd8fa3774d2282f5ea62ea67a3aea33045c')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
     
-    patch -Np0 -i "${srcdir}/remove_inbuilt_six.patch"
-    patch -Np0 -i "${srcdir}/fs-uae-launcher.patch"
+    patch -Np1 -i "${srcdir}/fs-uae-launcher-fix-install-path.patch"
+    patch -Np1 -i "${srcdir}/fs-uae-launcher-remove-python2.patch"
 }
 
 build() {
