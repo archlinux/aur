@@ -2,7 +2,7 @@
 # Python package author: Andrew Trask <contact@openmined.org>
 pkgname=python-syft
 pkgver=0.1.19a1
-pkgrel=8
+pkgrel=9
 pkgdesc="A Library for Private, Secure Deep Learning"
 arch=(any)
 url="https://github.com/OpenMined/PySyft"
@@ -18,7 +18,8 @@ package() {
     'python-websocket-client'
     'python-msgpack'
     'python-lz4'
-    'python-zstandard')
+    'python-zstandard'
+    'tensorboard')
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
   mkdir -p $pkgdir/"$sitepackages"
   cp -r $srcdir/syft/* $pkgdir/"$sitepackages"

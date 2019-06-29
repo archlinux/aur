@@ -1,7 +1,7 @@
 pkgbase = python-syft
 	pkgdesc = A Library for Private, Secure Deep Learning
 	pkgver = 0.1.19a1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/OpenMined/PySyft
 	arch = any
 	license = Apache-2.0
@@ -16,4 +16,5 @@ pkgname = python-syft
 	depends = python-msgpack
 	depends = python-lz4
 	depends = python-zstandard
+	depends = tensorboard
 
