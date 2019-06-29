@@ -11,7 +11,7 @@ pkgver=1.25.3
 pkgrel=1
 license=('GPL3')
 pkgdesc='Private messenger for the desktop'
-depends=('electron' 'openssl-1.0')
+depends=('electron4' 'openssl-1.0')
 makedepends=('python' 'python2' 'npm' 'yarn' 'git' 'nodejs')
 conflicts=('signal-desktop-beta-bin' 'signal-desktop-bin')
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ prepare() {
   cd "${pkgname}-git-repo"
 
   # Set system electron version
-  _installed_electron_version=$(pacman -Q electron | cut -d' ' -f2 | cut -d'-' -f1)
+  _installed_electron_version=$(pacman -Q electron4 | cut -d' ' -f2 | cut -d'-' -f1)
   sed -E -i 's/"electron": "[0-9.]+"/"electron": "'$_installed_electron_version'"/' package.json
 
   # Allow higher node versions
