@@ -10,7 +10,7 @@ arch=('any')
 license=('GPL')
 
 depends=('gcc-ada' 'gprbuild' 'gnatcoll-core' 'gnatcoll-iconv' 'gnatcoll-gmp')
-makedepends=('git' 'langkit')
+makedepends=('git' 'langkit-git')
 
 provides=('libadalang')
 conflicts=('libadalang')
