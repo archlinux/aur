@@ -1,7 +1,7 @@
 pkgbase = caffe2
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework
 	pkgver = 0.8.2_1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://caffe2.ai/
 	arch = x86_64
 	license = BSD
@@ -100,6 +100,7 @@ pkgbase = caffe2
 pkgname = caffe2
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (cpu only)
 	provides = caffe2-cpu
+	conflicts = python-pytorch
 	conflicts = caffe2-cpu
 	replaces = caffe2-cpu
 
@@ -118,5 +119,6 @@ pkgname = caffe2-cuda
 	depends = cudnn
 	depends = nccl
 	provides = caffe2
+	conflicts = python-pytorch
 	conflicts = caffe2
 

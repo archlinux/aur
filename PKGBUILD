@@ -4,7 +4,7 @@ pkgbase=caffe2
 pkgname=('caffe2' 'caffe2-cuda')
 _pytorchver=1.1.0 # pytorch stable release version
 pkgver="0.8.2_${_pytorchver}"
-pkgrel=2
+pkgrel=3
 pkgdesc='A new lightweight, modular, and scalable deep learning framework'
 arch=('x86_64')
 url='https://caffe2.ai/'
@@ -194,7 +194,7 @@ package_caffe2-cuda() {
     pkgdesc+=' (with cuda support)'
     depends+=('cuda' 'cudnn' 'nccl')
     provides=('caffe2')
-    conflicts=('caffe2')
+    conflicts+=('caffe2')
     
     cd pytorch/build-cuda
     
@@ -204,7 +204,7 @@ package_caffe2-cuda() {
 package_caffe2() {
     pkgdesc+=' (cpu only)'
     provides=('caffe2-cpu')
-    conflicts=('caffe2-cpu')
+    conflicts+=('caffe2-cpu')
     replaces=('caffe2-cpu')
     
     cd pytorch/build-cpu-only
