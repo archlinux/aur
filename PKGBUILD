@@ -10,8 +10,8 @@ arch=('any')
 url="http://ulauncher.io"
 license=('GPL3')
 depends=('gobject-introspection-runtime' 'libappindicator-gtk3' 'libkeybinder3' 'webkit2gtk'
-         "python2-"{dbus,gobject,pyinotify,pysqlite,levenshtein,xdg,websocket-client})
-makedepends=('git' 'yarn' "python2-"{distutils-extra,setuptools})
+         "python-"{dbus,gobject,pyinotify,levenshtein,xdg,websocket-client})
+makedepends=('git' 'yarn' "python-"{distutils-extra,setuptools})
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("ulauncher::git+https://github.com/Ulauncher/Ulauncher.git")
@@ -25,19 +25,19 @@ pkgver() {
 prepare() {
   cd ulauncher
   sed -i "s/%VERSION%/${pkgver%.*.*}/g" setup.py
-  find -iname "*.py" | xargs sed -i 's=\(^#! */usr/bin.*\)python *$=\1python2='
+  find -iname "*.py" | xargs sed -i 's=\(^#! */usr/bin.*\)python3 *$=\1python='
 }
 
 build() {
   cd ulauncher
-  python2 setup.py build
-  sh build-utils/build-preferences.sh
+  python setup.py build
+  ./ul build-preferences
 }
 
 package() {
   cd ulauncher
   install -Dm644 build/share/applications/ulauncher.desktop "$pkgdir/usr/share/applications/ulauncher.desktop"
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   rm -rf "$pkgdir"/usr/share/ulauncher/preferences/{no*,src,bow*,gul*,pack*}
-  find $pkgdir -name "*.pyc" | xargs rm
+  find $pkgdir -type d -name __pycache__ | xargs rm -rf
 }
