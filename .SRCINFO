@@ -1,7 +1,7 @@
 pkgbase = spirv-cross
 	pkgdesc = A tool and library for parsing and converting SPIR-V to other shader languages
 	pkgver = 2019.06.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KhronosGroup/SPIRV-Cross/
 	arch = x86_64
 	license = Apache

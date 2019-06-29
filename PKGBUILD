@@ -6,15 +6,14 @@ _spirv_headers_commit='c4f8f65792d4bf2657ca751904c511bbcf2ac77b'
 
 pkgname=spirv-cross
 pkgver=2019.06.21
-_srcver="${pkgver//./-}"
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool and library for parsing and converting SPIR-V to other shader languages'
 arch=('x86_64')
 url='https://github.com/KhronosGroup/SPIRV-Cross/'
 license=('Apache')
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'python' 'python-nose')
-source=("git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=${_srcver}"
+source=("git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=${pkgver//./-}"
         "git+https://github.com/KhronosGroup/glslang.git#commit=${_glslang_commit}"
         "git+https://github.com/KhronosGroup/SPIRV-Tools.git#commit=${_spirv_tools_commit}"
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=${_spirv_headers_commit}"
@@ -30,6 +29,7 @@ prepare() {
     
     # fix tests with gcc 9.1.0
     ## https://github.com/KhronosGroup/SPIRV-Cross/issues/1038
+    ## https://gcc.gnu.org/bugzilla/show_bug.cgi?id=90947
     patch -Np1 -i "${srcdir}/spirv-cross-workaround-gcc9.1-bug.patch"
     
     mkdir -p build external/{glslang,spirv-tools}-build
