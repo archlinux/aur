@@ -1,7 +1,7 @@
 pkgbase = python-syft
 	pkgdesc = A Library for Private, Secure Deep Learning
 	pkgver = 0.1.19a1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/OpenMined/PySyft
 	arch = any
 	license = Apache-2.0
@@ -13,4 +13,5 @@ pkgname = python-syft
 	depends = python-tblib
 	depends = python-websockets
 	depends = python-websocket-client
+	depends = python-msgpack
 
