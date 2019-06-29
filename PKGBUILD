@@ -1,7 +1,7 @@
 # Maintainer: redfish <redfish@galactica.pw>
 
 pkgname=dat
-pkgver=13.12.2
+pkgver=13.13.1
 pkgrel=1
 pkgdesc="Open protocol for distributed peer-to-peer data exchange"
 arch=(any)
@@ -16,4 +16,4 @@ package(){
   npm install -g --user root --prefix "${pkgdir}/usr" "$srcdir/v${pkgver}.tar.gz"
 }
 
-sha256sums=('a1a7071e8cc0d01691dce8d957cb9a9c7d47a0c54fbd981e4183a6b60d236d38')
+sha256sums=('6b9591230f8c12d6a52f3dddb8fa7c1b67723a15f09510178bbb1e748f2f6970')
