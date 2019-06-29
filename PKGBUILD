@@ -6,7 +6,7 @@
 pkgbase=pjproject
 pkgname=(pjproject python-pjproject)
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source SIP stack and media stack'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://www.pjsip.org/'
@@ -40,12 +40,8 @@ build() {
     --with-external-srtp \
     --with-external-pa \
     --with-external-gsm \
-    --disable-oss \
     --enable-shared \
     --disable-opencore-amr \
-    --disable-v4l2 \
-    --disable-video \
-    --disable-sound \
     "${arch_opts[@]}"
 
   echo "#define PJ_HAS_IPV6 1" >> "$srcdir/$pkgname-$pkgver/pjlib/include/pj/config_site.h"
