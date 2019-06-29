@@ -1,6 +1,6 @@
 pkgbase = usbrelay
 	pkgdesc = Control usb relay - based on hidapi
-	pkgver = 20180805
+	pkgver = 20190629
 	pkgrel = 1
 	url = https://github.com/darrylb123/usbrelay
 	arch = i686

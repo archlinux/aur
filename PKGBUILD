@@ -1,6 +1,6 @@
 # Maintainer: Your Name <linuxboy@fel.hopto.org>
 pkgname=usbrelay
-pkgver=20180805
+pkgver=20190629
 pkgrel=1
 pkgdesc="Control usb relay - based on hidapi"
 url="https://github.com/darrylb123/usbrelay"
