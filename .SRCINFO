@@ -1,13 +1,13 @@
 pkgbase = ff
 	pkgdesc = Simple, human-readable, fast binary file scanner
-	pkgver = 0.4.1
-	pkgrel = 3
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://git.dd86k.space/dd86k/ff
 	arch = x86_64
-	license = MIT
+	license = custom
 	makedepends = clang
-	source = https://git.dd86k.space/dd86k/ff/archive/v0.4.1a.zip
-	sha256sums = 036f81bdfa93c7b5a04573bf51b162ad32d3851147ad9a64fea3444788385972
+	source = https://git.dd86k.space/dd86k/ff/archive/v0.5.0.zip
+	sha256sums = fee3e7a02b985a515ddd835402942c9b931039933382c8058dd8ffef4b81efc9
 
 pkgname = ff
 

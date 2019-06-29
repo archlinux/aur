@@ -1,22 +1,22 @@
 # Maintainer: dax <dev@dax.moe>
 pkgname=ff
-pkgver=0.4.1
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Simple, human-readable, fast binary file scanner"
 arch=('x86_64')
 url="https://git.dd86k.space/dd86k/ff"
-license=('MIT')
+license=('custom')
 depends=()
 makedepends=('clang')
-source=("https://git.dd86k.space/dd86k/$pkgname/archive/v"$pkgver"a.zip")
-sha256sums=('036f81bdfa93c7b5a04573bf51b162ad32d3851147ad9a64fea3444788385972')
+source=("https://git.dd86k.space/dd86k/$pkgname/archive/v"$pkgver".zip")
+sha256sums=('fee3e7a02b985a515ddd835402942c9b931039933382c8058dd8ffef4b81efc9')
 build() {
-	cd "$pkgname-v"$pkgver"a"
+	cd "$pkgname-v"$pkgver""
 	sh ./build-clang.sh
 }
 
 package() {
-	cd "$pkgname-v"$pkgver"a"
+	cd "$pkgname-v"$pkgver""
 	install -D ff "$pkgdir"/usr/bin/ff
 	install -D -m 0644 LICENSE "$pkgdir"/usr/share/licenses/ff/LICENSE
 	install -D -m 0644 README.md "$pkgdir"/usr/share/doc/ff/README.md
