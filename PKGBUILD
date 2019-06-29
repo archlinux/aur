@@ -1,21 +1,21 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: Morguldir <morguldir@protonmail.com>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Ivan Semkin (ivan at semkin dot ru)
 # Contributor: Martin Weinelt <hexa@darmstadt.ccc.de>
  
-appname=Quaternion
+_appname=Quaternion
 _pkgname=quaternion
 pkgname=quaternion-git
-libname=libQMatrixClient
+_soname=libQMatrixClient
 _libname=libqmatrixclient
-pkgver=0.0.9.4.beta1.r17.gb063aad
-_libqmatrixclient_pkgver=0.5.0
+pkgver=0.0.9.4a.r36.g05c1819
 pkgrel=1
 pkgdesc='Qt5-based IM client for the Matrix protocol'
 url='https://matrix.org/docs/projects/client/quaternion.html'
 arch=('i686' 'x86_64')
 license=(GPL3)
-depends=(qt5-declarative hicolor-icon-theme)
-makedepends=(cmake)
+depends=(qt5-declarative hicolor-icon-theme qt5-multimedia)
+makedepends=(cmake qt5-tools)
 provides=(quaternion)
 conflicts=(quaternion-git)
 source=('git://github.com/QMatrixClient/Quaternion'
@@ -25,29 +25,29 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$appname"
+  cd "$_appname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cp -r ${_libname}/* ${srcdir}/${appname}/lib/
+  cp -r ${_libname}/* ${srcdir}/${_appname}/lib/
 }
 
 build() {
-  mkdir ${appname}/build_dir -p
-  cd ${appname}/build_dir
+  mkdir ${_appname}/build_dir -p
+  cd ${_appname}/build_dir
   cmake .. -DBUILD_SHARED_LIBS:BOOL=ON -DUSE_INTREE_LIBQMC=true
   cmake --build . --target all
 }
  
 package() {
-  cd ${appname}
+  cd ${_appname}
 
   # The binary
   install -Dm755 "build_dir/${_pkgname}" -t "${pkgdir}/usr/bin/"
 
   # .desktop file
-  install -Dm644 "linux/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -Dm644 "linux/com.github.quaternion.desktop" -t "${pkgdir}/usr/share/applications/"
 
   # Icons
   install -Dm644 "icons/quaternion/16-apps-quaternion.png" -t "${pkgdir}/usr/share/icons/hicolor/16x16/apps/"
@@ -60,8 +60,8 @@ package() {
 
   # The lib
   mkdir ${pkgdir}/usr/lib
-  mv build_dir/lib/${libname}.so.0.5.0 ${pkgdir}/usr/lib/
-  ln -s /usr/lib/${libname}.so.0.5.0 ${pkgdir}/usr/lib/${libname}.so.0
-  ln -s /usr/lib/${libname}.so.0.5.0 ${pkgdir}/usr/lib/${libname}.so
+  cp build_dir/lib/${_soname}.so.0.*.0 ${pkgdir}/usr/lib/
+  ln -s /usr/lib/${_soname}.so.0.*.0 ${pkgdir}/usr/lib/${_soname}.so.0
+  ln -s /usr/lib/${_soname}.so.0.*.0 ${pkgdir}/usr/lib/${_soname}.so
 }
 # vim:set ts=2 sw=2 et:
