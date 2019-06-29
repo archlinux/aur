@@ -1,0 +1,22 @@
+pkgbase = python-pyhelm
+	pkgdesc = Python bindings for Helm
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/flaper87/pyhelm
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python-gitpython
+	depends = python-grpcio
+	depends = python-grpcio-tools
+	depends = python-protobuf
+	depends = python-supermutes
+	depends = python-requests
+	depends = python-pyaml
+	depends = python-boto3
+	depends = python-botocore
+	source = https://files.pythonhosted.org/packages/source/p/pyhelm/pyhelm-0.1.5.tar.gz
+	sha256sums = ff389eb0888ee3f90c84e3f4d6eb3f6d0a8c339f9debc907bae65ba5f670a772
+
+pkgname = python-pyhelm
+
