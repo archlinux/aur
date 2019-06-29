@@ -1,0 +1,27 @@
+pkgbase = mingw-w64-kdoctools
+	pkgdesc = Qt library that implements the Open Collaboration Services API (mingw-w64)
+	pkgver = 5.45.0
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = any
+	groups = mingw-w64-kf5
+	license = LGPL
+	makedepends = mingw-w64-extra-cmake-modules
+	makedepends = perl-uri
+	makedepends = mingw-w64-ki18n
+	makedepends = mingw-w64-qt5-tools
+	depends = mingw-w64-karchive
+	depends = mingw-w64-docbook-wrapper
+	depends = docbook-xsl
+	depends = docbook-xml>=4.5
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://download.kde.org/stable/frameworks/5.45/kdoctools-5.45.0.tar.xz
+	source = http://download.kde.org/stable/frameworks/5.45/kdoctools-5.45.0.tar.xz.sig
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = a5322f7d09aa643d60738f3b24bda2d3c129cc9aa37856acf5bedba3929d4b2c
+	sha256sums = SKIP
+
+pkgname = mingw-w64-kdoctools
+
