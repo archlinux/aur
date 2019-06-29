@@ -3,7 +3,7 @@
 # https://github.com/zellio/pkgbuild
 
 pkgname=kops
-pkgver=1.12.1
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management"
 arch=('x86_64')
