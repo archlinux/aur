@@ -10,7 +10,7 @@ url="https://www.iti.gov.br/repositorio/repositorio-ac-raiz"
 license=('unknown')
 depends=('ca-certificates-utils')
 makedepends=('unzip')
-source=("icpbr_certs-${pkgver}-${pkgrel}.zip::https://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip")
+source=("icpbr_certs-${pkgver}-${pkgrel}.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip")
 sha512sums=('ba56892fb133fd73b0b175cf457e20337f018f14b1ea49b0b5c8ba3ac812be5e7ecbbc70b02704ad7b221fea6a66d80f3ac5702c29d890294d7880a25e9877d7')
 
 package() {
