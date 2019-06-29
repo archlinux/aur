@@ -2,13 +2,13 @@
 
 pkgname=reposurgeon
 pkgver=3.46
-pkgrel=2
+pkgrel=3
 pkgdesc="Performs surgery on version control repositories."
 arch=('x86_64')
 url="http://www.catb.org/esr/$pkgname/"
 license=('BSD')
 depends=('pypy')
-makedepends=('asciidoc' 'go' 'xmlto')
+makedepends=('asciidoc' 'go' 'git' 'xmlto')
 optdepends=('bitkeeper'
             'bzr'
             'cvs-fast-export'
