@@ -41,6 +41,10 @@ _scriptsdir=$_installpath/ccs/install_scripts
 build() {
     cd $srcdir/${_archive}
 
+    echo ">>> Tip: to avoid waiting for compression, build an uncompresed tar archive:"
+    echo ">>>     PKGEXT='.tar' makepkg"
+    echo
+
     echo ">>> Executing installer. You can monitor progress with:"
     echo ">>>     tail -f ${srcdir}/${_installpath}/ccs/install_logs/*/ccs_setup_${pkgver}_install.log"
 
