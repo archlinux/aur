@@ -1,0 +1,24 @@
+pkgbase = ros-catkin
+	pkgdesc = Low-level build system macros and infrastructure for ROS.
+	pkgver = 0.7.18
+	pkgrel = 1
+	url = http://www.ros.org/wiki/catkin
+	arch = any
+	license = BSD
+	checkdepends = python-mock
+	makedepends = cmake
+	makedepends = python-catkin
+	makedepends = python-empy
+	makedepends = python
+	depends = python-nose
+	depends = gtest
+	depends = python-catkin
+	depends = python-empy
+	depends = gmock
+	depends = python
+	depends = ros-build-tools
+	source = ros-catkin-0.7.18.tar.gz::https://github.com/ros/catkin/archive/0.7.18.tar.gz
+	sha256sums = b6a7428944911a011b0c3b0e465f2db04d219ce5f72cf3e2f76194dd055f1f49
+
+pkgname = ros-catkin
+
