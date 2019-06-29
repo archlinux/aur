@@ -11,6 +11,7 @@ sha256sums=('ff389eb0888ee3f90c84e3f4d6eb3f6d0a8c339f9debc907bae65ba5f670a772')
 arch=('any')
 makedepends=('python-setuptools')
 depends=(
+  python
   python-gitpython
   python-grpcio
   python-grpcio-tools

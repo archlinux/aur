@@ -6,6 +6,7 @@ pkgbase = python-pyhelm
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
+	depends = python
 	depends = python-gitpython
 	depends = python-grpcio
 	depends = python-grpcio-tools
