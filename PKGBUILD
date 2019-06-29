@@ -2,7 +2,9 @@
 # Contributor: Kai Geißdörfer <kai.s.geissdoerfer at campus.tu-berlin.de>
 
 pkgname=ccstudio
-pkgver=9.0.1.00004
+_semver=9.1.0
+_bldver=00010
+pkgver=$_semver.$_bldver
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
 arch=('x86_64')
@@ -20,7 +22,7 @@ optdepends=('ttf-dejavu')
 
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS${pkgver}_linux-x64
-source=("http://software-dl.ti.com/ccs/esd/CCSv9/CCS_9_0_0/exports/${_archive}.tar.gz"
+source=("http://software-dl.ti.com/ccs/esd/CCSv9/CCS_$(echo $_semver | sed 's@[.]@_@g')/exports/${_archive}.tar.gz"
         "LICENSE"
         "61-msp430uif.rules"
         "71-sd-permissions.rules")
@@ -29,7 +31,7 @@ install=$pkgname.install
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
-_desktop="Code Composer Studio 9.0.1.desktop"
+_desktop="Code Composer Studio ${_semver}.desktop"
 
 _destdir=opt
 _installdir=installdir
@@ -90,7 +92,7 @@ package() {
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('f98cd3f74f14bf7619df9c799c01ce47c447d72b1ef7d7318d16b489618abf1e'
+sha256sums=('d454e605a9839a06f80267fc30b3703017edb0cfed2bf4a5f932846cc49e0af9'
             'adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076'
             '97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db'
             'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a')
