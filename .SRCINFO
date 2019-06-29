@@ -7,7 +7,8 @@ pkgbase = iris-flower-wayland
 	arch = x86_64
 	license = GPL3
 	depends = ddccontrol
-	source = https://github.com/ueberchild/iris-flower-wayland/blob/master/iris-flower-wayland.c
+	source = git+https://github.com/ueberchild/iris-flower-wayland.git
+	md5sums = SKIP
 
 pkgname = iris-flower-wayland
 

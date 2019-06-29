@@ -6,14 +6,15 @@ arch=('i686' 'x86_64')
 url="https://github.com/ueberchild/iris-flower-wayland"
 license=('GPL3')
 depends=('ddccontrol')
-source=("https://github.com/ueberchild/iris-flower-wayland/blob/master/iris-flower-wayland.c")
+source=("git+https://github.com/ueberchild/iris-flower-wayland.git")
+md5sums=('SKIP')
 
 build() {
-	cd "$srcdir/"
+	cd "${srcdir}/$pkgname/"
 	cc -Wall -std=c99 -o iris-flower-wayland iris-flower-wayland.c
 }
 
 package() {
-  cd "$srcdir/"
-  install -D iris-flower-wayland "$pkgdir/usr/bin/iris-flower-wayland"
+    cd "${srcdir}/$pkgname/"
+	install -D iris-flower-wayland "$pkgdir/usr/bin/iris-flower-wayland"
 }
