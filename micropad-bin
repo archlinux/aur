@@ -1,2 +1,5 @@
 #!/bin/sh
-electron --asar /opt/µPad/resources/app.asar
+electron --asar /opt/µPad/resources/app.asar &
+disown %1
+exit
+
