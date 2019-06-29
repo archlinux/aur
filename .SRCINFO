@@ -1,6 +1,6 @@
 pkgbase = gnatcoll-gmp-git
 	pkgdesc = GNAT Components Collection - Bindings to GMP
-	pkgver = r2778.93907d7d
+	pkgver = r2796.8160d1d9
 	pkgrel = 1
 	url = https://github.com/AdaCore/gnatcoll-bindings/
 	arch = i686
