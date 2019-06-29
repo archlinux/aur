@@ -6,15 +6,15 @@ arch=('i686' 'x86_64')
 url="https://github.com/ueberchild/iris-flower"
 license=('GPL3')
 makedepends=('libx11' 'libxrandr')
-source=("https://github.com/ueberchild/iris-flower/blob/master/iris-flower.c")
-md5sums=('42ca45d3af1d540c77b61c11411df95a')
+source=("git+https://github.com/ueberchild/iris-flower.git")
+md5sums=('SKIP')
 
 build() {
-	cd "$srcdir/"
+	cd "$pkgname/"
 	cc -Wall -std=c99 -o iris-flower iris-flower.c -lX11 -lXrandr
 }
 
 package() {
-  cd "$srcdir/"
-  install -D iris-flower "$pkgdir/usr/bin/iris-flower"
+	cd "$pkgname/"
+	install -D iris-flower "$pkgdir/usr/bin/iris-flower"
 }

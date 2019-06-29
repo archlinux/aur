@@ -6,9 +6,10 @@ pkgbase = iris-flower
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = libx11
-	depends = libxrandr
-	source = https://github.com/ueberchild/iris-flower/blob/master/iris-flower.c
+	makedepends = libx11
+	makedepends = libxrandr
+	source = git+https://github.com/ueberchild/iris-flower.git
+	md5sums = SKIP
 
 pkgname = iris-flower
 
