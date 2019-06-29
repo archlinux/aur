@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=langkit-git
-pkgver=r4926.893bb29e
+pkgver=r6135.442192c9
 pkgrel=1
 
 pkgdesc='Compiler for syntactic and semantic language analysis libraries'
@@ -45,17 +45,14 @@ build()
 
     # Build the Langkit_Support library, used by all Langkit-generated
     # libraries.
-    python2 scripts/build-langkit_support.py generate
-    python2 scripts/build-langkit_support.py \
-        --disable-static --enable-shared \
-        build --build-mode=prod --gargs="-R"
-
+    #
     # TODO: build & install static libraries. For now, this fails because
     # auto-initialized static libraries are built using partial linking (ld's
     # -r option), which conflicts with GCC's by default -pie option.
-    true || python2 scripts/build-langkit_support.py -vdebug \
-        --enable-static --disable-shared \
-        build --build-mode=prod
+    python2 scripts/build-langkit_support.py generate
+    python2 scripts/build-langkit_support.py \
+        --library-types relocatable \
+        build --build-mode=prod --gargs="-R"
 }
 
 package()
@@ -64,6 +61,6 @@ package()
     python2 setup.py install --root="$pkgdir"
 
     python2 scripts/build-langkit_support.py \
-        --disable-static --enable-shared \
+        --library-types relocatable \
         install "$pkgdir/usr"
 }
