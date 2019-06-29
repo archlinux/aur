@@ -7,7 +7,7 @@ url="https://github.com/ueberchild/iris-flower"
 license=('GPL3')
 makedepends=('libx11' 'libxrandr')
 source=("git+https://github.com/ueberchild/iris-flower.git")
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 build() {
 	cd "${srcdir}/$pkgname/"
