@@ -5,7 +5,7 @@
 
 pkgname=lxd-git
 _pkgname=lxd
-pkgver=3.8.r41.6556fcb5
+pkgver=3.14.r151.4f54c17ea
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
@@ -46,9 +46,9 @@ build() {
   export GOPATH="${srcdir}/go"
   cd "${GOPATH}/src/${_lxd}"
   make deps
-  export CGO_CFLAGS="-I${GOPATH}/deps/sqlite/ -I${GOPATH}/deps/dqlite/include/"
-  export CGO_LDFLAGS="-L${GOPATH}/deps/sqlite/.libs/ -L${GOPATH}/deps/dqlite/.libs/"
-  export LD_LIBRARY_PATH="${GOPATH}/deps/sqlite/.libs/:${GOPATH}/deps/dqlite/.libs/"
+  export CGO_CFLAGS="-I${GOPATH}/deps/sqlite/ -I${GOPATH}/deps/libco/ -I${GOPATH}/deps/raft/include/ -I${GOPATH}/deps/dqlite/include/"
+  export CGO_LDFLAGS="-L${GOPATH}/deps/sqlite/.libs/ -L${GOPATH}/deps/libco/ -L${GOPATH}/deps/raft/.libs -L${GOPATH}/deps/dqlite/.libs/"
+  export LD_LIBRARY_PATH="${GOPATH}/deps/sqlite/.libs/:${GOPATH}/deps/libco/:${GOPATH}/deps/raft/.libs/:${GOPATH}/deps/dqlite/.libs/"
   make
 }
 
@@ -81,9 +81,10 @@ package() {
   install -D -m644 "${srcdir}/go/src/${_lxd}/doc/"* \
     "${pkgdir}/usr/share/doc/lxd/"
 
-  # Bash completions
+  # helper scripts
   install -p -m644 "${srcdir}/go/src/${_lxd}/scripts/bash/lxd-client" \
     "${pkgdir}/usr/share/bash-completion/completions/lxd"
+  install -p -m644 "${srcdir}/go/src/${_lxd}/scripts/empty-lxd.sh" "${pkgdir}/usr/lib/lxd"
 }
 
 # vim:set ts=2 sw=2 et:
