@@ -1,7 +1,7 @@
 # Maintainer: schw0reismus <schw0reismus@protonmail.com>
 
 pkgname=foliate
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A simple and modern GTK eBook reader"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('hyphen: Auto-hyphenation support'
 source=(https://github.com/johnfactotum/${pkgname}/archive/${pkgver}.tar.gz)
 provides=("$pkgname")
 conflicts=("$pkgname-git")
-md5sums=('4523bdbe7a6a6660e88f8901ce700899')
+md5sums=('360ba571e50f8a731d4bf2a195bd38e8')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
