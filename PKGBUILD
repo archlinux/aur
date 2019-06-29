@@ -2,12 +2,12 @@
 
 pkgname=keeweb
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop password manager compatible with KeePass databases"
 arch=('any')
 url="https://keeweb.info"
 license=('MIT')
-depends=('electron')
+depends=('electron4')
 makedepends=(
 	'asar'
 	'git'
@@ -26,7 +26,7 @@ source=(
 
 sha1sums=('SKIP'
           'a55c2ed276c6073b7954452cdc88209633d51ace'
-          'c925527f25e732d58438ee16b1c93b33be7bf9c4'
+          '388e1757a41a3b017833af3a20fd1e2c3c23d36c'
           '914afdd9651e71091d4b927cabd25d75786ec7d4')
 
 prepare() {
