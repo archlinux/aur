@@ -23,19 +23,14 @@ makedepends=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CauldronDevelopmentLLC/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('f5203d2bbd32c4e347a8f79122e57b2deea68e6c5bd4f0be4087c4d62a31c8a4')
 
-prepare() {
-  cd "CAMotics-$pkgver"
-  sed -i '24 i env.Append(LINKFLAGS = os.environ.get("LDFLAGS"))' SConstruct
-}
-
 build() {
   cd "CAMotics-$pkgver"
-  CBANG_HOME=/opt/cbang scons
+  CBANG_HOME=/opt/cbang scons linkflags=$LDFLAGS
 }
 
 package() {
   cd "CAMotics-$pkgver"
-  CBANG_HOME=/opt/cbang scons install install_prefix="$pkgdir/usr"
+  CBANG_HOME=/opt/cbang scons install install_prefix="$pkgdir/usr" linkflags=$LDFLAGS
 
   install -d "$pkgdir/usr/share/$pkgname"/tpl_lib
   cp -a tpl_lib/ "$pkgdir/usr/share/$pkgname"
