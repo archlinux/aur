@@ -10,12 +10,12 @@ source=("git+https://github.com/ueberchild/iris-flower.git")
 md5sums=(SKIP)
 
 build() {
-	cd "$pkgname/"
+	cd "${srcdir}/$pkgname/"
 	cc -Wall -std=c99 -o iris-flower iris-flower.c -lX11 -lXrandr
 }
 
 package() {
-	cd "$pkgname/"
+	cd "${srcdir}/$pkgname/"
 	install -D iris-flower "$pkgdir/usr/bin/iris-flower"
 }
 
