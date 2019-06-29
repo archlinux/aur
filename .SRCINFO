@@ -8,7 +8,6 @@ pkgbase = trellis-git
 	license = custom:ISC
 	makedepends = git
 	makedepends = cmake
-	makedepends = rsync
 	makedepends = boost
 	depends = boost-libs
 	depends = python
