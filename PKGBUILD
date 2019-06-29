@@ -12,11 +12,11 @@ pkgrel=1
 license=('GPL3')
 pkgdesc='Private messenger for the desktop'
 depends=('electron' 'openssl-1.0')
-makedepends=('python' 'python2' 'npm' 'yarn' 'git' 'nodejs-lts-dubnium')
+makedepends=('python' 'python2' 'npm' 'yarn' 'git' 'nodejs')
 conflicts=('signal-desktop-beta-bin' 'signal-desktop-bin')
 arch=('i686' 'x86_64')
 url='https://github.com/signalapp/Signal-Desktop'
-source=("${pkgname}-git-repo::git+https://github.com/signalapp/Signal-Desktop.git#tag=v${pkgver/_/-}"
+source=("${pkgname}-git-repo::git+https://github.com/signalapp/Signal-Desktop.git#tag=v${pkgver}"
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}-tray.desktop"
@@ -34,8 +34,8 @@ prepare() {
   _installed_electron_version=$(pacman -Q electron | cut -d' ' -f2 | cut -d'-' -f1)
   sed -E -i 's/"electron": "[0-9.]+"/"electron": "'$_installed_electron_version'"/' package.json
 
-  # Allow higher node minor versions
-  sed -i 's/"node": "/&^/' package.json
+  # Allow higher node versions
+  sed -i 's/"node": "/&>=/' package.json
 
   # Download modules
   yarn install
