@@ -1,26 +1,24 @@
 pkgbase = higan-git
-	pkgdesc = Multisystem emulator by Byuu
-	pkgver = 105_tr1
+	pkgdesc = Nintendo multi-system emulator by Byuu
+	pkgver = 106.r221.g327a19dc
 	pkgrel = 1
 	url = https://byuu.org
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	makedepends = git
+	makedepends = mesa
 	depends = libpulse
 	depends = gtksourceview2
-	depends = sdl
+	depends = sdl2
 	depends = libxv
 	depends = libao
+	depends = libgl
 	depends = openal
 	provides = higan
 	conflicts = higan
 	source = git+https://gitlab.com/higan/higan.git
-	source = allow_root.patch
-	source = getver.patch
-	md5sums = SKIP
-	md5sums = 5aaffc97c4c58e95b3f1db33e8184518
-	md5sums = 9fdbe0c87e2e89c0f53b96bf313cd090
+	sha256sums = SKIP
 
 pkgname = higan-git
 

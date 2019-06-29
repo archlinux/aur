@@ -1,5 +1,0 @@
-diff -Nura higan/getver.sh higan_new/getver.sh
---- higan/getver.sh	1969-12-31 21:00:00.000000000 -0300
-+++ higan_new/getver.sh	2017-06-17 15:06:09.345744032 -0300
-@@ -0,0 +1 @@
-+printf "%s\n" $(grep Version higan/emulator/emulator.hpp | head -n 1 | sed -E 's/(.*)=(.*)/\2/' | tr -d " \t\n\r\";" | sed -r 's/[(]/_/' | sed 's/[)]//')

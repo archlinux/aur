@@ -1,52 +1,45 @@
-# Maintainer: Salvador Pardiñas <darkfm@vera.com.uy>
-pkgname=higan-git
-pkgver=105_tr1
-pkgrel=1
-pkgdesc="Multisystem emulator by Byuu"
-arch=('x86_64' 'i686')
-url="https://byuu.org"
-license=('GPL3')
-groups=()
-depends=('libpulse' 'gtksourceview2' 'sdl' 'libxv' 'libao' 'openal')
-makedepends=('git')
-provides=('higan')
-conflicts=('higan')
-replaces=()
-backup=()
-options=()
-source=(
-	'git+https://gitlab.com/higan/higan.git'
-	'allow_root.patch'
-	'getver.patch')
-noextract=()
-md5sums=('SKIP'
-         '5aaffc97c4c58e95b3f1db33e8184518'
-         '9fdbe0c87e2e89c0f53b96bf313cd090')
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Salvador Pardiñas <darkfm@vera.com.uy>
 
-prepare() {
-	cd $srcdir/higan
-	patch -Np1 -i "${srcdir}/allow_root.patch"
-	patch -Np1 -i "${srcdir}/getver.patch"
-	chmod +x getver.sh
-}
+pkgname=higan-git
+pkgver=106.r221.g327a19dc
+pkgrel=1
+pkgdesc="Nintendo multi-system emulator by Byuu"
+arch=(x86_64 i686)
+url="https://byuu.org"
+license=(GPL3)
+depends=(libpulse gtksourceview2 sdl2 libxv libao libgl openal)
+makedepends=(git mesa)
+provides=(higan)
+conflicts=(higan)
+source=("git+https://gitlab.com/higan/higan.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/higan"
-	./getver.sh
+  cd higan
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/higan"
-	make -C icarus compiler=g++
-	make -C higan compiler=g++
+  cd higan
+  make -C higan target=higan
+  make -C icarus
 }
 
 package() {
-	cd "$srcdir/higan"
-	mkdir -p "$pkgdir/usr/bin"
-	mkdir -p "$pkgdir/usr/share/applications"
-	make -C icarus prefix="$pkgdir/usr" install
-	make -C higan prefix="$pkgdir/usr" install
-	chmod -R 777 "$pkgdir/usr/share/higan"
-	chmod -R 777 "$pkgdir/usr/share/icarus"
+  cd higan
+
+  install -Dm 755 higan/out/higan -t "${pkgdir}"/usr/bin/
+  install -Dm 644 higan/target-higan/resource/higan.desktop -t "${pkgdir}"/usr/share/applications/
+  install -Dm 644 higan/target-higan/resource/higan.png -t "${pkgdir}"/usr/share/pixmaps/
+  cp -dr --no-preserve='ownership' higan/System "${pkgdir}"/usr/share/higan
+
+  install -Dm 755 icarus/out/icarus -t "${pkgdir}"/usr/bin/
+  install -Dm 644 icarus/data/icarus.desktop -t "${pkgdir}"/usr/share/applications/
+  install -Dm 644 icarus/data/icarus.png -t "${pkgdir}"/usr/share/pixmaps/
+  install -dm 755 "${pkgdir}"/usr/share/icarus
+  cp -dr --no-preserve='ownership' icarus/Database "${pkgdir}"/usr/share/icarus/
+
+  install -dm 644 "${pkgdir}"/usr/share/higan/Video\ Shaders
+  cp -dr --no-preserve='ownership'  shaders/*.shader "${pkgdir}"/usr/share/higan/Video\ Shaders
 }
