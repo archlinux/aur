@@ -2,9 +2,9 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=inxi-git
-pkgver=3.0.30.r0.gb8dc62a9
+pkgver=3.0.34.r1.g24667eb4
 pkgrel=1
-pkgdesc="script to get system information (git version)"
+pkgdesc="Full featured CLI system information tool"
 arch=(any)
 url="https://github.com/smxi/inxi"
 license=(GPL3)

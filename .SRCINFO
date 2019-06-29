@@ -1,6 +1,6 @@
 pkgbase = inxi-git
-	pkgdesc = script to get system information (git version)
-	pkgver = 3.0.30.r0.gb8dc62a9
+	pkgdesc = Full featured CLI system information tool
+	pkgver = 3.0.34.r1.g24667eb4
 	pkgrel = 1
 	url = https://github.com/smxi/inxi
 	arch = any
