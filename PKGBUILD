@@ -7,7 +7,7 @@ pkgdesc="Low-level build system macros and infrastructure for ROS."
 url='http://www.ros.org/wiki/catkin'
 pkgver='0.7.18'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 makedepends=(
@@ -68,17 +68,19 @@ check() {
 package() {
 	cd "${srcdir}/build"
 	make DESTDIR="${pkgdir}" install
+
+	mkdir -p "${pkgdir}/usr/share/${pkgname}/"
 	mv "${pkgdir}/usr/etc" "${pkgdir}/etc"
-	rm "${pkgdir}/usr/.catkin"
-	rm "${pkgdir}/usr/_setup_util.py"
-	rm "${pkgdir}/usr/env.sh"
-	rm "${pkgdir}/usr/setup.bash"
-	rm "${pkgdir}/usr/local_setup.bash"
-	rm "${pkgdir}/usr/setup.sh"
-	rm "${pkgdir}/usr/local_setup.sh"
-	rm "${pkgdir}/usr/setup.zsh"
-	rm "${pkgdir}/usr/local_setup.zsh"
-	rm "${pkgdir}/usr/.rosinstall"
+	mv "${pkgdir}/usr/.catkin" "${pkgdir}/usr/share/${pkgname}/.catkin"
+	mv "${pkgdir}/usr/_setup_util.py" "${pkgdir}/usr/share/${pkgname}/_setup_util.py"
+	mv "${pkgdir}/usr/env.sh" "${pkgdir}/usr/share/${pkgname}/env.sh"
+	mv "${pkgdir}/usr/setup.bash" "${pkgdir}/usr/share/${pkgname}/setup.bash"
+	mv "${pkgdir}/usr/local_setup.bash" "${pkgdir}/usr/share/${pkgname}/local_setup.bash"
+	mv "${pkgdir}/usr/setup.sh" "${pkgdir}/usr/share/${pkgname}/setup.sh"
+	mv "${pkgdir}/usr/local_setup.sh" "${pkgdir}/usr/share/${pkgname}/local_setup.sh"
+	mv "${pkgdir}/usr/setup.zsh" "${pkgdir}/usr/share/${pkgname}/setup.zsh"
+	mv "${pkgdir}/usr/local_setup.zsh" "${pkgdir}/usr/share/${pkgname}/local_setup.zsh"
+	mv "${pkgdir}/usr/.rosinstall" "${pkgdir}/usr/share/${pkgname}/.rosinstall"
 
 	install -Dm644 "${srcdir}/${_dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

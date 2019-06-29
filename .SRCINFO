@@ -1,7 +1,7 @@
 pkgbase = ros-catkin
 	pkgdesc = Low-level build system macros and infrastructure for ROS.
 	pkgver = 0.7.18
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/catkin
 	arch = any
 	license = BSD
