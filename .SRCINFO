@@ -1,11 +1,12 @@
 pkgbase = python-supermutes
 	pkgdesc = A collection of super mutables
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexcouper/supermutes
 	arch = any
 	license = none
 	makedepends = python-setuptools
+	depends = python
 	source = https://files.pythonhosted.org/packages/source/s/supermutes/supermutes-0.2.5.tar.gz
 	sha256sums = c4a3f9699c48df241d08eab218796e3056af78fafcf41bc2b0ddfe23d64831e4
 
