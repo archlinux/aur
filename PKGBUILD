@@ -103,7 +103,7 @@ package ()
   ./$_setupsh -d $pkgdir/$_installdir
 
   # Strip package build path from prefix path
-  sed -i "s@\(relocate_sdk.py\s\+\)$pkgdir@\1@g" relocate_sdk.sh
+  sed -i "s@\(relocate_sdk.py\s\+\)${pkgdir}${_installdir} ${pkgdir}${_installdir}@\1 ${_installdir} ${_installdir}@g" relocate_sdk.sh
   ./relocate_sdk.sh
 
   rm zephyr-sdk-*-hosttools-standalone-*.sh
