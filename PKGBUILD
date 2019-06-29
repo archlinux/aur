@@ -1,7 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
@@ -30,10 +30,10 @@ build() {
 }
 
 # Matches per-toolchain commands in $_installdir/setup.sh
-_TC_CMD="tar -C \\\$target_sdk_dir -xf .\/__TC__.tar.bz2 > \/dev\/null &"
+_TC_CMD="tar -C \\\$target_sdk_dir \\(-[A-Za-z0-9]\\+\\)* .\/__TC__.tar.bz2.*"
 
 _list_toolchains() {
-  echo $(sed -n "s@^$(echo $_TC_CMD | sed 's/__TC__/\\(.*\\)/g')@\1@p" $1 | sort)
+  echo $(sed -n "s@^$(echo $_TC_CMD | sed 's/__TC__/\\(.*\\)/g')@\2@p" $1 | sort)
 }
 
 package ()
@@ -45,7 +45,7 @@ package ()
 
   # Add a flag to not relocate executables, because the path to pkgdir is invalid after installation
   # -R disables relocation, -S saves the relocation script so that it can be run manually.
-  sed -i 's#^\(\./zephyr-sdk-x86_64-hosttools-standalone-[0-9.]\+sh\)#\1 -R -S#' $pkgdir/$_installdir/setup.sh
+  sed -i 's#^\(\./zephyr-sdk-x86_64-hosttools-standalone-[0-9.]\+sh\)#\1 -R -S#' $pkgdir/$_installdir/$_setupsh
 
   # Install hosttools always, but let the toolchains be selectable below:
   ALL_TOOLCHAINS=($(_list_toolchains $pkgdir/$_installdir/$_setupsh))
@@ -127,5 +127,5 @@ package ()
 # More info: https://docs.zephyrproject.org/latest/boards/arm/qemu_cortex_m3/doc/board.html
 
 
-sha256sums=('614e6d8e10842e899c513539c8b971caee4b79a14de3ebab38dbe2c120340e88'
+sha256sums=('cdf1b036acd6692a700c1b4e3e08983d1363cc802a9f79533c9f15ee72c40b9c'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
