@@ -1,11 +1,12 @@
-# Maintainer: hdhoang <arch@hdhoang.space>
+# Maintainer: jkl
+# Contributor: hdhoang <arch@hdhoang.space>
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.4.3
-pkgrel=9
+pkgrel=10
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.15.9
+_nginxver=1.17.1
 
 pkgdesc='Fancy indexes module for the Nginx web server'
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,7 +19,8 @@ source=(
 	https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
 	https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz
 )
-sha256sums=('SKIP' 'SKIP'
+sha256sums=('6f1825b4514e601579986035783769c456b888d3facbab78881ed9b58467e73e'
+            'SKIP'
             '81698fb0c1ec9f906ce308c055d5d248085caf390f4b92516c1ec93f87c886d4')
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 
