@@ -6,7 +6,7 @@
 pkgname=lxd-git
 _pkgname=lxd
 pkgver=3.14.r151.4f54c17ea
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
@@ -19,6 +19,7 @@ optdepends=('lvm2: for lvm2 support'
             'thin-provisioning-tools: for thin provisioning support'
             'btrfs-progs: for btrfs storage driver support'
             'ceph: for ceph storage driver support'
+            'jq: needed by empty-lxd.sh script'
 )
 options=('!strip' '!emptydirs')
 source=("git+https://github.com/lxc/lxd.git"
@@ -64,6 +65,8 @@ package() {
   patchelf --set-rpath "/usr/lib/lxd" "${pkgdir}/usr/bin/lxd"
   cp --no-dereference --preserve=timestamps \
     "${go_deps_dir}/sqlite/.libs/"libsqlite3.so* \
+    "${go_deps_dir}/libco/"libco.so* \
+    "${go_deps_dir}/raft/.libs/"libraft.so* \
     "${go_deps_dir}/dqlite/.libs/"libdqlite.so* \
     "${pkgdir}/usr/lib/lxd"
   patchelf --set-rpath "/usr/lib/lxd" "${pkgdir}/usr/lib/lxd/libdqlite.so"
@@ -84,7 +87,7 @@ package() {
   # helper scripts
   install -p -m644 "${srcdir}/go/src/${_lxd}/scripts/bash/lxd-client" \
     "${pkgdir}/usr/share/bash-completion/completions/lxd"
-  install -p -m644 "${srcdir}/go/src/${_lxd}/scripts/empty-lxd.sh" "${pkgdir}/usr/lib/lxd"
+  install -p -m755 "${srcdir}/go/src/${_lxd}/scripts/empty-lxd.sh" "${pkgdir}/usr/lib/lxd"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,7 +1,7 @@
 pkgbase = lxd-git
 	pkgdesc = Daemon based on liblxc offering a REST API to manage containers
 	pkgver = 3.14.r151.4f54c17ea
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lxc/lxd
 	arch = x86_64
 	license = APACHE
@@ -17,6 +17,7 @@ pkgbase = lxd-git
 	optdepends = thin-provisioning-tools: for thin provisioning support
 	optdepends = btrfs-progs: for btrfs storage driver support
 	optdepends = ceph: for ceph storage driver support
+	optdepends = jq: needed by empty-lxd.sh script
 	provides = lxd
 	conflicts = lxd
 	conflicts = lxd-lts
