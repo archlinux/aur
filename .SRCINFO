@@ -1,6 +1,6 @@
 pkgbase = edi
 	pkgdesc = EFL based IDE.
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://www.enlightenment.org/
 	arch = i686
@@ -8,11 +8,12 @@ pkgbase = edi
 	license = BSD
 	makedepends = meson
 	makedepends = ninja
+	makedepends = check
 	depends = efl
 	depends = bear
 	provides = edi
-	source = https://github.com/Enlightenment/edi/releases/download/v0.7.0/edi-0.7.0.tar.xz
-	sha256sums = 4b605053a5737f250ab2dc46d208f2fb20d91e05fbdd8dbf64531fa509709b59
+	source = https://github.com/Enlightenment/edi/releases/download/v0.7.1/edi-0.7.1.tar.xz
+	sha256sums = 6c7ee847cac6c7b074cb70a3bca00bee5ab4aae37a7b6eb6bad4c15965950704
 
 pkgname = edi
 
