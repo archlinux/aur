@@ -9,8 +9,8 @@ license=('custom')
 depends=('ccache')
 source=('update-ccache-links.sh'
         'update-ccache-links.hook')
-sha256sums=('8df3de20c1e58615354ae6fc35b3f27692060bd33f2f80229346a6acb19687bd'
-            '0fc326f0225ba865394090309d27d41339113248462ee41fea2e3646d7e1eb59')
+sha256sums=('d030775bced390d7f0f090f5b9c364229ebbd2e39b51da297784dd19502c866f'
+            'e7c0cb74b47371162262e1ad57590cbd41a3fdeaa4988370fde98ae19c75703c')
 
 package() {
   install -d "${pkgdir}/usr/lib/ccache/bin"
