@@ -1,6 +1,6 @@
 pkgbase = gvim-hg
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor with GTK2 GUI, no interpreters embedded
-	pkgver = 20180330
+	pkgver = 20190629
 	pkgrel = 1
 	url = http://www.vim.org/
 	arch = i686
@@ -13,7 +13,8 @@ pkgbase = gvim-hg
 	provides = gvim
 	conflicts = vim
 	conflicts = gvim
-	conflicts = vim-runtime,vim-minimal,
+	conflicts = vim-runtime
+	conflicts = vim-minimal
 	source = gvim.desktop
 	md5sums = 6e11c556ba3f2ce7dc05d9908188d604
 
