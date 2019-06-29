@@ -4,21 +4,22 @@
 # Contributor: Guilherme Calé <gui@cabritacale.eu>
 
 pkgname=fs-uae
-pkgver=2.8.3
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='An Amiga emulator based on UAE/WinUAE with a focus on emulating games'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://fs-uae.net/'
 license=('GPL2')
 depends=('sdl2' 'glib2' 'libpng' 'openal' 'libx11' 'libmpeg2' 'zlib'
          'shared-mime-info' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('freetype2' 'gettext' 'libxi' 'mesa' 'zip')
 source=("https://fs-uae.net/stable/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e2d5414d07c8bd5b740716471183bc5516bec0ae2989449c3026374dc4b86292')
+sha256sums=('221568b8f78bac352f84297f0cabe984d3da4f808e39cc3191541c02b389c964')
 
 build() {
     cd "${pkgname}-${pkgver}"
     
+    # need to disable the jit compiler to add PIE to binaries
     ./configure --prefix='/usr' --disable-jit
     
     make 
