@@ -1,10 +1,10 @@
-# Maintainer: Iván Ruvalcaba <mario.i.ruvalcaba[at]gmail[dot]com>
+# Maintainer: https://aur.archlinux.org/account/archtem/
 
 _pkgname=qtodotxt2
 pkgname=${_pkgname}-git
-_commit=32bb7f3 # 7 digits
-pkgver=20180127
-pkgrel=3
+_commit=477f148 # 7 digits
+pkgver=20190330
+pkgrel=1
 pkgdesc="A cross-platform UI client for todo.txt files"
 arch=('i686' 'x86_64')
 url="https://github.com/QTodoTxt/QTodoTxt2"
