@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=libadalang-git
-pkgver=r2869.6db10e4f
+pkgver=r3538.96dd59ff
 pkgrel=1
 
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language'
@@ -43,16 +43,13 @@ build()
     # use rpath (-R), but that only makes sense for the shared library, so
     # build in two steps: once for shared lib (+ mains), and once for static
     # lib.
-    python2 ada/manage.py \
-        --disable-static --enable-shared --no-langkit-support \
-        build --build-mode=prod --gargs="-R --config=$PWD/config.cgpr"
-
+    #
     # TODO: build & install static libraries. For now, this fails because
     # auto-initialized static libraries are built using partial linking (ld's
     # -r option), which conflicts with GCC's by default -pie option.
-    true || python2 ada/manage.py -vdebug \
-        --enable-static --disable-shared \
-        build --build-mode=prod --disable-all-mains
+    python2 ada/manage.py \
+        --library-types relocatable --no-langkit-support \
+        build --build-mode=prod --gargs="-R --config=$PWD/config.cgpr"
 }
 
 package()
@@ -61,7 +58,7 @@ package()
 
     # Install the Ada library with its C binding
     python2 ada/manage.py \
-        --disable-static --enable-shared --no-langkit-support \
+        --library-types relocatable --no-langkit-support \
         install "$pkgdir/usr"
 
     # Install the Python binding
