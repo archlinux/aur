@@ -1,7 +1,7 @@
 pkgbase = caffe2
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework
 	pkgver = 0.8.2_1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caffe2.ai/
 	arch = x86_64
 	license = BSD
@@ -36,6 +36,7 @@ pkgbase = caffe2
 	optdepends = python-tornado
 	optdepends = python-six
 	optdepends = python-lmdb
+	conflicts = python-pytorch
 	options = !emptydirs
 	source = git+https://github.com/pytorch/pytorch.git#tag=v1.1.0
 	source = git+https://github.com/pybind/pybind11
