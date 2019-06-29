@@ -39,6 +39,11 @@ _list_toolchains() {
 package ()
 {
   cd "$srcdir"
+
+  echo ">>> Tip: to avoid waiting for compression, build an uncompresed tar archive:"
+  echo ">>>     PKGEXT='.tar' makepkg"
+  echo
+
   mkdir -p $pkgdir/$_installdir
   echo ">>> Running installer...."
   sh zephyr-sdk-${pkgver}-setup.run --target $pkgdir/$_installdir --nochown --noexec --keep -- -d $pkgdir/$_installdir
