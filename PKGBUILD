@@ -1,14 +1,14 @@
-# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
+# Maintainer: Gregory Boyce <gregory@auburndaletech.com>
 
 pkgname=ntpsec
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Security-hardened Network Time Protocol implementation"
 arch=('i686' 'x86_64')
 url="https://www.ntpsec.org/"
 license=('custom')
 depends=('avahi' 'libbsd' 'libseccomp' 'python')
-makedepends=('asciidoc' 'pps-tools' 'w3m')
+makedepends=('asciidoc' 'pps-tools' 'w3m', 'binutils')
 optdepends=('gnuplot: for ntpviz'
             'libevent: for ntpdig'
             'python-psutil: Optional for ntpviz, allows running with ionice'
