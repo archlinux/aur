@@ -1,0 +1,14 @@
+pkgbase = docker-compose-systemd-unit
+	pkgdesc = systemd unit file for docker-compose services
+	pkgver = 1
+	pkgrel = 1
+	url = https://gist.github.com/mosquito/b23e1c1e5723a7fd9e6568e5cf91180f
+	arch = any
+	license = unknown
+	depends = docker
+	depends = docker-compose
+	source = docker-compose@.service
+	sha256sums = d040c6d7f6bd47f8d7b13592487ca8da698ea86fa2bf505593e0fd7d5988822a
+
+pkgname = docker-compose-systemd-unit
+
