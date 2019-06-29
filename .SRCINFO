@@ -1,6 +1,6 @@
 pkgbase = osh
 	pkgdesc = A bash-compatible UNIX shell written in Python.
-	pkgver = 0.6.pre20
+	pkgver = 0.6.pre23
 	pkgrel = 1
 	url = https://www.oilshell.org/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = osh
 	license = Apache
 	depends = readline
 	options = !strip
-	source = https://www.oilshell.org/download/oil-0.6.pre20.tar.gz
-	md5sums = c0285afe92cbd5ef3742b9ccae7bda49
+	source = https://www.oilshell.org/download/oil-0.6.pre23.tar.gz
+	md5sums = 69f7b33aa839daf381617bedc7fb159d
 
 pkgname = osh
 
