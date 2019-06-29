@@ -1,0 +1,12 @@
+pkgbase = get-binary-git
+	pkgdesc = A text to binary converter
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://gitlab.com/flori4nk/get-binary
+	arch = x86_64
+	license = MIT
+	source = https://gitlab.com/flori4nk/get-binary/-/archive/v1.2/get-binary-v1.2.tar.gz
+	sha256sums = 6a9e5d671cf1ca33769a8ca9691806ca5de14ea1a7f10f315f1473bfd49c2e79
+
+pkgname = get-binary-git
+
