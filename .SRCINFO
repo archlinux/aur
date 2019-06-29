@@ -1,0 +1,15 @@
+pkgbase = stanford-corenlp-models-german
+	pkgdesc = Parser models for the german language for the Stanford parser.
+	pkgver = 3.9.2
+	pkgrel = 1
+	url = https://nlp.stanford.edu/software/lex-parser.shtml
+	arch = any
+	groups = stanford-corenlp-models
+	license = GPL
+	depends = java-runtime
+	noextract = stanford-german-corenlp-2018-10-05-models.jar
+	source = https://nlp.stanford.edu/software/stanford-german-corenlp-2018-10-05-models.jar
+	sha512sums = f3eed9f790d91ffea8164eb40c7c514e7ad5bf263916be4c8879407eb53839a111a44a22dbf6734ab7facc8f5cd8e4afa92bfeac9777f042796f457e3129bfb7
+
+pkgname = stanford-corenlp-models-german
+
