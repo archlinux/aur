@@ -9,16 +9,15 @@
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
 pkgname=neovim-youcompleteme-core-git
-pkgver=r2478.c25e449f
-pkgrel=1
+pkgver=r2532.d556a43c
+pkgrel=2
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
 url='https://valloric.github.io/YouCompleteMe/'
 license=('GPL3')
 depends=('neovim' 'boost-libs' 'python>=3.2' 'clang>=6.0'
          'python-bottle' 'python-waitress' 'python-frozendict'
-         'python-requests-futures' 'python-future' 'python-neovim'
-         'python-regex')
+         'python-requests-futures' 'python-future' 'python-neovim')
 makedepends=('git' 'cmake' 'boost' 'pybind11')
 optdepends=(
   'gocode-git: Go semantic completion'
@@ -26,14 +25,17 @@ optdepends=(
   'nodejs-tern: JavaScript semantic completion'
   'racerd-git: Rust semantic completion'
   'typescript: Typescript semantic completion'
-  'python-jedi: Python semantic completion')
-# https://github.com/Valloric/ycmd/pull/885
+  'python-jedi: Python semantic completion'
+  'python-regex: improved error handling during startup')
+# https://github.com/ycm-core/ycmd/pull/885
 #'omnisharp-roslyn: C# semantic completion'
 
-source=(git+https://github.com/Valloric/YouCompleteMe.git
-        git+https://github.com/Valloric/ycmd)
+source=(git+https://github.com/ycm-core/YouCompleteMe.git
+        git+https://github.com/ycm-core/ycmd.git
+        clang_rsrc_dir.patch)
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            'b1cb4e247e23954ddc02b11b8f9e61b822f544425b51f12f4ac569ce1c8de405')
 
 pkgver() {
   cd YouCompleteMe
@@ -50,8 +52,11 @@ prepare() {
   git config submodule.third_party/ycmd.url "$srcdir/ycmd"
   git submodule update
 
+  cd third_party/ycmd
+  patch -Np1 -i ../../../clang_rsrc_dir.patch
+
   # Force system headers/libs
-  cd third_party/ycmd/cpp
+  cd cpp
   rm -rf BoostParts llvm pybind11
 }
 
@@ -76,8 +81,11 @@ package() {
 
   cp -dr --no-preserve=ownership autoload doc plugin python "$pkgdir/usr/share/nvim/runtime"
   cp -dr --no-preserve=ownership third_party/ycmd/{ycmd,ycm_core.so,CORE_VERSION} "$pkg_ycmd_dir"
-  install -Ddm755 "$pkg_ycmd_dir/third_party/clang/"
-  ln -s /usr/lib "$pkg_ycmd_dir/third_party/clang/lib"
+  install -Ddm755 "$pkg_ycmd_dir/third_party/clang/lib/"
+  ln -s /usr/lib/libclang.so "$pkg_ycmd_dir/third_party/clang/lib/libclang.so"
+  ln -s /usr/lib/clang "$pkg_ycmd_dir/third_party/clang/lib/clang"
+  install -Ddm755 "$pkg_ycmd_dir/third_party/clangd/output/bin"
+  ln -s /usr/bin/clangd "$pkg_ycmd_dir/third_party/clangd/output/bin/clangd"
 
   install -Ddm755 "$pkg_ycmd_dir/third_party/tern_runtime/node_modules/"
   install -Ddm755 "$pkg_ycmd_dir/third_party/gocode/"
