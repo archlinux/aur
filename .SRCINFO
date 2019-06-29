@@ -1,6 +1,6 @@
 pkgbase = ygopro-koishipro
 	pkgdesc = Link compatable ygopro client with AI
-	pkgver = 2019.6.17
+	pkgver = 2019.6.29
 	pkgrel = 1
 	url = https://github.com/purerosefallen/ygopro
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = ygopro-koishipro
 	makedepends = patchelf
 	depends = mono
 	depends = libevent
-	noextract = KoishiPro-linux-full-Mermaid.zip
+	noextract = KoishiPro-linux-full-Saigetsu.zip
 	options = !strip
 	options = emptydirs
-	source = https://github.com/purerosefallen/ygopro/releases/download/Mermaid/KoishiPro-linux-full-Mermaid.zip
+	source = https://github.com/purerosefallen/ygopro/releases/download/Saigetsu/KoishiPro-linux-full-Saigetsu.zip
 	sha256sums = 2d22d09356b356b0ce9fb21142964a05ccf7c90a0a2744377c24435070f689b0
 
 pkgname = ygopro-koishipro

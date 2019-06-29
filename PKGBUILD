@@ -1,9 +1,9 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
 pkgname=ygopro-koishipro
-pkgver=2019.6.17
+pkgver=2019.6.29
 pkgrel=1
 _pkgrel=1
-name="Mermaid"
+name="Saigetsu"
 zipFile="KoishiPro-linux-full-$name.zip"
 pkgdesc="Link compatable ygopro client with AI"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('mono' 'libevent')
 makedepends=('patchelf')
 source=("$url/releases/download/$name/$zipFile")
 noextract=($zipFile)
-sha256sums=('2d22d09356b356b0ce9fb21142964a05ccf7c90a0a2744377c24435070f689b0')
+sha256sums=('f0a848683c29d4240399e4ebd8d712d7852a2d6824079820e983243808cd2d44')
 options=('!strip' 'emptydirs')
 
 prepare(){
