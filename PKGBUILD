@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kdbusaddons
-pkgver=5.37.0
+pkgver=5.45.0
 pkgrel=1
 arch=(any)
 pkgdesc="Addons to QtDBus (mingw-w64)"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kdbusaddons-${pkgver}.tar.xz"{,.sig})
-sha256sums=('9140b649e140eb134d7290e3f268658900a61c3d50002ca1e7d772726756851c'
+sha256sums=('e62b0ce98c345ddd0c214af4a57f6d44085bbe9bb6342c5b682cc8925ac93f1c'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
