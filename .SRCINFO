@@ -1,7 +1,7 @@
 pkgbase = caffe2-git
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework
 	pkgver = 0.8.2.r18962.gd8de69d621
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://caffe2.ai/
 	arch = x86_64
@@ -104,6 +104,7 @@ pkgname = caffe2-git
 	pkgdesc = A new lightweight, modular, and scalable deep learning framework (cpu only, git version)
 	provides = caffe2
 	provides = caffe2-cpu-git
+	conflicts = python-pytorch
 	conflicts = caffe2
 	conflicts = caffe2-cpu-git
 	replaces = caffe2-cpu-git
@@ -125,5 +126,6 @@ pkgname = caffe2-cuda-git
 	provides = caffe2
 	provides = caffe2-git
 	provides = caffe2-cuda
+	conflicts = python-pytorch
 	conflicts = caffe2
 

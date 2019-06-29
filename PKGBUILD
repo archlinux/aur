@@ -3,7 +3,7 @@
 pkgbase=caffe2-git
 pkgname=('caffe2-git' 'caffe2-cuda-git')
 pkgver=0.8.2.r18962.gd8de69d621
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework'
 arch=('x86_64')
@@ -214,7 +214,7 @@ package_caffe2-cuda-git() {
     pkgdesc+=' (with cuda support, git version)'
     depends+=('cuda' 'cudnn' 'nccl')
     provides=('caffe2' 'caffe2-git' 'caffe2-cuda')
-    conflicts=('caffe2')
+    conflicts+=('caffe2')
     
     cd pytorch/build-cuda
     
@@ -224,7 +224,7 @@ package_caffe2-cuda-git() {
 package_caffe2-git() {
     pkgdesc+=' (cpu only, git version)'
     provides=('caffe2' 'caffe2-cpu-git')
-    conflicts=('caffe2' 'caffe2-cpu-git')
+    conflicts+=('caffe2' 'caffe2-cpu-git')
     replaces=('caffe2-cpu-git')
     
     cd pytorch/build-cpu-only
