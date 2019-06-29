@@ -1,7 +1,7 @@
 #Maintainer: naruto522ru <itachi522ru@gmail.com>
 pkgname=rto-proxy-bin
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='RuTracker proxy app based at electron + angularjs'
 arch=('x86_64' 'i686')
 url='https://rutracker.org/forum/viewtopic.php?t=5403116'
