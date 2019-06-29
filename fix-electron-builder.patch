@@ -6,7 +6,7 @@ diff -ura package.orig/electron-builder.json package.new/electron-builder.json
      ],
      "artifactName": "rocketchat-${version}-${arch}.${ext}"
    },
-+  "electronDist": "/usr/lib/electron",
++  "electronDist": "/usr/lib/electron4",
    "linux": {
      "target": [
 -      "tar.gz",
