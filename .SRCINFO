@@ -1,0 +1,14 @@
+pkgbase = python-tf-encrypted
+	pkgdesc = A Framework for Machine Learning on Encrypted Data.
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/tf-encrypted/tf-encrypted
+	arch = any
+	license = Apache
+	license = License
+	license = 2.0
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-tf-encrypted
+
