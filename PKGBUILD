@@ -7,7 +7,7 @@ pkgdesc="Low-level build system macros and infrastructure for ROS."
 url='http://www.ros.org/wiki/catkin'
 pkgver='0.7.18'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 makedepends=(
@@ -51,7 +51,7 @@ build() {
 	cmake ${srcdir}/${_dir} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=OFF \
-		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_PREFIX=/usr/share/${pkgname} \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
 		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
 		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
@@ -69,18 +69,11 @@ package() {
 	cd "${srcdir}/build"
 	make DESTDIR="${pkgdir}" install
 
-	mkdir -p "${pkgdir}/usr/share/${pkgname}/"
-	mv "${pkgdir}/usr/etc" "${pkgdir}/etc"
-	mv "${pkgdir}/usr/.catkin" "${pkgdir}/usr/share/${pkgname}/.catkin"
-	mv "${pkgdir}/usr/_setup_util.py" "${pkgdir}/usr/share/${pkgname}/_setup_util.py"
-	mv "${pkgdir}/usr/env.sh" "${pkgdir}/usr/share/${pkgname}/env.sh"
-	mv "${pkgdir}/usr/setup.bash" "${pkgdir}/usr/share/${pkgname}/setup.bash"
-	mv "${pkgdir}/usr/local_setup.bash" "${pkgdir}/usr/share/${pkgname}/local_setup.bash"
-	mv "${pkgdir}/usr/setup.sh" "${pkgdir}/usr/share/${pkgname}/setup.sh"
-	mv "${pkgdir}/usr/local_setup.sh" "${pkgdir}/usr/share/${pkgname}/local_setup.sh"
-	mv "${pkgdir}/usr/setup.zsh" "${pkgdir}/usr/share/${pkgname}/setup.zsh"
-	mv "${pkgdir}/usr/local_setup.zsh" "${pkgdir}/usr/share/${pkgname}/local_setup.zsh"
-	mv "${pkgdir}/usr/.rosinstall" "${pkgdir}/usr/share/${pkgname}/.rosinstall"
+	mv -f "${pkgdir}/usr/share/${pkgname}/etc" "${pkgdir}/etc"
+	mv -f "${pkgdir}/usr/share/${pkgname}/bin" "${pkgdir}/usr/bin"
+	mv -f "${pkgdir}/usr/share/${pkgname}/lib" "${pkgdir}/usr/lib"
+	(cd "${pkgdir}/usr/share/${pkgname}/share" && tar c .) | (cd "${pkgdir}/usr/share" && tar xf -)
+	rm -rf "${pkgdir}/usr/share/${pkgname}/share"
 
 	install -Dm644 "${srcdir}/${_dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
