@@ -1,0 +1,16 @@
+pkgbase = cmus-plugin-vgm
+	pkgdesc = Video Game Music file support for cmus (vgm/vgz/dro/s98)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jpcima/cmus-plugin-vgm
+	arch = x86_64
+	license = Boost
+	license = GPL
+	makedepends = cmake
+	depends = cmus
+	depends = zlib
+	source = https://github.com/jpcima/cmus-plugin-vgm/releases/download/v0.1/cmus-plugin-vgm-0.1.tar.gz
+	sha512sums = 9d0c8c6a6cb43d0b8f419035017e060cebeed1a07da4b468af50943b19c766af49af4004061a33b92c71696ac05e4f2f2180270d375caece8e212dbe5b8b94d4
+
+pkgname = cmus-plugin-vgm
+
