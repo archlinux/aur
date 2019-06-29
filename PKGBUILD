@@ -31,28 +31,29 @@ options=('staticlibs')
 source=("http://icl.cs.utk.edu/projectsfiles/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('4fd45c7e46bd9d9124253e7838bbfb9e6003c64c2c67ffcff02e6c36d2bcfa33')
 
-_CMAKE_FLAGS=(\
-  -DCMAKE_BUILD_TYPE=Release \
-  -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
-  -DCMAKE_INSTALL_PREFIX=/opt/magma \
-)
-
-if [[ -n "${_GPU_TARGET}" ]] ; then 
-  _CMAKE_FLAGS+=(-DGPU_TARGET=${_GPU_TARGET})
-fi
-
-if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]] ; then
-  _CMAKE_FLAGS+=( \
-    -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
+prepare() {
+  _CMAKE_FLAGS=(\
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/opt/magma \
   )
-fi
 
-_cuda_gcc=$(basename $(readlink /opt/cuda/bin/gcc))
-if [[ -f "/usr/lib/ccache/bin/$_cuda_gcc" ]] ; then
-  _CMAKE_FLAGS+=( \
-    -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/$_cuda_gcc \
-  )
-fi
+  if [[ -n "${_GPU_TARGET}" ]] ; then 
+    _CMAKE_FLAGS+=(-DGPU_TARGET=${_GPU_TARGET})
+  fi
+
+  if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]] ; then
+    _CMAKE_FLAGS+=( \
+      -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
+    )
+  fi
+
+  _cuda_gcc=$(basename $(readlink /opt/cuda/bin/gcc))
+  if [[ -L "/usr/lib/ccache/bin/$_cuda_gcc" ]] ; then
+    _CMAKE_FLAGS+=( \
+      -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/$_cuda_gcc \
+    )
+  fi
+}
 
 build() {
   cd "${srcdir}/magma-${pkgver}"
