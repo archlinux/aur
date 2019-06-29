@@ -1,0 +1,19 @@
+pkgbase = librtcdcpp-git
+	pkgdesc = A simple WebRTC DataChannels library
+	pkgver = r63.49ddb94
+	pkgrel = 1
+	url = https://github.com/chadnickbok/librtcdcpp
+	arch = i686
+	arch = x86_64
+	arch = any
+	license = BSD
+	depends = libnice
+	depends = libusrsctp
+	depends = openssl
+	provides = librtcdcpp
+	conflicts = librtcdcpp
+	source = librtcdcpp::git+https://github.com/chadnickbok/librtcdcpp.git
+	md5sums = SKIP
+
+pkgname = librtcdcpp-git
+
