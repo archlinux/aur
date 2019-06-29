@@ -5,12 +5,12 @@
 _name=octave_kernel
 pkgname=jupyter-${_name}
 pkgver=0.31.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Jupyter kernel for Octave"
 arch=('any')
 url="https://github.com/Calysto/octave_kernel"
 license=('BSD')
-depends=('jupyter' 'jupyter-metakernel' 'jupyter-notebook' 'octave')
+depends=('jupyter' 'jupyter-metakernel>=0.24.2' 'jupyter-notebook' 'octave')
 makedepends=('python-pip')
 optdepends=('gnuplot: for making plots' 'jupyterlab: JupyterLab computational environment')
 source=("https://github.com/Calysto/octave_kernel/archive/v${pkgver}.tar.gz")
