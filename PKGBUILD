@@ -1,3 +1,5 @@
+#!/hint/bash
+#shellcheck disable=SC2034
 # Maintainer: pingplug <pingplug@foxmail.com>
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 
@@ -42,7 +44,13 @@ fi
 if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]] ; then
   _CMAKE_FLAGS+=( \
     -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
-    -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc-7 \
+  )
+fi
+
+_cuda_gcc=$(basename $(readlink /opt/cuda/bin/gcc))
+if [[ -f "/usr/lib/ccache/bin/$_cuda_gcc" ]] ; then
+  _CMAKE_FLAGS+=( \
+    -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/$_cuda_gcc \
   )
 fi
 
