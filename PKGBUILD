@@ -2,7 +2,7 @@
 
 pkgbase=caffe2-git
 pkgname=('caffe2-git' 'caffe2-cuda-git')
-pkgver=0.8.2.r17706.g725ef26f34
+pkgver=0.8.2.r18962.gd8de69d621
 pkgrel=1
 epoch=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework'
@@ -16,6 +16,7 @@ optdepends=('python-flask' 'graphviz' 'python-hypothesis' 'python-matplotlib'
             'python-scikit-image' 'python-scipy' 'python-setuptools'
             'python-future' 'python-tornado' 'python-six' 'python-lmdb')
 makedepends=('git' 'cmake' 'gtest' 'snappy' 'cuda' 'cudnn' 'nccl')
+conflicts=('python-pytorch')
 options=('!emptydirs')
 source=("git+https://github.com/pytorch/pytorch.git"
         'git+https://github.com/pybind/pybind11'
@@ -23,7 +24,7 @@ source=("git+https://github.com/pytorch/pytorch.git"
         'git+https://github.com/eigenteam/eigen-git-mirror'
         'git+https://github.com/google/googletest'
         'git+https://github.com/google/benchmark'
-        'git+https://github.com/google/protobuf'
+        'protobuf-protocolbuffers'::'git+https://github.com/protocolbuffers/protobuf'
         'git+https://github.com/Yangqing/ios-cmake'
         'git+https://github.com/Maratyszcza/NNPACK'
         'git+https://github.com/facebookincubator/gloo'
@@ -32,7 +33,7 @@ source=("git+https://github.com/pytorch/pytorch.git"
         'git+https://github.com/Maratyszcza/FP16'
         'git+https://github.com/Maratyszcza/psimd'
         'git+https://github.com/facebook/zstd'
-        'git+https://github.com/Maratyszcza/cpuinfo'
+        'cpuinfo-pytorch'::'git+https://github.com/pytorch/cpuinfo'
         'git+https://github.com/PeachPy/enum34'
         'git+https://github.com/Maratyszcza/PeachPy'
         'git+https://github.com/benjaminp/six'
@@ -45,8 +46,10 @@ source=("git+https://github.com/pytorch/pytorch.git"
         'git+https://github.com/pytorch/QNNPACK'
         'git+https://github.com/intel/ARM_NEON_2_x86_SSE'
         'git+https://github.com/pytorch/fbgemm'
-        'git+https://github.com/houseroad/foxi')
+        'git+https://github.com/houseroad/foxi'
+        'git+https://github.com/01org/tbb')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -97,7 +100,8 @@ prepare() {
                            'ideep'
                            'QNNPACK'
                            'fbgemm'
-                           'foxi')
+                           'foxi'
+                           'tbb')
     local _submodule
     for _submodule in "${_submodule_list[@]}"
     do
@@ -106,10 +110,12 @@ prepare() {
     
     # submodules which clone dir does not coincide with the submodule name
     git config --local "submodule.third_party/eigen.url" "${srcdir}/eigen-git-mirror"
+    git config --local "submodule.third_party/protobuf.url" "${srcdir}/protobuf-protocolbuffers"
     git config --local "submodule.third_party/NNPACK_deps/pthreadpool.url" "${srcdir}/pthreadpool"
     git config --local "submodule.third_party/NNPACK_deps/FXdiv.url" "${srcdir}/FXdiv"
     git config --local "submodule.third_party/NNPACK_deps/FP16.url" "${srcdir}/FP16"
     git config --local "submodule.third_party/NNPACK_deps/psimd.url" "${srcdir}/psimd"
+    git config --local "submodule.third_party/cpuinfo.url" "${srcdir}/cpuinfo-pytorch"
     git config --local "submodule.third_party/python-enum.url" "${srcdir}/enum34"
     git config --local "submodule.third_party/python-peachpy.url" "${srcdir}/PeachPy"
     git config --local "submodule.third_party/python-six.url" "${srcdir}/six"
@@ -118,8 +124,8 @@ prepare() {
     git config --local "submodule.third_party/nccl/nccl.url" "${srcdir}/nccl"
     git config --local "submodule.third_party/gemmlowp/gemmlowp.url" "${srcdir}/gemmlowp"
     
-    # special case (upstream uses third.party instead of third_party)
-    git config --local 'submodule.third-party/cpuinfo.url' "${srcdir}/cpuinfo"
+    # special case (upstream uses third-party instead of third_party)
+    git config --local 'submodule.third-party/cpuinfo.url' "${srcdir}/cpuinfo-pytorch"
     
     git submodule update
 }
@@ -154,6 +160,7 @@ build() {
                         '-DC_AVX_FOUND:BOOL=FALSE'
                         '-DUSE_GFLAGS:BOOL=ON'
                         '-DUSE_GLOG:BOOL=ON'
+                        '-DUSE_MKLDNN:BOOL=OFF'
                         '-DUSE_MPI:BOOL=OFF'
                         '-DUSE_NUMA:BOOL=OFF'
                         '-DUSE_OPENCV:BOOL=OFF'
@@ -163,9 +170,9 @@ build() {
     cd pytorch/build-cuda
     cmake \
         "${_common_opts[@]}" \
-        -DCMAKE_CXX_COMPILER:FILEPATH='/usr/bin/g++' \
-        -DCMAKE_C_COMPILER:FILEPATH='/usr/bin/gcc' \
-        -DCUDA_HOST_COMPILER:FILEPATH='/usr/bin/gcc' \
+        -DCMAKE_CXX_COMPILER:FILEPATH='/opt/cuda/bin/g++' \
+        -DCMAKE_C_COMPILER:FILEPATH='/opt/cuda/bin/gcc' \
+        -DCUDA_HOST_COMPILER:FILEPATH='/opt/cuda/bin/gcc' \
         -DCUDA_NVCC_FLAGS:STRING='-Xfatbin -compress-all' \
         -DTORCH_CUDA_ARCH_LIST='3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5' \
         -DUSE_CUDA:BOOL='ON' \
@@ -187,17 +194,15 @@ _package_common() {
     make DESTDIR="$pkgdir" install
     
     # remove unneeded files
-    local _entry
-    local _exclude_dirs
     rm    "$pkgdir"/usr/include/*.h
     rm    "$pkgdir"/usr/lib/{*.a,lib{foxi*,onnxifi*}.so*}
     rm -r "$pkgdir"/usr/share/{ATen,cmake/{ATen,Gloo,ONNX}}
     rm -r "$pkgdir"/torch
-    mapfile -t -d '' _exclude_dirs < <(find "${pkgdir}/usr/include" -mindepth 1 -maxdepth 1 -type d ! -name 'caffe*' ! -name 'c10' -print0)
-    for _entry in "${_exclude_dirs[@]}"
+    local _dir
+    while read -r -d '' _dir
     do
-        rm -rf "$_entry"
-    done
+        rm -rf "$_dir"
+    done < <(find "${pkgdir}/usr/include" -mindepth 1 -maxdepth 1 -type d ! -name 'caffe*' ! -name 'c10' -print0)
     
     # license
     cd "${srcdir}/pytorch"
