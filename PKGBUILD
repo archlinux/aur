@@ -1,8 +1,9 @@
-# Maintainer: Tim Rakowski <tim.rakowski@gmail.com>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 # Contributor: marauder <abhinav.kssk@gmail.com>
 pkgname=ignition-msgs
-pkgver=1.0.0
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Standard set of message definitions, used by Ignition Transport, and other applications."
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org"
@@ -12,10 +13,10 @@ depends=('protobuf' 'protobuf-c' 'ignition-math' 'ignition-tools')
 makedepends=('ignition-cmake' 'ruby-ronn' 'doxygen')
 optdepends=()
 conflicts=()
-source=("https://bitbucket.org/ignitionrobotics/ign-msgs/get/${pkgname}_${pkgver}.tar.bz2")
-sha256sums=('d5922f9f160aebc6fb1d6de32054e17c9493a6995ea0f1f3a56ba6448c3040ab')
+source=("https://bitbucket.org/ignitionrobotics/ign-msgs/get/${pkgname}4_${pkgver}.tar.bz2")
+sha256sums=('260d9f9aafe4a6f997af7d5967e9aa21306bfb30c832be113f7edb4b126a4085')
 
-_dir="ignitionrobotics-ign-msgs-9ba6a3e1c418"
+_dir="ignitionrobotics-ign-msgs-e438e8fa0e2a"
 
 build() {
   cd "${srcdir}/${_dir}"
@@ -25,7 +26,7 @@ build() {
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DBUILD_TESTING:BOOL=False
-  make
+  make -j4
 }
 
 check() {
