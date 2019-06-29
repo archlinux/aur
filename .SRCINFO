@@ -1,6 +1,6 @@
 pkgbase = xxd-standalone
 	pkgdesc = Hexdump utility from vim
-	pkgver = 8.0.1658
+	pkgver = 8.1.1306
 	pkgrel = 1
 	url = http://www.vim.org
 	arch = x86_64
@@ -14,14 +14,14 @@ pkgbase = xxd-standalone
 	depends = glibc
 	provides = xxd
 	conflicts = xxd
-	source = xxd-8.0.1658.c::https://raw.githubusercontent.com/vim/vim/v8.0.1658/src/xxd/xxd.c
-	source = xxd-8.0.1658.1::https://raw.githubusercontent.com/vim/vim/v8.0.1658/runtime/doc/xxd.1
+	source = xxd-8.1.1306.c::https://raw.githubusercontent.com/vim/vim/v8.1.1306/src/xxd/xxd.c
+	source = xxd-8.1.1306.1::https://raw.githubusercontent.com/vim/vim/v8.1.1306/runtime/doc/xxd.1
 	source = xxd-standalone-Makefile::https://raw.githubusercontent.com/vim/vim/master/src/xxd/Makefile
 	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/xxd-LICENSE
-	md5sums = 304e675b808e350c63f412a145eb3e68
-	md5sums = 87467fa59b7efa85002baa2d78d2c0bb
-	md5sums = d551525508580302c1c22a9ec0c0fb84
-	md5sums = 533619562b1da5fd32458517fc740af8
+	sha256sums = 2d4c4f98726467fc023de6d3ca8da3795ec5d8fbf9d92bb8c29d744877d4cbf8
+	sha256sums = 343f65c3a75affcec6013fb308ae895b4dbded24fd1847b6b97247d343f70f56
+	sha256sums = 96d7229490da56fbf6cae3791407238636b2979e1f607e535f55ec26068303c5
+	sha256sums = 2ac99e6ff2ee077cfec2133d0d5d2d4f14b156994c4c1896703cda98c2d21845
 
 pkgname = xxd-standalone
 
