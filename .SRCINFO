@@ -1,21 +1,19 @@
 pkgbase = lattice-diamond
 	pkgdesc = Lattice Diamond design software
-	pkgver = 3.10.3.144.3
+	pkgver = 3.11
 	pkgrel = 1
 	url = http://www.latticesemi.com/
 	install = lattice-diamond.install
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = http://files.latticesemi.com/Diamond/3.10/diamond_3_10-base_x64-111-2-x86_64-linux.rpm
-	source = http://files.latticesemi.com/Diamond/3.10.3/diamond_3_10-sp3_x64-144-3-x86_64-linux.rpm
+	source = http://files.latticesemi.com/Diamond/3.11/diamond_3_11-base_x64-396-4-x86_64-linux.rpm
 	source = lattice-diamond.png
 	source = lattice-diamond.desktop
 	source = lattice-diamond.install
-	sha512sums = 423f4df79c3f07a7cf9cfd17914019f3c06187c4c1a04f13d48e255d3f75dfea2e1e9641506da59c06e276bef46737c14f502df668a3a7ac6ebe63a3cdd4cd1d
-	sha512sums = 316aca87646e0b59ea5b4bd7c982f8dc39540d5d0e25f159e91a9f53c2754dc2d3e5f24a0cc1c3c7a6ae293f8bc6759b08a54260691708ae89b961ac66b04b0d
+	sha512sums = d4f0e2ca10c8160b16fec3e1cb0d72538d452719fd6b10e3109c63d91a5862ce392479276ab3865c0a1469fe7145cafa9fc9d7c89b3827417447aa21fff7ec36
 	sha512sums = 772fa260bb1a4ed7c4e328a99b3cd16b625e8880d7731abbe0cd59dbe4d743265e169a26ceba7b619a87c1cb9638a268a5501d3358863171ee808e59b2d3b0ac
-	sha512sums = b5365ac137c6114bdd3e1d6bd1f9e2f8f5306cbf763d457190567c0f8d3086bf3dde11f50a22d35e759b62860f0014c66d631d463fd369d09162905fd5732c07
+	sha512sums = 77f42fd480370c3a8bfe47083683c6ae22eaa8cf155426ce6983f183379efc8e70a248e8bb56080ff274046251afacbbba9cf3456c0fbcfd899c16053b13707c
 	sha512sums = 0f6f4463e1b1266a151afaaf6fefb3d69b712fafd6f2fa20beb211a3f9dd4db216be7255cc8fddaac946534754739c13406476fc6474236e7505bcd033a71d81
 
 pkgname = lattice-diamond
