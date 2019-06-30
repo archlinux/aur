@@ -8,8 +8,6 @@ url='https://scan.coverity.com/download'
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('java-environment')
-source=("$pkgname.sh")
-sha256sums=('a36e738b4eae818cbc2c6ace3cae8a075c7e6f5d282c059397441e91208c8e97')
 makedepends=('libarchive')
 options=('!strip')
 
@@ -27,7 +25,9 @@ package() {
   chown root: -R "$pkgdir/opt/$pkgname/"
 
   cd "$srcdir"
-  install -dm755 "$pkgdir/etc/profile.d"
-  sed "s#@PATH@#/opt/$pkgname/bin#g" "$pkgname.sh" > "$pkgdir/etc/profile.d/$pkgname.sh"
+  install -d "$pkgdir/etc/profile.d"
+  printf > "$pkgdir/etc/profile.d/$pkgname.sh" \
+    'export PATH="$PATH":%s\n' \
+    "/opt/$pkgname/bin"
   chmod 644 "$pkgdir/etc/profile.d/$pkgname.sh"
 }
