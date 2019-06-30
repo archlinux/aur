@@ -1,0 +1,4 @@
+xf86-video-nouveau
+src
+pkg
+*.pkg.*
