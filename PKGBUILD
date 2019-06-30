@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ignition-fuel_tools-1
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ client library and command line tools for interacting with Ignition Fuel servers"
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org/libs/fuel_tools"
@@ -30,7 +30,7 @@ build() {
            -DBUILD_TESTING:BOOL=False
 
   # Compile
-  make -j4
+  make
 }
 
 #check() {
@@ -41,7 +41,7 @@ build() {
 #           -DCMAKE_INSTALL_LIBDIR="lib" \
 #           -DBUILD_TESTING:BOOL=True
 #
-#  make -j4
+#  make
 #  make test
 #}
 
