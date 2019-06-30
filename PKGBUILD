@@ -8,7 +8,7 @@ arch=('any')
 url="https://git.stykers.moe/scm/sparkz/sparkz.git"
 license=('GPL')
 depends=('python' 'python-virtualenv' 'bash')
-source=('sparkz::https://git.stykers.moe/scm/sparkz/sparkz.git')
+source=('sparkz::git+https://git.stykers.moe/scm/sparkz/sparkz.git')
 install=${pkgname}.install
 md5sums=('SKIP')
 
