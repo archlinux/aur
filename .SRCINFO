@@ -1,6 +1,6 @@
 pkgbase = domterm-git
 	pkgdesc = Terminal emulator capable of display html and images from command output
-	pkgver = 1.0.r106.gb890e75
+	pkgver = 1.0.r334.g404b06a
 	pkgrel = 1
 	url = https://github.com/PerBothner/DomTerm
 	arch = any
