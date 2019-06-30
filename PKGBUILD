@@ -8,9 +8,8 @@
 # update the dependencies based on dynamic libraries when packaging..
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.29.1.r317.gedbc199914
+pkgver=0.29.1.r341.gc9e7473d67
 pkgrel=1
-#epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
 license=('GPL')
@@ -19,13 +18,14 @@ _undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 depends=(
 # official repositories:
 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
-'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
-'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
+'libxinerama' 'libxv' 'libxkbcommon' 'libva'
+ 'wayland' 'libcaca' 'libplacebo' 'desktop-file-utils'
+ 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
+'libxrandr' 'jack' 'rubberband' 'uchardet'  'libarchive' 'smbclient'
 'zlib' 'sndio' 'openal' 'vulkan-icd-loader' 'shaderc' "${_undetected_depends[@]}"
 
 # AUR:
-'ffmpeg-full-git' 'mujs' 'rsound' 'crossc' 'vapoursynth-git' 'libplacebo-git'
+'ffmpeg-full-git' 'mujs' 'vapoursynth-git'
 )
 
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
@@ -38,12 +38,11 @@ optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'adobe-source-sans-pro-fonts: Font as shown in the conf'
             )
 
-makedepends=('vulkan-headers' 'mesa' 'python-docutils' 'ladspa' 'x264' 'x265' 'openal' 'jack'
+makedepends=('vulkan-headers' 'mesa' 'python-docutils' 'ladspa' 'x265' 'openal' 'jack'
              'samba' 'acpitool' 'inxi' 'git' 'vapoursynth' 'libvdpau' 'libva'
               'streamlink' 'cuda' 'ffnvcodec-headers' 'youtube-dl' 'ffnvcodec-headers')
 optdepends+=('cuda: for CUVID hardware-acceleration for NVIDIA users')
 
-    
 provides=('mpv' 'mpv-git')
 conflicts=('mpv' 'mpv-vapoursynth' 'mpv-ahjolinna-build-git' 'mpv-build-git' 'mpv-ahjolinna' )
 options=('!emptydirs')
@@ -174,7 +173,6 @@ build() {
 	--enable-jpeg \
 	--disable-direct3d \
 	--enable-shaderc \
-	--enable-crossc \
 	--disable-d3d11 \
 	--disable-rpi \
 	--disable-ios-gl \
