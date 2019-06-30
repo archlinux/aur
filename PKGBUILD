@@ -33,7 +33,7 @@ BUILDENV+=('!check')
 source=("https://github.com/slic3r/Slic3r/releases/download/${pkgver}/slic3r-${pkgver}-linux-x64.tar.bz2"
 				'slic3r.desktop'
 				'slic3r')
-sha256sums=('23761e32aca057de12e940fca097bcfef5a1efea9ff4998f8aa9fd58241db6dd'
+md5sums=('23761e32aca057de12e940fca097bcfef5a1efea9ff4998f8aa9fd58241db6dd'
          '332ef39aab3893622df7027b98d7deef424cb9563b458e13a129ef687a899cdd'
          '6e5012b1960a191e808ce29dbc9d6d1b180e4f383ef8bc0807efd77824425f55')
 _src_dir='$srcdir/Slic3r-$pkgver'
