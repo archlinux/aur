@@ -24,7 +24,6 @@ build() {
   for _arch in ${_architectures}; do
     mkdir "build-${_arch}" && pushd "build-${_arch}"
     ${_arch}-cmake \
-      -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INSTALL_LIBDIR=lib \
       -DCMAKE_INSTALL_LIBEXECDIR=lib \
       -DBUILD_TESTING=OFF \
