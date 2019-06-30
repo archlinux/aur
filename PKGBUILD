@@ -4,7 +4,7 @@
 # Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 pkgname=ignition-transport
 pkgver=7.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="The transport library combines ZeroMQ with Protobufs to create a fast and efficient message passing system. Asynchronous message publication and subscription is provided along with service calls and discovery."
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org/libs/transport"
@@ -28,7 +28,7 @@ build() {
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DBUILD_TESTING=Off
-  make -j4
+  make
 }
 
 #check() {
@@ -38,7 +38,7 @@ build() {
 #           -DCMAKE_INSTALL_PREFIX="/usr" \
 #           -DCMAKE_INSTALL_LIBDIR="lib" \
 #           -DBUILD_TESTING=On
-#  make -j4
+#  make
 #  make test
 #}
 
