@@ -1,0 +1,33 @@
+pkgbase = powerpc64le-linux-gnu-gcc-stage2
+	pkgdesc = The GNU Compiler Collection. Stage 2 for toolchain building (powerpc64le-linux-gnu)
+	pkgver = 9.1.0
+	pkgrel = 4
+	url = http://gcc.gnu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	makedepends = gmp
+	makedepends = mpfr
+	depends = powerpc64le-linux-gnu-binutils>=2.30-1
+	depends = powerpc64le-linux-gnu-glibc-headers>=2.27-1
+	depends = libmpc
+	depends = zlib
+	provides = powerpc64le-linux-gnu-gcc-stage1=9.1.0
+	conflicts = powerpc64le-linux-gnu-gcc-stage1
+	replaces = powerpc64le-linux-gnu-gcc-stage1
+	options = !emptydirs
+	options = !distcc
+	options = !strip
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-9.1.0/gcc-9.1.0.tar.xz
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-9.1.0/gcc-9.1.0.tar.xz.sig
+	source = http://isl.gforge.inria.fr/isl-0.21.tar.bz2
+	validpgpkeys = 33C235A34C46AA3FFB293709A328C3A2C3C45C06
+	sha256sums = 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0
+	sha256sums = SKIP
+	sha256sums = d18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859
+
+pkgname = powerpc64le-linux-gnu-gcc-stage2
+
