@@ -1,14 +1,14 @@
 pkgbase = gridea
 	pkgdesc = 静态博客写作客户端
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gridea.dev/
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = imagemagick
 	makedepends = yarn
-	depends = electron
+	depends = electron4
 	depends = git
 	source = gridea-0.8.1.src.tar.gz::https://github.com/getgridea/gridea/archive/v0.8.1.tar.gz
 	sha256sums = 125901d79ae414c3460fcacb841f699706075b58c5aedf5a6c4b7368b8ead362
