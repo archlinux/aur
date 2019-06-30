@@ -1,25 +1,29 @@
 pkgbase = c-lightning-git
 	pkgdesc = A Lightning Network implementation in C
-	pkgver = r2936.b3534462
+	pkgver = r5960.fa1c8b36
 	pkgrel = 1
 	url = https://github.com/ElementsProject/lightning
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = clang
 	makedepends = git
+	makedepends = python-pytest
+	depends = gmp
+	depends = libsodium
 	depends = sqlite
 	source = git+https://github.com/ElementsProject/lightning.git
 	source = git+https://github.com/zserge/jsmn.git
 	source = git+https://github.com/ianlancetaylor/libbacktrace.git
-	source = git+https://github.com/bitcoin/libbase58.git
 	source = git+https://github.com/jedisct1/libsodium.git
-	source = libbacktrace-no-multilib.patch
+	source = git+https://github.com/ElementsProject/libwally-core.git
+	source = macro-quotation.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 5f843b31b1be859994413a826d8814c6d3ea29d99d8ea59d2372d8a1f3ba036f
+	sha256sums = 35e294ffdc49c02f8e9d79b7122dab4c4d4ebd8321c1b98ba518127bb6e0d423
 
 pkgname = c-lightning-git
 
