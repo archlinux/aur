@@ -1,0 +1,21 @@
+--- a/Makefile	2019-06-30 21:53:44.499907157 +0200
++++ b/Makefile	2019-06-30 21:57:10.902605185 +0200
+@@ -17,7 +17,6 @@
+ 	cp -p -r my-plugins $(DESTDIR)$(LIBPATH)/$(NAME)/
+ 	cp -p -r plugins-disabled plugins lib plugin-development addons $(DESTDIR)$(LIBPATH)/$(NAME)/
+ 	cp -p -r CHANGELOG INSTALL LICENSE README.md whatweb.xsl $(DESTDIR)$(DOCPATH)/$(NAME)/
+-	bundle install
+ 
+ clean:
+ 	# clean will remove your my-plugins folder. be warned
+--- a/whatweb	2019-06-30 21:53:44.766573026 +0200
++++ b/whatweb	2019-06-30 22:07:08.613968424 +0200
+@@ -34,7 +34,7 @@
+ 
+ $:.unshift(File.join(File.expand_path(File.dirname(__FILE__)), '.'))
+ 
+-require 'lib/whatweb'
++require '/usr/share/whatweb/lib/whatweb'
+ 
+ #
+ # Command-line usage information (full)
