@@ -2,7 +2,7 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-cmake
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides modules that are used to find dependencies of ignition projects and generate cmake targets for consumers of ignition projects to link against."
 arch=('any')
 url="http://ignitionrobotics.org/libs/cmake"
@@ -29,7 +29,7 @@ build() {
            -DENABLE_TESTS_COMPILATION:BOOL=False
 
   # Compile
-  make -j4
+  make
 }
 
 #check() {
