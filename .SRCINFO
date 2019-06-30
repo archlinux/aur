@@ -1,6 +1,6 @@
 pkgbase = sloc
 	pkgdesc = Simple source-lines-of-code counter
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/bytbox/sloc/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = sloc
 	optdepends = perl-json
 	optdepends = perl-switch
 	optdepends = gnuplot
-	source = sloc::git+https://github.com/bytbox/sloc/#tag=v1.0
+	source = sloc::git+https://github.com/bytbox/sloc/#tag=v1.1
 	md5sums = SKIP
 
 pkgname = sloc

@@ -3,7 +3,7 @@
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 
 pkgname=sloc
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Simple source-lines-of-code counter'
 arch=('i686' 'x86_64')
