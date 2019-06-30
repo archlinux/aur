@@ -2,7 +2,7 @@
 
 pkgname=lib32-libtas-git
 pkgdesc="Tool-assisted speedrunning utility for Linux-native binaries (32-bit support)"
-pkgver=1.3.4.r62.670b3d0
+pkgver=1.3.4.r71.aae5a73
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -30,7 +30,7 @@ prepare() {
 build() {
   cd "libTAS"
 
-  ./configure --prefix=/usr --enable-i386
+  ./configure --prefix=/usr --enable-i386-lib
   make
 }
 
