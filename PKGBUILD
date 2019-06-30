@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - This package contains generic definitions of geometric shapes and bodies."
-url='http://ros.org/wiki/geometric_shapes'
+url='http://wiki.ros.org/geometric_shapes'
 
 pkgname='ros-melodic-geometric-shapes'
 pkgver='0.5.4'
