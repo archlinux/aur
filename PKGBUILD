@@ -1,10 +1,10 @@
 # Maintainer: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm
-pkgver=0.5.097
+pkgver=0.5.120
 pkgrel=1
 pkgdesc="An highly automated, intuitive, Digital Audio Workstation (DAW)"
 arch=( 'x86_64' )
-url='https://git.zrythm.org/zrythm/zrythm'
+url='https://git.zrythm.org/cgit/zrythm'
 license=( 'GPL3' )
 depends=('gtk3' 'lv2' 'lilv' 'libx11' 'jack'
   'libsndfile' 'libyaml' 'gettext' 'qt5-base'
@@ -13,10 +13,10 @@ depends=('gtk3' 'lv2' 'lilv' 'libx11' 'jack'
 makedepends=('python' 'gettext' 'sed'
              'meson' 'ninja')
 conflicts=( 'zrythm-git' )
-source=( "https://git.zrythm.org/zrythm/${pkgname}/-/archive/v$pkgver/${pkgname}-v$pkgver.tar.gz" )
-md5sums=( '5ee0d5ad295a39d46402f01aeecf9657' )
+source=( "http://git.savannah.nongnu.org/cgit/zrythm.git/snapshot/$pkgname-$pkgver.tar.gz" )
+md5sums=( '8c0e69ae2f19807e3546bc5781b5d025' )
 
-rootdir="${pkgname}-v${pkgver}"
+rootdir="${pkgname}-${pkgver}"
 
 build() {
   cd ${rootdir}/
