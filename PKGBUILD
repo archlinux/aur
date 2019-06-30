@@ -9,35 +9,35 @@ pkgdesc="An XBox/XBox 360 gamepad driver - as alternative to the xpad-kernel mod
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://xboxdrv.gitlab.io/"
 license=(GPL3)
-depends=(libx11 dbus-glib libusb)
+depends=(libx11 dbus-glib libusb python2 bluez-libs gtk2)
 makedepends=(git cmake  boost)
 provides=(xboxdrv)
 conflicts=(xboxdrv)
-source=("${pkgname}::git+https://gitlab.com/xboxdrv/xboxdrv.git"
+source=("git+https://gitlab.com/xboxdrv/xboxdrv.git#branch=develop"
          "xboxdrv.service"
          "xboxdrv.conf")
-md5sums=('SKIP'
-         'c44dc13f6d34cd7fc61c87ecd8c3a547'
-         'c73bb9cf8ff763e7c477366472d19813')
+sha256sums=('SKIP'
+            '51387a52a97d2e004a4160432131f18326e9ae655447694e170f18bdb8d7204f'
+            'f155dd059faecafa60ecaa0988aec815ee0c58f1af45075de82ae10c31db2750')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$pkgname"
+  cd "${pkgname%-git}"
   mkdir build
 }
 
 build() {
-  cd "$pkgname/build"
+  cd "${pkgname%-git}/build"
   cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr
   make
 }
 
 package() {
-  cd "$pkgname/build"
+  cd "${pkgname%-git}/build"
   make install DESTDIR="$pkgdir"
   
   install -D -m755 "$srcdir/xboxdrv.service" "$pkgdir/usr/lib/systemd/system/xboxdrv.service"

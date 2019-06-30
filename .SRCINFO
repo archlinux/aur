@@ -16,14 +16,17 @@ pkgbase = xboxdrv-git
 	depends = libx11
 	depends = dbus-glib
 	depends = libusb
+	depends = python2
+	depends = bluez-libs
+	depends = gtk2
 	provides = xboxdrv
 	conflicts = xboxdrv
-	source = xboxdrv-git::git+https://gitlab.com/xboxdrv/xboxdrv.git
+	source = git+https://gitlab.com/xboxdrv/xboxdrv.git#branch=develop
 	source = xboxdrv.service
 	source = xboxdrv.conf
-	md5sums = SKIP
-	md5sums = c44dc13f6d34cd7fc61c87ecd8c3a547
-	md5sums = c73bb9cf8ff763e7c477366472d19813
+	sha256sums = SKIP
+	sha256sums = 51387a52a97d2e004a4160432131f18326e9ae655447694e170f18bdb8d7204f
+	sha256sums = f155dd059faecafa60ecaa0988aec815ee0c58f1af45075de82ae10c31db2750
 
 pkgname = xboxdrv-git
 
