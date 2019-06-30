@@ -1,7 +1,7 @@
 _pkgname=kdoctools
 pkgname=mingw-w64-$_pkgname
 pkgver=5.45.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Documentation generation from docbook (mingw-w64)"
 license=("LGPL")
@@ -43,7 +43,7 @@ build() {
       -DCMAKE_INSTALL_DATAROOTDIR=share \
       -DDOCBOOKL10NHELPER_EXECUTABLE:PATH="${helperbin}/docbookl10nhelper" \
       -DMEINPROC5_EXECUTABLE:PATH="${helperbin}/meinproc5" \
-      -DCHECKXML5_EXECUTABLE:PATH="${helperbin}/checkxml5" \
+      -DCHECKXML5_EXECUTABLE:PATH="${helperbin}/checkXML5" \
       ..
     make
     popd
@@ -54,8 +54,8 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/${pkgname#mingw-w64-}-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
+    install ../native/bin/checkXML5 ../native/bin/meinproc5 -t "$pkgdir/usr/${_arch}/bin" -m 0755
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -rf "$pkgdir/usr/${_arch}/share"
   done
 }
