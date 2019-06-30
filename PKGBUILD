@@ -4,7 +4,7 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=syslog-ng-nosystemd
-pkgver=3.21.1
+pkgver=3.22.1
 pkgrel=1
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
@@ -12,8 +12,10 @@ license=('GPL2' 'LGPL2.1')
 groups=('eudev-base')
 url="https://www.syslog-ng.com/products/open-source-log-management/"
 depends=('awk' 'glib2' 'libcap' 'libnsl' 'udev' 'json-c' 'curl' 'libnet')
-makedepends=('flex' 'pkg-config' 'libxslt' 'mongo-c-driver' 'librabbitmq-c'
-             'python' 'libesmtp' 'hiredis' 'libdbi' 'geoip' 'libmaxminddb')
+# we need latest mongo-c-driver build to make configure version check work correctly
+makedepends=('flex' 'pkg-config' 'libxslt' 'mongo-c-driver>=1.14.0-3' 'librabbitmq-c'
+             'python' 'libesmtp' 'hiredis' 'libdbi' 'geoip' 'libmaxminddb'
+             'net-snmp')
 optdepends=('logrotate: for rotating log files'
             'libdbi: for the SQL plugin'
             'librabbitmq-c: for the AMQP plugin'
@@ -24,6 +26,7 @@ optdepends=('logrotate: for rotating log files'
             'geoip: for the GeoIP plugin'
             'libmaxminddb: for the GeoIP2 plugin'
             'python: for Python-based plugins'
+            'net-snmp: for the SNMP plugin'
             'syslog-ng-openrc: syslog-ng openrc initscript')
 provides=("syslog-ng=${pkgver}")
 replaces=('syslog-ng' 'syslog-ng-eudev' 'eventlog')
@@ -37,21 +40,21 @@ source=(https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$pkgver
         syslog-ng.conf.d
         syslog-ng.logrotate
         syslog-ng.rc)
-sha256sums=('8d163da5ad79cf3a5f043b2ed0fe18a4888d0d740542703bf2508f0b9996cd25'
-            '9175deae0b16c0c8a501919c533695254afefd52daf1dae229077cd8f71d0cd9'
+sha256sums=('0656443776fa554320cb81bbebeac72bdf871298dd2ebef7413c393aec4d74c8'
+            '9c5209303e4783e698b7afea0ae46095a427b091b60d398764043fc35a88cc7a'
             'fe6ebe5c281b34bad201d9206e607857db9a5a78f03bb4dc4440584dca610f61'
             '93c935eca56854011ea9e353b7a1da662ad40b2e8452954c5b4b5a1d5b2d5317'
             'db643d69e840dfd5d7849e857291f15fd60913527402fde806ce3911e3523063')
 
-prepare() {
-  cd "syslog-ng-$pkgver"
-
-  # the version in pkg-config is 0.0.0 and so it won't detect the flags without
-  # this. since your version is newer this is an easy fix for now, but should
-  # eventually be removed when this bug is fixed:
-  # https://bugs.archlinux.org/task/61888
-  sed -i -e 's|^LMC_MIN_VERSION="1.0.0"|LMC_MIN_VERSION="0.0.0"|' configure.ac configure
-}
+#prepare() {
+#  cd "syslog-ng-$pkgver"
+#
+#  # the version in pkg-config is 0.0.0 and so it won't detect the flags without
+#  # this. since your version is newer this is an easy fix for now, but should
+#  # eventually be removed when this bug is fixed:
+#  # https://bugs.archlinux.org/task/61888
+#  sed -i -e 's|^LMC_MIN_VERSION="1.0.0"|LMC_MIN_VERSION="0.0.0"|' configure.ac configure
+#}
 
 build() {
   cd "syslog-ng-$pkgver"
@@ -72,6 +75,7 @@ build() {
     --disable-java \
     --disable-java-modules \
     --disable-riemann \
+    --disable-kafka \
     --with-python=3 \
     --with-jsonc=system \
     --disable-systemd
