@@ -33,6 +33,7 @@ prepare() {
 build() {
   cd build
   arch-meson "../${_plug}" \
+    --buildtype=release \
     --libdir /usr/lib/vapoursynth
 
   ninja
