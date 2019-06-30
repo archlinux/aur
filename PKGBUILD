@@ -6,7 +6,7 @@
 pkgname=xf86-video-nouveau-git
 _pkgname=xf86-video-nouveau
 pkgver=1.0.16+0+gec2b45d
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source 3D acceleration driver for nVidia cards"
 arch=('i686' 'x86_64')
 url="http://nouveau.freedesktop.org/"
