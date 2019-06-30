@@ -3,7 +3,7 @@ pkgname=mingw-w64-$_pkgname
 pkgver=5.45.0
 pkgrel=1
 arch=(any)
-pkgdesc="Qt library that implements the Open Collaboration Services API (mingw-w64)"
+pkgdesc="Documentation generation from docbook (mingw-w64)"
 license=("LGPL")
 depends=(mingw-w64-karchive mingw-w64-docbook-wrapper docbook-xsl "docbook-xml>=4.5")
 groups=(mingw-w64-kf5)

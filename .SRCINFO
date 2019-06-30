@@ -1,5 +1,5 @@
 pkgbase = mingw-w64-kdoctools
-	pkgdesc = Qt library that implements the Open Collaboration Services API (mingw-w64)
+	pkgdesc = Documentation generation from docbook (mingw-w64)
 	pkgver = 5.45.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
@@ -10,6 +10,8 @@ pkgbase = mingw-w64-kdoctools
 	makedepends = perl-uri
 	makedepends = mingw-w64-ki18n
 	makedepends = mingw-w64-qt5-tools
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
 	depends = mingw-w64-karchive
 	depends = mingw-w64-docbook-wrapper
 	depends = docbook-xsl
