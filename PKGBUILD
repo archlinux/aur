@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=amino-git
 pkgver=r1538.c979e7f
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight robotics utility library"
 arch=('i686' 'x86_64')
 url="https://www.github.com/golems/amino"
@@ -46,7 +46,7 @@ build() {
     sed -i 's/-lblas/-lblas -lcblas/g' Makefile
 
     msg "Building the project"
-    make -j4
+    make
 }
 
 package() {
