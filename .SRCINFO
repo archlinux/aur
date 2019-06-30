@@ -1,0 +1,15 @@
+pkgbase = emake-git
+	pkgdesc = Yet the simplest build toolchain for gcc/clang projects
+	pkgver = 3.6.9.r60.a0bf239
+	pkgrel = 1
+	url = https://github.com/skywind3000/emake
+	arch = any
+	license = GPL
+	depends = python2
+	provides = emake
+	conflicts = emake
+	source = emake-git::git+https://github.com/skywind3000/emake.git
+	sha512sums = SKIP
+
+pkgname = emake-git
+
