@@ -7,23 +7,22 @@
 # - when building ssreflect modify the download location, as mentioned by daoo, and if you have coq 8.4pl4-1 you will have to remove the coq>=8.4 dependency since makepkg gets confused.
 
 pkgname=ssreflect
-pkgver=1.6.1
-pkgrel=4
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="The ssreflect unit of the mathematical components library for Coq."
 url="https://math-comp.github.io/math-comp/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('coq>=8.5' 'ocaml-findlib') # Works with 8.4pl6, 8.5pl3, and 8.6.0 but don't quite know how to say that
-makedepends=('camlp5-transitional>=6.12')
+depends=('coq>=8.7' 'ocaml-findlib')
+makedepends=()
 source=(mathcomp-$pkgver.tar.gz::https://github.com/math-comp/math-comp/tarball/mathcomp-$pkgver)
-sha256sums=('b36883f87bcfdf6e9bfd4ded69c4a1215ff93b0421fabae8c852ccba15043801')
-sha512sums=('bdafa1445483e5028796e9e9a0c63ecd248f3ac385e3003403f5749fb6454bed2084e75f1982a474f17d7f45ca4a4894ee9f7a4cd708d1fa980639f2e4c1e548')
+sha256sums=('0c9a7f8ffc4166a78141f72756f72eb739d6d2824654ef0cc34b2d8cea77a540')
+sha512sums=('2ed88d8302be7279e30bc17636cdcf059f3c08d900e0734fb2dc351b8003ec2ae645bcbb6d9ee89bc342ae9176a114291f36772fe930af1528a7d0171c16b7f4')
 
 build() {
   cd $srcdir/math-comp-math-comp-*/mathcomp/$pkgname
 
-  # Per recommendations from README, use -j 3
-  make -j 3
+  make
 }
 
 package(){
