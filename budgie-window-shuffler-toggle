@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/share/budgie-desktop/windowshuffler/matrix_wrapper $@
