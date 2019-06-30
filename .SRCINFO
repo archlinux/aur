@@ -1,7 +1,7 @@
 pkgbase = simbody
 	pkgdesc = High-performance C++ multibody dynamics/physics library for simulating articulated biomechanical and mechanical systems like vehicles, robots, and the human skeleton.
 	pkgver = 3.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://simtk.org/home/simbody
 	arch = i686
 	arch = x86_64
