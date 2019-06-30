@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Launch a PID control node."
-url='http://wiki.ros.org/pid'
+url='https://wiki.ros.org/pid'
 
 pkgname='ros-melodic-pid'
 pkgver='0.0.24'
