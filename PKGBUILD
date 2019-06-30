@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - tf2_bullet."
-url='http://www.ros.org/wiki/tf2_bullet'
+url='http://wiki.ros.org/tf2_bullet'
 
 pkgname='ros-melodic-tf2-bullet'
 pkgver='0.6.2'
