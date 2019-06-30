@@ -6,10 +6,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20190627
+pkgver=4.0.0v20190630
 _pkgver=4.0.0
-_snapshot_=20190627
-_snapver_=0228
+_snapshot_=20190630
+_snapver_=0229
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
@@ -17,11 +17,12 @@ pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot'
 url='https://nightlies.videolan.org/'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
-depends=('qt5-graphicaleffects' 'qt5-quickcontrols2' 'a52dec' 'libdvbpsi' 'libxpm'  'libdca' 'libproxy' 'lua' 'libidn'
+depends=('qt5-graphicaleffects' 'qt5-quickcontrols2' 'a52dec' 'libdvbpsi'
+         'libxpm'  'libdca' 'libproxy' 'lua' 'libidn' 'aribb25' 'libvncserver'
          'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libarchive' 'qt5-base'  'libgcrypt' 'qt5-x11extras' 'qt5-svg' 'freetype2'
-         'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo-git'
+         'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
          'wayland-protocols' 'aribb24' 'libfdk-aac')
 makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
@@ -123,9 +124,6 @@ prepare() {
   ./bootstrap
 
   patch -Np1 -i "${srcdir}/0001-lua-Fix-build-using-lua-5.3.patch"
-  patch -Np1 -i "${srcdir}/3-3-opengl-update-libplacebo-call-for-changed-API.patch"
-  patch -Np1 -i "${srcdir}/1-3-placebo-update-for-new-tone-mapping-desaturation-algo.patch"
-  patch -Np1 -i "${srcdir}/2-3-placebo-update-for-new-peak-detection-algo.patch"
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
   sed 's|whoami|echo builduser|g' -i configure
@@ -270,7 +268,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('2d545ae487a3ebb2a43810f4e19061ee351c3e73746d11435699bee36633a003'
+sha256sums=('ebcc5d048c5544394d5d508c08d56a8aa84d520a4dc149699fb81464f0e49095'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             '3e6bddbaed443e40036c494a0754aedd2f94fe41bfa3754855e16f7452a03cdf'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
