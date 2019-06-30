@@ -8,7 +8,7 @@ url='https://github.com/jesseduffield/lazydocker'
 license=('MIT')
 makedepends=('go' 'dep')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jesseduffield/lazydocker/archive/v${pkgver}.tar.gz")
-sha1sums=('33f1c279fd0c5828a79e86f80ddb94e7ce53c936')
+sha1sums=('0b4ded9bee5a4227e6ccfdf085a135b623a5a9c1')
 
 prepare() {
     mkdir -p gopath/src/github.com/jesseduffield/
