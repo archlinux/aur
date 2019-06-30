@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
  
 pkgname=mauikit-git
-pkgver=r210.32b20e6
+pkgver=r406.76895b8
 pkgrel=1
 pkgdesc='Utilities and "templated" controls based on Kirigami and QCC2 that follow the ongoing work on the Maui HIG'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  cmake \
+  cmake . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
