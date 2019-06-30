@@ -37,7 +37,6 @@ build() { # Creating build directory
   make
 }
 
-
 package() {
   msg "Installing files"
 
