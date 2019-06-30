@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Extract geometry value of a vehicle from urdf."
-url='http://ros.org/wiki/urdf_geometry_parser'
+url='http://wiki.ros.org/urdf_geometry_parser'
 
 pkgname='ros-melodic-urdf-geometry-parser'
 pkgver='0.0.3'
