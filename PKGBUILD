@@ -2,7 +2,7 @@
 # Contributor: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=pyvista
 pkgname=python-pyvista
-pkgver=0.20.3
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="A Streamlined Python Interface to the Visualization Toolkit"
 arch=('any')
@@ -19,7 +19,7 @@ replaces=('python-vtkinterface'
 )
 makedepends=('python-setuptools')
 source=("https://github.com/pyvista/pyvista/archive/${pkgver}.tar.gz")
-sha256sums=('eec4936737972a2155f9ee8c524cefb50545599083354e33c864713717be5cd4')
+sha256sums=('24e92419f228322545148190899bdb81d0d17501f3e6d6f6fa4a2b62de82b329')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"

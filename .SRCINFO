@@ -1,6 +1,6 @@
 pkgbase = python-pyvista
 	pkgdesc = A Streamlined Python Interface to the Visualization Toolkit
-	pkgver = 0.20.3
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/pyvista/pyvista
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-pyvista
 	depends = vtk
 	replaces = python-vtkinterface
 	replaces = python-vista
-	source = https://github.com/pyvista/pyvista/archive/0.20.3.tar.gz
-	sha256sums = eec4936737972a2155f9ee8c524cefb50545599083354e33c864713717be5cd4
+	source = https://github.com/pyvista/pyvista/archive/0.21.0.tar.gz
+	sha256sums = 24e92419f228322545148190899bdb81d0d17501f3e6d6f6fa4a2b62de82b329
 
 pkgname = python-pyvista
 
