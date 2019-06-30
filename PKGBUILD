@@ -4,7 +4,7 @@
 
 pkgname=openshot
 pkgver=2.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="an open-source, non-linear video editor for Linux based on MLT framework"
 arch=('any')
 url="https://www.openshot.org/"
@@ -17,8 +17,16 @@ depends=('python-mlt' 'sdl' 'librsvg' 'mplayer'
 optdepends=('frei0r-plugins: effects'
 	    'libquicktime' 'libavc1394' 'faac' 'jack')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/openshot-qt/archive/v$pkgver.tar.gz")
-sha256sums=('8197923b3fff2010ee69c75469818543674a12fcb8fcb08944471e4ead3426be')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/openshot-qt/archive/v$pkgver.tar.gz" 2837.patch)
+sha256sums=('8197923b3fff2010ee69c75469818543674a12fcb8fcb08944471e4ead3426be'
+            '3a4da79b668d263095559a9e5fa257bdb49fa8a6aa96d02e5c4e27def2b10634')
+
+prepare() {
+  cd "$srcdir"/openshot-qt-$pkgver
+
+  # Fix hicolor icon paths. Fix is part of develop branch (2.4.4+)
+  patch -p1 -i "$srcdir/2837.patch"
+}
 
 package() {
   cd "$srcdir"/openshot-qt-$pkgver

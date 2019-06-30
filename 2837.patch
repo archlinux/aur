@@ -1,0 +1,31 @@
+From c254a0aef217ef0cc3fd256accdb32180e18b24d Mon Sep 17 00:00:00 2001
+From: Florian Pritz <bluewind@server-speed.net>
+Date: Sat, 15 Jun 2019 11:39:29 +0200
+Subject: [PATCH] Install icons to hicolor/NxN instead of hicolor/N
+
+Nearly all other Arch Linux packages also follow this pattern and the Freedesktop specification also only uses this pattern when providing examples.
+
+References:
+https://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html
+https://bugs.archlinux.org/task/62900
+---
+ setup.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index dbae3900..43e08e0a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -71,9 +71,9 @@
+     ('share/pixmaps', ['xdg/openshot-qt.svg']),
+     # XDG Freedesktop icon paths
+     ('share/icons/hicolor/scalable/apps', ['xdg/openshot-qt.svg']),
+-    ('share/icons/hicolor/64/apps', ['xdg/icon/64/openshot-qt.png']),
+-    ('share/icons/hicolor/256/apps', ['xdg/icon/256/openshot-qt.png']),
+-    ('share/icons/hicolor/512/apps', ['xdg/icon/512/openshot-qt.png']),
++    ('share/icons/hicolor/64x64/apps', ['xdg/icon/64/openshot-qt.png']),
++    ('share/icons/hicolor/256x256/apps', ['xdg/icon/256/openshot-qt.png']),
++    ('share/icons/hicolor/512x512/apps', ['xdg/icon/512/openshot-qt.png']),
+     # XDG desktop mime types cache
+     ('share/mime/packages', ['xdg/openshot-qt.xml']),
+     # launcher (mime.types)
