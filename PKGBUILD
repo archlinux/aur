@@ -25,7 +25,7 @@ source=(
     "mscs.install"
     "mscs.patch")
 md5sums=('SKIP'
-         '7a5b14ce71cb4c75ac9df6ded034c527'
+         '197c788a097a5c2d087935c69db67fa1'
          '815626b124df3779188ebb56427c7976')
 pkgver(){
     cd $pkgname

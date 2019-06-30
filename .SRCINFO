@@ -21,7 +21,7 @@ pkgbase = mscs
 	source = mscs.install
 	source = mscs.patch
 	md5sums = SKIP
-	md5sums = 7a5b14ce71cb4c75ac9df6ded034c527
+	md5sums = 197c788a097a5c2d087935c69db67fa1
 	md5sums = 815626b124df3779188ebb56427c7976
 
 pkgname = mscs
