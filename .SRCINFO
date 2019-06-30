@@ -1,0 +1,23 @@
+pkgbase = brother-hl2135w
+	pkgdesc = LPR and CUPS driver for the Brother HL2135W
+	pkgver = 3.1.0_1
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us
+	install = brother-hl2135w.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = ghostscript
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlf101124/brgenml1lpr-3.1.0-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf101126/brgenml1cupswrapper-3.1.0-1.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	md5sums = 9ab1b4096a3258ef3498377ce0a76d82
+	md5sums = cdba9c13be7a39ad75daa575f7cdf76e
+	md5sums = 809c64563dbd89f89ca68f9218c59cf5
+	md5sums = 2441487090df6c4dc1defd2f7d015bec
+
+pkgname = brother-hl2135w
+
