@@ -1,6 +1,6 @@
 pkgbase = adaptativeneuralnetwork
 	pkgdesc = AdaptativeNeuralNetwork : A static library containing multiple neural network models written in C
-	pkgver = 0.1.1.4
+	pkgver = 0.1.1.5
 	pkgrel = 0
 	url = https://gitlab.com/cedricfarinazzo/adaptativeneuralnetwork
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = adaptativeneuralnetwork
 	makedepends = gcc
 	depends = glibc
 	depends = graphviz
-	source = https://github.com/cedricfarinazzo/AdaptativeNeuralNetwork/archive/0.1.1.4-1.tar.gz
+	source = https://github.com/cedricfarinazzo/AdaptativeNeuralNetwork/archive/0.1.1.5.tar.gz
 	md5sums = SKIP
 
 pkgname = adaptativeneuralnetwork
