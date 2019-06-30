@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package contains the ROS bindings for the tf2 library, for both Python and C++."
-url='http://www.ros.org/wiki/tf2_ros'
+url='http://wiki.ros.org/tf2_ros'
 
 pkgname='ros-melodic-tf2-ros'
 pkgver='0.6.5'
