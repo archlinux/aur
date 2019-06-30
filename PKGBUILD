@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=darknet-alexeyab-git
 pkgver=r1341.f058244
-pkgrel=3
+pkgrel=4
 pkgdesc='YOLO: Real Time Object Detection Neural Network Library (AlexeyAB fork)'
 arch=('i686' 'x86_64')
 url='https://github.com/AlexeyAB/darknet'
@@ -21,6 +21,7 @@ pkgver() {
   cd "$_name"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 build() { # Creating build directory
   cd "${srcdir}/${_name}/"
   mkdir -p "build-release"
@@ -33,7 +34,7 @@ build() { # Creating build directory
     -DCMAKE_INSTALL_PREFIX='/usr'
 
   msg "Building the project"
-  make -j4
+  make
 }
 
 
