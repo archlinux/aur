@@ -5,12 +5,11 @@ pkgbase='python-catkin'
 pkgname=('python-catkin' 'python2-catkin')
 _module='catkin_pkg'
 pkgver='0.4.12'
-pkgrel=1
+pkgrel=2
 pkgdesc="catkin package library"
 url="http://wiki.ros.org/catkin_pkg"
 arch=('any')
 license=('BSD')
-conflicts=('python2-catkin_pkg' 'python-catkin-pkg' 'python-catkin_pkg')
 makedepends=(
 	'python' 'python2'
 	'python-setuptools' 'python2-setuptools'
@@ -48,6 +47,7 @@ package_python2-catkin() {
 		'python2-docutils'
 		'python2-pyparsing'
 	)
+	provides=('python2-catkin_pkg')
 
     cd "${srcdir}/${_module}-${pkgver}"
 
@@ -63,6 +63,7 @@ package_python-catkin() {
 		'python-docutils'
 		'python-pyparsing'
 	)
+	provides=('python-catkin-pkg' 'python-catkin_pkg')
 
     cd "${srcdir}/${_module}-${pkgver}"
 

@@ -1,7 +1,7 @@
 pkgbase = python-catkin
 	pkgdesc = catkin package library
 	pkgver = 0.4.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/catkin_pkg
 	arch = any
 	license = BSD
@@ -27,9 +27,6 @@ pkgbase = python-catkin
 	makedepends = python2-dateutil
 	makedepends = python-docutils
 	makedepends = python2-docutils
-	conflicts = python2-catkin_pkg
-	conflicts = python-catkin-pkg
-	conflicts = python-catkin_pkg
 	source = https://github.com/ros-infrastructure/catkin_pkg/archive/0.4.12.tar.gz
 	sha256sums = cc2f4f4c02aa72d3b1fad18fe87348ac009c4b9da5602a09cd954a287d330e4e
 
@@ -39,6 +36,8 @@ pkgname = python-catkin
 	depends = python-dateutil
 	depends = python-docutils
 	depends = python-pyparsing
+	provides = python-catkin-pkg
+	provides = python-catkin_pkg
 
 pkgname = python2-catkin
 	depends = python2
@@ -46,4 +45,5 @@ pkgname = python2-catkin
 	depends = python2-dateutil
 	depends = python2-docutils
 	depends = python2-pyparsing
+	provides = python2-catkin_pkg
 
