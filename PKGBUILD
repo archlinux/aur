@@ -3,8 +3,8 @@
 pkgname=adaptativeneuralnetwork
 _fullname=AdaptativeNeuralNetwork
 pkgbase=adaptativeneuralnetwork
-pkgver=0.1.1.4
-_fullver=0.1.1.4-1
+pkgver=0.1.1.5
+_fullver=0.1.1.5
 pkgrel=0
 epoch=
 pkgdesc="AdaptativeNeuralNetwork : A static library containing multiple neural network models written in C"
