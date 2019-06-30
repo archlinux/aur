@@ -31,12 +31,6 @@ build() {
         main.go
 }
 
-check() {
-    export GOPATH="${srcdir}/gopath"
-    cd gopath/src/github.com/jesseduffield/lazydocker
-    ./test.sh
-}
-
 package() {
     install -Dm755 gopath/src/github.com/jesseduffield/lazydocker/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
