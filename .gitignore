@@ -1,0 +1,5 @@
+pkg/
+src/
+lazydocker/
+*.tar.gz
+*.tar.xz
