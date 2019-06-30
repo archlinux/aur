@@ -2,14 +2,14 @@
 
 pkgname=ect
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Efficient Compression Tool (or ECT) is a ++ file optimizer. It supports PNG, JPEG, GZIP and ZIP files.'
 url='https://github.com/fhanau/Efficient-Compression-Tool'
 arch=('i686' 'x86_64')
 license=('Apache2')
 source=("ect::git+https://github.com/fhanau/Efficient-Compression-Tool.git#tag=v${pkgver}")
 sha256sums=('SKIP')
-makedepends=('nasm')
+makedepends=('nasm' 'git')
 
 prepare(){
 	cd "${srcdir}/${pkgname}/src"
