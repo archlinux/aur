@@ -2,7 +2,7 @@
 pkgname=precached-git
 _pkgname=precached
 pkgver=1.7.0
-pkgrel=8
+pkgrel=9
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
@@ -98,4 +98,3 @@ package() {
   install -m 644 -T "support/shell/completions/en_US/precached-trigger.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_precached-trigger"
   install -m 644 -T "support/shell/completions/en_US/precached-debug.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_precached-debug"
 }
-
