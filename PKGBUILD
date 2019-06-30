@@ -2,7 +2,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=angelscript
 pkgver=2.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely flexible cross-platform scripting library."
 arch=('i686' 'x86_64')
 url="http://angelcode.com/angelscript/"
@@ -16,7 +16,7 @@ sha512sums=('eaf972ecf965fe4f72e55755f5e796499018e918f93cfd835b1ca20f9338e299e8d
 build() {
   cd "$srcdir/sdk/angelscript/projects/gnuc"
 
-  make -j4 all
+  make all
 }
 
 package() {
