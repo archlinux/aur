@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ignition-cmake-0
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides modules that are used to find dependencies of ignition projects and generate cmake targets for consumers of ignition projects to link against."
 arch=('any')
 url="http://ignitionrobotics.org/libs/cmake"
@@ -29,20 +29,20 @@ build() {
            -DENABLE_TESTS_COMPILATION:BOOL=False
 
   # Compile
-  make -j4
+  make
 }
 
-check() {
-  cd "$srcdir/$_dir/build"
-
-  cmake .. -DCMAKE_BUILD_TYPE="Release" \
-           -DCMAKE_INSTALL_PREFIX="/usr" \
-           -DCMAKE_INSTALL_LIBDIR="lib" \
-           -DENABLE_TESTS_COMPILATION:BOOL=True
-
-  make -j4
-  make test
-}
+#check() {
+#  cd "$srcdir/$_dir/build"
+#
+#  cmake .. -DCMAKE_BUILD_TYPE="Release" \
+#           -DCMAKE_INSTALL_PREFIX="/usr" \
+#           -DCMAKE_INSTALL_LIBDIR="lib" \
+#           -DENABLE_TESTS_COMPILATION:BOOL=True
+#
+#  make
+#  make test
+#}
 
 package() {
   cd "$srcdir/$_dir/build"
