@@ -1,0 +1,16 @@
+pkgbase = sparkz
+	pkgdesc = A high performance, modular discord bot.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.stykers.moe/scm/sparkz/sparkz.git
+	install = sparkz.install
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-virtualenv
+	depends = bash
+	source = sparkz::https://git.stykers.moe/scm/sparkz/sparkz.git
+	md5sums = SKIP
+
+pkgname = sparkz
+
