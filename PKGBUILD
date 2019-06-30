@@ -2,16 +2,16 @@
 # Contributor: quomoow <quomoow@gmail.com>
 
 pkgname=python-pg8000
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
 url='https://github.com/tlocke/pg8000'
 license=(BSD)
 makedepends=(python-setuptools)
-depends=(python python-passlib)
+depends=(python python-scramp)
 source=("https://files.pythonhosted.org/packages/source/p/pg8000/pg8000-$pkgver.tar.gz")
-sha256sums=('2208c7aaffe8d61f5c4ccbefeb74ba033003899e64aee37c0eb98aadae8b9c6b')
+sha256sums=('eebcb4176a7e407987e525a07454882f611985e0becb2b73f76efb93bbdc0aab')
 
 build() {
   cd pg8000-$pkgver
