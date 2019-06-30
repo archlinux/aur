@@ -36,7 +36,7 @@ build() {
         -ldflags=-extldflags=-zrelro \
         -ldflags=-extldflags=-znow \
         -ldflags "-s -w -X main.version=${pkgver}" \
-        -o ${pkgname} \
+        -o ${_pkgname} \
         main.go
 }
 
@@ -47,5 +47,5 @@ check() {
 }
 
 package() {
-    install -Dm755 gopath/src/github.com/jesseduffield/lazydocker/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+    install -Dm755 gopath/src/github.com/jesseduffield/lazydocker/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 }
