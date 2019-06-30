@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - sound_play provides a ROS node that translates commands on a ROS topic (robotsound) into sounds."
-url='http://ros.org/wiki/sound_play'
+url='https://wiki.ros.org/sound_play'
 
 pkgname='ros-melodic-sound-play'
 pkgver='0.3.2'
