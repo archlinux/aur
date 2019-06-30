@@ -1,6 +1,6 @@
 # Maintainer: Fabian Bornschein <plusfabi(At)gmail(Dot)com>
 pkgname=game-devices-udev
-pkgver=0.3
+pkgver=0.4
 pkgrel=0
 pkgdesc="Udev rules for controllers"
 url='https://gitlab.com/Fabish/game-devices-udev'
@@ -12,7 +12,7 @@ conflicts=('steam-devices')
 provides=('steam-devices')
 install=${pkgname}.install
 source=("https://gitlab.com/Fabish/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip")
-sha512sums=('225d4021c5d2797b9aded06c71cc1ca1531744769ede8605e6eebee0b50f759c7c56a1e52ca8d5fbbbb4fa5af926b0db0bdd99bf98c46ddd077032e57398d12d')
+sha512sums=('384c9b6681c78e00acba2864f1e4dc69ee84ba7c7022b85164f05f82e4f20d8b03eeb5040a375f43271c76b93816c7f0d88a02ca40ab2d4b345e673d84b8c9ba')
 
 package()
 {
