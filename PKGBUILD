@@ -2,14 +2,14 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-fuel_tools
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ client library and command line tools for interacting with Ignition Fuel servers"
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org/libs/fuel_tools"
 license=('Apache')
 groups=('development')
-makedepends=('ignition-cmake')
-depends=('curl' 'jsoncpp' 'libyaml' 'libzip' 'ignition-common')
+depends=('curl' 'jsoncpp' 'libyaml' 'libzip' 'ignition-common>=3')
+makedepends=('ignition-cmake>=2')
 optdepends=('ruby')
 conflicts=()
 source=("https://bitbucket.org/ignitionrobotics/ign-fuel-tools/get/ignition-fuel-tools3_${pkgver}.tar.bz2")
@@ -30,7 +30,7 @@ build() {
            -DBUILD_TESTING:BOOL=False
 
   # Compile
-  make
+  make -j4
 }
 
 #check() {
@@ -41,7 +41,7 @@ build() {
 #           -DCMAKE_INSTALL_LIBDIR="lib" \
 #           -DBUILD_TESTING:BOOL=True
 #
-#  make
+#  make -j4
 #  make test
 #}
 
