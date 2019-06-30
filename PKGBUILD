@@ -2,7 +2,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=code-eli-git
 pkgver=r821.f9ff74f
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of C++ libraries that provide a variety of functionalities.'
 arch=('i686' 'x86_64')
 url='https://github.com/ramcdona/Code-Eli'
@@ -35,7 +35,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
 
   msg "Building the project"
-  make -j4
+  make
 }
 
 
