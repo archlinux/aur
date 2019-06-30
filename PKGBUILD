@@ -4,7 +4,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=libdart
 pkgver=6.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
 url="https://dartsim.github.io"
@@ -44,13 +44,13 @@ build() {
     "${srcdir}/${_name}-${pkgver}"
 
 	msg "Building the project"
-	make -j4
+	make
 }
 
 #check() {
 #	cd "${srcdir}/${_name}-${pkgver}/build"
 #	msg "Compiling unit tests"
-#	make -j4 tests
+#	make tests
 #	msg "Running unit tests"
 #	make test
 #}
