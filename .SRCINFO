@@ -27,6 +27,7 @@ pkgbase = monero-wallet-qt-git
 	depends = qt5-webengine
 	depends = qt5-x11extras
 	depends = qt5-xmlpatterns
+	depends = qt5-svg
 	provides = monero-wallet-qt
 	conflicts = monero-wallet-qt
 	source = git+https://github.com/monero-project/monero-gui
