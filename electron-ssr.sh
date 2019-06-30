@@ -1,2 +1,2 @@
 #!/bin/bash
-exec electron /usr/share/electron-ssr/app.asar "$@"
+exec electron4 /usr/share/electron-ssr/app.asar "$@"

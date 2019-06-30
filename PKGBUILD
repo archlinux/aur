@@ -3,14 +3,14 @@
 
 pkgname=electron-ssr
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Shadowsocksr client using electron.'
-arch=('x86_64')
+arch=('x86_64' 'i686')
 conflicts=("electron-ssr-git")
 provides=("electron-ssr")
 url='https://github.com/shadowsocksrr/electron-ssr'
 license=('MIT')
-depends=('electron')
+depends=('electron4')
 makedepends=('yarn' 'hicolor-icon-theme')
 optdepends=('libsodium: sodium crypto support')
 options=('!strip')
@@ -25,7 +25,7 @@ sha256sums=('90e36f2116d283d20eae0047fc5b045c457c5c14ae844a2603bdcf70dc0fb1a3'
             '87561b47486c2485c76136172c87f0df16ee9dc4cb85be7d77ce274328f92735'
             'f96b27d2f826bf4e1c96f0154516c1e2cf07536f745128a9c2e5ec113cea6446'
             'e4dff411a6196ad0189a3102ac10aff024e189c350895c4a74c15588ea834723'
-            'ae121e8a6995358b7e23881102e22b011a520f859b62675c129b5f99800bea0e')
+            '6a673bff7f0cff9ef5a605c18ec369abb26e209416f90c015e2027e84dd02571')
 
 prepare() {
 	# Remove useless things
