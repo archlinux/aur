@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ignition-math-4
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Math classes and functions for robot applications"
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org/"
@@ -30,20 +30,20 @@ build() {
            -DBUILD_TESTING:BOOL=False
 
   # Compile
-  make -j4
+  make
 }
 
-check() {
-  cd "$srcdir/$_dir/build"
-
-  cmake .. -DCMAKE_BUILD_TYPE="Release" \
-           -DCMAKE_INSTALL_PREFIX="/usr" \
-           -DCMAKE_INSTALL_LIBDIR="lib" \
-           -DBUILD_TESTING:BOOL=True
-
-  make -j4
-  make test
-}
+#check() {
+#  cd "$srcdir/$_dir/build"
+#
+#  cmake .. -DCMAKE_BUILD_TYPE="Release" \
+#           -DCMAKE_INSTALL_PREFIX="/usr" \
+#           -DCMAKE_INSTALL_LIBDIR="lib" \
+#           -DBUILD_TESTING:BOOL=True
+#
+#  make
+#  make test
+#}
 
 package() {
   cd "$srcdir/$_dir/build"
