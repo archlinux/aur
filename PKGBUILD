@@ -12,6 +12,7 @@ license=('GPL3')
 source=("git://$_pkgorg/$_pkgname.git")
 md5sums=(SKIP)
 depends=('aurutils' 'devtools' 'rsync')
+makedepends=('git')
 optdepends=('gnupg')
 pkgver() {
   cd "$srcdir/$_pkgname"

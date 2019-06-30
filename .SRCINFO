@@ -5,6 +5,7 @@ pkgbase = crema-git
 	url = https://github.com/mipimipi/crema
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = aurutils
 	depends = devtools
 	depends = rsync
