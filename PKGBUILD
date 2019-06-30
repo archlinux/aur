@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - rqt is a Qt-based framework for GUI development for ROS."
-url='http://ros.org/wiki/rqt'
+url='http://wiki.ros.org/rqt'
 
 pkgname='ros-melodic-rqt'
 pkgver='0.5.0'
