@@ -3,8 +3,8 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=4.3
-pkgrel=2
+pkgver=4.3.1
+pkgrel=1
 _wwwpkgname=AdminLTE
 _wwwpkgver=4.3
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -26,7 +26,7 @@ backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt' 'etc/pihole/regex.
 source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	    admin-$_wwwpkgver.tar.gz::https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
         "https://raw.githubusercontent.com/max72bra/pi-hole-server-archlinux-customization/master/arch-server-core-$pkgver.patch"
-        "https://raw.githubusercontent.com/max72bra/pi-hole-server-archlinux-customization/master/arch-server-admin-$pkgver.patch"
+        "https://raw.githubusercontent.com/max72bra/pi-hole-server-archlinux-customization/master/arch-server-admin-$_wwwpkgver.patch"
 	    dnsmasq.include
 	    lighttpd.pi-hole.conf
 	    nginx.pi-hole.conf
@@ -40,9 +40,9 @@ source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$
 	    piholeDebug.sh
 )
 
-md5sums=('27582692821f86f1fe1e702633a6fe02'
+md5sums=('3973f2a9d7fcd6ea10265feaa397f108'
          '670e5c4c4ca0cba6f732bf622918784c'
-         '3f8b5915be48fe58ffebe1b3255a255c'
+         'e7bd89ed7b60cda7905176d338615c00'
          'f5fd7abfcf0ffdbfd181d839fb8edd60'
          '4d9038588164bb9130c8ca11653f83f3'
          '971cc2859672341d77f8deba702fb7f7'
@@ -61,7 +61,7 @@ prepare() {
   patch -Np1 -i "$srcdir"/arch-server-core-$pkgver.patch
   patch -p1 -i "$srcdir"/version.patch
   cd "$srcdir"/"$_wwwpkgname"-"$_wwwpkgver"
-  patch -Np1 -i "$srcdir"/arch-server-admin-$pkgver.patch
+  patch -Np1 -i "$srcdir"/arch-server-admin-$_wwwpkgver.patch
 }
 
 package() {
