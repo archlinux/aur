@@ -1,15 +1,15 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=sccache
-pkgver=0.2.8
-pkgrel=3
+pkgver=0.2.9
+pkgrel=1
 pkgdesc='ccache with cloud storage'
 arch=(i686 x86_64)
 url=https://github.com/mozilla/sccache
 license=(Apache)
 makedepends=(cargo)
 source=($url/archive/$pkgver.tar.gz)
-sha512sums=('3469a50339892ca2495f5655a1bd9fcb21a60bd01384c6851789e806902d95d605a941b1a09e0172eef663bddbc7d32fba3afc9ec76bd2a27f32acb1b7b0a35f')
+sha512sums=('289109338913c935752e9bbcd45b7bf4ef48be03b5a7d92c93ac220b98f04338ff562030cf126f80bda8db41e83b1103e6c2bd55caaeef4d7804157f4f685080')
 
 build() {
   cd sccache-$pkgver
