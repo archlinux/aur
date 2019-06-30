@@ -1,3 +1,4 @@
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: ezzetabi <ezzetabi@gawab.com>
 # Contributor: Sebastian Schwarz <seschwar@gmail.com>
 
