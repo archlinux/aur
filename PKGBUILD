@@ -3,14 +3,14 @@
 # Contributor: marauder <abhinav.kssk@gmail.com>
 pkgname=ignition-msgs
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standard set of message definitions, used by Ignition Transport, and other applications."
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org"
 license=('Apache')
 groups=('development')
-depends=('protobuf' 'protobuf-c' 'ignition-math' 'ignition-tools')
-makedepends=('ignition-cmake' 'ruby-ronn' 'doxygen')
+depends=('protobuf' 'protobuf-c' 'ignition-math>=6' 'ignition-tools')
+makedepends=('ignition-cmake>=2' 'ruby-ronn' 'doxygen')
 optdepends=()
 conflicts=()
 source=("https://bitbucket.org/ignitionrobotics/ign-msgs/get/${pkgname}4_${pkgver}.tar.bz2")
@@ -37,7 +37,7 @@ check() {
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DBUILD_TESTING:BOOL=True
 
-  make
+  make -j4
   make test
 }
 
