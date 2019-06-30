@@ -4,7 +4,7 @@
 
 pkgname=fs-uae-launcher
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical user interface for the fs-uae Amiga emulator'
 arch=('any')
 url='https://fs-uae.net/launcher/'

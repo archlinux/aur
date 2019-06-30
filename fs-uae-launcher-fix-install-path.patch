@@ -1,11 +1,12 @@
---- fs-uae-launcher.orig	2015-10-23 11:52:26.586256352 +0200
-+++ fs-uae-launcher	2015-10-23 11:51:29.568761923 +0200
-@@ -5,6 +5,8 @@
+diff -Nawurp a/fs-uae-launcher b/fs-uae-launcher
+--- a/fs-uae-launcher	2019-06-21 16:49:42.000000000 +0000
++++ b/fs-uae-launcher	2019-06-29 13:38:13.351496262 +0000
+@@ -8,6 +8,8 @@ if sys.version_info[0] < 3 or sys.versio
  
  if os.environ.get("FSGS_PYTHONPATH", ""):
      sys.path.insert(0, os.environ.get("FSGS_PYTHONPATH"))
 +else:
 +    sys.path.insert(0, "/usr/share/fs-uae-launcher")
  
- from fs_uae_launcher.main import main
- main()
+ if os.getcwd().startswith("C:\\msys64\\home\\"):
+     os.environ["PATH"] = "C:\\msys64\\mingw64\\bin;" + os.environ["PATH"]
