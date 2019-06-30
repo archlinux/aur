@@ -2,7 +2,7 @@
 
 _plug=waifu2x-caffe
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r13.0.g3f9fcf8
+pkgver=r13.1.g102e7f2
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (NVIDIA users only)(static libcaffe)(GIT version)"
 arch=('x86_64')
@@ -21,17 +21,15 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'boost'
-             'gcc7'
+             'gcc8'
              'meson'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Waifu2x-caffe.git"
         'git+https://github.com/HolyWu/caffe.git#branch=lltcggie/custom'
-        'esee'
         )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             )
 
@@ -43,9 +41,9 @@ pkgver() {
 prepare() {
   mkdir -p fakeroot build
 
-  # CUDA 10.x requires gcc7
+  # CUDA 10.1.x requires gcc8
   sed -e '/CUSTOM_CXX/s/^# //' \
-      -e '/CUSTOM_CXX/s/$/-7/' \
+      -e '/CUSTOM_CXX/s/$/-8/' \
       -i caffe/Makefile.config
 
   # set CUDA directory
@@ -61,9 +59,6 @@ prepare() {
   sed -e 's| /usr/local/include||g' \
       -e 's| /usr/local/lib||g' \
       -i caffe/Makefile.config
-
-  # silence cuda warnings
-  patch -d caffe -p1 -i "${srcdir}/esee"
 
   cd "${_plug}"
 
@@ -111,11 +106,11 @@ build() {
 
   CXXFLAGS+=" $(pkg-config --cflags-only-I opencv4)" \
   arch-meson "../${_plug}" \
-    -Dcuda_includedir=/opt/cuda/include \
-    -Dcuda_libdir=/opt/cuda/lib64 \
+    -Dcudaincludedir=/opt/cuda/include \
+    -Dcudalibdir=/opt/cuda/lib64 \
     -Dcaffe_includedir="$(readlink -e "${srcdir}/fakeroot/include")" \
     -Dcaffe_libdir="$(readlink -e "${srcdir}/fakeroot/lib")" \
-    -Db_lto=false
+    --buildtype=release
 
   ninja
 }
