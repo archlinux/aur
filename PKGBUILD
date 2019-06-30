@@ -4,7 +4,7 @@
 pkgbase=('ogre-1.9')
 pkgname=('ogre-1.9' 'ogre-docs-1.9')
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Scene-oriented, flexible 3D engine written in C++'
 arch=('x86_64')
 url='http://www.ogre3d.org'
@@ -32,7 +32,7 @@ build() {
     -DOGRE_INSTALL_SAMPLES=TRUE \
     -DOGRE_INSTALL_SAMPLES_SOURCE=TRUE
 
-  make -j4
+  make
   make OgreDoc
 }
 
