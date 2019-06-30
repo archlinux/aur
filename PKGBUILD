@@ -1,4 +1,5 @@
-# Maintainer: Evgeniy Alekseev <arcanis at archlinux dot org>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Evgeniy Alekseev <arcanis at archlinux dot org>
 # Contributor: Košava <kosava at archlinux dot us>
 
 pkgname=yarock-mpv
@@ -37,4 +38,3 @@ package() {
   cd build
   make DESTDIR="${pkgdir}" install
 }
-
