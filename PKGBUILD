@@ -2,15 +2,15 @@
 # Contributor: Moritz Schönherr <moritz.schoenherr@gmail.com>
 
 pkgname=mdbook
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Create book from markdown files, like Gitbook but implemented in Rust"
 url="https://github.com/rust-lang-nursery/mdBook"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-license=('MPL2')
-makedepends=('rust' 'cargo')
+arch=(x86_64 i686 arm armv6h armv7h aarch64)
+license=(MPL2)
+makedepends=(rust cargo)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rust-lang-nursery/mdBook/archive/v${pkgver}.tar.gz")
-md5sums=('1f5937da0bafb0ddf11fcf0c9de1f48d')
+sha256sums=('e196da4856d7205cf485412657b92d9df83364376a5a74574e3440bb047c57f6')
 
 build() {
   cd "${srcdir}/mdBook-${pkgver}"
