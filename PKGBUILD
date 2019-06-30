@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Small lib to transform sensor_msgs with tf."
-url='http://www.ros.org/wiki/tf2_ros'
+url='http://wiki.ros.org/tf2_ros'
 
 pkgname='ros-melodic-tf2-sensor-msgs'
 pkgver='0.6.2'
