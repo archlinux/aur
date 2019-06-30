@@ -3,8 +3,8 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=slic3r
-pkgver=1.2.9
-pkgrel=8
+pkgver=1.3.0
+pkgrel=17
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64' 'armv7h')
 url="http://slic3r.org/"
@@ -17,33 +17,27 @@ depends=('perl' 'perl-moo'
 				 'perl-extutils-parsexs-aur' 'perl-extutils-typemap'
          'perl-sub-quote'
 				 'perl-threads-aur>=1.96')
-makedepends=('git' 'perl-module-build-withxspp')
+makedepends=('git' 'perl-module-build-withxspp' 'perl-devel-checklib')
 optdepends=('perl-wx: GUI support'
             'perl-net-dbus: notifications support via any dbus-based notifier'
             'perl-xml-sax-expatxs: make AMF parsing faster'
             'perl-xml-sax: Additive Manufacturing File Format (AMF) support'
             'perl-wx-glcanvas: support for opengl preview'
             'perl-opengl: support for opengl preview'
+            'perl-net-bonjour: support for autodiscovery of printers on network (octoprint)'
             'perl-class-xsaccessor: creating faster accessor methods')
 #             'perl-growl-gntp: notifications support via growl'
 provides=('slic3r')
 conflicts=('slic3r-git')
 #Consider uncommenting line below in case of false negative test results ;)
 BUILDENV+=('!check')
+#source=("git+https://github.com/slic3r/Slic3r.git#tag=$pkgver"
 source=("https://github.com/alexrj/Slic3r/archive/$pkgver.tar.gz"
 				'slic3r.desktop'
-				'slic3r'
-        '6e5938c8330b5bdb6b85c3ca8dc188605ee56b98.patch'
-        '0001-hamfisted-fix-for-opengl-0.70-problems-making-and-us.patch'
-        '0002-Significant-code-cleanup-remember-to-turn-off-VBOs-a.patch'
-        '0003-Added-comments-and-VBO-implementation-for-drawing-of.patch')
-md5sums=('05ac7b137cbb7b12f442776e4c12dcc2'
+				'slic3r')
+md5sums=('5eb9afba30f69856040a20a4e42ff18a'
          'cf0130330574a13b4372beb8f241d71e'
-         'a30a96504f11c95956dd8ce645b77504'
-         '182ca1abc80a6c2f48541c5ffbdb98ab'
-         '78f3754e0d3df172a9d48d31ea9afb15'
-         '316ca184f98c7dca37660f63db16fb6c'
-         '8853bb4e7e8a5d3debd59a65c4fbbd1c')
+         'a30a96504f11c95956dd8ce645b77504')
 _src_dir='$srcdir/Slic3r-$pkgver'
 
 prepare() {
@@ -55,11 +49,11 @@ prepare() {
   # Nasty fix for useless warning
   sed -i '/^warn \"Running Slic3r under Perl/,+1 s/^/\#/' ./lib/Slic3r.pm
 
-  msg2 "Patching..."
-  patch -p1 -i $srcdir/6e5938c8330b5bdb6b85c3ca8dc188605ee56b98.patch
-  patch -p1 -i $srcdir/0001-hamfisted-fix-for-opengl-0.70-problems-making-and-us.patch
-  patch -p1 -i $srcdir/0002-Significant-code-cleanup-remember-to-turn-off-VBOs-a.patch
-  patch -p1 -i $srcdir/0003-Added-comments-and-VBO-implementation-for-drawing-of.patch
+  # Nasty fix for local::lib use
+  find . -iregex '.*\.\(pl\|pm\|t\)' -print0 |  xargs -0 -l sed -i -e '/use local::lib/d'
+
+  # Fix needed for slic3r 1.3.0
+  sed -i '12i #include <boost/core/noncopyable.hpp>' xs/src/libslic3r/GCodeSender.hpp
 }
 
 build() {
@@ -79,7 +73,6 @@ build() {
   msg2 "Building Slic3r::XS (1/3)"
   /usr/bin/perl Build.PL
   ./Build
-
 }
 
 check () {
