@@ -4,7 +4,7 @@
 
 pkgname=slic3r
 pkgver=1.3.0
-pkgrel=11
+pkgrel=10
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64' 'armv7h')
 url="http://slic3r.org/"
@@ -42,7 +42,7 @@ package()
 	cd $srcdir
 	
 	install -d "$pkgdir/opt"
-	tar xfj ${pkgver}.tar.gz -C "$pkgdir/opt/"
+	tar xfj slic3r-${pkgver}-linux-x64.tar.bz2 -C "$pkgdir/opt/"
 	sed -i "$pkgdir/opt/Slic3r/Slic3r" -e 's/DIR=.*$/DIR=\/opt\/Slic3r/'
 	sed -i "$pkgdir/opt/Slic3r/Slic3r" -e 's/LD_LIBRARY_PATH=.*$/LD_LIBRARY_PATH=\/opt\/Slic3r\/bin/'
 	
