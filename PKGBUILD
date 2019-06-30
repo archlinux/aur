@@ -2,7 +2,7 @@
 pkgname=lazydocker-git
 _pkgname=lazydocker
 pkgver=0.2.4.r2.gd590b2b
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple terminal UI for docker and docker-compose, written in Go with the gocui library.'
 arch=('1686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/jesseduffield/lazydocker'
@@ -38,12 +38,6 @@ build() {
         -ldflags "-s -w -X main.version=${pkgver}" \
         -o ${_pkgname} \
         main.go
-}
-
-check() {
-    export GOPATH="${srcdir}/gopath"
-    cd gopath/src/github.com/jesseduffield/lazydocker
-    ./test.sh
 }
 
 package() {
