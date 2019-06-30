@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=complx
 pkgver=4.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Complx: LC-3 Simulator used in GT:CS2110"
 arch=('i686' 'x86_64')
 url="https://www.github.com/TricksterGuy/complx"
@@ -24,7 +24,7 @@ build() {
         "${srcdir}/${pkgname}-${pkgver}"
 
     msg "Building the project"
-    make -j4
+    make
 }
 
 package() {

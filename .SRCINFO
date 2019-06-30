@@ -1,7 +1,7 @@
 pkgbase = complx
 	pkgdesc = Complx: LC-3 Simulator used in GT:CS2110
 	pkgver = 4.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/TricksterGuy/complx
 	arch = i686
 	arch = x86_64
