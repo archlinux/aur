@@ -1,16 +1,16 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-git
-pkgver=0.5.3.r2.g41f5cf6
-pkgrel=1
+pkgver=0.5.5.r105.g9083c57
+pkgrel=2
 pkgdesc="A music player aimed at audio enthusiasts and music collectors"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="http://www.strawbs.org/"
 license=(GPL3)
 depends=(chromaprint protobuf gst-plugins-base gst-plugins-good qt5-base qt5-x11extras
-         sqlite3 udisks2 dbus alsa-lib libcdio taglib
+         sqlite3 udisks2 dbus alsa-lib libcdio taglib fftw
          libpulse libimobiledevice libplist libusbmuxd libgpod libmtp)
-makedepends=(git cmake boost)
+makedepends=(git cmake boost qt5-tools)
 optdepends=('gst-libav: additional codecs (i.e. AAC)'
             'gst-plugins-bad: additional codecs (i.e. AAC)'
             'gst-plugins-ugly: additional codecs')
