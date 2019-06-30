@@ -1,16 +1,18 @@
 pkgbase = obsidian-2-theme-git
-	pkgdesc = Obsidian 2 theme for Gnome 3.22+
-	pkgver = 2.3.1.r0.g674abd0
+	pkgdesc = Obsidian 2 themes for Gnome 3.22+, all colors
+	pkgver = 2.8.r2.gc2623c8
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/1173113/
 	arch = any
 	license = GPL3
 	optdepends = gnome-tweak-tool: A tool to customize advanced GNOME 3 options.
 	options = !strip
-	source = obsidian-2-theme-git::git+https://github.com/madmaxms/theme-obsidian-2.git
-	source = https://github.com/madmaxms/theme-obsidian-2/archive/green.zip
-	source = https://github.com/madmaxms/theme-obsidian-2/archive/amber.zip
-	source = https://github.com/madmaxms/theme-obsidian-2/archive/red.zip
+	source = theme-obsidian-2-blue::git+https://github.com/madmaxms/theme-obsidian-2.git
+	source = theme-obsidian-2-green::git+https://github.com/madmaxms/theme-obsidian-2#branch=green
+	source = theme-obsidian-2-amber::git+https://github.com/madmaxms/theme-obsidian-2#branch=amber
+	source = theme-obsidian-2-purple::git+https://github.com/madmaxms/theme-obsidian-2#branch=purple
+	source = theme-obsidian-2-red::git+https://github.com/madmaxms/theme-obsidian-2#branch=red
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
