@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - This package provides messages and serializations / conversion for the OctoMap library."
-url='http://ros.org/wiki/octomap_msgs'
+url='http://wiki.ros.org/octomap_msgs'
 
 pkgname='ros-melodic-octomap-msgs'
 pkgver='0.3.3'
