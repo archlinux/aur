@@ -1,0 +1,8 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!v8_libbase.pc
+!v8_libplatform.pc
+!v8.pc
+!d8
