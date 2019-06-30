@@ -1,7 +1,7 @@
 pkgbase = gnome-terminal-fedora
 	pkgdesc = The GNOME Terminal Emulator with Fedora patches
-	pkgver = 3.30.2
-	pkgrel = 1
+	pkgver = 3.32.2
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Terminal
 	arch = i686
 	arch = x86_64
@@ -16,21 +16,21 @@ pkgbase = gnome-terminal-fedora
 	makedepends = gconf
 	makedepends = vala
 	makedepends = yelp-tools
-	depends = vte3-notification>=0.54.1
+	depends = vte3-notification>=0.55.90
 	depends = gsettings-desktop-schemas
 	depends = dconf
 	optdepends = gconf: for gnome-terminal-migration
 	optdepends = libnautilus-extension: for "Open Terminal Here" in GNOME Files
-	provides = gnome-terminal=3.30.2
+	provides = gnome-terminal=3.32.2
 	conflicts = gnome-terminal
 	options = !emptydirs
-	source = https://download.gnome.org/sources/gnome-terminal/3.30/gnome-terminal-3.30.2.tar.xz
-	source = 0001-build-Don-t-treat-warnings-as-errors.patch-1951e9e18f851010dfadf4176748c0c7874578c6::http://src.fedoraproject.org/rpms/gnome-terminal/raw/1951e9e18f851010dfadf4176748c0c7874578c6/f/0001-build-Don-t-treat-warnings-as-errors.patch
-	source = gnome-terminal-notify-open-title-transparency.patch-1951e9e18f851010dfadf4176748c0c7874578c6::http://src.fedoraproject.org/rpms/gnome-terminal/raw/1951e9e18f851010dfadf4176748c0c7874578c6/f/gnome-terminal-notify-open-title-transparency.patch
-	source = org.gnome.Terminal.gschema.override-1951e9e18f851010dfadf4176748c0c7874578c6::http://src.fedoraproject.org/rpms/gnome-terminal/raw/1951e9e18f851010dfadf4176748c0c7874578c6/f/org.gnome.Terminal.gschema.override
-	sha256sums = 6b1fc2720e3bfc592645d41e38d0d3a0f2bdf5ef7bce490b2d5c8ba39f395e38
+	source = https://download.gnome.org/sources/gnome-terminal/3.30/gnome-terminal-3.32.2.tar.xz
+	source = 0001-build-Don-t-treat-warnings-as-errors.patch-4960c3c7283a5da28f1896a2deefdd4fac9c0983::http://src.fedoraproject.org/rpms/gnome-terminal/raw/1951e9e18f851010dfadf4176748c0c7874578c6/f/0001-build-Don-t-treat-warnings-as-errors.patch
+	source = gnome-terminal-notify-open-title-transparency.patch-4960c3c7283a5da28f1896a2deefdd4fac9c0983::http://src.fedoraproject.org/rpms/gnome-terminal/raw/1951e9e18f851010dfadf4176748c0c7874578c6/f/gnome-terminal-notify-open-title-transparency.patch
+	source = org.gnome.Terminal.gschema.override-4960c3c7283a5da28f1896a2deefdd4fac9c0983::http://src.fedoraproject.org/rpms/gnome-terminal/raw/1951e9e18f851010dfadf4176748c0c7874578c6/f/org.gnome.Terminal.gschema.override
+	sha256sums = 759a2b093ca606107eb8fb53e407cdf9adce76ccee33f9fa0cd76bf594bd106a
 	sha256sums = 672615edf1f8e5ede72bdfa2e671ad35d355a1df64f349762899ad7bc7254769
-	sha256sums = 0ba0af2891c9d01e64d772cef85ebadb0f17986c01578f4427e048a6b47112a6
+	sha256sums = e01f5e7d557cb088cc2f2536eb5c3b98cc26f17809490d3feab2f77b2c6b6e89
 	sha256sums = a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9
 
 pkgname = gnome-terminal-fedora
