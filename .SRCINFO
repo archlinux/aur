@@ -1,7 +1,7 @@
 pkgbase = ignition-transport
 	pkgdesc = The transport library combines ZeroMQ with Protobufs to create a fast and efficient message passing system. Asynchronous message publication and subscription is provided along with service calls and discovery.
 	pkgver = 7.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://ignitionrobotics.org/libs/transport
 	arch = i686
 	arch = x86_64
