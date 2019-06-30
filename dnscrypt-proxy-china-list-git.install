@@ -1,0 +1,14 @@
+post_install() {
+  echo "
+    ==> DNSCrypt Configuration
+
+    A DNSCrypt Proxy forwarding file has been installed as '/etc/dnscrypt-proxy/chinalist.txt'
+    Please edit '/etc/dnscrypt-proxy/dnscrypt-proxy.toml', and add the following line:
+
+    forwarding_rules = '/etc/dnscrypt-proxy/chinalist.txt'
+    "
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,17 @@
+pkgbase = dnscrypt-proxy-china-list-git
+	pkgdesc = Chinese-specific configuration to improve your favorite DNS server. Best partner for chnroutes. (DNSCrypt Proxy Version)
+	pkgver = 74656.56e317e7e
+	pkgrel = 1
+	url = https://github.com/felixonmars/dnsmasq-china-list
+	install = dnscrypt-proxy-china-list-git.install
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = dnscrypt-proxy
+	provides = dnscrypt-proxy-china-list
+	conflicts = dnscrypt-proxy-china-list
+	source = dnscrypt-proxy-china-list::git://github.com/felixonmars/dnsmasq-china-list.git
+	sha256sums = SKIP
+
+pkgname = dnscrypt-proxy-china-list-git
+
