@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - The OctoMap library implements a 3D occupancy grid mapping approach, providing data structures and mapping algorithms in C++."
-url='http://octomap.github.io'
+url='http://wiki.ros.org/octomap'
 
 pkgname='ros-melodic-octomap'
 pkgver='1.9.0'
