@@ -2,7 +2,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=pagmo-git
 pkgver=r3632.f580121d
-pkgrel=1
+pkgrel=2
 pkgdesc="Perform parallel computations of optimisation tasks (global and local)
 via the asynchronous generalized island model (git version)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,6 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_name"
-
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -77,7 +76,7 @@ build() {
         "${srcdir}/${_name}"
 
     msg "Building the project"
-    make -j4
+    make
 }
 
 package() {
