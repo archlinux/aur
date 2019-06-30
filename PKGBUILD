@@ -1,7 +1,7 @@
 # Maintainer: Felix Springer <felixspringer149@gmail.com>
 
 pkgname=haskeme
-pkgver=0.1.0.0.6877904
+pkgver=0.1.0.1.57d5a8f
 pkgrel=1
 pkgdesc='Compiler from I- to S-Expressions for the Scheme Programming Language'
 url='https://github.com/jumper149/haskeme'
