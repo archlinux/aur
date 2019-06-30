@@ -1,6 +1,6 @@
 # Maintainer: Mikhail Swift <mikhail.swift@gmail.com>
 pkgname=lazydocker
-pkgver=0.2.1
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='A simple terminal UI for docker and docker-compose, written in Go with the gocui library.'
 arch=('x86_64')
