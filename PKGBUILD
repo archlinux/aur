@@ -2,7 +2,7 @@
 
 pkgname=textosaurus-git
 epoch=1
-pkgver=0.9.9.r1.gdc369a4
+pkgver=0.9.12.r4.g1657837
 pkgrel=1
 pkgdesc="Simple cross-platform text editor based on Qt and Scintilla"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -13,7 +13,7 @@ makedepends=(git qt5-tools)
 provides=(textosaurus)
 conflicts=(textosaurus)
 replaces=(textilosaurus)
-source=("${pkgname}::git+https://github.com/martinrotter/textosaurus.git"
+source=("git+https://github.com/martinrotter/textosaurus.git"
         "git+https://github.com/martinrotter/transka.git"
         "git+https://github.com/martinrotter/7za.git"
         "git+https://github.com/martinrotter/nsis.git"
@@ -27,12 +27,12 @@ md5sums=('SKIP'
          'SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "$srcdir/${pkgname/-git/}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "$srcdir/${pkgname/-git/}"
 
   git submodule init
 
@@ -46,12 +46,12 @@ prepare() {
 }
  
 build() { 
-  cd "${srcdir}/${pkgname}"
+  cd "$srcdir/${pkgname/-git/}"
   qmake build.pro -r CONFIG+=release PREFIX=/usr 
   make 
 } 
  
 package() { 
-  cd "${srcdir}/${pkgname}"
+  cd "$srcdir/${pkgname/-git/}"
   make install INSTALL_ROOT=${pkgdir}/ 
 } 
