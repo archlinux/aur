@@ -9,7 +9,6 @@
 
 # subfolders, e.g. source or built package trees, vcs
 */**/
-!neovim-plugins/*
 # backup files
 *~
 *.bak

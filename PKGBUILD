@@ -10,9 +10,9 @@ makedepends=('git')
 groups=('neovim-plugins')
 
 #temp pkgver variables
-pkgver=0.9
-pkgrel=2
-_themes_pkgver=r1279.4b7f77e
+pkgver=0.10
+pkgrel=0
+_themes_pkgver=r1321.3bfe1d0
 source=("${pkgname[0]}::git://github.com/vim-airline/${pkgname[0]#neo}.git#tag=v$pkgver"
         "${pkgname[1]}::git://github.com/vim-airline/${pkgname[1]#neo}.git#commit=${_themes_pkgver#*.}")
 sha256sums=('SKIP' 'SKIP')
@@ -42,8 +42,6 @@ package_neovim-airline() {
 package_neovim-airline-themes(){
   # set package local variables
   url='https://github.com/vim-airline/vim-airline-themes'
-  pkgver="$pkgver.$_themes_pkgver"
-  pkgrel=3
   pkgdesc='Themes for neovim-airline'
   depends=('neovim-airline' 'neovim')
 
