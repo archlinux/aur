@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - A metapackage to bring in the default packages second generation Transform Library in ros, tf2."
-url='http://www.ros.org/wiki/geometry2'
+url='http://wiki.ros.org/geometry2'
 
 pkgname='ros-melodic-geometry2'
 pkgver='0.6.2'
