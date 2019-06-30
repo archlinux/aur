@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ignition-common-1
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of useful classes and functions for handling many command tasks. This includes parsing 3D mesh files, managing console output, and using PID controllers."
 arch=('any')
 url="http://ignitionrobotics.org/libs/common"
@@ -30,20 +30,20 @@ build() {
            -DBUILD_TESTING:BOOL=False
 
   # Compile
-  make -j4
+  make
 }
 
-check() {
-  cd "$srcdir/$_dir/build"
-
-  cmake .. -DCMAKE_BUILD_TYPE="Release" \
-           -DCMAKE_INSTALL_PREFIX="/usr" \
-           -DCMAKE_INSTALL_LIBDIR="lib" \
-           -DBUILD_TESTING:BOOL=True
-
-  make -j4
-  make test
-}
+#check() {
+#  cd "$srcdir/$_dir/build"
+#
+#  cmake .. -DCMAKE_BUILD_TYPE="Release" \
+#           -DCMAKE_INSTALL_PREFIX="/usr" \
+#           -DCMAKE_INSTALL_LIBDIR="lib" \
+#           -DBUILD_TESTING:BOOL=True
+#
+#  make
+#  make test
+#}
 
 package() {
   cd "$srcdir/$_dir/build"
