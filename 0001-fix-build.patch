@@ -1,0 +1,27 @@
+From 94d710c2723f6fd485d7747bd37227d5cd18a27c Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.lolix@gmail.com>
+Date: Mon, 17 Sep 2018 23:14:55 +0200
+Subject: [PATCH] fix build
+
+---
+ src/makefile | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/makefile b/src/makefile
+index d1ec28b..1d3bd4d 100644
+--- a/src/makefile
++++ b/src/makefile
+@@ -16,9 +16,8 @@ app_fullname='Polo'
+ 
+ vte_symbol = -D VTE_291
+ vte_version=$(shell { (pkg-config --modversion vte-2.91 | cut -d. -f 2,3); } )
+-vala_version=$(shell { (valac --version | cut -d. -f 2); } )
+ 
+-ifeq ($(shell { test ${vala_version} -lt 42 ; echo $$? ; } ), 0)
++ifeq ($(shell { test ${vte_version} -lt 52.2 ; echo $$? ; } ), 0)
+ vte_symbol=$(shell echo '-D VTE_291_OLD')
+ else
+ vte_symbol=$(shell echo '-D VTE_291')
+-- 
+2.18.0
+

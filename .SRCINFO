@@ -1,6 +1,6 @@
 pkgbase = polo-git
 	pkgdesc = A modern, light-weight GTK file manager for Linux, currently in beta
-	pkgver = 18.8.beta.r0.g302c071
+	pkgver = 18.8.beta.r28.g173d4e6
 	pkgrel = 1
 	url = https://teejee2008.github.io/polo/
 	arch = i686
@@ -26,11 +26,8 @@ pkgbase = polo-git
 	optdepends = polo-donation-plugins
 	provides = polo
 	conflicts = polo
-	conflicts = polo-bin
-	source = polo-git::git+https://github.com/teejee2008/polo.git
-	source = 0001-Re-add-support-for-vte291-0.52.patch
+	source = git+https://github.com/teejee2008/polo.git
 	sha256sums = SKIP
-	sha256sums = 4ae33547220a7bfb7cd9806bd121acbc54c35a06958d40aa3cb1621688b5f69f
 
 pkgname = polo-git
 
