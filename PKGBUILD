@@ -1,5 +1,4 @@
 # Maintainer: Nick Cao <nickcao@nichi.co>
-pkgbase=cleardns-git
 pkgname=cleardns-git
 pkgver=1.0.1.r1.g76d3dd4
 pkgver() {
