@@ -1,7 +1,7 @@
 pkgbase = ignition-fuel_tools
 	pkgdesc = A C++ client library and command line tools for interacting with Ignition Fuel servers
 	pkgver = 3.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ignitionrobotics.org/libs/fuel_tools
 	arch = i686
 	arch = x86_64
