@@ -1,0 +1,7 @@
+post_install(){
+    if [ ! $(id mscs >/dev/null 2>&1) ]; then
+        useradd mscs --system --user-group \
+            --create-home --home /opt/mscs \
+            -K UMASK=0022
+    fi
+}

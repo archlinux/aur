@@ -1,0 +1,70 @@
+diff -u -r -a mscs.orig/Makefile mscs.new/Makefile
+--- mscs.orig/Makefile	2019-06-20 17:38:19.418922318 -0300
++++ mscs.new/Makefile	2019-06-20 18:24:57.362084707 -0300
+@@ -1,42 +1,12 @@
+-MSCS_USER := minecraft
+-MSCS_HOME := /opt/mscs
+-
+-MSCTL := /usr/local/bin/msctl
+-MSCS := /usr/local/bin/mscs
+-MSCS_INIT_D := /etc/init.d/mscs
+-MSCS_SERVICE := /etc/systemd/system/mscs.service
+-MSCS_COMPLETION := /etc/bash_completion.d/mscs
+-
+-UPDATE_D := $(wildcard update.d/*)
+-
+-.PHONY: install update clean
+-
+-install: update
+-	useradd --system --user-group --create-home -K UMASK=0022 --home $(MSCS_HOME) $(MSCS_USER)
+-	if which systemctl; then \
+-		systemctl -f enable mscs.service; \
+-	else \
+-		ln -s $(MSCS) $(MSCS_INIT_D); \
+-		update-rc.d mscs defaults; \
+-	fi
+-
+-update:
+-	install -m 0755 msctl $(MSCTL)
+-	install -m 0755 mscs $(MSCS)
+-	install -m 0644 mscs.completion $(MSCS_COMPLETION)
+-	if which systemctl; then \
+-		install -m 0644 mscs.service $(MSCS_SERVICE); \
+-	fi
+-	@for script in $(UPDATE_D); do \
+-		sh $$script; \
+-	done; true;
+-
+-clean:
+-	if which systemctl; then \
+-		systemctl -f disable mscs.service; \
+-		rm -f $(MSCS_SERVICE); \
+-	else \
+-		update-rc.d mscs remove; \
+-		rm -f $(MSCS_INIT_D); \
+-	fi
+-	rm -f $(MSCTL) $(MSCS) $(MSCS_COMPLETION)
++MSCTL := $(DESTDIR)usr/bin/msctl
++MSCS := $(DESTDIR)usr/bin/mscs
++MSCS_SERVICE := $(DESTDIR)usr/lib/systemd/system/mscs.service
++MSCS_COMPLETION := $(DESTDIR)usr/share/bash-completion/completions/mscs
++MSCS_LICENSE := $(DESTDIR)usr/share/licenses/mscs/LICENSE
++
++install:
++	install -D -m 0755 msctl $(MSCTL)
++	install -D -m 0755 mscs $(MSCS)
++	install -D -m 0644 mscs.completion $(MSCS_COMPLETION)
++	install -D -m 0644 mscs.service $(MSCS_SERVICE)
++	install -D -m 0644 LICENSE $(MSCS_LICENSE)
+diff -u -r -a mscs.orig/mscs mscs.new/mscs
+--- mscs.orig/mscs	2019-06-20 17:38:19.418922318 -0300
++++ mscs.new/mscs	2019-06-20 18:24:06.225421165 -0300
+@@ -16,7 +16,7 @@
+ PROG=$(basename $0)
+ 
+ # Setup the default user name.
+-USER_NAME="minecraft"
++USER_NAME="mscs"
+ 
+ # Setup the default installation location.
+ LOCATION="/opt/mscs"
