@@ -3,11 +3,11 @@
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 
 pkgname=sloc
-pkgver=0.3.1
-pkgrel=4
+pkgver=1.0
+pkgrel=1
 pkgdesc='Simple source-lines-of-code counter'
 arch=('i686' 'x86_64')
-url="http://git.bytbox.net/sloc/"
+url="https://github.com/bytbox/sloc/"
 license=('MIT')
 optdepends=('perl-datetime' 'perl-json' 'perl-switch' 'gnuplot')
 makedepends=('git' 'go')
