@@ -1,19 +1,23 @@
 pkgbase = twin-git
 	pkgdesc = A text-mode window environment
-	pkgver = 0.8.0.r0.g8bd4ffd
+	pkgver = 0.8.0.r38.g9e3707a
 	pkgrel = 1
 	url = http://sourceforge.net/projects/twin/
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL2
 	license = LGPL2.1
+	makedepends = git
 	depends = gpm
 	depends = libxpm
 	provides = twin
 	conflicts = twin
-	conflicts = twin-git
 	options = !makeflags
-	source = twin-git::git+https://github.com/cosmos72/twin
+	source = git+https://github.com/cosmos72/twin
 	md5sums = SKIP
 
 pkgname = twin-git
