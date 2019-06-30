@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Outputs audio to a speaker from a source node."
-url='http://ros.org/wiki/audio_play'
+url='http://wiki.ros.org/audio_play'
 
 pkgname='ros-melodic-audio-play'
 pkgver='0.3.2'
