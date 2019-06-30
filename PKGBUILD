@@ -4,16 +4,15 @@
 # Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 pkgname=ignition-transport
 pkgver=7.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The transport library combines ZeroMQ with Protobufs to create a fast and efficient message passing system. Asynchronous message publication and subscription is provided along with service calls and discovery."
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org/libs/transport"
 license=('Apache')
 groups=('development')
-depends=('protobuf' 'protobuf-c' 'zeromq' 'ignition-msgs>=4' 'ignition-msgs<5'
-         'ignition-tools' 'libutil-linux')
-makedepends=('ignition-cmake>=2' 'ignition-cmake<3'
-             'util-linux')
+depends=('protobuf' 'protobuf-c' 'zeromq' 'ignition-msgs>=4' 'ignition-tools'
+         'libutil-linux')
+makedepends=('ignition-cmake>=2' 'util-linux')
 optdepends=()
 conflicts=()
 source=("https://bitbucket.org/ignitionrobotics/ign-transport/get/${pkgname}7_${pkgver}.tar.bz2")
@@ -29,7 +28,7 @@ build() {
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DBUILD_TESTING=Off
-  make
+  make -j4
 }
 
 check() {
@@ -39,7 +38,7 @@ check() {
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DBUILD_TESTING=On
-  make
+  make -j4
   make test
 }
 
