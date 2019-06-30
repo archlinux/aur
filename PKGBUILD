@@ -1,6 +1,5 @@
 pkgname=pennywise-bin
-_pkgname=pennywise
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Cross-platform application that allows you to open URLs in a floating window that always stays on top."
 arch=('i686' 'x86_64')
@@ -9,25 +8,26 @@ license=('MIT')
 depends=('gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libxss')
 optdepends=('chromium: For Open with Pennywise Chrome extension'
 			'google-chrome: For Open with Pennywise Chrome Extension'
-			'firefox: For Open with Pennywise Firefox Add-on')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source_i686=("https://github.com/kamranahmedse/$_pkgname/releases/download/v$pkgver/${_pkgname}_${pkgver}_i386.deb")
-source_x86_64=("https://github.com/kamranahmedse/$_pkgname/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb")
-source=("https://raw.githubusercontent.com/kamranahmedse/$_pkgname/master/license.md")
-sha256sums_i686=('4e01b247a33f54db74eb0f846e0066eb937539635945619c7e5d33ee29a2459a')
-sha256sums_x86_64=('aa2d135218915dcd22f72bd0c209f64856de9dc022b7801c8d59973fddc88110')
+			'firefox: For Open with Pennywise Firefox Add-on'
+			'pepper-flash: for Adobe Flash support in Chromium'
+			'flashplugin: for Adobe Flash support in Firefox')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source_i686=("https://github.com/kamranahmedse/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_i386.deb")
+source_x86_64=("https://github.com/kamranahmedse/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_amd64.deb")
+source=("https://raw.githubusercontent.com/kamranahmedse/${pkgname%-bin}/master/license.md")
 sha256sums=('b41ccd76edcf9e9af64581622b1d6dc1de7ed55a96548c4af8c43d32cd764b0b')
-
-prepare() {
-	bsdtar -xvf data.tar.xz
-}
+sha256sums_i686=('df794adfb3fd28cb68beabe59cadfc000c0b20c83bb38f064d9409a7951b6799')
+sha256sums_x86_64=('02d5f5ea3bf0b934d650cbb75c3cb43ab62b3d1c48c733b2f85816ccc8736191')
 
 package() {
-	install -d $pkgdir/{opt,usr/bin,usr/share/icons/hicolor}
-	cp -r opt/* $pkgdir/opt/
-	ln -s $pkgdir/opt/Pennywise/$_pkgname $pkgdir/usr/bin/$_pkgname
-	install -Dm644 usr/share/applications/$_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
-	cp -a usr/share/icons/hicolor/. $pkgdir/usr/share/icons/hicolor/
-	install -Dm644 license.md $pkgdir/usr/share/licenses/$_pkgname/license.md
+	bsdtar -xvf data.tar.xz -C $pkgdir/
+	
+	# https://github.com/electron/electron/issues/17972#issuecomment-487369441
+	chown root $pkgdir/opt/Pennywise/chrome-sandbox
+	chmod 4755 $pkgdir/opt/Pennywise/chrome-sandbox
+	
+	install -d $pkgdir/usr/bin
+	ln -sf /opt/Pennywise/${pkgname%-bin} $pkgdir/usr/bin/${pkgname%-bin}
+	install -Dm644 license.md $pkgdir/usr/share/licenses/${pkgname%-bin}/license.md
 }

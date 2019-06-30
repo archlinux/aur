@@ -1,6 +1,6 @@
 pkgbase = pennywise-bin
 	pkgdesc = Cross-platform application that allows you to open URLs in a floating window that always stays on top.
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/kamranahmedse/pennywise
 	arch = i686
@@ -15,14 +15,16 @@ pkgbase = pennywise-bin
 	optdepends = chromium: For Open with Pennywise Chrome extension
 	optdepends = google-chrome: For Open with Pennywise Chrome Extension
 	optdepends = firefox: For Open with Pennywise Firefox Add-on
+	optdepends = pepper-flash: for Adobe Flash support in Chromium
+	optdepends = flashplugin: for Adobe Flash support in Firefox
 	provides = pennywise
 	conflicts = pennywise
 	source = https://raw.githubusercontent.com/kamranahmedse/pennywise/master/license.md
 	sha256sums = b41ccd76edcf9e9af64581622b1d6dc1de7ed55a96548c4af8c43d32cd764b0b
-	source_i686 = https://github.com/kamranahmedse/pennywise/releases/download/v0.7.0/pennywise_0.7.0_i386.deb
-	sha256sums_i686 = 4e01b247a33f54db74eb0f846e0066eb937539635945619c7e5d33ee29a2459a
-	source_x86_64 = https://github.com/kamranahmedse/pennywise/releases/download/v0.7.0/pennywise_0.7.0_amd64.deb
-	sha256sums_x86_64 = aa2d135218915dcd22f72bd0c209f64856de9dc022b7801c8d59973fddc88110
+	source_i686 = https://github.com/kamranahmedse/pennywise/releases/download/v0.8.0/pennywise_0.8.0_i386.deb
+	sha256sums_i686 = df794adfb3fd28cb68beabe59cadfc000c0b20c83bb38f064d9409a7951b6799
+	source_x86_64 = https://github.com/kamranahmedse/pennywise/releases/download/v0.8.0/pennywise_0.8.0_amd64.deb
+	sha256sums_x86_64 = 02d5f5ea3bf0b934d650cbb75c3cb43ab62b3d1c48c733b2f85816ccc8736191
 
 pkgname = pennywise-bin
 
