@@ -1,7 +1,7 @@
 # Maintainer: dax <dev@dax.moe>
 pkgname=ddcpuid
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.13.0
+pkgrel=1
 pkgdesc="Advanced x86/AMD64 Processor Information Tool"
 arch=('x86_64')
 url="https://git.dd86k.space/dd86k/ddcpuid"
@@ -9,11 +9,11 @@ license=('MIT')
 depends=()
 makedepends=('ldc')
 source=("https://git.dd86k.space/dd86k/$pkgname/archive/v$pkgver.zip")
-sha256sums=('8f5b72c0d2f7889cfd2fd5765d3903ca9dfb6dc0a1aa1347e03d2a3733fdd945')
+sha256sums=('2488c6f492b2b38a7fb31a279e9cded906731b938bd1b82420ab272f484c5bfd')
 
 build() {
 	cd "$pkgname-v$pkgver"
-	ldc -betterC -O -boundscheck=off ddcpuid
+	ldc -betterC -release -O -boundscheck=off ddcpuid
 }
 
 package() {
