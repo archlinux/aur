@@ -2,7 +2,7 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=phoenix
-pkgver=v0.1.3.r24.g8c700ad8
+pkgver=v0.1.3.r32.g9ccb67b9
 pkgrel=1
 pkgdesc="The BurstCoin desktop wallet"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(git+https://github.com/burst-apps-team/$pkgname.git
 	electron-builder.json.patch)
 sha256sums=('SKIP'
 	    'ee7cb123dca7e311bea596df59d59284a9b0b32be6990da3cd89303a800acac0'
-	    'b9d713a3c016b4ba7d68803c24aea06518991e02103ba03d7060d95be469e307')
+	    'a89ebcaa537d3456ad49c5ab8157fb88d649e2aa3e5791b9217b2d0f95f838de')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"

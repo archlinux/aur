@@ -1,16 +1,13 @@
---- electron-builder.json	2019-05-17 19:14:40.470997309 +0700
-+++ electron-builder.json	2019-05-17 19:21:02.463354518 +0700
-@@ -22,12 +22,7 @@
-   },
+--- electron-builder.json	2019-07-01 00:07:54.809324901 +0700
++++ electron-builder.json.new	2019-07-01 01:11:31.096414023 +0700
+@@ -24,9 +24,7 @@
    "linux": {
      "artifactName": "${os}-phoenix-burst-wallet.${version}.${ext}",
--    "target": [
+     "target": [
 -      "AppImage",
 -      "deb",
--      "rpm",
 -      "tar.gz"
--    ],
-+    "target": ["dir"],
++      "dir"
+     ],
      "publish": [
        "github"
-     ],
