@@ -2,7 +2,7 @@
 # Contributor: Maximilian Kindshofer <maximilian@kindshofer.net>
 
 pkgname=kitty-git
-pkgver=0.13.1.r0.g1ba7b5f5
+pkgver=0.14.2.r80.gc8631160
 pkgrel=1
 pkgdesc="A modern, hackable, featureful, OpenGL based terminal emulator"
 arch=(i686 x86_64)
