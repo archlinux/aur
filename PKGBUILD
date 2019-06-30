@@ -1,13 +1,13 @@
 # Maintainer: Flori4nK <contact@flori4nk.de>
 pkgname="get-binary-git"
 url="https://gitlab.com/flori4nk/get-binary"
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A text to binary converter"
 arch=("x86_64")
 license=('MIT')
 source=("https://gitlab.com/flori4nk/get-binary/-/archive/v$pkgver/get-binary-v$pkgver.tar.gz")
-sha256sums=("6a9e5d671cf1ca33769a8ca9691806ca5de14ea1a7f10f315f1473bfd49c2e79")
+sha256sums=("0280af31f01ed0f15141b9f4d432b36a30818a44a99a903500431c7cd2c260a6")
 
 build() {
     cd "get-binary-v$pkgver"
