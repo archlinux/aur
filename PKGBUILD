@@ -5,7 +5,7 @@
 
 pkgname=mattermost
 pkgver=5.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://mattermost.com'
@@ -30,12 +30,14 @@ source=(
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
 )
-sha512sums=('1c6b515e63b336f53b8c3f119eb13bb60f2e63b082eef40b29d3b70750f35f605e1790ba49b5f618551b3cfe68fc4fe14454ae099ca35bdc271c7bb5307b37c3'
-            '55daa6de32d6f04dbc5b2e5e944474649181827ecb592fefec4ad5f6dd98955f6643d6ffcc08170b25487becee38399cb998b34d40fb9d3d73b5c1d36ee9fae0'
-            'ac952eae873aa09ba7bdf1e7abc618f0dc6982fa85df298261ab71ccf71f66c95846dade400e05d731f2c5ee2c6f4332d6f78d737026c9f098f1e03f419bee00'
-            '6fc1b41f1ddcc44dab3e1f6bc15b7566e7c33132346b7eb0bc91d9709b4cec89ae969a57a57b6097c75868af21f438c2affda5ba1507f485c8689ab8004efd70'
-            'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
-            'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9')
+sha512sums=(
+    'd5682e375744ef0f6c61bbcd89e880d9e7757c3aa15141e56eea180d820c3e2a961d291ec7a2ea3df9cf34934efaeaba550ea1b3caf14e69eaebf14dcacf2fea'
+    'eed102df35d8e825e352decf7606beb3e2d3d3437b1598216f7637c56f9c14c35e958609b34929c369628ee3c1fa0559d1153642fcb858983f50e91b70cea005'
+    '7262595fb66757ea7b83c9a680144a43d3cc175f1aa91b1bb7651b26c05655f4f958b801a20f6ad8b14238bb774a74f8536deb6bc698f5b5b1f0a51b96a8e1f6'
+    '6fc1b41f1ddcc44dab3e1f6bc15b7566e7c33132346b7eb0bc91d9709b4cec89ae969a57a57b6097c75868af21f438c2affda5ba1507f485c8689ab8004efd70'
+    'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
+    'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9'
+)
 
 prepare() {
     # cp cannot copy from a symbolic link to the destination link itself
@@ -103,8 +105,7 @@ prepare() {
     # Enforce build hash to Arch Linux (Enterprise hash is already set to
     # none), instead of the official git hash value.
     sed -r -i Makefile \
-        -e "s/^(\s*)BUILD_HASH(_ENTERPRISE)? =.*/\1BUILD_HASH\2 = ${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)/" \
-        -e 's/-X (.*)(\$\(BUILD_HASH(_ENTERPRISE)?\))(.*)/-X '\''\1\2'\''\4/'
+        -e "s/^(\s*)BUILD_HASH(_ENTERPRISE)? =.*/\1BUILD_HASH\2 = ${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)/"
     cd "${srcdir}/${pkgname}-webapp"
     sed -r -i webpack.config.js \
         -e "s/^(\s*)COMMIT_HASH:(.*),$/\1COMMIT_HASH: JSON.stringify\(\"${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)\"\),/"
