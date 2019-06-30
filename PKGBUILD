@@ -3,23 +3,24 @@
 
 _pkgname="mitsuba-blender"
 pkgname="${_pkgname}-hg"
-pkgver=105.70361d3b0956
-pkgrel=2
+pkgver=r105.0fde258
+pkgrel=1
 pkgdesc="Mitsuba integration plugin for blender, based on luxrender luxblend code"
 arch=('any')
 url="https://www.mitsuba-renderer.org/repos/exporters/mitsuba-blender"
 license=('GPL3')
 depends=('blender' 'mitsuba')
-makedepends=('mercurial')
+makedepends=('git')
 provides=('mtsblend')
 conflicts=('mtsblend')
 options=()
-source=("hg+https://www.mitsuba-renderer.org/repos/exporters/mitsuba-blender")
+#source=("hg+https://www.mitsuba-renderer.org/repos/exporters/mitsuba-blender")
+source=("git+https://github.com/bartoszek/mitsuba-blender")
 md5sums=('SKIP') 
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  echo $(hg identify -n).$(hg identify -i)
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
