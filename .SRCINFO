@@ -6,7 +6,6 @@ pkgbase = oxygen-cursors-extra
 	arch = any
 	license = LGPL
 	makedepends = cmake
-	makedepends = automoc4
 	makedepends = inkscape
 	makedepends = xorg-xcursorgen
 	optdepends = oxygen: contains the default Oxygen cursor colours
