@@ -1,7 +1,7 @@
 pkgbase = libiges-git
 	pkgdesc = Implementation of the IGESv5.3 specification
 	pkgver = r225.efb93fd
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cbernardo.github.io/libIGES
 	arch = i686
 	arch = x86_64

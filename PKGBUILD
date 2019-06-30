@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=libiges-git
 pkgver=r225.efb93fd
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of the IGESv5.3 specification"
 arch=('i686' 'x86_64')
 url="http://cbernardo.github.io/libIGES"
@@ -38,7 +38,7 @@ build() {
         "${srcdir}/${_name}"
 
     msg "Building the project"
-    make -j4
+    make
 }
 
 package() {
