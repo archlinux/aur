@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Transports audio from a source to a destination."
-url='http://ros.org/wiki/audio_capture'
+url='https://wiki.ros.org/audio_capture'
 
 pkgname='ros-melodic-audio-capture'
 pkgver='0.3.2'
