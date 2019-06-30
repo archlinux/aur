@@ -2,8 +2,8 @@
 
 _pkgbase=monero
 pkgname=monero-gui-bin
-pkgver=0.14.0.0
-pkgrel=2
+pkgver=0.14.1.0
+pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (Includes daemon, wallet, and miner)"
 arch=("x86_64")
 conflicts=("${_pkgbase}")
@@ -24,12 +24,12 @@ provides=("monerod=${pkgver}"
 install=monero-gui-bin.install
 
 
-source=("${pkgname}-${pkgver}.tar.bz2::https://downloads.getmonero.org/gui/monero-gui-linux-x64-v${pkgver}.tar.bz2"
+source=("${pkgname}-${pkgver}.tar.bz2::https://github.com/monero-project/monero-gui/releases/download/v${pkgver}/monero-gui-linux-x64-v${pkgver}.tar.bz2"
     "monero-wallet-gui"
     "monero-wallet-gui.desktop"
 )
 
-sha256sums=("3d03da7d1c6c6b8f0193729ac4e6b31788ee0aea9890e85770e8d62f3ec2558b"
+sha256sums=("66a1b77205a2398197887bfa4d70d4650179ddac9378b26f7df645aa1b566273"
     "21765940c2fdd504c0550afa96eb4efa896e298c4761c87f52f637eb368f5736"
     "1a88e0dd59687fc19f4ca84b43311c506e04c1723cb9972faf427942723c73d2"
 )
