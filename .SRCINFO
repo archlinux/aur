@@ -1,0 +1,13 @@
+pkgbase = haskeme
+	pkgdesc = Compiler from I- to S-Expressions for the Scheme Programming Language
+	pkgver = 0.1.0.0.6877904
+	pkgrel = 1
+	url = https://github.com/jumper149/haskeme
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	source = git+https://github.com/jumper149/haskeme.git
+	sha512sums = SKIP
+
+pkgname = haskeme
+
