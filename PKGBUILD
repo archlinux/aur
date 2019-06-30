@@ -1,14 +1,14 @@
 # Maintainer: robertfoster
 
 pkgname=rtcwcoop-git
-pkgver=1.0.2.r3.g8695325f 
+pkgver=1.0.2.r46.g799bc3c0 
 pkgrel=1
 pkgdesc="A Return to Castle Wolfenstein modification which enables cooperative gameplay, based on iortcw"
 arch=('i686' 'x86_64')
 url="http://www.rtcwcoop.com"
 license=('GPL')
-depends=('wolf-data' 'freetype2' 'sdl2' 'openal' 'opus' 'opusfile' 'libogg' 'zlib')
-makedepends=('cmake' 'git')
+depends=('wolf-data' 'freetype2' 'sdl2' 'libjpeg-turbo' 'openal' 'opus' 'opusfile' 'libogg' 'zlib')
+makedepends=('cmake' 'git' 'zip')
 noextract=('patch-data-141.zip')
 install='rtcwcoop-git.install'
 source=("rtcwcoop::git+https://github.com/rtcwcoop/rtcwcoop.git"
