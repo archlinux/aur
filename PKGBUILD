@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=sdformat-6
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SDF Converter for gazebo"
 arch=('i686' 'x86_64')
 url="http://sdformat.org/"
@@ -26,7 +26,7 @@ prepare(){
 
 build() {
   cd "${srcdir}/${_dir}/build"
-  make -j4
+  make
 }
 
 check() {
