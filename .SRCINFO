@@ -1,6 +1,6 @@
 pkgbase = camotics-git
 	pkgdesc = 3-axis NC machining simulation software
-	pkgver = r822.8d1c8fb
+	pkgver = r829.a1bc453
 	pkgrel = 1
 	url = http://camotics.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = camotics-git
 	makedepends = python2-six
 	makedepends = qt5-tools
 	makedepends = cbang-git
-	depends = v8-3.14
+	depends = v8-6.8
 	depends = qt5-websockets
 	depends = cairo
 	depends = desktop-file-utils

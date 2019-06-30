@@ -1,14 +1,14 @@
 # Maintainer: Paul Hentschel <aur at hpminc dot com>
 
 pkgname=camotics-git
-pkgver=r822.8d1c8fb
+pkgver=r829.a1bc453
 pkgrel=1
 pkgdesc="3-axis NC machining simulation software"
 arch=('x86_64')
 url="http://camotics.org/"
 license=('GPL2')
 depends=(
-  'v8-3.14'
+  'v8-6.8'
   'qt5-websockets'
   'cairo'
   'desktop-file-utils'
@@ -32,19 +32,14 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "${pkgname%-*}"
-  sed -i '24 i env.Append(LINKFLAGS = os.environ.get("LDFLAGS"))' SConstruct
-}
-
 build() {
   cd "${pkgname%-*}"
-  CBANG_HOME=/opt/cbang scons
+  CBANG_HOME=/opt/cbang scons linkflags=$LDFLAGS
 }
 
 package() {
   cd "${pkgname%-*}"
-  CBANG_HOME=/opt/cbang scons install install_prefix="$pkgdir/usr"
+  CBANG_HOME=/opt/cbang scons install install_prefix="$pkgdir/usr" linkflags=$LDFLAGS
   
   install -d "$pkgdir/usr/share/${pkgname%-*}"/tpl_lib
   cp -a tpl_lib/ "$pkgdir/usr/share/${pkgname%-*}"
