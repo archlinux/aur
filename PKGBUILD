@@ -24,19 +24,20 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/${pkgname/-git/}"
-  CFLAGS=' -fgnu89-inline' cmake \
+  install -d "$srcdir/gccxml/build"
+  cd "$srcdir/${pkgname/-git/}/build"
+  CFLAGS=' -fgnu89-inline' cmake .. \
     -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 build() {
-  cd "$srcdir/${pkgname/-git/}"
+  cd "$srcdir/${pkgname/-git/}/build"
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname/-git/}"
+  cd "$srcdir/${pkgname/-git/}/build"
   make DESTDIR="$pkgdir/" install
 
   install -D -m644 "$srcdir/Copyright.txt" "$pkgdir/usr/share/licenses/$pkgname/Copyright.txt"
