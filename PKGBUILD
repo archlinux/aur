@@ -2,7 +2,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=omplapp
 pkgver=1.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="The Open Motion Planning Library App (OMPL.app) is an extended version
 of OMPL that adds support for mesh loading and collision checking along with a
 GUI"
@@ -33,7 +33,7 @@ optdepends=('castxml'
             'spot'
             'triangle')
 makedepends=('cmake')
-provides=(ompl)
+provides=('ompl')
 source=(https://bitbucket.org/ompl/ompl/downloads/omplapp-${pkgver}-Source.tar.gz)
 sha512sums=('04812a659fd81c2c541907911cbf4e5987be034546e8e48ed3d11b2b2f9ad3f7931f15d30a32ce3b64deb66b13875970797ac5072e92bfa0841e8d27d85fcb18')
 
@@ -56,7 +56,7 @@ build() {
     "${srcdir}/${pkgname}-${pkgver}-Source"
 
   msg "Building the project"
-  make -j4
+  make
 }
 
 #check() {
