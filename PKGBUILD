@@ -7,7 +7,7 @@
 
 pkgname=librtmp0
 pkgver=2.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Toolkit for RTMP streams'
 arch=('x86_64')
 url='http://rtmpdump.mplayerhq.hu/'
