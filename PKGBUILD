@@ -33,11 +33,11 @@ prepare() {
   ln -s ../../slCommon ./
 
   cd "$srcdir/$_gitbase"
-  cd plugin/JuceLibraryCode
-  mv ../../../JUCE/modules/* .
-  ln -s ../../../dRowAudio/module/dRowAudio dRowAudio
-  ln -s ../../../gin/modules/gin gin
-  ln -s ../../../plugin_sdk plugin_sdk
+  mv ../JUCE/modules/* plugin/JuceLibraryCode/.
+  ln -s ../dRowAudio/module/dRowAudio plugin/JuceLibraryCode/dRowAudio
+  ln -s ../gin/modules/gin plugin/JuceLibraryCode/gin
+  pwd
+  mv ../plugin_sdk/vstsdk2.4 modules/plugin_sdk
 }
 
 build() {
