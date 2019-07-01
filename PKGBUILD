@@ -1,7 +1,7 @@
 # Maintainer: zetaPRIME <qmanxt at gmail dot com>
 pkgname=xybrid-git
 _realname=xybrid
-pkgver=3282b2e
+pkgver=r120.c8b0108
 pkgrel=1
 pkgdesc="hybrid tracker/DAW"
 arch=('any')
@@ -15,8 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_realname
-  # time of latest commit
-  git describe --always | sed 's|-|.|g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }	
 
 build() {

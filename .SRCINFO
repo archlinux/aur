@@ -1,6 +1,6 @@
 pkgbase = xybrid-git
 	pkgdesc = hybrid tracker/DAW
-	pkgver = 3282b2e
+	pkgver = r120.c8b0108
 	pkgrel = 1
 	url = https://gitlab.com/zetaPRIME/xybrid/
 	arch = any
