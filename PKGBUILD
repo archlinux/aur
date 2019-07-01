@@ -8,7 +8,7 @@ url="https://github.com/espressif/esp-idf"
 license=('APACHE')
 depends=('gcc' 'git' 'make' 'ncurses' 'flex' 'bison' 'gperf' 'python2-pyserial')
 source=(https://github.com/espressif/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.zip)
-sha256sums=('79e703a47b786d56786853c2e2b72119522b62e697c4903e903b23e7182fdf85')
+sha256sums=('b4be7b9f3827868267299467ee86873b2bfdff19b5bb0cc27cf772a0708846bc')
 
 build() {
   cd "$srcdir/${pkgname}-v${pkgver}"
