@@ -1,6 +1,6 @@
 pkgname=mingw-w64-bzip2
-pkgver=1.0.6
-pkgrel=8
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="A high-quality data compression program (mingw-w64)"
 arch=(any)
 url="http://sources.redhat.com/bzip2"
@@ -13,10 +13,10 @@ source=("https://fossies.org/linux/misc/bzip2-${pkgver}.tar.gz"
         "bzip2-1.0.5-autoconfiscated.patch"
         "bzip2-use-cdecl-calling-convention.patch"
         "mingw32-bzip2-1.0.5-slash.patch")
-sha1sums=('3f89f861209ce81a6bab1fd1998c0ef311712002'
-          '4d512b19b802d328037bf957c18866471c092e84'
-          'f73d45bb02741cf0cfa995ac46547b34aedf5343'
-          '809c3a95f6f6c26463d804b345d62eed8420c6a6')
+sha256sums=('e768a87c5b1a79511499beb41500bcc4caf203726fff46a6f5f9ad27fe08ab2b'
+            '7daaca73a46af4636843d1d13bca9cec6e38c0932142a420ad3500098a90db11'
+            '8f8f0b65417fe892152e1f0a4f75090d2ef1845d5a611c3c94493704d53452ef'
+            '672216b20cf29438ffe43ebf38b9a648d9a0ac6fdc6be55bb4181d57ed5462be')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
