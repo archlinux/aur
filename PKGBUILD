@@ -3,23 +3,16 @@
 pkgbase=looking-glass
 pkgname=("${pkgbase}" "${pkgbase}-module-dkms" "${pkgbase}-host")
 epoch=1
-pkgver=B1_rc5
+pkgver=B1_rc6
 _pkgver=${pkgver//_/-}
-pkgrel=3
+pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.hostfission.com"
 arch=('x86_64')
 license=('GPL2')
 makedepends=('cmake' 'sdl2_ttf' 'glu' 'fontconfig' 'spice-protocol')
-source=("https://github.com/gnif/LookingGlass/archive/${_pkgver}.tar.gz"
-        "https://github.com/gnif/LookingGlass/pull/167.diff")
-sha512sums=('5e4539d7decbfb37e8eb481c5d27cc38c1d7ed65df5e49a64f9a14402243b9f9ee97c939d3733bd90859ded71961a866c627d3c6c44bff6bd36881eced1fc1ec'
-            '9523fc209fc9fa1ff19a325d89146c14d2806ed2401493a5a00f553749a7db3681ef6450148182c50f9a6716a2084cf506f04523b94afccacd6acb3afe83b077')
-
-prepare() {
-	cd "${srcdir}/LookingGlass-${_pkgver}"
-	patch -p1 < "${srcdir}/167.diff"
-}
+source=("https://github.com/gnif/LookingGlass/archive/${_pkgver}.tar.gz")
+sha512sums=('592c5d813650a19dd8a3edfa7659348ec1d24627c7a66b6b13490a777e0f5b8d98bf7206323f3b9ebf5a1cd3904f068d67c5ad6277c43952eac13e099b7b8348')
 
 build() {
 	cd "${srcdir}/LookingGlass-${_pkgver}"
