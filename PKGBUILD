@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=grin
-pkgver=1.1.0
-_commit=a89a1024b6dd7cc5d3def6b41edae0e46b55658d
+pkgver=2.0.0
+_commit=8f3be49dfa152322c228352c1f34447328ac84d9
 pkgrel=1
 pkgdesc='Minimal implementation of the MimbleWimble protocol'
 arch=('i686' 'x86_64')
