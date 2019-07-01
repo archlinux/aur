@@ -13,7 +13,7 @@ _neovim="n"
 
 _name='deoplete'
 pkgname="${_name}-git"
-pkgver=r1706.aebaec4
+pkgver=r1711.2ac0da5
 pkgrel=1
 pkgdesc="deoplete completion plugin for neovim"
 # i.e. seems to build and work fine on raspberrypi
@@ -55,6 +55,6 @@ package() {
       "$pkgdir/usr/share/vim/vimfiles"
   fi
 
-  install -D -m644 "${srcdir}/${_name}/README.md" $pkgdir/usr/share/doc/$pkgname/README.md
-  install -D -m644 "${srcdir}/${_name}/LICENSE" $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -D -m644 "${srcdir}/${_name}/README.md" "$pkgdir"/usr/share/doc/$pkgname/README.md
+  install -D -m644 "${srcdir}/${_name}/LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
