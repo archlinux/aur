@@ -1,0 +1,32 @@
+From 27dca08166234d0c650a5e32f83e90f02a3287b2 Mon Sep 17 00:00:00 2001
+From: Markus Heidelberg <markus.heidelberg@web.de>
+Date: Mon, 1 Jul 2019 16:44:33 +0200
+Subject: [PATCH] Allow deprecated "proj_api.h" header file
+
+In the long term the API has to be adapted from version 4 to 6 (see
+https://proj.org/development/migration.html#) if this package should be
+kept usable.
+
+See also https://proj.org/development/index.html:
+"The proj_api.h header and the functions related to it is considered
+deprecated from version 5.0.0 and onwards. The header will be removed
+from PROJ in version 7.0.0 scheduled for release February 1st 2020."
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cbad161..046841a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,6 +26,7 @@ set(APPLICATION_VERSION_PATCH "1")
+ 
+ 
+ add_definitions(-DVER_MAJOR=${APPLICATION_VERSION_MAJOR} -DVER_MINOR=${APPLICATION_VERSION_MINOR} -DVER_STEP=${APPLICATION_VERSION_PATCH})
++add_definitions(-DACCEPT_USE_OF_DEPRECATED_PROJ_API_H)
+ 
+ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+ if (APPLE)
+-- 
+2.22.0
+

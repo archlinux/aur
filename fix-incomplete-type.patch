@@ -1,0 +1,25 @@
+From 54f10bc69465c3dab3342b691829825dc130598e Mon Sep 17 00:00:00 2001
+From: Markus Heidelberg <markus.heidelberg@web.de>
+Date: Mon, 1 Jul 2019 18:55:54 +0200
+Subject: [PATCH] Fix compile error "field 'levels' has incomplete type
+ 'QList<CInputFile::level_t>'"
+
+---
+ 3rdparty/map2rmap/CInputFile.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/3rdparty/map2rmap/CInputFile.h b/3rdparty/map2rmap/CInputFile.h
+index f3ce8cb..40515a8 100644
+--- a/3rdparty/map2rmap/CInputFile.h
++++ b/3rdparty/map2rmap/CInputFile.h
+@@ -20,6 +20,7 @@
+ 
+ #include <QString>
+ #include <QVector>
++#include <QList>
+ #include <gdal_priv.h>
+ #include <proj_api.h>
+ 
+-- 
+2.22.0
+
