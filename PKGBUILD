@@ -2,14 +2,14 @@
 pkgname=precached-git
 _pkgname=precached
 pkgver=1.7.0
-pkgrel=9
+pkgrel=10
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
 license=('GPL')
 groups=()
-depends=('dbus' 'zeromq')
-makedepends=('rust' 'dbus' 'zeromq' 'systemd')
+depends=('zeromq')
+makedepends=('rust' 'zeromq' 'systemd')
 optdepends=()
 provides=()
 conflicts=(precached)
@@ -40,7 +40,6 @@ package() {
   mkdir -p "$pkgdir/usr/lib/systemd/user/"
   mkdir -p "$pkgdir/usr/lib/systemd/system-preset/"
   mkdir -p "$pkgdir/usr/lib/systemd/user-preset/"
-  mkdir -p "$pkgdir/etc/dbus-1/system.d/"
   mkdir -p "$pkgdir/usr/share/man/man8/"
   mkdir -p "$pkgdir/usr/share/man/man5/"
   mkdir -p "$pkgdir/usr/share/man/man1/"
@@ -70,7 +69,6 @@ package() {
   install -m 644 "support/systemd/precached-prime-caches.timer" "$pkgdir/usr/lib/systemd/system/"
   install -m 644 "support/systemd/precached.preset" "$pkgdir/usr/lib/systemd/system-preset/50-precached.preset"
   install -m 644 "support/systemd/precached-user.preset" "$pkgdir/usr/lib/systemd/user-preset/50-precached.preset"
-  install -m 644 "support/dbus/org.precached.precached1.conf" "$pkgdir/etc/dbus-1/system.d/"
   install -m 644 "support/desktop/precached-trigger.desktop" "$pkgdir/etc/xdg/autostart/precached-trigger.desktop"
   
   install -m 644 "support/man/precachedtop.1" "$pkgdir/usr/share/man/man1/"

@@ -1,17 +1,15 @@
 pkgbase = precached-git
 	pkgdesc = A Linux process monitor and pre-caching daemon
 	pkgver = 1.7.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://x3n0m0rph59.gitlab.io/precached/
 	install = precached.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = rust
-	makedepends = dbus
 	makedepends = zeromq
 	makedepends = systemd
-	depends = dbus
 	depends = zeromq
 	conflicts = precached
 	source = precached::git+https://gitlab.com/X3n0m0rph59/precached.git/#branch=master
