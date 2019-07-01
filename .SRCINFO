@@ -1,7 +1,7 @@
 pkgbase = ampi-openmpi
 	pkgdesc = Adaptive Message Passing Interface, OpenMPI backend
 	pkgver = 6.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://charm.cs.uiuc.edu/research/ampi/
 	arch = x86_64
 	license = custom:Charm++/Converse License
