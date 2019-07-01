@@ -1,12 +1,12 @@
 # Creator: giorgio gilestro <giorgio@gilest.ro>
 pkgname="brother-hl3140cw"
 pkgver="1.1.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother HL3040cn"
 arch=('i686' 'x86_64')
 url="http://support.brother.com/g/b/downloadlist.aspx?c=us&lang=en&prod=hl3140cw_us_eu&os=127"
 license=('custom:brother commercial license')
-depends=('cups' 'psutils')
+depends=('cups' 'psutils' 'lib32-glibc')
 install='brother-hl3140cw.install'
 source=(
 	"http://www.brother.com/pub/bsc/linux/dlf/hl3140cwlpr-$pkgver-1.i386.rpm"
