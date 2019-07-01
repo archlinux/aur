@@ -1,0 +1,25 @@
+From 5ebc83ae1aee4dfb59b124a0e2a7dda5127d7c48 Mon Sep 17 00:00:00 2001
+From: Nicolas Menard <nicolas.menard@wyss.harvard.edu>
+Date: Mon, 1 Jul 2019 09:40:29 -0400
+Subject: [PATCH] Fixed HDF5 patch for archlinux users
+
+---
+ src/datasources/hdf5/hdf5.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/datasources/hdf5/hdf5.h b/src/datasources/hdf5/hdf5.h
+index 03bdd792..7d5a4961 100644
+--- a/src/datasources/hdf5/hdf5.h
++++ b/src/datasources/hdf5/hdf5.h
+@@ -18,7 +18,7 @@
+ #include <dataplugin.h>
+ 
+ #include <QFileInfo>
+-#include <hdf5/serial/H5Cpp.h>
++#include <H5Cpp.h>
+ #include <exception>
+ 
+ #include "debug.h"
+-- 
+2.22.0
+

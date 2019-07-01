@@ -18,9 +18,9 @@ pkgbase = kst-git
 	optdepends = libmatio: provides support for Matlab binary files
 	conflicts = kst
 	source = git://github.com/Kst-plot/kst.git
-        source = 0001-Fixing-missing-QStyle-in-shortcutdialog.cpp.patch
+        source = 0001-Fixed-HDF5-patch-for-archlinux-users.patch
 	md5sums = SKIP
-        md5sums = 2b38f2c30bfbf64bbc392343e0590697
+        md5sums = 775b873a12b1b6125bd02cad752a9306
 
 pkgname = kst-git
 
