@@ -1,7 +1,7 @@
 pkgbase = xfce4-settings-devel
 	pkgdesc = Settings manager for xfce
-	pkgver = 4.13.6
-	pkgrel = 2
+	pkgver = 4.13.7
+	pkgrel = 1
 	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = xfce4-settings-devel
 	depends = upower
 	depends = colord
 	optdepends = libcanberra: for sound control
-	provides = xfce4-settings=4.13.6
+	provides = xfce4-settings=4.13.7
 	conflicts = xfce4-settings
-	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.13/xfce4-settings-4.13.6.tar.bz2
-	sha256sums = b1ad95e567af50aa73815b2eb1afcc127b6bcdb5c8eb55da716f73c6a7e4af7a
+	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.13/xfce4-settings-4.13.7.tar.bz2
+	sha256sums = ac11391eee22cb5fbffe3342916bcf9805f29c722aca825c2f57d98dc167a065
 
 pkgname = xfce4-settings-devel
 
