@@ -1,0 +1,19 @@
+pkgbase = plasma-thunderbolt-git
+	pkgdesc = Plasma addons for managing Thunderbolt devices
+	pkgver = 82.ce67155
+	pkgrel = 1
+	url = https://cgit.kde.org/plasma-thunderbolt.git
+	arch = x86_64
+	groups = plasma
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = plasma-framework
+	depends = bolt
+	depends = kservice
+	source = git+https://anongit.kde.org/plasma-thunderbolt.git
+	validpgpkeys = DD0AC837C3FAA57615747A2FC451030771FF4BAC
+	sha256sums = SKIP
+
+pkgname = plasma-thunderbolt-git
+
