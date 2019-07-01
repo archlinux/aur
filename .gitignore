@@ -1,0 +1,6 @@
+src
+pkg
+xybrid
+*.tar.xz
+*.tar.gz
+*.log 
