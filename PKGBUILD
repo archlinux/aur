@@ -8,16 +8,16 @@
 
 _pkgname=thunderbird
 pkgname=thunderbird-appmenu
-pkgver=60.7.0
+pkgver=60.7.2
 pkgrel=1
 pkgdesc="Thunderbird from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://aur.archlinux.org/packages/thunderbird-appmenu/"
-depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
+depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
          nss hunspell sqlite ttf-font icu)
-makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm)
+makedepends=(unzip zip diffutils python2 yasm mesa imake libpulse inetutils xorg-server-xvfb
+             autoconf2.13 rust clang llvm gtk2)
 optdepends=('libcanberra: sound support')
 provides=("thunderbird=$pkgver")
 conflicts=("thunderbird")
@@ -26,7 +26,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         $_pkgname.desktop
         rust-1.33.patch
         unity-menubar.patch)
-sha256sums=('377ca762624df103dd768dc36b7632537b46aa83ddc9d336a157cadcde8bb51d'
+sha256sums=('fc89a5f66b17d554fc0b9c153483edcc74b1bacc916dfd6dccead8478060af31'
             '3534ea85d8e0e35dba5f40a7a07844df19f3a480e1358fc50c2502f122dab789'
             '2b0244a9f7a30f28bcc12055f171e5506c7e3b929d85c3b3514b7e4e4c251784'
             '22786f52773b93046fdb12378f67343b1d7d3390e83a00ff4aa03948c2b1c9e2')
@@ -66,6 +66,8 @@ ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
 #ac_add_options --enable-rust-simd
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1423822
+ac_add_options --disable-elf-hack
 
 # Branding
 ac_add_options --enable-official-branding
@@ -94,6 +96,7 @@ ac_add_options --disable-jack
 ac_add_options --enable-startup-notification
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
+ac_add_options --disable-gconf
 END
 
 }
