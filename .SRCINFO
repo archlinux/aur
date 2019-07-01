@@ -1,15 +1,13 @@
 pkgbase = dnf-legacy-utils
 	pkgdesc = Links to dnf builtins for yum and yum-utils
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = BSD
 	depends = dnf
 	provides = yum
 	conflicts = yum
 	conflicts = yum-utils
-	replaces = yum
-	replaces = yum-utils
 	source = debuginfo-install
 	source = needs-restarting
 	source = repo-graph

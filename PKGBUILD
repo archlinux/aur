@@ -2,13 +2,12 @@
 
 pkgname=dnf-legacy-utils
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Links to dnf builtins for yum and yum-utils"
 arch=('any')
 license=(BSD)
 depends=(dnf)
 conflicts=(yum yum-utils)
-replaces=(yum yum-utils)
 provides=(yum)
 source=(
     debuginfo-install
