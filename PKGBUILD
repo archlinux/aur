@@ -13,7 +13,7 @@ _minver=0
 _ver=${_majver}.${_minver}
 _tnyver=96
 pkgver=${_ver}.${_tnyver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 _mosekarch=linux64x86
 url='http://mosek.com/'
@@ -29,6 +29,7 @@ package() {
 	# Install shared libraries.
 	cd "${srcdir}/mosek/${_ver}/tools/platform/${_mosekarch}/bin"
 	install -dm755 "${pkgdir}/usr/lib"
+	install -m755 "libcilkrts.so.5" "${pkgdir}/usr/lib/"
 	install -m755 "libmosek64.so.${_ver}" "${pkgdir}/usr/lib/"
 	install -m755 "libmosekxx${_majver}_${_minver}.so" "${pkgdir}/usr/lib/"
 	ln -rs "${pkgdir}/usr/lib/libmosek64.so.${_ver}" "${pkgdir}/usr/lib/libmosek64.so"
