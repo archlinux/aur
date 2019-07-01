@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index 476cbef..292355f 100644
+index 6634fdd..d58987c 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -32,7 +32,8 @@ SUPPORTED_PLATFORMS := linux-$(GOARCH) darwin-$(GOARCH) windows-$(GOARCH).exe
@@ -12,12 +12,12 @@ index 476cbef..292355f 100644
  
  ifeq "$(strip $(VERSION))" ""
   override VERSION = $(shell git describe --always --tags --dirty)
-@@ -46,7 +47,7 @@ GO_LDFLAGS += -extldflags \"${LDFLAGS}\"
- GO_LDFLAGS += -X $(VERSION_PACKAGE).version=$(VERSION)
+@@ -53,7 +54,7 @@ GO_BUILD_TAGS_windows := ""
+ GO_LDFLAGS = -X $(VERSION_PACKAGE).version=$(VERSION)
  GO_LDFLAGS += -X $(VERSION_PACKAGE).buildDate=$(shell date +'%Y-%m-%dT%H:%M:%SZ')
  GO_LDFLAGS += -X $(VERSION_PACKAGE).gitCommit=$(COMMIT)
 -GO_LDFLAGS += -X $(VERSION_PACKAGE).gitTreeState=$(if $(shell git status --porcelain),dirty,clean)
 +GO_LDFLAGS += -X $(VERSION_PACKAGE).gitTreeState=$(TREE_STATE)
- GO_LDFLAGS +="
  
- GO_FILES := $(shell find . -type f -name '*.go' -not -path "./vendor/*")
+ GO_LDFLAGS_windows =" $(GO_LDFLAGS)  -extldflags \"$(LDFLAGS_windows)\""
+ GO_LDFLAGS_darwin =" $(GO_LDFLAGS)  -extldflags \"$(LDFLAGS_darwin)\""
