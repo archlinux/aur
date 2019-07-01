@@ -1,28 +1,21 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='arrow'
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
 url="https://arrow.apache.org"
 license=('Apache')
-depends=('boost-libs' 'brotli' 'double-conversion' 'gflags' 'grpc' 'google-glog' 'lz4' 'protobuf' 'rapidjson' 'snappy' 'thrift' 'zstd')
+depends=('boost-libs' 'brotli' 'double-conversion' 'gflags' 'grpc' 'google-glog' 'lz4' 'protobuf' 'rapidjson' 'snappy' 'thrift' 'uriparser' 'zstd')
 checkdepends=('git')
 optdepends=()
 provides=('parquet-cpp')
 conflicts=('parquet-cpp')
 makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers' 'python-numpy')
-source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz"
-  "fix_test.patch")
-sha256sums=('380fcc51f0bf98e13148300c87833e734cbcd7b74dddc4bce93829e7f7e4208b'
-            '9c6d50bb5fb7a343861e7deb4e62e501faea6a6056b260184820aa5a5be0f106')
+source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
+sha256sums=('e6444a73cc7987245e0c89161e587337469d26a518c9af1e6d7dba47027e0cd1')
 
-
-prepare(){
-  cd "$srcdir"
-  patch -p0 < fix_test.patch
-}
 
 build(){
   cd "$srcdir"
@@ -63,7 +56,9 @@ check(){
    cd "$srcdir"
    rm -rf parquet-testing
    git clone https://github.com/apache/parquet-testing.git
+   rm -rf arrow-testing
+   git clone https://github.com/apache/arrow-testing.git
    cd build
-   PARQUET_TEST_DATA="$srcdir/parquet-testing/data" make test
+   PARQUET_TEST_DATA="$srcdir/parquet-testing/data" ARROW_TEST_DATA="$srcdir/arrow-testing/data" make test
 }
 # vim:ts=2:sw=2:et:
