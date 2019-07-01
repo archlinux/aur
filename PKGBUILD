@@ -67,13 +67,13 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/waterfox.png"
   done
 
-  install -Dm644 "$srcdir/Waterfox/obj-x86_64-pc-linux-gnu/dist/waterfox/browser/icons/mozicon128.png" \
+  install -Dm644 "$srcdir/Waterfox/obj-x86_64-pc-linux-gnu/dist/waterfox/browser/chrome/icons/default/default128.png" \
     "$pkgdir/usr/share/icons/hicolor/64x64/apps/waterfox.png"
-  install -Dm644 "$srcdir/Waterfox/obj-x86_64-pc-linux-gnu/dist/waterfox/browser/icons/mozicon128.png" \
+  install -Dm644 "$srcdir/Waterfox/obj-x86_64-pc-linux-gnu/dist/waterfox/browser/chrome/icons/default/default128.png" \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/waterfox.png"
-  install -Dm644 browser/branding/official/content/about-logo.png \
+  install -Dm644 browser/branding/unofficial/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/waterfox.png"
-  install -Dm644 browser/branding/official/content/about-logo@2x.png \
+  install -Dm644 browser/branding/unofficial/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/waterfox.png"
 
   install -Dm644 ../waterfox.desktop \
