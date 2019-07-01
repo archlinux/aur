@@ -2,8 +2,8 @@
 # Contributor: 
 
 pkgname=qogir-gtk-theme-git
-pkgver=2018.10.12.1.gf48955d
-pkgrel=1
+pkgver=2019.07
+pkgrel=2
 pkgdesc='Qogir is a flat Design theme for GTK'
 arch=('any')
 url='https://github.com/vinceliuice/Qogir-theme'
@@ -24,7 +24,7 @@ pkgver() {
 package() {
   cd Qogir-theme
   mkdir -p "${pkgdir}/usr/share/themes"
-  ./Install -d "${pkgdir}/usr/share/themes"
+  ./install.sh -d "${pkgdir}/usr/share/themes"
 }
 
 
