@@ -1,7 +1,7 @@
 pkgbase = xfwm4-devel
 	pkgdesc = Xfce window manager
-	pkgver = 4.13.2
-	pkgrel = 2
+	pkgver = 4.13.3
+	pkgrel = 1
 	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = xfwm4-devel
 	depends = xfconf
 	depends = hicolor-icon-theme
 	depends = libxpresent
-	provides = xfwm4=4.13.2
+	provides = xfwm4=4.13.3
 	conflicts = xfwm4
 	options = !libtool
-	source = https://archive.xfce.org/src/xfce/xfwm4/4.13/xfwm4-4.13.2.tar.bz2
-	sha256sums = 7be8a63e92077e42e6cc064a1dfdae608ab99fdc730adbd5200802dbdd86d5a9
+	source = https://archive.xfce.org/src/xfce/xfwm4/4.13/xfwm4-4.13.3.tar.bz2
+	sha256sums = 12ad274f6662c8afee35fd9b9310e73bd462c423578d448b2d7353e3c8eda6c1
 
 pkgname = xfwm4-devel
 
