@@ -1,11 +1,12 @@
 pkgbase = mtls
 	pkgdesc = A short-lived certificate tool based on the Zero Trust network model
 	pkgver = 0.10.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drgrove/mtls-cli
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = nss
 	depends = python-click
 	depends = python-cryptography
