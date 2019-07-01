@@ -1,0 +1,20 @@
+pkgbase = wasmer-git
+	pkgdesc = Standalone JIT WebAssembly runtime
+	pkgver = 0.5.1.r20.g13c5f5e7
+	pkgrel = 1
+	url = https://wasmer.io/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = python
+	depends = gcc-libs
+	provides = wasmer
+	conflicts = wasmer
+	source = git+https://github.com/wasmerio/wasmer.git
+	sha256sums = SKIP
+
+pkgname = wasmer-git
+
