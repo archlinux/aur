@@ -11,7 +11,6 @@ depends=('grub' 'gtkmm3' 'libarchive')
 optdepends=('hwinfo: Additional hardware information'
             'polkit: Run grub-customizer from menu')
 makedepends=('cmake')
-provides=('grub-customizer')
 backup=('etc/grub-customizer/grub.cfg')
 source=("https://launchpad.net/${pkgname}/${pkgver%.*}/${pkgver}/+download/${pkgname}_${pkgver}.tar.gz"
         'grub.cfg')
