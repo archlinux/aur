@@ -1,10 +1,11 @@
 pkgbase = rumur-git
 	pkgdesc = Yet another Murphi model checker
-	pkgver = 2019.03.11.r17.g7e9addb
+	pkgver = 2019.06.30.r2.g53f20cc
 	pkgrel = 1
 	url = https://github.com/Smattr/rumur
 	arch = x86_64
-	license = custom
+	license = custom:UNLICENSE
+	checkdepends = valgrind
 	makedepends = git
 	makedepends = cmake
 	makedepends = bison>=3.3.2
