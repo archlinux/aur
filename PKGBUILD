@@ -2,8 +2,8 @@
 
 _pkgname=xfce4-panel
 pkgname=${_pkgname}-devel
-pkgver=4.13.5
-pkgrel=2
+pkgver=4.13.6
+pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
@@ -15,7 +15,7 @@ makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'vala' 'python') #for 
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('0d05b6dd8c91c154a364a3e31583c5f423c33e26d44d43cc409165f7d578ca15')
+sha256sums=('42411fee7675bb6fb3055395673dc925d43495df93b5e940a1ae3d0a3d2f63a8')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
