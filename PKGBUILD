@@ -5,15 +5,18 @@ pkgver() {
   cd cleardns
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-pkgrel=2
+pkgrel=3
 pkgdesc='another clean DNS'
 arch=('x86_64')
-license=('GPLv3')
+license=('GPL3')
+depends=('glibc')
 makedepends=('go' 'git')
 source=('git+https://gitlab.com/NickCao/cleardns')
 md5sums=('SKIP')
 build() {
 	cd $srcdir/cleardns
+	go get github.com/miekg/dns
+	go get github.com/steakknife/bloomfilter
 	go build
 }
 package() {
