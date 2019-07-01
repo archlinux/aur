@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname='qmapshack-hg'
-pkgver=r4312.2a89299c92ed
+pkgver=1.13.0.50.55dee1ae0d55
 pkgrel=1
 pkgdesc='Plan your next outdoor trip'
 arch=('x86_64')
@@ -16,12 +16,13 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
 
-    printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+    hg log -r . --template '{latesttag}.{latesttagdistance}.{node|short}' | sed 's/V //'
 }
 
 build() {
     cd "$pkgname"
 
+    sed -i "s/set(VERSION_SUFFIX \"develop\")/set(VERSION_SUFFIX \"r${pkgver#*r}\")/" CMakeLists.txt
     [ ! -f cmake/Modules/FindPROJ4.cmake ] && patch --quiet -p1 < FindPROJ4.patch
     [ ! -f cmake/Modules/FindQuaZip5.cmake ] && patch --quiet -p1 < FindQuaZip5.patch
     cmake ./ -DCMAKE_INSTALL_PREFIX=/usr

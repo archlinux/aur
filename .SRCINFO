@@ -1,6 +1,6 @@
 pkgbase = qmapshack-hg
 	pkgdesc = Plan your next outdoor trip
-	pkgver = r4312.2a89299c92ed
+	pkgver = 1.13.0.50.55dee1ae0d55
 	pkgrel = 1
 	url = https://bitbucket.org/maproom/qmapshack/
 	arch = x86_64
