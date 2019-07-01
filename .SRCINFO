@@ -13,6 +13,7 @@ pkgbase = python-xarray
 	optdepends = python-bottleneck: Faster NaN operations
 	optdepends = python-scipy: OPeNDAP support
 	optdepends = python-matplotlib: Plotting support
+	optdepends = python-rasterio: Read GeoTiffs and other gridded raster datasets
 	optdepends = python-dask: Enable out-of-core parallel computation
 	replaces = python-xray
 	source = https://files.pythonhosted.org/packages/source/x/xarray/xarray-0.12.2.tar.gz

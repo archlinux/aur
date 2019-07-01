@@ -11,9 +11,9 @@ makedepends=('python-setuptools')
 depends=('python-numpy' 'python-pandas')
 optdepends=('python-netcdf4: NetCDF4 support'
             'python-bottleneck: Faster NaN operations'
-            # 'python-pynio: GRIB and other file format support'   # (no Python 3 support yet)
             'python-scipy: OPeNDAP support' 
             'python-matplotlib: Plotting support'
+            'python-rasterio: Read GeoTiffs and other gridded raster datasets'
             'python-dask: Enable out-of-core parallel computation')
 checkdepends=('python-pytest')
 replaces=('python-xray')
