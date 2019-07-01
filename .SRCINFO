@@ -1,7 +1,7 @@
 pkgbase = xfce4-session-devel
 	pkgdesc = A session manager for Xfce
-	pkgver = 4.13.2
-	pkgrel = 2
+	pkgver = 4.13.3
+	pkgrel = 1
 	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = xfce4-session-devel
 	optdepends = xfce4-screensaver: for locking screen with xflock4
 	optdepends = xscreensaver: for locking screen with xflock4
 	optdepends = gnome-screensaver: for locking screen with xflock4
-	provides = xfce4-session=4.13.2
+	provides = xfce4-session=4.13.3
 	conflicts = xfce4-session
 	replaces = xfce-utils
-	source = https://archive.xfce.org/src/xfce/xfce4-session/4.13/xfce4-session-4.13.2.tar.bz2
+	source = https://archive.xfce.org/src/xfce/xfce4-session/4.13/xfce4-session-4.13.3.tar.bz2
 	source = xfce-polkit-gnome-authentication-agent-1.desktop
-	sha256sums = c0be0c7e602c962d0e8fca63bd86165e60313d07bfb72cf2c3f99ab53e2a22a1
+	sha256sums = eaed34f29aa044d878d60dcb7293a542f48248919e3dcd8df98215121cb6d362
 	sha256sums = 74c94c5f7893d714e04ec7d8b8520c978a5748757a0cdcf5128492f09f31b643
 
 pkgname = xfce4-session-devel
