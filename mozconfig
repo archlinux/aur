@@ -23,8 +23,7 @@ ac_add_options --enable-hardening
 ac_add_options --prefix=/usr
 ac_add_options --libdir=/opt
 
-# currently broken in rust 1.33
-ac_add_options --disable-rust-simd # on x86 requires SSE2
+ac_add_options --enable-rust-simd # on x86 requires SSE2
 
 ac_add_options --enable-release
 ac_add_options --enable-application=browser
@@ -66,7 +65,6 @@ ac_add_options --enable-default-toolkit=cairo-gtk3
 ac_add_options --disable-stylo
 ac_add_options --disable-libproxy
 ac_add_options --disable-crashreporter
-ac_add_options --disable-eme
 ac_add_options --disable-js-shell
 ac_add_options --disable-maintenance-service
 ac_add_options --disable-updater
@@ -76,7 +74,6 @@ ac_add_options --disable-necko-wifi
 ac_add_options --disable-webrtc
 ac_add_options --disable-tests
 ac_add_options --disable-gamepad
-ac_add_options --disable-elf-hack
 ac_add_options --disable-mobile-optimize
 ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
