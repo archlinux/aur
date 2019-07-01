@@ -1,0 +1,13 @@
+pkgbase = firefox-thunderbird-spell-ru-en-unified
+	pkgdesc = firefox and thunderbird Rus+Eng unified spellcheck/dictionary (no switching). Thunderbird is just a symlink.
+	pkgver = 1.0.3.1webext
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/unified-russian-english-spell/
+	arch = any
+	groups = firefox-addons
+	license = GPL3
+	source = https://addons.mozilla.org/firefox/downloads/file/1163957/addon-1.0.3.1webext.xpi
+	sha512sums = 6b74c3764468a091e65b985aa2bf7ea1ad57419e82218bedc5e227c8e8c6160ac6b33e2c177182f668ab7e2360ed185d9f046ff2cb5b513c4e47a58969248530
+
+pkgname = firefox-thunderbird-spell-ru-en-unified
+
