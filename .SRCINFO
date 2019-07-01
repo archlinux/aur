@@ -1,0 +1,37 @@
+pkgbase = omnigollum
+	pkgdesc = OmniAuth for Gollum.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/arr2036/omnigollum
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = omniauth-1.8.1.gem
+	noextract = omniauth-ldap-2.0.0.gem
+	noextract = hashie-3.5.7.gem
+	noextract = net-ldap-0.16.1.gem
+	noextract = pyu-ruby-sasl-0.0.3.3.gem
+	noextract = rubyntlm-0.6.2.gem
+	noextract = omnigollum-0.1.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/omnigollum-0.1.5.gem
+	source = enabled-indicator.patch
+	source = https://rubygems.org/downloads/omniauth-1.8.1.gem
+	source = https://rubygems.org/downloads/omniauth-ldap-2.0.0.gem
+	source = https://rubygems.org/downloads/hashie-3.5.7.gem
+	source = https://rubygems.org/downloads/net-ldap-0.16.1.gem
+	source = https://rubygems.org/downloads/pyu-ruby-sasl-0.0.3.3.gem
+	source = https://rubygems.org/downloads/rubyntlm-0.6.2.gem
+	source = https://raw.githubusercontent.com/arr2036/omnigollum/master/config.rb.example
+	sha256sums = ac04e9de6951a30601b68871a48028d0627141b9e9a7b58368debe4dc4359073
+	sha256sums = 85e66e8349cf959a2d443dc461c62498920d500b2c0e5f4c8e5e197e0f81217a
+	sha256sums = afbee730b76811af34884fc82b372ca9ecac631225a19707ddcdd58331c958d7
+	sha256sums = c2b554f9f53f627ff05057b1898516e4ad529ed28bb150a38472ac2192a752fa
+	sha256sums = ab1bfea321472acaf2e4d621469dd01977547787a876a2fb69a742e496a705c2
+	sha256sums = f0492138e45da35f961d329ee27c9d5aac8a7d866b95fb31671fa9803e7ed104
+	sha256sums = 5683a6bc5738db5a1bf5ceddeaf545405fb241b4184dd4f2587e679a7e9497e5
+	sha256sums = be81d7cbe7042c3a582299d89f0b07ef142b9854d260b648b498ad49a7eecbdc
+	sha256sums = e62eb216aa5c71427811f264061e02f1834b6a67328708ed6683b28c3704a8a4
+
+pkgname = omnigollum
+

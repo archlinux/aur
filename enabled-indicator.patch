@@ -1,0 +1,12 @@
+diff --git a/lib/omnigollum.rb b/lib/omnigollum.rb
+index 2b4bb10..588d2d5 100644
+--- a/lib/omnigollum.rb
++++ b/lib/omnigollum.rb
+@@ -222,6 +222,7 @@ module Omnigollum
+ 
+       # Populates instance variables used to display currently logged in user
+       app.before '/*' do
++        @omnigollum_enabled = true
+         @user_authed = user_authed?
+         @user        = get_user
+       end
