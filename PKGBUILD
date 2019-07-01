@@ -43,7 +43,6 @@ _src_dir='$srcdir/Slic3r-$pkgver'
 prepare() {
 	eval cd "$_src_dir"
   # Nasty fix for useless Growl dependency ... please post in comment real fix, if u know one ;)
-#  sed -i "s/        'Growl/\#&/" Build.PL
   sed -i '/Growl/d' Build.PL
 
   # Nasty fix for useless warning
