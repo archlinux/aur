@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AndroidApiLevel>28</AndroidApiLevel>
+    <AndroidFrameworkVersion>v9.0</AndroidFrameworkVersion>
+    <AndroidPlatformId>28</AndroidPlatformId>
+
+    <AndroidSupportedTargetJitAbis>armeabi-v7a:arm64-v8a:x86:x86_64</AndroidSupportedTargetJitAbis>
+
+    <AndroidSupportedTargetAotAbis>armeabi-v7a:arm64:x86:x86_64</AndroidSupportedTargetAotAbis>
+    <AndroidSupportedHostJitAbis>Linux</AndroidSupportedHostJitAbis>
+
+    <HostCc>clang</HostCc>
+    <HostCxx>clang++</HostCxx>
+
+    <AndroidToolchainCacheDirectory>$(srcdir)\android-archives</AndroidToolchainCacheDirectory>
+    <AndroidToolchainDirectory>$(srcdir)\android-toolchain</AndroidToolchainDirectory>
+    <AndroidMxeInstallPrefix>$(AndroidToolchainDirectory)\mxe</AndroidMxeInstallPrefix>
+  </PropertyGroup>
+</Project>

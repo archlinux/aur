@@ -1,0 +1,74 @@
+diff --git a/build-tools/xaprepare/xaprepare/Application/Program.ArchLinux.cs b/build-tools/xaprepare/xaprepare/Application/Program.ArchLinux.cs
+index 444a5075..7e59785f 100644
+--- a/build-tools/xaprepare/xaprepare/Application/Program.ArchLinux.cs
++++ b/build-tools/xaprepare/xaprepare/Application/Program.ArchLinux.cs
+@@ -11,19 +11,50 @@ namespace Xamarin.Android.Prepare
+ 
+ 		protected override bool CheckWhetherInstalled ()
+ 		{
+-			throw new NotImplementedException ();
++			var runner = new ProcessRunner ("pacman", "-Q", "--", PackageName);
++
++			if (!runner.Run()) {
++				Log.Error ($"Check for package {PackageName} failed");
++				return false;
++			}
++
++			return runner.ExitCode == 0;
+ 		}
+ 
+-#pragma warning disable CS1998
+ 		public override async Task<bool> Install ()
+ 		{
+-			throw new NotImplementedException ();
++			var runner = new ProcessRunner ("sudo", "pacman", "-S", "--", PackageName) {
++				EchoStandardOutput = true,
++				EchoStandardError = true,
++				ProcessTimeout = TimeSpan.FromMinutes (30),
++			};
++
++			bool failed = await Task.Run (() => !runner.Run ());
++			if (failed) {
++				Log.Error ($"Installation of {PackageName} timed out");
++				failed = true;
++			}
++
++			if (runner.ExitCode != 0) {
++				Log.Error ($"Installation failed with error code {runner.ExitCode}");
++				failed = true;
++			}
++
++			return !failed;
+ 		}
+-#pragma warning restore CS1998
+ 
+ 		protected override bool DeterminePackageVersion()
+ 		{
+-			throw new NotImplementedException();
++			string currentVersion = Utilities.GetStringFromStdout ("pacman", "-Q", "--", PackageName);
++
++			int index = currentVersion.IndexOf (' ');
++			if (index < 0) {
++				Log.Error ($"Could not determine version of {PackageName}");
++				return false;
++			}
++
++			CurrentVersion = currentVersion.Substring (PackageName.Length + 1).Trim ();
++			return true;
+ 		}
+ 	}
+ }
+diff --git a/build-tools/xaprepare/xaprepare/ConfigAndData/Dependencies/Linux.Arch.cs b/build-tools/xaprepare/xaprepare/ConfigAndData/Dependencies/Linux.Arch.cs
+index 7faf8723..3a50773e 100644
+--- a/build-tools/xaprepare/xaprepare/ConfigAndData/Dependencies/Linux.Arch.cs
++++ b/build-tools/xaprepare/xaprepare/ConfigAndData/Dependencies/Linux.Arch.cs
+@@ -53,8 +53,7 @@ namespace Xamarin.Android.Prepare
+ 			if (!base.InitOS ())
+ 				return false;
+ 
+-			Log.Todo ("Implement");
+-			return false;
++			return true;
+ 		}
+ 	};
+ }

@@ -1,0 +1,22 @@
+diff --git a/build-tools/proprietary/proprietary.projitems b/build-tools/proprietary/proprietary.projitems
+index 9789a987..684212ea 100644
+--- a/build-tools/proprietary/proprietary.projitems
++++ b/build-tools/proprietary/proprietary.projitems
+@@ -18,6 +18,10 @@
+       <Link>$(_DestinationDir)%(Filename)%(Extension)</Link>
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </Content>
++    <Content Include="$(_SourceDir)Mono.Android.DebugRuntime-*.xml">
++      <Link>$(_DestinationDir)%(Filename)%(Extension)</Link>
++      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
++    </Content>
+     <Content Include="$(_SourceDir)Mono.AndroidTools.*">
+       <Link>$(_DestinationDir)%(Filename)%(Extension)</Link>
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+@@ -43,4 +47,4 @@
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </Content>
+   </ItemGroup>
+-</Project>
+\ No newline at end of file
++</Project>
