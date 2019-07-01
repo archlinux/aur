@@ -10,7 +10,7 @@ _neovim="n"
 
 _name='deoplete-jedi'
 pkgname="${_name}-git"
-pkgver=r343.afd01dc
+pkgver=r345.763c7be
 pkgrel=1
 pkgdesc="jedi add-on for deoplete completion plugin for neovim"
 arch=('any')
@@ -97,6 +97,6 @@ package() {
       "$pkgdir/usr/share/nvim/runtime/rplugin/python3/deoplete/"
   fi
 
-    install -D -m644 "${srcdir}/${_name}/README.md" $pkgdir/usr/share/doc/$pkgname/README.md
-    install -D -m644 "${srcdir}/${_name}/LICENSE" $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -D -m644 "${srcdir}/${_name}/README.md" "$pkgdir"/usr/share/doc/$pkgname/README.md
+    install -D -m644 "${srcdir}/${_name}/LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
