@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=faktory-bin
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance job processing for the polyglot enterprise"
 arch=("x86_64")
 url="https://github.com/contribsys/faktory"
@@ -17,5 +17,12 @@ prepare() {
 }
 
 package() {
+  mkdir -p "$pkgdir/etc/faktory"
+  touch "$pkgdir/etc/faktory/password"
+  echo "root" > "$pkgdir/etc/faktory/password"
+
   mv usr "$pkgdir"
+
+  mkdir -p "$pkgdir/usr/lib/systemd/system"
+  cp -a "$pkgdir/usr/share/faktory/systemd/faktory.service" "$pkgdir/usr/lib/systemd/system/faktory.service"
 }
