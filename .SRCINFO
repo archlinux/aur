@@ -1,6 +1,6 @@
 pkgbase = cppcheck-nox
 	pkgdesc = A tool for static C/C++ code analysis without the GUI
-	pkgver = 1.87
+	pkgver = 1.88
 	pkgrel = 1
 	url = http://cppcheck.sourceforge.net/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = cppcheck-nox
 	depends = pcre
 	provides = cppcheck
 	conflicts = ccpcheck
-	source = https://github.com/danmar/cppcheck/archive/1.87.tar.gz
-	md5sums = eba3b8b4d69045bd24104c2d0cc0cb0c
+	source = https://github.com/danmar/cppcheck/archive/1.88.tar.gz
+	md5sums = 0fc4c8180cacc07917b752ddd26954ea
 
 pkgname = cppcheck-nox
 
