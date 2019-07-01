@@ -2,18 +2,18 @@
 pkgname=yakyak
 pkgver=1.5.4
 _pkgid="${pkgname}-${pkgver}-beta-rolling"
-pkgrel=0
+pkgrel=1
 pkgdesc="Desktop client for Google Hangouts"
 arch=('x86_64' 'i686')
 url="https://github.com/yakyak/yakyak"
 license=('MIT')
-depends=('electron>=3.0.10')
+depends=('electron4')
 optdepends=('emojione-color-font: Emoji support')
 makedepends=('nodejs' 'npm')
 
-sha256sums=('901692038e797c3d971c57d1187239b0feed3f68c202876c8d694abf4bbf155b'
+sha256sums=('ce1a87e873d5f8b52765bd2e9d1f9f828f26895c35b660db5629e75706a815d4'
             '12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360'
-            '0a02abfbceb1029301308239f8d0a1e8e5a5565d66c561223836ecaaf7cb5046')
+            'ad6630d8c423ccdcc5c7989ad8c379c37947a2d6565866856012e32dc00671d1')
 
 source=("${_pkgid}.tar.gz::https://github.com/yakyak/yakyak/archive/v${pkgver}-beta-rolling.tar.gz"
         "yakyak.desktop"

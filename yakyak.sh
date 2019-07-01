@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd /usr/share/yakyak \
-  && /usr/bin/electron /usr/share/yakyak/app
+  && /usr/bin/electron4 /usr/share/yakyak/app
