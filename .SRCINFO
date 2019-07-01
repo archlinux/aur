@@ -1,0 +1,16 @@
+pkgbase = 4nxci-git
+	pkgdesc = 4NXCI is a tool for converting XCI(NX Card Image) files to NSP
+	pkgver = v4.03.r2.g33044e6
+	pkgrel = 1
+	url = https://github.com/The-4n/4NXCI
+	arch = any
+	license = ISC
+	makedepends = git
+	depends = glibc
+	provides = 4nxci-bin
+	conflicts = 4nxci-bin
+	source = git+https://github.com/The-4n/4NXCI.git
+	sha256sums = SKIP
+
+pkgname = 4nxci-git
+
