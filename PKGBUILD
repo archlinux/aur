@@ -1,6 +1,6 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 pkgname=ibmcloud-cli
-pkgver=0.16.2
+pkgver=0.16.3
 pkgrel=1
 pkgdesc="Command line client for IBM Cloud"
 arch=('x86_64' 'i686')
@@ -12,8 +12,8 @@ conflicts=('bluemix-cli')
 replaces=('bluemix-cli')
 source_x86_64=("IBM_Cloud_CLI_${pkgver}_linux_amd64.tgz::https://clis.ng.bluemix.net/download/bluemix-cli/${pkgver}/linux64/archive")
 source_i686=("IBM_Cloud_CLI_${pkgver}_linux_386.tgz::https://clis.ng.bluemix.net/download/bluemix-cli/${pkgver}/linux32/archive")
-sha256sums_x86_64=('d215654baf9d9719800ea719169e41f6b9b8f3dc1752760bfed15fe4c45d6456')
-sha256sums_i686=('81a10e98d862d43e33abe761dae0706352c84b166f741b479c6d2dc1fac8cdc0')
+sha256sums_x86_64=('32a5d641eb9792d02e00cc1c297cd5d7ee5ae30205f06bd01630bd0f50b5c498')
+sha256sums_i686=('f970dce867211078d22ea3e10f7910d50fc6c03a3f2d1f5b0f8183bf97dd9cc3')
 
 package() {
   cd "${srcdir}/IBM_Cloud_CLI/"
@@ -41,5 +41,3 @@ package() {
 
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums_x86_64=('d9c289b369b7d4110ac614dd2f813283b527c01f423585be842d414ea3e9ee12')
-sha256sums_i686=('79326695e5a8bf1938cd178fffaea389b8abcc7c4d2048d900ee1fe55b3be0ff')
