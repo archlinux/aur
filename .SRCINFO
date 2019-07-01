@@ -1,17 +1,20 @@
 pkgbase = rumur
 	pkgdesc = Yet another Murphi model checker
-	pkgver = 2019.06.12
+	pkgver = 2019.06.30
 	pkgrel = 1
 	url = https://github.com/Smattr/rumur
 	arch = x86_64
 	license = custom:UNLICENSE
+	checkdepends = valgrind
 	makedepends = cmake
 	makedepends = bison>=3.3.2
 	makedepends = flex
 	makedepends = python
 	depends = gmp
-	source = https://github.com/Smattr/rumur/archive/v2019.06.12.tar.gz
-	sha256sums = 25083ddce317a25da0afbd4833227f277d411c33b69a4297ed33703fdfe16381
+	source = https://github.com/Smattr/rumur/archive/v2019.06.30.tar.gz
+	source = 0001-fix-misuse-of-fcntl.patch
+	sha256sums = d51c7cccc65700c11f0854309d5f60f8befa29430350b6b64fe27b83396c9291
+	sha256sums = e9474f18d2bedadc0150e85273cd8f28a7cd1957875027a10a983c7838d8671f
 
 pkgname = rumur
 

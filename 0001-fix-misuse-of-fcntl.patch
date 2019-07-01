@@ -1,0 +1,44 @@
+From 53f20cc00398eefd81a7a1d015517d3051b23548 Mon Sep 17 00:00:00 2001
+From: Matthew Fernandez <matthew.fernandez@gmail.com>
+Date: Sun, 30 Jun 2019 16:58:08 -0700
+Subject: [PATCH] fix misuse of fcntl
+
+We were using F_SETFD/F_GETFD to set O_NONBLOCK, but this is meant to be used on
+the status flags, not the file descriptor. We correct this to use
+F_SETFL/F_GETFL. Surprisingly this bug caused no visible misbehaviour on Ubuntu
+Linux, macOS or FreeBSD. It was detected by a user on Arch Linux under WSL.
+
+Github: related to #140 "Unit test fail on smt-simplify.m"
+---
+ rumur/src/process.cc | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/rumur/src/process.cc b/rumur/src/process.cc
+index 0aa9d7b..6ec9519 100644
+--- a/rumur/src/process.cc
++++ b/rumur/src/process.cc
+@@ -57,8 +57,8 @@ static int init(void) {
+   {
+     int r = sigchld_pipe[READ_FD];
+     int w = sigchld_pipe[WRITE_FD];
+-    if (fcntl(r, F_SETFD, fcntl(r, F_GETFD) | O_NONBLOCK) == -1 ||
+-        fcntl(w, F_SETFD, fcntl(w, F_GETFD) | O_NONBLOCK) == -1) {
++    if (fcntl(r, F_SETFL, fcntl(r, F_GETFL) | O_NONBLOCK) == -1 ||
++        fcntl(w, F_SETFL, fcntl(w, F_GETFL) | O_NONBLOCK) == -1) {
+       *debug << "failed to set SIGCHLD pipe non-blocking\n";
+       goto fail;
+     }
+@@ -139,8 +139,8 @@ int run(const std::vector<std::string> &args, const std::string &input,
+   }
+ 
+   // set the ends the parent (us) will use as non-blocking
+-  if (fcntl(in[WRITE_FD], F_SETFD, fcntl(in[WRITE_FD], F_GETFD) | O_NONBLOCK) == -1 ||
+-      fcntl(out[READ_FD], F_SETFD, fcntl(out[READ_FD], F_GETFD) | O_NONBLOCK) == -1) {
++  if (fcntl(in[WRITE_FD], F_SETFL, fcntl(in[WRITE_FD], F_GETFL) | O_NONBLOCK) == -1 ||
++      fcntl(out[READ_FD], F_SETFL, fcntl(out[READ_FD], F_GETFL) | O_NONBLOCK) == -1) {
+     *debug << "failed to set O_NONBLOCK: " << strerror(errno) << "\n";
+     goto done;
+   }
+-- 
+2.22.0
+
