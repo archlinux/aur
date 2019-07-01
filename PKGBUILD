@@ -2,7 +2,7 @@
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=tsv-utils
 _pkgname=tsv-utils-dlang
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Command line tools for large, tabular data files. Filtering, statistics, sampling, joins and more."
 arch=('i686' 'x86_64')
