@@ -1,0 +1,25 @@
+pkgbase = python2-pywikibot
+	pkgdesc = Python library that interfaces with the MediaWiki API
+	pkgver = 3.0.20190430
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Manual:Pywikibot
+	arch = any
+	license = MIT
+	makedepends = python2
+	makedepends = python2-ipaddr
+	makedepends = python2-pathlib2
+	makedepends = python2-requests
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/pywikibot/pywikibot-3.0.20190430.tar.gz
+	source = LICENSE
+	sha256sums = f04306e0c9b460f5558826399c79dc7b1c9c13e97a20f6324cdfab04dea19e6e
+	sha256sums = 3996ba1ed2c6fb47803bc0df493633b71d2e6d5d2971e0580008f242f43d2895
+
+pkgname = python2-pywikibot
+	depends = python2
+	depends = python2-requests
+	depends = python2-ipaddr
+	depends = python2-pathlib2
+	optdepends = python2-mwparserfromhell: improved parser
+	conflicts = python2-pywikibot-git
+
