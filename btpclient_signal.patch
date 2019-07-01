@@ -1,0 +1,11 @@
+diff -Naur ./bluez-5.50.orig/tools/btpclient.c ./bluez-5.50/tools/btpclient.c
+--- ./bluez-5.50.orig/tools/btpclient.c	2019-06-30 22:05:46.498193601 -0400
++++ ./bluez-5.50/tools/btpclient.c	2019-06-30 22:06:11.684604336 -0400
+@@ -30,6 +30,7 @@
+ #include <assert.h>
+ #include <getopt.h>
+ 
++#include <signal.h>
+ #include <ell/ell.h>
+ 
+ #include "lib/bluetooth.h"

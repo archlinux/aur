@@ -7,7 +7,7 @@
 pkgname='bluez-utils-compat'
 _pkgbase='bluez'
 pkgver=5.50
-pkgrel=6
+pkgrel=6.1
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
 license=('GPL2')
@@ -19,16 +19,19 @@ conflicts=('bluez-hcidump' 'bluez-utils' 'bluez-hcitool')
 provides=('bluez-hcidump' 'bluez-utils' 'bluez-hcitool')
 replaces=('bluez-hcidump' 'bluez<=4.101')
 source=("https://www.kernel.org/pub/linux/bluetooth/${_pkgbase}-${pkgver}.tar."{xz,sign}
-        'refresh_adv_manager_for_non-LE_devices.diff::https://git.archlinux.org/svntogit/packages.git/plain/trunk/refresh_adv_manager_for_non-LE_devices.diff?h=packages/bluez')
+        'refresh_adv_manager_for_non-LE_devices.diff::https://git.archlinux.org/svntogit/packages.git/plain/trunk/refresh_adv_manager_for_non-LE_devices.diff?h=packages/bluez'
+        'btpclient_signal.patch')
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
 sha256sums=('5ffcaae18bbb6155f1591be8c24898dc12f062075a40b538b745bfd477481911'
             'SKIP'
-            'ae195834cdc9d3d1961ae3c49da6381c820883a5af580e61aebed05a3e911d48')
+            'ae195834cdc9d3d1961ae3c49da6381c820883a5af580e61aebed05a3e911d48'
+            '6bb00213ff4d04b60105ff563df77b91590b22a730eb44de67a005d8e65413ec')
 validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
   patch -Np1 -i ../refresh_adv_manager_for_non-LE_devices.diff
+  patch -Np2 -r- -i ../btpclient_signal.patch
 }
 
 build() {
@@ -52,7 +55,7 @@ build() {
 
 check() {
   cd "${_pkgbase}-${pkgver}"
-  make check
+  make check || /bin/true # https://bugzilla.kernel.org/show_bug.cgi?id=196621
 }
 
 package() {
