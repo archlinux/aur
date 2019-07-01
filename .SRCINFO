@@ -1,5 +1,5 @@
 pkgbase = linux-new
-	pkgver = 5.2.rc6
+	pkgver = 5.2.rc7
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
