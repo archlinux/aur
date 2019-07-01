@@ -1,6 +1,6 @@
 pkgbase = waterfox-git
 	pkgdesc = 64-Bit optimized Firefox fork, no data collection, allows unsigned extensions
-	pkgver = 56.2.10+c575e467374e
+	pkgver = 56.2.11+63b480e74624
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
 	install = waterfox.install
@@ -39,7 +39,7 @@ pkgbase = waterfox-git
 	depends = hunspell
 	depends = sqlite
 	depends = ttf-font
-	provides = waterfox=56.2.10+c575e467374e
+	provides = waterfox=56.2.11+63b480e74624
 	conflicts = waterfox
 	conflicts = waterfox-bin
 	options = !emptydirs
@@ -48,14 +48,10 @@ pkgbase = waterfox-git
 	source = git://github.com/MrAlex94/Waterfox
 	source = mozconfig
 	source = waterfox.desktop
-	source = firefox-install-dir.patch
-	source = clang-profile.patch
 	source = vendor.js
 	sha512sums = SKIP
 	sha512sums = d8e145693bc67337d9bd60d75bacefdd082af044a02000dc3442e407e8b4b6ab868ba286dfb298bd24f374de09d682973fef2505dc25ed4a73c0d921b54a2546
 	sha512sums = 93937770fa66d63f69c6283ed1f19ac83b9c9c4f5cc34e79d11ac31676462be9f7f37bcd35e785ceb8c7d234a09236d1f26b21e551b622854076fb21bcda44d3
-	sha512sums = 266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd
-	sha512sums = 01f3ada0d121bc8c5a698356aae5f8d5374b3bd5a1023f02ebc9ec6600b4652f4ab7d7ef339df268bfe5054d2a58320d91e79af31e6609b74ba924aef62116e0
 	sha512sums = d927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7
 
 pkgname = waterfox-git
