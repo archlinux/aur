@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Simple Kalman Filter in Python."
-url='http://ros.org/wiki/kalman_filter'
+url='https://wiki.ros.org/wu_ros_tools'
 
 pkgname='ros-melodic-kalman-filter'
 pkgver='0.2.4'
