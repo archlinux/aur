@@ -1,6 +1,6 @@
 pkgbase = veyon
 	pkgdesc = Open Source computer monitoring and classroom management
-	pkgver = 4.2.2
+	pkgver = 4.2.3
 	pkgrel = 1
 	url = https://github.com/veyon
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = veyon
 	depends = lzo
 	depends = libxinerama
 	optdepends = kldap: KDE support
-	source = git+https://github.com/veyon/veyon.git#tag=v4.2.2
+	source = git+https://github.com/veyon/veyon.git#tag=v4.2.3
 	source = git+https://github.com/veyon/ultravnc.git
 	source = git+https://github.com/veyon/libvncserver.git
 	source = git+https://github.com/veyon/x11vnc.git
