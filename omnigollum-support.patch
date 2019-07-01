@@ -1,0 +1,76 @@
+diff --git a/lib/gollum/public/gollum/css/gollum.css b/lib/gollum/public/gollum/css/gollum.css
+index de90e47d..b94dfe33 100755
+--- a/lib/gollum/public/gollum/css/gollum.css
++++ b/lib/gollum/public/gollum/css/gollum.css
+@@ -42,6 +42,14 @@ a:hover, a:visited {
+   text-decoration: underline;
+ }
+ 
++/* @section user */
++#user p {
++    text-align: right;
++    padding-right:0.5em;
++    font-size: .8em;
++    line-height: 2.0em;
++    color: #999;
++}
+ 
+ /* @section head */
+ #head {
+diff --git a/lib/gollum/templates/layout.mustache b/lib/gollum/templates/layout.mustache
+index 3165df9b..8adea8d0 100644
+--- a/lib/gollum/templates/layout.mustache
++++ b/lib/gollum/templates/layout.mustache
+@@ -60,6 +60,7 @@
+   <title>{{title}}</title>
+ </head>
+ <body>
++{{< user}}
+ 
+ {{{yield}}}
+ 
+diff --git a/lib/gollum/templates/user.mustache b/lib/gollum/templates/user.mustache
+new file mode 100644
+index 00000000..9d2eab46
+--- /dev/null
++++ b/lib/gollum/templates/user.mustache
+@@ -0,0 +1,12 @@
++{{#omnigollum_enabled}}
++<div id="user">
++    <p>
++    {{#user_authed}}
++      {{user_name}} | {{user_provider}} | <strong><a href="/__omnigollum__/logout">[Logout]</a></strong>
++    {{/user_authed}}
++    {{^user_authed}}
++      not logged in | <strong><a href="/__omnigollum__/login">[Login]</a></strong>
++    {{/user_authed}}
++    <p>
++</div>
++{{/omnigollum_enabled}}
+diff --git a/lib/gollum/views/layout.rb b/lib/gollum/views/layout.rb
+index e2d14166..30be33d5 100644
+--- a/lib/gollum/views/layout.rb
++++ b/lib/gollum/views/layout.rb
+@@ -40,6 +40,22 @@ module Precious
+         @js
+       end
+ 
++      # Passthrough additional omniauth parameters for status bar
++      def user_authed
++        @user_authed
++      end
++
++      def user_provider
++        @user.provider
++      end
++
++      def user_name
++        @user.name
++      end
++
++      def omnigollum_enabled
++        @omnigollum_enabled
++      end
+     end
+   end
+ end

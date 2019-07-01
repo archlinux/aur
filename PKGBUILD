@@ -3,7 +3,7 @@
 _gemname=gollum
 pkgname=ruby-$_gemname
 pkgver=4.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, Git-powered wiki.'
 arch=(any)
 url='http://github.com/gollum/gollum'
@@ -19,6 +19,7 @@ depends=(
 options=(!emptydirs)
 source=(
     https://rubygems.org/downloads/$_gemname-$pkgver.gem
+    omnigollum-support.patch
     https://rubygems.org/downloads/sinatra-1.4.4.gem
     https://rubygems.org/downloads/sanitize-2.1.1.gem
     https://rubygems.org/downloads/twitter-text-1.14.7.gem
@@ -28,6 +29,7 @@ source=(
     https://rubygems.org/downloads/rack-protection-1.4.0.gem
 )
 sha256sums=('87c2dc6c68c91a423727a59b9d3e78e9e4656e2308065a1d779dd1711c586146'
+            '51df2fc63662b6a81bd8cf41a8285e154f80bf4e9677419508e1c4ad23a37e2f'
             '1a16a552d559be0fff6cefd2c84c1fecafcc54668fba540e99fe8f2692033e8a'
             '28a17c1adbb14f167410d8f0f1e67cbd8b309718ec581c8461af810c500b378a'
             '6fbf511d449d61a2e2198dd758622193aa74d6e95a6ec7111725cce0e181629c'
@@ -63,10 +65,14 @@ package() {
     rack-protection-1.4.0.gem \
     $_gemname-$pkgver.gem
 
+  # apply the patch
+  pushd "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/"
+  patch -p1 < $srcdir/omnigollum-support.patch
+  popd
+
   # remove some build path leakage
   find "$pkgdir/$_gemdir/" -name "gem_make.out" | xargs rm -f
 
   rm -rf "$pkgdir/$_gemdir/cache"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
