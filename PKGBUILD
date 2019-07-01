@@ -8,7 +8,7 @@ arch=("x86_64")
 license=("MIT")
 depends=("xcb-util-keysyms" "cairo" "libxkbcommon-x11")
 makedepends=("rust" "python")
-source=("https://github.com/svenstaro/$pkgname/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/svenstaro/$pkgname/archive/$pkgver.tar.gz")
 sha512sums=('fb68355ad7cc5e34fca193b2a0ca5a2606c1d46c839be2a783b0d494dba2e374c01fb839c5a4e5ded411c69e809fecc3141fad0dfc90c0c80e083f32701ea9c8')
 
 build() {

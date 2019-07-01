@@ -10,7 +10,7 @@ pkgbase = wmfocus
 	depends = xcb-util-keysyms
 	depends = cairo
 	depends = libxkbcommon-x11
-	source = https://github.com/svenstaro/wmfocus/archive/1.1.2.tar.gz
+	source = wmfocus-1.1.2.tar.gz::https://github.com/svenstaro/wmfocus/archive/1.1.2.tar.gz
 	sha512sums = fb68355ad7cc5e34fca193b2a0ca5a2606c1d46c839be2a783b0d494dba2e374c01fb839c5a4e5ded411c69e809fecc3141fad0dfc90c0c80e083f32701ea9c8
 
 pkgname = wmfocus
