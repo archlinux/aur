@@ -1,3 +1,4 @@
+# vim: filetype=sh
 # Maintainer: Swift Geek <swifgeek ɐ google m č0m>
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
 # Contributor: olasd
@@ -6,7 +7,7 @@
 
 pkgname=slic3r-git
 pkgver=a
-pkgrel=19
+pkgrel=20
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://slic3r.org/"
@@ -141,6 +142,9 @@ prepare() {
   # Nasty fix for local::lib use
   find . -iregex '.*\.\(pl\|pm\|t\)' -print0 |  xargs -0 -l sed -i -e '/use local::lib/d'
 
+  # GCC8 90f108ae8e7a4315f82e317f2141733418d86a68
+  grep -q 'boost/core/noncopyable\.hpp' ./xs/src/libslic3r/GCodeSender.hpp ||
+    sed -i '/#ifdef BOOST_LIBS/a #include <boost\/core\/noncopyable.hpp>' ./xs/src/libslic3r/GCodeSender.hpp
 }
 
 build() {
