@@ -43,7 +43,8 @@ package_openxcom-extended-git() {
   pkgdesc="An extended version of the open-source reimplementation of X-COM (git-version)"
   depends=('sdl_mixer' 'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs'
            'glibc' 'hicolor-icon-theme')
-  optdepends=('openxcom-data-steam: pacman-tracked X-COM data files from Steam')
+  optdepends=('openxcom-data-steam: pacman-tracked X-COM data files from Steam'
+              'openxcom-tftd-data-steam: pacman-tracked Terror From The Deep data files from Steam')
   provides=('openxcom' 'openxcom-git')
   conflicts=('openxcom')
   install="${pkgname}.install"

@@ -39,6 +39,7 @@ pkgname = openxcom-extended-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	optdepends = openxcom-data-steam: pacman-tracked X-COM data files from Steam
+	optdepends = openxcom-tftd-data-steam: pacman-tracked Terror From The Deep data files from Steam
 	provides = openxcom
 	provides = openxcom-git
 	conflicts = openxcom
