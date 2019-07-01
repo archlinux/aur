@@ -4,8 +4,8 @@
 #   https://github.com/gorhill/uBlock/releases
 
 pkgname=chromium-ublock-origin
-pkgver=1.19.6
-pkgrel=2
+pkgver=1.20.0
+pkgrel=1
 pkgdesc='An efficient blocker for Chromium'
 arch=('any')
 url='https://github.com/gorhill/uBlock'
@@ -15,7 +15,7 @@ optdepends=("chromium: open-source web browser from Google"
             "google-chrome: Google's freeware web browser")
 install="${pkgname}.install"
 source=("https://github.com/gorhill/uBlock/releases/download/${pkgver}/uBlock0_${pkgver}.chromium.zip")
-md5sums=('093a010bcf8856d0da03759d282c453c')
+md5sums=('63deefc55eeb941895435e322fb3df6d')
 
 package() {
    mkdir -p "${pkgdir}/usr/share/${pkgname}"
