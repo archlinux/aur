@@ -1,6 +1,6 @@
 pkgbase = barnard-git
 	pkgdesc = A command line mumble client.
-	pkgver = r54.22ea624
+	pkgver = r61.f4ba60f
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/bmmcginty/barnard

@@ -2,7 +2,7 @@
 # Maintainer: Michael Taboada <michael@2mb.solutions>
                                                                                                                                                                 
 pkgname="barnard-git"
-pkgver=r54.22ea624
+pkgver=r61.f4ba60f
 pkgrel=1
 epoch=1
 pkgdesc="A command line mumble client."
@@ -40,6 +40,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/doc/barnard"
   install -p -m755 "$srcdir/gopath/bin/barnard" "$pkgdir/usr/bin"
+  install -p -m755 "$srcdir/barnard/barnard-ui" "$pkgdir/usr/bin"
   install -p -m644 "$srcdir/barnard/README.md" "$pkgdir/usr/share/doc/barnard"
                                                                                                                                                                 
   #mkdir -p "$pkgdir/$GOPATH"
