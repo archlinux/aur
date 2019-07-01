@@ -4,7 +4,7 @@
 _chromiumver=66.0.3359.181
 pkgname=electron3
 pkgver=3.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=('x86_64')
 url='https://electronjs.org/'
@@ -28,7 +28,7 @@ source=("git+https://github.com/electron/electron.git#tag=v${pkgver}"
         'git+https://github.com/kennethreitz/requests.git'
         'google-breakpad::git+https://chromium.googlesource.com/breakpad/breakpad/src'
         "electron-chromium-${_chromiumver}.tar.bz2::https://s3.amazonaws.com/github-janky-artifacts/libchromiumcontent/linux/src/${_chromiumver}/src.tar.bz2"
-        'electron.desktop'
+        'electron3.desktop'
         'default_app-icon.patch'
         'dont-bootstrap-libchromiumcontent.patch'
         'dont-update-submodules.patch'
@@ -198,47 +198,46 @@ package() {
 
   _cc="${srcdir}"/electron/vendor/libchromiumcontent/dist/main
 
-  install -d -m755 "${pkgdir}"/usr/share/licenses/electron
-  install -m644 LICENSE "${pkgdir}"/usr/share/licenses/electron
+  install -d -m755 "${pkgdir}"/usr/share/licenses/electron3
+  install -m644 LICENSE "${pkgdir}"/usr/share/licenses/electron3
   install -m644 LICENSE "${_cc}"/LICENSES.chromium.html \
-          "${pkgdir}"/usr/share/licenses/electron
+          "${pkgdir}"/usr/share/licenses/electron3
   install -m644 native_mate/LICENSE.chromium \
-          "${pkgdir}"/usr/share/licenses/electron/LICENSE-native_mate
+          "${pkgdir}"/usr/share/licenses/electron3/LICENSE-native_mate
   install -m644 vendor/node/LICENSE \
-          "${pkgdir}"/usr/share/licenses/electron/LICENSE-node
+          "${pkgdir}"/usr/share/licenses/electron3/LICENSE-node
   install -m644 vendor/libchromiumcontent/LICENSE.txt \
-          "${pkgdir}"/usr/share/licenses/electron/LICENSE-libchromiumcontent
+          "${pkgdir}"/usr/share/licenses/electron3/LICENSE-libchromiumcontent
   install -m644 vendor/libchromiumcontent/src/LICENSE \
-          "${pkgdir}"/usr/share/licenses/electron/LICENSE-chromium
+          "${pkgdir}"/usr/share/licenses/electron3/LICENSE-chromium
 
   cd out/R
-  install -d -m755 "${pkgdir}"/usr/lib/electron
+  install -d -m755 "${pkgdir}"/usr/lib/electron3
   install -m644 blink_image_resources_200_percent.pak \
           content_resources_200_percent.pak content_shell.pak icudtl.dat \
           natives_blob.bin \
           ui_resources_200_percent.pak \
           v8_context_snapshot.bin \
           views_resources_200_percent.pak \
-          "${pkgdir}"/usr/lib/electron
-  install -m755 electron "${pkgdir}"/usr/lib/electron
+          "${pkgdir}"/usr/lib/electron3
+  install -m755 electron "${pkgdir}"/usr/lib/electron3
   install -dm755 "${pkgdir}"/usr/bin
-  ln -s ../lib/electron/electron "${pkgdir}"/usr/bin
+  ln -s ../lib/electron3/electron "${pkgdir}"/usr/bin/electron3
   # namcap warning: Referenced library 'libnode.so' is an uninstalled dependency
   # Fixable by moving libnode.so to /usr/lib
-  install -m644 libnode.so "${pkgdir}"/usr/lib/electron
-  cp -r locales resources "${pkgdir}"/usr/lib/electron
+  install -m644 libnode.so "${pkgdir}"/usr/lib/electron3
+  cp -r locales resources "${pkgdir}"/usr/lib/electron3
   cd ../..
 
-  echo -n "v${pkgver}" > "${pkgdir}"/usr/lib/electron/version
+  echo -n "v${pkgver}" > "${pkgdir}"/usr/lib/electron3/version
 
   # Install .desktop and icon file
-  install -Dm644 "${srcdir}"/electron.desktop \
-          "${pkgdir}"/usr/share/applications/electron.desktop
+  install -Dm644 "${srcdir}"/electron3.desktop -t "${pkgdir}"/usr/share/applications/
   install -Dm644 default_app/icon.png \
-          "${pkgdir}"/usr/share/pixmaps/electron.png  # hicolor has no 1024x1024
+          "${pkgdir}"/usr/share/pixmaps/electron3.png  # hicolor has no 1024x1024
 
   # Install Node headers
-  _headers_dest="${pkgdir}/usr/lib/electron/node"
+  _headers_dest="${pkgdir}/usr/lib/electron3/node"
   install -d -m755 "${_headers_dest}"
   cd "${srcdir}"/electron/vendor/node
   find src deps/http_parser deps/zlib deps/uv deps/npm \
