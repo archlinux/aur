@@ -2,7 +2,7 @@
 pkgname=wsk-git
 pkgver=0.10.0
 pkgrel=1
-pkgdesc="pache OpenWhisk Command Line Interface (CLI) https://openwhisk.apache.org/"
+pkgdesc="Apache OpenWhisk Command Line Interface (CLI) https://openwhisk.apache.org/"
 arch=('i686' 'x86_64')
 url="https://github.com/apache/incubator-openwhisk-cli"
 license=('Apache')
