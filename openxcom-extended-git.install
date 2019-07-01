@@ -1,0 +1,16 @@
+post_install() {
+  echo "  OpenXcom requires the original, unmodified, resources from the original X-COM"
+  echo "  and/or X-COM: Terror From The Deep."
+  echo
+  echo "  For the original X-COM game, you need to copy the following subfolders:"
+  echo "      GEODATA, GEOGRAPH, MAPS, ROUTES, SOUND, TERRAIN, UFOGRAPH, UFOINTRO, UNITS"
+  echo "  into one of the following locations:"
+  echo "      - /usr/share/openxcom/UFO"
+  echo "      - <user home folder>/.local/share/openxcom/UFO"
+  echo
+  echo "  For the sequel, Terror From The Deep, copy the following subfolders:"
+  echo "      ANIMS, FLOP_INT, GEODATA, GEOGRAPH, MAPS, ROUTES, SOUND, TERRAIN, UFOGRAPH, UNITS"
+  echo "  into one of the following locations:"
+  echo "      - /usr/share/openxcom/TFTD"
+  echo "      - <user home folder>/.local/share/openxcom/TFTD"
+}
