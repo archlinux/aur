@@ -5,6 +5,7 @@ pkgbase = emake-git
 	url = https://github.com/skywind3000/emake
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = python2
 	provides = emake
 	conflicts = emake
