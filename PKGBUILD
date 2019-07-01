@@ -3,7 +3,7 @@
 # Contributer: Lukas Sabota <lukas _at_ lwsabota _dot_ com>
 pkgname=sid-vst-git
 _gitbase=SID
-pkgver=r35.577954f
+pkgver=r42.5a457bf
 pkgrel=1
 pkgdesc="Emulates MOS Technology SID audio chip (used in Commodore 64) as a VST"
 arch=('i686' 'x86_64')
@@ -13,36 +13,38 @@ groups=('socalabs-vst-suite')
 depends=('mesa' 'ttf-ms-fonts')
 makedepends=('git')
 source=('SID::git+https://github.com/FigBug/SID.git'
-                'dRowAudio::git+https://github.com/FigBug/drowaudio.git#commit=3a1e6eb75681b166c055c501a2ed4a8df8a44df0'
-                'slCommon::git+https://github.com/FigBug/slCommon.git#commit=b49d31c4f2f131506fe5ac53f2ac6e47b3ee109b'
-    'gin::git+https://github.com/FigBug/Gin'
-                'JUCE::git+https://github.com/WeAreROLI/JUCE.git#tag=5.3.2')
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+  'dRowAudio::git+https://github.com/FigBug/drowaudio.git#commit=3a1e6eb75681b166c055c501a2ed4a8df8a44df0'
+  'slCommon::git+https://github.com/FigBug/slCommon.git#commit=b49d31c4f2f131506fe5ac53f2ac6e47b3ee109b'
+  'gin::git+https://github.com/FigBug/Gin.git'
+  'JUCE::git+https://github.com/WeAreROLI/JUCE.git#tag=5.3.2'
+  'plugin_sdk::git+https://github.com/TurnipHat/plugin_sdk.git#commit=bcbef199f4dd78b883aebd6477cc104dad850e1b')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-        cd "$srcdir/$_gitbase"
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitbase"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-        cd "$srcdir/$_gitbase"
-        # Workaround for SSH-only configured submodule remotes
-        cd modules
-        rm -rf dRowAudio slCommon
+  cd "$srcdir/$_gitbase"
+  # Workaround for SSH-only configured submodule remotes
+  cd modules
+  rm -rf dRowAudio slCommon
   ln -s ../../slCommon ./
 
-        cd "$srcdir/$_gitbase"
+  cd "$srcdir/$_gitbase"
   cd plugin/JuceLibraryCode
   mv ../../../JUCE/modules/* .
   ln -s ../../../dRowAudio/module/dRowAudio dRowAudio
   ln -s ../../../gin/modules/gin gin
+  ln -s ../../../plugin_sdk plugin_sdk
 }
 
 build() {
-        cd "$srcdir/$_gitbase/plugin/Builds/LinuxMakefile"
-        make
+  cd "$srcdir/$_gitbase/plugin/Builds/LinuxMakefile"
+  make
 }
 
 package() {
-        install -D -m644 "$srcdir/$_gitbase/plugin/Builds/LinuxMakefile/build/$_gitbase.so" "$pkgdir/usr/lib/vst/$_gitbase.so"
-      }
+  install -D -m644 "$srcdir/$_gitbase/plugin/Builds/LinuxMakefile/build/$_gitbase.so" "$pkgdir/usr/lib/vst/$_gitbase.so"
+}

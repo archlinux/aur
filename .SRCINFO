@@ -1,6 +1,6 @@
 pkgbase = sid-vst-git
 	pkgdesc = Emulates MOS Technology SID audio chip (used in Commodore 64) as a VST
-	pkgver = r35.577954f
+	pkgver = r42.5a457bf
 	pkgrel = 1
 	url = http://socalabs.com/
 	arch = i686
@@ -13,8 +13,10 @@ pkgbase = sid-vst-git
 	source = SID::git+https://github.com/FigBug/SID.git
 	source = dRowAudio::git+https://github.com/FigBug/drowaudio.git#commit=3a1e6eb75681b166c055c501a2ed4a8df8a44df0
 	source = slCommon::git+https://github.com/FigBug/slCommon.git#commit=b49d31c4f2f131506fe5ac53f2ac6e47b3ee109b
-	source = gin::git+https://github.com/FigBug/Gin
+	source = gin::git+https://github.com/FigBug/Gin.git
 	source = JUCE::git+https://github.com/WeAreROLI/JUCE.git#tag=5.3.2
+	source = plugin_sdk::git+https://github.com/TurnipHat/plugin_sdk.git#commit=bcbef199f4dd78b883aebd6477cc104dad850e1b
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
