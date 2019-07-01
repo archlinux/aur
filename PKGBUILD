@@ -3,8 +3,8 @@
 # Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=cinnamon-slim
-pkgver=4.0.10
-pkgrel=3
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Innovative Linux desktop. Slim version."
 arch=('x86_64')
 url="https://github.com/linuxmint/Cinnamon"
@@ -16,7 +16,7 @@ depends=('accountsservice' 'caribou' 'cinnamon-control-center' 'cinnamon-menus' 
          'cinnamon-session' 'cinnamon-settings-daemon' 'cjs' 'gnome-backgrounds' 'gnome-themes-extra'
          'gstreamer' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin' 'nemo' 'polkit-gnome' 
          'python-cairo' 'python-dbus' 'python-gobject' 'python-pam' 'python-pexpect' 'python-pillow'
-         'python-pyinotify' 'xapps')
+         'python-pyinotify' 'python-tinycss' 'xapps')
 optdepends=('blueberry: Bluetooth support'
             'cinnamon-translations: i18n'
             'gnome-panel: fallback mode'
@@ -25,13 +25,12 @@ optdepends=('blueberry: Bluetooth support'
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection')
 options=('!emptydirs')
 source=("${pkgname%-*}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        "${url}/commit/c843f3664064742e2672e0fea528571a882d84ad.patch"
         '0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch'
         'set_wheel.patch'
         'default-theme.patch'
         'remove-networkmanager.patch')
 
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     cd "${srcdir}"/cinnamon-${pkgver}
@@ -39,9 +38,6 @@ prepare() {
     # Remove NetworkManager patch. Must be applied before adding polkit agent to required components
     patch -Np1 -i ../remove-networkmanager.patch
     rm -rf "${srcdir}/cinnamon-${pkgver}/files/usr/share/cinnamon/applets/network@cinnamon.org"
-
-    # https://github.com/linuxmint/cinnamon/issues/8495 fixes python-pillow 6 compat
-    patch -p1 -i ../c843f3664064742e2672e0fea528571a882d84ad.patch
 
     # Check for the cc-panel module path, not for the irrelevant binary
     # https://github.com/linuxmint/Cinnamon/pull/7382
