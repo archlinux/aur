@@ -1,0 +1,21 @@
+--- a/brightray/brightray.gyp
++++ b/brightray/brightray.gyp
+@@ -157,8 +157,6 @@
+             }, {
+               'link_settings': {
+                 'libraries': [
+-                  # Link with ffmpeg.
+-                  '<(libchromiumcontent_dir)/libffmpeg.so',
+                   # Following libraries are required by libchromiumcontent:
+                   '-lasound',
+                   '-lcap',
+--- a/electron.gyp
++++ b/electron.gyp
+@@ -233,7 +233,6 @@
+                   }, {
+                     'copied_libraries': [
+                       '<(PRODUCT_DIR)/lib/libnode.so',
+-                      '<(libchromiumcontent_dir)/libffmpeg.so',
+                     ],
+                   }],
+                 ],

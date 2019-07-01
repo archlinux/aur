@@ -1,0 +1,43 @@
+--- a/script/create-dist
++++ b/script/create-dist
+@@ -69,7 +69,7 @@ BINARIES = {
+     'libffmpeg.dylib',
+   ],
+   'linux': [
+-    'libffmpeg.so',
++    # 'libffmpeg.so',
+   ],
+   'win32': [
+     'd3dcompiler_47.dll',
+@@ -448,7 +448,7 @@ def generate_ninja(args, ninja):
+       copy_locales(target_arch, component, ninja)
+ 
+   if args.component != 'native_mksnapshot':
+-    copy_ffmpeg(target_arch, ninja)
++    # copy_ffmpeg(target_arch, ninja)
+     copy_sources(ninja)
+   generate_licenses(ninja)
+ 
+@@ -576,9 +576,9 @@ def copy_binaries(target_arch, component, create_debug_archive,
+   elif target_arch == 'mips64el':
+     binaries = [ 'chromedriver', 'clang_x64_v8_mips64el/mksnapshot' ]
+   else:
+-    binaries = [ 'chromedriver', 'mksnapshot' ]
++    binaries = [ 'mksnapshot' ]
+ 
+-  ffmpeg_output_dir = get_output_dir(SOURCE_ROOT, target_arch, 'ffmpeg')
++  ffmpeg_output_dir = get_output_dir(SOURCE_ROOT, target_arch, 'static_library')
+   for binary in binaries:
+     ninja.copy(os.path.join(ffmpeg_output_dir, binary), target_dir)
+ 
+--- a/script/lib/config.py
++++ b/script/lib/config.py
+@@ -10,7 +10,7 @@
+ VENDOR_DIR = os.path.join(SOURCE_ROOT, 'vendor')
+ DEPOT_TOOLS_DIR = os.path.join(VENDOR_DIR, 'depot_tools')
+ 
+-COMPONENTS = ['static_library', 'shared_library', 'ffmpeg', 'tests', 'native_mksnapshot']
++COMPONENTS = ['static_library', 'native_mksnapshot']
+ 
+ # URL to the mips64el sysroot image.
+ MIPS64EL_SYSROOT = 'https://github.com/electron/debian-sysroot-image-creator/releases/download/v0.5.0/debian_jessie_mips64-sysroot.tar.bz2'

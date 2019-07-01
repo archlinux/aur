@@ -1,0 +1,34 @@
+--- a/script/lib/ninja.py
++++ b/script/lib/ninja.py
+@@ -15,7 +15,7 @@
+ 
+ 
+ def run(directory, target=None, env=None):
+-  ninja_binary = __get_binary_path()
++  ninja_binary = 'ninja'
+ 
+   args = [ninja_binary,
+           '-C', directory
+--- a/script/run-gn
++++ b/script/run-gn
+@@ -56,7 +56,7 @@
+   if sys.platform in ['win32', 'cygwin']:
+     env['DEPOT_TOOLS_WIN_TOOLCHAIN'] = '0'
+ 
+-  gn.generate(build_dir, chromium_root_dir=SRC_DIR, depot_tools_dir=DEPOT_TOOLS_DIR, env=env)
++  gn.generate(build_dir, chromium_root_dir=SRC_DIR, depot_tools_dir=os.path.join('/usr', 'bin'), env=env)
+ 
+ 
+ def create_gn_config(component, build_dir, **gnargs):
+--- a/script/update
++++ b/script/update
+@@ -89,9 +89,7 @@
+     install_aarch64_bintools()
+ 
+   return ((apply_patches(target_arch) if args.apply_patches else 0) or
+-          install_sysroot_if_needed(target_arch) or
+           copy_chromiumcontent_files() or
+-          update_clang() or
+           setup_mips64el_toolchain(target_arch) or
+           run_gn(target_arch, args.cc_wrapper))
+ 

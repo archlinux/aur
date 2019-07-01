@@ -1,0 +1,31 @@
+--- a/common.gypi
++++ b/common.gypi
+@@ -27,12 +27,12 @@
+     'node_install_npm': 'false',
+     'node_prefix': '',
+     'node_shared': 'true',
+-    'node_shared_cares': 'false',
+-    'node_shared_http_parser': 'false',
++    'node_shared_cares': 'true',
++    'node_shared_http_parser': 'true',
+     'node_shared_libuv': 'false',
+     'node_shared_openssl': 'false',
+     'node_shared_v8': 'true',
+-    'node_shared_zlib': 'false',
++    'node_shared_zlib': 'true',
+     'node_tag': '',
+     'node_use_dtrace': 'false',
+     'node_use_etw': 'false',
+@@ -198,6 +198,12 @@
+             },
+           }],
+           ['OS=="linux" and libchromiumcontent_component==0', {
++            'libraries': [
++              '-lcares',
++              '-lcrypto',
++              '-lhttp_parser',
++              '-lz',
++            ],
+             # Prevent the linker from stripping symbols.
+             'ldflags': [
+               '-Wl,--whole-archive',

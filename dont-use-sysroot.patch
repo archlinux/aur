@@ -1,0 +1,27 @@
+--- a/script/bootstrap.py
++++ b/script/bootstrap.py
+@@ -65,9 +65,6 @@ def main():
+                            libcc_source_path, libcc_shared_library_path,
+                            libcc_static_library_path)
+ 
+-  if PLATFORM == 'linux' and args.target_arch != 'mips64el':
+-    download_sysroot(args.target_arch)
+-
+   create_chrome_version_h()
+   touch_config_gypi()
+   run_update(defines, args.msvs)
+--- a/toolchain.gypi
++++ b/toolchain.gypi
+@@ -62,10 +62,10 @@
+               'sysroot%': '<(source_root)/vendor/debian_stretch_arm64-sysroot',
+             }],
+             ['target_arch=="ia32"', {
+-              'sysroot%': '<(source_root)/vendor/debian_stretch_i386-sysroot',
++              'sysroot%': '/',
+             }],
+             ['target_arch=="x64"', {
+-              'sysroot%': '<(source_root)/vendor/debian_stretch_amd64-sysroot',
++              'sysroot%': '/',
+             }],
+             ['target_arch=="mips64el"', {
+               'sysroot%': '<(source_root)/vendor/debian_jessie_mips64-sysroot',

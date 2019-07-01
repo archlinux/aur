@@ -1,0 +1,44 @@
+--- a/chromiumcontent/args/native_mksnapshot.gn
++++ b/chromiumcontent/args/native_mksnapshot.gn
+@@ -11,3 +11,10 @@
+ if (target_cpu == "arm64") {
+   v8_snapshot_toolchain="//build/toolchain/linux:clang_arm64"
+ }
++clang_base_path = "/usr"
++clang_use_chrome_plugins = false
++treat_warnings_as_errors = false
++use_custom_libcxx = false
++use_sysroot = false
++use_gconf = false
++use_gnome_keyring = false
+--- a/chromiumcontent/args/static_library.gn
++++ b/chromiumcontent/args/static_library.gn
+@@ -1,13 +1,26 @@
+ root_extra_deps = [ "//libchromiumcontent/chromiumcontent" ]
+ is_electron_build = true
+ is_component_build = false
+-is_official_build = true
+-symbol_level = 2
++is_debug = false
++symbol_level = 0
+ enable_nacl = false
+ enable_widevine = true
+ proprietary_codecs = true
+ is_component_ffmpeg = true
+ ffmpeg_branding = "Chrome"
++custom_toolchain="//build/toolchain/linux/unbundle:default"
++host_toolchain="//build/toolchain/linux/unbundle:default"
++clang_base_path = "/usr"
++clang_use_chrome_plugins = false
++fatal_linker_warnings = false
++treat_warnings_as_errors = false
++fieldtrial_testing_like_official_build = true
++remove_webcore_debug_symbols = true
++link_pulseaudio = true
++linux_use_bundled_binutils = false
++use_cups = true
++use_sysroot = false
++use_gnome_keyring = false
+ 
+ # This may be guarded behind is_chrome_branded alongside
+ # proprietary_codecs https://webrtc-review.googlesource.com/c/src/+/36321,

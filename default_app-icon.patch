@@ -1,0 +1,22 @@
+--- a/default_app/default_app.js
++++ b/default_app/default_app.js
+@@ -20,9 +20,6 @@ exports.load = (appUrl) => {
+       },
+       useContentSize: true
+     }
+-    if (process.platform === 'linux') {
+-      options.icon = path.join(__dirname, 'icon.png')
+-    }
+ 
+     mainWindow = new BrowserWindow(options)
+     mainWindow.loadURL(appUrl)
+--- a/filenames.gypi
++++ b/filenames.gypi
+@@ -93,7 +93,6 @@
+     ],
+     'default_app_sources': [
+       'default_app/default_app.js',
+-      'default_app/icon.png',
+       'default_app/index.html',
+       'default_app/main.js',
+       'default_app/package.json',
