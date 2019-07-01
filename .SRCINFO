@@ -1,6 +1,6 @@
 pkgbase = arma3-linux-launcher-git
 	pkgdesc = Advanced launcher for ArmA 3 on Linux
-	pkgver = 84.b2b0329
+	pkgver = 81.cad5278
 	pkgrel = 1
 	url = https://github.com/muttleyxd/arma3-unix-launcher
 	arch = i686
