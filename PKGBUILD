@@ -2,7 +2,7 @@
 _backend=openmpi
 pkgname=charm++-${_backend}
 pkgver=6.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Adaptive Message Passing Interface, OpenMPI backend"
 arch=('x86_64')
 license=('custom:Charm++/Converse License')
