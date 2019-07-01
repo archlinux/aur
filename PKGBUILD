@@ -7,7 +7,7 @@
 
 pkgbase=nvidia-vulkan
 pkgname=('nvidia-vulkan' 'nvidia-vulkan-dkms' 'nvidia-vulkan-utils' 'opencl-nvidia-vulkan' 'lib32-nvidia-vulkan-utils' 'lib32-opencl-nvidia-vulkan')
-pkgver=418.52.10
+pkgver=418.52.14
 _extramodules=extramodules-ARCH
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
@@ -17,11 +17,11 @@ makedepends=('libglvnd' 'linux' 'linux-headers')
 license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
-source=("${_pkg}.run::https://developer.nvidia.com/vulkan-beta-4185210-linux"
+source=("${_pkg}.run::https://developer.nvidia.com/vulkan-beta-4185214-linux"
         'nvidia-drm-outputclass.conf'
         'nvidia-vulkan-utils.sysusers'
         'kernel-5.1.patch')
-sha512sums=('3e69199544395e1c5e17f29b7b92a92a8d9b5e754c6f6e3a1f25d01109c6afcff109e39baddc428794ea6edc392ccf22413f8da804d70a41478851d12602187b'
+sha512sums=('5f9e6bfcc5c27fc1fc1e0aa863daef940faf4c7c3beec1de6a2874894ebaaa477e01e9250759affccdb8274f9af85da845b510d0b6f08204816d148b77da0304'
             'c49d246a519731bfab9d22afa5c2dd2d366db06d80182738b84881e93cd697c783f16ee04819275c05597bb063451a5d6102fbc562cd078d2a374533a23cea48'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             '62baa7602c658ac81effa6414bb1c32d59736c9d4d5095d06364a491f6c75e598dc9adb11aa72e06f1da4080a067c1ade94baa94bda1381964bb57fdf45eba00')
@@ -43,9 +43,6 @@ prepare() {
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
     sed -i 's/__NV_VK_ICD__/libGLX_nvidia.so.0/' nvidia_icd.json.template
-
-    # Patch adapted from TK Glitch's repo - https://github.com/Tk-Glitch/PKGBUILDS/tree/master/nvidia-all/patches
-    patch -Np1 -i ../kernel-5.1.patch
 
     sed -i "s/static int nv_drm_vma_fault(struct vm_fault \*vmf)/#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 1, 0)\nstatic int nv_drm_vma_fault(struct vm_fault \*vmf)\n#else\nstatic vm_fault_t nv_drm_vma_fault(struct vm_fault \*vmf)\n#endif/g" kernel/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
 
