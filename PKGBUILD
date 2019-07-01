@@ -1,14 +1,14 @@
-# Maintainer: Gonçalo Camelo Neves Pereira <goncalo_pereira@outlook.pt>
+# Maintainer: Artyom Melnikov <a@arti-nt.ru>
 pkgname=esp-idf
-pkgver=3.1
-pkgrel=3
+pkgver=3.2.2
+pkgrel=0
 pkgdesc="Espressif IoT Development Framework. Official development framework for ESP32."
 arch=('i686' 'x86_64' 'aarch' 'aarch64' 'armv7h')
 url="https://github.com/espressif/esp-idf"
 license=('APACHE')
 depends=('gcc' 'git' 'make' 'ncurses' 'flex' 'bison' 'gperf' 'python2-pyserial')
 source=(https://github.com/espressif/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.zip)
-sha256sums=('SKIP')
+sha256sums=('79e703a47b786d56786853c2e2b72119522b62e697c4903e903b23e7182fdf85')
 
 build() {
   cd "$srcdir/${pkgname}-v${pkgver}"
