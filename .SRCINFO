@@ -1,7 +1,7 @@
 pkgbase = xfce4-appfinder-devel
 	pkgdesc = An application finder for Xfce
-	pkgver = 4.13.3
-	pkgrel = 2
+	pkgver = 4.13.4
+	pkgrel = 1
 	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = xfce4-appfinder-devel
 	depends = libxfce4ui
 	depends = garcon
 	depends = hicolor-icon-theme
-	provides = xfce4-appfinder=4.13.3
+	provides = xfce4-appfinder=4.13.4
 	conflicts = xfce4-appfinder
 	replaces = xfce-utils
-	source = https://archive.xfce.org/src/xfce/xfce4-appfinder/4.13/xfce4-appfinder-4.13.3.tar.bz2
-	sha256sums = d738082a5fb01e42ea6333803012fd80258061f444afbbbd7b05a0f620a32ba6
+	source = https://archive.xfce.org/src/xfce/xfce4-appfinder/4.13/xfce4-appfinder-4.13.4.tar.bz2
+	sha256sums = 0f4de2a5e2875cfa2862fd73ba1d32fb798df71849f69e68cd28cdde1cf53a02
 
 pkgname = xfce4-appfinder-devel
 
