@@ -1,0 +1,24 @@
+pkgbase = swaylock-effects-git
+	pkgdesc = A fancier screen locker for Wayland.
+	pkgver = r241.b3a375a
+	pkgrel = 1
+	url = https://github.com/mortie/swaylock-effects
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
+	depends = libxkbcommon
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = pam
+	provides = swaylock
+	provides = swaylock-effects
+	conflicts = swaylock
+	source = git+https://github.com/mortie/swaylock-effects.git
+	md5sums = SKIP
+
+pkgname = swaylock-effects-git
+
