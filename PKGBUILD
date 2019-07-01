@@ -1,39 +1,58 @@
+# Maintainer: Pavel Dvorak <dvorapa~seznam~cz>
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
-# Based on an older PKGBUILD by: Baptiste Jonglez <baptiste--aur at jonglez dot org>
-# quick update check: https://git.wikimedia.org/log/pywikibot%2Fcore/refs%2Fheads%2Fmaster
+# Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 
-pkgname=('python2-pywikibot-git')
-pkgver=4362.bd2b9b0
+pkgname=(python-pywikibot-git python2-pywikibot-git)
+pkgbase=python2-pywikibot-git
+pkgver=3.0.20190430.r326.g32b5f40e6d
 pkgrel=1
+epoch=1
 pkgdesc="Python library that interfaces with the MediaWiki API"
-arch=('any')
-url="https://www.mediawiki.org/wiki/Manual:Pywikibot"
-license=('MIT')
-makedepends=('python2-setuptools' 'git')
-depends=('python2-httplib2')
-install=install
-source=("${pkgname}::git+https://gerrit.wikimedia.org/r/p/pywikibot/core.git" 'user-config.py')
-md5sums=('SKIP' 'f31497751cf290f94c32ada53ffbbf075baf8e205e4313cae1ffc7ba1337eb7e68388cc3fab8c6916b2c4d6252966d9894eb6e13389973a710b663c5c4e48eca')
+arch=(any)
+url=https://www.mediawiki.org/wiki/Manual:Pywikibot
+license=(MIT)
+makedepends=(python python-requests python-setuptools python2 python2-ipaddr python2-pathlib2 python2-requests python2-setuptools git)
+source=(pywikibot-$pkgver::git+https://gerrit.wikimedia.org/r/pywikibot/core.git)
+sha256sums=(SKIP)
+
+prepare() {
+  cd "$srcdir"
+  cp -a pywikibot-$pkgver{,-py2}
+}
 
 pkgver() {
-	 cd "${srcdir}/${pkgname}"
-	 local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-	 printf "%s" "${ver//-/.}"
+  cd "$srcdir/pywikibot-$pkgver"
+  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 build() {
-	 cd "${srcdir}/${pkgname}"
-	 python2 setup.py build
+  cd "$srcdir/pywikibot-$pkgver"
+  python setup.py build
+
+  cd "$srcdir/pywikibot-$pkgver-py2"
+  python2 setup.py build
 }
 
-package() {
-	 cd "${srcdir}/${pkgname}"
-	 export PYTHONPATH="${pkgdir}/usr/lib/python2.7/site-packages"
-	 mkdir -p "$PYTHONPATH"
-	 python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 </dev/null
+package_python-pywikibot-git() {
+  depends=(python python-requests)
+  makedepends=(python-setuptools)
+  optdepends=("python-mwparserfromhell: improved parser")
+  provides=(python-pywikibot)
+  conflicts=(python-pywikibot)
 
-	 # did the above PYTHONPATH hack cause these?
-	 rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/{easy-install.pth,site.py*}
+  cd "$srcdir/pywikibot-$pkgver"
+  python setup.py install --optimize=1 --root="$pkgdir/" --skip-build
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+}
 
-	 install -D -m644 {${srcdir},${pkgdir}/usr/share/pywikibot}/user-config.py
+package_python2-pywikibot-git() {
+  depends=(python2 python2-requests python2-ipaddr python2-pathlib2)
+  makedepends=(python2-setuptools)
+  optdepends=("python2-mwparserfromhell: improved parser")
+  provides=(python2-pywikibot)
+  conflicts=(python2-pywikibot)
+
+  cd "$srcdir/pywikibot-$pkgver-py2"
+  python2 setup.py install --optimize=1 --root="$pkgdir/" --skip-build
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

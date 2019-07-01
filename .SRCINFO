@@ -1,18 +1,36 @@
 pkgbase = python2-pywikibot-git
 	pkgdesc = Python library that interfaces with the MediaWiki API
-	pkgver = 4362.bd2b9b0
+	pkgver = 3.0.20190430.r326.g32b5f40e6d
 	pkgrel = 1
+	epoch = 1
 	url = https://www.mediawiki.org/wiki/Manual:Pywikibot
-	install = install
 	arch = any
 	license = MIT
+	makedepends = python
+	makedepends = python-requests
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-ipaddr
+	makedepends = python2-pathlib2
+	makedepends = python2-requests
 	makedepends = python2-setuptools
 	makedepends = git
-	depends = python2-httplib2
-	source = python2-pywikibot-git::git+https://gerrit.wikimedia.org/r/p/pywikibot/core.git
-	source = user-config.py
-	md5sums = SKIP
-	md5sums = f31497751cf290f94c32ada53ffbbf075baf8e205e4313cae1ffc7ba1337eb7e68388cc3fab8c6916b2c4d6252966d9894eb6e13389973a710b663c5c4e48eca
+	source = pywikibot-3.0.20190430.r326.g32b5f40e6d::git+https://gerrit.wikimedia.org/r/pywikibot/core.git
+	sha256sums = SKIP
+
+pkgname = python-pywikibot-git
+	depends = python
+	depends = python-requests
+	optdepends = python-mwparserfromhell: improved parser
+	provides = python-pywikibot
+	conflicts = python-pywikibot
 
 pkgname = python2-pywikibot-git
+	depends = python2
+	depends = python2-requests
+	depends = python2-ipaddr
+	depends = python2-pathlib2
+	optdepends = python2-mwparserfromhell: improved parser
+	provides = python2-pywikibot
+	conflicts = python2-pywikibot
 
