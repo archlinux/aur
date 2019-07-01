@@ -3,7 +3,7 @@
 pkgname=utools
 pkgver=0.7.0_beta
 pkgrel=1
-pkgdesc="uTools-你的生产力工具集"
+pkgdesc="uTools Utilities"
 arch=('x86_64')
 url="https://u.tools/"
 license=('custom')

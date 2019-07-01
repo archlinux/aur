@@ -1,5 +1,5 @@
 pkgbase = utools
-	pkgdesc = uTools-你的生产力工具集
+	pkgdesc = uTools Utilities
 	pkgver = 0.7.0_beta
 	pkgrel = 1
 	url = https://u.tools/
