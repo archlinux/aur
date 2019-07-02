@@ -4,7 +4,7 @@
 
 pkgname=waterfox-kde
 pkgver=56.2.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -24,10 +24,9 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=11a3012d04715ee371a1d1a5909871f6c26e1e69
+_commit=63b480e7462482482f6609c305cd793d938f58c0
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/waterfox.desktop"
-        waterfox-install-dir.patch
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/distribution.ini"
         "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/waterfox.1"
@@ -35,13 +34,9 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         no-plt.diff
         "waterfox-kde-56.2.10.1.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/waterfox-kde-56.2.10.1.patch"
         "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/dont-statically-link-libstdc%2B%2B.patch"
-        pgo_fix_missing_kdejs.patch
-        "UnsortedError.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/UnsortedError.patch"
-        "rust-simd.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/rust-simd.patch"
-        "app_units.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/app_units.patch")
+        pgo_fix_missing_kdejs.patch)
 sha256sums=('SKIP'
             '6e9ec5f9c6fc5b191f9dec85b82d58eb2a51577b989bc7852e6b254d56ff13e8'
-            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
             '3961c09993c442df97832866ddaea5bcc1ade1313beb313b5ceba60166933016'
             '065244d3f6d88c48b7afec313b7da5a3a04377076e198954cda7951500530b84'
@@ -49,10 +44,7 @@ sha256sums=('SKIP'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
             'b55833542edf8cad2b73cf36dac6c667e588dcf79a99b570c5eca645698b80f7'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
-            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
-            '3b20230c42ac68cdb751c3bd7758a1a45006e00aec8558c33c96d8c4bebbd47f'
-            'b0623cffd2d51347b7955e0daef62f1c74955f6a31630eedbfb10c601c87d34b'
-            '03130373536a86b1d623a28eb99c9506643eb0bd7c2b7dfe2e38abe0abfb4732')
+            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e')
 
 prepare() {
   mkdir path
@@ -66,20 +58,11 @@ prepare() {
   #sed -i 's/firefox/waterfox/g' $srcdir/firefox-kde-$_patchrev.patch
 
   cd Waterfox
-  patch -Np1 -i ../waterfox-install-dir.patch
 
   patch -Np1 -i ../dont-statically-link-libstdc++.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
   patch -Np1 -i ../no-plt.diff
-
-  patch -Np1 -i ../UnsortedError.patch
-
-  # Make rust-simd compatible with Rust 1.32+
-  patch -Np1 -i ../rust-simd.patch
-
-  # Make app_units crate compatible with Rust 1.35
-  patch -Np1 -i ../app_units.patch
 
   cat >.mozconfig <<END
 export CC=clang
@@ -129,7 +112,6 @@ ac_add_options --disable-js-shell
 ac_add_options --disable-maintenance-service
 ac_add_options --disable-updater
 ac_add_options --disable-verify-mar
-ac_add_options --disable-elf-hack
 ac_add_options --disable-mobile-optimize
 ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
@@ -150,8 +132,6 @@ ac_add_options --disable-webrtc
 
 # If you want to have gamepad support, comment this line:
 ac_add_options --disable-gamepad
-
-#ac_add_options --disable-stylo
 
 # Enable wanted features
 ac_add_options --enable-jemalloc
@@ -224,14 +204,10 @@ END
 
   install -Dm644 "$srcdir/kde.js" "$pkgdir/usr/lib/waterfox/browser/defaults/preferences/kde.js"
 
-  for i in 16 22 24 32 48 256; do
+  for i in 16 22 24 32 48 64 128 256; do
     install -Dm644 browser/branding/unofficial/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/waterfox.png"
   done
-  install -Dm644 browser/branding/unofficial/content/icon64.png \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/waterfox.png"
-  install -Dm644 browser/branding/unofficial/mozicon128.png \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/waterfox.png"
   install -Dm644 browser/branding/unofficial/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/waterfox.png"
   install -Dm644 browser/branding/unofficial/content/about-logo@2x.png \
