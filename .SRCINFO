@@ -1,0 +1,14 @@
+pkgbase = instagram-web
+	pkgdesc = A browser based imstagram client
+	pkgver = 0.99
+	pkgrel = 1
+	url = SKIP
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = electron
+	source = git+https://github.com/ray1422/instagram-web.git
+	md5sums = SKIP
+
+pkgname = instagram-web
+
