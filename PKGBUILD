@@ -12,7 +12,7 @@ license=('GPL')
 depends=('libglademm' 'dconf' 'dcmtk363')
 makedepends=('git' 'intltool' 'perl-xml-parser' 'gconf')
 options=('!libtool' '!makeflags')
-source=("git+https://github.com/stefanhusmann/$pkgname.git#commit=26ad27a07ec116f9b4d35f3907c6f120bf107d61") 
+source=("git+https://gitlab.com/stefanhusmann/$pkgname.git#commit=26ad27a07ec116f9b4d35f3907c6f120bf107d61") 
 md5sums=('SKIP')
 
 pkgver() {

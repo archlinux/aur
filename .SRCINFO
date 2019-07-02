@@ -15,7 +15,7 @@ pkgbase = aeskulap
 	depends = dcmtk363
 	options = !libtool
 	options = !makeflags
-	source = git+https://github.com/stefanhusmann/aeskulap.git#commit=26ad27a07ec116f9b4d35f3907c6f120bf107d61
+	source = git+https://gitlab.com/stefanhusmann/aeskulap.git#commit=26ad27a07ec116f9b4d35f3907c6f120bf107d61
 	md5sums = SKIP
 
 pkgname = aeskulap
