@@ -2,12 +2,15 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 
 pkgname='gst-plugins-base-git'
-pkgver=1.13.0.1.15990.7e94d2824
+pkgver=1.17.0.1.19934.0b44ac28b
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Base Plugins"
 arch=('i686' 'x86_64')
 license=('LGPL')
-makedepends=('pkgconfig' 'gstreamer-git' 'orc' 'libxv' 'alsa-lib' 'cdparanoia' 'libvisual' 'libvorbis' 'libtheora' 'pango' 'gobject-introspection')
+makedepends=('pkgconfig'  'git' 'gstreamer-git' 
+             'orc' 'libxv' 'alsa-lib' 'cdparanoia' 
+             'libvisual' 'libvorbis' 'libtheora' 'glu' 
+             'pango' 'gobject-introspection')
 options=(!libtool !emptydirs)
 url="http://gstreamer.freedesktop.org/"
 
@@ -15,7 +18,9 @@ conflicts=('gst-plugins-base' 'gst-plugins-base-libs')
 provides=('gst-plugins-base='$pkgver 'gst-plugins-base-libs='$pkgver)
 
 pkgdesc="GStreamer Multimedia Framework Base Plugins"
-depends=('gstreamer-git' 'orc' 'libxv' 'alsa-lib' 'cdparanoia' 'libvisual' 'libvorbis' 'libtheora' 'pango')
+depends=('gstreamer-git' 'orc' 'libxv' 'opus' 
+        'alsa-lib' 'cdparanoia' 'libjepeg-turbo' 
+        'libvisual' 'libvorbis' 'libtheora' 'pango')
 
 source=('git://anongit.freedesktop.org/gstreamer/gst-plugins-base')
 sha256sums=('SKIP')
@@ -35,7 +40,7 @@ build() {
   cd $_gitname
   ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
   --disable-static --enable-experimental
-  make || return 1
+  make 
 }
 
 package() {
