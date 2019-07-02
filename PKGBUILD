@@ -7,7 +7,7 @@ pkgrel=3
 pkgdesc="A simple Python socket pool"
 arch=('any')
 license=('MIT')
-url="http://github.com/benoitc/socketpool"
+url="https://github.com/benoitc/socketpool"
 makedepends=('python-setuptools' 'python2-setuptools' 'git')
 checkdepends=('python-pytest' 'python2-pytest')
 source=("git+https://github.com/benoitc/socketpool.git#tag=$pkgver")
