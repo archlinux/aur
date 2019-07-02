@@ -1,14 +1,14 @@
 # Maintainer: Darrell Enns <darrell@darrellenns.com>
 pkgname=tunescope-git
 pkgver=r3.0c2e5f8
-pkgrel=1
+pkgrel=2
 pkgdesc="An oscilloscope style guitar tuner"
 arch=('any')
-url="https://github.com/dack/tunescope"
+url="https://github.com/darrellenns/tunescope"
 license=('GPL')
 depends=(jack glut)
 makedepends=(cmake jack glut)
-source=("${pkgname}"::'git+https://github.com/dack/tunescope.git')
+source=("${pkgname}"::'git+https://github.com/darrellenns/tunescope.git')
 md5sums=('SKIP')
 
 pkgver() {
