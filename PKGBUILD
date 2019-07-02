@@ -1,4 +1,5 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: graysky <graysky AT archlinux DOT us>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Thomas Dziedzic <gostrc@gmail.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
@@ -8,20 +9,20 @@
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=vim-no-canberra
-pkgver=8.1.1616
+pkgver=8.1.1618
 _versiondir=81
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor without canberra deps'
 url='https://www.vim.org'
 arch=('x86_64' 'armv7h')
 license=('custom:vim')
-makedepends=('glibc' 'libgcrypt' 'gpm' 'python2' 'python' 'ruby' 'libxt' 'lua'
-             'gawk' 'tcl' 'pcre' 'zlib' 'libffi')
+makedepends=('glibc' 'libgcrypt' 'gpm' 'python2' 'python' 'ruby' 'libxt'        'lua'
+             'gawk' 'tcl' 'pcre' 'zlib' 'libffi'              )
 source=(vim-${pkgver}.tar.gz::https://github.com/vim/vim/archive/v${pkgver}.tar.gz
         vimrc
         archlinux.vim
         vimdoc.hook)
-sha256sums=('a06daa2b5a5715177be0852721fee9e1b2c1ba19ce03704f8f8d1db18f2e1978'
+sha256sums=('23d40ce994d5781e5aee775d3036bb66d1d99bd4881d7d888316ef817765256c'
             'b16e85e457397ab2043a7ee0a3c84307c6b4eac157fd0b721694761f25b3ed5b'
             'cc3d931129854c298eb22e993ec14c2ad86cc1e70a08a64496f5e06559289972'
             '7095cafac21df7aa42749d6864d1c0549fe65771d8edda3102c931c60782b6b9')
