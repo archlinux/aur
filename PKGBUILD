@@ -1,6 +1,6 @@
 # Maintainer: Aleksandr Arlanow <aleksandr@arlanow.ru>
 pkgname=evelauncher
-pkgver=1225328
+pkgver=1514997
 pkgrel=1
 pkgdesc="Unofficial Eve Online Launcher."
 arch=('any')
@@ -16,12 +16,14 @@ depends=('qt5-base'
         'lib32-libldap'
         )
 source=(
-	"https://binaries.eveonline.com/evelauncher-1225328.tar.gz"
+	"https://binaries.eveonline.com/evelauncher-1514997.tar.gz"
 	"evelauncher.desktop"
-	"icon.png")
-md5sums=('3d155c8fd64485f190aae4f100ffa404'
+	"icon.png"
+  "evelauncher.sh")
+md5sums=('5dbafa649d40dafd953c44b2f62663ed'
          '2150407bf15ea647a0854c0c9df4c887'
-         'ecd3b7d8dd554f8106045e1d78a885c6')
+         'ecd3b7d8dd554f8106045e1d78a885c6'
+         'e133d2aaf8d35fb1438d0b97072dd630')
 
 package() {
 	# Install the main files.
@@ -29,6 +31,8 @@ package() {
   	rm ${srcdir}/evelauncher/libQt5* ${srcdir}/evelauncher/QtWebEngineProcess
   	rm -r "${srcdir}/evelauncher/plugins/"
   	rm -r "${srcdir}/evelauncher/resources/"
+    # This set of libaries is causing evelauncher to not start
+      rm ${srcdir}/evelauncher/libxcb*
   	cp -a "${srcdir}/evelauncher/." "${pkgdir}/opt/${pkgname}"
   	ln -s "/usr/lib/qt/libexec/QtWebEngineProcess" "${pkgdir}/opt/${pkgname}"
   	ln -s "/usr/lib/qt/plugins/" "${pkgdir}/opt/${pkgname}"
@@ -38,14 +42,20 @@ package() {
 	# Exec bit
   	chmod 755 "${pkgdir}/opt/${pkgname}/evelauncher"
 
-  	# Desktop Entry
-  	install -d "${pkgdir}/usr/share/applications"
-  	install "${srcdir}/evelauncher.desktop" "${pkgdir}/usr/share/applications"
+  # Desktop Entry
+    install -d "${pkgdir}/usr/share/applications"
+    install "${srcdir}/evelauncher.desktop" "${pkgdir}/usr/share/applications"
+    install -d "${pkgdir}/opt/${pkgname}"
+    install "${srcdir}/icon.png" "${pkgdir}/opt/${pkgname}"
 	
-	install -d "${pkgdir}/opt/${pkgname}"
-	install "${srcdir}/icon.png" "${pkgdir}/opt/${pkgname}"	
-	
-  	# Main binary
- 	install -d "${pkgdir}/usr/bin"
- 	ln -s "/opt/${pkgname}/evelauncher" "${pkgdir}/usr/bin/${pkgname}"
+  # Main binary
+    install -d "${pkgdir}/usr/bin"
+    # Replace packaged launch script with new one
+    rm "${pkgdir}/opt/${pkgname}/evelauncher.sh"
+    install "${srcdir}/evelauncher.sh" "${pkgdir}/opt/${pkgname}"
+    #cp "../evelauncher.sh" "/opt/${pkgname}/evelauncher.sh"
+    ln -s "/opt/${pkgname}/evelauncher.sh" "${pkgdir}/usr/bin/${pkgname}.sh"
+    ln -s "/opt/${pkgname}/evelauncher.sh" "${pkgdir}/usr/bin/${pkgname}"
+
 }
+
