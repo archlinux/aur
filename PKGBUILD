@@ -6,8 +6,8 @@ pkgdesc="Microsoft Cognitive Toolkit (CNTK), an open source deep-learning toolki
 arch=('x86_64')
 url="https://github.com/Microsoft/cntk"
 license=('CUSTOM')
-depends=('boost' 'libzip' 'openmp' 'openmpi' 'protobuf-static')
-makedepends=('cmake' 'gcc7' 'git' 'inetutils' 'nccl' 'openblas-lapack' 'python-numpy' 'python-pip' 'python-scipy' 'python-setuptools' 'python-wheel' 'swig')
+depends=('boost' 'libzip' 'openblas-lapack' 'openmp' 'openmpi' 'protobuf-static' 'python-numpy' 'python-scipy')
+makedepends=('cmake' 'gcc7' 'git' 'inetutils' 'python-pip' 'python-setuptools' 'python-wheel' 'swig')
 source=("${pkgname}::git+$url#tag=v$pkgver"
 	'git+https://github.com/onnx/onnx'
 	'git+https://github.com/Microsoft/onnxruntime'
