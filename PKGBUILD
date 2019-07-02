@@ -1,49 +1,49 @@
-# Maintainer: Frederic Bezies < fredbezies at gmail dot com >
-# Maintainer: Mario Rodas <marsam@users.noreply.github.com>
+# Contributor: Mario Rodas <marsam@users.noreply.github.com>
+# Contributor: Frederic Bezies < fredbezies at gmail dot com >
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=watchman-git
-_gitname=watchman
-pkgver=v4.9.0.r587.g3b276ea3
+pkgver=4.9.0.r1158.g264484e0
 pkgrel=1
 pkgdesc='Watches files and records, or triggers actions, when they change.'
 arch=('i686' 'x86_64')
 url='https://facebook.github.io/watchman/'
 license=('Apache')
 depends=('pcre' 'openssl')
-makedepends=('git')
+makedepends=('git' 'gflags' 'folly')
 conflicts=('watchman')
+provides=('watchman')
 options=('!libtool' 'staticlibs')
-provides=()
-source=("${_gitname}::git+https://github.com/facebook/watchman.git")
+source=("git+https://github.com/facebook/watchman.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-
+}
+
+prepare() {
+  cd ${pkgname%-git}
+  sed -i '586,587d' getdeps.py
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
-  ./autogen.sh
-  ./configure --prefix=/usr \
-              --with-pcre \
-              --without-python \
-              --enable-statedir="/var/lib/${_gitname}"\
-               --enable-lenient # to work around a gcc 8.x bug ; https://github.com/facebook/watchman/issues/638
+  cd ${pkgname%-git}
+  cmake . \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON 
   make
 }
 
 check() {
-  cd "${srcdir}/${_gitname}"
+  cd ${pkgname%-git}
   make check
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-  make DESTDIR="${pkgdir}" install
+  cd ${pkgname%-git}
+
+  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr .
+  make install
 }
-
-# Local Variables:
-# compile-command: "makepkg -sm && mksrcinfo"
-# End:# Maintainer: Mario Rodas <marsam@users.noreply.github.com>
-

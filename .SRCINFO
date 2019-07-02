@@ -1,18 +1,21 @@
 pkgbase = watchman-git
 	pkgdesc = Watches files and records, or triggers actions, when they change.
-	pkgver = v4.9.0.r587.g3b276ea3
+	pkgver = 4.9.0.r1158.g264484e0
 	pkgrel = 1
 	url = https://facebook.github.io/watchman/
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = git
+	makedepends = gflags
+	makedepends = folly
 	depends = pcre
 	depends = openssl
+	provides = watchman
 	conflicts = watchman
 	options = !libtool
 	options = staticlibs
-	source = watchman::git+https://github.com/facebook/watchman.git
+	source = git+https://github.com/facebook/watchman.git
 	sha256sums = SKIP
 
 pkgname = watchman-git
