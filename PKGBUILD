@@ -3,8 +3,8 @@
 # Contributor: hauptmech <hauptmech@gmail.com>
 pkgname=python2-empy
 realname=empy
-pkgver=3.3.2
-pkgrel=2
+pkgver=3.3.4
+pkgrel=1
 pkgdesc="A powerful and robust templating system for Python."
 arch=('any')
 url="http://www.alcyone.com/software/empy"
@@ -12,7 +12,7 @@ depends=('python2>=2.4')
 license=('LGPL')
 source=("https://pypi.python.org/packages/source/E/EmPy/empy-$pkgver.tar.gz"
         "python2.patch")
-md5sums=('fbb34761cdf9acc4c65e298c9eced395'
+md5sums=('6d73ddc0e9dc76cd607217f14d742679'
          '198d743409b18c0d024851ca80829a1d')
 
 build() {
