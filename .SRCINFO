@@ -1,0 +1,14 @@
+pkgbase = vultr-cli
+	pkgdesc = The Vultr Command Line Interface
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = https://github.com/vultr/vultr-cli/archive/v0.1.0.tar.gz
+	sha256sums = c7f8d5da60ab1fbb39a27d777d903ffad5456f858a9d8603721872dd948a2c3d
+
+pkgname = vultr-cli
+
