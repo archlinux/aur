@@ -1,0 +1,24 @@
+diff --git a/remote_ikernel/manage.py b/remote_ikernel/manage.py
+index 7814ca7..f138116 100644
+--- a/remote_ikernel/manage.py
++++ b/remote_ikernel/manage.py
+@@ -257,8 +257,10 @@ def add_kernel(interface, name, kernel_cmd, cpus=1, pe=None, language=None,
+     # False attempts a system install, otherwise install as the current user
+     if system:
+         username = False
++        prefix = '/usr'
+     else:
+         username = getpass.getuser()
++        prefix = None
+ 
+     # kernel.json file installation
+     with tempdir.TemporaryDirectory() as temp_dir:
+@@ -268,7 +270,7 @@ def add_kernel(interface, name, kernel_cmd, cpus=1, pe=None, language=None,
+             json.dump(kernel_json, kernel_file, sort_keys=True, indent=2)
+ 
+         ks.install_kernel_spec(temp_dir, kernel_name,
+-                               user=username, replace=True)
++                               user=username, replace=True, prefix=prefix)
+ 
+     return kernel_name, " ".join(display_name)
+ 
