@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-mcode-git
-pkgver=0.37dev.git20190303
+pkgver=0.37dev.git20190702
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator - mcode backend'
@@ -23,7 +23,7 @@ pkgver() {
 	cd "${srcdir}/ghdl"
 
 	# GHDL version (extracted from configure)
-	_distver=`sed -n -e 's/.*ghdl_version=.*"\(.*\)".*/\1/p' configure | tr -d '-'`
+	_distver=`sed -n -e 's/^ghdl_version=.*"\(.*\)".*/\1/p' configure | tr -d '-'`
 	# Date of the last git commit
 	_gitver=`git log -n 1 --date=short | sed -n -e 's/.*Date:\s*\([0-9-]*\).*/\1/p' | tr -d -`
 
