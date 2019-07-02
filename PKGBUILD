@@ -5,7 +5,7 @@
 # Contributor: tobias <tobias@archlinux.org>
 
 pkgname=libxfce4util-git
-pkgver=4.12.1.r16.gf8e35f0
+pkgver=4.14pre2.r1.gc198d55
 pkgrel=1
 pkgdesc="Basic utility non-GUI functions for Xfce"
 arch=(i686 x86_64)
@@ -23,7 +23,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname/
-    git describe | sed 's/^libxfce4util-//;s/-/.r/;s/-/./g'
+    git describe | sed 's/^xfce-//;s/-/.r/;s/-/./g'
 }
 
 build() {
@@ -31,7 +31,7 @@ build() {
     ./autogen.sh \
         --prefix=/usr \
         --sysconfdir=/etc \
-	--sbindir=/usr/bin \
+	      --sbindir=/usr/bin \
         --libexecdir=/usr/lib \
         --localstatedir=/var \
         --disable-static \
