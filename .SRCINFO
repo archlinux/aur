@@ -1,6 +1,6 @@
 pkgbase = mint-themes
 	pkgdesc = A collection of Mint themes. Includes GTK2, GTK3, Cinnamon and Xfce components.
-	pkgver = 1.7.8
+	pkgver = 1.7.9
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mint-themes
 	arch = any
@@ -9,13 +9,15 @@ pkgbase = mint-themes
 	makedepends = ruby-sass
 	makedepends = optipng
 	makedepends = inkscape
+	makedepends = python
 	depends = mint-y-icons
 	depends = mint-x-icons
+	depends = ttf-ubuntu-font-family
 	conflicts = mint-x-theme
 	conflicts = mint-y-theme
 	conflicts = mint-cinnamon-themes
-	source = mint-themes_1.7.8.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-themes/mint-themes_1.7.8.tar.xz
-	sha256sums = 6ec309fe09e529678b713439f2f95af20c292029e478ba815dc12043707ea822
+	source = mint-themes_1.7.9.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-themes/mint-themes_1.7.9.tar.xz
+	sha256sums = 7922f878d40ed88d48d662f4f725ab4182bec52a9881b7696bd79f7a28201b66
 
 pkgname = mint-themes
 
