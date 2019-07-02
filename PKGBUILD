@@ -21,10 +21,6 @@ source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgv
 noextract=()
 sha256sums=("736101e4c12fd4e1057baf77cd0941fe3e1f5a3118a3f8abdecebd17231cd510")
 
-prepare() {
-	tar -xvf "$pkgname-$pkgver.tar.gz"
-}
-
 package() {
 	mkdir -vp "$pkgdir/usr/include/"
 	mkdir -vp "$pkgdir/usr/share/man/man3/"
