@@ -1,0 +1,15 @@
+pkgbase = wskdeploy-git
+	pkgdesc = Apache OpenWhisk utility for deploying and managing OpenWhisk projects and packages.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/apache/incubator-openwhisk-wskdeploy
+	arch = i686
+	arch = x86_64
+	license = Apache
+	conflicts = wskdeploy-git
+	replaces = wskdeploy-git
+	source = wskdeploy-git-src.tar.gz::https://github.com/apache/incubator-openwhisk-wskdeploy/releases/download/0.10.0-incubating/openwhisk_wskdeploy-0.10.0-incubating-linux-386.tgz
+	md5sums = SKIP
+
+pkgname = wskdeploy-git
+
