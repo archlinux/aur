@@ -1,6 +1,6 @@
 pkgbase = xfce4-whiskermenu-plugin-button
 	pkgdesc = Make the button valid without the xfce4-session in xfce4-whiskermenu-plugin.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 0
 	url = https://github.com/fkxxyz/archlinux-config/xfce4-whiskermenu-plugin-button
 	install = xfce4-whiskermenu-plugin-button.install
@@ -8,10 +8,8 @@ pkgbase = xfce4-whiskermenu-plugin-button
 	license = GPL3
 	depends = xfce4-whiskermenu-plugin
 	conflicts = xfce4-session
-	conflicts = xfce4-settings
 	backup = etc/xdg/xfce4/whiskermenu/xflock4
 	backup = etc/xdg/xfce4/whiskermenu/xfce4-session-logout
-	backup = etc/xdg/xfce4/whiskermenu/xfce4-settings-manager
 
 pkgname = xfce4-whiskermenu-plugin-button
 
