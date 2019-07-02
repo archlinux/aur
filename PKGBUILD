@@ -63,6 +63,21 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/582
   git cherry-pick -n b4797956
 
+  # Mild performance improvements on style changes
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/524
+  # Use only the first commit as the other one causes issues and is reverted
+  git cherry-pick -n fb04dafb
+
+  # st: Only emit ::style-changed on actual changes
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/505
+  # Restore this reverted commit to 3.32 as !505 fixes its introduced style glitches
+  git cherry-pick -n f74c07b9
+
+  # st: Consider non-background properties for ::style-changed
+  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/595
+  # Fixes style glitches introduced by !505
+  git cherry-pick -n 3ed41da6^..73ae4243
+
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update
