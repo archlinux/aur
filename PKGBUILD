@@ -1,10 +1,10 @@
 # Maintainer: Darrell Enns <darrell@darrellenns.com>
 _pkgname=leslie
 pkgname=${_pkgname}-git
-pkgrel=1
+pkgrel=2
 pkgver=0.r8.aa2c796
 pkgdesc="A leslie audio effect with jack, OSC control, and (optionally) an opengl GUI."
-url="https://github.com/dack/leslie"
+url="https://github.com/darrellenns/leslie"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('liblo' 'libgl' 'glut' 'ftgl' 'boost-libs' 'jack' 'ttf-dejavu' 'alsa-lib' 'freetype2')
@@ -12,7 +12,7 @@ makedepends=('git' 'boost')
 conflicts=()
 replaces=()
 backup=()
-source=('leslie::git+https://github.com/dack/leslie.git')
+source=('leslie::git+https://github.com/darrellenns/leslie.git')
 sha1sums=('SKIP')
 
 build() {
