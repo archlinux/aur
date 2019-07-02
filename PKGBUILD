@@ -2,17 +2,16 @@
 
 _pkgname=sonarqube
 pkgname=${_pkgname}
-pkgver=7.8
-pkgrel=2
+pkgver=7.9
+pkgrel=1
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
 url="http://www.sonarqube.org/"
 license=('LGPL3')
 
-depends=('java-runtime>=8')
+depends=('java-runtime>=11')
 
 optdepends=('apache: a fully featured webserver'
-            'mysql: Fast SQL database server, community edition'
             'maven: a java project management and project comprehension tool'
             'postgresql: A sophisticated object-relational DBMS')
 
@@ -30,7 +29,7 @@ source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-$
         "${_pkgname}-user.conf"
         "99-${_pkgname}.conf")
 
-sha256sums=('62a69df1d79667420c260c727b11de954349fa1115099885dd80cf483a5ac1b5'
+sha256sums=('ab6c63c961f2e45c94b11ada2e5f2ff80f2da1eab31d364ffb91029bcb84c3e8'
             '26ca557a0d371702124212df1ab82a56bb49d6ea26ef7fb472f953e9c2cc5a21'
             '2d908a2965df90a74feb0e734dabb27543f5a375ce94ce2a26b4682f462e3ea5'
             '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d'
