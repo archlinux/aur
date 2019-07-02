@@ -1,6 +1,6 @@
 pkgbase = cameramonitor-quiet-git
 	pkgdesc = A little monitor to check if your Webcam is On.
-        pkgver = r3.f095242
+        pkgver = r4.cfcb3aa
 	pkgrel = 1
 	url = https://github.com/YanDoroshenko/cameramonitor-quiet
 	arch = i686

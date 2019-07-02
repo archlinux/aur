@@ -1,5 +1,5 @@
 pkgname="cameramonitor-quiet-git"
-pkgver=r3.f095242
+pkgver=r4.cfcb3aa
 pkgrel=1
 pkgdesc="A little monitor to check if your Webcam is On"
 url="https://github.com/YanDoroshenko/cameramonitor-quiet"
