@@ -5,10 +5,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=75.0.3770.90
+pkgver=75.0.3770.100
 pkgrel=1
 _launcher_ver=6
-_meta_browser_sha=e7dbbbbd8eb80722bb32453cbb29f8fd8041be81
+_meta_browser_sha=f24753238414a8b04e5227772f22bb4dd9171b2f
 pkgdesc="Chromium built with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -29,19 +29,19 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         meta-browser-${_meta_browser_sha}.tar.gz::https://github.com/OSSystems/meta-browser/archive/${_meta_browser_sha}.tar.gz
         chromium-system-icu.patch
-        libstdc-do-not-assume-unique_ptr-has-ostream-operator.patch
         chromium-fix-window-flash-for-some-WMs.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch
+        https://git.nightly.network/Exherbo/desktop/raw/de0a391d9e7442dce614553835ef599119826387/packages/net-www/chromium-stable/files/chromium-remove-const.patch
         Added-HiDPI-support-for-Ozone-Wayland.patch)
-sha256sums=('b1b59abbe19ecb88c17d99fa68f5c1c5585a5d66c100858f944aa3b93b943839'
+sha256sums=('9e1360101b6d9f9635e540db77626e3e15b452f413d8750518244ac37b73fca0'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '433d9942cc6479cd75c1000d7f01e89df160108140311a6594eb4c0391add533'
+            'e7ead0cdb341819adb52082aed1ae674e243944fbf23456ab9ca60f4c4baefe5'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
-            'e309dfd9d790f32cb1d23103726ac25e405b6ae6757a1c957a8395667d753908'
             '183d8cc712f0bcf1afcb01ce90c4c104a4c8d8070a06f94974a28b007d9e2ce4'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
+            '005f7db8acc774e2c66f99d900f2263abf495ccd5eda33c45a957fce2ed30f8d'
             'b6b258a6d3b42731c9375395b4e6e896edef00617d5b7028c348a5d2dbb14eb7')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -78,6 +78,25 @@ depends+=(${_system_libs[@]})
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
+
+_general_patches=(
+  '0001-Add-support-for-GCC-Compilers.patch'
+  '0001-Revert-Use-noexcept-consistently-on-the-move-ctor-of.patch'
+  '0001-TrackEventJSONExporter-HandleLegacyEvent-Use-std-mov.patch'
+  '0001-webrequest-Fix-GCC-build-after-2d47b917314a.patch'
+  '0001-GCC-7-workaround-remove-constexpr-ctor.patch'
+  '0001-libstdc-do-not-assume-unique_ptr-has-ostream-operato.patch'
+  'aarch64-skia-build-fix.patch'
+  'oe-clang-fixes.patch'
+  # 'v8-qemu-wrapper.patch'
+  'wrapper-extra-flags.patch'
+  'do-not-specify-march-on-arm.patch'
+  '0005-Remove-banned-designated-initializer-list-usage-from.patch'
+  '0006-GCC-add-std-move-to-return-to-base-Optional.patch'
+  '0001-GCC-fix-another-GCC-bug-by-implementing-copy-assign-.patch'
+  'add_internal_define_armv7ve.patch'
+  '0001-Avoid-pure-virtual-crash-destroying-RenderProcessUse.patch'
+)
 
 _wayland_patches=(
   '0001-ozone-wayland-Factored-the-clipboard-logic-out-of-Wa.patch'
@@ -122,9 +141,6 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/libxml_utils.cc
 
-  # https://chromium-review.googlesource.com/1584292
-  patch -Np1 -i ../libstdc-do-not-assume-unique_ptr-has-ostream-operator.patch
-
   # https://crbug.com/956061
   patch -Np1 -i ../chromium-fix-window-flash-for-some-WMs.patch
 
@@ -137,7 +153,16 @@ prepare() {
   # https://bugs.gentoo.org/661880#c21
   patch -Np1 -i ../chromium-system-icu.patch
 
+  # https://github.com/ungoogled-software/ungoogled-chromium-debian/issues/7
+  patch -Np1 -i ../chromium-remove-const.patch
+
   # chromium-ozone-wayland
+  for PATCH in ${_general_patches[@]}
+  do
+    echo "Applying $PATCH"
+    patch -Np1 -i $srcdir/meta-browser-${_meta_browser_sha}/recipes-browser/chromium/files/${PATCH}
+  done
+
   for PATCH in ${_wayland_patches[@]}
   do
     echo "Applying $PATCH"
