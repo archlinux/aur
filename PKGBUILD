@@ -2,13 +2,13 @@
 
 pkgname=ethoscope-node
 pkgver=r1702.g1c43fc3
-pkgrel=2
+pkgrel=3
 pkgdesc="A platform from monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
 license=('GPL3')
-makedepends=('git' 'gcc-fortran' 'rsync' 'wget' 'fping' 'ntp' 'openssh' 'mariadb' 'dnsmasq' ) #'base-devel' )
-depends=('python-pip' 'python-numpy' 'python-bottle' 'python-pyserial' 'python-mysql-connector' 'python-netifaces' 'python-cherrypy' 'python-eventlet' 'python-gitpython' 'python-scapy' 'python-dnspython' 'python-greenlet' 'python-monotonic' 'scapy')
+makedepends=('git' 'gcc-fortran' 'rsync' 'wget' 'fping' )
+depends=('ntp' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'base-devel' 'python-pip' 'python-ifaddr' 'python-numpy' 'python-bottle' 'python-pyserial' 'python-mysql-connector' 'python-netifaces' 'python-cherrypy' 'python-eventlet' 'python-gitpython'  'python-dnspython' 'python-greenlet' 'python-monotonic' 'python-bjoern')
 provides=('ethoscope')
 install="ethoscope-node.install"
 source=("$pkgname::git+https://github.com/gilestrolab/ethoscope.git")
@@ -23,6 +23,7 @@ package() {
   #creating packaging directories
   install -dm0755 $pkgdir/{opt,srv/git}
   install -dm0755 $pkgdir/usr/lib/systemd/system/
+  install -dm0755 $pkgdir/ethoscope_results
 
   #create bare repo
   git clone --bare https://github.com/gilestrolab/ethoscope.git "${pkgdir}/srv/git/ethoscope.git"
