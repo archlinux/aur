@@ -16,7 +16,6 @@ pkgbase = ethoscope-node
 	depends = mariadb
 	depends = dnsmasq
 	depends = avahi
-	depends = base-devel
 	depends = python-pip
 	depends = python-ifaddr
 	depends = python-numpy
