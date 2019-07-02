@@ -6,7 +6,7 @@ pkgver=5.5.2
 # https://github.com/MeridianOXC/OpenXcom/commits/oxce-plus/src/version.h
 _commit=308a9aacd365274429502ece67e47e2ae89322ba
 pkgrel=1
-pkgdesc="An extended version of the open-source reimplementation of X-COM"
+pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE)"
 arch=('i686' 'x86_64')
 url="https://openxcom.org/forum/index.php/topic,5251.0.html"
 license=('GPL3')
