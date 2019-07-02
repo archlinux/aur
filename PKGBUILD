@@ -9,11 +9,11 @@
 # * https://github.com/bohoomil/fontconfig-ultimate/blob/master/freetype/03-infinality-2.6.3-2016.04.16.patch#L2092
 # * https://www.reddit.com/r/archlinux/comments/5qkvqb/best_way_to_approximate_infinalitys_ultimate5
 
-__arch_pkg_commit="8a7ca92c21a9a84ec50f4eabf3c2300da1f3e407"
+__arch_pkg_commit="6cdc4ff886a3bdf6d02a674b119e6b42dad9675b"
 
 pkgname=freetype2-ultimate5
-pkgver=2.10.0
-pkgrel=2
+pkgver=2.10.1
+pkgrel=1
 pkgdesc="FreeType patched for effect similar to Infinality's ultimate5 preset."
 url="https://www.freetype.org/"
 conflicts=(freetype2)
@@ -30,18 +30,16 @@ source=(
 	"upstream_1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Enable-table-validation-modules.patch?h=packages/freetype2&id=$__arch_pkg_commit"
 	"upstream_2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-infinality-subpixel-hinting.patch?h=packages/freetype2&id=$__arch_pkg_commit"
 	"upstream_3.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/freetype2&id=$__arch_pkg_commit"
-	"upstream_4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0004-pcf-Fix-handling-of-undefined-glyph-56067.patch?h=packages/freetype2&id=$__arch_pkg_commit"
 
 	# FreeType source code.
-	https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2
+	https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz
 )
 sha1sums=(
 	"4d111cc93d9a7aca79b4a75ccd069df08aa2ad26"
-	"46fd67e6a594f6c2c473b9321ba64913984ba42f"
-	"4bf0c0749db09878b918cc404300f0d3e9091607"
-	"af76172be8135e74391b7ad1b82c2124ae0ad86c"
-	"74d0ae26620a22c03002ecfffd7bd4c8130d6f6c"
-	"f6abf03e0e3189a0de883981c57d3861b5d314f5"
+	"283427030ef4b942f01e24ba022f2b84f1733fa8"
+	"1efd1e1db64cb7705296b724920d6328ff5f1f14"
+	"6b289e2ba54a4513af9aa3981b374fccb20ffc89"
+	"79874ef4eaa52025126b71d836453b8279bdd331"
 )
 
 prepare()
