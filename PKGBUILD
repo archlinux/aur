@@ -2,7 +2,7 @@
 
 _pkgname=chakracore
 pkgname=chakracore-bin
-pkgver=1.11.8
+pkgver=1.11.10
 pkgrel=1
 pkgdesc='ChakraCore is the core part of the Chakra Javascript engine that powers Microsoft Edge. This is the pre-built binaries from Microsoft.'
 arch=('x86_64')
@@ -10,8 +10,8 @@ url='https://github.com/Microsoft/ChakraCore'
 license=('MIT')
 provides=('libChakraCore.so' 'ch')
 conflicts=('chakracore-git' 'chakracore')
-source=("$pkgname-$pkgver-linux-$arch.tar.gz::https://aka.ms/chakracore/cc_linux_x64_1_11_8")
-sha256sums=('c59b1c6f00e5894b91b91b9123b68ff71e808ab361134451899f4013449e4a11')
+source=("$pkgname-$pkgver-linux-$arch.tar.gz::https://aka.ms/chakracore/cc_linux_x64_1_11_10")
+sha256sums=('70f75a3bcb4e360fbbb77fe618e58dffa0f2aa996a3b987d28fccfc5acc5b434')
 
 _dir="ChakraCoreFiles"
 
