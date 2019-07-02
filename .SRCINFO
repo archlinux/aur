@@ -1,0 +1,16 @@
+pkgbase = zfs-prune-snapshots
+	pkgdesc = Remove snapshots from one or more zpools that match given criteria.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/bahamas10/zfs-prune-snapshots
+	arch = any
+	license = MIT
+	checkdepends = shellcheck
+	makedepends = make
+	depends = bash
+	conflicts = zfs-prune-snapshots-git
+	source = https://github.com/bahamas10/zfs-prune-snapshots/archive/v1.0.1.tar.gz
+	sha512sums = 657b5c187b4097b03c99fd6d31c358ded1181cc580690356ea06f591d72ea0734ac863598c95d18d08bf2f433d6644853e289cf0dab6a0a7209c8aa89cc68063
+
+pkgname = zfs-prune-snapshots
+
