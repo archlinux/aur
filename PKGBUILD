@@ -10,13 +10,13 @@ arch=('i686' 'x86_64' 'armv7h')
 url="http://slic3r.org/"
 license=('GPL')
 depends=('perl' 'perl-moo'
-				 'perl-math-clipper' 'perl-math-convexhull'
-				 'perl-math-geometry-voronoi' 'perl-math-planepath'
-				 'perl-math-convexhull-monotonechain' 'perl-io-stringy'
-				 'perl-encode-locale' 'perl-extutils-makemaker-aur>=6.82'
-				 'perl-extutils-parsexs-aur' 'perl-extutils-typemap'
+         'perl-math-clipper' 'perl-math-convexhull'
+         'perl-math-geometry-voronoi' 'perl-math-planepath'
+         'perl-math-convexhull-monotonechain' 'perl-io-stringy'
+         'perl-encode-locale' 'perl-extutils-makemaker-aur>=6.82'
+         'perl-extutils-parsexs-aur' 'perl-extutils-typemap'
          'perl-sub-quote'
-				 'perl-threads-aur>=1.96')
+         'perl-threads-aur>=1.96')
 makedepends=('git' 'perl-module-build-withxspp' 'perl-devel-checklib')
 optdepends=('perl-wx: GUI support'
             'perl-net-dbus: notifications support via any dbus-based notifier'
@@ -33,15 +33,15 @@ conflicts=('slic3r-git')
 BUILDENV+=('!check')
 #source=("git+https://github.com/slic3r/Slic3r.git#tag=$pkgver"
 source=("https://github.com/alexrj/Slic3r/archive/$pkgver.tar.gz"
-				'slic3r.desktop'
-				'slic3r')
+        'slic3r.desktop'
+        'slic3r')
 md5sums=('5eb9afba30f69856040a20a4e42ff18a'
          'cf0130330574a13b4372beb8f241d71e'
          'a30a96504f11c95956dd8ce645b77504')
 _src_dir='$srcdir/Slic3r-$pkgver'
 
 prepare() {
-	eval cd "$_src_dir"
+  eval cd "$_src_dir"
   # Nasty fix for useless Growl dependency ... please post in comment real fix, if u know one ;)
   sed -i '/Growl/d' Build.PL
 
