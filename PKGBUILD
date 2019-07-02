@@ -4,11 +4,11 @@
 pkgname=go4
 _Pkgname=Go4
 pkgver=5.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('x86_64')
 depends=('root' 'qt4')
-url="https://www.gsi.de/en/work/research/electronics/data_processing/data_analysis/the_go4_home_page.htm"
+url='https://www.gsi.de/en/work/research/electronics/data_processing/data_analysis/the_go4_home_page.htm'
 license=('GPL')
 source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
 sha256sums=('eca243e519bf5903fee8e47f9fdbab0713075d4eb2ea14eb805946938cb544bf')
