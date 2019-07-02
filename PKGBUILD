@@ -12,10 +12,6 @@ options=('!strip')
 source=("$url/content/files/mit8-3.0.0-x86_64.tar.gz")
 md5sums=('8244ca3091fde30ff0934eff6b96bfa6')
 
-prepare() {
-  gendesk --pkgname="$pkgname" --pkgdesc="$pkgdesc" --categories=Utility PKGBUILD
-}
-
 package() {
   install -Dm755 "$srcdir/mit8" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$srcdir/resource/LICENSE" "$pkgdir/usr/share/licenses/$orgname/$pkgname/LICENSE"
