@@ -42,7 +42,7 @@ prepare() {
 
   # Geometric (OpenGL-less) picking
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
-  git cherry-pick -n 00b4dace
+  git cherry-pick -n 76462a2f
 
   # clutter/stage-cogl: Don't skip over the next frame
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/520
@@ -95,7 +95,7 @@ prepare() {
 
   # compositor: Don't emit size-changed when only position changes
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/568
-  git cherry-pick -n 00d8337d
+  git cherry-pick -n 01e20a6b
 
   # Fix background texture corruption when resuming from suspend on Nvidia
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/600
