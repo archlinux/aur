@@ -1,0 +1,12 @@
+pkgbase = qaz-blue-vista
+	pkgdesc = A blue vista theme for emerald.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/fkxxyz/emerald-themes-qaz-blue-vista
+	arch = any
+	license = GPL3
+	source = https://github.com/fkxxyz/emerald-themes-qaz-blue-vista/archive/master.zip
+	sha256sums = 7953c059b221b6f7d2797bede650a8c362df155cae9d527fce4c549d0a4f7033
+
+pkgname = qaz-blue-vista
+
