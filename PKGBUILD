@@ -3,7 +3,7 @@
 
 pkgname=treehole-ocr
 _pkgname=tools-ocr
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A Cross-Platform OCR Tool"
 arch=(any)
@@ -67,7 +67,7 @@ java -jar /usr/share/${pkgname}/${pkgname}.jar
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('48616ec745fed744cf397bb32ba8ef66835d52eab2ddba71371fe99ddbacfdc6'
+sha256sums=('a29d1fd12c6e5d25255fc64457b04b1bcb549dfe6518843a0cc079e6d992948f'
             '753c9b72e79f0b7fd389ebf6aa834f359b9f6ed6475e25a0d931baa141643ee6'
             'ccb27d21f8566f17323a845595bb6d52a2c8024dfc7ebd7005161ceacd9d5144'
             '69dc385ae41a76b30bd393626cff5c783cae8a7ece950d098f697af44460f795'
