@@ -2,7 +2,7 @@
 Name=Firefox Nightly
 GenericName=Web Browser
 Comment=Browse the World Wide Web
-Exec=firefox-nightly %u
+Exec=firefox-nightly-hg %u
 Terminal=false
 Type=Application
 Icon=firefox-nightly

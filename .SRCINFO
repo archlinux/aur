@@ -1,8 +1,9 @@
 pkgbase = firefox-nightly-hg
-	pkgdesc = Standalone web browser from mozilla.org
-	pkgver = r473709.e0a622476b77
+	pkgdesc = Standalone web browser from mozilla.org, nightly version
+	pkgver = r480905.109ccdeb9634
 	pkgrel = 1
-	url = https://www.mozilla.org/firefox/
+	url = http://www.mozilla.org/projects/firefox
+	install = firefox.install
 	arch = x86_64
 	license = MPL
 	license = GPL
@@ -46,17 +47,14 @@ pkgbase = firefox-nightly-hg
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	conflicts = firefox-nightly
-	conflicts = firefox-nightly-hg
+	replaces = firefox-hg
 	options = !emptydirs
-	options = !makeflags
-	options = !strip
 	source = hg+https://hg.mozilla.org/mozilla-central
-	source = firefox-nightly.desktop
-	source = firefox-nightly-symbolic.svg
+	source = firefox-hg.desktop
+	source = vendor.js
 	sha512sums = SKIP
-	sha512sums = 28219dab29bb53fa66c894ea16330f3cd20f6783000141a1a57e2a9616d9b4a377f85fd8d213e47c5323738e0a867039bc64648e2316aa7519266d23c14989e4
-	sha512sums = ba7db9a7c95a051bcd84e4c09c802fc55ee3c0d1d06ec1b169b04e414259b75bbe92fe584aee41a1e3f71e71c160df8bedf5393449e5024110ed27dbc0579ea8
+	sha512sums = 5c49649475073c09fc669fcaf59c86f0d179d609039c880f887472f908459ea9371bfb0814ace652154ee2f69e9bff81934e33998fd84d929a3aa49861129d26
+	sha512sums = d927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7
 
 pkgname = firefox-nightly-hg
 
