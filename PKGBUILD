@@ -4,12 +4,12 @@
 pkgname=ssb-patchwork
 _upstream=patchwork
 pkgver=3.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)"
 arch=('i686' 'x86_64')
 url="https://github.com/ssbc/patchwork"
 license=('AGPL3')
-depends=('libxtst' 'libxext' 'libxkbfile' 'gconf' 'libsodium' 'libxss' 'gtk2' 'alsa-lib' 'nss' 'electron')
+depends=('libxtst' 'libxext' 'libxkbfile' 'gconf' 'libsodium' 'libxss' 'gtk2' 'alsa-lib' 'nss' 'electron4')
 makedepends=('nodejs' 'npm')
 options=(!strip)
 source=(
@@ -18,10 +18,10 @@ source=(
 "${pkgname}.desktop"
 )
 
-sha512sums=(
-'f4b8acb811a37431eec607ad18a10c55c71d177fff388728e87a3d7a046da11eef4474b53ea05a3a9f1eb7d364c452a62c83ccf25082b0a11a5c7932814d55ee'
-'0df1ea65d60742d82ef04bea84376380cad03d3cd4ffb326374578f9f9954ad326b19fc81162ae838c10ae45acdd236c37731b68ca535cbbe7ddf4b69266c33c'
-'09292ec2f7c02d741cbeb046bd99293f4d144314d0233252dd34a619e1aacbbbf28078677c0871d367240e29aa50d9197bbe0a35e5b14f7ff9a6288c386124f6'
+sha256sums=(
+'f6eab72429e9ce2c2e37a30f59d22fc7e412743ada4d270b0fc3f39145e8b38b'
+'5db66d7942606df5f48ea0db2d90b584fa3a984bc2de7bb678d25897f64e3a2f'
+'b226436970db40030ad03e9cd847c103aa534d775cd81212308e86a23917d76a'
 )
 
 
@@ -33,7 +33,7 @@ build() {
     sed -i '/postinstall/d' package.json
 
     # Electron's version.
-    export npm_config_target=$(electron -v)
+    export npm_config_target=$(electron4 -v)
     # The architecture of Electron, can be ia32 or x64.
     export npm_config_arch=x64
     export npm_config_target_arch=x64
