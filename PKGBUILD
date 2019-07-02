@@ -1,5 +1,5 @@
 pkgname=beanstalkd
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 epoch=
 pkgdesc="Fast, simple message queue server"
@@ -16,17 +16,18 @@ changelog=
 source=("https://github.com/kr/beanstalkd/archive/v${pkgver}.tar.gz"
 	"beanstalkd@.service"
 	"beanstalkd.service"
-	"beanstalkd.conf")
-md5sums=('0994d83b03bde8264a555ea63eed7524'
-         'f6151d5d2f07c24977cafba38a9e67c9'
-         'd05b907abfb19174a7321676ecc0c819'
-         '7fdc2e3d1dc9c6559b7b007b74588a09')
-
+	"beanstalkd.conf"
+	"wno-error.patch")
+sha256sums=('5e3414e49d00e9ef9530897983e56bdba98da6f8f1f30f5fe7e6064b2f68c544'
+            'a58cb94c7524f48a4f37244dd37593fc74186168796d472db67326387510979e'
+            'e18b2c5d959027560f597022b4afe56bc337c20c98c76ecec6d2e05097188627'
+            'b59792b451554e6b7de54543448fcd6dd0b76dbe5babb94068864f063f7efbfc'
+            'e7d7dc5df9f70da4f2767a9b6e2574191fb159045803a4b9a57b1dfb5dffe1c0')
 
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-
+  patch -p0 < $srcdir/wno-error.patch
 }
 
 build() {
