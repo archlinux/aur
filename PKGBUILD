@@ -3,18 +3,35 @@
 
 pkgname=gst-libav-git
 _gitname=gst-libav
-pkgver=1.17.0.1.2232.e3e99dd
+pkgver=1.17.0.1.2239.2596e5b
 pkgrel=1
 pkgdesc="Gstreamer libav Plugin"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://gstreamer.freedesktop.org/"
 depends=('gstreamer-git' 'gst-plugins-base-git' 'bzip2' 'ffmpeg')
-makedepends=('yasm' 'git' 'gtk-doc' 'meson' 'ninja' 'hotdoc' )
-options=(!emptydirs)
+makedepends=('yasm' 'git' 'meson' 'ninja' )
 provides=("gst-libav" "gst-ffmpeg")
 conflicts=("gst-libav" "gst-ffmpeg")
-
+optdepends=(
+  # 64-bit
+  # official repositories:
+    'glibc' 'alsa-lib' 'jack' 'libpng'
+    'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass' 'aom'
+    'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
+    'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm'
+    'libiec61883' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio'
+    'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt'
+    'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
+    'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'libxml2'
+    'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz' 'openal' 'ocl-icd' 'libgl' 'sndio'
+    'sdl2' 'libxv' 'libx11' 'libxext' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm'
+    'libvdpau'
+  # AUR:
+    'chromaprint-fftw' 'codec2' 'flite1-patched' 'libilbc' 'kvazaar' 'openh264'
+    'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'ndi-sdk' 'libmysofa'
+  'rockchip-mpp'
+)
 source=('git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git')
 sha256sums=('SKIP')
 
