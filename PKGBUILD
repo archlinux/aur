@@ -3,7 +3,7 @@
 
 pkgname=go-tools-git
 pkgver=v0.0.0_20190702152245_7e72c71c505f
-pkgrel=1
+pkgrel=2
 pkgdesc='Developer tools for the Go programming language'
 arch=(x86_64)
 url='https://godoc.org/golang.org/x/tools/'
@@ -56,6 +56,7 @@ package() {
   install -Dm755 build/* -t "${pkgdir}"/usr/bin/
   install -Dm644 ${pkgname}/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
   install -Dm644 godoc.service -t ${pkgdir}/usr/lib/systemd/system/
+  install -Dm644 gopls.service -t ${pkgdir}/usr/lib/systemd/system/
 }
 
 # vim: ts=2 sw=2 et:
