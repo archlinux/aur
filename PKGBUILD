@@ -1,6 +1,6 @@
 # Maintainer: Keno Goertz <keno@goertz-berlin.com>
 pkgname=lightdm-webkit2-theme-arch
-pkgver=0.1
+pkgver=3b15b50e
 pkgrel=1
 pkgdesc="Minimal theme for lightdm-webkit2-greeter using humorous wallpapers about Arch Linux."
 arch=('any')
