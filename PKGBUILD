@@ -1,17 +1,19 @@
 # Maintainer: Sam Burgos < santiago dot burgos1089 at gmail dot com >
 
 pkgname=cinnamon-doc
-pkgver=4.0.10
-_pkgver=tessa
+pkgver=4.2.0
+_pkgver=tina
 pkgrel=1
-pkgdesc="Code documentation for various Cinnamon components."
+pkgdesc='Code documentation for various Cinnamon components.'
 arch=('any')
 url="http://packages.linuxmint.com/pool/backport/c/cinnamon"
-license=('GPL3')
-depends=('cinnamon' 
-    'devhelp')
+license=(GPL3)
+depends=(
+    cinnamon
+    devhelp
+)
 source=("${pkgname}_${pkgver}.deb::${url}/${pkgname}_${pkgver}+${_pkgver}_all.deb")
-sha256sums=('82599c542ea3b0d49029e084a5b34fcac54c9da5532322c3d5c91df3aaea0743')
+sha256sums=('b6badf9107f00ab3d902e125476b931ce375a4163f338ceb50613e92f60645a7')
 
 package() {
   tar xf "${srcdir}/data.tar.xz"
