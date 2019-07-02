@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-rs
 	pkgdesc = GStreamer plugins written in Rust
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
