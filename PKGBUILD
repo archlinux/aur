@@ -7,7 +7,7 @@
 
 
 pkgname=mutter-781835-workaround
-pkgver=3.32.2+14+ge0922bffe
+pkgver=3.32.2+32+g947da2c5d
 pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -21,7 +21,7 @@ checkdepends=(xorg-server-xvfb)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-_commit=e0922bffea44ed201dd0adf38bf3180b4a574fe2 # tags/3.32.2^14
+_commit=947da2c5d583ea7ac743238fe0022f7c4a0d5356 # tags/3.32.2^32
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -39,6 +39,11 @@ prepare() {
 
   git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   git fetch vanvugt
+
+  # Various Clutter cleanups
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/666
+  # Needed so !189 doesn't conflict
+  git cherry-pick -n 5bd85ef7^..b0b1ff36
 
   # Geometric (OpenGL-less) picking
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
@@ -60,6 +65,11 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/168
   # still has issues with 1000Hz mice
   # git cherry-pick -n 657cb4b5
+
+  # clutter/stage: Process input events out of phase with redraws [performance]
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/661/
+  # Replaces !168 but needs to be rebased
+  # git cherry-pick -n fbaa4dfa^..ec6a6e91
 
   # Resource scale computation optimizations
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/493
