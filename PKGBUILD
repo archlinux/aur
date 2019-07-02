@@ -8,8 +8,8 @@ url="http://www.sourcegear.com/diffmerge/"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('gtk2' 'libpng15' 'curl')
-source_i686+=("http://download-us.sourcegear.com/DiffMerge/4.2.0/${pkgname}-${pkgver}.stable-1.i686.rpm")
-source_x86_64+=("http://download-us.sourcegear.com/DiffMerge/4.2.0/${pkgname}-${pkgver}.stable-1.x86_64.rpm")
+source_i686+=("http://download.sourcegear.com/DiffMerge/4.2.0/${pkgname}-${pkgver}.stable-1.i686.rpm")
+source_x86_64+=("http://download.sourcegear.com/DiffMerge/4.2.0/${pkgname}-${pkgver}.stable-1.x86_64.rpm")
 md5sums_i686=('461659a788785e4b1979ba81ee4ed8f3')
 md5sums_x86_64=('230a8ce57ae5ef88f79113ceb39b839f')
 
