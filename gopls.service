@@ -1,0 +1,10 @@
+[Unit]
+Description=Language Server Protocol implementation for Go
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/gopls
+
+[Install]
+WantedBy=multi-user.target

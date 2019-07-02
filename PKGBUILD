@@ -2,8 +2,8 @@
 # Contributor: Egor Kovetskiy <e.kovetskiy@office.ngs.ru>
 
 pkgname=go-tools-git
-pkgver=v0.0.0_20190121143147_24cd39ecf745
-pkgrel=2
+pkgver=v0.0.0_20190702152245_7e72c71c505f
+pkgrel=1
 pkgdesc='Developer tools for the Go programming language'
 arch=(x86_64)
 url='https://godoc.org/golang.org/x/tools/'
@@ -16,8 +16,10 @@ conflicts=('go-tools'
            'go-imports-git')
 provides=('go-tools')
 source=("${pkgname}::git+https://go.googlesource.com/tools"
+        'gopls.service'
         'godoc.service')
 sha256sums=('SKIP'
+            'fea23332ef69ba647cde588071bce7d424b400181bd97428f8fdb9c48a82089d'
             '0afd3dcbf1758b33f6810cc81fc7eb37095db48bc8055ddd6b714c46184a490e')
 
 pkgver() {
@@ -33,10 +35,6 @@ prepare() {
   rm -rf build/
   mkdir -p build/
   mkdir -p cache/
-
-  cd "${pkgname}"
-  rm -f go.mod
-  go mod init golang.org/x/tools
 }
 
 build() {
