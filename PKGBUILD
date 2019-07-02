@@ -2,7 +2,7 @@
 # Contributor: Ethan Schoonover
 
 pkgname=gam
-pkgver=4.85
+pkgver=4.88
 pkgrel=1
 pkgdesc="Command-line tool for Google GSuite admins to manage settings quickly and easily"
 arch=('any')
@@ -14,7 +14,8 @@ depends=(
     'python-google-api-python-client'
     'python-google-auth'
     'python-google-auth-httplib2'
-    'python-oauth2client'
+    'python-google-auth-oauthlib'
+    'python-httplib2'
     'python-passlib'
 )
 
@@ -24,7 +25,7 @@ source=(
     "gam.sh"
 )
 
-sha256sums=('209244c3cf062b31ae6c901a3e8282d0850387624ec92182933b88a0811d0379'
+sha256sums=('e8b0a7842964e4a9bb1e5de59aa7569fc9c1e103acfc2c9e98a4b71c5fb6b2bb'
             '202e3566d837c37526174fb6311232c06d90e3786578668aa58ef3eb0648054a'
             'd93809852ef9eefeb99f3fc1b955305264f93f2552db14b4d9d6fe7c2b08345b')
 
