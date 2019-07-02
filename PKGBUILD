@@ -39,7 +39,7 @@ sha256sums=('3d2655738950e1b0ba5adb9e0bc842746c880b6ad4f72be05f1b76f39d052e53')
 #}
 
 build() {
-    cd ${_pkgname}-${_pkgver}
+    cd ${_pkgname}-${pkgver}
     aclocal --install
     autoreconf -vfi
     intltoolize -f
@@ -52,7 +52,7 @@ build() {
 }
 
 package() {
-    cd ${_pkgname}-${_pkgver}
+    cd ${_pkgname}-${pkgver}
     make DESTDIR="${pkgdir}" install
     # adjust launcher name
     mv $pkgdir/usr/share/xgreeters/slick-greeter.desktop \
