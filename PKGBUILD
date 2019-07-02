@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=0.37dev.git20190303
+pkgver=0.37dev.git20190702
 pkgrel=1
 arch=('any')
 pkgdesc='VHDL simulator - GCC flavour'
@@ -34,7 +34,7 @@ pkgver() {
 	cd "${srcdir}/ghdl"
 
 	# GHDL version (extracted from configure)
-	_distver=`sed -n -e 's/.*ghdl_version=.*"\(.*\)".*/\1/p' configure | tr -d '-'`
+	_distver=`sed -n -e 's/^ghdl_version=.*"\(.*\)".*/\1/p' configure | tr -d '-'`
 	# Date of the last git commit
 	_gitver=`git log -n 1 --date=short | sed -n -e 's/.*Date:\s*\([0-9-]*\).*/\1/p' | tr -d -`
 
@@ -42,15 +42,18 @@ pkgver() {
 }
 
 prepare() {
+	cd "${srcdir}"
+	[[ ! -d gcc ]] && ln -sf gcc-${_gccver/+/-} gcc
+
 	cd "${srcdir}/ghdl"
 
 	./configure \
 		--prefix=/usr \
-		--with-gcc="${srcdir}/gcc-${_gccver}"
+		--with-gcc="${srcdir}/gcc"
 
 	make copy-sources
 
-	cd "${srcdir}/gcc-${_gccver}"
+	cd "${srcdir}/gcc"
 
 	# Link isl for in-tree build
 	ln -sf ../isl-${_islver} isl
