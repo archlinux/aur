@@ -14,7 +14,9 @@ pkgbase = chakracore
 	conflicts = chakracore-git
 	conflicts = chakracore-bin
 	source = chakracore-1.11.10.tar.gz::https://github.com/Microsoft/ChakraCore/archive/v1.11.10.tar.gz
+	source = fix-assembly-for-clang.patch
 	sha256sums = a322958ead403ef164d4ae11f8eb672f45dda83dcd5eefaa459d8714304931d8
+	sha256sums = 623458eff6effd1d6497c69bf3338f25cc8396853f74ecdfbb92db982b232d99
 
 pkgname = chakracore
 

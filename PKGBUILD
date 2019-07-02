@@ -14,8 +14,10 @@ provides=('libChakraCore.so' 'ch')
 conflicts=('chakracore-git' 'chakracore-bin')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/Microsoft/ChakraCore/archive/v${pkgver}.tar.gz"
+  "fix-assembly-for-clang.patch"
 )
-sha256sums=('a322958ead403ef164d4ae11f8eb672f45dda83dcd5eefaa459d8714304931d8')
+sha256sums=('a322958ead403ef164d4ae11f8eb672f45dda83dcd5eefaa459d8714304931d8'
+            '623458eff6effd1d6497c69bf3338f25cc8396853f74ecdfbb92db982b232d99')
 
 _dir="ChakraCore-${pkgver}"
 
