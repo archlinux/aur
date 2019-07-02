@@ -1,20 +1,17 @@
 pkgbase = amp
 	pkgdesc = A modal text editor for the terminal.
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/jmacdonald/amp
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	makedepends = git
-	makedepends = python2
 	makedepends = cmake
 	makedepends = libxcb
 	depends = libxcb
-	source = python
-	source = https://github.com/jmacdonald/amp/archive/0.5.2.tar.gz
-	sha512sums = c9fe91a5958a04fcb6039d0791ac14c014ad0b85b0b30118574c64596169a71261037e2eb26c0b5cee686c90f56a5b04ffef96b0ccb455bcc3d7cc989434bcef
-	sha512sums = 2e3e9bcac33cc47308bbf062a6bb6fa763567fcc760c0bee18eec78829201f568e53c7e68984ba8fbb3bee6a1454fd98fe50c00047bb569754f3cd4e96de0166
+	source = https://github.com/jmacdonald/amp/archive/0.6.0.tar.gz
+	sha512sums = 02e14bcc51d83d89529a645b2a1efad18067025f991469f0746f3a17afc1eb6c1fa70f83e4052456efaaa4fa16809ae06759d7ae769e9b5c14b49a4933a46ef9
 
 pkgname = amp
 
