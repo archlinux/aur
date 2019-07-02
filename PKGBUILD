@@ -55,11 +55,8 @@ prepare() {
   ln -sf ${srcdir}/SPIRV-Headers-${_spirvheaders_commit} ${srcdir}/spvgen/external/SPIRV-tools/external/SPIRV-Headers
   ln -sf ${srcdir}/glslang-${_glslang_commit} ${srcdir}/spvgen/external/glslang
 
-  #replace -Werror with -Wno-error=unused-variable to build with gcc9 
-  for i in xgl/icd/CMakeLists.txt llpc/CMakeLists.txt llpc/imported/metrohash/CMakeLists.txt llvm/utils/benchmark/CMakeLists.txt pal/src/core/imported/addrlib/CMakeLists.txt pal/src/core/imported/vam/CMakeLists.txt pal/shared/gpuopen/cmake/AMD.cmake
-  do
-    sed -i "s/-Werror/-Wno-error=unused-variable/g" "$srcdir"/$i
-  done
+  #remove -Werror to build with gcc9 
+  sed -i "s/-Werror//g" $srcdir/pal/shared/gpuopen/cmake/AMD.cmake
 }
 
 build() {
