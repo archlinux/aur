@@ -6,7 +6,7 @@ pkgver=1.1
 pkgrel=6
 pkgdesc='Port of the monokai colorscheme for TextMate'
 arch=('any')
-url='http://www.vim.org/scripts/script.php?script_id=2340'
+url='https://www.vim.org/scripts/script.php?script_id=2340'
 license=('custom')
 depends=('vim')
 groups=('vim-plugins')
