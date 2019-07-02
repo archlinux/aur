@@ -2,8 +2,8 @@
 
 pkgname=ethoscope-node
 pkgver=r1702.g1c43fc3
-pkgrel=4
-pkgdesc="A platform from monitoring animal behaviour in real time from a raspberry pi"
+pkgrel=5
+pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
 license=('GPL3')
@@ -23,9 +23,9 @@ package() {
   #creating packaging directories
   install -dm0755 $pkgdir/opt
   install -dm0755 $pkgdir/srv/git
-  install -dm0755 $pkgdir/usr/lib/systemd/system/
-  install -dm0755 $pkgdir/ethoscope_data/{results, videos, tmp}
-
+  install -dm0755 $pkgdir/usr/lib/systemd/system
+  install -dm0755 $pkgdir/ethoscope_data/{results,videos,tmp}
+  
   #create bare repo
   git clone --bare https://github.com/gilestrolab/ethoscope.git "${pkgdir}/srv/git/ethoscope.git"
   

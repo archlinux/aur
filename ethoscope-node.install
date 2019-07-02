@@ -18,14 +18,16 @@ post_install() {
     
     echo "enabling NODE specific systemd service files"
     systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service 
-    echo "enabling the GIT server on the node"
-    systemctl enable git-daemon.socket
+    echo "enabling the GIT server on the node and NTP service"
+    systemctl enable git-daemon.socket ntpd.service
 
     #changing hostname on node
     hostnamectl set-hostname node
+    
+    #setting host settings on node
     echo "127.0.0.1    node" > /etc/hosts
 
-    #PLEASE REBOOT NOW.
+    echo "PLEASE REBOOT NOW."
 }
 
 ## arg 1:  the new package version
@@ -48,7 +50,9 @@ post_upgrade() {
 # arg 1:  the old package version
 pre_remove() {
     echo "disabling systemd service files"
+    systemctl stop ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service
     systemctl disable ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service
+    systemctl stop git-daemon.socket
     systemctl disable git-daemon.socket
 
 }
