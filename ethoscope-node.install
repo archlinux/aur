@@ -12,13 +12,18 @@ post_install() {
     #setting branch
     git checkout python3.7
     
+    #installing python module
+    cd /opt/ethoscope-node/node_src/
+    python setup.py install
+    
     echo "enabling NODE specific systemd service files"
     systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service 
     echo "enabling the GIT server on the node"
     systemctl enable git-daemon.socket
 
     #changing hostname on node
-    echo "node" > /etc/hostname
+    hostnamectl set-hostname node
+    echo "127.0.0.1    node" > /etc/hosts
 
     #PLEASE REBOOT NOW.
 }
