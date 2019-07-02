@@ -1,10 +1,11 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Contributor: sballert <sballert@posteo.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _gituser="m00natic"
 _gitrepo="vlfi"
 
 pkgname=emacs-vlf-git
-pkgver=r305.31b292d
+pkgver=1.7.1.r1.g31b292d
 pkgrel=1
 pkgdesc="View Large Files in Emacs"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -19,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe --tags | sed 's+-+.r+' | tr - .
 }
 
 build() {
@@ -29,6 +30,6 @@ build() {
 
 package() {
   cd "$_gitrepo"
-  install -d  "$pkgdir"/usr/share/emacs/site-lisp/vlf/
-  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/vlf/
+  install -d  "$pkgdir"/usr/share/emacs/site-lisp/
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/
 }

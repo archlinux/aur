@@ -1,6 +1,6 @@
 pkgbase = emacs-vlf-git
 	pkgdesc = View Large Files in Emacs
-	pkgver = r305.31b292d
+	pkgver = 1.7.1.r1.g31b292d
 	pkgrel = 1
 	url = https://github.com/m00natic/vlfi
 	arch = any
