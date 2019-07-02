@@ -7,7 +7,7 @@ _scriptid='19633'
 pkgrel=4
 pkgdesc='Lets you align lines using regular expressions'
 arch=('any')
-url='http://www.vim.org/scripts/script.php?script_id=294'
+url='https://www.vim.org/scripts/script.php?script_id=294'
 license=('custom')
 depends=('vim')
 groups=('vim-plugins')
