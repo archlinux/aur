@@ -1,8 +1,8 @@
 # Maintainer: Senderman <doletov.fyodor@yandex.ru>
 pkgname=nvidia-system-monitor-git
 _pkgname=nvidia-system-monitor
-pkgver=v1.0beta2
-pkgrel=2
+pkgver=v1.0
+pkgrel=1
 pkgdesc="Task Manager for Linux for Nvidia graphics cards"
 arch=('x86_64')
 url="https://github.com/congard/${_pkgname}"
