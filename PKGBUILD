@@ -2,17 +2,17 @@
 # Maintainer: L.G. Sarmiento (Pico) <Luis.Sarmientop@nuclear.lu.se>
 pkgname=htmlize-git
 _pkgname=htmlize
-pkgver=r96.aa6e2f6
+pkgver=r129.8db0aa6
 pkgrel=1
 pkgdesc="Convert buffer text and decorations to HTML"
-url="http://fly.srk.fer.hr/~hniksic/emacs/htmlize.el.cgi"
+url="https://github.com/hniksic/emacs-htmlize"
 arch=('any')
 license=('GPL2')
 depends=('emacs')
 provides=("htmlize")
 makedepends=('git')
 
-source=($_pkgname::git+http://fly.srk.fer.hr/~hniksic/emacs/htmlize.git)
+source=($_pkgname::git+https://github.com/hniksic/emacs-htmlize.git)
 md5sums=('SKIP')
 
 pkgver() {

@@ -1,12 +1,15 @@
 pkgbase = htmlize-git
 	pkgdesc = Convert buffer text and decorations to HTML
-	pkgver = 20150122
+	pkgver = r129.8db0aa6
 	pkgrel = 1
-	url = http://fly.srk.fer.hr/~hniksic/emacs/htmlize.el.cgi
+	url = https://github.com/hniksic/emacs-htmlize
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = emacs
+	provides = htmlize
+	source = htmlize::git+https://github.com/hniksic/emacs-htmlize.git
+	md5sums = SKIP
 
 pkgname = htmlize-git
 
