@@ -6,7 +6,7 @@ pkgbase=openxcom-extended-git
 pkgname=('openxcom-extended-git' 'openxcom-extended-docs-git')
 pkgver=5.5.2_r10294.ccf1eee4a
 pkgrel=1
-pkgdesc="An extended version of the open-source reimplementation of X-COM (git-version)"
+pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE) (git-version)"
 arch=('i686' 'x86_64')
 url="https://openxcom.org/forum/index.php/topic,5251.0.html"
 license=('GPL3')
@@ -40,7 +40,7 @@ build() {
 }
 
 package_openxcom-extended-git() {
-  pkgdesc="An extended version of the open-source reimplementation of X-COM (git-version)"
+  pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE) (git-version)"
   depends=('sdl_mixer' 'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs'
            'glibc' 'hicolor-icon-theme')
   optdepends=('openxcom-data-steam: pacman-tracked X-COM data files from Steam'
@@ -55,7 +55,7 @@ package_openxcom-extended-git() {
 }
 
 package_openxcom-extended-docs-git() {
-  pkgdesc="Documentation for the extended version of the open-source reimplementation of X-COM (git-version)"
+  pkgdesc="Documentation for the extended version of the open-source reimplementation of X-COM (OXCE) (git-version)"
   arch=('any')
   cd openxcom-extended/build/docs
   install -dm755 "${pkgdir}/usr/share/doc/openxcom-extended/"

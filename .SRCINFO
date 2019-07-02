@@ -1,5 +1,5 @@
 pkgbase = openxcom-extended-git
-	pkgdesc = An extended version of the open-source reimplementation of X-COM (git-version)
+	pkgdesc = An extended version of the open-source reimplementation of X-COM (OXCE) (git-version)
 	pkgver = 5.5.2_r10294.ccf1eee4a
 	pkgrel = 1
 	url = https://openxcom.org/forum/index.php/topic,5251.0.html
@@ -27,7 +27,7 @@ pkgbase = openxcom-extended-git
 	sha256sums = SKIP
 
 pkgname = openxcom-extended-git
-	pkgdesc = An extended version of the open-source reimplementation of X-COM (git-version)
+	pkgdesc = An extended version of the open-source reimplementation of X-COM (OXCE) (git-version)
 	install = openxcom-extended-git.install
 	depends = sdl_mixer
 	depends = sdl_gfx
@@ -45,6 +45,6 @@ pkgname = openxcom-extended-git
 	conflicts = openxcom
 
 pkgname = openxcom-extended-docs-git
-	pkgdesc = Documentation for the extended version of the open-source reimplementation of X-COM (git-version)
+	pkgdesc = Documentation for the extended version of the open-source reimplementation of X-COM (OXCE) (git-version)
 	arch = any
 
