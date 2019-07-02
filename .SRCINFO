@@ -1,6 +1,6 @@
 pkgbase = aseprite
 	pkgdesc = Create animated sprites and pixel art
-	pkgver = 1.2.11
+	pkgver = 1.2.12
 	pkgrel = 2
 	url = http://www.aseprite.org/
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = aseprite
 	conflicts = aseprite-gpl
 	source = https://github.com/aseprite/aseprite/releases/download/v1.2.11/Aseprite-v1.2.11-Source.zip
 	source = aseprite.desktop
-	sha256sums = 1ebbf5d4ecce70f8e5d682ab302beab82d01822a7c65cfb7de705f33625eb44e
+	sha256sums = 23ef408bc31e414fc09cc094fc7d53d00c8f57bf3ca2a97c852cc7af2e9fdbfb
 	sha256sums = c258fa38a0e0bd575f0bd744c4c3b60cf8d59d596c7572f84bd392e1c5e49b4f
 
 pkgname = aseprite
