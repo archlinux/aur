@@ -5,10 +5,10 @@
 
 pkgname=thunderbird-beta-bin-de
 _pkgname=thunderbird-beta
-pkgver=68.0b1
+pkgver=68.0b3
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
-pkgrel=2
+pkgrel=1
 pkgdesc="Standalone Mail/News reader - Bleeding edge binary version, german"
 arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
