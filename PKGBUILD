@@ -1,18 +1,16 @@
 # Maintainer: Nate Levesque <public@thenaterhood.com>
 pkgname=teleirc-git
 _pkgname=teleirc
-pkgver=144
-pkgrel=2
+pkgver=153
+pkgrel=1
 epoch=
 pkgdesc="NodeJS Telegram to IRC bridge bot (direct from GitHub)"
 arch=('any')
 url="https://github.com/ritlug/teleirc"
 license=('MIT')
 groups=()
-depends=("nodejs"
-         "yarn"
-)
-makedepends=()
+depends=("nodejs")
+makedepends=("yarn")
 checkdepends=()
 optdepends=()
 provides=()
