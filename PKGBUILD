@@ -20,14 +20,14 @@ backup=("usr/lib/teleirc/config.js"
         "usr/lib/teleirc/.env"
 )
 options=()
-install="teleirc.install"
+install=
 changelog=
 source=("git+https://github.com/ritlug/teleirc.git"
         "teleirc.sysusers"
 )
 noextract=()
 sha256sums=('SKIP'
-            '91507d509d079f0c0b2bb4bd121b40b18daabdfdc80494ae29f4bfcca86279e0'
+            '8aef33679b7c407fa38bb59b8973bad96ff193c42efa31702c7385722be334ef'
 )
 
 pkgver() {

@@ -3,7 +3,6 @@ pkgbase = teleirc-git
 	pkgver = 153
 	pkgrel = 1
 	url = https://github.com/ritlug/teleirc
-	install = teleirc.install
 	arch = any
 	license = MIT
 	makedepends = yarn
@@ -13,7 +12,7 @@ pkgbase = teleirc-git
 	source = git+https://github.com/ritlug/teleirc.git
 	source = teleirc.sysusers
 	sha256sums = SKIP
-	sha256sums = 91507d509d079f0c0b2bb4bd121b40b18daabdfdc80494ae29f4bfcca86279e0
+	sha256sums = 8aef33679b7c407fa38bb59b8973bad96ff193c42efa31702c7385722be334ef
 
 pkgname = teleirc-git
 
