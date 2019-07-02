@@ -1,18 +1,18 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 _npmname=webpack
 pkgname=nodejs-webpack
-pkgver=4.35.0
+pkgver=4.35.2
 pkgrel=1
 pkgdesc="JavaScript bundler (CommonJs, AMD, ES6 modules, CSS, Images, JSON, CoffeeScript, LESS)"
 arch=(any)
 url="https://webpack.js.org/"
 license=(MIT)
 depends=('nodejs')
-optdepends=('nodejs-webpack-cli')
+optdepends=()
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('167e9750086fa8944c95030d76922ebf32b28bc86a9c781cc256ae2f5276d71a')
+sha256sums=('8d234567cd3adf8dba3e5a25aa50aa344cabff741c2712bedb26001741e0f6a8')
 
 package() {
   cd $srcdir
