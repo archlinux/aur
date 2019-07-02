@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=wmfocus
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="Visually focus window by label"
 url="https://github.com/svenstaro/wmfocus"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("MIT")
 depends=("xcb-util-keysyms" "cairo" "libxkbcommon-x11")
 makedepends=("rust" "python")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/svenstaro/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('fb68355ad7cc5e34fca193b2a0ca5a2606c1d46c839be2a783b0d494dba2e374c01fb839c5a4e5ded411c69e809fecc3141fad0dfc90c0c80e083f32701ea9c8')
+sha512sums=('299a19b8b3dbd6dfcce961b75c4cf0321d41fd7742235407c1c3de73418e28825f293dbe8db5ea9072a5b2dfad8fc99d654a3cc03839125fedd346e7b4e96604')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
