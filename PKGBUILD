@@ -1,6 +1,6 @@
 # Maintainer: Nikola Hadžić <nikola@firemail.cc>
 pkgname=gst-plugins-rs
-pkgver=0.3.2
+pkgver=0.5.0
 pkgrel=1
 epoch=
 pkgdesc="GStreamer plugins written in Rust"
@@ -23,7 +23,7 @@ sha256sums=(SKIP)
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	git reset --hard "6936ce11a791f4afe7873e74a37aaecb4723191f"
+	git checkout $pkgver
 }
 
 build() {
