@@ -1,7 +1,7 @@
 pkgbase = franz
 	pkgdesc = Free messaging app for services like WhatsApp, Slack, Messenger and many more.
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://meetfranz.com
 	arch = x86_64
