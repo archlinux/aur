@@ -3,18 +3,18 @@
 
 pkgname=clhep
 _pkgname=CLHEP
-pkgver=2.4.1.0
+pkgver=2.4.1.2
 pkgrel=2
 pkgdesc='A Class library for High Energy Physics'
 url="http://proj-clhep.web.cern.ch/"
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('bash')
-options=('!emptydirs')
+options=('!emptydirs' 'staticlibs')
 makedepends=('cmake'         #for building the package
 	     'texlive-core') #for the documentation
-source=("http://proj-clhep.web.cern.ch/proj-clhep/DISTRIBUTION/tarFiles/${pkgname}-${pkgver}.tgz")
-sha256sums=('d14736eb5c3d21f86ce831dc1afcf03d423825b35c84deb6f8fd16773528c54d')
+source=(http://proj-clhep.web.cern.ch/proj-clhep/dist1/${pkgname}-${pkgver}.tgz)
+sha256sums=('ff96e7282254164380460bc8cf2dff2b58944084eadcd872b5661eb5a33fa4b8')
 
 build() {
 
