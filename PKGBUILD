@@ -1,16 +1,16 @@
 # Maintainer: Fredrick Brennan <copypaste@kittens.ph>
 # Contributor: Skef Iterum <https://github.com/skef>
 pkgname=libuninameslist
-pkgver=20190305
-pkgrel=3
+pkgver=20190701
+pkgrel=1
 pkgdesc='Library with sparse array mapping for Unicode code points.'
 url='https://github.com/fontforge/libuninameslist/'
 arch=('x86_64')
 license=('BSD')
 provides=('libuninameslist')
 conflicts=('libuninameslist')
-source=('https://github.com/fontforge/libuninameslist/archive/20190305.zip')
-sha256sums=('8140fbd532c95c0df7f56ab404a20fefd6d6f106bb96d323df83369b1f650c4c')
+source=("https://github.com/fontforge/libuninameslist/archive/$pkgver.zip")
+sha256sums=('4ff2c53663f5cef6d1626bdf2f1314107f8730d15633b1a7ac3649ed19863891')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
