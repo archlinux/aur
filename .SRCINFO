@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-poco
 	pkgdesc = C++ class libraries for network-centric, portable applications, complete edition with debug libraries (mingw-w64)
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = http://www.pocoproject.org/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mingw-w64-poco
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = https://pocoproject.org/releases/poco-1.9.1/poco-1.9.1-all.tar.bz2
-	sha256sums = 41b441b1f36b4a148cdb269b7c006774297b48446693ee7861bd40e5da2d9b5f
+	source = https://pocoproject.org/releases/poco-1.9.2/poco-1.9.2-all.tar.bz2
+	sha256sums = 74f117e2c6c0f2de1e4ffd6fc5b8053a7bc05d331e7a7c606d0fcc3917f827a4
 
 pkgname = mingw-w64-poco
 
