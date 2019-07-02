@@ -1,30 +1,41 @@
-# Maintainer: David Koňařík <dvd.kon@gmail.com>
+# Maintainer: Brad Ackerman <brad@facefault.org>
+# Contributor: David Koňařík <dvd.kon@gmail.com>
 pkgname=fsharp-forge
-pkgver=1.4.0
+pkgver=2.2.0
 pkgrel=1
-pkgdesc="F# project management tool"
-url="http://forge.run/"
+pkgdesc="F# CLI tool for project, file, and solution management"
 arch=("any")
+url="http://forge.run/"
 license=("custom:unlicense")
-depends=("fsharp")
-source=(
-	"https://github.com/fsharp-editing/Forge/releases/download/$pkgver/forge.zip"
-	"https://raw.githubusercontent.com/fsharp-editing/Forge/master/LICENSE.txt")
-noextract=("https://github.com/fsharp-editing/Forge/releases/download/$pkgver/forge.zip")
-sha256sums=(
-	"439108f05afaf49d250167de746901e5135d7180cfc6ab5fd7ff0350e01b9c79"
-	"7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c")
+depends=("mono")
+makedepends=("fsharp")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ionide/Forge/archive/${pkgver}.tar.gz"
+        "${pkgname}-issue105.patch::https://github.com/ionide/Forge/commit/9f5cc6c8d62f142de603dd63f3520717dba650c3.patch")
+sha512sums=("2a56ab14721ced6787c7390feec9d201d22f58d69a97a68a0e49254095c0c79de2501d4aa4dba94238ebd76b08f748e1bd27bd505b64b911a7e3d93471758b1e"
+            "20049c9d2947726638527f482175eedd808f30715d6a1b2f45a8373025ac65f9795c649ced3c1a1110c6ffc788205a2b97758348e217635fe25b65e20c0e55f3")
 
-package() {
-	mkdir -p "$srcdir/forge"
-	bsdtar x -C "$srcdir/forge" -f "$srcdir/forge.zip"
-	rm "$srcdir"/forge/forge.cmd
-	chmod +x "$srcdir"/forge/forge.sh
-	mkdir -p "$pkgdir"/usr/lib/forge
-	cp -r "$srcdir/forge"/* "$pkgdir"/usr/lib/forge
-	mkdir -p "$pkgdir"/usr/bin
-	ln -s "../lib/forge/forge.sh" "$pkgdir"/usr/bin/forge
-	mkdir -p "$pkgdir"/usr/share/licenses/"$pkgname"
-	cp LICENSE.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+prepare() {
+	cd "Forge-$pkgver"
+	patch -p1 -i "$srcdir/${pkgname}-issue105.patch"
+  chmod +x forge.sh
 }
 
+build() {
+	cd "Forge-$pkgver"
+	./build.sh
+}
+
+# check() {
+# 	cd "Forge-$pkgver"
+# 	make -k check
+# }
+
+package() {
+	cd "Forge-$pkgver"
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/lib/${pkgname}"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  cp -a temp/* "${pkgdir}/usr/lib/${pkgname}"
+  cp -a LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s /usr/lib/${pkgname}/forge.sh "${pkgdir}/usr/bin/forge"
+}
