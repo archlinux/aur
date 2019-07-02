@@ -1,16 +1,16 @@
 pkgbase = akarixb
 	pkgdesc = Is a bot for the decentralized Jabber/XMPP network, with a GUI. It is free as in freedom.
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = http://akarixb.nongnu.org/
 	arch = x86_64
 	license = GPL2
 	depends = qxmpp
 	depends = qt5-base
-	source = http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/cauldron/x86_64/media/core/release//akarixb-0.7-1.mga7.x86_64.rpm
-	source = akarixb-0.7-1.mga7.x86_64.rpm.sig
+	source = http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/cauldron/x86_64/media/core/release/akarixb-0.8-1.mga8.x86_64.rpm
+	source = akarixb-0.8-1.mga8.x86_64.rpm.sig
 	validpgpkeys = DDE43DEA10CA4EED5D7F881E76CE3619A00292AF
-	sha512sums = 99a9e0d6158f5569b9803307a716adf7ecaff29664f2276ea1b64e2dbddd0ab3c7da253555fddd86ab37c4eb6a8c7eef840d3e4793b0e4e1e7091763a679a684
+	sha512sums = 9361578ef6524e1e91ef6696b5681fa9a0bfb6d7122c9014877d475459233d38d0b1e172a6fae7ca188822cc8f2304b50861c2c148e3d9ca40917e8fa66b633c
 	sha512sums = SKIP
 
 pkgname = akarixb
