@@ -1,0 +1,19 @@
+pkgbase = freej2me
+	pkgdesc = A J2ME emulator
+	pkgver = 2018_09_07
+	pkgrel = 1
+	url = https://sourceforge.net/projects/freej2me/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-runtime
+	noextract = freej2me_2018-09-07.zip
+	source = https://netix.dl.sourceforge.net/project/freej2me/freej2me_2018-09-07.zip
+	source = freej2me
+	source = freej2me.desktop
+	md5sums = fc176b93828a799e6c7e79506a2f2f4f
+	md5sums = 68e28dc9d95056113b555d37cb58df0d
+	md5sums = a8ecd3ae8c6f97b4ccf967f43c1cdcc7
+
+pkgname = freej2me
+

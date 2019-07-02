@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=FreeJ2ME
+Comment=J2ME emulator
+Exec=freej2me
+Icon=/usr/share/pixmaps/freej2me.png
+Terminal=false
+Categories=Game;
