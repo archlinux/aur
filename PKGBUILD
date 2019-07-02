@@ -2,7 +2,7 @@
 
 pkgname=python-svneverever
 _name=${pkgname#python-}
-pkgver=1.3.2
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Collects path entries across SVN history"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/hartwork/svneverever"
 license=('GPL3')
 depends=(python python-pysvn)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-md5sums=('0445b94e4992008a94d3b2b82ac49c21')
+md5sums=('7053e6207f5031ce9cff6dcbe6af91c0')
 
 prepare() {
   cd "$srcdir/${_name}-$pkgver"
