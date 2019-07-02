@@ -38,10 +38,7 @@ prepare() {
   ln -sf ${srcdir}/llvm-${_llvm_commit} ${srcdir}/llvm
   
   #remove -Werror to build with gcc9 
-  for i in xgl/icd/CMakeLists.txt llpc/CMakeLists.txt llpc/imported/metrohash/CMakeLists.txt llvm/utils/benchmark/CMakeLists.txt pal/src/core/imported/addrlib/CMakeLists.txt pal/src/core/imported/vam/CMakeLists.txt pal/shared/gpuopen/cmake/AMD.cmake
-  do
-    sed -i "s/-Werror//g" "$srcdir"/$i
-  done
+  sed -i "s/-Werror//g" $srcdir/pal/shared/gpuopen/cmake/AMD.cmake
 }
 
 build() {
