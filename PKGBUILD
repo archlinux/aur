@@ -2,7 +2,7 @@
 pkgdesc='CUDA backend for Torch7 Neural Network Package'
 pkgname='torch7-cunn-git'
 pkgver=r819.1ae6aa0
-pkgrel=3
+pkgrel=4
 makedepends=('cmake' 'git')
 depends=('torch7-git>=r819' 'cuda' 'torch7-nn-git' 'torch7-cutorch-git')
 conflicts=('torch7-cunn')
@@ -27,7 +27,7 @@ build () {
 	CXXFLAGS="${CFLAGS/-fno-plt/}"
 
 	cd "${pkgname}"
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_BUILD_TYPE=Release
+	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_BUILD_TYPE=Release
 	make
 }
 
