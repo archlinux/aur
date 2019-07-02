@@ -1,5 +1,5 @@
 pkgbase = wsk-git
-	pkgdesc = pache OpenWhisk Command Line Interface (CLI) https://openwhisk.apache.org/
+	pkgdesc = Apache OpenWhisk Command Line Interface (CLI) https://openwhisk.apache.org/
 	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/apache/incubator-openwhisk-cli
