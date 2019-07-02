@@ -1,6 +1,6 @@
 pkgbase = python-pwntools-git
 	pkgdesc = A CTF framework and exploit development library. (git branch dev3)
-	pkgver = 3.13.0beta0.r186.gb6061878
+	pkgver = 3.13.0beta0.r199.gb0e1ce33
 	pkgrel = 1
 	url = https://github.com/Gallopsled/pwntools
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = python-pwntools-git
 	depends = python-packaging
 	optdepends = gdb: binary debugging
 	provides = python-pwntools
-	source = python-pwntools-git::git+https://github.com/mcd1992/pwntools.git#branch=dev3
+	source = python-pwntools-git::git+https://github.com/Gallopsled/pwntools.git#branch=dev3
 	sha256sums = SKIP
 
 pkgname = python-pwntools-git
