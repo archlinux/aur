@@ -6,7 +6,7 @@ pkgver=1.1.2
 pkgrel=6
 pkgdesc='Text objects based on indent levels'
 arch=(any)
-url='http://www.vim.org/scripts/script.php?script_id=3037'
+url='https://www.vim.org/scripts/script.php?script_id=3037'
 license=(MIT)
 groups=('vim-plugins')
 depends=(vim)
