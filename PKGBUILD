@@ -1,14 +1,14 @@
-# Maintainer: Thomas Bork <tab.epic@gmail.com>
+# Maintainer: Thomas Bork <sudobash418@gmail.com>
 
 pkgname=pamac-classic
-pkgver=6.7.0
-pkgrel=3
+pkgver=6.7.2
+pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - classic version"
 arch=('x86_64')
 url="https://git.cromer.cl/cromer/pamac-classic"
 license=('GPL3')
 depends=('curl' 'libsoup' 'polkit' 'pacman' 'libnotify' 'vte3')
-makedepends=('vala' 'cmake' 'gettext')
+makedepends=('vala' 'cmake' 'gettext' 'gobject-introspection')
 optdepends=('polkit-gnome: needed for authentication in Cinnamon, Gnome'
             'mate-polkit: needed for authentication in MATE'
             'lxsession: needed for authentication in Xfce, LXDE etc.')
@@ -17,16 +17,15 @@ provides=('pamac' 'pamac-aur')
 install=pamac-classic.install
 
 source=(
-	"pamac-classic-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
-	"vala-0.44-fix.patch"
+	"pamac-classic-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+	"pamacclassic-6.0.gir"
 	)
-sha256sums=('35639ef352d99f813dc54cf49cd9110a6a1e5852929ea2af0ab1333022c8ed4d'
-            '80a81cf01402c7adbabc144d36b096ca64bc613f13f55a25270e00ce867d632a')
+sha256sums=('453620021cb9345a133db3ceed80eba62e23398358e8868bfc8e9602d4889055'
+            '8ec24aee43b1d4ad6788174a3ffb41eacd2b5438c065fc058dfccb31ceb0b57f')
 
 prepare() {
-  cd "${srcdir}/pamac-classic"
-
-  patch --forward --strip=1 --input="${srcdir}/vala-0.44-fix.patch"
+  # install missing file from 6.7.0 sources
+  cp "${srcdir}/pamacclassic-6.0.gir" "${srcdir}/pamac-classic/src/pamacclassic-1.0.gir"
 }
 
 build() {
