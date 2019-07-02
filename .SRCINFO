@@ -6,6 +6,7 @@ pkgbase = python2-pyaudio
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
+	makedepends = portaudio
 	depends = python2
 	conflicts = python2-pyaudio
 	conflicts = python2-pyaudio-git
