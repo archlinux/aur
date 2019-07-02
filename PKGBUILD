@@ -3,7 +3,7 @@
 
 pkgname=servo-git
 _pkgname=servo
-pkgver=37556.a06a573f80
+pkgver=37598.f4ff9e2eeb
 pkgrel=1
 pkgdesc="Parallel Browser Project: web browser written in Rust"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/servo/servo"
 license=('MPL')
 depends=('freetype2' 'mesa' 'libxrandr' 'libxi' 'libgl' 'glu' 'fontconfig' 'ttf-font' 'bzip2' 'libxcursor' 'libxmu' 'xcb-util' 'python-dbus' 'gst-plugins-bad')
 install="$pkgname.install"
-makedepends=('git' 'curl' 'python2' 'python2-virtualenv' 'gperf' 'depot-tools-git' 'cmake' 'rustup' 'clang' 'autoconf2.13')
+makedepends=('git' 'curl' 'python2' 'python2-virtualenv' 'gperf' 'depot-tools-git' 'cmake' 'rustup' 'clang' 'autoconf2.13' 'llvm')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 _branch=servo
