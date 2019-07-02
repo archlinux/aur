@@ -2,7 +2,7 @@
 pkgname=mit8
 orgname=Iztech
 pkgver=3.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Программа для управления измерителями температуры серии МИТ-8 производства ООО ИзТех"
 url="https://www.iztech.ru"
 license=(custom)
@@ -10,7 +10,7 @@ depends=("qt5" "qt5-serialport" "qwt")
 arch=('x86_64')
 options=('!strip')
 source=("$url/content/files/mit8-3.0.0-x86_64.tar.gz")
-md5sums=('e6bb595d6ba214474fe06878a6fe5f8a')
+md5sums=('8244ca3091fde30ff0934eff6b96bfa6')
 
 prepare() {
   gendesk --pkgname="$pkgname" --pkgdesc="$pkgdesc" --categories=Utility PKGBUILD
