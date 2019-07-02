@@ -42,8 +42,8 @@ check() {
 
   # uncomment as needed
   #cd "./bindings/python"
-  #python test.py
-  #python2 test.py
+  #python test_basic.py
+  #python2 test_basic.py
 }
 
 package() {
