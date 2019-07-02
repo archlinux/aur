@@ -1,26 +1,20 @@
 pkgbase = treehole-ocr
 	pkgdesc = A Cross-Platform OCR Tool
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AnyListen/tools-ocr
 	arch = any
 	license = GPL3
-	makedepends = ant
 	makedepends = imagemagick
-	makedepends = java-runtime-openjdk=8
 	depends = java-openjfx
 	depends = java-runtime=8
-	noextract = hutool-all-4.5.5.jar
-	source = https://github.com/AnyListen/tools-ocr/archive/V1.2.0.tar.gz
-	source = https://github.com/kwhat/jnativehook/releases/download/2.1.0/jnativehook-2.1.0.zip
-	source = https://github.com/rkalla/imgscalr/archive/4.2-release.tar.gz
-	source = https://repo1.maven.org/maven2/cn/hutool/hutool-all/4.5.5/hutool-all-4.5.5.jar
+	noextract = treehole-1.2.0.dmg
+	source = https://github.com/AnyListen/tools-ocr/releases/download/V1.2.0/treehole-1.2.0.dmg
+	source = https://github.com/AnyListen/tools-ocr/raw/master/src/main/resources/img/logo.png
 	source = treehole-ocr.desktop
-	sha256sums = a29d1fd12c6e5d25255fc64457b04b1bcb549dfe6518843a0cc079e6d992948f
-	sha256sums = 753c9b72e79f0b7fd389ebf6aa834f359b9f6ed6475e25a0d931baa141643ee6
-	sha256sums = ccb27d21f8566f17323a845595bb6d52a2c8024dfc7ebd7005161ceacd9d5144
-	sha256sums = 69dc385ae41a76b30bd393626cff5c783cae8a7ece950d098f697af44460f795
-	sha256sums = e73acb90b81056b7ee576dc1226ae08e00fc44d9b1e7e7f68085a1d8c8b044c0
+	sha256sums = 3d38b14b5b9dca801cab79f8eb483d512699b79adfad377bf6e200fb7c70b572
+	sha256sums = d73ab0e0b7b6775d3346217d80324ce6d56fe567859be5744bb9810b3c176f7a
+	sha256sums = 36379443dba98f830f0bbe60bc79b6b4be8130e67bb10ac4faeadf6a1a4de7d5
 
 pkgname = treehole-ocr
 

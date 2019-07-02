@@ -1,45 +1,32 @@
 # Maintainer: qaz <fkxxyz@163.com>
 # Contributor: qaz <fkxxyz@163.com>
 
-pkgname=treehole-ocr
-_pkgname=tools-ocr
+_name=treehole
+pkgname=$_name-ocr
+_itemname=tools-ocr
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Cross-Platform OCR Tool"
 arch=(any)
-url="https://github.com/AnyListen/${_pkgname}"
+url="https://github.com/AnyListen/${_itemname}"
 license=('GPL3')
-makedepends=('ant' 'imagemagick' 'java-runtime-openjdk=8')
+makedepends=('imagemagick')
 depends=('java-openjfx' 'java-runtime=8')
 source=(
-  "https://github.com/AnyListen/${_pkgname}/archive/V${pkgver}.tar.gz"
-  "https://github.com/kwhat/jnativehook/releases/download/2.1.0/jnativehook-2.1.0.zip"
-  "https://github.com/rkalla/imgscalr/archive/4.2-release.tar.gz"
-  "https://repo1.maven.org/maven2/cn/hutool/hutool-all/4.5.5/hutool-all-4.5.5.jar"
+  "https://github.com/AnyListen/$_itemname/releases/download/V$pkgver/treehole-$pkgver.dmg"
+  "https://github.com/AnyListen/$_itemname/raw/master/src/main/resources/img/logo.png"
   ${pkgname}.desktop
 )
-noextract=('hutool-all-4.5.5.jar')
+noextract=("treehole-$pkgver.dmg")
+
+prepare() {
+  7z x -y treehole-$pkgver.dmg
+}
 
 build() {
-  PATH=/usr/lib/jvm/java-8-openjdk/bin:$PATH
-  
-  cd "${srcdir}/imgscalr-4.2-release"
-  ant
-  
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-echo 'Manifest-Version: 1.0
-Main-Class: com.luooqi.ocr.MainFm
-Class-Path: lib/jnativehook-2.1.0.jar lib/hutool-all-4.5.5.jar lib/imgscalr-lib-4.2.jar' > MANIFEST.MF
-  
-  mkdir lib
-  mv -f "${srcdir}/imgscalr-4.2-release/dist/imgscalr-lib-4.2.jar" lib/
-  mv -f "${srcdir}/jnativehook/jar/jnativehook-2.1.0.jar" lib/
-  cp -f "${srcdir}/hutool-all-4.5.5.jar" lib/
-  mkdir bin png
-  find ./src/main/java -name "*.java" | xargs \
-    javac -d bin -classpath "lib/hutool-all-4.5.5.jar:lib/imgscalr-lib-4.2.jar:lib/jnativehook-2.1.0.jar"
-  jar -cfm ${pkgname}.jar MANIFEST.MF -C bin . -C src/main/resources .
-  cp src/main/resources/img/logo.png 128x128.png
+  mkdir -p "$srcdir/pngs"
+  cd "$srcdir/pngs"
+  cp ../logo.png 128x128.png
   convert -resize 50% 128x128.png 64x64.png
   convert -resize 37.8% 128x128.png 48x48.png
   convert -resize 25% 128x128.png 32x32.png
@@ -48,27 +35,28 @@ Class-Path: lib/jnativehook-2.1.0.jar lib/hutool-all-4.5.5.jar lib/imgscalr-lib-
 }
 
 package() {
-  install -D ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -d "${pkgdir}/usr/share/applications"
+  sed 's/^Version=$/Version='$pkgver'/g' ${pkgname}.desktop > "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "$srcdir/pngs"
   for png in *.png; do
     install -D ./${png} "${pkgdir}/usr/share/icons/hicolor/${png%.*}/apps/${pkgname}.png"
   done
   
-  install -D "./${pkgname}.jar" "${pkgdir}/usr/share/${pkgname}/${pkgname}.jar"
-  cp -r "./lib" "${pkgdir}/usr/share/${pkgname}/lib"
+  install -d "${pkgdir}/usr/share/${pkgname}/lib"
+  cp -r "$srcdir/treehole/treehole.app/Contents/Java/"* "${pkgdir}/usr/share/${pkgname}"
   
   install -d "${pkgdir}/usr/bin"
   echo "#!/bin/bash
 PATH=/usr/lib/jvm/java-8-openjdk/bin:\$PATH
-java -jar /usr/share/${pkgname}/${pkgname}.jar
+java -jar /usr/share/${pkgname}/$_name-$pkgver-jfx.jar
 " > "${pkgdir}/usr/bin/${pkgname}"
   chmod +x "${pkgdir}/usr/bin/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('a29d1fd12c6e5d25255fc64457b04b1bcb549dfe6518843a0cc079e6d992948f'
-            '753c9b72e79f0b7fd389ebf6aa834f359b9f6ed6475e25a0d931baa141643ee6'
-            'ccb27d21f8566f17323a845595bb6d52a2c8024dfc7ebd7005161ceacd9d5144'
-            '69dc385ae41a76b30bd393626cff5c783cae8a7ece950d098f697af44460f795'
-            'e73acb90b81056b7ee576dc1226ae08e00fc44d9b1e7e7f68085a1d8c8b044c0')
+sha256sums=('3d38b14b5b9dca801cab79f8eb483d512699b79adfad377bf6e200fb7c70b572'
+            'd73ab0e0b7b6775d3346217d80324ce6d56fe567859be5744bb9810b3c176f7a'
+            '36379443dba98f830f0bbe60bc79b6b4be8130e67bb10ac4faeadf6a1a4de7d5')
+
+
