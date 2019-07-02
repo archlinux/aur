@@ -1,9 +1,10 @@
-#Maintainer: weearc <q19981121@163.com>
+#Contributor: weearc <q19981121@163.com>
+#Maintainer: <ar@nullsum.net>
 pkgname=yacreader-bin
 _pkgname=yacreader
 pkgver=9.5.0
-pkgrel=1
-_rel=3.88
+pkgrel=2
+_rel=3.105
 epoch=
 pkgdesc="A comic reader for cross-platform reading and managing your digital comic collection.(using rpm package to speed up installation.)"
 arch=("x86_64")
@@ -14,6 +15,7 @@ depends=('bash'
 	 'tar'
 	 'fakeroot'
 	 'libunarr'
+     'poppler-qt5'
 	'qt5-base')
 makedepends=()
 checkdepends=()
@@ -26,8 +28,8 @@ changelog=
 source=(
 	"yacreader.rpm"::"https://download.opensuse.org/repositories/home:/selmf:/yacreader-rpm/Fedora_Rawhide/$arch/$_pkgname-$pkgver-$_rel.$arch.rpm")
 noextract=()
-sha256sums=('8d00112a632c3bcddfd4b7278c48929ae506cfd2c004eca52b7ec7ec18346f56')
 validpgpkeys=()
+sha256sums=('b58253832cd63385ab4f10e46f024c7b201b6a4c1a24d9b241a3830b459a6d30')
 
 # prepare() {
 # 
