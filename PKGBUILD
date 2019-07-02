@@ -4,8 +4,8 @@
 
 pkgbase=opencv3-opt
 pkgname=($pkgbase $pkgbase-samples)
-pkgver=3.4.5
-pkgrel=4
+pkgver=3.4.6
+pkgrel=1
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
 arch=(x86_64)
 license=(BSD)
@@ -20,8 +20,8 @@ optdepends=('opencv-samples: samples'
             'python-numpy: Python interface')
 source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
-sha256sums=('0cc341e3b77cf96ae431ee55b7ba53d41d184cc11506d100711022abfcfe6bb3'
-            '8f73d029887c726fed89c69a2b0fcb1d098099fcd81c1070e1af3b452669fbe2')
+sha256sums=('ca2dbe3008471b059d9f32a176ef2195eaa8a4b357ef1afaa5bfd255d501d2ec'
+            '985f7cffbd2bef0c3654eeb7fb0cde0bf36668da8bf2a66049958b870a9b5c0d')
 
 prepare() {
   mkdir -p build
