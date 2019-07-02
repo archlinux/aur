@@ -24,8 +24,7 @@ package() {
   install -dm0755 $pkgdir/opt
   install -dm0755 $pkgdir/srv/git
   install -dm0755 $pkgdir/usr/lib/systemd/system/
-  install -dm0755 $pkgdir/ethoscope_results
-  install -dm0755 $pkgdir/ethoscope_videos
+  install -dm0755 $pkgdir/ethoscope_data/{results, videos, tmp}
 
   #create bare repo
   git clone --bare https://github.com/gilestrolab/ethoscope.git "${pkgdir}/srv/git/ethoscope.git"
