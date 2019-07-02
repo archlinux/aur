@@ -3,7 +3,7 @@
 _pkgname=mir-core
 pkgname=d-$_pkgname
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Base software building blocks and conventions for libmir'
 arch=('x86_64')
 url='https://github.com/libmir/mir-core'
