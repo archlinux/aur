@@ -1,35 +1,41 @@
-# Maintainer: Sam Burgos < sam dot burgos1089 at gmail dot com >
+# Maintainer: Sam Burgos < santiago dot burgos1089 at gmail dot com >
 
 pkgname=mintstick
-pkgver=1.3.9
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="A GUI to write .img or .iso files to a USB Key. It can also format them"
+pkgdesc='A GUI to write .img or .iso files to a USB Key. It can also format them'
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
-license=('GPL')
-depends=('coreutils'
-    'desktop-file-utils'    
-    'dosfstools'
-    'e2fsprogs'
-    'exfat-utils'
-    'glib2'
-    'gtk3'
-    'ntfs-3g'
-    'parted'
-    'polkit'
-    'procps-ng'
-    'python2'
-    'python2-dbus'
-    'python2-gobject'
-    'python2-pyparted'
-    'python2-xapp'
-    'udisks2'
-    'util-linux'
-    'xapps')
-makedepends=('gettext')
-conflicts=("mintstick-git")
+license=(GPL)
+depends=(
+    coreutils
+    desktop-file-utils
+    dosfstools
+    e2fsprogs
+    exfat-utils
+    glib2
+    gtk3
+    ntfs-3g
+    parted
+    polkit
+    procps-ng
+    python2
+    python2-dbus
+    python2-gobject
+    python2-pyparted
+    python2-xapp
+    udisks2
+    util-linux
+    xapps
+)
+makedepends=(
+    gettext
+)
+conflicts=(
+    mintstick-git
+)
 source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('249bc73da12bf111747e8b1eb821f111779d3dc5cf5024cea33b1afedb6213fb')
+sha256sums=('f618a8ef0ee5a5a672cd7818fdb2b1322ffcabc7ad6a60718cd51198a240505d')
 
 prepare() {
   cd ${pkgname}
