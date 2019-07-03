@@ -4,10 +4,10 @@
 # Contributor : Jan de Groot <jgc@archlinux.org>
 
 pkgname=lib32-libdrm-git
-pkgver=2.4.96.r9.gb28b8237
+pkgver=2.4.99.r1.gdcc586c6
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
-arch=(i686 x86_64)
+arch=(x86_64)
 license=('custom')
 depends=('libdrm-git' 'lib32-libpciaccess')
 makedepends=('gcc-multilib' 'meson')
@@ -27,19 +27,24 @@ pkgver() {
     git describe --long --abbrev=8 | sed 's/^libdrm-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    if [  -d _build ]; then
+        rm -rf _build
+    fi
+}
+
 build() {
     export CC="gcc -m32"
     export CXX="g++ -m32"
     export PKG_CONFIG=/usr/bin/pkg-config-32
-    if [  -d _build ]; then
-        rm -rf _build
-    fi
     meson setup libdrm _build \
         --prefix /usr \
         --libdir lib32 \
         --buildtype plain \
         --wrap-mode      nofallback \
-        -D udev=true
+        -D udev=false \
+        -D valgrind=false
+    meson configure _build
     ninja -C _build
 }
 
