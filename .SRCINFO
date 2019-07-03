@@ -1,6 +1,6 @@
 pkgbase = gtk-theme-windows10-dark-git
 	pkgdesc = GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines. Keeps upstream with master branch.
-	pkgver = 7f2121c
+	pkgver = 19b5a90
 	pkgrel = 1
 	url = https://github.com/B00merang-Project/Windows-10-Dark
 	arch = any
