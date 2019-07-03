@@ -29,13 +29,6 @@ build() {
        PREFIX='/usr'
 }
 
-check() {
-  cd chicken-core
-  make PLATFORM=linux \
-       CSC_PROGRAM=chicken-csc \
-       CSI_PROGRAM=chicken-csi check
-}
-
 package() {
   cd chicken-core
   make PLATFORM=linux \
