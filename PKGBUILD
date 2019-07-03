@@ -2,7 +2,7 @@
 
 pkgname_=graal
 pkgname=${pkgname_}-bin
-pkgver_=19.0.2
+pkgver_=19.1.0
 pkgver=${pkgver_/-/_}
 pkgrel=1
 pkgdesc='Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other)'
@@ -19,7 +19,7 @@ provides=('java-runtime=8'
 conflicts=("$pkgname_")
 install="$pkgname.install"
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver_}/graalvm-ce-linux-amd64-${pkgver_}.tar.gz")
-sha256sums=('c6f3e7b79fcf482c0597ad59bdc22509bae6c4350eec5a9733ca7b0ac4e403ed')
+sha256sums=('1bb21f2cb4207b60ea6abca181f805f0d504a045a5cd524a22f8abf6fafe1532')
 
 package() {
     cd "${pkgname_}vm-ce-${pkgver_}"
