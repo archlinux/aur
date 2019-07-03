@@ -1,7 +1,7 @@
 # Maintainer: Hsiu-Ming Chang <cges30901 at gmail dot com>
 
 pkgname=pdfhandoutcrop
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A tool to crop pdf handout with multiple pages per sheet"
 arch=(any)
@@ -16,11 +16,10 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-#install="$pkgname.install"
 changelog=
 source=("https://files.pythonhosted.org/packages/source/p/pdfhandoutcrop/pdfhandoutcrop-${pkgver}.tar.gz")
 noextract=()
-md5sums=('872e01b8bb31ac83b4b74831614c9033')
+md5sums=('f82eefca7d3acc977d577d279b1e02e0')
 
 build() {
   cd "$pkgname-$pkgver"
