@@ -3,8 +3,8 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=muffin-git
-pkgver=4.0.6.r21.gdf879dc
-pkgrel=2
+pkgver=4.2.0.r2.gf0d02aa
+pkgrel=1
 pkgdesc="A window manager for GNOME"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/muffin"
@@ -14,7 +14,7 @@ depends=('cinnamon-desktop' 'gobject-introspection-runtime' 'libcanberra' 'libin
 makedepends=('git' 'intltool' 'gobject-introspection' 'gtk-doc' 'gnome-doc-utils')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}"
-           "cinnamon<4.0.9.r57.g605ab1357")
+           "cinnamon<4.2.0")
 options=('!emptydirs')
 source=("git+${url}.git")
 sha512sums=('SKIP')
