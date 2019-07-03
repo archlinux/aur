@@ -1,0 +1,14 @@
+pkgbase = cw-rs
+	pkgdesc = Count Words - word, line, character and byte count
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/Freaky/cw
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	source = cw-0.7.0.tar.gz::https://crates.io/api/v1/crates/cw/0.7.0/download
+	sha512sums = 4a3c46092fb1bd3ae97f390449394dfedcc3cf6016ba149dca3db486bc7f54f50200a7179c10617d799c7cd38236c9e257961d4f48fcbc4ef90543d81f8d65be
+
+pkgname = cw-rs
+
