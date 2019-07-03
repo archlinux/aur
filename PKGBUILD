@@ -3,7 +3,7 @@ pkgbase=qt5-datasync
 pkgname=(qt5-datasync qt5-datasync-kwallet-keystore qt5-datasync-secret-keystore qt5-datasync-doc)
 group=qt5-datasync-full
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtDataSync"
@@ -14,7 +14,7 @@ optdepends=("repkg: Automatically rebuild the package on dependency updates"
 			"qt5-datasync-kwallet-keystore: Support for KWallet as keystore"
 			"qt5-datasync-secret-keystore: Support for secret service as keystore (includes gnome keyring)")
 _pkgfqn=$pkgname-$pkgver
-source=("$_pkgfqn::git+https://github.com/Skycoder42/QtDataSync.git#tag=${pkgver}"
+source=("$_pkgfqn::git+https://github.com/Skycoder42/QtDataSync.git#tag=${pkgver}-4"
 		"${pkgname}.rule"
 		"subpkg.rule")
 sha256sums=('SKIP'
