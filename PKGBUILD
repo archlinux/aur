@@ -1,19 +1,21 @@
 # Maintainer: Jozef Riha <jose1711 at gmail dot com>
+# Co-Maintainer: Erik Fleckstein <erik at tinkerforge dot com>
 # Contributor: Laurent Hofer <laurenth at laurenth dot net>
 
 pkgname=brickd
-pkgver=2.3.2
+pkgver=2.4.0
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="a brick daemon for tinkerforge brick(let)s"
 url="http://www.tinkerforge.com/"
 license=("GPL2")
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
-depends=('libusbx')
-source=(https://github.com/Tinkerforge/${pkgname}/archive/v${_pkgver}.zip https://github.com/Tinkerforge/daemonlib/archive/${pkgname}-${_pkgver}.zip brickd.service)
-md5sums=('36d655fe4bb578c73b5f3658d5dd6541'
-         '12fa3c514257eabe1f27fb695fcacb21'
-         'e2ac9b32b8282d25ecc1ed8fc7f5cd73')
+depends=('libusb')
+source=(https://github.com/Tinkerforge/${pkgname}/archive/v${_pkgver}.zip https://github.com/Tinkerforge/daemonlib/archive/${pkgname}-${_pkgver}.zip brickd.install)
+md5sums=('fa2e92a535b4bc3d806fe1ae8753880d'
+         '6f2d9740802ba265452b287e15633f1e'
+         '662008543bf92defdf9318ede29a93cd')
+install='brickd.install'
 build() {
   cd $srcdir
   mv daemonlib-$pkgname-$_pkgver $pkgname-$_pkgver/src/daemonlib
@@ -24,5 +26,10 @@ build() {
 package() {
   install -Dm755 $srcdir/$pkgname-$_pkgver/src/brickd/brickd $pkgdir/usr/bin/brickd
   install -Dm644 $srcdir/$pkgname-$_pkgver/src/build_data/linux/installer/etc/brickd-default.conf $pkgdir/etc/brickd.conf
-  install -Dm644 $srcdir/brickd.service $pkgdir/usr/lib/systemd/system/brickd.service
+  install -Dm644 $srcdir/$pkgname-$_pkgver/src/build_data/linux/installer/etc/logrotate.d/brickd $pkgdir/etc/logrotate.d/brickd
+  install -Dm644 $srcdir/$pkgname-$_pkgver/src/build_data/linux/installer/lib/systemd/system/brickd-resume.service $pkgdir/usr/lib/systemd/system/brickd-resume.service
+  install -Dm644 $srcdir/$pkgname-$_pkgver/src/build_data/linux/installer/lib/systemd/system/brickd.service $pkgdir/usr/lib/systemd/system/brickd.service
+  install -Dm644 $srcdir/$pkgname-$_pkgver/src/build_data/linux/installer/usr/share/doc/brickd/copyright $pkgdir/usr/share/doc/brickd/copyright
+  install -Dm644 $srcdir/$pkgname-$_pkgver/src/build_data/linux/installer/usr/share/man/man5/brickd.conf.5 $pkgdir/usr/share/man/man5/brickd.conf.5
+  install -Dm644 $srcdir/$pkgname-$_pkgver/src/build_data/linux/installer/usr/share/man/man8/brickd.8 $pkgdir/usr/share/man/man8/brickd.8
 }

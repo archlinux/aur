@@ -1,0 +1,3 @@
+post_install() {
+    echo "To enable Brick Daemon run systemctl enable --now brickd.service brickd-resume.service."
+}
