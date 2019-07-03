@@ -3,7 +3,7 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname=dcc
-pkgver=1.3.163
+pkgver=2.3.167
 pkgrel=1
 pkgdesc="Distributed Checksum Clearinghouse spam tool"
 url="http://www.rhyolite.com/anti-spam/dcc"
@@ -16,7 +16,7 @@ source=(
 )
 
 sha256sums=(
-	'195195b79ee15253c4caf48d4ca3bf41b16c66a8cb9a13984a1dc4741d7f6735'
+	'e5da87aca80ddc8bc52fa93869576a2afaf0c1e563e3f97dee6e6531690fbad5'
 )
 
 _dstdir="/var/lib/${pkgname}"
