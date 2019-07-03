@@ -1,13 +1,13 @@
 pkgbase = ocrf
 	pkgdesc = Optical character recognition search engine/indexer
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://gitlab.com/plasmicplexus/ocrf
 	arch = any
 	license = GPL3
 	depends = tesseract
-	source = https://gitlab.com/plasmicplexus/ocrf/-/archive/0.1/ocrf-0.1.tar.gz
-	md5sums = 220991c8adc528368bbdec17bb98a4ee
+	source = https://gitlab.com/plasmicplexus/ocrf/-/archive/0.2/ocrf-0.2.tar.gz
+	md5sums = 5a93c68a365d132f46d389b90322a651
 
 pkgname = ocrf
 

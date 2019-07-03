@@ -1,6 +1,6 @@
 # Contributor: Jake Mannens <jakem_5@hotmail.com>
 pkgname=ocrf
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Optical character recognition search engine/indexer"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://gitlab.com/plasmicplexus/ocrf"
 license=('GPL3')
 depends=('tesseract')
 source=("https://gitlab.com/plasmicplexus/ocrf/-/archive/$pkgver/ocrf-$pkgver.tar.gz")
-md5sums=("220991c8adc528368bbdec17bb98a4ee")
+md5sums=("5a93c68a365d132f46d389b90322a651")
 
 package() {
     cd "$pkgname-$pkgver"
