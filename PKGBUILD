@@ -16,10 +16,10 @@ options=(!strip libtool staticlibs emptydirs)
 depends=('flex' 'libmpc' 'python' 'xz')
 install=devkitarm.install
 source=("https://github.com/devkitPro/buildscripts/releases/download/v$_buildscriptsver/buildscripts-$_buildscriptsver.tar.bz2"
-        "https://github.com/devkitPro/buildscripts/releases/download/sources/binutils-$_binutilsver.tar.bz2"
-        "https://github.com/devkitPro/buildscripts/releases/download/sources/gcc-$_gccver.tar.xz"
-        "https://github.com/devkitPro/buildscripts/releases/download/sources/newlib-$_newlibver.tar.gz"
-        "https://github.com/devkitPro/buildscripts/releases/download/sources/gdb-$_gdbver.tar.xz"
+        "https://ftp.gnu.org/gnu/binutils/binutils-$_binutilsver.tar.bz2"
+        "https://ftp.gnu.org/gnu/gcc/gcc-$_gccver/gcc-$_gccver.tar.xz"
+        "ftp://sourceware.org/pub/newlib/newlib-$_newlibver.tar.gz"
+        "https://ftp.gnu.org/gnu/gdb/gdb-$_gdbver.tar.xz"
         "devkitarm.sh"
         "devkitarm.fish")
 sha256sums=('c7c11bacfdbcc634d2d70ac17785a0701d5eaaa6753762ca57a918c3841119ac'
