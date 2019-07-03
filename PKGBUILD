@@ -2,16 +2,16 @@
 
 _pkgname=Herwig
 pkgname=herwig
-pkgver=7.1.0
+pkgver=7.1.5
 pkgrel=1
 pkgdesc="Herwig is a multi-purpose particle physics event generator."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://herwig.hepforge.org"
 license=('GPL2')
-depends=("gcc-fortran" "thepeg>=2.1.0" "fastjet" "gsl" "boost-libs" "lhapdf")
+depends=("gcc-fortran" "thepeg" "boost-libs" "fastjet" "gsl" "lhapdf")
 makedepends=("sudo" "sed")
 source=("http://www.hepforge.org/archive/${pkgname}/${_pkgname}-${pkgver}.tar.bz2")
-sha512sums=('a18cd1a5a399789ceb019393df817b08540d1d37af55375a82c0436d46ee8c3e8e8da5fed12431af0b3194be23b2b7ad75834da037c977b6b157a752f1dd90bd')
+sha512sums=('a56a5be3c27244deb39486671a5cc40e95685aa22ebcab70c413cc2aaf5f124166e9c8b7f42da1e15762b6ca8ba96fc7b71982fdfea06a77ddc7c2c9dc9b7aca')
 
 prepare() {
   pdfs=(MMHT2014nlo68cl MMHT2014lo68cl)
@@ -31,12 +31,7 @@ prepare() {
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}"
 
-  ./configure --prefix=/usr \
-              --with-pdf=/usr \
-              --with-gsl=/usr \
-              --with-thepeg=/usr \
-              --with-boost=/usr \
-              --with-fastjet=/usr
+  ./configure --prefix=/usr --with-thepeg=/usr
   make ${MAKEFLAGS}
 }
 
