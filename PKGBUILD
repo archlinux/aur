@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" "$pkgbase-bin" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=18.4rc1pre03
+pkgver=18.4rc1pre04
 _major=18.3
 pkgrel=1
 arch=('x86_64')
@@ -81,6 +81,7 @@ source=(
   001-PR16305.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16305.patch
   002-PR16313.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16313.patch
   003-PR16323.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16323.patch
+  004-PR16340.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16340.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -105,7 +106,8 @@ sha256sums=('4f265901c00f582beb8d6ad96c9c303e5ab82611e828c7121ae822b07c0915cc'
             '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb'
             'a162fee84b8c7a52d5120874fa81cbf0534e5f993a1bb33b842a071186191698'
             'db2a285d0ef635e9cad6c8cace1937e39f0393bc2efbc724203c3cf580471951'
-            'f9b0c2368151a37265a380d5cd164b8b73b8d3b0dea6df25bcc745ef23bee594')
+            'f9b0c2368151a37265a380d5cd164b8b73b8d3b0dea6df25bcc745ef23bee594'
+            'bafe677ee2e8a8484d01bc41812fdd099b05185eb85a821760639503d34d679a')
 
 prepare() {
   # force python 'binary' as python2
