@@ -1,9 +1,9 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.1.0.r177.8f619e2
+pkgver=0.1.0.r139.73ee482
 pkgrel=1
-pkgdesc="Open source tag compiler for Halo Custom Edition"
+pkgdesc="Open source editing tools for Halo Custom Edition"
 depends=('libtiff' 'libpng')
 makedepends=('cmake' 'git')
 arch=('i686' 'x86_64')
