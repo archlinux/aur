@@ -3,7 +3,7 @@
 
 pkgname=chakracore
 pkgver=1.11.10
-pkgrel=1
+pkgrel=2
 pkgdesc='ChakraCore is the core part of the Chakra Javascript engine that powers Microsoft Edge'
 arch=('x86_64')
 url='https://github.com/Microsoft/ChakraCore'
@@ -23,6 +23,7 @@ _dir="ChakraCore-${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
+  patch -p1 < $srcdir/fix-assembly-for-clang.patch
   ./build.sh --jobs=$(nproc) --extra-defines=U_USING_ICU_NAMESPACE=1 -y
   ./build.sh --jobs=$(nproc) --extra-defines=U_USING_ICU_NAMESPACE=1 -y --static
 }
