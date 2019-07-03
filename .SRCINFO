@@ -1,0 +1,18 @@
+pkgbase = qt5-canvas3d
+	pkgdesc = A JavaScript 3D rendering API for Qt Quick (deprecated in qt 5.13)
+	pkgver = 5.12.4
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt
+	groups = qt5
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	depends = qt5-declarative
+	source = https://download.qt.io/official_releases/qt/5.12/5.12.4/submodules/qtcanvas3d-everywhere-src-5.12.4.tar.xz
+	sha256sums = d7e0e8aa542d077a929fb7700411ca9de1f65ae4748d64168d2e7533facd7869
+
+pkgname = qt5-canvas3d
+
