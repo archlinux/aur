@@ -3,7 +3,7 @@
 pkgbase = mapsoft
 	pkgdesc = Programs for working with maps and geodata
 	pkgver = 20190213
-	pkgrel = 1
+	pkgrel = 2
 	url = http://slazav.mccme.ru/prog/mapsoft.htm
 	arch = x86_64
 	license = GPL
@@ -24,9 +24,11 @@ pkgbase = mapsoft
 	depends = proj
 	source = https://github.com/ushakov/mapsoft/archive/20190213-alt1.tar.gz
 	source = mapsoft_mapview.desktop
+	source = proj_api.patch
 	source = scons.patch
 	sha256sums = 49f06f337ad71f63edfacfb06a9bb0d536a991853eea7255373071eed001a171
 	sha256sums = f6b0c49271c21f44e2f007b3096c0d80e662c0dc9ff8b66e60c82402b1826096
+	sha256sums = 55c44eb94e71c7da87bb9d98f53a72cfa936d7f3380782674b93ec13779e95bc
 	sha256sums = 5c1430eda36cc13aba489e2467f01b101872e066c19982ba2accd3f230a56e96
 
 pkgname = mapsoft

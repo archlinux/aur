@@ -1,0 +1,12 @@
+--- mapsoft-20190213-alt1/core/geo/geo_convs.h.orig	2019-07-03 13:50:16.688113621 +0300
++++ mapsoft-20190213-alt1/core/geo/geo_convs.h	2019-07-03 13:50:33.388314659 +0300
+@@ -9,6 +9,9 @@
+ #include "options/options.h"
+ #include "2d/image.h"
+ #include "2d/conv_aff.h"
++#ifndef ACCEPT_USE_OF_DEPRECATED_PROJ_API_H
++#define ACCEPT_USE_OF_DEPRECATED_PROJ_API_H
++#endif
+ #include <proj_api.h>
+ 
+ namespace convs{
