@@ -1,0 +1,12 @@
+pkgbase = kubefedctl
+	pkgdesc = Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management
+	pkgver = 0.1.0_rc3
+	pkgrel = 1
+	url = https://github.com/kubernetes-sigs/kubefed
+	arch = x86_64
+	license = Apache
+	source = kubefedctl-linux-amd64-0.1.0_rc3::https://github.com/kubernetes-sigs/kubefed/releases/download/v0.1.0-rc3/kubefedctl-0.1.0-rc3-linux-amd64.tgz
+	sha256sums = 895ad4c603a729c1ce74b302e05f3aca84f42ccaa44975ca9faf3638e3360ddc
+
+pkgname = kubefedctl
+
