@@ -1,0 +1,14 @@
+pkgbase = firefox-tab-mover
+	pkgdesc = Move tabs between windows via the context menu
+	pkgver = 7
+	pkgrel = 1
+	url = https://code.guido-berhoerster.org/addons/firefox-addons/tab-mover/
+	arch = any
+	groups = firefox-addons
+	license = MPL2
+	noextract = tab_mover-7-fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/786359/tab_mover-7-fx.xpi
+	sha256sums = bbf66e425e97017e929de0a5c60ca5c810a1f8c1fbc9e79146035f24dbb63383
+
+pkgname = firefox-tab-mover
+
