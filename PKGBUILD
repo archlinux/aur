@@ -1,40 +1,48 @@
-# Maintainer: Samadi van Koten
+# Contributor: Samadi van Koten
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=chicken-git
-pkgver=4.11.1.r3356.116f42e
-pkgrel=2
+pkgver=5.1.1.r5049.126a315f
+pkgrel=1
 pkgdesc='Feature rich R5RS Scheme compiler and interpreter'
-arch=('any')
+arch=('x86_64')
 url='http://call-cc.org/'
-license=('BSD 3-Clause')
-depends=()
-makedepends=('git' 'chicken')
+license=('custom:bsd')
+depends=('chicken')
+makedepends=('git')
 conflicts=('chicken')
 provides=('chicken')
-options=()
 source=('git://code.call-cc.org/chicken-core.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
+options=('staticlibs')
 
 pkgver() {
-  cd "$srcdir/chicken-core"
-
+  cd chicken-core
   echo "$(cat buildversion).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/chicken-core"
-
-  make PLATFORM=linux PREFIX='/usr'
+  cd chicken-core
+  make PLATFORM=linux \
+       CSC_PROGRAM=chicken-csc \
+       CSI_PROGRAM=chicken-csi \
+       PREFIX='/usr'
 }
 
 check() {
-  cd "$srcdir/chicken-core"
-
-  make PLATFORM=linux check
+  cd chicken-core
+  make PLATFORM=linux \
+       CSC_PROGRAM=chicken-csc \
+       CSI_PROGRAM=chicken-csi check
 }
 
 package() {
-  cd "$srcdir/chicken-core"
-
-  make PLATFORM=linux DESTDIR="$pkgdir/" PREFIX='/usr' install
+  cd chicken-core
+  make PLATFORM=linux \
+       DESTDIR="$pkgdir/" \
+       PREFIX='/usr' \
+       CSC_PROGRAM=chicken-csc \
+       CSI_PROGRAM=chicken-csi install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  rmdir "$pkgdir"/usr/share/chicken/doc/manual
 }
