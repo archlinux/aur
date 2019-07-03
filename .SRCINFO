@@ -17,7 +17,7 @@ pkgbase = android-studio-canary
 	source = https://dl.google.com/dl/android/studio/ide-zips/3.6.0.4/android-studio-ide-191.5679705-linux.tar.gz
 	source = android-studio-canary.desktop
 	sha256sums = 2994203e95f3f140f1766fcbb9d9ab5f202187c4d2ed1ce0432a1bbb7530ce67
-	sha256sums = 60edb7937f6c0fd1ad724574ff3c63fa69cedd2fdfcedf788f39a443c76743b6
+	sha256sums = fb7de76ecab755c2f25f9fde834a81b85b85373476710cde59a84fdc9cf11ac2
 
 pkgname = android-studio-canary
 
