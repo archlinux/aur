@@ -1,4 +1,4 @@
-# Maintainer: Shane <shanelyx@outlook.com>
+# Maintainer: Shane  Lyx <shanelyx@outlook.com>
 pkgname=xmind-zen
 pkgver=20190703
 pkgrel=1
@@ -21,7 +21,7 @@ source=(
 )
 
 md5sums=(
-    'fe6357e885b72400a597416ac3d0f314'
+    'd41d8cd98f00b204e9800998ecf8427e'
     'SKIP'
     'SKIP'
     'SKIP'
