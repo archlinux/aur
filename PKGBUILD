@@ -4,7 +4,6 @@ pkgname=firefox-nightly-hg
 pkgver=r481054.c52f9ebca761
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
-_lang=fr
 _repo=https://hg.mozilla.org/mozilla-central
 _pkgname=firefox-nightly
 arch=('x86_64')
@@ -19,7 +18,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
-replaces=('firefox-hg')
+conflicts=('firefox-nightly')
 url="http://www.mozilla.org/projects/firefox"
 install=firefox.install
 options=(!emptydirs)
