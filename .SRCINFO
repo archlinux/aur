@@ -1,0 +1,14 @@
+pkgbase = libpaseto
+	pkgdesc = C implementation of PASETO (v2 tokens only)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/authenticvision/libpaseto
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = libsodium
+	source = https://github.com/authenticvision/libpaseto/archive/1.0.tar.gz
+	sha256sums = a0a2e830fb4d4116b4ffc78a72d96c8f9dff42aa226bb02681a0f4495069286a
+
+pkgname = libpaseto
+
