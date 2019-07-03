@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Moura <develop@srmoura.com.br>
 
 pkgname=raven-reader
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=0
 pkgdesc="Simple Desktop RSS Reader made using VueJS"
 url="https://github.com/mrgodhani/raven-reader"
@@ -11,7 +11,7 @@ provides=("${pkgname}")
 arch=('x86_64')
 source=("https://github.com/mrgodhani/raven-reader/releases/download/v${pkgver}/${pkgname}-${pkgver}-x86_64.AppImage"
  "${pkgname}.desktop")
-sha512sums=('0fd4331b1cdf148fa0bbac6f1d9f1d89d5f27da2ca8a7a0fb597be4b0e8e668912fd7efedbc30e06c98be31c410225d2be8d7a53ce59c66a6b9b0daff0d0a803'
+sha512sums=('117af9ff52567162f9e6bb68bb6a16a3c49ab6def45f131646e76c1492c3ef765e8a93591f320c752298e8baa0d07b2155866945ac837276718ea1a563c9fa18'
             '901cb672dfb53fb2c3bd11e7075cc3fa8fba69fcb201102390058acd3c84b6e2ca36aea9b6bddb05461947c9ad1a0e0fb3b79664bceca062ed5a6511d02982b7')
 
 build(){
@@ -28,5 +28,6 @@ package() {
 	mv -uf ${pkgdir}/opt/$pkgname/usr/share/icons ${pkgdir}/usr/share/
 	mv -uf $pkgname.desktop ${pkgdir}/usr/share/applications/
 
+	chmod -R 755 ${pkgdir}/opt/$pkgname/{locales,resources,swiftshader}
 	rm -rdf ${pkgdir}/opt/$pkgname/usr
 }
