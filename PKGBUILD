@@ -3,20 +3,21 @@
 
 pkgname='naemon-livestatus'
 pkgdesc="Event broker for naemon"
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://naemon.org"
 license=('GPL2')
 depends=('icu' 'naemon')
-source=(http://labs.consol.de/naemon/release/v$pkgver/src/$pkgname-$pkgver.tar.gz)
-sha512sums=('110b92914f687477ecd803218b141d8e7cf28de7ce72dc4168e3c6faedab1b3446dd9a81698ef9f80f38969e73b8488341f20cfd9c09856ad76a850685970b4f')
+source=("naemon-livestatus-git::git+https://github.com/naemon/naemon-livestatus.git#commit=33dbcfe18e42158f25c27cff95a1e07b73be53b0")
+sha512sums=('SKIP')
 backup=('etc/naemon/livestatus.cfg')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-git"
 
   export PKG_CONFIG_PATH="/usr/lib/naemon/pkgconfig:$PKG_CONFIG_PATH"
+  ./autogen.sh
   ./configure --prefix=/usr \
               --bindir=/usr/bin \
               --datadir="/usr/share/naemon" \
@@ -29,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-git"
 
   make DESTDIR="$pkgdir" install
 }
