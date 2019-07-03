@@ -1,45 +1,57 @@
 # Maintainer: bakatrouble <bakatrouble@gmail.com>
-# Maintainer: Lenovsky <lenovsky@pm.me>
+# community/telegram-desktop maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: hexchain <i@hexchain.org>
+
+# Thanks Nicholas Guriev <guriev-ns@ya.ru> for the patches!
+# https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-git
-pkgver=1.7.0.r7.g63fc55263
+pkgver=1.7.10.r0.gadf5c8ec7
 pkgrel=1
-pkgdesc="Official desktop version of Telegram messaging app (dev branch)"
+pkgdesc="Official Telegram Desktop client (dev branch)"
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('desktop-file-utils' 'ffmpeg' 'minizip' 'openal' 'qt5-imageformats')
+depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base' 'qt5-imageformats' 'openssl')
 makedepends=('cmake' 'git' 'gyp' 'libappindicator-gtk3' 'python' 'range-v3')
 optdepends=('libnotify: desktop notifications'
             'ttf-opensans: default Open Sans font family')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#branch=dev"
-        "Catch::git+https://github.com/philsquared/Catch"
-        "crl::git+https://github.com/telegramdesktop/crl.git"
-        "GSL::git+https://github.com/Microsoft/GSL.git"
         "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
         "variant::git+https://github.com/mapbox/variant"
+        "Catch2::git+https://github.com/catchorg/Catch2.git"
+        "GSL::git+https://github.com/Microsoft/GSL.git"
+        "crl::git+https://github.com/telegramdesktop/crl.git"
         "xxHash::git+https://github.com/Cyan4973/xxHash.git"
+        "qtlottie::git+https://github.com/telegramdesktop/qtlottie.git"
+        "tg.protocol::https://git.archlinux.org/svntogit/community.git/plain/trunk/tg.protocol?h=packages/telegram-desktop"
         "CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop"
-        "demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop"
-        "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
-        "no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop"
         "tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop"
-        "Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/Use-system-wide-font.patch?h=packages/telegram-desktop")
-sha256sums=('SKIP'
+        "no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop"
+        "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
+        "demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop"
+        "Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/Use-system-wide-font.patch?h=packages/telegram-desktop"
+        "tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_lottie_animation_qtdebug.patch?h=packages/telegram-desktop"
+        "tdesktop_qtlottie_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_qtlottie_qtdebug.patch?h=packages/telegram-desktop")
+sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'f37f7827e10557d1e74b58b81eb0d17102e1c0f193d129e6e8edbbf7284f5867'
-            '3f23161f8239893e82d2a4f655cb80523a558a4e7869a6683802c2f434b68bbf'
-            '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
-            '95efc9cd84c2c26bddd832ef8c88637353ed9ba9d9068f183b7ee48ba25d1cc7'
-            '838dd05c2ac4bcd5391204c67e592ec522765ca75ff779ecffd90f60623feec2'
-            '2457746d9b963c77decd5d8b08498035dc1003fbcbc95d4dfdb11bf524954f13')
+            'SKIP'
+            'b87414ceaae19185a8a5749cea1f6d9f3fc3c69b8dd729e3db8790cde00b987c3c827cd30baf0eac579d1884e34aa2f37bb90778c3c0bc9ca211d75a82891b9d'
+            'b20674f61ff6378749d1f59a6a0da194d33ccc786bd783f6ed62027924a3a8a8d27c9763bf376480432d6536896b0c7eeb8c495c5b8cefff7cf5fe84da50947e'
+            '3b6a0450f7981c2ce5f90c1ea46d9fb504194609f357b957b5c4a741681d3c531252394df116f8b77780a3a110783c047c9a081f9651e0792e7423573e390392'
+            'a8f1708616a598fea3cb94e3b63b02a7b13b55abd129a5dc02ad502529f4ebe7a673b6a350b669290fd26135358d21e2e10bf4a11d88f58f0685b7c4ab515bc5'
+            'd60694dc701aa985b0e82a12c9732b945082470441c687b33167a94f94efcf253baf43bb7280ec160ba338485ee5c62de138e4804cae05f27cc5cf4298166d39'
+            '6d0bac5aa4c4992b5400a9a9318f7a4e92d5eab961917cf0b05cdd251ab66a77c52ec8fbef246e8019606a7624d7b5420b87f8153e071e9724c7d2f5c94e47c0'
+            'ce6be003220267bac5483caf8302b492e1581892bc36d35a61236ebf9f9d766b8bd2159557a1c36256aa85f461797a38bfaae57b12da7a72101b21c0b17ed653'
+            '5703b8228ab26f736928b56b90947602e78774648ff354ae10a53ad4535289ac12c8b7a049cabaed7591909246987be403dc470d48dd72a9ec1ce776a2977a66'
+            'c101761ff0aa6d4be38d0159bee31d02f66cfda84dbfb614e35e8d1c8f73bd78346636764a823bf1ce33b5364e99ea71330de60e37190f78d55f25a183f0d0cc')
 pkgver() {
     cd "$srcdir/tdesktop"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -48,19 +60,26 @@ pkgver() {
 prepare() {
     cd "$srcdir/tdesktop"
     git submodule init
-    git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
-    git config submodule.Telegram/ThirdParty/crl.url "$srcdir/crl"
-    git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
     git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
+    git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
+    git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch2"
+    git config submodule.Telegram/ThirdParty/crl.url "$srcdir/crl"
     git config submodule.Telegram/ThirdParty/xxHash.url "$srcdir/xxHash"
+    git config submodule.Telegram/ThirdParty/qtlottie.url "$srcdir/qtlottie"
     git submodule update
 
     patch -Np1 -i "$srcdir/tdesktop.patch"
     patch -Np1 -i "$srcdir/no-gtk2.patch"
     patch -R -Np1 -i "$srcdir/demibold.patch"
     patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
+    patch -Np1 -i "$srcdir/tdesktop_lottie_animation_qtdebug.patch"
+    
+    cd "$srcdir/tdesktop"
+    cd "Telegram/ThirdParty/qtlottie"
+    patch -Np1 -i "$srcdir/tdesktop_qtlottie_qtdebug.patch"
 
+    cd "$srcdir/tdesktop"
     cd "Telegram/ThirdParty/libtgvoip"
     patch -Np1 -i "$srcdir/libtgvoip.patch"
 }
@@ -73,6 +92,12 @@ build() {
     export CPPFLAGS="$CPPFLAGS $EXTRA_FLAGS"
     export CXXFLAGS="$CXXFLAGS $EXTRA_FLAGS"
 
+    # Telegram requires us to set API_ID and API_HASH for some reason but they do not provide a way to receive a pair
+    # See https://github.com/telegramdesktop/tdesktop/commit/65b2db216033aa08b7bc846df27843e566f08981 and
+    # https://github.com/telegramdesktop/tdesktop/issues/4717
+    # The official API_ID seems to be 2040 while the API_HASH is "b18441a1ff607e10a989891a5462e627".
+    # We're going to use the defaults for now but might at some point use the official ones from the official binaries as noted above.
+
     gyp \
         -Dapi_id=17349 \
         -Dapi_hash=344583e45741c457fe1862106095a5eb \
@@ -83,7 +108,7 @@ build() {
     sed -i "$NUM r ../CMakeLists.inj" out/Release/CMakeLists.txt
     cd "$srcdir/tdesktop/out/Release"
     cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
-    make
+    make -j17
 }
 
 package() {
@@ -94,13 +119,13 @@ package() {
     install -m644 "$srcdir/tdesktop/lib/xdg/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
 
     install -d "$pkgdir/usr/share/kservices5"
-    install -m644 "$srcdir/tdesktop/lib/xdg/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
+    install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
 
     local icon_size icon_dir
     for icon_size in 16 32 48 64 128 256 512; do
-    icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
+        icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
 
-    install -d "$icon_dir"
-    install -m644 "$srcdir/tdesktop/Telegram/Resources/art/icon${icon_size}.png" "$icon_dir/telegram.png"
-done
+        install -d "$icon_dir"
+        install -m644 "$srcdir/tdesktop/Telegram/Resources/art/icon${icon_size}.png" "$icon_dir/telegram.png"
+    done
 }

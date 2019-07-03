@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-git
-	pkgdesc = Official desktop version of Telegram messaging app (dev branch)
-	pkgver = 1.6.3.r0.g9b247ce5e
+	pkgdesc = Official Telegram Desktop client (dev branch)
+	pkgver = 1.7.10.r0.gadf5c8ec7
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -12,41 +12,51 @@ pkgbase = telegram-desktop-git
 	makedepends = libappindicator-gtk3
 	makedepends = python
 	makedepends = range-v3
-	depends = desktop-file-utils
 	depends = ffmpeg
+	depends = hicolor-icon-theme
 	depends = minizip
 	depends = openal
+	depends = qt5-base
 	depends = qt5-imageformats
+	depends = openssl
 	optdepends = libnotify: desktop notifications
 	optdepends = ttf-opensans: default Open Sans font family
 	provides = telegram-desktop
 	conflicts = telegram-desktop
 	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#branch=dev
-	source = Catch::git+https://github.com/philsquared/Catch
-	source = crl::git+https://github.com/telegramdesktop/crl.git
-	source = GSL::git+https://github.com/Microsoft/GSL.git
 	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip
 	source = variant::git+https://github.com/mapbox/variant
+	source = Catch2::git+https://github.com/catchorg/Catch2.git
+	source = GSL::git+https://github.com/Microsoft/GSL.git
+	source = crl::git+https://github.com/telegramdesktop/crl.git
 	source = xxHash::git+https://github.com/Cyan4973/xxHash.git
+	source = qtlottie::git+https://github.com/telegramdesktop/qtlottie.git
+	source = tg.protocol::https://git.archlinux.org/svntogit/community.git/plain/trunk/tg.protocol?h=packages/telegram-desktop
 	source = CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop
-	source = demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop
-	source = libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop
-	source = no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop
 	source = tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop
+	source = no-gtk2.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/no-gtk2.patch?h=packages/telegram-desktop
+	source = libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop
+	source = demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop
 	source = Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/Use-system-wide-font.patch?h=packages/telegram-desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = f37f7827e10557d1e74b58b81eb0d17102e1c0f193d129e6e8edbbf7284f5867
-	sha256sums = 3f23161f8239893e82d2a4f655cb80523a558a4e7869a6683802c2f434b68bbf
-	sha256sums = 4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d
-	sha256sums = 95efc9cd84c2c26bddd832ef8c88637353ed9ba9d9068f183b7ee48ba25d1cc7
-	sha256sums = 838dd05c2ac4bcd5391204c67e592ec522765ca75ff779ecffd90f60623feec2
-	sha256sums = 2457746d9b963c77decd5d8b08498035dc1003fbcbc95d4dfdb11bf524954f13
+	source = tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_lottie_animation_qtdebug.patch?h=packages/telegram-desktop
+	source = tdesktop_qtlottie_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_qtlottie_qtdebug.patch?h=packages/telegram-desktop
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = b87414ceaae19185a8a5749cea1f6d9f3fc3c69b8dd729e3db8790cde00b987c3c827cd30baf0eac579d1884e34aa2f37bb90778c3c0bc9ca211d75a82891b9d
+	sha512sums = b20674f61ff6378749d1f59a6a0da194d33ccc786bd783f6ed62027924a3a8a8d27c9763bf376480432d6536896b0c7eeb8c495c5b8cefff7cf5fe84da50947e
+	sha512sums = 3b6a0450f7981c2ce5f90c1ea46d9fb504194609f357b957b5c4a741681d3c531252394df116f8b77780a3a110783c047c9a081f9651e0792e7423573e390392
+	sha512sums = a8f1708616a598fea3cb94e3b63b02a7b13b55abd129a5dc02ad502529f4ebe7a673b6a350b669290fd26135358d21e2e10bf4a11d88f58f0685b7c4ab515bc5
+	sha512sums = d60694dc701aa985b0e82a12c9732b945082470441c687b33167a94f94efcf253baf43bb7280ec160ba338485ee5c62de138e4804cae05f27cc5cf4298166d39
+	sha512sums = 6d0bac5aa4c4992b5400a9a9318f7a4e92d5eab961917cf0b05cdd251ab66a77c52ec8fbef246e8019606a7624d7b5420b87f8153e071e9724c7d2f5c94e47c0
+	sha512sums = ce6be003220267bac5483caf8302b492e1581892bc36d35a61236ebf9f9d766b8bd2159557a1c36256aa85f461797a38bfaae57b12da7a72101b21c0b17ed653
+	sha512sums = 5703b8228ab26f736928b56b90947602e78774648ff354ae10a53ad4535289ac12c8b7a049cabaed7591909246987be403dc470d48dd72a9ec1ce776a2977a66
+	sha512sums = c101761ff0aa6d4be38d0159bee31d02f66cfda84dbfb614e35e8d1c8f73bd78346636764a823bf1ce33b5364e99ea71330de60e37190f78d55f25a183f0d0cc
 
 pkgname = telegram-desktop-git
 
