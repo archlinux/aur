@@ -1,6 +1,6 @@
 pkgbase = indicator-stickynotes
 	pkgdesc = Sticky Notes
-	pkgver = 0.5.8
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://launchpad.net/indicator-stickynotes
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = indicator-stickynotes
 	depends = python-gobject
 	depends = libappindicator-gtk3
 	depends = gtksourceview3
-	source = https://launchpad.net/~umang/+archive/ubuntu/indicator-stickynotes/+files/indicator-stickynotes_0.5.8-0~ppa1_all.deb
-	sha256sums = f2b14016f885937588af919ff7d2f101ae5d503476e98a92a420d99c06c21d5b
+	source = https://launchpad.net/~umang/+archive/ubuntu/indicator-stickynotes/+files/indicator-stickynotes_1.0.0-0~ppa1_all.deb
+	sha256sums = 17ccb4e1e04f007dd497090f2ece803c179f0164dc86c294a4b31c20a204631a
 
 pkgname = indicator-stickynotes
 
