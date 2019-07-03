@@ -1,20 +1,20 @@
 pkgbase = thepeg
 	pkgdesc = Toolkit for High Energy Physics Event Generation
-	pkgver = 2.1.0
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = http://thepeg.hepforge.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = gsl
+	depends = fastjet
 	depends = lhapdf
 	depends = hepmc
-	depends = rivet
 	depends = zlib
-	depends = fastjet
 	depends = boost
-	source = http://www.hepforge.org/archive/thepeg/ThePEG-2.1.0.tar.bz2
-	sha512sums = 9fce3280121cc3f4863b53ecd70bcc6f6eec14fc3547961e03d0915da4887596e1b3691d99c95a8b222bc9bfa756cd71e531ae5f5e35e020c1edf21c2077c408
+	optdepends = rivet
+	source = http://www.hepforge.org/archive/thepeg/ThePEG-2.1.5.tar.bz2
+	sha512sums = 0a89cff591998049d9e812db69be8751f2f5daa9f7cf7489ef418f598adcb50f50386127601a910aabff67ce36aa104100d691990ab55d913858eae68d708570
 
 pkgname = thepeg
 
