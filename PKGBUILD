@@ -40,6 +40,5 @@ package() {
 	cp -v icons/bamr.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/bamr.svg"
 	cp -v icons/bamr_32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/bamr.png"
 	cp -v icons/bamr_48x48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/bamr.png"
-	gtk-update-icon-cache "$pkgdir/usr/share/icons/hicolor/"
 }
 
