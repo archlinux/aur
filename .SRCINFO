@@ -1,7 +1,7 @@
 pkgbase = libindi_ardust4
 	pkgdesc = INDI driver for an Arduino USB/ST-4 Interface
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tliff/indi_ardust4
 	arch = i686
 	arch = x86_64
