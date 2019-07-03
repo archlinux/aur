@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Gonçalves <ricardompgoncalves@gmail.com>
 
 pkgname=cartaodecidadao-bin
-pkgver=3.0.15
+pkgver=3.0.16
 pkgrel=1
 pkgdesc="Portuguese Citizen Card Application"
 arch=('x86_64')
@@ -14,16 +14,17 @@ depends=('qt5-base'
          'pcsclite>=1.5.0'
          'openssl-1.0'
          'ccid'
+         'libzip'
          'poppler-qt5'
-         'libxerces-c-3.1'
+	 'libxerces-c-3.1'
          'xml-security-c')
 optdepends=('autenticacao-gov-pt: Necessário para autenticações online'
 			'cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC'
 			'ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)')
 
-source_x86_64=("https://www.autenticacao.gov.pt/documents/10179/11962/pteid-mw_amd64.deb")
+source_x86_64=("https://www.autenticacao.gov.pt/documents/10179/11962/Ubuntu+3.0.16+x64/170f0e8a-c83f-4570-af0f-7fbd4741a42e")
 
-md5sums_x86_64=('823b1dc97a30907b56c235b42a11f6fe')
+md5sums_x86_64=('bdf1a20572331d37e057bba4446287fd')
 
 prepare() {
 	tar -xf data.tar.xz
@@ -32,19 +33,21 @@ prepare() {
 package() {
 	mkdir -p "${pkgdir}/usr/local/"
 	mkdir -p "${pkgdir}/usr/share/"
+	mkdir -p "${pkgdir}/usr/lib"
 	
 	# Move files into place
-	mv "${srcdir}"/usr/local/share "${pkgdir}/usr/local/"
+	mv "${srcdir}"/usr/local/{share,bin} "${pkgdir}/usr/local/"
 	mv "${srcdir}"/usr/local/* "${pkgdir}/usr/"
 	mv "${srcdir}"/usr/share/* "${pkgdir}/usr/share/"
 	
 	# Missing libcurl-nss.so.4
 	# TODO: build lib
 	#cp "/usr/lib/libcurl-openssl-1.0.so.4.5.0" "${pkgdir}/usr/lib/libcurl-nss.so.4"
-	
+
 	# Fix symlinks
 	ln -s libxml-security-c.so "${pkgdir}/usr/lib/libxml-security-c.so.17"
 	ln -s libcurl.so.3 "${pkgdir}/usr/lib/libcurl-nss.so.4"
+	ln -s "/usr/lib/libzip.so" "${pkgdir}/usr/lib/libzip.so.4"
 	
 	
 	
