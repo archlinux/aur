@@ -1,15 +1,14 @@
 pkgbase = papirus-folders-nordic
 	pkgdesc = Icons themes papirus color folder nordic.
-	pkgver = 3.5
+	pkgver = 3.8
 	pkgrel = 1
 	url = https://github.com/basigur/papirus-folders
 	arch = any
 	license = LGPL3
 	depends = gtk-update-icon-cache
 	depends = papirus-icon-theme
-	replaces = papirus-folders-nordic
-	source = https://github.com/basigur/papirus-folders/archive/v3.5.tar.gz?/papirus-folders-nordic-v3.5.tar.gz
-	sha512sums = 71891e05a4d7c421d8df4499d0bf1957f876f81ad49fec72e902d3e308561817da3d53cf92deb479ec0689c04aa74dff059ab238b67fd3c11e12106fd24c0fe0
+	source = papirus-folders-3.8.tar.gz::https://github.com/basigur/papirus-folders/archive/v3.8.tar.gz
+	sha512sums = ecab2bd520ef119c79cf66b5b05ed89d5a973566aa0d9a4efe7a7623439b66293773f1f9fa75f5ad8e6068a853bf27ae0a816cab041be6c510c55d3af54b71ec
 
 pkgname = papirus-folders-nordic
 
