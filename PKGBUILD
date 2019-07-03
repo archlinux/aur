@@ -5,22 +5,25 @@
 # Contributor: CReimer
 
 pkgname=cinnamon-git
-pkgver=4.0.9.r73.g05b529767
-pkgrel=2
+pkgver=4.2.0.r3.g4d1da807e
+pkgrel=1
 pkgdesc="Linux desktop which provides advanced innovative features and a traditional user experience"
 arch=('x86_64')
 url="https://github.com/linuxmint/${pkgname%-git}"
 license=('GPL2')
 depends=('accountsservice' 'caribou' 'cinnamon-control-center' 'cinnamon-menus' 'cinnamon-screensaver'
-         'cinnamon-session' 'cinnamon-settings-daemon>=4.0.3.r3.gg8ebfd80' 'cjs' 'gnome-backgrounds'
-         'gnome-themes-extra' 'gstreamer' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin-git'
+         'cinnamon-session' 'cinnamon-settings-daemon>=4.2.0' 'cjs' 'gnome-backgrounds'
+         'gnome-themes-extra' 'gstreamer' 'libgnomekbd' 'libkeybinder3' 'librsvg' 'muffin>=4.2.0'
          'network-manager-applet' 'nemo' 'polkit-gnome' 'python-cairo' 'python-dbus'
-         'python-gobject' 'python-pam' 'python-pexpect' 'python-pillow' 'python-pyinotify' 'xapps')
+         'python-gobject' 'python-pam' 'python-pexpect' 'python-pillow' 'python-pyinotify'
+         'python-tinycss' 'xapps')
 optdepends=('blueberry: Bluetooth support'
             'cinnamon-translations: i18n'
             'gnome-panel: fallback mode'
             'metacity: fallback mode'
             'system-config-printer: printer settings')
+provides=("${pkgname%-git}=${pkgver}")
+conflicts=("${pkgname%-git}")
 makedepends=('git' 'intltool' 'gtk-doc' 'gobject-introspection')
 options=('!emptydirs')
 source=("git+${url}.git"
@@ -28,7 +31,7 @@ source=("git+${url}.git"
         "set_wheel.diff"
         "default-theme.patch")
 sha256sums=('SKIP'
-            '024fa59ea6e1e7e6f6307786abf71ddeb1f6add43c832d568ba856bb43bf4dc6'
+            'edb5c1cf43913da086aa11f303b0919bbea232d140afa33ceac52fe367d15fcf'
             '7517d651d440361947f9539fe8f42548d5eb43a09c28c9a11f51cfdfdefd042f'
             '566585873f38a79ec248b916645a2e081abec3c6d4df2c34339cde1f35375cc5')
 
