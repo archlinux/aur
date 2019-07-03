@@ -22,8 +22,8 @@ optdepends=('gtk2: GTK+ look and feel'
 options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-ide-$_build-linux.tar.gz"
         "$pkgname.desktop")
-sha256sums=('2994203e95f3f140f1766fcbb9d9ab5f202187c4d2ed1ce0432a1bbb7530ce67'
-            'fb7de76ecab755c2f25f9fde834a81b85b85373476710cde59a84fdc9cf11ac2')
+sha256sums=('fb7de76ecab755c2f25f9fde834a81b85b85373476710cde59a84fdc9cf11ac2'
+            '60edb7937f6c0fd1ad724574ff3c63fa69cedd2fdfcedf788f39a443c76743b6')
 
 if [ "$CARCH" = "i686" ]; then
     depends+=('java-environment')
