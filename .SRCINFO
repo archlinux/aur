@@ -1,7 +1,7 @@
 pkgbase = chromium-vaapi-bin
 	pkgdesc = Chromium with VA-API support to enable hardware acceleration, pre-compiled
-	pkgver = 75.0.3770.90
-	pkgrel = 3
+	pkgver = 75.0.3770.100
+	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
 	license = BSD
@@ -48,10 +48,10 @@ pkgbase = chromium-vaapi-bin
 	provides = chromium-vaapi
 	conflicts = chromium
 	conflicts = chromium-vaapi
-	source = https://pkgbuild.com/~maximbaz/repo/chromium-vaapi-75.0.3770.90-3-x86_64.pkg.tar.xz
-	source = https://pkgbuild.com/~maximbaz/repo/chromium-vaapi-75.0.3770.90-3-x86_64.pkg.tar.xz.sig
+	source = https://pkgbuild.com/~maximbaz/repo/chromium-vaapi-75.0.3770.100-1-x86_64.pkg.tar.xz
+	source = https://pkgbuild.com/~maximbaz/repo/chromium-vaapi-75.0.3770.100-1-x86_64.pkg.tar.xz.sig
 	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
-	sha256sums = 3fd2893ae9c5c6eab78f28b6bb6fa6637d746ee2444ab18f3d3de388c52c487f
+	sha256sums = 81c703f9d24817a72f9e9447022dbed838daa216050a4b744199dde113d5b6eb
 	sha256sums = SKIP
 
 pkgname = chromium-vaapi-bin
