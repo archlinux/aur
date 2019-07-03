@@ -1,15 +1,15 @@
 pkgbase = seqkit-bin
 	pkgdesc = A cross-platform and ultrafast toolkit for FASTA/Q file manipulation in Golang
-	pkgver = 0.9.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = http://bioinf.shenwei.me/seqkit
 	arch = x86_64
 	license = MIT
 	provides = seqkit
 	conflicts = seqkit
-	source = https://github.com/shenwei356/seqkit/releases/download/v0.9.0-dev/seqkit_linux_amd64.tar.gz
-	source = https://raw.githubusercontent.com/shenwei356/seqkit/v0.9.0-dev/LICENSE
-	sha256sums = ae46e0c5731f5f81936134d8308c90d3811fb28897d04b9de51b48ce4be8439c
+	source = https://github.com/shenwei356/seqkit/releases/download/v0.10.1/seqkit_linux_amd64.tar.gz
+	source = https://raw.githubusercontent.com/shenwei356/seqkit/v0.10.1/LICENSE
+	sha256sums = 82f1c86dc4bd196403a56c2bf3ec063e5674a71777e68d940c4cc3d8411d2e9d
 	sha256sums = ed4edd3cebd268236a0a8f86ba5d7fcafc7e21e170bd1fa8ca3b9404bbf7d941
 
 pkgname = seqkit-bin
