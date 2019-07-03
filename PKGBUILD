@@ -4,7 +4,7 @@
 # Contributor: xsmile <sascha_r gmx de>
 
 pkgname=nessus
-pkgver=8.5.0
+pkgver=8.5.1
 pkgrel=1
 pkgdesc="Nessus vulnerability scanner"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("http://localhost:8000/Nessus-${pkgver}-fc20.x86_64.rpm"
         nessus.sh
         LICENSE)
 
-sha256sums=('d0a86c15f44a40846a05f42c7e8896663a22fabcbd965ebf7aa22a7d62f3165f'
+sha256sums=('f6ea57e29031a5c6c203b71cf982a3f4bd13da228a9b99a5a373027a05efae10'
             '8c5e82d609a7290c34cbfa5635012cb66820e4e2c1db2bf5808fc306fcefdc30'
             '9b8e2c15d86ce7b83806a27bd6685f009ad339f3ea52022b87a75fbd2802ec5a'
             '089073d03bf83e101b50da858348ace6bb2a553ce2249532d6f5d7ed29182dac')
