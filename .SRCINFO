@@ -1,7 +1,7 @@
 pkgbase = evesetup
 	pkgdesc = An inofficial EVE Online Launcher Setup Tool.
-	pkgver = 1514997
-	pkgrel = 2
+	pkgver = 1531417
+	pkgrel = 0
 	url = https://forums.eveonline.com/t/eve-installing/71494
 	arch = x86_64
 	license = custom
@@ -49,7 +49,7 @@ pkgbase = evesetup
 	source = eve-transl5.11-ru.tar.gz
 	source = eve-transl5.11-zh.tar.gz
 	source = https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run
-	source = https://binaries.eveonline.com/evelauncher-1514997.tar.gz
+	source = https://binaries.eveonline.com/evelauncher-1531417.tar.gz
 	sha256sums = f49b404341e1dd48eaa2504c83f9ff07c9a4c11e1a109c67d04167dc70d65731
 	sha256sums = 6304df1ebaea87d0981705d55ba48d894386beb89a99a571c6835bfca040ffbc
 	sha256sums = a567396933aa615a21493fca0734146b5aa59b76fa2bee060a0e7499b1d34ada
@@ -72,7 +72,7 @@ pkgbase = evesetup
 	sha256sums = 7ae1c6324c4ad43ab3f18f5a3ceaa48b34ede5466b7a0b9351d018e8cef9bbd0
 	sha256sums = 1936061a14432ab2632ea3ff15d45350b59ac822985445f597a4a5db44a35ae6
 	sha256sums = ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2
-	sha256sums = 03d614575282b3fabfdeb60a7c82f6a5f63cd2945fbc6015a55af2724ac486e8
+	sha256sums = 4253bde164cc15370dc6fca1da780d5ff89c25bd6e2a883be9f96c382ddf81d7
 
 pkgname = evesetup
 
