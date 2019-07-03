@@ -34,12 +34,12 @@ package() {
 	mkdir -vp "$pkgdir/usr/share/icons/hicolor/32x32/apps/"
 	mkdir -vp "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 
-	cp bamr "$pkgdir/usr/bin/"
-	cp bamr.man "$pkgdir/usr/share/man/man1/bamr.1"
-	gzip "$pkgdir/usr/share/man/man1/bamr.1"
-	cp icons/bamr.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/bamr.svg"
-	cp icons/bamr_32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/bamr.png"
-	cp icons/bamr_48x48.png "$pkdir/usr/share/icons/hicolor/48x48/apps/bamr.png"
+	cp -v bamr "$pkgdir/usr/bin/"
+	cp -v bamr.man "$pkgdir/usr/share/man/man1/bamr.1"
+	gzip -v "$pkgdir/usr/share/man/man1/bamr.1"
+	cp -v icons/bamr.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/bamr.svg"
+	cp -v icons/bamr_32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/bamr.png"
+	cp -v icons/bamr_48x48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/bamr.png"
 	gtk-update-icon-cache "$pkgdir/usr/share/icons/hicolor/"
 }
 
