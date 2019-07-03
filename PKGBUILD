@@ -1,16 +1,16 @@
 # Maintainer: Iztech LLC <iztech@iztech.ru>
 pkgname=mit8
 orgname=Iztech
-pkgver=3.0.0
-pkgrel=7
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="Программа для управления измерителями температуры серии МИТ-8 производства ООО ИзТех"
 url="https://www.iztech.ru"
 license=(custom)
-depends=("qt5" "qt5-serialport" "qwt")
+depends=("qt5-base" "qt5-multimedia" "qt5-svg" "qt5-serialport" "qwt" "sqlite")
 arch=('x86_64')
 options=('!strip')
-source=("$url/content/files/mit8-3.0.0-x86_64.tar.gz")
-md5sums=('f2a00ea4c8b282619b71866e24332f3c')
+source=("$url/content/files/mit8-$pkgver-x86_64.tar.gz")
+md5sums=('7defcc68687646ff4a9a7169b593c7c9')
 
 package() {
   install -Dm755 "$srcdir/mit8" "$pkgdir/usr/bin/$pkgname"
