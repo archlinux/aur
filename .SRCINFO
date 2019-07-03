@@ -1,7 +1,7 @@
 pkgbase = gazebo
 	pkgdesc = A multi-robot simulator for outdoor environments
 	pkgver = 10.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gazebosim.org/
 	install = gazebo.install
 	arch = i686
@@ -21,9 +21,9 @@ pkgbase = gazebo
 	depends = libxml2>=2.7.7
 	depends = ogre-1.9
 	depends = protobuf>=2.3.0
-	depends = sdformat>=6.0.0
-	depends = ignition-math>=4
-	depends = ignition-transport>=4
+	depends = sdformat=6
+	depends = ignition-math=4
+	depends = ignition-transport=4
 	depends = ignition-common
 	depends = ignition-fuel_tools
 	depends = ignition-msgs

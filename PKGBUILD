@@ -8,7 +8,7 @@
 
 pkgname=gazebo
 pkgver=10.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -16,7 +16,7 @@ license=('Apache')
 # See: http://www.gazebosim.org/tutorials?tut=install_from_source&cat=install
 depends=('boost>=1.40.0' 'curl>=4.0' 'freeglut' 'freeimage>=3.0'
          'intel-tbb>=3.0' 'libccd>=1.4' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
-         'ogre-1.9' 'protobuf>=2.3.0' 'sdformat>=6.0.0' 'ignition-math>=4' 'ignition-transport>=4'
+         'ogre-1.9' 'protobuf>=2.3.0' 'sdformat=6' 'ignition-math=4' 'ignition-transport=4'
          'ignition-common' 'ignition-fuel_tools' 'ignition-msgs' 'tinyxml2' 'qwt')
 optdepends=('bullet: Bullet support'
             'cegui: Design custom graphical interfaces'
@@ -37,8 +37,6 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   mkdir -p build && cd build
-
-  export PKG_CONFIG_PATH="/opt/OGRE-1.9/lib/pkgconfig"
 
   # Note: we skip unit tests (else set to TRUE)
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
