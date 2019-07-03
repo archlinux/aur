@@ -10,7 +10,7 @@ url="https://github.com/oragono/oragono"
 license=('MIT')
 install=install
 depends=('glibc')
-makedepends=('go-pie' 'git')
+makedepends=('go' 'git')
 source=("git+$url#tag=v$pkgver"
         "git+https://github.com/oragono/oragono-vendor"
         "oragono.service"
@@ -48,7 +48,7 @@ build() {
     #   oragono W: ELF file ('usr/bin/oragono') lacks FULL RELRO, check LDFLAGS.
     #   oragono W: ELF file ('usr/bin/oragono') lacks PIE.
     # related: https://bugs.archlinux.org/task/60928
-    # GOFLAGS="-buildmode=pie"
+    GOFLAGS="-buildmode=pie" \
     GOOS=linux GOARCH=amd64 \
         go build -v \
             -gcflags "all=-trimpath=${PWD}" \
