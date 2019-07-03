@@ -5,7 +5,7 @@
 # Upstream: https://github.com/lightningnetwork/lnd
 
 pkgname=('lnd-git')
-pkgver=v0.7.0.beta.rc2.r0.g0e28ecd6
+pkgver=v0.7.0.beta.r4.ga6e77811
 pkgrel=1
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
 arch=('x86_64')
@@ -26,9 +26,9 @@ pkgver() {
 build() {
    cd $pkgname
    cd cmd/lnd
-   go build -buildmode=pie -ldflags -extldflags=-Wl,-z,now,-z,relro .
+   go build -buildmode=pie -tags="autopilotrpc signrpc walletrpc chainrpc invoicesrpc routerrpc watchtowerrpc" -ldflags -extldflags=-Wl,-z,now,-z,relro .
    cd ../lncli
-   go build -buildmode=pie -ldflags -extldflags=-Wl,-z,now,-z,relro .
+   go build -buildmode=pie -tags="autopilotrpc invoicesrpc walletrpc routerrpc watchtowerrpc" -ldflags -extldflags=-Wl,-z,now,-z,relro .
 }
 
 package() {
