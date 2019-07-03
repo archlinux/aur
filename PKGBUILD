@@ -2,13 +2,13 @@
 
 pkgname=ethoscope-device
 pkgver=r1702.g1c43fc3
-pkgrel=2
+pkgrel=3
 pkgdesc="A platform from monitoring animal behaviour in real time from a raspberry pi - Device version"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
 license=('GPL3')
 makedepends=('git' 'gcc-fortran' )
-depends=('avahi' 'rsync' 'wget' 'fping' 'ntp' 'fake-hwclock' 'openssh' 'mariadb' 'dnsmasq' 'wpa_supplicant' 'ifplugd' 'wpa_actiond' 'opencv' 'hdf5' 'gtk3' 'python-pip' 'python-numpy' 'python-scipy' 'python-bottle' 'python-pyserial' 'python-mysql-connector' 'python-netifaces' 'python-cherrypy' 'python-eventlet' 'python-gitpython' 'python-dnspython' 'python-greenlet' 'python-monotonic' 'python-picamera' 'python-zeroconf')
+depends=('git' 'avahi' 'rsync' 'wget' 'fping' 'ntp' 'fake-hwclock' 'openssh' 'mariadb' 'dnsmasq' 'wpa_supplicant' 'ifplugd' 'wpa_actiond' 'opencv' 'hdf5' 'gtk3' 'python-pip' 'python-numpy' 'python-scipy' 'python-bottle' 'python-pyserial' 'python-mysql-connector' 'python-netifaces' 'python-cherrypy' 'python-eventlet' 'python-gitpython' 'python-dnspython' 'python-greenlet' 'python-monotonic' 'python-picamera' 'python-zeroconf')
 provides=('ethoscope-device')
 install="ethoscope-device.install"
 source=("$pkgname::git+https://github.com/gilestrolab/ethoscope.git")
@@ -22,6 +22,7 @@ pkgver() {
 package() {
   #creating packaging directories
   install -dm0755 $pkgdir/opt
+  install -dm0755 $pkgdir/ethoscope_data
   install -dm0755 $pkgdir/usr/lib/systemd/system/
   
   #setting python3 branch
