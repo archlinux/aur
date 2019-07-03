@@ -6,8 +6,8 @@
 _longname="Mini Metro"
 pkgname="${_longname,,}"
 pkgname="${pkgname/ }"
-pkgver=gamma18
-pkgrel=5
+pkgver=38
+pkgrel=1
 pkgdesc='minimalistic subway layout game'
 url="http://dinopoloclub.com/${pkgname}/"
 license=('custom:None')
@@ -16,11 +16,11 @@ depends=('libgl' 'libx11' 'glu' 'desktop-file-utils' 'gtk-update-icon-cache')
 makedepends=('imagemagick')
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 install=desktop.install
-source=("hib://${_longname/ }-${pkgver}-linux.tar.gz"
+source=("hib://${_longname/ }-release-${pkgver}-linux.tar.gz"
         "${pkgname}.desktop"
         "starter.sh"
         "${pkgname}.png::http://dinopoloclub.com/press/mini_metro/images/icon.png")
-md5sums=('765bfdb52584df48784728e6476f47d7'
+md5sums=('1535053549257fd3139a46ed91c193a4'
          'b89a42a38136d0a126c8c13657b21c3f'
          '5006f1c488369854b7ac714168742aae'
          '8412b1e4cc11be455af993d921a68ced')
