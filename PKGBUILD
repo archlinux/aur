@@ -1,6 +1,6 @@
 # Maintainer: Damian Poddebniak <poddebniak at fh-muenster dot de>
 pkgname=xim-git
-pkgver=r15.9e9568e
+pkgver=r21.69d0769
 pkgrel=1
 pkgdesc="Vim-like hex editor."
 arch=('x86_64' 'i686' )
