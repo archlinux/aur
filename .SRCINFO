@@ -1,7 +1,7 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 67.0.2
-	pkgrel = 1
+	pkgver = 67.0.4
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/firefox-appmenu/
 	arch = x86_64
 	license = MPL
@@ -18,7 +18,6 @@ pkgbase = firefox-appmenu
 	makedepends = xorg-server-xvfb
 	makedepends = autoconf2.13
 	makedepends = rust
-	makedepends = mercurial
 	makedepends = clang
 	makedepends = llvm
 	makedepends = jack
@@ -43,19 +42,22 @@ pkgbase = firefox-appmenu
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=67.0.2
+	provides = firefox=67.0.4
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
-	source = hg+https://hg.mozilla.org/mozilla-unified#tag=FIREFOX_67_0_2_RELEASE
+	source = https://archive.mozilla.org/pub/firefox/releases/67.0.4/source/firefox-67.0.4.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/67.0.4/source/firefox-67.0.4.source.tar.xz.asc
+	source = https://gitlab.com/nikatar/for-aur/raw/master/firefox-appmenu/0001-bz-1521249.patch
 	source = firefox.desktop
 	source = firefox-symbolic.svg
-	source = https://gitlab.com/nikatar/for-aur/raw/master/firefox-appmenu/0001-bz-1521249.patch
 	source = unity-menubar.patch
+	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
+	sha256sums = b2fb2d3e64a6947ef4f8212b72649acf2aa2cd4c8f70548abb636dd581fd6dc5
 	sha256sums = SKIP
+	sha256sums = d0673786a6a1f1b9f6f66a3a1356afa33f1f18f59dabd92bd193c88c52a1d04c
 	sha256sums = e8d2908727309a58bee9a3dc994e85140c5977b2d486381d67d5e22ad3830d28
 	sha256sums = 9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797
-	sha256sums = d0673786a6a1f1b9f6f66a3a1356afa33f1f18f59dabd92bd193c88c52a1d04c
 	sha256sums = cf4bed830bc271d00029f23b9c66f5bfa286532be0848ce8a045fce78ff66341
 
 pkgname = firefox-appmenu
