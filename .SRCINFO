@@ -1,7 +1,7 @@
 pkgbase = vmware-horizon-client
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vmware.com/go/viewclients
 	arch = x86_64
 	license = custom
