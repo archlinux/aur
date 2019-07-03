@@ -173,6 +173,7 @@ END
     # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
     ln -srf "$pkgdir/usr/bin/$_pkgname" \
         "$pkgdir/usr/lib/$_pkgname/firefox-bin"
+    rm "$pkgdir/usr/bin/firefox"
 
   # Use system-provided dictionaries
   rm -rf "$pkgdir"/usr/lib/$_pkgname/{dictionaries,hyphenation}
