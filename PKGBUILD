@@ -94,7 +94,7 @@ depends+=(llvm-libs=8.0.0)
 ###  esac
 
 pkgver() {
-    cd mesa
+    cd mesa-aco
     read -r _ver <VERSION
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
@@ -105,12 +105,12 @@ prepare() {
     if [  -d _build ]; then
         rm -rf _build
     fi
-    cd mesa
+    cd mesa-aco
     patch --forward --strip=1 --input="$srcdir"/targets-opencl-Add_clangASTMatchers_library_as_dependency.patch
 }
 
 build () {
-    meson setup mesa _build \
+    meson setup mesa-aco _build \
        -D b_ndebug=true \
        -D buildtype=plain \
        --wrap-mode=nofallback \
