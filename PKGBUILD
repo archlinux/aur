@@ -2,7 +2,7 @@
 
 pkgname_=graalpython
 pkgname=${pkgname_}-bin
-pkgver_=19.0.2
+pkgver_=19.1.0
 pkgver=${pkgver_/-/_}
 pkgrel=1
 pkgdesc='Graal based, high-performance implementation of the Python language (early development)'
@@ -15,7 +15,7 @@ optdepends=()
 provides=("$pkgname_")
 conflicts=("$pkgname_")
 source=("https://github.com/graalvm/$pkgname_/releases/download/vm-${pkgver_}/python-installable-svm-linux-amd64-${pkgver_}.jar")
-sha256sums=('ee33b6a26d9b81f7b19d5aa9e73c22b3c5f46f1e3281fda5f62fbfc68b71271a')
+sha256sums=('f3da20ea90a419a0cf85f7639e7566c1f580508bede3a72992d069dd03088a6d')
 
 package() {
     local file eq permissions mode name target
