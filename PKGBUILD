@@ -1,10 +1,12 @@
 # Maintainer: LinuxVieLoisir <contact@gnumeria.fr>
 
 pkgname=firefox-nightly-hg
-pkgver=r480905.109ccdeb9634
+pkgver=r481054.c52f9ebca761
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
+_lang=fr
 _repo=https://hg.mozilla.org/mozilla-central
+_pkgname=firefox-nightly
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
@@ -22,11 +24,11 @@ url="http://www.mozilla.org/projects/firefox"
 install=firefox.install
 options=(!emptydirs)
 source=("hg+$_repo"
-        firefox-hg.desktop
+        firefox-nightly.desktop
         vendor.js)
 
 sha512sums=('SKIP'
-            '5c49649475073c09fc669fcaf59c86f0d179d609039c880f887472f908459ea9371bfb0814ace652154ee2f69e9bff81934e33998fd84d929a3aa49861129d26'
+            '28219dab29bb53fa66c894ea16330f3cd20f6783000141a1a57e2a9616d9b4a377f85fd8d213e47c5323738e0a867039bc64648e2316aa7519266d23c14989e4'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -148,27 +150,33 @@ app.distributor.channel=$_pkgname
 app.partner.archlinux=archlinux
 END
 
-  mv "$pkgdir/usr/bin/firefox" "$pkgdir/usr/bin/$pkgname"
-
+  mv "$pkgdir/usr/lib/firefox" "$pkgdir/usr/lib/$_pkgname"
+  
   for i in 16 22 24 32 48 256; do
       install -Dm644 browser/branding/nightly/default32.png \
-        "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
+        "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
 
   install -Dm644 browser/branding/nightly/default64.png \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
+    "$pkgdir/usr/share/icons/hicolor/64x64/apps/$_pkgname.png"
 
   install -Dm644 browser/branding/nightly/default128.png \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
 
-  install -Dm644 ../firefox-hg.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 ../firefox-nightly.desktop \
+    "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
+#!/bin/sh
+exec /usr/lib/$_pkgname/firefox/firefox-bin "\$@"
+END
+    # Replace duplicate binary with wrapper
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+    ln -srf "$pkgdir/usr/bin/$_pkgname" \
+        "$pkgdir/usr/lib/$_pkgname/firefox-bin"
 
   # Use system-provided dictionaries
-  rm -rf "$pkgdir"/usr/lib/firefox/{dictionaries,hyphenation}
-  ln -sf /usr/share/hunspell "$pkgdir/usr/lib/firefox/dictionaries"
-  ln -sf /usr/share/hyphen "$pkgdir/usr/lib/firefox/hyphenation"
-
-  # We don't want the development stuff
-  rm -rf "$pkgdir"/usr/{include,lib/firefox-devel-$_ffver,share/idl}
+  rm -rf "$pkgdir"/usr/lib/$_pkgname/{dictionaries,hyphenation}
+  ln -sf /usr/share/hunspell "$pkgdir/usr/lib/$_pkgname/dictionaries"
+  ln -sf /usr/share/hyphen "$pkgdir/usr/lib/$_pkgname/hyphenation"
   }
