@@ -3,9 +3,9 @@
 _pkgname=ThePEG
 pkgname=thepeg
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolkit for High Energy Physics Event Generation"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="http://thepeg.hepforge.org"
 license=('GPL2')
 depends=("gsl" "fastjet" "lhapdf" "hepmc" "zlib" "boost")
