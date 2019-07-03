@@ -1,14 +1,24 @@
 pkgbase = xmind-zen
-	pkgdesc = converted from .rpm package on xmind.cn. please modify the website to xmind.net for non-Chinese users
-	pkgver = 20190622
+	pkgdesc = XMind ZEN - The most popular mind mapping software. please modify the website to xmind.net for non-Chinese users
+	pkgver = 20190703
 	pkgrel = 1
 	url = https://www.xmind.cn/
 	arch = x86_64
 	license = custom
 	depends = gconf
-	source = http://dl2.xmind.cn/XMind-ZEN-for-Linux-64bit.rpm
+	depends = libxss
+	depends = nss
+	depends = libxtst
+	conflicts = xmind
+	source = https://www.xmind.cn/xmind/downloads/XMind-ZEN-for-Linux-64bit.rpm
 	source = https://www.xmind.cn/terms/index.html
+	source = XMind.desktop
+	source = XMind.png
+	source = xmind.xml
 	md5sums = fe6357e885b72400a597416ac3d0f314
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = xmind-zen
