@@ -19,7 +19,7 @@ backup=()
 options=()
 source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=("008520dd6fad0e22ae8ebf09f7f1ec5fb3fa968ff278412c2ea1a9cafe52f600")
+sha256sums=("efe42b4ad7300f02d7d773da79cfc174fe63abe409442e1a5ff10dafcefd54bf")
 
 build() {
 	cd "$srcdir/$pkgname"
@@ -41,6 +41,6 @@ package() {
 	cp -v icons/bamr.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/bamr.svg"
 	cp -v icons/bamr_32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/bamr.png"
 	cp -v icons/bamr_48x48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/bamr.png"
-	cp -v bam.desktop "$pkgdir/usr/share/applications/"
+	cp -v bamr.desktop "$pkgdir/usr/share/applications/"
 }
 
