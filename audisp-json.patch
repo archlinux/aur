@@ -1,55 +1,55 @@
 diff --git a/audisp-json.c b/audisp-json.c
-index 5e3e943..27542cd 100644
+index 0d25bc1..b6b982c 100644
 --- a/audisp-json.c
 +++ b/audisp-json.c
-@@ -630,7 +630,7 @@ attr_t *_json_add_attr(attr_t *list, const char *st, char *val, int freeme)
+@@ -638,7 +638,7 @@ attr_t *_json_add_attr(attr_t *list, const char *st, char *val, int freeme)
  		syslog(LOG_ERR, "json_add_attr() malloc failed attribute will be empty: %s", st);
  		return list;
  	}
--	snprintf(new->value, MAX_ATTR_SIZE, "\t\t\"%s\": \"%s\"", st, unescape(val));
+-	snprintf(new->value, MAX_ATTR_SIZE, "\"%s\": \"%s\"", st, unescape(val));
 +	snprintf(new->value, MAX_ATTR_SIZE, "\"%s\":\"%s\"", st, unescape(val));
  	new->next = list;
  
  	if (freeme) {
-@@ -734,35 +734,21 @@ void syslog_json_msg(struct json_msg_type json_msg)
+@@ -742,35 +742,22 @@ void syslog_json_msg(struct json_msg_type json_msg)
  	}
  
  	len = snprintf(new_q->msg, MAX_JSON_MSG_SIZE,
--"{\n\
--	\"category\": \"%s\",\n\
--	\"summary\": \"%s\",\n\
--	\"severity\": \"%s\",\n\
--	\"hostname\": \"%s\",\n\
--	\"processid\": \"%i\",\n\
--	\"processname\": \"%s\",\n\
--	\"timestamp\": \"%s\",\n\
--	\"tags\": [\n\
--		\"%s\",\n\
--		\"%s\",\n\
--		\"audit\"\n\
--	],\n\
--	\"details\": {",
-+"{\"category\":\"%s\",\"summary\":\"%s\",\"severity\":\"%s\",\"hostname\":\"%s\",\"processid\":\"%i\",\"processname\":\"%s\",\"timestamp\":\"%s\",\"tags\":[\"%s\",\"%s\",\"audit\"],\"details\":{",
- 		json_msg.category, json_msg.summary, json_msg.severity, json_msg.hostname, json_msg.processid,
+-"%s{\
+-\"category\": \"%s\",\
+-\"summary\": \"%s\",\
+-\"severity\": \"%s\",\
+-\"hostname\": \"%s\",\
+-\"processid\": \"%i\",\
+-\"processname\": \"%s\",\
+-\"timestamp\": \"%s\",\
+-\"tags\": [\
+-\"%s\",\
+-\"%s\",\
+-\"audit\"\
+-],\
+-\"details\": {",
++"%s{\"category\":\"%s\",\"summary\":\"%s\",\"severity\":\"%s\",\"hostname\":\"%s\",\"processid\":\"%i\",\"processname\":\"%s\",\"timestamp\":\"%s\",\"tags\":[\"%s\",\"%s\",\"audit\"],\"details\":{",
+ 		config.prepend_msg, json_msg.category, json_msg.summary, json_msg.severity, json_msg.hostname, json_msg.processid,
  		PROGRAM_NAME, json_msg.timestamp, PROGRAM_NAME, STR(PROGRAM_VERSION));
  
  	while (head) {
--			len += snprintf(new_q->msg+len, MAX_JSON_MSG_SIZE-len, "\n%s,", head->value);
+-			len += snprintf(new_q->msg+len, MAX_JSON_MSG_SIZE-len, "%s,", head->value);
 +			len += snprintf(new_q->msg+len, MAX_JSON_MSG_SIZE-len, "%s", head->value);
  			prev = head;
  			head = head->next;
 -			free(prev);
--
+ 
 -			if (head == NULL) {
--				new_q->msg[len-1] = '\n';
+-				new_q->msg[len-1] = '}';
 +			if (head != NULL) {
 +				len += snprintf(new_q->msg+len, MAX_JSON_MSG_SIZE-len, ",");
  			}
 +			free(prev);
  	}
  
--	len += snprintf(new_q->msg+len, MAX_JSON_MSG_SIZE-len, "	}\n}\n");
-+	len += snprintf(new_q->msg+len, MAX_JSON_MSG_SIZE-len, "}}\n");
+-	len += snprintf(new_q->msg+len, MAX_JSON_MSG_SIZE-len, "}%s\n", config.postpend_msg);
++	len += snprintf(new_q->msg+len, MAX_JSON_MSG_SIZE-len, "}}%s\n", config.postpend_msg);
  	new_q->msg[MAX_JSON_MSG_SIZE-1] = '\0';
  
  	/* If using curl, fill up the queue, else just print to file */
