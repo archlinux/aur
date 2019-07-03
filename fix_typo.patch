@@ -1,0 +1,11 @@
+--- Scribus/scribus/ui/osgeditor.cpp	(Revision 23064)
++++ Scribus/scribus/ui/osgeditor.cpp	(Arbeitskopie)
+@@ -571,7 +571,7 @@
+ void OSGEditorDialog::openFile()
+ {
+ 	QString fileName;
+-	PrefsContext* dirs = PrefsManager::instance()->prefsFile->getContext("dirs");
++	PrefsContext* dirs = PrefsManager::instance().prefsFile->getContext("dirs");
+ 	QString wdir = dirs->get("models", ".");
+ 	CustomFDialog dia(this, wdir, tr("Import 3-D Model"), filterString, fdHidePreviewCheckBox);
+ 	if (dia.exec() == QDialog::Accepted)
