@@ -2,15 +2,15 @@
 # Contributor: yuhr <sdn.pate(at)gmail.com>
 
 pkgname=ttf-cica
-pkgver=4.1.2
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="A Japanese monospace font for programming"
 url="https://github.com/miiton/Cica"
 license=('custom')
 arch=('any')
 depends=('fontconfig' 'xorg-font-utils')
-source=(https://github.com/miiton/Cica/releases/download/v${pkgver}/Cica_v${pkgver}.zip)
-md5sums=('643824a2f26dce99fedd41f9df5ded8c')
+source=(https://github.com/miiton/Cica/releases/download/v${pkgver}/Cica_v${pkgver}_with_emoji.zip)
+md5sums=('bf868d4b865959b2e40ac65e34cbe92c')
 
 package() {
   cd ${srcdir}
