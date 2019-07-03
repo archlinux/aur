@@ -12,8 +12,8 @@ pkgbase = python-pygam
 	depends = python-progressbar
 	depends = python-scipy
 	optdepends = python-scikit-sparse
-	source = https://github.com/dswah/pyGAM/archive/v0.8.0.tar.gz
-	sha256sums = 2d20c983d4553dd7bf638c0c6470190ec165765f91662c18c7340adeeae270be
+	source = https://pypi.org/packages/source/p/pygam/pygam-0.8.0.tar.gz
+	sha256sums = 5cae01aea8b2fede72a6da0aba1490213af54b3476745666af26bbe700479166
 
 pkgname = python-pygam
 
