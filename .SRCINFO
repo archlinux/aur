@@ -1,0 +1,19 @@
+pkgbase = sms-irc-git
+	pkgdesc = A WhatsApp Web and SMS bridge for internet relay chat (IRC).
+	pkgver = r138.e62a533
+	pkgrel = 1
+	url = https://git.theta.eu.org/sms-irc.git/about/
+	arch = x86_64
+	license = AGPL3
+	makedepends = rust
+	makedepends = cargo
+	depends = postgresql-libs
+	optdepends = inspircd: IRC server to bridge into
+	provides = sms-irc
+	conflicts = sms-irc
+	backup = etc/sms-irc.conf
+	source = git+https://git.theta.eu.org/sms-irc.git/
+	md5sums = SKIP
+
+pkgname = sms-irc-git
+
