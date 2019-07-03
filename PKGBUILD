@@ -11,7 +11,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgname=mesa-aco-git
-pkgdesc="an open-source implementation of the OpenGL specification, git version"
+pkgdesc="Mesa with the ACO compiler patchset, git version"
 pkgver=19.2.0_devel.112439.11a3679e3ab
 pkgrel=1
 arch=('x86_64')
