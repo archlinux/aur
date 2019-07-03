@@ -5,7 +5,7 @@
 
 pkgname=rutorrent
 _pkgname=ruTorrent
-pkgver=3.8
+pkgver=3.9
 pkgrel=1
 pkgdesc="Yet another web front-end for rTorrent"
 arch=('any')
@@ -19,11 +19,9 @@ source=(
     apache.example.conf
     apache.example.site.conf
 )
-sha256sums=( 
-    '610fc5df350fe7915b4413067fea8657eb6f26b1cc5212de97a4af98439b2e2c'
-    '79b5aab7ef928727b3ec2aa0f1b0869310adde11cd774d148c03025deb6dec0c'
-    '9afe7d2a9aadb5fd6a0fcd907f7f46bdc3630c369a5a684c51bbeeb5b4d354aa'
-)
+sha256sums=('ff9b9dc21c4523603d2a415908455aa4376f0890412cf857690acbea29c15c76'
+            '79b5aab7ef928727b3ec2aa0f1b0869310adde11cd774d148c03025deb6dec0c'
+            '9afe7d2a9aadb5fd6a0fcd907f7f46bdc3630c369a5a684c51bbeeb5b4d354aa')
 backup=( 
     etc/webapps/rutorrent/conf/config.php
     etc/webapps/rutorrent/conf/plugins.ini
