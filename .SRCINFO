@@ -1,22 +1,25 @@
 pkgbase = python-onnx
 	pkgdesc = Open Neural Network Exchange
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://onnx.ai
 	arch = x86_64
 	license = MIT
+	checkdepends = python-nbval
 	checkdepends = python-nose
 	checkdepends = python-pytest
 	checkdepends = python-scipy
-	makedepends = python-setuptools
-	makedepends = pybind11
 	makedepends = cmake
+	makedepends = git
+	makedepends = python-setuptools
 	depends = protobuf
-	depends = pybind11
 	depends = python-numpy
 	depends = python-six
-	source = onnx-1.5.0.tar.gz::https://github.com/onnx/onnx/archive/v1.5.0.tar.gz
-	sha512sums = 0dd8ac3210331352f0c97383a36c7c9943f1885491ccb3e2c54ebcfb472ff41b192fe701ba82a1a33251158d9b99ff626b429e33b48921151302de8d0e81b82e
+	optdepends = mxnet
+	optdepends = python-pytorch
+	optdepends = python-tensorflow
+	source = python-onnx::git+https://github.com/onnx/onnx.git#tag=v1.5.0
+	sha512sums = SKIP
 
 pkgname = python-onnx
 

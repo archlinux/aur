@@ -1,33 +1,55 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=python-onnx
-_pkgname=onnx
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Neural Network Exchange'
 arch=('x86_64')
-url=https://onnx.ai
+url='https://onnx.ai'
 license=('MIT')
-depends=(protobuf pybind11 python-numpy python-six)
-makedepends=(python-setuptools pybind11 cmake)
-checkdepends=(python-nose python-pytest python-scipy)
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/onnx/onnx/archive/v${pkgver}.tar.gz")
-sha512sums=('0dd8ac3210331352f0c97383a36c7c9943f1885491ccb3e2c54ebcfb472ff41b192fe701ba82a1a33251158d9b99ff626b429e33b48921151302de8d0e81b82e')
+depends=(
+  'protobuf'
+  'python-numpy'
+  'python-six'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'python-setuptools'
+)
+checkdepends=(
+  'python-nbval' 
+  'python-nose' 
+  'python-pytest' 
+  'python-scipy'
+  ${optdepends[@]}
+)
+optdepends=(
+  'mxnet'
+  'python-pytorch'
+  'python-tensorflow'
+)
+source=("${pkgname}::git+https://github.com/onnx/onnx.git#tag=v${pkgver}")
+sha512sums=('SKIP')
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  git submodule update --init --recursive
+}
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgname}"
   python setup.py build
 }
 
-#check() {
-#  cd onnx-$pkgver
-#  pytest -v
-#}
+check() {
+  cd "${srcdir}/${pkgname}"
+  pytest -v
+}
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  export CC=/opt/cuda/bin/gcc
-  export CXX=/opt/cuda/bin/g++
+  cd "${pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+# vim:set ts=2 sw=2 et:
