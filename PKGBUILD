@@ -1,7 +1,7 @@
 # Maintainer: Mikuro Kagamine <mikurok@forgecrushing.com>
 
 pkgname=browsh
-pkgver=1.5.2
+pkgver=1.6.4
 pkgrel=1
 pkgdesc='A fully-modern text-based browser, rendering to TTY and browsers'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,8 +15,8 @@ options=('!strip')
 noextract=("${pkgname}-${pkgver}-an.fx.xpi")
 source=("https://github.com/${pkgname}-org/${pkgname}/archive/v${pkgver}.tar.gz"
 		"https://github.com/${pkgname}-org/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-an.fx.xpi")
-sha256sums=('c1a39b8982caa3cf96d67ff4e8b2d6fd80746a8f3ddd13f0650cbc875ca7b8fd'
-			'c3b475953de61a930c12c89cde3d2630e511b28ddbd21da7830e02173df32a2d')
+sha256sums=('965ce2d94d1d9e4b92411d344421c0bea40994527cafd694c5a6e8e206681ede'
+			'b410527a69dba88a30d8a6d341a20eb5cb1f84b684e9bc8bb6bc88a2930e0eea')
 
 
 prepare() {
