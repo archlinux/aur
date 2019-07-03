@@ -1,0 +1,137 @@
+--- a/src/naemon/xodtemplate.c	2019-07-03 18:34:13.795379190 +0200
++++ b/src/naemon/xodtemplate.c	2019-07-03 18:33:37.079085158 +0200
+@@ -7488,7 +7488,7 @@
+ 				} else if (!strcmp(temp_ptr, "a") || !strcmp(temp_ptr, "all")) {
+ 					temp_host->flap_detection_options = OPT_ALL;
+ 				} else {
+-					nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid flap detection option '%s' in host definition.\n", temp_ptr);
++					nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid flap detection option '%s' in host definition.\n", (temp_ptr ? temp_ptr : "(null)"));
+ 					result = ERROR;
+ 				}
+ 			}
+@@ -7510,7 +7510,7 @@
+ 				} else if (!strcmp(temp_ptr, "a") || !strcmp(temp_ptr, "all")) {
+ 					temp_host->notification_options = OPT_ALL;
+ 				} else {
+-					nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid notification option '%s' in host definition.\n", temp_ptr);
++					nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid notification option '%s' in host definition.\n", (temp_ptr ? temp_ptr : "(null)"));
+ 					result = ERROR;
+ 				}
+ 			}
+@@ -7537,7 +7537,7 @@
+ 				} else if (!strcmp(temp_ptr, "a") || !strcmp(temp_ptr, "all")) {
+ 					temp_host->stalking_options = OPT_ALL;
+ 				} else {
+-					nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid stalking option '%s' in host definition.\n", temp_ptr);
++					nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid stalking option '%s' in host definition.\n", (temp_ptr ? temp_ptr : "(null)"));
+ 					result = ERROR;
+ 				}
+ 			}
+@@ -7549,29 +7549,29 @@
+ 			xodtemplate_obsoleted(variable, temp_host->_start_line);
+ 		} else if (!strcmp(variable, "2d_coords")) {
+ 			if ((temp_ptr = strtok(value, ", ")) == NULL) {
+-				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 2d_coords value '%s' in host definition.\n", temp_ptr);
++				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 2d_coords value '%s' in host definition.\n", (temp_ptr ? temp_ptr : "(null)"));
+ 				return ERROR;
+ 			}
+ 			temp_host->x_2d = atoi(temp_ptr);
+ 			if ((temp_ptr = strtok(NULL, ", ")) == NULL) {
+-				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 2d_coords value '%s' in host definition.\n", temp_ptr);
++				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 2d_coords value '%s' in host definition.\n", (temp_ptr ? temp_ptr : "(null)"));
+ 				return ERROR;
+ 			}
+ 			temp_host->y_2d = atoi(temp_ptr);
+ 			temp_host->have_2d_coords = TRUE;
+ 		} else if (!strcmp(variable, "3d_coords")) {
+ 			if ((temp_ptr = strtok(value, ", ")) == NULL) {
+-				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 3d_coords value '%s' in host definition.\n", temp_ptr);
++				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 3d_coords value '%s' in host definition.\n", (temp_ptr ? temp_ptr : "(null)"));
+ 				return ERROR;
+ 			}
+ 			temp_host->x_3d = strtod(temp_ptr, NULL);
+ 			if ((temp_ptr = strtok(NULL, ", ")) == NULL) {
+-				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 3d_coords value '%s' in host definition.\n", temp_ptr);
++				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 3d_coords value '%s' in host definition.\n", (temp_ptr ? temp_ptr : "(null)"));
+ 				return ERROR;
+ 			}
+ 			temp_host->y_3d = strtod(temp_ptr, NULL);
+ 			if ((temp_ptr = strtok(NULL, ", ")) == NULL) {
+-				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 3d_coords value '%s' in host definition.\n", temp_ptr);
++				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 3d_coords value '%s' in host definition.\n", (temp_ptr ? temp_ptr : "(null)"));
+ 				return ERROR;
+ 			}
+ 			temp_host->z_3d = strtod(temp_ptr, NULL);
+@@ -8176,13 +8176,13 @@
+ 		} else if (!strcmp(variable, "2d_coords")) {
+ 			temp_ptr = strtok(value, ", ");
+ 			if (temp_ptr == NULL) {
+-				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 2d_coords value '%s' in extended host info definition.\n", temp_ptr);
++				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 2d_coords value '%s' in extended host info definition.\n", (temp_ptr ? temp_ptr : "(null)"));
+ 				return ERROR;
+ 			}
+ 			temp_hostextinfo->x_2d = atoi(temp_ptr);
+ 			temp_ptr = strtok(NULL, ", ");
+ 			if (temp_ptr == NULL) {
+-				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 2d_coords value '%s' in extended host info definition.\n", temp_ptr);
++				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 2d_coords value '%s' in extended host info definition.\n", (temp_ptr ? temp_ptr : "(null)"));
+ 				return ERROR;
+ 			}
+ 			temp_hostextinfo->y_2d = atoi(temp_ptr);
+@@ -8190,19 +8190,19 @@
+ 		} else if (!strcmp(variable, "3d_coords")) {
+ 			temp_ptr = strtok(value, ", ");
+ 			if (temp_ptr == NULL) {
+-				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 3d_coords value '%s' in extended host info definition.\n", temp_ptr);
++				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 3d_coords value '%s' in extended host info definition.\n", (temp_ptr ? temp_ptr : "(null)"));
+ 				return ERROR;
+ 			}
+ 			temp_hostextinfo->x_3d = strtod(temp_ptr, NULL);
+ 			temp_ptr = strtok(NULL, ", ");
+ 			if (temp_ptr == NULL) {
+-				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 3d_coords value '%s' in extended host info definition.\n", temp_ptr);
++				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 3d_coords value '%s' in extended host info definition.\n", (temp_ptr ? temp_ptr : "(null)"));
+ 				return ERROR;
+ 			}
+ 			temp_hostextinfo->y_3d = strtod(temp_ptr, NULL);
+ 			temp_ptr = strtok(NULL, ", ");
+ 			if (temp_ptr == NULL) {
+-				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 3d_coords value '%s' in extended host info definition.\n", temp_ptr);
++				nm_log(NSLOG_CONFIG_ERROR, "Error: Invalid 3d_coords value '%s' in extended host info definition.\n", (temp_ptr ? temp_ptr : "(null)"));
+ 				return ERROR;
+ 			}
+ 			temp_hostextinfo->z_3d = strtod(temp_ptr, NULL);
+@@ -8369,21 +8369,21 @@
+ 
+ 			/* make sure an object type is specified... */
+ 			if (input[0] == '\x0') {
+-				nm_log(NSLOG_CONFIG_ERROR, "Error: No object type specified in file '%s' on line %d.\n", filename, current_line);
++				nm_log(NSLOG_CONFIG_ERROR, "Error: No object type specified in file '%s' on line %d.\n", filename, (current_line ? current_line : -1));
+ 				result = ERROR;
+ 				break;
+ 			}
+ 
+ 			/* we're already in an object definition... */
+ 			if (in_definition == TRUE) {
+-				nm_log(NSLOG_CONFIG_ERROR, "Error: Unexpected start of object definition in file '%s' on line %d.  Make sure you close preceding objects before starting a new one.\n", filename, current_line);
++				nm_log(NSLOG_CONFIG_ERROR, "Error: Unexpected start of object definition in file '%s' on line %d.  Make sure you close preceding objects before starting a new one.\n", filename, (current_line ? current_line : -1));
+ 				result = ERROR;
+ 				break;
+ 			}
+ 
+ 			/* start a new definition */
+ 			if (xodtemplate_begin_object_definition(input, xodtemplate_current_config_file, current_line) == ERROR) {
+-				nm_log(NSLOG_CONFIG_ERROR, "Error: Could not add object definition in file '%s' on line %d.\n", filename, current_line);
++				nm_log(NSLOG_CONFIG_ERROR, "Error: Could not add object definition in file '%s' on line %d.\n", filename, (current_line ? current_line : -1));
+ 				result = ERROR;
+ 				break;
+ 			}
+@@ -8401,7 +8401,7 @@
+ 
+ 				/* close out current definition */
+ 				if (xodtemplate_end_object_definition() == ERROR) {
+-					nm_log(NSLOG_CONFIG_ERROR, "Error: Could not complete object definition in file '%s' on line %d. Have you named all your objects?\n", filename, current_line);
++					nm_log(NSLOG_CONFIG_ERROR, "Error: Could not complete object definition in file '%s' on line %d. Have you named all your objects?\n", filename, (current_line ? current_line : -1));
+ 					result = ERROR;
+ 					break;
+ 				}
