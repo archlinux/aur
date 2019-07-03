@@ -5,7 +5,7 @@
 pkgbase="monero"
 pkgname=('monero' 'libmonero-wallet')
 pkgver=0.14.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
 license=('custom:Cryptonote')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -70,6 +70,9 @@ package_monero() {
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-export" "${pkgdir}/usr/bin/monero-blockchain-export"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-import" "${pkgdir}/usr/bin/monero-blockchain-import"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-mark-spent-outputs" "${pkgdir}/usr/bin/monero-blockchain-mark-spent-outputs"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-prune" "${pkgdir}/usr/bin/monero-blockchain-prune"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-prune-known-spent-data" "${pkgdir}/usr/bin/monero-blockchain-prune-known-spent-data"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-stats" "${pkgdir}/usr/bin/monero-blockchain-stats"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-usage" "${pkgdir}/usr/bin/monero-blockchain-usage"
 
   install -Dm755 "${srcdir}/${_monero}/build/bin/monerod" "${pkgdir}/usr/bin/monerod"
