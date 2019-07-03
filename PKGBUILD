@@ -11,7 +11,7 @@ pkgname=${_orgname,,}-${_pkgname}-git
 pkgver=20190622.5.r17.g0eeb2ea2
 pkgrel=1
 pkgdesc='Map drawing program from OpenOrienteering'
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url='https://www.openorienteering.org/apps/mapper/'
 license=('GPL3')
 depends=('qt5-base>=5.6' 'polyclipping>=6.1.3a' 'proj>=4.9.2' 'gdal')
