@@ -1,5 +1,6 @@
-# Maintainer: Troy Patrick <patrictroy at gmail dot com>
-# Maintainer: racko <tim dot rakowski at gmail dot com>
+# Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
+# Contributor: Troy Patrick <patrictroy at gmail dot com>
+# Contributor: racko <tim dot rakowski at gmail dot com>
 # Contributor: marauder <abhinav dot kssk at gmail dot com>
 # Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
