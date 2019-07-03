@@ -1,4 +1,5 @@
-# Maintainer: Lone_Wolf <lonewolf at xs4all dot nl>
+# Maintainer:  John Schoenick <johns@valvesoftware.com>
+# Contributor: Lone_Wolf <lonewolf at xs4all dot nl>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
 # Contributor: Egon Ashrafinia <e.ashrafinia@gmail.com>
@@ -9,7 +10,7 @@
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
-pkgname=lib32-mesa-git
+pkgname=lib32-mesa-aco-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=19.2.0_devel.111950.8dd26fa2f06
 pkgrel=1
@@ -20,15 +21,19 @@ makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
 depends=('mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
            'lib32-libunwind' 'lib32-lm_sensors' 'glslang')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=(lib32-mesa=$pkgver-$pkgrel lib32-vulkan-intel=$pkgver-$pkgrel lib32-vulkan-radeon=$pkgver-$pkgrel lib32-libva-mesa-driver=$pkgver-$pkgrel lib32-mesa-vdpau=$pkgver-$pkgrel 'lib32-opengl-driver')
-conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
+provides=("lib32-mesa=$pkgver-$pkgrel"
+          "lib32-mesa-git=$pkgver-$pkgrel"
+          "lib32-vulkan-intel=$pkgver-$pkgrel"
+          "lib32-vulkan-radeon=$pkgver-$pkgrel"
+          "lib32-libva-mesa-driver=$pkgver-$pkgrel"
+          "lib32-mesa-vdpau=$pkgver-$pkgrel"
+          'lib32-opengl-driver')
+conflicts=('lib32-mesa' 'lib32-mesa-git' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
-         'LICENSE'
-	'llvm32.native'
-)
-
+source=('mesa-aco::git+https://github.com/daniel-schuermann/mesa'
+        'LICENSE'
+        'llvm32.native')
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
          '6b4a19068a323d7f90a3d3cd315ed1f9')
@@ -39,49 +44,57 @@ sha512sums=('SKIP'
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
 
-# MESA_WHICH_LLVM is an environment variable used to determine which llvm package tree is used to built mesa-git against.
-# Adding a line to makepkg.conf that sets this value is the simplest way to ensure a specific choice.
-# 
-# 1: llvm-minimal-git (aur) preferred value
-# 2: llvm-git (aur)
-# 3  llvm-git (lordheavy unoffical repo)
-# 4  llvm (stable from extra) default value
-# 
-# N.B. make sure lib32-mesa-git uses same value for this as mesa-git to avoid problems !
+# Users of alternative llvm packages may need to tweak the hard version dependency here, which ensures this package is
+# rebuilt if the underlying llvm updates.
+makedepends+=(lib32-llvm=8.0.0)
+depends+=(lib32-llvm-libs=8.0.0)
+
+# LLVM NOTE: The upstream mesa-git package provides these alternative suggestions.  Really, these packages should all
+#            have the necessary provides to make selecting these manually here unnecessary, and we've disabled them
+#            because they break aurhelpers such as yay.
 #
-
-if [[ ! $MESA_WHICH_LLVM ]] ; then
-    MESA_WHICH_LLVM=4
-fi
-
-case $MESA_WHICH_LLVM in
-    1)
-        # aur lone_wolf-llvm-git
-        makedepends+=('lib32-llvm-minimal-git')
-        depends+=('lib32-llvm-libs-minimal-git')
-        ;;
-    2)
-        # aur llvm-git
-        # depending on aur-lib32-llvm-* to avoid mixup with LH llvm-git
-        makedepends+=('aur-lib32-llvm-git')
-        depends+=('aur-lib32-llvm-libs-git')
-        ;;
-    3)
-        # mesa-git/llvm-git (lordheavy unofficial repo)
-        makedepends+=('lib32-llvm-git')
-        depends+=('lib32-llvm-libs-git')
-        ;;
-    4)
-        # extra/llvm
-        makedepends+=(lib32-llvm=8.0.0)
-        depends+=(lib32-llvm-libs=8.0.0)
-        ;;
-    *)
-esac
+## MESA_WHICH_LLVM is an environment variable used to determine which llvm package tree is used to built mesa-git against.
+## Adding a line to makepkg.conf that sets this value is the simplest way to ensure a specific choice.
+##
+## 1: llvm-minimal-git (aur) preferred value
+## 2: llvm-git (aur)
+## 3  llvm-git (lordheavy unoffical repo)
+## 4  llvm (stable from extra) default value
+##
+## N.B. make sure lib32-mesa-git uses same value for this as mesa-git to avoid problems !
+##
+###if [[ ! $MESA_WHICH_LLVM ]] ; then
+###    MESA_WHICH_LLVM=4
+###fi
+###
+###case $MESA_WHICH_LLVM in
+###    1)
+###        # aur lone_wolf-llvm-git
+###        makedepends+=('lib32-llvm-minimal-git')
+###        depends+=('lib32-llvm-libs-minimal-git')
+###        ;;
+###    2)
+###        # aur llvm-git
+###        # depending on aur-lib32-llvm-* to avoid mixup with LH llvm-git
+###        makedepends+=('aur-lib32-llvm-git')
+###        depends+=('aur-lib32-llvm-libs-git')
+###        ;;
+###    3)
+###        # mesa-git/llvm-git (lordheavy unofficial repo)
+###        makedepends+=('lib32-llvm-git')
+###        depends+=('lib32-llvm-libs-git')
+###        ;;
+###    4)
+###        # extra/llvm
+###        makedepends+=(lib32-llvm=8.0.0)
+###        depends+=(lib32-llvm-libs=8.0.0)
+###        ;;
+###    *)
+###esac
 
 
 pkgver() {
-    cd mesa
+    cd mesa-aco
     read -r _ver <VERSION
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
@@ -96,9 +109,9 @@ prepare() {
 build () {
     export CC="gcc -m32"
     export CXX="g++ -m32"
-    export PKG_CONFIG=/usr/bin/pkg-config-32  
+    export PKG_CONFIG=/usr/bin/pkg-config-32
 
-    meson setup mesa _build \
+    meson setup mesa-aco _build \
         --native-file llvm32.native \
         -D b_ndebug=true \
         -D buildtype=plain \
@@ -150,5 +163,5 @@ package() {
 
   # indirect rendering
   ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
-  install -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ -m644 "$srcdir"/LICENSE 
+  install -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ -m644 "$srcdir"/LICENSE
 }
