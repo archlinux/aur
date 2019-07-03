@@ -1,7 +1,7 @@
 pkgbase = nvidia-ck
 	pkgdesc = NVIDIA drivers for linux-ck.
 	pkgver = 430.26
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 2
 	url = http://www.nvidia.com/
 	arch = x86_64
