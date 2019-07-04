@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A set of message filters which take in messages and may output those messages at a later time, based on the conditions that filter needs met."
-url='http://ros.org/wiki/message_filters'
+url='https://wiki.ros.org/message_filters'
 
 pkgname='ros-melodic-message-filters-git'
 pkgver='29053c4'
