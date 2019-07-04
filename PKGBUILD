@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Template based exceptions - these are simple and practical and avoid the proliferation of exception types."
-url='http://wiki.ros.org/ecl_exceptions'
+url='https://wiki.ros.org/ecl_exceptions'
 
 pkgname='ros-melodic-ecl-exceptions'
 pkgver='0.62.1'
