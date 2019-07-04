@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Tools for directing, throttling, selecting, and otherwise messing with ROS topics at a meta level."
-url='http://ros.org/wiki/topic_tools'
+url='https://wiki.ros.org/topic_tools'
 
 pkgname='ros-melodic-topic-tools'
 pkgver='1.12.14'
