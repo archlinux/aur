@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - camera_calibration_parsers contains routines for reading and writing camera calibration parameters."
-url='http://ros.org/wiki/camera_calibration_parsers'
+url='https://wiki.ros.org/camera_calibration_parsers'
 
 pkgname='ros-melodic-camera-calibration-parsers'
 pkgver='1.11.13'
