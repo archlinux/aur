@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Wrapper interface for tracing libraries."
-url='http://www.ros.org/'
+url='https://github.com/bosch-robotics-cr/tracetools'
 
 pkgname='ros-melodic-tracetools'
 pkgver='0.1.0'
