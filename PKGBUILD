@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - CMake lint commands for ROS packages."
-url='http://ros.org/wiki/roslint'
+url='https://wiki.ros.org/roslint'
 
 pkgname='ros-melodic-roslint'
 pkgver='0.11.2'
