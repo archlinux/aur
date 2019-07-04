@@ -6,17 +6,13 @@
 # highlighted at https://github.com/bitpay/copay/issues/6204
 
 pkgname=copay
-pkgver=3.14.2
+pkgver=5.9.4
 pkgrel=1
 pkgdesc="Copay Bitcoin Wallet"
 arch=('x86_64')
 url="https://copay.io"
 license=('MIT')
-makedepends=('zip')
-depends=('npm' 'python2')
-
-# For some reason, stripping the massive copay binary breaks the app
-options=('!strip')
+depends=('npm')
 
 source=('copay.desktop')
 
@@ -32,12 +28,26 @@ source_x86_64=("${pkgname}-${pkgver}::git+https://github.com/bitpay/copay.git#ta
 # gpg --recv-keys 9D17E656BB3B6163AE9D71725CD600A61112CFA1
 #validpgpkeys=('9D17E656BB3B6163AE9D71725CD600A61112CFA1')
 
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    # Fragile patch to change { "linux": "target": [ "snap" ] } to "tar.gz"
+    # distribution instead of a snappy app
+    sed -i -e 's:\(\s*\)"snap"$:\1"tar.gz":' package.json
+}
+
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     npm run clean-all
+    npm install
+    #npm audit fix
     npm run apply:copay
-    npm run build:desktop
+
+    # Skip building Windows and MacOS distributions, default instructions
+    # attempt this with `npm run final:desktop`
+
+    npm run build:desktop-release
+    ./node_modules/.bin/electron-builder --linux
 }
 
 #
@@ -51,21 +61,18 @@ package() {
     cd ${pkgdir}/opt/copay
 
     # Unzip the binary package
-    unzip "${srcdir}/${pkgname}-${pkgver}/webkitbuilds/Copay-linux.zip"
-    
-    # Remove arch directory 
-    mv Copay-linux/* .
-    rmdir Copay-linux
+    tar --strip 1 -xvf "${srcdir}/${pkgname}-${pkgver}/dist/Copay-linux.tar.gz"
 
-    # Fix file permissions
-    find ${pkgdir}/opt/copay/ -type f -print0 | xargs -0 chmod a+r
+    # Permissions out of tar.gz are a mess, all 777, wtf?
+    find ${pkgdir}/opt/copay/ -print0 | xargs -0 chmod og-w
+    find ${pkgdir}/opt/copay/ -type f -print0 | xargs -0 chmod a-x
 
     # Symlink in to the default PATH
     mkdir -p ${pkgdir}/usr/bin
-    ln -s /opt/copay/Copay ${pkgdir}/usr/bin/copay
+    ln -s /opt/copay/copay ${pkgdir}/usr/bin/copay
+    chmod a+x ${pkgdir}/opt/copay/copay
 
     # Create desktop icon
-    mkdir -p "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/pixmaps"
-    install -m644 "${srcdir}/copay.desktop" "$pkgdir/usr/share/applications/copay.desktop"
-    ln -s "../../../opt/copay/512x512.png" "$pkgdir/usr/share/pixmaps/copay.png"
+    install -D -m644 "${srcdir}/copay.desktop" "$pkgdir/usr/share/applications/copay.desktop"
+    install -D -m644 "${srcdir}/${pkgname}-${pkgver}/resources/copay/linux/icon.png" "$pkgdir/usr/share/pixmaps/copay.png"
 }
