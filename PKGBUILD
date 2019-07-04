@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Common code for working with images in ROS."
-url='http://www.ros.org/wiki/image_common'
+url='https://www.wiki.ros.org/image_common'
 
 pkgname='ros-melodic-image-common'
 pkgver='1.11.13'
