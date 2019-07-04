@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Plays rosbags as though they were happening NOW."
-url='http://ros.org/wiki/rosbaglive'
+url='https://wiki.ros.org/rosbaglive'
 
 pkgname='ros-melodic-rosbaglive'
 pkgver='0.2.4'
