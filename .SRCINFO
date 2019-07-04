@@ -1,5 +1,5 @@
 pkgbase = linux-hynix
-	pkgver = 5.1.9-arch1
+	pkgver = 5.1.16-arch1
 	pkgrel = 1
 	url = https://git.archlinux.org/linux.git/log/?h=v5.0.3-arch1
 	arch = x86_64

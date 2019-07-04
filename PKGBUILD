@@ -6,7 +6,7 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-hynix       # Build kernel with a different name
-_srcver=5.1.9-arch1
+_srcver=5.1.16-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -30,7 +30,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '7caf46856bf2631ca6cec49fdcf9e309286c0e6e5b7347e7ed34d84f92cb49fa'
+            '20a1ae46dca5a08f2563edd04978b0222bbafd46f26caccacdbb29b7d935a344'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
