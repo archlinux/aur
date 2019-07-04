@@ -1,5 +1,5 @@
 pkgdesc="ROS - roscpp is a C++ implementation of ROS."
-url='http://ros.org/wiki/roscpp'
+url='https://wiki.ros.org/roscpp'
 
 pkgname='ros-melodic-roscpp-git'
 pkgver='29053c4'
