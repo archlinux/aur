@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - The tuw_object_msgs package."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/tuw_object_msgs'
 
 pkgname='ros-melodic-tuw-object-msgs'
 pkgver='0.0.6'
