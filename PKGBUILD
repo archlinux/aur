@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Message and service data structures."
-url='http://www.ros.org/'
+url='https://github.com/tuw-robotics/tuw_msgs'
 
 pkgname='ros-melodic-tuw-gazebo-msgs'
 pkgver='0.0.6'
