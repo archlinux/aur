@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - actionlib_msgs defines the common messages to interact with an action server and an action client."
-url='http://wiki.ros.org/actionlib_msgs'
+url='https://wiki.ros.org/actionlib_msgs'
 
 pkgname='ros-melodic-actionlib-msgs'
 pkgver='1.12.7'
