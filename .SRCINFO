@@ -2,7 +2,7 @@ pkgbase = ros-melodic-gazebo-dev
 	pkgdesc = ROS - Provides a cmake config for the default version of Gazebo for the ROS distribution.
 	pkgver = 2.8.4
 	pkgrel = 2
-	url = http://gazebosim.org/tutorials?cat=connect_ros
+	url = https://gazebosim\.org/tutorials\?cat=connect_ros
 	arch = any
 	license = Apache 2.0
 	makedepends = cmake

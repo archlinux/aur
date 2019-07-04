@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Provides a cmake config for the default version of Gazebo for the ROS distribution."
-url='http://gazebosim.org/tutorials?cat=connect_ros'
+url='https://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-melodic-gazebo-dev'
 pkgver='2.8.4'
