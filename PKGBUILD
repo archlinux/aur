@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - MAVLink message marshaling library."
-url='http://qgroundcontrol.org/mavlink/'
+url='https://qgroundcontrol.org/mavlink/'
 
 pkgname='ros-melodic-mavlink'
 pkgver='2018.10.10'
