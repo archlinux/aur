@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Components of MoveIt that offer interaction via interactive markers."
-url='http://moveit.ros.org'
+url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros-robot-interaction'
 pkgver='0.10.8'
