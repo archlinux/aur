@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - roscpp_serialization contains the code for serialization as described in MessagesSerializationAndAdaptingTypes."
-url='http://ros.org/wiki/roscpp_serialization'
+url='https://wiki.ros.org/roscpp_serialization'
 
 pkgname='ros-melodic-roscpp-serialization'
 pkgver='0.6.12'
