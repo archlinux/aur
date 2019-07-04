@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This library provides a standardized interface for processing data as a sequence of filters."
-url='http://ros.org/wiki/filters'
+url='https://wiki.ros.org/filters'
 
 pkgname='ros-melodic-filters'
 pkgver='1.8.1'
