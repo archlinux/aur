@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Generic keyboard teleop for twist robots."
-url='http://wiki.ros.org/teleop_twist_keyboard'
+url='https://wiki.ros.org/teleop_twist_keyboard'
 
 pkgname='ros-melodic-teleop-twist-keyboard'
 pkgver='0.6.1'
