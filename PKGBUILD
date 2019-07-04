@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - roscreate contains a tool that assists in the creation of ROS filesystem resources."
-url='http://ros.org/wiki/roscreate'
+url='https://wiki.ros.org/roscreate'
 
 pkgname='ros-melodic-roscreate'
 pkgver='1.14.6'
