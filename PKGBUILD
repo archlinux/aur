@@ -54,7 +54,7 @@ _major=5.1
 _minor=16
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -81,6 +81,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/arch-patches-v3/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches-v3/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
+        "${_lucjanpath}/network-patches-v2/0001-Bluetooth-Fix-minimum-encryption-key-size-check.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -381,6 +382,7 @@ sha512sums=('4d3292aa215e7a6a3cd65bb57fc19d029d9ba36fd8d91002c515f03dbad0563a46f
             '6d8f5f5999de7639da38385c48c8617baf1a74a986d648eb555f1e5213dc29ab52313f8f14a71330b678b577fbf0c1a40740cb6cab27f440fb2288b053bc6d8d'
             '2f7a1939c8e9e86b39a3385ef33f1fb738e507ae771696f57d5fa2032a46438c50e5ce54ad607643dffa0d544d401fc40616db9e88defcf7719f32efa3cdbefc'
             'ad3f2c10467341fcbf0f6a636aef0bf216d9c0d993d79ce3825e5432ad8261e6e596772931a6ac090742cf7299bdf72730e75184efc9502246ed521d79214034'
+            '7f373bc83050f7dd87e17faa1629c096a1cf9e861887443a9dae04e3681d9930399cb0bbd117684e9949f5b6d0461e81a73c34306a3d5cffa3cc30571a85965c'
             '74367a2e6f1a184f0731b4d8b8ed520166ef18c0488744e107644ed153c3a8191db8f3e98bfe7e2cedd37386e0518c709814675c0b110312bb8473a0f9dfca22'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
