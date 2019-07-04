@@ -1,6 +1,6 @@
 # Maintainer: mexus <gilaldpellaeon@gmail.com>
 pkgname=dua-cli
-pkgver=2.1.4
+pkgver=2.1.7
 pkgrel=1
 pkgdesc="A tool to conveniently learn about the disk usage of directories, fast!"
 arch=('x86_64')
@@ -9,13 +9,11 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("https://github.com/Byron/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('caba1fac9c893de8de64572808545321')
+md5sums=('99e7a774f247d08b99802e7be4621921')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    # TODO: add `--locked` when https://github.com/Byron/dua-cli/issues/20 is
-    #       resolved and an appropriate release is issued.
-    cargo build --release
+    cargo build --release --locked
 }
 
 package() {
