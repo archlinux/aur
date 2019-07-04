@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - tf2_eigen."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/tf2_eigen'
 
 pkgname='ros-melodic-tf2-eigen'
 pkgver='0.6.5'
