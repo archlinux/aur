@@ -2,7 +2,7 @@ pkgbase = ros-melodic-gazebo-ros-pkgs
 	pkgdesc = ROS - Interface for using ROS with the Gazebo simulator.
 	pkgver = 2.8.4
 	pkgrel = 1
-	url = http://gazebosim.org/tutorials?cat=connect_ros
+	url = https://gazebosim\.org/tutorials\?cat=connect_ros
 	arch = any
 	license = BSD,LGPL,Apache 2.0
 	makedepends = cmake
