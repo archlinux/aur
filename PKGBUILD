@@ -3,7 +3,7 @@
 # Maintainer: Fan Jiang <i@fanjiang.me>
 # Contributor: Sean Greenslade <aur@seangreenslade.com>
 pkgdesc="ROS - OMPL is a free sampling-based motion planning library."
-url='http://wiki.ros.org/ompl'
+url='https://ompl.kavrakilab.org'
 
 pkgname='ros-melodic-ompl'
 pkgver='1.4.0'
