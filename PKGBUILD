@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Message and service data structures for interacting with Gazebo from ROS."
-url='http://gazebosim.org/tutorials?cat=connect_ros'
+url='https://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-melodic-gazebo-msgs'
 pkgver='2.8.4'
