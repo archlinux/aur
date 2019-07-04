@@ -2,7 +2,7 @@
 
 
 pkgname=spectrum2
-pkgver=2.0.10
+pkgver=2.0.10.1
 pkgrel=1
 #epoch=
 pkgdesc="an open source instant messaging transport"
@@ -32,9 +32,8 @@ install=
 changelog=
 source=("https://github.com/SpectrumIM//$pkgname/archive/$pkgver.tar.gz"
         'spectrum2.service')
-sha256sums=('92cf8754b03e9b085190c76ab2f5a4d938319c80ef25f064981598a240e77ea8'
+sha256sums=('06a4e513c2db886a72dc61fbc2a4b40cdaee3bd34c39fc14f1e69e1e4b809f4a'
             '8b95ddcf90449dcd0dec111276c69d04a92d09a0f9e1815009b2179a8050c9d1')
-
 noextract=()
 validpgpkeys=()
 
