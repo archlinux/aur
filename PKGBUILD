@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - qt_dotgraph provides helpers to work with dot graphs."
-url='http://ros.org/wiki/qt_dotgraph'
+url='https://wiki.ros.org/qt_dotgraph'
 
 pkgname='ros-melodic-qt-dotgraph'
 pkgver='0.3.11'
