@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Meta-package of libraries for processing laser data, including converting laser data into 3D representations."
-url='http://www.ros.org/wiki/laser_pipeline'
+url='https://wiki.ros.org/laser_pipeline'
 
 pkgname='ros-melodic-laser-pipeline'
 pkgver='1.6.3'
