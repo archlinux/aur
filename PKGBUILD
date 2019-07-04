@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - ROS interface to the 3Dconnexion SpaceNavigator 6DOF joystick."
-url='http://www.ros.org/wiki/spacenav_node'
+url='https://www.wiki.ros.org/spacenav_node'
 
 pkgname='ros-melodic-spacenav-node'
 pkgver='1.12.0'
