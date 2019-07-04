@@ -1,7 +1,7 @@
 # Maintainer: Amanda <amanda at smart dot net>
 
 pkgname=grpcurl-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers'
 arch=('x86_64')
