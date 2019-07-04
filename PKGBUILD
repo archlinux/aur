@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - This package provides common interfaces for navigation specific robot actions."
-url='http://wiki.ros.org/nav_core'
+url='https://wiki.ros.org/nav_core'
 
 pkgname='ros-melodic-nav-core'
 pkgver='1.16.2'
