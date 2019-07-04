@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Tutorial showing how to compile your own C++ program with RViz displays and features."
-url='http://ros.org/wiki/librviz_tutorial'
+url='https://wiki.ros.org/librviz_tutorial'
 
 pkgname='ros-melodic-librviz-tutorial'
 pkgver='0.10.3'
