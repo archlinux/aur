@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - MoveIt interface to OMPL."
-url='http://moveit.ros.org'
+url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-planners-ompl'
 pkgver='0.10.8'
