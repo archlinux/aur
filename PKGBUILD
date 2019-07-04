@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - this package contains a set of messages that are used by the introspection interfaces for smach."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/smach_msgs'
 
 pkgname='ros-melodic-smach-msgs'
 pkgver='2.0.1'
