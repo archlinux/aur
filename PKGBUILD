@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Extra nodes and plugins for MAVROS."
-url='http://wiki.ros.org/mavros_extras'
+url='https://wiki.ros.org/mavros_extras'
 
 pkgname='ros-melodic-mavros-extras'
 pkgver='0.26.3'
