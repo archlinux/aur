@@ -2,13 +2,13 @@
 
 pkgname=zotero-esr-git
 pkgver=r10433.2186e939a
-pkgrel=1
-pkgdesc='Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources. This version relies on an existing installation of Firefox ESR52, instead of downloading a pre-compiled version during install. Additionally, the custom poppler utilities which Zotero relies on are compiled from source, which means that this version can be easily built on new architectures.'
+pkgrel=2
+pkgdesc='Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources. This version relies on an existing installation of Firefox ESR52. Also compiles custom poppler utils from source.'
 arch=('x86_64' 'aarch64')
 url='http://www.zotero.org'
 license=('GPL3')
-depends=('dbus-glib' 'gtk3' 'nss' 'libxt' 'firefox-esr52')
-makedepends=('cmake' 'npm' 'wget' 'zip' 'unzip' 'python2' 'python' 'rsync')
+depends=('firefox-esr52')
+makedepends=('cmake' 'npm' 'python' 'rsync' 'zip')
 conflicts=('zotero')
 replaces=('zotero')
 _src_dir_1=zotero-client
