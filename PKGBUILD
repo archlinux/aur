@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Library for visual odometry"
-url='http://www.ros.org/wiki/viso2'
+url='https://www.wiki.ros.org/viso2'
 
 pkgname='ros-melodic-libviso2'
 pkgver='0.0.1'
