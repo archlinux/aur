@@ -14,11 +14,9 @@ depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'pixman' 'libxcursor'
 makedepends=('git' 'ninja' 'python2' 'clang')
 conflicts=('aseprite' 'aseprite-gpl')
 source=("skia::git+https://github.com/aseprite/skia.git#branch=aseprite-m71"
-        "aseprite::git+https://github.com/aseprite/aseprite.git"
-        "aseprite.desktop")
+        "aseprite::git+https://github.com/aseprite/aseprite.git")
 sha256sums=('SKIP'
-            'SKIP'
-            '4faeb782805e3427eedb04d7485e3e2d4eac6680509515b521a9f64ef5d79490')
+            'SKIP')
 
 pkgver() {
     cd "${srcdir}/aseprite"
@@ -96,8 +94,12 @@ package() {
 
     cd "${srcdir}/aseprite"
 
-    install -Dm644 "${srcdir}/aseprite.desktop" "${pkgdir}/usr/share/applications/aseprite.desktop"
-    install -Dm644 "data/icons/ase48.png" "${pkgdir}/usr/share/pixmaps/aseprite.png"
+    install -Dm644 "src/desktop/linux/aseprite.desktop" "${pkgdir}/usr/share/applications/aseprite.desktop"
+    install -Dm644 "src/desktop/linux/mime/aseprite.xml" "${pkgdir}/usr/share/mime/packages/aseprite.xml"
+    for i in {16,32,48,64,128,256}; do
+        install -Dm644 "data/icons/ase${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/aseprite.png"
+        install -Dm644 "data/icons/doc${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/image-x-aseprite.png"
+    done
     install -Dm644 "EULA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
     install -Dm644 "$srcdir/skia/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
