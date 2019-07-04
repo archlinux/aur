@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - common_msgs contains messages that are widely used by other ROS packages."
-url='http://wiki.ros.org/common_msgs'
+url='https://wiki.ros.org/common_msgs'
 
 pkgname='ros-melodic-common-msgs'
 pkgver='1.12.7'
