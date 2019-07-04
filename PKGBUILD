@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - Mobile robot simulator http://rtv.github.com/Stage."
-url='http://rtv.github.com/Stage'
+pkgdesc="ROS - Mobile robot simulator https://rtvhub.com/Stage."
+url='https://rtvhub.com/Stage'
 
 pkgname='ros-melodic-stage'
 pkgver='4.3.0'
