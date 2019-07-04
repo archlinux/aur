@@ -1,12 +1,12 @@
 pkgbase = green-recorder
 	pkgdesc = A simple yet functional desktop recorder for Linux systems.
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/foss-project/green-recorder
 	arch = any
 	license = GPL3
 	makedepends = python2-setuptools
-	depends = python2-dbus
+	depends = python2-pydbus
 	depends = python2-gobject
 	depends = python2-urllib3
 	depends = ffmpeg

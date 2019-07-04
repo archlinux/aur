@@ -3,12 +3,12 @@
 
 pkgname=green-recorder
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple yet functional desktop recorder for Linux systems."
 arch=(any)
 url="https://github.com/foss-project/green-recorder"
 license=(GPL3)
-depends=(python2-dbus python2-gobject python2-urllib3 ffmpeg imagemagick
+depends=(python2-pydbus python2-gobject python2-urllib3 ffmpeg imagemagick
          xorg-xdpyinfo xorg-xwininfo libappindicator-gtk3 gawk)
 optdepends=('gnome-shell: Gnome on Wayland desktop recording')
 makedepends=(python2-setuptools)
