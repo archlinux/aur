@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - cpp_common contains C++ code for doing things that are not necessarily ROS related, but are useful for multiple packages."
-url='http://www.ros.org/wiki/cpp_common'
+url='https://wiki.ros.org/cpp_common'
 
 pkgname='ros-melodic-cpp-common'
 pkgver='0.6.12'
