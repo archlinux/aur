@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package provides a set of simple math utilities to work with angles."
-url='http://ros.org/wiki/angles'
+url='https://wiki.ros.org/angles'
 
 pkgname='ros-melodic-angles'
 pkgver='1.9.11'
