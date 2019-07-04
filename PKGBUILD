@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package contains a C++ parser for the Unified Robot Description Format (URDF), which is an XML format for representing a robot model."
-url='http://ros.org/wiki/urdf'
+url='https://wiki.ros.org/urdf'
 
 pkgname='ros-melodic-urdf'
 pkgver='1.13.1'
