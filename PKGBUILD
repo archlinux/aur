@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - The package provides the environment variables ROS_VERSION, ROS_DISTRO, ROS_PACKAGE_PATH, and ROS_ETC_DIR."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/ros_environment'
 
 pkgname='ros-melodic-ros-environment'
 pkgver='1.2.1'
