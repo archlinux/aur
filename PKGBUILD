@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Holds the action description and relevant messages for the move_base package."
-url='http://wiki.ros.org/move_base_msgs'
+url='https://wiki.ros.org/move_base_msgs'
 
 pkgname='ros-melodic-move-base-msgs'
 pkgver='1.13.0'
