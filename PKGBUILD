@@ -4,17 +4,18 @@
 
 pkgname=vim-python-mode
 _pkgname=python-mode
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A vim plugin that make vim into python IDE'
 arch=('any')
 license=('LGPL3')
 url='https://github.com/python-mode/python-mode'
-depends=('vim' 'python')
-optdepends=('python-astroid' 'autopep8' 'python-mccabe' 'python-pycodestyle' 'python-pydocstyle' 'python-pyflakes' 'pylama' 'python-pylint' 'python-rope' 'python-six' 'python-snowballstemmer')
+depends=('vim' 'python' 'python-astroid' 'autopep8' 'python-mccabe' 'python-pycodestyle' 'python-pydocstyle' 'python-pyflakes' 'python-pylint' 'python-rope' 'python-six' 'python-snowballstemmer')
+#pylama' '
 groups=('vim-plugins')
 source=("https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=(1dffe0cd0f70e0a1d55196fe885426fc13e1c89d15047f73aaf85b037c651fbd)
+sha256sums=('6197e6f2ab190e58a68f01ed784155f2273af31633fd49bb459e8fa498e834cd')
+
 
 package() {
   cd "${_pkgname}-${pkgver}"
