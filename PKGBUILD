@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Collection of cmake/make build tools primarily for ecl development itself, but also contains a few cmake modules useful outside of the ecl."
-url='http://wiki.ros.org/ecl_build'
+url='https://wiki.ros.org/ecl_build'
 
 pkgname='ros-melodic-ecl-build'
 pkgver='0.61.7'
