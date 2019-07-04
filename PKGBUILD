@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_action provides a feature to introspect all available ROS action (from actionlib) types."
-url='http://wiki.ros.org/rqt_action'
+url='https://wiki.ros.org/rqt_action'
 
 pkgname='ros-melodic-rqt-action'
 pkgver='0.4.9'
