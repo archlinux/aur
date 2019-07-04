@@ -1,0 +1,26 @@
+pkgbase = python-http3
+	pkgdesc = The next generation HTTP client for Python 3.
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://www.encode.io/http3/
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	makedepends = curl
+	depends = python>=3.6.0
+	depends = python-certifi
+	depends = python-chardet>=3.0.0
+	depends = python-chardet<4.0.0
+	depends = python-h11>=0.8.0
+	depends = python-h11<0.9.0
+	depends = python-h2>=3.0.0
+	depends = python-h2<4.0.0
+	depends = python-idna>=2.0.0
+	depends = python-idna<3.0.0
+	depends = python-rfc3986>=1.0.0
+	depends = python-rfc3986<2.0.0
+	source = https://files.pythonhosted.org/packages/source/h/http3/http3-0.6.6.tar.gz
+	sha256sums = 28da5a7737cd6f4fe5e97e7b7e02d65e2c9d19ae11bc3534e2bfa70f331002d9
+
+pkgname = python-http3
+
