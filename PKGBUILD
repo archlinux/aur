@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - The visulalization_marker_tutorials package."
-url='http://ros.org/wiki/visualization_marker_tutorials'
+url='https://wiki.ros.org/visualization_marker_tutorials'
 
 pkgname='ros-melodic-visualization-marker-tutorials'
 pkgver='0.10.3'
