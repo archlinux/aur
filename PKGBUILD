@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Tutorials showing how to call into rviz internals from python scripts."
-url='http://ros.org/wiki/rviz_python_tutorial'
+url='https://wiki.ros.org/rviz_python_tutorial'
 
 pkgname='ros-melodic-rviz-python-tutorial'
 pkgver='0.10.3'
