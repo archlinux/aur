@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package contains messages for defining shapes, such as simple solid object primitives (cube, sphere, etc), planes, and meshes."
-url='http://wiki.ros.org/shape_msgs'
+url='https://wiki.ros.org/shape_msgs'
 
 pkgname='ros-melodic-shape-msgs'
 pkgver='1.12.7'
