@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A set of plugins for publishing and subscribing to sensor_msgs/Image topics in representations other than raw pixel data."
-url='http://www.ros.org/wiki/image_transport_plugins'
+url='https://www.wiki.ros.org/image_transport_plugins'
 
 pkgname='ros-melodic-image-transport-plugins'
 pkgver='1.9.5'
