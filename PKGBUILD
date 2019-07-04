@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - A collection of tools for making a variety of generic ROS-related tasks easier."
-url='http://ros.org/wiki/wu_ros_tools'
+url='https://wiki.ros.org/wu_ros_tools'
 
 pkgname='ros-melodic-wu-ros-tools'
 pkgver='0.2.4'
