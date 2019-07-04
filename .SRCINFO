@@ -1,8 +1,8 @@
 pkgbase = python2-librouteros
 	pkgdesc = C library to communicate with network devices by MikroTik running their Linux-based operating system RouterOS.
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
-	url = https://github.com/octo/librouteros
+	url = https://github.com/luqasz/librouteros
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -11,8 +11,8 @@ pkgbase = python2-librouteros
 	depends = python2
 	depends = python2-setuptools
 	conflicts = librouteros-git
-	source = https://github.com/luqasz/librouteros/archive/2.2.0.tar.gz
-	sha256sums = cf5d390e8fe6bd178ad75e787da0320b187960dd9a876d0d4342be5ef9c0d7f1
+	source = https://github.com/luqasz/librouteros/archive/2.3.0.tar.gz
+	sha256sums = 5eaa802a781e021cb7a1e626c75f8c5a744d7c995251b4b408aabbc409daf4a1
 
 pkgname = python2-librouteros
 
