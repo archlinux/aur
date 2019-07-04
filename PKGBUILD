@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - mavros_msgs defines messages for MAVROS."
-url='http://wiki.ros.org/mavros_msgs'
+url='https://wiki.ros.org/mavros_msgs'
 
 pkgname='ros-melodic-mavros-msgs'
 pkgver='0.26.3'
