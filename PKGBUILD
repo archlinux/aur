@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package contains a C++ base class for URDF parsers."
-url='http://ros.org/wiki/urdf'
+url='https://wiki.ros.org/urdf'
 
 pkgname='ros-melodic-urdf-parser-plugin'
 pkgver='1.13.1'
