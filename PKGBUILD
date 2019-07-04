@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages and OpenCV images."
-url='http://www.ros.org/wiki/cv_bridge'
+url='https://www.wiki.ros.org/cv_bridge'
 
 pkgname='ros-melodic-cv-bridge'
 pkgver='1.13.0'
