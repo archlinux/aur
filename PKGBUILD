@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Drivers for the Asus Xtion and Primesense Devices."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/openni2_camera'
 
 pkgname='ros-melodic-openni2-camera'
 pkgver='0.3.0'
