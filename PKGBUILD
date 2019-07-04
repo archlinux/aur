@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - This package provides the c++ extensions for a variety of threaded programming tools."
-url='http://wiki.ros.org/ecl_threads'
+url='https://wiki.ros.org/ecl_threads'
 
 pkgname='ros-melodic-ecl-threads'
 pkgver='0.62.1'
