@@ -1,10 +1,11 @@
 pkgbase = alatools
 	pkgdesc = Tools for the Arch Linux Archive.
 	pkgver = 2018.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xyne.archlinux.ca/projects/alatools
 	arch = any
 	license = GPL
+	depends = python-xdg
 	depends = python3
 	source = https://xyne.archlinux.ca/projects/alatools/src/alatools-2018.12.tar.xz
 	source = https://xyne.archlinux.ca/projects/alatools/src/alatools-2018.12.tar.xz.sig
