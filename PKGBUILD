@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - ROS driver for a generic Linux joystick."
-url='http://www.ros.org/wiki/joy'
+url='https://www.wiki.ros.org/joy'
 
 pkgname='ros-melodic-joy'
 pkgver='1.12.0'
