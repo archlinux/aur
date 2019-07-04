@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rosbuild contains scripts for managing the CMake-based build system for ROS."
-url='http://ros.org/wiki/rosbuild'
+url='https://wiki.ros.org/rosbuild'
 
 pkgname='ros-melodic-rosbuild'
 pkgver='1.14.4'
