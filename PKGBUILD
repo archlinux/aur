@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package contains a set of conversion functions to convert common tf datatypes (point, vector, pose, etc) into semantically identical datatypes used by other libraries."
-url='http://www.ros.org/wiki/tf_conversions'
+url='https://wiki.ros.org/tf_conversions'
 
 pkgname='ros-melodic-tf-conversions'
 pkgver='1.12.0'
