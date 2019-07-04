@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Assorted shell commands for using ros with bash."
-url='http://www.ros.org/wiki/rosbash'
+url='https://wiki.ros.org/rosbash'
 
 pkgname='ros-melodic-rosbash'
 pkgver='1.14.6'
