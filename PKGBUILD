@@ -3,18 +3,18 @@
 
 pkgname=textext
 _pkgname=TexText
-pkgver=0.10.1
-pkgrel=0
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="An inkscape extension which lets you add LaTeX equations to your drawings"
 arch=('any')
 license=('custom:BSD')
 url="https://github.com/textext/textext"
-makedepends=('dos2unix')
-depends=('inkscape' 'texlive-core' 'python2')
-optdepends=('pdf2svg' 'pygtk' 'imagemagick6')
+makedepends=()
+depends=('inkscape' 'texlive-core' 'python2' 'pdf2svg')
+optdepends=('pygtk' 'imagemagick')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/textext/textext/releases/download/$pkgver/${_pkgname}-Linux-$pkgver.tar.gz")
 
-sha256sums=('084f3f6c1524b9591c976f39232c3d4e314fb4bdbe648ba605e4fd6d03d8d2ba')
+sha256sums=('7c4f3ce72d75fcd42d3837189b2056e60575a7b646a5e520a31137ae16850ac0')
 
 package() {
   install -d "$pkgdir"/usr/share/inkscape/extensions
