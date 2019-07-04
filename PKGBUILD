@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Xacro (XML Macros) Xacro is an XML macro language."
-url='http://ros.org/wiki/xacro'
+url='https://wiki.ros.org/xacro'
 
 pkgname='ros-melodic-xacro'
 pkgver='1.13.3'
