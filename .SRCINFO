@@ -1,4 +1,4 @@
-pkgbase = cpod-bin
+pkgbase = cpod
 	pkgdesc = A simple, beautiful podcast app.
 	pkgver = 1.27.1
 	pkgrel = 2

@@ -2,6 +2,7 @@
 # Maintainer: Avinash Ananth Narayan R <nashpapa@gmail.com>
 
 pkgname=cpod-bin
+pkgbase=cpod
 _pkgname=cpod
 pkgver=1.27.1
 pkgrel=2
