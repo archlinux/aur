@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Underlying data libraries for roscpp messages."
-url='http://www.ros.org/wiki/roscpp_core'
+url='https://www.wiki.ros.org/roscpp_core'
 
 pkgname='ros-melodic-roscpp-core'
 pkgver='0.6.12'
