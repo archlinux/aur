@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - turtle_tf demonstrates how to write a tf broadcaster and listener with the turtlesim."
-url='http://ros.org/wiki/turtle_tf'
+url='https://wiki.ros.org/turtle_tf'
 
 pkgname='ros-melodic-turtle-tf'
 pkgver='0.2.2'
