@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - ROS Python and C++ interfaces for universally unique identifiers."
-url='http://ros.org/wiki/unique_id'
+url='https://wiki.ros.org/unique_id'
 
 pkgname='ros-melodic-unique-id'
 pkgver='1.0.6'
