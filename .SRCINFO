@@ -1,12 +1,16 @@
 pkgbase = yada
-	pkgdesc = Yet Another Data Analyzer
-	pkgver = 1.0.0
+	pkgdesc = Yet another dotfile aggregator
+	pkgver = 0.4
 	pkgrel = 1
-	url = https://github.com/kyechou/aur-yada
-	arch = x86_64
+	url = https://github.com/apetresc/yada
+	arch = any
 	license = MIT
-	source = yada
-	sha512sums = 22d42a658cc7aece4f0a4308e17ed68ce5ac2fc58cd91cb5deda54966d15d414a64cd0c9e04000aa369ca9305465298014929b8fa195f4498a2866f1f40b777a
+	makedepends = git
+	depends = python-click>=7
+	depends = python-click<8
+	depends = python-setuptools
+	source = git+https://github.com/apetresc/yada.git#tag=v0.4
+	sha256sums = SKIP
 
 pkgname = yada
 

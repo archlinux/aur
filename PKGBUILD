@@ -1,19 +1,36 @@
-# Maintainer: Kuan-Yen Chou <forendef2846 at gmail dot com>
+# Maintainer: Adrian Petrescu <adrian@apetre.sc>
+# Contributor: Adrian Petrescu <adrian@apetre.sc>
 
 pkgname=yada
-pkgver=1.0.0
+pkgver=0.4
 pkgrel=1
-pkgdesc='Yet Another Data Analyzer'
-depends=()
-arch=('x86_64')
-url="https://github.com/kyechou/aur-yada"
-license=('MIT')
-source=("yada")
-sha512sums=('22d42a658cc7aece4f0a4308e17ed68ce5ac2fc58cd91cb5deda54966d15d414a64cd0c9e04000aa369ca9305465298014929b8fa195f4498a2866f1f40b777a')
+pkgdesc='Yet another dotfile aggregator'
+arch=(any)
+url=https://github.com/apetresc/yada
+license=(MIT)
+depends=(
+  'python-click>=7' 'python-click<8'
+  'python-setuptools'
+)
+makedepends=(
+  git
+    
+)
+source=(
+  git+https://github.com/apetresc/yada.git#tag=v${pkgver}
+)
+sha256sums=(
+  'SKIP'
+)
 
-package() {
-    cd "$srcdir"
-    install -Dm 755 yada -t "${pkgdir}/usr/bin/"
+build() {
+  cd ${pkgname}
+
+  python setup.py build sdist
 }
 
-# vim: set ts=4 sw=4 et :
+package() {
+  cd ${pkgname}
+
+  python setup.py install --root="${pkgdir}"
+}
