@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF frame tree."
-url='http://wiki.ros.org/rqt_tf_tree'
+url='https://wiki.ros.org/rqt_tf_tree'
 
 pkgname='ros-melodic-rqt-tf-tree'
 pkgver='0.5.8'
