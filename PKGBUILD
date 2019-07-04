@@ -5,13 +5,8 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
-#
-# ThomasV PGP key: gpg --recv-key 6694D8DE7BE8EE5631BED9502BD5824B7F9470E6
-# http://bitcoin-otc.com/viewgpg.php?nick=ThomasV
-#
-
 pkgname=electrum-git
-pkgver=20190617
+pkgver=20190703
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -81,7 +76,7 @@ build() {
     electrum/paymentrequest.proto
 
   echo 'Creating translations...'
-  python contrib/make_locale
+  python contrib/pull_locale
 
   echo 'Building...'
   python setup.py build
