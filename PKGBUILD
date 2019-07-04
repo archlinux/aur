@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Messages for robots using FourWheelSteering"
-url='http://wiki.ros.org/four_wheel_steering_msgs'
+url='https://wiki.ros.org/four_wheel_steering_msgs'
 
 pkgname='ros-melodic-four-wheel-steering-msgs'
 pkgver='1.0.0'
