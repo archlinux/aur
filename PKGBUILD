@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - 3D visualization tool for ROS."
-url='http://ros.org/wiki/rviz'
+url='https://wiki.ros.org/rviz'
 
 pkgname='ros-melodic-rviz'
 pkgver='1.13.3'
