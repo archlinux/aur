@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - XmlRpc++ is a C++ implementation of the XML-RPC protocol."
-url='http://xmlrpcpp.sourceforge.net'
+url='https://wiki.ros.org/xmlrpcpp'
 
 pkgname='ros-melodic-xmlrpcpp'
 pkgver='1.12.14'
