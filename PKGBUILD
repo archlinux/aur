@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - libuvc_ros metapackage."
-url='http://ros.org/wiki/libuvc_ros'
+url='https://wiki.ros.org/libuvc_ros'
 
 pkgname='ros-melodic-libuvc-ros'
 pkgver='0.0.10'
