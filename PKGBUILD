@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=ios-webkit-debug-proxy
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="DevTools proxy (WebKit Remote Debugging) for iOS devices (Safari Remote Web Inspector)"
 url="https://github.com/google/ios-webkit-debug-proxy"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('BSD')
 depends=('libimobiledevice')
 source=("https://github.com/google/ios-webkit-debug-proxy/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4e919a4d3dae329e3b4db7bfb2bd1b22c938fa86d59acaa6e99ef4eb65793dae')
+sha256sums=('5d3f71609b908910249a1bcdcb20c5e94f0cbea6418dc9f1d36ec2f41bed80a7')
 
 build() {
 	cd ios-webkit-debug-proxy-$pkgver
