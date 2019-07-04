@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Messages relating to the ROS Computation Graph."
-url='http://ros.org/wiki/rosgraph_msgs'
+url='https://wiki.ros.org/rosgraph_msgs'
 
 pkgname='ros-melodic-rosgraph-msgs'
 pkgver='1.11.2'
