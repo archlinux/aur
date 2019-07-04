@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Metapackage for moveit plugins."
-url='http://moveit.ros.org'
+url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-plugins'
 pkgver='0.10.8'
