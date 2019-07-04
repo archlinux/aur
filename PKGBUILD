@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - roslaunch is a tool for easily launching multiple ROS nodes locally and remotely via SSH, as well as setting parameters on the Parameter Server."
-url='http://ros.org/wiki/roslaunch'
+url='https://wiki.ros.org/roslaunch'
 
 pkgname='ros-melodic-roslaunch'
 pkgver='1.12.14'
