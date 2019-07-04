@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Launch files to open an RGBD device and load all nodelets to convert raw depth/RGB/IR streams to depth images, disparity images, and (registered) point clouds."
-url='http://www.ros.org/wiki/rgbd_launch'
+url='https://www.wiki.ros.org/rgbd_launch'
 
 pkgname='ros-melodic-rgbd-launch'
 pkgver='2.2.2'
