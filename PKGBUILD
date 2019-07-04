@@ -6,19 +6,19 @@
 # Contributor: Christian Neukirchen <chneukirchen@gmail.com>
 
 pkgname=autotrace
-_date=20190409
-_revision=48
+_date=20190624
+_revision=59
 pkgver=0.40.0.${_date}.${_revision}
-pkgrel=4
+pkgrel=1
 pkgdesc='An utility to trace bitmaps: convert bitmaps to vector graphics'
 arch=('i686' 'x86_64')
 url='https://github.com/autotrace/autotrace.git'
 license=('GPL' 'LGPL')
-depends=('libpng' 'pstoedit')
+depends=('libpng' 'pstoedit' 'libmagick6')
 makedepends=('intltool')
 options=('!libtool')
 source=("https://github.com/autotrace/autotrace/archive/travis-${_date}.${_revision}.tar.gz")
-sha512sums=('760422b7eb9c5ee3e33eb3d6dbf25a4d8a0890f015661f75dec5764377aadb67e0bdcf7e988a41c39614d3f550d7cdf56c1414e0ac5e074a65d6b746fce2d732')
+sha512sums=('ded8a0b7b0728b2a3315b40161e43327cee42b6d1e2210b0e0aac0418fd3b57dc60859c4d0aa00faee85a627edf38d1e40f0f6fa04c111ca51698fb5e0449b00')
 
 
 build() {
@@ -26,7 +26,7 @@ build() {
   autoreconf -ivf
   intltoolize --force
   aclocal
-  ./configure --prefix=/usr --with-pstoedit --without-magick
+  PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig ./configure --prefix=/usr --with-pstoedit 
   make
 }
 

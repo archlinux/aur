@@ -1,7 +1,7 @@
 pkgbase = autotrace
 	pkgdesc = An utility to trace bitmaps: convert bitmaps to vector graphics
-	pkgver = 0.40.0.20190409.48
-	pkgrel = 4
+	pkgver = 0.40.0.20190624.59
+	pkgrel = 1
 	url = https://github.com/autotrace/autotrace.git
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = autotrace
 	makedepends = intltool
 	depends = libpng
 	depends = pstoedit
+	depends = libmagick6
 	options = !libtool
-	source = https://github.com/autotrace/autotrace/archive/travis-20190409.48.tar.gz
-	sha512sums = 760422b7eb9c5ee3e33eb3d6dbf25a4d8a0890f015661f75dec5764377aadb67e0bdcf7e988a41c39614d3f550d7cdf56c1414e0ac5e074a65d6b746fce2d732
+	source = https://github.com/autotrace/autotrace/archive/travis-20190624.59.tar.gz
+	sha512sums = ded8a0b7b0728b2a3315b40161e43327cee42b6d1e2210b0e0aac0418fd3b57dc60859c4d0aa00faee85a627edf38d1e40f0f6fa04c111ca51698fb5e0449b00
 
 pkgname = autotrace
 
