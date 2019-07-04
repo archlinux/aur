@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_publisher provides a GUI plugin for publishing arbitrary messages with fixed or computed field values."
-url='http://wiki.ros.org/rqt_publisher'
+url='https://wiki.ros.org/rqt_publisher'
 
 pkgname='ros-melodic-rqt-publisher'
 pkgver='0.4.8'
