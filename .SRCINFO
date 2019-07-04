@@ -1,13 +1,13 @@
-pkgbase = cpod
+pkgbase = cpod-bin
 	pkgdesc = A simple, beautiful podcast app.
 	pkgver = 1.27.1
-	pkgrel = 1
-	url = https://github.com/z-------------/cumulonimbus
+	pkgrel = 2
+	url = https://github.com/z-------------/cpod
 	arch = x86_64
 	license = APACHE
-	replaces = cumulonimbus
-	source = https://github.com/z-------------/cumulonimbus/releases/download/v1.27.1/cpod_1.27.1_amd64.deb
+	replaces = cpod
+	source = https://github.com/z-------------/cpod/releases/download/v1.27.1/cpod_1.27.1_amd64.deb
 	sha256sums = 0c07b055619fe88e33079aa663ee6ef7cee833884e4a77327b3d34893a1db69b
 
-pkgname = cpod
+pkgname = cpod-bin
 
