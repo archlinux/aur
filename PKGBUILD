@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_robot_steering provides a GUI plugin for steering a robot using Twist messages."
-url='http://wiki.ros.org/rqt_robot_steering'
+url='https://wiki.ros.org/rqt_robot_steering'
 
 pkgname='ros-melodic-rqt-robot-steering'
 pkgver='0.5.9'
