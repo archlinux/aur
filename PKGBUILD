@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Convex Decomposition Tool for Robot Model."
-url='http://codesuppository.blogspot.com'
+url='https://codesuppository.blogspot.com'
 
 pkgname='ros-melodic-convex-decomposition'
 pkgver='0.1.12'
