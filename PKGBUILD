@@ -1,6 +1,6 @@
 # Maintainer: Anna <morganamilo@gmail.com>
 pkgname=pacdiffviewer
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Pacfiles manager."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -9,13 +9,17 @@ license=('GPL')
 depends=('vim')
 makedepends=('cargo')
 conflicts=('yaourt')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/pacdiffviewer/archive/0.1.0.tar.gz")
-sha512sums=('f07b4a2fb6d5ebbaeb00375e2b0c8e06ec68d0d265bfbf4bf325984b8653063806ae19a9b28653a3f9c87fb125a3f3c8a48b8c58dd7399927cb7f197840d1ac5')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/pacdiffviewer/archive/v$pkgver.tar.gz")
+sha512sums=('27698b8ce637b7e3c460bb90172155f48d84290131b6a11530ea12bd967d40a628b25e733bcd1efaa95085b5a79d84429fa85f5670a303e5dc33515b68107ee3')
 
 build() {
   cd "$pkgname-$pkgver"
 
-  COMPLETIONS_DIR=target cargo build --release --locked
+  if pacman -T pacman-git; then
+    _features=git
+  fi
+
+  COMPLETIONS_DIR=target cargo build --release --locked --features "$_features"
 }
 
 package() {
@@ -25,5 +29,5 @@ package() {
 
   install -Dm644 target/$pkgname.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname.bash"
   install -Dm644 target/$pkgname.fish "$pkgdir/usr/share/fish/completions/$pkgname.fish"
-  install -Dm644 target/_$pkgname "$pkgdir/usr/share/zsh/functions/Completion/Linux/_$pkgname"
+  install -Dm644 target/_$pkgname "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
