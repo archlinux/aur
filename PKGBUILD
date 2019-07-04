@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This metapackage depends on the SMACH library and ROS SMACH integration packages."
-url='http://ros.org/wiki/smach'
+url='https://wiki.ros.org/executive_smach'
 
 pkgname='ros-melodic-executive-smach'
 pkgver='2.0.1'
