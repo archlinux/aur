@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - KDL binding for tf2."
-url='http://ros.org/wiki/tf2'
+url='https://wiki.ros.org/tf2'
 
 pkgname='ros-melodic-tf2-kdl'
 pkgver='0.6.5'
