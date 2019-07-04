@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - ROS messages for universally unique identifiers."
-url='http://ros.org/wiki/uuid_msgs'
+url='https://wiki.ros.org/uuid_msgs'
 
 pkgname='ros-melodic-uuid-msgs'
 pkgver='1.0.6'
