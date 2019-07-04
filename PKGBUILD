@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - The smach_ros package contains extensions for the SMACH library to integrate it tightly with ROS."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/smach_ros'
 
 pkgname='ros-melodic-smach-ros'
 pkgver='2.0.1'
