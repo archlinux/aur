@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - The nodelet package is designed to provide a way to run multiple algorithms in the same process with zero copy transport between algorithms."
-url='http://ros.org/wiki/nodelet'
+url='https://wiki.ros.org/nodelet'
 
 pkgname='ros-melodic-nodelet'
 pkgver='1.9.16'
