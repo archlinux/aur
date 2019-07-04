@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Command to print aggregated diagnostic contents to the command line."
-url='http://www.ros.org/'
+url='https://github.com/ros/diagnostics'
 
 pkgname='ros-melodic-rosdiagnostic'
 pkgver='1.9.3'
