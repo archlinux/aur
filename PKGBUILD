@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rosgraph contains the rosgraph command-line tool, which prints information about the ROS Computation Graph."
-url='http://ros.org/wiki/rosgraph'
+url='https://wiki.ros.org/rosgraph'
 
 pkgname='ros-melodic-rosgraph'
 pkgver='1.14.3'
