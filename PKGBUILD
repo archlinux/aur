@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package provides a C++ interface for camera calibration information."
-url='http://ros.org/wiki/camera_info_manager'
+url='https://wiki.ros.org/camera_info_manager'
 
 pkgname='ros-melodic-camera-info-manager'
 pkgver='1.11.13'
