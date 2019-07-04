@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Placeholder package enabling generic export of media paths."
-url='http://ros.org/wiki/media_export'
+url='https://wiki.ros.org/media_export'
 
 pkgname='ros-melodic-media-export'
 pkgver='0.2.0'
