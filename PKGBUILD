@@ -1,12 +1,12 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=stmm-input
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Device input event library"
 url='https://www.efanomars.com/libraries/stmm-input'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL3','LGPL3')
 
 depends=('gtkmm')
 makedepends=('cmake' 'gcc' 'doxygen' 'graphviz' 'python')
@@ -16,7 +16,7 @@ optdepends=()
 #replaces=("stmm-input")
 #conflicts=("stmm-input")
 
-source=('git+https://gitlab.com/efanomars/stmm-input.git#commit=5ffe3c386557fdf9b4e7576414a644e430a7a428')
+source=('git+https://gitlab.com/efanomars/stmm-input.git#commit=23dbb77808e4539b4d9dc8c255dc8f8830eb3778')
 sha512sums=('SKIP')
 
 build() {
