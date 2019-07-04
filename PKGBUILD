@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_graph provides a GUI plugin for visualizing the ROS computation graph."
-url='http://wiki.ros.org/rqt_graph'
+url='https://wiki.ros.org/rqt_graph'
 
 pkgname='ros-melodic-rqt-graph'
 pkgver='0.4.10'
