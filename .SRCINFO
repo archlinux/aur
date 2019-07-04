@@ -1,8 +1,7 @@
 pkgbase = lz4-static
 	pkgdesc = Extremely fast compression algorithm (static version)
-	pkgver = 1.8.3
+	pkgver = 1.9.1
 	pkgrel = 1
-	epoch = 1
 	url = http://www.lz4.org/
 	arch = x86_64
 	license = GPL2
@@ -11,8 +10,8 @@ pkgbase = lz4-static
 	provides = lz4
 	conflicts = lz4
 	options = staticlibs
-	source = https://github.com/lz4/lz4/archive/v1.8.3.tar.gz
-	sha256sums = 33af5936ac06536805f9745e0b6d61da606a1f8b4cc5c04dd3cbaca3b9b4fc43
+	source = https://github.com/lz4/lz4/archive/v1.9.1.tar.gz
+	sha256sums = f8377c89dad5c9f266edc0be9b73595296ecafd5bfa1000de148096c50052dc4
 
 pkgname = lz4-static
 
