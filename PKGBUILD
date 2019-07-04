@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Common service definitions."
-url='http://ros.org/wiki/std_srvs'
+url='https://wiki.ros.org/std_srvs'
 
 pkgname='ros-melodic-std-srvs'
 pkgver='1.11.2'
