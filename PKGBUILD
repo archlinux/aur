@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Converts a 3D Point Cloud into a 2D laser scan."
-url='http://ros.org/wiki/perception_pcl'
+url='https://wiki.ros.org/perception_pcl'
 
 pkgname='ros-melodic-pointcloud-to-laserscan'
 pkgver='1.4.0'
