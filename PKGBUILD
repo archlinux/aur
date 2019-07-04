@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - This package provides implementations of the Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane."
-url='http://wiki.ros.org/base_local_planner'
+url='https://wiki.ros.org/base_local_planner'
 
 pkgname='ros-melodic-base-local-planner'
 pkgver='1.16.2'
