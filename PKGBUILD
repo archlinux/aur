@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_pose_view provides a GUI plugin for visualizing 3D poses."
-url='http://wiki.ros.org/rqt_pose_view'
+url='https://wiki.ros.org/rqt_pose_view'
 
 pkgname='ros-melodic-rqt-pose-view'
 pkgver='0.5.8'
