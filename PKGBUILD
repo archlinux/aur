@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
-pkgdesc="ROS - The State Machine Compiler (SMC) from http://smc.sourceforge.net/ converts a language-independent description of a state machine into the source code to support that state machine."
-url='http://smc.sourceforge.net/'
+pkgdesc="ROS - The State Machine Compiler (SMC) from https://smc.sourceforge.net/ converts a language-independent description of a state machine into the source code to support that state machine."
+url='https://smc.sourceforge.net/'
 
 pkgname='ros-melodic-smclib'
 pkgver='1.8.3'
