@@ -1,82 +1,103 @@
+# Maintainer: Justin Wong <jusw85 at hotmail dot com>
 # Contributor: Benoit Favre <benoit.favre@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite-git
-name=aseprite
-pkgver=1.2.8.r42.g594fe3fb9
+pkgver=v1.2.13.r0.gaf4fd54c2
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
-license=('custom')
-depends=('cmark' 'curl' 'freetype2' 'giflib' 'harfbuzz' 'libjpeg-turbo' 'libpng' 'libwebp' 'pixman' 'tinyxml' 'zlib')
-makedepends=('cmake' 'ninja')
+license=('BSD' 'custom')
+depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'pixman' 'libxcursor' 'fontconfig')
+makedepends=('git' 'ninja' 'python2' 'clang')
 conflicts=('aseprite' 'aseprite-gpl')
-source=("git+https://github.com/aseprite/aseprite.git"
+source=("skia::git+https://github.com/aseprite/skia.git#branch=aseprite-m71"
+        "aseprite::git+https://github.com/aseprite/aseprite.git"
         "aseprite.desktop")
 sha256sums=('SKIP'
+            'SKIP'
             '4faeb782805e3427eedb04d7485e3e2d4eac6680509515b521a9f64ef5d79490')
 
 pkgver() {
-    cd "$name"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
+    cd "${srcdir}/aseprite"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${name}"
+    cd "${srcdir}/aseprite"
 
-  less EULA.txt
-  echo "Do you accept the EULA? yes/NO"
-  read reply
-  [ "$reply" == "yes" ] || exit 1
+    less EULA.txt
+    echo "Do you accept the EULA? yes/NO"
+    read reply
+    [ "$reply" == "yes" ] || exit 1
 
-  git submodule update --init --recursive
-  mkdir -p build
+    git submodule update --init --recursive
+    mkdir -p build
+
+    cd "${srcdir}/skia"
+    python2 tools/git-sync-deps
+
+    mkdir -p "${srcdir}/.pkgbuild-bin"
+    ln -sf /usr/bin/python2 "${srcdir}/.pkgbuild-bin/python"
 }
 
 build() {
-  cd "${name}/build"
+    cd "${srcdir}/skia"
+    bin/gn gen out/Clang --args='is_debug=false is_official_build=true cc="clang" cxx="clang++" skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false'
+    ninja -C out/Clang skia
 
-  cmake -DWITH_WEBP_SUPPORT=ON \
-    -DUSE_SHARED_CMARK=ON \
-    -DUSE_SHARED_CURL=ON \
-    -DUSE_SHARED_FREETYPE=ON \
-    -DUSE_SHARED_GIFLIB=ON \
-    -DUSE_SHARED_HARFBUZZ=ON \
-    -DUSE_SHARED_JPEGLIB=ON \
-    -DUSE_SHARED_LIBPNG=ON \
-    -DUSE_SHARED_LIBLOADPNG=OFF \
-    -DUSE_SHARED_LIBWEBP=ON \
-    -DUSE_SHARED_PIXMAN=ON \
-    -DUSE_SHARED_TINYXML=ON \
-    -DUSE_SHARED_ZLIB=ON \
-    -DENABLE_UPDATER=OFF \
-    -DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
-    -DCMAKE_INSTALL_PREFIX:STRING=/usr \
-    -G Ninja ..
-  ninja aseprite
+    cd "${srcdir}/aseprite/build"
+    cmake \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DLAF_OS_BACKEND=skia \
+        -DSKIA_DIR="$srcdir/skia" \
+        -DSKIA_OUT_DIR="$srcdir/skia/out/Clang" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUSE_SHARED_CMARK=ON \
+        -DUSE_SHARED_CURL=ON \
+        -DUSE_SHARED_JPEGLIB=ON \
+        -DUSE_SHARED_GIFLIB=ON \
+        -DUSE_SHARED_ZLIB=ON \
+        -DUSE_SHARED_LIBPNG=ON \
+        -DUSE_SHARED_TINYXML=ON \
+        -DUSE_SHARED_PIXMAN=ON \
+        -DUSE_SHARED_FREETYPE=ON \
+        -DUSE_SHARED_HARFBUZZ=ON \
+        -G Ninja \
+        ..
+    export PATH="${srcdir}/.pkgbuild-bin":$PATH
+    ninja aseprite
 }
 
 package() {
-  cd "${name}"/build
+    cd "${srcdir}/aseprite/build"
+    DESTDIR="${pkgdir}" ninja install
 
-  DESTDIR="${pkgdir}" ninja install
-  install -Dm644 "$srcdir/$name.desktop" \
-    "$pkgdir/usr/share/applications/$name.desktop"
-  install -Dm644 "../data/icons/ase48.png" \
-    "$pkgdir/usr/share/pixmaps/$name.png"
-  install -Dm644 "../EULA.txt" "$pkgdir/usr/share/licenses/$name/EULA.txt"
+    # Remove extraneous files
+    # https://github.com/aseprite/aseprite/issues/1574
+    # https://github.com/aseprite/aseprite/issues/1602
+    rm -f "${pkgdir}"/usr/bin/bsd*
+    rm -f "${pkgdir}"/usr/lib/pkgconfig/libarchive.pc
+    rm -f "${pkgdir}"/usr/share/man/man1/bsd*
 
-  # Remove stuff belonging to libarchive (no cmake flag)
-  rm ${pkgdir}/usr/bin/bsd*
-  rm ${pkgdir}/usr/lib/pkgconfig/libarchive.pc
+    rm -f "${pkgdir}"/usr/bin/img2webp
+    rm -fr "${pkgdir}"/usr/include/webp/
+    rm -f "${pkgdir}"/usr/lib/libwebp*
+    rm -fr "${pkgdir}"/usr/share/WebP/
+    rm -f "${pkgdir}"/usr/share/man/man1/img2webp.1
 
-  # Remove stuff belonging to libwebp (cmake flag in place, still installed)
-  rm ${pkgdir}/usr/bin/img2webp
-  rm -r ${pkgdir}/usr/include/webp/
-  rm ${pkgdir}/usr/lib/libwebp*
-  rm -r ${pkgdir}/usr/share/WebP/
+    rm -f "${pkgdir}"/usr/include/json11.hpp
+    rm -f "${pkgdir}"/usr/lib/libjson11.a
+    rm -f "${pkgdir}"/usr/lib/pkgconfig/json11.pc
+
+    find "${pkgdir}" -type d -empty -delete
+
+    cd "${srcdir}/aseprite"
+
+    install -Dm644 "${srcdir}/aseprite.desktop" "${pkgdir}/usr/share/applications/aseprite.desktop"
+    install -Dm644 "data/icons/ase48.png" "${pkgdir}/usr/share/pixmaps/aseprite.png"
+    install -Dm644 "EULA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
+    install -Dm644 "$srcdir/skia/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
