@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Metapackage referencing tutorials related to rviz and visualization."
-url='http://ros.org/wiki/visualization_tutorials'
+url='https://wiki.ros.org/visualization_tutorials'
 
 pkgname='ros-melodic-visualization-tutorials'
 pkgver='0.10.3'
