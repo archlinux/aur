@@ -2,7 +2,7 @@
 
 _name=azure-cli
 pkgname=python-$_name
-pkgver=2.0.67
+pkgver=2.0.68
 pkgrel=1
 pkgdesc="Microsoft Azure Command-Line Tools"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python-applicationinsights' 'python-argcomplete' 'python-azure-git' 'p
          'python-tabulate' 'python-vsts-cd-manager' 'python-wheel' 'python-yaml')
 makedepends=('git' 'python-setuptools')
 source=("https://github.com/Azure/azure-cli/archive/azure-cli-${pkgver}.tar.gz")
-sha256sums=('677c04d47089bf4112b2aeb7a1f54ddb0897ad71de8e8d5ba3718096392564f6')
+sha256sums=('c10d637c4be06f6ed9d5a493152e2c1945e5a264aef165358697ae05d83a4257')
 
 build() {
   cd "$_name-$_name-$pkgver/src"
@@ -22,8 +22,7 @@ build() {
   for d in azure-cli \
                azure-cli-core \
                azure-cli-nspkg \
-               azure-cli-command_modules-nspkg \
-               command_modules/azure-cli-*/;
+               azure-cli-command_modules-nspkg;
   do cd $d;
      python setup.py build;
      cd -;
@@ -36,8 +35,7 @@ package() {
   for d in azure-cli \
                azure-cli-core \
                azure-cli-nspkg \
-               azure-cli-command_modules-nspkg \
-               command_modules/azure-cli-*/;
+               azure-cli-command_modules-nspkg;
   do cd $d;
      python setup.py install --root="$pkgdir" --optimize=1
      cd -;
