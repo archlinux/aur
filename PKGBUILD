@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Python implementation of bond, a mechanism for checking when another process has terminated."
-url='http://www.ros.org/wiki/bondpy'
+url='https://www.wiki.ros.org/bondpy'
 
 pkgname='ros-melodic-bondpy'
 pkgver='1.8.3'
