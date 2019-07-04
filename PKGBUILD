@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - qt_gui_cpp provides the foundation for C++-bindings for qt_gui and creates bindings for every generator available."
-url='http://ros.org/wiki/qt_gui_cpp'
+url='https://wiki.ros.org/qt_gui_cpp'
 
 pkgname='ros-melodic-qt-gui-cpp'
 pkgver='0.3.11'
