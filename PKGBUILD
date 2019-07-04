@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - A metapackage to aggregate several packages."
-url='http://www.ros.org/'
+url='https://github.com/ros/metapackages'
 
 pkgname='ros-melodic-perception'
 pkgver='1.4.1'
