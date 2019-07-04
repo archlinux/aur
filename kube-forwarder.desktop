@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Kube Forwarder
+Comment=Easy to use Kubernetes port forwarding manager
+Exec=kube-forwarder
+Terminal=false
+Type=Application
+Icon=kube-forwarder
