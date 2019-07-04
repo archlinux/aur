@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - nav_msgs defines the common messages used to interact with the navigation stack."
-url='http://wiki.ros.org/nav_msgs'
+url='https://wiki.ros.org/nav_msgs'
 
 pkgname='ros-melodic-nav-msgs'
 pkgver='1.12.7'
