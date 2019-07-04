@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - ros_control controller manager interface for MoveIt!."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/moveit_ros_control_interface'
 
 pkgname='ros-melodic-moveit-ros-control-interface'
 pkgver='0.10.8'
