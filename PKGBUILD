@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - An rqt-based tool that assists monitoring tasks for MoveIt! motion planner developers and users."
-url='http://wiki.ros.org/rqt_moveit'
+url='https://wiki.ros.org/rqt_moveit'
 
 pkgname='ros-melodic-rqt-moveit'
 pkgver='0.5.7'
