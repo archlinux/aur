@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - This package contains the description (mechanical, kinematic, visual, etc.) of the PR2 robot."
-url='http://ros.org/wiki/pr2_description'
+url='https://wiki.ros.org/pr2_description'
 
 pkgname='ros-melodic-pr2-description'
 pkgver='1.12.3'
