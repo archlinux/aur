@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - octovis is visualization tool for the OctoMap library based on Qt and libQGLViewer."
-url='http://octomap.github.io'
+url='https://octomaphub.io'
 
 pkgname='ros-melodic-octovis'
 pkgver='1.9.0'
