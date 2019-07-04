@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_gui_py enables GUI plugins to use the Python client library for ROS."
-url='http://ros.org/wiki/rqt_gui_py'
+url='https://wiki.ros.org/rqt_gui_py'
 
 pkgname='ros-melodic-rqt-gui-py'
 pkgver='0.5.0'
