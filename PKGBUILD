@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This is a set of tools for recording from and playing back to ROS topics."
-url='http://ros.org/wiki/rosbag'
+url='https://wiki.ros.org/rosbag'
 
 pkgname='ros-melodic-rosbag'
 pkgver='1.12.14'
