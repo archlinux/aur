@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Time and Duration implementations for C++ libraries, including roscpp."
-url='http://ros.org/wiki/rostime'
+url='https://wiki.ros.org/rostime'
 
 pkgname='ros-melodic-rostime'
 pkgver='0.6.12'
