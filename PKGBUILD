@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - ros_tutorials contains packages that demonstrate various features of ROS, as well as support packages which help demonstrate those features."
-url='http://www.ros.org/wiki/ros_tutorials'
+url='https://www.wiki.ros.org/ros_tutorials'
 
 pkgname='ros-melodic-ros-tutorials'
 pkgver='0.9.0'
