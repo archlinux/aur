@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_web is a simple web content viewer for rqt."
-url='http://wiki.ros.org/rqt_web'
+url='https://wiki.ros.org/rqt_web'
 
 pkgname='ros-melodic-rqt-web'
 pkgver='0.4.8'
