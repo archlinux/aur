@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Provides nodes to assemble point clouds from either LaserScan or PointCloud messages."
-url='http://ros.org/wiki/laser_assembler'
+url='https://wiki.ros.org/laser_assembler'
 
 pkgname='ros-melodic-laser-assembler'
 pkgver='1.7.6'
