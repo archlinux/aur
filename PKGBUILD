@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Includes various supporting tools and utilities for c++ programming."
-url='http://wiki.ros.org/ecl_utilities'
+url='https://wiki.ros.org/ecl_utilities'
 
 pkgname='ros-melodic-ecl-utilities'
 pkgver='0.62.1'
