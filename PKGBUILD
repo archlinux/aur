@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - This package provides an implementation of a 2D costmap."
-url='http://wiki.ros.org/costmap_2d'
+url='https://github.com/ros-planning/navigation'
 
 pkgname='ros-melodic-costmap-2d'
 pkgver='1.16.2'
