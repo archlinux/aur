@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Package modeling the run-time dependencies for language bindings of messages."
-url='http://ros.org/wiki/message_runtime'
+url='https://wiki.ros.org/message_runtime'
 
 pkgname='ros-melodic-message-runtime'
 pkgver='0.4.12'
