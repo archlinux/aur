@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This empty package allows to export rosbag migration rule files without depending on rosbag."
-url='http://ros.org/wiki/rosbag_migration_rule'
+url='https://wiki.ros.org/rosbag_migration_rule'
 
 pkgname='ros-melodic-rosbag-migration-rule'
 pkgver='1.0.0'
