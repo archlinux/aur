@@ -1,6 +1,6 @@
 pkgbase = upwork
 	pkgdesc = Desktop App 64-bit Standard version
-	pkgver = 5.2.3.757
+	pkgver = 5.2.3.763
 	pkgrel = 1
 	url = https://www.upwork.com/downloads?source=Footer
 	install = upwork.install
@@ -15,8 +15,8 @@ pkgbase = upwork
 	source = xdg_session_type.patch
 	md5sums = bb535c74d4673cee6437b04d33b32138
 	md5sums = c99eddfeb02a2dc5272b82b276b88c8a
-	source_x86_64 = https://updates-desktopapp.upwork.com/binaries/v5_2_3_757_3idn3cdxmlq3m6d5/upwork_5.2.3.757_amd64.deb
-	md5sums_x86_64 = 4ce1917c2524555bc4008fb1fb91e1da
+	source_x86_64 = https://updates-desktopapp.upwork.com/binaries/v5_2_3_763_hzp6dgwl5mhvzul3/upwork_5.2.3.763_amd64.deb
+	md5sums_x86_64 = 7a17276d9a69c1e489a63de0eca5f402
 
 pkgname = upwork
 
