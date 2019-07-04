@@ -23,8 +23,10 @@ pkgbase = aseprite-git
 	conflicts = aseprite-gpl
 	source = skia::git+https://github.com/aseprite/skia.git#branch=aseprite-m71
 	source = aseprite::git+https://github.com/aseprite/aseprite.git
+	source = desktop.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = bcb6229e42cef16a8a0273c2fce67ce81d243a085c90bd52ac15183e757ff875
 
 pkgname = aseprite-git
 

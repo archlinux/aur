@@ -32,6 +32,7 @@ prepare() {
     [ "$reply" == "yes" ] || exit 1
 
     git submodule update --init --recursive
+    patch --strip=1 --input="${srcdir}/desktop.patch"
     mkdir -p build
 
     cd "${srcdir}/skia"
