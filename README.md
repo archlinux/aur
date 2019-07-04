@@ -1,6 +1,6 @@
 # torrentflix
 
-CLI to search torrent sites and stream with [peerflix][1].
+CLI to search torrent sites and stream with [peerflix][1] for Arch Linux.
 
 ## Original Repository
 
