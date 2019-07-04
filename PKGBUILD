@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Common code for working with audio in ROS."
-url='http://ros.org/wiki/audio_common'
+url='https://wiki.ros.org/audio_common'
 
 pkgname='ros-melodic-audio-common'
 pkgver='0.3.2'
