@@ -1,0 +1,21 @@
+pkgbase = php-xhprof-extension
+	pkgdesc = Tideways XHProf Extension
+	pkgver = 4.1.7
+	pkgrel = 1
+	url = https://github.com/tideways/php-xhprof-extension
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = php
+	makedepends = git
+	depends = php>=5.4.0
+	provides = php-xhprof-extension
+	conflicts = php-xhprof-extension
+	conflicts = php-tideways
+	source = https://github.com/tideways/php-profiler-extension/archive/v4.1.7.tar.gz
+	source = https://github.com/tideways/profiler/releases/download/v2.0.18/Tideways.php
+	sha256sums = 3e32ceacc9eec481e27b5df6d06de1e634294e2af9a64fe069bc686dba54fcb8
+	sha256sums = f42634018d6af06cedf8ed2f12f7f5f705db46e9dabf5b3cd3700826f75af4b9
+
+pkgname = php-xhprof-extension
+
