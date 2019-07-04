@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - qt_gui_py_common provides common functionality for GUI plugins written in Python."
-url='http://ros.org/wiki/qt_gui_py_common'
+url='https://wiki.ros.org/qt_gui_py_common'
 
 pkgname='ros-melodic-qt-gui-py-common'
 pkgver='0.3.11'
