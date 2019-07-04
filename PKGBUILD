@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A collection of .mk include files for building ROS architectural elements."
-url='http://www.ros.org/wiki/ROS'
+url='https://wiki.ros.org/mk'
 
 pkgname='ros-melodic-mk'
 pkgver='1.14.6'
