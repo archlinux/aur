@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - The pluginlib_tutorials package."
-url='http://www.ros.org/wiki/pluginlib/Tutorials'
+url='https://www.wiki.ros.org/pluginlib/Tutorials'
 
 pkgname='ros-melodic-pluginlib-tutorials'
 pkgver='0.1.11'
