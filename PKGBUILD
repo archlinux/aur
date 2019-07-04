@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - ROS messages for Geographic Information Systems."
-url='http://wiki.ros.org/geographic_msgs'
+url='https://wiki.ros.org/geographic_msgs'
 
 pkgname='ros-melodic-geographic-msgs'
 pkgver='0.5.3'
