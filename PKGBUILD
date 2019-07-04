@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Introduces a compile time concept checking mechanism that can be used most commonly to check for required functionality when passing template arguments."
-url='http://wiki.ros.org/ecl_concepts'
+url='https://wiki.ros.org/ecl_concepts'
 
 pkgname='ros-melodic-ecl-concepts'
 pkgver='0.62.1'
