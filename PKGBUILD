@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - A metapackage of Emacs utils for ROS."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/ros_emacs_utils'
 
 pkgname='ros-melodic-ros-emacs-utils'
 pkgver='0.4.12'
