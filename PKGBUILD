@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Single image rectification and color processing."
-url='http://www.ros.org/wiki/image_proc'
+url='https://wiki.ros.org/image_proc'
 
 pkgname='ros-melodic-image-proc'
 pkgver='1.12.23'
