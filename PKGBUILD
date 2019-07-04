@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Metapackage of rqt plugins that are particularly used with robots during its operation."
-url='http://ros.org/wiki/rqt_robot_plugins'
+url='https://wiki.ros.org/rqt_robot_plugins'
 
 pkgname='ros-melodic-rqt-robot-plugins'
 pkgver='0.5.7'
