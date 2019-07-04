@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_logger_level provides a GUI plugin for configuring the logger level of ROS nodes."
-url='http://wiki.ros.org/rqt_logger_level'
+url='https://wiki.ros.org/rqt_logger_level'
 
 pkgname='ros-melodic-rqt-logger-level'
 pkgver='0.4.8'
