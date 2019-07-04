@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package defines messages commonly used in mapping packages."
-url='http://ros.org/wiki/map_msgs'
+url='https://wiki.ros.org/map_msgs'
 
 pkgname='ros-melodic-map-msgs'
 pkgver='1.13.0'
