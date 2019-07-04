@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - tf2_tools."
-url='http://wiki.ros.org/tf2_tools'
+url='https://www.wiki.ros.org/tf2_tools'
 
 pkgname='ros-melodic-tf2-tools'
 pkgver='0.6.2'
