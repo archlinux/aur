@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This unary stack contains the dynamic_reconfigure package which provides a means to change node parameters at any time without having to restart the node."
-url='http://ros.org/wiki/dynamic_reconfigure'
+url='https://wiki.ros.org/dynamic_reconfigure'
 
 pkgname='ros-melodic-dynamic-reconfigure'
 pkgver='1.6.0'
