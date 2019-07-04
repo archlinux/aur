@@ -1,6 +1,6 @@
 pkgbase = oxipng
 	pkgdesc = A lossless PNG compression optimiser
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/shssoichiro/oxipng
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = oxipng
 	makedepends = cargo
 	makedepends = rust
 	depends = gcc-libs
-	source = oxipng-2.2.1.tar.gz::https://github.com/shssoichiro/oxipng/archive/v2.2.1.tar.gz
-	sha256sums = ee848766b989ed83964c0360eafc39e3434d017bd374dc7283b28e3d1f6533a8
+	source = oxipng-2.2.2.tar.gz::https://github.com/shssoichiro/oxipng/archive/v2.2.2.tar.gz
+	sha256sums = f2addda729b287ce02a2b853aaa22420ee00cf20e178d6f2238c03438e89c7fb
 
 pkgname = oxipng
 
