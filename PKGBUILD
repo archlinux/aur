@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Conversion functions between: - Eigen and KDL - Eigen and geometry_msgs."
-url='http://ros.org/wiki/eigen_conversions'
+url='https://wiki.ros.org/eigen_conversions'
 
 pkgname='ros-melodic-eigen-conversions'
 pkgver='1.12.0'
