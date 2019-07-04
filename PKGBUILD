@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - tf2_geometry_msgs."
-url='http://www.ros.org/wiki/tf2_ros'
+url='https://www.wiki.ros.org/tf2_ros'
 
 pkgname='ros-melodic-tf2-geometry-msgs'
 pkgver='0.6.5'
