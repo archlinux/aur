@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package contains a tool for setting and publishing joint state values for a given URDF."
-url='http://www.ros.org/wiki/joint_state_publisher'
+url='https://www.wiki.ros.org/joint_state_publisher'
 
 pkgname='ros-melodic-joint-state-publisher'
 pkgver='1.12.13'
