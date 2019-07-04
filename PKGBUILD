@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Lisp client library for ROS, the Robot Operating System."
-url='http://ros.org/wiki/roslisp'
+url='https://wiki.ros.org/roslisp'
 
 pkgname='ros-melodic-roslisp'
 pkgver='1.9.22'
