@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - roswtf is a tool for diagnosing issues with a running ROS system."
-url='http://ros.org/wiki/roswtf'
+url='https://wiki.ros.org/roswtf'
 
 pkgname='ros-melodic-roswtf'
 pkgver='1.12.14'
