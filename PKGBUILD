@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Persistent storage of ROS messages."
-url='http://ros.org/wiki/warehouse_ros'
+url='https://wiki.ros.org/warehouse_ros'
 
 pkgname='ros-melodic-warehouse-ros'
 pkgver='0.9.0'
