@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A bond allows two processes, A and B, to know when the other has terminated, either cleanly or by crashing."
-url='http://www.ros.org/wiki/bond'
+url='https://www.wiki.ros.org/bond'
 
 pkgname='ros-melodic-bond'
 pkgver='1.8.3'
