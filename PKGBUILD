@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Tutorials showing how to write plugins for RViz."
-url='http://ros.org/wiki/rviz_plugin_tutorials'
+url='https://wiki.ros.org/rviz_plugin_tutorials'
 
 pkgname='ros-melodic-rviz-plugin-tutorials'
 pkgver='0.10.3'
