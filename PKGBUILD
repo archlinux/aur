@@ -6,30 +6,34 @@
 
 _target="arm-linux-gnueabihf"
 pkgname="${_target}-gcc"
-pkgver=8.2.1+20181127
+pkgver=9.1.0
 _majorver=${pkgver:0:1}
-_islver=0.20
-pkgrel=1
+_islver=0.21
+pkgrel=2
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
-url='http://gcc.gnu.org'
-depends=("${_target}-binutils>=2.31.1-4" "${_target}-glibc>=2.28-5" libmpc elfutils zlib)
+url='https://gcc.gnu.org'
+depends=("${_target}-binutils>=2.32-2" "${_target}-glibc>=2.29-3" libmpc elfutils zlib)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs !distcc !strip)
 conflicts=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 replaces=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 provides=("${_target}-gcc-stage1=${pkgver}" "${_target}-gcc-stage2=${pkgver}")
-#source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
+#source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz{,.sig}
+source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
+        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
+        bz90397.patch
+        bz90949.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('6f64ffda2839e96a8551b767bf4f92be4e7a09377ea40058355b4eeb13bc3800'
+sha256sums=('79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0'
             'SKIP'
-            'b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2')
+            'd18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859'
+            'cc20d05bcc6cb35bf0944b391f0b0380af375f2a8a03ce1cd67835884bc41fac'
+            'c860819e730faf1621e1286ebe3a0179df6e25182b81a9ca0a3db02633982a14')
 
 _svnrev=264010
 _svnurl=svn://gcc.gnu.org/svn/gcc/branches/gcc-${_majorver}-branch
@@ -38,6 +42,12 @@ _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
   cd gcc
+
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=90397
+  patch -p0 -i "$srcdir/bz90397.patch"
+
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=90949
+  patch -p0 -i "$srcdir/bz90949.patch"
 
   # link isl for in-tree build
   ln -s ../isl-${_islver} isl
