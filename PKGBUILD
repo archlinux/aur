@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - roscpp_traits contains the message traits code as described in MessagesTraits."
-url='http://ros.org/wiki/roscpp_traits'
+url='https://wiki.ros.org/roscpp_traits'
 
 pkgname='ros-melodic-roscpp-traits'
 pkgver='0.6.12'
