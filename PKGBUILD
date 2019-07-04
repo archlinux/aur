@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - The move_base package provides an implementation of an action (see the actionlib package) that, given a goal in the world, will attempt to reach it with a mobile base."
-url='http://wiki.ros.org/move_base'
+url='https://wiki.ros.org/move_base'
 
 pkgname='ros-melodic-move-base'
 pkgver='1.16.2'
