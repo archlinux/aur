@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A simple viewer for ROS image topics."
-url='http://www.ros.org/wiki/image_view'
+url='https://wiki.ros.org/image_view'
 
 pkgname='ros-melodic-image-view'
 pkgver='1.13.0'
