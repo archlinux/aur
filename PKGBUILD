@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Python library to assist in publishing markers easily."
-url='http://ros.org/wiki/easy_markers'
+url='https://wiki.ros.org/easy_markers'
 
 pkgname='ros-melodic-easy-markers'
 pkgver='0.2.4'
