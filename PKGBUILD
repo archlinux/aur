@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - RQT plugin for monitoring ROS processes."
-url='http://wiki.ros.org/rqt_top'
+url='https://wiki.ros.org/rqt_top'
 
 pkgname='ros-melodic-rqt-top'
 pkgver='0.4.8'
