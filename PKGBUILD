@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A metapackage for geometry library suite."
-url='http://www.ros.org/wiki/geometry'
+url='https://www.wiki.ros.org/geometry'
 
 pkgname='ros-melodic-geometry'
 pkgver='1.12.0'
