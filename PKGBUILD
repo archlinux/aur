@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - tf2_msgs."
-url='http://www.ros.org/wiki/tf2_msgs'
+url='https://www.wiki.ros.org/tf2_msgs'
 
 pkgname='ros-melodic-tf2-msgs'
 pkgver='0.6.5'
