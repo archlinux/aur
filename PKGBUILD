@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - This package provides ROS specific hooks for stage."
-url='http://ros.org/wiki/stage_ros'
+url='https://wiki.ros.org/stage_ros'
 
 pkgname='ros-melodic-stage-ros'
 pkgver='1.8.0'
