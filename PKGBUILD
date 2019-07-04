@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - ROS wrapper for slime."
-url='http://common-lisp.net/project/slime'
+url='https://common-lisp.net/project/slime'
 
 pkgname='ros-melodic-slime-wrapper'
 pkgver='0.4.12'
