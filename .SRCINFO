@@ -1,6 +1,6 @@
 pkgbase = librepo
 	pkgdesc = Repodata downloading library
-	pkgver = 1.10.3
+	pkgver = 1.10.4
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/librepo
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = librepo
 	depends = openssl
 	depends = zchunk>=0.9.11
 	optdepends = python: for python bindings
-	source = https://github.com/rpm-software-management/librepo/archive/1.10.3/librepo-1.10.3.tar.gz
-	md5sums = c5b959a9142c75956648968762d953d0
+	source = https://github.com/rpm-software-management/librepo/archive/1.10.4/librepo-1.10.4.tar.gz
+	md5sums = f0e872d01ec293ee45f84ae4fd4d5d9c
 
 pkgname = librepo
 

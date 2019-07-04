@@ -1,5 +1,5 @@
 pkgname=librepo
-pkgver=1.10.3
+pkgver=1.10.4
 pkgrel=1
 pkgdesc="Repodata downloading library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ checkdepends=('check' 'python-flask' 'python-gpgme' 'python-nose'
               'python-pyxattr' 'python-requests')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('c5b959a9142c75956648968762d953d0')
+md5sums=('f0e872d01ec293ee45f84ae4fd4d5d9c')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -25,6 +25,7 @@ build() {
 	cmake -DCMAKE_BUILD_TYPE=Release \
 	      -DCMAKE_C_FLAGS="$CFLAGS $CPPFLAGS" \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DCMAKE_INSTALL_LIBDIR=lib \
 	      -DPYTHON_DESIRED=3 \
 	      -DENABLE_DOCS=OFF \
 	      -DENABLE_PYTHON_TESTS=ON \
@@ -41,11 +42,8 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"/build
+
 	make DESTDIR="$pkgdir/" install
-	if [[ "$CARCH" == "x86_64" ]]; then
-		mv "$pkgdir/"usr/lib64/* "$pkgdir/"usr/lib
-		rmdir "$pkgdir/"usr/lib64
-	fi
 
 	install -Dp -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
