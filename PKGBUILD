@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rosconsole_bridge is a package used in conjunction with console_bridge and rosconsole for connecting console_bridge-based logging to rosconsole-based logging."
-url='http://www.ros.org/wiki/rosconsole_bridge'
+url='https://www.wiki.ros.org/rosconsole_bridge'
 
 pkgname='ros-melodic-rosconsole-bridge'
 pkgver='0.5.3'
