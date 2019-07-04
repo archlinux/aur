@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - This library provides lean and mean error mechanisms."
-url='http://wiki.ros.org/ecl_errors'
+url='https://wiki.ros.org/ecl_errors'
 
 pkgname='ros-melodic-ecl-errors'
 pkgver='0.61.6'
