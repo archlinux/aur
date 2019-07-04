@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - The dynamicEDT3D library implements an inrementally updatable Euclidean distance transform (EDT) in 3D."
-url='http://octomap.github.io'
+url='https://octomaphub.io'
 
 pkgname='ros-melodic-dynamic-edt-3d'
 pkgver='1.9.0'
