@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - ROS communications-related packages, including core client libraries (roscpp, rospy) and graph introspection tools (rostopic, rosnode, rosservice, rosparam)."
-url='http://www.ros.org/wiki/ros_comm'
+url='https://wiki.ros.org/ros_comm'
 
 pkgname='ros-melodic-ros-comm'
 pkgver='1.12.14'
