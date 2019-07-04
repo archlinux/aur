@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Nodelet Core Metapackage."
-url='http://www.ros.org/wiki/nodelet_core'
+url='https://www.wiki.ros.org/nodelet_core'
 
 pkgname='ros-melodic-nodelet-core'
 pkgver='1.9.16'
