@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - gazebo_ros_control."
-url='http://ros.org/wiki/gazebo_ros_control'
+url='https://wiki.ros.org/gazebo_ros_control'
 
 pkgname='ros-melodic-gazebo-ros-control'
 pkgver='2.8.4'
