@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Package modeling the build-time dependencies for generating language bindings of messages."
-url='http://ros.org/wiki/message_generation'
+url='https://github.com/ros/message_generation'
 
 pkgname='ros-melodic-message-generation'
 pkgver='0.4.0'
