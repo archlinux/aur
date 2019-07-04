@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Contains a set of tools that can be used from a hard realtime thread, without breaking the realtime behavior."
-url='http://ros.org/wiki/realtime_tools'
+url='https://wiki.ros.org/realtime_tools'
 
 pkgname='ros-melodic-realtime-tools'
 pkgver='1.13.1'
