@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Stereo and single image rectification and disparity processing."
-url='http://www.ros.org/wiki/stereo_image_proc'
+url='https://github.com/ros-perception/image_pipeline'
 
 pkgname='ros-melodic-stereo-image-proc'
 pkgver='1.12.23'
