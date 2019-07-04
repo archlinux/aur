@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rosclean: cleanup filesystem resources (e.g."
-url='http://ros.org/wiki/rosclean'
+url='https://wiki.ros.org/rosclean'
 
 pkgname='ros-melodic-rosclean'
 pkgver='1.14.6'
