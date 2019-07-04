@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - chomp motion planner"
-url='http://ros.org/wiki/chomp_motion_planner'
+url='https://wiki.ros.org/chomp_motion_planner'
 
 pkgname='ros-melodic-chomp-motion-planner'
 pkgver='0.10.5'
