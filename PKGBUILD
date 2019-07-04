@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Launch files to start the openni2_camera drivers using rgbd_launch."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/openni2_launch'
 
 pkgname='ros-melodic-openni2-launch'
 pkgver='0.2.3'
