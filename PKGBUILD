@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=jwm-git
-pkgver=s1685.r6.d5ca153
+pkgver=s1685.r8.71c1549
 pkgrel=1
 pkgdesc="JWM is a light-weight window manager for the X11 Window System. Git version."
 arch=('i686' 'x86_64')
