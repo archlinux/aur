@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package retrieves data from url-format files such as http://, ftp://, package:// file://, etc., and loads the data into memory."
-url='http://ros.org/wiki/resource_retriever'
+url='https://wiki.ros.org/resource_retriever'
 
 pkgname='ros-melodic-resource-retriever'
 pkgver='1.12.4'
