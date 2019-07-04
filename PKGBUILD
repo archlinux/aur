@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - image_geometry contains C++ and Python libraries for interpreting images geometrically."
-url='http://www.ros.org/wiki/image_geometry'
+url='https://wiki.ros.org/image_geometry'
 
 pkgname='ros-melodic-image-geometry'
 pkgver='1.13.0'
