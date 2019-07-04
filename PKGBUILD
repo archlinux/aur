@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Tests for MAVROS package."
-url='http://www.ros.org/'
+url='https://github.com/mavlink/mavros'
 
 pkgname='ros-melodic-test-mavros'
 pkgver='0.26.3'
