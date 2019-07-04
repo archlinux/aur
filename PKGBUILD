@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - stereo_msgs contains messages specific to stereo processing, such as disparity images."
-url='http://wiki.ros.org/stereo_msgs'
+url='https://wiki.ros.org/stereo_msgs'
 
 pkgname='ros-melodic-stereo-msgs'
 pkgver='1.12.7'
