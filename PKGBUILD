@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Conversion functions between KDL and geometry_msgs types."
-url='http://ros.org/wiki/kdl_conversions'
+url='https://wiki.ros.org/kdl_conversions'
 
 pkgname='ros-melodic-kdl-conversions'
 pkgver='1.12.0'
