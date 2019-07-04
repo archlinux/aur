@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A metapackage which extends ros_core and includes other basic non-robot tools like actionlib, dynamic reconfigure, nodelets, and pluginlib."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/ros_base'
 
 pkgname='ros-melodic-ros-base'
 pkgver='1.4.1'
