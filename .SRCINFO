@@ -1,6 +1,6 @@
 pkgbase = nbdkit
 	pkgdesc = NBD server toolkit
-	pkgver = 1.12.0
+	pkgver = 1.13.5
 	pkgrel = 1
 	url = https://github.com/libguestfs/nbdkit
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = nbdkit
 	optdepends = lua
 	optdepends = tcl
 	optdepends = perl
-	source = https://github.com/libguestfs/nbdkit/archive/v1.12.0.tar.gz
-	sha256sums = d0918bf1d8bf11a640e967a0a7879a104de970d6406180ceb2c90cb811c5fc90
+	source = https://github.com/libguestfs/nbdkit/archive/v1.13.5.tar.gz
+	sha256sums = e724b1aefa64a78c2a5f7bd5a2e6dd499f3dbd095bd3822c17f414a64d47aedc
 
 pkgname = nbdkit
 
