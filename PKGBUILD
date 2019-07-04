@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A common repository for CMake Modules which are not distributed with CMake but are commonly used by ROS packages."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/cmake_modules'
 
 pkgname='ros-melodic-cmake-modules'
 pkgver='0.4.2'
