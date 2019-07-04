@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - amcl is a probabilistic localization system for a robot moving in 2D."
-url='http://wiki.ros.org/amcl'
+url='https://wiki.ros.org/amcl'
 
 pkgname='ros-melodic-amcl'
 pkgver='1.16.2'
