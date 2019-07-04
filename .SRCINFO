@@ -1,0 +1,17 @@
+pkgbase = php-decimal-git
+	pkgdesc = Correctly-rounded, arbitrary precision decimal floating-point arithmetic in PHP 7
+	pkgver = v1.3.0.r2.g7fc3af8
+	pkgrel = 1
+	url = http://php-decimal.io
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = git
+	depends = php
+	depends = mpdecimal
+	backup = etc/php/conf.d/decimal.ini
+	source = php-decimal-git::git://github.com/php-decimal/ext-decimal.git
+	md5sums = SKIP
+
+pkgname = php-decimal-git
+
