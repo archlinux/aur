@@ -8,14 +8,14 @@ pkgbase = openbazaar-git
 	license = MIT
 	makedepends = git
 	makedepends = npm
-	depends = electron
+	depends = electron4
 	conflicts = openbazaar
 	options = !strip
 	source = openbazaar::git+https://github.com/OpenBazaar/openbazaar-desktop.git
 	source = openbazaar.js
 	source = openbazaar.desktop
 	md5sums = SKIP
-	md5sums = 446ad1e41acd07468c3750a9027dc8f8
+	md5sums = d3904de13c80ae0769b8e686e239d4b6
 	md5sums = a278f17aa965510cadb534df49b245dd
 
 pkgname = openbazaar-git

@@ -7,7 +7,7 @@ pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (
 arch=(any)
 url="https://github.com/OpenBazaar/openbazaar-desktop"
 license=('MIT')
-depends=('electron')
+depends=('electron4')
 makedepends=('git' 'npm')
 conflicts=('openbazaar')
 source=("${pkgname%%-git}::git+https://github.com/OpenBazaar/openbazaar-desktop.git"
@@ -57,5 +57,5 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-	'446ad1e41acd07468c3750a9027dc8f8'
+	'd3904de13c80ae0769b8e686e239d4b6'
 'a278f17aa965510cadb534df49b245dd')
