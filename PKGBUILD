@@ -1,7 +1,7 @@
 # Maintainer:  TDY <tdy@archlinux.info>
 
 pkgname=echinus-git
-pkgver=0.4.9.r34.g56d77b4
+pkgver=0.4.9.r35.g987e139
 pkgrel=1
 pkgdesc="A window manager for X in the spirit of dwm"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $pkgname
-  git tag -a -m "Release 0.4.9" 0.4.9 5786ee16a2281ec3a782a99824e5ad15cda7ec77 || :
+  git tag 0.4.9 5786ee16a2281ec3a782a99824e5ad15cda7ec77 || :
   git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
