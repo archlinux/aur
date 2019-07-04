@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - ROS console output library."
-url='http://www.ros.org/wiki/rosconsole'
+url='https://wiki.ros.org/rosconsole'
 
 pkgname='ros-melodic-rosconsole'
 pkgver='1.13.10'
