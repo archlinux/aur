@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Package for Nodelet tutorial."
-url='http://www.ros.org/wiki/nodelet_tutorial_math'
+url='https://www.wiki.ros.org/nodelet_tutorial_math'
 
 pkgname='ros-melodic-nodelet-tutorial-math'
 pkgver='0.1.11'
