@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - image_pipeline fills the gap between getting raw images from a camera driver and higher-level vision processing."
-url='http://www.ros.org/wiki/image_pipeline'
+url='https://www.wiki.ros.org/image_pipeline'
 
 pkgname='ros-melodic-image-pipeline'
 pkgver='1.13.0'
