@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Drivers for the Microsoft Kinect, Asus Xtion, and Primesense Devices."
-url='http://www.ros.org/'
+url='https://www.wiki.ros.org/openni_camera'
 
 pkgname='ros-melodic-openni-camera'
 pkgver='1.11.0'
