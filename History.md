@@ -1,4 +1,30 @@
 
+uuu_1.2.135 / 2019-05-28
+========================
+
+  * Fix decompress data missed bug when use sdcard.bz2/* if enable -O2
+
+uuu_1.2.130 / 2018-07-20
+========================
+
+  * Support i.MX 815 chip
+  * add license shield io
+  * fix crash when console 47 < width < 54
+  * Increase string size for device numeration
+  * Fixed Typo
+  * Typo in Debian/Ubuntu dependencies
+  * Remove xcode8 build
+  * build: Only create gitversion.h on success
+  * gen_ver.sh: Don't ignore errors
+  * version: Drop GIT_VERSION define
+  * enable -O2 for build option
+  * Add imx28 support
+  * libuuu: add commands for reading and writting a memory address for iMX6/iMX7
+  * uuu: resize status bar for longer error messages
+  * libuuu: remove redefinitions of ROM_WRITE_ACK, ROM_STATUS_ACK and ROM_OK_ACK
+  * Only run sdps log read when write success.
+  * improve build-in list to burn different files
+
 uuu_1.2.91 / 2019-02-25
 =======================
 

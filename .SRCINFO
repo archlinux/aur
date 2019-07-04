@@ -1,6 +1,6 @@
 pkgbase = mfgtools
 	pkgdesc = Freescale/NXP I.MX Chip image deploy tools
-	pkgver = 1.2.91
+	pkgver = 1.2.135
 	pkgrel = 1
 	url = https://github.com/NXPmicro/mfgtools
 	changelog = History.md
@@ -9,8 +9,8 @@ pkgbase = mfgtools
 	depends = bzip2
 	depends = zlib
 	depends = libusb
-	source = https://github.com/NXPmicro/mfgtools/archive/uuu_1.2.91.tar.gz
-	sha256sums = 378caa930fdc1b06d49abf26811827f12103d995438b91302a7c6e34368419f9
+	source = git+https://github.com/NXPmicro/mfgtools#tag=uuu_1.2.135
+	sha256sums = SKIP
 
 pkgname = mfgtools
 

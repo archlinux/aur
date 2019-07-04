@@ -1,7 +1,7 @@
 # Maintainer: Theowhy <aur.theowhy@shizoku.fr>
 # Contributor:
 pkgname=mfgtools
-pkgver=1.2.91
+pkgver=1.2.135
 pkgrel=1
 pkgdesc="Freescale/NXP I.MX Chip image deploy tools"
 arch=(x86_64)
@@ -18,13 +18,17 @@ backup=()
 options=()
 install=
 changelog=History.md
-source=(https://github.com/NXPmicro/mfgtools/archive/uuu_$pkgver.tar.gz)
+source=(git+https://github.com/NXPmicro/mfgtools#tag=uuu_1.2.135)
 noextract=()
-sha256sums=('378caa930fdc1b06d49abf26811827f12103d995438b91302a7c6e34368419f9')
+sha256sums=(SKIP)
+
+pkgver() {
+  cd "$pkgname"
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/uuu_//g'
+}
 
 build() {
-  cd "$pkgname-uuu_$pkgver"
-  echo "#define GIT_VERSION \"uuu_$pkgver\"" > libuuu/gitversion.h
+  cd "$pkgname"
   mkdir -p build
   cd build
 
@@ -33,7 +37,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-uuu_$pkgver/build"
+  cd "$pkgname/build"
 
   make DESTDIR="$pkgdir/" install
 }
