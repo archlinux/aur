@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - The Kinematics and Dynamics Library (KDL) defines a tree structure to represent the kinematic and dynamic parameters of a robot mechanism."
-url='http://ros.org/wiki/kdl_parser_py'
+url='https://wiki.ros.org/kdl_parser_py'
 
 pkgname='ros-melodic-kdl-parser-py'
 pkgver='1.13.1'
