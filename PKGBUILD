@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - camera_calibration allows easy calibration of monocular or stereo cameras using a checkerboard calibration target."
-url='http://www.ros.org/wiki/camera_calibration'
+url='https://wiki.ros.org/camera_calibration'
 
 pkgname='ros-melodic-camera-calibration'
 pkgver='1.12.23'
