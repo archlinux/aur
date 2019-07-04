@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Compressed_image_transport provides a plugin to image_transport for transparently sending images encoded as JPEG or PNG."
-url='http://www.ros.org/wiki/image_transport_plugins'
+url='https://www.wiki.ros.org/image_transport_plugins'
 
 pkgname='ros-melodic-compressed-image-transport'
 pkgver='1.9.5'
