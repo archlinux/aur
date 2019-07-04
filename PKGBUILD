@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - C++ ROS message and service generators."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/gencpp'
 
 pkgname='ros-melodic-gencpp'
 pkgver='0.6.2'
