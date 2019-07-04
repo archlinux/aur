@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - control_msgs contains base messages and actions useful for controlling robots."
-url='http://ros.org/wiki/control_msgs'
+url='https://wiki.ros.org/control_msgs'
 
 pkgname='ros-melodic-control-msgs'
 pkgver='1.4.0'
