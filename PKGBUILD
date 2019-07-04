@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Base dependencies and support libraries for ROS."
-url='http://ros.org/wiki/roslib'
+url='https://wiki.ros.org/roslib'
 
 pkgname='ros-melodic-roslib'
 pkgver='1.14.6'
