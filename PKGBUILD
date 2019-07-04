@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Metaprogramming tools move alot of runtime calculations to be shifted to compile time."
-url='http://wiki.ros.org/ecl_mpl'
+url='https://wiki.ros.org/ecl_mpl'
 
 pkgname='ros-melodic-ecl-mpl'
 pkgver='0.62.1'
