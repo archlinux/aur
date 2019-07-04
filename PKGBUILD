@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - PCL (Point Cloud Library) ROS interface stack."
-url='http://ros.org/wiki/perception_pcl'
+url='https://wiki.ros.org/perception_pcl'
 
 pkgname='ros-melodic-perception-pcl'
 pkgver='1.6.2'
