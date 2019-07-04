@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_common_plugins metapackage provides ROS backend graphical tools suite that can be used on/off of robot runtime."
-url='http://ros.org/wiki/rqt_common_plugins'
+url='https://wiki.ros.org/rqt_common_plugins'
 
 pkgname='ros-melodic-rqt-common-plugins'
 pkgver='0.4.8'
