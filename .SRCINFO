@@ -1,6 +1,6 @@
 pkgbase = funky-git
 	pkgdesc = Create directory-specific shell functions
-	pkgver = v3.3.1.r3.g4b710b1
+	pkgver = v3.3.1.r11.g2997e05
 	pkgrel = 1
 	url = https://github.com/bbugyi200/funky
 	install = funky-git.install

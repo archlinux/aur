@@ -1,7 +1,7 @@
 # Maintainer: Elias Riedel Gårding <eliasrg@kth.se>
 # Author: Bryan Bugyi <bryanbugyi34@gmail.com>
 pkgname=funky-git
-pkgver=v3.3.1.r3.g4b710b1
+pkgver=v3.3.1.r11.g2997e05
 pkgrel=1
 pkgdesc="Create directory-specific shell functions"
 arch=('any')
@@ -41,6 +41,6 @@ package() {
     cp README.md "$pkgdir/usr/share/doc/${pkgname%%-git}"
 
     # Set XDG_DATA_HOME to avoid installing funky.sh in $HOME/.local/share
-    XDG_DATA_HOME=/usr/share/funky python setup.py install \
+    XDG_DATA_HOME=/usr/share python setup.py install \
         --root="$pkgdir/" --optimize=1 --skip-build
 }
