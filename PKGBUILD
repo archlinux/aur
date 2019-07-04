@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rosservice contains the rosservice command-line tool for listing and querying ROS Services."
-url='http://ros.org/wiki/rosservice'
+url='https://wiki.ros.org/rosservice'
 
 pkgname='ros-melodic-rosservice'
 pkgver='1.12.14'
