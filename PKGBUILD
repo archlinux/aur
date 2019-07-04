@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - tf is a package that lets the user keep track of multiple coordinate frames over time."
-url='http://www.ros.org/wiki/tf'
+url='https://github.com/ros/geometry'
 
 pkgname='ros-melodic-tf'
 pkgver='1.12.0'
