@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - This package provides a script that launches Emacs with Slime (the Superior Lisp Interaction Mode) ready for Lisp development and roslisp."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/roslisp_repl'
 
 pkgname='ros-melodic-roslisp-repl'
 pkgver='0.4.12'
