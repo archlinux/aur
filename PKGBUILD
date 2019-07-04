@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_service_caller provides a GUI plugin for calling arbitrary services."
-url='http://wiki.ros.org/rqt_service_caller'
+url='https://wiki.ros.org/rqt_service_caller'
 
 pkgname='ros-melodic-rqt-service-caller'
 pkgver='0.4.8'
