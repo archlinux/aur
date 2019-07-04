@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Provides conversions from PCL data types and ROS message types."
-url='http://wiki.ros.org/pcl_conversions'
+url='https://wiki.ros.org/pcl_conversions'
 
 pkgname='ros-melodic-pcl-conversions'
 pkgver='1.6.2'
