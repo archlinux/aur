@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - This package provides a recovery behavior for the navigation stack that attempts to clear space by performing a 360 degree rotation of the robot."
-url='http://wiki.ros.org/rotate_recovery'
+url='https://wiki.ros.org/rotate_recovery'
 
 pkgname='ros-melodic-rotate-recovery'
 pkgver='1.16.2'
