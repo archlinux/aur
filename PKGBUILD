@@ -100,12 +100,18 @@ prepare() {
     # Remove platform specific lines from the Makefile from the line beginning
     # with that statement to the end of file (we do not care of the additional
     # file copy, nor the tar compression defined below the file).
-    sed '/# ----- PLATFORM SPECIFIC -----/,//d' -i ./build/release.mk
+    sed '/# Download prepackaged plugins/,//d' -i ./build/release.mk
 
     # Enforce build hash to Arch Linux (Enterprise hash is already set to
-    # none), instead of the official git hash value.
+    # none), instead of the official git hash value and use an ISO 8601
+    # inspired compilation date format without any letter format (only use
+    # numbers).
     sed -r -i Makefile \
-        -e "s/^(\s*)BUILD_HASH(_ENTERPRISE)? =.*/\1BUILD_HASH\2 = ${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)/"
+        -e "s/^(\s*)BUILD_HASH =.*/\1BUILD_HASH = ${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)/" \
+        -e 's/BUILD_DATE = \$\(shell date -u\)/BUILD_DATE = \$(shell date -u +'"'"'%Y-%m-%d %H:%M:%S'"'"')/'
+
+    # Enforce build hash to Arch Linux as well for the field corresponding to
+    # the webapp.
     cd "${srcdir}/${pkgname}-webapp"
     sed -r -i webpack.config.js \
         -e "s/^(\s*)COMMIT_HASH:(.*),$/\1COMMIT_HASH: JSON.stringify\(\"${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)\"\),/"
@@ -127,7 +133,7 @@ build() {
 
     cd "${srcdir}"/src/github.com/${pkgname}/${pkgname}-server
     # Prevent the build to crash when some dependencies are not met or
-    # outdated. This clean the webapp as well (cf. mattermost-server/Makefile,
+    # outdated. This cleans the webapp as well (cf. mattermost-server/Makefile,
     # clean target).
     make clean
     GOPATH="${srcdir}" BUILD_NUMBER=${pkgver}-${pkgrel} make build-linux
