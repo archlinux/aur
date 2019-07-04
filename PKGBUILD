@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Standard ROS Messages including common message types representing primitive data types and other basic message constructs, such as multiarrays."
-url='http://www.ros.org/wiki/std_msgs'
+url='https://www.wiki.ros.org/std_msgs'
 
 pkgname='ros-melodic-std-msgs'
 pkgver='0.5.12'
