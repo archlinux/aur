@@ -1,29 +1,26 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Einar Otto Stangvik <einaros@gmail.com> (http://2x.io)
 # Contributor: einaros <einaros@gmail.com>
 # Contributor: V1 <info@3rd-Eden.com>
 
 _npmname=ws
-_npmver=0.8.0
-pkgname=nodejs-ws # All lowercase
-pkgver=0.8.0
+pkgname=nodejs-ws
+pkgver=7.0.1
 pkgrel=1
-pkgdesc="simple to use, blazing fast and thoroughly tested websocket client, server and console for node.js, up-to-date against RFC-6455"
+pkgdesc="Simple to use, blazing fast and thoroughly tested WebSocket client and server for Node.js"
 arch=(any)
-url="http://github.com/einaros/ws"
-license=( "MIT" )
-depends=('nodejs' 'npm')
-optdepends=()
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-noextract=($_npmname-$_npmver.tgz)
-sha1sums=('ac60ebad312121d01e16cc3383d7ec67ad0f0f1f')
+url="https://github.com/websockets/ws"
+license=('MIT')
+depends=('nodejs')
+makedepends=('npm')
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+sha256sums=('24032a71d9e90973514fa0387de4c66d4fbf4aed5de54f61024bab2e16f5bcf3')
 
 package() {
-  cd "$srcdir"
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p "$_npmdir"
-  cd "$_npmdir"
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
+  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+  install -Dm644 "$srcdir/package/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
