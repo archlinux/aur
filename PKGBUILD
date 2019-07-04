@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS -  Contains a node publish an image stream from single image file or avi motion file."
-url='http://ros.org/wiki/image_publisher'
+url='https://wiki.ros.org/image_publisher'
 
 pkgname='ros-melodic-image-publisher'
 pkgver='1.12.23'
