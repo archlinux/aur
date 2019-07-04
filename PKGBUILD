@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - System-wide logging mechanism for messages sent to the /rosout topic."
-url='http://ros.org/wiki/rosout'
+url='https://wiki.ros.org/rosout'
 
 pkgname='ros-melodic-rosout'
 pkgver='1.12.14'
