@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - diagnostic_updater contains tools for easily updating diagnostics."
-url='http://www.ros.org/wiki/diagnostic_updater'
+url='https://www.wiki.ros.org/diagnostic_updater'
 
 pkgname='ros-melodic-diagnostic-updater'
 pkgver='1.9.3'
