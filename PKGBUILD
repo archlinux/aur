@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - map_server provides the map_server ROS Node, which offers map data as a ROS Service."
-url='http://wiki.ros.org/map_server'
+url='https://wiki.ros.org/map_server'
 
 pkgname='ros-melodic-map-server'
 pkgver='1.16.2'
