@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rospy is a pure Python client library for ROS."
-url='http://ros.org/wiki/rospy'
+url='https://wiki.ros.org/rospy'
 
 pkgname='ros-melodic-rospy'
 pkgver='1.14.3'
