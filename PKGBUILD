@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A Python GUI plugin for introspecting available ROS message types."
-url='http://wiki.ros.org/rqt_srv'
+url='https://wiki.ros.org/rqt_srv'
 
 pkgname='ros-melodic-rqt-srv'
 pkgver='0.4.8'
