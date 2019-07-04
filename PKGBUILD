@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - qt_gui provides the infrastructure for an integrated graphical user interface based on Qt."
-url='http://ros.org/wiki/qt_gui'
+url='https://wiki.ros.org/qt_gui'
 
 pkgname='ros-melodic-qt-gui'
 pkgver='0.3.11'
