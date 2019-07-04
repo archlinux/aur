@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Translates joy msgs."
-url='http://ros.org/wiki/joy_listener'
+url='https://wiki.ros.org/joy_listener'
 
 pkgname='ros-melodic-joy-listener'
 pkgver='0.2.4'
