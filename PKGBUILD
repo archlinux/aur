@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - image_transport should always be used to subscribe to and publish images."
-url='http://ros.org/wiki/image_transport'
+url='https://wiki.ros.org/image_transport'
 
 pkgname='ros-melodic-image-transport'
 pkgver='1.11.13'
