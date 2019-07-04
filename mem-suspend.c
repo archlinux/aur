@@ -9,7 +9,7 @@ int main(void)
   FILE *fp = fopen(state_path, "w");
   if (fp)
   {
-    fprintf(fp, "mem");
+    fputs("mem", fp);
   }
   else
   {
