@@ -1,12 +1,14 @@
 # Maintainer: Jerry Lin <jerry73204 at gmail dot com>
 pkgname=('python-av-git' 'python2-av-git')
-pkgver=r1026.db30136
+pkgver=r1052.81b0037
 pkgrel=1
 pkgdesc='Pythonic bindings for FFmpeg.'
 arch=('i686' 'x86_64')
 url="https://github.com/mikeboers/PyAV/tree/master"
 license=('BSD 3-Clause')
 depends=('ffmpeg' 'python' 'python2')
+provides=('python-av')
+conflicts=('python-av')
 makedepends=('git' 'python-setuptools' 'python2-setuptools' 'cython')
 source=('python-av::git+https://github.com/mikeboers/PyAV.git#branch=master')
 sha256sums=('SKIP')

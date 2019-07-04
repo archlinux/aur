@@ -1,6 +1,6 @@
 pkgbase = python-av-git
 	pkgdesc = Pythonic bindings for FFmpeg.
-	pkgver = r1026.db30136
+	pkgver = r1052.81b0037
 	pkgrel = 1
 	url = https://github.com/mikeboers/PyAV/tree/master
 	arch = i686
@@ -13,6 +13,8 @@ pkgbase = python-av-git
 	depends = ffmpeg
 	depends = python
 	depends = python2
+	provides = python-av
+	conflicts = python-av
 	source = python-av::git+https://github.com/mikeboers/PyAV.git#branch=master
 	sha256sums = SKIP
 
