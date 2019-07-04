@@ -17,7 +17,7 @@ md5sums=('SKIP')
 build() {
 	cd "$_pkgname"
 	mvn clean compile assembly:single
-	echo -e "#!/bin/bash\njava -jar /usr/share/java/${pkgname}-${pkgver}.jar" >> ${srcdir}/${_pkgname}/ripme.sh
+	echo -e "#!/bin/bash\njava -jar /usr/share/java/${pkgname}-${pkgver}.jar \"$@\"" >> ${srcdir}/${_pkgname}/ripme.sh
 }
 
 package() {
