@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - The wiimote package allows ROS nodes to communicate with a Nintendo Wiimote and its related peripherals, including the Nunchuk, Motion Plus, and (experimentally) the Classic."
-url='http://www.ros.org/wiki/wiimote'
+url='https://www.wiki.ros.org/wiimote'
 
 pkgname='ros-melodic-wiimote'
 pkgver='1.12.0'
