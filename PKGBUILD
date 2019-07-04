@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A metapackage to aggregate the packages required to use publish / subscribe, services, launch files, and other core ROS concepts."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/ros_core'
 
 pkgname='ros-melodic-ros-core'
 pkgver='1.4.1'
