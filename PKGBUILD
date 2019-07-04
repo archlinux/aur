@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_dep provides a GUI plugin for visualizing the ROS dependency graph."
-url='http://wiki.ros.org/rqt_dep'
+url='https://wiki.ros.org/rqt_dep'
 
 pkgname='ros-melodic-rqt-dep'
 pkgver='0.4.9'
