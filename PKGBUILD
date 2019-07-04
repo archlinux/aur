@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Standalone Python library for generating ROS message and service data structures for various languages."
-url='http://www.ros.org/wiki/genmsg'
+url='https://www.wiki.ros.org/genmsg'
 
 pkgname='ros-melodic-genmsg'
 pkgver='0.5.12'
