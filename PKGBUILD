@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package contains a class for converting from a 2D laser scan as defined by sensor_msgs/LaserScan into a point cloud as defined by sensor_msgs/PointCloud or sensor_msgs/PointCloud2."
-url='http://ros.org/wiki/laser_geometry'
+url='https://wiki.ros.org/laser_geometry'
 
 pkgname='ros-melodic-laser-geometry'
 pkgver='1.6.4'
