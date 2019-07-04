@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package contains a number of URDF tutorials."
-url='http://ros.org/wiki/urdf_tutorial'
+url='https://wiki.ros.org/urdf_tutorial'
 
 pkgname='ros-melodic-urdf-tutorial'
 pkgver='0.4.0'
