@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Controller for a four wheel steering mobile base"
-url='http://wiki.ros.org/four_wheel_steering_controller'
+url='https://wiki.ros.org/four_wheel_steering_controller'
 
 pkgname='ros-melodic-four-wheel-steering-controller'
 pkgver='0.14.1'
