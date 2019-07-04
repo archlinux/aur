@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This stack provides Python bindings for Qt."
-url='http://ros.org/wiki/python_qt_binding'
+url='https://wiki.ros.org/python_qt_binding'
 
 pkgname='ros-melodic-python-qt-binding'
 pkgver='0.3.5'
