@@ -7,11 +7,11 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc
-pkgver=2.28
-pkgrel=5
+pkgver=2.29
+pkgrel=3
 pkgdesc="GNU C Library (${_target})"
 arch=('any')
-url="http://www.gnu.org/software/libc/"
+url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
 depends=("${_target}-linux-api-headers>=4.17.11-1")
 makedepends=("${_target}-gcc-stage2>=8.2.1+20181127" gperf)
@@ -19,14 +19,21 @@ provides=("${_target}-glibc-headers=${pkgver}" "${_target}-eglibc")
 conflicts=("${_target}-glibc-headers" "${_target}-eglibc")
 replaces=("${_target}-glibc-headers")
 options=(!buildflags !strip staticlibs)
-_commit=5a74abda201907cafbdabd1debf98890313ff71e
+_commit=34fb5f61d3c3f4b8fc616ea259fa19168b58ecd4
 #source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
-        glibc-${_commit}.patch)
-validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8) # Carlos O'Donell
-md5sums=('c81d2388896379997bc359d4f2084239'
+        glibc-${_commit}.patch
+        bz20338.patch
+        0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch
+        file-truncated-while-reading-soname-after-patchelf.patch)
+validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
+              BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
+md5sums=('e6c279d5b2f0736f740216f152acf974'
          'SKIP'
-         'b64d9921601d1e25cca2c802f15d6dcf')
+         '35a4ca5cdf86d706e054e02bb31d1616'
+         'dc0d3ad59aeaaf591b085a77de6e03e9'
+         'af5d3c5227ac639effe39667a43879a1'
+         '0820504d2e83ee15f74a656771361872')
 
 prepare() {
   mkdir -p glibc-build
@@ -67,6 +74,11 @@ build() {
 
   # remove fortify for building libraries
   CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
+
+  #
+  CFLAGS=${CFLAGS/-fno-plt/}
+  CXXFLAGS=${CXXFLAGS/-fno-plt/}
+  LDFLAGS=${LDFLAGS/,-z,now/}
 
   export BUILD_CC=gcc
   export CC=${_target}-gcc
