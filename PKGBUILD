@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rosparam contains the rosparam command-line tool for getting and setting ROS Parameters on the Parameter Server using YAML-encoded files."
-url='http://ros.org/wiki/rosparam'
+url='https://wiki.ros.org/rosparam'
 
 pkgname='ros-melodic-rosparam'
 pkgver='1.12.14'
