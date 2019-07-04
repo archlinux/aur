@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - roslang is a common package that all ROS client libraries depend on."
-url='http://ros.org/wiki/roslang'
+url='https://wiki.ros.org/roslang'
 
 pkgname='ros-melodic-roslang'
 pkgver='1.14.6'
