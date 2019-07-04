@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Object_recognition_msgs contains the ROS message and the actionlib definition used in object_recognition_core."
-url='http://www.ros.org/wiki/object_recognition'
+url='https://wiki.ros.org/object_recognition_msgs'
 
 pkgname='ros-melodic-object-recognition-msgs'
 pkgver='0.4.1'
