@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Packages for interfacing ROS with OpenCV, a library of programming functions for real time computer vision."
-url='http://www.ros.org/wiki/vision_opencv'
+url='https://www.wiki.ros.org/vision_opencv'
 
 pkgname='ros-melodic-vision-opencv'
 pkgver='1.13.0'
