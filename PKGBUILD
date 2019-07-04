@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - These tools inspect and describe your system with macros, types and functions."
-url='http://wiki.ros.org/ecl_config'
+url='https://wiki.ros.org/ecl_config'
 
 pkgname='ros-melodic-ecl-config'
 pkgver='0.61.6'
