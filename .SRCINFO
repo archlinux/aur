@@ -1,6 +1,6 @@
 pkgbase = python-aiorpcx-git
 	pkgdesc = A generic asyncio library implementation of RPC suitable for an application that is a client, server or both.
-	pkgver = 0.18.3.r0.g4f39366
+	pkgver = 0.18.3.r3.g5de1922
 	pkgrel = 1
 	url = https://github.com/kyuupichan/aiorpcX/
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = python-aiorpcx-git
 	makedepends = git
 	depends = python>=3.6
 	depends = python-attrs
+	provides = python-aiorpcx
 	conflicts = python-aiorpcx
 	source = git://github.com/kyuupichan/aiorpcX.git
 	sha256sums = SKIP
