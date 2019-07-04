@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Unit-testing package for ROS."
-url='http://ros.org/wiki/rosunit'
+url='https://wiki.ros.org/rosunit'
 
 pkgname='ros-melodic-rosunit'
 pkgver='1.14.6'
