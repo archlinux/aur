@@ -4,6 +4,7 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite-git
+_pkgname=aseprite
 pkgver=v1.2.13.r0.gaf4fd54c2
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
@@ -12,19 +13,21 @@ url='http://www.aseprite.org/'
 license=('BSD' 'custom')
 depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'pixman' 'libxcursor' 'fontconfig')
 makedepends=('git' 'ninja' 'python2' 'clang')
-conflicts=('aseprite' 'aseprite-gpl')
-source=("skia::git+https://github.com/aseprite/skia.git#branch=aseprite-m71"
-        "aseprite::git+https://github.com/aseprite/aseprite.git")
+conflicts=("${_pkgname}" "${_pkgname}-gpl"  )
+source=("skia::git+https://github.com/${_pkgname}/skia.git#branch=aseprite-m71"
+        "${_pkgname}::git+https://github.com/${_pkgname}/${_pkgname}.git"
+        'desktop.patch')
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            'bcb6229e42cef16a8a0273c2fce67ce81d243a085c90bd52ac15183e757ff875')
 
 pkgver() {
-    cd "${srcdir}/aseprite"
+    cd "${srcdir}/${_pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${srcdir}/aseprite"
+    cd "${srcdir}/${_pkgname}"
 
     less EULA.txt
     echo "Do you accept the EULA? yes/NO"
@@ -47,7 +50,7 @@ build() {
     bin/gn gen out/Clang --args='is_debug=false is_official_build=true cc="clang" cxx="clang++" skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false'
     ninja -C out/Clang skia
 
-    cd "${srcdir}/aseprite/build"
+    cd "${srcdir}/${_pkgname}/build"
     cmake \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DLAF_OS_BACKEND=skia \
@@ -67,11 +70,11 @@ build() {
         -G Ninja \
         ..
     export PATH="${srcdir}/.pkgbuild-bin":$PATH
-    ninja aseprite
+    ninja ${_pkgname}
 }
 
 package() {
-    cd "${srcdir}/aseprite/build"
+    cd "${srcdir}/${_pkgname}/build"
     DESTDIR="${pkgdir}" ninja install
 
     # Remove extraneous files
@@ -93,13 +96,13 @@ package() {
 
     find "${pkgdir}" -type d -empty -delete
 
-    cd "${srcdir}/aseprite"
+    cd "${srcdir}/${_pkgname}"
 
-    install -Dm644 "src/desktop/linux/aseprite.desktop" "${pkgdir}/usr/share/applications/aseprite.desktop"
-    install -Dm644 "src/desktop/linux/mime/aseprite.xml" "${pkgdir}/usr/share/mime/packages/aseprite.xml"
+    install -Dm644 "src/desktop/linux/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "src/desktop/linux/mime/${_pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${_pkgname}.xml"
     for i in {16,32,48,64,128,256}; do
-        install -Dm644 "data/icons/ase${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/aseprite.png"
-        install -Dm644 "data/icons/doc${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/image-x-aseprite.png"
+        install -Dm644 "data/icons/ase${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgname}.png"
+        install -Dm644 "data/icons/doc${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/image-x-${_pkgname}.png"
     done
     install -Dm644 "EULA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
     install -Dm644 "$srcdir/skia/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
