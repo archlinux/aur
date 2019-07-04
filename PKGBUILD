@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - turtlesim is a tool made for teaching ROS and ROS packages."
-url='http://www.ros.org/wiki/turtlesim'
+url='https://www.wiki.ros.org/turtlesim'
 
 pkgname='ros-melodic-turtlesim'
 pkgver='0.9.0'
