@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_nav_view provides a gui for viewing navigation maps and paths."
-url='http://wiki.ros.org/rqt_nav_view'
+url='https://wiki.ros.org/rqt_nav_view'
 
 pkgname='ros-melodic-rqt-nav-view'
 pkgver='0.5.7'
