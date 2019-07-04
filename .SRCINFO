@@ -1,11 +1,11 @@
 pkgbase = boostnote
 	pkgdesc = Open source note-taking app for programmers
 	pkgver = 0.11.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://boostnote.io/
 	arch = any
 	license = GPL3
-	makedepends = npm
+	makedepends = yarn
 	makedepends = grunt-cli
 	makedepends = git
 	depends = electron
@@ -16,12 +16,14 @@ pkgbase = boostnote
 	source = warning-fix.patch
 	source = remove-analytics.patch
 	source = electron_4.patch
+	source = electron_5_fix.patch
 	sha512sums = 91b0da92d9ed47649b201a1131b20e1328286295e52e1efe717ec3d731bc41351295f02bc63753f07d46d690d15355120d6bd76e2ba503e0617183b9aa16fc93
 	sha512sums = 1f0ccd2a3632a12c4714d97b9f909ddc94b53d6f86a9e4bdcab31abd55a93071a2c35c6e1e9527b747de6dd74b8a5276414980c11e174085f28b8f2d2721230a
 	sha512sums = 18bcda13580da8ceeaa86793a77ec00a053b8fd51451dad7e2b1a19553fe1a467ac647b44b789212e783f3f6a80968cc9404e884ef7ff6b1f6588473b3229d40
 	sha512sums = a52e5631867e2c5f18465dee6a3201b9b5c546bda373205c4891c9f7b6114599e0854e2b49defb55ee7bea0778a7fde9c9d9f7271dceeeece743a2d72e2fd0c6
 	sha512sums = 1b440e2f65f45270acdf4e8898ef49ed8a5c13f3d3dad25a9d5defd404afded72257a50ec63469b763cd72c97247cb823257328efabb401e5bbf29b33f6e49f5
 	sha512sums = b6e704343c4bdf48273ea680761ccae38cd87a3ea8f87db3b5cf18c99921351b4519c6a4b2cf20417d58a02a4a20e59f354ff96b1cdbc6328e83bff527654647
+	sha512sums = ad745b9643e9a677a2a3840c02c8dad7af33e35007141dbc33ff8f7c084b66bd1a794ef44340925fc9d6d77065f41709be56cc8ac55a978e7dc7d520cf8777bf
 
 pkgname = boostnote
 

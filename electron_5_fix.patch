@@ -1,0 +1,15 @@
+diff -ura a/lib/main-window.js b/lib/main-window.js
+--- a/lib/main-window.js	2019-05-22 08:20:34.000000000 +0200
++++ b/lib/main-window.js	2019-07-03 15:16:52.013748142 +0200
+@@ -23,7 +23,10 @@
+   minHeight: 320,
+   webPreferences: {
+     zoomFactor: 1.0,
+-    enableBlinkFeatures: 'OverlayScrollbars'
++    enableBlinkFeatures: 'OverlayScrollbars',
++    contextIsolation: false,
++    nodeIntegration: true,
++    webviewTag: true
+   },
+   icon: path.resolve(__dirname, '../resources/app.png')
+ })
