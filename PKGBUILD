@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc."
-url='http://ros.org/wiki/rosboost_cfg'
+url='https://wiki.ros.org/rosboost_cfg'
 
 pkgname='ros-melodic-rosboost-cfg'
 pkgver='1.14.6'
