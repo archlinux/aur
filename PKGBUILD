@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Extensions for slime to assist in working with ROS packages."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/slime_ros'
 
 pkgname='ros-melodic-slime-ros'
 pkgver='0.4.12'
