@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=fofimon
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Monitor selected folders and files for modifications"
 url='https://www.efanomars.com/utilities/fofimon'
@@ -16,7 +16,7 @@ optdepends=()
 #replaces=("fofimon")
 #conflicts=("fofimon")
 
-source=('git+https://gitlab.com/efanomars/fofimon.git#commit=19a3213321bcd6fa837d70bbde3128a402a0a517')
+source=('git+https://gitlab.com/efanomars/fofimon.git#commit=2a4a0bb4ca6830d01266799b7a7fe0937ff9b6a6')
 sha512sums=('SKIP')
 
 build() {
