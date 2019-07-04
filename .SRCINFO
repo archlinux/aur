@@ -1,5 +1,5 @@
 pkgbase = linux-bcachefs-git
-	pkgver = 5.0.21.arch1
+	pkgver = 5.1.15.arch1
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -11,22 +11,20 @@ pkgbase = linux-bcachefs-git
 	makedepends = libelf
 	makedepends = git
 	options = !strip
-	source = git+https://github.com/koverstreet/bcachefs#branch=bcachefs-v5.0
+	source = git+https://github.com/koverstreet/bcachefs
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
-	source = add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 5ad7d43b56255c6130deb130bd327f273575f085c81effb9f433d09f13ba90ac6d2cee9d1c7c55fe7a78980bf393fcd06cb4f71b6057ed298e46ffd2b33bcdb5
+	sha512sums = e5248849d7f24e48d485381e91f9be7286850ce170485a0cbbe6b734504ab936641ef908e2cfd226627682cc338eecd7ec48985a2f1d2c51dc87cfa861781af9
 	sha512sums = 7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a
 	sha512sums = 2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7
 	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
-	sha512sums = 097f15592a78d1eb400ac57a64a48bc11339664c627b42c094176d7b2cccbccd4fab536e9ba9b2c1198fdc9178d9c25aa5173f18428e4f7679078fbf418bf273
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux-bcachefs-git kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
@@ -41,11 +39,11 @@ pkgname = linux-bcachefs-git
 
 pkgname = linux-bcachefs-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	provides = linux-bcachefs-git-headers=5.0.21.arch1
-	provides = linux-headers=5.0.21.arch1
+	provides = linux-bcachefs-git-headers=5.1.15.arch1
+	provides = linux-headers=5.1.15.arch1
 
 pkgname = linux-bcachefs-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	provides = linux-bcachefs-git-docs=5.0.21.arch1
-	provides = linux-docs=5.0.21.arch1
+	provides = linux-bcachefs-git-docs=5.1.15.arch1
+	provides = linux-docs=5.1.15.arch1
 
