@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - A fake controller manager plugin for MoveIt."
-url='http://moveit.ros.org'
+url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-fake-controller-manager'
 pkgver='0.10.8'
