@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - ROS Package Tool."
-url='http://wiki.ros.org/rospack'
+url='https://wiki.ros.org/rospack'
 
 pkgname='ros-melodic-rospack'
 pkgver='2.5.3'
