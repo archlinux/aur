@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_bag provides a GUI plugin for displaying and replaying ROS bag files."
-url='http://wiki.ros.org/rqt_bag'
+url='https://wiki.ros.org/rqt_bag'
 
 pkgname='ros-melodic-rqt-bag-plugins'
 pkgver='0.4.12'
