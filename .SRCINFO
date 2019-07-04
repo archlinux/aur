@@ -4,13 +4,13 @@ pkgbase = ripme-git
 	pkgdesc = Automated picture album downloader for various websites
 	pkgver = 1.2.7
 	pkgrel = 1
-	url = https://github.com/4pr0n/ripme.git
+	url = https://github.com/RipMeApp/ripme.git
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = maven
 	depends = java-runtime-headless
-	source = ripme::git+http://github.com/4pr0n/ripme#branch=master
+	source = ripme::git+http://github.com/RipMeApp/ripme#branch=master
 	md5sums = SKIP
 
 pkgname = ripme-git
