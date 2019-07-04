@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package holds the diagnostic messages which provide the standardized interface for the diagnostic and runtime monitoring systems in ROS."
-url='http://wiki.ros.org/diagnostic_msgs'
+url='https://wiki.ros.org/diagnostic_msgs'
 
 pkgname='ros-melodic-diagnostic-msgs'
 pkgver='1.12.7'
