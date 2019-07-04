@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_py_common provides common functionality for rqt plugins written in Python."
-url='http://ros.org/wiki/rqt_py_common'
+url='https://wiki.ros.org/rqt_py_common'
 
 pkgname='ros-melodic-rqt-py-common'
 pkgver='0.5.0'
