@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - wrapper for libviso2"
-url='http://www.ros.org/wiki/viso2'
+url='https://www.wiki.ros.org/viso2'
 
 pkgname='ros-melodic-viso2-ros'
 pkgver='0.0.1'
