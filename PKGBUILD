@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Basic diagnostic_aggregator tests are in the."
-url='http://ros.org/wiki/test_diagnostic_aggregator'
+url='https://wiki.ros.org/test_diagnostic_aggregator'
 
 pkgname='ros-melodic-test-diagnostic-aggregator'
 pkgver='1.9.3'
