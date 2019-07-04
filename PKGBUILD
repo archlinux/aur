@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - This library contains wrappers for generating floating point values, integers, quaternions using boost libraries."
-url='http://ros.org/wiki/random_numbers'
+url='https://wiki.ros.org/random_numbers'
 
 pkgname='ros-melodic-random-numbers'
 pkgver='0.3.2'
