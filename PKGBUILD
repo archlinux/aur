@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Messages for representing PR2 state"
-url='http://wiki.ros.org/pr2_msgs'
+url='https://wiki.ros.org/pr2_msgs'
 
 pkgname='ros-melodic-pr2-msgs'
 pkgver='1.12.3'
