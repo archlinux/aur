@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Parser for Semantic Robot Description Format (SRDF)."
-url='http://ros.org/wiki/srdfdom'
+url='https://wiki.ros.org/srdfdom'
 
 pkgname='ros-melodic-srdfdom'
 pkgver='0.5.1'
