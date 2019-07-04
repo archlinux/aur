@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This rqt plugin succeeds former dynamic_reconfigures GUI (reconfigure_gui), and provides the way to view and edit the parameters that are accessible via dynamic_reconfigure."
-url='http://wiki.ros.org/rqt_reconfigure'
+url='https://wiki.ros.org/rqt_reconfigure'
 
 pkgname='ros-melodic-rqt-reconfigure'
 pkgver='0.4.10'
