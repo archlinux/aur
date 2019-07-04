@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package allows you to publish the state of a robot to tf."
-url='http://wiki.ros.org/robot_state_publisher'
+url='https://wiki.ros.org/robot_state_publisher'
 
 pkgname='ros-melodic-robot-state-publisher'
 pkgver='1.13.6'
