@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Metapackage for various PR2-related ROS packages"
-url='http://wiki.ros.org/pr2_common'
+url='https://wiki.ros.org/pr2_common'
 
 pkgname='ros-melodic-pr2-common'
 pkgver='1.12.3'
