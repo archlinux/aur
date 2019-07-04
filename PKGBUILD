@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Integration test suite based on roslaunch that is compatible with xUnit frameworks."
-url='http://ros.org/wiki/rostest'
+url='https://github.com/ros/ros_comm'
 
 pkgname='ros-melodic-rostest'
 pkgver='1.14.3'
