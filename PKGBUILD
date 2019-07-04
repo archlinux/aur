@@ -4,7 +4,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-patched-filechooser-icon-view
-pkgver=3.24.9
+pkgver=3.24.10
 pkgrel=1
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
@@ -22,7 +22,7 @@ makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson)
 
 license=(LGPL)
 install=gtk3.install
-_commit=fee3a3066c019239035b9f8560d11bb4d5725b0c  # tags/3.24.9^0
+_commit=3642629767ec54c4079f7d90a9ea780a225bfe5e  # tags/3.24.10^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         settings.ini
         gtk-query-immodules-3.0.hook
