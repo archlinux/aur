@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Package containing PCL (Point Cloud Library)-related ROS messages."
-url='http://wiki.ros.org/pcl_msgs'
+url='https://wiki.ros.org/pcl_msgs'
 
 pkgname='ros-melodic-pcl-msgs'
 pkgver='0.2.0'
