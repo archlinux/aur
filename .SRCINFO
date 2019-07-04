@@ -1,0 +1,26 @@
+pkgbase = hurrican
+	pkgdesc = Freeware jump and shoot game created by Poke53280
+	pkgver = 1.0.9.2
+	pkgrel = 1
+	url = https://github.com/thrimbor/Hurrican.git
+	arch = i686
+	arch = x86_64
+	license = custom: MIT
+	makedepends = git
+	makedepends = mesa
+	makedepends = cmake
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = libmodplug
+	depends = libgl
+	depends = libepoxy
+	conflicts = hurrican-svn
+	source = hurrican::git+https://github.com/thrimbor/hurrican.git
+	source = hurrican.desktop
+	source = hurrican.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hurrican
+
