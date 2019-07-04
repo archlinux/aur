@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - roscpp is a C++ implementation of ROS."
-url='http://ros.org/wiki/roscpp'
+url='https://github.com/ros/ros_comm'
 
 pkgname='ros-melodic-roscpp'
 pkgver='1.12.14'
