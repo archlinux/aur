@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Timing utilities are very dependent on the system api provided for their use."
-url='http://wiki.ros.org/ecl_time'
+url='https://wiki.ros.org/ecl_time'
 
 pkgname='ros-melodic-ecl-time'
 pkgver='0.62.1'
