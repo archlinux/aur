@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_robot_monitor displays diagnostics_agg topics messages that are published by diagnostic_aggregator."
-url='http://wiki.ros.org/rqt_robot_monitor'
+url='https://wiki.ros.org/rqt_robot_monitor'
 
 pkgname='ros-melodic-rqt-robot-monitor'
 pkgver='0.5.8'
