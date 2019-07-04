@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rosnode is a command-line tool for displaying debug information about ROS Nodes, including publications, subscriptions and connections."
-url='http://ros.org/wiki/rosnode'
+url='https://wiki.ros.org/rosnode'
 
 pkgname='ros-melodic-rosnode'
 pkgver='1.12.14'
