@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_py_console is a Python GUI plugin providing an interactive Python console."
-url='http://wiki.ros.org/rqt_py_console'
+url='https://wiki.ros.org/rqt_py_console'
 
 pkgname='ros-melodic-rqt-py-console'
 pkgver='0.4.8'
