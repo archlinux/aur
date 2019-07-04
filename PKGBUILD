@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - The control toolbox contains modules that are useful across all controllers."
-url='http://ros.org/wiki/control_toolbox'
+url='https://wiki.ros.org/control_toolbox'
 
 pkgname='ros-melodic-control-toolbox'
 pkgver='1.16.0'
