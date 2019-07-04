@@ -1,0 +1,16 @@
+pkgbase = multiview
+	pkgdesc = Spawn multiple processes and channel their outputs into separate little column views.
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = https://github.com/arjunmehta/multiview
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = bash
+	options = !emptydirs
+	source = https://github.com/arjunmehta/multiview/archive/2.5.3.tar.gz
+	sha256sums = d3e6c9e5ee8830e311f2dafc469773c391aa739b3e78911d6272beb939e0be64
+
+pkgname = multiview
+
