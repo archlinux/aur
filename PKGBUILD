@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - This package contains the xxx.machine files that describe the different hosts a node can be spawned on."
-url='http://wiki.ros.org/pr2_machine'
+url='https://wiki.ros.org/pr2_machine'
 
 pkgname='ros-melodic-pr2-machine'
 pkgver='1.12.3'
