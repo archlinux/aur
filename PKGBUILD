@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - 3D interactive marker communication library for RViz and similar tools."
-url='http://ros.org/wiki/interactive_markers'
+url='https://wiki.ros.org/interactive_markers'
 
 pkgname='ros-melodic-interactive-markers'
 pkgver='1.11.4'
