@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Python implementation of the URDF parser."
-url='http://wiki.ros.org/urdfdom_py'
+url='https://wiki.ros.org/urdfdom_py'
 
 pkgname='ros-melodic-urdfdom-py'
 pkgver='0.4.0'
