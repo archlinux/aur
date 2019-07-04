@@ -1,12 +1,18 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = papermc
+	pkgdesc = High performance Spigot fork that aims to fix gameplay and mechanics inconsistencies
+	pkgver = 1.14.3_0d079188
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://papermc.io/
+	install = paper.install
+	arch = any
+	license = GPL3
+	makedepends = java-environment>=8
+	makedepends = git
+	depends = java-runtime-headless>=8
+	depends = awk
+	provides = paperclip=1.14.3_0d079188
+	source = papermc::git+https://github.com/PaperMC/Paper.git#branch=ver/1.14
+	md5sums = SKIP
 
-pkgname = yarxi
+pkgname = papermc
 
