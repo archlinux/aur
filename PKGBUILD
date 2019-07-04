@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - visualization_msgs is a set of messages used by higher level packages, such as rviz, that deal in visualization-specific data."
-url='http://ros.org/wiki/visualization_msgs'
+url='https://wiki.ros.org/visualization_msgs'
 
 pkgname='ros-melodic-visualization-msgs'
 pkgver='1.12.7'
