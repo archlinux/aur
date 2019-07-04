@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - turtle_actionlib demonstrates how to write an action server and client with the turtlesim."
-url='http://ros.org/wiki/turtle_actionlib'
+url='https://wiki.ros.org/turtle_actionlib'
 
 pkgname='ros-melodic-turtle-actionlib'
 pkgver='0.1.11'
