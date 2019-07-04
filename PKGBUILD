@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - USB Video Class driver library."
-url='http://www.ros.org/'
+url='https://github.com/ktossell/libuvc'
 
 pkgname='ros-melodic-libuvc'
 pkgver='0.0.6'
