@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - tf2 is the second generation of the transform library, which lets the user keep track of multiple coordinate frames over time."
-url='http://www.ros.org/wiki/tf2'
+url='https://www.wiki.ros.org/tf2'
 
 pkgname='ros-melodic-tf2'
 pkgver='0.6.5'
