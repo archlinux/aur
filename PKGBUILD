@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package defines messages for commonly used sensors, including cameras and scanning laser rangefinders."
-url='http://ros.org/wiki/sensor_msgs'
+url='https://wiki.ros.org/sensor_msgs'
 
 pkgname='ros-melodic-sensor-msgs'
 pkgver='1.12.7'
