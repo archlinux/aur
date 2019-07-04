@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - ROS Master implementation."
-url='http://ros.org/wiki/rosmaster'
+url='https://wiki.ros.org/rosmaster'
 
 pkgname='ros-melodic-rosmaster'
 pkgver='1.12.14'
