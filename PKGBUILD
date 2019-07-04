@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - experimental packages for moveit"
-url='http://ros.org/wiki/chomp_motion_planner'
+url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-experimental'
 pkgver='0.10.5'
