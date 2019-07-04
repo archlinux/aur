@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - navfn provides a fast interpolated navigation function that can be used to create plans for a mobile base."
-url='http://wiki.ros.org/navfn'
+url='https://wiki.ros.org/navfn'
 
 pkgname='ros-melodic-navfn'
 pkgver='1.16.2'
