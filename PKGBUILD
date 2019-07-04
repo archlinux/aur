@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Provides a portable set of time functions that are especially useful for porting other code or being wrapped by higher level c++ classes."
-url='http://wiki.ros.org/ecl_time_lite'
+url='https://wiki.ros.org/ecl_time_lite'
 
 pkgname='ros-melodic-ecl-time-lite'
 pkgver='0.61.6'
