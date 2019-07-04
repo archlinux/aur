@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_shell is a Python GUI plugin providing an interactive shell."
-url='http://wiki.ros.org/rqt_shell'
+url='https://wiki.ros.org/rqt_shell'
 
 pkgname='ros-melodic-rqt-shell'
 pkgver='0.4.9'
