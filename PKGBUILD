@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - This package provides a recovery behavior for the navigation stack that attempts to clear space by reverting the costmaps used by the navigation stack to the static map outside of a given area."
-url='http://wiki.ros.org/clear_costmap_recovery'
+url='https://wiki.ros.org/clear_costmap_recovery'
 
 pkgname='ros-melodic-clear-costmap-recovery'
 pkgver='1.16.2'
