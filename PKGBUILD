@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS -  Contains a node that rotates an image stream in a way that minimizes the angle between a vector in some arbitrary frame and a vector in the camera frame."
-url='http://ros.org/wiki/image_rotate'
+url='https://wiki.ros.org/image_rotate'
 
 pkgname='ros-melodic-image-rotate'
 pkgver='1.12.23'
