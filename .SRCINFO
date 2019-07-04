@@ -1,0 +1,19 @@
+pkgbase = libnbd
+	pkgdesc = NBD client library in userspace
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/libguestfs/libnbd
+	arch = i686
+	arch = x86_64
+	license = custom: BSD
+	makedepends = autoconf
+	makedepends = perl
+	optdepends = ocaml
+	optdepends = gnutls
+	optdepends = libxml2
+	optdepends = python
+	source = https://github.com/libguestfs/libnbd/archive/v0.1.6.tar.gz
+	sha256sums = 468bcccc69806837b31bda665b7f0ee366c775e8f02afc7cce982218d103068a
+
+pkgname = libnbd
+
