@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname='qmapshack-hg'
-pkgver=1.13.0.50.55dee1ae0d55
+pkgver=1.13.0.r50.55dee1ae0d55
 pkgrel=1
 pkgdesc='Plan your next outdoor trip'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
 
-    hg log -r . --template '{latesttag}.{latesttagdistance}.{node|short}' | sed 's/V //'
+    hg log -r . --template '{latesttag}.r{latesttagdistance}.{node|short}' | sed 's/V //'
 }
 
 build() {
