@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - diagnostic_common_diagnostics."
-url='http://ros.org/wiki/diagnostic_common_diagnostics'
+url='https://wiki.ros.org/diagnostic_common_diagnostics'
 
 pkgname='ros-melodic-diagnostic-common-diagnostics'
 pkgver='1.9.3'
