@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Maintains the ecl licenses and also provides an install target for deploying licenses with the ecl libraries."
-url='http://wiki.ros.org/ecl_license'
+url='https://wiki.ros.org/ecl_license'
 
 pkgname='ros-melodic-ecl-license'
 pkgver='0.61.7'
