@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - polled_camera contains a service and C++ helper classes for implementing a polled camera driver node and requesting images from it."
-url='http://ros.org/wiki/polled_camera'
+url='https://wiki.ros.org/polled_camera'
 
 pkgname='ros-melodic-polled-camera'
 pkgver='1.11.13'
