@@ -2,8 +2,8 @@
 # Based on the python-pillow package (Maintainer: Kyle Keen <keenerd@gmail.com>, Contributor: minder)
 
 pkgname=python-pillow-simd
-pkgver=5.3.0.post1
-pkgrel=2
+pkgver=6.0.0.post0
+pkgrel=1
 epoch=1
 _appname=Pillow-SIMD
 _py3basever=3.7m
@@ -20,7 +20,7 @@ makedepends=('python-setuptools' 'freetype2' 'libraqm' 'libwebp' 'tk')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/P/$_appname/$_appname-$pkgver.tar.gz")
 conflicts=('python-pillow')
-provides=('python-pillow=5.3.0')
+provides=('python-pillow=6.0.0')
 
 build() {
   cd "$srcdir/$_appname-$pkgver"
@@ -35,4 +35,4 @@ package() {
   install -m644 -t "$pkgdir/usr/include/python$_py3basever/" src/libImaging/*.h
 }
 
-sha256sums=('903dd895c9c5b88afa567fe582b5eaf55316b52869ba6aedc5325fbe0c9f05a1')
+sha256sums=('59bbf6ffa51718fe32d00aabf23fb14bff9d8b00b1d942996e09be16bf298aca')
