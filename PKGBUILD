@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors."
-url='http://ros.org/wiki/robot_localization'
+url='https://wiki.ros.org/robot_localization'
 
 pkgname='ros-melodic-robot-localization'
 pkgver='2.5.2'
