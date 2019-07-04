@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This rqt plugin ROS package provides easy view of .launch files."
-url='http://wiki.ros.org/rqt_launch'
+url='https://wiki.ros.org/rqt_launch'
 
 pkgname='ros-melodic-rqt-launch'
 pkgver='0.4.8'
