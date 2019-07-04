@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package contains the python bindings PyKDL for the Kinematics and Dynamics Library (KDL), distributed by the Orocos Project."
-url='http://wiki.ros.org/python_orocos_kdl'
+url='https://wiki.ros.org/python_orocos_kdl'
 
 pkgname='ros-melodic-python-orocos-kdl'
 pkgver='1.4.0'
