@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - MAVLink communication library."
-url='http://wiki.ros.org/mavros'
+url='https://wiki.ros.org/mavros'
 
 pkgname='ros-melodic-libmavconn'
 pkgver='0.26.3'
