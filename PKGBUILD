@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Metapackage of geometry tutorials ROS."
-url='http://www.ros.org/wiki/geometry_tutorials'
+url='https://www.wiki.ros.org/geometry_tutorials'
 
 pkgname='ros-melodic-geometry-tutorials'
 pkgver='0.2.2'
