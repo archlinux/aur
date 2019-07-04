@@ -10,7 +10,6 @@ pkgbase = langkit-git
 	depends = gprbuild
 	depends = gnatcoll-core
 	depends = gnatcoll-iconv
-	depends = quex-for_libadalang
 	depends = autopep8
 	depends = python-psutil
 	depends = python-sphinx

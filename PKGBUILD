@@ -10,9 +10,9 @@ arch=('any')
 license=('GPL')
 
 depends=('gcc-ada' 'gprbuild' 'gnatcoll-core' 'gnatcoll-iconv'
-         'quex-for_libadalang' 'autopep8' 'python-psutil' 'python-sphinx'
-         'python-yaml' 'python2-docutils' 'python2-enum34' 'python2-funcy'
-         'python2-mako' 'yapf')
+         'autopep8' 'python-psutil' 'python-sphinx' 'python-yaml'
+         'python2-docutils' 'python2-enum34' 'python2-funcy' 'python2-mako'
+         'yapf')
 makedepends=('git')
 
 provides=('langkit')
