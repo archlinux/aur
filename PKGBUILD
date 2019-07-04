@@ -8,7 +8,7 @@
 
 pkgbase=akonadi-git
 pkgname=(akonadi-git libakonadi-git)
-pkgver=19.04.2.r97.g7f39ff12d
+pkgver=19.04.2.r107.gf72c57701
 pkgrel=1
 pkgdesc="PIM layer, which provides an asynchronous API to access all kind of PIM data"
 arch=(x86_64)
@@ -53,7 +53,9 @@ package_libakonadi-git() {
 package_akonadi-git() {
 	depends=(libakonadi-git)
 	optdepends=('mariadb: MariaDB backend'
-	            'postgresql: PostgreSQL backend')
+	            'postgresql: PostgreSQL backend'
+	            'postgresql-old-upgrade: upgrade from previous major PostgreSQL version using pg_upgrade'
+	            'sqlite: SQLite backend')
 	conflicts=("${pkgname%-git}")
 	provides=("${pkgname%-git}=${pkgver}")
 

@@ -1,6 +1,6 @@
 pkgbase = akonadi-git
 	pkgdesc = PIM layer, which provides an asynchronous API to access all kind of PIM data
-	pkgver = 19.04.2.r97.g7f39ff12d
+	pkgver = 19.04.2.r107.gf72c57701
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -23,7 +23,9 @@ pkgname = akonadi-git
 	depends = libakonadi-git
 	optdepends = mariadb: MariaDB backend
 	optdepends = postgresql: PostgreSQL backend
-	provides = akonadi=19.04.2.r97.g7f39ff12d
+	optdepends = postgresql-old-upgrade: upgrade from previous major PostgreSQL version using pg_upgrade
+	optdepends = sqlite: SQLite backend
+	provides = akonadi=19.04.2.r107.gf72c57701
 	conflicts = akonadi
 
 pkgname = libakonadi-git
@@ -31,6 +33,6 @@ pkgname = libakonadi-git
 	depends = kio
 	depends = kitemmodels
 	depends = hicolor-icon-theme
-	provides = libakonadi=19.04.2.r97.g7f39ff12d
+	provides = libakonadi=19.04.2.r107.gf72c57701
 	conflicts = libakonadi
 
