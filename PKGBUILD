@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rosmsg contains two command-line tools: rosmsg and rossrv."
-url='http://ros.org/wiki/rosmsg'
+url='https://wiki.ros.org/rosmsg'
 
 pkgname='ros-melodic-rosmsg'
 pkgver='1.12.14'
