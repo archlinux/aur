@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_gui provides the main to start an instance of the ROS integrated graphical user interface provided by qt_gui."
-url='http://ros.org/wiki/rqt_gui'
+url='https://wiki.ros.org/rqt_gui'
 
 pkgname='ros-melodic-rqt-gui'
 pkgver='0.5.0'
