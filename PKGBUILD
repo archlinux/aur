@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - The diagnostic_analysis package can convert a log of diagnostics data into a series of CSV files."
-url='http://www.ros.org/wiki/diagnostics_analysis'
+url='https://www.wiki.ros.org/diagnostics_analysis'
 
 pkgname='ros-melodic-diagnostic-analysis'
 pkgver='1.9.3'
