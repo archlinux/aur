@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_plot provides a GUI plugin visualizing numeric values in a 2D plot using different plotting backends."
-url='http://wiki.ros.org/rqt_plot'
+url='https://wiki.ros.org/rqt_plot'
 
 pkgname='ros-melodic-rqt-plot'
 pkgver='0.4.8'
