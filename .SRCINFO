@@ -2,7 +2,7 @@ pkgbase = ros-melodic-gazebo-plugins
 	pkgdesc = ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components.
 	pkgver = 2.8.4
 	pkgrel = 1
-	url = http://gazebosim.org/tutorials?cat=connect_ros
+	url = https://gazebosim\.org/tutorials\?cat=connect_ros
 	arch = any
 	license = BSD, Apache 2.0
 	makedepends = cmake
