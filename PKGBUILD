@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package contains common nodelet tools such as a mux, demux and throttle."
-url='http://ros.org/wiki/nodelet_topic_tools'
+url='https://wiki.ros.org/nodelet_topic_tools'
 
 pkgname='ros-melodic-nodelet-topic-tools'
 pkgver='1.9.16'
