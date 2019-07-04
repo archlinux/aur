@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - MAVROS -- MAVLink extendable communication node for ROS with proxy for Ground Control Station."
-url='http://wiki.ros.org/mavros'
+url='https://wiki.ros.org/mavros'
 
 pkgname='ros-melodic-mavros'
 pkgver='0.26.3'
