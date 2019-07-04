@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A Python and C++ implementation of the LZ4 streaming format."
-url='http://www.ros.org/'
+url='https://wiki.ros.org/roslz4'
 
 pkgname='ros-melodic-roslz4'
 pkgver='1.12.14'
