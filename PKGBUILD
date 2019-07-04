@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - The class_loader package is a ROS-independent package for loading plugins during runtime and the foundation of the higher level ROS pluginlib library."
-url='http://ros.org/wiki/class_loader'
+url='https://wiki.ros.org/class_loader'
 
 pkgname='ros-melodic-class-loader'
 pkgver='0.4.1'
