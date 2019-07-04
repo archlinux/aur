@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - geometry_msgs provides messages for common geometric primitives such as points, vectors, and poses."
-url='http://wiki.ros.org/geometry_msgs'
+url='https://github.com/ros/common_msgs'
 
 pkgname='ros-melodic-geometry-msgs'
 pkgver='1.12.7'
