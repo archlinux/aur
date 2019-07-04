@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rostopic contains the rostopic command-line tool for displaying debug information about ROS Topics, including publishers, subscribers, publishing rate, and ROS Messages."
-url='http://ros.org/wiki/rostopic'
+url='https://wiki.ros.org/rostopic'
 
 pkgname='ros-melodic-rostopic'
 pkgver='1.12.14'
