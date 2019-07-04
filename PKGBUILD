@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Contains nodelets for processing depth images such as those produced by OpenNI camera."
-url='http://ros.org/wiki/depth_image_proc'
+url='https://wiki.ros.org/depth_image_proc'
 
 pkgname='ros-melodic-depth-image-proc'
 pkgver='1.12.23'
