@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - This metapackage depends on packages for interfacing common joysticks and human input devices with ROS."
-url='http://www.ros.org/wiki/joystick_drivers'
+url='https://www.wiki.ros.org/joystick_drivers'
 
 pkgname='ros-melodic-joystick-drivers'
 pkgver='1.12.0'
