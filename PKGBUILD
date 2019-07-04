@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Common-Lisp ROS message and service generators."
-url='http://www.ros.org/wiki/roslisp'
+url='https://www.wiki.ros.org/roslisp'
 
 pkgname='ros-melodic-genlisp'
 pkgver='0.4.16'
