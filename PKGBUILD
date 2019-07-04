@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This package defines messages for defining robot trajectories."
-url='http://wiki.ros.org/trajectory_msgs'
+url='https://wiki.ros.org/trajectory_msgs'
 
 pkgname='ros-melodic-trajectory-msgs'
 pkgver='1.12.7'
