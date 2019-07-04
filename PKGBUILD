@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rosmake is a ros dependency aware build tool which can be used to build all dependencies in the correct order."
-url='http://ros.org/wiki/rosmake'
+url='https://wiki.ros.org/rosmake'
 
 pkgname='ros-melodic-rosmake'
 pkgver='1.14.6'
