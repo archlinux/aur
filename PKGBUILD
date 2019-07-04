@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - voxel_grid provides an implementation of an efficient 3D voxel grid."
-url='http://wiki.ros.org/voxel_grid'
+url='https://wiki.ros.org/voxel_grid'
 
 pkgname='ros-melodic-voxel-grid'
 pkgver='1.16.2'
