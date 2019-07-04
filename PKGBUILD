@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Low-level build system macros and infrastructure for ROS."
-url='http://www.ros.org/wiki/catkin'
+url='https://www.wiki.ros.org/catkin'
 
 pkgname='ros-melodic-catkin'
 pkgver='0.7.17'
