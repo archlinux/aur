@@ -1,6 +1,6 @@
 # Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Enhanced tools for benchmarks in MoveIt!."
-url='http://moveit.ros.org'
+url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros-benchmarks'
 pkgver='0.10.8'
