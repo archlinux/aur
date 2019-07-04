@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Metapackage that contains common tutorials."
-url='http://ros.org/wiki/common_tutorials'
+url='https://wiki.ros.org/common_tutorials'
 
 pkgname='ros-melodic-common-tutorials'
 pkgver='0.1.11'
