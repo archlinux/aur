@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Assorted filters designed to operate on 2D planar laser scanners, which use the sensor_msgs/LaserScan type."
-url='http://ros.org/wiki/laser_filters'
+url='https://wiki.ros.org/laser_filters'
 
 pkgname='ros-melodic-laser-filters'
 pkgver='1.8.6'
