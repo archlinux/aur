@@ -1,0 +1,67 @@
+pkgbase = mesa-radv-aco-git
+	pkgdesc = an open-source implementation of the OpenGL specification, git version
+	pkgver = 19.2.0_devel.112628.4633298fd62
+	pkgrel = 1
+	url = https://www.mesa3d.org
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = python-mako
+	makedepends = xorgproto
+	makedepends = libxml2
+	makedepends = libx11
+	makedepends = libvdpau
+	makedepends = libva
+	makedepends = elfutils
+	makedepends = libomxil-bellagio
+	makedepends = libxrandr
+	makedepends = ocl-icd
+	makedepends = vulkan-icd-loader
+	makedepends = libgcrypt
+	makedepends = wayland
+	makedepends = wayland-protocols
+	makedepends = meson
+	makedepends = ninja
+	makedepends = llvm=8.0.0
+	makedepends = clang=8.0.0
+	depends = libdrm
+	depends = libxxf86vm
+	depends = libxdamage
+	depends = libxshmfence
+	depends = libelf
+	depends = libomxil-bellagio
+	depends = libunwind
+	depends = libglvnd
+	depends = wayland
+	depends = lm_sensors
+	depends = libclc
+	depends = glslang
+	depends = llvm-libs=8.0.0
+	optdepends = opengl-man-pages: for the OpenGL API man pages
+	provides = mesa=19.2.0_devel.112628.4633298fd62-1
+	provides = vulkan-intel=19.2.0_devel.112628.4633298fd62-1
+	provides = vulkan-radeon=19.2.0_devel.112628.4633298fd62-1
+	provides = libva-mesa-driver=19.2.0_devel.112628.4633298fd62-1
+	provides = mesa-vdpau=19.2.0_devel.112628.4633298fd62-1
+	provides = vulkan-driver=19.2.0_devel.112628.4633298fd62-1
+	provides = opencl-mesa=19.2.0_devel.112628.4633298fd62-1
+	provides = mesa-vulkan-layer=19.2.0_devel.112628.4633298fd62-1
+	provides = opengl-driver
+	provides = opencl-driver
+	conflicts = mesa-git
+	conflicts = mesa
+	conflicts = opencl-mesa
+	conflicts = vulkan-intel
+	conflicts = vulkan-radeon
+	conflicts = libva-mesa-driver
+	conflicts = mesa-vdpau
+	conflicts = mesa-vulkan-layer
+	source = mesa::git+https://github.com/daniel-schuermann/mesa.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a
+	sha512sums = SKIP
+	sha512sums = 25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2
+
+pkgname = mesa-radv-aco-git
+
