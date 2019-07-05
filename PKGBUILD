@@ -1,41 +1,27 @@
 pkgname=sgpp
-pkgver=2.0.0
+pkgver=3.2.0
 pkgrel=1
 arch=('i686' 'x86_64')
-pkgdesc="spatially adaptive sparse grids"
-depends=('armadillo' 'python2')
+pkgdesc="A numerical library for adaptive Sparse Grids"
+depends=('armadillo' 'python')
 makedepends=('scons' 'swig' 'eigen')
 license=('MIT')
 url="http://sgpp.sparsegrids.org"
-source=("http://sgpp.sparsegrids.org/downloads/sgpp_${pkgver}.tar.gz")
-sha1sums=('ba82e9cc9cf97ba27bdc1ab96ce35c7d24c6f23d')
+source=("https://github.com/SGpp/SGpp/archive/v3.2.0.tar.gz")
+sha256sums=('dab83587fd447f92ed8546eacaac6b8cbe65b8db5e860218c0fa2e42f776962d')
 
 prepare() {
-  cd "$srcdir/sgpp-${pkgver}"
-  sed -i "s|python pysgpp/doxy2swig|python2 pysgpp/doxy2swig|g" site_scons/ModuleHelper.py
-}
-
-build()
-{
-  cd "$srcdir/sgpp-${pkgver}"
-  export SCONSFLAGS="$MAKEFLAGS"
-  scons SG_JAVA=0 DOC=0 COMPILE_BOOST_TESTS=0 RUN_PYTHON_TESTS=0 USE_ARMADILLO=1 USE_EIGEN=1
+  cd "$srcdir/SGpp-${pkgver}"
+  # gcc 9.x build failure
+  grep -lr 'default(none)' . |xargs sed -i "s| default(none)||g"
 }
 
 package()
 {
-  cd "$srcdir/sgpp-${pkgver}"
-  # FIXME: scons install PREFIX="$pkgdir"/usr
-  install -d "$pkgdir"/usr/{lib,include}
-  install -m 644 lib/sgpp/lib*.so "$pkgdir"/usr/lib
-  for subdir in combigrid solver quadrature optimization pde datadriven base
-  do
-    cp -r $subdir/src/sgpp "$pkgdir"/usr/include
-  done
-  install -m644 */src/*.hpp "$pkgdir"/usr/include
-  find "$pkgdir"/usr/include/sgpp -name "*.cpp"|xargs rm
-  find "$pkgdir"/usr/include/sgpp -name "*.lint"|xargs rm
-  find "$pkgdir"/usr/include/sgpp -name "*.os"|xargs rm
-  install -d "$pkgdir"/usr/lib/python2.7/site-packages
-  cp -R lib/pysgpp "$pkgdir"/usr/lib/python2.7/site-packages
+  cd "$srcdir/SGpp-${pkgver}"
+  export SCONSFLAGS="$MAKEFLAGS"
+  scons SG_JAVA=0 COMPILE_BOOST_TESTS=0 RUN_PYTHON_TESTS=0 USE_ARMADILLO=1 USE_EIGEN=1 PREFIX="$pkgdir"/usr/ -Q install
+  install -d "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
+  cp -R lib/pysgpp "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
+  mv "$pkgdir"/usr/lib/sgpp/* "$pkgdir"/usr/lib
 }
