@@ -1,0 +1,13 @@
+diff --git a/src/merger/paraver/addr2info.c b/src/merger/paraver/addr2info.c
+index e6d3697e..527af0cf 100644
+--- a/src/merger/paraver/addr2info.c
++++ b/src/merger/paraver/addr2info.c
+@@ -810,7 +810,7 @@ static void Translate_Address (UINT64 address, unsigned ptask, unsigned task,
+ 		if (!found)
+ 		{
+ 			found = BFDmanager_translateAddress (obj->bfdImage, obj->bfdSymbols,
+-			  (void*) (address - obj->start_address), &translated_function,
++			  (void*) (address - obj->start_address + obj->offset), &translated_function,
+ 			  &translated_filename, &translated_line);
+ 		}
+ 	}
