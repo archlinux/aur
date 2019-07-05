@@ -6,7 +6,7 @@
 pkgname=aseprite-git
 _pkgname=aseprite
 pkgver=1.2.13.r0.gaf4fd54c2
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
@@ -35,9 +35,6 @@ prepare() {
 
     cd "${srcdir}/skia"
     python2 tools/git-sync-deps
-
-    mkdir -p "${srcdir}/.pkgbuild-bin"
-    ln -sf /usr/bin/python2 "${srcdir}/.pkgbuild-bin/python"
 }
 
 build() {
@@ -64,7 +61,6 @@ build() {
         -DUSE_SHARED_HARFBUZZ=ON \
         -G Ninja \
         ..
-    export PATH="${srcdir}/.pkgbuild-bin":$PATH
     ninja ${_pkgname}
 }
 
