@@ -1,4 +1,5 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
+# Maintainer: Leihu Xi <leihuxi@gmail.com>
 
 pkgname=mitalk
 pkgver=4.0.31
