@@ -6,10 +6,10 @@
 
 pkgname=freefilesync
 pkgver=10.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
-url="https://www.freefilesync.org"
+url="https://freefilesync.org"
 license=('GPLv3')
 depends=(wxgtk webkit2gtk boost-libs)
 makedepends=(boost unzip)
@@ -29,7 +29,7 @@ DLAGENTS=("https::/usr/bin/curl -fLC - --retry 5 --retry-delay 3 -A Mozilla -o %
 
 _auth_request="$(\
     echo "Authenticating for download ..." >&2; \
-    /usr/bin/curl -fsSL -A Mozilla "$url/cookie/load-consent.php" \
+    /usr/bin/curl -fsSL -A Mozilla "$url/cookie/init.js.php" \
 )"
 
 prepare() {
