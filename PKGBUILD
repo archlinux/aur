@@ -1,7 +1,7 @@
 # Maintainer: Ali Mousavi <ali.mousavi@gmail.com>
 _npmname=gatsby-cli
 pkgname=nodejs-$_npmname
-pkgver=2.7.3
+pkgver=2.7.7
 pkgrel=1
 pkgdesc="The Gatsby command line interface"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
-md5sums=('fa75344d05bbcc51f2a637204a431a75')
+md5sums=('75a02d4004298a4d7d247da3361a0d93')
 
 package() {
     npm install -g --cache $srcdir/npm-cache --user root --prefix $pkgdir/usr $srcdir/$_npmname-$pkgver.tgz
