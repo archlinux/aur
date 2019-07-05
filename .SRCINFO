@@ -1,0 +1,27 @@
+pkgbase = scidavis-qt5
+	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of QtiPlot. Qt5 port
+	pkgver = 1.25
+	pkgrel = 1
+	url = http://scidavis.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = gsl
+	depends = glu
+	depends = mesa
+	depends = muparser
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = qwt5-qt5
+	depends = qwtplot3d-qt5
+	conflicts = scidavis
+	source = https://prdownloads.sourceforge.net/sourceforge/scidavis/scidavis-1.25.tar.gz
+	source = future_absolute.patch
+	sha512sums = 23616614361935d0aa9fdd51a582a8ab0d035f6ab6dfc23548964b2f3aca1122a013577b7743574fd8f32acdf88e2e719c2fc358f8df9394741065055491566b
+	sha512sums = 94a8c89df7d178d679e1304d545ea93cee2c6e687d593718947228ac3d89a9dc65424799a483d47f31653a71e7f4cafe676303906cf42b89e615cdc944cb2dea
+
+pkgname = scidavis-qt5
+

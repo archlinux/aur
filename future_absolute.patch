@@ -1,0 +1,142 @@
+diff -u10 -r scidavis-1.25/libscidavis/src/ApplicationWindow.cpp scidavis-1.25.1/libscidavis/src/ApplicationWindow.cpp
+--- scidavis-1.25/libscidavis/src/ApplicationWindow.cpp	2019-03-05 00:49:55.000000000 +0100
++++ scidavis-1.25.1/libscidavis/src/ApplicationWindow.cpp	2019-07-05 13:57:49.625666125 +0200
+@@ -2599,21 +2599,21 @@
+ 	connect(base, SIGNAL(modifiedData(Table*,const QString&)), s, SLOT(update(Table*,const QString&)));
+ 	connect(base, SIGNAL(changedColHeader(const QString&, const QString&)), s, SLOT(renameCol(const QString&, const QString&)));
+ 	connect(base, SIGNAL(removedCol(const QString&)), s, SLOT(removeCol(const QString&)));
+ 	connect(base->d_future_table, SIGNAL(aspectAboutToBeRemoved(const AbstractAspect *)), 
+ 			this, SLOT(removeDependentTableStatistics(const AbstractAspect *)));
+ 	return s;
+ }
+ 
+ void ApplicationWindow::removeDependentTableStatistics(const AbstractAspect *aspect)
+ {
+-	future::Table *future_table = qobject_cast<future::Table *>(const_cast<AbstractAspect *>(aspect));
++	::future::Table *future_table = qobject_cast<::future::Table *>(const_cast<AbstractAspect *>(aspect));
+ 	if (!future_table) return;
+ 	QList<MyWidget*> windows = windowsList();
+ 	foreach(MyWidget *win, windows)
+ 	{
+ 		TableStatistics *table_stat = qobject_cast<TableStatistics *>(win);
+ 		if (!table_stat) continue;
+ 		Table *table = qobject_cast<Table *>(future_table->view());
+ 		if (!table) continue;
+ 		if (table_stat->base() == table)
+ 			d_project->removeChild(table_stat->d_future_table);
+@@ -13866,44 +13866,44 @@
+ 	if (ml) {
+ 		Graph *g = ml->activeGraph();
+ 		if(g->curves() > 0)
+ 			g->setCurveType(g->curves()-1, (Graph::CurveType)type);
+ 	}
+ }
+ 
+ void ApplicationWindow::handleAspectAdded(const AbstractAspect *parent, int index)
+ {
+ 	AbstractAspect * aspect = parent->child(index);
+-	future::Matrix * matrix = qobject_cast<future::Matrix *>(aspect);
++	::future::Matrix * matrix = qobject_cast<::future::Matrix *>(aspect);
+ 	if (matrix)
+ 	{
+ 		initMatrix(static_cast<Matrix *>(matrix->view()));
+ 		return;
+ 	}
+-	future::Table * table = qobject_cast<future::Table *>(aspect);
++	::future::Table * table = qobject_cast<::future::Table *>(aspect);
+ 	if (table)
+ 	{
+ 		initTable(static_cast<Table *>(table->view()));
+ 		return;
+ 	}
+ }
+ 
+ void ApplicationWindow::handleAspectAboutToBeRemoved(const AbstractAspect *parent, int index)
+ {
+ 	AbstractAspect * aspect = parent->child(index);
+-	future::Matrix * matrix = qobject_cast<future::Matrix *>(aspect);
++	::future::Matrix * matrix = qobject_cast<::future::Matrix *>(aspect);
+ 	if (matrix)
+ 	{
+ 		closeWindow(static_cast<Matrix *>(matrix->view()));
+ 		return;
+ 	}
+-	future::Table * table = qobject_cast<future::Table *>(aspect);
++	::future::Table * table = qobject_cast<::future::Table *>(aspect);
+ 	if (table)
+ 	{
+ 		closeWindow(static_cast<Table *>(table->view()));
+ 		return;
+ 	}
+ }
+ 
+ void ApplicationWindow::showHistory()
+ {
+ 	if (!d_project->undoStack()) return;
+@@ -13924,16 +13924,16 @@
+ 
+ 	dialog.setWindowTitle(tr("Undo/Redo History"));
+ 	if (dialog.exec() == QDialog::Accepted)
+ 		return;
+ 
+ 	d_project->undoStack()->setIndex(index);
+ }
+ 
+ QStringList ApplicationWindow::tableWindows()
+ {
+-	QList<AbstractAspect *> tables = d_project->descendantsThatInherit("future::Table");
++	QList<AbstractAspect *> tables = d_project->descendantsThatInherit("::future::Table");
+ 	QStringList result;
+ 	foreach(AbstractAspect *aspect, tables)
+ 		result.append(aspect->name());
+ 	return result;
+ }
+diff -u10 -r scidavis-1.25/libscidavis/src/future/core/Project.h scidavis-1.25.1/libscidavis/src/future/core/Project.h
+--- scidavis-1.25/libscidavis/src/future/core/Project.h	2019-03-05 00:49:55.000000000 +0100
++++ scidavis-1.25.1/libscidavis/src/future/core/Project.h	2019-07-05 13:57:16.108572010 +0200
+@@ -36,21 +36,21 @@
+ class QString;
+ class ProjectWindow;
+ class QAction;
+ class AbstractScriptingEngine;
+ 
+ //! Represents a SciDAVis project.
+ /**
+  * Project manages an undo stack and is responsible for creating ProjectWindow instances
+  * as views on itself.
+  */
+-class Project : public future::Folder
++class Project : public ::future::Folder
+ {
+ 	Q_OBJECT
+ 
+ 	public:
+ 		//! MDI subwindow visibility setting
+ 		enum MdiWindowVisibility
+ 		{
+ 			folderOnly,
+ 			folderAndSubfolders,
+ 			allMdiWindows
+@@ -66,21 +66,21 @@
+ 		virtual Project *project() { return this; }
+ 		virtual QUndoStack *undoStack() const;
+ 		virtual QString path() const { return ""; }
+ #ifndef LEGACY_CODE_0_2_x
+ 		virtual ProjectWindow *view();
+ #else
+ 		virtual void *view();
+ #endif
+ 		virtual QMenu *createContextMenu() const;
+ 		//@}
+-		virtual QMenu *createFolderContextMenu(const future::Folder * folder) const;
++		virtual QMenu *createFolderContextMenu(const ::future::Folder * folder) const;
+ 
+ 		AbstractScriptingEngine * scriptingEngine() const;
+ 
+ 		void setMdiWindowVisibility(MdiWindowVisibility visibility);
+ 		MdiWindowVisibility mdiWindowVisibility() const;
+ 		void setFileName(const QString & file_name);
+ 		QString fileName() const;
+ 	
+ 		static ConfigPageWidget * makeConfigPage();
+ 		static QString configPageLabel();
