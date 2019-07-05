@@ -1,18 +1,19 @@
-pkgbase = papermc
+pkgbase = papermc-git
 	pkgdesc = High performance Spigot fork that aims to fix gameplay and mechanics inconsistencies
 	pkgver = 1.14.3_0d079188
-	pkgrel = 1
+	pkgrel = 2
 	url = https://papermc.io/
 	install = paper.install
 	arch = any
 	license = GPL3
 	makedepends = java-environment>=8
 	makedepends = git
+	makedepends = maven
 	depends = java-runtime-headless>=8
 	depends = awk
 	provides = paperclip=1.14.3_0d079188
-	source = papermc::git+https://github.com/PaperMC/Paper.git#branch=ver/1.14
+	source = papermc-git::git+https://github.com/PaperMC/Paper.git#branch=ver/1.14
 	md5sums = SKIP
 
-pkgname = papermc
+pkgname = papermc-git
 
