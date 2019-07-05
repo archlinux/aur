@@ -1,17 +1,16 @@
 pkgbase = falkon-pdfreader-git
 	pkgdesc = PDF reader plugin for Falkon browser
 	pkgver = r7.eefc135
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Tarptaeya/PDFReader
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
 	depends = falkon
-	depends = cmake
-	depends = extra-cmake-modules
 	provides = falkon-pdfreader
-	source = falkon-pdfreader-git::git+https://github.com/Tarptaeya/PDFReader.git
+	source = falkon-pdfreader::git+https://github.com/Tarptaeya/PDFReader.git
 	md5sums = SKIP
 
 pkgname = falkon-pdfreader-git
