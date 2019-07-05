@@ -6,7 +6,7 @@ pkgdesc="A proprietary music streaming service"
 arch=('x86_64')
 url="https://www.deezer.com/"
 license=('custom:"Copyright (c) 2006-2018 Deezer S.A."')
-depends=('electron>=3.0.10')
+depends=('electron>=3.0.10' 'electron<4.0.0')
 provides=('deezer')
 options=('!strip')
 makedepends=('p7zip')
