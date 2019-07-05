@@ -13,7 +13,9 @@ pkgbase = haskell-tasty-hspec
 	depends = haskell-hspec
 	depends = haskell-hspec-core
 	source = https://hackage.haskell.org/packages/archive/tasty-hspec/1.1.5.1/tasty-hspec-1.1.5.1.tar.gz
+	source = https://hackage.haskell.org/packages/archive/tasty-hspec/1.1.5.1/tasty-hspec.cabal
 	sha256sums = fe889ec0f7b3991c46a07d9ff9cf09608a73a18f434a7480d2a09c79e56f3345
+	sha256sums = f24e87f7681d12b7c7c7951a644657b53630fe7e2844d010adb860bbca1ffff1
 
 pkgname = haskell-tasty-hspec
 
