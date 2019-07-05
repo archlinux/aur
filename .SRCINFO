@@ -1,5 +1,5 @@
 pkgbase = pipewire-gstfree
-	pkgdesc = Server and user space API to deal with multimedia pipelines
+	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies
 	pkgver = 0.2.6+1+g37613b67
 	pkgrel = 1
 	url = https://pipewire.org
@@ -23,6 +23,6 @@ pkgname = pipewire-gstfree
 	install = pipewire.install
 
 pkgname = pipewire-gstfree-docs
-	pkgdesc = Server and user space API to deal with multimedia pipelines (documentation)
+	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies (documentation)
 	depends = 
 
