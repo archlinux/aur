@@ -1,0 +1,15 @@
+pkgbase = fyrlang
+	pkgdesc = Versatile, safe, and modern systems programming language.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/vs-ude/fyr
+	arch = any
+	license = BSD
+	makedepends = npm
+	depends = nodejs
+	depends = gcc
+	source = https://registry.npmjs.org/fyrlang/-/fyrlang-0.1.4.tgz
+	sha256sums = 6ba62ad3035a4b27176fd4d36081148c767f970deff9734bcc69032a28e38207
+
+pkgname = fyrlang
+
