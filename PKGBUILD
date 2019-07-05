@@ -4,11 +4,11 @@
 # Contributor: Andreas Linz <klingt.net at gmail dot com>
 # Contributor: Akshay S Dinesh <asdofindia at gmail dot com>
 
-_gopkgname='github.com/mholt/caddy'
+_gopkgname='github.com/caddyserver/caddy'
 
 pkgname=caddy
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -23,7 +23,7 @@ source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'caddy.tmpfiles'
         'caddy.conf'
         'plugins.go')
-sha256sums=('1c8b435a79e21b9832c7a8a88c44e70bc80434ca3719853d2b1092ffbbbbff7d'
+sha256sums=('7cbd80c798a0db4195381f730f5409680c6e1239fbc06295b90b34f666a05692'
             'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
             '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
             '5f899f3d72bd815ba67a2fbd95144f7ff5d83ae47d1c4bee8297ce4e5d2ed400'
@@ -37,7 +37,7 @@ prepare() {
 package main
 
 import (
-	"github.com/mholt/caddy/caddy/caddymain"
+	"github.com/caddyserver/caddy/caddy/caddymain"
 EOF
     if [ ${#plugins[@]} -gt 0 ]; then
         echo enabled plugins: ${plugins[@]}
