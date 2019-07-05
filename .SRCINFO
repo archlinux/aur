@@ -1,10 +1,9 @@
 pkgbase = wps-office
 	pkgdesc = Kingsoft Office (WPS Office) is an office productivity suite
-	pkgver = 11.1.0.8392
-	pkgrel = 4
+	pkgver = 11.1.0.8722
+	pkgrel = 1
 	url = http://wps-community.org/
 	install = wps-office.install
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = fontconfig
@@ -27,14 +26,10 @@ pkgbase = wps-office
 	optdepends = ttf-wps-fonts: Symbol fonts required by wps-office
 	conflicts = kingsoft-office
 	options = !emptydirs
-	source_i686 = http://kdl.cc.ksosoft.com/wps-community/download/8392/wps-office_11.1.0.8392_i386.deb
-	source_i686 = add_no_kdialog_variable.patch
-	sha1sums_i686 = 60b1c9e33ee6fc1edcefe40dc9ec529d4a668825
-	sha1sums_i686 = dd8b5283ee17a88a3eb0531976abccd6e5e08c48
-	source_x86_64 = http://kdl.cc.ksosoft.com/wps-community/download/8392/wps-office_11.1.0.8392_amd64.deb
-	source_x86_64 = add_no_kdialog_variable.patch
-	sha1sums_x86_64 = edb1bc215e46c46bb979869e374788498486b56c
-	sha1sums_x86_64 = dd8b5283ee17a88a3eb0531976abccd6e5e08c48
+	source = http://kdl.cc.ksosoft.com/wps-community/download/8722/wps-office_11.1.0.8722_amd64.deb
+	source = add_no_kdialog_variable.patch
+	sha1sums = 438cdd5057ebf16bff3b0b6b3a9f06fcfca9a3da
+	sha1sums = dd8b5283ee17a88a3eb0531976abccd6e5e08c48
 
 pkgname = wps-office
 
