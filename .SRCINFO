@@ -1,0 +1,28 @@
+pkgbase = pipewire-gstfree
+	pkgdesc = Server and user space API to deal with multimedia pipelines
+	pkgver = 0.2.6+1+g37613b67
+	pkgrel = 1
+	url = https://pipewire.org
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = meson
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = xmltoman
+	makedepends = valgrind
+	depends = sbc
+	depends = ffmpeg
+	depends = rtkit
+	provides = pipewire
+	conflicts = pipewire
+	source = git+https://github.com/PipeWire/pipewire#commit=37613b67ba52b5ad4e81d7ea38adc04027d9f9e5
+	sha256sums = SKIP
+
+pkgname = pipewire-gstfree
+	install = pipewire.install
+
+pkgname = pipewire-gstfree-docs
+	pkgdesc = Server and user space API to deal with multimedia pipelines (documentation)
+	depends = 
+
