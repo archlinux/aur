@@ -1,5 +1,5 @@
 pkgbase = linux-rt
-	pkgver = 5.0.21_rt14
+	pkgver = 5.0.21_rt15
 	pkgrel = 1
 	url = https://git.archlinux.org/linux.git/log/?h=v
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = linux-rt
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.21.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.21.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/projects/rt/5.0/older/patch-5.0.21-rt14.patch.xz
-	source = https://www.kernel.org/pub/linux/kernel/projects/rt/5.0/older/patch-5.0.21-rt14.patch.sign
+	source = https://www.kernel.org/pub/linux/kernel/projects/rt/5.0/older/patch-5.0.21-rt15.patch.xz
+	source = https://www.kernel.org/pub/linux/kernel/projects/rt/5.0/older/patch-5.0.21-rt15.patch.sign
 	source = config
 	source = 60-linux-rt.hook
 	source = 90-linux-rt.hook
@@ -28,7 +28,7 @@ pkgbase = linux-rt
 	validpgpkeys = E644E2F1D45FA0B2EAA02F33109F098506FF0B14
 	sha256sums = 98d307a546c95a215dee675ffa4b63c2a7a29e7af839f0d8dfb96dbb61aac2d7
 	sha256sums = SKIP
-	sha256sums = 43281c769c1e259e8752a5980b1b3765bffaf1642bda5c901b7a44bab890695a
+	sha256sums = 140a4d131a8dd1d86fe43d1be3fbcd8744e467cf9f83ea73ffea540fe40f6e6c
 	sha256sums = SKIP
 	sha256sums = 30a4badcefbbe4cdf9090f8b1b923fc00f0a607b16706ae832c8ea863b75f533
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
