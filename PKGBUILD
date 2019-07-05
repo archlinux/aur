@@ -2,7 +2,7 @@
 
 pkgname=ltspice
 pkgver=17_20190621
-pkgrel=1
+pkgrel=2
 pkgdesc="SPICE simulator, schematic capture and waveform viewer of electronic circuits."
 arch=('x86_64')
 url="http://www.linear.com/designtools/software/"
@@ -14,7 +14,7 @@ source=("$pkgname::git+https://github.com/M4a1x/$pkgname#branch=${pkgver//_/-}"
         "$pkgname-help.sh")
 sha256sums=('SKIP'
             '2652e6154d50a282eb64ad3e50fbb80f4ad62643acead5c39f72c7713daf23cd'
-            'cc757c939ac9a74af019eeb3fe99a0e44f8624a65d86ed5cd1fed33ae5bc7aab')
+            'c32a08df64c9f4685d1b0ace0de9a265513bcff0a219798a4c60663c63f129f8')
 
 package()
 {
