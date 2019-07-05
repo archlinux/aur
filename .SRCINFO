@@ -1,0 +1,22 @@
+pkgbase = baidunetdisk-bin
+	pkgdesc = Baidu Net Disk is a cloud storage client (Linux Version).
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://pan.baidu.com
+	arch = x86_64
+	license = custom
+	depends = libxss
+	depends = gtk3
+	depends = nss
+	provides = baidunetdisk
+	conflicts = baidunetdisk
+	options = !strip
+	source = LICENSE.html::https://pan.baidu.com/disk/duty/index.html
+	source = baidunetdisk-bin.patch
+	sha256sums = 17cb003654df74201befd7daa9c0ad79d4bde67fa00a5db01a3aa3f813a8ea65
+	sha256sums = 1b0652455f7897d450c8aade088c83eeff7f12c2bca265b822326d75125bfb5f
+	source_x86_64 = baidunetdisk-bin-2.0.1.deb::https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/baidunetdisk_linux_2.0.1.deb
+	sha256sums_x86_64 = 6b7993aa75e195b00ba21aa64a743434716eba03a9c7916bde4ef81342c38e3a
+
+pkgname = baidunetdisk-bin
+
