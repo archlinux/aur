@@ -29,11 +29,6 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${_pkgname}"
 
-    less EULA.txt
-    echo "Do you accept the EULA? yes/NO"
-    read reply
-    [ "$reply" == "yes" ] || exit 1
-
     git submodule update --init --recursive
     patch --strip=1 --input="${srcdir}/desktop.patch"
     mkdir -p build
