@@ -3,8 +3,8 @@
 # Based on PKGBUILD from darkcoin-git maintained by Viliam Kubis <viliam dot kubis at gmail dot com>
 
 pkgname='dashcore'
-pkgver=0.14.0.1
-pkgrel=2
+pkgver=0.14.0.2
+pkgrel=1
 arch=('x86_64')
 url="https://www.dash.org/"
 depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'openssl' 'qrencode')
@@ -16,11 +16,11 @@ conflicts=('dashcore-git')
 source=('dash256.png'
   'dash-qt.desktop'
   'COPYING'
-  "https://github.com/dashpay/dash/releases/download/v${pkgver}/dashcore-${pkgver}-$CARCH-linux-gnu.tar.gz")
+  "https://github.com/dashpay/dash/releases/download/v${pkgver}/${pkgname}-${pkgver}-$CARCH-linux-gnu.tar.gz")
 sha256sums=('d719e01df4b47f4d6f0d4d6eac50d402bebb4127d0b6d64764fe2a42e903819b'
             '41f83cb53ecf33688d899f83e09bd52f9aa8e6d7b9b0f30810f192988b26079a'
             'b5290c16b194d488265f3af37a7ab74cb9fecea2de97b910670cefa4e0909853'
-            'c28881104ef7b3bdede7eb2b231b076a6e69213948695b4ec79ccb5621c04d97')
+            '00482c0e2b861d0af042a695d8f6f2bafada0e6df036482d43ba36d51cf2464b')
 
 package() {
   install -D -m755 "$srcdir/$pkgname-${pkgver%.*}/bin/dash-qt" "$pkgdir/usr/bin/dash-qt"
