@@ -1,0 +1,18 @@
+pkgbase = qwt5-qt5
+	pkgdesc = Qwt library (version 5.2.3) updated to work with Qt5.
+	pkgver = 5.2.3.0
+	pkgrel = 1
+	url = https://github.com/gbm19/qwt5-qt5
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	depends = qt5-svg
+	source = qwt5-qt5-5.2.3.0.zip::https://github.com/gbm19/qwt5-qt5/archive/2819734e280ab2fce39338ccecf21124eb787004.zip
+	source = qwtconfig-archlinux.pri
+	source = 00_qlist_missing.patch
+	sha1sums = 75001ab1862ba448a7883e87a32a0956ac374053
+	sha1sums = 23209de530c9604a0b2fa6df32b6beabe28a9e58
+	sha1sums = 94ed795c9457d187d1e31489f8377e2570919bb1
+
+pkgname = qwt5-qt5
+

@@ -1,0 +1,68 @@
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1: .qmake.stash
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/designer: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/designer: moc
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/designer: obj
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/designer: plugins
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/designer: resources
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples: bin
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/bode: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/bode: moc
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/bode: obj
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/cpuplot: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/cpuplot: moc
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/cpuplot: obj
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/curvdemo1: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/curvdemo1: moc
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/curvdemo1: obj
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/curvdemo2: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/curvdemo2: moc
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/curvdemo2: obj
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/data_plot: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/data_plot: moc
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/data_plot: obj
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/event_filter: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/event_filter: moc
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/event_filter: obj
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/histogram: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/histogram: moc
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/histogram: obj
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/realtime_plot: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/realtime_plot: moc
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/realtime_plot: obj
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/simple_plot: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/simple_plot: moc
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/simple_plot: obj
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/spectrogram: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/spectrogram: moc
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/examples/spectrogram: obj
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1: lib
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/src: Makefile
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/src: moc
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/src: obj
+diff -r -u10 qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004/src/qwt_clipper.cpp qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/src/qwt_clipper.cpp
+--- qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004/src/qwt_clipper.cpp	2018-11-29 18:52:06.000000000 +0100
++++ qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/src/qwt_clipper.cpp	2019-07-05 12:48:12.739158087 +0200
+@@ -1,19 +1,20 @@
+ /* -*- mode: C++ ; c-file-style: "stroustrup" -*- *****************************
+  * Qwt Widget Library
+  * Copyright (C) 1997   Josef Wilgen
+  * Copyright (C) 2002   Uwe Rathmann
+  * 
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the Qwt License, Version 1.0
+  *****************************************************************************/
+ 
++#include <QList>
+ #include <qrect.h>
+ #include "qwt_math.h"
+ #include "qwt_clipper.h"
+ 
+ static inline QwtDoubleRect boundingRect(const QwtPolygonF &polygon)
+ {
+ #if QT_VERSION < 0x040000
+     if (polygon.isEmpty())
+         return QwtDoubleRect(0, 0, 0, 0);
+ 
+Only in qwt5-qt5-2819734e280ab2fce39338ccecf21124eb787004.1/textengines: Makefile
