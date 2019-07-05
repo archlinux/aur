@@ -1,6 +1,6 @@
 pkgbase = aseprite-git
 	pkgdesc = Create animated sprites and pixel art
-	pkgver = v1.2.13.r0.gaf4fd54c2
+	pkgver = 1.2.13.r0.gaf4fd54c2
 	pkgrel = 1
 	url = http://www.aseprite.org/
 	arch = x86_64

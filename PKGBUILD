@@ -5,7 +5,7 @@
 
 pkgname=aseprite-git
 _pkgname=aseprite
-pkgver=v1.2.13.r0.gaf4fd54c2
+pkgver=1.2.13.r0.gaf4fd54c2
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
