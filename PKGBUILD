@@ -1,6 +1,6 @@
 # Maintainer: mbb <mochobb at clix dot pt>
 # Contributor: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
-# Contributor: Yochanan
+# Contributor: Mark Wagie <yochanan dot marqos at gmail dot com>
 
 pkgname=falkon-pdfreader-git
 pkgver=r7.eefc135
