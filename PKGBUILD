@@ -2,7 +2,7 @@
 _pkgbasename=portmidi
 pkgname=lib32-$_pkgbasename
 pkgver=217
-pkgrel=6
+pkgrel=7
 pkgdesc="Platform independent library for real-time MIDI input/output. (32 bit)"
 arch=('x86_64')
 url="http://portmedia.sourceforge.net/"
@@ -12,7 +12,7 @@ makedepends=('cmake' 'java-environment' 'gcc-multilib')
 optdepends=('java-runtime: for using pmdefaults')
 options=('!makeflags')
 source=(http://downloads.sourceforge.net/project/portmedia/${_pkgbasename}/${pkgver}/${_pkgbasename}-src-${pkgver}.zip
-        ${_pkgbasename}-${pkgver}-build-fix.patch::https://git.archlinux.org/svntogit/packages.git/tree/trunk/${_pkgbasename}-${pkgver}-build-fix.patch?h=packages/${_pkgbasename}
+        ${_pkgbasename}-${pkgver}-build-fix.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_pkgbasename}-${pkgver}-build-fix.patch?h=packages/${_pkgbasename}
          pm_common.patch)
 sha256sums=('08e9a892bd80bdb1115213fb72dc29a7bf2ff108b378180586aa65f3cfd42e0f'
             'da2b6a4e8f86bc42520c660bde4833497ddbe6a491aa3aa98b9a81c07e2db347'
