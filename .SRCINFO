@@ -1,21 +1,22 @@
 pkgbase = smartgit_preview
 	pkgdesc = Graphical Git client. Preview version.
-	pkgver = 18.2_rc_2
+	pkgver = 19.1_rc_2
 	pkgrel = 1
 	url = https://www.syntevo.com/smartgit/preview/
-	arch = x86_64
+	arch = any
 	license = custom
 	makedepends = tar
 	depends = java-environment>=8
 	depends = python3
 	depends = bash
+	depends = desktop-file-utils
 	optdepends = mercurial: hg repositories support
 	optdepends = git: git repositories support
 	provides = smartgit
 	conflicts = smartgit
 	replaces = smartgithg
-	source = https://www.syntevo.com/downloads/smartgit/smartgit-18_2-rc-2.deb
-	sha1sums = 00780555333710cda63123d367d54a8e04cfaf00
+	source = https://www.syntevo.com/downloads/smartgit/smartgit-19_1-rc-2.deb
+	sha1sums = 75822a9a9f54481fee436b758a069ea3aacf8c15
 
 pkgname = smartgit_preview
 
