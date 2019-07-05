@@ -1,0 +1,20 @@
+pkgbase = halibut-git
+	pkgdesc = free document preparation system
+	pkgver = 1.2.r15.g44df656
+	pkgrel = 1
+	url = http://www.chiark.greenend.org.uk/~sgtatham/halibut/
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = git
+	makedepends = halibut
+	depends = glibc
+	provides = halibut
+	conflicts = halibut
+	source = git://git.tartarus.org/simon/halibut.git
+	source = git://git.tartarus.org/simon/charset.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = halibut-git
+
