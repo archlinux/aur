@@ -13,7 +13,7 @@ backup=('etc/systemd/system/suspend-sedation.service')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
-sha512sums=('1c8a7688e42ae4b46df0cadbd1fb93c095658045780d1c00ab2c091f085f637f20ac791a4aad13e4280a7d670b9436dc680afb71032ffdb1710770b813caa58a')
+sha512sums=('c37eb6c159ec4ea94f9d6e8066359433bb9923b1999a8a7d22036e2177cf410adb6ff1126b5cb96d275e958a1087b7660cea9a05d3a61ac81f60ac8e947edb39')
 
 package(){
     # Extract package data
