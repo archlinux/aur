@@ -1,6 +1,6 @@
 pkgbase = r-geos
 	pkgdesc = Interface to Geometry Engine - Open Source (GEOS) using the C-API for topology operations on geometries.
-	pkgver = 0.3.28
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rgeos
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = r-geos
 	depends = r
 	depends = r-cli
 	depends = geos
-	source = https://cran.r-project.org/src/contrib/rgeos_0.3-28.tar.gz
-	sha256sums = 18e068dc68cf4da9f88aa42125edbd54bfce3c23101f994068ef91571cbccbb5
+	source = https://cran.r-project.org/src/contrib/rgeos_0.4-3.tar.gz
+	sha256sums = 1e86ec8afc157f2d0d4fa61213b63667aef22a4527f30cbd6d6ccf89780de0a7
 
 pkgname = r-geos
 
