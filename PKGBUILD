@@ -1,16 +1,17 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
+# Contributor:
 
 pkgname=kde-thumbnailer-mp4cover
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="MP4 video cover art thumbnail generator"
 arch=(x86_64)
 url="https://github.com/velnias75/kde-thumbnailer-mp4cover"
 license=(GPL2)
-depends=(kio taglib)
+depends=(ffmpeg kio taglib)
 makedepends=(extra-cmake-modules)
-source=("https://launchpad.net/~velnias/+archive/ubuntu/velnias/+sourcefiles/${pkgname}/${pkgver}-2~bionic/${pkgname}_${pkgver}.orig.tar.xz")
-sha512sums=('0890305fe7ca2b56883cb6dd8953c5dd00085b1cd20a5f8deda16d6be5b230a59e4832d6c4d7419a7ea1554878e3c2057d90b73b71ad77eecf60afb66783afc3')
+source=("https://launchpad.net/~velnias/+archive/ubuntu/velnias/+sourcefiles/${pkgname}/${pkgver}-1~disco/${pkgname}_${pkgver}.orig.tar.xz")
+sha512sums=('66252ffffb906f7b7a72a6f0dc82883c4652f3cceac251ccf48b4d510fe8a482f35488a7c7cac7ba337b5210cabc70612a60d7c2b00de437e3339db00f2cee7e')
 
 build() {
   cd "${pkgname}-${pkgver}"
