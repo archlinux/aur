@@ -6,7 +6,7 @@
 pkgname=folly-git
 pkgver=2019.06.17.00.r21.gefaea2394
 pkgrel=1
-pkgdesc='Folly is an open-source C++ library developed and used at Facebook'
+pkgdesc='C++ library developed and used at Facebook'
 arch=('i686' 'x86_64')
 url='https://github.com/facebook/folly'
 license=('Apache')
@@ -14,9 +14,7 @@ conflicts=('folly')
 provides=('folly')
 depends=('google-glog' 'gflags' 'double-conversion' 'libevent' 'boost-libs' 'jemalloc' 'xz' 'lz4' 'zstd' 'snappy')
 makedepends=('git' 'boost' 'python2')
-source=(
-  git+https://github.com/facebook/folly.git
-)
+source=(git+https://github.com/facebook/folly.git)
 md5sums=('SKIP')
 
 pkgver() {
@@ -42,4 +40,3 @@ package() {
   cd folly
   make DESTDIR="$pkgdir" install
 }
-

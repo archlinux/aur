@@ -1,5 +1,5 @@
 pkgbase = folly-git
-	pkgdesc = Folly is an open-source C++ library developed and used at Facebook
+	pkgdesc = C++ library developed and used at Facebook
 	pkgver = 2019.06.17.00.r21.gefaea2394
 	pkgrel = 1
 	url = https://github.com/facebook/folly
