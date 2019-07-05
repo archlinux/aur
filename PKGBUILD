@@ -3,8 +3,8 @@
 # code adapted from https://github.com/jaredallard/notion-app
 
 pkgname=notion-app
-pkgver=1.0.5
-pkgrel=6
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
 url="https://www.notion.so/desktop"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('electron2')
 makedepends=('dmg2img' 'p7zip' 'libicns' 'gendesk')
 source=("https://desktop-release.notion-static.com/Notion-"${pkgver}".dmg" 'notion-app')
-md5sums=('e742641e62819e7ffe48c5cae09c4ee1'
+md5sums=('5f348cad3f4176920b99a5c71056a459'
          'a8931f48231137e3acb1541cd38c99f4')
 
 build() {
