@@ -1,7 +1,7 @@
 pkgbase = turtl-server-git
 	pkgdesc = The secure, collaborative notebook's server
 	pkgver = r211.babccca
-	pkgrel = 2
+	pkgrel = 3
 	url = https://turtlapp.com/
 	install = turtl-server-git.install
 	arch = any

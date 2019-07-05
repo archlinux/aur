@@ -2,7 +2,7 @@
 
 pkgname=turtl-server-git
 pkgver=r211.babccca
-pkgrel=2
+pkgrel=3
 pkgdesc="The secure, collaborative notebook's server"
 arch=('any')
 url="https://turtlapp.com/"
@@ -65,6 +65,6 @@ package() {
         "$pkgdir"/etc/webapps/turtl/config.yaml
 
     # change data dir
-    sed -i "s/\/var\/www\/turtl\/server/usr\/share\/webapps\/turtl/g" \
+    sed -i "s/\/var\/www\/turtl\/server/\/usr\/share\/webapps\/turtl/g" \
         "$pkgdir"/etc/webapps/turtl/config.yaml
 }
