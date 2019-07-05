@@ -1,4 +1,4 @@
-pkgname=papermc-git
+pkgname=papermc
 pkgver=1.14.3_0d079188
 pkgrel=2
 pkgdesc="High performance Spigot fork that aims to fix gameplay and mechanics inconsistencies"
