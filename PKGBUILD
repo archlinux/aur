@@ -3,7 +3,7 @@
 pkgbase='ivre-git'
 pkgbasename='ivre'
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git' 'python2-ivre-git')
-pkgver=0.9.13
+pkgver=0.9.13.dev14
 pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
@@ -54,7 +54,7 @@ package_ivre-git() {
      "${pkgdir}/usr/share/doc" \
      "${pkgdir}/usr/share/ivre/dokuwiki" \
      "${pkgdir}/usr/share/ivre/web"
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/LICENSE*
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
 }
 
 package_ivre-docs-git() {
@@ -63,6 +63,8 @@ package_ivre-docs-git() {
   pkgdesc+=' (documentation)'
   cd "$srcdir/$pkgbasename"
   python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1
+  cp README.md "${pkgdir}/usr/share/doc/ivre/"
+  mv "${pkgdir}/usr/share/ivre/web/static/doc" "${pkgdir}/usr/share/doc/ivre/html"
   rm -r "${pkgdir}/usr/bin" "${pkgdir}/usr/lib" \
      "${pkgdir}/usr/share/ivre" \
      "${pkgdir}/etc/bash_completion.d"
@@ -88,7 +90,7 @@ package_ivre-web-git() {
      "${pkgdir}/usr/share/ivre/honeyd" \
      "${pkgdir}/usr/share/ivre/nmap_scripts" \
      "${pkgdir}/etc/bash_completion.d"
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/LICENSE*
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
   install -Dm0644 "pkg/apache/ivre.conf" "$pkgdir/etc/httpd/conf/extra/ivre.conf"
 }
 
@@ -114,7 +116,7 @@ package_python-ivre-git() {
   rm -r "${pkgdir}/usr/bin" \
      "${pkgdir}/usr/share" \
      "${pkgdir}/etc/bash_completion.d"
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/LICENSE*
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
 }
 
 package_python2-ivre-git() {
@@ -139,5 +141,5 @@ package_python2-ivre-git() {
   rm -r "${pkgdir}/usr/bin" \
      "${pkgdir}/usr/share" \
      "${pkgdir}/etc/bash_completion.d"
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/LICENSE*
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
 }
