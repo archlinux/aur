@@ -11,14 +11,17 @@ arch=('x86_64')
 depends=('ghc-libs' 'haskell-tasty' 'haskell-tasty-quickcheck'
          'haskell-tasty-smallcheck' 'haskell-hspec' 'haskell-hspec-core')
 makedepends=('ghc')
-source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('fe889ec0f7b3991c46a07d9ff9cf09608a73a18f434a7480d2a09c79e56f3345')
+source=(
+    "https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz"
+    "https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}.cabal"
+)
+sha256sums=('fe889ec0f7b3991c46a07d9ff9cf09608a73a18f434a7480d2a09c79e56f3345'
+            'f24e87f7681d12b7c7c7951a644657b53630fe7e2844d010adb860bbca1ffff1')
 
 prepare() {
     cd $_hkgname-$pkgver
 
-    sed -i 's/< *2.7/<= 2.8/' $_hkgname.cabal
-    sed -i 's/< *1.2/<= 1.2/' $_hkgname.cabal
+    ln -sf "../${_hkgname}.cabal" .
 }
 
 build() {
