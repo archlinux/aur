@@ -1,13 +1,13 @@
 pkgbase = thunar-gtk3-megasync
 	pkgdesc = Upload your files to your Mega account from Thunar (revision for GTK3).
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mega.nz/sync
 	arch = i686
 	arch = x86_64
 	license = MEGA LIMITED CODE REVIEW LICENCE
 	depends = megasync
-	depends = thunar
+	depends = thunar>=1.8.0
 	provides = thunar-gtk3-megasync
 	conflicts = thunar-megasync
 	replaces = thunar-megasync

@@ -4,12 +4,12 @@
 
 pkgname="thunar-gtk3-megasync"
 pkgver="4.2.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Upload your files to your Mega account from Thunar (revision for GTK3)."
 arch=('i686' 'x86_64')
 url="https://mega.nz/sync"
 license=('MEGA LIMITED CODE REVIEW LICENCE')
-depends=('megasync' 'thunar')
+depends=('megasync' 'thunar>=1.8.0')
 provides=("${pkgname}")
 conflicts=("thunar-megasync")
 replaces=("thunar-megasync")
