@@ -1,0 +1,45 @@
+pkgbase = i3-gaps-cameronleger-git
+	pkgdesc = A fork of i3-gaps with issue #22 fix (outer gaps cause weird tiling)
+	pkgver = 4.15.0.1.r607.gaddf48ed
+	pkgrel = 1
+	url = https://github.com/cameronleger/i3
+	arch = i686
+	arch = x86_64
+	groups = i3-vcs
+	license = BSD
+	makedepends = git
+	makedepends = asciidoc
+	makedepends = docbook-xsl
+	makedepends = xmlto
+	makedepends = perl
+	makedepends = pkgconfig
+	depends = xcb-util-keysyms
+	depends = xcb-util-wm
+	depends = libev
+	depends = yajl
+	depends = startup-notification
+	depends = pango
+	depends = perl
+	depends = xcb-util-cursor
+	depends = xcb-util-xrm
+	depends = libxkbcommon-x11
+	optdepends = rxvt-unicode: The terminal emulator used in the default config.
+	optdepends = dmenu: As menu.
+	optdepends = i3lock: For locking your screen.
+	optdepends = i3status: To display system information with a bar.
+	optdepends = perl-json-xs: For i3-save-tree
+	optdepends = perl-anyevent-i3: For i3-save-tree
+	provides = i3-wm
+	conflicts = i3-wm
+	conflicts = i3bar
+	conflicts = i3bar-git
+	conflicts = i3-git
+	conflicts = i3-gaps-git
+	conflicts = i3-gaps
+	options = docs
+	options = !strip
+	source = git://github.com/cameronleger/i3#branch=fix-22
+	sha1sums = SKIP
+
+pkgname = i3-gaps-cameronleger-git
+
