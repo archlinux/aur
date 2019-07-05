@@ -1,0 +1,10 @@
+pkgbase = libgmp-static
+	pkgver = 6.1.2
+	pkgrel = 1
+	arch = any
+	depends = gmp>=6.1.2-2
+	source = https://gmplib.org/download/gmp/gmp-6.1.2.tar.xz
+	md5sums = f58fa8001d60c4c77595fbbb62b63c1d
+
+pkgname = libgmp-static
+
