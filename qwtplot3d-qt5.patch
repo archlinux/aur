@@ -1,0 +1,19 @@
+diff -u10 -r qwtplot3d/qwtplot3d.pro qwtplot3d.1/qwtplot3d.pro
+--- qwtplot3d/qwtplot3d.pro	2007-05-20 17:51:50.000000000 +0200
++++ qwtplot3d.1/qwtplot3d.pro	2019-07-05 13:12:47.367738983 +0200
+@@ -1,14 +1,14 @@
+ # pro file for building the makefile for qwtplot3d
+ #
+ 
+-TARGET            = qwtplot3d
++TARGET            = qwtplot3d-qt5
+ TEMPLATE          = lib
+ CONFIG           += qt warn_on opengl thread zlib debug
+ MOC_DIR           = tmp
+ OBJECTS_DIR       = tmp
+ INCLUDEPATH       = include
+ DEPENDPATH        = include src
+ DESTDIR      			= lib
+ #DESTDIR      			= ../../../lib
+ QT += opengl
+ 

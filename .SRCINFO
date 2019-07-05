@@ -1,0 +1,21 @@
+pkgbase = qwtplot3d-qt5
+	pkgdesc = Qt/OpenGL-based C++ programming library containing 3d-widgets
+	pkgver = 0.2.7
+	pkgrel = 2
+	url = http://qwtplot3d.sourceforge.net/
+	arch = x86_64
+	license = custom:zlib
+	makedepends = mesa
+	makedepends = glu
+	depends = qt5-base
+	source = https://downloads.sourceforge.net/sourceforge/qwtplot3d/qwtplot3d-0.2.7.tgz
+	source = qwtplot3d-gcc44.patch
+	source = qwtplot3d-qt-4.8.0.patch
+	source = qwtplot3d-qt5.patch
+	sha1sums = 4463fafb8420a91825e165da7a296aaabd70abea
+	sha1sums = 52fa169b651a98550f8a8391ddf52e0eaeb2c215
+	sha1sums = 8dcafdc9753b0f2eeea2f1e96efa6e8d3d956005
+	sha1sums = f0048a7fb030165a2173a3bf6fdadbf73d571bf4
+
+pkgname = qwtplot3d-qt5
+
