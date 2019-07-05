@@ -1,6 +1,6 @@
 # Maintainer: Aleksandr Arlanow <aleksandr@arlanow.ru>
 pkgname=evelauncher
-pkgver=1534170
+pkgver=1533170
 pkgrel=1
 pkgdesc="Unofficial Eve Online Launcher."
 arch=('any')
