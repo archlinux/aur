@@ -2,14 +2,14 @@
 
 pkgname=stern-bin
 pkgdesc="Multi pod and container log tailing for Kubernetes"
-pkgver=1.10.0
-pkgrel=2
+pkgver=1.11.0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/wercker/stern"
 license=('apache')
 _stern_file=stern_linux_amd64
 source=("$_stern_file-$pkgver::https://github.com/wercker/stern/releases/download/$pkgver/$_stern_file")
-sha256sums=('a0335b298f6a7922c35804bffb32a68508077b2f35aaef44d9eb116f36bc7eda')
+sha256sums=('e0b39dc26f3a0c7596b2408e4fb8da533352b76aaffdc18c7ad28c833c9eb7db')
 
 package() {
   install -Dm 755 "$srcdir/$_stern_file-$pkgver" "$pkgdir/usr/bin/stern"
