@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gtk3
 	pkgdesc = GObject-based multi-platform GUI toolkit (mingw-w64)
-	pkgver = 3.24.9
+	pkgver = 3.24.10
 	pkgrel = 1
 	url = http://www.gtk.org
 	install = mingw-w64-gtk3.install
@@ -24,8 +24,8 @@ pkgbase = mingw-w64-gtk3
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.9.tar.xz
-	sha256sums = 577eb0270d9adf2eb2aa4b03f9c7873fadb20cf265194d0139570f738493e635
+	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.10.tar.xz
+	sha256sums = 35a8f107e2b90fda217f014c0c15cb20a6a66678f6fd7e36556d469372c01b03
 
 pkgname = mingw-w64-gtk3
 
