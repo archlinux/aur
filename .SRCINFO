@@ -1,7 +1,7 @@
 pkgbase = torch7-cunn-git
 	pkgdesc = CUDA backend for Torch7 Neural Network Package
 	pkgver = r819.1ae6aa0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/torch/cunn
 	arch = x86_64
 	arch = i686

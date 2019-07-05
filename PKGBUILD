@@ -2,7 +2,7 @@
 pkgdesc='CUDA backend for Torch7 Neural Network Package'
 pkgname='torch7-cunn-git'
 pkgver=r819.1ae6aa0
-pkgrel=4
+pkgrel=5
 makedepends=('cmake' 'git')
 depends=('torch7-git>=r819' 'cuda' 'torch7-nn-git' 'torch7-cutorch-git')
 conflicts=('torch7-cunn')
@@ -20,6 +20,13 @@ pkgver () {
 		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
+}
+
+prepare() {
+	cd "${pkgname}"
+
+	# https://stackoverflow.com/questions/46345811/cuda-9-shfl-vs-shfl-sync
+	sed -e 's/__shfl(/__shfl_sync(0xFFFFFFFF, /g' -e 's/__any(/__any_sync(0xFFFFFFFF, /g' -i lib/THCUNN/LookupTable.cu
 }
 
 build () {
