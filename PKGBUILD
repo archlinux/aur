@@ -3,10 +3,10 @@ pkgver=3.2.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A numerical library for adaptive Sparse Grids"
+url="http://sgpp.sparsegrids.org"
+license=('MIT')
 depends=('armadillo' 'python')
 makedepends=('scons' 'swig' 'eigen')
-license=('MIT')
-url="http://sgpp.sparsegrids.org"
 source=("https://github.com/SGpp/SGpp/archive/v3.2.0.tar.gz")
 sha256sums=('dab83587fd447f92ed8546eacaac6b8cbe65b8db5e860218c0fa2e42f776962d')
 
@@ -19,9 +19,8 @@ prepare() {
 package()
 {
   cd "$srcdir/SGpp-${pkgver}"
-  export SCONSFLAGS="$MAKEFLAGS"
   scons SG_JAVA=0 COMPILE_BOOST_TESTS=0 RUN_PYTHON_TESTS=0 USE_ARMADILLO=1 USE_EIGEN=1 PREFIX="$pkgdir"/usr/ -Q install
   install -d "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
-  cp -R lib/pysgpp "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
+  cp -Lr lib/pysgpp "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
   mv "$pkgdir"/usr/lib/sgpp/* "$pkgdir"/usr/lib
 }
