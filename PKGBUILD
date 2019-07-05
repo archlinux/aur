@@ -5,7 +5,7 @@ _gitname=macOS-Sierra
 
 pkgname=osx-el-capitan-theme-git
 pkgdesc="Theme mimics OS X 10.12 macOS Sierra, formaly osx-el-capitan-theme, for GTK3 and some DEs (GNOME Shell, Xfce, Cinnamon)"
-pkgver=v0.9.r144.g6966a3a
+pkgver=4.1.r2.gb245f91
 pkgrel=1
 arch=('any')
 url="https://github.com/Elbullazul/${_gitname}"
@@ -23,9 +23,12 @@ pkgver() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/share/backgrounds"
 	cd "$srcdir/$_gitname"
-	mv 'Wallpaper.jpg' "$pkgdir/usr/share/backgrounds"
+	if test -d "$srcdir/$_gitname/Wallpaper.jpg"
+	then
+		mkdir -p "$pkgdir/usr/share/backgrounds"
+		mv 'Wallpaper.jpg' "$pkgdir/usr/share/backgrounds"
+	fi
 	# Keep compatibility with old name
 	find . -type f -not -path './.git/*' -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/OS-X-El-Capitan/{}" \;
 }

@@ -1,6 +1,6 @@
 pkgbase = osx-el-capitan-theme-git
 	pkgdesc = Theme mimics OS X 10.12 macOS Sierra, formaly osx-el-capitan-theme, for GTK3 and some DEs (GNOME Shell, Xfce, Cinnamon)
-	pkgver = v0.9.r144.g6966a3a
+	pkgver = 4.1.r2.gb245f91
 	pkgrel = 1
 	url = https://github.com/Elbullazul/macOS-Sierra
 	arch = any
