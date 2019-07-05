@@ -22,7 +22,7 @@ source=(${_buildenv[@]}
         ${_tidy[@]}
         ${_conf[@]})
 sha1sums=('8f756d02ad1dae9dfbe79e414e557fe96e037549'
-          '4078b286395e17bbcfbd14244ab48bbfce24988d'
+          'eee6514ff7abda04755fa04cbc1a4150e14d605e'
           '6b719a47146aedae186a7e63b6058507c4948d9f'
           'cee5912314c1b84b76f4400a6405cdc224c01828'
           'e8358ced786a996a5763faa42f3541900b86647e'
