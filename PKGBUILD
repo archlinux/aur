@@ -19,7 +19,7 @@ prepare() {
 package()
 {
   cd "$srcdir/SGpp-${pkgver}"
-  scons SG_JAVA=0 COMPILE_BOOST_TESTS=0 RUN_PYTHON_TESTS=0 USE_ARMADILLO=1 USE_EIGEN=1 PREFIX="$pkgdir"/usr/ -Q install
+  scons SG_JAVA=0 COMPILE_BOOST_TESTS=0 RUN_PYTHON_TESTS=0 USE_ARMADILLO=1 USE_EIGEN=1 PREFIX="$pkgdir"/usr/ -Q install ${MAKEFLAGS}
   install -d "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
   cp -Lr lib/pysgpp "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
   mv "$pkgdir"/usr/lib/sgpp/* "$pkgdir"/usr/lib
