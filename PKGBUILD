@@ -6,8 +6,11 @@ pkgdesc="Pacfiles manager."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/Morganamilo/pacdiffviewer"
 license=('GPL')
-depends=('vim')
+depends=('pacman')
 makedepends=('cargo')
+optdepends=("vim: view via 'vim -f'"
+  "git: view via 'git diff'"
+  "sudo: view via 'sudo -e'")
 conflicts=('yaourt')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/pacdiffviewer/archive/v$pkgver.tar.gz")
 sha512sums=('27698b8ce637b7e3c460bb90172155f48d84290131b6a11530ea12bd967d40a628b25e733bcd1efaa95085b5a79d84429fa85f5670a303e5dc33515b68107ee3')
