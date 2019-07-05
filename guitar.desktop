@@ -1,6 +1,11 @@
 [Desktop Entry]
 Type=Application
+Encoding=UTF-8
 Name=Guitar
-Exec=/opt/Guitar/Guitar
-Icon=/opt/Guitar/guitar.svg
+GenericName=Guitar
+Comment=A git GUI client made in Qt
+Icon=guitar.svg
+Exec=/usr/bin/guitar
+StartupNotify=false
 Terminal=false
+Categories=Application;Development;
