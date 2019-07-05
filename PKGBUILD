@@ -1,12 +1,12 @@
-pkgname=papermc
+pkgname=papermc-git
 pkgver=1.14.3_0d079188
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance Spigot fork that aims to fix gameplay and mechanics inconsistencies"
 arch=('any')
 url="https://papermc.io/"
 license=("GPL3")
 depends=("java-runtime-headless>=8" 'awk')
-makedepends=("java-environment>=8" 'git')
+makedepends=("java-environment>=8" 'git' 'maven')
 provides=("paperclip=${pkgver}")
 install="paper.install"
 source=("$pkgname"::'git+https://github.com/PaperMC/Paper.git#branch=ver/1.14')
