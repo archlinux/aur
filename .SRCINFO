@@ -1,14 +1,14 @@
 pkgbase = nodejs-fauna-shell
 	pkgdesc = faunadb access via the cli
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/fauna/fauna-shell
 	arch = any
 	makedepends = npm
 	depends = nodejs
-	noextract = fauna-shell-0.9.2.tgz
-	source = https://registry.npmjs.org/fauna-shell/_/fauna-shell-0.9.2.tgz
-	sha256sums = 3fa3e83fab7bc1625b38616b8254a313216b41815bcdaeaabb21b485d8144f0d
+	noextract = fauna-shell-0.9.3.tgz
+	source = https://registry.npmjs.org/fauna-shell/_/fauna-shell-0.9.3.tgz
+	sha256sums = 07d0d12bd9b18e2dc266fc45efd67bcd3ddd35eb915c9ee669644063d61f4290
 
 pkgname = nodejs-fauna-shell
 
