@@ -3,7 +3,7 @@
 
 pkgname=servo-git
 _pkgname=servo
-pkgver=37664.5f477707a1
+pkgver=37666.ee785f6f23
 pkgrel=1
 pkgdesc="Parallel Browser Project: web browser written in Rust"
 arch=('i686' 'x86_64')
@@ -32,11 +32,11 @@ build() {
   # possibly _FORTIFY_SOURCE? https://bugs.archlinux.org/task/34759
   #unset CPPFLAGS
 
-  ./mach build --dev
+  ./mach build --release
 }
 
 package() {
-  servopath=$_branch/target/debug
+  servopath=$_branch/target/release
   install -Dm755 "$servopath/servo" "$pkgdir/opt/servo/servo"
 
   mkdir -p "$pkgdir/usr/lib"
