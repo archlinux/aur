@@ -1,6 +1,6 @@
 pkgbase = php-geos-git
 	pkgdesc = PHP bindings for GEOS
-	pkgver = 1.0.0.r4.g2c9c56a
+	pkgver = 1.0.0.r10.g200cc31
 	pkgrel = 1
 	url = http://geos.osgeo.org/
 	arch = i686
