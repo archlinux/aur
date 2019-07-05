@@ -1,2 +1,5 @@
 windows10-icon-theme/
+pkg/
+*.tar.gz
+*.tar.xz
 
