@@ -1,11 +1,13 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: tinywrkb <tinywrkb@gmail.com>
+#
+# pipewire package maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs)
 pkgver=0.2.6+1+g37613b67
 pkgrel=1
-pkgdesc="Server and user space API to deal with multimedia pipelines"
+pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
 license=(LGPL2.1)
 arch=(x86_64)
