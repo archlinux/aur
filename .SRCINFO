@@ -1,0 +1,20 @@
+pkgbase = miliao
+	pkgdesc = MiLiao Messenger
+	pkgver = 4.0.32
+	pkgrel = 1
+	url = http://www.miliao.com/
+	arch = x86_64
+	license = custom
+	depends = gconf
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libappindicator-gtk3
+	depends = libxtst
+	depends = nss
+	depends = libxss
+	depends = xorg-xrandr
+	source = https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_4.0.32.deb
+	md5sums = ec0c31da5f3fca66eef23c2030e2d44a
+
+pkgname = miliao
+
