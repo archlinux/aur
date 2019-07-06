@@ -1,0 +1,22 @@
+pkgbase = systemd-ui-git
+	pkgdesc = Systemd Session and Startup Manager GUI (Git version)
+	pkgver = 3.2.g4e6ab2e4
+	pkgrel = 1
+	url = https://github.com/systemd/systemd-ui
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = vala
+	makedepends = docbook-xsl
+	makedepends = libxslt
+	depends = gtk3
+	depends = libgee
+	depends = libnotify
+	provides = systemd-ui
+	conflicts = systemd-ui
+	source = systemd-ui-git::git://anongit.freedesktop.org/systemd/systemd-ui.git
+	md5sums = SKIP
+
+pkgname = systemd-ui-git
+
