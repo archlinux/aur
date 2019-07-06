@@ -6,10 +6,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20190630
+pkgver=4.0.0v20190706
 _pkgver=4.0.0
-_snapshot_=20190630
-_snapver_=0229
+_snapshot_=20190706
+_snapver_=0230
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
@@ -129,8 +129,6 @@ prepare() {
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
 
-  # libplacebo 12 API
-# sed 's|pl_shader_alloc(tc->pl_ctx, NULL, 0, 0);|pl_shader_alloc(tc->pl_ctx, NULL);|' -i modules/video_output/opengl/vout_helper.c
 }
 
 build() {
@@ -268,7 +266,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('ebcc5d048c5544394d5d508c08d56a8aa84d520a4dc149699fb81464f0e49095'
+sha256sums=('a2c23b668a73e832867b459f7e8fad74b17f3cd0bc15a2e6a330c8aca09593b4'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             '3e6bddbaed443e40036c494a0754aedd2f94fe41bfa3754855e16f7452a03cdf'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
