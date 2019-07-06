@@ -1,13 +1,12 @@
 pkgbase = mcos-mjv-nordic-theme
 	pkgdesc = It's GTK2,GTK3,XFCE4 Theme Mac OS Nordic
-	pkgver = 2.3~r16.64313ba
+	pkgver = 2.3~r18.b3542e5
 	pkgrel = 1
 	url = https://github.com/basigur/mcos-mjv-nordic-theme
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = gtk-engine-murrine
-	replaces = mcos-mjv-nordic-theme
 	source = mcos-mjv-nordic-theme::git+https://github.com/basigur/mcos-mjv-nordic-theme
 	sha512sums = SKIP
 
