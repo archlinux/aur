@@ -10,6 +10,7 @@ pkgbase = amidst
 	depends = sh
 	depends = hicolor-icon-theme
 	optdepends = minecraft: the game itself
+	optdepends = minecraft-launcher: The new game launcher
 	noextract = amidst-v4-3.jar
 	source = https://github.com/toolbox4minecraft/amidst/releases/download/v4.3/amidst-v4-3.jar
 	source = amidst.desktop

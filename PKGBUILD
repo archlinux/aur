@@ -12,7 +12,7 @@ arch=('any')
 license=('GPL3')
 url='https://github.com/toolbox4minecraft/amidst'
 depends=('java-runtime=8' 'sh' 'hicolor-icon-theme')
-optdepends=('minecraft: the game itself')
+optdepends=('minecraft: the game itself' 'minecraft-launcher: The new game launcher')
 noextract=("$_jarfile")
 changelog=ChangeLog
 source=("https://github.com/toolbox4minecraft/amidst/releases/download/$_jarver/$_jarfile"
