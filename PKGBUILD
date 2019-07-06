@@ -1,6 +1,6 @@
 # Maintainer: Nikola Hadžić <nikola@firemail.cc>
 pkgname=gst-plugins-rs
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 epoch=
 pkgdesc="GStreamer plugins written in Rust"
@@ -28,7 +28,6 @@ prepare() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	mkdir -vp "$pkgdir/$(pkg-config --variable=pluginsdir gstreamer-1.0)"
-	make install-release PLUGINS_DIR="$pkgdir/$(pkg-config --variable=pluginsdir gstreamer-1.0)"
+	make install DESTDIR="$pkgdir"
 }
 
