@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-kdoctools
 	pkgdesc = Documentation generation from docbook (mingw-w64)
 	pkgver = 5.45.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://community.kde.org/Frameworks
 	arch = any
 	groups = mingw-w64-kf5
@@ -12,6 +12,8 @@ pkgbase = mingw-w64-kdoctools
 	makedepends = mingw-w64-qt5-tools
 	makedepends = extra-cmake-modules
 	makedepends = qt5-tools
+	makedepends = mingw-w64-libxslt
+	makedepends = mingw-w64-libxml2
 	depends = mingw-w64-karchive
 	depends = mingw-w64-docbook-wrapper
 	depends = docbook-xsl

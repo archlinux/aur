@@ -1,13 +1,14 @@
 _pkgname=kdoctools
 pkgname=mingw-w64-$_pkgname
 pkgver=5.45.0
-pkgrel=2
+pkgrel=3
 arch=(any)
 pkgdesc="Documentation generation from docbook (mingw-w64)"
 license=("LGPL")
 depends=(mingw-w64-karchive mingw-w64-docbook-wrapper docbook-xsl "docbook-xml>=4.5")
 groups=(mingw-w64-kf5)
-makedepends=(mingw-w64-extra-cmake-modules perl-uri mingw-w64-ki18n mingw-w64-qt5-tools extra-cmake-modules qt5-tools)
+makedepends=(mingw-w64-extra-cmake-modules perl-uri mingw-w64-ki18n mingw-w64-qt5-tools
+	extra-cmake-modules qt5-tools mingw-w64-libxslt mingw-w64-libxml2)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz"{,.sig})
