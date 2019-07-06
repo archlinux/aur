@@ -2,7 +2,7 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}-bin"
-pkgver=2.0.4
+pkgver=2.1.0
 _pkgver="${pkgver}-linux1"
 gitname="release-${_pkgver}"
 pkgrel=1
@@ -19,7 +19,7 @@ source=(
     ${_pkgname}.desktop
 )
 sha256sums=(
-    2a543f639465488e794db6654374d5dc47f4491c10cbcc67f5378518e193a862
+    8dd4cf7ea4df04a245c1b9b49102dc6f060084de52f2fdc44bbf0280ffe40077
     2758e15659f5770ae2ac948250372135029e7ac2d4b6bf431a112dfdbcc681d1
 )
 package() {
