@@ -1,0 +1,11 @@
+--- a/gtsam_unstable/slam/PartialPriorFactor.h	2019-05-19 18:35:20.000000000 -0700
++++ b/gtsam_unstable/slam/PartialPriorFactor.h	2019-07-06 13:12:52.914600255 -0700
+@@ -121,7 +121,7 @@
+ 
+     // access
+     const Vector& prior() const { return prior_; }
+-    const std::vector<bool>& mask() const { return  mask_; }
++    const std::vector<size_t>& mask() const { return  mask_; }
+     const Matrix& H() const { return H_; }
+ 
+   protected:

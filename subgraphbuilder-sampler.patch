@@ -1,0 +1,13 @@
+--- a/gtsam/linear/SubgraphBuilder.cpp	2019-05-19 18:35:20.000000000 -0700
++++ b/gtsam/linear/SubgraphBuilder.cpp	2019-07-06 13:12:34.254535042 -0700
+@@ -126,8 +126,8 @@
+     }
+ 
+     /* sampling and cache results */
+-    vector<size_t> samples = iidSampler(localWeights, n - count);
+-    for (const size_t &index : samples) {
++    const vector<size_t> localSamples = iidSampler(localWeights, n - count);
++    for (const size_t &index : localSamples) {
+       if (touched[index] == false) {
+         touched[index] = true;
+         samples.push_back(index);
