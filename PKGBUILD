@@ -3,7 +3,7 @@ pkgname=mingw-w64-$_pkgname
 _pkgver=0.60.7-rc1
 pkgver=${_pkgver/-/}
 _pkgmajorver=0.60
-pkgrel=4
+pkgrel=5
 pkgdesc="A spell checker designed to eventually replace Ispell (mingw-w64)"
 arch=(any)
 url="http://aspell.net/"
@@ -48,7 +48,7 @@ prepare() {
 	patch -p1 -i ${srcdir}/0005-w32-home.all.patch
 	patch -p1 -i ${srcdir}/0006-abort.mingw.patch
 	patch -p1 -i ${srcdir}/0007-fix-including-langinfo.patch
-	autoreconf -fi
+	PERLLIB=".:$PERLLIB" ./autogen
 }
 
 build() {

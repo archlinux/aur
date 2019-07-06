@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-aspell
 	pkgdesc = A spell checker designed to eventually replace Ispell (mingw-w64)
 	pkgver = 0.60.7rc1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://aspell.net/
 	arch = any
 	license = LGPL
