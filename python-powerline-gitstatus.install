@@ -1,0 +1,29 @@
+#!/bin/bash
+
+post_install() {
+  echo
+  echo '==> Before activating the gitstatus segement you need to add highlight groups to your colorscheme'
+  echo '    See the example at /usr/share/doc/python-powerline-gitstatus/colorschemes/default.json'
+  echo '    In case you are using the default colorscheme then just copy the example,'
+  echo '      $ mkdir -p ~/.config/powerline/colorschemes &&'
+  echo '	  cp /usr/share/doc/python-powerline-gitstatus/colorschemes/default.json \'
+  echo '	  ~/.config/powerline/colorschemes/default.json'
+  echo
+  echo '==> To activate the gitstatus segment you need to add it to your segment configuration,'
+  echo '      for example at ~/.config/powerline/themes/shell/default.json:'
+  echo '    Be aware that you need to copy the whole segment list as it will not be merged with the default'
+  echo '      for more details see https://powerline.readthedocs.io/en/latest/configuration.html#quick-setup-guide'
+  echo
+  echo '    If you are using the default theme then copy the segments list section from'
+  echo '      /usr/lib/python3.7/site-packages/powerline/config_files/themes/shell/default.json'
+  echo '      to ~/.config/powerline/colorschemes/default.json and add the gitstatus segment'
+  echo '      see the example at /usr/share/doc/python-powerline-gitstatus/themes/shell/default.json'
+  echo
+  echo '    The gitstatus segment:'
+  echo '      {'
+  echo '          "function": "powerline_gitstatus.gitstatus",'
+  echo '          "priority": 40'
+  echo '      }'
+  echo '==> For more details see /usr/share/doc/python-powerline-gitstatus/README.md'
+  echo
+}
