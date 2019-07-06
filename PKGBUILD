@@ -1,8 +1,12 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
+_svt_hevc_ver='1.3.0'
+_svt_av1_ver='0.6.0'
+_svt_vp9_ver='ce245894c6fc1c5d1439c41a7dda8d6dc61784c4'
+
 pkgname=ffmpeg-full-git
 _srcname=ffmpeg
-pkgver=4.2.r93954.g76ef18fd39
+pkgver=4.2.r94176.geb33be188d
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
@@ -48,15 +52,15 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'LICENSE')
-source_x86_64=('ffmpeg-full-git-add-intel-svt-hevc.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v1.3.0/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch'
-               'ffmpeg-full-git-add-intel-svt-hevc-docs.patch'
-               'ffmpeg-full-git-add-intel-svt-av1.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v0.5.0/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch'
-               'ffmpeg-full-git-add-intel-svt-vp9.patch'::'https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/9c96f478e4a281f6019c8b0de39c2b7caba56371/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch')
+source_x86_64=("ffmpeg-full-git-add-intel-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+               "ffmpeg-full-git-add-intel-svt-hevc-docs-${_svt_hevc_ver}.patch"
+               "ffmpeg-full-git-add-intel-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
+               "ffmpeg-full-git-add-intel-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch")
 sha256sums=('SKIP'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 sha256sums_x86_64=('cc8ba4ff56cdb38a59650203999c4c8c83fc40bdb905b87b678ff68a4538444d'
                    'd6f29cbe57cba0fdfcb97111aa089154509db3a7bfdfa7f978692b68652e6fb5'
-                   '490952c315404ecaa633d55cdb3456d1e518180c8375f374f3fb85d226fff476'
+                   '102a70c5c453875f5806ce02cc83fdc74e53c078cf5be2657f3dd1dd4438868c'
                    '7690a4f6bdc4a57e35c7ff5b6e87f2fe6d056d452eff9e767eaccff41832f4d7')
 
 prepare() {
@@ -65,10 +69,10 @@ prepare() {
     # add intel-svt support for hevc, av1 and vp9
     if [ "$CARCH" = 'x86_64' ] 
     then
-        patch -Np1 -i "${srcdir}/ffmpeg-full-git-add-intel-svt-hevc.patch"
-        patch -Np1 -i "${srcdir}/ffmpeg-full-git-add-intel-svt-hevc-docs.patch"
-        patch -Np1 -i "${srcdir}/ffmpeg-full-git-add-intel-svt-av1.patch"
-        patch -Np1 -i "${srcdir}/ffmpeg-full-git-add-intel-svt-vp9.patch"
+        git apply --index "${srcdir}/ffmpeg-full-git-add-intel-svt-hevc-${_svt_hevc_ver}.patch"
+        git apply --index "${srcdir}/ffmpeg-full-git-add-intel-svt-hevc-docs-${_svt_hevc_ver}.patch"
+        git apply --index "${srcdir}/ffmpeg-full-git-add-intel-svt-av1-${_svt_av1_ver}.patch"
+        git apply --index "${srcdir}/ffmpeg-full-git-add-intel-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     fi
 }
 
