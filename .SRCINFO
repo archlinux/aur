@@ -1,6 +1,6 @@
 pkgbase = matwm2-git
 	pkgdesc = A nice tiling or floating window manager
-	pkgver = 0.1.2pre3.r637.gc3a6c81
+	pkgver = 0.1.2pre3.r647.g5d1c7f8
 	pkgrel = 1
 	url = https://github.com/segin/matwm2
 	arch = i686
