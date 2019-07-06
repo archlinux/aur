@@ -6,6 +6,7 @@ pkgbase = fyrlang
 	arch = any
 	license = BSD
 	makedepends = npm
+	makedepends = jq
 	depends = nodejs
 	depends = gcc
 	source = https://registry.npmjs.org/fyrlang/-/fyrlang-0.1.4.tgz
