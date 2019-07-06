@@ -3,6 +3,7 @@ pkgbase = freetype2-ultimate5
 	pkgver = 2.10.1
 	pkgrel = 1
 	url = https://www.freetype.org/
+	install = freetype2-ultimate5.install
 	arch = x86_64
 	license = GPL
 	makedepends = libx11

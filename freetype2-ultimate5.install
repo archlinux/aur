@@ -1,0 +1,12 @@
+post_install()
+{
+    echo
+    echo "To use this package you must enable LCD filter system-wide:"
+    echo "    ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d/"
+    echo "or user-wide:"
+    echo "    mkdir -p $HOME/.config/fontconfig/conf.d"
+    echo "    ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf $HOME/.config/fontconfig/conf.d/"
+    echo "You may also need to enable subpixel rendering in desktop environment, in GNOME:"
+    echo "    gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing rgba"
+    echo
+}

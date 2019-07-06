@@ -18,6 +18,7 @@ pkgdesc="FreeType patched for effect similar to Infinality's ultimate5 preset."
 url="https://www.freetype.org/"
 conflicts=(freetype2)
 provides=(freetype2=$pkgver libfreetype.so)
+install=freetype2-ultimate5.install
 arch=(x86_64)
 license=('GPL')
 depends=(zlib bzip2 libpng harfbuzz)
