@@ -1,6 +1,6 @@
 pkgbase = python-gym
 	pkgdesc = A toolkit for developing and comparing reinforcement learning algorithms.
-	pkgver = 0.12.5
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://gym.openai.com/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-gym
 	optdepends = python-atari-py
 	optdepends = python-pillow
 	optdepends = python-opengl
-	source = python-gym-0.12.5.tar.gz::https://github.com/openai/gym/archive/0.12.5.tar.gz
-	md5sums = 6aec0e864ec87643afa68f6824503b53
+	source = python-gym-0.13.0.tar.gz::https://github.com/openai/gym/archive/0.13.0.tar.gz
+	md5sums = e3b9b425b6fa5eabd4f7a5c3016c08f7
 
 pkgname = python-gym
 
