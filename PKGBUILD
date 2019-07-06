@@ -1,18 +1,20 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=racktables
-pkgver=0.21.1
+pkgver=0.21.3
 pkgrel=1
 pkgdesc="Datacenter and server room asset management web-software"
 arch=('any')
 url="https://racktables.org/"
 license=('GPL2')
 depends=('mariadb-clients' 'php' 'php-gd')
-optdepends=('php-snmp'
-            'mariadb: local database'
-            'percona-server: local database')
+optdepends=(
+    'php-snmp'
+    'mariadb: local database'
+    'percona-server: local database'
+    )
 source=("https://downloads.sourceforge.net/project/racktables/RackTables-${pkgver}.tar.gz")
-sha1sums=('3a6b21f54648755cde2cc6960a39dfe02054f800')
+sha1sums=('afc0db6e57116f0ac73cd1f009f104e0193e6f6e')
 
 package() {
   cd RackTables-${pkgver}
