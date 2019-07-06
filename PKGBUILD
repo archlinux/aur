@@ -2,7 +2,7 @@
 
 pkgname=kvazaar
 pkgver=1.2.0
-pkgrel=7
+pkgrel=8
 pkgdesc='An open-source HEVC encoder'
 arch=('x86_64')
 url='http://ultravideo.cs.tut.fi/#encoder'
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('glibc' 'gcc-libs' 'crypto++')
 makedepends=('git' 'yasm')
 checkdepends=('ffmpeg' 'hm')
-BUILDENV=('!check')
+BUILDENV+=('!check')
 source=("git+https://github.com/ultravideo/kvazaar.git#tag=v${pkgver}"
         'git+https://github.com/ultravideo/greatest.git'
         'kvazaar-crypto++6.0.0.patch')
