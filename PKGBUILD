@@ -1,50 +1,47 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=intel-svt-av1
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
-pkgdesc='An AV1-compliant encoder for Intel CPUs of 5th Generation (Broadwell) and above'
+pkgdesc='An AV1-compliant encoder and decoder for Intel CPUs of 5th Generation (Broadwell) and above'
 arch=('x86_64')
 url='https://github.com/OpenVisualCloud/SVT-AV1/'
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('cmake' 'yasm' 'python')
+BUILDENV+=('!check')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OpenVisualCloud/SVT-AV1/archive/v${pkgver}.tar.gz")
-sha256sums=('cdf36926820d2efcf019ed1a1e66cbc2470b86a28606a00497eb842bd2e495b1')
+sha256sums=('4ff6f05a9528fe8a7b3d6708fe1115d15d26a5a9b0b676d8a250a0b2e8630579')
 
-build() {
+prepare() {
     cd "SVT-AV1-${pkgver}"
     
+    mkdir -p build
+}
+
+build() {
+    cd "SVT-AV1-${pkgver}/build"
+    
+    # remove executable stack from libraries
+    export LDFLAGS+=' -Wl,-z,noexecstack'
+    
     cmake \
+        -DBUILD_SHARED_LIBS:BOOL='ON' \
         -DCMAKE_ASM_NASM_COMPILER:FILEPATH='/usr/bin/yasm' \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
+        -DNATIVE:BOOL='OFF' \
         -Wno-dev \
-        .
+        ..
         
     make
 }
 
-check() {
-    cd "SVT-AV1-${pkgver}"
-    
-    make test
-}
-
 package() {
-    cd "SVT-AV1-${pkgver}"
+    cd "SVT-AV1-${pkgver}/build"
     
     make DESTDIR="$pkgdir" install
     
-    # remove decoder (not yet implemented by upstream)
-    rm "${pkgdir}/usr/bin/SvtAv1DecApp"
-    rm "${pkgdir}/usr/lib/libSvtAv1Dec.so"
-    rm "${pkgdir}/usr/lib/pkgconfig/SvtAv1Dec.pc"
-    
-    # remove test files
-    rm "${pkgdir}/usr/bin/SvtAv1UnitTests"
-    rm "${pkgdir}/usr/lib/libgtest_all.so"
-    
-    install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "${srcdir}/SVT-AV1-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
