@@ -55,11 +55,6 @@ _subarch=27
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
-# If you have laptop with optimus and it hangs on boot one solution might be 
-# to set acpi_rev_override. Yet for this to happen kernel should be compiled
-# with `CONFIG_ACPI_REV_OVERRIDE_POSSIBLE`. Set next variable to `y` to enable.
-_rev_override="n"
-
 # Enable ACS override patch (patch needs to be enabled with kernel command line options)
 # https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF#Bypassing_the_IOMMU_groups_(ACS_override_patch)
 _enable_acs_override="y"
@@ -72,7 +67,7 @@ _srcname=linux-${_major}
 _clr=${_major}.16-794
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -120,22 +115,15 @@ prepare() {
         msg2 "Setting config..."
         cp -Tf $srcdir/clearlinux/config ./.config
 
-    ### Compress modules
-        msg2 "Enabling XZ compressed modules..."
+    ### Enable extra stuff from arch kernel
+        msg2 "Enable extra stuff from arch kernel..."
         sed -i 's|^# CONFIG_MODULE_COMPRESS|\
 CONFIG_MODULE_COMPRESS=y\
 # CONFIG_MODULE_COMPRESS_GZIP is not set\
 CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
-
-    ### Set ACPI_REV_OVERRIDE_POSSIBLE to prevent optimus lockup
-        if [ "${_rev_override}" = "y" ]; then
-        msg2 "Enabling ACPI Rev Override Possible..."
         sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
-        fi
-
-    ### Set CONFIG_HIBERNATION to make hibernation possible
-        msg2 "Make hibernation possible..."
         sed -i "s|# CONFIG_HIBERNATION is not set|CONFIG_HIBERNATION=y|g" ./.config
+        sed -i "s|# CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER is not set|CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER=y|g" ./.config
 
         make olddefconfig
 
