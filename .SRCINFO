@@ -1,11 +1,11 @@
 pkgbase = origin-client
 	pkgdesc = Openshift client
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openshift/origin
 	arch = x86_64
 	license = Apache
-	makedepends = go
+	makedepends = go-pie
 	makedepends = rsync
 	source = git+https://github.com/openshift/origin#tag=v4.1.0?signed
 	validpgpkeys = 0E2CFB1B72F087ACF089B41E3D16906B4F1C5CB3

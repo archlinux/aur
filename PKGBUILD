@@ -3,11 +3,11 @@
 pkgname=origin-client
 pkgdesc="Openshift client"
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/openshift/origin"
 license=('Apache')
-makedepends=('go' 'rsync')
+makedepends=('go-pie' 'rsync')
 validpgpkeys=('0E2CFB1B72F087ACF089B41E3D16906B4F1C5CB3')  # Clayton Coleman (Red Hat key) <ccoleman@redhat.com>
 source=("git+https://github.com/openshift/origin#tag=v${pkgver}?signed")
 sha256sums=('SKIP')
