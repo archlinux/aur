@@ -2,13 +2,13 @@
 pkgdesc="XDE .desktop entry helpers"
 pkgname=xde-helpers-git
 _pkgname=xde-helpers
-pkgver=1.3
+pkgver=1.4.3
 pkgrel=1
 arch=('any')
 license=('GPL')
 url="http://github.com/bbidulock/xde-helpers"
 groups=('xde')
-depends=('xde-icons' 'xdg-utils' 'gxmessage' 'desktop-file-utils')
+depends=('xde-icons' 'xdg-utils' 'gxmessage-gtk2' 'desktop-file-utils')
 install=${_pkgname}.install
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
