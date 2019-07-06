@@ -16,8 +16,8 @@ makedepends=(
   'go'
 )
 
-source=("https://github.com/unixsheikh/salahtime-go/archive/1.0.0.zip")
-md5sums=('110eddb9d8041de6f74101d108c445bf')
+source=("https://github.com/unixsheikh/salahtime-go/archive/v1.0.0.zip")
+md5sums=('ecd8a11e79343925d59d482a9c81c05c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
