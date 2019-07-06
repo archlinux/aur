@@ -53,6 +53,6 @@ package() {
     install -D -m644 "$srcdir/$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('4904ae0af59160f2e0aa2a8ba20bb0751fde7ffd824e2e484a0b9d056c060137'
+sha256sums=('76a090039e032f80a8750c19c94b4ee7b99878a53102ac153d7c82e1b79d9f69'
             '68de913110996c232a284004057f2655c1798472670e31524f86b005f6bf07a8'
             '76fbeb62810f9f0281320e5b5309395d3239f1dcb8f08b71b98e8a4c06e33e98')
