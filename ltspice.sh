@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 if [ ! -d "$HOME"/.ltspice ] ; then
    mkdir -p "$HOME"/.ltspice
    touch "$HOME"/.ltspice/LTspiceXVII.ini

@@ -2,7 +2,7 @@
 
 pkgname=ltspice
 pkgver=17_20190621
-pkgrel=2
+pkgrel=3
 pkgdesc="SPICE simulator, schematic capture and waveform viewer of electronic circuits."
 arch=('x86_64')
 url="http://www.linear.com/designtools/software/"
@@ -13,8 +13,8 @@ source=("$pkgname::git+https://github.com/M4a1x/$pkgname#branch=${pkgver//_/-}"
         "$pkgname.sh"
         "$pkgname-help.sh")
 sha256sums=('SKIP'
-            '2652e6154d50a282eb64ad3e50fbb80f4ad62643acead5c39f72c7713daf23cd'
-            'c32a08df64c9f4685d1b0ace0de9a265513bcff0a219798a4c60663c63f129f8')
+            '7556a06775c73e4aaa48e200803baad6310c1dfc150d86a40b197f0ab8eaf11c'
+            '04fb3968b8572d02a69ee61590c038a9560809160b4c6260ded5f802e9ef859a')
 
 package()
 {
@@ -30,7 +30,7 @@ package()
     # Install binary files to /usr/share
     install -m755 -d "$pkgdir/usr/share/$pkgname"
     cp -r * "$pkgdir/usr/share/$pkgname"
-    chmod 755 -R "$pkgdir/usr/share/$pkgname"
+    #chmod 755 -R "$pkgdir/usr/share/$pkgname"
 
     #Install /usr/bin startscript
     install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
