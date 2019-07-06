@@ -1,7 +1,7 @@
 # Maintainer: Julian Brost <julian@0x4a42.net>
 
 pkgname=mkpasswd
-pkgver=5.4.2
+pkgver=5.4.3
 pkgrel=1
 pkgdesc="Tool for creating password hashes suitable for /etc/shadow"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('glibc')
 makedepends=('perl')
 source=("whois-$pkgver.tar.gz::https://github.com/rfc1036/whois/archive/v$pkgver.tar.gz")
-sha256sums=('d928b981dc949a2ea1d0512d20da74707953369f889a88d8f84f1a4b05b822d2')
+sha256sums=('2c2de92407ce925c270246e141234ab6fc6f7894d81b3b8a23e8c80b6a6c334c')
 
 build() {
   cd "${srcdir}/whois-${pkgver}"
