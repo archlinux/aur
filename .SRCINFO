@@ -1,6 +1,6 @@
 pkgbase = softmaker-office-2018-bin
 	pkgdesc = Proprietary office suite; word processing, spreadsheets, presentations
-	pkgver = 2018.965
+	pkgver = 2018.966
 	pkgrel = 1
 	url = http://softmaker.com
 	arch = x86_64
@@ -41,12 +41,12 @@ pkgbase = softmaker-office-2018-bin
 	sha512sums = c09f7d80c7be33b26c384a18514ddc6f9c9d1b2669037a5921212a1d2b3b316a12524d458872446e1a850f87bec4af4e14d99967713d07d5dd7425b658b900f6
 	sha512sums = 8dcf3caa7273cb3f9f3b8ce08251db420c39b42be2a339d561771e913fae1dda55820403a1f7cd883aa1d361693c1a67fac44f92542872f5f186f66dd1fa45e4
 	sha512sums = a1050b67e357312286eb87a3aa1b2a25a6edc3c1150871cb3d233152f601a2239c84315309111a496d8f056b4c600f9dee03e0b511e69126093255e971073986
-	source_x86_64 = http://www.softmaker.net/down/softmaker-office-2018-965-amd64.tgz
-	md5sums_x86_64 = dce0f68dbd6f6717bce4f86819140f10
-	sha512sums_x86_64 = 184afffb085518d334b5ca4ccf03854a33f40c5207b15de4af41184d26b907c02441d4f5ea0b5451b4eacd260aa03d2e5b36aabebb3d02345ed0c4b7b1826c65
-	source_i686 = http://www.softmaker.net/down/softmaker-office-2018-965-i386.tgz
-	md5sums_i686 = 9932bb2473e21285e8afe8d2033d11c5
-	sha512sums_i686 = 471523aa3ca7b7349b17a30d3f003b5e65d07e103880745559cb6e75fd264151215ec6248ae13ec640fe219c80cf1746d660af3919d1248b59ffb0b320349dd4
+	source_x86_64 = http://www.softmaker.net/down/softmaker-office-2018-966-amd64.tgz
+	md5sums_x86_64 = f60572bea564e22374bfc307d2840f02
+	sha512sums_x86_64 = 8a91eb57e4ddd6ea8a56807e8e2d69917fe25cbab4e55f271eb3a3dcaa3e38e965a75ad3aa3e31c823269789b571811378b250230bec54de60ff7383436ba428
+	source_i686 = http://www.softmaker.net/down/softmaker-office-2018-966-i386.tgz
+	md5sums_i686 = 55326bbaa6181505a8d4be88f6f3d8fd
+	sha512sums_i686 = 111115874e26c5fa9c895f6e8bae2b7c18478808c65e671c4fda4cd8560a18557568d82d842c54a2dfdb8ad31d4bfcc5ed79bd673c1bcf8f20d40f3f61dc7676
 
 pkgname = softmaker-office-2018-bin
 
