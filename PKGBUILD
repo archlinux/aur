@@ -2,7 +2,7 @@
 # Contributor: CubeTheThird <cubethethird@gmail.com>
 
 pkgname=amidst
-_version='4.2'
+_version='4.3'
 pkgver=${_version//_/-}
 _jarver="v${_version}"
 _jarfile="${pkgname}-${_jarver/./-}.jar"
@@ -11,13 +11,13 @@ pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
 license=('GPL3')
 url='https://github.com/toolbox4minecraft/amidst'
-depends=('java-runtime=8' 'sh')
+depends=('java-runtime=8' 'sh' 'hicolor-icon-theme')
 optdepends=('minecraft: the game itself')
 noextract=("$_jarfile")
 changelog=ChangeLog
 source=("https://github.com/toolbox4minecraft/amidst/releases/download/$_jarver/$_jarfile"
         amidst.desktop)
-md5sums=('da22f11add79ba0fb8ce30b8f979be2a'
+md5sums=('fd4aeffacf53ab04a6bee9d4711413ee'
          '3c6900ac68e3175768322e684f9f1bcb')
 
 prepare() {

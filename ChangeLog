@@ -1,3 +1,45 @@
+2019-07-06 CubeTheThird <cubethethird@gmail.com>
+
+	* 4.3-1 :
+	Version Bump.
+
+	Upstream Changelog:
+	4.3:
+	- added support to Minecraft 1.14.3
+	- added Buried Treasures
+	- fixed incorrect Mineshaft, Stronghold and spawn points locations
+	- various bugfixes
+	4.3_beta_6
+	- added support up to Minecraft 1.14
+	- added a "Active/Inactive" button in the biome hightlighter menu
+	- added new 1.14 biomes and Villager Outposts
+	4.3_beta_5
+	- added support up to Minecraft 1.13.1
+	- fix incorrect shipwreck locations
+	- fix some villages not being shown
+	- various bug fixes
+	4.3_beta_4
+	- added support up to Minecraft 1.13
+	- added support for Ocean Ruins and Shipwrecks
+	- changed Woodland Mansions icon to an Evoker
+	- now display correct name and version for default Windows profiles
+	4.3_beta_3
+	- added support for Woodland Mansions
+	- added support up to Minecraft 1.12.2
+	- current snapshots still crash Amidst
+	- bug fixes
+	4.3_beta_2
+	- added support up to Minecraft 1.12-pre7
+	- added more appropriate handling of modded Minecraft profiles
+	- We now determine the underlying vanilla Minecraft version and use that instead.
+	- removed -mclibs command line parameter
+	- technical: refactored the amidst.mojangapi.file package
+	4.3_beta_1
+	- added support up to Minecraft 1.12-pre3
+	- adjusted keyboard shortcuts for zooming to be CTRL+K and CTRL+J
+	- (CTRL+G was conflicting with the toggle grid keyboard shortcut)
+	- minor bug fixes and tweaks
+
 2019-04-11 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 	* 4.2-2 :
