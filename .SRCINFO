@@ -1,6 +1,6 @@
 pkgbase = xdg-launch-git
 	pkgdesc = A command line XDG compliant launcher
-	pkgver = 1.8.r0.g54dea9a
+	pkgver = 1.8.r2.g86a94b5
 	pkgrel = 1
 	url = http://github.com/bbidulock/xdg-launch
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = xdg-launch-git
 	depends = glib2
 	depends = libxrandr
 	depends = libxinerama
+	depends = desktop-file-utils
 	optdepends = dmenu: to use dmenu_launch script
 	provides = xdg-launch
 	conflicts = xdg-launch
