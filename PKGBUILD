@@ -22,8 +22,12 @@ build() {
   cd "$srcdir/$_gitname"
   mkdir -p build
   cd build
+  if [ "$CARCH" = 'i686' ]; then
+    FORCE_ARCH="-DFORCE_ARCH=x86"
+  fi
 
   cmake .. \
+    ${FORCE_ARCH} \
     -DBUILD_SHARED_LIBS=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
