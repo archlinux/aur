@@ -7,7 +7,7 @@
 pkgname=wps-office
 pkgver=11.1.0.8722
 #_pkgver=8372
-pkgrel=1
+pkgrel=2
 #_pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) is an office productivity suite"
 arch=('x86_64')
@@ -30,13 +30,13 @@ source=("http://kdl.cc.ksosoft.com/wps-community/download/${pkgver##*.}/wps-offi
 #sha1sums_i686=('60b1c9e33ee6fc1edcefe40dc9ec529d4a668825'
 #               'dd8b5283ee17a88a3eb0531976abccd6e5e08c48')
 sha1sums=('438cdd5057ebf16bff3b0b6b3a9f06fcfca9a3da'
-          'dd8b5283ee17a88a3eb0531976abccd6e5e08c48')
+          '49ccf3e3d9c7c9c80294127ce063c56d2b57d7c4')
 
 prepare() {
     tar -Jxf data.tar.xz
 
     cd "${srcdir}/usr/bin"
-    sed -i 's|/opt/kingsoft/wps-office|/usr/lib|' wps wpp et
+    sed -i 's|/opt/kingsoft/wps-office|/usr/lib|' *
 #   sed -i 's|/office6/${gApp}  ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wps
 #   sed -i 's|/office6/${gApp} ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wpp et
 
@@ -55,7 +55,7 @@ package() {
 
     install -d "${pkgdir}/usr/bin"
     cd "${srcdir}/usr/bin"
-    install -m755 wps wpp et "${pkgdir}/usr/bin"
+    install -m755 * "${pkgdir}/usr/bin"
 
     cd "${srcdir}"/usr/share
 
