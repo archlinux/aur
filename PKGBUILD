@@ -6,7 +6,7 @@
 # Contributor: Gabor Nyekhelyi (n0gabor) <n0gabor@vipmail.hu>
 
 pkgname=pitivi-git
-pkgver=0.999.0.r575.g3c719067
+pkgver=0.999.0.r589.gc1a94d28
 pkgrel=1
 pkgdesc='Editor for audio/video projects using the GStreamer framework (git version)'
 arch=('x86_64')
@@ -23,11 +23,11 @@ checkdepends=('gst-validate' 'zbar' 'lilv' 'libkate' 'fluidsynth' 'qt5-base'
               'qt5-declarative' 'qt5-x11extras' 'gst-libav' 'xorg-server-xvfb')
 provides=('pitivi')
 conflicts=('pitivi')
-BUILDENV=('!check')
+BUILDENV+=('!check')
 source=('git+https://gitlab.gnome.org/GNOME/pitivi.git'
         'pitivi-git-fix-locale-on-tests.patch')
 sha256sums=('SKIP'
-            '1ad918e9b87ee7a3f1465f5d444fa7b8e2373dad4d3c72a72af0f0364612f6f7')
+            'db34a01202ae93b217f7eb5ab6d5e6d928c1c2ecdb652a2d157452078f867858')
 
 prepare() {
     cd pitivi
