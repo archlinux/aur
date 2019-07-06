@@ -11,6 +11,7 @@ pkgbase = sgpp
 	makedepends = eigen
 	depends = armadillo
 	depends = python
+	depends = gsl
 	source = https://github.com/SGpp/SGpp/archive/v3.2.0.tar.gz
 	sha256sums = dab83587fd447f92ed8546eacaac6b8cbe65b8db5e860218c0fa2e42f776962d
 
