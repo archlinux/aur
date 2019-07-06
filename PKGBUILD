@@ -2,31 +2,29 @@
 
 pkgname=mate-neru-canta-theme
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Neru Canta theme Mate"
 arch=(x86_64)
 url="https://github.com/chistota/mate-neru-canta-theme"
 license=('GPL2')
-depends=()
-replaces=('mate-neru-canta-theme')
-conflicts=()
-source=("https://github.com/chistota/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('3A683E604A8DCDD93866AF5175CA689F7B45E7927AA62DB6F7EC2D8780E78A7228FC77A8F2BA38AAB54A54F5201A214883D9ECE108E0DE1DB523ACABFE65938A')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chistota/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('3a683e604a8dcdd93866af5175ca689f7b45e7927aa62db6f7ec2d8780e78a7228fc77a8f2ba38aab54a54f5201a214883d9ece108e0de1db523acabfe65938a')
+
+prepare() {
+   cd "${pkgname}"-"${pkgver}"
+     mv Neru-canta-yellow-dark/gtk-assets/Желтые.svg Neru-canta-yellow-dark/gtk-assets/yellow.svg
+     mv Neru-canta-yellow-light/gtk-assets/Желтые.svg Neru-canta-yellow-light/gtk-assets/yellow.svg
+     sed -i 's!#1F91E0!#7dc842!' Neru-canta-green-light/gtk-2.0/gtkrc
+     sed -i 's!#1F91E0!#7dc842!' Neru-canta-green-dark/gtk-2.0/gtkrc
+     sed -i 's!#1F91E0!#F5CE46!' Neru-canta-yellow-light/gtk-2.0/gtkrc
+}
 
 package() {
-	tar -xzf v${pkgver}.tar.gz
-	cd "$srcdir"/"${pkgname}"-"$pkgver"
-	install -d "$pkgdir/usr/share/themes"
-
-	mv Neru-canta-yellow-dark/gtk-assets/Желтые.svg Neru-canta-yellow-dark/gtk-assets/yellow.svg
-	mv Neru-canta-yellow-light/gtk-assets/Желтые.svg Neru-canta-yellow-light/gtk-assets/yellow.svg
-
-	install -D -m644 "Neru-canta-blue-dark/COPYING" "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-	install -D -m644 "Neru-canta-blue-dark/AUTHORS" "${pkgdir}"/usr/share/doc/"${pkgname}"/AUTHORS
+	cd "${pkgname}"-"${pkgver}"
+	install -d "${pkgdir}/usr/share/themes"
+	install -Dm 0644 "Neru-canta-blue-dark/COPYING" "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+	install -Dm 0644 "Neru-canta-blue-dark/AUTHORS" "${pkgdir}"/usr/share/doc/"${pkgname}"/AUTHORS
 	rm -f */{AUTHORS,COPYING}
-
-	cp -R {'Neru-canta-blue-dark','Neru-canta-blue-light'} "${pkgdir}"/usr/share/themes/
-	cp -R {'Neru-canta-green-dark','Neru-canta-green-light'} "${pkgdir}"/usr/share/themes/
-	cp -R {'Neru-canta-yellow-dark','Neru-canta-yellow-light'} "${pkgdir}"/usr/share/themes/
-
+	cp -R */ "${pkgdir}/usr/share/themes"
 }
+
