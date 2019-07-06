@@ -1,13 +1,23 @@
-pkgbase = snapd-fs
-	pkgdesc = ln -s /var/lib/snapd/snap /snap
+pkgbase = amethyst-prerequisites
+	pkgdesc = Required dependencies to build Amethyst game engine
 	pkgver = 0.0.0
-	pkgrel = 1
-	url = https://github.com/KSXGitHub/snapd-fs.pkgbuild
+	pkgrel = 0
+	url = https://github.com/KSXGitHub/amethyst-prerequisites.pkgbuild
 	arch = any
 	license = MIT
-	depends = snapd
+	depends = grep
+	depends = gcc
+	depends = pkgconfig
+	depends = openssl
+	depends = alsa-lib
+	depends = cmake
+	depends = make
+	depends = python3
+	depends = freetype2
+	depends = awk
+	depends = libxcb
 	source = LICENSE.md
 	sha512sums = SKIP
 
-pkgname = snapd-fs
+pkgname = amethyst-prerequisites
 
