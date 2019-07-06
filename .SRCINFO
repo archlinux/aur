@@ -9,6 +9,7 @@ pkgbase = gst-plugins-rs
 	license = Apache
 	makedepends = rust
 	makedepends = git
+	makedepends = libsodium
 	depends = gstreamer
 	noextract = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
 	source = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
