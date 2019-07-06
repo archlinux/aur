@@ -10,7 +10,7 @@
 pkgbase=linux-drm-tip-git
 _srcname=${pkgbase}
 _branch=drm-tip
-pkgver=5.3.841355.f384132bcdd8
+pkgver=5.3.844163.2e291ca66a0f
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/drm-tip/'
@@ -24,7 +24,7 @@ source=("${_srcname}::git+https://anongit.freedesktop.org/git/drm-tip.git#branch
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '02390efe7637927502bc834daf3f413ea5e2cb084bca125372e70dc9438e824c'
+            '0be6f49822ec028f4d39f1dbe4b11a74a9a91ed892f6079704539dd3d416cdc2'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
