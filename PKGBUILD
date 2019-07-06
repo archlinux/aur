@@ -1,10 +1,11 @@
-# Maintainer: David Birks <david@tellus.space>
+# Maintainer: Mike Achtelik <mike_achtelik at hotmail dot com>
+# Contributor: David Birks <david@tellus.space>
 # Contributor: Michele Cereda <cereda.michele@gmail.com>
 # Contributor: JokerYu <dayushinn@gmail.com>
 # Contributor: Olivier Bilodeau <obilodeau@gosecure.ca>
 
 pkgname="forticlientsslvpn"
-pkgver="4.4.2334"
+pkgver="4.4.2336"
 pkgrel="1"
 pkgdesc="Fortinet's SSLVPN Client for linux"
 arch=("i686" "x86_64")
@@ -25,13 +26,13 @@ optdepends=(
 )
 
 source=(
-	"https://github.com/dbirks/forticlientsslvpn/raw/master/tarball/${pkgname}_linux_${pkgver}.tar.gz"
+	"https://github.com/machtelik/forticlientsslvpn/raw/master/tarball/${pkgname}_linux_${pkgver}.tar.gz"
 	"${pkgname}.desktop"
 	"${pkgname}.png"
 	"${pkgname}.sh"
 	"${pkgname}_cli.sh"
 )
-sha256sums=('3b2ebe9324b2933139bcdb44f2fdbda1e895490609688d2e288bc5a5ea9dfdd9'
+sha256sums=('f76ec487ac29f91fe920f7f344ca9f886646100ace88a76f49a4116fe7d127cc'
             '4f63f4503dca7633a4d7a1cf874ede1f33f877a701813349c5cd63889151f4a2'
             '15d46db76a39f32736ee3a469fc1b821e6290453c701af823875a493d06901df'
             '5d4737629cadf38194ffc68d927a202cbac5f9fbcf825f11407c00e6a15842fb'
