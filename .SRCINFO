@@ -1,6 +1,6 @@
 pkgbase = isw
 	pkgdesc = Fan control tool for MSI gaming series laptops
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/YoyPa/isw
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = isw
 	depends = python
 	depends = coreutils
 	backup = etc/isw.conf
-	source = isw-1.8.tar.gz::https://github.com/YoyPa/isw/archive/1.8.tar.gz
-	sha256sums = f26caad20e8774ca7f80adf7d885f8d55651711d8137d1b12671b467e3b605cc
+	source = isw-1.9.tar.gz::https://github.com/YoyPa/isw/archive/1.9.tar.gz
+	sha256sums = cd521204f8bedafadc8a6e0285daf5beb0ee7941d62416773679dcd87ca529dc
 
 pkgname = isw
 
