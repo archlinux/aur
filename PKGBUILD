@@ -2,13 +2,13 @@
 pkgname='dimemas'
 pkgdesc='High-abstracted network simulator for message-passing programs (from BSC).'
 pkgver='5.4.1'
-pkgrel='2'
+pkgrel='3'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
 depends=(boost)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha512sums=(b372005ce956668cc788c9b79093a57dfe81f2786d99283539ffef27fbd4cad2cb6b064db43e069bd215ea51c44f13fdf36455fbf1daf5a5c96be8151281594b)
+sha512sums=(0e8757d8696953b1e0e1fc475fe5d9e751a58570b2499f74a9407db34b1b4933147d6ce39495b3b76bc7361d87fa5baa501f2d0211ba5c8df21b275f96f3d192)
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
