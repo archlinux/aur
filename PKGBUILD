@@ -1,36 +1,44 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 pkgname=gtsam-git
-pkgver=r9823.de854da
+pkgver=r11053.c6449a82d
 pkgrel=1
 pkgdesc="A library of C++ classes that implement smoothing and mapping (SAM) in robotics and vision, using factor graphs and Bayes networks as the underlying computing paradigm rather than sparse matrices."
-url="https://collab.cc.gatech.edu/borg/gtsam/"
+url="https://gtsam.org/"
 arch=('x86_64' 'i686')
 license=('BSD')
 depends=('boost-libs' 'intel-tbb')
 makedepends=('boost')
 provides=('gtsam')
 conflicts=('gtsam')
-source=($pkgname::git+https://bitbucket.org/gtborg/gtsam.git)
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/borglab/gtsam.git"
+        "rename-included-libmetis.patch")
+md5sums=('SKIP'
+         '63093f474f5574e8dd3e300289dab47f')
+
 
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  patch -p1 -i ../rename-included-libmetis.patch
+}
+
 build() {
   cd "${srcdir}/${pkgname}"
   mkdir -p build
   cd build
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DGTSAM_BUILD_EXAMPLES_ALWAYS=OFF \
-    -DGTSAM_BUILD_TESTS=OFF \
+    -DGTSAM_BUILD_TESTS=ON \
     -DGTSAM_BUILD_WRAP=OFF \
     -DGTSAM_BUILD_DOCS=ON \
-    -DGTSAM_ALLOW_DEPRECATED_SINCE_V4=OFF \
+    -DGTSAM_INSTALL_CPPUNITLITE=OFF \
+    -DGTSAM_INSTALL_GEOGRAPHICLIB=OFF \
     -DGTSAM_USE_SYSTEM_EIGEN=ON \
-    -DGTSAM_SUPPORT_NESTED_DISSECTION=OFF
+    ..
   make && make doc
 }
 
