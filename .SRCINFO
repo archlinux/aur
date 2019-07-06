@@ -1,0 +1,16 @@
+pkgbase = arch-java-gui
+	pkgdesc = A Gtk3 frontend for archlinux's archlinux-java script.
+	pkgver = 0.1.3
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/Rootyjr/arch-java-gui/releases
+	arch = x86_64
+	license = custom:BSD
+	makedepends = rust
+	depends = gtk3
+	depends = lxqt-sudo
+	source = arch-java-gui-0.1.3.tar.gz::https://github.com/Rootyjr/arch-java-gui/archive/v0.1.3.tar.gz
+	md5sums = a574e7abbb733450d1704dfd45d924e0
+
+pkgname = arch-java-gui
+
