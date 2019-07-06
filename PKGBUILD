@@ -1,8 +1,8 @@
 # Maintainer: KawaiDesu
 pkgname=gaspass
 pkgver=0.1.1
-pkgrel=1
-pkgdesc="Not a password manager"
+pkgrel=2
+pkgdesc="Manage passwords without storing them"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/KawaiDesu/gaspass"
 license=('MIT')
