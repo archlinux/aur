@@ -1,15 +1,23 @@
 # Maintainer: Frederic Bezies < fredbezies at gmail dot com > 
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=mate-tweak-git 
-pkgver=19.10.1.r2.g2eef8f0
+pkgver=19.10.1.r3.gf45f868
 pkgrel=1
 pkgdesc="MATE desktop tweak tool"
 arch=('any')
 url="https://github.com/ubuntu-mate/mate-tweak"
 license=('GPL')
-depends=('python' 'gtk3' 'dconf' 'gdk-pixbuf2' 'libnotify' 'python-gobject' 'python-psutil' 'python-configobj' 'mesa-demos' 'python-setproctitle')
-optdepends=('plank' 'docky' 'synapse' 'topmenu-gtk' 'mate-menu' 'mate-netbook' 'mate-applet-dock-git' 'mutter' 'compiz')
-makedepends=('git' 'bzr' 'python-setuptools' 'python-distutils-extra') 
+depends=('gtk3' 'libnotify' 'mate-applets' 'python-configobj' 'python-distro' 'python-gobject' 'python-psutil' 'python-setproctitle')
+optdepends=('brisk-menu: for Manjaro panel layout'
+            'mate-applet-dock: for Mutiny panel layout'
+            'mate-menu: to enable advanced menu'
+            'mate-netbook: for Netbook panel layout'
+            'plank: for Cupertino panel layout'
+            'synapse: to enable launcher'
+            'tilda: to enable pull-down terminal'
+            'topmenu-gtk: for Mutiny panel layout'
+            'vala-panel-appmenu-mate: for Mutiny,Cupertino')
+makedepends=('bzr' 'git' 'python-distutils-extra' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('mate-tweak::git+https://github.com/ubuntu-mate/mate-tweak.git'
