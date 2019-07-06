@@ -3,52 +3,38 @@
 # Contributor: 2GMon <t_2gmon@yahoo.co.jp>
 
 pkgname=mikutter
-pkgver=3.8.9
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
 license=('MIT')
-depends=('gobject-introspection-runtime' 'gtk2' 'ruby-bundler')
-makedepends=('gobject-introspection')
 optdepends=('alsa-utils: sound notification support'
             'libnotify: notify support')
+appimage=$pkgname-$pkgver-x86_64.AppImage
 source=(
-http://mikutter.hachune.net/bin/$pkgname.$pkgver.tar.gz
+http://mikutter.hachune.net/bin/$appimage
 mikutter.desktop
 config.patch
 )
-_gemdir="vendor/bundle/ruby/`ruby -e'print Gem.dir.match(/^.+\/(.+?)$/)[1]'`"
 
 prepare() {
-  cd "$pkgname"
+  chmod +x "$srcdir/$appimage"
+  ./$appimage --appimage-extract
 
+  find squashfs-root -type d -exec chmod 755 {} \;
+  cd squashfs-root/usr/share/mikutter
   patch -p1 < "$srcdir/config.patch"
-}
-
-build() {
-  cd "$pkgname"
-
-  gem install --no-document --no-user-install -i $_gemdir rake
-  bundle install --path vendor/bundle --without test
-
-  tt_ver=`bundle exec gem q -q twitter-text | sed -r 's/^.*\((.*)\)$/\1/'`
-  ln -s "/opt/$pkgname/$_gemdir/gems/twitter-text-$tt_ver/config" .
-
-  idn_ver=`bundle exec gem q -q idn-ruby | sed -r 's/^.*\((.*)\)$/\1/'`
-  ln -sf "/opt/$pkgname/$_gemdir/gems/idn-ruby-$idn_ver/lib/idn.so" "vendor/idn.so"
-
-  rm -rf $_gemdir/{build_info,cache,doc}
 }
 
 package() {
   mkdir "$pkgdir/opt"
-  cp -r "$srcdir/$pkgname" "$pkgdir/opt"
+  cp -r "$srcdir/squashfs-root" "$pkgdir/opt/mikutter"
 
   mkdir -p "$pkgdir/usr/bin"
   cat <<'EOF' > "$pkgdir/usr/bin/mikutter"
 #!/bin/sh
-BUNDLE_GEMFILE=/opt/mikutter/Gemfile bundle exec ruby /opt/mikutter/mikutter.rb $@
+/opt/mikutter/AppRun
 EOF
   chmod a+x "$pkgdir/usr/bin/mikutter"
 
@@ -57,6 +43,6 @@ EOF
   chmod +x $pkgdir/usr/share/applications/mikutter.desktop
 }
 
-md5sums=('388e50efd1c122bc1ab607c03f496a52'
-         '3bc1c65e13b6182a9c989835eefc8810'
+md5sums=('4aac43993433d7ef10823fb3a8b3d107'
+         '82f7f4d37380871d3fde314fe51cf406'
          '54df9d2f1f19d3c27034cc1a97d1bc67')

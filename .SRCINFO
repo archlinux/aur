@@ -1,22 +1,18 @@
 pkgbase = mikutter
 	pkgdesc = a moest twitter client
-	pkgver = 3.8.9
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = http://mikutter.hachune.net/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gobject-introspection
-	depends = gobject-introspection-runtime
-	depends = gtk2
-	depends = ruby-bundler
 	optdepends = alsa-utils: sound notification support
 	optdepends = libnotify: notify support
-	source = http://mikutter.hachune.net/bin/mikutter.3.8.9.tar.gz
+	source = http://mikutter.hachune.net/bin/mikutter-3.9.0-x86_64.AppImage
 	source = mikutter.desktop
 	source = config.patch
-	md5sums = 388e50efd1c122bc1ab607c03f496a52
-	md5sums = 3bc1c65e13b6182a9c989835eefc8810
+	md5sums = 4aac43993433d7ef10823fb3a8b3d107
+	md5sums = 82f7f4d37380871d3fde314fe51cf406
 	md5sums = 54df9d2f1f19d3c27034cc1a97d1bc67
 
 pkgname = mikutter
