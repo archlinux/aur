@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-material-shell-git
+	pkgdesc = GNOME Shell Extension Material Shell
+	pkgver = r34.763b039
+	pkgrel = 1
+	url = https://github.com/PapyElGringo/material-shell
+	arch = any
+	license = GPL
+	depends = gnome-shell
+	source = git+https://github.com/PapyElGringo/material-shell.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-material-shell-git
+
