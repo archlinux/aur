@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-kio
 	pkgdesc = Resource and network access abstraction (mingw-w64)
 	pkgver = 5.45.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = any
 	groups = mingw-w64-kf5
@@ -12,8 +12,6 @@ pkgbase = mingw-w64-kio
 	depends = mingw-w64-kjobwidgets
 	depends = mingw-w64-kbookmarks
 	depends = mingw-w64-libxslt
-	depends = mingw-w64-kwallet
-	depends = mingw-w64-desktop-file-utils
 	depends = mingw-w64-qt5-script
 	optdepends = mingw-w64-kio-extras: extra protocols support (sftp, fish and more)
 	optdepends = kdoctools: for the help kioslave

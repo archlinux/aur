@@ -1,7 +1,7 @@
 _pkgname=kio
 pkgname=mingw-w64-$_pkgname
 pkgver=5.45.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Resource and network access abstraction (mingw-w64)"
 license=("LGPL")
@@ -18,6 +18,12 @@ sha256sums=('3e7512e819fe1831b15981641dba26a7dcbbdbccd79cbf076ceedae8e4116b15'
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd $_pkgname-$pkgver
+  # remove doctools stuff
+  sed -e '/find_package.*KF5DocTools/d;/kdoctools_install/d' -i CMakeLists.txt
+}
 
 build() {
   cd $_pkgname-$pkgver
