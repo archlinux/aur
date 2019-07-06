@@ -1,5 +1,5 @@
 pkgname=powerline-go
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="A beautiful, useful and fast prompt for your shell"
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/justjanne/powerline-go"
 license=('GPL3')
 makedepends=('git' 'go')
 source=($pkgname::"https://github.com/justjanne/powerline-go/archive/v${pkgver}.tar.gz")
-sha256sums=('13a8a0ea117748df45dff9ecaf618879b220a9122c586e437be4bc3f5bac159c')
+sha256sums=('0c0d8a2aca578391edc0120f6cbb61f9ef5571190c07a978932348b0489d00ea')
 
 prepare() {
   export GOPATH="${srcdir}/go"

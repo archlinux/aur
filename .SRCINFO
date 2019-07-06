@@ -1,13 +1,13 @@
 pkgbase = powerline-go
 	pkgdesc = A beautiful, useful and fast prompt for your shell
-	pkgver = 1.12.1
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/justjanne/powerline-go
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = go
-	source = powerline-go::https://github.com/justjanne/powerline-go/archive/v1.12.1.tar.gz
+	source = powerline-go::https://github.com/justjanne/powerline-go/archive/v1.13.0.tar.gz
 	sha256sums = 13a8a0ea117748df45dff9ecaf618879b220a9122c586e437be4bc3f5bac159c
 
 pkgname = powerline-go
