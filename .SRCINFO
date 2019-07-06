@@ -1,6 +1,6 @@
 pkgbase = n2n-git
 	pkgdesc = Peer-to-Peer VPN.
-	pkgver = 2.5.0.r201
+	pkgver = 2.5.1.r198
 	pkgrel = 1
 	url = https://github.com/ntop/n2n
 	install = n2n.install

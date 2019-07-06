@@ -2,7 +2,7 @@
 # Contributor: maz-1 <ohmygod19993 at gmail dot com>
 pkgname=n2n-git
 _pkgname=n2n
-pkgver=2.5.0.r201
+pkgver=2.5.1.r198
 pkgrel=1
 pkgdesc="Peer-to-Peer VPN."
 arch=(i686 x86_64 armv7h aarch64)
@@ -18,8 +18,12 @@ md5sums=('SKIP' '4f4c2659da00c0a7c6f5ceb42fc82a71')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  local rev=`git rev-list --all |wc -l | tr -d '[[:space:]]'`
-  local rel=`grep -F "AC_INIT([edge]" configure.ac | sed -rs 's/^[^,]*,([^\)]+).*$/\1/'`
+
+  local n2n_major=`grep -F "N2N_MAJOR=" autogen.sh | sed -rs 's/^[^=]*="([^"]+)"$/\1/'`
+  local n2n_minor=`grep -F "N2N_MINOR=" autogen.sh | sed -rs 's/^[^=]*="([^"]+)"$/\1/'`
+  local n2n_patch=`grep -F "N2N_PATCH=" autogen.sh | sed -rs 's/^[^=]*="([^"]+)"$/\1/'`
+  local rel="$n2n_major.$n2n_minor.$n2n_patch"
+  local rev=`git rev-list --count HEAD`
   printf "%s.r%s" "$rel" "$rev"
 }
 
