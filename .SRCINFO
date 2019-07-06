@@ -1,14 +1,14 @@
 pkgbase = python-ptvsd
 	pkgdesc = Python debugger package for use with Visual Studio and Visual Studio Code
-	pkgver = 4.2.5
+	pkgver = 4.2.10
 	pkgrel = 1
-	url = https://github.com/Microsoft/ptvsd
+	url = https://github.com/microsoft/ptvsd
 	arch = x86_64
 	license = MIT
-	depends = python
-	depends = python-setuptools
-	source = python-ptvsd-4.2.5.tar.gz::https://github.com/Microsoft/ptvsd/archive/v4.2.5.tar.gz
-	sha512sums = d52633e1734dd7498eb48eda8d4af50693e0c79e96112c78ed5eccc9f75251817efa7aabd11c9f258babb80181ec85fbff031006549d377b167674b0dff7ed5b
+	makedepends = python-setuptools
+	depends = python>=3.4
+	source = python-ptvsd-4.2.10.tar.gz::https://github.com/microsoft/ptvsd/archive/v4.2.10.tar.gz
+	sha1sums = 101e1784e9ddd7761e443b58e5ba35eed35c699e
 
 pkgname = python-ptvsd
 
