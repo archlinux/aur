@@ -1,13 +1,13 @@
 pkgbase = i3-gnome
 	pkgdesc = Use i3 with GNOME Session integration.
 	pkgver = 3.32.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = https://github.com/csxr/i3-gnome/
+	url = https://github.com/jcstr/i3-gnome/
 	arch = any
 	license = MIT
 	depends = i3-wm
-	source = i3-gnome-3.32.1.zip::https://github.com/csxr/i3-gnome/archive/3.32.1.zip
+	source = i3-gnome-3.32.1.zip::https://github.com/jcstr/i3-gnome/archive/3.32.1.zip
 	md5sums = 927c38bb3c92b1cf6a018af93acf5be9
 
 pkgname = i3-gnome
