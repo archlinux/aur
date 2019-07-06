@@ -1,6 +1,4 @@
-# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
-# Contributor: Daniel M. Capella <polyzen@archlinux.info>
-# Contributor: Scott Lawrence <bytbox@gmail.com>
+# Maintainer: Scott Lawrence <bytbox@gmail.com>
 
 pkgname=sloc
 pkgver=1.1
