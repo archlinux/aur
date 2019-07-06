@@ -1,7 +1,7 @@
 pkgbase = stack-bin
 	pkgdesc = The Haskell Tool Stack (tool only -- libraries not included)
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/stack
 	arch = i686
 	arch = x86_64
