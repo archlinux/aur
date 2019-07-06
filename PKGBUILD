@@ -7,17 +7,16 @@ arch=('any')
 url="https://github.com/PapyElGringo/material-shell"
 license=('GPL')
 depends=('gnome-shell')
+makedepends=('git')
+groups=('gnome-shell-extensions')
 source=('git+https://github.com/PapyElGringo/material-shell.git')
 md5sums=('SKIP')
+
 prepare() {
- ls -l
-
-
-
  cd material-shell
-
  printf '0+%s+g%s' $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
+
 package() {
   mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/material-shell@papyelgringo/"
   cp -r material-shell/. "$pkgdir/usr/share/gnome-shell/extensions/material-shell@papyelgringo/"
