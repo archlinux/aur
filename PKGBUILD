@@ -1,45 +1,40 @@
+# Maintainer: David Runge <dave@sleepmap.de>
 # Contributor: Adrain Sinclair <adrian at adrusi dot com>
 # Contributor: Miroslav Koškár <http://mkoskar.com/>
 
-pkgname='vcvrack'
-pkgver=1.0.0
+_name=Rack
+pkgname=vcvrack
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Open-source virtual modular synthesizer'
-url='https://vcvrack.com/'
-license=(BSD)
-arch=(i686 x86_64)
-provides=(vcvrack-fundamental)
-conflicts=(vcvrack-fundamental)
-depends=(curl glew gtk2 jansson libzip openssl rtmidi speexdsp
-    libxi libxrandr libxinerama libxcursor libgl
-    jack libpulse)
-makedepends=(git cmake mesa zip)
-
-source=(
-    "$pkgname::git+https://github.com/VCVRack/Rack.git#tag=v$pkgver"
-    "fundamental::git+https://github.com/VCVRack/Fundamental.git"
-    git+https://github.com/AndrewBelt/osdialog.git
-    git+https://github.com/AndrewBelt/oui-blendish.git
-    git+https://github.com/glfw/glfw.git
-    git+https://github.com/memononen/nanosvg.git
-    git+https://github.com/memononen/nanovg.git
-    git+https://github.com/thestk/rtaudio.git
-    vcvrack.sh
-)
-sha256sums=(
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    ed2da5d924a381cd50125db199578c15bc95c18be716abbd3ff310bbcf6773c0
-)
+url="https://vcvrack.com/"
+license=('custom' 'CCPL' 'GPL3')
+arch=('x86_64')
+# TODO: devendor fonts
+depends=('curl' 'glew' 'glfw' 'gtk2' 'jack' 'jansson' 'libpulse' 'libx11'
+'libzip' 'openssl' 'rtaudio' 'rtmidi' 'speexdsp')
+makedepends=('cmake' 'gendesk' 'git' 'unzip' 'wget')
+source=("${pkgname}-${pkgver}::git+https://github.com/${pkgname}/${_name}.git#tag=v$pkgver"
+        git+https://github.com/AndrewBelt/osdialog.git
+        git+https://github.com/AndrewBelt/oui-blendish.git
+        git+https://github.com/glfw/glfw.git
+        git+https://github.com/memononen/nanosvg.git
+        git+https://github.com/memononen/nanovg.git
+        git+https://github.com/thestk/rtaudio.git
+        "${pkgname}-use_system_libs.patch::https://github.com/cvcrack/Rack/commit/6f4988b951fdc4585aea4e213102cbf94ce2306d.patch"
+        "${pkgname}.sh")
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '2cc74a866312f477f6b357cde34f7ce02cbe953715bf5f691299883c7199f2a3798be5c64a5c37d64fdcae419bea8a1f5385dbdecbfc43b750aaa15172352d4d'
+            '8ca3fbc790fa5d311ce41b5b9e84a79fe51db73cbf0f56f04d0429b28f0c4c0646e2d0c081b584161356ec24b06cc0181b115b865d564ff1452c64a57135acf6')
 
 prepare() {
-    cd "$srcdir/$pkgname"
+    cd "${pkgname}-${pkgver}"
     git submodule init
     git config submodule.ext/glfw.url "$srcdir/glfw"
     git config submodule.ext/nanosvg.url "$srcdir/nanosvg"
@@ -49,30 +44,51 @@ prepare() {
     git config submodule.ext/rtaudio.url "$srcdir/rtaudio"
     git submodule update
 
-    cd "$srcdir/$pkgname/plugins"
-    git clone "$srcdir/fundamental" "Fundamental"
+  # devendor everything, that can be devendored
+  patch -Np1 -i "../${pkgname}-use_system_libs.patch"
+
+  # fix plugin.mk's use of jq, if SLUG/VERSION are unset
+  sed -e 's/SLUG :=/SLUG ?=/' \
+      -e 's/VERSION :=/VERSION ?=/' \
+      -i plugin.mk
+
+  gendesk -n \
+          --pkgname "${pkgname}" \
+          --name "${_name}" \
+          --exec "${_name}" \
+          --pkgdesc "${pkgdesc}" \
+          --genericname "Virtual modular synthesizer" \
+          --categories "AudioVideo;Audio"
 }
 
 build() {
-    cd "$srcdir/$pkgname"
-    make dep
-    CFLAGS="$CFLAGS $(pkg-config --cflags glew jansson libcurl libzip openssl rtmidi speexdsp)" make RELEASE=1
-    
-    cd "$srcdir/$pkgname/plugins/Fundamental"
-    RACK_DIR="$srcdir/$pkgname" make dep
-    RACK_DIR="$srcdir/$pkgname" make dist
+    cd "${pkgname}-${pkgver}"
+    USE_SYSTEM_LIBS=true VERSION=${pkgver} make dep
+    USE_SYSTEM_LIBS=true VERSION=${pkgver} make
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -D -m755 "$srcdir/vcvrack.sh" "$pkgdir/usr/bin/vcvrack"
-    install -D -m644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE*
-    install -D -m755 -t "$pkgdir/opt/$pkgname" Rack
-    install -D -m755 -t "$pkgdir/opt/$pkgname/lib" dep/lib/lib*
-    install -D -m644 -t "$pkgdir/opt/$pkgname" Core.json
-    cp -dr --preserve=mode -t "$pkgdir/opt/$pkgname" dep/include
-    cp -dr --preserve=mode -t "$pkgdir/opt/$pkgname" res
+  cd "${pkgname}-${pkgver}"
+  install -vDm 755 "${_name}" -t "$pkgdir/opt/$pkgname"
+  install -vDm 755 "$srcdir/${pkgname}.sh" "$pkgdir/usr/bin/${_name}"
+  install -vDm 644 -t "$pkgdir/opt/$pkgname" Core.json
 
-    cd "$srcdir/$pkgname/plugins/Fundamental"
-    install -D -m644 dist/Fundamental-*-lin.zip "$pkgdir/opt/vcvrack/Fundamental.zip"
+  # resources
+  cp -dr --preserve=mode res -t "$pkgdir/opt/$pkgname"
+
+  # headers (required for plugins)
+  for _path in {app,dsp,engine,plugin,simd,ui,widget}; do
+    install -vDm 644 "include/${_path}/"* \
+      -t "${pkgdir}/usr/include/${pkgname}/${_path}/"
+  done
+  install -vDm 644 include/*.{h,hpp} -t "${pkgdir}/usr/include/${pkgname}/"
+  install -vDm 644 dep/include/*.h -t "${pkgdir}/usr/include/${pkgname}/dep"
+  # Makefile snippets required for plugins
+  install -vDm 644 {arch,compile,dep,plugin}.mk -t "${pkgdir}/usr/share/${pkgname}"
+
+  # xdg desktop integration
+  install -vDm 644 "${pkgname}.desktop" \
+    -t "${pkgdir}/usr/share/applications/"
+  # licenses
+  install -vDm 644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
 }
