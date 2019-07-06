@@ -1,17 +1,16 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
-pkgname=snapd-fs
+pkgname=amethyst-prerequisites
 pkgver=0.0.0
-pkgrel=1
-pkgdesc="ln -s /var/lib/snapd/snap /snap"
+pkgrel=0
+pkgdesc="Required dependencies to build Amethyst game engine"
 arch=(any)
 license=(MIT)
-url='https://github.com/KSXGitHub/snapd-fs.pkgbuild'
-depends=(snapd)
+url='https://github.com/KSXGitHub/amethyst-prerequisites.pkgbuild'
+depends=(grep gcc pkgconfig openssl alsa-lib cmake make python3 freetype2 awk libxcb)
 source=(LICENSE.md)
 sha512sums=(SKIP)
 
 package() {
-  ln -s /var/lib/snapd/snap "$pkgdir"/snap
   install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
 }
