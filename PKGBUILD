@@ -1,56 +1,50 @@
 # Maintainer: Miroslav Koškár <http://mkoskar.com/>
+# Contributor: David Runge <dave@sleepmap.de>
 
-_rackver=0.6.0
-_plugname='Fundamental'
+_name='Fundamental'
+# according to plugin.json, this is already somehow 1.0.1.. but oh well... yolo
+_commit='770e045d2a466fd40524d04077f93c80d6c495f8'
 
-pkgname='vcvrack-fundamental'
-pkgver=0.6.0
+pkgname=vcvrack-fundamental
+pkgver=0.6.0+99+g770e045
 pkgrel=1
 pkgdesc='Fundamental VCV modules'
-url='https://github.com/VCVRack/Fundamental'
-license=(BSD)
-arch=(i686 x86_64)
-depends=('vcvrack>=0.6')
-makedepends=(git zip)
-install="$pkgname.install"
+url="https://github.com/VCVRack/Fundamental"
+license=('CCPL' 'BSD')
+arch=('x86_64')
+depends=('vcvrack' 'libsamplerate')
+makedepends=('git' 'jq' 'zip')
+source=("${_name}-${pkgver}::git+https://github.com/VCVRack/$_name.git#commit=${_commit}")
+sha512sums=('SKIP')
 
-source=(
-    "vcvrack-$_plugname::git+https://github.com/VCVRack/$_plugname.git#tag=v$pkgver"
-    "vcvrack::git+https://github.com/VCVRack/Rack.git#tag=v$_rackver"
-    git+https://github.com/AndrewBelt/osdialog.git
-    git+https://github.com/AndrewBelt/oui-blendish.git
-    git+https://github.com/memononen/nanosvg.git
-    git+https://github.com/memononen/nanovg.git
-)
-sha256sums=(
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-)
+pkgver() {
+  cd "${_name}"-"${pkgver}"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
-    cd vcvrack
-    git submodule init
-    git config submodule.ext/nanosvg.url "$srcdir/nanosvg"
-    git config submodule.ext/nanovg.url "$srcdir/nanovg"
-    git config submodule.ext/osdialog.url "$srcdir/osdialog"
-    git config submodule.ext/oui-blendish.url "$srcdir/oui-blendish"
-    git submodule update
-
-    cd plugins
-    git clone "$srcdir/vcvrack-$_plugname" "$_plugname"
+  cd "${_name}"-"${pkgver}"
+  # removing static lib stuff
+  sed -e '7,20d' -i Makefile
 }
 
 build() {
-    cd "vcvrack/plugins/$_plugname"
-    FLAGS='-I/opt/vcvrack/include' make dist
+  # define RACK_DIR, so Makefile snippets can be found
+  export RACK_DIR="/usr/share/vcvrack"
+  # define FLAGS, so headers can be included
+  export FLAGS="-I/usr/include/vcvrack -I/usr/include/vcvrack/dep"
+  # exporting LDFLAGS for libsamplerate, as the Delay module requires it
+  export LDFLAGS="$(pkg-config --libs samplerate) ${LDFLAGS}"
+  cd "${_name}"-"${pkgver}"
+  USE_SYSTEM_LIBS=true make
+  USE_SYSTEM_LIBS=true make dist
 }
 
 package() {
-    cd "vcvrack/plugins/$_plugname"
-    install -D -m644 "dist/$_plugname-$pkgver-lin.zip" \
-        "$pkgdir/opt/vcvrack/$_plugname.zip"
+  cd "${_name}"-"${pkgver}"
+  install -vDm 644 "dist/${_name}"*".zip" \
+    "${pkgdir}/opt/vcvrack/${_name}.zip"
+  install -vDm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -vDm 644 {CHANGELOG,README}.md \
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
 }

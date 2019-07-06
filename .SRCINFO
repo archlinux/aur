@@ -1,27 +1,18 @@
 pkgbase = vcvrack-fundamental
 	pkgdesc = Fundamental VCV modules
-	pkgver = 0.6.0
+	pkgver = 0.6.0+99+g770e045
 	pkgrel = 1
 	url = https://github.com/VCVRack/Fundamental
-	install = vcvrack-fundamental.install
-	arch = i686
 	arch = x86_64
+	license = CCPL
 	license = BSD
 	makedepends = git
+	makedepends = jq
 	makedepends = zip
-	depends = vcvrack>=0.6
-	source = vcvrack-Fundamental::git+https://github.com/VCVRack/Fundamental.git#tag=v0.6.0
-	source = vcvrack::git+https://github.com/VCVRack/Rack.git#tag=v0.6.0
-	source = git+https://github.com/AndrewBelt/osdialog.git
-	source = git+https://github.com/AndrewBelt/oui-blendish.git
-	source = git+https://github.com/memononen/nanosvg.git
-	source = git+https://github.com/memononen/nanovg.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	depends = vcvrack
+	depends = libsamplerate
+	source = Fundamental-0.6.0+99+g770e045::git+https://github.com/VCVRack/Fundamental.git#commit=770e045d2a466fd40524d04077f93c80d6c495f8
+	sha512sums = SKIP
 
 pkgname = vcvrack-fundamental
 
