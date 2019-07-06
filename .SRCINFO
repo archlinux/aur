@@ -20,7 +20,7 @@ pkgbase = monero-gui-bin
 	source = monero-gui-bin-0.14.1.0.tar.bz2::https://github.com/monero-project/monero-gui/releases/download/v0.14.1.0/monero-gui-linux-x64-v0.14.1.0.tar.bz2
 	source = monero-wallet-gui
 	source = monero-wallet-gui.desktop
-	sha256sums = 66a1b77205a2398197887bfa4d70d4650179ddac9378b26f7df645aa1b566273
+	sha256sums = 51739f0472ccbd49832a5828ca1000ebb1ce63b19dd57507b7905739bf8cf238
 	sha256sums = 21765940c2fdd504c0550afa96eb4efa896e298c4761c87f52f637eb368f5736
 	sha256sums = 1a88e0dd59687fc19f4ca84b43311c506e04c1723cb9972faf427942723c73d2
 
