@@ -1,7 +1,7 @@
 pkgbase = libhdate
 	pkgdesc = LibHdate is a small C,C++ library for Hebrew calendar and dates, holidays, and reading sequence
 	pkgver = 1.6.02
-	pkgrel = 4
+	pkgrel = 5
 	url = http://libhdate.sourceforge.net/
 	arch = i686
 	arch = x86_64

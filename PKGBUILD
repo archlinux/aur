@@ -4,7 +4,7 @@ pkgname=libhdate
 libname=libhdate
 pkgver=1.6.02
 libver=1.0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="LibHdate is a small C,C++ library for Hebrew calendar and dates, holidays, and reading sequence"
 url="http://libhdate.sourceforge.net/"
 license=("GPL")
@@ -16,9 +16,9 @@ source=(http://downloads.sourceforge.net/project/$libname/$libname/$libname-$pkg
 md5sums=('0376b7ad2df71a093343d04f51b9b510')
 
 build() {
-  cd $startdir/src/$libname-$pkgver
+  cd "${srcdir}/${libname}-${pkgver}"
   # We install only the library not the binding features
-  ./configure --prefix=/usr --disable-fpc --disable-gpc --disable-python --disable-ruby --disable-php --disable-perl 
+  ./configure --prefix=/usr --disable-fpc --disable-gpc --disable-python --disable-ruby --disable-php --disable-perl
   make
 }
 
