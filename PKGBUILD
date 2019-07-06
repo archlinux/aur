@@ -2,7 +2,7 @@
 
 pkgname=sanic
 pkgdesc='An all-in-one tool to develop, build, and deploy your Docker/Kubernetes projects'
-pkgver=1.2.6
+pkgver=1.2.8
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -10,7 +10,7 @@ url='https://github.com/distributed-containers-inc/sanic'
 depends=('kubectl' 'docker')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/distributed-containers-inc/sanic/archive/v$pkgver.tar.gz")
-sha256sums=('f6f2d0bce48fb80107e7cf40e59f90758f406cb1e45de617be3e5029731e9485')
+sha256sums=('2d64d60ce464672a4a0b98d8a2ce09603057a1cf4bf0a76555b805d083b9c33a')
 
 prepare() {
   # Make fake gopath
