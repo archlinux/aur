@@ -4,7 +4,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=windowmaker-crm-git
-pkgver=0.95.8.r47.g66687154
+pkgver=0.95.8.r99.g4477ae4d
 pkgrel=1
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
@@ -15,8 +15,9 @@ conflicts=('windowmaker' 'windowmaker-git')
 makedepends=('git')
 depends=('imagemagick' 'libxinerama' 'libxrandr' 'libxmu' 'libbsd' 'libxpm' 'libxft' 'libwebp' 'libexif')
 source=("$pkgname::git://repo.or.cz/wmaker-crm.git#branch=next"
-        'wmaker.desktop'
-        'https://gitweb.gentoo.org/repo/gentoo.git/plain/x11-wm/windowmaker/files/windowmaker-0.95.8-imagemagick7.patch')
+        'wmaker.desktop')
+sha256sums=('SKIP'
+            '126da08ac9cffc4354bb4f246ec5ed5abd3cd29ed665d05d190c5bf842c84bef')
 
 pkgver() {
   cd $pkgname
@@ -25,7 +26,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  patch -Np1 -b -z .orig < ../windowmaker-0.95.8-imagemagick7.patch
   
   autoreconf -fi
   
@@ -56,6 +56,3 @@ package() {
   install -D -m644 ../wmaker.desktop "$pkgdir/usr/share/xsessions/wmaker.desktop"
 }
 
-sha256sums=('SKIP'
-            '126da08ac9cffc4354bb4f246ec5ed5abd3cd29ed665d05d190c5bf842c84bef'
-            'e89e8c7638f38296f1fc31d892672122a73ce89ce40c192bb404d852cca06692')
