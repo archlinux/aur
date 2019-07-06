@@ -2,14 +2,13 @@
 
 pkgname=intel-svt-av1
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An AV1-compliant encoder and decoder for Intel CPUs of 5th Generation (Broadwell) and above'
 arch=('x86_64')
 url='https://github.com/OpenVisualCloud/SVT-AV1/'
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('cmake' 'yasm' 'python')
-BUILDENV+=('!check')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OpenVisualCloud/SVT-AV1/archive/v${pkgver}.tar.gz")
 sha256sums=('4ff6f05a9528fe8a7b3d6708fe1115d15d26a5a9b0b676d8a250a0b2e8630579')
 

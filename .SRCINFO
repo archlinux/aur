@@ -1,7 +1,7 @@
 pkgbase = intel-svt-av1
 	pkgdesc = An AV1-compliant encoder and decoder for Intel CPUs of 5th Generation (Broadwell) and above
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenVisualCloud/SVT-AV1/
 	arch = x86_64
 	license = BSD
