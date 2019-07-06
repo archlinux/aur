@@ -8,7 +8,7 @@
 pkgname='pekwm-git'
 _pkgname='pekwm'
 epoch=1
-pkgver=0.1.17.r143.g6d68faf
+pkgver=0.1.17.r146.g24f9f9b
 pkgrel=1
 pkgdesc='Small, fast, functional, and flexible window manager'
 arch=('x86_64' 'i686')

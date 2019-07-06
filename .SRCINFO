@@ -1,6 +1,6 @@
 pkgbase = pekwm-git
 	pkgdesc = Small, fast, functional, and flexible window manager
-	pkgver = 0.1.17.r143.g6d68faf
+	pkgver = 0.1.17.r146.g24f9f9b
 	pkgrel = 1
 	epoch = 1
 	url = http://www.pekwm.org/
