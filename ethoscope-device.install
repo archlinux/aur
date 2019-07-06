@@ -12,39 +12,47 @@ post_install() {
     echo "setting GIT branch"
     git checkout python3.7
     
+    echo "installing python package"
+    cd /opt/ethoscope-device/src
+    python setup.py install
+    
     echo "create 000 machine files"
     echo "ETHOSCOPE_000" > /etc/machine-name
     echo "ETHOSCOPE_000" > /etc/hostname
     
     echo "create a default wlan0 file"
-    echo 'Description=ethoscope_wifi network' > /etc/netctl/wlan0
-    echo 'Interface=wlan0' >> /etc/netctl/wlan0
-    echo 'Connection=wireless' >> /etc/netctl/wlan0
-    echo 'Security=wpa' >> /etc/netctl/wlan0
-    echo 'IP=dhcp' >> /etc/netctl/wlan0
-    echo 'TimeoutDHCP=60' >> /etc/netctl/wlan0
-    echo "ESSID=ETHOSCOPE_WIFI" >> /etc/netctl/wlan0
-    echo "Key=ETHOSCOPE_1234" >> /etc/netctl/wlan0
+    echo "Description='ethoscope_wifi'" > /etc/netctl/wlan
+    echo "Interface=wlan0" >> /etc/netctl/wlan
+    echo "Connection=wireless" >> /etc/netctl/wlan
+    echo "Security=wpa" >> /etc/netctl/wlan
+    echo "IP=dhcp" >> /etc/netctl/wlan
+    echo "TimeoutDHCP=60" >> /etc/netctl/wlan
+    echo "ESSID=ETHOSCOPE_WIFI" >> /etc/netctl/wlan
+    echo "Key=ETHOSCOPE_1234" >> /etc/netctl/wlan
     
     echo "create a default eth0 file"
-    echo 'Description=eth0 Network' > /etc/netctl/eth0
-    echo 'Interface=eth0' >> /etc/netctl/eth0
-    echo 'Connection=ethernet' >> /etc/netctl/eth0
-    echo 'IP=dhcp' >> /etc/netctl/eth0
+    echo "Description='Ethernet'" > /etc/netctl/ether
+    echo "Interface=eth0" >> /etc/netctl/ether
+    echo "Connection=ethernet" >> /etc/netctl/ether
+    echo "IP=dhcp" >> /etc/netctl/ether
     
     echo "use netctl instead of netword"
+    systemctl stop systemd-networkd
     systemctl disable systemd-networkd
     ip link set eth0 down
-    
-    echo "setting up wifi"
-    netctl-auto enable wlan0
-    netctl-auto start wlan0
-    systemctl enable netctl-auto@wlan0.service
-    systemctl start netctl-auto@wlan0.service
+    ip link set wlan0 down
+
+    netctl enable ether
+    netctl enable wlan
+
+#    netctl-auto enable wlan0
+#    netctl-auto start wlan0
+#    systemctl enable netctl-auto@wlan0.service
+#    systemctl start netctl-auto@wlan0.service
+
     systemctl enable netctl-ifplugd@wlan0.service
     systemctl start netctl-ifplugd@wlan0.service
-    netctl enable eth0
-    netctl start eth0
+    
     systemctl enable netctl@eth0.service
     systemctl start netctl@eth0.service
     systemctl enable netctl-ifplugd@eth0.service
@@ -61,11 +69,11 @@ post_install() {
     
     echo "enabling DEVICE specific systemd service files"
     systemctl enable ethoscope_device.service ethoscope_update.service 
-    systemctl enable ntpd.service mysqld.service fake-hwclock fake-hwclock-save.timer sshd.service
+    systemctl enable ntpd.service mysqld.service fake-hwclock fake-hwclock-save.timer sshd.service mysqld.service
     
     echo "Set up mysql database"
     mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-    systemctl enable mysqld.service
+    systemctl start mysqld.service
     mysql -u root -e "CREATE USER 'ethoscope'@'localhost' IDENTIFIED BY 'ethoscope'"
     mysql -u root -e "CREATE USER 'ethoscope'@'%' IDENTIFIED BY 'ethoscope'"
     mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'ethoscope'@'localhost' WITH GRANT OPTION";
