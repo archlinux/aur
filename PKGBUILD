@@ -1,6 +1,5 @@
 pkgname=mingw-w64-paraview-git
 pkgver=r71412.10938cd09b
-_pkgver=${pkgver}
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
