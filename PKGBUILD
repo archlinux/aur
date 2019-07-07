@@ -21,7 +21,7 @@ md5sums=('96cbb9656c7e59f4c30b8ec9c94e1a2b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  go build -o salahtime-go salahtime.go
+  go build -o salahtime-go main.go
 }
 
 package() {
