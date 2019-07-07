@@ -4,7 +4,7 @@
 pkgbase=python-ipympl
 pkgname=(python2-ipympl python-ipympl python-ipympl-common)
 _pkgname="${pkgbase#*-}"
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
@@ -22,8 +22,8 @@ _makedepends=(
   'python-setuptools')
 license=('BSD')
 arch=(any)
-source=("https://pypi.python.org/packages/ec/06/6a6cd3406ab8079f3bb557c8d16bcd57735fcda30e480a925b5dba7837b8/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('5eff2a3a65ddf5edb638827548b8ad28709a736cbd5381162cbb821142f5da57865ab1b32b964985c1e28eb6ce9393de25f3728d7a18ca789d8af92187d21338')
+source=("https://pypi.python.org/packages/fc/e3/fdd2cb251257b32dd67c0a4eeaa9f6d5b9b1f8aab384980fda5fdc7dfc4e/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('010e268aafcae4b39b9d936d79c16909613d6d41e5f1dc0546eb3fe114c9f37c135227855850400e662d62dfa92f35b42d6cf3c517bef9f35cb6ad15312fa463')
 
 makedepends=(
   "${_deppy[@]}"
