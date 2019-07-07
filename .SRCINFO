@@ -1,0 +1,20 @@
+pkgbase = perl-moox-lazierattributes
+	pkgdesc = Lazier Attributes.
+	pkgver = 1.07008
+	pkgrel = 1
+	url = https://metacpan.org/release/MooX-LazierAttributes
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-requires>=0
+	depends = perl-clone>=0.39
+	depends = perl-moox-returnmodifiers>=0.03
+	depends = perl-namespace-clean>=0.27
+	depends = perl>=5.006
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/L/LN/LNATION/MooX-LazierAttributes-1.07008.tar.gz
+	md5sums = 75e3e031e13ac25591f3474f75f17311
+	sha512sums = bbaeaa78482723e7501b4eab768c80fbf70b83548ccd953bbe0917b831a29e5a7da7fc459ad84d5283b41024eaf286cefcc0d13eedda3e684e094706adeb00b7
+
+pkgname = perl-moox-lazierattributes
+
