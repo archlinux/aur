@@ -1,8 +1,8 @@
 # Maintainer: David Peter <mail@david-peter.de>
 _npmname=insect
-_npmver=5.1.2
+_npmver=5.2.0
 pkgname=insect
-pkgver=5.1.2
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="High precision scientific calculator with support for physical units"
 arch=(any)
@@ -10,16 +10,21 @@ url="https://github.com/sharkdp/insect"
 license=('MIT')
 depends=('nodejs' 'npm' )
 optdepends=()
+makedepends=('nodejs-pulp' 'bower' 'purescript-bin' )
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(e1e6089e051c198ec4d675d3fc857a7753de9125)
+sha1sums=(20367947c10cf5a2ec25d3a7071212739b62117f)
 
 package() {
   cd $srcdir
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" "$srcdir"/$_npmname-$_npmver.tgz
+  npm install -g --user root --prefix "$pkgdir/usr" "$srcdir"/$_npmname-$_npmver.tgz
+
+  # see https://wiki.archlinux.org/index.php/Node.js_package_guidelines
+  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+  find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 }
 
 # vim:set ts=2 sw=2 et:
