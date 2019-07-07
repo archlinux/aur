@@ -5,12 +5,12 @@ pkgname=pi-hole-ftl
 _pkgname=FTL
 _servicename=pihole-FTL
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
 license=('EUPL-1.1')
-depends=('nettle' 'gmp')
+depends=('nettle>=3.5' 'gmp')
 makedepends=('sqlite')
 conflicts=('dnsmasq')
 provides=('dnsmasq')
@@ -23,11 +23,11 @@ source=("https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
          "$pkgname.db"
          "$pkgname.conf")
 md5sums=('1c0df5fa42e7f7b89c7e704fdc1b5154'
-         'a42d0abc4bd088e7b1f905ac536e34d2'
+         'e8555a8b2318c2b53d6cf6626e8218f2'
          '5faa64558cc0a5888923fcf77c299fa7'
          'f3e42ec6f04180c6d6972998bf172a41'
          '0495c002b7d5dce303d451e4cd2fede5'
-         '40b1c4174198eacd7d12eb9b356aced0')
+         'a9c8de83f02d36bfe96db57975984bbb')
 
 prepare() {
   cd "$srcdir"/"$_pkgname"-"$pkgver"
