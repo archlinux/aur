@@ -1,10 +1,11 @@
 pkgbase = nuspell
 	pkgdesc = Free and open source C++ spell checking library
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	arch = x86_64
 	license = LGPL3+
 	makedepends = boost
+	makedepends = cmake
 	depends = boost-libs
 	depends = icu
 	source = git+https://github.com/nuspell/nuspell#tag=v2.2.0
