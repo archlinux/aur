@@ -1,12 +1,12 @@
 pkgbase = dhall-json-bin
 	pkgdesc = Dhall to JSON compiler and a Dhall to YAML compiler
-	pkgver = 1.2.7
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/dhall-lang/dhall-haskell
 	arch = x86_64
 	license = BSD
-	source = https://github.com/dhall-lang/dhall-haskell/releases/download/1.21.0/dhall-json-1.2.7-x86_64-linux.tar.bz2
-	source = https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.21.0/dhall-json/LICENSE
+	source = https://github.com/dhall-lang/dhall-haskell/releases/download/1.24.0/dhall-json-1.3.0-x86_64-linux.tar.bz2
+	source = https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.24.0/dhall-json/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
