@@ -1,7 +1,7 @@
 pkgbase = python2-construct
 	pkgdesc = Python library for declarative building/parsing of data structures.
-	pkgver = 2.5.1
-	pkgrel = 2
+	pkgver = 2.9.45
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/construct/construct
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python2-construct
 	depends = python2
 	depends = python2-six
 	replaces = construct
-	source = https://pypi.python.org/packages/source/c/construct/construct-2.5.1.tar.gz
-	md5sums = 4881ed2208f6ee226b61e2310f696924
+	source = https://pypi.python.org/packages/source/c/construct/construct-2.9.45.tar.gz
+	md5sums = 2498a8fd0782c56df915be4948402db5
 
 pkgname = python2-construct
 

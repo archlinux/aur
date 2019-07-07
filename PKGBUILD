@@ -1,7 +1,9 @@
-# Maintainer: David Scholl <djscholl at gmail dot com>
+# Maintainer: Jose Riha <jose 1711 gmail com>
+# Contributor: David Scholl <djscholl at gmail dot com>
+
 pkgname=python2-construct
-pkgver=2.5.1
-pkgrel=2
+pkgver=2.9.45
+pkgrel=1
 pkgdesc="Python library for declarative building/parsing of data structures."
 arch=('any')
 epoch=1
@@ -10,8 +12,8 @@ license=('MIT')
 depends=('python2' 'python2-six')
 makedepends=('python2-setuptools')
 replaces=('construct')
-source=(https://pypi.python.org/packages/source/c/construct/construct-2.5.1.tar.gz)
-md5sums=('4881ed2208f6ee226b61e2310f696924')
+source=(https://pypi.python.org/packages/source/c/construct/construct-${pkgver}.tar.gz)
+md5sums=('2498a8fd0782c56df915be4948402db5')
 
 build() {
   cd $srcdir/construct-$pkgver
