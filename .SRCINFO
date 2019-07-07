@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-kauth
 	pkgdesc = Abstraction to system policy and authentication features (mingw-w64)
 	pkgver = 5.45.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = mingw-w64-kf5

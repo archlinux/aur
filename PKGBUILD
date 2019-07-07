@@ -1,7 +1,7 @@
 _pkgname=kauth
 pkgname=mingw-w64-$_pkgname
 pkgver=5.45.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Abstraction to system policy and authentication features (mingw-w64)'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
@@ -25,7 +25,6 @@ build() {
     mkdir "build-${_arch}" && pushd "build-${_arch}"
     ${_arch}-cmake \
       -DCMAKE_INSTALL_LIBDIR=lib \
-      -DCMAKE_INSTALL_LIBEXECDIR=lib \
       -DBUILD_TESTING=OFF \
       ../$_pkgname-$pkgver
     make
