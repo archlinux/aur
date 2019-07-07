@@ -20,11 +20,15 @@ source=("https://github.com/unixsheikh/salahtime-go/archive/v1.0.1.zip")
 md5sums=('96cbb9656c7e59f4c30b8ec9c94e1a2b')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  go build -o salahtime-go main.go
+  cd $pkgname-$pkgver
+  go build \
+    -gcflags "all=-trimpath=$PWD" \
+    -asmflags "all=-trimpath=$PWD" \
+    -ldflags "-extldflags $LDFLAGS" \
+    -o $pkgname .
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 "salahtime-go" "$pkgdir/usr/bin/salahtime-go"
+  cd $pkgname-$pkgver
+  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
 }
