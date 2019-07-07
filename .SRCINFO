@@ -1,0 +1,17 @@
+pkgbase = perl-moox-returnmodifiers
+	pkgdesc = Returns Moo Modifiers as a Hash
+	pkgver = 1.000000
+	pkgrel = 1
+	url = https://metacpan.org/release/MooX-ReturnModifiers
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-moo>=1.001001
+	depends = perl>=5.006
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/L/LN/LNATION/MooX-ReturnModifiers-1.000000.tar.gz
+	md5sums = f63abb7fcc2122af1bc7733093284bc0
+	sha512sums = adf825e6121af6420f30c5aa327ea30b2ff32a7b6075ef249eae7eb408b070fead4708931e90dcd41cc1d1d3533919f33385830a14c1dc4892b8ac99859fe396
+
+pkgname = perl-moox-returnmodifiers
+
