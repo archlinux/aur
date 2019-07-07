@@ -1,7 +1,8 @@
-# Maintainer: Tinu Weber <http://ayekat.ch>
+# Maintainer: Minzord
 
 pkgname=remakepkg
-pkgver=0.8
+pkgver=0.8.1
+_branch=0.8
 pkgrel=1
 arch=(any)
 
@@ -19,7 +20,7 @@ makedepends=(asciidoc git)
 
 changelog='changelog'
 
-source=("git+https://gitlab.com/ayekat/pacman-hacks.git#tag=v$pkgver"
+source=("git+https://gitlab.com/ayekat/pacman-hacks.git#tag=v$_branch"
         'diffrepo.hook.example')
 sha256sums=(SKIP
             4b723cf33b30f6176f8f50623c2325d05d5dc70463ca2bcd893fae2ccab5776e)
