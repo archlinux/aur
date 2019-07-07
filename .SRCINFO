@@ -1,10 +1,9 @@
 pkgbase = havoc-git
-	pkgdesc = 1oom is a Master of Orion (1993) game engine recreation.
-	pkgver = r25.f620c9b
-	pkgrel = 1
+	pkgdesc = A minimal terminal emulator for Wayland on Linux.
+	pkgver = 0
+	pkgrel = 2
 	url = https://github.com/ii8/havoc
 	arch = x86_64
-	license = Public Domain
 	license = MIT
 	makedepends = wayland-protocols
 	makedepends = git
