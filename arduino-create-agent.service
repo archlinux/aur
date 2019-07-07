@@ -1,0 +1,9 @@
+[Unit]
+Description=arduino create agent
+
+[Service]
+Type=Simple
+ExecStart=/usr/bin/arduino-create-agent-cli
+
+[Install]
+WantedBy=default.target
