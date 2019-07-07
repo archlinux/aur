@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos < santiago dot burgos1089 at gmail dot com >
 
 pkgname=mint-themes
-pkgver=1.7.9
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='A collection of Mint themes. Includes GTK2, GTK3, Cinnamon and Xfce components.'
 arch=('any')
