@@ -4,13 +4,13 @@
 pkgname=coolterm-bin
 binname=coolterm
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple GUI serial port terminal application (no terminal emulation)'
 arch=('any')
 url="http://freeware.the-meiers.org/"
 license=(custom)
 makedepends=('unzip' 'gendesk')
-depends=('lib32-gtk3')
+depends=('gtk3')
 optdepends=('')
 
 source=('src.zip::http://freeware.the-meiers.org/CoolTermLinux.zip'

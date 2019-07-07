@@ -1,13 +1,13 @@
 pkgbase = coolterm-bin
 	pkgdesc = A simple GUI serial port terminal application (no terminal emulation)
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freeware.the-meiers.org/
 	arch = any
 	license = custom
 	makedepends = unzip
 	makedepends = gendesk
-	depends = lib32-gtk3
+	depends = gtk3
 	source = src.zip::http://freeware.the-meiers.org/CoolTermLinux.zip
 	source = coolterm.sh
 	source = LICENSE
