@@ -1,0 +1,17 @@
+pkgbase = rstmcpp-git
+	pkgdesc = A tool that converts wav files to .bcstm or .bcwav
+	pkgver = 1562460575.df6a45c
+	pkgrel = 1
+	url = https://gitlab.com/beelzy/rstmcpp
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = gcc-libs
+	source = rstmcpp::git+https://gitlab.com/beelzy/rstmcpp.git
+	source = gc-dspadpcm-encode::git+https://github.com/jackoalan/gc-dspadpcm-encode.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rstmcpp-git
+
