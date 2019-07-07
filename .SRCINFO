@@ -1,0 +1,14 @@
+pkgbase = dhall-bin
+	pkgdesc = Dhall typechecker and formatter
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://github.com/dhall-lang/dhall-haskell
+	arch = x86_64
+	license = BSD
+	source = https://github.com/dhall-lang/dhall-haskell/releases/download/1.24.0/dhall-1.24.0-x86_64-linux.tar.bz2
+	source = https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.24.0/dhall/LICENSE
+	sha256sums = d85d2703b52220afbf2dbc1e7a5ada05fe07e8b1d912c9011a4bee819ac36612
+	sha256sums = SKIP
+
+pkgname = dhall-bin
+
