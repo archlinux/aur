@@ -2,8 +2,8 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.27
-pkgrel=2
+pkgver=0.9.28
+pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname::git+https://github.com/SimonN/LixD.git#tag=v$pkgver")
 sha512sums=('SKIP')
