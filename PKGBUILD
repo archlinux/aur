@@ -3,7 +3,7 @@
 pkgname=thunderbird-appmenu-bin
 pkgver=60.7.2
 _build=build2-0ubuntu0.19.04.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Thunderbird with appmenu patch from Ubuntu"
 arch=('x86_64')
 url="https://packages.ubuntu.com/source/disco/thunderbird"

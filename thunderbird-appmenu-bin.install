@@ -65,7 +65,6 @@ post_upgrade() {
 post_remove() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 
-
 	MOZ_PKG_NAME=thunderbird
 
 	    local CONFFILE="$1"
@@ -74,10 +73,6 @@ post_remove() {
 	        echo "Reinstalling $CONFFILE that was moved away"
 	        mv "$CONFFILE.dpkg-remove" "$CONFFILE"
 	    fi
-	}
-
-	fi
-
 
 	update-desktop-database -q
 }
