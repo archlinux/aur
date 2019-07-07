@@ -1,0 +1,47 @@
+pkgbase = thunderbird-appmenu-bin
+	pkgdesc = Thunderbird with appmenu patch from Ubuntu
+	pkgver = 60.7.2
+	pkgrel = 1
+	url = https://packages.ubuntu.com/source/disco/thunderbird
+	install = thunderbird-appmenu-bin.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = atk>=1.12.4
+	depends = cairo>=1.10.0
+	depends = dbus>=1.9.14
+	depends = dbus-glib>=0.78
+	depends = desktop-file-utils
+	depends = fontconfig>=2.12.6
+	depends = freetype2>=2.2.1
+	depends = gcc8-libs>=6
+	depends = gdk-pixbuf2>=2.22.0
+	depends = glib2>=2.31.8
+	depends = gtk3>=3.4
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = libxcb
+	depends = libxcomposite>=0.3
+	depends = libxdamage>=1.1
+	depends = libxext
+	depends = libxfixes
+	depends = libxrender
+	depends = libxt
+	depends = startup-notification>=0.8
+	optdepends = hunspell
+	optdepends = libcanberra
+	optdepends = libdbusmenu-glib
+	optdepends = libdbusmenu-gtk3
+	optdepends = lyx
+	provides = thunderbird=60.7.2
+	conflicts = thunderbird
+	replaces = thunderbird
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = http://security.ubuntu.com/ubuntu/pool/main/t/thunderbird/thunderbird_60.7.2+build2-0ubuntu0.19.04.1_amd64.deb
+	sha512sums_x86_64 = c466699c3cbce93b1b15494d91ea9496bb0418681c7959e2fd6b06e55fefb8b8416ea2f95dcf0b1da9a2c2cac464ac0aedb9c484a970bb48b34c3c9a69b93c3a
+
+pkgname = thunderbird-appmenu-bin
+

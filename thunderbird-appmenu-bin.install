@@ -1,0 +1,83 @@
+pre_install() {
+
+
+	MOZ_PKG_NAME=thunderbird
+
+	# Prepare to move a conffile without triggering a dpkg question
+	prepare_mv_conffile() {
+	    local PKGNAME="$1"
+	    local CONFFILE="$2"
+
+	    [ -e "$CONFFILE" ] || return 0
+
+	    local md5sum="$(md5sum $CONFFILE | sed -e 's/ .*//')"
+	    local old_md5sum="$(dpkg-query -W -f='${Conffiles}' $PKGNAME | \
+	            sed -n -e "\' $CONFFILE ' { s/ obsolete$//; s/.* //; p }")"
+		#'
+	    if [ "$md5sum" = "$old_md5sum" ]; then
+	        mv -f "$CONFFILE" "$CONFFILE.dpkg-remove"
+	    fi
+	}
+
+	if [ "$1" = "install" ] || [ "$1" = "upgrade" ] ; then
+	    prepare_mv_conffile "${MOZ_PKG_NAME}" "/etc/${MOZ_PKG_NAME}/pref/thunderbird.js"
+	fi
+
+
+}
+
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+
+	MOZ_PKG_NAME=thunderbird
+
+	# Move a conffile without triggering a dpkg question
+	finish_mv_conffile() {
+	    local OLDCONFFILE="$1"
+	    local NEWCONFFILE="$2"
+
+	    rm -f $OLDCONFFILE.dpkg-remove
+
+	    [ -e "$OLDCONFFILE" ] || return 0
+
+	    echo "Preserving user changes to $NEWCONFFILE (renamed from $OLDCONFFILE)..."
+	    mv -f "$NEWCONFFILE" "$NEWCONFFILE.dpkg-new"
+	    mv -f "$OLDCONFFILE" "$NEWCONFFILE"
+	}
+
+	if [ "$1" = "configure" ] ; then
+	    finish_mv_conffile "/etc/${MOZ_PKG_NAME}/pref/thunderbird.js" "/etc/${MOZ_PKG_NAME}/syspref.js"
+	fi
+
+
+	update-desktop-database -q
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+
+	MOZ_PKG_NAME=thunderbird
+
+	    local CONFFILE="$1"
+
+	    if [ -e "$CONFFILE.dpkg-remove" ]; then
+	        echo "Reinstalling $CONFFILE that was moved away"
+	        mv "$CONFFILE.dpkg-remove" "$CONFFILE"
+	    fi
+	}
+
+	fi
+
+
+	update-desktop-database -q
+}
