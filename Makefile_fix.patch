@@ -1,6 +1,6 @@
-diff -Naur ./bs-2.10.orig/Makefile ./bs-2.10/Makefile
---- ./bs-2.10.orig/Makefile	2016-12-08 10:54:14.164589590 -0500
-+++ ./bs-2.10/Makefile	2016-12-08 10:54:46.243780672 -0500
+diff -Naur ./bs-2.11.orig/Makefile ./bs-2.11/Makefile
+--- ./bs-2.11.orig/Makefile	2016-12-08 10:54:14.164589590 -0500
++++ ./bs-2.11/Makefile	2016-12-08 10:54:46.243780672 -0500
 @@ -5,7 +5,7 @@
  CC = gcc
  
