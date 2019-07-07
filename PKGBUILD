@@ -28,7 +28,7 @@ source_x86_64=(
 	'git+https://github.com/vilkoz/playkey-linux-launcher.git'
 )
 sha256sums_x86_64=(
-	'65588718d0d90632414e6b36a3a9f55bf66bc82fd38bc6841b68b499d67f6ba1'
+	'39c585e84ff584f43d0ae4a19df29256ad160fca6585f1e87337a4029280cec7'
 	'SKIP'
 )
 
