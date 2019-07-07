@@ -8,6 +8,7 @@ pkgbase = i3-resurrect-git
 	depends = python
 	depends = i3-wm
 	depends = perl-anyevent-i3
+	depends = python-psutil
 	source = git+https://github.com/JonnyHaystack/i3-resurrect
 	md5sums = SKIP
 
