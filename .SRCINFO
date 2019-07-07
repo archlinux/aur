@@ -1,0 +1,14 @@
+pkgbase = dhall-text-bin
+	pkgdesc = Dhall to text compiler
+	pkgver = 1.0.18
+	pkgrel = 1
+	url = https://github.com/dhall-lang/dhall-haskell
+	arch = x86_64
+	license = BSD
+	source = https://github.com/dhall-lang/dhall-haskell/releases/download/1.24.0/dhall-text-1.0.18-x86_64-linux.tar.bz2
+	source = https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.24.0/dhall-text/LICENSE
+	sha256sums = 4abb8c8b71d4bf35c52fcfb943d4ed279aa4662055ef0344c791e4c4e86b79b4
+	sha256sums = SKIP
+
+pkgname = dhall-text-bin
+
