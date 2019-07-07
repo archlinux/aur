@@ -1,7 +1,8 @@
-# Maintainer: zargbell <zargbell@yandex.ru>
+# Maintainer: Minzord
+
 pkgname="aura-git"
-pkgver=2.0.0.r1465.4c6c481
-pkgrel=2
+pkgver=2.0.1.r1616.831604b
+pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR"
 arch=("x86_64")
 url="https://github.com/aurapm/aura"
