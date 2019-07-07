@@ -3,7 +3,7 @@ _npmname=insect
 _npmver=5.2.0
 pkgname=insect
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High precision scientific calculator with support for physical units"
 arch=(any)
 url="https://github.com/sharkdp/insect"
@@ -13,7 +13,7 @@ optdepends=()
 makedepends=('nodejs-pulp' 'bower' 'purescript-bin' )
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(20367947c10cf5a2ec25d3a7071212739b62117f)
+sha1sums=(b1a44a2cf68b8adb52ef628f584a663fda4e2796)
 
 package() {
   cd $srcdir
