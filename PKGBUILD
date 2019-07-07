@@ -6,7 +6,7 @@
 pkgname=aseprite-git
 _pkgname=aseprite
 pkgver=1.2.13.r0.gaf4fd54c2
-pkgrel=2
+pkgrel=3
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
@@ -14,12 +14,104 @@ license=('BSD' 'custom')
 depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'pixman' 'libxcursor' 'fontconfig')
 makedepends=('git' 'ninja' 'python2' 'clang')
 conflicts=("${_pkgname}" "${_pkgname}-gpl"  )
-source=("skia::git+https://github.com/${_pkgname}/skia.git#branch=aseprite-m71"
-        "${_pkgname}::git+https://github.com/${_pkgname}/${_pkgname}.git"
+source=(
+        # "git+https://github.com/${_pkgname}/pixman.git"
+        "git+https://github.com/${_pkgname}/simpleini.git"
+        # "git+https://github.com/${_pkgname}/gtest.git"
+        "git+https://github.com/${_pkgname}/libwebp.git"
+        "git+https://github.com/${_pkgname}/flic.git"
+        # "git+https://github.com/${_pkgname}/freetype2.git"
+        # "git+https://github.com/${_pkgname}/zlib.git"
+        # "git+https://github.com/${_pkgname}/libpng.git"
+        "git+https://github.com/${_pkgname}/clip.git"
+        "git+https://github.com/${_pkgname}/observable.git"
+        "git+https://github.com/${_pkgname}/undo.git"
+        "git+https://github.com/${_pkgname}/laf.git"
+        # "git+https://github.com/${_pkgname}/cmark.git"
+        # "git+https://github.com/${_pkgname}/harfbuzz.git"
+        "git+https://github.com/${_pkgname}/libarchive.git"
+        "git+https://github.com/${_pkgname}/json11.git"
+        # "git+https://github.com/${_pkgname}/benchmark.git"
+        # "git+https://github.com/${_pkgname}/giflib.git"
+        "git+https://github.com/${_pkgname}/fmt.git"
+        "git+https://github.com/${_pkgname}/tinyexpr.git"
+        "git+https://github.com/${_pkgname}/lua"
+        "git+https://github.com/${_pkgname}/stringencoders"
+        # "git+https://github.com/${_pkgname}/googletest"
+        "git+https://github.com/${_pkgname}/skia.git#branch=aseprite-m71"
+        "git+https://github.com/${_pkgname}/${_pkgname}.git"
         'desktop.patch')
-sha256sums=('SKIP'
+sha256sums=(
+            # 'SKIP'
+            # 'SKIP'
+            # 'SKIP'
+            # 'SKIP'
+            # 'SKIP'
+            # 'SKIP'
+            # 'SKIP'
+            # 'SKIP'
+            # 'SKIP'
+            # 'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'bcb6229e42cef16a8a0273c2fce67ce81d243a085c90bd52ac15183e757ff875')
+_submodules=(
+    # 'pixman'
+    'simpleini'
+    # 'gtest'
+    'libwebp'
+    'flic'
+    # 'freetype2'
+    # 'zlib'
+    # 'libpng'
+    'clip'
+    'observable'
+    'undo'
+    'laf'
+    # 'cmark'
+    # 'harfbuzz'
+    'libarchive'
+    'json11'
+    # 'benchmark'
+    # 'giflib'
+    'fmt'
+    'tinyexpr'
+    'lua')
+_submodules_path=(
+    # "third_party/pixman"
+    "third_party/simpleini"
+    # "third_party/gtest"
+    "third_party/libwebp"
+    "src/flic"
+    # "third_party/freetype2"
+    # "third_party/zlib"
+    # "third_party/libpng"
+    "src/clip"
+    "src/observable"
+    "src/undo"
+    "laf"
+    # "third_party/cmark"
+    # "third_party/harfbuzz"
+    "third_party/libarchive"
+    "third_party/json11"
+    # "third_party/benchmark"
+    # "third_party/giflib"
+    "third_party/fmt"
+    "third_party/tinyexpr"
+    "third_party/lua")
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -28,8 +120,19 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
+    git submodule init
+    for (( i=0; i<${#_submodules[@]}; i++ )); do
+        git config submodule.${_submodules_path[$i]}.url "${srcdir}/${_submodules[$i]}"
+    done
+    git submodule update
 
-    git submodule update --init --recursive
+    cd laf
+    git submodule init
+    git config submodule.third_party/stringencoders.url "${srcdir}/stringencoders"
+    # git config submodule.third_party/googletest.url "${srcdir}/googletest"
+    git submodule update
+
+    cd "${srcdir}/${_pkgname}"
     patch --strip=1 --input="${srcdir}/desktop.patch"
     mkdir -p build
 
@@ -59,6 +162,10 @@ build() {
         -DUSE_SHARED_PIXMAN=ON \
         -DUSE_SHARED_FREETYPE=ON \
         -DUSE_SHARED_HARFBUZZ=ON \
+        -DWITH_WEBP_SUPPORT=ON \
+        -DLAF_WITH_TESTS=OFF \
+        -DENABLE_TESTS=OFF \
+        -DENABLE_BENCHMARKS=OFF \
         -G Ninja \
         ..
     ninja ${_pkgname}
@@ -96,5 +203,5 @@ package() {
         install -Dm644 "data/icons/doc${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/image-x-${_pkgname}.png"
     done
     install -Dm644 "EULA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
-    install -Dm644 "$srcdir/skia/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${_pkgname}/docs/LICENSES.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES"
 }
