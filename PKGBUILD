@@ -1,9 +1,9 @@
 # Maintainer Musikolo <musikolo {at} hotmail [dot] com>
 
 pkgname=plasma5-applets-system-panel
-pkgver=1.4.0
+pkgver=1.5.0
 pkgdesc="Plasma5 applet that displays a panel with a set of system actions"
-pkgrel=2
+pkgrel=1
 arch=(i686 x86_64)
 url="http://kde-apps.org/content/show.php?content=175309"
 license=(GPL3)
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX="`kde4-config --prefix`" -DCMAKE_BUILD_TYPE=Release -DLIB_INSTALL_DIR=lib -DKDE_INSTALL_USE_QT_SYS_PATHS=ON ../${pkgname}/src
+  cmake -DCMAKE_INSTALL_PREFIX="`kf5-config --prefix`" -DCMAKE_BUILD_TYPE=Release -DLIB_INSTALL_DIR=lib -DKDE_INSTALL_USE_QT_SYS_PATHS=ON ../${pkgname}/src
   make
 }
 
@@ -34,7 +34,7 @@ package() {
   popd
 
   cd "${pkgname}"
-  _licenses_dir="${pkgdir}`kde4-config --prefix`/share/licenses/${pkgname}"
+  _licenses_dir="${pkgdir}`kf5-config --prefix`/share/licenses/${pkgname}"
   install -D AUTHORS "${_licenses_dir}/AUTHORS"
   install -D ChangeLog "${_licenses_dir}/ChangeLog"
   install -D LICENSE "${_licenses_dir}/LICENSE"
