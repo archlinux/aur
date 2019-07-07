@@ -1,0 +1,12 @@
+pkgbase = nvidia-force-comp-pipeline
+	pkgdesc = Simple script to enable "Force Composition Pipeline" on all monitors connected to an Nvidia card (fixes tearing).
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Askannz/nvidia-force-comp-pipeline
+	arch = any
+	license = MIT
+	source = git+https://github.com/Askannz/nvidia-force-comp-pipeline.git#branch=master
+	sha256sums = SKIP
+
+pkgname = nvidia-force-comp-pipeline
+
