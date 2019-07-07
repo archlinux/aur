@@ -3,7 +3,7 @@
 
 pkgname=klystrack
 pkgver=1.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Tracker for making chiptune-like music on a modern computer"
 arch=('i686' 'x86_64')
 url="http://kometbomb.github.io/klystrack/"
@@ -20,19 +20,21 @@ sha256sums=('b6e24a233ef1bf8989a2ad5caa4d743a9adc178a346bc3080367b7553c7f4595'
             '982f0c8eda20499bf2052c57094738af44339e91348aed55c316c7115834075c')
 
 prepare() {
-  if [ -d "${srcdir}/${pkgname}-${pkgver}/klystron" ]
+  if [ -d "${srcdir}/${pkgname}-${pkgver}" ]
   then
-    rm -fr "${srcdir}/${pkgname}-${pkgver}/klystron"
+    rm -fr "${srcdir}/${pkgname}-${pkgver}"
   fi
 
+  mv "${srcdir}/${pkgname}-${pkgver}-make-fix" "${srcdir}/${pkgname}-${pkgver}"
+  rm -fr "${srcdir}/${pkgname}-${pkgver}/klystron"
   mv "${srcdir}/klystron-for-klystrack-exec" "${srcdir}/${pkgname}-${pkgver}/klystron"
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Fix from Pavle's klystrack-git PKGBUILD
-  sed -i 's/Default.kt/\/usr\/share\/klystrack\/Default\.kt/' "${srcdir}/klystrack-${pkgver}/src/main.c"
+  sed -i 's/Default.kt/\/usr\/share\/klystrack\/Default\.kt/' "${srcdir}/${pkgname}-${pkgver}/src/main.c"
 
-  sed -i 's/^CFG = debug/CFG = release/' "${srcdir}/klystrack-${pkgver}/klystron/Makefile"
-  sed -i 's/^CFG := debug/CFG = release/' "${srcdir}/klystrack-${pkgver}/Makefile"
+  sed -i 's/^CFG = debug/CFG = release/' "${srcdir}/${pkgname}-${pkgver}/klystron/Makefile"
+  sed -i 's/^CFG := debug/CFG = release/' "${srcdir}/${pkgname}-${pkgver}/Makefile"
 }
 
 build() {
