@@ -1,20 +1,22 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r69428.fb25e4fb9c
+pkgver=r71412.10938cd09b
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
 url='http://www.paraview.org'
 license=('custom')
-depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtheora' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-pugixml' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-cgns' 'mingw-w64-netcdf-cxx-legacy' 'mingw-w64-double-conversion')
+depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtheora' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion')
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-pegtl' 'mingw-w64-wine')
 provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("git+https://gitlab.kitware.com/paraview/paraview.git"
-        "compile-tools.patch")
-sha256sums=('SKIP'
-            'ea4211078f1e1d7d2bb999861d81fbcb0cc6176844fead431c473035e94bd4bb')
+        "git+https://gitlab.kitware.com/vtk/vtk.git"
+        "git+https://gitlab.kitware.com/paraview/visitbridge.git"
+        "git+https://gitlab.kitware.com/paraview/icet.git"
+        "git+https://gitlab.kitware.com/paraview/qttesting.git")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -25,34 +27,65 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/paraview"
-  git submodule update --init --recursive
+  git submodule init
+  git config submodule.VTK.url "$srcdir"/vtk
+  git config submodule.Utilities/VisItBridge.git "$srcdir"/visitbridge
+  git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
+  git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
+  git submodule update -f --init
 
-  # cannot be modified upstream, see https://gitlab.kitware.com/paraview/paraview/merge_requests/1716
-  #patch -p1 -i "${srcdir}/compile-tools.patch"
+  # missing protobuf::protoc for target vtkPVMessage_protobuf_compile
+  sed -i "1iset_target_properties(protobuf::protoc PROPERTIES IMPORTED_LOCATION \${Protobuf_PROTOC_EXECUTABLE})" ParaViewCore/ServerImplementation/Core/CMakeLists.txt
+  sed -i "1iadd_executable(protobuf::protoc IMPORTED)" ParaViewCore/ServerImplementation/Core/CMakeLists.txt
+  # vtkPVDefaultPass.cxx:(.text+0x2b3): undefined reference to `glGetError@0'
+  echo "vtk_module_link(ParaView::VTKExtensionsRendering PRIVATE opengl32) " >> ParaViewCore/VTKExtensions/Rendering/CMakeLists.txt
+
+  cd VTK
+  # https://gitlab.kitware.com/vtk/vtk/issues/17637
+  sed -i "s|find_package(netCDF|#find_package(netCDF|g" CMake/FindNetCDF.cmake
+  # https://gitlab.kitware.com/vtk/vtk/issues/17630
+  sed -i "s|VTK::netcdf|VTK::netcdf VTK::hdf5|g" ThirdParty/exodusII/vtk.module
+  # vtkQWidgetTexture.cxx:(.text+0x14c): undefined reference to `_imp__glPixelStorei@8'
+  echo "vtk_module_link(VTK::GUISupportQt PRIVATE opengl32) " >> GUISupport/Qt/CMakeLists.txt
 }
 
 build() {
   cd "${srcdir}/paraview"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake --debug-output \
-    -DCMAKE_RULE_MESSAGES=OFF \
-    -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
-    -DPARAVIEW_ENABLE_PYTHON=OFF \
-    -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
-    -DPARAVIEW_USE_VTKM=OFF \
-    -DVTK_USE_SYSTEM_LIBRARIES=ON \
-    -DVTK_USE_SYSTEM_QTTESTING=OFF \
-    -DVTK_USE_SYSTEM_XDMF2=OFF \
-    -DVTK_USE_SYSTEM_PROTOBUF=OFF \
-    -DVTK_USE_SYSTEM_GL2PS=OFF \
-    -DVTK_USE_SYSTEM_LIBHARU=OFF \
-    -DHDF5_ROOT=/usr/${_arch}/ ..
+    ${_arch}-cmake \
+      -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
+      -DPARAVIEW_ENABLE_PYTHON=OFF \
+      -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
+      -DPARAVIEW_USE_VTKM=OFF \
+      -DPARAVIEW_PLUGINS_DEFAULT=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_doubleconversion=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_eigen=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_expat=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_freetype=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_glew=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_hdf5=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_jpeg=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_jsoncpp=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_libxml2=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_lz4=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_lzma=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_netcdf=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_png=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_sqlite=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_tiff=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_zlib=ON \
+      -DVTK_MODULE_USE_EXTERNAL_ParaView_protobuf=ON \
+      -DVTK_MODULE_USE_EXTERNAL_ParaView_cgns=ON \
+      ..
     make
     popd
   done
 }
-
 
 package() {
   for _arch in ${_architectures}; do
