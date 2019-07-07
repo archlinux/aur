@@ -1,11 +1,11 @@
 pkgbase = pyoxidizer
 	pkgdesc = A modern Python application packaging and distribution tool
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/indygreg/PyOxidizer
 	arch = x86_64
 	license = MIT
-	makedepends = rustup
+	makedepends = cargo
 	source = https://github.com/indygreg/PyOxidizer/archive/v0.2.0.tar.gz
 	md5sums = 04dfe490dba4ae9c2d42b4044413645e
 
