@@ -1,13 +1,13 @@
 pkgbase = ivre-git
 	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...
-	pkgver = 0.9.13.dev14
+	pkgver = 0.9.13.dev21
 	pkgrel = 1
 	url = https://ivre.rocks/
 	arch = any
 	license = GPL3
 	makedepends = git
 	source = git+https://github.com/cea-sec/ivre.git
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = ivre-git
 	depends = python-ivre-git
