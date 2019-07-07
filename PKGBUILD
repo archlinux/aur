@@ -1,5 +1,5 @@
 pkgname="eidolon"
-pkgver=1.4.0
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Provides a single TUI-based registry for drm-free, wine and steam games on linux, accessed through a rofi launch menu."
 arch=('any')
@@ -9,7 +9,7 @@ makedepends=(rust cargo)
 depends=(rofi)
 conflicts=(eidolon-git)
 source=("https://github.com/nicohman/eidolon/archive/${pkgver}.tar.gz")
-sha256sums=('1e19206871d840cbcad67a79bdf75b06396e505fbb2939b657af369ccef86773')
+sha256sums=('676df83832c1c19397a3e40c4f0f39b9c46ccecc81f3b6ceb283f68fd020d649')
 
 package() {
 	cd ${pkgname}-${pkgver}
