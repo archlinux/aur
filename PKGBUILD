@@ -1,6 +1,6 @@
 # Maintainer: Xuanrui Qi <me@xuanruiqi.com>
 pkgname=ssrmint-git
-pkgver=r8.66e2482
+pkgver=r9.26df1b7
 pkgrel=1
 pkgdesc="Ad-hoc pygments style and lexer for LaTeX pretty-printing of SSReflect"
 arch=('any')
@@ -26,6 +26,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm744 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
