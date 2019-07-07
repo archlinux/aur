@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-vtk-git
-pkgver=r71294.1082e57012
+pkgver=r71351.152728eb5d
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -21,8 +21,11 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
+  # https://gitlab.kitware.com/vtk/vtk/issues/17637
+  sed -i "s|find_package(netCDF|#find_package(netCDF|g" CMake/FindNetCDF.cmake
+  # https://gitlab.kitware.com/vtk/vtk/issues/17630
+  sed -i "s|VTK::netcdf|VTK::netcdf VTK::hdf5|g" ThirdParty/exodusII/vtk.module
 }
-
 
 build() {
   cd "${srcdir}/vtk"
@@ -37,7 +40,6 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_glew=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_hdf5=ON \
-      -DHDF5_ROOT=/usr/${_arch}/ \
       -DVTK_MODULE_USE_EXTERNAL_VTK_jpeg=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_jsoncpp=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
