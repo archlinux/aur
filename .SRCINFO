@@ -1,6 +1,6 @@
 pkgbase = blkar
 	pkgdesc = Archive with forward error correction and sector level recoverability
-	pkgver = 7.2.1
+	pkgver = 7.2.2
 	pkgrel = 1
 	url = https://github.com/darrenldl/blockyarchive
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = blkar
 	checkdepends = cargo
 	makedepends = cargo
 	depends = gcc-libs
-	source = https://github.com/darrenldl/blockyarchive/archive/v7.2.1.tar.gz
-	sha256sums = 16ea8f7f28ca907888881720f50b41b8a38f26c783999441879370585aa4a734
+	source = https://github.com/darrenldl/blockyarchive/archive/v7.2.2.tar.gz
+	sha256sums = afa14d1644e3aa959cba038ab9e1768682904d35b7b0490d1826e3af7f469ca7
 
 pkgname = blkar
 
