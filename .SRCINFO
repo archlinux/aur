@@ -1,0 +1,18 @@
+pkgbase = perl-app-daemon
+	pkgdesc = Start an Application as a Daemon
+	pkgver = 0.22
+	pkgrel = 1
+	url = https://metacpan.org/release/App-Daemon
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-file-pid>=0
+	depends = perl-log-log4perl>=1.0
+	depends = perl-sysadm-install>=0.37
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MS/MSCHILLI/App-Daemon-0.22.tar.gz
+	md5sums = e72c0b280263538af65674011bae7634
+	sha512sums = 654d36026bd5a75f10fab2fb6eb0763a3a6f966838350266e3993fb1380d9fd95ba7a261ca6e5c3a0bedcde74d97a2d76865be48687734134fada79fd79d92d0
+
+pkgname = perl-app-daemon
+
