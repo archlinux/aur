@@ -1,0 +1,5 @@
+dhall-bash-*.tar.bz2
+dhall-bash-*.tar.xz
+LICENSE
+pkg
+src
