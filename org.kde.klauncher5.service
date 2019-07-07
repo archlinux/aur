@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.kde.klauncher5
+Exec=klauncher
