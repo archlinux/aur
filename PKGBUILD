@@ -3,7 +3,7 @@
 
 pkgname=mkspiffs-git
 pkgver=0.2.3.r6.983970e
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to build and unpack SPIFFS images for the ESP8266"
 arch=('x86' 'x86_64')
 url="https://github.com/igrr/mkspiffs"
@@ -45,4 +45,5 @@ check() {
 package() {
 	# This package provides only a single executable
 	install -D -m755 $srcdir/mkspiffs/mkspiffs $pkgdir/usr/bin/mkspiffs
+	install -D -m644 $srcdir/mkspiffs/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }

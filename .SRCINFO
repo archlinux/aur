@@ -1,7 +1,7 @@
 pkgbase = mkspiffs-git
 	pkgdesc = Tool to build and unpack SPIFFS images for the ESP8266
 	pkgver = 0.2.3.r6.983970e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/igrr/mkspiffs
 	arch = x86
 	arch = x86_64
