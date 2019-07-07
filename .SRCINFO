@@ -1,6 +1,6 @@
 pkgbase = qdolist
 	pkgdesc = A to-do list manager for KDE
-	pkgver = v0.1.2.g85b2002
+	pkgver = v0.1.6.1.g2513f35
 	pkgrel = 1
 	url = https://github.com/appetrosyan/qDoList
 	arch = x86_64
