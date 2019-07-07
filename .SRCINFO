@@ -1,26 +1,16 @@
 pkgbase = vcvrack-befaco
-	pkgdesc = Befaco's VCV modules
-	pkgver = 0.6.0
+	pkgdesc = Rack plugins based on Befaco Eurorack modules
+	pkgver = 0.6.0+21+g31da1ab
 	pkgrel = 1
 	url = https://github.com/VCVRack/Befaco
 	install = vcvrack-befaco.install
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	makedepends = jq
 	makedepends = zip
-	depends = vcvrack>=0.6
-	source = vcvrack-Befaco::git+https://github.com/VCVRack/Befaco.git#tag=v0.6.0
-	source = vcvrack::git+https://github.com/VCVRack/Rack.git#tag=v0.6.0
-	source = git+https://github.com/AndrewBelt/osdialog.git
-	source = git+https://github.com/AndrewBelt/oui-blendish.git
-	source = git+https://github.com/memononen/nanosvg.git
-	source = git+https://github.com/memononen/nanovg.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	depends = vcvrack
+	source = Befaco-0.6.0+21+g31da1ab::git+https://github.com/VCVRack/Befaco.git#commit=31da1ab46d698e6a89867b7a10251870e1d8aa91
 	sha256sums = SKIP
 
 pkgname = vcvrack-befaco
