@@ -1,0 +1,15 @@
+pkgbase = sysbro
+	pkgdesc = 系统小助手
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/rekols/sysbro
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-base
+	makedepends = qt5-tools
+	makedepends = gcc
+	depends = dtkwidget
+	depends = hicolor-icon-theme
+
+pkgname = sysbro
+
