@@ -2,7 +2,7 @@
 _realname="qDoList"
 pkgname="${_realname,,}"	# viva Bash 4.0
 url="https://github.com/appetrosyan/qDoList"
-pkgver=v0.1.2.g85b2002
+pkgver=v0.1.6.1.g2513f35
 pkgrel=1
 pkgdesc="A to-do list manager for KDE"
 arch=("x86_64")
@@ -23,12 +23,16 @@ prepare() {
 
 build() {
   cd "$srcdir/$_realname"
-  qmake $_realname.pro 
-  make 
+  qmake-qt5 "$_realname.pro"\
+	    PREFIX=/usr \
+	    QMAKE_CFLAGS="${CFLAGS}"\
+	    QMAKE_CXXFLAGS="${FXXFLAGS}"\
+	    QMAKE_LFLAGS="${LDFLAGS}"
+  make -j
 }
 
 package(){
     cd "$srcdir/$_realname"
     install -D -m755 $_realname "$pkgdir/usr/bin/$pkgname"
-    install -D -m644 "Icons/qDo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_realname.svg"
+    install -D -m644 "src/Icons/qDo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_realname.svg"
 }
