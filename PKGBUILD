@@ -3,7 +3,7 @@
 pkgname=thunderbird-appmenu-bin
 pkgver=60.7.2
 _build=build2-0ubuntu0.19.04.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Thunderbird with appmenu patch from Ubuntu"
 arch=('x86_64')
 url="https://packages.ubuntu.com/source/disco/thunderbird"
@@ -26,5 +26,10 @@ package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
+	
+	# Change extensions folder location to comply with upstream Thunderbird
+	rm "${pkgdir}"/usr/lib/thunderbird/extensions
+	mv "${pkgdir}"/usr/lib/thunderbird-addons/extensions "${pkgdir}"/usr/lib/thunderbird/extensions
+	rm -r "${pkgdir}"/usr/lib/thunderbird-addons
 
 }

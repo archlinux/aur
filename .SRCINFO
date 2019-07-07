@@ -1,7 +1,7 @@
 pkgbase = thunderbird-appmenu-bin
 	pkgdesc = Thunderbird with appmenu patch from Ubuntu
 	pkgver = 60.7.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://packages.ubuntu.com/source/disco/thunderbird
 	install = thunderbird-appmenu-bin.install
 	arch = x86_64
