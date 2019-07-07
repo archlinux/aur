@@ -8,6 +8,7 @@ pkgbase = mkspiffs-git
 	license = MIT
 	makedepends = git
 	makedepends = gcc
+	depends = gcc-libs
 	provides = mkspiffs
 	conflicts = mkspiffs
 	source = git://github.com/igrr/mkspiffs.git
