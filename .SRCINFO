@@ -1,0 +1,19 @@
+pkgbase = klystrack
+	pkgdesc = Tracker for making chiptune-like music on a modern computer
+	pkgver = 1.7.6
+	pkgrel = 1
+	url = http://kometbomb.github.io/klystrack/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = sdl2_image
+	depends = sdl2_mixer
+	provides = klystrack
+	conflicts = klystrack-git
+	source = klystrack-1.7.6.tar.gz::https://github.com/kometbomb/klystrack/archive/1.7.6.tar.gz
+	source = klystron-for-klystrack-exec.tar.gz::https://github.com/kometbomb/klystron/archive/for-klystrack-exec.tar.gz
+	sha256sums = b23c3f40906726a8f888c26c1a6887e4f84f5474f8e6fa4f1deacc03a7024608
+	sha256sums = 982f0c8eda20499bf2052c57094738af44339e91348aed55c316c7115834075c
+
+pkgname = klystrack
+
