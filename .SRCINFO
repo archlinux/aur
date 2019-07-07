@@ -1,16 +1,24 @@
 pkgbase = or-tools
 	pkgdesc = Google's Operations Research tools.
-	pkgver = 6.10
-	pkgrel = 2
+	pkgver = 7.2
+	pkgrel = 1
 	url = https://github.com/google/or-tools
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
+	makedepends = pkgconf
 	makedepends = git
 	depends = gcc-libs
+	depends = protobuf
+	depends = gflags
+	depends = google-glog
+	depends = coin-or-cbc
+	depends = protobuf
 	conflicts = python-or-tools
-	source = https://github.com/google/or-tools/archive/v6.10.tar.gz
-	sha256sums = d1131ca6d7c2388400493c774dfd0b5d5c270a8a9645391876400a194354cfd6
+	source = https://github.com/google/or-tools/archive/v7.2.tar.gz
+	source = pkg-conf.patch
+	sha256sums = 13a4de5dba1f64e2e490394f8f63fe0a301ee55466ef65fe309ffd5100358ea8
+	sha256sums = 177a5f656e6571ab60634167d47d0924e0c71c53680b620023bd9e76e36b9b82
 
 pkgname = or-tools
 
