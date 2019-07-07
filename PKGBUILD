@@ -1,62 +1,45 @@
-#Maintainer: Dimitris Pappas <mitsakosgr@gmail.com>
+# Maintainer: Dimitris Pappas <mitsakosgr at gmail dot com>
+# Contributor: Fabio Tardivo <x95a31x at gmail dot com>
 pkgname=minizinc-ide
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple IDE for writing and running MiniZinc models"
-arch=('x86_64')
-url="http://www.minizinc.org/ide/"
-license=('Mozilla Public License Version 2.0')
-provides=('minizinc')
-conflicts=('libminizinc')
-
-source=('minizinc-ide.desktop'
-        'minizinc.png'
-	https://github.com/MiniZinc/MiniZincIDE/releases/download/"${pkgver}"/MiniZincIDE-"${pkgver}"-bundle-linux-x86_64.tgz)
-
-depends=('libpng12'
-	 'pcre'
-	 'gstreamer'
-	 'gst-plugins-base-libs'
-	 'double-conversion')
-
-sha256sums=('b86ef15b8ee1014342a2f38358d7f806a58b900bf1150101b535aecddaa122d1'
-            '1b9fa21e25c48e1080eaea2348eb98a45242e045b7ba94fe4723a9b01cbcdb2a'
-            '7d5091066a691041caf9dd38087aee71947304bde83477bc05e325f6c219f2a2')
-
+arch=(x86_64)
+url=http://www.minizinc.org/ide/
+license=(MPL2)
+provides=(minizinc)
 options=(!strip)
+install=$pkgname.install
+conflicts=(libminizinc)
+source=(
+    minizinc-ide.desktop
+    fzn-gecode-gist-lib-path.patch
+    https://raw.githubusercontent.com/MiniZinc/MiniZincIDE/master/resources/icon.png
+    https://github.com/MiniZinc/MiniZincIDE/releases/download/$pkgver/MiniZincIDE-$pkgver-bundle-linux-x86_64.tgz
+)
+sha256sums=(
+    bf26b9e3cae148fb05ce131ef62076bda467ebd2ce9913525a5540f09435c2b6
+    657090bd7d93d16648e12c8df14f65e858ee49c2384b137ff7e1abb61b291a6a
+    eaa69a6d1b8a3e307d1b400b74273995abb914fbe1246c65fc9b3955b2094023
+    7d5091066a691041caf9dd38087aee71947304bde83477bc05e325f6c219f2a2
+)
 
-package() {
-    if [ "${CARCH}" == "i686" ]; then
-        _arch=32;
-    else
-        _arch=64;
-    fi
 
-    mkdir -p "${pkgdir}"/usr/share/applications
+prepare() {
+    # Workaround for https://github.com/MiniZinc/MiniZincIDE/issues/90
+    cd $srcdir/MiniZincIDE-$pkgver-bundle-linux
+    patch --strip=0 --input=${srcdir}/fzn-gecode-gist-lib-path.patch
+}
 
-    # Move .desktop file to global applications folder
-    install "${srcdir}/"minizinc-ide.desktop "${pkgdir}"/usr/share/applications/
-
-    mkdir -p "${pkgdir}"/usr/share/"${pkgname}"
-    mkdir -p "${pkgdir}"/usr/lib
+package() {    
+    # Create MiniZinc directory
+    mkdir -p $pkgdir/opt/$pkgname   
     
-    # Move png to package
-    install "${srcdir}/"minizinc.png "${pkgdir}"/usr/share/"${pkgname}"
-
-    # Move uncompressed files to package
-    mv "${srcdir}/"MiniZincIDE-"${pkgver}"-bundle-linux/* "${pkgdir}"/usr/share/"${pkgname}"
-
-
-    # Rewrite MiniZincIDE.sh in order to change locations
-    cd "$pkgdir"
-
-    # Create links for minizinc programs.
-    mkdir -p usr/bin
-    #ln -s /usr/share/${pkgname}/MiniZincIDE.sh usr/bin/minizinc-ide
-    ln -s /usr/share/${pkgname}/bin/MiniZincIDE usr/bin/minizinc-ide
-    ln -s /usr/share/${pkgname}/bin/{flatzinc,fzn-gecode-gist,minizinc,mzn2doc,mzn-g12fd,mzn-g12mip} usr/bin
-    ln -s /usr/share/${pkgname}/bin/{solns2dzn,fzn-gecode,mzn2fzn,mzn-g12lazy,mzn-gecode,solns2out} usr/bin/
-
-    # Workaround for dependency resolver
-    ln -s /usr/lib/libpcre16.so usr/lib/libpcre16.so.3
+    # Copy MiniZinc files    
+    cp -r $srcdir/MiniZincIDE-$pkgver-bundle-linux/* $pkgdir/opt/$pkgname
+    
+    # Copy MiniZinc launcher
+    mkdir -p $pkgdir/usr/share/applications
+    cp $srcdir/icon.png $pkgdir/opt/$pkgname/resources/icon.png
+    cp $srcdir/minizinc-ide.desktop $pkgdir/usr/share/applications/minizinc-ide.desktop
 }

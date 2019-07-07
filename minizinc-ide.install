@@ -1,0 +1,21 @@
+pkgname=minizinc-ide
+
+post_install() {
+    # Create links to MiniZinc executables
+    for e in $(find /opt/$pkgname/bin -type f -executable -printf "%P\n")
+    do
+        ln -s /opt/$pkgname/bin/$e /usr/bin/$e
+    done
+    
+    ln -s /opt/$pkgname/MiniZincIDE.sh /usr/bin/minizinc-ide
+}
+
+pre_remove() {
+    # Remove links to MiniZinc executables
+    for e in $(find /opt/$pkgname/bin -type f -executable -printf "%P\n")
+    do
+        rm /usr/bin/$e
+    done
+    
+    rm /usr/bin/minizinc-ide
+} 
