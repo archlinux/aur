@@ -13,6 +13,5 @@ sha256sums=('f063299eb456399c3ec7e39a626548d1e19ec4094b4260d8b9640523d35ea844')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
-    cp "$pkgname/dmenu-lpass.sh" "$pkgdir/usr/bin/dmenu-lpass-nu"
-	chmod 755 "$pkgdir/usr/bin/dmenu-lpass-nu"
+	install -D -m755 "${pkgname}/dmenu-lpass.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
