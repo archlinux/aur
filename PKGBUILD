@@ -1,8 +1,9 @@
-# Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=python2-piexif
 _pkgname=piexif
-pkgver=1.0.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Python library to read and write EXIF data from TIFF and JPG files"
 arch=('any')
@@ -10,7 +11,7 @@ url="https://pypi.python.org/pypi/piexif#downloads"
 license=('BSD')
 depends=('python2')
 source=("https://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.zip")
-sha512sums=('6d55795c2aca3aa5ceb484e6549d1b64476abb018410821db8e74bb14a7993d57f8cf5008bfdabedab357ebac3bde682f8a533dfc8a047545423f26764c27eb9')
+sha512sums=('df5f7793c39911af58bbae76cf998e2a7bc820b84dcf9808ee8f6a38f766f824fef28392ef88387e18b10c270c4b27881be310f0368076b6fb65379a11a93270')
 
 
 package() {
