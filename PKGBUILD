@@ -8,7 +8,7 @@
 
 pkgname=mutter-781835-workaround
 pkgver=3.32.2+32+g947da2c5d
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -109,7 +109,7 @@ prepare() {
 
   # Fix background texture corruption when resuming from suspend on Nvidia
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/600
-  git cherry-pick -n 87b86262^..eabb1842
+  git cherry-pick -n 3ca3194f^..1be20af0
 
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
