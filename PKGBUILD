@@ -1,10 +1,9 @@
-# Author: Ypnose <linuxienATlegtuxDOTorg>
-# Maintainer: Ypnose <linuxienATlegtuxDOTorg>
+# Maintainer: ibrokemypie <ibrokemypie@bastardi.net>
 
 pkgname=envypn-powerline-git
 _name=envypn-powerline
 pkgver=r13.9059e0a
-pkgrel=1
+pkgrel=2
 pkgdesc="Readable bitmap font inspired by Envy Code R"
 url="https://github.com/Sorixelle/envypn-powerline"
 arch=('any')
