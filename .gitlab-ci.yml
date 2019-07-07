@@ -1,8 +1,11 @@
-pages:
+build:
   image: archlinux/base
   stage: deploy
+  retry: 1
+  cache:
+    paths:
+      - cargo/
   artifacts:
-    name: "$CI_COMMIT_REF_NAME"
     paths:
       - '*.pkg.tar.xz'
   before_script:
@@ -13,11 +16,13 @@ pages:
     - pacman-db-upgrade
     - update-ca-trust
     - useradd -m -G wheel build
+    - chown -R build .
     - chgrp -R build .
     - 'echo -e "Cmnd_Alias\tBUILDERS = /usr/sbin/pacman, /usr/sbin/makepkg, /usr/bin/pacman, /usr/bin/makepkg, /usr/bin/multilib-build, /usr/bin/extra-x86_64-build, /usr/bin/arch-nspawn\nbuild\tALL = NOPASSWD: BUILDERS" >> /etc/sudoers.d/build'
     - chmod 0440 /etc/sudoers.d/build
     - chown root:root /etc/sudoers.d/build
 
   script:
-    - sudo -u build makepkg --log --syncdeps --force --noconfirm --noprogressbar
+    - 'du -sh cargo src/electrs/target || :'
+    - sudo -u build makepkg --log --syncdeps --force --noconfirm --noprogressbar CARGO_HOME="$CI_PROJECT_DIR/cargo"
     - 'find . -iname "*.pkg.tar.xz" -exec namcap --machine-readable {} \;'

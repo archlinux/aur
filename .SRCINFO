@@ -8,8 +8,9 @@ pkgbase = electrs
 	makedepends = git
 	makedepends = clang
 	makedepends = cmake
-	depends = rust
-	source = git+https://github.com/romanz/electrs.git#tag=v0.7.0
+	makedepends = rust
+	depends = gcc-libs
+	source = git+https://github.com/romanz/electrs.git#commit=dc92454c9d8d681ebf50cca98189526e6580a2ee
 	md5sums = SKIP
 
 pkgname = electrs
