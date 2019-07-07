@@ -1,7 +1,7 @@
 pkgbase = i3-resurrect-git
 	pkgdesc = A simple but flexible solution to saving and restoring i3 workspace layouts
 	pkgver = 1.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://github.com/JonnyHaystack/i3-resurrect
 	arch = any
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = i3-resurrect-git
 	depends = i3ipc-python-git
 	depends = wmctrl-python3-git
 	depends = python-click
+	depends = python-enum-compat
 	source = git+https://github.com/JonnyHaystack/i3-resurrect
 	md5sums = SKIP
 

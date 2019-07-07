@@ -1,13 +1,13 @@
 # Maintainer: Jonathan Haylett <jonathan@haylett.dev>
 _pkgbasename=i3-resurrect
 pkgname=$_pkgbasename-git
-pkgrel=4
+pkgrel=5
 pkgver=1.0.2
 pkgdesc="A simple but flexible solution to saving and restoring i3 workspace layouts"
 arch=('any')
 url="http://github.com/JonnyHaystack/i3-resurrect"
 license=('GPL')
-depends=('python' 'i3-wm' 'perl-anyevent-i3' 'python-psutil' 'i3ipc-python-git' 'wmctrl-python3-git' 'python-click')
+depends=('python' 'i3-wm' 'perl-anyevent-i3' 'python-psutil' 'i3ipc-python-git' 'wmctrl-python3-git' 'python-click' 'python-enum-compat')
 source=(git+https://github.com/JonnyHaystack/i3-resurrect)
 md5sums=('SKIP')
 
