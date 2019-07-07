@@ -1,10 +1,11 @@
 pkgbase = equilux-theme
 	pkgdesc = A couple of full-dark, neutral-gray themes (for GTK2, GTK3, Shell, and GDM) using the Equilux palette.
 	pkgver = 20181029
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ddnexus/equilux-theme
 	arch = any
 	license = GPL
+	makedepends = bc
 	source = https://github.com/ddnexus/equilux-theme/archive/equilux-v20181029.zip
 	sha256sums = acfb05cf01dd83213ad06c7e228eea00e9fe5f86e73993c3c23b2ac5f56d2a3b
 
