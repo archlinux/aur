@@ -1,14 +1,14 @@
 # Maintainer: Gabriel Laskar <gabriel at lse dot epita dot fr>
 pkgname=star
-pkgver=1.5.3
+pkgver=1.6
 pkgrel=1
 url="http://freecode.com/projects/star"
 pkgdesc="A fast POSIX-compliant tape archiver"
 license=('CDDL')
 depends=('glibc' 'attr' 'acl' 'libcap')
 arch=('i686' 'x86_64')
-source=("http://downloads.sourceforge.net/project/s-tar/${pkgname}-${pkgver}.tar.gz")
-md5sums=('e69382bea9b6954da1a5440a6e369e56')
+source=("http://downloads.sourceforge.net/project/s-tar/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('caa1e4d18659743154822e8607fe3ae9')
 
 build() {
   cd $srcdir/$pkgname-$pkgver/
