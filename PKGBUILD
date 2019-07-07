@@ -1,4 +1,4 @@
-# Maintainer: Giovanni Santini 'ItachiSan' <giovannisantini93@yahoo.it>
+# Maintainer: Katherine Cumberbatch 'Stykers' <stykers@stykers.moe>
 # Contributors: Det, JavaAtom, Ethan Hall, Giovanni Santini, Guillaume ALAUX, Daniel J Griffiths,
 #               Jason Chu, Geoffroy Carrier, Thomas Dziedzic, Dan Serban
 
