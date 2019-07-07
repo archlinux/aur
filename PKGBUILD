@@ -7,7 +7,7 @@ pkgdesc="A simple but flexible solution to saving and restoring i3 workspace lay
 arch=('any')
 url="http://github.com/JonnyHaystack/i3-resurrect"
 license=('GPL')
-depends=('python' 'i3-wm' 'perl-anyevent-i3' 'python-psutil')
+depends=('python' 'i3-wm' 'perl-anyevent-i3' 'python-psutil' 'i3ipc-python-git')
 source=(git+https://github.com/JonnyHaystack/i3-resurrect)
 md5sums=('SKIP')
 
