@@ -1,7 +1,7 @@
 # Maintainer: beelzy
 
 pkgname=kame-editor-git
-pkgver=1.0.0rc2
+pkgver=1.0.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://gitlab.com/beelzy/kame-editor"
@@ -15,6 +15,11 @@ _gitname='kame-editor'
 
 source=("${_gitname}::git+${_gitroot}")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$_gitname"
+    cat kame-editor.pro | grep -o -E "^VERSION = .*" | grep -oE "([0-9\.a-z]+)"
+}
 
 build() {
     cd "$srcdir/$_gitname"
