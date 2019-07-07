@@ -1,13 +1,13 @@
 _pkgname=kio
 pkgname=mingw-w64-$_pkgname
 pkgver=5.45.0
-pkgrel=2
+pkgrel=3
 arch=(any)
 pkgdesc="Resource and network access abstraction (mingw-w64)"
 license=("LGPL")
 depends=(mingw-w64-solid mingw-w64-kjobwidgets mingw-w64-kbookmarks mingw-w64-libxslt mingw-w64-qt5-script) # TODO: mingw-w64-kwallet dependency
 groups=(mingw-w64-kf5)
-makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
+makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools mingw-w64-wine)
 optdepends=('mingw-w64-kio-extras: extra protocols support (sftp, fish and more)' 'kdoctools: for the help kioslave'
             'mingw-w64-knetattach: to add new kio-remote entries')
 options=(staticlibs !strip !buildflags)
@@ -34,6 +34,7 @@ build() {
       -DCMAKE_BUILD_TYPE=Release \
       -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
       -DBUILD_TESTING=OFF \
+      -DKDE_INSTALL_DBUSDIR="/usr/${_arch}/share/dbus-1" \
       ..
     make
     popd
@@ -44,8 +45,8 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/${pkgname#mingw-w64-}-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -rf "$pkgdir/usr/${_arch}/share"
   done
 }

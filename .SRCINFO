@@ -1,13 +1,14 @@
 pkgbase = mingw-w64-kio
 	pkgdesc = Resource and network access abstraction (mingw-w64)
 	pkgver = 5.45.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://community.kde.org/Frameworks
 	arch = any
 	groups = mingw-w64-kf5
 	license = LGPL
 	makedepends = mingw-w64-extra-cmake-modules
 	makedepends = mingw-w64-qt5-tools
+	makedepends = mingw-w64-wine
 	depends = mingw-w64-solid
 	depends = mingw-w64-kjobwidgets
 	depends = mingw-w64-kbookmarks
