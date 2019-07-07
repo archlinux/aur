@@ -1,0 +1,16 @@
+pkgbase = envypn-powerline-git
+	pkgdesc = Readable bitmap font inspired by Envy Code R
+	pkgver = r13.9059e0a
+	pkgrel = 1
+	url = https://github.com/Sorixelle/envypn-powerline
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	provides = envypn-font
+	source = git+https://github.com/Sorixelle/envypn-powerline
+	sha256sums = SKIP
+
+pkgname = envypn-powerline-git
+
