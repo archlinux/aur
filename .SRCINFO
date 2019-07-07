@@ -1,13 +1,13 @@
 pkgbase = fortran-language-server
 	pkgdesc = Fortran Language Server for the Language Server Protocol
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hansec/fortran-language-server
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	depends = python-argparse
 	depends = python-future
+	depends = python-setuptools
 	source = https://github.com/hansec/fortran-language-server/archive/v1.9.1.tar.gz
 	sha256sums = 305ed997b1542db1f1fb347cf1450c343072fcbf2a55a674e9aa48853a4b01a7
 
