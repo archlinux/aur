@@ -1,9 +1,9 @@
-# Maintainer: Abhishek Mudgal
+# Maintainer: Agesly Danzig
 
 pkgname=pext
 _pkgname=Pext
-pkgver=0.23
-pkgrel=2
+pkgver=0.24.0
+pkgrel=1
 pkgdesc='Python-based extendable tool'
 url='https://pext.io/'
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=('pass: password manager support'
 provides=(pext)
 conflicts=(pext)
 source=("https://github.com/Pext/Pext/archive/v$pkgver.tar.gz")
-sha256sums=('3cb1378d623db4916d6083fcb1dd0e89386737af5cc1c209259dad752cf7487b')
+sha256sums=('efb6d425df46347088072e0d16a4682227c6a5426e3379824ff2c6dbba7d8e0f')
 
 prepare() {
   sed "s/USE_INTERNAL_UPDATER = .*/USE_INTERNAL_UPDATER = False/" -i ${srcdir}/${_pkgname}-${pkgver}/pext/constants.py
