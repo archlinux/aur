@@ -1,0 +1,18 @@
+pkgbase = kame-tools-git
+	pkgdesc = A tool for bundling 3DS theme files
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://gitlab.com/beelzy/kame-tools
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = zip
+	depends = gcc-libs
+	source = kame-tools::git+https://gitlab.com/beelzy/kame-tools.git
+	source = buildtools::git+https://github.com/Steveice10/buildtools.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kame-tools-git
+
