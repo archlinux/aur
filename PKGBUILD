@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 pkgver=3.32.2+5+gae0567949
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -76,7 +76,7 @@ prepare() {
   # st: Consider non-background properties for ::style-changed
   # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/595
   # Fixes style glitches introduced by !505
-  git cherry-pick -n 3ed41da6^..73ae4243
+  git cherry-pick -n 7359e431^..be40de5a
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
