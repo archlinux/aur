@@ -4,13 +4,13 @@
 
 pkgname=code-git
 pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - git latest'
-pkgver=1.16.0.r25714.g2328356959
+pkgver=1.16.0.r28241.gd50852db1a
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
-url='https://github.com/Microsoft/vscode'
+url='https://github.com/microsoft/vscode'
 license=('MIT')
-depends=('electron' 'libsecret' 'libxkbfile' 'ripgrep')
-makedepends=('npm' 'gulp' 'python2' 'git' 'yarn' 'nodejs-lts-dubnium')
+depends=('electron4' 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
+makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-dubnium')
 conflicts=('visual-studio-code-git')
 provides=('visual-studio-code-git')
 
@@ -20,8 +20,8 @@ source=("git+https://github.com/Microsoft/vscode"
         "product_json.diff"
         "code-liveshare.diff")
 sha512sums=('SKIP'
-            '889ca4d4b810b4a67319cece0e1bfeae61b33905adef64f9b27152e43e112dc53a94b1875fe0a810f0d0192dec0107aed2d01c12d6a17427db4261858f96a02a'
-            '5d1cf747d365da2e12250079ba986ad5a7e70a7966900ee77a557b5989978cb24a6a8682342e87f19ffe3666d7a91bfd9004b1fc0c1da08d2ba9241e7a808ff5'
+            'a97cbc79d76d2dad2ced74d66fa57b9a0aa3d82767d420b520bbaaf007c03ac60d61134668895ab4a8bd38951974c42afc59c03105ccc892742b34fee9b2c509'
+            '249d6dc3317b996d104c6ab708ae4a63978578fd4f81cbaa2265a44a3b4f07f0c0c166757649aa2943aff8320f2f1614caa95d9c11d7e473a2043476a87d8288'
             '8ec47e497287d67f37e7b669af416f43d5cdbd4574892867d7b95996ef5de53640b5bc919b06b177e1fd91cb005579d6ed0c17325117b9914ba7cf28f5f06e40'
             '0bd10ca06dea22854e47fc45d833756ee8d7bf714c88f63feef44e0b0b5da052fba3c27d001865e3389f391cd7b888d92dc0ba44029fa5c736225da3cf2f9a46')
 
@@ -41,6 +41,10 @@ case "$CARCH" in
         ;;
 esac
 
+if [ -z "$mem_limit" ]; then
+    mem_limit=4096
+fi
+
 pkgver() {
     cd "${srcdir}/vscode"
     git describe --tags --match '?.*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -52,16 +56,18 @@ prepare() {
     # This patch no longer contains proprietary modifications.
     # See https://github.com/Microsoft/vscode/issues/31168 for details.
     patch -p0 -i "${srcdir}/product_json.diff"
-    local _commit=$(cd "${srcdir}/vscode" && git rev-parse HEAD)
+    # Set the commit and build date
+    local _commit=$(git rev-parse HEAD)
     local _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
     sed -e "s/@COMMIT@/${_commit}/" -e "s/@DATE@/${_datestamp}/" \
         -i product.json
 
     # See https://github.com/MicrosoftDocs/live-share/issues/262 for details
+    # Also, https://github.com/microsoft/vscode/issues/48946
     patch -p1 -i "${srcdir}/code-liveshare.diff"
 
     # Build native modules for system electron
-    local _target=$(</usr/lib/electron/version)
+    local _target=$(</usr/lib/electron4/version)
     sed -i "s/^target .*/target \"${_target//v/}\"/" .yarnrc
 
     # Patch appdata and desktop file
@@ -90,11 +96,11 @@ build() {
     yarn install --arch=${_vscode_arch}
 
     # The default memory limit may be too low for current versions of node
-    # to successfully build vscode.  Uncomment this to set it to 2GB, or
-    # change it if this number still doesn't work for your system.
-    mem_limit="--max_old_space_size=4096"
+    # to successfully build vscode.  Set mem_limit=<value> on the makepkg
+    # command line if the default still doesn't work for your system.
+    _mem_limit="--max_old_space_size=$mem_limit"
 
-    if ! /usr/bin/node $mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}-min
+    if ! /usr/bin/node $_mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}-min
     then
         echo
         echo "*** NOTE: If the build failed due to running out of file handles (EMFILE),"
