@@ -1,0 +1,16 @@
+pkgbase = ttf-inconsolata-lgc-git
+	pkgdesc = a modified version of Inconsolata with added Cyrillic alphabet
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/MihailJP/Inconsolata-LGC/
+	arch = any
+	license = OFL
+	makedepends = git
+	makedepends = fontforge
+	provides = ttf-inconsolata-lgc
+	conflicts = ttf-inconsolata-lgc
+	source = ttf-inconsolata-lgc::git+https://github.com/MihailJP/Inconsolata-LGC.git
+	md5sums = SKIP
+
+pkgname = ttf-inconsolata-lgc-git
+
