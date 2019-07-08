@@ -1,0 +1,19 @@
+pkgbase = perl-mousex-configfromfile
+	pkgdesc = An abstract Mouse role for setting attributes from a configfile
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/MouseX-ConfigFromFile
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-useallmodules>=0
+	depends = perl-mouse>=0.39
+	depends = perl-mousex-types-path-class>=0.06
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MA/MASAKI/MouseX-ConfigFromFile-0.05.tar.gz
+	md5sums = f6dc7f738085611949510c07301402ca
+	sha512sums = e9494cc44dafc4601b9e555b593717f99dc2b57acbcc52fd342a4e5b2bcb50e02dc82c2abe0564fa25e5ce52aa47ceed543efe29e63ec813158257d4cb1065ab
+
+pkgname = perl-mousex-configfromfile
+
