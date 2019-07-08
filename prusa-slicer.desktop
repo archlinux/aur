@@ -1,8 +1,9 @@
 [Desktop Entry]
+Type=Application
 Name=PrusaSlicer
 Exec=/usr/bin/prusa-slicer
 Terminal=false
-Type=Application
 Icon=prusa-slicer
 StartupNotify=false
 Categories=Graphics;3DGraphics;
+MimeType=model/stl;
