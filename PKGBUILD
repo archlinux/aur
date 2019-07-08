@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-5.1
-_stable=5.1.15
-_patchver=5.1.16
+_stable=5.1.16
+_patchver=5.1.17
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -30,9 +30,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('e8a128702680cea9f37c44bbeb456ea1c2ef1ae1eba0e05dcfc11d7d6cdc1399'
+sha256sums=('8a3e55be3e788700836db6f75875b4d3b824a581d1eacfc2fcd29ed4e727ba3e'
             'SKIP'
-            '12048268fa821535b9ea2aed8dd31c96134298935a2ed4ed1f483d4cc43bfd59'
+            '065547bf8697db118ced780013f49fc529420a09a22f33481485077a7d3c7c6e'
             'SKIP'
             'd8eac4a183fbc5a6391a21beb9be1c9b24b7ff2deeb3cedb8b4635722ddcede9'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
