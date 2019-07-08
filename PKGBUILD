@@ -4,7 +4,7 @@
 pkgname=gnvim
 url="https://github.com/vhakulinen/gnvim"
 pkgdesc="GUI for neovim, without any web bloat"
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
