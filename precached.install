@@ -1,3 +1,8 @@
+pre_install() {
+	groupadd -r precached
+	useradd -r -s /usr/bin/nologin -d /tmp -g precached precached
+}
+
 pre_remove() {
 	systemctl stop precached.service
 }
