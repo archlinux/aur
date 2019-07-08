@@ -2,3 +2,6 @@
 /pkg
 /src
 /target
+
+#### source downloads
+/v*.tar.gz
