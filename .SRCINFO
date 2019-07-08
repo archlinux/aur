@@ -1,6 +1,6 @@
 pkgbase = remakepkg
 	pkgdesc = Apply changes to pacman packages
-	pkgver = 0.8
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://gitlab.com/ayekat/pacman-hacks
 	changelog = changelog
