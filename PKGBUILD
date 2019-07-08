@@ -8,11 +8,11 @@
 # Contributor: Jason Chu <jason@archlinux.org>
 
 pkgname=python-git
-pkgver=3.9.0a0.r104453.ccf0efbb21
+pkgver=3.9.0a0.r104747.38f44b4a4ad
 pkgrel=1
 _pybasever=3.9
 pkgdesc="Next generation of the python high-level scripting language"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom')
 url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib' 'libnsl')
@@ -64,6 +64,7 @@ build() {
               --enable-shared \
               --with-threads \
               --with-computed-gotos \
+              --enable-optimizations \
               --with-lto \
               --enable-ipv6 \
               --with-system-expat \
