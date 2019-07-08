@@ -1,7 +1,7 @@
 pkgbase = deoplete-ternjs-git
 	pkgdesc = javascript add-on for deoplete completion plugin for neovim
-	pkgver = r93.185b011
-	pkgrel = 2
+	pkgver = r98.d82a008
+	pkgrel = 1
 	url = https://github.com/carlitux/deoplete-ternjs
 	arch = any
 	license = MIT

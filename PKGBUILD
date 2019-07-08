@@ -10,8 +10,8 @@ _neovim="n"
 
 _name='deoplete-ternjs'
 pkgname="${_name}-git"
-pkgver=r93.185b011
-pkgrel=2
+pkgver=r98.d82a008
+pkgrel=1
 pkgdesc="javascript add-on for deoplete completion plugin for neovim"
 arch=('any')
 url="https://github.com/carlitux/deoplete-ternjs"
