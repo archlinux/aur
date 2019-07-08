@@ -5,7 +5,7 @@
 _gitname=KindleTool
 pkgname=kindletool
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for creating/extracting Kindle updates and more"
 arch=('i686' 'x86_64')
 url="https://github.com/NiLuJe/${_gitname}"
