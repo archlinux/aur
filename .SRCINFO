@@ -1,5 +1,5 @@
 pkgbase = firefox-esr60
-	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
+	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release 60.x
 	pkgver = 60.7.2
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/organizations/
