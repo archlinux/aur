@@ -4,7 +4,7 @@
 pkgname='python-aiorpcx-git'
 _gitname='aiorpcX'
 pkgver=0.18.3.r3.g5de1922
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic asyncio library implementation of RPC suitable for an application that is a client, server or both."
 url="https://github.com/kyuupichan/aiorpcX/"
 arch=('any')
@@ -13,6 +13,7 @@ provides=('python-aiorpcx')
 conflicts=('python-aiorpcx')
 depends=('python>=3.6' 'python-attrs')
 makedepends=('python-setuptools' 'git')
+optdepends=('python-websockets')
 source=("git://github.com/kyuupichan/aiorpcX.git")
 sha256sums=('SKIP')
 
