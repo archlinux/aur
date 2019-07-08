@@ -1,0 +1,18 @@
+pkgbase = perl-http-link
+	pkgdesc = RFC5988 Web Linking
+	pkgver = 0.001
+	pkgrel = 1
+	url = https://metacpan.org/release/HTTP-Link
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-mime-ecoencode>=0
+	depends = perl>=5.010
+	depends = perl-strictures>=2
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/Z/ZU/ZURBORG/HTTP-Link-0.001.tar.gz
+	md5sums = 5bca6141d7cc195733de1b8291954268
+	sha512sums = 3455c7cc37851b4d024ca78db77647172da69edda40fe6f2d2e5d1c77ec7b30b394954ac0173c6896f640b264abd74fc45ecaa11dcd3989f7059159757d6bd03
+
+pkgname = perl-http-link
+
