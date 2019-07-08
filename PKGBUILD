@@ -5,8 +5,8 @@
 
 pkgname=vdr-loadepg
 pkgver=0.2.6
-pkgrel=15
-_vdrapi=2.4.0
+pkgrel=16
+_vdrapi=2.4.1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 pkgdesc="Displays Canal+ group (Mediahighway) and Sky EPG Data"
 url="http://lukkinosat.altervista.org/"
