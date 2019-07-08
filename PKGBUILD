@@ -2,12 +2,14 @@
 pkgname=qbe-git
 pkgdesc='Small embeddable C compiler backend'
 pkgver=r1138.acc3af4
-pkgrel=1
+pkgrel=2
 url='http://c9x.me/compile/'
 license=(custom:MIT)
 arch=(x86_64)
 depends=(glibc)
 makedepends=(git)
+provides=(qbe)
+conflicts=(qbe)
 source=("${pkgname}::git://c9x.me/qbe.git")
 sha512sums=('SKIP')
 
