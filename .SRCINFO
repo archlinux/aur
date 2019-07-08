@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-glslang
+	pkgdesc = OpenGL and OpenGL ES shader front end and validator (mingw-w64)
+	pkgver = 7.11.3214
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/glslang
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-spirv-tools
+	options = staticlibs
+	source = mingw-w64-glslang-7.11.3214.tar.gz::https://github.com/KhronosGroup/glslang/archive/7.11.3214.tar.gz
+	source = 001-install-missing-dll.patch
+	sha256sums = b30b4668734328d256e30c94037e60d3775b1055743c04d8fd709f2960f302a9
+	sha256sums = f4b129e6c79ca25729d32b2d3098536dcd326dc3c75be4e0db615d8fc80a9f1e
+
+pkgname = mingw-w64-glslang
+
