@@ -16,7 +16,7 @@ depends=('ncurses' 'hicolor-icon-theme')
 source=("http://www.catb.org/~esr/bs/bs-$pkgver.tar.gz"
         'Makefile_fix.patch')
 sha256sums=('a53e22a94ed590a3e6720816f8b5750134fa004e7e738e0b123b77ac9668b026'
-            'a09e386c70ecedf421d38907fbe91364f880c894408ba82051f55104852551c5')
+            '6e6d927f7ed8282674d6d031db68ac684e0b11b7c2c6461689f93c8c123f4a97')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
