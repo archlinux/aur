@@ -6,9 +6,9 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20190706
+pkgver=4.0.0v20190707
 _pkgver=4.0.0
-_snapshot_=20190706
+_snapshot_=20190707
 _snapver_=0230
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
@@ -236,7 +236,7 @@ build() {
 	            --disable-daala \
 	            --enable-fdkaac \
 	            --disable-decklink \
-              --disable-skins2 \
+              --enable-skins2 \
               --disable-medialibrary
   # note: removing --enable-daala for now because it is currently broken
   #       change --enable-fdkaac to --disable-fdkaac if you want to redistribute the binary
@@ -266,7 +266,7 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('a2c23b668a73e832867b459f7e8fad74b17f3cd0bc15a2e6a330c8aca09593b4'
+sha256sums=('db3f1080c33ff6dd5eaeffe45b45da39a5943afe6db57d0c0dabbc773a13a4b3'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             '3e6bddbaed443e40036c494a0754aedd2f94fe41bfa3754855e16f7452a03cdf'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
