@@ -10,8 +10,8 @@ pkgdesc="Batch renaming extension for Caja"
 arch=('any')
 url="https://tari.in/www/software/cajarename"
 license=('GPL3')
-depends=('caja' 'python2-caja' 'python2' 'python2-gobject' 'gobject-introspection' 'gtk3')
-makedepends=('bzr' 'python2-setuptools' 'python2-polib')
+depends=('caja' 'python' 'python-gobject' 'gobject-introspection' 'gtk3')
+makedepends=('bzr' 'python-setuptools' 'python-polib')
 install=${pkgname}.install
 source=("bzr+lp:/${pkgname}/trunk")
 md5sums=('SKIP')
@@ -27,11 +27,11 @@ pkgver()
 build()
 {
     cd trunk
-    python2 setup.py build
+    python setup.py build
 }
 
 package()
 {
     cd trunk
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    python setup.py install --root="${pkgdir}" --optimize=1
 }
