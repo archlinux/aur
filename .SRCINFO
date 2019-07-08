@@ -1,7 +1,7 @@
 pkgbase = android-ndk
 	pkgdesc = Android C/C++ developer kit
 	pkgver = r20
-	pkgrel = 1
+	pkgrel = 3
 	url = https://developer.android.com/ndk/
 	install = android-ndk.install
 	arch = x86_64
@@ -9,14 +9,19 @@ pkgbase = android-ndk
 	license = LGPL
 	license = custom
 	depends = glibc
+	optdepends = ncurses5-compat-libs: for using gdb
+	optdepends = python2: various helper scripts
+	optdepends = python: various helper scripts
 	replaces = android-ndk64
 	options = !strip
 	options = staticlibs
 	backup = etc/profile.d/android-ndk.sh
 	source = android-ndk.sh
 	sha1sums = 2479a8d74428eb651ad2b9772ad655d7a90af410
+	sha256sums = 2068618bc3e99149310f544be5d639ae183dc767d5a7157a07d8e024417b6017
 	source_x86_64 = https://dl.google.com/android/repository/android-ndk-r20-linux-x86_64.zip
 	sha1sums_x86_64 = 8665fc84a1b1f0d6ab3b5fdd1e30200cc7b9adff
+	sha256sums_x86_64 = 57435158f109162f41f2f43d5563d2164e4d5d0364783a9a6fab3ef12cb06ce0
 
 pkgname = android-ndk
 
