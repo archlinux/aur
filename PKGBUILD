@@ -1,5 +1,5 @@
 pkgname=termtosvg-git
-pkgver=0.8.0.r2.g8e4b269
+pkgver=0.9.0.r0.ge107277
 pkgrel=1
 
 pkgdesc='record terminal sessions as svg animations'
