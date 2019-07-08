@@ -1,0 +1,10 @@
+[Unit]
+Description=Backup spotify songs daily
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

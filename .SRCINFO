@@ -1,0 +1,18 @@
+pkgbase = spotify-backup-git
+	pkgver = r5.8747342
+	pkgrel = 1
+	url = https://gitlab.com/azertyfun/spotify-backup
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = spotify-backup-git
+	conflicts = spotify-backup-git
+	source = spotify-backup.service
+	source = spotify-backup.timer
+	source = spotify-backup-git::git+https://gitlab.com/azertyfun/spotify-backup.git
+	md5sums = 84360915f38c39a8840bd1618c59611d
+	md5sums = dd19bf59a9058e16f7a724ca03f0c39f
+	md5sums = SKIP
+
+pkgname = spotify-backup-git
+

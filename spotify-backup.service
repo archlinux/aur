@@ -1,0 +1,9 @@
+[Unit]
+Description=Backups spotify songs in JSON format
+
+[Service]
+Type=oneshot
+ExecStart=bash -c '/usr/bin/spotify-backup -c /var/lib/spotify-backup/spotify-backup.conf "/var/lib/spotify-backup/$$(date -Iseconds).json"'
+
+[Install]
+Wanted-By=multi-user.target
