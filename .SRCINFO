@@ -1,0 +1,22 @@
+pkgbase = perl-moosex-types-uri
+	pkgdesc = URI related types and coercions for Moose
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/release/MooseX-Types-URI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-moose>=0
+	depends = perl-moosex-types>=0.40
+	depends = perl-moosex-types-path-class>=0
+	depends = perl-uri>=0
+	depends = perl-uri-fromhash>=0
+	depends = perl-namespace-autoclean>=0
+	depends = perl>=5.006
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-URI-0.08.tar.gz
+	md5sums = d1d6a34136b9447cebe30b0b3d465c00
+	sha512sums = 0cf93dd965b618963945a1783af70c40389ca58818f0ea6ee7f168b70dadca5d332fd9391522fcaabb8e1d9e4baaa1b59606865db05a21a5ee548ccac1e08ed6
+
+pkgname = perl-moosex-types-uri
+
