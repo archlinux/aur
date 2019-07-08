@@ -3,19 +3,17 @@ pkgbase=python-galpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
 url="http://galpy.readthedocs.io/"
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('aa4f679050a0b5c69c87f4bc69d52a61')
+md5sums=('f7d5bf5b4d7c963379a89c35ca8acafc')
 
 prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
 }
 
