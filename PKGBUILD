@@ -115,6 +115,10 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/600
   git cherry-pick -n 3ca3194f^..1be20af0
 
+  # clutter: Defer actor allocations till shown
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/677
+  git cherry-pick -n 0eab73dc
+
   # '
   # Commented multiline comment end, remove the # above if disabling the patches
 }
