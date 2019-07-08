@@ -4,10 +4,11 @@ pkgbase = vim-lightline-forest-night-git
 	pkgrel = 1
 	url = https://github.com/sainnhe/vim-color-forest-night
 	arch = any
-	license = MIT,
+	license = MIT
 	license = Anti-996
 	makedepends = git
 	optdepends = vim-colorscheme-forest-night-git
+	optdepends = vim-lightline-git
 	source = git+https://github.com/sainnhe/vim-color-forest-night.git
 	md5sums = SKIP
 
