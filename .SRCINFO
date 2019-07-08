@@ -1,0 +1,12 @@
+pkgbase = otf-magnolia-script
+	pkgdesc = Magnolia Script font from the Free fonts project
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://jovanny.ru/
+	arch = any
+	license = custom:OFL
+	source = http://jovanny.ru/files/fonts/magnolia_script.zip
+	sha256sums = 1698f2a4bd60e6eb879d75265c5fb6b80807ae8a64f83839042300e8aa6e2524
+
+pkgname = otf-magnolia-script
+
