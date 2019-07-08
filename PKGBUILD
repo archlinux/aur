@@ -1,15 +1,15 @@
 # Maintainer: Max Ferrer <maxi.fg13 at gmail dot com>
 
 pkgname="beamwallet-bin"
-pkgver=2.1.4915
+pkgver=2.2.5635
 pkgrel=1
 pkgdesc="Scalable confidential cryptocurrency"
 arch=("x86_64")
 url="https://www.beam.mw"
 license=("custom:beam")
 makedepends=("binutils" "tar")
-source=("Beam-Wallet-2.1.4915.deb::https://builds.beam.mw/mainnet/2019.05.27/Release/linux/Beam-Wallet-2.1.4915.deb")
-sha256sums=("4714018b5273f1f3f7fbd9ae5d53f0e1c01f52b846e63a14ca65bdf8faa149ff")
+source=("Beam-Wallet-2.2.5635.deb::https://builds.beam.mw/mainnet/2019.07.01/Release/linux/Beam-Wallet-2.2.5635.deb")
+sha256sums=("0e9f91481240e8d911695e341cafd0d9a7aeec26c8d15728d9b89080d7074246")
 
 prepare() {
   tar xf control.tar.gz
