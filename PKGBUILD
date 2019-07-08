@@ -5,7 +5,7 @@
 
 # Maintainer: Kuklin István <kuklinistvan@zoho.com>
 pkgname=anki-official-binary-bundle
-pkgver=2.1.13
+pkgver=2.1.14
 pkgrel=1
 epoch=
 pkgdesc="The official binary shipped with the tested versions of the dependent libraries."
@@ -32,7 +32,7 @@ source=(
 )
 noextract=()
 md5sums=(
-    '1cbc4cf03f5f41fdbf694b931cb512c0'
+    '9d2ea788073309bbc0f9529f38463797'
     '81e1cb8bfb5122319b141ea25e536ef6'
     '82a5d4f63bbc29e6a80043dd95973b4f'
 )
@@ -53,5 +53,5 @@ build() {
 
 package() {
 	cd "$topdirname"
-	make PREFIX="$pkgdir/usr/" install
+	make PREFIX="$pkgdir"/usr/ install
 }
