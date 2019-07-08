@@ -1,60 +1,54 @@
 pkgbase = perl-lwp-consolelogger
 	pkgdesc = LWP tracing and debugging
-	pkgver = 0.000039
-	pkgrel = 2
-	url = https://metacpan.org/pod/LWP::ConsoleLogger
+	pkgver = 0.000042
+	pkgrel = 1
+	url = https://metacpan.org/release/LWP-ConsoleLogger
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-capture-tiny
-	checkdepends = perl-extutils-makemaker
-	checkdepends = perl-html-formattext-withlinks
-	checkdepends = perl-http-cookiejar
-	checkdepends = perl-http-message
-	checkdepends = perl-log-dispatch-array
-	checkdepends = perl-path-tiny
-	checkdepends = perl-http-server-simple-psgi>=0.016
-	checkdepends = perl-plack
-	checkdepends = perl-plack-test-agent
-	checkdepends = perl-test-failwarnings
-	checkdepends = perl-test-fatal
-	checkdepends = perl-test-lwp-useragent
-	checkdepends = perl-test-most
-	checkdepends = perl-test-needs
-	checkdepends = perl-test-requiresinternet
-	checkdepends = perl-uri
-	checkdepends = perl-version
-	checkdepends = perl-www-mechanize
-	makedepends = perl-extutils-makemaker
-	depends = perl>=5.10
-	depends = perl-class-method-modifiers
+	checkdepends = perl-test-failwarnings>=0
+	checkdepends = perl-test-fatal>=0
+	checkdepends = perl-test-lwp-useragent>=0
+	checkdepends = perl-test-most>=0
+	depends = perl-capture-tiny>=0
+	depends = perl-class-method-modifiers>=0
 	depends = perl-data-printer>=0.36
-	depends = perl-datetime
-	depends = perl-html-restrict
-	depends = perl-http-body
-	depends = perl-http-cookiemonster
+	depends = perl-datetime>=0
+	depends = perl-html-formattext-withlinks>=0
+	depends = perl-html-restrict>=0
+	depends = perl-http-body>=0
+	depends = perl-http-cookiejar>=0
+	depends = perl-http-cookiemonster>=0
+	depends = perl-http-message>=0
+	depends = perl-http-server-simple-psgi>=0
 	depends = perl-json-maybexs>=1.003005
-	depends = perl-libwww
-	depends = perl-list-allutils
+	depends = perl-list-allutils>=0
 	depends = perl-log-dispatch>=2.56
-	depends = perl-module-load-conditional
-	depends = perl-moo
-	depends = perl-moox-strictconstructor
-	depends = perl-parse-mime
-	depends = perl-ref-util
-	depends = perl-string-trim
-	depends = perl-sub-exporter
-	depends = perl-term-size-any
+	depends = perl-log-dispatch-array>=0
+	depends = perl-module-runtime>=0
+	depends = perl-moo>=0
+	depends = perl-moox-strictconstructor>=0
+	depends = perl-parse-mime>=0
+	depends = perl-path-tiny>=0
+	depends = perl-plack>=0
+	depends = perl-plack-test-agent>=0
+	depends = perl-ref-util>=0
+	depends = perl-string-trim>=0
+	depends = perl-sub-exporter>=0
+	depends = perl-term-size-any>=0
 	depends = perl-text-simpletable-autowidth>=0.09
-	depends = perl-try-tiny
-	depends = perl-type-tiny
-	depends = perl-uri-query
-	depends = perl-uri
-	depends = perl-xml-simple
+	depends = perl-try-tiny>=0
+	depends = perl-type-tiny>=0
+	depends = perl-uri>=0
+	depends = perl-uri-query>=0
+	depends = perl-www-mechanize>=0
+	depends = perl-xml-simple>=0
+	depends = perl-libwww>=0
+	depends = perl>=5.13.10
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-ConsoleLogger-0.000039.tar.gz
-	md5sums = 73b2de2d82f00942bec92fc5f6d1028b
-	sha512sums = d3d160f26938d966ac1c3044e410c8c5e8016265cda121738a68ea3e66d6a0bd52cda1f00b2e5d2a59c486274333264853f9548c37f214061ffbdb244b241796
+	source = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-ConsoleLogger-0.000042.tar.gz
+	md5sums = 2e4cf562f889e616f60ee03e03b3261f
+	sha512sums = 8211a64623ea9263fa8c993706b25e06ba49f98d77e7dff1e962b88ee2a02f9f6287d5cfc81f2f9e5f493f973f2961677813acb250419abe566de30f2d4885e1
 
 pkgname = perl-lwp-consolelogger
 

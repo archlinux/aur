@@ -1,162 +1,28 @@
-# Maintainer: Dirk Langer <dirk.langer@vvovgonik.de>
+# Contributor: ordoban <dirk.langer@vvovgonik.de>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-lwp-consolelogger'
-pkgver='0.000039'
-pkgrel='2'
+pkgver='0.000042'
+pkgrel='1'
 pkgdesc="LWP tracing and debugging"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-
-#
-# === Runtime Requires ===
-#
-#     Module                           Want     Have
-#     ---------------------------- -------- --------
-#     Class::Method::Modifiers          any     2.12
-#     Data::Printer                    0.36  missing
-#     DateTime                          any     1.50
-#     HTML::Restrict                    any    2.1.9
-#     HTTP::Body                        any     1.22
-#     HTTP::CookieMonster               any  missing
-#     JSON::MaybeXS                1.003005 1.004000
-#     LWP::UserAgent                    any     6.38
-#     List::AllUtils                    any     0.15
-#     Log::Dispatch                    2.56     2.68
-#     Module::Load::Conditional         any     0.68
-#     Moo                               any 2.003004
-#     MooX::StrictConstructor           any  missing
-#     Parse::MIME                       any  missing
-#     Ref::Util                         any  missing
-#     String::Trim                      any  missing
-#     Sub::Exporter                     any    0.987
-#     Term::Size::Any                   any  missing
-#     Text::SimpleTable::AutoWidth     0.09  missing
-#     Try::Tiny                         any     0.30
-#     Types::Common::Numeric            any 1.004002
-#     Types::Standard                   any 1.004002
-#     URI::Query                        any  missing
-#     URI::QueryParam                   any     1.76
-#     XML::Simple                       any     2.25
-#
-# === Runtime Recommends ===
-#
-#     Module                 Want    Have
-#     ---------------------- ---- -------
-#     HTML::FormatText::Lynx   23 missing
-
-depends=(
-  'perl>=5.10'
-  'perl-class-method-modifiers'
-  'perl-data-printer>=0.36'
-  'perl-datetime'
-  'perl-html-restrict'
-  'perl-http-body'
-  'perl-http-cookiemonster'
-  'perl-json-maybexs>=1.003005'
-  'perl-libwww'
-  'perl-list-allutils'
-  'perl-log-dispatch>=2.56'
-  'perl-module-load-conditional'
-  'perl-moo'
-  'perl-moox-strictconstructor'
-  'perl-parse-mime'
-  'perl-ref-util'
-  'perl-string-trim'
-  'perl-sub-exporter'
-  'perl-term-size-any'
-  'perl-text-simpletable-autowidth>=0.09'
-  'perl-try-tiny'
-  'perl-type-tiny'
-  'perl-uri-query'
-  'perl-uri'
-  'perl-xml-simple'
-)
-
-#
-# === Configure Requires ===
-#
-#     Module              Want Have
-#     ------------------- ---- ----
-#     ExtUtils::MakeMaker  any 7.34
-#
-# === Build Requires ===
-#
-#     Module              Want Have
-#     ------------------- ---- ----
-#     ExtUtils::MakeMaker  any 7.34
-#
-
-makedepends=(
-  'perl-extutils-makemaker'
-)
-
-
-# === Test Requires ===
-#
-#     Module                                Want     Have
-#     ------------------------------------ ----- --------
-#     Capture::Tiny                          any     0.48
-#     ExtUtils::MakeMaker                    any     7.34
-#     File::Spec                             any     3.74
-#     HTML::FormatText::WithLinks            any  missing
-#     HTTP::CookieJar::LWP                   any  missing
-#     HTTP::Request                          any     6.18
-#     Log::Dispatch::Array                   any    1.003
-#     Path::Tiny                             any    0.108
-#     Plack::Handler::HTTP::Server::Simple 0.016     0.16
-#     Plack::Test                            any    undef
-#     Plack::Test::Agent                     any  missing
-#     Test::FailWarnings                     any    0.008
-#     Test::Fatal                            any    0.014
-#     Test::LWP::UserAgent                   any  missing
-#     Test::More                             any 1.302162
-#     Test::Most                             any     0.34
-#     Test::Needs                            any 0.002006
-#     Test::RequiresInternet                 any  missing
-#     URI::file                              any     4.21
-#     WWW::Mechanize                         any     1.90
-#     version                                any   0.9923
-#
-# === Test Recommends ===
-#
-#     Module         Want     Have
-#     ---------- -------- --------
-#     CPAN::Meta 2.120900 2.150010
-checkdepends=(
-  'perl-capture-tiny'
-  'perl-extutils-makemaker'
-  'perl-html-formattext-withlinks'
-  'perl-http-cookiejar'
-  'perl-http-message'
-  'perl-log-dispatch-array'
-  'perl-path-tiny'
-  'perl-http-server-simple-psgi>=0.016'
-  'perl-plack'
-  'perl-plack-test-agent'
-  'perl-test-failwarnings'
-  'perl-test-fatal'
-  'perl-test-lwp-useragent'
-  'perl-test-most'
-  'perl-test-needs'
-  'perl-test-requiresinternet'
-  'perl-uri'
-  'perl-version'
-  'perl-www-mechanize'
-)
-
-url='https://metacpan.org/pod/LWP::ConsoleLogger'
-source=("https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-ConsoleLogger-$pkgver.tar.gz")
-md5sums=('73b2de2d82f00942bec92fc5f6d1028b')
-sha512sums=('d3d160f26938d966ac1c3044e410c8c5e8016265cda121738a68ea3e66d6a0bd52cda1f00b2e5d2a59c486274333264853f9548c37f214061ffbdb244b241796')
-_distdir="LWP-ConsoleLogger-$pkgver"
+depends=('perl-capture-tiny>=0' 'perl-class-method-modifiers>=0' 'perl-data-printer>=0.36' 'perl-datetime>=0' 'perl-html-formattext-withlinks>=0' 'perl-html-restrict>=0' 'perl-http-body>=0' 'perl-http-cookiejar>=0' 'perl-http-cookiemonster>=0' 'perl-http-message>=0' 'perl-http-server-simple-psgi>=0' 'perl-json-maybexs>=1.003005' 'perl-list-allutils>=0' 'perl-log-dispatch>=2.56' 'perl-log-dispatch-array>=0' 'perl-module-runtime>=0' 'perl-moo>=0' 'perl-moox-strictconstructor>=0' 'perl-parse-mime>=0' 'perl-path-tiny>=0' 'perl-plack>=0' 'perl-plack-test-agent>=0' 'perl-ref-util>=0' 'perl-string-trim>=0' 'perl-sub-exporter>=0' 'perl-term-size-any>=0' 'perl-text-simpletable-autowidth>=0.09' 'perl-try-tiny>=0' 'perl-type-tiny>=0' 'perl-uri>=0' 'perl-uri-query>=0' 'perl-www-mechanize>=0' 'perl-xml-simple>=0' 'perl-libwww>=0' 'perl>=5.13.10')
+makedepends=()
+checkdepends=('perl-test-failwarnings>=0' 'perl-test-fatal>=0' 'perl-test-lwp-useragent>=0' 'perl-test-most>=0')
+url='https://metacpan.org/release/LWP-ConsoleLogger'
+source=('https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-ConsoleLogger-0.000042.tar.gz')
+md5sums=('2e4cf562f889e616f60ee03e03b3261f')
+sha512sums=('8211a64623ea9263fa8c993706b25e06ba49f98d77e7dff1e962b88ee2a02f9f6287d5cfc81f2f9e5f493f973f2961677813acb250419abe566de30f2d4885e1')
+_distdir="LWP-ConsoleLogger-0.000042"
 
 build() {
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."                  \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
+         PERL_AUTOINSTALL=--skipdeps                            \
+         PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+         PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+         MODULEBUILDRC=/dev/null
 
   cd "$srcdir/$_distdir"
   /usr/bin/perl Makefile.PL
@@ -165,6 +31,7 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
   make test
 }
 
