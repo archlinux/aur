@@ -1,50 +1,25 @@
 pkgbase = perl-starman
-	pkgdesc = Starman launcher
-	pkgver = 0.4014
+	pkgdesc = High-performance preforking PSGI/Plack web server
+	pkgver = 0.4015
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Starman
+	url = https://metacpan.org/release/Starman
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	makedepends = perl-extutils-makemaker>=6.59
-	makedepends = perl-test-requires
-	makedepends = perl-test-tcp
-	makedepends = perl-module-build-tiny>=0.018
-	depends = perl>=5.8.1
-	depends = perl-data-dump
-	depends = perl-http-date
-	depends = perl-http-parser-xs
-	depends = perl-http-message
+	checkdepends = perl-test-requires>=0
+	checkdepends = perl-test-tcp>=2.00
+	depends = perl-data-dump>=0
+	depends = perl-http-date>=0
+	depends = perl-http-message>=0
+	depends = perl-http-parser-xs>=0
 	depends = perl-net-server>=2.007
 	depends = perl-plack>=0.9971
-	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Starman-0.4014.tar.gz
-	sha512sums = 27e5735a1bd2c29944c469f19a6e05cae038da0f678ca6a12bdae87dd075e4e433e3f4126507f90284a71aa5baf1b8babd120603d265d8b1f3b7b1a6528e0c9f
-
-pkgname = perl-starman
-
-pkgbase = perl-starman
-	pkgdesc = Starman launcher
-	pkgver = 0.4014
-	pkgrel = 2
-	url = http://search.cpan.org/dist/Starman
-	arch = any
-	license = PerlArtistic
-	license = GPL
-	makedepends = perl-extutils-makemaker>=6.59
-	makedepends = perl-test-requires
-	makedepends = perl-test-tcp
-	makedepends = perl-module-build-tiny>=0.018
+	depends = perl-libwww>=0
 	depends = perl>=5.8.1
-	depends = perl-data-dump
-	depends = perl-http-date
-	depends = perl-http-parser-xs
-	depends = perl-http-message
-	depends = perl-net-server>=2.007
-	depends = perl-plack>=0.9971
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Starman-0.4014.tar.gz
-	sha512sums = 27e5735a1bd2c29944c469f19a6e05cae038da0f678ca6a12bdae87dd075e4e433e3f4126507f90284a71aa5baf1b8babd120603d265d8b1f3b7b1a6528e0c9f
+	source = https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Starman-0.4015.tar.gz
+	md5sums = 6318bf834964fe99a12a83fb6923b8d7
+	sha512sums = 8e603dfc27ee54b577c24bd521da08ecb56ae2b6992ad2304156a23b917465b3a14d11e1f038ca809ff6359798e03d3ce6d6aa705e55637401d8391ec5086ade
 
 pkgname = perl-starman
 
