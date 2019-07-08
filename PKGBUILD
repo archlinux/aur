@@ -7,7 +7,7 @@
 pkgname=bubblewrap-suid
 pkgver=0.3.3
 pkgrel=2
-pkgdesc='Unprivileged sandboxing tool'
+pkgdesc='Unprivileged sandboxing tool, SUID version for compatibility with linux-hardened, linux-zen and others'
 url='https://github.com/projectatomic/bubblewrap'
 arch=(x86_64)
 license=(GPL)
@@ -15,27 +15,29 @@ depends=(glibc libcap)
 makedepends=(libxslt docbook-xsl git)
 _commit=bc13e228d172cc2385aa445b512c6bf8ca2f3376  # tags/v0.3.3^0
 source=("git+$url#commit=$_commit")
-conflicts=(bubblewrap bubblewrap-git)
 sha256sums=('SKIP')
 
+conflicts=(bubblewrap bubblewrap-git)
+provides=(bubblewrap)
+
 pkgver() {
-  cd $pkgname
+  cd bubblewrap
   git describe | sed 's/^v//'
 }
 
 prepare() {
-  cd $pkgname
+  cd bubblewrap
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $pkgname
+  cd bubblewrap
   ./configure --prefix=/usr \
     --with-priv-mode=setuid
   make
 }
 
 package() {
-  cd $pkgname
+  cd bubblewrap
   make DESTDIR="$pkgdir" install
 }
