@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=Development;Electronics
+Comment=__COMMENT__
+Encoding=UTF-8
+Exec=/usr/bin/veroroute
+Icon=/usr/share/pixmaps/VeroRoute.png
+Name=VeroRoute
+Path=/usr/share/veroroute/
+StartupNotify=false
+Terminal=false
+Type=Application
+Version=__VERSION__

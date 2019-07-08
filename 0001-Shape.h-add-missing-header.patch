@@ -1,0 +1,27 @@
+From 2c28cbf6c02bb38c7235ee1a613a37427daaff7d Mon Sep 17 00:00:00 2001
+From: Roman Sommer <roman.sommer@fau.de>
+Date: Sun, 7 Jul 2019 22:16:39 +0200
+Subject: [VeroRoute] [PATCH] Shape.h: add missing header
+
+This patch adds a missing header to fix compilation with qmake under
+Arch Linux.
+
+---
+ Src/Shape.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Src/Shape.h b/Src/Shape.h
+index 94852ee..df76b79 100644
+--- a/Src/Shape.h
++++ b/Src/Shape.h
+@@ -19,6 +19,7 @@
+ 
+ #pragma once
+ 
++#include <cmath>
+ #include "Persist.h"
+ #include "Rect.h"
+ 
+-- 
+2.22.0
+
