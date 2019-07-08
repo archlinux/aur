@@ -2,14 +2,14 @@
 pkgname=precached-git
 _pkgname=precached
 pkgver=1.7.0
-pkgrel=16
+pkgrel=17
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
 license=('GPL')
 groups=()
 depends=('zeromq')
-makedepends=('rust' 'zeromq' 'systemd')
+makedepends=('rust' 'libcap' 'zeromq' 'systemd')
 optdepends=()
 provides=()
 conflicts=(precached)
