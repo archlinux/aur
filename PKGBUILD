@@ -8,7 +8,7 @@
 # update the dependencies based on dynamic libraries when packaging..
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.29.1.r341.gc9e7473d67
+pkgver=0.29.1.r352.gb5b0350371
 pkgrel=1
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
 'libxinerama' 'libxv' 'libxkbcommon' 'libva'
  'wayland' 'libcaca' 'libplacebo' 'desktop-file-utils'
- 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
+ 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav' 'rsound'
 'libxrandr' 'jack' 'rubberband' 'uchardet'  'libarchive' 'smbclient'
 'zlib' 'sndio' 'openal' 'vulkan-icd-loader' 'shaderc' "${_undetected_depends[@]}"
 
@@ -38,9 +38,11 @@ optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'adobe-source-sans-pro-fonts: Font as shown in the conf'
             )
 
-makedepends=('vulkan-headers' 'mesa' 'python-docutils' 'ladspa' 'x265' 'openal' 'jack'
-             'samba' 'acpitool' 'inxi' 'git' 'vapoursynth' 'libvdpau' 'libva'
-              'streamlink' 'cuda' 'ffnvcodec-headers' 'youtube-dl' 'ffnvcodec-headers')
+makedepends=('vulkan-headers' 'mesa' 'python-docutils'
+             'ladspa' 'x265' 'openal' 'jack' 'unzip'
+             'samba' 'acpitool' 'inxi' 'git' 'vapoursynth'
+             'libvdpau' 'libva' 'streamlink' 'cuda'
+             'ffnvcodec-headers' 'youtube-dl' 'ffnvcodec-headers')
 optdepends+=('cuda: for CUVID hardware-acceleration for NVIDIA users')
 
 provides=('mpv' 'mpv-git')
