@@ -29,10 +29,12 @@ provides=("mesa=$pkgver-$pkgrel"
           "mesa-vdpau=$pkgver-$pkgrel"
           "vulkan-driver=$pkgver-$pkgrel"
           "opencl-mesa=$pkgver-$pkgrel"
+          # mesa-vulkan-layer was renamed as it was brought in from AUR
           "mesa-vulkan-layer=$pkgver-$pkgrel"
+          "vulkan-mesa-layer=$pkgver-$pkgrel"
           "opengl-driver"
           "opencl-driver")
-conflicts=('mesa' 'mesa-git' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'mesa-vulkan-layer')
+conflicts=('mesa' 'mesa-git' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'mesa-vulkan-layer' 'vulkan-mesa-layer')
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa-aco::git+https://github.com/daniel-schuermann/mesa'
