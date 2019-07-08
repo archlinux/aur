@@ -2,7 +2,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 
 pkgname='gst-plugins-base-git'
-pkgver=1.17.0.1.19934.0b44ac28b
+pkgver=1.17.0.1.19939.2e686b0da
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Base Plugins"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ provides=('gst-plugins-base='$pkgver 'gst-plugins-base-libs='$pkgver)
 
 pkgdesc="GStreamer Multimedia Framework Base Plugins"
 depends=('gstreamer-git' 'orc' 'libxv' 'opus' 
-        'alsa-lib' 'cdparanoia' 'libjepeg-turbo' 
+        'alsa-lib' 'cdparanoia' 'libjpeg-turbo' 
         'libvisual' 'libvorbis' 'libtheora' 'pango')
 
 source=('git://anongit.freedesktop.org/gstreamer/gst-plugins-base')

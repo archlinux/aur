@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-base-git
 	pkgdesc = GStreamer Multimedia Framework Base Plugins
-	pkgver = 1.17.0.1.19934.0b44ac28b
+	pkgver = 1.17.0.1.19939.2e686b0da
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
@@ -25,13 +25,13 @@ pkgbase = gst-plugins-base-git
 	depends = opus
 	depends = alsa-lib
 	depends = cdparanoia
-	depends = libjepeg-turbo
+	depends = libjpeg-turbo
 	depends = libvisual
 	depends = libvorbis
 	depends = libtheora
 	depends = pango
-	provides = gst-plugins-base=1.17.0.1.19934.0b44ac28b
-	provides = gst-plugins-base-libs=1.17.0.1.19934.0b44ac28b
+	provides = gst-plugins-base=1.17.0.1.19939.2e686b0da
+	provides = gst-plugins-base-libs=1.17.0.1.19939.2e686b0da
 	conflicts = gst-plugins-base
 	conflicts = gst-plugins-base-libs
 	options = !libtool
