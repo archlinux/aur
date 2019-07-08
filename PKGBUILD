@@ -11,7 +11,8 @@ conflicts=('libwnck')
 depends=('gtk2' 'startup-notification' 'libxres')
 makedepends=('git' 'libxt' 'intltool' 'gobject-introspection' 'gnome-common')
 url="http://www.gnome.org/"
-source=("$pkgname::git://git.gnome.org/libwnck#branch=gnome-2-32")
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/libwnck.git#branch=gnome-2-32")
+
 sha256sums=('SKIP')
 
 pkgver() {

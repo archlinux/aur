@@ -16,7 +16,7 @@ pkgbase = libwnck-git
 	depends = libxres
 	provides = libwnck
 	conflicts = libwnck
-	source = libwnck-git::git://git.gnome.org/libwnck#branch=gnome-2-32
+	source = libwnck-git::git+https://gitlab.gnome.org/GNOME/libwnck.git#branch=gnome-2-32
 	sha256sums = SKIP
 
 pkgname = libwnck-git
