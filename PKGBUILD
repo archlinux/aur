@@ -7,7 +7,9 @@ pkgdesc="Lua script that adds AceStream protocol handler to mpv player"
 arch=("any")
 url="https://github.com/Digitalone1/mpv-acestream"
 license=("GPL3")
-optdepends=("acestream-engine: AceStream engine")
+optdepends=("acestream-engine: AceStream engine"
+            "mpv: mpv player"
+)
 source=(
     "https://github.com/Digitalone1/mpv-acestream/archive/v$pkgver.tar.gz"
     "acestream.protocol")
