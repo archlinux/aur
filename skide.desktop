@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=SkIDE
+GenericName=SkIDE
+Comment=Fully featured IDE for Skript
+Exec=skide %u
+Icon=skide.xpm
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+StartupWMClass=com.skide.gui.javafxbootstrapper
