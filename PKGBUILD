@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-scraper2vdr
 pkgver=1.0.9
-_vdrapi=2.4.0
-pkgrel=1
+_vdrapi=2.4.1
+pkgrel=2
 pkgdesc="Acts as client and provides scraped metadata for tvshows and movies from epgd"
 url="http://projects.vdr-developer.org/projects/plg-scraper2vdr"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
