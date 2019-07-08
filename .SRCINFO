@@ -1,44 +1,26 @@
 pkgbase = perl-catalyst-plugin-session
 	pkgdesc = Generic Session plugin - ties together server side storage and client side state required to maintain session data.
-	pkgver = 0.40
+	pkgver = 0.41
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Catalyst-Plugin-Session
+	url = https://metacpan.org/release/Catalyst-Plugin-Session
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	makedepends = perl-extutils-makemaker>=6.59 perl-test-www-mechanize-psgi
-	depends = perl>=5.8.0
-	depends = perl-catalyst-runtime
-	depends = perl-mro-compat
+	checkdepends = perl-test-deep>=0
+	checkdepends = perl-test-exception>=0
+	checkdepends = perl-test-www-mechanize-psgi>=0
+	depends = perl-catalyst-runtime>=5.71001
+	depends = perl-html-parser>=0
+	depends = perl-mro-compat>=0
 	depends = perl-moose>=0.76
 	depends = perl-moosex-emulate-class-accessor-fast>=0.00801
-	depends = perl-object-signature
-	depends = perl-namespace-clean
-	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Plugin-Session-0.40.tar.gz
-	md5sums = 720a7f2d82c94721d34079890a4f09cd
-
-pkgname = perl-catalyst-plugin-session
-
-pkgbase = perl-catalyst-plugin-session
-	pkgdesc = Generic Session plugin - ties together server side storage and client side state required to maintain session data.
-	pkgver = 0.40
-	pkgrel = 2
-	url = http://search.cpan.org/dist/Catalyst-Plugin-Session
-	arch = any
-	license = PerlArtistic
-	license = GPL
-	makedepends = perl-extutils-makemaker>=6.59 perl-test-www-mechanize-psgi
+	depends = perl-object-signature>=0
+	depends = perl-namespace-clean>=0.10
 	depends = perl>=5.8.0
-	depends = perl-catalyst-runtime
-	depends = perl-mro-compat
-	depends = perl-moose>=0.76
-	depends = perl-moosex-emulate-class-accessor-fast>=0.00801
-	depends = perl-object-signature
-	depends = perl-namespace-clean
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Plugin-Session-0.40.tar.gz
-	md5sums = 720a7f2d82c94721d34079890a4f09cd
+	source = https://cpan.metacpan.org/authors/id/J/JJ/JJNAPIORK/Catalyst-Plugin-Session-0.41.tar.gz
+	md5sums = 0f7824d7c906d874466e54819c08df11
+	sha512sums = 684b3489d7259eb50b626cb29e83dca59abeaea8f7a338f09fe96c01bd927db6949ebb432b200c116a02a8501907f882ca2c163e920827f1fc755800f20187e3
 
 pkgname = perl-catalyst-plugin-session
 
