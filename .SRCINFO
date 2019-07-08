@@ -1,7 +1,7 @@
 pkgbase = nthash
 	pkgdesc = Generate NT Hash
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/eworm-de/nthash
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = nthash
 	makedepends = markdown
 	depends = nettle
 	conflicts = nthash-git
-	source = http://www.eworm.de/download/nthash/nthash-0.1.6.tar.xz
-	source = http://www.eworm.de/download/nthash/nthash-0.1.6.tar.xz.asc
+	source = https://www.eworm.de/download/nthash/nthash-0.1.6.tar.xz
+	source = https://www.eworm.de/download/nthash/nthash-0.1.6.tar.xz.asc
+	validpgpkeys = BD84DE71F493DF6814B0167254EDC91609BC9183
 	sha256sums = 7a8700ac0d29f83569d5ce008a323a2b1d753721a102284a721c5bd16294c30d
 	sha256sums = SKIP
 
