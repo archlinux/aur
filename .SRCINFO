@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-crossc
+	pkgdesc = Portable C wrapper for SPIRV-Cross (mingw-w64)
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/rossy/crossc/
+	arch = any
+	license = APACHE
+	makedepends = git
+	depends = gcc-libs
+	source = git+https://github.com/rossy/crossc.git#tag=v1.6.0
+	source = git+https://github.com/KhronosGroup/SPIRV-Cross.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mingw-w64-crossc
+
