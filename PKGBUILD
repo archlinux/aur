@@ -7,7 +7,7 @@
 
 pkgname=bs
 pkgver=2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="The classic game of Battleships against the computer. Ncurses."
 arch=('i686' 'x86_64')
 url="https://www.catb.org/~esr/bs/"
