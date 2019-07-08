@@ -17,7 +17,7 @@ _commit=bc13e228d172cc2385aa445b512c6bf8ca2f3376  # tags/v0.3.3^0
 source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
 
-conflicts=(bubblewrap bubblewrap-git)
+conflicts=(bubblewrap)
 provides=(bubblewrap)
 
 pkgver() {
