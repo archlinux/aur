@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-shaderc
+	pkgdesc = Collection of tools, libraries and tests for shader compilation (mingw-w64)
+	pkgver = 2018.0
+	pkgrel = 1
+	url = https://github.com/google/shaderc
+	arch = any
+	license = Apache
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-spirv-tools
+	makedepends = mingw-w64-glslang
+	source = mingw-w64-shaderc-2018.0.tar.gz::https://github.com/google/shaderc/archive/v2018.0.tar.gz
+	source = fix-glslang-link-order.patch::https://github.com/google/shaderc/pull/463/commits/21c8be385b3fab5edcb934a6d99f69fd389c4e67.patch
+	sha512sums = 7a420fde73c9f2aae3f13558d538a1f4ae43bba19e2b4d2da8fbbd017e9e4f328ece5f330f1bbcb9fe84c91b7eb84b9158dc2e3d144c82939090a0fa6f5b4ef0
+	sha512sums = 995297afe2f70086fb5a68e19c8b2e958812dca77e400c7697adaa8b8dbaee62a2f6784794c5a838a1bae96ab71fd3b72d2a50424512f52ee7f324f629e7b390
+
+pkgname = mingw-w64-shaderc
+
