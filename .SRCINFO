@@ -1,0 +1,16 @@
+pkgbase = perl-mime-ecoencode
+	pkgdesc = MIME Encoding (Economical)
+	pkgver = 0.95
+	pkgrel = 1
+	url = https://metacpan.org/release/MIME-EcoEncode
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MU/MURATAYA/MIME-EcoEncode-0.95.tar.gz
+	md5sums = 4cb6d18f2877fd01f3a450dd22e840e8
+	sha512sums = 46149ed3cba40cfb0f47a878051c3a5dd5bf711f75848dbb178a87aab883db584c21019e88d71bcfddfeaf2c0426a89062fa0cd668bbf4a196f2226adfc8a1e2
+
+pkgname = perl-mime-ecoencode
+
