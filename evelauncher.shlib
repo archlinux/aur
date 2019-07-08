@@ -45,7 +45,9 @@ check_wine() {
 	env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
 	    $(which winetricks) -q --force win10 >/dev/null
     fi
-    env WINEPREFIX=$WINEPREFIX $WINEPATH/wine reg add \
+    env WINEPREFIX=$WINEPREFIX \
+        WINEDLLOVERRIDES="winemenubuilder.exe=d" \
+        $WINEPATH/wine reg add \
 	'HKEY_CURRENT_USER\Software\Wine\FileOpenAssociations' \
 	/v Enable /d N /f >/dev/null
 }
