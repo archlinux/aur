@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-spirv-tools
+	pkgdesc = API and commands for processing SPIR-V modules (mingw-w64)
+	pkgver = 2018.5
+	pkgrel = 1
+	url = https://www.khronos.org/vulkan/
+	arch = any
+	groups = vulkan-devel
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = python
+	makedepends = git
+	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#tag=v2018.5
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mingw-w64-spirv-tools
+
