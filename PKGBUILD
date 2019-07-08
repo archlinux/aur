@@ -1,29 +1,49 @@
-# Maintainer: Ordoban <dirk.langer@vvovgonik.de>
-_author=GFUJI
-_perlmod=MouseX-Getopt
-pkgname=perl-mousex-getopt
-pkgver=0.37
-pkgrel=2
-pkgdesc="Organize your Mouse types in libraries"
+# Contributor: ordoban <dirk.langer@vvovgonik.de>
+# Generator  : CPANPLUS::Dist::Arch 1.32
+
+pkgname='perl-mousex-getopt'
+pkgver='0.38'
+pkgrel='1'
+pkgdesc=""
 arch=('any')
-url="http://search.cpan.org/~$_author/$_perlmod-$pkgver/"
-license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0' 'perl-module-build-tiny')
-options=(!emptydirs)
-source=(https://cpan.metacpan.org/authors/id/G/GF/${_author}/${_perlmod}-${pkgver}.tar.gz)
-md5sums=('080b1895635b525f2b9792a672b2569e')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl-getopt-long-descriptive>=0.091' 'perl-mouse>=0.64' 'perl-mousex-configfromfile>=0' 'perl-mousex-simpleconfig>=0')
+makedepends=()
+checkdepends=('perl-mouse>=0' 'perl-test-exception>=0.21' 'perl-test-warn>=0.21')
+url='https://metacpan.org/release/MouseX-Getopt'
+source=('https://cpan.metacpan.org/authors/id/G/GF/GFUJI/MouseX-Getopt-0.38.tar.gz')
+md5sums=('d20571d847982922e8f1503223263a39')
+sha512sums=('2a1f870f45f8b9ceae5f16421257f7b0b5fe97e09af9968686a00cbf320c56cfd6ad3ba7b2fcf714f22add98b0843a7e2b46f8d9b3c9ce36b2e9840b2ca5e621')
+_distdir="MouseX-Getopt-0.38"
 
 build() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
+         PERL_AUTOINSTALL=--skipdeps                            \
+         PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+         PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+         MODULEBUILDRC=/dev/null
 
-  # Install module in vendor directories.
-  PERL_MM_USE_DEFAULT=1 perl Build.PL INSTALLDIRS=vendor
-  ./Build
+  cd "$srcdir/$_distdir"
+   /usr/bin/perl Build.PL
+   /usr/bin/perl Build
+}
+
+check() {
+  cd "$srcdir/$_distdir"
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
+  /usr/bin/perl Build test
 }
 
 package() {
-  cd "$srcdir/$_perlmod-$pkgver"
-  ./Build install DESTDIR="$pkgdir/"
+  cd "$srcdir/$_distdir"
+  /usr/bin/perl Build install
+
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
 # vim:set ts=2 sw=2 et:

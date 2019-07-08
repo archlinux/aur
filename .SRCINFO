@@ -1,32 +1,21 @@
 pkgbase = perl-mousex-getopt
-	pkgdesc = Organize your Mouse types in libraries
-	pkgver = 0.37
+	pkgver = 0.38
 	pkgrel = 1
-	url = http://search.cpan.org/~GFUJI/MouseX-Getopt-0.37/
+	url = https://metacpan.org/release/MouseX-Getopt
 	arch = any
-	license = GPL
 	license = PerlArtistic
-	depends = perl>=5.10.0
-	depends = perl-module-build-tiny
-	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/G/GF/GFUJI/MouseX-Getopt-0.37.tar.gz
-	md5sums = 080b1895635b525f2b9792a672b2569e
-
-pkgname = perl-mousex-getopt
-
-pkgbase = perl-mousex-getopt
-	pkgdesc = Organize your Mouse types in libraries
-	pkgver = 0.37
-	pkgrel = 2
-	url = http://search.cpan.org/~GFUJI/MouseX-Getopt-0.37/
-	arch = any
 	license = GPL
-	license = PerlArtistic
-	depends = perl>=5.10.0
-	depends = perl-module-build-tiny
+	checkdepends = perl-mouse>=0
+	checkdepends = perl-test-exception>=0.21
+	checkdepends = perl-test-warn>=0.21
+	depends = perl-getopt-long-descriptive>=0.091
+	depends = perl-mouse>=0.64
+	depends = perl-mousex-configfromfile>=0
+	depends = perl-mousex-simpleconfig>=0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/G/GF/GFUJI/MouseX-Getopt-0.37.tar.gz
-	md5sums = 080b1895635b525f2b9792a672b2569e
+	source = https://cpan.metacpan.org/authors/id/G/GF/GFUJI/MouseX-Getopt-0.38.tar.gz
+	md5sums = d20571d847982922e8f1503223263a39
+	sha512sums = 2a1f870f45f8b9ceae5f16421257f7b0b5fe97e09af9968686a00cbf320c56cfd6ad3ba7b2fcf714f22add98b0843a7e2b46f8d9b3c9ce36b2e9840b2ca5e621
 
 pkgname = perl-mousex-getopt
 
