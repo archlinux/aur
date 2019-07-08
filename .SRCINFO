@@ -1,12 +1,12 @@
 pkgbase = uniconvertor2-git
 	pkgdesc = A universal vector graphics translator
-	pkgver = r373.0f33c1c
+	pkgver = r397.efbd37c
 	pkgrel = 1
 	epoch = 1
 	url = https://sk1project.net/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = AGPL3
 	makedepends = git
 	makedepends = python2
 	depends = lcms2

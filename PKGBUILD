@@ -2,13 +2,13 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=uniconvertor2-git
-pkgver=r373.0f33c1c
+pkgver=r397.efbd37c
 pkgrel=1
 epoch=1
 pkgdesc="A universal vector graphics translator"
 url="https://sk1project.net/"
 arch=('i686' 'x86_64')
-license=('GPL3')
+license=('AGPL3')
 depends=('lcms2' 'cairo' 'libmagick' 'pango' 'python2-cairo' 
 	 'python2-pillow' 'python2-reportlab' 'python2-pycups')
 makedepends=('git' 'python2')
