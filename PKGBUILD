@@ -1,4 +1,4 @@
-# Maintainer: Nick Boughton (nicholboughton@gmail.com)
+# Maintainer: Nick Boughton (nicholasboughton@gmail.com)
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=vue-cli
