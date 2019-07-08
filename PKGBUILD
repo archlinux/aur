@@ -2,7 +2,7 @@
 
 pkgname=dirstalk
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Multi threaded application designed to brute force paths on web servers, modern alternative to dirb and dirbuster'
 url='https://github.com/stefanoj3/dirstalk'
 arch=('x86_64')
