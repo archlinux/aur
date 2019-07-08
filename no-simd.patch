@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 81d036b..659fc33 100755
+--- a/setup.py
++++ b/setup.py
+@@ -94,7 +94,7 @@ setuptools.setup(
+     #
+     # For an analysis of "install_requires" vs pip's requirements files see:
+     # https://packaging.python.org/en/latest/requirements.html
+-    install_requires=['python-xlib', 'pillow-simd', 'docopt',
++    install_requires=['python-xlib', 'pillow', 'docopt',
+                       'psutil', 'attrs'],  # Optional
+     python_requires='>=3.5',
+ 
