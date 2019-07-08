@@ -1,0 +1,17 @@
+pkgbase = flexml
+	pkgdesc = FleXML makes it easy to generate very fast validating XML processors as flex source.
+	pkgver = 1.9.6
+	pkgrel = 1
+	url = https://sourceforge.net/projects/flexml/
+	arch = x86_64
+	license = GPL
+	depends = flex
+	depends = perl
+	depends = perl-uri
+	depends = perl-date-calc
+	depends = perl-libwww
+	source = https://sourceforge.net/projects/flexml/files/flexml/flexml-1.9/flexml-1.9.6.tar.gz
+	md5sums = 25d212af0da19f5de496a475a130eb9a
+
+pkgname = flexml
+
