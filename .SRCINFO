@@ -1,7 +1,7 @@
 pkgbase = qemu-patched
 	pkgdesc = A generic and open source machine emulator and virtualizer - Patched for extra functionality
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.qemu.org/
 	arch = x86_64
 	license = GPL2
