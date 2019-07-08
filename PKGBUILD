@@ -1,4 +1,5 @@
 # Maintainer: Vasia Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 # bubblewrap-suid is a copy of [extra].bubblewrap, but with the main binary being SUID.
 # This allows bubblewrap to work on "linux-hardened", "linux-zen" and custom
@@ -6,7 +7,7 @@
 
 pkgname=bubblewrap-suid
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Unprivileged sandboxing tool, SUID version for compatibility with linux-hardened, linux-zen and others'
 url='https://github.com/projectatomic/bubblewrap'
 arch=(x86_64)

@@ -1,7 +1,7 @@
 pkgbase = bubblewrap-suid
-	pkgdesc = Unprivileged sandboxing tool
+	pkgdesc = Unprivileged sandboxing tool, SUID version for compatibility with linux-hardened, linux-zen and others
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/projectatomic/bubblewrap
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = bubblewrap-suid
 	makedepends = git
 	depends = glibc
 	depends = libcap
+	provides = bubblewrap
 	conflicts = bubblewrap
-	conflicts = bubblewrap-git
 	source = git+https://github.com/projectatomic/bubblewrap#commit=bc13e228d172cc2385aa445b512c6bf8ca2f3376
 	sha256sums = SKIP
 
