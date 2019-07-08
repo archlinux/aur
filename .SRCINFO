@@ -1,0 +1,36 @@
+pkgbase = perl-web-mention
+	pkgdesc = Implementation of the IndieWeb Webmention protocol
+	pkgver = 0.703
+	pkgrel = 1
+	url = https://metacpan.org/release/Web-Mention
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception>=0
+	checkdepends = perl-test-lwp-useragent>=0
+	checkdepends = perl-test-warn>=0
+	depends = perl-datetime>=0
+	depends = perl-http-link>=0
+	depends = perl-json>=0
+	depends = perl-lwp-protocol-https>=0
+	depends = perl-mojo-dom58>=0
+	depends = perl-moose>=0
+	depends = perl-moosex-classattribute>=0
+	depends = perl-moosex-enumeration>=0
+	depends = perl-moosex-types-uri>=0
+	depends = perl-path-class>=0
+	depends = perl-readonly>=0
+	depends = perl-string-truncate>=0
+	depends = perl-try-tiny>=0
+	depends = perl-type-tiny>=0
+	depends = perl-uri>=0
+	depends = perl-web-microformats2>=0.5
+	depends = perl-libwww>=0
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/J/JM/JMAC/Web-Mention-0.703.tar.gz
+	md5sums = 06f629a5ea65993ed0872700d0d806e4
+	sha512sums = 69fd2fd9a4db8999449dbacd51d3a8a1376d043f7a1c16026e6bb8e526cb523ef24e0463f6f21241919304e4de66382ed513294dd16c46e34af73a71fa9706e1
+
+pkgname = perl-web-mention
+
