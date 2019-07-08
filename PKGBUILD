@@ -20,17 +20,17 @@ md5sums=('SKIP'
          'c3b2b26732606b4f95ca95cea6ce2084')
 
 pkgver() {
-  cd "${srcdir}/git"
+  cd "${srcdir}/$pkgbase"
   git describe --tags | sed "s/$_plugname.//g;s/_/./g;s/-/./g"
 }
 
 prepare() {
-  cd "${srcdir}/git"
+  cd "${srcdir}/$pkgbase"
   patch -p1 -i "$srcdir/xineliboutput_fix_vdrversion_check.diff"
 }
 
 build() {
-  cd "${srcdir}/git"
+  cd "${srcdir}/$pkgbase"
   ./configure
   make
 }
@@ -42,7 +42,7 @@ package_vdr-xineliboutput() {
               'xineliboutput-frontends: remote output device')
   backup=("etc/vdr/conf.avail/50-$_plugname.conf"
           "var/lib/vdr/plugins/$_plugname/allowed_hosts.conf")
-  cd "${srcdir}/git"
+  cd "${srcdir}/$pkgbase"
 
   mkdir -p "$pkgdir/usr/lib/vdr/plugins"
   make DESTDIR="$pkgdir" install
@@ -58,7 +58,7 @@ package_vdr-xineliboutput() {
 package_xineliboutput-frontends() {
   pkgdesc="Xineliboutput remote frontends (vdr-fbfe and vdr-sxfe)"
   depends=('libcec' 'xineliboutput-xineplug')
-  cd "${srcdir}/git"
+  cd "${srcdir}/$pkgbase"
 
   mkdir -p "$pkgdir/usr/lib/vdr/plugins"
   make DESTDIR="$pkgdir" install
@@ -70,7 +70,7 @@ package_xineliboutput-xineplug() {
   depends=('dbus-glib' 'libextractor' 'libbluray' 'libxrandr' 'mesa' 'xine-lib')
   optdepends=('nvidia: Required for VDPAU decoding'
               'xorg-server: Required for software decoding')
-  cd "${srcdir}/git"
+  cd "${srcdir}/$pkgbase"
 
   mkdir -p "$pkgdir/usr/lib/vdr/plugins"
   make DESTDIR="$pkgdir" install
