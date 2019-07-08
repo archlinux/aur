@@ -10,7 +10,6 @@ pkgbase = dia-git
 	makedepends = meson
 	makedepends = intltool
 	makedepends = dblatex
-	makedepends = python
 	makedepends = docbook-xsl
 	depends = libxslt
 	depends = gtk2

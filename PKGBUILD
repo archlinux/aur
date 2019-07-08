@@ -1,7 +1,8 @@
-# Maintainer: Thorsten Töpper <atsutane-tu@freethoughts.de>
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 # Contributor: Gregor Ibic <gregor.ibic@intelicom.si>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=dia-git
 _pkgname=dia
@@ -12,7 +13,7 @@ arch=('x86_64')
 license=('GPL')
 url="http://live.gnome.org/Dia"
 depends=('libxslt' 'gtk2' 'freetype2' 'python2')
-makedepends=('git' 'cmake' 'meson' 'intltool' 'dblatex' 'python' 'docbook-xsl')
+makedepends=('git' 'cmake' 'meson' 'intltool' 'dblatex' 'docbook-xsl')
 optdepends=('python2')
 provides=('dia')
 conflicts=('dia')
@@ -21,31 +22,26 @@ source=("git+https://gitlab.gnome.org/GNOME/dia.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd ${_pkgname}
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
-  for file in `find -type f -name '*.py'`; do
+  cd ${_pkgname}
+  for file in ./plug-ins/python/gtkcons.py ./plug-ins/python/doxrev.py; do
       sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' "$file"
   done
-  sed -i "s/cc.find_library('emf'/cc.find_library('EMF'/g" meson.build
-  sed -i "s/cc.find_library('ogdf'/cc.find_library('OGDF'/g" meson.build
-  sed -i 's/python23/python3/g' build-aux/*.py
-  sed -i 's|#include "tool-icons.h"||g' objects/standard/outline.c
-  sed -i 's/22.0.0/99.0.0/g' meson.build
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd ${_pkgname}
 
   export PYTHON=/usr/bin/python2
-  arch-meson . build
+  meson --prefix /usr --buildtype=plain . build
   ninja -j1 -C build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd ${_pkgname}
   DESTDIR="${pkgdir}" ninja -C build install
 }
