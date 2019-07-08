@@ -45,6 +45,10 @@ prepare() {
   # Needed so !189 doesn't conflict
   git cherry-pick -n 5bd85ef7^..b0b1ff36
 
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/616
+  # Needed so !661 doesn't conflict
+  git cherry-pick -n 4064d9a7^..3073acc3
+
   # Geometric (OpenGL-less) picking
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
   git cherry-pick -n 76462a2f
@@ -68,8 +72,8 @@ prepare() {
 
   # clutter/stage: Process input events out of phase with redraws [performance]
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/661/
-  # Replaces !168 but needs to be rebased
-  # git cherry-pick -n fbaa4dfa^..ec6a6e91
+  # Replaces !168
+  git cherry-pick -n 04504078^..6e653d62
 
   # Resource scale computation optimizations
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/493
