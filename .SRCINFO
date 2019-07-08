@@ -1,0 +1,15 @@
+pkgbase = timingeditor
+	pkgdesc = The Timing Editor is a free tool to draw timing diagrams.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://timingeditor.sourceforge.net
+	arch = x86_64
+	license = GPL2
+	depends = wxgtk
+	source = https://datapacket.dl.sourceforge.net/project/timingeditor/timingeditor/0.1/TimingEditor-0.1-src.7z
+	source = wx3.patch
+	sha256sums = 59c6f0c6c3c64394c187591d1eaefc97bdb440451935a16b2722ff91dea9952f
+	sha256sums = 95e4045e8bfa7422dc6eb7639d9c02b0961992b839cd7cd52d6a1f6e75a03b6b
+
+pkgname = timingeditor
+

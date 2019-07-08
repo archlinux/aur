@@ -1,0 +1,62 @@
+diff --git a/TimingApp.cpp b/TimingApp.cpp
+index e943d7d..7bbca43 100644
+--- a/TimingApp.cpp
++++ b/TimingApp.cpp
+@@ -63,7 +63,7 @@ bool TimingApp::OnInit()
+         { wxCMD_LINE_OPTION, _T("i"), _T("input"),   _T("input dir") },
+         { wxCMD_LINE_OPTION, _T("s"), _T("size"),    _T("output block size"), wxCMD_LINE_VAL_NUMBER },
+         { wxCMD_LINE_OPTION, _T("d"), _T("date"),    _T("output file date"), wxCMD_LINE_VAL_DATE },*/
+-        { wxCMD_LINE_PARAM,  NULL, NULL, _T("input file"), wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE|wxCMD_LINE_PARAM_OPTIONAL },
++        { wxCMD_LINE_PARAM,  NULL, NULL, wxT_2("input file"), wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE|wxCMD_LINE_PARAM_OPTIONAL },
+         { wxCMD_LINE_NONE }
+     };
+     parser.SetDesc(cmdLineDesc);
+@@ -188,7 +188,7 @@ wxMDIChildFrame *TimingApp::CreateChildFrame(wxDocument *doc, wxView *view)
+     #ifdef __WXMSW__
+         subframe->SetIcon(wxIcon(_T("wxwinicon")));
+     #else
+-        subframe->SetIcon(wxIcon(_T("wxwinicon.xpm")));
++       //subframe->SetIcon(wxIcon(_T("wxwinicon.xpm")));^M
+     #endif
+ 
+     /// Make a menubar
+diff --git a/TimingView.cpp b/TimingView.cpp
+index 41c06cb..cafb8f0 100644
+--- a/TimingView.cpp
++++ b/TimingView.cpp
+@@ -36,7 +36,7 @@
+ #endif
+ 
+ #include <wx/clipbrd.h>
+-#include <wx/svg/dcsvg.h>
++#include <wx/dcsvg.h>
+ #include <wx/dcps.h>
+ #include <wx/filename.h>
+ 
+@@ -415,7 +415,7 @@ bool TimingView::CanDelete(void)
+ }
+ void TimingView::OnExportBitmap(wxCommandEvent& event)
+ {
+-    wxFileDialog dlg( wxGetApp().GetMainFrame(), _T("Choose a file for exporting into it"),_T(""),_T(""),_T("PNG files (*.png)|*.png"),wxSAVE | wxOVERWRITE_PROMPT );
++    wxFileDialog dlg( wxGetApp().GetMainFrame(), _T("Choose a file for exporting into it"),_T(""),_T(""),_T("PNG files (*.png)|*.png"),wxFC_SAVE | wxFD_OVERWRITE_PROMPT );
+     if ( dlg.ShowModal() != wxID_OK )
+         return;
+ 
+@@ -451,7 +451,7 @@ void TimingView::OnExportBitmap(wxCommandEvent& event)
+ 
+ void TimingView::OnExportSVG(wxCommandEvent& event)
+ {
+-    wxFileDialog dlg( wxGetApp().GetMainFrame(), _T("Choose a file for exporting into it"), _T(""), _T(""), _T("SVG files (*.svg)|*.svg"), wxSAVE | wxOVERWRITE_PROMPT);
++    wxFileDialog dlg( wxGetApp().GetMainFrame(), _T("Choose a file for exporting into it"), _T(""), _T(""), _T("SVG files (*.svg)|*.svg"), wxFC_SAVE | wxFD_OVERWRITE_PROMPT);
+     if ( dlg.ShowModal() != wxID_OK )
+         return;
+     wxString filename = dlg.GetPath();
+@@ -470,7 +470,7 @@ void TimingView::OnExportSVG(wxCommandEvent& event)
+ 
+ void TimingView::OnExportPS(wxCommandEvent& event)
+ {
+-    wxFileDialog dlg( wxGetApp().GetMainFrame(), _T("Choose a file for exporting into it"), _T(""), _T(""), _T("PostScrip files (*.ps)|*.ps"), wxSAVE | wxOVERWRITE_PROMPT);
++    wxFileDialog dlg( wxGetApp().GetMainFrame(), _T("Choose a file for exporting into it"), _T(""), _T(""), _T("PostScrip files (*.ps)|*.ps"), wxFC_SAVE | wxFD_OVERWRITE_PROMPT);
+     if ( dlg.ShowModal() != wxID_OK )
+         return;
+     wxString filename = dlg.GetPath();
