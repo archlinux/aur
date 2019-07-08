@@ -3,14 +3,14 @@
 
 _pkgname=adwaita-creamy
 pkgname=$_pkgname-gtk-theme
-pkgver=3.24.9
+pkgver=3.24.10
 pkgrel=1
 pkgdesc="Refreshed new Adwaita theme with creamy colors and minor changes."
 url="https://github.com/murat-cileli/$_pkgname"
 arch=('any')
 license=('MIT')
 source=("https://github.com/murat-cileli/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('a370eab23b46b54188f7f5777af368712fe393f7c4e0b7b02386b9312100f8c6')
+sha256sums=('7283c24ca62bf7cd2f3792d5d9868419acae78e1728778c39f7f17633a1bcb32')
 
 package() {
     cd $_pkgname-$pkgver
