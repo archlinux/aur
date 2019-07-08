@@ -2,11 +2,11 @@
 # Contributor: Diego <cdprincipe@gmail.com>
 
 pkgname=numix-icon-theme-git
-pkgver=0.r1981.896d9100e
+pkgver=0.r1982.88ba36545
 pkgrel=1
 pkgdesc='Base icon theme from the Numix project'
 arch=('any')
-url='http://numixproject.org/'
+url='https://github.com/numixproject/numix-icon-theme'
 license=('GPL3')
 depends=('gtk-update-icon-cache')
 makedepends=('git')
