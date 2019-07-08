@@ -1,6 +1,6 @@
 pkgbase = udemy-dl-git
 	pkgdesc = A utility to download courses from udemy for personal offline use
-	pkgver = v0.5.r59.gc56a725
+	pkgver = 0.5.r59.gc56a725
 	pkgrel = 1
 	url = https://github.com/r0oth3x49/udemy-dl
 	arch = any

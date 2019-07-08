@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Rouleau <jonathan@rouleau.io>
 pkgname=udemy-dl-git
-pkgver=v0.5.r59.gc56a725
+pkgver=0.5.r59.gc56a725
 pkgrel=1
 pkgdesc='A utility to download courses from udemy for personal offline use'
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
