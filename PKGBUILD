@@ -1,11 +1,12 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=vim-airline-forest-night-git
-pkgver=v0.2.r11.g5a6a31e
+pkgver=v0.2.r16.g5ae9029
 pkgrel=1
 pkgdesc="forest-night color scheme for vim-airline"
 arch=('any')
 url="https://github.com/sainnhe/vim-color-forest-night"
 license=('MIT' 'Anti-996')
+depends=('vim')
 optdepends=('vim-colorscheme-forest-night-git' 'vim-airline-git')
 makedepends=('git')
 source=("git+https://github.com/sainnhe/vim-color-forest-night.git")
