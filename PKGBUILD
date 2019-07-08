@@ -7,8 +7,8 @@
 
 
 pkgname=mutter-781835-workaround
-pkgver=3.32.2+32+g947da2c5d
-pkgrel=2
+pkgver=3.32.2+39+g61691bacc
+pkgrel=1
 pkgdesc="A window manager for GNOME. This package reverts a commit which may causes performance problems for nvidia driver users. Some performance patches also included."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -21,7 +21,7 @@ checkdepends=(xorg-server-xvfb)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-_commit=947da2c5d583ea7ac743238fe0022f7c4a0d5356 # tags/3.32.2^32
+_commit=61691bacc8be09e18eca6e9a7427f75761d5e532 # tags/3.32.2^39
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
