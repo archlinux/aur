@@ -1,6 +1,6 @@
 # Maintainer: Aaron J Graves <linux@ajgraves.com>
 pkgname=criptext-bin
-pkgver=0.17.23
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='Official Criptext encrypted email client'
 arch=('x86_64')
