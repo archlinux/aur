@@ -14,7 +14,7 @@ build_options+=('lto' 'lto-thin')
 buildenv_functions+=('buildenv_lto')
 
 buildenv_lto() {
-	if [ check_buildoption "lto" "y" || check_buildoption "lto-thin" "y" ] && \
+	if check_buildoption "lto" "y" || check_buildoption "lto-thin" "y" && \
 	[[ -f "$(gcc -print-search-dirs | grep install | awk '{print $2 "liblto_plugin.so"}')" ]]; then
 		[[ "$CC" == "clang" ]] && \
 			CFLAGS+=" -flto" || \
