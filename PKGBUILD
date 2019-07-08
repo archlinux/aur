@@ -4,8 +4,8 @@
 pkgname=vdr-ddci2
 pkgver=1.0.5
 _gitver=a5a7ab1cb6be3ebddb8af77cc18313d75404ed81
-_vdrapi=2.4.0
-pkgrel=2
+_vdrapi=2.4.1
+pkgrel=3
 pkgdesc="Support for stand alone CI by Digital Devices for VDR 2.1.6 and higher."
 url="https://github.com/jasmin-j/vdr-plugin-ddci2"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
