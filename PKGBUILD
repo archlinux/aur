@@ -35,7 +35,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/mkspiffs"
-	make
+	make clean
+	make dist CPPFLAGS="-DSPIFFS_OBJ_META_LEN=4" BUILD_CONFIG_NAME=-custom
 }
 
 check() {
