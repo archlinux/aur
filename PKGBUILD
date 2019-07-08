@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-suspendoutput
 pkgver=2.1.0
-_vdrapi=2.4.0
-pkgrel=1
+_vdrapi=2.4.1
+pkgrel=2
 pkgdesc="Output device that does nothing"
 url="http://phivdr.dyndns.org/vdr/vdr-dummydevice/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
