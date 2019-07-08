@@ -1,0 +1,24 @@
+pkgbase = mingw-w64-mpv
+	pkgdesc = Video player based on MPlayer/mplayer2 (mingw-w64)
+	pkgver = 0.29.1
+	pkgrel = 1
+	url = https://mpv.io/
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-gcc
+	makedepends = perl
+	makedepends = pkg-config
+	makedepends = python
+	depends = mingw-w64-ffmpeg
+	depends = mingw-w64-lcms2
+	depends = mingw-w64-libass
+	depends = mingw-w64-libbluray
+	depends = mingw-w64-libjpeg-turbo
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = mpv-0.29.1.tar.gz::https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz
+	sha256sums = f9f9d461d1990f9728660b4ccb0e8cb5dce29ccaa6af567bec481b79291ca623
+
+pkgname = mingw-w64-mpv
+
