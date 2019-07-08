@@ -4,7 +4,7 @@
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 pkgver=1.20.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
