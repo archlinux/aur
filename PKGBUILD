@@ -14,7 +14,7 @@ license=(GPL)
 depends=(glibc libcap)
 makedepends=(libxslt docbook-xsl git)
 _commit=bc13e228d172cc2385aa445b512c6bf8ca2f3376  # tags/v0.3.3^0
-source=(git+$url#commit=$_commit)
+source=("git+$url#commit=$_commit")
 conflicts=(bubblewrap bubblewrap-git)
 sha256sums=('SKIP')
 
