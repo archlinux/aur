@@ -25,7 +25,7 @@ conflicts=(
     mint-cinnamon-themes
 )
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('7922f878d40ed88d48d662f4f725ab4182bec52a9881b7696bd79f7a28201b66')
+sha256sums=('4aaddbe5a2172904637c6909f24a33332bee6acab60cee7491b944514a5d8327')
 
 build() {
 	cd "${pkgname}"
