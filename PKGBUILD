@@ -1,15 +1,16 @@
 # Maintainer: Xuanrui Qi <me@xuanruiqi.com>
-# Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=azcopy
 pkgver=10.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line utility designed for copying data to/from Microsoft Azure"
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy"
-license=(MIT)
-makedepends=(go dep git)
+license=('MIT')
+makedepends=('go' 'git')
+replaces=('azcopy-10')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Azure/azure-storage-azcopy/archive/v${pkgver}.tar.gz")
 sha512sums=('dff5f745f457cc8b3756de00ac4bfef28412596b8dea6a2d691e6bfed48b533f80f1b843188b8aa687e4748107dc4dce2cef07d5e434c7ed72f0cd98bafb5a79')
 
