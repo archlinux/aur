@@ -1,0 +1,21 @@
+pkgbase = perl-moosex-enumeration
+	pkgdesc = a native attribute trait for enums
+	pkgver = 0.008
+	pkgrel = 1
+	url = https://metacpan.org/release/MooseX-Enumeration
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal>=0
+	checkdepends = perl-test-requires>=0.006
+	depends = perl-module-runtime>=0
+	depends = perl-moose>=1.15
+	depends = perl-match-simple>=0
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/MooseX-Enumeration-0.008.tar.gz
+	md5sums = cbed709ecf12c578d32b7f6492493f1a
+	sha512sums = 5682978fb2efd8bdf4105dca92d442ca0c6d3604b48aa42388c57854cfbb36ce40c677cf5340f432b034a267fd581e3df63754b39dc6b8900b1e0b0e360cc29a
+
+pkgname = perl-moosex-enumeration
+
