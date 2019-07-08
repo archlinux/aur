@@ -1,4 +1,4 @@
-# Maintainer: Nick Boughton (nicholboughton@gmail.com)
+# Maintainer: Nick Boughton (nicholasboughton@gmail.com)
 
 pkgname=quasar-cli
 pkgver=1.0.0
