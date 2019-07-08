@@ -1,18 +1,18 @@
 # Maintainer: Alexey Andreyev <aa13q@ya.ru>
 
-_gitname=libqmatrixclient
+_gitname=libQuotient
 pkgname=qt5-matrixclient-git
-pkgver=r1307.b467b08
+pkgver=r1409.f8eb9db
 pkgrel=1
 pkgdesc="A Qt5 library to write cross-platfrom clients for Matrix."
 arch=(i686 x86_64 armv7 aarch64)
-url="https://matrix.org/docs/projects/sdk/libqmatrixclient.html"
+url="https://github.com/quotient-im/libQuotient"
 license=(LGPLv2.1)
-depends=(qt5-base)
+depends=(qt5-base qt5-olm-git)
 makedepends=(cmake git)
 provides=(libqmatrixclient)
 conflicts=(libqmatrixclient)
-source=("git+https://github.com/QMatrixClient/$_gitname")
+source=("git+https://github.com/quotient-im/$_gitname")
 md5sums=('SKIP')
 
 pkgver() {
@@ -31,7 +31,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_SHARED_LIBS=ON
+    -DBUILD_SHARED_LIBS:BOOL=ON \
+    -DUSE_INTREE_LIBQOLM:BOOL=false
   make
 }
 
