@@ -2,12 +2,13 @@
 pkgname=vim-colorscheme-forest-night-git
 pkgdesc="Comfortable & Pleasant VIM Color Scheme"
 pkgrel=1
-pkgver=v0.2.r6.g349baee
+pkgver=v0.2.r11.g5a6a31e
 arch=('any')
 url="https://github.com/sainnhe/vim-color-forest-night"
-license=('MIT', 'Anti-996')
+license=('MIT' 'Anti-996')
 md5sums=('SKIP')
 makedepends=('git')
+depends=('vim')
 _pkgname=vim-color-forest-night
 source=("git+https://github.com/sainnhe/vim-color-forest-night.git")
 
