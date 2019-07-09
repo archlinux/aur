@@ -1,15 +1,16 @@
-# Maintainer: Maarten de Vries <maarten@de-vri.es>
+# Maintainer: jakob <grandchild@gmx.net>
+# Contributor: Maarten de Vries <maarten@de-vri.es>
 # Contributor: Nathan Ringo <tikiking1@gmail.com>
 
 pkgname=libfreenect2
 pkgver=0.2.0.p1
 _commit=e38cf32a4401b904c437fbfdb4051d0d75d9a79b
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source drivers for the Kinect for Windows v2"
 arch=(i686 x86_64)
 url="http://openkinect.org"
 license=(Apache GPL)
-depends=(libusb glfw turbojpeg ocl-icd)
+depends=(libusb glfw libjpeg-turbo ocl-icd)
 makedepends=(cmake opencl-headers)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenKinect/$pkgname/archive/$_commit.tar.gz")
 sha512sums=('44319c2ad503f76de31976b5a33ac5963d03fbea6e953b798980b6ca4ba0f8f4388acd7fed07a53fb5930bffde818b77c6b99a82cd90990a43104285a22376c8')
