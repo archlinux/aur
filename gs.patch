@@ -1,0 +1,22 @@
+--- src.pristine/n64/makefile.in	2019-06-15 21:50:50.642730540 -0400
++++ src.new/n64/makefile.in	2019-07-06 22:20:03.714150455 -0400
+@@ -194,6 +194,7 @@
+ 			(cd "$(DESTDIR)$(sysroot)/usr/bin" && $(LN_S) -f "$(bindir)/$$f" "$${f##$(target)-}"); \
+ 		fi \
+ 	done
++	(cd "$(DESTDIR)$(sysroot)/usr/bin" && $(LN_S) -f "$(bindir)/gs.n64" "$(DESTDIR)$(sysroot)$(bindir)/gs");
+ 	cp -R -p "$(srcdir)/include" "$(srcdir)/lib" "$(DESTDIR)$(sysroot)/usr"
+ 	touch $@
+ clean-sys                     :
+diff -aur src.pristine/n64/src/grc/resource.c src.new/n64/src/grc/resource.c
+--- src.pristine/n64/src/libgs/makefile.in	2019-06-15 21:50:50.656063865 -0400
++++ src.new/n64/src/libgs/makefile.in	2019-07-06 22:17:44.897606509 -0400
+@@ -8,7 +8,7 @@
+ LDFLAGS                       = -Wl,-rpath,\$$ORIGIN/../lib @LDFLAGS@
+ LDLIBS                        = @LIBUSB@ @LIBM@
+ SRC                           = $(srcdir)/src/lib/*.c $(srcdir)/src/exe/*.c $(srcdir)/../../include/vector/vector.c
+-PROGNAME                      = gs
++PROGNAME                      = gs.n64
+ INSTALL                       = @INSTALL@
+ MKDIR_P                       = @MKDIR_P@
+ 
