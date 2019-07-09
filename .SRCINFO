@@ -1,7 +1,7 @@
 pkgbase = python-sqlparse-0_3_0
 	pkgdesc = A non-validating SQL parser module for Python
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andialbrecht/sqlparse
 	arch = any
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = python-sqlparse-0_3_0
 	depends = python
 	provides = python-sqlparse
 	conflicts = python-sqlparse
-	conflicts = pyton-sqlparse-git
+	conflicts = python-sqlparse-git
 	source = python-sqlparse-0.3.0.zip::https://github.com/andialbrecht/sqlparse/archive/0.3.0.zip
 	md5sums = 44e66ecc480fd4ac1309346c98e28e5b
 
