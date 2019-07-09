@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Sean V Kelley <seanvk@posteo.de>
 
-pkgname=jitterdebugger
+pkgname=jitterdebugger-git
 pkgver=r93.9a0eb5f
 pkgrel=1
 pkgdesc="Real time response measurement tool"

@@ -1,4 +1,4 @@
-pkgbase = jitterdebugger
+pkgbase = jitterdebugger-git
 	pkgdesc = Real time response measurement tool
 	pkgver = r93.9a0eb5f
 	pkgrel = 1
@@ -13,8 +13,8 @@ pkgbase = jitterdebugger
 	provides = jitterplot
 	provides = jittersamples
 	options = !emptydirs
-	source = jitterdebugger::git://github.com/igaw/jitterdebugger.git
+	source = jitterdebugger-git::git://github.com/igaw/jitterdebugger.git
 	sha256sums = SKIP
 
-pkgname = jitterdebugger
+pkgname = jitterdebugger-git
 
