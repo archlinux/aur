@@ -9,7 +9,7 @@ license=('GPL')
 depends=('gnome-shell')
 makedepends=('git')
 optdepends=('plata-theme: gtk and shell theme'
-            'tela-icon-theme: icon theme'
+            'tela-icon-theme-git: icon theme'
             'ttf-roboto: font')
 groups=('gnome-shell-extensions')
 source=('git+https://github.com/PapyElGringo/material-shell.git')
