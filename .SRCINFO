@@ -1,0 +1,15 @@
+pkgbase = clr-power-tweaks
+	pkgdesc = Power management tweaks for Clear Linux
+	pkgver = 200
+	pkgrel = 1
+	url = https://github.com/clearlinux/clr-power-tweaks
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	options = !emptydirs
+	source = https://github.com/clearlinux/clr-power-tweaks/archive/200.tar.gz
+	sha256sums = 7d86a81f172a421afa05538cb8dd260683f9a51b964226767c24243102ce199f
+
+pkgname = clr-power-tweaks
+
