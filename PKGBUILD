@@ -1,6 +1,6 @@
   # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 pkgname=('n64-git' 'n64-tools-git')
-pkgver=20190523
+pkgver=r100.c9c95e7
 pkgrel=1
 arch=('x86_64' 'i686' 'mips64')
 url="https://github.com/glankk/n64"
@@ -13,10 +13,10 @@ options=('!buildflags' '!strip')
 _prefix=/usr
 
 pkgver() {
-  # Identify latest version.
-  cd "$srcdir/n64"
-  git log -1 --format="%cd" --date=short | sed 's|-||g'
+  cd ${srcdir}/n64/
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 
 prepare() {
   # The gs binary conflicts with GhostScript on Linux. Rename it to gs.n64.

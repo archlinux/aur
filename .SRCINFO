@@ -1,5 +1,5 @@
 pkgbase = n64-git
-	pkgver = 20190523
+	pkgver = r100.c9c95e7
 	pkgrel = 1
 	url = https://github.com/glankk/n64
 	arch = x86_64
