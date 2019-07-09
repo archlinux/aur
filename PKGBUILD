@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=60.7.2
+pkgver=68.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ url="https://www.mozilla.org/en-US/firefox/organizations/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss hunspell ttf-font libpulse)
 makedepends=(unzip zip diffutils python2 yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack gtk2)
+             autoconf2.13 rust clang llvm jack gtk2 cbindgen)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -22,15 +22,10 @@ provides=(firefox)
 conflicts=(firefox)
 options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
-        firefox.desktop firefox-symbolic.svg
-        rust_133-part0.patch 'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664' deny_missing_docs.patch)
-sha256sums=('8a918ea70c806524f293336f6f4574bb6e69ca1e98e6e5e0e5c2d6ad2ac26ac2'
+        firefox.desktop firefox-symbolic.svg)
+sha256sums=('dbb494521b3e246b367e453cc8d438b82b9fd2e05da273f5901391f0c52008b5'
             '78a920ffdd44e1d51445e7255da4863604be96a4b3cd7a7cb13ecc2efae6cb39'
-            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
-            'c10521badc262b476e844d3f3045ddf27e28d83d49b5db0d0e19431f06386e4d'
-            '8b37332dd205946ea95c606103b5b0e1e8498819051ea1c1bce79f04fd88ebca'
-            '08ab4293d6008524a38e20b428c750c4c55a2f7189e9a0067871ad723c1efab5'
-            'cb1116c783995b8187574f84acb8365681aedaa2c76222cf060d31fedcb063c4')
+            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -47,14 +42,6 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
   cd firefox-${pkgver}
-
-  # Bug 1521249 --enable-rust-simd fails to build using Rust 1.33
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
-  patch -Np1 -i ../rust_133-part0.patch
-  patch -Np1 -i ../rust_133-part1.patch || true
-  patch -Np1 -i ../rust_133-part2.patch
-  patch -Np1 -i ../deny_missing_docs.patch
-  rm -vf third_party/rust/boxfnonce/.travis/id_rsa.enc
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -163,7 +150,6 @@ END
     "$pkgdir/usr/share/applications/firefox.desktop"
 
   # Use system-provided dictionaries
-  rm -r "$pkgdir"/usr/lib/firefox/dictionaries
   ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/firefox/dictionaries"
   ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/firefox/hyphenation"
 
