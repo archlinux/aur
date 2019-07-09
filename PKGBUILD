@@ -1,4 +1,5 @@
-# Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
+# Maintainer: Dominic Brekau <aur@dominic.brekau.de>
+# Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jeff Mickey <jeff@archlinux.org>
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
@@ -7,13 +8,13 @@
 
 pkgname=twinkle-qt5
 _pkgname=twinkle
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Softphone for voice over IP and IM communication using SIP"
 arch=('x86_64' 'i686')
 url="http://www.twinklephone.com/"
 license=('GPL')
-depends=('file' 'libsndfile' 'gsm' 'speex' 'qt5-quick1' 'ccrtp' 'ilbc' 'libzrtpcpp')
+depends=('file' 'libsndfile' 'gsm' 'speex' 'qt5-declarative' 'ccrtp' 'ilbc' 'libzrtpcpp')
 makedepends=('pkg-config' 'boost' 'cmake' 'git' 'qt5-tools')
 source=("git+https://github.com/LubosD/$_pkgname.git#tag=v${pkgver}")
 md5sums=('SKIP')
