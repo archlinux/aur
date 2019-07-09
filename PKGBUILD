@@ -12,7 +12,7 @@ depends=('gsl' 'libtool' 'python')
 makedepends=('cmake' 'cython')
 optdepends=('ipython' 'python-numpy' 'python-scipy' 'python-matplotlib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nest/nest-simulator/archive/v${pkgver}.tar.gz")
-sha256sums=('34534dce281f462fd6275acd1e783d5c6a59c4a8e0e10088098b1d46c3da4914')
+sha256sums=('7295c936fbdd5486395b06f54f0d4d35d9a1b6ee50b7b844186ec2c92de641d1')
 
 build() {
   mkdir -p "${srcdir}/build" && cd "${srcdir}/build"
