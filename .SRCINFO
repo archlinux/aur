@@ -1,0 +1,17 @@
+pkgbase = python-jupytext
+	pkgdesc = Jupyter notebooks as Markdown documents, Julia, Python or R scripts
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://github.com/mwouts/jupytext
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = jupyter-notebook
+	depends = python-pyaml
+	depends = python-mock
+	depends = python-testfixtures
+	source = python-jupytext-1.1.7.tar.gz::https://github.com/mwouts/jupytext/archive/1.1.7.tar.gz
+	sha256sums = 867a16cc73b359d485b69c0f1400fbdb01906b57d78fdbed93825f4668879a1e
+
+pkgname = python-jupytext
+
