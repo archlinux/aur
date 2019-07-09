@@ -1,0 +1,17 @@
+pkgbase = vim-ron-git
+	pkgdesc = RON syntax highlighting for Vim.
+	pkgver = r4.2ec8a5d
+	pkgrel = 1
+	url = https://github.com/ron-rs/ron.vim
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	makedepends = git
+	depends = vim
+	provides = vim-ron
+	conflicts = vim-ron
+	source = git+https://github.com/ron-rs/vim-ron.git
+	md5sums = SKIP
+
+pkgname = vim-ron-git
+
