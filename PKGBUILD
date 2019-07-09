@@ -1,6 +1,6 @@
 # Maintainer: snafu
 pkgname=(env-modules-tcl)
-pkgver=4.2.4
+pkgver=4.2.5
 pkgrel=0
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
@@ -83,3 +83,5 @@ package() {
   ln -s ./python.py ${pkgdir}${config_path}/${moduledir}/init/python
 }
 
+md5sums=('1d0aeea49a86cba41f6fb0b701110eb1'
+         '48195d9f1c157c17b5c07e3997739f9c')
