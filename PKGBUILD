@@ -1,13 +1,13 @@
 # Contributor: Kozec <kozec.at.kozec.dot.com>
 
 pkgname=python-sqlparse-git
-pkgver=0.1.18.32.g7b80406
+pkgver=0.3.0.22.g338914c
 pkgrel=1
 pkgdesc="Non-validating SQL parser for Python. Git version"
 arch=(i686 x86_64)
-url="http://code.google.com/p/python-sqlparse/"
+url="https://github.com/andialbrecht/sqlparse"
 license=('BSD')
-depends=('python2')
+depends=('python' 'python-setuptools')
 source=("git+https://github.com/andialbrecht/sqlparse.git")
 
 provides=('python-sqlparse')
@@ -22,7 +22,7 @@ pkgver() {
 
 package() {
   cd $srcdir/sqlparse
-  python2.7 setup.py install --root=$pkgdir/ --optimize=1 || return 1
+  python setup.py install --root=$pkgdir/ --optimize=1 || return 1
 }
 
 
