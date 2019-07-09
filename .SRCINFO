@@ -1,6 +1,6 @@
 pkgbase = pam_u2f-git
 	pkgdesc = Universal 2nd Factor (U2F) PAM authentication module from Yubico
-	pkgver = 1.0.2.r2.gb5729e8
+	pkgver = 1.0.8.r27.g683860d
 	pkgrel = 1
 	url = https://developers.yubico.com/pam-u2f/
 	arch = armv6h
@@ -16,9 +16,10 @@ pkgbase = pam_u2f-git
 	makedepends = libxml2
 	makedepends = docbook-xml
 	makedepends = docbook-xsl
+	makedepends = gengetopt
 	depends = pam
-	depends = libu2f-host
-	depends = libu2f-server
+	depends = libfido2
+	depends = openssl
 	provides = pam_u2f
 	conflicts = pam_u2f
 	source = git://github.com/Yubico/pam-u2f#branch=master
