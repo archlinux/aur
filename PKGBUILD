@@ -2,7 +2,7 @@
 
 pkgname="emojicode"
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
@@ -13,7 +13,8 @@ depends=(
 )
 makedepends=(
     "gcc>=7.2"
-    "llvm>=7"
+    "llvm7"
+    "llvm-libs"
     "cmake>=3.5.1"
     "ninja"
 )
@@ -30,6 +31,8 @@ md5sums=("SKIP")
 
 build() {
     cd "${srcdir}/${pkgname}"
+
+    sed -i 's/7.0/7.1/' Compiler/CMakeLists.txt
 
     mkdir -p build
     cd build
