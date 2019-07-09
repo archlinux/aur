@@ -1,7 +1,7 @@
 # Maintainer: Tom Hiller <thrilleratplay@gmail.com>
 pkgname=notable-bin
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="The markdown-based note-taking app that doesn't suck"
 arch=('x86_64')
@@ -27,6 +27,9 @@ validpgpkeys=()
 
 package() {
   tar xf data.tar.xz
+
+  # Work around for https://github.com/electron/electron/issues/17972
+  chmod 4755 opt/Notable/chrome-sandbox
 
   mv usr "$pkgdir"
   mv opt "$pkgdir"
