@@ -20,7 +20,7 @@ install=
 changelog=
 source=("https://github.com/httptoolkit/httptoolkit-desktop/releases/download/v${pkgver}/httptoolkit_${pkgver}_amd64.deb")
 noextract=()
-md5sums=("12150a7e58dc432a4df47a2ef3b0fc67")
+md5sums=('5d779673613b2939a0ed2a7df91ea12c')
 validpgpkeys=()
 
 package() {
