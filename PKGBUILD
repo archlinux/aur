@@ -1,20 +1,28 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
-pkgname=python-caja
-pkgver=1.20.2
-pkgrel=1
+pkgname="python-caja"
+pkgver="1.22.0"
+pkgrel="1"
 pkgdesc="Python binding for Caja components"
-arch=('i686' 'x86_64')
+arch=("x86_64")
 url="http://mate-desktop.org"
-license=('GPL')
-depends=('caja' 'python2-gobject' 'python2')
+license=("GPL")
+depends=("caja" "python")
 source=("http://pub.mate-desktop.org/releases/${pkgver%.*}/python-caja-${pkgver}.tar.xz")
-sha1sums=('096d13d711090ccf53475af4d5fa7ae6b6badfdf')
+md5sums=('7978c262379926c45dfba8a60b5f414b')
+options=("!emptydirs")
+
+prepare()
+{
+    cd ${srcdir}/${pkgname}-${pkgver}
+    NOCONFIGURE=1 ./autogen.sh
+}
 
 build()
 {
     cd ${srcdir}/${pkgname}-${pkgver}
-    PYTHON=/usr/bin/python2 ./configure --prefix=/usr
+    #PYTHON=/usr/bin/python2 ./configure --prefix=/usr
+    ./configure --prefix=/usr
     make
 }
 
