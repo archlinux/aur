@@ -1,0 +1,19 @@
+pkgbase = vim-lalrpop-git
+	pkgdesc = LALRPOP Vim plugin with minimal syntax-highlighting functionality.
+	pkgver = r2.7073eec
+	pkgrel = 1
+	url = https://github.com/qnighy/lalrpop.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	license = APACHE
+	makedepends = git
+	depends = vim
+	depends = vim-rust-git
+	provides = vim-lalrpop
+	conflicts = vim-lalrpop
+	source = git+https://github.com/qnighy/vim-lalrpop.git
+	md5sums = SKIP
+
+pkgname = vim-lalrpop-git
+
