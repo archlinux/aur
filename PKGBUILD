@@ -20,6 +20,7 @@ checkdepends=(xorg-server-xvfb)
 options=(debug !strip)
 provides=(mutter)
 conflicts=(mutter)
+replaces=(mutter-781835-workaround)
 groups=(gnome)
 _commit=ccab0f470dcc556073754c8adf9413819d22cc14 # tags/3.32.2^40
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
