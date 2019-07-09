@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=retext-git
-pkgver=7.1.0.r1110.7fdc3ad
+pkgver=7.1.0.r1115.047ca40
 pkgrel=1
 pkgdesc="A simple editor for Markdown and ReStructuredText markup languages."
 arch=('any')
@@ -13,7 +13,8 @@ depends=('python-pyqt5'
          'python-markups'
          'shared-mime-info'
          'xdg-utils'
-         'desktop-file-utils'
+         'hicolor-icon-theme' 
+	 'desktop-file-utils'
          'gconf')
 makedepends=('imagemagick' 'git' 'qt5-tools')
 optdepends=('python-markdown: for Markdown language support'

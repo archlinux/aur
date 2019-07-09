@@ -1,6 +1,6 @@
 pkgbase = retext-git
 	pkgdesc = A simple editor for Markdown and ReStructuredText markup languages.
-	pkgver = 7.1.0.r1110.7fdc3ad
+	pkgver = 7.1.0.r1115.047ca40
 	pkgrel = 1
 	url = https://github.com/retext-project/retext
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = retext-git
 	depends = python-markups
 	depends = shared-mime-info
 	depends = xdg-utils
+	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = gconf
 	optdepends = python-markdown: for Markdown language support
