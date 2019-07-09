@@ -1,0 +1,13 @@
+pkgbase = indole
+	pkgdesc = INDOLE is an open framework for data transfer with fully customized protocol by end user.
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/c8h7n/indole
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go
+	source = https://github.com/c8h7n/indole/archive/v0.5.tar.gz
+	sha256sums = a513b300c88507718f5d351988d6603c5bf63ecd6ade756153341e71f55e1c29
+
+pkgname = indole
+
