@@ -1,16 +1,16 @@
 # Maintainer: pallxk <aur at pallxk dot com>
 
 pkgname=python-azure-git
-pkgver=4.0.0.r720.gff6fd86c4
+pkgver=4.0.0.r801.gaed2963b27
 pkgrel=1
 pkgdesc="Microsoft Azure SDK for Python"
 arch=('any')
 url="https://github.com/Azure/azure-sdk-for-python"
 license=('MIT')
-depends=('python-azure-storage' 'python-msrestazure')
+depends=('python-msrestazure')
 makedepends=('git' 'python-setuptools')
 provides=('python-azure')
-conflicts=('python-azure')
+conflicts=('python-azure' 'python-azure-storage')
 source=("git+https://github.com/Azure/azure-sdk-for-python.git")
 md5sums=('SKIP')
 

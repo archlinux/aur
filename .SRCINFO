@@ -1,16 +1,16 @@
 pkgbase = python-azure-git
 	pkgdesc = Microsoft Azure SDK for Python
-	pkgver = 4.0.0.r720.gff6fd86c4
+	pkgver = 4.0.0.r801.gaed2963b27
 	pkgrel = 1
 	url = https://github.com/Azure/azure-sdk-for-python
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python-azure-storage
 	depends = python-msrestazure
 	provides = python-azure
 	conflicts = python-azure
+	conflicts = python-azure-storage
 	source = git+https://github.com/Azure/azure-sdk-for-python.git
 	md5sums = SKIP
 
