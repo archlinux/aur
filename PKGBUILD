@@ -2,10 +2,10 @@
 
 _pkgname=radiotray-ng
 pkgname=${_pkgname}-git
-_pkgver=0.2.6
+_pkgver=0.2.7
 _branch=v${_pkgver}-dev
 epoch=1
-pkgver=0.2.6dev+5+5b2ec8b
+pkgver=0.2.7dev+1+49bddec
 pkgrel=1
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,11 +14,11 @@ license=('GPL')
 depends=('boost-libs' 'curl' 'gst-plugins-good' 'jsoncpp' 'libappindicator-gtk3'
          'libbsd' 'libnotify' 'libxdg-basedir' 'glibmm' 'wxgtk3')
 makedepends=('cmake' 'boost' 'lsb-release' 'git' 'bc')
-optdepends=('python2-lxml: Convert radiotray bookmarks to radiotray-ng format')
+optdepends=('python-lxml: Convert radiotray bookmarks to radiotray-ng format')
 options=('!libtool')
-provides=("${_pkgname}=${pkgver%%+*}")
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-_release_commit=02d6b3c776f1743a6672c7148ccdaa99ce1b95b0
+_release_commit=c34a98583ef507115236c1226a5631191748f55a
 source=("${_pkgname}::git+https://github.com/ebruck/radiotray-ng#branch=${_branch}")
 sha256sums=('SKIP')
 
