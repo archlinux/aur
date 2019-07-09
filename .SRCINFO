@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official Telegram Desktop client (dev branch)
-	pkgver = 1.7.10.r0.gadf5c8ec7
+	pkgver = 1.7.14.r1.g8008d8a3d
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -30,7 +30,7 @@ pkgbase = telegram-desktop-git
 	source = GSL::git+https://github.com/Microsoft/GSL.git
 	source = crl::git+https://github.com/telegramdesktop/crl.git
 	source = xxHash::git+https://github.com/Cyan4973/xxHash.git
-	source = qtlottie::git+https://github.com/telegramdesktop/qtlottie.git
+	source = rlottie::git+https://github.com/john-preston/rlottie.git
 	source = tg.protocol::https://git.archlinux.org/svntogit/community.git/plain/trunk/tg.protocol?h=packages/telegram-desktop
 	source = CMakeLists.inj::https://git.archlinux.org/svntogit/community.git/plain/trunk/CMakeLists.inj?h=packages/telegram-desktop
 	source = tdesktop.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop.patch?h=packages/telegram-desktop
@@ -39,7 +39,8 @@ pkgbase = telegram-desktop-git
 	source = demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop
 	source = Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/Use-system-wide-font.patch?h=packages/telegram-desktop
 	source = tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_lottie_animation_qtdebug.patch?h=packages/telegram-desktop
-	source = tdesktop_qtlottie_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_qtlottie_qtdebug.patch?h=packages/telegram-desktop
+	source = tdesktop-ffmpeg-fix-convertFromARGB32PM.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop-ffmpeg-fix-convertFromARGB32PM.patch?h=packages/telegram-desktop
+	source = tdesktop-rlottie-static-qt.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop-rlottie-static-qt.patch?h=packages/telegram-desktop
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -55,8 +56,9 @@ pkgbase = telegram-desktop-git
 	sha512sums = d60694dc701aa985b0e82a12c9732b945082470441c687b33167a94f94efcf253baf43bb7280ec160ba338485ee5c62de138e4804cae05f27cc5cf4298166d39
 	sha512sums = 6d0bac5aa4c4992b5400a9a9318f7a4e92d5eab961917cf0b05cdd251ab66a77c52ec8fbef246e8019606a7624d7b5420b87f8153e071e9724c7d2f5c94e47c0
 	sha512sums = ce6be003220267bac5483caf8302b492e1581892bc36d35a61236ebf9f9d766b8bd2159557a1c36256aa85f461797a38bfaae57b12da7a72101b21c0b17ed653
-	sha512sums = 5703b8228ab26f736928b56b90947602e78774648ff354ae10a53ad4535289ac12c8b7a049cabaed7591909246987be403dc470d48dd72a9ec1ce776a2977a66
-	sha512sums = c101761ff0aa6d4be38d0159bee31d02f66cfda84dbfb614e35e8d1c8f73bd78346636764a823bf1ce33b5364e99ea71330de60e37190f78d55f25a183f0d0cc
+	sha512sums = a83b80668b2dc2cc77c857069fdb45b487793fda01ad8a63bab66c6a1c71e5d032050e4ec7efb5b4c3216badc5377c856ef1f4a59c2e02b24ee53b1d83124bf3
+	sha512sums = 0dec897774142a09835d36e4064132e92e9404081eb4cba33d7e2643de475ff195448b527181fdb444a15764960dfc55eb59964b77a09642310c7b8e8c236e73
+	sha512sums = 1f7cecfc8698ff9e0abce87226e993e73fdf35111d037c2847f7a1f30e65483ab332e45a1bdb86f6ac4c420c1c1429ac20454655d0e982477e37b7c48f0b1599
 
 pkgname = telegram-desktop-git
 
