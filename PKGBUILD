@@ -1,7 +1,7 @@
-# Maintainer: hobbledehoy899 <hobbledehoy899@protonmail.org>
+# Maintainer: Minzord
 
 pkgname=palemoon-unstable-bin
-pkgver=27.9.0a1.20180320
+pkgver=28.7.0a1.20190505
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('x86_64')
@@ -12,12 +12,12 @@ optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: record, convert, and stream audio and video')
 provides=("palemoon=$pkgver")
-conflicts=('palemoon')
+conflicts=('palemoon' 'palemoon-git' 'palemoon-26' 'palemoon-uxp-bin')
 options=('!strip')
-source=(palemoon.desktop)
-source_x86_64=("http://linux.palemoon.org/datastore/release/palemoon-unstable-latest.linux-x86_64.tar.bz2")
-sha256sums=('c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e')
-sha256sums_x86_64=('d83473a4c64a10a3575ad299cb6e4b18217252862cecf20d62e8ca161033f475')
+source=("http://linux.palemoon.org/datastore/release/palemoon-unstable-latest.linux-x86_64.tar.bz2"
+        "palemoon.desktop")
+sha256sums=('865d839c4d72e66fd16c1f237ef9ca7f84cd87c74bed3cbf1cb5d3040b6b27e1'
+            'c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e')
 
 package() {
   install -d "$pkgdir"/usr/{bin,lib}
