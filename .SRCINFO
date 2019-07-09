@@ -1,13 +1,16 @@
 pkgbase = teamspeak3-massmover
 	pkgdesc = Plugin for Teamspeak 3. TS3MassMover by Mr. S
-	pkgver = 0.61.22
+	pkgver = 0.61.23
 	pkgrel = 1
+	url = https://forum.teamspeak.com/threads/129129-TS3MassMover-TS3-Client-Plugin-to-move-clients
 	arch = x86_64
 	license = Unknown
 	makedepends = teamspeak3-pluginsdk>=3.1.0.1
-	depends = teamspeak3>=3.1.0.1
-	source = TS3MassMover-v0.61.22.zip
-	md5sums = 381bd5ee4d80df77a68d4ef9c7065e24
+	makedepends = unzip
+	makedepends = qt5-base
+	depends = teamspeak3>=3.3.0
+	source = TS3MassMover-v0.61.23.zip::https://forum.teamspeak.com/attachment.php?attachmentid=17992&d=1560786393
+	sha256sums = 17342a8071b2357005df9cf93b3ec97476f1b115f9501ef23cc84a94e32e6b3f
 
 pkgname = teamspeak3-massmover
 
