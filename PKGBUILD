@@ -5,14 +5,14 @@
 
 pkgname=gnome-shell-performance
 pkgver=3.32.2+5+gae0567949
-pkgrel=2
+pkgrel=3
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
 license=(GPL2)
 depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-settings-daemon
          gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libcroco libgdm libsecret
-         mutter-781835-workaround nm-connection-editor unzip gstreamer libibus libcap-ng)
+         mutter-performance nm-connection-editor unzip gstreamer libibus libcap-ng)
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
              sassc)
 optdepends=('gnome-control-center: System settings'

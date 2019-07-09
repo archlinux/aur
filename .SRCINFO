@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches
 	pkgver = 3.32.2+5+gae0567949
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	install = gnome-shell-performance.install
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = gnome-shell-performance
 	depends = libcroco
 	depends = libgdm
 	depends = libsecret
-	depends = mutter-781835-workaround
+	depends = mutter-performance
 	depends = nm-connection-editor
 	depends = unzip
 	depends = gstreamer
