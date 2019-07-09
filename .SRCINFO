@@ -1,7 +1,7 @@
 pkgbase = python-ptvsd
 	pkgdesc = Python debugger package for use with Visual Studio and Visual Studio Code
 	pkgver = 4.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/ptvsd
 	arch = x86_64
 	license = MIT

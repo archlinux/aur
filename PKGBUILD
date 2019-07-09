@@ -2,7 +2,7 @@
 _pkgname=ptvsd
 pkgname=python-$_pkgname
 pkgver=4.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Python debugger package for use with Visual Studio and Visual Studio Code"
 url="https://github.com/microsoft/$_pkgname"
 license=("MIT")
@@ -34,8 +34,17 @@ _badfiles=(
 
 build() {
   cd $_pkgname-$pkgver
+
+  _vers="$pkgver-$pkgrel-arch"
+  echo "Setting build version to $_vers in $PWD/setup.py"
+  sed -i "/version=/s/=.*/=\'$_vers\',/" setup.py
+
   python setup.py build
   cd build/lib/$_pkgname
+
+  echo "Setting embedded version to $_vers in $PWD/_version.py"
+  sed -i "/\"version\":/s/\"[^\"]*\"$/\"$_vers\"/" _version.py
+
   echo "Removing legacy/unneeded files for Arch Linux .."
   for f in "${_badfiles[@]}"; do
       rm -v $f

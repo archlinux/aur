@@ -18,6 +18,6 @@ sum: $(src)
 	updpkgsums
 
 clean:
-	rm -rf $(inf) $(nam)-* *.tar *.tar.xz *.tar.gz pkg/ src/ *.part
+	rm -rf $(inf) $(nam)-* *.tar *.tar.xz pkg/ src/ *.part
 
 # vim: se ts=4:
