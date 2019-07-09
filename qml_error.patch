@@ -1,0 +1,16 @@
+diff --git a/YACReaderLibrary/qml/GridComicsView.qml b/YACReaderLibrary/qml/GridComicsView.qml
+index fd12c3c..17adb73 100644
+--- a/YACReaderLibrary/qml/GridComicsView.qml
++++ b/YACReaderLibrary/qml/GridComicsView.qml
+@@ -460,8 +460,7 @@ Rectangle {
+             }
+         }
+ 
+-        Component {
+-            id: currentComicView
++        property Component currentComicView: Component {
+             Rectangle {
+                 id: currentComicViewTopView
+                 color: "#00000000"
+diff --git a/common/gl/yacreader_flow_gl.cpp b/common/gl/yacreader_flow_gl.cpp
+index d9da8ae..f292d4e 100644
