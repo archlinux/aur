@@ -1,6 +1,6 @@
 pkgbase = tutanota-desktop-linux
 	pkgdesc = Official Tutanota email client
-	pkgver = 3.55.3
+	pkgver = 3.55.4
 	pkgrel = 1
 	url = https://tutanota.com/blog/posts/desktop-clients/
 	install = tutanota-desktop-linux.install
