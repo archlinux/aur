@@ -1,7 +1,7 @@
 # Maintainer: Aidan Coward <aidan -dot- coward -at- gmail -dot- com>
 
 pkgname=xmage
-pkgver=1.4.37V2
+pkgver=1.4.37V3
 pkgrel=0
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
@@ -14,14 +14,15 @@ license=('MIT')
 source=("http://xmage.de/files/xmage_${pkgver}.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt')
 
-sha256sums=("c9754cc918c3a7f554c484d95909a4f337ca5eabe8ad2a55cf3237c389e1ae4d" 
+sha256sums=("64ec4c3a1e5354e66518f4863823312ae9f843db15c787969b5b72696516bf1e" 
 	"SKIP")
 
 ###########################
 # x86_64 ONLY
 # Due to compatibility issues with the current version of java in the repositories,
 # xmage now installs a dedicated version of java to /usr/share/xmage/java
-# for all other architectures, the xmage package requires only jre8-openjdk
+#
+# For all other architectures, the xmage package requires only jre8-openjdk
 ###########################
 
 if [[ "$CARCH" == 'x86_64' ]]; then
