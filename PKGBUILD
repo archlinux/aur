@@ -3,9 +3,9 @@
 
 name=cloudcompare
 pkgname=${name}
-_fragment="#tag=v2.10.2"
-pkgver=2.10.2
-pkgrel=2
+_fragment="#tag=v2.10.3"
+pkgver=2.10.3
+pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
