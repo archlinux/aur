@@ -1,7 +1,7 @@
 pkgbase = chez-scheme
 	pkgdesc = Chez Scheme is a compiler and run-time system for the language of the Revised^6 Report on Scheme (R6RS), with numerous extensions.
 	pkgver = 9.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cisco/ChezScheme
 	arch = i686
 	arch = x86_64
