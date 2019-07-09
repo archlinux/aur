@@ -1,14 +1,14 @@
-# Maintainer: Abhishek Mudgal
+# Maintainer: Agesly Danzig
 
 pkgname=pext-git
 _pkgname=Pext
-pkgver=0.22
+pkgver=0.24.0.r16.6aaaffe
 pkgrel=1
 pkgdesc='Python-based extendable tool'
 url='https://pext.hackerchick.me/'
 arch=(any)
 license=(GPL3)
-depends=(python-dulwich python-pynput python-pip python-pyqt5 qt5-quickcontrols)
+depends=(python-dulwich python-pynput python-pip python-pyqt5 qt5-quickcontrols python-opengl python-opengl-accelerate python-requests python-watchdog)
 makedepends=(python-setuptools)
 optdepends=('pass: password manager support'
             'ffmpeg: radiobrowser music support'
@@ -25,6 +25,7 @@ pkgver() {
 
 prepare() {
   sed "s/USE_INTERNAL_UPDATER = .*/USE_INTERNAL_UPDATER = False/" -i ${srcdir}/${_pkgname}/pext/constants.py
+  >${srcdir}/${_pkgname}/requirements.txt
 }
 
 package() {
