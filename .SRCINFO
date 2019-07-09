@@ -1,0 +1,17 @@
+pkgbase = vim-dyon-git
+	pkgdesc = Vim syntax highlighting for Dyon language.
+	pkgver = r13.f171ea7
+	pkgrel = 1
+	url = https://github.com/thyrgle/vim-dyon
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	makedepends = git
+	depends = vim
+	provides = vim-dyon
+	conflicts = vim-dyon
+	source = git+https://github.com/thyrgle/vim-dyon.git
+	md5sums = SKIP
+
+pkgname = vim-dyon-git
+
