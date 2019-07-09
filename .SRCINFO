@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-disable-workspace-switcher-popup-git
+	pkgdesc = Gnome Shell 3 extension that disables the arrow displayed during workspace switching.
+	pkgver = 9b4e2bb
+	pkgrel = 1
+	url = https://github.com/windsorschmidt/disable-workspace-switcher-popup
+	arch = any
+	makedepends = git
+	depends = gnome-shell>=3.0.2
+	depends = xorg-xprop
+	provides = gnome-shell-extension-disable-workspace-switcher-popup
+	source = gnome-shell-extension-disable-workspace-switcher-popup-git::git+https://github.com/windsorschmidt/disable-workspace-switcher-popup
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-disable-workspace-switcher-popup-git
+
