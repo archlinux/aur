@@ -1,4 +1,4 @@
-pkgbase = pkgbase
+pkgbase = latex-template-lipics
 	pkgdesc = LaTeX template for LIPIcs (Leibniz International Proceedings in Informatics)
 	pkgver = 2019
 	pkgrel = 1

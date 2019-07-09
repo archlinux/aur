@@ -1,6 +1,5 @@
 # Maintainer Augusto Modanese <modanese@kit.edu>
 
-pkgbase=pkgbase
 pkgname=latex-template-lipics
 pkgver=2019
 pkgrel=1
