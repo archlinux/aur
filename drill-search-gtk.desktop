@@ -6,5 +6,5 @@ Icon=drill-search-gtk
 Exec=/usr/bin/drill-search-gtk
 TryExec=/usr/bin/drill-search-gtk
 Terminal=false
-Categories=Application;Utility;
+Categories=Utility;
 Keywords=Search;FileSearch;File Search;Find;Search;
