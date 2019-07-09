@@ -2,21 +2,22 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 # Contributor: Valentin Huélamo <vhuelamo at gmail dot com>
 
-pkgname=cajarename
-_pkgnamealt=caja-rename
+pkgname="cajarename"
+_pkgnamealt="caja-rename"
 pkgver="19.7.9.31"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Batch renaming extension for Caja"
-arch=('any')
+arch=("any")
 url="https://tari.in/www/software/cajarename"
-license=('GPL3')
-depends=('caja' 'python' 'python-gobject' 'gobject-introspection' 'gtk3')
-makedepends=('bzr' 'python-setuptools' 'python-polib')
-install=${pkgname}.install
+license=("GPL3")
+depends=("caja" "python-caja" "python" "python-gobject" "gobject-introspection" "gtk3")
+makedepends=("bzr" "python-setuptools" "python-polib")
+install="${pkgname}.install"
 source=("bzr+lp:/${pkgname}/trunk")
-md5sums=('SKIP')
+md5sums=("SKIP")
 provides=("${_pkgnamealt}")
 conflicts=("${_pkgnamealt}")
+options=("!emptydirs")
 
 pkgver()
 {
