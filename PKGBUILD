@@ -5,7 +5,7 @@
 
 pkgname=mingw-w64-libev
 _pkgname=libev
-pkgver=4.25
+pkgver=4.27
 pkgrel=1
 pkgdesc="A full-featured and high-performance event loop (mingw-w64)"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 source=("http://dist.schmorp.de/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "libev-4.24-no-undefined.patch")
-sha1sums=('f78a1338a0b975fb396b0b6558709211b6ccd794'
+sha1sums=('b67aff18f6f1ffec4422e188c98d9fe458c5ed0b'
           '600ca8fe4c6503f592db7560301923f4ade5c224')
 options=(!strip !buildflags staticlibs)
 
