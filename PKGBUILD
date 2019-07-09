@@ -10,7 +10,7 @@
 pkgbase=linux-drm-tip-git
 _srcname=${pkgbase}
 _branch=drm-tip
-pkgver=5.3.844163.2e291ca66a0f
+pkgver=5.3.844786.35b2601c2e73
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/drm-tip/'
