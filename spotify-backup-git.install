@@ -1,0 +1,9 @@
+post_install() {
+    # Create the spotify-backup.conf file if it doesn't exist
+    sudo spotify-backup -c /var/lib/spotify-backup/spotify-backup.conf /dev/null &> /dev/null
+
+    echo "You will probably need to create a spotify application and add its client_id and client_secret to /var/lib/spotify-backup/spotify-backup.conf"
+    echo "You will then need to run spotify-backup once manually to set the access and refresh tokens:"
+    echo "# spotify-backup -c /var/lib/spotify-backup/spotify-backup.conf /dev/null"
+}
+

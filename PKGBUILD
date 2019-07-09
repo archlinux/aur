@@ -1,6 +1,6 @@
 # Maintainer: Nathan Monfils <nathan.monfils@hotmail.fr>
 pkgname=spotify-backup-git
-pkgver=r5.8747342
+pkgver=r6.5a96c02
 pkgrel=1
 pkgdesc=""
 arch=(any)
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-VCS}")
 replaces=()
 backup=()
 options=()
-install=
+install="${pkgname}.install"
 source=("spotify-backup.service"
         "spotify-backup.timer"
         "${pkgname}::git+https://gitlab.com/azertyfun/spotify-backup.git")

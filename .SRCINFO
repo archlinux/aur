@@ -1,7 +1,8 @@
 pkgbase = spotify-backup-git
-	pkgver = r5.8747342
+	pkgver = r6.5a96c02
 	pkgrel = 1
 	url = https://gitlab.com/azertyfun/spotify-backup
+	install = spotify-backup-git.install
 	arch = any
 	license = MIT
 	makedepends = git
