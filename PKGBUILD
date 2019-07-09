@@ -5,7 +5,7 @@
 INSTALLMANS=0 # disable because most are already provided by Perl
 
 pkgname=cperl
-pkgver=5.28.2
+pkgver=5.30.0
 _baseversion="${pkgver%.*}"
 pkgrel=1
 pkgdesc="A highly capable, feature-rich programming language"
@@ -20,7 +20,7 @@ source=("https://github.com/perl11/cperl/releases/download/cperl-${pkgver}/cperl
         perlbin.fish
         fix-installman.patch)
 options=('makeflags' '!purge' 'emptydirs')
-sha512sums=('1ec8587433b9810a676c5c82aa1d05ed3ddc0c106126ead946ad6aa04552e8cae7bf4a4e73519f1ca5ae5192ab1d0f2236911eaf8579c1f1c13d86a11ac9bcd2'
+sha512sums=('0628d0e97fb387a67fbfcc1ff25d5092a46dddbb02362d7297631a99ea477cb5c3c294dd2a59cc1916dfe7662c8c816d10fdd11d4d86a2b9b2a7e1d3d5fdda8c'
             'SKIP'
             '37c20b56b9aa531964cf46571a1d19aaf8b8c898c76123e0d73d756a18334d7d4afdd46ab41fd9de110896258453efe3042ba6d07584976a43b7bb601f2ad5a0'
             'a587e7aac3ff7b58d859271ac316ea99702e298e53872fd33b382b2bfd6d39b5d1b66ed540930bf7df8c003d414f74640c9215e0572810423440e63277fb21a9'
