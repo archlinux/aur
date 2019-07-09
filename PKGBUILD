@@ -12,6 +12,8 @@ url="http://openkinect.org"
 license=(Apache GPL)
 depends=(libusb glfw libjpeg-turbo ocl-icd)
 makedepends=(cmake opencl-headers)
+provides=(libfreenect2)
+conflicts=(libfreenect2)
 source=("git+https://github.com/OpenKinect/$_pkgname.git")
 sha512sums=('SKIP')
 

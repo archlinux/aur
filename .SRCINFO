@@ -13,6 +13,8 @@ pkgbase = libfreenect2-git
 	depends = glfw
 	depends = libjpeg-turbo
 	depends = ocl-icd
+	provides = libfreenect2
+	conflicts = libfreenect2
 	source = git+https://github.com/OpenKinect/libfreenect2.git
 	sha512sums = SKIP
 
