@@ -5,22 +5,24 @@
 
 pkgname=firefox-esr
 pkgver=68.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/organizations/"
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
-         nss hunspell ttf-font libpulse)
-makedepends=(unzip zip diffutils python2 yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack gtk2 cbindgen)
+depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
+         ffmpeg nss ttf-font libpulse)
+makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
+             xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
+             python nodejs python2-psutil cbindgen nasm)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech')
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English')
 provides=(firefox)
 conflicts=(firefox)
-options=(!emptydirs !makeflags !strip)
+options=(!emptydirs !makeflags)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg)
 sha256sums=('dbb494521b3e246b367e453cc8d438b82b9fd2e05da273f5901391f0c52008b5'
