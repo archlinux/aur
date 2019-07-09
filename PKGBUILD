@@ -8,8 +8,8 @@
 pkgname=mutter-performance
 pkgver=3.32.2+40+gccab0f470
 pkgrel=1
-pkgdesc="A window manager for GNOME"
-url="https://gitlab.gnome.org/GNOME/mutter | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
+pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
+url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
