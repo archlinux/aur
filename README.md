@@ -1,4 +1,4 @@
-# Disable Window Switcher Popup (Arch Linux Package)
+# Disable Workspace Switcher Popup (Arch Linux Package)
 
 This repository holds a copy of the [AUR][aur] Package for
 [Disable Window Switcher Popup][extension-repos].
