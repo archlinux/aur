@@ -11,7 +11,7 @@ url="https://libvirt.org/"
 license=('LGPL')
 makedepends=('lvm2' 'linux-api-headers' 'dnsmasq' 'lxc' 'libiscsi' 'open-iscsi'
              'perl-xml-xpath' 'libxslt' 'qemu' 'parted' 'python')
-depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'avahi'
+depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit'
          'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap'
          'libcap-ng' 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl'
          'libxcb' 'gcc-libs' 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext'
