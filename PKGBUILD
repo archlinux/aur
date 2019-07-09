@@ -36,6 +36,4 @@ package() {
     install -Dm 644 -t "${pkgdir}/usr/share/cinnamon/theme" cinnamon-tweaks/cinnamon.css.patch
 
     install -Dm 755 -t "${pkgdir}/usr/bin" check-broken-packages/target/release/check-broken-packages
-
-    install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
