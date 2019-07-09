@@ -1,0 +1,15 @@
+pkgbase = powersave-git
+	pkgdesc = Powersave for Dell Inspiron 15 Serie 5000 (i15-5558-B30)
+	pkgver = r2.180aa76
+	pkgrel = 1
+	url = https://github.com/semeion/powersave
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = systemd
+	conflicts = indicator-powersave
+	source = git+https://github.com/semeion/powersave.git
+	sha256sums = SKIP
+
+pkgname = powersave-git
+
