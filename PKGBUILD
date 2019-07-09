@@ -12,7 +12,7 @@ _GRUB_EMU_BUILD="0"
 
 _GRUB_EXTRAS_COMMIT="f2a079441939eee7251bf141986cdd78946e1d20"
 
-_UNIFONT_VER="10.0.06"
+_UNIFONT_VER="12.1.02"
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
@@ -23,8 +23,8 @@ _UNIFONT_VER="10.0.06"
 _pkgname="grub"
 pkgname="grub-luks-keyfile"
 pkgdesc="GNU GRand Unified Bootloader (2) with crypto extensions to support for DMCrypt and LUKS volumes with detached headers and key files."
-pkgver=2.02
-pkgrel=8
+pkgver=2.04
+pkgrel=1
 epoch=2
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64')
@@ -57,6 +57,7 @@ if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
 fi
 
 validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' Serbinenko <phcoder@gmail.com>
+              'BE5C23209ACDDACEB20DB0A28C8189F1988C2166'  # Daniel Kiper <dkiper@net-space.pl>
               '95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
 
 source=("https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
@@ -64,42 +65,28 @@ source=("https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig
         "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
         '0003-10_linux-detect-archlinux-initramfs.patch'
         '0004-add-GRUB_COLOR_variables.patch'
-        '0005-Allow_GRUB_to_mount_ext234_filesystems_that_have_the_encryption_feature.patch'
-        '0006-tsc-Change-default-tsc-calibration-method-to-pmtimer-on-EFI-systems.patch'
-        '0007-grub-mkconfig_10_linux_Support_multiple_early_initrd_images.patch'
-        '0008-Fix-packed-not-aligned-error-on-GCC-8.patch'
-        'https://grub.johnlane.ie/assets/0001-Cryptomount-support-LUKS-detached-header.patch'
-        'https://grub.johnlane.ie/assets/0002-Cryptomount-support-key-files.patch'
-        'https://grub.johnlane.ie/assets/0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch'
-        'https://grub.johnlane.ie/assets/0004-Cryptomount-support-plain-dm-crypt.patch'
-        'https://grub.johnlane.ie/assets/0005-Cryptomount-support-for-hyphens-in-UUID.patch'
-        '0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch::https://github.com/johnlane/grub/pull/8.patch'
-	'0009-xfs-Accept-filesystem-with-sparse-inodes.patch'
-	'0010-relocation.patch'
-        'grub.default'
-        'grub.cfg')
+        '0001-Cryptomount-support-LUKS-detached-header.patch'
+        '0002-Cryptomount-support-key-files.patch'
+        '0003-Cryptomount-luks-allow-multiple-passphrase-attempts.patch'
+        '0004-Cryptomount-support-plain-dm-crypt.patch'
+        '0005-Cryptomount-support-for-hyphens-in-UUID.patch'
+        '0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch'
+        'grub.default')
 
-sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
+sha256sums=('e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
             'SKIP'
             '2844601914cea6b1231eca0104853a93c4d67a5209933a0766f1475953300646'
-            '0d81571fc519573057b7641d26a31ead55cc0b02a931589fb346a3a534c3dcc1'
+            '04d652be1e28a6d464965c75c71ac84633085cd0960c2687466651c34c94bd89'
             'SKIP'
             'b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
-            '535422c510a050d41efe7720dbe54de29e04bdb8f86fd5aea5feb0b24f7abe46'
-            'c38f2b2caae33008b35a37d8293d8bf13bf6fd779a4504925da1837fd007aeb5'
-            'e43566c4fe3b1b87e677167323d4716b82ac0810410a9d8dc7fbf415c8db2b8a'
-            'e84b8de569c7e6b73263758c35cf95c6516fde85d4ed451991427864f6a4e5a8'
-            'f7790e7fd4641eed8347039ebb44b67a3f517f2bc4de213fe34d2ae887c03b92'
-            'c1d042ca83f6ac64414f1d5df82fe324a46eaa842768fff214091b177ad30191'
+            'b9d737d1b403b540a00a8e9c25240a06bb371da7588d3e665af8543397724698'
+            '5d7060fbe9738764d2f8ebc96b43cc0bb8939c2e4e4e78b7a82a1a149ea6e837'
             'd2ad15610f5b683ca713329bbe25d43963af9386c9c8732b61cdc135843715f1'
             'e47409d04f740a71360775af25c53662386a49ea7f93ada39ed636b9ae8a0a22'
             '7b9ff45ba6e6c1ad45e6984580393e3801ef86144e48dbe5fe97d4aa8b90706e'
-            '2c312e4e46fc3b5a215771fb9bfb328079d588ac59751e980cecaed06f7f5c76'
-            'fcd5a626d4af33665d041ce42df813f1f198d8230ea186481b155a5b676f3b87'
-            '51562fa1016c54567dbf42a86c0cfc902372ab579bbee17879a81aff09b76b99'
-            '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82'
-            'c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad')
+            '4d2b6f5e1a50a01b127602d8537fca1152b2d1799918faaa94dc98cf7b854513'
+            '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82')
 
 prepare() {
 	cd "${srcdir}/grub-${pkgver}/"
@@ -113,20 +100,6 @@ prepare() {
 	patch -Np1 -i "${srcdir}/0004-add-GRUB_COLOR_variables.patch"
 	echo
 
-	msg "Patch to allow GRUB to mount ext2/3/4 filesystems that have the encryption feature"
-	patch -Np1 -i "${srcdir}/0005-Allow_GRUB_to_mount_ext234_filesystems_that_have_the_encryption_feature.patch"
-	echo
-
-	msg "Patch to change default tsc calibration method to pmtimer on EFI systems"
-	patch -Np1 -i "${srcdir}/0006-tsc-Change-default-tsc-calibration-method-to-pmtimer-on-EFI-systems.patch"
-	echo
-
-	msg "Support multiple early initrd images"
-	patch -Np1 -i "${srcdir}/0007-grub-mkconfig_10_linux_Support_multiple_early_initrd_images.patch"
-
-	msg "Fix packed-not-aligned error on GCC 8"
-	patch -Np1 -i "${srcdir}/0008-Fix-packed-not-aligned-error-on-GCC-8.patch"
-
 	msg "Patch for adding support for DMCrypt and LUKS volumes with detached headers and key files"
 	patch -Np1 -i "${srcdir}/0001-Cryptomount-support-LUKS-detached-header.patch"
 	patch -Np1 -i "${srcdir}/0002-Cryptomount-support-key-files.patch"
@@ -135,12 +108,6 @@ prepare() {
 	patch -Np1 -i "${srcdir}/0005-Cryptomount-support-for-hyphens-in-UUID.patch"
 	patch -Np1 -i "${srcdir}/0006-Cryptomount-support-for-using-whole-device-as-keyfile.patch"
 	echo
-
-	msg "Patch xfs: Accept filesystem with sparse inodes"
-	patch -Np1 -i "${srcdir}/0009-xfs-Accept-filesystem-with-sparse-inodes.patch"
-
-	msg "Patch x86-64: Treat R_X86_64_PLT32 as R_X86_64_PC32"
-	patch -Np1 -i "${srcdir}/0010-relocation.patch"
 
 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
 	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
@@ -361,9 +328,6 @@ _package_grub-common_and_bios() {
 
 	msg "Install /etc/default/grub (used by grub-mkconfig)"
 	install -D -m0644 "${srcdir}/grub.default" "${pkgdir}/etc/default/grub"
-
-	msg "Install grub.cfg for backup array"
-	install -D -m0644 "${srcdir}/grub.cfg" "${pkgdir}/boot/grub/grub.cfg"
 }
 
 _package_grub-efi() {
