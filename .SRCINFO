@@ -3,7 +3,6 @@ pkgbase = firefox-esr
 	pkgver = 68.0
 	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/organizations/
-	arch = i686
 	arch = x86_64
 	license = MPL
 	license = GPL
