@@ -3,7 +3,7 @@
 _reponame=ncbi-genome-download
 pkgbase=python-ncbi-genome-download
 pkgname=('python2-ncbi-genome-download' 'python-ncbi-genome-download')
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="Scripts to download genomes from the NCBI FTP servers"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/kblin/ncbi-genome-download"
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-pytest' 'python2-pytest' 'python-coverage' 'python2-coverage' 'python-pytest-cov' 'python2-pytest-cov' 'python-requests-mock' 'python2-requests-mock' 'python-pytest-mock' 'python2-pytest-mock')
 source=(ncbi-genome-download-$pkgver.tar.gz::https://github.com/kblin/ncbi-genome-download/archive/$pkgver.tar.gz)
-sha256sums=('fc0bb9a51b99a893eb0838cf0fd469efc92b3634371ca9220076d87d3537d7df')
+sha256sums=('9a1800b6bedf8a972e63c6d2465441262f300dc56615db9c83f2c1bff5a91a35')
 
 prepare() {
   cd "${srcdir}"
