@@ -1,0 +1,19 @@
+pkgbase = python-avell-unofficial-control-center-git
+	pkgdesc = A driver and interface to control keyboard rgb led of ITE 8291 like Avell laptops.
+	pkgver = 1.0.2.r27.3dd0238
+	pkgrel = 1
+	url = https://github.com/rodgomesc/avell-unofficial-control-center
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyusb
+	depends = python-elevate
+	provides = python-avell-unofficial-control-center
+	conflicts = python-avell-unofficial-control-center
+	source = git+https://github.com/rodgomesc/avell-unofficial-control-center.git
+	md5sums = SKIP
+
+pkgname = python-avell-unofficial-control-center-git
+

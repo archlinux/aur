@@ -1,0 +1,43 @@
+# Maintainer: DanManN <dnahimov@gmail.com>
+# Python package author: Rodrigo Gomes <rodgomesc@gmail.com>
+
+_pkgname=avell-unofficial-control-center
+_author=rodgomesc
+pkgname=python-$_pkgname-git
+pkgver=1.0.2.r27.3dd0238
+pkgrel=1
+pkgdesc="A driver and interface to control keyboard rgb led of ITE 8291 like Avell laptops."
+arch=('any')
+url="https://github.com/$_author/$_pkgname"
+license=('MIT')
+depends=('python'
+         'python-pyusb'
+         'python-elevate'
+        )
+makedepends=('git' 'python-setuptools')
+provides=("python-$_pkgname")
+conflicts=("python-$_pkgname")
+source=("git+https://github.com/$_author/$_pkgname.git")
+md5sums=('SKIP')
+
+# If project uses github releases:
+# prepare() {
+#   cd "$_pkgname"
+#   git checkout $(curl https://api.github.com/repos/$_author/$_pkgname/releases | grep tag_name | cut -d '"' -f4 | head -n 1)
+# }
+
+pkgver() {
+  cd "$_pkgname"
+  printf "%s.r%s.%s" "$(cat setup.py | grep -i version | grep -v '#' | cut -d "'" -f2 | head -n 1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$_pkgname"
+  python setup.py build
+}
+
+package() {
+  cd "$_pkgname"
+  python setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm644 LICENSE* "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
