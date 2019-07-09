@@ -2,7 +2,7 @@
 
 pkgname=torrentflix
 pkgver=9.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Nodejs cli app to search torrent sites and stream using peerflix"
 arch=('any')
 url="https://www.npmjs.com/package/torrentflix"
@@ -16,7 +16,7 @@ sha256sums=('1177f745035ff7a8a8b84d2e2e924199dbe08c0057376d1689b0ac1b9c149d4c')
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  install -Dm644 LICENSE.txt -t "${pkgdir}/usr/local/share/licenses/${pkgname}"
+  install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
   npm install --cache ../cache --user root -g --production --prefix "${pkgdir}/usr" "../v${pkgver}.tar.gz"
 }
 
