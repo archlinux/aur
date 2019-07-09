@@ -5,10 +5,10 @@
 
 pkgname=firefox-esr60
 _pkgname=firefox-esr
-pkgver=60.7.2
+pkgver=60.8.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release 60.x"
-arch=(i686 x86_64)
+arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/organizations/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
@@ -25,7 +25,7 @@ options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg
         rust_133-part0.patch 'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664' deny_missing_docs.patch)
-sha256sums=('8a918ea70c806524f293336f6f4574bb6e69ca1e98e6e5e0e5c2d6ad2ac26ac2'
+sha256sums=('c13387d944e635aebd5f1d2ce9ab77cb706a74043a240cbb7b70654519487fbe'
             '78a920ffdd44e1d51445e7255da4863604be96a4b3cd7a7cb13ecc2efae6cb39'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'c10521badc262b476e844d3f3045ddf27e28d83d49b5db0d0e19431f06386e4d'
