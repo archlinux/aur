@@ -1,13 +1,11 @@
 # Maintainer: Michael Healy <horsemanoffaith@gmail.com>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # vercheck-pkgbuild: auto
 # vercheck-ubuntu: name=${pkgname}, repo=bionic
 
 pkgname=ubuntu-themes
-_actual_ver=16.10
-_extra_ver=+18.04.20171115.1
 _ubuntu_rel=0ubuntu1
-pkgver=${_actual_ver}${_extra_ver/\+/.}
+pkgver=19.04
 pkgrel=1
 pkgdesc="Ubuntu monochrome icon theme, Ambiance and Radiance themes, and Ubuntu artwork"
 arch=(any)
@@ -19,12 +17,13 @@ depends=(humanity-icon-theme adwaita-icon-theme hicolor-icon-theme
 makedepends=(python2 imagemagick icon-naming-utils)
 provides=(light-themes ubuntu-mono)
 conflicts=(light-themes ubuntu-mono)
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${_actual_ver}${_extra_ver}.orig.tar.gz")
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.orig.tar.gz")
 
-sha512sums=('c4d19493b0a421c3f32d8851fe1f6c1d6f39fb6c87281ace414bc662ad533fe5a984773736062f51d592f03deda81091036f1efd93695c338a52cf03a6a53c69')
+sha512sums=('95b41c5d3a47fba9c4b5368b4e80d8924e09844783c66ca697ce0ff5d71f2b0fd4f56a9041dc142267e0eaf75fd5a8b47c0abae049fc3434b5e29f3f363d83e8')
 
 build() {
    # Python 2 fix
+  cd $srcdir/$pkgname-$pkgver
   sed -i 's|^\(#!.*python$\)|\12|g' scavenge.py
 
   make
@@ -32,6 +31,7 @@ build() {
 
 package() {
   # Install themes
+  cd $srcdir/$pkgname-$pkgver
   install -dm755   "${pkgdir}/usr/share/themes/"
   cp -av Ambiance/ "${pkgdir}/usr/share/themes/"
   cp -av Radiance/ "${pkgdir}/usr/share/themes/"
