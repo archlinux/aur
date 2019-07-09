@@ -1,6 +1,6 @@
 pkgbase = partio
 	pkgdesc = Particle IO and manipulation library
-	pkgver = 1.7.4
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://www.disneyanimation.com/technology/partio.html
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = partio
 	optdepends = zlib: file compression support
 	provides = partio
 	conflicts = partio
-	source = git+https://github.com/wdas/partio.git#tag=v1.7.4
+	source = git+https://github.com/wdas/partio.git#tag=v1.10.0
 	md5sums = SKIP
 
 pkgname = partio

@@ -1,9 +1,9 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # Maintainer: Alex Dahl <adahl1@umbc.edu>
 _name="partio"
-_fragment="#tag=v1.7.4"
+_fragment="#tag=v1.10.0"
 pkgname=${_name}
-pkgver=1.7.4
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Particle IO and manipulation library"
 arch=(i686 x86_64)
