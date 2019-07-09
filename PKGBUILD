@@ -1,7 +1,7 @@
 # Maintainer: Vitalii Rybalko <vilko dot a at gmail dot com>
 
 pkgname=playkey-linux
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Client for game streaming service playkey.net'
 arch=('x86_64')
