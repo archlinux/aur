@@ -1,13 +1,14 @@
 pkgbase = wmctrl-python3-git
 	pkgdesc = A tool to programmatically control windows inside X
 	pkgver = v0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bitbucket.org/JonnyHaystack/wmctrl-python3
 	arch = any
 	license = GPL
 	depends = python
 	depends = mercurial
 	depends = wmctrl
+	depends = python-setuptools
 	source = hg+https://bitbucket.org/JonnyHaystack/wmctrl-python3
 	md5sums = SKIP
 
