@@ -37,45 +37,94 @@ pkgver() {
 prepare() {
   cd $pkgname
 
+  ### Adding and fetching remotes providing the selected merge-requests
+
   git remote add verde https://gitlab.gnome.org/verdre/gnome-shell.git || true
   git fetch verde
+
+
+  ### Merge Requests
+
+  # Merge Request Prototype
+  # Title:
+  # URL:
+  # Type:
+  # Status:
+  # Comment:
+  # git cherry-pick -n first_commit^..last_commit
+  #
+  # Possible Status:
+  #   1. Needs rebase: Conflicts with master branch.
+  #   2. Needs review: Mutter maintainers needs to review the new/updated MR and provide feedback.
+  #   3. Needs changes: MR needs to be adjusted based on maintainers feedback.
+  #   4. Merged: MR approved and it changes commited to master.
+  #
+  # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
+  #
+  # Possible Type:
+  #   1. Improvement: Makes an already existing feature behave better, more efficiently/reliably.
+  #   2. Feature: Adds a new functionality.
+  #   3. Fix: Regression/bug fix only available in master (not backported).
+  #   4. Cleanup: Code styling improvement, function deprecation, rearrangement...
 
   # https://gitlab.gnome.org/GNOME/gnome-shell/issues/1084
   #patch -Np1 -i ../nvidia-background-workaround.patch
 
-  # Fixes and performance improvements to the extension system
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/96
+
+  # Title: Fixes and performance improvements to the extension system
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/96
+  # Type: 1
+  # Status: 2
+  # Comment:
   git cherry-pick -n 39f10eaa^..6e704ee1
 
-  # Refine the app menu a bit
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/406
+  # Title: Refine the app menu a bit
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/406
+  # Type: 2
+  # Status: 4
+  # Comment:
   git cherry-pick -n ffaca005^..56a36165
 
-  # iconGrid: Hide children outside allocation loop
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/566
+  # Title: iconGrid: Hide children outside allocation loop
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/566
+  # Type: 1
+  # Status: 4
+  # Comment:
   git cherry-pick -n 520cea93
 
-  # appDisp allocation cycle fix
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/581
+  # Title: appDisp allocation cycle fix
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/581
+  # Type: 3
+  # Status: 4
+  # Comment:
   git cherry-pick -n c1c45f95
 
-  # iconGrid: Fix animation glitch
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/582
+  # Title: iconGrid: Fix animation glitch
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/582
+  # Type: 3
+  # Status: 4
+  # Comment:
   git cherry-pick -n b4797956
 
-  # Mild performance improvements on style changes
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/524
-  # Use only the first commit as the other one causes issues and is reverted
+  # Title: Mild performance improvements on style changes
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/524
+  # Type: 1
+  # Status: 4
+  # Comment: Use only the first commit as the other one causes issues and is reverted
   git cherry-pick -n fb04dafb
 
-  # st: Only emit ::style-changed on actual changes
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/505
-  # Restore this reverted commit to 3.32 as !505 fixes its introduced style glitches
+  # Title: st: Only emit ::style-changed on actual changes
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/505
+  # Type: 1
+  # Status: 4
+  # Comment: Restore this reverted commit to 3.32 as !505 fixes its introduced style glitches
   git cherry-pick -n f74c07b9
 
-  # st: Consider non-background properties for ::style-changed
-  # https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/595
-  # Fixes style glitches introduced by !505
+  # Title: st: Consider non-background properties for ::style-changed
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/595
+  # Type: 3
+  # Status: 4
+  # Comment: Fixes style glitches introduced by !505
   git cherry-pick -n 7359e431^..be40de5a
 
   git submodule init
@@ -94,4 +143,3 @@ package() {
   # https://bugs.archlinux.org/task/37412
   mkdir "$pkgdir/usr/share/gnome-shell/modes"
 }
-
