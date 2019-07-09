@@ -1,10 +1,9 @@
 pkgbase = python-sentry_sdk
 	pkgdesc = The new Python SDK for Sentry.io
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/getsentry/sentry-python
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
@@ -18,10 +17,14 @@ pkgname = python-sentry_sdk
 	depends = python-certifi
 	optdepends = python-flask
 	optdepends = python-blinker
+	optdepends = python-bottle
+	optdepends = python-falcon
 
 pkgname = python2-sentry_sdk
 	depends = python2-urllib3
 	depends = python2-certifi
 	optdepends = python2-flask
 	optdepends = python2-blinker
+	optdepends = python2-bottle
+	optdepends = python2-falcon
 
