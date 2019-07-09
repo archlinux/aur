@@ -1,7 +1,7 @@
 pkgbase = notable-bin
 	pkgdesc = The markdown-based note-taking app that doesn't suck
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fabiospampinato/notable
 	arch = x86_64
 	license = AGPL
