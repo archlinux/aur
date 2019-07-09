@@ -1,0 +1,19 @@
+pkgbase = rifiuti2
+	pkgdesc = A rewrite of rifiuti, a great tool from Foundstone folks for analyzing Windows Recycle Bin INFO2 file.
+	pkgver = 0.6.1
+	pkgrel = 2
+	url = https://github.com/abelcheung/rifiuti2
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom:BSD
+	depends = glib2
+	conflicts = rifiuti
+	options = !emptydirs
+	source = https://github.com/abelcheung/rifiuti2/archive/0.6.1.tar.gz
+	sha512sums = 2e83b13dc15d05a770719048a1d8f503c63ac660c80d5ae14c859c51272b4ccc4091138504f128b2551113d0cd4c005ffadb0939cb2f3565916e9c97b733ae58
+
+pkgname = rifiuti2
+
