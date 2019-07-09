@@ -1,12 +1,15 @@
 pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+	pkgdesc = LaTeX template for LIPIcs (Leibniz International Proceedings in Informatics)
+	pkgver = 2019
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://www.dagstuhl.de/en/publications/lipics
+	install = texlive.install
+	arch = any
+	license = CCPL:by
+	makedepends = unzip
+	depends = texlive-latex3
+	source = http://drops.dagstuhl.de/styles/lipics-v2019/lipics-v2019-authors.zip
+	sha256sums = d95c8de2b8525db7375fd8263aafd2aa04a1aa87016ee2a6c75e0ca0a158bfc9
 
-pkgname = yarxi
+pkgname = latex-template-lipics
 
