@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.32.2+40+gccab0f470
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -176,10 +176,10 @@ prepare() {
 
   # Title: Fix background texture corruption when resuming from suspend on Nvidia
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/600
-  # Type: 3
+  # Type: 2
   # Status: 3
   # Comment:
-  git cherry-pick -n 3ca3194f^..1be20af0
+  git cherry-pick -n b60aa2c4^..4b63986
 
   # WIP: renderer-native: Accept frames without ever blocking
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/73
