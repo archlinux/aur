@@ -39,7 +39,6 @@ package() {
 	python setup.py install --skip-build -O1 --root="$pkgdir"
 
 	mkdir -p "$pkgdir"/var/lib/spotify-backup
-	touch "$pkgdir"/var/lib/spotify-backup/spotify-backup.conf
 
 	mkdir -p "$pkgdir"/usr/lib/systemd/system
 	cp ../spotify-backup.{service,timer} "$pkgdir"/usr/lib/systemd/system/
