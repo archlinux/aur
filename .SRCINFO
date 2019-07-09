@@ -1,7 +1,7 @@
 pkgbase = foliate-git
 	pkgdesc = A simple and modern GTK eBook reader
 	pkgver = 1.4.0.r6.g8e2ce97
-	pkgrel = 1
+	pkgrel = 2
 	url = https://johnfactotum.github.io/foliate/
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = foliate-git
 	depends = gettext
 	optdepends = hyphen: Auto-hyphenation support
 	optdepends = hyphen-en: Hyphenation rules for English; you may choose package for your language
+	optdepends = dictd: Offline dictionary support
 	provides = foliate
 	conflicts = foliate
 	replaces = foliate
