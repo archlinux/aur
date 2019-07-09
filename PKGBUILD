@@ -2,23 +2,23 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=meep
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A free finite-difference time-domain simulation software package"
 arch=('x86_64')
 url="http://ab-initio.mit.edu/wiki/index.php/Meep"
 license=('GPL')
-depends=('openmpi' 'harminv' 'libctl>=4.1.0' 'hdf5' 'gsl' 'fftw' 'guile' 'julia')
-makedepends=('gcc-fortran' 'suitesparse' 'python' 'swig')
+depends=('openmpi' 'harminv' 'libctl' 'hdf5' 'gsl' 'fftw' 'guile' 'julia' 'mpb')
+makedepends=('gcc-fortran' 'suitesparse' 'swig')
 optdepends=('h5utils: for visualization and conversion of scientific data')
-options=('!libtool' '!makeflags')
+options=('!libtool' '!makeflags' 'staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/stevengj/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('4754f8b95af8de68145c274ae5baf54f22a49515504b9e197ed0bfdc37aaa2f7')
+sha256sums=('3c2eef3e37509ecbd1b5734f8fa93b589bd7089c61b0b1c0296e94ace51e2613')
 
 build() {
   cd $pkgname-$pkgver
-  ./autogen.sh CFLAGS=" -fPIC" --prefix=/usr --enable-shared --with-mpi
-  make
+  ./autogen.sh CFLAGS=" -fPIC" --prefix=/usr --enable-shared --with-mpi --without-python
+  make 
 }
 package() {
   cd $pkgname-$pkgver
