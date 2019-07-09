@@ -2,7 +2,7 @@
 
 pkgname=httptoolkit
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client."
 arch=("x86_64")
 url="https://httptoolkit.tech/"
@@ -25,7 +25,7 @@ validpgpkeys=()
 
 package() {
     # Extract package fs from deb
-	bsdtar -O -xf "httptoolkit_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+    bsdtar -O -xf "httptoolkit_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
 
     # Set all directories to 755 mode
     find "${pkgdir}" -type d -exec chmod 755 {} +
