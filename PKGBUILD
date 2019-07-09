@@ -11,7 +11,7 @@ _pkgbase=xorg-server
 pkgname=('xorg-server-noudev' 'xorg-server-xephyr-noudev' 'xorg-server-xdmx-noudev' 'xorg-server-xvfb-noudev' 'xorg-server-xnest-noudev'
          'xorg-server-xwayland-noudev' 'xorg-server-common-noudev' 'xorg-server-devel-noudev')
 pkgver=1.20.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg-noudev')
