@@ -1,8 +1,9 @@
 # Maintainer: Xavier Peng <png.inside@gmail.com>
+# Maintainer: Taekyung Kim <Taekyung.Kim.Maths@gmail.com>
 
 pkgname=chez-scheme
 pkgver=9.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Chez Scheme is a compiler and run-time system for the language of the Revised^6 Report on Scheme (R6RS), with numerous extensions."
 arch=(i686 x86_64)
 url="https://github.com/cisco/ChezScheme"
@@ -17,7 +18,7 @@ _archivename=csv$pkgver
 
 build() {
   cd "$srcdir/${_archivename}"
-  ./configure --installprefix=/usr --temproot=$pkgdir
+  ./configure --installprefix=/usr --temproot=$pkgdir --threads
 }
 
 package() {
