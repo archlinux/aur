@@ -1,12 +1,14 @@
 pkgbase = redream
 	pkgdesc = SEGA Dreamcast emulator
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://redream.io/
 	arch = x86_64
 	license = freeware
 	source = https://redream.io/download/redream.x86_64-linux-v1.3.1.tar.gz
+	source = redream.desktop
 	md5sums = 699c086a387900b27d553817c38cf1a5
+	md5sums = 8b25ee2d0b1b1797160cf5b6a4c049c6
 
 pkgname = redream
 
