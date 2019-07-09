@@ -1,0 +1,17 @@
+pkgbase = vim-gluon-git
+	pkgdesc = Vim plugin for syntax highlighting and indentation for Gluon.
+	pkgver = r16.07f9f69
+	pkgrel = 1
+	url = https://github.com/salpalvv/vim-gluon
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-gluon
+	conflicts = vim-gluon
+	source = git+https://github.com/salpalvv/vim-gluon.git
+	md5sums = SKIP
+
+pkgname = vim-gluon-git
+
