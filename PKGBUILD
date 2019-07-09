@@ -4,15 +4,15 @@
 # Contributor: James Duley <jagduley gmail>
 
 pkgname=xflr5
-pkgver=6.46
+pkgver=6.47
 pkgrel=1
 pkgdesc="An analysis tool for airfoils, wings and planes operating at low Reynolds Numbers."
 arch=('i686' 'x86_64')
 url="http://www.xflr5.com/xflr5.htm"
 license=('GPL')
 depends=('qt5-base')
-source=("https://downloads.sourceforge.net/project/xflr5/${pkgver}/xflr5_${pkgver}_src.tar.gz")
-sha256sums=('affd0da3e0c957fca52350aa63e46da2d825b7b10e93fe87779d4182588e1904')
+source=("https://downloads.sourceforge.net/project/xflr5/${pkgver}/xflr5_v${pkgver}_src.tar.gz")
+sha256sums=('5bd936f6d0cf14b26a36d1397670943633485ba9c9f65a8ceabcd9b163caa30b')
 
 
 build() {
