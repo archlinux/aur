@@ -1,0 +1,18 @@
+pkgbase = python-elevate
+	pkgdesc = Python library for requesting root privileges
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/barneygale/elevate
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-elevate
+	conflicts = python-elevate
+	source = https://files.pythonhosted.org/packages/81/32/29ba61063ac124632754e26c65e71217f48ce682fbf8762ee9a0bb0d32de/elevate-0.1.3.tar.gz
+	source = https://github.com/barneygale/elevate/raw/master/COPYING.txt
+	sha256sums = 53ad19fa1de301fb1de3f8768fb3a5894215716fd96a475690c4d0ff3b1de209
+	sha256sums = SKIP
+
+pkgname = python-elevate
+
