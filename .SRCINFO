@@ -1,0 +1,20 @@
+pkgbase = jitterdebugger
+	pkgdesc = Real time response measurement tool
+	pkgver = r93.9a0eb5f
+	pkgrel = 1
+	url = https://github.com/igaw/jitterdebugger
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python3
+	depends = hdf5>=1.8.17
+	provides = jitterdebugger
+	provides = jitterplot
+	provides = jittersamples
+	options = !emptydirs
+	source = jitterdebugger::git://github.com/igaw/jitterdebugger.git
+	sha256sums = SKIP
+
+pkgname = jitterdebugger
+
