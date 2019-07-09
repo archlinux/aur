@@ -1,7 +1,7 @@
 pkgbase = clr-power-tweaks
-	pkgdesc = Power management tweaks for Clear Linux
+	pkgdesc = Power Tweaks -- adjusts runtime kernel options for optimal power and performance
 	pkgver = 200
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux/clr-power-tweaks
 	arch = i686
 	arch = x86_64

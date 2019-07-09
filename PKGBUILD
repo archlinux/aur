@@ -3,8 +3,8 @@
 
 pkgname=clr-power-tweaks
 pkgver=200
-pkgrel=1
-pkgdesc="Power management tweaks for Clear Linux"
+pkgrel=2
+pkgdesc="Power Tweaks -- adjusts runtime kernel options for optimal power and performance"
 arch=('i686' 'x86_64')
 url="https://github.com/clearlinux/clr-power-tweaks"
 license=('GPL3')
