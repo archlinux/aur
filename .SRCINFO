@@ -1,6 +1,6 @@
 pkgbase = mpb
 	pkgdesc = A program for computing the band structures and electromagnetic modes
-	pkgver = v1.6.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://mpb.readthedocs.io
 	arch = i686
@@ -9,9 +9,11 @@ pkgbase = mpb
 	makedepends = gcc-fortran
 	depends = lapack
 	depends = hdf5
-	depends = openmpi
-	source = git+https://github.com/stevengj/mpb.git
-	sha256sums = SKIP
+	depends = fftw
+	depends = libctl
+	depends = guile
+	source = https://github.com/NanoComp/mpb/releases/download/v1.9.0/mpb-1.9.0.tar.gz
+	sha256sums = c7b91d82bd8e63ea029d58cbf6d73904a99bc20436badf6aac30fc4a90850883
 
 pkgname = mpb
 
