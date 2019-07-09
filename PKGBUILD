@@ -25,10 +25,10 @@ package() {
     #cd "$srcdir"
     # add systemd service
     cd "../src/${pkgname%-git}"
-    install -Dm0644 -- 00-powersave "${pkgdir}/usr/lib/systemd/system-sleep/00-powersave"
-    install -Dm0644 -- 99-powersave.rules "${pkgdir}/etc/udev/rules.d/99-powersave.rules"
-    install -Dm0644 -- low-battery "${pkgdir}/usr/bin/low-battery"
-    install -Dm0644 -- low-battery.service "${pkgdir}/usr/lib/systemd/system/low-battery.service"
-    install -Dm0644 -- low-battery.timer "${pkgdir}/usr/lib/systemd/system/low-battery.timer"
-    install -Dm0644 -- throttle "${pkgdir}/usr/bin/throttle"
+    install -Dm0755 -- 00-powersave "${pkgdir}/usr/lib/systemd/system-sleep/00-powersave"
+    install -Dm0755 -- 99-powersave.rules "${pkgdir}/etc/udev/rules.d/99-powersave.rules"
+    install -Dm0755 -- low-battery "${pkgdir}/usr/bin/low-battery"
+    install -Dm0755 -- low-battery.service "${pkgdir}/usr/lib/systemd/system/low-battery.service"
+    install -Dm0755 -- low-battery.timer "${pkgdir}/usr/lib/systemd/system/low-battery.timer"
+    install -Dm0755 -- throttle "${pkgdir}/usr/bin/throttle"
 }
