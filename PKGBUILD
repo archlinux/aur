@@ -2,7 +2,7 @@
 
 pkgname=wpe-cli-bin
 _pkgname=wpe-cli
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc='An aur package for the wpe-cli'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('wpe')
 options=('!strip')
 source=("https://s3-us-east-2.amazonaws.com/wpeclibinaries/$_pkgname/v$pkgver/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 # source=("${_pkgname}_${pkgver}_linux_amd64.tar.gz")
-md5sums=('a99f2ee842a9fba80eccd0d2b79f5c63')
+md5sums=('e723a5b3f5524dc61c831d59de96659a')
 
 # ${_pkgname}_${pkgver}_linux_amd64.tar.gz
 package() {
