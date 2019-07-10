@@ -2,7 +2,7 @@
 # Contributor: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=tails-installer
-pkgver=5.0.13
+pkgver=5.0.15
 pkgrel=1
 pkgdesc="Installer for the Tails live operating system"
 arch=('any')
