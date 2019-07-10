@@ -1,0 +1,17 @@
+pkgbase = vim-hybrid-git
+	pkgdesc = A dark colour scheme for Vim
+	pkgver = r46.cc58baa
+	pkgrel = 1
+	url = https://github.com/w0ng/vim-hybrid
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-hybrid
+	conflicts = vim-hybrid
+	source = git+https://github.com/w0ng/vim-hybrid.git
+	sha256sums = SKIP
+
+pkgname = vim-hybrid-git
+
