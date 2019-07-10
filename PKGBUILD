@@ -2,7 +2,7 @@
 # Contributor: Leonardo Santana Vieira <leosanvieira at gmail dot com>
 
 pkgname=imagescan
-pkgver=3.55.0
+pkgver=3.57.0
 _utsushiver=${pkgver/3./0.}
 pkgrel=1
 pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
@@ -13,7 +13,7 @@ depends=(sane gtkmm graphicsmagick boost-libs)
 makedepends=(boost)
 optdepends=('tesseract: OCR support')
 source=(https://support.epson.net/linux/src/scanner/imagescanv3/common/imagescan_$pkgver.orig.tar.gz)
-sha256sums=('9440b103b8218863ab08e891d2a9dc9ef52db51485e11017d52fb2036e279477')
+sha256sums=('de9ef2a6154a636d517374a2a0406305c524eb8547b63830f07be9b8acb1c663')
 backup=('etc/utsushi/utsushi.conf')
 
 prepare() {
@@ -37,6 +37,7 @@ build() {
     --with-magick-pp \
     --with-sane \
     --with-tiff
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   make
 }
 
