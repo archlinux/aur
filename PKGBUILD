@@ -3,7 +3,7 @@
 
 pkgname=makepkg-optimize
 pkgver=11
-pkgrel=1
+pkgrel=2
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
@@ -21,15 +21,15 @@ source=(${_buildenv[@]}
         ${_executable[@]}
         ${_tidy[@]}
         ${_conf[@]})
-sha1sums=('8f756d02ad1dae9dfbe79e414e557fe96e037549'
-          '6df0fc88e5522836bc12071df0b740761136d38b'
-          '6b719a47146aedae186a7e63b6058507c4948d9f'
-          'cee5912314c1b84b76f4400a6405cdc224c01828'
-          'e8358ced786a996a5763faa42f3541900b86647e'
-          'b8e52d0e41f01cf5815af8bffb07c8cfae8132fa'
-          'c93ebf06772fb34d5f707062ddec9faab0b9994f'
-          '1a815037390c67195ed831b7887884a42785010a'
-          'cff1d2b6e81226de7ece5369005c392fa8083bf2'
+sha1sums=('dae91a563dd767f3e3059240009b40106aadbc35'
+          'c172280e2b245635880db1b745e8e3950425519d'
+          '17b601c832b4af263d6ebdc894ee3ef59f9ee8b4'
+          'a893c32f2a3fff8b279025ec60f0c3d88143dc1e'
+          '9270b5e33d4508a959688a10c20dec3732763937'
+          '34a33b47a8b667f9dc810737c0f598660b962d4c'
+          '68292bac87e22885069330dbdc198e13be88ab95'
+          '5801de7cd6e2bd462b7e051aa3aa818a30dc7af5'
+          '368342c7891345bdbcc4c21e79aa4840ab5b76b9'
           'f7da4e29ea24c85870ff0e55864f7bafbce7ad8f'
           '83a6d62b19184cac1de02c957cd4ea7bbdac9ddb'
           'dea4d727d81ac040846555e59ac7c34eb0978233'

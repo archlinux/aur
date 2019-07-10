@@ -15,14 +15,14 @@ packaging_options+=('optipng')
 tidy_modify+=('tidy_optipng')
 
 tidy_optipng() {
-	if check_option "optipng" "y"; then
-		msg2 "$(gettext "Optimizing PNG images...")"
-		local png
-		find . -type f -iname "*.png" 2>/dev/null | while read -r png ; do
-			if [[ $(file --brief --mime-type "$png") = 'image/png' ]]; then
-				optipng "${OPTIPNGFLAGS[@]}" "$png" &>/dev/null ||
-					warning "$(gettext "Could not optimize PNG image : %s")" "${png/$pkgdir\//}"
-			fi
-		done
-	fi
+  if check_option "optipng" "y"; then
+    msg2 "$(gettext "Optimizing PNG images...")"
+    local png
+    find . -type f -iname "*.png" 2>/dev/null | while read -r png ; do
+      if [[ $(file --brief --mime-type "$png") = 'image/png' ]]; then
+        optipng "${OPTIPNGFLAGS[@]}" "$png" &>/dev/null ||
+          warning "$(gettext "Could not optimize PNG image : %s")" "${png/$pkgdir\//}"
+      fi
+    done
+  fi
 }

@@ -14,8 +14,9 @@ build_options+=('graphite')
 buildenv_functions+=('buildenv_graphite')
 
 buildenv_graphite() {
-	if check_buildoption "graphite" "y"; then
-		CFLAGS+=" -fgraphite-identity -floop-nest-optimize -ftree-loop-distribution -ftree-vectorize"
-		CXXFLAGS+=" -fgraphite-identity -floop-nest-optimize -ftree-loop-distribution -ftree-vectorize"
-	fi
+  if check_buildoption "graphite" "y"; then
+    graphiteflags=" -fgraphite-identity -floop-nest-optimize -ftree-loop-distribution -ftree-vectorize"
+    CFLAGS+="$graphiteflags"
+    CXXFLAGS+="$graphiteflags"
+  fi
 }
