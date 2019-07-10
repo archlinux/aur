@@ -1,15 +1,16 @@
 _pkgname=hideIt.sh
 pkgname=hideit.sh-git
-pkgver=r41.8fd7476
-pkgrel=1
+pkgver=r43.b99d6b4
+pkgrel=2
 pkgdesc="Automagically hide/show a window"
 arch=('i686' 'x86_64')
 url="https://github.com/tadly/hideIt.sh"
 license=('GPL3')
 depends=('xdotool' 'xorg-xwininfo' 'xorg-xev')
+makedepends=('git')
 provides=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/tadly/hideIt.sh.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 
 pkgver() {
