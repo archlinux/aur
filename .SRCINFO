@@ -7,6 +7,7 @@ pkgbase = brahms-git
 	arch = x86_64
 	makedepends = git
 	makedepends = cmake
+	depends = python
 	depends = zlib
 	provides = brahms
 	conflicts = brahms
