@@ -1,6 +1,6 @@
 pkgbase = unity-editor-lts-standardassets
 	pkgdesc = Unity Standard Assets for easily getting started building projects in Unity.
-	pkgver = 2017.4.29f1
+	pkgver = 2017.4.30f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = unity-editor-lts-standardassets
 	makedepends = cpio
 	depends = unity-editor-lts
 	options = !strip
-	source = 2017.4.29f1.pkg::https://download.unity3d.com/download_unity/06508aa14ca1/MacStandardAssetsInstaller/StandardAssets.pkg
-	md5sums = fa352bb0ec3894823a4d369209800ae2
+	source = 2017.4.30f1.pkg::https://download.unity3d.com/download_unity/c6fa43736cae/MacStandardAssetsInstaller/StandardAssets.pkg
+	md5sums = 83357499f41c6fb131cad1867adcce5e
 
 pkgname = unity-editor-lts-standardassets
 
