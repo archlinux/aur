@@ -14,7 +14,7 @@ optdepends=(
 )
 provides=("mapcrafter")
 conflicts=("mapcrafter")
-source=("$pkgname"::"git://github.com/mapcrafter/mapcrafter.git#world113")
+source=("$pkgname"::"git://github.com/mapcrafter/mapcrafter.git#branch=world113")
 md5sums=("SKIP")
 
 pkgver() {

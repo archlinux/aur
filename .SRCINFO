@@ -17,7 +17,7 @@ pkgbase = mapcrafter-world113-git
 	optdepends = python2-pillow: support for mapcrafter_png-it.py script
 	provides = mapcrafter
 	conflicts = mapcrafter
-	source = mapcrafter-world113-git::git://github.com/mapcrafter/mapcrafter.git#world113
+	source = mapcrafter-world113-git::git://github.com/mapcrafter/mapcrafter.git#branch=world113
 	md5sums = SKIP
 
 pkgname = mapcrafter-world113-git
