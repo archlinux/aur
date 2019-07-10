@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-beta
-pkgver=1.6.3
+pkgver=1.7.8.hotfix.3
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -27,12 +27,12 @@ backup=("opt/${pkgname%-beta}/packages/${pkgname%-beta}_test/pubspec.yaml" "opt/
 options=("!emptydirs")
 install="${pkgname%-beta}.install"
 source=(
-  "${pkgname%-beta}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/beta/linux/${pkgname%-beta}_linux_v${pkgver/.hotfix/-hotfix}-beta.tar.xz"
+  "${pkgname%-beta}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/beta/linux/${pkgname%-beta}_linux_v${pkgver/.hotfix/+hotfix}-beta.tar.xz"
   "${pkgname%-beta}.sh"
   "${pkgname%-beta}.csh"
 )
 sha256sums=(
-  "dbfb3aebe07f81423f7c739542395514997f5f410763fe43d7551051a61dba56"
+  "f4486c039ca256f855943fbd07974444dfc98f9bae593ae30f5de385d826b911"
   "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
   "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
 )
