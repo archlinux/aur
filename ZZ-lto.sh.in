@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-#   lto.sh - Compile with link-time optimization
+#   ZZ-lto.sh - Compile with link-time optimization
 #
 
 [[ -n "$LIBMAKEPKG_BUILDENV_LTO_SH" ]] && return

@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+#
+#   rice.sh - Compile with extreme and unsafe optimization
+#
+
+[[ -n "$LIBMAKEPKG_BUILDENV_RICE_SH" ]] && return
+LIBMAKEPKG_BUILDENV_RICE_SH=1
+
+LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
+
+source "$LIBRARY/util/option.sh"
+
+build_options+=('rice')
+buildenv_functions+=('buildenv_rice')
+
+buildenv_rice() {
+  if check_buildoption "rice" "y"; then
+    riceflags=" -Ofast -fbranch-target-load-optimize2 -fcx-fortran-rules -fdata-sections -ffloat-store -fgcse-las -fgcse-sm -fipa-pta -floop-nest-optimize -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-enforce-eh-specs -funsafe-math-optimizations -fno-threadsafe-statics -fnothrow-opt -fno-var-tracking-assignments -fomit-frame-pointer -fopenmp -fPIC -freg-struct-return -freschedule-modulo-scheduled-loops -fsched-pressure -fsched-spec-load -fsched-spec-load-dangerous -fsched-stalled-insns=0 -fsched2-use-superblocks -fselective-scheduling -fselective-scheduling2 -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -fshort-wchar -ftree-parallelize-loops=$(getconf _NPROCESSORS_ONLN) -ftree-lrs -ftree-vectorize -fvariable-expansion-in-unroller -maccumulate-outgoing-args -Wno-sizeof-pointer-memaccess" # -fmerge-all-constants
+    riceldflags=" -lpthread -lgomp" # -shared
+    CFLAGS+="$riceflags"
+    CXXFLAGS+="$riceflags"
+    LDFLAGS+="$riceldflags"
+  fi
+}
