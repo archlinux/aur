@@ -1,5 +1,5 @@
 # Maintainer: Konstantin Burykin <burkostya@gmail.com>
-pkgname=kbdlightx1-bin
+pkgname=kbdlightx1
 _binname=kbdlight
 pkgver=0.1.2
 pkgrel=1
