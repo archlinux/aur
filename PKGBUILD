@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=ozone
-pkgver=2.62e
+pkgver=2.62f
 pkgrel=0
 epoch=18
 pkgdesc="Segger Ozone JLink debugger for Linux"
@@ -15,8 +15,8 @@ provides=('jlink-debugger')
 depends=('jlink-software-and-documentation>=5.10n')
 source_x86_64=("Ozone_Linux_V${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/Ozone_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("Ozone_Linux_V${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/Ozone_Linux_V${pkgver/./}_i386.tgz")
-md5sums_x86_64=('8989907c8308c89a39a16ec92102d6e8')
-md5sums_i686=('978e4e1473ce9237e542814da27daffc')
+md5sums_x86_64=('a5f462f4223c46806274fda6eb4d062c')
+md5sums_i686=('1cd3448769c234fead40f3515aae1147')
 url="https://www.segger.com/jlink-software.html"
 options=(!strip)
 
