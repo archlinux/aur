@@ -16,6 +16,7 @@ mkdir -p "$progHome" >/dev/null 2>&1
 ln -s "$progRealPath/$progBin" "$progHome/$progBin" >/dev/null 2>&1
 ln -s "$progRealPath/readme.txt" "$progHome/readme.txt" >/dev/null 2>&1
 ln -s "$progRealPath/libmysql.dll" "$progHome/libmysql.dll" >/dev/null 2>&1
+ln -s "$progRealPath/libmariadb.dll" "$progHome/libmariadb.dll" >/dev/null 2>&1
 
 # Create a blank config file (otherwise HeidiSQL stores its settings in the Windows Registry)
 if [ -n "$XDG_CONFIG_HOME" ]; then
