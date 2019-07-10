@@ -1,0 +1,40 @@
+pkgbase = automata-library
+	pkgdesc = Theoretical computer science datastructures and algorithms implementation. The library provides graphical and console interface similar to bash with many classical algorithms manipulating automata, grammars, regular expressions, trees and strings.
+	pkgver = 0.0.0.r515.gc4bc905a4
+	pkgrel = 1
+	url = https://gitlab.fit.cvut.cz/algorithms-library-toolkit/
+	arch = x86_64
+	arch = armv7
+	arch = i686
+	license = GPL
+	makedepends = python3
+	makedepends = cmake
+	makedepends = gcc>=7.3.1
+	makedepends = make
+	makedepends = tclap
+	makedepends = libxml2
+	makedepends = qt5-base>=5.7
+	makedepends = graphviz
+	makedepends = jsoncpp
+	makedepends = git
+	source = automata-library::git+https://gitlab.fit.cvut.cz/algorithms-library-toolkit/automata-library.git
+	sha256sums = SKIP
+
+pkgname = algorithms-library-git
+	depends = tclap
+	depends = libxml2
+	depends = readline
+	optdepends = graphviz: Visualize data structures
+	provides = algorithms-library
+	conflicts = algorithms-library
+
+pkgname = algorithms-library-gui-git
+	depends = libxml2
+	depends = qt5-base>=5.7
+	depends = graphviz
+	depends = jsoncpp
+	depends = algorithms-library-git>=0.0.0.r515.gc4bc905a4
+	depends = algorithms-library-git<=0.0.0.r515.gc4bc905a4
+	provides = algorithms-library-gui
+	conflicts = algorithms-library-gui
+
