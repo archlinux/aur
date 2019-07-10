@@ -1,18 +1,23 @@
 pkgbase = arduino-create-agent-git
 	pkgdesc = The Arduino Create Multi Platform Agent
 	pkgver = 1.1.60.r137.gc2363f2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.arduino.cc/
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = go
-	depends = libappindicator-gtk3
+	makedepends = libappindicator-gtk3
 	backup = usr/lib/arduino-create-agent/config.ini
+	backup = usr/lib/arduino-create-agent-cli/config.ini
 	source = arduino-create-agent::git+https://github.com/arduino/arduino-create-agent.git#branch=devel
 	source = arduino-create-agent.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = arduino-create-agent-git
+	depends = libappindicator-gtk3
+
+pkgname = arduino-create-agent-cli-git
+	pkgdesc = The Arduino Create Multi Platform Agent CLI
 
