@@ -1,0 +1,20 @@
+pkgbase = duetwebserver
+	pkgdesc = Optional web server for Duet 3 series
+	pkgver = 1.0.0.3
+	pkgrel = 1
+	url = https://github.com/chrishamm/DuetSoftwareFramework
+	arch = armv7h
+	license = GPL3
+	depends = duetcontrolserver
+	depends = duetwebcontrol
+	depends = duetsd
+	provides = duetwebserver
+	conflicts = duetwebserver
+	options = !strip
+	options = staticlibs
+	backup = opt/dsf/conf/http.json
+	source = https://chrishamm.io/debian/dists/stretch/dsf/binary-armhf/duetwebserver_1.0.0.3.deb
+	sha256sums = 60f47b76258eed003e96e833dac04d4eb75fcdd4e0f5feb7485cd3d5c9438281
+
+pkgname = duetwebserver
+
