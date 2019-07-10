@@ -3,6 +3,8 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
+# Discussion: https://bbs.archlinux.org/viewtopic.php?pid=1853334#p1853334
+
 pkgname=aseprite-git
 _pkgname=aseprite
 pkgver=1.2.13.r0.gaf4fd54c2
@@ -11,9 +13,9 @@ pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('BSD' 'custom')
-depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'pixman' 'libxcursor' 'fontconfig')
+depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'pixman' 'libxcursor' 'fontconfig' 'nettle' 'shared-mime-info' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('git' 'ninja' 'python2' 'clang')
-conflicts=("${_pkgname}" "${_pkgname}-gpl"  )
+conflicts=("${_pkgname}" "${_pkgname}-gpl")
 source=(
         # "git+https://github.com/${_pkgname}/pixman.git"
         "git+https://github.com/${_pkgname}/simpleini.git"
