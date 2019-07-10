@@ -3,15 +3,18 @@
 pkgname=pymedusa
 _gitname=Medusa
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic."
 arch=('any')
 url="https://github.com/${pkgname}/${_gitname}"
 license=('GPL')
 
-depends=('python-babel'
+depends=('libmediainfo'
+         'python-babel'
          'python-mako')
-optdepends=('unrar')
+
+optdepends=('openssl'
+            'unrar')
 
 options=('!strip')
 
