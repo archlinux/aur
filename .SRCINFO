@@ -1,0 +1,15 @@
+pkgbase = pygreat-git
+	pkgdesc = A library to help you do Great things
+	pkgver = v2019.5.1.dev0.6.g1e982b2
+	pkgrel = 1
+	url = https://github.com/yuvadm/libgreat
+	arch = any
+	license = BSD
+	depends = python-pyusb
+	depends = python-future
+	provides = pygreat
+	source = git+https://github.com/yuvadm/libgreat
+	sha1sums = SKIP
+
+pkgname = pygreat-git
+
