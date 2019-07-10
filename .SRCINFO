@@ -1,6 +1,6 @@
 pkgbase = odysseus
 	pkgdesc = Web browser for the open and decentralized web.
-	pkgver = 1.5.18
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://odysseus.adrian.geek.nz
 	arch = i686
