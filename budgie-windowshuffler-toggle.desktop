@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Icon=windowshuffler-symbolic
-Name=Budgie Window Shuffler Toggle
-Exec=budgie-window-shuffler-toggle
+Name=Budgie WindowShuffler Toggle
+Exec=budgie-windowshuffler-toggle
 Terminal=false
 Hidden=false
 Categories=Utility

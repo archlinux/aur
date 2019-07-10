@@ -1,7 +1,8 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Contributor: DonHugo
 pkgname=budgie-windowshuffler-git
 pkgver=r22.01297f8
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI and keyboard friendly window arranger for the Budgie and MATE desktop'
 arch=('any')
 url='https://github.com/UbuntuBudgie/window-shuffler'
@@ -14,11 +15,11 @@ optdepends=('budgie-desktop: The Budgie desktop'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/UbuntuBudgie/window-shuffler.git'
-	'budgie-window-shuffler-toggle'
-	'budgie-window-shuffler-toggle.desktop')
+	"${pkgname%-git}-toggle"
+	"${pkgname%-git}-toggle.desktop")
 sha256sums=('SKIP'
             'c4ebc452c537d39cd6650bc6d1b5349ea82b1765c25de960ae908d1e528932aa'
-            'd350ed513edc6433bc48abe1f0c97f04e7a489830086d5f8344dcf19d2b1e637')
+            'ef1b4bce706365115c7faefed88568bbf339dba9f2c67b18a4dbb49702b58e98')
 
 pkgver() {
 	cd window-shuffler
@@ -27,11 +28,12 @@ pkgver() {
 
 package() {
 	cd window-shuffler
-	install -d $pkgdir/usr/share/pixmaps
+	install -d $pkgdir/usr/share/{pixmaps,budgie-desktop/windowshuffler}
 	cp -r icons/* $pkgdir/usr/share/pixmaps
 	rm -rf icons
-	install -d $pkgdir/usr/share/budgie-desktop/windowshuffler
 	cp -r ./* $pkgdir/usr/share/budgie-desktop/windowshuffler
-	install -Dm755 $srcdir/budgie-window-shuffler-toggle $pkgdir/usr/bin/budgie-window-shuffler-toggle
-	install -Dm644 $srcdir/budgie-window-shuffler-toggle.desktop $pkgdir/usr/share/applications/budgie-window-shuffler-toggle.desktop
+	install -Dm755 "$srcdir/${pkgname%-git}-toggle" \
+		"$pkgdir/usr/bin/${pkgname%-git}-toggle"
+	install -Dm644 "$srcdir/${pkgname%-git}-toggle.desktop" \
+		"$pkgdir/usr/share/applications/${pkgname%-git}-toggle.desktop"
 }

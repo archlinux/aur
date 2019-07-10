@@ -1,7 +1,7 @@
 pkgbase = budgie-windowshuffler-git
 	pkgdesc = GUI and keyboard friendly window arranger for the Budgie and MATE desktop
 	pkgver = r22.01297f8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UbuntuBudgie/window-shuffler
 	arch = any
 	license = GPL3
@@ -16,11 +16,11 @@ pkgbase = budgie-windowshuffler-git
 	provides = budgie-windowshuffler
 	conflicts = budgie-windowshuffler
 	source = git+https://github.com/UbuntuBudgie/window-shuffler.git
-	source = budgie-window-shuffler-toggle
-	source = budgie-window-shuffler-toggle.desktop
+	source = budgie-windowshuffler-toggle
+	source = budgie-windowshuffler-toggle.desktop
 	sha256sums = SKIP
 	sha256sums = c4ebc452c537d39cd6650bc6d1b5349ea82b1765c25de960ae908d1e528932aa
-	sha256sums = d350ed513edc6433bc48abe1f0c97f04e7a489830086d5f8344dcf19d2b1e637
+	sha256sums = ef1b4bce706365115c7faefed88568bbf339dba9f2c67b18a4dbb49702b58e98
 
 pkgname = budgie-windowshuffler-git
 
