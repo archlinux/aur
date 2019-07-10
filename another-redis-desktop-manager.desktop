@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=Development;Utility;
+Comment=A faster, better and more stable redis desktop manager.
+Exec=/opt/Another.Redis.Desktop.Manager/AppRun
+Icon=another-redis-desktop-manager
+Name=Another-Redis-Desktop-Manager
+StartupWMClass=Another.Redis.Desktop.Manager
+Terminal=false
+Type=Application
+X-AppImage-BuildId=1NiitrlhpN0PQdDacKLp9dWtu3U
+X-AppImage-Version=1.2.4
+X-Deepin-Vendor=user-custom
