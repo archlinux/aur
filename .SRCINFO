@@ -1,6 +1,6 @@
 pkgbase = rhythmbox-plugin-listenbrainz
 	pkgdesc = Rhythmbox plugin to submit your listens to ListenBrainz
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/phw/rhythmbox-plugin-listenbrainz
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = rhythmbox-plugin-listenbrainz
 	makedepends = meson
 	depends = rhythmbox>=3.0
 	depends = python
-	source = rhythmbox-plugin-listenbrainz-1.2.4.tar.gz::https://github.com/phw/rhythmbox-plugin-listenbrainz/archive/v1.2.4.tar.gz
-	sha1sums = 18e84eec5c3ac5a8d493396c62f8e3a71aaae7ae
+	source = rhythmbox-plugin-listenbrainz-1.2.5.tar.gz::https://github.com/phw/rhythmbox-plugin-listenbrainz/archive/v1.2.5.tar.gz
+	sha1sums = 0459374f617583bcd31d9d88f2c49d618837e83f
 
 pkgname = rhythmbox-plugin-listenbrainz
 
