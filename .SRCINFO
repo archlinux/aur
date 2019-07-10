@@ -12,7 +12,7 @@ pkgbase = pi-hole-ftl
 	arch = aarch64
 	license = EUPL-1.1
 	makedepends = sqlite
-	depends = nettle>=3.5
+	depends = nettle
 	depends = gmp
 	provides = dnsmasq
 	conflicts = dnsmasq

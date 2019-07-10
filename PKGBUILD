@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
 license=('EUPL-1.1')
-depends=('nettle>=3.5' 'gmp')
+depends=('nettle' 'gmp')
 makedepends=('sqlite')
 conflicts=('dnsmasq')
 provides=('dnsmasq')
