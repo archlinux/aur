@@ -40,6 +40,7 @@ package_manjarowish-light-kde-settings() {
         'kvantum-qt5'
         'latte-dock'
         'mojave-gtk-theme-git'
+        'papirus-icon-theme'
         'preload'
         'haveged'
         'irqbalance'

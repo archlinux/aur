@@ -14,6 +14,7 @@ pkgname = manjarowish-light-kde-settings
 	depends = kvantum-qt5
 	depends = latte-dock
 	depends = mojave-gtk-theme-git
+	depends = papirus-icon-theme
 	depends = preload
 	depends = haveged
 	depends = irqbalance
