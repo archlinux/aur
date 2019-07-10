@@ -1,6 +1,6 @@
 pkgbase = darling-git
 	pkgdesc = Darwin/macOS emulation layer for Linux
-	pkgver = r2545.8df457b0
+	pkgver = r2544.ab56f320
 	pkgrel = 1
 	url = http://www.darlinghq.org
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = darling-git
 	depends = libunwind
 	options = !buildflags
 	source = dkms.conf
-	source = git+https://github.com/darlinghq/darling.git
+	source = git+https://github.com/darlinghq/darling.git#commit=ab56f3209d75ad67a140e1f3e6baccfdca7a1c78
 	source = git+https://github.com/darlinghq/darling-DSTools.git
 	source = git+https://github.com/darlinghq/darling-DirectoryService.git
 	source = git+https://github.com/darlinghq/darling-Heimdal.git
@@ -239,6 +239,7 @@ pkgbase = darling-git
 pkgname = darling-git
 	install = darling-git.install
 	depends = darling-mach-dkms-git
+	conflicts = darling
 
 pkgname = darling-mach-dkms-git
 	depends = dkms
@@ -246,4 +247,5 @@ pkgname = darling-mach-dkms-git
 	optdepends = linux-lts-headers: build modules against the LTS kernel
 	optdepends = linux-zen-headers: build modules against the ZEN kernel
 	optdepends = linux-grsec-headers: build modules against the GRSEC kernel
+	conflicts = darling-mach-dkms
 

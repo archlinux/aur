@@ -4,7 +4,7 @@
 _gitname=darling
 pkgbase=$_gitname-git
 pkgname=('darling-git' 'darling-mach-dkms-git')
-pkgver=r2545.8df457b0
+pkgver=r2544.ab56f320
 pkgrel=1
 pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
@@ -19,7 +19,7 @@ _make_depends_x86_64=('gcc-multilib')
 
 # Darling git repo and all submodules.
 source=('dkms.conf'
-        'git+https://github.com/darlinghq/darling.git'
+        'git+https://github.com/darlinghq/darling.git#commit=ab56f3209d75ad67a140e1f3e6baccfdca7a1c78'
         'git+https://github.com/darlinghq/darling-DSTools.git'
         'git+https://github.com/darlinghq/darling-DirectoryService.git'
         'git+https://github.com/darlinghq/darling-Heimdal.git'
@@ -264,6 +264,7 @@ build() {
 package_darling-git() {
 	install=darling-git.install
 	depends=('darling-mach-dkms-git')
+  conflicts=('darling')
 
 	cd "$srcdir/$_gitname/build"
 	make DESTDIR="$pkgdir" install 
@@ -272,6 +273,7 @@ package_darling-git() {
 
 package_darling-mach-dkms-git() {
 	depends=('dkms')
+  conflicts=('darling-mach-dkms')
 	optdepends=('linux-headers: build modules against the Arch kernel'
 	            'linux-lts-headers: build modules against the LTS kernel'
 	            'linux-zen-headers: build modules against the ZEN kernel'
