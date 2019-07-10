@@ -5,7 +5,6 @@ pkgbase = another-redis-desktop-manager
 	url = https://github.com/qishibo/AnotherRedisDesktopManager
 	arch = x86_64
 	license = MIT
-	depends = aria2
 	depends = libappindicator-sharp
 	depends = libappindicator-gtk3
 	depends = libappindicator-gtk2
@@ -18,9 +17,11 @@ pkgbase = another-redis-desktop-manager
 	source = https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v1.2.4/Another.Redis.Desktop.Manager.1.2.4.AppImage
 	source = another-redis-desktop-manager.desktop
 	source = another-redis-desktop-manager.png
+	source = LICENSE
 	md5sums = 9818915d396b59af1037b17fd1c3460f
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 11ac6e7e9d578a9ad0b548c3fc9a2527
+	md5sums = 3f7c15e66be6ffd8b70fbb50882fc0dd
+	md5sums = 74fd786ee05276f7550f94e8ed1bf495
 
 pkgname = another-redis-desktop-manager
 
