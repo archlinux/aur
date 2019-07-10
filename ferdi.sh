@@ -1,3 +1,3 @@
 #!/bin/sh
 
-electron /usr/lib/ferdi/resources/app.asar "$@"
+electron4 /usr/lib/ferdi/resources/app.asar "$@"
