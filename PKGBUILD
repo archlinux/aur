@@ -15,11 +15,11 @@ _pgo=true
 # /view/head:/debian/patches/unity-menubar.patch
 
 # patches from gentoo:
-# https://dev.gentoo.org/~anarchy/mozilla/patchsets/firefox-67.0-patches-05.tar.xz
+# https://dev.gentoo.org/~anarchy/mozilla/patchsets/firefox-68.0-patches-07.tar.xz
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=67.0.4
+pkgver=68.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -34,7 +34,10 @@ depends=('mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          # system harfbuzz
          'harfbuzz'
          # system graphite
-         'graphite')
+         'graphite'
+         # system webp
+         'libwebp'
+        )
 
 makedepends=('unzip' 'zip' 'diffutils' 'python2-setuptools' 'yasm' 'mesa' 'imake'
              'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13' 'rust'
@@ -46,7 +49,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=9c008b241362
+_patchrev=840132a4a9b3
 options=('!emptydirs')
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -64,22 +67,14 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
 	unity-menubar.patch
 	add_missing_pgo_rule.patch
         pgo_fix_missing_kdejs.patch
-        2001_system_graphite2_support.patch
         2000_system_harfbuzz_support.patch
+        2001_system_graphite2_support.patch
         # pgo fixes
         mozilla-1516803.patch
         mozilla-1516081.patch
         pgo.patch
-        # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
-        2009_rust-1.33-support.patch.xz
-        2010_rust-1.33-support.patch.xz
-        2011_rust-1.33-support.patch.xz
         # use sytem av1
         7002_system_av1_support.patch
-        # https://bugzilla.mozilla.org/show_bug.cgi?id=1542958
-        # note: fixes compile errrors when using elf migrartion
-        2014_spectre_variant2_bug1542958.patch
-        2015_spectre_variant2_bug1542958.patch
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -125,17 +120,6 @@ prepare() {
   patch -Np1 -i "$srcdir"/2001_system_graphite2_support.patch
   patch -Np1 -i "$srcdir"/7002_system_av1_support.patch
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
-  # patch -Np1 -i ../0001-bz-1468911.patch patch is to large for the AUR
-  xzcat "$srcdir"/2009_rust-1.33-support.patch.xz | patch -Np1
-  xzcat "$srcdir"/2010_rust-1.33-support.patch.xz | patch -Np1
-  xzcat "$srcdir"/2011_rust-1.33-support.patch.xz | patch -Np1
-
-  
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1542958
-  # note: fixes compile errrors when using elf migrartion
-  patch -Np1 -i  "$srcdir"/2014_spectre_variant2_bug1542958.patch
-  patch -Np1 -i  "$srcdir"/2015_spectre_variant2_bug1542958.patch
   
   if [[ $_pgo ]] ; then
     # https://bugzilla.mozilla.org/show_bug.cgi?id=1516803
@@ -231,25 +215,20 @@ END
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
 md5sums=('SKIP'
-         '15a351d5936fb76a779d3afa2baa1308'
+         '0ffd8ac9de394285f53ad08c783d5b30'
          '14e0f6237a79b85e60256f4808163160'
          '5cee310a9040ccc5abcf29742b84aeb8'
          '05bb69d25fb3572c618e3adf1ee7b670'
          'd7ce23a18da21c05cd756766e177834f'
-         '1fd3db31015977eb77960716d6d2dbe6'
-         '270eed48793b9358702e7de6185c32be'
-         '8b24c694c259064b1296e7a1397c3aee'
-         '4cd539459e253f53f631ccca51650a87'
+         '6ce1848c9987aa10e954c5f9ac2c7e18'
+         'cbec3c8957600bb83c7bfffa6fd42d70'
+         'e083ae314eaa9355aa2d4aa75a7fc277'
+         '16447c9996d36ab3b61d64de9843c681'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3fa8bd22d97248de529780f5797178af'
-         '554514bf00a7927a85280f19e52a55fb'
-         '5b0d39aebb1ce84f89bda300320b851f'
+         'bb549715cf74bcd5cbb0a1e435b1651e'
+         '05041908a051d5de7c015747d4cb0f4f'
          'becf6bf9ceb6008401832c855ccadff9'
          '79d27c8896913c7d87b148240995ab69'
          'f867ae41a722630cc5567e2dcc51676d'
-         'ef358dae95d487740dda8114df4d5f90'
-         'f343dc6520abb0be8eb77da17256ce21'
-         '4594ded5cdcdaae038bc49645643f914'
-         'df439e02304d302009c320a540f01dbe'
-         'f0e6dccbb32695d2d9057dacd650822c'
-         'cca2f77b28b5fd53cbc919045006ab0a')
+         'df439e02304d302009c320a540f01dbe')
