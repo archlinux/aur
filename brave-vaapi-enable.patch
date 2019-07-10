@@ -1,0 +1,37 @@
+From f5978c0e98eb5dc98e45e544d61c8ee79068fe5e Mon Sep 17 00:00:00 2001
+From: Akarshan Biswas <17230826+biswasab@users.noreply.github.com>
+Date: Fri, 5 Apr 2019 12:15:58 +0530
+Subject: [PATCH] Enable vaapi support
+
+Partially fixes #1024
+
+By default browser will blacklist all drivers on linux for vaapi decoding.
+
+To enable it , need to pass `--ignore-gpu-blacklist` in order to get it working since libva has problems atm with intel GPUs. I am hoping that it will be fixed in the future versions. There are a lot of activities in upstream in this.
+Only adding this support on 64 bit build at the moment.
+
+ Test case:
+Run brave with ignore-gpu-blacklist flag and see if the video is playing or not
+Based on this upstream [commit](https://github.com/chromium/chromium/commit/31225b9c5f3f685d65f742dc129241c30c32157c)
+
+Need to add libva 2.4 as a build and runtime dependency.
+---
+ lib/config.js | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/lib/config.js b/lib/config.js
+index 1983da71e..b0de942ea 100644
+--- a/lib/config.js
++++ b/lib/config.js
+@@ -129,6 +129,11 @@ Config.prototype.buildArgs = function () {
+     // Minimal symbols for target Linux x86, because ELF32 cannot be > 4GiB
+     args.symbol_level = 1
+   }
++  
++  if (this.targetArch === 'x64' && process.platform === 'linux') {
++    // Include vaapi support 
++    args.use_vaapi = true
++  }
+ 
+   if (process.platform === 'win32') {
+     args.cc_wrapper = path.join(this.srcDir, 'brave', 'script', 'redirect-cc.cmd')
