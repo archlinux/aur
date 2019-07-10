@@ -3,7 +3,7 @@
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-example
-pkgver=2017.4.29f1
+pkgver=2017.4.30f1
 pkgrel=1
 pkgdesc="Unity Example Project based on Standard Assets."
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-lts')
 makedepends=('cpio')
-source=("2017.4.29f1.pkg::https://download.unity3d.com/download_unity/06508aa14ca1/MacExampleProjectInstaller/Examples.pkg")
-md5sums=("dcb2b5e0699a9ba077b8e2e12d483712")
+source=("2017.4.30f1.pkg::https://download.unity3d.com/download_unity/c6fa43736cae/MacExampleProjectInstaller/Examples.pkg")
+md5sums=("d8d01d0ea63384ea1be99e061a566c82")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
