@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=igb
-pkgver=5.3.5.22s
+pkgver=5.3.5.36
 pkgrel=1
 pkgdesc="Driver for Intel ethernet network connection"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('linux>=2.6.30')
 makedepends=('linux-headers>=2.6.30' 'xz')
 source=("$pkgname-$pkgver-src.tar.gz::https://downloads.sourceforge.net/project/e1000/igb%20stable/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f20e037412baec27f75ec387244b9069e94393c936bb905a4db4cb78f98e081c')
+sha256sums=('87f69e85235443ced50b9f87f01e574b7cc620089a02ba2223e0be438e50fda6')
 
 
 build() {
@@ -25,5 +25,5 @@ package() {
   _updates="/usr/lib/modules/$(uname -r)/updates"
 
   find './' -name '*.ko' -exec xz -0 --force {} \;
-  install -Dm644 'igb.ko.xz' "$pkgdir/$_updates/igb.ko.xz"
+  install -Dm644 "igb.ko.xz" -t "$pkgdir/$_updates"
 }
