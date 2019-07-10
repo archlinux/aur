@@ -1,0 +1,25 @@
+pkgbase = code-server-git
+	pkgdesc = Run VS Code on a remote server
+	pkgver = 1.1156.vsc1.33.1.r17.g72d7166
+	pkgrel = 1
+	url = https://coder.com/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = yarn
+	makedepends = python2
+	makedepends = ts-node
+	depends = net-tools
+	provides = code-server
+	conflicts = code-server
+	options = !strip
+	source = code-server::git+https://github.com/cdr/code-server.git
+	source = code-server.service
+	source = code-server@.service
+	sha256sums = SKIP
+	sha256sums = eb300ec83ab6b345669e147a532032755a04f2fd118c0aa740a43f13bdea57d4
+	sha256sums = ba564da247380f485f9d8cfdacb048cf4bb59947b7ad69d8922e890a7d5e2652
+
+pkgname = code-server-git
+

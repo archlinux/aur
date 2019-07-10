@@ -1,0 +1,9 @@
+[Unit]
+Description=code-server user service
+
+[Service]
+Type=Simple
+ExecStart=/usr/bin/code-server
+
+[Install]
+WantedBy=default.target

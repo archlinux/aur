@@ -1,0 +1,10 @@
+[Unit]
+Description=code-server user service
+
+[Service]
+User=%i
+Type=Simple
+ExecStart=/usr/bin/code-server
+
+[Install]
+WantedBy=multi-user.target
