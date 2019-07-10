@@ -2,14 +2,14 @@
 
 pkgname=hek
 pkgver=0.0.2
-pkgrel=1
-pkgdesc="Check your music collection given a set of rules"
+pkgrel=2
+pkgdesc="Music library checker"
 arch=("any")
-url="https://github.com/dunon/hek"
+url="https://gitlab.com/dunon/hek"
 license=("GPL3")
 depends=("python" "python-mutagen")
-source=("https://github.com/dunon/hek/archive/$pkgver.tar.gz")
-md5sums=("10122785b3439a9c5d97bb17eaba4278")
+source=("https://gitlab.com/dunon/hek/-/archive/$pkgver/hek-$pkgver.tar.gz")
+md5sums=("b195cc1fe5008e42231468d82b61fc44")
 
 package() {
     cd "$pkgname-$pkgver"
