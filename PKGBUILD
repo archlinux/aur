@@ -2,35 +2,24 @@
 # Maintainer: Bijaya Dangol <dangoldbj23@gmail.com>
 # Maintainer: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
-pkgver=4.0.3
-pkgrel=6
+pkgver=4.0.4
+pkgrel=1
 pkgdesc="Find duplicate files on your system"
 arch=(any)
 url="https://dupeguru.voltaicideas.net/"
 license=('BSD')
-depends=('python' 'python-pyqt5' 'libxkbcommon-x11' 'python-polib' 'python-send2trash')
+depends=('python' 'python-pyqt5' 'libxkbcommon-x11' 'python-send2trash')
 makedepends=(
     python-sphinx
 )
 source=(
-    https://download.hardcoded.net/$pkgname-src-$pkgver.tar.gz
+    https://github.com/arsenetar/${pkgname}/releases/download/${pkgver}/dupeguru-src-${pkgver}_RC.tar.gz
 )
 md5sums=(
-'ed3b4a049c436cacb0a068438a8d6131'
+ '85184ae7fa32a917541d359638123767'
 )
 provides=("dupeguru")
 conflicts=("dupeguru-se" "dupeguru-pe" "dupeguru-me")
-
-prepare(){
-  # Temporary fix for python3.7 handling of old syntax
-  cd "$srcdir"
-  sed -i -e '277 a\\            try:'\
- -e '278s/^/    /'\
- -e '279s/^/    /'\
- -e '280s/^/    /'\
- -e '280a\\            except StopIteration:'\
- -e '280a\\                return' hscommon/build.py
-}
 
 build() {
   cd "$srcdir"
