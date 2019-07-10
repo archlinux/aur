@@ -2,7 +2,7 @@
 _pkgname='code-server'
 pkgname="${_pkgname}-git"
 pkgver=1.1156.vsc1.33.1.r17.g72d7166
-pkgrel=1
+pkgrel=2
 pkgdesc='Run VS Code on a remote server'
 arch=('x86_64')
 url='https://coder.com/'
@@ -62,6 +62,10 @@ build() {
 }
 
 package() {
+	# re-export for print-arch
+	export NODE_PATH="${srcdir}"/node/lib/node_modules:"${NODE_PATH}"
+	export PATH="${srcdir}"/node/bin:"${PATH}"
+
 	cd ${_pkgname}/release/${_pkgname}${pkgver}-linux-$(print-arch|sed -n 's/arch: //p')
 	install -Dm755 ${_pkgname} "${pkgdir}"/usr/bin/${_pkgname}
 	install -Dm644 README.md "${pkgdir}"/usr/share/doc/${_pkgname}/README.md
