@@ -1,15 +1,16 @@
 pkgbase = truepolyglot
 	pkgdesc = Create polyglot files that are valid PDF and ZIP at the same time. See POC||GTFO 07.
 	pkgver = 1.6.2
-	pkgrel = 1
-	url = https://git.hackade.org/truepolyglot.git/
+	pkgrel = 2
+	url = https://github.com/ansemjo/truepolyglot
 	arch = any
 	license = UNLICENSE
+	makedepends = python-setuptools
 	depends = python
 	provides = truepolyglot
 	conflicts = truepolyglot
-	source = https://git.hackade.org/truepolyglot.git//snapshot/truepolyglot-1.6.2.tar.gz
-	sha256sums = 4e16845f8ac92c2906ba5b8922d3ab1070e18ed265b9fe099f397424a30999fa
+	source = https://github.com/ansemjo/truepolyglot/archive/de76ac3bb1d9a3fc5c5009d1059f7bcd21355c00.tar.gz
+	sha256sums = eb8a392b0e401eb41fca8a3061afb7d7d05f9a1615715178dd1d48e756b0022c
 
 pkgname = truepolyglot
 
