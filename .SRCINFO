@@ -1,5 +1,5 @@
 pkgbase = darling
-	pkgdesc = Darwin/macOS emulation layer for Linux
+	pkgdesc = Darwin/macOS emulation layer for Linux (Stable)
 	pkgver = r2544.ab56f320
 	pkgrel = 1
 	url = http://www.darlinghq.org/
