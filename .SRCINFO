@@ -1,8 +1,8 @@
 pkgbase = mbpfan-git
-	pkgdesc = Automatically adjust the fan on a MacBook Pro
-	pkgver = 2.0.2
+	pkgdesc = A simple daemon to control fan speed on all MacBook/MacBook Pros
+	pkgver = 2.1.1
 	pkgrel = 1
-	url = https://github.com/dgraziotin/Fan-Control-Daemon
+	url = https://github.com/dgraziotin/mbpfan
 	install = mbpfan.install
 	arch = x86_64
 	arch = i686
