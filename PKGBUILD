@@ -2,7 +2,7 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=nem-wallet
-pkgver=2.4.2
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="Nano Wallet"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 options=('!strip')
 source=(https://github.com/NemProject/NanoWallet/releases/download/$pkgver/NEM-Wallet-$pkgver.zip
         nem-wallet.desktop)
-sha256sums=('5d29a3517d3c73afbcfac70550ff7972bb2d90fe65f38b98b9c6806f0fd92596'
+sha256sums=('889c97342f48e6ff8f6f5fabd088ff0d5f60aa9aeb28ae94df24cf70f081cdef'
             '64f9577edd1cc77115b4e71811f873555d78f89667eed09e409a871e4375a4df')
 
 package() {
