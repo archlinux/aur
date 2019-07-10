@@ -7,13 +7,13 @@
 pkgbase=tuxguitar
 pkgname=(tuxguitar tuxguitar-common tuxguitar-gtk2)
 pkgver=1.5.2_r1800
-pkgrel=2
+pkgrel=3
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('any')
 url="https://sourceforge.net/projects/tuxguitar/"
 license=('LGPL')
-depends=('java-runtime>=8' 'alsa-lib' 'libxtst')
-makedepends=('unzip' 'zip' 'ant' 'jack' 'fluidsynth' 'java-environment>=8' 'maven' 'subversion')
+depends=('jre11-openjdk' 'alsa-lib' 'libxtst')
+makedepends=('unzip' 'zip' 'ant' 'jack' 'fluidsynth' 'jdk11-openjdk' 'maven' 'subversion')
 optdepends=('fluidsynth')
 #source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz)
 source=(tuxguitar-${pkgver}-svn::svn+svn://svn.code.sf.net/p/tuxguitar/code/trunk@r1800
