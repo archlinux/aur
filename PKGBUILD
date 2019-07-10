@@ -1,15 +1,15 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=rhythmbox-plugin-listenbrainz
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
-pkgdesc="Rhythmbox plugin to submit your listens to ListenBrainz "
+pkgdesc="Rhythmbox plugin to submit your listens to ListenBrainz"
 arch=('any')
 url="https://github.com/phw/rhythmbox-plugin-listenbrainz"
 license=('MIT')
 depends=('rhythmbox>=3.0' 'python')
 makedepends=('git' 'meson')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/phw/${pkgname}/archive/v${pkgver}.tar.gz)
-sha1sums=('eb61b4d3c514478a720cb991d48497236475db08')
+sha1sums=('18e84eec5c3ac5a8d493396c62f8e3a71aaae7ae')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
