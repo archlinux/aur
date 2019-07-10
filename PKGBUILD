@@ -47,7 +47,7 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-ecl-sigfpe.patch
         sagemath-linbox-1.6.patch)
 sha256sums=('SKIP'
-            'd894b241dbde0f201ce0d83329591820ca2471d7328d945aea0624f8bc22c000'
+            '7177ff3e3f27939d45210e7e69da110441830a6e2279ee7d7e4fca26db99c3f4'
             '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
             '596d03daf53a76b04029b120619253250b0e58d530d69f14afa169e27e06f446'
             '7be9f88975079d671eb3cde78e752e74741bcc29ba9b323bab5cddf50ce6dec9'
