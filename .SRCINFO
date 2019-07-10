@@ -1,0 +1,15 @@
+pkgbase = python-zenipy
+	pkgdesc = Simple dialog with Python and Gtk
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = http://github.com/poulp/zenipy
+	arch = any
+	license = WTPFL
+	makedepends = python-setuptools
+	depends = python
+	depends = zenity
+	source = https://files.pythonhosted.org/packages/source/z/zenipy/zenipy-0.1.5.tar.gz
+	sha256sums = c773c2e5022764b6f7efaf87256b4c73ab81d2452832126bb2bed6f7b1962cce
+
+pkgname = python-zenipy
+
