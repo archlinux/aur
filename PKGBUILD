@@ -2,7 +2,7 @@
 # Contributor: Kelsey Maes <kelseymaes at outlook dot com>
 
 pkgname=python-knack
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="A Python command line interface framework"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-argcomplete' 'python-colorama' 'python-jmespath' 'python-six' '
 makedepends=('python-setuptools')
 checkdepends=('python-mock')
 source=("https://github.com/Microsoft/knack/archive/v${pkgver}.tar.gz")
-sha256sums=('a354e9dfe965ecf4b8cea0ab6b757aae7936dc1c4231c70c10586b67ce4e73e1')
+sha256sums=('29c39ca8f885f0cff52412bf414aef9e0f88e8c66ce7fa689bf12e054197138d')
 
 build() {
   cd "knack-${pkgver}"
