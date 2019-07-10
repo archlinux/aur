@@ -1,9 +1,9 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duetwebcontrol
 pkgver=2.0.0.RC7
-pkgrel=1
+pkgrel=2
 pkgdesc="Official web interface for Duet electronics"
-arch=('armv7h')
+arch=('any')
 url="https://github.com/chrishamm/DuetWebControl"
 license=('GPL3')
 provides=('duetwebcontrol')

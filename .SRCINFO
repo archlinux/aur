@@ -1,9 +1,9 @@
 pkgbase = duetwebcontrol
 	pkgdesc = Official web interface for Duet electronics
 	pkgver = 2.0.0.RC7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chrishamm/DuetWebControl
-	arch = armv7h
+	arch = any
 	license = GPL3
 	provides = duetwebcontrol
 	conflicts = duetwebcontrol
