@@ -1,6 +1,6 @@
 pkgbase = chef-dk
 	pkgdesc = The Chef development kit contains all the tools you need to develop and test your infrastructure, built by the awesome Chef community.
-	pkgver = 4.0.60
+	pkgver = 4.1.7
 	pkgrel = 1
 	url = https://downloads.chef.io/chef-dk/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = chef-dk
 	conflicts = chef-solo
 	conflicts = chef-client
 	conflicts = chef-workstation
-	source = https://packages.chef.io/files/stable/chefdk/4.0.60/debian/9/chefdk_4.0.60-1_amd64.deb
-	sha256sums = 3ef759a35ec98963c2b5df6bf24181ae7a60045c63345d801f95b318aa9e74c4
+	source = https://packages.chef.io/files/stable/chefdk/4.1.7/debian/9/chefdk_4.1.7-1_amd64.deb
+	sha256sums = e5e45b48d4eccbd042cb302d9faae455bf376640e6dd8d9a8ac82df0da685cf4
 
 pkgname = chef-dk
 
