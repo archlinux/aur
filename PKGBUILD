@@ -5,7 +5,7 @@ name=cloudcompare
 pkgname=${name}
 _fragment="#tag=v2.10.3"
 pkgver=2.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
@@ -40,6 +40,7 @@ build() {
         -DCMAKE_CXX_FLAGS=-fpermissive \
         -DOPTION_PDAL_LAS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DINSTALL_QRANSAC_SD_PLUGIN=ON \
         -DINSTALL_QCOMPASS_PLUGIN=ON \
         -DINSTALL_QPCL_PLUGIN=ON \
