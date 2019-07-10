@@ -1,7 +1,7 @@
 # Maintainer: albfan albertofanjul@gmail.com
 
 pkgname=sysprof2-git
-pkgver=3.26.0.r5.g00887d7
+pkgver=3.33.3.r26.gce7b116
 pkgrel=1
 pkgdesc='CPU Profiler'
 arch=('i686' 'x86_64' 'armv6h')
@@ -9,7 +9,7 @@ url='https://git.gnome.org/browse/sysprof'
 license=('GPL3')
 options=('!libtool')
 depends=('gtk3' 'polkit')
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'itstool' 'intltool')
 provides=('sysprof')
 conflicts=('sysprof')
 source=('git+https://git.gnome.org/browse/sysprof')
