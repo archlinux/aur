@@ -1,6 +1,6 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox browser.
-	pkgver = 60.7.0
+	pkgver = 60.8.0
 	pkgrel = 1
 	url = http://www.gnu.org/software/gnuzilla/
 	arch = i686
@@ -45,7 +45,7 @@ pkgbase = icecat
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	source = http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-5dda1503f0eee6ba4e4856396b41865179ae25e0.tar.gz
+	source = http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-6634ee332979f7a78b11cbf09a77364143a981ed.tar.gz
 	source = icecat.desktop
 	source = icecat-safe.desktop
 	source = rust_133-part0.patch
@@ -53,7 +53,8 @@ pkgbase = icecat
 	source = rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664
 	source = deny_missing_docs.patch
 	source = patch_makeicecat_stuff.patch
-	sha256sums = 2bc49d726e30db27159bc58c40c41072b65dca1800a4e7d12c831dac22bd8ff1
+	source = fix-addons.patch
+	sha256sums = 2655c3a8f656435e636fcc7774f3fa6e62bf1f98056a64b8b84fbec9a03f7b0c
 	sha256sums = c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3
 	sha256sums = 190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303
 	sha256sums = c10521badc262b476e844d3f3045ddf27e28d83d49b5db0d0e19431f06386e4d
@@ -61,6 +62,7 @@ pkgbase = icecat
 	sha256sums = 08ab4293d6008524a38e20b428c750c4c55a2f7189e9a0067871ad723c1efab5
 	sha256sums = cb1116c783995b8187574f84acb8365681aedaa2c76222cf060d31fedcb063c4
 	sha256sums = 49f7c5cb5a15a30f3fa524960a4ea273c76b191703899db68002f3194c175632
+	sha256sums = 15b381ff8d8296bbf61036401ba774a9b44aaefdc13b2c0627ef6d44e055b00e
 
 pkgname = icecat
 

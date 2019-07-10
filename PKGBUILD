@@ -6,8 +6,8 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=60.7.0
-_pkgver=5dda1503f0eee6ba4e4856396b41865179ae25e0
+pkgver=60.8.0
+_pkgver=6634ee332979f7a78b11cbf09a77364143a981ed
 pkgrel=1
 pkgdesc="GNU version of the Firefox browser."
 arch=(i686 x86_64)
@@ -25,16 +25,17 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 source=(http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_pkgver}.tar.gz
         icecat.desktop icecat-safe.desktop
         rust_133-part0.patch 'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664' 
-        deny_missing_docs.patch patch_makeicecat_stuff.patch)
+        deny_missing_docs.patch patch_makeicecat_stuff.patch fix-addons.patch)
 
-sha256sums=('2bc49d726e30db27159bc58c40c41072b65dca1800a4e7d12c831dac22bd8ff1'
+sha256sums=('2655c3a8f656435e636fcc7774f3fa6e62bf1f98056a64b8b84fbec9a03f7b0c'
             'c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
             '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
             'c10521badc262b476e844d3f3045ddf27e28d83d49b5db0d0e19431f06386e4d'
             '8b37332dd205946ea95c606103b5b0e1e8498819051ea1c1bce79f04fd88ebca'
             '08ab4293d6008524a38e20b428c750c4c55a2f7189e9a0067871ad723c1efab5'
             'cb1116c783995b8187574f84acb8365681aedaa2c76222cf060d31fedcb063c4'
-            '49f7c5cb5a15a30f3fa524960a4ea273c76b191703899db68002f3194c175632')
+            '49f7c5cb5a15a30f3fa524960a4ea273c76b191703899db68002f3194c175632'
+            '15b381ff8d8296bbf61036401ba774a9b44aaefdc13b2c0627ef6d44e055b00e')
 
 #validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
@@ -59,6 +60,9 @@ prepare() {
   patch -Np1 -i ${srcdir}/rust_133-part1.patch || true
   patch -Np1 -i ${srcdir}/rust_133-part2.patch
   patch -Np1 -i ${srcdir}/deny_missing_docs.patch
+
+  # fixes installation of those addons which don't have ID on IceCat ("Cannot find id for addon" error). Thanks to kitsunyan.
+  patch -Np1 -i ${srcdir}/fix-addons.patch
 
   printf '%b' "  \e[1;36m->\e[0m\033[1m Starting build...\n"
   
