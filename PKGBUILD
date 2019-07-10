@@ -1,26 +1,25 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=rhythmbox-plugin-listenbrainz
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Rhythmbox plugin to submit your listens to ListenBrainz "
 arch=('any')
 url="https://github.com/phw/rhythmbox-plugin-listenbrainz"
 license=('MIT')
 depends=('rhythmbox>=3.0' 'python')
+makedepends=('git' 'meson')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/phw/${pkgname}/archive/v${pkgver}.tar.gz)
-sha1sums=('2404a10368f8f94345763d24b6ce87851e475d77')
+sha1sums=('eb61b4d3c514478a720cb991d48497236475db08')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  meson --prefix=/usr builddir
+  cd builddir
+  ninja
+}
 
 package() {
-    mkdir -p $pkgdir/usr/share/glib-2.0/schemas/
-    mkdir -p $pkgdir/usr/share/rhythmbox/plugins/listenbrainz/
-    mkdir -p $pkgdir/usr/share/licenses/${pkgname}/
-    mkdir -p $pkgdir/usr/lib/rhythmbox/plugins/listenbrainz/
-
-    cd "$srcdir/$pkgname-${pkgver}"
-
-    install -Dm644 listenbrainz/listenbrainz.plugin $pkgdir/usr/lib/rhythmbox/plugins/listenbrainz/
-    install -Dm644 listenbrainz/*.py $pkgdir/usr/lib/rhythmbox/plugins/listenbrainz/
-    install -Dm644 listenbrainz/*.ui $pkgdir/usr/share/rhythmbox/plugins/listenbrainz/
-    install -Dm644 listenbrainz/schema/*.gschema.xml $pkgdir/usr/share/glib-2.0/schemas/
-    install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/
+  cd "${srcdir}/${pkgname}-${pkgver}/builddir"
+  DESTDIR=${pkgdir} ninja install
+  install -Dvm644 ../LICENSE -t $pkgdir/usr/share/licenses/${pkgname}/
 }
