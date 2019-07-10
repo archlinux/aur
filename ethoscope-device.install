@@ -36,7 +36,7 @@ post_install() {
     echo "Connection=ethernet" >> /etc/netctl/ether
     echo "IP=dhcp" >> /etc/netctl/ether
     
-    echo "use netctl instead of netword"
+    echo "use netctl instead of networkd"
     systemctl stop systemd-networkd
     systemctl disable systemd-networkd
     ip link set eth0 down
@@ -45,14 +45,12 @@ post_install() {
     netctl enable ether
     netctl enable wlan
 
-#    netctl-auto enable wlan0
-#    netctl-auto start wlan0
-#    systemctl enable netctl-auto@wlan0.service
-#    systemctl start netctl-auto@wlan0.service
+    #netctl-auto is for wireless connections only
+    netctl-auto enable wlan0
+    netctl-auto start wlan0
+    systemctl enable netctl-auto@wlan0.service
+    systemctl start netctl-auto@wlan0.service
 
-    systemctl enable netctl-ifplugd@wlan0.service
-    systemctl start netctl-ifplugd@wlan0.service
-    
     systemctl enable netctl@eth0.service
     systemctl start netctl@eth0.service
     systemctl enable netctl-ifplugd@eth0.service
@@ -89,7 +87,6 @@ post_install() {
     echo 'cma_offline_start=' >> /boot/config.txt
     echo 'Loading bcm2835 module'
     echo "bcm2835-v4l2" > /etc/modules-load.d/picamera.conf
-    
    
     echo "Please reboot this PI now."
     
