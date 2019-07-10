@@ -51,10 +51,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.1
-_minor=16
+_minor=17
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -81,7 +81,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/arch-patches-v3/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches-v3/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
-        "${_lucjanpath}/network-patches-v2/0001-Bluetooth-Fix-minimum-encryption-key-size-check.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -375,14 +374,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('4d3292aa215e7a6a3cd65bb57fc19d029d9ba36fd8d91002c515f03dbad0563a46f91e6cb914e06cc8a5809014bfb4659cab03194d8c5e5e66055fd4c9ed821a'
+sha512sums=('fe8212546ade9e7554f33390a939cab3e66381ac45f12cdb51a2077edcf74f325416ea958a1e36d16331cfe57f2fc6b6d40ce1a85a6eba79f8c10d07d681f7b6'
             'SKIP'
             'e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c'
             '08409bca9c5e92840635b3bdd2267f5177334a29e5460d5e52e62ed3bf228b5bd9e6ac27491570a5d627faadeba558e5eab4c8789525fa57c9c20891ea75261e'
             '6d8f5f5999de7639da38385c48c8617baf1a74a986d648eb555f1e5213dc29ab52313f8f14a71330b678b577fbf0c1a40740cb6cab27f440fb2288b053bc6d8d'
             '2f7a1939c8e9e86b39a3385ef33f1fb738e507ae771696f57d5fa2032a46438c50e5ce54ad607643dffa0d544d401fc40616db9e88defcf7719f32efa3cdbefc'
             'ad3f2c10467341fcbf0f6a636aef0bf216d9c0d993d79ce3825e5432ad8261e6e596772931a6ac090742cf7299bdf72730e75184efc9502246ed521d79214034'
-            '7f373bc83050f7dd87e17faa1629c096a1cf9e861887443a9dae04e3681d9930399cb0bbd117684e9949f5b6d0461e81a73c34306a3d5cffa3cc30571a85965c'
             '74367a2e6f1a184f0731b4d8b8ed520166ef18c0488744e107644ed153c3a8191db8f3e98bfe7e2cedd37386e0518c709814675c0b110312bb8473a0f9dfca22'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
