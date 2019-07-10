@@ -1,6 +1,6 @@
 pkgbase = python-xarray
 	pkgdesc = N-D labeled arrays and datasets in Python
-	pkgver = 0.12.2
+	pkgver = 0.12.3
 	pkgrel = 1
 	url = http://xarray.pydata.org
 	arch = any
@@ -16,10 +16,10 @@ pkgbase = python-xarray
 	optdepends = python-rasterio: Read GeoTiffs and other gridded raster datasets
 	optdepends = python-dask: Enable out-of-core parallel computation
 	replaces = python-xray
-	source = https://files.pythonhosted.org/packages/source/x/xarray/xarray-0.12.2.tar.gz
-	md5sums = ebb54f6e25cbc9b11f85725253f9696c
-	sha1sums = a3376bd17745e91f67e3801dbb9bf42b36479521
-	sha256sums = 3a9536b5bc4eac2f4689c4ec8308f68df7e3277579499dde208031d8faf79772
+	source = https://files.pythonhosted.org/packages/source/x/xarray/xarray-0.12.3.tar.gz
+	md5sums = 6d2ce4299696011e1755a2b20b5d8ef1
+	sha1sums = a9048e73cd606cc0bc323d69ec7a8cb69093d398
+	sha256sums = 9310e610af988acb57a2627b10025a250bcbe172e66d3750a6dd3b3c5357da56
 
 pkgname = python-xarray
 
