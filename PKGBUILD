@@ -3,7 +3,7 @@ pkgbase=qt5-datasync
 pkgname=(qt5-datasync qt5-datasync-kwallet-keystore qt5-datasync-secret-keystore qt5-datasync-doc)
 group=qt5-datasync-full
 pkgver=4.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtDataSync"
@@ -16,10 +16,12 @@ optdepends=("repkg: Automatically rebuild the package on dependency updates"
 _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/QtDataSync.git#tag=${pkgver}-4"
 		"${pkgname}.rule"
-		"subpkg.rule")
+		"subpkg.rule"
+		"connectorstatemachine.cpp")
 sha256sums=('SKIP'
             '98986bc0cb0ca9f04bf79e5337705b62c31b3a8fdd1c6ba602994ea290bd4907'
-            '321d7d24f490983f54acb9e7f58ebc2a170b520cd978c4989e28bc1a76513f3b')
+            '321d7d24f490983f54acb9e7f58ebc2a170b520cd978c4989e28bc1a76513f3b'
+            'e99d925560ff52e7215af463662da74842185115766a8558568c62d458268697')
 backup=('etc/qdsapp.conf')
 
 prepare() {
@@ -30,7 +32,10 @@ build() {
   cd build
 
   qmake "CONFIG+=system_cryptopp install_system_service" "../$_pkgfqn/"
-  make
+  make || true  # will fail because of QTBUG-76521
+  cp ../connectorstatemachine.cpp src/datasync/connectorstatemachine.cpp
+  touch src/datasync/connectorstatemachine.cpp
+  make  # now it should work
   make doxygen
 }
 
