@@ -1,0 +1,24 @@
+pkgbase = mapcrafter-world113-git
+	pkgdesc = A High Performance Minecraft Map Renderer - Experimental MC 1.13 branch
+	pkgver = v.2.3.1.r0.g2e33e0d
+	pkgrel = 1
+	url = http://mapcrafter.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = imagemagick
+	depends = boost-libs
+	depends = libpng
+	depends = libjpeg
+	depends = curl
+	depends = python2
+	optdepends = python2-pillow: support for mapcrafter_png-it.py script
+	provides = mapcrafter
+	conflicts = mapcrafter
+	source = mapcrafter-world113-git::git://github.com/mapcrafter/mapcrafter.git#world113
+	md5sums = SKIP
+
+pkgname = mapcrafter-world113-git
+
