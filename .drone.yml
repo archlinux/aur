@@ -1,0 +1,28 @@
+kind: pipeline
+name: default
+
+steps:
+- name: build
+  image: archlinux/base
+  commands:
+    - mkdir build
+    - chgrp nobody build
+    - chmod g+ws build
+    - setfacl -m u::rwx,g::rwx build
+    - setfacl -d --set u::rwx,g::rwx,o::r build
+    - ls
+    - pacman -Sy --noconfirm binutils sudo grep fakeroot file
+    - pacman -S --noconfirm upower
+    - mv PKGBUILD build/
+    - pushd build
+    - sudo -u nobody makepkg -c
+    - ls -la
+    - popd
+    - mv build/kbdlightx1-* ./
+    - mv build/PKGBUILD ./
+- name: test
+  image: archlinux/base
+  commands:
+    - pacman -Sy --noconfirm namcap grep
+    - namcap PKGBUILD
+    - namcap kbdlightx1-*

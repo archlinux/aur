@@ -1,0 +1,18 @@
+pkgbase = kbdlightx1-bin
+	pkgdesc = Keyboard backlight switcher for Thinkpad X1 Carbon 5gen
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/burkostya/kbdlight
+	arch = x86_64
+	license = MIT
+	depends = upower
+	provides = kbdlight
+	conflicts = kbdlight
+	options = strip
+	source = https://github.com/burkostya/kbdlight/releases/download/v0.1.2/kbdlight
+	source = https://raw.githubusercontent.com/burkostya/kbdlight/master/LICENSE
+	sha512sums = c101f9c0c83287e501eeebbf1c4a689bfa6cb5afc694136223c32a90a67745ce10047206f888905e9ca1da692821631f305f643435101ba3ddfe2a89dd5ea0c1
+	sha512sums = eef3e40af37c4846476c7ecb687f1ee129612acec95d80119ad74179948dd1add2217a9701617eba68a399ce7744ca1539f96d31e7a59d48df7fc8a57b24286b
+
+pkgname = kbdlightx1-bin
+
