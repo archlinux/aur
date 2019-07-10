@@ -6,11 +6,8 @@ After=network.target
 Restart=on-success
 User=sickrage
 Group=sickrage
-
-#Type=forking
-#PIDFile=/run/sickrage/sickrage.pid
-#ExecStart=/usr/bin/env python2 /opt/sickrage/app/SiCKRAGE.py -q --daemon --nolaunch --datadir /opt/sickrage/data --pidfile=/run/sickrage/sickrage.pid
-ExecStart=/usr/bin/env python2 /opt/sickrage/app/SiCKRAGE.py -q --nolaunch --datadir /opt/sickrage/data
+ExecStart=/opt/sickrage/app/bin/python /opt/sickrage/app/SiCKRAGE.py --nolaunch --datadir /opt/sickrage/data
 
 [Install]
 WantedBy=multi-user.target
+

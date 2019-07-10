@@ -1,13 +1,13 @@
 post_install() {
   systemd-sysusers sickrage.conf
   systemd-tmpfiles --create sickrage.conf
-  chown -R sickrage:sickrage /opt/sickrage
 
+  #chown -R sickrage:sickrage /opt/sickrage
+  chown sickrage:sickrage /opt/sickrage/{,data}
+  chown -R sickrage:sickrage /opt/sickrage/app
+
+  echo
   echo "==> Start and enable sickrage.service. Then visit http://localhost:8081/"
-}
-
-post_upgrade() {
-  post_install $1
 }
 
 pre_remove() {
