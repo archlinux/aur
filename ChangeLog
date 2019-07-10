@@ -1,3 +1,10 @@
+4.5.13 (2019-07-08 15:04:21)
+
+    Fixes a crash when using "po" and "expr" LLDB commands in the debugger panel,
+    Fixes an issue when searching numbers after another case insensitive search has been performed,
+    Fixes a few issues in the Python API with thumb/ARM identification methods.
+    A few minor bugs has been fixed.
+
 4.5.12 (2019-06-21 15:20:41)
 
     Improves switch / case statement detection for ARM 32bits,
