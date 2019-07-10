@@ -3,12 +3,13 @@
 # https://gitlab.manjaro.org/packages/extra/pamac
 pkgname=pamac-cli
 pkgver=8.0.3
-pkgrel=1
+pkgrel=2
 _pkgfixver=$pkgver
 
 _pkgvercommit=v$pkgver
 # _pkgvercommit=a1ea02d9180bf8708f40a50939f455ac5fe34435
-sha256sums=('63c65e51f5f62ae79faf315e395e5e15bfa23d5f36b138d02613d32bf097a6e8')
+sha256sums=('63c65e51f5f62ae79faf315e395e5e15bfa23d5f36b138d02613d32bf097a6e8'
+            '732512829081cb979a01087a8d8ec2a578e6555ed4f67af998537f6707d8bcaf')
 
 pkgdesc="Pamac cli frontend for libalpm"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -23,7 +24,7 @@ replaces=('pamac')
 options=(!emptydirs)
 install=
 
-source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_pkgvercommit/pamac-$_pkgvercommit.tar.gz")
+source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_pkgvercommit/pamac-$_pkgvercommit.tar.gz" "meson.build")
 
 prepare() {
   cd "$srcdir/pamac-$_pkgvercommit"
@@ -33,6 +34,7 @@ prepare() {
 }
 
 build() {
+  cp -f "$srcdir/meson.build" "$srcdir/pamac-$_pkgvercommit/src/meson.build"
   cd "$srcdir/pamac-$_pkgvercommit"
   mkdir -p builddir
   cd builddir
