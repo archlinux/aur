@@ -1,20 +1,19 @@
-# $Id: PKGBUILD 194428 2013-09-16 10:38:02Z foutrelis $
-# Maintainer:  Silvio Knizek <killermoehre@gmx.net>
+# Maintainer:  Sascha Appel <sascha.appel@gmail.com>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Tobias Kieslich <tobias funnychar archlinux.org>
 # Contributor: Andrea De Angelis <andrea.deangelis93@gmail.com>
 
 _pkgname=xfce4-power-manager
 pkgname=${_pkgname}-devel
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.3
+pkgrel=1
 pkgdesc="Power manager for Xfce desktop"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4')
 depends=('upower' 'libnotify' 'libxfce4ui' 'hicolor-icon-theme')
-makedepends=('pkgconfig' 'intltool' 'networkmanager' 'xfce4-panel' 'polkit')
+makedepends=('pkgconfig' 'intltool' 'xfce4-panel' 'polkit')
 optdepends=(
     'xfce4-panel:	for Xfce panel plugin support'
     )
@@ -24,8 +23,8 @@ conflicts=("${_pkgname}")
 options=('!libtool')
 install=${_pkgname}.install
 source=("http://archive.xfce.org/src/xfce/xfce4-power-manager/1.6/xfce4-power-manager-${pkgver}.tar.bz2")
-sha1sums=('5a9fd4d4695a870c9ea1820cd5c228ea957f6ee3')
-md5sums=('2e2e24a1a22912d6a561ba6155887503')
+sha1sums=('ba9705efb9118b6bb320b9ebcd1b96f91e827d7e')
+md5sums=('b5ed83dd7f30a54f95d1fae1c84fa33c')
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"

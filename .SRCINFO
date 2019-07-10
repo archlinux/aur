@@ -1,7 +1,7 @@
 pkgbase = xfce4-power-manager-devel
 	pkgdesc = Power manager for Xfce desktop
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.6.3
+	pkgrel = 1
 	url = http://www.xfce.org/
 	install = xfce4-power-manager.install
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = xfce4-power-manager-devel
 	license = GPL2
 	makedepends = pkgconfig
 	makedepends = intltool
-	makedepends = networkmanager
 	makedepends = xfce4-panel
 	makedepends = polkit
 	depends = upower
@@ -18,13 +17,13 @@ pkgbase = xfce4-power-manager-devel
 	depends = libxfce4ui
 	depends = hicolor-icon-theme
 	optdepends = xfce4-panel: for Xfce panel plugin support
-	provides = xfce4-power-manager=1.6.0
+	provides = xfce4-power-manager=1.6.3
 	conflicts = xfce4-power-manager
 	replaces = xfce4-power-manager
 	options = !libtool
-	source = http://archive.xfce.org/src/xfce/xfce4-power-manager/1.6/xfce4-power-manager-1.6.0.tar.bz2
-	md5sums = 2e2e24a1a22912d6a561ba6155887503
-	sha1sums = 5a9fd4d4695a870c9ea1820cd5c228ea957f6ee3
+	source = http://archive.xfce.org/src/xfce/xfce4-power-manager/1.6/xfce4-power-manager-1.6.3.tar.bz2
+	md5sums = b5ed83dd7f30a54f95d1fae1c84fa33c
+	sha1sums = ba9705efb9118b6bb320b9ebcd1b96f91e827d7e
 
 pkgname = xfce4-power-manager-devel
 
