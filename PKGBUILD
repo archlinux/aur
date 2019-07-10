@@ -1,7 +1,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=gpsmaster
-pkgver=0.63.30
+pkgver=0.63.31
 pkgrel=1
 pkgdesc="Create, view, edit and analyse GPX files."
 arch=('any')
@@ -12,7 +12,7 @@ source=("http://gpsmaster.org/download/GpsMaster_$pkgver.jar"
         "gpsmaster.sh"
         "gpsmaster.desktop")
 noextract=("GpsMaster_$pkgver.jar")
-md5sums=('9b222d1b072d7af87f82f5f088154f92'
+md5sums=('54fd82cc5f2338713a92477003fcaab2'
          'ee58fda742aa0a9472a10b367e186f73'
          '219071f074a7b047c5a142b16038c6df')
 
