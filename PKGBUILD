@@ -1,6 +1,6 @@
 # Maintainer: AbrarSyed <aur@abrarsyed.com>
 pkgname=cloudfoundry-cli
-pkgver=6.45.0
+pkgver=6.46.0
 pkgrel=1
 pkgdesc="The official command line client for Cloud Foundry"
 arch=('x86_64')
@@ -11,9 +11,9 @@ options=('!emptydirs' '!strip')
 
 source=("cf-cli-${pkgver}-amd64.tar.gz::https://cli.run.pivotal.io/stable?release=linux64-binary&version=${pkgver}&source=github-rel")
 
-md5sums=('2f850e5dc675e541d13453f2280320df')
-sha256sums=('57499442f109e7a28887f75eae7c4b10a46021f3aa5a76290f7e35e5d1280218')
-sha512sums=('230b56648fa4b3473fda54394a060fb40c10fc383e015ab7810481d01af102ae4d716dbcf627b4a158940545835726cecbcbfee4c9563da9b7715a8e4e7532ea')
+md5sums=('27498092a3a3cbd84a11888ff2da7a08')
+sha256sums=('3dc504c790dc7984af4aeff360b8cb5df73f252728f2ae0a620fa4cfb31b6c88')
+sha512sums=('b6d9cdd709ed666fe60d1508df98b8f55002c4bc886fb51f4a338d82e76502d5e491ad58fde3efe9c0b7958ed2abd1125bbb9645a8867c890a269ba8d7491a27')
 
 package() {
     # copy binary
