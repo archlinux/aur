@@ -1,0 +1,17 @@
+pkgbase = tgui
+	pkgdesc = Cross-platform C++ GUI library for SFML
+	pkgver = v0.8.5
+	pkgrel = 1
+	url = https://tgui.eu/
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	depends = sfml
+	source = https://github.com/texus/TGUI/archive/v0.8.5.zip
+	sha256sums = SKIP
+
+pkgname = tgui
+
