@@ -1,0 +1,19 @@
+pkgbase = python-mnist
+	pkgdesc = Python utilities to download and parse the MNIST dataset
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/datapythonista/mnist
+	arch = any
+	license = BSD3
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://github.com/datapythonista/mnist/archive/mnist-0.2.2.tar.gz
+	sha256sums = f779d6b11d0aa7617b648b3579f010951d41fd30de7b4e2d7570f434529dce52
+
+pkgname = python-mnist
+	depends = python-numpy
+
+pkgname = python2-mnist
+	depends = python2-numpy
+
