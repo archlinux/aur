@@ -1,8 +1,8 @@
 # Maintainer: Dimitris Pappas <mitsakosgr at gmail dot com>
 # Contributor: Fabio Tardivo <x95a31x at gmail dot com>
 pkgname=minizinc-ide
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=(x86_64)
 url=http://www.minizinc.org/ide/
@@ -15,13 +15,13 @@ source=(
     minizinc-ide.desktop
     fzn-gecode-gist-lib-path.patch
     https://raw.githubusercontent.com/MiniZinc/MiniZincIDE/master/resources/icon.png
-    https://github.com/MiniZinc/MiniZincIDE/releases/download/$pkgver/MiniZincIDE-$pkgver-bundle-linux-x86_64.tgz
+    https://github.com/MiniZinc/MiniZincIDE/releases/download/$pkgver/MiniZincIDE-$pkgver-bundle-linux.tgz
 )
 sha256sums=(
     bf26b9e3cae148fb05ce131ef62076bda467ebd2ce9913525a5540f09435c2b6
     657090bd7d93d16648e12c8df14f65e858ee49c2384b137ff7e1abb61b291a6a
     eaa69a6d1b8a3e307d1b400b74273995abb914fbe1246c65fc9b3955b2094023
-    7d5091066a691041caf9dd38087aee71947304bde83477bc05e325f6c219f2a2
+    f0cffc30e030952b6f6fd283ed5c23ea3cf59cd69402be7a14909124b200f264
 )
 
 
