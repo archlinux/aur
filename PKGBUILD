@@ -1,6 +1,6 @@
 # Maintainer: Milk Brewster (milk on freenode irc)
 pkgname=bsequencer-git
-pkgver=r56.4663b6d
+pkgver=r65.49dc212
 pkgrel=1
 epoch=
 pkgdesc="Multi channel MIDI step sequencer LV2 plugin."
@@ -38,6 +38,7 @@ pkgver() {
 
 build() {
   cd "$srcdir"/BSEQuencer
+  make
 }
  
 # check() {
@@ -47,5 +48,5 @@ build() {
 
 package() {
   cd "$srcdir"/BSEQuencer
-  make INSTALL_DIR="${pkgdir}/usr/lib/lv2" install 
+  make install PREFIX="${pkgdir}/usr/lib/lv2" install 
 }
