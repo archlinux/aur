@@ -1,4 +1,4 @@
-pkgbase = automata-library
+pkgbase = algorithms-library-git
 	pkgdesc = Theoretical computer science datastructures and algorithms implementation. The library provides graphical and console interface similar to bash with many classical algorithms manipulating automata, grammars, regular expressions, trees and strings.
 	pkgver = 0.0.0.r515.gc4bc905a4
 	pkgrel = 1
