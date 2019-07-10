@@ -1,6 +1,6 @@
 pkgbase = rauc
 	pkgdesc = RAUC controls the update process on embedded linux systems. It is both a target application that runs as an update client and a host/target tool that allows you to create, inspect and modify installation artifacts.
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/rauc/rauc
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = rauc
 	makedepends = python
 	depends = curl
 	depends = json-glib
-	source = https://github.com/rauc/rauc/releases/download/v1.0/rauc-1.0.tar.xz
-	source = https://github.com/rauc/rauc/releases/download/v1.0/rauc-1.0.tar.xz.asc
+	source = https://github.com/rauc/rauc/releases/download/v1.1/rauc-1.1.tar.xz
+	source = https://github.com/rauc/rauc/releases/download/v1.1/rauc-1.1.tar.xz.asc
 	validpgpkeys = 977843FD5C3EBF76BAD4008EA58CC53DBF05E090
-	sha256sums = 8875ab0d02b4cb38a211b236855361c18b874b385e6f18dde394ac699f2cf2aa
+	sha256sums = e49086da3a72564806963d2309e8e2b255492fb314db61f84c9b4cebece98e3f
 	sha256sums = SKIP
 
 pkgname = rauc
