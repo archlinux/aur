@@ -1,13 +1,15 @@
 pkgbase = vanity-monero
 	pkgdesc = Generates vanity address for CryptoNote currencies. Currently only Monero main net and test net are supported.
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/monero-ecosystem/vanity-monero
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = go
+	makedepends = git
 	provides = vanity-monero=0.2.7
+	conflicts = vanity-monero
 	source = https://codeload.github.com/monero-ecosystem/vanity-monero/tar.gz/v0.2.7
 	sha256sums = b0f5bf201799ac35a9ddac73d832827876398c7cdfd353286bb282b00bd23e26
 
