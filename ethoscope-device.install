@@ -7,7 +7,7 @@
 post_install() {
     echo "changing the remote GIT source to BARE on node"
     cd /opt/ethoscope-device
-    git remote set-url origin git://node/srv/git/ethoscope.git
+    git remote set-url origin git://node/ethoscope.git
 
     echo "setting GIT branch"
     git checkout python3.7
