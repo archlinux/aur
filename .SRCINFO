@@ -1,0 +1,12 @@
+pkgbase = rtl8822bu
+	pkgdesc = wireless lan driver for realtek devices like GigaBlue WLAN Stick 1200MBit Dual Band USB 3.0
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/EntropicEffect/rtl8822bu
+	arch = x86_64
+	license = unknown
+	source = https://github.com/EntropicEffect/rtl8822bu/archive/master.zip
+	md5sums = 70f004b6e99c32be2c185ffc89950162
+
+pkgname = rtl8822bu
+
