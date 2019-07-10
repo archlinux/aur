@@ -1,8 +1,8 @@
 # Maintainer: Felipe Martin <me@fmartingr.com>
 
 pkgname=synology-drive
-pkgver="1.1.4"
-pkgrel="10580"
+pkgver="2.0.0"
+pkgrel="11050"
 pkgdesc="Drive for PC, the desktop utility of the DSM add-on package, Drive, allows you to sync and share files owned by you or shared by others between a centralized Synology NAS and multiple client computers."
 arch=('i686' 'x86_64')
 url="http://www.synology.com"
@@ -13,11 +13,11 @@ conflicts=('cloudstation-beta' 'cloudstation-3.0' 'cloudstation-drive')
 source=()
 md5sums=()
 
-source_i686=(https://global.download.synology.com/download/Tools/SynologyDriveClient/1.1.4-10580/Ubuntu/Installer/i686/synology-drive-10580.i686.deb)
-md5sums_i686=('ad22b8493996472258ddc7baf48733cc')
+source_i686=(https://global.download.synology.com/download/Tools/SynologyDriveClient/2.0.0-11050/Ubuntu/Installer/i686/synology-drive-client-11050.i686.deb)
+md5sums_i686=('8b9fd6ae83d4975d771ed925c62bfbda')
 
-source_x86_64=(https://global.download.synology.com/download/Tools/SynologyDriveClient/1.1.4-10580/Ubuntu/Installer/x86_64/synology-drive-10580.x86_64.deb)
-md5sums_x86_64=('fc6385aacb651f0646b9c1b508629a00')
+source_x86_64=(https://global.download.synology.com/download/Tools/SynologyDriveClient/2.0.0-11050/Ubuntu/Installer/x86_64/synology-drive-client-11050.x86_64.deb)
+md5sums_x86_64=('194776c3fb66ab6fa092f49377d7ab42')
 
 prepare() {
 	cd "$srcdir"
