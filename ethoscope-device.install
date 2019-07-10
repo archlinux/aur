@@ -45,16 +45,13 @@ post_install() {
     netctl enable ether
     netctl enable wlan
 
-    #netctl-auto is for wireless connections only
-    netctl-auto enable wlan0
-    netctl-auto start wlan0
-    systemctl enable netctl-auto@wlan0.service
-    systemctl start netctl-auto@wlan0.service
-
-    systemctl enable netctl@eth0.service
-    systemctl start netctl@eth0.service
-    systemctl enable netctl-ifplugd@eth0.service
-    systemctl start netctl-ifplugd@eth0.service
+    #netctl-auto is for wireless connections only, ifplugd for wired
+    netctl-auto enable wlan
+    systemctl start netctl-auto@wlan
+    systemctl enable netctl-auto@wlan0
+    
+    systemctl enable netctl-ifplugd@eth0
+    systemctl start netctl-ifplugd@eth0
     
     echo "configure the NTP file"
     echo 'server node' > /etc/ntp.conf

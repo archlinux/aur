@@ -2,7 +2,7 @@
 
 pkgname=ethoscope-device
 pkgver=r1702.g1c43fc3
-pkgrel=4
+pkgrel=5
 pkgdesc="A platform from monitoring animal behaviour in real time from a raspberry pi - Device version"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
@@ -37,7 +37,7 @@ package() {
   #install python service
   cd "${srcdir}/${pkgname}/src"
   #pip install -e . --install-option="--prefix=${pkgdir}" --no-deps
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir/"
 
   #install service files
   cd "${srcdir}"/"${pkgname}"/scripts/
