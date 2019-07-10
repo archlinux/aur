@@ -2,7 +2,7 @@
 
 pkgname=uacme
 pkgver=v1.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc='An ACMEv2 client written in plain C code with minimal dependencies'
 arch=('i686' 'x86_64')
 url='https://github.com/ndilieto/uacme/'
@@ -21,7 +21,7 @@ build() {
 prepare() {
   cd "$pkgname-${pkgver//v/}"
 
-  ./configure
+  ./configure --prefix='/usr'
 }
 
 package() {

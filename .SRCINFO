@@ -1,7 +1,7 @@
 pkgbase = uacme
 	pkgdesc = An ACMEv2 client written in plain C code with minimal dependencies
 	pkgver = v1.0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ndilieto/uacme/
 	arch = i686
 	arch = x86_64
