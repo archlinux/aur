@@ -1,8 +1,8 @@
 # Maintainer: James Milne <s4b3r6@gmail.com>
 pkgname=evjl
-pkgver=20191006
-pkgrel=2
-epoch=
+pkgver=v0.1.0
+pkgrel=1
+epoch=1
 pkgdesc="A low-level programming language, currently in 'alpha' levels of design."
 arch=(x86_64)
 url="https://git.sr.ht/~shakna/evjl"
@@ -26,6 +26,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "$pkgname"
+	git checkout 'v0.1.0'
 }
 
 build() {
