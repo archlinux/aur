@@ -1,5 +1,7 @@
 post_install() {
-  echo "Meteor is not meant to be upgraded via the binary download, since a Meteor tree needs to be owned by a regular user. First run of \`meteor\` per user will copy the binary tree to ~/.meteor. Subsequent use will run Meteor from your tree. On Arch package version increment - to upgrade your tree, either delete it and run \`meteor\` to copy the new tree over, or manually sync the changes from /usr/share/meteor over to it (e.g. using \`rsync -rl --delete /usr/share/meteor/ ~/.meteor\`)."
+  echo "Meteor is not meant to be upgraded via the binary download, since a Meteor tree needs to be owned by a regular user."
+  echo "First run of \`meteor\` per user will copy the tree to ~/.meteor. Subsequent use will run Meteor from that tree."
+  echo "On Arch package version increment: To upgrade your tree, either delete it and run \`meteor\` to copy the new tree over, or manually sync the changes from /usr/share/meteor over to it (e.g. using \`rsync -aAXv --delete /usr/share/meteor/ ~/.meteor/\`)."
 }
 
 post_upgrade() {
