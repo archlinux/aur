@@ -20,3 +20,43 @@ pkgbase = ecal
 
 pkgname = ecal
 
+pkgbase = ecal
+	pkgdesc = enhanced Communication Abstraction Layer
+	pkgver = 5.3.4.3
+	pkgrel = 1
+	url = https://github.com/continental/ecal
+	arch = x86_64
+	license = Apache
+	makedepends = asio
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = simpleini
+	makedepends = tclap
+	depends = protobuf
+	depends = qt5-base
+	source = https://github.com/continental/ecal/archive/v5.3.4.3.tar.gz
+	sha256sums = 89c9e303a63ce4dba576d45464e9e08325f2697fb9717b1174d170b0f0a3e9c7
+
+pkgname = ecal
+
+pkgbase = ecal
+	pkgdesc = enhanced Communication Abstraction Layer
+	pkgver = 5.3.4.3
+	pkgrel = 1
+	url = https://github.com/continental/ecal
+	arch = x86_64
+	license = Apache
+	makedepends = asio
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = simpleini
+	makedepends = tclap
+	depends = protobuf
+	depends = qt5-base
+	source = https://github.com/continental/ecal/archive/v5.3.4.3.tar.gz
+	sha256sums = 89c9e303a63ce4dba576d45464e9e08325f2697fb9717b1174d170b0f0a3e9c7
+
+pkgname = ecal
+
