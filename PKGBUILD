@@ -3,7 +3,7 @@
 
 _name="radicale_storage_etesync"
 pkgname="python-radicale-storage-etesync"
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="An EteSync storage plugin for Radicale"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python-etesync'
 )
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/r/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('ef38aad5eacafb0f08a8b98b91779a105c7965e4f9ba71c20add3288b6fabcf73afa150c5321d14658aa3e789a19caa59854654f8c29a835770c5942e80fce20')
+sha512sums=('5cd6f28e4c9212edec8e9fccf03e3a04e2c4d9906c845dd3fc31f5c20170052641eaf81f26c9f12ce052b55bed0e69493d26f4124f644a7aa71acff3a0743993')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
