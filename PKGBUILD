@@ -4,16 +4,14 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=ferdi-git
-_pkgver=5.1.0
+_pkgver=5.2.0
 pkgver=${_pkgver//-/_}
-pkgrel=2
-# Due to the previous "_beta" naming
-epoch=1
+pkgrel=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more. fork removing the non-skippable app delay frequently inviting you to buy a licence'
 arch=(x86_64 i686)
 url='https://meetfranz.com'
 license=(Apache)
-depends=(electron)
+depends=(electron4)
 makedepends=(expac git npm python2)
 source=("git+https://github.com/kytwb/ferdi/"
         'ferdi.desktop'
@@ -37,8 +35,8 @@ prepare() {
     src/index.js
 
   # Adjust the electron version to use when building
-  electron_version="`expac %v electron | cut -d'-' -f1`"
-  sed -i "s|\(\s\+\"electron\":\).*,|\1 \"$electron_version\",|" package.json
+  electron_version="`expac %v electron4 | cut -d'-' -f1`"
+  sed -i "s|\(\s\+\"electron4\":\).*,|\1 \"$electron_version\",|" package.json
 }
 
 build() {
