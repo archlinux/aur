@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.8.rc0.r0.g2393acebc3
+pkgver=8.9.beta2.r0.g95ea5f39d9
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -47,7 +47,7 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-ecl-sigfpe.patch
         sagemath-linbox-1.6.patch)
 sha256sums=('SKIP'
-            '1c2a2d750e81ac65a1dc07094f086ba07f4862288c935a1cd009cdd62bcfc23c'
+            'd894b241dbde0f201ce0d83329591820ca2471d7328d945aea0624f8bc22c000'
             '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
             '596d03daf53a76b04029b120619253250b0e58d530d69f14afa169e27e06f446'
             '7be9f88975079d671eb3cde78e752e74741bcc29ba9b323bab5cddf50ce6dec9'

@@ -1,48 +1,6 @@
 --- src/bin/sage-env.orig	2015-01-06 10:46:04.469687605 +0100
 +++ src/bin/sage-env	2015-01-06 10:49:59.547762019 +0100
-@@ -111,41 +111,6 @@
- }
- 
- 
--# New value for SAGE_ROOT: either SAGE_ROOT (if given)
--# or a guessed value based on pwd.
--if [ -n "$SAGE_ROOT" ]; then
--    NEW_SAGE_ROOT="$SAGE_ROOT"
--elif [ -f sage -a -d build ]; then
--    NEW_SAGE_ROOT="."
--elif [ -f ../../sage -a -d ../../build ]; then
--    NEW_SAGE_ROOT="../.."
--else
--    # No idea what SAGE_ROOT should be...
--    echo >&2 "Error: You must set the SAGE_ROOT environment variable or run this"
--    echo >&2 "script from the SAGE_ROOT or SAGE_ROOT/local/bin/ directory."
--    return 1
--fi
--
--# Make NEW_SAGE_ROOT absolute
--NEW_SAGE_ROOT=`cd "$NEW_SAGE_ROOT" && pwd -P`
--
--# Sanity check NEW_SAGE_ROOT
--if [ -f "$NEW_SAGE_ROOT/sage" -a -d "$NEW_SAGE_ROOT/build" ]; then
--    :
--else
--    echo >&2 "Error: SAGE_ROOT is set to a bad value:"
--    echo >&2 "SAGE_ROOT=$SAGE_ROOT"
--    echo >&2 "You must correct it or erase it and run this script from the SAGE_ROOT"
--    echo >&2 "or SAGE_ROOT/local/bin/ directory."
--    return 1
--fi
--
--# Warn if NEW_SAGE_ROOT does not equal the old SAGE_ROOT
--if [ "$SAGE_ROOT" != "$NEW_SAGE_ROOT" -a -n "$SAGE_ROOT" ]; then
--    echo >&2 "Warning: overwriting SAGE_ROOT environment variable:"
--    echo >&2 "Old SAGE_ROOT=$SAGE_ROOT"
--    echo >&2 "New SAGE_ROOT=$NEW_SAGE_ROOT"
--fi
- 
- 
- # Don't execute the commands more than once for the same version of
-@@ -174,35 +174,9 @@
+@@ -163,35 +163,9 @@
  export SAGE_ENV_SOURCED=$SAGE_ENV_VERSION
  
  export SAGE_ROOT="$NEW_SAGE_ROOT"
@@ -80,7 +38,7 @@
  
  # The compilers are set in order of priority by
  # 1) environment variables
-@@ -298,8 +298,8 @@
+@@ -287,8 +287,8 @@
  export SAGE_SPKG_INST="$SAGE_LOCAL/var/lib/sage/installed"
  export SAGE_SPKG_SCRIPTS="$SAGE_LOCAL/var/lib/sage/scripts"
  export SAGE_LOGS="$SAGE_ROOT/logs/pkgs"
@@ -91,7 +49,7 @@
  export SAGE_DOC="$SAGE_SHARE/doc/sage"
  
  if [ -z "${SAGE_ORIG_PATH_SET}" ]; then
-@@ -411,28 +411,8 @@
+@@ -400,28 +400,8 @@
      export SAGE_STARTUP_FILE
  fi
  
@@ -122,7 +80,7 @@
  
  LDFLAGS="-L$SAGE_LOCAL/lib -Wl,-rpath,$SAGE_LOCAL/lib $LDFLAGS"
  export LDFLAGS
-@@ -497,8 +497,6 @@
+@@ -486,8 +486,6 @@
      fi
  fi
 
@@ -131,7 +89,7 @@
  
  PERL5LIB="$SAGE_LOCAL/lib/perl5:$PERL5LIB" && export PERL5LIB
  
-@@ -609,9 +609,6 @@
+@@ -598,9 +598,6 @@
      LD_LIBRARY_PATH="$SAGE_LOCAL/bin:$LD_LIBRARY_PATH" && export LD_LIBRARY_PATH
  fi
  
