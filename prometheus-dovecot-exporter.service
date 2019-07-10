@@ -1,0 +1,9 @@
+[Unit]
+Description=Prometheus exporter for Dovecot
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/prometheus_dovecot_exporter
+
+[Install]
+WantedBy=multi-user.target

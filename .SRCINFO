@@ -1,0 +1,20 @@
+pkgbase = prometheus-dovecot-exporter-git
+	pkgdesc = Prometheus exporter that can be used to scrape statistics from Dovecot
+	pkgver = 7ef7911
+	pkgrel = 1
+	url = https://github.com/kumina/dovecot_exporter
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	source = prometheus-dovecot-exporter::git+https://github.com/kumina/dovecot_exporter.git
+	source = prometheus-dovecot-exporter.service
+	sha256sums = SKIP
+	sha256sums = 0351247da910eb87741b71f9cc8fda70ecfca627d1ecd4aaf2003a9a3c0602d7
+
+pkgname = prometheus-dovecot-exporter-git
+

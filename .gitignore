@@ -1,0 +1,5 @@
+*
+!.gitignore
+!PKGBUILD
+!prometheus-dovecot-exporter.service
+!.SRCINFO
