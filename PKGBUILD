@@ -1,9 +1,9 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duetsd
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual SD card directory for the Duet software framework"
-arch=('armv7h')
+arch=('any')
 url="https://github.com/chrishamm/DuetSoftwareFramework"
 license=('GPL3')
 provides=('duetsd')
