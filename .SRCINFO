@@ -1,0 +1,88 @@
+pkgbase = starlabstheme-git
+	pkgdesc = Star Labs GNOME Shell and GTK Theme
+	pkgver = r314.b4d7cbd
+	pkgrel = 1
+	url = https://github.com/StarLabsLtd/StarLabsTheme
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = sassc
+	provides = starlabstheme
+	conflicts = starlabstheme
+	source = git+https://github.com/StarLabsLtd/StarLabsTheme.git
+	sha256sums = SKIP
+
+pkgname = starlabstheme-backgrounds-git
+	pkgdesc = Star Labs Desktop Wallpapers
+	provides = starlabstheme-backgrounds
+	conflicts = starlabstheme-backgrounds
+
+pkgname = starlabstheme-extensions-git
+	pkgdesc = Star Labs GNOME extensions
+	depends = dconf
+	provides = starlabstheme-extensions
+	conflicts = starlabstheme-extensions
+
+pkgname = starlabstheme-font-git
+	pkgdesc = Star Labs Font
+	depends = fontconfig
+	provides = starlabstheme-font
+	conflicts = starlabstheme-font
+
+pkgname = starlabstheme-gnome-shell-git
+	pkgdesc = Star Labs GNOME Shell Theme
+	depends = gnome-shell
+	depends = starlabstheme-session
+	provides = starlabstheme-gnome-shell
+	conflicts = starlabstheme-gnome-shell
+
+pkgname = starlabstheme-grub-git
+	pkgdesc = Star Labs GRUB Theme
+	depends = grub
+	provides = starlabstheme-grub
+	conflicts = starlabstheme-grub
+
+pkgname = starlabstheme-gtk-git
+	pkgdesc = Star Labs GTK Theme
+	depends = gtk3
+	optdepends = starlabstheme-font
+	optdepends = starlabstheme-icons
+	optdepends = starlabstheme-sounds
+	provides = starlabstheme-gtk
+	conflicts = starlabstheme-gtk
+
+pkgname = starlabstheme-icons-git
+	pkgdesc = Star Labs Icon Set & Cursor Theme
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	provides = starlabstheme-icons
+	conflicts = starlabstheme-icons
+
+pkgname = starlabstheme-plymouth-git
+	pkgdesc = Star Labs Plymouth Theme
+	depends = plymouth
+	provides = starlabstheme-plymouth
+	conflicts = starlabstheme-plymouth
+
+pkgname = starlabstheme-session-git
+	pkgdesc = Star Labs Session
+	depends = dconf
+	depends = starlabstheme-backgrounds
+	depends = starlabstheme-gnome-shell
+	depends = starlabstheme-gtk
+	depends = starlabstheme-icons
+	depends = starlabtheme-sounds
+	optdepends = starlabstheme-extensions
+	optdepends = gnome-shell-extension-appindicator
+	optdepends = gnome-shell-extension-desktop-icons
+	optdepends = gnome-shell-extension-dash-to-dock
+	optdepends = starlabstheme-font
+	provides = starlabstheme-session
+	conflicts = starlabstheme-session
+
+pkgname = starlabstheme-sounds-git
+	pkgdesc = Star Labs Sound Theme
+	provides = starlabstheme-sounds
+	conflicts = starlabstheme-sounds
+
