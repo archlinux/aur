@@ -3,7 +3,6 @@ pkgbase = pcc-libs
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://pcc.ludd.ltu.se/
-	arch = i686
 	arch = x86_64
 	license = custom:BSD
 	source = http://pcc.ludd.ltu.se/ftp/pub/pcc-releases/pcc-libs-1.1.0.tgz
