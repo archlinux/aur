@@ -1,33 +1,43 @@
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+#Contributor: Robosky <fangyuhao0612 at gmail dot com>
 pkgname=anbox-image-gapps
 pkgver=2018.07.19
-_gappsver=20190315
-pkgrel=6
+pkgrel=7
 pkgdesc="Android image for running in Anbox, with Opengapps and houdini"
 arch=('x86_64')
 url="https://anbox.io"
 license=('custom')
-makedepends=('lzip' 'squashfs-tools' 'unzip')
+makedepends=('curl' 'lzip' 'squashfs-tools' 'unzip')
 optdepends=('anbox-bridge: Enable network for anbox.')
-
-# anbox image
-source=("http://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img")
-# opengapps
-source+=("https://github.com/opengapps/x86_64/releases/download/${_gappsver}/open_gapps-x86_64-7.1-mini-${_gappsver}.zip")
-# houdini
-source+=("http://dl.android-x86.org/houdini/7_y/houdini.sfs")
-# libhoudini
-source+=("https://github.com/Rprop/libhoudini/raw/master/4.0.8.45720/system/lib/libhoudini.so")
-md5sums=('26874452a6521ec2e37400670d438e33'
-		 'ce5cbb4dbdf8bdcec72eb6649889f2bf'
-         '7ebf618b1af94a02322d9f2d2610090b'
-         '205ef556ceb5f3dbcb9c309773a47fc9')
-noextract=('android_amd64.img'
-	'open_gapps-x86_64-7.1-mini-20190203.zip'
-	'houdini.sfs'
-	'libhoudini.so')
-
 provides=('anbox-image')
 conflicts=('anbox-image')
+
+# anbox image
+source=("https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img")
+
+# opengapps
+_OPENGAPPS_RELEASEDATE="$(curl -s https://api.github.com/repos/opengapps/x86_64/releases/latest | head -n 10 | grep tag_name | grep -o "\"[0-9][0-9]*\"" | grep -o "[0-9]*")"
+_OPENGAPPS_FILE="open_gapps-x86_64-7.1-mini-${_OPENGAPPS_RELEASEDATE}.zip"
+_OPENGAPPS_URL="https://github.com/opengapps/x86_64/releases/download/${_OPENGAPPS_RELEASEDATE}/${_OPENGAPPS_FILE}"
+source+=("${_OPENGAPPS_URL}")
+
+# houdini
+source+=("houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs"
+	"houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs")
+
+# libhoudini
+source+=("https://github.com/Rprop/libhoudini/raw/master/4.0.8.45720/system/lib/libhoudini.so")
+
+noextract=('android_amd64.img'
+	"${_OPENGAPPS_FILE}"
+	'houdini_y.sfs'
+	'houdini_z.sfs'
+	'libhoudini.so')
+sha256sums=('6b04cd33d157814deaf92dccf8a23da4dc00b05ca6ce982a03830381896a8cca'
+            'c7cc79d2b2bf4e9ae6e32ff4aefab2034276fa5a9d39064b69635d762d3c7fb4'
+            '56fd08c448840578386a71819c07139122f0af39f011059ce728ea0f3c60b665'
+            '7eedc42015e6fb84a11a406a099241efccc20d4e020d476335a5fdb6e69a33d2'
+            '2d15d126e46ea933a92fcc6dd30ad2c93d063af322fc1ba84aaa4f3e75d84e68')
 
 build () {
 	cd "${srcdir}"
@@ -36,7 +46,7 @@ build () {
 	unsquashfs android_amd64.img
 
 	# install opengapps
-	unzip -d opengapps ./open_gapps-x86_64-7.1-mini-${_gappsver}.zip
+	unzip -d opengapps ./${_OPENGAPPS_FILE}
 
 	cd ./opengapps/Core/
 	for filename in *.tar.lz
@@ -51,23 +61,38 @@ build () {
 	cp -r ./$(find opengapps -type d -name "Phonesky")					./squashfs-root/system/priv-app/
 	cp -r ./$(find opengapps -type d -name "GoogleServicesFramework")	./squashfs-root/system/priv-app/
 
-	# load houdini
-	mkdir -p houdini
-	unsquashfs -f -d ./houdini ./houdini.sfs
+	# load houdini_y
+	mkdir -p houdini_y
+	unsquashfs -f -d ./houdini_y ./houdini_y.sfs
 
-	cp -r ./houdini/houdini ./squashfs-root/system/bin/
-	cp -r ./houdini/xstdata ./squashfs-root/system/bin/
+	cp -r ./houdini_y/houdini ./squashfs-root/system/bin/
+	cp -r ./houdini_y/xstdata ./squashfs-root/system/bin/
 	cp ./libhoudini.so ./squashfs-root/system/lib/
 	
 	mkdir -p ./squashfs-root/system/lib/arm
-	cp -r ./houdini/linker	./squashfs-root/system/lib/arm/
-	cp -r ./houdini/*.so 	./squashfs-root/system/lib/arm/
-	cp -r ./houdini/nb		./squashfs-root/system/lib/arm/
+	cp -r ./houdini_y/linker	./squashfs-root/system/lib/arm/
+	cp -r ./houdini_y/*.so 	./squashfs-root/system/lib/arm/
+	cp -r ./houdini_y/nb		./squashfs-root/system/lib/arm/
+	
+	# load houdini_z
+	mkdir -p houdini_z
+	unsquashfs -f -d ./houdini_z ./houdini_z.sfs
+
+	cp -r ./houdini_z/houdini64 ./squashfs-root/system/bin/
+	cp -r ./houdini_z/xstdata ./squashfs-root/system/bin/
+	cp ./libhoudini.so ./squashfs-root/system/lib64/
+	
+	mkdir -p ./squashfs-root/system/lib/arm64
+	cp -r ./houdini_z/linker64	./squashfs-root/system/lib/arm64/
+	cp -r ./houdini_z/*.so 	./squashfs-root/system/lib/arm64/
+	cp -r ./houdini_z/nb		./squashfs-root/system/lib/arm64/
 
 	# add houdini parser
 	mkdir -p ./squashfs-root/system/etc/binfmt_misc
-	echo ":arm_dyn:M::\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x28::/system/bin/houdini:" >> ./squashfs-root/system/etc/binfmt_misc/arm_dynp 
-	echo ":arm_exe:M::\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28::/system/bin/houdini:" >> ./squashfs-root/system/etc/binfmt_misc/arm_exe
+	echo ':arm_exe:M::\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28::/system/bin/houdini:' >> ./squashfs-root/system/etc/binfmt_misc/arm_exe
+	echo ':arm_dyn:M::\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x28::/system/bin/houdini:' >> ./squashfs-root/system/etc/binfmt_misc/arm_dynp 
+	echo ':arm64_exe:M::\x7f\x45\x4c\x46\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\xb7::/system/bin/houdini64:' >> ./squashfs-root/system/etc/binfmt_misc/arm64_exe
+	echo ':arm64_dyn:M::\x7f\x45\x4c\x46\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\xb7::/system/bin/houdini64:' >> ./squashfs-root/system/etc/binfmt_misc/arm64_dynp
 
 	# add features
 	_C=$(cat <<-END
@@ -95,7 +120,7 @@ build () {
     sed -i "/<unavailable-feature name=\"android.hardware.bluetooth\" \/>/d" ./squashfs-root/system/etc/permissions/anbox.xml
 
     # set processors
-    _ARM_TYPE=",armeabi-v7a,armeabi"
+    _ARM_TYPE=",armeabi-v7a,armeabi,arm64-v8a"
     sed -i "/^ro.product.cpu.abilist=x86_64,x86/ s/$/${_ARM_TYPE}/" ./squashfs-root/system/build.prop
     sed -i "/^ro.product.cpu.abilist32=x86/ s/$/${_ARM_TYPE}/" ./squashfs-root/system/build.prop
 
