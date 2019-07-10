@@ -63,12 +63,12 @@ _rev_override="n"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=132
+_minor=133
 _srcname=linux-${_major}
 _clr=${_major}.132-50
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2017"
 license=('GPL2')
@@ -340,7 +340,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'e991029c6d43fe4e08bc21f1fd1ea6e58032785ac212afe8b566f1dde4eb1964'
+            '12014642d928d76ba349895b5c8be39228851bc99b80f86e22f35730170ec4fd'
             'SKIP'
             '74ec7415988d40fa53686d994cf8cb27accdbd35c5373c4c3afc2e93372ebba5'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
