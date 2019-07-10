@@ -1,16 +1,17 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Contributor: cocreature <moritz.kiefer<at>purelyfunctional<dot>org>
 
-pkgname=carla-git
-pkgver=2.0.0.r4.g946f9592
+_pkgname="carla"
+pkgname="${_pkgname}-git"
+pkgver=2.1.alpha2.r143.g39960af9
 pkgrel=1
 epoch=1
 pkgdesc="Audio Plugin Host"
 arch=("i686" "x86_64")
 url="http://kxstudio.sf.net/carla"
-license=("GPL2")
-conflicts=("carla")
-provides=("carla")
+license=("GPL2+")
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 depends=(
     'ffmpeg'
     'file'
@@ -30,18 +31,25 @@ optdepends=(
     'python-pyliblo: OSC control support'
     'python-rdflib: LADSPA-RDF support'
 )
-source=("$pkgname"::"git://github.com/falkTX/Carla.git")
-md5sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/falkTX/Carla.git#branch=develop"
+        'carla-pr-895.diff')
+md5sums=('SKIP'
+         'df18d9b16820c55e31a83be2e432332c')
 changelog='changelog.txt'
 
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  patch -p1 -N -i "$srcdir/carla-pr-895.diff"
+}
+
 build() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${_pkgname}"
   make \
     HAVE_QT4=false \
     MOC_QT5=/usr/bin/moc-qt5 \
@@ -50,13 +58,13 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${_pkgname}"
   make \
     HAVE_QT4=false \
     MOC_QT5=/usr/bin/moc-qt5 \
     RCC_QT5=/usr/bin/rcc-qt5 \
     UIC_QT5=/usr/bin/uic-qt5 \
-    DESTDIR="$pkgdir/" \
+    DESTDIR="${pkgdir}/" \
     PREFIX=/usr \
     install
 }

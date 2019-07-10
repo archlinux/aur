@@ -1,7 +1,6 @@
-/pkg/
-/src/
+pkg/
+src/
 *~
-*.xz
-*.gz
-/carla-git/
-*.tar
+carla-*.tar.xz
+carla-*.tar.gz
+carla/

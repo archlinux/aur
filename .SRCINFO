@@ -1,13 +1,13 @@
 pkgbase = carla-git
 	pkgdesc = Audio Plugin Host
-	pkgver = 2.0.0.r4.g946f9592
+	pkgver = 2.1.alpha2.r143.g39960af9
 	pkgrel = 1
 	epoch = 1
 	url = http://kxstudio.sf.net/carla
 	changelog = changelog.txt
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL2+
 	makedepends = git
 	makedepends = gtk2
 	makedepends = gtk3
@@ -23,8 +23,10 @@ pkgbase = carla-git
 	optdepends = python-rdflib: LADSPA-RDF support
 	provides = carla
 	conflicts = carla
-	source = carla-git::git://github.com/falkTX/Carla.git
+	source = carla::git+https://github.com/falkTX/Carla.git#branch=develop
+	source = carla-pr-895.diff
 	md5sums = SKIP
+	md5sums = df18d9b16820c55e31a83be2e432332c
 
 pkgname = carla-git
 

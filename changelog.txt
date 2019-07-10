@@ -1,6 +1,19 @@
+2019-07-10 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1:2.1.alpha2.r143.g39960af9-1
+	Switched from building 'master' branch to 'develop'.
+	Change URL scheme of VCS sources to HTTPS and renamed checkout and source
+	directories to 'carla' (new source checkout required).
+	Applied patch for Qt >= 5.13 compability.
+
+2019-06-29 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1:2.0.0.r4.g946f9592-1
+	Removed Qt4 support.
+
 2018-03-31 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
-	* 1:1.9.8.r54.gebd3f2e5 :
+	* 1:1.9.8.r54.gebd3f2e5-1 :
 	Removed 'clxclient' from optdepends.
 	Removed DEFAULT_QT5 make flag (Qt5 is now the default).
 
