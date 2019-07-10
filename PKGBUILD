@@ -1,7 +1,7 @@
 # Maintainer: James Milne <s4b3r6@gmail.com>
 pkgname=evjl
 pkgver=20191006
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A low-level programming language, currently in 'alpha' levels of design."
 arch=(x86_64)
@@ -34,7 +34,8 @@ build() {
 }
 
 check() {
-	echo 'No tests yet implemented'
+	cd "$pkgname"
+	make test
 }
 
 package() {
