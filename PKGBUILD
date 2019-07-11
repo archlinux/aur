@@ -1,0 +1,26 @@
+pkgname=yup
+_pkgname=yup
+pkgver="0.1.0_beta"
+_pkgver="0.1.0-beta"
+pkgrel=1
+pkgdesc="Arch Linux AUR Helper with ncurses functionality and better searching and sorting"
+arch=('any')
+url="https://github.com/ericm/yup"
+license=('MIT')
+source=("${_pkgname}::git+https://github.com/ericm/yup.git#tag=v${_pkgver}")
+sha256sums=('SKIP')
+
+depends=('pacman>=5.1' 'git' 'ncurses' 'sudo')
+makedepends=("go>=1.12")
+
+prepare() {
+    cd "${_pkgname}"
+    make
+}
+
+package() {
+    install -dm755 ${pkgdir}/usr/local/bin/${BINAME}
+    cd "${_pkgname}"
+    cp ${_pkgname} ${pkgdir}/usr/local/bin/${BINAME}
+
+}
