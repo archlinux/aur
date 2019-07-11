@@ -7,7 +7,7 @@
 
 pkgname=guix
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A purely functional package manager for the GNU system"
 arch=('x86_64' 'i686' 'armv7h')
 url="https://www.gnu.org/software/guix/"
@@ -26,7 +26,7 @@ depends=(
   'guile-sqlite3'
   'sqlite>=3.6.19'
   'bzip2'
-  'gnutls-guile'
+  'gnutls'
   'libgcrypt'
   'zlib')
 optdepends=(

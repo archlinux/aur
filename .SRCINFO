@@ -1,7 +1,7 @@
 pkgbase = guix
 	pkgdesc = A purely functional package manager for the GNU system
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/guix/
 	install = guix.install
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = guix
 	depends = guile-sqlite3
 	depends = sqlite>=3.6.19
 	depends = bzip2
-	depends = gnutls-guile
+	depends = gnutls
 	depends = libgcrypt
 	depends = zlib
 	optdepends = bash-completion: to enable bash programmable completion
