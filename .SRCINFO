@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official Telegram Desktop client (dev branch)
-	pkgver = 1.7.14.r1.g8008d8a3d
+	pkgver = 1.7.14.r3.g9c909c899
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -39,8 +39,6 @@ pkgbase = telegram-desktop-git
 	source = demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop
 	source = Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/Use-system-wide-font.patch?h=packages/telegram-desktop
 	source = tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_lottie_animation_qtdebug.patch?h=packages/telegram-desktop
-	source = tdesktop-ffmpeg-fix-convertFromARGB32PM.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop-ffmpeg-fix-convertFromARGB32PM.patch?h=packages/telegram-desktop
-	source = tdesktop-rlottie-static-qt.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop-rlottie-static-qt.patch?h=packages/telegram-desktop
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -57,8 +55,6 @@ pkgbase = telegram-desktop-git
 	sha512sums = 6d0bac5aa4c4992b5400a9a9318f7a4e92d5eab961917cf0b05cdd251ab66a77c52ec8fbef246e8019606a7624d7b5420b87f8153e071e9724c7d2f5c94e47c0
 	sha512sums = ce6be003220267bac5483caf8302b492e1581892bc36d35a61236ebf9f9d766b8bd2159557a1c36256aa85f461797a38bfaae57b12da7a72101b21c0b17ed653
 	sha512sums = a83b80668b2dc2cc77c857069fdb45b487793fda01ad8a63bab66c6a1c71e5d032050e4ec7efb5b4c3216badc5377c856ef1f4a59c2e02b24ee53b1d83124bf3
-	sha512sums = 0dec897774142a09835d36e4064132e92e9404081eb4cba33d7e2643de475ff195448b527181fdb444a15764960dfc55eb59964b77a09642310c7b8e8c236e73
-	sha512sums = 1f7cecfc8698ff9e0abce87226e993e73fdf35111d037c2847f7a1f30e65483ab332e45a1bdb86f6ac4c420c1c1429ac20454655d0e982477e37b7c48f0b1599
 
 pkgname = telegram-desktop-git
 

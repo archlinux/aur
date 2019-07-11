@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-git
-pkgver=1.7.14.r1.g8008d8a3d
+pkgver=1.7.14.r3.g9c909c899
 pkgrel=1
 pkgdesc="Official Telegram Desktop client (dev branch)"
 arch=('i686' 'x86_64')
@@ -33,9 +33,7 @@ source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#branch=de
         "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
         "demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop"
         "Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/Use-system-wide-font.patch?h=packages/telegram-desktop"
-        "tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_lottie_animation_qtdebug.patch?h=packages/telegram-desktop"
-        "tdesktop-ffmpeg-fix-convertFromARGB32PM.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop-ffmpeg-fix-convertFromARGB32PM.patch?h=packages/telegram-desktop"
-        "tdesktop-rlottie-static-qt.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop-rlottie-static-qt.patch?h=packages/telegram-desktop")
+        "tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_lottie_animation_qtdebug.patch?h=packages/telegram-desktop")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -51,9 +49,7 @@ sha512sums=('SKIP'
             'd60694dc701aa985b0e82a12c9732b945082470441c687b33167a94f94efcf253baf43bb7280ec160ba338485ee5c62de138e4804cae05f27cc5cf4298166d39'
             '6d0bac5aa4c4992b5400a9a9318f7a4e92d5eab961917cf0b05cdd251ab66a77c52ec8fbef246e8019606a7624d7b5420b87f8153e071e9724c7d2f5c94e47c0'
             'ce6be003220267bac5483caf8302b492e1581892bc36d35a61236ebf9f9d766b8bd2159557a1c36256aa85f461797a38bfaae57b12da7a72101b21c0b17ed653'
-            'a83b80668b2dc2cc77c857069fdb45b487793fda01ad8a63bab66c6a1c71e5d032050e4ec7efb5b4c3216badc5377c856ef1f4a59c2e02b24ee53b1d83124bf3'
-            '0dec897774142a09835d36e4064132e92e9404081eb4cba33d7e2643de475ff195448b527181fdb444a15764960dfc55eb59964b77a09642310c7b8e8c236e73'
-            '1f7cecfc8698ff9e0abce87226e993e73fdf35111d037c2847f7a1f30e65483ab332e45a1bdb86f6ac4c420c1c1429ac20454655d0e982477e37b7c48f0b1599')
+            'a83b80668b2dc2cc77c857069fdb45b487793fda01ad8a63bab66c6a1c71e5d032050e4ec7efb5b4c3216badc5377c856ef1f4a59c2e02b24ee53b1d83124bf3')
 pkgver() {
     cd "$srcdir/tdesktop"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -70,14 +66,16 @@ prepare() {
     git config submodule.Telegram/ThirdParty/xxHash.url "$srcdir/xxHash"
     git config submodule.Telegram/ThirdParty/rlottie.url "$srcdir/rlottie"
     git submodule update
-
+    
+    rm -rf Telegram/SourceFiles/qt_functions.cpp
     patch -Np1 -i "$srcdir/tdesktop.patch"
     patch -Np1 -i "$srcdir/no-gtk2.patch"
     patch -R -Np1 -i "$srcdir/demibold.patch"
     patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
     patch -Np1 -i "$srcdir/tdesktop_lottie_animation_qtdebug.patch"
-    patch -Np1 -i "$srcdir/tdesktop-ffmpeg-fix-convertFromARGB32PM.patch"
-    patch -Np1 -i "$srcdir/tdesktop-rlottie-static-qt.patch"
+
+    # disable static-qt for rlottie
+    sed "/RLOTTIE_WITH_STATIC_QT/d" -i "$srcdir/tdesktop/Telegram/gyp/lib_rlottie.gyp"
 
     cd "$srcdir/tdesktop"
     cd "Telegram/ThirdParty/libtgvoip"
@@ -107,7 +105,7 @@ build() {
     NUM=$((`wc -l < out/Release/CMakeLists.txt` - 2))
     sed -i "$NUM r ../CMakeLists.inj" out/Release/CMakeLists.txt
     cd "$srcdir/tdesktop/out/Release"
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -UTDESKTOP_OFFICIAL_TARGET 
     make -j17
 }
 
