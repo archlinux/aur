@@ -1,16 +1,16 @@
 pkgbase = clamtk-mate
 	pkgdesc = A simple plugin to allow a right-click, context menu scan of files or folders in MATE Desktop.
 	pkgver = 0.02.01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/darkshram/clamtk-mate/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = Artistic2.0
-	depends = python2-caja
+	depends = python-caja
 	depends = clamtk
 	provides = clamtk-mate
-	source = clamtk-mate-0.02.01.tar.gz::https://github.com/darkshram/clamtk-mate/archive/0.02.01.tar.gz
+	source = clamtk-mate-0.02.01.tar.gz::https://github.com/darkshram/clamtk-mate//archive/0.02.01.tar.gz
 	sha256sums = 5cbd066cf2c38dab314ba1136b02a228f66036ae8dada9d915dc2fbf655b27e1
 
 pkgname = clamtk-mate
