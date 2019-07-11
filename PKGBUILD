@@ -1,7 +1,7 @@
 # Maintainer: James Milne <s4b3r6@gmail.com>
 pkgname=evjl
 pkgver=v0.3.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A low-level programming language, currently in 'alpha' levels of design."
 arch=(x86_64)
@@ -26,6 +26,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "$pkgname"
+	git submodule foreach git pull origin master
 	git checkout "$pkgver"
 }
 

@@ -1,7 +1,7 @@
 pkgbase = evjl
 	pkgdesc = A low-level programming language, currently in 'alpha' levels of design.
 	pkgver = v0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~shakna/evjl
 	arch = x86_64
 	groups = devel
