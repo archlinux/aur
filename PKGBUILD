@@ -3,7 +3,7 @@
 
 pkgname=otf-libertinus
 _pkgname="${pkgname#*-}"
-pkgver=6.9
+pkgver=6.10
 pkgrel=1
 pkgdesc='The Libertinus font family. A fork of the Linux Libertine and Linux Biolinum fonts with bugfixes and an OpenType math companion.'
 depends=('fontconfig')
@@ -12,7 +12,7 @@ arch=('any')
 license=('custom: OFL')
 url='https://github.com/libertinus-fonts/libertinus'
 source=("https://github.com/libertinus-fonts/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.zip")
-sha256sums=('d21ac19087cba270d98f344953cbcaeeea3b7271c5aac081c10162268ea4f77b')
+sha256sums=('54cd1eedb95c67a4679a00ad2e2144c82395fc39cbcbf0ca88ea6dd1da4d5498')
 
 package() {
 	cd "${_pkgname^}-$pkgver"
