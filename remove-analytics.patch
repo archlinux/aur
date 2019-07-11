@@ -272,15 +272,6 @@ diff -ura a/browser/main/NoteList/index.js b/browser/main/NoteList/index.js
 diff -ura a/package.json b/package.json
 --- a/package.json	2019-05-22 08:20:34.000000000 +0200
 +++ b/package.json	2019-05-22 20:53:22.097001558 +0200
-@@ -1,7 +1,7 @@
- {
-   "name": "boost",
-   "productName": "Boostnote",
--   "version": "0.11.16",
-+  "version": "0.11.16",
-   "main": "index.js",
-   "description": "Boostnote",
-   "license": "GPL-3.0",
 @@ -54,8 +54,6 @@
      "@rokt33r/markdown-it-math": "^4.0.1",
      "@rokt33r/season": "^5.3.0",
