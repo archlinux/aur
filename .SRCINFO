@@ -1,6 +1,6 @@
 pkgbase = screencloud-git
 	pkgdesc = An easy to use screenshot sharing tool. Development version.
-	pkgver = 1.4.0.0.ged3c4d5
+	pkgver = 1.5.0.1.g0930de5
 	pkgrel = 2
 	url = https://screencloud.net/
 	arch = i686
@@ -12,13 +12,13 @@ pkgbase = screencloud-git
 	depends = qt5-x11extras
 	depends = qt5-svg
 	depends = qt5-multimedia
-	depends = pythonqt
+	depends = pythonqt-git
 	depends = quazip
 	depends = xdg-utils
 	depends = hicolor-icon-theme
-	depends = python2
-	optdepends = python2-crypto: for SFTP support
-	provides = screencloud=1.4.0.0.ged3c4d5
+	depends = python
+	optdepends = python-pycryptodome: for SFTP support
+	provides = screencloud=1.5.0.1.g0930de5
 	conflicts = screencloud
 	source = git+https://github.com/olav-st/screencloud.git
 	sha512sums = SKIP
