@@ -2,7 +2,7 @@
 
 pkgname=cfiles
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A ncurses file manager written in C"
 arch=('any')
 url="https://github.com/mananapr/cfiles/"
@@ -33,7 +33,7 @@ package() {
   cd "cfiles-${pkgver}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 cfiles.1 "$pkgdir/usr/local/man/man1/cfiles.1"
-  install -Dm755 cfiles "$pkgdir/usr/local/bin/cfiles"
+  install -Dm755 cfiles "$pkgdir/usr/bin/cfiles"
   install -Dm755 scripts/displayimg "$pkgdir/usr/local/bin/displayimg"
   install -Dm755 scripts/displayimg_uberzug "$pkgdir/usr/local/bin/displayimg_uberzug"
   install -Dm755 scripts/clearimg "$pkgdir/usr/local/bin/clearimg"

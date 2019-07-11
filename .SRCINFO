@@ -1,7 +1,7 @@
 pkgbase = cfiles
 	pkgdesc = A ncurses file manager written in C
 	pkgver = 1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mananapr/cfiles/
 	arch = any
 	license = MIT
