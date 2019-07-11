@@ -1,0 +1,52 @@
+From 8b7fbeb2e8d94b14d45171dedd7ae41c613bab21 Mon Sep 17 00:00:00 2001
+From: Roman Sommer <roman.sommer@fau.de>
+Date: Thu, 11 Jul 2019 21:47:42 +0200
+Subject: [PATCH] resolve system wide Tutorials path
+
+---
+ Src/main.cpp | 22 +++++++++++++++++++---
+ 1 file changed, 19 insertions(+), 3 deletions(-)
+
+diff --git a/Src/main.cpp b/Src/main.cpp
+index 01140cd..90494be 100644
+--- a/Src/main.cpp
++++ b/Src/main.cpp
+@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
+ 	QApplication a(argc, argv);
+ 
+ 	QString appDataPathStr = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+-	// appDataStr on Linux   = "~/.local/share/VeroRoute"
+-	// appDataStr on Windows = "C:/Users/<USER>/AppData/Roaming/VeroRoute"
++	// appDataPathStr on Linux   = "~/.local/share/VeroRoute"
++	// appDataPathStr on Windows = "C:/Users/<USER>/AppData/Roaming/VeroRoute"
+ 
+ 	// If the folder doesn't exist then create it
+ 	QDir dir(appDataPathStr);
+@@ -56,7 +56,23 @@ int main(int argc, char *argv[])
+ 	QDir templatesDir(appDataPathStr + QString("/Templates"));
+ 	if ( !templatesDir.exists() ) templatesDir.mkpath(".");
+ 
+-	QString tutorialsPathStr = pathStr;	// Tutorials should be in same folder as the exe
++	// Fallback tutorials path
++	QString tutorialsPathStr = appDataPathStr;
++	// Search for system wide tutorials path
++	for (auto dataLocationPath : QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)) {
++		QDir tutorialsDir(dataLocationPath + QString("/Tutorials"));
++		// Take first hit
++		if ( tutorialsDir.exists() ) {
++			tutorialsPathStr = dataLocationPath;
++			break;
++		}
++	}
++	// Create fallback tutorials path if needed
++	// Actually don't do this, because we skip system folders when there is a user local path
++	// QDir tutorialsDir(tutorialsPathStr + QString("/Tutorials"));
++	// if ( !tutorialsDir.exists() ) tutorialsDir.mkpath(".");
++
++	// Spawn main window
+ 	MainWindow w( appDataPathStr, tutorialsPathStr );
+ 
+ 	for (int i = 1; i < argc; i++)
+-- 
+2.22.0
+

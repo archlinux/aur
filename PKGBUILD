@@ -1,7 +1,7 @@
 # Maintainer: Roman Sommer <roman.sommer@fau.de>
 pkgname=veroroute
 _pkgvermajor=1
-_pkgverminor=51
+_pkgverminor=52
 pkgver=$_pkgvermajor.$_pkgverminor
 pkgrel=1
 epoch=
@@ -25,18 +25,19 @@ _sourcearchive="VeroRoute_V${_pkgvermajor}${_pkgverminor}_Src.zip"
 source=("https://downloads.sourceforge.net/project/$pkgname/$_sourcearchive"
 		"veroroute.desktop.in"
 		"veroroute-clib.scm"
-	    "0001-Shape.h-add-missing-header.patch")
-sha256sums=('773611e8fe7bb7ea2fc4bbd83a83b1308fdb19ef1ac8cbe752c286cb91bf6edb'
+		"0001-resolve-system-wide-Tutorials-path.patch")
+sha256sums=('8c3b7b24a89ca43721418df004751fe9e30506ce30fc232fae8407147dda61d0'
             'bbf5a01f8f05909f52cee36ac0184c039aca313d078bcced47dcdcfcaa26bba9'
             'a722805c46998bff7709357babc2e609fbc4b0021b33c59aefa4f7fa0567aeeb'
-            'b9b397b0fd2ac437d84b410e380b8337a1c2432aef61721b93be3062bdb70cda')
+            '04ac245c78425c08966558456630215d29db5b5e83a172f5a2e6c5a31dd4a9a1')
+
 noextract=()
 
 prepare() {
   echo "$srcdir"
   cd "$srcdir/VeroRoute"
 
-  patch -p1 -i "../0001-Shape.h-add-missing-header.patch"
+  patch -p1 -i "../0001-resolve-system-wide-Tutorials-path.patch"
   sed -e "s|__VERSION__|${pkgver}|g" -e "s|__COMMENT__|${pkgdesc}|g" $srcdir/veroroute.desktop.in > $srcdir/veroroute.desktop
 }
 
@@ -61,9 +62,12 @@ package() {
   mkdir -p "$pkgdir/usr/share/applications/"
   install -Dm644 "$srcdir/veroroute.desktop" "$pkgdir/usr/share/applications/"
   mkdir -p "$pkgdir/usr/share/veroroute/Tutorials"
+  install -Dm644 VeroRoute.png "$pkgdir/usr/share/veroroute/"  # install veroroute.png twice
   find Tutorials -maxdepth 1 -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/veroroute/Tutorials" \;
   mkdir -p "$pkgdir/usr/share/veroroute/Templates"
-  find Templates -maxdepth 1 -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/veroroute/Templates" \;
+  if [ -d Templates ] ; then
+	find Templates -maxdepth 1 -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/veroroute/Templates" \;
+  fi
   mkdir -p "$pkgdir/usr/share/gEDA/sym"
   (cd Libraries/gEDA; find . -mindepth 2 -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/gEDA/sym/{}" \;)
   mkdir -p "$pkgdir/usr/share/gEDA/gafrc.d/"
