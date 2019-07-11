@@ -3,8 +3,8 @@
 # Based on firefox-kde Manjaro's PKGBUILD
 
 pkgname=waterfox-kde
-pkgver=56.2.11
-pkgrel=4
+pkgver=56.2.12
+pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -24,7 +24,7 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=63b480e7462482482f6609c305cd793d938f58c0
+_commit=1bc2fb60abf0fa173b69ca94f660115d76f09f4f
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/waterfox.desktop"
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js"
@@ -84,7 +84,6 @@ ac_add_options --prefix=/usr
 ac_add_options --with-app-name=waterfox
 ac_add_options --with-app-basename=Waterfox
 ac_add_options --with-branding=browser/branding/unofficial
-ac_add_options --with-distribution-id=org.waterfoxproject
 
 # Library and chrome format
 ac_add_options --enable-chrome-format=omni
