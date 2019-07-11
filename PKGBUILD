@@ -6,7 +6,7 @@
 # Contributor : Martin Wimpress <code@flexion.org>
 
 pkgname=syncthing-git
-pkgver=v1.2.0.rc.4.r6.g43b6ac950
+pkgver=v1.2.0.r10.gba056578e
 pkgrel=1
 pkgdesc="Open Source Continuous Replication / Cluster Synchronization Thing"
 url="http://syncthing.net/"
