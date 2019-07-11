@@ -21,7 +21,8 @@ build() {
     --enable-parallel \
     --enable-plank \
     --enable-telegram \
-    --disable-mate
+    --disable-mate \
+    --enable-airforsteam
   make
 }
 
