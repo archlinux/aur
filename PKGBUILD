@@ -2,12 +2,12 @@
 
 pkgname=go-do
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple terminal to do program."
 arch=('x86_64')
 url="https://github.com/FryDay/go-do"
 source=("https://github.com/FryDay/go-do/releases/download/v$pkgver/$pkgname-linux.tar.gz")
-sha256sums=('37ab1f0f87d71566729fce7243fde2d1a5c0290a9578f4e354fb242c01524329')
+sha256sums=('d7ab762de77523b2d55d00f532dc0496db1b9b26b97d14462868104193943f02')
 license=('MIT')
 
 package() {
