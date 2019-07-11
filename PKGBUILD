@@ -1,7 +1,7 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 pkgname=sensu-go-backend
-pkgver=5.7.0
-_pkgver="${pkgver}-2380"
+pkgver=5.11.0
+_pkgver="${pkgver}-4888"
 pkgrel=1
 pkgdesc="Sensu Go Backend"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('')
 source=("${pkgname}-${_pkgver}_amd64.deb::https://packagecloud.io/sensu/stable/packages/ubuntu/cosmic/${pkgname}_${_pkgver}_amd64.deb/download.deb"
         "sensu.sysusers"
         "sensu.tmpfiles")
-sha1sums=('758461899104d65fa4c14aeccbd045635e96359f'
+sha1sums=('85ee9899939d474bc7a891b9dc2e8fe06990da3a'
           '054c2cfb7b2c4e6900fe79620b40fd060dbc0d8a'
           '9cca06fcbb23d5618382cc14e4ab4cc73c1f91fa')
 
