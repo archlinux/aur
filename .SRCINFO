@@ -1,7 +1,7 @@
 pkgbase = moonfire-nvr-git
 	pkgdesc = Security camera network video recorder
-	pkgver = r302.35e6891
-	pkgrel = 2
+	pkgver = r353.856c019
+	pkgrel = 1
 	url = https://github.com/scottlamb/moonfire-nvr
 	install = moonfire-nvr-git.install
 	arch = x86_64

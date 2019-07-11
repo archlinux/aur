@@ -2,7 +2,7 @@
 
 _pkgname=moonfire-nvr
 pkgname=moonfire-nvr-git
-pkgver=r337.c271cfa
+pkgver=r350.81d4fd6
 pkgrel=1
 pkgdesc='Security camera network video recorder'
 arch=('x86_64')
@@ -14,8 +14,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=$pkgname.install
 source=("git+$url.git"
-        'moonfire-nvr.service'
-        'moonfire-nvr.sysusers.conf')
+        'moonfire-nvr'.{service,sysusers.conf})
 sha512sums=('SKIP'
             'b074b9902f4b7a4b0229b647f0a8268915c637d02157df43927d0a05335822ada256b54d0babdb2d429f80dc746015249ebce3a80ca8d3d4e7b70125b38c45c5'
             '4e5be3c260bea782e2a4b226a1a375f97e9fd2e8ec0c1f4dc32176681b50db7fc17bacb77c5f2b8ae3d49f3d400ccbda3ad25dc32832e8042807e2d61fe3f15d')
@@ -29,7 +28,12 @@ build() {
   cd $_pkgname
   yarn
   yarn build
-  cargo build --release
+  cargo build --release --locked
+}
+
+check() {
+  cd $_pkgname
+  cargo test --release --locked
 }
 
 package() {
