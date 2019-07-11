@@ -1,0 +1,17 @@
+pkgbase = python-cohesion
+	pkgdesc = A tool for measuring Python class cohesion.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mschwager/cohesion
+	arch = any
+	license = GPL
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	optdepends = flake8: Flake8 Support
+	options = !emptydirs
+	source = https://github.com/mschwager/cohesion/archive/1.0.0.tar.gz
+	sha256sums = abb5a88b70de96e7dfb65244cc13cff7e9c5edee5333175d5a7668ac7c742c6c
+
+pkgname = python-cohesion
+
