@@ -1,8 +1,8 @@
 # Maintainer: Vinicius Moreira
 
 pkgname=fpakman-staging
-pkgver=0.3.0
-pkgrel=7
+pkgver=0.3.1.RC
+pkgrel=1
 pkgdesc="Free non-official GUI for Flatpak applications management (staging: it is a testing branch which receives updates frequently and may not be working properly)"
 arch=('any')
 url="https://github.com/vinifmor/fpakman"
@@ -11,16 +11,16 @@ depends=('flatpak' 'python' 'python-pip' 'python-pyqt5' 'python-requests' 'pytho
 makedepends=('git' 'python-setuptools')
 provides=("fpakman")
 conflicts=('fpakman')
-source=("${url}/archive/709915bc0a2a1b25dcd0638c5bbe54cda0c25364.zip")
-sha512sums=('e86dddbc5592f8ae1c4dfe8a9bff36b37f16b5ebfeea731fb802ce24e03749302e2c5dc9f721ecdb9da419984d1c7d88f20cbb01ff95164424929bc46a03e9b4')
+source=("${url}/archive/4d3abfcf8922572f51da8119be121ceeff34ad65.zip")
+sha512sums=('adf80a13a6859c124517888e89b5677dad937a1121d3600e2f51af06c452add6c71536e012b1455958a3a12a58e944610f6f1b19d5e80f3eba301de063e0995c')
 
 build() {
-  cd "${srcdir}/fpakman-709915bc0a2a1b25dcd0638c5bbe54cda0c25364"
+  cd "${srcdir}/fpakman-4d3abfcf8922572f51da8119be121ceeff34ad65"
   python3 setup.py build
 }
 
 package() {
-  cd "${srcdir}/fpakman-709915bc0a2a1b25dcd0638c5bbe54cda0c25364"
+  cd "${srcdir}/fpakman-4d3abfcf8922572f51da8119be121ceeff34ad65"
   python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
   python3 aur/desktop_entry.py
   
