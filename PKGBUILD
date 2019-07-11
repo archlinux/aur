@@ -2,7 +2,7 @@
 # Contributor: Wyatt J. Brown <sushidudeteam at gmail dot com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20190410
+pkgver=20190710
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -75,6 +75,7 @@ depends=('adobe-source-code-pro-fonts'
          'ttf-inconsolata'
          'ttf-indic-otf'
          'ttf-ionicons'
+         'ttf-joypixels'
          'ttf-junicode'
          'ttf-khmer'
          'ttf-lato'
@@ -82,6 +83,7 @@ depends=('adobe-source-code-pro-fonts'
          'ttf-linux-libertine'
          'ttf-linux-libertine-g'
          'ttf-opensans'
+         'ttf-proggy-clean'
          'ttf-roboto'
          'ttf-sazanami'
          'ttf-tibetan-machine'
