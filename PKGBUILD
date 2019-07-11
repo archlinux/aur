@@ -10,7 +10,10 @@ arch=('x86_64')
 url="https://www.arangodb.com/"
 license=('APACHE')
 provides=(${_pkgname})
-conflicts=(${_pkgname})
+conflicts=(
+    "${_pkgname}"
+    "${_pkgname}-bin"
+)
 source=(
     https://download.arangodb.com/arangodb34/Community/Linux/arangodb3-client_${_pkgver}_amd64.deb
 )
