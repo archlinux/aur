@@ -9,7 +9,7 @@ pkgdesc='Datasets to Accompany J. Fox and S. Weisberg, An R Companion to Applied
 arch=('x86_64')
 url='https://cran.r-project.org/package=${_cranname}'
 license=('GPL2' 'GPL3')
-depends=('r')
+depends=('r>=3.0')
 source=("https://cran.r-project.org/src/contrib/${_cranname}_$_cranver.tar.gz")
 md5sums=('c21eb4fe8866bae243899294abd851b1')
 
