@@ -1,0 +1,16 @@
+pkgbase = python-plasmalights
+	pkgdesc = Plasma LED driver, FX Sequencer and plugins for Pimoroni.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/pimoroni/plasma
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/plasmalights/plasmalights-0.0.1.tar.gz
+	sha512sums = 55c45372f85dd4659356e25ab837e9f47bd20b456d657e5637452418e2e3a7b493e84fa75baf79ca38659f24ae02daac2d562f76c9842f3c74c407c487da0c5e
+
+pkgname = python-plasmalights
+
+pkgname = python2-plasmalights
+
