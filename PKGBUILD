@@ -16,7 +16,7 @@ sha256sums=('fb705577e53d312dbac63d58a88f8dbdf56a9df2a7d42b96c749e4ab14a6ad6c'
 
 prepare() {
   local _dir
-  for f in *.tar.gz; do
+  for f in ${noextract[@]}; do
     _dir=$(grep -Eo '([np]papi)' <<< $f)
     mkdir -p $_dir
     tar xfC $f $_dir
