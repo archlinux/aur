@@ -1,6 +1,6 @@
 # Maintainer: Manuel Stoeckl <com dоt mstoeckl аt wppkgb>
 pkgname=waypipe-git
-pkgver=0.2.0.r42.g8e401be
+pkgver=0.3.0.r14.g5736b0b
 pkgrel=1
 pkgdesc='A proxy for Wayland protocol applications. WARNING: very unstable'
 license=('MIT')
@@ -9,6 +9,7 @@ depends=('lz4' 'zstd' 'mesa')
 optdepends=(
 	'openssh: recommended transport'
 	'ffmpeg: video compression'
+	'libva: hardware video (enc/dec)oding'
 	'systemtap: a makedepend, for tracing hooks'
 )
 makedepends=('git' 'wayland' 'meson' 'ninja' 'scdoc' 'wayland-protocols' 'libdrm')
