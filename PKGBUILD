@@ -6,7 +6,7 @@
 pkgbase=bitbake
 pkgname=('bitbake' 'bitbake-vim')
 pkgver=1.40.0
-pkgrel=3
+pkgrel=4
 _pythonver=3.7
 pkgdesc='Build tool executing tasks and managing metadata.'
 arch=('any')

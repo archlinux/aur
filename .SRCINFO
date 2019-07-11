@@ -1,7 +1,7 @@
 pkgbase = bitbake
 	pkgdesc = Build tool executing tasks and managing metadata.
 	pkgver = 1.40.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.openembedded.org/wiki/Main_Page
 	arch = any
 	license = GPL2
