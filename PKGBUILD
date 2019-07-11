@@ -16,6 +16,7 @@ depends=('shared-mime-info'
          'qt5-base'
          'qt5-multimedia'
          'qt5-tools'
+         'qt5-webengine'
          'libxkbcommon-x11'
          'libzip'
          'zlib')
