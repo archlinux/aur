@@ -1,0 +1,12 @@
+pkgbase = habash
+	pkgdesc = A (very minimal) habitica terminal client written entirely in bash.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nasfarley88/habash
+	arch = any
+	license = custom:cc0
+	source = habash-1.0.0.tar.gz::https://github.com/nasfarley88/habash/archive/v1.0.0.tar.gz
+	sha512sums = 26426d3e541cbd62773f9e00bcdeeb777bb840f79efc29e61bb181c31292ff9357b8473a2b95652c0afb298700ddd33ac065af81861e325c3a41fe72888c97a5
+
+pkgname = habash
+
