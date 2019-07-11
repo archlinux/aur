@@ -3,7 +3,7 @@
 # Contributor: tomxtobin
 # Contributor: Earnest
 pkgname=tiptop
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='hardware performance counters monitor'
 url='http://tiptop.gforge.inria.fr'
@@ -15,7 +15,7 @@ makedepends=('byacc')
 
 source=("http://tiptop.gforge.inria.fr/releases/tiptop-$pkgver.tar.gz")
 
-sha1sums=('810e89f17fcbb0b2247b5f473f0a419e5f80faa3')
+sha1sums=('52ccd0d5dfa0a8a6f692c379e560a394a6f376b9')
 
 build() {
     cd tiptop-"$pkgver"
