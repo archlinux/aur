@@ -1,0 +1,20 @@
+pkgbase = netvfy-agent-git
+	pkgdesc = NetVirt is an open source network virtualization platform (NVP).
+	pkgver = v1.
+	pkgrel = 1
+	url = http://netvirt.org
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = scons
+	makedepends = cmake
+	depends = jansson
+	depends = curl
+	depends = libevent
+	depends = openssl
+	source = netvfy-agent-git::git+https://github.com/netvfy/netvfy-agent.git
+	md5sums = SKIP
+
+pkgname = netvfy-agent-git
+
