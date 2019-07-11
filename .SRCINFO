@@ -1,19 +1,19 @@
 pkgbase = perl-parse-errorstring-perl
 	pkgdesc = Parse error messages from the perl interpreter
-	pkgver = 0.22
+	pkgver = 0.27
 	pkgrel = 1
 	url = https://metacpan.org/release/Parse-ErrorString-Perl
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-differences
-	depends = perl-class-xsaccessor
+	checkdepends = perl-test-differences>=0
+	depends = perl-class-xsaccessor>=0
 	depends = perl-pod-pom>=0.27
-	depends = perl
+	depends = perl>=5.8.7
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SZ/SZABGAB/Parse-ErrorString-Perl-0.22.tar.gz
-	md5sums = 6d31fde40a67b6b392652e04e10b8765
-	sha512sums = a1a99a876cd575adfcd30a3f73ed23c104380b32e24f34fc135b315794c640a37369abe10aea0daa5a73da030a38b52439b4a4716cc3c2c5a610a524a9ced507
+	source = https://cpan.metacpan.org/authors/id/M/MA/MANWAR/Parse-ErrorString-Perl-0.27.tar.gz
+	md5sums = 5e08c15773fde8e8f519a0fc4643e474
+	sha512sums = 2111d3d130e7eeb754e11d6a20cd289be888fd384853d19000820363b8a2bb60f75db029cbf6646ec267ba5a9f25ddc596c335c41623cc07a82b12fce81a9800
 
 pkgname = perl-parse-errorstring-perl
 
