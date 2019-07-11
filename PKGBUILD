@@ -4,7 +4,7 @@
 pkgname=fanshim
 pkgver=0.0.2
 pkgrel=1
-pkgdesc=""
+pkgdesc="Automatic control of Pimoroni Fan Shim for Raspberry Pi."
 arch=('any')
 url="https://github.com/pimoroni/fanshim-python"
 license=('MIT')
