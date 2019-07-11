@@ -27,13 +27,17 @@ build() {
 }
 
 package_python-fanshim() {
-  depends=('python-psutil')
+  depends=('python-psutil'
+           'python-rpi.gpio')
+
   cd fanshim-${pkgver}
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-fanshim() {
-  depends=('python2-psutil')
+  depends=('python2-psutil'
+           'python2-rpi.gpio')
+
   cd fanshim-${pkgver}-py2
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
