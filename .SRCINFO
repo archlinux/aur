@@ -1,7 +1,7 @@
 pkgbase = fpakman-staging
 	pkgdesc = Free non-official GUI for Flatpak applications management (staging: it is a testing branch which receives updates frequently and may not be working properly)
 	pkgver = 0.3.1.RC
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinifmor/fpakman
 	arch = any
 	license = zlib/libpng
@@ -15,8 +15,8 @@ pkgbase = fpakman-staging
 	depends = python-colorama
 	provides = fpakman
 	conflicts = fpakman
-	source = https://github.com/vinifmor/fpakman/archive/4d3abfcf8922572f51da8119be121ceeff34ad65.zip
-	sha512sums = adf80a13a6859c124517888e89b5677dad937a1121d3600e2f51af06c452add6c71536e012b1455958a3a12a58e944610f6f1b19d5e80f3eba301de063e0995c
+	source = https://github.com/vinifmor/fpakman/archive/a9e3d13aa08fb795345ddd10d69c4446edacd6e2.zip
+	sha512sums = 07fb843727fa6020d6c04deaf9e389500f136a11b4f5092255b3094613ac19c56ade5fd0b5b1f49eb60da18d75c17671c0a1081a191759d39d55c5276999cdb8
 
 pkgname = fpakman-staging
 
