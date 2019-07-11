@@ -1,8 +1,9 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 
-pkgname=jfrog-cli-go
 _name=jfrog
-pkgver=1.26.1
+_upstream_name=jfrog-cli
+pkgname=jfrog-cli-go
+pkgver=1.26.2
 pkgrel=1
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64')
@@ -10,10 +11,11 @@ url="https://github.com/jfrog/jfrog-cli-go"
 license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go-pie')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jfrog/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('f366ef3f5943f90b2d9cf00a2930b86bb0e45893f93d70e6e842d1442e11b1c166a2669347dbbbfc536e4046e5be3e3b96c8ddd6a4ad8ddad5b1b8f7d52c7135')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jfrog/${_upstream_name}/archive/${pkgver}.tar.gz")
+sha512sums=('7ec956da9923b43c24d4033da66944a525efaaa76954c3ddbf2cc17109343a4a9d4c8872b7a14bdc204699142f919e3a2bcf68a6ad72e3c94b0d386587818659')
 
 prepare() {
+  mv -v "${_upstream_name}-${pkgver}" "${pkgname}-${pkgver}"
   (
   cd "$pkgname-$pkgver/"
   go mod vendor
