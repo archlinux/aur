@@ -1,8 +1,7 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2
-pkgver=0.2.2
+pkgver=0.2.3
 _rpcver=3.4.0
-_jsonver=73063f5002612c6bf64fe24f851cd5cc0d83eef9
 pkgrel=1
 pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
          copy of the game)'
@@ -19,7 +18,7 @@ optdepends=('zenity: System dialog box support (GNOME/GTK)'
 install=openrct2.install
 source=("https://github.com/OpenRCT2/OpenRCT2/archive/v$pkgver.tar.gz"
         "https://github.com/discordapp/discord-rpc/archive/v$_rpcver.tar.gz")
-sha256sums=('4b7b003fc0cf365be8a43d8784827415dbba3335de59cb948ab720ec1ebcaa7b'
+sha256sums=('a1841247a513cf45ca0820f2fc2db81ae4f309742035cca4a280fe29b02b4727'
             'e13427019027acd187352dacba6c65953af66fdf3c35fcf38fc40b454a9d7855')
 
 prepare() {
