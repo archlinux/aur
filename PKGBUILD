@@ -2,17 +2,17 @@
 
 _pkgname=libcyaml
 pkgname=$_pkgname-git
-pkgver=master
+pkgver=r432.9f7dc2b
 pkgrel=1
 pkgdesc="C library for reading and writing YAML"
 arch=('x86_64')
-url="https://git.zrythm.org/zrythm/libcyaml"
+url="https://github.com/tlsa/libcyaml"
 license=('ISC')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('libyaml')
 makedepends=('git')
-source=("$_pkgname::git+https://git.zrythm.org/zrythm/$_pkgname.git")
+source=("$_pkgname::git+https://github.com/tlsa/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver () {

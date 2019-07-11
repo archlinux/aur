@@ -2,14 +2,14 @@ pkgbase = libcyaml-git
 	pkgdesc = C library for reading and writing YAML
 	pkgver = master
 	pkgrel = 1
-	url = https://git.zrythm.org/zrythm/libcyaml
+	url = https://github.com/tlsa/libcyaml
 	arch = x86_64
 	license = ISC
 	makedepends = git
 	depends = libyaml
 	provides = libcyaml
 	conflicts = libcyaml
-	source = libcyaml::git+https://git.zrythm.org/zrythm/libcyaml.git
+	source = libcyaml::git+https://github.com/tlsa/libcyaml.git
 	md5sums = SKIP
 
 pkgname = libcyaml-git
