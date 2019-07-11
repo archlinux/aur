@@ -1,0 +1,16 @@
+pkgbase = python-fanshim
+	pkgdesc = Python library for the Pimoroni Fan Shim for Raspberry Pi.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/pimoroni/fanshim-python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/f/fanshim/fanshim-0.0.2.tar.gz
+	sha256sums = e3b4afac4e03f7858d0376f29f9ac352c2118e4f981e2e954f8edcef09c0e2ce
+
+pkgname = python-fanshim
+
+pkgname = python2-fanshim
+
