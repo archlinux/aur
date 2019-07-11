@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git')
-pkgver=9.0.0_r318181.92f95d21912
+pkgver=9.0.0_r321346.e23be09e66d
 pkgrel=1
 _ocaml_ver=4.07.1
 arch=('x86_64')
@@ -111,7 +111,11 @@ build() {
 
 check() {
     cd _build
-    ninja $NINJAFLAGS check check-polly check-lld check-lldb check-clang
+    ninja $NINJAFLAGS check
+    ninja $NINJAFLAGS check-polly
+    ninja $NINJAFLAGS check-lld
+    ninja $NINJAFLAGS check-lldb
+    ninja $NINJAFLAGS check-clang
 }
 
 package_llvm-git() {
