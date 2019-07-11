@@ -4,7 +4,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/fanshim --threshold 55 --hysteresis 5 --delay 2
+ExecStart=/usr/bin/fanshim --preempt --threshold 55 --hysteresis 5 --delay 2
 Restart=on-failure
 
 [Install]

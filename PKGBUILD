@@ -14,7 +14,7 @@ source=("fanshim-${pkgver}.py::https://raw.githubusercontent.com/pimoroni/fanshi
         'fanshim.service')
 
 sha512sums=('cfcd1e32bf1e632dc10e555a0952f7582a68f3b677cc4753617e4e26d48034fece0694d6aeb8224ec7d2397779aa07faa978fc79e6b9b0391f17594a8f0439e0'
-            '2911e69d15ce604def3456ff4b5fe62531e4b0c16eecbc31fbeea92c29d4aa5de5866f81653bca2c7c953499a58c630f640a95ecf5e03156cb17bb804f793773')
+            '7dd5b37cd81a7001d5f3d09461889294b6b38bcfb7274a4a5c0c558492454ad58bb03822de1ce023c7221b91886f5eff0b07a56ea88a34774e971a4ee1773b26')
 
 package() {
   install -D -m 755 "${srcdir}/fanshim-${pkgver}.py" "${pkgdir}/usr/bin/fanshim"
