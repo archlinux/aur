@@ -67,7 +67,7 @@ _srcname=linux-${_major}
 _clr=${_major}.16-795
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -124,6 +124,7 @@ CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
         sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
         sed -i "s|# CONFIG_HIBERNATION is not set|CONFIG_HIBERNATION=y|g" ./.config
         sed -i "s|# CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER is not set|CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER=y|g" ./.config
+        sed -i "s|CONFIG_RT_GROUP_SCHED=y|# CONFIG_RT_GROUP_SCHED is not set|g" ./.config
 
         make olddefconfig
 
