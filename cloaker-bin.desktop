@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Cloaker
+GenericName=Save Files
+Comment=Simple password-based file encryption
+Exec=/opt/cloaker/Cloaker.run
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Categories=Utility;Security;
+Icon=cloaker-bin
