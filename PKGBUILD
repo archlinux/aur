@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=wasmer-bin
-pkgver=0.5.2
+pkgver=0.5.5
 pkgrel=0
 pkgdesc='Universal WebAssembly runtime'
 arch=(x86_64)
