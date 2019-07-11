@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=cervisia
-pkgver=19.04.2
+pkgver=19.04.3
 pkgrel=1
 pkgdesc='CVS Frontend'
 url='https://kde.org/applications/development/cervisia/'
@@ -15,7 +15,7 @@ makedepends=(extra-cmake-modules kdoctools)
 conflicts=(kdesdk-cervisia)
 replaces=(kdesdk-cervisia)
 source=("https://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('74578f4975e6c146d58f24ca74f56af6857cc0bf5c4d928c9b064872e1263b84'
+sha256sums=('e0e04076ef5d43b18a571b5f3f8acb774a5c2fe03a901cd5fbf65621fc5e05eb'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
