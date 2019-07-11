@@ -1,0 +1,5 @@
+*~
+*.deb
+*.pkg.tar.xz
+/pkg
+/src
