@@ -1,6 +1,6 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
 pkgname=qtile-plasma-git
-pkgver=v1.5.4.r0.gdaf581f
+pkgver=v1.5.4.r1.g957e002
 pkgrel=1
 pkgdesc="A flexible, tree-based layout for Qtile"
 arch=('any')
