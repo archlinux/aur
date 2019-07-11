@@ -20,7 +20,7 @@ _pgo=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=68.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -37,6 +37,8 @@ depends=('mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'graphite'
          # system webp
          'libwebp'
+         # system libevent
+         'libevent'
         )
 
 makedepends=('unzip' 'zip' 'diffutils' 'python2-setuptools' 'yasm' 'mesa' 'imake'
@@ -215,7 +217,7 @@ END
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
 md5sums=('SKIP'
-         '0ffd8ac9de394285f53ad08c783d5b30'
+         'f758e064e1463b90878790124f398197'
          '14e0f6237a79b85e60256f4808163160'
          '5cee310a9040ccc5abcf29742b84aeb8'
          '05bb69d25fb3572c618e3adf1ee7b670'
