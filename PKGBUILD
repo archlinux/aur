@@ -22,7 +22,16 @@ check() {
 }
 
 package_bitbake() {
-    depends=('python' 'python-django18' 'python-beautifulsoup4' 'python-codegen' 'python-pyinotify' 'python-progressbar')
+    depends=(
+        'python'
+        'python-django18'
+        'python-beautifulsoup4'
+        'python-codegen'
+        'python-pyinotify'
+        'python-progressbar'
+        'python-simplediff'
+        'python-pyl'
+    )
     install=bitbake.install
 
     cd ${pkgbase}-${pkgver}
