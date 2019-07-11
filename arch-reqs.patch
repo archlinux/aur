@@ -39,7 +39,7 @@ diff -aur conan-1.16.1-pristine/conans/requirements.txt conan-1.16.1-new/conans/
 -tqdm>=4.28.1, <5
 -Jinja2>=2.3, <3
 -python-dateutil>=2.6.0, <3
--typed-ast<1.4; python_version=="3.4" and platform_system=='Windows'
+-typed-ast<1.4; python_version == '3.4' and platform_system=='Windows'
 +deprecation>=2.0
 +tqdm>=4.28.1
 +Jinja2>=2.3
