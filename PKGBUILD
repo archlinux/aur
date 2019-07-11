@@ -10,7 +10,6 @@ arch=('any')
 url="https://github.com/pimoroni/fanshim-python"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
-depends=('python-psutil')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 
 sha512sums=('bcf7f07eb9cdd0c76b5d2dba3d410b8ee5912d3373966a8d54c0a241c2cd1170d21d8cdb227a5dc593c094ea8f88d74cd4d4491bab03b080d306c64b241ac1fa')
@@ -28,11 +27,13 @@ build() {
 }
 
 package_python-fanshim() {
+  depends=('python-psutil')
   cd fanshim-${pkgver}
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-fanshim() {
+  depends=('python2-psutil')
   cd fanshim-${pkgver}-py2
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
