@@ -1,6 +1,6 @@
 pkgbase = waterfox-bin
 	pkgdesc = 64-Bit optimized Firefox, no data collection, allows unsigned extensions
-	pkgver = 56.2.11
+	pkgver = 56.2.12
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = waterfox-bin
 	provides = waterfox
 	conflicts = waterfox
 	source = waterfox.desktop
-	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.11.en-US.linux-x86_64.tar.bz2
-	md5sums = 0e8dbbeaf61ad27b0f0d6c31038b529e
-	md5sums = 575e6aafa5fbfbda1ae2a8a3d985a135
+	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.12.en-US.linux-x86_64.tar.bz2
+	sha512sums = a7ece8f3f8ab8f5205d0acd863365ce9d7965550e8231ded380a89d8e5d2a220992380bdbc3a1f59f72588d40f82358b38ce7b3456c6f7c0066c13779b58ee85
+	sha512sums = b83a0f0367a1d0dec08dc06d2172f9258caecafe350b68c47727d7d1401da9cfda47a2a13e271595b450e917669a7a4ce220da37c24b381bc98f150f436dad28
 
 pkgname = waterfox-bin
 
