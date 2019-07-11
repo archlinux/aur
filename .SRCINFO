@@ -6,10 +6,10 @@ pkgbase = yup
 	arch = any
 	license = MIT
 	makedepends = go>=1.12
-	depends = pacman
+	depends = pacman>=5.1
 	depends = git
-	depends = stty
 	depends = ncurses
+	depends = sudo
 	source = yup::git+https://github.com/ericm/yup.git#tag=v0.1.0-beta
 	sha256sums = SKIP
 
