@@ -12,7 +12,7 @@
 
 pkgname=meteor
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Full-stack JavaScript platform for developing modern web and mobile applications'
 arch=(i686 x86_64)
 url=https://www.meteor.com
@@ -29,7 +29,7 @@ sha512sums_x86_64=('c92d1e529741a7b8c6dccb2db50096d05546e15d80294e2cc42ae7596d54
 
 package() {
   # Copy base Meteor tree to universally-accessible location
-  mkdir "$pkgdir"/usr/share
+  mkdir -p "$pkgdir"/usr/share
   cp -a .meteor "$pkgdir"/usr/share/meteor
 
   install -D meteor.sh "$pkgdir"/usr/bin/meteor

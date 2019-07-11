@@ -1,7 +1,7 @@
 pkgbase = meteor
 	pkgdesc = Full-stack JavaScript platform for developing modern web and mobile applications
 	pkgver = 1.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.meteor.com
 	install = meteor.install
 	arch = i686
