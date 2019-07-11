@@ -1,7 +1,7 @@
 # Maintainer: ddnomad <dd at ddworks dot io>
 
 pkgname=protonvpn-cli
-pkgver=20180607
+pkgver=1562876722
 pkgrel=1
 pkgdesc="ProtonVPN CLI tool for protonvpn.com"
 arch=("any")
@@ -38,7 +38,7 @@ package() {
     # Install protonvpn-cli package
     cd "${_protonvpn_src_dir}"
     install -Dm755 ./protonvpn-cli.sh "${pkgdir}/usr/bin/${pkgname}"
-    ln -s "${pkgdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/pvpn"
+    ln -s "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/pvpn"
 
     # Install the license
     install -Dm644 ./license.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
