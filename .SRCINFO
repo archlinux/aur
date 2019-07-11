@@ -1,0 +1,17 @@
+pkgbase = r-nloptr
+	pkgdesc = R Interface to NLopt
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=nloptr
+	arch = any
+	license = LGPL3
+	depends = r
+	optdepends = r-testthat>=0.8.1
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-inline>=0.3.14
+	source = https://cran.r-project.org/src/contrib/nloptr_1.2.1.tar.gz
+	md5sums = 3c475302f105dfe6a0e495ccdf4d78b1
+
+pkgname = r-nloptr
+
