@@ -18,6 +18,10 @@ sha512sums=('cfcd1e32bf1e632dc10e555a0952f7582a68f3b677cc4753617e4e26d48034fece0
 
 package() {
   install -D -m 755 "${srcdir}/fanshim-${pkgver}.py" "${pkgdir}/usr/bin/fanshim"
+
+  # For some reason, psutil on Arch is cpu_thermal, not cpu-thermal.
+  sed -i 's/cpu-thermal/cpu_thermal' "${pkgdir}/usr/bin/fanshim"
+
   install -D -m 644 "${srcdir}/fanshim.service" "${pkgdir}/usr/lib/systemd/system/fanshim.service"
 }
 
