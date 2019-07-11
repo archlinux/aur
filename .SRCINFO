@@ -1,7 +1,7 @@
-pkgbase = linux-hynix
-	pkgver = 5.1.16-arch1
+pkgbase = linux
+	pkgver = 5.2.arch2
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.0.3-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.2-arch2
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -11,9 +11,11 @@ pkgbase = linux-hynix
 	makedepends = libelf
 	makedepends = git
 	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
+	makedepends = imagemagick
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.0.3-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.2-arch2
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -24,26 +26,26 @@ pkgbase = linux-hynix
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = df2ce998b050c707950c555f7f6ec0efcb8498fca10b4bce45f681844c8aa0ab
+	sha256sums = 013defd92c7530724105f323a22ae484cfc4a9053bbdc8eb2260134d873d7d86
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = dbc9d913a2d41c7809b99cf86ad63d3f4eb2e4d10ab3f6564203e4a21803b98f
 	sha256sums = 5a8830cf8803df4a72ba69ad0d5105d3e3db44f5d8b2edfbfd56bc358c473d16
 
-pkgname = linux-hynix
-	pkgdesc = The Linux-hynix kernel and modules with Ubuntu patches for Hynix SSD s2idle from https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1801875
+pkgname = linux
+	pkgdesc = The Linux kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-hynix.preset
+	backup = etc/mkinitcpio.d/linux.preset
 
-pkgname = linux-hynix-headers
-	pkgdesc = Header files and scripts for building modules for Linux-hynix kernel
+pkgname = linux-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel
 
-pkgname = linux-hynix-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-hynix kernel
+pkgname = linux-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel
 
