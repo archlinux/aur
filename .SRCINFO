@@ -1,0 +1,14 @@
+pkgbase = r-cardata
+	pkgdesc = Datasets to Accompany J. Fox and S. Weisberg, An R Companion to Applied Regression, Third Edition, Sage (forthcoming).
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=${_cranname}
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	depends = r
+	source = https://cran.r-project.org/src/contrib/carData_3.0-2.tar.gz
+	md5sums = c21eb4fe8866bae243899294abd851b1
+
+pkgname = r-cardata
+
