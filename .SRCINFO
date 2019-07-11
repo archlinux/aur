@@ -1,0 +1,14 @@
+pkgbase = fanshim
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/pimoroni/fanshim-python
+	arch = any
+	license = MIT
+	depends = python-fanshim
+	source = fanshim-0.0.2.py::https://raw.githubusercontent.com/pimoroni/fanshim-python/master/examples/automatic.py
+	source = fanshim.service
+	sha512sums = cfcd1e32bf1e632dc10e555a0952f7582a68f3b677cc4753617e4e26d48034fece0694d6aeb8224ec7d2397779aa07faa978fc79e6b9b0391f17594a8f0439e0
+	sha512sums = 2911e69d15ce604def3456ff4b5fe62531e4b0c16eecbc31fbeea92c29d4aa5de5866f81653bca2c7c953499a58c630f640a95ecf5e03156cb17bb804f793773
+
+pkgname = fanshim
+
