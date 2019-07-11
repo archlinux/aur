@@ -26,9 +26,9 @@ check_wine() {
 	desktop_msg "ERROR: \"$CUSTOMWP\" not found!"
 	exit 1
     fi
-    INSTWINE=$(cat $WINEPREFIX/.update-timestamp 2>/dev/null) || true
+    INSTWINE=$(cat $WINEPREFIX/.update-timestamp | tr -dc [:digit:]) || true
     WINEINFP=$(readlink -f $CUSTOMWP)
-    WINECONF=$(find ${WINEINFP%/bin*}/share -name 'wine.inf' 2>/dev/null) || true
+    WINECONF=$(find ${WINEINFP%/bin*}/share -name 'wine.inf') || true
     WINEDATE=$(ls -l --time-style=+%s "$WINECONF" 2>/dev/null | cut -d' ' -f6)
     if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
 	desktop_msg "Preparing wine in $WINEPREFIX"
@@ -46,8 +46,8 @@ check_wine() {
 	    $(which winetricks) -q --force win10 >/dev/null
     fi
     env WINEPREFIX=$WINEPREFIX \
-        WINEDLLOVERRIDES="winemenubuilder.exe=d" \
-        $WINEPATH/wine reg add \
+	WINEDLLOVERRIDES="winemenubuilder.exe=d" \
+	$WINEPATH/wine reg add \
 	'HKEY_CURRENT_USER\Software\Wine\FileOpenAssociations' \
 	/v Enable /d N /f >/dev/null
 }
