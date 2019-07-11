@@ -1,8 +1,10 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
+_jdk="java-8-openjdk"
+
 _pkgname=skide
 pkgname=${_pkgname}-git
-pkgver=r316.141055e
+pkgver=r318.95473c2
 pkgrel=1
 pkgdesc="A fully tooled Open Source Editor for Skript providing IDE like features"
 arch=("any")
@@ -25,18 +27,18 @@ pkgver() {
 build() {
     cd "$pkgname"
 
-    export PATH="/usr/lib/jvm/java-8-openjdk/bin:${PATH}"
-    export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+    export PATH="/usr/lib/jvm/${_jdk}/bin:${PATH}"
+    export JAVA_HOME="/usr/lib/jvm/${_jdk}"
     gradle installDist
 
-    sed -i 's/DEFAULT_JVM_OPTS=""/DEFAULT_JVM_OPTS="-Dskide.os=arch -Dskide.mode=prod"/' "build/install/SkIDE/bin/SkIDE"
+    sed -i "s!DEFAULT_JVM_OPTS=\"\"!DEFAULT_JVM_OPTS=\"-Dskide.os=arch -Dskide.mode=prod\"\nJAVA_HOME=\"${JAVA_HOME}\"!" "build/install/SkIDE/bin/SkIDE"
 }
 
 check() {
     cd "$pkgname"
 
-    export PATH="/usr/lib/jvm/java-8-openjdk/bin:${PATH}"
-    export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+    export PATH="/usr/lib/jvm/${_jdk}/bin:${PATH}"
+    export JAVA_HOME="/usr/lib/jvm/${_jdk}"
     gradle test
 }
 

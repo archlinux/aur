@@ -1,6 +1,6 @@
 pkgbase = skide-git
 	pkgdesc = A fully tooled Open Source Editor for Skript providing IDE like features
-	pkgver = r316.141055e
+	pkgver = r318.95473c2
 	pkgrel = 1
 	url = https://skide.21xayah.com/
 	arch = any
