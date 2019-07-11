@@ -1,6 +1,6 @@
 # Maintainer: James Milne <s4b3r6@gmail.com>
 pkgname=evjl
-pkgver=v0.3.0
+pkgver=v0.3.1
 pkgrel=1
 epoch=
 pkgdesc="A low-level programming language, currently in 'alpha' levels of design."
