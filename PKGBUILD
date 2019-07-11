@@ -18,7 +18,7 @@ provides=('xscreensaver')
 backup=('etc/pam.d/xscreensaver')
 source=(http://www.jwz.org/xscreensaver/${pkgname%%-*}-${pkgver}.tar.gz
 LICENSE logo-50.xpm logo-180.xpm logo-50.png logo-180.png)
-sha1sums=('26f5f2535869ec90926e3e6f6df342cf96548c8f'
+sha1sums=('7a0e24b224e1316f0a211446db301de1c22daaa0'
           '3eedb8b91b13c29df9b1fe5cbb027e1470b802d2'
           '5ff6dfd0a14ca484d4287647c3e00af8e417163c'
           '63ed187b08864993684f826dc87b1c5f42ea5bf4'
