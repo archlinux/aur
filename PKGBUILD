@@ -19,7 +19,7 @@ depends=('shared-mime-info'
          'libxkbcommon-x11')
 makedepends=('git'
              'cmake'
-             'python')
+             'python2')
 optdepends=('qt5-wayland: for Wayland support')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu")
 md5sums=('SKIP')
