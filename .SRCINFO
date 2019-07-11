@@ -1,5 +1,5 @@
 pkgbase = linux-lts-tomoyo
-	pkgver = 4.19.46
+	pkgver = 4.19.58
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -12,22 +12,24 @@ pkgbase = linux-lts-tomoyo
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.46.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.58.xz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux-lts.preset
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+	source = 0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1
 	sha256sums = SKIP
-	sha256sums = 3df7f072065b35abaa86e752a1ee2a6488a1d980a4e116b6a5750a9112203b20
-	sha256sums = dfd03045db0fd87adeda3397ee25d6d75d22ca686ffc167161d286d5bffb38de
+	sha256sums = 018584229e0522aa94cb7af7b7f0775cf42ae3873a8d4cbc8715d807719bfad5
+	sha256sums = af7e7687a91b210e803697ef9509faaf3b7955a6094350212944a598b29f2c58
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = 36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98
+	sha256sums = bc3dab5594735fb56bdb39c1630a470fd2e65fcf0d81a5db31bab3b91944225d
+	sha256sums = 67aed9742e4281df6f0bd18dc936ae79319fee3763737f158c0e87a6948d100d
 
 pkgname = linux-lts-tomoyo
 	pkgdesc = The Linux-lts kernel with TOMOYO Linux configuration
@@ -38,14 +40,14 @@ pkgname = linux-lts-tomoyo
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = tomoyo-tools-25: the TOMOYO Linux 2.5.x userspace tools
-	provides = linux-lts-tomoyo=4.19.46
+	provides = linux-lts-tomoyo=4.19.58
 	backup = etc/mkinitcpio.d/linux-lts-tomoyo.preset
 
 pkgname = linux-lts-tomoyo-headers
 	pkgdesc = Header files and scripts for building modules for Linux-lts-tomoyo kernel
-	provides = linux-lts-tomoyo-headers=4.19.46
+	provides = linux-lts-tomoyo-headers=4.19.58
 
 pkgname = linux-lts-tomoyo-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-lts-tomoyo kernel
-	provides = linux-lts-tomoyo-docs=4.19.46
+	provides = linux-lts-tomoyo-docs=4.19.58
 
