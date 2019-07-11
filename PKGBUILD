@@ -11,12 +11,12 @@ pkgname=davinci-resolve-studio
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
 pkgver=15.3.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
 depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl-1.0'
-         'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
+         'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
 makedepends=('libarchive' 'xdg-user-dirs')
 options=('!strip')
 provides=('davinci-resolve')
@@ -91,6 +91,8 @@ package()
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
 	ln -s /usr/lib/libcrypto.so.1.0.0 libs/libcrypto.so.10
 	ln -s /usr/lib/libssl.so.1.0.0 libs/libssl.so.10
+	# Added missing link to libbz2 since libbz2-1.0.7
+	ln -s /usr/lib/libbz2.so libs/libbz2.so.1
 
 	msg2 "Install launchers and configs..."
 	cd "${pkgdir}/opt/${_pkgname}/" || exit

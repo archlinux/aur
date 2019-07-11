@@ -1,7 +1,7 @@
 pkgbase = davinci-resolve-studio
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.
 	pkgver = 15.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	install = davinci-resolve.install
 	arch = any
@@ -15,7 +15,6 @@ pkgbase = davinci-resolve-studio
 	depends = lib32-libpng12
 	depends = ocl-icd
 	depends = openssl-1.0
-	depends = opencl-driver
 	depends = qt4
 	depends = qt5-base
 	depends = qt5-svg
