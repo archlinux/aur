@@ -1,0 +1,21 @@
+pkgbase = ocaml-menhir-compcert
+	pkgdesc = Latest version of Menhir that can build the latest CompCert release.
+	pkgver = 20181113
+	pkgrel = 1
+	url = http://cristal.inria.fr/~fpottier/menhir/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = QPL
+	makedepends = ocamlbuild
+	makedepends = ocaml-findlib
+	depends = ocaml>=4.02
+	provides = ocaml-menhir=20181113
+	conflicts = ocaml-menhir
+	options = !strip
+	options = !makeflags
+	source = https://gitlab.inria.fr/fpottier/menhir/-/archive/20181113/menhir-20181113.tar.gz
+	md5sums = 1c57e4b6a99603bd4169506e3d937950
+
+pkgname = ocaml-menhir-compcert
+
