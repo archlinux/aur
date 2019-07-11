@@ -1,7 +1,7 @@
 # Maintainer: Roman Sommer <roman.sommer@fau.de>
 pkgname=veroroute
 _pkgvermajor=1
-_pkgverminor=52
+_pkgverminor=53
 pkgver=$_pkgvermajor.$_pkgverminor
 pkgrel=1
 epoch=
@@ -26,7 +26,7 @@ source=("https://downloads.sourceforge.net/project/$pkgname/$_sourcearchive"
 		"veroroute.desktop.in"
 		"veroroute-clib.scm"
 		"0001-resolve-system-wide-Tutorials-path.patch")
-sha256sums=('8c3b7b24a89ca43721418df004751fe9e30506ce30fc232fae8407147dda61d0'
+sha256sums=('7eaf54f4f54aadc4f1357106c1da6ac5867454e6b7c4f1425ad03f183217605f'
             'bbf5a01f8f05909f52cee36ac0184c039aca313d078bcced47dcdcfcaa26bba9'
             'a722805c46998bff7709357babc2e609fbc4b0021b33c59aefa4f7fa0567aeeb'
             '04ac245c78425c08966558456630215d29db5b5e83a172f5a2e6c5a31dd4a9a1')
