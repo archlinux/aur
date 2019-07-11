@@ -2,21 +2,21 @@
 
 _name=etesync
 pkgname=python-etesync
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Python API to interact with an EteSync server."
 arch=('any')
 url="https://pypi.python.org/pypi/etesync/"
 license=('LGPL')
 depends=('python-appdirs' 'python-asn1crypto' 'python-cffi' 'python-coverage'
-'python-cryptography' 'python-furl' 'python-idna' 'python-orderedmultidict'
-'python-packaging' 'python-peewee' 'python-py' 'python-pyasn1'
-'python-pycparser' 'python-pyparsing' 'python-dateutil' 'python-requests'
-'python-scrypt' 'python-six' 'python-vobject')
+'python-cryptography' 'python-dateutil' 'python-furl' 'python-idna'
+'python-orderedmultidict' 'python-packaging' 'python-peewee' 'python-py'
+'python-pyasn1' 'python-pycparser' 'python-pyparsing' 'python-requests'
+'python-scrypt' 'python-six' 'python-pytz' 'python-vobject')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('6132a63352bb40d34e48bdd2cfb146e165c852820b7556289e9b4176cfa44195493e9221997c4df5aaa530fbe6c4544046981de9504e9d2a4794a4584eba71ea')
+sha512sums=('90a1896162b1dbaff3d684f7b1bc40072e4d6cdc9073fdbbbb2cc056f6166b4d17cf2c5e10ea57e97a9905fb08cfa3623cfd59bc3ef0fcbad83654b646840dba')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
@@ -31,7 +31,7 @@ check() {
   cd "${pkgname}-${pkgver}"
   # only run relevant tests:
   # https://github.com/etesync/pyetesync/issues/5
-  pytest tests/{test_collections.py,test_crypto.py}
+  pytest -vvv tests/{test_collections.py,test_crypto.py}
 }
 
 package() {
