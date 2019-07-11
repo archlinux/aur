@@ -1,0 +1,20 @@
+diff -Naur WiggleTools-1.2.3.orig/src/Makefile WiggleTools-1.2.3/src/Makefile
+--- WiggleTools-1.2.3.orig/src/Makefile	2019-07-11 11:05:35.437719184 -0400
++++ WiggleTools-1.2.3/src/Makefile	2019-07-11 11:12:48.112989668 -0400
+@@ -1,5 +1,6 @@
+ CC=/bin/cc
+-CFLAGS=-g -Wall -O3 -std=gnu99
++CFLAGS+=-g -Wall -O3 -std=gnu99
++LDFLAGS+=
+ LIBDIR=../lib
+ BINDIR=../bin
+ INC=-I../../libBigWig -I../../htslib
+@@ -13,7 +14,7 @@
+ 
+ ${BINDIR}/wiggletools: ${LIBDIR}/libwiggletools.a wiggletools.o
+ 	mkdir -p ${BINDIR}
+-	${CC} ${CFLAGS} ${LIB_PATHS} wiggletools.c ${LIBS} -o ${BINDIR}/wiggletools 
++	${CC} ${CFLAGS} ${LDFLAGS} ${LIB_PATHS} wiggletools.c ${LIBS} -o ${BINDIR}/wiggletools 
+ 
+ lib: ${LIBDIR}/libwiggletools.a 
+ 
