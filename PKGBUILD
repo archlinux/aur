@@ -2,7 +2,7 @@
 
 pkgname=plata-theme
 pkgver=0.8.7
-pkgrel=2
+pkgrel=3
 pkgdesc='A Gtk+ theme based on Material Design Refresh'
 arch=('any')
 url='https://gitlab.com/tista500/plata-theme'
