@@ -1,0 +1,25 @@
+pkgbase = pythonqt-git
+	pkgdesc = A dynamic Python binding for Qt applications
+	pkgver = r473.c07f09f
+	pkgrel = 1
+	url = https://github.com/MeVisLab/pythonqt
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = qt5-tools
+	depends = python
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-webkit
+	depends = qt5-declarative
+	depends = qt5-xmlpatterns
+	provides = pythonqt=r473.c07f09f
+	conflicts = pythonqt
+	conflicts = pythonqt-svn
+	conflicts = qt5-python27-git
+	source = git+https://github.com/MeVisLab/pythonqt.git
+	sha512sums = SKIP
+
+pkgname = pythonqt-git
+
