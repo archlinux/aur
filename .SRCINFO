@@ -1,0 +1,15 @@
+pkgbase = python-parglare
+	pkgdesc = A pure Python scannerless LR/GLR parser
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/igordejanovic/parglare
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-click
+	options = !emptydirs
+	source = https://github.com/igordejanovic/parglare/archive/0.9.2.tar.gz
+	sha384sums = 37612cd65028a2d666e0ca39f5c5619d8664041a7777ba8fc585de918992eb4189a556b0ac215012303c866d2c740a2e
+
+pkgname = python-parglare
+
