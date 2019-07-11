@@ -4,8 +4,9 @@ pkgbase = r-sparsem
 	pkgrel = 1
 	url = https://cran.r-project.org/package=SparseM
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL2
+	license = GPL3
+	depends = r>=2.15
 	source = https://cran.r-project.org/src/contrib/SparseM_1.77.tar.gz
 	md5sums = bb03293245d3d66316dbbb9d0997d4d2
 
