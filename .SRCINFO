@@ -1,0 +1,20 @@
+pkgbase = gnomit
+	pkgdesc = A simple Git commit message editor for Gnome, written in GJS and inspired by the excellent Komet app for macOS.
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://source.ind.ie/gnome/gnomit
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = gjs
+	source = https://source.ind.ie/gnome/gnomit/gjs/-/archive/1.0.7/gjs-1.0.7.tar.bz2
+	sha256sums = 5b0d069b3d0c232356c2af3b37f1e5823e5b3259bb30a6edd4c08c5948797c8e
+
+pkgname = gnomit
+
