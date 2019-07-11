@@ -28,6 +28,7 @@ build() {
 
 package_python-fanshim() {
   depends=('python-psutil'
+           'python-plasmalights'
            'python-rpi.gpio')
 
   cd fanshim-${pkgver}
@@ -36,6 +37,7 @@ package_python-fanshim() {
 
 package_python2-fanshim() {
   depends=('python2-psutil'
+           'python2-plasmalights'
            'python2-rpi.gpio')
 
   cd fanshim-${pkgver}-py2

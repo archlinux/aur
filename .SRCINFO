@@ -12,9 +12,11 @@ pkgbase = python-fanshim
 
 pkgname = python-fanshim
 	depends = python-psutil
+	depends = python-plasmalights
 	depends = python-rpi.gpio
 
 pkgname = python2-fanshim
 	depends = python2-psutil
+	depends = python2-plasmalights
 	depends = python2-rpi.gpio
 
