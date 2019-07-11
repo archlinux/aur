@@ -1,7 +1,7 @@
 pkgbase = all-repository-fonts
 	pkgdesc = Meta package for all fonts in the official repositories.
 	pkgver = 20190710
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/all-repository-fonts/
 	arch = any
 	license = custom:Public Domain
@@ -63,7 +63,6 @@ pkgbase = all-repository-fonts
 	depends = ttf-fira-mono
 	depends = ttf-fira-sans
 	depends = ttf-font-awesome
-	depends = ttf-freefont
 	depends = ttf-gentium
 	depends = ttf-hack
 	depends = ttf-hanazono

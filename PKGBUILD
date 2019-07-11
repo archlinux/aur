@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
 pkgver=20190710
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
 url='https://aur.archlinux.org/packages/all-repository-fonts/'
@@ -66,7 +66,6 @@ depends=('adobe-source-code-pro-fonts'
          'ttf-fira-mono'
          'ttf-fira-sans'
 		 'ttf-font-awesome'
-         'ttf-freefont'
          'ttf-gentium'
          'ttf-hack'
          'ttf-hanazono'
