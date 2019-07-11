@@ -1,6 +1,6 @@
 pkgbase = ls_extended-git
 	pkgdesc = ls with coloring and icons from git
-	pkgver = 1.1.0
+	pkgver = 1.1.0.r13.g418adc4
 	pkgrel = 1
 	url = https://github.com/Electrux/ls_extended
 	arch = x86_64

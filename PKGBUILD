@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ls_extended-git
-pkgver=1.1.0
+pkgver=1.1.0.r13.g418adc4
 pkgrel=1
 pkgdesc='ls with coloring and icons from git'
 arch=('x86_64')
@@ -18,17 +18,12 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --tags | tr - . | cut -c2-
+  git describe --tags | sed 's+-+.r+'| tr - . | cut -c2-
 }
 
 build() {
   cd "${pkgname%-git}"
   ccp4m project build
-}
-
-check() {
-  cd "${pkgname%-git}"
-  ccp4m project test
 }
 
 package() {
