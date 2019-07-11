@@ -1,0 +1,18 @@
+pkgbase = timingeditor-svn
+	pkgdesc = The Timing Editor is a free tool to draw timing diagrams.
+	pkgver = r115
+	pkgrel = 1
+	url = http://timingeditor.sourceforge.net
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	depends = wxgtk
+	provides = timingeditor
+	conflicts = timingeditor
+	source = timingeditor-svn::svn+https://svn.code.sf.net/p/timingeditor/code/trunk
+	source = wx3.patch
+	sha256sums = SKIP
+	sha256sums = cc0e4f8b477e59185b4d5dd58fef3de4eb48ebdcdddd136aeffa8a28c326cfbb
+
+pkgname = timingeditor-svn
+
