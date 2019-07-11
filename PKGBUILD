@@ -1,5 +1,4 @@
 # Maintainer: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
-# http://github.com/fukawi2/aur-packages
 # Contributor: gregor <gregor@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
@@ -19,7 +18,7 @@ _gentoo_patchver=4
 pkgname=vixie-cron
 arch=("i686" "x86_64")
 pkgver=4.1
-pkgrel=13
+pkgrel=14
 license=("GPL")
 pkgdesc="Paul Vixie's cron daemon, a fully featured crond implementation"
 url="ftp://ftp.isc.org/isc/cron/"
@@ -30,10 +29,10 @@ source=("$_gentoo_mirror/${pkgname}-${pkgver}.tar.bz2"
         "$_gentoo_mirror/${pkgname}-${pkgver}-gentoo-r${_gentoo_patchver}.patch.bz2"
         'crond.service'
         'cronrunparts'
-        'crontab') 
+        'crontab')
 md5sums=('09dc04f9879684d27c64c910174a9536'
          'c674b03c6e76798b1c74f6070df167cc'
-         'ad6b114d11ecd7fc8b9cd35a244e574d'
+         'ea08e59ddc050b8fc0cce5c11863b250'
          '00ede56aadf073c839e600033fbd6cb4'
          'b8b1d315dd2f92528dc6fa7ae8cef32b')
 

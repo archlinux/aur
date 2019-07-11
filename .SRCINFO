@@ -1,7 +1,7 @@
 pkgbase = vixie-cron
 	pkgdesc = Paul Vixie's cron daemon, a fully featured crond implementation
 	pkgver = 4.1
-	pkgrel = 12
+	pkgrel = 14
 	url = ftp://ftp.isc.org/isc/cron/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = vixie-cron
 	source = crontab
 	md5sums = 09dc04f9879684d27c64c910174a9536
 	md5sums = c674b03c6e76798b1c74f6070df167cc
-	md5sums = 2765095708207c2ae4ff31b5af94181d
+	md5sums = ad6b114d11ecd7fc8b9cd35a244e574d
 	md5sums = 00ede56aadf073c839e600033fbd6cb4
 	md5sums = b8b1d315dd2f92528dc6fa7ae8cef32b
 

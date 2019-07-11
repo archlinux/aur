@@ -3,7 +3,7 @@ Description=Vixie-cron Periodic Command Scheduler
 
 [Service]
 Type=forking
-PIDFile=/var/run/cron.pid
+PIDFile=/run/cron.pid
 ExecStart=/usr/bin/cron
 Restart=always
 
