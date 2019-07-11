@@ -1,8 +1,8 @@
 # Maintainer: schw0reismus <schw0reismus@protonmail.com>
 
 pkgname=foliate-git
-pkgver=1.4.0.r6.g8e2ce97
-pkgrel=2
+pkgver=1.4.0.r14.g2ed4226
+pkgrel=1
 pkgdesc="A simple and modern GTK eBook reader"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://johnfactotum.github.io/foliate/"
@@ -18,6 +18,11 @@ replaces=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 md5sums=('SKIP')
 
+pkgver() {
+    cd "$srcdir/${pkgname%-git}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	meson build --prefix=/usr
@@ -27,9 +32,4 @@ build() {
 package(){
 	cd "$srcdir/${pkgname%-git}"
 	DESTDIR="$pkgdir" ninja -C build install
-}
-
-pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
