@@ -7,6 +7,7 @@ pkgbase = arangodb-client-bin
 	license = APACHE
 	provides = arangodb
 	conflicts = arangodb
+	conflicts = arangodb-bin
 	source = https://download.arangodb.com/arangodb34/Community/Linux/arangodb3-client_3.4.7-1_amd64.deb
 	validpgpkeys = CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B
 	sha256sums = 5165cf74818560799f9f307d139e65f1fdd489703643597e82473877cafba230
