@@ -1,4 +1,4 @@
-pkgbase = linux
+pkgbase = linux-hynix
 	pkgver = 5.2.arch2
 	pkgrel = 1
 	url = https://git.archlinux.org/linux.git/log/?h=v5.2-arch2
@@ -33,19 +33,19 @@ pkgbase = linux
 	sha256sums = dbc9d913a2d41c7809b99cf86ad63d3f4eb2e4d10ab3f6564203e4a21803b98f
 	sha256sums = 5a8830cf8803df4a72ba69ad0d5105d3e3db44f5d8b2edfbfd56bc358c473d16
 
-pkgname = linux
-	pkgdesc = The Linux kernel and modules
+pkgname = linux-hynix
+	pkgdesc = The Linux-hynix kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux.preset
+	backup = etc/mkinitcpio.d/linux-hynix.preset
 
-pkgname = linux-headers
-	pkgdesc = Header files and scripts for building modules for Linux kernel
+pkgname = linux-hynix-headers
+	pkgdesc = Header files and scripts for building modules for Linux-hynix kernel
 
-pkgname = linux-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel
+pkgname = linux-hynix-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-hynix kernel
 
