@@ -1,13 +1,13 @@
 pkgbase = i3keys
 	pkgdesc = Lists used and unused keys in your i3wm config
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/RasmusLindroth/i3keys
 	arch = any
 	license = MIT
 	makedepends = go
-	source = https://github.com/RasmusLindroth/i3keys/archive/0.0.5.tar.gz
-	sha256sums = 078cb2921b5a266bfb0bf25845060084cf67e0bdaf157d089815886ac9aadd6f
+	source = https://github.com/RasmusLindroth/i3keys/archive/0.0.6.tar.gz
+	sha256sums = 1ad8fff2ef3d903c1d9bd64169227e350b2036f1b1a6b06ad96dd76ec0b1e433
 
 pkgname = i3keys
 
