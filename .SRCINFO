@@ -7,6 +7,8 @@ pkgbase = make-fmv-patch-git
 	license = MIT
 	makedepends = git
 	depends = perl
+	depends = ctags
+	depends = gcc>=6.0.0
 	provides = make-fmv-patch
 	conflicts = make-fmv-patch
 	source = git+https://github.com/clearlinux/make-fmv-patch.git
