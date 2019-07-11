@@ -1,11 +1,11 @@
 pkgbase = phpspy
 	pkgdesc = Low-overhead sampling profiler for PHP 7
-	pkgver = r142.git
+	pkgver = r143.git
 	pkgrel = 1
 	url = https://github.com/adsr/phpspy
 	arch = i686
 	arch = x86_64
-	license = unknown
+	license = MIT
 	makedepends = git
 	source = git://github.com/adsr/phpspy.git
 	md5sums = SKIP

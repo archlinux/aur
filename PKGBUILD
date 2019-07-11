@@ -1,13 +1,13 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=phpspy
-pkgver=r142.git
+pkgver=r143.git
 pkgrel=1
 pkgdesc="Low-overhead sampling profiler for PHP 7"
 arch=('i686' 'x86_64')
 url="https://github.com/adsr/phpspy"
 makedepends=('git')
-license=('unknown')
+license=('MIT')
 source=('git://github.com/adsr/phpspy.git')
 md5sums=('SKIP')
 
