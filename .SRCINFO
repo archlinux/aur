@@ -4,8 +4,9 @@ pkgbase = r-matrixmodels
 	pkgrel = 1
 	url = https://cran.r-project.org/package=MatrixModels
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL2
+	license = GPL3
+	depends = r>=3.0.1
 	source = https://cran.r-project.org/src/contrib/MatrixModels_0.4-1.tar.gz
 	md5sums = 65b3ab56650c62bf1046a3eb1f1e19a0
 
