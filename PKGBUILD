@@ -1,9 +1,9 @@
 # Maintainer: Christophe LAVIE <christophe.lavie@laposte.net>
-# Contributor: Christophe LAVIE <christophe.lavie@laposte.net> 28/04/2019
+# Contributor: Christophe LAVIE <christophe.lavie@laposte.net> 11/07/2019
 
 
 pkgname=devolo-dlan-cockpit
-pkgver=5.0.2
+pkgver=5.0.4
 pkgrel=1
 install=${pkgname}.install
 pkgdesc="Display and configure settings of your devolo device"
@@ -43,5 +43,5 @@ package() {
  }
  
  
-sha256sums=('0065a7b17a598499d49e4da2d8fd0b42b8182446a48dd0c3c75073e2b86331fb'
+sha256sums=('b439ebdbc4a883b6a7f39afdcaa0d5e143713bcef2d2966c87bd8a27df82c22f'
          '6f187ca5c7a599b5394ea09cd68885168dbd19b5bd72df5ce083e721e2f0a12c')
