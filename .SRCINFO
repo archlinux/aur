@@ -1,7 +1,7 @@
 pkgbase = cartaodecidadao-bin
 	pkgdesc = Portuguese Citizen Card Application
 	pkgver = 3.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cartaodecidadao.pt/
 	arch = x86_64
 	license = GPL2
@@ -9,6 +9,7 @@ pkgbase = cartaodecidadao-bin
 	license = custom:EUPL
 	depends = qt5-base
 	depends = qt5-tools
+	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
 	depends = pcsclite>=1.5.0
