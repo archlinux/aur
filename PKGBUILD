@@ -1,8 +1,8 @@
 # Maintainer: Manan Singh <mananapr@gmail.com>
 
 pkgname=cfiles
-pkgver=1.5
-pkgrel=3
+pkgver=1.6
+pkgrel=1
 pkgdesc="A ncurses file manager written in C"
 arch=('any')
 url="https://github.com/mananapr/cfiles/"
@@ -15,7 +15,7 @@ optdepends=('mediainfo: to see media info'
             'w3m: for image previews')
 makedepends=('gcc' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mananapr/cfiles/archive/v${pkgver}.tar.gz")
-sha256sums=('6decac548ac8f8b900bfe962407889101438889fab806327e29848f1918aae2d')
+sha256sums=('37c9a9e1c63f6c670039ccc7aa63fd83a0c1d4a7d564e356989d82aa80b5a9fa')
 
 build(){
   cd "cfiles-${pkgver}"
