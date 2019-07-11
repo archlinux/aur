@@ -2,8 +2,8 @@
 
 pkgname=koreader
 pkgver=2019.06
-pkgrel=1
-pkgdesc="Koreader For Archlinux"
+pkgrel=2
+pkgdesc="An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Cervantes, Kindle, Kobo, PocketBook and Android devices"
 arch=("x86_64")
 url="https://github.com/koreader/koreader/"
 license=('AGPL3')
