@@ -2,7 +2,7 @@
 
 _pkgname='yuzu-canary'
 pkgname="$_pkgname-git"
-pkgver=r11874.dfac63de3
+pkgver=r12153.f83d9adca
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=('shared-mime-info'
          'zlib')
 makedepends=('git'
              'cmake'
-             'python')
+             'python2')
 optdepends=('qt5-wayland: for Wayland support')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-canary")
 md5sums=('SKIP')
