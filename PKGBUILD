@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git')
-pkgver=9.0.0_r321380.709d611cf20
+pkgver=9.0.0_r321420.937ff6e701b
 pkgrel=1
 _ocaml_ver=4.07.1
 arch=('x86_64')
@@ -66,15 +66,6 @@ prepare() {
     popd
     # llvm-project contains a lot of stuff, remove parts that aren't used by this package
     rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl
-    
-    # llvm cmake uses things automagickally when they're at certain places in the sourcetree
-    # TODO try building as external projects to avoid moving sourcetree around
-    mv clang llvm/tools/clang
-    mv clang-tools-extra llvm/tools/clang/tools/extra
-    mv compiler-rt llvm/projects/compiler-rt
-    mv lld llvm/tools/lld
-    mv lldb llvm/tools/lldb
-    mv polly llvm/tools/polly
 }
 
 build() {
@@ -104,7 +95,8 @@ build() {
         -D LLVM_VERSION_SUFFIX="" \
         -D POLLY_ENABLE_GPGPU_CODEGEN=ON \
         -D LINK_POLLY_INTO_TOOLS=ON \
-        -D CMAKE_POLICY_DEFAULT_CMP0075=NEW
+        -D CMAKE_POLICY_DEFAULT_CMP0075=NEW \
+        -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang"
 
     ninja $NINJAFLAGS all ocaml_doc
 }
@@ -161,22 +153,22 @@ package_llvm-git() {
         cp "$srcdir"/llvm-config.h "$pkgdir"/usr/include/llvm/Config/llvm-config.h
     fi
 
-    cd llvm-project/llvm
+    cd llvm-project
     # Install Python bindings and optimize them
-    cp -a bindings/python/llvm  "$pkgdir"/usr/lib/python3.7/site-packages/
-    cp -a tools/clang/bindings/python/clang  "$pkgdir"/usr/lib/python3.7/site-packages/
+    cp -a llvm/bindings/python/llvm  "$pkgdir"/usr/lib/python3.7/site-packages/
+    cp -a clang/bindings/python/clang  "$pkgdir"/usr/lib/python3.7/site-packages/
     _python_optimize "$pkgdir"/usr/lib/python3.7/site-packages
 
     #optimize other python files except 2 problem cases
     _python_optimize "$pkgdir"/usr/share -x 'clang-include-fixer|run-find-all-symbols'
-  
-    install -Dm644 LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/llvm-LICENSE
-    install -Dm644 tools/clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
-    install -Dm644 tools/clang/tools/extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE
-    install -Dm644 projects/compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE
-    install -Dm644 tools/lld/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lld-LICENSE
-    install -Dm644 tools/lldb/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lldb-LICENSE
-    install -Dm644 tools/polly/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
+
+    install -Dm644 llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/llvm-LICENSE
+    install -Dm644 clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
+    install -Dm644 clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE
+    install -Dm644 compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE
+    install -Dm644 lld/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lld-LICENSE
+    install -Dm644 lldb/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lldb-LICENSE
+    install -Dm644 polly/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
 }
 
 package_llvm-libs-git() {
@@ -196,14 +188,14 @@ package_llvm-libs-git() {
     install -d "$pkgdir"/usr/lib/bfd-plugins
     ln -s ../LLVMgold.so "$pkgdir"/usr/lib/bfd-plugins/LLVMgold.so
 
-    cd llvm-project/llvm
-    install -Dm644 LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/llvm-LICENSE
-    install -Dm644 tools/clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
-    install -Dm644 tools/clang/tools/extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE
-    install -Dm644 projects/compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE
-    install -Dm644 tools/lld/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lld-LICENSE
-    install -Dm644 tools/lldb/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lldb-LICENSE
-    install -Dm644 tools/polly/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
+    cd llvm-project/
+    install -Dm644 llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/llvm-LICENSE
+    install -Dm644 clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
+    install -Dm644 clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE
+    install -Dm644 compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE
+    install -Dm644 lld/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lld-LICENSE
+    install -Dm644 lldb/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lldb-LICENSE
+    install -Dm644 polly/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
