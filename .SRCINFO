@@ -1,7 +1,7 @@
 pkgbase = linux-aufs
 	pkgver = 5.2
 	pkgrel = 2
-	url = https://github.com/sfjro/aufs5-linux
+	url = https://github.com/sfjro/aufs5-standalone
 	arch = x86_64
 	license = GPL2
 	makedepends = kmod
