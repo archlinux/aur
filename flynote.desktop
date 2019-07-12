@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Flynote
+GenericName=Flynote
+Comment=Desktop Post-It program
+Categories=Utility;Office
+Exec=/usr/bin/flynote
+Icon=flynote.png
+StartupNotify=false
+Terminal=false
+Type=Application

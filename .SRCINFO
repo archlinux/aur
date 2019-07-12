@@ -1,0 +1,16 @@
+pkgbase = flynote-git
+	pkgdesc = A program to take note on desktop like a Post-It and share on LAN
+	pkgver = r41.fcc41e6
+	pkgrel = 1
+	url = https://github.com/thibsc/flynote
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	source = git+https://github.com/thibsc/flynote.git
+	source = flynote.desktop
+	sha256sums = SKIP
+	sha256sums = 58c0116f4a41b5e5a0745a6bcdbf0586b8ea44baa33e10a461052f6db0877461
+
+pkgname = flynote-git
+
