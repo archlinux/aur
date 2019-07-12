@@ -1,7 +1,7 @@
-diff --git a/settings/settings/librewolf.cfg b/settings/settings/librewolf.cfg
-index befdb47..54b6841 100644
---- a/settings/settings/librewolf.cfg
-+++ b/settings/settings/librewolf.cfg
+diff --git a/settings/librewolf.cfg b/settings/librewolf.cfg
+index 9b60c51..de990d5 100644
+--- a/settings/librewolf.cfg
++++ b/settings/librewolf.cfg
 @@ -91,14 +91,14 @@ lockPref("general.config.filename", "librewolf.cfg");
  // http://kb.mozillazine.org/Network.cookie.cookieBehavior#1
  // Blocking 3rd-party cookies breaks a number of payment gateways
@@ -28,7 +28,16 @@ index befdb47..54b6841 100644
  lockPref("network.cookie.thirdparty.nonsecureSessionOnly", true); // (FF58+) // default false
  
  // Also check "User Settings : Track Protection" for other cookies settings
-@@ -353,10 +353,10 @@ lockPref("browser.sessionstore.interval", 60000);
+@@ -289,6 +289,8 @@ defaultPref("privacy.sanitize.sanitizeOnShutdown", true);
+ 
+ // Pref : Defaulting Settings : Does not remember history
+ defaultPref("places.history.enabled", false);
++// w.r. to issue #54
++defaultPref("places.history.expiration.max_pages", 2147483647)
+ 
+ // Pref : Settings history settings to custom by default
+ defaultPref("privacy.history.custom", true);
+@@ -360,10 +362,10 @@ lockPref("browser.sessionstore.interval", 60000);
  // ----------------------------------------------------------------------------------------------------
  
  // Pref : Forms auto fill
@@ -43,7 +52,7 @@ index befdb47..54b6841 100644
  
  // Pref : Require manual intervention to autofill known username/passwords in sign-in forms
  // http://kb.mozillazine.org/Signon.autofillForms
-@@ -757,13 +757,13 @@ lockPref("dom.w3c_pointer_events.enabled", false);
+@@ -761,13 +763,13 @@ lockPref("dom.w3c_pointer_events.enabled", false);
  // Pref : Enable hardening against various fingerprinting vectors (Tor Uplift project)
  // https://wiki.mozilla.org/Security/Tor_Uplift/Tracking
  // https://bugzilla.mozilla.org/show_bug.cgi?id=1333933
@@ -59,16 +68,21 @@ index befdb47..54b6841 100644
  
  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  // Section : Locale/Time/UserAgent
-@@ -789,7 +789,7 @@ lockPref("intl.regional_prefs.use_os_locales", false);
+@@ -793,11 +795,11 @@ lockPref("intl.regional_prefs.use_os_locales", false);
  
  // Pref : Locale and useragent.
  // Already applied by resistFingerprinting ?
 -lockPref("intl.locale.requested", "en-US");
 +defaultPref("intl.locale.requested", "en-US");
  
- // Pref : Spoof User-agent (disabled)
- // Disabled to make resistFingerprinting efficient
-@@ -1073,7 +1073,8 @@ lockPref("extensions.webextensions.identity.redirectDomain", "");
+ // Pref : Spoof User-agent (re-enabled)
+ // See https://gitlab.com/librewolf-community/librewolf/issues/26
+-lockPref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0, 45");
++defaultPref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0, 45");
+ 
+ // Pref : This does not work with resistFingerprinting. Still needed for ESR.
+ lockPref("general.appname.override", "Netscape");
+@@ -1077,7 +1079,8 @@ lockPref("extensions.webextensions.identity.redirectDomain", "");
  // Pref : CSP Settings For Extensions I/II : Extension Firewall Feature
  // Uncomment to disable network for the extensions
  // Enable-Firewall-Feature-In-The-Next-Line extensions-firewall >>>>>>
@@ -78,7 +92,7 @@ index befdb47..54b6841 100644
  
  // Pref : CSP Settings For Extensions II/II : Extension Firewall Feature
  // This value is applied after the first one (just ignore this)
-@@ -1415,22 +1416,22 @@ lockPref("extensions.getAddons.compatOverides.url", "");
+@@ -1419,22 +1422,22 @@ lockPref("extensions.getAddons.compatOverides.url", "");
  // https://services.addons.mozilla.org/api/v3/addons/compat-override/?guid=%IDS%&lang=%LOCALE%
  
  // Pref :
@@ -105,7 +119,7 @@ index befdb47..54b6841 100644
  // Default Value
  // https://addons.mozilla.org/%LOCALE%/firefox/search?q=%TERMS%&platform=%OS%&appver=%VERSION%
  
-@@ -1465,7 +1466,7 @@ lockPref("browser.newtabpage.activity-stream.fxaccounts.endpoint", "");
+@@ -1469,7 +1472,7 @@ lockPref("browser.newtabpage.activity-stream.fxaccounts.endpoint", "");
  // https://accounts.firefox.com/
  
  // Pref :
@@ -114,7 +128,7 @@ index befdb47..54b6841 100644
  // Default Value
  // https://versioncheck.addons.mozilla.org/update/VersionCheck.php?reqVersion=
  // %REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&maxAppVersion=
-@@ -2061,7 +2062,7 @@ lockPref("app.releaseNotesURL", "");
+@@ -2065,7 +2068,7 @@ lockPref("app.releaseNotesURL", "");
  
  // Pref :
  lockPref("app.update.auto", false);
@@ -123,7 +137,7 @@ index befdb47..54b6841 100644
  lockPref("app.update.staging.enabled", false);
  lockPref("app.update.silent", false);
  lockPref("app.update.lastUpdateTime.telemetry_modules_ping", 0);
-@@ -2175,10 +2176,10 @@ lockPref("extensions.blocklist.itemURL", "");
+@@ -2178,10 +2181,10 @@ lockPref("extensions.blocklist.itemURL", "");
  lockPref("extensions.blocklist.url", "");
  
  // Pref :
@@ -136,7 +150,7 @@ index befdb47..54b6841 100644
  
  // Pref :
  lockPref("extensions.webservice.discoverURL", "");
-@@ -2470,7 +2471,7 @@ lockPref("security.dialog_enable_delay", 700);
+@@ -2473,7 +2476,7 @@ lockPref("security.dialog_enable_delay", 700);
  
  // Pref : Opt-out of add-on metadata updates
  // https://blog.mozilla.org/addons/how-to-opt-out-of-add-on-metadata-updates/
@@ -145,7 +159,7 @@ index befdb47..54b6841 100644
  
  // Pref : Opt-out of theme (Persona) updates
  // https://support.mozilla.org/t5/Firefox/how-do-I-prevent-autoamtic-updates-in-a-50-user-environment/td-p/144287
-@@ -2503,7 +2504,7 @@ lockPref("plugin.sessionPermissionNow.intervalInMinutes", 0);
+@@ -2506,7 +2509,7 @@ lockPref("plugin.sessionPermissionNow.intervalInMinutes", 0);
  
  // Pref : Update addons automatically
  // https://blog.mozilla.org/addons/how-to-turn-off-add-on-updates/
@@ -154,3 +168,9 @@ index befdb47..54b6841 100644
  
  // Pref : Enable add-on and certificate blocklists (OneCRL) from Mozilla
  // Updated at interval defined in extensions.blocklist.interval (default: 86400)
+@@ -3230,4 +3233,4 @@ lockPref("security.tls.unrestricted_rc4_fallback", false);
+ //lockPref("toolkit.telemetry.unifiedIsOptIn", true);
+ //lockPref("ui.key.menuAccessKey", 0);
+ //lockPref("view_source.tab", false);
+-lockPref("xpinstall.signatures.required", false);
++defaultPref("xpinstall.signatures.required", true);

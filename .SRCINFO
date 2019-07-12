@@ -1,6 +1,6 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Librefox: a privacy and security-focused browser
-	pkgver = 67.0.4
+	pkgver = 68.0
 	pkgrel = 1
 	url = https://LibreWolf.gitlab.io
 	arch = x86_64
@@ -18,7 +18,6 @@ pkgbase = librewolf
 	makedepends = xorg-server-xvfb
 	makedepends = autoconf2.13
 	makedepends = rust
-	makedepends = mercurial
 	makedepends = clang
 	makedepends = llvm
 	makedepends = jack
@@ -47,15 +46,13 @@ pkgbase = librewolf
 	optdepends = hunspell-en_US: Spell checking, American English
 	options = !emptydirs
 	options = !makeflags
-	source = https://hg.cdn.mozilla.net/mozilla-unified/ae67b187427ebaa695597d65de077c886fe37b7a.zstd-max.hg
-	source = 0001-bz-1521249.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-bz-1521249.patch?h=packages/firefox
+	source = https://archive.mozilla.org/pub/firefox/releases/68.0/source/firefox-68.0.source.tar.xz
 	source = librewolf.desktop
 	source = librewolf.cfg.patch
-	source = git+https://gitlab.com/librewolf-community/librewolf.git#commit=634710ed
-	sha256sums = 8fb3423714095b206103649cb179f4997b6f85a616994e106146df19aee778f7
-	sha256sums = d0673786a6a1f1b9f6f66a3a1356afa33f1f18f59dabd92bd193c88c52a1d04c
+	source = git+https://gitlab.com/librewolf-community/librewolf.git#commit=a9a64b7f
+	sha256sums = f7d61a08820088f1280d27f0808e355152c1dd0c94625fd077ced7319e522565
 	sha256sums = 0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b
-	sha256sums = b4bfff32d4a385f5075e0cc4df72574c51c68aad3ec4182eb582f95bee59cabf
+	sha256sums = 5b748388c83fae3d09978f845b0211692ebb9191e28709c7e04daf0f49a5ea48
 	sha256sums = SKIP
 
 pkgname = librewolf
