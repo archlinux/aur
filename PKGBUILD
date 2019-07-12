@@ -2,7 +2,7 @@
 _modulename=fgivenx
 pkgname=python-$_modulename
 pkgver=2.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Functional Posterior Plotter"
 arch=(any)
 url="https://github.com/williamjameshandley/fgivenx"
@@ -21,4 +21,8 @@ sha256sums=('50fcc7a6a9d2a0eb9f2903f0a93e20444dc64f4f87a10afd819f073824af5c3d')
 package() {
   cd "$srcdir/$_modulename-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
+}
+check() {
+  cd "$srcdir/$_modulename-$pkgver" 
+  python setup.py test
 }
