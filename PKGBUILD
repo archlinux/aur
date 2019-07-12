@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://popsql.io"
 license=('unknown')
 groups=()
-depends=('gconf' 'nss' 'libxss' 'gtk2')
+depends=('gconf' 'nss' 'libxss' 'gtk2' 'gnome-keyring')
 optdepends=(
   'alsa-lib: Audio notifications'
   'libnotify: Visual notifications'
