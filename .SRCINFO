@@ -1,7 +1,7 @@
 pkgbase = aenker
 	pkgdesc = Authenticated encryption on the commandline using a chunked construction and elliptic curve25519 keys.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ansemjo/aenker
 	arch = any
 	license = MIT

@@ -6,7 +6,7 @@ pkgdesc="Authenticated encryption on the commandline using a chunked constructio
 license=('MIT')
 
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 
 depends=()
@@ -31,4 +31,5 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
