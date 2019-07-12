@@ -1,7 +1,7 @@
 pkgbase = cfiles
 	pkgdesc = A ncurses file manager written in C
-	pkgver = 1.6.1
-	pkgrel = 2
+	pkgver = 1.7
+	pkgrel = 1
 	url = https://github.com/mananapr/cfiles/
 	arch = any
 	license = MIT
@@ -14,8 +14,8 @@ pkgbase = cfiles
 	optdepends = python-ueberzug-git: for image previews
 	optdepends = poppler: for pdf previews
 	optdepends = w3m: for image previews
-	source = cfiles-1.6.1.tar.gz::https://github.com/mananapr/cfiles/archive/v1.6.1.tar.gz
-	sha256sums = d96e3322350910b30ffcac025d643e5b90f3432e6395fb39cd06dc048149591f
+	source = cfiles-1.7.tar.gz::https://github.com/mananapr/cfiles/archive/v1.7.tar.gz
+	sha256sums = 22a5b6bcd6eba7eb25d22117606f4784efcbad04674c1acef43b947fb128f81a
 
 pkgname = cfiles
 
