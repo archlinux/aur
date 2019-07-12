@@ -1,6 +1,6 @@
 pkgbase = tclreadline
 	pkgdesc = GNU readline for interactive tcl shells
-	pkgver = 2.3.5
+	pkgver = 2.3.6
 	pkgrel = 1
 	url = https://github.com/flightaware/tclreadline
 	arch = x86_64
@@ -8,10 +8,8 @@ pkgbase = tclreadline
 	license = BSD
 	depends = tcl
 	depends = readline
-	source = https://github.com/flightaware/tclreadline/archive/v2.3.5.tar.gz
-	source = alloc-invalid-block.patch
-	sha256sums = b90c3f10c75a959a0e58bce8fbe16a3b14f1a234e8e68297eb4fa290e8b304be
-	sha256sums = fe50654e7b1648cfd6220ff67d85fea62066af32ca640c0488d500416875d02b
+	source = https://github.com/flightaware/tclreadline/archive/v2.3.6.tar.gz
+	sha256sums = 478b13c2de153b5423f34f007e94d7ecbe2840b451501cc1132663750e2be0d3
 
 pkgname = tclreadline
 
