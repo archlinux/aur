@@ -1,7 +1,7 @@
-From d279aeda16b4cc525a0a2c4747946d87683e3e51 Mon Sep 17 00:00:00 2001
+From f6f4d8c026e1bc210432afc6440ce685e6eaa3e9 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Thu, 7 Dec 2017 13:50:48 +0100
-Subject: [PATCH 2/3] ZEN: Add CONFIG for unprivileged_userns_clone
+Subject: [PATCH 2/4] ZEN: Add CONFIG for unprivileged_userns_clone
 
 This way our default behavior continues to match the vanilla kernel.
 ---
@@ -10,10 +10,10 @@ This way our default behavior continues to match the vanilla kernel.
  2 files changed, 20 insertions(+)
 
 diff --git a/init/Kconfig b/init/Kconfig
-index 4592bf7997c0..f3df02990aff 100644
+index 0e2344389501..96f76927710a 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -1004,6 +1004,22 @@ config USER_NS
+@@ -1013,6 +1013,22 @@ config USER_NS
  
  	  If unsure, say N.
  
@@ -37,10 +37,10 @@ index 4592bf7997c0..f3df02990aff 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
-index 6b9dbc257e34..107b17f0d528 100644
+index b2f8b5777670..aa27ecacfb1e 100644
 --- a/kernel/user_namespace.c
 +++ b/kernel/user_namespace.c
-@@ -27,7 +27,11 @@
+@@ -22,7 +22,11 @@
  #include <linux/sort.h>
  
  /* sysctl */

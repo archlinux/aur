@@ -4,9 +4,9 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-5.1
-_stable=5.1.17
-_patchver=5.1.18
+_srcname=linux-5.2
+_stable=5.2
+_patchver=5.2.1
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -24,22 +24,24 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
+  0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
   # Arch-Linux-kernel-vx.xx.x-arch1.patch is not needed for rc1
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('5935c37966a7883cea6a541684fd4076b8d8d11776d7e76996c62c832b96c43d'
+sha256sums=('54ad66f672e1a831b574f5e704e8a05f1e6180a8245d4bdd811208a6cb0ac1e7'
             'SKIP'
-            'cc59842c0b5714f1a859a519ec5dd7c444f7c3e1407ee115d0fbe4935fa0faf7'
+            'd0a1440a275a722963b227d81088129510fcd429910d8011335d53ae5b37785a'
             'SKIP'
-            'd8eac4a183fbc5a6391a21beb9be1c9b24b7ff2deeb3cedb8b4635722ddcede9'
+            '5dc432031db0b2b6640f0d4eab6c824594106dde9f44d1e5b979978109d13f0d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '4fb1ddb2d03db2f6d9d11ba5b4dbc6abcdf5a9a6dd94c94634aa032690c48629'
-            '1625f1a883c38e64e84ad769714a18991e824d9a271ba5862600df32a5761aec')
+            '702840a04a8f08bec4688865ae41303dfc9f8c173c8dc10bfa4ffe12fce562a5'
+            '187fa8d9a6c5777a8930dcecfafdd9d6e9095d4bf96ec060e756fb7c6a88b74d'
+            'fc96300831506965383ef30bc46b72735dc45bb97dea2ccb8b9450c005d2f020')
 
 _kernelname=${pkgbase#linux}
 
