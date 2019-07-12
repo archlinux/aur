@@ -8,9 +8,8 @@ pkgdesc="A CalDAV and CardDAV adapter for EteSync "
 arch=('any')
 url="https://pypi.python.org/pypi/${pkgname}/"
 license=('GPL')
-depends=('python-appdirs'
-         'python-radicale-storage-etesync'
-)
+depends=('python-appdirs')
+replaces=('python-radicale-storage-etesync')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/e/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('76ae4ae973741c26fd73e446cb327f4d9a2e59cb35c1e64b6f7e3c1d8bf7ee77c6ca527362e613c1f49fb03c4aeef9c2c1821ec45cd345e6d30c676855b254eb')
