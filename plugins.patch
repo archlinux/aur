@@ -4,7 +4,7 @@
  
  	"github.com/mholt/caddy/caddytls"
  	// This is where other plugins get plugged in (imported)
-+	_ "github.com/mholt/caddy/caddy-cgi"
++	_ "github.com/caddyserver/caddy/caddy-cgi"
  )
  
  func init() {
