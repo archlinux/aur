@@ -2,7 +2,7 @@
 # Contributor: David Runge <dave@sleepmap.de>
 
 pkgname=etesync-dav
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A CalDAV and CardDAV adapter for EteSync "
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-appdirs'
 )
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/e/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('8c1924a8a70609fa72a738afd31379c5dd683aa5813f777ba605a01895ebf5959ae4d9a7144c26ff6d4b76d1dc790f14340ea230718d76c0992ac4dec53a9120')
+sha512sums=('76ae4ae973741c26fd73e446cb327f4d9a2e59cb35c1e64b6f7e3c1d8bf7ee77c6ca527362e613c1f49fb03c4aeef9c2c1821ec45cd345e6d30c676855b254eb')
 
 build() {
   cd "${pkgname}-${pkgver}"
