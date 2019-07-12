@@ -1,3 +1,8 @@
+2019-07-12 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1:2.1.alpha2.r156.ga1f759bc-1
+	Removed patch for Qt >= 5.13 again, as it has been merged upstream.
+
 2019-07-10 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 1:2.1.alpha2.r143.g39960af9-1

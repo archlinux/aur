@@ -1,6 +1,6 @@
 pkgbase = carla-git
 	pkgdesc = Audio Plugin Host
-	pkgver = 2.1.alpha2.r143.g39960af9
+	pkgver = 2.1.alpha2.r156.ga1f759bc
 	pkgrel = 1
 	epoch = 1
 	url = http://kxstudio.sf.net/carla
@@ -24,9 +24,7 @@ pkgbase = carla-git
 	provides = carla
 	conflicts = carla
 	source = carla::git+https://github.com/falkTX/Carla.git#branch=develop
-	source = carla-pr-895.diff
 	md5sums = SKIP
-	md5sums = df18d9b16820c55e31a83be2e432332c
 
 pkgname = carla-git
 

@@ -3,7 +3,7 @@
 
 _pkgname="carla"
 pkgname="${_pkgname}-git"
-pkgver=2.1.alpha2.r143.g39960af9
+pkgver=2.1.alpha2.r156.ga1f759bc
 pkgrel=1
 epoch=1
 pkgdesc="Audio Plugin Host"
@@ -31,21 +31,14 @@ optdepends=(
     'python-pyliblo: OSC control support'
     'python-rdflib: LADSPA-RDF support'
 )
-source=("${_pkgname}::git+https://github.com/falkTX/Carla.git#branch=develop"
-        'carla-pr-895.diff')
-md5sums=('SKIP'
-         'df18d9b16820c55e31a83be2e432332c')
+source=("${_pkgname}::git+https://github.com/falkTX/Carla.git#branch=develop")
+md5sums=('SKIP')
 changelog='changelog.txt'
 
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  patch -p1 -N -i "$srcdir/carla-pr-895.diff"
 }
 
 build() {
