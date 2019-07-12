@@ -1,0 +1,214 @@
+diff --git a/radio/src/gui/128x64/model_display.cpp b/radio/src/gui/128x64/model_display.cpp
+index fe475f182..912111d75 100644
+--- a/radio/src/gui/128x64/model_display.cpp
++++ b/radio/src/gui/128x64/model_display.cpp
+@@ -237,11 +237,12 @@ void menuModelDisplay(event_t event)
+         else {
+           for (int c=0; c<NUM_LINE_ITEMS; c++) {
+             LcdFlags cellAttr = (menuHorizontalPosition==c ? attr : 0);
+-            source_t & value = g_model.frsky.screens[screenIndex].lines[lineIndex].sources[c];
++            auto value = g_model.frsky.screens[screenIndex].lines[lineIndex].sources[c];
+             const coord_t pos[] = {DISPLAY_COL1, DISPLAY_COL2, DISPLAY_COL3};
+             drawSource(pos[c], y, value, cellAttr);
+             if (cellAttr && s_editMode>0) {
+               value = checkIncDec(event, value, 0, MIXSRC_LAST_TELEM, EE_MODEL|INCDEC_SOURCE|NO_INCDEC_MARKS, isSourceAvailable);
++            g_model.frsky.screens[screenIndex].lines[lineIndex].sources[c] = value;
+             }
+           }
+           if (attr && menuHorizontalPosition == NUM_LINE_ITEMS) {
+diff --git a/radio/src/gui/128x64/model_gvars.cpp b/radio/src/gui/128x64/model_gvars.cpp
+index 9fc3b5fbc..ce4c8dff2 100644
+--- a/radio/src/gui/128x64/model_gvars.cpp
++++ b/radio/src/gui/128x64/model_gvars.cpp
+@@ -23,7 +23,7 @@
+ void editGVarValue(coord_t x, coord_t y, event_t event, uint8_t gvar, uint8_t flightMode, LcdFlags flags)
+ {
+   FlightModeData * fm = &g_model.flightModeData[flightMode];
+-  gvar_t & v = fm->gvars[gvar];
++  auto v = fm->gvars[gvar];
+   int16_t vmin, vmax;
+   if (v > GVAR_MAX) {
+     uint8_t fm = v - GVAR_MAX - 1;
+@@ -47,6 +47,7 @@ void editGVarValue(coord_t x, coord_t y, event_t event, uint8_t gvar, uint8_t fl
+       v = checkIncDec(event, v, vmin, vmax, EE_MODEL);
+     }
+   }
++  fm->gvars[gvar] = v;
+ }
+ 
+ enum GVarFields {
+diff --git a/radio/src/gui/128x64/model_setup.cpp b/radio/src/gui/128x64/model_setup.cpp
+index 5830e8d62..25d835e6a 100644
+--- a/radio/src/gui/128x64/model_setup.cpp
++++ b/radio/src/gui/128x64/model_setup.cpp
+@@ -1575,13 +1575,16 @@ void menuModelFailsafe(event_t event)
+         s_editMode = 0;
+       }
+       else {
+-        int16_t & failsafe = g_model.moduleData[g_moduleIdx].failsafeChannels[menuVerticalPosition];
++//  auto & idunno = g_model.moduleData[g_moduleIdx];
++        auto failsafe = g_model.moduleData[g_moduleIdx].failsafeChannels[menuVerticalPosition];
+         if (failsafe < FAILSAFE_CHANNEL_HOLD)
+           failsafe = FAILSAFE_CHANNEL_HOLD;
+         else if (failsafe == FAILSAFE_CHANNEL_HOLD)
+           failsafe = FAILSAFE_CHANNEL_NOPULSE;
+         else
+           failsafe = 0;
++
++        g_model.moduleData[g_moduleIdx].failsafeChannels[menuVerticalPosition] = failsafe;
+       }
+     }
+     else {
+diff --git a/radio/src/gui/128x64/model_telemetry.cpp b/radio/src/gui/128x64/model_telemetry.cpp
+index eb143dbe9..9d21d411a 100644
+--- a/radio/src/gui/128x64/model_telemetry.cpp
++++ b/radio/src/gui/128x64/model_telemetry.cpp
+@@ -407,9 +407,10 @@ void menuModelSensor(event_t event)
+       case SENSOR_FIELD_PARAM4:
+       {
+         drawStringWithIndex(0, y, NO_INDENT(STR_SOURCE), k-SENSOR_FIELD_PARAM1+1);
+-        int8_t & source = sensor->calc.sources[k-SENSOR_FIELD_PARAM1];
++        auto source = sensor->calc.sources[k-SENSOR_FIELD_PARAM1];
+         if (attr) {
+           source = checkIncDec(event, source, -MAX_TELEMETRY_SENSORS, MAX_TELEMETRY_SENSORS, EE_MODEL|NO_INCDEC_MARKS, isSensorAvailable);
++          sensor->calc.sources[k-SENSOR_FIELD_PARAM1] = source;
+         }
+         if (source < 0) {
+           lcdDrawChar(SENSOR_2ND_COLUMN, y, '-', attr);
+diff --git a/radio/src/gui/212x64/model_display.cpp b/radio/src/gui/212x64/model_display.cpp
+index 323b2ed45..d4430a6ca 100644
+--- a/radio/src/gui/212x64/model_display.cpp
++++ b/radio/src/gui/212x64/model_display.cpp
+@@ -239,11 +239,12 @@ void menuModelDisplay(event_t event)
+         else {
+           for (int c=0; c<NUM_LINE_ITEMS; c++) {
+             LcdFlags cellAttr = (menuHorizontalPosition==c ? attr : 0);
+-            source_t & value = g_model.frsky.screens[screenIndex].lines[lineIndex].sources[c];
++            auto value = g_model.frsky.screens[screenIndex].lines[lineIndex].sources[c];
+             const coord_t pos[] = {DISPLAY_COL1, DISPLAY_COL2, DISPLAY_COL3};
+             drawSource(pos[c], y, value, cellAttr);
+             if (cellAttr && s_editMode>0) {
+               value = checkIncDec(event, value, 0, MIXSRC_LAST_TELEM, EE_MODEL|INCDEC_SOURCE|NO_INCDEC_MARKS, isSourceAvailable);
++            g_model.frsky.screens[screenIndex].lines[lineIndex].sources[c] = value;
+             }
+           }
+           if (attr && menuHorizontalPosition == NUM_LINE_ITEMS) {
+diff --git a/radio/src/gui/212x64/model_gvars.cpp b/radio/src/gui/212x64/model_gvars.cpp
+index b3d196cfb..4ae4724b4 100644
+--- a/radio/src/gui/212x64/model_gvars.cpp
++++ b/radio/src/gui/212x64/model_gvars.cpp
+@@ -23,7 +23,7 @@
+ void editGVarValue(coord_t x, coord_t y, event_t event, uint8_t gvar, uint8_t flightMode, LcdFlags flags)
+ {
+   FlightModeData * fm = &g_model.flightModeData[flightMode];
+-  gvar_t & v = fm->gvars[gvar];
++  auto v = fm->gvars[gvar];
+   int16_t vmin, vmax;
+   if (v > GVAR_MAX) {
+     uint8_t fm = v - GVAR_MAX - 1;
+@@ -45,6 +45,7 @@ void editGVarValue(coord_t x, coord_t y, event_t event, uint8_t gvar, uint8_t fl
+     }
+     else if (s_editMode > 0) {
+       v = checkIncDec(event, v, vmin, vmax, EE_MODEL);
++      fm->gvars[gvar] = v;
+     }
+   }
+ }
+diff --git a/radio/src/gui/212x64/model_setup.cpp b/radio/src/gui/212x64/model_setup.cpp
+index f574020bc..a540baa8f 100644
+--- a/radio/src/gui/212x64/model_setup.cpp
++++ b/radio/src/gui/212x64/model_setup.cpp
+@@ -1249,13 +1249,14 @@ void menuModelFailsafe(event_t event)
+         s_editMode = 0;
+       }
+       else {
+-        int16_t & failsafe = g_model.moduleData[g_moduleIdx].failsafeChannels[menuVerticalPosition];
++        auto failsafe = g_model.moduleData[g_moduleIdx].failsafeChannels[menuVerticalPosition];
+         if (failsafe < FAILSAFE_CHANNEL_HOLD)
+           failsafe = FAILSAFE_CHANNEL_HOLD;
+         else if (failsafe == FAILSAFE_CHANNEL_HOLD)
+           failsafe = FAILSAFE_CHANNEL_NOPULSE;
+         else
+           failsafe = 0;
++        g_model.moduleData[g_moduleIdx].failsafeChannels[menuVerticalPosition] = failsafe;
+       }
+     }
+     else {
+diff --git a/radio/src/gui/212x64/model_telemetry.cpp b/radio/src/gui/212x64/model_telemetry.cpp
+index a15d5c03c..daccaba27 100644
+--- a/radio/src/gui/212x64/model_telemetry.cpp
++++ b/radio/src/gui/212x64/model_telemetry.cpp
+@@ -313,9 +313,10 @@ void menuModelSensor(event_t event)
+       case SENSOR_FIELD_PARAM4:
+       {
+         drawStringWithIndex(0, y, NO_INDENT(STR_SOURCE), k-SENSOR_FIELD_PARAM1+1);
+-        int8_t & source = sensor->calc.sources[k-SENSOR_FIELD_PARAM1];
++        auto source = sensor->calc.sources[k-SENSOR_FIELD_PARAM1];
+         if (attr) {
+           source = checkIncDec(event, source, -MAX_TELEMETRY_SENSORS, MAX_TELEMETRY_SENSORS, EE_MODEL|NO_INCDEC_MARKS, isSensorAvailable);
++          sensor->calc.sources[k-SENSOR_FIELD_PARAM1] = source;
+         }
+         if (source < 0) {
+           lcdDrawChar(SENSOR_2ND_COLUMN, y, '-', attr);
+diff --git a/radio/src/gui/480x272/model_gvars.cpp b/radio/src/gui/480x272/model_gvars.cpp
+index b2bf74752..ef97e637f 100644
+--- a/radio/src/gui/480x272/model_gvars.cpp
++++ b/radio/src/gui/480x272/model_gvars.cpp
+@@ -23,7 +23,7 @@
+ void editGVarValue(coord_t x, coord_t y, event_t event, uint8_t gvar, uint8_t flightMode, LcdFlags flags)
+ {
+   FlightModeData * fm = &g_model.flightModeData[flightMode];
+-  gvar_t & v = fm->gvars[gvar];
++  auto v = fm->gvars[gvar];
+   int16_t vmin, vmax;
+   if (v > GVAR_MAX) {
+     uint8_t fm = v - GVAR_MAX - 1;
+@@ -47,6 +47,7 @@ void editGVarValue(coord_t x, coord_t y, event_t event, uint8_t gvar, uint8_t fl
+       v = checkIncDec(event, v, vmin, vmax, EE_MODEL);
+     }
+   }
++  fm->gvars[gvar] = v;
+ }
+ 
+ enum GVarFields {
+diff --git a/radio/src/gui/480x272/model_setup.cpp b/radio/src/gui/480x272/model_setup.cpp
+index bb811e43f..71dbf836f 100644
+--- a/radio/src/gui/480x272/model_setup.cpp
++++ b/radio/src/gui/480x272/model_setup.cpp
+@@ -1203,13 +1203,14 @@ bool menuModelFailsafe(event_t event)
+         s_editMode = 0;
+       }
+       else {
+-        int16_t & failsafe = g_model.moduleData[g_moduleIdx].failsafeChannels[menuVerticalPosition];
++        auto failsafe = g_model.moduleData[g_moduleIdx].failsafeChannels[menuVerticalPosition];
+         if (failsafe < FAILSAFE_CHANNEL_HOLD)
+           failsafe = FAILSAFE_CHANNEL_HOLD;
+         else if (failsafe == FAILSAFE_CHANNEL_HOLD)
+           failsafe = FAILSAFE_CHANNEL_NOPULSE;
+         else
+           failsafe = 0;
++        g_model.moduleData[g_moduleIdx].failsafeChannels[menuVerticalPosition] = failsafe;
+       }
+     }
+     else {
+diff --git a/radio/src/gui/480x272/model_telemetry.cpp b/radio/src/gui/480x272/model_telemetry.cpp
+index 027aba2c9..c76879c6f 100644
+--- a/radio/src/gui/480x272/model_telemetry.cpp
++++ b/radio/src/gui/480x272/model_telemetry.cpp
+@@ -318,7 +318,7 @@ bool menuModelSensor(event_t event)
+       case SENSOR_FIELD_PARAM4:
+       {
+         drawStringWithIndex(MENUS_MARGIN_LEFT, y, NO_INDENT(STR_SOURCE), k-SENSOR_FIELD_PARAM1+1);
+-        int8_t & source = sensor->calc.sources[k-SENSOR_FIELD_PARAM1];
++        auto source = sensor->calc.sources[k-SENSOR_FIELD_PARAM1];
+         if (attr) {
+           source = checkIncDec(event, source, -MAX_TELEMETRY_SENSORS, MAX_TELEMETRY_SENSORS, EE_MODEL|NO_INCDEC_MARKS, isSensorAvailable);
+         }
+@@ -329,6 +329,7 @@ bool menuModelSensor(event_t event)
+         else {
+           drawSource(SENSOR_2ND_COLUMN, y, source ? MIXSRC_FIRST_TELEM+3*(source-1) : 0, attr);
+         }
++        sensor->calc.sources[k-SENSOR_FIELD_PARAM1] = source;
+         break;
+       }
+ 
