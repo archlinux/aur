@@ -1,0 +1,17 @@
+pkgbase = ros-dashing-ament-cmake-core
+	pkgdesc = ROS - The core of the ament buildsystem in CMake
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://index.ros.org/doc/ros2/
+	arch = any
+	license = Apache License 2.0
+	makedepends = ros-build-tools
+	depends = cmake
+	depends = python-setuptools
+	depends = python-catkin_pkg
+	depends = ros-dashing-ament-package
+	source = ros-dashing-ament-cmake-core-0.7.3.tar.gz::https://github.com/ros2-gbp/ament_cmake-release/archive/release/dashing/ament_cmake_core/0.7.3-0.tar.gz
+	sha256sums = 9339e4ee30d0325f8ea35222fef0874fb6a9b8fda71a3d45a54a8dd375549693
+
+pkgname = ros-dashing-ament-cmake-core
+
