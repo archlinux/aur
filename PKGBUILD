@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.7.10
+pkgver=1.7.14
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
@@ -24,11 +24,11 @@ _commit="tag=v$pkgver"
 source=(
     # Git repositories; might be adjusted when a build issue arise.
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#$_commit"
-    "Catch::git+https://github.com/philsquared/Catch.git"
+    "Catch2::git+https://github.com/catchorg/Catch2.git"
     "crl::git+https://github.com/telegramdesktop/crl.git"
     "GSL::git+https://github.com/Microsoft/GSL.git"
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
-    "qtlottie::git+https://github.com/telegramdesktop/qtlottie.git"
+    "rlottie::git+https://github.com/john-preston/rlottie.git"
     "variant::git+https://github.com/mapbox/variant.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
     # These files might require modifications to be up-to-date. If that is the
@@ -41,9 +41,9 @@ source=(
     "demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop"
     "Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/Use-system-wide-font.patch?h=packages/telegram-desktop"
     "tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_lottie_animation_qtdebug.patch?h=packages/telegram-desktop"
-    "tdesktop_qtlottie_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_qtlottie_qtdebug.patch?h=packages/telegram-desktop"
+    "issue6219.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/issue6219.patch?h=packages/telegram-desktop"
 )
-sha256sums=('SKIP'
+sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -51,23 +51,23 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'f37f7827e10557d1e74b58b81eb0d17102e1c0f193d129e6e8edbbf7284f5867'
-            'a591dea408717915fb2c023ddccb83c7bf1f718ec047452456ecd73ec6daae8c'
-            '95efc9cd84c2c26bddd832ef8c88637353ed9ba9d9068f183b7ee48ba25d1cc7'
-            '4dd2b1674b1a5bcfc5b640612278fe3a53b454192fbcc06b7476ff54ed6d2f6d'
-            '3f23161f8239893e82d2a4f655cb80523a558a4e7869a6683802c2f434b68bbf'
-            '2457746d9b963c77decd5d8b08498035dc1003fbcbc95d4dfdb11bf524954f13'
-            'd1efddbd518238ab7d0da9b6d4f1b8b2ce95c48e26dc10cf5b55605f43dd0849'
-            '8360e67c49547e43b30f3f04a4e8a3e7e34104fb283b00d1d99728c170b24ba1')
+            'b20674f61ff6378749d1f59a6a0da194d33ccc786bd783f6ed62027924a3a8a8d27c9763bf376480432d6536896b0c7eeb8c495c5b8cefff7cf5fe84da50947e'
+            '3b6a0450f7981c2ce5f90c1ea46d9fb504194609f357b957b5c4a741681d3c531252394df116f8b77780a3a110783c047c9a081f9651e0792e7423573e390392'
+            'a8f1708616a598fea3cb94e3b63b02a7b13b55abd129a5dc02ad502529f4ebe7a673b6a350b669290fd26135358d21e2e10bf4a11d88f58f0685b7c4ab515bc5'
+            'd60694dc701aa985b0e82a12c9732b945082470441c687b33167a94f94efcf253baf43bb7280ec160ba338485ee5c62de138e4804cae05f27cc5cf4298166d39'
+            '6d0bac5aa4c4992b5400a9a9318f7a4e92d5eab961917cf0b05cdd251ab66a77c52ec8fbef246e8019606a7624d7b5420b87f8153e071e9724c7d2f5c94e47c0'
+            'ce6be003220267bac5483caf8302b492e1581892bc36d35a61236ebf9f9d766b8bd2159557a1c36256aa85f461797a38bfaae57b12da7a72101b21c0b17ed653'
+            'a83b80668b2dc2cc77c857069fdb45b487793fda01ad8a63bab66c6a1c71e5d032050e4ec7efb5b4c3216badc5377c856ef1f4a59c2e02b24ee53b1d83124bf3'
+            'f3ec62dfcace74e0b07396427fa6cdfa849c3feab251bdf629512984bbb2ad4b0389a2543ae6d299a5b3788609e4aeabb0dabc1fa51a3a099287c1b199626ec0')
 
 prepare() {
     cd "$srcdir/tdesktop"
     git submodule init
-    git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
+    git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch2"
     git config submodule.Telegram/ThirdParty/crl.url "$srcdir/crl"
     git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
-    git config submodule.Telegram/ThirdParty/qtlottie.url "$srcdir/qtlottie"
+    git config submodule.Telegram/ThirdParty/rlottie.url "$srcdir/rlottie"
     git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
     git config submodule.Telegram/ThirdParty/xxHash.url "$srcdir/xxHash"
     git submodule update
@@ -84,9 +84,13 @@ prepare() {
     patch -Np1    -i "$srcdir/Use-system-wide-font.patch"
     patch -Np1    -i "$srcdir/tdesktop_lottie_animation_qtdebug.patch"
 
-    cd "$srcdir/tdesktop"
-    cd "Telegram/ThirdParty/qtlottie"
-    patch -Np1    -i "$srcdir/tdesktop_qtlottie_qtdebug.patch"
+    # As in the official package...
+    # backport from https://github.com/telegramdesktop/tdesktop/commit/0710dde4d5526454318b2748331e887c01ecfdce
+    # as discussed in https://github.com/telegramdesktop/tdesktop/issues/6219
+    patch -Np1    -i "$srcdir/issue6219.patch"
+
+    # disable static-qt for rlottie
+    sed "/RLOTTIE_WITH_STATIC_QT/d" -i "$srcdir/tdesktop/Telegram/gyp/lib_rlottie.gyp"
 
     cd "$srcdir/tdesktop"
     cd "Telegram/ThirdParty/libtgvoip"
@@ -106,17 +110,17 @@ build() {
     # https://github.com/telegramdesktop/tdesktop/issues/4717
     # The official API_ID seems to be 2040 while the API_HASH is "b18441a1ff607e10a989891a5462e627".
     # We're going to use the defaults for now but might at some point use the official ones from the official binaries as noted above.
-    export API_FLAGS="-Dapi_id=17349 -Dapi_hash=344583e45741c457fe1862106095a5eb"
 
     gyp \
+        -Dapi_id=17349 \
+        -Dapi_hash=344583e45741c457fe1862106095a5eb \
         -Dbuild_defines=${GYP_DEFINES} \
-        ${API_FLAGS} \
         -Gconfig=Release \
         --depth=Telegram/gyp --generator-output=../.. -Goutput_dir=out Telegram/gyp/Telegram.gyp --format=cmake
     NUM=$((`wc -l < out/Release/CMakeLists.txt` - 2))
     sed -i "$NUM r ../CMakeLists.inj" out/Release/CMakeLists.txt
     cd "$srcdir/tdesktop/out/Release"
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -UTDESKTOP_OFFICIAL_TARGET
     make
 }
 
