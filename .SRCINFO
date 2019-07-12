@@ -1,17 +1,22 @@
 pkgbase = onioncircuits
 	pkgdesc = GTK application to display Tor circuits and streams
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://git-tails.immerda.ch/onioncircuits
 	arch = any
 	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-distutils-extra
+	depends = tor
+	depends = hicolor-icon-theme
 	depends = python>=3.4.2
 	depends = python-gobject>=3.14.0
-	depends = stem>=1.2.2
+	depends = python-stem>=1.2.2
 	depends = gobject-introspection
-	depends = python-distutils-extra
-	source = http://cdn-fastly.deb.debian.org/debian/pool/main/o/onioncircuits/onioncircuits_0.5.orig.tar.xz
-	sha256sums = 3ee331140fa6661bfd9191a0733a587e61a041bd196aec8d2a30c46fc2b08ea0
+	depends = python-pycountry
+	source = git+https://git-tails.immerda.ch/onioncircuits#commit=1355de00e8c1e944458a270cec1b1692ae69178a
+	sha256sums = SKIP
 
 pkgname = onioncircuits
 
