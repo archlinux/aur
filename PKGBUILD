@@ -6,7 +6,7 @@
 pkgbase=bitbake
 pkgname=('bitbake' 'bitbake-vim')
 pkgver=1.40.0
-pkgrel=4
+pkgrel=5
 _pythonver=3.7
 pkgdesc='Build tool executing tasks and managing metadata.'
 arch=('any')
@@ -24,13 +24,13 @@ check() {
 package_bitbake() {
     depends=(
         'python'
-        'python-django18'
         'python-beautifulsoup4'
         'python-codegen'
-        'python-pyinotify'
+        'python-django18'
+        'python-ply'
         'python-progressbar'
+        'python-pyinotify'
         'python-simplediff'
-        'python-pyl'
     )
     install=bitbake.install
 
