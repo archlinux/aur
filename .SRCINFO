@@ -1,0 +1,14 @@
+pkgbase = systemd-metered-connection-dependency-git
+	pkgdesc = Execute systemd services if current connection is not metered.
+	pkgver = r12.641eaca
+	pkgrel = 1
+	url = https://github.com/jdorel/systemd-metered-connection-dependency
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = systemd
+	source = systemd-metered-connection-dependency-git::git+https://github.com/jdorel/systemd-metered-connection-dependency.git
+	sha256sums = SKIP
+
+pkgname = systemd-metered-connection-dependency-git
+
