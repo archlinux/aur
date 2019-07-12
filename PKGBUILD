@@ -4,7 +4,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=lib32-vulkan-mesa-layer
-pkgver=19.1.1
+pkgver=19.1.2
 pkgrel=1
 pkgdesc="Vulkan overlay layer to display information about the application (32-bit)"
 arch=('x86_64')
