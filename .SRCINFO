@@ -1,7 +1,7 @@
 pkgbase = cubegui
 	pkgdesc = Performance report explorer for displaying a multi-dimensional performance space.
 	pkgver = 4.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.scalasca.org/software/cube-4.x/download.html
 	arch = i686
 	arch = x86_64
