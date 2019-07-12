@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [ ! -d ~/.cache/veloren ]; then
-    mkdir -p ~/.cache/veloren
-    ln -sd /usr/share/veloren/assets ~/.cache/veloren/assets
+if [ ! -d "$HOME/.cache/veloren" ]; then
+    mkdir -p "$HOME/.cache/veloren"
+    ln -sd "/usr/share/veloren/assets" "$HOME/.cache/veloren/assets"
 fi
 
-cd ~/.cache/veloren
+cd "$HOME/.cache/veloren"
 veloren-voxygen
