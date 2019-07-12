@@ -1,7 +1,7 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 pkgname=kawaii-player
 _pkgname=kawaii_player
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 _pkgrel=1
 pkgdesc="Multimedia player, media library manager and portable media server with PC-to-PC casting feature"
@@ -19,7 +19,7 @@ makedepends=('git')
 conflicts=('kawaii-player-git')
 install=$pkgname.install
 source=("https://github.com/kanishka-linux/${pkgname}/releases/download/v${pkgver}-${_pkgrel}/${pkgname}-${pkgver}-${_pkgrel}.tar.bz2")
-sha256sums=('9cd2e6bc66b3e56e546e5dbb0f23f6ca644d540b463cb9a72a67a1cf4814f12a')
+sha256sums=('9c1de8efa74a8ba9e6aa51a53fbb840b8346e234e368381c167d6d8360d26b74')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}-${_pkgrel}
