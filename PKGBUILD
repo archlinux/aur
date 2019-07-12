@@ -1,9 +1,8 @@
-# Maintainer: Trent Palmer trenttdually at gmail
-# Previous Maintainer: John D Jones III jnbek1972 __AT__ $mailservice_by_google __DOT__ com
+# Maintainer: John D Jones III jnbek1972 __AT__ $mailservice_by_google __DOT__ com
 _npmname=tern
-_npmver=0.24.0
+_npmver=0.24.1
 pkgname=nodejs-tern # All lowercase
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="A JavaScript code analyzer for deep, cross-editor language support"
 arch=(any)
@@ -13,7 +12,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha512sums=('55060fbc852d5a6f84140490736980686eebcf1770243bb66a114419faaaea2e82a4d9c1e39e0a0ca5a9ccc6d90c88f3f7e088139143ac5b0461c8e2cbb698ad')
+sha512sums=('ea32b40dc833899d0d022b59367720f9da3f7ca1a1f214094a171553b747a0096375c92beeaaf6a28cdde25e244c803b33ed05a0a5f2ea0bd104b3bca16a5313')
 
 package() {
   cd "$srcdir"
@@ -22,3 +21,5 @@ package() {
   cd "$_npmdir"
   npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$_npmver
 }
+                                                                                                                                                                                                          
+                                                                                                                                                                                                        
