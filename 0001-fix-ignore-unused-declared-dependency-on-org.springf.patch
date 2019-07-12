@@ -1,0 +1,25 @@
+From fd23aa909b377cd40d25d2863b7fc57159fa2aac Mon Sep 17 00:00:00 2001
+From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
+Date: Sun, 28 Nov 2021 18:55:47 +1100
+Subject: [PATCH] fix: ignore unused declared dependency on
+ org.springframework:spring-aspects
+
+---
+ pom.xml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pom.xml b/pom.xml
+index 23b2f817..fd27253e 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -309,6 +309,7 @@
+                                 <ignoredUnusedDeclaredDependency>jakarta.xml.bind:jakarta.xml.bind-api*</ignoredUnusedDeclaredDependency>
+                                 <ignoredUnusedDeclaredDependency>org.apache.cxf:cxf-rt-frontend-jaxws</ignoredUnusedDeclaredDependency>
+                                 <ignoredUnusedDeclaredDependency>jakarta.annotation:jakarta.annotation-api</ignoredUnusedDeclaredDependency>
++				<ignoredUnusedDeclaredDependency>org.springframework:spring-aspects</ignoredUnusedDeclaredDependency>
+                             </ignoredUnusedDeclaredDependencies>
+                         </configuration>
+                     </execution>
+-- 
+2.34.1
+
