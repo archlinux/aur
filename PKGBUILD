@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=docker-backup
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A tool to create & restore complete, self-contained backups of Docker containers"
 arch=('x86_64' 'i686')

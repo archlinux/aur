@@ -1,6 +1,6 @@
 pkgbase = docker-backup
 	pkgdesc = A tool to create & restore complete, self-contained backups of Docker containers
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/muesli/docker-backup
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = docker-backup
 	options = !strip
 	options = !emptydirs
 	options = !makeflags
-	source = docker-backup-0.2.1::git+https://github.com/muesli/docker-backup#tag=v0.2.1
+	source = docker-backup-0.2.2::git+https://github.com/muesli/docker-backup#tag=v0.2.2
 	sha256sums = SKIP
 
 pkgname = docker-backup
