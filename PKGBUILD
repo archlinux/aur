@@ -4,14 +4,14 @@
 # Contributor: skunk
 
 pkgname=ultrastardx-git
-pkgver=r895.6ee72582
+pkgver=r918.8d9b3e32
 pkgrel=1
 pkgdesc='Free and open source karaoke game. (GIT)'
 arch=('i686' 'x86_64')
 url="http://usdx.eu/"
 license=('GPL')
 depends=('ffmpeg' 'lua' 'portaudio' 'sdl2' 'sdl2_gfx' 'sdl2_mixer' 'sdl2_net'
-         'sdl2_ttf' 'sdl2_image' 'ttf-dejavu' 'ttf-freefont' 'wqy-microhei' 'portmidi'
+         'sdl2_ttf' 'sdl2_image' 'ttf-dejavu' 'gnu-free-fonts' 'wqy-microhei' 'portmidi'
          'pkg-config' 'autoconf' 'automake')
 makedepends=('git' 'fpc' 'gendesk')
 optdepends=('ultrastar-creator: Qt program to generate USDX songs'
