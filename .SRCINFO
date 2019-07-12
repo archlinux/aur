@@ -1,7 +1,7 @@
 pkgbase = popsql
 	pkgdesc = Collaborative SQL editor to write, run, and share queries instantly
-	pkgver = 0.4.2
-	pkgrel = 2
+	pkgver = 0.7.2
+	pkgrel = 3
 	url = https://popsql.io
 	install = popsql.install
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = popsql
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = popsql-0.4.2.deb::https://get.popsql.io/download/linux_deb_64
-	sha512sums_x86_64 = 5664c91d12708cac9bacffbdffd4e868e0145b60387afcadc273b60da705325d47d010a74f4a600a6517dbc387612240ac13151e2d57c9a2905c60118b5b2ceb
+	sha512sums_x86_64 = b3db9faa78da273e87cd842cfab41c8c85c6efe012f6439b01a757baa7fdcfdc1a1050c2c1400bf1b59648e29feb10ba92fb3e6d2c909cf81bee1751e72a24ce
 
 pkgname = popsql
-
