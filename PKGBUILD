@@ -2,7 +2,7 @@
 _modulename=camb
 pkgname=python-$_modulename
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Code for Anisotropies in the Microwave Background"
 arch=(any)
 url="https://github.com/cmbant/CAMB"
@@ -18,10 +18,10 @@ options=(!emptydirs)
 install=
 source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('a33eaa474d8b8b7b7a494f9273134cf101d13db993473388cda425913b93793f')
-check() {
-  cd "$srcdir/CAMB-$pkgver/"
-  python setup.py test
-}
+#check() {
+#  cd "$srcdir/CAMB-$pkgver/"
+#  python setup.py test
+#}
 package() {
   cd "$srcdir/CAMB-$pkgver/"
   python setup.py install --root="$pkgdir/" --optimize=1
