@@ -3,17 +3,17 @@
 
 pkgname=texlive-aastex6
 pkgdesc="Package for preparing papers in American Astronomical Society (AAS) journals "
-pkgver=6.2
-pkgrel=2
+pkgver=6.3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://journals.aas.org/authors/aastex.html"
 depends=('texlive-core' 'texlive-publishers')
 provides=('texlive-aastex6')
 install=texlive-aastex6.install
-source=('http://journals.aas.org/authors/aastex/aastex62.cls'
-        'http://journals.aas.org/authors/aastex/aasjournal.bst')
-sha1sums=('235593315dc0455eff2511831037be4268641695'
-          'c1fed6de4957709d34570e3b0b355c8dbec5dbb3')
+source=('https://journals.aas.org/wp-content/uploads/2019/06/aastex63.cls'
+        'https://journals.aas.org/wp-content/uploads/2019/06/aasjournal.bst')
+sha1sums=('6b02c31b19a8713526212d7dd524a776ecfcbf7e'
+          '88fda6521f0c8cf4d4fb77dfb572e7005c90206b')
 
 
 package() {
@@ -21,7 +21,7 @@ package() {
   cd "$srcdir"
 
   # install current files
-  install -Dm644 aastex62.cls $pkgdir/usr/share/texmf/tex/latex/aastex/aastex62.cls
+  install -Dm644 aastex63.cls $pkgdir/usr/share/texmf/tex/latex/aastex/aastex63.cls
   install -Dm644 aasjournal.bst $pkgdir/usr/share/texmf/bibtex/bst/aastex/aasjournal.bst
 
 }
