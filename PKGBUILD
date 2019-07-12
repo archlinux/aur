@@ -1,10 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
+_commit=f1a09cecd86686ef301a0e44754f66bca53d356c  # tags/2.45.7
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.45.6
+pkgver=2.45.7
 pkgrel=1
 pkgdesc="A SVG viewing library (mingw-w64)"
 arch=('any')
@@ -22,16 +23,17 @@ makedepends=('mingw-w64-configure'
              'intltool'
              'setconf')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("https://download.gnome.org/sources/librsvg/${pkgver%.*}/librsvg-${pkgver}.tar.xz"
-        "makefile-fix.patch")
-sha256sums=('0e6e26cb5c79cfa73c0ddab06808ace4d10c4a626b81c31a75ead37c6cb4df41'
-            '8fd6d2e4516271d52f6758750421d89fbef68fda3296abd1c87334e76cc09ce9')
+source=("git+https://gitlab.gnome.org/GNOME/librsvg.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/librsvg"
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
-  cd "${srcdir}/librsvg-${pkgver}"
-  # fix the name of rust static libaray
-  # fix the way to link rust static libaray
-  patch -Np1 -i ../makefile-fix.patch
+  cd "${srcdir}/librsvg"
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -44,7 +46,7 @@ build() {
     export CARGO_HOME="/opt/rust/cargo"
   fi
 
-  cd "${srcdir}/librsvg-${pkgver}"
+  cd "${srcdir}/librsvg"
   for _arch in ${_architectures}; do
     # configure can read RUST_TARGET now
     if [[ ${_arch} = i686-w64-mingw32 ]] ; then
@@ -68,7 +70,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/librsvg-${pkgver}/build-${_arch}"
+    cd "${srcdir}/librsvg/build-${_arch}"
     make DESTDIR="${pkgdir}" install
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip --strip-all {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
