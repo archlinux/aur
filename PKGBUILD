@@ -1,7 +1,7 @@
 # Maintainer: nl6720 <nl6720@gmail.com>
 
 pkgname=ps3netsrv
-_wMM_version=1.47.24
+_wMM_version=1.47.25
 pkgver=20190701
 pkgrel=1
 pkgdesc='PS3 Net Server (mod by aldostools)'
