@@ -16,5 +16,5 @@ noextract=(
 sha256sums=('5b1a66973f9f75b183d0de58b97b87b1289bbe786f43cd58083d9f5a8631044d')
 
 package() {
-	install -D -m755 "ignite-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
+	install -D -m755 "ignite-${pkgver}" "${pkgdir}/usr/bin/ignite"
 }
