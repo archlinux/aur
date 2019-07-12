@@ -1,6 +1,6 @@
 # Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=pywws
-pkgver=19.7.0
+pkgver=19.7.1
 pkgrel=1
 pkgdesc="Python software for USB Wireless WeatherStations"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-tzlocal' 'python-libusb1')
 options=(!emptydirs)
 source=(https://pypi.io/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz
 'service')
-sha512sums=('383eb1b70cb15a3fffd1ece94fef89337890344d5d78f92e0f91bdddf5f4c40ad4da1e9c5f6cc68e1e621358459f3362c6d6a9fd5298b580aee6ea303b49a446'
+sha512sums=('9ca4a6b0fa225ee9fb5af014a5c33145d00d5ad2ed23d17d178bfdd6fec678d6155dec33ad3d77fe95f5eb6721f5be8c1f8a7443b94a6f4defcd33741120b379'
             '27ff5e179cf84beb4f534fcb908a04ef1d81f2d3a9d01365b46484cdba780970d5ea897e214b4cbfcf88ecfc19970589d892206f388d6e367cd926906d1faa16')
 
 
