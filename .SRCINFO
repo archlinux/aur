@@ -1,0 +1,59 @@
+pkgbase = linux-aufs
+	pkgver = 5.2
+	pkgrel = 1
+	url = https://github.com/sfjro/aufs5-linux
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.tar.sign
+	source = https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.2/aufs-patches-v2/0001-aufs-advanced-multi-layered-unification-filesystem-v20190610.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.2/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.2/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.2/zen-fixes/0002-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
+	source = config
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = 99-linux.hook
+	source = linux.preset
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha512sums = 5a28f8a34c4e0470617f5638b7112e6252109b78f23b1eed484a228530970c7ef5c130d6e5a09cf25ea2f6a0329602dcc1ec66ce893182e15b27d99bd228789c
+	sha512sums = SKIP
+	sha512sums = e62aa377a0acc4f63f394e27a0fb7316583ff1a6a6afdfcc97593ddffd7d2bc224cfd70b552cb3fb9513cf6b8db4c2fd913d21ec2380db8cd642e37d4d67370c
+	sha512sums = 705387b4d1130fe1d356bda2114656987302433caab5face83e441cbc91d261bccb13f3c27acd9b2b7455297d0c45044a8cebdc553cb4d9dc18ec5cf78335586
+	sha512sums = 068b9f3bb5112a5684246d0a2ae46bb26d7ad3a642276f5ed37d802b50efc925297d8bd4684eb391676e9a97efbb426b4fcbe6fd751860c3f53d8c0ca7d5a1b2
+	sha512sums = f714a620d50541fd29199d076f94e68c14049bbb97b131da3b68b13bcc1dd933f62913e8aad2a20e0ad738f2c3cad161dac13d3d4cbfdfcead271f22f09a681e
+	sha512sums = c1fecf034913e7838bb27c4d6e7538515093ef2e88daf8fe18b76cc501b864305b2a03e6e16db7929cbf48be96fe11e2b01e0ba8c1a58811806d78d34350bff5
+	sha512sums = 1bbf9ec9ad6890ea76e6dd3812ae359ae0bfc2696906855c0b82ecbdd10a13e65facbf68e89cca8d5fc010c9fba086154fa39edc27c2d3f0dcdf6b300850bb6f
+	sha512sums = 7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a
+	sha512sums = 2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7
+	sha512sums = 8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf
+	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
+
+pkgname = linux-aufs
+	pkgdesc = The Linux-aufs kernel and modules with the AUFS
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	backup = etc/mkinitcpio.d/linux-aufs.preset
+
+pkgname = linux-aufs-headers
+	pkgdesc = Header files and scripts for building modules for Linux-aufs kernel
+	depends = linux-aufs
+
+pkgname = linux-aufs-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-aufs kernel
+	depends = linux-aufs
+
