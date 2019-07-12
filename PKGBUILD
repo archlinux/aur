@@ -1,7 +1,7 @@
 # Maintainer: Anton Karmanov <bergentroll@insiberia.net>
 pkgname=spectral-git
-pkgver=218.r272.g91fe860
-pkgrel=2
+pkgver=218.r431.g256ff10
+pkgrel=1
 epoch=
 pkgdesc="Glossy cross-platform client for Matrix"
 arch=(any)
@@ -21,8 +21,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  git submodule init
-  git submodule update
+  git submodule update --init --recursive
 }
 
 build() {
