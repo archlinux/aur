@@ -1,0 +1,16 @@
+pkgbase = ros-dashing-ament-package
+	pkgdesc = ROS - The parser for the manifest files in the ament buildsystem
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://index.ros.org/doc/ros2/
+	arch = any
+	license = Apache License 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	depends = cmake
+	depends = python-setuptools
+	source = ros-dashing-ament-package-0.7.0.tar.gz::https://github.com/ros2-gbp/ament_package-release/archive/release/dashing/ament_package/0.7.0-0.tar.gz
+	sha256sums = ecbe87966d711b8756d0b34518b628107b326fbd226206df088e99a1162924a1
+
+pkgname = ros-dashing-ament-package
+
