@@ -65,7 +65,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-_srcver_tag=5.1.16-arch1
+_srcver_tag=5.2-arch2
 pkgver="${_srcver_tag//-/.}"
 pkgrel=1
 arch=(x86_64)
@@ -78,6 +78,10 @@ makedepends=(
     bc
     libelf
     git
+    python-sphinx
+    python-sphinx_rtd_theme
+    graphviz
+    imagemagick
 )
 options=('!strip')
 
@@ -101,17 +105,17 @@ source=(
     02-Glitched-PDS-by-TkG.patch
 )
 validpgpkeys=(
-    'ABAF11C65A2970B130ABE3C479BE3E4300411886'    # Linus Torvalds
-    '647F28654894E3BD457199BE38DBBDC86092693E'    # Greg Kroah-Hartman
-    '8218F88849AAC522E94CF470A5E9288C4FA415FA'    # Jan Alexander Steffens (heftig)
+    'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+    '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+    '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha512sums=('SKIP'
             'SKIP'
-            '5d78839a3df30a667d1e64458add6a8c01557a21a4eb8b25ff084b95bc5efbbfb1e02f5dd2b5485dc6829647d7024450ab4886a7b11e2f5c334caeddd05810af'
+            '951ad205d211ef965e6136e0b8447aeeb522229a74b45ce497f5ff31f2059db23b36fb8035f72798d15be45440396f901a98857f961ab0acf9bfbe25c955bb32'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'cdfa59b9f369a5795c93ced526e7f480851ef439f3379e6c1a32b9cf29232cd4671fe4b0ddb50c5d996e23db71582844e233fee96bb551827eaf70b0be1d18dc'
+            '3ba2ea015485795930fe17231f0ba7755522ea675f149b4d42b056827196b4f98aea3cd027c3bd9a5934ff4b541aec30ff62c179dd38de908c0ce884af8560c9'
             '3ff796cbc213ae5f43a55f1ba92406bba04703db3459040beacacd9baceb3138021e908f440bd101cc76cb725e418ebdc8ab776327801690da30a1477bc84753')
 
 _kernelname=${pkgbase#linux}
@@ -125,7 +129,7 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "$_kernelname" > localversion.20-pkgname
 
-    msg2 "Patching Undead PDS 0.99o 5.1 rebase by TkG"
+    msg2 "Patching Undead PDS 0.99o 5.2 rebase by TkG"
     patch -Np1 -i "$srcdir/01-Undead-PDS-0.99o-rebase-by-TkG.patch"
     patch -Np1 -i "$srcdir/02-Glitched-PDS-by-TkG.patch"
 
@@ -155,19 +159,19 @@ prepare() {
         fi
     fi
 
-    if [ -z "$_sched_yield_type" ]; then
+    if [ -z "${_sched_yield_type}" ]; then
         plain ""
         plain "CPU sched_yield_type - Choose what sort of yield sched_yield will perform."
         plain ""
+        plain "For PDS:"
         plain "0: No yield."
         plain "1: Yield only to better priority/deadline tasks."
         plain "2: Expire timeslice and recalculate deadline."
-        read -rp "`echo $'\n> 0 (Recommended option for gaming on PDS - "TkG" default)\n  1 (Default, but can lead to stability issues on some platforms)\n  2 (Usually the slowest option for PDS, not recommended) - Using this option on BMQ will fallback to "1"\n  [0-2?]: '`" _sched_yield_type;
+        read -rp "`echo $'\n> 0 (Recommended option for gaming on PDS - "tkg" default)\n  1 (Default, but can lead to stability issues on some platforms)\n  2 (Usually the slowest option for PDS, not recommended unless you have issues with 0 or 1)\n  [0-2?]: '`" _sched_yield_type;
     fi
-    
-    if [ "$_sched_yield_type" == "1" ]; then
+    if [ "${_sched_yield_type}" == "1" ]; then
         msg2 "Using default CPU sched yield type (1)"
-    elif [ "$_sched_yield_type" == "2" ]; then
+    elif [ "${_sched_yield_type}" == "2" ]; then
         sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 2;/' ./kernel/sched/pds.c
     else
         sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/pds.c
@@ -187,8 +191,7 @@ prepare() {
 
 build() {
     cd ${_reponame}
-
-    make bzImage modules
+    make bzImage modules htmldocs
 }
 
 _package() {
