@@ -2,7 +2,7 @@
 # Maintainer: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 
 pkgname=firefox-auto-tab-discard
-pkgver=0.3.1
+pkgver=0.3.2.1
 pkgrel=1
 pkgdesc='Use native tab discard method to automatically reduce memory usage of inactive tab'
 url=https://add0n.com/tab-discard.html
