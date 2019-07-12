@@ -1,7 +1,7 @@
 # Maintainer: Josep Oliver Arlès <josep.oliver at tutanota dot com>
 
 pkgname=hek
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Music library checker"
 arch=("any")
@@ -9,7 +9,7 @@ url="https://github.com/dunon/hek"
 license=("GPL3")
 depends=("python" "python-mutagen")
 source=("https://github.com/dunon/hek/archive/$pkgver.tar.gz")
-md5sums=("0b639f18015e7c168664c24c0c69e298")
+md5sums=("4cddd7b24bc77668392e07db178d06e4")
 
 package() {
     cd "$pkgname-$pkgver"
