@@ -1,0 +1,46 @@
+pkgbase = python-onnxruntime
+	pkgdesc = Cross-platform, high performance scoring engine for ML models
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/microsoft/onnxruntime
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = cuda
+	makedepends = cudnn
+	makedepends = gtest
+	makedepends = gmock
+	makedepends = pybind11
+	makedepends = python-setuptools
+	depends = protobuf>=3.7.1
+	depends = re2
+	depends = python-numpy
+	source = git+https://github.com/microsoft/onnxruntime#tag=v0.4.0
+	source = git+https://github.com/HowardHinnant/date.git
+	source = eigen::git+https://github.com/eigenteam/eigen-git-mirror.git
+	source = git+https://github.com/google/gemmlowp.git
+	source = gsl::git+https://github.com/Microsoft/GSL.git
+	source = git+https://github.com/google/nsync.git
+	source = git+https://github.com/onnx/onnx.git
+	source = build-fixes.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 4901a35f1c8687555c63aaa9d0dddab9becd59b4779dd1040c19bb7dcf690773df103cffac94228f7019644d0cca03c09df525b8188fc3eef65557af07e25a26
+
+pkgname = python-onnxruntime
+
+pkgname = python-onnxruntime-cuda
+	depends = protobuf>=3.7.1
+	depends = re2
+	depends = python-numpy
+	depends = cuda
+	depends = cudnn
+	provides = python-onnxruntime=0.4.0
+	conflicts = python-onnxruntime
+
