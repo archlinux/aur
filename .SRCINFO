@@ -25,6 +25,7 @@ pkgbase = gnuradio-git
 	depends = python-mako
 	depends = python-click
 	depends = python-click-plugins
+	depends = python-pyqt5
 	depends = cppunit
 	depends = gsl
 	depends = blas
