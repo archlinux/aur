@@ -2,7 +2,7 @@
 _modulename=getdist
 pkgname=python-$_modulename
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MCMC sample analysis, kernel densities, plotting, and GUI"
 arch=(any)
 url="https://github.com/cmbant/getdist"
@@ -23,4 +23,8 @@ package() {
   cd "$srcdir/$_modulename-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+}
+check() {
+  cd "$srcdir/$_modulename-${pkgver}"
+  python setup.py test
 }
