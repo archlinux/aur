@@ -8,7 +8,7 @@
 
 _pack=symbolic
 pkgname=octave-$_pack
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Adds symbolic calculation features to GNU Octave. These include common Computer Algebra System tools such as algebraic operations, calculus, equation solving, Fourier and Laplace transforms, variable precision arithmetic and other features.  Interna [...]"
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-sha256sums=('1f371bd3cbdbeae2cb2ae0b727efc5d2ea09f005867a5935a2514d78eb4b6eb1')
+sha256sums=('983ff3534387202be447d873100855fc2fb1fdbccd7ce02d890656435467c1bf')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
