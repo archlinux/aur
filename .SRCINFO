@@ -1,6 +1,6 @@
 pkgbase = shadow-beta
 	pkgdesc = Shadow launcher
-	pkgver = 4.5.3
+	pkgver = 4.5.9
 	pkgrel = 1
 	url = http://shadow.tech
 	install = shadow-beta.install
@@ -33,7 +33,7 @@ pkgbase = shadow-beta
 	depends = libsndio-61-compat
 	provides = shadow-beta
 	source = https://update.shadow.tech/launcher/preprod/linux/ubuntu_18.04/ShadowBeta.zip
-	md5sums = 0598de9ea5e972f6050b2aa378c8d7f3
+	md5sums = 2a332a8907894fab1d17658748d1972a
 
 pkgname = shadow-beta
 
