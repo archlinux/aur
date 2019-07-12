@@ -2,8 +2,8 @@
 # Submitter:  Pascal Potvin <pascal dot potvin at gmail dot com>
 
 pkgname=terraform-provider-libvirt
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.2
+pkgrel=0
 pkgdesc="Terraform provider to provision infrastructure with Linux's KVM using libvirt"
 url="https://github.com/dmacvicar/terraform-provider-libvirt"
 arch=("x86_64")
@@ -12,7 +12,9 @@ makedepends=("go" "git")
 _namespace="github.com/dmacvicar/"
 depends=("terraform" "libvirt")
 source=("https://github.com/dmacvicar/terraform-provider-libvirt/archive/v$pkgver.tar.gz")
-sha256sums=('62dc28db22b9ff2790a638622ee16f0777843868e94aa1cd85077dde2ee35245')
+sha256sums=(
+    'dd762ec0f27f9c62eefb33cd38c63320f6533d79af5bcd2682fd152cd22cb831'
+)
 
 prepare() {
     GOPATH="$(pwd)/go"
