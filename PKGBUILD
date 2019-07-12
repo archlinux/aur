@@ -4,38 +4,24 @@
 
 pkgname=dogecoin-qt
 _binname=dogecoin
-pkgver=1.10.0
-pkgrel=3
+pkgver=1.14.0
+pkgrel=1
 pkgdesc="Cryptocurrency"
 arch=('x86_64' 'i686')
 url="http://dogecoin.com/"
 license=('MIT')
 provides=('dogecoin-qt')
-depends=('miniupnpc' 'boost-libs' 'protobuf' 'openssl-1.0' 'db')
+depends=('miniupnpc' 'boost-libs' 'protobuf' 'openssl-1.0' 'db' 'libevent')
 makedepends=('boost' 'gcc' 'make' 'git' 'qt4' 'miniupnpc' 'boost-libs' 'protobuf' 'openssl' 'db')
 source=("https://github.com/dogecoin/dogecoin/archive/v${pkgver}.tar.gz"
-		"0001-configure.ac_use_PIC.patch"
-		"0002-rename-libbitcoinconsensus-to-libdogecoinconsensus.patch"
-		"0004-rename-RAND_egd.patch"
-		"0005-boost-patch-by-unixbrain.patch"
 		"dogecoin.desktop"
         )
+
 install=dogecoin.install
 
-sha256sums=('e392f4142819fdab313ba921af53fdbd2cf6ee8965d237d0cb5cda8a52c97084'
-            '243ee3a86d91b408fad90f956a891c10958993ef170b4168444e09d78b8c0bac'
-            '215cab9e24d2c5583370979e4a0a9b46ccc5f4595233bb1a6a2eb4586773efbb'
-            '38e6a8cc94ab53901919c672ce1cf808c82cd2f32e6e5514fd4ecba94d0d26cc'
-            '2ed04e3807af3772c2be1a8be04e50164379526d8b07e0ee2d753a175256c6b2'
+sha256sums=('e5fc22472f209a7bbafbfb462404682eabfa495a19d97bb46fdc4619be7a78a9'
             '04d41773462ad6609658e291d22b15cd8d58b8eb5e4391a80cd1dae75e7df0e6')
 
-prepare() {
-	cd "${srcdir}/dogecoin-$pkgver/"
-	patch -p1 <"${srcdir}/0001-configure.ac_use_PIC.patch"
-	patch -p1 <"${srcdir}/0002-rename-libbitcoinconsensus-to-libdogecoinconsensus.patch"
-	patch -p1 <"${srcdir}/0004-rename-RAND_egd.patch"
-	patch -p1 <"${srcdir}/0005-boost-patch-by-unixbrain.patch"
-}
 build() {
 	cd "${srcdir}/dogecoin-$pkgver/"
 
