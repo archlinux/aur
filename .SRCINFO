@@ -1,6 +1,6 @@
 pkgbase = opensc-git
 	pkgdesc = Tools and libraries for smart cards
-	pkgver = 0.18.0+130+g88de66bb
+	pkgver = 0.19.0+453+g130e9bb0
 	pkgrel = 1
 	url = https://github.com/OpenSC/OpenSC/wiki
 	arch = x86_64

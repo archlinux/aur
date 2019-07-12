@@ -1,4 +1,4 @@
-# Maintainer: Sean Enck <enckse@gmail.com>
+# Maintainer: Evert "Diamond" Prants <evert@lunasqu.ee>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Sébastien Luttringer
 # Contributor: kevku <kevku@msn.com>
@@ -6,7 +6,7 @@
 
 _pkgname=OpenSC
 pkgname=opensc-git
-pkgver=0.18.0+130+g88de66bb
+pkgver=0.19.0+453+g130e9bb0
 pkgrel=1
 pkgdesc='Tools and libraries for smart cards'
 arch=('x86_64')
