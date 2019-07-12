@@ -2,19 +2,19 @@
 # Contributor: Hussain Jasim <hussainmkj@gmail.com>
 # Contributors: Flemming Madsen (arch at themadsens dot dk), Sébastien Duquette <ekse.0x@gmail.com>
 pkgname=tclx
-pkgver=8.4.1
+pkgver=8.4.2
 _tclsrcver=8.6.9
-pkgrel=11
+pkgrel=1
 pkgdesc="Provides OS primitives, file scanning, data records etc. for Tcl"
 url="http://tclx.sourceforge.net"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('BSD')
 depends=('tcl=8.6.9' 'tk' 'libtirpc')
-source=("http://downloads.sourceforge.net/sourceforge/tclx/tclx${pkgver}.tar.bz2" \
+source=("https://github.com/flightaware/tclx/archive/v${pkgver}.tar.gz" \
         "http://downloads.sourceforge.net/sourceforge/tcl/tcl${_tclsrcver}-src.tar.gz" \
         "interperrorline.patch")
-md5sums=('ac983708f23cf645c07058148f48440c'
-         "aa0a121d95a0e7b73a036f26028538d4"
+md5sums=('ec214e9d5d51d20d2d8f6b9152ccf5a7'
+         'aa0a121d95a0e7b73a036f26028538d4'
          '3254188674bfa4cdf58605d0d69586d0')
 
 #prepare() {
@@ -22,9 +22,9 @@ md5sums=('ac983708f23cf645c07058148f48440c'
 #}
 
 build() {
-  cd $srcdir/${pkgname}8.4
+  cd $srcdir/${pkgname}-${pkgver}
   ./configure
-cp /usr/lib/tclConfig.sh $srcdir
+  cp /usr/lib/tclConfig.sh $srcdir
   echo "TCL_SRC_DIR=$startdir/tcl$_tclsrcver" >> ../tclConfig.sh
   [ "$NOEXTRACT" == 1 ] || ./configure --prefix=/usr --enable-share \
                            --enable-gcc --with-tcl=$srcdir
@@ -36,7 +36,7 @@ cp /usr/lib/tclConfig.sh $srcdir
 }
 
 package() {
-cd $srcdir/${pkgname}8.4
+  cd $srcdir/${pkgname}-${pkgver}
   make $_tclsrc DESTDIR="$pkgdir" mandir="/usr/share/man" install
-install -D -m644 license.terms "$pkgdir/usr/share/licenses/$pkgname/license.terms"
+  install -D -m644 license.terms "$pkgdir/usr/share/licenses/$pkgname/license.terms"
 }
