@@ -1,13 +1,13 @@
 pkgbase = ttf-inter-ui
 	pkgdesc = A font for highly legible text on computer screens
-	pkgver = 3.3
+	pkgver = 3.7
 	pkgrel = 1
 	url = https://rsms.me/inter/
 	arch = any
 	license = custom:SIL Open Font License
 	conflicts = ttf-interface
-	source = Inter-3.3.zip::https://github.com/rsms/inter/releases/download/v3.3/Inter-3.3.zip
-	sha256sums = b8733799800cedbc5459944ce48fbb8bb0b8fa674a865cd7359bfbaa0038fb0c
+	source = Inter-3.7.zip::https://github.com/rsms/inter/releases/download/v3.7/Inter-3.7.zip
+	sha256sums = 0eb097467954991e109d179e22f06b11ef462e632dac5ce65633aa6e7262fa40
 
 pkgname = ttf-inter-ui
 
