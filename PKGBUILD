@@ -3,8 +3,8 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=1.910
-pkgrel=3
+pkgver=1.920
+pkgrel=1
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(x86_64)
 license=('custom:webmin')
@@ -153,7 +153,18 @@ package() {
 
     export archpkgdir="$pkgdir"
     cd "$srcdir"/$pkgname-$pkgver
+
+    # running iptables (nft interface) as non-root user
+    # goes into infinite loop so we avoid it in setup.sh
+    mv firewall/install_check{,.tmp}.pl
+    mv firewall6/install_check{,.tmp}.pl
     "$srcdir"/$pkgname-$pkgver/setup.sh "$pkgdir"/opt/webmin
+
+    # move the files back in place
+    mv "$pkgdir"/opt/webmin/firewall/install_check{.tmp,}.pl
+    mv "$pkgdir"/opt/webmin/firewall6/install_check{.tmp,}.pl
+    mv firewall/install_check{.tmp,}.pl
+    mv firewall6/install_check{.tmp,}.pl
 
     # fix the config files to use their real locations
     find "$pkgdir"/etc/webmin -type f -exec sed -i -e "s:$pkgdir::g" {} \+
@@ -170,7 +181,7 @@ package() {
 }
 
 
-sha256sums=('e0fa2b0df85825b8f39146242ecfd46fe5af8a0b118584bafae915f1fb85b0da'
+sha256sums=('dc490bb4ef5877dee6322efab93a0fb3674672d290fbee1aa2a5340a3619feda'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             '21b24cbbf88593f9da727e8f36dea283c8765002a378b3d4e55e6332387c43c6'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
