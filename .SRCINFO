@@ -1,0 +1,23 @@
+pkgbase = airsonic-git
+	pkgdesc = A free, web-based media streamer and jukebox.
+	pkgver = v10.2.0.r334.g85716941
+	pkgrel = 1
+	url = https://github.com/Airsonic/airsonic/
+	arch = any
+	license = GPL3
+	makedepends = java-environment
+	makedepends = maven
+	depends = java-runtime-headless
+	optdepends = ffmpeg: transcode support
+	provides = airsonic
+	conflicts = airsonic
+	backup = etc/airsonic/airsonic.conf
+	source = git+https://github.com/airsonic/airsonic.git
+	source = airsonic.sysusers
+	source = airsonic.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 25af0b92b247df928db5ac8fec3fb4fa2cdc717e649729d5e0c059a5b81e058e
+	sha256sums = 952c15c8c6b53b9c63a96eb6b2402eae42bde56dc9c6c60484cf039a03a82963
+
+pkgname = airsonic-git
+
