@@ -13,8 +13,6 @@ options=('staticlibs' '!strip' 'libtool')
 install=aocc-bin.install
 sha256sums=("ba562e2d91b592d104278ccae2a7fd774a9894f3a30e849a30bcbe048790217e")
 
-
-
 package() {
 	mkdir -p ${pkgdir}/opt/aocc
 
