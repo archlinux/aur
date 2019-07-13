@@ -1,0 +1,13 @@
+pkgbase = ktlint-git
+	pkgdesc = Generate PKGBUILD from pip packages
+	pkgver = 0.33.0.r44.g215056a
+	pkgrel = 1
+	url = http://github.com/sollidsnake/pipman
+	arch = any
+	license = MIT
+	depends = java-runtime
+	source = git+https://github.com/pinterest/ktlint
+	sha256sums = SKIP
+
+pkgname = ktlint-git
+
