@@ -3,8 +3,8 @@
 pkgname=layan-gtk-theme-git
 _reponame='Layan-gtk-theme'
 pkgver=0.0.0.c5cb79f
-pkgrel=1
-pkgdesc='Layan-gtk-theme'
+pkgrel=2
+pkgdesc='An Flat Gtk+ theme based on Material Design'
 arch=("any")
 url="https://github.com/vinceliuice/Layan-gtk-theme"
 license=("GPL2")
