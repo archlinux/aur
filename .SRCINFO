@@ -1,0 +1,13 @@
+pkgbase = conftest
+	pkgdesc = A utility to help you write tests against structured configuration data
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/instrumenta/conftest
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	source = conftest-0.8.1.tar.gz::https://github.com/instrumenta/conftest/archive/v0.8.1.tar.gz
+	sha512sums = a748653b0cfa8b00027d249852748ee222afb1521fdec7553bee6d828a9693a783b182bd8cfcb5d8834aa35a9dcbb4c33b009873798ec32a0bfeeac1a52aac1c
+
+pkgname = conftest
+
