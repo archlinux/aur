@@ -11,5 +11,5 @@ pkgbase = layan-gtk-theme
 	source = git+https://github.com/vinceliuice/Layan-gtk-theme.git
 	sha256sums = SKIP
 
-pkgname = layan-gtk-theme
+pkgname = layan-gtk-theme-git
 

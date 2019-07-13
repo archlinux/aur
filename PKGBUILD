@@ -1,5 +1,6 @@
 # Maintainer: Víctor González <mrvikxd@gmail.com>
 
+pkgbase=layan-gtk-theme
 pkgname=layan-gtk-theme-git
 _reponame='Layan-gtk-theme'
 pkgver=0.0.0.c5cb79f
