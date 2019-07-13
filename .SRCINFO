@@ -1,0 +1,16 @@
+pkgbase = wcslib62
+	pkgdesc = A C library that implements the 'World Coordinate System' (WCS) standard in FITS
+	pkgver = 6.2
+	pkgrel = 2
+	url = https://www.atnf.csiro.au/people/Mark.Calabretta/WCS/
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc-fortran
+	depends = cfitsio
+	provides = wcslib=6.2
+	conflicts = wcslib
+	source = ftp://ftp.atnf.csiro.au/pub/software/wcslib/wcslib-6.2.tar.bz2
+	sha256sums = bb4dfe242959bc4e5540890e0475754ad4a027dba971903dc4d82df8d564d805
+
+pkgname = wcslib62
+
