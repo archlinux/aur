@@ -5,14 +5,14 @@
 
 pkgname=puddletag
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='An audio tag editor for GNU/Linux'
 url="https://docs.puddletag.net/"
 license=('GPL3')
 arch=('any')
-depends=('chromaprint' 'python2-mutagen' 'python2-configobj' 'python2-musicbrainz2'
+depends=('python2-pillow' 'python2-mutagen' 'python2-configobj' 'python2-musicbrainz2'
          'python2-pyparsing' 'python2-pyqt4')
-optdepends=('python2-pillow: FLAC cover art'
+optdepends=('chromaprint: AcoustID support'
             'quodlibet: QuodLibet library support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/keithgg/puddletag/archive/v${pkgver}.tar.gz")
 sha256sums=('95e4867fd04c5349f19de1b5f3c1f2336d3b66da08c076fb175ef8f7589dc80d')
