@@ -5,17 +5,17 @@
 
 pkgname=puddletag-qt5-git
 pkgver=r881.aab842a
-pkgrel=1
+pkgrel=2
 pkgdesc="An audio tag editor for GNU/Linux, Qt5 verion"
 url="http://docs.puddletag.net/"
 license=('GPL3')
 arch=('any')
-depends=('chromaprint' 'python2' 'python2-mutagen' 'python2-pyqt5' 
+depends=('python2' 'python2-mutagen' 'python2-pyqt5' 
 	 'python2-pyparsing' 'python2-configobj' 'python2-musicbrainz2' 
-	 'qt5-svg')
+	 'qt5-svg' 'python2-pillow')
 makedepends=('git')
-optdepends=('python2-pillow: FLAC cover art support'
-            'quodlibet: QuodLibet library support')
+optdepends=('chromaprint: AcoustID support' 
+	    'quodlibet: QuodLibet library support')
 provides=('puddletag')
 conflicts=('puddletag')
 source=("$pkgname::git+https://github.com/keithgg/puddletag#branch=pyqt5")
