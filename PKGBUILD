@@ -10,7 +10,7 @@ depends=('qtws-base')
 source=("$webappname.qtws" "$webappname.png" "$webappname.desktop")
 md5sums=('a631b8125712a7ccd1b57e03c1d45b91'
          '54dcc4edaf29caa9524c89b7de8862d7'
-         '338db3530a8c308e0d4e6206d5fbb800')
+         'a7b093cc7607caef95dd78016a9930af'
 
 package() {
     mkdir -p ${pkgdir}/usr/share/qtws-apps/$webappname
