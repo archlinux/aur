@@ -16,7 +16,7 @@ license=('BSD 2-Clause')
 makedepends=()
 
 source=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_x86_64.tar.gz")
-md5sums=('SKIP')
+md5sums=('04f1c9c324d12717b10c5173a5363f25')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
