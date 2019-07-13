@@ -11,6 +11,10 @@ desktop_msg() {
 
 check_wine() {
     EVECONF=$HOME/.config/CCP/EVE.conf
+    if [ ! -r "$EVECONF" ] ;then
+	desktop_msg "ERROR: EVE Configuration not found!"
+	exit 1
+    fi
     CUSTOMWP=$(grep CustomWinePath $EVECONF | cut -d= -f2)
     SHAREDIR=$(grep SharedCacheFolder $EVECONF | cut -d= -f2)
     UCW=$(grep UseCustomWine $EVECONF | cut -d= -f2)
@@ -28,7 +32,7 @@ check_wine() {
     fi
     INSTWINE=$(cat $WINEPREFIX/.update-timestamp | tr -dc [:digit:]) || true
     WINEINFP=$(readlink -f $CUSTOMWP)
-    WINECONF=$(find ${WINEINFP%/bin*}/share -name 'wine.inf') || true
+    WINECONF=$(find ${WINEINFP%/bin*}/share -name 'wine.inf' 2>/dev/null) || true
     WINEDATE=$(ls -l --time-style=+%s "$WINECONF" 2>/dev/null | cut -d' ' -f6)
     if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
 	desktop_msg "Preparing wine in $WINEPREFIX"
