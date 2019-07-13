@@ -7,7 +7,7 @@
 pkgname='bluez-utils-compat'
 _pkgbase='bluez'
 pkgver=5.50
-pkgrel=6.1
+pkgrel=6.2
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
 license=('GPL2')
@@ -53,10 +53,10 @@ build() {
   make
 }
 
-check() {
-  cd "${_pkgbase}-${pkgver}"
-  make check || /bin/true # https://bugzilla.kernel.org/show_bug.cgi?id=196621
-}
+#check() {
+#  cd "${_pkgbase}-${pkgver}"
+#  make check || /bin/true # https://bugzilla.kernel.org/show_bug.cgi?id=196621
+#}
 
 package() {
   cd "${_pkgbase}-${pkgver}"
