@@ -1,6 +1,6 @@
 # Maintainer: Dan Brown <SilicaSandwhich@gmail.com>
 pkgname=bibata-cursor-translucent
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Translucent Material Based Cursor Theme."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/Silicasandwhich/Bibata_Cursor_Translucent.git"
 license=('GPL')
 makedepends=('inkscape' 'gnome-themes-extra' 'gtk-engine-murrine' 'xorg-xcursorgen')
 source=("https://github.com/Silicasandwhich/Bibata_Cursor_Translucent/archive/v${pkgver}.tar.gz")
-sha256sums=('846794e787f4f56d3abce76c0920aaa3edf18882b5f7749d85d6db5d4d5173a7')
+sha256sums=('21e5af9d34d87083f51625cb72bbb2b19b63c2542bde03c878ae7bbe85fb7fc1')
 
 build() {
 	cd "$srcdir/Bibata_Cursor_Translucent-${pkgver}"
