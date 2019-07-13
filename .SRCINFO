@@ -1,0 +1,20 @@
+pkgbase = brother-hl-l3270cdw
+	pkgdesc = LPR and CUPS driver for the Brother HL-L3270CDW
+	pkgver = 1.1.2
+	pkgrel = 2
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-hl-l3270cdw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf103945/hll3270cdwpdrv-1.0.2-0.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	md5sums = f45a7ed29d0509d0dcbb7a717bd07f2f
+	md5sums = 97ad0cffd216059e9d1d3121899d8646
+	md5sums = 5e87a3dc0f3e3438c088eda0f3565f0d
+
+pkgname = brother-hl-l3270cdw
+
