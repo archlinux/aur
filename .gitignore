@@ -1,4 +1,4 @@
 *.tar*
-butler.gz
+default
 pkg
 src
