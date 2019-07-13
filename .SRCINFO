@@ -1,0 +1,14 @@
+pkgbase = infgen-git
+	pkgdesc = Deflate disassember to convert a deflate, zlib, or gzip stream into a readable form
+	pkgver = 15.f0ae732
+	pkgrel = 1
+	url = https://github.com/madler/infgen
+	arch = x86_64
+	license = custom:personal-enlightment
+	makedepends = git
+	depends = glibc
+	source = git+ssh://git@github.com/madler/infgen
+	sha1sums = SKIP
+
+pkgname = infgen-git
+
