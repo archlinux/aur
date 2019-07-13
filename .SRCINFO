@@ -1,13 +1,14 @@
 pkgbase = djv
 	pkgdesc = Movie playback and image processing software for the film and computer animation industries
-	pkgver = 1.2.5
-	pkgrel = 4
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = http://djv.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = glm
+	makedepends = picojson-git
 	makedepends = portaudio
 	makedepends = qt5-tools
 	depends = desktop-file-utils
@@ -20,7 +21,7 @@ pkgbase = djv
 	depends = openexr
 	depends = qt5-base
 	depends = qt5-svg
-	source = git://git.code.sf.net/p/djv/git#tag=1.2.5
+	source = djv::git+https://github.com/darbyjohnston/DJV#tag=1.3.0
 	source = djv_view.desktop
 	md5sums = SKIP
 	md5sums = 2668ad2635036f33ba615b5dc538b1cf
