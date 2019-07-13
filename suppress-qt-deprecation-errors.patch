@@ -1,0 +1,33 @@
+diff -aur --no-dereference radium-5.9.71.pristine/Makefile.Qt radium-5.9.71.new/Makefile.Qt
+--- radium-5.9.71.pristine/Makefile.Qt	2019-07-13 10:45:22.009924291 +0100
++++ radium-5.9.71.new/Makefile.Qt	2019-07-13 10:41:32.489932129 +0100
+@@ -1452,7 +1452,7 @@
+ 	$(MOC) $(P)Qt_PopupMenu.cpp -DUSE_QT_MENU >$(P)mQt_PopupMenu.cpp
+ 
+ Qt_MainWindow.o:  $(BUILD_DEPENDENCIES) $(P)Qt_MainWindow.cpp $(P)mQt_bottom_bar_widget_callbacks.h $(P)mQt_upperleft_widget_callbacks.h $(P)Rational.h $(P)lzqlineedit.h $(P)helpers.h audio/CpuUsage.hpp Qt/EditorWidget.h  Qt/FileRequester.hpp
+-	$(CCC) $(P)Qt_MainWindow.cpp $(QTOPT)
++	$(CCC) $(P)Qt_MainWindow.cpp $(QTOPT) -Wno-deprecated-declarations
+ 
+ Qt_Time.o:  $(BUILD_DEPENDENCIES) $(P)Qt_Time.cpp
+ 	$(CCC) $(P)Qt_Time.cpp $(QTOPT)
+@@ -1656,7 +1656,7 @@
+ 	@echo "Changed (bin/radium_error_message):"
+ 	@echo $?
+ 	@echo
+-	$(CCC) -Wall -Werror $(P)Qt_Error.cpp $(CPPOPT) $(QT_CFLAGS) $(OS_OPTS) -DCOMPILE_EXECUTABLE $(QT_GUI_CFLAGS) -o errormessagebin.o -Wno-missing-declarations
++	$(CCC) -Wall -Werror $(P)Qt_Error.cpp $(CPPOPT) $(QT_CFLAGS) $(OS_OPTS) -DCOMPILE_EXECUTABLE $(QT_GUI_CFLAGS) -o errormessagebin.o -Wno-missing-declarations -Wno-deprecated-declarations
+ 	$(LINKER) `cat buildtype.opt` errormessagebin.o -o bin/radium_error_message $(QT_GUI_LDFLAGS)
+ 	rm errormessagebin.o
+ 
+diff -aur --no-dereference radium-5.9.71.pristine/pluginhost/Builds/Linux/Makefile radium-5.9.71.new/pluginhost/Builds/Linux/Makefile
+--- radium-5.9.71.pristine/pluginhost/Builds/Linux/Makefile	2019-07-13 10:45:22.009924291 +0100
++++ radium-5.9.71.new/pluginhost/Builds/Linux/Makefile	2019-07-13 10:40:51.449933531 +0100
+@@ -99,7 +99,7 @@
+ $(OBJDIR)/Juce_plugins_6c083ccb.o: ../../../audio/Juce_plugins.cpp
+ 	-@mkdir -p $(OBJDIR)
+ 	@echo "Compiling Juce_plugins.cpp"
+-	$(CXX) $(CXXFLAGS) -Wall -o "$@" -c "$<"
++	$(CXX) $(CXXFLAGS) -Wall -o "$@" -c "$<" -Wno-deprecated-declarations
+ 
+ $(OBJDIR)/Juce_plugin_scanner.o: ../../../audio/Juce_plugin_scanner.cpp
+ 	-@mkdir -p $(OBJDIR)
