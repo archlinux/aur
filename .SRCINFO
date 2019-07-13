@@ -1,17 +1,16 @@
-pkgbase = octave-statistics
-	pkgdesc = Additional statistics functions for Octave.
-	pkgver = 1.4.1
+pkgbase = octave-faddeeva
+	pkgdesc = Faddeeva functions for Octave.
+	pkgver = 0.0.1
 	pkgrel = 1
-	url = https://octave.sourceforge.io/statistics/
-	install = octave-statistics.install
+	url = http://ab-initio.mit.edu/Faddeeva-octave.tgz
+	install = octave-faddeeva.install
 	arch = any
-	groups = octave-forge
 	license = custom
 	depends = octave>=4.0.0
 	depends = octave-io>=1.0.18
-	noextract = statistics-1.4.1.tar.gz
-	source = https://downloads.sourceforge.net/octave/statistics-1.4.1.tar.gz
-	sha256sums = 336fd63cde3c6d52b06f8ae01a9a17a0978fae214af06041b19f2be6eb265a1c
+	noextract = Faddeeva-octave.tgz
+	source = http://ab-initio.mit.edu/Faddeeva-octave.tgz
+	sha256sums = 0bd94e874fb1d37f35c022129c033535a1456f1efb477f5fba9017883b7b088d
 
-pkgname = octave-statistics
+pkgname = octave-faddeeva
 

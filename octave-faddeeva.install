@@ -1,4 +1,4 @@
-_pack=statistics
+_pack=faddeeva
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"

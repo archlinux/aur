@@ -7,25 +7,24 @@
 # new octave-forge PKGBUILDs or update existing ones. Patches welcome.
 #
 
-_pack=statistics
+_pack=faddeeva
 pkgname=octave-$_pack
-pkgver=1.4.1
+pkgver=0.0.1
 pkgrel=1
-pkgdesc="Additional statistics functions for Octave."
+pkgdesc="Faddeeva functions for Octave."
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
-license=('custom')
-groups=('octave-forge')
+url="http://ab-initio.mit.edu/Faddeeva-octave.tgz"
+license=('LGPLv2')
 depends=('octave>=4.0.0' 'octave-io>=1.0.18')
 makedepends=()
 optdepends=()
 backup=()
 options=()
 install=$pkgname.install
-_archive=$_pack-$pkgver.tar.gz
-source=("https://downloads.sourceforge.net/octave/$_archive")
+_archive=http://ab-initio.mit.edu/Faddeeva-octave.tgz
+source=("http://ab-initio.mit.edu/Faddeeva-octave.tgz")
 noextract=("$_archive")
-sha256sums=('336fd63cde3c6d52b06f8ae01a9a17a0978fae214af06041b19f2be6eb265a1c')
+sha256sums=('0bd94e874fb1d37f35c022129c033535a1456f1efb477f5fba9017883b7b088d')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
@@ -34,6 +33,7 @@ _octave_run() {
 _install_dir() {
 	src=$1
 	dst=$2
+	cd "$srcdir"
 	mkdir -p "$(dirname "$dst")"
 	cp -rT "$src" "$dst"
 }
@@ -43,17 +43,17 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	_octave_run "$(cat <<-EOF
-		pkg local_list octave_packages;
-		pkg prefix $_prefix $_archprefix;
-		pkg install -verbose -nodeps $_archive;
-		EOF
-		)"
+	cd Faddeeva-octave
+	make
 }
 
+
 package() {
-	prefix=$pkgdir/usr/share/octave/packages
-	archprefix=$pkgdir/usr/lib/octave/packages
+	prefix=$pkgdir/`octave-config --print OCTFILEDIR`
+	archprefix=$pkgdir/`octave-config --print OCTFILEDIR`
 	_install_dir "$srcdir"/install_prefix "$prefix"
 	_install_dir "$srcdir"/install_archprefix "$archprefix"
+	cd "$srcdir"
+	cd Faddeeva-octave
+	cp -f Faddeeva_w.oct Faddeeva_erf.oct Faddeeva_erfc.oct Faddeeva_erfi.oct Faddeeva_erfcx.oct Faddeeva_Dawson.oct $pkgdir/`octave-config --print OCTFILEDIR`
 }
