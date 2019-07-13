@@ -1,6 +1,6 @@
 pkgbase = mcos-mjv-nordic-theme
 	pkgdesc = It's GTK2,GTK3,XFCE4 Theme Mac OS Nordic
-	pkgver = 2.3~r18.b3542e5
+	pkgver = 2.3~r21.04572db
 	pkgrel = 1
 	url = https://github.com/basigur/mcos-mjv-nordic-theme
 	arch = any
