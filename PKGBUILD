@@ -4,9 +4,9 @@
 pkgname=tclx
 pkgver=8.4.2
 _tclsrcver=8.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides OS primitives, file scanning, data records etc. for Tcl"
-url="http://tclx.sourceforge.net"
+url="https://github.com/flightaware/tclx"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('BSD')
 depends=('tcl=8.6.9' 'tk' 'libtirpc')

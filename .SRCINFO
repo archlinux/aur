@@ -1,8 +1,8 @@
 pkgbase = tclx
 	pkgdesc = Provides OS primitives, file scanning, data records etc. for Tcl
 	pkgver = 8.4.2
-	pkgrel = 1
-	url = http://tclx.sourceforge.net
+	pkgrel = 2
+	url = https://github.com/flightaware/tclx
 	arch = i686
 	arch = x86_64
 	arch = armv6h
