@@ -1,4 +1,4 @@
-pkgbase = layan-gtk-theme
+pkgbase = layan-gtk-theme-git
 	pkgdesc = Layan-gtk-theme
 	pkgver = 0.0.0.c5cb79f
 	pkgrel = 1
