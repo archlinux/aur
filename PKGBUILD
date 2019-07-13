@@ -3,7 +3,7 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=('python-pydicom' 'python2-pydicom')
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure python package for working with DICOM files"
 arch=("any")
 url="https://pydicom.github.io/pydicom/stable/index.html"
@@ -13,8 +13,8 @@ makedepends=('python-setuptools' 'python2-setuptools')
 optdepends=('python-numpy: for working with pixel data'
             'python-pillow: for working with compressed image data')
 checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pydicom/pydicom/archive/$pkgver.tar.gz")
-md5sums=('08a8c176e8a4a80017c59adf3db9b75c')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pydicom/pydicom/archive/v$pkgver.tar.gz")
+md5sums=('74abb910bb283421491280099c1ad5f9')
 
 build()
 {
