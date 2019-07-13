@@ -10,6 +10,7 @@ clear: ## Clear files
 	rm -rf ./pkg
 	rm -rf ./src
 	rm -f ./*.deb
+	rm -f ./*.zip
 	rm -f ./shadow-beta-*.pkg.tar
 	rm -f ./shadow-beta-*.pkg.tar.xz
 	rm -f ./*~
