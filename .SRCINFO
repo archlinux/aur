@@ -1,0 +1,15 @@
+pkgbase = layan-gtk-theme
+	pkgdesc = Layan-gtk-theme
+	pkgver = 0.0.0.c5cb79f
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Layan-gtk-theme
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	source = git+https://github.com/vinceliuice/Layan-gtk-theme.git
+	sha256sums = SKIP
+
+pkgname = layan-gtk-theme
+
