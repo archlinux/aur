@@ -3,7 +3,7 @@
 pkgname=adobe-source-han-classic-fonts
 pkgver=2.001
 pkgrel=1
-pkgdesc="Adobe Source Han Fonts - Classic Style Chinese Character"
+pkgdesc="Adobe Source Han Fonts - Classic Style Chinese Character (Meta Package)"
 arch=('any')
 url="https://github.com/adobe-fonts/"
 license=('OFL')
