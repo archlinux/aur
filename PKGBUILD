@@ -6,7 +6,7 @@
 
 pkgname=aide-selinux
 _srcname=aide
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc='A file integrity checker and intrusion detection program.'
 arch=('i686' 'x86_64')
