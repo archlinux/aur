@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=Dawayer
-Comment=An ordinary audio player
+Comment=An audio player built with web technologies
 Exec="/opt/Dawayer/Dawayer" %U
 Terminal=false
 Type=Application
 Icon=Dawayer
 StartupWMClass=Dawayer
-MimeType=audio/mpeg3;audio/mp4;audio/mpeg;audio/opus;audio/ogg;audio/wav;audio/aac;audio/m4a;audio/flac;
+MimeType=audio/mpeg3;audio/mpeg;audio/opus;application/ogg;audio/wav;audio/aac;audio/flac;
 Categories=AudioVideo;Audio;
