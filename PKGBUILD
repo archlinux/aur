@@ -3,7 +3,7 @@
 
 pkgname=eksctl
 pkgdesc='Command line tool for creating clusters on Amazon EKS'
-pkgver=0.1.38
+pkgver=0.1.40
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -12,20 +12,13 @@ depends=('kubectl')
 makedepends=('go')
 conflicts=('eksctl-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/weaveworks/eksctl/archive/$pkgver.tar.gz")
-sha256sums=('1eb06bab31118e52084fc148d9995af48b2558ff0ac854de2be0abb21835b695')
-
-prepare() {
-  # Make fake gopath
-  mkdir -p gopath/src/github.com/weaveworks
-  ln -rTsf $pkgname-$pkgver gopath/src/github.com/weaveworks/eksctl
-}
+sha256sums=('a22a83d85a2671c2274d41e9f44ec858046ead323f94967e165152cf0a436718')
 
 build() {
   # Trim PWD from binary
   export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
 
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/github.com/weaveworks/eksctl
+  cd $pkgname-$pkgver
   go build -ldflags="-X github.com/weaveworks/eksctl/pkg/version.gitTag=$pkgver" ./cmd/eksctl
 }
 
