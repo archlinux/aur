@@ -1,0 +1,15 @@
+pkgbase = rust-css-minifier-git
+	pkgdesc = A simple command line tool which minifies CSS.
+	pkgver = 34.ce9916a
+	pkgrel = 1
+	url = https://github.com/amgarrett09/rust-css-minifier
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = rust
+	source = rust-css-minifier::git+https://github.com/amgarrett09/rust-css-minifier
+	md5sums = SKIP
+
+pkgname = rust-css-minifier-git
+
