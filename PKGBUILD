@@ -19,9 +19,10 @@ provides=('aide')
 backup=('etc/aide.conf')
 source=(https://github.com/$_srcname/$_srcname/releases/download/v$pkgver/$_srcname-$pkgver.tar.gz{,.asc} \
         aide.conf)
-md5sums=('1bb877023500451cbad76c8ab1f3ec55'
+md5sums=('9835914273bb06f9b3263ce36ef7149b'
          'SKIP'
          'd029f9796de01dc8a791f89ac931d7fb')
+
 validpgpkeys=('2BBBD30FAAB29B3253BCFBA6F6947DAB68E7B931') # Hannes von Haugwitz <hannes@vonhaugwitz.com>
 
 build() {
