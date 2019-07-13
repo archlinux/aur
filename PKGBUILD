@@ -55,7 +55,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/frr"
-  make -j5
+  make
 }
 
 package() {
