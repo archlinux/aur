@@ -10,7 +10,7 @@ depends=(iptables docker darkhttpd python python-netifaces python-ipaddress)
 makedepends=()
 source=("https://github.com/Thermi/docker-makepkg/releases/download/${pkgver}/docker-makepkg-${pkgver}.tar.gz"
 		"https://github.com/Thermi/docker-makepkg/releases/download/${pkgver}/docker-makepkg-${pkgver}.tar.gz.asc")
-sha256sums=('dcaacd767ce27035f21447bef8b736a8b3a7d6b179b733c15f09d4f95ceffbb4'
+sha256sums=('674cb1d887609ace1d7d3c2082f656b4d0aa843ac0293ec8508e661c069a1658'
             'SKIP')
 
 validpgpkeys=(92C65A2073E1D8A4D0985B7B509B7C4EBF451EDC)
