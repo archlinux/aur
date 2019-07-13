@@ -2,8 +2,8 @@
 
 pkgname=openra-d2-git
 _pkgname=openra-d2
-pkgver=134.git.69a4aa7
-pkgrel=2
+pkgver=164.git.04a1630
+pkgrel=1
 pkgdesc="A Dune II-inspired mod of OpenRA"
 arch=('any')
 url="https://github.com/OpenRA/d2"
@@ -46,7 +46,7 @@ package() {
     cd $srcdir/d2
     mkdir -p $pkgdir/usr/{lib/${_pkgname}/mods,bin,share/pixmaps,share/doc/packages/openra-d2,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-d2
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,Eluant.dll*,FuzzyLogicLibrary.dll,GeoLite2-Country.mmdb.gz,'global mix database.dat',ICSharpCode.SharpZipLib.dll,launch-dedicated.sh,launch-game.sh,MaxMind.Db.dll,OpenAL-CS.dll,OpenAL-CS.dll.config,Open.Nat.dll,OpenRA.Game.exe,OpenRA.Platforms.Default.dll,OpenRA.Server.exe,OpenRA.Utility.exe,rix0rrr.BeaconLib.dll,SDL2-CS.dll,SDL2-CS.dll.config,SharpFont.dll,SharpFont.dll.config,VERSION} $pkgdir/usr/lib/openra-d2
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,OpenRA.Game.exe,OpenRA.Server.exe,OpenRA.Utility.exe,VERSION} $pkgdir/usr/lib/openra-d2
     cp -r mods/d2 $pkgdir/usr/lib/${_pkgname}/mods
     cp -r engine/mods/{common,modcontent,d2k,cnc,ra} $pkgdir/usr/lib/${_pkgname}/mods
     install -Dm755 $srcdir/openra-d2 $pkgdir/usr/bin/openra-d2
