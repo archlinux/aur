@@ -1,22 +1,22 @@
 pkgbase = fpakman
 	pkgdesc = Free non-official GUI for Flatpak applications management.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/vinifmor/fpakman
 	arch = any
 	license = zlib/libpng
 	makedepends = git
 	makedepends = python-setuptools
-	depends = flatpak
 	depends = python
 	depends = python-pip
 	depends = python-pyqt5
 	depends = python-requests
 	depends = python-colorama
+	optdepends = flatpak
 	provides = fpakman
 	conflicts = fpakman-staging
-	source = https://github.com/vinifmor/fpakman/archive/0.3.0.tar.gz
-	sha512sums = 117b635e372f28ef24e03003d489fae7ddd6c5e92eccc5de52a577a7cc464b4b90974cfd74cbb286c2fa4747e2dac908168ce8ab7351ad4f188db626a1a19eeb
+	source = https://github.com/vinifmor/fpakman/archive/0.3.1.tar.gz
+	sha512sums = edbbd21c0a795dd6719a61955e7664bebce830c0190e963630096558b96ac2153ecdd974bb88de3a1fe02c3ff4493c0264c8828a14fb90beb65d9fb079857adf
 
 pkgname = fpakman
 
