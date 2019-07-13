@@ -1,0 +1,17 @@
+pkgbase = youtube-music-desktop
+	pkgdesc = YouTube Music web-app based on qtws
+	pkgver = 1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qtws-base
+	source = youtube-music.qtws
+	source = youtube-music.png
+	source = youtube-music.desktop
+	md5sums = a631b8125712a7ccd1b57e03c1d45b91
+	md5sums = 54dcc4edaf29caa9524c89b7de8862d7
+	md5sums = a7b093cc7607caef95dd78016a9930af
+
+pkgname = youtube-music-desktop
+

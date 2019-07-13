@@ -1,0 +1,23 @@
+{
+        "name": "Youtube Music",
+        "scope": ["music.youtube.com"],
+        "plugins": [],
+        "home": "http://music.youtube.com",
+        "icon": "/usr/share/pixmaps/youtube-music-desktop.png",
+        "saveSession": true,
+        "multimedia": true,
+        "menu": [
+            {
+                "title": "Home",
+                "action": "http://music.youtube.com"
+            },
+            {
+                "title": "Hotlist",
+                "action": "http://music.youtube.com/hotlist"
+            },
+            {
+                "title": "Library",
+                "action": "http://music.youtube.com/library/playlists"
+            }
+        ]
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=YouTube Music
+GenericName=YouTube Music
+Comment=YouTube Music Standalone Player
+Categories=Network;AudioVideo;Player;
+Exec=/usr/bin/qtws /usr/share/qtws-apps/youtube-music/youtube-music.qtws --disable-seccomp-filter-sandbox --register-pepper-plugins="/usr/lib/qt/plugins/ppapi/libwidevinecdmadapter.so; application/x-ppapi-widevine-cdm"
+Icon=/usr/share/pixmaps/youtube-music.png
+StartupNotify=true
+Terminal=false
+Type=Application
