@@ -1,6 +1,6 @@
 pkgbase = nordic-polar-theme-git
 	pkgdesc = A Gtk3.20+ theme created using the awesome Nord color palette.
-	pkgver = r29.0aca80b
+	pkgver = r34.3116438
 	pkgrel = 1
 	url = https://github.com/EliverLara/Nordic-Polar
 	arch = any
