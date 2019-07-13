@@ -1,7 +1,7 @@
 # Maintainer: Alejandro Valdes <alejandrovaldes@live.com>
 
 pkgname=plasma5-applets-window-appmenu
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Plasma 5 applet in order to show the window appmenu"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(GPL)
 depends=(plasma-workspace libxcb)
 makedepends=(extra-cmake-modules)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/psifidotos/applet-window-appmenu/archive/v$pkgver.tar.gz")
-sha256sums=('c4384b46cb4cf1e566e03e470fbb224909b2ad3f0df9e722cd40f864e9377a0e')
+sha256sums=('4af9f4e7ba32edf4d405a9890e42fe7039281cc4a7bc124d05cb4ab47ef4bcee')
 
 prepare() {
   mkdir -p build
