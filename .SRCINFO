@@ -1,7 +1,7 @@
 pkgbase = polybar-full
 	pkgdesc = A fast and easy-to-use status bar - Full module support
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/polybar/polybar
 	install = polybar.install
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = polybar-full
 	optdepends = ttf-unifont: Font used in example config
 	optdepends = siji-git: Font used in example config
 	optdepends = xorg-fonts-misc: Font used in example config
+	provides = polybar
 	conflicts = polybar
 	conflicts = polybar-git
 	source = https://github.com/polybar/polybar/releases/download/3.3.1/polybar-3.3.1.tar

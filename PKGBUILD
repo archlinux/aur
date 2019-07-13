@@ -4,16 +4,17 @@
 pkgname=polybar-full
 _pkgname=polybar
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and easy-to-use status bar - Full module support"
 arch=(x86_64)
 url="https://github.com/polybar/polybar"
 license=('MIT')
 depends=('alsa-lib' 'cairo' 'curl' 'i3-wm' 'jsoncpp' 'libmpdclient' 'libnl' 'pulseaudio' 'wireless_tools' 'xcb-util-cursor' 'xcb-util-image' 'xcb-util-wm' 'xcb-util-xrm')
+makedepends=('cmake' 'git' 'python' 'python2' 'pkg-config')
 optdepends=("ttf-unifont: Font used in example config"
             "siji-git: Font used in example config"
             "xorg-fonts-misc: Font used in example config")
-makedepends=('cmake' 'git' 'python' 'python2' 'pkg-config')
+provides=('polybar')
 conflicts=('polybar' 'polybar-git')
 install="${_pkgname}.install"
 source=("$url/releases/download/$pkgver/polybar-$pkgver.tar")
