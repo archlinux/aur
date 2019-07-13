@@ -1,0 +1,31 @@
+pkgbase = anydesk-rpi
+	pkgdesc = 'AnyDesk Free' is an All-In-One Software for Remote Support
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = https://anydesk.de
+	arch = armv7h
+	license = custom:Freeware
+	depends = fakeroot
+	depends = python-shiboken2
+	depends = gtkglext
+	depends = libglvnd
+	depends = gtk2
+	depends = libx11
+	depends = glibc
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = libxcb
+	depends = cairo
+	depends = pango
+	depends = libxi
+	depends = libxrandr
+	depends = libxtst
+	depends = libxext
+	depends = libxfixes
+	depends = libxdamage
+	depends = gcc-libs
+	optdepends = libpulse
+	conflicts = anydesk-test
+
+pkgname = anydesk-rpi
+
