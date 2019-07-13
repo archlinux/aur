@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Backup solution using restic/Backblaze B2 storage."
 arch=('any') 
 url="https://github.com/erikw/restic-systemd-automatic-backup"
-license=('GPL')
+license=('BSD' 'custom')
 depends=('systemd' 'restic')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/erikw/restic-systemd-automatic-backup.git")
@@ -22,4 +22,5 @@ pkgver() {
 package() {
   cd "$pkgname"
   make PREFIX="$pkgdir" DEST_SCRIPTS="$pkgdir/usr/sbin" DEST_SYSTEMD="$pkgdir/usr/lib/systemd/system" install 
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
