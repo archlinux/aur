@@ -3,8 +3,8 @@
 # Maintainer (bin-version): Marc Mettke <marc@itmettke.de>
 
 pkgname=firefox-kde-opensuse-bin
-pkgver=67.0.4
-_pkgrel=1
+pkgver=68.0
+_pkgrel=2
 pkgrel=${_pkgrel}
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('x86_64')
@@ -19,7 +19,12 @@ depends=('mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          # system harfbuzz
          'harfbuzz'
          # system graphite
-         'graphite')
+         'graphite'
+         # system webp
+         'libwebp'
+         # system libevent
+         'libevent'
+        )
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech')
 provides=("firefox=${pkgver}")
@@ -30,7 +35,7 @@ source=(https://repo.itmettke.de/firefox-kde-opensuse-${pkgver}-${_pkgrel}-x86_6
 noextract=(firefox-kde-opensuse-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz)
 validpgpkeys=(81E604C18BFD3FA9986E32D91E74416BECD445A4)
 sha256sums=(
-	'b08aa8dc0b24e645ec832a686350912def934eadda37e68ee44554d7364c66f8'
+	'b958691752ffeed5401134085c71860b6fdee554915084fe69d1fe7c5b577d4d'
 	'SKIP'
 )
 

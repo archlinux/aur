@@ -1,7 +1,7 @@
 pkgbase = firefox-kde-opensuse-bin
 	pkgdesc = Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE
-	pkgver = 67.0.4
-	pkgrel = 1
+	pkgver = 68.0
+	pkgrel = 2
 	url = https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox
 	arch = x86_64
 	license = MPL
@@ -28,19 +28,21 @@ pkgbase = firefox-kde-opensuse-bin
 	depends = aom
 	depends = harfbuzz
 	depends = graphite
+	depends = libwebp
+	depends = libevent
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = firefox=67.0.4
+	provides = firefox=68.0
 	conflicts = firefox
 	conflicts = firefox-kde-opensuse
-	noextract = firefox-kde-opensuse-67.0.4-1-x86_64.pkg.tar.xz
+	noextract = firefox-kde-opensuse-68.0-2-x86_64.pkg.tar.xz
 	options = !emptydirs
 	options = debug
 	options = strip
-	source = https://repo.itmettke.de/firefox-kde-opensuse-67.0.4-1-x86_64.pkg.tar.xz
-	source = https://repo.itmettke.de/firefox-kde-opensuse-67.0.4-1-x86_64.pkg.tar.xz.sig
+	source = https://repo.itmettke.de/firefox-kde-opensuse-68.0-2-x86_64.pkg.tar.xz
+	source = https://repo.itmettke.de/firefox-kde-opensuse-68.0-2-x86_64.pkg.tar.xz.sig
 	validpgpkeys = 81E604C18BFD3FA9986E32D91E74416BECD445A4
-	sha256sums = b08aa8dc0b24e645ec832a686350912def934eadda37e68ee44554d7364c66f8
+	sha256sums = b958691752ffeed5401134085c71860b6fdee554915084fe69d1fe7c5b577d4d
 	sha256sums = SKIP
 
 pkgname = firefox-kde-opensuse-bin
