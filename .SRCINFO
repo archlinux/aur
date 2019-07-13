@@ -1,0 +1,13 @@
+pkgbase = oras
+	pkgdesc = A command line tool that allows you to push and pull files from any OCI registry
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/deislabs/oras
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = oras-0.5.0.tar.gz::https://github.com/deislabs/oras/archive/v0.5.0.tar.gz
+	sha512sums = e87ac50027859fbc6e1ca12b14bb4add18d138609649e42bb71eb856e8b1686b692b4daaa37c0fddd210ebb2dcfd815c9c4474a007a3939c4af19174ef773335
+
+pkgname = oras
+
