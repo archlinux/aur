@@ -2,14 +2,14 @@
 
 pkgname=pdudaemon-git
 pkgver=r138.5ec803b
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemon for controlling PDUs (Power Distribution Units)'
 arch=(any)
 url="https://github.com/pdudaemon/pdudaemon"
 license=('GPL2')
 depends=('python' 'python-requests' 'python-pexpect'
          'python-systemd' 'python-paramiko' 'python-pyserial'
-         'python-hidapi')
+         'python-hidapi' 'python-pysnmp')
 makedepends=('python-setuptools')
 backup=('etc/pdudaemon.conf')
 source=('pdudaemon::git+https://github.com/pdudaemon/pdudaemon.git')
