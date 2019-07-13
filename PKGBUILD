@@ -5,7 +5,7 @@
 
 pkgname=lib32-vulkan-mesa-layer
 pkgver=19.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Vulkan overlay layer to display information about the application (32-bit)"
 arch=('x86_64')
 depends=('vulkan-mesa-layer') # Needed to provide the layer manifest JSON file
