@@ -22,22 +22,22 @@ pkgver() {
 }
 
 prepare() {
-	cd "$_pkgname"
-	mkdir -p build
+    cd "$_pkgname"
+    mkdir -p build
 }
 
 build() {
-	cd "$_pkgname/build"
-	cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DWITH_TESTS=1 -DCMAKE_BUILD_TYPE=Release
-	make -j$(getconf _NPROCESSORS_ONLN)
+    cd "$_pkgname/build"
+    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DWITH_TESTS=1 -DCMAKE_BUILD_TYPE=Release
+    make 
 }
 
 check() {
-	cd "$_pkgname/build"
-	make test
+    cd "$_pkgname/build"
+    make test
 }
 
 package() {
-	cd "$_pkgname/build"
-	make DESTDIR="$pkgdir" install
+    cd "$_pkgname/build"
+    make DESTDIR="$pkgdir" install
 }
