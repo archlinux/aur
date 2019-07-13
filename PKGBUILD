@@ -4,7 +4,7 @@
 pkgbase=python-nio
 _pypiname=matrix-nio
 pkgname=('python-nio' 'python2-nio')
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='python no-IO library for the matrix chat protocol'
 arch=('any')
@@ -13,7 +13,7 @@ license=('ISC')
 makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=()
 source=("https://github.com/poljar/matrix-nio/archive/$pkgver.tar.gz")
-sha512sums=('7a37eebb4896e93395d2e664c03c008b6f631d43264a0b3aa71b5466b40da10d57a65e040b9fb272bf20988ca9371365647a79e2266987151e012429509e4d9e')
+sha512sums=('11f55aae22c83cbfb9814f84472c78852ee1c4a272ae4dbd7106df724bfc025b5d21a2eaba903f146a967ef721c981b2c645d8afb389d98b18b16148ad7bf1b9')
 
 prepare() {
   cd "$srcdir"
