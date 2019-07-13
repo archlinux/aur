@@ -1,7 +1,7 @@
 pkgbase = darling-dmg-git
 	pkgdesc = FUSE module for .dmg files (containing an HFS+ filesystem)
-	pkgver = v1.0.4.r73.g97a92a6
-	pkgrel = 4
+	pkgver = v1.0.4.r75.g5f64bc9
+	pkgrel = 1
 	url = https://www.darlinghq.org
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = darling-dmg-git
 	depends = bzip2
 	depends = libxml2
 	depends = fuse2
-	provides = darling-dmg=v1.0.4.r73.g97a92a6
+	provides = darling-dmg=v1.0.4.r75.g5f64bc9
 	source = git+https://github.com/darlinghq/darling-dmg.git
 	md5sums = SKIP
 
