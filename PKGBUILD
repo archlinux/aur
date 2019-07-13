@@ -1,11 +1,12 @@
 # Maintainer: wicast <wicastchen at hotmail dot com>
 pkgname=picojson-git
-pkgver=v1.3.0.r14.g13d3c0d
+pkgver=v1.3.0.r51.g111c9be
 pkgrel=1
 pkgdesc="a header-file-only, JSON parser serializer in C++"
 arch=(any)
 url="https://github.com/kazuho/picojson"
 license=('BSD2')
+makedepends=(git)
 source=(${pkgname%-git}::git+https://github.com/kazuho/picojson.git)
 md5sums=(SKIP)
 
