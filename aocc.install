@@ -1,0 +1,8 @@
+post_install() {
+	echo "Add the following function to your .bashrc and use it to set up aocc."
+	echo ""
+	echo "# AMD Optimizing C/C++ Compiler"
+	echo "setenv_aocc() {"
+	echo -e "\tsource /opt/aocc/setenv_aocc.sh"
+	echo "}"
+}
