@@ -2,12 +2,12 @@
 # Contributer: N30N <archlinux@alunamation.com>
 pkgname=djv
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Movie playback and image processing software for the film and computer animation industries"
 url="http://djv.sourceforge.net/"
 license=('BSD')
 arch=('i686' 'x86_64')
-depends=("desktop-file-utils" "ffmpeg" "glew" "libjpeg" "libpng" "libquicktime" "libtiff" "openexr" "qt5-base" "qt5-svg")
+depends=("desktop-file-utils" "ffmpeg" "glew" "libjpeg" "libpng" "libquicktime" "libtiff" "openal" "openexr" "qt5-base" "qt5-svg")
 makedepends=("cmake" "glm" "picojson-git" "portaudio" "qt5-tools")
 source=("${pkgname}::git+https://github.com/darbyjohnston/DJV#tag=${pkgver}"
         "${pkgname}_view.desktop")
