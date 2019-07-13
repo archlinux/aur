@@ -1,2 +1,4 @@
 /update
 /htpdate-*.tar.xz
+/pkg/
+/src/
