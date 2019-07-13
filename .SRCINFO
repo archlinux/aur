@@ -1,5 +1,5 @@
 pkgbase = ktlint-git
-	pkgdesc = Generate PKGBUILD from pip packages
+	pkgdesc = An anti-bikeshedding Kotlin linter with built-in formatter
 	pkgver = 0.33.0.r44.g215056a
 	pkgrel = 1
 	url = https://github.com/pinterest/ktlint
