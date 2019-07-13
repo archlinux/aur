@@ -3,7 +3,7 @@
 
 pkgname=aocc-bin
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
 license=('custom')
@@ -13,16 +13,7 @@ options=('staticlibs' '!strip' 'libtool')
 install=aocc-bin.install
 sha256sums=("ba562e2d91b592d104278ccae2a7fd774a9894f3a30e849a30bcbe048790217e")
 
-setenv_aocc=$(cat <<EOF
-export PATH=/opt/aocc/bin:\$PATH
-export LIBRARY_PATH=/opt/aocc/lib:/opt/aocc/lib32:\$LIBRARY_PATH
-export LD_LIBRARY_PATH=/opt/aocc/lib:/opt/aocc/lib32:\$LD_LIBRARY_PATH
-export C_INCLUDE_PATH=\$C_INCLUDE_PATH:/opt/aocc/include
-export CPLUS_INCLUDE_PATH=\$CPLUS_INCLUDE_PATH:/opt/aocc/include
-export LIBRARY_PATH=/usr/lib32:/usr/lib:/usr/lib64:\$LIBRARY_PATH
-export LD_LIBRARY_PATH=/usr/lib32:/usr/lib:/usr/lib64:\$LD_LIBRARY_PATH
-EOF
-)
+
 
 package() {
 	mkdir -p ${pkgdir}/opt/aocc
@@ -31,5 +22,11 @@ package() {
 
 	rm ${pkgdir}/opt/aocc/install.sh
 
-	printf ${setenv_aocc} > ${pkgdir}/opt/aocc/setenv_aocc.sh
+	echo "export PATH=/opt/aocc/bin:\$PATH" > ${pkgdir}/opt/aocc/setenv_aocc.sh
+	echo "export LIBRARY_PATH=/opt/aocc/lib:/opt/aocc/lib32:\$LIBRARY_PATH" >> ${pkgdir}/opt/aocc/setenv_aocc.sh
+	echo "export LD_LIBRARY_PATH=/opt/aocc/lib:/opt/aocc/lib32:\$LD_LIBRARY_PATH" >> ${pkgdir}/opt/aocc/setenv_aocc.sh
+	echo "export C_INCLUDE_PATH=\$C_INCLUDE_PATH:/opt/aocc/include" >> ${pkgdir}/opt/aocc/setenv_aocc.sh
+	echo "export CPLUS_INCLUDE_PATH=\$CPLUS_INCLUDE_PATH:/opt/aocc/include" >> ${pkgdir}/opt/aocc/setenv_aocc.sh
+	echo "export LIBRARY_PATH=/usr/lib32:/usr/lib:/usr/lib64:\$LIBRARY_PATH" >> ${pkgdir}/opt/aocc/setenv_aocc.sh
+	echo "export LD_LIBRARY_PATH=/usr/lib32:/usr/lib:/usr/lib64:\$LD_LIBRARY_PATH" >> ${pkgdir}/opt/aocc/setenv_aocc.sh
 }
