@@ -1,6 +1,6 @@
 pkgbase = chatterino2-git
 	pkgdesc = Second installment of the Twitch chat client series "Chatterino", dev/git version
-	pkgver = r2031.fe69dfb5
+	pkgver = r2035.66620530
 	pkgrel = 1
 	url = https://chatterino.com
 	install = chatterino2-git.install
@@ -17,7 +17,7 @@ pkgbase = chatterino2-git
 	optdepends = gst-plugins-good: For audio output
 	provides = chatterino
 	conflicts = chatterino
-	source = git://github.com/Chatterino/chatterino2#branch=nightly
+	source = git://github.com/Chatterino/chatterino2
 	md5sums = SKIP
 
 pkgname = chatterino2-git

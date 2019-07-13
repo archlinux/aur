@@ -1,6 +1,6 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
-pkgver=r2031.fe69dfb5
+pkgver=r2035.66620530
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('streamlink: For piping streams to video players'
 provides=('chatterino')
 conflicts=('chatterino')
 install=$pkgname.install
-source=("git://github.com/Chatterino/chatterino2#branch=nightly")
+source=("git://github.com/Chatterino/chatterino2")
 md5sums=('SKIP')
 
 pkgver() {
