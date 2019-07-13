@@ -1,6 +1,6 @@
 # Maintainer: Noel Kuntze <noel@familie-kuntze.de>
 pkgname=docker-makepkg
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="A script and docker image to build packages in a clean container"
 arch=(any)
@@ -20,7 +20,7 @@ package() {
 	cd "$pkgdir"
 	mkdir -p "$pkgdir/opt/docker-makepkg/bin" "$pkgdir/usr/lib/systemd/system" "$pkgdir/etc/profile.d"
 	cp "$srcdir/$pkgname-$pkgver"/docker-makepkg-path.sh "$pkgdir/etc/profile.d/"
-	cp "$srcdir/$pkgname-$pkgver"/{Dockerfile,containerBuilder.py,run.py,sudoers} "$pkgdir/opt/docker-makepkg"
+	cp "$srcdir/$pkgname-$pkgver"/{Dockerfile,containerBuilder.py,run.py,sudoers,gnupg.conf} "$pkgdir/opt/docker-makepkg"
 	cp "$srcdir/$pkgname-$pkgver"/bin/dmakepkg.py "$pkgdir/opt/docker-makepkg/bin/"
 	cp "$srcdir/$pkgname-$pkgver"/docker-makepkg.{service,timer} "$pkgdir/usr/lib/systemd/system/"
 }
