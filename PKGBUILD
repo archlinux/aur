@@ -1,56 +1,50 @@
-# Maintainer: Shalygin Konstantin <k0ste@k0ste.ru>
-# Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
+# Maintainer: Juergen Werner <juergen at opensourcerouting dot org>
+# Contributor: Shalygin Konstantin <k0ste at k0ste dot ru>
 
-pkgname='frr'
-pkgver='7.0.1'
-pkgrel='1'
+pkgname='frr-git'
+pkgver=7.2.dev.r16578
+pkgrel=1
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
-arch=('any')
+arch=('x86_64')
 url="https://frrouting.org/"
 license=('GPL2')
-depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'pam' 'json-c' 'net-snmp'
-	 'rtrlib' 'libyang' 'libunwind')
+depends=('pam' 'json-c' 'net-snmp' 'rtrlib' 'libyang>=0.16.105' 'libunwind'  'python' 'c-ares')
 makedepends=('net-snmp' 'bison' 'c-ares' 'perl-xml-libxml' 'python-sphinx')
-checkdepends=('python-pytest')
 optdepends=('rsyslog: syslog support')
-conflicts=('quagga' 'babeld' 'quagga_cumulus')
-provides=('quagga' 'quagga_cumulus')
-backup=("etc/${pkgname}/${pkgname}.conf"
-	"etc/${pkgname}/daemons.conf"
-	"etc/${pkgname}/vtysh.conf")
-source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}.sysusers"
-        "${pkgname}.tmpfiles"
-        "${pkgname}_6.0_systemd_arch.patch"
-        "${pkgname}_7.0_Archlinux.patch")
-sha256sums=('5b74fc2c730e9973eab03546415f8dd7b36fa00fbf0bc856458266773dd5ae6d'
-            '9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e'
-            '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89'
-            '9d98a0b5d7016cb66fe3cbec234f70327f0a961de47f7eae39a5bd4477b072ce'
-            '93b2cb90ca438841db38d582708e12d4bed77f498e1a494057a804b31bdc323a')
+conflicts=('quagga' 'babeld' 'quagga_cumulus' 'frr')
+provides=('quagga' 'quagga_cumulus' 'frr')
+backup=("etc/frr/frr.conf"
+        "etc/frr/daemons"
+        "etc/frr/vtysh.conf")
+source=("git+https://github.com/FRRouting/frr.git"
+        "frr.sysusers"
+        "frr.tmpfiles")
+sha256sums=('SKIP'
+            'e656acefc2c318a94c2d3011ecef2bed75d70852f1e642a3a1d331d860c8735b'
+            '1104bf8eaab31e0228724bee7cab1315fd0782b245205ba7fb3a6cf0c0f82199')
+
+pkgver() {
+  cd frr
+  source config.version
+  echo "${DIST_PACKAGE_VERSION}.r$(git rev-list --count HEAD)" | sed 's/-/./g'
+}
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
-
-  # https://github.com/FRRouting/frr/issues/1422
-  patch -p1 -i "${srcdir}/${pkgname}_6.0_systemd_arch.patch"
-
-  # https://github.com/FRRouting/frr/issues/4167
-  patch -p1 -i "${srcdir}/${pkgname}_7.0_Archlinux.patch"
+  cd "${srcdir}/frr"
 
   autoreconf -fvi
   ./configure \
     --prefix="/usr" \
     --sbindir="/usr/bin" \
-    --sysconfdir="/etc/${pkgname}" \
-    --localstatedir="/run/${pkgname}" \
-    --enable-exampledir="/usr/share/doc/${pkgname}/examples" \
+    --sysconfdir="/etc/frr" \
+    --localstatedir="/var/run/frr" \
+    --enable-exampledir="/usr/share/doc/frr/examples" \
     --with-libpam \
     --enable-snmp="agentx" \
     --enable-multipath=256 \
-    --enable-user="${pkgname}" \
-    --enable-group="${pkgname}" \
-    --enable-vty-group="${pkgname}vty" \
+    --enable-user="frr" \
+    --enable-group="frr" \
+    --enable-vty-group="frrvty" \
     --enable-configfile-mask="0640" \
     --enable-logfile-mask="0640" \
     --enable-shell-access \
@@ -60,37 +54,32 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
-  make
+  cd "${srcdir}/frr"
+  make -j5
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  cd "${srcdir}/frr"
   make DESTDIR="${pkgdir}" install
 
   pushd "redhat"
-  sed -ri 's|/var/run/frr|/run/frr|g' "${pkgname}.logrotate"
-  install -Dm0644 "${pkgname}.logrotate" "${pkgdir}/etc/logrotate.d/${pkgname}"
-  for d in babeld bgpd bfdd eigrpd isisd ldpd nhrpd ospf6d ospfd ospfd-instance@ pbrd pimd ripd ripngd staticd zebra; do
-    install -Dm0644 ${d}.service "${pkgdir}/usr/lib/systemd/system/${d}.service"
-  done
-  install -Dm0644 "${pkgname}.pam" "${pkgdir}/etc/pam.d/${pkgname}"
-  install -Dm0644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-  install -Dm0644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm0644 "frr.logrotate" "${pkgdir}/etc/logrotate.d/frr"
+  install -Dm0644 "frr.pam" "${pkgdir}/etc/pam.d/frr"
   popd
 
+  install -Dm0644 "${srcdir}/frr.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/frr.conf"
+  install -Dm0644 "${srcdir}/frr.sysusers" "${pkgdir}/usr/lib/sysusers.d/frr.conf"
+
   pushd "tools"
-  sed -ri 's|/usr/lib/frr/|/usr/bin/|g' "${pkgname}.service"
-  install -Dm0644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  sed -ri 's|/usr/lib/frr/|/usr/bin/|g' "frr.service"
+  install -Dm0644 "frr.service" "${pkgdir}/usr/lib/systemd/system/frr.service"
   popd
 
   pushd "tools/etc"
-  install -Dm0644 "${pkgname}/daemons" "${pkgdir}/etc/${pkgname}/daemons.conf"
-  install -Dm0644 "iproute2/rt_protos.d/${pkgname}.conf" "${pkgdir}/etc/iproute2/rt_protos.d/${pkgname}.conf"
-  install -Dm0644 "${pkgname}/${pkgname}.conf" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
-  install -Dm0644 "${pkgname}/vtysh.conf" "${pkgdir}/etc/${pkgname}/vtysh.conf"
-  install -Dm0644 "rsyslog.d/45-${pkgname}.conf" "${pkgdir}/etc/rsyslog.d/45-${pkgname}.conf"
+  install -Dm0644 "frr/daemons" "${pkgdir}/etc/frr/daemons"
+  install -Dm0644 "frr/frr.conf" "${pkgdir}/etc/frr/frr.conf"
+  install -Dm0644 "frr/vtysh.conf" "${pkgdir}/etc/frr/vtysh.conf"
+  install -Dm0644 "iproute2/rt_protos.d/frr.conf" "${pkgdir}/etc/iproute2/rt_protos.d/frr.conf"
+  install -Dm0644 "rsyslog.d/45-frr.conf" "${pkgdir}/etc/rsyslog.d/45-frr.conf"
   popd
-
-  chown -R 177:177 "${pkgdir}/etc/frr"
 }
