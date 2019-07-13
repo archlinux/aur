@@ -1,0 +1,12 @@
+pkgbase = adobe-source-han-mono-classic-fonts
+	pkgdesc = Adobe Source Han Mono - Classic Style Chinese Character
+	pkgver = 1.002
+	pkgrel = 4
+	url = https://github.com/adobe-fonts/source-han-mono
+	arch = any
+	license = OFL
+	source = git+https://github.com/redchenjs/source-han-mono-classic.git
+	md5sums = SKIP
+
+pkgname = adobe-source-han-mono-classic-fonts
+
