@@ -20,7 +20,7 @@ pkgbase = odysseus
 	optdepends = archlinux-appstream-data: compatible app recommendations for hyperlinks
 	optdepends = html-xml-utils: webfeed autodiscovery
 	source = https://github.com/alcinnz/Odysseus/archive/1.5.18.tar.gz
-	md5sums = 939f5f1811359a00146a6e0c7105f547
+	md5sums = 2b52fa472015433c5d14f9baded5382a
 
 pkgname = odysseus
 
