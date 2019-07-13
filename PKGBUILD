@@ -1,7 +1,7 @@
 pkgname=openra-ss-git
 _pkgname=openra-ss
-pkgver=77.git.23e1f3e
-pkgrel=2
+pkgver=226.git.0fd3e86
+pkgrel=1
 pkgdesc="A Sole Survivor-inspired mod of OpenRA, warning you will need the original game assets to play this game"
 arch=('any')
 url="https://www.openra.net"
@@ -46,7 +46,7 @@ package() {
     cd $srcdir/sole-survivor
     mkdir -p $pkgdir/usr/{lib/openra-ss/mods,bin,share/pixmaps,share/doc/packages/openra-ss,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-ss
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,Eluant.dll*,FuzzyLogicLibrary.dll,GeoLite2-Country.mmdb.gz,'global mix database.dat',ICSharpCode.SharpZipLib.dll,launch-dedicated.sh,launch-game.sh,MaxMind.Db.dll,OpenAL-CS.dll,OpenAL-CS.dll.config,Open.Nat.dll,OpenRA.Game.exe,OpenRA.Platforms.Default.dll,OpenRA.Server.exe,OpenRA.Utility.exe,rix0rrr.BeaconLib.dll,SDL2-CS.dll,SDL2-CS.dll.config,SharpFont.dll,SharpFont.dll.config,VERSION} $pkgdir/usr/lib/openra-ss
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,OpenRA.Game.exe,OpenRA.Server.exe,OpenRA.Utility.exe,VERSION} $pkgdir/usr/lib/openra-ss
     cp -r mods/ss $pkgdir/usr/lib/openra-ss/mods
     cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/openra-ss/mods
     install -Dm775 $srcdir/openra-ss $pkgdir/usr/bin/openra-ss
