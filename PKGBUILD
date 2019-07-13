@@ -26,7 +26,7 @@ optdepends=(
     'html-xml-utils: webfeed autodiscovery'
 )
 source=(https://github.com/alcinnz/Odysseus/archive/$pkgver.tar.gz)
-md5sums=(939f5f1811359a00146a6e0c7105f547) #autofill using updpkgsums
+md5sums=(2b52fa472015433c5d14f9baded5382a) #autofill using updpkgsums
 
 build() {
   cd "Odysseus-$pkgver"
