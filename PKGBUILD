@@ -23,18 +23,20 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.1.15-arch1
+_srcver=5.2-arch2
 pkgver=${_srcver%-*}
 pkgrel=1
-_bmqversion=096
+_bmqversion=097
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
+makedepends=(
+  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
+  graphviz imagemagick
+)
 options=('!strip')
 _srcname=linux-$_srcver
-_bmq_patch="v5.1_bmq${_bmqversion}.patch"
-_uksm_patch="uksm-5.1-initial-submission.patch"
+_bmq_patch="v5.2_bmq${_bmqversion}.patch"
 _gcc_more_v='20180509'
 source=(
   "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srcver.tar.gz"
@@ -42,28 +44,20 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  "0001_$_bmq_patch::https://gitlab.com/alfredchen/bmq/raw/master/5.1/${_bmq_patch}"
-  "0002_5.1_bmq096_debug::https://gitlab.com/alfredchen/bmq/raw/master/5.1/5.1_bmq096_debug.patch"
-  "0003_fix_ffs_usage::https://gitlab.com/alfredchen/linux-bmq/commit/3606d92b4e7dd913f485fb3b5ed6c641dcdeb838.patch"
-  "0004_$_uksm_patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.1/uksm-pf/0001-uksm-5.1-initial-submission.patch"
-  "0005_uksm_5.1.fix.patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.1/uksm-pf-fix/0001-uksm-5.1-apply-52d1e606ee733.patch"
-  "0006_enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  "0001_$_bmq_patch::https://gitlab.com/alfredchen/bmq/raw/master/5.2/${_bmq_patch}"
+  "0002_enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('52c108d6ee37a74ff92ed539458a3a3e198cde9ccbcd172c1eb8a6916a0f2561'
-            '6365799a29327e2b4a1730d0cb3bd211768fb98ccf93d6e6f68ba56f0d1c7aff'
+sha256sums=('b53510225e57a0a4cee77724b37b5eaa57693a1e7a3a2c17c97c8c9161340f5a'
+            '4a0d2d53d73fb072d415a1c2684d341eab5e9b89293f9e772f8ae1067bf91369'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '48be5e7f27d4a0570bd31f37ed1ad35241ff7f427dae5513cab875c7b44aeb08'
-            '17dac9dd145fc437f7f7269d4394d645a8335576daa545b237891db8bd24cd97'
-            '280a7772f894ba93e37f80ff55f1548d7546a11bdee0e53af19f2bb1f7038d6f'
-            '088c5d7fb0ccfcecb7553358c6dea46395b410368dffae3b87a66ed0779e7623'
-            '06d5ea7472c2af577ec1ab756dccead814609f5989f8eabe3cfa1181d5c07923'
+            '6db6f72076c91586ae848d10d08aca14037ebe557a5853d8769bad26e826c440'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d')
 
 _kernelname=${pkgbase#linux}
