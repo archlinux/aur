@@ -254,10 +254,10 @@ build() {
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 
     echo "Running make."
-    make -j$(getconf _NPROCESSORS_ONLN)
+    make
 
     echo "Run 'make lkm'..."
-    make lkm -j$(getconf _NPROCESSORS_ONLN)
+    make lkm
 }
 
 package_darling() {
