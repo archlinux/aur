@@ -1,0 +1,17 @@
+pkgbase = scoredate
+	pkgdesc = Software to learn music reading and ear training
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://scoredate.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = convmv
+	makedepends = gendesk
+	depends = java-runtime
+	source = https://sourceforge.net/projects/scoredate/files/latest/download
+	source = scoredate.png
+	md5sums = ede639b1a790b29f5f0bcb7425a194f8
+	md5sums = b6bd72ec7253f68fbdffe759441371fc
+
+pkgname = scoredate
+
