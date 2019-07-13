@@ -6,14 +6,14 @@
 
 pkgname=viber
 pkgver=10.3.0.37
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary cross-platform IM and VoIP software"
 arch=('x86_64')
 url="http://viber.com"
 license=('custom')
 depends=('libxss' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'libxss' 
 	'openssl' 'libpulse' 'alsa-lib' 'nss' 'libxcomposite' 'libxcursor' 'libxdamage' 'libcurl-compat' 
-	'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-libav' 'libxslt')
+	'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-libav' 'libxslt' 'openssl-1.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::http://download.cdn.viber.com/cdn/desktop/Linux/${pkgname}.deb"
         "eula.html"
