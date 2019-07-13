@@ -1,16 +1,13 @@
 pkgbase = adobe-source-han-classic-fonts
-	pkgdesc = Adobe Source Han Fonts with Classic Style Chinese Character
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgdesc = Adobe Source Han Fonts - Classic Style Chinese Character
+	pkgver = 2.001
+	pkgrel = 1
 	url = https://github.com/adobe-fonts/
 	arch = any
 	license = OFL
-	source = git+https://github.com/redchenjs/source-han-serif-classic.git
-	source = git+https://github.com/redchenjs/source-han-sans-classic.git
-	source = git+https://github.com/redchenjs/source-han-mono-classic.git
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	depends = adobe-source-han-serif-classic-fonts
+	depends = adobe-source-han-sans-classic-fonts
+	depends = adobe-source-han-mono-classic-fonts
 
 pkgname = adobe-source-han-classic-fonts
 
