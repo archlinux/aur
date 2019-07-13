@@ -3,7 +3,7 @@
 
 pkgname=warsaw-bin
 pkgver=1.13.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(i686 x86_64)
 url="https://www.dieboldnixdorf.com.br/warsaw"
@@ -14,13 +14,16 @@ options=('!strip')
 install=${pkgname}.install
 conflicts=('warsaw')
 provides=('warsaw')
+source=('fix.patch')
 source_i686=(https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_32.deb)
 source_x86_64=(https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_64.deb)
+sha256sums=('cf2389806c92ac87d7775522d6dbc7de63a52f780dbe2b8e40a6e248709414a5')
 sha256sums_i686=('a6f6ec95ccd023aef66f8a80c8695bfe8713a68435b3e277b9e5a6b3b0c818af')
 sha256sums_x86_64=('6b99554976c12f6290c4eef97895e36bc980011703ddfbade5ff8cf825d25e58')
 
 prepare() {
     tar -xJf data.tar.xz
+    patch -p1 -i ./fix.patch
 }
 
 package() {
