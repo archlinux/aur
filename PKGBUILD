@@ -2,7 +2,7 @@
 
 pkgname=pdudaemon-git
 pkgver=r138.5ec803b
-pkgrel=5
+pkgrel=6
 pkgdesc='Daemon for controlling PDUs (Power Distribution Units)'
 arch=(any)
 url="https://github.com/pdudaemon/pdudaemon"
@@ -30,7 +30,7 @@ package() {
 
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-  install -D -m644 "pduclient" "${pkgdir}/usr/bin/pduclient"
+  install -D -m755 "pduclient" "${pkgdir}/usr/bin/pduclient"
   install -D -m644 "share/pdudaemon.conf" "${pkgdir}/etc/pdudaemon/pdudaemon.conf"
   install -D -m644 "share/pdudaemon.service" "${pkgdir}/usr/lib/systemd/system/pdudaemon.service"
 }
