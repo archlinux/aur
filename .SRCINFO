@@ -1,7 +1,7 @@
 pkgbase = crashplan-pro
 	pkgdesc = An business online/offsite backup solution
 	pkgver = 7.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.crashplan.com/business
 	install = crashplan-pro.install
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = crashplan-pro
 	depends = gtk3
 	depends = libxss
 	conflicts = crashplan
-	source = https://www.crashplanpro.com/client/installers/CrashPlanSmb_7.0.0_1525200006700_581_Linux.tgz
+	source = https://www.crashplanpro.com/client/installers/CrashPlanSmb_7.0.0_1525200006700_585_Linux.tgz
 	source = crashplan-pro
 	source = crashplan-pro.service
-	sha256sums = 5fd8166f3cf7242f8ede9fe225e9fcea1817068069f6ebbdcce64de373d4a17c
+	sha256sums = 607ee38ef838ef7af142a139612700fabfa5152f41321dbabeebb36c119434c2
 	sha256sums = b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6
 	sha256sums = fd4c80dbd2ea3dcfc9966832a599f1bb310f705f813474d1900c1867ea55155c
 
