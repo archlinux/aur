@@ -1,0 +1,14 @@
+pkgbase = python-trytond_analytic_purchase
+	pkgdesc = Tryton module to add analytic accounting on purchase
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_analytic_purchase/trytond_analytic_purchase-5.2.0.tar.gz
+	sha256sums = 43670d355c0dcc71d134c5907f175387e2164f4e366ae0c75a966897ba97cfe8
+
+pkgname = python-trytond_analytic_purchase
+
