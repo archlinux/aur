@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_es
+	pkgdesc = Tryton with Spanish chart of accounts
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_es/trytond_account_es-5.2.0.tar.gz
+	sha256sums = a74942f6f4aeae58b3c64acafedee939e61812bc8bc477f1e8b2d428e831e42c
+
+pkgname = python-trytond_account_es
+
