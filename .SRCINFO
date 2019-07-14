@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_payment_stripe
+	pkgdesc = Tryton module for Stripe payment
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_payment_stripe/trytond_account_payment_stripe-5.2.0.tar.gz
+	sha256sums = 316b4ff3e04823b3a5c24418a0e05833bf1bb1b2bbdb1c77dfd8670408efb31a
+
+pkgname = python-trytond_account_payment_stripe
+
