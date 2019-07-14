@@ -1,0 +1,2 @@
+d /var/lib/dogecoin 0770 dogecoin dogecoin - -
+d /etc/dogecoin     0770 dogecoin dogecoin - -

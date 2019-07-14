@@ -1,42 +1,78 @@
 # Maintainer: Dylan <dylan@psilly.com>
 
-pkg_base=dogecoin
-pkgname=('dogecoin-daemon')
-pkgver=1.10.0
-pkgrel=5
-arch=('i686' 'x86_64')
-url='http://dogecoin.com/'
-makedepends=('boost' 'automoc4' 'protobuf' 'libevent' 'openssl-1.0')
-conflicts=('dogecoin-qt')
+pkgbase=dogecoin
+pkgname=('dogecoin-daemon' 'dogecoin-cli' 'dogecoin-tx')
+pkgver=1.14.0
+pkgrel=1
+arch=('x86_64')
+url='https://dogecoin.com/'
+makedepends=('boost' 'libevent' 'protobuf' 'zeromq')
 license=('MIT')
-source=(
-  https://github.com/$pkg_base/$pkg_base/archive/v$pkgver.tar.gz
-)
-sha256sums=(
-  'e392f4142819fdab313ba921af53fdbd2cf6ee8965d237d0cb5cda8a52c97084'
-)
-install=$pkgname.install
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgbase/$pkgbase/archive/v$pkgver.tar.gz"
+        "dogecoin.sysusers"
+        "dogecoin.tmpfiles")
+sha256sums=('e5fc22472f209a7bbafbfb462404682eabfa495a19d97bb46fdc4619be7a78a9'
+            'eae13ea082a6431bb9552b5bddd8d1a5100ba883540c1e520685272d4307ca7f'
+            '0fc1bf30a981dca11f7fa7cb81c87bbc5342c3dbcd63b9ef6e0bff766c78eb31')
+validpgpkeys=('1DDC450B45DB5ADCCF5DDA7F8E4217C6D47D946D')
+
+prepare() {
+  cd "$pkgbase-$pkgver"
+  autoreconf -fi
+}
 
 build() {
-  cd $srcdir/$pkg_base-$pkgver
-  ./autogen.sh
-  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
-  CFLAGS+=" -I/usr/include/openssl-1.0" \
-  LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl" \
-  ./configure --enable-cxx --prefix=/usr --with-gui=no --disable-tests --without-miniupnpc --with-incompatible-bdb --with-openssl \
-  SSL_CFLAGS="$(pkg-config --cflags openssl)" SSL_LIBS="$(pkg-config --libs openssl)" CRYPTO_CFLAGS="$(pkg-config --cflags openssl)" CRYPTO_LIBS="$(pkg-config --libs openssl)"
+  cd $pkgbase-$pkgver
+  ./configure --prefix=/usr --with-gui=no --with-incompatible-bdb --without-miniupnpc
   make
 }
 
 package_dogecoin-daemon() {
-  pkgdesc='Dogecoin is a peer-to-peer network based digital currency - daemon'
-  depends=('boost-libs' 'openssl-1.0')
-  cd $srcdir/$pkg_base-$pkgver
-  install -Dm755 src/$pkg_base'd' $pkgdir/usr/bin/$pkg_base'd'
-  install -Dm755 src/$pkg_base'-cli' $pkgdir/usr/bin/$pkg_base'-cli'
-  install -Dm644 contrib/debian/examples/$pkg_base.conf $pkgdir/usr/share/doc/$pkgname/examples/$pkg_base.conf
-  install -Dm644 contrib/debian/manpages/$pkg_base'd.1' $pkgdir/usr/share/man/man1/$pkg_base'd.1'
-  install -Dm644 contrib/debian/manpages/$pkg_base.conf.5 $pkgdir/usr/share/man/man5/$pkg_base.conf.5
-  install -Dm644 COPYING '$pkgdir/usr/share/licenses/$pkgname/COPYING'
+  pkgdesc="Dogecoin is a peer-to-peer network based digital currency - daemon"
+  depends=(boost-libs libevent zeromq)
+
+  cd $pkgbase-$pkgver
+  install -Dm755 src/dogecoind "$pkgdir"/usr/bin/dogecoind
+  install -Dm644 contrib/dogecoind.bash-completion \
+    "$pkgdir"/usr/share/bash-completion/completions/dogecoind
+  install -Dm644 doc/man/dogecoind.1 \
+    "$pkgdir"/usr/share/man/man1/dogecoind.1
+  install -Dm644 contrib/init/dogecoind.service \
+    "$pkgdir/usr/lib/systemd/system/dogecoind.service"
+  install -Dm644 "$srcdir/dogecoin.sysusers" \
+    "$pkgdir/usr/lib/sysusers.d/dogecoin.conf"
+  install -Dm644 "$srcdir/dogecoin.tmpfiles" \
+    "$pkgdir/usr/lib/tmpfiles.d/dogecoin.conf"
+
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
+package_dogecoin-cli() {
+  pkgdesc="Dogecoin is a peer-to-peer network based digital currency - RPC client"
+  depends=(boost-libs libevent)
+
+  cd $pkgbase-$pkgver
+  install -Dm755 src/dogecoin-cli "$pkgdir"/usr/bin/dogecoin-cli
+  install -Dm644 contrib/dogecoin-cli.bash-completion \
+    "$pkgdir"/usr/share/bash-completion/completions/dogecoin-cli
+  install -Dm644 doc/man/dogecoin-cli.1 \
+    "$pkgdir"/usr/share/man/man1/dogecoin-cli.1
+
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+
+package_dogecoin-tx() {
+  pkgdesc="Dogecoin is a peer-to-peer network based digital currency - Transaction tool"
+  depends=(boost-libs openssl)
+
+  cd $pkgbase-$pkgver
+  install -Dm755 src/dogecoin-tx "$pkgdir"/usr/bin/dogecoin-tx
+  install -Dm644 contrib/dogecoin-tx.bash-completion \
+    "$pkgdir"/usr/share/bash-completion/completions/dogecoin-tx
+  install -Dm644 doc/man/dogecoin-tx.1 \
+    "$pkgdir"/usr/share/man/man1/dogecoin-tx.1
+
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+
+# vim:set ts=2 sw=2 et:
