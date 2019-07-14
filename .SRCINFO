@@ -1,0 +1,14 @@
+pkgbase = python-trytond_tasks
+	pkgdesc = Run task for trytond
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_tasks/trytond_tasks-0.0.4.tar.gz
+	sha256sums = b9f8876e16c4013509efb759afd93d3f2ac50e24fc25aef15e872664b9f65967
+
+pkgname = python-trytond_tasks
+
