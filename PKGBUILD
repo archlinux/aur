@@ -3,13 +3,14 @@
 pkgname=scoredate
 pkgver=3.2
 _jarname=scoredate.jar
-pkgrel=1
+pkgrel=2
 pkgdesc="Software to learn music reading and ear training"
 arch=('any')
 url="http://scoredate.sourceforge.net/"
 license=('GPL')
 depends=('java-runtime')
 makedepends=('convmv' 'gendesk')
+install='scoredate.install'
 source=("https://sourceforge.net/projects/scoredate/files/latest/download"
         "scoredate.png")
 
@@ -32,6 +33,8 @@ package() {
   install -Dm644 "${srcdir}/scoredate.png" "$pkgdir/usr/share/pixmaps/scoredate.png"
 
   install -d "${pkgdir}"/usr/bin
+  chgrp games "${pkgdir}/usr/share/java/scoredate"
+  chmod g+rwx "${pkgdir}/usr/share/java/scoredate"
   cat <<"EOF" >"${pkgdir}"/usr/bin/scoredate
 #!/bin/sh
 cd /usr/share/java/scoredate

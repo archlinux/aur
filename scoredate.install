@@ -1,0 +1,4 @@
+post_install() {
+  echo "Add user to group games to be able to save settings and statistics. Please note that this application is not multi user friendly."
+}
+

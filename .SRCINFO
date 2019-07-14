@@ -1,8 +1,9 @@
 pkgbase = scoredate
 	pkgdesc = Software to learn music reading and ear training
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://scoredate.sourceforge.net/
+	install = scoredate.install
 	arch = any
 	license = GPL
 	makedepends = convmv
