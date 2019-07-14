@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _name=tensorboardX
 pkgname=python-tensorboardx
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="Tensorboard for PyTorch"
 arch=('any')
