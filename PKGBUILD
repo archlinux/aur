@@ -1,19 +1,19 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
 pkgname=ygopro-koishipro
-pkgver=2019.6.29
+pkgver=2019.7.14
 pkgrel=1
 _pkgrel=1
-name="Saigetsu"
+name="Hanabi"
 zipFile="KoishiPro-linux-full-$name.zip"
 pkgdesc="Link compatable ygopro client with AI"
 arch=('x86_64')
 url='https://github.com/purerosefallen/ygopro'
 license=('GPL2')
 depends=('mono' 'libevent')
-makedepends=('patchelf')
+makedepends=('patchelf' 'unzip')
 source=("$url/releases/download/$name/$zipFile")
 noextract=($zipFile)
-sha256sums=('f0a848683c29d4240399e4ebd8d712d7852a2d6824079820e983243808cd2d44')
+sha256sums=('742481a1f3cb52e242f19b251f0d1660467a44e1619e326e50b06d44d4aaa2e7')
 options=('!strip' 'emptydirs')
 
 prepare(){
@@ -37,5 +37,6 @@ package(){
     cp -dR $pkgname/* $outputDir
 	find $outputDir -type d -exec chmod 777 {} \;
 	find $outputDir -type f -exec chmod 777 {} \;
-    rm $outputDir/deck/*
+    # uncomment to get rid of the default decks if wanted
+    #rm $outputDir/deck/*
 }
