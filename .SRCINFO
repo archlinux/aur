@@ -1,0 +1,20 @@
+pkgbase = netplan
+	pkgdesc = The network configuration abstraction renderer
+	pkgver = 0.97
+	pkgrel = 1
+	url = https://netplan.io
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python
+	makedepends = pkgconf
+	makedepends = pandoc
+	depends = glib2
+	depends = python-yaml
+	depends = python-netifaces
+	depends = iproute2
+	source = https://github.com/CanonicalLtd/netplan/archive/0.97.tar.gz
+	sha256sums = 2f63695d46fc61a094935fd74fb319b4b48942a6c87fb9885e29be3ca0f3b9ee
+
+pkgname = netplan
+
