@@ -1,6 +1,6 @@
 pkgbase = inspircd
 	pkgdesc = A modular C++ IRC daemon (ircd).
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = http://www.inspircd.org/
 	install = inspircd.install
@@ -25,9 +25,9 @@ pkgbase = inspircd
 	optdepends = geoip: m_geoip
 	provides = inspircd
 	conflicts = inspircd
-	source = https://github.com/inspircd/inspircd/archive/v3.1.0.tar.gz
+	source = https://github.com/inspircd/inspircd/archive/v3.2.0.tar.gz
 	source = inspircd.service
-	sha512sums = 77e5602115d612be6bb1dc0123f5fde2e6ff0547376de04cd5c24de9376797654bbd62a01d058b6f27858bd338ae9126cdd0dcd8571ba0c33afc1f3e166e000c
+	sha512sums = 8792614785d7f0415a38d49cc1786204d838917df54792ee6755b9ad8fd895020539364fdfc6daae60a911b8f39af1326e172ac40335b700241ca832410a4498
 	sha512sums = 5a16a7c237693ffc6a108358f339b6aa2451fb16430561848ae869f890199b38fab6a13640bcc35cf1d07e32d7e5fff405d88668ee05ddaffc2ef61cb42ee832
 
 pkgname = inspircd
