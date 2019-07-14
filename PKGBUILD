@@ -1,39 +1,28 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
-_srcname='chromaprint'
 pkgname=chromaprint-fftw
 pkgver=1.4.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Extracts fingerprints from any audio source (uses fftw for FFT calculations instead of ffmpeg)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://acoustid.org/chromaprint'
-license=('MIT')
+license=('GPL')
 makedepends=('cmake' 'gtest')
 depends=('fftw')
 provides=('chromaprint')
 conflicts=('chromaprint')
-source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/acoustid/chromaprint/archive/v${pkgver}.tar.gz")
+source=("chromaprint-${pkgver}.tar.gz"::"https://github.com/acoustid/chromaprint/archive/v${pkgver}.tar.gz")
 sha256sums=('d4ae6596283aad7a015a5b0445012054c634a4b9329ecb23000cd354b40a283b')
 
-prepare() {
-    cd "${_srcname}-${pkgver}"
-    
-    sed -n '18,36p' LICENSE.md > LICENSE
-}
-
 build() {
-    cd "${_srcname}-${pkgver}"
+    cd "chromaprint-${pkgver}"
     
     cmake \
-        -DBIN_INSTALL_DIR:PATH='/usr/bin' \
-        -DBUILD_SHARED_LIBS:BOOL='ON' \
         -DBUILD_TESTS:BOOL='ON' \
         -DBUILD_TOOLS:BOOL='OFF' \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DEXEC_INSTALL_PREFIX:PATH='/usr' \
         -DFFT_LIB:STRING='fftw3' \
-        -DINCLUDE_INSTALL_DIR:PATH='/usr/include' \
         -Wno-dev \
         .
         
@@ -41,15 +30,13 @@ build() {
 }
 
 check() {
-    cd "${_srcname}-${pkgver}"
+    cd "chromaprint-${pkgver}"
     
     make check
 }
 
 package() {
-    cd "${_srcname}-${pkgver}"
+    cd "chromaprint-${pkgver}"
     
     make DESTDIR="$pkgdir" install
-    
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
