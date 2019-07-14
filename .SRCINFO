@@ -1,9 +1,8 @@
 pkgbase = libklvanc-git
 	pkgdesc = Library which can be used for parsing/generation of Vertical Ancillary Data (VANC) (git version)
-	pkgver = r430.68c5c7d
+	pkgver = r434.d474cfc
 	pkgrel = 1
 	url = https://github.com/stoth68000/libklvanc/
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = git
