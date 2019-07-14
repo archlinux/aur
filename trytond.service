@@ -4,7 +4,7 @@ Description=Tryton Server Daemon
 [Service]
 Type=simple
 User=tryton
-ExecStart=/usr/bin/trytond -c /etc/trytond.conf
+ExecStart=/usr/bin/trytond -c /etc/tryton/trytond.conf
 
 [Install]
 WantedBy=multi-user.target

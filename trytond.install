@@ -1,14 +1,12 @@
 post_install() {
   echo
-  echo "Adding tryton group... "
-  groupadd  tryton
-  echo "Adding tryton user... "
-  useradd -c "Tryton Server Daemon" -g tryton -s /bin/false tryton
+  echo "Adding tryton user and group... "
+  useradd -r -c "Tryton Server Daemon" -U -s /bin/false tryton
 
   echo
   echo "Note:"
-  echo "- Tryton modules can be installed using pip2, e.g. 'pip2 install trytond-party'."
-  echo "- Configure Tryton using the config file /etc/trytond.conf."
+  echo "- Tryton modules can be installed using pip, e.g. 'pip install trytond-party'."
+  echo "- Configure Tryton using the config file /etc/tryton/trytond.conf."
   echo "- See the Tryton documentation at http://doc.tryton.org for more information."
   echo
 }

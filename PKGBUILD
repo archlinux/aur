@@ -26,8 +26,8 @@ source=("http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz"
         'trytond.service')
 sha256sums=('df86add7e60cb06c7705b8a237b207024f42ae9c0e981357a1dc478b34da7e34'
 	 'SKIP'
-	 '5fa15f98ccf96359323b6fdb0aa908f5960d238f1ca9343b11abddc8cad497c9'
-	 '6231a678947f08d33159fd6fabfc27708be6b2fabee27adfd249445b7cd121f0')
+	 'b843e9cc60ef01bea8fff6bdcd5cc1bf0838ff04d140caa8fcf146ff87619ae4'
+	 'a5c54c8e0408fd757f7688a784ea0ba713c1f46636b5c67858d3817433151f34')
 validpgpkeys=('7C5A4360F6DF81ABA91FD54D6FF50AFE03489130') # Cédric Krier
 
 build() {
@@ -38,6 +38,6 @@ build() {
 package() {
   cd $srcdir/$pkgname-$pkgver
   python setup.py install --root=$pkgdir --optimize=1
-  install -D -m640 "$srcdir/trytond.conf" "$pkgdir/etc/trytond.conf"
+  install -D -m640 "$srcdir/trytond.conf" "$pkgdir/etc/tryton/trytond.conf"
   install -D -m755 "$srcdir/trytond.service" "$pkgdir/usr/lib/systemd/system/trytond.service"
 }
