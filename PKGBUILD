@@ -4,25 +4,25 @@
 # Contributor: Matthew Bowra-Dean <matthew@ijw.co.nz>
 #
 pkgname=openra-git
-pkgver=BLEED.20190327.3b926d71b5
+pkgver=BLEED.20190714.579d2c19e2
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL. Red Alert 2, mods Included. -GIT VERSION"
 arch=('any')
 url="http://www.openra.net"
 license=('GPL3')
 install=openra.install
-depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
+depends=('mono' 'msbuild' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
          'desktop-file-utils' 'xdg-utils' 'zenity')
 makedepends=('git' 'unzip')
 provides=('openra')
 conflicts=('openra')
 options=(!strip)
 
-source=('OpenRA::git://github.com/OpenRA/OpenRA.git#branch=bleed'
-        'RA2::git://github.com/OpenRA/ra2.git')
+source=('OpenRA::git://github.com/OpenRA/OpenRA.git#branch=bleed')
+        #'RA2::git://github.com/OpenRA/ra2.git')
         #'D2::git://github.com/OpenRA/d2.git')
-md5sums=('SKIP'
-         'SKIP')
+md5sums=('SKIP')
+         #'SKIP')
          #'SKIP')
 
 
@@ -51,17 +51,17 @@ build() {
     #make docs DEBUG=false ### This exists in the Makefile, but is unused? (Make Documentation, mainly aimed at modders)
   cd ../
 
-  cd RA2
-  if [ -e engine ]; then
-  	rm -r engine
-  fi
-  ln -s ../OpenRA engine
-  #patch -p1 mod.config < $srcdir/RA2-mod.config.patch
-  SPEC_VER="$(cat mod.config | grep ENGINE_VERSION | sed -e 's/=/\n/g' | head -2 | tail -1)"
-  cat mod.config | sed -e s/"$SPEC_VER"/'"{DEV_VERSION}"'/g > mod.config.1
-  mv mod.config.1 mod.config
-  echo '"AUTOMATIC_ENGINE_MANAGEMENT"="False"' > "user.config"
-  make 
+#  cd RA2
+#  if [ -e engine ]; then
+#  	rm -r engine
+#  fi
+#  ln -s ../OpenRA engine
+#  #patch -p1 mod.config < $srcdir/RA2-mod.config.patch
+#  SPEC_VER="$(cat mod.config | grep ENGINE_VERSION | sed -e 's/=/\n/g' | head -2 | tail -1)"
+#  cat mod.config | sed -e s/"$SPEC_VER"/'"{DEV_VERSION}"'/g > mod.config.1
+#  mv mod.config.1 mod.config
+#  echo '"AUTOMATIC_ENGINE_MANAGEMENT"="False"' > "user.config"
+#  make 
   
 }
 
