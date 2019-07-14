@@ -35,8 +35,8 @@ try_increment() {
     wget -q --show-progress "${source[0]}" || return
 
     ## Update checksum
-    local targetsum="$(md5sum bitwig-studio-${pkgver}.deb | cut -d ' ' -f 1)"
-    sed -i "s/md5sums=('${md5sums[0]}')/md5sums=('${targetsum}')/" PKGBUILD
+    local targetsum="$(sha256sum bitwig-studio-${pkgver}.deb | cut -d ' ' -f 1)"
+    sed -i "s/sha256sums=('${sha256sums[0]}')/sha256sums=('${targetsum}')/" PKGBUILD
     sed -i "s/pkgrel=.*/pkgrel='${targetrel}'/" PKGBUILD
 
     ## Build the package
