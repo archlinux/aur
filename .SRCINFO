@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_be
+	pkgdesc = Tryton module with Belgian chart of accounts
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_be/trytond_account_be-5.2.0.tar.gz
+	sha256sums = df96142d2a7faa0518d6969ac14f3fb3b12de3029f608af2d5842da875e0807e
+
+pkgname = python-trytond_account_be
+
