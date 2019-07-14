@@ -1,14 +1,14 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-rc
-_pkgver="5.1.0"
+_pkgver="5.1.2"
 pkgver=${_pkgver/-rc/.}
 pkgrel=1
 pkgdesc="Official KiCad release candidates and dev snapshots"
 arch=('any')
 url="http://kicad-pcb.org/"
 license=('GPL3')
-depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl' 'swig' 'python-wxpython' 'opencascade' 'ngspice>=27')
+depends=('glew' 'wxgtk3' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl' 'swig' 'python-wxpython' 'opencascade' 'ngspice')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-symbols' 'kicad-packages3d' 'kicad-footprints' 'kicad-templates')
 conflicts=('kicad' 'kicad-git' 'kicad-scripting-git' 'kicad-bzr')
@@ -16,8 +16,7 @@ provides=('kicad')
 makedepends=('clang')
 _github_project='kicad-source-mirror'
 source=("https://github.com/KiCad/${_github_project}/archive/${_pkgver}.tar.gz")
-md5sums=('f9f76c44e35a0b23105409f46ca28baa')
-install=kicad.install
+md5sums=('0be64488e6beedf056c92ec527881148')
 
 
 #prepare() {
@@ -28,25 +27,23 @@ build() {
   cd "${srcdir}/${_github_project}-${_pkgver}"
   mkdir -p build
   cd build
-    CXX=clang++ cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  cmake .. -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKICAD_USE_OCE=OFF \
     -DKICAD_USE_OCC=ON \
-    -DBUILD_GITHUB_PLUGIN=ON \
-    -DKICAD_SCRIPTING=ON \
-    -DKICAD_SCRIPTING_MODULES=ON \
-    -DKICAD_SCRIPTING_WXPYTHON=ON \
+    -DKICAD_USE_OCE=OFF \
     -DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON \
+    -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python \
     -DKICAD_SCRIPTING_PYTHON3=ON \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
-    -DKICAD_SCRIPTING_ACTION_MENU=ON
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
+#    -DUSE_WX_GRAPHICS_CONTEXT=ON \
+#    -DUSE_WX_OVERLAY=ON 
 
-  CXX=clang++ make
+  make
 }
 
 package() {
   cd "${srcdir}/${_github_project}-${_pkgver}"
   cd build
-  CXX=clang++ make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
 }
