@@ -1,6 +1,6 @@
 pkgbase = pace-git
 	pkgdesc = A simple pacman.conf editor
-	pkgver = 0.9.0
+	pkgver = 1.1.90.r0.gba48950
 	pkgrel = 1
 	url = https://gitlab.com/softwareperonista/pace
 	arch = x86_64
