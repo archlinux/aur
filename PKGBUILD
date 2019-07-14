@@ -1,7 +1,7 @@
 # Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
 
 pkgname=groonga
-pkgver=9.0.3
+pkgver=9.0.4
 pkgrel=1
 pkgdesc="An opensource fulltext search engine."
 arch=('i686' 'x86_64')
@@ -42,5 +42,5 @@ package() {
 
     install -Dm644 ../groonga-httpd.service "$pkgdir"/usr/lib/systemd/system/groonga-httpd.service
 }
-sha1sums=('117e8666e11f40bec37d516a0d264d92d796e9bd'
+sha1sums=('2c767fb73eaae21627dd7756f498f7d8cf210391'
           '56b68b5ebfc6785f08ce101b263d6f56acd74d8a')
