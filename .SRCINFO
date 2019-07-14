@@ -6,7 +6,6 @@ pkgbase = dogecoin-daemon
 	license = MIT
 	makedepends = boost
 	makedepends = libevent
-	makedepends = protobuf
 	makedepends = zeromq
 	source = dogecoin-daemon-1.14.0.tar.gz::https://github.com/dogecoin/dogecoin/archive/v1.14.0.tar.gz
 	source = dogecoin.sysusers

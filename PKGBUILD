@@ -6,7 +6,7 @@ pkgver=1.14.0
 pkgrel=1
 arch=('x86_64')
 url='https://dogecoin.com/'
-makedepends=('boost' 'libevent' 'protobuf' 'zeromq')
+makedepends=('boost' 'libevent' 'zeromq')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_pkgbase/$_pkgbase/archive/v$pkgver.tar.gz"
         "dogecoin.sysusers"
