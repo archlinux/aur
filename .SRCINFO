@@ -1,4 +1,4 @@
-pkgbase = pkgbase
+pkgbase = openxcom-mod-twots
 	pkgdesc = The World of Terrifying Silence - a mod for OpenXcom (OXCE)
 	pkgver = 2_31
 	pkgrel = 1

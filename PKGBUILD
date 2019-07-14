@@ -1,7 +1,6 @@
 # Maintainer Robert Gonciarz <gonciarz(malpa)gmail.com>
 # Upstream author: Nord
 
-pkgbase=pkgbase
 pkgname=openxcom-mod-twots
 pkgver=2_31
 pkgrel=1
