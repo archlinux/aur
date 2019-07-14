@@ -8,7 +8,7 @@
 
 _pkgname=thunderbird
 pkgname=thunderbird-appmenu
-pkgver=60.7.2
+pkgver=60.8.0
 pkgrel=1
 pkgdesc="Thunderbird from extra with appmenu patch"
 arch=(x86_64)
@@ -22,14 +22,16 @@ optdepends=('libcanberra: sound support')
 provides=("thunderbird=$pkgver")
 conflicts=("thunderbird")
 options=(!emptydirs !makeflags)
-source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
+source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
+        rust-1.35.patch
         $_pkgname.desktop
-        rust-1.33.patch
         unity-menubar.patch)
-sha256sums=('fc89a5f66b17d554fc0b9c153483edcc74b1bacc916dfd6dccead8478060af31'
+sha256sums=('1e7a13e64b63476d2235aaac6823fdab949af45cfcd5a25ee710cbae08c2f5d1'
+            'SKIP'
+            '3257987cc0ab0559c65561d523eb4d0e73b5edb86d9d18a2487818d9fca0bb30'
             '3534ea85d8e0e35dba5f40a7a07844df19f3a480e1358fc50c2502f122dab789'
-            '2b0244a9f7a30f28bcc12055f171e5506c7e3b929d85c3b3514b7e4e4c251784'
             '22786f52773b93046fdb12378f67343b1d7d3390e83a00ff4aa03948c2b1c9e2')
+validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -46,8 +48,8 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 prepare() {
   cd $_pkgname-$pkgver
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1539901 (Patch from Fedora)
-  patch -Np1 -i ../rust-1.33.patch
+  # # Fix build with rust 1.35 (Fedora)
+  patch -Np1 -i ../rust-1.35.patch
 
   # actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
