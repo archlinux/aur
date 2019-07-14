@@ -2,9 +2,9 @@
 
 pkgname=qmplay2-git
 pkgver=18.12.26
-pkgrel=2
+pkgrel=3
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
-arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='http://zaps166.sourceforge.net/?app=QMPlay2'
 license=('LGPL')
 depends=('qt5-base' 'qt5-svg' 'qt5-declarative' 'qt5-x11extras' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp')
