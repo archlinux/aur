@@ -1,0 +1,14 @@
+pkgbase = python2-xxhash
+	pkgdesc = Python2 binding for xxHash
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/xxhash/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python2
+	source = python2-xxhash-1.3.0::git+https://github.com/ifduyue/python-xxhash/#tag=v1.3.0
+	sha256sums = SKIP
+
+pkgname = python2-xxhash
+
