@@ -1,9 +1,11 @@
 pkgbase = libzim
 	pkgdesc = Reference implementation of the ZIM specification by the openZIM project
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openzim/libzim
-	arch = any
+	arch = armv7h
+	arch = i686
+	arch = x86_64
 	license = GPL2
 	makedepends = meson
 	makedepends = gtest

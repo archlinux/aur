@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=libzim
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Reference implementation of the ZIM specification by the openZIM project"
 license=('GPL2')
 arch=('armv7h' 'i686' 'x86_64')
