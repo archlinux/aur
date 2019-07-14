@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_product
+	pkgdesc = Tryton module to add accounting on product
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_product/trytond_account_product-5.2.0.tar.gz
+	sha256sums = a3beb905fcbc310fbf1f7f125cbe9f0caef7981ded0051f48e2d690ca957ff20
+
+pkgname = python-trytond_account_product
+
