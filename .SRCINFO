@@ -1,6 +1,6 @@
 pkgbase = restic-systemd-automatic-backup
 	pkgdesc = Backup solution using restic/Backblaze B2 storage.
-	pkgver = r40.a489e44
+	pkgver = r43.bfad34f
 	pkgrel = 1
 	url = https://github.com/erikw/restic-systemd-automatic-backup
 	arch = any
