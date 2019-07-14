@@ -2,10 +2,10 @@
 
 pkgname=libopenmpt-svn
 _srcname=OpenMPT
-pkgver=0.4.r10965
+pkgver=0.5.r11775
 pkgrel=1
 pkgdesc='Library to decode tracked music files (modules) into a raw PCM audio stream and CLI player (svn version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://lib.openmpt.org/libopenmpt/'
 license=('BSD')
 depends=('zlib' 'libogg' 'libvorbis' 'mpg123' 'pulseaudio' 'sdl' 'portaudio' 'flac' 'libsndfile')

@@ -1,9 +1,8 @@
 pkgbase = libopenmpt-svn
 	pkgdesc = Library to decode tracked music files (modules) into a raw PCM audio stream and CLI player (svn version)
-	pkgver = 0.4.r10965
+	pkgver = 0.5.r11775
 	pkgrel = 1
 	url = https://lib.openmpt.org/libopenmpt/
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = subversion
