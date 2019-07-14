@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd $_pkgbase-$pkgver
-  ./configure --prefix=/usr --with-gui=no --with-incompatible-bdb --without-miniupnpc --disable-bip70 --with-zmq
+  ./configure --prefix=/usr --with-gui=no --with-incompatible-bdb --without-miniupnpc
   make
 }
 
