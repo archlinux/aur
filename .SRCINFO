@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_asset
+	pkgdesc = Tryton module for assets management
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_asset/trytond_account_asset-5.2.0.tar.gz
+	sha256sums = 968a1799b921754521f4c188654ba036b7ad2bf0b552c26d016a000540ea6ba6
+
+pkgname = python-trytond_account_asset
+
