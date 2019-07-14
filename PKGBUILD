@@ -2,7 +2,7 @@
 # Maintainer: hexchain <i@hexchain.org>
 
 pkgname=compiledb
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Tool for generating Clang's JSON Compilation Database file for GNU make-based build systems"
 arch=('any')
@@ -16,4 +16,4 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
 }
-sha256sums=('2950eb6e6fa425a92a92cb79e1489cf94c1aff6fb39b1ff5f8ce1467039b9771')
+sha256sums=('3f288e4897e2b17b4dd8070d3ad9e9fc627961faa4d0be29a78f6c619e055f36')
