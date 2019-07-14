@@ -1,42 +1,43 @@
-# Contributor: Florian Walch <florian.walch@gmx.at>
-# Maintainer: Robin Baumgartner <robin@baumgartners.ch>
+# Maintainer: Martin Scholz <scholz.m82@gmail.com
 pkgname=trytond
-pkgver=4.2.1
-_pkgdir=4.2
+pkgver=5.2.2
+_pkgdir=5.2
 pkgrel=1
 pkgdesc="A three-tiers high-level general purpose application platform (server application)"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python2>=2.7' 'python2-lxml' 'python2-relatorio>=0.2.0'
-         'python2-genshi>=0.5' 'python2-dateutil' 'python2-polib'
-         'python2-sql>=0.4' 'python2-werkzeug' 'python2-wrapt')
-optdepends=('python2-psycopg2: support for PostgreSQL database'
-  'unoconv: support for document conversion'
-  'python2-pydot: support for displaying workflow graphs'
-  'python2-levenshtein'
-  'python2-bcrypt')
-makedepends=('python2-distribute')
+depends=('python>=3.5' 'python-lxml' 'python-relatorio>=0.7.0'
+         'python-genshi' 'python-dateutil' 'python-polib'
+         'python-sql>=0.5' 'python-werkzeug' 'python-wrapt'
+	 'python-passlib')
+optdepends=('python-psycopg2: support for PostgreSQL database'
+  'python-pydot: support for displaying workflow graphs'
+  'python-levenshtein'
+  'python-bcrypt'
+  'python-html2text'
+  'python-gevent')
+makedepends=('python-distribute')
 backup=('etc/trytond.conf')
 install="trytond.install"
 source=("http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz"
         "http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz.asc"
         'trytond.conf'
         'trytond.service')
-md5sums=('ab3e92100e0229ca8a48f03f3dbc5a30'
-         'SKIP'
-         'db21177e78e6983d85feb14436f5a7ba'
-         'c3318e663c17194d71f6ef4ded16b293')
+sha256sums=('df86add7e60cb06c7705b8a237b207024f42ae9c0e981357a1dc478b34da7e34'
+	 'SKIP'
+	 '5fa15f98ccf96359323b6fdb0aa908f5960d238f1ca9343b11abddc8cad497c9'
+	 '6231a678947f08d33159fd6fabfc27708be6b2fabee27adfd249445b7cd121f0')
 validpgpkeys=('7C5A4360F6DF81ABA91FD54D6FF50AFE03489130') # Cédric Krier
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  python2 setup.py install --root=$pkgdir --optimize=1
+  python setup.py install --root=$pkgdir --optimize=1
   install -D -m640 "$srcdir/trytond.conf" "$pkgdir/etc/trytond.conf"
   install -D -m755 "$srcdir/trytond.service" "$pkgdir/usr/lib/systemd/system/trytond.service"
 }
