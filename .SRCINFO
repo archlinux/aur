@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_statement_ofx
+	pkgdesc = Tryton module to import OFX statements
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_statement_ofx/trytond_account_statement_ofx-5.2.0.tar.gz
+	sha256sums = edbca5674f9085ed72d2919842ceb7435b558cc0a9d0956128c86e973d005b1b
+
+pkgname = python-trytond_account_statement_ofx
+
