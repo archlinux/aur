@@ -6,7 +6,7 @@ pkgdesc='Command-line tool to customize Spotify client'
 arch=('x86_64' 'i686')
 url='https://github.com/khanhas/spicetify-cli'
 license=('GPL')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('8c214568c1211420b8b999de97eb1eafc7b3eca9fa58b29a54dd5ddfb99cbecc')
 
@@ -31,4 +31,7 @@ package() {
 /usr/share/$pkgname/spicetify \"\$@\"" >> ./shortcut
   
   install -Dm755 ./shortcut "$pkgdir"/usr/bin/spicetify
+
+  # Clean up deps
+  go clean -modcache
 }
