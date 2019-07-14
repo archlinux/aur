@@ -13,7 +13,7 @@ optdepends=('hyphen: Auto-hyphenation support'
 			'hyphen-en: Hyphenation rules for English; you may choose package for your language'
 			'dictd: Offline dictionary support'
 			'festival: Text-to-speech support'
-			'espeak-hg: Text-to-speech support'
+			'espeak-ng: Text-to-speech support'
 		   )
 source=("${pkgname%-git}::git+https://github.com/johnfactotum/${pkgname%-git}.git#branch=master")
 provides=("${pkgname%-git}")
