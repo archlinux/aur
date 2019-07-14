@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_eu
+	pkgdesc = Tryton module for european accounting
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_eu/trytond_account_eu-5.2.0.tar.gz
+	sha256sums = ca39c8a5c6c99e31ef8ee36251d5f46e7e428d66c47a17c7ed93f9a5528b3003
+
+pkgname = python-trytond_account_eu
+
