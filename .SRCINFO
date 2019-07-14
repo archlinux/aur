@@ -14,10 +14,12 @@ pkgbase = tryton
 	source = http://downloads.tryton.org/5.2/tryton-5.2.2.tar.gz
 	source = http://downloads.tryton.org/5.2/tryton-5.2.2.tar.gz.asc
 	source = tryton.desktop
+	source = tryton-icon.png
 	validpgpkeys = 7C5A4360F6DF81ABA91FD54D6FF50AFE03489130
 	sha256sums = 88e414cc427968eac34bd2c4864914493cae99871fac15d778deaafe5e381d95
 	sha256sums = SKIP
 	sha256sums = 78378206bbd3264cbcf23e2836e4bbb70ad1ea643c4db71dccf997ff2fb06443
+	sha256sums = SKIP
 
 pkgname = tryton
 

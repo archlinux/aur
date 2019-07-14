@@ -11,10 +11,12 @@ depends=('python>=3.5' 'python-cairo' 'python-dateutil' 'python-pygobject-stubs'
 makedepends=('python-distribute')
 source=("http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz"
         "http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz.asc"
-        'tryton.desktop')
+        'tryton.desktop'
+        'tryton-icon.png')
 sha256sums=('88e414cc427968eac34bd2c4864914493cae99871fac15d778deaafe5e381d95'
          'SKIP'
-         '78378206bbd3264cbcf23e2836e4bbb70ad1ea643c4db71dccf997ff2fb06443')
+         '78378206bbd3264cbcf23e2836e4bbb70ad1ea643c4db71dccf997ff2fb06443'
+         'SKIP')
 validpgpkeys=('7C5A4360F6DF81ABA91FD54D6FF50AFE03489130') # Cédric Krier
 
 build() {
