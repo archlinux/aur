@@ -1,6 +1,6 @@
 #Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 PN="pcloud"
 pkgname=pcloud-drive
@@ -10,12 +10,12 @@ source_x86_64=("https://www.pcloud.com/pcloud") # Placeholder
 arch=('x86_64')
 url="https://www.pcloud.com"
 _api_url="https://api.pcloud.com/getpublinkdownload?code="
-_api_code="XZNyUE7ZVIO5le8AOAS9tYdSkPlBBRUPFO67"
+_api_code="XZGr337ZAdsin51iTdSc2MVwD7bHzbMenjok"
 makedepends=('jq' 'sed')
 conflicts=('pcloud-git' 'pcloud')
 depends=('gconf' 'fuse2')
 
-md5sums_x86_64=('ce75a5971f1847d7b820c5f0f075f70c')
+md5sums_x86_64=('374c713a580a007fca94ff155ad8a091')
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
 
 prepare() {
