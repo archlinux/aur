@@ -2,8 +2,8 @@
 
 pkgbase=linux-new
 _srcname=linux
-gitver=v5.2
-pkgver=5.2.v.0
+gitver=v5.2.1
+pkgver=5.2.v.1
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -21,7 +21,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         "${pkgbase}.preset")
 sha256sums=('SKIP'
             #config.x86_64
-            '8a5b4e33c65cf565af666c3c6ae80940bed6ff4cf89dae9fff889b5be7e412b2'
+            '83be53dc1631d29f5b853bee440caf39aae10e4f28e583b75844115296483510'
             #.preset file
             '18b701cd3891efa66a507c03ef8ef24f8d38080d4930159cedabbc6064e433aa')
 
