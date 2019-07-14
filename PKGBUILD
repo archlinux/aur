@@ -1,7 +1,7 @@
 # Maintainer:  mrxx <mrxx at cyberhome dot at>
 
 pkgname=endlessh
-pkgver=r53.4ffc65b
+pkgver=r83.a154fca
 pkgrel=1
 pkgdesc="A tarpit to lock up SSH clients"
 arch=('x86_64' 'i686')
@@ -33,7 +33,7 @@ package() {
   install -Dm644 endlessh.conf "$pkgdir"/etc/
   cd "$srcdir/$pkgname"
   install -Dm755 endlessh "$pkgdir"/usr/bin/
-  sed 's|opt/endlessh|usr/bin|;s|30sec|30|' util/endlessh.service |grep -vE 'ConfigurationDirectory|PrivateUsers' >"$pkgdir"/usr/lib/systemd/system/endlessh.service
+  sed 's|usr/local/bin|usr/bin|g;s|30sec|30|' util/endlessh.service |grep -vE 'ConfigurationDirectory|PrivateUsers' >"$pkgdir"/usr/lib/systemd/system/endlessh.service
   install -Dm644 "UNLICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 

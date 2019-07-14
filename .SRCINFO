@@ -1,6 +1,6 @@
 pkgbase = endlessh
 	pkgdesc = A tarpit to lock up SSH clients
-	pkgver = r53.4ffc65b
+	pkgver = r83.a154fca
 	pkgrel = 1
 	url = https://nullprogram.com/blog/2019/03/22/
 	arch = x86_64
