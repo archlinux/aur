@@ -1,0 +1,53 @@
+From f6f6b798c7330d7851fee4bbe835c3954886fc3f Mon Sep 17 00:00:00 2001
+From: Johannes Berg <johannes.berg@intel.com>
+Date: Wed, 3 Jul 2019 11:10:49 +0300
+Subject: [PATCH 3/4] iwlwifi: mvm: disable TX-AMSDU on older NICs
+
+On older NICs, we occasionally see issues with A-MSDU support,
+where the commands in the FIFO get confused and then we see an
+assert EDC because the next command in the FIFO isn't TX.
+
+We've tried to isolate this issue and understand where it comes
+from, but haven't found any errors in building the A-MSDU in
+software.
+
+At least for now, disable A-MSDU support on older hardware so
+that users can use it again without fearing the assert.
+
+This fixes https://bugzilla.kernel.org/show_bug.cgi?id=203315.
+
+Signed-off-by: Johannes Berg <johannes.berg@intel.com>
+Signed-off-by: Luca Coelho <luciano.coelho@intel.com>
+Acked-by: Kalle Valo <kvalo@codeaurora.org>
+---
+ drivers/net/wireless/intel/iwlwifi/mvm/mac80211.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/intel/iwlwifi/mvm/mac80211.c b/drivers/net/wireless/intel/iwlwifi/mvm/mac80211.c
+index fdbabca0280e..3a076e5e319f 100644
+--- a/drivers/net/wireless/intel/iwlwifi/mvm/mac80211.c
++++ b/drivers/net/wireless/intel/iwlwifi/mvm/mac80211.c
+@@ -468,7 +468,19 @@ int iwl_mvm_mac_setup_register(struct iwl_mvm *mvm)
+ 	ieee80211_hw_set(hw, SUPPORTS_VHT_EXT_NSS_BW);
+ 	ieee80211_hw_set(hw, BUFF_MMPDU_TXQ);
+ 	ieee80211_hw_set(hw, STA_MMPDU_TXQ);
+-	ieee80211_hw_set(hw, TX_AMSDU);
++	/*
++	 * On older devices, enabling TX A-MSDU occasionally leads to
++	 * something getting messed up, the command read from the FIFO
++	 * gets out of sync and isn't a TX command, so that we have an
++	 * assert EDC.
++	 *
++	 * It's not clear where the bug is, but since we didn't used to
++	 * support A-MSDU until moving the mac80211 iTXQs, just leave it
++	 * for older devices. We also don't see this issue on any newer
++	 * devices.
++	 */
++	if (mvm->cfg->device_family >= IWL_DEVICE_FAMILY_9000)
++		ieee80211_hw_set(hw, TX_AMSDU);
+ 	ieee80211_hw_set(hw, TX_FRAG_LIST);
+ 
+ 	if (iwl_mvm_has_tlc_offload(mvm)) {
+-- 
+2.22.0
+

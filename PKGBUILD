@@ -82,6 +82,7 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.1/5.1-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
+  0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -96,7 +97,8 @@ sha256sums=('6013e7dcf59d7c1b168d8edce3dbd61ce340ff289541f920dbd0958bef98f36a'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
             'f8d18a34f6b17ec8e5f2a7354383ca627e0fd00b5578c1ee7d9808a34f33c724'
             '91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3'
-            '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9')
+            '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9'
+            'fc96300831506965383ef30bc46b72735dc45bb97dea2ccb8b9450c005d2f020')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
