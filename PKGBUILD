@@ -6,9 +6,9 @@
 
 pkgname=xavs2-git
 _srcname=xavs2
-pkgver=1.3.r20.g6472c9f
+pkgver=1.3.r52.geae1e8b
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard (git version)'
 url='https://github.com/pkuvcl/xavs2/'
 license=('GPL')
