@@ -27,7 +27,7 @@
 #=========================================================================================================#
 _omnisharp="y"
 _gocode="y"
-_rust="y"
+_rust="n"
 _tern="y"
 _typescript="y"
 _java="y"
@@ -45,7 +45,7 @@ pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="A code-completion engine for Vim"
 arch=('x86_64')
 url='https://ycm-core.github.io/YouCompleteMe/'
