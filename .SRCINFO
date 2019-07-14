@@ -1,6 +1,6 @@
 pkgbase = bshapr-git
 	pkgdesc = Beat / envelope shaper LV2 plugin
-	pkgver = r105.a7b5643
+	pkgver = r145.caa3557
 	pkgrel = 1
 	url = https://github.com/sjaehn/BShapr
 	arch = x86_64

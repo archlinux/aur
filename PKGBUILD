@@ -1,6 +1,6 @@
 # Maintainer: Milk Brewster (milk on freenode irc)
 pkgname=bshapr-git
-pkgver=r105.a7b5643
+pkgver=r145.caa3557
 pkgrel=1
 epoch=
 pkgdesc="Beat / envelope shaper LV2 plugin"
@@ -38,6 +38,7 @@ pkgver() {
 
 build() {
   cd "$srcdir"/BShapr
+  make
 }
  
 # check() {
@@ -47,5 +48,5 @@ build() {
 
 package() {
   cd "$srcdir"/BShapr
-  make INSTALL_DIR="${pkgdir}/usr/lib/lv2" install 
+  make PREFIX="${pkgdir}/usr" install 
 }
