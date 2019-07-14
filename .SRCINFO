@@ -1,0 +1,30 @@
+pkgbase = seafile-git
+	pkgdesc = Seafile sync client daemon, latest version.
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://github.com/haiwen/seafile
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL2
+	makedepends = vala
+	makedepends = intltool
+	depends = libsearpc>=3.1.0
+	depends = libevent
+	depends = fuse
+	depends = python2
+	depends = sqlite
+	provides = seafile-client-cli-git
+	conflicts = seafile-server
+	conflicts = seafile
+	source = seafile-git-7.0.1.tar.gz::https://github.com/haiwen/seafile/archive/v7.0.1.tar.gz
+	source = libseafile.in.patch
+	source = seaf-cli@.service
+	sha256sums = c79a186e3a512454cb65d863bd45ecc8ae2c66a0dd2010533f3fed7862fa92f8
+	sha256sums = a2d7f7cf0c59aba97650af62b3cefd0ceb71a1007c34d9369a88e5769c7f6076
+	sha256sums = c37510109c1de64c774896df39aece240c056b54414d2119fca01860211156ba
+
+pkgname = seafile-git
+
