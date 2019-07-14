@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libwebp
 	pkgdesc = WebP library and conversion tools (mingw-w64)
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://developers.google.com/speed/webp/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-libwebp
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = git+https://chromium.googlesource.com/webm/libwebp#commit=2b98df90cb75cfc1cf4505a59a7b25499fa10887
+	source = git+https://chromium.googlesource.com/webm/libwebp#commit=0fe1a89dbf1930fc2554dbe76adad5d962054ead
 	validpgpkeys = 6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D
 	sha256sums = SKIP
 
