@@ -1,9 +1,8 @@
 pkgbase = flite1-patched
 	pkgdesc = A lighweight speech synthesis engine (version 1, patched with fixes and improvements)
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.speech.cs.cmu.edu/flite/
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = texlive-core
