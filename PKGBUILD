@@ -3,9 +3,9 @@
 
 
 pkgname=kvmd-webterm
-pkgver=0.22
+pkgver=0.23
 pkgrel=1
-pkgdesc="Pi-KVM - Web terminal (ttyd)"
+pkgdesc="Pi-KVM - Web terminal"
 url="https://github.com/pi-kvm/kvmd-webterm"
 license=(GPL)
 arch=(any)
