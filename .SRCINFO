@@ -1,4 +1,4 @@
-pkgbase = dogecoin
+pkgbase = dogecoin-daemon
 	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://dogecoin.com/
