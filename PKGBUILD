@@ -13,7 +13,7 @@ optdepends=('hyphen: Auto-hyphenation support'
 			'hyphen-en: Hyphenation rules for English; you may choose package for your language'
 			'dictd: Offline dictionary support'
 			'festival: Text-to-speech support; also voice package needed'
-			'espeak-hg: Text-to-speech support; also voice package needed')
+			'espeak-ng: Text-to-speech support; also voice package needed')
 #source=(https://github.com/johnfactotum/${pkgname}/archive/${pkgver}.tar.gz)
 source=($pkgname::git+https://github.com/johnfactotum/$pkgname.git)
 provides=($pkgname)
