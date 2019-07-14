@@ -2,10 +2,10 @@
 
 pkgname=ndi-sdk
 pkgver=3.20190402.r102672
-pkgrel=1
+pkgrel=2
 _majver="${pkgver%%.*}"
 pkgdesc='NewTek NDI SDK'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.newtek.com/ndi/sdk/'
 license=('custom')
 depends=('avahi')
@@ -37,8 +37,8 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}/NDI SDK for Linux/lib/${CARCH}-linux-gnu"
     install -D -m755 "libndi.so.${_majver}".* -t "${pkgdir}/usr/lib"
     cd "${pkgdir}/usr/lib"
-    ln -s "libndi.so.${_majver}".* "libndi.so.${_majver}"
-    ln -s "libndi.so.${_majver}".*  libndi.so
+    ln -s "libndi.so.${_majver}".*.* "libndi.so.${_majver}"
+    ln -s "libndi.so.${_majver}".*.*  libndi.so
     
     # docs
     cd "${srcdir}/${pkgname}-${pkgver}/NDI SDK for Linux/documentation"

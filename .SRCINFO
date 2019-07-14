@@ -1,9 +1,8 @@
 pkgbase = ndi-sdk
 	pkgdesc = NewTek NDI SDK
 	pkgver = 3.20190402.r102672
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.newtek.com/ndi/sdk/
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = avahi
