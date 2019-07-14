@@ -1,7 +1,7 @@
 # Maintainer: darkvlados@gmail.com
 
 pkgname=medis
-pkgver=0.7.1.16
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Medis is a beautiful, easy-to-use database management application for Redis."
 arch=("any")
@@ -16,15 +16,14 @@ md5sums=('SKIP'
          'F9B462B94D50FB4086D94FD420558B34'
          '05074FDFE9D1FAA78550ED6551CF447B')
 
-#pkgver() {
-#    cd "${pkgname}-git"
-#    git describe --tags | sed 's/\(.*\)-.*/\1/' | tr - .
-#    echo '0.7.1.16-1'
-#}
+pkgver() {
+    cd "${pkgname}-git"
+    git describe --tags | cut -c 2-6
+}
 
 prepare() {
     cd "${pkgname}-git"
-    git reset --hard 05a6c2948e15c7a571516052acf8ce6d9a1e8667
+    git reset --hard 79bf2d3b4eea5dddb2a98348a5b653c1f61feb7c
 }
 
 build() {
