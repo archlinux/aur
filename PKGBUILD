@@ -1,7 +1,7 @@
 # Maintainer: Todd E Johnson <todd@toddejohnson.net>
 
 pkgname=restic-systemd-automatic-backup
-pkgver=r40.a489e44
+pkgver=r43.bfad34f
 pkgrel=1
 pkgdesc="Backup solution using restic/Backblaze B2 storage."
 arch=('any') 
@@ -20,6 +20,6 @@ pkgver() {
 
 package() {
   cd "$pkgname"
-  make PREFIX="$pkgdir" DEST_SCRIPTS="$pkgdir/usr/sbin" DEST_SYSTEMD="$pkgdir/usr/lib/systemd/system" install 
+  make PREFIX="$pkgdir" DEST_SCRIPTS="$pkgdir/usr/bin" DEST_SYSTEMD="$pkgdir/usr/lib/systemd/system" install 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
