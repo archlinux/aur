@@ -2,9 +2,9 @@
 
 pkgname=libmysofa
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='C library to read HRTFs if they are stored in the AES69-2015 SOFA format'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://hoene.github.io/libmysofa/'
 license=('BSD')
 depends=('zlib')

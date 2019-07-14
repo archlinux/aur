@@ -1,9 +1,8 @@
 pkgbase = libmysofa
 	pkgdesc = C library to read HRTFs if they are stored in the AES69-2015 SOFA format
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hoene.github.io/libmysofa/
-	arch = i686
 	arch = x86_64
 	license = BSD
 	checkdepends = nodejs
