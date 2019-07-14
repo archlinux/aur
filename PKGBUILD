@@ -55,15 +55,10 @@ _subarch=
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
-# If you have laptop with optimus and it hangs on boot one solution might be 
-# to set acpi_rev_override. Yet for this to happen kernel should be compiled
-# with `CONFIG_ACPI_REV_OVERRIDE_POSSIBLE`. Set next variable to `y` to enable.
-_rev_override="n"
-
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=58
+_minor=59
 _srcname=linux-${_major}
 _clr=${_major}.57-60
 pkgbase=linux-clear-lts2018
@@ -113,24 +108,18 @@ prepare() {
     ### Setting config
         msg2 "Setting config..."
         cp -Tf $srcdir/${pkgbase}/config ./.config
-        
-    ### Bluez package on arch needs this module for bluetooth to work
-        # https://bugs.archlinux.org/task/55880
-        msg2 "Enabling crypto_user module..."
-        sed -i "s|# CONFIG_CRYPTO_USER is not set|CONFIG_CRYPTO_USER=m|g" ./.config
 
-    ### Compress modules
-        msg2 "Enabling XZ compressed modules..."
+    ### Enable extra stuff from arch kernel
+        msg2 "Enable extra stuff from arch kernel..."
         sed -i 's|^# CONFIG_MODULE_COMPRESS|\
 CONFIG_MODULE_COMPRESS=y\
 # CONFIG_MODULE_COMPRESS_GZIP is not set\
 CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
-
-    ### Set ACPI_REV_OVERRIDE_POSSIBLE to prevent optimus lockup
-        if [ "${_rev_override}" = "y" ]; then
-        msg2 "Enabling ACPI Rev Override Possible..."
+        sed -i "s|# CONFIG_CRYPTO_USER is not set|CONFIG_CRYPTO_USER=m|g" ./.config
         sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
-        fi
+        sed -i "s|# CONFIG_HIBERNATION is not set|CONFIG_HIBERNATION=y|g" ./.config
+        sed -i "s|# CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER is not set|CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER=y|g" ./.config
+        sed -i "s|CONFIG_RT_GROUP_SCHED=y|# CONFIG_RT_GROUP_SCHED is not set|g" ./.config
 
         make olddefconfig
 
@@ -340,7 +329,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '018584229e0522aa94cb7af7b7f0775cf42ae3873a8d4cbc8715d807719bfad5'
+            '6551b81c5b73b230a7889198d6547a9beb4be03715ac0edba948fd7fae76b790'
             'SKIP'
             '74ec7415988d40fa53686d994cf8cb27accdbd35c5373c4c3afc2e93372ebba5'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
