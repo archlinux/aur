@@ -19,9 +19,11 @@ source=("https://github.com/KiCad/${_github_project}/archive/${_pkgver}.tar.gz")
 md5sums=('0be64488e6beedf056c92ec527881148')
 
 
-#prepare() {
+prepare() {
+  cd "${srcdir}/${_github_project}-${_pkgver}"
   #sed -i -e 's|boost/uuid/sha1.hpp|boost/uuid/detail/sha1.hpp|g' kicad-source-mirror-5.0.0/3d-viewer/3d_cache/3d_cache.cpp
-#}
+  curl https://github.com/KiCad/kicad-source-mirror/commit/5685174808f5ca973e916a10f9f93660ee4dc4f2.patch | patch -p1
+}
 
 build() {
   cd "${srcdir}/${_github_project}-${_pkgver}"
