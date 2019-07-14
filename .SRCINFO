@@ -1,0 +1,14 @@
+pkgbase = python-trytond_carrier
+	pkgdesc = Tryton module with carriers
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_carrier/trytond_carrier-5.2.0.tar.gz
+	sha256sums = 8ade200d0b8c833a1eeae9b1e6c2a6a7f66fe1871d06649e001cb3c22b5bb4fa
+
+pkgname = python-trytond_carrier
+
