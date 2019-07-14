@@ -1,14 +1,13 @@
 pkgbase = kicad-rc
 	pkgdesc = Official KiCad release candidates and dev snapshots
-	pkgver = 5.1.0
+	pkgver = 5.1.2
 	pkgrel = 1
 	url = http://kicad-pcb.org/
-	install = kicad.install
 	arch = any
 	license = GPL3
 	makedepends = clang
 	depends = glew
-	depends = wxgtk
+	depends = wxgtk3
 	depends = desktop-file-utils
 	depends = boost-libs
 	depends = python
@@ -17,7 +16,7 @@ pkgbase = kicad-rc
 	depends = swig
 	depends = python-wxpython
 	depends = opencascade
-	depends = ngspice>=27
+	depends = ngspice
 	optdepends = kicad-symbols
 	optdepends = kicad-packages3d
 	optdepends = kicad-footprints
@@ -27,8 +26,8 @@ pkgbase = kicad-rc
 	conflicts = kicad-git
 	conflicts = kicad-scripting-git
 	conflicts = kicad-bzr
-	source = https://github.com/KiCad/kicad-source-mirror/archive/5.1.0.tar.gz
-	md5sums = f9f76c44e35a0b23105409f46ca28baa
+	source = https://github.com/KiCad/kicad-source-mirror/archive/5.1.2.tar.gz
+	md5sums = 0be64488e6beedf056c92ec527881148
 
 pkgname = kicad-rc
 
