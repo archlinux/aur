@@ -22,13 +22,3 @@ pkgname = dogecoin-daemon
 	depends = libevent
 	depends = zeromq
 
-pkgname = dogecoin-cli
-	pkgdesc = Dogecoin is a peer-to-peer network based digital currency - RPC client
-	depends = boost-libs
-	depends = libevent
-
-pkgname = dogecoin-tx
-	pkgdesc = Dogecoin is a peer-to-peer network based digital currency - Transaction tool
-	depends = boost-libs
-	depends = openssl
-
