@@ -12,6 +12,7 @@ sha256sums=('8c214568c1211420b8b999de97eb1eafc7b3eca9fa58b29a54dd5ddfb99cbecc')
 
 build() {
   cd "$pkgname-$pkgver"
+  export GOPATH="$srcdir"
   go build -o spicetify
 }
 
