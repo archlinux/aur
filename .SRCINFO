@@ -11,6 +11,7 @@ pkgbase = r-vctrs
 	depends = r-glue
 	depends = r-rlang
 	depends = r-zeallot
+	depends = r-ellipsis
 	source = http://cran.r-project.org/src/contrib/vctrs_0.2.0.tar.gz
 	md5sums = 10d7a8d3fbc59cd4eb4fcea64eed3d85
 

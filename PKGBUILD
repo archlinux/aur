@@ -7,7 +7,7 @@ pkgdesc="Vector Helpers"
 arch=('x86_64')
 url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
 license=('GPL3')
-depends=('r' 'r-backports' 'r-digest' 'r-glue' 'r-rlang' 'r-zeallot')
+depends=('r' 'r-backports' 'r-digest' 'r-glue' 'r-rlang' 'r-zeallot' 'r-ellipsis')
 source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver}.tar.gz")
 md5sums=('10d7a8d3fbc59cd4eb4fcea64eed3d85')
 
