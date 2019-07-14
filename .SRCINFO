@@ -1,7 +1,7 @@
 pkgbase = configui-git
 	pkgdesc = A GUI for changing themes
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/sj1k/configui
 	arch = any
 	license = GPL3

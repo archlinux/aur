@@ -2,7 +2,7 @@
 # Creator: Steven J. Core <42Echo6Alpha at gmail dot com>
 pkgname=configui-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A GUI for changing themes"
 arch=('any')
