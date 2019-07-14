@@ -1,7 +1,7 @@
 pkgbase = ripperx
-	pkgdesc = GTK program to rip and encode mp3 files
+	pkgdesc = GTK2 program to rip and encode mp3 files
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ripperx.sourceforge.net/
 	arch = x86_64
 	license = GPL
