@@ -1,6 +1,6 @@
 pkgbase = pomello
 	pkgdesc = Stay Focused. Accomplish more.
-	pkgver = 0.10.0
+	pkgver = 0.10.7
 	pkgrel = 1
 	url = https://pomelloapp.com/
 	install = pomello.install
