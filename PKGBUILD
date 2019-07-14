@@ -3,7 +3,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.9.71
+pkgver=5.9.72
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -41,21 +41,16 @@ optdepends=(
 )
 options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
-        "suppress-qt-deprecation-errors.patch"
         "use-libtirpc-headers.patch"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch")
-sha256sums=('9815700d7ca3afbb0f9c0481fd5f04a2345f5fcab36a1c53a79d9aefe4b79fbe'
-            'de9924d5e3dd39182bdd724dac4d8e85996c9fcd8489691e0317d6b5ea265483'
+sha256sums=('065ee12164ac861eb7b9605fdd3d2e267b0af1a8bceaae83cdc0fce6f7b1df3e'
             '0dfa3014bc6a66989564c7da2d963681f5d129eb0be28153744693dd533e4909'
             '6c29e825e06d1c3aec4afd915718b8c46da705d1411a94f7c0f777b888a9b50d'
             '045e4b4c444d1a37dffdcecb87e5245188fadf68444f9a4b14207a5b98671344')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-
-  # https://github.com/kmatheussen/radium/issues/1226
-  patch -p1 < "${srcdir}/suppress-qt-deprecation-errors.patch"
 
   # glibc-2.27 deprecated legacy rpc, header files for libpd are in libtirpc
   patch -p1 < "${srcdir}/use-libtirpc-headers.patch"
