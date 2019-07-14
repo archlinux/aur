@@ -1,6 +1,6 @@
 pkgbase = pyznap
 	pkgdesc = ZFS snapshot tool written in Python
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 2
 	url = https://github.com/yboetz/pyznap
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = pyznap
 	makedepends = python3
 	depends = python
 	depends = python-paramiko
-	source = pyznap-1.1.2.tar.gz::https://github.com/yboetz/pyznap/archive/v1.1.2.tar.gz
-	sha256sums = f6a49a1abfa57391a4ca0dacc031017fb97c1d7983d807e9d7b42562a002a9fb
+	source = pyznap-1.2.0.tar.gz::https://github.com/yboetz/pyznap/archive/v1.2.0.tar.gz
+	sha256sums = 7c5b11c0dea1570cc8008188fa602b7b6a258571c07c709930bbdca708d3e944
 
 pkgname = pyznap
 
