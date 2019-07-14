@@ -5,8 +5,8 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=67.0.4
-pkgrel=2
+pkgver=68.0
+pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -25,15 +25,13 @@ provides=("firefox=$pkgver")
 conflicts=("firefox")
 options=(!emptydirs !makeflags)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
-        "https://gitlab.com/nikatar/for-aur/raw/master/firefox-appmenu/0001-bz-1521249.patch"
         $_pkgname.desktop firefox-symbolic.svg
         unity-menubar.patch)
-sha256sums=('b2fb2d3e64a6947ef4f8212b72649acf2aa2cd4c8f70548abb636dd581fd6dc5'
+sha256sums=('f7d61a08820088f1280d27f0808e355152c1dd0c94625fd077ced7319e522565'
             'SKIP'
-            'd0673786a6a1f1b9f6f66a3a1356afa33f1f18f59dabd92bd193c88c52a1d04c'
             'e8d2908727309a58bee9a3dc994e85140c5977b2d486381d67d5e22ad3830d28'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-            'cf4bed830bc271d00029f23b9c66f5bfa286532be0848ce8a045fce78ff66341')
+            '03684be59adac8ab83c4c5cad3156879983b6d1311555fcaa8476684730d94f8')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -55,8 +53,9 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 _repo=https://hg.mozilla.org/releases/mozilla-release
 _tag=FIREFOX_${pkgver//./_}_RELEASE
 
-_changeset=ea5154beddff08b919697e3bed6f38cfe3a3d82f
-_changeset_tag=FIREFOX_67_0_4_RELEASE
+_changeset=353628fec415324ca6aa333ab6c47d447ecc128e
+_changeset_tag=FIREFOX_68_0_RELEASE
+
 
 if [[ $1 == update_hgrev ]]; then
   _changeset=$(hg id -r $_tag --id $_repo --template '{node}')
@@ -71,9 +70,6 @@ fi
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
-  patch -Np1 -i ../0001-bz-1521249.patch
 
   # actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
