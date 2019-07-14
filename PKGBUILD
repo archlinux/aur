@@ -8,7 +8,7 @@
 # Currently it will not be a mandatory makedepend.
 
 pkgname=intel-media-sdk
-pkgver=2019.1.0
+pkgver=2019.2.0
 _srcver="${pkgver:2}"
 pkgrel=1
 epoch=1
@@ -26,7 +26,7 @@ install="${pkgname}.install"
 source=("https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-${_srcver}.tar.gz"
         'intel-media-sdk.conf'
         'intel-media-sdk.sh')
-sha256sums=('fbb617112bfdc6602a621f97a480c71dc272a4a433c66a3ce3f5c3695e7e91be'
+sha256sums=('ea33798ed905bbe574e3500e983ff9b412ac4496081867484362a34ec6907393'
             '63e76d28140486871a3ffc29ce19c84914583bf243201946c76943bf54df374a'
             '315ea6f304cf2b7b6a8aaabb0b8f71fcd480677c7fb9c8cbfa51c7830bb159bc')
 
@@ -38,6 +38,7 @@ build() {
     cd "MediaSDK-intel-mediasdk-${_srcver}/build"
     
     cmake \
+        -DCMAKE_BUILD_TYPE='None' \
         -DBUILD_ALL:BOOL='ON' \
         -DBUILD_TOOLS:BOOL='ON' \
         -DENABLE_ITT:BOOL='OFF' \
@@ -62,8 +63,8 @@ package() {
     make DESTDIR="$pkgdir" install
     
     # metrics_monitor
-    install -D -m755 __bin/release/libcttmetrics.so -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
-    install -D -m755 __bin/release/metrics_monitor  -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
+    install -D -m755 __bin/None/libcttmetrics.so -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
+    install -D -m755 __bin/None/metrics_monitor  -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
     ln -s ../share/mfx/samples/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib64/libcttmetrics.so"
     
     # ld.so and profile configuration files
