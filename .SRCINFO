@@ -1,0 +1,14 @@
+pkgbase = python-trytond_bank
+	pkgdesc = Tryton module with banks
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_bank/trytond_bank-5.2.0.tar.gz
+	sha256sums = 68ba3ad0c5379c6929a6c972cc8154bc68d8581a841820071b7de682ece63084
+
+pkgname = python-trytond_bank
+
