@@ -86,25 +86,25 @@ _remove_static_objects_ipp=false
 ########################################
 
 _year='2019'
-_v_a='3'
-_v_b='199'
+_v_a='4'
+_v_b='243'
 # year, version a and version b found in /opt/intel/compilers_and_libraries_YEAR_A_B
 
-_update='3'
+_update='4'
 
-pkgrel=4
+pkgrel=1
 
 
 _sp='cluster_edition'
-_icc_ver='19.0.3'
-_vtune_ver='2019.3.0.591499'
-_inspector_ver='2019.3.0.591484'
-_advisor_ver='2019.3.0.591490'
+_icc_ver='19.0.4'
+_vtune_ver='2019.4.0.597835'
+_inspector_ver='2019.4.0.597413'
+_advisor_ver='2019.4.0.597843'
 
 pkgver=${_year}.${_v_a}.${_v_b}
 
 # package download folders
-_dir_nr='15268'
+_dir_nr='15533'
 
 options=(strip libtool staticlibs)
 
@@ -137,7 +137,7 @@ source=(
 )
 
 
-sha256sums=('b5b022366d6d1a98dbb63b60221c62bc951c9819653ad6f5142192e89f78cf63'
+sha256sums=('32aee12de3b5ca14caf7578313c06b205795c67620f4a9606ea45696ee3b3d9e'
             '0704025fdfe40e4fce08e88b641128310c3a3b51332668aab60fb815b424f52b'
             '1a71b08245c42008b2edb32a4f0e7b7d1794573580f9608ac86d86cfb25799a4'
             '63b12c66d9c8c2310a7bbd5206c82ba9667fb6ffb3dc7e3f9304a17ed8c8fbcd'
