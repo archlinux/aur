@@ -2,7 +2,7 @@
 # Owner/Cofntributer: Xinzhao Xu <z2d@jifangcheng.com>
 
 pkgname=annie
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="A fast, simple and clean video downloader written in Go"
