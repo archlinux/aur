@@ -1,6 +1,6 @@
 pkgbase = eclipse-jboss
 	pkgdesc = JBoss application server developer tools plugins for Eclipse IDE
-	pkgver = 4.9.0.Final
+	pkgver = 4.12.0.Final
 	pkgrel = 1
 	url = http://tools.jboss.org/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = eclipse-jboss
 	license = BSD
 	depends = eclipse>=4.5.0
 	options = !strip
-	source = download.zip::http://download.jboss.org/jbosstools/static/photon/stable/updates/core/jbosstools-4.9.0.Final-updatesite-core.zip
-	sha256sums = 572f558fbb35d6503f74a36aaf0f160a273a32d7fcefa95bd49f0f37fbcbc6d5
+	source = download.zip::http://download.jboss.org/jbosstools/static/photon/stable/updates/core/jbosstools-4.12.0.Final-updatesite-core.zip
+	sha256sums = 609e1a0c0d6fa16864bee769faae9380ee6714eafa0a6a3081e95bb0fff40c65
 
 pkgname = eclipse-jboss
 
