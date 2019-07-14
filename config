@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.2.1-arch1 Kernel Configuration
+# Linux/x86 5.2.0-arch2 Kernel Configuration
 #
 
 #
@@ -350,7 +350,6 @@ CONFIG_JAILHOUSE_GUEST=y
 # CONFIG_MSTEAMROLLER is not set
 # CONFIG_MEXCAVATOR is not set
 # CONFIG_MZEN is not set
-# CONFIG_MZEN2 is not set
 # CONFIG_MPSC is not set
 # CONFIG_MATOM is not set
 # CONFIG_MCORE2 is not set
