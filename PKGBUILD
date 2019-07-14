@@ -1,3 +1,4 @@
+# Maintainer: mazzetta86 <mazzetta86@gmail.com>
 # Contributor: János Illés <ijanos@gmail.com>
 # Contributor: Borislav Lilov
 
@@ -24,7 +25,7 @@ elif [[ $CARCH == "armv7h" || $CARCH == "armv6h" ]]; then
 fi
 
 package() {
-  cd $srcdir
+  gunzip -k -f "$_HDSentinel.gz"
   install -m755 -D $_HDSentinel $pkgdir/usr/bin/hdsentinel || return 1
 }
 
