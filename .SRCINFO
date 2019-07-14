@@ -1,0 +1,14 @@
+pkgbase = python-trytond_party_pe
+	pkgdesc = Peruvian localization for the party module
+	pkgver = 4.2.3
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_party_pe/trytond_party_pe-4.2.3.tar.gz
+	sha256sums = b6186d77a8203a9e7f6b493048f3fd550dec364d945cfbb1a134674c9e3a0fc5
+
+pkgname = python-trytond_party_pe
+
