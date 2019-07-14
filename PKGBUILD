@@ -3,13 +3,12 @@
 # To enable the Instrumentation and Tracing Technology API (ittnotify):
 #   - install the package intel-seapi
 #   - in build(), change '-DENABLE_ITT:BOOL=' from 'OFF' to 'ON'
-#   - and then build intel-media-sdk
+#   - and then build intel-media-sdk-git
 # intel-seapi will be autodetected by the build system, serving as a makedepend.
 # Currently it will not be a mandatory makedepend.
 
 pkgname=intel-media-sdk-git
-_srcname=MediaSDK
-pkgver=2019.1.pre3.r81.ga94e220e
+pkgver=2019.2.pre3.r106.g4108fee8
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
@@ -38,15 +37,16 @@ sha256sums=('SKIP'
 export GIT_LFS_SKIP_SMUDGE='1'
 
 prepare() {
-    cd "$_srcname"
+    cd MediaSDK
     
+    git lfs install --local
     git lfs pull "${source[0]/git+/}"
     
     mkdir -p build
 }
 
 pkgver() {
-    cd "$_srcname"
+    cd MediaSDK
     
     local _prefix='intel-mediasdk-'
     
@@ -55,9 +55,10 @@ pkgver() {
 }
 
 build() {
-    cd "${_srcname}/build"
+    cd MediaSDK/build
     
     cmake \
+        -DCMAKE_BUILD_TYPE='None' \
         -DBUILD_ALL:BOOL='ON' \
         -DBUILD_TOOLS:BOOL='ON' \
         -DENABLE_ITT:BOOL='OFF' \
@@ -71,19 +72,19 @@ build() {
 }
 
 check() {
-    cd "${_srcname}/build"
+    cd MediaSDK/build
     
     make test
 }
 
 package() {
-    cd "${_srcname}/build"
+    cd MediaSDK/build
     
     make DESTDIR="$pkgdir" install
     
     # metrics_monitor
-    install -D -m755 __bin/release/libcttmetrics.so -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
-    install -D -m755 __bin/release/metrics_monitor  -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
+    install -D -m755 __bin/None/libcttmetrics.so -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
+    install -D -m755 __bin/None/metrics_monitor  -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
     ln -s ../share/mfx/samples/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib64/libcttmetrics.so"
     
     # ld.so and profile configuration files
@@ -92,6 +93,6 @@ package() {
     install -D -m755 intel-media-sdk-git.sh   -t "${pkgdir}/etc/profile.d"
     
     # license
-    cd "${srcdir}/${_srcname}"
+    cd "${srcdir}/MediaSDK"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
