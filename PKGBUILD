@@ -1,4 +1,5 @@
-# Maintainer: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
+# Maintainer: James Brink <brink.james@gmail.com>
+# Contributor: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
 # Contributor: p <parimal@beyond8labs.com>
 # Contributor: Victor <victor@xirion.net>
 # Contributor: Jan-Tarek Butt <tarek AT ring0 DOT de>
@@ -21,8 +22,6 @@
 # Contributor: Trent
 # Contributor: urxvtcd-256
 
-
-
 #=========================================================================================================#
 #                                          Build Options                                                  #
 #=========================================================================================================#
@@ -36,51 +35,43 @@ _use_system_clang="ON"
 _use_python2="OFF"
 
 _neovim="$NEOVIM_YOUCOMPLETEME"
-#=========================================================================================================#
-#=========================================================================================================#
-
-
 
 #=========================================================================================================#
 #                                    Default PKGBUILD Configuration                                       #
 #=========================================================================================================#
 pkgname=vim-youcompleteme-git
-pkgver=r2478.c25e449f
+pkgver=r2535.04c35051
 pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgrel=1
 pkgdesc="A code-completion engine for Vim"
-arch=('i686' 'x86_64')
-url='http://valloric.github.com/YouCompleteMe/'
+arch=('x86_64')
+url='https://ycm-core.github.io/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
-depends=('boost' 'boost-libs' 'ncurses5-compat-libs' 'python' 'python2' 'nodejs' 'vim' 'clang')
+depends=('boost' 'boost-libs' 'python' 'python2' 'nodejs' 'vim' 'clang')
 makedepends=('cmake' 'git' 'make' 'curl')
 install="install.sh"
 source=(
-'git+https://github.com/Valloric/YouCompleteMe.git' #ycm
-'git+https://github.com/ross/requests-futures.git'  #ycm
-'git+https://github.com/Valloric/ycmd.git'          #ycm
-'git+https://github.com/requests/requests.git'  #ycmd
-'git+https://github.com/kjd/idna.git'  #ycmd
-'git+https://github.com/certifi/python-certifi.git'  #ycmd
-'git+https://github.com/chardet/chardet.git'  #ycmd
-'git+https://github.com/urllib3/urllib3.git'  #ycmd
-'git+https://github.com/bottlepy/bottle.git'  #ycmd
-'git+https://github.com/slezica/python-frozendict.git'    #ycmd
-'git+https://github.com/PythonCharmers/python-future.git' #ycmd
-'git+https://github.com/davidhalter/jedi.git'             #jedi
-'git+https://github.com/davidhalter/parso.git'            #jedi
-'git+https://github.com/Pylons/waitress.git'              #ycmd,jediHTTP
-'git+https://github.com/micbou/regex.git'  #ycmd
-)
+	'git+https://github.com/bottlepy/bottle.git'
+	'git+https://github.com/certifi/python-certifi.git'
+	'git+https://github.com/chardet/chardet.git'
+	'git+https://github.com/davidhalter/jedi.git'
+	'git+https://github.com/davidhalter/parso.git'
+	'git+https://github.com/kjd/idna.git'
+	'git+https://github.com/micbou/regex.git'
+	'git+https://github.com/Pylons/waitress.git'
+	'git+https://github.com/PythonCharmers/python-future.git'
+	'git+https://github.com/requests/requests.git'
+	'git+https://github.com/ross/requests-futures.git'
+	'git+https://github.com/slezica/python-frozendict.git'
+	'git+https://github.com/urllib3/urllib3.git'
+	'git+https://github.com/ycm-core/ycmd.git'
+	'git+https://github.com/ycm-core/YouCompleteMe.git')
+
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-#=========================================================================================================#
-#=========================================================================================================#
-
-
 
 #=========================================================================================================#
 #                                     Applying PKBUILD Build Options                                      #
@@ -89,39 +80,28 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP
 if [[ "$_gocode" == "y" ]]; then
 	# ycmd
 	source+=('git+https://github.com/mdempsky/gocode.git'
-			 'git+https://github.com/rogpeppe/godef.git')
+		'git+https://github.com/rogpeppe/godef.git')
 	sha256sums+=('SKIP' 'SKIP')
 	makedepends+=('go')
 fi
 
-
+# TODO use the existing omnisharp AUR package if possible
 if [[ "$_omnisharp" == "y" ]]; then
-	source+=( 'git+https://github.com/nosami/OmniSharpServer.git'       #ycmd
-			 'git+https://github.com/icsharpcode/NRefactory.git'       #OmniSharpServer
-			 'git+https://github.com/jbevain/cecil.git'                #OmniSharpServer
-			)
-	sha256sums+=('SKIP' 'SKIP' 'SKIP')
-	depends+=('mono')
-	makedepends+=('mono')
+	source+=('https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.33.0/omnisharp.http-linux-x64.tar.gz')
+	sha256sums+=('74cecc6265969d312b8124cb88152cdd9874f1027957d88ec0268d9c3e6cd3f1')
+	depends+=('mono' 'libuv')
+	makedepends+=('mono' 'libuv')
 fi
 
 if [[ "$_rust" == "y" ]]; then
-	# ycmd
-	source+=( 'git+https://github.com/jwilm/racerd.git')
-	sha256sums+=('SKIP')
-	depends+=('rust')
-	makedepends+=('cargo')
+	depends+=('rustup')
+	makedepends+=('rustup')
 fi
 
 if [[ "$_tern" == "y" ]]; then
 	# ycmd
 	makedepends+=('npm')
 fi
-
-#=========================================================================================================#
-#=========================================================================================================#
-
-
 
 #=========================================================================================================#
 #                                           Utility Functions                                             #
@@ -131,17 +111,17 @@ gitprepare() {
 	local cd_dir=$1
 	local git_prefix=$2
 	local c=0
-	for val in "$@" ; do
+	for val in "$@"; do
 		if [ $c -gt 1 ]; then
 			local feed[$c]=$val
 		fi
-		c=$(( c + 1 ))
+		c=$((c + 1))
 	done
 
 	cd "$srcdir/$cd_dir" || exit
 
 	git submodule init
-	for gitsubvar in "${feed[@]}" ; do
+	for gitsubvar in "${feed[@]}"; do
 		git config submodule."$git_prefix$gitsubvar".url "$srcdir/$gitsubvar"
 	done
 
@@ -150,35 +130,28 @@ gitprepare() {
 }
 
 #=========================================================================================================#
-#=========================================================================================================#
-
-
-
-#=========================================================================================================#
 #                                     Standard PKGBUILD Functions                                         #
 #=========================================================================================================#
 
 prepare() {
-
 	# Add the java completion engine dynamically...
 	if [[ "$_java" == "y" ]]; then
-		msg2 'Parsing out the JDTLS package version from upstream...'
-			local jdtls_package_name="jdt-language-server"
-			local jdtls_milestone=`egrep '^JDTLS_MILESTONE' "$srcdir/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g"`
-			local jdtls_buildstamp=`egrep '^JDTLS_BUILD_STAMP' "$srcdir/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g"`
+		echo 'Parsing out the JDTLS package version from upstream...'
+		local jdtls_package_name="jdt-language-server"
+		local jdtls_milestone=$(egrep '^JDTLS_MILESTONE' "$srcdir/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g")
+		local jdtls_buildstamp=$(egrep '^JDTLS_BUILD_STAMP' "$srcdir/ycmd/build.py" | sed -e "s/.* = //g" -e "s/'//g")
 
-			if [[ "$jdtls_milestone" != "" ]] && [[ "$jdtls_buildstamp" != "" ]]; then
-				msg2 'JDTLS package version matched. Downloading...'
-				curl -LO http://download.eclipse.org/jdtls/milestones/${jdtls_milestone}/${jdtls_package_name}-${jdtls_milestone}-${jdtls_buildstamp}.tar.gz
-				tar xf ${jdtls_package_name}-${jdtls_milestone}-${jdtls_buildstamp}.tar.gz
-			else
-				error 'Mismatched JDTLS version'
-				exit 1
-			fi
+		if [[ "$jdtls_milestone" != "" ]] && [[ "$jdtls_buildstamp" != "" ]]; then
+			echo 'JDTLS package version matched. Downloading...'
+			curl -LO http://download.eclipse.org/jdtls/milestones/${jdtls_milestone}/${jdtls_package_name}-${jdtls_milestone}-${jdtls_buildstamp}.tar.gz
+			tar xf ${jdtls_package_name}-${jdtls_milestone}-${jdtls_buildstamp}.tar.gz
+		else
+			echo 'Mismatched JDTLS version'
+			exit 1
+		fi
 	fi
 
-
-	msg2 'Setting up Git submodules...'
+	echo 'Setting up Git submodules...'
 
 	local YouCompleteMe=("requests-futures" "ycmd" "python-future")
 	local YouCompleteMeRequestsDeps=("idna" "python-certifi" "chardet" "urllib3" "requests")
@@ -192,7 +165,7 @@ prepare() {
 	fi
 
 	if [[ "$_rust" == "y" ]]; then
-		ycmd+=("racerd")
+		ycmd+=("rust-completer")
 	fi
 
 	gitprepare "YouCompleteMe/third_party/ycmd" "third_party/" "${ycmd[@]}"
@@ -204,64 +177,60 @@ prepare() {
 	gitprepare "YouCompleteMe/third_party/ycmd" "third_party/requests_deps" "${ycmdRequestsDeps[@]}"
 
 	if [[ "$_gocode" == "y" ]]; then
-                gitprepare "YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/mdempsky" "" "gocode"
-                gitprepare "YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/rogpeppe" "" "godef"
+		ycmd+=("go-completer")
 	fi
 
 	if [[ "$_omnisharp" == "y" ]]; then
-		local OmniSharpServer=("NRefactory" "cecil")
-		gitprepare "YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer" "" "${OmniSharpServer[@]}"
+		cd "$srcdir" || exit
+		cp -r omnisharp YouCompleteMe/third_party/ycmd/third_party/omnisharp-roslyn
 	fi
 }
 
-
 build() {
-	msg2 'Purging unneeded files...'
+	echo 'Purging unneeded files...'
 	rm -r "$srcdir/YouCompleteMe/python/ycm/tests"
 
-	msg2 'Building ycmd...' # BuildYcmdLibs()
+	echo 'Building ycmd...' # BuildYcmdLibs()
 	mkdir -p "$srcdir/ycmd_build"
 	cd "$srcdir/ycmd_build" || exit
 	cmake -G "Unix Makefiles" -DUSE_PYTHON2=$_use_python2 -DUSE_SYSTEM_LIBCLANG="$_use_system_clang" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
 	make ycm_core
 
-	if [[ "$_omnisharp" == "y" ]]; then
-		msg2 'Building OmniSharp completer...' # BuildOmniSharp()
-		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer" || exit
-		xbuild /property:Configuration=Release
-	else
-		msg2 'Skipping OmniSharp completer...'
-	fi
-
 	if [[ "$_gocode" == "y" ]]; then
-		export GOPATH="$GOPATH:$srcdir/YouCompleteMe/third_party/ycmd/third_party/go"
-		msg2 'Building Gocode completer...' # BuildGoCode()
-		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/mdempsky/gocode" || exit
-		go build
-		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/rogpeppe/godef" || exit
+		cd "$srcdir"/YouCompleteMe/third_party/ycmd/third_party/go/src/golang.org/x/tools/cmd/gopls || exit
 		go build
 	else
-		msg2 'Skipping Gocode completer...'
+		echo 'Skipping Gocode completer...'
 	fi
 
+	# TODO there has to be a better way of doing this.
 	if [[ "$_rust" == "y" ]]; then
-		msg2 'Building Rust completer...' # BuildRacerd()
-		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/racerd" || exit
-		cargo build --release
+		echo 'Building Rust completer...'
+		if [ -d "$srcdir/YouCompleteMe/third_party/ycmd/third_party/rls" ]
+		then
+			rm -rf "$srcdir/YouCompleteMe/third_party/ycmd/third_party/rls"
+		fi
+		mkdir -p "$srcdir/rust-tmp"
+		cd "$srcdir/rust-tmp" || exit
+		export RUSTUP_HOME="$(pwd)"
+		rustup toolchain install nightly
+		rustup default nightly
+		rustup component add rls rust-analysis rust-src
+		cp -rv "$srcdir/rust-tmp/toolchains/nightly-$CARCH-unknown-linux-gnu" "$srcdir/YouCompleteMe/third_party/ycmd/third_party/rls"
 	else
-		msg2 'Skipping Rust completer...'
+		echo 'Skipping Rust completer...'
 	fi
 
 	if [[ "$_typescript" == "y" ]]; then
-		msg2 'Building Typescipt completer...'
-		cd "$srcdir/YouCompleteMe/third_party/ycmd/"
+		echo 'Building Typescipt completer...'
+		cd "$srcdir/YouCompleteMe/third_party/ycmd/" || exit
 		npm install -g --prefix third_party/tsserver typescript
 	else
-		msg2 'Skipping Typescipt completer...'
+		echo 'Skipping Typescipt completer...'
 	fi
 
 	if [[ "$_tern" == "y" ]]; then
-		msg2 'Building Tern completer...' # SetUpTern()
+		echo 'Building Tern completer...'
 		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" || exit
 		if [[ "$_use_python2" == "ON" ]]; then
 			npm install --production --python=python2
@@ -269,11 +238,11 @@ build() {
 			npm install --production --python=python3
 		fi
 	else
-		msg2 'Skipping Tern completer...'
+		echo 'Skipping Tern completer...'
 	fi
 
 	if [[ "$_java" == "y" ]]; then
-		msg2 'Injecting Java completer...'
+		echo 'Injecting Java completer...'
 
 		# Remove stale java completer data if any
 		rm -rf "$srcdir/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/repository"
@@ -282,13 +251,11 @@ build() {
 		mkdir -p "$srcdir/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/repository"
 		mv "$srcdir"/{config_linux,features,plugins} "$srcdir/YouCompleteMe/third_party/ycmd/third_party/eclipse.jdt.ls/target/repository"
 	else
-		msg2 'Skipping Java completer...'
+		echo 'Skipping Java completer...'
 	fi
 }
 
-
 package() {
-
 	local vimfiles_dir=usr/share/vim/vimfiles
 	if [[ "$_neovim" == "y" ]]; then
 		vimfiles_dir=usr/share/nvim/runtime
@@ -316,24 +283,26 @@ package() {
 		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/jedi_deps"
 
 	if [[ "$_omnisharp" == "y" ]]; then
-		mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin/Release"
-		cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin/Release" \
-			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin"
+		cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/omnisharp-roslyn" \
+			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/omnisharp-roslyn"
+
+		# There seems to be a case senitivity issue with the packaged release of omnisharp-roslyn
+		# and the filename that ycm expects so we link it.
+		if [ -f "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/omnisharp-roslyn/OmniSharp.exe" ]
+		then
+			ln -s "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/omnisharp-roslyn/OmniSharp.exe" \
+			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/omnisharp-roslyn/Omnisharp.exe"
+		fi
 	fi
 
 	if [[ "$_gocode" == "y" ]]; then
-		mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/go/src/github.com/mdempsky/gocode"
-		mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/go/src/github.com/rogpeppe/godef"
-		cp "$srcdir/YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/mdempsky/gocode/gocode" \
-		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/go/src/github.com/mdempsky/gocode/gocode"
-		cp "$srcdir/YouCompleteMe/third_party/ycmd/third_party/go/src/github.com/rogpeppe/godef/godef" \
-		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/go/src/github.com/rogpeppe/godef/godef"
+		cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/go" \
+			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/go"
 	fi
 
 	if [[ "$_rust" == "y" ]]; then
-		mkdir -p "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/racerd/target/release"
-		cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/racerd/target/release/racerd" \
-			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/racerd/target/release/racerd"
+		cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/rls" \
+			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/rls"
 	fi
 
 	if [[ "$_tern" == "y" ]]; then
@@ -342,8 +311,8 @@ package() {
 	fi
 
 	if [[ "$_typescript" == "y" ]]; then
-	  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tsserver" \
-		  "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party"
+		cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tsserver" \
+			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party"
 	fi
 
 	if [[ "$_java" == "y" ]]; then
@@ -367,8 +336,4 @@ package() {
 	else
 		python3 -m compileall "$pkgdir" || :
 	fi
-
 }
-
-#=========================================================================================================#
-#=========================================================================================================#
