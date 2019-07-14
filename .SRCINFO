@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_dunning_fee
+	pkgdesc = Tryton module for account dunning fee
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_dunning_fee/trytond_account_dunning_fee-5.2.0.tar.gz
+	sha256sums = 5b4f9f8bcd3e1780e6991123b0840af7a2e9512ab6d2380e057c9114d37f2569
+
+pkgname = python-trytond_account_dunning_fee
+
