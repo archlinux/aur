@@ -1,0 +1,12 @@
+pkgbase = cncnet
+	pkgdesc = Command & Conquer Online - CnCNet
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://cncnet.org/
+	arch = any
+	depends = wine
+	source = cncnet_1.0.tar.xz::https://downloads.cncnet.org/cncnet-1.0-1-any.pkg.tar.xz
+	sha256sums = ec900e3fd7642b7ec79cb9f073f93f63a160030c1b80504d1aef32b5aea85ea4
+
+pkgname = cncnet
+
