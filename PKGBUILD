@@ -4,11 +4,12 @@ _pyname=xxhash
 pkgname=python2-${_pyname}
 _pkgname=python-${_pyname}
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python2 binding for xxHash'
 arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/${_pyname}/"
 depends=('python2')
+makedepends=('git' 'python2-setuptools')
 license=('BSD')
 source=("python2-xxhash-${pkgver}::git+https://github.com/ifduyue/python-${_pyname}/#tag=v${pkgver}")
 sha256sums=('SKIP')
