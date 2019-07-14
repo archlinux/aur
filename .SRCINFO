@@ -1,0 +1,14 @@
+pkgbase = python-trytond_party_relationship
+	pkgdesc = Party Relationship module for Tryton
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_party_relationship/trytond_party_relationship-5.2.0.tar.gz
+	sha256sums = 9e3ffb61585ef4af4151d8d8336b7ed7271f2a478e741dc73779bcdd7108788d
+
+pkgname = python-trytond_party_relationship
+
