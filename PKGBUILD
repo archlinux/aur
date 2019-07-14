@@ -2,9 +2,9 @@
 
 pkgname=libilbc
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A friendly copy of the iLBC codec from the WebRTC project'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/TimothyGu/libilbc/'
 license=('BSD')
 depends=('glibc')
