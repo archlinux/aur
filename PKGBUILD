@@ -17,10 +17,10 @@
 #
 pkgbase="zfs-linux-vfio-git"
 pkgname=("zfs-linux-vfio-git" "zfs-linux-vfio-git-headers")
-_commit='1086f54219ebcdebf05b8f6bd10142c43c1f4f3f'
-_zfsver="2019.07.05.r5245.g1086f5421"
-_kernelver="5.1.15.arch1-1"
-_extramodules="5.1.15-arch1-1-vfio"
+_commit='e5db31349484e5e859c7a942eb15b98d68ce5b4d'
+_zfsver="2019.07.12.r5254.ge5db31349"
+_kernelver="5.2.arch2-1"
+_extramodules="5.2.0-arch2-1-vfio"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
