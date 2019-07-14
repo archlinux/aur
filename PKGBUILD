@@ -5,12 +5,12 @@
 
 pkgname=tornado
 pkgver=1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Clone of a C64 game, the goal is to destroy the opponent's house with certain weather phenomena"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://kiza.kcore.de/software/tornado/"
-source=("http://kiza.kcore.de/software/tornado/download/$pkgname-$pkgver.tar.gz")
+url="https://github.com/kouya/tornado"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 depends=('ncurses')
 optdepends=('wget: for submitting highscores online')
 
@@ -25,4 +25,4 @@ package() {
   install -D -m 0755 tornado "$pkgdir/usr/bin/tornado"
 }
 
-sha256sums=('d0506377c9b80581a6167a9d97233638678943bbc0a32fb714e09cf0e918b791')
+sha256sums=('0f0a0563ed1831eac46a2c93f67a60fd43eb53a3aea3327b544533742003c5f0')
