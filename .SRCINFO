@@ -1,0 +1,13 @@
+pkgbase = python-trytond_carrier_percentage
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_carrier_percentage/trytond_carrier_percentage-5.2.0.tar.gz
+	sha256sums = 8071be18d903991763cd1ddcd92b7d288f9dbfcb8d839877a5f86cfcca7e4b1d
+
+pkgname = python-trytond_carrier_percentage
+
