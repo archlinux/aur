@@ -1,0 +1,18 @@
+post_install(){
+    cat << EOF
+    >>>
+    >>> Installation:
+    >>>
+    >>> 1) If you don't already have it, enable and start pcscd: systemctl enable --now pcscd.service
+    >>> 2) Connect your smartcard reader without any smartcard in it and run: pcsc_scan
+    >>> 3) It should show info about your smartcard and tell you that there isn't any in it. Now insert your DNIe and it
+    >>> should show info about it. Now you know that your DNIe can be read by your smartcard reader.
+    >>> 4) To use your DNIe on Firefox, search for dnietif in your desktop environment applications launcher, run it
+    >>> and follow instructions
+    >>>
+EOF
+}
+
+op=$1
+shift
+$op $*
