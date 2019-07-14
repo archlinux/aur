@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_statement
+	pkgdesc = Tryton module with account statements
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_statement/trytond_account_statement-5.2.0.tar.gz
+	sha256sums = ec16907164e259a3db08c42298f30bb22395ebdcb9e6a0c632d67b0e243ea674
+
+pkgname = python-trytond_account_statement
+
