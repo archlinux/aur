@@ -29,7 +29,7 @@ prepare() {
 
 build() {
 	cd build
-	cmake ../chigraph-gui -DCMAKE_BUILD_TYPE=Release -DCG_USE_SYSTEM_CHIGRAPH=ON -DCMAKE_INSTALL_PREFIX=/usr
+	cmake ../chigraph-gui -DCMAKE_BUILD_TYPE=Release -DCG_USE_SYSTEM_CHIGRAPH=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
 	make -j`nproc`
 }
 
