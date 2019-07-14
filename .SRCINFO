@@ -9,7 +9,8 @@ pkgbase = ksmoothdock
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = python
-	depends = plasma-workspace
+	depends = kactivities
+	depends = kxmlgui
 	source = ksmoothdock-5.14::https://github.com/dangvd/ksmoothdock/archive/v5.14.tar.gz
 	sha256sums = 7390770bb288f4844cc0532c8f569324fe46d8691ae3b315bd32f45c8cfced48
 
