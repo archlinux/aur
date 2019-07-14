@@ -13,7 +13,7 @@ pkgbase = dogecoin-daemon
 	validpgpkeys = 1DDC450B45DB5ADCCF5DDA7F8E4217C6D47D946D
 	sha256sums = e5fc22472f209a7bbafbfb462404682eabfa495a19d97bb46fdc4619be7a78a9
 	sha256sums = eae13ea082a6431bb9552b5bddd8d1a5100ba883540c1e520685272d4307ca7f
-	sha256sums = 0fc1bf30a981dca11f7fa7cb81c87bbc5342c3dbcd63b9ef6e0bff766c78eb31
+	sha256sums = eaf022a60cb3297a31148b047bd473eef5bb08ec011f6ed29869061a03342d94
 
 pkgname = dogecoin-daemon
 	pkgdesc = Dogecoin is a peer-to-peer network based digital currency - daemon
