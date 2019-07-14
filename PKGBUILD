@@ -6,8 +6,8 @@
 
 pkgname=davs2
 pkgver=1.6
-pkgrel=6
-arch=('i686' 'x86_64')
+pkgrel=7
+arch=('x86_64')
 pkgdesc='Open-Source decoder of AVS2-P2/IEEE1857.4 video coding standard'
 url='https://github.com/pkuvcl/davs2/'
 license=('GPL')

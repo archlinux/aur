@@ -1,9 +1,8 @@
 pkgbase = davs2
 	pkgdesc = Open-Source decoder of AVS2-P2/IEEE1857.4 video coding standard
 	pkgver = 1.6
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/pkuvcl/davs2/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = yasm
