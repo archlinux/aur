@@ -17,7 +17,7 @@ sha512sums=('d9f29a6e4966d2d740ffa2357bb3c62cc71a3dec0ec57813101d0633fd332664347
             '7dd5b37cd81a7001d5f3d09461889294b6b38bcfb7274a4a5c0c558492454ad58bb03822de1ce023c7221b91886f5eff0b07a56ea88a34774e971a4ee1773b26')
 
 package() {
-  install -D -m 755 "${srcdir}/fanshim-${pkgver}.py" "${pkgdir}/usr/bin/fanshim"
+  install -D -m 755 "${srcdir}/fanshim-${pkgver}-${pkgrel}.py" "${pkgdir}/usr/bin/fanshim"
   install -D -m 644 "${srcdir}/fanshim.service" "${pkgdir}/usr/lib/systemd/system/fanshim.service"
 }
 
