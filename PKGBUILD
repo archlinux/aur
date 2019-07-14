@@ -2,7 +2,7 @@
 pkgname=trytond
 pkgver=5.2.2
 _pkgdir=5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A three-tiers high-level general purpose application platform (server application)"
 arch=('any')
 url="http://www.tryton.org/"
