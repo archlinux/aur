@@ -11,7 +11,8 @@ license=('GPL3')
 groups=()
 depends=('python'
 	 'python-dbus'
-	 'pygtk')
+	 'pygtk'
+	 'python-yaml')
 makedepends=()
 checkdepends=()
 optdepends=()
