@@ -16,17 +16,17 @@ optdepends=('hyphen: Auto-hyphenation support'
 			'espeak-hg: Text-to-speech support; also voice package needed')
 #source=(https://github.com/johnfactotum/${pkgname}/archive/${pkgver}.tar.gz)
 source=($pkgname::git+https://github.com/johnfactotum/$pkgname.git)
-provides=("$pkgname")
-conflicts=("$pkgname-git")
+provides=($pkgname)
+conflicts=($pkgname-git)
 sha256sums=('SKIP')
 	
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd $srcdir/$pkgname
 	git describe --tags
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd $srcdir/$pkgname
 	git checkout -b $pkgver
 	git pull origin $pkgver
 	meson build --prefix=/usr
@@ -34,6 +34,6 @@ build() {
 }
 
 package(){
-	cd "$srcdir/$pkgname"
-	DESTDIR="$pkgdir" ninja -C build install
+	cd $srcdir/$pkgname
+	DESTDIR=$pkgdir ninja -C build install
 }
