@@ -1,0 +1,14 @@
+pkgbase = python-trytond_company
+	pkgdesc = Tryton module with companies and employees
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_company/trytond_company-5.2.0.tar.gz
+	sha256sums = a60c743cd4e0ef188e97f0c4fa841729eff11cf9812711581b98cec47cab73a5
+
+pkgname = python-trytond_company
+
