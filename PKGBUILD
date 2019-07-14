@@ -2,7 +2,7 @@
 # Based on the 'community/openttd' PKGBUILD by: Vesa Kaihlavirta <vegai@iki.fi>
 
 pkgname=openttd-jgrpp
-pkgver=0.31.2
+pkgver=0.31.3
 pkgrel=1
 pkgdesc="OpenTTD with JGR's patch pack."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
 license=('GPL')
 depends=('libpng' 'sdl' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-file-utils' 'tar')
 source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-${pkgver}.tar.gz")
-sha256sums=('9c954259d86c940f62a7b78db5d4bf84f49f8b1eda8523c6deb4827f05c3ce22')
+sha256sums=('52d941a1a34d4304df79897ffce4cebcdeaf9b5491129841c9f227bdab47f6fe')
 
 _dirname=OpenTTD-patches-jgrpp
 
