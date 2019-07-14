@@ -92,7 +92,7 @@ _v_b='199'
 
 _update='3'
 
-pkgrel=3
+pkgrel=4
 
 
 _sp='cluster_edition'
@@ -105,7 +105,6 @@ pkgver=${_year}.${_v_a}.${_v_b}
 
 # package download folders
 _dir_nr='15268'
-_mpi_dir_nr='15260'
 
 options=(strip libtool staticlibs)
 
@@ -118,7 +117,6 @@ _parallel_studio_xe_dir="parallel_studio_xe${_year:+_${_year}}${_update:+_update
 
 source=(
   "http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/${_dir_nr}/${_parallel_studio_xe_dir}.tgz"
-  "http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/${_mpi_dir_nr}/l_mpi_${_year}.${_v_a}.${_v_b}.tgz"
   'intel_compilers.sh'
   'intel_vtune-amplifier.sh'
   'intel_advisor.sh'
@@ -140,7 +138,6 @@ source=(
 
 
 sha256sums=('b5b022366d6d1a98dbb63b60221c62bc951c9819653ad6f5142192e89f78cf63'
-            '5304346c863f64de797250eeb14f51c5cfc8212ff20813b124f20e7666286990'
             '0704025fdfe40e4fce08e88b641128310c3a3b51332668aab60fb815b424f52b'
             '58bced75693b2f73480b89242b33c9a0ce565d6a12a17f84067bab351bde9be7'
             '63b12c66d9c8c2310a7bbd5206c82ba9667fb6ffb3dc7e3f9304a17ed8c8fbcd'
@@ -187,17 +184,10 @@ extract_rpms() {
   done
 }
 
-extract_mpi_rpms() {
-  for rpm_file in ${mpi_rpm_dir}/$1 ; do
-    extract_rpm ${rpm_file} $2
-  done
-}
-
 set_build_vars() {
   _pkg_ver=${pkgver}
   _composer_xe_dir="compilers_and_libraries_${_year}.${_v_a}.${_v_b}"
   rpm_dir=${srcdir}/${_parallel_studio_xe_dir}/rpm
-  mpi_rpm_dir=${srcdir}/l_mpi_${_year}.${_v_a}.${_v_b}/rpm
   xe_build_dir=${srcdir}/cxe_build
   base_dir=`realpath ${srcdir}/..`
   _man_dir=${xe_build_dir}/usr/share/man/man1
@@ -591,7 +581,6 @@ package_intel-mpi() {
 
   msg2 "Extracting RPMS"
   extract_rpms 'intel-mpi-*.rpm'  $xe_build_dir
-  extract_mpi_rpms 'intel-mpi-sdk-*.rpm'  $xe_build_dir
 
   msg2 "Updating scripts"
   cd ./opt/intel/${_composer_xe_dir}/linux/mpi/${_i_arch}/bin
