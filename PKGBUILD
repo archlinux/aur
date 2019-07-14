@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 pkgdesc="A visual programming language"
 url='https://github.com/chigraph/chigraph'
 
-conflicts=("chigraph-git")
+conflicts=("chigraph")
 
 depends=('libgit2' 'llvm-libs' 'lldb' 'boost-libs')
 makedepends=('cmake' 'boost' 'llvm' 'clang')
