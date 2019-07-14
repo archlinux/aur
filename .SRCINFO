@@ -1,0 +1,14 @@
+pkgbase = python-trytond_authentication_sms
+	pkgdesc = Tryton module to authenticate users via SMS
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_authentication_sms/trytond_authentication_sms-5.2.0.tar.gz
+	sha256sums = 5f30690718bea41b0c3999b096987673d5f87a5552fec264938eddce28fe6ba6
+
+pkgname = python-trytond_authentication_sms
+
