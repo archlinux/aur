@@ -1,6 +1,6 @@
 pkgbase = nvidia-full-beta
 	pkgdesc = Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)
-	pkgver = 430.26
+	pkgver = 430.34
 	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = nvidia-full-beta
 	makedepends = linux
 	makedepends = linux-headers
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/430.26/NVIDIA-Linux-x86_64-430.26.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/430.34/NVIDIA-Linux-x86_64-430.34.run
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils-full-beta.sysusers
 	source = FS62142.patch
 	source = nvidia-utils-full-beta-change-vulkan-driver-path.patch
 	source = nvidia-settings-full-beta-change-desktop-paths.patch
-	sha256sums = 66ab94a94436732e6e9e8a95a0f5418759a4c2abd2ede65a9472a8de08edcee6
+	sha256sums = 2b0d584025affb8cffb7440087dd038ebd5a9d2e0d88bbbf7a6b451a5f117d30
 	sha256sums = 089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182
 	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
 	sha256sums = c961006882afb691410c017c239e2c2ef61badb88f15735d37112b513ef0a99d
@@ -22,10 +22,10 @@ pkgbase = nvidia-full-beta
 	sha256sums = 633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a
 
 pkgname = nvidia-full-beta
-	depends = nvidia-utils-full-beta>=430.26
+	depends = nvidia-utils-full-beta>=430.34
 	depends = libglvnd
-	provides = nvidia=430.26
-	provides = nvidia-beta=430.26
+	provides = nvidia=430.34
+	provides = nvidia-beta=430.34
 	conflicts = nvidia
 
 pkgname = nvidia-utils-full-beta
@@ -37,11 +37,11 @@ pkgname = nvidia-utils-full-beta
 	optdepends = nvidia-settings-full-beta: for the configuration tool
 	optdepends = xorg-server-devel: for nvidia-xconfig
 	optdepends = opencl-nvidia-full-beta: for OpenCL support
-	provides = nvidia-utils=430.26
+	provides = nvidia-utils=430.34
 	provides = vulkan-driver
 	provides = opengl-driver
-	provides = nvidia-libgl=430.26
-	provides = nvidia-libgl-beta=430.26
+	provides = nvidia-libgl=430.34
+	provides = nvidia-libgl-beta=430.34
 	conflicts = nvidia-utils
 	conflicts = nvidia-libgl
 	replaces = nvidia-libgl
@@ -49,18 +49,18 @@ pkgname = nvidia-utils-full-beta
 pkgname = opencl-nvidia-full-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-full-beta'
 	depends = zlib
-	depends = nvidia-utils-full-beta>=430.26
+	depends = nvidia-utils-full-beta>=430.34
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-nvidia=430.26
+	provides = opencl-nvidia=430.34
 	provides = opencl-driver
 	conflicts = opencl-nvidia
 
 pkgname = nvidia-settings-full-beta
 	pkgdesc = Tool for configuring the NVIDIA graphics driver for 'nvidia-full-beta'
-	depends = nvidia-utils-full-beta>=430.26
+	depends = nvidia-utils-full-beta>=430.34
 	depends = gtk3
-	provides = nvidia-settings=430.26
-	provides = nvidia-settings-beta=430.26
+	provides = nvidia-settings=430.34
+	provides = nvidia-settings-beta=430.34
 	conflicts = nvidia-settings
 
 pkgname = lib32-nvidia-utils-full-beta
@@ -68,13 +68,13 @@ pkgname = lib32-nvidia-utils-full-beta
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
 	depends = lib32-libglvnd
-	depends = nvidia-utils-full-beta>=430.26
+	depends = nvidia-utils-full-beta>=430.34
 	optdepends = lib32-opencl-nvidia-full-beta: for OpenCL support
-	provides = lib32-nvidia-utils=430.26
+	provides = lib32-nvidia-utils=430.34
 	provides = lib32-vulkan-driver
 	provides = lib32-opengl-driver
-	provides = lib32-nvidia-libgl=430.26
-	provides = lib32-nvidia-libgl-beta=430.26
+	provides = lib32-nvidia-libgl=430.34
+	provides = lib32-nvidia-libgl-beta=430.34
 	conflicts = lib32-nvidia-utils
 	conflicts = lib32-nvidia-libgl
 	replaces = lib32-nvidia-libgl
@@ -83,9 +83,9 @@ pkgname = lib32-opencl-nvidia-full-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'lib32-nvidia-utils-full-beta'
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
-	depends = lib32-nvidia-utils-full-beta>=430.26
+	depends = lib32-nvidia-utils-full-beta>=430.34
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = lib32-opencl-nvidia=430.26
+	provides = lib32-opencl-nvidia=430.34
 	provides = lib32-opencl-driver
 	conflicts = lib32-opencl-nvidia
 
