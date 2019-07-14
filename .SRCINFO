@@ -1,6 +1,6 @@
 pkgbase = meteo-git
 	pkgdesc = Know the forecast of the next hours & days. App designed for Pantheon Shell
-	pkgver = latest
+	pkgver = r308.0408358
 	pkgrel = 1
 	url = https://gitlab.com/bitseater/meteo
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = meteo-git
 	depends = clutter
 	depends = clutter-gtk
 	depends = geocode-glib
+	depends = ido
 	depends = json-glib
 	depends = libappindicator-gtk3
 	depends = libchamplain
