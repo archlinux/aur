@@ -2,10 +2,11 @@
 # Contributor:
 
 pkgname=mpc-qt-git
-pkgver=18.08.r40.g47c3bba
+pkgver=r1189.g2abe6e7
 pkgrel=1
+epoch=1
 pkgdesc='A clone of Media Player Classic reimplimented in Qt.'
-url='https://github.com/cmdrkotori/mpc-qt'
+url='https://gitlab.com/mpc-qt/mpc-qt'
 arch=('x86_64')
 license=('GPL2')
 depends=('desktop-file-utils' 'mpv' 'qt5-x11extras')
@@ -20,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd mpc-qt
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
