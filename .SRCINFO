@@ -1,0 +1,22 @@
+pkgbase = fuse-nfs-git
+	pkgdesc = This is a fuse module that implements the NFS protocol.
+	pkgver = r71.91c69c5
+	pkgrel = 1
+	url = https://github.com/sahlberg/fuse-nfs
+	arch = i686
+	arch = x86_64
+	arch = armv5
+	arch = armv5h
+	arch = armv6
+	arch = armv6h
+	arch = armv7
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	depends = fuse2
+	depends = libnfs
+	source = fuse-nfs-git::git+https://github.com/sahlberg/fuse-nfs.git
+	md5sums = SKIP
+
+pkgname = fuse-nfs-git
+
