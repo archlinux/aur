@@ -1,32 +1,29 @@
-# Maintainer: Robin Baumgartner <robin@baumgartners.ch>
-# Contributor: Florian Walch <florian.walch@gmx.at>
+# Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=tryton
-pkgver=4.2.1
-_pkgdir=4.2
+pkgver=5.2.2
+_pkgdir=5.2
 pkgrel=1
 pkgdesc="A three-tiers high-level general purpose application platform (client application)"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python2>=2.7' 'gtk2' 'pygtk>=2.22' 'librsvg' 'python2-dateutil' 'python2-chardet')
-optdepends=('python2-simplejson: Faster JSON processing'
-            'python2-cdecimal: Faster decimal handling')
-makedepends=('python2-distribute')
+depends=('python>=3.5' 'python-cairo' 'python-dateutil' 'python-pygobject-stubs' 'pygobject-devel')
+makedepends=('python-distribute')
 source=("http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz"
         "http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz.asc"
         'tryton.desktop')
-md5sums=('bea60108f35a4d19afa5b535f633a8d0'
+sha256sums=('88e414cc427968eac34bd2c4864914493cae99871fac15d778deaafe5e381d95'
          'SKIP'
-         '7ca15ad6c790c78817fe1a1b6a2c3fcf')
+         '78378206bbd3264cbcf23e2836e4bbb70ad1ea643c4db71dccf997ff2fb06443')
 validpgpkeys=('7C5A4360F6DF81ABA91FD54D6FF50AFE03489130') # Cédric Krier
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  python2 setup.py install --root=$pkgdir --optimize=1
+  python setup.py install --root=$pkgdir --optimize=1
   install -D -m644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 }
