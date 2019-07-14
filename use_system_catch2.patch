@@ -1,0 +1,227 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b0de85d..dcb083b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,9 +2,6 @@ cmake_minimum_required(VERSION 3.1.3)
+ 
+ project(GSL CXX)
+ 
+-include(ExternalProject)
+-find_package(Git)
+-
+ # creates a library GSL which is an interface (header files only)
+ add_library(GSL INTERFACE)
+ 
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 2d37a51..93a3a3f 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -5,26 +5,9 @@ project(GSLTests CXX)
+ # will make visual studio generated project group files
+ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+ 
+-list(APPEND CATCH_CMAKE_ARGS
+-    "-DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/external"
+-    "-DNO_SELFTEST=true"
+-)
+-
+-if(GIT_FOUND)
+-    # add catch
+-    ExternalProject_Add(
+-        catch
+-        PREFIX ${CMAKE_BINARY_DIR}/catch
+-        GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+-        GIT_TAG v2.0.1
+-        CMAKE_ARGS ${CATCH_CMAKE_ARGS}
+-        LOG_DOWNLOAD 1
+-        UPDATE_DISCONNECTED 1
+-    )
+-else()
+-    # assume catch is installed in a system directory
+-    add_custom_target(catch)
+-endif()
++# assume catch is installed in a system directory
++find_package(Catch2 REQUIRED)
++add_custom_target(catch)
+ 
+ if (MSVC AND (GSL_CXX_STANDARD EQUAL 17))
+     set(GSL_CPLUSPLUS_OPT -Zc:__cplusplus -permissive-)
+diff --git a/tests/algorithm_tests.cpp b/tests/algorithm_tests.cpp
+index 368b53d..405dd83 100644
+--- a/tests/algorithm_tests.cpp
++++ b/tests/algorithm_tests.cpp
+@@ -20,7 +20,7 @@
+ #pragma warning(disable : 26440 26426) // from catch
+ #endif
+ 
+-#include <catch/catch.hpp> // for AssertionHandler, StringRef, CHECK, CHE...
++#include <catch2/catch.hpp> // for AssertionHandler, StringRef, CHECK, CHE...
+ 
+ #include <gsl/gsl_algorithm> // for copy
+ #include <gsl/span>          // for span
+diff --git a/tests/assertion_tests.cpp b/tests/assertion_tests.cpp
+index 0c509ad..0b7083a 100644
+--- a/tests/assertion_tests.cpp
++++ b/tests/assertion_tests.cpp
+@@ -20,7 +20,7 @@
+ #pragma warning(disable : 26440 26426) // from catch
+ #endif
+ 
+-#include <catch/catch.hpp> // for AssertionHandler, StringRef, CHECK, CHECK...
++#include <catch2/catch.hpp> // for AssertionHandler, StringRef, CHECK, CHECK...
+ 
+ #include <gsl/gsl_assert> // for fail_fast (ptr only), Ensures, Expects
+ 
+diff --git a/tests/at_tests.cpp b/tests/at_tests.cpp
+index 7f07be0..c254ce9 100644
+--- a/tests/at_tests.cpp
++++ b/tests/at_tests.cpp
+@@ -20,7 +20,7 @@
+ #pragma warning(disable : 26440 26426) // from catch
+ #endif
+ 
+-#include <catch/catch.hpp> // for AssertionHandler, StringRef, CHECK_THROW...
++#include <catch2/catch.hpp> // for AssertionHandler, StringRef, CHECK_THROW...
+ 
+ #include <gsl/gsl_util> // for at
+ 
+diff --git a/tests/bounds_tests.cpp b/tests/bounds_tests.cpp
+index e586d44..2ada0f3 100644
+--- a/tests/bounds_tests.cpp
++++ b/tests/bounds_tests.cpp
+@@ -20,7 +20,7 @@
+ #pragma warning(disable : 26440 26426) // from catch
+ #endif
+ 
+-#include <catch/catch.hpp> // for AssertionHandler, StringRef, TEST_CASE
++#include <catch2/catch.hpp> // for AssertionHandler, StringRef, TEST_CASE
+ 
+ #include <gsl/multi_span> // for static_bounds, static_bounds_dynamic_range_t
+ 
+diff --git a/tests/byte_tests.cpp b/tests/byte_tests.cpp
+index d6634bb..90afd7d 100644
+--- a/tests/byte_tests.cpp
++++ b/tests/byte_tests.cpp
+@@ -20,7 +20,7 @@
+ #pragma warning(disable : 26440 26426) // from catch
+ #endif
+ 
+-#include <catch/catch.hpp> // for AssertionHandler, StringRef, CHECK, TEST_...
++#include <catch2/catch.hpp> // for AssertionHandler, StringRef, CHECK, TEST_...
+ 
+ #include <gsl/gsl_byte> // for to_byte, to_integer, byte, operator&, ope...
+ 
+diff --git a/tests/multi_span_tests.cpp b/tests/multi_span_tests.cpp
+index 9c05cb4..70fe628 100644
+--- a/tests/multi_span_tests.cpp
++++ b/tests/multi_span_tests.cpp
+@@ -21,7 +21,7 @@
+ 
+ #endif
+ 
+-#include <catch/catch.hpp> // for AssertionHandler, StringRef, CHECK, CHECK...
++#include <catch2/catch.hpp> // for AssertionHandler, StringRef, CHECK, CHECK...
+ 
+ #include <gsl/gsl_byte>   // for byte
+ #include <gsl/gsl_util>   // for narrow_cast
+diff --git a/tests/notnull_tests.cpp b/tests/notnull_tests.cpp
+index 668c0a2..4516d95 100644
+--- a/tests/notnull_tests.cpp
++++ b/tests/notnull_tests.cpp
+@@ -23,7 +23,7 @@
+ #pragma warning(disable : 4702) // unreachable code
+ #endif
+ 
+-#include <catch/catch.hpp> // for AssertionHandler, StringRef, CHECK, TEST_...
++#include <catch2/catch.hpp> // for AssertionHandler, StringRef, CHECK, TEST_...
+ 
+ #include <gsl/pointers>       // for not_null, operator<, operator<=, operator>
+ 
+diff --git a/tests/owner_tests.cpp b/tests/owner_tests.cpp
+index 9fff184..b450878 100644
+--- a/tests/owner_tests.cpp
++++ b/tests/owner_tests.cpp
+@@ -21,7 +21,7 @@
+ 
+ #endif
+ 
+-#include <catch/catch.hpp> // for AssertionHandler, StringRef, CHECK, TEST_...
++#include <catch2/catch.hpp> // for AssertionHandler, StringRef, CHECK, TEST_...
+ 
+ #include <gsl/pointers> // for owner
+ 
+diff --git a/tests/sloppy_notnull_tests.cpp b/tests/sloppy_notnull_tests.cpp
+index 51983f5..be897ed 100644
+--- a/tests/sloppy_notnull_tests.cpp
++++ b/tests/sloppy_notnull_tests.cpp
+@@ -23,7 +23,7 @@
+ #pragma warning(disable : 4702) // unreachable code
+ #endif
+ 
+-#include <catch/catch.hpp>    // for AssertionHandler, StringRef, CHECK, TEST_...
++#include <catch2/catch.hpp>    // for AssertionHandler, StringRef, CHECK, TEST_...
+ 
+ #include <gsl/pointers>           // for not_null, operator<, operator<=, operator>
+ #include <samples/gsl_transition> // for sloppy_not_null
+diff --git a/tests/span_tests.cpp b/tests/span_tests.cpp
+index 07a59c8..a53fd0c 100644
+--- a/tests/span_tests.cpp
++++ b/tests/span_tests.cpp
+@@ -21,7 +21,7 @@
+ 
+ #endif
+ 
+-#include <catch/catch.hpp> // for AssertionHandler, StringRef, CHECK, TEST_...
++#include <catch2/catch.hpp> // for AssertionHandler, StringRef, CHECK, TEST_...
+ 
+ #include <gsl/gsl_byte> // for byte
+ #include <gsl/gsl_util> // for narrow_cast, at
+diff --git a/tests/strided_span_tests.cpp b/tests/strided_span_tests.cpp
+index 2310f5b..b74a49d 100644
+--- a/tests/strided_span_tests.cpp
++++ b/tests/strided_span_tests.cpp
+@@ -21,7 +21,7 @@
+ 
+ #endif
+ 
+-#include <catch/catch.hpp> // for AssertionHandler, StringRef, CHECK, CHECK...
++#include <catch2/catch.hpp> // for AssertionHandler, StringRef, CHECK, CHECK...
+ 
+ #include <gsl/gsl_byte>   // for byte
+ #include <gsl/gsl_util>   // for narrow_cast
+diff --git a/tests/string_span_tests.cpp b/tests/string_span_tests.cpp
+index fd3e3e6..b5fa610 100644
+--- a/tests/string_span_tests.cpp
++++ b/tests/string_span_tests.cpp
+@@ -21,7 +21,7 @@
+ 
+ #endif
+ 
+-#include <catch/catch.hpp> // for AssertionHandler, StringRef, CHECK, TEST_...
++#include <catch2/catch.hpp> // for AssertionHandler, StringRef, CHECK, TEST_...
+ 
+ #include <gsl/gsl_assert>  // for Expects, fail_fast (ptr only)
+ #include <gsl/pointers>    // for owner
+diff --git a/tests/test.cpp b/tests/test.cpp
+index dbdebb6..cb81423 100644
+--- a/tests/test.cpp
++++ b/tests/test.cpp
+@@ -23,4 +23,4 @@
+ #pragma warning(disable : 26401 26409 26415 26418 26426 26429 26432 26433 26434 26435 26436 26439 26440 26443 26444 26446 26447 26451 26460 26461 26466 26472 26481 26482 26485 26492 26493 26494 26495 26496 26497) // from catch
+ #endif // _MSC_VER
+ 
+-#include <catch/catch.hpp>
++#include <catch2/catch.hpp>
+diff --git a/tests/utils_tests.cpp b/tests/utils_tests.cpp
+index 05f8d0f..978c87d 100644
+--- a/tests/utils_tests.cpp
++++ b/tests/utils_tests.cpp
+@@ -21,7 +21,7 @@
+ 
+ #endif
+ 
+-#include <catch/catch.hpp> // for AssertionHandler, StringRef, CHECK, TEST_...
++#include <catch2/catch.hpp> // for AssertionHandler, StringRef, CHECK, TEST_...
+ 
+ #include <gsl/gsl_util> // for narrow, finally, narrow_cast, narrowing_e...
+ 

@@ -8,9 +8,16 @@ pkgdesc="C++ Core Guidelines Support Library"
 arch=('any')
 url="https://github.com/Microsoft/GSL"
 license=('MIT')
-makedepends=('cmake' 'git')
-source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('6cce6fb16b651e62711a4f58e484931013c33979b795d1b1f7646f640cfa9c8e')
+makedepends=('cmake' 'catch2')
+source=("https://github.com/Microsoft/GSL/archive/v${pkgver}.tar.gz"
+        "use_system_catch2.patch")
+sha256sums=('6cce6fb16b651e62711a4f58e484931013c33979b795d1b1f7646f640cfa9c8e'
+            '9ebdc1b3628bbdce82e3be469c183cd0d94d3d8964189aad71dac5d7e94d9f58')
+
+prepare() {
+    cd "$_pkgname-$pkgver"
+    patch -Np1 -i "$srcdir/use_system_catch2.patch"
+}
 
 build() {
     cd "$_pkgname-$pkgver"
