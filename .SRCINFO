@@ -1,6 +1,6 @@
 pkgbase = onlyoffice-bin
 	pkgdesc = An office suite that combines text, spreadsheet and presentation editors
-	pkgver = 5.2.8.3
+	pkgver = 5.3.3
 	pkgrel = 1
 	url = https://www.onlyoffice.com/
 	arch = x86_64
@@ -45,6 +45,11 @@ pkgbase = onlyoffice-bin
 	depends = atk
 	depends = libxcb
 	depends = gdk-pixbuf2
+	depends = qt5-svg
+	depends = gtk3
+	depends = qt5-declarative
+	depends = qt5-x11extras
+	depends = qt5-multimedia
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	optdepends = libreoffice: for OpenSymbol fonts
@@ -52,11 +57,11 @@ pkgbase = onlyoffice-bin
 	optdepends = ttf-ms-fonts: for Microsoft fonts
 	provides = onlyoffice
 	conflicts = onlyoffice
-	noextract = onlyoffice-desktopeditors-5.2.8.3_amd64.deb
+	noextract = onlyoffice-desktopeditors-5.3.3_amd64.deb
 	options = !strip
 	options = !emptydirs
-	source = onlyoffice-desktopeditors-5.2.8.3_amd64.deb::https://github.com/ONLYOFFICE/DesktopEditors/releases/download/ONLYOFFICE-DesktopEditors-5.2.8-3/onlyoffice-desktopeditors_amd64.deb
-	sha256sums = ea500b58fe6380ec48b4ade0c7a87646438e3dd625c74358f0eaddb3f79e78c6
+	source = onlyoffice-desktopeditors-5.3.3_amd64.deb::https://github.com/ONLYOFFICE/DesktopEditors/releases/download/ONLYOFFICE-DesktopEditors-5.3.3/onlyoffice-desktopeditors_amd64.deb
+	sha256sums = f61a7b37259ab2b61c9c81f15eea38665b5247fd6e84fbf00165bd204b80a40a
 
 pkgname = onlyoffice-bin
 

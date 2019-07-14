@@ -2,7 +2,7 @@
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 
 pkgname=onlyoffice-bin
-pkgver=5.2.8.3
+pkgver=5.3.3
 pkgrel=1
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=('alsa-lib' 'curl' 'wget' 'libxss' 'gtkglext' 'cairo' 'gconf' 'gcc-libs'
          'pango' 'libice' 'libpulse' 'libxext' 'libxdamage' 'nss' 'nspr'
          'libcurl-gnutls' 'libxcursor' 'gtk2' 'libglvnd' 'libxrender' 'libcups'
          'libxrandr' 'libxcomposite' 'libxfixes' 'libxi' 'atk' 'libxcb' 'gdk-pixbuf2'
+         'qt5-svg' 'gtk3' 'qt5-declarative' 'qt5-x11extras' 'qt5-multimedia'
          'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=('libreoffice: for OpenSymbol fonts'
             'otf-takao: for japanese Takao fonts'
@@ -22,10 +23,10 @@ provides=('onlyoffice')
 conflicts=('onlyoffice')
 options=('!strip' '!emptydirs')
 _srcfile='onlyoffice-desktopeditors_amd64.deb'
-_srcurl="https://github.com/ONLYOFFICE/DesktopEditors/releases/download/ONLYOFFICE-DesktopEditors-${pkgver%.*}-${pkgver:(-1)}/${_srcfile}"
+_srcurl="https://github.com/ONLYOFFICE/DesktopEditors/releases/download/ONLYOFFICE-DesktopEditors-${pkgver}/${_srcfile}"
 source=("onlyoffice-desktopeditors-${pkgver}_amd64.deb"::"$_srcurl")
 noextract=("onlyoffice-desktopeditors-${pkgver}_amd64.deb")
-sha256sums=('ea500b58fe6380ec48b4ade0c7a87646438e3dd625c74358f0eaddb3f79e78c6')
+sha256sums=('f61a7b37259ab2b61c9c81f15eea38665b5247fd6e84fbf00165bd204b80a40a')
 
 prepare() {
     mkdir -p "onlyoffice-${pkgver}"
@@ -39,9 +40,6 @@ package() {
     # install bundled files
     bsdtar -xf data.tar.xz -C "$pkgdir"
     
-    # fix broken symlink
-    ln -sf DesktopEditors "${pkgdir}/opt/onlyoffice/desktopeditors/desktop_64"
-    
     # icons
     local _res
     for _res in 16 24 32 48 64 128 256
@@ -50,6 +48,13 @@ package() {
         ln -s "../../../../../../opt/onlyoffice/desktopeditors/asc-de-${_res}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/asc-de.png"
     done
+    
+    # fix directory permissions
+    local _dir
+    while read -r -d '' _dir
+    do
+        chmod 755 "$_dir"
+    done < <(find "$pkgdir" -type d -print0)
     
     # 3rd party licenses
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
