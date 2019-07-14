@@ -1,6 +1,6 @@
 pkgbase = imagemagick-full
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all libs and features)
-	pkgver = 7.0.8.49
+	pkgver = 7.0.8.53
 	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = x86_64
@@ -54,12 +54,14 @@ pkgbase = imagemagick-full
 	makedepends = flif
 	makedepends = libfpx
 	makedepends = libumem-git
-	source = git+https://github.com/ImageMagick/ImageMagick.git#commit=ec9498c7945dc0700e09e2d2ad458379251969e1
+	source = git+https://github.com/ImageMagick/ImageMagick.git#commit=4907e6feafa4b89d5cc38125280e33f2101b242e
 	source = imagemagick-full-security-fix.patch
 	source = arch-fonts.diff
+	source = imagemagick-full-disable-avaraging-tests.patch
 	sha256sums = SKIP
 	sha256sums = e2453381d283c33107194fa791d6b9b2c4c1856afb936d4fa010c05aaebe538e
 	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
+	sha256sums = 2ff7366526a705b195074438266064fb1d347552707bf7bbca739d5eb0c65db9
 
 pkgname = imagemagick-full
 	depends = lcms2
@@ -103,9 +105,9 @@ pkgname = imagemagick-full
 	depends = libfpx
 	depends = libumem-git
 	optdepends = imagemagick-full-doc: manual and API docs
-	provides = imagemagick=7.0.8.49
-	provides = libmagick=7.0.8.49
-	provides = libmagick-full=7.0.8.49
+	provides = imagemagick=7.0.8.53
+	provides = libmagick=7.0.8.53
+	provides = libmagick-full=7.0.8.53
 	conflicts = imagemagick
 	conflicts = libmagick
 	replaces = libmagick-full
@@ -125,6 +127,6 @@ pkgname = imagemagick-full
 pkgname = imagemagick-full-doc
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all libs and features) (manual and API docs)
 	arch = any
-	provides = imagemagick-doc=7.0.8.49
+	provides = imagemagick-doc=7.0.8.53
 	conflicts = imagemagick-doc
 
