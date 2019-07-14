@@ -1,0 +1,14 @@
+pkgbase = python-trytond_company_work_time
+	pkgdesc = Tryton module to add work time on company
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_company_work_time/trytond_company_work_time-5.2.0.tar.gz
+	sha256sums = f42a8db3d25041356ec5143d77fd0e10c0e184d8ffdde5b874cad65f13cde3fb
+
+pkgname = python-trytond_company_work_time
+
