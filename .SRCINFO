@@ -1,34 +1,37 @@
 pkgbase = python-pyvo
 	pkgdesc = Astropy affiliated package for accessing Virtual Observatory data and services
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://pyvo.readthedocs.io/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	checkdepends = python2-pytest<3.7
+	checkdepends = python-pytest-astropy
 	checkdepends = python2-astropy
 	checkdepends = python2-contextlib2
+	checkdepends = python-requests-mock
 	checkdepends = python2-requests-mock
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
+	makedepends = python-mimeparse
+	makedepends = python2-mimeparse
+	makedepends = wcslib<6.3
 	makedepends = python-astropy
 	makedepends = python-astropy-helpers>=3.1
 	makedepends = python2-astropy-helpers
 	makedepends = python-sphinx-astropy
-	source = https://files.pythonhosted.org/packages/source/p/pyvo/pyvo-0.9.2.tar.gz
-	md5sums = 16e6a11a0ab10b55ed4729df59911efc
+	source = https://files.pythonhosted.org/packages/source/p/pyvo/pyvo-0.9.3.tar.gz
+	md5sums = 1729177d138a22f10eeebbe4eb973d7e
 
 pkgname = python-pyvo
-	depends = python-numpy
+	depends = wcslib<6.3
 	depends = python-astropy
 	depends = python-requests
 	optdepends = python-pyvo-doc: Documentation for PyVO
-	optdepends = python-pytest-astropy: For testing
-	optdepends = python-astropy<3.2: For testing
 
 pkgname = python2-pyvo
-	depends = python2-numpy
+	depends = wcslib<6.3
 	depends = python2-astropy
 	depends = python2-requests
 	optdepends = python-pyvo-doc: Documentation for PyVO
