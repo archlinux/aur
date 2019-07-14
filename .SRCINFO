@@ -1,0 +1,17 @@
+pkgbase = ripperx-git
+	pkgdesc = GTK2 program to rip and encode mp3 files
+	pkgver = 2.8.0.r3.g3b9ce8b
+	pkgrel = 1
+	url = http://ripperx.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gtk2
+	depends = taglib
+	provides = ripperx
+	conflicts = ripperx
+	source = ripperx::git+https://git.code.sf.net/p/ripperx/git
+	md5sums = SKIP
+
+pkgname = ripperx-git
+
