@@ -26,4 +26,5 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   python setup.py install --root=$pkgdir --optimize=1
   install -D -m644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+  install -D -m644 $srcdir/tryton-icon.png $pkgdir/usr/share/pixmaps/tryton/tryton-icon.png
 }
