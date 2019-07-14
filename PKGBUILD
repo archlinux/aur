@@ -1,7 +1,7 @@
 # Maintainer: Dylan <dylan@psilly.com>
 
 pkgbase=dogecoin
-pkgname=('dogecoin-daemon' 'dogecoin-cli' 'dogecoin-tx')
+pkgname=('dogecoin-daemon') # 'dogecoin-cli' 'dogecoin-tx')
 pkgver=1.14.0
 pkgrel=1
 arch=('x86_64')
