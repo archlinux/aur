@@ -1,6 +1,6 @@
 pkgbase = gtk3-typeahead
 	pkgdesc = GTK+ 3 with typeahead feature enabled for the file chooser widget
-	pkgver = 3.24.8
+	pkgver = 3.24.10
 	pkgrel = 1
 	url = https://www.gtk.org/
 	install = gtk3.install
@@ -11,6 +11,7 @@ pkgbase = gtk3-typeahead
 	makedepends = git
 	makedepends = glib2-docs
 	makedepends = sassc
+	makedepends = meson
 	depends = atk
 	depends = cairo
 	depends = libxcursor
@@ -39,11 +40,12 @@ pkgbase = gtk3-typeahead
 	depends = libcups
 	depends = libcanberra
 	depends = fribidi
-	provides = gtk3=3.24.8
+	depends = iso-codes
+	provides = gtk3=3.24.10
 	provides = gtk3-print-backends
 	conflicts = gtk3
 	replaces = gtk3-print-backends<=3.22.26-1
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=5428379fad31f1637c920d97a3d0303f606bfb6e
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=3642629767ec54c4079f7d90a9ea780a225bfe5e
 	source = settings.ini
 	source = gtk-query-immodules-3.0.hook
 	source = typeahead.patch

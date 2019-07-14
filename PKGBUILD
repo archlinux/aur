@@ -1,7 +1,7 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.24.8
+pkgver=3.24.10
 pkgrel=1
 conflicts=(gtk3)
 provides=("gtk3=$pkgver" gtk3-print-backends)
@@ -13,10 +13,10 @@ install=gtk3.install
 depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 dconf
          libxcomposite libxdamage pango shared-mime-info at-spi2-atk wayland libxkbcommon
          adwaita-icon-theme json-glib librsvg wayland-protocols desktop-file-utils mesa
-         cantarell-fonts colord rest libcups libcanberra fribidi)
-makedepends=(gobject-introspection gtk-doc git glib2-docs sassc)
+         cantarell-fonts colord rest libcups libcanberra fribidi iso-codes)
+makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson)
 license=(LGPL)
-_commit=5428379fad31f1637c920d97a3d0303f606bfb6e # tags/3.24.8^0
+_commit=3642629767ec54c4079f7d90a9ea780a225bfe5e  # tags/3.24.10^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         settings.ini
         gtk-query-immodules-3.0.hook
@@ -31,32 +31,22 @@ prepare() {
 
     # Typeahead-specific changes
     patch gtk/gtkfilechooserwidget.c -i $srcdir/typeahead.patch
-
-    NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-    cd gtk
-
-    ./configure --prefix=/usr \
-        --sysconfdir=/etc \
-        --localstatedir=/var \
-        --disable-schemas-compile \
-        --enable-x11-backend \
-        --enable-broadway-backend \
-        --enable-wayland-backend \
-        --enable-gtk-doc
-
-    #https://bugzilla.gnome.org/show_bug.cgi?id=655517
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-    make
+    CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS"
+    arch-meson gtk build \
+        -D broadway_backend=true \
+        -D colord=yes \
+        -D gtk_doc=true \
+        -D man=true
+    ninja -C build
 }
 
 package() {
     install=gtk3.install
 
-    DESTDIR="$pkgdir" make -C gtk install
+    DESTDIR="$pkgdir" meson install -C build
     install -Dt "$pkgdir/usr/share/gtk-3.0" -m644 settings.ini
     install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 gtk-query-immodules-3.0.hook
 
