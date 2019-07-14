@@ -1,6 +1,6 @@
 pkgbase = vscodium-bin
 	pkgdesc = Binary releases of VS Code without MS branding/telemetry/licensing.
-	pkgver = 1.36.0
+	pkgver = 1.36.1
 	pkgrel = 3
 	url = https://github.com/VSCodium/vscodium
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = vscodium-bin
 	optdepends = gvfs: For move to trash functionality
 	optdepends = libdbusmenu-glib: For KDE global menu
 	provides = code
-	noextract = vscodium-bin-1.36.0-3.tar.gz
+	noextract = vscodium-bin-1.36.1-3.tar.gz
 	source = vscodium-bin.desktop
-	source = vscodium-bin-1.36.0-3.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.36.0/VSCodium-linux-x64-1.36.0.tar.gz
+	source = vscodium-bin-1.36.1-3.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.36.1/VSCodium-linux-x64-1.36.1.tar.gz
 	sha256sums = 7275ddd94fc356374ca2a883bd1210863a8f2e5ad2f3e6194a42240941d119a4
-	sha256sums = 075fd7bb4419ec9ee72a7afb7b1ccde05562ed2dc82fe7790fc981af0ec27527
+	sha256sums = f777f216fc5a73ac5efeb590fffec64e5cb346b0359c16a4705c58bae6fec4ab
 
 pkgname = vscodium-bin
 
