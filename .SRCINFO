@@ -1,10 +1,10 @@
 pkgbase = zrythm
 	pkgdesc = An highly automated, intuitive, Digital Audio Workstation (DAW)
-	pkgver = 0.5.120
+	pkgver = 0.5.162
 	pkgrel = 1
-	url = https://git.zrythm.org/cgit/zrythm
+	url = https://www.zrythm.org
 	arch = x86_64
-	license = GPL3
+	license = AGPL3
 	makedepends = python
 	makedepends = gettext
 	makedepends = sed
@@ -18,15 +18,18 @@ pkgbase = zrythm
 	depends = libsndfile
 	depends = libyaml
 	depends = gettext
-	depends = qt5-base
 	depends = libsamplerate
 	depends = alsa-lib
-	depends = portaudio
 	depends = ladspa
 	depends = fftw
+	optdepends = portaudio: portaudio backend
+	optdepends = qt5-base: for embedding qt5 plugin UIs
 	conflicts = zrythm-git
-	source = http://git.savannah.nongnu.org/cgit/zrythm.git/snapshot/zrythm-0.5.120.tar.gz
-	md5sums = 8c0e69ae2f19807e3546bc5781b5d025
+	source = https://download.savannah.nongnu.org/releases/zrythm/zrythm-0.5.162.tar.xz
+	source = https://download.savannah.nongnu.org/releases/zrythm/zrythm-0.5.162.tar.xz.asc
+	validpgpkeys = 48132384AD3DF7D86E254B83022EAE42313D70F3
+	sha256sums = 2b4cbd75e347df5fed8af7545bb56baefe2d5413496534ba056f47e4676ec232
+	sha256sums = SKIP
 
 pkgname = zrythm
 
