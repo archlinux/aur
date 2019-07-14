@@ -38,6 +38,6 @@ build() {
 package() {
   cd $srcdir/$pkgname-$pkgver
   python setup.py install --root=$pkgdir --optimize=1
-  install -D -m640 "$srcdir/trytond.conf" "$pkgdir/etc/tryton/trytond.conf"
+  install -D -m664 "$srcdir/trytond.conf" "$pkgdir/etc/tryton/trytond.conf"
   install -D -m755 "$srcdir/trytond.service" "$pkgdir/usr/lib/systemd/system/trytond.service"
 }
