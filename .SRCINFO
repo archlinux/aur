@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_fr
+	pkgdesc = Tryton module with French chart of accounts
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_fr/trytond_account_fr-5.2.0.tar.gz
+	sha256sums = 7a900e2b5eea587eff34292c7ab5f274c974eee0302eb85d8a59dec75d69d59e
+
+pkgname = python-trytond_account_fr
+
