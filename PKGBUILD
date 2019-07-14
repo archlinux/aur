@@ -1,11 +1,10 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=libmysofa-git
-_srcname=libmysofa
-pkgver=0.7.r0.g2ed84bb
+pkgver=0.7.r10.g3dba53f
 pkgrel=1
 pkgdesc='C library to read HRTFs if they are stored in the AES69-2015 SOFA format (git version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://hoene.github.io/libmysofa/'
 license=('BSD')
 depends=('zlib')
@@ -17,14 +16,14 @@ source=('git+https://github.com/hoene/libmysofa.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_srcname"
+    cd libmysofa
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "${_srcname}/build"
+    cd libmysofa/build
     
     cmake \
         -DBUILD_TESTS:BOOL='ON' \
@@ -37,16 +36,16 @@ build() {
 }
 
 check() {
-    cd "${_srcname}/build"
+    cd libmysofa/build
     
     make test
 }
 
 package() {
-    cd "${_srcname}/build"
+    cd libmysofa/build
     
     make DESTDIR="$pkgdir" install
     
-    cd "${srcdir}/${_srcname}"
+    cd "${srcdir}/libmysofa"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
