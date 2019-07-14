@@ -1,7 +1,7 @@
 # Maintainer: Michael
 # Contributor: Michael
 pkgname=dissenter-browser-bin
-pkgver=0.65.121
+pkgver=0.66.99
 pkgrel=1
 pkgdesc="The free speech web browser. Browse faster by blocking ads and trackers that violate your privacy and cost you time and money."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("https://dissenter.com/dist/browser/$pkgver/dissenter-browser-v$pkgver-a
 		"dissenter-browser-bin.desktop"
 		"LICENSE")
 		
-sha512sums=('e4add217f639971350170c3507bc086d03efada7de3ba23afb39534589bd352b8f2e9175b2471b6aebcca236c3bb28b92cdb5b7c46566851c2625a7776d5f254'
+sha512sums=('578177e221ae6b3c862f3cb87d1fdfb7586f14b28f1bfe332fe48494cadd2f4cc9db2f15754c76617b20c0f430d6c4aa5ef00b846038fb555d5c24a653efc1f0'
 			'1d39d98d29cc34511a0b77e7e6d770febe9a2ed621bba666c354a0fc4bdf9c4d9c29d18a4d0b5451cfba8fcac2f82519823790425da04f9d9dd4f24a90e24430'
 			'1970e81599a32debec8ee76c6d8f32ee5374ce98f2b8a3a29f54eecdb7bee9242ead5ecaca913dfca17f9bbaba233f9ac3fc1c6fd0620224b893ef8edb9581fe'
 			'b569ec9a7d4697b05de7e2de06ab3b3139ec7a7d5a6ae33cfd199e65afa9a47c91e5ef80e85575bbf24cec105c180e9a288a9a18752d700e5e1ca1f9b7074050'
