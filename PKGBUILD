@@ -2,7 +2,7 @@
 
 pkgname=kube-commander
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Browse your kubernetes clusters in a casual way"
 url="https://github.com/AnatolyRugalev/kube-commander"
 license=('MIT')
