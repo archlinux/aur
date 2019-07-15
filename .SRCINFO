@@ -6,6 +6,7 @@ pkgbase = nemu
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = cmake
 	depends = qemu
 	depends = glibc
 	depends = ncurses

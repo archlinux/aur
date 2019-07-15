@@ -9,6 +9,7 @@ arch=(i686 x86_64)
 url="https://bitbucket.org/PascalRD/nemu"
 license=(BSD)
 depends=(qemu glibc ncurses sqlite udev libusb)
+makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/PascalRD/$pkgname/get/v$pkgver.tar.bz2"
 		"https://bitbucket.org/PascalRD/$pkgname/raw/1e73a64638ef804f0e241e89aeb31305eb4f602d/LICENSE")
 sha256sums=('db881e39d94034d93251846f86696133635ea3859e9392adf27ced25cdb24e36'
