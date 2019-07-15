@@ -1,12 +1,14 @@
-# Maintainer: Christian Pfeiffer <xpipe at hotmail dot de>
+# Maintainer: Christian Pfeiffer <cpfeiffer at live dot de>
+
 pkgname=shogun
-pkgver=6.1.3
+pkgver=6.1.4
+_gpl_pkgver=6.1.3
 pkgrel=1
 pkgdesc="A Large Scale Machine Learning Toolbox"
 arch=('x86_64')
 url="http://shogun.ml/"
 license=('GPL3')
-depends=('arpack' 'arprec' 'cblas' 'glpk' 'hdf5' 'lapacke' 'libxml2'
+depends=('arpack' 'cblas' 'glpk' 'hdf5' 'lapacke' 'libxml2'
          'json-c' 'lua' 'nlopt' 'openblas' 'ocl-icd' 'python' 'r' 'snappy')
 makedepends=('ctags' 'doxygen' 'eigen3' 'gdb' 'opencv' 'pandoc' 'protobuf'
 			 'python-numpy' 'python-ply' 'python-sphinx' 'swig' 'rxcpp-git' 'viennacl')
@@ -14,18 +16,24 @@ optdepends=('opencv: OpenCV support'
 			'python-numpy: Python bindings'
 			'python-ply: Python bindings')
 source=(https://github.com/shogun-toolbox/shogun/archive/shogun_$pkgver.tar.gz
-        https://github.com/shogun-toolbox/shogun-gpl/archive/v$pkgver.tar.gz
-        0001-Removed-is_error-macro-dependency-4098.patch)
-sha256sums=('75f4d555efe06eaa7c4c12a1dc942f6e4d41a8ed495777a790b9bd9df936c19c'
-            'e8e2fea9804d3e0924a318b00a764bbf9d751c29d32adeeffbb83aec9fbca966'
-            '571172d9f31554c1e41cf1e3467cec38c527f1ccf9a2866bf49acfa0c1a84ac4')
+        https://github.com/shogun-toolbox/shogun-gpl/archive/v$_gpl_pkgver.tar.gz
+        0001-Removed-is_error-macro-dependency-4098.patch
+        0001-OpenMP-Remove-incomplete-shared-variable-specificati.patch
+        )
+sha512sums=('85e46d5e64ab657f9281d73b4a3917037322a5c704cd9dc723b484ffca3ac778c79a807d8a2b136a81d2944f53e2d8f46bafc5b024bded6efe78ebdb0a02f947'
+            'bd2335bf8c4ba6a17a2af870a0f218c791ba7825694d95fbce52c61390f093b6932c07c8175e01d3425065486da8258132f5092660d0ba74ff78baba2a2cb88b'
+            'e72c0c7aa68031856679acc467c497afa2596de8f580cb62a6cf88eaf6a803952990178a050ff74cb6b388b375a84047cae4ebfc388bbc51910bd473c9d419a6'
+            '1136d75b6306bf2f1a9c3589d00de9e000a6cdc34616d37643d57b5fd302855528ee084dc342d514b6d35405ca21987aab31bb87f1f74bbb12283ed16c8dbef7')
 
 prepare() {
   mkdir build
-  mv -T "${pkgname}-gpl-${pkgver}" "${srcdir}/${pkgname}-${pkgname}_${pkgver}/src/gpl"
+  mv -T "${pkgname}-gpl-${_gpl_pkgver}" "${srcdir}/${pkgname}-${pkgname}_${pkgver}/src/gpl"
 
   cd "${srcdir}/${pkgname}-${pkgname}_${pkgver}"
   patch -p1 -i ../0001-Removed-is_error-macro-dependency-4098.patch
+
+  cd "src/shogun/lib/tapkee"
+  patch -p3 -i "${srcdir}/0001-OpenMP-Remove-incomplete-shared-variable-specificati.patch"
 }
 
 build() {
@@ -39,7 +47,7 @@ build() {
   #   Ruby - requires RubyNArray, which isn't packaged
   # Requires OpenBLAS, because their CMake can't work with libblas.so, only
   # ATLAS, OpenBLAS and Intel MKL.
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_ARPREC=ON \
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_EXAMPLES=OFF -DBUILD_META_EXAMPLES=OFF \
     -DENABLE_ARPACK=ON -DENABLE_BZIP2=ON \
     -DENABLE_COLPACK=OFF -DENABLE_VIENNACL=ON \

@@ -1,0 +1,116 @@
+From 3fe4f43d05a933ff6db5770b47c50b0fc4366452 Mon Sep 17 00:00:00 2001
+From: Johannes Jordan <git@lanrules.de>
+Date: Fri, 5 Jul 2019 13:30:21 +0200
+Subject: [PATCH] OpenMP: Remove incomplete shared variable specifications
+
+Resort to the default rules which fit our intentions anyways.
+
+Fixes compile errors with g++ (GCC) 9.1.0.
+---
+ include/tapkee/routines/diffusion_maps.hpp           | 2 +-
+ include/tapkee/routines/isomap.hpp                   | 4 ++--
+ include/tapkee/routines/locally_linear.hpp           | 6 +++---
+ include/tapkee/routines/multidimensional_scaling.hpp | 7 +++----
+ 4 files changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/include/tapkee/routines/diffusion_maps.hpp b/include/tapkee/routines/diffusion_maps.hpp
+index 207c90e..df60a22 100644
+--- a/include/tapkee/routines/diffusion_maps.hpp
++++ b/include/tapkee/routines/diffusion_maps.hpp
+@@ -45,7 +45,7 @@ DenseSymmetricMatrix compute_diffusion_matrix(RandomAccessIterator begin, Random
+ 	RESTRICT_ALLOC;
+ 
+ 	// compute gaussian kernel matrix
+-#pragma omp parallel shared(diffusion_matrix,begin,callback) default(none)
++#pragma omp parallel
+ 	{
+ 		IndexType i_index_iter, j_index_iter;
+ #pragma omp for nowait
+diff --git a/include/tapkee/routines/isomap.hpp b/include/tapkee/routines/isomap.hpp
+index 68e4517..7c2411d 100644
+--- a/include/tapkee/routines/isomap.hpp
++++ b/include/tapkee/routines/isomap.hpp
+@@ -50,7 +50,7 @@ DenseSymmetricMatrix compute_shortest_distances_matrix(RandomAccessIterator begi
+ 
+ 	DenseSymmetricMatrix shortest_distances(N,N);
+ 
+-#pragma omp parallel shared(shortest_distances,neighbors,begin,callback) default(none)
++#pragma omp parallel
+ 	{
+ 		bool* f = new bool[N];
+ 		bool* s = new bool[N];
+@@ -168,7 +168,7 @@ DenseMatrix compute_shortest_distances_matrix(RandomAccessIterator begin, Random
+ 
+ 	DenseMatrix shortest_distances(landmarks.size(),N);
+ 
+-#pragma omp parallel shared(shortest_distances,begin,landmarks,neighbors,callback) default(none)
++#pragma omp parallel
+ 	{
+ 		bool* f = new bool[N];
+ 		bool* s = new bool[N];
+diff --git a/include/tapkee/routines/locally_linear.hpp b/include/tapkee/routines/locally_linear.hpp
+index 8b00c95..42a2d49 100644
+--- a/include/tapkee/routines/locally_linear.hpp
++++ b/include/tapkee/routines/locally_linear.hpp
+@@ -32,7 +32,7 @@ SparseWeightMatrix tangent_weight_matrix(RandomAccessIterator begin, RandomAcces
+ 	SparseTriplets sparse_triplets;
+ 	sparse_triplets.reserve((k*k+2*k+1)*(end-begin));
+ 
+-#pragma omp parallel shared(begin,end,neighbors,callback,sparse_triplets) default(none)
++#pragma omp parallel
+ 	{
+ 		IndexType index_iter;
+ 		DenseMatrix gram_matrix = DenseMatrix::Zero(k,k);
+@@ -102,7 +102,7 @@ SparseWeightMatrix linear_weight_matrix(const RandomAccessIterator& begin, const
+ 	SparseTriplets sparse_triplets;
+ 	sparse_triplets.reserve((k*k+2*k+1)*(end-begin));
+ 
+-#pragma omp parallel shared(begin,end,neighbors,callback,sparse_triplets) default(none)
++#pragma omp parallel
+ 	{
+ 		IndexType index_iter;
+ 		DenseMatrix gram_matrix = DenseMatrix::Zero(k,k);
+@@ -175,7 +175,7 @@ SparseWeightMatrix hessian_weight_matrix(RandomAccessIterator begin, RandomAcces
+ 
+ 	const IndexType dp = target_dimension*(target_dimension+1)/2;
+ 
+-#pragma omp parallel shared(begin,end,neighbors,callback,sparse_triplets) default(none)
++#pragma omp parallel
+ 	{
+ 		IndexType index_iter;
+ 		DenseMatrix gram_matrix = DenseMatrix::Zero(k,k);
+diff --git a/include/tapkee/routines/multidimensional_scaling.hpp b/include/tapkee/routines/multidimensional_scaling.hpp
+index 434f778..a1ea4b0 100644
+--- a/include/tapkee/routines/multidimensional_scaling.hpp
++++ b/include/tapkee/routines/multidimensional_scaling.hpp
+@@ -37,7 +37,7 @@ DenseSymmetricMatrix compute_distance_matrix(RandomAccessIterator begin, RandomA
+ 	const IndexType n_landmarks = landmarks.size();
+ 	DenseSymmetricMatrix distance_matrix(n_landmarks,n_landmarks);
+ 
+-#pragma omp parallel shared(begin,landmarks,distance_matrix,callback) default(none)
++#pragma omp parallel
+ 	{
+ 		IndexType i_index_iter,j_index_iter;
+ #pragma omp for nowait
+@@ -79,8 +79,7 @@ DenseMatrix triangulate(RandomAccessIterator begin, RandomAccessIterator end, Pa
+ 	for (IndexType i=0; i<target_dimension; ++i)
+ 		landmarks_embedding.first.col(i).array() /= landmarks_embedding.second(i);
+ 
+-#pragma omp parallel shared(begin,end,to_process,distance_callback,landmarks, \
+-		landmarks_embedding,landmark_distances_squared,embedding) default(none)
++#pragma omp parallel
+ 	{
+ 		DenseVector distances_to_landmarks(n_landmarks);
+ 		IndexType index_iter;
+@@ -116,7 +115,7 @@ DenseSymmetricMatrix compute_distance_matrix(RandomAccessIterator begin, RandomA
+ 	const IndexType n_vectors = end-begin;
+ 	DenseSymmetricMatrix distance_matrix(n_vectors,n_vectors);
+ 
+-#pragma omp parallel shared(begin,distance_matrix,callback) default(none)
++#pragma omp parallel
+ 	{
+ 		IndexType i_index_iter,j_index_iter;
+ #pragma omp for nowait
+-- 
+2.22.0
+
