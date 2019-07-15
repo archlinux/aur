@@ -33,7 +33,7 @@ package() {
     cmake --build . --target install -- DESTDIR="${pkgdir}"
 
     cd "$srcdir/${pkgname}"
-    install -dm 644 "examples/qmc-example.cpp" "${pkgdir}/usr/share/doc/${pkgname}/qmc-example.cpp"
-    install -dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -dm 644 "SECURITY.md" "${pkgdir}/usr/share/doc/${pkgname}/SECURITY.md"
+    install -Dm 644 "examples/qmc-example.cpp" "${pkgdir}/usr/share/doc/${pkgname}/qmc-example.cpp"
+    install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm 644 "SECURITY.md" "${pkgdir}/usr/share/doc/${pkgname}/SECURITY.md"
 }
