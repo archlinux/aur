@@ -2,7 +2,7 @@
 
 pkgname=corectrl
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Core control application"
 url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -22,7 +22,7 @@ build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/" -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF ..
+  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF ..
   make ${MAKEFLAGS}
 }
 
