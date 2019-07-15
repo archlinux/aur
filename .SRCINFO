@@ -1,0 +1,26 @@
+pkgbase = soundscrape-git
+	pkgdesc = SoundCloud (and Bandcamp and Mixcloud) downloader in Python.
+	pkgver = r237.efc63b9
+	pkgrel = 1
+	url = https://github.com/Miserlou/SoundScrape
+	arch = any
+	license = Apache
+	checkdepends = python-nose
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-args
+	depends = python-clint
+	depends = python-demjson
+	depends = python-fudge
+	depends = python-requests
+	depends = python-simplejson
+	depends = python-soundcloud
+	depends = python-wheel
+	depends = python-mutagen
+	provides = soundscrape
+	source = git+https://github.com/Miserlou/SoundScrape.git
+	sha512sums = SKIP
+
+pkgname = soundscrape-git
+
