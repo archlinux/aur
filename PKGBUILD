@@ -7,8 +7,8 @@ pkgdesc='Simple image glitcher suitable for producing nice looking i3lock backgr
 arch=('i686' 'x86_64')
 url='https://github.com/r00tman/corrupter'
 makedepends=('git' 'go')
-provides=("corrupter-bin") 
-conflicts=("corrupter-bin") 
+provides=("corrupter")
+conflicts=("corrupter")
 license=('BSD 2-Clause')
 
 md5sums=('SKIP')
