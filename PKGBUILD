@@ -2,9 +2,9 @@
 
 pkgname=mujs
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc='An embeddable Javascript interpreter in C'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://mujs.com/'
 license=('ISC')
 depends=('readline')

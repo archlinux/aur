@@ -1,9 +1,8 @@
 pkgbase = mujs
 	pkgdesc = An embeddable Javascript interpreter in C
 	pkgver = 1.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://mujs.com/
-	arch = i686
 	arch = x86_64
 	license = ISC
 	depends = readline
