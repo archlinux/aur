@@ -1,0 +1,5 @@
+!.gitignore
+php-tombs-git*
+tombs/
+src/
+pkg/
