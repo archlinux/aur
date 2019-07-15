@@ -2,7 +2,7 @@
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
 pkgname=i2p-bin
-pkgver=0.9.40
+pkgver=0.9.41
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="https://geti2p.net"
@@ -23,7 +23,11 @@ _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
-sha256sums=('b5dac73d1683ebfa9b58475c2dddc6ffc40efa6622278d133688af73db428381'
+#curl -s "https://geti2p.net/en/download" \
+#    |grep -A1 "<div class=\"hash\">" \
+#    |sed -e "s:.*<code>::" -e "s:</code>::" -e '5,5!d'
+
+sha256sums=('3faf1c24c776375694d5f70c53c795ef73e00b21cd4b931ee62b1299b7073fc4'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
