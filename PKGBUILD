@@ -6,8 +6,8 @@ _svt_av1_ver='0.6.0'
 _svt_vp9_ver='ce245894c6fc1c5d1439c41a7dda8d6dc61784c4'
 
 pkgname=ffmpeg-full
-pkgver=4.1.3
-pkgrel=8
+pkgver=4.1.4
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -48,7 +48,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "ffmpeg-full-add-intel-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch"
         'ffmpeg-full-decklink-sdk-11.patch'
         'LICENSE')
-sha256sums=('0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d'
+sha256sums=('f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1'
             'SKIP'
             'cc8ba4ff56cdb38a59650203999c4c8c83fc40bdb905b87b678ff68a4538444d'
             '516c5a1b3ab6dc444e2270a1bae90455838fc3b7e3a18de37d7d63e25e79493d'
