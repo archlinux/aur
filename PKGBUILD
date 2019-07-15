@@ -7,7 +7,7 @@ arch=(x86_64)
 url="https://github.com/quotient-im/libQuotient"
 license=("LGPL2")
 depends=("qt5-base" "qt5-multimedia")
-makedepends=("git" "cmake")
+makedepends=("git" "cmake" "make" "gcc")
 provides=("libquotient")
 conflicts=("libquotient")
 source=("${pkgname}::git+https://github.com/quotient-im/libQuotient.git#tag=${pkgver}")
