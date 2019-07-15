@@ -3,13 +3,13 @@
 
 pkgname=gsas2-svn
 _pkgname=gsas2
-pkgver=3615
+pkgver=4063
 pkgrel=1
 pkgdesc="General Structure Analysis System II - refinement for powder diffraction patterns"
 arch=(i686 x86_64)
 url="https://subversion.xray.aps.anl.gov/trac/pyGSAS"
 license=(unknown)
-depends=(python2 python2-scipy python2-matplotlib wxpython python2-opengl python2-numpy gcc-fortran python2-backports.functools_lru_cache)
+depends=(python2 python2-scipy python2-matplotlib python2-opengl python2-numpy python2-backports.functools_lru_cache python2-pillow python2-h5py wxpython gcc-fortran)
 [ "${CARCH}" = "x86_64" ] && depends=("${depends[@]}")
 makedepends=(subversion scons python2-numpy)
 optdepends=(python2-h5py)
@@ -20,8 +20,8 @@ source=(#"${_pkgname}::svn+https://subversion.xray.aps.anl.gov/pyGSAS/trunk/#rev
 	"rungsas2")
 
 md5sums=('SKIP'
-	'e9d06aed1866e65ce8259cfd5a31e1ce'
-	'62855c475e29b88b23a446ba4ffd91be')
+	'06d168ec9ef40e2eaee88845a2626aed'
+	'a31e17c7037361bf0ba1fe9a336086db')
 
 pkgver() {
 	  cd "${SRCDEST}/${_pkgname}"
@@ -29,7 +29,8 @@ pkgver() {
 }
 
 prepare()
-{	cd $srcdir/${_pkgname}/fsource
+{	
+	cd $srcdir/${_pkgname}/fsource
 	sed -i 's/f2py/f2py2/g' SConstruct
 }
 
@@ -51,21 +52,10 @@ package()
 
 	#remove unecessary libraries for other platforms
 	( cd $pkgdir/opt/${_pkgname}
-
-	#fortran_libs="fellipse histogram2d histosigma2d pack_f polymask pydiffax pypowder pyspg pytexture unpack_cbf"
-	#for lib in ${fortran_libs}; do
-	#	cp bin/${lib}*.so bin/${lib}.so
-	#done
 	rm -r fsource
-
-	for _dir in bin{mac,win,linux}{,64-}2.7; do
-		rm -rf ${_dir}
-	done
-
 	#already in depends
 	rm -rf PyOpenGL-3.0.2a5.zip 
 	)
-	
 	
 	#Install Desktop files:
 	install -m 644 -D "$srcdir/GSASII.desktop" "$pkgdir/usr/share/applications/GSASII.desktop"
