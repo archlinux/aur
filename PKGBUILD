@@ -1,13 +1,13 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname='dmon'
 pkgver='0.4.5'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Toolset for daemonizing and supervising processes'
 arch=('i686' 'x86_64' 'arm')
 url='https://github.com/aperezdc/dmon'
 license=('MIT')
 depends=('glibc')
-makedepends=('make' 'gnupg')
+makedepends=('make' 'gnupg' 'git')
 validpgpkeys=('5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
 source=("git+https://github.com/aperezdc/dmon.git#tag=v${pkgver}"
         "git+https://github.com/aperezdc/wheel.git")
