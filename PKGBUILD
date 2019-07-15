@@ -54,7 +54,7 @@ _major=5.2
 _minor=1
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
 license=('GPL2')
@@ -73,6 +73,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
+        "${_lucjanpath}/aufs-fixes/0001-aufs-fix-version.patch"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
         "${_lucjanpath}/zen-fixes/0002-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
@@ -385,6 +386,7 @@ sha512sums=('26bedcb07951b263d5b2ea003eb3e3433f2798e3ff90f9ab4e9d22cb011167dfc5a
             'SKIP'
             '8d9547ff38096b99d296cdec9875b816960c09db31acebb033e3660ba65475d1f310578282cac74947d75dff844dd22d7e7c2e4ded12368d32314fe145763752'
             '705387b4d1130fe1d356bda2114656987302433caab5face83e441cbc91d261bccb13f3c27acd9b2b7455297d0c45044a8cebdc553cb4d9dc18ec5cf78335586'
+            '1e1e89cb4d4492e1e97e2971075bed992b2bf5e6d8ad0a9c4ac42a52877e7101f61f2065d91c76870f0f7eaff2e0f2c4f78d8f9271bf5412c603998671e9192d'
             '068b9f3bb5112a5684246d0a2ae46bb26d7ad3a642276f5ed37d802b50efc925297d8bd4684eb391676e9a97efbb426b4fcbe6fd751860c3f53d8c0ca7d5a1b2'
             'f714a620d50541fd29199d076f94e68c14049bbb97b131da3b68b13bcc1dd933f62913e8aad2a20e0ad738f2c3cad161dac13d3d4cbfdfcead271f22f09a681e'
             'c1fecf034913e7838bb27c4d6e7538515093ef2e88daf8fe18b76cc501b864305b2a03e6e16db7929cbf48be96fe11e2b01e0ba8c1a58811806d78d34350bff5'
