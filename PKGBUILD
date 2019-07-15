@@ -1,7 +1,7 @@
 # Maintainer: Fredrik Strandin <fredrik@strandin.name>
 
 pkgname=libminizinc
-pkgver=2.1.7
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="MiniZinc is a modelling language for constraint programming problems"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=('MPL2')
 conflicts=(minizinc-bin)
 provides=(minizinc)
 source=(https://github.com/MiniZinc/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('e59075bbdcc36821d757b3b3fff288f341a0d30ce63dc253cc26ade55292657d')
+sha256sums=('1ca3d927adda1ffbb2548c387fee2b55e0d635466c99167acaf5a1670742215e')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -25,18 +25,7 @@ package() {
 
   make DESTDIR=$pkgdir install
 
-  # libminizincs cmake-file installs files in public folders when they should
-  # actuall go into their own to not raise conflicts.
-  install -d -m755 ${pkgdir}/usr/share/doc/${pkgname}
-  mv ${pkgdir}/usr/{INSTALL,README}.txt \
-    ${pkgdir}/usr/doc/pdf \
-    ${pkgdir}/usr/share/examples \
-    ${pkgdir}/usr/share/doc/${pkgname}/
-  rm -rf ${pkgdir}/usr/doc
-
-  install -d -m755 ${pkgdir}/usr/share/licenses/${pkgname}
-  mv ${pkgdir}/usr/LICENSE.txt \
-    ${pkgdir}/usr/share/licenses/${pkgname}/
+  install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
 }
 
 # vim:set ts=2 sw=2 et:
