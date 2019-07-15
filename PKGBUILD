@@ -2,7 +2,7 @@
 
 pkgname=pyznap
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ZFS snapshot tool written in Python"
 url="https://github.com/yboetz/pyznap"
 depends=('python' 'python-paramiko' )
@@ -20,4 +20,7 @@ build() {
 package() {
     cd $srcdir/pyznap-${pkgver}
     python setup.py install --root="$pkgdir" --optimize=1
+
+    # Python 2.x and 3.5, configparser is *not* built in, so it is a requirement. In 3.6+, it is built in.
+    sed -i '/^configparser/d' "${pkgdir}/usr/lib/python3.7/site-packages/pyznap-1.2.0-py3.7.egg-info/requires.txt"
 }

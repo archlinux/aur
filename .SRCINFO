@@ -1,7 +1,7 @@
 pkgbase = pyznap
 	pkgdesc = ZFS snapshot tool written in Python
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yboetz/pyznap
 	arch = any
 	license = GPLv3
