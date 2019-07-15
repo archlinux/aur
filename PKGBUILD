@@ -1,12 +1,12 @@
 # Maintainer: James Brink <brink.james@gmail.com>
 pkgname=omnisharp-roslyn-http-bin
 pkgver=1.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc=".NET development platform based on Roslyn workspaces. It provides project dependencies and C# language services to various IDEs and plugins via HTTP."
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
 license=('MIT')
-depends=('mono')
+depends=('mono' 'libuv')
 noextract=('$pkgname-$pkgver.tar.gz')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v$pkgver/omnisharp.http-mono.tar.gz")
 sha256sums=('691098632f70bd3c4b7ed22a624971c04a27f95320fdba6085cff6bd2986bcbe')
