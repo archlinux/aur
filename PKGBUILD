@@ -4,7 +4,7 @@
 # Contributor: Simon Pintarelli <simon.pintarelli@gmail.com>
 # Contributor: Feng Wang <wanng.fenng@gmail.com>
 pkgname=trilinos
-pkgver=12.14.1
+pkgver=12.14.2
 _pkgver=${pkgver//./-}
 pkgrel=1
 pkgdesc="algorithms for the solution of large-scale scientific problems"
@@ -14,6 +14,7 @@ license=('LGPL3')
 depends=('lapack' 'python2' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
 makedepends=('python2-numpy' 'gcc-fortran' 'perl' 'blas' 'cmake' 
              'gtest' 'doxygen')
+conflicts=('gtest')
 checkdepends=('cmake')
 source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz")
 sha256sums=('52a4406cca2241f5eea8e166c2950471dd9478ad6741cbb2a7fc8225814616f0')
