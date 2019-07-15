@@ -1,7 +1,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 pkgname=libquotient
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Qt5 library to write cross-platform clients for Matrix"
 arch=(x86_64)
 url="https://github.com/quotient-im/libQuotient"
@@ -22,15 +22,16 @@ build() {
     cd "$srcdir/build"
     cmake ../${pkgname} \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
         -DQMATRIXCLIENT_INSTALL_EXAMPLE=false
 
-    cmake --build . --target all
+    make
 }
 
 package() {
     cd "$srcdir/build"
-    cmake --build . --target install -- DESTDIR="${pkgdir}"
+    make DESTDIR="${pkgdir}" install
 
     cd "$srcdir/${pkgname}"
     install -Dm 644 "examples/qmc-example.cpp" "${pkgdir}/usr/share/doc/${pkgname}/qmc-example.cpp"
