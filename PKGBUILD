@@ -27,13 +27,15 @@ package() {
   mv qiradb/VERSION VERSION
 
   sed -i "/import sys/c\import sys\nsys.path.append('/usr/lib64/python2.7/site-packages')" middleware/qira.py
+  
+  virtualenv2 venv
+  source venv/bin/activate  
 
   install -d "${pkgdir}/opt/${pkgname}"
   cp -r . "${pkgdir}/opt/${pkgname}"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  virtualenv2 venv
-  source venv/bin/activate  
+
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
