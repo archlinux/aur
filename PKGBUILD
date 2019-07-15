@@ -1,20 +1,23 @@
-# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Christian Pfeiffer <cpfeiffer at live dot de>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: jwwolf <jwwolf+arch@gmail.com>
 # Contributor: Bernhard Walle <bernhard@bwalle.de>
 
 pkgname=crosstool-ng
-pkgver=1.23.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Versatile (cross-)toolchain generator'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://crosstool-ng.org/'
 license=('GPL')
 depends=('make' 'gperf' 'wget')
 makedepends=('help2man')
 options=('!makeflags')
-source=("http://crosstool-ng.org/download/$pkgname/$pkgname-$pkgver.tar.bz2")
-md5sums=('dc861702ecce216d1855c8185f0f1873')
-sha256sums=('1b76404960f2b35471b6385ba707b8a4712431820fe30063e435dad97ccb02b4')
+source=("http://crosstool-ng.org/download/$pkgname/$pkgname-$pkgver.tar.xz"
+		"http://crosstool-ng.org/download/$pkgname/$pkgname-$pkgver.tar.xz.sig")
+sha512sums=('89b8794a4184ad4928750e29712ed4f194aa1d0b93768d67ff64f30c30f1b1e165647cafc6de94d68d3ef70e50446e544dad65aa36137511a32ee7a667dddfb4'
+            'SKIP')
+validpgpkeys=('64AAFBF214758C63409345F97848649B11D618A4')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -25,5 +28,4 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
-  install -Dm644 ct-ng.comp "$pkgdir"/usr/share/bash-completion/completions/ct-ng
 }
