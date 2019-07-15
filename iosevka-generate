@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.6
+#!/usr/bin/env python3
 # pylint: disable=C0103,C0111
 
 import os
