@@ -1,7 +1,7 @@
 # Maintainer: beelzy
 
 pkgname=kame-editor-git
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://gitlab.com/beelzy/kame-editor"
