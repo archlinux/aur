@@ -2,3 +2,4 @@ pkg/*
 src/*
 survex-*.pkg.tar.xz
 survex-*.tar.gz
+sample.tar.gz
