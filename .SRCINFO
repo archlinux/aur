@@ -1,0 +1,30 @@
+pkgbase = freac-git
+	pkgdesc = Audio converter and CD ripper with support for various popular formats and encoders.
+	pkgver = continuous.r0.86175462
+	pkgrel = 1
+	url = http://www.freac.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = boca
+	makedepends = smooth-git
+	depends = faac
+	depends = faad2
+	depends = libjpeg-turbo
+	depends = lame
+	depends = libmp4v2
+	depends = mpg123
+	depends = libogg
+	depends = opus
+	depends = libpng
+	depends = speex
+	depends = libvorbis
+	depends = libpulse
+	depends = libgudev
+	provides = freac
+	conflicts = freac
+	source = git+https://github.com/enzo1982/freac
+	sha256sums = SKIP
+
+pkgname = freac-git
+
