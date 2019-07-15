@@ -10,7 +10,6 @@ pkgbase = madgraph
 	depends = gcc-fortran
 	depends = perl
 	depends = python2
-	depends = tcsh
 	optdepends = delphes
 	optdepends = fastjet
 	optdepends = golem95

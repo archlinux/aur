@@ -16,7 +16,6 @@ depends=(
     'gcc-fortran'
     'perl'
     'python2'
-    'tcsh'
 )
 optdepends=(
     'delphes'
