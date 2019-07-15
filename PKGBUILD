@@ -1,8 +1,8 @@
 # Maintainer: Sergey Kostyuchenko <derfenix@gmail.com>
 
 pkgname=corectrl
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Core control application"
 url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -14,9 +14,8 @@ optdepends=(
 	'mesa-demos: For glxinfo',
 	'util-linux: For lscpu'
 )
-source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2" "fix_abs_paths.patch")
-sha512sums=('fb50d37fa025e57aa5da0a1897d2a009a096f4e45259b2d14391d987eed573aaa418848a1257c4278339b8a475fd68f72070a5a030be56b77483edda1662f9a5'
-	'342bb3c12163bb7f4fc61b159d4f7f82320c3e9a18707fcd5eb7dab8ce878a8cb3b3893b3f6276e221b32498f6f5638feca30ee83b75b9277c1b5840c2f72f6f')
+source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
+sha512sums=('afa9e6baba888fe05615f0b1527d5731c29a343bc865a1ff0328c14343bf2cc935cc7ccf381f66fc2bc6c026cbadec231e9b11ea583aa728dadfbede227c7b0c')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
@@ -27,7 +26,8 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-v${pkgver}/build"
-  patch -p0 <../../../fix_abs_paths.patch
+  cd "${srcdir}/${pkgname}-v${pkgver}/build" 
+  sed -i -- 's/\/usr/${CMAKE_INSTALL_PREFIX}/g' src/helper/cmake_install.cmake
   make install
+  for size in 24x24 48x48 32x32 96x96 64x64 22x22 196x196 72x72 128x128 16x16 256x256; do ln -fs $pkgdir/usr/share/icons/hicolor/$size/apps/CoreCtrl.svg $pkgdir/usr/share/icons/hicolor/$size/apps/corectrl.svg; done
 }
