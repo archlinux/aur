@@ -8,6 +8,7 @@ import subprocess
 
 import configparser
 
+from textwrap import dedent
 from typing import Dict
 from typing import Set
 from typing import Tuple
@@ -43,20 +44,22 @@ def generate_font(
         mode: ' '.join(styles) for mode, styles in font_styles.items()
     }
 
-    subprocess.run([
-        'make',
-        'custom-config',
-        f'set={font_name}',
-        f'design={options["common"]}',
-        f'upright={options["upright"]}',
-        f'italic={options["italic"]}',
-        f'oblique={options["oblique"]}',
-    ], cwd=iosevka_dir).check_returncode()
+    with open(osp.join(iosevka_dir, 'private-build-plans.toml'), 'w') as fp:
+        fp.write(dedent(f'''\
+            [buildPlans.{font_name}]
+            family = "Iosevka"
+            design = [{', '.join(map(lambda style: f'"{style}"', font_styles['common']))}]
+            upright = [{', '.join(map(lambda style: f'"{style}"', font_styles['upright']))}]
+            italic = [{', '.join(map(lambda style: f'"{style}"', font_styles['italic']))}]
+            oblique = [{', '.join(map(lambda style: f'"{style}"', font_styles['oblique']))}]
+        '''))
 
     subprocess.run([
-        'make',
-        'custom',
-        f'set={font_name}'
+        'npm',
+        'run',
+        'build',
+        '--',
+        f'contents::{font_name}',
     ], cwd=iosevka_dir).check_returncode()
 
 
@@ -110,7 +113,7 @@ if __name__ == '__main__':
     name, styles = parse_config(osp.join(config_dir, 'config'))
     generate_font(install_dir, name, styles)
 
-    gen_dir = osp.join(install_dir, 'dist', f'iosevka-{name}', 'ttf')
+    gen_dir = osp.join(install_dir, 'dist', name, 'ttf')
     font_dir = osp.join(xdg_data_home, 'fonts')
 
     store_fonts(font_dir, gen_dir)

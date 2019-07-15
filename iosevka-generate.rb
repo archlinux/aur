@@ -4,7 +4,6 @@ class IosevkaGenerate < Formula
   head "https://github.com/OJFord/iosevka-generate.git", :branch => "master"
 
   depends_on :python3
-  depends_on "make"
   depends_on "node"
   depends_on :otfccbuild
   depends_on "ttfautohint"
