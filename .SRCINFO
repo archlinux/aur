@@ -1,0 +1,13 @@
+pkgbase = openxcom-mod-area51
+	pkgdesc = Area 51 - a mod for OpenXcom
+	pkgver = 0.972
+	pkgrel = 1
+	url = https://openxcom.mod.io/area-51
+	arch = x86_64
+	license = GPLv3
+	depends = openxcom
+	source = https://binary.mod.io/mods/58a2/192/area_51_v0.972.zip
+	sha512sums = 7af306c7c8f522d69d6c5eb8e86b51b4a2f0f3846d92f8e230aed724d64998c7478027df5b9efd244376b369f7dfa4060e60cc4b72682b86497aa9a3fc82ddd3
+
+pkgname = openxcom-mod-area51
+
