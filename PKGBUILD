@@ -50,21 +50,22 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20190710.r0.ga77f5c70e3d2
+pkgver=20190715.r0.ge689ed79e479
 _srcname=linux-next
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'git')
-_lucjanver=5.1
+makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'git' 'python-sphinx' 'python-sphinx_rtd_theme'
+             'graphviz' 'imagemagick')
+_lucjanver=5.2
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git"
-        "${_lucjanpath}/arch-patches-v3/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-        "${_lucjanpath}/arch-patches-v3/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
+        "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+        "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -188,7 +189,7 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
@@ -345,6 +346,18 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
+
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
+  
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
@@ -363,8 +376,8 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            '2f7a1939c8e9e86b39a3385ef33f1fb738e507ae771696f57d5fa2032a46438c50e5ce54ad607643dffa0d544d401fc40616db9e88defcf7719f32efa3cdbefc'
-            'ad3f2c10467341fcbf0f6a636aef0bf216d9c0d993d79ce3825e5432ad8261e6e596772931a6ac090742cf7299bdf72730e75184efc9502246ed521d79214034'
+            '068b9f3bb5112a5684246d0a2ae46bb26d7ad3a642276f5ed37d802b50efc925297d8bd4684eb391676e9a97efbb426b4fcbe6fd751860c3f53d8c0ca7d5a1b2'
+            'f714a620d50541fd29199d076f94e68c14049bbb97b131da3b68b13bcc1dd933f62913e8aad2a20e0ad738f2c3cad161dac13d3d4cbfdfcead271f22f09a681e'
             '1f79dafee60df153c119329c3cce31344c9a811a0a2f7eff171707947539de9477355807511625bba550f6eff406e4192f30752705ad08b3b3cb8d0e500704f0'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
