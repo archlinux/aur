@@ -1,5 +1,5 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
-#Contributor: Robosky <fangyuhao0612 at gmail dot com>
+# Contributor: Robosky <fangyuhao0612 at gmail dot com>
 pkgname=anbox-image-gapps
 pkgver=2018.07.19
 pkgrel=7
@@ -34,7 +34,7 @@ noextract=('android_amd64.img'
 	'houdini_z.sfs'
 	'libhoudini.so')
 sha256sums=('6b04cd33d157814deaf92dccf8a23da4dc00b05ca6ce982a03830381896a8cca'
-            'c7cc79d2b2bf4e9ae6e32ff4aefab2034276fa5a9d39064b69635d762d3c7fb4'
+            'a31c1564097eae9d741a88ce9719199e5edeea521d9d1d6d5b52e72a1d382ea2'
             '56fd08c448840578386a71819c07139122f0af39f011059ce728ea0f3c60b665'
             '7eedc42015e6fb84a11a406a099241efccc20d4e020d476335a5fdb6e69a33d2'
             '2d15d126e46ea933a92fcc6dd30ad2c93d063af322fc1ba84aaa4f3e75d84e68')
