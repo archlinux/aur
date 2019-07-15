@@ -64,9 +64,8 @@ build() {
   meson --prefix=/usr \
     -Dopengl=es-egl \
     -Dfb=true \
-    -Ddrm=true \
     -Dtslib=false \
-    -Dharfbuzz=true \
+    -Ddrm=true \
     -Dwl=true \
     -Dnetwork-backend=connman \
     -Devas-loaders-disabler=json \
