@@ -3,7 +3,7 @@
 # Contributor: Manuel Mendez <mmendez534 at gmail dot com>
 
 pkgname=babeltrace
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Command-line trace converter"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT' 'GPL2' 'LGPL2.1')
 depends=('popt' 'util-linux' 'glib2' 'elfutils')
 makedepends=('popt' 'util-linux' 'glib2' 'elfutils')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/efficios/babeltrace/archive/v${pkgver}.tar.gz")
-sha512sums=('c6d80f3875f42d9dd3ce48c57df7797849a2c7b90a8ea73f47d2dd60363bdfc6f47284a735d15d83faeeb239aeaf75c78c015809cc8786989743d756c97fa936')
+sha512sums=('044c06e0f1fe0844f30c7c21181e9a548f20cf80938e4f4a1aff3e0fcafd69faee89df81b8fb1d6574526b4275195f0068d1967778dc354641612c1982e1be26')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
