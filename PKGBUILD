@@ -5,7 +5,7 @@
 # Contributor: Earnest <zibeon@gmail.com>
 
 pkgname=spin
-pkgver=6.4.9
+pkgver=6.5.0
 pkgrel=1
 pkgdesc='Tool for the formal verification of distributed software systems'
 arch=('i686' 'x86_64')
@@ -16,21 +16,21 @@ optdepends=('tcl: ispin graphical interface'
             'swarm: improved performance on large verification problems'
             'modex: extract verification models from implementation C code'
             'ispin: GUI for Spin')
-source=(https://github.com/freswa/spin/archive/v${pkgver}.tar.gz)
-sha512sums=('0a69001de2f16815a804f5c8df214ca93f5f47b5e5fcd9335191b4daaff56e4cbe3ec39d797b58de35cc0eda564cb21fbf8ba3c83acc02ea2aedb876c736712f')
+source=(https://github.com/nimble-code/Spin/archive/version-${pkgver}.tar.gz)
+sha512sums=('0beeb1faea93f806c37a4b76c2c407363990596134fc60b15c3f3a2d33ccf59680acd30e251c4f83fb725903aecb6238b166af7dbc9296a8a34259feabeeae24')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/Src${pkgver}"
+  cd "${srcdir}/Spin-version-${pkgver}/Src"
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/Src${pkgver}"
+  cd "${srcdir}/Spin-version-${pkgver}/Src"
   # install binary and license file
   install -Dm755 spin "${pkgdir}/usr/bin/spin"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/Spin-version-${pkgver}"
   # install manpage and docs
   install -d "${pkgdir}/usr/share/man/man1/"
   install -d "${pkgdir}/usr/share/doc/${pkgname}/examples"

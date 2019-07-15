@@ -1,6 +1,6 @@
 pkgbase = spin
 	pkgdesc = Tool for the formal verification of distributed software systems
-	pkgver = 6.4.9
+	pkgver = 6.5.0
 	pkgrel = 1
 	url = https://spinroot.com/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = spin
 	optdepends = swarm: improved performance on large verification problems
 	optdepends = modex: extract verification models from implementation C code
 	optdepends = ispin: GUI for Spin
-	source = https://github.com/freswa/spin/archive/v6.4.9.tar.gz
-	sha512sums = 0a69001de2f16815a804f5c8df214ca93f5f47b5e5fcd9335191b4daaff56e4cbe3ec39d797b58de35cc0eda564cb21fbf8ba3c83acc02ea2aedb876c736712f
+	source = https://github.com/nimble-code/Spin/archive/version-6.5.0.tar.gz
+	sha512sums = 0beeb1faea93f806c37a4b76c2c407363990596134fc60b15c3f3a2d33ccf59680acd30e251c4f83fb725903aecb6238b166af7dbc9296a8a34259feabeeae24
 
 pkgname = spin
 
