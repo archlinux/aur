@@ -1,21 +1,19 @@
 pkgbase = mstreamexpress-bin
 	pkgdesc = Music streaming server with Flac support, based on Electron
-	pkgver = 0.4.3
+	pkgver = 0.16
 	pkgrel = 1
 	url = http://www.mstream.io/
 	arch = x86_64
 	license = GPL3
 	depends = alsa-lib
-	depends = gtk2
+	depends = gtk3
 	depends = libxtst
-	depends = gconf
 	depends = libxss
-	depends = gcc-libs-multilib
 	depends = nss
 	conflicts = mstreamexpress
 	replaces = mstreamexpress
-	source = https://github.com/IrosTheBeggar/mStream/releases/download/v3.0.7/mstreamExpress-linux-v0.4.3.tar.gz
-	md5sums = eb14e68bc67fe44ca7cbf209729c0c42
+	source = mStreamExpress-0.16.tar.gz::https://github.com/IrosTheBeggar/mStream/releases/download/v4.2.1/mStreamExpress-Linux-X64.tar.gz
+	md5sums = 01e4422e4cc2da831511da0a72f488bd
 
 pkgname = mstreamexpress-bin
 
