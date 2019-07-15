@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Bubon (quaardvark) <dmitry.bubon at gmail dot com>
 
 pkgbase=linux-cx2072x   # Build kernel with CX2072x support
-_srcver=5.1_cx2072x
+_srcver=5.2_cx2072x
 _srcname="linux-$_srcver"
 pkgver=${_srcver//-/.}
 pkgrel=1
@@ -23,7 +23,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('ccf40bdeb5c8f77f4d5a379667c75b287a8e46c593b105c2911b66a8354764dd'
+sha256sums=('0894aa1b3e20cc6d4950d40178ffee84d2bdf9c6b2c7f441605c032bb786a04b'
             'd8eac4a183fbc5a6391a21beb9be1c9b24b7ff2deeb3cedb8b4635722ddcede9'
             '702967d73e83f35c3c83b83fb6cd76a01912bce7993f89fda1004ee12816e924'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
