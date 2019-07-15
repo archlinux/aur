@@ -3,7 +3,7 @@
 _pkgname=omnisharp-roslyn-http
 pkgname=$_pkgname-bin
 pkgver=1.33.0
-pkgrel=3
+pkgrel=4
 pkgdesc=".NET development platform based on Roslyn workspaces. It provides project dependencies and C# language services to various IDEs and plugins via HTTP."
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
@@ -15,7 +15,6 @@ sha256sums=('691098632f70bd3c4b7ed22a624971c04a27f95320fdba6085cff6bd2986bcbe')
 
 package() {
     mkdir -p "$pkgdir/opt/$_pkgname"
-    mkdir -p "$pkgdir/usr/bin"
     tar -xf $srcdir/$_pkgname-$pkgver.tar.gz -C $pkgdir/opt/$_pkgname
     chown -R root:root "$pkgdir/opt/$_pkgname"
     chmod -R 0644 "$pkgdir/opt/$_pkgname"

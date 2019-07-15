@@ -1,7 +1,7 @@
 pkgbase = omnisharp-roslyn-http-bin
 	pkgdesc = .NET development platform based on Roslyn workspaces. It provides project dependencies and C# language services to various IDEs and plugins via HTTP.
 	pkgver = 1.33.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/OmniSharp/omnisharp-roslyn
 	arch = x86_64
 	license = MIT
