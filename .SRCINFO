@@ -1,12 +1,13 @@
 pkgbase = t230c2-git
 	pkgdesc = CrazyCat Geniatech T230C2 DVB-T/T2/C kernel modules
-	pkgver = r1122.f77791e
-	pkgrel = 2
+	pkgver = r1171.3c90d7e
+	pkgrel = 1
 	url = https://bitbucket.org/CrazyCat/media_build
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = linux-headers
+	makedepends = perl-proc-processtable
 	provides = t230c2
 	source = t230c2-git::git+https://bitbucket.org/CrazyCat/media_build.git
 	source = https://github.com/osmc/dvb-firmware-osmc/raw/master/dvb-demod-si2168-d60-01.fw
