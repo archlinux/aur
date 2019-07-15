@@ -1,4 +1,4 @@
-From eb4326d39ed11a5ea9b2e64e155a8f26ecc17b0a Mon Sep 17 00:00:00 2001
+From facc89e9435bfeedd1f38d05c32c95eaf84122cc Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:36:56 +0100
 Subject: [PATCH 1/4] Cairo backend added to Qt5 wrapper
@@ -66,7 +66,7 @@ index 81db4eaf..635e44f9 100644
      }
  
 diff --git a/qt5/src/poppler-page.cc b/qt5/src/poppler-page.cc
-index 3e750620..04bf2e64 100644
+index 4676dcd8..7b952d3a 100644
 --- a/qt5/src/poppler-page.cc
 +++ b/qt5/src/poppler-page.cc
 @@ -48,6 +48,7 @@
@@ -87,7 +87,7 @@ index 3e750620..04bf2e64 100644
  
  #include "poppler-private.h"
  #include "poppler-page-transition-private.h"
-@@ -622,6 +626,70 @@ QImage Page::renderToImage(double xres, double yres, int x, int y, int w, int h,
+@@ -622,6 +626,70 @@ QImage Page::renderToImage(double xres, double yres, int xPos, int yPos, int w,
        img = tmpimg;
        break;
      }
@@ -145,7 +145,7 @@ index 3e750620..04bf2e64 100644
 +
 +      m_page->parentDoc->doc->displayPageSlice(
 +        output_dev, m_page->index + 1, xres, yres, rotation, false, true,
-+        false, x, y, w, h);
++        false, xPos, yPos, w, h);
 +
 +      // Clean up
 +      output_dev->setCairo(nullptr);
@@ -198,5 +198,5 @@ index 5abcbc45..99c12b9f 100644
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Gui_EXECUTABLE_COMPILE_FLAGS}")
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Xml_EXECUTABLE_COMPILE_FLAGS}")
 -- 
-2.21.0
+2.22.0
 

@@ -1,4 +1,4 @@
-From 21f2167b9776d0766f805c506629b6d045464314 Mon Sep 17 00:00:00 2001
+From d87f47f22682b488f2d0e78fc4a56e842a841613 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
 Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
@@ -74,10 +74,10 @@ index 78d24bb5..d482ceb5 100644
          g_timer_stop (timer);
  
 diff --git a/glib/poppler-page.cc b/glib/poppler-page.cc
-index dc82afc4..622e2954 100644
+index 8b5b4da0..709b760e 100644
 --- a/glib/poppler-page.cc
 +++ b/glib/poppler-page.cc
-@@ -2413,3 +2413,13 @@ poppler_page_get_text_attributes_for_area (PopplerPage      *page,
+@@ -2447,3 +2447,13 @@ poppler_page_get_text_attributes_for_area (PopplerPage      *page,
  
    return g_list_reverse(attributes);
  }
@@ -135,13 +135,13 @@ index bf6bd88d..d9e42304 100644
    if (cairo_font_face_set_user_data (l->font_face,
  				     &_ft_cairo_key,
 diff --git a/poppler/CairoOutputDev.cc b/poppler/CairoOutputDev.cc
-index d2769a22..f1bb39fc 100644
+index 68927636..c21229a7 100644
 --- a/poppler/CairoOutputDev.cc
 +++ b/poppler/CairoOutputDev.cc
-@@ -205,6 +205,13 @@ void CairoOutputDev::setCairo(cairo_t *cairo)
+@@ -205,6 +205,13 @@ void CairoOutputDev::setCairo(cairo_t *c)
    }
-   if (cairo != nullptr) {
-     this->cairo = cairo_reference (cairo);
+   if (c != nullptr) {
+     cairo = cairo_reference (c);
 +    {
 +      cairo_font_options_t *options = cairo_font_options_create ();
 +      cairo_get_font_options (cairo, options);
@@ -191,10 +191,10 @@ index d2769a22..f1bb39fc 100644
    glyphs = nullptr;
    if (use_show_text_glyphs) {
 diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
-index 5fba4c72..a5e5e963 100644
+index a9b93b61..c84a09d5 100644
 --- a/poppler/Gfx.cc
 +++ b/poppler/Gfx.cc
-@@ -4607,6 +4607,47 @@ void Gfx::doImage(Object *ref, Stream *str, bool inlineImg) {
+@@ -4610,6 +4610,47 @@ void Gfx::doImage(Object *ref, Stream *str, bool inlineImg) {
    error(errSyntaxError, getPos(), "Bad image parameters");
  }
  
@@ -203,7 +203,7 @@ index 5fba4c72..a5e5e963 100644
 +  Object args[maxArgs];
 +  int numArgs;
 +  bool onlyNormalBlendMode;
-+  Parser myParser(xref, new Lexer(xref, str), false);
++  Parser myParser(xref, str, false);
 +
 +  numArgs = 0;
 +  onlyNormalBlendMode = true;
@@ -295,5 +295,5 @@ index 01f056f9..d6547a79 100644
    Object getAnnotsObject(XRef *xrefA = nullptr) { return annotsObj.fetch(xrefA ? xrefA : xref); }
    // Add a new annotation to the page
 -- 
-2.21.0
+2.22.0
 
