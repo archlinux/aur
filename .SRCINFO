@@ -5,13 +5,22 @@ pkgbase = efl-git
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = BSD
 	license = LGPL2.1
 	license = GPL2
 	license = MIT
 	license = custom
 	makedepends = git
-	makedepends = python2
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = gcc
+	makedepends = binutils
+	makedepends = fakeroot
 	depends = avahi
 	depends = bullet
 	depends = curl
@@ -47,6 +56,7 @@ pkgbase = efl-git
 	depends = wayland
 	depends = wayland-protocols
 	depends = libxkbcommon-x11
+	depends = pulseaudio
 	optdepends = geoclue: For elocation
 	optdepends = gst-plugins-base: Video and thumbnail codecs
 	optdepends = gst-plugins-good: Video and thumbnail codecs
@@ -55,10 +65,10 @@ pkgbase = efl-git
 	optdepends = gst-libav: Video and thumbnails with ffmpeg/libav
 	optdepends = libreoffice: Office document thumbnails
 	optdepends = python2: Compare Eina benchmarks
-	provides = efl=1.20.99.57388.g7255954ccc
-	provides = elementary=1.20.99.57388.g7255954ccc
-	provides = elementary-git=1.20.99.57388.g7255954ccc
-	provides = evas_generic_loaders=1.20.99.57388.g7255954ccc
+	provides = efl=1.22.99.62619.g01d6683e32
+	provides = elementary=1.22.99.62619.g01d6683e32
+	provides = elementary-git=1.22.99.62619.g01d6683e32
+	provides = evas_generic_loaders=1.22.99.62619.g01d6683e32
 	conflicts = efl
 	conflicts = elementary
 	conflicts = elementary-git
