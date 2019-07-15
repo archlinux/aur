@@ -8,8 +8,8 @@ url="https://github.com/enzo1982/boca"
 license=('GPL2')
 depends=('alsa-lib' 'libcdio-paranoia' 'expat' 'libpulse' 'uriparser')
 makedepends=('smooth-git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}" 'freac_cdk')
+conflicts=("${pkgname%-git}" 'freac_cdk')
 source=('git+https://github.com/enzo1982/boca.git')
 sha256sums=('SKIP')
 

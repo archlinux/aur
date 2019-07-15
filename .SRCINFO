@@ -13,7 +13,9 @@ pkgbase = boca-git
 	depends = libpulse
 	depends = uriparser
 	provides = boca
+	provides = freac_cdk
 	conflicts = boca
+	conflicts = freac_cdk
 	source = git+https://github.com/enzo1982/boca.git
 	sha256sums = SKIP
 
