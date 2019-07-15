@@ -2,7 +2,7 @@
 
 pkgname=madgraph-pythia8-interface
 pkgver=1.0
-pkgrel=8
+pkgrel=9
 pkgdesc="MadGraph Pythia8 interface"
 url="http://madgraph.hep.uiuc.edu/"
 arch=('i686' 'x86_64')
@@ -14,11 +14,11 @@ depends=(
     'python2'
 )
 source=(
-    "http://madgraph.physics.illinois.edu/Downloads/MG5aMC_PY8_interface/MG5aMC_PY8_interface_V${pkgver}.tar.gz"
+    "http://madgraph.phys.ucl.ac.be/Downloads/MG5aMC_PY8_interface/MG5aMC_PY8_interface_V${pkgver}.tar.gz"
     "python2.patch"
     "pythia.patch"
 )
-sha256sums=('6467dcc5539796f8fd81b9a74288bf8e9b33378bb0507b2771d5c86696c7a32e'
+sha256sums=('dd1a96f598176c3eb5f91bc189eaac1405afebf23f7fcfd055135d788dc69e3d'
             '632adc73e951df4341709adeafd3a7c72da1752f8af61037eae2b87a08ca9a64'
             'e506dad2224ed639a83537b21eadeda0ee244e9b5d5ee2770e536564f1e41491')
 
