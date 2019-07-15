@@ -1,7 +1,7 @@
 pkgbase = libfiber-git
 	pkgdesc = A User Space Threading Library Supporting Multi-Core Systems
 	pkgver = r215.111db17
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/brianwatling/libfiber
 	arch = x86_64
 	license = custom:ISC

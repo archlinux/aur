@@ -3,7 +3,7 @@
 
 pkgname=libfiber-git
 pkgver=r215.111db17
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 
 pkgdesc='A User Space Threading Library Supporting Multi-Core Systems'
