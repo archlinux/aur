@@ -1,6 +1,6 @@
 pkgbase = waterfox-alpha-git
 	pkgdesc = More private and optimized Firefox fork. Alpha (gecko68) branch. CREATES SEPARATE PROFILE
-	pkgver = 68.0a2+85165bfd6f5f
+	pkgver = 68.0a2+1af260493b7d
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
 	install = waterfox-alpha.install
