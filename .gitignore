@@ -1,6 +1,7 @@
 *
-!.gitignore
 !.SRCINFO
-!install.sh
+!.gitignore
 !PKGBUILD
+!install.sh
+!omnisharp.patch
 !rls.patch

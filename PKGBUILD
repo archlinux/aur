@@ -25,9 +25,7 @@
 #=========================================================================================================#
 #                                          Build Options                                                  #
 #=========================================================================================================#
-_omnisharp="y"
 _gocode="y"
-_rust="n"
 _tern="y"
 _typescript="y"
 _java="y"
@@ -45,13 +43,15 @@ pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=5
+pkgrel=6
 pkgdesc="A code-completion engine for Vim"
 arch=('x86_64')
 url='https://ycm-core.github.io/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
 depends=('boost' 'boost-libs' 'python' 'python2' 'nodejs' 'vim' 'clang')
+optdepends=('rustup: rust language support'
+            'omnisharp-roslyn-http-bin: C# language support')
 makedepends=('cmake' 'git' 'make' 'curl')
 install="install.sh"
 source=(
@@ -70,36 +70,23 @@ source=(
 	'git+https://github.com/urllib3/urllib3.git'
 	'git+https://github.com/ycm-core/ycmd.git'
 	'git+https://github.com/ycm-core/YouCompleteMe.git'
+	'omnisharp.patch'
 	'rls.patch')
 
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'cde1d1265be82e246edb6021e0a4b4e01af1a140b8d92b05bde6929e922ae215')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 
+			'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+			'266b90d50bff43b6d0a011462239dcf261f5a97a5b1f110b4a7e063670963dae' 
+			'cde1d1265be82e246edb6021e0a4b4e01af1a140b8d92b05bde6929e922ae215')
 
 #=========================================================================================================#
 #                                     Applying PKBUILD Build Options                                      #
 #=========================================================================================================#
 
 if [[ "$_gocode" == "y" ]]; then
-	# ycmd
-	source+=('git+https://github.com/mdempsky/gocode.git'
-		'git+https://github.com/rogpeppe/godef.git')
-	sha256sums+=('SKIP' 'SKIP')
 	makedepends+=('go')
 fi
 
-# TODO use the existing omnisharp AUR package if possible
-if [[ "$_omnisharp" == "y" ]]; then
-	source+=('https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.33.0/omnisharp.http-linux-x64.tar.gz')
-	sha256sums+=('74cecc6265969d312b8124cb88152cdd9874f1027957d88ec0268d9c3e6cd3f1')
-	depends+=('mono' 'libuv')
-	makedepends+=('mono' 'libuv')
-fi
-
-if [[ "$_rust" == "y" ]]; then
-	depends+=('rustup')
-fi
-
 if [[ "$_tern" == "y" ]]; then
-	# ycmd
 	makedepends+=('npm')
 fi
 
@@ -172,20 +159,19 @@ prepare() {
 		ycmd+=("go-completer")
 	fi
 
-	if [[ "$_omnisharp" == "y" ]]; then
-		cd "$srcdir" || exit
-		cp -r omnisharp YouCompleteMe/third_party/ycmd/third_party/omnisharp-roslyn
-	fi
-
 	# Apply our patch to use existing rustup toolchains
-	if [[ "$_rust" == "y" ]]; then
-		cd "$srcdir" || exit
-		cp rls.patch "$srcdir/YouCompleteMe/third_party/ycmd/"
-		cd "$srcdir/YouCompleteMe/third_party/ycmd/" || exit
-		patch -p1 <rls.patch
-		rm rls.patch
-	fi
+	cd "$srcdir" || exit
+	cp rls.patch "$srcdir/YouCompleteMe/third_party/ycmd/"
+	cd "$srcdir/YouCompleteMe/third_party/ycmd/" || exit
+	patch -N -p1 -r - <rls.patch || echo "Patch already applied"
+	rm rls.patch
 
+	# Apply our patch to use AUR omnisharp-http-bin
+	cd "$srcdir" || exit
+	cp omnisharp.patch "$srcdir/YouCompleteMe/third_party/ycmd/"
+	cd "$srcdir/YouCompleteMe/third_party/ycmd/" || exit
+	patch -N -p1 -r - <omnisharp.patch || echo "Patch already applied"
+	rm omnisharp.patch
 }
 
 build() {
@@ -265,18 +251,6 @@ package() {
 		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/requests_deps"
 	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/jedi_deps/"{jedi,parso} \
 		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/jedi_deps"
-
-	if [[ "$_omnisharp" == "y" ]]; then
-		cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/omnisharp-roslyn" \
-			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/omnisharp-roslyn"
-
-		# There seems to be a case senitivity issue with the packaged release of omnisharp-roslyn
-		# and the filename that ycm expects so we link it.
-		if [ -f "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/omnisharp-roslyn/OmniSharp.exe" ]; then
-			ln -s "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/omnisharp-roslyn/OmniSharp.exe" \
-				"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/omnisharp-roslyn/Omnisharp.exe"
-		fi
-	fi
 
 	if [[ "$_gocode" == "y" ]]; then
 		cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/go" \

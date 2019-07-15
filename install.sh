@@ -7,22 +7,24 @@ update_vim_help() {
 
 post_install() {
   update_vim_help
-  echo "For rust support be sure to setup a default toolchain with rustup (and enable rust in PKGBUILD)"
+  echo "For rust support be sure to setup a default toolchain with rustup"
   echo "rls, rust-analysis and rust-src are needed for whatever toolchain you are using."
   echo "Example:"
   echo -e "\trustup toolchain install nightly"
   echo -e "\trustup default nightly"
   echo -e "\trustup component add rls rust-analysis rust-src"
+  echo -e "\n\n\n"
 }
 
 post_upgrade() {
   update_vim_help
-  echo "For rust support be sure to setup a default toolchain with rustup (and enable rust in PKGBUILD)"
+  echo "For rust support be sure to setup a default toolchain with rustup"
   echo "rls, rust-analysis and rust-src are needed for whatever toolchain you are using."
   echo "Example:"
   echo -e "\trustup toolchain install nightly"
   echo -e "\trustup default nightly"
   echo -e "\trustup component add rls rust-analysis rust-src"
+  echo -e "\n\n\n"
 }
 
 post_remove() {
