@@ -45,7 +45,7 @@ pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=3
+pkgrel=5
 pkgdesc="A code-completion engine for Vim"
 arch=('x86_64')
 url='https://ycm-core.github.io/YouCompleteMe/'
@@ -96,7 +96,6 @@ fi
 
 if [[ "$_rust" == "y" ]]; then
 	depends+=('rustup')
-	makedepends+=('rustup')
 fi
 
 if [[ "$_tern" == "y" ]]; then
