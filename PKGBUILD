@@ -2,8 +2,8 @@
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=4.1.3
-pkgrel=2
+pkgver=4.1.4
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('x86_64')
@@ -31,7 +31,7 @@ conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         'ffmpeg-decklink-sdk-11.patch'
         'LICENSE')
-sha256sums=('0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d'
+sha256sums=('f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1'
             'SKIP'
             '96500257c72c664a9e7417d9aee3d0b2a4436f836e9733dcf1c9c30926b642df'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
