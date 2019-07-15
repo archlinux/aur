@@ -1,0 +1,13 @@
+pkgbase = openxcom-mod-xfiles
+	pkgdesc = The X-Com Files - a mod for OpenXcom (OXCE)
+	pkgver = 0.9.9d
+	pkgrel = 1
+	url = https://openxcom.mod.io/the-x-com-files
+	arch = x86_64
+	license = GPLv3
+	depends = openxcom
+	source = https://binary.mod.io/mods/0640/158/openxcom_xfiles_0.9.9d.zip
+	sha512sums = 0d2663177d4ac55171a4a9d709a4288934c3b198f5b60ddc79c337b1978acbf7aa7b2f160fb5b66e7e1669fe9ee6242a8dc2757e7a34c48c242b74e7946b70f9
+
+pkgname = openxcom-mod-xfiles
+
