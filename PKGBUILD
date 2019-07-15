@@ -1,7 +1,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 pkgname=libquotient
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt5 library to write cross-platform clients for Matrix"
 arch=(x86_64)
 url="https://github.com/quotient-im/libQuotient"
@@ -35,5 +35,4 @@ package() {
     cd "$srcdir/${pkgname}"
     install -Dm 644 "examples/qmc-example.cpp" "${pkgdir}/usr/share/doc/${pkgname}/qmc-example.cpp"
     install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm 644 "SECURITY.md" "${pkgdir}/usr/share/doc/${pkgname}/SECURITY.md"
 }
