@@ -1,6 +1,6 @@
 # Maintainer: Vinson Chuong <vinsonchuong@gmail.com>
 pkgname="tmux-solarized16"
-pkgver="20131028"
+pkgver="20190714"
 pkgrel="1"
 pkgdesc="Solarized in 16 colors for tmux"
 arch=("any")
@@ -8,7 +8,7 @@ url="https://github.com/seebi/tmux-colors-solarized"
 license=("MIT")
 depends=("tmux")
 conflicts=("tmux-solarized-git")
-source=("git+$url#commit=8d9edb6")
+source=("git+$url#commit=e5e7b4f")
 md5sums=('SKIP')
 build () 
 { 
