@@ -64,7 +64,6 @@ build() {
   meson --prefix=/usr \
     -Dopengl=es-egl \
     -Dxinput22=true \
-    -Dbuffer=false \
     -Dfb=true \
     -Ddrm=true \
     -Dtslib=false \
