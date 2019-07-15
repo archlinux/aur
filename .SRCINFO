@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-qalculate
 	pkgdesc = Qalculate! applet for the KDE plasma desktop
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://www.opendesktop.org/p/1155946/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = plasma5-applets-qalculate
 	makedepends = extra-cmake-modules
 	depends = qt5-declarative
 	depends = libqalculate
-	source = plasma5-applets-qalculate-0.6.1.tar.gz::https://github.com/dschopf/plasma-applet-qalculate/archive/v0.6.1.tar.gz
-	sha256sums = 46cb76f50a070f42be67c955d3e87127ac13bad2a0c345000bd6ecf4585e7742
+	source = plasma5-applets-qalculate-0.6.2.tar.gz::https://github.com/dschopf/plasma-applet-qalculate/archive/v0.6.2.tar.gz
+	sha256sums = d5a92e2ae811c8d816f0956fea10611980090a6787d02ba1207f34738e3dcfa1
 
 pkgname = plasma5-applets-qalculate
 
