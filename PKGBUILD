@@ -1,8 +1,8 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=imapsync
-pkgver=1.882
-pkgrel=2
+pkgver=1.945
+pkgrel=1
 pkgdesc='IMAP synchronisation, sync, copy or migration tool'
 arch=('any')
 url='http://www.linux-france.org/prj/'
@@ -16,7 +16,7 @@ depends=('cpanminus' 'perl-cgi' 'perl-crypt-openssl-rsa' 'perl-data-uniqid' 'per
         'perl-test-mockobject' 'perl-test-pod' 'perl-test-requires' 'perl-test-warn'
         'perl-unicode-string')
 source=(https://github.com/imapsync/imapsync/archive/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('3953cb29b210c283be3fe72f1e1537594415bd5457b469b801625d6c857b982d2b2b3da9528dd1e6ccc6831c022ce495f7a5eaaea04d228bca374f185344f455')
+sha512sums=('cb8c2c545a54ae63d944fc56790595a0de9260d3451d11b43a5d58dab0c87653be633572ce1de6715334091b667187585eedd21ca12bc438abaeee2a65a1a6bd')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
