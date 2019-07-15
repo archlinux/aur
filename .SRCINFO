@@ -1,0 +1,29 @@
+pkgbase = corectrl
+	pkgdesc = Core control application
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://gitlab.com/corectrl/corectrl
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake>=3.3
+	makedepends = botan>=2.2.0
+	makedepends = qt5-base>=5.9
+	makedepends = qt5-tools
+	makedepends = kauth
+	makedepends = karchive
+	makedepends = gcc>=7.2
+	makedepends = extra-cmake-modules
+	makedepends = qt5-charts
+	depends = procps-ng
+	depends = hwids
+	optdepends = vulkan-tools: For vulkaninfo
+	optdepends = mesa-demos: For glxinfo,
+	optdepends = util-linux: For lscpu
+	source = https://gitlab.com/corectrl/corectrl/-/archive/v1.0.1/corectrl-v1.0.1.tar.bz2
+	source = fix_abs_paths.patch
+	sha512sums = fb50d37fa025e57aa5da0a1897d2a009a096f4e45259b2d14391d987eed573aaa418848a1257c4278339b8a475fd68f72070a5a030be56b77483edda1662f9a5
+	sha512sums = 342bb3c12163bb7f4fc61b159d4f7f82320c3e9a18707fcd5eb7dab8ce878a8cb3b3893b3f6276e221b32498f6f5638feca30ee83b75b9277c1b5840c2f72f6f
+
+pkgname = corectrl
+
