@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=npm-fzf
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Fuzzy search npm modules with fzf"
 arch=(any)
@@ -16,4 +16,4 @@ package() {
   find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
 
-sha256sums=('1cedca12974d4c62dd0e7035fe20bd4c85101c20f702e7eb3a91d24614b2343e')
+sha256sums=('2e0c55b4662a3b80fa0d422f995f3ec6e185bafab2f50717a0ebc7f533450df6')
