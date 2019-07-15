@@ -1,6 +1,6 @@
 pkgbase = yup
 	pkgdesc = Arch Linux AUR Helper with ncurses functionality and better searching and sorting
-	pkgver = 0.1.4_beta
+	pkgver = 0.1.5_beta
 	pkgrel = 1
 	url = https://github.com/ericm/yup
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = yup
 	depends = git
 	depends = ncurses
 	depends = sudo
-	source = yup::git+https://github.com/ericm/yup.git#tag=v0.1.4-beta
+	source = yup::git+https://github.com/ericm/yup.git#tag=v0.1.5-beta
 	sha256sums = SKIP
 
 pkgname = yup
