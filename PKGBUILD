@@ -63,7 +63,6 @@ build() {
   rm -rf build
   meson --prefix=/usr \
     -Dopengl=es-egl \
-    -Dxinput22=true \
     -Dfb=true \
     -Ddrm=true \
     -Dtslib=false \
