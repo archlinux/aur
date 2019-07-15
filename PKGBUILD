@@ -7,7 +7,7 @@ pkgdesc="LPR and CUPS driver for the Brother HL-L3270CDW"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
-depends=('cups')
+depends=('cups' 'ghostscript')
 install='brother-hl-l3270cdw.install'
 source=(
   "https://download.brother.com/welcome/dlf103945/hll3270cdwpdrv-1.0.2-0.i386.rpm"
@@ -24,7 +24,6 @@ fi
 prepare() {
   install -d $srcdir/usr/share/cups/model
   install -d $srcdir/usr/lib/cups/filter
-  rm `find $srcdir -type f -name 'setupPrintcap*'`
 }
 
 package() {
@@ -33,7 +32,6 @@ package() {
 
   ln -s /opt/brother/Printers/hll3270cdw/cupswrapper/brother_hll3270cdw_printer_en.ppd $pkgdir/usr/share/cups/model/brother_hll3270cdw_printer_en.ppd
   ln -s /opt/brother/Printers/hll3270cdw/cupswrapper/brother_lpdwrapper_hll3270cdw $pkgdir/usr/lib/cups/filter/brother_lpdwrapper_hll3270cdw 
-  #sed -i 's/my $PRINTER = $0/my $PRINTER = Cwd::realpath ($0)/' $pkgdir/opt/brother/Printers/hll3270cdw/lpd/filter_hll3270cdw
 
   install -m 644 -D cupswrapper-license.txt $pkgdir/usr/share/licenses/${pkgname}/cupswrapper-licence.txt
   install -m 644 -D lpr-license.txt $pkgdir/usr/share/licenses/${pkgname}/lpr-licence.txt
