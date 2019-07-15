@@ -1,6 +1,7 @@
-# Maintainer: Philippe Proulx <eeppeliteloop@gmail.com>
+# Maintainer: Jeff M Hubbard <jeffmhubbard@gmail.com>
+# Contributor: Philippe Proulx <eeppeliteloop@gmail.com>
 pkgname=python-colormath
-pkgver=2.1.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Python module that abstracts common color math operations"
 arch=('any')
@@ -10,8 +11,8 @@ depends=('python' 'python-networkx' 'python-numpy')
 makedepends=('python-setuptools')
 provides=('python-colormath')
 conflicts=('python-colormath')
-source=('https://github.com/gtaylor/python-colormath/archive/2.1.1.tar.gz')
-md5sums=('77b1b2e053f318069afe6c524ba2d7e8')
+source=('https://github.com/gtaylor/python-colormath/archive/3.0.0.tar.gz')
+md5sums=('7a6fe120a4a688fb87b23f9930508471')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
