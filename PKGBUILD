@@ -2,7 +2,7 @@
 
 pkgname="dspdfviewer"
 pkgver=1.15.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Viewer for latex-beamer presentations that are built with the «show notes on second screen»-option"
 arch=('i686' 'x86_64')
 url="https://github.com/dannyedel/dspdfviewer"
@@ -20,6 +20,7 @@ build() {
     -DSYSCONFDIR="/etc" \
     -DCMAKE_BUILD_TYPE=Release \
     -DBuildTests=OFF \
+    -DCMAKE_CXX_FLAGS_INIT="-Wno-error=deprecated-declarations" \
     -DDSPDFVIEWER_VERSION="${pkgver}"
   make
 }
