@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Firestorm Viewer
+Comment=Client for accessing 3D virtual words
+Exec=/opt/firestorm/firestorm
+Icon=/opt/firestorm/firestorm_icon.png
+Terminal=false
+Type=Application
+Categories=Application;Internet;Network;
+StartupNotify=true
+X-Desktop-File-Install-Version=3.0
+StartupWMClass=do-not-directly-run-firestorm-bin
