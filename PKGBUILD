@@ -1,7 +1,7 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=rust-analyzer-vscode-git
 pkgver=r4319.8de56ec4
-pkgrel=1
+pkgrel=2
 pkgdesc='An experimental Rust compiler front-end for IDEs (VSCode installation).'
 arch=('any')
 url='https://github.com/rust-analyzer/rust-analyzer/'
@@ -13,16 +13,16 @@ conflicts=("${pkgname}" 'rust-analyzer-git')
 source=("${pkgname}::git+${url}")
 md5sums=('SKIP')
 pkgver() {
-	cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd $pkgname
-	cargo build --release
+    cd $pkgname
+    cargo +stable build --release
 
-  cd ./editors/code
-  npm install
+    cd ./editors/code
+    npm install
 }
 
 package() {
