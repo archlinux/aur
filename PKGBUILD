@@ -4,7 +4,7 @@
 _basename=webrtc-audio-processing
 pkgname=lib32-webrtc-audio-processing
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AudioProcessing library based on Google's implementation of WebRTC"
 url="https://freedesktop.org/software/pulseaudio/webrtc-audio-processing/"
 arch=(x86_64)
