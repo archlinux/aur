@@ -1,7 +1,7 @@
 pkgbase = brother-hl-l3270cdw
 	pkgdesc = LPR and CUPS driver for the Brother HL-L3270CDW
-	pkgver = 1.1.2
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 0
 	url = http://solutions.brother.com/linux/en_us/
 	install = brother-hl-l3270cdw.install
 	arch = i686

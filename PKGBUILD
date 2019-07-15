@@ -1,8 +1,8 @@
 # Maintainer: Reik Keutterling <spielkind@gmail.com>
 # Adapted from brother-hl8350cdw by giulio
 pkgname="brother-hl-l3270cdw"
-pkgver="1.1.2"
-pkgrel=2
+pkgver="1.0.2"
+pkgrel=0
 pkgdesc="LPR and CUPS driver for the Brother HL-L3270CDW"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
@@ -29,20 +29,11 @@ prepare() {
 
 package() {
   cp -R $srcdir/usr $pkgdir
+  cp -R $srcdir/opt $pkgdir
 
-  #We need to install the filter file to the cups filter path, so the PPD can find it
-  mkdir -p $pkgdir/usr/lib/cups/filter
-  cp $srcdir/opt/brother/Printers/hll3270cdw/cupswrapper/brother_hll3270cdw_printer_en.ppd \
-     $pkgdir/usr/lib/cups/filter
-
-  rm $pkgdir/usr/lib/cups/filter/brother_lpdwrapper_hll3270cdw
-  ln -s /opt/brother/Printers/hll3270cdw/lpd/filter_hll3270cdw $pkgdir/usr/lib/cups/filter/brother_lpdwrapper_hll3270cdw 
-
-  if [ -d $srcdir/opt ]; then
-    cp -R $srcdir/opt $pkgdir;
-  fi
-
-  sed -i 's/my $PRINTER = $0/my $PRINTER = Cwd::realpath ($0)/' $pkgdir/opt/brother/Printers/hll3270cdw/lpd/filter_hll3270cdw
+  ln -s /opt/brother/Printers/hll3270cdw/cupswrapper/brother_hll3270cdw_printer_en.ppd $pkgdir/usr/share/cups/model/brother_hll3270cdw_printer_en.ppd
+  ln -s /opt/brother/Printers/hll3270cdw/cupswrapper/brother_lpdwrapper_hll3270cdw $pkgdir/usr/lib/cups/filter/brother_lpdwrapper_hll3270cdw 
+  #sed -i 's/my $PRINTER = $0/my $PRINTER = Cwd::realpath ($0)/' $pkgdir/opt/brother/Printers/hll3270cdw/lpd/filter_hll3270cdw
 
   install -m 644 -D cupswrapper-license.txt $pkgdir/usr/share/licenses/${pkgname}/cupswrapper-licence.txt
   install -m 644 -D lpr-license.txt $pkgdir/usr/share/licenses/${pkgname}/lpr-licence.txt
