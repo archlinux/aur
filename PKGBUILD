@@ -22,15 +22,15 @@ provides=('vulkan-amdvlk' 'vulkan-driver')
 conflicts=('amdvlk-git' 'amdvlk-deb' 'amdvlk-bin')
 makedepends=('cmake' 'dri2proto' 'gcc' 'libdrm' 'libxml2' 'libxrandr' 'ninja' 'python' 'wayland' 'xorg-server-devel')
 
-source=(https://github.com/GPUOpen-Drivers/AMDVLK/archive/v-${pkgver}.tar.gz
-        https://github.com/GPUOpen-Drivers/llpc/archive/${_llpc_commit}.tar.gz
-        https://github.com/GPUOpen-Drivers/xgl/archive/${_xgl_commit}.tar.gz
-        https://github.com/GPUOpen-Drivers/pal/archive/${_pal_commit}.tar.gz
-        https://github.com/GPUOpen-Drivers/llvm/archive/${_llvm_commit}.tar.gz
-        https://github.com/GPUOpen-Drivers/spvgen/archive/${_spvgen_commit}.tar.gz
-        https://github.com/KhronosGroup/SPIRV-Tools/archive/${_spirvtools_commit}.tar.gz
-        https://github.com/KhronosGroup/glslang/archive/${_glslang_commit}.tar.gz
-        https://github.com/KhronosGroup/SPIRV-Headers/archive/${_spirvheaders_commit}.tar.gz)
+source=(AMDVLK-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/AMDVLK/archive/v-${pkgver}.tar.gz
+        llpc-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/llpc/archive/${_llpc_commit}.tar.gz
+        xgl-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/xgl/archive/${_xgl_commit}.tar.gz
+        pal-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/pal/archive/${_pal_commit}.tar.gz
+        llvm-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/llvm/archive/${_llvm_commit}.tar.gz
+        spvgen-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/spvgen/archive/${_spvgen_commit}.tar.gz
+        SPIRV-Tools-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/SPIRV-Tools/archive/${_spirvtools_commit}.tar.gz
+        glslang-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/glslang/archive/${_glslang_commit}.tar.gz
+        SPIRV-Headers-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/SPIRV-Headers/archive/${_spirvheaders_commit}.tar.gz)
   
 sha256sums=('e41418633653279c55cc8d70a9f576e0de3018a3953bcb3372bfb809db48ae23'
             'f7efe91134588233e2d3f25ff53068fb0b7c6d144fabf907c7b8c807efe635e8'
