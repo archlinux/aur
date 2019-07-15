@@ -5,8 +5,8 @@
 
 pkgname=godot2
 _pkgname=godot
-pkgver=2.1.5
-pkgrel=2
+pkgver=2.1.6
+pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine. Legacy version."
 url="http://www.godotengine.org"
 license=('MIT')
@@ -25,9 +25,9 @@ source=(
   godot.desktop
   icon.png
 )
-sha256sums=('74179c08bcc20cc89b4ac2785a31f201d81eb4aa875c80ffcb82d9fb80e8e187'
-            '371c766b4b3796dd57eb4a605dcbc99464cacbd2a38b01fa8630e62f05001678'
-            'b6bb8e42625414303cf7608f08fe63bd3267486bf7a96586ebab05ade5189785')
+sha512sums=('7cb53ee08da7def581a4b7ff4727237d4ee65eb8ff66e83d949f9b9b724338ca2a352f0e9e4bfbbe672d51ca285792a08fffe2cb12d59a3cd20869a1d1407603'
+             '8ed277979bb8c6b4fd027cd4a6f601db28c0ab706f20f9a7da791f2efe0f03b1a2eeedfaf78b11200e61c68dc51a8d25a1880a7abe01597b1c009ce1489150a4'
+           '66747968461dc446db613bef82cacf32037fed9b7a6d2f51e86ed557d2eed931fda10bb6427df2d6915bb7fe71457830c07a0db0f293e157ec70581cf732ff0b')
 
 prepare() {
   cd "${srcdir}"/${_pkgname}-${pkgver}-stable
