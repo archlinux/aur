@@ -1,6 +1,6 @@
 pkgbase = manjarowish-dark-kde-settings
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/librewish/manjarowish-dark
 	arch = any
 	license = GPL
@@ -15,6 +15,7 @@ pkgname = manjarowish-dark-kde-settings
 	depends = latte-dock
 	depends = mojave-gtk-theme-git
 	depends = papirus-icon-theme
+	depends = noto-fonts
 	depends = preload
 	depends = haveged
 	depends = irqbalance
