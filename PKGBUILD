@@ -1,8 +1,8 @@
 # Submitter: Nbiba Bedis <bedisnbiba@gmail.com>
 
 pkgname=('python-loguru')
-pkgver=0.2.5
-pkgrel=4
+pkgver=0.3.1
+pkgrel=1
 pkgdesc='Python logging made (stupidly) simple'
 arch=('any')
 url='https://github.com/Delgan/loguru'
