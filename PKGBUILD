@@ -1,17 +1,17 @@
 # Maintainer: Martynas Mickevičius <self at 2m dot lt>
-_version=1.1.0-M14
+_version=2.0.0-RC2-6
 
 pkgname=coursier
-pkgver="${_version/-/_}"
-pkgrel=2
+pkgver="${_version//-/_}"
+pkgrel=1
 pkgdesc="Pure Scala Artifact Fetching"
 arch=('any')
 url="http://get-coursier.io"
 license=('Apache')
 depends=('java-runtime-headless>=8' 'bash')
 
-source=("builder-$pkgver::https://github.com/coursier/coursier/raw/v${_version}/coursier")
-sha256sums=('c817d0d9860e2abc7420d6bde1800fb7d74dc4612d9a1480aca0b67dc2013892')
+source=("builder-$pkgver::https://github.com/coursier/coursier/releases/download/v${_version}/coursier")
+sha256sums=('6ceb00953a9870d3d3c550cd4dd6b3ca53585990a01260c01ac07d007111d49a')
 noextract=("builder-$pkgver")
 
 build() {
@@ -19,13 +19,11 @@ build() {
   mkdir -p cache bin
   export COURSIER_CACHE="${srcdir}/cache"
   sh ./builder-$pkgver bootstrap \
-    --intransitive "io.get-coursier::coursier-cli:${_version}" \
-    --classifier standalone \
-    --artifact-type jar \
+    "io.get-coursier::coursier-cli:${_version}" \
     --java-opt "-noverify" \
     --no-default \
     -r central \
-    -r sonatype:releases \
+    -r typesafe:ivy-releases \
     -f -o "bin/coursier" \
     --standalone
 }
