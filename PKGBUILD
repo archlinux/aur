@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=touchpad-indicator-git
-pkgver=r95.48ab61a
+pkgver=r102.ad2a9ae
 pkgrel=1
 epoch=1
 pkgdesc="An indicator for the touchpad"
@@ -10,7 +10,8 @@ license=('GPL3')
 depends=('gtk3' 'gdk-pixbuf2' 'libappindicator-gtk3' 'libnotify' 'lsb-release' 'gconf' 'librsvg' 'python-xlib' 'python-pyudev' 'python-dbus' 'python-evdev' 'xorg-xinput')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://github.com/atareao/Touchpad-Indicator.git#commit=48ab61aa6d74c96fa6150abc93fba8c6e4c896f0")
+source=('git+https://github.com/atareao/Touchpad-Indicator.git')
+#source=('git+https://github.com/atareao/Touchpad-Indicator.git#commit=48ab61aa6d74c96fa6150abc93fba8c6e4c896f0')
 sha256sums=('SKIP')
 
 pkgver() {
