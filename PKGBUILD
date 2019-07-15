@@ -10,7 +10,7 @@ license=('MIT')
 depends=(
     'hepmc'
     'madgraph'
-    'pythia'
+    'pythia8'
     'python2'
 )
 source=(
