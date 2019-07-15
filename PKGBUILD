@@ -1,12 +1,12 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
 pkgname=pak-pacman
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A package manager wrapper for pacman written in swift"
 arch=('x86_64')
 url="https://gitlab.com/moussaelianarsen/pak"
 license=('GPL3')
-depends=('swift-bin' 'pacman')
+depends=('swift' 'pacman')
 provides=('pak' 'pacwrap')
 source=("https://gitlab.com/moussaelianarsen/pak/-/archive/master/pak-master.tar.gz")
 md5sums=('SKIP')

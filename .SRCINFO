@@ -1,12 +1,12 @@
 pkgbase = pak-pacman
 	pkgdesc = A package manager wrapper for pacman written in swift
 	pkgver = 1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/moussaelianarsen/pak
 	install = pak-pacman.install
 	arch = x86_64
 	license = GPL3
-	depends = swift-bin
+	depends = swift
 	depends = pacman
 	provides = pak
 	provides = pacwrap
