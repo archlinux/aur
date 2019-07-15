@@ -2,13 +2,13 @@
 _pkgname=Bucardo
 pkgname=bucardo
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="An asynchronous PostgreSQL replication system, allowing for both multi-master and multi-slave operations"
 arch=('any')
 url="https://bucardo.org"
 license=('BSD')
-depends=('perl-boolean' 'perl-dbi' 'perl-dbd-pg')
+depends=('perl-boolean' 'perl-dbi' 'perl-dbd-pg' 'perl-dbix-safe')
 checkdepends=('perl-test-simple')
 source=("http://bucardo.org/downloads/$_pkgname-$pkgver.tar.gz"
         "http://bucardo.org/downloads/$_pkgname-$pkgver.tar.gz.asc")

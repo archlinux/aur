@@ -1,7 +1,7 @@
 pkgbase = bucardo
 	pkgdesc = An asynchronous PostgreSQL replication system, allowing for both multi-master and multi-slave operations
 	pkgver = 5.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bucardo.org
 	arch = any
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = bucardo
 	depends = perl-boolean
 	depends = perl-dbi
 	depends = perl-dbd-pg
+	depends = perl-dbix-safe
 	source = http://bucardo.org/downloads/Bucardo-5.5.0.tar.gz
 	source = http://bucardo.org/downloads/Bucardo-5.5.0.tar.gz.asc
 	validpgpkeys = 08A0359786047C5E1E2B8FDE374A23C9DF9B65B8
