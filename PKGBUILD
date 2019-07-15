@@ -3,7 +3,7 @@
 _basename=gupnp-igd
 pkgname=lib32-gupnp-igd
 pkgver=0.2.5+3+gedd78a6
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to handle UPnP IGD port mapping (32-bit)"
 url="https://wiki.gnome.org/Projects/GUPnP"
 arch=(x86_64)
@@ -43,6 +43,8 @@ build() {
         --libdir=/usr/lib32 \
         --disable-gtk-doc
 
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
     make
 }
 
@@ -50,7 +52,7 @@ check() {
     cd $_basename
 
     # test broken (requires root to bind lowport)
-    : make check
+    make check || :
 }
 
 package() {
