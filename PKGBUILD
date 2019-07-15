@@ -4,8 +4,8 @@
 # Contributor: Pawel "kTT" Salata <rockplayer.pl@gmail.com>
 
 pkgname=('python2-pycountry')
-pkgver=18.12.8
-pkgrel=2
+pkgver=19.7.15
+pkgrel=1
 pkgdesc="ISO country, subdivision, language, currency and script definitions and their translations"
 arch=('any')
 url="https://pypi.org/project/pycountry/"
@@ -13,7 +13,7 @@ license=('LGPL2.1')
 makedepends=('python2' 'python2-setuptools')
 checkdepends=('python2-pytest' 'python2-pytest-runner')
 source=("https://pypi.io/packages/source/p/pycountry/pycountry-${pkgver}.tar.gz")
-sha512sums=('9797688ada8ea54c1a56a2cf4d0ad765001816c822c40077953fa71e3af285114c4b5beaf739a24432b9c6ea794952ce347a40ae0bcd9a2c00d12ddc7b45261e')
+sha512sums=('504ddf66747817a0bf7f9420e541c5589e3dacf818095af0b9de7ffdb66040345445900009349d5564647d33ec6941090aadbdc5931160314f621935d2556d99')
 
 build(){
   cd "${srcdir}/pycountry-${pkgver}"
