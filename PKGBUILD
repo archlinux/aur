@@ -50,37 +50,37 @@ _use_current=
 
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
-_major=4.19
-_minor=50
-_rtver=22
+_major=5.2
+#_minor=1
+_rtver=1
 _rtpatchver=rt${_rtver}
-pkgver=${_major}.${_minor}.${_rtpatchver}
-_pkgver=${_major}.${_minor}
+#pkgver=${_major}.${_minor}.${_rtpatchver}
+#_pkgver=${_major}.${_minor}
+pkgver=${_major}.${_rtpatchver}
+_pkgver=${_major}
 _srcname=linux-${_pkgver}
-pkgrel=4
+pkgrel=1
 arch=('x86_64')
-url="https://github.com/Algodev-github/bfq-mq/"
+url="https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/"
 license=('GPL2')
 options=('!strip')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf')
-_bfq_sq_mq_path="bfq-sq-mq-lucjan-patch"
-_bfq_sq_mq_ver='v10r1'
-_bfq_sq_mq_rel='2K190616-rc1'
-_bfq_sq_mq_patch="${_major}-bfq-sq-mq-lucjan-${_bfq_sq_mq_ver}-${_bfq_sq_mq_rel}.patch"
+makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
+             'graphviz' 'imagemagick')
+_bfq_patch="0002-LL-elevator-set-default-scheduler-to-bfq-for-blk-mq.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
-        "${_lucjanpath}/${_bfq_sq_mq_path}/${_bfq_sq_mq_patch}"
-        "${_lucjanpath}/0100-Check-presence-on-tree-of-every-entity-after-every-a.patch"
+        "${_lucjanpath}/ll-patches/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-        "${_lucjanpath}/zen-patches/0001-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
+        "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
+        "${_lucjanpath}/zen-fixes/0002-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -203,11 +203,11 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
-    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the RT patch and the BFQ-MQ scheduler."
+    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the RT patch."
     depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
     optdepends=('crda: to set the correct wireless channels of your country' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
@@ -358,6 +358,18 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
+
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
+  
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
@@ -374,16 +386,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('61ca35f47994a0a904bbac1afa6d75c7ce9647f44cbb61ac0c564ddd9dc9a331d7b314df7d5ac265c4c85fd02b2bb8b72ec95bb1080e4010eb1177e6de3f55c7'
+sha512sums=('5a28f8a34c4e0470617f5638b7112e6252109b78f23b1eed484a228530970c7ef5c130d6e5a09cf25ea2f6a0329602dcc1ec66ce893182e15b27d99bd228789c'
             'SKIP'
-            '0620457eefc6b1b9d54817dff719610c822e2d933d6b6de73b6c8c8c924320eec894a73c7fbfe484754e4eb8b5b936dc922eaaa79f8dbbc94fda4857a7c6b415'
+            '02563a139f05c13442bf60e31a84809f14e5d2bbca78d00cb7093eec365135e3f1e6eb40eb0aa58ec50363fdfe9bbca12204a1a643c6f0589e8c6fa5a3794b94'
             'SKIP'
-            '07e1890467ee091835a4908bedb6f26b4c71191f90cf63568825501a39ff352a03a45fdb5a5306ca388b26a1bd130199e4edcda354a138f8f2da340a12dfa626'
-            '0f96fa9ad784709973b32eea82075ceb3e9dc2482df6441a4607612806f069254e63508b1b562279622394e4a1fbebef1b87af8401c0b1210d5d0de9954245c8'
+            'ab20b4a5d9938b0b00a815c127d85fc8de2f1ad7b0f078fca78f511f4fc688ff9948a8bd225b68f1fe83c9cdce1f2561f689bc4dc319393e2ce6fc598b43ba71'
             '8d9547ff38096b99d296cdec9875b816960c09db31acebb033e3660ba65475d1f310578282cac74947d75dff844dd22d7e7c2e4ded12368d32314fe145763752'
-            '560920b4ebf8d7b753f058a41da62d20fde1e4b42a42e73be11461d3fe25b59bc36250a66d9c1c6e3c499426b237427af5ba7586daa7c549d2cf7bb7087932a1'
-            '957b144ccb04cb6b491bf85bba9eb4f4dc86c8ec9e74bee64b64a0fe17afb1647ad21f090f8bbe655a894f5e84698eb6dd556bdefa30b8caceb7f1d7ee0354fe'
-            'a8a5d03576665bb3ccb42f349efdd0bb056ed8f7112c7b93349f9905854e0016c7c89abd642c989bc8dd08d6cdb67d56bce4aca671f5d3a32dc7865373fb831d'
+            '068b9f3bb5112a5684246d0a2ae46bb26d7ad3a642276f5ed37d802b50efc925297d8bd4684eb391676e9a97efbb426b4fcbe6fd751860c3f53d8c0ca7d5a1b2'
+            'f714a620d50541fd29199d076f94e68c14049bbb97b131da3b68b13bcc1dd933f62913e8aad2a20e0ad738f2c3cad161dac13d3d4cbfdfcead271f22f09a681e'
+            'c1fecf034913e7838bb27c4d6e7538515093ef2e88daf8fe18b76cc501b864305b2a03e6e16db7929cbf48be96fe11e2b01e0ba8c1a58811806d78d34350bff5'
+            'c6c815336609f50f71430bbb339e54e5d1283dca0a320fd621ba29a6f86720f33e341fc19ba057e65ea3749ae812eb75878beaddcf0877cff7afcc902eb62417'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
