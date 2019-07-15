@@ -1,0 +1,15 @@
+pkgbase = canboat-git
+	pkgdesc = NMEA 2000 and NMEA 0183 utilities
+	pkgver = 1.2.1.r43.deaa4c2
+	pkgrel = 1
+	url = https://github.com/canboat/canboat/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	provides = canboat
+	conflicts = canboat
+	source = canboat::git+https://github.com/canboat/canboat.git#branch=master
+	md5sums = SKIP
+
+pkgname = canboat-git
+

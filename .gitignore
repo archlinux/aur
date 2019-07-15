@@ -1,0 +1,4 @@
+*.pkg.tar*
+/canboat
+/pkg
+/src
