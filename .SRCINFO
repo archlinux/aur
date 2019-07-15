@@ -1,7 +1,7 @@
 pkgbase = linux-hynix
-	pkgver = 5.2.arch2
+	pkgver = 5.2.1.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.2-arch2
+	url = https://git.archlinux.org/linux.git/log/?h=v5.2.1-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -15,13 +15,14 @@ pkgbase = linux-hynix
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.2-arch2
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.2.1-arch1
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	source = v2-1-2-pci-prevent-sk-hynix-nvme-from-entering-D3.patch
 	source = v2-2-2-nvme-add-quirk-to-not-call-disable-function-when-suspending.patch
+	source = 0c3d7282233c7b02c74400b49981d6fff1d683a8.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
