@@ -1,6 +1,6 @@
 # Maintainer: Martin Kröning <m dot kroening at hotmail dot de>
 pkgname=make-fmv-patch-git
-pkgver=r15.a73d316
+pkgver=r21.831ace4
 pkgrel=1
 pkgdesc='Make FMV patch generator'
 arch=('any')
@@ -10,19 +10,12 @@ depends=('perl' 'ctags' 'gcc>=6.0.0')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://github.com/clearlinux/${pkgname%-git}.git"
-        "${pkgname%-git}-log-format.patch")
-sha256sums=('SKIP'
-            '396f194ba9a8a9f3680adfab742120506ee13263de89cb86e1570755e1551a25')
+source=("git+https://github.com/clearlinux/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
         cd "$srcdir/${pkgname%-git}"
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-        cd "$srcdir/${pkgname%-git}"
-        patch -p1 -i "$srcdir/${pkgname%-git}-log-format.patch"
 }
 
 check() {
