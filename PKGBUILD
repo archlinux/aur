@@ -4,14 +4,13 @@
 
 pkgname=platformio-git
 _pkgname=platformio-core
-pkgver=v3.6.7.r280.g2c3d8ce6
+pkgver=v4.0.0.r10.gd5dd4d4b
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
 url="http://platformio.org/"
 license=('GPL')
 depends=('python-setuptools'
-         'python-arrow'
          'python-bottle'
          'python-click'
          'python-colorama'
