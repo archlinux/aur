@@ -1,0 +1,382 @@
+diff --git a/include/fiber.h b/include/fiber.h
+index dcb1b76..3274787 100644
+--- a/include/fiber.h
++++ b/include/fiber.h
+@@ -61,13 +61,13 @@ extern fiber_t* fiber_create(size_t stack_size, fiber_run_function_t run, void*
+ 
+ extern fiber_t* fiber_create_no_sched(size_t stack_size, fiber_run_function_t run, void* param);
+ 
+-extern fiber_t* fiber_create_from_thread();
++extern fiber_t* fiber_create_from_thread(void);
+ 
+ extern int fiber_join(fiber_t* f, void** result);
+ 
+ extern int fiber_tryjoin(fiber_t* f, void** result);
+ 
+-extern int fiber_yield();
++extern int fiber_yield(void);
+ 
+ extern int fiber_detach(fiber_t* f);
+ 
+diff --git a/include/fiber_event.h b/include/fiber_event.h
+index 245d84c..7a15fd0 100644
+--- a/include/fiber_event.h
++++ b/include/fiber_event.h
+@@ -30,9 +30,9 @@
+ extern "C" {
+ #endif
+ 
+-extern int fiber_event_init();
++extern int fiber_event_init(void);
+ 
+-extern void fiber_event_destroy();
++extern void fiber_event_destroy(void);
+ 
+ #define FIBER_EVENT_NONE (0)
+ #define FIBER_EVENT_NOTINIT (-1)
+@@ -46,7 +46,7 @@ fiber_poll_events_blocking()
+ 
+ //called when a fiber manager thread is looking for events. returns the number of
+ //events triggered or NOTINIT/TRYAGAIN
+-extern int fiber_poll_events();
++extern int fiber_poll_events(void);
+ 
+ //called when a fiber manager thread is out of events and cannot steal any from other threads. the event system should
+ //perform a blocking poll. the implementation is allowed to sleep instead if it's not possible to
+diff --git a/include/fiber_io.h b/include/fiber_io.h
+index 869f300..a21a7fe 100644
+--- a/include/fiber_io.h
++++ b/include/fiber_io.h
+@@ -21,11 +21,11 @@
+ extern "C" {
+ #endif
+ 
+-extern int fiber_io_init();
++extern int fiber_io_init(void);
+ 
+-extern int fiber_io_lock_thread();
++extern int fiber_io_lock_thread(void);
+ 
+-extern int fiber_io_unlock_thread();
++extern int fiber_io_unlock_thread(void);
+ 
+ #ifdef __cplusplus
+ }
+diff --git a/include/fiber_manager.h b/include/fiber_manager.h
+index 9959848..52619f6 100644
+--- a/include/fiber_manager.h
++++ b/include/fiber_manager.h
+@@ -80,22 +80,22 @@ static inline void fiber_manager_schedule(fiber_manager_t* manager, fiber_t* the
+ 
+ extern void fiber_manager_yield(fiber_manager_t* manager);
+ 
+-extern fiber_manager_t* fiber_manager_get();
++extern fiber_manager_t* fiber_manager_get(void);
+ 
+ /* this should be called immediately when the applicaion starts */
+ extern int fiber_manager_init(size_t num_threads);
+ 
+-extern void fiber_shutdown();
++extern void fiber_shutdown(void);
+ 
+ #define FIBER_MANAGER_STATE_NONE (0)
+ #define FIBER_MANAGER_STATE_STARTED (1)
+ #define FIBER_MANAGER_STATE_ERROR (2)
+ 
+-extern int fiber_manager_get_state();
++extern int fiber_manager_get_state(void);
+ 
+-extern int fiber_manager_get_kernel_thread_count();
++extern int fiber_manager_get_kernel_thread_count(void);
+ 
+-extern void fiber_manager_do_maintenance();
++extern void fiber_manager_do_maintenance(void);
+ 
+ extern void fiber_manager_wait_in_mpmc_queue(fiber_manager_t* manager, mpmc_fifo_t* fifo);
+ 
+@@ -117,7 +117,7 @@ extern void fiber_do_real_sleep(uint32_t seconds, uint32_t useconds);
+ 
+ extern hazard_pointer_thread_record_t* fiber_manager_get_hazard_record(fiber_manager_t* manager);
+ 
+-extern mpmc_fifo_node_t* fiber_manager_get_mpmc_node();
++extern mpmc_fifo_node_t* fiber_manager_get_mpmc_node(void);
+ 
+ extern void fiber_manager_return_mpmc_node(mpmc_fifo_node_t* node);
+ 
+diff --git a/include/machine_specific.h b/include/machine_specific.h
+index 8bbf678..a8b7e23 100644
+--- a/include/machine_specific.h
++++ b/include/machine_specific.h
+@@ -28,7 +28,7 @@
+ #include <stdint.h>
+ 
+ /* this barrier orders writes against other writes */
+-static inline void write_barrier()
++static inline void write_barrier(void)
+ {
+ #if defined(ARCH_x86) || defined(ARCH_x86_64)
+     __asm__ __volatile__ ("" : : : "memory");
+@@ -38,7 +38,7 @@ static inline void write_barrier()
+ }
+ 
+ /* this barrier orders writes against reads */
+-static inline void store_load_barrier()
++static inline void store_load_barrier(void)
+ {
+ #if defined(ARCH_x86)
+     __asm__ __volatile__ ("lock; addl $0,0(%%esp)" : : : "memory");
+@@ -50,7 +50,7 @@ static inline void store_load_barrier()
+ }
+ 
+ /* this barrier orders loads against other loads */
+-static inline void load_load_barrier()
++static inline void load_load_barrier(void)
+ {
+ #if defined(ARCH_x86) || defined(ARCH_x86_64)
+     __asm__ __volatile__ ("" : : : "memory");
+@@ -87,7 +87,7 @@ static inline int atomic_exchange_int(int* location, int value)
+ #define FIBER_NO_XCHG_POINTER
+ #endif
+ 
+-static inline void cpu_relax()
++static inline void cpu_relax(void)
+ {
+ #if defined(ARCH_x86) || defined(ARCH_x86_64)
+     __asm__ __volatile__ (
+diff --git a/include/work_stealing_deque.h b/include/work_stealing_deque.h
+index 3ff0324..9dfcf83 100644
+--- a/include/work_stealing_deque.h
++++ b/include/work_stealing_deque.h
+@@ -90,7 +90,7 @@ static inline void wsd_circular_array_put(wsd_circular_array_t* a, int64_t i, vo
+ 
+ extern wsd_circular_array_t* wsd_circular_array_grow(wsd_circular_array_t* a, int64_t start, int64_t end);
+ 
+-extern wsd_work_stealing_deque_t* wsd_work_stealing_deque_create();
++extern wsd_work_stealing_deque_t* wsd_work_stealing_deque_create(void);
+ 
+ extern void wsd_work_stealing_deque_destroy(wsd_work_stealing_deque_t* d);
+ 
+diff --git a/src/fiber.c b/src/fiber.c
+index 376cc4a..1b44405 100644
+--- a/src/fiber.c
++++ b/src/fiber.c
+@@ -117,7 +117,7 @@ fiber_t* fiber_create(size_t stack_size, fiber_run_function_t run_function, void
+     return ret;
+ }
+ 
+-fiber_t* fiber_create_from_thread()
++fiber_t* fiber_create_from_thread(void)
+ {
+     fiber_t* const ret = calloc(1, sizeof(*ret));
+     if(!ret) {
+@@ -212,7 +212,7 @@ int fiber_tryjoin(fiber_t* f, void** result)
+     return FIBER_ERROR;
+ }
+ 
+-int fiber_yield()
++int fiber_yield(void)
+ {
+     fiber_manager_yield(fiber_manager_get());
+     return 1;
+diff --git a/src/fiber_event_ev.c b/src/fiber_event_ev.c
+index f28fd60..9df4480 100644
+--- a/src/fiber_event_ev.c
++++ b/src/fiber_event_ev.c
+@@ -34,7 +34,7 @@ static fiber_spinlock_t fiber_loop_spinlock = FIBER_SPINLOCK_INITIALIER;
+ static volatile int num_events_triggered = 0;
+ static volatile int active_threads = 0;
+ 
+-int fiber_event_init()
++int fiber_event_init(void)
+ {
+     fiber_spinlock_lock(&fiber_loop_spinlock);
+ 
+@@ -52,7 +52,7 @@ int fiber_event_init()
+     return fiber_loop ? FIBER_SUCCESS : FIBER_ERROR;
+ }
+ 
+-void fiber_event_destroy()
++void fiber_event_destroy(void)
+ {
+     fiber_spinlock_lock(&fiber_loop_spinlock);
+     if(fiber_loop) {
+@@ -62,7 +62,7 @@ void fiber_event_destroy()
+     fiber_spinlock_unlock(&fiber_loop_spinlock);
+ }
+ 
+-int fiber_poll_events()
++int fiber_poll_events(void)
+ {
+     if(!fiber_loop) {
+         return FIBER_EVENT_NOTINIT;
+diff --git a/src/fiber_event_native.c b/src/fiber_event_native.c
+index 79748df..15b293c 100644
+--- a/src/fiber_event_native.c
++++ b/src/fiber_event_native.c
+@@ -111,7 +111,7 @@ waiter_el_t* waiter_remove_less_than(waiter_el_t** tree, const uint64_t wake_tim
+     return NULL;
+ }
+ 
+-int fiber_event_init()
++int fiber_event_init(void)
+ {
+     if(event_fd >= 0) {
+         return FIBER_ERROR;
+@@ -177,7 +177,7 @@ int fiber_event_init()
+     return FIBER_SUCCESS;
+ }
+ 
+-void fiber_event_destroy()
++void fiber_event_destroy(void)
+ {
+     if(event_fd < 0) {
+         return;
+@@ -317,7 +317,7 @@ static int fiber_poll_events_internal(uint32_t seconds, uint32_t useconds)
+ #endif
+ }
+ 
+-int fiber_poll_events()
++int fiber_poll_events(void)
+ {
+     if(event_fd < 0) {
+         return FIBER_EVENT_NOTINIT;
+diff --git a/src/fiber_io.c b/src/fiber_io.c
+index dae6358..897f720 100644
+--- a/src/fiber_io.c
++++ b/src/fiber_io.c
+@@ -138,7 +138,7 @@ static closeFnType fibershim_close = NULL;
+ #define STRINGIFY(x) XSTRINGIFY(x)
+ #define XSTRINGIFY(x) #x
+ 
+-selectFnType get_select_fn()
++selectFnType get_select_fn(void)
+ {
+ #if FD_SETSIZE > 1024 && !defined(_LP64) && defined(__PRAGMA_REDEFINE_EXTNAME)
+     return (selectFnType)dlsym(RTLD_NEXT, "select_large_fdset");
+@@ -163,7 +163,7 @@ typedef struct fiber_fd_info
+ static fiber_fd_info_t* fd_info = NULL;
+ static rlim_t max_fd = 0;
+ 
+-int fiber_io_init()
++int fiber_io_init(void)
+ {
+     //fibershim_open = (openFnType)dlsym(RTLD_NEXT, "open");
+     fibershim_pipe = (pipeFnType)dlsym(RTLD_NEXT, "pipe");
+@@ -205,13 +205,13 @@ int fiber_io_init()
+ 
+ static __thread int thread_locked = 0;
+ 
+-int fiber_io_lock_thread()
++int fiber_io_lock_thread(void)
+ {
+     thread_locked = 1;
+     return FIBER_SUCCESS;
+ }
+ 
+-int fiber_io_unlock_thread()
++int fiber_io_unlock_thread(void)
+ {
+     thread_locked = 0;
+     return FIBER_SUCCESS;
+diff --git a/src/fiber_manager.c b/src/fiber_manager.c
+index be43515..ac32c87 100644
+--- a/src/fiber_manager.c
++++ b/src/fiber_manager.c
+@@ -33,13 +33,13 @@
+ #ifdef FIBER_STACK_SPLIT
+ void __splitstack_block_signals(int* new, int* old);
+ 
+-void splitstack_disable_block_signals()
++void splitstack_disable_block_signals(void)
+ {
+     int off = 0;
+     __splitstack_block_signals(&off, NULL);
+ }
+ #else
+-void splitstack_disable_block_signals()
++void splitstack_disable_block_signals(void)
+ {
+     //nothing - splitstack is not enabled
+ }
+@@ -144,7 +144,7 @@ void* fiber_load_symbol(const char* symbol)
+ #ifdef USE_COMPILER_THREAD_LOCAL
+ __thread fiber_manager_t* fiber_the_manager = NULL;
+ 
+-fiber_manager_t* fiber_manager_get()
++fiber_manager_t* fiber_manager_get(void)
+ {
+     return fiber_the_manager;
+ }
+@@ -152,7 +152,7 @@ fiber_manager_t* fiber_manager_get()
+ static pthread_key_t fiber_manager_key;
+ static pthread_once_t fiber_manager_key_once = PTHREAD_ONCE_INIT;
+ 
+-static void fiber_manager_make_key()
++static void fiber_manager_make_key(void)
+ {
+     const int ret = pthread_key_create(&fiber_manager_key, NULL);
+     if(ret) {
+@@ -161,7 +161,7 @@ static void fiber_manager_make_key()
+     }
+ }
+ 
+-fiber_manager_t* fiber_manager_get()
++fiber_manager_t* fiber_manager_get(void)
+ {
+     fiber_manager_t* ret = (fiber_manager_t*)pthread_getspecific(fiber_manager_key);
+     if(!ret) {
+@@ -284,7 +284,7 @@ int fiber_manager_init(size_t num_threads)
+     return FIBER_SUCCESS;
+ }
+ 
+-void fiber_shutdown()
++void fiber_shutdown(void)
+ {
+     fiber_shutting_down = 1;
+     pthread_t self = pthread_self();
+@@ -296,12 +296,12 @@ void fiber_shutdown()
+     }
+ }
+ 
+-int fiber_manager_get_state()
++int fiber_manager_get_state(void)
+ {
+     return fiber_manager_state;
+ }
+ 
+-int fiber_manager_get_kernel_thread_count()
++int fiber_manager_get_kernel_thread_count(void)
+ {
+     return fiber_manager_num_threads;
+ }
+@@ -310,7 +310,7 @@ extern int fiber_mutex_unlock_internal(fiber_mutex_t* mutex);
+ 
+ extern mpmc_lifo_t fiber_free_fibers;
+ 
+-void fiber_manager_do_maintenance()
++void fiber_manager_do_maintenance(void)
+ {
+     fiber_manager_t* const manager = fiber_manager_get();
+ 
+@@ -513,7 +513,7 @@ void fiber_manager_return_mpmc_node(mpmc_fifo_node_t* node)
+     fiber_manager_return_mpmc_node_internal(NULL, &node->hazard);
+ }
+ 
+-mpmc_fifo_node_t* fiber_manager_get_mpmc_node()
++mpmc_fifo_node_t* fiber_manager_get_mpmc_node(void)
+ {
+     lockfree_ring_buffer_t* free_nodes = fiber_free_mpmc_nodes;
+     if(!free_nodes) {
+diff --git a/src/work_stealing_deque.c b/src/work_stealing_deque.c
+index 3c8cf6e..702a718 100644
+--- a/src/work_stealing_deque.c
++++ b/src/work_stealing_deque.c
+@@ -54,7 +54,7 @@ wsd_circular_array_t* wsd_circular_array_grow(wsd_circular_array_t* a, int64_t s
+     return new_a;
+ }
+ 
+-wsd_work_stealing_deque_t* wsd_work_stealing_deque_create()
++wsd_work_stealing_deque_t* wsd_work_stealing_deque_create(void)
+ {
+     wsd_work_stealing_deque_t* d = malloc(sizeof(wsd_work_stealing_deque_t));
+     if(!d) {

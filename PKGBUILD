@@ -20,10 +20,12 @@ conflicts=(libfiber)
 source=('git+https://github.com/brianwatling/libfiber'
         '0002-dist-libev.diff'
         '0003-no-work-stealing.diff'
+        '0004-fix-void-args.diff'
         'libfiber.pc')
 sha256sums=(SKIP
             e36b02fc439e1185a734db2a312a4650e803acb3eeef1105e40ffdc65726ae5d
             88ac1ea4517e6d73a571d243ffd51711a2e4ba2c45b92136968489f9c1979b62
+            e6cabc2f4a41bdf6385f9c1e57213913f2a2706967ec74d0a75d0df5fe94c9c7
             eb8f429c6705a23aec697990271e724541815d8b43aafcb36d21fd7186dacacd)
 
 pkgver() {
@@ -36,6 +38,9 @@ prepare() {
 
   # Use downstream (distribution) libev:
   patch -p1 -i "$srcdir"/0002-dist-libev.diff
+
+  # Fix void arguments in header files:
+  patch -p1 -i "$srcdir"/0004-fix-void-args.diff
 
   # Don't use work stealing:
   # NOTE: This is disabled by default, as it deviates from vanilla upstream;
