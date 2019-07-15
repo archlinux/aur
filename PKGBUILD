@@ -45,7 +45,7 @@ pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=2
+pkgrel=3
 pkgdesc="A code-completion engine for Vim"
 arch=('x86_64')
 url='https://ycm-core.github.io/YouCompleteMe/'
@@ -69,9 +69,10 @@ source=(
 	'git+https://github.com/slezica/python-frozendict.git'
 	'git+https://github.com/urllib3/urllib3.git'
 	'git+https://github.com/ycm-core/ycmd.git'
-	'git+https://github.com/ycm-core/YouCompleteMe.git')
+	'git+https://github.com/ycm-core/YouCompleteMe.git'
+	'rls.patch')
 
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'cde1d1265be82e246edb6021e0a4b4e01af1a140b8d92b05bde6929e922ae215')
 
 #=========================================================================================================#
 #                                     Applying PKBUILD Build Options                                      #
@@ -160,14 +161,6 @@ prepare() {
 
 	local ycmd=("bottle" "regex" "python-frozendict" "python-future" "waitress")
 
-	if [[ "$_omnisharp" == "y" ]]; then
-		ycmd+=("OmniSharpServer")
-	fi
-
-	if [[ "$_rust" == "y" ]]; then
-		ycmd+=("rust-completer")
-	fi
-
 	gitprepare "YouCompleteMe/third_party/ycmd" "third_party/" "${ycmd[@]}"
 
 	local ycmdJediDeps=("jedi" "parso")
@@ -184,6 +177,16 @@ prepare() {
 		cd "$srcdir" || exit
 		cp -r omnisharp YouCompleteMe/third_party/ycmd/third_party/omnisharp-roslyn
 	fi
+
+	# Apply our patch to use existing rustup toolchains
+	if [[ "$_rust" == "y" ]]; then
+		cd "$srcdir" || exit
+		cp rls.patch "$srcdir/YouCompleteMe/third_party/ycmd/"
+		cd "$srcdir/YouCompleteMe/third_party/ycmd/" || exit
+		patch -p1 <rls.patch
+		rm rls.patch
+	fi
+
 }
 
 build() {
@@ -201,24 +204,6 @@ build() {
 		go build
 	else
 		echo 'Skipping Gocode completer...'
-	fi
-
-	# TODO there has to be a better way of doing this.
-	if [[ "$_rust" == "y" ]]; then
-		echo 'Building Rust completer...'
-		if [ -d "$srcdir/YouCompleteMe/third_party/ycmd/third_party/rls" ]
-		then
-			rm -rf "$srcdir/YouCompleteMe/third_party/ycmd/third_party/rls"
-		fi
-		mkdir -p "$srcdir/rust-tmp"
-		cd "$srcdir/rust-tmp" || exit
-		export RUSTUP_HOME="$(pwd)"
-		rustup toolchain install nightly
-		rustup default nightly
-		rustup component add rls rust-analysis rust-src
-		cp -rv "$srcdir/rust-tmp/toolchains/nightly-$CARCH-unknown-linux-gnu" "$srcdir/YouCompleteMe/third_party/ycmd/third_party/rls"
-	else
-		echo 'Skipping Rust completer...'
 	fi
 
 	if [[ "$_typescript" == "y" ]]; then
@@ -288,21 +273,15 @@ package() {
 
 		# There seems to be a case senitivity issue with the packaged release of omnisharp-roslyn
 		# and the filename that ycm expects so we link it.
-		if [ -f "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/omnisharp-roslyn/OmniSharp.exe" ]
-		then
+		if [ -f "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/omnisharp-roslyn/OmniSharp.exe" ]; then
 			ln -s "$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/omnisharp-roslyn/OmniSharp.exe" \
-			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/omnisharp-roslyn/Omnisharp.exe"
+				"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/omnisharp-roslyn/Omnisharp.exe"
 		fi
 	fi
 
 	if [[ "$_gocode" == "y" ]]; then
 		cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/go" \
 			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/go"
-	fi
-
-	if [[ "$_rust" == "y" ]]; then
-		cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/rls" \
-			"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/rls"
 	fi
 
 	if [[ "$_tern" == "y" ]]; then
