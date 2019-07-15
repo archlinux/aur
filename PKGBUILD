@@ -1,15 +1,12 @@
 # Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Jan Koppe <post@jankoppe.de>
-#
-# This package is a modified version of extra/ffmpeg with --enable-decklink
 
 pkgname=ffmpeg-decklink
-_srcname=ffmpeg
 pkgver=4.1.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
 depends=('alsa-lib' 'aom' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
@@ -32,14 +29,22 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'ffmpeg')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
+        'ffmpeg-decklink-sdk-11.patch'
         'LICENSE')
 sha256sums=('0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d'
             'SKIP'
+            '96500257c72c664a9e7417d9aee3d0b2a4436f836e9733dcf1c9c30926b642df'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
+prepare() {
+    cd "ffmpeg-${pkgver}"
+    
+    patch -Np1 -i "${srcdir}/ffmpeg-decklink-sdk-11.patch"
+}
+
 build() {
-    cd "${_srcname}-${pkgver}"
+    cd "ffmpeg-${pkgver}"
     
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
@@ -96,7 +101,7 @@ build() {
 }
 
 package() {
-    cd "${_srcname}-${pkgver}"
+    cd "ffmpeg-${pkgver}"
     
     make DESTDIR="$pkgdir" install
     
