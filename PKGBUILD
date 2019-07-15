@@ -2,7 +2,7 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=burstcoin-wallet
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="The world's first HDD-mined cryptocurrency using an energy efficient and fair Proof-of-Capacity (PoC) consensus algorithm."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(https://github.com/burst-apps-team/burstcoin/releases/download/v${pkgver
 burstcoin-wallet.service
 burstcoin-wallet.desktop
 )
-sha256sums=('a3d357a18b6f806521d466762636c81c9bc5c71edc0203503f0b83dcdea3d372'
+sha256sums=('fc3d943ddd34c6e3fefed5de824f2ebe72ba6947fb9d287ef95875f56ea775a2'
             'ffb9c5431f65485b2c08b4ca6c2b68b3c2001961b22ed4a66c528ed26bcb2dae'
             '44b494c86b4f8d7eeba365e83586e129543ceb67bc92a7b19df00918a8505865')
 
