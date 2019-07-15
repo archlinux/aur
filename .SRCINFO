@@ -1,0 +1,19 @@
+pkgbase = rust-analyzer-vscode-git
+	pkgdesc = An experimental Rust compiler front-end for IDEs (VSCode installation).
+	pkgver = r4319.8de56ec4
+	pkgrel = 1
+	url = https://github.com/rust-analyzer/rust-analyzer/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = rustup
+	depends = code
+	provides = rust-analyzer-vscode-git
+	conflicts = rust-analyzer-vscode-git
+	conflicts = rust-analyzer-git
+	source = rust-analyzer-vscode-git::git+https://github.com/rust-analyzer/rust-analyzer/
+	md5sums = SKIP
+
+pkgname = rust-analyzer-vscode-git
+
