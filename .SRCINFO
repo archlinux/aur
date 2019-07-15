@@ -1,13 +1,13 @@
 pkgbase = omnisharp-roslyn-stdio-bin
 	pkgdesc = .NET development platform based on Roslyn workspaces. It provides project dependencies and C# language services to various IDEs and plugins via STDIO.
 	pkgver = 1.33.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OmniSharp/omnisharp-roslyn
 	arch = x86_64
 	license = MIT
 	depends = mono
-	noextract = $pkgname-$pkgver.tar.gz
-	source = omnisharp-roslyn-stdio-bin-1.33.0.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.33.0/omnisharp-mono.tar.gz
+	noextract = $_pkgname-$pkgver.tar.gz
+	source = omnisharp-roslyn-stdio-1.33.0.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.33.0/omnisharp-mono.tar.gz
 	sha256sums = c3bd370b0e31838418756f3879269b224b1920d6f3527c8f711d661dfc008c8c
 
 pkgname = omnisharp-roslyn-stdio-bin
