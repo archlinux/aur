@@ -2,8 +2,8 @@
 
 pkgname=mingw-w64-kvazaar
 _pkgname=kvazaar
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="An open-source HEVC encoder (mingw-w64)"
 arch=('any')
 url='http://ultravideo.cs.tut.fi/#encoder'
@@ -11,16 +11,13 @@ license=('LGPL')
 depends=('mingw-w64-crypto++')
 makedepends=('mingw-w64-configure' 'yasm' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/ultravideo/kvazaar/archive/v${pkgver}.tar.gz"
-        'kvazaar-crypto++6.0.0.patch')
-sha256sums=('480ecfd9b4d2b7d21b355e4a35fcf47b4db7a3b0315b6219d93733db42392bd9'
-            '02396099561b9c87462420ee6b16706237c7502938c1b3ab9fc3797ea2ec568a')
+source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/ultravideo/kvazaar/archive/v${pkgver}.tar.gz")
+sha256sums=('f694fe71cc6e3e6f583a9faf380825ea93b2635c4db8d1d3121b9ebcf736ac1c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/kvazaar-crypto++6.0.0.patch"
   ./autogen.sh
 }
 
