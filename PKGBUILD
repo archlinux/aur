@@ -3,7 +3,7 @@
 # Contributor: Drew DeVault <sir@cmpwn.com>
 
 pkgname=aerc
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
