@@ -7,7 +7,6 @@ pkgbase = corrupter-bin
 	license = BSD 2-Clause
 	provides = corrupter
 	conflicts = corrupter
-	conflicts = corrupter-git
 	source = https://github.com/r00tman/corrupter/releases/download/v1.0/corrupter_v1.0_x86_64.tar.gz
 	md5sums = 04f1c9c324d12717b10c5173a5363f25
 
