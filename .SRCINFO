@@ -1,0 +1,20 @@
+pkgbase = smooth-git
+	pkgdesc = An object oriented C++ class library for Windows, OS X, Linux and most Unix-like operating systems
+	pkgver = 0.8.74.0.pre6.30.g7394132e
+	pkgrel = 1
+	url = http://www.smooth-project.org
+	arch = i686
+	arch = x86_64
+	license = Artistic2.0
+	depends = curl
+	depends = fribidi
+	depends = gtk3
+	depends = libjpeg-turbo
+	depends = libxml2
+	provides = smooth
+	conflicts = smooth
+	source = git+https://github.com/enzo1982/smooth.git
+	sha256sums = SKIP
+
+pkgname = smooth-git
+
