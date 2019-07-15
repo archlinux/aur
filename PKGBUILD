@@ -34,11 +34,14 @@ pkgver() {
 prepare() {
   cd libfiber
 
-  # use downstream (distribution) libev
+  # Use downstream (distribution) libev:
   patch -p1 -i "$srcdir"/0002-dist-libev.diff
 
-  # don't use work stealing
-  patch -p1 -i "$srcdir"/0003-no-work-stealing.diff
+  # Don't use work stealing:
+  # NOTE: This is disabled by default, as it deviates from vanilla upstream;
+  # apply if you run into issues with fibers being scheduled in an awkward way.
+  #patch -p1 -i "$srcdir"/0003-no-work-stealing.diff
+
 }
 
 build() {
