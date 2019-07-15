@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version
-	pkgver = 1.20.99.57388.g7255954ccc
+	pkgver = 1.22.99.62619.g01d6683e32
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
