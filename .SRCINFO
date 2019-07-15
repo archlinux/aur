@@ -1,20 +1,28 @@
 pkgbase = mindforger
-	pkgdesc = Thinking notebook and Markdown IDE. Search, browse, view and edit your Markdown files. Get as much as possible from knowledge in your remarks.
-	pkgver = 1.48.0
+	pkgdesc = Thinking notebook and Markdown IDE. Search, browse, view and edit your Markdown files. Get as much as possible from knowledge in your remarks
+	pkgver = 1.49.2
 	pkgrel = 1
-	url = https://github.com/dvorka/mindforger
+	url = https://www.mindforger.com/
 	arch = x86_64
-	license = GPL-2.0
-	depends = gcc>=5.2
-	depends = hicolor-icon-theme
-	depends = qt5-base>=5.2.0
-	depends = qt5-webkit>=5.0.2
-	depends = zlib>=1.1.4
-	optdepends = dropbox: dropbox syncing
-	options = !strip
-	options = !emptydirs
-	source_x86_64 = https://github.com/dvorka/mindforger/releases/download/1.48.0/mindforger_1.48.2-1_amd64.deb 
-	sha512sums_x86_64 = 207f5e37b269bb83dbc9b25b17eed146c99949681bc8b0c29afcabb1634719733d2f3fb2887a5e22c8dc68da00868152603b3fd856a9ee310a912b05b8a685c2
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-webkit
+	source = git+https://github.com/dvorka/mindforger.git#tag=1.49.2
+	source = git+https://github.com/dvorka/mindforger-repository.git
+	source = mindforger-discount::git+https://github.com/dvorka/discount.git
+	source = mindforger-MITIE::git+https://github.com/dvorka/MITIE.git
+	source = mindforger-cmark::git+https://github.com/dvorka/cmark.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mindforger
 
