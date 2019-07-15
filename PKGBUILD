@@ -1,11 +1,11 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.1.0.r139.73ee482
+pkgver=0.1.0.r217.b7a68bc
 pkgrel=1
 pkgdesc="Open source editing tools for Halo Custom Edition"
 depends=('libtiff' 'libpng')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'python')
 arch=('i686' 'x86_64')
 url="https://github.com/Kavawuvi/Invader"
 license=('GPL')
@@ -30,7 +30,7 @@ build() {
 
 package() {
   cd "$srcdir"/build
-  for i in invader-{bitmap,build,crc,indexer}; do
+  for i in invader-{bitmap,build,crc,indexer,resource}; do
      install -Dm755 $i "$pkgdir"/usr/bin/$i
   done
 }
