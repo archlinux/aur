@@ -1,12 +1,12 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
 pkgname=pak-yay
 pkgver=1.5
-pkgrel=1
+pkgrel=3
 pkgdesc="A package manager wrapper for yay written in swift"
 arch=('x86_64')
 url="https://gitlab.com/moussaelianarsen/pak"
 license=('GPL3')
-depends=('swift-bin' 'yay')
+depends=('swift' 'yay')
 provides=('pak' 'yaywrap')
 source=("https://gitlab.com/moussaelianarsen/pak/-/archive/master/pak-master.tar.gz")
 md5sums=('SKIP')
