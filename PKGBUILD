@@ -2,7 +2,7 @@
 # Contributor: erk <v at erk dot io>
 
 pkgname=vnote
-pkgver=2.7
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A Vim-inspired note-taking application, especially for Markdown."
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -19,7 +19,6 @@ sha256sums=('SKIP'
 
 prepare() {
   cd "$pkgname"
-
   git submodule init
   git config 'submodule.src/utils/marked.url' "${srcdir}/marked"
   git config 'submodule.hoedown.url' "${srcdir}/hoedown"
