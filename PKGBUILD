@@ -18,11 +18,11 @@ provides=('lib32-amdvlk' 'lib32-vulkan-driver')
 conflicts=('lib32-vulkan-amdvlk' 'lib32-amdvlk' 'lib32-amdvlk-git')
 makedepends=('cmake' 'dri2proto' 'gcc' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-libxml2' 'libxrandr' 'python' 'wayland' 'xorg-server-devel' 'ninja')
 
-source=(https://github.com/GPUOpen-Drivers/AMDVLK/archive/v-${pkgver}.tar.gz
-        https://github.com/GPUOpen-Drivers/llpc/archive/${_llpc_commit}.tar.gz
-        https://github.com/GPUOpen-Drivers/xgl/archive/${_xgl_commit}.tar.gz
-        https://github.com/GPUOpen-Drivers/pal/archive/${_pal_commit}.tar.gz
-        https://github.com/GPUOpen-Drivers/llvm/archive/${_llvm_commit}.tar.gz)
+source=(AMDVLK-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/AMDVLK/archive/v-${pkgver}.tar.gz
+        llpc-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/llpc/archive/${_llpc_commit}.tar.gz
+        xgl-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/xgl/archive/${_xgl_commit}.tar.gz
+        pal-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/pal/archive/${_pal_commit}.tar.gz
+        llvm-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/llvm/archive/${_llvm_commit}.tar.gz)
   
 sha256sums=('e41418633653279c55cc8d70a9f576e0de3018a3953bcb3372bfb809db48ae23'
             'f7efe91134588233e2d3f25ff53068fb0b7c6d144fabf907c7b8c807efe635e8'
