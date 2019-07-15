@@ -1,0 +1,20 @@
+pkgbase = python-demjson-git
+	pkgdesc = Python module for JSON data encoding, including jsonlint.
+	pkgver = r41.5bc6597
+	pkgrel = 1
+	url = https://github.com/dmeranda/demjson
+	arch = any
+	license = LGPL3
+	checkdepends = python-pytest
+	checkdepends = python2-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	provides = python-demjson
+	provides = python2-demjson
+	source = git+https://github.com/dmeranda/demjson
+	sha512sums = SKIP
+
+pkgname = python-demjson-git
+	depends = python
+
