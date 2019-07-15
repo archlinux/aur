@@ -2,7 +2,7 @@
 
 pkgname=corectrl
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Core control application"
 url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -29,5 +29,4 @@ package() {
   cd "${srcdir}/${pkgname}-v${pkgver}/build" 
   sed -i -- 's/\/usr/${CMAKE_INSTALL_PREFIX}/g' src/helper/cmake_install.cmake
   make install
-  for size in 24x24 48x48 32x32 96x96 64x64 22x22 196x196 72x72 128x128 16x16 256x256; do ln -fs $pkgdir/usr/share/icons/hicolor/$size/apps/CoreCtrl.svg $pkgdir/usr/share/icons/hicolor/$size/apps/corectrl.svg; done
 }
