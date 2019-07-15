@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r2710.g1cdf56f7
-pkgrel=3
+pkgver=1.0.0.r2713.ga385e237
+pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
 url='http://www.ipxe.org/'
@@ -12,16 +12,16 @@ provides=('ipxe')
 conflicts=('ipxe')
 install=ipxe.install
 source=('git://github.com/ipxe/ipxe.git'
-	'ipxe-0001-git-version.patch::https://github.com/eworm-de/ipxe/commit/96d1e2fcdf95d82a8ca7b000ad8b30ec50b10e1d.patch'
-	'ipxe-0002-banner.patch::https://github.com/eworm-de/ipxe/commit/22f2b2c50ea3b7b24dc57af917b1dd6295ad8764.patch'
-	'ipxe-0003-efi-iso.patch::https://github.com/eworm-de/ipxe/commit/23a09ab6f559eea4ae2cc263930e26aaee601509.patch'
+	'ipxe-0001-git-version.patch::https://github.com/eworm-de/ipxe/commit/b4b66013274d2bf1767dd093f6867872a070bc93.patch'
+	'ipxe-0002-banner.patch::https://github.com/eworm-de/ipxe/commit/83909ca09656dce6750924e671b6484959b14bf2.patch'
+	'ipxe-0003-efi-iso.patch::https://github.com/eworm-de/ipxe/commit/1bb5900a8aa64ae332dcd49a7ce82e43063b0244.patch'
 	'grub'
 	'chain-default.ipxe'
 	'chain-default-3928.ipxe')
 sha256sums=('SKIP'
-            'dcce3e457e6c4f3e41afc2f40c5a56e9ede8be389718a0521d5021aaf29cab8b'
-            '97de694b9e10268ca1ff357e71df431200f1a3a95a1dc0ea70737a05cdce2f69'
-            '1afd67bbed3316913483c44ebc259393eae728992e2cc5a315ffb6b07d590296'
+            '07cde3fde57730f57a0cdb155b41ec0e14d09d9b7dc12d787029671b3cd38219'
+            'd92426915b5321360d701c047e9e2cc51887d064d16b0ab5ee1c7adfa506ff92'
+            'c915aa468a6c581a1c39aff2a842992f0e42bd37989b1be3ee4a000a6ab8c619'
             'ead8e9b386206bc0e95838a6e074c218e038cd3fa1ca5cff2b73e34b40d5552f'
             'f7ec78e26671f4df90d89440d8b2a69473c15cb6b25dda32c773023378fec42a'
             'e26a54b4e99816b34baebcb7a15d99d57c9395c9689ffbae2329cc675248f9b9')
@@ -131,4 +131,3 @@ package() {
 	install -D -m0644 bin-i386-efi/ipxe.efi ${pkgdir}/usr/lib/ipxe/efi-i386.efi
 	install -D -m0644 bin-x86_64-efi/ipxe.efi ${pkgdir}/usr/lib/ipxe/efi-x86_64.efi
 }
-
