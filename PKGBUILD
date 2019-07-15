@@ -3,7 +3,7 @@
 pkgname=st-ckyln-git
 _pkgname=st
 pkgrel=1
-pkgver=v20190619
+pkgver=v20190626.3.gcc6bc9b
 pkgdesc="Simple Terminal from suckless.org (Fork)"
 url="https://git.ckyln.com/st"
 arch=('i686' 'x86_64')
@@ -29,5 +29,5 @@ package() {
 	cd ${_pkgname}
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
-	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
