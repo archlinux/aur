@@ -5,8 +5,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-qsv-git
-_srcname=ffmpeg
-pkgver=4.2.r92486.g8f875a90c4
+pkgver=4.2.r94300.gaf5f770113
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with Intel Quick Sync Video hardware acceleration, git version)'
 arch=('x86_64')
@@ -35,13 +34,13 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_srcname"
+    cd ffmpeg
     
     local _version
     local _revision
     local _shorthash
     
-    _version="$(  git describe  --tags --long      | awk -F'-' '{ printf $1 }' | sed 's/^n//')"
+    _version="$(  git describe  --tags --long      | awk -F'-' '{ sub(/^n/, "", $1); print $1 }')"
     _revision="$( git describe  --tags --match 'N' | awk -F'-' '{ printf $2 }')"
     _shorthash="$(git rev-parse --short HEAD)"
     
@@ -49,7 +48,7 @@ pkgver() {
 }
 
 build() {
-    cd "$_srcname"
+    cd ffmpeg
     
     export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/mediasdk/lib64/pkgconfig"
     
@@ -107,7 +106,7 @@ build() {
 }
 
 package() {
-    cd "$_srcname"
+    cd ffmpeg
     
     make DESTDIR="$pkgdir" install
     
