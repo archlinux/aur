@@ -10,6 +10,7 @@ depends=('swift-bin' 'yay')
 provides=('pak' 'yaywrap')
 source=("https://gitlab.com/moussaelianarsen/pak/-/archive/master/pak-master.tar.gz")
 md5sums=('SKIP')
+conflicts=('pak-pacman')
 install="pak-yay.install"
 
 build() {
