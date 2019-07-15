@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=pingo
-pkgver=0.99.beta34
+pkgver=0.99.beta42
 pkgrel=1
 pkgdesc='An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)'
 arch=('any')
@@ -9,37 +9,37 @@ url='https://css-ig.net/pingo'
 license=('unknown')
 depends=('bash' 'wine')
 makedepends=('git')
-source=("pingo-${pkgver}.zip"::'https://css-ig.net/downloads/zip/pingo.zip'
+source=("pingo-win64-${pkgver}.zip"::'https://css-ig.net/bin/pingo-win64.zip'
         'git+https://github.com/dbermond/shellutils.git')
-noextract=("pingo-${pkgver}.zip")
-sha256sums=('613867a2d6a091700aef22a47e39c1fedc7497719a5b02250be7984723ac5a47'
+noextract=("pingo-win64-${pkgver}.zip")
+sha256sums=('887de8f5ae0777b3707041e1a8896071682c11d2b3525b2d9846c8993262f3e9'
             'SKIP')
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/74.0.3729.169 \
+                        Chrome/75.0.3770.100 \
                         Safari/537.36"
 
 _useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/\\ /g')"
 
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' -LC - --retry 3 --retry-delay 3 \
-              -H Accept-Encoding:\ gzip,\ deflate,\ br \
-              -H Accept-Language:\ en-US,en;q=0.9 \
-              -H Upgrade-Insecure-Requests:\ 1 \
+              -H authority:\ css-ig.net \
+              -H upgrade-insecure-requests:\ 1 \
               -H ${_useragent} \
-              -H Accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8 \
-              -H Referer:\ https://css-ig.net/pingo.php \
-              -H Cookie:\ HttpOnly;\ HttpOnly;\ HttpOnly;\ startBAK=R3415750288;\ start=R3918464565 \
-              -H Connection:\ keep-alive \
-              -o %o \
+              -H accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3 \
+              -H referer:\ https://css-ig.net/pingo \
+              -H accept-encoding:\ gzip,\ deflate,\ br \
+              -H accept-language:\ en-US,en;q=0.9,pt;q=0.8 \
+              -H cookie:\ HttpOnly;\ SERVERID105614=1420122|XSyhV|XSyhV \
               --compressed \
+              --output %o \
               %u")
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
     cd "${pkgname}-${pkgver}"
-    bsdtar -xf "../pingo-${pkgver}.zip"
+    bsdtar -xf "../pingo-win64-${pkgver}.zip"
 }
 
 package() {
