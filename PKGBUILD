@@ -1,12 +1,12 @@
 # Maintainer: Martin Kröning <m dot kroening at hotmail dot de>
 pkgname=make-fmv-patch-git
 pkgver=r21.831ace4
-pkgrel=1
+pkgrel=2
 pkgdesc='Make FMV patch generator'
 arch=('any')
 url="https://github.com/clearlinux/${pkgname%-git}"
 license=('MIT')
-depends=('perl' 'ctags' 'gcc>=6.0.0')
+depends=('perl' 'ctags')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
