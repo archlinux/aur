@@ -8,6 +8,7 @@ arch=(x86_64)
 url='https://github.com/deislabs/duffle'
 license=(MIT)
 makedepends=('go' 'dep')
+conflicts=('duffle-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/deislabs/duffle/archive/${pkgver/_/-}.tar.gz")
 sha512sums=('cacff4f5e690bd5bb4d790822d47429dc697e77a773228e42b652d129dbb8e52042533e789e7356bdc9cc0d0d54f7c6ecf7f452ee8f7bdc71554a9f6640e90a4')
 
