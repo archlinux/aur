@@ -6,22 +6,21 @@
 # Contributor: sxw <sxw@chronowerks.de>
 # Maintainer: Erich Eckner <arch at eckner dot net>
 
-pkgbase=jabberd2
-pkgname=(jabberd2-git)
+pkgname=jabberd2-git
 pkgver=r1175.376e632
 _commit=${pkgver#*.}
-pkgrel='7'
+pkgrel=8
 pkgdesc='Scalable, architecturally sound, and extensible XMPP server'
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'pentium4' 'x86_64' 'armv6h')
 url='http://jabberd2.org/'
 license=('GPL')
 options=('!libtool')
 depends=('udns' 'expat' 'gsasl' 'libidn' 'openssl')
 optdepends=('sqlite3' 'postgresql-libs')
-makedepends=('sqlite3' 'postgresql-libs' 'autoconf-archive')
+makedepends=('git' 'sqlite3' 'postgresql-libs' 'autoconf-archive')
 install=install
 source=(
-  "${pkgbase}::git+https://github.com/${pkgbase}/${pkgbase}.git#commit=${_commit}"
+  "${pkgname}::git+https://github.com/${pkgname%-git}/${pkgname%-git}.git#commit=${_commit}"
   'pam_jabberd'
 )
 sha512sums=('SKIP'
@@ -41,14 +40,14 @@ backup=(
 
 pkgver() {
   printf "r%s.%s" "$(
-    git -C "${srcdir}/${pkgbase}" rev-list --count ${_commit}
+    git -C "${srcdir}/${pkgname}" rev-list --count ${_commit}
   )" "$(
-    git -C "${srcdir}/${pkgbase}" rev-parse --short ${_commit}
+    git -C "${srcdir}/${pkgname}" rev-parse --short ${_commit}
   )"
 }
 
 prepare() {
-  cd "${srcdir}/${pkgbase}"
+  cd "${srcdir}/${pkgname}"
   libtoolize --force
   aclocal
   autoheader
@@ -57,7 +56,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgbase}"
+  cd "${srcdir}/${pkgname}"
 
   ./configure \
     --prefix=/usr \
@@ -73,8 +72,8 @@ build() {
   make
 }
 
-package_jabberd2-git() {
-  cd "${srcdir}/${pkgbase}"
+package() {
+  cd "${srcdir}/${pkgname}"
 
   make DESTDIR="${pkgdir}" install
 

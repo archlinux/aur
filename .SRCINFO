@@ -1,13 +1,15 @@
-pkgbase = jabberd2
+pkgbase = jabberd2-git
 	pkgdesc = Scalable, architecturally sound, and extensible XMPP server
 	pkgver = r1175.376e632
-	pkgrel = 7
+	pkgrel = 8
 	url = http://jabberd2.org/
 	install = install
 	arch = i686
+	arch = pentium4
 	arch = x86_64
 	arch = armv6h
 	license = GPL
+	makedepends = git
 	makedepends = sqlite3
 	makedepends = postgresql-libs
 	makedepends = autoconf-archive
@@ -28,7 +30,7 @@ pkgbase = jabberd2
 	backup = etc/jabberd/sm.xml
 	backup = etc/jabberd/templates/roster.xml
 	backup = etc/pam.d/jabberd
-	source = jabberd2::git+https://github.com/jabberd2/jabberd2.git#commit=376e632
+	source = jabberd2-git::git+https://github.com/jabberd2/jabberd2.git#commit=376e632
 	source = pam_jabberd
 	sha512sums = SKIP
 	sha512sums = e6507a2a7e226398253623bb46db7ae853b01649b7ac00f3eee0a9b57c2ef0e8ac1f90c4934269f5fe2b7667e56572bed233b847d0b66a3fd37a88b7ed8adc31
