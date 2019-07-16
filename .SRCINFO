@@ -9,8 +9,8 @@ pkgbase = pak-config-pacman
 	provides = pak-config
 	provides = pacwrap
 	conflicts = pak-config-yay
-	source = https://gitlab.com/moussaelianarsen/pak/blob/master/plugins/pacwrap/pacwrap.swift
-	source = https://gitlab.com/moussaelianarsen/pak/blob/master/plugins/pacwrap/pak.cfg
+	source = https://gitlab.com/moussaelianarsen/pak/raw/master/plugins/pacwrap/pacwrap.swift
+	source = https://gitlab.com/moussaelianarsen/pak/raw/master/plugins/pacwrap/pak.cfg
 	md5sums = SKIP
 	md5sums = SKIP
 
