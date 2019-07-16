@@ -7,7 +7,7 @@
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
 pkgver=0.95.4
-pkgrel=2
+pkgrel=3
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
@@ -27,6 +27,7 @@ depends=(
   python-requests
   python-ruamel-yaml
   python-slugify
+  python-sqlalchemy
   python-voluptuous
   python-voluptuous-serialize
   python-yaml
