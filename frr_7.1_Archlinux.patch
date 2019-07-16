@@ -1,6 +1,6 @@
-diff -Naupr frr-frr-7.0_orig/tools/etc/frr/daemons frr-frr-7.0/tools/etc/frr/daemons
---- frr-frr-7.0_orig/tools/etc/frr/daemons	2019-03-01 06:32:04.000000000 +0700
-+++ frr-frr-7.0/tools/etc/frr/daemons	2019-05-10 14:52:18.395888041 +0700
+diff -Naupr frr-frr-7.1_orig/tools/etc/frr/daemons frr-frr-7.1/tools/etc/frr/daemons
+--- frr-frr-7.1_orig/tools/etc/frr/daemons	2019-06-18 13:10:14.000000000 +0700
++++ frr-frr-7.1/tools/etc/frr/daemons	2019-07-16 11:10:37.109320054 +0700
 @@ -29,6 +29,8 @@ sharpd=no
  pbrd=no
  bfdd=no
@@ -56,9 +56,9 @@ diff -Naupr frr-frr-7.0_orig/tools/etc/frr/daemons frr-frr-7.0/tools/etc/frr/dae
  
  # for debugging purposes, you can specify a "wrap" command to start instead
  # of starting the daemon directly, e.g. to use valgrind on ospfd:
-diff -Naupr frr-frr-7.0_orig/tools/frrcommon.sh.in frr-frr-7.0/tools/frrcommon.sh.in
---- frr-frr-7.0_orig/tools/frrcommon.sh.in	2019-03-01 06:32:04.000000000 +0700
-+++ frr-frr-7.0/tools/frrcommon.sh.in	2019-05-10 14:32:51.919090139 +0700
+diff -Naupr frr-frr-7.1_orig/tools/frrcommon.sh.in frr-frr-7.1/tools/frrcommon.sh.in
+--- frr-frr-7.1_orig/tools/frrcommon.sh.in	2019-06-18 13:10:14.000000000 +0700
++++ frr-frr-7.1/tools/frrcommon.sh.in	2019-07-16 11:10:37.109320054 +0700
 @@ -270,7 +270,7 @@ load_old_config() {
  	[ -s "$oldcfg" ] || return 0
  	grep -v '^[[:blank:]]*\(#\|$\)' "$oldcfg" > /dev/null || return 0
@@ -78,10 +78,19 @@ diff -Naupr frr-frr-7.0_orig/tools/frrcommon.sh.in frr-frr-7.0/tools/frrcommon.s
 +	log_failure_msg "cannot run $@: $C_PATH/daemons.conf does not exist"
  	exit 1
  }
- . "$C_PATH/daemons.conf"
-diff -Naupr frr-frr-7.0_orig/tools/frr.in frr-frr-7.0/tools/frr.in
---- frr-frr-7.0_orig/tools/frr.in	2019-03-01 06:32:04.000000000 +0700
-+++ frr-frr-7.0/tools/frr.in	2019-05-10 14:32:51.919090139 +0700
+ . "$C_PATH/daemons"
+diff -Naupr frr-frr-7.1_orig/tools/frr.in frr-frr-7.1/tools/frr.in
+--- frr-frr-7.1_orig/tools/frr.in	2019-06-18 13:10:14.000000000 +0700
++++ frr-frr-7.1/tools/frr.in	2019-07-16 11:20:36.420576361 +0700
+@@ -26,7 +26,7 @@ FRR_VTY_GROUP="@enable_vty_group@" # frr
+ # See /usr/share/doc/frr/README.Debian.gz for further information.
+ # Keep zebra first and do not list watchfrr!
+ DAEMONS="zebra bgpd ripd ripngd ospfd ospf6d isisd babeld pimd ldpd nhrpd eigrpd sharpd pbrd staticd bfdd fabricd"
+-MAX_INSTANCES=5
++MAX_INSTANCES=1024
+ RELOAD_SCRIPT="$D_PATH/frr-reload.py"
+ 
+ if [ -e /lib/lsb/init-functions ]; then
 @@ -500,10 +500,9 @@ check_status()
  #########################################################
  
@@ -91,12 +100,21 @@ diff -Naupr frr-frr-7.0_orig/tools/frr.in frr-frr-7.0/tools/frr.in
  
  # Load configuration
 -. "$C_PATH/daemons"
- . "$C_PATH/daemons.conf"
- 
+ if [ -e "$C_PATH/daemons.conf" ]; then
+ 	. "$C_PATH/daemons.conf"
+ fi
+@@ -511,7 +510,7 @@ fi
  # Read configuration variable file if it is present
-diff -Naupr frr-frr-7.0_orig/tools/frr-reload frr-frr-7.0/tools/frr-reload
---- frr-frr-7.0_orig/tools/frr-reload	2019-03-01 06:32:04.000000000 +0700
-+++ frr-frr-7.0/tools/frr-reload	2019-05-10 14:32:51.919090139 +0700
+ [ -r /etc/default/frr ] && . /etc/default/frr
+ 
+-MAX_INSTANCES=${MAX_INSTANCES:=5}
++MAX_INSTANCES=${MAX_INSTANCES:=1024}
+ 
+ # Set priority of un-startable daemons to 'no' and substitute 'yes' to '0'
+ convert_daemon_prios
+diff -Naupr frr-frr-7.1_orig/tools/frr-reload frr-frr-7.1/tools/frr-reload
+--- frr-frr-7.1_orig/tools/frr-reload	2019-06-18 13:10:14.000000000 +0700
++++ frr-frr-7.1/tools/frr-reload	2019-07-16 11:10:37.112653413 +0700
 @@ -1,7 +1,7 @@
  #!/bin/sh
  

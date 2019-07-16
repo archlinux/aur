@@ -1,9 +1,10 @@
 # Maintainer: Shalygin Konstantin <k0ste@k0ste.ru>
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
+# Contributor: Evgeny Cherkashin <eugeneai@irnok.net>
 
 pkgname='frr'
-pkgver='7.0.1'
-pkgrel='3'
+pkgver='7.1'
+pkgrel='1'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('any')
 url="https://frrouting.org/"
@@ -22,25 +23,24 @@ source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.ta
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}_6.0_systemd_arch.patch"
-        "${pkgname}_7.0_Archlinux.patch"
+        "${pkgname}_7.1_Archlinux.patch"
 	"000-rem-rec.patch"
 	"frr-init-functions")
-sha256sums=('5b74fc2c730e9973eab03546415f8dd7b36fa00fbf0bc856458266773dd5ae6d'
+sha256sums=('1a66ab4fdb9718997170e9da79d52e5bfdaabc0dac396e4beb758af7bdd48e4f'
             '9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89'
             '9d98a0b5d7016cb66fe3cbec234f70327f0a961de47f7eae39a5bd4477b072ce'
-            '3ea1ac3f8fa1bd6f2946b065057464eb04b7ae6c17d181291bbeecf266735dbb'
+            '89828ff2b6d27217540fd46009af33f2706e123467b24746b2fc3962c3d16e70'
             '1cd3780604fba90fcbce9c0fc69e261a4a22abe123faf155035ab359bc0d151f'
             'e6e2592a8b0b18f7f173186fb4ebf23e642b3d912179f0bb36251962ca64cd7a')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
-
   # https://github.com/FRRouting/frr/issues/1422
   patch -p1 -i "${srcdir}/${pkgname}_6.0_systemd_arch.patch"
 
   # https://github.com/FRRouting/frr/issues/4167
-  patch -p1 -i "${srcdir}/${pkgname}_7.0_Archlinux.patch"
+  patch -p1 -i "${srcdir}/${pkgname}_7.1_Archlinux.patch"
   patch -p1 -i "${srcdir}/000-rem-rec.patch"
 
   autoreconf -fvi
