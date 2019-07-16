@@ -1,7 +1,8 @@
 *
-!./.SRCINFO
-!./.gitignore
-!./PKGBUILD
-!./brave-bin.desktop
-!./brave-bin.sh
-!logo.png
+!/.SRCINFO
+!/.gitignore
+!/.pre-commit
+!/PKGBUILD
+!/brave-bin.desktop
+!/brave-bin.sh
+!/logo.png
