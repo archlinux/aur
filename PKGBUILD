@@ -3,7 +3,7 @@
 
 pkgname=qsstv
 pkgver=9.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Radio Slow-Scan TV for qt"
 url="http://users.telenet.be/on4qz/"
 depends=('qt5-base' 'libpulse' 'v4l-utils' 'hamlib' 'fftw' 'openjpeg2')
@@ -18,8 +18,8 @@ build() {
   cd "$srcdir/${pkgname}_$pkgver"
 
   # trick qmake
-#  qmake-qt5 PREFIX="$pkgdir/usr/"
-  qmake-qt5
+  # qmake-qt5 PREFIX="$pkgdir/usr/"
+  qmake-qt5 PREFIX=/usr/
   make $MAKEFLAGS
 }
 
