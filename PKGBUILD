@@ -27,13 +27,15 @@ install=blender.install
 # the path in .gitmodules.
 # More info:
 #   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
-source=("git://git.blender.org/blender.git${_fragment}" \
-        'blender-addons.git::git://git.blender.org/blender-addons.git' \
-        'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git' \
-        'blender-translations.git::git://git.blender.org/blender-translations.git' \
-        'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git' \
-        blender-2.7.desktop \
-        SelectCudaComputeArch.patch \
+source=("git://git.blender.org/blender.git${_fragment}"
+        'blender-addons.git::git://git.blender.org/blender-addons.git'
+        'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git'
+        'blender-translations.git::git://git.blender.org/blender-translations.git'
+        'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
+        blender-2.7.desktop
+        SelectCudaComputeArch.patch
+        stl_export_iter.patch
+        python3.7.patch
         )
 md5sums=('SKIP'
          'SKIP'
@@ -41,7 +43,9 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'cef7a015d4ab57592b424ea06c8b576e'
-         '8b22ddc71fb3a766029dc460bba49a0a')
+         '8b22ddc71fb3a766029dc460bba49a0a'
+         'f21e971208232d8d78d1a4c41013a101'
+         'e0d4a0a876bcf48969613912f3463c01')
 
 pkgver() {
   cd "$srcdir/blender"
@@ -55,6 +59,7 @@ prepare() {
   if [ -z "$_cuda_capability" ] && grep -q nvidia <(lsmod); then 
     git apply -v ${srcdir}/SelectCudaComputeArch.patch
   fi
+  git apply -v ${srcdir}/{python3.7,stl_export_iter}.patch
 }
 
 build() {

@@ -42,13 +42,17 @@ pkgbase = blender-2.7
 	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
 	source = blender-2.7.desktop
 	source = SelectCudaComputeArch.patch
+	source = stl_export_iter.patch
+	source = python3.7.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = cef7a015d4ab57592b424ea06c8b576e
-	md5sums = 2f1b08655352e70c7c74d4957d481dc8
+	md5sums = 8b22ddc71fb3a766029dc460bba49a0a
+	md5sums = f21e971208232d8d78d1a4c41013a101
+	md5sums = e0d4a0a876bcf48969613912f3463c01
 
 pkgname = blender-2.7
 
