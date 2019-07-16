@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=smooth-git
 pkgver=0.8.74.0.pre6.30.g7394132e
 pkgrel=1
