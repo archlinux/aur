@@ -2,7 +2,7 @@
 
 pkgname=sanic
 pkgdesc='An all-in-one tool to develop, build, and deploy your Docker/Kubernetes projects'
-pkgver=1.2.11
+pkgver=1.2.13
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -10,24 +10,16 @@ url='https://github.com/distributed-containers-inc/sanic'
 depends=('kubectl' 'docker')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/distributed-containers-inc/sanic/archive/v$pkgver.tar.gz")
-sha256sums=('2bf562a0335514e268b09b43ea7d65ecde54c815571589907557023d70799b70')
-
-prepare() {
-  # Make fake gopath
-  mkdir -p gopath/src/github.com/distributed-containers-inc
-  ln -rTsf $pkgname-$pkgver gopath/src/github.com/distributed-containers-inc/sanic
-}
+sha256sums=('ffb3eb245351239ecc1b4b13e208d35244540cfbcdf6735cbf86059ab9b1526b')
 
 build() {
   # Trim PWD from binary
   export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
 
-  export GOPATH="$srcdir"/gopath
-  export GO111MODULE=on
-  cd gopath/src/github.com/distributed-containers-inc/sanic
-  go install
+  cd $pkgname-$pkgver
+  go build --ldflags "-X main.version=$pkgver" .
 }
 
 package() {
-  install -Dm 755 "$srcdir/gopath/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 755 "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

@@ -1,6 +1,6 @@
 pkgbase = sanic
 	pkgdesc = An all-in-one tool to develop, build, and deploy your Docker/Kubernetes projects
-	pkgver = 1.2.11
+	pkgver = 1.2.13
 	pkgrel = 1
 	url = https://github.com/distributed-containers-inc/sanic
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = sanic
 	makedepends = go
 	depends = kubectl
 	depends = docker
-	source = sanic-1.2.11.tar.gz::https://github.com/distributed-containers-inc/sanic/archive/v1.2.11.tar.gz
-	sha256sums = 2bf562a0335514e268b09b43ea7d65ecde54c815571589907557023d70799b70
+	source = sanic-1.2.13.tar.gz::https://github.com/distributed-containers-inc/sanic/archive/v1.2.13.tar.gz
+	sha256sums = ffb3eb245351239ecc1b4b13e208d35244540cfbcdf6735cbf86059ab9b1526b
 
 pkgname = sanic
 
