@@ -1,27 +1,29 @@
-# Maintainer: Michal Donát <michal at donat dot cz>
-pkgname=gnome-shell-extension-autohide-battery
+# Maintainer: Byeonghoon Yoo <bh322yoo@gmail.com>
+
 _pkgname=autohide-battery
-pkgver=r33.8cc4bb1
+pkgname=gnome-shell-extension-${_pkgname}
+pkgver=14
 pkgrel=1
 pkgdesc="GNOME Shell extension to hide battery icon, if battery is fully charged and AC is connected"
 arch=('any')
-url="https://github.com/ai/autohide-battery.git"
+url="https://github.com/ai/autohide-battery"
 license=('MIT')
 depends=('gnome-shell')
 makedepends=('git')
+conflicts=('gnome-shell-extension-autohide-battery-git')
 install='gschemas.install'
-source=("git+https://github.com/ai/autohide-battery.git")
-md5sums=('SKIP')
+source=(https://github.com/ai/${_pkgname}/archive/${pkgver}.tar.gz)
+md5sums=('3dcfae682d8bf51cbfa387e29bf9b194')
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
-  cd "${srcdir}/${_pkgname}/autohide-battery@sitnik.ru"
+  cd "${_pkgname}-${pkgver}"
 
-  for i in $(find -type f); do
-    install -Dm 644 "$i" "${pkgdir}/usr/share/gnome-shell/extensions/autohide-battery@sitnik.ru/${i}"
-  done
+  local _uuid="autohide-battery@sitnik.ru"
+  local _destdir="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+
+  find . -type f -name "*.js" -exec install -Dm 644 {} ${_destdir}/{} \;
+  install -Dm 644 metadata.json ${_destdir};
 }
+
+# vim:set ts=2 sw=2 et:
