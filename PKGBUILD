@@ -2,7 +2,7 @@
 # Contributor: Ruslan Nabioullin <rnabioullin at gmail dot com>
 # Contributor: Gordon JC Pearce <gordon at gjcp dot net>
 pkgname=xastir
-pkgver=2.1.0
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Full featured APRS Tracking/Information Reporting System"
 url="http://www.xastir.org/"
@@ -13,7 +13,7 @@ source=(https://github.com/Xastir/Xastir/archive/Release-$pkgver.tar.gz
         $pkgname-festival.desktop
         $pkgname-speech
         $pkgname.png)
-sha512sums=('32c1297d6399c34078158853beba32a4d018d060088b014be004b0837a887c6360e417e1d59ed7865ea1caa3c07f59d7bb4ee3cf9c035e2aabf6ba4783e3d288'
+sha512sums=('e96f9de52499615cfe88708656d111d417e0d0e08f798b2d97f6a270db3e639c4fb5219767f8fd399fe75f51f02391ace87ae7175ae9a44cb5a4056ab7b573b1'
             '77f55f40ba9bd818e10488feb462c5fc97cab90295774a0c6b1344c6e95ac3ef215a26ba461132c4c59f857ce3a301b17e8bc3bb6fea8451327b1e8debf12f71'
             'f3d4b611dad7c14feb0b3bc46110a6c3e74da12e69d8acdbcb987eeaaec6f2a015b316cc58340f3c0b188e885d8716631d5943cdbb6ac4e8e6c1790013c540db'
             '1fa98400ab344d206b714ae45bc51b82d8a8395b3a4a39878b099176571a53cc91a4fcb0a1f011a631aea2c5c4a030e2346c537dc8d934a01382c85dd130adc5'
