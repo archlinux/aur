@@ -2,7 +2,7 @@
 # Contributor: Robosky <fangyuhao0612 at gmail dot com>
 pkgname=anbox-image-gapps
 pkgver=2018.07.19
-pkgrel=7
+pkgrel=8
 pkgdesc="Android image for running in Anbox, with Opengapps and houdini"
 arch=('x86_64')
 url="https://anbox.io"
@@ -70,22 +70,21 @@ build () {
 	cp ./libhoudini.so ./squashfs-root/system/lib/
 	
 	mkdir -p ./squashfs-root/system/lib/arm
-	cp -r ./houdini_y/linker	./squashfs-root/system/lib/arm/
-	cp -r ./houdini_y/*.so 	./squashfs-root/system/lib/arm/
-	cp -r ./houdini_y/nb		./squashfs-root/system/lib/arm/
+	cp -r ./houdini_y/linker ./squashfs-root/system/lib/arm/
+	cp -r ./houdini_y/*.so ./squashfs-root/system/lib/arm/
+	cp -r ./houdini_y/nb ./squashfs-root/system/lib/arm/
 	
 	# load houdini_z
 	mkdir -p houdini_z
 	unsquashfs -f -d ./houdini_z ./houdini_z.sfs
 
 	cp -r ./houdini_z/houdini64 ./squashfs-root/system/bin/
-	cp -r ./houdini_z/xstdata ./squashfs-root/system/bin/
 	cp ./libhoudini.so ./squashfs-root/system/lib64/
 	
 	mkdir -p ./squashfs-root/system/lib/arm64
-	cp -r ./houdini_z/linker64	./squashfs-root/system/lib/arm64/
-	cp -r ./houdini_z/*.so 	./squashfs-root/system/lib/arm64/
-	cp -r ./houdini_z/nb		./squashfs-root/system/lib/arm64/
+	cp -r ./houdini_z/linker64 ./squashfs-root/system/lib/arm64/
+	cp -r ./houdini_z/*.so ./squashfs-root/system/lib/arm64/
+	cp -r ./houdini_z/nb ./squashfs-root/system/lib/arm64/
 
 	# add houdini parser
 	mkdir -p ./squashfs-root/system/etc/binfmt_misc
@@ -120,9 +119,9 @@ build () {
     sed -i "/<unavailable-feature name=\"android.hardware.bluetooth\" \/>/d" ./squashfs-root/system/etc/permissions/anbox.xml
 
     # set processors
-    _ARM_TYPE=",armeabi-v7a,armeabi,arm64-v8a"
-    sed -i "/^ro.product.cpu.abilist=x86_64,x86/ s/$/${_ARM_TYPE}/" ./squashfs-root/system/build.prop
-    sed -i "/^ro.product.cpu.abilist32=x86/ s/$/${_ARM_TYPE}/" ./squashfs-root/system/build.prop
+    sed -i "/^ro.product.cpu.abilist=x86_64,x86/ s/$/,armeabi-v7a,armeabi,arm64-v8a/" ./squashfs-root/system/build.prop
+    sed -i "/^ro.product.cpu.abilist32=x86/ s/$/,armeabi-v7a,armeabi/" ./squashfs-root/system/build.prop
+    sed -i "/^ro.product.cpu.abilist64=x86_64/ s/$/,arm64-v8a/" ./squashfs-root/system/build.prop
 
     echo "persist.sys.nativebridge=1" >> ./squashfs-root/system/build.prop
 
@@ -135,8 +134,9 @@ package() {
 	
 	# set owner
 	chown -R 100000:100000 ./squashfs-root/system/priv-app/{Phonesky,GoogleLoginService,GoogleServicesFramework,PrebuiltGmsCore}
-	chown -R 100000:100000 ./squashfs-root/system/bin/{xstdata,houdini}
-	chown -R 100000:100000 ./squashfs-root/system/lib/{libhoudini.so,arm}
+	chown -R 100000:100000 ./squashfs-root/system/bin/{xstdata,houdini,houdini64}
+	chown -R 100000:100000 ./squashfs-root/system/lib/{libhoudini.so,arm,arm64}
+	chown -R 100000:100000 ./squashfs-root/system/lib64/libhoudini.so
 	chown -R 100000:100000 ./squashfs-root/system/etc/binfmt_misc
 
     # squash image
