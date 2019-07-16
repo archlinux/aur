@@ -20,5 +20,5 @@ package() {
 	mkdir -p $pkgdir/etc/
 	mkdir -p $pkgdir/usr/bin/
 	sudo install pacwrap $pkgdir/usr/bin
-	sudo cp plugins/pacwrap/pak.cfg /etc
+	sudo cp pak.cfg /etc
 }
