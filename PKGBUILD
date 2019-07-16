@@ -3,12 +3,12 @@
 _pkgname=polybar-scripts
 pkgname=${_pkgname}-git
 pkgver=r445.2324dcc
-pkgrel=1
+pkgrel=2
 pkgdesc='polybar scripts'
 arch=('x86_64')
 url=https://github.com/polybar/${_pkgname}
 license=('The Unlicense')
-depends=(git)
+makedepends=(git)
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
