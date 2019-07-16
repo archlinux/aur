@@ -6,7 +6,7 @@
 # Contributor: sxw <sxw@chronowerks.de>
 # Maintainer: Erich Eckner <arch at eckner dot net>
 
-pkgname=jabberd2-git
+pkgname=jabberd2
 pkgver=r1175.376e632
 _commit=${pkgver#*.}
 pkgrel=8
@@ -20,7 +20,7 @@ optdepends=('sqlite3' 'postgresql-libs')
 makedepends=('git' 'sqlite3' 'postgresql-libs' 'autoconf-archive')
 install=install
 source=(
-  "${pkgname}::git+https://github.com/${pkgname%-git}/${pkgname%-git}.git#commit=${_commit}"
+  "${pkgname}::git+https://github.com/${pkgname}/${pkgname}.git#commit=${_commit}"
   'pam_jabberd'
 )
 sha512sums=('SKIP'

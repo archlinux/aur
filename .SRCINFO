@@ -1,4 +1,4 @@
-pkgbase = jabberd2-git
+pkgbase = jabberd2
 	pkgdesc = Scalable, architecturally sound, and extensible XMPP server
 	pkgver = r1175.376e632
 	pkgrel = 8
@@ -30,10 +30,10 @@ pkgbase = jabberd2-git
 	backup = etc/jabberd/sm.xml
 	backup = etc/jabberd/templates/roster.xml
 	backup = etc/pam.d/jabberd
-	source = jabberd2-git::git+https://github.com/jabberd2/jabberd2.git#commit=376e632
+	source = jabberd2::git+https://github.com/jabberd2/jabberd2.git#commit=376e632
 	source = pam_jabberd
 	sha512sums = SKIP
 	sha512sums = e6507a2a7e226398253623bb46db7ae853b01649b7ac00f3eee0a9b57c2ef0e8ac1f90c4934269f5fe2b7667e56572bed233b847d0b66a3fd37a88b7ed8adc31
 
-pkgname = jabberd2-git
+pkgname = jabberd2
 
