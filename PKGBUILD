@@ -1,13 +1,13 @@
 # Maintainer: András Wacha <awacha@gmail.com>
 pkgname=atsas
 pkgver=2.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A program suite for small-angle scattering data analysis from biological macromolecules"
 arch=('x86_64')
 url="https://www.embl-hamburg.de/biosaxs/software.html"
 license=('custom')
 options=('!strip')
-#depends=( gcc5 )
+depends=( gcc7-libs )
 
 # !!! You have to download the sources yourself from https://www.embl-hamburg.de/biosaxs/download.html
 # !!! Use the Ubuntu-18.04 version!
@@ -24,6 +24,8 @@ package() {
 	cp -R "${srcdir}/ATSAS-2.8.4-1" "${pkgdir}/opt/atsas"
 	ATSAS_ROOT=/opt/atsas
 	DEST_BIN_DIR=/opt/atsas/bin
+	GCC7_LIBDIR=$(ls -d /usr/lib/gcc/${CHOST}/7.*)
+	echo "GCC7 libdir: ${GCC7_LIBDIR}"
 	mkdir -p "${pkgdir}/${DEST_BIN_DIR}"
 	mkdir -p "${pkgdir}${ATSAS_ROOT}/libexec"
 	for f in ${pkgdir}${ATSAS_ROOT}/bin/*; do
@@ -32,7 +34,7 @@ package() {
 		cat >${pkgdir}${DEST_BIN_DIR}/$f <<EOF
 #!/bin/sh
 export ATSAS=${ATSAS_ROOT} 
-export LD_LIBRARY_PATH=${ATSAS_ROOT}/lib/${CARCH}-linux-gnu/atsas
+export LD_LIBRARY_PATH=${ATSAS_ROOT}/lib/${CARCH}-linux-gnu/atsas:${GCC7_LIBDIR}
 ${ATSAS_ROOT}/libexec/$f \$*
 EOF
 		chmod +x ${pkgdir}${DEST_BIN_DIR}/$f
