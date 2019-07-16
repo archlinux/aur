@@ -1,4 +1,7 @@
 # Maintainer: Lucas Lugao <lugaosmurf@gmail.com>
+# Contributor: Splex
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Co-Maintainer: bartus <arch-user-repo@bartus.33mail.com>
 
 pkgname=inkscape-shallow-git
 pkgver=1.0+devel.r2.g6edc3e959f

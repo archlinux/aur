@@ -29,7 +29,7 @@ cat "${LOCAL_TEMP_DIR}/PKGBUILD" |
         gsub("\""," (shallow clone)\"", $NF)
     }
     /^pkgname/ {$0="pkgname=inkscape-shallow-git"}
-    !/^source/ && !/^sha1sums/ && !/^#/ {print}
+    !/^source/ && !/^sha1sums/ {print}
     /^prepare()/ {
         print "  " prepare_line
         inserted_prepare = 1
