@@ -1,6 +1,6 @@
 pkgbase = libc++
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libcxx.llvm.org/
 	arch = i686
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = libc++
 
 pkgname = libc++
 	pkgdesc = LLVM C++ standard library.
-	depends = libc++abi=8.0.0-1
+	depends = libc++abi=8.0.0-2
 	options = staticlibs
 
 pkgname = libc++abi
@@ -44,5 +44,5 @@ pkgname = libc++abi
 
 pkgname = libc++experimental
 	pkgdesc = LLVM C++ experimental library.
-	depends = libc++=8.0.0-1
+	depends = libc++=8.0.0-2
 
