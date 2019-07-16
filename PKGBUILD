@@ -20,5 +20,5 @@ package() {
 	mkdir -p $pkgdir/etc/
 	mkdir -p $pkgdir/usr/bin/
 	sudo install yaywrap $pkgdir/usr/bin
-	sudo cp plugins/yaywrap/pak.cfg /etc
+	sudo cp pak.cfg /etc
 }
