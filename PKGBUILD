@@ -1,4 +1,5 @@
-# Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer : Martin Villagra <possum@archlinux.org>
+# Contributor : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 # Derived from official Arch Lnux grub package
 # Maintainer : Christian Hesse <mail@eworm.de>
 # Maintainer : Ronald van Haren <ronald.archlinux.org>
@@ -65,6 +66,7 @@ source=("https://ftp.gnu.org/gnu/${pkgname%-*}/${pkgname%-*}-${pkgver}.tar.xz"
         '07-maybe_quiet.patch'
         '08-quick_boot.patch'
         '09-Fix-packed-not-aligned-error-on-GCC-8.patch'
+        '10-relocation.patch'
         'grub.silent')
 
 sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
@@ -79,6 +81,7 @@ sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
             'b7489c7facc4fb3dad4426c9c00079b64908640a2bec2409e22194daa3f72af4'
             '057f076ddca241d92a094bc05828e3eb18d3439bf4d2f3d8ca8fa1c51b5b1b2b'
             'e84b8de569c7e6b73263758c35cf95c6516fde85d4ed451991427864f6a4e5a8'
+            '51562fa1016c54567dbf42a86c0cfc902372ab579bbee17879a81aff09b76b99'
             '764844ca8ee0869761cc1a7ed76b5c729ea560664ba26afc339ba4c5d5c7b2e3')
 
 prepare() {
@@ -121,6 +124,10 @@ prepare() {
 	patch -Np1 -i "${srcdir}/09-Fix-packed-not-aligned-error-on-GCC-8.patch"
 	echo
 
+	msg "Applying fix for relocation error 0x4"
+	patch -Np1 -i "${srcdir}/10-relocation.patch"
+	echo
+
 	msg "Pull in latest language files"
 	./linguas.sh
 	echo
@@ -130,7 +137,7 @@ prepare() {
 
 	msg "Avoid problem with unifont during compile of grub"
 	# http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
-	cp "${srcdir}/unifont-${_UNIFONT_VER}.bdf" "unifont.bdf"
+	cp "${srcdir}/unifont-${_UNIFONT_VER}.bdf.gz" "unifont.bdf.gz"
 }
 
 _build_grub-common_and_bios() {
