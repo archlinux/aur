@@ -2,7 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=python-obspy-docs
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Set of HTML documentation for Obspy seismological framework.'
 arch=('any')
@@ -10,7 +10,7 @@ url='http://docs.obspy.org'
 license=('LGPL')
 options=('docs')
 source=(${pkgname}-${pkgver}.tgz::http://docs.obspy.org/archive/obspy-${pkgver}-documentation.tgz)
-sha256sums=('4647c65fbb38ed42c32862bc6e8d6cc84cc69880d32a81ecbe16101ee6f7a0dc')
+sha256sums=('f5cd6a62a100eb4ec2d72a2569448e5f79b1846540f58e8eadaf9461100e3664')
 
 package() {
   install -d ${pkgdir}/usr/share/doc/python-obspy
