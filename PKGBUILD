@@ -16,7 +16,7 @@ depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-util
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles')
-makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
+makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm' 'ninja')
 provides=('blender=2.80')
 conflicts=('blender')
 license=('GPL')
@@ -73,20 +73,23 @@ build() {
       fi
   fi
 
-  cmake "$srcdir/blender" \
+  cmake -GNinja "$srcdir/blender" \
         -C${srcdir}/blender/build_files/cmake/config/blender_release.cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
         -DWITH_INSTALL_PORTABLE=OFF \
         -DWITH_SYSTEM_GLEW=ON \
         -DWITH_PYTHON_INSTALL=OFF \
         -DPYTHON_VERSION=${_pyver} \
+        -DWITH_LLVM=ON \
         ${_EXTRAOPTS[@]}
-  make
+  export NINJA_STATUS="[%p | %cbps | %f<%r<%u ] "
+  ninja -d stats
 }
 
 package() {
   cd "$srcdir/blender-build"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja install
   
   msg "add -2.8 sufix to desktop shortcut"
   sed -i 's/=blender/=blender-2.8/g' ${pkgdir}/usr/share/applications/blender.desktop

@@ -12,6 +12,7 @@ pkgbase = blender-2.8-git
 	makedepends = boost
 	makedepends = mesa
 	makedepends = llvm
+	makedepends = ninja
 	depends = alembic
 	depends = libgl
 	depends = python
