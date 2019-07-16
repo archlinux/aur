@@ -1,7 +1,7 @@
 # Maintainer: Luis Aranguren <pizzaman@hotmail.com>
 # Contributor: DeedleFake <deedlefake at users dot noreply dot github dot com>
 pkgname=coinomi-desktop
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Coinomi desktop wallet. Securely store, manage and exchange Bitcoin, Ethereum, and more than 500 other blockchain assets."
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('unknown')
 depends=(java-runtime=8 java-openjfx)
 source=("https://binaries.coinomi.com/desktop/coinomi-wallet-$pkgver-linux64.tar.gz"
 	"coinomi.png")
-sha256sums=('583351912d76576f444adb6ce0291ebf024c5705bdad1793be3a4ec51a044db6'
+sha256sums=('2547c71103c20699f4325098fbe5e6be4bbf1949a3ad71a3c7c66e0f09fa1819'
             '8b390909072edf85b195dbb73b5cceb52ae9f19093cce5ae313827590ae9d576')
 
 build() {
