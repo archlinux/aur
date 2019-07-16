@@ -1,7 +1,7 @@
 pkgbase = duetsd
 	pkgdesc = Virtual SD card directory for the Duet software framework
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chrishamm/DuetSoftwareFramework
 	arch = any
 	license = GPL3
