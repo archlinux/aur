@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('yay')
 provides=('pak-config' 'yaywrap')
 source=('https://gitlab.com/moussaelianarsen/pak/blob/master/plugins/yaywrap/yaywrap.swift' 'https://gitlab.com/moussaelianarsen/pak/blob/master/plugins/yaywrap/pak.cfg')
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 conflicts=('pak-config-pacman')
 
 build() {
