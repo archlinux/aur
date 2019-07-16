@@ -1,7 +1,7 @@
 pkgbase = cockpit-minimal
 	pkgdesc = A systemd web based user interface for Linux servers (minimal setup with system graphs, journalctl, storage, network, user accounts, systemd services and terminal)
 	pkgver = 198
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cockpit-project.org/
 	arch = i686
 	arch = x86_64
