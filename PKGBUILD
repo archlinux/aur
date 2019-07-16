@@ -7,7 +7,7 @@ pkgname=kafka
 # but do not remove the Scala jar as the Kafka tarball is compiled against it
 # and __not__ against the one from the Scala package
 _scalaver=2.12
-_appver=2.2.0
+_appver=2.3.0
 pkgver=${_scalaver}_${_appver}
 _pkgver=${pkgver/_/-}
 pkgrel=1
@@ -39,9 +39,9 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_kafka.conf
         systemd_tmpfiles.d_kafka.conf)
 
-sha256sums=('a009624fae678fa35968f945e18e45fbea9a30fa8080d5dcce7fdea726120027'
+sha256sums=('d86f5121a9f0c44477ae6b6f235daecc3f04ecb7bf98596fd91f402336eee3e7'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
-	    '7bce01a573dd7d78d8a5a0c3ef5a4381f9f556e9a6e44c3bb22d68146255aed5'
+	    '90363b8272ff1faf45e48aebb878c97f97caafd97bbbb8bbf937c8f9399a6229'
             'dc1f3f94662339bcfb5cd4d058c06431f0e3d37e59f8c66a870e8fb02d9b5079'
             'a2258d4a06c0fcf7f7d5367c616b0a220bbd3d35256dfb3d5f790e61ac9a98f5')
 
@@ -81,8 +81,8 @@ package() {
     ln -s ${_app_home}/bin/zookeeper-${b}.sh \
       "${pkgdir}/usr/bin/kafka-zookeeper-${b}.sh"
   done
-  ln -s ../../java/zookeeper/zookeeper.jar \
-    "${pkgdir}/usr/share/java/${pkgname}/zookeeper.jar"
+#  ln -s ../../java/zookeeper/zookeeper.jar \
+#    "${pkgdir}/usr/share/java/${pkgname}/zookeeper.jar"
 
   cp -r libs/* "${pkgdir}/usr/share/java/${pkgname}"
   rm "${pkgdir}"/usr/share/java/${pkgname}/zookeeper-*

@@ -15,7 +15,6 @@ ExecStart=/usr/bin/java \
   -XX:+CMSScavengeBeforeRemark \
   -XX:+DisableExplicitGC \
   -Djava.awt.headless=true \
-  -Xlog:gc:/var/log/kafka/kafkaServer-gc.log \
   -verbose:gc \
   -Dcom.sun.management.jmxremote \
   -Dcom.sun.management.jmxremote.authenticate=false \

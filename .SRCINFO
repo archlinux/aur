@@ -1,6 +1,6 @@
 pkgbase = kafka
 	pkgdesc = A high-throughput distributed messaging system
-	pkgver = 2.12_2.2.0
+	pkgver = 2.12_2.3.0
 	pkgrel = 1
 	url = https://kafka.apache.org/
 	install = install_kafka.sh
