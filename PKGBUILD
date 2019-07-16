@@ -1,7 +1,7 @@
 # Maintainer: Anatoly Rugalev <anatoly.rugalev gmail com>
 
 pkgname=kube-commander
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Browse your kubernetes clusters in a casual way"
 url="https://github.com/AnatolyRugalev/kube-commander"
