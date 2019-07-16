@@ -6,7 +6,7 @@ pkgver=r57615.0af2879f89e3
 pkgrel=1
 pkgdesc="Firestorm is FOSS where you can build & share virtual reality (VR) in Secondlife/OpenSim (P2P). Meet people in 3D! Source build."
 arch=('i686' 'x86_64')
-url=https://hg.phoenixviewer.com/
+url=https://www.firestormviewer.org/
 license=('LGPL')
 depends=(dbus-glib gconf glu gtk2 lib32-libidn lib32-libsndfile lib32-util-linux lib32-zlib libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl vlc zlib)
 optdepends=(
@@ -20,7 +20,7 @@ optdepends=(
   'nvidia-libgl: for NVIDIA support'
   'nvidia-utils: for NVIDIA support')
 makedepends=('cmake' 'gcc' 'python2-virtualenv' 'python2-pip' 'mercurial')
-conflicts=('firestorm-bin' 'firestorm-beta')
+conflicts=('firestorm-bin' 'firestorm-beta' 'firestorm-nightly')
 provides=('firestorm')
 
 source=("$pkgname"::'hg+http://hg.phoenixviewer.com/phoenix-firestorm-release' 'autovars' 'firestorm.desktop' 'firestorm.launcher')
