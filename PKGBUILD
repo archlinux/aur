@@ -1,7 +1,7 @@
 # Maintainer: Pavel Pletenev <cpp.create at gmail dot com>
 pkgname=vnlog
 pkgver=1.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to manipulate whitespace-separated ASCII logs"
 arch=('x86_64')
 url="https://github.com/dkogan/vnlog"

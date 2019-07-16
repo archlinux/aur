@@ -6,9 +6,10 @@ pkgbase = vnlog
 	arch = x86_64
 	license = GPL
 	makedepends = chrpath
+	makedepends = make
 	depends = perl
 	depends = python
-	provides = feedgnuplot
+	provides = vnlog
 	source = https://github.com/dkogan/vnlog/archive/v1.19.tar.gz
 	sha256sums = 1f8c95739290d0030cf927319b087dc37fb9c33d5fa8f034a71924bc8a3d4b80
 
