@@ -1,16 +1,16 @@
 # Maintainer: Marc Paradise <marc.paradise+aur@gmail.com>
 
-pkgname=chef-dk
-pkgver=4.1.7
+pkgname=chef-dk-free
+pkgver=3.11.3
 pkgrel=1
 pkgdesc="The Chef development kit contains all the tools you need to develop and test your infrastructure, built by the awesome Chef community."
 arch=('x86_64')
 url="https://downloads.chef.io/chef-dk/"
 license=('Apache')
 depends=()
-conflicts=(chef chef-solo chef-client chef-workstation)
+conflicts=(chef chef-client chef-dk chef-solo chef-workstation)
 source=("https://packages.chef.io/files/stable/chefdk/${pkgver}/debian/9/chefdk_${pkgver}-1_amd64.deb")
-sha256sums=('e5e45b48d4eccbd042cb302d9faae455bf376640e6dd8d9a8ac82df0da685cf4')
+sha256sums=('ae852f6ba322802d5257042e9f86f2553d7605592965481ac1d354b4b2524b8c')
 
 package() {
   cd "$srcdir"
