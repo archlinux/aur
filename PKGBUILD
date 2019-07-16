@@ -1,5 +1,8 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
+#to enforce cuda verison uncomment this line and update value of sm_xx model accordingly
+#_cuda_capability+=(sm_30 sm_35 sm_37)
+#_cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
 
 pkgname=blender-2.8-git
 _fragment="#branch=master"
@@ -38,13 +41,6 @@ md5sums=('SKIP'
          'cd108dca1c77607c6a7cc45aa284ea97'
          '2f1b08655352e70c7c74d4957d481dc8')
 
-# determine whether we can precompile CUDA kernels
-_CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
-if [ "$_CUDA_PKG" != "" ]; then
-    _EXTRAOPTS="-DWITH_CYCLES_CUDA_BINARIES=ON \
-                -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda"
-fi
-
 pkgver() {
   cd "$srcdir/blender"
   printf "2.80.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -54,7 +50,9 @@ prepare() {
   cd "$srcdir/blender"
   # update the submodules
   git submodule update --init --recursive --remote
-  git apply -v ${srcdir}/SelectCudaComputeArch.patch
+  if [ -z "$_cuda_capability" ] && grep -q nvidia <(lsmod); then 
+    git apply -v ${srcdir}/SelectCudaComputeArch.patch
+  fi
 }
 
 build() {
@@ -63,6 +61,16 @@ build() {
   
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "python version detected: ${_pyver}"
+
+  # determine whether we can precompile CUDA kernels
+  _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
+  if [ "$_CUDA_PKG" != "" ]; then
+      _EXTRAOPTS=(-DWITH_CYCLES_CUDA_BINARIES=ON \
+                  -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda)
+      if [ "$_cuda_capability" != "" ]; then
+        _EXTRAOPTS+=(-DCYCLES_CUDA_BINARIES_ARCH=$(IFS=';'; echo "${_cuda_capability[*]}";))
+      fi
+  fi
 
   cmake "$srcdir/blender" \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -84,7 +92,7 @@ build() {
         -DWITH_OPENVDB=ON \
         -DWITH_OPENVDB_BLOSC=ON \
         -DWITH_OPENCOLLADA=ON \
-        $_EXTRAOPTS
+        ${_EXTRAOPTS[@]}
   make
 }
 
