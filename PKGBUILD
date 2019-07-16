@@ -11,8 +11,7 @@ url="https://www.cmake.org/"
 license=('custom')
 depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp' 'libuv' 'rhash')
 makedepends=('qt5-base' 'python-sphinx' 'emacs')
-optdepends=('qt5-base: cmake-gui'
-            'libxkbcommon-x11: cmake-gui')
+optdepends=('qt5-base: cmake-gui')
 source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('8cf3afadec3fe931d9f954e3148a398939cd16c1fbcb4c5303ac635e2b5029960867f317fd13a46fceebe46e7328689e847f03d7d7c74bb31e23c9cc55838f56')
 
