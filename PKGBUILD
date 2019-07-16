@@ -19,7 +19,7 @@ optdepends=(
   'mesa-libgl: For Intel, Radeon, Nouveau support'
   'nvidia-libgl: for NVIDIA support'
   'nvidia-utils: for NVIDIA support')
-makedepends=('python2-virtualenv' 'python2-pip' 'mercurial')
+makedepends=('cmake' 'gcc' 'python2-virtualenv' 'python2-pip' 'mercurial')
 conflicts=('firestorm-bin' 'firestorm-beta')
 provides=('firestorm')
 
