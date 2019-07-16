@@ -16,7 +16,7 @@ depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-util
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 #optdepends=('cuda: CUDA support in Cycles')
-makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
+makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm' 'ninja')
 makedepends+=('cuda') # disable to prevent build process from exiting Travis 50m build time limit
 options=(!strip)
 provides=('blender=2.7')
@@ -83,7 +83,7 @@ build() {
 
 # export CFLAGS="${CFLAGS} -DOPENVDB_3_ABI_COMPATIBLE -DOPENVDB_USE_DEPRECATED_ABI"
 # export CXXFLAGS="${CXXFLAGS} -DOPENVDB_3_ABI_COMPATIBLE -DOPENVDB_USE_DEPRECATED_ABI"
-  cmake "$srcdir/blender" \
+  cmake -GNinja "$srcdir/blender" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_INSTALL_PORTABLE=OFF \
         -DWITH_CXX11=ON \
@@ -104,12 +104,13 @@ build() {
         -DWITH_OPENVDB_BLOSC=ON \
         -DWITH_OPENCOLLADA=ON \
         ${_EXTRAOPTS[@]}
-  make
+  export NINJA_STATUS="[%p | %cbps | %f<%r<%u ] "
+  ninja -d stats
 }
 
 package() {
   cd "$srcdir/blender-build"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja install
   
   msg "add -2.7 sufix to desktop shortcut"
   sed -i 's/=blender/=blender-2.7/g' ${pkgdir}/usr/share/applications/blender.desktop

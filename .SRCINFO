@@ -13,6 +13,7 @@ pkgbase = blender-2.7
 	makedepends = mesa
 	makedepends = llvm
 	makedepends = cuda
+	makedepends = ninja
 	depends = alembic
 	depends = libgl
 	depends = python
