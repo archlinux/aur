@@ -1,6 +1,6 @@
 pkgbase = python-umap-learn
 	pkgdesc = Uniform Manifold Approximation and Projection
-	pkgver = 0.3.0
+	pkgver = 0.3.9
 	pkgrel = 1
 	url = https://github.com/lmcinnes/umap
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-umap-learn
 	depends = python-scipy
 	depends = python-scikit-learn
 	depends = python-numba
-	source = https://files.pythonhosted.org/packages/source/u/umap-learn/umap-learn-0.3.0.tar.gz
-	sha256sums = 40d8522a301a7691789601fb009c8696141e0aab1ebb648614d7180a7f792225
+	source = https://files.pythonhosted.org/packages/source/u/umap-learn/umap-learn-0.3.9.tar.gz
+	sha256sums = 1afa7036b84c30a466c03d16fabbcda42fe1bea8faebb0cc1e9b2ac3ea28a19c
 
 pkgname = python-umap-learn
 
