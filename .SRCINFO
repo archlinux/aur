@@ -1,0 +1,20 @@
+pkgbase = kookbook-git
+	pkgdesc = Cookbook creator
+	pkgver = 0.2.1.r0.g4fd813a
+	pkgrel = 1
+	url = https://cgit.kde.org/kookbook.git/tree/doc/intro.md
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = discount
+	depends = qt5-base
+	depends = qt5-declarative
+	provides = kookbook
+	conflicts = kookbook
+	source = git+https://anongit.kde.org/kookbook.git
+	sha512sums = SKIP
+
+pkgname = kookbook-git
+
