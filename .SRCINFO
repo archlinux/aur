@@ -33,8 +33,8 @@ pkgbase = blender-2.8-git
 	depends = libtiff
 	depends = libpng
 	optdepends = cuda: CUDA support in Cycles
-	provides = blender-2.8
-	conflicts = blender-2.8
+	provides = blender=2.80
+	conflicts = blender
 	source = git://git.blender.org/blender.git#branch=master
 	source = blender-addons.git::git://git.blender.org/blender-addons.git
 	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git

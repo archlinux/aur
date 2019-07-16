@@ -17,8 +17,8 @@ depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-util
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
-provides=('blender-2.8')
-conflicts=('blender-2.8')
+provides=('blender=2.80')
+conflicts=('blender')
 license=('GPL')
 install=blender.install
 # NOTE: the source array has to be kept in sync with .gitmodules
