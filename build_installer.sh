@@ -38,7 +38,7 @@ if [ ! -f "./makeself-2.4.0.run" ] ;then
     printf "\nGet makeself...\n\n"
     curl -L -O https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run
 fi
-rcsum="$(sha256sum ./makeself-2.4.0.run| cut -d' ' -f1)"
+rcsum="$(sha256sum ./makeself-2.4.0.run | cut -d' ' -f1)"
 if [ "$rcsum" != "$mscsum" ] ;then
     printf "\n\nError: Checksum from makeself-2.4.0.run doesn't match!"
     printf "\nExiting.\n\n"
@@ -57,7 +57,7 @@ cd src/
 mkdir evesetup/
 echo "done."
 
-printf "\nCopy needed files from AUR package..."
+printf "\nCopy needed files from AUR source..."
 for eia in $(ls ../eve-icons*.tar.gz) ;do tar xf $eia -C evesetup/ ;done
 for eta in $(ls ../eve-transl5.11-??.tar.gz) ;do cp $eta evesetup/ ;done
 for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks ;do
@@ -76,11 +76,21 @@ grep -v '^#-' ../setup.sh.in >evesetup/setup.sh
 sed -i s,elver=\"\",elver=\"$version\", evesetup/setup.sh
 sed -i s,elcsum=\"\",elcsum=\"$elcsum\", evesetup/setup.sh
 chmod a+x evesetup/setup.sh
-if [ -f "../evelauncher-$version.tar.gz" ] ;then cp ../evelauncher-$version.tar.gz evesetup/ ;fi
 echo "done."
 
+if [ -f "../evelauncher-$version.tar.gz" ] ;then
+    printf "\nFound EVE Launcher archive..."
+    rcsum="$(sha256sum ../evelauncher-$version.tar.gz | cut -d' ' -f1)"
+    if [ "$rcsum" = "$elcsum" ] ;then
+	cp ../evelauncher-$version.tar.gz evesetup/ && \
+	echo "added."
+    else
+	echo "skipped, checksum mismatch."
+    fi
+fi
+
 printf "\nBuild self-extractable archive evesetup-$version-$release-$arch.run\n\n"
-./makeself.sh evesetup/ ../evesetup-$version-$release-$arch.run \
+./makeself.sh --tar-quietly evesetup/ ../evesetup-$version-$release-$arch.run \
     "EVE Online Launcher Setup $version-$release" ./setup.sh
 cd ..
 printf "\nClean up build environment..."
