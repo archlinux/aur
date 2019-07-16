@@ -1,7 +1,7 @@
 pkgbase = sdfat-dkms
-	pkgdesc = FAT12/16/32(VFAT)/64(exFAT) file systems kernel module - use with DKMS
-	pkgver = 2.1.8.2
-	pkgrel = 2
+	pkgdesc = FAT12/16/32(VFAT)/exFAT filesystem kernel module - use with DKMS
+	pkgver = 2.1.10.3
+	pkgrel = 1
 	url = https://github.com/tbk/kernel-sdfat
 	arch = any
 	license = GPL-2.0-only
@@ -13,11 +13,11 @@ pkgbase = sdfat-dkms
 	conflicts = exfat-dkms-git
 	conflicts = sdfat-dkms-git
 	options = !strip
-	source = sdfat-dkms-2.1.8.2.tar.gz::https://github.com/TBK/kernel-sdfat/archive/2.1.8.2.tar.gz
+	source = sdfat-dkms-2.1.10.3.tar.gz::https://github.com/TBK/kernel-sdfat/archive/2.1.10.3.tar.gz
 	source = dkms.conf
 	source = mount.exfat
-	sha512sums = 566050709952aae35d5e68e88231573ead2f6e5c883bff5dce0055a8df9e91318794cd2938b49c51e250e4e5c61083195ce851ccb7f7537317912e1246ea5a83
-	sha512sums = 7fb5e725cd5e8067717a8bd676c1549335012a3af621ffff3f23e53c068bebe9ce1e6ded914bd4537b0f94eb7682ff0892ba180876cb3805d3d5dfd21294ce69
+	sha512sums = 86c39aab2384475f55805c6851f61c02a19b7843a1c17a5f0ea8933da07e491a1af814789e8b4fb4b8aed4b734e0ca832d7813aa3640a0ef337fa9022e2615d3
+	sha512sums = 13f9c31aea1dad556bf4429b288c72937d3d9670f60a7403075c72a3528b468aab67a892b23397a59345c038a9e152576a5d6ddd004e36777c67d4e4fa4defb5
 	sha512sums = 85c54950e69e342221343b8b542fda47f80b9a7104e1097a7f1c9a09f69758ef8881c238d2740f3a21aa2b5cdcb3b9b8224c731ec2e39fa4632f56c2df85bc84
 
 pkgname = sdfat-dkms
