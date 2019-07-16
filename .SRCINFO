@@ -1,6 +1,6 @@
 pkgbase = corrupter-git
 	pkgdesc = Simple image glitcher suitable for producing nice looking i3lock backgrounds
-	pkgver = r23.bebddcd
+	pkgver = r28.0ddcd9b
 	pkgrel = 1
 	url = https://github.com/r00tman/corrupter
 	arch = i686
@@ -8,6 +8,8 @@ pkgbase = corrupter-git
 	license = BSD 2-Clause
 	makedepends = git
 	makedepends = go
+	provides = corrupter
+	conflicts = corrupter
 	source = git+https://github.com/r00tman/corrupter
 	md5sums = SKIP
 
