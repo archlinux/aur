@@ -2,7 +2,7 @@
 
 pkgname=phalcon-devtools
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="This tools provide you useful scripts to generate code helping to develop faster and easy applications that use with Phalcon framework."
 arch=('x86_64' 'i686')
 license=('BSD')
