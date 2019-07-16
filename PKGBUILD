@@ -6,8 +6,8 @@
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=75.0.3770.100
-pkgrel=3
+pkgver=75.0.3770.142
+pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-fix-window-flash-for-some-WMs.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('9e1360101b6d9f9635e540db77626e3e15b452f413d8750518244ac37b73fca0'
+sha256sums=('510e6ca7ccc218b401b375c13656f6aecab196b03142026dc3602b9d1804a5ac'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
             '09c5f16b726ef7031d74807b534fbbfa49a7276ee2a239b70602de2704fa197c'
