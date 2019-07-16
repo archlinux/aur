@@ -1,5 +1,5 @@
 pkgbase = python-foolbox-git
-	pkgdesc = Python utilities to download and parse the MNIST dataset
+	pkgdesc = Toolbox to create adversarial examples that fool neural networks in PyTorch, TensorFlow, Keras,
 	pkgver = v2.0.0b0.r8.g4ffc9fc
 	pkgrel = 1
 	url = https://github.com/bethgelab/foolbox
@@ -11,6 +11,9 @@ pkgbase = python-foolbox-git
 	depends = python-scipy
 	depends = python-gitpython
 	depends = python-requests
+	optdepends = python-pytorch: PyTorch functionality
+	optdepends = python-tensorflow: TensorFlow functionality
+	optdepends = python-keras: Keras functionality
 	provides = python-foolbox
 	conflicts = python-foolbox
 	options = !emptydirs
