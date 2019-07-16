@@ -4,7 +4,7 @@
 
 pkgname=balena-cli-git
 pkgdesc='balena.io command line interface, development version'
-pkgver=11.0.7.r0.gf8a9c10a
+pkgver=11.7.0.r0.gcd491a79
 pkgrel=1
 arch=('x86_64')
 url='https://balena.io/'
