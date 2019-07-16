@@ -1,7 +1,7 @@
 # Maintainer:  Novikov Maxim <the.mlex@gmail.com>
 
 pkgname=phalcon-devtools
-pkgver=3.4.0
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="This tools provide you useful scripts to generate code helping to develop faster and easy applications that use with Phalcon framework."
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ makedepends=()
 provides=('phalcon-devtools')
 install=.INSTALL
 source=("https://github.com/phalcon/phalcon-devtools/archive/v${pkgver}.tar.gz")
-sha256sums=('ca317271a8020c8c3ad4f1dbe3409250c0348e168ca089df55a5dc59a0289a3a')
+sha256sums=('de67ec9d096d62deec8412b0d4c9f612943526870b21d6e4968cd76a99614878')
 
 package() {
   tar -xvzf ${srcdir}/v${pkgver}.tar.gz
