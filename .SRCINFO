@@ -1,5 +1,5 @@
 pkgbase = chef-dk-free
-	pkgdesc = The Chef development kit contains all the tools you need to develop and test your infrastructure, built by the awesome Chef community.
+	pkgdesc = The Chef development kit contains all the tools you need to develop and test your infrastructure, built by the awesome Chef community. Non-commercial, free distribution.
 	pkgver = 3.11.3
 	pkgrel = 1
 	url = https://downloads.chef.io/chef-dk/
