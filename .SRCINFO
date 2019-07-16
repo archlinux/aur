@@ -1,7 +1,7 @@
 pkgbase = quaternion-git
 	pkgdesc = Qt5-based IM client for the Matrix protocol
 	pkgver = 0.0.9.4a.r69.g253650b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://matrix.org/docs/projects/client/quaternion.html
 	arch = i686
 	arch = x86_64
@@ -14,12 +14,10 @@ pkgbase = quaternion-git
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-olm
+	depends = libquotient-git
 	optdepends = qtkeychain: Store access tokens in a keyring
 	provides = quaternion
-	conflicts = quaternion-git
 	source = git://github.com/QMatrixClient/Quaternion
-	source = git://github.com/QMatrixClient/libqmatrixclient
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = quaternion-git

@@ -6,38 +6,28 @@
 _appname=Quaternion
 _pkgname=quaternion
 pkgname=quaternion-git
-_soname=libQMatrixClient
-_libname=libqmatrixclient
 pkgver=0.0.9.4a.r69.g253650b
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt5-based IM client for the Matrix protocol'
 url='https://matrix.org/docs/projects/client/quaternion.html'
 arch=('i686' 'x86_64')
 license=(GPL3)
-depends=(hicolor-icon-theme qt5-multimedia qt5-tools qt5-quickcontrols qt5-quickcontrols2 qt5-olm)
+depends=(hicolor-icon-theme qt5-multimedia qt5-tools qt5-quickcontrols qt5-quickcontrols2 qt5-olm libquotient-git)
 makedepends=(cmake git)
 optdepends=('qtkeychain: Store access tokens in a keyring')
 provides=(quaternion)
-conflicts=(quaternion-git)
-source=('git://github.com/QMatrixClient/Quaternion'
-        'git://github.com/QMatrixClient/libqmatrixclient'
-)
-sha256sums=('SKIP'
-            'SKIP')
+source=('git://github.com/QMatrixClient/Quaternion')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_appname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cp -r ${_libname}/* ${srcdir}/${_appname}/lib/
-}
-
 build() {
   mkdir ${_appname}/build_dir -p
   cd ${_appname}/build_dir
-  cmake .. -DBUILD_SHARED_LIBS:BOOL=ON -DUSE_INTREE_LIBQMC=true
+  cmake .. -DUSE_INTREE_LIBQMC=false
   cmake --build . --target all
 }
  
@@ -58,11 +48,5 @@ package() {
   install -Dm644 "icons/quaternion/64-apps-quaternion.png" -t "${pkgdir}/usr/share/icons/hicolor/64x64/apps/"
   install -Dm644 "icons/quaternion/128-apps-quaternion.png" -t "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
   install -Dm644 "icons/quaternion/sources/quaternion.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
-
-  # The lib
-  mkdir ${pkgdir}/usr/lib
-  cp build_dir/lib/${_soname}.so.0.*.0 ${pkgdir}/usr/lib/
-  ln -s /usr/lib/${_soname}.so.0.*.0 ${pkgdir}/usr/lib/${_soname}.so.0
-  ln -s /usr/lib/${_soname}.so.0.*.0 ${pkgdir}/usr/lib/${_soname}.so
 }
 # vim:set ts=2 sw=2 et:
