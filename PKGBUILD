@@ -1,15 +1,15 @@
 # Maintainer: Bruce Zhang
 pkgname=gridea
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="静态博客写作客户端"
 arch=('x86_64' 'i686')
 url="https://gridea.dev/"
 license=('MIT')
-depends=('electron4' 'git')
+depends=('electron' 'git')
 makedepends=('imagemagick' 'yarn')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/getgridea/gridea/archive/v$pkgver.tar.gz")
-sha256sums=('125901d79ae414c3460fcacb841f699706075b58c5aedf5a6c4b7368b8ead362')
+sha256sums=('c75395ddec06a06ad983759e7adb9c7bfaf078e5ec5a76ddee4f9c3a9a10883b')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -37,7 +37,7 @@ package() {
     done
 
     echo "#!/usr/bin/env sh
-exec electron4 /usr/share/gridea/app" > "$srcdir/gridea.sh"
+exec electron /usr/share/gridea/app" > "$srcdir/gridea.sh"
 	install -Dm755 "$srcdir/gridea.sh" "$pkgdir/usr/bin/gridea"
 
 	echo "[Desktop Entry]
