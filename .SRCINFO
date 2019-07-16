@@ -1,0 +1,17 @@
+pkgbase = pak-config-pacman
+	pkgdesc = A pacman config for pak
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/moussaelianarsen/pak
+	arch = x86_64
+	license = GPL3
+	depends = pak
+	depends = pacman
+	provides = pak-config
+	provides = pacwrap
+	conflicts = pak-config-yay
+	source = https://gitlab.com/moussaelianarsen/pak/-/archive/master/pak-master.tar.gz
+	md5sums = SKIP
+
+pkgname = pak-config-pacman
+
