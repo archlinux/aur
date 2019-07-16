@@ -1,7 +1,7 @@
 # Maintainer: Alexey Rochev <equeim@gmail.com>
 
 pkgname='tremotesf'
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Remote GUI for transmission-daemon'
 _reponame='tremotesf2'
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'kwidgetsaddons' 'hicolor-icon-theme')
 makedepends=('qt5-tools' 'cmake' 'ninja' 'gettext')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('729c6e927e0d5541e74a694e7998a4da6b6e65808083c67268c5b6fb7c6d21db')
+sha256sums=('bd498eaa7f9cb4f05d2e19272fc09e5906a4af0a86853ee67c241adf6d70cc55')
 
 prepare() {
     mkdir -p build
