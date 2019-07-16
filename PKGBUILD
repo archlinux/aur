@@ -74,25 +74,12 @@ build() {
   fi
 
   cmake "$srcdir/blender" \
+        -C${srcdir}/blender/build_files/cmake/config/blender_release.cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_INSTALL_PORTABLE=OFF \
-        -DWITH_CXX11=ON \
-        -DWITH_ALEMBIC=NO \
-        -DWITH_OPENCOLORIO=ON \
-        -DWITH_FFTW3=ON \
         -DWITH_SYSTEM_GLEW=ON \
-        -DWITH_CODEC_FFMPEG=ON \
         -DWITH_PYTHON_INSTALL=OFF \
         -DPYTHON_VERSION=${_pyver} \
-        -DWITH_MOD_OCEANSIM=ON \
-        -DWITH_CYCLES_OPENSUBDIV=ON \
-        -DWITH_CYCLES_OSL=ON \
-        -DWITH_LLVM=ON \
-        -DWITH_IMAGE_OPENEXR=ON \
-        -DWITH_OPENSUBDIV=ON \
-        -DWITH_OPENVDB=ON \
-        -DWITH_OPENVDB_BLOSC=ON \
-        -DWITH_OPENCOLLADA=ON \
         ${_EXTRAOPTS[@]}
   make
 }
