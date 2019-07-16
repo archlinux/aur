@@ -7,7 +7,7 @@ _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
 
 pkgname=blender-2.7
 _fragment="#branch=blender2.7"
-pkgver=2.7.r71421.e045fe53f1b
+pkgver=2.79b.r71421.e045fe53f1b
 pkgrel=1
 pkgdesc="Blender 2.7 branch"
 arch=('i686' 'x86_64')
@@ -49,7 +49,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/blender"
-  printf "2.7.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "2.79b.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
