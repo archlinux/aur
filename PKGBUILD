@@ -8,7 +8,7 @@ url="https://gitlab.com/moussaelianarsen/pak"
 license=('GPL3')
 depends=('pacman')
 provides=('pak-config' 'pacwrap')
-source=("https://gitlab.com/moussaelianarsen/pak/blob/master/plugins/pacwrap/pacwrap.swift" "https://gitlab.com/moussaelianarsen/pak/blob/master/plugins/pacwrap/pak.cfg")
+source=("https://gitlab.com/moussaelianarsen/pak/raw/master/plugins/pacwrap/pacwrap.swift" "https://gitlab.com/moussaelianarsen/pak/raw/master/plugins/pacwrap/pak.cfg")
 md5sums=('SKIP' 'SKIP')
 conflicts=('pak-config-yay')
 
