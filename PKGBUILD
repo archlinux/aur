@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=boca-git
 pkgver=1.1.alpha.20190423.40.g11d88b8e
 pkgrel=1
