@@ -1,13 +1,13 @@
 pkgbase = modd
 	pkgdesc = modd: A flexible tool for responding to filesystem changes
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/cortesi/modd
 	arch = x86_64
 	license = MIT
 	provides = modd
-	source = https://github.com/cortesi/modd/releases/download/v0.7/modd-0.7-linux64.tgz
-	sha256sums = 7d2201a28fb6821fd17e6647c34f82c74a353f88d3b0e017e8a558bbe5daf0be
+	source = https://github.com/cortesi/modd/releases/download/v0.8/modd-0.8-linux64.tgz
+	sha256sums = 65d5b5410d0b11dec3427d9363426add67bde60ddbd8277f5794c981af4b8ad7
 
 pkgname = modd
 
