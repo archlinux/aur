@@ -1,0 +1,17 @@
+pkgbase = droidbattles-git
+	pkgdesc = A programming game where you program bots in assembly
+	pkgver = r147.8e47dfe
+	pkgrel = 1
+	url = https://github.com/sandsmark/droidbattles
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = qt5-base
+	depends = qt5-base
+	provides = droidbattles
+	conflicts = droidbattles
+	source = git://github.com/sandsmark/droidbattles.git
+	md5sums = SKIP
+
+pkgname = droidbattles-git
+
