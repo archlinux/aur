@@ -1,4 +1,5 @@
-# Maintainer: Seamus Connor
+# Maintainer: Ben Isenhart <bisenhar(at)uvm(dot)edu>
+# Contributor: Seamus Connor
 # Contributor: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 # Contributor: Simon Gomizelj <simongmzlj(at)gmail(dot)com>
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
