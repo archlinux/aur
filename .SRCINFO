@@ -1,7 +1,7 @@
 pkgbase = polybar-scripts-git
-	pkgdesc = polybar scripts
+	pkgdesc = a community project which collects scripts for polybar
 	pkgver = r445.2324dcc
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/polybar/polybar-scripts
 	arch = x86_64
 	license = The Unlicense

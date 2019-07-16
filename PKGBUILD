@@ -3,8 +3,8 @@
 _pkgname=polybar-scripts
 pkgname=${_pkgname}-git
 pkgver=r445.2324dcc
-pkgrel=2
-pkgdesc='polybar scripts'
+pkgrel=3
+pkgdesc='a community project which collects scripts for polybar'
 arch=('x86_64')
 url=https://github.com/polybar/${_pkgname}
 license=('The Unlicense')
