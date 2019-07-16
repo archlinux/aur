@@ -29,5 +29,9 @@ package() {
   mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
   mkdir "$pkgdir/usr/share/perl5/vendor_perl"
   mv "$pkgdir/usr/share/perl5/Vnlog" "$pkgdir/usr/share/perl5/vendor_perl"
+  mv "$pkgdir/usr/lib/python2.7/dist-packages" "$pkgdir/usr/lib/python2.7/site-packages"
+  mv "$pkgdir/usr/lib/python3/dist-packages" "$pkgdir/usr/lib/python3/site-packages"
+  PYV=`python3 -c 'import sys; print(sys.version[:3])'`
+  mv "$pkgdir/usr/lib/python3" "$pkgdir/usr/lib/python$PYV"
 }
 
