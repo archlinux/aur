@@ -1,0 +1,7 @@
+dpf/
+string-machine/
+pkg/
+src/
+.AURINFO
+string-machine-git-*.tar.xz
+string-machine-git-*.src.tar.gz

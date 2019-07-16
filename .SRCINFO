@@ -1,0 +1,22 @@
+pkgbase = string-machine-git
+	pkgdesc = A virtual-analog string ensemble synthesizer LV2 and VST2 plugin
+	pkgver = 0.1.0.r18.a7cdae0
+	pkgrel = 1
+	url = https://github.com/jpcima/string-machine
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	groups = vst-plugins
+	license = Boost
+	makedepends = git
+	depends = cairo
+	provides = string-machine
+	provides = string-machine=0.1.0
+	conflicts = string-machine
+	source = string-machine::git+https://github.com/jpcima/string-machine.git
+	source = dpf::git+https://github.com/DISTRHO/DPF.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = string-machine-git
+
