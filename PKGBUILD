@@ -1,4 +1,5 @@
-# Maintainer: Marc Paradise <marc.paradise+aur@gmail.com>
+# Maintainer: Joris Baum <joris.baum@cloudandheat.com>
+# Contributor: Marc Paradise <marc.paradise+aur@gmail.com>
 
 pkgname=chef-dk-free
 pkgver=3.11.3
