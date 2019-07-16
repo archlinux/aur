@@ -12,6 +12,7 @@ pkgdesc='Modern and elegant HTTP and REST framework for C++'
 license=('APACHE')
 depends=()
 makedepends=('cmake' 'git')
+checkdepends=('gtest')
 provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/oktal/${_name}"
