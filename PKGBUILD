@@ -1,7 +1,7 @@
 # Maintainer: Florent Thiéry <fthiery@gmail.com>
 
 pkgname=cockpit-minimal
-pkgver=193
+pkgver=198
 pkgrel=1
 pkgdesc='A systemd web based user interface for Linux servers (minimal setup with system graphs, journalctl, storage, network, user accounts, systemd services and terminal)'
 arch=(i686 x86_64 armv6h armv7h)
