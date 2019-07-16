@@ -1,6 +1,6 @@
 pkgbase = sane-git
 	pkgdesc = Scanner Access Now Easy
-	pkgver = 20190205.2b0c7a31
+	pkgver = 20190714.c52eef6e
 	pkgrel = 1
 	url = http://www.sane-project.org/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = sane-git
 	license = GPL
 	makedepends = git
 	makedepends = texlive-latexextra
+	makedepends = autoconf-archive
 	depends = libtiff>=4.0.0
 	depends = libgphoto2
 	depends = libjpeg>=8
