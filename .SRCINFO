@@ -1,0 +1,16 @@
+pkgbase = vnlog
+	pkgdesc = Tools to manipulate whitespace-separated ASCII logs
+	pkgver = 1.19
+	pkgrel = 1
+	url = https://github.com/dkogan/vnlog
+	arch = x86_64
+	license = GPL
+	makedepends = chrpath
+	depends = perl
+	depends = python
+	provides = feedgnuplot
+	source = https://github.com/dkogan/vnlog/archive/v1.19.tar.gz
+	sha256sums = 1f8c95739290d0030cf927319b087dc37fb9c33d5fa8f034a71924bc8a3d4b80
+
+pkgname = vnlog
+
