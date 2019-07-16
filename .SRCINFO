@@ -1,0 +1,14 @@
+pkgbase = duffle
+	pkgdesc = A tool to install and manage CNAB bundles
+	pkgver = 0.2.0_beta.2
+	pkgrel = 1
+	url = https://github.com/deislabs/duffle
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = dep
+	source = duffle-0.2.0_beta.2.tar.gz::https://github.com/deislabs/duffle/archive/0.2.0-beta.2.tar.gz
+	sha512sums = cacff4f5e690bd5bb4d790822d47429dc697e77a773228e42b652d129dbb8e52042533e789e7356bdc9cc0d0d54f7c6ecf7f452ee8f7bdc71554a9f6640e90a4
+
+pkgname = duffle
+
