@@ -1,7 +1,7 @@
 pkgbase = pak-config-yay
 	pkgdesc = A pacman config for yay
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/moussaelianarsen/pak
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,8 @@ pkgbase = pak-config-yay
 	provides = pak-config
 	provides = yaywrap
 	conflicts = pak-config-pacman
-	source = https://gitlab.com/moussaelianarsen/pak/-/archive/master/pak-master.tar.gz
+	source = https://gitlab.com/moussaelianarsen/pak/blob/master/plugins/yaywrap/yaywrap.swift
+	source = https://gitlab.com/moussaelianarsen/pak/blob/master/plugins/yaywrap/pak.cfg
 	md5sums = SKIP
 
 pkgname = pak-config-yay
