@@ -9,24 +9,19 @@ url='https://github.com/wagoodman/dive'
 arch=('x86_64')
 license=('MIT')
 depends=('docker')
-makedepends=('go' 'git')
+makedepends=('go')
 conflicts=('dive-git')
-source=("https://github.com/wagoodman/dive/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/wagoodman/dive/archive/v$pkgver.tar.gz")
 sha256sums=('2ec6d77b662e0d709f6fc4282dbd8f0d3f6509f78133451b6b17d9b8fb594cf1')
 
 build() {
   # Trim pwd from path
-  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD}"
+  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
 
   cd $pkgname-$pkgver
-  make build
-}
-
-check() {
-  cd $pkgname-$pkgver
-  make test
+  go build --ldflags "-X main.version=$pkgver" .
 }
 
 package() {
-  install -Dm 755 "${srcdir}/$pkgname-$pkgver/build/dive" "${pkgdir}/usr/bin/dive"
+  install -Dm 755 "$srcdir/$pkgname-$pkgver/dive" "$pkgdir/usr/bin/dive"
 }
