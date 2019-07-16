@@ -20,8 +20,8 @@ optdepends=(
   'nvidia-libgl: for NVIDIA support'
   'nvidia-utils: for NVIDIA support')
 makedepends=('cmake' 'gcc' 'python2-virtualenv' 'python2-pip' 'mercurial')
-conflicts=('firestorm-bin')
-provides=('firestorm')
+conflicts=('firestorm-bin' 'firestorm' 'firestorm-beta')
+provides=('firestorm-nightly')
 
 source=("$pkgname"::'hg+http://hg.phoenixviewer.com/phoenix-firestorm-lgpl' 'autovars' 'firestorm.desktop' 'firestorm.launcher')
 md5sums=('SKIP' '7245883fbdba303d4f827f60907574c6' '2158007ce43b17b72a5517fb5aeb6e66' '3daa9e24492337e62bcac318df4ab370')
