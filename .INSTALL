@@ -3,7 +3,7 @@ post_install() {
     if [ -L $LINK ]; then
     	rm -f $LINK
     fi
-	ln -s /opt/phalcon-devtools/phalcon.php $LINK
+	ln -sf /opt/phalcon-devtools/phalcon.php $LINK
 	chmod ugo+x $LINK
 }
 
