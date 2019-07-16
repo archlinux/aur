@@ -1,0 +1,18 @@
+pkgbase = qssh-git
+	pkgdesc = A Qt based implementation of SSH and SFTP
+	pkgver = r125.08e4e5a
+	pkgrel = 1
+	url = https://github.com/sandsmark/QSsh
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = qt5-base
+	depends = qt5-base
+	depends = botan
+	provides = qssh
+	conflicts = qssh
+	source = git://github.com/sandsmark/QSsh.git
+	md5sums = SKIP
+
+pkgname = qssh-git
+
