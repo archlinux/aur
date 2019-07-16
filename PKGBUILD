@@ -9,7 +9,7 @@ pkgname=shimmer-wallpapers
 _pkgname=Wallpapers
 _pkgnamelong="Shimmer-Wallpapers"
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Complementary wallpaper collection for the Shimmer Project Xfce themes"
 arch=("any")
 url=http://shimmerproject.org
@@ -26,8 +26,6 @@ optdepends=("elementary-xfce-icons: matching icon set, -git or stable"
     "xfce-theme-greybird: matching Shimmer Project Xfce theme, -git or stable")
 source=("${_pkgnamelong}::git://github.com/shimmerproject/${_pkgname}.git#commit=ba134cbfa7130e88822f07b18c454a8791d504b8")
 md5sums=('SKIP')
-
-
 
 package() {
 

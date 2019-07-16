@@ -1,10 +1,9 @@
 pkgbase = shimmer-wallpapers
 	pkgdesc = Complementary wallpaper collection for the Shimmer Project Xfce themes
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://shimmerproject.org
 	arch = any
-	groups = xfce-themes-shimmer-collection
 	license = CCPL:by-sa-3.0
 	makedepends = git
 	optdepends = elementary-xfce-icons: matching icon set, -git or stable
