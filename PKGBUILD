@@ -8,8 +8,8 @@ arch=('any')
 url='http://www.linux-france.org/prj/'
 license=('GPL')
 depends=('cpanminus' 'perl-cgi' 'perl-crypt-openssl-rsa' 'perl-data-uniqid' 'perl-date-manip'
-        'perl-file-copy-recursive' 'perl-html-parser' 'perl-io-socket-inet6' 'perl-io-socket-ssl'
-        'perl-io-tee' 'perl-json-webtoken' 'perl-libwww' 'perl-module-scandeps'
+        'perl-file-copy-recursive' 'perl-file-tail' 'perl-html-parser' 'perl-io-socket-inet6'
+        'perl-io-socket-ssl' 'perl-io-tee' 'perl-json-webtoken' 'perl-libwww' 'perl-module-scandeps'
         'perl-mail-imapclient' 'perl-module-runtime' 'perl-ntlm' 'perl-package-stash'
         'perl-par-packer' 'perl-readonly' 'perl-regexp-common' 'perl-sys-meminfo'
         'perl-term-readkey' 'perl-test-deep' 'perl-test-fatal' 'perl-test-mock-guard'

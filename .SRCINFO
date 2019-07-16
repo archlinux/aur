@@ -11,6 +11,7 @@ pkgbase = imapsync
 	depends = perl-data-uniqid
 	depends = perl-date-manip
 	depends = perl-file-copy-recursive
+	depends = perl-file-tail
 	depends = perl-html-parser
 	depends = perl-io-socket-inet6
 	depends = perl-io-socket-ssl
