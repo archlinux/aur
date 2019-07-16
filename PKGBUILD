@@ -7,7 +7,7 @@
 
 pkgname=blender-2.8-git
 _fragment="#branch=master"
-pkgver=2.80.r88582.f827811a42b
+pkgver=2.80.r89204.105ae3be999
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
