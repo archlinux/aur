@@ -1,6 +1,6 @@
 pkgbase = php-tombs-git
 	pkgdesc = Detect unused code in production
-	pkgver = r29.608db69
+	pkgver = r34.f917f9d
 	pkgrel = 1
 	url = https://github.com/krakjoe/tombs
 	arch = i686
