@@ -1,7 +1,7 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
 pkgname=pak-config-yay
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A pacman config for yay"
 arch=('x86_64')
 url="https://gitlab.com/moussaelianarsen/pak"
@@ -19,6 +19,6 @@ build() {
 package() {
 	mkdir -p $pkgdir/etc/
 	mkdir -p $pkgdir/usr/bin/
-	sudo install yaywrap $pkgdir/usr/bin
-	sudo cp pak.cfg /etc
+	install -Dm755 yaywrap $pkgdir/usr/bin
+	install -Dm644 pak.cfg $pkgdir/etc
 }
