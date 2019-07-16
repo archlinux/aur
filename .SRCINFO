@@ -1,7 +1,7 @@
 pkgbase = acroread
 	pkgdesc = Adobe Acrobat Reader is a PDF file viewer
 	pkgver = 9.5.5
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.adobe.com/products/reader/
 	install = acroread.install
 	arch = i686
