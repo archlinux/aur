@@ -3,7 +3,7 @@
 
 pkgname=wsjtx-git
 pkgver=r5460.24fcd17a
-pkgrel=1
+pkgrel=2
 pkgdesc='Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)'
 # change _wsjtx_tag to other versions such as wsjtx-2.1.0-rc5
 _wsjtx_tag=master
