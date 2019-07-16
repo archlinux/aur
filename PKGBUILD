@@ -5,8 +5,8 @@
 # Maintainer: jooch <jooch AT gmx DOT com>
 
 pkgname=freefilesync
-pkgver=10.13
-pkgrel=2
+pkgver=10.14
+pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="https://freefilesync.org"
@@ -20,7 +20,7 @@ source=(
 	RealTimeSync.desktop
 	)
 
-sha256sums=('6460362e56e846535ffa07eb5e087fac1efa04c34dd8f5c323c570f7e960b72a'
+sha256sums=('93bc5a2c6f83e516a1827787c893c80ede83566b4ac47ca7f75cf83204a4987a'
             'e74b4abdf04c58004e52f77afee762e4c3d72d4ca42de4cc42cbc930cbec0e32'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830')
