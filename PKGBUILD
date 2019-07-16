@@ -1,4 +1,5 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck disable=SC2034
 
 #to enforce cuda verison uncomment this line and update value of sm_xx model accordingly
 #_cuda_capability+=(sm_30 sm_35 sm_37)
