@@ -1,7 +1,7 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
 pkgname=pak-config-yay
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pacman config for yay"
 arch=('x86_64')
 url="https://gitlab.com/moussaelianarsen/pak"
