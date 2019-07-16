@@ -5,7 +5,7 @@
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 pkgname=zookeeper
-pkgver=3.4.14
+pkgver=3.5.5
 pkgrel=1
 pkgdesc='Open-source server which enables highly reliable distributed coordination'
 arch=('any')
@@ -19,21 +19,21 @@ install=install_zookeeper.sh
 
 _apache_cgi="http://www.apache.org/dyn/closer.cgi"
 _closest=$(curl "${_apache_cgi}?asjson=1" | tr -d '\n ' | sed -r 's/.*"preferred":"(.+)".*/\1/')
-_app_path="/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
+_app_path="/${pkgname}/${pkgname}-${pkgver}/apache-${pkgname}-${pkgver}-bin.tar.gz"
 source=(${_closest}/${_app_path}
         systemd_zookeeper.service
         systemd_zookeeper@.service
         systemd_sysusers.d_zookeeper.conf
         systemd_tmpfiles.d_zookeeper.conf)
 
-sha256sums=('b14f7a0fece8bd34c7fffa46039e563ac5367607c612517aa7bd37306afbd1cd'
+sha256sums=('c5ff531cbda56c157199ab80632dc50ffefa8b7cbe866a0431345d3c4d72bbd1'
             'b59e0641de1951ad149ca39df5b5ec37dc6229f1aa987b0ed9d7e82e570be9ed'
             'a3fd2566648f57c0cdd75cd48b7b60fa55eb59ee67dd716de1e1aa6a57823b88'
             'e863b63650c15a8823cfb2b507c375c999a71cda24805062de36af0250de5daa'
             '99fff5b04623889b0010c74c2dc3a4be29e7770fe2c7e15da51f7442a28c6580')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/apache-${pkgname}-${pkgver}-bin"
 
   _app_home=/usr/share/${pkgname}
 
@@ -57,7 +57,7 @@ package() {
 ### As of 3.4.14, recipes are no longer held in a separate directory
 #  cp -r recipes "${pkgdir}/usr/share/${pkgname}"
 
-  install -m 644 ${pkgname}-${pkgver}.jar \
+  install -m 644 "${srcdir}/apache-${pkgname}-${pkgver}-bin/lib/${pkgname}-${pkgver}.jar" \
     "${pkgdir}/usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar"
   ln -s ${pkgname}-${pkgver}.jar \
     "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
