@@ -2,13 +2,13 @@
 
 pkgname=foliate
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and modern GTK eBook reader"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://johnfactotum.github.io/foliate/"
 license=('GPL-3.0')
 depends=('gjs>=1.52.0'  'webkit2gtk')
-makedepends=('meson>=0.40' 'ninja' 'gettext')
+makedepends=('meson>=0.40' 'ninja' 'gettext' 'git')
 optdepends=('hyphen: Auto-hyphenation support'
 			'hyphen-en: Hyphenation rules for English; you may choose package for your language'
 			'dictd: Offline dictionary support'
@@ -25,13 +25,13 @@ pkgver() {
 }
 
 build() {
-	cd $srcdir/$pkgname
+	cd $srcdir/$pkgname	
 	git checkout tags/$pkgver
 	meson build --prefix=/usr
 	ninja -C build
 }
 
-package(){
+package() {
 	cd $srcdir/$pkgname
 	DESTDIR=$pkgdir ninja -C build install
 }
