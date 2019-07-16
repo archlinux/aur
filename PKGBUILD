@@ -1,7 +1,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 pkgname=libquotient-git
 pkgver=0.5.0.1.r109.g74caea2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt5 library to write cross-platform clients for Matrix"
 arch=(x86_64)
 url="https://github.com/quotient-im/libQuotient"
