@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=freac-git
 pkgver=continuous.r0.86175462
 pkgrel=1
