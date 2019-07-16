@@ -1,8 +1,9 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
+_reponame=brave-browser
 pkgname=brave
-pkgver=0.66.99
-pkgrel=2
+pkgver=0.66.100
+pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
@@ -39,7 +40,7 @@ sha256sums=('SKIP'
 
 prepare() {
     # Apply Brave patches
-    cd brave-browser
+    cd "${_reponame}"
     patch -Np1 -i "${srcdir}/brave-vaapi-enable.patch"
 
     # Hack to prioritize python2 in PATH
@@ -82,15 +83,15 @@ prepare() {
 }
 
 build() {
-    cd brave-browser
+    cd "${_reponame}"
     npm run build Release
 }
 
 package() {
-    install -d -m0755 "${pkgdir}/usr/lib/brave/"
+    install -d -m0755 "${pkgdir}/usr/lib/${pkgname}/"
 
     # Copy necessary release files
-    cd brave-browser/src/out/Release
+    cd "${_reponame}/src/out/Release"
     cp -a --reflink=auto \
         locales \
         resources \
@@ -104,11 +105,11 @@ package() {
         "${pkgdir}/usr/lib/brave/"
 
     cd "${srcdir}"
-    install -Dm0755 brave-launcher "${pkgdir}/usr/bin/brave"
-    install -Dm0644 -t "${pkgdir}/usr/share/applications/" brave.desktop
-    install -Dm0644 brave-browser/src/brave/app/theme/brave/product_logo_128.png "${pkgdir}/usr/share/pixmaps/brave.png"
-    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" brave-browser/LICENSE
-    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" brave-browser/src/brave/components/brave_sync/extension/brave-sync/node_modules/electron/dist/LICENSES.chromium.html
+    install -Dm0755 brave-launcher "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm0644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
+    install -Dm0644 "${_reponame}/src/brave/app/theme/brave/product_logo_128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}/LICENSE"
+    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}/src/brave/components/brave_sync/extension/brave-sync/node_modules/electron/dist/LICENSES.chromium.html"
 }
 
 # vim:set ts=4 sw=4 et:
