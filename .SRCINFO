@@ -1,5 +1,5 @@
 pkgbase = slock-start-blue-git
-	pkgdesc = Simple X display locker
+	pkgdesc = Simple X display locker, this version starts with blue screen instead of black
 	pkgver = 20170325.35633d4
 	pkgrel = 1
 	url = http://tools.suckless.org/slock
