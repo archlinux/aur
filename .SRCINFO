@@ -1,0 +1,23 @@
+pkgbase = gllock-crt-git
+	pkgdesc = not so simple opengl based X display locker utility -- crt shader
+	pkgver = r64.c77658b
+	pkgrel = 1
+	url = https://github.com/kuravih/gllock
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = clang
+	makedepends = gcc
+	makedepends = make
+	makedepends = xorgproto
+	makedepends = glew
+	provides = gllock
+	conflicts = gllock
+	source = gllock-git::git+https://github.com/kuravih/gllock
+	source = config.mk.patch
+	md5sums = SKIP
+	md5sums = f06f5d3badfd75859957e473f5197fd6
+
+pkgname = gllock-crt-git
+
