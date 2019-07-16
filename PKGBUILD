@@ -1,43 +1,45 @@
 # Maintainer: libertylocked <libertylocked@disroot.org>
 # Contributor: Stephen Brown II <Stephen [dot] Brown2 [at] gmail.com>
 pkgname=bitwarden-cli
-pkgver=1.7.0
+pkgver=1.7.4
 # commit of bitwarden/jslib
-_jslibcommit='af4e01c238b88ac296edfbf300a180e956da7d4b'
-pkgrel=2
+_jslibcommit='e979dd4f12634a72ee50989d7dd6a6852fa149fa'
+pkgrel=1
 pkgdesc="The command line vault (Windows, macOS, & Linux). bitwarden.com"
 arch=('x86_64')
-url="https://bitwarden.com"
+url="https://github.com/bitwarden/cli"
 license=('GPL3')
 makedepends=('nodejs' 'npm')
 depends=('nodejs')
 conflicts=('bitwarden-cli-git')
 options=('!strip')
 source=("bitwarden-cli-${pkgver}.tar.gz::https://github.com/bitwarden/cli/archive/v${pkgver}.tar.gz"
-        "jslib-${_jslibcommit}.tar.gz::https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz"
-        'bw.sh')
-sha512sums=('0ceec6f5df506f6b93d2ac20551d9722c3c56c66940d14e7b2b7e53254c8a9af204bb67b2e3ed78109e31402d6b79766dd32ed2dba767822953cf3c0b19e5da3'
-            '8697662008765e101adba8226a02f245f80aeb7473cc3b915009c7cdba0d365aaffaac4032be6991c145e59b99e8d589baaf8566a6fe91a827ed85539937821f'
-            'c1a89a9573326bd42de4c218429209e4b2e3b966f275b4e173c477e1080e0fd107d9791c0de968ed6b9efbf30ff81ffba79f5c32378d685de82b513516385d3a')
+        "jslib-${_jslibcommit}.tar.gz::https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz")
+sha512sums=('4aeb651b6a3bc00ad41581ed15c35d910b73d1ad6fdd9ddc5a629c6de230b12d7068efa496e9c7ed6d73f9a181ade208e3fe1f135ae07905cda0f5bdbd1fe943'
+            '16ace4c248b4282522b127c8aa3c3d4bd41da84a06584a2a38092f43460713e1ddfb57a447aeeb918ae1133ac394ebe1477ce620f0e1cd0ffdfdca2e0be3f25f')
 
 prepare() {
-  # make a symlink of jslib in cli since the submodule is missing in sourceball
   rmdir "${srcdir}/cli-${pkgver}/jslib"
   ln -s "${srcdir}/jslib-${_jslibcommit}" "${srcdir}/cli-${pkgver}/jslib"
+  sed -i 's/"postinstall": "npm run sub:init",//' "${srcdir}/cli-${pkgver}/package.json"
 }
 
 build() {
+  cd "${srcdir}/cli-${pkgver}/jslib"
+  npm install
   cd "${srcdir}/cli-${pkgver}"
   npm install
-  npm run build:prod
+  # Due to some jsdom dependency complications we'll have to use bundled nodejs in the final 
+  # build for now.
+  npm run dist:lin
 }
 
 package() {
   cd "${srcdir}/cli-${pkgver}"
 
-  install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-  cp -a build/. "${pkgdir}/usr/lib/${pkgname}/"
+  # install -dm755 "${pkgdir}/usr/lib/${pkgname}"
+  # cp -a build/. "${pkgdir}/usr/lib/${pkgname}/"
 
   install -dm755 "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/bw.sh" "${pkgdir}/usr/bin/bw"
+  install -Dm755 ./dist/linux/bw "${pkgdir}/usr/bin/bw"
 }
