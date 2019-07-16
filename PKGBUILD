@@ -2,7 +2,7 @@
 
 _pkgname=tombs
 pkgname=php-$_pkgname-git
-pkgver=r34.f917f9d
+pkgver=r37.aace95b
 pkgrel=1
 pkgdesc="Detect unused code in production"
 arch=('i686' 'x86_64')
