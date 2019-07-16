@@ -1,0 +1,21 @@
+pkgbase = python-foolbox-git
+	pkgdesc = Python utilities to download and parse the MNIST dataset
+	pkgver = v2.0.0b0.r8.g4ffc9fc
+	pkgrel = 1
+	url = https://github.com/bethgelab/foolbox
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-gitpython
+	depends = python-requests
+	provides = python-foolbox
+	conflicts = python-foolbox
+	options = !emptydirs
+	source = git+https://github.com/bethgelab/foolbox.git
+	sha256sums = SKIP
+
+pkgname = python-foolbox-git
+
