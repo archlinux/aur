@@ -1,7 +1,7 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
 pkgname=pak
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A package manager wrapper written in swift designed to unify different package managers"
 arch=('x86_64')
 url="https://gitlab.com/moussaelianarsen/pak"
@@ -21,5 +21,5 @@ build() {
 package() {
 	cd "pak-master"
 	mkdir -p $pkgdir/usr/bin
-	sudo install pak $pkgdir/usr/bin/pak
+	install -Dm755 pak $pkgdir/usr/bin/pak
 }
