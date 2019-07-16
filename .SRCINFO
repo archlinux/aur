@@ -1,14 +1,14 @@
 pkgbase = mindmaster-cn
 	pkgdesc = 多功能，高颜值，易使用的专业思维导图软件
-	pkgver = 6
-	pkgrel = 5
+	pkgver = 7.0
+	pkgrel = 1
 	url = https://www.edrawsoft.cn/mindmaster/
 	arch = x86_64
 	license = Commercial
 	conflicts = mindmaster
 	options = !strip
-	source_x86_64 = https://www.edrawsoft.cn/2download/mindmaster-6-64-cn.tar.gz
-	sha256sums_x86_64 = 078544be07b01cf19351eb729b693daaaaf75b4b0a1fcb10b5a2b1631a0381e2
+	source_x86_64 = https://www.edrawsoft.cn/2download/mindmaster-7-amd64-cn.deb
+	sha256sums_x86_64 = 5d13d5c962514ff0ff79f5278b3de693ac65fff052d20fcea2ca54f6a6689d80
 
 pkgname = mindmaster-cn
 
