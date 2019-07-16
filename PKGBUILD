@@ -3,7 +3,7 @@
 
 name=yapf
 pkgname=python2-$name
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="Python style guide checker"
 arch=('any')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('python2-setuptools')
 checkdepends=('python2-nose')
 source=("$name-$pkgver.tar.gz::https://github.com/google/$name/archive/v$pkgver.tar.gz")
-sha512sums=('d161c232d485ce7a6173fc6d796ed9bd880736d365d61f27fd608b590dddfc3fa8fd60fa88d8ebee8e63db616761ede6f1dfa74579c8ec9df5d3c81b50dc2ade')
+sha512sums=('be9ed5278d085797aba4a582a37295716c76fd10a4cea4bb5090794dd53eba6d1340d8ba7508e33a146f189a863578c95b0a651bbfd90b0390076028e03ad9bf')
 
 build() {
   cd $name-$pkgver
