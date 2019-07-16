@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 pkgver=3.32.2+5+gae0567949
-pkgrel=3
+pkgrel=4
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -126,6 +126,13 @@ prepare() {
   # Status: 4
   # Comment: Fixes style glitches introduced by !505
   git cherry-pick -n 7359e431^..be40de5a
+
+  # Title: Fix the calculation of max number of results in the grid search
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/110
+  # Type: 3
+  # Status: 4
+  # Comment:
+  git cherry-pick -n a7852705^..2d908e80
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
