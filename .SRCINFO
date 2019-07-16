@@ -20,6 +20,7 @@ pkgbase = jabberd2
 	depends = openssl
 	optdepends = sqlite3
 	optdepends = postgresql-libs
+	conflicts = jabberd2-git
 	options = !libtool
 	backup = etc/jabberd/c2s.xml
 	backup = etc/jabberd/jabberd.cfg

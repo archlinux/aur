@@ -25,6 +25,7 @@ source=(
 )
 sha512sums=('SKIP'
             'e6507a2a7e226398253623bb46db7ae853b01649b7ac00f3eee0a9b57c2ef0e8ac1f90c4934269f5fe2b7667e56572bed233b847d0b66a3fd37a88b7ed8adc31')
+conflicts=('jabberd2-git')
 
 backup=(
   'etc/jabberd/c2s.xml'
