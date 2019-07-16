@@ -1,6 +1,6 @@
 pkgbase = virtualbox-bin
 	pkgdesc = Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)
-	pkgver = 6.0.8
+	pkgver = 6.0.10
 	pkgrel = 1
 	url = https://www.virtualbox.org/
 	install = virtualbox-bin.install
@@ -20,7 +20,7 @@ pkgbase = virtualbox-bin
 	optdepends = virtualbox-ext-oracle: for Oracle extensions
 	optdepends = linux-headers: build the module for Arch kernel
 	optdepends = linux-lts-headers: build the module for LTS Arch kernel
-	provides = virtualbox=6.0.8
+	provides = virtualbox=6.0.10
 	provides = virtualbox-sdk
 	provides = VIRTUALBOX-HOST-MODULES
 	provides = virtualbox-host-dkms
@@ -31,16 +31,16 @@ pkgbase = virtualbox-bin
 	conflicts = virtualbox-host-modules-arch
 	replaces = virtualbox_bin
 	replaces = virtualbox-sun
-	noextract = VirtualBoxSDK-6.0.8-130520.zip
+	noextract = VirtualBoxSDK-6.0.10-132072.zip
 	options = !strip
 	options = !emptydirs
 	backup = etc/vbox/vbox.cfg
 	backup = etc/conf.d/vboxweb
-	source = http://download.virtualbox.org/virtualbox/6.0.8/VirtualBox-6.0.8-130520-Linux_amd64.run
-	source = https://download.virtualbox.org/virtualbox/6.0.8/VirtualBoxSDK-6.0.8-130520.zip
-	source = VBoxAuth-r78150.h::https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=78150
-	source = VBoxAuthPAM-r78150.c::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=78150
-	source = VBoxAuthSimple-r78150.cpp::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=78150
+	source = http://download.virtualbox.org/virtualbox/6.0.10/VirtualBox-6.0.10-132072-Linux_amd64.run
+	source = https://download.virtualbox.org/virtualbox/6.0.10/VirtualBoxSDK-6.0.10-132072.zip
+	source = VBoxAuth-r79806.h::https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=79806
+	source = VBoxAuthPAM-r79806.c::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=79806
+	source = VBoxAuthSimple-r79806.cpp::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=79806
 	source = VBoxFixUSB
 	source = 10-vboxdrv.rules
 	source = vboxweb.rc
@@ -48,8 +48,8 @@ pkgbase = virtualbox-bin
 	source = do_dkms
 	source = dkms.conf
 	source = 013-Makefile.patch
-	sha256sums = 7066da71dd4079ead37ef9cbb309dfbaa3620a71ac710d1cb119ccba2b4a0153
-	sha256sums = b3f38221437a5a5e91b9d2d1fdb1243cccc7f270dc2bfe4d463b5328766c4440
+	sha256sums = cbaf640584ddc65a9e256c27ed0cd4bfeccd151351c295431c088c54747ae0b3
+	sha256sums = 06a4dbc92b35959f4af89c1cadf2ed06448ad98bf1570024fe00c687e5a83ef3
 	sha256sums = 584f02a2a1e83b9cabd7b7e3b00a0515b118e040160eb46c014ea6fd3a16586e
 	sha256sums = 600df773fca199dc21acde10c95a4733b03b3efd8ffaef3a9fb9da363a9cd114
 	sha256sums = 452351c15d97aeda29e45dbcb0da69412dc3a615c9aece43a424af3639368d49
