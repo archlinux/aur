@@ -1,0 +1,22 @@
+pkgbase = 4kvideodownloader-bin
+	pkgdesc = Download online video. 4K Video Downloader allows to download video and audio content from YouTube and other services in the high quality as fast as possible and to save this video on your computer.
+	pkgver = 4.8.0
+	pkgrel = 1
+	url = http://www.4kdownload.com/products/product-videodownloader
+	install = 4kvideodownloader.install
+	arch = x86_64
+	license = custom:eula
+	makedepends = patchelf
+	depends = ffmpeg
+	depends = openssl-1.0
+	depends = portaudio
+	depends = qt5-base
+	depends = qt5-declarative
+	optdepends = gtk3: change themes
+	options = !strip
+	options = !emptydirs
+	source = 4kvideodownloader_4.8.0_amd64.deb::https://dl.4kdownload.com/app/4kvideodownloader_4.8.0-1_amd64.deb
+	md5sums = 51fa19c47c845f05317394c6dd082678
+
+pkgname = 4kvideodownloader-bin
+
