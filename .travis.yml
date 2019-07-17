@@ -54,7 +54,9 @@ arch:
 # Build
   - ccache -s
   - timeout 35m makepkg -s --noconfirm | ts -s '[%.T]'
+  - _makepkg_return=${PIPESTATUS[0]}
   - ccache -s
+  - exit $_makepkg_return
 script:
 - "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/pacman-pkg-cache/arch-travis.sh |sed 's:mikkeloscar/arch-travis:bartoszek/arch-travis-bartus:'| bash"
 - "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
