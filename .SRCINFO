@@ -1,6 +1,6 @@
 pkgbase = sagecal
 	pkgdesc = SAGECal is a very fast, memory efficient and GPU accelerated radio interferometric calibration program.
-	pkgver = 0.5.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/nlesc-dirac/sagecal
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = sagecal
 	makedepends = boost
 	makedepends = boost-libs
 	makedepends = cmake
-	makedepends = gcc-fortran
-	makedepends = gcc7
+	makedepends = gcc8-fortran
+	makedepends = gcc8
 	makedepends = flex
 	makedepends = bison
 	makedepends = openblas
@@ -27,8 +27,8 @@ pkgbase = sagecal
 	optdepends = python2-numpy
 	optdepends = ncurses
 	provides = sagecal
-	source = https://github.com/nlesc-dirac/sagecal/archive/v0.5.0.tar.gz
-	sha256sums = f9e0ff3960023a40e954485e0f9f2c74a58c218fbb96956a159d88d08a7b9781
+	source = https://github.com/nlesc-dirac/sagecal/archive/v0.6.1.tar.gz
+	sha256sums = 1888068c4b6894eb9f0048f7121e1ecbfd15573edb1bce44f01d0a9540fd1f1a
 
 pkgname = sagecal
 
