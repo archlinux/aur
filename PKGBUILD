@@ -2,7 +2,7 @@
 
 pkgname=vlang
 pkgver=0.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -19,8 +19,9 @@ prepare() {
 
 build() {
     cd v-$pkgver
-    make v
+    cc -std=gnu11 -w -o v v.c -lm
     ./v -prod -o v compiler
+    make thirdparty
 }
 
 package() {
