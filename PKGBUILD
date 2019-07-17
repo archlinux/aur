@@ -1,8 +1,8 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname="gnome-shell-extension-easyscreencast"
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.2
+pkgrel=2
 pkgdesc="Provides a convienent top bar pop-down interface to configure the GNOME Shell Screencast Recording feature."
 arch=('any')
 url="https://github.com/EasyScreenCast/EasyScreenCast"
@@ -10,7 +10,15 @@ license=('GPL3')
 depends=('gnome-shell')
 conflicts=('gnome-shell-extensions-git')
 source=("${pkgname}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('0e82b16e1f7610b4cb2a9632fd7accdeef18e73f5bed42842d005fe08c471a1365598125303e1943f0a7239d966411ff0678bac3fca9718b3f22292ebb13b806')
+sha512sums=('fd9bd4bb15d326f22587398f843695bdf738abb1e7e4d8059cbf7b66b8508aef359289c1fbe3167e20f3bfbb31ac53fb3394c74a2f29d8ffbd4d338bf1cfe3da')
+
+prepare() {
+  cd "$(dirname $(find -name 'metadata.json' -print -quit))"
+
+    # Replace deprecated Shell.GenericContainer with St.Widget for compatibility with GNOME ≥ 3.30.
+    # https://github.com/EasyScreenCast/EasyScreenCast/pull/230
+    sed 's|Shell.GenericContainer|St.Widget|g' -i "selection.js"
+}
 
 package() {
   # Locate the extension.
