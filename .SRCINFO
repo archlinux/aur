@@ -1,13 +1,14 @@
 pkgbase = switch-lan-play
-	pkgdesc = A program for connecting to fanmade Nintendo Switch servers--see url for more info
-	pkgver = v0.1.0.r4.f62bf0c
-	pkgrel = 1.2
+	pkgdesc = A program for connecting to switch-lan-play servers-see url for more info
+	pkgver = v0.1.0.r36.787a27d
+	pkgrel = 1.3
 	epoch = 0
 	url = https://github.com/spacemeowx2/switch-lan-play
 	arch = any
 	license = GPL3
 	makedepends = cmake
-	source = switch-lan-play::git+https://github.com/spacemeowx2/switch-lan-play.git
+	depends = libpcap
+	source = switch-lan-play::https://github.com/spacemeowx2/switch-lan-play.git
 	md5sums = SKIP
 
 pkgname = switch-lan-play
