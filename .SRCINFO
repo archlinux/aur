@@ -34,7 +34,7 @@ pkgbase = blender-2.7
 	depends = openshadinglanguage
 	depends = libtiff
 	depends = libpng
-	provides = blender=2.7
+	provides = blender-2.7
 	options = !strip
 	source = git://git.blender.org/blender.git#branch=blender2.7
 	source = blender-addons.git::git://git.blender.org/blender-addons.git
