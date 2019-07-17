@@ -1,6 +1,6 @@
 pkgbase = recallme
 	pkgdesc = Emit a notification on a specific time or after some seconds
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://gitlab.com/mrvik/recallme
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = recallme
 	license = GPL2
 	makedepends = pkgconf
 	depends = libnotify
-	source = https://gitlab.com/mrvik/recallme/-/archive/v1.0.1/recallme-v1.0.1.tar.gz
-	sha512sums = 397942b3cd53b39c9bfd91261de67e2c9eb25bfd734026fd89cca4cbd4f236e84771e3b0cf7e171bbaa0f4ec6807b1d15431d65093ceee439c97dad2c2ad5eea
+	source = https://gitlab.com/mrvik/recallme/-/archive/v1.0.2/recallme-v1.0.2.tar.gz
+	sha512sums = 46fc66a93df4e985a082fdfdece4c1b9d0575799bcd193986fd0c1b2279b04d7ab548f1a46d183b6a621119c8c1745c3b9f7732eebf1d3fbaf2007dd92acfe50
 
 pkgname = recallme
 
