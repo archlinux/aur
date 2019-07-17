@@ -3,7 +3,7 @@
 
 pkgname=openxcom-mod-twots
 pkgver=2_31
-pkgrel=1
+pkgrel=2
 pkgdesc="The World of Terrifying Silence - a mod for OpenXcom (OXCE)"
 url="https://openxcom.mod.io/the-world-of-terrifying-silence"
 license=('GPLv3')
@@ -13,10 +13,10 @@ arch=('x86_64')
 depends=('openxcom')
 
 _pkgname_upstream="TWoTS"
-_mod_src="$srcdir/${_pkgname_upstream} ${pkgver}/User/Mods/${_pkgname_upstream}"
 
 package() {
-    mkdir -p $pkgdir/usr/share/openxcom/standard
-    cp -dr --no-preserve=ownership ${_mod_src} $pkgdir/usr/share/openxcom/standard/ 
+    _mod_src="${srcdir}/${_pkgname_upstream} ${pkgver}/User/Mods/${_pkgname_upstream}"
+    mkdir -p ${pkgdir}/usr/share/openxcom/standard
+    cp -dr --no-preserve=ownership "${_mod_src}" $pkgdir/usr/share/openxcom/standard/
 }
 
