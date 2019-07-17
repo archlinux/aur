@@ -8,13 +8,13 @@
 # Contributor: Jonas Heinrich <onny at project-insanity dot org>
 # Contributor: Antti Hautaniemi <an7oine at me dot com>
 
-_ubuntuver=16.04
+_ubuntuver=18.04
 _pkgbasename=acestream-engine
 _enginename=acestreamengine
 
 pkgname=acestream-engine-stable
-pkgver=3.1.16
-pkgrel=7
+pkgver=3.1.49
+pkgrel=1
 pkgdesc="P2P utility for multimedia live streaming and file transfer (stable version)"
 arch=("x86_64")
 url="http://acestream.org/"
@@ -34,21 +34,20 @@ backup=("usr/lib/$_pkgbasename/acestream.conf")
 install="$_pkgbasename.install"
 source=(
     "$_pkgbasename.service"
-    "$pkgname-$pkgver.tar.gz::http://dl.acestream.org/linux/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64.tar.gz"
-    "python2-m2crypto-0.24.0-4-x86_64.pkg.tar.xz"
+    "$pkgname-$pkgver.tar.gz::http://acestream.org/downloads/linux/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64.tar.gz"
+#    "python2-m2crypto-0.24.0-4-x86_64.pkg.tar.xz"
     "$_pkgbasename.desktop"
     "LICENSE"
 )
 sha256sums=(
     "9446e4c36c2e92b4253a1c3fea5fa30d366d46295dcd1f1cac4ddfe8f002fcbe"
-    "452bccb8ae8b5ff4497bbb796081dcf3fec2b699ba9ce704107556a3d6ad2ad7"
-    "177c22681be64a7533b3303652da8724aa20edcbead87be90765bc5040f4cff5"
+    "d2ed7bdc38f6a47c05da730f7f6f600d48385a7455d922a2688f7112202ee19e"
+#    "177c22681be64a7533b3303652da8724aa20edcbead87be90765bc5040f4cff5"
     "fad731aec3371b3e76065cf1668be6b61d33547d321c8cfb2b6018faa3d5b7b0"
     "SKIP"
 )
 
-package() {    
-    cd "$srcdir/acestream_${pkgver}_ubuntu_${_ubuntuver}_$CARCH"
+package() {
     sed -i "/ROOT=/c\ROOT=\/usr/lib\/${_pkgbasename}" "start-engine"
     
     install -Dm755 "$_enginename" "$pkgdir/usr/lib/$_pkgbasename/$_enginename"
@@ -61,7 +60,7 @@ package() {
 
     cp -a "data" "$pkgdir/usr/lib/$_pkgbasename/"
     cp -a "lib" "$pkgdir/usr/lib/$_pkgbasename/"
-    cp -a "$srcdir/usr/lib/python2.7/site-packages/M2Crypto" "$pkgdir/usr/lib/$_pkgbasename/lib"
+#    cp -a "$srcdir/usr/lib/python2.7/site-packages/M2Crypto" "$pkgdir/usr/lib/$_pkgbasename/lib"
 
     rm "$pkgdir/usr/lib/$_pkgbasename/lib/lxml-3.7.2-py2.7-linux-x86_64.egg"
 
