@@ -1,0 +1,18 @@
+pkgbase = python-streamz
+	pkgdesc = Real-time processing for python
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://streamz.readthedocs.io
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tornado
+	depends = python-toolz
+	depends = python-zict
+	source = https://pypi.org/packages/source/s/streamz/streamz-0.5.1.tar.gz
+	sha256sums = 80c9ded1d6e68d3b78339deb6e9baf93a633d84b4a8875221e337ac06890103f
+
+pkgname = python-streamz
+
