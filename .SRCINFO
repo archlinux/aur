@@ -1,6 +1,6 @@
 pkgbase = gam
 	pkgdesc = Command-line tool for Google GSuite admins to manage settings quickly and easily
-	pkgver = 4.88
+	pkgver = 4.89
 	pkgrel = 1
 	url = https://github.com/jay0lee/GAM
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = gam
 	depends = python-google-auth-oauthlib
 	depends = python-httplib2
 	depends = python-passlib
-	source = gam-4.88.tar.gz::https://github.com/jay0lee/GAM/archive/v4.88.tar.gz
+	source = gam-4.89.tar.gz::https://github.com/jay0lee/GAM/archive/v4.89.tar.gz
 	source = xdg_config_dirs.patch
 	source = gam.sh
-	sha256sums = e8b0a7842964e4a9bb1e5de59aa7569fc9c1e103acfc2c9e98a4b71c5fb6b2bb
+	sha256sums = 4fc8e6e979193d5441ee02daab630b3c454b1833f32d7c3fc211447b740e2ac9
 	sha256sums = 202e3566d837c37526174fb6311232c06d90e3786578668aa58ef3eb0648054a
 	sha256sums = d93809852ef9eefeb99f3fc1b955305264f93f2552db14b4d9d6fe7c2b08345b
 
