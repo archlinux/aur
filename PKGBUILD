@@ -14,10 +14,8 @@ makedepends=('linux-headers')
 conflicts=('vfat' 'exfat' 'exfat-dkms-git' 'sdfat-dkms-git')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TBK/kernel-sdfat/archive/$pkgver.tar.gz"
-        dkms.conf
         mount.exfat)
 sha512sums=('86c39aab2384475f55805c6851f61c02a19b7843a1c17a5f0ea8933da07e491a1af814789e8b4fb4b8aed4b734e0ca832d7813aa3640a0ef337fa9022e2615d3'
-            '13f9c31aea1dad556bf4429b288c72937d3d9670f60a7403075c72a3528b468aab67a892b23397a59345c038a9e152576a5d6ddd004e36777c67d4e4fa4defb5'
             '85c54950e69e342221343b8b542fda47f80b9a7104e1097a7f1c9a09f69758ef8881c238d2740f3a21aa2b5cdcb3b9b8224c731ec2e39fa4632f56c2df85bc84')
 
 _builddir="kernel-sdfat-$pkgver"
@@ -33,6 +31,5 @@ package() {
   mkdir -p "${pkgdir}/usr/src"
   cp -r ${_builddir} "${pkgdir}/usr/src/sdfat-${pkgver}"
 
-  install -Dm644 "${srcdir}/dkms.conf" "${pkgdir}/usr/src/sdfat-${pkgver}/dkms.conf"
   install -Dm755 "${srcdir}/mount.exfat" "${pkgdir}/usr/bin/mount.exfat"
 }
