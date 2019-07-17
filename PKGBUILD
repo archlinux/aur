@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 pkgname=dumpsterdiver-git
 _pkgname=${pkgname%-git}
-pkgver=r14.968537c
+pkgver=r69.5a98043
 pkgrel=1
 pkgdesc="DumpsterDiver is a tool used to analyze big volumes of various file types in search of hardcoded secret keys"
 arch=('any')
@@ -18,7 +18,7 @@ source=("${_pkgname}::git+https://github.com/securing/DumpsterDiver.git"
 	'advancedSearch.py.patch')
 sha256sums=('SKIP'
             '515717412d2e35c895b7f5eab2247b3345f33cd4ceff1859908cdd6d976f63a6'
-            'f71c5225b891c2556eab2ad586d97e70172545313a4b36107b19bc2e6929807b')
+            'e85786eb49a43bc8ea87d924f66476fcee4aa64b483d60227bb81c4bf427cc94')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
