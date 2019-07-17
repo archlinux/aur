@@ -1,18 +1,19 @@
 pkgbase = python-google-auth-oauthlib
 	pkgdesc = oauthlib integration for Google auth.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = http://google-auth-oauthlib.readthedocs.io/en/latest/
 	arch = any
 	license = Apache
+	checkdepends = python-click
 	checkdepends = python-pytest
 	checkdepends = python-mock
 	depends = python
 	depends = python-google-auth
 	depends = python-requests-oauthlib
 	optdepends = python-click
-	source = https://pypi.org/packages/source/g/google-auth-oauthlib/google-auth-oauthlib-0.3.0.tar.gz
-	sha256sums = a0470c19130ddf90c2b07c0c701d72890a7335090903aeb709f003a66416380f
+	source = https://pypi.org/packages/source/g/google-auth-oauthlib/google-auth-oauthlib-0.4.0.tar.gz
+	sha256sums = 6a8b0072048940d1f41c23c03576867e577e826fec140a1c7e148ec486e083ba
 
 pkgname = python-google-auth-oauthlib
 
