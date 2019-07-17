@@ -1,6 +1,6 @@
 pkgbase = string-machine-git
 	pkgdesc = A virtual-analog string ensemble synthesizer LV2 and VST2 plugin
-	pkgver = 0.1.0.r18.a7cdae0
+	pkgver = 0.1.0.r1.g009ffce
 	pkgrel = 1
 	url = https://github.com/jpcima/string-machine
 	arch = i686
@@ -8,7 +8,9 @@ pkgbase = string-machine-git
 	groups = lv2-plugins
 	groups = vst-plugins
 	license = Boost
+	makedepends = boost
 	makedepends = git
+	makedepends = mesa
 	depends = cairo
 	provides = string-machine
 	provides = string-machine=0.1.0

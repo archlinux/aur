@@ -2,14 +2,14 @@
 
 _pkgname=string-machine
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r18.a7cdae0
+pkgver=0.1.0.r1.g009ffce
 pkgrel=1
 pkgdesc="A virtual-analog string ensemble synthesizer LV2 and VST2 plugin"
 arch=('i686' 'x86_64')
 url="https://github.com/jpcima/string-machine"
 license=('Boost')
 depends=('cairo')
-makedepends=('git')
+makedepends=('boost' 'git' 'mesa')
 groups=('lv2-plugins' 'vst-plugins')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}")
@@ -20,10 +20,8 @@ md5sums=('SKIP' 'SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  # This should be extracted from the sources if possible.
-  # See: https://github.com/jpcima/string-machine/issues/3
-  local ver="0.1.0"
-  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  # See https://github.com/jpcima/string-machine/issues/3#issuecomment-512590428
+  git describe --long --exclude latest | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
