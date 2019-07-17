@@ -1,0 +1,16 @@
+pkgbase = helpers-for-i3-git
+	pkgdesc = Handy scripts for i3 window manager: smart resize/open new workspace.
+	pkgver = r2.b8681d3
+	pkgrel = 1
+	url = https://github.com/vivien/helpers-for-i3.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = i3-wm
+	depends = python
+	depends = python-i3ipc
+	source = helpers-for-i3-git::git+https://github.com/vivien/helpers-for-i3#branch=master
+	sha256sums = SKIP
+
+pkgname = helpers-for-i3-git
+
