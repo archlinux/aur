@@ -14,10 +14,11 @@ pkgbase = genn
 	depends = cuda
 	optdepends = python: for pygenn
 	optdepends = python-numpy: for pygenn
+	optdepends = spinecreator: for spineml2genn
 	options = staticlibs
 	options = !emptydirs
 	source = https://github.com/genn-team/genn/archive/4.0.0.tar.gz
-	sha256sums = 26879deff8201f13f10f314e42548fb8e85d5310f7da6d8c097fe6bc2bd1cd64
+	sha256sums = 86c74be81127df2bd4d785988f49bc244bae346da6fb67287ef2c3818945ac22
 
 pkgname = genn
 
