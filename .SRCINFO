@@ -1,0 +1,23 @@
+pkgbase = kgx-git
+	pkgdesc = A minimal terminal for GNOME
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/ZanderBrown/kgx
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = vte3
+	depends = gtk3
+	depends = glib2
+	depends = libgtop
+	provides = kgx
+	conflicts = kgx
+	source = git+https://gitlab.gnome.org/ZanderBrown/kgx.git
+	sha256sums = SKIP
+
+pkgname = kgx-git
+
