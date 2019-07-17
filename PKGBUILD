@@ -1,7 +1,9 @@
 # Maintainer: Tassos Natsakis <7712382@eipieq.com>
 
 pkgname="astra-sdk"
-pkgver="2.0.15"
+pkgver="2.0.16"
+pkgtimestamp="20190516T025855Z"
+pkgchecksum="e6b4f7afb2"
 pkgrel=1
 pkgdesc='SDK for the Astra Camera from Orbbec'
 url="https://orbbec3d.com/develop/"
@@ -11,9 +13,9 @@ depends=('sfml>=2.3' 'sfml<2.4')
 makedepends=('gcc>=4.9', 'clang>=3.5')
 options=('!strip') # Avoid time consuming operations.
 PKGEXT='.pkg.gz.tar' 
-_dir="AstraSDK-v${pkgver}-232757cc1d-20190327T080423Z-Linux"
-source=("http://dl.orbbec3d.com/dist/astra/v${pkgver}/AstraSDK-v${pkgver}-232757cc1d-20190327T080423Z-Ubuntu16.04.tar.gz")
-sha256sums=('63d35b1e4375ced587b547869545a060d2fc4f9f3d398ea8336d397bd655b7d3')
+_dir="AstraSDK-v${pkgver}-${pkgchecksum}-${pkgtimestamp}-Linux"
+source=("http://dl.orbbec3d.com/dist/astra/v${pkgver}/AstraSDK-v${pkgver}-${pkgchecksum}-${pkgtimestamp}-ubuntu16.04.tar.gz")
+sha256sums=('71a513702d70abad83575a755021ed484c76bf9fc5979d57c82311be288ac74c')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
