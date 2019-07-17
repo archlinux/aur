@@ -2,7 +2,7 @@
 
 _pkgbasename=mediainfo-gui
 pkgname=mediainfo-gui-qt
-pkgver=19.04
+pkgver=19.07
 pkgrel=1
 pkgdesc="Supplies technical and tag information about a video or audio file (Qt GUI interface)"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/MediaArea/MediaInfo/archive/v$pkgver.tar.gz"
     "kde4-service.desktop" "konqueror-service.desktop" "kservices5.desktop")
 md5sums=(
-    "548a5e3797e17757e56cbe3bc8132c33"
+    "3a1faa4e0276e6d76b00845b9e3203df"
     "SKIP" "SKIP" "SKIP")
 
 build() {
