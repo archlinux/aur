@@ -4,7 +4,7 @@
 # Contributor: kageurufu
 
 pkgname=burpsuite
-pkgver=1.7.36
+pkgver=2.1.01
 pkgrel=1
 pkgdesc="An integrated platform for performing security testing of web applications (free edition)."
 url="https://portswigger.net/burp/"
@@ -12,15 +12,15 @@ depends=('java-runtime')
 arch=('any')
 license=('custom')
 noextract=("${pkgname}-${pkgver}.jar")
-source=("${pkgname}-${pkgver}.jar::https://portswigger.net/Burp/Releases/Download?productId=100&version=${pkgver}&type=Jar"
+source=("${pkgname}-${pkgver}.jar::https://portswigger.net/burp/releases/download?product=community&version=${pkgver}&type=jar"
         LICENSE
         burpsuite.desktop
         icon64.png)
 
-sha1sums=('446c268ae6e59db54e902d34a130e7cbf5a411ae'
-          '5c78bd9cfce70fe9cba679a88bef9cc9bdf19146'
-          'c87e811ff37d63e5a206516967926b3d6e4e991f'
-          'fbd3e7d3e70d817d017899ed71bc69ae7066804c')
+sha256sums=('a42ea2400a6392097301bc5d886ac1f173a24a921cad68b15deca25862d5657b'
+            'a1146672de7084a1cddc5b7dab4d18b3530c194bd6e45a2b0ac04b579751ca30'
+            '950c61d7ce1257c21a4152abebb8da320d0206ceb59247d6c912903d1ed39fc8'
+            'd31232a7dbdab9d5723f12aa25c52d13fd46ef2e8837a85fb9a08c3a7f151541')
 
 package() {
   mkdir -p ${pkgdir}/usr/bin
