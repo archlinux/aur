@@ -3,8 +3,8 @@
 # Contributor: Edvinas Valatka <edacval@gmail.com>
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
-pkgname='seahub'
-pkgver='6.3.4'
+pkgname=seahub
+pkgver=7.0.3
 pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -35,6 +35,8 @@ depends=(
     'python2-django-webpack-loader'
     'python2-cas'
     'python2-django-picklefield'
+    'xmlsec'  # dep missing for python2-dm.xmlsec.binding
+    'python2-social-auth-core'
 )
 optdepends=(
     'mysql-python: MySQL support'
@@ -44,7 +46,7 @@ optdepends=(
 )
 changelog="ChangeLog"
 source=("$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz")
-sha256sums=('53a9efdb6791fd3a2a191e89cb0f133632056046ec08adbb2ad72088e6161430')
+sha256sums=('0cc209b6195eef73253f45e18b9ba33db977144de7092d417bfebe2e46f98cca')
 options=('!strip')
 
 prepare() {
