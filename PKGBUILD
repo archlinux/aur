@@ -3,7 +3,7 @@
 
 #to enforce cuda verison uncomment this line and update value of sm_xx model accordingly
 #_cuda_capability+=(sm_30 sm_35 sm_37) # suppress to prevent Travis build exceed time limit.
-_cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
+#_cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
 
 pkgname=blender-2.7
 _fragment="#branch=blender2.7"
@@ -17,7 +17,7 @@ depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-util
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 #optdepends=('cuda: CUDA support in Cycles')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm' 'ninja')
-makedepends+=('cuda') # disable to prevent build process from exiting Travis 50m build time limit
+((DISABLE_CUDA)) || makedepends+=('cuda') # disable to prevent build process from exiting Travis 50m build time limit
 options=(!strip)
 provides=('blender=2.7')
 license=('GPL')
