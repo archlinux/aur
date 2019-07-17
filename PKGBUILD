@@ -1,8 +1,8 @@
 # Maintainer: schw0reismus <schw0reismus@protonmail.com>
 
 pkgname=foliate-git
-pkgver=1.5.0.r0.g6144d12
-pkgrel=2
+pkgver=1.5.0.r4.g3091fb4
+pkgrel=1
 pkgdesc="A simple and modern GTK eBook reader"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://johnfactotum.github.io/foliate/"
