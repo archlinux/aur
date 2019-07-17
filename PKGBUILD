@@ -18,8 +18,8 @@
 pkgbase="zfs-linux-vfio"
 pkgname=("zfs-linux-vfio" "zfs-linux-vfio-headers")
 _zfsver="0.8.1"
-_kernelver="5.2.arch2-1"
-_extramodules="5.2.0-arch2-1-vfio"
+_kernelver="5.2.1.arch1-1"
+_extramodules="5.2.1-arch1-1-vfio"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
