@@ -6,9 +6,7 @@ msg() {
 	printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
 }
 
-
 post_upgrade() {
-  msg "Attempting to enable services..."
   systemctl is-active haveged >/dev/null || systemctl enable haveged
   systemctl is-active systemd-swap >/dev/null || systemctl enable systemd-swap
   systemctl is-active irqbalance >/dev/null || systemctl enable irqbalance
@@ -16,13 +14,12 @@ post_upgrade() {
   systemctl is-active grub-btrfs.path >/dev/null || systemctl enable grub-btrfs.path
   systemctl is-active fstrim.timer >/dev/null || systemctl enable fstrim.timer
   echo ""
-  msg "services should now be enabled."
-  msg "Reboot your system, so changes will take effect.."
+  msg "services enabled."
   echo ""
 }
 
 post_install() {
-  msg "Attempting to enable services..."
+  msg "Attempting to enable Samba services..."
   systemctl is-active haveged >/dev/null || systemctl enable haveged
   systemctl is-active systemd-swap >/dev/null || systemctl enable systemd-swap
   systemctl is-active irqbalance >/dev/null || systemctl enable irqbalance
@@ -34,5 +31,3 @@ post_install() {
   msg "Reboot your system, so changes will take effect.."
   echo ""
 }
-
-
