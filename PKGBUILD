@@ -2,7 +2,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=lib32-libvpx
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='VP8 and VP9 codec'
 arch=(x86_64)
@@ -25,12 +25,12 @@ build() {
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
   ./configure \
-    --prefix='/usr' \
-    --libdir='/usr/lib32' \
-    --target='x86-linux-gcc' \
+    --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --target=x86-linux-gcc \
     --disable-install-bins \
     --disable-install-docs \
     --disable-install-srcs \
