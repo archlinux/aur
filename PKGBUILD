@@ -21,7 +21,8 @@ build() {
     cd v-$pkgver
     cc -std=gnu11 -w -o v v.c -lm
     ./v -prod -o v compiler
-    make thirdparty
+    # -fPIC -pie required for examples/hot_code_reloading
+    make CFLAGS+="-fPIC -pie" thirdparty
 }
 
 package() {
