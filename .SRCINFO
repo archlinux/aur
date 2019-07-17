@@ -1,6 +1,6 @@
 pkgbase = kaidan
 	pkgdesc = A user-friendly XMPP client for every device
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://www.kaidan.im/
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = kaidan
 	depends = qxmpp
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
-	source = https://download.kde.org/stable/kaidan/0.4.0/kaidan-0.4.0.tar.xz
-	source = https://download.kde.org/stable/kaidan/0.4.0/kaidan-0.4.0.tar.xz.sig
+	source = https://download.kde.org/stable/kaidan/0.4.1/kaidan-0.4.1.tar.xz
+	source = https://download.kde.org/stable/kaidan/0.4.1/kaidan-0.4.1.tar.xz.sig
 	validpgpkeys = 03C2D10DC97E5B0BEBB8F3B44663231A91A1E27B
-	sha256sums = c2ec16d2acfb4c62d3eef652e492a7267124148d458321436eaf1916e8ed4d9e
+	sha256sums = a9660e2b9c9d9ac6802f7de9a8e1d29a6d552beffcafca27231682bf1038e03c
 	sha256sums = SKIP
 
 pkgname = kaidan

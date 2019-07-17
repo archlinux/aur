@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kaidan
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A user-friendly XMPP client for every device"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(GPL3 MIT)
 depends=(knotifications kirigami2 qt5-svg qxmpp desktop-file-utils hicolor-icon-theme)
 makedepends=(extra-cmake-modules)
 source=("https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('c2ec16d2acfb4c62d3eef652e492a7267124148d458321436eaf1916e8ed4d9e'
+sha256sums=('a9660e2b9c9d9ac6802f7de9a8e1d29a6d552beffcafca27231682bf1038e03c'
             'SKIP')
 validpgpkeys=(03C2D10DC97E5B0BEBB8F3B44663231A91A1E27B) # Linus Jahn <lnj@kaidan.im>
 
