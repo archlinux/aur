@@ -1,0 +1,35 @@
+pkgbase = kitty-without-monolimit-git
+	pkgdesc = A modern, hackable, featureful, OpenGL based terminal emulator (monospace font limit removed).
+	pkgver = 0.14.2.r168.g9368f7f6
+	pkgrel = 1
+	url = https://github.com/kovidgoyal/kitty
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = libxinerama
+	makedepends = libxcursor
+	makedepends = libxrandr
+	makedepends = libxkbcommon
+	makedepends = libxkbcommon-x11
+	makedepends = glfw-x11
+	makedepends = wayland-protocols
+	makedepends = mesa
+	makedepends = python-sphinx
+	depends = python3
+	depends = freetype2
+	depends = fontconfig
+	depends = wayland
+	depends = libx11
+	depends = libgl
+	optdepends = imagemagick: viewing images with icat
+	provides = kitty
+	conflicts = kitty
+	source = git+https://github.com/kovidgoyal/kitty.git
+	source = kitty.patch
+	md5sums = SKIP
+	md5sums = ac7ea79c862f3d74f6b87804e433e6b7
+
+pkgname = kitty-without-monolimit-git
+

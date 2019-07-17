@@ -1,0 +1,18 @@
+diff --unified --recursive kitty.orig/kitty/fonts/fontconfig.py kitty.new/kitty/fonts/fontconfig.py
+--- kitty.orig/kitty/fonts/fontconfig.py	2019-06-21 23:57:48.929339086 +0800
++++ kitty.new/kitty/fonts/fontconfig.py	2019-06-22 00:14:18.144595768 +0800
+@@ -55,12 +55,12 @@
+ 
+ def find_best_match(family, bold=False, italic=False, monospaced=True):
+     q = family_name_to_key(family)
+-    font_map = all_fonts_map(monospaced)
++    font_map = all_fonts_map(False)
+ 
+     def score(candidate):
+         bold_score = abs((FC_WEIGHT_BOLD if bold else FC_WEIGHT_REGULAR) - candidate.get('weight', 0))
+         italic_score = abs((FC_SLANT_ITALIC if italic else FC_SLANT_ROMAN) - candidate.get('slant', 0))
+-        monospace_match = 0 if candidate.get('spacing') == 'MONO' else 1
++        monospace_match = 1
+         return bold_score + italic_score, monospace_match
+ 
+     # First look for an exact match
