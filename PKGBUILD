@@ -4,7 +4,7 @@ _gitname=darling
 pkgbase=$_gitname
 pkgname=('darling' 'darling-mach-dkms')
 pkgver=r2544.ab56f320
-pkgrel=1
+pkgrel=2
 pkgdesc="Darwin/macOS emulation layer for Linux (Stable)"
 arch=('x86_64')
 url="http://www.darlinghq.org/"
@@ -13,7 +13,7 @@ groups=('darling')
 depends=('xz' 'fuse' 'libxml2' 'icu' 'openssl' 'bzip2' 'zlib' 'libsystemd'
         'wget' 'curl' 'sqlite' 'ruby' 'sed' 'libarchive' 'file' 'python' 'gawk' 'libunwind') # namcap complains about them
 _depends_x86_64=('lib32-clang' 'lib32-bzip2' 'lib32-systemd' 'lib32-libxslt' 'libpng' 'cairo' 'libtiff' 'glu' 'libbsd' 'python2')
-makedepends=('git' 'cmake' 'clang' 'dkms' 'bison' 'flex' 'binutils>=2.28' 'libpng' 'cairo' 'libtiff' 'glu' 'libbsd' 'python2' 'linux-headers')
+makedepends=('git' 'cmake' 'clang' 'dkms' 'bison' 'flex' 'binutils>=2.28' 'libpng' 'cairo' 'libtiff' 'glu' 'libbsd' 'python2' 'linux-headers' 'convmv')
 _make_depends_x86_64=('gcc-multilib')
 
 # Darling git repo and all submodules.
@@ -266,7 +266,9 @@ package_darling() {
     conflicts=('darling-git')
 
     cd "$srcdir/$_gitname/build"
-    make DESTDIR="$pkgdir" install 
+    make DESTDIR="$pkgdir" install
+    # Normalize OpenSSL Cert Filenames for Linux
+    convmv -f UTF-8 -t UTF-8 --nfc --notest --replace "$pkgdir"/usr/libexec/darling/System/Library/OpenSSL/certs/*
     install -Dvm755 "$srcdir/$_gitname/src/setup-ld-so.sh" "$pkgdir/usr/bin/darling-setup-ld-so"
 }
 
