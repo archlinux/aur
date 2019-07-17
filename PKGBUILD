@@ -6,7 +6,7 @@
 
 _pkgname=teamspeak3
 pkgname=$_pkgname-wbundled
-pkgver=3.2.3
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="TeamSpeak is software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
@@ -23,11 +23,11 @@ options=(!strip)
 source=('teamspeak3.desktop'
         'teamspeak3.png'
         'LICENSE'
-        "http://teamspeak.gameserver.gamed.de/ts3/releases/${pkgver}/TeamSpeak3-Client-linux_amd64-${pkgver}.run")
+       "https://files.teamspeak-services.com/releases/client/${pkgver}/TeamSpeak3-Client-linux_amd64-${pkgver}.run")
 sha512sums=('4cac0b7446dc3e728b232fdd6c6d75be1d2a5530635eab5918a4e7dd6a4a3fc21d6a75055da919b56e5cf849f4c5ba26ece56759a45bc4850eba3eb73853759d'
             'af18ed36a3c8de90b60a7205ebf91a35d4b517f22f97d541c82debdb12697882469d9771fdf3fb8b081aeb74a01237f3afd4732daccf4b374dc6d39e7df5d444'
             'd6d03f1bda86c90390ce0032e4d30e889977f80ff76ba1e5c443109e93cbedbee92c6fc2759f58d23659c15dba4f2ac718861571239ba117dcfe11f136f556dc'
-            '6f2a0e366589a3495be3ecbe3e866e1d05db3578ed1e2bf19195e6d6818acc1ddb44b46915aa88ff64ac6cc150d3b88b3347147bb0cde93e013aa7960c10dfab')
+            '477ced3deb4d4226817bf1f4ec0828123c027027160cdc62a6384583227c153168ec28025613380483229e2a8b3c30bf5b17337c3011e52f01317a9f0dbd4bbb')
 
 prepare() {
   mkdir archive && cd archive
@@ -60,5 +60,6 @@ package() {
   install -D -m644 "${srcdir}"/teamspeak3.png "${pkgdir}"/usr/share/pixmaps/teamspeak3.png
   install -D -m644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
   ln -s /opt/teamspeak3/ts3client_linux_amd64 "${pkgdir}"/usr/bin/teamspeak3
+  chmod +x "$pkgdir"/opt/teamspeak3/ts3client_linux_amd64
 }
 # vim:set ts=2 sw=2 et:
