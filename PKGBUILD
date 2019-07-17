@@ -2,13 +2,13 @@
 
 pkgname=corectrl
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Core control application"
 url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('procps-ng' 'hwids')
-makedepends=('cmake>=3.3' 'botan>=2.2.0' 'qt5-base>=5.9' 'qt5-tools' 'kauth' 'karchive' 'gcc>=7.2' 'extra-cmake-modules' 'qt5-charts' 'qt5-quickcontrols' 'qca')
+makedepends=('cmake>=3.3' 'botan>=2.2.0' 'qt5-base>=5.9' 'qt5-tools' 'kauth' 'karchive' 'gcc>=8' 'extra-cmake-modules' 'qt5-charts' 'qt5-quickcontrols' 'qca')
 optdepends=(
 	'vulkan-tools: For vulkaninfo'
 	'mesa-demos: For glxinfo',
