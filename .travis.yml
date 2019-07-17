@@ -51,6 +51,9 @@ arch:
      echo -e "#!/bin/sh -\n/usr/bin/ccache $_gcc \"\$@\"" | sudo dd of=/opt/cuda/bin/gcc
      echo -e "#!/bin/sh -\n/usr/bin/ccache $_gpp \"\$@\"" | sudo dd of=/opt/cuda/bin/g++
      sudo chmod +x /opt/cuda/bin/{nvcc,g{cc,++}}
+# Normalize TRAVIS variable
+  - |
+     [ "$TRAVIS" == "true" ] && TRAVIS=1 || TRAVIS=0
 # Build
   - ccache -s
   - timeout 35m makepkg -s --noconfirm | ts -s '[%.T]'
