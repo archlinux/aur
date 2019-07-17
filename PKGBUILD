@@ -2,7 +2,7 @@
 # Contributor: TBK <aur@jjtc.eu>
 
 pkgname=sdfat-dkms
-pkgver=2.1.10.3
+pkgver=2.1.10.4
 pkgrel=1
 pkgdesc='FAT12/16/32(VFAT)/exFAT filesystem kernel module - use with DKMS'
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=('vfat' 'exfat' 'exfat-dkms-git' 'sdfat-dkms-git')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TBK/kernel-sdfat/archive/$pkgver.tar.gz"
         mount.exfat)
-sha512sums=('86c39aab2384475f55805c6851f61c02a19b7843a1c17a5f0ea8933da07e491a1af814789e8b4fb4b8aed4b734e0ca832d7813aa3640a0ef337fa9022e2615d3'
+sha512sums=('ecbff4c5b4474aa6d1e57080c6c0a0e631c3d3590e78fada9de2ec1c81fc88ea3a7062efd6fabb4b95bd7c766910de6080904a6f790934df6cb77b33ca8948c8'
             '85c54950e69e342221343b8b542fda47f80b9a7104e1097a7f1c9a09f69758ef8881c238d2740f3a21aa2b5cdcb3b9b8224c731ec2e39fa4632f56c2df85bc84')
 
 _builddir="kernel-sdfat-$pkgver"
