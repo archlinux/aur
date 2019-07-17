@@ -1,7 +1,7 @@
 pkgbase = darling-git
 	pkgdesc = Darwin/macOS emulation layer for Linux
 	pkgver = r2563.a567e86c
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.darlinghq.org
 	arch = x86_64
 	groups = darling-git
@@ -20,6 +20,7 @@ pkgbase = darling-git
 	makedepends = libbsd
 	makedepends = python2
 	makedepends = linux-headers
+	makedepends = convmv
 	depends = xz
 	depends = fuse
 	depends = libxml2

@@ -2,6 +2,7 @@ DARLING_PATH="/usr/libexec/darling"
 
 setup_ld() {
 	cd "$DARLING_PATH"
+	echo "Running darling-setup=ld-so"
 	/usr/bin/darling-setup-ld-so
 }
 
