@@ -2,18 +2,19 @@
 pkgbase=python-sherpa
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=4.10.2
+pkgver=4.11.0
 pkgrel=1
 pkgdesc="Modeling and fitting package for scientific data analysis"
 arch=('i686' 'x86_64')
 url="http://cxc.cfa.harvard.edu/contrib/sherpa/"
 license=('GPL')
-makedepends=('python>=3.5' 'python-numpy' 'fftw' 'python-setuptools' 'python-sphinx>=1.3' 'python-sphinx-astropy' 'graphviz')
+makedepends=('python>=3.5' 'python-numpy' 'fftw' 'python-setuptools' 'python-sphinx_rtd_theme' 'python-sphinx-astropy' 'graphviz')
 #'gcc-fortran')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'sherpa_local_fftw.patch')
-md5sums=('2698c62776f0ce793ebc87df7f679065'
+md5sums=('43a8b284712a7a1e22a00447a486a93e'
          'd1823cc7683442d92450fadff7aed362')
+_pyver=$(python -V | cut -c 8-10)
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -47,7 +48,7 @@ package_python-sherpa() {
     install -D -m644 notebooks/SherpaQuickStart.ipynb -t "${pkgdir}/usr/share/doc/${pkgname}/notebooks"
     install -D -m644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-    rm ${pkgdir}/usr/lib/python3.7/site-packages/sherpa-${pkgver}-py3.7.egg-info/SOURCES.txt
+    rm ${pkgdir}/usr/lib/python${_pyver}/site-packages/sherpa-${pkgver}-py${_pyver}.egg-info/SOURCES.txt
 }
 
 package_python-sherpa-doc() {
