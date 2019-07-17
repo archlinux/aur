@@ -1,6 +1,6 @@
 pkgbase = python2-pypng
 	pkgdesc = Python 2 module to decode and encode PNG files
-	pkgver = 0.0.19
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://github.com/drj11/pypng
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-pypng
 	makedepends = python2
 	makedepends = python2-setuptools
 	depends = python2
-	source = https://github.com/drj11/pypng/archive/pypng-0.0.19.tar.gz
-	sha1sums = 234dc9bad0f9d5f002892aab877586b99658d5eb
+	source = https://github.com/drj11/pypng/archive/pypng-0.0.20.tar.gz
+	sha1sums = 14d3f65eaa359a10eb424f32f92d7364575abc57
 
 pkgname = python2-pypng
 
