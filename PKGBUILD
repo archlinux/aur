@@ -1,8 +1,9 @@
 # Maintainer: François Garillot ("huitseeker") <francois [at] garillot.net>
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@gmail.com>
+# Contributor: Emanuel Fontelles ("emanuelfontelles") <emanuelfontelles@hotmail.com>
 
 pkgname=apache-spark
-pkgver=2.4.0
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
@@ -16,15 +17,16 @@ optdepends=('python2: python2 support for pyspark'
             'r: support for sparkR'
             'rsync: support rsync hadoop binaries from master'
             'hadoop: support for running on YARN')
+
 install=apache-spark.install
-source=("https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=spark/spark-${pkgver}/spark-${pkgver}-bin-without-hadoop.tgz"
+source=("https://archive.apache.org/dist/spark/spark-${pkgver}/spark-${pkgver}-bin-hadoop2.7.tgz"
         'apache-spark-master.service'
         'apache-spark-slave@.service'
         'spark-env.sh'
         'spark-daemon-run.sh'
         'run-master.sh'
         'run-slave.sh')
-sha1sums=('ce6fe98272b78a5c487d16f0f5f828908b65d7fe'
+sha1sums=('7b2f1be5c4ccec86c6d2b1e54c379b7af7a5752a'
           'ac71d12070a9a10323e8ec5aed4346b1dd7f21c6'
           'a191e4f8f7f8bbc596f4fadfb3c592c3efbc4fc0'
           '3fa39d55075d4728bd447692d648053c9f6b07ec'
@@ -36,16 +38,16 @@ backup=('etc/apache-spark/spark-env.sh')
 PKGEXT=${PKGEXT:-'.pkg.tar.xz'}
 
 prepare() {
-  cd "$srcdir/spark-${pkgver}-bin-without-hadoop"
+  cd "$srcdir/spark-${pkgver}-bin-hadoop2.7"
 }
 
 package() {
-        cd "$srcdir/spark-${pkgver}-bin-without-hadoop"
+        cd "$srcdir/spark-${pkgver}-bin-hadoop2.7"
 
         install -d "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/var/log/apache-spark" "$pkgdir/var/lib/apache-spark/work"
         chmod 2775 "$pkgdir/var/log/apache-spark" "$pkgdir/var/lib/apache-spark/work"
 
-        cp -r "$srcdir/spark-${pkgver}-bin-without-hadoop" "$pkgdir/opt/apache-spark/"
+        cp -r "$srcdir/spark-${pkgver}-bin-hadoop2.7" "$pkgdir/opt/apache-spark/"
 
         cd "$pkgdir/usr/bin"
         for binary in beeline pyspark sparkR spark-class spark-shell find-spark-home spark-sql spark-submit load-spark-env.sh; do
@@ -67,7 +69,7 @@ package() {
         for script in run-master.sh run-slave.sh spark-daemon-run.sh; do
             install -Dm755 "$srcdir/$script" "$pkgdir/opt/apache-spark/sbin/$script"
         done
-        install -Dm644 "$srcdir/spark-${pkgver}-bin-without-hadoop/conf"/* "$pkgdir/etc/apache-spark"
+        install -Dm644 "$srcdir/spark-${pkgver}-bin-hadoop2.7/conf"/* "$pkgdir/etc/apache-spark"
 
         cd "$pkgdir/opt/apache-spark"
         mv conf conf-templates
