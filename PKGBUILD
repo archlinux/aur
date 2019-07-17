@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=mimeo
-pkgver=2019.3
+pkgver=2019.7
 pkgrel=1
 pkgdesc='Open files by MIME-type or file name using regular expressions.'
 arch=(any)
@@ -9,16 +9,16 @@ url="https://xyne.archlinux.ca/projects/mimeo"
 depends=(file python-xdg python3)
 optdepends=('shared-mime-info: for recognizing more MIME-types')
 source=(
-  https://xyne.archlinux.ca/projects/mimeo/src/mimeo-2019.3.tar.xz
-  https://xyne.archlinux.ca/projects/mimeo/src/mimeo-2019.3.tar.xz.sig
+  https://xyne.archlinux.ca/projects/mimeo/src/mimeo-2019.7.tar.xz
+  https://xyne.archlinux.ca/projects/mimeo/src/mimeo-2019.7.tar.xz.sig
 )
 sha512sums=(
-  2db1754e041d7e41e7771634465cade96942fdbf931168b7735ad0d547e8278920e2986e241c31985ca969ca81209caf4a035cdcc574766a504ce4ff6d3d0d70
-  1cac0081fbc9eb3c8e9c9dd7663e731605a3c1d3066ea8102dd02f0b4ca9e4d5553e7495b1ac878be592a22a956faa87da81c114ae3f0352d916ec8b140aa623
+  0a6c09a81791e30ec3cbb1fc7756e4018ac2862b304b3941fd612f32fe0c2b843b218c6b88e9ceadcca0ca1fb117a8d4c6f7899c7c0210ab99d145ad186b8924
+  50bef05a9dc12170b048d539800c7e1e57e70496ba4b7ed5c3fd1856451e02b1930008adeaec132f3684ae34be698f27d88d5afb1ab2ae2e78a6ed181fb89a10
 )
 md5sums=(
-  7559691b54bca4139aca0416c029053d
-  76d9889c740be7c2d485874025cf1495
+  4df389f20aba356a178786c6b57645f5
+  1f1a77fef89de102a98cc089a09c96c9
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
