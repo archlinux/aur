@@ -8,7 +8,7 @@
 pkgname=blender-2.7
 _fragment="#branch=blender2.7"
 pkgver=2.79b.r71421.e045fe53f1b
-pkgrel=1
+pkgrel=2
 pkgdesc="Blender 2.7 branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"

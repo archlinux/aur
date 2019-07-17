@@ -1,7 +1,7 @@
 pkgbase = blender-2.7
 	pkgdesc = Blender 2.7 branch
 	pkgver = 2.79b.r71421.e045fe53f1b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blender.org/
 	install = blender.install
 	arch = i686
