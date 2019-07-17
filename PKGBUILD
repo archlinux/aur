@@ -119,7 +119,7 @@ package() {
   mv ${pkgdir}/usr/share/doc/blender ${pkgdir}/usr/share/doc/blender-2.7
 
   msg "add -2.7 sufix to man page"
-  mv ${pkgdir}/usr/share/man/man1/blender.1.gz ${pkgrel}/usr/share/man/man1/blender-2.7.1.gz 
+  mv ${pkgdir}/usr/share/man/man1/blender.1 ${pkgdir}/usr/share/man/man1/blender-2.7.1
 
   msg "add -2.7 sufix to all icons"  
   for icon in `find ${pkgdir}/usr/share/icons -type f`
