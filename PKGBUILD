@@ -7,7 +7,7 @@ pkgname=(
     'manjarowish-light-kde-settings'
     )
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 _branch='master'
 url="https://github.com/librewish/manjarowish-light"
@@ -41,6 +41,7 @@ package_manjarowish-light-kde-settings() {
         'latte-dock'
         'mojave-gtk-theme-git'
         'papirus-icon-theme'
+        'noto-fonts'
         'preload'
         'haveged'
         'irqbalance'
