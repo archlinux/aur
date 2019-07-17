@@ -4,8 +4,8 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile-server
-pkgver=6.3.4
-pkgrel=2
+pkgver=7.0.3
+pkgrel=1
 pkgdesc='Seafile server core'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/haiwen/seafile-server'
@@ -21,14 +21,14 @@ conflicts=('seafile')
 changelog='ChangeLog'
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-server.tar.gz"
-    'fix_pids-folder-out-of-seafile-data.diff'
+    'fix_seafile-controller_paths.diff'
     'fix_seafile-admin.diff'
     'fix_mysql_support.diff'
     'seafile-server@.service'
 )
 sha256sums=(
-    '1ba4c641bad8d7592fd2592827e81470c88b8e802707d2b1e6d551c16d0da100'
-    'd725bda36aedd424d426d7ce62e19c7036ccfc6a5759df12f139656ba15e425c'
+    '311f6e6a89bd4559858e2841eb9d9d6d02f3efce93458462042be36166292b00'
+    '8069df2e84e5142a030c4598e410eeece1aaed2fdce3b8abe82b4752d257ffb9'
     '51a7f13b8c3dfcb3f510c68c9791bf6ace1a0b332ba26fdf55c850409bf387fa'
     'd625d1ac5fc666386a53059b1d31bce0e63c79b69c11bfb769f6390afb629611'
     'da31d1b61031cbacc42e1ab708c67c83dba933ff391b07677dabab7ab79729f4'
