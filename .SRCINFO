@@ -16,6 +16,8 @@ pkgbase = budgie-pixel-saver-applet-ubuntubudgie-git
 	depends = libpeas
 	depends = libwnck3
 	depends = xorg-xprop
+	conflicts = budgie-pixel-saver-applet
+	conflicts = budgie-pixel-saver-applet-git
 	source = git+https://github.com/UbuntuBudgie/budgie-pixel-saver-applet
 	sha512sums = SKIP
 

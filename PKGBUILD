@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('budgie-desktop' 'gnome-settings-daemon' 'libpeas' 'libwnck3' 'xorg-xprop')
 makedepends=('gobject-introspection' 'meson' 'ninja' 'vala')
+conflicts=('budgie-pixel-saver-applet' 'budgie-pixel-saver-applet-git')
 install=budgie-pixel-saver-applet.install
 
 source=("git+${url}")
