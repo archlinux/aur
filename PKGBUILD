@@ -1,16 +1,18 @@
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: lilac
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 
-pkgbase="cups-git"
-_pkgbase=cups
-pkgname=('libcups-git' 'cups-git')
-pkgver=2.3b7.r162.gc0447c4d9
+pkgbase="cups"
+pkgname=('libcups' 'cups')
+pkgver=2.3rc1.r29.g664789488
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
 url="https://www.cups.org/"
-makedepends=('git' 'libtiff' 'libpng' 'acl' 'pam' 'xdg-utils' 'krb5' 'gnutls'
-             'bc' 'colord' 'xinetd' 'gzip' 'autoconf' 'libusb' 'dbus'
+makedepends=('libtiff' 'libpng' 'acl' 'pam' 'xdg-utils' 'krb5' 'gnutls'
+             'cups-filters' 'bc' 'colord' 'xinetd' 'gzip' 'autoconf' 'libusb' 'dbus'
              'avahi'  'hicolor-icon-theme' 'systemd' 'inetutils' 'libpaper' 'valgrind')
+_srcdir='cups'
 source=(git://github.com/apple/cups.git
         cups.logrotate
         cups.pam
@@ -21,7 +23,8 @@ source=(git://github.com/apple/cups.git
         cups-1.6.2-statedir.patch
         # bugfixes
         cups-systemd-socket.patch
-        guid.patch)
+        guid.patch
+	samsung-printer-workaround.patch)
 sha256sums=('SKIP'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
@@ -30,22 +33,30 @@ sha256sums=('SKIP'
             'b8fc2e3bc603495f0278410350ea8f0161d9d83719feb64f573b63430cb4800b'
             '23349c96f2f7aeb7d48e3bcd35a969f5d5ac8f55a032b0cfaa0a03d7e37ea9af'
             'ea5a3d378807d45e1959c0b3893c84e50298b57d7f11943f9ed8ba2166d17cd7'
-            'd4537526c1e075866ae22ad263da000fc2a592d36c26b79a459a1cfdade2bb2d')
+            'd4537526c1e075866ae22ad263da000fc2a592d36c26b79a459a1cfdade2bb2d'
+            'ae3e154b8382f3412c73d863f4db095e722eb5255e15f0684b2bb9e02e5438af')
+validpgpkeys=('3737FD0D0E63B30172440D2DDBA3A7AB08D76223') # CUPS.org (CUPS.org PGP key) <security@cups.org>
+validpgpkeys+=('45D083946E3035282B3CCA9AF434104235DA97EB') # "CUPS.org <security@cups.org>"
+validpgpkeys+=('845464660B686AAB36540B6F999559A027815955') # "Michael R Sweet <michael.r.sweet@gmail.com>"
 
+pkgbase+='-git'
+pkgname=("${pkgname[@]/%/-git}")
+makedepends+=('git')
 pkgver() {
-  cd "$_pkgbase"
+  cd "$_srcdir"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
 
-  cd ${_pkgbase}
+  cd "${_srcdir}"
+  set -x
 
   # improve build and linking
   # Do not export SSL libs in cups-config
   patch -Np1 -i ${srcdir}/cups-no-export-ssllibs.patch
   # don't zip man pages in make install, let makepkg do that / Fedora
-  patch -Np1 -i ${srcdir}/cups-no-gzip-man.patch
+  #patch -Np1 -i ${srcdir}/cups-no-gzip-man.patch
   # move /var/run -> /run for pid file
   patch -Np1 -i ${srcdir}/cups-1.6.2-statedir.patch
 
@@ -56,23 +67,33 @@ prepare() {
   # FS#56818 - https://github.com/apple/cups/issues/5236
   patch -Np1 -i ${srcdir}/guid.patch
 
+  # FS#62360 / https://github.com/apple/cups/issues/5562
+  #patch -Np1 -i  ${srcdir}/samsung-printer-workaround.patch
+
+  set +x
+
   # set MaxLogSize to 0 to prevent using cups internal log rotation
   sed -i -e '5i\ ' conf/cupsd.conf.in
   sed -i -e '6i# Disable cups internal logging - use logrotate instead' conf/cupsd.conf.in
   sed -i -e '7iMaxLogSize 0' conf/cupsd.conf.in
-  
-  sed -i -e 's/WARNING_OPTIONS="-Werror /WARNING_OPTIONS="/g' config-scripts/cups-compiler.m4
-  sed -i -e 's/subtype)/subtypes)/g' test/ippeveprinter.c
 
-  # Rebuild configure script for not zipping man-pages.
-  aclocal -I config-scripts
-  autoconf -I config-scripts
+  sed -i -e 's/WARNING_OPTIONS="-Werror /WARNING_OPTIONS="/g' config-scripts/cups-compiler.m4
+  #sed -i -e 's/subtype)/subtypes)/g' test/ippeveprinter.c
 }
 
 build() {
-  cd ${_pkgbase}
+  cd "${_srcdir}"
+
+if [ ! -s 'cups-config' ]; then
+  # Rebuild configure script for not zipping man-pages.
+  # and -Werror change.
+  set -x
+  aclocal -I config-scripts
+  autoconf -I config-scripts
+  set +x
 
   # use fixed cups user (id 209) since systemd adds "lp" group without a fixed id
+  local _conf=(
   ./configure --prefix=/usr \
      --sysconfdir=/etc \
      --localstatedir=/var \
@@ -90,32 +111,37 @@ build() {
      --enable-ssl=yes \
      --enable-threads \
      --enable-avahi\
-     --enable-libpaper \
-     --with-php=/usr/bin/php-cgi \
+     --enable-libpaper
+     #--with-php=/usr/bin/php-cgi
      --with-optim="$CFLAGS" #--help
-  make -j1
+   )
+   ./configure "${_conf[@]:1}"
+fi
+  make
 }
 
 check() {
-  cd ${_pkgbase}
+  cd "${_srcdir}"
   #make -k check || /bin/true
 }
 
 package_libcups-git() {
-pkgdesc="The CUPS Printing System - client libraries and headers (GIT version)"
+pkgdesc="The CUPS Printing System - client libraries and headers"
+pkgdesc+=" (GIT version)"
 depends=('gnutls' 'libtiff>=4.0.0' 'libpng>=1.5.7' 'krb5' 'avahi' 'libusb')
-provides=("libcups=${pkgver}")
+provides=("libcups=${pkgver%.r*}")
 conflicts=('libcups')
 
-  cd ${_pkgbase}
+  cd "${_srcdir}"
   make -j1 BUILDROOT=${pkgdir} install-headers install-libs
   # put this into the libs pkg to make other software find the libs(no pkg-config file included)
   mkdir -p ${pkgdir}/usr/bin
-  install -m755 ${srcdir}/${_pkgbase}/cups-config ${pkgdir}/usr/bin/cups-config
+  install -m755 ${srcdir}/${_srcdir}/cups-config ${pkgdir}/usr/bin/cups-config
 }
 
 package_cups-git() {
-pkgdesc="The CUPS Printing System - daemon package (GIT version)"
+pkgdesc="The CUPS Printing System - daemon package"
+pkgdesc+=" (GIT version)"
 install=cups.install
 backup=(etc/cups/cupsd.conf
         etc/cups/snmp.conf
@@ -125,14 +151,16 @@ backup=(etc/cups/cupsd.conf
         etc/cups/subscriptions.conf
         etc/logrotate.d/cups
         etc/pam.d/cups)
-depends=('acl' 'pam' 'avahi' "libcups-git" 'cups-filters' 'bc'
+depends=('acl' 'pam' "libcups>=${pkgver%.r*}" 'cups-filters' 'bc'
          'dbus' 'systemd' 'libpaper' 'hicolor-icon-theme')
+#depends+=('avahi')
+depends+=("libcups-git")
 optdepends=('xdg-utils: xdg .desktop file support'
             'colord: for ICC color profile support')
-provides=("cups")
+provides=("cups=${pkgver%.r*}")
 conflicts=('cups')
 
-  cd ${_pkgbase}
+  cd "${_srcdir}"
   make -j1 BUILDROOT=${pkgdir} install-data install-exec
 
   # this one we ship in the libcups pkg
@@ -149,7 +177,7 @@ conflicts=('cups')
   chmod 755 ${pkgdir}/etc
 
   # use cups group FS#36769
-  install -Dm644 "$srcdir"/cups.sysusers "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 "$srcdir"/cups.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgbase%-git}.conf"
   sed -i "s:#User 209:User 209:" ${pkgdir}/etc/cups/cups-files.conf{,.default}
   sed -i "s:#Group 209:Group 209:" ${pkgdir}/etc/cups/cups-files.conf{,.default}
 
