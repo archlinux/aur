@@ -1,14 +1,14 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=fortune-mod-git
-pkgver=r81.082e4c0
-pkgrel=3
+pkgver=r283.a18575a
+pkgrel=1
 pkgdesc='Maintenance version of fortune-mod from redellipse.net'
 arch=('i686' 'x86_64')
 url='https://github.com/shlomif/fortune-mod'
 license=('BSD')
 depends=('ack' 'perl-file-find-object' 'perl-io-all' 'perl-list-moreutils')
-makedepends=('git' 'shlomif-cmake-modules')
+makedepends=('git' 'cmake')
 provides=('fortune-mod')
 conflicts=('fortune-mod')
 source=('git://github.com/shlomif/fortune-mod.git')
@@ -36,12 +36,7 @@ package() {
 
   make install DESTDIR="${pkgdir}"
 	mv "${pkgdir}/usr/games/fortune" "${pkgdir}/usr/bin/"
-	mv "${pkgdir}/usr/sbin/strfile" "${pkgdir}/usr/bin/"
-	mv "${pkgdir}/usr/sbin/unstr" "${pkgdir}/usr/bin/"
-	mv "${pkgdir}/usr/share/games/fortunes" "${pkgdir}/usr/share/fortune"
 	rmdir "${pkgdir}/usr/games"
-	rmdir "${pkgdir}/usr/sbin"
-	rmdir "${pkgdir}/usr/share/games"
 }
 
 # vim: set ts=2 sw=2 ft=sh noet:
