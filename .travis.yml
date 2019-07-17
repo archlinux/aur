@@ -52,9 +52,9 @@ arch:
      echo -e "#!/bin/sh -\n/usr/bin/ccache $_g++ \"\$@\"" | sudo dd of=/opt/cuda/bin/g++
      sudo chmod +x /opt/cuda/bin/{nvcc,g{cc,++}}
 # Build
-  - "ccache -s"
-  - "timeout 35m makepkg -s --noconfirm | ts -s '[%.T]'"
-  - "ccache -s"
+  - ccache -s
+  - timeout 35m makepkg -s --noconfirm | ts -s '[%.T]'
+  - ccache -s
 script:
 - "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/pacman-pkg-cache/arch-travis.sh |sed 's:mikkeloscar/arch-travis:bartoszek/arch-travis-bartus:'| bash"
 - "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
