@@ -1,0 +1,33 @@
+pkgbase = bittube-wallet-gui
+	pkgdesc = Bittube wallet gui
+	pkgver = 2.1.0.2
+	pkgrel = 1
+	url = https://github.com/ipbc-dev/bittube-wallet-gui
+	arch = x86_64
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = openssl
+	depends = boost-libs
+	depends = libunwind
+	depends = readline
+	depends = unbound
+	depends = hidapi
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-graphicaleffects
+	depends = qt5-location
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = qt5-tools
+	depends = qt5-webchannel
+	depends = qt5-webengine
+	depends = qt5-x11extras
+	depends = qt5-xmlpatterns
+	depends = qt5-svg
+	provides = bittube-wallet-gui
+	source = git+https://github.com/ipbc-dev/bittube-wallet-gui/#tag=2.1.0.2
+	md5sums = SKIP
+
+pkgname = bittube-wallet-gui
+
