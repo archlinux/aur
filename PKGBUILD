@@ -1,34 +1,38 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=majsoul-plus
-pkgver=1.12.0b4
+pkgver=2.0.0b1
 _pkgver=${pkgver/b/-beta.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Majsoul browser, with more features"
 arch=('x86_64' 'i686')
 url="https://github.com/MajsoulPlus/majsoul-plus"
 license=('AGPL3')
 depends=('electron')
-makedepends=('npm' 'imagemagick' 'gulp')
+makedepends=('yarn' 'moreutils' 'jq' 'imagemagick')
 source=("https://github.com/MajsoulPlus/majsoul-plus/archive/v$_pkgver.tar.gz")
-sha256sums=('537f5bb4c20ed957d536f0240c513529a44fef519e72dde66e4fdd68c131006b')
+sha256sums=('e22fe1aa3d8211382066eb680db4eaf8662776a527b57400babec954af1b2488')
 conflicts=("majsoul-plus-bin")
 
 prepare() {
 	cd "$pkgname-$_pkgver"
-	electronV=$(electron --version)
-	electronVer=${electronV#v}
 	targetArch="x64"
 	if [ "$CARCH" == "i686" ]; then
 		targetArch="ia32"
 	fi
-	sed -i "/\"electron\": \"/c\\\"electron\": \"$electronVer\"," package.json
-	sed -i "/\"build-linux\": \"/c\\\"build-linux\": \"gulp sass && electron-packager . Majsoul_Plus  --platform=linux --arch=$targetArch --out ./build/unpacked --ignore=build --overwrite --icon=bin/icons/icon.png\"," package.json
+	electronDist="\/usr\/lib\/electron"
+    electronVersion=$(tail -1 /usr/lib/electron/version)
+    sed -i "s|\"electron\": \".*|\"electron\": \"$electronVersion\",|" package.json
+	sed -i "/\"build-linux\": \"/c\\\"build-linux\": \"yarn pre-build && electron-builder --linux --$targetArch\"," package.json
+    jq '.build.linux.target = ["dir"]' package.json | sponge package.json
+    jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
+    jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
+
+	yarn
 }
 
 build() {
 	cd "$pkgname-$_pkgver"
-	npm install
-	npm run build-linux
+	yarn build-linux
 }
 
 package() {
@@ -42,19 +46,17 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/applications"
 
-	cd "build/unpacked/Majsoul_Plus-linux-$targetArch/resources/app"
-	find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/majsoul-plus/app/{}" \;
-	mkdir "$pkgdir/usr/share/majsoul-plus/app/static"
-	chmod a+w "$pkgdir/usr/share/majsoul-plus/app/static"
+	cd "build/linux-unpacked/resources"
+	install -Dm644 app.asar "$pkgdir/usr/share/majsoul-plus/app.asar"
 
 	for size in 16 24 32 48 64 72 128 256; do
         target="$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/"
         mkdir -p "$target"
-        convert bin/icons/icon.png -resize ${size}x${size} "$target/majsoul-plus.png"
+        convert "$srcdir/$pkgname-$_pkgver/assets/bin/icons/icon.png" -resize ${size}x${size} "$target/majsoul-plus.png"
     done
 
 	echo "#!/usr/bin/env bash
-exec electron --enable-logging /usr/share/majsoul-plus/app" > "$srcdir/majsoul-plus.sh"
+exec electron --enable-logging /usr/share/majsoul-plus/app.asar" > "$srcdir/majsoul-plus.sh"
 	install -Dm755 "$srcdir/majsoul-plus.sh" "$pkgdir/usr/bin/majsoul-plus"
 
 	echo "[Desktop Entry]
