@@ -1,20 +1,22 @@
 # Maintainer: Konrad Borowski <konrad@borowski.pw>
 pkgname=klient-jpk-2.0
-pkgver=1.0.4.3
-pkgrel=2
+pkgver=1.0.4.4
+pkgrel=1
 pkgdesc="A tool for submitting JPK files to Ministerstwo Finansów"
 arch=('i686' 'x86_64')
 url="https://www.podatki.gov.pl/jednolity-plik-kontrolny/aplikacje-do-pobrania/"
 license=(custom)
 depends=(java8-openjfx)
-source=('http://www.mf.gov.pl/documents/764034/5134536/TransmitterResources_1_0_4_2_lib.update'
-        'http://www.mf.gov.pl/documents/764034/5134536/TransmitterLauncher_1_0_4_3_lib.update'
+source=('http://www.mf.gov.pl/documents/764034/5134536/TransmitterJPK_1_0_4_4_lib.update'
+        'http://www.mf.gov.pl/documents/764034/5134536/TransmitterResources_1_0_4_4_lib.update'
+        'http://www.mf.gov.pl/documents/764034/5134536/TransmitterLauncher_1_0_4_4_lib.update'
         'https://www.podatki.gov.pl/media/1150/mfcsfp.cer'
         start.sh)
-sha256sums=('28047564fdcd996386172241007ccee31eaedea53bf70cdad84b0997069865d6'
-            '1c0d261240ebf7d936c8ba1f572ef509548a1c7a5cad535a63e4061e0078a043'
+sha256sums=('85c3bf6019d44a0ea10de7236aac37f684dd3b7625c171c8c2fe31232e896457'
+            '32775f3514ffcaef4af6cde7f9c2f375006b038e21cc259c68c40e0b84225580'
+            'd8986a9d2fc80f2fe8c7ae6df36721e1186031d6abab208af6b6e182be63f39c'
             'c539940e74493d559cf494313e3a0a72626be86bc31ef3cb8c3da1323640063b'
-            '19234d788ccaf35186eefb6a1bf204f405b358c1432e76e6304291f833c0405c')
+            'eee44288eb2b7b7aa05b724ea645bb712ea3af749213212f69b6ab820c8efb7f')
 
 if [ "${CARCH}" = 'i686' ]; then
     source+=("$pkgname-$pkgver.sh::https://www.podatki.gov.pl/media/3056/klient_jpk_2-i386.sh"
@@ -42,6 +44,7 @@ package() {
     find -type f -exec install -D {} "$pkgdir/opt/klient-jpk/{}" \;
     install -D "$srcdir/start.sh" "$pkgdir/opt/klient-jpk/start.sh"
     install -D "$srcdir/jpkt.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -D "$srcdir/TransmitterResources_1_0_4_2_lib.update" "$pkgdir/opt/klient-jpk/jpk/TransmitterResources.lib"
-    install -D "$srcdir/TransmitterLauncher_1_0_4_3_lib.update" "$pkgdir/opt/klient-jpk/jpk/TransmitterLauncher.lib"
+    install -D "$srcdir/TransmitterJPK_1_0_4_4_lib.update" "$pkgdir/opt/klient-jpk/jpk/TransmitterJPK.lib"
+    install -D "$srcdir/TransmitterResources_1_0_4_4_lib.update" "$pkgdir/opt/klient-jpk/jpk/TransmitterResources.lib"
+    install -D "$srcdir/TransmitterLauncher_1_0_4_4_lib.update" "$pkgdir/opt/klient-jpk/jpk/TransmitterLauncher.lib"
 }
