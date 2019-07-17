@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=viper4linux-gui
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc="Official UI for Viper4Linux"
 arch=('any')
@@ -10,8 +10,8 @@ depends=('viper4linux' 'qt5-base' 'mesa')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ThePBone/Viper4Linux-GUI/archive/$pkgver.tar.gz"
 		"viper4linux-gui.desktop")
-sha256sums=('73cbceb59f6b11ff80090ea5671145aebd2b7dbcd2069c7309c3345adb430741'
-            '012e8b24684d876240b3fd6d62741b236cd41bfbcaaf9b41bbe9f8375ca7df71')
+sha256sums=('b01b2146bf3817998ef8e0198c80dfa328f348134214d4f040dc950ca97519f3'
+            '05a46b8ad3508e9275388d9255247cda09977eb8087fa5dd96d04bc25c17a77c')
 
 build() {
 	cd "Viper4Linux-GUI-$pkgver"
@@ -21,8 +21,7 @@ build() {
 
 package() {
 	cd "Viper4Linux-GUI-$pkgver"
-	make INSTALL_ROOT="$pkgdir" install
-	mv $pkgdir/usr/bin/V4L_Frontend $pkgdir/usr/bin/viper-gui
+	install -Dm755 V4L_Frontend $pkgdir/usr/bin/viper-gui
 	install -Dm644 $srcdir/${pkgname%-git}.desktop $pkgdir/usr/share/applications/${pkgname%-git}.desktop
-	install -Dm644 viper.png $pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname%-git}.png
+	install -Dm644 viper.png $pkgdir/usr/share/pixmaps/viper-gui.png
 }
