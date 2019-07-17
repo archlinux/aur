@@ -1,0 +1,33 @@
+pkgbase = majsoul-plus-beta-bin
+	pkgdesc = [2.x] Majsoul browser (Binary)(beta)
+	pkgver = 2.0.0.beta.1
+	pkgrel = 1
+	url = https://github.com/MajsoulPlus/majsoul-plus
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = snappy
+	depends = gconf
+	optdepends = kde-cli-tools: file deletion support (kioclient5)
+	optdepends = trash-cli: file deletion support (trash-put)
+	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
+	provides = majsoul-plus-beta
+	conflicts = majsoul-plus-beta
+	source = https://github.com/MajsoulPlus/majsoul-plus/raw/master/assets/bin/icons/icon.png
+	sha256sums = be6005b9ae4238d53fcd9fe728a4985502c660adb670d3047b17da4a35f6fe31
+	source_i686 = https://github.com/MajsoulPlus/majsoul-plus/releases/download/v2.0.0-beta.1/majsoul-plus-client-2.0.0-beta.1-ia32.tar.gz
+	sha256sums_i686 = 1695c18a7949ab0600056946c228af7fbaecbf5fa2aa947e238dfc0a96fdd6e1
+	source_x86_64 = https://github.com/MajsoulPlus/majsoul-plus/releases/download/v2.0.0-beta.1/majsoul-plus-client-2.0.0-beta.1.tar.gz
+	sha256sums_x86_64 = f463779ed1b4ffd13cd4cfe3b2515fe9a11aaa89d401dfed2ba93a1157aabe7b
+
+pkgname = majsoul-plus-beta-bin
+
