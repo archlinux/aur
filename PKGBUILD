@@ -1,21 +1,21 @@
 # Maintainer: hfte@posteo.org
 pkgname=sws
-pkgver=2.9.7.0
-pkgrel=4
+pkgver=2.10.0
+pkgrel=1
 pkgdesc="A collection of features that seamlessly integrate into REAPER"
 arch=('x86_64')
 url="http://www.sws-extension.org/"
 license=('MIT')
-depends=('reaper-bin')
-makedepends=('git' 'gcc' 'make' 'php')
+depends=('reaper-bin>=5.965')
+makedepends=('git' 'gcc' 'make' 'php' 'php-gd')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("git://github.com/reaper-oss/sws.git"
-	"git://github.com/justinfrankel/WDL"
+	"git://github.com/justinfrankel/wdl.git"
 	"https://swsaur.000webhostapp.com/files/reaper_plugin_functions.tar.xz")
 sha256sums=('SKIP'
 	    'SKIP'
-            'a6b11fb81d79a3cd0b1f0bf472777ac2895db3b88c161549ef65f34c90d2675f')
+            '5a8bfe55b1687ffcb173121bd85cf58ede78dc959dce230e5524e62fbe07890b')
 
 pkgver() {
 	cd "$pkgname"
@@ -29,7 +29,7 @@ prepare() {
 	  cp "reaper_plugin_functions/$REAPERVERSION/reaper_plugin_functions.h"\
              "$srcdir/$pkgname"
         else
-          cp "reaper_plugin_functions.h"\
+          cp "reaper_plugin_functions/reaper_plugin_functions.h"\
              "$srcdir/$pkgname"
         fi
 }
