@@ -1,0 +1,67 @@
+sudo: required
+
+branches:
+  only:
+  - master
+
+cache:
+  directories:
+  - ~/.ccache
+  - ~/.pkg-cache
+  - blender-addons-contrib.git
+  - blender-addons.git
+  - blender-dev-tools.git
+  - blender-translations.git
+  - blender
+
+services:
+- docker
+
+arch:
+  mount:
+  - ~/.ccache:~/.ccache
+  - ~/.pkg-cache:/var/cache/pacman/pkg
+  repos:
+  - bartus=https://github.com/bartoszek/AUR-repo/raw/master
+  packages:
+  - ccache
+  - moreutils
+  - cuda
+  before_install:
+#   Override `package-cleanup.hook` to preserve cache for travis.
+#   Enable ccache
+#   Multithreaded build and compress
+#   Suppress all gcc warnings
+  - |
+     sudo mkdir /etc/pacman.d/hooks/
+     sudo ln -s /dev/null /etc/pacman.d/hooks/package-cleanup.hook
+     sudo sed -i '/#MAKEFLAGS=/c MAKEFLAGS="-j2"' /etc/makepkg.conf
+     sudo sed -i '/^BUILDENV/s/\!ccache/ccache/' /etc/makepkg.conf
+     sudo sed -i '/^COMPRESSXZ/s/\xz/xz -T 2/' /etc/makepkg.conf
+     sudo sed -i '$a   CFLAGS="$CFLAGS -w"'   /etc/makepkg.conf
+     sudo sed -i '$a CXXFLAGS="$CXXFLAGS -w"' /etc/makepkg.conf
+  script:
+#   Incorporate ccache in nvcc
+  - |
+     _gcc="$(readlink /opt/cuda/bin/gcc)"
+     _g++="$(readlink /opt/cuda/bin/g++)"
+     sudo mv /opt/cuda/bin/nvcc /opt/cuda/bin/nvcc.bin
+     sudo rm /opt/cuda/bin/g{cc,++}
+     echo -e "#!/bin/sh -\n/usr/bin/ccache /opt/cuda/bin/nvcc.bin \"\$@\"" | sudo dd of=/opt/cuda/bin/nvcc
+     echo -e "#!/bin/sh -\n/usr/bin/ccache $_gcc \"\$@\"" | sudo dd of=/opt/cuda/bin/gcc
+     echo -e "#!/bin/sh -\n/usr/bin/ccache $_g++ \"\$@\"" | sudo dd of=/opt/cuda/bin/g++
+     sudo chmod +x /opt/cuda/bin/{nvcc,g{cc,++}}
+# Build
+  - "ccache -s"
+  - "timeout 35m makepkg -s --noconfirm | ts -s '[%.T]'"
+  - "ccache -s"
+script:
+- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/pacman-pkg-cache/arch-travis.sh |sed 's:mikkeloscar/arch-travis:bartoszek/arch-travis-bartus:'| bash"
+- "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
+
+#deploy:
+#  on:
+#    branch: master
+#  skip_cleanup: true
+#  provider: script
+#  script: bash .travis_deploy.sh

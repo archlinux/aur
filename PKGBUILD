@@ -2,8 +2,9 @@
 # shellcheck disable=SC2034
 
 #to enforce cuda verison uncomment this line and update value of sm_xx model accordingly
-#_cuda_capability+=(sm_30 sm_35 sm_37) # suppress to prevent Travis build exceed time limit.
+#_cuda_capability+=(sm_30 sm_35 sm_37)
 #_cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
+((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # suppress 3.x to prevent Travis build exceed time limit.
 
 pkgname=blender-2.7
 _fragment="#branch=blender2.7"
