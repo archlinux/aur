@@ -3,7 +3,7 @@
 pkgname__=native-image
 pkgname_=graal-${pkgname__}
 pkgname=${pkgname_}-bin
-pkgver_=19.1.0
+pkgver_=19.1.1
 pkgver=${pkgver_/-/_}
 pkgrel=1
 pkgdesc='Plugin to turn Graal-based applications into native binary images'
@@ -16,7 +16,7 @@ optdepends=()
 provides=("$pkgname_")
 conflicts=("$pkgname_")
 source=("https://github.com/oracle/graal/releases/download/vm-${pkgver_}/${pkgname__}-installable-svm-linux-amd64-${pkgver_}.jar")
-sha256sums=('db2c51fc131d7e6142c18e85cc0a03b939898ab58382c1bb349a5cd7c1c2424a')
+sha256sums=('6cb0ad9eafd480c58349771ad1ecfef45802019e5f3bccbc007ad3c4606c6d74')
 
 package() {
     local file eq permissions mode name target
