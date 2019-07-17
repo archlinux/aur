@@ -1,0 +1,6 @@
+pkg/
+src/
+.AURINFO
+ykchorus-*.tar.xz
+ykchorus-*.src.tar.gz
+ykchorus*-source.tar.gz

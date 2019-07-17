@@ -1,0 +1,18 @@
+pkgbase = ykchorus
+	pkgdesc = A stereo dual-chorus audio effect
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/SpotlightKid/ykchorus
+	arch = i686
+	arch = x86_64
+	groups = ladspa-plugins
+	groups = lv2-plugins
+	groups = vst-plugins
+	license = GPL2
+	depends = libglvnd
+	optdepends = jack: stand-alone JACK client program
+	source = https://github.com/SpotlightKid/ykchorus/releases/download/v0.2.2/ykchorus-v0.2.2-source.tar.gz
+	md5sums = 5763a1afa37e7cca6367b6c610b815ef
+
+pkgname = ykchorus
+
