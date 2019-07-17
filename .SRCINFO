@@ -1,6 +1,6 @@
 pkgbase = curaengine-git
 	pkgdesc = CuraEngine is a powerful, fast and robust engine for processing 3D models into 3D printing instruction for Ultimaker and other GCode based 3D printers. It is part of the larger open source project called Cura.
-	pkgver = r6862.c7190f71
+	pkgver = r7123.cd3fa741
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Ultimaker/CuraEngine
@@ -13,7 +13,9 @@ pkgbase = curaengine-git
 	provides = curaengine
 	conflicts = curaengine
 	source = git+https://github.com/Ultimaker/CuraEngine.git
+	source = https://src.fedoraproject.org/rpms/CuraEngine/raw/master/f/CuraEngine-gcc9.patch
 	md5sums = SKIP
+	md5sums = f4bb51e08e10bf78617ff7262698e2ba
 
 pkgname = curaengine-git
 

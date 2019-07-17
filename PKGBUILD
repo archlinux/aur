@@ -2,7 +2,7 @@
 # Original Author: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=curaengine-git
-pkgver=r6862.c7190f71
+pkgver=r7123.cd3fa741
 pkgrel=1
 epoch=1
 pkgdesc="CuraEngine is a powerful, fast and robust engine for processing 3D models into 3D printing instruction for Ultimaker and other GCode based 3D printers. It is part of the larger open source project called Cura."
@@ -13,12 +13,18 @@ provides=('curaengine')
 conflicts=('curaengine')
 depends=('libarcus-git')
 makedepends=('cmake' 'git')
-source=('git+https://github.com/Ultimaker/CuraEngine.git')
-md5sums=('SKIP')
+source=('git+https://github.com/Ultimaker/CuraEngine.git'
+        'https://src.fedoraproject.org/rpms/CuraEngine/raw/master/f/CuraEngine-gcc9.patch')
+md5sums=('SKIP' 'f4bb51e08e10bf78617ff7262698e2ba')
 
 pkgver() {
   cd CuraEngine
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/CuraEngine"
+  patch -p1 -i "$srcdir/CuraEngine-gcc9.patch"
 }
 
 build() {
