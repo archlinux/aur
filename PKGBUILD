@@ -3,7 +3,7 @@
 pkgname=kicad-rc
 _pkgver="5.1.2"
 pkgver=${_pkgver/-rc/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Official KiCad release candidates and dev snapshots"
 arch=('any')
 url="http://kicad-pcb.org/"
@@ -21,7 +21,6 @@ md5sums=('0be64488e6beedf056c92ec527881148')
 
 prepare() {
   cd "${srcdir}/${_github_project}-${_pkgver}"
-  #sed -i -e 's|boost/uuid/sha1.hpp|boost/uuid/detail/sha1.hpp|g' kicad-source-mirror-5.0.0/3d-viewer/3d_cache/3d_cache.cpp
   curl https://github.com/KiCad/kicad-source-mirror/commit/5685174808f5ca973e916a10f9f93660ee4dc4f2.patch | patch -p1
 }
 
@@ -37,9 +36,9 @@ build() {
     -DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON \
     -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python \
     -DKICAD_SCRIPTING_PYTHON3=ON \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
-#    -DUSE_WX_GRAPHICS_CONTEXT=ON \
-#    -DUSE_WX_OVERLAY=ON 
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
+    -DUSE_WX_GRAPHICS_CONTEXT=ON \
+    -DUSE_WX_OVERLAY=ON 
 
   make
 }
