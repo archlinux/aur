@@ -1,0 +1,15 @@
+pkgbase = wavdumper
+	pkgdesc = Print detailed information on the headers and structure of a WAV file.
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://www.cs.helsinki.fi/u/hkovaska/wavdumper/
+	arch = any
+	license = GPL2
+	depends = python2
+	source = https://www.cs.helsinki.fi/u/hkovaska/wavdumper/wavdumper-0.5.tar.gz
+	source = wavdumper-0.5.patch
+	md5sums = c5a079bc68c7bdd205fc5bb69b380176
+	md5sums = 054bbb824051eef16a529fa4ed13fd86
+
+pkgname = wavdumper
+
