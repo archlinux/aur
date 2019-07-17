@@ -1,7 +1,7 @@
 pkgbase = openxcom-mod-twots
 	pkgdesc = The World of Terrifying Silence - a mod for OpenXcom (OXCE)
 	pkgver = 2_31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openxcom.mod.io/the-world-of-terrifying-silence
 	arch = x86_64
 	license = GPLv3
