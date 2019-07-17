@@ -2,12 +2,12 @@
 pkgname=majsoul-plus
 pkgver=2.0.0b1
 _pkgver=${pkgver/b/-beta.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Majsoul browser, with more features"
 arch=('x86_64' 'i686')
 url="https://github.com/MajsoulPlus/majsoul-plus"
 license=('AGPL3')
-depends=('electron')
+depends=('electron4')
 makedepends=('yarn' 'moreutils' 'jq' 'imagemagick')
 source=("https://github.com/MajsoulPlus/majsoul-plus/archive/v$_pkgver.tar.gz")
 sha256sums=('e22fe1aa3d8211382066eb680db4eaf8662776a527b57400babec954af1b2488')
@@ -19,8 +19,8 @@ prepare() {
 	if [ "$CARCH" == "i686" ]; then
 		targetArch="ia32"
 	fi
-	electronDist="\/usr\/lib\/electron"
-    electronVersion=$(tail -1 /usr/lib/electron/version)
+	electronDist="\/usr\/lib\/electron4"
+    electronVersion=$(tail -1 /usr/lib/electron4/version)
     sed -i "s|\"electron\": \".*|\"electron\": \"$electronVersion\",|" package.json
 	sed -i "/\"build-linux\": \"/c\\\"build-linux\": \"yarn pre-build && electron-builder --linux --$targetArch\"," package.json
     jq '.build.linux.target = ["dir"]' package.json | sponge package.json
@@ -56,7 +56,7 @@ package() {
     done
 
 	echo "#!/usr/bin/env bash
-exec electron --enable-logging /usr/share/majsoul-plus/app.asar" > "$srcdir/majsoul-plus.sh"
+exec electron4 --enable-logging /usr/share/majsoul-plus/app.asar" > "$srcdir/majsoul-plus.sh"
 	install -Dm755 "$srcdir/majsoul-plus.sh" "$pkgdir/usr/bin/majsoul-plus"
 
 	echo "[Desktop Entry]
