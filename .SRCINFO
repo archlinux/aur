@@ -1,6 +1,6 @@
 pkgbase = wasmer
 	pkgdesc = Universal Binaries Powered by WebAssembly
-	pkgver = 0.4.2
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/wasmerio/wasmer
 	arch = x86_64
