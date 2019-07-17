@@ -1,6 +1,6 @@
 pkgbase = audiotag
 	pkgdesc = Simple command line audio tagger written in python3
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://gitlab.com/Popkornium18/audiotag
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = audiotag
 	depends = python-setuptools
 	depends = python-pytaglib
 	depends = python-docopt
-	source = https://gitlab.com/Popkornium18/audiotag/-/archive/v0.2.1/audiotag-v0.2.1.tar.gz
-	sha256sums = c1f3dd704970665c50076e488d51d744bf61ab6d532af78306cd96fcafbccc8b
+	source = https://gitlab.com/Popkornium18/audiotag/-/archive/v0.3.0/audiotag-v0.3.0.tar.gz
+	sha256sums = 5d9b5840e120dda1732df01fb08f04edac80ce1ea7ec9582f6ff272118128922
 
 pkgname = audiotag
 
