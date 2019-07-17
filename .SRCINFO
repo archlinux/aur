@@ -27,7 +27,6 @@ pkgbase = ffmpeg-full-nvenc
 	depends = glibc
 	depends = gsm
 	depends = jack
-	depends = kvazaar
 	depends = ladspa
 	depends = lame
 	depends = lensfun

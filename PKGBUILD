@@ -32,7 +32,7 @@ arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('custom: nonfree and unredistributable')
 depends=('alsa-lib' 'aom' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2' 'davs2' 'fontconfig'
-         'ffnvcodec-headers' 'frei0r-plugins' 'fribidi' 'glibc' 'gsm' 'jack' 'kvazaar'
+         'ffnvcodec-headers' 'frei0r-plugins' 'fribidi' 'glibc' 'gsm' 'jack'
          'ladspa' 'lame' 'lensfun' 'libass' 'libavc1394' 'libbluray' 'libbs2b' 'libcaca'
          'libcdio-paranoia' 'libdc1394' 'libfdk-aac' 'libgme' 'libiec61883'
          'libilbc' 'libmodplug' 'libomxil-bellagio' 'libmysofa' 'libpulse' 
@@ -85,6 +85,11 @@ build() {
 
       local _ldflags="-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
       local _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins"
+
+      # fix tensorflow include dir
+      ## upstream ffmpeg excects : /usr/include/tensorflow/
+      ## tensorflow package ships: /usr/include/tensorflow/tensorflow/
+      _cflags+=' -I/usr/include/tensorflow'
       
       # strictly specifying nvcc path is needed if package is installing
       # cuda for the first time (nvcc path will be in $PATH only after relogin)
@@ -159,7 +164,7 @@ build() {
     --enable-libilbc \
     --enable-libjack \
     --enable-libklvanc \
-    --enable-libkvazaar \
+    --disable-libkvazaar \
     --enable-liblensfun \
     --enable-libmodplug \
     --enable-libmp3lame \
