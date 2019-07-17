@@ -4,12 +4,12 @@ pkgname=bitwarden-cli
 pkgver=1.7.4
 # commit of bitwarden/jslib
 _jslibcommit='e979dd4f12634a72ee50989d7dd6a6852fa149fa'
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line vault (Windows, macOS, & Linux). bitwarden.com"
 arch=('x86_64')
 url="https://github.com/bitwarden/cli"
 license=('GPL3')
-makedepends=('nodejs' 'npm')
+makedepends=('nvm' 'npm')
 depends=('nodejs')
 conflicts=('bitwarden-cli-git')
 options=('!strip')
@@ -25,6 +25,13 @@ prepare() {
 }
 
 build() {
+  # Use nodejs 10 with NVM
+  export npm_config_cache="$srcdir/npm_cache"
+  _npm_prefix=$(npm config get prefix)
+  npm config delete prefix
+  source /usr/share/nvm/init-nvm.sh
+  nvm install 10.16.0 && nvm use 10.16.0
+
   cd "${srcdir}/cli-${pkgver}/jslib"
   npm install
   cd "${srcdir}/cli-${pkgver}"
@@ -32,6 +39,10 @@ build() {
   # Due to some jsdom dependency complications we'll have to use bundled nodejs in the final 
   # build for now.
   npm run dist:lin
+
+  # Restore node config from nvm
+  npm config set prefix ${_npm_prefix}
+  nvm unalias default
 }
 
 package() {

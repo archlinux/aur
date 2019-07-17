@@ -1,11 +1,11 @@
 pkgbase = bitwarden-cli
 	pkgdesc = The command line vault (Windows, macOS, & Linux). bitwarden.com
 	pkgver = 1.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bitwarden/cli
 	arch = x86_64
 	license = GPL3
-	makedepends = nodejs
+	makedepends = nvm
 	makedepends = npm
 	depends = nodejs
 	conflicts = bitwarden-cli-git
