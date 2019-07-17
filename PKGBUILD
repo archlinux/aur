@@ -96,7 +96,7 @@ build() {
         -DWITH_LLVM=ON \
         ${_EXTRAOPTS[@]}
 #       -DWITH_OPENVDB_3_ABI_COMPATIBLE=ON \
-  export NINJA_STATUS="[%p | %cbps | %f<%r<%u ] "
+  export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
   ninja -d stats
 }
 
