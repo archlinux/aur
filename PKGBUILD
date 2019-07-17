@@ -1,7 +1,7 @@
 # Maintainer: Peyrille Benjamin <peyrille.benjamin@gmail.com>
 # Contributor : Rogalle Quentin <quentin.rogalle@etudiant.univ-perp.fr>
 pkgname=othellox
-pkgver=1_0
+pkgver=1_1
 pkgrel=1
 pkgdesc="Reversi game in C allowing AI-vs-AI automation"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('ncurses')
 makedepends=('clang')
 source=("https://framagit.org/Arkhist/othellox/-/archive/master/othellox-master.zip")
-sha256sums=('28c36d80975ee1337052f2b5a4f1252eb54c2939a27ef1d5628ff423887b41a1')
+sha256sums=('700b7ee166f2767d9bcf57355e88e4d70d50a849d1c95a002db38266458cb554')
 
 prepare() {
 	cd "${pkgname}-master"
