@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python2-sherpa
 _pyname=${pkgname#python2-}
-pkgver=4.10.2
+pkgver=4.11.0
 pkgrel=1
 pkgdesc="Modeling and fitting package for scientific data analysis"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ optdepends=('python2-matplotlib: Graphical output'
 install=python2-sherpa.install
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'sherpa_local_fftw.patch')
-md5sums=('2698c62776f0ce793ebc87df7f679065'
+md5sums=('43a8b284712a7a1e22a00447a486a93e'
          'd1823cc7683442d92450fadff7aed362')
 
 prepare() {
