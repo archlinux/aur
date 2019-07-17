@@ -1,6 +1,6 @@
 pkgbase = python-azure-cli
 	pkgdesc = Microsoft Azure Command-Line Tools
-	pkgver = 2.0.68
+	pkgver = 2.0.69
 	pkgrel = 1
 	url = https://github.com/Azure/azure-cli
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = python-azure-cli
 	depends = python-vsts-cd-manager
 	depends = python-wheel
 	depends = python-yaml
-	source = https://github.com/Azure/azure-cli/archive/azure-cli-2.0.68.tar.gz
-	sha256sums = c10d637c4be06f6ed9d5a493152e2c1945e5a264aef165358697ae05d83a4257
+	source = https://github.com/Azure/azure-cli/archive/azure-cli-2.0.69.tar.gz
+	sha256sums = 3f9b68b3b05479b037f3470d942ed9538d1ad39abde830f6e767c31cc237572b
 
 pkgname = python-azure-cli
 
