@@ -1,6 +1,6 @@
 pkgbase = diffr
 	pkgdesc = Word-by-word diff highlighting tool
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/mookid/diffr
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = diffr
 	makedepends = cargo
 	makedepends = git
 	conflicts = diffr-git
-	source = diffr-0.1.0.tar.gz::https://github.com/mookid/diffr/archive/v0.1.0.tar.gz
-	sha256sums = f36adc8cb9878d94a2ab505d0b189faf7c192e043adce53ce90e89b513b39a6d
+	source = diffr-0.1.1.tar.gz::https://github.com/mookid/diffr/archive/v0.1.1.tar.gz
+	sha256sums = 28e6f17895cef68854b859bc4e7aebffeca36a678cb3ab5a611872356d845b0b
 
 pkgname = diffr
 
