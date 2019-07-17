@@ -3,7 +3,7 @@
 # Contributor: Chloe Kudryavtsev <toast@toastin.space>
 
 pkgname=vlang-git
-pkgver=r581.961ffb1
+pkgver=r603.3f50671
 pkgrel=1
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
@@ -23,12 +23,12 @@ pkgver() {
 }
 
 prepare() {
-    cp vc/v.c v/v.c
+    cp vc/v.c v/
 }
 
 build() {
     cd v
-    make v
+    make v thirdparty
     ./v -prod -o v compiler
 }
 
