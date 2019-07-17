@@ -2,7 +2,7 @@
 # Maintainer: Mark Weiman <markzz@archlinux.net>
 
 pkgbase=linux-vfio
-_srcver=5.2-arch2
+_srcver=5.2.1-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -26,7 +26,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '02390efe7637927502bc834daf3f413ea5e2cb084bca125372e70dc9438e824c'
+            'd49d9d0570785051f6b8b58962a4d792d1d1501ecb0a98dcf616226e6da6bdb5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
