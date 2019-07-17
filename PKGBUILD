@@ -1,6 +1,6 @@
 # Maintainer: Víctor González <mrvikxd@gmail.com>
 pkgname=recallme
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Emit a notification on a specific time or after some seconds"
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ license=("GPL2")
 depends=("libnotify")
 makedepends=("pkgconf")
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha512sums=('46fc66a93df4e985a082fdfdece4c1b9d0575799bcd193986fd0c1b2279b04d7ab548f1a46d183b6a621119c8c1745c3b9f7732eebf1d3fbaf2007dd92acfe50')
+sha512sums=('1691b8aa8535cd8b8a0dca8d3b79671fdebf73b7559e2eeea81ce42afcbfc9aaf0961289b3c319059c68896e21ed389982d9d897e9108570f4d0b232a7386d1d')
 
 build(){
     cd "$pkgname-v$pkgver"
