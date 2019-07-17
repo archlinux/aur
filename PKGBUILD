@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=viper4linux-gui-git
-pkgver=1.10.r2.c6527dc
+pkgver=1.11.r0.6c68d10
 pkgrel=1
 pkgdesc="Official UI for Viper4Linux"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/ThePBone/Viper4Linux-GUI.git"
 		"viper4linux-gui.desktop")
 sha256sums=('SKIP'
-            '012e8b24684d876240b3fd6d62741b236cd41bfbcaaf9b41bbe9f8375ca7df71')
+            '05a46b8ad3508e9275388d9255247cda09977eb8087fa5dd96d04bc25c17a77c')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -28,8 +28,7 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make INSTALL_ROOT="$pkgdir" install
-	mv $pkgdir/usr/bin/V4L_Frontend $pkgdir/usr/bin/viper-gui
+	install -Dm755 V4L_Frontend $pkgdir/usr/bin/viper-gui
 	install -Dm644 $srcdir/${pkgname%-git}.desktop $pkgdir/usr/share/applications/${pkgname%-git}.desktop
-	install -Dm644 viper.png $pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname%-git}.png
+	install -Dm644 viper.png $pkgdir/usr/share/pixmaps/${pkgname%-git}.png
 }

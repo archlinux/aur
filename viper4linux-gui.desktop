@@ -1,11 +1,11 @@
 [Desktop Entry]
 Name=Viper4Linux
 GenericName=Equalizer
-Comment=Unofficial UI for Viper4Linux
+Comment=Official UI for Viper4Linux
 Keywords=equalizer
 Categories=AudioVideo;Audio;
 Exec=viper-gui
-Icon=viper4linux-gui
+Icon=viper-gui
 StartupNotify=false
 Terminal=false
 Type=Application
