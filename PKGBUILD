@@ -1,7 +1,7 @@
 # Maintainer: LightQuantum<cy.n01@outlook.com>
 
 pkgname=kitty-without-monolimit-git
-pkgver=0.14.2.r168.g9368f7f6
+pkgver=0.14.2.r174.gc30c21b2
 pkgrel=1
 pkgdesc="A modern, hackable, featureful, OpenGL based terminal emulator (monospace font limit removed)."
 arch=(i686 x86_64)
@@ -17,17 +17,17 @@ md5sums=('SKIP'
          'ac7ea79c862f3d74f6b87804e433e6b7')
 
 prepare() {
-  cd "$srcdir/${pkgname/-git/}"
+  cd "$srcdir/${pkgname/-without-monolimit-git/}"
   patch --strip=1 --input="${srcdir}/kitty.patch"
 }
 
 pkgver() {
-  cd "$srcdir/${pkgname/-git/}"
+  cd "$srcdir/${pkgname/-without-monolimit-git/}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/${pkgname/-git/}"
+  cd "$srcdir/${pkgname/-without-monolimit-git/}"
 
   python3 setup.py linux-package --prefix "${pkgdir}"/usr
 }
