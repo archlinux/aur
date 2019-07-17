@@ -2,12 +2,12 @@
 pkgname=python-anticaptcha
 pkgver=0.4.1
 pkgrel=1
-pkgdesc="Client library for solve captchas with Anticaptcha.com support."
+pkgdesc="Client library for solving captchas with anticaptcha.com support."
 arch=('any')
 url="https://github.com/ad-m/python-anticaptcha"
 license=('MIT')
 depends=('python')
-makedepends=()
+makedepends=('python-setuptools')
 provides=()
 conflicts=()
 replaces=()

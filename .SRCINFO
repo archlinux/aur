@@ -1,10 +1,11 @@
 pkgbase = python-anticaptcha
-	pkgdesc = Client library for solve captchas with Anticaptcha.com support.
+	pkgdesc = Client library for solving captchas with anticaptcha.com support.
 	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/ad-m/python-anticaptcha
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
 	source = https://github.com/ad-m/python-anticaptcha/archive/0.4.1.tar.gz
