@@ -1,5 +1,5 @@
 pkgbase = drill-search
-	pkgver = 1.259
+	pkgver = 1.260
 	pkgrel = 1
 	url = https://www.drill.santamorena.me/
 	install = drill-search.install
@@ -8,13 +8,13 @@ pkgbase = drill-search
 	makedepends = git
 	makedepends = dmd
 	makedepends = dub
-	source = drill-search-1.259.tar.gz::https://github.com/yatima1460/Drill/archive/1.259.tar.gz
+	source = drill-search-1.260.tar.gz::https://github.com/yatima1460/Drill/archive/1.260.tar.gz
 	source = drill-search
 	source = drill-search-gtk.desktop
 	source = drill-search-gtk.svg
 	source = datefmt::git+https://github.com/dhasenan/datefmt.git#tag=v1.0.3
 	source = gtkd::git+https://github.com/gtkd-developers/GtkD.git#tag=v3.9.0
-	sha256sums = 12b76e361b50a226a656084fb3db1d94719bfd9fed9fd9845e11db1e8edd0797
+	sha256sums = 7eb6588cd449269f36900c98f311b33bf82ffad8355400487f7d46ea6a1f912d
 	sha256sums = b875f928546aee7855cb1db9afc8ab3f1a8a34d43de5bbd62f7076d7ba9f3917
 	sha256sums = 5bafb37baf608a3168abba2ab9ea174a1d0f0472f52d3222ea0a05957c997c50
 	sha256sums = cbfbcebb2957223eaa9c915780a5d0ac47c1fac70b7944f49e8ffcfe740edc53
