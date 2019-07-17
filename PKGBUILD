@@ -24,7 +24,7 @@
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
@@ -57,7 +57,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 source=(https://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.xz{,.asc}
         'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d'
+sha256sums=('f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
@@ -79,6 +79,10 @@ build() {
       then
           local _nvidia_340xx_ldflags='-L/usr/lib/nvidia'
       fi
+      
+      # fix tensorflow include dir
+      _cflags+=' -I/usr/include/tensorflow'
+
       local _ldflags="-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
       local _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64:/opt/intel/mediasdk/plugins"
       
