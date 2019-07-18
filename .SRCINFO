@@ -1,0 +1,12 @@
+pkgbase = wcalc
+	pkgdesc = calculator bash nico
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://w-calc.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/w-calc/wcalc-2.5.tar.bz2
+	md5sums = 45b02ba339a813ffc65f154d1e54a04b
+
+pkgname = wcalc
+
