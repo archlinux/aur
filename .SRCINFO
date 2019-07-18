@@ -1,0 +1,13 @@
+pkgbase = autoi3
+	pkgdesc = A couple of helper scripts for i3
+	pkgver = r7.f6cac83
+	pkgrel = 1
+	url = https://gitlab.com/lejs/autoi3
+	arch = any
+	license = MIT
+	depends = python3
+	source = git+https://gitlab.com/lejs/autoi3
+	sha256sums = SKIP
+
+pkgname = autoi3
+
