@@ -1,6 +1,6 @@
 pkgbase = frr-git
 	pkgdesc = FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.
-	pkgver = 7.2.dev.r16578
+	pkgver = 7.2.dev.r16600
 	pkgrel = 1
 	url = https://frrouting.org/
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = frr-git
 	source = frr.tmpfiles
 	sha256sums = SKIP
 	sha256sums = e656acefc2c318a94c2d3011ecef2bed75d70852f1e642a3a1d331d860c8735b
-	sha256sums = 1104bf8eaab31e0228724bee7cab1315fd0782b245205ba7fb3a6cf0c0f82199
+	sha256sums = f033353216b51ff936dbc47d8a7725d290af6cc1b9549e653c1dd97046114f79
 
 pkgname = frr-git
 
