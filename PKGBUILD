@@ -2,14 +2,13 @@
 # Contributor: Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Det <nimetonmaili g-mail>
 
-# TODO: invalid symlink /usr/lib/jvm/java-11-jdk/conf
-
 set -u
 pkgname='jre11'
-pkgver='11.0.3'; _build='12'; _hash='37f5e150db5247ab9333b11c1dddcd30'
+#pkgver='11.0.3'; _build='12'; _hash='37f5e150db5247ab9333b11c1dddcd30'
+pkgver='11.0.4'; _build='10'; _hash='cf1bbcbf431a474eb9fc550051f4ee78'
 _major="${pkgver%%.*}"
 pkgrel='1'
-pkgdesc="Oracle Java ${_major} Development Kit"
+pkgdesc="Oracle Java ${_major} Runtime Environment"
 arch=('x86_64')
 url='https://www.oracle.com/java/'
 license=('custom')
@@ -51,9 +50,9 @@ if [ -s ~/"Downloads/${_srcfil}" ] && [ ! -e "${_srcfil}" ]; then
   fi
 fi
 unset _srcfil
-md5sums=('6d5fd10897d65e053bb69ed9a032211a'
+md5sums=('10badb89c60b0932ced8f41079d30e60'
          '4dda444d58a4d78ca6357228adbde8a2')
-sha256sums=('d50908ea53c2ad154a797aa0930eafb7813247dae13d9d891116df889814ebf3'
+sha256sums=('45962ed7a08d66775cb036e6f33cd576ecb1eab655c96dbe74851a3ebe1945fa'
             'd1b4b3161614d7620365a0528a86f7eec543de30ee756b1ad2dabd386e84f734')
 
 PKGEXT='.pkg.tar.gz' # much faster than .xz
@@ -73,7 +72,7 @@ package() {
 
   # conf
   cp -a 'conf' "${pkgdir}/etc/java${_major}-jre"
-  ln -s "../../../../etc/java${_major}-${pkgname}" "${pkgdir}/${_jvmdir}/conf"
+  ln -s "../../../../etc/java${_major}-jre" "${pkgdir}/${_jvmdir}/conf"
 
   # bin
   install -D -m755 bin/{java,jjs,jrunscript,keytool,pack200} -t "${pkgdir}/${_jvmdir}/bin"
