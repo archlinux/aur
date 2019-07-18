@@ -71,23 +71,28 @@ depends=(
 	'ttf-liberation'
 	'ttf-opensans'
 	'wingpanel'
-	'wingpanel-indicator-a11y-stable'
 	'wingpanel-indicator-bluetooth'
 	'wingpanel-indicator-datetime'
 	'wingpanel-indicator-keyboard'
 	'wingpanel-indicator-network'	
 	'wingpanel-indicator-notifications'
 	'wingpanel-indicator-power'
+	'wingpanel-indicator-privacy-stable'
 	'wingpanel-indicator-session'
 	'wingpanel-indicator-sound'
-	'xorg-server'
-	'xorg-xinit'
 	)
-optdepends=('urutau-icons' 'wingpanel-indicator-nightlight' 'wingpanel-indicator-privacy')
+optdepends=('urutau-icons' 'wingpanel-indicator-a11y-stable' 'wingpanel-indicator-nightlight')
 makedepends=('git' 'meson' 'ninja' 'vala>=0.40.3-1')
 provides=("${pkgname}")
-conflicts=('pantheon-unstable' 'wingpanel-indicator-a11y-git')
-
+conflicts=(
+	'pantheon-unstable'
+	'granite-git'
+	'wingpanel-git'
+	'switchboard-git'
+	'wingpanel-indicator-a11y-git'
+	'wingpanel-indicator-nightlight-git'
+	'wingpanel-indicator-privacy-git'
+	)
 package(){
   /bin/true
 }
