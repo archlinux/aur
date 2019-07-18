@@ -9,6 +9,7 @@ namespace ps {
 #define COL_SYS_BASE 90
 
 enum AlertKind {
+    // Sync changes to cmd-ref.html#term-d-message-alert
     ALERT_NORMAL,
     ALERT_NORMAL_CYCLING, // Tried all trackers
     ALERT_NORMAL_GHOST, // no data

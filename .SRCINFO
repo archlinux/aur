@@ -1,6 +1,6 @@
 pkgbase = rtorrent-ps
 	pkgdesc = Extended rTorrent distribution with UI enhancements, colorization, and some added features
-	pkgver = 1.1.r38.gd52abd2
+	pkgver = 1.1.r42.g37c9d4b
 	pkgrel = 1
 	url = https://github.com/pyroscope/rtorrent-ps
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = rtorrent-ps
 	depends = xmlrpc-c
 	provides = rtorrent
 	conflicts = rtorrent
-	source = https://github.com/rakshasa/rtorrent/archive/0.9.6.tar.gz
+	source = https://github.com/rakshasa/rtorrent/archive/v0.9.6.tar.gz
 	source = backport_0.9.6_algorithm_median.patch
 	source = command_pyroscope.cc
 	source = ps-dl-ui-find_all.patch
@@ -63,7 +63,7 @@ pkgbase = rtorrent-ps
 	md5sums = bd04a0699b80c8042e1cf63a7e0e4222
 	md5sums = d0a956f0eb4b53b66d83df2a8a4d16dc
 	md5sums = 39e18c251a6049b60c2c28b1494eff2a
-	md5sums = a4528366d1839ee400e51abc793446f5
+	md5sums = 265c4ddeab5745a93c360a920a375dfe
 	md5sums = 0a2bbaf74c7160ba33876dcc2f050f14
 
 pkgname = rtorrent-ps
