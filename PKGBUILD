@@ -24,9 +24,9 @@ sha256sums=("cbe4a5aaf0d41b638e2aa4cf3dfd8a3e9ed9d51c01b7709db2fc9cb490707c51"
 package() {
     cd "${srcdir}"
     mv "Listen1_${pkgver}_linux_x86_64.AppImage" "listen1.AppImage"
-    7z x "${srcdir}/listen1.AppImage" listen1.desktop
-    sed -i 's/AppRun/"\/opt\/appimages\/listen1.AppImage"/' listen1.desktop
-    install -Dm755 "listen1.AppImage" "${pkgdir}/opt/appimages/listen1.AppImage"
+    7z e "${srcdir}/listen1.AppImage" listen1.desktop
+    sed -i "s/AppRun/\/opt\/listen1\/listen1.AppImage/" listen1.desktop
+    install -Dm755 "listen1.AppImage" "${pkgdir}/opt/listen1/listen1.AppImage"
     install -Dm644 "listen1.desktop" "${pkgdir}/usr/share/applications/listen1.desktop"
     install -Dm644 "logo_16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/listen1.png"
     install -Dm644 "logo_32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/listen1.png"
