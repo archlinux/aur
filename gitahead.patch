@@ -11,7 +11,7 @@ diff -urN gitahead/pack/CMakeLists.txt gitahead/pack/CMakeLists.txt
 +++ gitahead/pack/CMakeLists.txt 2019-03-28 16:23:57.830278953 +0100
 @@ -147,7 +147,7 @@
  endif()
-
+ 
  # Install SSL libraries.
 -if(NOT APPLE)
 +if(FALSE)
