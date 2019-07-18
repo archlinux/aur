@@ -24,7 +24,7 @@ conflicts=('firestorm-bin' 'firestorm' 'firestorm-beta')
 provides=('firestorm-nightly')
 
 source=("$pkgname"::'hg+http://hg.phoenixviewer.com/phoenix-firestorm-lgpl' 'autovars' 'firestorm.desktop' 'firestorm.launcher')
-md5sums=('SKIP' '7245883fbdba303d4f827f60907574c6' '2158007ce43b17b72a5517fb5aeb6e66' '3daa9e24492337e62bcac318df4ab370')
+md5sums=('SKIP' '7245883fbdba303d4f827f60907574c6' '5e3dade65948533ff8412da776029179' '3daa9e24492337e62bcac318df4ab370')
 
 pkgver() {
 	cd "$pkgname"
