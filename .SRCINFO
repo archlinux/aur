@@ -1,0 +1,18 @@
+pkgbase = usbaudio-git
+	pkgdesc = Forward audio from Android devices
+	pkgver = r2.acb9ac8
+	pkgrel = 1
+	url = https://github.com/rom1v/usbaudio
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libpulse
+	makedepends = meson
+	depends = vlc
+	provides = usbaudio
+	conflicts = usbaudio
+	source = usbaudio-git::git+https://github.com/rom1v/usbaudio.git
+	sha256sums = SKIP
+
+pkgname = usbaudio-git
+
