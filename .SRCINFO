@@ -1,6 +1,6 @@
 pkgbase = gotop-git
 	pkgdesc = A terminal based graphical activity monitor inspired by gtop and vtop
-	pkgver = 3.0.0.r42.ge1f3488
+	pkgver = 3.0.0.r43.g2cd92e1
 	pkgrel = 1
 	url = https://github.com/cjbassi/gotop
 	arch = x86_64
