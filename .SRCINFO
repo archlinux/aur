@@ -1,0 +1,15 @@
+pkgbase = python2-astral
+	pkgdesc = Calculations for the position of the sun and moon.
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://github.com/sffjunkie/astral
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2-pytz
+	optdepends = python2-requests: for Google geocoding support
+	source = https://files.pythonhosted.org/packages/source/a/astral/astral-1.10.1.tar.gz
+	sha256sums = d2a67243c4503131c856cafb1b1276de52a86e5b8a1d507b7e08bee51cb67bf1
+
+pkgname = python2-astral
+
