@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Your Name <youremail@domain.com>
-pkgname=wcalc
+pkgname=nicotest
 pkgver=2.5
 pkgrel=1
 epoch=
@@ -24,7 +24,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://downloads.sourceforge.net/w-calc/$pkgname-$pkgver.tar.bz2") 
+source=("http://downloads.sourceforge.net/nicotest/$pkgname-$pkgver.tar.bz2") 
 md5sums=('45b02ba339a813ffc65f154d1e54a04b')
 
 prepare() {
