@@ -3,7 +3,7 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=amdvlk-git
-pkgver=v.2019.Q2.5.r0.193a788
+pkgver=v.2019.Q3.2.r0.4f7b640
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -52,9 +52,17 @@ prepare() {
 
 build() {
   # /usr/lib/amdvlk64.so: undefined symbol: _ZN3Pal5Linux19DisplayWindowSystem30DeterminePresentationSupportedEPNS0_6DeviceEPvl
+  msg "Changing flags..."
+  msg2 "before: CFLAGS=$CFLAGS"
   export CFLAGS=${CFLAGS/-fno-plt}
-  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  msg2 "after: CFLAGS=$CFLAGS"
+  msg2 "before: CXXFLAGS=$CXXFLAGS"
+  export CXXFLAGS="${CXXFLAGS/-fno-plt} -Wno-error=deprecated-copy"
+  msg2 "after: CXXFLAGS=${CXXFLAGS}"
+  msg2 "before: LDFLAGS=$LDFLAGS"
   export LDFLAGS=${LDFLAGS/,-z,now}
+  msg2 "after: LDFLAGS=${LDFLAGS}"
+  export CPPFLAGS="$CXXFLAGS"
 
   msg "building xgl..."
   pushd drivers/xgl > /dev/null
@@ -63,6 +71,8 @@ build() {
     -H. \
     -B builds/Release64 \
     -DBUILD_WAYLAND_SUPPORT=On \
+    "-DCMAKE_CXX_FLAGS=$CXXFLAGS" \
+    "-DCMAKE_C_FLAGS=$CFLAGS" \
     -DCMAKE_BUILD_TYPE=Release
 
   cd builds/Release64
