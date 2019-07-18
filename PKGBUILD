@@ -19,7 +19,7 @@ source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkg
        'xfconf-warn.sh'
        'xfconf-warn.hook')
 sha256sums=('55e2441c4ff78a7006fabb59647f7bc1f190cbb82327b93ba063ff624a896591'
-            'dffa297eb6ef0fbe56c37b7396186cb85e1dd6249d28e2fc0b8fc5254926bcb7'
+            '74e10d229ec28126ac9c5449daf2965aeb9625e5ad35a04a7edb5fe1fff91a59'
             '0cfbfecb042dabe5a6e80ac96ce863db12e0c38a7cedb66e2bfbe9a5463469a7')
 #install='xfconf.install'
 
