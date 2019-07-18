@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste at k0ste dot ru>
 
 pkgname='frr-git'
-pkgver=7.2.dev.r16578
+pkgver=7.2.dev.r16600
 pkgrel=1
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("git+https://github.com/FRRouting/frr.git"
         "frr.tmpfiles")
 sha256sums=('SKIP'
             'e656acefc2c318a94c2d3011ecef2bed75d70852f1e642a3a1d331d860c8735b'
-            '1104bf8eaab31e0228724bee7cab1315fd0782b245205ba7fb3a6cf0c0f82199')
+            'f033353216b51ff936dbc47d8a7725d290af6cc1b9549e653c1dd97046114f79')
 
 pkgver() {
   cd frr
@@ -76,10 +76,12 @@ package() {
   popd
 
   pushd "tools/etc"
-  install -Dm0644 "frr/daemons" "${pkgdir}/etc/frr/daemons"
-  install -Dm0644 "frr/frr.conf" "${pkgdir}/etc/frr/frr.conf"
-  install -Dm0644 "frr/vtysh.conf" "${pkgdir}/etc/frr/vtysh.conf"
+  install -Dm0640 "frr/daemons" "${pkgdir}/etc/frr/daemons"
+  install -Dm0640 "frr/frr.conf" "${pkgdir}/etc/frr/frr.conf"
+  install -Dm0640 "frr/vtysh.conf" "${pkgdir}/etc/frr/vtysh.conf"
   install -Dm0644 "iproute2/rt_protos.d/frr.conf" "${pkgdir}/etc/iproute2/rt_protos.d/frr.conf"
   install -Dm0644 "rsyslog.d/45-frr.conf" "${pkgdir}/etc/rsyslog.d/45-frr.conf"
   popd
+
+  chown frr:frr ${pkgdir}/etc/frr
 }
