@@ -7,8 +7,10 @@ set -u
 _pkgname='jre'
 _major='8'
 pkgname="${_pkgname}${_major}"
-_minor='211'; _build='b12'; _bundleid='238719'; _hash='478a62b7d4e34b78b671c754eaaf38ab'
+#_minor='211'; _build='b12'; _bundleid='238719'; _hash='478a62b7d4e34b78b671c754eaaf38ab'
+#https://javadl.oracle.com/webapps/download/AutoDL?BundleId=239848_
 #_minor='212'; _build='b10'; _bundleid='??????'; _hash='59066701cf1a433da9770636fbc4c9aa'
+_minor='221'; _bundleid='239848'; _hash='230deb18db3e4014bb8e3e8324f81b43'
 #  https://download.oracle.com/otn/java/jdk/8u212-b10/59066701cf1a433da9770636fbc4c9aa/jre-8u212-linux-x64.tar.gz
 pkgver="${_major}u${_minor}"
 pkgrel='1'
@@ -53,10 +55,10 @@ source=(
   "policytool-${_jname}.desktop"
 )
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         'e7a6b33deb17c66d46beb42f1b8cf3bc'
+         '9f3e2868f68ee5d0441b120374accb15'
          'ef3ff483db5d38ed106e0b819006bdae')
 sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
-            'db3ba91c78b950269380d8f6872befed94176f619cefbcd7877e3624512e0218'
+            '15ad4f7260d2416ac1558341d9d0a0ec5b83904e4ac4a22c8a3242e4e217649b'
             '614b2a74b53728b7914c1407126a7ecfed781a79fb11e9963528c7cad39dbca8')
 ## Alternative mirror, if your local one is throttled:
 #source[1]="http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/${_pkgname}-${pkgver}-linux-x64.gz"
