@@ -1,0 +1,16 @@
+pkgbase = fcitx-paste-primary-git
+	pkgdesc = Paste-primary module for fcitx, paste primary selection with keyboard shortcut.
+	pkgver = 0.10.3380efb
+	pkgrel = 1
+	url = https://github.com/lilydjwg/fcitx-paste-primary
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = fcitx>=4.2.7
+	source = git+https://github.com/lilydjwg/fcitx-paste-primary.git
+	md5sums = SKIP
+
+pkgname = fcitx-paste-primary-git
+
