@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-online-accounts-git
-pkgver=r700.75586db
+pkgver=r707.9eefff8
 pkgrel=1
 pkgdesc='Switchboard Online Accounts Plug'
 arch=(x86_64)
