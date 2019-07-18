@@ -3,14 +3,14 @@
 _pkgname=civetweb
 pkgname=mingw-w64-$_pkgname
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Embedded C/C++ web server (mingw-w64)"
 arch=(any)
 url="https://github.com/civetweb/civetweb"
 license=("MIT")
 depends=(mingw-w64-crt)
 makedepends=(mingw-w64-cmake)
-optdepends=()
+optdepends=("mingw-w64-openssl: SSL support")
 options=(!strip staticlibs !buildflags)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/civetweb/civetweb/archive/v1.11.tar.gz")
 sha256sums=("de7d5e7a2d9551d325898c71e41d437d5f7b51e754b242af897f7be96e713a42")
@@ -24,10 +24,20 @@ build() {
         
         ${_arch}-cmake \
             -DWINSOCK_ROOT="/usr/${_arch}" \
-            -DBUILD_SHARED_LIBS:BOOL=YES \
-            -DCIVETWEB_BUILD_TESTING:BOOL=NO \
+            -DBUILD_SHARED_LIBS=YES \
+            -DCIVETWEB_BUILD_TESTING=NO \
+            -DCIVETWEB_ENABLE_WEBSOCKETS=YES \
+            -DCIVETWEB_ENABLE_IPV6=YES \
+            -DCIVETWEB_ENABLE_CXX=NO \
+            -DCIVETWEB_ENABLE_SERVER_STATS=YES \
+            -DCIVETWEB_SSL_OPENSSL_API_1_1=YES \
             "${srcdir}/${_pkgname}-${pkgver}"
-        make
+        make \
+            WITH_CPP=0 \
+            WITH_IPV6=1 \
+            WITH_WEBSOCKETS=1 \
+            WITH_SERVER_STATS=1 \
+            #
     done
 }
 
