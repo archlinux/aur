@@ -1,4 +1,5 @@
 src
 pkg
-ASIOSDK*.zip
+*.zip
 *pkg.tar.xz
+tags
