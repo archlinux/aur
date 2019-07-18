@@ -1,0 +1,15 @@
+pkgbase = python-sphinx_rtd_theme-git
+	pkgdesc = Read the Docs theme for Sphinx
+	pkgver = 0.4.3.r22.gbad2112
+	pkgrel = 1
+	url = https://github.com/rtfd/sphinx_rtd_theme
+	arch = any
+	license = MIT
+	depends = python-setuptools
+	provides = python-sphinx_rtd_theme
+	conflicts = python-sphinx_rtd_theme
+	source = git+https://github.com/rtfd/sphinx_rtd_theme.git
+	sha512sums = SKIP
+
+pkgname = python-sphinx_rtd_theme-git
+
