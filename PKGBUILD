@@ -4,6 +4,7 @@
 #to enforce cuda verison uncomment this line and update value of sm_xx model accordingly
 #_cuda_capability+=(sm_30 sm_35 sm_37)
 #_cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
+((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # suppress 3.x to prevent Travis build exceed time limit.
 
 pkgname=blender-2.8-git
 _fragment="#branch=master"
@@ -16,8 +17,9 @@ depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-util
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles')
-makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm' 'ninja')
-makedepends+=('cuda')
+makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
+((DISABLE_NINJA)) ||  makedepends+=('ninja')
+((DISABLE_CUDA)) || makedepends+=('cuda')
 provides=('blender=2.80')
 conflicts=('blender')
 license=('GPL')
@@ -69,12 +71,13 @@ build() {
   if [ "$_CUDA_PKG" != "" ]; then
       _EXTRAOPTS=(-DWITH_CYCLES_CUDA_BINARIES=ON \
                   -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda)
-      if [ "$_cuda_capability" != "" ]; then
+      if [ -v _cuda_capability ]; then
         _EXTRAOPTS+=(-DCYCLES_CUDA_BINARIES_ARCH=$(IFS=';'; echo "${_cuda_capability[*]}";))
       fi
   fi
 
-  cmake -GNinja "$srcdir/blender" \
+  ((DISABLE_NINJA)) && generator="Unix Makefiles" || generator="Ninja"
+  cmake -G "$generator" "$srcdir/blender" \
         -C${srcdir}/blender/build_files/cmake/config/blender_release.cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
@@ -84,13 +87,13 @@ build() {
         -DPYTHON_VERSION=${_pyver} \
         -DWITH_LLVM=ON \
         ${_EXTRAOPTS[@]}
-  export NINJA_STATUS="[%p | %cbps | %f<%r<%u ] "
-  ninja -d stats
+  export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
+  ((DISABLE_NINJA)) && make -j$(nproc) || ninja -d stats
 }
 
 package() {
   cd "$srcdir/blender-build"
-  DESTDIR="$pkgdir" ninja install
+  ((DISABLE_NINJA)) && make install DESTDIR="$pkgdir" || DESTDIR="$pkgdir" ninja install
   
   msg "add -2.8 sufix to desktop shortcut"
   sed -i 's/=blender/=blender-2.8/g' ${pkgdir}/usr/share/applications/blender.desktop
