@@ -7,7 +7,8 @@ arch=('any')
 url=https://github.com/schu/kubedee
 license=('APACHE')
 source=("https://github.com/schu/kubedee/archive/v${pkgver}.tar.gz")
-depends=('lxd' 'cfssl' 'jq' 'kubectl')
+depends=('lxd' 'btrfs-progs' 'cfssl' 'jq' 'kubectl')
+optdepends=('kubernetes')
 sha512sums=('1671d05a74d04e40fdb026bd3867157f84aa55fe505e67469d40681c2f563fb36288d2971dcaf149f4eb45dbfc721b6ece83a0947fadf3c8f596811f73a0f4c5')
 
 package() {
