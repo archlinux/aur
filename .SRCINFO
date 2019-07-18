@@ -9,6 +9,7 @@ pkgbase = usbaudio-git
 	makedepends = libpulse
 	makedepends = meson
 	depends = vlc
+	optdepends = android-tools: adb is required
 	provides = usbaudio
 	conflicts = usbaudio
 	source = usbaudio-git::git+https://github.com/rom1v/usbaudio.git

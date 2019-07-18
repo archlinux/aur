@@ -10,6 +10,7 @@ url="https://github.com/rom1v/usbaudio"
 license=('MIT')
 depends=('vlc')
 makedepends=('git' 'libpulse' 'meson')
+optdepends=('android-tools: adb is required')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=($pkgname::git+https://github.com/rom1v/usbaudio.git)
