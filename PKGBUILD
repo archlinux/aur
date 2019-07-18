@@ -3,7 +3,8 @@
 
 _gitname=wingpanel-indicator-a11y
 _author=elementary
-pkgname=("${_gitname}-stable")
+_pkgname=("${_gitname}-stable")
+pkgname=("${_pkgname}-git")
 pkgver=0.1.3
 pkgrel=1
 pkgdesc="Universal Access indicator for Wingpanel. This package uses wingpanel and granite in stable versions"
@@ -13,8 +14,8 @@ license=('GPL3')
 groups=('pantheon-stable')
 depends=('glib2' 'glibc' 'granite' 'gtk3' 'wingpanel')
 makedepends=('git' 'meson' 'ninja' 'vala>=0.40.3-1')
-provides=("${_gitname}" "${pkgname}")
-conflicts=("${_gitname}" "${_gitname}-git" "${pkgname}")
+provides=("${_gitname}" "${_pkgname}")
+conflicts=("${_gitname}" "${_gitname}-git" "${_pkgname}")
 source=("git+${url}.git")
 md5sums=('SKIP')
 
