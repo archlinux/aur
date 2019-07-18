@@ -75,13 +75,14 @@ depends=(
 	'wingpanel-indicator-datetime'
 	'wingpanel-indicator-keyboard'
 	'wingpanel-indicator-network'	
+	'wingpanel-indicator-nightlight'
 	'wingpanel-indicator-notifications'
 	'wingpanel-indicator-power'
 	'wingpanel-indicator-privacy-stable'
 	'wingpanel-indicator-session'
 	'wingpanel-indicator-sound'
 	)
-optdepends=('urutau-icons' 'wingpanel-indicator-a11y-stable' 'wingpanel-indicator-nightlight')
+optdepends=('urutau-icons' 'wingpanel-indicator-a11y-stable')
 makedepends=('git' 'meson' 'ninja' 'vala>=0.40.3-1')
 provides=("${pkgname}")
 conflicts=(
