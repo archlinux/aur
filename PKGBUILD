@@ -3,16 +3,18 @@
 pkgname=libretro-shaders-slang-git
 pkgver=r370.b91c670
 pkgrel=1
-pkgdesc='Collection of Vulkan shaders for libretro'
-arch=('any')
-url='http://www.libretro.com/'
-license=('GPL3')
-groups=('libretro')
-provides=('libretro-shaders' 'libretro-shaders-slang')
-conflicts=('libretro-shaders' 'libretro-shaders-slang')
-makedepends=('git')
-source=('libretro-shaders-slang::git+https://github.com/libretro/slang-shaders.git')
-sha256sums=('SKIP')
+pkgdesc='Collection of shaders for libretro'
+arch=(any)
+url=https://www.libretro.com/
+license=(GPL3)
+groups=(libretro-unstable)
+provides=(
+  libretro-shaders
+  libretro-shaders-slang
+)
+makedepends=(git)
+source=(libretro-shaders-slang::git+https://github.com/libretro/slang-shaders.git)
+sha256sums=(SKIP)
 
 pkgver() {
   cd libretro-shaders-slang
@@ -21,9 +23,7 @@ pkgver() {
 }
 
 package() {
-  install -dm 755 "${pkgdir}"/usr/share/libretro
-  cp -dr --no-preserve='ownership' libretro-shaders-slang "${pkgdir}"/usr/share/libretro/shaders
-  rm -rf "${pkgdir}"/usr/share/libretro/shaders/.git
+ make DESTDIR="${pkgdir}" -C libretro-shaders-slang install
 }
 
 # vim: ts=2 sw=2 et:
