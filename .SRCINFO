@@ -1,6 +1,6 @@
 pkgbase = wine-x64
-	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 4.7
+	pkgdesc = A compatibility layer for running Windows programs. This only configured with x64 support.
+	pkgver = 4.12.1
 	pkgrel = 1
 	url = http://www.winehq.com
 	arch = x86_64
@@ -26,12 +26,12 @@ pkgbase = wine-x64
 	depends = libxi
 	depends = freetype2
 	options = staticlibs
-	source = https://dl.winehq.org/wine/source/4.x/wine-4.7.tar.xz
-	source = https://dl.winehq.org/wine/source/4.x/wine-4.7.tar.xz.sign
+	source = https://dl.winehq.org/wine/source/4.x/wine-4.12.1.tar.xz
+	source = https://dl.winehq.org/wine/source/4.x/wine-4.12.1.tar.xz.sign
 	source = 30-win32-aliases.conf
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
-	sha512sums = cb768528db510f81d464b9c1bb48847162baaa86ef00dc7a418afdce38aa51262d150c14b3362fb40c93cc2e3633fc02b2916167f21af8a708eb393da6ba9163
-	sha512sums = 5ab8ee632d5cddbcc36fe68b7cfa06c5d8f77670af5ac2ed9e6eedbe4390a14d461b5920e199dc35f55b25f184f71d7718a54a250dd10fa30ced65e3c1c0f4a6
+	sha512sums = 5d226aa4f24c59949c88d377d8f3d38839179e473b7e5bbf029af8142dfa23fd046ca919b63c8c8fc7e1a46077a860d3dab9d2e040f0367c85c8d386707222c1
+	sha512sums = 28e6f64531b7f0e566424ce50f61c4115f3923c1182c726ba252ae890c1f038d94551fdddb93d7ba791c28b064e858b1c24e84417b66f6175d98581284eb0535
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 
 pkgname = wine-x64
