@@ -12,5 +12,4 @@ fi
 
 env WINEPREFIX=$WINEPREFIX \
     WINEDEBUG=-all \
-    WINEDLLOVERRIDES="mscoree,mshtml,winemenubuilder.exe=d" \
     $WINECMD "$@"
