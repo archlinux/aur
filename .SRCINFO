@@ -1,0 +1,13 @@
+pkgbase = openbox-themes-pambudi-git
+	pkgdesc = Openbox themes from Adhi Pambudi
+	pkgver = r24.b25c465
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	depends = git
+	depends = openbox
+	source = openbox-themes-pambudi-git::git+https://github.com/addy-dclxvi/openbox-theme-collections
+	md5sums = SKIP
+
+pkgname = openbox-themes-pambudi-git
+
