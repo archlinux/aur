@@ -7,7 +7,7 @@ pkgname=(
     'manjarowish-light-kde-settings'
     )
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 arch=('any')
 _branch='master'
 url="https://github.com/librewish/manjarowish-light"
@@ -46,8 +46,6 @@ package_manjarowish-light-kde-settings() {
         'haveged'
         'irqbalance'
         'systemd-swap'
-        'timeshift-autosnap'
-        'grub-btrfs'
         'plasma5-applets-active-window-control'
         'plasma5-applets-eventcalendar'
         'plasma5-applets-netspeed'
@@ -55,8 +53,11 @@ package_manjarowish-light-kde-settings() {
         'plasma5-applets-redshift-control'
         'kwin-decoration-sierra-breeze-enhanced-git'
         'kwin-effects-yet-another-magic-lamp'
-        
         )
+    optdepends=(
+        'timeshift-autosnap'
+        'grub-btrfs'
+        )    
     install=manjarowish-light-kde-settings.install
     conflicts=('manjarowish-dark-settings-settings','manjaro-kde-settings')
     replaces=('manjarowish-dark-settings-settings','manjaro-kde-settings')
