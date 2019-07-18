@@ -1,6 +1,6 @@
 pkgbase = wingpanel-indicator-a11y-stable-git
 	pkgdesc = Universal Access indicator for Wingpanel. This package uses wingpanel and granite in stable versions
-	pkgver = 0.1.3
+	pkgver = r13.b3009f5
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-a11y
 	arch = any
