@@ -14,17 +14,11 @@ depends=('libx11')
 source=(
 	"git://github.com/JLErvin/berry.git#branch=master"
 	berry.desktop
-	"makefile.patch"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 # For later.
 #install -D -m644 ../berry.desktop "${pkgdir}/usr/share/xsessions/"
-
-prepare() {
-	cd $srcdir/${_pkgname}/
-	patch --strip=1 < ../makefile.patch
-}
 
 build() {
 	cd ${_pkgname}/

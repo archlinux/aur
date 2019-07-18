@@ -9,8 +9,6 @@ pkgbase = berry
 	depends = libx11
 	source = git://github.com/JLErvin/berry.git#branch=master
 	source = berry.desktop
-	source = makefile.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
