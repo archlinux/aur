@@ -14,7 +14,7 @@ yellow="${bold}$(tput setaf 3)"
 
 post_install() {
     note "KIM API has been installed with some example models."
-    note "More models can be installed using the 'kim-api-v2-collections-management' utility"
+    note "More models can be installed using the 'kim-api-collections-management' utility"
 }
 
 post_upgrade() {
