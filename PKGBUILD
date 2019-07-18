@@ -39,7 +39,7 @@ prepare() {
 	source bin/activate
 	pip install --upgrade autobuild
 
-	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE -Dchan=Linux-Nightly
+	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE -Dchan=Linux
 }
 
 build() {
