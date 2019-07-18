@@ -2,10 +2,10 @@
 
 pkgname=cargo-flamegraph
 pkgver=0.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Cargo plugin that generates a flamegraph for a given workload"
 url="https://github.com/ferrous-systems/cargo-flamegraph"
-depends=('gcc-libs')
+depends=('gcc-libs' 'perf')
 makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT' 'APACHE')
