@@ -50,7 +50,7 @@ pkgbase = firestorm
 	source = firestorm.launcher
 	md5sums = SKIP
 	md5sums = 7245883fbdba303d4f827f60907574c6
-	md5sums = 2158007ce43b17b72a5517fb5aeb6e66
+	md5sums = 5e3dade65948533ff8412da776029179
 	md5sums = 3daa9e24492337e62bcac318df4ab370
 
 pkgname = firestorm
