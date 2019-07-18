@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-abc
 pkgver=0.19.10
-pkgrel=0
+pkgrel=1
 pkgdesc="Bitcoin ABC  with bitcoind, bitcoin-tx, and bitcoin-cli"
 arch=('i686' 'x86_64')
 url="https://bitcoinabc.org"
