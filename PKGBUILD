@@ -200,10 +200,19 @@ build() {
     if [ "${_opt_CPP_ONLY}" -eq 0 ]; then
       _languages+=',fortran,go,lto,objc,obj-c++'
     fi
+
     # using -pipe causes spurious test-suite failures
     # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-    CFLAGS="${CFLAGS/-pipe/}" \
-    CXXFLAGS="${CXXFLAGS/-pipe/}" \
+    CFLAGS="${CFLAGS/-pipe/}"
+    CXXFLAGS="${CXXFLAGS/-pipe/}"
+
+    # Flags from new compilers that old compilers don't recognize
+    CFLAGS="${CFLAGS/-fno-plt/}"
+    CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
+    CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
+    CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
+
     ../configure "${_cfgopts[@]}" \
       --build="${CHOST}" \
       --disable-libstdcxx-pch \
