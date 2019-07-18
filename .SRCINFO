@@ -1,0 +1,28 @@
+pkgbase = afl-unicorn-git
+	pkgdesc = Lets you fuzz any piece of binary that can be emulated by Unicorn Engine.
+	pkgver = r228.44a50c8
+	pkgrel = 1
+	url = https://github.com/Battelle/afl-unicorn
+	arch = any
+	license = apache
+	depends = glibc
+	depends = bash
+	depends = python
+	depends = python2
+	depends = python-setuptools
+	provides = afl
+	provides = unicorn
+	provides = python-unicorn
+	conflicts = afl
+	conflicts = unicorn
+	conflicts = python-unicorn
+	options = staticlibs
+	options = !emptydirs
+	options = !strip
+	source = git+https://github.com/Battelle/afl-unicorn
+	source = https://github.com/unicorn-engine/unicorn/archive/1.0.1.tar.gz
+	md5sums = SKIP
+	md5sums = 2a2b619e7517781750da75adee6d2e08
+
+pkgname = afl-unicorn-git
+
