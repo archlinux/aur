@@ -1,19 +1,23 @@
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
 # Maintainer: Raansu <Gero3977@gmail.com>
 
 pkgname=bitcoin-git
 _gitname=bitcoin
-pkgver='v0.16.0.r16350'
-pkgrel=2
+pkgver=v0.18.0.r20783
+pkgrel=1
 pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli"
-arch=('any')
+arch=('x86_64')
 url="https://bitcoin.org"
 license=('MIT')
-depends=( 'miniupnpc' 'openssl' 'protobuf')
-makedepends=('qt5-base' 'qt5-tools' 'pkg-config' 'db4.8' 'git' 'boost-libs' 'boost' 'gcc' 'gcc-libs' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool' 'zeromq')
+depends=('qt5-base' 'miniupnpc' 'openssl' 'protobuf' 'boost-libs' 'db4.8' 'qrencode' 'zeromq' 'libevent' 'desktop-file-utils')
+makedepends=('qt5-tools' 'pkg-config' 'git' 'boost' 'gcc' 'gcc-libs' 'make' 'automake' 'autoconf' 'libtool')
 provides=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-cli' 'bitcoin-core')
 conflicts=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-core' 'bitcoin-core-git' 'bitcoin-cli' 'bitcoin-tx')
-source=('git://github.com/bitcoin/bitcoin.git')
-sha256sums=('SKIP')
+source=('git://github.com/bitcoin/bitcoin.git'
+        'packaging::git://github.com/bitcoin-core/packaging.git')
+
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -23,8 +27,13 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
   ./autogen.sh
-  ./configure --with-gui=qt5
+  ./configure --with-gui=qt5 --with-zmq --with-qrencode
    make -j$(nproc)
+}
+
+check() {
+   cd "$srcdir/$_gitname"
+   make check -j$(nproc)
 }
 
 package() {
@@ -32,12 +41,12 @@ package() {
 	msg2 'Installing bitcoin-qt...'
 	install -Dm755 "$srcdir/$_gitname/src/qt/bitcoin-qt" "$pkgdir/usr/bin/bitcoin-qt"
 	install -Dm644 "$srcdir/$_gitname/share/pixmaps/bitcoin128.xpm" "$pkgdir/usr/share/pixmaps/bitcoin128.xpm"
-	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/contrib/debian/bitcoin-qt.desktop"
+	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/packaging/debian/bitcoin-qt.desktop"
 	
 	# install bitcoin-daemon
         msg2 'Installing bitcoin-daemon...'
         install -Dm755 "$srcdir/$_gitname/src/bitcoind" "$pkgdir/usr/bin/bitcoind"
-        install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/bitcoin.conf"
+        install -Dm644 "$srcdir/packaging/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/bitcoin.conf"
         install -Dm644 "$srcdir/$_gitname/doc/man/bitcoin-cli.1" "$pkgdir/usr/share/man/man1/bitcoin-cli.1"
         install -Dm644 "$srcdir/$_gitname/doc/man/bitcoin-qt.1" "$pkgdir/usr/share/man/man1/bitcoin-qt.1"
         install -Dm644 "$srcdir/$_gitname/doc/man/bitcoind.1" "$pkgdir/usr/share/man/man1/bitcoind.1"
