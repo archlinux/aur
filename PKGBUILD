@@ -1,4 +1,4 @@
-# Maintainer: Kevin Del Castillo R. <lans9831@gmail.com>
+# Maintainer: Jorengarenar
 
 pkgname=vintage-basic
 epoch=1
