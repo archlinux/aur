@@ -16,7 +16,5 @@ prepare() {
 }
 
 package() {
-    cd "${srcdir}/usr/share/fonts/${pkgname%-fonts}"
-
-    install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgname%-fonts}" *.TTF
+    install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgname%-fonts}" "${srcdir}/usr/share/fonts/${pkgname%-fonts}"/*.TTF
 }
