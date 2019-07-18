@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-session
-pkgver=2.2.2
+pkgver=2.2.4
 pkgrel=1
 pkgdesc='Session indicator for Wingpanel'
 arch=(x86_64)
@@ -21,7 +21,6 @@ makedepends=(
   gobject-introspection
   meson
   vala
-  wingpanel
 )
 source=(git+https://github.com/elementary/wingpanel-indicator-session.git#tag=${pkgver})
 sha256sums=(SKIP)
