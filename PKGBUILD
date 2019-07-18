@@ -85,7 +85,7 @@ prepare() {
   # Type: 1
   # Status: 2
   # Comment:
-  git cherry-pick -n 76462a2f
+  git cherry-pick -n 73fe41a5
 
   # Title: clutter/stage-cogl: Don't skip over the next frame
   # URL : https://gitlab.gnome.org/GNOME/mutter/merge_requests/520
