@@ -6,6 +6,7 @@ pkgbase = gendev
 	arch = any
 	license = BSD
 	depends = texinfo
+	options = !strip
 	source = https://github.com/kubilus1/gendev/releases/download/0.3.2/gendev_0.3.2.txz
 	md5sums = bee00fcef94169a82cba3c6b6c415777
 
