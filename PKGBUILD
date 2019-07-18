@@ -1,7 +1,7 @@
 # Maintainer: Ultracoolguy <dummyd241 at gmaildotcom>
 pkgname="switch-lan-play"
-pkgver=v0.1.0.r36.787a27d
-pkgrel=1.3
+pkgver=v0.1.0.r36.g787a27d
+pkgrel=1
 epoch=0
 pkgdesc="A program for connecting to switch-lan-play servers-see url for more info"
 arch=(any)
@@ -19,27 +19,28 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname::${url}.git")
+source=("$pkgname::git+${url}")
 noextract=()
 md5sums=('SKIP')
-pkgver() {
-  cd switch-lan-play
 
-  git describe --tags | sed 's/-/.r/; s/-g/./'
-
+#Taken from this forum https://bbs.archlinux.org/viewtopic.php?id=230826
+ pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 prepare() {
-	if [[ -d switch-lan-play ]];then
-	  rm -rf switch-lan-play
-	fi
-	git clone $source
+	cd $pkgname
+	git submodule init
+	git submodule update --init --recursive
 }
 
+
+
 build()	{
-	cd switch-lan-play
-	mkdir build
+	cd $pkgname
+	mkdir -p build
 	cd build
 	cmake -DCMAKE_BUILD_TYPE=Release ..
 	make
