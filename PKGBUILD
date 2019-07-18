@@ -2,7 +2,7 @@
 #
 
 pkgname="casacore"
-pkgver=2.4.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Suite of c++ libraries for radio astronomy data processing"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('sofa: only for testing casacore measures'
 conflicts=('')
 provides=("${pkgname}")
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('58eccc875053b2c6fe44fe53b6463030ef169597ec29926936f18d27b5087d63')
+sha256sums=('ac94f4246412eb45d503f1019cabe2bb04e3861e1f3254b832d9b1164ea5f281')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

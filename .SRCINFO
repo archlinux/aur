@@ -1,6 +1,6 @@
 pkgbase = casacore
 	pkgdesc = Suite of c++ libraries for radio astronomy data processing
-	pkgver = 2.4.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = casacore
 	optdepends = hdf5
 	optdepends = ncurses
 	provides = casacore
-	source = https://github.com/casacore/casacore/archive/v2.4.1.tar.gz
-	sha256sums = 58eccc875053b2c6fe44fe53b6463030ef169597ec29926936f18d27b5087d63
+	source = https://github.com/casacore/casacore/archive/v3.1.2.tar.gz
+	sha256sums = ac94f4246412eb45d503f1019cabe2bb04e3861e1f3254b832d9b1164ea5f281
 
 pkgname = casacore
 
