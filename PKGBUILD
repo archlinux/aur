@@ -1,6 +1,6 @@
 # Maintainer: McLenin <mclenin at gooogles email>
 pkgname=texlive-acrotex
-pkgver=2018.03.22
+pkgver=2019.07.18
 pkgrel=1
 license=('GPL')
 depends=('texlive-core')
@@ -8,11 +8,11 @@ pkgdesc="A LaTeX bundle for webpages, pdf forms and includin JavaSript into LaTe
 url="http://www.ctan.org/tex-archive/macros/latex/contrib/acrotex"
 arch=('any')
 source=("$pkgname-$pkgver.zip::http://mirrors.ctan.org/macros/latex/contrib/acrotex.zip")
-md5sums=('aa9c02cd4a1cd83d00ce3a87cd80843a')
-sha1sums=('0ae2a72efc6bcf9faf7f647cafdcf646a27dce74')
-sha256sums=('7bda228ed6ae91d55ad97723c783731b5f0315ad4478d7efb4001585e054c087')
-sha384sums=('14e5b0ecc17c9059ef55997cc136b072e540e67f8b7cf251bf1fc3ecc3dd85ca1c31d326b614611449ccde32b438a060')
-sha512sums=('a5126739fd53276675aa02b18e7abf166edbb6653ad8f58474212d6581873af6991cc7dafdc558bbddd4542f4771be131ceeb0d5dea0b9dab2e66d2fbfeb08eb')
+md5sums=('edb81424e8f04306d27ad50c167d35cc')
+sha1sums=('fa6f0dd75532250a96898027e1cacd7edb61ccf1')
+sha256sums=('320e33529f934659f5829824c6f2e326965277cbf1f1624f623aa19952e06ae5')
+sha384sums=('e2093c67f97fb57ce1aaee72522635749f5f6704acee1231c35bdd73fa25222ce8b47f74ee0f57b4ec1d515593b6fe0f')
+sha512sums=('59432d50f5beea0da2bba95b794a4aadeb563c4ae62f5aaee6ba36dbc8c96ae08c2b3cd0cd91a3bc51f5498ba7b5a121fe4e060cac094567b3d609a69cb1ccbd')
 
 build()
 {
