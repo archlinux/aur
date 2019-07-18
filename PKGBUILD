@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=system76-driver-git
-pkgver=19.04.8.r2.g12fc202
-pkgrel=2
+pkgver=19.04.9.r1.gfc2fd58
+pkgrel=1
 pkgdesc="System76 Driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
