@@ -1,7 +1,7 @@
 diff -ur old/drivers/input/mouse/Kconfig new/drivers/input/mouse/Kconfig
---- old/drivers/input/mouse/Kconfig	2017-08-30 11:32:30.000000000 +0300
-+++ new/drivers/input/mouse/Kconfig	2017-09-01 08:14:12.460494857 +0300
-@@ -100,6 +100,15 @@
+--- old/drivers/input/mouse/Kconfig
++++ new/drivers/input/mouse/Kconfig
+@@ -101,6 +101,15 @@
  
           If unsure, say Y.
  
@@ -20,7 +20,7 @@ diff -ur old/drivers/input/mouse/Kconfig new/drivers/input/mouse/Kconfig
 diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
 --- old/drivers/input/mouse/synaptics.c
 +++ new/drivers/input/mouse/synaptics.c
-@@ -29,6 +29,7 @@
+@@ -26,6 +26,7 @@
  #include <linux/input/mt.h>
  #include <linux/serio.h>
  #include <linux/libps2.h>
@@ -28,7 +28,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  #include <linux/rmi.h>
  #include <linux/i2c.h>
  #include <linux/slab.h>
-@@ -720,6 +721,141 @@
+@@ -717,6 +718,141 @@
  	serio_register_port(serio);
  }
  
@@ -170,7 +170,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  /*****************************************************************************
   *	Functions to interpret the absolute mode packets
   ****************************************************************************/
-@@ -1404,6 +1540,7 @@
+@@ -1401,6 +1537,7 @@
  		device_remove_file(&psmouse->ps2dev.serio->dev,
  				   &psmouse_attr_disable_gesture.dattr);
  
@@ -178,7 +178,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  	synaptics_reset(psmouse);
  	kfree(priv);
  	psmouse->private = NULL;
-@@ -1463,6 +1600,8 @@
+@@ -1460,6 +1597,8 @@
  			    priv->info.ext_cap, info.ext_cap);
  		return -ENXIO;
  	}
@@ -187,7 +187,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  
  	return 0;
  }
-@@ -1582,6 +1721,9 @@
+@@ -1579,6 +1718,9 @@
  		     info->capabilities, info->ext_cap, info->ext_cap_0c,
  		     info->ext_cap_10, info->board_id, info->firmware_id);
  
@@ -199,9 +199,9 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  		psmouse_err(psmouse,
 
 diff -ur old/drivers/input/mouse/synaptics.h new/drivers/input/mouse/synaptics.h
---- old/drivers/input/mouse/synaptics.h	2017-08-30 11:32:30.000000000 +0300
-+++ new/drivers/input/mouse/synaptics.h	2017-09-01 08:27:07.849088154 +0300
-@@ -180,6 +180,8 @@
+--- old/drivers/input/mouse/synaptics.h
++++ new/drivers/input/mouse/synaptics.h
+@@ -177,6 +177,8 @@
  	u32 x_min, y_min;	/* Min coordinates (from FW) */
  };
  
@@ -210,7 +210,7 @@ diff -ur old/drivers/input/mouse/synaptics.h new/drivers/input/mouse/synaptics.h
  struct synaptics_data {
  	struct synaptics_device_info info;
  
-@@ -204,6 +206,7 @@
+@@ -201,6 +203,7 @@
  	bool					press;
  	bool					report_press;
  	bool					is_forcepad;
