@@ -1,7 +1,7 @@
 pkgbase = findutils-git
 	pkgdesc = Basic directory searching utilities of the GNU operating system
-	pkgver = 4.6.0.r115.g9530e31f
-	pkgrel = 2
+	pkgver = 4.6.0.r235.gf2542a4f
+	pkgrel = 1
 	url = https://www.gnu.org/software/findutils/
 	arch = i686
 	arch = x86_64
