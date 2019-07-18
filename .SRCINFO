@@ -1,6 +1,6 @@
 pkgbase = kgx-git
 	pkgdesc = A minimal terminal for GNOME
-	pkgver = 0.0.1
+	pkgver = 0.0.1.r76.8f51085
 	pkgrel = 1
 	url = https://gitlab.gnome.org/ZanderBrown/kgx
 	arch = i686

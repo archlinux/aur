@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Krzyszkowiak <dos@dosowisko.net>
 
 pkgname=kgx-git
-pkgver=0.0.1
+pkgver=0.0.1.r76.8f51085
 pkgrel=1
 pkgdesc="A minimal terminal for GNOME"
 url="https://gitlab.gnome.org/ZanderBrown/kgx"
@@ -19,6 +19,11 @@ conflicts=(kgx)
 provides=(kgx)
 source=("git+https://gitlab.gnome.org/ZanderBrown/kgx.git")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/${pkgname%-git}"
+    printf "0.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
     rm -rf build
