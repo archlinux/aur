@@ -12,7 +12,8 @@ source=("http://vintage-basic.net/downloads/vintage-basic-$pkgver-linux-x86_64.t
 sha512sums=(SKIP)
 
 package() {
-    cd "$srcdir/vintage-basic-$pkgver-linux-x86_64"
+    cd "${srcdir}/vintage-basic-$pkgver-linux-x86_64"
     cp -r share "${pkgdir}/usr/"
+    mkdir -p "${pkgdir}/usr/bin"
     install bin/vintbas "${pkgdir}/usr/bin"
 }
