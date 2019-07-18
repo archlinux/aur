@@ -9,7 +9,7 @@ license=('GPL')
 depends=('zsh')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MichaelAquilina/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('e790029e8175a1426ae374c635b40296917db55e71e3d5408a18c02cd1a2d8002a979494feaa3651d9488948a13ee13a3feab4cfe09f67a802408f0134c1550c')
+sha512sums=('6bbcc437b88edac54dbb66018f490132fd7e34eb4858dfa1c76aa89d2c9d8c7f7938546b8cf3fb8a6f0c44bfb5e58065a20ce01029e1392deac3474202c769e3')
 
 package() {
   cd "$pkgname-$pkgver"
