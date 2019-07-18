@@ -9,15 +9,7 @@ pkgbase = listen1-desktop-appimage
 	noextract = Listen1_2.4.0_linux_x86_64.AppImage
 	options = !strip
 	source = https://github.com/listen1/listen1_desktop/releases/download/v2.4.0/Listen1_2.4.0_linux_x86_64.AppImage
-	source = https://raw.githubusercontent.com/listen1/listen1_desktop/master/app/resources/logo.png
-	source = https://raw.githubusercontent.com/listen1/listen1_desktop/master/app/resources/logo512.png
-	source = https://raw.githubusercontent.com/listen1/listen1_desktop/master/app/resources/logo_16.png
-	source = https://raw.githubusercontent.com/listen1/listen1_desktop/master/app/resources/logo_32.png
 	sha256sums = cbe4a5aaf0d41b638e2aa4cf3dfd8a3e9ed9d51c01b7709db2fc9cb490707c51
-	sha256sums = 260f6192d50230d1c7eac2e4642670551aa5d1291ed8f9ae422f20cfd762d96d
-	sha256sums = c9bd5824091a559fc6a28f02e846382eeee01d72b71471a694010a712fa31805
-	sha256sums = d9d9e162b23d5463347cad0ae81c8482be6d6f31c79c05effbf32b107635f4b8
-	sha256sums = ae54074610b6af78aab7936ad11a2c2e3f5bcf4ef97c8e033c047176570f5cac
 
 pkgname = listen1-desktop-appimage
 
