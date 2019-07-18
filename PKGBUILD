@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 
 pkgname=python-osc
-pkgver=1.7.0
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='Open Sound Control server and client implementations in pure Python'
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('2063f97fb353e09adb146d9a801df94125fdd899536bd5815c99dcdf22976c0e20aa647f4b073086b76cd82643705c51a62ff6bdaa572121070c3d92e8334fdb')
+sha512sums=('0bc0eb62838d5101f88529164fb9e7a12b58c9f15ea6bc31ed6c06563c2971cc55fc8d47bc845bb0408ff01c3a1bd03a3b31d168aeb3dfbeb586aea514d60394')
 
 build() {
   cd "${pkgname}-${pkgver}"
