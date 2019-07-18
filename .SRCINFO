@@ -1,7 +1,7 @@
 pkgbase = firestorm
 	pkgdesc = Firestorm is FOSS where you can build & share virtual reality (VR) in Secondlife/OpenSim (P2P). Meet people in 3D! Source build.
-	pkgver = r57615.0af2879f89e3
-	pkgrel = 1
+	pkgver = r57588.7b5a98fba31f
+	pkgrel = 2
 	url = https://www.firestormviewer.org/
 	arch = i686
 	arch = x86_64
