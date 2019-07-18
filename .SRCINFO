@@ -1,7 +1,7 @@
 pkgbase = qtcreator-prerelease
 	pkgdesc = Qt Creator prerelease/latest
 	pkgver = 4.10.0beta2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qt.io/ide
 	install = qtcreator-prerelease.install
 	arch = x86_64

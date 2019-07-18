@@ -11,7 +11,7 @@ _pkgvermajmin=4.10
 _pkgver=${_pkgvermajmin}.0
 _verpostfix="beta2"
 pkgver="${_pkgver}${_verpostfix}"
-pkgrel=1
+pkgrel=2
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
   _pkgver=${_pkgver}-${_verpostfix}
