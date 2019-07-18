@@ -3,7 +3,7 @@
 _pkgname=libtorrent
 pkgname=libtorrent-ps
 _pkgver=0.13.6
-pkgver=1.1.r15.g56057fc
+pkgver=1.1.r42.g37c9d4b
 pkgrel=1
 pkgdesc='BitTorrent library written in C++ for use with rtorrent-ps'
 url='https://github.com/rakshasa/libtorrent'
@@ -12,7 +12,7 @@ arch=('any')
 depends=('openssl')
 provides=('libtorrent')
 conflicts=('libtorrent')
-source=("https://github.com/rakshasa/$_pkgname/archive/$_pkgver.tar.gz"
+source=("https://github.com/rakshasa/$_pkgname/archive/v$_pkgver.tar.gz"
         'lt-base-cppunit-pkgconfig.patch'
         'lt-ps-better-bencode-errors_all.patch'
         'lt-ps-honor_system_file_allocate_all.patch'

@@ -1,6 +1,6 @@
 pkgbase = libtorrent-ps
 	pkgdesc = BitTorrent library written in C++ for use with rtorrent-ps
-	pkgver = 1.1.r15.g56057fc
+	pkgver = 1.1.r42.g37c9d4b
 	pkgrel = 1
 	url = https://github.com/rakshasa/libtorrent
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = libtorrent-ps
 	depends = openssl
 	provides = libtorrent
 	conflicts = libtorrent
-	source = https://github.com/rakshasa/libtorrent/archive/0.13.6.tar.gz
+	source = https://github.com/rakshasa/libtorrent/archive/v0.13.6.tar.gz
 	source = lt-base-cppunit-pkgconfig.patch
 	source = lt-ps-better-bencode-errors_all.patch
 	source = lt-ps-honor_system_file_allocate_all.patch
