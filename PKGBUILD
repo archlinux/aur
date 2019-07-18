@@ -19,13 +19,13 @@ source=("$pkgname::git+https://github.com/nlesc-dirac/sagecal.git")
 md5sums=('SKIP')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     mkdir build
 
     cd build
     cmake .. \
-      -DCMAKE_CXX_COMPILER=/usr/sbin/g++-8 \
-      -DCMAKE_C_COMPILER=/usr/sbin/gcc-8 \
+      -DCMAKE_CXX_COMPILER=/usr/sbin/g++ \
+      -DCMAKE_C_COMPILER=/usr/sbin/gcc \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -D_GLIBCXX_USE_CXX11_ABI=0 \
       -DENABLE_CUDA=OFF
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/build"
+    cd "${srcdir}/${pkgname}/build"
     install -d ${pkgdir}/usr/share/licenses/${pkgname}
     #install -m 644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     make DESTDIR="${pkgdir}" install
