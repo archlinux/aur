@@ -1,6 +1,6 @@
 pkgbase = envoyproxy
 	pkgdesc = A high performance, open source, general RPC framework that puts mobile and HTTP/2 first.
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://envoyproxy.io
 	arch = i686
@@ -13,8 +13,12 @@ pkgbase = envoyproxy
 	makedepends = ninja
 	makedepends = python
 	makedepends = git
-	source = https://github.com/envoyproxy/envoy/archive/v1.10.0.tar.gz
-	sha512sums = 59f9921642ee4cb34eb7af574a719c8468d45c17da72c2a478817b48fc121a4be7cf4b1a58bbe79261976bcba07ec8be346561f53901dba5ca2f212f65de85f1
+	source = https://github.com/envoyproxy/envoy/archive/v1.11.0.tar.gz
+	source = 0001-bazel-adapt-cc_wraper.py-to-python3-7519.patch
+	source = 0002-fix-com_github_datadog_dd_opentracing_cpp-build-fail.patch
+	sha512sums = aebee8e446f673aef0536c06d624cc7a011d32e7e0d6c313e43e11660146412731a597764edfaf3a32db4894831e9412c87cf6b734ce0f0b3f80799aa6691820
+	sha512sums = 01ffa67fd8fade4fd1c5d28473fd2f9c2a9734329765f20fb8190bddc51b39c235f72c44e4eadb8eecfd2fe810eeee067c371f1f29e2da530851bbc95d501d73
+	sha512sums = 9cfe6ef8f41082bbfff97842d58b022c34d5e3666786a86c991bec0cb0d9a955eae6343ea0ae53d4245f84082b88847e5d1b2cf1519b99e649b7848673536fff
 
 pkgname = envoyproxy
 
