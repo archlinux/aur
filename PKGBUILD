@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=gala-git
-pkgver=0.3.0.r225.dd98e00
+pkgver=0.3.0.r235.14e2ff6
 pkgrel=1
 pkgdesc='The Pantheon Window Manager'
 arch=(x86_64)
@@ -21,7 +21,6 @@ depends=(
   libgee
   libgl
   libgranite.so
-  libmutter2
   libx11
   libxcomposite
   libxdamage
@@ -31,6 +30,7 @@ depends=(
   libxrandr
   libxtst
   mesa
+  mutter
   pango
   plank
   wayland
@@ -48,7 +48,7 @@ provides=(
   libgala.so
 )
 conflicts=(gala)
-source=(git+https://github.com/elementary/gala.git)
+source=(git+https://github.com/elementary/gala.git#branch=wip/mutter-3.3x)
 sha256sums=(SKIP)
 
 pkgver() {
