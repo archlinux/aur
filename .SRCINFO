@@ -1,5 +1,5 @@
 pkgbase = seafile-git
-	pkgdesc = Seafile sync client daemon, latest version.
+	pkgdesc = Seafile sync client daemon, latest version (master branch).
 	pkgver = 7.0.1
 	pkgrel = 1
 	url = https://github.com/haiwen/seafile
@@ -19,10 +19,10 @@ pkgbase = seafile-git
 	provides = seafile-client-cli-git
 	conflicts = seafile-server
 	conflicts = seafile
-	source = seafile-git-7.0.1.tar.gz::https://github.com/haiwen/seafile/archive/v7.0.1.tar.gz
+	source = seafile-git-master.tar.gz::https://github.com/haiwen/seafile/archive/master.tar.gz
 	source = libseafile.in.patch
 	source = seaf-cli@.service
-	sha256sums = c79a186e3a512454cb65d863bd45ecc8ae2c66a0dd2010533f3fed7862fa92f8
+	sha256sums = SKIP
 	sha256sums = a2d7f7cf0c59aba97650af62b3cefd0ceb71a1007c34d9369a88e5769c7f6076
 	sha256sums = c37510109c1de64c774896df39aece240c056b54414d2119fca01860211156ba
 
