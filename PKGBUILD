@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=pantheon-stable
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Meta package for the complete Pantheon desktop & apps that uses stable versions"
 arch=(any)

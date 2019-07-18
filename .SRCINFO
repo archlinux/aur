@@ -1,6 +1,6 @@
 pkgbase = pantheon-stable
 	pkgdesc = Meta package for the complete Pantheon desktop & apps that uses stable versions
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/elementary
 	arch = any
