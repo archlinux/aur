@@ -7,7 +7,6 @@ pkgdesc="One for all free music in China"
 arch=("x86_64")
 url="https://listen1.github.io/listen1/"
 license=("MIT")
-makedepends=("p7zip")
 noextract=("Listen1_${pkgver}_linux_x86_64.AppImage")
 options=("!strip")
 source=("https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/Listen1_${pkgver}_linux_x86_64.AppImage")
@@ -17,7 +16,7 @@ package() {
     cd "${srcdir}"
     mv "Listen1_${pkgver}_linux_x86_64.AppImage" "listen1.AppImage"
     chmod a+x "listen1.AppImage"
-    listen1.AppImage --appimage-extract
+    ${srcdir}/listen1.AppImage --appimage-extract
     sed -i "s/AppRun/\/opt\/listen1\/listen1.AppImage/" "squashfs-root/listen1.desktop"
     find "squashfs-root/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
 
