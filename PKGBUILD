@@ -8,8 +8,8 @@ arch=("any")
 url="https://github.com/Digitalone1/mpv-acestream"
 license=("GPL3")
 depends=(
-    "acestream-engine: AceStream engine"
-    "mpv: mpv player")
+    "acestream-engine"
+    "mpv")
 source=(
     "https://github.com/Digitalone1/mpv-acestream/archive/v$pkgver.tar.gz"
     "acestream.protocol")
