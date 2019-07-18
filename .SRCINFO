@@ -71,6 +71,7 @@ pkgbase = pantheon-stable
 	depends = ttf-liberation
 	depends = ttf-opensans
 	depends = wingpanel
+	depends = wingpanel-indicator-a11y-stable
 	depends = wingpanel-indicator-bluetooth
 	depends = wingpanel-indicator-datetime
 	depends = wingpanel-indicator-keyboard
@@ -82,11 +83,11 @@ pkgbase = pantheon-stable
 	depends = xorg-server
 	depends = xorg-xinit
 	optdepends = urutau-icons
-	optdepends = wingpanel-indicator-a11y
 	optdepends = wingpanel-indicator-nightlight
 	optdepends = wingpanel-indicator-privacy
 	provides = pantheon-stable
 	conflicts = pantheon-unstable
+	conflicts = wingpanel-indicator-a11y-git
 
 pkgname = pantheon-stable
 

@@ -71,6 +71,7 @@ depends=(
 	'ttf-liberation'
 	'ttf-opensans'
 	'wingpanel'
+	'wingpanel-indicator-a11y-stable'
 	'wingpanel-indicator-bluetooth'
 	'wingpanel-indicator-datetime'
 	'wingpanel-indicator-keyboard'
@@ -82,10 +83,10 @@ depends=(
 	'xorg-server'
 	'xorg-xinit'
 	)
-optdepends=('urutau-icons' 'wingpanel-indicator-a11y' 'wingpanel-indicator-nightlight' 'wingpanel-indicator-privacy')
+optdepends=('urutau-icons' 'wingpanel-indicator-nightlight' 'wingpanel-indicator-privacy')
 makedepends=('git' 'meson' 'ninja' 'vala>=0.40.3-1')
 provides=("${pkgname}")
-conflicts=('pantheon-unstable')
+conflicts=('pantheon-unstable' 'wingpanel-indicator-a11y-git')
 
 package(){
   /bin/true
