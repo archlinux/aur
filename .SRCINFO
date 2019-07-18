@@ -1,0 +1,30 @@
+pkgbase = wingpanel-indicator-privacy-stable-git
+	pkgdesc = The Privacy indicator watches for usage of the camera or location services and displays a tattle-taling camera and/or location icon in the panel when they are being used. This package uses wingpanel and granite in stable versions
+	pkgver = r102.44cb7eb
+	pkgrel = 1
+	url = https://github.com/elementary/wingpanel-indicator-privacy
+	arch = any
+	groups = pantheon-stable
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala>=0.40.3-1
+	depends = bamf
+	depends = glib2
+	depends = glibc
+	depends = granite
+	depends = gtk3
+	depends = libgee
+	depends = libgtop
+	depends = lsof
+	depends = wingpanel
+	provides = wingpanel-indicator-privacy
+	provides = wingpanel-indicator-privacy-stable
+	conflicts = wingpanel-indicator-privacy
+	conflicts = wingpanel-indicator-privacy-git
+	conflicts = wingpanel-indicator-privacy-stable
+	source = git+https://github.com/elementary/wingpanel-indicator-privacy.git
+	md5sums = SKIP
+
+pkgname = wingpanel-indicator-privacy-stable-git
+
