@@ -3,7 +3,7 @@
 # Maintainer: Tobias Backer Dirks <omgitsaheadcrab@gmail.com>
 pkgname=popsql
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Collaborative SQL editor to write, run, and share queries instantly"
 arch=('x86_64')
 url="https://popsql.io"
@@ -16,7 +16,7 @@ optdepends=(
   'libappindicator-gtk2: System Tray support')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("popsql.deb::https://get.popsql.io/download/linux_deb_64")
+source_x86_64=("$pkgname-$pkgver-$pkgrel.deb::https://get.popsql.io/download/linux_deb_64")
 sha512sums_x86_64=('107820f022c2585ecab4e58feca31f39e88d218bca5b8d7dacde10c7d1ece15c742223bc277d9da916340b950e6dd301096258c0c7dbce7b5cd42d27c6165136')
 
 package(){
