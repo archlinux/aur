@@ -21,7 +21,7 @@ package() {
     find "${srcdir}/usr/share/icons/hicolor" -type d -name "apps" -delete
     sed -i "s/AppRun/\/opt\/listen1\/listen1.AppImage/" listen1.desktop
 
-    cp -R "${srcdir}/usr/share/icons/hicolor/*" "${pkgdir}/usr/share/icons/hicolor"
+    cp -R "${srcdir}/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
     install -Dm755 "listen1.AppImage" "${pkgdir}/opt/listen1/listen1.AppImage"
     install -Dm644 "listen1.desktop" "${pkgdir}/usr/share/applications/listen1.desktop"
 }
