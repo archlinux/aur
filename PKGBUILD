@@ -1,10 +1,10 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.1.0.r217.b7a68bc
+pkgver=0.1.0.r228.536fe2c
 pkgrel=1
 pkgdesc="Open source editing tools for Halo Custom Edition"
-depends=('libtiff' 'libpng')
+depends=('libtiff')
 makedepends=('cmake' 'git' 'python')
 arch=('i686' 'x86_64')
 url="https://github.com/Kavawuvi/Invader"
