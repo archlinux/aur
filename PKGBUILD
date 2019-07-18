@@ -1,16 +1,17 @@
-# Maintainer: Chris Severance aur.severach AatT spamgourmet.com
+# Maintainer:  Chris Severance aur.severach AatT spamgourmet.com
 # Contributor: Det <nimetonmaili g-mail>
 
 set -u
 _pkgname='jdk'
 _major='8'
 pkgname="${_pkgname}${_major}"
-_minor='212'; _build='b10'; _hash='59066701cf1a433da9770636fbc4c9aa'
+#_minor='212'; _build='b10'; _hash='59066701cf1a433da9770636fbc4c9aa'
+_minor='221'; _build='b11'; _hash='230deb18db3e4014bb8e3e8324f81b43'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit"
 arch=('x86_64')
-url='http://www.oracle.com/technetwork/java/javase/downloads/index.html'
+url='https://www.oracle.com/technetwork/java/javase/downloads/index.html'
 license=('custom:Oracle')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-runtime-common' 'nss' 'xdg-utils')
 depends+=('java-environment-common')
@@ -22,7 +23,6 @@ provides=("java-runtime=${_major}" "java-runtime-headless=${_major}" "java-web-s
           "java-openjfx=${_major}")
 provides+=("java-environment-jdk=${_major}" "java-environment=${_major}")
 # Variables
-DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
 
 _jname="${_pkgname}${_major}"
 _jvmdir="/usr/lib/jvm/java-${_major}-${_pkgname}"
@@ -68,24 +68,28 @@ if [ -s ~/"Downloads/${_srcfil}" ] && [ ! -e "${_srcfil}" ]; then
 fi
 unset _srcfil
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         '62d57a7550c97b534343443475d9afd9'
+         '9e1ecd461c3b848af45ab41c528d9a95'
          '8a66f50efdc867ffd6a27168bc93b210'
          '1cbde70639abd98db4bace284dbf2bc4'
          'f0b39865361437f3778ecbe6ffbc0a06'
          '89704501aff8efe859c31968d8d168e6'
          '4dda444d58a4d78ca6357228adbde8a2')
 sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
-            '3160c50aa8d8e081c8c7fe0f859ea452922eca5d2ae8f8ef22011ae87e6fedfb'
+            'bac52b7f120a03c4c0815ca8fc77c02a8f3db2ded121ffad7449525f377e2479'
             '65282603bd0804d162f3f7da47bc7f3c91373e87504297d6a6fd6f2f8a1ec4ee'
             '8f865b52946a9ab98556c56306c7e70ae7aa432b4d005c70df0bba9d2c3111b1'
             '144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870'
             '635433e9c78ff58af65c316232ac9907d289a324428923788ea0f82ae7f8083b'
             'd1b4b3161614d7620365a0528a86f7eec543de30ee756b1ad2dabd386e84f734')
+
 PKGEXT='.pkg.tar.gz' # much faster than .xz
 ## Alternative mirror, if your local one is throttled:
 ## Posting new sites does no good. They get taken down by the admin
 ## from too much traffic or complaints from Oracle.
 #source[1]="http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/${_pkgname}-${pkgver}-linux-x64.gz"
+
+DLAGENTS=("${DLAGENTS[@]// -gqb \"\"/ -gq}")
+DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
 
 package() {
   set -u
