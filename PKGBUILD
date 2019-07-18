@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=boca-git
 pkgver=1.1.alpha.20190423.40.g11d88b8e
-pkgrel=1
+pkgrel=2
 pkgdesc="A component library used by the fre:ac audio converter"
 arch=('i686' 'x86_64')
 url="https://github.com/enzo1982/boca"
