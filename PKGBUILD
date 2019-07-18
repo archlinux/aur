@@ -1,15 +1,13 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=openbox-themes-pambudi-git
 pkgver=r24.b25c465
-pkgrel=1
+pkgrel=2
 pkgdesc="Openbox themes from Adhi Pambudi"
 arch=('x86_64')
-url=""
+url="https://github.com/addy-dclxvi/openbox-theme-collections"
 license=('GPL3')
-groups=()
 depends=('git' 'openbox')
 source=(${pkgname}::"git+https://github.com/addy-dclxvi/openbox-theme-collections")
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
@@ -19,7 +17,6 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
-
 
 package() {
   cd "$pkgname"
