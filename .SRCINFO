@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ce-eap
 	pkgdesc = Early access version of the upcoming version of Intellij Idea IDE (community version)
-	pkgver = 2019.2.192.5728.12
+	pkgver = 2019.2.192.5728.74
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = intellij-idea-ce-eap
 	depends = libxtst
 	depends = libdbusmenu-glib
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIC-192.5728.12.tar.gz
-	sha256sums = 86dcf372c154c20585f811ce0926de4f2b80337e9cd4c55ad141274e4e515a28
+	source = https://download.jetbrains.com/idea/ideaIC-192.5728.74.tar.gz
+	sha256sums = d33aa449a7728c06194a5569a65340725313f7e789db86b6ed65d5777ab093bd
 
 pkgname = intellij-idea-ce-eap
 
