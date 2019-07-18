@@ -1,6 +1,6 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
 pkgname=zsh-auto-notify
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Zsh plugin that sends out a notification when a long running task has completed"
 arch=('any')

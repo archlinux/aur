@@ -1,13 +1,13 @@
 pkgbase = zsh-auto-notify
 	pkgdesc = Zsh plugin that sends out a notification when a long running task has completed
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/MichaelAquilina/zsh-auto-notify
 	install = zsh-auto-notify.install
 	arch = any
 	license = GPL
 	depends = zsh
-	source = zsh-auto-notify-0.2.0.tar.gz::https://github.com/MichaelAquilina/zsh-auto-notify/archive/0.2.0.tar.gz
+	source = zsh-auto-notify-0.3.0.tar.gz::https://github.com/MichaelAquilina/zsh-auto-notify/archive/0.3.0.tar.gz
 	sha512sums = e790029e8175a1426ae374c635b40296917db55e71e3d5408a18c02cd1a2d8002a979494feaa3651d9488948a13ee13a3feab4cfe09f67a802408f0134c1550c
 
 pkgname = zsh-auto-notify
