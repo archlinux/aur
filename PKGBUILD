@@ -11,45 +11,15 @@ pkgdesc="A couple of helper scripts for i3"
 arch=('any')
 url="https://gitlab.com/lejs/autoi3"
 license=('MIT')
-groups=()
 depends=('python3')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("git+https://gitlab.com/lejs/autoi3")
 sha256sums=('SKIP')
-noextract=()
-
-#prepare() {
-#  cd "$srcdir/$pkgname-$pkgver"
-#
-#  patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-#}
-
-#build() {
-#  cd "$srcdir/$pkgname-$pkgver"
-#
-#  ./configure --prefix=/usr
-#  make
-#}
-
-#check() {
-#  cd "$srcdir/$pkgname-$pkgver"
-#
-#  make -k check
-#}
 
 package() {
   cd "$srcdir/$pkgname"
 
   # actual program files
+  # TODO maybe rename or symlink .py files to their basename
   install -D -t "$pkgdir"/usr/share/"$pkgname" *.py
 
   # documentation
