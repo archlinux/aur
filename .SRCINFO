@@ -1,0 +1,33 @@
+pkgbase = casacore-git
+	pkgdesc = Suite of c++ libraries for radio astronomy data processing
+	pkgver = 1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = binutils
+	makedepends = boost
+	makedepends = boost-libs
+	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = gcc
+	makedepends = flex
+	makedepends = bison
+	makedepends = openblas
+	makedepends = lapack
+	makedepends = cfitsio
+	makedepends = wcslib
+	makedepends = python2-numpy
+	optdepends = sofa: only for testing casacore measures
+	optdepends = fftw
+	optdepends = hdf5
+	optdepends = ncurses
+	provides = casacore-git
+	conflicts = casacore
+	source = casacore-git::git+https://github.com/casacore/casacore.git
+	md5sums = SKIP
+
+pkgname = casacore-git
+
