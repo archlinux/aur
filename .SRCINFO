@@ -1,0 +1,27 @@
+pkgbase = wingpanel-indicator-a11y-stable
+	pkgdesc = Universal Access indicator for Wingpanel. This package uses wingpanel and granite in stable versions
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/elementary/wingpanel-indicator-a11y
+	arch = any
+	groups = pantheon-stable
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala>=0.40.3-1
+	depends = glib2
+	depends = glibc
+	depends = granite
+	depends = gtk3
+	depends = wingpanel
+	provides = wingpanel-indicator-a11y
+	provides = wingpanel-indicator-a11y-stable
+	conflicts = wingpanel-indicator-a11y
+	conflicts = wingpanel-indicator-a11y-git
+	conflicts = wingpanel-indicator-a11y-stable
+	source = git+https://github.com/elementary/wingpanel-indicator-a11y.git
+	md5sums = SKIP
+
+pkgname = wingpanel-indicator-a11y-stable
+

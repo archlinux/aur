@@ -1,0 +1,38 @@
+# Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
+# Contributor: 
+
+_gitname=wingpanel-indicator-a11y
+_author=elementary
+pkgname=("${_gitname}-stable")
+pkgver=0.1.3
+pkgrel=1
+pkgdesc="Universal Access indicator for Wingpanel. This package uses wingpanel and granite in stable versions"
+arch=('any')
+url="https://github.com/${_author}/${_gitname}"
+license=('GPL3')
+groups=('pantheon-stable')
+depends=('glib2' 'glibc' 'granite' 'gtk3' 'wingpanel')
+makedepends=('git' 'meson' 'ninja' 'vala>=0.40.3-1')
+provides=("${_gitname}" "${pkgname}")
+conflicts=("${_gitname}" "${_gitname}-git" "${pkgname}")
+source=("git+${url}.git")
+md5sums=('SKIP')
+
+pkgver() {
+    cd "${_gitname}"
+    ( set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
+
+build() {
+    cd "${_gitname}/"
+    meson . _build --prefix=/usr
+    ninja -C _build
+}
+
+package() {
+    cd "${_gitname}/"
+    DESTDIR="${pkgdir}" ninja -C _build install
+}
