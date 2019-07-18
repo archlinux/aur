@@ -1,13 +1,14 @@
-# Maintainer: Corey Mwamba <contact.me@coreymwamba.co.uk>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=mdsplib
 pkgver=0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="METAR Decoder Software Package Library"
 arch=('i686' 'x86_64')
 url="http://limulus.net/mdsplib/"
 license=('GPL')
 groups=('lib')
-provides=('/usr/include/metar.h' '/usr/lib/libmetar.a')
+provides=('metar.h' 'libmetar.a')
 source=(http://ftp.debian.org/debian/pool/main/libm/libmdsp/libmdsp_0.11.orig.tar.gz)
 md5sums=('9d3c1cf01bca65a379c52c152d28c732')
 
