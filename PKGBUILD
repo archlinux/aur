@@ -19,9 +19,6 @@ prepare() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	mkdir -p "$pkgdir/usr/bin"
-	cp wavdumper.py "$pkgdir/usr/bin/wavdumper"
-	chmod a+x "$pkgdir/usr/bin/wavdumper"
-	mkdir -p "$pkgdir/usr/share/doc/$pkgname"
-	cp readme.html "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm755 wavdumper.py "$pkgdir/usr/bin/wavdumper"
+	install -Dm644 readme.html "$pkgdir/usr/share/doc/$pkgname/readme.html"
 }
