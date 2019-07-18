@@ -3,7 +3,7 @@
 
 pkgname=openzwave
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ library to control Z-Wave Networks via a USB Z-Wave Controller'
 arch=(x86_64)
 url=http://www.openzwave.net
