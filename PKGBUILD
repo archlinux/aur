@@ -5,8 +5,9 @@
 
 pkgbase=bitbake
 pkgname=('bitbake' 'bitbake-vim')
-pkgver=1.40.0
-pkgrel=5
+_github_url="https://github.com/openembedded/bitbake"
+pkgver=1.42.0
+pkgrel=1
 _pythonver=3.7
 pkgdesc='Build tool executing tasks and managing metadata.'
 arch=('any')
@@ -14,7 +15,7 @@ url='https://www.openembedded.org/wiki/Main_Page'
 license=('GPL2')
 makedepends=('git')
 source=("https://github.com/openembedded/bitbake/archive/${pkgver}.tar.gz")
-md5sums=('902bb4b71bb85fe55cdcf24bf21a7214')
+md5sums=('326096fd76cb950231d5a76a8c13ad3f')
 
 check() {
     cd ${pkgbase}-${pkgver}/bin
