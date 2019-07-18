@@ -6,8 +6,8 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=0.95.4
-pkgrel=3
+pkgver=0.96.0
+pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
@@ -27,7 +27,6 @@ depends=(
   python-requests
   python-ruamel-yaml
   python-slugify
-  python-sqlalchemy
   python-voluptuous
   python-voluptuous-serialize
   python-yaml
@@ -37,8 +36,9 @@ makedepends=(
   python-setuptools
 )
 optdepends=(
-  'net-tools: nmap host discovery'
-  'python-lxml: meteo france integration'
+  'net-tools: Nmap host discovery'
+  'openzwave: Z-Wave integration'
+  'python-lxml: Meteo France integration'
 )
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${pkgver}
