@@ -1,6 +1,6 @@
 # Maintainer: PAPPY <pappy _AT_ a s c e l i o n _DOT_ com>
 
-_version=2.14.10
+_version=2.14.13
 _patch=01
 
 pkgname=nexus
@@ -25,7 +25,7 @@ source=("http://www.sonatype.org/downloads/nexus-$_version-$_patch-bundle.tar.gz
         'nexus'
         'nexus.service')	
 
-sha256sums=('d91fcc927ac90248d81ec741527668524388052abd7415548804dcb13a41e208'
+sha256sums=('66e2ae803af26c6af34a82cc510d7fa2037080f35a72b4398f65d2f157fd3afc'
             '635e545fde9c8728e4d7126859cab286637d565f041ce63596f5361fb85fc924'
             '945e2fa64d6096416edd60c2a98c0ed385aee00f6bb3b33f6cbbc428b6b47d07'
             'b89aaee6f035d7be20af5b738ed3b892df7f4db6538f9b7ec3c3f54685bbe7f8')
