@@ -2,7 +2,7 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.28
+pkgver=0.9.29
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname::git+https://github.com/SimonN/LixD.git#tag=v$pkgver")
