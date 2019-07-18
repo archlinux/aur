@@ -3,7 +3,7 @@
 
 pkgname='pop-gtk-theme-bin'
 pkgver='4.1.4'
-pkgrel=9
+pkgrel=10
 _timestamp=1560290633
 _commit=f75e86a
 pkgdesc='System76 Pop GTK+ Theme'
@@ -30,8 +30,8 @@ optdepends=(
 	"ttf-fira-mono: Recommended monospace font"
 	"ttf-roboto-slab: Recommended font for documents"
 )
-source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~${_timestamp}~19.04~${_commit}_all.deb")
-sha256sums=('bdcc275f6bf837e52e9d6a05976dc5f08eed2c6d837d14584e16988103e238ec')
+source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~${_timestamp}~19.10~${_commit}_all.deb")
+sha256sums=('73c095cceae341970345b425b4dcc1402a52fc6bfb80ca361fdb2a9acb253d49')
 
 package() {
   cd "${srcdir}"
