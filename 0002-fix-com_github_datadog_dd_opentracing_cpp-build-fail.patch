@@ -1,0 +1,65 @@
+From f9bc4273bad0ecfb291169a88e6c632d69f646ab Mon Sep 17 00:00:00 2001
+From: kXuan <kxuanobj@gmail.com>
+Date: Thu, 18 Jul 2019 18:17:22 +0800
+Subject: [PATCH] fix com_github_datadog_dd_opentracing_cpp build failed on gcc
+ 9
+
+Signed-off-by: kXuan <kxuanobj@gmail.com>
+---
+ bazel/dd-opentracing-cpp.patch | 26 ++++++++++++++++++++++++++
+ bazel/repositories.bzl         |  6 +++++-
+ 2 files changed, 31 insertions(+), 1 deletion(-)
+ create mode 100644 bazel/dd-opentracing-cpp.patch
+
+diff --git a/bazel/dd-opentracing-cpp.patch b/bazel/dd-opentracing-cpp.patch
+new file mode 100644
+index 000000000..227719c7d
+--- /dev/null
++++ b/bazel/dd-opentracing-cpp.patch
+@@ -0,0 +1,26 @@
++From ea704f38430f69b6cfdcc2bb1516e65b236bc4cf Mon Sep 17 00:00:00 2001
++From: Yuval Kohavi <yuval.kohavi@gmail.com>
++Date: Thu, 2 May 2019 18:23:02 -0400
++Subject: [PATCH] remove redundant move (#94)
++
++gcc 9 reports this move as redundant
++---
++ src/tracer.cpp | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/src/tracer.cpp b/src/tracer.cpp
++index 99befe8..0bd9f0e 100644
++--- a/src/tracer.cpp
+++++ b/src/tracer.cpp
++@@ -100,7 +100,7 @@ std::unique_ptr<ot::Span> Tracer::StartSpanWithOptions(ot::string_view operation
++   if (is_trace_root && opts_.environment != "") {
++     span->SetTag(tags::environment, opts_.environment);
++   }
++-  return std::move(span);
+++  return span;
++ } catch (const std::bad_alloc &) {
++   // At least don't crash.
++   return nullptr;
++-- 
++2.22.0
++
+diff --git a/bazel/repositories.bzl b/bazel/repositories.bzl
+index 1c0e6abb5..0f227817b 100644
+--- a/bazel/repositories.bzl
++++ b/bazel/repositories.bzl
+@@ -344,7 +344,11 @@ def _com_lightstep_tracer_cpp():
+     )
+ 
+ def _com_github_datadog_dd_opentracing_cpp():
+-    _repository_impl("com_github_datadog_dd_opentracing_cpp")
++    _repository_impl(
++        "com_github_datadog_dd_opentracing_cpp",
++        patch_args = ["-p1"],
++        patches = ["@envoy//bazel:dd-opentracing-cpp.patch"]
++    )
+     _repository_impl(
+         name = "com_github_msgpack_msgpack_c",
+         build_file = "@com_github_datadog_dd_opentracing_cpp//:bazel/external/msgpack.BUILD",
+-- 
+2.22.0
+
