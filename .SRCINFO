@@ -32,7 +32,7 @@ pkgbase = pantheon-stable
 	depends = pantheon-dpms-helper
 	depends = pantheon-files
 	depends = gvfs
-	depends = pantheon-geoclue2-agent
+	depends = pantheon-agent-geoclue2
 	depends = pantheon-music
 	depends = pantheon-photos
 	depends = pantheon-polkit-agent
@@ -86,7 +86,7 @@ pkgbase = pantheon-stable
 	optdepends = wingpanel-indicator-nightlight
 	optdepends = wingpanel-indicator-privacy
 	provides = pantheon-stable
-	conflicts = pantheon-meta
+	conflicts = pantheon-unstable
 
 pkgname = pantheon-stable
 

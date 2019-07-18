@@ -32,7 +32,7 @@ depends=(
 	'pantheon-dpms-helper'
 	'pantheon-files'
 	'gvfs'
-	'pantheon-geoclue2-agent'
+	'pantheon-agent-geoclue2'
 	'pantheon-music'
 	'pantheon-photos'
 	'pantheon-polkit-agent'
@@ -85,7 +85,7 @@ depends=(
 optdepends=('urutau-icons' 'wingpanel-indicator-a11y' 'wingpanel-indicator-nightlight' 'wingpanel-indicator-privacy')
 makedepends=('git' 'meson' 'ninja' 'vala>=0.40.3-1')
 provides=("${pkgname}")
-conflicts=('pantheon-meta')
+conflicts=('pantheon-unstable')
 
 package(){
   /bin/true
