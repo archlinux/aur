@@ -9,7 +9,7 @@ url="https://github.com/gamer-os/frzr"
 license=('MIT')
 depends=('btrfs-progs' 'syslinux')
 source=("https://github.com/gamer-os/frzr/archive/$pkgver.tar.gz")
-md5sums=('125f2274b302f27c408aafc22b08bf73')
+md5sums=('7f042e7b44318cd3bca63509bb49edc4')
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
