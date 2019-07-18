@@ -1,0 +1,13 @@
+pkgbase = charge-log
+	pkgdesc = Battery charge history logger
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kitsunyan/charge-log
+	arch = any
+	license = GPL3
+	depends = gtk3
+	source = charge-log-1.0.tar.gz::https://github.com/kitsunyan/charge-log/archive/1.0.tar.gz
+	sha256sums = 5577555a304819606571af71578a11a2d19bda9dbe09f8380f384491cb0b96a0
+
+pkgname = charge-log
+
