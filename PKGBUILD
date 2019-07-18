@@ -75,10 +75,6 @@ package() {
   msg2 'Installing man pages...'
   install -Dm 644 doc/man/*.1 -t "$pkgdir/usr/share/man/man1"
 
-  msg2 'Installing rpcuser.py...'
-  sed 's/python2/python/' <share/rpcuser/rpcuser.py >rpcuser.py
-  install -Dm 755 rpcuser.py -t "$pkgdir/etc/bitcoin"
-
   msg2 'Installing examples...'
   install -Dm644 "contrib/debian/examples/bitcoin.conf" \
     -t "$pkgdir/usr/share/doc/bitcoin/examples"
