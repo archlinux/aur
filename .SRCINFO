@@ -1,0 +1,20 @@
+pkgbase = kubedee-git
+	pkgdesc = Multi-node Kubernetes clusters on LXD
+	pkgver = v0.4.0.r21.35b1703
+	pkgrel = 1
+	url = https://github.com/schu/kubedee
+	arch = any
+	license = APACHE
+	depends = lxd
+	depends = btrfs-progs
+	depends = cfssl
+	depends = jq
+	depends = kubectl
+	optdepends = kubernetes
+	provides = kubedee
+	conflicts = kubedee
+	source = kubedee-git::git+https://github.com/schu/kubedee
+	sha512sums = SKIP
+
+pkgname = kubedee-git
+
