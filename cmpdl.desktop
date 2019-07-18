@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=CMPDL
+Comment=A lightweight alternative to Twitch App for downloading Minecraft modpacks
+Exec=java -Xmx1024 -Xms512M -jar /opt/cmpdl/cmpdl.jar
+Icon=minecraft-launcher
+Terminal=false
+Type=Application
+Categories=Game;AudioVideo;
