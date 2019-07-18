@@ -1,0 +1,12 @@
+pkgbase = ttf-apl385
+	pkgdesc = Unicode monospaced font
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://apl385.com/fonts/index.htm
+	arch = any
+	license = custom:"Public Domain"
+	source = http://apl385.com/fonts/apl385.zip
+	sha256sums = 2fccdb3137bc985fb5977c5e6b05f93611b277a46ef8883a72d86cd0ad76588c
+
+pkgname = ttf-apl385
+
