@@ -6,6 +6,7 @@ pkgbase = nginx-mod-ipscrub
 	arch = i686
 	arch = pentium4
 	arch = x86_64
+	arch = armv6h
 	arch = armv7h
 	license = custom
 	depends = nginx=1.16.0
