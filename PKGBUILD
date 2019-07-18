@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc='The Pantheon Top Panel'
 arch=(x86_64)
@@ -27,8 +27,7 @@ source=(git+https://github.com/elementary/wingpanel.git#tag=${pkgver})
 sha256sums=(SKIP)
 
 build() {
-  arch-meson wingpanel build \
-    -D b_pie=false
+  arch-meson wingpanel build
   ninja -C build
 }
 
