@@ -1,0 +1,34 @@
+pkgbase = sagecal-gpu
+	pkgdesc = SAGECal with GPU support
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/nlesc-dirac/sagecal
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = casacore
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = binutils
+	makedepends = boost
+	makedepends = boost-libs
+	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = gcc
+	makedepends = flex
+	makedepends = bison
+	makedepends = openblas
+	makedepends = lapack
+	makedepends = cfitsio
+	makedepends = wcslib
+	depends = casacore
+	optdepends = fftw
+	optdepends = hdf5
+	optdepends = python2-numpy
+	optdepends = ncurses
+	provides = sagecal-gpu
+	source = https://github.com/nlesc-dirac/sagecal-gpu/archive/v0.6.1.tar.gz
+	sha256sums = 1888068c4b6894eb9f0048f7121e1ecbfd15573edb1bce44f01d0a9540fd1f1a
+
+pkgname = sagecal-gpu
+
