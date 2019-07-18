@@ -1,7 +1,7 @@
 pkgbase = seafile-git
 	pkgdesc = Seafile sync client daemon, latest version (master branch).
 	pkgver = 7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/seafile
 	arch = i686
 	arch = x86_64
