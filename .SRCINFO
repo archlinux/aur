@@ -11,7 +11,7 @@ pkgbase = cmpdl
 	source = cmpdl-2.3.0.jar::https://github.com/Franckyi/CMPDL/releases/download/v2.3.0/cmpdl-2.3.0.jar
 	source = cmpdl.desktop
 	md5sums = 5e8176fbc682497a0badc1c835db01ae
-	md5sums = f1e4aff9765a065c95a652c9ec7228b6
+	md5sums = b7b3e3e0228eef1d60ee934e3ad82b11
 
 pkgname = cmpdl
 

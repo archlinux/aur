@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}.jar"::"https://github.com/Franckyi/CMPDL/releases/
         "${pkgname}.desktop")
 noextract=()
 md5sums=('5e8176fbc682497a0badc1c835db01ae'
-         'f1e4aff9765a065c95a652c9ec7228b6')
+         'b7b3e3e0228eef1d60ee934e3ad82b11')
 validpgpkeys=()
 
 package() {
