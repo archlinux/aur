@@ -47,6 +47,12 @@ prepare() {
   # patch -p1 < ../0002-xgl-clang.patch
   # popd
 
+  # Don't turn Werror on for people will build with more recent compilers than you have. Just don't.
+  for i in drivers/xgl/icd/CMakeLists.txt drivers/llpc/CMakeLists.txt drivers/llpc/imported/metrohash/CMakeLists.txt drivers/llvm/utils/benchmark/CMakeLists.txt drivers/llvm/utils/benchmark/test/CMakeLists.txt drivers/pal/src/core/imported/addrlib/CMakeLists.txt drivers/pal/src/core/imported/vam/CMakeLists.txt drivers/pal/shared/gpuopen/cmake/AMD.cmake
+  do
+    sed -i "s/-Werror//g" "$srcdir"/$i
+  done
+
   msg 'No patches to apply...'
 }
 
@@ -57,7 +63,7 @@ build() {
   export CFLAGS=${CFLAGS/-fno-plt}
   msg2 "after: CFLAGS=$CFLAGS"
   msg2 "before: CXXFLAGS=$CXXFLAGS"
-  export CXXFLAGS="${CXXFLAGS/-fno-plt} -Wno-error=deprecated-copy"
+  export CXXFLAGS="${CXXFLAGS/-fno-plt}"
   msg2 "after: CXXFLAGS=${CXXFLAGS}"
   msg2 "before: LDFLAGS=$LDFLAGS"
   export LDFLAGS=${LDFLAGS/,-z,now}
@@ -71,9 +77,8 @@ build() {
     -H. \
     -B builds/Release64 \
     -DBUILD_WAYLAND_SUPPORT=On \
-    "-DCMAKE_CXX_FLAGS=$CXXFLAGS" \
-    "-DCMAKE_C_FLAGS=$CFLAGS" \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_XLIB_XRANDR_SUPPORT=On
 
   cd builds/Release64
   ninja
