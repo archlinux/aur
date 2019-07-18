@@ -1,11 +1,11 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-sound
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc='Wingpanel Sound Indicator'
 arch=(x86_64)
-url='https://github.com/elementary/wingpanel-indicator-sound'
+url=https://github.com/elementary/wingpanel-indicator-sound
 license=(GPL3)
 groups=(pantheon)
 depends=(
@@ -27,7 +27,6 @@ makedepends=(
   intltool
   meson
   vala
-  wingpanel
 )
 source=(wingpanel-indicator-sound::git+https://github.com/elementary/wingpanel-indicator-sound.git#tag=${pkgver})
 sha256sums=(SKIP)
