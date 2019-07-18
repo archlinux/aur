@@ -18,6 +18,7 @@ package() {
     mv "Listen1_${pkgver}_linux_x86_64.AppImage" "listen1.AppImage"
     7z x "${srcdir}/listen1.AppImage" listen1.desktop usr/share/icons/hicolor
     sed -i "s/AppRun/\/opt\/listen1\/listen1.AppImage/" listen1.desktop
+    find "${srcdir}/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
 
     install -d -m755 "${pkgdir}/usr/share/icons"
     cp -R "${srcdir}/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
