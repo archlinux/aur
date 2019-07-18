@@ -17,8 +17,6 @@ package() {
     cd "${srcdir}"
     mv "Listen1_${pkgver}_linux_x86_64.AppImage" "listen1.AppImage"
     7z x "${srcdir}/listen1.AppImage" listen1.desktop usr/share/icons/hicolor
-    find "${srcdir}/usr/share/icons/hicolor" -type d -name "*x*" -exec mv {}/apps/listen1.png {} \;
-    find "${srcdir}/usr/share/icons/hicolor" -type d -name "apps" -delete
     sed -i "s/AppRun/\/opt\/listen1\/listen1.AppImage/" listen1.desktop
 
     install -d -m755 "${pkgdir}/usr/share/icons"
