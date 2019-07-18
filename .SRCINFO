@@ -1,7 +1,7 @@
 pkgbase = stack-static
 	pkgdesc = The Haskell Tool Stack (linked statically)
 	pkgver = 2.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/commercialhaskell/stack
 	arch = x86_64
 	license = custom:BSD3
@@ -10,6 +10,7 @@ pkgbase = stack-static
 	depends = zlib
 	depends = ncurses5-compat-libs
 	optdepends = bash-completion
+	optdepends = ncurses5-compat-libs: using older ghc's linking against libtinfo.so.5
 	provides = stack
 	conflicts = stack
 	conflicts = stack-bin
