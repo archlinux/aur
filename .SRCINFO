@@ -1,0 +1,14 @@
+pkgbase = etlas-git
+	pkgdesc = Etlas, the build tool and package manager for the Eta programming language
+	pkgver = 1.5.1.0.r136.gbbd7c55
+	pkgrel = 1
+	url = https://github.com/typelead/etlas
+	arch = x86_64
+	license = BSD3
+	makedepends = stack
+	conflicts = etlas
+	source = etlas::git+https://github.com/typelead/etlas.git
+	md5sums = SKIP
+
+pkgname = etlas-git
+
