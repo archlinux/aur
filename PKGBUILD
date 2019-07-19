@@ -1,7 +1,7 @@
 # Maintainer: Nick Skelsey <nskelsey+zz@gmail.com>
 pkgname=zeek
-pkgver=2.6.2
-pkgrel=2
+pkgver=2.6-378
+pkgrel=3
 pkgdesc="A network analysis framework"
 arch=('x86_64')
 url="https://www.zeek.org/index.html"
