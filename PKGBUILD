@@ -44,10 +44,8 @@ package() {
     "${pkgdir}/usr/bin/kicad_test_schlib"
 
   chmod +x \
-    "${install_dir}/pcb/check_kicad_mod.py" \
-    "${install_dir}/pcb/check_3d_coverage.py" \
-    "${install_dir}/pcb/test_kicad_mod.sh" \
-    "${install_dir}/schlib/test_schlib.sh"
-
-  chmod +x "${pkgdir}/usr/bin/"{kicad_check_mod,kicad_check_3d_coverage}
+    "${pkgdir}/${install_dir}/pcb/check_kicad_mod.py" \
+    "${pkgdir}/${install_dir}/pcb/check_3d_coverage.py" \
+    "${pkgdir}/${install_dir}/pcb/test_kicad_mod.sh" \
+    "${pkgdir}/${install_dir}/schlib/test_schlib.sh"
 }
