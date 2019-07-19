@@ -27,7 +27,7 @@ _opt_keepdesktop=0
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre8.257.g5b60d68a4
+pkgver=2.0pre8.r1157.g6a7f5d234
 pkgrel=1
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
 arch=('i686' 'x86_64')
@@ -85,10 +85,7 @@ sha256sums=('SKIP'
 pkgver() {
   set -u
   cd 'dosemu2'
-  local _ver="$(git describe --tag --long)"
-  _ver="${_ver#${_pkgname}-}"
-  _ver="${_ver//-/.}"
-  echo "${_ver}"
+  git describe --tag --long | sed -e 's/\([^-][0-9]\+-g\)/r\1/' -e 's/-/./g'
   set +u
 }
 
