@@ -1,0 +1,17 @@
+pkgbase = xpuz-arch
+	pkgdesc = This is a is a fork of xjig 2.5, the jigsaw puzzle.
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://sourceforge.net/projects/xpuz/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = libx11
+	makedepends = libjpeg-turbo
+	depends = libx11
+	depends = libjpeg-turbo
+	source = xpuz-arch::git+https://github.com/JeanLucJFr/xpuz-arch.git
+	md5sums = SKIP
+
+pkgname = xpuz-arch
+
