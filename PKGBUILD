@@ -171,8 +171,8 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/mutter/merge_requests/579
   # Type: 1
   # Status: 4
-  # Comment:
-  git cherry-pick -n b01edc22
+  # Comment: Disabled by default because it has issues when using multiple layouts
+  # git cherry-pick -n b01edc22
 
   # Title: Fix background texture corruption when resuming from suspend on Nvidia
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/600
