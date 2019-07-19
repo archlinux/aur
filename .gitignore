@@ -1,0 +1,4 @@
+pkg/
+code-nautilus-git/
+*.tar.xz
+src/
