@@ -1,7 +1,7 @@
 # Maintainer: Thomas Bork <sudobash418@gmail.com>
 
 pkgname=pamac-classic
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - classic version"
 arch=('x86_64')
@@ -17,11 +17,11 @@ provides=('pamac' 'pamac-aur')
 install=pamac-classic.install
 
 source=("pamac-classic-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('f7e663107bcc8cf0da057459afdb7fbc4f254c2c9fba6813e2706454be9c7d9b')
+sha256sums=('e6748f4942c687cf019f32274c1c046eaf90e952a402fab46c32d45fdd665cc3')
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	mkdir build
+	mkdir -p build
 
 	# configure with AUR - add -DDISABLE_AUR=true to disable AUR support
 	meson --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc . build
