@@ -1,0 +1,20 @@
+[Unit]
+Description=A simple, high performance messaging system for cloud native appliations, IoT messaging, and webservices architectures
+Documentation=https://github.com/nats-io/gnatsd
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/nats-server --syslog --http_port 8222
+ExecReload=/usr/bin/nats-server --signal reload=$MAINPID
+ExecStop=/usr/bin/nats-server --signal stop=$MAINPID
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+RuntimeDirectory=nats-server
+RuntimeDirectoryMode=755
+
+[Install]
+WantedBy=multi-user.target
