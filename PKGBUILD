@@ -6,8 +6,8 @@
 
 pkgname=gnupg-large-secmem
 _pkgname=gnupg
-pkgver=2.2.16
-pkgrel=1
+pkgver=2.2.17
+pkgrel=2
 pkgdesc='Complete and free implementation of the OpenPGP standard - with extra large secure memory for many parallel decryption actions'
 url='https://www.gnupg.org/'
 license=('GPL')
@@ -24,10 +24,12 @@ validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
               '031EC2536E580D8EA286A9F22071B08A33BD3F06'
               '5B80C5754298F0CB55D8ED6ABCEF7E294B092E28')
 source=("https://gnupg.org/ftp/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"{,.sig}
-        "gnupg_large_secmem.patch")
-sha256sums=('6cbe8d454bf5dc204621eed3016d721b66298fa95363395bb8eeceb1d2fd14cb'
+        "gnupg_large_secmem.patch"
+        'self-sigs-only.patch')
+sha256sums=('afa262868e39b651a2db4c071fba90415154243e83a830ca00516f9a807fd514'
             'SKIP'
-            '63108d8fcbcfddf7ba6eee699ade0f79f98558c8ba1f07d86c7a55dce603355d')
+            '63108d8fcbcfddf7ba6eee699ade0f79f98558c8ba1f07d86c7a55dce603355d'
+            '0130c43321c16f53ab2290833007212f8a26b1b73bd4edc2b2b1c9db2b2d0218')
 
 install=install
 
@@ -38,6 +40,7 @@ replaces=('dirmngr' 'gnupg2' 'gnupg')
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	sed '/noinst_SCRIPTS = gpg-zip/c sbin_SCRIPTS += gpg-zip' -i tools/Makefile.in
+	patch -R -p1 -i ../self-sigs-only.patch
 
 	# See: https://lists.gnupg.org/pipermail/gnupg-devel/2017-June/032905.html
 	patch -p1 -i ../gnupg_large_secmem.patch
