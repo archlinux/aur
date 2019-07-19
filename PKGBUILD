@@ -2,7 +2,7 @@
 # Contributor: qaz <fkxxyz@163.com>
 
 pkgname=ssr2json
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=2
 pkgdesc="A series of scripts for converting SSR links into JSON profiles for shadowsocksr."
 arch=('i386' 'x86_64' 'arm' 'armv7h' 'aarch64')
