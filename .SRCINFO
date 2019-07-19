@@ -2,7 +2,7 @@
 # Sun Sep 30 19:41:19 UTC 2018
 pkgbase = astroid
 	pkgdesc = a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://github.com/astroidmail/astroid
 	install = astroid.install
