@@ -59,16 +59,17 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_rtpatchver}
 _pkgver=${_major}
 _srcname=linux-${_pkgver}
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
-url="https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/"
+url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick')
-_bfq_patch="0002-LL-elevator-set-default-scheduler-to-bfq-for-blk-mq.patch"
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
+_bfq_path="bfq-paolo-dev-lucjan"
+_bfq_patch="0001-block-bfq-dev-lucjan.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 
@@ -76,9 +77,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
-        "${_lucjanpath}/ll-patches/${_bfq_patch}"
-        "${_lucjanpath}/bfq-patches/0001-bfq-patches.patch"
-        "${_lucjanpath}/bfq-paolo-dev-fix/0001-block-bfq-dev.patch"
+        "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
@@ -392,9 +391,7 @@ sha512sums=('5a28f8a34c4e0470617f5638b7112e6252109b78f23b1eed484a228530970c7ef5c
             'SKIP'
             '02563a139f05c13442bf60e31a84809f14e5d2bbca78d00cb7093eec365135e3f1e6eb40eb0aa58ec50363fdfe9bbca12204a1a643c6f0589e8c6fa5a3794b94'
             'SKIP'
-            'ab20b4a5d9938b0b00a815c127d85fc8de2f1ad7b0f078fca78f511f4fc688ff9948a8bd225b68f1fe83c9cdce1f2561f689bc4dc319393e2ce6fc598b43ba71'
-            'a4d27f2003ee6cdd0a18957305c413363665c25bb89796bdc61353e66836767361e3eb7818e35e8726d709048328f4c4e93c6dcdaa35245d32eb1322b03fcca7'
-            '4e0e51381543e607f66b48db7d2212dffc6209c2e5dc99f8fbdfa15d5752e8ab4323e1d4e1baa0820fd7bec67b84e99fa64910bf5e3c834370c5899b0421be7e'
+            '27412eaf2a69142380d389c714a86e5dfe7ec76f8cf5ce0fb09f5582820f52db7976341c17e8154a9fd6b113797f0a0e1db8e8bcd811bb7d38436b67c24db5ad'
             '8d9547ff38096b99d296cdec9875b816960c09db31acebb033e3660ba65475d1f310578282cac74947d75dff844dd22d7e7c2e4ded12368d32314fe145763752'
             '068b9f3bb5112a5684246d0a2ae46bb26d7ad3a642276f5ed37d802b50efc925297d8bd4684eb391676e9a97efbb426b4fcbe6fd751860c3f53d8c0ca7d5a1b2'
             'f714a620d50541fd29199d076f94e68c14049bbb97b131da3b68b13bcc1dd933f62913e8aad2a20e0ad738f2c3cad161dac13d3d4cbfdfcead271f22f09a681e'
