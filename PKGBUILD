@@ -59,7 +59,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_rtpatchver}
 _pkgver=${_major}
 _srcname=linux-${_pkgver}
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -391,7 +391,7 @@ sha512sums=('5a28f8a34c4e0470617f5638b7112e6252109b78f23b1eed484a228530970c7ef5c
             'SKIP'
             '02563a139f05c13442bf60e31a84809f14e5d2bbca78d00cb7093eec365135e3f1e6eb40eb0aa58ec50363fdfe9bbca12204a1a643c6f0589e8c6fa5a3794b94'
             'SKIP'
-            '27412eaf2a69142380d389c714a86e5dfe7ec76f8cf5ce0fb09f5582820f52db7976341c17e8154a9fd6b113797f0a0e1db8e8bcd811bb7d38436b67c24db5ad'
+            '9a39e5d432da75a8dab9fefff86edc2397968250961f3689e4eb16b2091649e4a991b8ffb2959020ba19a6b89d88157a4bdf89bdd61c9b2844bd6953f112c3bc'
             '8d9547ff38096b99d296cdec9875b816960c09db31acebb033e3660ba65475d1f310578282cac74947d75dff844dd22d7e7c2e4ded12368d32314fe145763752'
             '068b9f3bb5112a5684246d0a2ae46bb26d7ad3a642276f5ed37d802b50efc925297d8bd4684eb391676e9a97efbb426b4fcbe6fd751860c3f53d8c0ca7d5a1b2'
             'f714a620d50541fd29199d076f94e68c14049bbb97b131da3b68b13bcc1dd933f62913e8aad2a20e0ad738f2c3cad161dac13d3d4cbfdfcead271f22f09a681e'
