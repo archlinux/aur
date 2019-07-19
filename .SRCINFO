@@ -1,6 +1,6 @@
 pkgbase = mumps
 	pkgdesc = Sparse solver library using Gaussian elimination
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = http://mumps.enseeiht.fr
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = mumps
 	provides = mumps
 	conflicts = mumps-par
 	conflicts = mumps4
-	source = http://mumps.enseeiht.fr/MUMPS_5.1.2.tar.gz
+	source = http://mumps.enseeiht.fr/MUMPS_5.2.1.tar.gz
 	source = Makefile.inc
-	sha256sums = eb345cda145da9aea01b851d17e54e7eef08e16bfa148100ac1f7f046cd42ae9
+	sha256sums = 41f2c7cb20d69599fb47e2ad6f628f3798c429f49e72e757e70722680f70853f
 	sha256sums = f0c6ecc355fc11a0213a2acecbe5b196e3678f93344eea724d6a9aba85dcbf52
 
 pkgname = mumps
