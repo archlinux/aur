@@ -142,7 +142,8 @@ package() {
   mkdir -p "$pkgdir"
   DESTDIR="$pkgdir" ./mach install
 
-  cat > $pkgdir/usr/lib/waterfox-alpha/browser/defaults/preferences/spellcheck.js <<END
+  _spellcheck_js="$pkgdir/usr/lib/waterfox/browser/defaults/preferences/spellcheck.js"
+  install -Dm644 /dev/stdin "$_spellcheck_js" <<END
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 END
 
