@@ -1,33 +1,32 @@
 # Maintainer: Hao Cheng <ch1994@outlook.com>
-
 pkgname='python-sklearn-bayes'
 _pkgname='sklearn-bayes'
 pkgdesc='Python package for Bayesian Machine Learning with scikit-learn API'
-pkgver='1'
-pkgrel='1'
-epoch=
+pkgver=r540.a9fdcb8
+pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/AmazaspShumik/sklearn-bayes'
 license=('unknown')
-groups=()
 depends=('python' 'python-numpy' 'python-scipy' 'python-scikit-learn')
 makedepends=('git' 'cython' 'python-setuptools')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-changelog=
-source=(git://github.com/AmazaspShumik/sklearn-bayes.git)
-noextract=()
+source=($_pkgname::git+https://github.com/AmazaspShumik/sklearn-bayes.git)
 sha512sums=('SKIP')
-PKGEXT='.pkg.tar.gz'
-
-build(){
-    cd "$srcdir/$_pkgname"
-    python setup.py build
+pkgver() {
+  cd "$_pkgname"
+  (
+    set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+prepare() {
+  cd "$srcdir/$_pkgname"
+  # regenerate c file
+  find . -name "*.pyx" | xargs cython -3
+}
+build() {
+  cd "$srcdir/$_pkgname"
+  python setup.py build
 }
 package() {
   cd "$srcdir/$_pkgname"
