@@ -11,7 +11,6 @@ pkgbase = trilinos
 	makedepends = perl
 	makedepends = blas
 	makedepends = cmake
-	makedepends = gtest
 	makedepends = doxygen
 	depends = lapack
 	depends = python2
@@ -19,7 +18,8 @@ pkgbase = trilinos
 	depends = netcdf
 	depends = libmatio
 	depends = libx11
-    depends = hdf5-openmpi
+	depends = hdf5-openmpi
+	conflicts = gtest
 	source = https://github.com/trilinos/Trilinos/archive/trilinos-release-12-14-1.tar.gz
 	sha256sums = 52a4406cca2241f5eea8e166c2950471dd9478ad6741cbb2a7fc8225814616f0
 
