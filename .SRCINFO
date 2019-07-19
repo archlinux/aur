@@ -1,13 +1,13 @@
 pkgbase = seriesmeta-bin
 	pkgdesc = Update the series metadata on a Kobo ereader
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://geek1011.github.io/kepubify
 	arch = x86_64
 	license = MIT
-	source = seriesmeta-2.3.2::https://github.com/geek1011/kepubify/releases/download/v2.3.2/seriesmeta-linux-64bit
-	source = https://raw.githubusercontent.com/geek1011/kepubify/v2.3.2/LICENSE.md
-	sha256sums = d62e82e2507ed907cf5d9c60b49b528d548b2effac278639130541530f430127
+	source = seriesmeta-2.3.3::https://github.com/geek1011/kepubify/releases/download/v2.3.3/seriesmeta-linux-64bit
+	source = https://raw.githubusercontent.com/geek1011/kepubify/v2.3.3/LICENSE.md
+	sha256sums = a59d417f5821e29dae16c2801bcb955d1ea45da14a79b26a79710909ea380524
 	sha256sums = c3f90d57ebc94c7e2bb4c45a757d8f8cedbf06a0dd18161d31f0bd08d5a073b8
 
 pkgname = seriesmeta-bin
