@@ -2,11 +2,10 @@
 # Contributor: Det
 # Contributor: josephgbr
 
-_build=b12
-_bundleid=238717
-_hash=478a62b7d4e34b78b671c754eaaf38ab
+_bundleid=239846
+_hash=230deb18db3e4014bb8e3e8324f81b43
 _major=8
-_minor=211
+_minor=221
 _pkgname=jre
 
 pkgname=bin32-jre
@@ -56,18 +55,15 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/sound.properties")
 install=$pkgname.install
 source=(
-  # "http://download.oracle.com/otn/java/jdk/${pkgver}-${_build}/${_hash}/${_pkgname}-${pkgver}-linux-i586.tar.gz"
   "${_pkgname}-${pkgver}-linux-i586.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=${_bundleid}_${_hash}"
   "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
   "policytool32-$_jname.desktop"
 )
-sha256sums=('c6828bc0da206c2d380219649e68d6d5ed1178c048df1d61e877a2473991a04f'
+sha256sums=('68482fb8053a2e71d3e6bc42a1945cdc5dfe69b8beba6ad1c2d7950ccd39d4ee'
             'f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
             'b92df5151b7b21fbdce2be8717b3b83e58bd290111b47c8c81c657ab2ccb0db8')
 
 package() {
-    echo http://download.oracle.com/otn/java/jdk/$pkgver-$_build/$_hash/$_pkgname-$pkgver-linux-i586.tar.gz
-    pwd
     cd ${_pkgname}1.${_major}.0_${_minor}
 
     msg2 "Creating directory structure..."
