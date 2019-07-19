@@ -1,0 +1,16 @@
+pkgbase = qt4-serialport
+	pkgdesc = Qt4 Serial Port support
+	pkgver = 4.8.7
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	license = FDL
+	license = custom
+	depends = qt4
+	source = qt4-serialport::git://code.qt.io/qt/qtserialport.git#branch=qt4-dev
+	sha256sums = SKIP
+
+pkgname = qt4-serialport
+
