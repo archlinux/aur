@@ -70,7 +70,7 @@ backup=('etc/odoo/odoo.conf')
 install=odoo.install
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}.post${_pkgsubver}
+  cd ${srcdir}/${pkgname}-${pkgver}.${_pkgsubver}
   python setup.py build
 }
 
