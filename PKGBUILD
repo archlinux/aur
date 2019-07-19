@@ -181,4 +181,10 @@ END
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -srf "$pkgdir/usr/bin/waterfox-alpha" \
     "$pkgdir/usr/lib/waterfox-alpha/waterfox-alpha-bin"
+
+  # Add syspref.js for setting preferences for all users
+  mkdir -p "$pkgdir/etc/waterfox"
+  cp "$srcdir/syspref.js" "$pkgdir/etc/waterfox/"
+  ln -Tsf /etc/waterfox/syspref.js "$pkgdir/usr/lib/browser/defaults/preferences/syspref.js"
+
 }
