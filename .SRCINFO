@@ -1,11 +1,10 @@
 pkgbase = jitsi
 	pkgdesc = An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)
 	pkgver = 2.10.5550
-	pkgrel = 5
+	pkgrel = 8
 	url = http://jitsi.org
-	arch = i686
 	arch = x86_64
-	license = apache
+	license = Apache
 	makedepends = apache-ant
 	makedepends = java-environment-common
 	depends = java-runtime

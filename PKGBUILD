@@ -1,13 +1,13 @@
 # Maintainer: Xavier Devlamynck <magicrhesus@ouranos.be>
-# Contributors: Keshav P R, atommix aka Aleks Lifey, Xavion, Ananda Samaddar, Dan Serban, Xyne
+# Contributors: Keshav P R, atommix aka Aleks Lifey, Xavion, Ananda Samaddar, Dan Serban, Xyne, Joan Figueras
 
 pkgname=jitsi
 pkgver=2.10.5550
-pkgrel=5
+pkgrel=8
 pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://jitsi.org"
-license=('apache')
+license=('Apache')
 depends=('java-runtime')
 makedepends=('apache-ant' 'java-environment-common')
 options=(!strip !emptydirs zipman !libtool docs)
@@ -23,7 +23,6 @@ build()
   cd "${srcdir}/${pkgname}"
   # append the build revision to the jitsi version
   sed -i "s/0\.build\.by\.SVN/build.${pkgver}/" src/net/java/sip/communicator/impl/version/NightlyBuildID.java
-  . /etc/profile.d/apache-ant.sh
   ant rebuild
 }
 
