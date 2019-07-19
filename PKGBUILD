@@ -3,7 +3,7 @@
 
 pkgname=odoo
 pkgver=12.0
-_pkgsubver=latest
+_pkgsubver=20190718
 pkgrel=2
 pkgdesc="Web-based Open Source Business Apps"
 url=https://www.odoo.com/
@@ -70,13 +70,13 @@ backup=('etc/odoo/odoo.conf')
 install=odoo.install
 
 build() {
-  cd ${srcdir}/${pkgname}_${pkgver}.${_pkgsubver}
+  cd ${srcdir}/${pkgname}-${pkgver}.post${_pkgsubver}
   python setup.py build
 }
 
 package()
 {
-  cd ${srcdir}/${pkgname}_${pkgver}.${_pkgsubver}
+  cd ${srcdir}/${pkgname}-${pkgver}.post${_pkgsubver}
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   mkdir -p ${pkgdir}/etc/{conf.d,odoo}
