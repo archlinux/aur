@@ -1,24 +1,23 @@
+# Maintainer: mrxx <mrxx at cyberhome dot at>
 # Contributor: mutlu_inek <mutlu_inek@yahoo.de>
-# Maintainer: jnbek print "<",join('', qw(j n b e k 1 9 7 2),"_AT_ geeee mail __DOT__ com",">\n";
+# Contributor: jnbek
 pkgname=ttf-vista-fonts
 pkgver=1
-pkgrel=8
-pkgdesc="Microsoft Vista True Type Fonts"
-url="http://www.microsoft.com/en-us/download/confirmation.aspx?id=13"
-license=('custom')
+pkgrel=9
+pkgdesc="Microsoft Vista and Office 2007 True Type Fonts"
+url="https://docs.microsoft.com/en-us/typography/fonts/font-faq"
+license=('custom:microsoft')
 arch=('any')
 depends=()
 makedepends=('fontforge' 'fontconfig' 'xorg-font-utils' 'cabextract')
-conflicts=('ttf-ms-extrafonts')
-provides=()
 replaces=('vista-fonts')
 install=$pkgname.install
-source=('http://download.microsoft.com/download/E/6/7/E675FFFC-2A6D-4AB0-B3EB-27C9F8C8F696/PowerPointViewer.exe')
-md5sums=('35ff8ebbea457ba426b47ff6d8377284')
+source=("${pkgname}.cab::https://web.archive.org/web/20171225132744/http://download.microsoft.com/download/E/6/7/E675FFFC-2A6D-4AB0-B3EB-27C9F8C8F696/PowerPointViewer.exe")
+sha256sums=('249473568eba7a1e4f95498acba594e0f42e6581add4dead70c1dfb908a09423')
 
 package() {
     mkdir -p "$srcdir/$pkgname-$pkgver"
-    cabextract --lowercase "$srcdir/PowerPointViewer.exe" -d "$srcdir/$pkgname-$pkgver"
+    cabextract --lowercase "$srcdir/${pkgname}.cab" -d "$srcdir/$pkgname-$pkgver"
     cabextract --lowercase -F '*.tt[fc]' "$srcdir/$pkgname-$pkgver/ppviewer.cab" -d "$srcdir/$pkgname-$pkgver"
 
     # cambria.ttc is a TrueType Collection (TTC) which causes problems with
@@ -26,6 +25,7 @@ package() {
     # the TTC into a TrueType Font (TTF).
     cd "$srcdir/$pkgname-$pkgver"
     FONTFORGE_LANGUAGE=ff fontforge -c 'Open("cambria.ttc"); Generate("cambria.ttf")'
+    FONTFORGE_LANGUAGE=ff fontforge -c 'Open("cambria.ttc(Cambria Math)"); Generate("cambria-math.ttf")' 
     rm cambria.ttc
 
     mkdir -p "$pkgdir/usr/share/fonts/TTF"

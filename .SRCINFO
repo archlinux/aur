@@ -1,19 +1,18 @@
 pkgbase = ttf-vista-fonts
-	pkgdesc = Microsoft Vista True Type Fonts
+	pkgdesc = Microsoft Vista and Office 2007 True Type Fonts
 	pkgver = 1
-	pkgrel = 8
-	url = http://www.microsoft.com/en-us/download/confirmation.aspx?id=13
+	pkgrel = 9
+	url = https://docs.microsoft.com/en-us/typography/fonts/font-faq
 	install = ttf-vista-fonts.install
 	arch = any
-	license = custom
+	license = custom:microsoft
 	makedepends = fontforge
 	makedepends = fontconfig
 	makedepends = xorg-font-utils
 	makedepends = cabextract
-	conflicts = ttf-ms-extrafonts
 	replaces = vista-fonts
-	source = http://download.microsoft.com/download/E/6/7/E675FFFC-2A6D-4AB0-B3EB-27C9F8C8F696/PowerPointViewer.exe
-	md5sums = 35ff8ebbea457ba426b47ff6d8377284
+	source = ttf-vista-fonts.cab::https://web.archive.org/web/20171225132744/http://download.microsoft.com/download/E/6/7/E675FFFC-2A6D-4AB0-B3EB-27C9F8C8F696/PowerPointViewer.exe
+	sha256sums = 249473568eba7a1e4f95498acba594e0f42e6581add4dead70c1dfb908a09423
 
 pkgname = ttf-vista-fonts
 
