@@ -1,4 +1,4 @@
-# Maintainer: Francis Agyapong (francis36012) <francisagyapong2@gmail.com>
+# Maintainer: Francis Agyapong <francisagyapong2 at gmail dot com>
 
 pkgname="nats-server"
 pkgdesc="Simple, secure and high performance open source messaging system"
