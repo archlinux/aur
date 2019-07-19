@@ -1,17 +1,18 @@
 # Maintainer: Tobias Borgert <tobias.borgert@gmail.com>
 
 pkgname=ecal
-pkgver=5.3.4.3
+pkgver=5.3.4.4
 pkgrel=1
 pkgdesc="enhanced Communication Abstraction Layer"
-arch=('x86_64')
+arch=('x86_64' 'armhf')
 url="https://github.com/continental/ecal"
 license=('Apache')
 depends=('protobuf' 'qt5-base')
 makedepends=('asio' 'cmake' 'doxygen' 'graphviz' 'simpleini' 'tclap')
 optdepends=()
 source=(https://github.com/continental/ecal/archive/v$pkgver.tar.gz)
-sha256sums=('89c9e303a63ce4dba576d45464e9e08325f2697fb9717b1174d170b0f0a3e9c7')
+sha256sums=('8036130e84191618e9d6f056101b5c9f70c03fdbd97adbcd2bca741f0ce08fb1')
+backup=('etc/ecal/ecal.ini' 'etc/ecal/ecaltime.ini')
 
 build() {
 	cd $pkgname-$pkgver
@@ -30,8 +31,10 @@ package() {
 	cd $pkgname-$pkgver
 	cd _build
 	DESTDIR="$pkgdir" make install
-	mv "$pkgdir/usr/lib/cmake/"* "$pkgdir/usr/lib64/cmake/"
-	rm -r "$pkgdir/usr/lib"
-	mv "$pkgdir/usr/lib64/" "$pkgdir/usr/lib"
+	if [ -d "$pkgdir/usr/lib64/" ]; then
+		mv "$pkgdir/usr/lib/cmake/"* "$pkgdir/usr/lib64/cmake/"
+		rm -r "$pkgdir/usr/lib"
+		mv "$pkgdir/usr/lib64/" "$pkgdir/usr/lib"
+	fi
         mv "$pkgdir/usr/etc" "$pkgdir/etc"	
 }
