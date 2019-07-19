@@ -4,8 +4,8 @@
 
 pkgbase="monero"
 pkgname=('monero' 'libmonero-wallet')
-pkgver=0.14.1.0
-pkgrel=3
+pkgver=0.14.1.2
+pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
 license=('custom:Cryptonote')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -74,13 +74,10 @@ package_monero() {
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-prune-known-spent-data" "${pkgdir}/usr/bin/monero-blockchain-prune-known-spent-data"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-stats" "${pkgdir}/usr/bin/monero-blockchain-stats"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-usage" "${pkgdir}/usr/bin/monero-blockchain-usage"
-
-  install -Dm755 "${srcdir}/${_monero}/build/bin/monerod" "${pkgdir}/usr/bin/monerod"
-
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-gen-trusted-multisig" "${pkgdir}/usr/bin/monero-gen-trusted-multisig"
-
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-wallet-cli" "${pkgdir}/usr/bin/monero-wallet-cli"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-wallet-rpc" "${pkgdir}/usr/bin/monero-wallet-rpc"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monerod" "${pkgdir}/usr/bin/monerod"
 }
 
 package_libmonero-wallet() {
