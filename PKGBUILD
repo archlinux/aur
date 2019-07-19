@@ -1,9 +1,9 @@
-# Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
+# Maintainer: Petit Pierre <petit.pierre@outlook.com>
 # Contributor: Bidossessi Sodonon
 
 pkgname=odoo
 pkgver=12.0
-_pkgsubver=20181023
+_pkgsubver=20190718
 pkgrel=1
 pkgdesc="Web-based Open Source Business Apps"
 url=https://www.odoo.com/
@@ -13,7 +13,7 @@ conflicts=('openerp')
 replaces=('openerp')
 makedepends=('python-setuptools')
 depends=(
-  'wkhtmltopdf'
+  'wkhtmltopdf-static'
   'python'
   'python-babel'
   'python-decorator'
@@ -24,7 +24,7 @@ depends=(
   'python-greenlet'
   'python-html2text'
   'python-jinja'
-  'python-libsass'
+  'sassc'
   'python-lxml'
   'python-mako'
   'python-markupsafe'
