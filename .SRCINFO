@@ -1,0 +1,29 @@
+pkgbase = vscode-headmelted-bin
+	pkgdesc = Community builds of Visual Studio Code, including for ARM devices
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://code.headmelted.com
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = libnotify
+	depends = gnupg
+	depends = libxkbfile
+	depends = libsecret
+	depends = gtk3
+	optdepends = trash-cli: For moving items to trash
+	provides = code
+	conflicts = code
+	source_i686 = https://github.com/headmelted/codebuilds/releases/download/20-Feb-19/code-oss_1.32.0-1550645370_i386.deb
+	md5sums_i686 = 907ce86f3a15b7a1448aef6c7783df18
+	source_x86_64 = https://github.com/headmelted/codebuilds/releases/download/20-Feb-19/code-oss_1.32.0-1550644812_amd64.deb
+	md5sums_x86_64 = 5eddfd3a70c8af45f3840d208d19417a
+	source_armv7h = https://github.com/headmelted/codebuilds/releases/download/20-Feb-19/code-oss_1.32.0-1550644722_armhf.deb
+	md5sums_armv7h = 58dbabd3edeb08efe1c844a6db361f51
+	source_aarch64 = https://github.com/headmelted/codebuilds/releases/download/20-Feb-19/code-oss_1.32.0-1550644676_arm64.deb
+	md5sums_aarch64 = 82d1333c290d92597e649f6b71b3ba2a
+
+pkgname = vscode-headmelted-bin
+
