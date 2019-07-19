@@ -20,13 +20,9 @@ pkgver() {
        } END { exit !found }' cmb.c | cut -d' ' -f2
 }
 
-prepare() {
-  cd pkgcenter/depend/libcmb
-  ./configure --prefix "$pkgdir/usr"
-}
-
 build() {
   cd pkgcenter/depend/libcmb
+  ./configure --prefix "$pkgdir/usr"
   make
 }
 
