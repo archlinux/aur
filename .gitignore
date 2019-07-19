@@ -3,5 +3,5 @@ pkg
 *.src.tar.gz
 *.pkg.tar.xz
 *.part
-
+*.AppImage
 
