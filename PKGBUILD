@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='bspwc-git'
 pkgver=r30.b3d0da3
-pkgrel=1
+pkgrel=2
 license=(custom:as-is)
 pkgdesc='Wayland compositor based on BSPWM'
 url='https://git.sr.ht/~bl4ckb0ne/bspwc'
