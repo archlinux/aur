@@ -2,7 +2,7 @@
 
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
-pkgver=19.30.838629
+pkgver=19.20.812932
 pkgrel=1
 arch=('x86_64')
 url='http://www.amd.com'
@@ -16,12 +16,12 @@ DLAGENTS='https::/usr/bin/wget --referer https://support.amd.com/en-us/kb-articl
 
 prefix='amdgpu-pro-'
 postfix='-ubuntu-18.04'
-major='19.30'
-minor='838629'
+major='19.20'
+minor='812932'
 shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
 
 source=("https://drivers.amd.com/drivers/linux/${prefix}${major}-${minor}${postfix}.tar.xz")
-sha256sums=('e2eb0a34745ecb9e244f81e0f3af8e4ab063d699dbc3e1a1e0867e8ce773d473')
+sha256sums=('c5376760ce15454c5ef5cef86571f3806114403d91b8a210629d2e927c98d852')
 
 pkgver() {
 	echo "${major}.${minor}"
@@ -39,7 +39,7 @@ package() {
 
 	mkdir -p "${srcdir}/libdrm"
 	cd "${srcdir}/libdrm"
-	ar x "${srcdir}/${prefix}${major}-${minor}${postfix}/libdrm-amdgpu-amdgpu1_2.4.98-${minor}_amd64.deb"
+	ar x "${srcdir}/${prefix}${major}-${minor}${postfix}/libdrm-amdgpu-amdgpu1_2.4.97-${minor}_amd64.deb"
 	tar xJf data.tar.xz
 	cd ${shared/amdgpu-pro/amdgpu}
 	rm "libdrm_amdgpu.so.1"
