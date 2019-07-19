@@ -1,6 +1,6 @@
 pkgbase = azure-functions-core-tools-bin
 	pkgdesc = Command line tools for Azure Functions
-	pkgver = 2.7.1373
+	pkgver = 2.7.1480
 	pkgrel = 1
 	url = https://github.com/Azure/azure-functions-core-tools
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = azure-functions-core-tools-bin
 	provides = azure-functions-core-tools
 	conflicts = azure-functions-core-tools
 	options = staticlibs
-	source = https://github.com/Azure/azure-functions-core-tools/releases/download/2.7.1373/Azure.Functions.Cli.linux-x64.2.7.1373.zip
-	sha256sums = b515f2e2fa9a0ec08a6f6c505324dc83d8300c09e03a5e223c693d49b209fe26
+	source = https://github.com/Azure/azure-functions-core-tools/releases/download/2.7.1480/Azure.Functions.Cli.linux-x64.2.7.1480.zip
+	sha256sums = e64a42177e97c75fda86821dbb7594903745beee83182e851a545dc8b9eb158a
 
 pkgname = azure-functions-core-tools-bin
 
