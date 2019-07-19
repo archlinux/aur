@@ -1,13 +1,13 @@
 pkgbase = kubetail
 	pkgdesc = Tail Kubernetes logs from multiple pods
-	pkgver = 1.6.8
+	pkgver = 1.6.9
 	pkgrel = 1
 	url = https://github.com/johanhaleby/kubetail
 	arch = any
 	license = Apache
 	depends = kubectl
-	source = kubetail-1.6.8.tar.gz::https://github.com/johanhaleby/kubetail/archive/1.6.8.tar.gz
-	sha256sums = c6c7ffa54d6f5d28b8c3fa6a6a505827f0a0d4887d8376d6fc605b1bf7c8ae64
+	source = kubetail-1.6.9.tar.gz::https://github.com/johanhaleby/kubetail/archive/1.6.9.tar.gz
+	sha256sums = b8a22d9a0aeb3587f7c32ebcd0ddc73ea62bffb67a591ec833e182b63fb6b2c0
 
 pkgname = kubetail
 
