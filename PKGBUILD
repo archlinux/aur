@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.1.191
+pkgver=8.2.126
 pkgrel=1
 pkgdesc="A VLSI layout system"
 url="http://opencircuitdesign.com/magic/"
@@ -10,10 +10,12 @@ license=('custom:copyright')
 depends=('tcl' 'tk' 'libx11')
 makedepends=('tcsh')
 optdepends=('mesa: for better graphics'
+            'cairo: for better graphics'
+            'glu: for better graphics'
             'blt: to create a tree diagram of the cell hierarchy in a design')
 changelog="$pkgname.changelog"
 source=("http://opencircuitdesign.com/magic/archive/$pkgname-$pkgver.tgz")
-md5sums=('63c651744895421a7c9f6606f39725f8')
+md5sums=('8d79747c9156f7bd9136c4f3a11a8f94')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver/"
