@@ -1,0 +1,19 @@
+pkgbase = wltrunk-git
+	pkgdesc = High-level Wayland compositor library based on wlroots
+	pkgver = r51.a9a5fee
+	pkgrel = 1
+	url = https://git.sr.ht/~bl4ckb0ne/wltrunk
+	arch = x86_64
+	license = custom:as-is
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = wayland-protocols
+	depends = wlroots
+	provides = wltrunk
+	conflicts = wltrunk
+	source = wltrunk-git::git+https://git.sr.ht/~bl4ckb0ne/wltrunk
+	sha512sums = SKIP
+
+pkgname = wltrunk-git
+
