@@ -142,12 +142,12 @@ package() {
   mkdir -p "$pkgdir"
   DESTDIR="$pkgdir" ./mach install
 
-  _spellcheck_js="$pkgdir/usr/lib/waterfox/browser/defaults/preferences/spellcheck.js"
+  _spellcheck_js="$pkgdir/usr/lib/waterfox-alpha/browser/defaults/preferences/spellcheck.js"
   install -Dm644 /dev/stdin "$_spellcheck_js" <<END
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 END
 
-install -Dm644 "$srcdir/kde.js" "$pkgdir/usr/lib/waterfox/browser/defaults/preferences/kde.js"
+install -Dm644 "$srcdir/kde.js" "$pkgdir/usr/lib/waterfox-alpha/browser/defaults/preferences/kde.js"
 
   for i in 16 32 48 64 128; do
     install -Dm644 browser/branding/alpha/default$i.png \
