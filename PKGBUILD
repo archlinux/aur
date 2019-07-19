@@ -5,7 +5,7 @@
 
 pkgname=tramp
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="emacs extension that provides transparent remote file editing"
 arch=('any')
 url=http://www.gnu.org/software/tramp/
@@ -25,13 +25,13 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --prefix=/usr --with-contrib 
+  ./configure --prefix=/usr
   make
 }
 
 package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
-  mv $pkgdir/usr/share/info/$pkgname $pkgdir/usr/share/info/$pkgname-new
+  mv "$pkgdir"/usr/share/info/$pkgname "$pkgdir"/usr/share/info/$pkgname-new
 }
 
