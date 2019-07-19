@@ -1,13 +1,13 @@
 # Maintainer: Archimede Pitagorico <archimede.pitagorico@mail.com>
 
 pkgname=megasync-headless
-pkgver=v3.4.9.0.g19222ddb
+pkgver=v3.6.0.0.gf293e3aa
 pkgrel=1
 pkgdesc="Sync with MEGA. Daemon, fuse and cli client. Original sdk (git)."
 arch=('x86_64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')
-source=('git+https://github.com/meganz/sdk.git#tag=v3.4.9'
+source=('git+https://github.com/meganz/sdk.git#tag=v3.6.0'
         'megasyncd@.service'
         'megasync.conf'
         )
