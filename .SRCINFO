@@ -1,0 +1,15 @@
+pkgbase = python-pytrends
+	pkgdesc = Pseudo API for Google Trends
+	pkgver = 4.6.0
+	pkgrel = 1
+	url = https://github.com/dreyco676/pytrends
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pytrends/pytrends-4.6.0.tar.gz
+	sha256sums = 763401369ed062dfae4991997b453f4f3e9869ecc7cbc8d63dec6ef9aab0f60d
+
+pkgname = python-pytrends
+	depends = python
+
