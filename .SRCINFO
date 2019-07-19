@@ -20,7 +20,7 @@ pkgbase = astroid
 	depends = notmuch
 	depends = boost
 	depends = boost-libs
-	depends = gmime
+	depends = gmime3
 	depends = gtkmm3
 	depends = webkit2gtk
 	depends = libsass
@@ -31,8 +31,8 @@ pkgbase = astroid
 	optdepends = emacs: can be used as editor
 	optdepends = vte3: for drop-down terminal
 	optdepends = cmark: for markdown to html composition
-	source = astroid-v0.14.tar.gz::https://github.com/astroidmail/astroid/archive/v0.14.tar.gz
-	sha256sums = f2642968919527008d383b4c32d4b038c7b6f785ea084dde1222a65162ebc5ca
+	source = astroid-v0.15.tar.gz::https://github.com/astroidmail/astroid/archive/v0.15.tar.gz
+	sha256sums = 8581bbdbc71bd00d4cdd473cfad8bc604628bb15616fe5eab5c623461f686c65
 
 pkgname = astroid
 
