@@ -1,7 +1,7 @@
 # Maintainer: Achilleas Koutsou (achilleas.k@gmail.com)
 
 pkgname=gin-cli
-pkgver=1.7
+pkgver=1.9
 pkgrel=1
 pkgdesc='Command line client for the G-Node Infrastructure (GIN) services'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://web.gin.g-node.org/G-Node/Info/wiki/GinCliSetup'
 license=('BSD')
 depends=('git-annex' 'openssh')
 install=${pkgname}.install
-sha512sums=('abb03f533e32bca956d07513b8d5eef5831bca85622a5bcfc26bd8b81aa5a6bab7ac60bddef7a959cc07055f9020ab1996b30c6a78bcc67364cf688ffc8e7c30')
+sha512sums=('06772abd55645bca1555a9aeaa6565d122c1e354268ba33e1758d9ff07ea524e7836f146710db0623989e368f9c25aa32b6783c4d5944f03f0cf790fdafaa926')
 source=("https://github.com/G-Node/gin-cli/releases/download/v${pkgver}/gin-cli-${pkgver}-linux-amd64.tar.gz")
 package() {
     install -Dm755 "${srcdir}"/gin "${pkgdir}"/usr/bin/gin
