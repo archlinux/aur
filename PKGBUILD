@@ -1,0 +1,20 @@
+# Maintainer: gee
+
+pkgname=wudcompress
+pkgver=1.0
+pkgrel=1
+pkgdesc='Wii U image (WUD) compression tool'
+arch=('x86_64')
+url='https://gbatemp.net/threads/wii-u-image-wud-compression-tool.397901/'
+source=("https://github.com/John-Gee/wudcompress/archive/master.zip")
+sha256sums=('dff8834b21309e09567834e9024f609dbb74bebb83d4cca7bbe4701cf443b163')
+
+build() {
+  cd ${srcdir}/wudcompress-master
+
+  gcc main.cpp wud.cpp -o wudcompress -Wno-multichar
+}
+
+package() {
+  install -Dm 755 ${srcdir}/wudcompress-master/wudcompress -t "${pkgdir}"/usr/bin/
+}
