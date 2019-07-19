@@ -10,7 +10,7 @@ _scalaver=2.12
 _appver=2.3.0
 pkgver=${_scalaver}_${_appver}
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-throughput distributed messaging system'
 arch=('any')
 url='https://kafka.apache.org/'
@@ -85,7 +85,7 @@ package() {
 #    "${pkgdir}/usr/share/java/${pkgname}/zookeeper.jar"
 
   cp -r libs/* "${pkgdir}/usr/share/java/${pkgname}"
-  rm "${pkgdir}"/usr/share/java/${pkgname}/zookeeper-*
+#  rm "${pkgdir}"/usr/share/java/${pkgname}/zookeeper-*
   ln -s ../java/${pkgname} "${pkgdir}${_app_home}/libs"
 
   ln -s /var/log/${pkgname} "${pkgdir}${_app_home}/logs"
