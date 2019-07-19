@@ -3,7 +3,7 @@
 
 
 pkgname=kvmd-webterm
-pkgver=0.23
+pkgver=0.24
 pkgrel=1
 pkgdesc="Pi-KVM - Web terminal"
 url="https://github.com/pi-kvm/kvmd-webterm"
@@ -14,6 +14,7 @@ install=$pkgname.install
 source=(
 	$pkgname.install
 	$pkgname.service
+	sysusers.conf
 	https://raw.githubusercontent.com/tsl0922/ttyd/master/src/index.html
 	index.sed
 	terminal.svg
@@ -21,12 +22,15 @@ source=(
 	nginx.ctx-server.conf
 	manifest.yaml
 )
-md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
 
 package() {
 	mkdir -p "$pkgdir/usr/lib/systemd/system"
-	install -Dm644 kvmd-webterm.service "$pkgdir/usr/lib/systemd/system/kvmd-webterm.service"
+	cp kvmd-webterm.service "$pkgdir/usr/lib/systemd/system/kvmd-webterm.service"
+
+	mkdir -p "$pkgdir/usr/lib/sysusers.d"
+	cp sysusers.conf "$pkgdir/usr/lib/sysusers.d/kvmd-webterm.conf"
 
 	mkdir -p "$pkgdir/usr/share/kvmd/web/extras/webterm"
 	cp terminal.svg "$pkgdir/usr/share/kvmd/web/extras/webterm"

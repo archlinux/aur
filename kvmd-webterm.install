@@ -1,13 +1,8 @@
 post_install() {
-	id kvmd-webterm &>/dev/null || useradd -r -m -c "Pi-KVM - Web terminal (ttyd)" -s /bin/bash kvmd-webterm
-	(groupmems -l -g kvmd | grep kvmd-webterm >/dev/null) || groupmems -g kvmd -a kvmd-webterm
-	(groupmems -l -g kvmd-webterm | grep kvmd-nginx >/dev/null) || groupmems -g kvmd-webterm -a kvmd-nginx
+	post_upgrade
 }
 
 post_upgrade() {
-	post_install
-}
-
-post_remove() {
-	userdel -r kvmd-webterm &>/dev/null
+	echo "==> Ensuring KVMD-Webterm users and groups ..."
+	systemd-sysusers /usr/lib/sysusers.d/kvmd-webterm.conf
 }
