@@ -1,9 +1,8 @@
 post_install() {
-	groupmems -g spi -l &>/dev/null || groupadd -r spi
-	groupmems -g gpio -l &>/dev/null || groupadd -r gpio
+	post_upgrade
 }
 
-post_remove() {
-	groupdel spi &>/dev/null
-	groupdel gpio &>/dev/null
+post_upgrade() {
+	echo "==> Ensuring IO groups ..."
+	systemd-sysusers /usr/lib/sysusers.d/raspberrypi-io-access.conf
 }
