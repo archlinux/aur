@@ -2,7 +2,7 @@
 
 pkgname=sanic
 pkgdesc='An all-in-one tool to develop, build, and deploy your Docker/Kubernetes projects'
-pkgver=1.2.13
+pkgver=1.3.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -10,7 +10,7 @@ url='https://github.com/distributed-containers-inc/sanic'
 depends=('kubectl' 'docker')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/distributed-containers-inc/sanic/archive/v$pkgver.tar.gz")
-sha256sums=('ffb3eb245351239ecc1b4b13e208d35244540cfbcdf6735cbf86059ab9b1526b')
+sha256sums=('d7ac4a913acd34fa14550f40ce5c9426f157194fa7af32059ae7516c005bfffd')
 
 build() {
   # Trim PWD from binary
