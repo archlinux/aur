@@ -1,0 +1,20 @@
+pkgbase = python-scrapinghub-git
+	pkgdesc = A client interface for Scrapinghub's API
+	pkgver = 2.1.1.r8.g8319db9
+	pkgrel = 1
+	url = https://python-scrapinghub.readthedocs.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-msgpack
+	depends = python-requests
+	depends = python-retrying
+	depends = python-six
+	provides = python-scrapinghub
+	conflicts = python-scrapinghub
+	source = git+https://github.com/scrapinghub/python-scrapinghub.git
+	md5sums = SKIP
+
+pkgname = python-scrapinghub-git
+
