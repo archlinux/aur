@@ -1,0 +1,25 @@
+pkgbase = surf-baitinq-git
+	pkgdesc = a WebKit based browser (Baitinq's version)
+	pkgver = 0.r574.2c3581f
+	pkgrel = 1
+	url = https://github.com/Baitinq/surf.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = webkit2gtk
+	depends = gcr
+	depends = xorg-xprop
+	optdepends = dmenu: url bar and search
+	optdepends = tabbed: tab browsing
+	optdepends = ca-certificates: SSL verification
+	optdepends = st: default terminal for the download handler
+	optdepends = curl: default download handler
+	optdepends = mpv: default video player
+	provides = surf
+	source = git://github.com/Baitinq/surf.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = surf-baitinq-git
+
