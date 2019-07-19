@@ -4,7 +4,7 @@
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Contributor: Jochen Schalanda <jochen+aur (at) schalanda.name>
 pkgname=debianutils
-pkgver=4.8.6.2
+pkgver=4.8.6.3
 pkgrel=1
 pkgdesc="Miscellaneous utilities specific to Debian"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('run-parts' 'which')
 source=("http://http.debian.net/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz"
 	"${pkgname}_${pkgver}.tar.xz.sig")
-sha512sums=('1110d0f42870848a8a29b7b52d304ed39ae7d08156da09268dada7464ae45abc1f35320a12f218f8ba9bb2f1d323737136c143ef17141feef1275056842789a2'
+sha512sums=('c38d1d351de69f270924f05755501d90cb7245c8a3154f91ea8e38978052ffe2ec016d4400c55e2f7d31358cfe134a40c5843a33836900d7e69cce9ee8ace98e'
             'SKIP')
 
 build() {
