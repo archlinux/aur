@@ -9,7 +9,7 @@ _archdroid_icons_ver=1.0.2
 _gnome_colors_icons_ver=5.5.5
 _oomoxify_ver=1.1.2
 _base16_cmt=2e4112fe859ed5d33f67c177f11d369d360db9ae
-_numix_icons_cmt=88ba3654506c73f77a28629d863d1e23a553bff7
+_numix_icons_cmt=1029e86ec58c387a5b3523380ee17f223f7e2de4
 _numix_folders_icons_cmt=24e5f6c6603e7f798553d2f24a00de107713c333
 _papirus_icons_ver=20190708
 _suru_plus_icons_ver=30.0
@@ -17,7 +17,7 @@ _suru_plus_aspromauros_icons_ver=3.0
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=8
+pkgrel=9
 pkgdesc='Themix: GUI for generating different color variations
 of Arc, Materia, Oomox themes
 (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
@@ -91,7 +91,7 @@ md5sums=('3dd791ab2cf30cc713657fc68d0b8e87'
          '8b4a9a1837211a3caf661ab825d66cb0'
          '743395f8490fe7d2ec1525930f019d97'
          '8f7506b74131bfce78685aade0e275eb'
-         '6873ed4ffd84e69e10625f5aee2bfdc6'
+         '9df0d2aae9a4b8e2e170c9aeb7effc4f'
          '3fcb07cefe43a6a2fe4d977f124624ec'
          '0e3022eafe8d9fdaa447d7f5ef090157'
          'aba1a105215425e843b60b8edae38241'
