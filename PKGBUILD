@@ -6,7 +6,7 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-cuda
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
