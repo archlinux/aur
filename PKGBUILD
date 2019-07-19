@@ -1,7 +1,7 @@
 # Maintainer : Colin Berry <colinb969@gmail.com>
 pkgname=flashpoint-git
 pkgver=fd01bbe
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Launcher for BlueMaxima's Flashpoint"
 arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
