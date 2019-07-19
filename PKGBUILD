@@ -20,13 +20,9 @@ pkgver() {
        } END { exit !found }' cmb.c
 }
 
-prepare() {
-  cd pkgcenter/depend/cmb
-  ./configure --prefix "$pkgdir/usr"
-}
-
 build() {
   cd pkgcenter/depend/cmb
+  ./configure --prefix "$pkgdir/usr"
   make || msg2 "Try upgrading libcmb and building cmb again afterwards"
 }
 
