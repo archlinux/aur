@@ -60,11 +60,12 @@ source=("https://nightly.odoo.com/${pkgver}/nightly/src/${pkgname}_${pkgver}.${_
         odoo.confd
         odoo.service
         odoo.sysusers)
-md5sums=('31b09eda196af066cf3a5a4a326719da'
+md5sums=('8139a83ae604869cce50761f517462e8'
          '863418f31f0fb982cde0008fa63f35f0'
          '742fa9ad94a92ac2aa910197a26af4e8'
          '5bddcc6edbdefdd07cae945165c63604'
          '720b7b8c3df3142dfd0383acd1c9e9b4')
+
 
 backup=('etc/odoo/odoo.conf')
 install=odoo.install
