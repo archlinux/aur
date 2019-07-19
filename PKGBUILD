@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=pantheon-stable
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Meta package for the complete Pantheon desktop & apps that uses stable versions"
 arch=(any)
@@ -15,7 +15,7 @@ depends=(
 	'elementary-wallpapers'
 	'epiphany-pantheon'
 	'file-roller'
-	'gala'
+	'gala-stable'
 	'geary'
 	'gnome-settings-daemon-elementary'
 	'granite'
