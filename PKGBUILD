@@ -4,7 +4,7 @@ set -u
 _pyver="python"
 _pybase='parse_type'
 pkgname="${_pyver}-${_pybase}"
-pkgver='0.4.2'
+pkgver='0.5.2'
 pkgrel='1'
 pkgdesc='simplifies to build parse types based on the parse module'
 arch=('any')
@@ -20,9 +20,9 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
 #source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-_verwatch=("https://pypi.python.org/simple/${_pybase//_/-}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
+_verwatch=("https://pypi.org/simple/${_pybase//_/-}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("https://pypi.io/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('f596bdc75d3dd93036fbfe3d04127da9f6df0c26c36e01e76da85adef4336b3c')
+sha256sums=('7f690b18d35048c15438d6d0571f9045cffbec5907e0b1ccf006f889e3a38c0b')
 
 build() {
   set -u
