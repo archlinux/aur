@@ -1,0 +1,36 @@
+pkgbase = phoc-git
+	pkgdesc = Wayland compositor for phones
+	pkgver = r118.d8375ab
+	pkgrel = 1
+	url = https://source.puri.sm/Librem5/phoc
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = wayland-protocols
+	makedepends = ctags
+	depends = libcap
+	depends = systemd
+	depends = wayland
+	depends = opengl-driver
+	depends = libxcb
+	depends = xcb-util-errors
+	depends = xcb-util-image
+	depends = xcb-util-wm
+	depends = pixman
+	depends = libinput
+	depends = libxkbcommon
+	depends = libpng
+	depends = ffmpeg
+	depends = glib2
+	provides = phoc
+	conflicts = phoc
+	source = git+https://source.puri.sm/Librem5/phoc.git
+	sha256sums = SKIP
+
+pkgname = phoc-git
+
