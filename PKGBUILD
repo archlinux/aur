@@ -1,7 +1,7 @@
-# Maintainer: Gaute Hope <eg@gaute.vetsj.com>
+# Maintainer: Gaute Hope <eg@gaute.vetsj.com>, Johannes Heinz <heinzeljo@web.de>
 pkgname=astroid
 pkgver=0.15
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others"
 arch=('x86_64' 'i686')
@@ -22,27 +22,34 @@ backup=()
 options=()
 install=$pkgname.install
 changelog=
-source=($pkgname-v$pkgver.tar.gz::https://github.com/astroidmail/astroid/archive/v${pkgver}.tar.gz)
+source=('$pkgname-v$pkgver.tar.gz::https://github.com/astroidmail/astroid/archive/v${pkgver}.tar.gz'
+        'test_compose.patch')
 noextract=()
-sha256sums=('8581bbdbc71bd00d4cdd473cfad8bc604628bb15616fe5eab5c623461f686c65')
+sha256sums=('8581bbdbc71bd00d4cdd473cfad8bc604628bb15616fe5eab5c623461f686c65'
+            '8e54e55cf1ab891a5a328d2cce49ccf137562c81bee73d0318bb73ecc6c0385e')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch --forward --strip=2 --input="${srcdir}/test_compose.patch"
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p build
   cd build
-  cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cmake .. -GNinja -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX="/usr"
   ninja
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   cd build
   ctest --output-on-failure
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   cd build
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="${pkgdir}" ninja install
 }
 
