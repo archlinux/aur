@@ -4,8 +4,8 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-performance
-pkgver=3.32.2+5+gae0567949
-pkgrel=4
+pkgver=3.32.2+10+g2483b6038
+pkgrel=1
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -21,7 +21,7 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 install="$pkgname.install"
-_commit=ae05679498ff78b88ede8f15bd646716366b2ff8 # tags/3.32.2^5
+_commit=2483b603869009f7294c00e8a5bdb778eb948b6d # tags/3.32.2^10
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
          https://gitlab.gnome.org/GNOME/gnome-shell/uploads/4a083c80c81eeb0dd1be64e0e24b5c17/nvidia-background-workaround.patch)
