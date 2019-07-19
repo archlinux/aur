@@ -134,6 +134,13 @@ prepare() {
   # Comment:
   git cherry-pick -n a7852705^..2d908e80
 
+  # Title: dash: Fix messed up icon height
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/494
+  # Type: 3
+  # Status: 4
+  # Comment:
+  git cherry-pick -n 4e5ca6d3
+
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update
