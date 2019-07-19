@@ -1,6 +1,6 @@
 pkgbase = pantheon-stable
 	pkgdesc = Meta package for the complete Pantheon desktop & apps that uses stable versions
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/elementary
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = pantheon-stable
 	depends = elementary-wallpapers
 	depends = epiphany-pantheon
 	depends = file-roller
-	depends = gala-stable
+	depends = gala
 	depends = geary
 	depends = gnome-settings-daemon-elementary
 	depends = granite
