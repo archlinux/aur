@@ -28,7 +28,7 @@ fi
 
 _pkgname='adminer-editor'
 pkgname="${_pkgname}"
-pkgver='4.7.1'
+pkgver='4.7.2'
 pkgrel='1'
 pkgdesc='Database data editing tool written in PHP'
 arch=('any')
@@ -40,7 +40,7 @@ _verwatch=("${url}" '/static/download/[0-9\.]\+/editor-\([0-9\.]\+\).php' 'l')
 install="${_pkgname}.install"
 #source=("http://downloads.sourceforge.net/adminer/editor-${pkgver}.php")
 source=("https://www.adminer.org/static/download/${pkgver}/editor-${pkgver}.php")
-sha256sums=('cb56184325a1f5caeba5d857a7c350ee7048b79695a9abf1653694267272f37a')
+sha256sums=('3b87b3cf419220a31a9865d0996cf6f9b81da80f8d8b202db53097719fcc5dfa')
 
 package() {
   set -u
