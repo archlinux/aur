@@ -1,5 +1,4 @@
-/bspwc-git/
-/src/
-/pkg/
-*.pkg.tar
-*.pkg.tar.*
+*
+!/PKGBUILD
+!/.SRCINFO
+!/.gitignore
