@@ -1,7 +1,7 @@
 pkgbase = nats-server
 	pkgdesc = Simple, secure and high performance open source messaging system
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nats.io
 	arch = x86_64
 	provides = nats-server

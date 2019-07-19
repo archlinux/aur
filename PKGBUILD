@@ -3,7 +3,7 @@
 pkgname="nats-server"
 pkgdesc="Simple, secure and high performance open source messaging system"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 provides=("${pkgname}")
 arch=("x86_64")
 url="https://nats.io"

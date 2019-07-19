@@ -5,9 +5,9 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/nats-server --syslog --http_port 8222
-ExecReload=/usr/bin/nats-server --signal reload=$MAINPID
-ExecStop=/usr/bin/nats-server --signal stop=$MAINPID
+PIDFile=/run/nats-server.pid
+ExecStart=/usr/bin/nats-server --pid /run/nats-server.pid --syslog --http_port 8222
+ExecStop=/usr/bin/nats-server --signal quit=/run/nats-server.pid
 PrivateTmp=true
 PrivateDevices=true
 ProtectSystem=full
