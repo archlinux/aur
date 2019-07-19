@@ -3,7 +3,7 @@
 pkgbase = astroid
 	pkgdesc = a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others
 	pkgver = 0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/astroidmail/astroid
 	install = astroid.install
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = astroid
 	makedepends = python-gobject
 	makedepends = cmark
 	makedepends = ruby-ronn
+	makedepends = w3m
 	depends = notmuch
 	depends = boost
 	depends = boost-libs
