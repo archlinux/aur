@@ -1,6 +1,6 @@
 pkgbase = drone-cli
 	pkgdesc = Drone CLI
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = http://docs.drone.io/cli-installation/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = drone-cli
 	arch = aarch64
 	license = Apache
 	makedepends = go
-	source = https://github.com/drone/drone-cli/archive/v1.1.2.tar.gz
-	sha256sums = ba315c38dd36af898900fd0149d5228775f9f96d491d40dcaa3daddafd03aac4
+	source = https://github.com/drone/drone-cli/archive/v1.1.3.tar.gz
+	sha256sums = 10511aebbe3b8543b33d8f68bad2a82efb42416b3dce9ea8d297e398b8df3f59
 
 pkgname = drone-cli
 
