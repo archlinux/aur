@@ -1,13 +1,13 @@
 pkgbase = emacs-rtf-mode
 	pkgdesc = Emacs mode for viewing/editing RTF files
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.emacswiki.org/emacs/rtf-mode.el
 	arch = any
 	license = GPL
 	depends = emacs
 	source = http://www.emacswiki.org/emacs/download/rtf-mode.el
-	md5sums = e03cfb1b4176e4795b1d36cfea6d1acc
+	sha256sums = aeac654763ba336dbf8efb312e19a7b52db07bb3f7ee18d861556ba9a3def57f
 
 pkgname = emacs-rtf-mode
 
