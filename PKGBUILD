@@ -66,7 +66,6 @@ md5sums=('8139a83ae604869cce50761f517462e8'
          '5bddcc6edbdefdd07cae945165c63604'
          '720b7b8c3df3142dfd0383acd1c9e9b4')
 
-
 backup=('etc/odoo/odoo.conf')
 install=odoo.install
 
@@ -77,7 +76,7 @@ build() {
 
 package()
 {
-  cd ${srcdir}/${pkgname}-${pkgver}.post${_pkgsubver}
+  cd ${srcdir}/${pkgname}-${pkgver}.${_pkgsubver}
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   mkdir -p ${pkgdir}/etc/{conf.d,odoo}
