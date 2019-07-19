@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Gąsior <tomaszgasior.pl>
 
 pkgname=nozbe
-pkgver=3.9.2
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="To-do, task, project and time management application."
 url="https://nozbe.com"
@@ -15,7 +15,7 @@ source=(
 	"Nozbe.desktop"
 )
 sha256sums=(
-	"16514f4cb715dfb8f4cafb6ed315fd514d63411d1316905f30ce62b8dc34177a"
+	"ad79da3c65bfe07ea82abae10e2af3d17b12dc5a2b31be8bc82fe65d3aeb3cdd"
 	"1d3d5ac6354d705ea467942732f2a60aa7c2eda86cf0d65da7026f98c69e3c63"
 )
 
