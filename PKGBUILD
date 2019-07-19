@@ -27,6 +27,7 @@ build(){
 package(){
     # Application
     mkdir -p $pkgdir/opt/ \
+             $pkgdir/var/opt/flashpoint \
              $pkgdir/usr/share/pixmaps/
     
     cp -R $srcdir/$pkgname/dist/* "$pkgdir/opt/flashpoint"
