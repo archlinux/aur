@@ -8,7 +8,7 @@ arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
 makedepends=('wget')
-depends=('libdrm' 'ocl-icd')
+depends=('libdrm' 'ocl-icd' 'gcc-libs')
 conflicts=('amdgpocl')
 provides=('opencl-driver')
 

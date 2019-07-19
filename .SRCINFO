@@ -8,6 +8,7 @@ pkgbase = opencl-amd
 	makedepends = wget
 	depends = libdrm
 	depends = ocl-icd
+	depends = gcc-libs
 	provides = opencl-driver
 	conflicts = amdgpocl
 	source = https://drivers.amd.com/drivers/linux/amdgpu-pro-19.30-838629-ubuntu-18.04.tar.xz
