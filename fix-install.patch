@@ -5,7 +5,7 @@ diff --unified --recursive --text msbuild.orig/mono/build/install.proj msbuild.n
  
          <Exec
              WorkingDirectory="$(XBuildDir)"
--            Command="ln -sfh Current 15.0" />
+-            Command="ln -sfn Current 15.0" />
 +            Command="ln -sfn $(TargetMSBuildToolsVersion) Current" />
          <Exec
              WorkingDirectory="$(MonoInstallPrefix)\lib\mono\msbuild"
