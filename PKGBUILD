@@ -2,7 +2,7 @@
 # Contributor: Steve Holmes <steve.holmes88@gmail.com>
 # Contributor: Chris Brannon <cmbrannon79@gmail.com>
 pkgname=emacspeak
-pkgver=49.0
+pkgver=50.0
 pkgrel=1
 pkgdesc="Emacs extension that provides spoken output"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(emacs
 optdepends=('python: Google client, and wrapper for Emacspeak speech servers.'
 	 'openmotif')
 source=("https://github.com/tvraman/emacspeak/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('24a73d020c434e539ac88ea2041898b6')
+md5sums=('d113243235dbeb420dabd354e7cd2eef')
 
 prepare() {
   export DTK_PROGRAM="espeak"
