@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <m.diehl@mpie.de>
 pkgname=dream3d
 pkgver=6.5.121
-pkgrel=1
+pkgrel=2
 pkgdesc='analysis tool for microstructure data'
 arch=('x86_64')
 license=('custom: DREAM.3D License')
@@ -24,8 +24,8 @@ package() {
 
   cp -r  DREAM3D-${pkgver}-Linux-x86_64/*        $pkgdir/opt/dream3d/
 
-  ln -s $pkgdir/opt/dream3d/bin/DREAM3D        $pkgdir/usr/bin/
-  ln -s $pkgdir/opt/dream3d/bin/PipelineRunner $pkgdir/usr/bin/
+  ln -s /opt/dream3d/bin/DREAM3D                 $pkgdir/usr/bin/
+  ln -s /opt/dream3d/bin/PipelineRunner          $pkgdir/usr/bin/
 
   install -Dm644 DREAM3D-${pkgver}-Linux-x86_64/*.txt $pkgdir/usr/share/licenses/$pkgname/
 }

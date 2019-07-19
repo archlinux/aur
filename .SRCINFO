@@ -1,7 +1,7 @@
 pkgbase = dream3d
 	pkgdesc = analysis tool for microstructure data
 	pkgver = 6.5.121
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = custom: DREAM.3D License
 	depends = libpng12
