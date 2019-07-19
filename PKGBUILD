@@ -8,8 +8,8 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt       # Build kernel with a different name
-_pkgver=5.0.21
-_rtpatchver=rt16
+_pkgver=5.2
+_rtpatchver=rt1
 pkgver="${_pkgver}_${_rtpatchver}"
 pkgrel=1
 arch=('x86_64')
@@ -21,13 +21,15 @@ _srcname=linux-${_pkgver}
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_pkgver}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_pkgver}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/5.0/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/5.0/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/5.2/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/5.2/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
   config         # the main kernel config file
   60-${pkgbase}.hook  # pacman hook for depmod
   90-${pkgbase}.hook  # pacman hook for initramfs regeneration
   ${pkgbase}.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
+  0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -37,15 +39,17 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('98d307a546c95a215dee675ffa4b63c2a7a29e7af839f0d8dfb96dbb61aac2d7'
+sha256sums=('54ad66f672e1a831b574f5e704e8a05f1e6180a8245d4bdd811208a6cb0ac1e7'
             'SKIP'
-            'f8496b5e6d7a532252dae9a3aeb780e2ede83902edd255996f2bc23669349761'
+            'ce768bb6d167f7b6a885133159da1666f1f60e5ad7e476ce6d20959431591cbe'
             'SKIP'
-            '30a4badcefbbe4cdf9090f8b1b923fc00f0a607b16706ae832c8ea863b75f533'
+            '9bdcc9eb678b6cf8220c1fa7b83fdf8ac3306f66779fb43e189b7d27441fb732'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc')
+            '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
+            '187fa8d9a6c5777a8930dcecfafdd9d6e9095d4bf96ec060e756fb7c6a88b74d'
+            'fc96300831506965383ef30bc46b72735dc45bb97dea2ccb8b9450c005d2f020')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
