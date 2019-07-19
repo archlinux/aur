@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DREAM.3D
+Comment=analysis tool for microstructure data
+Exec=DREAM3D
+Icon=/opt/dream3d/Help/DREAM3D/logo.png
+Terminal=false
+StartupNotify=false
+Categories=Application;
