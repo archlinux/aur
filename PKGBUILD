@@ -25,7 +25,7 @@ sha1sums=('7cdd55cbb465fd6aa267db9b50ec1ec92ae323e6'
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   ./autogen.sh
-  ./configure --prefix="/usr" --enable-pcre --enable-locallists \
+  ./configure --prefix="/usr" --enable-pcre --enable-locallists --enable-sslmitm=yes \
 	      --enable-icap --enable-commandline= --enable-email --enable-trickledm \
               --sysconfdir=/etc --localstatedir=/var --enable-email --enable-clamd \
               --sbindir=/usr/bin
