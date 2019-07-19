@@ -32,6 +32,7 @@ build() {
 package_python2-zbase32() {
     cd "$srcdir/zbase32-$pkgver-py2"
     replaces=('zbase32')
+    provides=('zbase32')
     python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
     install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
