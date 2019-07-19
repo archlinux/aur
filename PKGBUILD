@@ -2,7 +2,7 @@
 
 _pkgname=kicad-library-utils
 pkgname="${_pkgname}-git"
-pkgver=r980.d3568c6
+pkgver=r990.2654848
 pkgrel=1
 pkgdesc='Some scripts for helping with library development, git checkout'
 arch=('any')
@@ -42,6 +42,12 @@ package() {
 
   ln -s "${install_dir}/schlib/test_schlib.sh" \
     "${pkgdir}/usr/bin/kicad_test_schlib"
+
+  chmod +x \
+    "${install_dir}/pcb/check_kicad_mod.py" \
+    "${install_dir}/pcb/check_3d_coverage.py" \
+    "${install_dir}/pcb/test_kicad_mod.sh" \
+    "${install_dir}/schlib/test_schlib.sh"
 
   chmod +x "${pkgdir}/usr/bin/"{kicad_check_mod,kicad_check_3d_coverage}
 }
