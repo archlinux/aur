@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Whalebird
+Comment=Electron-based Mastodon/Pleroma client
+Exec=whalebird
+Icon=whalebird
+Categories=Network;
+Terminal=false

@@ -1,15 +1,17 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=whalebird
-pkgver=2.7.5
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Electron-based Mastodon/Pleroma client'
 arch=(i686 x86_64)
 url=https://whalebird.org
 license=(MIT)
 makedepends=(npm)
-source=(https://github.com/h3poteto/whalebird-desktop/archive/$pkgver.tar.gz)
-sha512sums=('a9a605dadf84133e218f6769158fba333acb0f83fda229cedb77ed8332667625e3ff36a49754d7e465eadfaf180f1d645f6a137f5d63d3fd9188b3ea01bff12a')
+source=(whalebird-$pkgver.tar.gz::https://github.com/h3poteto/whalebird-desktop/archive/$pkgver.tar.gz
+        whalebird.desktop)
+sha512sums=('f54f31e087ca076a1b836440aafa97b476c73568c30193b2061839d6dad76bf7043b468823e95a4a4c36305fcfe7daa164b7e6682a84e8fee6d34473a1371003'
+            '3e5f29fc6db305957b81abc8e4b4679fbd979bbf41ce0c190b19c31a96a3bfe03b624885961ce6d7410716d286c82548b960ebbc1e547c1cacc0b16175eecee2')
 
 build() {
   cd whalebird-desktop-$pkgver
@@ -19,8 +21,17 @@ build() {
 }
 
 package() {
-  install -d "$pkgdir"/usr/{share,bin}
-  cp -a whalebird-desktop-$pkgver/build/linux-unpacked \
-    "$pkgdir"/usr/share/whalebird-desktop
-  ln -s /usr/share/whalebird-desktop/whalebird "$pkgdir"/usr/bin/whalebird
+  install -Dm 644 whalebird.desktop -t "$pkgdir"/usr/share/applications
+
+  cd whalebird-desktop-$pkgver/build
+
+  cp -a linux-unpacked "$pkgdir"/usr/share/whalebird
+
+  for i in 16 32 128 256 512; do
+    install -Dm 644 icons/icon.iconset/icon_${i}x${i}.png \
+      "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/whalebird.png
+  done
+
+  mkdir "$pkgdir"/usr/bin
+  ln -s /usr/share/whalebird/whalebird "$pkgdir"/usr/bin/whalebird
 }
