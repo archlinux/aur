@@ -11,14 +11,15 @@ pkgrel=3
 #_pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) is an office productivity suite"
 arch=('x86_64')
-license=("custom")
+license=('custom')
 url="http://wps-community.org/"
 depends=('fontconfig' 'xorg-mkfontdir' 'libxrender' 'gtk2' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' 'glu' 'openssl-1.0' 'sdl2' 'libpulse' 'hicolor-icon-theme' 'libxss')
 optdepends=('cups: for printing support'
             'libjpeg-turbo: JPEG image codec support'
             'pango: for complex (right-to-left) text support'
             'curl: An URL retrieval utility and library'
-            'ttf-wps-fonts: Symbol fonts required by wps-office')
+            'ttf-wps-fonts: Symbol fonts required by wps-office'
+            'wps-office-fonts: FZ TTF fonts provided by wps community')
 conflicts=('kingsoft-office')
 options=('!emptydirs')
 install=${pkgname}.install
@@ -40,7 +41,17 @@ prepare() {
 #   sed -i 's|/office6/${gApp}  ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wps
 #   sed -i 's|/office6/${gApp} ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wpp et
 
-    cd "${srcdir}"
+    cd "${srcdir}/usr/share/icons/hicolor"
+
+    for _file in ./*
+    do
+        if [ -e ${_file}/mimetypes/wps-office2019-etmain.png ]; then
+            mkdir -p ${_file}/apps
+            cp -p ${_file}/mimetypes/wps-office2019* ${_file}/apps
+        fi
+    done
+
+#   cd "${srcdir}"
 #   patch -Np1 -i "${srcdir}/add_no_kdialog_variable.patch"
 }
 
@@ -51,24 +62,13 @@ package() {
     install -d "${pkgdir}/usr/lib"
     cp -r office6 "${pkgdir}/usr/lib"
 #   chmod -x "${pkgdir}/usr/lib/office6/wpsoffice"
-    install -Dm644 office6/mui/default/EULA.txt "${pkgdir}/usr/share/licenses/$pkgname/EULA.txt"
+    install -Dm644 office6/mui/default/EULA.txt "${pkgdir}/usr/share/licenses/${pkgname}/EULA.txt"
 
     install -d "${pkgdir}/usr/bin"
     cd "${srcdir}/usr/bin"
     install -m755 * "${pkgdir}/usr/bin"
 
-    cd ${srcdir}/usr/share/icons/hicolor
-
-    for _file in ./*
-    do
-        if [ -e ${_file}/mimetypes/wps-office2019-etmain.png ]
-        then
-            mkdir -p ${_file}/apps
-            cp ${_file}/mimetypes/wps-office2019* ${_file}/apps
-        fi
-    done
-
-    cd "${srcdir}"/usr/share
+    cd "${srcdir}/usr/share"
 
     install -d "${pkgdir}/usr/share/applications"
     cp -r applications/* "${pkgdir}/usr/share/applications"

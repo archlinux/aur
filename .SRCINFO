@@ -24,6 +24,7 @@ pkgbase = wps-office
 	optdepends = pango: for complex (right-to-left) text support
 	optdepends = curl: An URL retrieval utility and library
 	optdepends = ttf-wps-fonts: Symbol fonts required by wps-office
+	optdepends = wps-office-fonts: FZ TTF fonts provided by wps community
 	conflicts = kingsoft-office
 	options = !emptydirs
 	source = http://kdl.cc.ksosoft.com/wps-community/download/8722/wps-office_11.1.0.8722_amd64.deb
