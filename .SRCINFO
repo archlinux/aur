@@ -12,7 +12,7 @@ pkgbase = python-pylzma
 	source = pylzma-0.5.0.tar.gz::https://github.com/fancycode/pylzma/archive/v0.5.0.tar.gz
 	source = https://archive.org/download/stackexchange/ux.stackexchange.com.7z
 	sha256sums = baefed4c84d147a507a606206478ff0894e04fa41aa3742381159cde44836fc3
-	sha256sums = ffa75f00eaf0d12fbe5c591d130136bb671e35b42d6738777718ecdbbf21637b
+	sha256sums = 4281ef7c7327c0b18e7f70dcc7eafb15cec674ca5579699964275f406d97520a
 
 pkgname = python-pylzma
 	depends = python

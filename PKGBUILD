@@ -15,7 +15,7 @@ source=($_pkgname-$pkgver.tar.gz::https://github.com/fancycode/pylzma/archive/v$
         # testing data
         https://archive.org/download/stackexchange/ux.stackexchange.com.7z)
 sha256sums=('baefed4c84d147a507a606206478ff0894e04fa41aa3742381159cde44836fc3'
-            'ffa75f00eaf0d12fbe5c591d130136bb671e35b42d6738777718ecdbbf21637b')
+            '4281ef7c7327c0b18e7f70dcc7eafb15cec674ca5579699964275f406d97520a')
 noextract=(ux.stackexchange.com.7z)
 
 prepare() {
