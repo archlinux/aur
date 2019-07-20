@@ -1,0 +1,18 @@
+pkgbase = waifu2x-ncnn-vulkan-git
+	pkgdesc = High-performance neural network inference framework optimized for the mobile platform
+	pkgver = 20190712.r0.g0995d88
+	pkgrel = 1
+	url = https://github.com/nihui/waifu2x-ncnn-vulkan
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = ncnn-git
+	provides = waifu2x-ncnn-vulkan
+	conflicts = waifu2x-ncnn-vulkan
+	source = git://github.com/nihui/waifu2x-ncnn-vulkan.git
+	sha256sums = SKIP
+
+pkgname = waifu2x-ncnn-vulkan-git
+
