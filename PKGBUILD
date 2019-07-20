@@ -19,7 +19,7 @@ pkgver() {
 build() {
   mkdir -p $_pkgname/build
   cd $_pkgname/build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
   make
 }
 
