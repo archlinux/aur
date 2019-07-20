@@ -1,12 +1,13 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=checkmake
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental linter/analyzer for makefiles"
 arch=('any')
 url="https://github.com/mrtazz/checkmake"
 license=('MIT')
 makedepends=('go-pie')
+conflicts=('checkmake-git')
 source=("https://github.com/mrtazz/checkmake/archive/${pkgver}.tar.gz")
 sha256sums=('e3a04e6bf4bbeb9730368c488db9c7f3cfec2d52d3f82bac5c8f9aa51b985f5e')
 
