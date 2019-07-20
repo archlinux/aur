@@ -13,9 +13,10 @@ sha512sums=(SKIP)
 
 package() {
     cd "$srcdir/$pkgname/src"
-    mkdir -p "${pkgdir}/usr/share"
-    cp -r cssbeautifier "${pkgdir}/usr/share"
-    install -Dm755 $pkgname "${pkgdir}/usr/share"
+    mkdir -p "${pkgdir}/usr/share/${pkgname}"
+    cp -r cssbeautifier "${pkgdir}/usr/share/${pkgname}"
+    install -Dm755 $pkgname "${pkgdir}/usr/share/${pkgname}"
     mkdir -p "${pkgdir}/usr/bin"
-    ln -sf "${pkgdir}/usr/share/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    cd "$srcdir/$pkgname"
+    install -Dm755 $pkgname "${pkgdir}/usr/bin"
 }
