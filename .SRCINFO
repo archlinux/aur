@@ -1,7 +1,7 @@
 pkgbase = xinput-gui
 	pkgdesc = A simple GUI for Xorg's Xinput tool.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IvanFon/xinput-gui
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = xinput-gui
 	depends = python-setuptools
 	depends = xorg-xinput
 	source = https://github.com/IvanFon/xinput-gui/releases/download/0.3.0/xinput-gui-0.3.0.tar.gz
-	sha256sums = d0008965d57a2a65541c27041c8094644133c0353d488180add94efcfbfedaee
+	sha256sums = f108454e91d27a058c74f86eaa87b2306b88e3b20ae8b771eaedd126894c691e
 
 pkgname = xinput-gui
 
