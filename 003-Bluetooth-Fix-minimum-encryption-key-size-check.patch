@@ -1,0 +1,38 @@
+From ca9d9c0f52938e5ee87c22805adcc805f3cd8279 Mon Sep 17 00:00:00 2001
+From: Matias Karhumaa <matias.karhumaa () gmail ! com>
+Date: Mon, 1 Jul 2019 11:13:24 +0000
+Subject: Bluetooth: Fix minimum encryption key size check
+
+Fixes minimum encryption key size check so that HCI_MIN_ENC_KEY_SIZE
+is also allowed as stated in comment.
+
+This bug caused connection problems with devices having min
+encryption key size of 7.
+
+This patch has been prepared against Linus' tree because previous
+regression fix that introduced this bug is not in Bluetooth tree yet.
+
+Fixes: 693cd8ce3f88 ("Bluetooth: Fix regression with minimum encryption key size alignment")
+Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=203997
+Signed-off-by: Matias Karhumaa <matias.karhumaa@gmail.com>
+Cc: stable@vger.kernel.org
+---
+ net/bluetooth/l2cap_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/net/bluetooth/l2cap_core.c b/net/bluetooth/l2cap_core.c
+index 9f77432dbe38..5406d7cd46ad 100644
+--- a/net/bluetooth/l2cap_core.c
++++ b/net/bluetooth/l2cap_core.c
+@@ -1353,7 +1353,7 @@ static bool l2cap_check_enc_key_size(struct hci_conn *hcon)
+ 	 * actually encrypted before enforcing a key size.
+ 	 */
+ 	return (!test_bit(HCI_CONN_ENCRYPT, &hcon->flags) ||
+-		hcon->enc_key_size > HCI_MIN_ENC_KEY_SIZE);
++		hcon->enc_key_size >= HCI_MIN_ENC_KEY_SIZE);
+ }
+ 
+ static void l2cap_do_start(struct l2cap_chan *chan)
+-- 
+cgit v1.2.1-1-g437b
+
