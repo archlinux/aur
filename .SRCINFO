@@ -1,0 +1,18 @@
+pkgbase = klibc-git
+	pkgdesc = A minimalistic libc subset for use with initramfs
+	pkgver = 2.0.6.r11.603f1bb0
+	pkgrel = 1
+	url = https://mirrors.kernel.org/pub/linux/libs/klibc/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = linux-api-headers
+	depends = perl
+	provides = klibc
+	conflicts = klibc
+	options = staticlibs
+	source = klibc::git+https://git.kernel.org/pub/scm/libs/klibc/klibc.git
+	md5sums = SKIP
+
+pkgname = klibc-git
+
