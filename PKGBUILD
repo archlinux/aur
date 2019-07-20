@@ -40,4 +40,10 @@ build() {
 package() {
 	cd "${srcdir}/waifu2x-ncnn-vulkan"
 	install -Dm755 "build/waifu2x-ncnn-vulkan" "${pkgdir}/usr/bin/waifu2x-ncnn-vulkan"
+        for f in models-cunet/*; do
+                install -Dm 644 "$f" ${pkgdir}/usr/share/waifu2x-ncnn-vulkan/models-cunet/"$f"
+        done
+	for f in models-upconv_7_anime_style_art_rgb/*; do
+		install -Dm 644 "$f" ${pkgdir}/usr/share/waifu2x-ncnn-vulkan/models-upconv_7_anime_style_art_rgb/"$f"
+	done
 }
