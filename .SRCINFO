@@ -1,0 +1,20 @@
+pkgbase = onionr
+	pkgdesc = anonymous P2P communication platform
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://onionr.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = git
+	depends = curl
+	depends = tor
+	conflicts = onionr2
+	source = onionr-0.1::git+https://gitlab.com/beardog/onionr.git#branch=master
+	md5sums = SKIP
+
+pkgname = onionr
+
