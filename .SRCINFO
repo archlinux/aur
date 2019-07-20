@@ -1,7 +1,7 @@
 pkgbase = steamos-compositor-plus
 	pkgdesc = Compositor used by SteamOS with some added tweaks and fixes
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gamer-os/steamos-compositor-plus
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = steamos-compositor-plus
 	depends = sdl_image
 	depends = libgl
 	depends = ttf-dejavu
+	depends = xorg-xrandr
 	depends = steam
 	conflicts = steamos-compositor
 	source = https://github.com/gamer-os/steamos-compositor-plus/archive/1.1.2.tar.gz
