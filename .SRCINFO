@@ -1,0 +1,20 @@
+pkgbase = android-aarch64-cppunit
+	pkgdesc = A C++ unit testing framework (Android, arm64-v8a)
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/cppunit
+	arch = any
+	license = LGPL
+	depends = android-ndk
+	conflicts = android-cppunit-arm64-v8a
+	replaces = android-cppunit-arm64-v8a
+	options = !strip
+	options = !buildflags
+	options = !libtool
+	options = staticlibs
+	options = !emptydirs
+	source = https://dev-www.libreoffice.org/src/cppunit-1.14.0.tar.gz
+	sha256sums = 3d569869d27b48860210c758c4f313082103a5e58219a7669b52bfd29d674780
+
+pkgname = android-aarch64-cppunit
+
