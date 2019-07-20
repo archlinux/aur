@@ -1,7 +1,7 @@
 # Maintainer: Ivan Fonseca <ivanfon@riseup.net>
 
 pkgname=xinput-gui
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A simple GUI for Xorg's Xinput tool."
 arch=(any)
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=('gtk3' 'python' 'python-gobject' 'python-setuptools' 'xorg-xinput')
 
 source=(https://github.com/IvanFon/xinput-gui/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('80abdd7afe66f7d7b0eb028776af3886e30c95f3ba4389a19242f31719382d01')
+sha256sums=('d0008965d57a2a65541c27041c8094644133c0353d488180add94efcfbfedaee')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
