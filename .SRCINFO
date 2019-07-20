@@ -1,11 +1,12 @@
 pkgbase = raspberrypi-io-access
 	pkgdesc = Raspberry Pi port access rules and groups
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	install = raspberrypi-io-access.install
 	arch = any
 	license = GPL
 	source = raspberrypi-io-access.install
+	source = sysusers.conf
 	source = udev.rules
 	md5sums = SKIP
 	md5sums = SKIP

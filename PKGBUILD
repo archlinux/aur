@@ -3,7 +3,7 @@
 
 
 pkgname=raspberrypi-io-access
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Raspberry Pi port access rules and groups"
 url=""
@@ -12,7 +12,7 @@ arch=(any)
 install=raspberrypi-io-access.install
 
 
-source=(raspberrypi-io-access.install udev.rules)
+source=(raspberrypi-io-access.install sysusers.conf udev.rules)
 md5sums=(SKIP SKIP SKIP)
 
 
