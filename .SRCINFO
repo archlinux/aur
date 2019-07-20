@@ -1,13 +1,13 @@
 pkgbase = tla-toolbox
 	pkgdesc = IDE for the TLA+ tools
-	pkgver = 1.5.7
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://research.microsoft.com/en-us/um/people/lamport/tla/toolbox.html
 	arch = x86_64
 	license = MIT
 	depends = java-runtime
-	source = https://tla.msr-inria.inria.fr/tlatoolbox/products/TLAToolbox-1.5.7-linux.gtk.x86_64.zip
-	sha256sums = 1b21a10041bafac78d43bf8c478e48c0156b6bd18b49782c502d9481fd827d25
+	source = https://tla.msr-inria.inria.fr/tlatoolbox/products/TLAToolbox-1.6.0-linux.gtk.x86_64.zip
+	sha256sums = c1622b4e21fc3985a276e8814478b702c23f20e4c114773f9a5ec9542b50199b
 
 pkgname = tla-toolbox
 
