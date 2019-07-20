@@ -1,0 +1,48 @@
+
+pre_install {
+    # pre_install
+
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    
+
+}
+
+post_install {
+    # post_install
+
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    
+
+}
+
+pre_upgrade {
+    # pre_upgrade
+
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    
+
+}
+
+post_upgrade {
+    # post_upgrade
+
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    
+
+}
+
+pre_remove {
+    # pre_remove
+
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    
+
+}
+
+post_remove {
+    # post_remove
+
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    
+
+}
