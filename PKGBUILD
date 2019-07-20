@@ -1,24 +1,25 @@
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=slashtime
 pkgver=0.5.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A small program which displays the time in various places"
 arch=('any')
-url="http://research.operationaldynamics.com/projects/slashtime/"
+url="https://github.com/afcowie/slashtime.git"
 license=('GPL')
-depends=('java-gnome')
-makedepends=('java-environment')
-source=(http://research.operationaldynamics.com/projects/$pkgname/dist/$pkgname-$pkgver.tar.bz2)
-md5sums=('abda2ed0f55095e5764655b394bcc7eb')
+depends=('java-gnome-bin' 'java-runtime' 'sh' 'hicolor-icon-theme')
+makedepends=('java-environment' 'git')
+source=("git+$url#commit=357e15714e9948dc3ae0aefb02325d83266c9740")
+md5sums=('SKIP')
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure prefix=/usr jdk=/usr java-gnome=/usr
+  cd $pkgname
+  ./configure prefix=/usr jdk=/usr java-gnome=/usr 
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 }
