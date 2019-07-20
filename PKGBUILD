@@ -1,6 +1,6 @@
 # Maintainer: Flat <flat@imo.uto.moe>
 pkgname=rsget-git
-pkgver=r120.5e92730
+pkgver=r149.bba5a15
 pkgrel=1
 pkgdesc="A download tool for streams on websites."
 arch=('x86_64')
