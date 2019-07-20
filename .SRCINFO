@@ -14,7 +14,7 @@ pkgbase = shshare
 	optdepends = ffmpeg: for screen recording
 	backup = etc/share.sh.d/upload.sh
 	source = shshare-0.1.1.tar.gz::https://github.com/MarkusGordathian/shshare/releases/download/0.1.1/shshare-0.1.1.tar.gz
-	sha512sums = 042c931cdf5062a51cae691f27eb1e90754b0f5af0aede93c49376f95e1f335e0bb7facfc4a6825e3441b2cb62f1feb05a2d25194303c413da438eb5e6a1c38d
+	sha512sums = ff34faa74a8388fcf556fc78a3fb1a8310768cb0f5d656f8d182fb76c48f7bbe04b642caaeb466a8ee316f16ae83e12e03408136601f0dbdd495d6712b35ec5b
 
 pkgname = shshare
 
