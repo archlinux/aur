@@ -22,5 +22,6 @@ pkgver() {
 
 package() {
   cd Qogir-icon-theme
-  ./install.sh
+  mkdir -p "${pkgdir}/usr/share/icons"
+  ./install.sh -d "${pkgdir}/usr/share/icons"
 }
