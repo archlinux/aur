@@ -7,7 +7,7 @@ pkgdesc="A cross-platform application built using the Qt framework which allows 
 arch=('i686' 'x86_64')
 url="https://github.com/hetelek/Velocity.git"
 license=('GPL3')
-depends=('qt4' 'botan>=1.10' 'botan<1.11')
+depends=('qt4' 'botan1.10')
 makedepends=('git')
 options=('!makeflags')
 source=("$pkgname"::'git://github.com/hetelek/Velocity.git'
