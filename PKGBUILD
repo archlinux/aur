@@ -1,7 +1,7 @@
 # Maintainer: Mark Gross <mark.gross2001@gmail.com>
 
 pkgname=shshare
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A screenshotter, recorder, and uploader"
 arch=('any')
