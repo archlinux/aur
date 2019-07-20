@@ -30,7 +30,7 @@ build() {
 	cd "${srcdir}/ncnn"
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/host.gcc.toolchain.cmake -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr ..
+	cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/host.gcc.toolchain.cmake -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr -DNCNN_VULKAN=ON ..
 	make
 }
 
