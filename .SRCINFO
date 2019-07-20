@@ -2,7 +2,6 @@ pkgbase = dgl
 	pkgdesc = Dmenu Game Launcher - use dmenu to launch your games
 	pkgver = 0.8.5
 	pkgrel = 1
-	epoch = 1
 	url = https://joren.ga
 	arch = any
 	license = MIT
