@@ -1,16 +1,14 @@
 pkgbase = yefm
 	pkgdesc = Simple 2 panes file manager
 	pkgver = 0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yede/yefm.git
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = qt5-base
-	source = yefm-0.2.zip::https://github.com/yede/yefm/archive/master.zip
-	source = make_it_build.patch
-	sha256sums = 2b83475c82932c94de2c6d47f111cd0642564d1f5e3a7d316ff96560329873ad
-	sha256sums = f6e71d701bb7732c2460a0c2db0e1afb54704fae3a8fdb3d9556e4f674513653
+	source = https://gitlab.com/stefanhusmann/yefm/-/archive/0.2/yefm-0.2.tar.bz2
+	sha256sums = 4b9313da92f009a70ffa2b05db578519f1066e13eb651bc33c92f7b62bf07835
 
 pkgname = yefm
 
