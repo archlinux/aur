@@ -7,13 +7,13 @@ pkgver=2.6.7.r51.b652b19
 pkgrel=1
 pkgdesc='A flat and light theme with a modern look (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
-url='http://numixproject.org/'
+url='https://github.com/numixproject/numix-gtk-theme'
 license=('GPL3')
 makedepends=('gdk-pixbuf2' 'git' 'glib2' 'libxml2' 'ruby-sass')
 optdepends=('gtk-engine-murrine: GTK2 theme engine')
-provides=('numix-gtk-theme')
+provides=('numix-gtk-theme-git')
 conflicts=('numix-gtk-theme')
-replaces=('numix-themes-git')
+replaces=('numix-gtk-theme')
 source=('git+https://github.com/numixproject/numix-gtk-theme.git')
 md5sums=('SKIP')
 
