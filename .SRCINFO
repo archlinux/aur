@@ -1,0 +1,16 @@
+pkgbase = nodejs-generator-jhipster-vuejs
+	pkgdesc = Vue.js blueprint for JHipster
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/jhipster/jhipster-vuejs
+	install = nodejs-generator-jhipster-vuejs.install
+	arch = any
+	license = Apache2
+	depends = npm
+	depends = nodejs-generator-jhipster
+	noextract = generator-jhipster-vuejs-1.1.0.tgz
+	source = https://registry.npmjs.org/generator-jhipster-vuejs/-/generator-jhipster-vuejs-1.1.0.tgz
+	sha256sums = e9dc177d8a22fa351e06e13b9f6650f0a13574a664b9e0650c54de84adcef237
+
+pkgname = nodejs-generator-jhipster-vuejs
+

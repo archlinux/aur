@@ -1,0 +1,4 @@
+post_install() {
+  echo "To use this blueprint, run:"
+  echo "jhipster --blueprint vuejs"
+}
