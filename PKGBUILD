@@ -46,6 +46,4 @@ package() {
 	ln -s "$pkgdir/usr/lib" "$pkgdir/lib"
 	make KLIBCKERNELSRC=uapi INSTALLROOT="$pkgdir" mandir=/usr/share/man install
 	rm -f "$pkgdir/lib"
-	#rm -rf "$pkgdir/usr/lib/klibc/include/"{asm,asm-generic,linux}
-	#ln -sf /usr/include/{asm,asm-generic,linux} "$pkgdir/usr/lib/klibc/include/"
 }
