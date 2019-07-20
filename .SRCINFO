@@ -1,0 +1,17 @@
+pkgbase = s3blkdev
+	pkgdesc = Exposes S3 storage buckets as NBD devices
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://ogris.de/s3blkdev/
+	arch = x86_64
+	license = custom:BSD
+	depends = gnutls
+	depends = snappy
+	depends = systemd
+	depends = nbd
+	optdepends = nodejs: for the s3blkdev.js Web interface
+	source = https://ogris.de/s3blkdev//s3blkdev-0.10.tar.bz2
+	sha512sums = 441d20e08ada38bc8d51b8373cc9c8145286d0e1950e53f073a1977520663027620244b9a7e86e7ccbae5752b6221304f2a86ab167071323d4bafc41372aacb4
+
+pkgname = s3blkdev
+
