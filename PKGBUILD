@@ -2,12 +2,13 @@
 _name=checkmake
 pkgname=${_name}-git
 pkgver=0.1.0.r14.gff21564
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental linter/analyzer for makefiles"
 arch=('any')
 url="https://github.com/mrtazz/checkmake"
 license=('MIT')
-makedepends=('go-pie')
+makedepends=('go-pie' 'git')
+conflicts=('checkmake')
 source=(git+https://github.com/mrtazz/checkmake.git)
 sha256sums=('SKIP')
 
