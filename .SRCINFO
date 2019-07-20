@@ -10,6 +10,7 @@ pkgbase = remarshal
 	depends = python-pytoml
 	depends = python-yaml
 	depends = python-u-msgpack
+	depends = python-setuptools
 	options = !emptydirs
 	source = remarshal-0.11.2.tar.gz::https://github.com/dbohdan/remarshal/archive/v0.11.2.tar.gz
 	sha256sums = 3f383e48f59722a4d93ef2b5e417b6a8c152f382a1faad416099ffcde5c87a66
