@@ -3,7 +3,7 @@
 # Contributor: Crotok <crotok [at] mailbox [dot] org>
 
 pkgname=monero-bin
-pkgver=0.14.1.0
+pkgver=0.14.1.2
 pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - CLI release version (includes daemon, wallet and miner)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -36,10 +36,10 @@ source=("monerod.conf"
 sha256sums=('829445fe9acc00681f94f7b9ca6ce39713e377970b0a3d6f88c37991e1aa61b2'
             '0b66160a5448dedd8e84c38ba2243187217b214b1552f504b05de120b671f121'
             '0e24d8f4b8758ff33612a17f3bb72a69497b74b32d12bbe5d647d954fcef59ad')
-sha256sums_x86_64=('2b95118f53d98d542a85f8732b84ba13b3cd20517ccb40332b0edd0ddf4f8c62')
-sha256sums_i686=('a31bca6e556064d56f7a37ddbea26408902e5f387e5b67fa5b0999ca299b8eef')
-sha256sums_armv7h=('b95903a0f1b0c15cefdf59814fe12e3597a3322ae6d0567c732f0ab79c877724')
-sha256sums_aarch64=('cf46a1cdea6f7983697df6dfbbb184b6dd23e816ed156899070885a78b310171')
+sha256sums_x86_64=('a4d1ddb9a6f36fcb985a3c07101756f544a5c9f797edd0885dab4a9de27a6228')
+sha256sums_i686=('ede3b29d085d25058268cea932190c77c276618d97fd2a859002dc01de0c54cb')
+sha256sums_armv7h=('7f040bf1d0fec4f76064f5c8af249f1df9d5a6decd6846c3080bd749b2516280')
+sha256sums_aarch64=('d462fd0f2e4010b6717de2cf6aa8d04a50e56a8fdfd3735230a2a36e63cdb9fb')
 
 
 package() {
