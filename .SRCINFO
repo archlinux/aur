@@ -1,7 +1,7 @@
 pkgbase = gnome-commander
 	pkgdesc = Graphical two-pane filemanager for Gnome
 	pkgver = 1.10.2
-	pkgrel = 1
+	pkgrel = 3
 	url = http://gcmd.github.io/
 	arch = i686
 	arch = x86_64

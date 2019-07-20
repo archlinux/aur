@@ -7,7 +7,7 @@
 
 pkgname=gnome-commander
 pkgver=1.10.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Graphical two-pane filemanager for Gnome'
 arch=('i686' 'x86_64')
 url='http://gcmd.github.io/'
@@ -28,10 +28,5 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="$pkgdir"  install
-  install -d "$pkgdir/usr/share/gconf/schemas"
-  gconf-merge-schema "$pkgdir/usr/share/gconf/schemas/$pkgname.schemas" \
-    --domain "$pkgname" "$pkgdir/etc/gconf/schemas/"*.schemas
-  rm -rf "$pkgdir/etc/gconf/schemas/"
-}
+ }
