@@ -14,5 +14,6 @@ sha512sums=(SKIP)
 
 package() {
     cd "$srcdir/$pkgname"
-    make install
+    mkdir -p "${pkgdir}/usr/bin"
+    install -Dm755 $pkgname "${pkgdir}/usr/bin"
 }
