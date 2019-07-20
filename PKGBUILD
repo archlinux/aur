@@ -2,10 +2,10 @@
 
 pkgname=i3-scrot
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="simple screenshot script using scrot"
 arch=('any')
-url="https://forum.manjaro.org/index.php?topic=31977.msg261964#msg261964"
+url="https://gitlab.manjaro.org/packages/community/i3/i3-scrot"
 license=('GPL')
 depends=('libnotify'
 	'scrot'
