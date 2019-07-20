@@ -1,0 +1,11 @@
+--- boostcpp.jam.old	2018-08-01 22:50:40.000000000 +0200
++++ boostcpp.jam	2018-10-07 01:48:30.175912524 +0200
+@@ -154,7 +154,7 @@
+         # libFoo.1.2.3.dylib format. AIX linkers do not accept version suffixes
+         # either. Pgi compilers can not accept a library with version suffix.
+         if $(type) = SHARED_LIB &&
+-          ! [ $(property-set).get <target-os> ] in windows cygwin darwin aix &&
++          ! [ $(property-set).get <target-os> ] in windows cygwin darwin aix android &&
+           ! [ $(property-set).get <toolset> ] in pgi
+         {
+             result = $(result).$(BOOST_VERSION)  ;
