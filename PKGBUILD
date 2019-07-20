@@ -2,7 +2,7 @@
 _basename=git-prompt
 _pkgname=${_basename}-rs
 pkgname=${_pkgname}-git
-pkgver=62
+pkgver=88
 pkgrel=1
 pkgdesc='Fast git prompt for various shells written in rust'
 arch=('i686' 'x86_64')
@@ -26,15 +26,13 @@ package() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    mkdir -p "$pkgdir/usr/bin"
     make \
         DESTDIR="$pkgdir" \
         PREFIX="/usr" \
+        DOCDIR="/usr/share/man/man1" \
         BASHDIR=/etc/bash_completion.d \
         ZSHDIR=/usr/share/zsh/site-functions \
         FISHDIR=/usr/share/fish/vendor_completions.d \
         install
-    install -Dm644 LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$srcdir/$_pkgname/doc/$_basename.man" "$pkgdir/usr/share/man/man1/$_basename.1"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
