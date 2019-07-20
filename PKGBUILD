@@ -1,7 +1,7 @@
 # Maintainer: Oirio Joshi <joshirio@protonmail.com>
 # Author: Vladimir Yakovlev <desktop-app@protonmail.ch>
 pkgname=electronmail-bin
-pkgver=3.6.2
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Unofficial desktop app for several E2E encrypted email providers"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('electronmail')
 provides=('electronmail')
 install="${pkgname}.install"
 source=("https://github.com/vladimiry/ElectronMail/releases/download/v${pkgver}/electron-mail-${pkgver}-linux-x64.pacman" 'LICENSE')
-md5sums=('5a6cfdc96f49f3b87064c62086759a99'
+md5sums=('095aa585c90aaa3a97dcd96b16048d07'
          'fc680045f40b19ce3c3e771aeb08bbd3')
 
 package() {
