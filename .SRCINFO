@@ -1,0 +1,14 @@
+pkgbase = game-git
+	pkgdesc = a game without a name
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Arinerron/Game
+	arch = i686
+	arch = x86_64
+	depends = jdk-openjdk
+	depends = jre-openjdk
+	source = game-git-1.0::git+https://github.com/Arinerron/Game.git#branch=master
+	md5sums = SKIP
+
+pkgname = game-git
+

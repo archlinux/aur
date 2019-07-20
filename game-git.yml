@@ -1,0 +1,26 @@
+name: game-git
+version: 1.0
+release: 1
+summary: a game without a name
+website: https://github.com/Arinerron/Game
+contact: game@aaronesau.com
+maintainer: Aaron Esau
+
+sources:
+- git: https://github.com/Arinerron/Game.git
+  branch: master
+
+dependencies:
+- pkgbuild: jdk-openjdk
+- pkgbuild: jre-openjdk
+
+movements:
+- '.': /usr/share/game
+  chown: root:root
+  chmod: 755
+- game: /usr/bin/
+  chown: root:root
+  chmod: 755
+
+scripts:
+- build: compile.sh
