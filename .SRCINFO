@@ -1,0 +1,27 @@
+pkgbase = anime-downloader-git
+	pkgdesc = cli anime streamer and downloader
+	pkgver = 0.r290.264b912
+	pkgrel = 1
+	url = https://github.com/vn-ki/anime-downloader.git
+	arch = any
+	license = unlicense
+	makedepends = git
+	makedepends = python-pip
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-click
+	depends = python-fuzzywuzzy
+	depends = python-coloredlogs
+	depends = python-cfscrape
+	depends = python-requests-cache
+	depends = python-tabulate
+	depends = python-pycryptodome
+	depends = python
+	provides = anime-downloader
+	source = git+https://github.com/vn-ki/anime-downloader.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = anime-downloader-git
+
