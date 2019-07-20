@@ -1,7 +1,7 @@
-# Maintainer: Mikkel Oscar Lyderik Larsen <m@moscar.net>
+# Maintainer: Lars Rustand
 
 pkgname=kubernetes-bin
-pkgver=1.14.0
+pkgver=1.15.0
 _contribver=0.7.0
 pkgrel=0
 pkgdesc="Production-Grade Container Scheduling and Management - binary version."
@@ -33,13 +33,13 @@ provides=('kubernetes'
 	  'kube-scheduler')
 conflicts=('kubernetes' 'kubeadm-git' 'kubectl' 'kubectl-bin' 'kubeadm-bin' 'kubelet-bin' )
 install=kubernetes.install
-sha512sums=('0ad264a46f185a9ff4db0393508a9598dab146f438b2cfdc7527592eb422870b8f26ade7ed089359c06741d998fcd730f897eae261f922c1a26d9fdc034d270d'
+sha512sums=('cb03adc8bee094b93652a19cb77ca4b7b0b2ec201cf9c09958128eb93b4c717514fb423ef60c8fdd2af98ea532ef8d9f3155a684a3a7dc2a20cba0f8d7821a79'
             '51ab778583bd3d33a89d6fdfd17231ec8e1fe5983c043c21c03421d71403b8e76b52d86b05b05651ab8da1bdb5b47b8aa85f275badefe82344bac15b9d86cde6'
             '19d70634252932e7835bb5db4af75c530fe843386ca688267caca0fb3b4fb1ad7019025ea9d59926ceac8817580e9dfad9396c327f2da955146a302f22b2d5ce')
-sha512sums_x86_64=('25739802a641517a8bbb933b69000a943e8dd38e616b8778149dd0138737abacf377683da2ff35fdd0bbb305b88bc8fc711df20a2585720a43bb674ef36b034f')
-sha512sums_armv7l=('c1dbba77a4ff5661eb36c55182a753b88ccc9b89ca31e162b06672126743cfea115b2f8ea8658b12344c36df17958e310c1b8efbdd7800f44f013e1e6f10477d')
+sha512sums_x86_64=('fee0200887c7616e3706394b0540b471ad24d57bb587a3a7154adfcd212c7a2521605839b0e95c23d61c86f6c21ef85c63f0d0a0504ba378b4c28cd110771c31')
+sha512sums_armv7l=('2d329ec0e231dbd4ec750317fc45fb8a966b9a81b45f1af0dde3ca0d1ae66a5ade39c6b64f6a1a492b55f6fca04057113ec05de61cb0f11caeee2fb7639e7775')
 sha512sums_armv7h=("${sha512sums_armv7l}")
-sha512sums_aarch64=('ad346bbe2a053c1106b51e5125698737dc7b76fa3bf439e14d4b4ba1c262678fede9c507c1098aac6e14d2c742c526c8d257fefa95dd3bbb1dff959e1dc7b9aa')
+sha512sums_aarch64=('0fb64d934d82c17eee15e1f97fc5eeeb4af6e042c30abe41a4d245cde1d9d81ee4dad7e0b0b3f707a509c84fce42289edd2b18c4e364e99a1c396f666f114dcf')
 
 package() {
     cd $srcdir/kubernetes
@@ -57,10 +57,6 @@ package() {
     for bin in "${binaries[@]}"; do
         install -Dm755 $srcdir/kubernetes/server/bin/$bin $pkgdir/usr/bin/$bin
     done
-
-    # install manpages
-    install -d $pkgdir/usr/share/man/man1/
-    install -pm 644 docs/man/man1/* $pkgdir/usr/share/man/man1
 
     # install the place the kubelet defaults to put volumes
     install -d $pkgdir/var/lib/kubelet
