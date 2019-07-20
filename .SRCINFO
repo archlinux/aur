@@ -1,0 +1,14 @@
+pkgbase = python-aadict
+	pkgdesc = An auto-attribute dict (and a couple of other useful dict functions), for Python
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://pypi.org/project/aadict/
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	source = aadict-0.2.3.tar.gz::https://files.pythonhosted.org/packages/50/30/2d6c516ff308e1a2e25b8cf4274bd0ed763861b3d2b5cd1fb54c6d59bfcb/aadict-0.2.3.tar.gz
+	sha256sums = a77328ac55dbb5735da99441870251befe135f687ab707a7a178561363b27704
+
+pkgname = python-aadict
+
