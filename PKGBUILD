@@ -3,7 +3,7 @@
 # Contributor: 2GMon <t_2gmon@yahoo.co.jp>
 
 pkgname=mikutter
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('alsa-utils: sound notification support'
             'libnotify: notify support')
 appimage=$pkgname-$pkgver-x86_64.AppImage
 source=(
-http://mikutter.hachune.net/bin/$appimage
+https://mikutter.hachune.net/bin/$appimage
 mikutter.desktop
 config.patch
 )
@@ -43,6 +43,6 @@ EOF
   chmod +x $pkgdir/usr/share/applications/mikutter.desktop
 }
 
-md5sums=('4aac43993433d7ef10823fb3a8b3d107'
+md5sums=('c649e6a6042b8757d289f853a78ce9ec'
          '82f7f4d37380871d3fde314fe51cf406'
          '54df9d2f1f19d3c27034cc1a97d1bc67')
