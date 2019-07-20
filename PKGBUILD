@@ -3,32 +3,29 @@
 # Contributor: Fabio Volpe <volpefabio@gmail.com>
 
 pkgname=chipmunk
-pkgver=7.0.2
+pkgver=7.0.3
 pkgrel=1
 pkgdesc="A high-performance 2D rigid body physics library"
 arch=('i686' 'x86_64')
-url="http://chipmunk-physics.net/"
+url="https://chipmunk-physics.net/"
 license=('MIT')
 depends=('glibc')
 makedepends=('cmake')
-source=(http://files.slembcke.net/chipmunk/release/Chipmunk-${pkgver%%.*}.x/Chipmunk-$pkgver.tgz)
-sha256sums=('288c8465fcaa671bab890c0b24627816efa10da2c5eabbeb36feb0d6deb1ca5a')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/slembcke/Chipmunk2D/archive/Chipmunk-${pkgver}.tar.gz")
+sha256sums=('1e6f093812d6130e45bdf4cb80280cb3c93d1e1833d8cf989d554d7963b7899a')
 
 build() {
-  cd "$srcdir/Chipmunk-$pkgver"
-  sed -i '/MAKE_PROPERTIES_REF(cpShape, IsSensor);/d' include/chipmunk/chipmunk_ffi.h
+  mkdir -p "${srcdir}/build" && cd "${srcdir}/build"
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_DEMOS=OFF \
         -DCMAKE_C_FLAGS="-DCHIPMUNK_FFI" \
-        -DNDEBUG=ON \
-        .
-  make clean
+        ../Chipmunk2D-Chipmunk-${pkgver}
   make
 }
 
 package() {
-  cd "$srcdir/Chipmunk-$pkgver"
-  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 "${srcdir}/Chipmunk2D-Chipmunk-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
