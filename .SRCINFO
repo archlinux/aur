@@ -1,8 +1,9 @@
 pkgbase = sftpgo-git
 	pkgdesc = Full featured and highly configurable SFTP server software
-	pkgver = r2.31cd4d7
+	pkgver = r3.6378b58
 	pkgrel = 1
 	url = https://github.com/giltene/sftpgo
+	install = sftpgo-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
