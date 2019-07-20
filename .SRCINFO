@@ -1,6 +1,6 @@
 pkgbase = tudu-git
 	pkgdesc = ncurses-based hierarchical todo list manager with vim-like keybindings
-	pkgver = r269.c51f4c2
+	pkgver = r273.700cd21
 	pkgrel = 1
 	url = https://gitlab.com/tudu/tudu.git
 	arch = i686
