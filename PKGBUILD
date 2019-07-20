@@ -2,7 +2,7 @@
 # Contributor: Robosky <fangyuhao0612 at gmail dot com>
 pkgname=anbox-image-gapps
 pkgver=2018.07.19
-pkgrel=9
+pkgrel=10
 pkgdesc="Android image for running in Anbox, with Opengapps and houdini"
 arch=('x86_64')
 url="https://anbox.io"
@@ -34,7 +34,7 @@ noextract=('android_amd64.img'
 	'houdini_z.sfs'
 	'libhoudini.so')
 sha256sums=('6b04cd33d157814deaf92dccf8a23da4dc00b05ca6ce982a03830381896a8cca'
-            'f94586ae1f99b74666817ed1ad98046a21a9a132ecb7de835258fb9899d3142f'
+            '552e78b197551e94ed78c405fc5d0660239791c99b81bbb2fd651c4e5c309593'
             '56fd08c448840578386a71819c07139122f0af39f011059ce728ea0f3c60b665'
             '7eedc42015e6fb84a11a406a099241efccc20d4e020d476335a5fdb6e69a33d2'
             '2d15d126e46ea933a92fcc6dd30ad2c93d063af322fc1ba84aaa4f3e75d84e68')
