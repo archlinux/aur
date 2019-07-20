@@ -1,8 +1,8 @@
 # Maintainer: nightuser <nightuser at ya dot ru>
 
 pkgname=plata-theme
-pkgver=0.8.7
-pkgrel=3
+pkgver=0.8.8
+pkgrel=1
 pkgdesc='A Gtk+ theme based on Material Design Refresh'
 arch=('any')
 url='https://gitlab.com/tista500/plata-theme'
