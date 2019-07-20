@@ -1,0 +1,14 @@
+_iconpath=usr/share/icons
+
+_gtk_icon_cache() {
+    gtk-update-icon-cache -f -t "/$_iconpath/korla/"
+    gtk-update-icon-cache -f -t "/$_iconpath/korla-light/"
+}
+
+post_install() {
+    _gtk_icon_cache
+}
+
+post_upgrade() {
+    _gtk_icon_cache
+} 
