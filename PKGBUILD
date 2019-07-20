@@ -7,7 +7,7 @@ pkgname=(
     'manjarowish-dark-kde-settings'
     )
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 arch=('any')
 _branch='master'
 url="https://github.com/librewish/manjarowish-dark"
@@ -46,6 +46,7 @@ package_manjarowish-dark-kde-settings() {
         'haveged'
         'irqbalance'
         'systemd-swap'
+        'nohang-git'
         'plasma5-applets-active-window-control'
         'plasma5-applets-eventcalendar'
         'plasma5-applets-netspeed'

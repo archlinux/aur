@@ -1,6 +1,6 @@
 pkgbase = manjarowish-dark-kde-settings
 	pkgver = 0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/librewish/manjarowish-dark
 	arch = any
 	license = GPL
@@ -20,6 +20,7 @@ pkgname = manjarowish-dark-kde-settings
 	depends = haveged
 	depends = irqbalance
 	depends = systemd-swap
+	depends = nohang-git
 	depends = plasma5-applets-active-window-control
 	depends = plasma5-applets-eventcalendar
 	depends = plasma5-applets-netspeed
