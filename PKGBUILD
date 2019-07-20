@@ -4,8 +4,8 @@ _android_arch=x86-64
 source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-bzip2
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.8
+pkgrel=1
 pkgdesc="A high-quality data compression program (android)"
 arch=('any')
 url="http://sources.redhat.com/bzip2"
@@ -14,7 +14,7 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-environment' 'android-pkg-config')
 source=("https://fossies.org/linux/misc/bzip2-${pkgver}.tar.gz")
-sha1sums=('3f89f861209ce81a6bab1fd1998c0ef311712002')
+sha1sums=('bf7badf7e248e0ecf465d33c2f5aeec774209227')
 
 prepare() {
     cd "$srcdir/bzip2-$pkgver"
