@@ -1,0 +1,14 @@
+pkgbase = python-globre
+	pkgdesc = A glob matching library, providing an interface similar to the re module.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://pypi.org/project/globre/
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	source = globre-0.1.5.tar.gz::https://files.pythonhosted.org/packages/5a/ce/a9e2f3317a458f8c591a1f95d4061d4e241f529ba678292acdcf2d804783/globre-0.1.5.tar.gz
+	sha256sums = ee214204f237e9114b8f61eeb61c2abd1e665ca3b59e5a6a0b070971c0bb12e2
+
+pkgname = python-globre
+
