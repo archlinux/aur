@@ -1,6 +1,6 @@
 # Maintainer: Damien GASPARINA <dgasparina at gmail dot com>
 pkgname=confluent-platform
-pkgver=5.2.1
+pkgver=5.3.0
 pkgrel=1
 pkgdesc='Confluent, founded by the creators of Apache Kafka, delivers a complete execution of Kafka for the Enterprise, to help you run your business in real time.'
 arch=('any')
@@ -24,7 +24,6 @@ backup=(etc/confluent-control-center/log4j.properties
         etc/kafka-connect-s3/quickstart-schema-source-for-s3.properties
         etc/kafka-connect-s3/quickstart-s3.properties
         etc/kafka/log4j.properties
-        etc/kafka/connect-standalone.properties.orig
         etc/kafka/connect-log4j.properties
         etc/kafka/connect-distributed.properties
         etc/kafka/connect-console-source.properties
@@ -33,7 +32,6 @@ backup=(etc/confluent-control-center/log4j.properties
         etc/kafka/connect-file-source.properties
         etc/kafka/tools-log4j.properties
         etc/kafka/consumer.properties
-        etc/kafka/connect-distributed.properties.orig
         etc/kafka/connect-file-sink.properties
         etc/kafka/server.properties
         etc/kafka/connect-console-sink.properties
@@ -52,7 +50,6 @@ backup=(etc/confluent-control-center/log4j.properties
         etc/ksql/datagen.properties
         etc/ksql/ksql-server.properties
         etc/ksql/log4j-silent.properties
-        etc/kafka-connect-hdfs/quickstart-hdfs.properties
         etc/kafka-connect-jms/ActiveMQSourceConnector.properties
         etc/kafka-connect-jms/JMSSourceConnector.properties
         etc/kafka-connect-jms/connect-avro-localhost.properties
@@ -60,17 +57,15 @@ backup=(etc/confluent-control-center/log4j.properties
         etc/kafka-connect-jdbc/sink-quickstart-sqlite.properties
         etc/kafka-connect-jdbc/source-quickstart-sqlite.properties
         etc/confluent-rebalancer/log4j.properties
-        etc/camus/camus.properties
-        etc/camus/log4j.xml
         etc/kafka-connect-activemq/ActiveMQSourceConnector.properties
         etc/kafka-connect-activemq/connect-avro-localhost.properties
         )
 install=install_confluent.sh
 
-source=(https://packages.confluent.io/archive/5.2/confluent-5.2.1-2.11.tar.gz
+source=(https://packages.confluent.io/archive/5.3/confluent-5.3.0-2.11.tar.gz
         systemd_sysusers.d_confluent.conf)
 
-sha256sums=('b77f1779f19b8a57a2d2ee45a92db20a1ea17a7b7f1f8ee3f980e8fa34b6fcbc'
+sha256sums=('807392e39b8523e2d209995b1a41c4b40673a94e8d29792032772dc41f5d787a'
             '6f5dfdbaf6ef405117482413b376e55148f75423bc6b8681cd8f91cdb7d96a99')
 
 
