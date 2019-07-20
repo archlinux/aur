@@ -7,6 +7,8 @@ pkgbase = dgl
 	arch = any
 	license = MIT
 	provides = dgl
+    depends = python3
+    depends = dmenu
 	source = dgl::git+https://github.com/Jorengarenar/dgl.git
 	sha512sums = SKIP
 
