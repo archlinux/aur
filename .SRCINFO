@@ -1,0 +1,25 @@
+pkgbase = android-aarch64-boost
+	pkgdesc = Free peer-reviewed portable C++ source libraries (Android, aarch64)
+	pkgver = 1.69.0
+	pkgrel = 1
+	url = http://www.boost.org/
+	arch = any
+	license = custom
+	makedepends = bzip2
+	makedepends = zlib
+	makedepends = android-ndk
+	makedepends = android-sdk
+	depends = android-aarch64-libiconv
+	conflicts = android-boost-arm64-v8a
+	replaces = android-boost-arm64-v8a
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/project/boost/boost/1.69.0/boost_1_69_0.tar.bz2
+	source = no-versioned-shlibs.patch
+	sha256sums = 8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406
+	sha256sums = d82d0f15064812dcabb3456a7bcb1db0e0f6145980e4728e638372e0fd35af23
+
+pkgname = android-aarch64-boost
+
