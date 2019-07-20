@@ -1,7 +1,7 @@
 # Maintainer: Franklyn Tackitt
 pkgname=dmenu-xft-mouse-height-fuzzy-history
-pkgver=4.5
-pkgrel=5
+pkgver=4.9
+pkgrel=1
 pkgdesc="Dynamic X menu - with xft, mouse, height, history, and fuzzy search support"
 url="http://tools.suckless.org/dmenu/"
 arch=('i686' 'x86_64')
@@ -9,20 +9,14 @@ license=('MIT')
 depends=('sh' 'libxinerama' 'libxft')
 conflicts=('dmenu' 'dmenu2')
 provides=('dmenu')
-patches=(dmenu-4.5-xft.diff
-         break-fix.diff
-         dmenu-4.5-history-fixed.diff
-         dmenu-4.5-fuzzy-fixed.diff
-         dmenu-4.5-mouse-support.diff
-         dmenu-4.5-height-fixed.diff)
+patches=(dmenu-fuzzymatch-4.9.diff
+         dmenu-mousesupport-4.7.diff
+		 dmenu-lineheight-4.9.diff)
 source=(http://dl.suckless.org/tools/dmenu-$pkgver.tar.gz "${patches[@]}")
-md5sums=('9c46169ed703732ec52ed946c27d84b4'
-         '0c73d595eb78f159bea83f33bba15e80'
-         '6921f9d8aabb53f22adcbf5630dff6b8'
-         '8541735789d9810d7020fdba62b72296'
-         '71fc82b76c45499fcd46b3754407f59d'
-         'eeec3e11ff68f27ebbc3133ad6549f56'
-         '53b286e8bd76d9225f365673fafd6083')
+md5sums=('9a537ec9a3a2ce9f08963d66b56cc030'
+         '10f1d55f242fd34aae6b72b51fd50915'
+         '274972c3f6de489dd00543a6d653b960'
+         '0832170eeeec1a70febf641828ddcd17')
 prepare() {
 	cd $srcdir/dmenu-$pkgver
   for patch in "${patches[@]}"; do
