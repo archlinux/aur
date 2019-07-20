@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8a12492..044989a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,6 +46,7 @@ include(CheckIncludeFile)
+ include(CheckFunctionExists)
+ include(GNUInstallDirs)
+ include(CheckCSourceCompiles)
++include(CheckSymbolExists)
+ 
+ if(NOT CMAKE_INSTALL_RPATH AND CMAKE_INSTALL_PREFIX)
+ 	set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR})

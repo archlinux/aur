@@ -1,0 +1,32 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1a77461..fad0227 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,7 +37,7 @@ set(VERSION "${PACKAGE_VERSION}")
+ option(ENABLE_SHARED "Build shared library." YES)
+ option(ENABLE_STATIC "Build static library." YES)
+ option(ENABLE_RTP_MAP_ALWAYS_IN_SDP "Always include rtpmap in SDP." OFF)
+-option(ENABLE_STRICT "Build with strict compile options." YES)
++option(ENABLE_STRICT "Build with strict compile options." NO)
+ option(ENABLE_TUNNEL "Enable tunnel support" OFF)
+ option(ENABLE_TESTS "Enable compilation of tests" ON)
+ option(ENABLE_MDNS "Enable multicast DNS" OFF)
+diff --git a/src/dns.h b/src/dns.h
+index ac390ae..33d99de 100644
+--- a/src/dns.h
++++ b/src/dns.h
+@@ -158,14 +158,6 @@ DNS_PUBLIC int *dns_debug_p(void);
+ 
+ #define dns_quietinit(...) \
+ 	DNS_PRAGMA_PUSH DNS_PRAGMA_QUIET __VA_ARGS__ DNS_PRAGMA_POP
+-#elif (__GNUC__ == 4 && __GNUC_MINOR__ >= 6) || __GNUC__ > 4
+-#define DNS_PRAGMA_PUSH _Pragma("GCC diagnostic push")
+-#define DNS_PRAGMA_QUIET _Pragma("GCC diagnostic ignored \"-Woverride-init\"")
+-#define DNS_PRAGMA_POP _Pragma("GCC diagnostic pop")
+-
+-/* GCC parses the _Pragma operator less elegantly than clang. */
+-#define dns_quietinit(...) \
+-	__extension__ ({ DNS_PRAGMA_PUSH DNS_PRAGMA_QUIET __VA_ARGS__; DNS_PRAGMA_POP })
+ #else
+ #define DNS_PRAGMA_PUSH
+ #define DNS_PRAGMA_QUIET

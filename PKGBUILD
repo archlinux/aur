@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=linphone-desktop-all-git
-pkgver=4.1.1.r655.95245907
+pkgver=4.1.1.r663.4a43f00e
 pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
@@ -59,6 +59,8 @@ source=(
   "${pkgname%-desktop-all-git}.desktop"
   "${pkgname%-all-git}.patch"
   "${pkgname%-desktop-all-git}.patch"
+  "belle-sip.patch"
+  "ortp.patch"
   "soci.patch"
 )
 sha256sums=(
@@ -69,6 +71,8 @@ sha256sums=(
   "346d983f503873811b3a4f72772e5afe4990275526c9e15c1b5cde2ad69a0544"
   "e7574cdb0a5f8d334b1ed1d938fd6c7639e5785b80f01d39e81a682595af4171"
   "c1f54c0634c2d42d091890ed5a73bcecf8c7c2d0c7f052a0014840ab36c64a01"
+  "093fa135a00916f171e96f53695de5fb03b2306e2f54b17dc693cb1527591e15"
+  "502564a8be79920604abf41b5d5bd2dde12c8c42adb3d92bcd23dcbab8eaf5fb"
   "61a9a107267658971348343433a0709af7e1160d4227867faa8decd255f0289c"
 )
 
@@ -133,6 +137,14 @@ prepare() {
   cd "${srcdir}/${pkgname%-all-git}/${pkgname%-desktop-all-git}-sdk/${pkgname%-desktop-all-git}"
 
   patch -Np1 -i "${srcdir}/${pkgname%-desktop-all-git}.patch"
+
+  cd "${srcdir}/${pkgname%-all-git}/${pkgname%-desktop-all-git}-sdk/belle-sip"
+
+  patch -Np1 -i "${srcdir}/belle-sip.patch"
+
+  cd "${srcdir}/${pkgname%-all-git}/${pkgname%-desktop-all-git}-sdk/ortp"
+
+  patch -Np1 -i "${srcdir}/ortp.patch"
 
   cd "${srcdir}/${pkgname%-all-git}/${pkgname%-desktop-all-git}-sdk/external/soci"
 
