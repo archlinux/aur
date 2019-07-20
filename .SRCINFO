@@ -1,6 +1,6 @@
 pkgbase = syslog-ng-git
 	pkgdesc = Enhanced system logging daemon
-	pkgver = 3.21.1.r139.g442a3e22a
+	pkgver = 3.22.1.r50.g7ccb0ab31
 	pkgrel = 1
 	url = https://www.syslog-ng.com/products/open-source-log-management/
 	arch = x86_64
@@ -8,9 +8,7 @@ pkgbase = syslog-ng-git
 	license = LGPL2.1
 	checkdepends = criterion
 	checkdepends = python-nose
-	checkdepends = python-pylint
 	checkdepends = python-ply
-	checkdepends = python-pep8
 	makedepends = git
 	makedepends = autoconf-archive
 	makedepends = libxslt
