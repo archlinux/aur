@@ -41,7 +41,6 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-python3-notebook.patch
         test-optional.patch
         fes02.patch
-        sagemath-threejs.patch
         sagemath-cremona.patch
         sagemath-singular-4.1.2.patch
         sagemath-ecl-sigfpe.patch
@@ -49,11 +48,10 @@ source=(git://git.sagemath.org/sage.git#branch=develop
 sha256sums=('SKIP'
             '7177ff3e3f27939d45210e7e69da110441830a6e2279ee7d7e4fca26db99c3f4'
             '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
-            '596d03daf53a76b04029b120619253250b0e58d530d69f14afa169e27e06f446'
+            '1a82372a96ffd5e6d475b0e620935967ce5eb9b4484607d39da90824a77b07c4'
             'e554cdf689100c787a5fbcb7fe281cd68bef081e08bd58df8be1d113a4665d7e'
             '1f2a34e15bf732ec8687c467a52e897615505dc3ddd792d811e8b6a7e19f1517'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
-            'a8c1409f4b4f1553b4f7602d4a6f0f3c6297ed258feed079f6560b0ec2dc62c6'
             '4c6df9e4e5a7b29ecf6189eda3e5a79f69b6e1b4d29c1b9559663149b8c0af96'
             '961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9'
             'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938'
@@ -78,8 +76,6 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # make 'sage -notebook=jupyter' work with our python3 jupyter-notebook package
   patch -p1 -i ../sagemath-python3-notebook.patch
-# use correct online three.js version
-  patch -p1 -i ../sagemath-threejs.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
