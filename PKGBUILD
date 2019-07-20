@@ -4,8 +4,8 @@ _android_arch=armv7a-eabi
 source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-libvpx
-pkgver=1.8.0
-pkgrel=3
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="VP8 and VP9 codec (android)"
 arch=('any')
 url="http://www.webmproject.org/"
@@ -14,7 +14,7 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-environment' 'android-pkg-config' 'yasm')
 source=(https://github.com/webmproject/libvpx/archive/v${pkgver}.tar.gz)
-sha256sums=('86df18c694e1c06cc8f83d2d816e9270747a0ce6abe316e93a4f4095689373f6')
+sha256sums=('df19b8f24758e90640e1ab228ab4a4676ec3df19d23e4593375e6f3847dee03e')
 
 prepare() {
     check_ndk_version_ge_than 18.0
