@@ -15,8 +15,8 @@ optdepends=('neovim: neovim support' 'vim: vim support')
 source=("https://github.com/suan/$_npmname/archive/$_npmver.tar.gz"
         "https://raw.githubusercontent.com/suan/vim-instant-markdown/master/after/ftplugin/markdown/instant-markdown.vim")
 noextract=($_npmver.tar.gz)
-sha256sums=('899ab558512f7dee7accdccbecf7893a7cacb4950c90241730af5fcf94ffbefd'
-            '317faf4a9d43504540b99e319c2ba5f0218458936109574d231b894ed772df6f')
+sha256sums=('806281d2499e1fe01d3827d75cc196c269fd65c6fe7313e99e0d0c3e70657c22'
+            '477f7d8ba4c547fccac6d3d12de548ffa4ff32bd0afce08d86e591fd1f6b20cf')
 install=install.sh
 
 package() {
