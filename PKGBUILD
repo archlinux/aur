@@ -5,7 +5,7 @@
 _pkgbase='engauge-digitizer'
 pkgname=('engauge-git' 'engauge-samples-git')
 pkgbase=engauge-git
-pkgver=11.2.r15.g6b86ea56
+pkgver=11.3.r1.gbed09aa6
 pkgrel=1
 url="http://markummitchell.github.io/engauge-digitizer/"
 arch=('i686' 'x86_64')
@@ -20,12 +20,12 @@ sha256sums=('SKIP'
 install=engauge.install
 
 pkgver() {
-  cd "$_pkgbase"
+  cd $_pkgbase
   git describe --tags --long | sed 's+-+.r+'|tr - .|cut -c2-
 }
 
 build() {
-  cd ${_pkgbase}
+  cd $_pkgbase
   export OPENJPEG_INCLUDE=/usr/include/openjpeg-2.3 OPENJPEG_LIB=/usr/lib 
   export POPPLER_INCLUDE=/usr/include/poppler/qt5 POPPLER_LIB=/usr/lib
   qmake-qt5 engauge.pro "CONFIG+=pdf"
@@ -38,7 +38,7 @@ package_engauge-git() {
   depends=('qt5-tools' 'fftw' 'log4cpp' 'libpng' 'libjpeg-turbo' 'openjpeg2' 'poppler-qt5')
   conflicts=('engauge')
   provides=('engauge')
-  cd ${_pkgbase}
+  cd $_pkgbase
   install -Dm755 ../${pkgbase%-git}.sh "$pkgdir"/usr/bin/${pkgbase%-git}
   install -Dm755 bin/${pkgbase%-git} "$pkgdir"/usr/lib/$_pkgbase/${pkgbase%-git}
   # translations
@@ -58,7 +58,7 @@ package_engauge-samples-git() {
   conflicts=('engauge-samples')
   provides=('engauge-samples')
 
-  cd ${_pkgbase}
+  cd $_pkgbase
   install -d "$pkgdir"/usr/share/doc/$_pkgbase
   cp -r samples "$pkgdir"/usr/share/doc/$_pkgbase
 }

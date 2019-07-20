@@ -1,5 +1,5 @@
 pkgbase = engauge-git
-	pkgver = 11.2.r15.g6b86ea56
+	pkgver = 11.3.r1.gbed09aa6
 	pkgrel = 1
 	url = http://markummitchell.github.io/engauge-digitizer/
 	install = engauge.install
