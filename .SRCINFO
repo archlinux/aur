@@ -1,0 +1,16 @@
+pkgbase = cmake-lint-git
+	pkgdesc = Check for coding style issues in CMake files
+	pkgver = 1.4.r3.g058c6c0
+	pkgrel = 1
+	url = http://github.com/richq/cmake-lint/
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python
+	provides = cmake-lint
+	conflicts = cmake-lint
+	source = git+https://github.com/richq/cmake-lint.git
+	sha512sums = SKIP
+
+pkgname = cmake-lint-git
+
