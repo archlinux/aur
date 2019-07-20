@@ -6,7 +6,7 @@ _pkgbase='engauge-digitizer'
 
 pkgname=('engauge' 'engauge-samples')
 pkgbase='engauge'
-pkgver=11.2
+pkgver=11.3
 pkgrel=1
 url="http://markummitchell.github.io/engauge-digitizer/"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('qt5-tools' 'fftw' 'log4cpp' 'libjpeg-turbo' 'libpng' 'openjpeg2' '
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/markummitchell/$_pkgbase/archive/v$pkgver.tar.gz"
         "$pkgbase.sh"
         "$pkgbase.desktop")
-sha256sums=('53e629dd534334229ac14ff00886a5dbd5aeefaabac38337c2c62a99b414602a'
+sha256sums=('255415e741156874e16ff81c94d93f111029c71676db18328f7b7d262085202b'
             '4b36a8aa23c5a95a552d33ce1bd75aa1a0be5fdf9ef06f321a060c753298dd18'
             '1b3f2675058693d5653b5aee50fbec1530791de5fcdfbb2f86056a5d748695a4')
 install=engauge.install
