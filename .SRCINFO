@@ -7,7 +7,7 @@ pkgbase = quiterss-backup
 	arch = any
 	license = MIT
 	provides = quiterss-backup
-	source = dgl::git+https://github.com/Jorengarenar/quiterss-backup.git
+	source = quiterss-backup::git+https://github.com/Jorengarenar/quiterss-backup.git
 	sha512sums = SKIP
 
 pkgname = quiterss-backup
