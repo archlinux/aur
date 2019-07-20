@@ -9,6 +9,7 @@ pkgbase = dumpsterdiver-git
 	depends = python
 	depends = python-termcolor
 	depends = python-pyaml
+	depends = python-passwordmeter
 	provides = dumpsterdiver
 	conflicts = dumpsterdiver
 	source = dumpsterdiver::git+https://github.com/securing/DumpsterDiver.git
