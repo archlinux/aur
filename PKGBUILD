@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-vtk-git
-pkgver=r71351.152728eb5d
+pkgver=r71470.8f036bd473
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -25,6 +25,8 @@ prepare() {
   sed -i "s|find_package(netCDF|#find_package(netCDF|g" CMake/FindNetCDF.cmake
   # https://gitlab.kitware.com/vtk/vtk/issues/17630
   sed -i "s|VTK::netcdf|VTK::netcdf VTK::hdf5|g" ThirdParty/exodusII/vtk.module
+  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5734.patch|patch -p1
+  cd ThirdParty/loguru/vtkloguru && curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5739.patch|patch -p1
 }
 
 build() {
