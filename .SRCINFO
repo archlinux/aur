@@ -2,7 +2,6 @@ pkgbase = quiterss-backup
 	pkgdesc = Simple script, which provides better backup options for QuiteRSS, than the build-in one
 	pkgver = 0.6.1
 	pkgrel = 1
-	epoch = 1
 	url = https://joren.ga
 	arch = any
 	license = MIT
