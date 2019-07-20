@@ -1,0 +1,21 @@
+pkgbase = c++utilities-git
+	pkgdesc = Common C++ classes and routines such as argument parser, IO and conversion utilities
+	pkgver = 259.663b31c
+	pkgrel = 1
+	url = https://github.com/Martchus/cpp-utilities
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	checkdepends = cppunit
+	makedepends = cmake
+	makedepends = git
+	optdepends = c++utilities-doc: API documentation
+	conflicts = c++utilities
+	source = cpp-utilities::git://github.com/Martchus/cpp-utilities.git
+	sha256sums = SKIP
+
+pkgname = c++utilities-git
+
