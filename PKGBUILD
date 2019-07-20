@@ -1,7 +1,7 @@
 pkgname=python-pylgbst
 _module=pylgbst
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LEGO Boost python module"
 url="https://github.com/undera/pylgbst"
 depends=('python' 'python-pygatt' 'bluez-utils-compat')
@@ -28,4 +28,7 @@ build() {
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    install -dm0755 "$pkgdir"/usr/share/doc
+    cp -a docs "$pkgdir"/usr/share/doc/${_module}
+    cp -a examples "$pkgdir"/usr/share/doc/${_module}/examples
 }
