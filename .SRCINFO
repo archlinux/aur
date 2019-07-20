@@ -1,7 +1,7 @@
 pkgbase = code-nautilus-git
 	pkgdesc = VSCode extension for Nautilus
 	pkgver = r9.ddff975
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cra0zy/code-nautilus
 	install = code-nautilus-git.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = code-nautilus-git
 	license = custom
 	makedepends = git
 	depends = python-nautilus
+	optdepends = code: The Visual Studio Code (vscode) editor
 	source = code-nautilus-git::git+https://github.com/cra0zy/code-nautilus.git
 	md5sums = SKIP
 
