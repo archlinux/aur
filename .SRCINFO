@@ -7,6 +7,7 @@ pkgbase = anime-downloader-git
 	license = unlicense
 	makedepends = git
 	makedepends = python-pip
+	depends = aria2
 	depends = python-beautifulsoup4
 	depends = python-requests
 	depends = python-click
