@@ -1,6 +1,6 @@
 pkgbase = btrfs-progs-git
 	pkgdesc = Btrfs filesystem utilities
-	pkgver = 4420_4.19.1_r0_g167651ca
+	pkgver = 4704_5.2_r0_g608fd900
 	pkgrel = 1
 	url = https://btrfs.wiki.kernel.org/index.php/Main_Page
 	install = btrfs-progs-git.install
@@ -28,7 +28,12 @@ pkgbase = btrfs-progs-git
 	md5sums = b09688a915a0ec8f40e2f5aacbabc9ad
 	md5sums = 7241ba3a4286d08da0d50b7176941112
 	md5sums = 917b31f4eb90448d6791e17ea0f386c7
-	md5sums = 502221c1b47a3bb2c06703d4fb90a0c2
+	md5sums = 42475169de355a33d551b2f368eb0a50
+	sha1sums = SKIP
+	sha1sums = bf017ec8fd82c5be282b50fc49b63fa3dc2c44a8
+	sha1sums = 5e32dc3a7c704c0114efcb01e48c6f4c673ea9be
+	sha1sums = 59f32f9abbe4831c3d342d9c208c8c4dea0629bc
+	sha1sums = c1b4efdd9a001f5d75bcb68d6c90a4fe32b7b601
 
 pkgname = btrfs-progs-git
 
