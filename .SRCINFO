@@ -1,0 +1,18 @@
+pkgbase = qt5-pim-git
+	pkgdesc = Qt Personal Information Management
+	pkgver = r1020.8fec622c
+	pkgrel = 1
+	url = http://code.qt.io/cgit/qt/qtpim.git
+	arch = x86_64
+	license = GPL3
+	license = FDL
+	license = custom
+	makedepends = git
+	depends = qt5-declarative
+	provides = qt5-pim
+	conflicts = qt5-pim
+	source = git+https://code.qt.io/qt/qtpim.git
+	sha512sums = SKIP
+
+pkgname = qt5-pim-git
+
