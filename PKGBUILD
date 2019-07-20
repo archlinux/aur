@@ -2,7 +2,7 @@
 
 pkgname=linphone-desktop-all
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /opt with all deps included)."
 arch=("x86_64")
 url="https://www.${pkgname%-desktop-all}.org/"
@@ -98,7 +98,7 @@ sha256sums=(
   "22093c10c6d2e2d646f25dc11b0b7d59e62f2a32e4bfe3b44bd75980c22fc104"
   "377d23a761c72085ff4efc13ec8dd59a6f6d6f7455c0b4eaebf1843198c1e146"
   "bbb6395bed0d59da821e1e2fa8747de46e686167054d8dd264f0e13135643b84"
-  "448f12cb03841dd40156bdf1d0ba7fcf42d9250bb84f54fe33cbf3bab70856ad"
+  "26be7e17133b3298e6ebb653810cdf143ec37199adf80ebf54bcfac81816ccf2"
   "3f4f65e73d7247f8c5888e44a7abb236b1388153b5169975cb6164651bdad03e"
   "407eb61fa5a2c3b57c524e8b842a82e16c87269172e681227e3313c5728cf8e9"
   "a6ab60f1b34c74eb11e986dd62aa817d56d1a094b88e2569bd2e5f100a90a5d1"
