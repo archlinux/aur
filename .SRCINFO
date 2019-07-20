@@ -1,0 +1,16 @@
+pkgbase = lazypkg-git
+	pkgdesc = a cross-distro package generator
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Arinerron/lazypkg
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python
+	depends = python-pip
+	depends = rsync
+	source = lazypkg-git-1.0::git+https://github.com/Arinerron/lazypkg.git#branch=master
+	md5sums = SKIP
+
+pkgname = lazypkg-git
+
