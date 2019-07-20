@@ -1,0 +1,6 @@
+#!/bin/sh
+
+post_install() {
+  echo ":: You need to initialize a data provider prior to startingi the service"
+  echo "   This can be done using the scripts in /usr/share/doc/sftpgo/sql"
+}
