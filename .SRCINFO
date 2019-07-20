@@ -2,7 +2,6 @@ pkgbase = vintage-basic
 	pkgdesc = Vintage BASIC Interpreter
 	pkgver = 1.0.3
 	pkgrel = 1
-	epoch = 1
 	url = http://vintage-basic.net
 	arch = x86_64
 	license = BSD

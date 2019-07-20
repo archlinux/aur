@@ -1,7 +1,6 @@
 # Maintainer: Jorengarenar
 
 pkgname=vintage-basic
-epoch=1
 pkgver=1.0.3
 pkgrel=1
 pkgdesc='Vintage BASIC Interpreter'
