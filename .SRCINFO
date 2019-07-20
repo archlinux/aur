@@ -1,0 +1,13 @@
+pkgbase = dgl
+	pkgdesc = Dmenu Game Launcher - use dmenu to launch your games
+	pkgver = 0.8.3
+	pkgrel = 1
+	epoch = 1
+	url = https://joren.ga
+	arch = any
+	license = MIT
+	provides = dgl
+	source = dgl::git+https://github.com/Jorengarenar/dgl.git
+	sha512sums = SKIP
+
+pkgname = dgl
