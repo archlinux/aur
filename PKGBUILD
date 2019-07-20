@@ -1,45 +1,49 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer-alpha
-pkgver=1.8.7.6994
+pkgver=1.8.7.7642
+_pkgver=1_8_7_7642
 pkgrel=1
-_harfbuzzver=1.3.4-1
-_cairover=1.14.10-1
-pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (alpha version)"
+pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (nighly builds)"
 url="http://www.singularityviewer.org/"
 license=('custom')
 arch=('x86_64')
-depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'mesa' 'sdl' 'glu' 'pangox-compat' 'gconf' 'libxss' 'libxrandr' 'libxcomposite' 'libgl' 'lib32-zlib' 'libcups' 'atk' 'lib32-util-linux' 'lib32-libidn' 'libxcursor' 'libxtst')
+depends=('apr' 'apr-util' 'gtk2' 'libgl' 'libidn' 'mesa' 'sdl' 'glu' 'pangox-compat' 'gconf' 'libxss' 'libxrandr' 'libxcomposite' 'libgl' 'lib32-zlib' 'libcups' 'atk' 'lib32-util-linux' 'lib32-libidn' 'libxcursor' 'libxtst' 'openal' 'expat' 'freealut')
 optdepends=(
 	'libpulse: for PulseAudio support'
 	'alsa-lib: for ALSA support'
 	'lib32-alsa-lib: for ALSA support'
 	'nvidia-utils: for NVIDIA support' 
 	'flashplugin: for inworld Flash support' 
-	'gstreamer0.10: for video support, may need good, bad and ugly plugins'
-	'lib32-freealut: for OpenAL support'
-	'openal')
+	'gstreamer0.10: for video support, may need good, bad and ugly plugins')
 
 conflicts=("singularityviewer" "singularityviewer-test")
 replaces=("singularityviewer-test")
 provides=("singularityviewer")
 
-source=("https://downloads.sourceforge.net/project/singularityview/alphas/SingularityAlpha-x86_64-${pkgver}.tar.bz2"
+source=("http://singu.virtual-nexus.xyz/files/Singularity_Test_${_pkgver}_x86_64.tar.xz"
 	"singularityviewer.desktop"
-	"singularityviewer.launcher"
-	"https://archive.archlinux.org/packages/h/harfbuzz/harfbuzz-${_harfbuzzver}-x86_64.pkg.tar.xz"
-	"https://archive.archlinux.org/packages/c/cairo/cairo-${_cairover}-x86_64.pkg.tar.xz")
-md5sums=('2420b7825a812ff6bfec48914b90a13e'
+	"singularityviewer.launcher")
+md5sums=('8acba2e3d522716357f433a763e0c5bf'
          'ff7aa34dcd7548e3acdb3c2d44ae6604'
-         'eb596f5cf7b6f2d0c55c0082fb99a905'
-         '0a3e4654c3009d740a6be09e58a2d451'
-         'e6208a823c9acc653b1deb0fcf4014c7')
-
+         'eb596f5cf7b6f2d0c55c0082fb99a905')
+         
 package() {
 cd $srcdir
-  
+
 # Rename Data Directory
-mv SingularityAlpha-$CARCH-${pkgver} singularityviewer
+mv Singularity_Test_${_pkgver}_x86_64 singularityviewer
+
+# Remove old libraries
+#cd $srcdir
+cd singularityviewer/
+cd lib64/
+rm *SDL*
+rm *openal*
+rm *freetype*
+rm *expat*
+rm *apr*
+rm *alut*
   
 # Install Desktop File
 install -D -m644 $srcdir/singularityviewer.desktop \
@@ -58,6 +62,7 @@ install -D -m755 $srcdir/singularityviewer/licenses.txt \
   $pkgdir/usr/share/licenses/$pkgname/LICENSE
     
 # Move Data to Destination Directory
+cd $srcdir
 install -d $pkgdir/opt
 mv singularityviewer $pkgdir/opt/
   
@@ -70,34 +75,5 @@ chmod g+x $pkgdir/opt/singularityviewer/singularity
 
 # Do not re-register the application with the desktop system at every launch, saves from locally installed desktop files.
 sed -i 's|./etc/refresh_desktop_app_entry.sh|#./etc/refresh_desktop_app_entry.sh|' $pkgdir/opt/singularityviewer/singularity
-
-# Install harfbuzz binaries
-cd $srcdir/usr/lib/
-cp *harfbuzz.so* $pkgdir/opt/singularityviewer/lib64/
-
-# Install cairo binaries
-#cd $srcir/usr/lib/
-#cp *libcairo*.so* $pkgdir/opt/singularityviewer/lib64/
-#cp cairo/*cairo*.so* $pkgdir/opt/singularityviewer/lib64/
-
-cp cairo/cairo-fdr.so $pkgdir/opt/singularityviewer/lib64/
-cp cairo/cairo-fdr.so.0 $pkgdir/opt/singularityviewer/lib64/
-cp cairo/cairo-fdr.so.0.0.0 $pkgdir/opt/singularityviewer/lib64/
-cp cairo/cairo-sphinx.so $pkgdir/opt/singularityviewer/lib64/
-cp cairo/cairo-sphinx.so.0 $pkgdir/opt/singularityviewer/lib64/
-cp cairo/cairo-sphinx.so.0.0.0 $pkgdir/opt/singularityviewer/lib64/
-cp cairo/libcairo-trace.so $pkgdir/opt/singularityviewer/lib64/
-cp cairo/libcairo-trace.so.0 $pkgdir/opt/singularityviewer/lib64/
-cp cairo/libcairo-trace.so.0.0.0 $pkgdir/opt/singularityviewer/lib64/
-cp libcairo-gobject.so $pkgdir/opt/singularityviewer/lib64/
-cp libcairo-gobject.so.2 $pkgdir/opt/singularityviewer/lib64/
-cp libcairo-gobject.so.2.11400.10 $pkgdir/opt/singularityviewer/lib64/
-cp libcairo-script-interpreter.so $pkgdir/opt/singularityviewer/lib64/
-cp libcairo-script-interpreter.so.2 $pkgdir/opt/singularityviewer/lib64/
-cp libcairo-script-interpreter.so.2.11400.10 $pkgdir/opt/singularityviewer/lib64/
-cp libcairo.so $pkgdir/opt/singularityviewer/lib64/
-cp libcairo.so.2 $pkgdir/opt/singularityviewer/lib64/
-cp libcairo.so.2.11400.10 $pkgdir/opt/singularityviewer/lib64/
-
 
 }
