@@ -2,7 +2,7 @@
 
 pkgname=dgl
 epoch=1
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='Dmenu Game Launcher - use dmenu to launch your games'
 arch=('any')
