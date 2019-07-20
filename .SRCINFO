@@ -1,0 +1,17 @@
+pkgbase = klibc
+	pkgdesc = A minimalistic libc subset for use with initramfs
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = https://mirrors.kernel.org/pub/linux/libs/klibc/
+	arch = x86_64
+	license = GPL
+	makedepends = linux-api-headers
+	depends = perl
+	options = staticlibs
+	source = https://mirrors.kernel.org/pub/linux/libs/klibc/2.0/klibc-2.0.6.tar.xz
+	source = fix_missing_include_in_sys_mman_h.patch::https://git.kernel.org/pub/scm/libs/klibc/klibc.git/patch/?id=d4853d030639cf3542ae39129c18b654d8d4f020
+	md5sums = d01e2f8fa8a616c8523787ea4c634e8b
+	md5sums = 8d7744591b5ba254fe6d4ef324a5383e
+
+pkgname = klibc
+
