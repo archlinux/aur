@@ -43,7 +43,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'cd108dca1c77607c6a7cc45aa284ea97'
-         '2f1b08655352e70c7c74d4957d481dc8')
+         '4441d9a6db38b85b7dc5c3c9e6872951')
 
 pkgver() {
   cd "$srcdir/blender"
