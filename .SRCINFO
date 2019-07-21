@@ -1,6 +1,6 @@
 pkgbase = python-omemo-backend-signal
 	pkgdesc = A backend for python-omemo offering compatibility with libsignal.
-	pkgver = 0.2.2.beta
+	pkgver = 0.2.4.beta
 	pkgrel = 1
 	url = https://github.com/Syndace/python-omemo-backend-signal
 	arch = any

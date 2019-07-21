@@ -2,9 +2,9 @@
 
 _pkgname=python-omemo-backend-signal
 _pkgname2=python2-omemo-backend-signal
-_tag=v0.2.2-beta
+_tag=v0.2.4-beta
 pkgname=("python-omemo-backend-signal" "python2-omemo-backend-signal")
-pkgver=0.2.2.beta
+pkgver=0.2.4.beta
 pkgrel=1
 pkgdesc="A backend for python-omemo offering compatibility with libsignal."
 url="https://github.com/Syndace/${_pkgname}"
