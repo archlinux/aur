@@ -13,9 +13,11 @@ pkgbase = pyutil
 pkgname = python2-pyutil
 	depends = python2-simplejson
 	depends = python2-zbase32
+	conflicts = python-pyutil
 	replaces = pyutil
 
 pkgname = python-pyutil
 	depends = python-simplejson
 	depends = python-zbase32
+	conflicts = python2-pyutil
 
