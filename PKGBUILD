@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('zip')
 source=("tflint_linux_amd64-${pkgver}.zip::${url}/releases/download/v${pkgver}/tflint_linux_amd64.zip")
-sha512sums=('7186c419c193778185e9e6b2697cc7c511f767b757faabf76c488b3041b1d4f065d6a635c1773f8ad1a7e358ef9d5a044c86dd39d904b2a8594a0584b287b245')
+sha512sums=('8ed5f1840dc15b07a5370dff3699d4c55e404310f715483939ebac3fb3bdbd79ef0bdada8c1dbae5f56a249051ef8f5606d0f8c93b4c1ec56422525ba1345d07')
 
 package() {
   cd ${srcdir}
