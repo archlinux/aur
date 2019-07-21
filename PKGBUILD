@@ -3,15 +3,14 @@
 
 pkgname=autokey
 pkgver=0.95.7
-pkgrel=1
+pkgrel=2
 pkgdesc="AutoKey, a desktop automation utility for Linux and X11, updated to run on Python 3"
 arch=('i686' 'x86_64')
 url="https://github.com/autokey/autokey"
 depends=('python' 'wmctrl' 'hicolor-icon-theme' 'python-dbus' 'python-pyinotify'
-         'zenity' 'xautomation' 'imagemagick' 'xorg-xwd' 'python-xlib' 'python-six'
-         'python-gobject' 'gtksourceview3' 'libnotify' 'libappindicator-gtk3'
-         'gtk-update-icon-cache')
-makedepends=('python-setuptools')
+         'zenity' 'xautomation' 'imagemagick' 'xorg-xwd' 'python-xlib' 'python-setuptools'
+         'python-six' 'python-gobject' 'gtksourceview3' 'libnotify'
+         'libappindicator-gtk3' 'gtk-update-icon-cache')
 optdepends=('kdialog: for Qt interface'
             'python-pyqt5: for Qt interface'
             'python-qscintilla-qt5: for Qt interface'
