@@ -4,7 +4,7 @@
 
 pkgname=nvidia-390xx-ck
 pkgver=390.116
-pkgrel=35
+pkgrel=36
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck, 390xx legacy branch."
 pkgdesc="$_pkgdesc"
@@ -18,10 +18,11 @@ conflicts=('nvidia-340xx-ck' 'nvidia-ck')
 license=('custom')
 options=('!strip')
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-'kernel-4.16.patch' 'kernel-5.1.patch')
+'kernel-4.16.patch' 'kernel-5.1.patch' 'kernel-5.2.patch')
 sha256sums=('de85a2eea39ca16e25645b345259b01fbe858b833286b7e6785afa273009ef6f'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385'
-            'd92899d4f7a40e2c3cad92d067f2f53c3a18c49b34e62e707a93b125aa37640f')
+            'd92899d4f7a40e2c3cad92d067f2f53c3a18c49b34e62e707a93b125aa37640f'
+            '9d94f30662d64400ee43bb7745544b72e1c6216a30ae2907a744c7ae0aa6e384')
 
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
@@ -32,6 +33,7 @@ prepare() {
 
     patch -Np1 -i ../kernel-4.16.patch
     patch -Np1 -i ../kernel-5.1.patch
+    patch -Np1 -i ../kernel-5.2.patch
 }
 
 build() {
