@@ -2,7 +2,7 @@
 # Contributor: ELmoussaoui Bilal <bil dot elmoussaoui at gmail.com>
 pkgname=nemo-folder-icons
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Nemo extension that makes changing folders icons easy!'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -12,6 +12,11 @@ makedepends=('gnome-common' 'meson' 'appstream-glib')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bil-elmoussaoui/nautilus-folder-icons/archive/$pkgver.tar.gz")
 sha256sums=('25fa6f164f50ed84ee6fa6d7a6004cb5190051847a5c3895f41bf1b426ad2565')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	find . -type f -exec sed -i 's%#!/usr/bin/python2%#!/usr/bin/python%g' {} \;
+}
 
 build() {
 	cd "nautilus-folder-icons-$pkgver"
