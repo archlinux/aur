@@ -1,6 +1,6 @@
 pkgbase = emacs-swiper-git
 	pkgdesc = Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview, and more.
-	pkgver = 0.11.0.r185.g0e62f0d
+	pkgver = 0.12.0.r7.g039353d
 	pkgrel = 1
 	url = https://github.com/abo-abo/swiper
 	arch = any
