@@ -1,6 +1,6 @@
 pkgbase = python-omemo-syndace
 	pkgdesc = An open python implementation of the OMEMO Multi-End Message and Object Encryption protocol
-	pkgver = 0.10.4.beta
+	pkgver = 0.10.5.beta
 	pkgrel = 1
 	url = https://github.com/Syndace/python-omemo
 	arch = any
