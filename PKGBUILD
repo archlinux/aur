@@ -1,7 +1,7 @@
 # Maintainer: Jonas Hahnfeld <hahnjo@hahnjo.de>
 
 pkgname=dynconf
-pkgver=1.0.2
+pkgver=1.1
 pkgrel=1
 pkgdesc="A small program to apply recipes to configuration files"
 arch=('x86_64')
@@ -32,4 +32,5 @@ build(){
 package() {
   cd "${pkgname}"
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 scripts/completion.bash "$pkgdir"/usr/share/bash-completion/completions/$pkgname
 }
