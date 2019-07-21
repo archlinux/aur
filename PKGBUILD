@@ -26,6 +26,5 @@ pkgver() {
 }
 
 package() {
-    #pip install --isolated --root=$pkgdir --ignore-installed --no-deps --no-warn-script-location -U git+https://github.com/$author/$_gitname.git
      pip install --isolated --root=$pkgdir --ignore-installed --no-deps --no-warn-script-location -U $srcdir/$_gitname
 }
