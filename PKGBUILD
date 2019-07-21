@@ -7,6 +7,7 @@ pkgver() {
 }
 pkgrel=3
 pkgdesc='another clean DNS'
+url='https://gitlab.com/NickCao/cleardns'
 arch=('x86_64')
 license=('GPL3')
 depends=('glibc')

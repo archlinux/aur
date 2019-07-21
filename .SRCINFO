@@ -2,6 +2,7 @@ pkgbase = cleardns-git
 	pkgdesc = another clean DNS
 	pkgver = 1.0.1.r1.g76d3dd4
 	pkgrel = 3
+	url = https://gitlab.com/NickCao/cleardns
 	arch = x86_64
 	license = GPL3
 	makedepends = go
