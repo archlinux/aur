@@ -6,7 +6,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=0.96.0
+pkgver=0.96.2
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
