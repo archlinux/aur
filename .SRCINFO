@@ -1,7 +1,7 @@
 pkgbase = exercism-cli
 	pkgdesc = Command line client for exercism.io
 	pkgver = 3.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/exercism/cli
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = exercism-cli
 	source = https://raw.githubusercontent.com/exercism/cli/v3.0.12/LICENSE
 	source = exercism_completion-v3.0.12.bash::https://raw.githubusercontent.com/exercism/cli/v3.0.12/shell/exercism_completion.bash
 	source = exercism_completion-v3.0.12.zsh::https://raw.githubusercontent.com/exercism/cli/v3.0.12/shell/exercism_completion.zsh
-	sha256sums = 5dd14ba854091ff4226fa6c7517b57da86acbe9b6a00c36f0c031dd4f4816c90
+	sha256sums = f660930f41ec480c6cb928298928da6919d2314cdeba0945d36d11a7ce46543a
 	sha256sums = 4abb9b94262a08ede1019cbfc900d01f33123de616bb5a7c202d54ca59718590
 	sha256sums = b28df2a4f6099f5466c623a3618c58dea68611858153442fea978deb5fe027df
 	source_i686 = exercism-linux-32bit-v3.0.12.tgz::https://github.com/exercism/cli/releases/download/v3.0.12/exercism-linux-32bit.tgz
