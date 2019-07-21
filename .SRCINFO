@@ -1,6 +1,6 @@
 pkgbase = quartus-standard
 	pkgdesc = Quartus Prime Standard Edition design software for Altera FPGA's. Modular package
-	pkgver = 17.1.1.593
+	pkgver = 18.1.0.625
 	pkgrel = 1
 	url = http://dl.altera.com/?edition=standard
 	install = quartus.install
@@ -33,15 +33,12 @@ pkgbase = quartus-standard
 	depends = libxtst
 	depends = lsb-release
 	options = !strip
-	options = !upx
-	source = RealQuartusSetup-17.1.1.593-linux.run::http://download.altera.com/akdlm/software/acdsinst/17.1std.1/593/update/QuartusSetup-17.1.1.593-linux.run
-	source = http://download.altera.com/akdlm/software/acdsinst/17.1std/590/ib_installers/QuartusSetup-17.1.0.590-linux.run
+	source = http://download.altera.com/akdlm/software/acdsinst/18.1std/625/ib_installers/QuartusSetup-18.1.0.625-linux.run
 	source = quartus.sh
 	source = quartus.desktop
 	source = 51-usbblaster.rules
 	source = quartus.install
-	sha256sums = 5a6a98b61b054bb2116be36afd53aa67e67684a0017adfca0e1a9b96ef0069da
-	sha256sums = 2f05a82bc996a9fa160f4dc42ea9afd047d7b1535589e4687681a611319eb44d
+	sha256sums = e5b256326bb00eadd3c646e285fe91844a0faccdec306c03288b920edc622a8f
 	sha256sums = 849dd042a6173bb4f97a9522b51935bd3069a3313fe963ae19dcf4c25331b291
 	sha256sums = eade659fda0db843a5b287502415c698c4f251f3b721836e2a56911896fc2371
 	sha256sums = dd9d33fa2698a0ec11ae86f4508f77e2e12bf4a21224f5b16640bc41d6c0999b
