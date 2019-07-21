@@ -62,7 +62,7 @@ _enable_acs_override="y"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.1
-_minor=18
+_minor=19
 _srcname=linux-${_major}
 _clr=${_major}.16-795
 pkgbase=linux-clear
@@ -340,7 +340,7 @@ done
 
 sha256sums=('d06a7be6e73f97d1350677ad3bae0ce7daecb79c2c2902aaabe806f7fa94f041'
             'SKIP'
-            'd34e5722827ec1aa1878a4852bdef34b909231c4e0241245444eac112b92666c'
+            '9ecde5b77ab4d7a7d42e739e96d3fa0c8360eb2f57fd51e9fbf06c3f4c41cdbb'
             'SKIP'
             '74ec7415988d40fa53686d994cf8cb27accdbd35c5373c4c3afc2e93372ebba5'
             '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
