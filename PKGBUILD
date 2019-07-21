@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/yktoo/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('38baebd3393ac68bd0840901134ec972e92620d4cee37dba51bd7816dd9173eb')
+sha256sums=('0912bc94a2cac1fe60d5f8756946cf382a35053b1c183e3046eab9425dca73aa')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
