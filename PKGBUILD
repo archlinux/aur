@@ -2,10 +2,10 @@
 
 _pkgname=python-doubleratchet
 _pkgname2=python2-doubleratchet
-_tag=v0.6.0-beta
+_tag=v0.7.0-beta
 pkgbase=${_pkgname}
 pkgname=("${_pkgname}" "${_pkgname2}")
-pkgver=0.6.0.beta
+pkgver=0.7.0.beta
 pkgrel=1
 pkgdesc="A python implementation of the Double Ratchet algorithm"
 url='https://github.com/Syndace/python-doubleratchet'
