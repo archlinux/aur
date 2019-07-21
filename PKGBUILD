@@ -6,8 +6,8 @@
 _pkgname=pytoml
 pkgbase=python-pytoml
 pkgname=('python-pytoml' 'python2-pytoml')
-pkgver=0.1.20
-_test_commit=b212790a6b7367489f389411bda009e5ff765f20
+pkgver=0.1.21
+_test_commit=bbfef3b9277eac47e5d6e9e507c99f0a40a61f8a
 pkgrel=1
 pkgdesc="A TOML-0.4.0 parser/writer for Python."
 arch=('any')
@@ -15,10 +15,12 @@ url="https://github.com/avakar/${_pkgname}"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-pytest' 'python2-pytest')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://github.com/avakar/toml-test/archive/${_test_commit}.tar.gz")
-sha512sums=('9b913219e65e2329302455a1457a39cf5eb37e04c03025dfdbb81db4ffe60b547fb7e64fc961608004900365ccfddb4225042105fa2db8bd2e393fa2797fc24f'
-            '94dc6ddadac2c75095b1a9ef7c4f68e38908bfadba53203b75c29c7aa8d3c387c1f05cf9915c2c63eeee869f4290cdcef4b8768cb36dcd4031168b5af549bb54')
+sha512sums=('6e261e7f979b7beb835061a90d098036b968b9f2e5b4ef74302e7bf59b49651d92e32fb0488831c0bc1325f14a2512e0b7681e8e2bbf59804835179812203875'
+            '83264fdeb90c8dde3552631569a39252273910ec39cabb5a220c3ef47a40c5f2c4e506c1cbaf4e863cd6e80e38ef7e816df607d95389e66ed3406efff18b802b')
+b2sums=('9c07a9e7ba0121b03e1fada1961b5123bf66e89ae9ef129bd6bf0a313e71e7fbf29479cf7f1e7659bdc35e483b41e38ceefc3854f690eeaee4aebe704b6a6b3c'
+        '1b4b58467365d5afc9d397aae2939aed182764a177bd2fb66732d591f2ec6872205c74dd5c8162f00d0d008faef0bb8da661049cadb2d0fd1ba415708ee932ea')
 
 prepare() {
     cd "${srcdir}"/${_pkgname}-${pkgver}
