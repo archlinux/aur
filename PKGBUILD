@@ -1,6 +1,6 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 pkgname=wwplot
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Plotting Tool for Experimental Physics Classes"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python pyside2 python-numpy python-scipy python-matplotlib qt5-base
 makedepends=('meson')
 options=(!emptydirs)
 source=("$pkgname-$pkgver::https://github.com/wwmm/wwplot/archive/v$pkgver.tar.gz")
-sha256sums=('11ee7b003e5729b39f6883c20ae55666cd8b440c9d3209ebb839839ab1241b34')
+sha256sums=('2f271c4f33d74e3ebf6e9006122cb8d41b7e3cd1f827918ddcef4ae553a36df2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
