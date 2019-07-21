@@ -1,7 +1,7 @@
 pkgbase = nvman
 	pkgdesc = NVIDIA Manager for Optimus/Bumblebee
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://github.com/quebin31/nvman
 	install = nvman.install
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = nvman
 	depends = bumblebee
 	depends = primus
 	depends = optimus-manager>=1.1
-	source = https://github.com/quebin31/nvman/releases/download/2.0.1/2.0.1.tar.xz
-	sha256sums = b73770fddd964b2b7bfcf72ec68fdb7524e95a9908b7454e0bbee66c4513a189
+	source = https://github.com/quebin31/nvman/releases/download/2.0.2/2.0.2.tar.xz
+	sha256sums = 6bc4289deb643bee9d53f4d8aa0553c191cfca0dba00a7ff9d73d481d424d7af
 
 pkgname = nvman
 
