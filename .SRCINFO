@@ -1,0 +1,31 @@
+pkgbase = dracut-git
+	pkgdesc = An event driven initramfs infrastructure
+	pkgver = 049.r94.b6b1bf92
+	pkgrel = 1
+	url = https://dracut.wiki.kernel.org
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = asciidoc
+	depends = bash
+	depends = coreutils
+	depends = cpio
+	depends = filesystem
+	depends = findutils
+	depends = grep
+	depends = gzip
+	depends = kmod
+	depends = procps-ng
+	depends = sed
+	depends = systemd
+	depends = util-linux
+	depends = xz
+	provides = dracut
+	provides = initramfs
+	conflicts = dracut
+	backup = etc/dracut.conf
+	source = git+https://github.com/dracutdevs/dracut.git
+	sha512sums = SKIP
+
+pkgname = dracut-git
+
