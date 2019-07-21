@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Digital
+Comment=A digital logic designer and circuit simulator.
+Exec=digital
+Terminal=false
+Categories=Education;Java;
