@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r71412.10938cd09b
+pkgver=r71507.b750399b70
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -33,19 +33,16 @@ prepare() {
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
 
+  # vtkQWidgetTexture.cxx:(.text+0x14c): undefined reference to `_imp__glPixelStorei@8'
+  curl -L https://gitlab.kitware.com/paraview/paraview/merge_requests/3394.patch | patch -p1
+
   # missing protobuf::protoc for target vtkPVMessage_protobuf_compile
   sed -i "1iset_target_properties(protobuf::protoc PROPERTIES IMPORTED_LOCATION \${Protobuf_PROTOC_EXECUTABLE})" ParaViewCore/ServerImplementation/Core/CMakeLists.txt
   sed -i "1iadd_executable(protobuf::protoc IMPORTED)" ParaViewCore/ServerImplementation/Core/CMakeLists.txt
-  # vtkPVDefaultPass.cxx:(.text+0x2b3): undefined reference to `glGetError@0'
-  echo "vtk_module_link(ParaView::VTKExtensionsRendering PRIVATE opengl32) " >> ParaViewCore/VTKExtensions/Rendering/CMakeLists.txt
 
   cd VTK
-  # https://gitlab.kitware.com/vtk/vtk/issues/17637
-  sed -i "s|find_package(netCDF|#find_package(netCDF|g" CMake/FindNetCDF.cmake
-  # https://gitlab.kitware.com/vtk/vtk/issues/17630
-  sed -i "s|VTK::netcdf|VTK::netcdf VTK::hdf5|g" ThirdParty/exodusII/vtk.module
-  # vtkQWidgetTexture.cxx:(.text+0x14c): undefined reference to `_imp__glPixelStorei@8'
-  echo "vtk_module_link(VTK::GUISupportQt PRIVATE opengl32) " >> GUISupport/Qt/CMakeLists.txt
+  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5734.patch|patch -p1
+  #cd ThirdParty/loguru/vtkloguru && curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5739.patch|patch -p1
 }
 
 build() {
