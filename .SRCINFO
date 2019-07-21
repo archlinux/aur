@@ -1,0 +1,23 @@
+pkgbase = cisco-anyconnect-installer
+	pkgdesc = Cisco AnyConnect Secure Mobility Client
+	pkgver = 4.7.00136
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	depends = libxml2
+	depends = ca-certificates
+    depends = lib32-gcc-libs
+    depends = lib32-ncurses5-compat-libs
+	optdepends = hicolor-icon-theme: required by desktop shortcuts
+	optdepends = gtk2: required by vpnui
+	optdepends = glib2: required by vpnui
+	optdepends = gtk3: required by acwebhelper
+	options = !strip
+	source = file://anyconnect-linux64-4.7.00136-core-vpn-webdeploy-k9.sh
+	source = vpnagentd.service
+	source = anyconnect.sh
+	source = anyconnect.csh
+	source = AnyConnectLocalPolicy.xml
+
+pkgname = cisco-anyconnect-tarball
+
