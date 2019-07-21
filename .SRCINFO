@@ -8,7 +8,7 @@ pkgbase = sleuthkit-java
 	license = custom:"IBM Public Licence",
 	license = GPL2
 	makedepends = ant
-	depends = java-runtime
+	depends = java-environment=8
 	depends = sleuthkit
 	source = https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.6.6/sleuthkit-4.6.6.tar.gz
 	source = build-tmp-dir.patch
