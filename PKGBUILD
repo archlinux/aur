@@ -1,6 +1,6 @@
 # Maintainer: Darren Ldl <darrenldldev@gmail.com>
 pkgname=blkar
-pkgver=7.2.3
+pkgver=7.2.4
 pkgrel=1
 epoch=
 pkgdesc="Multithreaded archiver offering bit rot protection and sector level recoverability"
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 checkdepends=('cargo')
 source=("https://github.com/darrenldl/blockyarchive/archive/v${pkgver}.tar.gz")
-sha256sums=('9683c00a76fff3e2d2607b9f543771cbd9cce06f0dc8f63a6e705a276fcc4e5b')
+sha256sums=('c4e357f5c31a80b6c921cd46fe642d09a96bb009610d731164e997245914e55d')
 
 build() {
   cd "blockyarchive-$pkgver"
