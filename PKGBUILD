@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/bil-elmoussaoui/nautilus-fo
 sha256sums=('25fa6f164f50ed84ee6fa6d7a6004cb5190051847a5c3895f41bf1b426ad2565')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "nautilus-folder-icons-$pkgver"
 	find . -type f -exec sed -i 's%#!/usr/bin/python2%#!/usr/bin/python%g' {} \;
 }
 
