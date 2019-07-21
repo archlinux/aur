@@ -1,0 +1,36 @@
+pkgbase = compton-tryone-blackcapcoder-git
+	pkgdesc = Merge of tryone and BlackCapCoder compton forks
+	pkgver = v0.1_beta2.r129.gcdf1476
+	pkgrel = 1
+	url = https://github.com/magnus-gross/compton
+	arch = x86_64
+	license = MIT
+	makedepends = asciidoc
+	makedepends = git
+	makedepends = mesa
+	makedepends = meson
+	makedepends = ninja
+	makedepends = setconf
+	depends = hicolor-icon-theme
+	depends = libconfig
+	depends = libdbus
+	depends = libev
+	depends = libgl
+	depends = libxdg-basedir
+	depends = pcre
+	depends = pixman
+	depends = xcb-util-image
+	depends = xcb-util-renderutil
+	optdepends = dbus: For controlling compton via D-Bus
+	optdepends = xorg-xwininfo: For compton-trans
+	optdepends = xorg-xprop: For compton-trans
+	provides = compton
+	conflicts = compton
+	backup = etc/xdg/compton.conf
+	source = compton.conf
+	source = git+https://github.com/magnus-gross/compton.git
+	sha256sums = c25e5b741a3a76928d1866f0097c482844e272b41823c24486a91cb39a97341d
+	sha256sums = SKIP
+
+pkgname = compton-tryone-blackcapcoder-git
+
