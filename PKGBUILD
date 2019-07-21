@@ -1,7 +1,7 @@
 # Maintainer: Kevin Del Castillo R. <quebin31@gmail.com>
 
 pkgname=nvman
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="NVIDIA Manager for Optimus/Bumblebee"
 arch=('any')
