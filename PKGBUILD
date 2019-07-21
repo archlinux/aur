@@ -5,10 +5,10 @@
 
 pkgname=wexond-appimage
 pkgver=2.2.3
-pkgrel=1
-pkgdesc='A privacy-focused, extensible and beautiful web browser'
+pkgrel=2
+pkgdesc='A privacy-focused, extensible and beautiful web browser.'
 arch=('i686' 'x86_64')
-url='https://github.com/wexond/wexond'
+url='https://github.com/aslafy-z/aur-wexond-appimage'
 license=('GPL3')
 options=('!strip')
 provides=(wexond)

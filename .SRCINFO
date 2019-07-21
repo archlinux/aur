@@ -1,11 +1,11 @@
 pkgbase = wexond-appimage
-	pkgdesc = A privacy-focused, extensible and beautiful web browser
+	pkgdesc = A privacy-focused, extensible and beautiful web browser.
 	pkgver = 2.2.3
-	pkgrel = 1
-	url = https://github.com/wexond/wexond
+	pkgrel = 2
+	url = https://github.com/aslafy-z/aur-wexond-appimage
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	provides = wexond
 	conflicts = wexond
 	options = !strip
