@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=wikidata-cli
-pkgver=7.5.3
+pkgver=7.5.4
 pkgrel=1
 pkgdesc="The command-line interface to Wikidata"
 arch=(any)
@@ -11,6 +11,7 @@ makedepends=('npm')
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
 replaces=('nodejs-wikidata-cli')
+options=(!strip)
 
 package() {
   cd $srcdir
@@ -24,4 +25,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('699a4c79c158b16733dde7e2d2c6a5e97e3d7d179f6bf724297ac0faf83ec2aa')
+sha256sums=('d2247c532360501d62e9208ab65393c37a4c9968da8f7d7fc805540179bff0b2')
