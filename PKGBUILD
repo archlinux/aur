@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-netcdf
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="network Common Data Form interface for array-oriented data access and corresponding library (mingw-w64)"
 arch=('any')
 url="https://www.unidata.ucar.edu/software/netcdf/"
@@ -22,7 +22,12 @@ build() {
   cd "${srcdir}/netcdf-c-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DENABLE_TESTS=OFF -DBUILD_UTILITIES=OFF ..
+    # manually specify hdf5 paths as the exported cmake target is not using the hdf5 config properly
+    ${_arch}-cmake -DENABLE_TESTS=OFF -DBUILD_UTILITIES=OFF \
+      -DHDF5_C_LIBRARY=/usr/${_arch}/lib/libhdf5.dll.a \
+      -DHDF5_HL_LIBRARY=/usr/${_arch}/lib/libhdf5_hl.dll.a \
+      -DHDF5_INCLUDE_DIR=/usr/${_arch}/include/ \
+      ..
     make
     popd
   done
