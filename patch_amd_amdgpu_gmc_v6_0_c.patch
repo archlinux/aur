@@ -1,0 +1,14 @@
+--- ./amd/amdgpu/gmc_v6_0.c.orig	2019-07-23 18:04:33.135732941 +0000
++++ ./amd/amdgpu/gmc_v6_0.c	2019-07-23 18:12:10.319049313 +0000
+@@ -874,7 +874,11 @@
+ 		pci_set_consistent_dma_mask(adev->pdev, DMA_BIT_MASK(32));
+ 		dev_warn(adev->dev, "amdgpu: No coherent DMA available.\n");
+ 	}
++#if DRM_VERSION_CODE >= DRM_VERSION(5, 2, 0)
++	adev->need_swiotlb = drm_need_swiotlb(dma_bits);
++#else
+ 	adev->need_swiotlb = drm_get_max_iomem() > ((u64)1 << dma_bits);
++#endif
+ 
+ 	r = gmc_v6_0_init_microcode(adev);
+ 	if (r) {

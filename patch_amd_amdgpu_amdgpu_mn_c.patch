@@ -1,0 +1,49 @@
+--- ./amd/amdgpu/amdgpu_mn.c.orig	2019-07-23 18:15:10.135709298 +0000
++++ ./amd/amdgpu/amdgpu_mn.c	2019-07-23 18:18:08.299036001 +0000
+@@ -280,14 +280,22 @@
+ 	/* TODO we should be able to split locking for interval tree and
+ 	 * amdgpu_mn_invalidate_node
+ 	 */
++#if DRM_VERSION_CODE >= DRM_VERSION(5, 2, 0)
++	if (amdgpu_mn_read_lock(amn, mmu_notifier_range_blockable(range)))
++#else
+ 	if (amdgpu_mn_read_lock(amn, range->blockable))
++#endif
+ 		return -EAGAIN;
+ 
+ 	it = interval_tree_iter_first(&amn->objects, range->start, end);
+ 	while (it) {
+ 		struct amdgpu_mn_node *node;
+ 
++#if DRM_VERSION_CODE >= DRM_VERSION(5, 2, 0)
++		if (!mmu_notifier_range_blockable(range)) {
++#else
+ 		if (!range->blockable) {
++#endif
+ 			amdgpu_mn_read_unlock(amn);
+ 			return -EAGAIN;
+ 		}
+@@ -323,7 +331,11 @@
+ 	/* notification is exclusive, but interval is inclusive */
+ 	end = range->end - 1;
+ 
++#if DRM_VERSION_CODE >= DRM_VERSION(5, 2, 0)
++	if (amdgpu_mn_read_lock(amn, mmu_notifier_range_blockable(range)))
++#else
+ 	if (amdgpu_mn_read_lock(amn, range->blockable))
++#endif
+ 		return -EAGAIN;
+ 
+ 	it = interval_tree_iter_first(&amn->objects, range->start, end);
+@@ -331,7 +343,11 @@
+ 		struct amdgpu_mn_node *node;
+ 		struct amdgpu_bo *bo;
+ 
++#if DRM_VERSION_CODE >= DRM_VERSION(5, 2, 0)
++		if (!mmu_notifier_range_blockable(range)) {
++#else
+ 		if (!range->blockable) {
++#endif
+ 			amdgpu_mn_read_unlock(amn);
+ 			return -EAGAIN;
+ 		}

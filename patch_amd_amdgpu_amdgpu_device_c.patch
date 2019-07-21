@@ -1,0 +1,24 @@
+--- ./amd/amdgpu/amdgpu_device.c.orig	2019-07-06 00:42:03.000000000 +0000
++++ ./amd/amdgpu/amdgpu_device.c	2019-07-23 17:48:36.535768494 +0000
+@@ -32,6 +32,9 @@
+ #include <drm/drmP.h>
+ #include <drm/drm_crtc_helper.h>
+ #include <drm/drm_atomic_helper.h>
++#if DRM_VERSION_CODE >= DRM_VERSION(5, 1, 0)
++#include <drm/drm_probe_helper.h>
++#endif
+ #include <drm/amdgpu_drm.h>
+ #include <linux/vgaarb.h>
+ #include <linux/vga_switcheroo.h>
+@@ -2842,7 +2845,11 @@
+ 			drm_atomic_helper_shutdown(adev->ddev);
+ 		else
+ #endif
++#if DRM_VERSION_CODE >= DRM_VERSION(5, 1, 0)
++			drm_helper_force_disable_all(adev->ddev);
++#else
+ 			drm_crtc_force_disable_all(adev->ddev);
++#endif
+ 	}
+ 	amdgpu_ib_pool_fini(adev);
+ 	amdgpu_fence_driver_fini(adev);

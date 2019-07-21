@@ -1,0 +1,25 @@
+--- ./amd/amdgpu/amdgpu_drv.c.orig	2019-07-06 00:42:03.000000000 +0000
++++ ./amd/amdgpu/amdgpu_drv.c	2019-07-23 17:48:36.539101827 +0000
+@@ -33,6 +33,9 @@
+ #include <linux/pm_runtime.h>
+ #include <linux/vga_switcheroo.h>
+ #include <drm/drm_crtc_helper.h>
++#if DRM_VERSION_CODE >= DRM_VERSION(5, 1, 0)
++#include <drm/drm_probe_helper.h>
++#endif
+ 
+ #include "amdgpu.h"
+ #include "amdgpu_irq.h"
+@@ -1450,7 +1453,11 @@
+ #if DRM_VERSION_CODE >= DRM_VERSION(4, 20, 0)
+ 		DRIVER_ATOMIC |
+ #endif
+-		DRIVER_HAVE_IRQ | DRIVER_IRQ_SHARED | DRIVER_GEM |
++		DRIVER_HAVE_IRQ |
++#if DRM_VERSION_CODE < DRM_VERSION(5, 1, 0)
++		DRIVER_IRQ_SHARED |
++#endif
++		DRIVER_GEM |
+ #if DRM_VERSION_CODE >= DRM_VERSION(4, 13, 0)
+ 		DRIVER_SYNCOBJ |
+ #endif

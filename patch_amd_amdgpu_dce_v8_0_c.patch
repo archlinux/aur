@@ -1,0 +1,21 @@
+--- ./amd/amdgpu/dce_v8_0.c.orig	2019-07-06 00:42:03.000000000 +0000
++++ ./amd/amdgpu/dce_v8_0.c	2019-07-23 17:48:36.549101826 +0000
+@@ -21,6 +21,9 @@
+  *
+  */
+ #include <drm/drmP.h>
++#if DRM_VERSION_CODE >= DRM_VERSION(5, 1, 0)
++#include <drm/drm_probe_helper.h>
++#endif
+ #include "amdgpu.h"
+ #include "amdgpu_pm.h"
+ #include "amdgpu_i2c.h"
+@@ -1619,6 +1622,8 @@
+ #if DRM_VERSION_CODE < DRM_VERSION(4, 14, 0) && \
+ 	!defined(OS_NAME_SUSE_15) && !defined(OS_NAME_SUSE_15_1)
+ 	err = drm_hdmi_avi_infoframe_from_display_mode(&frame, mode);
++#elif DRM_VERSION_CODE >= DRM_VERSION(5, 1, 0)
++	err = drm_hdmi_avi_infoframe_from_display_mode(&frame, connector, mode);
+ #else
+ 	err = drm_hdmi_avi_infoframe_from_display_mode(&frame, mode, false);
+ #endif

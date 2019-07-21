@@ -1,0 +1,12 @@
+--- ./amd/amdgpu/dce_virtual.c.orig	2019-07-06 00:42:03.000000000 +0000
++++ ./amd/amdgpu/dce_virtual.c	2019-07-23 17:48:36.552435159 +0000
+@@ -21,6 +21,9 @@
+  *
+  */
+ #include <drm/drmP.h>
++#if DRM_VERSION_CODE >= DRM_VERSION(5, 1, 0)
++#include <drm/drm_probe_helper.h>
++#endif
+ #include "amdgpu.h"
+ #include "amdgpu_pm.h"
+ #include "amdgpu_i2c.h"

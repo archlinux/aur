@@ -1,0 +1,21 @@
+--- ./amd/display/amdgpu_dm/amdgpu_dm.c.orig	2019-07-06 00:42:03.000000000 +0000
++++ ./amd/display/amdgpu_dm/amdgpu_dm.c	2019-07-23 17:48:36.555768491 +0000
+@@ -64,6 +64,9 @@
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_dp_mst_helper.h>
+ #include <drm/drm_fb_helper.h>
++#if DRM_VERSION_CODE >= DRM_VERSION(5, 1, 0)
++#include <drm/drm_probe_helper.h>
++#endif
+ #include <drm/drm_edid.h>
+ 
+ #if defined(CONFIG_DRM_AMD_DC_DCN1_0)
+@@ -2010,6 +2013,8 @@
+ 				     * integrate modeset lock with private objects" upstreamed.
+ 				     */
+ 				    adev->ddev,
++#elif DRM_VERSION_CODE >= DRM_VERSION(5, 1, 0)
++				    adev->ddev,
+ #endif
+ 				    &adev->dm.atomic_obj,
+ 				    &state->base,

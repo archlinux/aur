@@ -1,0 +1,12 @@
+--- ./amd/amdgpu/amdgpu_acpi.c.orig	2019-07-06 00:42:03.000000000 +0000
++++ ./amd/amdgpu/amdgpu_acpi.c	2019-07-23 17:48:36.532435161 +0000
+@@ -29,6 +29,9 @@
+ #include <acpi/video.h>
+ #include <drm/drmP.h>
+ #include <drm/drm_crtc_helper.h>
++#if DRM_VERSION_CODE >= DRM_VERSION(5, 1, 0)
++#include <drm/drm_probe_helper.h>
++#endif
+ #include "amdgpu.h"
+ #include "amdgpu_pm.h"
+ #include "amdgpu_display.h"

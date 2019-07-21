@@ -1,0 +1,30 @@
+--- ./Makefile.orig	2019-07-06 00:42:03.000000000 +0000
++++ ./Makefile	2019-07-23 17:48:36.559101824 +0000
+@@ -18,11 +18,17 @@
+ OS_VERSION = $(shell sed -n 's/^VERSION_ID=\(.*\)/\1/p' /etc/os-release)
+ endif
+ else
++ifneq (,$(wildcard /etc/arch-release))
++OS_NAME = "arch"
++else ifneq (,$(wildcard /etc/artix-release))
++OS_NAME = "arch"
++else
+ OS_NAME = "unknown"
++endif
+ OS_VERSION = "0.0"
+ endif
+ 
+-ifneq ($(findstring $(OS_NAME), "ubuntu" "sled" "sles" "opensuse" "opensuse-leap" "amzn" "custom-rhel"),)
++ifneq ($(findstring $(OS_NAME), "ubuntu" "sled" "sles" "opensuse" "opensuse-leap" "amzn" "custom-rhel" "arch"),)
+ DRM_VER=$(shell sed -n 's/^VERSION = \(.*\)/\1/p' $(kdir)/Makefile)
+ DRM_PATCH=$(shell sed -n 's/^PATCHLEVEL = \(.*\)/\1/p' $(kdir)/Makefile)
+ else ifeq ("debian", $(OS_NAME))
+@@ -60,6 +66,8 @@
+ subdir-ccflags-y += -DOS_NAME_AMZ
+ else ifeq ("debian",$(OS_NAME))
+ subdir-ccflags-y += -DOS_NAME_DEBIAN
++else ifeq ("arch",$(OS_NAME))
++subdir-ccflags-y += -DOS_NAME_ARCH
+ else
+ subdir-ccflags-y += -DOS_NAME_UNKNOWN
+ endif
