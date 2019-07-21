@@ -1,0 +1,16 @@
+pkgbase = optizelle
+	pkgdesc = library designed to solve general purpose nonlinear optimization problems
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.optimojoe.com/products/optizelle/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = jsoncpp
+	depends = lapack
+	source = https://github.com/OptimoJoe/Optizelle/archive/v1.2.0.tar.gz
+	sha256sums = 4a0039561d5209f9864795cad827690970113b2ffff5595535539861fd0842ca
+
+pkgname = optizelle
+
