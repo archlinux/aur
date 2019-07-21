@@ -1,5 +1,4 @@
 # Maintainer: Manuel Palenzuela <sadshinobi@protonmail.com>
-# The git version is suffering of some bugs and the makefile will be updated when the bugs are fixed
 
 author=vn-ki
 pkgname=anime-downloader-git
@@ -27,6 +26,6 @@ pkgver() {
 }
 
 package() {
-    cd "$_gitname"
-    pip install --isolated --root=$pkgdir --ignore-installed --no-deps --no-warn-script-location $_gitname
+    #pip install --isolated --root=$pkgdir --ignore-installed --no-deps --no-warn-script-location -U git+https://github.com/$author/$_gitname.git
+     pip install --isolated --root=$pkgdir --ignore-installed --no-deps --no-warn-script-location -U $srcdir/$_gitname
 }
