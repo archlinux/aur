@@ -2,7 +2,7 @@
 # Contributor: Nicky D
 
 pkgname=firestorm-nightly
-pkgver=r57615.0af2879f89e3
+pkgver=r57620.595189b1b1da
 pkgrel=1
 pkgdesc="Firestorm is FOSS where you can build & share Virtual Reality (VR) in OpenSim/SecondLife (P2P). Meet people in 3D! Source build."
 arch=('i686' 'x86_64')
@@ -23,8 +23,8 @@ makedepends=('cmake' 'gcc' 'python2-virtualenv' 'python2-pip' 'mercurial')
 conflicts=('firestorm-bin' 'firestorm' 'firestorm-beta')
 provides=('firestorm-nightly')
 
-source=("$pkgname"::'hg+http://hg.phoenixviewer.com/phoenix-firestorm-lgpl' 'autovars' 'firestorm.desktop' 'firestorm.launcher')
-md5sums=('SKIP' '7245883fbdba303d4f827f60907574c6' '5e3dade65948533ff8412da776029179' '3daa9e24492337e62bcac318df4ab370')
+source=("$pkgname"::'hg+http://hg.phoenixviewer.com/phoenix-firestorm-lgpl' 'autovars' 'firestorm.desktop' 'firestorm.launcher' 'dontTarSelf.patch')
+md5sums=('SKIP' '7245883fbdba303d4f827f60907574c6' '5e3dade65948533ff8412da776029179' '3daa9e24492337e62bcac318df4ab370' '5ce1e87b6cbdd300d52906de7444f264')
 
 pkgver() {
 	cd "$pkgname"
@@ -40,6 +40,8 @@ prepare() {
 	pip install --upgrade autobuild
 
 	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE
+	cd indra/newview
+	patch -Np0 -i "$srcdir/dontTarSelf.patch"
 }
 
 build() {

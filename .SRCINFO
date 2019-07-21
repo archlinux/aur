@@ -1,6 +1,6 @@
 pkgbase = firestorm-nightly
 	pkgdesc = Firestorm is FOSS where you can build & share Virtual Reality (VR) in OpenSim/SecondLife (P2P). Meet people in 3D! Source build.
-	pkgver = r57615.0af2879f89e3
+	pkgver = r57620.595189b1b1da
 	pkgrel = 1
 	url = https://www.firestormviewer.org/
 	arch = i686
@@ -48,10 +48,12 @@ pkgbase = firestorm-nightly
 	source = autovars
 	source = firestorm.desktop
 	source = firestorm.launcher
+	source = dontTarSelf.patch
 	md5sums = SKIP
 	md5sums = 7245883fbdba303d4f827f60907574c6
 	md5sums = 5e3dade65948533ff8412da776029179
 	md5sums = 3daa9e24492337e62bcac318df4ab370
+	md5sums = 5ce1e87b6cbdd300d52906de7444f264
 
 pkgname = firestorm-nightly
 
