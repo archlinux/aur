@@ -1,0 +1,17 @@
+pkgbase = padd-git
+	pkgdesc = PADD - Pi-hole Ad Detection Display
+	pkgver = v3.0.2.r4.g03cfbd1
+	pkgrel = 1
+	url = https://github.com/jpmck/PADD
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = pi-hole-server
+	depends = netcat
+	provides = padd
+	conflicts = padd
+	source = padd-git::git+https://github.com/jpmck/PADD
+	md5sums = SKIP
+
+pkgname = padd-git
+
