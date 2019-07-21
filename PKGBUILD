@@ -1,5 +1,5 @@
 pkgname=kakoune-git
-pkgver=v2019.07.01_32_g837416ea
+pkgver=2019.07.01_r32_g837416ea
 pkgrel=1
 pkgdesc='Multiple-selection, UNIX-flavored modal editor'
 arch=('x86_64' 'armv7h')
@@ -27,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --tags | tr '-' '_'
+  git describe --tags | tr '-' '_' | sed 's/^v//; s/_/_r/'
 }
 
 check() {
