@@ -3,12 +3,15 @@
 
 pkgname=craftbukkit-spigot
 pkgver=1.13.2.2027
+#### Minecraft version to build. Just change this to build a different branch.
+#### Makepkg will automatically (unless --holdver is specified) select the most
+#### recent Spigot version for this Minecraft version.
 _pkgver=1.13.2
 _build="$(echo "$pkgver" | awk -F \. '{print $4}')"
 _build="${_build//_/-}"
 # Specify BuildTools version explicitly (instead of using
 # 'lastSuccessfulBuild') to let makepkg detect when needs to download an update
-_buildtoolver=99
+_buildtoolver=101
 pkgrel=1
 pkgdesc="CraftBukkit, Spigot, and vanilla Minecraft servers"
 arch=(any)
@@ -32,7 +35,7 @@ source=("BuildTools-${_buildtoolver}.jar::https://hub.spigotmc.org/jenkins/job/B
         "start_server.sh"
         "readme.md"
         "sysusers.conf")
-sha256sums=('31f976713c2780df99377dd54317fe3a637018ea03bf61617736f3f23e162768'
+sha256sums=('b27b683c9f30f22f56726af23350b9d6d870921443798b38adb341aead91d08c'
             'cf72cf4af41000c9d04d00722097e609b57cd57d12a7eb3fd8b90ed7f408f4fd'
             '58a675cf0bd3c514f9e65a67e5ef1d7c688a70d23afe4da5bfebea5e622b6b35'
             '16d2281874c953eb94141994d5a4c4c31b0b3f7d51652ebdad1f2367fdeaea8c'
@@ -75,7 +78,7 @@ package() {
   install -Dm755 "$srcdir/craftbukkit-mcrcon.sh" "$pkgdir/usr/bin/craftbukkit-mcrcon"
   install -Dm755 "$srcdir/craftbukkit-save.sh" "$pkgdir/usr/bin/craftbukkit-save"
 
-  install -Dm644 "$srcdir/craftbukkit-${_pkgver}.jar" "$pkgdir/usr/share/java/$pkgname/craftbukkit.jar"
+  install -Dm644 "$srcdir/CraftBukkit/target"/craftbukkit*.jar "$pkgdir/usr/share/java/$pkgname/craftbukkit.jar"
   install -Dm644 "$srcdir/spigot-${_pkgver}.jar" "$pkgdir/usr/share/java/$pkgname/spigot.jar"
   install -Dm644 "$srcdir/work/minecraft_server.${_pkgver}.jar" "$pkgdir/usr/share/java/$pkgname/minecraft.jar"
 
