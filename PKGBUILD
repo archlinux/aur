@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/tsl0922/ttyd.git"
 license=('MIT')
 builddepends=('cmake' 'base-devel')
-depends=('libwebsockets-git')
+depends=('libwebsockets')
 source=(
   "git+https://github.com/tsl0922/ttyd.git"
   )
