@@ -1,23 +1,23 @@
 pkgbase = qemu-arm-static
 	pkgdesc = Statically linked qemu-arm, qemu-armeb and qemu-aarch64 executables from Alpine
-	pkgver = 2.12.0r3
-	pkgrel = 2
+	pkgver = 4.0.0r1
+	pkgrel = 1
 	url = https://alpinelinux.org/
 	install = qemu-arm-static.install
 	arch = x86_64
 	license = GPL2
-	source = http://rsync.alpinelinux.org/alpine/v3.8/main/x86_64/qemu-aarch64-2.12.0-r3.apk
-	source = http://rsync.alpinelinux.org/alpine/v3.8/main/x86_64/qemu-arm-2.12.0-r3.apk
-	source = http://rsync.alpinelinux.org/alpine/v3.8/main/x86_64/qemu-armeb-2.12.0-r3.apk
+	source = http://rsync.alpinelinux.org/alpine/v3.10/main/x86_64/qemu-aarch64-4.0.0-r1.apk
+	source = http://rsync.alpinelinux.org/alpine/v3.10/main/x86_64/qemu-arm-4.0.0-r1.apk
+	source = http://rsync.alpinelinux.org/alpine/v3.10/main/x86_64/qemu-armeb-4.0.0-r1.apk
 	source = aarch64.binfmt
 	source = arm.binfmt
 	source = armeb.binfmt
-	sha256sums = 3d91f0bf036af25b83e07e9cbd02bcb07628ba8667b73ff4310b4f6ac12c65db
-	sha256sums = e75f35395a3104615b2b07531ee417fbf129b78be4be919eebbc0d035e80ba1f
-	sha256sums = d1952260524dc96526090ee8ccdfe81dcd5bd51d5fe87bb0fbe5525a7467834f
-	sha256sums = 28196e4d37bc67144db8c4840aee1945b734c4e6c2fbd27ae18a4f4ef0a002be
-	sha256sums = 41ff65086d8625cbf405dd267b7c240e21e4c2b12259c52d6dfa281899a7d1d3
-	sha256sums = fe40aadf94d6c519d9c1e6950f5bf17f5862affbf4018b7e8367b5ca5f2d76fb
+	md5sums = 7183d884aa194d66ccf188ad1dc6dc6f
+	md5sums = 8fbfb8d7d30ac05ecdb22650f14b103b
+	md5sums = 331e32fdfd074c6ee70c16d8e1a3653e
+	md5sums = 209e75696b9f8d9c5e548ebae4c7d820
+	md5sums = c4d349aea05c4c6232998af6d750d937
+	md5sums = 30a72492eb2ba68dfbe70368f2e8a22b
 
 pkgname = qemu-arm-static
 
