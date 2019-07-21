@@ -1,12 +1,12 @@
 # Maintainer: thepasto <thepasto@gmail.com>
 pkgname=kodi-addon-pvr-iptvsimple
-pkgver=3.5.7
+pkgver=3.5.8
 pkgrel=1
 pkgdesc='IPTV Simple PVR client addon for Kodi'
 _koditarget=Leia
 _gitname=pvr.iptvsimple
-_kodiver=18.1
-arch=('armv7h' 'i686' 'x86_64')
+_kodiver=18.3
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/${_gitname}"
 license=('GPL')
 groups=('kodi')
@@ -16,12 +16,12 @@ depends=('kodi' 'git')
 source=("https://github.com/kodi-pvr/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('eb1a72baaf5d0a6766214eb452c8e8635ac1d917ac621a76b70d0138c63b9341'
-            'bc1ef0e271d0b6ce2e1be7546ad4f7d330930d7631cc19a9bbc5f75ddc586166')
+sha256sums=('84e985b5b31044352eaf54914c266a1775f6b7c32a6ce6a46001ddb7d1f9d7fa'
+            '4f265901c00f582beb8d6ad96c9c303e5ab82611e828c7121ae822b07c0915cc')
 
 prepare() {
         cd xbmc-${_kodiver}-${_koditarget}
-        sed -i "s|-p1 -i|--binary -p1 -i|" cmake/scripts/common/HandleDepends.cmake
+        #sed -i "s|-p1 -i|--binary -p1 -i|" cmake/scripts/common/HandleDepends.cmake
 }
 
 build() {
