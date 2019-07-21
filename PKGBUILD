@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://aurlib.allenyou.wang/$pkgname/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('db1c9735e6cbb187026e6f2bc006571e')
+md5sums=('9f75ec7a09dc3c8ceabeda793aa4f801')
 validpgpkeys=()
 
 build() {
