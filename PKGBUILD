@@ -33,14 +33,14 @@ source=(
 	"upstream_3.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/freetype2&id=$__arch_pkg_commit"
 
 	# FreeType source code.
-	https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz
+	https://sourceforge.net/projects/freetype/files/freetype2/${pkgver}/freetype-${pkgver}.tar.gz/download
 )
 sha1sums=(
 	"4d111cc93d9a7aca79b4a75ccd069df08aa2ad26"
 	"283427030ef4b942f01e24ba022f2b84f1733fa8"
 	"1efd1e1db64cb7705296b724920d6328ff5f1f14"
 	"6b289e2ba54a4513af9aa3981b374fccb20ffc89"
-	"79874ef4eaa52025126b71d836453b8279bdd331"
+	"3296b64ad1e7540289f22e4b6383e26e928b0a20"
 )
 
 prepare()
