@@ -1,4 +1,4 @@
-pkgbase = cisco-anyconnect-installer
+pkgbase = cisco-anyconnect-tarball
 	pkgdesc = Cisco AnyConnect Secure Mobility Client
 	pkgver = 4.7.00136
 	pkgrel = 1
