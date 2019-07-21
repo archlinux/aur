@@ -7,7 +7,9 @@ pkgbase = digital
 	license = GPL
 	depends = java-runtime
 	source = https://github.com/hneemann/Digital/releases/download/v0.22/Digital.zip
+	source = digital.desktop
 	sha256sums = f449e1f7baaf04a2fde43b9c710df2b2051a17cedba02e0b3235b0984663b739
+	sha256sums = cec54a264aa24c5116521d0846b88da4e6a032ce85f484782d5ad222c024e29c
 
 pkgname = digital
 
