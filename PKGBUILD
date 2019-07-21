@@ -1,4 +1,3 @@
-_ref=""
 pkgname=kakoune-git
 pkgver=r7175.3e89148d
 pkgrel=1
@@ -23,7 +22,7 @@ makedepends=(
 )
 provides=('kakoune')
 conflicts=('kakoune')
-source=("${pkgname}::git+https://github.com/mawww/kakoune.git${_ref}")
+source=("${pkgname}::git+https://github.com/mawww/kakoune.git")
 sha256sums=('SKIP')
 
 pkgver() {
