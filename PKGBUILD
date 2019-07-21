@@ -17,7 +17,7 @@ build() {
 	cd $srcdir/cleardns
 	go get github.com/miekg/dns
 	go get github.com/steakknife/bloomfilter
-	go build
+	go build -buildmode=pie
 }
 package() {
 	install -Dm755 $srcdir/cleardns/cleardns $pkgdir/usr/bin/cleardns
