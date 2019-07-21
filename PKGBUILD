@@ -6,13 +6,13 @@ _tag=v0.7.0-beta
 pkgbase=${_pkgname}
 pkgname=("${_pkgname}" "${_pkgname2}")
 pkgver=0.7.0.beta
-pkgrel=1
+pkgrel=2
 pkgdesc="A python implementation of the Double Ratchet algorithm"
 url='https://github.com/Syndace/python-doubleratchet'
 license=('MIT')
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git#tag=${tag}")
+source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
 pkgver() {
