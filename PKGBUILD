@@ -3,7 +3,7 @@
 # Contributor: Romain "Artefact2" Dalmaso <artefact2@gmail.com>
 # Contributor: Bob Fanger < bfanger(at)gmail >
 pkgname=apachetop
-pkgver=0.18.4
+pkgver=0.19.7
 pkgrel=1
 pkgdesc="A curses-based top-like display for Apache information, including requests per second, bytes per second, most popular URLs, etc."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('ncurses')
 makedepends=()
 source=(https://github.com/tessus/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=(34ee3ad380f1f7c055a96296420f15011b522781691137ea4e3a36f6bd195568)
+sha256sums=('7f0ad1cd11cd1f86052bbfd63f27ecb6cb74012a17321354af70abf05998c4eb')
 
 build() {
         cd "${pkgname}-${pkgver}"
