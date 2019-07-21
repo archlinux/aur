@@ -1,20 +1,15 @@
 pkgbase = brother-ql800
 	pkgdesc = LPR and CUPS driver for Brother QL-800 label printer
-	pkgver = 1.1.4r0
+	pkgver = 3.1.5r0
 	pkgrel = 1
-	url = http://solutions.brother.com/linux/en_us/
+	url = https://support.brother.com
 	install = brother-ql800.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = cups
-	depends = lib32-glibc
-	source = http://download.brother.com/welcome/dlfp100336/ql800lpr-1.1.4-0.i386.rpm
-	source = http://download.brother.com/welcome/dlfp100338/ql800cupswrapper-1.1.4-0.i386.rpm
-	source = LICENSE
-	sha256sums = a9efb20988a08a3338a634173fac0dbe19dc1cc98e4c989dc63519a3db18548f
-	sha256sums = 081750db20b0a09dd024ec016ddcb78770e223e28520559a2ba8caa700f6d11e
-	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+	source = https://download.brother.com/welcome/dlfp100336/ql800pdrv-3.1.5-0.i386.rpm
+	sha256sums = 22c7d1ef1532df736bcb6439c512619290cae23ff8d3c67ec27c2fa43a653c73
 
 pkgname = brother-ql800
 

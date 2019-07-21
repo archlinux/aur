@@ -1,68 +1,93 @@
 # Maintainer: Karol Babioch <karol@babioch.de>
-# Inspired by package brother-dcp130c
 
-pkgname='brother-ql800'
-pkgver=1.1.4r0
+pkgname=brother-ql800
+pkgver=3.1.5r0
 pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother QL-800 label printer'
-url='http://solutions.brother.com/linux/en_us/'
+url='https://support.brother.com'
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('cups')
-if [ "$CARCH" = 'x86_64' ]; then
-  depends+=('lib32-glibc')
-fi
-install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp100336/ql800lpr-${pkgver/r/-}.i386.rpm"
-        "http://download.brother.com/welcome/dlfp100338/ql800cupswrapper-${pkgver/r/-}.i386.rpm"
-        'LICENSE')
-sha256sums=('a9efb20988a08a3338a634173fac0dbe19dc1cc98e4c989dc63519a3db18548f'
-            '081750db20b0a09dd024ec016ddcb78770e223e28520559a2ba8caa700f6d11e'
-            'cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811')
+install="${pkgname}.install"
+source=("https://download.brother.com/welcome/dlfp100336/ql800pdrv-${pkgver/r/-}.i386.rpm")
+sha256sums=('22c7d1ef1532df736bcb6439c512619290cae23ff8d3c67ec27c2fa43a653c73')
 
 prepare()
 {
-  #  do not install in '/usr/local'
-  if [ -d $srcdir/usr/local/Brother ]; then
-    install -d $srcdir/usr/share
-    mv $srcdir/usr/local/Brother/ $srcdir/usr/share/brother
-    rm -rf $srcdir/usr/local
-    sed -i 's|/usr/local/Brother|/usr/share/brother|g' `grep -lr '/usr/local/Brother' ./`
-  fi
+  # Create necessary CUPS directories
+  install -d "${srcdir}/usr/share/cups/model"
+  install -d "${srcdir}/usr/lib/cups/filter"
+  install -d "${srcdir}/usr/bin"
 
-  # setup cups directories
-  install -d "$srcdir/usr/share/cups/model"
-  install -d "$srcdir/usr/lib/cups/filter"
+  # Locate cupswrapper script
+  _cupswrapper=$(find "${srcdir}/opt/brother/PTouch/" -type f -name 'cupswrapper*')
+  echo "cupswrapper: ${_cupswrapper}"
 
-  #  go to the cupswrapper directory and find the source file from wich to generate a ppd- and wrapper-file
-  cd `find . -type d -name 'cupswrapper'`
-  if [ -f cupswrapper* ]; then
-    _wrapper_source=`ls cupswrapper*`
-    sed -i '/^\/etc\/init.d\/cups/d' $_wrapper_source
-    sed -i '/^sleep/d' $_wrapper_source
-    sed -i '/^echo lpadmin/d' $_wrapper_source
-    sed -i '/^lpadmin/d' $_wrapper_source
-    sed -i 's|/usr|$srcdir/usr|g' $_wrapper_source
-    sed -i 's|/opt|$srcdir/opt|g' $_wrapper_source
-    sed -i 's|/model/Brother|/model|g' $_wrapper_source
-    sed -i 's|lpinfo|echo|g' $_wrapper_source
-    export srcdir=$srcdir
-    ./$_wrapper_source
-    sed -i 's|$srcdir||' $srcdir/usr/lib/cups/filter/*lpdwrapper*
-    sed -i "s|$srcdir||" $srcdir/usr/lib/cups/filter/*lpdwrapper*
-    rm $_wrapper_source
-  fi
+  # Locate lpdwrapper script / symlink
+  _lpdwrapper=$(find "${srcdir}/opt/brother/PTouch/" -name "brother_lpdwrapper_*")
+  echo "lpdwrapper: ${_lpdwrapper}"
 
-  #  /etc/printcap is managed by cups
-  rm `find $srcdir -type f -name 'setupPrintcap*'`
+  # Basename of lpdwrapper script
+  _lpdwrapper_basename="$(basename "${_lpdwrapper}")"
+  echo "lpdwrapper_basename: ${_lpdwrapper_basename}"
+
+  # Get model name of driver based on name from lpdwrapper script (e.g. brother_lpdwrapper_ql720nw -> ql720nw)
+  _model="${_lpdwrapper_basename##brother_lpdwrapper_}"
+  echo "model: ${_model}"
+
+  # Patch cupswrapper script
+  sed -i '/^sleep/d' ${_cupswrapper}
+  sed -i '/^echo lpadmin/d' ${_cupswrapper}
+  sed -i '/^lpadmin/d' ${_cupswrapper}
+  sed -i "s|/usr|${srcdir}/usr|g" ${_cupswrapper}
+  sed -i "s|/opt|${srcdir}/opt|g" ${_cupswrapper}
+  sed -i "s|/model/Brother|/model|g" ${_cupswrapper}
+  sed -i 's|lpinfo|echo|g' ${_cupswrapper}
+
+  # Remove potential symlink (from previous runs)
+  rm -f "${srcdir}/usr/lib/cups/filter/${_lpdwrapper_basename}"
+
+  # Invoke cupswrapper script
+  export srcdir=${srcdir}
+  ${_cupswrapper}
+
+  # Patch resulting filter
+  sed -i "s|${srcdir}||" "${_lpdwrapper}"
+
+  # Remove unneeded script (i.e. /etc/printcap is managed by CUPS)
+  rm $(find "${srcdir}" -type f -name 'setupPrintcap*')
+
+  # Make symlink absolute
+  rm "${srcdir}/usr/lib/cups/filter/${_lpdwrapper_basename}"
+  ln -s "/opt/brother/PTouch/${_model}/cupswrapper/${_lpdwrapper_basename}" "${srcdir}/usr/lib/cups/filter/${_lpdwrapper_basename}"
+
+  # Move arch-specific binaries into the correct locations
+  mv "${srcdir}/opt/brother/PTouch/${_model}/lpd/${CARCH}/brpapertoolcups" "${srcdir}/opt/brother/PTouch/${_model}/lpd"
+  mv "${srcdir}/opt/brother/PTouch/${_model}/lpd/${CARCH}/rastertobrpt1" "${srcdir}/opt/brother/PTouch/${_model}/lpd"
+  mv "${srcdir}/opt/brother/PTouch/${_model}/lpd/${CARCH}/brpapertoollpr_${_model}" "${srcdir}/usr/bin"
+  mv "${srcdir}/opt/brother/PTouch/${_model}/lpd/${CARCH}/brprintconfpt1_${_model}" "${srcdir}/usr/bin"
+
+  # Remove unneeded binaries / directories (for other architectures, etc.)
+  rm -r "${srcdir}/opt/brother/PTouch/${_model}/lpd/"{i686,x86_64}
 }
 
-package() {
-  cd "$srcdir"
+package()
+{
+  # Install actual content
+  cp -R "${srcdir}/usr" "${pkgdir}"
+  cp -R "${srcdir}/opt" "${pkgdir}"
 
-  cp -R usr $pkgdir
-  if [ -d opt ]; then cp -R opt $pkgdir; fi
+  # Set some file ownerships and permissions
+  # infdir, e.g. /opt/brother/PTouch/ql720nw/inf/
+  _infdir=$(find "${pkgdir}/opt/brother/PTouch/" -type d -name 'inf')
+  chown root:lp ${_infdir}
+  chmod 775 ${_infdir}
+  # rcfile, e.g. /opt/brother/PTouch/ql720nw/inf/brql720nwrc
+  _rcfile=$(find "${pkgdir}/opt/brother/PTouch/" -type f -name '*rc')
+  chown daemon:lp ${_rcfile}
+  chmod 664 ${_rcfile}
 
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # Handle licenses
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  find "${pkgdir}" -type f -name 'LICENSE*.txt' -exec mv -t "${pkgdir}/usr/share/licenses/${pkgname}" {} +
 }
-
