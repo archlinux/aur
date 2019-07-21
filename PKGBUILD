@@ -28,7 +28,7 @@ prepare() {
     # Enable at your own risk. If you don't know what it is,
     # and its implications, leave it as is. You have been warned.
     # I am not liable if anything happens to you by using it.
-    patch -p1 -i ../dxvk-async.patch
+    #patch -p1 -i ../dxvk-async.patch
 }
 
 build() {
