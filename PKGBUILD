@@ -2,7 +2,7 @@
 
 pkgname=brother-ql700
 pkgver=3.1.5r0
-pkgrel=1
+pkgrel=2
 pkgdesc='LPR and CUPS driver for Brother QL-700 label printer'
 url='https://support.brother.com'
 arch=('i686' 'x86_64')
