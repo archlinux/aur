@@ -1,4 +1,4 @@
-pkgbase = wexond
+pkgbase = wexond-appimage
 	pkgdesc = A privacy-focused, extensible and beautiful web browser
 	pkgver = 2.2.3
 	pkgrel = 1
@@ -6,16 +6,15 @@ pkgbase = wexond
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = p7zip
 	provides = wexond
 	conflicts = wexond
 	options = !strip
-	source = wexond
+	source = wexond.sh
 	sha256sums = SKIP
 	source_i686 = wexond-2.2.3.AppImage::https://github.com/wexond/wexond/releases/download/v2.2.3/wexond-2.2.3-i386.AppImage
 	sha256sums_i686 = 6810f89c1af92eab502c3be5e9d93d3c2be4f8fea2e699cd72c8693cace30c84
 	source_x86_64 = wexond-2.2.3.AppImage::https://github.com/wexond/wexond/releases/download/v2.2.3/wexond-2.2.3-x86_64.AppImage
 	sha256sums_x86_64 = ea1906f136c154520e7bc599e2ab6fd439ca74ef473e49f4e454930d8faf6619
 
-pkgname = wexond
+pkgname = wexond-appimage
 
