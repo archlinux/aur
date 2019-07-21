@@ -1,7 +1,7 @@
-# Maintainer: Marc Heinimann <marc.heinimann@posteo.de> 
+# Maintainer: Nicky Heinimann <nicky.heinimann@posteo.de> 
 
 pkgname=indicator-sound-switcher
-pkgver=2.2.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Sound input/output selector indicator for Ubuntu/Unity"
 arch=('any')
