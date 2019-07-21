@@ -1,10 +1,11 @@
 pkgbase = sync-my-l2p
 	pkgdesc = Sync the L2P and moodle instance of RWTH Aachen University
 	pkgver = 2.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://syncmyl2p.de/
 	arch = x86_64
 	license = LGPL3
+	makedepends = git
 	depends = hicolor-icon-theme
 	depends = qt5-base
 	source = git+https://github.com/RobertKrajewski/Sync-my-L2P.git#commit=b35e60690f68c376bed925dfe0fa605a3c9e9f17

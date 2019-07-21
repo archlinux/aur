@@ -3,12 +3,13 @@
 _realname=Sync-my-L2P
 pkgname=sync-my-l2p
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Sync the L2P and moodle instance of RWTH Aachen University'
 arch=('x86_64')
 url='https://syncmyl2p.de/'
 license=('LGPL3')
 depends=('hicolor-icon-theme' 'qt5-base')
+makedepends=('git')
 _commit=b35e60690f68c376bed925dfe0fa605a3c9e9f17 # tags/v2.4.1^0
 source=("git+https://github.com/RobertKrajewski/$_realname.git#commit=$_commit"
         "https://github.com/RobertKrajewski/$_realname/releases/download/v$pkgver/SyncMyL2P-$pkgver-linux.AppImage")
