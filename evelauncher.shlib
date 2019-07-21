@@ -32,8 +32,8 @@ check_wine() {
     fi
     INSTWINE=$(cat $WINEPREFIX/.update-timestamp 2>/dev/null | tr -dc [:digit:]) || true
     WINEINFP=$(readlink -f $CUSTOMWP)
-    WINECONF=$(find ${WINEINFP%/bin*}/share -name 'wine.inf' 2>/dev/null)
-    WINEDATE=$(ls -l --time-style=+%s "$WINECONF" 2>/dev/null | cut -d' ' -f6)
+    WINECONF=${WINEINFP%/bin*}/share/wine/wine.inf
+    WINEDATE=$(ls -l --time-style=+%s $WINECONF 2>/dev/null | cut -d' ' -f6)
     if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
 	desktop_msg "Preparing wine in $WINEPREFIX"
 	env WINEPREFIX=$WINEPREFIX \
