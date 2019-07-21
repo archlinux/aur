@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Smart Contracts deployment tool"
 arch=('x86_64')
 depends=('solidity')
-makedepends=('go')
+makedepends=('go' 'make')
 
 url="https://github.com/qtumproject/solar"
 license=('MIT')

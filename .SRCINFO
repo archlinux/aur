@@ -6,6 +6,7 @@ pkgbase = solar-git
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = make
 	depends = solidity
 	provides = solar
 	conflicts = solar
