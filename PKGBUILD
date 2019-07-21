@@ -18,7 +18,7 @@ prepare() {
     cd "wrapper_${pkgver}_src"
 
     _ver=$(javac -version 2>&1 |awk '{print $2}')
-    #msg "Detected Java $_ver"
+    msg "Detected Java $_ver"
     [[ "$_ver" =~ ^1[0-4]\. ]] &&
         patch -Np0 -i "$srcdir/java10.patch"
 
@@ -34,7 +34,7 @@ build() {
     export ANT_OPTS="-Dfile.encoding=UTF-8"
     export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
 
-    [[ "$(javac -version 2>&1 |awk '{print $2}')" =~ ^1[0-4]\. ]] &&
+    [[ "$(javac -version 2>&1 |awk '{print $2}')" =~ ^1[1-4]\. ]] &&
                                           _target=11  || _target=8
     [[ "$CARCH" = @(x86_64|aarch64) ]] && _bits=64    || _bits=32
     [[ "$CARCH" = arm*              ]] && _arch=armhf || _arch=x86
