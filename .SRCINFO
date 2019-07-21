@@ -6,8 +6,8 @@ pkgbase = oi-tools-allenyou
 	url = https://www.allenyou.wang
 	arch = any
 	license = GPL3
-	source = http://aurlib.allenyou.wang/oi-tools-allenyou/oi-tools-allenyou-1.0.1000r.tar.gz
-	md5sums = e2660dbaa051985d27f0723095db23fd
+	source = https://aurlib.allenyou.wang/oi-tools-allenyou/oi-tools-allenyou-1.0.1000r.tar.gz
+	md5sums = db1c9735e6cbb187026e6f2bc006571e
 
 pkgname = oi-tools-allenyou
 

@@ -24,9 +24,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://aurlib.allenyou.wang/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://aurlib.allenyou.wang/$pkgname/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('e2660dbaa051985d27f0723095db23fd')
+md5sums=('db1c9735e6cbb187026e6f2bc006571e')
 validpgpkeys=()
 
 build() {
