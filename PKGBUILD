@@ -2,7 +2,7 @@
 # Contributor: Jeremy MountainJohnson <jskier@gmail.com>
 
 pkgname=xfce-evolution-themes
-pkgver=6.2.2
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="The Xfce Evolution theme attempts to rid the Xfce desktop of visual distractions by providing a more consistent look (buttons, scrollbars, menus, etc) across older and newer applications."
 arch=('any')
@@ -11,7 +11,7 @@ license=(GPLv2)
 depends=(gtk-engine-murrine)
 optdepends=(lib32-gtk-engine-murrine qt5-styleplugins noto-fonts elementary-xfce-icons nemo)
 source=(https://downloads.sourceforge.net/project/xfce-evolution/xfce-evolution-${pkgver}.zip)
-sha512sums=('b98f122734823be9aa1f386f58e4e4fd581c825aa4733f30eec21b011a4500d3b3fcbde23e17a740a50b63c23c5ebbdeabce51ba0425e7456c8ba3caf4fa2340')
+sha512sums=('c309fdbce02b9a31245411771aef8e17b83b184ff4570f16bdb4fadd5b804df2012360162c7eeebd83c7864ab5f78c96a12db6b3ce84960a625353e9fb4f2ffd')
 
 package() {
     # Set correct mode on files from zip source extraction
