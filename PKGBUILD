@@ -2,17 +2,17 @@
 
 _pkgname=python-xeddsa
 _pkgname2=python2-xeddsa
-_tag=v0.4.6-beta
+_tag=v0.4.7-beta
 pkgbase=${_pkgname}
 pkgname=("${_pkgname}" "${_pkgname2}" "${_pkgname}-ref10")
-pkgver=0.4.6.beta
+pkgver=0.4.7.beta
 pkgrel=1
 pkgdesc="A python implementation of the XEdDSA signature scheme"
 url='https://github.com/Syndace/python-xeddsa'
 license=('MIT')
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools' 'cmake' 'libsodium')
-source=("${_pkgname}::git+https://github.com/Syndace/python-xeddsa.git#tag=${tag}")
+source=("${_pkgname}::git+https://github.com/Syndace/python-xeddsa.git#tag=${_tag}")
 sha256sums=('SKIP')
 
 pkgver() {
