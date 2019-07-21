@@ -48,12 +48,10 @@ pkgbase = firestorm
 	source = autovars
 	source = firestorm.desktop
 	source = firestorm.launcher
-	source = dontTarSelf.patch
 	md5sums = SKIP
 	md5sums = 7245883fbdba303d4f827f60907574c6
 	md5sums = 5e3dade65948533ff8412da776029179
 	md5sums = 3daa9e24492337e62bcac318df4ab370
-	md5sums = 5ce1e87b6cbdd300d52906de7444f264
 
 pkgname = firestorm
 
