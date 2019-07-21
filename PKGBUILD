@@ -51,10 +51,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.1
-_minor=18
+_minor=19
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=4
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -374,7 +374,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('00220f6121b1ccf6d287c2e50012b601673e11d6064e7202c6422efd350acab06bcd0be9f9a70490cc683b053bcac7c56943015db380923352e8a18be68d00f7'
+sha512sums=('cc9003d524088ffed93d2220aef5657f8adbe37d6b60de33e6746d92c8aabdce0069cfb5ad2a8f208a229246e87fe96ee763b5d612bb3fd5d970c29a64719cdb'
             'SKIP'
             '8d9547ff38096b99d296cdec9875b816960c09db31acebb033e3660ba65475d1f310578282cac74947d75dff844dd22d7e7c2e4ded12368d32314fe145763752'
             '08409bca9c5e92840635b3bdd2267f5177334a29e5460d5e52e62ed3bf228b5bd9e6ac27491570a5d627faadeba558e5eab4c8789525fa57c9c20891ea75261e'
