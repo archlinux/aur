@@ -3,13 +3,13 @@
 pkgname=mio-git
 _pkgname=mio
 pkgver=r118.b9737f6
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform C++11 header-only library for memory mapped file IO"
 arch=(any)
 license=(MIT)
 makedepends=(git cmake make)
 depends=()
-provides=(rpclib)
+provides=(mio)
 source=("git://github.com/mandreyel/mio")
 url="https://github.com/mandreyel/mio"
 md5sums=(SKIP)
