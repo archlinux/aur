@@ -1,6 +1,6 @@
 pkgbase = dynconf
 	pkgdesc = A small program to apply recipes to configuration files
-	pkgver = 1.0.2
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/hahnjo/dynconf
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dynconf
 	makedepends = git
 	makedepends = go-pie
 	depends = glibc
-	source = git+https://github.com/hahnjo/dynconf#tag=v1.0.2?signed
+	source = git+https://github.com/hahnjo/dynconf#tag=v1.1?signed
 	validpgpkeys = 5F0FF9606A4BE87F553A03B691C9C33D2C61ACDB
 	sha256sums = SKIP
 
