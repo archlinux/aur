@@ -1,20 +1,21 @@
 pkgbase = libva-headless
 	pkgdesc = Video Acceleration (VA) API for Linux headless systems
-	pkgver = 2.3.0
+	pkgver = 2.5.0
 	pkgrel = 1
-	url = https://01.org/linuxmedia/vaapi
+	url = https://github.com/intel/libva
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	makedepends = meson
 	depends = libdrm
 	optdepends = libva-vdpau-driver: backend for Nvidia and AMD cards
 	optdepends = libva-intel-driver: backend for Intel cards
 	provides = libva
 	conflicts = libva
-	source = https://github.com/intel/libva/releases/download/2.3.0/libva-2.3.0.tar.bz2
-	sha256sums = 60840e50da6932ee2111e15fc8911180ff8a0d6f18bb9cc6ba8c1030098fdce4
+	source = https://github.com/intel/libva/archive/2.5.0.tar.gz
+	sha256sums = 9b6264dade6b6d3edb59c6c4f3c9217d1d5a195635fc07da875d565f58624418
 
 pkgname = libva-headless
 
