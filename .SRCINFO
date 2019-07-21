@@ -6,9 +6,9 @@ pkgbase = jsettlers-git
 	install = jsettlers-git.install
 	arch = any
 	license = MIT
-	makedepends = jdk8-openjdk
+	makedepends = java-environment=8
 	makedepends = unzip
-	depends = java-environment
+	depends = java-runtime=8
 	depends = sh
 	optdepends = settlers3-demo-data
 	provides = jsettlers
