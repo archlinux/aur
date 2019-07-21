@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-dynamic-panel-transparency
+	pkgdesc = Extension for GNOME shell, that allows to enable dynamic transparency for various shell elements
+	pkgver = 25
+	pkgrel = 1
+	url = https://github.com/rockon999/dynamic-panel-transparency
+	arch = any
+	license = GPL2
+	source = https://github.com/rockon999/dynamic-panel-transparency/archive/v25.tar.gz
+	sha256sums = 667317443dc0c5924ef9327d885983f87f826dbc9b7e21f2dd973f91b4edac8f
+
+pkgname = gnome-shell-extension-dynamic-panel-transparency
+	depends = gnome-shell
+
