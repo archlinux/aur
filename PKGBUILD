@@ -1,4 +1,5 @@
-# Maintainer: NexAdn <nexadn@yandex.com>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: NexAdn <nexadn@yandex.com>
 _pkgname=obs-linuxbrowser
 pkgname=${_pkgname}-git
 pkgver=0.6.1.r3.gb618678
