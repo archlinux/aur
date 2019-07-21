@@ -6,7 +6,7 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
@@ -28,7 +28,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so' 'ffmpeg')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d')
+sha256sums=('f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -37,6 +37,9 @@ prepare() {
 
 build() {
   cd ${_pkgname}-${pkgver}
+
+  #hide new gcc9 warnings
+  export CFLAGS="$CFLAGS -Wno-attributes -Wno-deprecated-declarations"
 
   ./configure \
     --prefix='/usr' \
