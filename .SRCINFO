@@ -1,7 +1,7 @@
 pkgbase = jubler
 	pkgdesc = Subtitle editor running on Java
 	pkgver = 6.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jubler.org
 	arch = any
 	license = GPL2

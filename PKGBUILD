@@ -4,7 +4,7 @@
 pkgname=jubler
 _AppName=Jubler
 pkgver=6.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Subtitle editor running on Java'
 arch=('any')
 url='http://www.jubler.org'
