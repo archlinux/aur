@@ -1,7 +1,7 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duetsd
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual SD card directory for the Duet software framework"
 arch=('any')
 url="https://github.com/chrishamm/DuetSoftwareFramework"
@@ -19,5 +19,6 @@ prepare() {
 package() {
 	# Virtual SD Card
 	install -dm 755 "${pkgdir}"/opt/dsf/sd/{sys,macros,gcodes,filaments}
+	install -m 644 "${srcdir}"/opt/dsf/sd/sys/* "${pkgdir}"/opt/dsf/sd/sys/
 	ln -s "/opt/dsf/dwc2" "${pkgdir}/opt/dsf/sd/www"
 }
