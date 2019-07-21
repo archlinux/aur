@@ -1,4 +1,5 @@
-# Maintainer: Kisuke <kisuke at kisuke dot cz>
+# Maintainer AwesomeHaircut: jesusbalbastro gmail com
+# Previous Maintainer: Kisuke <kisuke at kisuke dot cz>
 
 pkgname=jubler
 _AppName=Jubler
@@ -11,10 +12,10 @@ license=('GPL2')
 provides=('jubler')
 depends=('java-runtime>=8')
 optdepends=('mplayer: live video preview for subtitles')
-source=("https://github.com/teras/Jubler/releases/download/${pkgver}/${_AppName}-${pkgver}.appimage"
-				'jubler.desktop')
+source=("https://astuteinternet.dl.sourceforge.net/project/jubler/Jubler%20Binary%20Releases/${pkgver}/${_AppName}-${pkgver}.appimage"
+	'jubler.desktop')
 sha256sums=('822dfe7cd171cbee15b88608ee76d6121f1ebe3fc1a9743a3a47eed326e5d45d'
-						'56f6d1af4d5086231c2f3935d46aaa0293dbba11ecfeaa5f95609a58a9e59056')
+            '56f6d1af4d5086231c2f3935d46aaa0293dbba11ecfeaa5f95609a58a9e59056')
 noextract=("${_AppName}-${pkgver}.appimage")
 
 package() {
