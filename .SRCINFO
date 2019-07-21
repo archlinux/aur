@@ -1,6 +1,6 @@
-pkgbase = obs-linuxbrowser
+pkgbase = obs-linuxbrowser-git
 	pkgdesc = Browser source plugin for obs-studio based on CEF. Alternative to obs-qtwebkit.
-	pkgver = 0.6.1
+	pkgver = 0.6.1.r3.gb618678
 	pkgrel = 1
 	url = https://github.com/bazukas/obs-linuxbrowser
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = obs-linuxbrowser
 	makedepends = make
 	makedepends = cmake
 	makedepends = git
-	makedepends = cef-minimal
+	makedepends = cef-minimal<75
 	depends = obs-studio>=21.1.2
 	depends = gconf
 	depends = nss
@@ -20,9 +20,10 @@ pkgbase = obs-linuxbrowser
 	depends = libxcomposite
 	optdepends = pepper-flash: Flash support
 	optdepends = cef-minimal: Up-to-date browser backend
+	conflicts = obs-linuxbrowser
 	conflicts = obs-linuxbrowser-bin
 	source = obs-linuxbrowser::git+https://github.com/bazukas/obs-linuxbrowser.git
 	sha256sums = SKIP
 
-pkgname = obs-linuxbrowser
+pkgname = obs-linuxbrowser-git
 
