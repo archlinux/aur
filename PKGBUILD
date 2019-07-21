@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-mingw
-pkgver=0.13
+pkgver=0.13f
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase, mingw version"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 sha256sums=(
     "SKIP"
     "7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a"
-    "32780432c2159d57ca0fb1863309cdb141fbfc506c6b9003acfa05896af90140"
+    "757fd5ca3faf476730891541de408593450fe4b490cc87bd90b342826d66c564"
 )
 
 prepare() {
@@ -28,7 +28,7 @@ prepare() {
     # Enable at your own risk. If you don't know what it is,
     # and its implications, leave it as is. You have been warned.
     # I am not liable if anything happens to you by using it.
-    #patch -p1 -i ../dxvk-async.patch
+    patch -p1 -i ../dxvk-async.patch
 }
 
 build() {
