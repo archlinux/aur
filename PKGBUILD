@@ -2,7 +2,7 @@
 
 pkgname=securefs
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A better transparent encryption filesystem"
 arch=('i686' 'x86_64')
 url=https://github.com/netheril96/securefs
@@ -14,7 +14,7 @@ sha1sums=('b8c645d9ce210ed729be572c0b4b71bead05de76')
 
 build() {
     cd "$pkgname-${pkgver}"
-    mkdir build
+    mkdir -p build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr -Dlibdir=/usr/lib ..
     make
