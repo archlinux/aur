@@ -1,20 +1,15 @@
 pkgbase = brother-ql820nwb
 	pkgdesc = LPR and CUPS driver for Brother QL-820NWB label printer
-	pkgver = 1.1.4r0
-	pkgrel = 2
+	pkgver = 3.1.5r0
+	pkgrel = 1
 	url = http://solutions.brother.com/linux/en_us/
 	install = brother-ql820nwb.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = cups
-	depends = lib32-glibc
-	source = http://download.brother.com/welcome/dlfp100344/ql820nwblpr-1.1.4-0.i386.rpm
-	source = http://download.brother.com/welcome/dlfp100346/ql820nwbcupswrapper-1.1.4-0.i386.rpm
-	source = LICENSE
-	sha256sums = 512edabbac5563805b387cabfe1dbed506947d87c6d40375c0afaca9473a5880
-	sha256sums = d2134f1aaa0bd923a2142c153d136b4dd053b07613c39865a008b5667e3060c6
-	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+	source = https://download.brother.com/welcome/dlfp100344/ql820nwbpdrv-3.1.5-0.i386.rpm
+	sha256sums = f19291f1d54fa1c7b932d06362067948bc6b0852315e64915a09450a81d1fbbc
 
 pkgname = brother-ql820nwb
 
