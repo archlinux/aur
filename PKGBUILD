@@ -1,7 +1,7 @@
 # Maintainer: Kevin Del Castillo R. <quebin31@gmail.com>
 
 pkgname=nvman
-pkgver=1.3.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="NVIDIA Manager for Optimus/Bumblebee"
 arch=('any')
@@ -12,17 +12,17 @@ optdepends=()
 conflicts=()
 options=()
 install=$pkgname.install
-source=("https://github.com/quebin31/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=(0ed4402e5463d89f25459900cec53e238959c7e99e275aea92ae333bd30fc6a5)
+source=("https://github.com/quebin31/${pkgname}/releases/download/${pkgver}/${pkgver}.tar.xz")
+sha256sums=(dd70174157a47d58310f7eea14248cdd32b6e37980dcbac578bfb0774e1d4557)
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "extras"
 
     mkdir -p "$pkgdir/usr/bin/"
     mkdir -p "$pkgdir/usr/lib/systemd/system/"
-    mkdir -p "$pkgdir/etc/nvman/"
+    mkdir -p "$pkgdir/etc/default/"
 
     install $pkgname "$pkgdir/usr/bin/"
     cp "$pkgname.service" "$pkgdir/usr/lib/systemd/system/"
-    cp config "$pkgdir/etc/nvman/"
+    cp "$pkgname.default" "$pkgdir/etc/default/nvman"
 }
