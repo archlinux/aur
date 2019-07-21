@@ -2,7 +2,7 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.13.2.2027
+pkgver=1.13.2.2131
 #### Minecraft version to build. Just change this to build a different branch.
 #### Makepkg will automatically (unless --holdver is specified) select the most
 #### recent Spigot version for this Minecraft version.
