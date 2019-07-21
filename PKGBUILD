@@ -57,9 +57,8 @@ _ttf_wps_win10=('MTEXTRA.TTF'
                 'wingding.ttf'
                 'WINGDNG2.TTF'
                 'WINGDNG3.TTF')
-DLAGENTS+=("file::/usr/bin/echo ${BOLD}${RED} Unable to find %u, please read the PKGBUILD ${ALL_OFF}")
-source=("${_ttf_wps_win10[@]/#/file://}"
-        'file://license.rtf')
+source=("${_ttf_wps_win10[@]/#/local://}"
+        'local://license.rtf')
 
 sha256sums=('6c469962f33b7222f07b8d1ae8025f177f4a5f5db3eb62fa1523f261a270991f'
             'bffdc2fd675d9af414824ae84d8456504542480afb34fbc6bfd6903656c4f854'
