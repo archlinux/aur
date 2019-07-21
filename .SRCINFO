@@ -1,0 +1,15 @@
+pkgbase = dockfmt
+	pkgdesc = Dockerfile format and parser. Like `gofmt` but for Dockerfiles.
+	pkgver = v0.3.3
+	pkgrel = 1
+	url = https://github.com/jessfraz/dockfmt
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = dockfmt
+	conflicts = dockfmt
+	source = dockfmt::git+https://github.com/jessfraz/dockfmt#tag=v0.3.3
+	sha256sums = SKIP
+
+pkgname = dockfmt
+
