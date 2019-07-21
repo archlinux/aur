@@ -2,7 +2,7 @@
 
 pkgname=css-beautify
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Beautifier for CSS'
 arch=('any')
 depends=('python-jsbeautifier')
