@@ -2,7 +2,7 @@
 # Past Contributor: James An <james@jamesan.ca>
 
 pkgname=droidcam
-pkgver=6.0.1
+pkgver=6.7.5
 pkgrel=1
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('i686' 'x86_64')
@@ -20,8 +20,8 @@ source_x86_64=("$pkgname.tar.bz2"::"https://www.dev47apps.com/files/600/$pkgname
 noextract=("$pkgname.tar.bz2")
 md5sums=('199d8f3dbc6697f06350b00de99f2274'
          '0f0e1d04146dd5be70d5028f144bd0a2')
-md5sums_i686=('20166fd23adfc826e26952d0837a2df1')
-md5sums_x86_64=('525718dab42ad5868a67844736bd3c6c')
+md5sums_i686=('90cd43b4745c51cffedc352090912eb1')
+md5sums_x86_64=('9507c0b738f427c5f1dde7b2a364fdfb')
 
 prepare() {
   # Extract source from within leading arcqh-specific folder
@@ -58,5 +58,5 @@ package() {
   install -Dm644 v4l2loopback-dc.ko.gz        "$pkgdir$MODPATH/v4l2loopback_dc.ko.gz"
   install -Dm644 "$pkgname.modules-load.conf" "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
   install -Dm644 "$pkgname.modprobe.conf"     "$pkgdir/etc/modprobe.d/$pkgname.conf"
-
 }
+
