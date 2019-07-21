@@ -4,10 +4,10 @@ cpaname='Crypt-Random-Source'
 cpanauthor=ETHER
 pkgname=perl-crypt-random-source
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl Crypt::Random::Source CPAN module - load and instantiate sources of random data'
 arch=('any')
-url='http://search.cpan.org/dist/${cpaname}/'
+url="http://search.cpan.org/dist/${cpaname}/"
 license=(GPL)
 depends=(
     perl-capture-tiny
