@@ -1,0 +1,20 @@
+pkgbase = gopls-git
+	pkgdesc = An LSP server for Go
+	pkgver = r3439.e377ae9d6
+	pkgrel = 1
+	url = https://golang.org/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go-pie
+	depends = glibc
+	provides = gopls=r3439.e377ae9d6
+	source = go-tools::git+https://go.googlesource.com/tools
+	source = go-sync::git+https://go.googlesource.com/sync
+	source = golang-net::git+https://github.com/golang/net
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = gopls-git
+
