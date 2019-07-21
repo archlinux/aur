@@ -1,7 +1,7 @@
 # Maintainer: Ethan Brittain-Morby <ebm539 at protonmail dot com>
 pkgname=dsvpn-git
 pkgver=r126.e7e1311
-pkgrel=2
+pkgrel=3
 pkgdesc="A Dead Simple VPN."
 arch=('any')
 url="https://github.com/jedisct1/dsvpn"
@@ -25,7 +25,7 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  install -dm 755 "${pkgdir}"/usr/bin/dsvpn
+  install -dm 755 "${pkgdir}"/usr/bin/
   install -m 755 dsvpn "${pkgdir}"/usr/bin/dsvpn
 }
 
