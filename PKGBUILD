@@ -5,7 +5,8 @@ pkgver=0.8.7
 pkgrel=1
 pkgdesc='Dmenu Game Launcher - use dmenu to launch your games'
 arch=('any')
-depends=('python', 'dmenu-height')
+depends=(python
+         dmenu)
 url='https://joren.ga'
 license=('MIT')
 source=("${pkgname}::git+https://github.com/Jorengarenar/dgl.git")
