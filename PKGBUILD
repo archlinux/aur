@@ -1,26 +1,30 @@
 # Author: Lukas Grossar <lukas.grossar@gmail.com
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com
 _npmname=cz-conventional-changelog
-_npmver=2.1.0
 pkgname=nodejs-cz-conventional-changelog
-pkgver=2.1.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Commitizen plugin for conventional changelogs commit messages"
 arch=(any)
 url="https://github.com/commitizen/cz-conventional-changelog"
 license=(MIT)
-depends=('nodejs' 'npm' 'nodejs-commitizen')
-optdepends=()
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-noextract=($_npmname-$_npmver.tgz)
-sha512sums=('4cc8e44abbe3bb97cf415f87a3c4c88a80205e4972f21def27fb7189ccc9ae551a2e980c180eacb27c2ab8b316ccd659c82b092b9af890f830768842e1400699')
+depends=('nodejs>=10' 'nodejs-commitizen')
+makedepends=('npm')
+source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+noextract=($_npmname-$pkgver.tgz)
+sha512sums=('30fc4445bb50c95a749e7a42062c332862a63014acc26095dc9a5e7f7031a9de5fddcfd239ce9516249495c94ec995c19f75ed7f8b27cede0ed798414d16f680')
 
 package() {
-  cd "$srcdir"
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p $_npmdir
-  cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
-}
+    npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
 
-# vim:set ts=2 sw=2 et:<Paste>
+    # Remove references to $pkgdir
+    find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
+
+    # Remove references to $srcdir
+    local tmppackage="$(mktemp)"
+    local pkgjson="$pkgdir/usr/lib/node_modules/$_npmname/package.json"
+    jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+    mv "$tmppackage" "$pkgjson"
+    chmod 644 "$pkgjson"
+    chmod u=rwX,go=rX -R "$pkgdir/usr/lib/node_modules/$_npmname"
+}
