@@ -1,30 +1,24 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
-pkgname=('nautilus-folder-icons' 'nemo-folder-icons')
-pkgbase=nautilus-folder-icons
+# Contributor: ELmoussaoui Bilal <bil dot elmoussaoui at gmail.com>
+pkgname=nautilus-folder-icons
 pkgver=3.0
-pkgrel=1
+pkgrel=2
+pkgdesc='Nautilus extension that makes changing folders icons easy!'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/bilelmoussaoui/nautilus-folder-icons"
-makedepends=('gnome-common' 'meson' 'gettext' 'appstream-glib')
+depends=('gobject-introspection' 'gtk3' 'python-nautilus')
+makedepends=('gnome-common' 'meson' 'appstream-glib')
 options=('!emptydirs')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/bil-elmoussaoui/$pkgbase/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/bil-elmoussaoui/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('25fa6f164f50ed84ee6fa6d7a6004cb5190051847a5c3895f41bf1b426ad2565')
 
-package_nautilus-folder-icons() {
-	pkgdesc='Nautilus extension that makes changing folders icons easy!'
-	depends=('gobject-introspection' 'gtk3' 'python-nautilus')
-
-	cd "$pkgbase-$pkgver"
+build() {
+	cd "$pkgname-$pkgver"
 	meson builddir --prefix=/usr -Dfile_manager=nautilus
-	DESTDIR="$pkgdir" ninja -C builddir install
 }
 
-package_nemo-folder-icons() {
-	pkgdesc='Nemo extension that makes changing folders icons easy!'
-	depends=('gobject-introspection' 'gtk3' 'nemo-python')
-
-	cd "$pkgbase-$pkgver"
-	meson builddir --prefix=/usr -Dfile_manager=nemo
+package() {
+	cd "$pkgname-$pkgver"
 	DESTDIR="$pkgdir" ninja -C builddir install
 }

@@ -1,27 +1,20 @@
 pkgbase = nautilus-folder-icons
+	pkgdesc = Nautilus extension that makes changing folders icons easy!
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bilelmoussaoui/nautilus-folder-icons
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = gnome-common
 	makedepends = meson
-	makedepends = gettext
 	makedepends = appstream-glib
+	depends = gobject-introspection
+	depends = gtk3
+	depends = python-nautilus
 	options = !emptydirs
 	source = nautilus-folder-icons-3.0.tar.gz::https://github.com/bil-elmoussaoui/nautilus-folder-icons/archive/3.0.tar.gz
 	sha256sums = 25fa6f164f50ed84ee6fa6d7a6004cb5190051847a5c3895f41bf1b426ad2565
 
 pkgname = nautilus-folder-icons
-	pkgdesc = Nautilus extension that makes changing folders icons easy!
-	depends = gobject-introspection
-	depends = gtk3
-	depends = python-nautilus
-
-pkgname = nemo-folder-icons
-	pkgdesc = Nemo extension that makes changing folders icons easy!
-	depends = gobject-introspection
-	depends = gtk3
-	depends = nemo-python
 
