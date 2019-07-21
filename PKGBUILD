@@ -3,7 +3,7 @@
 # Maitainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=lf
-pkgver=12
+pkgver=13
 pkgrel=1
 license=('MIT')
 pkgdesc="A terminal file manager inspred by ranger written in Go"
@@ -12,7 +12,7 @@ makedepends=('git' 'go')
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/gokcehan/lf"
 source=("$pkgname-r$pkgver.tar.gz::https://github.com/gokcehan/$pkgname/archive/r$pkgver.tar.gz")
-sha256sums=('8a3ca71dd18ca01f34a08573049c5f9f4302b5c7a998443d2b0855792fdca7f2')
+sha256sums=('fe99ed9785fbdc606835139c0c52c854b32b1f1449ba83567a115b21d2e882f4')
 _srcname=${pkgname}-r$pkgver
 
 build() {
