@@ -7,7 +7,7 @@ pkgbase = python-omemo-syndace
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = python-omemo::git+https://github.com/Syndace/python-omemo.git#tag=
+	source = python-omemo::git+https://github.com/Syndace/python-omemo.git#tag=v0.10.5-beta
 	sha256sums = SKIP
 
 pkgname = python-omemo-syndace

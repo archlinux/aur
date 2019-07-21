@@ -6,13 +6,13 @@ _tag=v0.10.5-beta
 pkgbase=python-omemo-syndace
 pkgname=("python-omemo-syndace" "python2-omemo-syndace")
 pkgver=0.10.5.beta
-pkgrel=1
+pkgrel=2
 pkgdesc="An open python implementation of the OMEMO Multi-End Message and Object Encryption protocol"
 url="https://github.com/Syndace/${_pkgname}"
 license=('MIT')
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git#tag=${tag}")
+source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
 pkgver() {
