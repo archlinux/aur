@@ -1,16 +1,16 @@
 pkgbase = duetsoftwareframework-meta
 	pkgdesc = Meta package for the full Duet software framework
-	pkgver = 1.0.1.0
-	pkgrel = 2
+	pkgver = 1.0.2.1
+	pkgrel = 1
 	url = https://github.com/chrishamm/DuetSoftwareFramework
 	arch = armv7h
 	license = GPL3
-	depends = duetruntime
-	depends = duetcontrolserver
-	depends = duetsd
-	depends = duettools
+	depends = duetruntime=1.0.2.1
+	depends = duetcontrolserver=1.0.2.1
+	depends = duetsd=1.0.1
+	depends = duettools=1.0.2.1
 	depends = duetwebcontrol
-	depends = duetwebserver
+	depends = duetwebserver=1.0.1.1
 	provides = duetsoftwareframework
 	conflicts = duetsoftwareframework
 
