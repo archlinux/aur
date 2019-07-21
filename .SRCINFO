@@ -1,20 +1,15 @@
 pkgbase = brother-ql810w
-	pkgdesc = LPR and CUPS driver for Brother QL-800W label printer
-	pkgver = 1.1.4r0
-	pkgrel = 1
-	url = http://solutions.brother.com/linux/en_us/
+	pkgdesc = LPR and CUPS driver for Brother QL-810W label printer
+	pkgver = 3.1.5r0
+	pkgrel = 2
+	url = https://support.brother.com
 	install = brother-ql810w.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = cups
-	depends = lib32-glibc
-	source = http://download.brother.com/welcome/dlfp100340/ql810wlpr-1.1.4-0.i386.rpm
-	source = http://download.brother.com/welcome/dlfp100342/ql810wcupswrapper-1.1.4-0.i386.rpm
-	source = LICENSE
-	sha256sums = c212a72b34ad7cc9f6c9a6ded4f1f1b292687d029b6220005db81626dc384064
-	sha256sums = f18faf3e01f462f8953f826a1b27336a8032e1f4504e2cca8f94f58be677638b
-	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+	source = https://download.brother.com/welcome/dlfp100340/ql810wpdrv-3.1.5-0.i386.rpm
+	sha256sums = 18436ac65332bb212e7e17221243a206fe12bbaaa0842d8ddd1cbf876aa7717b
 
 pkgname = brother-ql810w
 
