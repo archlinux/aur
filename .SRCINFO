@@ -10,6 +10,10 @@ pkgbase = linux-mainline
 	makedepends = bc
 	makedepends = libelf
 	makedepends = git
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
 	options = !strip
 	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v5.2
 	source = config
