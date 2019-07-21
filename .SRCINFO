@@ -13,7 +13,6 @@ pkgbase = zbase32
 	sha256sums = c341afeb154cdcf20c247c8289fadd82245c89d0ea40b630c98885481c29845f
 
 pkgname = python2-zbase32
-	provides = zbase32
 	replaces = zbase32
 
 pkgname = python-zbase32
