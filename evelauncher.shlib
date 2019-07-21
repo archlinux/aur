@@ -30,31 +30,36 @@ check_wine() {
 	desktop_msg "ERROR: \"$CUSTOMWP\" not found!"
 	exit 1
     fi
-    INSTWINE=$(cat $WINEPREFIX/.update-timestamp | tr -dc [:digit:]) || true
+    INSTWINE=$(cat $WINEPREFIX/.update-timestamp 2>/dev/null | tr -dc [:digit:]) || true
     WINEINFP=$(readlink -f $CUSTOMWP)
-    WINECONF=$(find ${WINEINFP%/bin*}/share -name 'wine.inf' 2>/dev/null) || true
+    WINECONF=$(find ${WINEINFP%/bin*}/share -name 'wine.inf' 2>/dev/null)
     WINEDATE=$(ls -l --time-style=+%s "$WINECONF" 2>/dev/null | cut -d' ' -f6)
     if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
 	desktop_msg "Preparing wine in $WINEPREFIX"
 	env WINEPREFIX=$WINEPREFIX \
 	    WINEDEBUG=-all \
-	    WINEDLLOVERRIDES="mscoree,mshtml,winemenubuilder.exe=d" \
+	    WINEDLLOVERRIDES="mscoree,mshtml=d" \
 	    $WINEPATH/wineboot
 	env WINEPREFIX=$WINEPREFIX \
-	    WINEDLLOVERRIDES="winemenubuilder.exe=d" \
 	    $WINEPATH/wine reg add \
-	    'HKEY_CURRENT_USER\Software\Wine\FileOpenAssociations' \
+	    'HKCU\Software\Wine\FileOpenAssociations' \
 	    /v Enable /d N /f >/dev/null
-	desktop_msg "Apply winetricks settings.\nThis will take some time."
-	WINETRP=$(grep -v win[x1..9] $WINEPREFIX/winetricks.log 2>/dev/null | uniq)
-	rm $WINEPREFIX/winetricks.log 2>/dev/null || true
-	env WINEPREFIX=$WINEPREFIX WINE=$WINEPATH/wine \
-	    $(which winetricks) -q --force win10 $WINETRP >/dev/null
+	WINETRP=$(cat $WINEPREFIX/winetricks.log 2>/dev/null | uniq)
+	if [ "x$WINETRP" != "x" ] ;then
+	    desktop_msg "Apply winetricks settings. This will take some time."
+	    rm $WINEPREFIX/winetricks.log >/dev/null
+	    env WINEPREFIX=$WINEPREFIX \
+		WINE=$WINEPATH/wine \
+		$(which winetricks) -q --force $WINETRP >/dev/null
+	fi
     fi
-    keyl=$(grep -n ^\"winemenubuilder $WINEPREFIX/system.reg | cut -d: -f1)
-    if [ "x$keyl" != "x" ] ;then
-	head -n $(expr $keyl - 1) $WINEPREFIX/system.reg >$WINEPREFIX/out.reg
-	tail -n +$(expr $keyl + 1) $WINEPREFIX/system.reg >>$WINEPREFIX/out.reg
-	mv -f $WINEPREFIX/out.reg $WINEPREFIX/system.reg
+    if [ -x "$WINEPATH/wine64" ] ;then
+	WINE=$WINEPATH/wine64
+    else
+	WINE=$WINEPATH/wine
     fi
+    env WINEPREFIX=$WINEPREFIX \
+	$WINE reg delete \
+	'HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices' \
+	/v winemenubuilder /f >/dev/null || true
 }
