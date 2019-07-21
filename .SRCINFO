@@ -1,0 +1,19 @@
+pkgbase = minikube-bin-aliyun
+	pkgdesc = A tool that makes it easy to run Kubernetes locally in China
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/AliyunContainerService/minikube
+	arch = x86_64
+	license = Apache
+	optdepends = kubectl: to manage the cluster
+	optdepends = crictl: to use --vm-driver=none
+	optdepends = virtualbox: to use --vm-driver=virtualbox (default)
+	optdepends = docker-machine-kvm: to use --vm-driver=kvm
+	optdepends = docker-machine-driver-kvm2: to use --vm-driver=kvm2
+	provides = minikube
+	conflicts = minikube
+	source = minikube_1.2.0::http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v1.2.0/minikube-linux-amd64
+	sha256sums = f276686e8b4d7c95b0e534b0610d5b6744aae55d70a2dcd1956011d6a52834b2
+
+pkgname = minikube-bin-aliyun
+
