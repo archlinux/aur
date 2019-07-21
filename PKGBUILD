@@ -2,7 +2,7 @@
 # Contributor: James Thomas <notrevolution at gmail dot com>
 
 pkgname=epubcheck
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="A tool to validate epub files."
 arch=('any')
@@ -12,8 +12,8 @@ depends=('java-environment' 'sh')
 makedepends=('maven')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/w3c/epubcheck/archive/v${pkgver}.tar.gz"
         "epubcheck.1")
-sha512sums=('7e5928282dcc5011eed6cd49b7f63637b3eb6c9a88b18fcdfaadfcd26c6dd067498949645d5736e1b0fb14d46c5d10c752b2a7495c876f254c9333a7cff6abe9'
-            'f0387379d4d73ef57143c9dcc77cf85c28bbf5a9f7a1badc056764850665c2c2fd2d55a262da7952f5d6659320673de9d115527668c03602d17758021f4f99fd')
+sha512sums=('ba122677c6d0250d4b94d2c280f6613a4673d8fccee9b2919ce9e2cd738f7c2c914e9144f5d5da67c853427b7fd303aedcc3389ca2a5ac0f208b104e01a948cf'
+            'adec024c0d9a10aff846a0ece557426e943d2d696e9a1dc1d85859bc6b8bf5569ad39f9fd3832465e9f990a2364dc93d1915778aee2afc746722d5c0112c4d54')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
