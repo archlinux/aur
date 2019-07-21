@@ -1,0 +1,15 @@
+pkgbase = arch-prime-git
+	pkgdesc = Provide nvidia-prime like package for Archlinux
+	pkgver = 0.3.r66.ge2d42f5
+	pkgrel = 1
+	url = https://github.com/NickCao/ArchPrime
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	optdepends = bbswitch-dkms: for powering off the nvidia GPU
+	source = git+https://github.com/NickCao/ArchPrime
+	md5sums = SKIP
+
+pkgname = arch-prime-git
+
