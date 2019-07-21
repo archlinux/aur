@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-bin
-pkgver=0.13
+pkgver=0.13f
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase. Binary version"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "setup_d9vk"
 )
 sha256sums=(
-    "53eeca60e94d3bbe5dbf57eaaf3d15746d4bca48a15968cf841ffdf68d999e59"
+    "7408ba54c4104b2a18ab4a4a575665f66e1517b46282724111d129bf127bfb8a"
     "7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a"
 )
 
