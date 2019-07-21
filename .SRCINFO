@@ -1,0 +1,11 @@
+pkgbase = sentry-cli-bin
+	pkgdesc = A command-line utility to work with sentry.io
+	pkgver = 1.46.0
+	pkgrel = 1
+	url = https://github.com/getsentry/sentry-cli
+	arch = x86_64
+	source = https://github.com/getsentry/sentry-cli/releases/download/1.46.0/sentry-cli-Linux-x86_64
+	sha256sums = 98135649385efe4b9f29d8a0719a7b451da2e6f9f988b0de976a8a66dc0ee411
+
+pkgname = sentry-cli-bin
+
