@@ -5,8 +5,8 @@
 
 pkgname=rtorrent-color
 _pkgname="rtorrent"
-pkgver=0.9.6
-pkgrel=4
+pkgver=0.9.8
+pkgrel=1
 pkgdesc="Ncurses BitTorrent client based on libTorrent with color patch."
 url="http://rakshasa.github.io/rtorrent/"
 url="https://github.com/KopfKrieg/rtorrent/tree/colorpatch"
@@ -16,25 +16,25 @@ depends=("curl" "libtorrent>=0.13.6" "xmlrpc-c" "libsigc++")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rakshasa/${_pkgname}/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rakshasa/${_pkgname}/releases/download/v${pkgver}/rtorrent-${pkgver}.tar.gz"
         "${_pkgname}-${pkgver}_color.patch")
-sha1sums=('27505081254618077c291eb1ee36bfb41f974834'
-          '78429b5cf5976270dc1a55d8dc0ef4644675512b')
+sha1sums=('ed4f150ea8bb8f57af2042190512391a118e2302'
+          '15f4885924cf74bb97c87a14c0c2f6d9c8c4c6db')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   patch -uNp1 -i "${srcdir}/${_pkgname}-${pkgver}_color.patch"
-  
+
   sed '/AM_PATH_CPPUNIT/d' -i configure.ac
   ./autogen.sh
-  
+
   export CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
   ./configure \
     --prefix=/usr \
     --enable-debug \
     --with-xmlrpc-c \
-  
+
   make
 }
 

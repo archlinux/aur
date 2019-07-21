@@ -1,7 +1,7 @@
 pkgbase = rtorrent-color
 	pkgdesc = Ncurses BitTorrent client based on libTorrent with color patch.
-	pkgver = 0.9.6
-	pkgrel = 4
+	pkgver = 0.9.8
+	pkgrel = 1
 	url = https://github.com/KopfKrieg/rtorrent/tree/colorpatch
 	install = rtorrent-color.install
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = rtorrent-color
 	depends = libsigc++
 	provides = rtorrent
 	conflicts = rtorrent
-	source = rtorrent-color-0.9.6.tar.gz::https://github.com/rakshasa/rtorrent/archive/0.9.6.tar.gz
-	source = rtorrent-0.9.6_color.patch
-	sha1sums = 27505081254618077c291eb1ee36bfb41f974834
-	sha1sums = 78429b5cf5976270dc1a55d8dc0ef4644675512b
+	source = rtorrent-color-0.9.8.tar.gz::https://github.com/rakshasa/rtorrent/releases/download/v0.9.8/rtorrent-0.9.8.tar.gz
+	source = rtorrent-0.9.8_color.patch
+	sha1sums = ed4f150ea8bb8f57af2042190512391a118e2302
+	sha1sums = 717357e7a06fb1f3a7a873fb18c2077488fcf2c7
 
 pkgname = rtorrent-color
 
