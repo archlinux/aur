@@ -9,8 +9,8 @@
 
 _majorver=11
 _minorver=0
-_securityver=3
-_updatever=7
+_securityver=4
+_updatever=11
 pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 _tag_ver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
@@ -58,7 +58,7 @@ source=(https://github.com/AdoptOpenJDK/openjdk${_majorver}-binaries/releases/do
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('23cded2b43261016f0f246c85c8948d4a9b7f2d44988f75dad69723a7a526094'
+sha256sums=('90c33cf3f2ed0bd773f648815de7347e69cfbb3416ef3bf41616ab1c4aa0f5a8'
             '734aab5e8fca5360fd996142a0c0ff23434da56f83c21b26cfbcbf31556230eb'
             '53b7da18785675438d1d7cfa776be419a313c11049c48f791c7426224fe51025'
             'bc4305c5870fa8e050c0a2cbc629a8f84e366200b436429c789038596a4259f6')
