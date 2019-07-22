@@ -29,6 +29,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
+  # Remove version checks for dependant python packages
+  #   (little hacky, but allows us to use
+  #   zulip-term without downgrading packages)
   sed -ri "s/'(.+)[=><]=.+'/'\1'/" setup.py
 }
 
