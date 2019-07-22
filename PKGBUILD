@@ -7,7 +7,7 @@
 _pkgname=armagetronad
 pkgname=${_pkgname}-git
 pkgver='r4128.7392b902f'
-pkgrel=2
+pkgrel=3
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
 url='http://armagetronad.net/'
@@ -17,7 +17,7 @@ optdepends=('python2: language updater')
 makedepends=('boost')
 provides=('armagetronad')
 conflicts=('armagetronad')
-source=("git://gitlab.com/armagetronad/armagetronad.git")
+source=("git+https://gitlab.com/armagetronad/armagetronad.git")
 sha1sums=('SKIP')
 
 pkgver() {
