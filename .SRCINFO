@@ -1,0 +1,14 @@
+pkgbase = atool-desktop
+	pkgdesc = Desktop Entry for atool-based archive unpacking
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/esclerofilo/atool-desktop
+	arch = any
+	depends = atool
+	source = atool-desktop.desktop
+	source = atool-desktop
+	md5sums = 8d461127207d59f6f271c3e2e24374e5
+	md5sums = 1b569d2c7b0ff4534c143bc9a97e4674
+
+pkgname = atool-desktop
+

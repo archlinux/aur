@@ -1,0 +1,30 @@
+#!/bin/sh -e
+
+askyn() (
+	while :
+	do
+		printf '%s' "$@" ' '
+		read answer
+		case "$answer" in
+			y)
+				return 0
+				;;
+			n)
+				return 1
+				;;
+		esac
+	done
+)
+
+echo "Directory where extracted files will be stored:"
+pwd
+
+for i in "$@"
+do
+	als "$i"
+	if askyn 'Do you want to extract this archive? [y/n]'
+	then
+		aunpack "$i"
+	fi
+done
+
