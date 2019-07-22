@@ -1,0 +1,5 @@
+!.gitignore
+php-stat-git*
+stat/
+src/
+pkg/
