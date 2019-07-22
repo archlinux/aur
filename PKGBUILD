@@ -1,11 +1,10 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 _android_arch=x86-64
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-libjpeg-turbo
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (android)"
 license=("custom")
@@ -18,6 +17,7 @@ sha256sums=('acb8599fe5399af114287ee5907aea4456f8f2c1cc96d26c28aebfdf5ee82fed')
 
 build() {
     cd "${srcdir}"/libjpeg-turbo-${pkgver}
+    source android-env ${_android_arch}
 
     android-${_android_arch}-cmake \
         -DWITH_JPEG8=ON \
@@ -28,6 +28,7 @@ build() {
 
 package() {
     cd "${srcdir}"/libjpeg-turbo-${pkgver}
+    source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
     rm -r "${pkgdir}"/${ANDROID_PREFIX_BIN}
