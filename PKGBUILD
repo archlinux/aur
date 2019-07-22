@@ -1,12 +1,12 @@
-# Maintainer:
+# Maintainer: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Sébastien Luttringer
 
 pkgname=drbd-utils
-pkgver=9.8.0
+pkgver=9.10.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Userland tools for Distributed Replicated Block Device'
-url='https://www.drbd.org'
+url='https://www.linbit.com/en/drbd-community/drbd-download/'
 license=('GPL2')
 depends=('perl' 'bash')
 makedepends=('libxslt' 'systemd' 'po4a')
@@ -14,7 +14,7 @@ conflicts=('drbd')
 replaces=('drbd')
 source=(http://www.linbit.com/downloads/drbd/utils/drbd-utils-$pkgver.tar.gz)
 backup=('etc/drbd.conf' 'etc/drbd.d/global_common.conf')
-md5sums=('c9e079504f15e07166de9a3704eb63f5')
+md5sums=('5d4724837b1dd345f2cd80b126ab81c8')
 
 build() {
   cd $pkgname-$pkgver
