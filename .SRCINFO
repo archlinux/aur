@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (android)
 	pkgver = 4.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ffmpeg.org/
 	arch = any
 	license = GPL3
@@ -16,6 +16,7 @@ pkgbase = android-armv7a-eabi-ffmpeg
 	depends = android-armv7a-eabi-libwebp
 	depends = android-armv7a-eabi-opus
 	depends = android-armv7a-eabi-speex
+	depends = android-armv7a-eabi-x264
 	depends = android-armv7a-eabi-zlib
 	options = !strip
 	options = !buildflags
