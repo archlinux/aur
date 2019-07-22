@@ -15,7 +15,7 @@ source=("wsdd-${pkgver}.tar.gz::https://github.com/christgau/wsdd/archive/v${pkg
         'wsdd.sysusers')
 
 sha256sums=('dcc60b3c3ce077f6c48219ed5794f5bde7b7824f7fd674edb7d93e2acd2da623'
-            '2f8f340dc5001df6fdb28482a4d27d7a17d1f0d2d1a130fdb882c445daa945c0'
+            'd61e01d12624d03d1528417c001d7576dffda2a5eef5dcb0a5e859923e4c07cc'
             'b3d70334300cbd6c8ad3c0c9c910d09ba8bf98ff01b274bcda82d4973e4e1ac6')
 
 package() {

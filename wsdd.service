@@ -10,7 +10,7 @@ Wants=network-online.target
 User=wsdd
 Group=wsdd
 Type=simple
-ExecStart=/usr/bin/wsdd --shortlog
+ExecStart=/usr/bin/wsdd --shortlog --workgroup WORKGROUP
 
 [Install]
 WantedBy=multi-user.target
