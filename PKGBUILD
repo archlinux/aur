@@ -9,8 +9,12 @@ pkgdesc='Python job scheduling for humans.'
 arch=('any')
 url="https://github.com/dbader/schedule"
 license=('MIT')
-depends=('python>=2.3')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools'
+             'python2-setuptools')
+checkdepends=('python-pytest'
+              'python-mock'
+              'python2-pytest'
+              'python2-mock')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('f9fb5181283de4db6e701d476dd01b6a3dd81c38462a54991ddbb9d26db857c9')
 
@@ -26,12 +30,22 @@ build() {
   python2 setup.py build
 }
 
+check() {
+  cd "$srcdir"/schedule-${pkgver}
+  python setup.py test
+
+  cd "$srcdir"/schedule-${pkgver}-py2
+  python2 setup.py test
+}
+
 package_python-schedule() {
-	cd "${srcdir}/schedule-${pkgver}"
-	python setup.py install --root="$pkgdir" --optimize=1
+  depends=('python')
+  cd "${srcdir}/schedule-${pkgver}"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-schedule() {
-	cd "${srcdir}/schedule-${pkgver}-py2"
-	python2 setup.py install --root="$pkgdir" --optimize=1
+  depends=('python2')
+  cd "${srcdir}/schedule-${pkgver}-py2"
+  python2 setup.py install --root="$pkgdir" --optimize=1
 }
