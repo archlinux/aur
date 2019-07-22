@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=4.0.0b2.r298.gf0e625450
+pkgver=4.0.0b3.r251.g859825153
 pkgrel=1
 arch=('any')
 url="https://www.spyder-ide.org/"
@@ -61,6 +61,8 @@ package_spyder-git() {
            'python2-rope'
            'python2-sphinx'
            'python2-spyder-kernels'
+           'python2-watchdog'
+           'python2-xdg'
 
            'python2-pathlib2'
 
@@ -112,6 +114,8 @@ package_spyder3-git() {
            'python-rope'
            'python-sphinx'
            'python-spyder-kernels'
+           'python-watchdog'
+           'python-xdg'
 
            'desktop-file-utils'
            'gtk-update-icon-cache')
