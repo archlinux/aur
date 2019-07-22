@@ -1,14 +1,14 @@
 # Maintainer: Erazem Kokot <contact at erazem dot eu>
 
 pkgname='hblock'
-pkgver=2.0.6
+pkgver=2.0.9
 pkgrel=1
 pkgdesc='An adblocker that creates a hosts file from automatically downloaded blacklists'
 arch=('any')
 url='https://github.com/hectorm/hblock'
 license=('MIT')
 depends=('bash')
-sha256sums=('267cad304a4618e12ca1768c11db7aa1769d0b9ba3ba6a4d758c5e2b712ff0cd')
+sha256sums=('55f85fe37be0dfc619aaa878548746f8dec4e02c3f5d71a1cf49372bde06a3fe')
 source=("https://github.com/hectorm/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
