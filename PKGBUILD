@@ -9,17 +9,18 @@ pkgdesc="Minimal task scheduling abstraction"
 arch=('any')
 url="https://github.com/dask/dask"
 license=('BSD')
-checkdepends=('ipython' 'python-bcolz' 'python-cachey' 'python-graphviz' 'python-sparse' 'python-pytest')
+checkdepends=('ipython' 'python-bcolz' 'python-cachey' 'python-distributed' 'python-graphviz' 'python-sparse' 'python-pytest')
 depends=('python' 'python-numpy' 'python-scipy' 'python-pandas' 'python-toolz' 'python-cloudpickle' 'python-partd>=0.3.8' 'python-yaml')
 optdepends=('python-bcolz'
   'python-bokeh'
   'python-cachey'
   'python-cityhash: faster hashing'
+  'python-distributed'
   'python-fastparquet: Parquet support'
   'python-graphviz'
+  'python-h5py: hdf5 support'
   'python-psutil'
   'python-pyarrow: Parquet support'
-  'python-pytables: hdf5 support'
   'python-sparse: sparse data support'
   'python-s3fs: S3 support'
   'python-gcsfs: Google Cloud Storage fs support'
