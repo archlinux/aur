@@ -1,15 +1,15 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgbase=python-gettext
 pkgname=('python-gettext' 'python2-gettext')
-pkgver=3.0
+pkgver=4.0
 pkgrel=1
 pkgdesc="Python implementation of Gettext"
 arch=('any')
-url="https://github.com/hannosch/python-gettext"
+url="https://pypi.org/project/python-gettext/"
 license=('GPL3')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/hannosch/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('a4bcc3cdb0a7f2068aa221c4f765c98468b62277f4b65170ffa6244e3456f451')
+source=("https://pypi.org/packages/source/${pkgbase:0:1}/$pkgbase/$pkgbase-$pkgver.tar.gz")
+sha256sums=('626b501a51ac892fc3460cf550e60dca121f544eaa46eb69c90ce4682fc7ec02')
 
 prepare() {
     cp -a python{,2}-gettext-$pkgver
