@@ -1,0 +1,19 @@
+pkgbase = android-x86-l-smash
+	pkgdesc = MP4 muxer and other tools (android)
+	pkgver = 2.14.5
+	pkgrel = 1
+	url = https://github.com/l-smash/l-smash
+	arch = any
+	license = custom
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/l-smash/l-smash/archive/v2.14.5.tar.gz
+	source = clang.patch
+	sha256sums = e6f7c31de684f4b89ee27e5cd6262bf96f2a5b117ba938d2d606cf6220f05935
+	sha256sums = SKIP
+
+pkgname = android-x86-l-smash
+
