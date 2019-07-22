@@ -1,0 +1,24 @@
+--- a/configure	2019-07-22 12:39:27.767668982 -0300
++++ b/configure	2019-07-22 12:51:12.107203568 -0300
+@@ -1512,8 +1512,8 @@
+         echo "SOFLAGS=-shared -Wl,-h,\$(SONAME) $SOFLAGS" >> config.mak
+     else
+         echo "SOSUFFIX=so" >> config.mak
+-        echo "SONAME=libx264.so.$API" >> config.mak
+-        echo "SOFLAGS=-shared -Wl,-soname,\$(SONAME) $SOFLAGS" >> config.mak
++        echo "SONAME=libx264.so" >> config.mak
++        echo "SOFLAGS=-shared $SOFLAGS" >> config.mak
+     fi
+     echo 'default: lib-shared' >> config.mak
+     echo 'install: install-lib-shared' >> config.mak
+
+--- a/Makefile	2019-07-22 12:39:27.737668862 -0300
++++ b/Makefile	2019-07-22 12:55:12.284852758 -0300
+@@ -398,7 +398,6 @@
+ 	$(INSTALL) -m 755 $(SONAME) $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 644 $(IMPLIBNAME) $(DESTDIR)$(libdir)
+ else ifneq ($(SONAME),)
+-	ln -f -s $(SONAME) $(DESTDIR)$(libdir)/libx264.$(SOSUFFIX)
+ 	$(INSTALL) -m 755 $(SONAME) $(DESTDIR)$(libdir)
+ endif
+
