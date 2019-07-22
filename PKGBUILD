@@ -3,7 +3,7 @@
 _pkgname=baidunetdisk
 pkgname=baidunetdisk-bin
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Baidu Net Disk is a cloud storage client (Linux Version)."
 arch=('x86_64')
 depends=('libxss' 'gtk3' 'nss')
@@ -40,8 +40,7 @@ package() {
     mv "usr" "${pkgdir}"
     install -dm755 "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
     mv "opt/${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}"
-    ln -s "../lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin"
-    install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/baidunetdisk-wrapper.sh"
+    install -Dm755 "${srcdir}/baidunetdisk-wrapper.sh" "${pkgdir}/usr/bin/baidunetdisk"
 
     # fix promission
     chmod 644 "${pkgdir}/usr/lib/${_pkgname}/"*.so
