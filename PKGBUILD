@@ -1,15 +1,16 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=boston-icon-theme-git
-pkgver=r4.bc80c4b
-pkgrel=2
+pkgver=r76.2d6d673
+pkgrel=1
 pkgdesc="Boston is a highly minimalist icon theme, with a sober color palette inspired on basic hues."
 arch=('any')
-url="https://github.com/tonylambiris/boston-icons"
+#url="https://github.com/tonylambiris/boston-icons"
+url="https://github.com/heychrisd/Boston-Icons"
 license=('GPL3')
 conflicts=('boston-icon-theme')
 provides=('boston-icon-theme')
-source=("${pkgname}::git+https://github.com/tonylambiris/boston-icons")
+source=("${pkgname}::git+https://github.com/heychrisd/Boston-Icons")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,7 +24,7 @@ package() {
 
 	install -dm 755 "${pkgdir}/usr/share/icons"
 
-	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	cp -a "${srcdir}/${pkgname}" "${pkgdir}/usr/share/icons/Boston"
 }
