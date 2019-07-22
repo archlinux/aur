@@ -1,11 +1,10 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 _android_arch=armv7a-eabi
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-libtheora
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An open video codec developed by the Xiph.org (android)"
 arch=('any')
 url="http://xiph.org"
@@ -18,12 +17,14 @@ md5sums=('292ab65cedd5021d6b7ddd117e07cd8e')
 
 prepare() {
     cd "${srcdir}"/libtheora-${pkgver}
+    source android-env ${_android_arch}
 
     autoreconf -fi -I m4
 }
 
 build() {
     cd "${srcdir}"/libtheora-${pkgver}
+    source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
         --disable-examples
@@ -33,6 +34,7 @@ build() {
 
 package() {
     cd "${srcdir}"/libtheora-${pkgver}
+    source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
     rm -r "${pkgdir}"/${ANDROID_PREFIX_SHARE}
