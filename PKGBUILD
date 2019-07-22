@@ -1,24 +1,22 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-# Tweak kernel options prior to a build via nconfig
+### Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-# Tweak kernel options prior to a build via menuconfig
+### Tweak kernel options prior to a build via menuconfig
 _makemenuconfig=
 
-# Tweak kernel options prior to a build via xconfig
+### Tweak kernel options prior to a build via xconfig
 _makexconfig=
 
-# Tweak kernel options prior to a build via gconfig
+### Tweak kernel options prior to a build via gconfig
 _makegconfig=
-
-# Running with a 1000 HZ tick rate 
-_1k_HZ_ticks=
 
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
@@ -26,9 +24,8 @@ _1k_HZ_ticks=
 _NUMAdisable=y
 
 # Compile ONLY probed modules
-# As of mainline 2.6.32, running with this option will only build the modules
-# that you currently have probed in your system VASTLY reducing the number of
-# modules built and the build time to do it.
+# Build in only the modules that you currently have probed in your system VASTLY
+# reducing the number of modules built and the build time.
 #
 # WARNING - ALL modules must be probed BEFORE you begin making the pkg!
 #
@@ -36,7 +33,7 @@ _NUMAdisable=y
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
 # This PKGBUILD will call it directly to probe all the modules you have logged!
 #
-# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed_db
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
 # Use the current kernel's .config file
@@ -46,84 +43,86 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
+### Running with a 1000 HZ tick rate
+_1k_HZ_ticks=
+
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
-_srcname=linux-4.11
-pkgver=4.11.12
-pkgrel=4
-arch=('i686' 'x86_64')
-url="http://algo.ing.unimo.it"
+_major=5.2
+_minor=2
+pkgver=${_major}.${_minor}
+_srcname=linux-${pkgver}
+pkgrel=1
+arch=('x86_64')
+url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
 options=('!strip')
-makedepends=('kmod' 'inetutils' 'bc')
-_bfqrel=v7r11
-_bfqver=v8r11
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.11.0-${_bfqver}"
-#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.11.0-${_bfqver}"
-#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/4.11"
-_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/4.11"
-_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
+makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
+             'graphviz' 'imagemagick')
+#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
+_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
+_bfq_path="bfq-paolo-dev-lucjan-for-5.2.1"
+_bfq_patch="0001-block-bfq-dev-lucjan.patch"
+_gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
+_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 
-source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.11..patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.11.0.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
-        "${_bfqpath}/0004-blk-bfq-turn-BFQ-${_bfqrel}-for-4.11.0-into-BFQ-${_bfqver}-for.patch"
-        "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
+source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
+        "${_gcc_path}/${_gcc_patch}"
+        "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
+        "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+        "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
+        "${_lucjanpath}/zen-fixes/0002-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
          # the main kernel config files
-        'config.i686' 'config.x86_64'
+        'config'
+         # pacman hook for depmod
+        '60-linux.hook'
          # pacman hook for initramfs regeneration
         '90-linux.hook'
+         # pacman hook for remove initramfs
+        '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-        # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        "${_lucjanpath}/0005-BFQ-update-to-v8r12.patch"
-        "${_lucjanpath}/0006-BFQ-bugfix-for-v8r12.patch")
+        'linux.preset')
 
-_kernelname=${pkgbase#linux} 
+_kernelname=${pkgbase#linux}
+: ${_kernelname:=-bfq}
 
 prepare() {
-    cd "${srcdir}/${_srcname}"
+    cd ${_srcname}
 
-    ### Add upstream patch
-        msg "Add upstream patch"
-        patch -Np1 -i "${srcdir}/patch-${pkgver}"
+    ### Setting version
+        msg2 "Setting version..."
+        sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
+        scripts/setlocalversion --save-scmversion
+        echo "-$pkgrel" > localversion.10-pkgrel
+        echo "$_kernelname" > localversion.20-pkgname
 
-    ### Patch source with BFQ
-        msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4,5,6}-*BFQ*.patch; do
-        msg " $p"
-        patch -Np1 -i "$p"
+    ### Patching sources
+        local src
+        for src in "${source[@]}"; do
+            src="${src%%::*}"
+            src="${src##*/}"
+            [[ $src = *.patch ]] || continue
+        msg2 "Applying patch $src..."
+        patch -Np1 < "../$src"
         done
 
-    ### Patch source to enable more gcc CPU optimizatons via the make nconfig
-        msg "Patching source with gcc patch to enable more cpus types"
-	patch -Np1 -i "${srcdir}/${_gcc_patch}"
+    ### Setting config
+        msg2 "Setting config..."
+        cp ../config .config
+        make olddefconfig
 
-    ### Clean tree and copy ARCH config over
-	msg "Running make mrproper to clean source tree"
-	make mrproper
+    ### Prepared version
+        make -s kernelrelease > ../version
+        msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 
-	cat "${srcdir}/config.${CARCH}" > ./.config
-      
-    ### Optionally set tickrate to 1000 
-	if [ -n "$_1k_HZ_ticks" ]; then
-		msg "Setting tick rate to 1k..."
-		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
-			-i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
-			-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
-	fi
-
-	### Optionally use running kernel's config
+    ### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
 	if [ -n "$_use_current" ]; then
 		if [[ -s /proc/config.gz ]]; then
-			msg "Extracting config from /proc/config.gz..."
+			msg2 "Extracting config from /proc/config.gz..."
 			# modprobe configs
 			zcat /proc/config.gz > ./.config
 		else
@@ -134,315 +133,266 @@ prepare() {
 		fi
 	fi
 
-	if [ "${_kernelname}" != "" ]; then
-		sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-		sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
+	
+    ### Optionally set tickrate to 1000
+	if [ -n "$_1k_HZ_ticks" ]; then
+		msg2 "Setting tick rate to 1k..."
+		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
+                    -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
+                    -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' ./.config
 	fi
+	
+    ### Optionally disable NUMA for 64-bit kernels only
+        # (x86 kernels do not support NUMA)
+        if [ -n "$_NUMAdisable" ]; then
+            msg2 "Disabling NUMA from kernel config..."
+            sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+                -i -e '/CONFIG_AMD_NUMA=y/d' \
+                -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+                -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+                -i -e '/# CONFIG_NUMA_EMU is not set/d' \
+                -i -e '/CONFIG_NODES_SHIFT=6/d' \
+                -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+                -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
+                -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+                -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+        fi
 
-	### Optionally disable NUMA since >99% of users have mono-socket systems.
-	# For more, see: https://bugs.archlinux.org/task/31187
-	if [ -n "$_NUMAdisable" ]; then
-		if [ "${CARCH}" = "x86_64" ]; then
-			msg "Disabling NUMA from kernel config..."
-			sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-				-i -e '/CONFIG_AMD_NUMA=y/d' \
-				-i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-				-i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-				-i -e '/# CONFIG_NUMA_EMU is not set/d' \
-				-i -e '/CONFIG_NODES_SHIFT=6/d' \
-				-i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-				-i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
-				-i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-				-i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
-		fi
-	fi
+    ### Optionally load needed modules for the make localmodconfig
+        # See https://aur.archlinux.org/packages/modprobed-db
+        if [ -n "$_localmodcfg" ]; then
+        msg2 "If you have modprobed-db installed, running it in recall mode now"
+            if [ -e /usr/bin/modprobed-db ]; then
+            [[ -x /usr/bin/sudo ]] || {
+            echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
+            exit 1; }
+            sudo /usr/bin/modprobed-db recall
+            make localmodconfig
+            fi
+        fi
 
-	### Set extraversion to pkgrel
-	sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
-
-	### Don't run depmod on 'make install'. We'll do this ourselves in packaging
-	sed -i '2iexit 0' scripts/depmod.sh
-
-	### Get kernel version
-	msg "Running make prepare for you to enable patched options of your choosing"
-	make prepare
-
-	### Optionally load needed modules for the make localmodconfig
-	# See https://aur.archlinux.org/packages/modprobed-db
-		if [ -n "$_localmodcfg" ]; then
-		msg "If you have modprobe-db installed, running it in recall mode now"
-		if [ -e /usr/bin/modprobed-db ]; then
-			[[ -x /usr/bin/sudo ]] || {
-                        echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-                        exit 1; }
-			sudo /usr/bin/modprobed-db recall
-		fi
-		msg "Running Steven Rostedt's make localmodconfig now"
-		make localmodconfig
-	fi
-
-	### Running make nconfig
+    ### Running make nconfig
 	
 	[[ -z "$_makenconfig" ]] ||  make nconfig
 	
-	### Running make menuconfig
+    ### Running make menuconfig
 	
 	[[ -z "$_makemenuconfig" ]] || make menuconfig
 	
-	### Running make xconfig
+    ### Running make xconfig
 	
 	[[ -z "$_makexconfig" ]] || make xconfig
 	
-	### Running make gconfig
+    ### Running make gconfig
 	
 	[[ -z "$_makegconfig" ]] || make gconfig
-	
-	### Rewrite configuration
-	yes "" | make config >/dev/null
 
-	### Save configuration for later reuse
-	cat .config > "${startdir}/config.${CARCH}.last"
+    ### Save configuration for later reuse
+	cat .config > "${startdir}/config.last"
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
-    pkgdesc='Linux Kernel and modules with the  BFQ scheduler.'
+    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the BFQ-dev"
     depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
-    optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-bfq: nVidia drivers for linux-bfq' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+    optdepends=('crda: to set the correct wireless channels of your country' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    backup=("etc/mkinitcpio.d/$pkgbase.preset")
     install=linux.install
 
-    cd "${srcdir}/${_srcname}"
+  local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-    KARCH=x86
+  cd $_srcname
 
-   # get kernel version
-   _kernver="$(make LOCALVERSION= kernelrelease)"
-   _basekernel=${_kernver%%-*}
-   _basekernel=${_basekernel%.*}
+  msg2 "Installing boot image..."
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
-    mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-    make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-    cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  msg2 "Installing modules..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
-    # set correct depmod command for install
-    sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
-    "${startdir}/${install}" > "${startdir}/${install}.pkg"
-    true && install=${install}.pkg
+  # a place for external modules,
+  # with version file for building modules and running depmod from hook
+  local extramodules="extramodules$_kernelname"
+  local extradir="$pkgdir/usr/lib/modules/$extramodules"
+  install -Dt "$extradir" -m644 ../version
+  ln -sr "$extradir" "$modulesdir/extramodules"
 
-    # install mkinitcpio preset file for kernel
-    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
-    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  # remove build and source links
+  rm "$modulesdir"/{source,build}
 
-    # install pacman hook for initramfs regeneration
-    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+  msg2 "Installing hooks..."
 
-    # remove build and source links
-    rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-    # remove the firmware
-    rm -rf "${pkgdir}/lib/firmware"
-    # make room for external modules
-    ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-    # add real version for building modules and running depmod from post_install/upgrade
-    mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
-    echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+  # sed expression for following substitutions
+  local subst="
+    s|%PKGBASE%|$pkgbase|g
+    s|%KERNVER%|$kernver|g
+    s|%EXTRAMODULES%|$extramodules|g
+  "
 
+  # hack to allow specifying an initially nonexisting install file
+  sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
+  true && install=$install.pkg
 
-    # Now we call depmod...
-    depmod -b "${pkgdir}" -F System.map "${_kernver}"
+  # fill in mkinitcpio preset and pacman hooks
+  sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
+    "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
+  sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+  sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+  sed "$subst" ../99-linux.hook | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
-    # move module tree /lib -> /usr/lib
-    mkdir -p "${pkgdir}/usr"
-    mv "${pkgdir}/lib" "${pkgdir}/usr/"
-
-    # add vmlinux
-    install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
+
 
 _package-headers() {
-    pkgdesc='Header files and scripts to build modules for linux-bfq.'
-    depends=('linux-bfq')
+   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+   depends=('linux-bfq')
 
-    install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    cd "${srcdir}/${_srcname}"
-    
-  
-        install -D -m644 Makefile \
-		"${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
-	install -D -m644 kernel/Makefile \
-		"${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
-	install -D -m644 .config \
-		"${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
+  cd $_srcname
 
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
+  msg2 "Installing build files..."
+  install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+  install -Dt "$builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  cp -t "$builddir" -a scripts
 
-	for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-		media net pcmcia rdma scsi soc sound trace uapi video xen; do
-	cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
-	done
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-	# copy arch includes for external modules
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86"
-	cp -a arch/x86/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86/"
+  # add xfs and shmem for bfq building
+  mkdir -p "$builddir"/{fs/xfs,mm}
 
-	# copy files necessary for later builds, like nvidia and vmware
-	cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
-	cp -a scripts "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  # ???
+  mkdir "$builddir/.tmp_versions"
 
-	# fix permissions on scripts dir
-	chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
+  msg2 "Installing headers..."
+  cp -t "$builddir" -a include
+  cp -t "$builddir/arch/x86" -a arch/x86/include
+  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
+  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-	cp arch/${KARCH}/Makefile "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
+  # http://bugs.archlinux.org/task/13146
+  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-	if [ "${CARCH}" = "i686" ]; then
-		cp arch/${KARCH}/Makefile_32.cpu "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
-	fi
+  # http://bugs.archlinux.org/task/20402
+  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-	cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
+  msg2 "Installing KConfig files..."
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-	# add docbook makefile
-	install -D -m644 Documentation/DocBook/Makefile \
-	"${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+  msg2 "Removing unneeded architectures..."
+  local arch
+  for arch in "$builddir"/arch/*/; do
+    [[ $arch = */x86/ ]] && continue
+    echo "Removing $(basename "$arch")"
+    rm -r "$arch"
+  done
 
-	# add dm headers
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
-	cp drivers/md/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
+  msg2 "Removing documentation..."
+  rm -r "$builddir/Documentation"
 
-	# add inotify.h
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux"
-	cp include/linux/inotify.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux/"
+  msg2 "Removing broken symlinks..."
+  find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-	# add wireless headers
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
-	cp net/mac80211/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
+  msg2 "Removing loose objects..."
+  find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-	# add dvb headers for external modules
-	# in reference to:
-	# http://bugs.archlinux.org/task/9912
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core"
-	cp drivers/media/dvb-core/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core/"
-	# and...
-	# http://bugs.archlinux.org/task/11194
-	###
-	### DO NOT MERGE OUT THIS IF STATEMENT
-	### IT AFFECTS USERS WHO STRIP OUT THE DVB STUFF SO THE OFFICIAL ARCH CODE HAS A CP
-	### LINE THAT CAUSES MAKEPKG TO END IN AN ERROR
-	###
-	if [ -d include/config/dvb/ ]; then
-		mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
-		cp include/config/dvb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
-	fi
+  msg2 "Stripping build tools..."
+  local file
+  while read -rd '' file; do
+    case "$(file -bi "$file")" in
+      application/x-sharedlib\;*)      # Libraries (.so)
+        strip -v $STRIP_SHARED "$file" ;;
+      application/x-archive\;*)        # Libraries (.a)
+        strip -v $STRIP_STATIC "$file" ;;
+      application/x-executable\;*)     # Binaries
+        strip -v $STRIP_BINARIES "$file" ;;
+      application/x-pie-executable\;*) # Relocatable binaries
+        strip -v $STRIP_SHARED "$file" ;;
+    esac
+  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-	# add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
-	# in reference to:
-	# http://bugs.archlinux.org/task/13146
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-	cp drivers/media/dvb-frontends/lgdt330x.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
-	cp drivers/media/i2c/msp3400-driver.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
 
-	# add dvb headers
-	# in reference to:
-	# http://bugs.archlinux.org/task/20402
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb"
-	cp drivers/media/usb/dvb-usb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb/"
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends"
-	cp drivers/media/dvb-frontends/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners"
-	cp drivers/media/tuners/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners/"
-
-	# add xfs and shmem for aufs building
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs"
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/mm"
-	# removed in 3.17 series
-	#cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
-
-	# copy in Kconfig files
-	for i in $(find . -name "Kconfig*"); do
-		mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
-		cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
-	done
-	
-	# add objtool for external module building and enabled VALIDATION_STACK option
-	if [ -f tools/objtool/objtool ];  then
-        mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-        cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
-        fi
-
-	chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
-	find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
-
-	# strip scripts directory
-	find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
-	case "$(file -bi "${binary}")" in
-	*application/x-sharedlib*) # Libraries (.so)
-		/usr/bin/strip ${STRIP_SHARED} "${binary}";;
-	*application/x-archive*) # Libraries (.a)
-		/usr/bin/strip ${STRIP_STATIC} "${binary}";;
-	*application/x-executable*) # Binaries
-		/usr/bin/strip ${STRIP_BINARIES} "${binary}";;
-	esac
-	done
-	
-        # remove a files already in linux-bfq-docs package
-        rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
-        rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
-        rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
-
-    # remove unneeded architectures
-    rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
+
 
 _package-docs() {
-    pkgdesc="Kernel hackers manual - HTML documentation that comes with the linux-bfq kernel"
+    pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
     depends=('linux-bfq')
+
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+
+  cd $_srcname
+
+  msg2 "Installing documentation..."
+  mkdir -p "$builddir"
+  cp -t "$builddir" -a Documentation
+
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
+
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
   
-    cd "${srcdir}/${_srcname}"
+  msg2 "Adding symlink..."
+  mkdir -p "$pkgdir/usr/share/doc"
+  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
-    cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
-    find "${pkgdir}" -type f -exec chmod 444 {} \;
-    find "${pkgdir}" -type d -exec chmod 755 {} \;
-
-    # remove a file already in linux package
-    rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
-for _p in ${pkgname[@]}; do
-  eval "package_${_p}() {
-    $(declare -f "_package${_p#${pkgbase}}")
-    _package${_p#${pkgbase}}
+
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
   }"
 done
 
-sha512sums=('6610eed97ffb7207c71771198c36179b8244ace7222bebb109507720e26c5f17d918079a56d5febdd8605844d67fb2df0ebe910fa2f2f53690daf6e2a8ad09c3'
+sha512sums=('71e96393157e700990fb5a114107033120041e951a51434e769f4b985bf6d67005ba5f96e8a4125b77f090758320c4797ad955f139b848de05b8e0c3adc7346f'
             'SKIP'
-            'ee9c5ac45896d84739c679834fcd15dfc46f9e939dcefd54ba049ac47168d71f0af680153615de002a2073ba79e44a9214f74af17ed16aa97d85e6df157fc6e8'
-            'SKIP'
-            'c811d43f4e03c725ac03707f8f662f85670d1083db61c23104777c2998d9cf4d557b68b18b38e550ef5e3a06f2179ed960476fa7d3f09cb804ebb99d6e478e76'
-            'e79d8d3302eb675e6becb21463b72e4fd11a0bae4bafc6f7eb963459b594a17be0fe20df76af846c763939ce5ede40f7cd2e536af5b8e77d3015925d797dcaec'
-            'be1b94ac52ed519243aa1889bd392dd1e68ec0a2fdae4bf5d2c9fa62a33cad94f1ff6db26e66cd4de60a4e07ab7d2cbad6b3f9a625ddeb909702f5bf39a2368a'
-            'cd82bce44c7d5a8148e69ae8bab3ea10df1b65bb97a6494c0c0ffe0e5b6f7e6eb08d8c2c3597e31e3d88ba908d36ab749fc97aaccf51857bbd29a697395789c9'
-            '77d80d50d8c4323ed36fd2097ba9f6b49bb8d7cae59d32ffa76b309758a7e9f972d26fedd77046d88ce2691bb01a07909f8bdc34ba214414be3bc030ee31994d'
-            '4030c799ee2fbf681aacd8396dab577162b9d34900c879c963ccb260fe40dc3fa1974cbe944ff1685cef2f0751528a3c5ba195c4ec6fca2b7b405e4f061f8e76'
-            '57addf780fc68d8e2914514e47d2edd27600cc0d1bf0c7d3786bc3e16ec9c6527eb8e9d95f156da8b77c11a53ac2a8f0d23360547a26350ebc3dca93721ebc42'
-            'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '05e38539dc51ad64df02223174ba961264355a34fb703555fccfa18e296492c0622f191e522bcf341d6e7f8763c9e57f85ff8645a62e3b8a42446d17d190afb9'
-            '30c44c4b603f6ca15e0c58d98160a40a44c8212b94cd7a3457dbf0303d88962a960800f269334f55b4070a6d872d8d9dcccdbfea3ca2aaa389bef7051132495a')
-            
+            '8d9547ff38096b99d296cdec9875b816960c09db31acebb033e3660ba65475d1f310578282cac74947d75dff844dd22d7e7c2e4ded12368d32314fe145763752'
+            '55538dbe482d983ef571a1c677b49f6bfbd738e16cee6b7f98c43ae4f056648b95f0bdd4b576e42991ac0fdb14e4da159ac020f0d8ed941d0a6cd42812e8d2de'
+            '068b9f3bb5112a5684246d0a2ae46bb26d7ad3a642276f5ed37d802b50efc925297d8bd4684eb391676e9a97efbb426b4fcbe6fd751860c3f53d8c0ca7d5a1b2'
+            'f714a620d50541fd29199d076f94e68c14049bbb97b131da3b68b13bcc1dd933f62913e8aad2a20e0ad738f2c3cad161dac13d3d4cbfdfcead271f22f09a681e'
+            'c1fecf034913e7838bb27c4d6e7538515093ef2e88daf8fe18b76cc501b864305b2a03e6e16db7929cbf48be96fe11e2b01e0ba8c1a58811806d78d34350bff5'
+            'ee505800a274e72649cddcd856db4483a92570804872b78ca3aa43c0c9d14452973e68279b321d9dc0e2a2722a72a176c39c88bc8ae12d738d993e7f701901d9'
+            '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
+            '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
+            '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
+
 validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )
