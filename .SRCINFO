@@ -1,6 +1,6 @@
 pkgbase = manjarowish-light-kde-settings
 	pkgver = 0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/librewish/manjarowish-light
 	arch = any
 	license = GPL
