@@ -46,7 +46,7 @@ optdepends=(
     'glib2: required by vpnui'
     'gtk3: required by acwebhelper'
 )
-conflicts=('cisco-anyconnect' 'anyconnect-client')
+conflicts=('cisco-anyconnect')
 license=('custom')
 options=('!strip')
 # you will have to obtain the installer yourself - it's not available publicly
