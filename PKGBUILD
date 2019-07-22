@@ -22,17 +22,17 @@ conflicts=("${pkgname%-git}")
 md5sums=('SKIP')
 
 pkgver() {
-    cd $srcdir/${pkgname%-git}
+    cd "$srcdir"/"${pkgname%-git}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd $srcdir/${pkgname%-git}
+	cd "$srcdir"/"${pkgname%-git}"
 	meson build --prefix=/usr
 	ninja -C build
 }
 
 package(){
-	cd $srcdir/${pkgname%-git}
-	DESTDIR=$pkgdir ninja -C build install
+	cd "$srcdir"/"${pkgname%-git}"
+	DESTDIR="$pkgdir" ninja -C build install
 }
