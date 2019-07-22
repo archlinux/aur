@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-speex
 	pkgdesc = A free codec for free speech (android)
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.speex.org
 	arch = any
 	license = BSD
