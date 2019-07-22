@@ -1,17 +1,17 @@
 pkgbase = med
-	pkgdesc = MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5
+	pkgdesc = Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - code-aster exchange module linked to hdf5
 	pkgver = 4.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.salome-platform.org/downloads
 	arch = x86_64
 	license = LGPL
 	makedepends = gcc-fortran
-	makedepends = python
 	makedepends = swig
 	makedepends = openmpi
 	makedepends = cmake
-	depends = hdf5
+	depends = hdf5-openmpi
 	depends = tk
+	depends = python
 	source = http://files.salome-platform.org/Salome/other/med-4.0.0.tar.gz
 	sha256sums = a474e90b5882ce69c5e9f66f6359c53b8b73eb448c5f631fa96e8cd2c14df004
 
