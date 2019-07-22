@@ -5,9 +5,8 @@ pkgbase = pyznap
 	url = https://github.com/yboetz/pyznap
 	arch = any
 	license = GPLv3
-	makedepends = python3
+	makedepends = python-setuptools
 	depends = python
-	depends = python-paramiko
 	source = pyznap-1.2.1.tar.gz::https://github.com/yboetz/pyznap/archive/v1.2.1.tar.gz
 	sha256sums = 230efa4430bf68e080b6978e6d2c223f1c6e5401e333da2ddad0e92ccc3c2c56
 
