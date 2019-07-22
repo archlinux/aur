@@ -4,11 +4,10 @@
 # Contributor: bubla < matej dot tyc at gmail dot com >
 
 _android_arch=x86
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-libtiff
 pkgver=4.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for manipulation of TIFF images (android)"
 arch=('any')
 url="http://www.simplesystems.org/libtiff/"
@@ -23,6 +22,7 @@ sha256sums=('2c52d11ccaf767457db0c46795d9c7d1a8d8f76f68b0b800a3dfe45786b996e4')
 
 build() {
     cd "${srcdir}/tiff-${pkgver}"
+    source android-env ${_android_arch}
     export CFLAGS="-fno-strict-aliasing"
     export CXXFLAGS="-fno-strict-aliasing"
 
@@ -35,6 +35,7 @@ build() {
 
 package() {
     cd "${srcdir}/tiff-${pkgver}"
+    source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
     cp libtiff/{tiffiop,tif_dir}.h "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/"
