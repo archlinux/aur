@@ -1,7 +1,7 @@
 pkgbase = balena-cli
 	pkgdesc = balena.io command line interface
 	pkgver = 11.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://balena.io/
 	arch = i686
 	arch = x86_64
