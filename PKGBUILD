@@ -2,7 +2,7 @@
 
 pkgname=openra-rv-git
 _pkgname=openra-rv
-pkgver=1862.git.e6bb7bb
+pkgver=1916.git.75e3ad0
 pkgrel=1
 pkgdesc="A Command & Conquer: Red Alert 2-inspired mod of OpenRA"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 install=openra-rv.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
          'desktop-file-utils' 'xdg-utils' 'zenity')
-makedepends=('dos2unix' 'git' 'unzip')
+makedepends=('dos2unix' 'git' 'unzip' 'msbuild')
 provides=('openra-rv')
 options=(!strip)
 source=("git+${url}.git"
