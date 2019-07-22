@@ -2,8 +2,8 @@
 # Contributor: TBK <aur@jjtc.eu>
 
 pkgname=termius
-pkgver=4.2.7
-pkgrel=2
+pkgver=4.9.2
+pkgrel=1
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
 arch=('x86_64')
@@ -14,11 +14,11 @@ makedepends=('squashfs-tools')
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-app | jq '.download_url' -r
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-app | jq '.version' -r
 source=(
-    "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_32.snap"
+    "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_33.snap"
     "termius.desktop"
     "tos.html"
 )
-sha256sums=('4e765a1af3621ac70efd1d63ff17910845c5bed3d87ba80d2095a077e9e10d9b'
+sha256sums=('0050d038fba82d70a67ff619ffaf7f2f7caf3d6521be88198f05fb759dd076a3'
             'a64e00e3fb2f3d3b81e0f4492e339ab72c61572f4e70b2268edd94c9e69acf1b'
             '9c969cc82314240860737dc09d48970271c798c9b1116ceb91556f75959788a2')
 
@@ -54,7 +54,7 @@ package() {
     mkdir -p "${pkgdir}"/usr/bin
     ln -sf /opt/${pkgname}/termius-app "${pkgdir}"/usr/bin/${pkgname}
     install -Dm0644 tos.html "${pkgdir}"/usr/share/licenses/${pkgname}/tos.html
-    install -Dm0644 ${pkgname}/LICENSE* "${pkgdir}"/usr/share/licenses/${pkgname}/
+    #install -Dm0644 ${pkgname}/LICENSE* "${pkgdir}"/usr/share/licenses/${pkgname}/
     install -Dm0644 ${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
     install -Dm0644 ${pkgname}/meta/gui/icon.png "${pkgdir}"/usr/share/pixmaps/${pkgname}.png
 }
