@@ -7,8 +7,7 @@ pkgbase = python2-subliminal
 	license = LGPL
 	makedepends = python2-distribute
 	depends = python2
-	conflicts = python2-subliminal-git
-	source = https://pypi.python.org/packages/source/s/subliminal/subliminal-2.0.5.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/subliminal/subliminal-2.0.5.tar.gz
 	sha512sums = 56bc0e87496d5bc361430c4ee396b20374da697014203bdc4dda12341918e67c98aec579e44bd467898dbbf11f31e9de47ece17a0d78339f2bc700e3e6c8dd40
 
 pkgname = python2-subliminal
