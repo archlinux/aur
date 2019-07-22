@@ -9,7 +9,7 @@ url="https://github.com/pop-os/gnome-shell-extension-system76-power"
 license=('MIT')
 depends=('gnome-shell' 'system76-power')
 makedepends=('git' 'make')
-source=("${pkgname}::git+https://github.com/pop-os/gnome-shell-extension-system76-power.git#branch=master_disco")
+source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

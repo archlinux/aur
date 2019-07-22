@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-system76-power-git
 	makedepends = make
 	depends = gnome-shell
 	depends = system76-power
-	source = gnome-shell-extension-system76-power-git::git+https://github.com/pop-os/gnome-shell-extension-system76-power.git#branch=master_disco
+	source = gnome-shell-extension-system76-power-git::git+https://github.com/pop-os/gnome-shell-extension-system76-power
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-system76-power-git
