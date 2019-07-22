@@ -1,0 +1,16 @@
+pkgbase = d-hidapi
+	pkgdesc = D bindings for HIDAPI
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/FFY00/hidapi-d
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ldc
+	depends = liblphobos
+	depends = hidapi
+	source = hidapi-d-1.0.3.tar.gz::https://github.com/FFY00/hidapi-d/archive/v1.0.3.tar.gz
+	sha512sums = cc541f0d7a5745509cda41a8a59c60fd63cb08c1904d6e1d48f9d2f1e9a54dbdf571fca913a99faf15575847f0e5d4a74da0f9eb16d8f8e79f37f867f8b8145e
+
+pkgname = d-hidapi
+
