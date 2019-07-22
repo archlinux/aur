@@ -1,0 +1,17 @@
+pkgbase = python-bearer
+	pkgdesc = Bearer python helper
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://www.bearer.sh
+	arch = any
+	license = MIT
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/db/b6/6954a6a985a976d3848e9ee5fe6604857754d89d3c7a6ffa42d97c54abb6/bearer-1.1.0.tar.gz
+	source = LICENSE
+	sha256sums = 307483df5ef645c80914ec4a586577c1e6775e09e3b30d0762a658d473d6d805
+	sha256sums = ec423cc5506eea1ffbfc9955c3ec8f86139996963d84ff306a5ee41eda8a4ff1
+
+pkgname = python-bearer
+	depends = python
+	depends = python-requests
+
