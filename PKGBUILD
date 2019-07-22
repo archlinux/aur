@@ -3,9 +3,9 @@
 
 _pkgname=nohang
 pkgname=${_pkgname}-git
-pkgver=0.1.r85.g74640fe
+pkgver=0.1.r413.gaf36cb2
 pkgrel=1
-pkgdesc="A highly configurable OOM preventer"
+pkgdesc="A highly configurable OOM prevention daemon"
 arch=('any')
 url="https://github.com/hakavlad/nohang"
 license=('MIT')
@@ -32,17 +32,4 @@ pkgver() {
 package() {
 	cd "${srcdir}/${pkgname}" || exit 2
 	make DESTDIR="${pkgdir}" install
-
-	# Realign files in Arch packaging style:
-
-	cd "${pkgdir}"
-
-	mv usr/sbin/* usr/bin
-	rm -r usr/sbin
-
-	mv lib/* usr/lib
-	rm -r lib
-
-	mkdir -p usr/lib/systemd
-	mv usr/lib/system usr/lib/systemd/
 }
