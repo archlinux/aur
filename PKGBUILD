@@ -1,13 +1,13 @@
 # Maintainer: Jan Peter Koenig <public@janpeterkoenig.com>
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=libtrace
-pkgver=4.0.8
+pkgver=4.0.9
 pkgrel=1
 pkgdesc="a library for trace processing supporting multiple input and output methods"
 arch=('x86_64')
 url="http://research.wand.net.nz/software/libtrace.php"
 license=('GPL3')
-depends=('libwandio' 'libpcap' 'zlib')
+depends=('libwandio>=4.2' 'libpcap' 'zlib')
 makedepends=('automake' 'flex' 'bison')
 source=("http://research.wand.net.nz/software/libtrace/$pkgname-$pkgver.tar.bz2")
 
@@ -24,4 +24,4 @@ package() {
   make DESTDIR="$pkgdir/" install
 }
 
-sha256sums=('c345b928bd104c09815a17f9622f38dd1727e1a94f7e9a743372a5eb36d78c03')
+sha256sums=('90f7e317aaa1b93f8b9f17e82ca3b0c7da99d066dbf770ae8de384a402a2218e')
