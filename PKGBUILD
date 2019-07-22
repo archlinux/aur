@@ -2,11 +2,10 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 _android_arch=armv7a-eabi
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-libwebp
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="WebP library and conversion tools (android)"
 arch=('any')
 url="https://developers.google.com/speed/webp/"
@@ -22,11 +21,14 @@ sha256sums=('082d114bcb18a0e2aafc3148d43367c39304f86bf18ba0b2e766447e111a4a91')
 
 prepare() {
     cd "$srcdir/libwebp-${pkgver}"
+    source android-env ${_android_arch}
+
     NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
     cd "$srcdir/libwebp-${pkgver}"
+    source android-env ${_android_arch}
     unset LDFLAGS
 
     android-${_android_arch}-configure \
@@ -39,6 +41,7 @@ build() {
 
 package() {
     cd "$srcdir/libwebp-${pkgver}"
+    source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
     rm -r "${pkgdir}"/${ANDROID_PREFIX_BIN}
