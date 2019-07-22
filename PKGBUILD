@@ -1,11 +1,10 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 _android_arch=armv7a-eabi
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-x265
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Open Source H265/HEVC video encoder (android)'
 license=('GPL')
@@ -18,6 +17,7 @@ sha256sums=('827900c7cc0a0105b8a96460fab7cd22b97afa7b2835b5cb979c44bddaa3c8d0')
 
 build() {
     cd "${srcdir}"/x265_${pkgver}
+    source android-env ${_android_arch}
     unset LDFLAGS CPPFLAGS
 
     if [[ ${_android_arch} != x86 ]]; then
@@ -72,6 +72,7 @@ build() {
 
 package() {
     cd "${srcdir}"/x265_${pkgver}/build-8
+    source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
