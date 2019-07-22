@@ -4,15 +4,15 @@
 # Contributor : Trevor Turner <turn3r.tr3v0r at gmail dot com>
 
 pkgbase=virtualbox-modules-bfq
-pkgname=('virtualbox-host-modules-bfq' 'virtualbox-guest-modules-bfq')
-pkgver=5.1.28
+pkgname=('virtualbox-host-modules-bfq')
+pkgver=6.0.10
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
-makedepends=('linux-bfq-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
+makedepends=('linux-bfq-headers' "virtualbox-host-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.11-bfq
+_extramodules=extramodules-bfq
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -22,36 +22,22 @@ build() {
 	# build host modules
 	msg2 'Host modules'
 	dkms --dkmsframework dkms.conf build "vboxhost/${pkgver}_OSE" -k "$_kernver"
-	# build guest modules
-	msg2 'Guest modules'
-	dkms --dkmsframework dkms.conf build "vboxguest/${pkgver}_OSE" -k "$_kernver"
 }
 
 package_virtualbox-host-modules-bfq() {
-	pkgdesc='Host kernel modules for VirtualBox running under Linux-bfq.'
-	license=('GPL')
-	depends=('linux-bfq>=4.11' 'linux-bfq<4.12')
-	install=host.install
-
-	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
+	pkgdesc='Host kernel modules for VirtualBox running under linux-bfq.'
+	provides=("VIRTUALBOX-HOST-MODULES")
+	depends=('linux-bfq>=5.2' 'linux-bfq<5.3')
+	
 	cd "dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
-	install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
-	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
-	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/host.install"
+        install -Dt "$pkgdir/usr/lib/modules/$_extramodules" -m644 *
+
+        # compress each module individually
+        find "$pkgdir" -name '*.ko' -exec gzip -n {} +
+	
+        # systemd module loading
+        printf "vboxdrv\nvboxpci\nvboxnetadp\nvboxnetflt\n" |
+        install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/virtualbox-host-modules-bfq.conf"
 }
-
-package_virtualbox-guest-modules-bfq() {
-	pkgdesc='Guest kernel modules for VirtualBox running under Linux-bfq.'
-	license=('GPL')
-	depends=('linux-bfq>=4.11' 'linux-bfq<4.12')
-	install=guest.install
-
-	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
-	cd "dkms/vboxguest/${pkgver}_OSE/$_kernver/$CARCH/module"
-	install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
-	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
-	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/guest.install"
-}
-
 
 
