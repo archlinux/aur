@@ -50,12 +50,10 @@ conflicts=('cisco-anyconnect')
 license=('custom')
 options=('!strip')
 # you will have to obtain the installer yourself - it's not available publicly
-_filename="anyconnect-linux64.tar.gz"
-_dirname="/home/$USER/Downloads/$_filename"
-source=("file://${_dirname}" "vpnagentd.service" "anyconnect.sh" "anyconnect.csh" "AnyConnectLocalPolicy.xml")
+_filename="anyconnect-linux64-${pkgver}-k9.tar.gz"
+source=("local://${_filename}" "vpnagentd.service" "anyconnect.sh" "anyconnect.csh" "AnyConnectLocalPolicy.xml")
 package() {
     cd "${srcdir}"
-    tar -xf $_dirname
     cd "anyconnect-linux64-4.7.00136/vpn"
     # install binaries
     for binary in "vpnagentd" "vpn" "vpndownloader" "vpndownloader-cli" "manifesttool" "acinstallhelper" "vpnui" "acwebhelper"; do
