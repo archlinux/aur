@@ -1,7 +1,6 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 _android_arch=aarch64
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-libvorbis
 pkgver=1.3.6
@@ -20,12 +19,14 @@ sha256sums=('6ed40e0241089a42c48604dc00e362beee00036af2d8b3f46338031c9e0351cb'
 
 prepare() {
     cd "${srcdir}"/libvorbis-${pkgver}
+    source android-env ${_android_arch}
 
     patch -Np1 -i "../configure.patch"
 }
 
 build() {
     cd "${srcdir}"/libvorbis-${pkgver}
+    source android-env ${_android_arch}
 
     android-${_android_arch}-configure
     make $MAKEFLAGS
@@ -33,6 +34,7 @@ build() {
 
 package() {
     cd "${srcdir}"/libvorbis-${pkgver}
+    source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
     rm -r "${pkgdir}"/${ANDROID_PREFIX_SHARE}
