@@ -1,7 +1,7 @@
 pkgbase = httprint
 	pkgdesc = httprint is a web server fingerprinting tool.
 	pkgver = 301
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.net-square.com/httprint.html
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = httprint
 	depends = bash
 	provides = httprint
 	conflicts = httprint
-	source = http://net-square.com/zip%20folders/httprint_linux_301.zip
+	source = http://net-square.com/_assets/httprint_linux_301.zip
 	md5sums = af53704de9c1851bd439cbe3fab3e0ad
 
 pkgname = httprint

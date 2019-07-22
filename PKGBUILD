@@ -3,7 +3,7 @@
 
 pkgname=httprint
 pkgver=301
-pkgrel=2
+pkgrel=3
 pkgdesc="httprint is a web server fingerprinting tool."
 arch=('i686' 'x86_64')
 url="http://www.net-square.com/httprint.html"
@@ -12,7 +12,7 @@ depends=(bash)
 provides=(httprint)
 conflicts=(httprint)
 install=
-source=(http://net-square.com/zip%20folders/httprint_linux_$pkgver.zip)
+source=(http://net-square.com/_assets/httprint_linux_$pkgver.zip)
 md5sums=('af53704de9c1851bd439cbe3fab3e0ad')
 
 package() {
