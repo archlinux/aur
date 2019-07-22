@@ -1,7 +1,8 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Contributor: David Runge <dave@sleepmap.de>
-_name=langdetect
+
 pkgbase=python2-langdetect
+_name=langdetect
 pkgname=('python2-langdetect')
 pkgver=1.0.7
 pkgrel=4
@@ -16,6 +17,11 @@ sha512sums=('7740bc8e5ea581bed69de9744a934f3e9c72910175933acb266bf25b0cb8797da60
 build() {
   cd "${_name}-${pkgver}"
   python2 setup.py build
+}
+
+check() {
+  cd "${_name}-${pkgver}"
+  python2 setup.py test
 }
 
 package_python2-langdetect() {
