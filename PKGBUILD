@@ -47,3 +47,5 @@ package_python2-apprise() {
   cd apprise-${pkgver}-py2
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }
+
+# vim:set ts=2 sw=2 et:
