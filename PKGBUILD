@@ -1,7 +1,7 @@
 # Maintainer: Mathieu Clabaut <mathieu[at]clabaut.net>
 
 pkgname=grok-exporter-bin
-pkgver=0.2.6
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Export Prometheus metrics from arbitrary unstructured log data (from
 binary release)."
@@ -43,6 +43,6 @@ package() {
         "${pkgdir}/usr/lib/grok-exporter/patterns"
     chmod 0644   "${pkgdir}/usr/lib/grok-exporter/patterns/"*
 }
-sha256sums=('437bba954223ee8cf4a5d2afd458cb4fec15c7d8cb4d62d75112c5a41370e0f2'
-            '4ac1bfc24c0dd065883b5b75f811ecf16882fc73f53b5d50389ba29e93f40828')
-sha256sums_x86_64=('b3b4e7aaa8363d35ca2fb1c8dcfacfe58d104d8a103055ecbdc51f52edf89a5d')
+md5sums=('f092982797ca0f1128382a712c1db0da'
+         '39ae997b03a1a35490c74eb3fcd8c3a4')
+md5sums_x86_64=('dd66057b47cb31e84595d0b4895eec47')

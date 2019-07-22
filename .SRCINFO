@@ -1,6 +1,6 @@
 pkgbase = grok-exporter-bin
 	pkgdesc = Export Prometheus metrics from arbitrary unstructured log data (from binary release).
-	pkgver = 0.2.6
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/fstab/grok_exporter
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = grok-exporter-bin
 	backup = etc/prometheus/grok.yml
 	source = grok-exporter.service
 	source = config.yml
-	sha256sums = 437bba954223ee8cf4a5d2afd458cb4fec15c7d8cb4d62d75112c5a41370e0f2
-	sha256sums = 4ac1bfc24c0dd065883b5b75f811ecf16882fc73f53b5d50389ba29e93f40828
-	source_x86_64 = https://github.com/fstab/grok_exporter/releases/download/v0.2.6/grok_exporter-0.2.6.linux-amd64.zip
-	sha256sums_x86_64 = b3b4e7aaa8363d35ca2fb1c8dcfacfe58d104d8a103055ecbdc51f52edf89a5d
+	md5sums = f092982797ca0f1128382a712c1db0da
+	md5sums = 39ae997b03a1a35490c74eb3fcd8c3a4
+	source_x86_64 = https://github.com/fstab/grok_exporter/releases/download/v0.2.8/grok_exporter-0.2.8.linux-amd64.zip
+	md5sums_x86_64 = dd66057b47cb31e84595d0b4895eec47
 
 pkgname = grok-exporter-bin
 
