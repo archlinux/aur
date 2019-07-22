@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r2713.ga385e237
+pkgver=1.0.0.r2720.g1dd56dbd
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
@@ -73,9 +73,6 @@ prepare() {
 
 build() {
 	cd ipxe/src/
-
-	NO_WERROR=1
-	export NO_WERROR
 
 	# default targets (ipxe.{lkrn,dsk,iso,usb}, undionly.kpxe)
 	make all
