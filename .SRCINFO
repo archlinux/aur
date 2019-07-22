@@ -1,5 +1,5 @@
 pkgbase = linux-gc
-	pkgver = 5.2
+	pkgver = 5.2.2
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -15,22 +15,22 @@ pkgbase = linux-gc
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = linux-5.2-arch2.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-5.2-arch2.tar.gz
+	source = linux-5.2.2-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-5.2.2-arch1.tar.gz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
-	source = 0001_v5.2_bmq097.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.2/v5.2_bmq097.patch
+	source = 0001_v5.2_bmq098.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.2/v5.2_bmq098.patch
 	source = 0002_enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = b53510225e57a0a4cee77724b37b5eaa57693a1e7a3a2c17c97c8c9161340f5a
-	sha256sums = 4a0d2d53d73fb072d415a1c2684d341eab5e9b89293f9e772f8ae1067bf91369
+	sha256sums = 0c58360af2ce76ecebcf1169dada4fd5a1c82343d1d98b598b38af9fc15ed724
+	sha256sums = ee5dc466baa9e83ffc48752149ff0476ae8263c91f276cc7d2b4830f18c2c239
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = 6db6f72076c91586ae848d10d08aca14037ebe557a5853d8769bad26e826c440
+	sha256sums = 628efd7ea8d6eb7a015e8790411e2353aa9cd6548099aa5c229a3b1cd25f1794
 	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
 
 pkgname = linux-gc
@@ -41,12 +41,12 @@ pkgname = linux-gc
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-gc=5.2
+	provides = linux-gc=5.2.2
 	backup = etc/mkinitcpio.d/linux-gc.preset
 
 pkgname = linux-gc-headers
 	pkgdesc = Header files and scripts for building modules for Linux-gc kernel and UKSM patchset
 	depends = linux-gc
-	provides = linux-gc-headers=5.2
-	provides = linux-headers=5.2
+	provides = linux-gc-headers=5.2.2
+	provides = linux-headers=5.2.2
 
