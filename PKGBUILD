@@ -4,7 +4,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libvorbis
 pkgver=1.3.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Vorbis codec library (android)"
 arch=('any')
 url="http://xiph.org"
