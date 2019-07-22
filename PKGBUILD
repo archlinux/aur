@@ -2,11 +2,11 @@ pkgname=yup
 _pkgname=yup
 pkgver="0.1.7_beta"
 _pkgver="0.1.7-beta"
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux AUR Helper with ncurses functionality and better searching and sorting"
 arch=('any')
 url="https://github.com/ericm/yup"
-license=('MIT')
+license=('GPL3')
 source=("${_pkgname}::git+https://github.com/ericm/yup.git#tag=v${_pkgver}")
 sha256sums=('SKIP')
 
