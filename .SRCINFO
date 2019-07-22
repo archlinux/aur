@@ -1,0 +1,23 @@
+pkgbase = python-zulip-term-git
+	pkgdesc = An interactive terminal interface for Zulip
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/zulip/zulip-terminal
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-urwid
+	depends = python-urwid_readline
+	depends = python-lxml
+	depends = python-emoji
+	depends = python-beautifulsoup4
+	depends = python-mypy_extensions
+	depends = python-zulip-api
+	provides = python-zulip-term
+	conflicts = python-zulip-term
+	source = git://github.com/zulip/zulip-terminal
+	sha512sums = SKIP
+
+pkgname = python-zulip-term-git
+
