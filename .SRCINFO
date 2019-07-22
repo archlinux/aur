@@ -8,11 +8,11 @@ pkgbase = mupen64plus-video-angrylion-plus-git
 	license = custom:MAME
 	makedepends = git
 	makedepends = mesa
-	makedepends = glut
 	makedepends = glibc
 	makedepends = cmake
 	makedepends = boost
 	depends = mupen64plus
+	depends = glut
 	source = git+https://github.com/ata4/angrylion-rdp-plus
 	sha256sums = SKIP
 
