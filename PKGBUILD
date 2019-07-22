@@ -10,7 +10,7 @@ url='https://github.com/vn-ki/anime-downloader.git'
 arch=('any')
 license=('unlicense')
 depends=('aria2' 'python-beautifulsoup4' 'python-requests' 'python-click' 'python-fuzzywuzzy' 'python-coloredlogs' 'python-cfscrape' 'python-requests-cache' 'python-tabulate' 'python-pycryptodome' 'python')
-makedepends=('git' 'python-pip')
+makedepends=('git')
 provides=('anime-downloader')
 
 source=("git+https://github.com/$author/$_gitname.git")
@@ -26,5 +26,6 @@ pkgver() {
 }
 
 package() {
-     pip install --isolated --root=$pkgdir --ignore-installed --no-deps --no-warn-script-location -U $srcdir/$_gitname
+  cd "$_gitname"
+  python setup.py install --root=$pkgdir
 }
