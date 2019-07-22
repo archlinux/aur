@@ -1,7 +1,7 @@
 pkgbase = dmenu-xft-mouse-height-fuzzy-history
 	pkgdesc = Dynamic X menu - with xft, mouse, height, history, and fuzzy search support
 	pkgver = 4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tools.suckless.org/dmenu/
 	arch = i686
 	arch = x86_64
