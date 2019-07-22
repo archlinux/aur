@@ -41,6 +41,7 @@ if [ -z "${ANDROID_NDK_PLATFORM}" ]; then
     export ANDROID_NDK_PLATFORM=android-$ANDROID_MINIMUM_PLATFORM
 fi
 
+export ANDROID_SDK_PLATFORM=${ANDROID_HOME}/platforms/$ANDROID_API_VERSION
 export ANDROID_PLATFORM=${ANDROID_NDK_HOME}/platforms/$ANDROID_NDK_PLATFORM
 export ANDROID_TOOLCHAIN=${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64
 export ANDROID_SYSROOT=${ANDROID_TOOLCHAIN}/sysroot
@@ -104,7 +105,17 @@ check_ndk_version_ge_than() {
     if [ "${older_ver}" = "${ndk_ver}" ]; then
         echo "ERROR: NDK version >= $version required."
 
-        return 1
+        return -1
+    fi
+
+    return 0
+}
+
+check_android_platform() {
+    if [ ! -e "${ANDROID_SDK_PLATFORM}/source.properties" ]; then
+        echo "ERROR: Please, install android-platform-${ANDROID_MINIMUM_PLATFORM}."
+
+        return -1
     fi
 
     return 0
