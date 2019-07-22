@@ -1,49 +1,54 @@
-# Maintainer:  Paul Wilk <paul.wilk@null.net>
+# Maintainer:  Aaron Miller <aaronm@cldtk.com>
+# Contributor: Paul Wilk <paul.wilk@null.net>
 # Contributor: ReNoM <renom@list.ru>
-# Contributir: Jiri Novak <jiri.bati.novak@gmail.com>
+# Contributor: Jiri Novak <jiri.bati.novak@gmail.com>
 
 pkgname=vmware-vcli
-_pkgver=6.5.0-4566394
+_pkgver=6.7.0-8156551
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="VMware vSphere Command-Line Interface (vCLI); run commands against vSphere and ESX/ESXi"
 arch=('i686' 'x86_64')
-url="https://developercenter.vmware.com/tool/vsphere_cli/6.0"
+url="https://code.vmware.com/web/tool/6.7/vsphere-cli"
 license=('custom:vmware')
 depends=(e2fsprogs openssl libxml2 perl kmod krb5
   perl-xml-libxml perl-bytes-random-secure perl-crypt-ssleay perl-xml-sax
   perl-archive-zip perl-html-parser perl-data-dump perl-soap-lite perl-uri
-  perl-lwp-protocol-https perl-class-methodmaker perl-net-ssleay )
+  perl-lwp-protocol-https perl-class-methodmaker perl-net-ssleay)
 install=$pkgname.install
 source=(for-arch.patch)
 source_i686=(local://VMware-vSphere-CLI-$_pkgver.i386.tar.gz)
 source_x86_64=(local://VMware-vSphere-CLI-$_pkgver.x86_64.tar.gz)
-md5sums=('c46fcc7bac0d9b0c710f52cfe286d34a')
-md5sums_i686=('2ae8153c4a93b732a4d51df42b3fe62e')
-md5sums_x86_64=('9611f161927ee13e0a175e759374ef83')
+md5sums=('645541c36349779a7f580e4a5b8453d3')
+md5sums_i686=('97df2464063c23bd87c5a8ed7e4871ef')
+md5sums_x86_64=('b38f05c522547c7377326e915597bdf7')
+options=(!strip docs libtool staticlibs emptydirs !zipman !purge !debug)
 
 build() {
   cd "vmware-vsphere-cli-distrib"
+
+  chmod +w bin/vmware-uninstall-vSphere-CLI.pl
+
   patch -Np0 < ../for-arch.patch
+  sed -i "s/my \$e2fsprogs_version = '0'/my \$e2fsprogs_version = '$(tune2fs 2>/dev/null | awk 'FNR == 1 {print $2}')'/" bin/vmware-uninstall-vSphere-CLI.pl
+
+  chmod -w bin/vmware-uninstall-vSphere-CLI.pl
 }
 
 package() {
   cd "vmware-vsphere-cli-distrib"
 
   mkdir -p "$pkgdir"/usr/bin
-  mkdir -p "$pkgdir"/usr/lib/perl5/5.26/core_perl
 
   ./vmware-install.pl --prefix="$pkgdir"
 
-  rm "$pkgdir"/usr/lib/perl5/5.26/core_perl/Data/Dumper.pm
-  rm "$pkgdir"/usr/lib/perl5/5.26/core_perl/auto/Data/Dumper/Dumper.so
-  rm -rf "$pkgdir"/usr/lib/perl5/5.26/core_perl/MIME/
-  rm -rf "$pkgdir"/usr/lib/perl5/5.26/core_perl/auto/MIME/
-
-  mv "$pkgdir"/bin/* "$pkgdir"/usr/bin/
+  mv "$pkgdir"/bin/* "$pkgdir"/usr/bin
   rmdir "$pkgdir"/bin
-  mv "$pkgdir"/lib/* "$pkgdir"/usr/lib/
+  mkdir "$pkgdir"/usr/lib
+  mv "$pkgdir"/lib/vmware-vcli "$pkgdir"/usr/lib/vmware-vcli
   rmdir "$pkgdir"/lib
+
+  mv "$pkgdir"/usr/share/perl5/core_perl/ "$pkgdir"/usr/share/perl5/vendor_perl/
 
   chmod +x "$pkgdir"/usr/lib/vmware-vcli/bin/esxcli/esxcli
 

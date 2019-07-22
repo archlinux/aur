@@ -1,5 +1,5 @@
---- vmware-install.pl.orig	2016-10-05 16:22:21.214845710 +0100
-+++ bin/vmware-uninstall-vSphere-CLI.pl	2016-10-10 14:40:27.453829269 +0100
+--- bin/vmware-uninstall-vSphere-CLI.pl	2019-07-21 20:08:05.802708197 -0700
++++ bin/vmware-uninstall-vSphere-CLI.pl.patched	2019-07-21 21:06:46.775372374 -0700
 @@ -766,7 +766,7 @@
  # Constants
  my $cInstallerFileName = 'vmware-install.pl';
@@ -27,12 +27,22 @@
      my $dst_loc = $dst_dir . '/' . $file;
      if (-l $dst_loc) {
        install_symlink(readlink($dst_loc), $src_loc);
-@@ -2198,35 +2198,31 @@
- sub install_content_vicli_perl {
-    my %patch;
+@@ -2047,9 +2047,9 @@
+ 
+   print wrap('The installation of ' . vmware_longname()
+              . ' completed successfully. '
+-             . 'You can decide to remove this software from your system at any '
+-             . 'time by invoking the following command: "'
+-             . db_get_answer('BINDIR') . '/' . $gUninstallerFileName . '".'
++  #           . 'You can decide to remove this software from your system at any '
++  #           . 'time by invoking the following command: "'
++  #           . db_get_answer('BINDIR') . '/' . $gUninstallerFileName . '".'
+              . "\n\n", 0);
+ 
+   if (vmware_product() eq 'vicli') {
+@@ -2199,32 +2199,30 @@
     my $shipped_ssl_version = '0.9.8';
--   my $installed_ssl_version = '0';
-+   my $installed_ssl_version = '1.0.2';
+    my $installed_ssl_version = '0';
     my $minimum_ssl_version = '0.9.7';
 -   my $ssleay_installed = 0;
 +   my $ssleay_installed = 1;
@@ -42,19 +52,16 @@
     my $installed_libxml_version = '0';
  
 -   my $OpenSSL_installed = 0;
--   my $LibXML2_installed = 0;
+    my $LibXML2_installed = 0;
 -   my $OpenSSL_dev_installed = 0;
-+   my $OpenSSL_installed = 1;
-+   my $LibXML2_installed = 1;
-+   my $OpenSSL_dev_installed = 1;
     my $libxml_perl_installed = 1;
  
 -   my $e2fsprogs_installed = 0;
--   my $e2fsprogs_version = '0';
 +   my $e2fsprogs_installed = 1;
-+   my $e2fsprogs_version = '1.43';
+    my $e2fsprogs_version = '0';
     my $minimum_e2fsprogs_version = '1.38';
-    my $e2fsprogs_devel_installed = 0;
+-   my $e2fsprogs_devel_installed = 0;
++   my $e2fsprogs_devel_installed = 1;
     my $internet_available = 0;
 -   my $install_rhel55_local = 0;
 +   my $install_rhel55_local = 1;
@@ -67,11 +74,160 @@
 -   unless(direct_command("perldoc -V 2> /dev/null")) {
 -      print wrap("warning: " . $vicliName . " requires Perldoc.\n Please install perldoc.\n\n");
 -   }
++   #unless(direct_command("perldoc -V 2> /dev/null")) {
++   #   print wrap("warning: " . $vicliName . " requires Perldoc.\n Please install perldoc.\n\n");
++   #}
+ 
+ 
+    # Determine version of libxml2 that's installed.
+@@ -2268,11 +2266,11 @@
+       }
+    }
+ 
+-   if ( $installed_ssl_version eq '0' ) {
+-      print wrap(" OpenSSL is not installed on the system \n");
+-   } else {
+-      $OpenSSL_installed = 1;
+-   }
++   #if ( $installed_ssl_version eq '0' ) {
++   #   print wrap(" OpenSSL is not installed on the system \n");
++   #} else {
++   #   $OpenSSL_installed = 1;
++   #}
+ 
+    if (compare_dot_version_strings($installed_ssl_version, $minimum_ssl_version) < 0) {
+ 	   print wrap("OpenSSL $minimum_ssl_version is required for encrypted connections.\n" .
+@@ -2280,63 +2278,63 @@
+    }
+ 
+    # check for e2fsprogs-devel installed
+-   if ( direct_command("cat /etc/*-release | grep -i ubuntu") || direct_command("cat /proc/version | grep -i ubuntu") ) {
+-       my $libssl_dev = direct_command("dpkg-query -W -f='\${Version}\n' '*ssl-dev*' ");
+-       if ( $libssl_dev ) {
+-		   $OpenSSL_dev_installed = 1;
+-       }   else {
+-            print wrap("libssl-dev $minimum_ssl_version is required for encrypted connections.\n" .
+-                  "Please install libssl-dev version $minimum_ssl_version or greater.\n\n", 0);
+-       }
 -
-    if ( file_name_exist("/etc/redhat-release")) {
-       my $msg = "This " . vmware_product_name() . " installer includes precompiled Perl modules for RHEL.\n"
-                 . "Answering yes will install the precompiled modules, and answering no will install from CPAN.\n"
-@@ -2704,16 +2700,16 @@
+-       my $e2fsprogs = direct_command("dpkg-query -W -f='\${Version}\n' e2fsprogs ");
+-       if ($e2fsprogs) {
+-          my @e2fs = split('-', $e2fsprogs);
+-          $e2fsprogs_version = $e2fs[0];
+-          $e2fsprogs_installed = 1;
+-       }
+-
+-       if ( direct_command("dpkg-query -W -f'\${Status}\n' libxml-libxml-perl | grep not-installed ") ) {
+-           print wrap("libxml-libxml-perl package is not installed on the system. libxml-libxml-perl package must be installed for use by " . $vicliName . ":\n\n", 0);
+-           $libxml_perl_installed = 0;
+-       }
+-
+-   } else {
+-      my @openssl_dev = direct_command("rpm -qa | grep 'ssl-dev'");
+-
+-      foreach my $line (@openssl_dev)  {
+-         chomp($line);
+-         if ($line =~ /[a-zA-Z]*ssl-dev[a-zA-Z]*-(\d+\.?\d*\.?\d*[a-zA-Z]*)/) {
+-            $OpenSSL_dev_installed = 1;
+-         }
+-      }
+-
+-      if (! $OpenSSL_dev_installed) {
+-         print wrap("Openssl-devel is not installed on the system.\n" .
+-              "openssl-devel $minimum_ssl_version is required for encrypted connections.\n" .
+-              "Please install openssl-devel version $minimum_ssl_version or greater.\n\n", 0);
+-      }
+-
+-      my @e2fsprogs = split('\n', direct_command("rpm -qa | grep 'e2fsprogs'"));
+-      foreach my $line (@e2fsprogs)  {
+-         chomp($line);
+-         if ($line =~ /e2fsprogs-+([0-9\.]+)/) {
+-            $e2fsprogs_version = "$1";
+-            $e2fsprogs_installed = 1;
+-         }
+-         if ( ! $install_rhel55_local ) {
+-            if ( -e "/etc/SuSE-release" ) {
+-               if ($line =~ /e2fsprogs-devel-+([0-9\.]+)/) {
+-                  $e2fsprogs_devel_installed = 1;
+-               }
+-            }
+-         }
+-      }
+-   }
+-
+-   if (! $e2fsprogs_installed ) {
+-      print wrap("e2fsprogs is not installed on the system \n\n", 0);
+-   }
++   #if ( direct_command("cat /etc/*-release | grep -i ubuntu") || direct_command("cat /proc/version | grep -i ubuntu") ) {
++   #    my $libssl_dev = direct_command("dpkg-query -W -f='\${Version}\n' '*ssl-dev*' ");
++   #    if ( $libssl_dev ) {
++#		   $OpenSSL_dev_installed = 1;
++   #    }   else {
++   #         print wrap("libssl-dev $minimum_ssl_version is required for encrypted connections.\n" .
++   #               "Please install libssl-dev version $minimum_ssl_version or greater.\n\n", 0);
++   #    }
++
++   #    my $e2fsprogs = direct_command("dpkg-query -W -f='\${Version}\n' e2fsprogs ");
++   #    if ($e2fsprogs) {
++   #       my @e2fs = split('-', $e2fsprogs);
++   #       $e2fsprogs_version = $e2fs[0];
++   #       $e2fsprogs_installed = 1;
++   #    }
++
++   #    if ( direct_command("dpkg-query -W -f'\${Status}\n' libxml-libxml-perl | grep not-installed ") ) {
++   #        print wrap("libxml-libxml-perl package is not installed on the system. libxml-libxml-perl package must be installed for use by " . $vicliName . ":\n\n", 0);
++   #        $libxml_perl_installed = 0;
++   #    }
++
++   #} else {
++   #   my @openssl_dev = direct_command("rpm -qa | grep 'ssl-dev'");
++
++   #   foreach my $line (@openssl_dev)  {
++   #      chomp($line);
++   #      if ($line =~ /[a-zA-Z]*ssl-dev[a-zA-Z]*-(\d+\.?\d*\.?\d*[a-zA-Z]*)/) {
++   #         $OpenSSL_dev_installed = 1;
++   #      }
++   #   }
++
++   #   if (! $OpenSSL_dev_installed) {
++   #      print wrap("Openssl-devel is not installed on the system.\n" .
++   #           "openssl-devel $minimum_ssl_version is required for encrypted connections.\n" .
++   #           "Please install openssl-devel version $minimum_ssl_version or greater.\n\n", 0);
++   #   }
++
++   #   my @e2fsprogs = split('\n', direct_command("rpm -qa | grep 'e2fsprogs'"));
++   #   foreach my $line (@e2fsprogs)  {
++   #      chomp($line);
++   #      if ($line =~ /e2fsprogs-+([0-9\.]+)/) {
++   #         $e2fsprogs_version = "$1";
++   #         $e2fsprogs_installed = 1;
++   #      }
++   #      if ( ! $install_rhel55_local ) {
++   #         if ( -e "/etc/SuSE-release" ) {
++   #            if ($line =~ /e2fsprogs-devel-+([0-9\.]+)/) {
++   #               $e2fsprogs_devel_installed = 1;
++   #            }
++   #         }
++   #      }
++   #   }
++   #}
++
++   #if (! $e2fsprogs_installed ) {
++   #   print wrap("e2fsprogs is not installed on the system \n\n", 0);
++   #}
+ 
+    if (compare_dot_version_strings($e2fsprogs_version, $minimum_e2fsprogs_version) < 0) {
+        print wrap("e2fsprogs $minimum_e2fsprogs_version is required for UUID.\n" .
+@@ -2350,7 +2348,7 @@
+    }
+ 
+    # Exit the installation if OpenSSL or LibXML or e2fsprogs not installed on system.
+-   if ( ! $OpenSSL_installed || ! $LibXML2_installed || ! $e2fsprogs_installed || ! $OpenSSL_dev_installed || ! $libxml_perl_installed ) {
++   if ( ! $LibXML2_installed || ! $libxml_perl_installed ) {
+       uninstall_file($gInstallerMainDB);
+       exit 1;
+    }
+@@ -2670,16 +2668,16 @@
  
        undef %patch;
        if ($] >= 5.010 && ( -e "./lib/5.10/$module->{'path'}/lib" ) )  {
@@ -92,7 +248,7 @@
        }
  
        if ($] < 5.010) {
-@@ -2776,7 +2772,7 @@
+@@ -2742,7 +2740,7 @@
  
    my $previous = $gOption{'default'};
    $gOption{'default'} = 0;
@@ -101,7 +257,7 @@
    $gOption{'default'} = $previous;
  
    if ((check_disk_space('.', '/usr/lib')) < 0) {
-@@ -2846,29 +2842,25 @@
+@@ -2812,29 +2810,29 @@
    db_add_answer('LIBDIR', $libdir);
  
    # Install a symlink for ESXCLI, which is in the library
@@ -112,6 +268,8 @@
 -  safe_chmod(755, "$bindir/esxcli");
 -  safe_chmod(755, "$bindir/dcli");
 +  install_symlink("/usr/lib/vmware-vcli/bin/vmware-dcli/dcli", "$bindir/dcli");
++  #safe_chmod(755, "$bindir/esxcli");
++  #safe_chmod(755, "$bindir/dcli");
  
    # Install a symlink for VCLI
 -  if ( "$rootdir/bin" ne "/usr/bin") {
@@ -125,6 +283,8 @@
       # Making esxcli and dcli executable
 -	 safe_chmod(755, "/usr/bin/esxcli");
 -     safe_chmod(755, "/usr/bin/dcli");
++     #safe_chmod(755, "/usr/bin/esxcli");
++     #safe_chmod(755, "/usr/bin/dcli");
    }
  
    # Install a symlink to make /lib point to the correct library
@@ -139,7 +299,7 @@
    }
  
    # Make sure that, in particular, libvmacore.so's exec text permission needs
-@@ -2879,12 +2871,12 @@
+@@ -2845,12 +2843,12 @@
    }
  
    # Install vSphere SDK for Perl content excluding "apps"
@@ -154,7 +314,7 @@
    undef %patch;
    install_dir('./man', $mandir, \%patch, 0x1);
  
-@@ -3860,9 +3852,9 @@
+@@ -3826,9 +3824,9 @@
       error($chk_msg);
     }
  
