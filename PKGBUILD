@@ -3,8 +3,8 @@
 # Contributor: Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
 
 pkgname=foxtrotgps
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="Lightweight and fast mapping application"
 arch=('x86_64')
 url="https://www.foxtrotgps.org/"
@@ -17,17 +17,10 @@ optdepends=('gpscorrelate: geotag photos'
             'python-beautifulsoup4: georss2foxtrotgps-poi tool'
             'python-feedparser: georss2foxtrotgps-poi tool'
             'python-sqlalchemy: poi2osm tool')
-source=(https://www.foxtrotgps.org/releases/$pkgname-$pkgver.tar.gz{,.asc}
-        foxtrotgps-gpsd-3.18.patch)
-validpgpkeys=('F0378BFD8385C9968DCBC56CFF7E9E83954BE38A') # Joshua Judson Rosen
-sha256sums=('3ffbe60dd09890e3228bc71a0337b27e69e26e52225c47bd75968b580b19f489'
-            'SKIP'
-            '4a517255e6fa9eade1c0abddf4eab2e803f1b31ce848472d9bbfb69d6ab97aca')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -p1 -i ../foxtrotgps-gpsd-3.18.patch # Fix build with gpsd 3.18
-}
+source=(https://www.foxtrotgps.org/releases/$pkgname-$pkgver.tar.gz{,.asc})
+validpgpkeys=('F0378BFD8385C9968DCBC56CFF7E9E83954BE38A') 
+sha256sums=('1773d591ec5cc57a0695b9f9d909aa0b37f6fa577b1eb1753b3eb8a275e1290a'
+            'SKIP')
 
 build() {
   cd $pkgname-$pkgver
