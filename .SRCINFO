@@ -1,0 +1,20 @@
+pkgbase = mupen64plus-video-angrylion-plus-git
+	pkgdesc = A low-level N64 video emulation plugin, based on the pixel-perfect angrylion RDP plugin with some improvements.
+	pkgver = 670.2e72a6c
+	pkgrel = 1
+	url = https://github.com/ata4/angrylion-rdp-plus
+	arch = i686
+	arch = x86_64
+	license = custom:MAME
+	makedepends = git
+	makedepends = mesa
+	makedepends = glut
+	makedepends = glibc
+	makedepends = cmake
+	makedepends = boost
+	depends = mupen64plus
+	source = git+https://github.com/ata4/angrylion-rdp-plus
+	sha256sums = SKIP
+
+pkgname = mupen64plus-video-angrylion-plus-git
+
