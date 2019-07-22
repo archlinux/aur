@@ -2,11 +2,10 @@
 # Contributor: Daniel Kirchner <daniel AT ekpyron DOT org>
 
 _android_arch=x86
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-libpng
 pkgver=1.6.37
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of routines used to create PNG format graphics (android)"
 arch=('any')
 url="http://www.libpng.org/pub/png/libpng.html"
@@ -21,6 +20,7 @@ sha256sums=('505e70834d35383537b6491e7ae8641f1a4bed1876dbfe361201fc80868d88ca'
 
 prepare() {
     cd "$srcdir/libpng-$pkgver"
+    source android-env ${_android_arch}
 
     # Add animated PNG (apng) support
     # see http://sourceforge.net/projects/libpng-apng/
@@ -33,6 +33,7 @@ prepare() {
 
 build() {
     cd "$srcdir/libpng-$pkgver"
+    source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
         --disable-unversioned-links \
@@ -44,6 +45,7 @@ build() {
 
 package () {
     cd "${srcdir}/libpng-${pkgver}"
+    source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
     sed -i "s|include/libpng|include|g" "${pkgdir}"/${ANDROID_PREFIX_LIB}/pkgconfig/libpng.pc
