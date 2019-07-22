@@ -3,7 +3,7 @@
 _arch=$(uname -m)
 pkgname=stack-static
 pkgver=2.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The Haskell Tool Stack (linked statically)"
 arch=('x86_64')
 url="https://github.com/commercialhaskell/stack"
@@ -11,7 +11,7 @@ license=('custom:BSD3')
 provides=( stack )
 conflicts=( stack stack-bin haskell-stack )
 replaces=( stack stack-bin haskell-stack )
-depends=( gmp gcc-libs zlib ncurses5-compat-libs ) # needed for working ghc downloaded by stack
+depends=( gmp gcc-libs zlib ) # needed for working ghc downloaded by stack
 optdepends=(
   'bash-completion'
   "ncurses5-compat-libs: using older ghc's linking against libtinfo.so.5"
