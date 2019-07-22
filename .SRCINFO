@@ -7,7 +7,6 @@ pkgbase = helpers-for-i3-git
 	license = GPL3
 	makedepends = git
 	depends = i3-wm
-	depends = python
 	depends = python-i3ipc
 	source = helpers-for-i3-git::git+https://github.com/vivien/helpers-for-i3#branch=master
 	sha256sums = SKIP
