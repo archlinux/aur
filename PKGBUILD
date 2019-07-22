@@ -20,7 +20,7 @@ changelog=
 source=(https://codeload.github.com/Kicer86/$pkgname/tar.gz/v$pkgver
         cmake_modules::git+https://github.com/Kicer86/cmake_modules.git)
 noextract=()
-md5sums=('18bd648b583d67984a8d88c428875c7f'
+md5sums=('d2994ec0f4874338b554552229b1886f'
          'SKIP')
 
 prepare()
