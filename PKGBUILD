@@ -89,11 +89,11 @@ source=('javaws-launcher'
         "policytool-$_jname.desktop"
         "http://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$_major.zip")
 source_i686=(
-	"https://www.dropbox.com/s/a6jvq5acpm8xk3b/$_pkgname-$pkgver-linux-i586.bin"
+	"https://cdn.stykers.moe/dl/$_pkgname-$pkgver-linux-i586.bin"
 	#"http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.bin"
 )
 source_x86_64=(
-	"https://www.dropbox.com/s/ym5k71ftapaq4um/$_pkgname-$pkgver-linux-x64.bin"
+	"https://cdn.stykers.moe/dl/$_pkgname-$pkgver-linux-x64.bin"
 	#"http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.bin"
 )
 md5sums=('45c15a6b4767288f2f745598455ea2bf'
