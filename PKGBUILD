@@ -9,20 +9,13 @@ pkgdesc="Push Notifications that work with just about every platform"
 arch=('any')
 url="https://github.com/caronc/apprise"
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools'
+             'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('e384b4670f510e6a69e91e360a7bc881bb2018d81a8196e38a218c568a98167f')
 
 prepare() {
-  cp -a apprise-$pkgver{,-py2}
-}
-
-build() {
-  cd "$srcdir"/apprise-$pkgver
-  python setup.py build
-
-  cd "$srcdir"/apprise-$pkgver-py2
-  python2 setup.py build
+  cp -a apprise-${pkgver}{,-py2}
 }
 
 package_python-apprise() {
@@ -36,8 +29,8 @@ package_python-apprise() {
            'python-markdown'
            'python-yaml')
 
-  cd apprise-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd apprise-${pkgver}
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-apprise() {
@@ -51,6 +44,6 @@ package_python2-apprise() {
            'python2-markdown'
            'python2-yaml')
 
-  cd apprise-$pkgver-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  cd apprise-${pkgver}-py2
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
