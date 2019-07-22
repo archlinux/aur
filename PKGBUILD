@@ -56,13 +56,13 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=5
-_minor=1
+_minor=2
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_pfrel=7
+_pfrel=1
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -652,12 +652,12 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
      }"
 
 
-sha256sums=('d06a7be6e73f97d1350677ad3bae0ce7daecb79c2c2902aaabe806f7fa94f041'
-            '02390efe7637927502bc834daf3f413ea5e2cb084bca125372e70dc9438e824c'
-            'd053037f67aece0010864abe91fdccfdc5b0483d010442ef1a77a0efc32cefa1'
+sha256sums=('54ad66f672e1a831b574f5e704e8a05f1e6180a8245d4bdd811208a6cb0ac1e7'
+            'c405c700b2cb06c4ec805b7e327d0b66416395995519281194a8293da69b398a'
+            '4b9502063c18dc36bec65bd0e52b9b6eefb1e26d39e1385cee6cffe0cf679572'
             '8d809b8a587f21a810ae385284855dec3c9cec0558f7ae957a91e8029386e930'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '18d6e369d248e4dc9bbd32f85b41827367df98c181c23528c1f25088a9f24cc2'
+            '310518d8a556d8557e7ee89edbaf16ac78415387c43079e7ea1fa9487f756d5d'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
 # vim:set ts=2 sw=2 tw=0 et:
