@@ -1,0 +1,27 @@
+pkgbase = python-bumps
+	pkgdesc = Data fitting with uncertainty analysis
+	pkgver = 0.7.11
+	pkgrel = 1
+	url = https://github.com/bumps/bumps
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-nose
+	makedepends = python-docutils
+	makedepends = python-pygments
+	makedepends = python-jinja>=2
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-wxpython
+	depends = python-pyparsing
+	depends = python-periodictable
+	depends = python-scikit-learn
+	source = https://github.com/bumps/bumps/archive/v0.7.11.tar.gz
+	source = bumps.patch
+	sha256sums = f0c368d7beb4307297fb5298658921941a80c21e7bc52fb5dab1a1d1ef16d250
+	sha256sums = SKIP
+
+pkgname = python-bumps
+
