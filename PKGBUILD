@@ -8,7 +8,7 @@ pkgdesc="Stereoscopic 3D video player with OpenGL UI"
 arch=('i686' 'x86_64')
 url="http://www.sview.ru/en"
 license=('custom')
-depends=('libconfig' 'ffmpeg' 'freetype2' 'gtk2' 'libgl' 'libx11' 'libxext' 'libxpm' 'openal' 'ttf-droid' 'ttf-freefont')
+depends=('libconfig' 'ffmpeg' 'freetype2' 'gtk2' 'libgl' 'libx11' 'libxext' 'libxpm' 'openal' 'ttf-droid' 'gnu-free-fonts')
 optdepends=('ttf-nanum')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")

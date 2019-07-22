@@ -17,7 +17,7 @@ pkgbase = sview-git
 	depends = libxpm
 	depends = openal
 	depends = ttf-droid
-	depends = ttf-freefont
+	depends = gnu-free-fonts
 	optdepends = ttf-nanum
 	provides = sview=19.04.r3.gcb9332a8
 	conflicts = sview
