@@ -1,7 +1,7 @@
 # Maintainer:  David Fabijan <mclenin.at.gmail.com>
 
 pkgname=latexdraw
-pkgver=3.3.8
+pkgver=3.3.9
 pkgrel=1
 pkgdesc='Create svg graphics and/or pstricks code usable in latex documents.'
 arch=('any')
@@ -41,9 +41,9 @@ package() {
     
 
 }
-md5sums=('7799e524778877b5230e1572b9f87b77'
+md5sums=('4e1be2f42dc5c666db1adb4e975d014d'
          '8f7e3de38675797b824c5a8878e4c694')
-sha1sums=('07fb2a20bc0372aebbd059d4c182aa022e9c173b'
+sha1sums=('6b38e2c3ddeacbe543d4fa370d3dd22408d79318'
           'd53cc9f75f931eaee25de1d421aeadbd2b2f1623')
-sha256sums=('9929c75388d3a96298a14c321ca7a17905d78b20a947133418dd5bb4739ed01e'
+sha256sums=('ddd3e5aea13203b8f295d7033fa88f40cedc3e32a3887a9025df82e935cf7cef'
             '341de73de077f2a85a79084a07a535a5dc399f19f873f8e54c2f000d7380f98b')
