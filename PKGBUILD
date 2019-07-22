@@ -7,7 +7,7 @@
 _pkgname=armagetronad
 pkgname=${_pkgname}-git
 pkgver='r4128.7392b902f'
-pkgrel=1
+pkgrel=2
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
 url='http://armagetronad.net/'
@@ -30,11 +30,6 @@ prepare(){
 
      # python2 fix
      sed -i 's_#!/usr/bin/python_#!/usr/bin/python2_' language/update.py
-}
-
-pkgver(){
-     cd "$srcdir/$_pkgver"
-     printf "r%s" "$(bzr revno)"
 }
 
 build() {
