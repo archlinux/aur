@@ -1,0 +1,16 @@
+pkgbase = python-pytest-dependency
+	pkgdesc = Manage dependencies of tests.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/RKrahl/pytest-dependency
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/pytest-dependency/pytest-dependency-0.4.0.tar.gz
+	sha256sums = bda0ef48e6a44c091399b12ab4a7e580d2dd8294c222b301f88d7d57f47ba142
+
+pkgname = python-pytest-dependency
+
+pkgname = python2-pytest-dependency
+
