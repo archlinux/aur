@@ -36,7 +36,7 @@
 
 pkgname=cisco-anyconnect-tarball
 pkgver=4.7.00136
-pkgrel=k9
+pkgrel=1
 pkgdesc="Cisco Anyconnect Secure Mobility Client Tarball"
 arch=('x86_64')
 depends=('libxml2' 'ca-certificates' 'lib32-gcc-libs' 'lib32-ncurses5-compat-libs')
