@@ -6,7 +6,7 @@
 
 pkgname=mtpaint-wjaguar
 pkgver=3.49.19
-pkgrel=1
+pkgrel=2
 _commit="a9e445ef0167631363fe954bd3ea7aec7853ca1a"
 pkgdesc='Simple paint program for creating icons and pixel based artwork (Dmitry Groshev''s fork)'
 arch=('x86_64')
@@ -29,7 +29,9 @@ prepare() {
 build() {
   cd "mtPaint-$_commit"
 
-  export CFLAGS="-w `pkg-config libopenjpeg --cflags` $CFLAGS"
+  # It makes problems on my end, so i commented it out:
+  #export CFLAGS="-w `pkg-config libopenjpeg --cflags` $CFLAGS"
+  
   ./configure --prefix=/usr --mandir=/usr/share/man man intl GIF jpeg tiff cflags lcms2 jp2 webp
   make
 }

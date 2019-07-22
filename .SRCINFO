@@ -1,7 +1,7 @@
 pkgbase = mtpaint-wjaguar
 	pkgdesc = Simple paint program for creating icons and pixel based artwork (Dmitry Groshevs fork)
 	pkgver = 3.49.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wjaguar/mtPaint
 	arch = x86_64
 	license = GPL3
