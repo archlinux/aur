@@ -1,11 +1,11 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 pkgname=pgformatter-git
 _gitname=pgformatter
-pkgver=1e65db3
+pkgver=v4.0.r19.gd6e919b
 pkgrel=1
 pkgdesc="Correctly indent PostgreSQL queries"
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://github.com/dalibo/pgformatter"
+arch=('i686' 'x86_64')
+url="https://github.com/darold/pgformatter"
 license=('BSD')
 depends=()
 builddepends=()
@@ -16,9 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  tag=`git tag | grep REL | tail -1`
-  commit=`git log --format="%h" -n 1`
-  echo "$tag_$commit"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
