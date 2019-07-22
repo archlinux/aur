@@ -10,7 +10,7 @@
     # systemctl start vpnagentd                                     #
     #                                                               #
     # to get the Cisco AnyConnect VPN client to properly load.      #
-    #                                                               #S
+    #                                                               #
     # I'd love to have these commands in the PKGBUILD.              #
     # I also don't want the package to be taken down, because       #
     # the Arch community would hate that I included them. :)        #
@@ -28,14 +28,15 @@
     #                                                               #
     # Thanks to K900 <me@0upti.me> for the mentioned repo,          #
     # as creating this AUR package saved a bunch of time thanks     #
-    # to them.                                                      #
+    # to them. They also helped track down a pretty major bug. :)   #
+    #                                                               #
     #################################################################
 
 
 
 pkgname=cisco-anyconnect-tarball
-pkgver=1.0
-pkgrel=1
+pkgver=4.7.00136
+pkgrel=2
 pkgdesc="Automates anyconnect installation on Arch distros for tarball owners."
 arch=('x86_64')
 depends=('libxml2' 'ca-certificates' 'lib32-gcc-libs' 'lib32-ncurses5-compat-libs')
@@ -47,6 +48,7 @@ optdepends=(
 )
 conflicts=('cisco-anyconnect' 'anyconnect-client')
 license=('custom')
+options=('!strip')
 # you will have to obtain the installer yourself - it's not available publicly
 _filename="anyconnect-linux64.tar.gz"
 _dirname="/home/$USER/Downloads/$_filename"
@@ -76,7 +78,7 @@ package() {
     # install plugins
     # we intentionally don't install the telemetry plugin here
     # because it tries to write to /opt and we don't want that
-    for plugin in "libvpnipsec.so"; do
+    for plugin in "libvpnipsec.so" "libacfeedback.so"; do
         install -Dm755 ${plugin} "${pkgdir}/opt/cisco/anyconnect/bin/plugins/${plugin}"
     done
 
