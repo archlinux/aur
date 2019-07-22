@@ -1,5 +1,5 @@
 [Unit]
-Description=a robust, reliable, and easy to install gopher server
+Description=A robust, reliable, and easy to install gopher server.
 After=network.target network-online.target nss-lookup.target
 
 [Service]
