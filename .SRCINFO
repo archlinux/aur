@@ -1,6 +1,6 @@
 pkgbase = palemoon-unstable-bin
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 28.7.0a1.20190505
+	pkgver = 28.7.0a1.20190720
 	pkgrel = 1
 	url = http://linux.palemoon.org/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = palemoon-unstable-bin
 	optdepends = hunspell: spell checker and morphological analyzer
 	optdepends = hyphen: library for hyphenation and justification
 	optdepends = ffmpeg: record, convert, and stream audio and video
-	provides = palemoon=28.7.0a1.20190505
+	provides = palemoon=28.7.0a1.20190720
 	conflicts = palemoon
 	conflicts = palemoon-git
 	conflicts = palemoon-26
@@ -25,7 +25,7 @@ pkgbase = palemoon-unstable-bin
 	options = !strip
 	source = http://linux.palemoon.org/datastore/release/palemoon-unstable-latest.linux-x86_64.tar.bz2
 	source = palemoon.desktop
-	sha256sums = 865d839c4d72e66fd16c1f237ef9ca7f84cd87c74bed3cbf1cb5d3040b6b27e1
+	sha256sums = 2679a3bebbd493312e32562bd21979d86e353c8835f330aba60a206ee3cc5dcc
 	sha256sums = c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e
 
 pkgname = palemoon-unstable-bin
