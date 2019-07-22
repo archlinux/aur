@@ -1,11 +1,10 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 _android_arch=armv7a-eabi
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-speexdsp
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DSP library derived from Speex (android)"
 arch=(any)
 url="http://www.speexdsp.org"
@@ -17,11 +16,13 @@ source=("http://downloads.xiph.org/releases/speex/speexdsp-$pkgver.tar.gz")
 md5sums=('b722df341576dc185d897131321008fc')
 
 prepare() {
+    source android-env ${_android_arch}
     check_ndk_version_ge_than 18.0
 }
 
 build() {
     cd "${srcdir}"/speexdsp-${pkgver}
+    source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
         --disable-neon
@@ -31,6 +32,7 @@ build() {
 
 package() {
     cd "${srcdir}"/speexdsp-${pkgver}
+    source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
 
