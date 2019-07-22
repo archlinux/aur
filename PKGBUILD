@@ -4,7 +4,7 @@
 _pkgname=nohang
 pkgname=${_pkgname}-git
 pkgver=0.1.r413.gaf36cb2
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly configurable OOM prevention daemon"
 arch=('any')
 url="https://github.com/hakavlad/nohang"
@@ -31,5 +31,9 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${pkgname}" || exit 2
-	make DESTDIR="${pkgdir}" install
+	make \
+		DESTDIR="${pkgdir}" \
+		BINDIR="/usr/bin" \
+		SYSTEMDUNITDIR="/usr/lib/systemd/system" \
+		install
 }
