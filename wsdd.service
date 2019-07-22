@@ -1,12 +1,16 @@
 [Unit]
 Description=Web Services Dynamic Discovery host daemon
-After=network.target
+; Start after the network has been configured
+After=network-online.target
+Wants=network-online.target
+; It makes sense to have Samba running when wsdd starts, but is not required
+;Wants=smb.service
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/wsdd --workgroup WORKGROUP
 User=wsdd
 Group=wsdd
+Type=simple
+ExecStart=/usr/bin/wsdd --shortlog
 
 [Install]
 WantedBy=multi-user.target
