@@ -14,26 +14,26 @@ optdepends=('hyphen: Auto-hyphenation support'
             'dictd: Offline dictionary support'
             'festival: Text-to-speech support; also voice package needed'
             'espeak-ng: Text-to-speech support; also voice package needed')
-source=($pkgname::git+https://github.com/johnfactotum/$pkgname.git)
-provides=($pkgname)
-conflicts=($pkgname-git)
+source=("$pkgname"::git+https://github.com/johnfactotum/"$pkgname".git)
+provides=("$pkgname")
+conflicts=("$pkgname"-git)
 sha256sums=('SKIP')
 	
 pkgver() {
-	cd $srcdir/$pkgname
+	cd "$srcdir"/"$pkgname"
 	git describe --tags | sed -r 's/('$pkgver').+/\1/'
 }
 
 build() {
-	cd $srcdir/$pkgname	
-	git checkout tags/$pkgver
+	cd "$srcdir"/"$pkgname"
+	git checkout tags/"$pkgver"
 	meson build --prefix=/usr
 	ninja -C build
 }
 
 package() {
-	cd $srcdir/$pkgname
-	DESTDIR=$pkgdir ninja -C build install
+	cd "$srcdir"/"$pkgname"
+	DESTDIR="$pkgdir" ninja -C build install
 	cd "$pkgdir"/usr/bin
 	ln -sv com.github.johnfactotum.Foliate foliate
 }
