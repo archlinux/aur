@@ -1,8 +1,8 @@
-# Maintainer: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
+# Maintainer: Katherine J. Cumberbatch <stykers@stykers.moe>
 
 pkgname=kdesudo
 pkgver=3.4.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A SUdo frontend for KDE"
 arch=("i686" "x86_64")
 url="https://launchpad.net/kdesudo"
@@ -19,7 +19,7 @@ build() {
 	sed -i "s|ADD_SUBDIRECTORY(en)|#ADD_SUBDIRECTORY(en)|g" doc/CMakeLists.txt
 
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr
-	make
+	make -j$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
 }
 
 package() {
