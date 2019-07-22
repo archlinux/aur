@@ -1,4 +1,5 @@
 # Maintainer: Ariel AxionL <i at axionl dot me>
+# Contributor: lilydjwg <lilydjwg at gmail dot com>
 _pkgname=baidunetdisk
 pkgname=baidunetdisk-bin
 pkgver=2.0.1
