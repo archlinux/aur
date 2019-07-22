@@ -18,25 +18,3 @@ pkgbase = devault
 	md5sums = 9ca9b2a3b0e0aeafdb5f974c2004ccac
 
 pkgname = devault
-
-pkgbase = devault
-	pkgdesc = Desktop wallet for the dvt blockchain
-	pkgver = 1.0.5
-	pkgrel = 1
-	url = https://github.com/devaultcrypto/
-	arch = x86_64
-	license = MIT
-	makedepends = python
-	makedepends = boost
-	depends = boost-libs
-	depends = qt5-base
-	depends = qrencode
-	depends = zeromq
-	depends = miniupnpc
-	depends = hicolor-icon-theme
-	depends = libevent
-	source = devault-1.0.5::https://github.com/devaultcrypto/devault/archive/v1.0.5.tar.gz
-	md5sums = 9ca9b2a3b0e0aeafdb5f974c2004ccac
-
-pkgname = devault
-
