@@ -1,11 +1,10 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 _android_arch=x86-64
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-bzip2
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-quality data compression program (android)"
 arch=('any')
 url="http://sources.redhat.com/bzip2"
@@ -22,6 +21,7 @@ prepare() {
 
 build() {
     cd "$srcdir"/bzip2-$pkgver
+    source android-env ${_android_arch}
 
     make libbz2.a \
         CC=${ANDROID_CC} \
@@ -33,6 +33,7 @@ build() {
 
 package() {
     cd "$srcdir"/bzip2-$pkgver
+    source android-env ${_android_arch}
 
     install -m755 -d "${pkgdir}"/${ANDROID_PREFIX_INCLUDE}
     install -m644 bzlib.h "${pkgdir}"/${ANDROID_PREFIX_INCLUDE}/
