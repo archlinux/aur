@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-expat
 	pkgdesc = An XML parser library (android)
 	pkgver = 2.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://expat.sourceforge.net
 	arch = any
 	license = custom
