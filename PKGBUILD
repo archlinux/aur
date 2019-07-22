@@ -1,7 +1,7 @@
 # Maintainer: Mathieu Clabaut <mathieu[at]clabaut.net>
 
 pkgname=prometheus-blackbox-exporter-bin
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP (binary, not built from source)."
 arch=('x86_64' 'armv5h' 'armv6h' 'armv7h')
@@ -57,19 +57,19 @@ md5sums_x86_64=('e92e48a4199046fdd92ad21eba658b8f'
                 '81d90a7cdaadf99c5aa1399864dcf3da'
                 '45cf951d67cf59d74be82d0ddcce704d'
                 '15acae9345cc6032933e54c0cf1cbc35'
-                'aa295c65f7252b73dd0477a58a2602fd')
+                'cb442c8782fb9aad47a1269f1498ebe1')
 md5sums_armv5h=('e92e48a4199046fdd92ad21eba658b8f'
                 '81d90a7cdaadf99c5aa1399864dcf3da'
                 '45cf951d67cf59d74be82d0ddcce704d'
                 '15acae9345cc6032933e54c0cf1cbc35'
-                'cc205fd32a9c6eb47c92da9f5ea85576')
+                'db6ddf3f6bda890914274f1c8a17f884')
 md5sums_armv6h=('e92e48a4199046fdd92ad21eba658b8f'
                 '81d90a7cdaadf99c5aa1399864dcf3da'
                 '45cf951d67cf59d74be82d0ddcce704d'
                 '15acae9345cc6032933e54c0cf1cbc35'
-                'bd2dbffd513b7ce1b898c1406867fbb8')
+                '8756bcfbb24b4e734403889688357103')
 md5sums_armv7h=('e92e48a4199046fdd92ad21eba658b8f'
                 '81d90a7cdaadf99c5aa1399864dcf3da'
                 '45cf951d67cf59d74be82d0ddcce704d'
                 '15acae9345cc6032933e54c0cf1cbc35'
-                'e80f1a98d86a76861967b314fd124ada')
+                'df97e7ee5cbd251ac1d07ccd0f371c3b')
