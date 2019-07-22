@@ -1,11 +1,10 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 _android_arch=x86-64
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-giflib
 pkgver=5.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for reading and writing gif images (android)"
 arch=('any')
 url="http://sourceforge.net/projects/giflib/"
@@ -20,6 +19,7 @@ md5sums=('c1df79d223b10b92f44ca649ef5f1459'
 
 prepare() {
     cd "${srcdir}"/giflib-${pkgver}
+    source android-env ${_android_arch}
 
     check_ndk_version_ge_than 18.0
     patch -Np1 -i "../Makefile.patch"
@@ -27,6 +27,7 @@ prepare() {
 
 build() {
     cd "${srcdir}"/giflib-${pkgver}
+    source android-env ${_android_arch}
 
     make \
         libgif.a \
@@ -38,6 +39,7 @@ build() {
 
 package() {
     cd "${srcdir}"/giflib-${pkgver}
+    source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install-include install-lib
     mkdir -p "${pkgdir}"/${ANDROID_PREFIX}

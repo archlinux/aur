@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-giflib
 	pkgdesc = A library for reading and writing gif images (android)
 	pkgver = 5.1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/giflib/
 	arch = any
 	license = MIT
