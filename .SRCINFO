@@ -1,0 +1,17 @@
+pkgbase = python-novas
+	pkgdesc = The United States Naval Observatory NOVAS astronomy library
+	pkgver = 3.1.1.4
+	pkgrel = 1
+	url = https://www.usno.navy.mil/USNO/astronomical-applications/software-products/novas
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = https://files.pythonhosted.org/packages/source/n/novas/novas-3.1.1.4.tar.gz
+	md5sums = 13b07878f9e0404e33a044fc2d6840a0
+
+pkgname = python-novas
+	optdepends = python-novas_de405: high-accuracy ephemeris data set
+
+pkgname = python2-novas
+	optdepends = python2-novas_de405: high-accuracy ephemeris data set
+
