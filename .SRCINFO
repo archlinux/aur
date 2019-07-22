@@ -7,11 +7,9 @@ pkgbase = python-rebulk
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	makedepends = python-pytest-runner
-	makedepends = python2-pytest-runner
 	options = !emptydirs
-	source = https://github.com/Toilal/rebulk/archive/1.0.0.tar.gz
-	sha256sums = e03325363d586f4c2e25a636061d64760e8d4202a6921d71fe4ace89307de8b6
+	source = https://files.pythonhosted.org/packages/source/r/rebulk/rebulk-1.0.0.tar.gz
+	sha256sums = 1d49e4f7ef6fb874e60efccacbbe661092fabdb7770cdf7f7de4516d50535998
 
 pkgname = python-rebulk
 	depends = python
