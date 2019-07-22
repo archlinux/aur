@@ -1,0 +1,15 @@
+pkgbase = python-novas_de405
+	pkgdesc = JPL DE405 ephemeris needed by the NOVAS package
+	pkgver = 1997.1
+	pkgrel = 1
+	url = https://github.com/brandon-rhodes/python-novas
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = https://files.pythonhosted.org/packages/source/n/novas_de405/novas_de405-1997.1.tar.gz
+	md5sums = 86341c564b5b97ca8693f1b25135efd8
+
+pkgname = python-novas_de405
+
+pkgname = python2-novas_de405
+
