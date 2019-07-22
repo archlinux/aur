@@ -1,0 +1,12 @@
+--- ./contrib/init/systemd/balena-engine.service.old	2019-07-22 17:11:02.087699839 +0100
++++ ./contrib/init/systemd/balena-engine.service	2019-07-22 17:11:43.603623006 +0100
+@@ -7,6 +7,9 @@
+ 
+ [Service]
+ Type=notify
++# Force name resolution, for more details see:
++# https://github.com/balena-os/balena-engine/issues/170
++Environment=GODEBUG=netdns=go
+ # the default is not to use systemd for cgroups because the delegate issues still
+ # exists and systemd currently does not support the cgroup feature set required
+ # for containers run by docker

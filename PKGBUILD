@@ -2,7 +2,7 @@
 # Maintainer: Gegrely Imreh <imrehg@gmail.com>
 
 pkgname=balena-engine
-pkgver=18.9.6
+pkgver=18.9.7
 pkgrel=1
 epoch=1
 pkgdesc='A Moby-based container engine for the Internet of Things'
@@ -21,23 +21,28 @@ options=('!strip' '!buildflags')
 # https://github.com/docker/docker-ce/blob/master/components/engine/hack/dockerfile/binaries-commits
 source=("git+https://github.com/balena-os/balena-engine.git#tag=v${pkgver}"
         "balena-engine.sysusers"
-        "80-balena-engine.rules")
+        "80-balena-engine.rules"
+        "balena-engine.service.patch")
 sha256sums=('SKIP'
             '39ab64fca83966b0edf2d56013ce33dcb44962800c1f0a29673708c9ba9328e3'
-            'fbdcb0d6c5794c9db8fa30e81fa0f1d2f91d11e23f4c286e15ff57e8bef87bce')
+            'fbdcb0d6c5794c9db8fa30e81fa0f1d2f91d11e23f4c286e15ff57e8bef87bce'
+            'c871ee7817b57c6f1c7674d0c93b1db767bb394a70852d8288df257bc2d29f54')
+
+
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    patch --forward --strip=1 --input="${srcdir}/balena-engine.service.patch"
+}
 
 build() {
-    cd "${srcdir}/balena-engine/"
-    echo $(git describe --tags --always) > VERSION
+    cd "${srcdir}/${pkgname}/"
+    echo -n $(git describe --tags --always | sed 's/^v//;s/-/./g') > VERSION
     ./build.sh
 }
 
 package() {
 
     ### engine
-#    find "${srcdir}/${pkgname}/bundles/binary-balena/" -executable -type f -exec install -Dm755 {} "${pkgdir}/usr/bin/" \;
-#    find "${srcdir}/${pkgname}/bundles/binary-balena/" -executable -type l -exec install -Dm755 {} "${pkgdir}/usr/bin/" \;
-
     for f in "${srcdir}/${pkgname}/bundles/binary-balena/"* ; do
       install -Dm755 "${f}" -t "${pkgdir}/usr/bin/"
     done
