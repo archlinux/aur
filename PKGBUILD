@@ -1,11 +1,10 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 _android_arch=armv7a-eabi
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-speex
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A free codec for free speech (android)"
 arch=(any)
 url="http://www.speex.org"
@@ -19,6 +18,7 @@ md5sums=('8ab7bb2589110dfaf0ed7fa7757dc49c')
 
 build() {
     cd "${srcdir}"/speex-${pkgver}
+    source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
         --disable-binaries
@@ -28,6 +28,7 @@ build() {
 
 package() {
     cd "${srcdir}"/speex-${pkgver}
+    source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
     rm -r "${pkgdir}"/${ANDROID_PREFIX_SHARE}
