@@ -16,7 +16,7 @@ makedepends=(
 
 )
 source=("https://gitlab.com/SostheneGuedon/qcalc/-/archive/v1.1/qcalc-v1.1.tar.gz")
-md5sums=('133f219eb577284a655e23511ad3693e')
+md5sums=('abe95f4bb74c6f2562aa8adf5c53898b')
 
 build() {
   cd $pkgname-v$pkgver
