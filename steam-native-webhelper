@@ -3,10 +3,8 @@
 WEBHELPER_SHA256=($(sha256sum "$HOME/.local/share/Steam/ubuntu12_64/steamwebhelper.sh"))
 WEBHELPER_SHA256="${WEBHELPER_SHA256[0]}"
 
-if [[ $WEBHELPER_SHA256 == "f60cb3818ca4cb716a8adf09ed7f1454aa6cdf775d8321f6ab1944db424d8790" ]]; then
-	cp /usr/lib/steam/steamwebhelper.sh.override.f60cb3818ca4cb71 "$HOME/.local/share/Steam/ubuntu12_64/steamwebhelper.sh"
-elif [[ $WEBHELPER_SHA256 == "8625e67eb3a5c5df91a17a7d9483770f02de6802b45274848a025900076130a6" ]]; then
-	cp /usr/lib/steam/steamwebhelper.sh.override.8625e67eb3a5c5df "$HOME/.local/share/Steam/ubuntu12_64/steamwebhelper.sh"
+if [[ $WEBHELPER_SHA256 == "2bf679560fac2ed8acca4522416cac9812420ac5b53c5a7fd1fac67f05ef5fa6" ]]; then
+	cp /usr/lib/steam/steamwebhelper.sh.override.2bf679560fac2ed8 "$HOME/.local/share/Steam/ubuntu12_64/steamwebhelper.sh"
 fi
 
 exec steam-native "$@"

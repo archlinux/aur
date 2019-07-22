@@ -1,3 +1,0 @@
-#!/bin/bash
-exec /usr/lib/steam/steamwebhelper.sh "$0" "$@"
-##########½Î¿–#######################################
