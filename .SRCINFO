@@ -1,7 +1,7 @@
 pkgbase = rigsofrods-bin
 	pkgdesc = An open source vehicle simulator based on soft-body physics
 	pkgver = 0.4.8.0_RC5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rigsofrods.org
 	arch = x86_64
 	license = GPLv3
