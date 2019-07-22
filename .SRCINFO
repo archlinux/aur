@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-libvpx
 	pkgdesc = VP8 and VP9 codec (android)
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.webmproject.org/
 	arch = any
 	license = BSD

@@ -1,11 +1,10 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 _android_arch=x86-64
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-libvpx
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="VP8 and VP9 codec (android)"
 arch=('any')
 url="http://www.webmproject.org/"
@@ -17,11 +16,13 @@ source=(https://github.com/webmproject/libvpx/archive/v${pkgver}.tar.gz)
 sha256sums=('df19b8f24758e90640e1ab228ab4a4676ec3df19d23e4593375e6f3847dee03e')
 
 prepare() {
+    source android-env ${_android_arch}
     check_ndk_version_ge_than 18.0
 }
 
 build() {
     cd "${srcdir}"/libvpx-${pkgver}
+    source android-env ${_android_arch}
 
     export CC=${ANDROID_CC}
     export CXX=${ANDROID_CXX}
@@ -61,6 +62,7 @@ build() {
 
 package() {
     cd "${srcdir}"/libvpx-${pkgver}
+    source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
     ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
