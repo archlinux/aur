@@ -10,10 +10,14 @@
     # systemctl start vpnagentd                                     #
     #                                                               #
     # to get the Cisco AnyConnect VPN client to properly load.      #
-    #                                                               #
+    #                                                               #S
     # I'd love to have these commands in the PKGBUILD.              #
     # I also don't want the package to be taken down, because       #
     # the Arch community would hate that I included them. :)        #
+    #                                                               #
+    # Make sure the .tar.gz file is named:                          #
+    # 'anyconnect-linux64.tar.gz'                                   #
+    # and is in your Downloads folder.                              #
     #                                                               #
     # Also, please feel free to email me or post in the comments of #
     # the package if something isn't quite working with this        #
