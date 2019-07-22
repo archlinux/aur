@@ -7,8 +7,8 @@ pkgdesc="A low-level N64 video emulation plugin, based on the pixel-perfect angr
 arch=('i686' 'x86_64')
 url="https://github.com/ata4/${_srcname}"
 license=('custom:MAME')
-depends=('mupen64plus')
-makedepends=('git' 'mesa' 'glut' 'glibc' 'cmake' 'boost')
+depends=('mupen64plus' 'glut')
+makedepends=('git' 'mesa' 'glibc' 'cmake' 'boost')
 source=("git+https://github.com/ata4/${_srcname}")
 sha256sums=('SKIP')
 
