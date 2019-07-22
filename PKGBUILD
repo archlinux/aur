@@ -1,3 +1,4 @@
+# Maintainer: Alison Watson <marrub@greyserv.net>
 _srcname=angrylion-rdp-plus
 pkgname=mupen64plus-video-angrylion-plus-git
 pkgver=670.2e72a6c
