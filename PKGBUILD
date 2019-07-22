@@ -9,7 +9,7 @@ url="https://www.brave.com/"
 license=('custom:MPL2' 'BSD' 'Apache' 'custom:others')
 groups=('networking')
 depends=('gtk2' 'nss' 'alsa-lib' 'gconf' 'libxtst' 'libgnome-keyring' 'libxss' 'ttf-font')
-makedepends=('git' 'npm' 'python2' 'icu' 'glibc')
+makedepends=('git' 'npm' 'python2' 'icu' 'glibc' 'python2-virtualenv')
 optdepends=('cups: To print stuff'
             'pepper-flash: Adobe Flash support')
 provides=('brave' 'brave-browser')
@@ -28,14 +28,16 @@ pkgver() {
 
 build() {
   cd "$srcdir/brave-browser"
-
+  python2 -m virtualenv venv
+  source venv/bin/activate
   npm install home-path buffer-to-vinyl stream-combiner2
   npm install
-  npm run init --python=python2.7
+  npm run init
 
   if [[ ! (-r /proc/sys/kernel/unprivileged_userns_clone && $(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n $(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ) ]]; then
     echo "User namespaces are not detected as enabled on your system, brave will run with the sandbox disabled"
   fi
+  deactivate
 }
 
 package() {
