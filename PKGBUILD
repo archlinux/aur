@@ -7,7 +7,7 @@
 _pkgname=armagetronad
 pkgname=${_pkgname}-git
 pkgver='r4128.7392b902f'
-pkgrel=3
+pkgrel=4
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
 url='http://armagetronad.net/'
@@ -26,14 +26,14 @@ pkgver() {
 }
 
 prepare(){
-     cd "$srcdir/$_pkgver"
+     cd "${srcdir}/${_pkgname}"
 
      # python2 fix
      sed -i 's_#!/usr/bin/python_#!/usr/bin/python2_' language/update.py
 }
 
 build() {
-     cd "$srcdir/$_pkgver"
+     cd "${srcdir}/${_pkgname}"
 
      ./bootstrap.sh
 
@@ -47,13 +47,13 @@ build() {
 }
 
 package() {
-     cd "$srcdir/$_pkgver"
-     make DESTDIR="$pkgdir" install
-     install -D -m 644 "desktop/$_pkgname-armagetronad.desktop" "$pkgdir/usr/share/applications/$_pkgname-armagetronad.desktop"
-     install -d "$pkgdir/usr/share/pixmaps/"
+     cd "${srcdir}/${_pkgname}"
+     make DESTDIR="${pkgdir}" install
+     install -D -m 644 "desktop/${_pkgname}-armagetronad.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-armagetronad.desktop"
+     install -d "${pkgdir}/usr/share/pixmaps/"
      ln -s /usr/share/armagetronad/desktop/icons/large/armagetronad.png \
-           "$pkgdir/usr/share/pixmaps/$_pkgname-armagetronad.png"
-     mv "$pkgdir/usr/bin/armagetronad" "$pkgdir/usr/bin/armagetronad_bin"
-     printf "#!/bin/bash\n/usr/bin/armagetronad_bin --configdir /etc/armagetronad --datadir /usr/share/armagetronad" > "$pkgdir/usr/bin/armagetronad"
-     chmod +x "$pkgdir/usr/bin/armagetronad"
+           "${pkgdir}/usr/share/pixmaps/${_pkgname}-armagetronad.png"
+     mv "${pkgdir}/usr/bin/armagetronad" "${pkgdir}/usr/bin/armagetronad_bin"
+     printf "#!/bin/bash\n/usr/bin/armagetronad_bin --configdir /etc/armagetronad --datadir /usr/share/armagetronad" > "${pkgdir}/usr/bin/armagetronad"
+     chmod +x "${pkgdir}/usr/bin/armagetronad"
 }
