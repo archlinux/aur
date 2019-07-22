@@ -1,10 +1,10 @@
 # Maintainer: Vicente Reyes <vreyesvaldivieso [at] gmail [dot] com>
 pkgname=atool-desktop
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Entry for atool-based archive unpacking"
 arch=('any')
-url="https://github.com/esclerofilo/atool-desktop"
+url="https://github.com/esclerofilo/tiny-utils"
 license=()
 depends=('atool')
 source=("$pkgname.desktop" "$pkgname")

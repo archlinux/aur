@@ -1,8 +1,8 @@
 pkgbase = atool-desktop
 	pkgdesc = Desktop Entry for atool-based archive unpacking
 	pkgver = 0.1
-	pkgrel = 1
-	url = https://github.com/esclerofilo/atool-desktop
+	pkgrel = 2
+	url = https://github.com/esclerofilo/tiny-utils
 	arch = any
 	depends = atool
 	source = atool-desktop.desktop
