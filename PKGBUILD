@@ -6,7 +6,7 @@ BUILD_SELINUX=false
 BUILD_RUST=false
 
 pkgname=389-ds-base
-pkgver=1.4.1.5
+pkgver=1.4.1.6
 pkgrel=1
 pkgdesc="389 Directory Server (base)"
 arch=(i686 x86_64)
@@ -36,12 +36,12 @@ backup=(etc/default/dirsrv
 options=(!libtool)
 source=("https://releases.pagure.org/389-ds-base/${pkgname}-${pkgver}.tar.bz2"
 				'nss.patch')
-sha512sums=('b70a91441111d57481b298cb6c3d4a8c7182e7f74e2127079b162c47b817940e6be8586932626a521245e4b52d696fd3c4d32c7ad6f660d96d15f1a97114ce13'
+sha512sums=('0a943453cbcd8b43b4fdc58563c8802d9270d9a3cf4dcd76e3f77168d45e84b8e07d8df8ddadb09ba9294e7ba7e9304ce329bc37edeb16a9161797c902fadc1c'
             'b34c7125176481791d71cf98a78cc6dbaa658b8398ad7bdd48944612b6078307aee2acbb065011098d21672fd504191f207711e36399edc35b49af9aede64337')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-	patch -p1 < ../nss.patch
+	#patch -p1 < ../nss.patch
 }
 
 build() {
