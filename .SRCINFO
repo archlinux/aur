@@ -1,6 +1,6 @@
 pkgbase = manjarowish-dark-kde-settings
 	pkgver = 0.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/librewish/manjarowish-dark
 	arch = any
 	license = GPL
