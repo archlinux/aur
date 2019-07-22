@@ -36,8 +36,8 @@
 
 pkgname=cisco-anyconnect-tarball
 pkgver=4.7.00136
-pkgrel=2
-pkgdesc="Automates anyconnect installation on Arch distros for tarball owners."
+pkgrel=k9
+pkgdesc="Cisco Anyconnect Secure Mobility Client Tarball"
 arch=('x86_64')
 depends=('libxml2' 'ca-certificates' 'lib32-gcc-libs' 'lib32-ncurses5-compat-libs')
 optdepends=(

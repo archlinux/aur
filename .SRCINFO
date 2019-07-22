@@ -1,7 +1,7 @@
 pkgbase = cisco-anyconnect-tarball
-	pkgdesc = Cisco AnyConnect Secure Mobility Client
+	pkgdesc = Cisco AnyConnect Secure Mobility Client Tarball
 	pkgver = 4.7.00136
-	pkgrel = 2
+	pkgrel = k9
 	arch = x86_64
 	license = custom
 	depends = libxml2
