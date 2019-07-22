@@ -5,7 +5,7 @@
 pkgname=fdroidserver
 pkgver=1.1.1
 epoch=2
-pkgrel=1
+pkgrel=2
 pkgdesc="F-Droid repository management tools"
 url="https://gitlab.com/fdroid/$pkgname"
 license=('GPL3')
@@ -46,6 +46,7 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     install "fdroid" "$pkgdir/usr/bin"
     #install "fd-commit" "$pkgdir/usr/bin"
+    install -D gradlew-fdroid "$pkgdir/usr/lib/python$(python --version|cut -f2 -d" "|cut -f1,2 -d".")/site-packages/gradlew-fdroid"
 
     install -D completion/bash-completion "$pkgdir/usr/share/bash-completion/completions/fdroidserver"
 
