@@ -7,9 +7,10 @@ pkgver=0.4.1
 pkgrel=1
 pkgdesc="A threading library written in python. Help you build threaded app."
 arch=('any')
-url="https://github.com/eight04/pyWorker"
+url="https://bitbucket.org/dhagrow/profig/"
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools'
+             'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('74aadcf6252fd0ed9757a1383e24963e1660817f90ffc962c8293349fa6f16b7')
 
