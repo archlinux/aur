@@ -1,11 +1,10 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 _android_arch=x86-64
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=4.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete solution to record, convert and stream audio and video (android)"
 arch=('any')
 url="http://ffmpeg.org/"
@@ -18,6 +17,7 @@ depends=("android-${_android_arch}-bzip2"
          "android-${_android_arch}-libwebp"
          "android-${_android_arch}-opus"
          "android-${_android_arch}-speex"
+         "android-${_android_arch}-x264"
          "android-${_android_arch}-zlib")
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-environment' 'android-pkg-config' 'yasm')
@@ -28,12 +28,15 @@ sha256sums=('f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1'
 
 prepare() {
     cd "${srcdir}"/ffmpeg-${pkgver}
+    source android-env ${_android_arch}
+
     check_ndk_version_ge_than 18.0
     patch -Np1 -i ../configure.patch
 }
 
 build() {
     cd "${srcdir}"/ffmpeg-${pkgver}
+    source android-env ${_android_arch}
 
     unset CC
     unset CXX
@@ -90,12 +93,13 @@ build() {
         --disable-indev=v4l2
         --disable-outdev=v4l2
         --enable-libmp3lame
+        --enable-libopus
         --enable-libspeex
         --enable-libtheora
         --enable-libvorbis
         --enable-libvpx
         --enable-libwebp
-        --enable-libopus
+        --enable-libx264
         --enable-zlib"
 
     # Platform specific patches
@@ -114,6 +118,8 @@ build() {
 
 package() {
     cd "${srcdir}"/ffmpeg-${pkgver}
+    source android-env ${_android_arch}
+
     make DESTDIR="$pkgdir" install
     rm -r "${pkgdir}"/${ANDROID_PREFIX_SHARE}
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
