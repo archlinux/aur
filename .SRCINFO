@@ -1,6 +1,6 @@
 pkgbase = korla-icon-theme-git
 	pkgdesc = SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support, git version)
-	pkgver = 1.1.4.r286.a450e7c3
+	pkgver = 1.1.5.r295.23613054
 	pkgrel = 1
 	url = https://github.com/bikass/korla
 	install = korla-icon-theme-git.install
