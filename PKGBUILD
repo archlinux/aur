@@ -25,7 +25,7 @@ _localmodcfg=
 pkgbase=linux-gc
 _srcver=5.2.2-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
+pkgrel=2
 _bmqversion=098
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
@@ -37,7 +37,7 @@ makedepends=(
 options=('!strip')
 _srcname=linux-$_srcver
 _bmq_patch="v5.2_bmq${_bmqversion}.patch"
-_gcc_more_v='20180509'
+_gcc_more_v='20190714'
 source=(
   "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srcver.tar.gz"
   config         # the main kernel config file
@@ -58,7 +58,7 @@ sha256sums=('0c58360af2ce76ecebcf1169dada4fd5a1c82343d1d98b598b38af9fc15ed724'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '628efd7ea8d6eb7a015e8790411e2353aa9cd6548099aa5c229a3b1cd25f1794'
-            '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d')
+            '2466fb4aecc66d1b258b4cbdb2f215b5099f266d8c4386bb62ad1a0acd0caf5b')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -84,8 +84,8 @@ prepare() {
   cp ../config .config
 
   # https://github.com/graysky2/kernel_gcc_patch
-  msg2 "Patching to enabled additional gcc CPU optimizatons..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
+  msg2 "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
+  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 
   make prepare
 

@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgver = 5.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
 	license = GPL2
@@ -21,7 +21,7 @@ pkgbase = linux-gc
 	source = 90-linux.hook
 	source = linux.preset
 	source = 0001_v5.2_bmq098.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.2/v5.2_bmq098.patch
-	source = 0002_enable_additional_cpu_optimizations-20180509.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20180509.tar.gz
+	source = 0002_enable_additional_cpu_optimizations-20190714.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190714.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
@@ -31,7 +31,7 @@ pkgbase = linux-gc
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 628efd7ea8d6eb7a015e8790411e2353aa9cd6548099aa5c229a3b1cd25f1794
-	sha256sums = 226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d
+	sha256sums = 2466fb4aecc66d1b258b4cbdb2f215b5099f266d8c4386bb62ad1a0acd0caf5b
 
 pkgname = linux-gc
 	pkgdesc = The Linux-gc kernel and modules with the PDS-mq CPU scheduler and UKSM patchset
