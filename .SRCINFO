@@ -1,6 +1,6 @@
 pkgbase = rofi-emoji
 	pkgdesc = A Rofi plugin for selecting emojis
-	pkgver = 1.2.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Mange/rofi-emoji
 	arch = x86_64
@@ -8,10 +8,9 @@ pkgbase = rofi-emoji
 	depends = rofi
 	optdepends = xsel: X11 support
 	optdepends = xclip: X11 support
-	optdepends = xdotool: X11 support
 	optdepends = wl-clipboard: Wayland support
-	source = https://github.com/Mange/rofi-emoji/archive/v1.2.0.tar.gz
-	sha256sums = 06df643356fb663d2373f77cb23fbd2f0421bf06eb91c2a103ca1d891abac490
+	source = https://github.com/Mange/rofi-emoji/archive/v2.0.0.tar.gz
+	sha256sums = 99b7c284264572c42f60d572a82ff5c07efd7191a562b5de5c32330ee5cd1af0
 
 pkgname = rofi-emoji
 
