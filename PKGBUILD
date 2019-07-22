@@ -1,7 +1,7 @@
 # Maintainer: Giusy Margarita <kurmikon at libero dot it>
 
 pkgname=korla-icon-theme
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)"
 arch=("any")
@@ -14,7 +14,7 @@ optdepends=(
     "gnome-icon-theme: fallback Gnome icon theme")
 install="$pkgname.install"
 source=("https://github.com/bikass/korla/archive/v$pkgver.tar.gz")
-md5sums=("3f17668263a7a8112ddeceb5247e4091")
+md5sums=("fee303596b96859051c1965766ade4a7")
 
 _iconpath=usr/share/icons
 _iconcache=icon-theme.cache
@@ -27,6 +27,8 @@ package() {
     rm -f "korla/$_iconcache"
     rm -f "korla-light/create-new-icon-theme.cache.sh"
     rm -f "korla-light/$_iconcache"
+    rm -f "korla-light-panel/create-new-icon-theme.cache.sh"
+    rm -f "korla-light-panel/$_iconcache"
 
     install -dm755 "$pkgdir/$_iconpath"
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
@@ -37,11 +39,13 @@ package() {
     # any issue because he installed the theme under the local icon folder on his system.
     cp -dr --no-preserve=mode "korla" "$pkgdir/$_iconpath/korla"
     cp -dr --no-preserve=mode "korla-light" "$pkgdir/$_iconpath/korla-light"
+    cp -dr --no-preserve=mode "korla-light-panel" "$pkgdir/$_iconpath/korla-light-panel"
     
     # Create empty icon cache files, they will be filled during post_install and
     # post_upgrade scripts
     touch -a "$pkgdir/$_iconpath/korla/$_iconcache"
     touch -a "$pkgdir/$_iconpath/korla-light/$_iconcache"
+    touch -a "$pkgdir/$_iconpath/korla-light-panel/$_iconcache"
     
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
