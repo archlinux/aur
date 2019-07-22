@@ -1,0 +1,13 @@
+pkgbase = tvheadend-safe-restart
+	pkgdesc = Restart Tvheadend unless it's recording
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://ikn.org.uk/tvheadend-safe-restart
+	arch = any
+	license = BSD
+	depends = jshon
+	source = http://ikn.org.uk/files/tools/tvheadend-safe-restart/tvheadend-safe-restart-1.0.tar.gz
+	sha1sums = d6d28c44026de7d74ec2ec425b1e2a73dd087856
+
+pkgname = tvheadend-safe-restart
+
