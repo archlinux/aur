@@ -13,13 +13,13 @@ makedepends=('casacore' 'make' 'pkg-config' 'binutils' 'boost' 'boost-libs' 'cma
 	     )
 depends=('casacore')
 optdepends=('fftw' 'hdf5' 'python2-numpy' 'ncurses')
-conflicts=()
+conflicts=('sagecal' 'sagecal-git')
 provides=("${pkgname}")
 source=("https://github.com/nlesc-dirac/sagecal/archive/v${pkgver}.tar.gz")
 sha256sums=('1888068c4b6894eb9f0048f7121e1ecbfd15573edb1bce44f01d0a9540fd1f1a')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/sagecal-${pkgver}"
     mkdir build
 
     cd build
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/build"
+    cd "${srcdir}/sagecal-${pkgver}/build"
     install -d ${pkgdir}/usr/share/licenses/${pkgname}
     #install -m 644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     make DESTDIR="${pkgdir}" install
