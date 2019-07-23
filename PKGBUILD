@@ -12,8 +12,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
 license=('GPL2')
 makedepends=('git' 'cmake' 'cppunit')
-depends=('texlive-bin' 'gtk3' 'glib2' 'poppler-glib' 'libxml2' 'portaudio' 'libsndfile' 'libzip')
-optdepends=('lua>=5.3: Enable Xournal++ Plugins')
+depends=('texlive-bin' 'gtk3' 'poppler-glib' 'libxml2' 'portaudio' 'libsndfile' 'lua' 'libzip')
 conflicts=('xournalpp')
 install="xournalpp.install"
 source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git")
