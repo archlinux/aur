@@ -17,8 +17,8 @@
 #
 pkgbase="zfs-linux-hardened-git"
 pkgname=("zfs-linux-hardened-git" "zfs-linux-hardened-git-headers")
-_commit='8062b7686aa2c3a22824b9a7c83cf01a5fa457a0'
-_zfsver="2019.07.16.r5264.g8062b7686"
+_commit='09276fde1ce7730804957da88350c893d635526b'
+_zfsver="2019.07.19.r5279.g09276fde1"
 _kernelver="5.1.16.a-1"
 _extramodules="5.1.16.a-1-hardened"
 
