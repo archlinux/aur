@@ -1,4 +1,4 @@
-pkgbase = onionr
+pkgbase = onionr-git
 	pkgdesc = anonymous P2P communication platform
 	pkgver = 0.1
 	pkgrel = 1
@@ -13,8 +13,8 @@ pkgbase = onionr
 	depends = curl
 	depends = tor
 	conflicts = onionr2
-	source = onionr-0.1::git+https://gitlab.com/beardog/onionr.git#branch=master
+	source = onionr-git-0.1::git+https://gitlab.com/beardog/onionr.git#branch=master
 	md5sums = SKIP
 
-pkgname = onionr
+pkgname = onionr-git
 

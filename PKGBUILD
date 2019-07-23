@@ -1,5 +1,5 @@
 # Maintainer: Aaron Esau <aur@aaronesau.com>
-pkgname="onionr"
+pkgname="onionr-git"
 pkgver="0.1"
 pkgrel="1"
 conflicts=("onionr2")
