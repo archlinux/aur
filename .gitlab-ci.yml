@@ -1,0 +1,14 @@
+image: "nickcao/arch-build:latest"
+
+stages:
+  - package
+
+archlinux:
+  stage: package
+  script:
+    - sudo pacman -Syu --noconfirm
+    - makepkg -s --noconfirm
+  artifacts:
+    paths:
+      - ./*.pkg.tar.xz
+
