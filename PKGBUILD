@@ -54,7 +54,7 @@ _major=5.2
 _minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
 license=('GPL2')
@@ -77,6 +77,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
         "${_lucjanpath}/zen-fixes/0002-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
+        "${_lucjanpath}/zen-fixes-v2/0001-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch"
+        "${_lucjanpath}/net-patches-v2/0001-netfilter-nf_tables-fix-module-autoload-for-redir.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -390,7 +392,9 @@ sha512sums=('71e96393157e700990fb5a114107033120041e951a51434e769f4b985bf6d67005b
             '068b9f3bb5112a5684246d0a2ae46bb26d7ad3a642276f5ed37d802b50efc925297d8bd4684eb391676e9a97efbb426b4fcbe6fd751860c3f53d8c0ca7d5a1b2'
             'f714a620d50541fd29199d076f94e68c14049bbb97b131da3b68b13bcc1dd933f62913e8aad2a20e0ad738f2c3cad161dac13d3d4cbfdfcead271f22f09a681e'
             'c1fecf034913e7838bb27c4d6e7538515093ef2e88daf8fe18b76cc501b864305b2a03e6e16db7929cbf48be96fe11e2b01e0ba8c1a58811806d78d34350bff5'
-            'cc56beb43619a56187b543bcdc667bf99b30c82677e88cc4b5eb6909a3fb649ff681ed2f134a1b7aadad81c5c86311889aaf8b2eb66a9dac1af3c2e601a07476'
+            '50237c2cfafaa47034fbd67bfcfa27cc73ef07425014bfc0153f3b4865f97e32e41561f12dc0793fddcfec6c3dd312e64e595dacf041d8960fc6b0620635f3d3'
+            '6f3c89e585e187abb2d54cbbafba59df008853cf76f169f997c99d9a6b676bc961ce8d533f4074436c084a5bbf8436325ed771b0b15027f9758004f30625f3f7'
+            '02b2f9b1bb5e92c275f873f6a2dc17da014c70e2ffb2e28e7d4aea17806488646fce47a8d375a682119958430bb0bd2b52f252afcfdc409c7bc3feca10c82f9e'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
