@@ -34,7 +34,7 @@ noextract=('android_amd64.img'
 	'houdini_z.sfs'
 	'libhoudini.so')
 sha256sums=('6b04cd33d157814deaf92dccf8a23da4dc00b05ca6ce982a03830381896a8cca'
-            '552e78b197551e94ed78c405fc5d0660239791c99b81bbb2fd651c4e5c309593'
+            '89fce04f5bc99b213955d0a4c2fdddffd2a039dc4034fc967ce372646be90187'
             '56fd08c448840578386a71819c07139122f0af39f011059ce728ea0f3c60b665'
             '7eedc42015e6fb84a11a406a099241efccc20d4e020d476335a5fdb6e69a33d2'
             '2d15d126e46ea933a92fcc6dd30ad2c93d063af322fc1ba84aaa4f3e75d84e68')
@@ -56,10 +56,10 @@ build () {
 
 	cd "${srcdir}"
 
-	cp -r ./$(find opengapps -type d -name "PrebuiltGmsCore")			./squashfs-root/system/priv-app/
-	cp -r ./$(find opengapps -type d -name "GoogleLoginService")		./squashfs-root/system/priv-app/
-	cp -r ./$(find opengapps -type d -name "Phonesky")					./squashfs-root/system/priv-app/
-	cp -r ./$(find opengapps -type d -name "GoogleServicesFramework")	./squashfs-root/system/priv-app/
+	cp -r ./$(find opengapps -type d -name "PrebuiltGmsCore") ./squashfs-root/system/priv-app/
+	cp -r ./$(find opengapps -type d -name "GoogleLoginService") ./squashfs-root/system/priv-app/
+	cp -r ./$(find opengapps -type d -name "Phonesky") ./squashfs-root/system/priv-app/
+	cp -r ./$(find opengapps -type d -name "GoogleServicesFramework") ./squashfs-root/system/priv-app/
 
 	# load houdini_y
 	mkdir -p houdini_y
@@ -110,23 +110,23 @@ build () {
 	END
 	)
 
-    _C=$(echo ${_C} | sed 's/\//\\\//g')
-    _C=$(echo ${_C} | sed 's/\"/\\\"/g')
-    sed -i "/<\/permissions>/ s/.*/${_C}\n&/" ./squashfs-root/system/etc/permissions/anbox.xml
+	_C=$(echo ${_C} | sed 's/\//\\\//g')
+	_C=$(echo ${_C} | sed 's/\"/\\\"/g')
+	sed -i "/<\/permissions>/ s/.*/${_C}\n&/" ./squashfs-root/system/etc/permissions/anbox.xml
 
-    # make wifi and bt available
-    sed -i "/<unavailable-feature name=\"android.hardware.wifi\" \/>/d" ./squashfs-root/system/etc/permissions/anbox.xml
-    sed -i "/<unavailable-feature name=\"android.hardware.bluetooth\" \/>/d" ./squashfs-root/system/etc/permissions/anbox.xml
+	# make wifi and bt available
+	sed -i "/<unavailable-feature name=\"android.hardware.wifi\" \/>/d" ./squashfs-root/system/etc/permissions/anbox.xml
+	sed -i "/<unavailable-feature name=\"android.hardware.bluetooth\" \/>/d" ./squashfs-root/system/etc/permissions/anbox.xml
 
-    # set processors
-    sed -i "/^ro.product.cpu.abilist=x86_64,x86/ s/$/,armeabi-v7a,armeabi,arm64-v8a/" ./squashfs-root/system/build.prop
-    sed -i "/^ro.product.cpu.abilist32=x86/ s/$/,armeabi-v7a,armeabi/" ./squashfs-root/system/build.prop
-    sed -i "/^ro.product.cpu.abilist64=x86_64/ s/$/,arm64-v8a/" ./squashfs-root/system/build.prop
+	# set processors
+	sed -i "/^ro.product.cpu.abilist=x86_64,x86/ s/$/,armeabi-v7a,armeabi,arm64-v8a/" ./squashfs-root/system/build.prop
+	sed -i "/^ro.product.cpu.abilist32=x86/ s/$/,armeabi-v7a,armeabi/" ./squashfs-root/system/build.prop
+	sed -i "/^ro.product.cpu.abilist64=x86_64/ s/$/,arm64-v8a/" ./squashfs-root/system/build.prop
 
-    echo "persist.sys.nativebridge=1" >> ./squashfs-root/system/build.prop
+	echo "persist.sys.nativebridge=1" >> ./squashfs-root/system/build.prop
 
-    # enable opengles
-    echo "ro.opengles.version=131072" >> ./squashfs-root/system/build.prop
+	# enable opengles
+	echo "ro.opengles.version=131072" >> ./squashfs-root/system/build.prop
 }
 
 package() {
@@ -139,11 +139,10 @@ package() {
 	chown -R 100000:100000 ./squashfs-root/system/lib64/libhoudini.so
 	chown -R 100000:100000 ./squashfs-root/system/etc/binfmt_misc
 
-    # squash image
-    cd "${srcdir}"
-    mksquashfs squashfs-root android.img -b 131072 -comp xz -Xbcj x86
-    
-    #install image	
+	# squash image
+	mksquashfs squashfs-root android.img -b 131072 -comp xz -Xbcj x86
+	
+	#install image	
 	install -Dm644 ./android.img "${pkgdir}/"var/lib/anbox/android.img
 }
     
