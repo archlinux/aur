@@ -29,6 +29,7 @@ pkgbase = sagecal-git
 	optdepends = ncurses
 	provides = sagecal-git
 	conflicts = sagecal
+	conflicts = sagecal-gpu
 	source = sagecal-git::git+https://github.com/nlesc-dirac/sagecal.git
 	md5sums = SKIP
 

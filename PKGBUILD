@@ -13,7 +13,7 @@ makedepends=('casacore' 'make' 'pkg-config' 'binutils' 'boost' 'boost-libs' 'cma
 	     )
 depends=('casacore')
 optdepends=('fftw' 'hdf5' 'python2-numpy' 'ncurses')
-conflicts=('sagecal')
+conflicts=('sagecal' 'sagecal-gpu')
 provides=("${pkgname}")
 source=("$pkgname::git+https://github.com/nlesc-dirac/sagecal.git")
 md5sums=('SKIP')
