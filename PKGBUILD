@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-aco-git
 pkgdesc="Mesa with the ACO compiler patchset, git version"
-pkgver=19.2.0_devel.113862.3f3665b8d52
+pkgver=19.2.0_devel.114249.17d9490cef1
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -161,6 +161,11 @@ package() {
   rm -rf "$pkgdir"/usr/share/glvnd/
   rm -rf "$pkgdir"/usr/share/drirc.d/
   rm -rf "$pkgdir"/usr/share/vulkan/explicit_layer.d/
+
+  # drop egl.pc -- upstream mesa has dropped this to fix confusion over who should provide it (conclusion: libglvnd),
+  # but as of 7/23 the ACO upstream doesn't have that patch.  Drop it now so we don't conflict with the libglvnd
+  # provider, next ACO rebase should remove this file when they pick up c7831b604063
+  rm -f "$pkgdir"/usr/lib32/pkgconfig/egl.pc
 
   # indirect rendering
   ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
