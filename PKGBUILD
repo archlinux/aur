@@ -1,6 +1,6 @@
 # Maintainer: Boris Timofeev <mashin87@gmail.com>
 pkgname=punes
-pkgver=0.102
+pkgver=0.104
 pkgrel=1
 epoch=
 pkgdesc="Nintendo Entertaiment System emulator"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/punesemu/puNES"
 license=('GPL2')
 groups=()
-depends=('sdl' 'qt5-base' 'alsa-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'nvidia-cg-toolkit')
+depends=('qt5-svg' 'alsa-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'nvidia-cg-toolkit')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -20,14 +20,14 @@ options=()
 install=$pkgname.install
 changelog=
 source=("https://github.com/punesemu/puNES/archive/v$pkgver.tar.gz")
+md5sums=('28fc9bf4d13111c3e469da0753d50e3e')
 noextract=()
 
-md5sums=('7af307c5447f7e86d0b03cbc37f434ff')
 
 build() {
   cd "$srcdir/puNES-$pkgver"
   ./autogen.sh
-  ./configure --enable-qt5 --prefix=/usr
+  ./configure --prefix=/usr
   make
 }
 
