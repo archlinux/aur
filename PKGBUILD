@@ -50,7 +50,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20190715.r0.ge689ed79e479
+pkgver=20190723.r0.gb010bb39ab1a
 _srcname=linux-next
 pkgrel=1
 arch=('x86_64')
@@ -66,6 +66,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
+        "${_lucjanpath}/zen-fixes/0002-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -378,7 +379,8 @@ done
 sha512sums=('SKIP'
             '068b9f3bb5112a5684246d0a2ae46bb26d7ad3a642276f5ed37d802b50efc925297d8bd4684eb391676e9a97efbb426b4fcbe6fd751860c3f53d8c0ca7d5a1b2'
             'f714a620d50541fd29199d076f94e68c14049bbb97b131da3b68b13bcc1dd933f62913e8aad2a20e0ad738f2c3cad161dac13d3d4cbfdfcead271f22f09a681e'
-            '1f79dafee60df153c119329c3cce31344c9a811a0a2f7eff171707947539de9477355807511625bba550f6eff406e4192f30752705ad08b3b3cb8d0e500704f0'
+            'c1fecf034913e7838bb27c4d6e7538515093ef2e88daf8fe18b76cc501b864305b2a03e6e16db7929cbf48be96fe11e2b01e0ba8c1a58811806d78d34350bff5'
+            '19b3fdbb9c7e3c18a839821796b60c5ae5808bc9143853fed5ed56e1029cdcb79f492a9777fdeeb933fe69e0822d551c35f5f12d86065617e6019b389549a6b2'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
