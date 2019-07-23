@@ -1,51 +1,56 @@
-# Maintainer: Joey Dumont <joey.dumont@gmail.com>
+# Maintainer: nim65s
+# Former Maintainer: Joey Dumont <joey.dumont@gmail.com>
 # Contributor: simonp
 # Contributor: Martin Ortbauer <mortbauer@gmail.com>
 # Original: Michele Mocciola <mickele>
 # Contributor: Brice Méalier <mealier_brice@yahoo.fr>
 # Modified by: César Vecchio <cesar UNDERSTRIKE vecchio AT yahoo DOT com>
 
-pkgname=med-openmpi
-pkgver=3.1.0
-pkgrel=2
-pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
-url="http://www.code-aster.org/outils/med/"
-license=("LGPL")
-depends=('hdf5-openmpi' 'zlib')
-makedepends=('gcc-fortran' 'coreutils' 'openmpi' 'swig')
+_pkgname='med'
+pkgname=('med-openmpi' 'med-openmpi-docs')
+pkgver=4.0.0
+pkgrel=1
+pkgdesc="Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - code-aster exchange module linked to hdf5"
+url="https://www.salome-platform.org/downloads"
+license=('LGPL')
+depends=('hdf5-openmpi' 'tk' 'python')
+makedepends=('gcc-fortran' 'swig' 'openmpi' 'cmake')
 provides=('med')
+arch=('x86_64')
 conflicts=('med')
 replaces=('med')
-arch=('i686' 'x86_64')
-source=("http://files.salome-platform.org/Salome/other/${pkgname//-openmpi/}-${pkgver}.tar.gz"
-	"h5public_extract.patch"
-	"signature_conflict_fix.patch")
-md5sums=('a1e1eb068f20634f5ea797914241eb51'
-         '156ab9456bab7b70237d0fc785b97e7c'
-         '1e9f5c1ff2ecc08d8179178eebe03882')
-
-prepare() {
-  cd ${srcdir}/${pkgname//-openmpi/}-${pkgver}_SRC || return 1
-  patch -Np1 -i ../h5public_extract.patch
-  patch -Np1 -i ../signature_conflict_fix.patch
-}
+source=("http://files.salome-platform.org/Salome/other/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('a474e90b5882ce69c5e9f66f6359c53b8b73eb448c5f631fa96e8cd2c14df004')
 
 build() {
-  cd ${srcdir}/${pkgname//-openmpi/}-${pkgver}_SRC || return 1
-
-  PYTHON=/usr/bin/python2 MPIFC=mpif90 ./configure --prefix=/usr --with-swig=swig --datadir=/usr/share/med --with-med_int=int || return 1
-  make || return 1
+  cd ${_pkgname}-${pkgver}
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+      -DMEDFILE_USE_MPI=ON -DMEDFILE_BUILD_PYTHON=ON .
+  make
 }
 
-package() {
-  cd ${srcdir}/${pkgname//-openmpi/}-${pkgver}_SRC || return 1
+# I got 37 tests failed out of 91…
+#check() {
+    #cd "$pkgname-$pkgver"
+    #make test
+#}
 
-  make DESTDIR=${pkgdir} install || return 1
-  # now move the testprograms to share, we don't want all the stuff in the bindir
-  cp -dpr --no-preserve=ownership ${pkgdir}/usr/bin/testc ${pkgdir}/usr/share/med/testc
-  cp -dpr --no-preserve=ownership ${pkgdir}/usr/bin/testf ${pkgdir}/usr/share/med/
-  cp -dpr --no-preserve=ownership ${pkgdir}/usr/bin/unittests ${pkgdir}/usr/share/med/
-  cp -dpr --no-preserve=ownership ${pkgdir}/usr/bin/usescases ${pkgdir}/usr/share/med/
-  rm -r ${pkgdir}/usr/bin/{usescases,unittests,testf,testc}
+package_med-openmpi() {
+  cd ${_pkgname}-${pkgver}
+  make DESTDIR=${pkgdir} install
+
+  rm -rf $pkgdir/usr/share/doc
 }
 
+package_med-openmpi-docs() {
+  arch=('any')
+  depends=()
+
+  cd ${_pkgname}-${pkgver}
+  make DESTDIR=${pkgdir} install
+
+  rm -rf $pkgdir/usr/share/cmake
+  rm -rf $pkgdir/usr/lib
+  rm -rf $pkgdir/usr/include
+  rm -rf $pkgdir/usr/bin
+}
