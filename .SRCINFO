@@ -1,0 +1,37 @@
+pkgbase = python-gkraken
+	pkgdesc = GUI to control cooling and lighting of NZXT Kraken X (X42, X52, X62 or X72) pumps
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://gitlab.com/leinardi/gkraken/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-liquidctl
+	depends = python-injector
+	depends = python-cairo
+	depends = python-matplotlib
+	depends = python-peewee
+	depends = python-gobject
+	depends = python-xdg
+	depends = python-requests
+	depends = python-rx
+	depends = libappindicator-gtk3
+	source = https://files.pythonhosted.org/packages/b7/a6/823ddcb879e98ea7d5b2c296b993d73b10f0a2c0d2427684a31edf9b47ba/gkraken-0.12.1.tar.gz
+	source = deps.patch
+	md5sums = 4566e683f076522fc83320f2f558346f
+	md5sums = 92eb4d150df30288d9b2bee2aa41279f
+
+pkgname = python-gkraken
+	depends = python
+	depends = python-liquidctl
+	depends = python-injector
+	depends = python-cairo
+	depends = python-matplotlib
+	depends = python-peewee
+	depends = python-gobject
+	depends = python-xdg
+	depends = python-requests
+	depends = python-rx
+	depends = libappindicator-gtk3
+

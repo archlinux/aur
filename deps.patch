@@ -1,0 +1,40 @@
+diff --unified --recursive --text a/gkraken.egg-info/requires.txt b/gkraken.egg-info/requires.txt
+--- a/gkraken.egg-info/requires.txt	2019-07-23 05:16:26.161190907 -0400
++++ b/gkraken.egg-info/requires.txt	2019-07-23 05:12:07.837846955 -0400
+@@ -1,8 +1,8 @@
+-injector==0.14.1
+-liquidctl==1.0.0
+-matplotlib==3.0.0
+-peewee==3.7.1
++injector>=0.14.1
++liquidctl>=1.0.0
++matplotlib>=3.0.0
++peewee>=3.7.1
+ pygobject
+ pyxdg
+ requests
+-rx==1.6.1
++rx>=1.6.1
+diff --unified --recursive --text a/setup.py b/setup.py
+--- a/setup.py	2019-07-23 05:16:26.161190907 -0400
++++ b/setup.py	2019-07-23 05:11:51.811179630 -0400
+@@ -50,14 +50,14 @@
+ 
+     },
+     install_requires=[
+-        'injector==0.14.1',
+-        'liquidctl==1.0.0',
+-        'matplotlib==3.0.0',
+-        'peewee==3.7.1',
++        'injector>=0.14.1',
++        'liquidctl>=1.0.0',
++        'matplotlib>=3.0.0',
++        'peewee>=3.7.1',
+         'pygobject',
+         'pyxdg',
+         'requests',
+-        'rx==1.6.1',
++        'rx>=1.6.1',
+     ],
+     python_requires='~=3.6',
+     entry_points={
