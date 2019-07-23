@@ -7,8 +7,8 @@
 pkgname=deluge-stable-git
 _gitname="deluge"
 _gitbranch="1.3-stable"
-pkgver=1.3.15.r15.ga2fcebe15
-pkgrel=1
+pkgver=1.3.15.r19.gd62987089
+pkgrel=2
 pkgdesc="A bittorrent client written with python and pygtk - Git Stable branch Version"
 arch=('any')
 url="http://deluge-torrent.org/"
@@ -18,6 +18,8 @@ depends=('python2-xdg'
          'python2-pyopenssl'
          'xdg-utils'
          'python2-chardet'
+         'python2-gobject'
+         'python2-service_identity'
          'desktop-file-utils'
          'hicolor-icon-theme'
          'python2-distribute')
@@ -46,8 +48,8 @@ source=("git://github.com/deluge-torrent/deluge#branch=$_gitbranch"
 install=deluge-stable.install
 md5sums=('SKIP'
          'c50385d32a2db0ef3f46b8caadb0e988'
-         '6b831c889f365f58317dc4b78c167a62'
-         'b3fff6601a5971bba89fa9a85dcf9ce8'
+         '5437fee82a53ffa809df257d12898ef6'
+         'e9cba3bf5200b9a959b8687389d5285b'
          '75e591b738cf9f858af2de8665a3b3e7')
 
 pkgver() {

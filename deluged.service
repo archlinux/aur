@@ -1,13 +1,17 @@
 [Unit]
-Description=Deluge Daemon
+Description=Deluge Bittorrent Client Daemon
+Documentation=man:deluged
+After=network-online.target
 
 [Service]
 User=deluge
 EnvironmentFile=/etc/conf.d/deluged
 ExecStart=/usr/bin/deluged -P /run/deluge/deluged.pid $OPTIONS
-Type=forking
+Type=simple
 PIDFile=/run/deluge/deluged.pid
-UMask=0002
+UMask=007
+Restart=on-failure
+TimeoutStopSec=300
 
 [Install]
 WantedBy=multi-user.target
