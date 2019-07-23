@@ -1,17 +1,17 @@
 pkgbase = inboxer
 	pkgdesc = Unofficial, free and open-source Google Gmail desktop app
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
-	url = https://denysdovhan.com/inboxer/
+	url = https://github.com/jmarino/inboxer
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = electron
 	options = !strip
-	source = inboxer-1.3.2.tar.gz::https://github.com/denysdovhan/inboxer/archive/v1.3.2.tar.gz
+	source = inboxer-1.3.3.tar.gz::https://github.com/jmarino/inboxer/archive/v1.3.3.tar.gz
 	source = inboxer.sh
 	source = inboxer.desktop
-	sha256sums = 563b5cc6ece6bb24e5de38cae2286865aa4ca55cb63c73fbe167bd670804ef6c
+	sha256sums = 699e0cc3994d74a4c05e6a7b4fd21c014259ad87990b66d762b1d72fae0c0018
 	sha256sums = 3607cef6ac387040f63669f3647323ebf5899be1e7094cb369ccc7e2c89005a3
 	sha256sums = 1af6a2acb72642470d89fd7a66bda0aafe14081b07a11658dc1f08c2281e573e
 

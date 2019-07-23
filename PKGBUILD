@@ -2,19 +2,19 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=inboxer
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Unofficial, free and open-source Google Gmail desktop app"
 arch=(any)
-url="https://denysdovhan.com/inboxer/"
+url="https://github.com/jmarino/inboxer"
 license=(MIT)
 depends=(electron)
 makedepends=(npm)
 options=(!strip)
-source=($pkgname-$pkgver.tar.gz::https://github.com/denysdovhan/$pkgname/archive/v$pkgver.tar.gz
+source=($pkgname-$pkgver.tar.gz::https://github.com/jmarino/$pkgname/archive/v$pkgver.tar.gz
         $pkgname.sh
         $pkgname.desktop)
-sha256sums=('563b5cc6ece6bb24e5de38cae2286865aa4ca55cb63c73fbe167bd670804ef6c'
+sha256sums=('699e0cc3994d74a4c05e6a7b4fd21c014259ad87990b66d762b1d72fae0c0018'
             '3607cef6ac387040f63669f3647323ebf5899be1e7094cb369ccc7e2c89005a3'
             '1af6a2acb72642470d89fd7a66bda0aafe14081b07a11658dc1f08c2281e573e')
 
