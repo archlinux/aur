@@ -81,9 +81,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
-        "${_lucjanpath}/zen-fixes/0002-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
-        "${_lucjanpath}/zen-fixes-v2/0001-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch"
-        "${_lucjanpath}/net-patches-v2/0001-netfilter-nf_tables-fix-module-autoload-for-redir.patch"
+        "${_lucjanpath}/arch-patches/0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
+        "${_lucjanpath}/arch-patches/0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch"
+        "${_lucjanpath}/arch-patches/0005-netfilter-nf_tables-fix-module-autoload-for-redir.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -395,11 +395,11 @@ sha512sums=('5a28f8a34c4e0470617f5638b7112e6252109b78f23b1eed484a228530970c7ef5c
             'SKIP'
             '9a39e5d432da75a8dab9fefff86edc2397968250961f3689e4eb16b2091649e4a991b8ffb2959020ba19a6b89d88157a4bdf89bdd61c9b2844bd6953f112c3bc'
             '8d9547ff38096b99d296cdec9875b816960c09db31acebb033e3660ba65475d1f310578282cac74947d75dff844dd22d7e7c2e4ded12368d32314fe145763752'
-            '068b9f3bb5112a5684246d0a2ae46bb26d7ad3a642276f5ed37d802b50efc925297d8bd4684eb391676e9a97efbb426b4fcbe6fd751860c3f53d8c0ca7d5a1b2'
-            'f714a620d50541fd29199d076f94e68c14049bbb97b131da3b68b13bcc1dd933f62913e8aad2a20e0ad738f2c3cad161dac13d3d4cbfdfcead271f22f09a681e'
-            'c1fecf034913e7838bb27c4d6e7538515093ef2e88daf8fe18b76cc501b864305b2a03e6e16db7929cbf48be96fe11e2b01e0ba8c1a58811806d78d34350bff5'
-            '50237c2cfafaa47034fbd67bfcfa27cc73ef07425014bfc0153f3b4865f97e32e41561f12dc0793fddcfec6c3dd312e64e595dacf041d8960fc6b0620635f3d3'
-            '6f3c89e585e187abb2d54cbbafba59df008853cf76f169f997c99d9a6b676bc961ce8d533f4074436c084a5bbf8436325ed771b0b15027f9758004f30625f3f7'
+            '8a158ae5660426f0fb9fa74f37c093f325b5a23392b95e50c36825205f42311cbf05f818f0275ebda27ce9fad40652ba6dc2397f19f45addb3f68f8f4476196f'
+            '9d472377c50ddd9ddab5d4ab3092f3d487eeee20a4d4a04d3cefeef5bbf40daa3eb609b15741ca4a8cd32bf2b6d0781de961cbf55e2f80fd40260f282bf022f4'
+            '166653c6d7d76b052aa26f6a0782a74db75d2611c3d5d770219a00fed4da7d2317b35e39aaadec25da1fc91fb7f18385247303d531d15e3998886bb65f8cd89f'
+            '1e422fc04acad01380b96dad92b43bbc2ddb26e3f109c519534fe6635e6fc1decebeff22b6f31be773330f1d4504883264e719889a4961a03c31670dbc2d9859'
+            'b6b4b55bca0271677e66566175e28d4032d7f95b9fdd2163fb1fd1fa4997271fef03bcf71257b03080f2a6896eb4becdc8771b90c458ad4a575b5bb126937146'
             '16f6b615b15654eea287d8028c6bf17b9b2bd535b36275f112445b6003540ff7660f6a7208f366ba04a7e2f28f9f61eddfb91f671a6ef81a787e345553275a79'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
