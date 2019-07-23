@@ -1,27 +1,20 @@
 pkgbase = python-django-rest-framework
 	pkgdesc = Awesome web-browsable Web APIs
-	pkgver = 3.9.3
+	pkgver = 3.10.1
 	pkgrel = 1
 	url = https://github.com/tomchristie/django-rest-framework
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	options = !emptydirs
-	source = python-django-rest-framework-3.9.3.tar.gz::https://github.com/tomchristie/django-rest-framework/archive/3.9.3.tar.gz
-	sha256sums = c0484d6dd43b604875f8bd8f8c58df699c9a84f66ddddab0ce4db73d87b7e170
-
-pkgname = python-django-rest-framework
 	depends = python-django
 	optdepends = python-pygments: Pygments support for API docs
 	optdepends = python-markdown: Markdown support for the browsable API
 	optdepends = python-django-crispy-forms: Improved HTML display for filtering
 	optdepends = python-coreapi: Schema generation support
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/d/djangorestframework/djangorestframework-3.10.1.tar.gz
+	sha512sums = ec7d2175f141695743a9fecc440f6590ed73f0d8992ca3fe0194cfa571c7d6e9979a96b9fd9f6f30d6654be34be7dd5ec21da39a55813b014bad6f82b4310d07
 
-pkgname = python2-django-rest-framework
-	depends = python2-django
-	optdepends = python2-pygments: Pygments support for API docs
-	optdepends = python2-markdown: Markdown support for the browsable API
-	optdepends = python2-django-crispy-forms: Improved HTML display for filtering
-	optdepends = python2-coreapi: Schema generation support
+pkgname = python-django-rest-framework
 
