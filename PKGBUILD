@@ -14,12 +14,12 @@ sha256sums=('d62db1f42a91f554846920ea2717dd239ef6e45a8c10f9ded25239f2d75666c7')
 
 
 build() {
-	cd "${_pkgname}-$pkgver"
+    cd "${_pkgname}-$pkgver"
     autoreconf -vi
     ./configure --prefix=/usr
 }
 
 package() {
-	cd "${_pkgname}-$pkgver"
-	DESTDIR=${pkgdir} make install
+    cd "${_pkgname}-$pkgver"
+    DESTDIR=${pkgdir} make install
 }
