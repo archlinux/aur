@@ -1,32 +1,27 @@
 pkgbase = lib32-amdvlk-git
-	pkgdesc = AMD's standalone Vulkan driver (32-bit)
-	pkgver = r38.d88feee
+	pkgdesc = AMD's standalone Vulkan driver (32-bit version)
+	pkgver = v.2019.Q3.2.r0.4f7b640
 	pkgrel = 1
 	url = https://github.com/GPUOpen-Drivers
 	arch = x86_64
 	license = MIT
 	makedepends = dri2proto
 	makedepends = xorg-server-devel
+	makedepends = libxrandr
 	makedepends = cmake
 	makedepends = python
-	makedepends = lib32-libxml2
-	makedepends = lib32-libdrm
+	makedepends = libxml2
+	makedepends = wayland
+	makedepends = libdrm
 	makedepends = git
+	makedepends = ninja
+	makedepends = repo
 	depends = lib32-vulkan-icd-loader
 	provides = lib32-vulkan-amdvlk
 	provides = lib32-vulkan-driver
 	conflicts = lib32-vulkan-amdvlk
-	source = llvm::git+https://github.com/GPUOpen-Drivers/llvm.git#branch=amd-vulkan-dev
-	source = git+https://github.com/GPUOpen-Drivers/xgl.git#branch=dev
-	source = git+https://github.com/GPUOpen-Drivers/pal.git#branch=dev
-	source = git+https://github.com/GPUOpen-Drivers/AMDVLK.git#branch=dev
-	source = git+https://github.com/GPUOpen-Drivers/llpc.git#branch=dev
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = git+https://github.com/GPUOpen-Drivers/wsa.git#branch=master
+	sha512sums = SKIP
 
 pkgname = lib32-amdvlk-git
-	depends = amdvlk-git
 
