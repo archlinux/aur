@@ -1,5 +1,5 @@
 pkgbase = farge-git
-	pkgdesc = 🎨 Click on a pixel on your screen and show its color value
+	pkgdesc = Click on a pixel on your screen and show its color value
 	pkgver = 20190723
 	pkgrel = 1
 	url = https://github.com/sdushantha/${_name}
