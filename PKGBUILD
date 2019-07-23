@@ -8,6 +8,7 @@ pkgbin=electron-cash
 url='http://www.electroncash.org/'
 arch=('x86_64')
 license=('MIT')
+depends=('ttf-bitstream-vera')
 
 github='https://github.com/Electron-Cash/Electron-Cash'
 appimage="Electron-Cash-${pkgver}-${arch}.AppImage"
