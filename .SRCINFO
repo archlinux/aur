@@ -1,7 +1,7 @@
 pkgbase = fpakman-staging
-	pkgdesc = Free non-official GUI for Flatpak applications management (staging: it is a testing branch which receives updates frequently and may not be working properly)
-	pkgver = 0.3.1.RC
-	pkgrel = 4
+	pkgdesc = Free non-official GUI for Flatpak / Snap applications management (staging: it is a testing branch which receives updates frequently and may not be working properly)
+	pkgver = 0.4.0.RC
+	pkgrel = 1
 	url = https://github.com/vinifmor/fpakman
 	arch = any
 	license = zlib/libpng
@@ -12,11 +12,13 @@ pkgbase = fpakman-staging
 	depends = python-pyqt5
 	depends = python-requests
 	depends = python-colorama
+	depends = python-beautifulsoup4
 	optdepends = flatpak
+	optdepends = snapd
 	provides = fpakman
 	conflicts = fpakman
-	source = https://github.com/vinifmor/fpakman/archive/332d3cb787046c759100d4ca0388fbc91e887482.zip
-	sha512sums = 55fa175cf79dfcfe4ad499e835af9b122ea06a2ec891ce678d8092f9e92926bc828c1236b793f901a2c962cade680b08161560fc14ca44f597bdfc7c73a3f711
+	source = https://github.com/vinifmor/fpakman/archive/854ad2a102f562febdac8a351c902b9252d804fe.zip
+	sha512sums = 7b518d1def256ed148ddc78ff134d3cdebbd6bfd393298f0688fe51085bff4929121d0b0d7609373cd1dc92918b6bcfb28ea698233dba096dc3221b98b534df5
 
 pkgname = fpakman-staging
 
