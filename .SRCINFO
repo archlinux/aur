@@ -27,7 +27,7 @@ pkgbase = sagecal-gpu
 	optdepends = python2-numpy
 	optdepends = ncurses
 	provides = sagecal-gpu
-	source = https://github.com/nlesc-dirac/sagecal-gpu/archive/v0.6.1.tar.gz
+	source = https://github.com/nlesc-dirac/sagecal/archive/v0.6.1.tar.gz
 	sha256sums = 1888068c4b6894eb9f0048f7121e1ecbfd15573edb1bce44f01d0a9540fd1f1a
 
 pkgname = sagecal-gpu

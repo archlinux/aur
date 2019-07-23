@@ -15,7 +15,7 @@ depends=('casacore')
 optdepends=('fftw' 'hdf5' 'python2-numpy' 'ncurses')
 conflicts=()
 provides=("${pkgname}")
-source=("https://github.com/nlesc-dirac/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("https://github.com/nlesc-dirac/sagecal/archive/v${pkgver}.tar.gz")
 sha256sums=('1888068c4b6894eb9f0048f7121e1ecbfd15573edb1bce44f01d0a9540fd1f1a')
 
 build() {
