@@ -1,0 +1,22 @@
+pkgbase = stc-git
+	pkgdesc = Stellar transaction compiler
+	pkgver = r336.353fbb9
+	pkgrel = 1
+	url = https://github.com/xdrpp/stc
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv71
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	makedepends = go-tools
+	provides = stc
+	conflicts = stc
+	source = git+https://github.com/xdrpp/stc.git
+	source = git+https://github.com/xdrpp/goxdr.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = stc-git
+
