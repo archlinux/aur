@@ -11,8 +11,9 @@ pkgdesc='Xournal++ is a handwriting Notetaking software with PDF annotation supp
 arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
 license=('GPL2')
-makedepends=('git' 'cmake' 'gettext')
-depends=('texlive-bin' 'gtk3' 'glib2' 'poppler-glib' 'libxml2' 'portaudio' 'libsndfile' 'lua' 'libzip')
+makedepends=('git' 'cmake' 'cppunit')
+depends=('texlive-bin' 'gtk3' 'glib2' 'poppler-glib' 'libxml2' 'portaudio' 'libsndfile' 'libzip')
+optdepends=('lua>=5.3: Enable Xournal++ Plugins')
 conflicts=('xournalpp')
 install="xournalpp.install"
 source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git")
@@ -34,8 +35,15 @@ build() {
 		configdir="$(realpath --relative-to="$HOME" "$XDG_CONFIG_HOME")"
 	fi
 	cd "${srcdir}/${_pkgname}/build"
-	cmake -DCMAKE_INSTALL_PREFIX="/usr/" -DDEV_CONFIG_DIR="$configdir/xournalpp" ..
-	make
+
+	cmake -DCMAKE_INSTALL_PREFIX="/usr/" -DDEV_CONFIG_DIR="$configdir/xournalpp" -DENABLE_CPPUNIT=ON ..
+	cmake --build .
+}
+
+check() {
+	cd "${srcdir}/${_pkgname}/build"
+
+	cmake --build . --target test
 }
 
 package() {
