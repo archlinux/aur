@@ -1,13 +1,15 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: ajs124
 
+# Tested with Kernel 4.16, Dell D3000 SuperSpeed USB 3.0 Docking Station, 17e9:4318 DisplayLink
+
 set -u
 pkgname='evdi-git'
-pkgver=1.5.0_r2.r0.gdc3c9d6
+pkgver=1.6.2_2_g75536ec
 _pkgver="${pkgver%%.r*}"
 pkgrel=1
-pkgdesc="A Linux® kernel module that enables management of multiple screens."
-pkgdesc+=' Git version.'
+pkgdesc='kernel module that enables management of multiple screens, primarily for DisplayLink USB VGA DVI HDMI DisplayPort video'
+pkgdesc+=' git version.'
 arch=('i686' 'x86_64')
 url='https://github.com/DisplayLink/evdi'
 license=('GPL')
@@ -18,18 +20,38 @@ conflicts=('evdi')
 install=${pkgname}.install
 changelog="${pkgname}.Changelog"
 _srcdir="${pkgname%-git}"
-source=("git+https://github.com/DisplayLink/evdi/")
-sha256sums=('SKIP')
+source=(
+  'git+https://github.com/DisplayLink/evdi/'
+  'relro.patch'
+)
+md5sums=('SKIP'
+         '05e64dd295a66c030139d0c8f6f7013b')
+sha256sums=('SKIP'
+            'ff03b5a804af826e6b0678cd4d821b5ecd2c5bf04ea7c465751f83b28e928786')
 
 pkgver() {
   set -u
   cd "${_srcdir}"
-  # extra -r interfers with version management
+  # occasional extra -r interfers with version management
   local _t1="$(git describe --tags)" # v1.5.0-r2
   local _t1a="${_t1//-/_}"
   local _t2="$(git describe --long --tags)" # v1.5.0-r2-0-gdc3c9d6
   local _t2a="${_t2//${_t1}/${_t1a}}"
   sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' <<< "${_t2a}"
+  set +u
+}
+
+prepare() {
+  set -u
+  cd "${_srcdir}"
+  local _src
+  for _src in "${source[@]}"; do
+    _src="${_src%%::*}"
+    _src="${_src##*/}"
+    if [[ "${_src}" = *.patch ]]; then
+      patch -Np1 -i "../${_src}"
+    fi
+  done
   set +u
 }
 
