@@ -1,7 +1,7 @@
 pkgbase = dislocker
 	pkgdesc = Read/write BitLocker-encrypted volumes
 	pkgver = 0.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Aorimn/dislocker
 	arch = i686
 	arch = x86_64
