@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=websocat
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Command-line client for web sockets, like netcat/curl/socat for ws://"
 url="https://github.com/vi/websocat/"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 license=('MIT')
 source=("https://github.com/vi/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('e4aa52cf12b364f7322448520fb567f7ee18c92b49c408776302e58854ea59039dc46b80a7d7658ff30d075fe768005b8911359cc333262fcc641cf63a643a80')
+sha512sums=('d161aee2153e5fec47e5e81f160abfb7a0b45c5c48f96af341d5d737cd77237fbdf1f9923e80b39a745e19f94ce225b2eb5aa0d03403e4d87ffc4b8b042b4709')
 
 build() {
   cd "${pkgname}-${pkgver}"
