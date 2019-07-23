@@ -35,7 +35,7 @@ build() {
 
 package() {
  mkdir -p $pkgdir/usr/share/openscad/libraries/dot/
- cd "$_gitname"
- find src/ -type f -name '*.scad' -exec install -Dm 744 "{}" "$pkgdir/usr/share/openscad/libraries/dot/{}" \;
+ cd "$_gitname/src"
+ find . -type f -name '*.scad' -exec install -Dm 744 "{}" "$pkgdir/usr/share/openscad/libraries/dot/{}" \;
 }
 
