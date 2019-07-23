@@ -1,12 +1,12 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r71507.b750399b70
+pkgver=r71516.a37579de92
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
 url='http://www.paraview.org'
 license=('custom')
-depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtheora' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion')
-makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-wine')
+depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtheora' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf')
+makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-wine' 'protobuf')
 provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
@@ -33,16 +33,7 @@ prepare() {
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
 
-  # vtkQWidgetTexture.cxx:(.text+0x14c): undefined reference to `_imp__glPixelStorei@8'
-  curl -L https://gitlab.kitware.com/paraview/paraview/merge_requests/3394.patch | patch -p1
-
-  # missing protobuf::protoc for target vtkPVMessage_protobuf_compile
-  sed -i "1iset_target_properties(protobuf::protoc PROPERTIES IMPORTED_LOCATION \${Protobuf_PROTOC_EXECUTABLE})" ParaViewCore/ServerImplementation/Core/CMakeLists.txt
-  sed -i "1iadd_executable(protobuf::protoc IMPORTED)" ParaViewCore/ServerImplementation/Core/CMakeLists.txt
-
-  cd VTK
-  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5734.patch|patch -p1
-  #cd ThirdParty/loguru/vtkloguru && curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5739.patch|patch -p1
+  curl -L https://gitlab.kitware.com/paraview/paraview/merge_requests/3427.patch | patch -p1
 }
 
 build() {
