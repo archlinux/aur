@@ -1,6 +1,6 @@
 pkgbase = mu-git
 	pkgdesc = mu and mu4e from git
-	pkgver = 1.0.158.g508d3d4a
+	pkgver = 1.3.3.1.gb7cda29b
 	pkgrel = 1
 	url = http://www.djcbsoftware.nl/code/mu
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = mu-git
 	depends = xapian-core
 	depends = guile
 	depends = gmime3
-	depends = json-glib
 	optdepends = emacs: mu4e support
 	provides = mu
 	conflicts = mu
