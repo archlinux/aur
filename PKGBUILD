@@ -17,14 +17,6 @@ prepare() {
   cp -a attrdict-$pkgver{,-py2}
 }
 
-build() {
-  cd "${srcdir}"/attrdict-${pkgver}
-  python setup.py build
-
-  cd "${srcdir}"/attrdict-${pkgver}-py2
-  python2 setup.py build
-}
-
 package_python-attrdict() {
   cd attrdict-${pkgver}
   python setup.py install --root="$pkgdir" --optimize=1
