@@ -4,7 +4,7 @@
 pkgname=leela-zero-git
 _pkgname=leela-zero
 pkgver=766
-pkgrel=5
+pkgrel=6
 pkgdesc="Go engine with no human-provided knowledge, modeled after the AlphaGo Zero paper. (next branch)"
 arch=('x86_64')
 url="https://github.com/leela-zero/leela-zero"
@@ -29,6 +29,7 @@ pkgver() {
 }
 
 prepare() {
+  gunzip -f weights.txt.gz
   cd $srcdir/${_pkgname}
   git submodule init
   git config submodule.gtest.url "$srcdir"/googletest
