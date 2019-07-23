@@ -5,7 +5,7 @@
 
 set -u
 pkgname='evdi-git'
-pkgver=1.6.2_2_g75536ec
+pkgver=1.6.2.r2.g75536ec
 _pkgver="${pkgver%%.r*}"
 pkgrel=1
 pkgdesc='kernel module that enables management of multiple screens, primarily for DisplayLink USB VGA DVI HDMI DisplayPort video'
@@ -32,12 +32,7 @@ sha256sums=('SKIP'
 pkgver() {
   set -u
   cd "${_srcdir}"
-  # occasional extra -r interfers with version management
-  local _t1="$(git describe --tags)" # v1.5.0-r2
-  local _t1a="${_t1//-/_}"
-  local _t2="$(git describe --long --tags)" # v1.5.0-r2-0-gdc3c9d6
-  local _t2a="${_t2//${_t1}/${_t1a}}"
-  sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' <<< "${_t2a}"
+  git describe --long --tags | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
   set +u
 }
 
