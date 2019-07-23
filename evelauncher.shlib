@@ -1,16 +1,48 @@
 #!/bin/sh
 
+# Evelauncher fixed values
+
+CONFDIR="$HOME/.config/CCP"
+EVECONF="$CONFDIR/EVE.conf"
+
+# default value if not set
+
+SHAREDIR="$HOME/.eve"
+
 # Evelauncher shared functions
 
-desktop_msg() {
-    if [ -x "$(which notify-send 2>/dev/null)" ] ;then
-	notify-send -i eve 'EVE Online Launcher' "$@"
+check_env() {
+    if [ -d "$CONFDIR" ] ;then
+	if [ -r "$EVECONF" ] ;then
+	    SHAREDIR=$(grep SharedCacheFolder $EVECONF | cut -d= -f2)
+	fi
     fi
-    printf "$(basename $0): $@\n"
+    [ ! -d "$SHAREDIR" ] && SHAREDIR=""
+    if [ "x$SHAREDIR" != "x$EVEDIR/SharedCache/" ] ;then
+	desktop_msg "Please wait, preparing environment in $EVEDIR"
+	mkdir -p $CONFDIR
+	echo "[General]" >$EVECONF
+	echo "SharedCacheFolder=$EVEDIR/SharedCache/" >>$EVECONF
+	echo "UseCustomWine=true" >>$EVECONF
+	echo "CustomWinePath=$WINEPATH/wine" >>$EVECONF
+	mkdir -p $EVEDIR/SharedCache
+	tar xf $SETUPDIR/lib/evelauncher-$ELVER.tar.?z -C $EVEDIR
+	mv $EVEDIR/evelauncher $LAUNCHER
+	if [ -d "$SHAREDIR/ResFiles/" ] ;then
+	    mv $SHAREDIR/ResFiles/ $EVEDIR/SharedCache/
+	    mv $SHAREDIR/*.txt $EVEDIR/SharedCache/
+	    rm -rf $SHAREDIR
+	fi
+    fi
+}
+
+check_steam() {
+    if [ ! -r "$LAUNCHER/steam_appid.txt" -a -x "$(which steam 2>/dev/null)" ] ;then
+	echo "8500" >$LAUNCHER/steam_appid.txt
+    fi
 }
 
 check_wine() {
-    EVECONF=$HOME/.config/CCP/EVE.conf
     if [ ! -r "$EVECONF" ] ;then
 	desktop_msg "ERROR: EVE Configuration not found!"
 	exit 1
@@ -62,4 +94,11 @@ check_wine() {
 	$WINE reg delete \
 	'HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices' \
 	/v winemenubuilder /f >/dev/null || true
+}
+
+desktop_msg() {
+    if [ -x "$(which notify-send 2>/dev/null)" ] ;then
+	notify-send -i eve $(basename $0) "$@"
+    fi
+    printf "$(basename $0): $@\n"
 }

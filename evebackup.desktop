@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=EVE Backup
+Icon=archive
+Comment=Backup user settings
+Exec=/usr/bin/evebackup
+NoDisplay=false
+Categories=Utility;Wine;
+StartupNotify=false
+Terminal=false

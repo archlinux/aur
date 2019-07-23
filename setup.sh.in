@@ -6,7 +6,7 @@ bootstrap_install() {
     install -dv "${target}/bin/"
     install -d "${prefix}/bin/"
     install -d "${prefix}/share/applications/"
-    for cmd in evelauncher.sh evewine evewinetricks everegedit evewinecfg ;do
+    for cmd in evelauncher.sh evewine evewinetricks everegedit evewinecfg evebackup ;do
 	if [ -f "./$cmd" ] ;then
 	    install "./$cmd" "${target}/bin/"
 	else
@@ -50,7 +50,7 @@ bootstrap_remove() {
 	    chmod 0644 "${prefix}/share/icons/hicolor/icon-theme.cache"
     fi
     rm -rfv "${target}/lib/"
-    for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks ;do
+    for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks evebackup ;do
 	rm -fv "${prefix}/bin/$cmd"
 	if [ ! "$cmd" = "evewine" ] ;then
 	    rm -f "${prefix}/share/applications/${cmd%.*}.desktop"
