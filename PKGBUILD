@@ -11,26 +11,20 @@ url="https://github.com/eight04/pyWorker"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('507674fb96d52480106c514f100501aafe2ba2b42f8a04bd27e05687700be84d')
+sha512sums=('ba1eaa1d7d3eae32d309a0382628f9a2c67f3889d2aa61e867d0a6caf3c8cc1aaa10a7bd7a9aa16d608024d3fe6245d4c2be3854e9ffb24a27b73e760e6a84b7')
 
 prepare() {
   cp -a pythreadworker-$pkgver{,-py2}
 }
 
-build() {
-  cd "${srcdir}"/pythreadworker-${pkgver}
-  python setup.py build
-
-  cd "${srcdir}"/pythreadworker-${pkgver}-py2
-  python2 setup.py build
-}
-
 package_python-pythreadworker() {
+  depends=('python')
   cd pythreadworker-${pkgver}
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-pythreadworker() {
+  depends=('python2')
   cd pythreadworker-${pkgver}-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
