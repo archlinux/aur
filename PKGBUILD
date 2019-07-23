@@ -7,7 +7,7 @@ pkgdesc="Domain specific library for electronic structure calculations"
 arch=('i686' 'x86_64')
 url="https://github.com/electronic-structure/SIRIUS"
 license=('GPL')
-depends=(gsl fftw libxc scalapack openblas-lapack spglib hdf5 python-h5py python-mpi4py python-numpy python-scipy python-matplotlib)
+depends=(cuda gsl fftw libxc scalapack openblas-lapack spglib hdf5 python-h5py python-mpi4py python-numpy python-scipy python-matplotlib)
 makedepends=(cmake)
 provides=('sirius')
 options=('staticlibs')
@@ -25,7 +25,13 @@ build() {
   git submodule update
   mkdir -p build
   cd build
-  cmake -DCREATE_PYTHON_MODULE=On -DUSE_SCALAPACK=On -DCREATE_FORTRAN_BINDINGS=On -DCMAKE_BUILD_TYPE=RELEASE ../
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCREATE_PYTHON_MODULE=On \
+        -DUSE_SCALAPACK=On \
+        -DUSE_CUDA=On \
+        -DCREATE_FORTRAN_BINDINGS=On \
+        -DCMAKE_BUILD_TYPE=RELEASE ../
   make -j
 }
 
