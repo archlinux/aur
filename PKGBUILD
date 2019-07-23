@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/${_pkgname}"
   cd build
   make DESTDIR="$pkgdir/" install
 }
