@@ -1,0 +1,20 @@
+pkgbase = farge-git
+	pkgdesc = 🎨 Click on a pixel on your screen and show its color value
+	pkgver = 20190723
+	pkgrel = 1
+	url = https://github.com/sdushantha/${_name}
+	arch = any
+	license = MIT
+	depends = bash
+	depends = imagemagick
+	depends = colorpicker
+	depends = feh
+	makedepends = git
+	optdepends = mpv
+	optdepends = sxiv
+	provides = farge
+	conflicts = farge
+	source = farge::git+https://github.com/sdushantha/farge.git
+	sha256sums = SKIP
+
+pkgname = farge-git
