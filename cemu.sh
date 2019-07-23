@@ -13,7 +13,7 @@ if [ ! -d "$HOME"/.cemu ] ; then
   cp -r /usr/share/cemu/shaderCache "$HOME"/.cemu/ || exit 1
 fi
 
-if [ -z `winetricks list-installed|grep vcrun2015` ]; then
+if [ ! -f "$HOME"/.cemu/wine/drive_c/windows/syswow64/vcruntime140.dll ]; then
   if [ -n "`whereis zenity|grep bin`" ]; then
     zenity --info  --title 'Cemu' --text 'Installing wine dependencies.\n\nThe process may take a few minutes'
   fi
