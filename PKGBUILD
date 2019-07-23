@@ -1,7 +1,7 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 
 pkgname=xtensor
-pkgver=0.20.5
+pkgver=0.20.8
 pkgrel=2
 pkgdesc="QuantStack tools library - Multi-dimensional arrays with broadcasting and lazy computing."
 arch=('x86_64')
@@ -26,4 +26,4 @@ package() {
 	cd "${pkgname}-${pkgver}/build"
   make install
 }
-sha512sums=('038f6858bea33a0b6e3b6622c9bbb316864335f7190ef64455ec0a062c13bcafcf215c089bbdf1f72acca63c50ceb2f1d11eb4874d82a5bfff3eead10cbfc00c')
+sha512sums=('a014914206a8a0e74056b41f7a059654ff7873a16dc42588146f6e6138df13ff97fc878c11360c36c83511361793fffebd6b02f2c141a68b5fdb040e0aa82324')
