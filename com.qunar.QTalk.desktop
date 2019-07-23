@@ -7,7 +7,7 @@ GenericName[zh_CN]=QTalk 2.0
 GenericName=QTalk 2.0
 Exec=/opt/qtalk/run.sh
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-Icon=com.qunar.QTalk
+# Icon=com.qunar.QTalk
 Type=Application
 StartupNotify=true
 X-GNOME-UsesNotifications=true

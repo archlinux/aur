@@ -12,7 +12,7 @@ source=("https://qt.qunar.com/win_2_0/downloads/qtalk_linux_laster.run"
   "com.qunar.QTalk.desktop"
 )
 sha256sums=("SKIP"
-  "45985693f51e58c95ea723b18eaa0ea83c40dde4ff4e661ee0916bd52bedfccb"
+  "b4133649c38644006a00880f4e77bb67928151474c7c609590bc9694024ebe2d"
 )
 
 build() {
