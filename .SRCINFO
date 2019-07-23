@@ -240,6 +240,7 @@ pkgbase = darling
 pkgname = darling
 	install = darling.install
 	depends = darling-mach-dkms
+	provides = darling
 	conflicts = darling-git
 
 pkgname = darling-mach-dkms
@@ -248,5 +249,6 @@ pkgname = darling-mach-dkms
 	optdepends = linux-lts-headers: build modules against the LTS kernel
 	optdepends = linux-zen-headers: build modules against the ZEN kernel
 	optdepends = linux-grsec-headers: build modules against the GRSEC kernel
+	provides = darling-mach-dkms
 	conflicts = darling-mach-dkms-git
 

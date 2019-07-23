@@ -1,4 +1,5 @@
 # Maintainer: James Brink <brink.james@gmail.com>
+# Contributor: X0rg
 
 _gitname=darling
 pkgbase=$_gitname
@@ -264,6 +265,7 @@ package_darling() {
     install=darling.install
     depends=('darling-mach-dkms')
     conflicts=('darling-git')
+    provides=('darling')
 
     cd "$srcdir/$_gitname/build"
     make DESTDIR="$pkgdir" install
@@ -275,6 +277,7 @@ package_darling() {
 package_darling-mach-dkms() {
     depends=('dkms')
     conflicts=('darling-mach-dkms-git')
+    provides=('darling-mach-dkms')
     optdepends=('linux-headers: build modules against the Arch kernel'
                 'linux-lts-headers: build modules against the LTS kernel'
                 'linux-zen-headers: build modules against the ZEN kernel'
