@@ -5,7 +5,7 @@
 ##########################################################################
 
 pkgname=windscribe-cli
-pkgver=1.3_19
+pkgver=1.4_51
 pkgrel=1
 pkgdesc="Port of Windscribe's command line interface"
 arch=('x86_64' 'i686' 'armv6h')
@@ -24,9 +24,9 @@ source_x86_64=("${pkgname}_${pkgver}_${pkgrel}.deb::https://assets.staticnetcont
 source=('windscribe.service')
 
 # Checksums
-sha256sums_armv6h=('af8938c03355c7523f3abbe2090cbc43b7f782c3f1caf90c19b91b03173dd524')
-sha256sums_i686=('141d9d229cd94de6d5212f909840682f5bf2d85f0de91407cf7fec28ff79161f')
-sha256sums_x86_64=('2adef3ff36423de681279a7f8ddaac29612779bdbcba9cf24098952646fa0253')
+sha256sums_armv6h=('7e4731577e1c63c00cdc14a6bfc3320bbee2b04bdaa877d9265d0bb61254a66c')
+sha256sums_i686=('5aae451347c7b0896d31ccb421ae2a9658e9ec18664cce126ab6525aa63bf05b')
+sha256sums_x86_64=('ee4b8a574445ae1e2f83e6ae0b3fec91272fcd798d4130717ff229583a82d473')
 sha256sums=('5be3a28e3b49a233b68ac4638bc5407e1fde043de5bfaddff00d0031947a6d06')
 
 package() {
@@ -37,6 +37,16 @@ package() {
   mkdir $srcdir/control
   tar xf "data.tar.xz" -C "${srcdir}/data"
   tar xf "control.tar.gz" -C "${srcdir}/control"
+
+  # Check the md5sums packaged with the Debian package
+  echo "Checking packaged md5sums"
+  cd $srcdir/data
+  if ! md5sum -c $srcdir/control/md5sums; then
+    "Packaged md5sum mismatch!"
+    exit 1
+  else
+    cd $srcdir
+  fi
   
   # Configure bash completion
   echo "Configuring bash completion"
@@ -48,7 +58,7 @@ package() {
 
   # Configure systemd service
   echo "Configuring systemd service"
-  install -Dm644 "windscribe.service" -t "${pkgdir}/usr/lib/systemd/system/"
+  install -Dm644 "${srcdir}/windscribe.service" -t "${pkgdir}/usr/lib/systemd/system/"
   
   # Configure windscribe binary and license
   echo "Configuring binary and license"

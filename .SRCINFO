@@ -1,6 +1,6 @@
 pkgbase = windscribe-cli
 	pkgdesc = Port of Windscribe's command line interface
-	pkgver = 1.3_19
+	pkgver = 1.4_51
 	pkgrel = 1
 	url = https://windscribe.com/
 	install = windscribe-cli.install
@@ -12,12 +12,12 @@ pkgbase = windscribe-cli
 	optdepends = stunnel
 	source = windscribe.service
 	sha256sums = 5be3a28e3b49a233b68ac4638bc5407e1fde043de5bfaddff00d0031947a6d06
-	source_x86_64 = windscribe-cli_1.3_19_1.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.3-19_amd64.deb
-	sha256sums_x86_64 = 2adef3ff36423de681279a7f8ddaac29612779bdbcba9cf24098952646fa0253
-	source_i686 = windscribe-cli_1.3_19_1.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.3-19_i386.deb
-	sha256sums_i686 = 141d9d229cd94de6d5212f909840682f5bf2d85f0de91407cf7fec28ff79161f
-	source_armv6h = windscribe-cli_1.3_19_1.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.3-19_armhf.deb
-	sha256sums_armv6h = af8938c03355c7523f3abbe2090cbc43b7f782c3f1caf90c19b91b03173dd524
+	source_x86_64 = windscribe-cli_1.4_51_1.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.4-51_amd64.deb
+	sha256sums_x86_64 = ee4b8a574445ae1e2f83e6ae0b3fec91272fcd798d4130717ff229583a82d473
+	source_i686 = windscribe-cli_1.4_51_1.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.4-51_i386.deb
+	sha256sums_i686 = 5aae451347c7b0896d31ccb421ae2a9658e9ec18664cce126ab6525aa63bf05b
+	source_armv6h = windscribe-cli_1.4_51_1.deb::https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.4-51_armhf.deb
+	sha256sums_armv6h = 7e4731577e1c63c00cdc14a6bfc3320bbee2b04bdaa877d9265d0bb61254a66c
 
 pkgname = windscribe-cli
 
