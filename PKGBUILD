@@ -66,7 +66,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
-        "${_lucjanpath}/zen-fixes/0002-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
+        "${_lucjanpath}/arch-patches/0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -377,10 +377,10 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            '068b9f3bb5112a5684246d0a2ae46bb26d7ad3a642276f5ed37d802b50efc925297d8bd4684eb391676e9a97efbb426b4fcbe6fd751860c3f53d8c0ca7d5a1b2'
-            'f714a620d50541fd29199d076f94e68c14049bbb97b131da3b68b13bcc1dd933f62913e8aad2a20e0ad738f2c3cad161dac13d3d4cbfdfcead271f22f09a681e'
-            'c1fecf034913e7838bb27c4d6e7538515093ef2e88daf8fe18b76cc501b864305b2a03e6e16db7929cbf48be96fe11e2b01e0ba8c1a58811806d78d34350bff5'
-            '19b3fdbb9c7e3c18a839821796b60c5ae5808bc9143853fed5ed56e1029cdcb79f492a9777fdeeb933fe69e0822d551c35f5f12d86065617e6019b389549a6b2'
+            '8a158ae5660426f0fb9fa74f37c093f325b5a23392b95e50c36825205f42311cbf05f818f0275ebda27ce9fad40652ba6dc2397f19f45addb3f68f8f4476196f'
+            '9d472377c50ddd9ddab5d4ab3092f3d487eeee20a4d4a04d3cefeef5bbf40daa3eb609b15741ca4a8cd32bf2b6d0781de961cbf55e2f80fd40260f282bf022f4'
+            '166653c6d7d76b052aa26f6a0782a74db75d2611c3d5d770219a00fed4da7d2317b35e39aaadec25da1fc91fb7f18385247303d531d15e3998886bb65f8cd89f'
+            '67c185e6d658f6a2c0aa7f17e440eaaa825130949c892eb6ee29f556226e64c7d6506eda264ae7ac0aaf09f18517a64401e08e3db111e8b513e8f635398cd989'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
