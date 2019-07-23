@@ -1,8 +1,8 @@
 diff --git a/configure.ac b/configure.ac
-index 4a2099a..ca213e1 100644
+index cdbb138..be8fc4e 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -309,9 +309,13 @@ AC_CONFIG_FILES([Makefile
+@@ -324,11 +324,16 @@ AC_CONFIG_FILES([Makefile
                   include/Makefile
                   src/Makefile
                   src/GL/Makefile
@@ -15,7 +15,37 @@ index 4a2099a..ca213e1 100644
 +                 src/GLX/glx.pc
                   src/GLX/Makefile
                   src/EGL/Makefile
++                 src/EGL/egl.pc
                   src/GLdispatch/Makefile
+                  src/GLdispatch/vnd-glapi/Makefile
+                  src/util/Makefile
+diff --git a/src/EGL/Makefile.am b/src/EGL/Makefile.am
+index 5c036dc..c55c83e 100644
+--- a/src/EGL/Makefile.am
++++ b/src/EGL/Makefile.am
+@@ -106,3 +106,6 @@ g_egldispatchstubs.c : $(GENERATE_DEPS)
+ g_egldispatchstubs.h : $(GENERATE_DEPS)
+ 	$(AM_V_GEN)$(PYTHON) $(GENERATE_DISPATCH_SCRIPT) header $(GENERATE_LIST_FILES) > $@
+ endif
++
++pkgconfigdir = $(libdir)/pkgconfig
++pkgconfig_DATA = egl.pc
+diff --git a/src/EGL/egl.pc.in b/src/EGL/egl.pc.in
+new file mode 100644
+index 0000000..6ed6933
+--- /dev/null
++++ b/src/EGL/egl.pc.in
+@@ -0,0 +1,10 @@
++prefix=@prefix@
++exec_prefix=${prefix}
++libdir=@libdir@
++includedir=@includedir@
++
++Name: egl
++Description: Mesa EGL Library
++Version: @PACKAGE_VERSION@
++Libs: -L${libdir} -lEGL
++Cflags: -I${includedir}
 diff --git a/src/GLESv1/Makefile.am b/src/GLESv1/Makefile.am
 index d20017d..88e07bc 100644
 --- a/src/GLESv1/Makefile.am
@@ -28,7 +58,7 @@ index d20017d..88e07bc 100644
 +pkgconfig_DATA = glesv1_cm.pc
 diff --git a/src/GLESv1/glesv1_cm.pc.in b/src/GLESv1/glesv1_cm.pc.in
 new file mode 100644
-index 0000000..80da789
+index 0000000..c0473e8
 --- /dev/null
 +++ b/src/GLESv1/glesv1_cm.pc.in
 @@ -0,0 +1,10 @@
@@ -54,7 +84,7 @@ index a9c2351..f40e06f 100644
 +pkgconfig_DATA = glesv2.pc
 diff --git a/src/GLESv2/glesv2.pc.in b/src/GLESv2/glesv2.pc.in
 new file mode 100644
-index 0000000..b3ad672
+index 0000000..d72b5ba
 --- /dev/null
 +++ b/src/GLESv2/glesv2.pc.in
 @@ -0,0 +1,10 @@
@@ -80,7 +110,7 @@ index 030836b..0d19674 100644
 +pkgconfig_DATA = glx.pc
 diff --git a/src/GLX/glx.pc.in b/src/GLX/glx.pc.in
 new file mode 100644
-index 0000000..9449d89
+index 0000000..733d4cb
 --- /dev/null
 +++ b/src/GLX/glx.pc.in
 @@ -0,0 +1,10 @@
@@ -106,7 +136,7 @@ index 647d9e4..4b34dd5 100644
 +pkgconfig_DATA = opengl.pc
 diff --git a/src/OpenGL/opengl.pc.in b/src/OpenGL/opengl.pc.in
 new file mode 100644
-index 0000000..81f67fa
+index 0000000..3eb2903
 --- /dev/null
 +++ b/src/OpenGL/opengl.pc.in
 @@ -0,0 +1,10 @@
