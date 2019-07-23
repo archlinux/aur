@@ -1,7 +1,7 @@
 pkgbase = deluge-stable-git
 	pkgdesc = A bittorrent client written with python and pygtk - Git Stable branch Version
 	pkgver = 1.3.15.r19.gd62987089
-	pkgrel = 2
+	pkgrel = 3
 	url = http://deluge-torrent.org/
 	install = deluge-stable.install
 	arch = any
@@ -44,8 +44,8 @@ pkgbase = deluge-stable-git
 	source = deluged.conf
 	md5sums = SKIP
 	md5sums = c50385d32a2db0ef3f46b8caadb0e988
-	md5sums = 5437fee82a53ffa809df257d12898ef6
-	md5sums = e9cba3bf5200b9a959b8687389d5285b
+	md5sums = 959d16333e3745831d3026a3465575d0
+	md5sums = 2c0c3b59065c1ac7af68e31f8b392b40
 	md5sums = 75e591b738cf9f858af2de8665a3b3e7
 
 pkgname = deluge-stable-git
