@@ -2,7 +2,7 @@
 # Current Maintainer: Dylan Morrison <dylanjmorrison611 at gmail.com>
 
 pkgname=megazeux
-pkgver=2.91i
+pkgver=2.92
 pkgrel=1
 pkgdesc="Game creation system"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=(libvorbis libpng sdl2)
 makedepends=()
 _base=mzx${pkgver/.}
 _filename=${_base}src.tar.xz
-_sha256sum=50e567bf3152d994d8befce7952ca9e613b56f2fc3544529cdedaaeea8e69eed
+_sha256sum=841cf520002b6807ca2a11368be7942fd3eea8dc85f59b1cea07a7fba48e6c1e
 
 ##old version
 #source=("${_filename}::http://vault.digitalmzx.net/download.php?rid=2197&f=${_sha256sum}")
