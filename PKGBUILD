@@ -8,10 +8,10 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts       # Build kernel with a different name
-_pkgver=4.19.50
-_rtpatchver=rt22
+_pkgver=4.19.59
+_rtpatchver=rt23
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=('GPL2')
@@ -24,7 +24,7 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  bcache_fix.patch
+  0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
   config         # the main kernel config file
   60-${pkgbase}.hook  # pacman hook for depmod
   90-${pkgbase}.hook  # pacman hook for initramfs regeneration
@@ -38,12 +38,12 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('a9987423918abd20ee68d6e9b14b7225eaca8a586bf75fb56c49f6e1e47ce01e'
+sha256sums=('b8b41825d439de0587031eb8c659c5eb4970a5be5bfda1868661016c52c8b35b'
             'SKIP'
-            'fc842d2e108cd4f21c168de3e3e75f41e43e519dd4dffbc3230bed67e9d24b89'
+            '9aa1a5c8555fd7195a36a274ad2b9e843810f172eb314230f82623f4068760a5'
             'SKIP'
             '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
-            'fe00e6f26f167b2041f4e60588cc60ab8169f26efb4a7c47ee7d60320e4ca27d'
+            '67aed9742e4281df6f0bd18dc936ae79319fee3763737f158c0e87a6948d100d'
             '203221ce5e835e55f87585340ca7e50b3a8eefbb58161570479a1cf88963e2b7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -76,7 +76,7 @@ prepare() {
   msg2 "Setting config..."
   cp ../config .config
   make olddefconfig
-  #make menuconfig # CLI menu for configuration
+#  make menuconfig # CLI menu for configuration
 
   make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
