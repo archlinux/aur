@@ -20,8 +20,9 @@ makedepends=('mingw-w64-configure'
              'mingw-w64-rust'
              'mingw-w64-wine'
              'gdk-pixbuf2'
-             'intltool'
-             'setconf')
+             'gdk-doc'
+             'gobject-introspection'
+             'git')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://gitlab.gnome.org/GNOME/librsvg.git#commit=${_commit}")
 sha256sums=('SKIP')
