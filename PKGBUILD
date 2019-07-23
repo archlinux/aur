@@ -1,6 +1,5 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
-pkgbase=python-plasmalights
 pkgname=('python-plasmalights' 'python2-plasmalights')
 _name=${pkgname#python-}
 pkgver=0.0.1
@@ -18,20 +17,14 @@ prepare() {
   cp -a plasmalights-$pkgver{,-py2}
 }
 
-build() {
-  cd "${srcdir}"/plasmalights-${pkgver}
-  python setup.py build
-
-  cd "${srcdir}"/plasmalights-${pkgver}-py2
-  python2 setup.py build
-}
-
 package_python-plasmalights() {
+  depends=('python')
   cd plasmalights-${pkgver}
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-plasmalights() {
+  depends=('python2')
   cd plasmalights-${pkgver}-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }

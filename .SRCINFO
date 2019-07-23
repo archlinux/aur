@@ -11,6 +11,8 @@ pkgbase = python-plasmalights
 	sha512sums = 55c45372f85dd4659356e25ab837e9f47bd20b456d657e5637452418e2e3a7b493e84fa75baf79ca38659f24ae02daac2d562f76c9842f3c74c407c487da0c5e
 
 pkgname = python-plasmalights
+	depends = python
 
 pkgname = python2-plasmalights
+	depends = python2
 
