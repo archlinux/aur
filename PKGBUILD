@@ -11,18 +11,10 @@ url="https://github.com/litl/backoff"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('c7187f15339e775aec926dc6e5e42f8a3ad7d3c2b9a6ecae7b535000f70cd838')
+sha512sums=('697c87f0ba52528e4e8acaa6dc6d4d6d26681c7fc59246e7731b9cc3a702f803edba605795f3a4d401d820642917b4b6356a48432804b29d99e94e68adad84dd')
 
 prepare() {
   cp -a backoff-$pkgver{,-py2}
-}
-
-build() {
-  cd "${srcdir}"/backoff-${pkgver}
-  python setup.py build
-
-  cd "${srcdir}"/backoff-${pkgver}-py2
-  python2 setup.py build
 }
 
 package_python-backoff() {
