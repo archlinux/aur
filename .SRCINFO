@@ -1,0 +1,12 @@
+pkgbase = python-robopy
+	pkgdesc = A Python 3 implementation of Peter Corke's Robotics Toolbox
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/adityadua24/robopy
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-robopy
+
