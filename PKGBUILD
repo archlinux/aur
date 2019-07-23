@@ -1,15 +1,14 @@
 # Maintainer: Aaron Esau <aur@aaronesau.com>
-pkgname="onionr-git"
+pkgname="onionr"
 pkgver="0.1"
 pkgrel="1"
-conflicts=("onionr")
-provides=("onionr")
+conflicts=("onionr2")
 license=("GPL")
 arch=("i686" "x86_64")
 md5sums=("SKIP")
 url="https://onionr.net/"
 pkgdesc="anonymous P2P communication platform"
-source=("${pkgname}-${pkgver}::git+https://gitlab.com/beardog/onionr.git#branch=easy-releases")
+source=("${pkgname}-${pkgver}::git+https://gitlab.com/beardog/onionr.git#branch=master")
 makedepends=("python" "python-setuptools" "python-pip")
 depends=("git" "curl" "tor")
 
