@@ -1,7 +1,7 @@
 pkgbase = android-x86-qt5
 	pkgdesc = Qt 5 for Android
 	pkgver = 5.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	install = android-x86-qt5.install
 	arch = any
@@ -21,7 +21,6 @@ pkgbase = android-x86-qt5
 	depends = apache-ant
 	depends = android-pkg-config
 	depends = android-ndk
-	depends = android-platform-22
 	depends = android-sdk
 	depends = android-sdk-build-tools
 	depends = android-sdk-platform-tools

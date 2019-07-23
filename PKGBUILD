@@ -5,11 +5,10 @@
 # Contributor: Martchus <martchus@gmx.net>
 
 _android_arch=x86
-source android-env ${_android_arch}
 
 pkgname=android-${_android_arch}-qt5
 pkgver=5.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 5 for Android"
 arch=('any')
 url='https://www.qt.io'
@@ -27,7 +26,6 @@ depends=('java-runtime-headless-openjdk<=8'
         'apache-ant'
         'android-pkg-config'
         'android-ndk'
-        "android-platform-$ANDROID_MINIMUM_PLATFORM"
         'android-sdk'
         'android-sdk-build-tools'
         'android-sdk-platform-tools')
@@ -66,7 +64,10 @@ md5sums=('3c168d9a3a08248ff36f4f54c82e437f'
 
 prepare() {
     cd ${_pkgfqn}
+    source android-env ${_android_arch}
+
     check_ndk_version_ge_than 18.0
+    check_android_platform
 
     # Platform specific patches.
 
@@ -80,6 +81,7 @@ prepare() {
 
 build() {
     cd ${_pkgfqn}
+    source android-env ${_android_arch}
 
     unset CC
     unset CXX
@@ -152,6 +154,7 @@ build() {
 
 package() {
     cd ${_pkgfqn}
+    source android-env ${_android_arch}
 
     make INSTALL_ROOT=${pkgdir} install
     find ${pkgdir}/${ANDROID_PREFIX_BIN} -type f ! -name '*.pl' -exec strip -s {} \;
