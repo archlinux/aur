@@ -12,7 +12,7 @@ license=('MIT')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha512sums=('ec7d2175f141695743a9fecc440f6590ed73f0d8992ca3fe0194cfa571c7d6e9979a96b9fd9f6f30d6654be34be7dd5ec21da39a55813b014bad6f82b4310d07')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools')
 depends=('python-django')
 optdepends=('python-pygments: Pygments support for API docs'
             'python-markdown: Markdown support for the browsable API'

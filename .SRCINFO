@@ -6,7 +6,6 @@ pkgbase = python-django-rest-framework
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	depends = python-django
 	optdepends = python-pygments: Pygments support for API docs
 	optdepends = python-markdown: Markdown support for the browsable API
