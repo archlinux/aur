@@ -18,28 +18,22 @@ prepare() {
   cp -a fanshim-$pkgver{,-py2}
 }
 
-build() {
-  cd "${srcdir}"/fanshim-${pkgver}
-  python setup.py build
-
-  cd "${srcdir}"/fanshim-${pkgver}-py2
-  python2 setup.py build
-}
-
 package_python-fanshim() {
-  depends=('python-psutil'
+  depends=('python'
+           'python-psutil'
            'python-plasmalights'
            'python-rpi.gpio')
 
   cd fanshim-${pkgver}
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-fanshim() {
-  depends=('python2-psutil'
+  depends=('python'
+           'python2-psutil'
            'python2-plasmalights'
            'python2-rpi.gpio')
 
   cd fanshim-${pkgver}-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
