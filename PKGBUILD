@@ -21,11 +21,11 @@ prepare() {
 package_python-enzyme() {
   depends=('python')
   cd "${srcdir}/enzyme-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 package_python2-enzyme() {
   depends=('python2')
   cd "${srcdir}/enzyme-${pkgver}-py2"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
