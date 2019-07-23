@@ -23,11 +23,9 @@ conflicts=(gnome-shell)
 install="$pkgname.install"
 _commit=2483b603869009f7294c00e8a5bdb778eb948b6d # tags/3.32.2^10
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-         https://gitlab.gnome.org/GNOME/gnome-shell/uploads/4a083c80c81eeb0dd1be64e0e24b5c17/nvidia-background-workaround.patch)
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
-            'SKIP'
-            '505c90290e5a867692f55d3209a22755bcffb997e7cac59e49b1a78c976d5af9')
+            'SKIP')
 pkgver() {
   cd $pkgname
 
@@ -67,8 +65,6 @@ prepare() {
   #   3. Fix: Regression/bug fix only available in master (not backported).
   #   4. Cleanup: Code styling improvement, function deprecation, rearrangement...
 
-  # https://gitlab.gnome.org/GNOME/gnome-shell/issues/1084
-  #patch -Np1 -i ../nvidia-background-workaround.patch
 
 
   # Title: Fixes and performance improvements to the extension system

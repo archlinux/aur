@@ -40,10 +40,8 @@ pkgbase = gnome-shell-performance
 	conflicts = gnome-shell
 	source = gnome-shell-performance::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=2483b603869009f7294c00e8a5bdb778eb948b6d
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
-	source = https://gitlab.gnome.org/GNOME/gnome-shell/uploads/4a083c80c81eeb0dd1be64e0e24b5c17/nvidia-background-workaround.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 505c90290e5a867692f55d3209a22755bcffb997e7cac59e49b1a78c976d5af9
 
 pkgname = gnome-shell-performance
 
