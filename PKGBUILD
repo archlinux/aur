@@ -1,6 +1,7 @@
 # Maintainer: Simon Pintarelli <simon.pintarelli@cscs.ch>
 pkgname=sirius-git
-pkgver=VERSION
+_pkgname=sirius
+pkgver=r6480.1608ef6f
 pkgrel=1
 pkgdesc="Domain specific library for electronic structure calculations"
 arch=('i686' 'x86_64')
@@ -14,17 +15,18 @@ source=("${pkgname%-*}::git+https://github.com/electronic-structure/SIRIUS.git#b
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/${_pkgname}"
   git submodule init
   git submodule update
   mkdir -p build
   cd build
   cmake -DCREATE_PYTHON_MODULE=On -DUSE_SCALAPACK=On -DCREATE_FORTRAN_BINDINGS=On -DCMAKE_BUILD_TYPE=RELEASE ../
+  make -j
 }
 
 package() {
