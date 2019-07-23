@@ -20,7 +20,7 @@ makedepends=('mingw-w64-configure'
              'mingw-w64-rust'
              'mingw-w64-wine'
              'gdk-pixbuf2'
-             'gdk-doc'
+             'gtk-doc'
              'gobject-introspection'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
