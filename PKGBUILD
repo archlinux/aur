@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=system76-driver-git
-pkgver=19.04.9.r1.gfc2fd58
+pkgver=19.04.9.r5.g9f315b1
 pkgrel=1
 pkgdesc="System76 Driver for System76 computers"
 arch=('any')
@@ -21,6 +21,7 @@ depends=(
 	'python-xlib'
 	'dmidecode'
 	'at'
+	'tlp'
 	'system76-dkms'
 	'system76-io-dkms'
 	'system76-firmware-daemon')
