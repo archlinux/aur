@@ -5,7 +5,7 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.8.129.g4577d967
+pkgver=1.0.13.nightly.20190722.r0.gd1f0ea09
 pkgrel=1
 pkgdesc='Xournal++ is a handwriting Notetaking software with PDF annotation support. Supports Pen input like Wacom Tablets.'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}/"
-	git describe --tags | sed -e 's|v||g' -e 's|glib.||g' -e 's|-|.|g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
