@@ -9,7 +9,7 @@ pkgbase = python-rebulk
 	makedepends = python2-setuptools
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/r/rebulk/rebulk-1.0.0.tar.gz
-	sha256sums = 1d49e4f7ef6fb874e60efccacbbe661092fabdb7770cdf7f7de4516d50535998
+	sha512sums = c812c06c55c0cf2ef97b02806ca7bfa0319dfd6b1beb674f66d12e5b78180e0d96e9562fedfcf19d09134d25dd4fc8999359d5e9010f612515e0e58d45b8c6d2
 
 pkgname = python-rebulk
 	depends = python

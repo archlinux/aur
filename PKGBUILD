@@ -5,7 +5,7 @@ pkgname=('python-rebulk' 'python2-rebulk')
 _name=${pkgname#python-}
 pkgver=1.0.0
 pkgrel=1
-pkgdesc=" Define simple search patterns in bulk to perform advanced matching on any string. "
+pkgdesc="Define simple search patterns in bulk to perform advanced matching on any string. "
 arch=("any")
 url="https://github.com/Toilal/rebulk"
 license=('MIT')
@@ -13,10 +13,19 @@ makedepends=('python-setuptools'
              'python2-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('1d49e4f7ef6fb874e60efccacbbe661092fabdb7770cdf7f7de4516d50535998')
+sha512sums=('c812c06c55c0cf2ef97b02806ca7bfa0319dfd6b1beb674f66d12e5b78180e0d96e9562fedfcf19d09134d25dd4fc8999359d5e9010f612515e0e58d45b8c6d2')
 
 prepare() {
   cp -a "rebulk-${pkgver}"{,-py2}
+}
+
+check() {
+  cd "${srcdir}/rebulk-${pkgver}"
+  python setup.py test
+
+  # Tests don't work in python2, issue Toilal/rebulk/issues/19
+  #cd "${srcdir}/rebulk-${pkgver}-py2"
+  #python2 setup.py test
 }
 
 package_python-rebulk() {
