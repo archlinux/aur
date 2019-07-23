@@ -9,29 +9,22 @@ pkgdesc="A threading library written in python. Help you build threaded app."
 arch=('any')
 url="https://bitbucket.org/dhagrow/profig/"
 license=('MIT')
-makedepends=('python-setuptools'
-             'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('74aadcf6252fd0ed9757a1383e24963e1660817f90ffc962c8293349fa6f16b7')
+sha512sums=('197459c3ea89f3064e856bc3c7182854c8b83240307383fd9147561bd5ab7c0560371c25f7403cd060118b81e56b48012ab8213651a5c30d801541e8e53813f8')
 
 prepare() {
   cp -a profig-$pkgver{,-py2}
 }
 
-build() {
-  cd "${srcdir}"/profig-${pkgver}
-  python setup.py build
-
-  cd "${srcdir}"/profig-${pkgver}-py2
-  python2 setup.py build
-}
-
 package_python-profig() {
+  depends=('python')
   cd profig-${pkgver}
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-profig() {
+  depends=('python2')
   cd profig-${pkgver}-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
