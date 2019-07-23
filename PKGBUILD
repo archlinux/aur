@@ -2,7 +2,7 @@
 
 pkgname='openscad-dotscad-git'
 _gitname='dotSCAD'
-pkgver=r846.7648373
+pkgver=r1155.8d9f6d5
 pkgrel=1
 pkgdesc='Collection of helpful OpenSCAD modules and functions from Justin Lin'
 url='https://github.com/JustinSDK/dotSCAD'
@@ -34,9 +34,8 @@ build() {
 }
 
 package() {
- mkdir -p $pkgdir/usr/share/openscad/libraries/dot/__private__
+ mkdir -p $pkgdir/usr/share/openscad/libraries/dot/
  cd "$_gitname"
- install -Dm644 src/*.scad $pkgdir/usr/share/openscad/libraries/dot/
- install -Dm644 src/__private__/*.scad $pkgdir/usr/share/openscad/libraries/dot/__private__
+ find src/ -type f -name '*.scad' -exec install -Dm 744 "{}" "$pkgdir/usr/share/openscad/libraries/dot/{}" \;
 }
 
