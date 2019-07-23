@@ -12,7 +12,7 @@ pkgbase = python-schedule
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/s/schedule/schedule-0.6.0.tar.gz
-	sha256sums = f9fb5181283de4db6e701d476dd01b6a3dd81c38462a54991ddbb9d26db857c9
+	sha512sums = 0a2704055c7f2b3bbf08582a7f099b5118b0e97e39cda0a299b66620ab17cedb63c44e7bda7d3480649c8b4d609f3e051f8111e7370c39210c305444c287ae93
 
 pkgname = python-schedule
 	depends = python
