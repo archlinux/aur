@@ -20,7 +20,7 @@ source=("$pkgname::git+https://github.com/casacore/casacore.git")
 md5sums=('SKIP')
 
 build() {
-    cd "${srcdir}/casacore-${pkgver}"
+    cd "${srcdir}/casacore-git"
     mkdir build
 
     cd build
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/casacore-${pkgver}/build"
+    cd "${srcdir}/casacore-git/build"
     install -d ${pkgdir}/usr/share/licenses/${pkgname}
     #install -m 644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     make DESTDIR="${pkgdir}" install
