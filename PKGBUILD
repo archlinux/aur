@@ -1,10 +1,10 @@
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-plumed
-pkgver=2018.6
-_gromacsver=2018.6
-_plumedver=2.5.1
-pkgrel=2
+pkgver=2019.2
+_gromacsver=2019.2
+_plumedver=2.5.2
+pkgrel=1
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -13,15 +13,20 @@ depends=('lapack' 'zlib' "plumed>=${_plumedver}")
 optdepends=('cuda: Nvidia GPU support'
             'opencl-mesa: OpenCL support for AMD GPU'
 	    'opencl-nvidia: OpenCL support for Nvidia GPU')
-makedepends=('cmake' 'libxml2' 'hwloc')
+makedepends=('cmake' 'libxml2' 'hwloc' 'gcc8')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha1sums=('2d47ff8fa96e8efd7a9cfae2776af7cd587ee92f')
+sha1sums=('6d638441221b829f13bd721f79ea7db1be84757f')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
                             #trajectory file format that can be read by
                             #VMD installation (e.g. AMBER's DCD format).
+
+
+#For cuda support gcc8 is required, if you do not need cuda support comment the next two lines
+export CC=gcc-8
+export CXX=g++-8
 
 #Plumed
 export PLUMED_KERNEL=/usr/lib/libplumedKernel.so
@@ -37,19 +42,20 @@ build() {
   msg2 "Building the gromacs with plumed support (single precision)"
   cd ${srcdir}/single
   cmake ../gromacs-${_gromacsver} \
-	-DREGRESSIONTEST_DOWNLOAD=ON \
         -DCMAKE_INSTALL_PREFIX=/usr/ \
         -DBUILD_SHARED_LIBS=OFF \
         -DGMX_PREFER_STATIC_LIBS=ON \
         -DGMX_BUILD_MDRUN_ONLY=ON
         #-DGMX_SIMD=AVX2_256 \
+        #-DGMX_SIMD=AVX_256 \
+	#-DREGRESSIONTEST_DOWNLOAD=ON \
   make
 }
 
-check () {
-  cd ${srcdir}/single
-  make check
-}
+#check () {
+#  cd ${srcdir}/single
+#  make check
+#}
 
 package() {
   msg2 "Making the single precision executables"
