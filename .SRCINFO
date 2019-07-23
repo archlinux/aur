@@ -8,9 +8,13 @@ pkgbase = python-pytest-dependency
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/p/pytest-dependency/pytest-dependency-0.4.0.tar.gz
-	sha256sums = bda0ef48e6a44c091399b12ab4a7e580d2dd8294c222b301f88d7d57f47ba142
+	sha512sums = 1a1579dec5a35f37ee93af96de09e7e8753a95bd48e3c581592f0e13aa2fed3bf097e014921b9c67540e8ebfe03ca31c528c9ff4738c2116ff372b790dae7a41
 
 pkgname = python-pytest-dependency
+	depends = python
+	depends = python-pytest
 
 pkgname = python2-pytest-dependency
+	depends = python2
+	depends = python2-pytest
 
