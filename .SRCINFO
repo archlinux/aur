@@ -1,7 +1,7 @@
 pkgbase = flashpoint-git
 	pkgdesc = Launcher for BlueMaxima's Flashpoint
 	pkgver = fd01bbe
-	pkgrel = 1.2
+	pkgrel = 1.3
 	url = http://bluemaxima.org/flashpoint/
 	arch = x86_64
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer : Colin Berry <colinb969@gmail.com>
 pkgname=flashpoint-git
 pkgver=fd01bbe
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc="Launcher for BlueMaxima's Flashpoint"
 arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
@@ -21,7 +21,7 @@ pkgver() {
 build(){
     cd "${srcdir}/${pkgname}"
     npm install
-    npm run release
+    npm run release:static
 }
 
 package(){
