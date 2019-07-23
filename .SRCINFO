@@ -1,17 +1,18 @@
 pkgbase = lib32-proxychains-ng
 	pkgdesc = A hook preloader that allows to redirect TCP traffic of existing dynamically linked programs through one or more SOCKS or HTTP proxies (32-bit version)
-	pkgver = 4.10
+	pkgver = 4.14
 	pkgrel = 1
 	url = https://github.com/rofl0r/proxychains
 	arch = x86_64
 	license = GPL
 	depends = glibc
 	depends = proxychains-ng
+	depends = lib32-gcc-libs
 	provides = lib32-proxychains
 	conflicts = lib32-proxychains
 	replaces = lib32-proxychains
-	source = http://downloads.sourceforge.net/project/proxychains-ng/proxychains-4.10.tar.bz2
-	md5sums = 19442655ea290b18dcccf30fc4ae3e74
+	source = http://ftp.barfooze.de/pub/sabotage/tarballs/proxychains-ng-4.14.tar.xz
+	sha256sums = 9d00e035b8a808b9e0c750501b08f38eeadd0be421f30ee83e88fd15e872b0ae
 
 pkgname = lib32-proxychains-ng
 
