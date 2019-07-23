@@ -4,21 +4,20 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.25.1
+pkgver=2.25.3
 pkgrel=1
-pkgdesc="GTK+ Web content engine library"
+pkgdesc="GTK Web content engine library"
 arch=(x86_64)
 url="https://webkitgtk.org/"
 license=(custom)
 depends=(libxt libxslt enchant geoclue2 gst-plugins-base-libs libsecret
          libwebp harfbuzz-icu gtk3 libnotify hyphen woff2 openjpeg2)
-makedepends=(gtk2 gperf gobject-introspection ruby cmake python ninja)
-optdepends=('gtk2: Netscape plugin support'
-            'gst-plugins-base: free media decoding'
+makedepends=(gperf gobject-introspection ruby cmake python ninja)
+optdepends=('gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
 source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
-sha256sums=('af6ac2a0d886719bcdbe0e7b67983b5486af1f99e71da2a64dcfba21a6814b4a'
+sha256sums=('61a54cb4d2bf9a87323c284514c4c3bd377e5e54ef7e184d1e1f6b1f2c188039'
             'SKIP')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'
               '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
@@ -36,6 +35,7 @@ build() {
     -DLIBEXEC_INSTALL_DIR=/usr/lib \
     -DLIB_INSTALL_DIR=/usr/lib \
     -DENABLE_BUBBLEWRAP_SANDBOX=NO \
+    -DUSE_WPE_RENDERER=OFF \
 
   cmake --build build
 }
