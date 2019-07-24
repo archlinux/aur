@@ -1,14 +1,14 @@
 pkgbase = sops
 	pkgdesc = Editor of encrypted files that supports YAML, JSON and BINARY formats
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/mozilla/sops
 	arch = i686
 	arch = x86_64
 	license = MPL2
 	makedepends = go
-	source = sops-3.3.0.tar.gz::https://github.com/mozilla/sops/archive/3.3.0.tar.gz
-	sha256sums = ba9cf4dffeba97ae738a71b1f647780ef71e01466e1fe5a9b61bca5e89d25a19
+	source = sops-3.3.1.tar.gz::https://github.com/mozilla/sops/archive/3.3.1.tar.gz
+	sha256sums = 9f6a4a369378cef9e8e7cdd8ba00b3105b0b6875404c3b9f482f804b2f355a77
 
 pkgname = sops
 
