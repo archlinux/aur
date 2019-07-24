@@ -4,7 +4,7 @@
 
 pkgname=style50
 _module='style50' # PyPi specific
-pkgver=2.6.4
+pkgver=2.6.6
 pkgrel=1
 pkgdesc="This is style50, with which code can be checked against the CS50 style guide"
 arch=('any')
@@ -18,7 +18,7 @@ source=(
 	"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz"
 )
 sha256sums=(
-	'8bb68f0be72660411976ab1742c759845f981eefe0f21edb1533882a1833c8a0'
+	'e1dddb17537b41bba455ab5d875c1a8bb6a60680fad8316decb2e577212514d8'
 )
 
 build() {
