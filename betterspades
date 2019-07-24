@@ -1,0 +1,56 @@
+#!/bin/sh
+mkdir /tmp/betterspades
+mkdir /tmp/betterspades/cache
+mkdir $HOME/.config/betterspades
+mkdir $HOME/.cache/betterspades
+ln -sf $HOME/.cache/betterspades /tmp/betterspades/cache
+ln -sf $HOME/.config/betterspades/config.ini /tmp/betterspades/config.ini
+if [ ! -f "$HOME/.config/betterspades/notfirstrun" ]; then
+    touch "$HOME/.config/betterspades/notfirstrun"
+    echo "
+[client]
+name                           = Deuce
+xres                           = 800
+yres                           = 600
+vol                            = 10
+inverty                        = 0
+windowed                       = 1
+language                       = 0
+mouse_sensitivity              = 5.000000
+show_news                      = 1
+multisamples                   = 0
+greedy_meshing                 = 0
+vsync                          = 1
+show_fps                       = 0
+voxlap_models                  = 0
+force_displaylist              = 0
+smooth_fog                     = 0
+
+[controls]
+move_forward = 87
+move_backward = 83
+move_left = 65
+move_right = 68
+jump = 32
+crouch = 341
+sneak = 86
+sprint = 340
+view_map = 77
+reload = 82
+cube_color_up = 265
+cube_color_down = 264
+cube_color_left = 263
+cube_color_right = 262
+cube_color_sample = 69
+quit_game = 256
+volume_up = 334
+volume_down = 333
+view_score = 258
+change_team = 44
+change_weapon = 46
+screenshot = 294
+fullscreen = 300
+chat_global = 84" > $HOME/.config/betterspades/config.ini
+fi
+cd /opt/betterspades
+./client
