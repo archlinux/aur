@@ -1,5 +1,5 @@
 pkgname=pycharm-community-eap
-_buildver=192.5728.77
+_buildver=192.5728.105
 _pkgver=2019.2
 _eap=n
 pkgver=$_pkgver.$_buildver
@@ -19,8 +19,8 @@ if [[ $_eap = y ]]; then
 else
     _filever=$_pkgver
 fi
-source=("https://download.jetbrains.com/python/pycharm-community-$_buildver.tar.gz")
-sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_buildver.tar.gz.sha256" | cut -d' ' -f1))
+source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
+sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz.sha256" | cut -d' ' -f1))
 prepare() {
 	cat >"$srcdir/$pkgname.desktop" <<-EOF
 		[Desktop Entry]
