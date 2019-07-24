@@ -1,7 +1,7 @@
 pkgbase = polybar-full
 	pkgdesc = A fast and easy-to-use status bar - Full module support
-	pkgver = 3.3.1
-	pkgrel = 2
+	pkgver = 3.4.0
+	pkgrel = 1
 	url = https://github.com/polybar/polybar
 	install = polybar.install
 	arch = x86_64
@@ -30,8 +30,8 @@ pkgbase = polybar-full
 	provides = polybar
 	conflicts = polybar
 	conflicts = polybar-git
-	source = https://github.com/polybar/polybar/releases/download/3.3.1/polybar-3.3.1.tar
-	sha512sums = 701598d0d3435d7e1cb0437dbd43531dfda933093877a517c2cde93584ea47fce81c06e6301a2637656472ba2cda42ad0ea0c15df846c6699f1496a075249382
+	source = https://github.com/polybar/polybar/releases/download/3.4.0/polybar-3.4.0.tar
+	sha512sums = e8e0b39c45d7496429f063bf104b8b84596de957decdaf717fc658a5fb717cd25a2588e4296ed8f33a6fc0371ff9094f4f072adb660f72cf1f3966abb74ee9e9
 
 pkgname = polybar-full
 
