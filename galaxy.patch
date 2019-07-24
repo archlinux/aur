@@ -1,0 +1,26 @@
+diff --git a/setup/srcconf.c b/setup/srcconf.c
+index 967aed3..0300496 100644
+--- a/setup/srcconf.c
++++ b/setup/srcconf.c
+@@ -952,7 +952,7 @@ printf("Symlink %s -> %s\n", source, target);
+ #if defined(__SCO_VERSION__)
+       fprintf (f, "CFLAGS=-O -D_KERNEL -D_DDI=8\n");
+ #else
+-      fprintf (f, "CFLAGS += -D_KERNEL\n");
++      fprintf (f, "CFLAGS += -D_KERNEL -fno-pic -fno-PIE\n");
+ #endif
+ #ifdef HAVE_KERNEL_FLAGS
+       add_kernel_flags (f);
+diff --git a/setup/srcconf_linux.inc b/setup/srcconf_linux.inc
+index dfae1fc..3741014 100644
+--- a/setup/srcconf_linux.inc
++++ b/setup/srcconf_linux.inc
+@@ -51,7 +51,7 @@ add_kernel_flags (FILE * f)
+ {
+ # if defined(__x86_64__)
+   fprintf (f,
+-	     "CFLAGS += -O3 -fno-common -mcmodel=kernel  -mno-red-zone -fno-pie  -fno-asynchronous-unwind-tables -ffreestanding%s\n", fnsp);
++	     "CFLAGS += -O2 -fno-common -mcmodel=kernel  -mno-red-zone -fno-pie  -fno-asynchronous-unwind-tables -ffreestanding%s\n", fnsp);
+ # else
+ #   ifndef __arm__
+   if (getenv ("NO_REGPARM") == NULL)
