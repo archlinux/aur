@@ -1,4 +1,5 @@
-# Maintainer: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d) 
+# Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
+# Maintainer: Severin Kaderli <severin@kaderli.dev>
 pkgname=vita3k-git
 _pkgname=vita3k
 pkgver=r11.40a247b
