@@ -1,7 +1,7 @@
 pkgbase = memsource-editor
 	pkgdesc = A CAT translation tool, requires Memsource subscription
 	pkgver = 6.232.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.memsource.com/
 	install = memsource-editor.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = memsource-editor
 	depends = freetype2
 	depends = fontconfig
 	depends = libpng12
+	depends = openssl-1.0
 	depends = shared-mime-info
 	options = !strip
 	source = http://download.memsource.com/production/updates/memsource-editor/linux/x64/archive/install/MemsourceEditor-6.232.2-x64.run
