@@ -3,7 +3,7 @@
 
 pkgname=matrix-synapse-git
 pkgver=1.2.0rc2.r60.gbaf081cd3
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Matrix reference homeserver"
 url="https://github.com/matrix-org/synapse"
@@ -20,7 +20,7 @@ depends=('python-jsonschema' 'python-twisted' 'python-service-identity'
          'python-service-identity' 'python-msgpack'
          'python-phonenumbers' 'python-prometheus_client'
          'python-attrs' 'python-netaddr' 'python-sortedcontainers'
-         'python-treq' 'python-psutil'
+         'python-treq' 'python-psutil' 'python-sdnotify'
          'systemd')
 makedepends=('git')
 checkdepends=('python-lxml' 'python-jinja' 'python-mock' 'python-parameterized' 'python-bleach')
