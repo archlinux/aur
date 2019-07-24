@@ -1,7 +1,7 @@
 # Maintainer: Daniel Moch <daniel AT danielmoch DOT com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=tootstream
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Text interface for the Mastodon social network"
 arch=(any)
@@ -13,12 +13,13 @@ depends=(python-mastodon
 	 python-colored
 	 python-emoji)
 makedepends=(python-distribute)
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('07ca36cca8b901e2ad5d8cd44217b26f579a143b463b8d1caa6abc40df4d0396')
+source=("requirements.txt.patch"
+        "${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('292ad86462c9203bf1923b684b5342f6885652ce2033f5a0bb14749bfff4db6f'
+            'dc2f0244078ee1fdcf80955533a7d83b1a1fb693692bf5b6080f1313948b6adb')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -ie 's/Mastodon.py==1\.3\.1/Mastodon.py/g' requirements.txt
+  patch ${pkgname}-${pkgver}/requirements.txt requirements.txt.patch
 }
 
 build() {
