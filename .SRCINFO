@@ -54,7 +54,7 @@ pkgbase = matrix-synapse-git
 	source = synapse.service
 	source = sysusers-synapse.conf
 	md5sums = SKIP
-	md5sums = 276a99050f40601089255ea168bb7620
+	md5sums = c4352682c5fb5eb0440ceb54a20ac4cb
 	md5sums = ecd9f66fb57fe1a2e1e2df07a460a35b
 
 pkgname = matrix-synapse-git

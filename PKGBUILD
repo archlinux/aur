@@ -35,7 +35,7 @@ source=("git://github.com/matrix-org/synapse.git#branch=develop"
         'sysusers-synapse.conf')
 
 md5sums=('SKIP'
-         '276a99050f40601089255ea168bb7620'
+         'c4352682c5fb5eb0440ceb54a20ac4cb'
          'ecd9f66fb57fe1a2e1e2df07a460a35b')
 
 backup=('etc/synapse/log_config.yaml')

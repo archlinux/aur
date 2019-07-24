@@ -4,14 +4,15 @@ After=network-online.target
 Requires=network-online.target
 
 [Service]
-Type=simple
+Type=notify
+NotifyAccess=main
 User=synapse
 Group=synapse
 SyslogIdentifier=synapse
 Environment=LANG=en_US.UTF-8
 WorkingDirectory=/var/lib/synapse
 ExecStart=/usr/bin/python3.7 -m synapse.app.homeserver --config-path=/etc/synapse/homeserver.yaml
-ExecStop=/usr/bin/synctl stop /etc/synapse/homeserver.yaml
+ExecReload=/usr/bin/kill -HUP $MAINPID
 EnvironmentFile=-/etc/default/synapse
 
 [Install]
