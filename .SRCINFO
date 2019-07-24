@@ -1,7 +1,7 @@
 pkgbase = electron-cash-bin
 	pkgdesc = Lightweight Bitcoin Cash wallet
 	pkgver = 4.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.electroncash.org/
 	arch = x86_64
 	license = MIT
@@ -9,8 +9,10 @@ pkgbase = electron-cash-bin
 	validpgpkeys = D56C110F4555F371AEEFCB254FD06489EFF1DDE1
 	source_x86_64 = https://github.com/Electron-Cash/Electron-Cash/releases/download/4.0.8/Electron-Cash-4.0.8-x86_64.AppImage
 	source_x86_64 = https://github.com/Electron-Cash/Electron-Cash/releases/download/4.0.8/Electron-Cash-4.0.8-x86_64.AppImage.asc
+	source_x86_64 = fonts.xml
 	sha256sums_x86_64 = 190487301067e7859da725121bc74297e44982059ef91d6ad9987f05208a9ddb
 	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 41dcca00f2098519d3e9ccc9a8f8abab6f7880ca2370223fba2530c3aaf4379e
 
 pkgname = electron-cash-bin
 
