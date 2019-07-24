@@ -1,0 +1,15 @@
+pkgbase = monitoring-plugins-gpu
+	pkgdesc = Monitoring plugins for Nagios, Icinga etc. for OpenAFS servers
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://www.thomas-krenn.com/en/wiki/GPU_Sensor_Monitoring_Plugin
+	arch = any
+	license = GPL
+	depends = perl
+	depends = monitoring-plugins
+	depends = perl-nvidia-ml-pl
+	source = https://github.com/thomas-krenn/check_gpu_sensor_v1/archive/v2.3.tar.gz
+	sha256sums = e9996d438b2f71a4c4364a31a7311d6f8e2cb21b055f79bed8906031a7b2c060
+
+pkgname = monitoring-plugins-gpu
+
