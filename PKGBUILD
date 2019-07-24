@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://tgui.eu/"
 license=('ZLIB')
 depends=('sfml')
-makedepends=('cmake' 'doxygen' 'git')
+makedepends=('cmake' 'git')
 
 source=("https://github.com/texus/TGUI/archive/v0.8.5.zip")
 sha256sums=('SKIP')
@@ -16,8 +16,7 @@ sha256sums=('SKIP')
 build() {
   cd "$srcdir/TGUI-0.8.5"
   cmake -DCMAKE_INSTALL_PREFIX=/usr . \
-        -DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE \
-        -DTGUI_BUILD_DOC=true
+        -DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE
   make
 }
 

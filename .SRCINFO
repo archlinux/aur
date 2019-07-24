@@ -7,7 +7,6 @@ pkgbase = tgui
 	arch = x86_64
 	license = ZLIB
 	makedepends = cmake
-	makedepends = doxygen
 	makedepends = git
 	depends = sfml
 	source = https://github.com/texus/TGUI/archive/v0.8.5.zip
