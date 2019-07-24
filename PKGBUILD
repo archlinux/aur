@@ -1,14 +1,14 @@
 pkgname=termius-app
-pkgver=4.7.2
+pkgver=4.9.5
 pkgrel=1
-pkgdesc="the SSH client that works on Desktop"
+pkgdesc="Desktop SSH Client"
 arch=('x86_64')
 url="https://www.termius.com/"
 license=('GPL')
 depends=('desktop-file-utils' 'gconf' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libnotify' 'libxss' 'libxtst' 'nss')
 source=("Termius.deb::https://www.termius.com/download/linux/Termius.deb")
 noextract=("Termius.deb")
-md5sums=("2b82c796e2b9bf17f14d93d31511e097")
+md5sums=("db401978f7bded96d008d908a7e1c027")
 validpgpkeys=()
 
 prepare() {
