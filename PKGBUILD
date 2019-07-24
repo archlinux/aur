@@ -1,12 +1,12 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r71516.a37579de92
+pkgver=r71524.a29aa269cd
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
 url='http://www.paraview.org'
 license=('custom')
 depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtheora' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf')
-makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-wine' 'protobuf')
+makedepends=('git' 'mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'protobuf')
 provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
@@ -32,8 +32,6 @@ prepare() {
   git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
-
-  curl -L https://gitlab.kitware.com/paraview/paraview/merge_requests/3427.patch | patch -p1
 }
 
 build() {
