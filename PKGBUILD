@@ -1,7 +1,7 @@
 # Maintainer: Shane Donohoe <shane@donohoe.cc>
 
 pkgname=python-youtube-sm-parser
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Output youtube subscriptions using subscription_manager file"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/shanedabes/youtube_sm_parser"
 license=('APACHE')
 depends=('python' 'python-xmltodict' 'python-requests-futures')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shanedabes/youtube_sm_parser/archive/v${pkgver}.tar.gz")
-sha256sums=('8f52dfb3d84810be2798019d3f544aebed65177c857714336abbbeced676cbb9')
+sha256sums=('86e338b32175ce4bf4e8e42b976da7cd6ebfbf99d61a70bf56408ce7aa96c427')
 
 package() {
     cd "youtube_sm_parser-${pkgver}"
