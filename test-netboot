@@ -2,8 +2,8 @@
 set -euo pipefail
 
 OVMFDIR=/usr/share/ovmf
-OVMF_CODE=${OVMFDIR}/ovmf_code_x64.bin
-OVMF_VARS=${OVMFDIR}/ovmf_vars_x64.bin
+OVMF_CODE=${OVMFDIR}/x64/OVMF_CODE.fd
+OVMF_VARS=${OVMFDIR}/x64/OVMF_VARS.fd
 IPXE_IMAGE=/usr/share/ipxe-netboot/ipxe.efi
 
 if [[ ! -f ${OVMF_CODE} ]]; then

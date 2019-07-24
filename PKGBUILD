@@ -1,6 +1,7 @@
-# Maintainer: Thomas Bächler <thomas@archlinux.org>
+# Maintainer: Lily Wilson <hotaru@thinkindifferent.net>
+# Contributor: Thomas Bächler <thomas@archlinux.org>
 pkgname=ipxe-netboot
-pkgver=r5620.30f96c9f
+pkgver=r5911.a4f8c6e3
 pkgrel=1
 pkgdesc="iPXE build for Arch Linux netboot"
 arch=('i686' 'x86_64')
@@ -25,7 +26,7 @@ sha256sums=('SKIP'
             '3ba0cf390975bb07bf1d3c7ff802d6977bdf901c94883ea2de44c16d444252e5'
             '64d021f345a0b4633de17ba43d816295076adc8a378eaa54e6796e8c0e95d6d0'
             '139a5e4a4e0fa505378c72c5f700934ce8333f4e6b1b508886c4b0eb14f4be99'
-            '46dff93f06527c5a0f8a0ca6d641e818f61bf5e2143c0521a59751da89adfbd3')
+            '63cdadea20fd5ba0f1a632d1ebd34e7b3d91f08b88a3b43508cc825bb42e55a4')
 
 pkgver() {
   cd "$srcdir/ipxe"
@@ -43,6 +44,9 @@ prepare() {
 
 build() {
   cd "$srcdir/ipxe/src"
+
+  NO_WERROR=1
+  export NO_WERROR
 
   make \
     EMBED="$srcdir/arch.ipxe" \
