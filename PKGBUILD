@@ -1,10 +1,10 @@
 # Maintainer: Kim Scarborough <kim@scarborough.kim>
 pkgname=deluge1
 pkgver=1.3.15
-pkgrel=1
+pkgrel=2
 pkgdesc='A BitTorrent client with multiple interfaces in a client/server model (legacy 1.3.x version)'
 arch=('any')
-url="http://deluge-torrent.org/"
+url='https://deluge-torrent.org/'
 license=('GPL3')
 makedepends=('intltool'
 	'libtorrent-rasterbar'
@@ -16,6 +16,7 @@ depends=('python2'
 	'desktop-file-utils'
 	'hicolor-icon-theme')
 optdepends=('python2-service-identity'
+	'libtorrent-rasterbar: required for daemon'
 	'pygtk: required for GTK client'
 	'xdg-utils: required for GTK client'
 	'python2-notify: optional for GTK client'
