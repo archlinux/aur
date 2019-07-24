@@ -1,15 +1,15 @@
 # Maintainer: Marcel Robitaille mail@marcelrobitaille.me
 _pkgname=perspektiv
-pkgname=${_pkgname}-git
-pkgver=r14.168db07
-pkgrel=2
+pkgname="${_pkgname}-git"
+pkgver=r24.88d93c1
+pkgrel=1
 pkgdesc="A daemon for creating popups when you change monitor brightness, volume, etc. "
 arch=("i686" "x86_64")
-url="https://github.com/henriklaxhuber/perspektiv"
+url="https://github.com/he-la/perspektiv"
 license=('GPL-3.0')
 depends=('ttf-font-awesome-4')
 makedepends=('git' 'rust')
-source=('perspektiv-git::git+https://github.com/henriklaxhuber/perspektiv.git')
+source=('perspektiv-git::git+https://github.com/he-la/perspektiv.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -19,14 +19,14 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname}"
-  CARGO_INCREMENTAL=0 cargo build --release --features "x11_backlight alsa_volume"
+	CARGO_INCREMENTAL=0 cargo build --release --features "x11_backlight alsa_volume"
 }
 
 package() {
 	cd "$srcdir/${pkgname}"
-  mkdir -p "$pkgdir/usr/share/${_pkgname}"
-  mkdir -p "$pkgdir/usr/bin"
+	mkdir -p "$pkgdir/usr/share/${_pkgname}"
+	mkdir -p "$pkgdir/usr/bin"
 	cp -r target/release/* "$pkgdir/usr/share/${_pkgname}"
-  ln -s "$pkgdir/usr/share/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	ln -s "$pkgdir/usr/share/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
