@@ -6,7 +6,7 @@ pkgbase=webstorm
 pkgname=(webstorm webstorm-jre)
 pkgver=2019.2
 _pkgver=192.5728.87
-pkgrel=1
+pkgrel=2
 pkgdesc='JavaScript IDE and HTML editor.'
 arch=('x86_64' 'i686')
 url='https://www.jetbrains.com/webstorm/'
@@ -28,7 +28,7 @@ package_webstorm() {
   install -d -m 755 "${pkgdir}/usr/share/applications/"
   install -d -m 755 "${pkgdir}/usr/share/pixmaps/"
 
-  rsync -rtl "${srcdir}/WebStorm-${_pkgver}/" "${pkgdir}/opt/${pkgbase}" --exclude=/jre64
+  rsync -rtl "${srcdir}/WebStorm-${_pkgver}/" "${pkgdir}/opt/${pkgbase}" --exclude=/jbr
 
   ln -s "/opt/${pkgbase}/bin/${pkgbase}.sh" "${pkgdir}/usr/bin/${pkgbase}"
   install -D -m 644 "${srcdir}/jetbrains-${pkgbase}.desktop" "${pkgdir}/usr/share/applications/"
@@ -37,5 +37,5 @@ package_webstorm() {
 
 package_webstorm-jre() {
   install -d -m 755 "${pkgdir}/opt/${pkgbase}"
-  rsync -rtl "${srcdir}/WebStorm-${_pkgver}/jre64" "${pkgdir}/opt/${pkgbase}"
+  rsync -rtl "${srcdir}/WebStorm-${_pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"
 }

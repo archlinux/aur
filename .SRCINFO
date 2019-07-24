@@ -1,7 +1,7 @@
 pkgbase = webstorm
 	pkgdesc = JavaScript IDE and HTML editor.
 	pkgver = 2019.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/webstorm/
 	arch = x86_64
 	arch = i686
