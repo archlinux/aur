@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-preview
-	pkgver = 3.0.0+100+preview.012264
+	pkgver = 3.0.0+100+preview.012821
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = dotnet-core-preview
 	makedepends = openssl
 	makedepends = zlib
 	options = staticlibs
-	source = https://download.visualstudio.microsoft.com/download/pr/72ce4d40-9063-4a2e-a962-0bf2574f75d1/5463bb92cff4f9c76935838d1efbc757/dotnet-sdk-3.0.100-preview6-012264-linux-x64.tar.gz
-	source = https://download.visualstudio.microsoft.com/download/pr/ea4b23b0-d7dc-4d39-8de4-d4c89e1f9551/bfe628fcb8f19d4c97c75d1217af1a8b/aspnetcore-runtime-3.0.0-preview6.19307.2-linux-x64.tar.gz
+	source = https://download.visualstudio.microsoft.com/download/pr/c624c5d6-0e9c-4dd9-9506-6b197ef44dc8/ad61b332f3abcc7dec3a49434e4766e1/dotnet-sdk-3.0.100-preview7-012821-linux-x64.tar.gz
+	source = https://download.visualstudio.microsoft.com/download/pr/02241c22-f7c1-4eb9-a599-02c3b27461f0/00725bf30e6deadc0facc9a1757d0eea/aspnetcore-runtime-3.0.0-preview7.19365.7-linux-x64.tar.gz
 	source = dotnet.sh
-	sha256sums = 5149eeee283cc226186d311df664de5eb96a52d1e37a61ae58abf3b0a3d66d5c
-	sha256sums = 24c009363c072f6c76687ce686b4aa3d72b4eb5eaf1a3ceb85bdff6807719b28
+	sha256sums = 0b5a203c5e7ac4c1506f75a5e8e7aaba3c63d2d3b91a7185c41b1c7e6ca8ce9b
+	sha256sums = 7fc7c0f3c494e7888917f6af48b615d498372eb5539a44db7de82cf29dfdbc6b
 	sha256sums = f4cb02490234b853946477f82514f0c6247b55b08b2e85fae98e99a6e6974edd
 
 pkgname = dotnet-host-preview
