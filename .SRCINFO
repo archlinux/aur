@@ -1,10 +1,9 @@
 pkgbase = postman
 	pkgdesc = Build, test, and document your APIs faster
-	pkgver = 7.2.2
+	pkgver = 7.3.4
 	pkgrel = 1
 	url = https://www.getpostman.com/downloads/
 	arch = x86_64
-	arch = i686
 	license = custom:Postman UELA
 	depends = electron2
 	provides = postman
@@ -16,10 +15,8 @@ pkgbase = postman
 	sha256sums = bbc2f4a8db8fa55d854f7fe4a41339dd02522b7e77879fc7b6796819bceb9a33
 	sha256sums = cf4b62b0fccdec77a24abc350a03082a521fc1bc533feb1781e83a4a170424b2
 	sha256sums = 4fa4f470c3f83712a92e8b91e062fb187e560531431084dd0d4d39326decb477
-	source_x86_64 = postman-7.2.2-x86_64.src.tar.gz::https://dl.pstmn.io/download/version/7.2.2/linux64
-	sha256sums_x86_64 = 9810b4de280e0c7107eb5b0a5ef29e6c7c93d4f807426f14b165f83a413307e2
-	source_i686 = postman-7.2.2-i686.src.tar.gz::https://dl.pstmn.io/download/version/7.2.2/linux32
-	sha256sums_i686 = de7eed9c3a4077916b1c15dfa2a2f96f38728d850f3f2cf853c7655f5f6edc59
+	source_x86_64 = postman-7.3.4-x86_64.src.tar.gz::https://dl.pstmn.io/download/version/7.3.4/linux64
+	sha256sums_x86_64 = a6465b6f286a3dcf82ca6a7edcc3681ae83530a63503c7f67537fba277747e7a
 
 pkgname = postman
 
