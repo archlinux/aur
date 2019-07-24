@@ -1,0 +1,25 @@
+pkgbase = balonet
+	pkgdesc = Balonet is a social network, focused on working environment. Balonet helps to address communication and coordination needs of small startups and development groups up to big organizations.
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://balonet.net
+	install = balonet.install
+	arch = x86_64
+	license = Apache-2.0
+	depends = gconf
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk2
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://cdn.balonet.net/files/linux/balonet-2.5.4.deb
+	sha512sums_x86_64 = 6c3ecce1b78c7fa0687809c2961209ffc26de4350a1fa9dd7e62a1a99ec15827a854aa73b36aa8be216e5857a93d5c573cb5ac013fcec624424f3b4440ba1d7c
+
+pkgname = balonet
+
