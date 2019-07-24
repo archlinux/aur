@@ -1,6 +1,6 @@
 pkgbase = puppetserver
 	pkgdesc = Server automation framework and application
-	pkgver = 6.3.0
+	pkgver = 6.5.0
 	pkgrel = 1
 	url = https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html
 	install = puppetserver.install
@@ -24,10 +24,10 @@ pkgbase = puppetserver
 	backup = etc/puppetlabs/puppetserver/logback.xml
 	backup = etc/puppetlabs/puppetserver/request-logging.xml
 	backup = etc/puppetlabs/puppetserver/services.d/ca.cfg
-	source = puppetserver-6.3.0.tar.gz::https://downloads.puppetlabs.com/puppet/puppetserver-6.3.0.tar.gz
-	source = puppetserver-6.3.0.tar.gz.asc::https://downloads.puppetlabs.com/puppet/puppetserver-6.3.0.tar.gz.asc
+	source = puppetserver-6.5.0.tar.gz::https://downloads.puppetlabs.com/puppet/puppetserver-6.5.0.tar.gz
+	source = puppetserver-6.5.0.tar.gz.asc::https://downloads.puppetlabs.com/puppet/puppetserver-6.5.0.tar.gz.asc
 	validpgpkeys = 6F6B15509CF8E59E6E469F327F438280EF8D349F
-	sha512sums = a3c3e9c00e3dae274a2139a166c121d1d9b1dde8ad640e70d68433eee53a9bcf7ad8ba53d6e355ee1de93a522f8e0169eb80f52fc438ce6a76ebcd007398108b
+	sha512sums = d871f3817c370ddd08e8d791deb1a30aa50ab0d801192ebfb5ef225d8dce21885175fe4e9911287437b687b2bcbf5a098d8b9511b24bd05fdf4854575a686cfe
 	sha512sums = SKIP
 
 pkgname = puppetserver
