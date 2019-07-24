@@ -1,4 +1,5 @@
-# Maintainer: Uzerus <szymonscholz at gmail dot com>
+# Maintainer: loto <robertrmiller at outlook dot com>
+# Previous Maintainer: Uzerus <szymonscholz at gmail dot com>
 # Previous Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Previous Maintainer: Lauri Niskanen <ape@ape3000.com>
 
@@ -31,4 +32,4 @@ package() {
 	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-md5sums=('f5ff8853b9a53e5facab76d8420c5548')
+md5sums=('f5ff8853b9a53e5facab76d8420c5548' 'SKIP')
