@@ -28,26 +28,30 @@
 int main(int argc, char *argv[]) {
 
 	int opt;
-	int short_format = 0;
 	int one_shot = 0;
 	int quit_on_keypress = 0;
-	while ((opt = getopt(argc, argv, "soqh")) != -1) {
+	int output_format = 0x11;
+	while ((opt = getopt(argc, argv, "oqhrd")) != -1) {
 		switch(opt) {
-			case 's':
-				short_format = 1;
-				break;
 			case 'o':
 				one_shot = 1;
 				break;
 			case 'q':
 				quit_on_keypress = 1;
 				break;
+			case 'r':
+				output_format &= 0x1;
+				break;
+			case 'd':
+				output_format &= 0x10;
+				break;
 			case 'h':
 				printf( "colorpicker [options]\n"
 						"  -h: show this help\n"
-						"  -s: use short format\n"
 						"  -o: oneshot\n"
-						"  -q: quit on keyboard press\n");
+						"  -q: quit on keypress\n"
+						"  -d: hex only\n"
+						"  -r: rgb only\n");
 				return 0;
 			default:
 				return 1;
@@ -69,25 +73,20 @@ int main(int argc, char *argv[]) {
 	for(;;) {
 		XEvent e;
 		XNextEvent(display, &e);
-		if (e.type == ButtonPress) {
-			if  (e.xbutton.button == Button1) {
+		if (e.type == ButtonPress && e.xbutton.button == Button1) {
 				unsigned long pixel = XGetPixel(image, e.xbutton.x_root, e.xbutton.y_root);
-				if (short_format) {
-					printf("#%06X\n", pixel);
-				} else {
-					printf("R: %3d, G: %3d, B: %3d | Hex: #%06X\n",
-							(pixel >> 0x10) & 0xFF,
-							(pixel >> 0x08) & 0xFF,
-							(pixel >> 0x00) & 0xFF,
-							pixel);
+				if (output_format & 0x1) {
+					printf("%d,%d,%d ", (pixel >> 0x10) & 0xFF, (pixel >> 0x08) & 0xFF, pixel & 0xFF);
 				}
+				if (output_format & 0x10) {
+					printf("#%06X", pixel);
+				}
+				puts("");
 				if (one_shot) {
 					break;
 				}
-			} else  {
-				break;
-			}
-		} else if (e.type == KeyPress && (e.xkey.keycode == 53 || quit_on_keypress)) {
+		} else if (e.type == ButtonPress ||
+				(e.type == KeyPress && (e.xkey.keycode == 53 || quit_on_keypress))) {
 			break;
 		}
 	}
