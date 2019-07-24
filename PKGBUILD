@@ -32,4 +32,4 @@ package() {
 	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-md5sums=('f5ff8853b9a53e5facab76d8420c5548' 'SKIP')
+md5sums=('f5ff8853b9a53e5facab76d8420c5548' '5a8770b7200a77a54efdc08857c40d50')
