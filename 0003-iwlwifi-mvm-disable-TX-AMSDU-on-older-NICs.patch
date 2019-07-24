@@ -1,7 +1,7 @@
-From f6f6b798c7330d7851fee4bbe835c3954886fc3f Mon Sep 17 00:00:00 2001
+From d426d34276c9f17081179be6497cddd74154556a Mon Sep 17 00:00:00 2001
 From: Johannes Berg <johannes.berg@intel.com>
 Date: Wed, 3 Jul 2019 11:10:49 +0300
-Subject: [PATCH 3/4] iwlwifi: mvm: disable TX-AMSDU on older NICs
+Subject: [PATCH 3/6] iwlwifi: mvm: disable TX-AMSDU on older NICs
 
 On older NICs, we occasionally see issues with A-MSDU support,
 where the commands in the FIFO get confused and then we see an

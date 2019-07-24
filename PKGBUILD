@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-5.2
-_stable=5.2.1
-_patchver=5.2.2
+_stable=5.2.2
+_patchver=5.2.3
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -25,23 +25,27 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
   0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
+  0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch
+  0005-netfilter-nf_tables-fix-module-autoload-for-redir.patch
   # Arch-Linux-kernel-vx.xx.x-arch1.patch is not needed for rc1
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('3581e84e9d63298a14c147f925cd496ebb25c5a08cf065ba63c54cdee6d86506'
+sha256sums=('e5d91382699391e228efae87903ffeeac39b9e694ee3cf32970c87d28e516d9c'
             'SKIP'
-            'ff034a839b59c2f1fb654b001a5fff1c205abc189112643bb77f71e8d506e271'
+            'e49127b19d649da396fe4766c49ec55386c14e1878f0ed946325f9aceff46798'
             'SKIP'
-            '5dc432031db0b2b6640f0d4eab6c824594106dde9f44d1e5b979978109d13f0d'
+            'c405c700b2cb06c4ec805b7e327d0b66416395995519281194a8293da69b398a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '702840a04a8f08bec4688865ae41303dfc9f8c173c8dc10bfa4ffe12fce562a5'
             '187fa8d9a6c5777a8930dcecfafdd9d6e9095d4bf96ec060e756fb7c6a88b74d'
-            'fc96300831506965383ef30bc46b72735dc45bb97dea2ccb8b9450c005d2f020')
+            'e2c9c31219cedbb4a279b59940239b4b5df0a1a2757d8b0299d376e74e0f6fb9'
+            'b1dae3c4a169f4809eec40eae06222e7c663878c2343189aea45b99db74cba6d'
+            'e6e912c6b014b4f622b4ed8005d46bffda19e260b357c7cb912c6283986c47ef')
 
 _kernelname=${pkgbase#linux}
 
