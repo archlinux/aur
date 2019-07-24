@@ -1,7 +1,7 @@
 pkgbase = electron-cash
 	pkgdesc = Lightweight Bitcoin Cash wallet
 	pkgver = 4.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.electroncash.org/
 	arch = any
 	license = MIT
@@ -25,6 +25,7 @@ pkgbase = electron-cash
 	depends = python-six
 	depends = qt5-base
 	depends = qt5-svg
+	depends = ttf-bitstream-vera
 	optdepends = python-btchip: Ledger hardware wallet support
 	optdepends = python-hidapi: Digital Bitbox hardware wallet support
 	optdepends = python-matplotlib: plot transaction history in graphical mode
@@ -34,7 +35,9 @@ pkgbase = electron-cash
 	optdepends = zbar: QR code reading support
 	provides = electron-cash
 	conflicts = electron-cash
+	source = fonts.xml
 	source = electron-cash-4.0.8.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/4.0.8.tar.gz
+	sha256sums = SKIP
 	sha256sums = 2b86f0579776a0a50696eb0fe4958a853cd020e91d76a88d33c72a71e379e5d7
 
 pkgname = electron-cash
