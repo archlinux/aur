@@ -3,15 +3,15 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gstreamer-git
-pkgver=1.13.0.1.17596.ff38bfe0e
+pkgver=1.17.0.1.18629.b50abd9f4
 pkgrel=1
 pkgdesc='GStreamer Multimedia Framework (Git version)'
 arch=('i686' 'x86_64')
 license=('LGPL')
 url='http://gstreamer.freedesktop.org/'
-depends=('libxml2' 'glib2')
+depends=('libxml2' 'glib2' 'libcap' 'libunwind' 'libelf')
 optdepends=('sh: feedback script')
-makedepends=('intltool' 'pkgconfig' 'gtk-doc' 'gobject-introspection')
+makedepends=('intltool' 'pkgconfig' 'gtk-doc' 'gobject-introspection' 'git')
 provides=('gstreamer='$pkgver)
 conflicts=('gstreamer')
 options=('!libtool')
