@@ -2,9 +2,9 @@
 
 pkgname=qbittorrent-enhanced-git
 pkgver=4.1.6.1.r0.gbbea6ab6a
-pkgrel=1
+pkgrel=2
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (Enhanced Edition)"
-arch=('i686' 'x86_64')
+arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/c0re100/qBittorrent-Enhanced-Edition"
 license=('custom' 'GPL')
 depends=('libtorrent-rasterbar' 'qt5-base' 'qt5-svg')
