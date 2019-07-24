@@ -16,10 +16,9 @@ pkgbase = qbittorrent-enhanced-nox-git
 	makedepends = qt5-tools
 	depends = libtorrent-rasterbar
 	depends = qt5-base
-	depends = qt5-svg
 	optdepends = python: needed for torrent search tab
-	provides = qbittorrent
-	conflicts = qbittorrent
+	provides = qbittorrent-nox
+	conflicts = qbittorrent-nox
 	source = qbittorrent-enhanced::git+https://github.com/c0re100/qBittorrent-Enhanced-Edition.git
 	sha256sums = SKIP
 
