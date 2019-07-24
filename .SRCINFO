@@ -1,0 +1,18 @@
+pkgbase = gogios
+	pkgdesc = Checks to see if required services are still running on important machines.
+	pkgver = 1.0.r2.g58b610b
+	pkgrel = 1
+	url = https://github.com/bkasin/gogios
+	install = gogios.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = make
+	optdepends = nginx
+	provides = gogios
+	conflicts = gogios-bin
+	source = gogios::git+https://github.com/bkasin/gogios.git#branch=master
+	sha256sums = SKIP
+
+pkgname = gogios
+
