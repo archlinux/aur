@@ -1,7 +1,7 @@
 # Maintainer: Kim Scarborough <kim@scarborough.kim>
 pkgname=deluge1
 pkgver=1.3.15
-pkgrel=2
+pkgrel=3
 pkgdesc='A BitTorrent client with multiple interfaces in a client/server model (legacy 1.3.x version)'
 arch=('any')
 url='https://deluge-torrent.org/'
@@ -47,6 +47,8 @@ build() {
 package() {
 	cd "${srcdir}/deluge-${pkgver}"
 	python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+	# Quick fix to keep namcap from thinking we need Python 3
+	sed -i -e '1s@python@python2@' "${pkgdir}/usr/lib/python2.7/site-packages/deluge/ui/Win32IconImagePlugin.py"
 	cd "${srcdir}"
 	install -Dm0644 deluged.service "${pkgdir}/usr/lib/systemd/system/deluged.service"
 	install -m0644 deluge-web.service "${pkgdir}/usr/lib/systemd/system/"
@@ -56,7 +58,4 @@ package() {
 		install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/deluge.conf"
 	echo 'd /srv/deluge 0770 deluge deluge' |
 	      install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
-
-	# Remove unneeded file to keep namcap from thinking we need Python 3
-	rm "${pkgdir}/usr/lib/python2.7/site-packages/deluge/ui/Win32IconImagePlugin.py"
 }
