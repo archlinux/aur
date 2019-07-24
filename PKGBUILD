@@ -3,11 +3,11 @@
 provides=('pathio')
 conflicts=('pathio')
 _channel=alpha
-pkgver=0.6.3_0
+pkgver=0.6.3_1
 pkgname=pathio-alpha-bin
-pkgrel=0
+pkgrel=4
 _upstream_version=0.6.3
-_upstream_channel=alpha
+_upstream_channel=beta
 pkgdesc="A modern slicer for extrusion 3D printing provided by E3D Skunkworks (binary AppImage)."
 arch=('x86_64')
 makedepends=('elinks')
@@ -15,11 +15,11 @@ url="https://pathio.xyz/"
 options=('!strip')
 license=('custom:Pathio Software License Agreement')
 _filename="pathio-$_channel-v$_upstream_version-$_upstream_channel$pkgrel.AppImage"
-source=("$_filename::https://api.pathio.xyz/api/asset/download/101"
+source=("$_filename::https://api.pathio.xyz/api/asset/download/112"
         license.html::https://docs.pathio.xyz/pathio/latest/legal/termsAndConditions.html
         pathio.sh)
-sha512sums=('307c844326b4b1a299038787ac2358ad565240b95605cd6e33b21b0efa59b065446f4d03c0c5796b0f66bd8803ffdec1a7febe0a77f9a98b86bd431d8888ed36'
-            '874c78ef8c5f558637f32196bab0fab1abe2f407e154d34b147cf6bad94a7b5f9804c70e4793f625348d05dbdbdb0ea922ca9740a45f7ee4d7eb5b6b31dbfa1b'
+sha512sums=('36ff273b6f04d821e6917fcfb18277486416c215762bca4cae9b6a139565e22b3d0434bd25f0b33539b0813676462326959499f42aec1a44bb869f1a616c9cb7'
+            '5e44b28f94ede17e3e2caee0245790d45e122a3811da73168e41c582011bd96ead46d83482ef9f163832aa2102e98672059c1c7775e763464068796cf41826cf'
             '7cee7ed780dbe2f0a7e7221836bc40da0d5e295a40e2689ffc6f9da0fc11a9edfba12dd3d8214cd5f1bed30fe9755cb4742f7c36d12573e6a9f97b39c0b69981')
 
 bluearrow() {
