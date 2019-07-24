@@ -5,10 +5,10 @@ pkgver=0.1.4
 pkgrel=1
 pkgdesc="Opensource game client for Ace Of Spades 0.75 protocol"
 arch=('i686' 'x86_64')
-url='https://github.com/xtreme8000/$pkgname/'
+url='https://github.com/xtreme8000/betterspades/'
 license=('GPL3')
 depends=('bash' 'hicolor-icon-theme' 'openal' 'glfw' 'enet' 'glew')
-makedepends=('gcc' 'glfw' 'libdeflate' 'enet' 'cmake' 'unzip')
+makedepends=('glfw' 'libdeflate' 'enet' 'cmake' 'unzip')
 source=("https://github.com/xtreme8000/$pkgname/archive/v${pkgver}-beta.tar.gz"
         "http://aos.party/bsresources.zip"
         "$pkgname.desktop"
