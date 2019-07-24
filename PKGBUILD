@@ -2,8 +2,8 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 
 pkgname=system76-driver
-pkgver=19.04.8
-pkgrel=2
+pkgver=19.04.9
+pkgrel=1
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -40,7 +40,7 @@ source=(
 	'cli.patch'
 	'wayland.patch')
 sha1sums=(
-  'a873735f1b836404ec9ee4936a5a73b3495eb0a1'
+  '393cf7fafbb559ceb2898fdec3b8d04bb1df4798'
   'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
   '45b4601ed3d9d80a01d5179628b1502caa9d7e6f'
   '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1'
