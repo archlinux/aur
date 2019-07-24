@@ -1,0 +1,31 @@
+#!/usr/bin/ash
+
+run_hook ()
+{
+	# sleep a couple of seconds so wlan0 is setup by kernel
+	sleep 3
+
+    echo "Starting wifi"
+
+	# set wlan0 to up
+	ip link set wlan0 up
+
+	# assocciate with wifi network
+	wpa_supplicant -B -D nl80211,wext -i wlan0 -c /etc/wpa_supplicant/initcpio.conf
+
+	# sleep a couple of seconds so that wpa_supplicant finishes connecting
+	sleep 5
+
+	# wlan0 should now be connected and ready to be assigned an ip by the net hook
+}
+
+run_cleanuphook ()
+{
+	# kill wpa_supplicant running in the background
+	killall wpa_supplicant
+
+	# set wlan0 link down
+	ip link set wlan0 down
+
+	# wlan0 should now be fully disconnected from the wifi network
+}

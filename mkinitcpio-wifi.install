@@ -1,0 +1,6 @@
+post_install() {
+    echo 'to use this hook add "wifi" to your mkinitcpio.conf and create a'
+    echo 'wpa_supplicant configuration in /etc/wpa_supplicant/initcpio.conf, e.g.:'
+    echo 'wpa_passphrase "ESSID" "passphrase" > /etc/wpa_supplicant/initcpio.conf'
+    echo 'and rerun mkinitcpio'
+}

@@ -1,0 +1,19 @@
+pkgbase = mkinitcpio-wifi
+	pkgdesc = mkinitcpio hook to enable wifi remote access
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/mkinitcpio-wifi/
+	install = mkinitcpio-wifi.install
+	arch = any
+	license = GPL
+	depends = mkinitcpio
+	depends = wpa_supplicant
+	depends = iproute2
+	optdepends = mkinitcpio-netconf
+	source = wifi.hook
+	source = wifi.install
+	sha256sums = d09c82d7b2756166b951de66d36094e4f03dfd5cd961cc1fa0852e119d09c828
+	sha256sums = 325fd5aecf747549559eafa243be023c00276ca3c429c3d1222101f2075b7768
+
+pkgname = mkinitcpio-wifi
+
