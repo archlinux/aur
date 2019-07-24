@@ -32,13 +32,11 @@ optdepends=('python-psycopg2: PostgreSQL support'
 
 source=("git://github.com/matrix-org/synapse.git#branch=develop"
         'synapse.service'
-        'sysusers-synapse.conf'
-        '0001-Bump-python_dependencies.patch')
+        'sysusers-synapse.conf')
 
 md5sums=('SKIP'
          '276a99050f40601089255ea168bb7620'
-         'ecd9f66fb57fe1a2e1e2df07a460a35b'
-         '7e9d9982e9f1862857b57e652c605563')
+         'ecd9f66fb57fe1a2e1e2df07a460a35b')
 
 backup=('etc/synapse/log_config.yaml')
 install=synapse.install
@@ -46,11 +44,6 @@ install=synapse.install
 provides=('matrix-synapse')
 conflicts=('matrix-synapse')
 replaces=('matrix-synapse-py3-git')
-
-prepare() {
-	cd synapse
-	patch -p1 <"$srcdir"/0001-Bump-python_dependencies.patch
-}
 
 pkgver() {
 	cd synapse
