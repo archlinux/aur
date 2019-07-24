@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=stilo-themes-git
-pkgver=r59.7f92761
+pkgver=3.32.3.r15.g4cc08af
 pkgrel=1
 pkgdesc="Minimalistic GTK themes"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
