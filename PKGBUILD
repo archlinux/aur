@@ -1,6 +1,6 @@
 pkgname=mingw-w64-paraview
 _majordotminor=5.6
-pkgver=${_majordotminor}.1
+pkgver=${_majordotminor}.0
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
@@ -10,9 +10,9 @@ license=('custom')
 depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-expat'  'mingw-w64-freetype2'  'mingw-w64-libjpeg'  'mingw-w64-libxml2' 'mingw-w64-libtheora' 'mingw-w64-libpng' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-jsoncpp' 'mingw-w64-pugixml' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-cgns' 'mingw-w64-netcdf-cxx-legacy' 'mingw-w64-double-conversion' 'mingw-w64-protobuf')
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-wine' 'mingw-w64-pegtl' 'protobuf')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${_pkgver}.tar.xz"
+source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${_pkgver}.tar.gz"
         "compile-tools.patch")
-sha256sums=('50ef01f54db6358b402e50d1460ef47c04d675bf26f250c6937737169f1e6612'
+sha256sums=('cb8c4d752ad9805c74b4a08f8ae6e83402c3f11e38b274dba171b99bb6ac2460'
             'ea4211078f1e1d7d2bb999861d81fbcb0cc6176844fead431c473035e94bd4bb')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
