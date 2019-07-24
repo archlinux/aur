@@ -1,4 +1,5 @@
-# Maintainer: Anurag <anuragsingh3@outlook.com>
+# Last Maintainer: Anurag <anuragsingh3@outlook.com>
+# Current Maintainer: Japorized <japorized@tuta.io>
 _name=n30f
 pkgname=${_name}-git
 pkgver=2.0
