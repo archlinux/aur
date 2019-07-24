@@ -1,32 +1,31 @@
 pkgname=yup-git
-_pkgname=yup
-pkgver=v0.1.7.beta.r2.gb3d3888
+basepkgname=yup
+pkgver=v0.1.8.beta.r1.gb764aa8
 pkgrel=1
-pkgdesc="Arch Linux AUR Helper with ncurses functionality and better searching and sorting"
+pkgdesc="Ncurses based AUR Helper with improved searching and sorting"
 arch=('any')
 url="https://github.com/ericm/yup"
 license=('GPL3')
-source=("${_pkgname}::git+https://github.com/ericm/yup.git")
+depends=('pacman>=5.1' 'git' 'ncurses' 'sudo')
+makedepends=('go')
+provides=("$basepkgname")
+conflicts=("$basepkgname")
+source=('git+https://github.com/ericm/yup.git')
 sha256sums=('SKIP')
 
-depends=('pacman>=5.1' 'git' 'ncurses' 'sudo')
-makedepends=('go>=1.12' 'make')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/$basepkgname"
+ 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "${_pkgname}"
-    make
+build() {
+	cd "$srcdir/$basepkgname"
+	make prefix=/usr
 }
 
 package() {
-    install -dm755 ${pkgdir}/usr/local/bin/${BINAME}
-    cd "${_pkgname}"
-    cp ${_pkgname} ${pkgdir}/usr/local/bin/${BINAME}
-
+	cd "$srcdir/$basepkgname"
+	install -Dm755 "$basepkgname" "$pkgdir/usr/bin/$basepkgname"
+	install -Dm755 completions/zsh \
+		"$pkgdir/usr/share/zsh/site-functions/completions/_$basepkgname"
 }
