@@ -2,7 +2,7 @@
 # Contributor: Lara Maia <lara@craft.net.br>
 pkgname=alsamixergui
 pkgver=0.9.0rc2
-pkgrel=4
+pkgrel=5
 pkgdesc="FLTK based mixer program for use with ALSA."
 arch=('i686' 'x86_64')
 url='https://github.com/LaraCraft304/alsamixergui'
@@ -19,6 +19,8 @@ md5sums=('af942a41b81ba27e2e4d0a1e1ab0decb'
          'ac46a80f8f5ea954e4dd70ef806d1374')
 
 prepare() {
+  [ -f ${pkgname}_${pkgver}-1-9.1.diff ] || \
+    gzip -dc ${pkgname}_${pkgver}-1-9.1.diff.gz > ${pkgname}_${pkgver}-1-9.1.diff
   cd ${pkgname}-$pkgver-1.orig
   patch -Np1 -b -z .orig -i ../${pkgname}_${pkgver}-1-9.1.diff
   chmod +x configure
