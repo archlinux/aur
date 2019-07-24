@@ -1,0 +1,18 @@
+pkgbase = bklk-git
+	pkgdesc = Ncurses Binary Clock
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/Ruunyox/bklk
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = ncurses
+	source = git+https://github.com/Ruunyox/bklk.git
+	md5sums = SKIP
+
+pkgname = bklk-git
+
