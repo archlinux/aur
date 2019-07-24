@@ -5,24 +5,24 @@
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-desktop-dark
-pkgver=3.4.2
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux, with dark theme patch"
 arch=('x86_64')
 url="https://slack.com/downloads"
 license=('custom')
-depends=('alsa-lib' 'gconf' 'gtk3' 'libcurl-compat' 'libsecret' 'libxss'
+depends=('alsa-lib' 'asar' 'gconf' 'gtk3' 'libcurl-compat' 'libsecret' 'libxss'
          'libxtst' 'nss' 'glibc>=2.28-4' 'xdg-utils')
 optdepends=('gnome-keyring')
 conflicts=('slack-desktop')
 source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgver}-amd64.deb"
-		# black.css based on "https://raw.githubusercontent.com/Nockiro/slack-black-theme/13a638fe11e58b4d5aad9dc4f38c904b2f8a600e/black.css"
-		"black.css"
-		"darkify_slack.js"
-    	"${pkgname}.patch")
+        # black.css based on "https://raw.githubusercontent.com/Nockiro/slack-black-theme/13a638fe11e58b4d5aad9dc4f38c904b2f8a600e/black.css"
+        "black.css"
+        "darkify_slack.js"
+        "${pkgname}.patch")
 noextract=("${pkgname%-dark}-${pkgver}-amd64.deb")
-sha256sums=('3833c1abdbd15b50d9f3e4f77deb4bf6d578cfebfeab2b6ee0e84f567d207261'
-			'SKIP'
+sha256sums=('911a4c05fb4f85181df13f013e82440b0d171862c9cb137dc19b6381d47bd57e'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -41,12 +41,23 @@ package() {
     rm -rf "${pkgdir}/usr/share/lintian"
     rm -rf "${pkgdir}/usr/share/doc"
 
-    # Insert the black theme directly into ssb-interop.js
+    # Slack packs resources into an ASAR, so it needs to be extracted
+    resources="${pkgdir}/usr/lib/slack/resources"
+    asar extract "${resources}/app.asar" "${resources}/app.asar.unpacked"
+
+    # Insert the black theme directly into ssb-interop
     lineno=$(sed -n '/HERE/=' darkify_slack.js)
-    file="${pkgdir}/usr/lib/slack/resources/app.asar.unpacked/src/static/ssb-interop.js"
+    file="${resources}/app.asar.unpacked/dist/ssb-interop.bundle.js"
+
+    # The last line of ssb-interop is comment, so a newline prevents the first line
+    # of our function from being commented out
+    echo "" >> $file
     head -n $((lineno - 1)) darkify_slack.js >> $file
     cat black.css >> $file
     tail -n +$((lineno + 1)) darkify_slack.js >> $file
+
+    # Repack with the theme change
+    asar pack "${resources}/app.asar.unpacked" "${resources}/app.asar" 
 
     # Move license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"

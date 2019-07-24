@@ -1760,8 +1760,6 @@ ts-thread .new_reply_indicator .blue_dot { color: #bf360c; }
 
 .c-channel_insights__channel .channel_link { color: var(--text); }
 
-.p-channel_insights__channel .channel_link { color: var(--text); }
-
 .c-channel_insights__member_count { color: #949494; }
 
 .c-channel_insights__member_count .ts_icon_user { color: #949494; }

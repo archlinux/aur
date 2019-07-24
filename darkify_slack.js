@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
-    $("<style></style>").appendTo('head').html(`
+    let s = document.createElement('style');
+    s.type = 'text/css';
+    s.innerHTML = `
 HERE
-`);
+`;
+    document.head.appendChild(s);
 });
