@@ -1,5 +1,5 @@
 _npmname=verdaccio
-_npmver=3.11.7
+_npmver=4.1.0
 
 pkgname=$_npmname
 pkgver=$_npmver
@@ -11,13 +11,14 @@ license=(MIT)
 depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha256sums=('da3a127600dbe230f7e4d5afe9eb350fc5f45f8b59de58b6967c0a080bedcde4')
+sha256sums=('37a7d5747a3396729995e23732221477744986e1e6dff843a3422db9e006c987')
 
 package() {
   cd $srcdir
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --registry https://registry.npmjs.org/ --prefix "$pkgdir/usr" $_npmname@$_npmver
   install -Dm644 "$srcdir"/package/systemd/verdaccio.service "$pkgdir"/usr/lib/systemd/system/verdaccio.service
+  install -Dm644 "$srcdir"/package/conf/default.yaml "$pkgdir"/etc/verdaccio/config.yaml
 }
