@@ -2,7 +2,7 @@
 #Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=ttf-roboto-ibx
 pkgver=2.138
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern sans-serif font family designed by Christian Robertson and introduced with Android Ice Cream Sandwich operating system. Basic, condensed and slab variants included."
 arch=('any')
 license=('Apache')
@@ -19,8 +19,8 @@ source=(https://sources.archlinux.org/other/community/ttf-roboto/ttf-roboto-hint
         45-roboto.conf
         90-tt-roboto.conf)
 sha1sums=('e9af9d939703226670a3371c69bb65006203064a'
-          '47d39aed2de585d57db015d54c596202b14babc0'
-          'be04a62bbeb98aafa2be5d54985d91bafbce055e'
+          'fece5e75c49280ce5b14fa9cb0cb25f27c66649e'
+          '50b171ec862b7c6c42d7c7d1cc3ea432ff123048'
           '8ff0fd3af47b4234cdb40746a29aa613fc8dc502'
           '05cffa42f1ac56bf5595afe2ab67e656555273fb')
 
