@@ -22,6 +22,7 @@ pkgbase = mingw-w64-paraview-git
 	depends = mingw-w64-jsoncpp
 	depends = mingw-w64-hdf5
 	depends = mingw-w64-lz4
+	depends = mingw-w64-proj
 	depends = mingw-w64-cgns
 	depends = mingw-w64-netcdf
 	depends = mingw-w64-double-conversion
