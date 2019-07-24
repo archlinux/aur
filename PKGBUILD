@@ -2,12 +2,12 @@
 
 pkgname=linkchecker-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Check websites for broken links"
 arch=('i686' 'x86_64')
 url="https://linkcheck.github.io/linkchecker"
 license=("GPL")
-depends=("python2" "python2-requests" "python2-dnspython" "python2-xdg")
+depends=("python2" "python2-requests" "python2-dnspython" "python2-xdg" "python2-future")
 provides=('linkchecker')
 conflicts=('linkchecker')
 makedepends=('git')
