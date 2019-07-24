@@ -1,0 +1,13 @@
+pkgbase = aspell-eo
+	pkgdesc = Esperanto dictionary for aspell
+	pkgver = 2.1.20000225a
+	pkgrel = 1
+	url = http://aspell.net/
+	arch = x86_64
+	license = GPL
+	depends = aspell
+	source = ftp://ftp.gnu.org/gnu/aspell/dict/eo/aspell6-eo-2.1.20000225a-1.tar.bz2
+	md5sums = 5b944cd470a1bde3b647d34e4d8749bc
+
+pkgname = aspell-eo
+
