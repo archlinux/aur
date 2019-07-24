@@ -1,0 +1,15 @@
+#!/usr/bin/ash
+
+run_hook ()
+{
+    echo "Starting haveged"
+
+	# start haveged running in the background
+    haveged
+}
+
+run_cleanuphook ()
+{
+	# kill haveged running in the background
+	killall haveged
+}

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+build ()
+{
+    add_binary "killall"
+    add_binary "haveged"
+	add_runscript
+}
+
+help ()
+{
+cat<<HELPEOF
+	Enables haveged on boot, for increased rng entropy.
+HELPEOF
+}
