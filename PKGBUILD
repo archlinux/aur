@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=libnbd
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="NBD client library in userspace"
 arch=('i686' 'x86_64')
@@ -31,4 +31,4 @@ check() {
   make check
 }
 
-sha256sums=('468bcccc69806837b31bda665b7f0ee366c775e8f02afc7cce982218d103068a')
+sha256sums=('5953204412704daff2047bf9456a7f94c074c877cdc5d33e6915a1627e4ecf45')
