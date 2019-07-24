@@ -1,8 +1,8 @@
 pkgbase = libgraph
 	pkgdesc = Lib Graphics — Turbo C's graphics.h on Linux
 	pkgver = 1.0.2
-	pkgrel = 1
-	url = savannah.nongnu.org/projects/libgraph
+	pkgrel = 2
+	url = https://savannah.nongnu.org/projects/libgraph
 	arch = x86_64
 	license = GPL2
 	depends = sdl
