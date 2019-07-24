@@ -1,0 +1,16 @@
+pkgbase = qemu-irix-git
+	pkgdesc = QEMU with IRIX userland support
+	pkgver = v2.11.0.r2167.ga2ba448e6b
+	pkgrel = 1
+	url = https://github.com/queueRAM/qemu-irix
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = python2
+	makedepends = git
+	source = qemu-irix::git://github.com/queueRAM/qemu-irix.git
+	sha256sums = SKIP
+
+pkgname = qemu-irix-git
+
