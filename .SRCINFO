@@ -1,17 +1,17 @@
 pkgbase = gogios-bin
 	pkgdesc = Checks to see if required services are still running on important machines.
-	pkgver = 1.0.1
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://angrysysadmins.tech
 	install = gogios-bin.install
 	arch = x86_64
 	license = MIT
 	optdepends = nginx
-	noextract = gogios-1.0.1.deb
+	noextract = gogios-1.1.deb
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/BKasin/Gogios/releases/download/1.0.1/gogios-1.0.1.deb
-	sha256sums = cb08c20a754ad430c4e76b77881e132d9d189312b265dfaa05352cf713826d1f
+	source = https://github.com/BKasin/Gogios/releases/download/1.1/gogios-1.1.deb
+	sha256sums = 2695f0750522d5730fcdd31193151dfde0dc22483b59772fdab07003947022fd
 
 pkgname = gogios-bin
 
