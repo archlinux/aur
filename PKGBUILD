@@ -6,7 +6,7 @@
 pkgname=librewolf
 _pkgname=LibreWolf
 pkgver=68.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -15,7 +15,7 @@ depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm git inkscape)
+             python nodejs python2-psutil cbindgen nasm git inkscape binutils)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -25,10 +25,10 @@ options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
         $pkgname.cfg.patch
-        "git+https://gitlab.com/${pkgname}-community/${pkgname}.git#commit=e458edc5")
+        "git+https://gitlab.com/${pkgname}-community/${pkgname}.git#commit=1dde2d0e")
 sha256sums=('6037f77bdab29d79ca5e3fbd1d32f6c209e09d2066189a13dc7f7491227f5568'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
-            '3a4499cdfd71f7ec590a78055ba9363d282b447c87c29a4b250ff7730c18a8ed'
+            '3e2df22fa42f95bca8594cf07ed3ec6cc850fd121de4a283bf95c23eba1e467b'
             'SKIP')
 #
 # For telemetry and crash dump analysis to work correctly, we need to tell the
@@ -129,6 +129,10 @@ mk_add_options MOZ_CRASHREPORTER=0
 mk_add_options MOZ_DATA_REPORTING=0
 mk_add_options MOZ_SERVICES_HEALTHREPORT=0
 mk_add_options MOZ_TELEMETRY_REPORTING=0
+
+# options for ci / weaker build systems
+# mk_add_options MOZ_MAKE_FLAGS="-j2"
+# ac_add_options --enable-linker=gold
 END
 
   cp -r ${srcdir}/${pkgname}/browser/common/source_files/browser ./
@@ -149,7 +153,6 @@ build() {
   ulimit -n 4096
 
   # optional: use fewer cores when building
-  # export MOZ_MAKE_FLAGS="-j2"
   xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   ./mach buildsymbols
 }

@@ -1,8 +1,8 @@
 diff --git a/settings/librewolf.cfg b/settings/librewolf.cfg
-index bbe4450..351670e 100644
+index adb39b4..4d38cec 100644
 --- a/settings/librewolf.cfg
 +++ b/settings/librewolf.cfg
-@@ -94,11 +94,11 @@ user_pref("extensions.enabledAddons", "librefox.http.watcher.tor%40intika.be:2.8
+@@ -94,11 +94,11 @@ defaultPref("extensions.enabledAddons", "librefox.http.watcher.tor%40intika.be:2
  // User Settings : Cookies settings
  // --------------------------------
  
