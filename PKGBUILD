@@ -11,7 +11,7 @@
 _srcname=ffmpeg
 pkgname=ffmpeg-qsv
 pkgver=4.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (including qsv and libfdk-aac)'
 arch=(x86_64)
 url='https://www.ffmpeg.org/'
@@ -64,6 +64,7 @@ depends=(
   xz
   zlib
   libfdk-aac
+  libmfx
   intel-media-sdk
 )
 makedepends=(
@@ -78,7 +79,7 @@ optdepends=(
   'libva-utils: Intel VA-API Media Applications and Scripts for libva'
   'libva-intel-driver: VA-API implementation for Intel G45 and HD Graphics family'
   'libva-mesa-driver: VA-API implementation for gallium'
-  'intel-compute-runtime: Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond.'
+  'intel-compute-runtime: Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond'
   'beignet: OpenCL implementation for Intel IvyBridge+ iGPUs'
   'opencl-mesa: OpenCL support for AMD/ATI Radeon mesa drivers'
   'opencl-amd: OpenCL userspace driver as provided in the amdgpu-pro driver stack'
