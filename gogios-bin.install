@@ -16,12 +16,9 @@ post_install() {
     fi
     
     chown gogios:gogios -R /var/log/gingertechnology
-    chown gogios:gogios -R /var/lib/gingertechengine
+    chown gogios:gogios -R /usr/lib/gingertechengine
     chown gogios:gogios -R /etc/gingertechengine
     chown gogios:gogios -R /opt/gingertechengine
-    
-    echo "Start gogios for the system to run."
-    echo "You will need to install and a webserver and have it point to /opt/gingertechengine"
 }
 
 post_upgrade() {
@@ -33,6 +30,4 @@ post_upgrade() {
 pre_remove() {
     systemctl stop gogios
     systemctl disable gogios
-    
-    userdel gogios
 }
