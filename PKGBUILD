@@ -1,6 +1,6 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=github-backup
-pkgver=0.23.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Backup a github user or organization."
 arch=(any)
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/g/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('be991fbc4fdace0438235f0ce6a1d11ef1e4d1a6340b87d79e5f8fd5b0e75ea55cfbd3bc4fb385b352a447c0ae7aa4651682d29cdf96a63a4490a83b0ab1d124')
+sha512sums=('755238b180f1212ee8ac35bcf6a45fdb830556a15ad39c5b0b4d204f0c7d91eabd07a6a5036fa8c322dcf18377edb59d6a3a0d299cf75d62df38be14e10f0a98')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
