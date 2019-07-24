@@ -43,4 +43,6 @@ package() {
 	install -d "$pkgdir/usr/bin"
 	ln -s "/opt/$pkgbin/AppRun" "$pkgdir/usr/bin/$pkgbin"
 	install -Dm644 "$srcdir/$pkgbin/$pkgbin.desktop" "$pkgdir/usr/share/applications/$pkgbin.desktop"
+
+	cp "$srcdir/fonts.xml" "$pkgdir/opt/$pkgbin/usr/lib/python3.6/site-packages/electroncash_gui/qt/data/fonts.xml"
 }
