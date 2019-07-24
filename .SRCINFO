@@ -1,7 +1,7 @@
 pkgbase = slack-desktop-dark
 	pkgdesc = Slack Desktop (Beta) for Linux, with dark theme patch
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://slack.com/downloads
 	arch = x86_64
 	license = custom
@@ -20,11 +20,11 @@ pkgbase = slack-desktop-dark
 	conflicts = slack-desktop
 	noextract = slack-desktop-4.0.0-amd64.deb
 	source = https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.0-amd64.deb
-	source = black.css
+	source = https://raw.githubusercontent.com/Nockiro/slack-black-theme/master/custom.css
 	source = darkify_slack.js
 	source = slack-desktop-dark.patch
 	sha256sums = 911a4c05fb4f85181df13f013e82440b0d171862c9cb137dc19b6381d47bd57e
-	sha256sums = SKIP
+	sha256sums = aa3bdc785de47ac08ba90aa4a3c083482463be86ca6d29df505586ba2cb16f6f
 	sha256sums = SKIP
 	sha256sums = SKIP
 
