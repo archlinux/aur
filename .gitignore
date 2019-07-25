@@ -22,4 +22,4 @@ tags
 *.xz
 pkg
 src
-tags
+tags.*
