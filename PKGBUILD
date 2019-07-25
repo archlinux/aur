@@ -13,22 +13,6 @@
 #######################################################################
 
 #######################################################################
-# Track a maintenance branch or, by default, track master.
-#
-# Pick a branch from the output of "git branch" ran on your local copy
-# of the emacs repository.
-#
-# E.g.:
-#
-# BRANCH=master
-# BRANCH=emacs-26
-#
-# Take note that I don't expect you to track anything different to master
-# or emacs-26 for obvious reasons. (See below).
-#
-BRANCH=master
-
-#######################################################################
 # Assign "YES" to the variable you want enabled; empty or other value
 # for NO.
 #
@@ -72,7 +56,7 @@ if [[ $BRANCH = "emacs-26" ]]; then
 else
   pkgname=emacs-git
 fi
-pkgver=27.0.50.135188
+pkgver=27.0.50.137694
 pkgrel=1
 pkgdesc="GNU Emacs. Development."
 arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
@@ -152,7 +136,7 @@ fi
 provides=('emacs' 'emacs-seq')
 conflicts=('emacs' 'emacs-seq')
 replaces=('emacs26-git' 'emacs-seq')
-source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#branch=$BRANCH")
+source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git")
 md5sums=('SKIP')
 # If Github access is blocked for reasons, use Savannah's servers instead.
 # Edit the config file of your local repo copy as well.
