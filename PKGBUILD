@@ -11,12 +11,12 @@ license=('GPL2' 'custom:OpenIB.org BSD (MIT variant)')
 
 depends=('libnl')
 makedepends=('git' 'cmake' 'gcc' 'libnl' 'libsystemd' 'systemd' 'pkg-config' 'ninja' 'bash' 'pandoc' 'python')
-_provides=("${pkgname[0]%-git}" 'rdma' 'ibacm' 'libiwpm' 'libibcm' 'libibumad' 'libibverbs'
+_provides=('rdma' 'ibacm' 'libiwpm' 'libibcm' 'libibumad' 'libibverbs'
            'librdmacm' 'libcxgb3' 'libcxgb4' 'libmlx4' 'libmlx5' 'libmthca' 'libnes' 'libocrdma'
            'srptools')
-provides=("${_provides[@]}")
-conflicts=("${_provides[@]}")
-replaces=("${_provides[@]:1}")
+provides=("${pkgname[0]%-git}" "${_provides[@]}")
+conflicts=("${pkgname[0]%-git}" "${_provides[@]}")
+replaces=("${_provides[@]}")
 
 source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
