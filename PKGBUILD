@@ -9,8 +9,8 @@ _pkgbase=gdal
 provides=('gdal')
 conflicts=('gdal')
 pkgname=('gdal-hdf4' 'python-gdal-hdf4' 'python2-gdal-hdf4')
-pkgver=2.3.2
-pkgrel=8.0
+pkgver=3.0.0
+pkgrel=2.0
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
 arch=('x86_64')
 url="http://www.gdal.org/"
@@ -24,46 +24,30 @@ optdepends=('postgresql: postgresql database support'
 options=('!emptydirs')
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
-        gdal-poppler-0.69.0.patch::https://github.com/OSGeo/gdal/commit/69e0701253.patch
         gdal-perl-vendor.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/gdal-perl-vendor.patch?h=packages/gdal)
-sha256sums=('3f6d78fe8807d1d6afb7bed27394f19467840a82bc36d65e66316fa0aa9d32a4'
-            'cc63ee56e2c62c994a65723d4124171ce9b4e3499c0958be710c04bf82fd4cf5'
-            'a41a0129a878a0d09b8ecf24b8a0b473856d929d52f535afdf4dca95ddd347d3')
+sha256sums=('ad316fa052d94d9606e90b20a514b92b2dd64e3142dfdbd8f10981a5fcd5c43e'
+            '2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed')
 
 prepare() {
   cd "${srcdir}"/$_pkgbase-$pkgver
-
-# Fix build with poppler >= 0.69.0
-  patch -Np2 -i ../gdal-poppler-0.69.0.patch
-# Fix build with poppler 0.72
-  find frmts/pdf -type f | xargs sed -e 's|GBool|bool|g' -e 's|gFalse|false|g' -e 's|getCString|c_str|g' -i
-# Fix build with poppler 0.73
-  sed -e 's|#include <goo/gtypes.h>|typedef unsigned char Guchar;|' -i frmts/pdf/pdfsdk_headers.h
 
 # Fix mandir
   sed -i "s|^mandir=.*|mandir='\${prefix}/share/man'|" configure
 
 # Fix Perl bindings installation path
-  patch -Np1 -i ../gdal-perl-vendor.patch
+  patch -Np0 -i "${srcdir}"/gdal-perl-vendor.patch
 }
 
 build() {
   cd "${srcdir}"/$_pkgbase-$pkgver
-  export CFLAGS="$CFLAGS -fno-strict-aliasing"
-
-# Ignore const-related errors (remove once fixed upstream)
-  CXXFLAGS+=' -fpermissive'
-
-# bug #23654
-  export LDFLAGS="$LDFLAGS -Wl,--as-needed"
 
   ./configure --prefix=/usr --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
               --with-mysql --with-curl --with-hdf5 --with-hdf4=/opt/hdf4 --with-perl --with-geos \
               --with-png --with-poppler --with-spatialite --with-openjpeg
 
 # workaround for bug #13646
-  sed -i 's/PY_HAVE_SETUPTOOLS=1/PY_HAVE_SETUPTOOLS=/g' ./GDALmake.opt
-  sed -i 's/EXE_DEP_LIBS/KILL_EXE_DEP_LIBS/' apps/GNUmakefile
+#   sed -i 's/PY_HAVE_SETUPTOOLS=1/PY_HAVE_SETUPTOOLS=/g' ./GDALmake.opt
+#   sed -i 's/EXE_DEP_LIBS/KILL_EXE_DEP_LIBS/' apps/GNUmakefile
 
   make
   make man
@@ -81,9 +65,6 @@ package_gdal-hdf4 () {
 
 # install license
   install -Dm644 LICENSE.TXT "${pkgdir}"/usr/share/licenses/$_pkgbase/LICENSE
-
-#FS15477 clean up junks - still present in 2.2.1
-#   rm -f "${pkgdir}"/usr/share/man/man1/_build_gdal_src_gdal-${pkgver}_apps_.1
 
 # Remove RPATH
   eval local $(perl -V:vendorarch)
