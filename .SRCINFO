@@ -1,0 +1,15 @@
+pkgbase = nbis
+	pkgdesc = NIST Biometric Image Software
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://www.nist.gov/services-resources/software/nist-biometric-image-software-nbis
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = libx11
+	options = !makeflags
+	source = https://nigos.nist.gov/nist/nbis/nbis_v5_0_0.zip
+	sha256sums = 0adf8ab0f6b0e4208de50ca00ba21d3d77112ecd66288757ddfed21f6bee92c3
+
+pkgname = nbis
+
