@@ -1,7 +1,7 @@
 # Maintainer: Minzord
 
 pkgname=remakepkg
-pkgver=0.9.0
+pkgver=0.8.1
 pkgrel=1
 arch=(any)
 
