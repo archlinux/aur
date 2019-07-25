@@ -2,7 +2,7 @@
 # Maintainer: Eric Schulte <eschulte@grammatech.com>
 _srcname=gtirb
 pkgname=gtirb-git
-pkgver=v0.1.0.r118.g94f7146
+pkgver=v0.1.1.r111.gac89976
 pkgrel=1
 pkgdesc="GrammaTech Intermediate Representation for Binaries"
 arch=('x86_64')
@@ -34,7 +34,8 @@ build() {
     # CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
     # CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
     # LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
-    CFLAGS="" CXXFLAGS="" LDFLAGS="" cmake . -Bbuild $FLAGS
+    # CFLAGS="" CXXFLAGS="" LDFLAGS="" cmake . -Bbuild $FLAGS
+    cmake . -Bbuild $FLAGS
     make -Cbuild
     # Build Docs
     cmake doc/doxy/ -Bbuild-doc
