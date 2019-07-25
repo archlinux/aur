@@ -1,12 +1,12 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('eist-returns')
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Arcade-puzzle game"
 arch=('i686' 'x86_64')
 url="https://github.com/nwg-piotr/EistReturns"
 license=('GPL3')
-depends=('java-runtime=8' 'java-openjfx' 'ffmpeg2.8' 'gstreamer' 'libxtst' 'qt5-base' 'webkit2gtk')
+depends=('java-runtime=8' 'java8-openjfx' 'ffmpeg2.8' 'gstreamer' 'libxtst' 'qt5-base' 'webkit2gtk')
 source=("https://github.com/nwg-piotr/EistReturns/raw/master/arch/eist-returns.jar"
 "https://github.com/nwg-piotr/EistReturns/raw/master/arch/eist-returns.png"
 "https://github.com/nwg-piotr/EistReturns/raw/master/arch/eist-editor.png"

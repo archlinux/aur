@@ -1,13 +1,13 @@
 pkgbase = eist-returns
 	pkgdesc = Arcade-puzzle game
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/EistReturns
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = java-runtime=8
-	depends = java-openjfx
+	depends = java8-openjfx
 	depends = ffmpeg2.8
 	depends = gstreamer
 	depends = libxtst
