@@ -2,17 +2,17 @@
 
 pkgbase=looking-glass
 pkgname=("${pkgbase}" "${pkgbase}-module-dkms" "${pkgbase}-host")
-epoch=1
-pkgver=B1_rc6
+epoch=2
+pkgver=B1
 _pkgver=${pkgver//_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.hostfission.com"
 arch=('x86_64')
 license=('GPL2')
 makedepends=('cmake' 'sdl2_ttf' 'glu' 'fontconfig' 'spice-protocol')
 source=("https://github.com/gnif/LookingGlass/archive/${_pkgver}.tar.gz")
-sha512sums=('592c5d813650a19dd8a3edfa7659348ec1d24627c7a66b6b13490a777e0f5b8d98bf7206323f3b9ebf5a1cd3904f068d67c5ad6277c43952eac13e099b7b8348')
+sha512sums=('add82702d7e7f601a07db5b9e0de7a7472d3051a71c4cb484e0c10333f25e0ca54d19513002b93803ae1677fb8ea05368253cd929853dfcda16207a53ed2f19f')
 
 build() {
 	cd "${srcdir}/LookingGlass-${_pkgver}"
