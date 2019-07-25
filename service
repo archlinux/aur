@@ -3,6 +3,7 @@ Description=Messaging and Integration Patterns provider
 After=network.target
 
 [Service]
+#PrivateTmp=true
 Type=forking
 #ExecStart=/opt/activemq/bin/linux-x86-64/activemq start
 ExecStart=/usr/bin/java -jar /opt/activemq/bin/activemq.jar start
