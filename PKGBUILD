@@ -75,11 +75,6 @@ if [[ $CLANG = "YES" ]]; then
   makedepends+=( 'clang' 'lld') ;
 fi
 
-if [[ $LTO = "YES" ]]; then
-  export CFLAGS+=" -flto"
-  export tXXFLAGS+=" -flto"
-fi
-
 if [[ $NOTKIT = "YES" ]]; then
   depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' );
 elif [[ $LUCID = "YES" ]]; then
