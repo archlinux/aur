@@ -5,9 +5,9 @@
 
 _pkgname=Minecraft-Overviewer
 pkgname=(${_pkgname,,} ${_pkgname,,}-docs)
-pkgver=0.14.0
-_gitcommit=4b847808eb8befaf67a5191f0d4a60de5fda888b
-pkgrel=2
+pkgver=0.14.52
+_gitcommit=1b85e478f55932aad8312fb49daa818e9b258b05
+pkgrel=1
 pkgdesc="Render large resolution images of a Minecraft map with a web UI"
 arch=('x86_64')
 url="https://github.com/overviewer/${_pkgname}"
@@ -15,13 +15,7 @@ license=('GPL3')
 depends=('python' 'python-pillow' 'python-numpy')
 makedepends=('python-sphinx')
 source=("$url/archive/$_gitcommit.tar.gz")
-sha512sums=('3303308010e1a9dc6205ce3e2db077af36c365fcc93ea68a07bd3a7085c6dde0b79642adc085f9a03d6e3a2080ef1117b971195ba4381b74a8166943b08bd660')
-
-prepare() {
-	cd "${_pkgname}-$_gitcommit"
-
-	sed -i -e 's/python2/python/' overviewer_core/progressbar.py
-}
+sha512sums=('b3876f5e64ce7ab27d649e428fb726479d70a64d8ef14d76303987dfe23d1ca2ca4db49ffe74cdd13e31f57c095a80fc38ff625633ff9075f28b5502f01dcde4')
 
 build() {
 	cd "${_pkgname}-$_gitcommit"
