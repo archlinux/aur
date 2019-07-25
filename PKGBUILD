@@ -4,7 +4,7 @@
 pkgname=cross-mipsel-linux-gnu-gcc
 _pkgname=gcc
 _target="mipsel-linux-gnu"
-pkgver=8.3.0
+pkgver=9.1.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the MIPS architecture"
 url="https://www.gnu.org/software/gcc/"
@@ -14,7 +14,7 @@ depends=('libmpc' 'xz' "cross-${_target}-binutils")
 makedepends=('gmp' 'mpfr')
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
 source=("ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-md5sums=('65b210b4bfe7e060051f799e0f994896')
+md5sums=('6069ae3737cf02bf2cb44a391ef0e937')
 _sysroot="/usr/lib/cross-${_target}"
 
 prepare() {
