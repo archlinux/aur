@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=pyright
-pkgver=1.0.48
+pkgver=1.0.49
 pkgrel=1
 pkgdesc="Type checker for the Python language"
 arch=('any')
@@ -13,7 +13,7 @@ source=(
   "${url}/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-  '18be7f23b165ee1c88e3a4eee0992e350b7a6606d70136d6700c47317d15942b'
+  '6edb77207bf3e55282aea26647abd41843eade8d7c87501a2b10b2cfd6b09e14'
 )
 
 prepare() {
