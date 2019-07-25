@@ -2,8 +2,8 @@
 
 _pkg=tflint
 pkgname=${_pkg}-bin
-pkgver=0.9.0
-pkgrel=1
+pkgver=0.9.2
+pkgrel=2
 pkgdesc="A linter for Terraform code"
 arch=('x86_64')
 url="https://github.com/wata727/${_pkg}"
