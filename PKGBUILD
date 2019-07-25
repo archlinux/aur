@@ -2,8 +2,8 @@
 
 _pkgname=qtodotxt2
 pkgname=${_pkgname}-git
-_commit=477f148 # 7 digits
-pkgver=20190330
+_commit=df89871 # 7 digits
+pkgver=20190724
 pkgrel=1
 pkgdesc="A cross-platform UI client for todo.txt files"
 arch=('i686' 'x86_64')
