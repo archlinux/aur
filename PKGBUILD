@@ -1,10 +1,11 @@
 pkgname=xenia-git
-pkgver=r4251.6b8a34c9
+pkgver=r4814.1407e834.linux_fixes
 pkgrel=1
 pkgdesc="Xenia is an experimental emulator for the Xbox 360."
 arch=('x86_64')
 url="http://xenia.jp"
 license=('BSD')
+options=('debug' '!strip')
 depends=('gtk3' 'lz4' 'glew' 'libx11' 'libc++')
 # TODO use installed premake5 instead of building it
 # premake: powerpc patch added
@@ -13,6 +14,7 @@ provides=('xenia')
 conflicts=('xenia')
 # TODO: Use system installed deps for non-forked libs
 source=("git+https://github.com/benvanik/xenia.git"
+        "xenia-linux-fixes::git+https://github.com/bwrsandman/xenia.git#branch=linux"
         "git+https://github.com/benvanik/binutils-ppc-cygwin"
         "git+https://github.com/xenia-project/capstone.git"
         "git+https://github.com/catchorg/Catch2"  # catch-git
@@ -39,15 +41,20 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s.linux_fixes" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "${srcdir}/${pkgname%-git}"
+
+  msg2 "Merging Linux Fixes"
+  git pull "../${pkgname%-git}-linux-fixes"
+
   git submodule init
   git config submodule.third_party/binutils-ppc-cygwin.url $srcdir/binutils-ppc-cygwin
   git config submodule.third_party/capstone.url $srcdir/capstone
@@ -74,8 +81,11 @@ prepare() {
   # python xenia-build setup
 }
 
-# FIXME: Currently xenia does not compile on linux with the
-# default /etc/makepkg.conf LDFLAGS, particularily --as-needed
+# FIXME: Currently xenia does not compile on linux with the default
+# /etc/makepkg.conf debug and linking particularily
+# --fvar-tracking-assignments and --as-needed
+DEBUG_CFLAGS="-g"
+DEBUG_CXXFLAGS="-g"
 LDFLAGS="-Wl,-O1,--sort-common,-z,relro,-z,now"
 
 build() {
