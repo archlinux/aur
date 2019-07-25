@@ -3,7 +3,7 @@
 _pkgname=AppCSXCAD
 pkgname=appcsxcad
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal GUI Application using the QCSXCAD library."
 arch=("x86_64")
 url="https://github.com/thliebig/$_pkgname"
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}/build"
-  cmake ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
