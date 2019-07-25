@@ -19,7 +19,9 @@ prepare() {
 
 package() {
   cd 'SF-Font-Pro/San Francisco Pro/'
-  install -d -m644 "*.otf" "${pkgdir}/usr/share/fonts/apple/"
-  install -d -m644 "../San Fancisco Pro License.rtf" "${pkgdir}/usr/share/licenses/apple/"
+  install -d "${pkgdir}"/usr/share/fonts/apple/
+  install -m644 *.otf "${pkgdir}"/usr/share/fonts/apple/
+  install -d "${pkgdir}"/usr/share/licenses/apple
+  install -m644 '../San Francisco Pro Font License.rtf' "${pkgdir}"/usr/share/licenses/apple/
 }
 
