@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-proj
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=1
 arch=('any')
 pkgdesc="Cartographic Projections library. (mingw-w64)"
@@ -11,7 +11,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('MIT')
 url="http://trac.osgeo.org/proj/"
 source=("http://download.osgeo.org/proj/proj-${pkgver}.tar.gz")
-sha256sums=('676165c54319d2f03da4349cbd7344eb430b225fe867a90191d848dc64788008')
+sha256sums=('5cf0a2360a28b5d724c53edbb87f3f3b14fd96001265411ac4e56f369e2d503f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
