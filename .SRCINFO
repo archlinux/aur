@@ -1,0 +1,18 @@
+pkgbase = qcsxcad
+	pkgdesc = Qt-GUI for CSXCAD
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/thliebig/QCSXCAD
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	depends = csxcad-git
+	depends = openems
+	depends = tinyxml
+	depends = vtk
+	depends = qt5-base
+	source = https://github.com/thliebig/QCSXCAD/archive/v0.6.2.tar.gz
+	md5sums = 6c39f347e2f2464a42ec567fd79389d9
+
+pkgname = qcsxcad
+
