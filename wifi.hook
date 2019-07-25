@@ -1,31 +1,78 @@
 #!/usr/bin/ash
 
+check_net_device () {
+    ip link show $1 > /dev/null 2>&1
+}
+
+poll_net_device () {
+    local device=$1 seconds=${2//[!0-9]}
+
+    [ "${seconds:-x}" = x ] && seconds=10
+
+    check_net_device $device && return 0
+
+    msg "Waiting $seconds seconds for network device $device ..." >&2
+    while ! check_net_device $device && [ "$seconds" -gt 0 ]; do
+        sleep 1
+        seconds=$(( seconds - 1 ))
+    done
+
+    check_net_device $device
+}
+
+check_wpa_supplicant_done () {
+    grep "CTRL-EVENT-CONNECTED" $1 > /dev/null
+}
+
+poll_wpa_completion () {
+    local logfile=$1 seconds=${2//[!0-9]}
+
+    [ "${seconds:-x}" = x ] && seconds=10
+
+    check_wpa_supplicant_done $logfile && return 0
+
+    msg "Waiting $seconds seconds for wpa_supplicant ..." >&2
+    while ! check_wpa_supplicant_done $logfile && [ "$seconds" -gt 0 ]; do
+        sleep 1
+        seconds=$(( seconds - 1 ))
+    done
+
+    check_wpa_supplicant_done $logfile
+}
+
 run_hook ()
 {
-    # sleep a couple of seconds so wlan0 is setup by kernel
-    sleep 3
+    local device="wlan0"
+    local logfile="/tmp-wpa-supplicant-log"
 
-    echo "Starting wifi"
+    # wait for wlan-device
+    poll_net_device $device 15
 
-    # set wlan0 to up
-    ip link set wlan0 up
+    msg "Starting wifi"
+
+    # set wlan-device to up
+    ip link set $device up || return 1
 
     # assocciate with wifi network
-    wpa_supplicant -B -D nl80211,wext -i wlan0 -c /etc/wpa_supplicant/initcpio.conf
+    wpa_supplicant -B -D nl80211,wext -i $device -c /etc/wpa_supplicant/initcpio.conf -f $logfile
 
-    # sleep a couple of seconds so that wpa_supplicant finishes connecting
-    sleep 5
+    # wait for wpa_supplicant
+    poll_wpa_completion $logfile 15
 
-    # wlan0 should now be connected and ready to be assigned an ip by the net hook
+    # wlan-device should now be connected and ready to be assigned an ip by the net hook
 }
 
 run_cleanuphook ()
 {
+    local device="wlan0"
+    local logfile="/tmp-wpa-supplicant-log"
+
     # kill wpa_supplicant running in the background
     killall wpa_supplicant
 
-    # set wlan0 link down
-    ip link set wlan0 down
+    # set wlan-device link down
+    ip link set $device down
 
-    # wlan0 should now be fully disconnected from the wifi network
+    # wlan-device should now be fully disconnected from the wifi network
+    rm $logfile
 }
