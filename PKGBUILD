@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-totp
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Attest the trustworthiness of a device against a human using time-based one-time passwords'
 arch=('x86_64')
@@ -12,11 +12,12 @@ optdepends=('mkinitcpio: hook to display the TOTP during boot')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.asc}
         'initcpio_install_tpm2-totp'
         'initcpio_hooks_tpm2-totp')
-sha512sums=('33a4af16a292ddd674a399bf12ce0b355d95de7014e8be11816a1d88edfd36ae222a8b7508f3aa1be3b46c7e04bf2712ee4839cf9f4f83fc308cb4f639ec5b9f'
+sha512sums=('b0b881dffe83447f6900b515147072fdd162860e0f8dd1718627e9dffd1d3130240805feba274704f3aa9b4f3c758717ef301f1d35f36d3cb1c6dd7d69142325'
             'SKIP'
             '33738cb9d30d6ad338b6cf6bca538ba4f9b49b9ae799626efc7462bb2a31e386cd04d8298e8c2e3743f4c212866e864332869e4393871f22360edc2567fad163'
             'ebce4c738012dbcb82513b1f8148ee17deb088f80fa4f365d1b5f34b9c57f28b1995b4e6d04e003fd2ef6ed3393fb0c4496d182b02a7f5b2609b2ed4a160dac1')
-validpgpkeys=('D6B4D8BAC7E0CC97DCD4AC7272E88B53F7A95D84') # Andreas Fuchs
+validpgpkeys=('D6B4D8BAC7E0CC97DCD4AC7272E88B53F7A95D84'  # Andreas Fuchs
+              '3BEA2AA55F1927C8B2B3BA401E584DB716EFAC99') # Jonas Witschel
 BUILDENV+=('!check') # see warning below before enabling tests
 
 build() {
