@@ -1,6 +1,6 @@
 pkgbase = foliate
 	pkgdesc = A simple and modern GTK eBook reader
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://johnfactotum.github.io/foliate/
 	arch = i686
@@ -12,7 +12,6 @@ pkgbase = foliate
 	makedepends = meson>=0.40
 	makedepends = ninja
 	makedepends = gettext
-	makedepends = git
 	depends = gjs>=1.52.0
 	depends = webkit2gtk
 	optdepends = hyphen: Auto-hyphenation support
@@ -22,8 +21,8 @@ pkgbase = foliate
 	optdepends = espeak-ng: Text-to-speech support; also voice package needed
 	provides = foliate
 	conflicts = foliate-git
-	source = foliate::git+https://github.com/johnfactotum/foliate.git
-	sha256sums = SKIP
+	source = https://github.com/johnfactotum/foliate/archive/1.5.3.tar.gz
+	sha256sums = 95f45c0511493a3c732f9a199ddc2b5851a220d74d93e6d14976f29f243ee2d7
 
 pkgname = foliate
 
