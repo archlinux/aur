@@ -1,6 +1,6 @@
 pkgbase = zig-git
 	pkgdesc = a programming language prioritizing robustness, optimality, and clarity
-	pkgver = 0.4.0.r184.g40fe6afd
+	pkgver = 0.4.0.r935.g9e11f67f0
 	pkgrel = 1
 	url = http://ziglang.org
 	arch = i686
@@ -13,9 +13,7 @@ pkgbase = zig-git
 	provides = zig
 	conflicts = zig
 	source = git://github.com/zig-lang/zig.git
-	source = force_dynamic_llvm.patch
 	md5sums = SKIP
-	md5sums = 9a935ede50ab8f1a789349fc3b760c1c
 
 pkgname = zig-git
 

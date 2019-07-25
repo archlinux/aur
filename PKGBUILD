@@ -1,7 +1,7 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.4.0.r184.g40fe6afd
+pkgver=0.4.0.r935.g9e11f67f0
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64')
@@ -11,13 +11,8 @@ depends=('clang' 'llvm')
 makedepends=('cmake' 'git')
 provides=(zig)
 conflicts=(zig)
-source=("git://github.com/zig-lang/zig.git" 'force_dynamic_llvm.patch')
-md5sums=('SKIP' '9a935ede50ab8f1a789349fc3b760c1c')
-
-prepare() {
-    cd "$srcdir/$provides"
-    patch -Np1 -i "$srcdir/force_dynamic_llvm.patch"
-}
+source=("git://github.com/zig-lang/zig.git")
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$provides"
@@ -29,7 +24,7 @@ build() {
     mkdir -p build
     cd build
     cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    make
+    make DESTDIR=.
 }
 
 check() {
