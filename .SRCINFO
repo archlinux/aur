@@ -1,6 +1,6 @@
 pkgbase = wpe-cli-bin
 	pkgdesc = An aur package for the wpe-cli
-	pkgver = 0.13.7
+	pkgver = 0.13.8
 	pkgrel = 1
 	url = https://wpengine.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = wpe-cli-bin
 	provides = wpe
 	conflicts = wpe
 	options = !strip
-	source = https://s3-us-east-2.amazonaws.com/wpeclibinaries/wpe-cli/v0.13.7/wpe-cli_0.13.7_linux_amd64.tar.gz
-	md5sums = ff028d07ef536d3e65a383ae5eef5832
+	source = https://s3-us-east-2.amazonaws.com/wpeclibinaries/wpe-cli/v0.13.8/wpe-cli_0.13.8_linux_amd64.tar.gz
+	md5sums = 3de7f5ee59f5d1f7202cf63070a00b6d
 
 pkgname = wpe-cli-bin
 
