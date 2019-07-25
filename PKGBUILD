@@ -36,7 +36,7 @@ pkgver() {
 prepare() {
 
   # Add -lcblas to cmake flags
-  sed -i -e 's/fPIC/fPIC -lcblas/g' ${srcdir}/${_name}/SuperProject/CMakeLists.txt
+  sed -i -e 's/X_FLAGS} -fPIC/X_FLAGS} -lcblas -fPIC/g' ${srcdir}/${_name}/SuperProject/CMakeLists.txt
 
 }
 
@@ -52,7 +52,9 @@ build() {
 
   cmake .. \
         -DCMAKE_BUILD_TYPE=${_buildtype} \
-        -DCMAKE_PREFIX_PATH='/usr'
+        -DCMAKE_PREFIX_PATH='/usr' \
+        -DVSP_USE_SYSTEM_FLTK=true \
+        -DVSP_USE_SYSTEM_GLEW=true
 
   msg "Building the project"
   make || return 0
