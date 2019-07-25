@@ -1,15 +1,15 @@
 pkgbase = aptly
 	pkgdesc = A Swiss Army knife for Debian repository management.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.aptly.info
 	arch = i686
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source_i686 = https://bintray.com/artifact/download/smira/aptly/aptly_1.4.0_linux_386.tar.gz
+	source_i686 = https://github.com/aptly-dev/aptly/releases/download/v1.4.0/aptly_1.4.0_linux_386.tar.gz
 	sha256sums_i686 = 53aee380cbfc96dc2e7c30b3df2ae11524d7227af1f613ad0964a24a88e15b10
-	source_x86_64 = https://bintray.com/artifact/download/smira/aptly/aptly_1.4.0_linux_amd64.tar.gz
+	source_x86_64 = https://github.com/aptly-dev/aptly/releases/download/v1.4.0/aptly_1.4.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = b3eb077d0e53b2361ab8db37b9bca1bf22018663274fddac0f3e4da6c48f1efb
 
 pkgname = aptly
