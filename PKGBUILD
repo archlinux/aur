@@ -1,7 +1,7 @@
 # Maintainer: tequa
 pkgname=mkinitcpio-wifi
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="mkinitcpio hook to enable wifi remote access"
 arch=(any)
 license=('GPL')
@@ -11,8 +11,8 @@ optdepends=(mkinitcpio-netconf)
 install="mkinitcpio-wifi.install"
 source=('wifi.hook'
         'wifi.install')
-sha256sums=('d09c82d7b2756166b951de66d36094e4f03dfd5cd961cc1fa0852e119d09c828'
-            '325fd5aecf747549559eafa243be023c00276ca3c429c3d1222101f2075b7768')
+sha256sums=('e70a34a0a2ecf0d0d46308105b4be5dd8f245d32bac6e4a429fed35f433037bb'
+            '64dd1704fec9eee158f39ab6e6fe24b08cd76d9cc5c657fe0c08ed1f7962a599')
 
 package() {
   install -Dm 644 wifi.hook \

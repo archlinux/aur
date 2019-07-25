@@ -16,14 +16,14 @@ get_mods_depending_on_recursive () {
     queue=(${mods[@]})
 
     while (( ${#queue[*]} )) ; do
-        i_mod=${queue[${#queue[@]}-1]}
-        unset queue[${#queue[@]}-1]
+        i_mod=${queue[0]}
+        queue=(${queue[@]:1})
 
         for i_testmod in $(get_mods_depending_on ${i_mod}) ; do
             in_array ${i_testmod} ${mods[@]}
             if [ $? != 0 ] ; then
-                mods[${#mods[*]}]=${i_testmod}
-                queue[${#queue[*]}]=${i_testmod}
+                mods+=(${i_testmod})
+                queue+=(${i_testmod})
             fi
         done
     done
@@ -52,7 +52,7 @@ build ()
     add_binary "killall"
     add_binary "wpa_supplicant"
     add_binary "ip"
-	add_runscript
+    add_runscript
 
     add_file "/etc/wpa_supplicant/initcpio.conf" "/etc/wpa_supplicant/initcpio.conf"
 }
@@ -60,6 +60,6 @@ build ()
 help ()
 {
 cat<<HELPEOF
-	Enables wifi on boot, for ssh unlocking of disk.
+    Enables wifi on boot, for ssh unlocking of disk.
 HELPEOF
 }
