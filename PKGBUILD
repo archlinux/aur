@@ -2,8 +2,8 @@
 
 pkgname=protondb-to-steam-library-git
 _pkgname=ProtonDB-to-Steam-Library
-pkgver=r35.64524da
-pkgrel=2
+pkgver=r44.2a51033
+pkgrel=1
 pkgdesc="Pull ratings from ProtonDB and import them into your Steam library as tags."
 arch=('any')
 url="https://github.com/CorruptComputer/ProtonDB-to-Steam-Library"
@@ -23,6 +23,6 @@ pkgver() {
 package() {
   cd "$srcdir/$_pkgname"
   
-  install -Dm755 $_pkgname.py "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 ProtonDB-Tags.py "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
