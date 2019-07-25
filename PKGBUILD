@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=cani
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc='A TUI wrapper around caniuse data using FZF and curses'
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=(MIT)
 depends=(ruby fzf ruby-colorize ruby-curses ruby-json)
 source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
-sha256sums=('9f946634a9ac6eea25a9a224efe3aa97e39ded438cc64fb8762d57eecf0dea4d')
+sha256sums=('60da403f97cd2c4efc4896794c04a7b1a3dfb3d41534ae638ed3074f3b421134')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
