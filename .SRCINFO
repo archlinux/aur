@@ -1,7 +1,7 @@
 pkgbase = p7screen
 	pkgdesc = Casio Communication Protocol 7.00 implementation
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://p7.planet-casio.com/
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = p7screen
 	makedepends = asciidoc>=8.6.9
 	depends = libusb>=1.0
 	depends = libp7>=3.0
+	depends = sdl>=1.2.15
 	provides = p7screen
 	source = https://p7.planet-casio.com/pub/p7utils-3.0.tar.gz
-	md5sums = ebd3b91c6d51d9932bab00cb9ef45914
+	md5sums = 4af3e7a6e1776483f670d56fbdf9f9cb
 
 pkgname = p7screen
 
