@@ -2,7 +2,7 @@
 
 pkgname=torrentflix
 pkgver=9.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Nodejs cli app to search torrent sites and stream using peerflix"
 arch=('any')
 url="https://www.npmjs.com/package/torrentflix"
@@ -18,6 +18,9 @@ package() {
 
   install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
   npm install --cache ../cache --user root -g --production --prefix "${pkgdir}/usr" "../v${pkgver}.tar.gz"
+
+  # npm makes some directories world writable
+  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 }
 
 # vim:set ts=2 sw=2 et:
