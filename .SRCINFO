@@ -1,6 +1,6 @@
 pkgbase = qtodotxt2-git
 	pkgdesc = A cross-platform UI client for todo.txt files
-	pkgver = 20190723
+	pkgver = 20190724
 	pkgrel = 1
 	url = https://github.com/QTodoTxt/QTodoTxt2
 	arch = i686
