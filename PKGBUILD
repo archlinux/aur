@@ -77,6 +77,8 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         pgo.patch
         # use sytem av1
         7002_system_av1_support.patch
+        # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+        0001-Use-remoting-name-for-GDK-application-names.patch
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -122,6 +124,8 @@ prepare() {
   patch -Np1 -i "$srcdir"/2001_system_graphite2_support.patch
   patch -Np1 -i "$srcdir"/7002_system_av1_support.patch
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+  patch -Np1 -i "$srcdir"/0001-Use-remoting-name-for-GDK-application-names.patch
   
   if [[ $_pgo ]] ; then
     # https://bugzilla.mozilla.org/show_bug.cgi?id=1516803
@@ -218,7 +222,7 @@ END
 }
 md5sums=('SKIP'
          'f758e064e1463b90878790124f398197'
-         '14e0f6237a79b85e60256f4808163160'
+         'b5f16f03db295778f0123a4e1dd93772'
          '5cee310a9040ccc5abcf29742b84aeb8'
          '05bb69d25fb3572c618e3adf1ee7b670'
          'd7ce23a18da21c05cd756766e177834f'
@@ -233,4 +237,5 @@ md5sums=('SKIP'
          'becf6bf9ceb6008401832c855ccadff9'
          '79d27c8896913c7d87b148240995ab69'
          'f867ae41a722630cc5567e2dcc51676d'
-         'df439e02304d302009c320a540f01dbe')
+         'df439e02304d302009c320a540f01dbe'
+         '0ffabb81dd8a5fe98bb8afe47d6541d3')
