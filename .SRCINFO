@@ -1,0 +1,13 @@
+pkgbase = unix2dos-asm
+	pkgdesc = Yet another implementation of famous unix2dos tool.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/oktopod11/unix2dos
+	arch = x86_64
+	license = GPL3
+	provides = unix2dos
+	source = https://gitlab.com/oktopod11/unix2dos/raw/master/archive/unix2dos-0.1.tar.gz
+	sha256sums = 91a67c99aceaf6b4ed75495c8cab3d009d362fb69e349ebf48c1520ee828cc5e
+
+pkgname = unix2dos-asm
+
