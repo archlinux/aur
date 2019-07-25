@@ -3,15 +3,15 @@
 # Contributor: Steven Allen <steven@stebalien.com>
 
 pkgname=nftables-git
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc='Netfilter tables userspace tools'
 arch=(i686 x86_64)
 url='https://netfilter.org/projects/nftables/'
 license=('GPL2')
 depends=(libmnl libnftnl-git gmp readline ncurses jansson)
 makedepends=(docbook2x git bison flex)
-privides=(nftables)
+provides=(nftables)
 conflicts=(nftables)
 source=(git://git.netfilter.org/nftables
         nftables.conf
