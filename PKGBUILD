@@ -3,7 +3,7 @@
 # Contributor: 網軍總司令
 
 pkgname=librime
-pkgver=1.4.0
+pkgver=1.5.3
 pkgrel=1
 epoch=1
 pkgdesc="Rime input method engine"
@@ -15,7 +15,7 @@ optdepends=('plum: preset input schemas'
             'plum-extra: extra input schemas')
 makedepends=('cmake' 'boost' 'gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rime/librime/archive/$pkgver.tar.gz")
-sha512sums=('da68983638c6f25d994060a607f2ccab8917a71dbf10b9c6f1140c87c9ef4124e29a1d0ef16bbd0edc9a3a22bd5845aa894888d678607db372750f300638f562')
+sha512sums=('4d7f6ec43bd5728f59f0b3581bcd8a46128651430b6873017d80659942b8f6aa1a2f25f439ba8fba461fe22acbf701c2da7a786104a2e4852a70a89cdc0452d3')
 
 build() {
   cd $pkgname-$pkgver
