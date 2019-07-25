@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=bash.d
-pkgver=1511982219
+pkgver=1564076224
 pkgrel=1
 pkgdesc="Subscripts for GNU Bash shells"
 url="https://github.com/GNU-Pony/bash.d"
@@ -15,7 +15,7 @@ optdepends=("libnotify: for alert.bash"
 	    "featherweight: for featherweight status in prompt.bash")
 makedepends=(make findutils grep coreutils)
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(5ee31197987a84fe5c294f895be459e8431e44530ab21c48ffccac8f5469aa71)
+sha256sums=(4c22ee9708d56d437c768161e18fa464ef259807711c8aafe05e43540d59ba14)
 
 _prefix=/usr
 
