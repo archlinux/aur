@@ -8,12 +8,12 @@
 
 pkgname=jabref
 pkgver=4.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI frontend for BibTeX, written in Java"
 arch=('any')
 url="https://www.jabref.org/"
 license=('MIT')
-depends=('archlinux-java-run>=4' 'java-openjfx>=8' 'java-openjfx<9'
+depends=('archlinux-java-run>=4' 'java8-openjfx'
 
          # Additional dependencies for the JavaFX UI, determined using
          # ldd /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libglass.so|awk '{print $3}'|xargs pacman -Qo|awk '{print $4}'|sort -u

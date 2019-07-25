@@ -1,13 +1,12 @@
 pkgbase = jabref
 	pkgdesc = GUI frontend for BibTeX, written in Java
 	pkgver = 4.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.jabref.org/
 	arch = any
 	license = MIT
 	depends = archlinux-java-run>=4
-	depends = java-openjfx>=8
-	depends = java-openjfx<9
+	depends = java8-openjfx
 	depends = atk
 	depends = bzip2
 	depends = cairo
