@@ -1,0 +1,13 @@
+pkgbase = binfmt-qemu
+	pkgdesc = Register qemu interpreters for various binary formats
+	pkgver = 20190725
+	pkgrel = 1
+	url = http://www.freedesktop.org/software/systemd/man/binfmt.d.html
+	arch = any
+	license = GPL
+	optdepends = qemu-user
+	source = qemu.conf
+	md5sums = 9f757fd19c31e5dbe539a6381129cb81
+
+pkgname = binfmt-qemu
+
