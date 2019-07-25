@@ -1,14 +1,14 @@
 pkgbase = gitlab-cli
 	pkgdesc = Perform GitLab actions on the CLI
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://gitlab.com/T4cC0re/gitlab-cli
 	arch = any
 	license = GPLv3
 	makedepends = go>=1.12
-	noextract = gitlab-cli-0.1.1.tar.gz
-	source = gitlab-cli-0.1.1.tar.gz::https://gitlab.com/T4cC0re/gitlab-cli/-/archive/master/gitlab-cli-v0.1.1.tar.gz
-	sha512sums = d09d4b614bf42e7e335957e48eacc14847d873045f6713b1922b9865bbfd70a3b557fb3fe61e20163a255b25ca80db73b358089256f654a3277ab2e46eaae4f1
+	noextract = gitlab-cli-0.1.2.tar.gz
+	source = gitlab-cli-0.1.2.tar.gz::https://gitlab.com/T4cC0re/gitlab-cli/-/archive/master/gitlab-cli-v0.1.2.tar.gz
+	sha512sums = 763c61a5775f8b36c8c39281af8777b4927537641e387583b22c20577f95961eb4050c06d6c80d4ad4896bed90f392eb7ab944e9e1c41f345500c3e3e173e978
 
 pkgname = gitlab-cli
 
