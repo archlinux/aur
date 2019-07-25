@@ -1,0 +1,15 @@
+pkgbase = zecwallet
+	pkgdesc = A z-Addr first full node and UI wallet for zcash
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/ZcashFoundation/zecwallet
+	arch = x86_64
+	license = MIT
+	provides = zecwallet
+	provides = zcashd
+	provides = zcash-cli
+	source = https://github.com/ZcashFoundation/zecwallet/releases/download/v0.7.6/linux-binaries-zecwallet-v0.7.6.tar.gz
+	sha256sums = 328d578892ac0509d56a792dd88b5c19f074e6e267c5d9598466cf44a2b94a57
+
+pkgname = zecwallet
+
