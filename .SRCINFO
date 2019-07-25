@@ -10,8 +10,6 @@ pkgbase = waifu2x-converter-cpp
 	makedepends = cmake
 	makedepends = opencl-headers
 	depends = opencv
-	provides = waifu2x-converter-cpp
-	conflicts = waifu2x-converter-cpp
 	source = waifu2x-converter-cpp::git+https://github.com/DeadSix27/waifu2x-converter-cpp.git#commit=b4566c0fb33e716cb092cbf6a557137b53acbfac
 	sha512sums = SKIP
 
