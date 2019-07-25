@@ -1,7 +1,7 @@
 pkgbase = nullshell
 	pkgdesc = do nothing but print keep alive characters, can be used for login shell
 	pkgver = 0.0.6
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/eworm-de/nullshell
 	install = nullshell.install
 	arch = i686
@@ -9,8 +9,9 @@ pkgbase = nullshell
 	license = GPL
 	makedepends = markdown
 	conflicts = nullshell-git
-	source = http://www.eworm.de/download/nullshell/nullshell-0.0.6.tar.xz
-	source = http://www.eworm.de/download/nullshell/nullshell-0.0.6.tar.xz.asc
+	source = https://www.eworm.de/download/nullshell/nullshell-0.0.6.tar.xz
+	source = https://www.eworm.de/download/nullshell/nullshell-0.0.6.tar.xz.asc
+	validpgpkeys = BD84DE71F493DF6814B0167254EDC91609BC9183
 	sha256sums = 8ed1d29df5a8f6639f559b7a294010791d20140e85106cb0d34e6a1c194b31c9
 	sha256sums = SKIP
 
