@@ -6,8 +6,8 @@
 
 pkgbase=phpstorm
 pkgname=(phpstorm phpstorm-jre)
-pkgver=2019.1.3
-_pkgver=191.7479.51
+pkgver=2019.2
+_pkgver=192.5728.108
 pkgrel=1
 pkgdesc='Lightweight and Smart PHP IDE'
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ makedepends=('rsync')
 options=('!strip')
 source=(https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz
         jetbrains-phpstorm.desktop)
-sha512sums=('07ceca041309b447f5e22a85414e78e5bdd948ee0c1862630216d27fb7ee743ec1f2b50fa2cde8738225dd98840612df2d677cc02d0a323eda46fc5fae373a58'
+sha512sums=('2fd86f32044e579b0c13b81406e1fca6d07701b2b990208d1263c182c9a6082e7973dd799b589d278f49102db348781d22496d5b0cd7a2f1dcff26fb62c948e8'
             'fe312d7c637ec20bd946f2e22681243a51f29afc1052ae3fe5afd0fe01f77c222bf1e2c98f0afad8d5385466215653b7ffa8718da05b6dac100ba768ff2be1d6')
 
 package_phpstorm() {
@@ -31,7 +31,7 @@ package_phpstorm() {
   install -d -m 755 "${pkgdir}/usr/share/applications/"
   install -d -m 755 "${pkgdir}/usr/share/pixmaps/"
 
-  rsync -rtl "${srcdir}/PhpStorm-${_pkgver}/" "${pkgdir}/opt/${pkgbase}" --exclude=/jre64
+  rsync -rtl "${srcdir}/PhpStorm-${_pkgver}/" "${pkgdir}/opt/${pkgbase}" --exclude=/jbr
 
   ln -s "/opt/${pkgbase}/bin/${pkgbase}.sh" "${pkgdir}/usr/bin/${pkgbase}"
   install -D -m 644 "${srcdir}/jetbrains-${pkgbase}.desktop" "${pkgdir}/usr/share/applications/"
@@ -40,5 +40,5 @@ package_phpstorm() {
 
 package_phpstorm-jre() {
   install -d -m 755 "${pkgdir}/opt/${pkgbase}"
-  rsync -rtl "${srcdir}/PhpStorm-${_pkgver}/jre64" "${pkgdir}/opt/${pkgbase}"
+  rsync -rtl "${srcdir}/PhpStorm-${_pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"
 }
