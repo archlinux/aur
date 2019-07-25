@@ -1,8 +1,8 @@
 # Maintainer: Ray Xu <megrxu at gmail dot com>
 pkgname=python-archiveis
 _name=archiveis
-pkgver=0.0.7
-pkgrel=2
+pkgver=0.0.8
+pkgrel=1
 pkgdesc='A simple Python wrapper for the archive.is capturing service.'
 arch=('any')
 url="https://github.com/pastpages/archiveis"
@@ -10,6 +10,7 @@ license=('MIT')
 depends=('python')
 source=("https://github.com/pastpages/archiveis/archive/v${pkgver}.tar.gz")
 makedepends=('python-setuptools')
+md5sums=('3990c2864f346623dcdc34ed731497c7')
 
 build() {
     cd ${_name}-${pkgver}
@@ -22,4 +23,4 @@ package() {
     cp LICENSE $pkgdir/usr/share/licenses/$pkgname/
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
-md5sums=('06c315ee2d9e73e993b56b7ac95e143d')
+

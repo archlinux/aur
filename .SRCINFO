@@ -1,14 +1,14 @@
 pkgbase = python-archiveis
 	pkgdesc = A simple Python wrapper for the archive.is capturing service.
-	pkgver = 0.0.7
-	pkgrel = 2
+	pkgver = 0.0.8
+	pkgrel = 1
 	url = https://github.com/pastpages/archiveis
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/pastpages/archiveis/archive/v0.0.7.tar.gz
-	md5sums = 06c315ee2d9e73e993b56b7ac95e143d
+	source = https://github.com/pastpages/archiveis/archive/v0.0.8.tar.gz
+	md5sums = 3990c2864f346623dcdc34ed731497c7
 
 pkgname = python-archiveis
 
