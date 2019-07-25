@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=77.0.3824.6
+pkgver=77.0.3860.5
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ depends=(
          'minizip'
          'nss'
          'pciutils'
-         're2'
+#          're2'
          'snappy'
          'xdg-utils'
 #          'protobuf'
@@ -79,10 +79,13 @@ source=(
         # Patch form Gentoo.
 
         # Misc Patches.
-        'enable-vaapi.patch' # Use Saikrishna Arcot patch again :https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/4d40b58013b518373b2544d486d3de40796edd36/debian/patches/enable_vaapi_on_linux_2.diff'
+        'enable-vaapi.patch' # Use Saikrishna Arcot patch again :https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/a996c32c7ae7b369799b528daddb7be3c8b67de4/debian/patches/enable_vaapi_on_linux_2.diff'
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
         'chromium-skia-harmony-r1.patch'
+        'vaapi.diff.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1713435/revisions/1/patch?download' # https://chromium-review.googlesource.com/c/chromium/src/+/1713435
+        'memory.diff.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1713037/revisions/1/patch?download' # https://chromium-review.googlesource.com/c/chromium/src/+/1713037
+        'system_harfbuzz.diff.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1715288/revisions/1/patch?download' # https://chromium-review.googlesource.com/c/chromium/src/+/1715288
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -92,10 +95,13 @@ sha256sums=(
             # Patch form Gentoo
 
             # Misc Patches
-            '36e78ad3e6fdd4b8c402d3dd5e38413fd1f33fb992c6522af29a02b0f617ee22'
+            '3cf77d5c90f46fa25f51a6c355f637395e2af84d584350fca406ebf5c3866e76'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '0dd2fea50a93b26debce63c762c0291737b61816ba5b127ef923999494142b78'
+            '43810f59d73d6660b1b52989e15a02a3103ac2ab8f8561716cb67e0e0acce109'
+            'd8bec3a727488ab3d0d2a5215537075aa63cd244052a1ac2c37c402fc4f31265'
+            'c02a9701382b47391f7cd77529e5bf69a06461b503b50f64c60b8e16760a22aa'
             )
 install=chromium-dev.install
 
@@ -113,9 +119,9 @@ _google_default_client_secret="0ZChLK6AxeA3Isu96MkwqDR4"
 
 # List of third-party components needed for build chromium. The rest is remove by remove_bundled_libraries srcipt in prepare().
 _keeplibs=(
+           'base/third_party/cityhash'
            'base/third_party/dmg_fp'
            'base/third_party/dynamic_annotations'
-           'base/third_party/cityhash'
            'base/third_party/icu'
            'base/third_party/nspr'
            'base/third_party/superfasthash'
@@ -131,7 +137,7 @@ _keeplibs=(
            'native_client_sdk/src/libraries/third_party/newlib-extras'
            'net/third_party/mozilla_security_manager'
            'net/third_party/nss'
-           'net/third_party/quic'
+           'net/third_party/quiche'
            'net/third_party/uri_template'
            'third_party/abseil-cpp'
            'third_party/angle'
@@ -178,8 +184,8 @@ _keeplibs=(
            'third_party/crc32c'
            'third_party/cros_system_api'
            'third_party/dav1d'
-           'third_party/devscripts'
            'third_party/dawn'
+           'third_party/devscripts'
            'third_party/dom_distiller_js'
            'third_party/emoji-segmenter'
            'third_party/ffmpeg'
@@ -246,13 +252,14 @@ _keeplibs=(
            'third_party/protobuf/third_party/six'
            'third_party/pyjson5'
            'third_party/qcms'
+           'third_party/re2'
            'third_party/rnnoise'
            'third_party/s2cellid'
            'third_party/sfntly'
            'third_party/shaderc'
            'third_party/skia'
-           'third_party/skia/include/third_party/vulkan'
            'third_party/skia/include/third_party/skcms'
+           'third_party/skia/include/third_party/vulkan'
            'third_party/skia/third_party/gif'
            'third_party/skia/third_party/skcms'
            'third_party/skia/third_party/vulkan'
@@ -325,7 +332,7 @@ _flags=(
         'treat_warnings_as_errors=false'
         'enable_nacl=true'
         'enable_nacl_nonsfi=true'
-        'use_custom_libcxx=false'
+        'use_custom_libcxx=true' # use true if you want use bundled RE2
         'use_jumbo_build=false' # https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
 #         'jumbo_file_merge_limit=30' # NOTE: test. more than 40 gets OOM in my dual xeon (64Gb ram) machine :/
         'use_vaapi=true'
@@ -368,7 +375,7 @@ _use_system=(
              'libxslt'
              'openh264'
              'opus'
-             're2'
+#              're2'
              'snappy'
              'yasm'
 #              'zlib'
@@ -488,6 +495,15 @@ prepare() {
   patch -p1 -i "${srcdir}/enable-vaapi.patch"
   sed 's|/dri/|/|g' -i media/gpu/vaapi/vaapi_wrapper.cc
 
+  # Fix https://chromium-review.googlesource.com/c/chromium/src/+/1713435
+  base64 -d "${srcdir}/vaapi.diff.base64" | patch -p1 -i -
+
+  # Fix https://chromium-review.googlesource.com/c/chromium/src/+/1713037/
+  base64 -d "${srcdir}/memory.diff.base64" | patch -p1 -i -
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/1715288
+  base64 -d "${srcdir}/system_harfbuzz.diff.base64" | patch -p1 -i -
+
   # # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
 
   # https://crbug.com/skia/6663#c10.
@@ -549,7 +565,6 @@ build() {
 
   # Build all.
   # Work around broken deps.
-  LC_ALL=C ninja -C out/Release gen/ui/accessibility/ax_enums.mojom{,-shared}.h
   LC_ALL=C ninja -C out/Release -v chrome chrome_sandbox chromedriver
 }
 
@@ -591,13 +606,9 @@ package() {
          'libEGL.so'
          'libGLESv2.so'
          'libVkICD_mock_icd.so'
-         'libVkLayer_core_validation.so'
-         'libVkLayer_object_lifetimes.so'
-         'libVkLayer_stateless_validation.so'
-         'libVkLayer_thread_safety.so'
-         'libVkLayer_unique_objects.so'
          'swiftshader/libEGL.so'
          'swiftshader/libGLESv2.so'
+         'swiftshader/libvulkan.so'
          )
   for i in "${_libs[@]}"; do
     install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
@@ -611,6 +622,7 @@ package() {
           'icudtl.dat' # https://crbug.com/678661.
           'MEIPreload/manifest.json'
           'MEIPreload/preloaded_data.pb'
+          'angledata/VkICD_mock_icd.json'
           )
   for i in "${_blobs[@]}"; do
     install -Dm644 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
@@ -663,7 +675,7 @@ package() {
   find locales -type f -name "*.pak" -exec install -Dm644 '{}' "${pkgdir}/usr/lib/chromium-dev/{}" \;
 
   # Install icons.
-  for _size in 16 22 24 32 48 128 256; do
+  for _size in 16 22_mono 24 32 48 128 256; do
     case "${_size}" in
       16|32) _branding="${srcdir}/chromium-${pkgver}/chrome/app/theme/default_100_percent/chromium" ;;
       *) _branding="${srcdir}/chromium-${pkgver}/chrome/app/theme/chromium" ;;
