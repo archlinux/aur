@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
 
 pkgname=bcrawl
-pkgver=1.12.3
+pkgver=1.13
 pkgrel=1
 pkgdesc='Continuation of X-Crawl fork of Dungeon Crawl Stone Soup roguelike with new content'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('crawl' 'stone-soup-tile' 'bcrawl-git')
 provides=('bcrawl')
 license=('GPL' 'BSD' 'MIT' 'ZLIB' 'APACHE' 'custom:CC0' 'custom')
 source=("https://github.com/b-crawl/bcrawl/archive/bcrawl-${pkgver}.tar.gz")
-sha256sums=('039adeea466d761a179988b35d681d8814b87e93ac33ec08f358d08a0c40d682')
+sha256sums=('b95e882add305f355aee997c31bb2f005dffc3a79cf0268923497684abd36a1b')
 
 # used by gendesk to create .desktop file
 _exec=('bcrawl-tiles')
