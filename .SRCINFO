@@ -1,0 +1,11 @@
+pkgbase = pacman-updatedb-hook
+	pkgdesc = Pacman hook to update the mlocate database.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	depends = mlocate
+	source = updatedb.hook
+	md5sums = 843295b2d289a547e466edf06df570d5
+
+pkgname = pacman-updatedb-hook
+
