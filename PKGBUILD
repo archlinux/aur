@@ -14,7 +14,7 @@ arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('BSD' 'custom')
 depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'pixman' 'libxcursor' 'fontconfig' 'nettle' 'shared-mime-info' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('git' 'ninja' 'python2' 'clang')
+makedepends=('git' 'ninja' 'python2' 'clang' 'cmake')
 conflicts=("${_pkgname}" "${_pkgname}-gpl")
 source=(
         # "git+https://github.com/${_pkgname}/pixman.git"
