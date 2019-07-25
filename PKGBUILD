@@ -52,9 +52,6 @@ package()
   install -D -m644 powerlevel10k.zsh-theme "${pkgdir}/usr/share/zsh-theme-${_pkgname}/${_pkgname}.zsh-theme"
 
   # Install the utilities
-  for FILE in functions/*.zsh; do
-    install -D -m644 "${FILE}" "${pkgdir}/usr/share/zsh-theme-${_pkgname}/functions/$(basename ${FILE})"
-  done
   install -D -m755 prompt_powerlevel10k_setup "${pkgdir}/usr/share/zsh-theme-${_pkgname}/prompt_powerlevel10k_setup"
   install -D -m644 prompt.png "${pkgdir}/usr/share/zsh-theme-${_pkgname}/prompt.png"
   install -D -m644 demo.png "${pkgdir}/usr/share/zsh-theme-${_pkgname}/demo.png"
