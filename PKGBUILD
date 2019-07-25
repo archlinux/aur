@@ -1,4 +1,4 @@
-# Maintainer: Bailey Kasin <bailey@gingertechnology.net>
+# Maintainer: Katherine J. Cumberbatch <stykers@stykers.moe>
 pkgname=binfmt-qemu-static
 pkgver=20190112
 pkgrel=4
