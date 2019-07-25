@@ -16,6 +16,8 @@ fi
 
 TAG="w${VMWARE_VERSION}-k${KERNELVER}"
 
+git reset --hard HEAD
+git pull --rebase origin master
 git checkout "$TAG" 2>&1 >/dev/null
 RES=$?
 

@@ -3,8 +3,8 @@
 
 pkgname=vmware-modules-dkms-git
 _gitname=vmware-host-modules
-pkgver=1.0
-pkgrel=3
+pkgver=1.1
+pkgrel=4
 pkgdesc="VMWare's host kernel modules patched to build against all modern kernels, wrapped up in  a dkms module."
 arch=("any")
 license=("LGPL")
@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=(
    "57984b4a196e78f7ec0c2557c03810c8c3cf6ae393ae725b97b8ebebcb02e6a1"
-   "c4d6489274c779e418a5fd4d200c85f24903c7f116d2a6ea457fbc54cdd4c7f1"
+   "f20b38bc8f5b5687ee273423849abf677b1e153d045480bbbef28c40dd6f6e7c"
 )
 
 _var_replace() {
