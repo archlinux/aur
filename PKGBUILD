@@ -1,6 +1,6 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=gitlab-cli
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Perform GitLab actions on the CLI"
 arch=('any')
@@ -19,7 +19,7 @@ build(){
   echo "Verifying go modules..."
   go mod verify
   echo "Compiling..."
-  go build -gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow -ldflags=-extldflags=-static -ldflags='-w -s' -ldflags="-X main.version=v${pkgver}" -o $pkgname .
+  go build -gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow -ldflags=-extldflags=-static -ldflags='-w -s' -ldflags="-X main.version=v${pkgver}-aur" -o $pkgname .
   if hash upx &>/dev/null ; then
     echo "UPX found. Making extra small..."
     upx --lzma --best --all-filters --exact $pkgname
@@ -32,4 +32,4 @@ package() {
   install -Dm755 $pkgname                              "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "README.md"                           "$pkgdir/usr/share/$pkgname/README.md"
 }
-sha512sums=(763c61a5775f8b36c8c39281af8777b4927537641e387583b22c20577f95961eb4050c06d6c80d4ad4896bed90f392eb7ab944e9e1c41f345500c3e3e173e978)
+sha512sums=(2887eb6dff5c4356c78d0093d2b51f6fb2136184d6caf1c91e0d9914aeb4e7234f78e529f520de9ad99907a3f37832ccecf68c3bcc37103891d90087a3435170)
