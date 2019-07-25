@@ -1,7 +1,7 @@
 pkgbase = vmware-modules-dkms-git
 	pkgdesc = VMWare's host kernel modules patched to build against all modern kernels, wrapped up in a dkms module.
-	pkgver = 1.0
-	pkgrel = 3
+	pkgver = 1.1
+	pkgrel = 4
 	url = https://github.com/mkubecek/vmware-host-modules
 	install = vmware-modules-dkms-git.install
 	arch = any
