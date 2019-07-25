@@ -138,7 +138,6 @@ md5sums=('SKIP')
 #source=("emacs-git::git://git.sv.gnu.org/emacs.git#branch=$BRANCH")
 #source=("emacs-git::git+https://git.savannah.gnu.org/emacs.git#branch=$BRANCH")
 
-if [[ $BRANCH = "master" ]]; then
   pkgver() {
     cd "$srcdir/emacs-git"
 
@@ -147,17 +146,6 @@ if [[ $BRANCH = "master" ]]; then
       sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\?\).\+$/\1/')" \
       "$(git rev-list --count HEAD)"
   }
-else
-  pkgver() {
-    cd "$srcdir/emacs-git"
-
-    printf "%s.%s" \
-      "$(grep AC_INIT configure.ac | \
-      awk '{split($0,a,","); print a[2]}' | \
-      sed -e 's/\ //g' )" \
-      "$(git rev-list --count HEAD)"
-  }
-fi
 
 # There is no need to run autogen.sh after first checkout.
 # Doing so, breaks incremental compilation.
