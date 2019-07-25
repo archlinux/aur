@@ -1,6 +1,6 @@
 pkgbase = runelite
 	pkgdesc = Open source Old School RuneScape client.
-	pkgver = 1.5.29
+	pkgver = 1.5.29.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/runelite/runelite
@@ -12,10 +12,10 @@ pkgbase = runelite
 	optdepends = gvfs: enable links
 	provides = runelite
 	conflicts = runelite-git
-	source = https://github.com/runelite/runelite/archive/runelite-parent-1.5.29.tar.gz
+	source = https://github.com/runelite/runelite/archive/runelite-parent-1.5.29.1.tar.gz
 	source = runelite.desktop
 	source = runelite.png
-	sha512sums = c5d8abd37bae172432f2f20ee397c9885c849fdcf8ab93619f5d91c623bd33884625a9ca8c9fa9650ad440bac0a328f43b869eed9c60b705abe1b6125d21af0c
+	sha512sums = 6810c8251aec2821827d50a0c12ef7e0848f99b8eb978c2c6b6a8e93fefcb798f807a07d76bbf0cf05e893c9b499e58e4efd8678c68d05b86378bb259a60ab5e
 	sha512sums = e00339514623c2f683118f1cdba93cebbc0761fd72f31e2d139ed467b8c41a6738fd0f27ac2beba4d2caa2a365ef4cc49a43af54b13ca5a908e5fd11d03f4bc1
 	sha512sums = 73e0c42f4eaf2e0adc249e471bd241e8328da7f867177535f1da206acce14801b60e69fffdbb2a10bc105f1de37b6eaaad23d5e67147b53a108b6e5bf55c586b
 
