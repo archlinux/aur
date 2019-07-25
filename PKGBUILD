@@ -3,9 +3,9 @@
 _pkgname=looking-glass
 pkgbase="${_pkgname}-git"
 pkgname=("${_pkgname}-git" "${_pkgname}-module-dkms-git" "${_pkgname}-host-git")
-epoch=1
-pkgver=B1_rc5.r6.g2b4f809
-pkgrel=2
+epoch=2
+pkgver=B1.r1.g163a2e5
+pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.hostfission.com"
 arch=('x86_64')
@@ -19,7 +19,7 @@ pkgver() {
 	cd "${_pkgname}"
 	local TAG=$(git describe --abbrev=0 --tags)
 	local SUFFIX=$(git describe --long --tags | sed 's/^'"${TAG}"'-\([^-]*-g\)/r\1/;s/-/./g')
-	printf "%s.%s" "${TAG//-/_}" "${SUFFIX}"
+	printf "%s.%s" "${TAG//-/}" "${SUFFIX}"
 }
 
 build() {
