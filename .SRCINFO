@@ -10,8 +10,6 @@ pkgbase = tini
 	makedepends = cmake
 	makedepends = gcc
 	depends = glibc
-	provides = tini
-	conflicts = tini
 	source = tini::git+https://github.com/krallin/tini.git#commit=fec3683b971d9c3ef73f284f176672c44b448662
 	sha512sums = SKIP
 

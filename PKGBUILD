@@ -12,8 +12,6 @@ license=('MIT')
 
 depends=('glibc')
 makedepends=('git' 'cmake' 'gcc')
-provides=("${pkgname[0]%-git}")
-conflicts=("${pkgname[0]%-git}")
 
 source=("${_srcname}::git+${url}.git#commit=${_commit}")
 sha512sums=('SKIP')
