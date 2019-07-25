@@ -1,11 +1,11 @@
 # Maintainer: Severin Kaderli <severin.kaderli@gmail.com>
 _pkgname=pegasus-fe
 pkgname=${_pkgname}-git
-pkgver=alpha10.r135.g038307d
-pkgrel=2
+pkgver=alpha11.r100.ga1f400c
+pkgrel=1
 pkgdesc="A cross platform, customizable graphical frontend for launching emulators and managing your game collection."
 arch=('i686' 'x86_64')
-url="http://pegasus-frontend.org/"
+url="https://pegasus-frontend.org/"
 license=('GPL3')
 makedepends=(
     'git'
@@ -18,9 +18,20 @@ depends=(
     'qt5-gamepad'
     'qt5-graphicaleffects'
 )
+provides=('pegasus-fe')
 conflicts=('pegasus-fe')
-source=("${_pkgname}::git+https://github.com/mmatyas/pegasus-frontend")
-md5sums=('SKIP')
+source=(
+    "${_pkgname}::git+https://github.com/mmatyas/pegasus-frontend.git"
+    "git+https://github.com/mmatyas/pegasus-frontend-translations.git#branch=master"
+    "git+https://github.com/mmatyas/pegasus-theme-grid.git"
+    "git+https://github.com/mmatyas/SortFilterProxyModel.git"
+)
+md5sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
 
 pkgver() {
     cd "${_pkgname}"
@@ -29,7 +40,11 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    git submodule update --init
+    git submodule init
+    git config submodule.lang.url "${srcdir}/pegasus-frontend-translations"
+    git config submodule.src/themes/pegasus-theme-grid.url "${srcdir}/pegasus-theme-grid"
+    git config submodule.thirdparty/SortFilterProxyModel.url "${srcdir}/SortFilterProxyModel"
+    git submodule update
 }
 
 build() {

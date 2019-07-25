@@ -1,8 +1,8 @@
 pkgbase = pegasus-fe-git
 	pkgdesc = A cross platform, customizable graphical frontend for launching emulators and managing your game collection.
-	pkgver = alpha10.r135.g038307d
-	pkgrel = 2
-	url = http://pegasus-frontend.org/
+	pkgver = alpha11.r100.ga1f400c
+	pkgrel = 1
+	url = https://pegasus-frontend.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -13,8 +13,15 @@ pkgbase = pegasus-fe-git
 	depends = qt5-multimedia
 	depends = qt5-gamepad
 	depends = qt5-graphicaleffects
+	provides = pegasus-fe
 	conflicts = pegasus-fe
-	source = pegasus-fe::git+https://github.com/mmatyas/pegasus-frontend
+	source = pegasus-fe::git+https://github.com/mmatyas/pegasus-frontend.git
+	source = git+https://github.com/mmatyas/pegasus-frontend-translations.git#branch=master
+	source = git+https://github.com/mmatyas/pegasus-theme-grid.git
+	source = git+https://github.com/mmatyas/SortFilterProxyModel.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = pegasus-fe-git
