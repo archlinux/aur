@@ -1,5 +1,5 @@
 pkgbase = vyper-git
-	pkgdesc = Pythonic Smar Contract Language for the EVM
+	pkgdesc = Pythonic Smart Contract Language for the EVM
 	pkgver = v0.1.0_beta.9
 	pkgrel = 1
 	url = https://github.com/ethereum/vyper
