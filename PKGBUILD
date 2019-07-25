@@ -1,9 +1,9 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 _name=cxxopts
 #for fragment you can use one of: #commit=, #tag=, #branch=
-_fragment="#tag=v2.1.2"
+_fragment="#tag=v2.2.0"
 pkgname=${_name}
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Lightweight C++ command line option parser"
 arch=(any)
