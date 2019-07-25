@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://p7.planet-casio.com/"
 license=('GPL2')
 groups=()
-depends=('libusb>=1.0' 'libp7>=3.0')
+depends=('libusb>=1.0' 'libp7>=3.0' 'sdl>=1.2.15')
 makedepends=('asciidoc>=8.6.9')
 optdepends=()
 provides=('p7screen')
