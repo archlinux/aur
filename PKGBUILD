@@ -1,3 +1,4 @@
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=('heka')
 _srcname='heka'
 pkgdesc='Data collection and processing made easy'
@@ -18,8 +19,6 @@ makedepends=(
     'patch'
 )
 optdepends=('geoip-database-extra: GeoIpDecoder')
-provides=("${pkgname[0]%-git}")
-conflicts=("${pkgname[0]%-git}")
 
 source=(
     "${_srcname}::git+${url}.git#tag=v${pkgver}"

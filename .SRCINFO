@@ -16,8 +16,6 @@ pkgbase = heka
 	makedepends = patch
 	depends = geoip
 	optdepends = geoip-database-extra: GeoIpDecoder
-	provides = heka
-	conflicts = heka
 	source = heka::git+https://github.com/mozilla-services/heka.git#tag=v0.10.0
 	source = heka.service
 	source = cmake.patch
