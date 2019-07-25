@@ -1,4 +1,4 @@
-# Maintainer: A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer: P. A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
 #######################################################################
 # CAVEAT LECTOR: This PKGBUILD is highly opinionated. I give you
@@ -39,9 +39,7 @@ M17N=             # Enable m17n international table input support.
                   # You are far better off using UTF-8 and an input
                   # method under X/Wayland. But this gives independence
                   # if you need it.
-OTF="YES"         # OTF font support. Also a secondary dependency
-                  # by pulling m17n-lib. Not needed in that case.
-CAIRO=            # Highly experimental. Maintaner dissapeared.
+CAIRO=            # GOOD NEWS! No longer experimental and very supported.
 XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
 DOCS_HTML=        # Generate and install html documentation.
 DOCS_PDF=         # Generate and install pdf documentation.
@@ -62,7 +60,7 @@ pkgdesc="GNU Emacs. Development."
 arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
-depends=( 'alsa-lib' 'gnutls' 'libxml2' 'jansson' )
+depends=( 'alsa-lib' 'gnutls' 'libxml2' 'jansson' 'libotf' 'harfbuzz' )
 makedepends=( 'git' )
 #######################################################################
 
@@ -91,10 +89,6 @@ fi
 
 if [[ $M17N = "YES" ]]; then
   depends+=( 'm17n-lib' );
-fi
-
-if [[ $OTF = "YES" ]] && [[ ! $M17N = "YES" ]]; then
-  depends+=( 'libotf' );
 fi
 
 if [[ $MAGICK = "YES" ]]; then
