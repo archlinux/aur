@@ -47,6 +47,8 @@ package_manjarowish-dark-kde-settings() {
         'irqbalance'
         'systemd-swap'
         'nohang-git'
+        'kim4'
+        'flameshot'
         'plasma5-applets-active-window-control'
         'plasma5-applets-eventcalendar'
         'plasma5-applets-netspeed'
