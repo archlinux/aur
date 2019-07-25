@@ -1,102 +1,86 @@
-# Maintainer: Israel Herraiz <isra@herraiz.org
+# Maintainter: Jingbei Li <i@Jingbei.li>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Michael Jakl <jakl.michael@gmail.com>
+# Contributor: devmotion <nospam-archlinux.org@devmotion.de>
+# Contributor: Valentin Churavy <v.churavy@gmail.com>
 
-pkgbase=julia-mkl
-pkgname=('julia-mkl' 'julia-mkl-docs')
-pkgver=0.6.3
+pkgname=julia-mkl
+_pkgname=julia
+epoch=2
+pkgver=1.1.1
 pkgrel=1
-arch=('x86_64')
-pkgdesc='High-level, high-performance, dynamic programming language (compiled with the Intel MKL library)'
-url='http://julialang.org/'
-license=('MIT')
-makedepends=('python2' 'libuv' 'libunwind' 'mpfr' 'zlib' 'suitesparse-mkl' 'patchelf' 'cmake' 'pcre2' 'openssl' 'intel-mkl' 'intel-compiler-base' 'intel-fortran-compiler' 'libgit2' 'git')
-options=('!emptydirs' 'staticlibs')
-source=("https://github.com/JuliaLang/julia/releases/download/v$pkgver/julia-$pkgver.tar.gz" julia-libunwind-version.patch)
-sha256sums=('f18dd3fb67ce65137c9cb56b1b338bca4eeb13832a85de9dd3ec5717e68f69ff'
-            '16009ce454f58463464027cbaf6186ccfab84c37660a52fb1ec3a0f514df64f9')
-
-conflicts=('julia-git' 'julia')
+arch=(x86_64)
+pkgdesc='High-level, high-performance, dynamic programming language'
+url='https://julialang.org/'
+license=(MIT)
+depends=(fftw hicolor-icon-theme intel-mkl libgit2 libunwind libutf8proc suitesparse)
+makedepends=(cmake gcc-fortran gmp intel-compiler-base intel-fortran-compiler python2)
+optdepends=('gnuplot: If using the Gaston Package from julia')
+provides=('julia')
+conflicts=('julia' 'julia-git')
+backup=(etc/julia/startup.jl)
+source=("https://github.com/JuliaLang/julia/releases/download/v$pkgver/$_pkgname-$pkgver-full.tar.gz"
+        libunwind-version.patch
+        makefile.patch
+        Make.user)
+sha256sums=('3c5395dd3419ebb82d57bcc49dc729df3b225b9094e74376f8c649ee35ed79c2'
+            'a5eec1e43e1161c313b1d32a5f35a67d6b4a2bbc2d6d324c010f6f2b35be4a72'
+            'b7374fcd5a579fc59d6988795fc0c3cf411a89205942c691a5b3003793ae6c52'
+            'SKIP')
 
 prepare() {
-  # For /etc/ld.so.conf.d/
-  echo '/usr/lib/julia' > julia.conf
+  cd $_pkgname-$pkgver
 
-  cd julia
-  patch -p1 -i ../julia-libunwind-version.patch
+  # Add and use option to build with system cblas
+  #patch -p1 --no-backup-if-mismatch -i ../cblas.patch
+
+  # Fixing libunwind version check
+  # https://github.com/JuliaLang/julia/pull/29082
+  #patch -p1 -i ../libunwind-version.patch
+
+  # Patching make install
+  patch -p0 -i ../makefile.patch
+
+  # Configuring the build
+  cp -f ../Make.user Make.user
+
+  # Prepare a symlink from "python" to "python2"
+  mkdir -p "$srcdir/bin"
+  ln -s /usr/bin/python2 "$srcdir/bin/python"
+
+  #cd deps/srccache
+  #xzcat llvm-6.0.1.src.tar.xz | tar xf -
+  #sed 's/ detail::join_impl/ llvm::detail::join_impl/g' -i $(grep ' detail::join_impl' llvm-6.0.1.src -rl)
+  #tar cf - llvm-6.0.1.src | xz -T0 -c > llvm-6.0.1.src.tar.xz
+  #md5sum llvm-6.0.1.src.tar.xz | cut -d' ' -f1 > ../checksums/llvm-6.0.1.src.tar.xz/md5
+  #sha512sum llvm-6.0.1.src.tar.xz | cut -d' ' -f1 > ../checksums/llvm-6.0.1.src.tar.xz/sha512
 }
 
 build() {
-
-  source /opt/intel/composerxe/linux/bin/compilervars.sh intel64
-  source /opt/intel/composerxe/linux/bin/iccvars.sh intel64
-  source /opt/intel/composerxe/linux/bin/ifortvars.sh intel64
-  source /opt/intel/mkl/bin/mklvars.sh intel64
-  
-  make -C julia prefix=/usr sysconfdir=/etc \
-    USEICC=0 \
-    USEIFC=0 \
-    USE_INTEL_MKL=1 \
-    USE_INTEL_MKL_FFT=1 \
-    USE_INTEL_LIBM=1 \
-    USE_SYSTEM_CURL=1 \
-    USE_SYSTEM_LIBUNWIND=1 \
-    USE_SYSTEM_PCRE=1 \
-    USE_SYSTEM_LIBGIT2=1 \
-    USE_SYSTEM_PATCHELF=1 \
-    USE_SYSTEM_SUITESPARSE=1 \
-    USE_SYSTEM_LLVM=0
+  export PATH="$srcdir/bin:$PATH"
+  env CFLAGS="$CFLAGS -w" CXXFLAGS="$CXXFLAGS -w" make -C $_pkgname-$pkgver
 }
 
-package_julia-mkl() {
-  backup=('etc/ld.so.conf.d/julia.conf' 'etc/julia/juliarc.jl')
-  depends=('libunwind' 'mpfr' 'zlib' 'suitesparse-mkl' 'pcre2' 'libgit2' 'openssl' 'patchelf' 'intel-mkl')
-  optdepends=('gnuplot: If using the Gaston Package from julia')
-  install='sysfix.install'
+#check() {
+# cd $_pkgname-$pkgver/test
+#
+# # this is the make testall target, plus the --skip option from
+# # travis/appveyor/circleci (one test fails with DNS resolution errors)
+# ../julia --check-bounds=yes --startup-file=no ./runtests.jl all --skip Sockets --skip Distributed
+# find ../stdlib \( -name \*.cov -o -name \*.mem \) -delete
+# rm -r depot/compiled
+#}
 
-  source /opt/intel/composerxe/linux/bin/compilervars.sh intel64
-  source /opt/intel/composerxe/linux/bin/iccvars.sh intel64
-  source /opt/intel/composerxe/linux/bin/ifortvars.sh intel64
-  source /opt/intel/mkl/bin/mklvars.sh intel64
-  
-  make -C julia DESTDIR="$pkgdir" \
-    prefix=/usr sysconfdir=/etc \
-    USEICC=0 \
-    USEIFC=0 \
-    USE_INTEL_MKL=1 \
-    USE_INTEL_MKL_FFT=1 \
-    USE_INTEL_LIBM=1 \
-    USE_SYSTEM_CURL=1 \
-    USE_SYSTEM_LIBUNWIND=1\
-    USE_SYSTEM_PCRE=1 \
-    USE_SYSTEM_LIBGIT2=1 \
-    USE_SYSTEM_PATCHELF=1 \
-    USE_SYSTEM_SUITESPARSE=1 \
-    USE_SYSTEM_LLVM=0 \
-    install
+package() {
 
-  # Remove duplicate man-page from julia/doc
-  rm -rvf "$pkgdir/usr/share/julia/doc/man"
+  make -C $_pkgname-$pkgver DESTDIR="$pkgdir" install
 
-  # For /etc/ld.so.conf.d, FS#41731
-  install -Dm644 julia.conf "$pkgdir/etc/ld.so.conf.d/julia.conf"
+  # Documentation is in the julia-docs package.
+  # Man pages in /usr/share/julia/doc/man are duplicate.
+  rm -rf "$pkgdir/usr/share/"{doc,julia/doc}
 
-  # Documentation and examples are in the julia-docs package
-  rm -rvf "$pkgdir/usr/share/doc/"
-  rm -rvf "$pkgdir/usr/share/julia/doc/"
-  rm -rvf "$pkgdir/usr/share/julia/examples/"
-
-  cd julia
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  install -Dm644 $_pkgname-$pkgver/LICENSE.md \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
-
-package_julia-mkl-docs() {
-  pkgdesc='Documentation and examples for Julia (package corresponding to the MKL version)'
-  cd "julia"
-
-  install -d "$pkgdir/usr/share/doc"
-  cp -rv doc "$pkgdir/usr/share/doc/julia"
-  cp -rv examples "$pkgdir/usr/share/doc/julia/examples"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-}
-
-# getver: julialang.org/downloads
-# vim:set ts=2 sw=2 et:
