@@ -1,8 +1,8 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Maintainer: Alexander Boyko <4le34n at gmail dot com>
 pkgname=activemq
-pkgver=5.15.8
-pkgrel=4
+pkgver=5.15.9
+pkgrel=1
 pkgdesc="Popular and powerful open source messaging and Integration Patterns provider"
 arch=('x86_64')
 url="http://activemq.apache.org"
@@ -37,7 +37,7 @@ package() {
     rm -rf "${pkgdir}/opt/activemq/bin/macosx"
 }
 
-md5sums=('34953879861620df2680888a1c44b410'
+md5sums=('9ebdbd9e26c3ed781431d066a7daab87'
          '0a1b2ac8850b833a5926f393069eee72'
          '86a4b3f9117acb83ba653859b053f966'
          '90d876f8519558572cc8f4e6df8f744d')
