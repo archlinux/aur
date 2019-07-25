@@ -1,10 +1,13 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
+# Contributor: AceLan Kao <acelan.kao@canonical.com>
+# Contributor: Daniel Holz <daniel.holz91 at gmail dot com>
+# Contributor: Tk-Glitch <ti3nou at gmail dot com>
 
 pkgbase=linux-hynix               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=5.2.1-arch1
+_srcver=5.2.2-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -24,7 +27,6 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   v2-1-2-pci-prevent-sk-hynix-nvme-from-entering-D3.patch
   v2-2-2-nvme-add-quirk-to-not-call-disable-function-when-suspending.patch
-  0c3d7282233c7b02c74400b49981d6fff1d683a8.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -37,8 +39,7 @@ sha256sums=('SKIP'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'dbc9d913a2d41c7809b99cf86ad63d3f4eb2e4d10ab3f6564203e4a21803b98f'
-            '5a8830cf8803df4a72ba69ad0d5105d3e3db44f5d8b2edfbfd56bc358c473d16'
-            'cd106d38b19709d2ba690dce3ca47ee8bfd71931ecd948d9bffdb4ecb00d65ca')
+            '5a8830cf8803df4a72ba69ad0d5105d3e3db44f5d8b2edfbfd56bc358c473d16')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -64,6 +65,19 @@ prepare() {
   cp ../config .config
   make olddefconfig
 
+# modprobed-db
+  if [ -z "$_modprobeddb" ]; then
+    plain ""
+    plain "Use modprobed db to clean config from unneeded modules? Speeds up compilation considerably. Requires root."
+    plain "https://wiki.archlinux.org/index.php/Modprobed-db"
+    plain "!!!! Make sure to have a well populated db !!!!"
+    read -rp "`echo $'    > N/y : '`" CONDITION9;
+  fi
+  if [ "$CONDITION9" == "y" ] || [ "$_modprobeddb" == "true" ]; then
+    sudo modprobed-db recall
+    make localmodconfig
+  fi
+
   make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 }
@@ -74,7 +88,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with patches for Hynix SSDs from https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1801875"
   [[ $pkgbase = linux ]] && groups=(base)
   depends=(coreutils linux-firmware kmod mkinitcpio)
   optdepends=('crda: to set the correct wireless channels of your country')
