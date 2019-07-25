@@ -1,13 +1,13 @@
 pkgbase = python-matplotlib-pgfutils
 	pkgdesc = Utilities for generating PGF figures from Matplotlib
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/bcbnz/matplotlib-pgfutils
 	arch = any
 	license = BSD
 	depends = python-matplotlib>=1.2
-	source = https://github.com/bcbnz/matplotlib-pgfutils/archive/v1.0.0.tar.gz
-	sha256sums = 9cada01e4559f2e43f75dff562f7a209f0185ed990d61428c5b21bc9bf9b1daf
+	source = https://github.com/bcbnz/matplotlib-pgfutils/archive/v1.1.0.tar.gz
+	sha256sums = b67b22a7f7ea0663082168e2ab3c81094630e1134d983b950359b71e35a6cc29
 
 pkgname = python-matplotlib-pgfutils
 
