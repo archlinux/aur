@@ -13,7 +13,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _srcbasever=5.2-gnu
-_srcver=5.2.1-gnu
+_srcver=5.2.2-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -55,6 +55,8 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
   0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
+  0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch
+  0005-netfilter-nf_tables-fix-module-autoload-for-redir.patch
 )
 source_armv7h=(
   # armv7h patches, put in the source_armv7h variable just for a more comfortable loop patching
@@ -81,7 +83,7 @@ validpgpkeys=(
 )
 sha512sums=('3359b0a10ac04243399a1b0aa84f6c09e3c1914880be19a7e931189da92900ca77e467e7ab5c296a03d2ff0ab3238ec75b13fd41bd2796049b63e71f6896900e'
             'SKIP'
-            'a257eb591ae55b4cd56adfd1a3235622aeeee1db39af477b497f01510a2994f7dc26d237999f509ca3c58663b747dda6bdc9ac2ae21866f576e351177c66023d'
+            '53bc4aa6a36d93ad9275c312e31bf90a19a274877632ba806e3e8c16c166a209968610b8db41c9d619eb57034445ceeb1753554fb459063c2a0600a208f9cdc8'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -90,7 +92,7 @@ sha512sums=('3359b0a10ac04243399a1b0aa84f6c09e3c1914880be19a7e931189da92900ca77e
             '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
             '9cd90ba3384c99c78e31d58198513886ce6bee3c5a222605e33c43973609dd4995e933843571e2492d37260204a540b0054869fa05b15b242661d9aad2b18787'
-            '9d597fa288507228fe333a137e013dbe1dad9745f7363069968058259d92aed4b01ca0769b55e8b03e204805f2a350cf7ecb11e8950a702d9852f741a4f8dc3d'
+            'af67018e01ecd472422db0b6bc4b3eb0ef00848de10c431650c904dd632096f1c00cf32324885fb10ae2c15d2ec1eaa2e3991c582ecb9f05956e0065dd482207'
             '413d761727e25c6b20f942588ec162d2a04fdbc06c22d59f16766b9fd9764c0b71458d32db7932417a712544149a3fa81ba290e3ea140bd276c78f4fcf8e8b1c'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
@@ -100,9 +102,11 @@ sha512sums=('3359b0a10ac04243399a1b0aa84f6c09e3c1914880be19a7e931189da92900ca77e
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '85a0c3e33d6c00e13fe5f0e575993b2e3299a00b633c0a2e09b9c9093b6c375ab414c27b417e2dc674322325626c1e45dc7e5580e1993ec3e7bc71562e621a27'
-            '75475d99a4843426201b50b89cf3a6f92adb1d9371b0038790e2d8be0c2b9fdfd1eb5104570e0c2cb86da5d79632bb76366ed365c5a5c90fd725f2e80db1fbc3'
-            '9e8a82569db44a635c1c9ccbd8ef15e008af655a9cf388a97e73dd5bba71dae8ce972f8e6751509abc23f9a982a48fe86ea81c61ce5284240646647300b693ee')
+            '38e1e19ac2536ffc0d9d6ea953597734151fc319e48fe7223618b51f362f504bf8164c7a439285063a1f81210928ea1d7524630d0e8c41bdcf3de221ead1e34f'
+            '20392a6552f39f40919597af3ad767c66f265ccb7ba8c38ee9122de8e1c4ff43285864f9535bef9ad8cca76918ab38bc1fb4db265cd45ccfdb3849e30b198a64'
+            'ac7220d35b9a0e9765aba42458702b23dfe5065e56dff1456a131ead2b165e2dd316548078a23641ebadd35dec8428b250c83d1f21fb1572728ceefe2096d699'
+            '00dceecb6b4a8da2deb757118a0a203d91926183bb42539d518ff2e2903b2750dc77f73f3f2e33aa13e1ec0578b05ad12d9828fd5d3a02caf9ca479f5e2f8db9'
+            '06738961d1c87b8f3bf6409dace1c8b99c0bd1a8c64d5070e2c88a23191401292b7c6dca018df76213451cdae2d3e7edc80b94ccfaa17986e5d2196cecfa9113')
 sha512sums_armv7h=('56d27a8e61e47a8eb7c6efddd421e5452ba91b4d78c4398dfed1fad0b500deb4cdf83e0c602657e58bfc502e13ec75a3ded62e0ea1109bdb23881bbb6512a1c5'
                    'SKIP'
                    'cd064ca844aa2f0f1e4157ce7a7607850d7c4b531f5b8336d75ce2f49d3a76e09f1e41ebd712b942357068028896dd7f55d037f5c01367c5cd8297c98920e7dc'
@@ -390,7 +394,7 @@ _package-docs() {
 
 _package-chromebook() {
   pkgdesc="Kernel image sign for ${pkgbase^} - Chromebooks"
-  depends=('linux-libre')
+  depends=(linux-libre=${_archpkgver})
   provides=("${_replacesarchkernel[@]/%/-armv7-chromebook=${_archpkgver}}")
   conflicts=("${_replacesarchkernel[@]/%/-armv7-chromebook}" "${_replacesoldkernels[@]/%/-armv7-chromebook}")
   replaces=("${_replacesarchkernel[@]/%/-armv7-chromebook}" "${_replacesoldkernels[@]/%/-armv7-chromebook}")
