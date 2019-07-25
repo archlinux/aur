@@ -6,13 +6,14 @@
 
 pkgname=slack-desktop-dark
 pkgver=4.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Slack Desktop (Beta) for Linux, with dark theme patch"
 arch=('x86_64')
 url="https://slack.com/downloads"
 license=('custom')
-depends=('alsa-lib' 'asar' 'gconf' 'gtk3' 'libcurl-compat' 'libsecret' 'libxss'
+depends=('alsa-lib' 'gconf' 'gtk3' 'libcurl-compat' 'libsecret' 'libxss'
          'libxtst' 'nss' 'glibc>=2.28-4' 'xdg-utils')
+makedepends=('asar')
 optdepends=('gnome-keyring')
 conflicts=('slack-desktop')
 source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgver}-amd64.deb"
