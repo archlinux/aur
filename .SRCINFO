@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-bin
 	pkgdesc = Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)
-	pkgver = 71.0.3578.98
-	pkgrel = 2
+	pkgver = 75.0.3770.142
+	pkgrel = 1
 	url = https://github.com/Eloston/ungoogled-chromium
 	arch = x86_64
 	license = BSD
@@ -28,12 +28,8 @@ pkgbase = ungoogled-chromium-bin
 	conflicts = chromium
 	conflicts = iridium
 	conflicts = ungoogled-chromium
-	source = ungoogled-chromium_71.0.3578.98-2_linux.tar.xz::https://cloud.woelkli.com/s/wtfekcXpKMkz4RP/download
-	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
-	source = chromium.desktop
-	sha256sums = d1f6cc7be0835cd2de9c1c337f5c048b9db79268f572d19461c4c20d82d41c2c
-	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
-	sha256sums = 15898507b5bda1e56e303c7e7f54b80d6363e8f77321d29067eef15f4c5deeb5
+	source = ungoogled-chromium-75.0.3770.142-1-x86_64.pkg.tar.xz::https://github.com/rtMis/ungoogled-chromium-binaries/releases/download
+	sha256sums = 5405deb13e7cdefe1e767a57beee9eae09fd4b4fcf6d46e91a9190e1a56fb96e
 
 pkgname = ungoogled-chromium-bin
 
