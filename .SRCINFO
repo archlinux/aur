@@ -1,5 +1,5 @@
 pkgbase = keeweb-desktop
-	pkgdesc = This webapp is a desktop password manager compatible with KeePass databases.
+	pkgdesc = Free cross-platform password manager compatible with KeePass
 	pkgver = 1.8.2
 	pkgrel = 2
 	url = https://github.com/keeweb/keeweb
