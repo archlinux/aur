@@ -132,11 +132,11 @@ provides=('emacs' 'emacs-seq')
 conflicts=('emacs' 'emacs-seq')
 replaces=('emacs26-git' 'emacs-seq')
 source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git")
-md5sums=('SKIP')
 # If Github access is blocked for reasons, use Savannah's servers instead.
 # Edit the config file of your local repo copy as well.
 #source=("emacs-git::git://git.sv.gnu.org/emacs.git#branch=$BRANCH")
 #source=("emacs-git::git+https://git.savannah.gnu.org/emacs.git#branch=$BRANCH")
+md5sums=('SKIP')
 
   pkgver() {
     cd "$srcdir/emacs-git"
@@ -168,8 +168,8 @@ build() {
     --with-modules
 # Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
 # dconf and gconf break font settings you set in ~/.emacs.
-# If you insist you'll need to play gymnastics with
-# set-frame-font and set-menu-font. Good luck!
+# If you insist you'll need to read that bug report in *full*.
+# Good luck!
    --without-gconf
    --without-gsettings
   )
