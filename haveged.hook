@@ -2,10 +2,14 @@
 
 run_hook ()
 {
-    echo "Starting haveged"
+    msg "Starting haveged"
 
     # start haveged running in the background
-    haveged
+    if [ "${quiet}" != "y" ] ; then
+        haveged
+    else
+        haveged > /dev/null 2>&1
+    fi
 }
 
 run_cleanuphook ()
