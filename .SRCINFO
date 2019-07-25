@@ -1,0 +1,28 @@
+pkgbase = grc-solarized
+	pkgdesc = Changed the standard colors of grc to work better with solarized colorscheme.
+	pkgver = 1.11.3
+	pkgrel = 1
+	url = https://github.com/garabik/grc
+	arch = any
+	license = GPL
+	depends = python
+	provides = grc
+	conflicts = grc
+	backup = etc/grc.conf
+	source = grc-solarized-1.11.3.tar.gz::https://github.com/garabik/grc/archive/v1.11.3.tar.gz
+	source = conf.df
+	source = conf.du
+	source = conf.ip
+	source = conf.ipaddr
+	source = conf.ls
+	source = conf.mount
+	md5sums = 17f9a0b014c771b9e4cd060113309073
+	md5sums = 4e54487d7b24c2578a8f6b6501d98767
+	md5sums = 70977a70a583eeb958c68f95c804af54
+	md5sums = fee461bceb83a41887834b084b815b35
+	md5sums = 899c8825e38443168fad2e01888308ec
+	md5sums = 7c78495f4b96096fe092a29b352abadf
+	md5sums = 230a32ef922230f90bf607a217a15b99
+
+pkgname = grc-solarized
+
