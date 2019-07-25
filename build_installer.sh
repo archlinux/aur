@@ -64,15 +64,10 @@ for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks evebackup 
     if [ -f ../$cmd ] ;then cp ../$cmd evesetup/ ;fi
     if [ ! "$cmd" = "evewine" ] ;then cp ../${cmd%.*}.desktop evesetup/ ;fi
 done
-cp ../evelauncher.shlib evesetup/evelauncher.shlib
+cp ../evesetup.shlib evesetup/evesetup.shlib
 cp ../evelauncher.sh.in evesetup/evelauncher.sh
 sed -i s,ELVER=\"\",ELVER=\"$version\", evesetup/evelauncher.sh
-grep -v '^#-' ../setup.sh.in >evesetup/setup.sh
-#-- testing only
-#- cp -f ../setup.sh.in evesetup/setup.sh
-#- sed -i 's,#- , ,' evesetup/setup.sh
-#- release="test"
-#--
+cp ../setup.sh.in evesetup/setup.sh
 sed -i s,elver=\"\",elver=\"$version\", evesetup/setup.sh
 sed -i s,elcsum=\"\",elcsum=\"$elcsum\", evesetup/setup.sh
 chmod a+x evesetup/setup.sh

@@ -2,9 +2,9 @@
 Version=1.0
 Type=Application
 Name=EVE Configuration
-Icon=winecfg
+Icon=evewinecfg
 Comment=Wine Configuration for EVE
-Exec=/usr/bin/evewinecfg
+Exec=evewinecfg
 NoDisplay=false
 Categories=Utility;Wine;
 StartupNotify=false

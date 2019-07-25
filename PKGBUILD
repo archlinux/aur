@@ -1,7 +1,7 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
 pkgver=1539902
-pkgrel=0
+pkgrel=1
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
@@ -28,7 +28,7 @@ source=("evelauncher.desktop"
         "evelauncher.sh"
         "evelauncher.sh.in"
         "evelauncher.sh.real"
-        "evelauncher.shlib"
+        "evesetup.shlib"
         "everegedit.desktop"
         "evewine"
         "evewinecfg.desktop"
@@ -66,17 +66,20 @@ package() {
         install -d "${pkgdir}/usr/share/icons"
         for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks evebackup ;do
             if [ -f "${srcdir}/$cmd" ] ;then
+                sed -i s,./evesetup.shlib,/opt/${pkgname}/lib/evesetup.shlib, "${srcdir}/$cmd"
                 install "${srcdir}/$cmd" "${pkgdir}/opt/${pkgname}/bin"
             else
                 ln -s evewine "${pkgdir}/opt/${pkgname}/bin/$cmd"
             fi
             ln -s "/opt/${pkgname}/bin/$cmd" "${pkgdir}/usr/bin/$cmd"
             if [ ! "$cmd" = "evewine" ] ;then
+                oexec=$(grep Exec= ./${cmd%.*}.desktop)
+                sed -i s,$oexec,Exec=/usr/bin/$cmd, ./${cmd%.*}.desktop
                 cp "${srcdir}/${cmd%.*}.desktop" "${pkgdir}/usr/share/applications/"
             fi
         done
         sed -i s,ELVER=\"\",ELVER=\"${pkgver}\", "${pkgdir}/opt/${pkgname}/bin/evelauncher.sh"
-        cp ${srcdir}/evelauncher.shlib ${pkgdir}/opt/${pkgname}/lib
+        cp ${srcdir}/evesetup.shlib ${pkgdir}/opt/${pkgname}/lib
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
         rm -rf ${srcdir}/evelauncher/resources/ ${srcdir}/evelauncher/plugins/
         rm -f ${srcdir}/evelauncher/*Qt* ${srcdir}/evelauncher/libcrypto*
@@ -101,23 +104,23 @@ package() {
         tar cJf ${pkgdir}/opt/${pkgname}/lib/evelauncher-${pkgver}.tar.xz evelauncher/
 }
 
-sha256sums=('f49b404341e1dd48eaa2504c83f9ff07c9a4c11e1a109c67d04167dc70d65731'
-            'ee89bb914f9c624e2d9031fa9694837f14a2ddf8d2cde4927bfedc4bfc427810'
-            '63605574731c8eddf22e32c5ffd70c5fadf06b3995d6a8a464b8d7e5e1c802fa'
+sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
+            'b5febef1a55d27af357f88079c0c7a1799971bd570080d91034115230323ef68'
+            'adb88d519b09f8593d4d1c30472d7d3d6e177bf303dbbc5d8c3360ddd57f4af2'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
-            'f772aaaf0a6951c87fa0d2bcc5f96966a81c7750940140404b001eaf42168f99'
-            'f8988be390204ce645ca37f43cdb8e395970f8d6dd36095acf08c5c7cf72833c'
-            '5eeb80f73627b2e240843f797995ad60c1ae52f9a9a61bb0653351746477e048'
-            '04d2a47524cbd132aad2fd310d56515a29310a2e693ba94ce12c65cd776a70d2'
-            '22690e393ee89703b17898038aaa37900805104e8c960b346fe1f6050edc9bce'
-            'd5047d1648550c3e54672e6b16d2fa67a323d7affa9eae2b0db16b8ed20b7d90'
-            'f34cef776c79cbd4e5b74d680f04c614c0698fd3a685b1c7cf39e4fed6519bcc'
-            '3ec6892df9109260af05fb53c1e980741b7c1b6bf1927b9fc1b1a6253b901cca'
+            'fb2b6aa2d47365cc88e7ecac6f01def985b008683bb0f9efd7873799e929c7d2'
+            'a8e604e6481b9a386269b6252852ee57812fc932f44f767982c4dbac168bb03b'
+            'cd840d3ad3a21517f30bb4979c97adaaccba2affdddaa5da2889f4fd2ba89578'
+            '546aaf5669dc3d3f1b2fff1b9a493d8ba31c19940a04fa4b9eb080e7301df4bd'
+            'c83beba543663b926d28d0eda98f1035cd73327da50f718a487763d300415a24'
+            'f438c7002eaf8e1186a838ac2e803242b7a2c98a22cf49622eb4a64cf4b202ec'
+            '04c102d6db1bb8d4159c41f32ec0aa95846c0fb519841a3c1428ab20c850e9cf'
+            'cc9b7bd4778305b542bd67d043f408c0e30fe7ef82601e7ff2d8d216a71ee904'
             '2520a9b19f2827fa2634ea2acae3a6f61e73aada1af0eb2029e95709f0c8927d'
-            '94616333dd5c61b8ff44aba26dfabe69a8e8de8bb2fcdc9a10d0ee98a56b9907'
-            '3891991a1b700b3d5a524dbeb5015fbe578baf1855066cf0cff89412df84342a'
-            '2c192fdc282fefafee5596b60bd1779668b611d386e2bf933eef51d39eac7a28'
-            'f88c7c28582b6531a021b8fcece47c906f900c48edf453dc04c349f8671cf8a2'
+            'a62632f591d464565bf5d52ff70a60e3d1a36e6b4f89735228a65f0449a72fc3'
+            '5b4d6ca26b58ce6e56099921ab7d2dbacfa7ecd49fbb8e47f8dcd05c99768ad5'
+            '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
+            '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'
             '1c3df28324c8498e34d2e789fd1f36577afa5a31bdbb278d752f7ef8c6ec5516'
             'bb63c2ea31d204f4d8eb270848674ad898ed45bbf0a9cea480611581f1149e4f'

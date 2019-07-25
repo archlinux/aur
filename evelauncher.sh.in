@@ -6,10 +6,9 @@ ELVER=""
 QTVER="5.11"
 EVEDIR="$HOME/.local/lib/EVE"
 LAUNCHER="$EVEDIR/Launcher"
-SETUPDIR="/opt/evesetup"
 WINEPATH="/usr/bin"
 
-. $SETUPDIR/lib/evelauncher.shlib
+. ./evesetup.shlib
 
 check_env
 check_wine
@@ -17,7 +16,7 @@ check_steam
 
 if [ ! -r "$LAUNCHER/translations/qt_en.qm" ] ;then
     if [ -r "$LAUNCHER/libQt5Core.so.$QTVER.0" ] ;then
-	for eta in $(ls $SETUPDIR/lib/eve-transl${QTVER}-??.tar.gz) ;do
+	for eta in $(ls ./eve-transl${QTVER}-??.tar.gz) ;do
 	    tar xf $eta -C $LAUNCHER
 	done
     fi

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. /opt/evesetup/lib/evelauncher.shlib
+. ./evesetup.shlib
 
 check_wine
 

@@ -4,7 +4,7 @@ set -e
 
 # WIP use at own risk
 
-. /opt/evesetup/lib/evelauncher.shlib
+. ./evesetup.shlib
 
 SHAREDIR=$(grep SharedCacheFolder $EVECONF | cut -d= -f2)
 BCKUPDIR=$(xdg-user-dir DOCUMENTS 2>/dev/null || true)/EVE

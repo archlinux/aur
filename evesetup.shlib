@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Evelauncher fixed values
+# evelauncher fixed values
 
 CONFDIR="$HOME/.config/CCP"
 EVECONF="$CONFDIR/EVE.conf"
@@ -9,7 +9,7 @@ EVECONF="$CONFDIR/EVE.conf"
 
 SHAREDIR="$HOME/.eve"
 
-# Evelauncher shared functions
+# evesetup shared functions
 
 check_env() {
     if [ -d "$CONFDIR" ] ;then

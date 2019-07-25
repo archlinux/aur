@@ -6,10 +6,9 @@ ELVER=""
 QTVER="5.11"
 EVEDIR="$HOME/.local/lib/EVE"
 LAUNCHER="$EVEDIR/Launcher"
-SETUPDIR="/opt/evesetup"
 WINEPATH="/usr/bin"
 
-. $SETUPDIR/lib/evelauncher.shlib
+. ./evesetup.shlib
 
 check_env
 check_wine

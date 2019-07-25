@@ -2,9 +2,9 @@
 Version=1.0
 Type=Application
 Name=EVE Backup
-Icon=archive
+Icon=archivemanager
 Comment=Backup user settings
-Exec=/usr/bin/evebackup
+Exec=evebackup
 NoDisplay=false
 Categories=Utility;Wine;
 StartupNotify=false

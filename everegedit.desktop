@@ -2,9 +2,9 @@
 Version=1.0
 Type=Application
 Name=EVE Registry Editor
-Icon=regedit
+Icon=everegedit
 Comment=Wine Registry Editor for EVE
-Exec=/usr/bin/everegedit
+Exec=everegedit
 NoDisplay=false
 Categories=Utility;Wine;
 StartupNotify=false
