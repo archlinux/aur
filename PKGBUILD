@@ -11,7 +11,7 @@
 _srcname=ffmpeg
 pkgname=ffmpeg-qsv
 pkgver=4.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video (including qsv and libfdk-aac)'
 arch=(x86_64)
 url='https://www.ffmpeg.org/'
@@ -43,8 +43,8 @@ depends=(
   libva
   libvdpau
   libvidstab.so
-  libvorbisenc.so
   libvorbis.so
+  libvorbisenc.so
   libvpx.so
   libwebp
   libx11
@@ -55,6 +55,7 @@ depends=(
   libxml2
   libxv
   libxvidcore.so
+  ocl-icd
   opencore-amr
   openjpeg2
   opus
@@ -64,7 +65,6 @@ depends=(
   xz
   zlib
   libfdk-aac
-  libmfx
   intel-media-sdk
 )
 makedepends=(
@@ -76,14 +76,6 @@ makedepends=(
 )
 optdepends=(
   'ladspa: LADSPA filters'
-  'libva-utils: Intel VA-API Media Applications and Scripts for libva'
-  'libva-intel-driver: VA-API implementation for Intel G45 and HD Graphics family'
-  'libva-mesa-driver: VA-API implementation for gallium'
-  'intel-compute-runtime: Intel(R) Graphics Compute Runtime for OpenCL(TM). Replaces Beignet for Gen8 (Broadwell) and beyond'
-  'beignet: OpenCL implementation for Intel IvyBridge+ iGPUs'
-  'opencl-mesa: OpenCL support for AMD/ATI Radeon mesa drivers'
-  'opencl-amd: OpenCL userspace driver as provided in the amdgpu-pro driver stack'
-  'opencl-nvidia: OpenCL implemention for NVIDIA'
 )
 provides=(
   ffmpeg
@@ -99,13 +91,6 @@ provides=(
 )
 conflicts=(
   ffmpeg
-  ffmpeg-full-nvenc
-  ffmpeg-nvenc
-  ffmpeg-libfdk_aac
-  ffmpeg-decklink
-  ffmpeg-git
-  ffmpeg-full-git
-  ffmpeg-semifull-git
   ffmpeg-qsv-git
 )
 source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}" 'LICENSE')
