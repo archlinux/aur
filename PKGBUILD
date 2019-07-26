@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=ethminer-bin
-pkgver=0.17.1
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Ethereum miner with OpenCL, CUDA and stratum support (precompiled binary)"
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/ethereum-mining/ethminer"
 license=('MIT')
 provides=('ethminer')
 conflicts=('ethminer')
-source=("https://github.com/ethereum-mining/ethminer/releases/download/v${pkgver}/ethminer-${pkgver}-linux-x86_64.tar.gz")
-md5sums=('aa3a0e9fcc03331a0b33c67284cf6264')
+source=("https://github.com/ethereum-mining/ethminer/releases/download/v${pkgver}/ethminer-${pkgver}-cuda-9-linux-x86_64.tar.gz")
+md5sums=('23bad8d12c43fc3e3a0568dbc8f19c85')
 options=(!strip)
 
 package() {
