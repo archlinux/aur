@@ -26,25 +26,32 @@ _buildtype="Release"
 
 build() {
 
+  # Create a build directory
+  mkdir -p "${srcdir}/${_name}/build"
+  cd "${srcdir}/${_name}/build"
+
   msg "Starting CMake (build type: ${_buildtype})"
 
-  cd "${srcdir}/${_name}/"
-
-  cmake . \
-    -DCMAKE_PREFIX_PATH='/usr' \
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=${_buildtype} \
     -DCMAKE_INSTALL_PREFIX='/usr'
 
   msg "Building the project"
   make
-}
 
+}
 
 package() {
+
+  cd "${srcdir}/${_name}"
+
   msg "Installing files"
 
-  mkdir $pkgdir/usr
-  cp -a $srcdir/${_name}/include $pkgdir/usr/
-  chown -R root:root $pkgdir/usr
-  chmod -R 755 $pkgdir/usr
-}
+  mkdir -p "${pkgdir}/usr/include/eli"
+  # include
+  cp -r include/eli/* ${pkgdir}/usr/include/eli
 
+  cd "${srcdir}/${_name}/build"
+  cp -r include/eli/* ${pkgdir}/usr/include/eli
+
+}
