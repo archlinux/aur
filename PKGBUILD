@@ -13,14 +13,14 @@ _node_version="v11.14.0"
 
 pkgname=wechat-devtools
 pkgver=${_wechat_devtools_ver}
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="WeChat Devtools Linux version."
 arch=("x86_64")
 url="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/devtools.html"
 license=('unknown')
 depends=('wine' 'gconf')
-makedepends=('p7zip' 'nvm')
+makedepends=('p7zip' 'nvm' 'python2')
 source=("nwjs.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs_ver}/nwjs-sdk-v${_nwjs_ver}-linux-x64.tar.gz"
         "${_wechat_devtools_exe}::${_wechat_devtools_url}"
         "wechat-devtools.desktop"
@@ -41,18 +41,31 @@ build() {
     nvm install ${_node_version}
     nvm use ${_node_version}
 
+    npm install nw-gyp -g
+
+    # node bin
     cp $(which node) node
 
+    # fix cli
     cd ${srcdir}/wechat_devtools/\$APPDATA/Tencent/微信开发者工具/package.nw
     sed -i 's#AppData/Local/\${global.userDirName}/User Data/Default#.config/\${global.userDirName}/Default#g' ./js/common/cli/index.js
     sed -i 's#USERPROFILE#HOME#g' ./js/common/cli/index.js
 
     # rebuild node-sync-ipc
-    cd ./node_modules/node-sync-ipc
+    cd ${srcdir}/wechat_devtools/\$APPDATA/Tencent/微信开发者工具/package.nw/node_modules/
+
+    ## build node-sync-ipc with node-gyp
+    cd node-sync-ipc
     npm install
     cd ..
-    rm -rf node-sync-ipc-nwjs
-    cp -r node-sync-ipc node-sync-ipc-nwjs
+
+    ## build node-sync-ipc-nwjs with nw-gyp
+    cd node-sync-ipc-nwjs
+    npm install
+    ln -s $(which python2) python # FIXME: how to set python path for nw-gyp?
+    PATH=.:$PATH nw-gyp rebuild --target=${_nwjs_ver}
+    rm python
+    cd ..
 
     nvm deactivate
 }
