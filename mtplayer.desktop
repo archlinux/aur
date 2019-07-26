@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=AudioVideo
+Comment=Access to the Mediathek of different tv stations
+Comment[de]=Durchsucht die Online-Mediatheken verschiedener Sender
+Exec=mtplayer
+GenericName=MTPlayer
+Icon=MediathekView
+Name=MTPlayer
+StartupNotify=true
+Terminal=false
+Type=Application
