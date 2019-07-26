@@ -1,0 +1,4 @@
+post_install() {
+	echo -e "\nPlease execute the following command by yourself:"
+	echo "sudo usermod -a -G dialout <user>"
+}
