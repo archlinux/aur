@@ -5,7 +5,7 @@ _cargo=0.37.0
 
 pkgname=mingw-w64-rust-bin
 pkgver=1.36.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency (PLEASE READ COMMENTS FIRST) (official build, mingw-w64)"
 arch=('x86_64')
 url="https://www.rust-lang.org"
@@ -91,6 +91,14 @@ package() {
   popd
   install -dm755 "${pkgdir}/usr/x86_64-w64-mingw32/bin" && pushd "${pkgdir}/usr/x86_64-w64-mingw32/bin"
   ln -sf "../../../opt/${_pkgname}/lib/rustlib/x86_64-pc-windows-gnu/lib/"*.dll .
+  popd
+
+  # use system MinGW provided crt2.o and dllcrt2.o
+  pushd "${pkgdir}/opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib"
+  ln -sf "../../../../../../usr/i686-w64-mingw32/lib/"{crt2.o,dllcrt2.o} .
+  popd
+  pushd "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-pc-windows-gnu/lib"
+  ln -sf "../../../../../../usr/x86_64-w64-mingw32/lib/"{crt2.o,dllcrt2.o} .
   popd
 
   # strip
