@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MaixPy IDE
+Exec=maixpy-ide %f
+Icon=
+Comment=Micropython env for Sipeed Maix boards
+Terminal=false
+StartupNotify=true
+Categories=Development;IDE;

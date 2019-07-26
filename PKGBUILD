@@ -1,7 +1,7 @@
 # Maintainer: Masanori Ohgita <mp_aur[at]ohgita[dot]info>
 pkgname=maixpy-ide
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Micropython env for Sipeed Maix boards"
 url="https://github.com/sipeed/MaixPy"
 arch=('x86_64')
