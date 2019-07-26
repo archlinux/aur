@@ -63,12 +63,12 @@ _enable_acs_override="y"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.2
-_minor=2
+_minor=3
 _srcname=linux-${_major}
 _clr=${_major}.2-807
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -341,7 +341,7 @@ done
 
 sha256sums=('54ad66f672e1a831b574f5e704e8a05f1e6180a8245d4bdd811208a6cb0ac1e7'
             'SKIP'
-            '729084da258dd41195aae7f6c897b92f2e9355c0f9d28beec1fb8e67984afdf0'
+            'ae8f27de1cc5f3c575a09d7d31abcb0be131ab0e17dd220c1f409f957ea2d035'
             'SKIP'
             '74ec7415988d40fa53686d994cf8cb27accdbd35c5373c4c3afc2e93372ebba5'
             '2466fb4aecc66d1b258b4cbdb2f215b5099f266d8c4386bb62ad1a0acd0caf5b'
