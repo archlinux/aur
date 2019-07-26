@@ -1,15 +1,17 @@
-# Maintainer: KingofToasters <dev at sgregoratto dot me>
+# Maintainer: KingofToasters <dev@sgregoratto.me>
 pkgname=mrsh-git
-pkgver=r342.7f363b2
+pkgver=r417.a2f07ab
 pkgrel=2
 pkgdesc='A minimal POSIX shell'
 url='https://git.sr.ht/~emersion/mrsh'
 license=('custom: MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=('git' 'meson')
+optdepends=('libedit: alternate readline library')
 provides=('mrsh')
 source=("${pkgname%-git}::git+$url")
 sha256sums=('SKIP')
+install="mrsh-git.install"
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
