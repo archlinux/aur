@@ -6,7 +6,7 @@
 
 pkgname=mingw-w64-vulkan-icd-loader
 _pkgname=Vulkan-Loader
-pkgver=1.1.97
+pkgver=1.1.114
 pkgrel=1
 pkgdesc="Vulkan Installable Client Driver (ICD) Loader (mingw-w64)"
 arch=(any)
@@ -17,19 +17,29 @@ makedepends=(mingw-w64-cmake mingw-w64-vulkan-headers python-lxml)
 depends=(mingw-w64-crt)
 options=(!buildflags staticlibs !strip !emptydirs)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/${_pkgname}/archive/v${pkgver}.tar.gz"
-        "001-build-fix.patch")
-sha256sums=('fe76a062b408e0dddc9214a86b68774b744450f76fd6ccaa40eab9df1979db49'
-            '64ef57d8551a0b33f63aa98a06c276d5e8e24d9b4ff27347baa8fcb2a39c1295')
+        "001-build-fix.patch"
+        "002-proper-def-files-for-32bit.patch"
+        "003-generate-pkgconfig-files.patch")
+sha256sums=('b5dd14f51f80de38d93dbf25b6a0232e3621507b97122a30534d39a82d89fa6f'
+            '64ef57d8551a0b33f63aa98a06c276d5e8e24d9b4ff27347baa8fcb2a39c1295'
+            '0182a4c25214fd63290396a23d162dd1e523232a5746e77bec2de1616de31c59'
+            '5c189b3f76fa53ad12077cd8932423a0cf385f9464cdde60ba711589ccde19ad')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}/loader"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
   # From the PedroHLC's aur package mingw-w64-vulkan-loader
   # which is based of https://github.com/Alexpux/MINGW-packages/blob/master/mingw-w64-vulkan-loader/PKGBUILD
+  patch -p1 -i "${srcdir}/001-build-fix.patch"
+  patch -p1 -i "${srcdir}/002-proper-def-files-for-32bit.patch"
+  patch -p1 -i "${srcdir}/003-generate-pkgconfig-files.patch"
+  cd loader
   sed -i'' -E 's/#include <([^>]+)>/#include <\L\1>/g' *.h *.c
   sed -i'' -E 's/target_link_libraries\(([^\)]+)\)/target_link_libraries\(\L\1\)/g' CMakeLists.txt
-  patch -p2 -i "${srcdir}/001-build-fix.patch"
+  # revert back just the vulkan::headers caused by previous sed
+  sed -i'' -E 's/vulkan::headers/Vulkan::Headers/g' CMakeLists.txt
 
   # Added also this because __declspec(thread) was being ultimately ignored,
   # making a non-tls variable of a tls variable.
@@ -67,14 +77,7 @@ package() {
     make DESTDIR="${pkgdir}" install
     popd
     install -Dm644 "LICENSE.txt" "${pkgdir}/usr/${_arch}/share/licenses/vulkan-loader/LICENSE"
-    install -d "${pkgdir}/usr/${_arch}/lib/pkgconfig"
-    sed -e "s/@CMAKE_INSTALL_PREFIX@/\/usr\/${_arch}/g" \
-      -e "s/@CMAKE_INSTALL_LIBDIR@/lib/g" \
-      -e "s/@CMAKE_PROJECT_NAME@/Vulkan-Loader/g" \
-      -e "s/@VK_API_VERSION@/${pkgver}/g" \
-      -e "s/-lvulkan/-lvulkan-1/g" \
-      -e "s/@PRIVATE_LIBS@/-ladvapi32 -lcfgmgr32/g" \
-      loader/vulkan.pc.in > "${pkgdir}/usr/${_arch}/lib/pkgconfig/vulkan.pc"
+
     ${_arch}-strip --strip-unneeded "${pkgdir}/usr/${_arch}/bin/"*.dll
     ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.a
   done
