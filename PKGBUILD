@@ -18,7 +18,7 @@ optdepends=("gnome-keyring: for storing passwords in GNOME keyring"
             "kdialog: needed for file dialogs in KDE"
             "kwallet: for storing passwords in KWallet"
             "pepper-flash: support for Flash content")
-source=("ungoogled-chromium-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz::https://github.com/rtMis/ungoogled-chromium-binaries/releases/download")
+source=("https://github.com/rtMis/ungoogled-chromium-binaries/releases/download/${pkgver}-${pkgrel}/ungoogled-chromium-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz")
 sha256sums=("5405deb13e7cdefe1e767a57beee9eae09fd4b4fcf6d46e91a9190e1a56fb96e")
 
 package() {
