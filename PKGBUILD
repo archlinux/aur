@@ -23,4 +23,6 @@ package() {
 	cp -av etc usr "$pkgdir"
 	# OCD
 	chmod -x "$pkgdir"/usr/share/*/*.json
+	# bundled openssl 1.0.1d
+	rm "$pkgdir"/usr/lib/dokobit-plugin/libcrypto.so
 }
