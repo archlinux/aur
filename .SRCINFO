@@ -9,6 +9,7 @@ pkgbase = openvsp
 	makedepends = cmake
 	depends = cblas
 	depends = cminpack
+	depends = cpptest
 	depends = eigen
 	depends = fltk
 	depends = freeglut

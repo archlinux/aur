@@ -9,6 +9,7 @@ url='http://www.openvsp.org'
 license=('NASA OPEN SOURCE AGREEMENT VERSION 1.3')
 depends=('cblas'
          'cminpack'
+         'cpptest'
          'eigen'
          'fltk'
          'freeglut'
@@ -46,8 +47,13 @@ build() {
   cmake .. \
         -DCMAKE_BUILD_TYPE=${_buildtype} \
         -DCMAKE_PREFIX_PATH='/usr' \
+        -DVSP_USE_SYSTEM_CPPTEST=true \
+        -DVSP_USE_SYSTEM_LIBXML2=true \
+        -DVSP_USE_SYSTEM_EIGEN=true \
         -DVSP_USE_SYSTEM_FLTK=true \
-        -DVSP_USE_SYSTEM_GLEW=true
+        -DVSP_USE_SYSTEM_GLM=true \
+        -DVSP_USE_SYSTEM_GLEW=true \
+        -DVSP_USE_SYSTEM_CMINPACK=true
 
   msg "Building the project"
   make || return 0
