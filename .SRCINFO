@@ -10,6 +10,7 @@ pkgbase = openvsp-git
 	makedepends = git
 	depends = cblas
 	depends = cminpack
+	depends = code-eli
 	depends = cpptest
 	depends = eigen
 	depends = fltk
