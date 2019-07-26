@@ -1,6 +1,6 @@
 pkgbase = termius
 	pkgdesc = Desktop SSH Client
-	pkgver = 4.9.2
+	pkgver = 4.9.5
 	pkgrel = 1
 	url = https://www.termius.com/
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = termius
 	depends = libxtst
 	depends = nss
 	depends = libxss
-	source = termius-4.9.2.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_33.snap
+	source = termius-4.9.5.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_34.snap
 	source = termius.desktop
 	source = tos.html
-	sha256sums = 0050d038fba82d70a67ff619ffaf7f2f7caf3d6521be88198f05fb759dd076a3
+	sha256sums = bf45900f01872f28b9cba51569a308bf7be49db4ca5b3af98498db85229be026
 	sha256sums = a64e00e3fb2f3d3b81e0f4492e339ab72c61572f4e70b2268edd94c9e69acf1b
 	sha256sums = 9c969cc82314240860737dc09d48970271c798c9b1116ceb91556f75959788a2
 
