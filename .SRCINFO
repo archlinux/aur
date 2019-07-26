@@ -8,6 +8,7 @@ pkgbase = sisl-git
 	license = AGPL-3.0
 	makedepends = cmake
 	makedepends = git
+	provides = sisl
 	source = git+https://github.com/SINTEF-Geometry/SISL.git
 	sha256sums = SKIP
 

@@ -9,6 +9,7 @@ license=('AGPL-3.0')
 depends=()
 optdepends=()
 makedepends=('cmake' 'git')
+provides=('sisl')
 _name=SISL
 source=("git+https://github.com/SINTEF-Geometry/${_name}.git")
 sha256sums=('SKIP')
