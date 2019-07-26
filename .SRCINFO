@@ -1,6 +1,6 @@
 pkgbase = flynote-git
 	pkgdesc = A program to take note on desktop like a Post-It and share on LAN
-	pkgver = r51.25b1705
+	pkgver = r53.57a08ba
 	pkgrel = 1
 	url = https://github.com/thibsc/flynote
 	arch = any

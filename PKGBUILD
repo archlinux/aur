@@ -1,7 +1,7 @@
 # Maintainer: ThiBsc <thibsc at tutanota dot com>
 pkgname=flynote-git
 _gitname=flynote
-pkgver=r51.25b1705
+pkgver=r53.57a08ba
 pkgrel=1
 pkgdesc="A program to take note on desktop like a Post-It and share on LAN"
 arch=('any')
