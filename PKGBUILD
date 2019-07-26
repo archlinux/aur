@@ -3,7 +3,7 @@
 
 pkgname=ssvnc
 pkgver=1.0.29
-pkgrel=8
+pkgrel=9
 pkgdesc="SSL/SSH VNC viewer"
 arch=('i686' 'x86_64')
 url="http://www.karlrunge.com/x11vnc/ssvnc.html"
@@ -22,7 +22,7 @@ md5sums=('52201aeb0417c2a0fe83639e52da6ae5'
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p1 < "$srcdir/openssl1.1.patch"
-  patch -p0 < "../../Makefile.patch"
+  patch -p0 < "$srcdir/Makefile.patch"
 }
 
 build() {
