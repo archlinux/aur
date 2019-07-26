@@ -1,6 +1,6 @@
 # Maintainer: Frédéric Potvin <frederic.potvin@platform.sh>
 pkgname=platformsh-cli
-pkgver='3.44.0'
+pkgver='3.45.0'
 pkgrel=1
 pkgdesc="Platform.sh CLI"
 arch=('any')
@@ -19,7 +19,7 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.phar::https://github.com/platformsh/platformsh-cli/releases/download/v$pkgver/platform.phar")
-sha256sums=('f1620dfd149fd17071c7bb538eb0b8ccb847d29dd13169ace67ceab8c2a63585')
+sha256sums=('5056bf2b35968c157d9f93b667fe621b3339e0531c0fb54be63b3ef53d6e0756')
 noextract=('$pkgname-$pkgver.phar')
 
 build() {
