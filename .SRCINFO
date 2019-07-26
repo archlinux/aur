@@ -1,7 +1,7 @@
 pkgbase = genn
 	pkgdesc = GeNN: GPU-enhanced neural networks (version 4)
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/genn-team/genn
 	install = genn.install
