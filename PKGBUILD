@@ -13,7 +13,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'patchelf')
-source=("$srcdir/$_pkgname::git+https://github.com/sccn/liblsl.git")
+source=("$_pkgname::git+https://github.com/sccn/liblsl.git")
 sha384sums=('SKIP')
 
 pkgver() {

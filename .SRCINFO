@@ -11,8 +11,7 @@ pkgbase = liblsl-git
 	depends = gcc-libs
 	provides = liblsl
 	conflicts = liblsl
-	source = /liblsl::git+https://github.com/sccn/liblsl.git
+	source = liblsl::git+https://github.com/sccn/liblsl.git
 	sha384sums = SKIP
 
 pkgname = liblsl-git
-
