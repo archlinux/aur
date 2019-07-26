@@ -1,13 +1,13 @@
 pkgbase = refind-theme-dreary-git
 	pkgdesc = A gloomy rEFInd theme based on evanpurkhiser/rEFInd-minimal and lukechilds/refind-ambience
-	pkgver = r8.cdbabad
+	pkgver = r16.b745a78
 	pkgrel = 1
-	url = https://github.com/stairmast0r/refind-dreary
+	url = https://github.com/dheishman/refind-dreary
 	arch = any
 	license = none
 	makedepends = git
 	depends = refind-efi
-	source = git+https://github.com/stairmast0r/refind-dreary.git
+	source = refind-theme-dreary-git::git+https://github.com/dheishman/refind-dreary.git#branch=master
 	md5sums = SKIP
 
 pkgname = refind-theme-dreary-git
