@@ -8,7 +8,6 @@ pkgbase = mantid-term
 	license = GPL3
 	makedepends = git
 	makedepends = intltool
-	makedepends = gtk-doc
 	makedepends = scdoc
 	makedepends = pkg-config
 	makedepends = sed
@@ -19,7 +18,7 @@ pkgbase = mantid-term
 	depends = python-gobject
 	depends = gobject-introspection
 	depends = python-yaml
-	source = git+https://github.com/omgold/mantid-term#commit=8076ea7cc3a4c106d4e2a9e586a42c85e82162bc
+	source = git+https://github.com/omgold/mantid-term#commit=4238bec551ee634a99c4ec2aad0934fa070ceb58
 	source = git+https://github.com/thestinger/vte-ng#commit=dd74ae7c06e8888af2fc090ac6f8920a9d8227fb
 	sha256sums = SKIP
 	sha256sums = SKIP
