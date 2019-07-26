@@ -1,7 +1,7 @@
 # Maintainer: Aleksandar Trifunović <akstrfn@gmail.com>
 
 pkgname=valhalla
-pkgver=3.0.1
+pkgver=3.0.7
 pkgrel=1
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64')
@@ -9,31 +9,13 @@ url="https://github.com/valhalla/valhalla"
 license=('custom:MIT')
 depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'lua' 'libspatialite')
 makedepends=('cmake' 'git' 'vim' 'jq' 'boost' 'rapidjson')
-source=("${url}/archive/$pkgver.tar.gz")
-sha256sums=('7063e97ccae415a3bb56f5b40923f1f626f41d2dc805e5f5aa24fb5ff6d20f8e')
+source=("$pkgname-$pkgver::git+${url}#tag=$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  git clone https://github.com/scrosby/OSM-binary third_party/OSM-binary
-  git clone https://github.com/valhalla/osmlr-tile-spec third_party/OSMLR
-  git clone https://github.com/tronkko/dirent third_party/dirent
-  git clone https://github.com/HowardHinnant/date third_party/date
-
-  cd "$srcdir/$pkgname-$pkgver"/third_party/OSM-binary && git checkout 4e32fa2 -q
-  cd "$srcdir/$pkgname-$pkgver"/third_party/OSMLR && git checkout 0f4000e -q
-  cd "$srcdir/$pkgname-$pkgver"/third_party/dirent && git checkout 287ba92 -q
-  cd "$srcdir/$pkgname-$pkgver"/third_party/date && git checkout 3e82a52 -q
-
-  cd "$srcdir/$pkgname-$pkgver"
-
-  # TODO this seems fixed but tests are failing upstream anyway
-  # There is probably a better way to solve this. Sources:
-  # https://groups.google.com/forum/#!topic/spatialite-users/YXnofHixXsM
-  # https://github.com/valhalla/valhalla/issues/354
-  sed -i 's/mod_spatialite/\/usr\/lib\/mod_spatialite/' src/mjolnir/admin.cc
-
-  # https://github.com/valhalla/valhalla/issues/1570
-  sed -i 's/GeometryFactory::unique_ptr gf = GeometryFactory::create();/GeometryFactory::Ptr gf = GeometryFactory::create();/' src/mjolnir/valhalla_build_admins.cc
+  git submodule update --init --recursive
+  rm -rf third_party/rapidjson
 }
 
 build() {
@@ -51,14 +33,15 @@ build() {
     -DENABLE_SERVICES=On \
     -DENABLE_CCACHE=Off \
     -DENABLE_HTTP=On \
-    -DBUILD_SHARED_LIBS=On
+    -DBUILD_SHARED_LIBS=On \
+    -DENABLE_TESTS=Off
 
   cmake --build build
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cmake --build build -- check
+  # cmake --build build -- check
 }
 
 package() {

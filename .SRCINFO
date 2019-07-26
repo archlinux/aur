@@ -1,6 +1,6 @@
 pkgbase = valhalla
 	pkgdesc = Routing engine for OpenStreetMap.
-	pkgver = 3.0.1
+	pkgver = 3.0.7
 	pkgrel = 1
 	url = https://github.com/valhalla/valhalla
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = valhalla
 	depends = python
 	depends = lua
 	depends = libspatialite
-	source = https://github.com/valhalla/valhalla/archive/3.0.1.tar.gz
-	sha256sums = 7063e97ccae415a3bb56f5b40923f1f626f41d2dc805e5f5aa24fb5ff6d20f8e
+	source = valhalla-3.0.7::git+https://github.com/valhalla/valhalla#tag=3.0.7
+	sha256sums = SKIP
 
 pkgname = valhalla
 
