@@ -1,0 +1,26 @@
+pkgbase = i3status-rust-bin
+	pkgdesc = Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/greshake/i3status-rust
+	arch = x86_64
+	license = GPL3
+	depends = libpulse
+	optdepends = alsa-utils: For the volume block
+	optdepends = bluez: For the bluetooth block
+	optdepends = curl: For the weather block
+	optdepends = ibus: For the ibus block
+	optdepends = lm_sensors: For the temperature block
+	optdepends = networkmanager: For the networkmanager block
+	optdepends = powerline-fonts: For all themes using the powerline arrow char
+	optdepends = pulseaudio: For the volume block
+	optdepends = speedtest-cli: For the speedtest block
+	optdepends = ttf-font-awesome-4: For the awesome icons
+	optdepends = upower: For the battery block
+	provides = i3status-rust
+	conflicts = i3status-rust
+	source = https://github.com/greshake/i3status-rust/releases/download/v0.10.0/i3status-rs
+	sha256sums = e01cf84eec2c5804c793a3ef6ae41a95ce81959af792707a62abad96325a81b2
+
+pkgname = i3status-rust-bin
+
