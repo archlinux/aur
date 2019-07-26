@@ -33,7 +33,8 @@ build() {
 
 	cmake .. \
 		-DCMAKE_BUILD_TYPE="${_buildtype}" \
-		-DCMAKE_INSTALL_PREFIX="/usr"
+               -DCMAKE_INSTALL_PREFIX="/usr" \
+               -DBUILD_SHARED_LIBS=ON
 
 	msg "Building the project"
 	make
