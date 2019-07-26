@@ -1,14 +1,14 @@
 pkgbase = hek
 	pkgdesc = Music library checker
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/dunon/hek
 	arch = any
 	license = GPL3
 	depends = python
 	depends = python-mutagen
-	source = https://github.com/dunon/hek/archive/0.1.2.tar.gz
-	md5sums = 484f1773234e8773d4e9a18baa519303
+	source = https://github.com/dunon/hek/archive/0.1.3.tar.gz
+	md5sums = f7d1f9803d8a2a00dec78bc43fa3b73d
 
 pkgname = hek
 
