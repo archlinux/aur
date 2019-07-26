@@ -1,6 +1,6 @@
 # Maintainer: Sosthène Guédon <sosthene.gued@gmail.com>
 pkgname=qcalc
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Simple Qt calculator"
 arch=('x86_64')
@@ -15,8 +15,8 @@ makedepends=(
   'gzip'
 
 )
-source=("https://gitlab.com/SostheneGuedon/qcalc/-/archive/v1.1/qcalc-v1.1.tar.gz")
-md5sums=('abe95f4bb74c6f2562aa8adf5c53898b')
+source=("https://gitlab.com/SostheneGuedon/qcalc/-/archive/v$pkgver/qcalc-v$pkgver.tar.gz")
+md5sums=('b58b32cb4876dc0389e0f5e79ebdf0db')
 
 build() {
   cd $pkgname-v$pkgver
