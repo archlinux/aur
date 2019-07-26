@@ -30,5 +30,5 @@ package() {
 	install -Dm644 "opt/$_pkgname/.install4j/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -Dm644 resources/license.html "$pkgdir/usr/share/licenses/$pkgname/LICENSE.html"
 	install -d "$pkgdir/usr/bin"
-	ln -sf "/opt/$pkgname/$_pkgname" "$pkgdir/usr/bin/$pkgname"
+	ln -s "/opt/$pkgname/$_pkgname" "$pkgdir/usr/bin/$pkgname"
 }
