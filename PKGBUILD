@@ -3,7 +3,7 @@
 
 pkgname=ssvnc
 pkgver=1.0.29
-pkgrel=9
+pkgrel=10
 pkgdesc="SSL/SSH VNC viewer"
 arch=('i686' 'x86_64')
 url="http://www.karlrunge.com/x11vnc/ssvnc.html"
@@ -11,7 +11,7 @@ license=('GPL')
 groups=('network')
 depends=('libjpeg>=7' 'libxaw' 'openssl' 'java-runtime' 'tk' 'tcl' 'stunnel')
 makedepends=('imake' 'java-environment')
-optdepends=('perl' 'xterm' 'smbclient' 'avahi' 'stunnel')
+optdepends=('perl' 'xterm' 'smbclient' 'avahi')
 source=(http://downloads.sf.net/sourceforge/$pkgname/$pkgname-$pkgver.src.tar.gz
         openssl1.1.patch
         Makefile.patch)

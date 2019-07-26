@@ -1,7 +1,7 @@
 pkgbase = ssvnc
 	pkgdesc = SSL/SSH VNC viewer
 	pkgver = 1.0.29
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.karlrunge.com/x11vnc/ssvnc.html
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,6 @@ pkgbase = ssvnc
 	optdepends = xterm
 	optdepends = smbclient
 	optdepends = avahi
-	optdepends = stunnel
 	source = http://downloads.sf.net/sourceforge/ssvnc/ssvnc-1.0.29.src.tar.gz
 	source = openssl1.1.patch
 	source = Makefile.patch
