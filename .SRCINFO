@@ -1,6 +1,6 @@
 pkgbase = solaar-git
 	pkgdesc = Device manager for Logitech's Unifying receiver peripherals
-	pkgver = 0.9.2.r247.gb852903
+	pkgver = 0.9.2.r281.g2aab7f7
 	pkgrel = 1
 	url = https://pwr.github.com/Solaar/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = solaar-git
 	depends = python-pyudev
 	provides = solaar
 	conflicts = solaar
-	source = solaar-git::git+https://github.com/pwr/Solaar.git
+	source = solaar-git::git+https://github.com/pwr-Solaar/Solaar.git
 	sha512sums = SKIP
 
 pkgname = solaar-git
