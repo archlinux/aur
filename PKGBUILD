@@ -34,7 +34,7 @@ noextract=('android_amd64.img'
 	'houdini_z.sfs'
 	'libhoudini.so')
 sha256sums=('6b04cd33d157814deaf92dccf8a23da4dc00b05ca6ce982a03830381896a8cca'
-            '89fce04f5bc99b213955d0a4c2fdddffd2a039dc4034fc967ce372646be90187'
+            'c3c0c52c35632a69e58d4f6cfff6e1bc7588f0042a61a8d4cc13e5a9dfc03454'
             '56fd08c448840578386a71819c07139122f0af39f011059ce728ea0f3c60b665'
             '7eedc42015e6fb84a11a406a099241efccc20d4e020d476335a5fdb6e69a33d2'
             '2d15d126e46ea933a92fcc6dd30ad2c93d063af322fc1ba84aaa4f3e75d84e68')
