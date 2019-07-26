@@ -5,7 +5,7 @@ pkgsrc=qpicospeaker
 pkgver=r21.69214be
 pkgrel=1
 pkgdesc='Qt GUI for the svox-pico text-to-speech engine'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'arm')
 url='https://github.com/Shadowsith/qpicospeaker'
 licence=('MIT')
 depends=('sox' 'svox-pico-bin')
@@ -34,6 +34,7 @@ pkgver() {
 }
 
 build() {
+    git submodule update --init --recursive
     cd build
     qmake ../qpicospeaker/qpicospeaker.pro
     make
