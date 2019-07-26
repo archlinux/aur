@@ -9,6 +9,7 @@ pkgbase = libiges-git
 	makedepends = git
 	makedepends = cmake
 	depends = gcc
+	optdepends = sisl
 	provides = libiges
 	conflicts = libiges
 	source = git+https://github.com/cbernardo/libIGES.git
