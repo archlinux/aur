@@ -1,6 +1,6 @@
 pkgbase = mpd-light-pulse
 	pkgdesc = Flexible, powerful, server-side application for playing music. Light version without libmpdclient, openal, ao, ffmpeg, jack, modplug, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, smbclient, zziplib, gme, mms support.
-	pkgver = 0.21.8
+	pkgver = 0.21.11
 	pkgrel = 1
 	url = https://www.musicpd.org/
 	install = mpd.install
@@ -24,14 +24,14 @@ pkgbase = mpd-light-pulse
 	depends = libsamplerate
 	depends = libsoxr
 	depends = libcdio-paranoia
-	provides = mpd=0.21.8
+	provides = mpd=0.21.11
 	conflicts = mpd
 	replaces = mpd
 	backup = etc/mpd.conf
-	source = https://www.musicpd.org/download/mpd/0.21/mpd-0.21.8.tar.xz
+	source = https://www.musicpd.org/download/mpd/0.21/mpd-0.21.11.tar.xz
 	source = mpd.tmpfile
 	source = mpd.conf
-	sha256sums = 23e083f11356c66bfb4a53c00568d370f57707df56496b299c414aaae59a9757
+	sha256sums = d32ef88b4404b188c4505462cfd3fb695463800c9d062e5148f782ca227a6cbd
 	sha256sums = c1683ba35774c85e16c70e89f7e2ed1c09619512b1a273daabbd5e34d40439bd
 	sha256sums = e213c108cd0e076b5cc07091707ef75d74d9ac8c779d0c0128cd0aa69617f8a0
 
