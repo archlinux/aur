@@ -1,6 +1,6 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
 pkgname=genn
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 epoch=2
 pkgdesc="GeNN: GPU-enhanced neural networks (version 4)"
