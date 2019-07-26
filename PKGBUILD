@@ -4,13 +4,13 @@ _jdk="java-8-openjdk"
 
 _pkgname=skide
 pkgname=${_pkgname}-git
-pkgver=r318.95473c2
+pkgver=r322.20e1ff1
 pkgrel=1
 pkgdesc="A fully tooled Open Source Editor for Skript providing IDE like features"
 arch=("any")
 url="https://skide.21xayah.com/"
 license=("GPL2")
-depends=("jre8-openjdk" "java-openjfx")
+depends=("jre8-openjdk" "java8-openjfx")
 makedepends=("jdk8-openjdk" "gradle" "kotlin" "git")
 source=("$pkgname::git+https://github.com/SavageLLC/SkIDE.git"
         "skide.desktop")

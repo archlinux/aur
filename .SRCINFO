@@ -1,6 +1,6 @@
 pkgbase = skide-git
 	pkgdesc = A fully tooled Open Source Editor for Skript providing IDE like features
-	pkgver = r318.95473c2
+	pkgver = r322.20e1ff1
 	pkgrel = 1
 	url = https://skide.21xayah.com/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = skide-git
 	makedepends = kotlin
 	makedepends = git
 	depends = jre8-openjdk
-	depends = java-openjfx
+	depends = java8-openjfx
 	source = skide-git::git+https://github.com/SavageLLC/SkIDE.git
 	source = skide.desktop
 	sha512sums = SKIP
