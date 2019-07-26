@@ -1,7 +1,7 @@
 pkgbase = ssvnc-nojava
 	pkgdesc = SSL/SSH VNC viewer no java
 	pkgver = 1.0.29
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.karlrunge.com/x11vnc/ssvnc.html
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = ssvnc-nojava
 	makedepends = imake
 	depends = libjpeg>=7
 	depends = libxaw
+	depends = openssl
 	depends = tk
+	depends = tcl
 	optdepends = perl
 	optdepends = xterm
 	optdepends = smbclient
@@ -19,7 +21,11 @@ pkgbase = ssvnc-nojava
 	provides = ssvnc
 	conflicts = ssvnc
 	source = http://downloads.sf.net/sourceforge/ssvnc/ssvnc-1.0.29.src.tar.gz
+	source = openssl1.1.patch
+	source = Makefile.patch
 	md5sums = 52201aeb0417c2a0fe83639e52da6ae5
+	md5sums = 6a119a5748a231f63c96044a2761845f
+	md5sums = 7d35673003f4f25a046c48f803e76e65
 
 pkgname = ssvnc-nojava
 
