@@ -1,0 +1,26 @@
+pkgbase = squeekboard-git
+	pkgdesc = Basic keyboard, blazing the path of modern Wayland keyboards
+	pkgver = r918.d8f48cc
+	pkgrel = 1
+	url = https://source.puri.sm/Librem5/squeekboard
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = meson
+	makedepends = intltool
+	makedepends = gtk-doc
+	depends = gtk3
+	depends = libcanberra
+	depends = wayland
+	depends = libcroco
+	provides = squeekboard
+	conflicts = squeekboard
+	source = git+https://source.puri.sm/Librem5/squeekboard.git
+	sha256sums = SKIP
+
+pkgname = squeekboard-git
+
