@@ -51,10 +51,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _major=5.2
-_minor=2
+_minor=3
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -63,7 +63,7 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd
              'graphviz' 'imagemagick')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-_bfq_path="bfq-paolo-dev-lucjan-for-5.2.1"
+_bfq_path="bfq-paolo-dev-lucjan-for-5.2.3"
 _bfq_patch="0001-block-bfq-dev-lucjan.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
@@ -382,10 +382,10 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('71e96393157e700990fb5a114107033120041e951a51434e769f4b985bf6d67005ba5f96e8a4125b77f090758320c4797ad955f139b848de05b8e0c3adc7346f'
+sha512sums=('bd356a0f73e340f995b2c3e210224cd4a9a9f9f2900611d956156da1f542b6645940ac457d5746ecc807a8cf2cd77fca0b70ae74d2993eda4b72140fa1c6da78'
             'SKIP'
             '8d9547ff38096b99d296cdec9875b816960c09db31acebb033e3660ba65475d1f310578282cac74947d75dff844dd22d7e7c2e4ded12368d32314fe145763752'
-            '55538dbe482d983ef571a1c677b49f6bfbd738e16cee6b7f98c43ae4f056648b95f0bdd4b576e42991ac0fdb14e4da159ac020f0d8ed941d0a6cd42812e8d2de'
+            'd996a89d7831c4d49980b1b5b73ccd21da419302e86ea6faaf7d8f5a686bdbfe688a75c34d3e9583cbb11a011d2adcb4cb3aef66aba677e0d810f3eb1fb5be4b'
             '8a158ae5660426f0fb9fa74f37c093f325b5a23392b95e50c36825205f42311cbf05f818f0275ebda27ce9fad40652ba6dc2397f19f45addb3f68f8f4476196f'
             '9d472377c50ddd9ddab5d4ab3092f3d487eeee20a4d4a04d3cefeef5bbf40daa3eb609b15741ca4a8cd32bf2b6d0781de961cbf55e2f80fd40260f282bf022f4'
             '166653c6d7d76b052aa26f6a0782a74db75d2611c3d5d770219a00fed4da7d2317b35e39aaadec25da1fc91fb7f18385247303d531d15e3998886bb65f8cd89f'
