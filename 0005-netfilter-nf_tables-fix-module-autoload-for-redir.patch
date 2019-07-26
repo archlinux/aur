@@ -1,0 +1,27 @@
+From 103abca5ff3ca4db4d8f6c21626fa597fe122a03 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Thu, 11 Jul 2019 01:31:12 +0200
+Subject: [PATCH 5/6] netfilter: nf_tables: fix module autoload for redir
+
+Fix expression for autoloading.
+
+Fixes: 5142967ab524 ("netfilter: nf_tables: fix module autoload with inet family")
+Signed-off-by: Christian Hesse <mail@eworm.de>
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+---
+ net/netfilter/nft_redir.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/net/netfilter/nft_redir.c b/net/netfilter/nft_redir.c
+index 8487eeff5c0e..43eeb1f609f1 100644
+--- a/net/netfilter/nft_redir.c
++++ b/net/netfilter/nft_redir.c
+@@ -291,4 +291,4 @@ module_exit(nft_redir_module_exit);
+ 
+ MODULE_LICENSE("GPL");
+ MODULE_AUTHOR("Arturo Borrero Gonzalez <arturo@debian.org>");
+-MODULE_ALIAS_NFT_EXPR("nat");
++MODULE_ALIAS_NFT_EXPR("redir");
+-- 
+2.22.0
+

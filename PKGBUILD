@@ -63,7 +63,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.2.2-arch1
+_srcver=5.2.3-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -85,14 +85,16 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
   0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
+  0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch
+  0005-netfilter-nf_tables-fix-module-autoload-for-redir.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('e5d91382699391e228efae87903ffeeac39b9e694ee3cf32970c87d28e516d9c'
+sha256sums=('753c600939778804860498fa13002f5a6c4a3f086785015681f431bfd08f0e05'
             'SKIP'
-            '3978d663183e2458cc81567bb50f008deaa03eb6c51a8255fa04d6e31451bb19'
+            '9fab96287bbe2ad452b3c1c63c3d668d821739bfb4de91b8df0caaf75a12f71f'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -100,7 +102,9 @@ sha256sums=('e5d91382699391e228efae87903ffeeac39b9e694ee3cf32970c87d28e516d9c'
             'f1abc13a8d859fbf6350040e45d7f04ad551a6d39f113ba96fbbd820118c0e36'
             '91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3'
             '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9'
-            'fc96300831506965383ef30bc46b72735dc45bb97dea2ccb8b9450c005d2f020')
+            'fc96300831506965383ef30bc46b72735dc45bb97dea2ccb8b9450c005d2f020'
+            'ef926edbd866d95464eb86f7565de572eb97ecfa0369d3b2e078016a0e71a871'
+            '4ca62639b7efb87c847e089b0a9aaf7ffc52bdbf25ac0d785926f6d667d130ec')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
