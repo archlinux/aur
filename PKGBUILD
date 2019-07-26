@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.32.2+43+gb7f158811
-pkgrel=2
+pkgrel=3
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -85,7 +85,7 @@ prepare() {
   # Type: 1
   # Status: 2
   # Comment:
-  git cherry-pick -n 73fe41a5
+  git cherry-pick -n 9499bc21^..ce0e5db7
 
   # Title: clutter/stage-cogl: Don't skip over the next frame
   # URL : https://gitlab.gnome.org/GNOME/mutter/merge_requests/520
@@ -167,8 +167,8 @@ prepare() {
   # Comment: Only works in Wayland
   git cherry-pick -n dae2c1d4
 
-  # backends: Do not reload keymap on new keyboard notifications
-  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/579
+  # Title: backends: Do not reload keymap on new keyboard notifications
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/579
   # Type: 1
   # Status: 4
   # Comment: Disabled by default because it has issues when using multiple layouts
@@ -181,19 +181,40 @@ prepare() {
   # Comment:
   git cherry-pick -n a5265365
 
-  # WIP: renderer-native: Accept frames without ever blocking
-  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/73
+  # Title: WIP: renderer-native: Accept frames without ever blocking
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/73
   # Type: 1
   # Status: 1
   # Comment: Might be replaced: https://gitlab.gnome.org/GNOME/mutter/merge_requests/73#note_544784
   # git cherry-pick -n 35ec0eaf^..202530c9
 
-  # clutter: Force an allocation on clone source if necessary
-  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/693
+  # Title: clutter: Force an allocation on clone source if necessary
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/693
   # Type: 3
   # Status: 4
+  # Comment: Sometimes produces artefacts in the application grid: https://gitlab.gnome.org/GNOME/mutter/merge_requests/693#note_566491
+  #git cherry-pick -n 08a3cbfc
+
+  # Title: core: Only trigger MetaWorkspace::window-* on toplevel window types
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/701
+  # Type: 1
+  # Status: 2
   # Comment:
-  git cherry-pick -n 08a3cbfc
+  git cherry-pick -n d7f799bf
+
+  # Title: Make MetaCullable implementations more thorough wrt painted areas
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/698
+  # Type: 1
+  # Status: 2
+  # Comment:
+  git cherry-pick -n c98d57f2^..53eca1c4
+
+  # Title: clutter-stage-cogl: Use regions
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/692
+  # Type: 1
+  # Status: 1
+  # Comment:
+  #git cherry-pick -n f2694e72^..d0edf91c
 
 }
 
