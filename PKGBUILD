@@ -2,7 +2,7 @@
 
 pkgname=qpicospeaker-git
 pkgsrc=qpicospeaker
-pkgver=r21.69214be
+pkgver=r59.8c1ea53
 pkgrel=1
 pkgdesc='Qt GUI for the svox-pico text-to-speech engine'
 arch=('i686' 'x86_64' 'aarch64' 'arm')
@@ -19,7 +19,6 @@ sha256sums=('SKIP')
 
 prepare() {
     build=build
-    pwd
     if [ -d "$build"]; then
         rm -r build
     fi
@@ -34,8 +33,9 @@ pkgver() {
 }
 
 build() {
+    cd qpicospeaker
     git submodule update --init --recursive
-    cd build
+    cd ../build
     qmake ../qpicospeaker/qpicospeaker.pro
     make
 }
