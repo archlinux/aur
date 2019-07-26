@@ -1,33 +1,5 @@
-Central content of this package is a patch, which patches the Czech ressource file "TTC.dll" of the IDOS timetable browser-software of the czech company "CHAPS spol. s r.o.", Bráfova 1617/21, CZ-616 00 Brno, http://chaps.cz/, to make the texts available in English language.
+This package is a modfied version of 'TTc.dll' (part of the IDOS Timetable Browser for Microsoft Windows, short 'IDOS'), which is property of CHAPS s.r.o., Praha, Czech Republic.
 
-The "TTC.dll" is property of CHAPS and not distributed with this package; rather, when this package is build it is been downloaded from CHAPS directly.
+The license terms of IDOS are available in the file 'IDOS-Licence.pdf', or on the website http://chaps.cz/.
 
-
-The above mentioned patch is licensed under the following license:
-
-  Creative Commons NonCommercial 1.0 (cc-nc-1.0)
-
-The text ot the license is bundled with this package in a seperate file, but you can also read it online at
-
-  http://creativecommons.org/licenses/nc/1.0/legalcode
-
-A summary is available at
-
-  http://creativecommons.org/licenses/nc/1.0/
-
-and it boils down that you are free to
-
-* copy and redistribute the material in any medium or format,
-* remix, transform, and build upon the material,
-
-as long as you obey the following restrictions:
-
-* You may not use the material for commercial purposes,
-
-For details, read the legal license text.
-
-
-The resulting English ressource file is not anymore covered under the cc-nc-1.0 license, since it contains property of CHAPS which may not be redistributed freely. Only the patch which is used to build the English ressource file from the Czech one is covered under the cc-nc-1.0 license.
-
-
-Enjoy this work!
+'TTC.dll' has been modified to contain English language strings instead of Czech ones. Those changes have not been approved by CHAPS s.r.o., and it is unknown if CHAPS s.r.o. would agree wiuth distributing this modified version of 'TTc.dll'.

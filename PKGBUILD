@@ -6,7 +6,7 @@ _pkgname=idos-timetable-lang-en
 pkgname="${_pkgname}"
 epoch=0
 pkgver=20160720
-pkgrel=5
+pkgrel=6
 pkgdesc="English language ressource file for railway/ public transport timetable search engines by CHAPS."
 arch=(any)
 license=('custom')
@@ -18,9 +18,7 @@ groups=(
 depends=(
          "idos-timetable-browser"
         )
-makedepends=(
-  "bdelta"
-)
+makedepends=()
 optdepends=()
 provides=(
   "idos-timetable-lang=${pkgver}"
@@ -28,35 +26,22 @@ provides=(
 replaces=()
 conflicts=()
 
-_target="ttakt.zip"
-
 source=(
-  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/TTAKT.ZIP"
-  "TTC-TTe.bdelta.xz"
+  "TTe.dll"
   "copying.info.txt"
-  "license_cc-nc-1.0.html"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "version"
 )
 
 sha256sums=(
+  'eb8f3408e057fb406d1c9fc1a5be7fa57657c8a23bfb6a73c6e5b1931a722fb9'
+  'c34696bef1fd70999b1dedcb3dbb061f9ace8a2f90c7a5fd11f256324d557cb2'
   'SKIP'
-  'f1d90ca684e053db7d35b85207b202b2c4b73315a7b864d849f599eb7b8fd1ee'
-  '857ca643a994be4dc06ddf5423d66600a2d2ad26f0771d30819f27e2dfa5c002'
-  '36c0b0466672bc90d9aa2219768f1ea1a72389cc63d89c4bb80bb4999628d8aa'
-  "SKIP"
   'SKIP'
 )
 
 pkgver() {
   cat "${srcdir}/version" | grep -E -v '^[[:space:]]*#' | head -n 1 | tr -d '\n'
-}
-
-build() {
-  cd "${srcdir}"
-  
-  echo "> bpatch TTC.dll TTe.dll TTC-TTe.bdelta"
-  bpatch TTC.dll TTe.dll TTC-TTe.bdelta
 }
 
 package() {
@@ -65,6 +50,5 @@ package() {
 
   install -D -m644 "${srcdir}/TTe.dll"                  "${_instdir}/TTe.dll"
   install -D -m644 "${srcdir}/copying.info.txt"         "${pkgdir}/usr/share/licenses/${pkgname}/copying.info.txt"
-  install -D -m644 "${srcdir}/license_cc-nc-1.0.html"   "${pkgdir}/usr/share/licenses/${pkgname}/license_cc-nc-1.0.html"
   install -D -m644 "${srcdir}/IDOS-Licence.pdf"         "${pkgdir}/usr/share/licenses/${pkgname}/IDOS-Licence.pdf"
 }
