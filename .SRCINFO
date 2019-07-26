@@ -1,12 +1,12 @@
 pkgbase = hmcl
 	pkgdesc = Hello Minecraft! Launcher, a powerful Minecraft launcher.
 	pkgver = 3.2.130
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/huanghongxun/HMCL
 	arch = x86_64
 	license = GPL3
 	makedepends = java-environment=8
-	depends = java-openjfx>=8
+	depends = java8-openjfx
 	source = hmcl-launch-script
 	source = hmcl.desktop
 	source = hmcl-3.2.130.tgz::https://github.com/huanghongxun/HMCL/archive/v3.2.130.tar.gz
