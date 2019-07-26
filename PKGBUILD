@@ -1,12 +1,12 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tpm2-totp-git
-pkgver=0.1.0.r48.cb6f7be
+pkgver=0.1.0.r70.ace43a6
 pkgrel=1
 pkgdesc='Attest the trustworthiness of a device against a human using time-based one-time passwords'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-totp'
 license=('BSD')
-depends=('qrencode' 'tpm2-tss')
+depends=('qrencode' 'tpm2-tss-git')
 makedepends=('git' 'autoconf-archive' 'doxygen' 'pandoc' 'plymouth')
 checkdepends=('ibm-sw-tpm2' 'iproute2' 'mkinitcpio' 'oath-toolkit' 'procps-ng' 'psmisc' 'tpm2-tools')
 optdepends=('initramfs: initramfs hooks to display the TOTP during boot'

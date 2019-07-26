@@ -1,6 +1,6 @@
 pkgbase = tpm2-totp-git
 	pkgdesc = Attest the trustworthiness of a device against a human using time-based one-time passwords
-	pkgver = 0.1.0.r48.cb6f7be
+	pkgver = 0.1.0.r70.ace43a6
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-totp
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = tpm2-totp-git
 	makedepends = pandoc
 	makedepends = plymouth
 	depends = qrencode
-	depends = tpm2-tss
+	depends = tpm2-tss-git
 	optdepends = initramfs: initramfs hooks to display the TOTP during boot
 	optdepends = plymouth: display the TOTP during boot using plymouth messages
 	provides = tpm2-totp
