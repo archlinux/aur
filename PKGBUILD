@@ -7,7 +7,7 @@
 pkgname=grc-solarized
 _pkgname=grc
 pkgver=1.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Changed the standard colors of grc to work better with solarized colorscheme."
 arch=('any')
 url='https://github.com/garabik/grc'
@@ -39,9 +39,9 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
   ./install.sh "$pkgdir"/usr "$pkgdir"
   install -Dm0644 "${srcdir}/conf.df" "${pkgdir}/usr/share/grc/conf.df"
-  install -Dm0644 "${srcdir}/conf.du" "${pkgdir}/usr/share/grc/conf.df"
-  install -Dm0644 "${srcdir}/conf.ip" "${pkgdir}/usr/share/grc/conf.df"
-  install -Dm0644 "${srcdir}/conf.ipaddr" "${pkgdir}/usr/share/grc/conf.df"
-  install -Dm0644 "${srcdir}/conf.ls" "${pkgdir}/usr/share/grc/conf.df"
-  install -Dm0644 "${srcdir}/conf.mount" "${pkgdir}/usr/share/grc/conf.df"
+  install -Dm0644 "${srcdir}/conf.du" "${pkgdir}/usr/share/grc/conf.du"
+  install -Dm0644 "${srcdir}/conf.ip" "${pkgdir}/usr/share/grc/conf.ip"
+  install -Dm0644 "${srcdir}/conf.ipaddr" "${pkgdir}/usr/share/grc/conf.ipaddr"
+  install -Dm0644 "${srcdir}/conf.ls" "${pkgdir}/usr/share/grc/conf.ls"
+  install -Dm0644 "${srcdir}/conf.mount" "${pkgdir}/usr/share/grc/conf.mount"
 }
