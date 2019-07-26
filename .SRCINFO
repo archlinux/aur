@@ -1,0 +1,43 @@
+pkgbase = modemmanager-git
+	pkgdesc = Mobile broadband modem management service
+	pkgver = 1.10.0+170+gd7696d8e
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/ModemManager/
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = autoconf-archive
+	makedepends = git
+	depends = systemd
+	depends = libgudev
+	depends = polkit
+	depends = ppp
+	depends = libqmi
+	depends = libmbim
+	source = git+https://gitlab.freedesktop.org/mobile-broadband/ModemManager.git
+	source = strict-filter.diff
+	sha256sums = SKIP
+	sha256sums = 0602cc5088b193426c3af3d6ce14a7fd6502b06f77982dc56291d834280f311e
+
+pkgname = modemmanager-git
+	depends = systemd
+	depends = libgudev
+	depends = polkit
+	depends = ppp
+	depends = libqmi
+	depends = libmbim
+	depends = libmm-glib
+	optdepends = usb_modeswitch: install if your modem shows up as a storage drive
+	provides = modemmanager
+	conflicts = modemmanager
+	options = !emptydirs
+
+pkgname = libmm-glib-git
+	pkgdesc = ModemManager library
+	depends = glib2
+	provides = libmm-glib
+	conflicts = libmm-glib
+
