@@ -3,15 +3,15 @@
 # Release Code Name: Erikson
 
 pkgname=lbry-app-bin
-pkgver=0.34.0
+pkgver=0.34.2
 pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
 url='https://lbry.io/'
 license=('MIT')
 depends=('nodejs' 'npm' 'gnome-keyring' 'gconf')
-source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.34.0/LBRY_0.34.0.deb')
-sha256sums=('66cf4bd04078105df95a3487bb70dcc1b4c02614aaadaf322f7cc433ecdd5a47')
+source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.34.2/LBRY_0.34.2.deb')
+sha256sums=('e44bd39087fe7c7b9fabd81fb93050bd4e4a51f9435d3dcbea569911ad4c162b')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
