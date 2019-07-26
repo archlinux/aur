@@ -1,27 +1,27 @@
 pkgbase = libffado-svn
 	pkgdesc = Driver for FireWire audio devices (svn version)
-	pkgver = r2730
+	pkgver = r2776
 	pkgrel = 1
 	url = http://www.ffado.org/
 	arch = x86_64
 	license = GPL
-	makedepends = python2-pyqt4
+	makedepends = jack
+	makedepends = python-pyqt5
 	makedepends = scons
+	makedepends = subversion
 	depends = dbus-c++
-	depends = jack
 	depends = libavc1394
 	depends = libconfig
 	depends = libiec61883
 	depends = libxml++
-	depends = python2
-	optdepends = python2-pyqt4: ffado-mixer
+	depends = python-dbus
+	optdepends = alsa-lib: for test-scs
+	optdepends = python-pyqt5: for ffado-mixer
 	provides = ffado
 	provides = libffado
 	conflicts = libffado
 	source = libffado::svn+http://subversion.ffado.org/ffado/trunk/libffado
-	source = python2.patch
 	sha512sums = SKIP
-	sha512sums = b85e49bff25d47936d5ef0feb452c128eab61013fba1b16e8f1caf9e3d875d5b749daa9db0c5275e154e5ff3c874b254e467981b6b28266db5d1b5efa532b911
 
 pkgname = libffado-svn
 
