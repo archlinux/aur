@@ -20,6 +20,11 @@ prepare() {
 
   bsdtar -xf "../drawio-desktop-$pkgver.zip" -C .
   rm -rf "META-INF" "WEB-INF"
+
+  # disable updater
+  sed -e '/electron-updater/d' -i 'package.json'
+  local updater='const autoUpdater = { on: () => {}, setFeedURL: () => {}, checkForUpdates: () => {} }'
+  sed -e 's/.*require("electron-updater").*/'"$updater"'/' -e '/checkForUpdates,/d' -i 'electron.js'
 }
 
 build() {
