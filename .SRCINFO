@@ -1,0 +1,20 @@
+pkgbase = python-pylsl-git
+	pkgdesc = Python interface to the Lab Streaming Layer
+	pkgver = 1.13.1.r4.gd003cba
+	pkgrel = 1
+	url = https://github.com/labstreaminglayer/liblsl-Python
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = liblsl
+	optdepends = python-mne: Viewer V2
+	optdepends = python-vispy: Viewer V2
+	provides = python-pylsl
+	conflicts = python-pylsl
+	source = pylsl::git+https://github.com/labstreaminglayer/liblsl-Python.git
+	sha384sums = SKIP
+
+pkgname = python-pylsl-git
+
+pkgname = python2-pylsl-git
+
