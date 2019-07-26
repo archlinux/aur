@@ -9,15 +9,10 @@ url='https://github.com/alexandrebarachant/muse-lsl'
 arch=('any')
 license=('BSD')
 provides=('muselsl')
-depends=('python-bitstring' 'python2-bitstring'
+depends=('python-pylsl'
          'python-pygatt'
-         'python-pandas' 'python2-pandas'
          'python-scikit-learn'
-         'python-numpy' 'python2-numpy'
-         'python-seaborn'
-         'python-pexpect' 'python2-pexpect')
-makedepends=('python-setuptools'
-             'python2-setuptools')
+         'python-seaborn')
 optdepends=('python-mne: Viewer V2'
             'python-vispy: Viewer V2')
 source=('https://files.pythonhosted.org/packages/21/31/bc2c0fcff2a01054df803bdf070def7ff835e58ee7ea829479bd29d97633/muselsl-2.0.2.tar.gz')
@@ -36,14 +31,24 @@ check(){
 }
 
 package_python-muselsl() {
-  depends=('python')
+  depends=('python'
+           'python-bitstring'
+           'python-pandas'
+           'python-numpy'
+           'python-pexpect')
+  makedepends=('python-setuptools')
   cd "${srcdir}/muselsl-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
   install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-muselsl() {
-  depends=('python2')
+  depends=('python2'
+           'python2-bitstring'
+           'python2-pandas'
+           'python2-numpy'
+           'python2-pexpect')
+  makedepends=('python2-setuptools')
   cd "${srcdir}/muselsl-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
   install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

@@ -5,19 +5,10 @@ pkgbase = python-muselsl
 	url = https://github.com/alexandrebarachant/muse-lsl
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	depends = python-bitstring
-	depends = python2-bitstring
+	depends = python-pylsl
 	depends = python-pygatt
-	depends = python-pandas
-	depends = python2-pandas
 	depends = python-scikit-learn
-	depends = python-numpy
-	depends = python2-numpy
 	depends = python-seaborn
-	depends = python-pexpect
-	depends = python2-pexpect
 	optdepends = python-mne: Viewer V2
 	optdepends = python-vispy: Viewer V2
 	provides = muselsl
@@ -26,7 +17,15 @@ pkgbase = python-muselsl
 
 pkgname = python-muselsl
 	depends = python
+	depends = python-bitstring
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-pexpect
 
 pkgname = python2-muselsl
 	depends = python2
+	depends = python2-bitstring
+	depends = python2-pandas
+	depends = python2-numpy
+	depends = python2-pexpect
 
