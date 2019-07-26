@@ -5,7 +5,7 @@
 pkgname=ssvnc-nojava
 _pkgname=ssvnc
 pkgver=1.0.29
-pkgrel=6
+pkgrel=7
 pkgdesc="SSL/SSH VNC viewer no java"
 arch=('i686' 'x86_64')
 url="http://www.karlrunge.com/x11vnc/ssvnc.html"
