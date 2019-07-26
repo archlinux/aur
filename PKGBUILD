@@ -1,10 +1,10 @@
 # Maintainer: Jianfeng Zhang <swordfeng123@gmail.com>
 
 pkgname=mom
-pkgver=0.5.12
-pkgrel=4
+pkgver=0.5.14
+pkgrel=1
 pkgdesc="Memory Overcommitment Manager, for virtual machines"
-arch=('x86_64')
+arch=('any')
 url="https://gerrit.ovirt.org/#/admin/projects/mom"
 license=("GPL2")
 depends=('python2' 'libvirt-python2')
@@ -16,11 +16,6 @@ md5sums=('SKIP'
          '927233dfa137a3010a4c6cfdf081fd5f'
          'cf66caf6eec15c39381abf28235aa0ed')
 backup=('etc/mom')
-
-prepare() {
-    cd mom
-    sed -i 's/\/usr\/bin\/env python/\/usr\/bin\/env python2/' momd
-}
 
 build() {
     cd mom
