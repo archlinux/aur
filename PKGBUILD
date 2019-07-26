@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@tellus.space>
 
 pkgname=kubeseal
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A tool for one-way encrypted secrets in Kubernetes"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('go')
 conflicts=('kubeseal-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bitnami-labs/sealed-secrets/archive/v$pkgver.tar.gz")
-sha512sums=('946bc5a32d3f9eb201d0a0276983183d8a373cf8d23ea255ff393fa3abcf6e1b28c9407e8093b7ede940f2524c521209fe31a26229d44bbd48a59c953a3d6516')
+sha512sums=('f826f47bec8e4a3cc47a09620aebdb45d81095a9ca366364a54b11ea0c308ce46e329e729f71ae44c8c598798d3ae6b268606dbd5152618ea15dfe8f5ae56fcc')
 
 build() {
   # Trim path from binary
