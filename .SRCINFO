@@ -1,0 +1,30 @@
+pkgbase = shairport-sync-git
+	pkgdesc = AirPlay audio player. Shairport Sync adds multi-room capability with Audio Synchronisation
+	pkgver = 3.3.2.r0.gb4c54fc
+	pkgrel = 1
+	url = https://github.com/mikebrady/shairport-sync
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	depends = openssl
+	depends = avahi
+	depends = libdaemon
+	depends = autoconf
+	depends = automake
+	depends = libtool
+	depends = popt
+	depends = libconfig
+	optdepends = pulseaudio: PulseAudio support
+	optdepends = libsoxr: libsoxr-based resampling
+	optdepends = alac-git: Apple ALAC decoder
+	provides = shairport-sync
+	conflicts = shairport-sync
+	source = git+https://github.com/mikebrady/shairport-sync.git
+	md5sums = SKIP
+
+pkgname = shairport-sync-git
+
