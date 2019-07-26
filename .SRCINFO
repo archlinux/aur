@@ -1,18 +1,18 @@
 pkgbase = r-ggplot2
 	pkgdesc = Create Elegant Data Visualisations Using the Grammar of Graphics
-	pkgver = 3.1.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggplot2
 	arch = i686
 	arch = x86_64
 	license = GPL-2
-	depends = r>=3.1
+	depends = r>=3.2
 	depends = r-digest
 	depends = r-gtable>=0.1.1
 	depends = r-lazyeval
-	depends = r-plyr>=1.7.1
+	depends = r-mgcv
 	depends = r-reshape2
-	depends = r-rlang>=0.2.1
+	depends = r-rlang>=0.3.0
 	depends = r-scales>=0.5.0
 	depends = r-tibble
 	depends = r-viridislite
@@ -22,6 +22,7 @@ pkgbase = r-ggplot2
 	optdepends = r-ggplot2movies
 	optdepends = r-hexbin
 	optdepends = r-hmisc
+	optdepends = r-knitr
 	optdepends = r-lattice
 	optdepends = r-mapproj
 	optdepends = r-maps
@@ -29,17 +30,17 @@ pkgbase = r-ggplot2
 	optdepends = r-multcomp
 	optdepends = r-munsell
 	optdepends = r-nlme
-	optdepends = r-testthat
-	optdepends = r-vdiffr
+	optdepends = r-profvis
 	optdepends = r-quantreg
-	optdepends = r-knitr
 	optdepends = r-rgeos
-	optdepends = r-rpart
 	optdepends = r-rmarkdown
+	optdepends = r-rpart
 	optdepends = r-sf
 	optdepends = r-svglite
-	source = http://cran.r-project.org/src/contrib/ggplot2_3.1.1.tar.gz
-	md5sums = 513d188e654a670250708a557d8e5255
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = http://cran.r-project.org/src/contrib/ggplot2_3.2.0.tar.gz
+	md5sums = 11bdbfbfda4373d221aff262f948f97b
 
 pkgname = r-ggplot2
 
