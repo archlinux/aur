@@ -1,20 +1,20 @@
 # Maintainer: Martchus <martchus@gmx.net>
 
 pkgname=mingw-w64-gnutls
-pkgver=3.6.8
+pkgver=3.6.9
 pkgrel=1
 pkgdesc='A library which provides a secure layer over a reliable transport layer (mingw-w64)'
 arch=('any')
 url="http://www.gnu.org/software/gnutls"
-license=('GPL3', 'LGPL2.1')
-makedepends=('mingw-w64-configure')
-#checkdepends=('wine')
+license=('GPL3' 'LGPL2.1')
+makedepends=('mingw-w64-configure' 'autogen')
+checkdepends=('mingw-w64-wine')
 depends=('mingw-w64-crt' 'mingw-w64-libtasn1' 'mingw-w64-readline' 'mingw-w64-zlib' 'mingw-w64-nettle' 'mingw-w64-p11-kit' 'mingw-w64-libunistring')
 options=(staticlibs !strip !buildflags)
 optdepends=("mingw-w64-openssl: libgnutls-openssl")
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v${pkgver%.*}/${pkgname#mingw-w64-}-${pkgver}.tar.xz{,.sig}
         'gnutls-fix-external-libtasn1-detection.patch')
-sha256sums=('aa81944e5635de981171772857e72be231a7e0f559ae0292d2737de475383e83'
+sha256sums=('4331fca55817ecdd74450b908a6c29b4f05bb24dd13144c6284aa34d872e1fcb'
             'SKIP'
             '8525da75852a516be0cb05df0a770daf19ce0583033260d6cac03a1e40fd2072')
 validpgpkeys=('0424D4EE81A0E3D119C6F835EDA21E94B565716F'
@@ -36,6 +36,7 @@ build() {
   cd "${srcdir}/gnutls-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
+    #export WINEPATH=/usr/${_arch}/bin
     ${_arch}-configure \
       --disable-doc \
       --disable-openssl-compatibility \
@@ -57,18 +58,14 @@ build() {
   done
 }
 
-# not sure how to setup systemd npawn via makechrootpkg to mount binfmt_misc (version below leads to "only root can use "--types" option")
-#check() {
-#  mount -t binfmt_misc binfmt_misc /proc/sys/fs/binfmt_misc
-#  echo ':DOSWin:M::MZ::/usr/bin/wine:' > /proc/sys/fs/binfmt_misc/register
-#  for _arch in ${_architectures}; do
-#    cd "${srcdir}/gnutls-${pkgver}/build-${_arch}"
-#    export WINEPREFIX=~/.wine-${_arch}
-#    export WINEPATH=/usr/${_arch}/bin
-#    [[ $_arch == x86_64-w64-mingw32 ]] && export WINEARCH=win64 || export WINEARCH=win32
-#    make -C tests check
-#  done
-#}
+check() {
+  for _arch in ${_architectures}; do
+    cd "${srcdir}/gnutls-${pkgver}/build-${_arch}"
+    export WINEPATH=/usr/${_arch}/bin
+    msg2 'Skipping check due to undefined reference errors'
+    #WINEDEBUG=all make -C tests check
+  done
+}
 
 package() {
   for _arch in ${_architectures}; do
