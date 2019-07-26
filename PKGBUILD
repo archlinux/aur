@@ -5,7 +5,7 @@
 # Contributor: <gucong43216@gmail.com>
 
 pkgname=openfoam-esi
-pkgver=v1812
+pkgver=v1906
 _distname=OpenFOAM
 _dist=$_distname-$pkgver
 pkgrel=1
@@ -15,12 +15,12 @@ url="http://www.openfoam.com/"
 license=('GPL')
 depends=('gcc' 'cgal' 'cmake' 'fftw' 'boost' 'openmpi' 'paraview')
 
-source=("https://sourceforge.net/projects/openfoamplus/files/v1812/OpenFOAM-v1812.tgz"
-        "https://sourceforge.net/projects/openfoamplus/files/v1812/ThirdParty-v1812.tgz"
+source=("https://sourceforge.net/projects/openfoamplus/files/v1906/OpenFOAM-v1906.tgz"
+        "https://sourceforge.net/projects/openfoamplus/files/v1906/ThirdParty-v1906.tgz"
         "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz")
 
-md5sums=('6a315687b3601eeece7ff7c7aed3d9a5'
-         '60b8ea139c2aed75f0cb0de1661a1986'
+md5sums=('ab7017e262c0c0fceec55c31e2153180'
+         '81af204ef7aa804bc6b633f20f28749e'
          '5465e67079419a69e0116de24fce58fe')
 
 prepare() {
@@ -93,14 +93,19 @@ build() {
   # without && echo " ", makepkg fails
   source ${foamDotFile} && echo " "
 
-  echo -e "\e[92mCompilation will take several hours."
+  echo -e "\e[1m\e[5m\e[31mPlease read:\e[0m "
   echo -e " "
-  echo -e "Give write access to cmake directory using chmod,"
-  echo -e "and create symbolic link /usr/lib/libembree3.so.3.2.4"
-  echo -e "This is needed to compile paraFoam."
+  echo -e "\e[92mFor compiling the paraview plugin it might be necessary to give OpenFOAM MANUALLY write-access to the following directory:"
+  echo -e "sudo chmod 757 /usr/lib/cmake/paraview*/Modules"
+  echo -e "If you have paraview 5.6 installed, please add the line"
+  echo -e "find_package(ospray REQUIRED)"
+  echo -e "on line 794 (in FUNCTION(ADD_PARAVIEW_PLUGIN) in the file /usr/lib64/cmake/paraview-5.6/ParaViewPlugins.cmake."
+  echo -e "This avoids the error '/usr/bin/ld: cannot find -lospray::ospray' when compiling the paraview reader."
+  echo -e " "
+  echo -e "Please press any key to continue."
   echo -e "\e[0m "
-  sudo chmod 757 /usr/lib/cmake/paraview*/Modules
-  sudo ln -s /usr/lib/libembree3.so /usr/lib/libembree3.so.3.2.4
+
+  read -rsp $'\n' -n1 key
 
   cd "$srcdir/$_dist"
   ./Allwmake -j `nproc` 2>&1 | tee log.wmake
