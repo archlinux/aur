@@ -1,8 +1,12 @@
 # Maintainer: K900 <me@0upti.me>
+# Contributor: Michael Duncan Hammond <mhammond9@radford.edu>
+
+_source="installer"   # if installing from .sh installer
+# _source="tarball"     # if installing from .tar.gz package
 
 pkgname=cisco-anyconnect
 pkgver=4.7.00136
-pkgrel=1
+pkgrel=2
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 arch=('x86_64')
 depends=('libxml2' 'ca-certificates')
@@ -19,29 +23,39 @@ options=('!strip')
 
 url='https://www.cisco.com/c/en/us/products/security/anyconnect-secure-mobility-client/index.html'
 
-_filename="anyconnect-linux64-${pkgver}-core-vpn-webdeploy-k9.sh"
+if [[ "${_source}" == "tarball" ]]; then
+    _filename="anyconnect-linux64-${pkgver}-predeploy-k9.tar.gz"
+    _filehash="cba75ac1f5ea939ed0705a504a4cde627ca31154e5bc981546ad55a2d98c1a02"
+elif [[ "${_source}" == "installer" ]]; then
+    _filename="anyconnect-linux64-${pkgver}-core-vpn-webdeploy-k9.sh"
+    _filehash="39d369f3081fb6dbc795a92df3a07e404cebf8c43383abd45d65a2a83b32a9b1"
+
+    prepare() {
+        cd "${srcdir}"
+        mkdir -p "anyconnect-linux64-${pkgver}"
+
+        # stolen from vpn_install.sh
+        local marker=$((`grep -an "[B]EGIN\ ARCHIVE" "${_filename}" | cut -d ":" -f 1` + 1))
+        local marker_end=$((`grep -an "[E]ND\ ARCHIVE" "${_filename}" | cut -d ":" -f 1` - 1))
+
+        head -n ${marker_end} "${_filename}" | tail -n +${marker} | head --bytes=-1 | tar xz -C "anyconnect-linux64-${pkgver}"
+    }
+else
+    echo "Please set the _source variable in PKGBUILD to either 'tarball' or 'installer'!"
+    exit 1
+fi
 
 # you will have to obtain the installer yourself - it's not available publicly
 source=("file://${_filename}" "vpnagentd.service" "anyconnect.sh" "anyconnect.csh" "AnyConnectLocalPolicy.xml")
 
-sha256sums=('39d369f3081fb6dbc795a92df3a07e404cebf8c43383abd45d65a2a83b32a9b1'
+sha256sums=("${_filehash}"
             '9d37640195b0fa4ffb073e1b006b4b9546595f7bd3b25a4fe9a0d43a75cd57b8'
             'dcc7a5dcbe4387f3e4a2a3f260b4197faf1b79adddf0d4dad3a02bc6041effa6'
             '0fcd62bd5d734c239bb7bda7c7e7791b9b8d76a019d2b42ff74caa998e7e9733'
             'b7c65a236e671d3eb527a3377e22b66018c450d726f71fa6344530a75255dac7')
 
-prepare() {
-    cd "${srcdir}"
-
-    # stolen from vpn_install.sh
-    local marker=$((`grep -an "[B]EGIN\ ARCHIVE" "${_filename}" | cut -d ":" -f 1` + 1))
-    local marker_end=$((`grep -an "[E]ND\ ARCHIVE" "${_filename}" | cut -d ":" -f 1` - 1))
-
-    head -n ${marker_end} "${_filename}" | tail -n +${marker} | head --bytes=-1 | tar xz
-}
-
 package() {
-    cd "${srcdir}/vpn"
+    cd "${srcdir}/anyconnect-linux64-${pkgver}/vpn"
 
     # install binaries
     for binary in "vpnagentd" "vpn" "vpndownloader" "vpndownloader-cli" "manifesttool" "acinstallhelper" "vpnui" "acwebhelper"; do
