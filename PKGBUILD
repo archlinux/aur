@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 # Test URL: https://www.isign.io/chrome-extension-verify
 pkgname=dokobit-plugin
-pkgver=1.3.1.0
+pkgver=1.3.5.0
 pkgrel=1
 pkgdesc="Google Chrome & Mozilla native smartcard plugin for Dokobit (previously called isign-chrome-signing)"
 url="https://www.dokobit.com/downloads"
@@ -12,8 +12,8 @@ conflicts=(isign-chrome-signing)
 arch=(i686 x86_64)
 source_i686=("https://www.dokobit.com/repo/${pkgver%.*}/dokobit-plugin-en-32_${pkgver}.deb")
 source_x86_64=("https://www.dokobit.com/repo/${pkgver%.*}/dokobit-plugin-en_${pkgver}.deb")
-sha256sums_i686=('e84e10af1ff99bd0b63ca8b00e8b090d202c121fb7347a6d86f90ffd59b22aa1')
-sha256sums_x86_64=('6f3d62e0125a1201a11e55512ccf553e0846ce11a4ca12b916c7d665e60459fe')
+sha256sums_i686=('16262ece73cee9a25c70eac6e8e7dc5f4f1e455b1565806b6ec52d870a5d215a')
+sha256sums_x86_64=('a1c7e60942567daaf4b1ebfdb857ef2b91cc5f8fd22fb4961c03148855df1d7b')
 
 prepare() {
 	bsdtar xf data.tar.xz
