@@ -1,0 +1,15 @@
+pkgbase = sisl-git
+	pkgdesc = The SINTEF Spline Library - Comprehensive NURBS library
+	pkgver = r576.7c28cab
+	pkgrel = 1
+	url = https://www.sintef.no/projectweb/geometry-toolkits/sisl/
+	arch = i686
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = cmake
+	makedepends = git
+	source = git+https://github.com/SINTEF-Geometry/SISL.git
+	sha256sums = SKIP
+
+pkgname = sisl-git
+
