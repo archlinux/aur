@@ -1,7 +1,7 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
 pkgname=genn_cpu_only
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GeNN: GPU-enhanced neural networks (version 4; without CUDA backend)"
 epoch=2
 arch=(x86_64)
@@ -41,6 +41,14 @@ build() {
 	# Build pygenn
 	make DYNAMIC=1 LIBRARY_DIRECTORY=`pwd`/pygenn/genn_wrapper/
 	python setup.py build
+
+	# Build SpineML stuff
+	cd src/spineml/
+	for dname in common simulator standalone_simulator; do
+		make -C $dname
+	done
+	cd generator
+	make -f MakefileSingleThreadedCPU
 }
 
 package() {
@@ -55,6 +63,12 @@ package() {
 
 	# Copy userproject folder
 	cp -R userproject "$pkgdir"/usr/src/genn
+
+	# Install standalone SpineML generator
+	install -m755 bin/spineml_* "$pkgdir"/usr/bin
+
+	# Install SpineML2GeNN libs
+	install -m644 lib/libspineml_*.a "$pkgdir"/usr/lib
 
 	# Copy SpineML2GeNN headers
 	cp -R include/spineml "$pkgdir"/usr/include
