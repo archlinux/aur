@@ -1,0 +1,25 @@
+pkgbase = obinskit
+	pkgdesc = ObinsKit for Anne Pro and Anne Pro 2
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://en.obins.net/obinskit
+	install = obinskit.install
+	arch = x86_64
+	license = custom
+	depends = desktop-file-utils
+	depends = gconf
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk2
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = http://releases.obins.net/occ/linux/tar/ObinsKit_1.1.0_x64.tar.gz
+	source_x86_64 = deb_extra_files_obins.tar.gz
+	sha256sums_x86_64 = bcd09c9b7072b20fdf6ce9f735ef88251865edd3590466be6787587208114de9
+	sha256sums_x86_64 = fb4b1b173c6d85a1c22d6e2de068d0e2aee346a2c191cc5b5d681c639c14f199
+
+pkgname = obinskit
+
