@@ -1,0 +1,18 @@
+pkgbase = liblsl-git
+	pkgdesc = C++ lsl library for multi-modal time-synched data transmission over the local network
+	pkgver = 1.13.0.b9.r5.g4d74da4f
+	pkgrel = 1
+	url = https://github.com/sccn/labstreaminglayer/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = patchelf
+	depends = gcc-libs
+	provides = liblsl
+	conflicts = liblsl
+	source = /liblsl::git+https://github.com/sccn/liblsl.git
+	sha384sums = SKIP
+
+pkgname = liblsl-git
+
