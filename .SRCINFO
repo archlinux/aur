@@ -1,6 +1,6 @@
 pkgbase = claws-mail-git
 	pkgdesc = A GTK+ based e-mail client - git checkout
-	pkgver = 3.17.3.r103.g33f351e45
+	pkgver = 3.17.4.r0.g215b6adc8
 	pkgrel = 1
 	url = https://www.claws-mail.org/
 	arch = i686
