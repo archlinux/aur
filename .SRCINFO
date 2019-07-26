@@ -1,6 +1,6 @@
 pkgbase = grub-themes-stylishdark
 	pkgdesc = stylishdark grub2 theme
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/vinceliuice/grub2-themes
 	install = grub-themes-stylishdark.install
@@ -9,7 +9,7 @@ pkgbase = grub-themes-stylishdark
 	makedepends = git
 	depends = grub
 	optdepends = grub-customizer
-	source = git://github.com/vinceliuice/grub2-themes
+	source = https://github.com/vinceliuice/grub2-themes/archive/1.2.tar.gz
 	md5sums = SKIP
 
 pkgname = grub-themes-stylishdark
