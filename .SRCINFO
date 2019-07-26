@@ -1,0 +1,19 @@
+pkgbase = python-hvplot
+	pkgdesc = A high-level plotting API build on HoloViews
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://hvplot.pyviz.org
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = python-parameterized
+	makedepends = python-setuptools
+	depends = python
+	depends = python-bokeh
+	depends = python-holoviews
+	depends = python-pandas
+	source = https://pypi.org/packages/source/h/hvplot/hvplot-0.4.0.tar.gz
+	sha256sums = bce169cf2d1b3ff9ce607d1787f608758e72a498434eaa2bece31eea1f51963a
+
+pkgname = python-hvplot
+
