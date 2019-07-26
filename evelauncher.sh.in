@@ -16,7 +16,7 @@ check_steam
 
 if [ ! -r "$LAUNCHER/translations/qt_en.qm" ] ;then
     if [ -r "$LAUNCHER/libQt5Core.so.$QTVER.0" ] ;then
-	for eta in $(ls ./eve-transl${QTVER}-??.tar.gz) ;do
+	for eta in ./eve-transl${QTVER}-??.tar.gz ;do
 	    tar xf $eta -C $LAUNCHER
 	done
     fi
