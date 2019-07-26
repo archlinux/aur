@@ -1,4 +1,5 @@
-# Maintainer: Jaden Peterson <jadenpeterson150@gmail.com>
+# Maintainer: Amanoel Dawod <amanoel at outlook dot com>
+# Contributor: Jaden Peterson <jadenpeterson150@gmail.com>
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 # Contributor: jeckhack <jeckhack/gmail/com>
 # Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
@@ -10,8 +11,8 @@
 # Contributor: freedom
 
 pkgname=freetype2-cleartype
-pkgver=2.10.0
-pkgrel=2
+pkgver=2.10.1
+pkgrel=1
 pkgdesc="Font rasterization library with ClearType patch"
 arch=(x86_64)
 license=('GPL')
@@ -24,13 +25,13 @@ conflicts=('freetype2')
 provides=('freetype2' 'libfreetype.so')
 backup=('etc/profile.d/freetype2.sh')
 install=freetype2.install
-source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
+source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz{,.sig}
         0001-Enable-table-validation-modules.patch
         0002-Enable-infinality-subpixel-hinting.patch
         0003-Enable-long-PCF-family-names.patch
         0007-cleartype.patch
         freetype2.sh)
-sha1sums=('f6abf03e0e3189a0de883981c57d3861b5d314f5'
+sha1sums=('79874ef4eaa52025126b71d836453b8279bdd331'
           'SKIP'
           '46fd67e6a594f6c2c473b9321ba64913984ba42f'
           '4bf0c0749db09878b918cc404300f0d3e9091607'
