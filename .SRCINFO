@@ -1,6 +1,6 @@
 pkgbase = glib2-patched-thumbnailer
 	pkgdesc = GLib2 patched with ahodesuka's thumbnailer patch.
-	pkgver = 2.60.5
+	pkgver = 2.60.6
 	pkgrel = 1
 	url = https://gist.github.com/Dudemanguy911/d199759b46a79782cc1b301649dec8a5
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = glib2-patched-thumbnailer
 	depends = tumbler
 	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
 	optdepends = libelf: gresource inspection tool
-	provides = glib2=2.60.5
+	provides = glib2=2.60.6
 	conflicts = glib2
 	options = !docs
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=cffe8efd0a367cb08c651533ee07e049f3765edc
+	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=0a63daa96426715498b55318f68a67baee40c509
 	source = noisy-glib-compile-schemas.diff
 	source = glib-compile-schemas.hook
 	source = gio-querymodules.hook
