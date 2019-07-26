@@ -1,0 +1,15 @@
+pkgbase = python-memory-profiler
+	pkgdesc = A module for monitoring memory usage of a python program
+	pkgver = 0.55
+	pkgrel = 1
+	url = https://github.com/pythonprofilers/memory_profiler
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-psutil
+	depends = python-setuptools
+	source = python-memory-profiler-0.55.tar.gz::https://github.com/pythonprofilers/memory_profiler/archive/0.55.tar.gz
+	sha512sums = 97f00d7d8b7d564f98b2d58862df69a3a068be056083bcd7719ebc29e58bf22101b8ec6f673fb45ec12626aca5fdad8508e9ce0ec217b3676e2fc1b43504b3c3
+
+pkgname = python-memory-profiler
+
