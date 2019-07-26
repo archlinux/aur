@@ -1,8 +1,8 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 _pkgname=ptvsd
 pkgname=python-$_pkgname
-pkgver=4.2.10
-pkgrel=2
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="Python debugger package for use with Visual Studio and Visual Studio Code"
 url="https://github.com/microsoft/$_pkgname"
 license=("MIT")
@@ -10,7 +10,7 @@ arch=("x86_64")
 depends=("python>=3.4")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha1sums=('101e1784e9ddd7761e443b58e5ba35eed35c699e')
+sha1sums=('a13b9deea2090637bcfb85630cb8954c23500fdb')
 
 # These are python2 files required for legacy support of the package on
 # non-Arch systems. These all fail to byte-compile which causes package
@@ -35,7 +35,7 @@ _badfiles=(
 build() {
   cd $_pkgname-$pkgver
 
-  _vers="$pkgver-$pkgrel-arch"
+  _vers="$pkgver-$pkgrel"
   echo "Setting build version to $_vers in $PWD/setup.py"
   sed -i "/version=/s/=.*/=\'$_vers\',/" setup.py
 
