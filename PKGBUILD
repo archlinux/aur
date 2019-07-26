@@ -20,7 +20,7 @@ arch=('i686' 'x86_64')
 _idstr32='linux32'
 _idstr64='linux64'
 license=('GPL')
-depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
+depends=('mozilla-common' 'libxt' 'startup-notification' 'mime-types'
 	'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
 	'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
