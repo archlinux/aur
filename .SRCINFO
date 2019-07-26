@@ -1,6 +1,6 @@
 pkgbase = emacs-ag-git
 	pkgdesc = An Emacs frontend to The Silver Searcher (binary name ag)
-	pkgver = 0.47r49.g77b4f50
+	pkgver = 0.47.r50.gbd81d68
 	pkgrel = 1
 	url = https://github.com/Wilfred/ag.el
 	arch = any

@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-ag-git
-pkgver=0.47r49.g77b4f50
+pkgver=0.47.r50.gbd81d68
 pkgrel=1
 pkgdesc="An Emacs frontend to The Silver Searcher (binary name ag)"
 arch=('any')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ag.el
-  git describe --tags | sed 's+-+r+' | tr - .
+  git describe --tags | sed 's+-+.r+' | tr - .
 }
 
 build() {
