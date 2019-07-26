@@ -1,7 +1,7 @@
 pkgbase = superlu
 	pkgdesc = Set of subroutines to solve a sparse linear system
 	pkgver = 5.2.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/xiaoyeli/superlu/
 	install = superlu.install
 	arch = i686
@@ -9,10 +9,11 @@ pkgbase = superlu
 	license = custom
 	makedepends = gcc-fortran
 	makedepends = tcsh
+	makedepends = cmake
 	depends = gcc-libs
-	depends = blas
+	depends = openblas-lapack-openmp
 	options = staticlibs
-	source = https://github.com/xiaoyeli/superlu//archive/v5.2.1.tar.gz
+	source = https://github.com/xiaoyeli/superlu/archive/v5.2.1.tar.gz
 	sha512sums = c5f9ca6055b6861dcc89e31c446c9f57a4e16333f9f24f109e8f375eded878005fa520ab39d2c1dd0ce12f289f9e251aef47da58c975bf5b1f09ca7539194e90
 
 pkgname = superlu
