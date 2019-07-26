@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.1.19
-pkgver=5.1.v.19
+gitver=v5.1.20
+pkgver=5.1.v.20
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
