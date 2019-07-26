@@ -1,14 +1,24 @@
 pkgbase = openbsd-manpages
-	pkgdesc = The OpenBSD manual pages.
-	pkgver = 6.4
-	pkgrel = 2
+	pkgdesc = The OpenBSD manuals
+	pkgver = 6.5
+	pkgrel = 1
 	url = https://man.openbsd.org/
-	arch = x86_64
+	arch = any
 	license = BSD
-	source = https://cdn.openbsd.org/pub/OpenBSD/6.4/amd64/man64.tgz
-	source = https://cdn.openbsd.org/pub/OpenBSD/6.4/amd64/xshare64.tgz
-	sha256sums = 103c9d441b33fbb3b56ada9a0db8c443e51137a914ef953ff4c592c7c867208a
-	sha256sums = ef377b4810dcb110b138b94f3df8b6640b399eabd7678a76009eb85acb633ca0
+	makedepends = signify
+	options = !strip
+	source = https://ftp.openbsd.org/pub/OpenBSD/6.5/openbsd-65-base.pub
+	source = SHA256::https://ftp.openbsd.org/pub/OpenBSD/6.5/amd64/SHA256.sig
+	source = https://ftp.openbsd.org/pub/OpenBSD/6.5/amd64/man65.tgz
+	source = https://ftp.openbsd.org/pub/OpenBSD/6.5/amd64/comp65.tgz
+	source = https://ftp.openbsd.org/pub/OpenBSD/6.5/amd64/xshare65.tgz
+	source = manfmt
+	sha256sums = 7fcc2aec60009be208389b7f0dcff148232eb3fb3cd750b532942c7ec4dfb4fe
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 335fa03d90fa0829327b8ba861fd5fda18d8da83a3d3e04ff21fde27037b62bb
 
 pkgname = openbsd-manpages
 

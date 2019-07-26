@@ -1,0 +1,9 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+	echo "usage: manfmt file" 1>&2
+	exit 1
+fi
+
+OUTFILE="$pkgdir/${1#$srcdir/}openbsd"
+OUTFILE="${OUTFILE/X11R6/share}"
+sed "0,/^.Os/s//\0 OpenBSD $pkgver/" "$1" > "$OUTFILE"

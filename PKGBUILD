@@ -1,30 +1,41 @@
-# $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
+# Contributor: navigaid <navigaid@gmail.com>
 pkgname=openbsd-manpages
-pkgver=6.4
-pkgrel=2
-pkgdesc="The OpenBSD manual pages."
-arch=('x86_64')
+pkgver=6.5
+pkgrel=1
+pkgdesc="The OpenBSD manuals"
+arch=('any')
+options=('!strip')
 url="https://man.openbsd.org/"
+# Change this to your local mirror for faster downloads
+# See https://www.openbsd.org/ftp.html
+_mirrorurl="https://ftp.openbsd.org/pub/OpenBSD"
 license=('BSD')
-source=("https://cdn.openbsd.org/pub/OpenBSD/${pkgver}/amd64/man${pkgver//./}.tgz"
-        "https://cdn.openbsd.org/pub/OpenBSD/${pkgver}/amd64/xshare${pkgver//./}.tgz")
-sha256sums=('103c9d441b33fbb3b56ada9a0db8c443e51137a914ef953ff4c592c7c867208a'
-            'ef377b4810dcb110b138b94f3df8b6640b399eabd7678a76009eb85acb633ca0')
+makedepends=('signify')
+source=("${_mirrorurl}/${pkgver}/openbsd-${pkgver//./}-base.pub"
+        "SHA256::${_mirrorurl}/${pkgver}/amd64/SHA256.sig"
+        "${_mirrorurl}/${pkgver}/amd64/man${pkgver//./}.tgz"
+        "${_mirrorurl}/${pkgver}/amd64/comp${pkgver//./}.tgz"
+        "${_mirrorurl}/${pkgver}/amd64/xshare${pkgver//./}.tgz"
+        'manfmt')
+sha256sums=('7fcc2aec60009be208389b7f0dcff148232eb3fb3cd750b532942c7ec4dfb4fe'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '335fa03d90fa0829327b8ba861fd5fda18d8da83a3d3e04ff21fde27037b62bb')
 
 prepare() {
-  # Renaming man pages for consistency with linux man pages.	
-  cd ${srcdir}/usr/share/man
-  find . -type f -exec mv '{}' '{}openbsd' \;
-  cd ${srcdir}/usr/X11R6/man
-  find . -type f -exec mv '{}' '{}openbsd' \;
+  signify -Cp "openbsd-65-base.pub" -x "SHA256" *.tgz
 }
 
 package() {
-  install -d ${pkgdir}/usr/share/man
-  cd ${srcdir}/usr/share/man
-  cp -a ./man* ${pkgdir}/usr/share/man/
-  cd ${srcdir}/usr/X11R6/man
-  cp -a ./man* ${pkgdir}/usr/share/man/
+  mkdir -p ${pkgdir}/usr/share/man/man{1,2,3,3p,4,5,7,8,9}
+
+  msg2 "Reformatting for consistency with the Linux manuals "\
+  "(this may take a while...)"
+  export srcdir pkgdir pkgver
+  find ${srcdir}/usr/{share,X11R6}/man/man*/* -maxdepth 0 -type f |
+    xargs -P "$(nproc)" -n 1 "$srcdir/manfmt"
 }
-# vim:set ts=2 sw=2 et:
