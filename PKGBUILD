@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.29.0.r326.g91c1691b35
+pkgver=0.29.0.r366.ga8c2e29868
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -46,6 +46,7 @@ depends=(
          'libiec61883'
          'libmodplug'
          'libomxil-bellagio'
+         'libplacebo'
          'libpng'
          'libpulse'
          'librsvg'
@@ -105,7 +106,6 @@ depends=(
          # AUR:
          'chromaprint-fftw'
          'codec2'
-         'crossc'
          'davs2'
          'flite1-patched'
          'kvazaar'
@@ -118,6 +118,7 @@ depends=(
          'rockchip-mpp'
          'rsound'
          'shine'
+         'spirv-cross'
          'vo-amrwbenc'
          'xavs'
          'xavs2'
@@ -138,7 +139,6 @@ makedepends=(
              )
 optdepends=(
             'cuda: mpv ffmpeg nvcc and libnpp support'
-            'libplacebo-git: Addition GPU-accelerated rendering primitives'
             'mpv-bash-completion-git: Additional completion definitions for Bash users'
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
             'youtube-dl: Another way to view youtuve videos with mpv'
@@ -173,9 +173,6 @@ if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   fi
   if [ -f /usr/lib/libtensorflow.so ]; then
     depends+=('tensorflow')
-  fi
-  if [ -f /usr/lib/libplacebo.so ]; then
-    depends+=('libplacebo-git')
   fi
   if [ -d /opt/cuda ]; then
     makedepends+=('cuda')
@@ -318,7 +315,6 @@ prepare() {
     '--enable-caca'
     '--enable-cdda'
     '--enable-cplugins'
-    '--enable-crossc'
     '--enable-cuda-hwaccel'
     '--enable-drm'
     '--enable-drmprime'
@@ -343,6 +339,7 @@ prepare() {
     '--enable-libavdevice'
     '--enable-libbluray'
     '--enable-libmpv-shared'
+    '--enable-libplacebo'
     '--enable-libsmbclient'
     '--enable-libv4l2'
     '--enable-lua'
@@ -355,6 +352,7 @@ prepare() {
     '--enable-sdl2'
     '--enable-shaderc'
     '--enable-sndio'
+    '--enable-spirv-cross'
     '--enable-tv'
     '--enable-tv'
     '--enable-tv-v4l2'
@@ -384,9 +382,6 @@ prepare() {
   local _ffmpeg_cflags=''
   local _ffmpeg_ldflags=''
   if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
-    if [ -f /usr/lib/libplacebo.so ]; then
-      _mpv_options+=('--enable-libplacebo')
-    fi
     if [ -f /usr/lib/libvapoursynth.so ]; then
       _mpv_options+=('--enable-vapoursynth')
     fi
@@ -412,6 +407,8 @@ prepare() {
 
 build() {
   cd mpv-build
+  CORENUM=$(nproc)
+  sed -i "s|scripts/ffmpeg-build|scripts/ffmpeg-build -j ${CORENUM}|" build
   if [ -d /opt/cuda ]; then
     sed -i 's|scripts/mpv-config|sed \-i "s\|-lavfilter\|-L/opt/cuda/targets/x86_64-linux/lib/ -lavfilter\|" build_libs/lib/pkgconfig/libavfilter.pc\nscripts/mpv-config|' "${srcdir}/mpv-build/build"
   fi
