@@ -1,6 +1,6 @@
 pkgbase = qt5-datavis3d-git
 	pkgdesc = Qt5 data visualization module
-	pkgver = 5.12.1.r11.gc6e1dd50
+	pkgver = 5.13.0_rc3.r34.g422856bb
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
