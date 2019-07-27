@@ -1,7 +1,7 @@
 pkgbase = otf-asana-math
 	pkgdesc = A font to typeset maths in Xe(La)TeX and Lua(La)TeX by Apostolos Syropoulos
 	pkgver = 000.958
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ctan.org/pkg/asana-math
 	arch = any
 	license = Custom: OFL
