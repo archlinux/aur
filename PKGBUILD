@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    make -j3
+    make -j3 strip
 }
 
 package() {
