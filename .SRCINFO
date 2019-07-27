@@ -1,5 +1,5 @@
 pkgbase = linux-bcachefs-git
-	pkgver = 5.1.15.arch1
+	pkgver = v5.1.20
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -13,15 +13,16 @@ pkgbase = linux-bcachefs-git
 	options = !strip
 	source = git+https://github.com/koverstreet/bcachefs
 	source = git+https://github.com/graysky2/kernel_gcc_patch
+	source = upstream::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	source = 001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch
 	source = 002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
-	source = 003-Bluetooth-Fix-minimum-encryption-key-size-check.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = f78db94e15ed4a5abca28238d2a315dcf13ff20e04694497275208b4aad18b1ded8b715bad546c623b0138747e6de4c070c28b5d3cc383bdd8b5959afc58294b
@@ -30,7 +31,6 @@ pkgbase = linux-bcachefs-git
 	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
 	sha512sums = 6792e775464ba41b03938fd42d71caf22c85a4c63a255f5ff807da6101a42afe2f9cb940bd5e80b1e7d21a0b959962d90cc2452920597e7ba0bcb15d37c15233
 	sha512sums = dc6321a572ac365f73b924b3bd8cd26112a0256baf358e3893b90a623e4c0a9eb3667b23f86570581371f993f2c17998e31e27aa36eee925a0589b20b71b65ff
-	sha512sums = 2e9bc765b1761dc14fd924c6500bd16076991571692eb1dd9c84c10d92ce3cfc95e12aad503e64d9bbd2e3229a8d73e480d44e7713f958da36f2ac70e4820dd2
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux-bcachefs-git kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
@@ -45,11 +45,11 @@ pkgname = linux-bcachefs-git
 
 pkgname = linux-bcachefs-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	provides = linux-bcachefs-git-headers=5.1.15.arch1
-	provides = linux-headers=5.1.15.arch1
+	provides = linux-bcachefs-git-headers=v5.1.20
+	provides = linux-headers=v5.1.20
 
 pkgname = linux-bcachefs-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	provides = linux-bcachefs-git-docs=5.1.15.arch1
-	provides = linux-docs=5.1.15.arch1
+	provides = linux-bcachefs-git-docs=v5.1.20
+	provides = linux-docs=v5.1.20
 

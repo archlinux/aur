@@ -1,3 +1,5 @@
+config.last
+linux.install.pkg
 bcachefs
 kernel_gcc_patch
 *.xz
@@ -5,3 +7,4 @@ kernel_gcc_patch
 *.pkg.tar*
 pkg
 src
+upstream
