@@ -1,5 +1,3 @@
-diff --git a/vmmon/Makefile b/vmmon/Makefile
-index de8162e..6124a71 100644
 --- a/vmmon/Makefile
 +++ b/vmmon/Makefile
 @@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
@@ -14,37 +12,126 @@ index de8162e..6124a71 100644
  
  # Header directory for the running kernel
  ifdef LINUXINCLUDE
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Mon, 26 Mar 2018 13:33:32 +0200
-Subject: [PATCH] vmmon: fix indirect call with retpoline build
-diff --git a/vmmon/common/task.c b/vmmon/common/task.c
-index 98cc74a..400ebfe 100644
---- a/vmmon/common/task.c
-+++ b/vmmon/common/task.c
-@@ -2203,12 +2203,23 @@ TaskSwitchToMonitor(VMCrossPage *crosspage)
-    {
-       uint64 raxGetsWiped, rcxGetsWiped;
+--- a/vmmon/linux/hostif.c
++++ a/vmmon/linux/hostif.c
+@@ -1499,9 +1499,13 @@
+     * since at least 2.6.0.
+     */
  
-+#ifdef CALL_NOSPEC
-+      __asm__ __volatile__(CALL_NOSPEC
-+                           : "=a" (raxGetsWiped),
-+                             "=c" (rcxGetsWiped)
-+                           : "0" (codePtr),
-+                             "1" (crosspage),
-+                             THUNK_TARGET(codePtr)
-+                           : "rdx", "r8", "r9", "r10", "r11", "cc", "memory");
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0)
+    extern unsigned long totalram_pages;
+ 
+    unsigned int totalPhysicalPages = totalram_pages;
 +#else
-       __asm__ __volatile__("call *%%rax"
-                            : "=a" (raxGetsWiped),
-                              "=c" (rcxGetsWiped)
-                            : "0" (codePtr),
-                              "1" (crosspage)
-                            : "rdx", "r8", "r9", "r10", "r11", "cc", "memory");
++   unsigned int totalPhysicalPages = totalram_pages();
 +#endif
-+
-    }
- #elif defined(_MSC_VER)
+ 
     /*
+     * Use the memory information linux exports as of late for a more
+@@ -1602,6 +1606,49 @@
+ /*
+  *----------------------------------------------------------------------
+  *
++ * HostIFGetTime --
++ *
++ *      Reads the current time in UPTIME_FREQ units.
++ *
++ * Results:
++ *      The uptime, in units of UPTIME_FREQ.
++ *
++ * Side effects:
++ *      None.
++ *
++ *----------------------------------------------------------------------
++ */
++
++static uint64
++HostIFGetTime(void)
++{
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0)
++   struct timeval tv;
++
++   do_gettimeofday(&tv);
++   return tv.tv_usec * (UPTIME_FREQ / 1000000) + tv.tv_sec * UPTIME_FREQ;
++#else
++   struct timespec64 now;
++
++   /*
++    * Use raw time used by Posix timers.  This time is not affected by
++    * NTP adjustments, so it may drift from real time and monotonic time,
++    * but it will stay in sync with other timers.
++    */
++   ktime_get_raw_ts64(&now);
++   /*
++    * UPTIME_FREQ resolution is lower than tv_nsec,
++    * so we have to do division...
++    */
++   ASSERT_ON_COMPILE(1000000000 % UPTIME_FREQ == 0);
++   return now.tv_nsec / (1000000000 / UPTIME_FREQ) + now.tv_sec * UPTIME_FREQ;
++#endif
++}
++
++
++/*
++ *----------------------------------------------------------------------
++ *
+  * HostIFReadUptimeWork --
+  *
+  *      Reads the current uptime.  The uptime is based on getimeofday,
+@@ -1630,7 +1677,6 @@
+ static uint64
+ HostIFReadUptimeWork(unsigned long *j)  // OUT: current jiffies
+ {
+-   struct timeval tv;
+    uint64 monotime, uptime, upBase, monoBase;
+    int64 diff;
+    uint32 version;
+@@ -1645,13 +1691,12 @@
+       monoBase = uptimeState.monotimeBase;
+    } while (!VersionedAtomic_EndTryRead(&uptimeState.version, version));
+ 
+-   do_gettimeofday(&tv);
++   uptime = HostIFGetTime();
+    upBase = Atomic_Read64(&uptimeState.uptimeBase);
+ 
+    monotime = (uint64)(jifs - jifBase) * (UPTIME_FREQ / HZ);
+    monotime += monoBase;
+ 
+-   uptime = tv.tv_usec * (UPTIME_FREQ / 1000000) + tv.tv_sec * UPTIME_FREQ;
+    uptime += upBase;
+ 
+    /*
+@@ -1756,13 +1801,11 @@
+ void
+ HostIF_InitUptime(void)
+ {
+-   struct timeval tv;
++   uint64 tm;
+ 
+    uptimeState.jiffiesBase = jiffies;
+-   do_gettimeofday(&tv);
+-   Atomic_Write64(&uptimeState.uptimeBase,
+-                  -(tv.tv_usec * (UPTIME_FREQ / 1000000) +
+-                    tv.tv_sec * UPTIME_FREQ));
++   tm = HostIFGetTime();
++   Atomic_Write64(&uptimeState.uptimeBase, -tm);
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0) && !defined(timer_setup)
+    init_timer(&uptimeState.timer);
+@@ -3200,7 +3243,12 @@
+ 
+    ASSERT(handle);
+ 
+-   if (!access_ok(VERIFY_WRITE, p, size)) {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0)
++   if (!access_ok(VERIFY_WRITE, p, size))
++#else
++   if (!access_ok(p, size))
++#endif
++   {
+       printk(KERN_ERR "%s: Couldn't verify write to uva 0x%p with size %"
+              FMTSZ"u\n", __func__, p, size);
+ 
 From 8ba37a5023f939ba8d2e0d91b916ff442b1c18dd Mon Sep 17 00:00:00 2001
 From: Michal Kubecek <mkubecek@suse.cz>
 Date: Mon, 31 Dec 2018 00:05:42 +0100
@@ -72,138 +159,6 @@ index ccdd295..b4b71fb 100644
  	  MODULEBUILDDIR=$(MODULEBUILDDIR) modules
  	$(MAKE) -C $$PWD SRCROOT=$$PWD/$(SRCROOT) \
  	  MODULEBUILDDIR=$(MODULEBUILDDIR) postbuild
-From ca44ce7215b91f82ff500843784b4e86a720fffe Mon Sep 17 00:00:00 2001
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Mon, 31 Dec 2018 00:11:35 +0100
-Subject: [PATCH] vmmon: totalram_pages is a function since 5.0
-
-Since commit ca79b0c211af ("mm: convert totalram_pages and totalhigh_pages
-variables to atomic") in v5.0-rc1, totalram_pages() is an accessor function
-and the actual variable is an atomic.
----
- vmmon-only/linux/hostif.c | 18 ++++++++++--------
- 1 file changed, 10 insertions(+), 8 deletions(-)
-
-diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
-index af4b1d9..d32653c 100644
---- a/vmmon-only/linux/hostif.c
-+++ b/vmmon-only/linux/hostif.c
-@@ -180,6 +180,15 @@ static void UnlockEntry(void *clientData, MemTrackEntry *entryPtr);
- uint8 monitorIPIVector;
- uint8 hvIPIVector;
- 
-+static unsigned long compat_totalram_pages(void)
-+{
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0)
-+	return totalram_pages;
-+#else
-+	return totalram_pages();
-+#endif
-+}
-+
- /*
-  *-----------------------------------------------------------------------------
-  *
-@@ -1494,14 +1503,7 @@ unsigned int
- HostIF_EstimateLockedPageLimit(const VMDriver* vm,                // IN
-                                unsigned int currentlyLockedPages) // IN
- {
--   /*
--    * This variable is available and exported to modules,
--    * since at least 2.6.0.
--    */
--
--   extern unsigned long totalram_pages;
--
--   unsigned int totalPhysicalPages = totalram_pages;
-+   unsigned int totalPhysicalPages = compat_totalram_pages();
- 
-    /*
-     * Use the memory information linux exports as of late for a more
-From 97d03d41984a0ade064fa6ac0400eb61de7929ff Mon Sep 17 00:00:00 2001
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Mon, 31 Dec 2018 00:15:11 +0100
-Subject: [PATCH] vmmon: bring back the do_gettimeofday() helper
-
-The do_gettimeofday() helper was removed by commit e4b92b108c6c
-("timekeeping: remove obsolete time accessors") in v5.0-rc1. Bring it back
-for users in vmmon-only/linux/hostif.c.
-
-This feels like a quick and clumsy band aid to allow build with post-4.20
-kernels. On a closer look, the whole gymnastics around uptimeState and
-HostIFReadUptimeWork() with jiffies and wall time checking and correcting
-each other seems to be a workaround for an absence of high resolution
-monotonic time. Considering ktime_get_ts64() is available since 3.17 and
-before that, ktime_get_ts() since 2.6.17, perhaps the time has come to
-clean all this machinery up. But something like this would be beyond the
-scope of this repository.
----
- vmmon-only/linux/hostif.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-
-diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
-index d32653c..cf4197b 100644
---- a/vmmon-only/linux/hostif.c
-+++ b/vmmon-only/linux/hostif.c
-@@ -189,6 +189,17 @@ static unsigned long compat_totalram_pages(void)
- #endif
- }
- 
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0)
-+static void do_gettimeofday(struct timeval *tv)
-+{
-+	struct timespec64 now;
-+
-+	ktime_get_real_ts64(&now);
-+	tv->tv_sec = now.tv_sec;
-+	tv->tv_usec = now.tv_nsec / 1000;
-+}
-+#endif
-+
- /*
-  *-----------------------------------------------------------------------------
-  *
-From 92b90ac11baf215ba73cb94e5aebf0576f1966a0 Mon Sep 17 00:00:00 2001
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Sat, 5 Jan 2019 01:54:57 +0100
-Subject: [PATCH] modules: handle access_ok() with two arguments
-
-Since commit 96d4f267e40f ("Remove 'type' argument from access_ok()
-function") in v5.0-rc1, the type argument of access_ok() was dropped.
-The same commit also dropped macros VERIFY_READ and VERIFY_WRITE so check
-for their existence on pre-5.0 kernels to allow build against kernels with
-this change backported.
----
- vmmon-only/linux/hostif.c | 8 +++++++-
- vmnet-only/userif.c       | 8 +++++++-
- 2 files changed, 14 insertions(+), 2 deletions(-)
-
-diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
-index cf4197b..ef88a22 100644
---- a/vmmon-only/linux/hostif.c
-+++ b/vmmon-only/linux/hostif.c
-@@ -200,6 +200,12 @@ static void do_gettimeofday(struct timeval *tv)
- }
- #endif
- 
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0) && defined(VERIFY_WRITE)
-+	#define write_access_ok(addr, size) access_ok(VERIFY_WRITE, addr, size)
-+#else
-+	#define write_access_ok(addr, size) access_ok(addr, size)
-+#endif
-+
- /*
-  *-----------------------------------------------------------------------------
-  *
-@@ -3213,7 +3219,7 @@ HostIF_MapUserMem(VA addr,                  // IN: User memory virtual address
- 
-    ASSERT(handle);
- 
--   if (!access_ok(VERIFY_WRITE, p, size)) {
-+   if (!write_access_ok(p, size)) {
-       printk(KERN_ERR "%s: Couldn't verify write to uva 0x%p with size %"
-              FMTSZ"u\n", __func__, p, size);
- 
 From 41413a9b6e660a93600a438944d85b6f51eb680c Mon Sep 17 00:00:00 2001
 From: Michal Kubecek <mkubecek@suse.cz>
 Date: Tue, 5 Mar 2019 13:21:35 +0100
@@ -221,7 +176,7 @@ diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
 index ef88a22..8ca17de 100644
 --- a/vmmon-only/linux/hostif.c
 +++ b/vmmon-only/linux/hostif.c
-@@ -2183,7 +2183,7 @@ isVAReadable(VA r)  // IN:
+@@ -2207,7 +2207,7 @@ isVAReadable(VA r)  // IN:
     int ret;
  
     old_fs = get_fs();
@@ -230,7 +185,7 @@ index ef88a22..8ca17de 100644
     r = APICR_TO_ADDR(r, APICR_VERSION);
     ret = HostIF_CopyFromUser(&dummy, r, sizeof dummy);
     set_fs(old_fs);
-@@ -2384,7 +2384,7 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
+@@ -2408,7 +2408,7 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
     }
  
     old_fs = get_fs();
@@ -239,7 +194,7 @@ index ef88a22..8ca17de 100644
  
     {
        struct poll_wqueues table;
-@@ -2513,7 +2513,7 @@ HostIF_SemaphoreSignal(uint64 *args)  // IN:
+@@ -2537,7 +2537,7 @@ HostIF_SemaphoreSignal(uint64 *args)  // IN:
     }
  
     old_fs = get_fs();
@@ -301,3 +256,38 @@ index 92a3529..248a95d 100644
  #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
  LinuxDriverFault(struct vm_fault *fault)     //IN/OUT
  #else
+From 98008ff6adec118962df8ac26f814b55c3861efb Mon Sep 17 00:00:00 2001
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Tue, 9 Jul 2019 21:07:04 +0200
+Subject: [PATCH] vmmon: fix HostIF_SetFastClockRate() not to use force_sig()
+
+Commit 3cf5d076fb4d ("signal: Remove task parameter from force_sig") in
+v5.3-rc1 drops second argument of force_sig(); before that, all callers
+which passed something else than current task as second argument were
+fixed, mostly to use send_sig() instead.
+
+The situation in HostIF_SetFastClockRate() is the same as e.g. in bpfilter
+call fixed by commit 1dfd1711de29 ("signal/bpfilter: Fix bpfilter_kernl to
+use send_sig not force_sig"): locking in force_sig_info() cannot handle
+task exiting and using force_sig() for SIGKILL is pointless anyway as this
+signal cannot be blocked.
+
+As send_sig() is present with unchanged signature since the pre-git era, we
+can use send_sig() unconditionally, regardless of kernel version.
+---
+ vmmon-only/linux/hostif.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
+index 850ca02..27eb60c 100644
+--- a/vmmon-only/linux/hostif.c
++++ b/vmmon-only/linux/hostif.c
+@@ -3197,7 +3197,7 @@ HostIF_SetFastClockRate(unsigned int rate) // IN: Frequency in Hz.
+       }
+    } else {
+       if (linuxState.fastClockThread) {
+-         force_sig(SIGKILL, linuxState.fastClockThread);
++         send_sig(SIGKILL, linuxState.fastClockThread, 1);
+          kthread_stop(linuxState.fastClockThread);
+ 
+          linuxState.fastClockThread = NULL;
