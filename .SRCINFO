@@ -1,7 +1,7 @@
 pkgbase = spirv-cross
 	pkgdesc = A tool and library for parsing and converting SPIR-V to other shader languages
-	pkgver = 2019.06.21
-	pkgrel = 2
+	pkgver = 2019.07.26
+	pkgrel = 1
 	url = https://github.com/KhronosGroup/SPIRV-Cross/
 	arch = x86_64
 	license = Apache
@@ -10,16 +10,14 @@ pkgbase = spirv-cross
 	makedepends = python
 	makedepends = python-nose
 	depends = gcc-libs
-	source = git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=2019-06-21
-	source = git+https://github.com/KhronosGroup/glslang.git#commit=e291f7a09f6733f6634fe077a228056fabee881e
-	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#commit=89fe836fe22c3e5c2a062ebeade012e2c2f0839b
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=c4f8f65792d4bf2657ca751904c511bbcf2ac77b
-	source = spirv-cross-workaround-gcc9.1-bug.patch::https://github.com/KhronosGroup/SPIRV-Cross/commit/7557ff5567d88f97c10c0c097df1d9f993cafa42.patch
+	source = git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=2019-07-26
+	source = git+https://github.com/KhronosGroup/glslang.git#commit=25a508cc735109cc4e382c3a1cc293a9452a41f3
+	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#commit=55adf4cf707bb12c29fc12f784ebeaa29a819e9b
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=29c11140baaf9f7fdaa39a583672c556bf1795a1
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 7e71831e2c96f9e3967dd9797429a56a6a478de47398794ce54a12b55fb9a7ef
 
 pkgname = spirv-cross
 

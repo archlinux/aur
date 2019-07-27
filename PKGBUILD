@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
-_glslang_commit='e291f7a09f6733f6634fe077a228056fabee881e'
-_spirv_tools_commit='89fe836fe22c3e5c2a062ebeade012e2c2f0839b'
-_spirv_headers_commit='c4f8f65792d4bf2657ca751904c511bbcf2ac77b'
+_glslang_commit='25a508cc735109cc4e382c3a1cc293a9452a41f3'
+_spirv_tools_commit='55adf4cf707bb12c29fc12f784ebeaa29a819e9b'
+_spirv_headers_commit='29c11140baaf9f7fdaa39a583672c556bf1795a1'
 
 pkgname=spirv-cross
-pkgver=2019.06.21
-pkgrel=2
+pkgver=2019.07.26
+pkgrel=1
 pkgdesc='A tool and library for parsing and converting SPIR-V to other shader languages'
 arch=('x86_64')
 url='https://github.com/KhronosGroup/SPIRV-Cross/'
@@ -16,37 +16,28 @@ makedepends=('git' 'cmake' 'python' 'python-nose')
 source=("git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=${pkgver//./-}"
         "git+https://github.com/KhronosGroup/glslang.git#commit=${_glslang_commit}"
         "git+https://github.com/KhronosGroup/SPIRV-Tools.git#commit=${_spirv_tools_commit}"
-        "git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=${_spirv_headers_commit}"
-        'spirv-cross-workaround-gcc9.1-bug.patch'::'https://github.com/KhronosGroup/SPIRV-Cross/commit/7557ff5567d88f97c10c0c097df1d9f993cafa42.patch')
+        "git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=${_spirv_headers_commit}")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '7e71831e2c96f9e3967dd9797429a56a6a478de47398794ce54a12b55fb9a7ef')
+            'SKIP')
 
 prepare() {
     cd SPIRV-Cross
     
-    # fix tests with gcc 9.1.0
-    ## https://github.com/KhronosGroup/SPIRV-Cross/issues/1038
-    ## https://gcc.gnu.org/bugzilla/show_bug.cgi?id=90947
-    patch -Np1 -i "${srcdir}/spirv-cross-workaround-gcc9.1-bug.patch"
-    
     mkdir -p build external/{glslang,spirv-tools}-build
     
-    ln -s "${srcdir}/glslang"       external/glslang
-    ln -s "${srcdir}/SPIRV-Tools"   external/spirv-tools
-    ln -s "${srcdir}/SPIRV-Headers" "${srcdir}/SPIRV-Tools/external/spirv-headers"
+    ln -sf "${srcdir}/glslang"       external/glslang
+    ln -sf "${srcdir}/SPIRV-Tools"   external/spirv-tools
+    ln -sf "${srcdir}/SPIRV-Headers" "${srcdir}/SPIRV-Tools/external/spirv-headers"
 }
 
 build() {
-    # NOTE (1): test suite fails when using 'None' build type
-    # NOTE (2): test suite fails when using glslang and spirv-tools from the repos
-    #           (probably because spirv-tools is outdated at the time of writing)
+    # NOTE: test suite fails when using 'None' build type
     
     # glslang (required for tests)
     printf '%s\n' '  -> Building glslang...'
-    cd "SPIRV-Cross/external/glslang-build"
+    cd SPIRV-Cross/external/glslang-build
     cmake \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX:PATH='output' \
@@ -79,7 +70,7 @@ build() {
 }
 
 check() {
-    cd "SPIRV-Cross/build"
+    cd SPIRV-Cross/build
     
     make test
 }
