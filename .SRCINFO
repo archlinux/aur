@@ -1,7 +1,7 @@
 pkgbase = openfx-arena
 	pkgdesc = Extra OpenFX plugins for Natron
 	pkgver = 2.3.14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/NatronGitHub/openfx-arena
 	arch = i686
 	arch = x86_64
@@ -22,14 +22,12 @@ pkgbase = openfx-arena
 	source = git+https://github.com/NatronGitHub/openfx-io
 	source = git+https://github.com/NatronGitHub/SequenceParsing
 	source = git+https://github.com/NatronGitHub/tinydir
-	source = im7.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 2e4cf8665b074afe84d743ea86e9e89e
 
 pkgname = openfx-arena
 

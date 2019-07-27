@@ -4,7 +4,7 @@
 
 pkgname=openfx-arena
 pkgver=2.3.14
-pkgrel=3
+pkgrel=4
 arch=("i686" "x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronGitHub/openfx-arena"
@@ -17,15 +17,13 @@ source=("$pkgname::git+https://github.com/NatronGitHub/openfx-arena#tag=Natron-$
         "git+https://github.com/NatronGitHub/openfx-supportext"
         "git+https://github.com/NatronGitHub/openfx-io"
         "git+https://github.com/NatronGitHub/SequenceParsing"
-        "git+https://github.com/NatronGitHub/tinydir"
-        "im7.patch")
+        "git+https://github.com/NatronGitHub/tinydir")
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
-         '2e4cf8665b074afe84d743ea86e9e89e')
+         'SKIP')
 
 # Check the ImageMagick version
 _IM_VERSION=$(echo `identify -version` | tr -dc '0-9' | cut -c 1)
