@@ -1,5 +1,5 @@
 pkgname=linvst3
-pkgver=1.0
+pkgver=1.5
 pkgrel=1
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
@@ -11,9 +11,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 package() {
-    cd "${srcdir}/LinVst3-${pkgver}-Debian-Stretch/embedded-version/"
-    for file in *; do
-        install -Dm755 $file $pkgdir/usr/bin/$file
-    done
-    install -Dm755 $srcdir/w2lvst3 $pkgdir/usr/bin/w2lvst3
+	cd "${srcdir}/LinVst3-${pkgver}-Debian-Stretch/embedded/"
+	for file in *.so; do
+        	install -Dm755 $file $pkgdir/usr/bin/$file
+	done
+	for file in *.exe; do
+		install -Dm755 $file $pkgdir/usr/bin/$file
+	done
+	install -Dm755 $srcdir/w2lvst3 $pkgdir/usr/bin/w2lvst3
 }
