@@ -1,4 +1,5 @@
-# Maintainer: Marcel Korpel <marcel[dot]korpel[at]gmail>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Tammer Ibrahim <t at tammeri dot net>
 
 DLAGENTS=(
@@ -9,15 +10,15 @@ DLAGENTS=(
 pkgname=ttf-courier-prime
 pkgver=1.203
 pkgrel=3
-pkgdesc="Monospace Courier font alternative optimized for screenplays"
+pkgdesc='Monospace Courier font alternative optimized for screenplays'
 arch=('any')
-url='http://quoteunquoteapps.com/courierprime/'
+url='https://quoteunquoteapps.com/courierprime/'
 license=('custom')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-source=('http://quoteunquoteapps.com/downloads/courier-prime.zip'
-        'http://quoteunquoteapps.com/downloads/courier-sans.zip'
-        'http://quoteunquoteapps.com/downloads/courier-code.zip'
-        'http://quoteunquoteapps.com/courierprime/Courier-Prime-Medium-Semi-Bold.zip')
+source=('https://quoteunquoteapps.com/courierprime/downloads/courier-prime.zip'
+        'https://quoteunquoteapps.com/courierprime/downloads/courier-prime-sans.zip'
+        'https://quoteunquoteapps.com/courierprime/downloads/courier-prime-code.zip'
+        'https://quoteunquoteapps.com/courierprime/downloads/courier-prime-medium-semi-bold.zip')
 sha256sums=('d5d4faf1bee0d1f52bab1103cbfdfb354976331c86f999c110c22a098cb12d73'
             '754b3937340f5522ccf96be7832efbd809ef93f373d51b12919adbd9c0a468d7'
             'c400b6addeddef7c26a9943f847a8584c83d8bb775cd35da2dcd41c6ad98d827'
