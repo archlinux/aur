@@ -4,7 +4,7 @@
 # Contributor: Vladimir Kutyavin <vlkut(AT)bk(DOT)ru>
 pkgname=xtables-addons-dkms
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='DKMS for additional extensions for Xtables packet filter present in the Linux kernel'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -17,13 +17,16 @@ optdepends=('perl-text-csv-xs: required for building GeoIP database'
 conflicts=(xtables-addons xtables-addons-git xtables-addons-multikernel)
 replaces=(xtables-addons xtables-addons-git xtables-addons-multikernel)
 source=(https://sourceforge.net/projects/${pkgname%-dkms}/files/Xtables-addons/${pkgname%-dkms}-${pkgver}.tar.xz
+        0002-fix-deprecated-flags-field.patch
         dkms.conf)
 sha256sums=('efa62c7df6cd3b82d7195105bf6fe177b605f91f3522e4114d2f4e0ad54320d6'
+            '615c953786f5441c06d099dfe477aeed8a87e70334cee17369850cfdc8c3f3e3'
             '87546f6d100a33271086d3bc990a2a1e4de83e25fb4a048774c520f4c36729e6')
 
 prepare() {
 	# go to builddir
 	cd "${srcdir}/xtables-addons-${pkgver}"
+	patch -p1 -i "${srcdir}/0002-fix-deprecated-flags-field.patch"
 	
 	# disable install-exec-hook (avoids useless calling of depmod -a at 'make install' stage)
 	sed -i 's/^install-exec-hook:$/dont-run:/' Makefile.am
