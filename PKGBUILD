@@ -59,7 +59,7 @@ _subarch=
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
-pkgbase=linux-bcachefs-git
+pkgbase=linux-mainline-bcachefs
 _srcver_tag=5.1
 pkgver=v5.1.20
 pkgrel=1

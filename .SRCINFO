@@ -1,4 +1,4 @@
-pkgbase = linux-bcachefs-git
+pkgbase = linux-mainline-bcachefs
 	pkgver = v5.1.20
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
@@ -32,8 +32,8 @@ pkgbase = linux-bcachefs-git
 	sha512sums = 6792e775464ba41b03938fd42d71caf22c85a4c63a255f5ff807da6101a42afe2f9cb940bd5e80b1e7d21a0b959962d90cc2452920597e7ba0bcb15d37c15233
 	sha512sums = dc6321a572ac365f73b924b3bd8cd26112a0256baf358e3893b90a623e4c0a9eb3667b23f86570581371f993f2c17998e31e27aa36eee925a0589b20b71b65ff
 
-pkgname = linux-bcachefs-git
-	pkgdesc = The Linux-bcachefs-git kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
+pkgname = linux-mainline-bcachefs
+	pkgdesc = The Linux-mainline-bcachefs kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
@@ -41,15 +41,15 @@ pkgname = linux-bcachefs-git
 	depends = mkinitcpio
 	depends = bcachefs-tools-git
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-bcachefs-git.preset
+	backup = etc/mkinitcpio.d/linux-mainline-bcachefs.preset
 
-pkgname = linux-bcachefs-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
+pkgname = linux-mainline-bcachefs-headers
+	pkgdesc = Header files and scripts for building modules for Linux-mainline-bcachefs kernel ~ featuring Kent Overstreet's bcachefs filesystem
 	provides = linux-bcachefs-git-headers=v5.1.20
 	provides = linux-headers=v5.1.20
 
-pkgname = linux-bcachefs-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
+pkgname = linux-mainline-bcachefs-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-mainline-bcachefs kernel ~ featuring Kent Overstreet's bcachefs filesystem
 	provides = linux-bcachefs-git-docs=v5.1.20
 	provides = linux-docs=v5.1.20
 
