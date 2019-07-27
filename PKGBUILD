@@ -1,8 +1,8 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer-alpha
-pkgver=1.8.7.7642
-_pkgver=1_8_7_7642
+pkgver=1.8.7.7750
+_pkgver=1_8_7_7750
 pkgrel=1
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (nighly builds)"
 url="http://www.singularityviewer.org/"
@@ -24,10 +24,10 @@ provides=("singularityviewer")
 source=("http://singu.virtual-nexus.xyz/files/Singularity_Test_${_pkgver}_x86_64.tar.xz"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher")
-md5sums=('8acba2e3d522716357f433a763e0c5bf'
+md5sums=('616c2091de42b57113b385cdc6274e3e'
          'ff7aa34dcd7548e3acdb3c2d44ae6604'
          'eb596f5cf7b6f2d0c55c0082fb99a905')
-         
+
 package() {
 cd $srcdir
 
@@ -40,7 +40,6 @@ cd singularityviewer/
 cd lib64/
 rm *SDL*
 rm *openal*
-rm *freetype*
 rm *expat*
 rm *apr*
 rm *alut*
