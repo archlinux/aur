@@ -1,4 +1,4 @@
-# Maintainer: Mirco Tischler <mt-ml at gmx dot de>
+# Maintainer: Marcel Röthke <marcel.roethke@haw-hamburg.de>
 # Contributor: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=actor-framework
