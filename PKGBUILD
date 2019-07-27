@@ -22,12 +22,19 @@ makedepends=(
     "pkgconf"
     "zlib"
 )
+depends=(
+    "libscrypt"
+    "libsodium"
+    "liburcu"
+)
 
 _reponame="bcachefs-tools"
 _repo_url="https://github.com/koverstreet/${_reponame}"
 
-source=("git+${_repo_url}"
-        "add-mkinitcpio-hook-for-Arch.patch")
+source=(
+    "git+${_repo_url}"
+    "add-mkinitcpio-hook-for-Arch.patch"
+)
 sha256sums=('SKIP'
             'b4d6bc483b417ceaa5c628c686a613e568e64a699288da0388d508a481c710e9')
 
