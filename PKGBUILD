@@ -4,7 +4,7 @@
 
 pkgname=check50
 _module='check50' # PyPI specific
-pkgver=2.2.6
+pkgver=2.2.7
 pkgrel=1
 pkgdesc="This is check50, with which you can check solutions to problems for CS50."
 arch=('any')
@@ -17,7 +17,7 @@ source=(
 	"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz"
 )
 sha256sums=(
-	'c3430446de5f03a9016d1bb45a09ebe5577d03d386c58b7a5e560d6299a222c7'
+	'6ad46b75f1b19d485a105976a684ec67a37356471a2c2b206cf85086624bde8c'
 )
 
 build() {
