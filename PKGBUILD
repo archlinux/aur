@@ -1,6 +1,6 @@
 # Maintainer: Aaron J Graves <linux@ajgraves.com>
 pkgname=criptext-bin
-pkgver=0.20.1
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='Official Criptext encrypted email client'
 arch=('x86_64')
@@ -13,7 +13,7 @@ _destimage="Criptext-latest.AppImage"
 _srcimage="Criptext-${pkgver}.AppImage"
 source=("https://cdn.criptext.com/Criptext-Email-Desktop/linux/${_srcimage}")
 noextract=("${_srcimage}")
-sha512sums=('2299d002761320323b9cad5b0bf979be4f5459716170803b7d46c9fd457126673d7e4eb433339d3db78c3bb38aa5d9cbe6ab3f39030abc0749b78b667505b07b')
+sha512sums=('d8a80aa68fc7ad1774d83ccf9c9af0b9c600a11c215f67d6de5364f3fd1c913436f79a868ded785514716fa8b24d867a28ff85820079dd74643a8d08cacff5a2')
 install="${pkgname}.install"
 
 package() {
