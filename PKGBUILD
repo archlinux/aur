@@ -3,7 +3,7 @@
 # Contributor: Apostolos Bessas <mpessas at gmail dot com>
 
 pkgname=otf-gfs
-pkgver=20181103
+pkgver=20190727
 pkgrel=1
 pkgdesc='Selection of open type fonts from the Greek Font Society.'
 arch=(any)
@@ -33,7 +33,9 @@ source=("http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Pyrsos.zip"
 	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Gazis.zip"
 	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Baskerville.zip"
 	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Bodoni_Classic.zip"
-	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Complutum.zip")
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Complutum.zip"
+	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Galatea.zip"
+	"LICENSE")
 noextract=(${source[@]##*/})
 md5sums=('ad4bce50a20830c93bc6e4437f674e95'
          'ed0fd6e096eaa27f1e4d75dab59b353b'
@@ -56,8 +58,9 @@ md5sums=('ad4bce50a20830c93bc6e4437f674e95'
          'a4c893f33da31e6152b5bd06c516b52d'
          'a4f88fe7b6a598c5ed12f6c54dc03a8f'
          'a581c49e12f5feed39c56135b47a2f55'
-         'b6857e9252be1141ad48276c7fc0a6b0')
-
+         'b6857e9252be1141ad48276c7fc0a6b0'
+         'ce6df5fd9a8d498f4e044a0ddc02a28f'
+         '288069c8fb0c828b081833cfcfe0638b')
 
 package() {
 cd "$srcdir"
@@ -84,9 +87,10 @@ unzip GFS_Gazis.zip -x ${_xlist}
 unzip GFS_Baskerville.zip -x ${_xlist}
 unzip GFS_Bodoni_Classic.zip -x ${_xlist}
 unzip GFS_Complutum.zip -x ${_xlist}
+unzip GFS_Galatea.zip -x ${_xlist}
 
-install -d $pkgdir/usr/share/fonts/OTF/
-install -Dm644 $srcdir/GFS*/*otf $pkgdir/usr/share/fonts/OTF/
+install -d $pkgdir/usr/share/fonts/$pkgname/
+install -Dm644 $srcdir/GFS*/*otf $pkgdir/usr/share/fonts/$pkgname/
 install -d $pkgdir/usr/share/licenses/$pkgname/
-install -Dm644 $srcdir/GFS_ARTEMISIA/OFL* $pkgdir/usr/share/licenses/$pkgname 
+install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
