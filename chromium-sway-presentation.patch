@@ -1,0 +1,71 @@
+commit 5682b344c0dabc6d7047363f9c877dcf4c0add72
+Author: Maksim Sisov <msisov@igalia.com>
+Date:   Fri Jul 26 14:33:28 2019 +0300
+
+    [ozone/wayland] Sway: avoid sending presentation early.
+    
+    In Sway, presentation callbacks may come much earlier than we send
+    submission callbacks. That results in unexpected crashes in the
+    GbmSurfacelessWayland, because of early presentation callbacks.
+    Shortly speaking, a submitted frame may not receive the submission
+    callback and not be moved to the list of waiting for a presentation
+    frames. That means GbmSurfacelessWayland::OnPresentation simply
+    accesses an invalid pointer to a frame, for which the presentation
+    feedback comes.
+    
+    Bug: 974456
+    Change-Id: Iae7ab57a00d06f0dde6057ed05df885239e099bd
+
+diff --git a/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc b/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
+index eed48394602f..cd3245390fdf 100644
+--- a/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
++++ b/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
+@@ -228,6 +228,12 @@ class WaylandBufferManagerHost::Surface {
+     // surface can tell the gpu about successful swap.
+     bool released = true;
+ 
++    // In some cases, a presentation feedback can come earlier than we fire a
++    // submission callback. Thus, instead of sending it immediately to the GPU
++    // process, we store it and fire as soon as the submission callback is
++    // fired.
++    bool needs_send_feedback = false;
++
+     gfx::PresentationFeedback feedback;
+ 
+     DISALLOW_COPY_AND_ASSIGN(WaylandBuffer);
+@@ -355,6 +361,10 @@ class WaylandBufferManagerHost::Surface {
+   void CompleteSubmission() {
+     DCHECK(submitted_buffer_);
+     auto id = submitted_buffer_->buffer_id;
++
++    auto feedback = std::move(submitted_buffer_->feedback);
++    bool needs_send_feedback = submitted_buffer_->needs_send_feedback;
++
+     prev_submitted_buffer_ = submitted_buffer_;
+     submitted_buffer_ = nullptr;
+     // We can now complete the latest submission. We had to wait for this
+@@ -370,14 +380,21 @@ class WaylandBufferManagerHost::Surface {
+       OnPresentation(id, gfx::PresentationFeedback(
+                              base::TimeTicks::Now(), base::TimeDelta(),
+                              GetPresentationKindFlags(0)));
++    } else if (needs_send_feedback) {
++      OnPresentation(id, std::move(feedback));
+     }
+   }
+ 
+   void OnPresentation(uint32_t buffer_id,
+                       const gfx::PresentationFeedback& feedback) {
+-    // The order of submission and presentation callbacks is checked on the GPU
+-    // side, but it must never happen, because the Submission is called
+-    // immediately after the buffer is swapped.
++    // The order of submission and presentation callbacks cannot be controlled.
++    // Some Wayland compositors may fire presentation callbacks earlier than we
++    // are able to send submission callbacks is bad. Thus, handle it here.
++    if (submitted_buffer_ && submitted_buffer_->buffer_id == buffer_id) {
++      submitted_buffer_->feedback = feedback;
++      return;
++    }
++
+     buffer_manager_->OnPresentation(window_->GetWidget(), buffer_id, feedback);
+   }
+ 

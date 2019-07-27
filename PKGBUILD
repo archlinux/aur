@@ -5,10 +5,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=75.0.3770.100
+pkgver=75.0.3770.142
 pkgrel=1
 _launcher_ver=6
-_meta_browser_sha=f24753238414a8b04e5227772f22bb4dd9171b2f
+_meta_browser_sha=3a0df19242cddda96efd91f195fe0df53fe4f955
 pkgdesc="Chromium built with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -19,7 +19,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
 provides=('chromium')
 conflicts=('chromium')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
-             'clang' 'lld' 'gn' 'java-runtime-headless')
+             'clang' 'lld' 'gn<0.1578.0' 'java-runtime-headless')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -32,15 +32,19 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-fix-window-flash-for-some-WMs.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch
+        chromium-sway-presentation.patch
+        chromium-mutex-surfaces.patch
         https://git.nightly.network/Exherbo/desktop/raw/de0a391d9e7442dce614553835ef599119826387/packages/net-www/chromium-stable/files/chromium-remove-const.patch
         Added-HiDPI-support-for-Ozone-Wayland.patch)
-sha256sums=('9e1360101b6d9f9635e540db77626e3e15b452f413d8750518244ac37b73fca0'
+sha256sums=('510e6ca7ccc218b401b375c13656f6aecab196b03142026dc3602b9d1804a5ac'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'e7ead0cdb341819adb52082aed1ae674e243944fbf23456ab9ca60f4c4baefe5'
+            '6bacd62414282999a5631e06cd3fa1eca787ee5b20a41fd3499668eead55f4d1'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
             '183d8cc712f0bcf1afcb01ce90c4c104a4c8d8070a06f94974a28b007d9e2ce4'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
+            '279b9558a466d96bc7dcba96a9f41efaed98ede1cd69e1562689ee4409940fe8'
+            'dcf01e0d630eb107e5efb56bb00c140269a0c9711b3ae90a3fd289ad5153ac08'
             '005f7db8acc774e2c66f99d900f2263abf495ccd5eda33c45a957fce2ed30f8d'
             'b6b258a6d3b42731c9375395b4e6e896edef00617d5b7028c348a5d2dbb14eb7')
 
@@ -80,22 +84,12 @@ _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 _general_patches=(
-  '0001-Add-support-for-GCC-Compilers.patch'
-  '0001-Revert-Use-noexcept-consistently-on-the-move-ctor-of.patch'
-  '0001-TrackEventJSONExporter-HandleLegacyEvent-Use-std-mov.patch'
-  '0001-webrequest-Fix-GCC-build-after-2d47b917314a.patch'
-  '0001-GCC-7-workaround-remove-constexpr-ctor.patch'
   '0001-libstdc-do-not-assume-unique_ptr-has-ostream-operato.patch'
-  'aarch64-skia-build-fix.patch'
   'oe-clang-fixes.patch'
   # 'v8-qemu-wrapper.patch'
   'wrapper-extra-flags.patch'
   'do-not-specify-march-on-arm.patch'
-  '0005-Remove-banned-designated-initializer-list-usage-from.patch'
-  '0006-GCC-add-std-move-to-return-to-base-Optional.patch'
-  '0001-GCC-fix-another-GCC-bug-by-implementing-copy-assign-.patch'
   'add_internal_define_armv7ve.patch'
-  '0001-Avoid-pure-virtual-crash-destroying-RenderProcessUse.patch'
 )
 
 _wayland_patches=(
@@ -168,6 +162,12 @@ prepare() {
     echo "Applying $PATCH"
     patch -Np1 -i $srcdir/meta-browser-${_meta_browser_sha}/recipes-browser/chromium/chromium-ozone-wayland/${PATCH}
   done
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/1718406
+  patch -Np1 -i ../chromium-mutex-surfaces.patch
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/1719013
+  patch -Np1 -i ../chromium-sway-presentation.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/1647154
   patch -Np1 -i ../Added-HiDPI-support-for-Ozone-Wayland.patch

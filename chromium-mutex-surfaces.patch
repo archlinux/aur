@@ -1,0 +1,123 @@
+commit e4085b7e427a848fea61980252f17e5a3676a9ea
+Author: Maksim Sisov <msisov@igalia.com>
+Date:   Thu Jul 25 16:22:09 2019 +0300
+
+    [ozone/wayland] Use mutex before accessing surfaces map.
+    
+    We must make sure that accessing surfaces map from different threads
+    is safe. Otherwise, this is subject to races and unexpected crashes.
+    
+    Bug: 987950
+    Change-Id: I2e70e9c1ad48943be518c3571b7ca1fb91f8d51b
+
+diff --git a/ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.cc b/ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.cc
+index 72d2419b5f84..f0081ca725c5 100644
+--- a/ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.cc
++++ b/ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.cc
+@@ -135,6 +135,8 @@ bool GbmPixmapWayland::ScheduleOverlayPlane(
+     const gfx::RectF& crop_rect,
+     bool enable_blend,
+     std::unique_ptr<gfx::GpuFence> gpu_fence) {
++  base::AutoLock scoped_lock(*(buffer_manager_->lock()));
++
+   auto* surface = buffer_manager_->GetSurface(widget);
+   DCHECK(surface);
+   GbmSurfacelessWayland* surfaceless =
+diff --git a/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc b/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc
+index 63bfa3032fde..2f3499e93589 100644
+--- a/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc
++++ b/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc
+@@ -43,6 +43,8 @@ void WaylandBufferManagerGpu::OnSubmission(gfx::AcceleratedWidget widget,
+                                            gfx::SwapResult swap_result) {
+   DCHECK(io_thread_runner_->BelongsToCurrentThread());
+   DCHECK_NE(widget, gfx::kNullAcceleratedWidget);
++  base::AutoLock scoped_lock(*lock());
++
+   auto* surface = GetSurface(widget);
+   // There can be a race between destruction and submitting the last frames. The
+   // surface can be destroyed by the time the host receives a request to destroy
+@@ -64,6 +66,8 @@ void WaylandBufferManagerGpu::OnPresentation(
+     const gfx::PresentationFeedback& feedback) {
+   DCHECK(io_thread_runner_->BelongsToCurrentThread());
+   DCHECK_NE(widget, gfx::kNullAcceleratedWidget);
++  base::AutoLock scoped_lock(*lock());
++
+   auto* surface = GetSurface(widget);
+   // There can be a race between destruction and presenting the last frames. The
+   // surface can be destroyed by the time the host receives a request to destroy
+@@ -80,15 +84,20 @@ void WaylandBufferManagerGpu::OnPresentation(
+ 
+ void WaylandBufferManagerGpu::RegisterSurface(gfx::AcceleratedWidget widget,
+                                               WaylandSurfaceGpu* surface) {
++  base::AutoLock scoped_lock(lock_);
+   widget_to_surface_map_.insert(std::make_pair(widget, surface));
+ }
+ 
+ void WaylandBufferManagerGpu::UnregisterSurface(gfx::AcceleratedWidget widget) {
++  base::AutoLock scoped_lock(lock_);
+   widget_to_surface_map_.erase(widget);
+ }
+ 
+ WaylandSurfaceGpu* WaylandBufferManagerGpu::GetSurface(
+-    gfx::AcceleratedWidget widget) const {
++    gfx::AcceleratedWidget widget) {
++  // Before accessing the map, the |lock_| must be acquired.
++  lock_.AssertAcquired();
++
+   WaylandSurfaceGpu* surface = nullptr;
+   auto it = widget_to_surface_map_.find(widget);
+   if (it != widget_to_surface_map_.end())
+diff --git a/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.h b/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.h
+index 87439610cfc3..d1a34357a6a0 100644
+--- a/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.h
++++ b/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.h
+@@ -8,6 +8,7 @@
+ #include <memory>
+ 
+ #include "base/macros.h"
++#include "base/synchronization/lock.h"
+ #include "base/threading/sequenced_task_runner_handle.h"
+ #include "base/threading/thread_checker.h"
+ #include "mojo/public/cpp/bindings/associated_binding.h"
+@@ -43,6 +44,10 @@ class WaylandBufferManagerGpu : public ozone::mojom::WaylandBufferManagerGpu {
+   WaylandBufferManagerGpu();
+   ~WaylandBufferManagerGpu() override;
+ 
++  // Whenever GetSurface is called, the caller must ensure to lock the mutex
++  // before that call.
++  base::Lock* lock() { return &lock_; }
++
+   // WaylandBufferManagerGpu overrides:
+   void SetWaylandBufferManagerHost(
+       BufferManagerHostPtr buffer_manager_host_ptr) override;
+@@ -66,7 +71,9 @@ class WaylandBufferManagerGpu : public ozone::mojom::WaylandBufferManagerGpu {
+   void RegisterSurface(gfx::AcceleratedWidget widget,
+                        WaylandSurfaceGpu* surface);
+   void UnregisterSurface(gfx::AcceleratedWidget widget);
+-  WaylandSurfaceGpu* GetSurface(gfx::AcceleratedWidget widget) const;
++  // A client of this method must always get and acquire lock before doing
++  // any manipulations with the surface. Once done, the lock must be released.
++  WaylandSurfaceGpu* GetSurface(gfx::AcceleratedWidget widget);
+ 
+   // Methods, which can be used when in both in-process-gpu and out of process
+   // modes. These calls are forwarded to the browser process through the
+@@ -156,7 +163,8 @@ class WaylandBufferManagerGpu : public ozone::mojom::WaylandBufferManagerGpu {
+   mojo::AssociatedBinding<ozone::mojom::WaylandBufferManagerGpu>
+       associated_binding_;
+ 
+-  std::map<gfx::AcceleratedWidget, WaylandSurfaceGpu*> widget_to_surface_map_;
++  std::map<gfx::AcceleratedWidget, WaylandSurfaceGpu*>
++      widget_to_surface_map_;  // Guarded by |lock_|.
+ 
+   // This task runner can be used to pass messages back to the same thread,
+   // where the commit buffer request came from. For example, swap requests come
+@@ -171,6 +179,9 @@ class WaylandBufferManagerGpu : public ozone::mojom::WaylandBufferManagerGpu {
+   // needed to ensure mojo calls happen on a right sequence.
+   scoped_refptr<base::SingleThreadTaskRunner> io_thread_runner_;
+ 
++  // Protects access to |widget_to_surface_map_|.
++  base::Lock lock_;
++
+   DISALLOW_COPY_AND_ASSIGN(WaylandBufferManagerGpu);
+ };
+ 
