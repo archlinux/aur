@@ -1,6 +1,6 @@
 pkgbase = qt5-declarative-git
 	pkgdesc = Qt5 declarative module
-	pkgver = 5.12.1.r167.ga32217254
+	pkgver = 5.13.0_rc3.r442.g93619c821
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
