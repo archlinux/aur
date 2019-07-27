@@ -1,7 +1,7 @@
 pkgbase = qt5-serialport-git
 	pkgdesc = Qt5 serial port module
-	pkgver = 5.12.1.r12.ge6a5786
-	pkgrel = 2
+	pkgver = 5.13.0_rc3.r25.gad26283
+	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
 	arch = x86_64
