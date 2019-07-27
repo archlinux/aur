@@ -18,7 +18,7 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/vdr-mcli-plugin/mcast/client"
+  cd "${srcdir}/vdr-mcli-plugin/mcast/client"
   make
 
   cd "${srcdir}/vdr-mcli-plugin/mcast/tool"
