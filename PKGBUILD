@@ -70,7 +70,7 @@ package() {
 
   # Symlinks
   install -d "$pkgdir/usr/lib/$_pkgname/bin"
-  for bin in c++ cc cpp g++ gcc; do
+  for bin in c++ cc cpp g++ gcc x86_64-pc-linux-gnu-g++ x86_64-pc-linux-gnu-gcc x86_64-pc-linux-gnu-gcc-9.1.0; do
     ln -sf "/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/bin/$bin"
     # Additional symlinks are needed, see FS#57978
     ln -sf "/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$bin"
