@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=pingo
-pkgver=0.99.beta46
+pkgver=0.99.beta48
 pkgrel=1
 pkgdesc='An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git')
 source=("pingo-win64-${pkgver}.zip"::'https://css-ig.net/bin/pingo-win64.zip'
         'git+https://github.com/dbermond/shellutils.git')
 noextract=("pingo-win64-${pkgver}.zip")
-sha256sums=('5345c059dc1fbd63afc21eb6476ceb534928048afea91d9455bddc7ccc2ad4c9'
+sha256sums=('9fa69f42378d2a91b3f44051816359a049970de31cf0c838b953c7c9f806bcdb'
             'SKIP')
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
