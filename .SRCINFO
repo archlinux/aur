@@ -1,6 +1,6 @@
 pkgbase = qt5-xmlpatterns-git
 	pkgdesc = Qt5 XML patterns module
-	pkgver = 5.12.1.r17.g683728c
+	pkgver = 5.13.0_rc3.r42.g9da0881
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
