@@ -3,10 +3,10 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r1875.9cd54a17
-pkgrel=2
+pkgver=r1912.68823955
+pkgrel=1
 epoch=1
-pkgdesc='The open source, cross platform level editor for idtech games (GTKRadiant fork) - git version'
+pkgdesc='The open source, cross platform level editor for idtech games (GTKRadiant fork)'
 url='https://gitlab.com/xonotic/netradiant'
 license=('GPL' 'BSD' 'LGPL')
 arch=('i686' 'x86_64')
