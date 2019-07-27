@@ -1,6 +1,6 @@
 pkgbase = qt5-connectivity-git
 	pkgdesc = Qt5 connectivity module
-	pkgver = 5.12.1.r30.g5eb8fd9f
+	pkgver = 5.13.0_rc3.r72.gf2f9da65
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
