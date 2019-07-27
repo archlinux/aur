@@ -1,0 +1,17 @@
+pkgbase = mgard-git
+	pkgdesc = MultiGrid Adaptive Reduction of Data
+	pkgver = r79.11744c7
+	pkgrel = 1
+	url = https://github.com/CODARcode/MGARD
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	depends = blosc
+	provides = mgard
+	conflicts = mgard
+	source = git+https://github.com/CODARcode/MGARD.git
+	sha256sums = SKIP
+
+pkgname = mgard-git
+
