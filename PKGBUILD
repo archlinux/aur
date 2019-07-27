@@ -18,8 +18,8 @@
 pkgbase="zfs-linux-lts"
 pkgname=("zfs-linux-lts" "zfs-linux-lts-headers")
 _zfsver="0.8.1"
-_kernelver="4.19.60-1"
-_extramodules="4.19.60-1-lts"
+_kernelver="4.19.61-1"
+_extramodules="4.19.61-1-lts"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
