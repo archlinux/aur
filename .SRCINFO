@@ -1,6 +1,6 @@
 pkgbase = compton-git
 	pkgdesc = X Compositor (a fork of xcompmgr-dana) (git-version)
-	pkgver = 1019_6.rc2.82.g83941c5_2019.04.04
+	pkgver = 1151_Next.23.g6ac5062_2019.07.27
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/yshui/compton
