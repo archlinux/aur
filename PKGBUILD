@@ -5,7 +5,7 @@
 # Contributor: Romain Bazile <gromain {dot} baz {at} gmail {dot} com>
 pkgname=boostnote
 _pkgname=Boostnote
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Open source note-taking app for programmers"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
   "electron_5_fix.patch"
   )
 
-sha512sums=('cbd2be8e43982ecd46f37f9b41b989bd6be2f3731841c1de9edf1986171fd42114c3ee4915123cc08f0c7a64fa2bd28ae3e35a2bdeb68bb89500f5c4424ecd13'
+sha512sums=('aa79d00325a12ee78535ac11c96206c98516e609bf7b475accae8022d07dc1079ee6031c83dcef246b915acb6218eb3394ee442526bd889db40bb08ceb13e8e8'
             '1f0ccd2a3632a12c4714d97b9f909ddc94b53d6f86a9e4bdcab31abd55a93071a2c35c6e1e9527b747de6dd74b8a5276414980c11e174085f28b8f2d2721230a'
             '18bcda13580da8ceeaa86793a77ec00a053b8fd51451dad7e2b1a19553fe1a467ac647b44b789212e783f3f6a80968cc9404e884ef7ff6b1f6588473b3229d40'
             'a52e5631867e2c5f18465dee6a3201b9b5c546bda373205c4891c9f7b6114599e0854e2b49defb55ee7bea0778a7fde9c9d9f7271dceeeece743a2d72e2fd0c6'
