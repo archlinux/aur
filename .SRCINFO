@@ -1,6 +1,6 @@
 pkgbase = python2-fxa
 	pkgdesc = Python library for interacting with the Firefox Accounts ecosystem
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/mozilla/PyFxA
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-fxa
 	depends = python2-browserid
 	depends = python2-cryptography
 	depends = python2-hawkauthlib
-	source = https://files.pythonhosted.org/packages/source/P/PyFxA/PyFxA-0.7.2.tar.gz
-	md5sums = 6bdd09b7c0b1baa131528ced6f429cc0
+	source = https://files.pythonhosted.org/packages/source/P/PyFxA/PyFxA-0.7.3.tar.gz
+	md5sums = 04605467c4ce61c237a49721b4cccef4
 
 pkgname = python2-fxa
 
