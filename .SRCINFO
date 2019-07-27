@@ -10,6 +10,7 @@ pkgbase = kjv-apocrypha
 	depends = gawk
 	depends = sed
 	depends = ncurses
+	depends = tar
 	optdepends = less: for better preview
 	provides = kjv
 	conflicts = kjv-git
