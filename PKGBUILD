@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qt5-websockets-git
-pkgver=5.12.1.r16.g5f16a5c
-pkgrel=3
+pkgver=5.13.0_rc3.r33.ge108b1f
+pkgrel=1
 pkgdesc="Qt5 WebSockets module"
 arch=('i686' 'x86_64')
 url="https://www.qt.io/"
@@ -27,7 +27,7 @@ pkgver() {
   _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/v//p}')
   _rev=$(git rev-list --count v$_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/-/_/g'
 }
 
 build() {
