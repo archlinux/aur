@@ -12,7 +12,7 @@ _makenconfig=
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
 # which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 26.
+# generic (default) option is 27.
 #
 # Note - the march=native option is unavailable by this method, use the nconfig
 # and manually select it.
