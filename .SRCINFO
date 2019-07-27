@@ -1,0 +1,21 @@
+pkgbase = kjv-apocrypha
+	pkgdesc = Read the Word of God from your terminal (now with apocrypha)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/LukeSmithxyz/kjv
+	arch = any
+	license = The Unlicense
+	depends = bash
+	depends = coreutils
+	depends = gawk
+	depends = sed
+	depends = ncurses
+	optdepends = less: for better preview
+	provides = kjv
+	conflicts = kjv-git
+	noextract = git+https://gitlab.com/LukeSmithxyz/kjv.git
+	source = git+https://gitlab.com/LukeSmithxyz/kjv.git
+	sha256sums = SKIP
+
+pkgname = kjv-apocrypha
+
