@@ -2,7 +2,7 @@
 # Previous maintainer: Jonathan Liu <net147@gmail.com>
 
 pkgname=qt5-virtualkeyboard-git
-pkgver=5.12.1.r20.g8a9f0cd
+pkgver=5.13.0_rc3.r37.g6837538
 pkgrel=1
 pkgdesc="Qt5 virtual keyboard module"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ pkgver() {
   _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/v//p}')
   _rev=$(git rev-list --count v$_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/-/_/g'
 }
 
 build() {

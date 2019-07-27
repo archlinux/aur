@@ -1,6 +1,6 @@
 pkgbase = qt5-virtualkeyboard-git
 	pkgdesc = Qt5 virtual keyboard module
-	pkgver = 5.12.1.r20.g8a9f0cd
+	pkgver = 5.13.0_rc3.r37.g6837538
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
