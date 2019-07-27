@@ -1,0 +1,18 @@
+pkgbase = minnow-git
+	pkgdesc = simple and fairly weak chess engine written in C
+	pkgver = 81
+	pkgrel = 1
+	url = https://github.com/tm512/minnow
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	optdepends = xboard
+	optdepends = scid_vs_pc
+	provides = minnow
+	conflicts = minnow
+	source = minnow::git+https://github.com/tm512/minnow
+	md5sums = SKIP
+
+pkgname = minnow-git
+
