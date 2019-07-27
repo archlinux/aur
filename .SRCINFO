@@ -1,30 +1,18 @@
 pkgbase = trace-cmd-git
-	pkgdesc = user-space front-end command-line tool for Ftrace, inclduing the GUI interface application kernelshark as well as trace-graph and trace-view.
-	pkgver = 2.7.r451.gf1ef911
+	pkgdesc = Userspace tooling for the Linux kernel Ftrace internal tracer
+	pkgver = 2.8.r68.gf97e28a
 	pkgrel = 1
-	url = http://git.kernel.org/?p=linux/kernel/git/rostedt/trace-cmd.git
+	url = https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
-	makedepends = python2
-	makedepends = git
-	makedepends = docbook-xsl
-	makedepends = asciidoc
-	makedepends = extra-cmake-modules
-	makedepends = doxygen
-	makedepends = freeglut
-	makedepends = glu
-	makedepends = qt5-base
-	makedepends = json-c
-	makedepends = libxmu
+	makedepends = python
 	makedepends = swig
-	optdepends = python2: for the python plugins
-	optdepends = qt5-base: for the kernelshark GUI
-	optdepends = freeglut: for the kernelshark GUI
-	optdepends = glu: for the kernelshark GUI
+	makedepends = asciidoc
+	optdepends = python: for the Python plugins
 	provides = trace-cmd
 	conflicts = trace-cmd
-	source = git://git.kernel.org/pub/scm/linux/kernel/git/rostedt/trace-cmd.git
+	source = git://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git
 	sha256sums = SKIP
 
 pkgname = trace-cmd-git

@@ -2,28 +2,19 @@
 # Maintainer: Nikolay Amiantov <nikoamia@gmail.com>
 # Maintainer: Netanel Shine <netanel at archlinux.org.il>
 
-##
-# Upstream is using python2-only functions like PyString_FromString
-#  Ex: trace-cmd/python/ctracecmd.i
-##
-
 pkgname=trace-cmd-git
-pkgver=2.7.r451.gf1ef911
+pkgver=2.8.r68.gf97e28a
 pkgrel=1
-pkgdesc="user-space front-end command-line tool for Ftrace, inclduing the GUI interface application kernelshark as well as trace-graph and trace-view."
+pkgdesc="Userspace tooling for the Linux kernel Ftrace internal tracer"
 arch=('x86_64' 'aarch64')
-url="http://git.kernel.org/?p=linux/kernel/git/rostedt/trace-cmd.git"
+url="https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git"
 license=('GPL2')
-makedepends=('python2' 'git' 'docbook-xsl' 'asciidoc' 'extra-cmake-modules'
-             'doxygen' 'freeglut' 'glu' 'qt5-base' 'json-c' 'libxmu' 'swig')
-optdepends=('python2: for the python plugins'
-            'qt5-base: for the kernelshark GUI'
-            'freeglut: for the kernelshark GUI'
-            'glu: for the kernelshark GUI')
+makedepends=('python' 'swig' 'asciidoc')
+optdepends=('python: for the Python plugins')
 provides=("trace-cmd")
 conflicts=("trace-cmd")
 source=(
-  "git://git.kernel.org/pub/scm/linux/kernel/git/rostedt/trace-cmd.git"
+  "git://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git"
 )
 sha256sums=("SKIP")
 
@@ -40,14 +31,17 @@ build() {
   cd "$srcdir/trace-cmd"
   
   # pkg-config --cflags --libs $PYTHON_VERS
-  make BUILD_TYPE=Release PYTHON_VERS=python2 \
-    prefix="/usr" DESTDIR="$pkgdir" all doc gui
+  make PYTHON_VERS=python3 all doc
 }
 
 package() {
   cd "${srcdir}/trace-cmd"
 
   # pkg-config --cflags --libs $PYTHON_VERS
-  make BUILD_TYPE=Release PYTHON_VERS=python2 \
-    prefix="/usr" DESTDIR="$pkgdir" install install_doc install_gui
+  make PYTHON_VERS=python2 prefix="/usr" DESTDIR="$pkgdir" \
+    install install_doc
+
+  # Remove the KernelShark docs from this package
+  rm -rf "${pkgdir}/usr/share/kernelshark"
+  rm -f "${pkgdir}/usr/share/man/man1/kernelshark.1"
 }
