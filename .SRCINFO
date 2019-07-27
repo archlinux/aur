@@ -1,6 +1,6 @@
 pkgbase = xwmfs-git
 	pkgdesc = X11 Window-Manager file system based on FUSE
-	pkgver = 0.82.r0.gdf2b3c5
+	pkgver = 0.83.r2.gd931124
 	pkgrel = 1
 	url = https://github.com/gerstner-hub/xwmfs
 	arch = x86_64

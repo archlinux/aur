@@ -1,7 +1,7 @@
 # Maintainer: Karol Babioch <karol@babioch.de
 
 pkgname=xwmfs-git
-pkgver=0.82.r0.gdf2b3c5
+pkgver=0.83.r2.gd931124
 pkgrel=1
 pkgdesc="X11 Window-Manager file system based on FUSE"
 arch=('x86_64')
