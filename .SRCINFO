@@ -1,0 +1,18 @@
+pkgbase = electron-xiami
+	pkgdesc = 虾米音乐 & 虾米电台 - Linux & Mac | Xiami Player & Xiami Radio desktop for Linux & Mac supported by Electron
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/eNkru/electron-xiami
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = jq
+	makedepends = moreutils
+	makedepends = npm
+	depends = electron
+	provides = xiami
+	source = electron-xiami-2.0.1.src.tar.gz::https://github.com/eNkru/electron-xiami/archive/v2.0.1.tar.gz
+	sha256sums = e140af91922db712c72bdbb703d9e9db31168db93341b300580d9330d45317a5
+
+pkgname = electron-xiami
+
