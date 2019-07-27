@@ -1,0 +1,36 @@
+pkgbase = gpsd-timing
+	pkgdesc = GPS daemon and library built to support GPS timing devices
+	pkgver = 3.19
+	pkgrel = 1
+	url = http://catb.org/gpsd/
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = scons
+	makedepends = docbook-xsl
+	makedepends = python
+	depends = python
+	depends = libusb
+	depends = bluez-libs
+	depends = pps-tools
+	depends = ntp
+	optdepends = php: generate a PHP status page for your GPS
+	optdepends = php-gd: image support for the PHP status page
+	provides = gpsd
+	conflicts = gpsd
+	backup = etc/default/gpsd
+	source = https://download.savannah.gnu.org/releases/gpsd/gpsd-3.19.tar.gz
+	source = https://download.savannah.gnu.org/releases/gpsd/gpsd-3.19.tar.gz.sig
+	source = gpsd.conf
+	source = fix-python-libdir.patch
+	validpgpkeys = EED4A0893DCC705DB309E202CCF29C7238522905
+	sha256sums = 27dd24d45b2ac69baab7933da2bf6ae5fb0be90130f67e753c110a3477155f39
+	sha256sums = SKIP
+	sha256sums = 009df48ca0a031ea5e360733570277f5b936b273e6cea793ba9097b0eff41b0a
+	sha256sums = 631cf609db1f4b26b94d324a9ca16624487781f0b8736c5c59d8c45acc5d7322
+
+pkgname = gpsd-timing
+

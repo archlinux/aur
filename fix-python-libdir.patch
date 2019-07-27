@@ -1,0 +1,14 @@
+diff --git a/SConstruct b/SConstruct
+index b8f3fb1..e133ece 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -1034,8 +1034,6 @@ else:
+             # follow FHS, put in /usr/local/libXX, not /usr/libXX
+             # may be lib, lib32 or lib64
+             python_libdir = polystr(python_libdir)
+-            python_libdir = python_libdir.replace("/usr/lib",
+-                                                  "/usr/local/lib")
+ 
+         py_config_text = config.GetPythonValue('config vars',
+                                                PYTHON_SYSCONFIG_IMPORT,
+
