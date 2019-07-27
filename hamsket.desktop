@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Rambox-OS
-Comment=Forked Free and Open Source messaging and emailing app that combines common web applications into one.
+Name=Hamsket
+Comment=Free and Open Source messaging and emailing app that combines common web applications into one.
 Exec=rambox -- %u
 StartupWMClass=Rambox-OS
 Icon=rambox-os
@@ -9,4 +9,4 @@ Terminal=false
 Type=Application
 Categories=Network;
 X-Desktop-File-Install-Version=0.1
-Name[en_US]=Rambox-OS
+Name[en_US]=Hamsket
