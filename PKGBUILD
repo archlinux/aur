@@ -13,7 +13,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.4.9
+pkgver=3.4.10
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
@@ -34,12 +34,16 @@ optdepends=('fcgi: Map server'
             'python-yaml: Processing plugin')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
+source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
+        fix-include.diff)
 # curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.md5
-md5sums=('7b0839498e244a2e08353346d4c2edf6')
+md5sums=('01595b6ef39dccd0fab4321e792aa834'
+         '610bb88927095876c3f83020cdca523c')
 
 prepare() {
   mkdir -p build
+  # patch from https://github.com/qgis/QGIS/issues/30316
+  patch -d "$_pkgname-$pkgver" -p0 <fix-include.diff
 }
 
 build() {
