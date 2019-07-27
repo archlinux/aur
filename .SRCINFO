@@ -1,0 +1,19 @@
+pkgbase = retrolink-git
+	pkgdesc = Seamless integration of frontend and emulators through gamepad hotkeys
+	pkgver = 0
+	pkgrel = 1
+	url = https://gitlab.com/william.belanger/retrolink
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-setuptools
+	depends = python-pyqt5
+	depends = python-evdev
+	depends = xterm
+	provides = retrolink
+	conflicts = retrolink
+	source = git+https://gitlab.com/william.belanger/retrolink.git
+	md5sums = SKIP
+
+pkgname = retrolink-git
+
