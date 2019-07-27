@@ -1,7 +1,7 @@
 pkgbase = ttf-textfonts
 	pkgdesc = Text faces based on early Greek editions
 	pkgver = 9.00
-	pkgrel = 2
+	pkgrel = 3
 	url = http://users.teilar.gr/~g1951d/
 	arch = any
 	license = custom

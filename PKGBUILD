@@ -4,7 +4,7 @@
 
 pkgname=ttf-textfonts
 pkgver=9.00
-pkgrel=2
+pkgrel=3
 pkgdesc="Text faces based on early Greek editions"
 arch=('any')
 url="http://users.teilar.gr/~g1951d/"
@@ -18,14 +18,14 @@ md5sums=('74b0a254be69b818247d31c4c124485f'
 
 package()
 {
-install -d $pkgdir/usr/share/fonts/TTF/
+install -d "$pkgdir/usr/share/fonts/${pkgname}"
 
 for file in "${srcdir}"/*ttf; do
-  install -m 644 -D "${file}" "${pkgdir}/usr/share/fonts/TTF"/
+  install -m 644 -D "${file}" "${pkgdir}/usr/share/fonts/${pkgname}/"
 done
 
 for file in "${srcdir}"/hinted/*ttf; do
-  install -m 644 -D "${file}" "${pkgdir}/usr/share/fonts/TTF"/
+  install -m 644 -D "${file}" "${pkgdir}/usr/share/fonts/${pkgname}/"
 done
 
 install -m 644 -D $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
