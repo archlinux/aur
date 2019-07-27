@@ -1,6 +1,6 @@
 pkgbase = linvst3
 	pkgdesc = enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's
-	pkgver = 1.0
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/osxmidi/LinVst
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = linvst3
 	depends = expat
 	depends = gtkmm3
 	depends = sqlite
-	source = https://github.com/osxmidi/LinVst3/releases/download/1.0/LinVst3-1.0-Debian-Stretch.zip
+	source = https://github.com/osxmidi/LinVst3/releases/download/1.5/LinVst3-1.5-Debian-Stretch.zip
 	source = w2lvst3
 	sha256sums = SKIP
 	sha256sums = SKIP
