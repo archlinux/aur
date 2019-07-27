@@ -2,7 +2,7 @@
 # Contributor: Brandon Giesing <brandon@giesing.cf>
 pkgname=ttf-roboto-slab
 pkgver=1.100263
-pkgrel=4
+pkgrel=5
 epoch=3
 pkgdesc='Roboto Slab is a slab serif addition to the Roboto type family.'
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
             '4e2f26097538925162cad2a3e6051f659b9895386559a1890a4664d8e9a9a0c1')
 
 package() {
-    install -d ${pkgdir}/usr/share/fonts/TTF/
-    install -m644 ${srcdir}/*.ttf ${pkgdir}/usr/share/fonts/TTF/
-    install -D -m644 ${srcdir}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    install -d ${pkgdir}/usr/share/fonts/${pkgname}/
+    install -m644 ${srcdir}/*.ttf ${pkgdir}/usr/share/fonts/${pkgname}/
+    install -D -m644 ${srcdir}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
 }
