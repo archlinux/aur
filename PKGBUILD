@@ -2,13 +2,14 @@
 # Contributor: Davide Iosca <dvdios [at] aol [dot] com>
 
 pkgname='vkcube-git'
-pkgdesc='Demo cube app for Vulkan'
+pkgdesc='Demo cube app for Vulkan (git version)'
 pkgver=r122.868ad83
-pkgrel=1
+pkgrel=2
 url='https://github.com/krh/vkcube'
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('vulkan-icd-loader' 'libpng' 'mesa')
+conflicts=('vulkan-tools')
 source=('git+https://github.com/krh/vkcube')
 sha1sums=('SKIP')
 makedepends=('git' 'vulkan-headers' 'meson' 'ninja')

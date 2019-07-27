@@ -1,7 +1,7 @@
 pkgbase = vkcube-git
-	pkgdesc = Demo cube app for Vulkan
+	pkgdesc = Demo cube app for Vulkan (git version)
 	pkgver = r122.868ad83
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/krh/vkcube
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = vkcube-git
 	depends = vulkan-icd-loader
 	depends = libpng
 	depends = mesa
+	conflicts = vulkan-tools
 	source = git+https://github.com/krh/vkcube
 	sha1sums = SKIP
 
