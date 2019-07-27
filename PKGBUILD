@@ -1,6 +1,6 @@
 # Maintainer: Thomas McGrew <tjmcgrew@gmail.com>
 pkgname=dwrandomizer
-pkgver=2.0.6
+pkgver=2.1
 pkgrel=1
 epoch=
 pkgdesc="A Randomizer for Dragon Warrior for NES"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://dwrandomizer.com"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mcgrew/dwrandomizer/archive/$pkgver.tar.gz")
-sha256sums=('ab93b361b9a48db828da1527152a98b9e3b5bf716f6b9f9ec24cd0e57b113399')
+sha256sums=('78cd1e06b54685d7bee0bbdbebde5fb1b81469dbb8a0feba0206a4f85fe852bd')
 depends=('qt5-base')
 
 prepare() {
@@ -26,11 +26,18 @@ build() {
 }
 
 package() {
-    mkdir -p $pkgdir/usr/bin
     cd "$srcdir/$pkgname-$pkgver/build"
-    cp dwrandomizer $pkgdir/usr/bin/
+    install -D -t $pkgdir/usr/bin/ dwrandomizer
     cd "$srcdir/$pkgname-$pkgver/cli-build"
-    cp dwrandomizer-cli $pkgdir/usr/bin/
-    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-    cp "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+    install -t $pkgdir/usr/bin/ dwrandomizer-cli
+    install -D -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/$pkgname-$pkgver/LICENSE"
+    install -D -t "$pkgdir/usr/share/applications/" "$srcdir/$pkgname-$pkgver/resources/dwrandomizer.desktop"
+
+    #install the icons
+    install -D -T "$srcdir/$pkgname-$pkgver/resources/icons/dwrandomizer_512x512.png" "$pkgdir/usr/share/icons/512x512/dwrandomizer.png"
+    install -D -T "$srcdir/$pkgname-$pkgver/resources/icons/dwrandomizer_256x256.png" "$pkgdir/usr/share/icons/256x256/dwrandomizer.png"
+    install -D -T "$srcdir/$pkgname-$pkgver/resources/icons/dwrandomizer_128x128.png" "$pkgdir/usr/share/icons/128x128/dwrandomizer.png"
+    install -D -T "$srcdir/$pkgname-$pkgver/resources/icons/dwrandomizer_64x64.png" "$pkgdir/usr/share/icons/64x64/dwrandomizer.png"
+    install -D -T "$srcdir/$pkgname-$pkgver/resources/icons/dwrandomizer_32x32.png" "$pkgdir/usr/share/icons/32x32/dwrandomizer.png"
+    install -D -T "$srcdir/$pkgname-$pkgver/resources/icons/dwrandomizer_16x16.png" "$pkgdir/usr/share/icons/16x16/dwrandomizer.png"
 }
