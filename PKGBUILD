@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-ss05
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A slender monospace typeface. Shape: Fira Mono'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
@@ -13,7 +13,7 @@ sha256sums=('d8d4beae55a42748d1333273bf40a44c1791259ca1e0cd4f76ba8fb001cea2a4'
             'ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000')
 
 package() {
-    install -d ${pkgdir}/usr/share/fonts/TTF/
-    install -m644 ${srcdir}/ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF/
+    install -d ${pkgdir}/usr/share/fonts/${pkgname}/
+    install -m644 ${srcdir}/ttf/*.ttf ${pkgdir}/usr/share/fonts/${pkgname}/
     install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
