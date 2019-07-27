@@ -1,7 +1,7 @@
 pkgbase = superlu
 	pkgdesc = Set of subroutines to solve a sparse linear system
 	pkgver = 5.2.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/xiaoyeli/superlu/
 	install = superlu.install
 	arch = i686
