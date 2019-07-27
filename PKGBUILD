@@ -49,7 +49,7 @@ package() {
   _olddir="$(pwd)"
   cd "${pkgdir}/usr/lib/modules/${_kernver}/"
   echo "Compressing modules"
-  find -name "*.ko" -exec xz -z {} \;
+  find -name "*.ko" -print0 | xargs -0 -n1 -P 4 xz -z
   echo "Done compressing modules"
   cd "${_olddir}"
   ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
