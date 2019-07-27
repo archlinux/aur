@@ -1,0 +1,20 @@
+pkgbase = adios2
+	pkgdesc = Next generation of ADIOS developed in the Exascale Computing Program
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://adios2.readthedocs.io/en/latest/index.html
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = libpng
+	depends = zfp
+	depends = hdf5
+	depends = zeromq
+	depends = libfabric
+	depends = blosc
+	depends = python
+	source = https://github.com/ornladios/ADIOS2/archive/v2.4.0.tar.gz
+	sha256sums = 50ecea04b1e41c88835b4b3fd4e7bf0a0a2a3129855c9cc4ba6cf6a1575106e2
+
+pkgname = adios2
+
