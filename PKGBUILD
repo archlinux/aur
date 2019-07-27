@@ -5,7 +5,7 @@
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-quickcontrols-git
-pkgver=5.12.1.r17.g352aeb96
+pkgver=5.13.0_rc3.r44.gb74071e6
 pkgrel=1
 pkgdesc="Qt5 Quick Controls module"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ pkgver() {
   _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/v//p}')
   _rev=$(git rev-list --count v$_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/-/_/g'
 }
 
 build() {
