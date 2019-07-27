@@ -1,6 +1,6 @@
 pkgbase = symengine-git
 	pkgdesc = Fast symbolic manipulation library, written in C++
-	pkgver = 0.4.0.r27.g72e2f22a
+	pkgver = 0.4.1.r0.g4f7cd0e7
 	pkgrel = 1
 	url = http://sympy.org/
 	arch = i686

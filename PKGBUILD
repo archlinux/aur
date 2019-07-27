@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=symengine-git
 _pkgname=${pkgname%-git}
-pkgver=0.4.0.r27.g72e2f22a
+pkgver=0.4.1.r0.g4f7cd0e7
 pkgrel=1
 pkgdesc="Fast symbolic manipulation library, written in C++"
 url="http://sympy.org/"
