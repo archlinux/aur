@@ -1,0 +1,13 @@
+pkgbase = lightdm-webkit2-theme-obsidian
+	pkgdesc = A simple dark theme for lightdm-webkit2-greeter
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Darkhogg/lightdm-webkit2-theme-obsidian
+	arch = any
+	license = MIT
+	depends = lightdm-webkit2-greeter
+	source = https://github.com/Darkhogg/lightdm-webkit2-theme-obsidian/archive/v1.2.1.tar.gz
+	sha512sums = d69cbf1d1a74f17b38e1ebf7b832ad9fd52106a6c3314c5a45d0de706ef988adf7d38fb301f07c7a8d769d5e2e541518f7e97477da3ffe53ba0a531e02b201c7
+
+pkgname = lightdm-webkit2-theme-obsidian
+
