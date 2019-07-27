@@ -1,6 +1,6 @@
 pkgbase = python-gammapy
 	pkgdesc = A Python package for gamma-ray astronomy
-	pkgver = 0.12
+	pkgver = 0.13
 	pkgrel = 1
 	url = https://gammapy.org/
 	arch = i686
@@ -14,9 +14,10 @@ pkgbase = python-gammapy
 	checkdepends = python-astropy-healpix
 	makedepends = python-setuptools
 	makedepends = python-numpy
-	makedepends = python-astropy-helpers31
-	source = https://files.pythonhosted.org/packages/source/g/gammapy/gammapy-0.12.tar.gz
-	md5sums = cf0b476948029fbef2c8ded365f0b57a
+	makedepends = python-astropy-helpers
+	makedepends = wcslib<6.3
+	source = https://files.pythonhosted.org/packages/source/g/gammapy/gammapy-0.13.tar.gz
+	md5sums = f45d13e5eb85b27900e674a3ad7a5d21
 
 pkgname = python-gammapy
 	depends = python>=3.5
@@ -25,6 +26,7 @@ pkgname = python-gammapy
 	depends = python-regions
 	depends = python-click
 	depends = python-astropy-healpix
+	depends = wcslib<6.3
 	optdepends = python-reproject: For numerical methods
 	optdepends = python-iminuit: For fitting by optimization
 	optdepends = python-uncertainties: For linear error propagation

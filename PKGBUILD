@@ -3,13 +3,13 @@ pkgbase=python-gammapy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="A Python package for gamma-ray astronomy"
 arch=('i686' 'x86_64')
 url="https://gammapy.org/"
 license=('BSD')
-makedepends=('python-setuptools' 'python-numpy' 'python-astropy-helpers31')
+makedepends=('python-setuptools' 'python-numpy' 'python-astropy-helpers' 'wcslib<6.3')
 #'python-sphinx-astropy' 'python-sphinx_rtd_theme' 'python-nbsphinx' 'python-sphinx-click' 'python-click' 'python-yaml' 'python-regions' 'python-naima')
 checkdepends=('python-pytest-astropy'
               'python-astropy'
@@ -18,7 +18,7 @@ checkdepends=('python-pytest-astropy'
               'python-regions'
               'python-astropy-healpix')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('cf0b476948029fbef2c8ded365f0b57a')
+md5sums=('f45d13e5eb85b27900e674a3ad7a5d21')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -41,7 +41,7 @@ check() {
 }
 
 package() {
-    depends=('python>=3.5' 'python-yaml' 'python-astropy>=1.0.2' 'python-regions' 'python-click' 'python-astropy-healpix')
+    depends=('python>=3.5' 'python-yaml' 'python-astropy>=1.0.2' 'python-regions' 'python-click' 'python-astropy-healpix' 'wcslib<6.3')
     optdepends=('python-reproject: For numerical methods'
 #               'python-yaml: For YAML data handling (config and results files)'
                 'python-iminuit: For fitting by optimization'
