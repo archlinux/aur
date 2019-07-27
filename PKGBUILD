@@ -4,8 +4,8 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=lib32-vulkan-mesa-layer
-pkgver=19.1.2
-pkgrel=2
+pkgver=19.1.3
+pkgrel=1
 pkgdesc="Vulkan overlay layer to display information about the application (32-bit)"
 arch=('x86_64')
 depends=('vulkan-mesa-layer') # Needed to provide the layer manifest JSON file
@@ -14,7 +14,7 @@ url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
         LICENSE)
-sha512sums=('cab30694a409a5037996dd50cef1567eb9e0b83ed69cdb4fbc893a844ed35434fcd05023d48fce2831219866fa420500b53650c791bea286233f4cd6c2703e19'
+sha512sums=('787310c43089142209ff7db298489b0815b630577680d5ce1bc3f796eed3772ba41f03e5e773b77ae084c191ed4e365eac1753166ce60f12b8f5974d55762eeb'
             'SKIP'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
