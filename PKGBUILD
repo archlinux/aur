@@ -69,6 +69,7 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_zlib=ON \
       -DVTK_MODULE_USE_EXTERNAL_ParaView_protobuf=ON \
       -DVTK_MODULE_USE_EXTERNAL_ParaView_cgns=ON \
+      -DVTK_MODULE_ENABLE_VTK_IOADIOS2=NO \
       ..
     make
     popd
