@@ -4,19 +4,19 @@
 # Contributor: Paul Bredbury <brebs@sent.com>
 
 pkgname=alienarena-svn
-pkgver=r5660
+pkgver=r5655
 pkgrel=1
-pkgdesc="Multiplayer retro sci-fi deathmatch game based on Quake3"
+pkgdesc="Multiplayer retro sci-fi deathmatch game based on Quake2"
 arch=('i686' 'x86_64')
 url="http://icculus.org/alienarena/rpa/"
 license=('GPL')
 groups=('games')
-depends=('curl' 'freetype2' 'ode' 'libgl' 'libjpeg' 'libvorbis' 'libxxf86dga' 'libxxf86vm' 'openal')
+depends=('curl' 'freetype2' 'libgl' 'libjpeg' 'libvorbis' 'libxxf86dga' 'libxxf86vm' 'openal')
 makedepends=('subversion')
 provides=('alienarena')
 conflicts=('alienarena')
 source=(
-  svn://svn.icculus.org/alienarena/trunk
+  svn://svn.icculus.org/alienarena/trunk#revision=5655
   'alienarena.desktop'
   'alienarena'
   'alienarena-ded'
