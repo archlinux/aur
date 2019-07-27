@@ -1,0 +1,38 @@
+Description: Add Linux 5.2 crypto desc flags compat fix
+ This adds a compat fix for the deprecated flags field in the
+ crypto shash_desc struct.  This field was deprecated by
+ linux commit 877b5691f27a1aec0d9b53095a323e45c30069e2
+ ("crypto: shash - remove shash_desc::flags")
+ .
+ Signed-off-by: Colin Ian King <colin.king@canonical.com>
+Author: Signed-off-by: Colin Ian King <colin.king@canonical.com>
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1830063
+
+Index: xtables-addons-3.2/extensions/pknock/xt_pknock.c
+===================================================================
+--- xtables-addons-3.2.orig/extensions/pknock/xt_pknock.c
++++ xtables-addons-3.2/extensions/pknock/xt_pknock.c
+@@ -1125,7 +1125,9 @@ static int __init xt_pknock_mt_init(void
+ 
+ 	crypto.size = crypto_shash_digestsize(crypto.tfm);
+ 	crypto.desc.tfm = crypto.tfm;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 2, 0)
+ 	crypto.desc.flags = 0;
++#endif
+ 
+ 	pde = proc_mkdir("xt_pknock", init_net.proc_net);
+ 	if (pde == NULL) {
+Index: xtables-addons-3.2/extensions/xt_SYSRQ.c
+===================================================================
+--- xtables-addons-3.2.orig/extensions/xt_SYSRQ.c
++++ xtables-addons-3.2/extensions/xt_SYSRQ.c
+@@ -114,7 +114,9 @@ static unsigned int sysrq_tg(const void
+ 	}
+ 
+ 	desc.tfm   = sysrq_tfm;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 2, 0)
+ 	desc.flags = 0;
++#endif
+ 	ret = crypto_shash_init(&desc);
+ 	if (ret != 0)
+ 		goto hash_fail;
