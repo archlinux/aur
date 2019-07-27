@@ -10,7 +10,7 @@ pkgdesc="Graphical Git client. Preview version."
 arch=("any")
 url="https://www.syntevo.com/smartgit/preview/"
 license=('custom')
-depends=("java-environment>=8" "python3" "bash" "desktop-file-utils")
+depends=("java-environment>=11" "python3" "bash" "desktop-file-utils")
 optdepends=("mercurial: hg repositories support"
             "git: git repositories support")
 makedepends=("tar")
