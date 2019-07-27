@@ -15,12 +15,12 @@ makedepends=('go' 'git')
 source=('git+https://gitlab.com/NickCao/cleardns')
 md5sums=('SKIP')
 build() {
-	cd $srcdir/cleardns
+	cd "$srcdir/cleardns"
 	go get github.com/miekg/dns
 	go get github.com/steakknife/bloomfilter
 	go build -buildmode=pie
 }
 package() {
-	install -Dm755 $srcdir/cleardns/cleardns $pkgdir/usr/bin/cleardns
-	install -Dm644 $srcdir/cleardns/cleardns.service $pkgdir/usr/lib/systemd/system/cleardns.service
+	install -Dm755 "$srcdir/cleardns/cleardns" "$pkgdir/usr/bin/cleardns"
+	install -Dm644 "$srcdir/cleardns/cleardns.service" "$pkgdir/usr/lib/systemd/system/cleardns.service"
 }
