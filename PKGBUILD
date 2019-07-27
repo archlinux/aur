@@ -1,5 +1,5 @@
 pkgname=vtk-git
-pkgver=8.2.0.2422.g2a132fa0b9
+pkgver=8.2.0.2701.g5fa578568b
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization'
 arch=('i686' 'x86_64')
@@ -57,6 +57,7 @@ build() {
       -DVTK_PYTHON_VERSION="3" \
       -DVTK_WRAP_JAVA=ON \
       -DVTK_WRAP_PYTHON=ON \
+      -DVTK_MODULE_ENABLE_VTK_IOADIOS2=NO \
       ..
   make
 }

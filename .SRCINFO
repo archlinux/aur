@@ -1,6 +1,6 @@
 pkgbase = vtk-git
 	pkgdesc = A software system for 3D computer graphics, image processing, and visualization
-	pkgver = 8.2.0.2422.g2a132fa0b9
+	pkgver = 8.2.0.2701.g5fa578568b
 	pkgrel = 1
 	url = http://www.vtk.org
 	arch = i686
