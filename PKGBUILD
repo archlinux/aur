@@ -2,12 +2,12 @@
 
 pkgname=infonotary-client-software
 pkgver=2.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="InfoNotary client software - InfoNotary e-Doc Signer and InfoNotary Smart Card Manager."
 arch=('i686' 'x86_64')
 url="http://www.infonotary.com/"
 license=('unknown')
-depends=(qt5-base nss openssl)
+depends=(qt5-base qt5-xmlpatterns nss openssl)
 replaces=(infonotary-scardmanager)
 conflicts=(infonotary-scardmanager)
 optdepends=(
@@ -22,13 +22,13 @@ install=$pkgname.install
 
 if [ "${CARCH}" = 'x86_64' ]; then
     ARCH='amd64'
-    md5sums=('0b5e1a119033e0a001c0225a4e3f3be1')
+    md5sums=('016e6428d313ea67c51dce32cf161773')
 else
     ARCH='i386'
-    md5sums=('d027ab710921af0b40b62cc2291086ad')
+    md5sums=('308b35824cc0a81de06bfa99b4007618')
 fi
 
-_file_name=$pkgname'_'$pkgver'.1026_'$ARCH'.deb'
+_file_name=$pkgname'_'$pkgver'.1048_'$ARCH'.deb'
 source=('http://repository.infonotary.com/install/linux/DEBS/pool/non-free/i/infonotary-client-software/'$_file_name)
 
 package() {

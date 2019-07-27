@@ -1,13 +1,14 @@
 pkgbase = infonotary-client-software
 	pkgdesc = InfoNotary client software - InfoNotary e-Doc Signer and InfoNotary Smart Card Manager.
 	pkgver = 2.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.infonotary.com/
 	install = infonotary-client-software.install
 	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = qt5-base
+	depends = qt5-xmlpatterns
 	depends = nss
 	depends = openssl
 	optdepends = ccid: generic USB Chip/Smart Card Interface Devices driver
@@ -18,8 +19,8 @@ pkgbase = infonotary-client-software
 	optdepends = opensc: a set of libraries and utilities to work with smart cards
 	conflicts = infonotary-scardmanager
 	replaces = infonotary-scardmanager
-	source = http://repository.infonotary.com/install/linux/DEBS/pool/non-free/i/infonotary-client-software/infonotary-client-software_2.0.3.1026_amd64.deb
-	md5sums = 0b5e1a119033e0a001c0225a4e3f3be1
+	source = http://repository.infonotary.com/install/linux/DEBS/pool/non-free/i/infonotary-client-software/infonotary-client-software_2.0.3.1048_amd64.deb
+	md5sums = 016e6428d313ea67c51dce32cf161773
 
 pkgname = infonotary-client-software
 
