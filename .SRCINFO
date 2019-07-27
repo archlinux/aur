@@ -20,7 +20,7 @@ pkgbase = mantid-term
 	depends = python-gobject
 	depends = gobject-introspection
 	depends = python-yaml
-	source = git+https://github.com/omgold/mantid-term#commit=a0c28a29bb768e8b96a434ea6c5d313fd90e06f1
+	source = git+https://github.com/omgold/mantid-term#commit=9dd571b2ffc6d2375d65c9a52d496358f0be0b56
 	source = git+https://github.com/thestinger/vte-ng#commit=dd74ae7c06e8888af2fc090ac6f8920a9d8227fb
 	sha256sums = SKIP
 	sha256sums = SKIP
