@@ -1,7 +1,7 @@
 # Maintainer Pol Marcet Sardà <polmarcetsarda@gmail.com>
 
 pkgname=doomseeker
-pkgver=r2338.ae7c4d5e7e5b
+pkgver=r2478.c4537370dc5c
 pkgrel=1
 epoch=1
 pkgdesc="A cross-platform Doom server browser"
@@ -17,10 +17,8 @@ optdepends=('qt4: A cross-platform application and UI framework'
             'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom'
             'srb2: A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")')
 
-# 1.2 Release
-source=("hg+https://bitbucket.org/Doomseeker/doomseeker#tag=1.2"
-        "hg+https://bitbucket.org/Doomseeker/doomseeker-blobs#revision=450d81d")
-
+source=("hg+https://bitbucket.org/Doomseeker/doomseeker#tag=1.3"
+        "hg+https://bitbucket.org/Doomseeker/doomseeker-blobs#revision=91033f61f0c3")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -28,12 +26,6 @@ pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
-
-# No longer needed. Patch was commited.
-#prepare() {
-#    cd "$srcdir/$pkgname"
-#    patch -p1 -i "${srcdir}/doomseeker.qt5.11.patch"
-#}
 
 build() {
     cd "$srcdir/$pkgname-blobs"
