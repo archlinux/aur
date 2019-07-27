@@ -1,29 +1,27 @@
 pkgbase = openfx-io
 	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
-	pkgver = 2.3.14
-	pkgrel = 2
+	pkgver = 2.3.15_pre4
+	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-io
 	arch = i686
+	arch = pentium4
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	depends = ffmpeg
 	depends = libraw
 	depends = openimageio
 	depends = seexpr
 	optdepends = natron-plugins
-	source = openfx-io::git+https://github.com/NatronGitHub/openfx-io#tag=Natron-2.3.14
-	source = git+https://github.com/NatronGitHub/openfx
-	source = git+https://github.com/NatronGitHub/SequenceParsing
-	source = git+https://github.com/NatronGitHub/openfx-supportext
-	source = git+https://github.com/NatronGitHub/tinydir
-	source = fix-ocio-oiio-commit-7f24308.patch
+	source = openfx-io_a36e8a2.tar.gz::https://github.com/NatronGitHub/openfx-io/tarball/a36e8a2
+	source = openfx_c70de42.tar.gz::https://github.com/NatronGitHub/openfx/tarball/c70de42
+	source = openfx-supportext_9fa7ca1.tar.gz::https://github.com/NatronGitHub/openfx-supportext/tarball/9fa7ca1
+	source = SequenceParsing_6441ec7.tar.gz::https://github.com/NatronGitHub/SequenceParsing/tarball/6441ec7
+	source = tinydir_3aae922.tar.gz::https://github.com/NatronGitHub/tinydir/tarball/3aae922
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 9a9b268c8d9aa534f47a80d6f8c942bebd3d37f4650f84a1ee241a5477a9d10c922b843e5545b9b6b7f096c8aae9db935ff37ff72dc4350d2146a9450f8a1e40
 
 pkgname = openfx-io
 

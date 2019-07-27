@@ -2,28 +2,33 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
+_openfx_io_commit=a36e8a2
+_openfx_commit=c70de42
+_openfx_supportext_commit=9fa7ca1
+_SequenceParsing_commit=6441ec7
+_tinydir_commit=3aae922
+
 pkgname=openfx-io
-pkgver=2.3.14
-pkgrel=2
-arch=("i686" "x86_64")
+pkgver=2.3.15_pre4
+pkgrel=1
+arch=("i686" "pentium4" "x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/NatronGitHub/openfx-io"
 license=("GPL")
 depends=("ffmpeg" "libraw" "openimageio" "seexpr")
-makedepends=("git")
 optdepends=("natron-plugins")
-source=("$pkgname::git+https://github.com/NatronGitHub/openfx-io#tag=Natron-$pkgver"
-        'git+https://github.com/NatronGitHub/openfx'
-        'git+https://github.com/NatronGitHub/SequenceParsing'
-        'git+https://github.com/NatronGitHub/openfx-supportext'
-        'git+https://github.com/NatronGitHub/tinydir'
-        'fix-ocio-oiio-commit-7f24308.patch')
+source=("openfx-io_$_openfx_io_commit.tar.gz::https://github.com/NatronGitHub/openfx-io/tarball/$_openfx_io_commit"
+        "openfx_$_openfx_commit.tar.gz::https://github.com/NatronGitHub/openfx/tarball/$_openfx_commit"
+        "openfx-supportext_$_openfx_supportext_commit.tar.gz::https://github.com/NatronGitHub/openfx-supportext/tarball/$_openfx_supportext_commit"
+        "SequenceParsing_$_SequenceParsing_commit.tar.gz::https://github.com/NatronGitHub/SequenceParsing/tarball/$_SequenceParsing_commit"
+        "tinydir_$_tinydir_commit.tar.gz::https://github.com/NatronGitHub/tinydir/tarball/$_tinydir_commit")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '9a9b268c8d9aa534f47a80d6f8c942bebd3d37f4650f84a1ee241a5477a9d10c922b843e5545b9b6b7f096c8aae9db935ff37ff72dc4350d2146a9450f8a1e40')
+            'SKIP')
+
+_pkgname="NatronGitHub-$pkgname-$_openfx_io_commit"
 
 # Checks whether the environment is 32-bit or 64-bit
 if [ $CARCH == 'x86_64' ]
@@ -34,33 +39,25 @@ else
 fi
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  git config submodule.openfx.url $srcdir/openfx
-  git config submodule.IOSupport/SequenceParsing.url $srcdir/SequenceParsing
-  git config submodule.SupportExt.url $srcdir/openfx-supportext
-  git submodule update
+  tar -xzf "$srcdir/openfx_$_openfx_commit.tar.gz" --strip 1 \
+      -C   "$srcdir/$_pkgname/openfx/"
+  tar -xzf "$srcdir/openfx-supportext_$_openfx_supportext_commit.tar.gz" --strip 1 \
+      -C   "$srcdir/$_pkgname/SupportExt/"
 
-  cd IOSupport/SequenceParsing
-  git config submodule.tinydir.url $srcdir/tinydir
-  git submodule update
-
-  # Applying patch created with updates to commit 7f24308, 
-  # which solve the problem of compiling with the latest version
-  # of the OpenColorIO and OpenImageIO libraries.
-  # Solution provided by @FirstAirBender.
-
-  cd "$srcdir/$pkgname"
-  patch -p1 < "$srcdir/fix-ocio-oiio-commit-7f24308.patch"
+  tar -xzf "$srcdir/SequenceParsing_$_SequenceParsing_commit.tar.gz" --strip 1 \
+      -C   "$srcdir/$_pkgname/IOSupport/SequenceParsing/"
+  tar -xzf "$srcdir/tinydir_$_tinydir_commit.tar.gz" --strip 1 \
+      -C   "$srcdir/$_pkgname/IOSupport/SequenceParsing/tinydir/"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   make CONFIG=release \
        BITS=$_BITS
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   mkdir -p "$pkgdir/usr/OFX/Plugins"
   make install PLUGINPATH=$pkgdir/usr/OFX/Plugins \
                CONFIG=release \
