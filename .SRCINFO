@@ -1,18 +1,17 @@
 pkgbase = openfx-misc
 	pkgdesc = Miscellaneous OpenFX plugins
-	pkgver = 2.3.14
+	pkgver = 2.3.15_pre4
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-misc
 	arch = i686
+	arch = pentium4
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	makedepends = openmp
 	depends = libgl
-	optdepends = natron-plugins
-	source = openfx-misc::git+https://github.com/NatronGitHub/openfx-misc#tag=Natron-2.3.14
-	source = git+https://github.com/NatronGitHub/openfx
-	source = git+https://github.com/NatronGitHub/openfx-supportext
+	source = openfx-misc_41119a6.tar.gz::https://github.com/NatronGitHub/openfx-misc/tarball/41119a6
+	source = openfx_c70de42.tar.gz::https://github.com/NatronGitHub/openfx/tarball/c70de42
+	source = openfx-supportext_9fa7ca1.tar.gz::https://github.com/NatronGitHub/openfx-supportext/tarball/9fa7ca1
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
