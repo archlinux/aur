@@ -1,7 +1,7 @@
 pkgbase = qtcreator-fixed-themes
 	pkgdesc = Lightweight, cross-platform integrated development environment, with theme and bug fixes applied
-	pkgver = 4.9.1
-	pkgrel = 1
+	pkgver = 4.9.2
+	pkgrel = 3
 	url = https://www.qt.io
 	arch = x86_64
 	license = LGPL
@@ -12,7 +12,7 @@ pkgbase = qtcreator-fixed-themes
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-webengine
-	depends = clang=8.0.0
+	depends = clang=8.0.1
 	depends = qbs
 	depends = clazy
 	depends = syntax-highlighting
@@ -27,15 +27,18 @@ pkgbase = qtcreator-fixed-themes
 	optdepends = mercurial: mercurial support
 	optdepends = bzr: bazaar support
 	optdepends = valgrind: analyze support
+	optdepends = perf: performer analyzer
 	conflicts = qtcreator
 	options = docs
-	source = https://download.qt.io/official_releases/qtcreator/4.9/4.9.1/qt-creator-opensource-src-4.9.1.tar.xz
+	source = https://download.qt.io/official_releases/qtcreator/4.9/4.9.2/qt-creator-opensource-src-4.9.2.tar.xz
 	source = qtcreator-clazy-1.5.patch
 	source = qtcreator-preload-plugins.patch
+	source = qtcreator-mime-database.patch
 	source = qtcreator-debugger-layout.patch
-	sha256sums = 79b8228d0871927837681e6af9ab91e3ea28154cecfba317f9c0e56246b8ad81
+	sha256sums = b7e0c797e7704c6c22eb35351946c0a758502fd082f6beaee043166e1739d3d7
 	sha256sums = 1f6998fea92b9a157f42cca783839ce95f70ccc667027078b7881cbb253838f0
 	sha256sums = 150c444e76ec969fc8765774b648984037829623300d0ce9d41a915b2afa792d
+	sha256sums = 8d64b5c28535dcaab910f32e82b04b425253015ca70f379cbe5e9693526a852a
 	sha256sums = 6000452635f8c8f0cd21d1cc8d484821f4d0f8fc36afa744de5c2a3fdd1a5e9c
 
 pkgname = qtcreator-fixed-themes
