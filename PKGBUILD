@@ -1,6 +1,6 @@
 pkgname=mingw-w64-sdl2
-pkgver=2.0.9
-pkgrel=3
+pkgver=2.0.10
+pkgrel=1
 pkgdesc='A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) (mingw-w64)'
 license=('MIT')
 url='http://libsdl.org'
@@ -10,7 +10,7 @@ _archs=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 source=("${url}/release/SDL2-${pkgver}.tar.gz")
-sha256sums=('255186dc676ecd0c1dbf10ec8a2cc5d6869b5079d8a38194c2aecdff54b324b1')
+sha256sums=('b4656c13a1f0d0023ae2f4a9cf08ec92fffb464e0f24238337784159b8b91d57')
 options=(staticlibs '!strip' '!buildflags')
 
 build() {
@@ -19,7 +19,7 @@ build() {
   for _arch in ${_archs[@]}; do
     mkdir build-${_arch} -p
     pushd build-${_arch}
-    ${_arch}-cmake ..
+    ${_arch}-cmake .. -DSDL_SHARED=ON -DSDL_STATIC=ON
     make
     popd
   done
