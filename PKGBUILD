@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=chars
-pkgver=0.3.2
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Command line tool to display information about unicode characters.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=()
 conflicts=('chars-git')
 makedepends=('rust' 'cargo' 'git')
 source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8de42bf53e3e30ffd82549c2f9b38b235ad8ec35877f3c1e22ee489fcdd22a35')
+sha256sums=('7816cb435c9c2977ae704c6176e97ce4f5a7bb40621aaf9c5104598c29277b77')
 
 build() {
   cd "$pkgname-$pkgver"
