@@ -1,17 +1,19 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-gwcs
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.10.0
+pkgname=("python-${_pyname}")
+#"python-${_pyname}-doc")
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A python package for managing the World Coordinate System (WCS) of astronomical data"
 arch=('i686' 'x86_64')
-url="http://gwcs.readthedocs.io/en/latest/"
+url="http://gwcs.readthedocs.io/"
 license=('BSD')
-makedepends=('cython' 'python-astropy' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy')
+makedepends=('python-setuptools' 'python-astropy' 'python-astropy-helpers>=3.1' 'wcslib<6.3')
+#'python-sphinx-astropy')
 checkdepends=('python-asdf' 'python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('bfb409bdf97df4d27d58b65dcfec31c2')
+md5sums=('ad2ea19d776f9c4c76c2f62710b958ba')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -23,8 +25,8 @@ build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py build --use-system-libraries --offline
 
-    msg "Building Docs"
-    python setup.py build_docs
+#   msg "Building Docs"
+#   python setup.py build_docs
 }
 
 check() {
@@ -34,8 +36,8 @@ check() {
 }
 
 package_python-gwcs() {
-    depends=('python' 'python-numpy>=1.7' 'python-astropy>=1.2' 'python-asdf')
-    optdepends=('python-gwcs-doc: Documentation for Python-GWCS')
+    depends=('python' 'python-numpy>=1.7' 'python-astropy>=1.2' 'python-asdf' 'wcslib<6.3')
+#   optdepends=('python-gwcs-doc: Documentation for Python-GWCS')
 #               'python-pytest-astropy: For testing')
     cd ${srcdir}/${_pyname}-${pkgver}
 
@@ -45,10 +47,10 @@ package_python-gwcs() {
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --use-system-libraries --offline
 }
 
-package_python-gwcs-doc() {
-    pkgdesc="Documentation for Python GWCS module"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
-
-    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
-}
+#package_python-gwcs-doc() {
+#    pkgdesc="Documentation for Python GWCS module"
+#    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+#
+#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+#}
