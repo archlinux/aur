@@ -1,0 +1,28 @@
+pkgbase = distcc-git
+	pkgdesc = Distributed C, C++ and Objective-C compiler, git version
+	pkgver = v3.2rc1.r225.g6fb446f
+	pkgrel = 1
+	url = http://distcc.org
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gtk2
+	makedepends = python
+	makedepends = setconf
+	depends = avahi
+	depends = popt
+	optdepends = gtk2: for distccmon-gnome
+	optdepends = python
+	provides = distcc
+	conflicts = distcc
+	backup = etc/conf.d/distccd
+	backup = etc/distcc/hosts
+	source = git://github.com/distcc/distcc.git
+	source = distccd.conf.d
+	source = distccd.service
+	sha256sums = SKIP
+	sha256sums = 43e02b461841ca2976816c244a0eca8b24820ca143f73cc0924403d75a8c012f
+	sha256sums = 0f18ffb58647eeba643f28e9029a5d307100df3470eb228097f2b3f4196d8098
+
+pkgname = distcc-git
+
