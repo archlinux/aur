@@ -1,0 +1,15 @@
+pkgbase = perl-image-pnm
+	pkgdesc = parse and generate PNM (PBM, PGM, PPM) files
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://metacpan.org/release/Image-PNM
+	arch = any
+	license = MIT
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://search.cpan.org/CPAN/authors/id/D/DO/DOY/Image-PNM-0.01.tar.gz
+	sha256sums = cb03f33bfbbe1d2a6875c18beae2bcd71ad0c9996fee51df5fa3f93ad30a87fa
+
+pkgname = perl-image-pnm
+
