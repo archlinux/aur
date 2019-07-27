@@ -1,15 +1,16 @@
 pkgbase = thunar-dropbox
-	pkgdesc = Plugin for thunar that adds context-menu items for dropbox.
-	pkgver = 0.3.0
+	pkgdesc = Plugin for Thunar that adds context-menu items for Dropbox.
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Jeinzi/thunar-dropbox
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = python2
+	makedepends = git
+	makedepends = cmake
 	depends = thunar
-	source = thunar-dropbox-0.3.0.zip::https://github.com/Jeinzi/thunar-dropbox/archive/0.3.0.zip
-	sha256sums = 776e563aac7b3a5f136e82fee13eb083d6446a44ddcea0c228017133c2180a81
+	source = thunar-dropbox-0.3.1.zip::https://github.com/Jeinzi/thunar-dropbox/archive/0.3.1.zip
+	sha256sums = c9692bb8f88451d92ae35b30586351eab0af3adb6ba59c47c16a22304409adec
 
 pkgname = thunar-dropbox
 
