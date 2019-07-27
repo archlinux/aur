@@ -1,0 +1,25 @@
+pkgbase = kernelshark-git
+	pkgdesc = GUI frontend for trace-cmd based Linux kernel Ftrace captures
+	pkgver = 1.0.r0.gf97e28a
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = asciidoc
+	makedepends = extra-cmake-modules
+	makedepends = doxygen
+	makedepends = json-c
+	makedepends = libxmu
+	makedepends = swig
+	depends = trace-cmd
+	depends = qt5-base
+	depends = freeglut
+	depends = glu
+	provides = kernelshark
+	conflicts = kernelshark
+	source = git://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git
+	sha256sums = SKIP
+
+pkgname = kernelshark-git
+
