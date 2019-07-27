@@ -1,7 +1,7 @@
 pkgbase = python-metaname-git
 	pkgdesc = A python JSON-RPC client for the Metaname API
 	pkgver = r14.ce20e21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/metaname/python-metaname
 	arch = any
 	license = MIT
