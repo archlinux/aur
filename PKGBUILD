@@ -3,7 +3,7 @@
 
 _pkgbase=zenpower
 pkgname=zenpower-dkms-git
-pkgver=6.56daa91
+pkgver=9.2baf858
 pkgrel=1
 pkgdesc="Linux kernel driver for reading sensors for AMD Zen family CPUs"
 arch=('x86_64' 'i686')
