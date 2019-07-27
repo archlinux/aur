@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="An Open Source Implementation of the Actor Model in C++"
 arch=(i686 x86_64)
 url="http://actor-framework.org"
-license=('custom:"BSD-3-Clause"',
+license=('custom:"BSD-3-Clause"'
 	 'custom:"Boost Software License"')
 depends=()
 makedepends=('cmake' 'opencl-headers' 'git' 'python' 'opencl-icd-loader' 'chrpath')
