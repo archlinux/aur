@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-vtk-git
-pkgver=r71481.7962259a91
+pkgver=r71511.5fa578568b
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -50,6 +50,7 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_zlib=ON \
       -DVTK_BUILD_TESTING=OFF \
+      -DVTK_MODULE_ENABLE_VTK_IOADIOS2=NO \
       ..
     make
     popd
