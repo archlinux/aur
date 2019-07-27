@@ -1,14 +1,14 @@
 pkgbase = free42-skins
 	pkgdesc = Skins for the free42 emulator
-	pkgver = 20180223
+	pkgver = 20190727
 	pkgrel = 1
 	url = http://thomasokken.com/free42/skins/
 	arch = any
 	license = GPL
 	depends = free42
-	noextract = free42-skins-20180223.zip
-	source = free42-skins-20180223.zip::http://thomasokken.com/free42/skins/desktop-skins.zip
-	md5sums = 0ecacdd253829902a7bcf4dac873b14e
+	noextract = free42-skins-20190727.zip
+	source = free42-skins-20190727.zip::http://thomasokken.com/free42/skins/desktop-skins.zip
+	md5sums = f1ed79cf39ee513cfea22b0ce7693b63
 
 pkgname = free42-skins
 
