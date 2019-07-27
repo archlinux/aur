@@ -3,7 +3,7 @@
 _pkgname=cwtch
 _gourl=cwtch.im/$_pkgname
 pkgname=$_pkgname-git
-pkgver=r339.d15585e
+pkgver=r384.b959bfa
 pkgrel=1
 pkgdesc="Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications"
 arch=('x86_64' 'i686')
