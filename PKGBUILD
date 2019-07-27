@@ -1,5 +1,6 @@
 # Maintainer: Frans-Willem Hardijzer <fw@hardijzer.nl>
-pkgname=linux-surface-jakeday-bin
+pkgbase=linux-surface-jakeday-bin
+pkgname=(linux-surface-jakeday-bin linux-surface-jakeday-bin-headers)
 pkgver=5.0.10
 pkgrel=1
 _releasenum=5
@@ -11,14 +12,17 @@ license=('custom')
 options=(!strip)
 source=(
   "https://github.com/jakeday/linux-surface/releases/download/${pkgver}-${pkgrel}/linux-image-${pkgver}-surface-linux-surface_${pkgver}-surface-linux-surface-${_releasenum}_amd64.deb"
+  "https://github.com/jakeday/linux-surface/releases/download/${pkgver}-${pkgrel}/linux-headers-${pkgver}-surface-linux-surface_${pkgver}-surface-linux-surface-${_releasenum}_amd64.deb"
   "linux.preset"
   "60-linux.hook"
   "90-linux.hook"
 )
 noextract=(
   "linux-image-${pkgver}-surface-linux-surface_${pkgver}-surface-linux-surface-${_releasenum}_amd64.deb"
+  "linux-headers-${pkgver}-surface-linux-surface_${pkgver}-surface-linux-surface-${_releasenum}_amd64.deb"
 )
 md5sums=('12d8bac0d8e32a4faf00ee138f69949a'
+         '31626e7edcd3a22ef0311ada70b57d49'
          'a329f9581060d555dc7358483de9760a'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          'b448c99f0ea9aaee9b13784958a98fd0')
@@ -29,9 +33,15 @@ prepare() {
   cd kernel-deb
   ar x "${srcdir}/linux-image-${pkgver}-surface-linux-surface_${pkgver}-surface-linux-surface-${_releasenum}_amd64.deb"
   tar -xf data.tar.xz
+
+  cd "${srcdir}/"
+  mkdir -p header-deb
+  cd header-deb
+  ar x "${srcdir}/linux-headers-${pkgver}-surface-linux-surface_${pkgver}-surface-linux-surface-${_releasenum}_amd64.deb"
+  tar -xf data.tar.xz
 }
 
-package() {
+package_linux-surface-jakeday-bin() {
   install -d "${pkgdir}/boot"
   install -Dm644 "${srcdir}/kernel-deb/boot/vmlinuz-${pkgver}-surface-linux-surface" "${pkgdir}/boot/vmlinuz-linux-surface-linux-surface"
   install -d "${pkgdir}/etc/mkinitcpio.d"
@@ -67,4 +77,16 @@ package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   depmod -b "${pkgdir}/usr" -F "${srcdir}/kernel-deb/boot/System.map-${_kernver}" "${_kernver}"
+}
+
+package_linux-surface-jakeday-bin-headers() {
+  local _kernver=${pkgver}-surface-linux-surface
+  install -d "${pkgdir}/usr/lib/modules/"
+  install -d "${pkgdir}/usr/lib/modules/${_kernver}"
+  cp -r "${srcdir}/header-deb/usr/src/linux-headers-${_kernver}" "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  # Remove all non-x86 architectures
+  for remove_arch in $(ls "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/" | grep -v "x86\|Kconfig")
+  do
+    rm -rf "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${remove_arch}"
+  done
 }
