@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-simpleweather-git
 _pkgname=plasma5-applets-simpleweather
 _gitpkgname=plasma-applet-simpleweather
-pkgver=r44.f7d7904
+pkgver=r61.bdc5735
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5. A minimalistic desktop weather widget based on the default KDE one."
 arch=('any')
