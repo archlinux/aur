@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.32.2+43+gb7f158811
-pkgrel=3
+pkgrel=4
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -23,8 +23,10 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 _commit=b7f158811934d8e4d9dd0be28ad8e1746ceac46c # tags/3.32.2^43
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+	429.diff)
+sha256sums=('SKIP'
+            'c22bc32ab8a29e3da986f386d14a8376f1985c051328ca6786571b4b67ec9e48')
 
 pkgver() {
   cd $pkgname
@@ -216,6 +218,12 @@ prepare() {
   # Comment:
   #git cherry-pick -n f2694e72^..d0edf91c
 
+  # Title: clutter/stage: Update input devices right after doing a relayout
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/429
+  # Type: 1
+  # Status: 2
+  # Comment: Can't be cleanly applied on 3.32 without lot of cherry-pick unrelated commits...
+  patch -Np1 < ../429.diff
 }
 
 build() {

@@ -1,0 +1,218 @@
+diff --git a/clutter/clutter/clutter-actor.c b/clutter/clutter/clutter-actor.c
+index 33c439533..7c8d671bb 100644
+--- a/clutter/clutter/clutter-actor.c
++++ b/clutter/clutter/clutter-actor.c
+@@ -1798,6 +1798,7 @@ static void
+ clutter_actor_real_show (ClutterActor *self)
+ {
+   ClutterActorPrivate *priv = self->priv;
++  ClutterStage *stage;
+ 
+   if (CLUTTER_ACTOR_IS_VISIBLE (self))
+     return;
+@@ -1832,6 +1833,11 @@ clutter_actor_real_show (ClutterActor *self)
+       clutter_actor_queue_shallow_relayout (self);
+       clutter_actor_queue_redraw (self);
+     }
++
++  stage = CLUTTER_STAGE (_clutter_actor_get_stage_internal (self));
++
++  if (stage != NULL)
++    _clutter_stage_queue_repick (stage);
+ }
+ 
+ static inline void
+@@ -1975,6 +1981,7 @@ static void
+ clutter_actor_real_hide (ClutterActor *self)
+ {
+   ClutterActorPrivate *priv = self->priv;
++  ClutterStage *stage;
+ 
+   if (!CLUTTER_ACTOR_IS_VISIBLE (self))
+     return;
+@@ -1993,6 +2000,11 @@ clutter_actor_real_hide (ClutterActor *self)
+   if (priv->parent != NULL &&
+       (!(priv->parent->flags & CLUTTER_ACTOR_NO_LAYOUT)))
+     clutter_actor_queue_relayout (priv->parent);
++
++  stage = CLUTTER_STAGE (_clutter_actor_get_stage_internal (self));
++
++  if (stage != NULL)
++    _clutter_stage_queue_repick (stage);
+ }
+ 
+ /**
+@@ -2640,6 +2652,8 @@ clutter_actor_set_allocation_internal (ClutterActor           *self,
+       x2_changed ||
+       y2_changed)
+     {
++      ClutterStage *stage = CLUTTER_STAGE (_clutter_actor_get_stage_internal (self));
++
+       CLUTTER_NOTE (LAYOUT, "Allocation for '%s' changed",
+                     _clutter_actor_get_debug_name (self));
+ 
+@@ -2654,6 +2668,8 @@ clutter_actor_set_allocation_internal (ClutterActor           *self,
+           g_object_notify_by_pspec (obj, obj_props[PROP_CONTENT_BOX]);
+         }
+ 
++      _clutter_stage_queue_repick (stage);
++
+       retval = TRUE;
+     }
+   else
+@@ -4486,7 +4502,12 @@ clutter_actor_remove_child_internal (ClutterActor                 *self,
+    * for the removed child
+    */
+   if (was_mapped)
+-    clutter_actor_queue_relayout (self);
++    {
++      ClutterStage *stage = CLUTTER_STAGE (_clutter_actor_get_stage_internal (self));
++
++      _clutter_stage_queue_repick (stage);
++      clutter_actor_queue_relayout (self);
++    }
+ 
+   /* we need to emit the signal before dropping the reference */
+   if (emit_actor_removed)
+@@ -13153,7 +13174,12 @@ clutter_actor_add_child_internal (ClutterActor              *self,
+    * the actor is supposed to be visible when it's added
+    */
+   if (CLUTTER_ACTOR_IS_MAPPED (child))
+-    clutter_actor_queue_redraw (child);
++    {
++      ClutterStage *stage = CLUTTER_STAGE (_clutter_actor_get_stage_internal (self));
++
++      _clutter_stage_queue_repick (stage);
++      clutter_actor_queue_redraw (child);
++    }
+ 
+   /* maintain the invariant that if an actor needs layout,
+    * its parents do as well
+diff --git a/clutter/clutter/clutter-stage-private.h b/clutter/clutter/clutter-stage-private.h
+index 1dd3a82f8..2812b5fac 100644
+--- a/clutter/clutter/clutter-stage-private.h
++++ b/clutter/clutter/clutter-stage-private.h
+@@ -63,6 +63,7 @@ void                _clutter_stage_maybe_relayout        (ClutterActor
+ gboolean            _clutter_stage_needs_update          (ClutterStage          *stage);
+ gboolean            _clutter_stage_do_update             (ClutterStage          *stage);
+ 
++void     _clutter_stage_queue_repick                      (ClutterStage *stage);
+ void     _clutter_stage_queue_event                       (ClutterStage *stage,
+                                                            ClutterEvent *event,
+                                                            gboolean      copy_event);
+diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
+index 52fecfddd..48dbdbb7f 100644
+--- a/clutter/clutter/clutter-stage.c
++++ b/clutter/clutter/clutter-stage.c
+@@ -174,6 +174,7 @@ struct _ClutterStagePrivate
+   int update_freeze_count;
+ 
+   guint redraw_pending         : 1;
++  guint needs_repick           : 1;
+   guint is_cursor_visible      : 1;
+   guint use_fog                : 1;
+   guint throttle_motion_events : 1;
+@@ -182,7 +183,6 @@ struct _ClutterStagePrivate
+   guint accept_focus           : 1;
+   guint motion_events_enabled  : 1;
+   guint has_custom_perspective : 1;
+-  guint stage_was_relayout     : 1;
+ };
+ 
+ enum
+@@ -1319,8 +1319,6 @@ _clutter_stage_maybe_relayout (ClutterActor *actor)
+ 
+   g_list_free_full (pending_queue_relayouts, g_object_unref);
+ 
+-  if (count)
+-    priv->stage_was_relayout = TRUE;
+ }
+ 
+ static void
+@@ -1431,11 +1429,8 @@ gboolean
+ _clutter_stage_do_update (ClutterStage *stage)
+ {
+   ClutterStagePrivate *priv = stage->priv;
+-  gboolean stage_was_relayout = priv->stage_was_relayout;
+   GSList *pointers = NULL;
+ 
+-  priv->stage_was_relayout = FALSE;
+-
+   /* if the stage is being destroyed, or if the destruction already
+    * happened and we don't have an StageWindow any more, then we
+    * should bail out
+@@ -1447,18 +1442,33 @@ _clutter_stage_do_update (ClutterStage *stage)
+     return FALSE;
+ 
+   /* NB: We need to ensure we have an up to date layout *before* we
+-   * check or clear the pending redraws flag since a relayout may
+-   * queue a redraw.
++   * check or clear the pending redraws flag since a relayout or the
++   * repick afterwards may queue a redraw.
+    */
+   _clutter_stage_maybe_relayout (CLUTTER_ACTOR (stage));
+ 
+-  if (!priv->redraw_pending)
+-    return FALSE;
++  /* Finish the queued redraws now so the redraw clip is initialized
++   * when we do the repick. */
++  clutter_stage_maybe_finish_queue_redraws (stage);
+ 
+-  if (stage_was_relayout)
+-    pointers = _clutter_stage_check_updated_pointers (stage);
++  if (priv->needs_repick)
++    {
++      pointers = _clutter_stage_check_updated_pointers (stage);
++      while (pointers)
++        {
++          _clutter_input_device_update (pointers->data, NULL, TRUE);
++          pointers = g_slist_delete_link (pointers, pointers);
++        }
+ 
+-  clutter_stage_maybe_finish_queue_redraws (stage);
++      /* Make sure any newly queued redraws are also handled in this
++       * paint cycle. */
++      clutter_stage_maybe_finish_queue_redraws (stage);
++
++      priv->needs_repick = FALSE;
++    }
++
++  if (!priv->redraw_pending)
++    return FALSE;
+ 
+   clutter_stage_do_redraw (stage);
+ 
+@@ -1475,15 +1485,18 @@ _clutter_stage_do_update (ClutterStage *stage)
+     }
+ #endif /* CLUTTER_ENABLE_DEBUG */
+ 
+-  while (pointers)
+-    {
+-      _clutter_input_device_update (pointers->data, NULL, TRUE);
+-      pointers = g_slist_delete_link (pointers, pointers);
+-    }
+-
+   return TRUE;
+ }
+ 
++void
++_clutter_stage_queue_repick (ClutterStage *self)
++{
++  ClutterStagePrivate *priv = self->priv;
++
++  if (!priv->needs_repick)
++    priv->needs_repick = TRUE;
++}
++
+ static void
+ clutter_stage_real_queue_relayout (ClutterActor *self)
+ {
+@@ -2349,6 +2362,8 @@ clutter_stage_init (ClutterStage *self)
+ 
+   clutter_stage_queue_actor_relayout (self, CLUTTER_ACTOR (self));
+ 
++  priv->needs_repick = FALSE;
++
+   clutter_actor_set_reactive (CLUTTER_ACTOR (self), TRUE);
+   clutter_stage_set_title (self, g_get_prgname ());
+   clutter_stage_set_key_focus (self, NULL);
