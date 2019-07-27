@@ -1,5 +1,7 @@
+# Maintainer: dncrash <dncrash at gmail dot com>
+
 pkgname="molecule"
-pkgver=2.20
+pkgver=2.20.2
 pkgrel=1
 pkgdesc='aids in the development and testing of Ansible roles.'
 url='https://github.com/metacloud/molecule'
@@ -34,7 +36,7 @@ optdepends=('python-docker: docker driver'
             'python-vagrant: vagrant driver'
             'python-shade: openstack driver')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/metacloud/molecule/archive/${pkgver}.tar.gz")
-sha256sums=('37315884b40051b10bc78561168d8939bf1579afccf7e5061e9ebe8b3823ab1a')
+sha256sums=('e8e466e7d84e89f2580141fdd9ce061de3f235829a4f67206e6e2013468b2833')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
