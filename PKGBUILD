@@ -1,5 +1,5 @@
 pkgname="youtube-cli"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A cli client to play audio"
 arch=("x86_64")
