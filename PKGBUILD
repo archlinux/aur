@@ -41,6 +41,9 @@ M17N=             # Enable m17n international table input support.
                   # method under X11/Wayland. But this gives independence
                   # if you need it.
 CAIRO="YES"       # GOOD NEWS! No longer experimental and fully supported.
+                  # This is now, along with harfbuzz, the prefered font
+                  # and text shaping engine.
+                  # If using GTK+, you'll get printing for free.
 XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
 DOCS_HTML=        # Generate and install html documentation.
 DOCS_PDF=         # Generate and install pdf documentation.
@@ -50,12 +53,8 @@ NOGZ=             # Don't compress el files.
 ################################################################################
 
 ################################################################################
-if [[ $BRANCH = "emacs-26" ]]; then
-  pkgname=emacs26-git
-else
-  pkgname=emacs-git
-fi
-pkgver=27.0.50.137778
+pkgname="emacs-git"
+pkgver=27.0.50.137787
 pkgrel=1
 pkgdesc="GNU Emacs. Development."
 arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
@@ -71,8 +70,8 @@ if [[ $LTO = "YES" ]]; then
 fi
 
 if [[ $CLANG = "YES" ]]; then
-  export CC=/usr/bin/clang ;
-  export CXX=/usr/bin/clang++ ;
+  export CC="/usr/bin/clang" ;
+  export CXX="/usr/bin/clang++" ;
   export CPP="/usr/bin/clang -E" ;
   export LDFLAGS+=' -fuse-ld=lld' ;
   makedepends+=( 'clang' 'lld') ;
@@ -133,8 +132,8 @@ replaces=('emacs26-git' 'emacs-seq')
 source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git")
 # If Github access is blocked for reasons, use Savannah's servers instead.
 # Edit the config file of your local repo copy as well.
-#source=("emacs-git::git://git.sv.gnu.org/emacs.git#branch=$BRANCH")
-#source=("emacs-git::git+https://git.savannah.gnu.org/emacs.git#branch=$BRANCH")
+#source=("emacs-git::git://git.sv.gnu.org/emacs.git")
+#source=("emacs-git::git+https://git.savannah.gnu.org/emacs.git")
 md5sums=('SKIP')
 
   pkgver() {
