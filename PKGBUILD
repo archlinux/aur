@@ -2,7 +2,7 @@
 
 _pkgname=xfwm4
 pkgname=${_pkgname}-devel
-pkgver=4.13.3
+pkgver=4.13.4
 pkgrel=1
 pkgdesc="Xfce window manager"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!libtool')
 source=(https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('12ad274f6662c8afee35fd9b9310e73bd462c423578d448b2d7353e3c8eda6c1')
+sha256sums=('31940e0e1d821d839b9ef1462bb1ca36e7935cd7589e4418993e3901ca6c0ec5')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
