@@ -3,8 +3,8 @@
 # Contributor: Dmitry Kharitonov <darksab0r@gmail.com>
 
 pkgname=makedepend
-pkgver=1.0.5
-pkgrel=4
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="Create dependencies in Makefiles"
 arch=('i686' 'x86_64')
 url="http://www.linuxfromscratch.org/blfs/view/7.4/x/makedepend.html"
@@ -17,8 +17,8 @@ makedepends=('autoconf'
              'pkg-config'
              'xorg-util-macros'
              'xproto')
-source=(http://xorg.freedesktop.org/archive/individual/util/makedepend-1.0.5.tar.gz)
-sha256sums=('503903d41fb5badb73cb70d7b3740c8b30fe1cc68c504d3b6a85e6644c4e5004')
+source=(http://xorg.freedesktop.org/archive/individual/util/$pkgname-$pkgver.tar.gz)
+sha256sums=('845f6708fc850bf53f5b1d0fb4352c4feab3949f140b26f71b22faba354c3365')
 conflicts=('imake')
 
 build() {
