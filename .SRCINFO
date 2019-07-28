@@ -1,0 +1,16 @@
+pkgbase = youtube-cli
+	pkgdesc = A cli client to play audio
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/vivekkairi/youtube-cli
+	arch = x86_64
+	license = sha265
+	makedepends = youtube-dl
+	makedepends = mpv
+	makedepends = git
+	makedepends = python
+	source = youtube-cli::git+https://github.com/vivekkairi/youtube-cli.git
+	md5sums = SKIP
+
+pkgname = youtube-cli
+
