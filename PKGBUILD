@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Moreira
 
 pkgname=fpakman
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Free non-official GUI for Flatpak / Snap applications management."
 arch=('any')
@@ -10,10 +10,8 @@ license=('zlib/libpng')
 depends=('python' 'python-pip' 'python-pyqt5' 'python-requests' 'python-colorama')
 optdepends=('flatpak' 'snapd')
 makedepends=('git' 'python-setuptools')
-provides=("fpakman")
-conflicts=('fpakman-staging')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('6b0664dbacd3ac07cdc66020f9e4d77ebc0bca5b2972cb78b77a661734ca749d82c8e7040857d4aad05f56e8f91ec931dc27920547b5a8fe5b6cd65c543efb5a')
+sha512sums=('73f9cc2a9f3d6c923dae9a253fc85432217adef66bef011230708c619a988ec95067303f6221663c0249001d0266c10bb4c43d547d9956a919ef29dd68147bb9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
