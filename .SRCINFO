@@ -1,19 +1,18 @@
 pkgbase = dgraph-git
-	pkgdesc = a low latency, high throughput, native and distributed graph database
-	pkgver = 20161026
-	pkgrel = 2
+	pkgdesc = Low latency, high throughput, native and distributed graph database
+	pkgver = v1.0.12.rc3.r628.gcf7c1e630
+	pkgrel = 1
 	url = https://github.com/dgraph-io/dgraph
 	arch = x86_64
-	arch = i686
 	license = APACHE
-	depends = gcc-libs
-	depends = go
-	depends = icu
-	depends = rocksdb
+	license = custom:DCL
+	makedepends = go
+	makedepends = git
 	provides = dgraph
-	conflicts = dgraph dgraph-bin
-	options = !strip
-	options = !emptydirs
+	conflicts = dgraph
+	conflicts = dgraph-bin
+	source = dgraph-git::git+https://github.com/dgraph-io/dgraph
+	sha256sums = SKIP
 
 pkgname = dgraph-git
 
