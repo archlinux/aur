@@ -5,7 +5,7 @@ pkgdesc="A cli client to play audio"
 arch=("x86_64")
 url="https://github.com/vivekkairi/youtube-cli"
 license=('sha265')
-makedepends=('youtube-dl' 'mpv' 'git' 'python')
+depends=('youtube-dl' 'mpv' 'git' 'python')
 source=(${pkgname}::git+https://github.com/vivekkairi/youtube-cli.git)
 md5sums=('SKIP')
 
