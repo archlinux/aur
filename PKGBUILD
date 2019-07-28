@@ -25,8 +25,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/waifu2x-ncnn-vulkan"
-	sed -ie 's/\/home\/nihui\/osd\/ncnn\/build\/install\/include/\/usr\/include\/ncnn/' CMakeLists.txt
-	sed -ie 's/\/home\/nihui\/osd\/ncnn\/build\/install\/lib/\/usr\/lib/' CMakeLists.txt
+	sed -ie 's/set(ncnn_DIR "\/home\/nihui\/dev\/ncnn\/build\/install\/lib\/cmake\/ncnn")/include_directories("\/usr\/include\/ncnn")/' CMakeLists.txt
 }
 
 build() {
