@@ -5,7 +5,7 @@
 
 pkgname=walinuxagent
 _pkgname=WALinuxAgent
-pkgver=2.2.40
+pkgver=2.2.41
 pkgrel=1
 pkgdesc="Microsoft Azure Linux Guest Agent"
 arch=('any')
