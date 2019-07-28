@@ -1,19 +1,19 @@
 pkgbase = dktools
 	pkgdesc = Collection of tools by Dirk Krause, including converters, daemons, Perl modules, development tools, administration tools and printing tools.
-	pkgver = 4.23.0
+	pkgver = 4.24.0
 	pkgrel = 1
 	url = http://dktools.sourceforge.net
 	arch = i686
 	arch = x86_64
-	license = dktools-license
+	license = custom
 	makedepends = wxgtk3
 	depends = wxgtk3
 	depends = netpbm
 	depends = net-snmp
 	optdepends = wxgtk3: for wxbmpp, wxdkct and wximgsz
 	optdepends = libmariadbclient: for itadmin
-	source = http://sourceforge.net/projects/dktools/files/dktools/dktools-4.23.0/dktools-4.23.0.tar.gz
-	sha256sums = 0839dceb702e9e82729da3d2af854abb57806442e8c59226ee7af0c64e08721c
+	source = http://sourceforge.net/projects/dktools/files/dktools/dktools-4.24.0/dktools-4.24.0.tar.gz
+	sha256sums = b677ab7a2efc6c9e02e89eadc914fa125e5287d936d6c26a8add7b253a354864
 
 pkgname = dktools
 
