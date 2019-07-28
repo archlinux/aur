@@ -1,4 +1,5 @@
 # Maintainer: linduxed <linduxed at protonmail dot com>
+# Contributor: Faerbit <faerbit at gmail dot com>
 
 pkgname=exercism-bin
 pkgver=3.0.12
