@@ -1,6 +1,6 @@
 pkgbase = yaegi
 	pkgdesc = Yaegi is Another Elegant Go Interpreter
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/containous/yaegi
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = yaegi
 	arch = armv7h
 	arch = aarch64
 	license = Apache
-	source = yaegi-0.0.3-amd64.tar.gz::https://github.com/containous/yaegi/releases/download/v0.0.3/yaegi_v0.0.3_linux_amd64.tar.gz
-	sha256sums = c32f64d3fd2ed0e123161f63c96360a6f6ece176dc9ea086a09e9c9fb04c2bfe
+	source = yaegi-0.0.4-amd64.tar.gz::https://github.com/containous/yaegi/releases/download/v0.0.4/yaegi_v0.0.4_linux_amd64.tar.gz
+	sha256sums = SKIP
 
 pkgname = yaegi
 
