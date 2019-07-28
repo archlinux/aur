@@ -5,7 +5,7 @@ _pkgsrcname=sesman
 _pkgmaintainer=vspinu
 _pkgdestdirname=sesman
 _versionprefix=v
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Generic Session Manager for Emacs"
 pkgname=emacs-${_pkgdestdirname}
@@ -14,7 +14,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('ef9857668a40131d719f55131d55a96d039b8e883f64288d008c08d6b8ca2df8')
+sha256sums=('cb32689dd2eeb0eb15b095ef00e4df783ed334353fa830864b11ed4ec200ddbd')
 
 build() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}"

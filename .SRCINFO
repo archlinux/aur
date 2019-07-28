@@ -1,13 +1,13 @@
 pkgbase = emacs-sesman
 	pkgdesc = Generic Session Manager for Emacs
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/vspinu/sesman
 	arch = any
 	license = GPL3
 	depends = emacs
-	source = emacs-sesman-0.3.3.tar.gz::https://github.com/vspinu/sesman/archive/v0.3.3.tar.gz
-	sha256sums = ef9857668a40131d719f55131d55a96d039b8e883f64288d008c08d6b8ca2df8
+	source = emacs-sesman-0.3.4.tar.gz::https://github.com/vspinu/sesman/archive/v0.3.4.tar.gz
+	sha256sums = cb32689dd2eeb0eb15b095ef00e4df783ed334353fa830864b11ed4ec200ddbd
 
 pkgname = emacs-sesman
 
