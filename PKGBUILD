@@ -15,7 +15,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "$srcdir/c-blosc-${pkgver}"
-  
+
+  # dont use bundled pthread (missing _WIN32_WINNT 0x0600 define)
   sed -i 's|#include "win32/pthread.h"|#include <pthread.h>|g' blosc/blosc.c blosc/shuffle.c
   sed -i 's|#include "win32/pthread.c"||g' blosc/blosc.c
 
