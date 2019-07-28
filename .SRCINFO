@@ -1,0 +1,16 @@
+pkgbase = ucc
+	pkgdesc = A bash based wrapper around the DOS based tcc, lets you compile TurboC(++) programs directly from the terminal.
+	pkgver = 2.8
+	pkgrel = 1
+	url = https://github.com/uditkarode/ucc.git
+	arch = x86_64
+	license = sha265
+	depends = dosbox
+	depends = git
+	depends = wget
+	depends = curl
+	source = ucc::git+https://github.com/uditkarode/ucc.git
+	md5sums = SKIP
+
+pkgname = ucc
+
