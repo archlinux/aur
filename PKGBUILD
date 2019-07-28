@@ -34,7 +34,8 @@ build() {
   cd build
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+	-DINSTALL_UDEV_RULES=1
   make
 }
 
