@@ -1,7 +1,7 @@
 pkgbase = frzr
 	pkgdesc = A deployment and update system for read-only btrfs subvolume based operating systems
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/gamer-os/frzr
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = frzr
 	depends = btrfs-progs
 	depends = syslinux
 	depends = parted
-	source = https://github.com/gamer-os/frzr/archive/0.1.1.tar.gz
-	md5sums = 9201446c45de7c3393ef02e1ec88278a
+	source = https://github.com/gamer-os/frzr/archive/0.1.2.tar.gz
+	md5sums = 1506b5ebf6d4856c564d4fbefd8fc820
 
 pkgname = frzr
 
