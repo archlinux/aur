@@ -1,6 +1,7 @@
-# Maintainer: %s <%s>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=emacs-buttercup 
-pkgver=1.13
+pkgver=1.14
 pkgrel=1
 pkgdesc="Behavior-driven development framework for testing Emacs
 Lisp code"
@@ -10,7 +11,7 @@ license=('GPL')
 depends=()
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jorgenschaefer/emacs-buttercup/archive/v$pkgver.tar.gz")
-sha256sums=('69e0908d553efc67c7b758a012f7a8b7dedd0ef9296316ea3d4104ee8746ce67')
+sha256sums=('42ed3cf522ceab29e640a8eb2c4ba68d550186d43c7ce09cdb4861673628b83d')
 
 build() {
   cd $pkgname-$pkgver
@@ -19,6 +20,6 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  install -dm755 "$pkgdir"/usr/share/emacs/site-lisp/$pkgname
-  cp *.el{,c} "$pkgdir"/usr/share/emacs/site-lisp/$pkgname
+  install -dm755 "$pkgdir"/usr/share/emacs/site-lisp
+  cp *.el{,c} "$pkgdir"/usr/share/emacs/site-lisp
 }
