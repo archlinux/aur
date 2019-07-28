@@ -50,7 +50,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20190723.r0.gb010bb39ab1a
+pkgver=20190726.r0.gfde50b96be82
 _srcname=linux-next
 pkgrel=1
 arch=('x86_64')
@@ -254,7 +254,7 @@ _package() {
 
 _package-headers() {
    pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-   depends=('linux-uksm')
+   depends=('linux-next-git')
 
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
@@ -337,7 +337,7 @@ _package-headers() {
 
 _package-docs() {
     pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-    depends=('linux-uksm')
+    depends=('linux-next-git')
 
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
