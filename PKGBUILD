@@ -1,20 +1,22 @@
 #Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname="mongodb-tools-bin"
-pkgver="4.0.10"
+pkgver="4.0.11"
 basever="4.0"
 pkgrel="1"
 pkgdesc="The MongoDB tools provide import, export, and diagnostic capabilities."
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/mongodb/mongo-tools"
 license=("Apache")
 provides=("mongodb-tools=$pkgver")
 conflicts=("mongodb-tools")
 depends=("openssl")
 optdepends=("mongodb-compass: The MongoDB GUI")
-source=("https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-tools_${pkgver}_amd64.deb")
+source_x86_64=(mongodb-org-tools_${pkgver}_${CARCH}.deb::"https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-tools_${pkgver}_amd64.deb")
+source_aarch64=(mongodb-org-tools_${pkgver}_${CARCH}.deb::"https://repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/${basever}/multiverse/binary-arm64/mongodb-org-tools_${pkgver}_arm64.deb")
 
-sha256sums=("538ba05a3998db936cb03b29f786a6a1c99c57ccebe74eeb201aeb791bdeaeee")
+sha256sums_x86_64=("36f115fee42e3d8b81d72773093b1af4f438ac96f9506fcf2b33a1daa33eeedd")
+sha256sums_aarch64=("b7ae156c1b60ef560900a6e4fd65686fd10461aa93c6dc50a0c8b30624a0be61")
 
 prepare() {
   cd "${srcdir}"
