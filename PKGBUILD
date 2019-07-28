@@ -3,8 +3,8 @@
 
 pkgbase=bootstrap-studio
 pkgname=bootstrap-studio
-pkgver=4.4.4
-pkgrel=2
+pkgver=4.5.3
+pkgrel=1
 pkgdesc='A powerful desktop app for creating responsive websites using the Bootstrap framework.'
 url='https://bootstrapstudio.io/'
 arch=('x86_64')
