@@ -1,15 +1,15 @@
 # Maintainer: architekton <architekton350@gmail.com>
 
 pkgname=amass
-pkgver=3.0.18
+pkgver=3.0.25
 pkgrel=1
 pkgdesc="In-depth subdomain enumeration written in Go"
 arch=('any')
 url="https://github.com/OWASP/Amass"
 license=('Apache')
 makedepends=('go' 'git')
-source=(Amass-$pkgver.tar.gz::https://github.com/OWASP/Amass/archive/${pkgver}.tar.gz)
-sha512sums=('38656d1697f0e6e64835a29209ee040b9be7eb5a8d01d8ed6702904f1d69e199760478fc712a1115e77f2e0202196cfe5a27e69afbc5eea837b874c676931521')
+source=(Amass-$pkgver.tar.gz::https://github.com/OWASP/Amass/archive/v${pkgver}.tar.gz)
+sha512sums=('67c409aa7c9f2eec50f57c41231516e3b10564081a39cd578282fc06232b48703d3309ed07e10077351d13442d240b34203bb4677ba6211300ceecfaa92eae06')
 
 
 prepare() {
