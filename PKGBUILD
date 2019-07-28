@@ -1,22 +1,30 @@
-# Contributor: Emanuele Rossi <newdna1510@yahoo.it>
-# Maintainer: (epsilom) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
+# Maintainer: (vmp) Roland Suchan <snrd at arcor dot de>
 
 pkgname=qtrans
-pkgver=0.2.2.6
-pkgrel=2
-pkgdesc="QTrans is a word translator for KDE4. It uses Babylon (*.dic) dictionaries and translates many languages."
-url="http://www.kde-apps.org/content/show.php/QTrans?content=74876"
+pkgver=0.3.2.6
+pkgrel=1
+pkgdesc='Word translator (offline dictionary frontend)'
+arch=('x86_64')
+url='https://www.opendesktop.org/s/Apps/p/1127419/'
 license=('GPL')
-arch=('i686' 'x86_64')
-depends=('kdebase-runtime') 
-makedepends=('cmake' 'automoc4')
-source=(http://www.kde-apps.org/CONTENT/content-files/74876-qtrans-$pkgver.tar.gz)
-md5sums=('403742e73f9c95d75314a73a820cee45')
+depends=('qt5-webkit' 'kxmlgui' 'hicolor-icon-theme')
+#optdepends=('')
+makedepends=('git')
+source=("https://liquidtelecom.dl.sourceforge.net/project/qtrans0/kf5/0.3.2.6/qtrans-0.3.2.6.tar.gz")
+sha256sums=('1f07792866f794c868aee4c2f75608a09303b9c630f547ad0c32c565bacf5c61')
 
+prepare() {
+    mkdir -p build
+    }
+    
 build() {
-  cd $startdir/src/$pkgname-$pkgver
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DQT_QMAKE_EXECUTABLE=qmake4 . 
-  make clean 
-  make || return 1
-  make DESTDIR=$startdir/pkg/ install
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release ../$pkgname-$pkgver
+    make
+    }
+
+package() {
+    cd build
+    make DESTDIR=${pkgdir} install
 }
