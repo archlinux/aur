@@ -1,11 +1,12 @@
 pkgbase = exercism-bin
 	pkgdesc = Command line client for exercism.io
 	pkgver = 3.0.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/exercism/cli
 	arch = i686
 	arch = x86_64
 	license = MIT
+	conflicts = exercism
 	source = https://raw.githubusercontent.com/exercism/cli/v3.0.12/LICENSE
 	source = exercism_completion-v3.0.12.bash::https://raw.githubusercontent.com/exercism/cli/v3.0.12/shell/exercism_completion.bash
 	source = exercism_completion-v3.0.12.zsh::https://raw.githubusercontent.com/exercism/cli/v3.0.12/shell/exercism_completion.zsh

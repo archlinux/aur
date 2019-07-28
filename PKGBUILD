@@ -3,10 +3,11 @@
 
 pkgname=exercism-bin
 pkgver=3.0.12
-pkgrel=3
+pkgrel=4
 pkgdesc="Command line client for exercism.io"
 arch=("i686" "x86_64")
 url="https://github.com/exercism/cli"
+conflicts=(exercism)
 license=("MIT")
 
 source=("https://raw.githubusercontent.com/exercism/cli/v$pkgver/LICENSE"
