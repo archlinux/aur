@@ -1,6 +1,6 @@
 pkgbase = emacs-bui
 	pkgdesc = Buffer interface library for Emacs
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/alezost/bui.el
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = emacs-bui
 	makedepends = git
 	makedepends = emacs-dash
 	depends = emacs
-	source = emacs-bui-1.2.0.tar.gz::https://github.com/alezost/bui.el/archive/v1.2.0.tar.gz
-	md5sums = 3429565b596df97dfabe13b399fdad8e
+	source = emacs-bui-1.2.1.tar.gz::https://github.com/alezost/bui.el/archive/v1.2.1.tar.gz
+	md5sums = daac3bfafdcca81c6f13c501fda275f1
 
 pkgname = emacs-bui
 
