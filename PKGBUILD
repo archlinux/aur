@@ -3,7 +3,7 @@
 
 _pkgbase='movim'
 pkgname=movim-git
-pkgver=r7308.8a32ba694
+pkgver=r7476.b0934832f
 pkgrel=1
 pkgdesc="Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol."
 arch=('any')
@@ -53,10 +53,10 @@ package() {
 
   install -m755 -d "$pkgdir/usr/share/webapps/$_pkgbase"
 
-  cp -r app database lib locales src theme vendor \
+  cp -r app database lib locales public src vendor \
     "$pkgdir/usr/share/webapps/$_pkgbase"
-  install -Dm644 VERSION CHANGELOG.md INSTALL.md README.md index.php \
-    linker.php phinx.php "$pkgdir/usr/share/webapps/$_pkgbase"
+  install -Dm644 CHANGELOG.md doap.xml INSTALL.md linker.php phinx.php \
+    README.md VERSION "$pkgdir/usr/share/webapps/$_pkgbase"
   install -Dm755 daemon.php "$pkgdir/usr/share/webapps/$_pkgbase"
 
   # Configuration file
@@ -68,4 +68,4 @@ sha256sums=('SKIP'
             '5dfff91dd4a54f3d3713530e204370a96d37898b670a61123d8cad42f92da306'
             '813d580300ee5bb7f1f9603db2404f5af67fd02f49017708d4adb919d4422045'
             'c8b569f1eafb97d8d03bbaabb9b4d6ed3415f922a05a52bd865942676368f4c5'
-            'e3cd2ceb71f4ef4689028313188def52aa19859e35aa8abcaa200495cd187935')
+            'd7847c2b5d9897122168c66493bc72200432c2b15317e38afbfb06a8500257a2')
