@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=pingo-bin
-pkgver=0.99.beta48
+pkgver=0.99.beta49
 pkgrel=1
 pkgdesc='An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (unix binary)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('pingo')
 options=('!strip')
 source=("pingo-nix64-${pkgver}.zip"::'https://css-ig.net/bin/pingo-nix64.zip')
 noextract=("pingo-nix64-${pkgver}.zip")
-sha256sums=('d7f3cc598d42b8c013c181b62b90b1ecef2860075a0429083b9d68057726a122')
+sha256sums=('20dbb820dad77a36eace0d3e73f9e334dde590cfec6fb9f722f9fc1fbc97f366')
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
