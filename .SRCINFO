@@ -1,0 +1,36 @@
+pkgbase = blender-2.7-bin
+	pkgdesc = A fully integrated 3D graphics creation suite (2.7 branch)
+	pkgver = 2.79.190727.e045fe53f1b0
+	pkgrel = 1
+	url = https://www.blender.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = wget
+	depends = alembic
+	depends = libgl
+	depends = python
+	depends = python-numpy
+	depends = openjpeg
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = ffmpeg
+	depends = fftw
+	depends = openal
+	depends = freetype2
+	depends = libxi
+	depends = openimageio
+	depends = opencolorio
+	depends = openvdb
+	depends = opencollada
+	depends = opensubdiv
+	depends = openshadinglanguage
+	depends = libtiff
+	depends = libpng
+	provides = blender-2.7
+	conflicts = blender-2.7
+	source = download190728::https://builder.blender.org/download/
+	md5sums = SKIP
+
+pkgname = blender-2.7-bin
+
