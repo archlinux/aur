@@ -1,4 +1,5 @@
 # Maintainer: Daniel Roe <daniel@concision.co.uk>
+# Maintainer: Austin Pray <austin@austinpray.com>
 pkgname=trellis-cli
 pkgver=0.4.0
 pkgrel=1
