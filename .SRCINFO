@@ -1,20 +1,15 @@
 pkgbase = libevdevc
 	pkgdesc = Chromium OS libevdev
-	pkgver = 2.0
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/hugegreenbug/libevdevc
-	arch = i686
 	arch = x86_64
 	license = custom:chromiumos
 	depends = glibc
 	options = !emptydirs
 	options = !strip
-	source = ChromiumOS_Licence.txt
-	md5sums = af314be4bf04a749665a07203b120f54
-	source_i686 = libevdevc_2.0-ubuntu4_i386.deb::https://launchpad.net/~hugegreenbug/+archive/ubuntu/cmt2/+files/libevdevc_2.0-ubuntu4_i386.deb
-	md5sums_i686 = 287715207a88d3f213a80d15332133a6
-	source_x86_64 = libevdevc_2.0-ubuntu4_amd64.deb::https://launchpad.net/~hugegreenbug/+archive/ubuntu/cmt2/+files/libevdevc_2.0-ubuntu4_amd64.deb
-	md5sums_x86_64 = f76beab95337525666e03789bd250c24
+	source = https://apt.galliumos.org/pool/main/libe/libevdevc/libevdevc_3.0_amd64.deb
+	md5sums = 1ddbb17b9bc38e61441e85d82a72bcc4
 
 pkgname = libevdevc
 
