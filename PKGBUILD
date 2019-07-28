@@ -35,7 +35,7 @@ source=(https://repo.itmettke.de/firefox-kde-opensuse-${pkgver}-${_pkgrel}-x86_6
 noextract=(firefox-kde-opensuse-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz)
 validpgpkeys=(81E604C18BFD3FA9986E32D91E74416BECD445A4)
 sha256sums=(
-	'b958691752ffeed5401134085c71860b6fdee554915084fe69d1fe7c5b577d4d'
+	'84dad9bd8a70ad4cd95b6f457cbd8cf1bbfd4c6d574322afc6f27ce9dd5d7c5a'
 	'SKIP'
 )
 
