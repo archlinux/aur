@@ -2,8 +2,8 @@
 
 pkgname=fluent-bit
 
-pkgmaj=1.0
-pkgver=1.0.4
+pkgmaj=1.2
+pkgver=1.2.2
 pkgrel=1
 epoch=
 
@@ -54,4 +54,4 @@ package() {
     rmdir $pkgdir/lib
 }
 
-md5sums=('85b47a506647b93df662aed902bd368c')
+md5sums=('761ca237b4a96491fa157f1dd9d0d09e')

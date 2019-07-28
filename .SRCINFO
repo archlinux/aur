@@ -1,6 +1,6 @@
 pkgbase = fluent-bit
 	pkgdesc = Collect data/logs from different sources, unify and send them to multiple destinations.
-	pkgver = 1.0.4
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://fluentbit.io/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = fluent-bit
 	makedepends = cmake
 	backup = etc/fluent-bit/fluent-bit.conf
 	backup = etc/fluent-bit/parsers.conf
-	source = https://fluentbit.io/releases/1.0/fluent-bit-1.0.4.tar.gz
-	md5sums = 85b47a506647b93df662aed902bd368c
+	source = https://fluentbit.io/releases/1.2/fluent-bit-1.2.2.tar.gz
+	md5sums = 761ca237b4a96491fa157f1dd9d0d09e
 
 pkgname = fluent-bit
 
