@@ -1,6 +1,6 @@
 pkgbase = exo-devel
 	pkgdesc = Extensions to Xfce (Development version)
-	pkgver = 0.12.6
+	pkgver = 0.12.7
 	pkgrel = 1
 	url = https://www.xfce.org/
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = exo-devel
 	depends = libxfce4ui
 	depends = perl-uri
 	depends = hicolor-icon-theme
-	provides = exo=0.12.6
+	provides = exo=0.12.7
 	conflicts = exo
-	source = https://archive.xfce.org/src/xfce/exo/0.12/exo-0.12.6.tar.bz2
-	sha256sums = 1417fffc593225d61ba57b050ae2ce66ef37615c9ec66944db32019761441003
+	source = https://archive.xfce.org/src/xfce/exo/0.12/exo-0.12.7.tar.bz2
+	sha256sums = 78d10943b52eb50ce76224ae27c025fb174d39895b31723db90a869d6eeaf1da
 
 pkgname = exo-devel
 

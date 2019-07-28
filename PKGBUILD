@@ -2,7 +2,7 @@
 
 _pkgname=exo
 pkgname=${_pkgname}-devel
-pkgver=0.12.6
+pkgver=0.12.7
 pkgrel=1
 pkgdesc="Extensions to Xfce (Development version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('intltool' 'gtk-doc')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('1417fffc593225d61ba57b050ae2ce66ef37615c9ec66944db32019761441003')
+sha256sums=('78d10943b52eb50ce76224ae27c025fb174d39895b31723db90a869d6eeaf1da')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
