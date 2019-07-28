@@ -10,7 +10,6 @@ license=('Minion EULA')
 depends=('jdk8-openjdk' 'java8-openjfx' 'unzip')
 provides=("miniongg")
 source=("https://cdn.mmoui.com/minion/v3/Minion${pkgver}-java.zip")
-sha256sums=('0098613cce6e3b99decc45e6ecf6b71c4b8eed7fe0cd991611d6df5a7093bc1b')
 
 package() {
 	mkdir -p "${pkgdir}/opt/Minion/"
@@ -45,5 +44,4 @@ Categories=Network;Games;" > minion.desktop
 	install -m644 "${srcdir}/minion.desktop" "${pkgdir}/usr/share/applications/"
 }
 
-sha256sums=('0098613cce6e3b99decc45e6ecf6b71c4b8eed7fe0cd991611d6df5a7093bc1b')
 sha256sums=('0098613cce6e3b99decc45e6ecf6b71c4b8eed7fe0cd991611d6df5a7093bc1b')

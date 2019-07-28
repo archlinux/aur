@@ -1,7 +1,7 @@
 pkgbase = miniongg
 	pkgdesc = Elder Scrolls Online and World od Warcraft AddOn Manager
 	pkgver = 3.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://minion.mmoui.com/
 	arch = i686
 	arch = x86_64
