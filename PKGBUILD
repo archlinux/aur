@@ -1,8 +1,8 @@
 # Maintainer: linduxed <linduxed at gmail dot com>
 
-pkgname=exercism-cli
+pkgname=exercism-bin
 pkgver=3.0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line client for exercism.io"
 arch=("i686" "x86_64")
 url="https://github.com/exercism/cli"
