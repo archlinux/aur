@@ -1,0 +1,15 @@
+post_install() {
+	if ! grep -xq '\[ -r /etc/bash.bashrc.local \] && . /etc/bash.bashrc.local' /etc/bash.bashrc
+	then
+		echo "[ -r /etc/bash.bashrc.local ] && . /etc/bash.bashrc.local" >> /etc/bash.bashrc
+	fi
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	#post_install
+	sed -i '/^\[ -r \/etc\/bash.bashrc.local \] && . \/etc\/bash.bashrc.local$/d' /etc/bash.bashrc
+}

@@ -1,0 +1,14 @@
+pkgbase = rons-bashrc-local
+	pkgdesc = Ron's personal bash.bashrc.local
+	pkgver = 0.1
+	pkgrel = 3
+	url = http://aur.archlinux.org/packages/rons-bashrc-local/
+	install = rons-bashrc-local.install
+	arch = any
+	license = GPL
+	depends = yay
+	source = bash.bashrc.local
+	sha256sums = e84b105d71fd2298acadfb8ca6a02a054c87ff9e0d1ea491c8722729767cd7af
+
+pkgname = rons-bashrc-local
+

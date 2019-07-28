@@ -1,0 +1,60 @@
+#
+# [ -r /etc/bash.bashrc.local ] && . /etc/bash.bashrc.local
+#
+
+#export LC_MESSAGES="et_EE.UTF-8"
+#export LC_ALL="et_EE.UTF-8"
+
+export PATH=$PATH:$HOME/.local/bin
+export SUDO_PROMPT="Password [sudo]: "
+export EDITOR="nano"
+
+if [[ ${EUID} == 0 ]] ; then
+	PS1='\[\033[01;35m\]\h\[\033[01;34m\] \w \$\[\033[00m\] '
+else
+	PS1='\[\033[01;36m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
+fi
+
+
+alias ls='ls --color=auto'
+alias grep='grep --colour=auto'
+if [[ -f /usr/bin/colordiff ]] ; then
+        alias diff="colordiff"
+fi
+
+
+alias yaourt='LC_ALL=POSIX yaourt'
+
+#if [[ -f /usr/bin/pacman-color ]] ; then
+#	alias pacman="pacman-color"
+#	alias yaourt='LC_ALL=POSIX PACMAN=pacman-color yaourt'
+#fi
+
+alias p="pacman"
+#alias y='yaourt'
+alias y='yay'
+
+#alias update='yaourt -Syu --aur'
+alias update='yay -Syu'
+alias u='update'
+alias world='pacman -Qeq | grep -xv "$(pacman -Qegq base)" | grep -xv "$(pacman -Qegq base-devel)" | grep -xv "$(pacman -Slq core)"'
+
+
+alias sudo='sudo '
+
+alias netscan="nmap -p 139 -sT 192.168.1.*"
+
+alias changed_files_in_realtime="watch -d -n 2 'df; ls -FlAt;'"
+
+
+#############################################################
+
+#alias backupsync='rsync -avx --progress --exclude-from="/home/rsync_exclude" --delete --delete-excluded'
+
+# export XDG_CACHE_HOME="/dev/shm/${UID}/cache"
+# [[ -d "${XDG_CACHE_HOME}" ]] || install -dm0700 "${XDG_CACHE_HOME}"
+
+#xinput set-button-map "SynPS/2 Synaptics TouchPad" 1 2 3 5 4 7 6 0 0 0 0 0
+
+#[ -r /etc/bash.bashrc.gentoo ] && . /etc/bash.bashrc.gentoo
+
