@@ -5,10 +5,15 @@ pkgdesc="Next generation of ADIOS developed in the Exascale Computing Program"
 license=('Apache')
 arch=('x86_64')
 url="https://adios2.readthedocs.io/en/latest/index.html"
-depends=('libpng' 'zfp' 'hdf5' 'zeromq' 'libfabric' 'blosc' 'python')
+depends=('libpng' 'zfp' 'hdf5' 'zeromq' 'libfabric' 'blosc' 'python' 'sz')
 makedepends=('cmake')
 source=("https://github.com/ornladios/ADIOS2/archive/v$pkgver.tar.gz")
 sha256sums=('50ecea04b1e41c88835b4b3fd4e7bf0a0a2a3129855c9cc4ba6cf6a1575106e2')
+
+prepare () {
+  cd ADIOS2-$pkgver
+  sed -i "s|ZLIB_LIBRARY NAMES zlib|ZLIB_LIBRARY NAMES z zlib|g" cmake/FindSZ.cmake
+}
 
 build() {
   cd ADIOS2-$pkgver

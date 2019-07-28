@@ -13,6 +13,7 @@ pkgbase = adios2
 	depends = libfabric
 	depends = blosc
 	depends = python
+	depends = sz
 	source = https://github.com/ornladios/ADIOS2/archive/v2.4.0.tar.gz
 	sha256sums = 50ecea04b1e41c88835b4b3fd4e7bf0a0a2a3129855c9cc4ba6cf6a1575106e2
 
