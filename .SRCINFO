@@ -1,7 +1,7 @@
 pkgbase = t4kcommon-git
 	pkgdesc = Common library for code shared by TuxType and TuxMath
 	pkgver = r4.013d039
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tux4kids.alioth.debian.org/
 	arch = armv7h
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = t4kcommon-git
 	makedepends = gettext
 	makedepends = libtool
 	makedepends = make
+	makedepends = git
 	depends = sdl_image
 	depends = sdl_mixer
 	depends = sdl_pango
