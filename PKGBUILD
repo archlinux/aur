@@ -3,9 +3,9 @@
 
 pkgname=magics++
 Pkgname=Magics
-pkgver=4.0.3
+pkgver=4.1.2
 _attnum=3473464
-pkgrel=3
+pkgrel=1
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
 arch=('i686' 'x86_64')
 url="https://software.ecmwf.int/wiki/display/MAGP"
@@ -14,13 +14,12 @@ depends=('qt5-base' 'proj' 'fftw' 'pango' 'netcdf-cxx-legacy' 'eccodes' 'python'
 optdepends=('libaec' 'odb_api')
 makedepends=('perl-xml-parser' 'gcc-fortran' 'swig' 'python2-numpy' 'cmake' 'boost' 'emos' 'python2-jinja')
 source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz patch)
-md5sums=('0586c99cbebb015aab697c83ab903611'
+md5sums=('d7ad5bcc297513089ad28595d5b2f3ca'
          '73b04ae78df8c2f6e88b2a36dcd2dd96')
 
 build() {
   cd "$srcdir/${Pkgname}-${pkgver}-Source"
   patch -p0 -i ../patch
- # patch -p2 -i ../g++7.patch
   rm -fr src/boost && ln -sf /usr/include/boost src
   [ -x /usr/bin/odb ] && has_odb=ON || has_odb=OFF
   mkdir -p build
@@ -34,6 +33,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
     -DCMAKE_INSTALL_DATADIR=/usr/share \
     -DENABLE_METVIEW=1 -DENABLE_QT5=1 -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
+      sed -i magics.pc-pkg-config-build.cmake -e '/REPLACE/s/++/\\\\+\\\\+/'
   make || return 1
 }
 
