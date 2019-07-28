@@ -680,7 +680,7 @@ package() {
       16|32) _branding="${srcdir}/chromium-${pkgver}/chrome/app/theme/default_100_percent/chromium" ;;
       *) _branding="${srcdir}/chromium-${pkgver}/chrome/app/theme/chromium" ;;
     esac
-    install -Dm644 "${_branding}/product_logo_${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/chromium-dev.png"
+    install -Dm644 "${_branding}/product_logo_${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size/_mono}x${_size//_mono}/apps/chromium-dev.png"
   done
   install -Dm644 "${srcdir}/chromium-dev.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/chromium-dev.svg"
 
