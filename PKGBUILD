@@ -1,6 +1,6 @@
-# Maintainer: P. A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
-#######################################################################
+################################################################################
 # CAVEAT LECTOR: This PKGBUILD is highly opinionated. I give you
 #                enough rope to hang yourself, but by default it
 #                only enables the features I use.
@@ -10,19 +10,20 @@
 #        Everyone else: do not update blindly this PKGBUILD. At least
 #        make sure to compare and understand the changes.
 #
-#######################################################################
+################################################################################
 
-#######################################################################
+################################################################################
 # Assign "YES" to the variable you want enabled; empty or other value
 # for NO.
 #
 # Where you read experimental, replace with foobar.
 # =================================================
 #
-#######################################################################
+################################################################################
 CHECK=            # Run tests. May fail, this is developement after all.
 CLANG=            # Use clang.
-LTO=              # Enable link-time optimization. Experimental.
+LTO=              # Enable link-time optimization. Not that experimental anymore.
+                  # Broken with GCC, works (?) with clang, so clang is hardwired.
 CLI=              # CLI only binary.
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
                   #
@@ -37,24 +38,24 @@ GTK2=             # GTK2.
 GPM=              # Enable gpm support.
 M17N=             # Enable m17n international table input support.
                   # You are far better off using UTF-8 and an input
-                  # method under X/Wayland. But this gives independence
+                  # method under X11/Wayland. But this gives independence
                   # if you need it.
-CAIRO=            # GOOD NEWS! No longer experimental and very supported.
+CAIRO="YES"       # GOOD NEWS! No longer experimental and fully supported.
 XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
 DOCS_HTML=        # Generate and install html documentation.
 DOCS_PDF=         # Generate and install pdf documentation.
 MAGICK=           # Imagemagick 6 libraries support. Imagemagick,
                   # like flash, is bug ridden and won't die; yet useful.
 NOGZ=             # Don't compress el files.
-#######################################################################
+################################################################################
 
-#######################################################################
+################################################################################
 if [[ $BRANCH = "emacs-26" ]]; then
   pkgname=emacs26-git
 else
   pkgname=emacs-git
 fi
-pkgver=27.0.50.137694
+pkgver=27.0.50.137778
 pkgrel=1
 pkgdesc="GNU Emacs. Development."
 arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
@@ -62,9 +63,13 @@ url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
 depends=( 'alsa-lib' 'gnutls' 'libxml2' 'jansson' 'libotf' 'harfbuzz' )
 makedepends=( 'git' )
-#######################################################################
+################################################################################
 
-#######################################################################
+################################################################################
+if [[ $LTO = "YES" ]]; then
+  CLANG="YES" ;
+fi
+
 if [[ $CLANG = "YES" ]]; then
   export CC=/usr/bin/clang ;
   export CXX=/usr/bin/clang++ ;
@@ -119,9 +124,9 @@ fi
 if [[ $DOCS_PDF = "YES" ]]; then
   makedepends+=( 'texlive-core' );
 fi
-#######################################################################
+################################################################################
 
-#######################################################################
+################################################################################
 provides=('emacs' 'emacs-seq')
 conflicts=('emacs' 'emacs-seq')
 replaces=('emacs26-git' 'emacs-seq')
@@ -168,9 +173,9 @@ build() {
    --without-gsettings
   )
 
-#######################################################################
+################################################################################
 
-#######################################################################
+################################################################################
 
 if [[ $CLANG = "YES" ]]; then
   _conf+=(
@@ -224,9 +229,9 @@ fi
 if [[ $NOGZ = "YES" ]]; then
   _conf+=( '--without-compress-install' );
 fi
-#######################################################################
+################################################################################
 
-#######################################################################
+################################################################################
 
   # Use gold with gcc, unconditionally.
   #
@@ -294,4 +299,5 @@ package() {
 
 }
 
+################################################################################
 # vim:set ft=sh ts=2 sw=2 et:
