@@ -1,7 +1,7 @@
 pkgbase = grc-solarized
 	pkgdesc = Changed the standard colors of grc to work better with solarized colorscheme.
 	pkgver = 1.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/garabik/grc
 	arch = any
 	license = GPL
