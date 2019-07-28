@@ -1,7 +1,7 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
 pkgname=retrolink-git
-pkgver=0
+pkgver=r13.24c81e9
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
