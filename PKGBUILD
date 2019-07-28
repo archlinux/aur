@@ -1,7 +1,7 @@
 _npmname=pxder
-_npmver=2.7.1
+_npmver=2.7.2
 pkgname=nodejs-pxder # All lowercase
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Download illusts from pixiv.net P站插画批量下载器"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(dc6685d140253132f4e883f4c96459a9e3cadb03)
+sha1sums=(f639ce89c0d618965c87499d3638dceb66a889a5)
 
 package() {
   cd $srcdir
