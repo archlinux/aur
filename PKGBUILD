@@ -1,7 +1,7 @@
 # Maintainer: gvelchuru
 
 pkgname=odrive-bin
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Google Drive GUI"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=($pkgname.desktop
         $pkgname.png)
 sha512sums=('f1fcc5af46bfa97a8c70a2c1de0eb21bf6486af3e44e8da3774f8237b22c5816c6616c793493470bb091a956fbc62870dee428b5d5fabb7096e2a7508b9fe99e'
             'e852e6ee2714900b2b484dbe3f9bb69e72895391fed5e6776142c48daaf7e75a8a12908812894e5695277447bd2704cad93cd4f2ed0940ef45008e93b8823dd1')
-sha512sums_x86_64=('7b712529278ecaee085dd7252560123c0e6e431e6abf5d907b58ca4262ed7dc35bce5f793a9bc6c62760329789e9dfd72b46275eb9228be0417df27ea1e20ea2')
+sha512sums_x86_64=('49650504fe09a21f302a014672313559b87193fa154dae368b3431b750663a58e2d7ab8c170b3d0a502a047963a5f6b5ad8e0ef74672569076dccb873d15a512')
 
 package() {
   cd $srcdir
