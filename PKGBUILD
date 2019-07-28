@@ -1,4 +1,4 @@
-# Maintainer: linduxed <linduxed at gmail dot com>
+# Maintainer: linduxed <linduxed at protonmail dot com>
 
 pkgname=exercism-bin
 pkgver=3.0.12
