@@ -1,6 +1,6 @@
 pkgbase = rocket-git
 	pkgdesc = An intuitive sync-tracker tool for realtime audiovisual productions
-	pkgver = r750.3324c3f
+	pkgver = r784.f28e2a0
 	pkgrel = 1
 	url = https://github.com/rocket/rocket
 	arch = i686
