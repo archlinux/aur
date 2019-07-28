@@ -9,13 +9,13 @@ _gitname=tuxmath
 pkgver=r989.63bfc8a
 
 
-pkgrel=2
+pkgrel=3
 pkgdesc="An arcade game that helps kids practice their math facts"
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
 url="http://tux4kids.alioth.debian.org/"
 license=('GPL')
 depends=('t4kcommon-git')
-makedepends=('autoconf' 'automake' 'gettext' 'libtool' 'make')
+makedepends=('autoconf' 'automake' 'gettext' 'libtool' 'make' 'git')
 options=('!docs')
 provides=('tuxmath')
 conflicts=('tuxmath')
