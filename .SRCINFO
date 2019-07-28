@@ -1,0 +1,19 @@
+pkgbase = dalton
+	pkgdesc = A tool for a wide range of molecular properties at different levels of theory
+	pkgver = 2018.2
+	pkgrel = 1
+	url = https://daltonprogram.org
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = cmake
+	makedepends = sed
+	makedepends = awk
+	makedepends = python
+	depends = scalapack
+	conflicts = dalton-git
+	source = git+https://gitlab.com/dalton/dalton.git#branch=release/2018
+	sha256sums = SKIP
+
+pkgname = dalton
+
