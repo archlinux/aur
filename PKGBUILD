@@ -1,6 +1,6 @@
 pkgname=blarb
 pkgver="1.3.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="The Blarb programming language."
 arch=('x86_64')
 url="https://github.com/elimirks/BlarbVM"
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$_gitname"
-	make BLARB_LIBRARY_PATH=../lib/blarb
+	make BLARB_LIBRARY_PATH=/usr/lib/blarb
 }
 
 package() {
