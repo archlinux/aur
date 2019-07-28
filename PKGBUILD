@@ -16,6 +16,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd "$srcdir/SZ-${pkgver}"
   sed -i "s|ARCHIVE DESTINATION lib|ARCHIVE DESTINATION lib RUNTIME DESTINATION bin|g" sz/CMakeLists.txt
+  
+  curl -L https://github.com/disheng222/SZ/commit/360d29e44cf52cc1d59f2b2c070f94ad067f5314.patch | patch -p1
 }
 
 build() {
