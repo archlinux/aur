@@ -22,11 +22,15 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
             'libzip: import of APE DAX, NanoObserver, NanoScanTech, OpenGPS and Sensofar PLUX data files'
             'cfitsio: import of Flexible Image Transport System (FITS) files'
             'openexr: import and export of OpenEXR HDR images')
-source=(http://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz)
-sha256sums=('bc7fdea79b180a5c3f4ac18abea103e72ee99eb4d77d7d7f66ee8b72a68b8b80')
+source=(http://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz \
+        http://gwyddion.net/download/2.53/gwyddion-2.53-gcc9-openmp-shared-const.patch)
+sha256sums=('bc7fdea79b180a5c3f4ac18abea103e72ee99eb4d77d7d7f66ee8b72a68b8b80'
+            'aa5ad7c9557aafbeebc1f0e323bd58aa7746ba008d311740f490763821d993b7')
 
 prepare() {
   cd $pkgname-$pkgver
+
+  patch -Np1 -i "${srcdir}/gwyddion-2.53-gcc9-openmp-shared-const.patch"
 
   # python2 fix
   for file in $(find . -name '*.py' -print); do
