@@ -1,9 +1,9 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
 pkgname=ygopro-koishipro
-pkgver=2019.7.14
+pkgver=2019.7.28
 pkgrel=1
 _pkgrel=1
-name="Hanabi"
+name="Rosarium"
 zipFile="KoishiPro-linux-full-$name.zip"
 pkgdesc="Link compatable ygopro client with AI"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('mono' 'libevent')
 makedepends=('patchelf' 'unzip')
 source=("$url/releases/download/$name/$zipFile")
 noextract=($zipFile)
-sha256sums=('742481a1f3cb52e242f19b251f0d1660467a44e1619e326e50b06d44d4aaa2e7')
+sha256sums=('1bd6bb989b54779d12788ddad70eb7de849ed64d8f24369589ffcda85468a34c')
 options=('!strip' 'emptydirs')
 
 prepare(){
