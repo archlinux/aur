@@ -1,16 +1,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de
 
 pkgname=emacs-bui
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Buffer interface library for Emacs"
 arch=('any')
 url="https://github.com/alezost/bui.el"
 license=('GPL')
 depends=('emacs')
 makedepends=('git' 'emacs-dash')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/alezost/bui.el/archive/v1.1.0.tar.gz")
-md5sums=('07d2f846dffecaf18bb44b9f075bd3cc')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/alezost/bui.el/archive/v$pkgver.tar.gz")
+md5sums=('3429565b596df97dfabe13b399fdad8e')
 
 build() {
   cd ${pkgname#emacs-}.el-$pkgver
