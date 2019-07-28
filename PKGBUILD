@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.32.2+43+gb7f158811
-pkgrel=4
+pkgrel=5
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -224,6 +224,13 @@ prepare() {
   # Status: 2
   # Comment: Can't be cleanly applied on 3.32 without lot of cherry-pick unrelated commits...
   patch -Np1 < ../429.diff
+
+  # Title: Implement clipboard manager
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/320
+  # Type: 2
+  # Status: 4
+  # Comment:
+   git cherry-pick -n 156980ef^..02c99524
 }
 
 build() {
