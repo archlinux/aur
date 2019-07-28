@@ -1,5 +1,5 @@
 pkgname=blarb
-pkgver="1.0.0"
+pkgver="1.3.0"
 pkgrel=1
 pkgdesc="The Blarb programming language."
 arch=('x86_64')
@@ -14,6 +14,8 @@ source=("git://github.com/elimirks/BlarbVM.git")
 md5sums=('SKIP')
 _gitname="BlarbVM"
 
+libpath=
+
 prepare() {
   cd "$srcdir/$_gitname"
 	git checkout $pkgver
@@ -21,11 +23,14 @@ prepare() {
 
 build() {
   cd "$srcdir/$_gitname"
-	make
+	make BLARB_LIBRARY_PATH=../lib/blarb
 }
 
 package() {
   cd "$srcdir/$_gitname"
-  mkdir -p "$pkgdir/usr/bin"
   install -D -m755 ./blarb "$pkgdir/usr/bin/blarb"
+
+	mkdir -p "$pkgdir/usr/lib"
+  cp -r ./library "$pkgdir/usr/lib/blarb"
+  chmod -R 644 "$pkgdir/usr/lib/blarb"
 }
