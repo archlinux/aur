@@ -1,0 +1,1 @@
+../../../bash/system_image.sh

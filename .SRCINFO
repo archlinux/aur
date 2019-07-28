@@ -1,0 +1,9 @@
+pkgbase = system-image-script
+	pkgdesc = can be used to create a system image or compressed archive from any partition while excluding system specific directories like 'proc' and 'sys'. The backup has to be run from readonly / or a live system
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+
+pkgname = system-image-script
+
