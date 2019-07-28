@@ -2,7 +2,7 @@
 
 pkgname=python2-pywikibot
 pkgbase=python2-pywikibot
-pkgver=3.0.20190430
+pkgver=3.0.20190722
 pkgrel=1
 pkgdesc="Python library that interfaces with the MediaWiki API"
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 makedepends=(python2 python2-ipaddr python2-pathlib2 python2-requests python2-setuptools)
 source=(https://files.pythonhosted.org/packages/source/p/pywikibot/pywikibot-$pkgver.tar.gz
         LICENSE)
-sha256sums=(f04306e0c9b460f5558826399c79dc7b1c9c13e97a20f6324cdfab04dea19e6e
+sha256sums=(a0388717038293202ea92eeb7099e8bd87f258304f371a8a8f87a74e233e9cd4
             3996ba1ed2c6fb47803bc0df493633b71d2e6d5d2971e0580008f242f43d2895)
 
 prepare() {
