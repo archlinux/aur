@@ -1,0 +1,22 @@
+pkgbase = dftbplus
+	pkgdesc = A quantum mechanical simulation software package based on the DFTB method
+	pkgver = 19.1
+	pkgrel = 1
+	url = https://www.dftbplus.org
+	arch = x86_64
+	license = LGPL3
+	license = GPL3
+	makedepends = gcc-fortran
+	makedepends = wget
+	makedepends = sed
+	depends = scalapack
+	depends = python
+	depends = python-numpy
+	depends = arpack
+	source = https://www.dftbplus.org/fileadmin/DFTBPLUS/public/dftbplus/19.1/dftbplus-19.1.tar.xz
+	source = https://www.dftb.org/fileadmin/DFTB/public/slako-unpacked.tar.xz
+	sha256sums = 78f45ef0571c78cf732a5493d32830455a832fa05ebcad43098895e46ad8d220
+	sha256sums = 026d58b96027f4cbcc9eb5fef462ec43e2cfffdc8fe385362b3726c07f1e2797
+
+pkgname = dftbplus
+
