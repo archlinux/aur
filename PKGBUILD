@@ -3,7 +3,7 @@
 pkgbase=python-pytest-flask
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-pytest-flask python2-pytest-flask)
-pkgver=0.10.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A set of pytest fixtures to test Flask applications."
 arch=(any)
@@ -17,7 +17,7 @@ makedepends=(
 )
 options=(!emptydirs)
 source=("https://github.com/pytest-dev/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('46751b8224189a77e47cf584acc577f9cf35fb6aa68ebc427a15590a8de5b08b')
+sha256sums=('2e43f5950689cd32493f775fa00f476d141e30334d89cc7e5a9fd87c08c4192d')
 
 package_python-pytest-flask() {
   depends=('python-flask' 'python-werkzeug')
