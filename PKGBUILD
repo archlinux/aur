@@ -1,6 +1,6 @@
 pkgname=blarb
 pkgver="1.3.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="The Blarb programming language."
 arch=('x86_64')
 url="https://github.com/elimirks/BlarbVM"
@@ -32,5 +32,5 @@ package() {
 
 	mkdir -p "$pkgdir/usr/lib"
   cp -r ./library "$pkgdir/usr/lib/blarb"
-  chmod -R 644 "$pkgdir/usr/lib/blarb"
+  chmod -R 755 "$pkgdir/usr/lib/blarb"
 }

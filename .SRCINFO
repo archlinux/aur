@@ -1,7 +1,7 @@
 pkgbase = blarb
 	pkgdesc = The Blarb programming language.
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/elimirks/BlarbVM
 	arch = x86_64
 	license = ISC
