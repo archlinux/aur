@@ -34,7 +34,7 @@ build() {
 package() {
   install -D -m755 "${srcdir}/gopath/bin/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
   pushd "$pkgdir/usr/bin/"
-  ln -sf "$pkgdir/usr/bin/${pkgname}" "$pkgdir/usr/bin/nvidia-container-runtime-hook"
+  ln -sf "${pkgname}" "nvidia-container-runtime-hook"
   popd
   install -D -m644 "${_srcdir}/toolkit/config.toml.centos" "$pkgdir/etc/nvidia-container-runtime/config.toml"
   install -D -m755 "${_srcdir}/toolkit/oci-nvidia-hook" "$pkgdir/usr/libexec/oci/hooks.d/oci-nvidia-hook"
