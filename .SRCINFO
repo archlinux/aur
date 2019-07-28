@@ -1,0 +1,16 @@
+pkgbase = quickfix
+	pkgdesc = C++ Fix Engine Library
+	pkgver = 1.15.1
+	pkgrel = 1
+	url = http://www.quickfixengine.org/
+	arch = x86_64
+	license = custom:The QuickFIX Software License, Version 1.0
+	makedepends = cmake
+	makedepends = gcc
+	depends = gcc-libs
+	conflicts = quickfix-git
+	source = https://github.com/quickfix/quickfix/archive/v1.15.1.tar.gz
+	sha256sums = 1c4322a68704526ca3d1f213e7b0dcd30e067a8815be2a79b2ab1197ef70dcf7
+
+pkgname = quickfix
+
