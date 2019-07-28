@@ -1,6 +1,6 @@
 pkgbase = qssh-git
 	pkgdesc = A Qt based implementation of SSH and SFTP
-	pkgver = r125.08e4e5a
+	pkgver = r126.83c376f
 	pkgrel = 1
 	url = https://github.com/sandsmark/QSsh
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=qssh-git
-pkgver=r125.08e4e5a
+pkgver=r126.83c376f
 pkgrel=1
 pkgdesc='A Qt based implementation of SSH and SFTP'
 arch=('i686' 'x86_64')
