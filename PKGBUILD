@@ -1,7 +1,7 @@
 # Maintainer: kumen
 pkgname="stm32cubeide"
-pkgver=1.0.1
-_pkgver_ext="$pkgver"_3139_20190612_1256
+pkgver=1.0.2
+_pkgver_ext="$pkgver"_3566_20190716_0927
 pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
@@ -26,8 +26,8 @@ fi
 
 source=("local://en.st-stm32cubeide_${_pkgver_ext}_amd64.sh.zip"
 	$pkgname.desktop)
-sha256sums=('eaeafc730019681cea8d6be7368aba2ef43a722eabf52046aca7aec092112350'
-	'2bc15c3ccb6b3bed692fbc1caeb4d73efe7300f44193cff16bbe7768313904b6')
+sha256sums=('bf8b8d6bd0bf7009c2240d88019d09950b96663f37dd8703e8e9b2365508ab6e'
+	'2bfee50bd9875642c376d1c2af12a9f698a407aa2798413154e98dada4e5f937')
 
 prepare(){
 	cd "$srcdir"
@@ -76,7 +76,7 @@ package() {
 	#rm -rf "${srcdir}/build"
 	
 	msg2 'Prevent automatical *.desktop file replacement by not functional one'
-	mv ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.0.0.201904231240/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.0.0.201904231240/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template.old
+	mv ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.0.2.201907121423/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.0.2.201907121423/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template.old
 }
 
 #
