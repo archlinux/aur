@@ -1,7 +1,7 @@
 # Maintainer: lain <aur@hacktheinter.net>
 pkgname=xtrx-linux-pcie-drv-git
 pkgver=r17.5ae3a3e
-pkgrel=1
+pkgrel=2
 pkgdesc="XTRX PCI driver for linux"
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

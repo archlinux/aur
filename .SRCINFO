@@ -1,7 +1,7 @@
 pkgbase = xtrx-linux-pcie-drv-git
 	pkgdesc = XTRX PCI driver for linux
 	pkgver = r17.5ae3a3e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xtrx-sdr/xtrx_linux_pcie_drv
 	arch = armv7h
 	arch = i686
