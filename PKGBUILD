@@ -1,12 +1,12 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis-git
-pkgver=0.3.1.r33.gecc9151
+pkgver=0.3.2.r63.g6f8dfb7
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 arch=('x86_64')
 url="http://web-artanis.com/"
-license=('GPL')
+license=('LGPL')
 depends=('guile')
 makedepends=('git')
 provides=('artanis')
