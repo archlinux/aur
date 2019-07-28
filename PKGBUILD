@@ -9,16 +9,16 @@ _gitname=tuxmath
 pkgver=r989.63bfc8a
 
 
-pkgrel=1
-pkgdesc="Common library for code shared by TuxType and TuxMath"
+pkgrel=2
+pkgdesc="An arcade game that helps kids practice their math facts"
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
 url="http://tux4kids.alioth.debian.org/"
 license=('GPL')
-#depends=('sdl_image' 'sdl_mixer' 'sdl_pango' 'sdl_net' 'libpng' 'librsvg' 'libxml2')
 depends=('t4kcommon-git')
 makedepends=('autoconf' 'automake' 'gettext' 'libtool' 'make')
 options=('!docs')
-#replace=('t4k_common')
+provides=('tuxmath')
+conflicts=('tuxmath')
 source=("git+https://github.com/tux4kids/tuxmath")
 sha256sums=('SKIP')
 
