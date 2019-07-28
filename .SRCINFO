@@ -1,0 +1,22 @@
+pkgbase = tuxmath-git
+	pkgdesc = Common library for code shared by TuxType and TuxMath
+	pkgver = r989.63bfc8a
+	pkgrel = 1
+	url = http://tux4kids.alioth.debian.org/
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gettext
+	makedepends = libtool
+	makedepends = make
+	depends = t4kcommon-git
+	options = !docs
+	source = git+https://github.com/tux4kids/tuxmath
+	sha256sums = SKIP
+
+pkgname = tuxmath-git
+
