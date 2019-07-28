@@ -1,0 +1,25 @@
+pkgbase = tuxtype-git
+	pkgdesc = An educational typing tutorial game starring Tux
+	pkgver = r515.b495eb9
+	pkgrel = 1
+	url = http://tux4kids.alioth.debian.org/
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gettext
+	makedepends = libtool
+	makedepends = make
+	makedepends = git
+	depends = t4kcommon-git
+	provides = tuxtype
+	conflicts = tuxtype
+	options = !docs
+	source = git+https://github.com/tux4kids/tuxtype
+	md5sums = SKIP
+
+pkgname = tuxtype-git
+
