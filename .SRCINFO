@@ -1,7 +1,7 @@
 pkgbase = t4kcommon-git
 	pkgdesc = Common library for code shared by TuxType and TuxMath
 	pkgver = r4.013d039
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tux4kids.alioth.debian.org/
 	arch = armv7h
 	arch = aarch64
@@ -21,6 +21,8 @@ pkgbase = t4kcommon-git
 	depends = libpng
 	depends = librsvg
 	depends = libxml2
+	provides = t4kcommon
+	conflicts = t4kcommon
 	options = !docs
 	source = git+https://gitlab.com/stormdragon2976/t4k-common-arch
 	sha256sums = SKIP
