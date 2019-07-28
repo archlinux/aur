@@ -9,12 +9,12 @@ _gitname=t4k-common-arch
 pkgver=r4.013d039
 
 
-pkgrel=3
+pkgrel=4
 pkgdesc="Common library for code shared by TuxType and TuxMath"
 arch=('armv7h' 'aarch64' 'aarch64' 'i686' 'x86_64')
 url="http://tux4kids.alioth.debian.org/"
 license=('GPL')
-depends=('sdl_image' 'sdl_mixer' 'sdl_pango' 'sdl_net' 'libpng' 'librsvg' 'libxml2')
+depends=('sdl_image' 'sdl_mixer' 'sdl_pango' 'sdl_net' 'libpng' 'librsvg' 'libxml2' 'espeak' 'libspeechd')
 makedepends=('autoconf' 'automake' 'gettext' 'libtool' 'make' 'git')
 options=('!docs')
 provides=('t4kcommon')
