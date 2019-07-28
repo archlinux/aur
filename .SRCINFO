@@ -1,10 +1,10 @@
 pkgbase = artanis
 	pkgdesc = A fast monolithic web-framework of Scheme
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://web-artanis.com/
 	arch = x86_64
-	license = GPL
+	license = LGPL
 	depends = guile
 	options = !strip
 	source = http://ftp.gnu.org/gnu/artanis/artanis-0.3.2.tar.bz2

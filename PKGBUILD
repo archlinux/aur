@@ -2,12 +2,12 @@
 
 pkgname=artanis
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="http://web-artanis.com/"
 depends=('guile')
 arch=('x86_64')
-license=('GPL')
+license=('LGPL')
 source=("http://ftp.gnu.org/gnu/$pkgname/$pkgname-${pkgver}.tar.bz2"{,.sig})
 sha256sums=('6a680bbf1e07dd69a3b84dcef6c3f904d5e178f1570930cdf28763a95b69767a'
             'SKIP')
