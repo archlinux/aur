@@ -1,7 +1,7 @@
 pkgbase = metview
 	pkgdesc = ECMWF interactive meteorological application
-	pkgver = 5.5.3
-	pkgrel = 2
+	pkgver = 5.6.0
+	pkgrel = 1
 	url = https://software.ecmwf.int/wiki/display/METV/Metview
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = metview
 	depends = qt5-webkit
 	depends = libxpm
 	depends = libtirpc
-	source = https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-5.5.3-Source.tar.gz
-	md5sums = efcdd55136df50c6d5a64fe499307bd7
+	source = https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-5.6.0-Source.tar.gz
+	md5sums = de2d0a7b2f2994c35fb6211d91683966
 
 pkgname = metview
 
