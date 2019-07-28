@@ -1,20 +1,10 @@
 pkgbase = urbit
 	pkgdesc = An operating function
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/urbit/urbit
-	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gcc
-	makedepends = automake
-	makedepends = autoconf
-	makedepends = ragel
-	makedepends = cmake
-	makedepends = re2c
-	makedepends = libtool
-	makedepends = meson
-	makedepends = ninja
 	depends = libsigsegv
 	depends = gmp
 	depends = openssl
@@ -23,8 +13,8 @@ pkgbase = urbit
 	depends = libuv
 	depends = python
 	conflicts = urbit-git
-	source = urbit-0.8.0::git+https://github.com/urbit/urbit
-	sha256sums = SKIP
+	source = urbit-0.8.0.tgz::https://bootstrap.urbit.org/urbit-linux64-v0.8.0.tgz
+	sha256sums = ff797546b94e02c45bbf3ca3ddb4677c4c6812cd1962b62833e70706c2bd3673
 
 pkgname = urbit
 

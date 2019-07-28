@@ -2,37 +2,21 @@
 
 pkgname=urbit
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An operating function"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/urbit/urbit"
 license=('MIT')
 depends=('libsigsegv' 'gmp' 'openssl' 'ncurses' 'curl' 'libuv' 'python')
-makedepends=('gcc' 'automake' 'autoconf' 'ragel' 'cmake' 're2c' 'libtool' 'meson' 'ninja')
 conflicts=('urbit-git')
-source=($pkgname-$pkgver::git+https://github.com/urbit/urbit)
-sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  
-  msg2 'Preparing distribution...'
-  ./scripts/bootstrap
-}
-
-build() {
-  cd "${pkgname}-${pkgver}"
-
-  msg2 'Building...'
-  ./scripts/build
-}
+source=($pkgname-$pkgver.tgz::https://bootstrap.urbit.org/urbit-linux64-v0.8.0.tgz)
+sha256sums=('ff797546b94e02c45bbf3ca3ddb4677c4c6812cd1962b62833e70706c2bd3673')
 
 package() {
-  cd "${pkgname}-${pkgver}"
-
-  msg2 'Installing license...'
-  install -Dm644 LICENSE.txt -t "pkgdir/usr/share/licenses/urbit"
-
   msg2 'Installing...'
-  install -Dm755 build/urbit ${pkgdir}/usr/bin/urbit
+  install -d "$pkgdir/"{usr/bin,opt/urbit}
+  cp $srcdir/urbit $pkgdir/opt/$pkgname/urbit
+  cp $srcdir/urbit-worker $pkgdir/opt/$pkgname/urbit-worker
+  cp -R $srcdir/urbit-terminfo $pkgdir/opt/$pkgname
+  ln -s /opt/$pkgname/urbit $pkgdir/usr/bin/$pkgname
 }
