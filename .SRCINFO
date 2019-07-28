@@ -6,6 +6,7 @@ pkgbase = newsup-git
 	install = newsup.install
 	arch = any
 	license = GPLv3
+	makedepends = git
 	depends = perl>=5.026
 	depends = perl-io-socket-ssl>=2.020
 	depends = perl-inline-c>=0.76

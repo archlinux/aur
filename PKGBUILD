@@ -11,6 +11,7 @@ license=('GPLv3')
 depends=('perl>=5.026' 'perl-io-socket-ssl>=2.020' 'perl-inline-c>=0.76' 'perl-config-tiny>=2.22' 'perl-file-copy-recursive>=0.44')
 source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
+makedepends=('git')
 install=newsup.install
 
 
