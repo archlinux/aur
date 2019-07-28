@@ -2,7 +2,7 @@
 # Contributor: Dunon <josep.oliver at tutanota dot com>
 
 pkgname=grevis
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A simple game launcher"
 arch=("any")
@@ -12,7 +12,7 @@ depends=("python" "gtk3")
 makedepends=("meson" "ninja")
 conflicts=("grevis-git")
 source=("https://gitlab.gnome.org/dunon/grevis/-/archive/${pkgver}/grevis-${pkgver}.tar.gz")
-md5sums=("bea323f190cf7cd931dcfd527c9093f6")
+md5sums=("1d0e7e310e6f1421d6c50d70959d23b9")
 
 package() {
 	cd "grevis-${pkgver}"
