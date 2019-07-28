@@ -1,42 +1,40 @@
-# Maintainer: Lauri Gustafsson <luutifa at gmail dot com>
+# Maintainer: Lauri Gustafsson <luutifa at jkry dot org>
 
-_pkgbase="rocket"
-pkgbase="$_pkgbase-git"
-pkgname=("$_pkgbase-git")
+pkgname=rocket-git
 pkgver=r784.f28e2a0
-pkgrel=1
-pkgdesc="An intuitive sync-tracker tool for realtime audiovisual productions"
-arch=("i686" "x86_64")
+pkgrel=2
+pkgdesc="Sync-tracker library and editor for realtime audiovisual productions"
+arch=("i686" "x86_64" "armv7l")
 url="https://github.com/rocket/rocket"
-license=("custom")
-makedepends=("git" "qt5-base")
-source=("$_pkgbase::git+https://github.com/rocket/rocket")
+license=("zlib")
+depends=("qt5-base")
+makedepends=("git")
+source=("rocket::git+https://github.com/rocket/rocket")
 md5sums=("SKIP")
 
 pkgver() {
-  cd "$srcdir"/"$_pkgbase"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    cd rocket
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 #prepare() {
 #}
 
 build() {
-  cd "$srcdir"/"$_pkgbase"
-  make
+    cd rocket
+    make
 }
 
 #check() {
 #}
 
-package_rocket-git() {
-  depends=("qt5-base")
-  install -d "$pkgdir"/usr/lib/"$_pkgbase"
-  install -d "$pkgdir"/usr/include/"$_pkgbase"
-  cp "$srcdir"/"$_pkgbase"/lib/*.a "$pkgdir"/usr/lib
-  cp "$srcdir"/"$_pkgbase"/lib/*.c "$pkgdir"/usr/lib/"$_pkgbase"
-  cp "$srcdir"/"$_pkgbase"/lib/*.h "$pkgdir"/usr/lib/"$_pkgbase"
-  cp "$srcdir"/"$_pkgbase"/lib/sync.h "$pkgdir"/usr/include/"$_pkgbase"
-  install -Dm755 "$srcdir"/"$_pkgbase"/editor/editor "$pkgdir"/usr/bin/"$_pkgbase"
+package() {
+    install -d "${pkgdir}/usr/lib/rocket"
+    install -d "${pkgdir}/usr/include/rocket"
+    cp rocket/lib/*.a "${pkgdir}/usr/lib"
+    cp rocket/lib/*.c "${pkgdir}/usr/lib/rocket"
+    cp rocket/lib/*.h "${pkgdir}/usr/lib/rocket"
+    cp rocket/lib/sync.h "${pkgdir}/usr/include/rocket"
+    install -Dm755 rocket/editor/editor "${pkgdir}/usr/bin/rocket"
 }
 
