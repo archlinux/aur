@@ -1,7 +1,7 @@
 pkgbase = pacman-updatedb-hook
 	pkgdesc = Pacman hook to update the mlocate database.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	depends = mlocate
 	source = updatedb.hook
