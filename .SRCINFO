@@ -11,7 +11,7 @@ pkgbase = qtrans
 	depends = qt5-webkit
 	depends = kxmlgui
 	depends = hicolor-icon-theme
-	source = https://liquidtelecom.dl.sourceforge.net/project/qtrans0/kf5/0.3.2.6/qtrans-0.3.2.6.tar.gz
+	source = https://sourceforge.net/project/qtrans0/kf5/0.3.2.6/qtrans-0.3.2.6.tar.gz
 	md5sums = 1f07792866f794c868aee4c2f75608a09303b9c630f547ad0c32c565bacf5c61
 
 pkgname = qtrans
