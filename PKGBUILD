@@ -21,7 +21,6 @@ _srcdir="${pkgname}-${pkgver}"
 
 prepare() {
   mkdir -p gopath/src
-  ls "${_srcdir}/runtime/src"
   ln -rTsf "${_srcdir}/runtime/src" "gopath/src/${pkgname}"
 }
 
