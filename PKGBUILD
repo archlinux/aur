@@ -1,7 +1,7 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=firefly-iii
-pkgver=4.7.17
-pkgrel=4
+pkgver=4.7.17.3
+pkgrel=1
 pkgdesc='PHP personal finances manager'
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -9,9 +9,8 @@ license=('custom')
 depends=('php-intl')
 makedepends=('composer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('f070089d89f2ac5f27c1c2adaadc911d0779533978226606c5f6d8d69cf5d1db')
+sha256sums=('6e9495293f5702d1c30b87ec63c94728a2bbe40fe45265900d8f1f9824c8cf07')
 
-install=$pkgname.install
 backup=(
     "etc/webapps/$pkgname/config.env"
     "etc/webapps/$pkgname/config.env.docker"
@@ -35,9 +34,16 @@ package() {
 
     ln -s "/etc/webapps/$pkgname/config.env" "$pkgdir/usr/share/webapps/$pkgname/.env"
     rm -rf "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
+
     mkdir -p "$pkgdir/var/cache/$pkgname"
     chown http:http "$pkgdir/var/cache/$pkgname"
     ln -s "/var/cache/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
+
+    mkdir -p "$pkgdir/var/lib"
+    mv "$pkgdir/usr/share/webapps/$pkgname/storage" "$pkgdir/var/lib/firefly-iii"
+    chown -R http:http "$pkgdir/var/lib/firefly-iii"
+    chmod 775 "$pkgdir/var/lib/firefly-iii"
+    ln -s "/var/lib/firefly-iii" "$pkgdir/usr/share/webapps/$pkgname/storage"
 }
 
 # vim:ts=4:sw=4:expandtab

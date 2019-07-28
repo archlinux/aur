@@ -1,4 +1,0 @@
-post_install() {
-	chown -R http:http /usr/share/webapps/firefly-iii/storage
-	chmod 775 /usr/share/webapps/firefly-iii/storage
-}
