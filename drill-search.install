@@ -1,6 +1,13 @@
+post_install() {
+	echo "**************************************************"
+	echo "==> Remove obsolete dub package cache files:      "
+	echo "    rm -rf ~/.dub/packages/{datefmt-*,gtk-d-*}    "    
+	echo "**************************************************"
+}
+
 post_upgrade() {
-  echo "*****************************************************************"
-  echo "==> Remove obsolete package cache files if upgraded from 1.253-1 or older:"
-  echo "    rm -rf ~/.dub/packages/{datefmt-*,gtk-d-*}"    
-  echo "*****************************************************************"
+	# Only show information if upgrading from 1.253 or older
+	if [ $(vercmp $2 1.253-1) -le 0 ]; then
+		post_install
+	fi
 }
