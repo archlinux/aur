@@ -4,7 +4,7 @@ Requires=dgraph-zero.service
 After=dgraph-zero.service
 
 [Service]
-ExecStart=/usr/bin/dgraph server --memory_mb=2048 -w /var/lib/dgraph/data/w -p /var/lib/dgraph/data/p --zero localhost:5080
+ExecStart=/usr/bin/dgraph alpha --lru_mb 2048 -w /var/lib/dgraph/data/w -p /var/lib/dgraph/data/p --zero localhost:5080
 Restart=on-failure
 RestartSec=1
 

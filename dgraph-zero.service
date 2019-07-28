@@ -1,8 +1,8 @@
 [Unit]
-Description=Dgraph database
+Description=Dgraph database controller
 
 [Service]
-ExecStart=/usr/bin/dgraph zero --port_offset -2000
+ExecStart=/usr/bin/dgraph zero -w /var/lib/dgraph/data/zw
 Restart=on-failure
 RestartSec=1
 
