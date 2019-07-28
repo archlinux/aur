@@ -3,7 +3,7 @@
 _pkgbase="rocket"
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git")
-pkgver=r750.3324c3f
+pkgver=r784.f28e2a0
 pkgrel=1
 pkgdesc="An intuitive sync-tracker tool for realtime audiovisual productions"
 arch=("i686" "x86_64")
