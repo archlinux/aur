@@ -1,0 +1,16 @@
+pkgbase = elpa
+	pkgdesc = Eigenvalue SoLvers for Petaflop-Applications
+	pkgver = 2018.11.001
+	pkgrel = 1
+	url = https://elpa.mpcdf.mpg.de/html/Releases
+	arch = x86_64
+	license = LGPL3
+	makedepends = gcc-fortran
+	makedepends = python
+	depends = scalapack
+	provides = elpa
+	source = https://gitlab.mpcdf.mpg.de/elpa/elpa/-/archive/ELPA_2018.11.001/elpa-ELPA_2018.11.001.tar.bz2
+	sha256sums = 333b5c684db03d4698b483462dd7f7a27172eb6617efcee943bd40a8728a8ac3
+
+pkgname = elpa
+
