@@ -55,7 +55,7 @@ NOGZ=             # Don't compress el files.
 ################################################################################
 pkgname="emacs-git"
 pkgver=27.0.50.137787
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development."
 arch=('x86_64') # Arch Linux only. Users of derivatives are on their own.
 url="http://www.gnu.org/software/emacs/"
@@ -69,10 +69,15 @@ if [[ $LTO = "YES" ]]; then
   CLANG="YES" ;
 fi
 
+if [[ $CLI = "YES" ]]; then
+  GPM="YES" ;
+fi
+
 if [[ $CLANG = "YES" ]]; then
   export CC="/usr/bin/clang" ;
   export CXX="/usr/bin/clang++" ;
   export CPP="/usr/bin/clang -E" ;
+  export LD="/usr/bin/lld" ;
   export LDFLAGS+=' -fuse-ld=lld' ;
   makedepends+=( 'clang' 'lld') ;
 fi
@@ -209,12 +214,10 @@ if [[ ! $M17N = "YES" ]]; then
 fi
 
 if [[ $MAGICK = "YES" ]]; then
-  _conf+=(
-    '--with-imagemagick'
- );
+  _conf+=( '--with-imagemagick');
   export PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig
 else
-  _conf+=( '--without-imagemagick' );
+  _conf+=();
 fi
 
 if [[ $CAIRO = "YES" ]]; then
