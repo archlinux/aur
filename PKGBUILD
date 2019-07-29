@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=redhat-fonts
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Red Hat fonts"
 arch=('any')
@@ -11,20 +11,11 @@ url="https://github.com/RedHatOfficial/RedHatFont"
 license=('OFL' 'CC-BY-SA')
 depends=('fontconfig' 'xorg-font-utils')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        '0001-Add-basic-AppStream-metainfo-data.patch::https://src.fedoraproject.org/rpms/redhat-fonts/raw/master/f/0001-Add-basic-AppStream-metainfo-data.patch'
         '64-redhat-display-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/master/f/64-redhat-display-fontconfig.conf'
         '64-redhat-text-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/master/f/64-redhat-text-fontconfig.conf')
-sha256sums=('acd4f9a81368e228c9fd24b0d0f98f0bcc5fbe836c7bef78c685c31b749ed7f4'
-            '67a145933bb59045bcb3fb2f587587f01efecbac985438768957253e6b7f8707'
+sha256sums=('902f52e97663cdff7453fed504c118faad31e2b876975f157204521c29c26470'
             '451c0fd89bf923862060d6a666d12d03be5eb6f119e35b2ddcdd9e83f33a83bf'
             '194ae2c929734b7fe001b89e8c88684e8331a05b9df8c27a58ce2504307b53b7')
-
-prepare() {
-  cd RedHatFont-$pkgver
-  # Patches proposed upstream
-  # From: https://github.com/RedHatOfficial/RedHatFont/pull/16
-  patch -Np1 -i ../0001-Add-basic-AppStream-metainfo-data.patch
-}
 
 package() {
   cd RedHatFont-$pkgver
