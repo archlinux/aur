@@ -1,13 +1,13 @@
 pkgbase = beautysh
 	pkgdesc = A Bash beautifier for the masses
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/bemeurer/beautysh
 	arch = any
 	license = MIT
 	depends = python-setuptools
-	source = https://github.com/lovesegfault/beautysh/archive/5.0.0.tar.gz
-	sha256sums = 4eea96124fc77c4cf0bb0370e1971c328ddd5acc8f589e911f62d1cf8ed8e23b
+	source = https://github.com/lovesegfault/beautysh/archive/5.0.1.tar.gz
+	sha256sums = 94b80116190e334b692d05758ea2de6ebf4f64cdaef617d43c461ae4cfe0ef1c
 
 pkgname = beautysh
 
