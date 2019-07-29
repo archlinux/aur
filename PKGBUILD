@@ -1,7 +1,7 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.4.0.r935.g9e11f67f0
+pkgver=0.4.0.r938.gc47b75312
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ build() {
     cd "$srcdir/$provides"
     mkdir -p build
     cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cmake .. -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
     make DESTDIR=.
 }
 
