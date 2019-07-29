@@ -1,19 +1,17 @@
 pkgbase = criterion
-	pkgdesc = A KISS, non-intrusive unit testing framework for C and C++
+	pkgdesc = A cross-platform C and C++ unit testing framework for the 21th century
 	pkgver = 2.3.3
-	pkgrel = 1
-	url = http://github.com/Snaipe/criterion.git
-	arch = i686
+	pkgrel = 2
+	url = https://github.com/Snaipe/Criterion
 	arch = x86_64
 	license = MIT
+	checkdepends = python-cram
 	makedepends = cmake
-	depends = glibc
 	depends = gettext
 	depends = nanomsg
-	depends = dyncall-git
 	depends = libcsptr
-	source = criterion::git://github.com/Snaipe/criterion.git#tag=v2.3.3
-	md5sums = SKIP
+	source = https://github.com/Snaipe/Criterion/releases/download/v2.3.3/criterion-v2.3.3.tar.bz2
+	sha256sums = 8c85e1fcdb9a39b82bee50394bedfe74a0c839ffff129ddfc6fb73b11adafa29
 
 pkgname = criterion
 

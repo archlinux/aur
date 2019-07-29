@@ -3,10 +3,10 @@
 
 pkgname=criterion
 pkgver=2.3.3
-pkgrel=1
-pkgdesc="A KISS, non-intrusive unit testing framework for C and C++"
-arch=('i686' 'x86_64')
-url="http://github.com/Snaipe/${pkgname}.git"
+pkgrel=2
+pkgdesc="A cross-platform C and C++ unit testing framework for the 21th century"
+arch=('x86_64')
+url="https://github.com/Snaipe/Criterion"
 license=('MIT')
 depends=('gettext' 'nanomsg' 'libcsptr')
 makedepends=('cmake')
