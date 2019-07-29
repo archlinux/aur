@@ -6,7 +6,7 @@ pkgname=nvidia-container-toolkit
 pkgver=1.0.1
 _runtime_pkgver=3.1.0
 
-pkgrel=2
+pkgrel=3
 pkgdesc='NVIDIA container runtime toolkit'
 arch=('x86_64')
 url='https://github.com/NVIDIA/nvidia-container-runtime'
@@ -28,7 +28,13 @@ prepare() {
 }
 
 build() {
-  GOPATH="${srcdir}/gopath" go install -buildmode=pie -ldflags " -s -w -extldflags=-Wl,-z,now,-z,relro" "$pkgname"
+  GOPATH="${srcdir}/gopath" go install \
+                            -buildmode=pie \
+                            -gcflags "all=-trimpath=${PWD}" \
+                            -asmflags "all=-trimpath=${PWD}" \
+                            -ldflags "-extldflags ${LDFLAGS}" \
+                            "$pkgname"
+                            #-ldflags " -s -w -extldflags=-Wl,-z,now,-z,relro" \
 }
 
 package() {
