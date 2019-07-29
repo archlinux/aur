@@ -2,7 +2,7 @@
 
 pkgname=cemu
 pkgver=1.15.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Wii U emulator (via wine). Includes the Cemuhook plugin"
 arch=(x86_64)
 url="http://cemu.info/"
@@ -24,7 +24,7 @@ install=${pkgname}.install
 # If the cemuhook md5 is wrong, is because the cemuhook team every once in a while
 # updates the cemuhook zip file, but without giving it a new name. And that new file has, of course, a different md5.
 # If you notice this, please mark this package as out-of-date in the aur website and I'll fix it.
-md5sums=('c3ab928b2f3c1ea3d7f3bdb5005a250e'
+md5sums=('0061ea42a47d70e048c0becb7d12175e'
          '54d70005a8975812ab54fcfef53f7bde'
          '7e1d24a435cff0af4a8ddc91c5499f15'
          '58f4f8143f06059ee0c2978cc8776588'

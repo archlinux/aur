@@ -14,7 +14,7 @@ if [ ! -d "$HOME"/.cemu ] ; then
   cp -r /usr/share/cemu/shaderCache "$HOME"/.cemu/ || exit 1
 fi
 
-if [ ! -f "$HOME"/.cemu/sharedFonts ] ; then
+if [ ! -L "$HOME"/.cemu/sharedFonts ] && [ ! -d "$HOME"/.cemu/sharedFonts ] ; then
   ln -s /usr/share/cemu/sharedFonts "$HOME"/.cemu/sharedFonts || exit 1
 fi
 if [ -L "$HOME"/.cemu/gameProfiles ] ; then
