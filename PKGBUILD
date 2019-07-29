@@ -7,6 +7,8 @@ arch=('x86_64')
 url="https://github.com/GTkorvo/atl"
 depends=('gcc-libs')
 makedepends=('cmake')
+provides=('atl')
+conflicts=('atl')
 source=("git+https://github.com/GTkorvo/atl.git")
 sha256sums=('SKIP')
 
