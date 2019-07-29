@@ -15,16 +15,6 @@ sha256sums=('69581cf739365ec7fb95608eef694ba959d7d33b36eb961953f2b82cb25bdf5a'
             '72e3066ba033c8e59684331f2d9ea8ea2dc1855d51a7a4ea2fa5565b7dd6cc60')
 install="$pkgname.install"
 
-prepare() {
-	cd ${srcdir}
-	msg2 "Patching Anaconda3-${pkgver}-Linux-x86_64.sh"
-	sed \
-		-e '/wc -c "\$THIS_PATH" | grep/s/!//' \
-		-e "/export FORCE/s|$|;sed \"/^def update_prefix/a\\\    new_prefix='/opt/$pkgname'\" -i pkgs/.install.py|" \
-		-e 's/000000000000020980/000000000000021058/' \
-		-i Anaconda3-${pkgver}-Linux-x86_64.sh
-}
-
 package() {
 	prefix=${pkgdir}/opt/${pkgname}
 	LD_PRELOAD="/usr/lib/libfakeroot/libfakeroot.so"
@@ -37,8 +27,8 @@ package() {
 	msg2 "Correcting permissions"
 	chmod a+r -R pkgs
 
-	msg2 "Stripping \$pkgdir from default meta"
-	find conda-meta -name '*.json' -exec sed -e "s/${pkgdir//\//\\\/}//g" -i {} \;
+	msg2 "Stripping \$pkgdir"
+	sed -e "s|${pkgdir}||g" -i $(grep "${pkgdir}" . -rIl 2>/dev/null)
 
 	msg2 "Installing license"
 	install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
