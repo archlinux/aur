@@ -6,7 +6,7 @@
 # - Desktop entries are ran through desktop-file-validate.
 
 pkgname='lucas-simpsons-hit-and-run-mod-launcher'
-pkgver='1.23.1'
+pkgver='1.23.2'
 pkgrel='1'
 pkgdesc="Mod launcher for The Simpsons: Hit & Run."
 arch=(
