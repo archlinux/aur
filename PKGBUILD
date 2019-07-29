@@ -9,8 +9,9 @@ pkgdesc="A KISS, non-intrusive unit testing framework for C and C++"
 arch=('i686' 'x86_64')
 url="http://github.com/Snaipe/${pkgname}.git"
 license=('MIT')
-depends=('glibc' 'gettext' 'nanomsg' 'dyncall-git' 'libcsptr')
+depends=('gettext' 'nanomsg' 'libcsptr')
 makedepends=('cmake')
+checkdepends=('python-cram')
 source=("$pkgname"::"git://github.com/Snaipe/${pkgname}.git#tag=v${_fullver}")
 md5sums=('SKIP')
 
