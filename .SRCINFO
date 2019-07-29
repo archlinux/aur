@@ -1,4 +1,4 @@
-pkgbase = emacs-elpy
+pkgbase = emacs-elpy-git
 	pkgdesc = Emacs Python Development Environment
 	pkgver = 1.29.1.r41.g7acdd14
 	pkgrel = 1
@@ -20,5 +20,5 @@ pkgbase = emacs-elpy
 	source = elpy::git+https://github.com/jorgenschaefer/elpy
 	sha256sums = SKIP
 
-pkgname = emacs-elpy
+pkgname = emacs-elpy-git
 
