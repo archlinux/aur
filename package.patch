@@ -1,6 +1,6 @@
-diff --unified --recursive bsnes_v107-source.orig/higan/GNUmakefile bsnes_v107-source.new/higan/GNUmakefile
---- bsnes_v107-source.orig/higan/GNUmakefile	2019-03-10 01:42:30.163599022 -0700
-+++ bsnes_v107-source.new/higan/GNUmakefile	2019-03-10 01:45:20.179375447 -0700
+diff --unified --recursive bsnes_v108-source.orig/bsnes/GNUmakefile bsnes_v108-source.new/bsnes/GNUmakefile
+--- bsnes_v108-source.orig/bsnes/GNUmakefile	2019-03-10 01:42:30.163599022 -0700
++++ bsnes_v108-source.new/bsnes/GNUmakefile	2019-03-10 01:45:20.179375447 -0700
 @@ -1,6 +1,9 @@
 +flags = $(CFLAGS)
 +options = $(LDFLAGS)
@@ -13,9 +13,9 @@ diff --unified --recursive bsnes_v107-source.orig/higan/GNUmakefile bsnes_v107-s
  flags += -I. -I..
  
 
-diff --unified --recursive bsnes_v107-source.orig/higan/target-bsnes/GNUmakefile bsnes_v107-source.new/higan/target-bsnes/GNUmakefile
---- bsnes_v107-source.orig/higan/target-bsnes/GNUmakefile	2019-03-10 01:51:07.601683406 -0700
-+++ bsnes_v107-source.new/higan/target-bsnes/GNUmakefile	2019-03-10 01:52:00.013706440 -0700
+diff --unified --recursive bsnes_v108-source.orig/bsnes/target-bsnes/GNUmakefile bsnes_v108-source.new/bsnes/target-bsnes/GNUmakefile
+--- bsnes_v108-source.orig/bsnes/target-bsnes/GNUmakefile	2019-03-10 01:51:07.601683406 -0700
++++ bsnes_v108-source.new/bsnes/target-bsnes/GNUmakefile	2019-03-10 01:52:00.013706440 -0700
 @@ -34,9 +34,7 @@
  verbose: hiro.verbose ruby.verbose nall.verbose all;
  
