@@ -19,10 +19,10 @@ depends=(
     'xorg-xrandr'
 )
 source=(
-    'https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_'${pkgver}'.deb'
+    'https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_'${pkgver}'.pacman'
 )
 md5sums=(
-    'f476d69ff25d828f716c0da5a2f204b2'
+    '4019cdb22ddd99a19db41b23d966e058'
 )
 
 package() {
