@@ -1,0 +1,14 @@
+pkgbase = atl-git
+	pkgdesc = Libatl provides a library for the creation and manipulation of lists of name/value pairs using an efficient binary representation
+	pkgver = r318.d2a319c
+	pkgrel = 1
+	url = https://github.com/GTkorvo/atl
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = gcc-libs
+	source = git+https://github.com/GTkorvo/atl.git
+	sha256sums = SKIP
+
+pkgname = atl-git
+
