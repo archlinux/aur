@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.9.beta2.r0.g95ea5f39d9
+pkgver=8.9.beta4.r0.g1537fe511b
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -20,7 +20,7 @@ depends=(ipython2 palp brial cliquer maxima-ecl gfan sympow nauty python2-rpy2 p
   iml libgiac libhomfly libbraiding symmetrica three.js)
 optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cython code'
   'jmol: 3D plots' 'sage-notebook: Flask notebook interface (deprecated)'
-  'sagemath-doc: Documentation and inline help' 'python2-igraph: igraph backend for graph theory'
+  'sagemath-doc: HTML documentation' 'python2-igraph: igraph backend for graph theory'
   'coin-or-cbc: COIN backend for numerical computations' 'coin-or-csdp: for computing Lovász theta-function of graphs'
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
   'ffmpeg: to export animations to video' 'imagemagick: to show animations'
@@ -35,7 +35,6 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
 makedepends=(cython2 boost ratpoints python2-jinja coin-or-cbc sirocco
   mcqd coxeter bliss tdlib python2-pkgconfig shared_meataxe libfes primecount git)
 source=(git://git.sagemath.org/sage.git#branch=develop
-        sagemath-env.patch
         package.patch
         latte-count.patch
         sagemath-python3-notebook.patch
@@ -44,9 +43,10 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-cremona.patch
         sagemath-singular-4.1.2.patch
         sagemath-ecl-sigfpe.patch
-        sagemath-linbox-1.6.patch)
+        sagemath-linbox-1.6.patch
+        meataxe-tables.patch
+        no-sage-env.patch)
 sha256sums=('SKIP'
-            '7177ff3e3f27939d45210e7e69da110441830a6e2279ee7d7e4fca26db99c3f4'
             '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
             '1a82372a96ffd5e6d475b0e620935967ce5eb9b4484607d39da90824a77b07c4'
             'e554cdf689100c787a5fbcb7fe281cd68bef081e08bd58df8be1d113a4665d7e'
@@ -55,7 +55,9 @@ sha256sums=('SKIP'
             '4c6df9e4e5a7b29ecf6189eda3e5a79f69b6e1b4d29c1b9559663149b8c0af96'
             '961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9'
             'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938'
-            '81fc39e39e8508f742ccc784efd0492fd04474cee75edf7bd3cbea43edd49b2e')
+            '96ab7783d8758a5237b26cf096be8fb03df4e88dc6d08bbd94dff7e18c91314e'
+            '8305de73d7a3c68ceaa001866ff933c4fa3a0706700ade2e25046f58270bc6db'
+            '657750f0d856d936143c352acb00db7c4852e413315e216fe68c9f35515253fb')
 
 pkgver() {
   cd sage
@@ -68,8 +70,6 @@ prepare(){
 # Arch-specific patches
 # assume all optional packages are installed
   patch -p0 -i ../package.patch
-# set env variables
-  patch -p0 -i ../sagemath-env.patch
 # don't list optional packages when running tests
   patch -p0 -i ../test-optional.patch
 # use correct latte-count binary name
@@ -88,6 +88,10 @@ prepare(){
   patch -p1 -i ../sagemath-ecl-sigfpe.patch
 # fix build with linbox 1.6 https://trac.sagemath.org/ticket/26932
   patch -p1 -i ../sagemath-linbox-1.6.patch
+# use meataxe package's multiplication tables instead of generating them at runtime https://trac.sagemath.org/ticket/28188
+  patch -p1 -i ../meataxe-tables.patch
+# make sage work without sage-env https://trac.sagemath.org/ticket/28225
+  patch -p1 -i ../no-sage-env.patch
 
 # use python2
   sed -e 's|sage-python23|python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
@@ -119,7 +123,7 @@ package_sagemath-git() {
 
   mkdir -p "$pkgdir"/usr/bin
   cp bin/{sage,math-readline} "$pkgdir"/usr/bin
-  for _i in cachegrind callgrind cleaner coverage coverageall cython env eval fixdoctests grep grepdoc inline-fortran ipynb2rst \
+  for _i in cachegrind callgrind cleaner coverage coverageall cython eval fixdoctests grep grepdoc inline-fortran ipynb2rst \
     ipython massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2sws rst2txt run \
     run-cython runtests startuptime.py sws2rst valgrind version.sh
   do

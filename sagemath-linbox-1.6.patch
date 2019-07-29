@@ -50,6 +50,27 @@ index f3a7ce3..8bf62f1 100644
                                 Modular_float.Element* A, size_t A_stride)
  
      int Rank (Modular_float,
+diff --git a/src/sage/libs/linbox/givaro.pxd b/src/sage/libs/linbox/givaro.pxd
+index 097fc22..34209f4 100644
+--- a/src/sage/libs/linbox/givaro.pxd
++++ b/src/sage/libs/linbox/givaro.pxd
+@@ -40,7 +40,7 @@ cdef extern from "givaro/zring.h":
+         Element one
+         Element mone
+ 
+-cdef extern from "givaro/modular.h":
++cdef extern from "givaro/modular-integral.h":
+     cdef cppclass Modular_uint64 "Givaro::Modular<uint64_t>":
+         ctypedef uint64_t Element
+         Modular_uint64(int modulus)
+@@ -58,6 +58,7 @@ cdef extern from "givaro/modular.h":
+ 
+         ostream& write(ostream&)
+ 
++cdef extern from "givaro/modular-floating.h":
+     cdef cppclass Modular_double "Givaro::Modular<double>":
+         ctypedef double Element
+         Modular_double(int modulus)
 diff --git a/src/sage/libs/linbox/linbox.pxd b/src/sage/libs/linbox/linbox.pxd
 index 35a3fa0..fb0e0dc 100644
 --- a/src/sage/libs/linbox/linbox.pxd
@@ -147,10 +168,74 @@ index 35a3fa0..fb0e0dc 100644
  
      DenseVector_integer& solve (DenseVector_integer &,
                                  Integer &,
+diff --git a/src/sage/libs/linbox/linbox_flint_interface.pxd b/src/sage/libs/linbox/linbox_flint_interface.pxd
+index 388c146..6491cf5 100644
+--- a/src/sage/libs/linbox/linbox_flint_interface.pxd
++++ b/src/sage/libs/linbox/linbox_flint_interface.pxd
+@@ -13,7 +13,7 @@ cdef void linbox_fmpz_mat_charpoly(fmpz_poly_t cp, fmpz_mat_t A)
+ cdef void linbox_fmpz_mat_minpoly(fmpz_poly_t mp, fmpz_mat_t A)
+ 
+ # return the rank of A
+-cdef unsigned long linbox_fmpz_mat_rank(fmpz_mat_t A)
++cdef size_t linbox_fmpz_mat_rank(fmpz_mat_t A)
+ 
+ # set det to the determinant of A
+ cdef void linbox_fmpz_mat_det(fmpz_t det, fmpz_mat_t A)
+diff --git a/src/sage/libs/linbox/linbox_flint_interface.pyx b/src/sage/libs/linbox/linbox_flint_interface.pyx
+index d5718a7..4c209fb 100644
+--- a/src/sage/libs/linbox/linbox_flint_interface.pyx
++++ b/src/sage/libs/linbox/linbox_flint_interface.pyx
+@@ -15,7 +15,7 @@ and C. Pernet. The functions available are:
+ - ``void  linbox_fmpz_mat_minpoly(fmpz_poly_t mp, fmpz_mat_t A)``: set ``mp``
+   to be the minimal polynomial of the square matrix ``A``
+ 
+-- ``unsigned long linbox_fmpz_mat_rank(fmpz_mat_t A)``: return the rank of the
++- ``size_t linbox_fmpz_mat_rank(fmpz_mat_t A)``: return the rank of the
+   matrix ``A``
+ 
+ - ``void linbox_fmpz_mat_det(fmpz_t det, fmpz_mat_t A)``: set ``det`` to the
+@@ -155,13 +155,13 @@ cdef void linbox_fmpz_mat_minpoly(fmpz_poly_t mp, fmpz_mat_t A):
+     del m_A
+ 
+ 
+-cdef unsigned long linbox_fmpz_mat_rank(fmpz_mat_t A):
++cdef size_t linbox_fmpz_mat_rank(fmpz_mat_t A):
+     r"""
+     Return the rank of A
+     """
+     cdef givaro.ZRing ZZ
+     cdef linbox.DenseMatrix_integer * LBA
+-    cdef unsigned long r = 0
++    cdef size_t r = 0
+ 
+     LBA = new linbox.DenseMatrix_integer(ZZ, fmpz_mat_nrows(A), fmpz_mat_ncols(A))
+     fmpz_mat_get_linbox(LBA[0], A)
+diff --git a/src/sage/matrix/matrix_integer_dense.pyx b/src/sage/matrix/matrix_integer_dense.pyx
+index cd36b27..072122b 100644
+--- a/src/sage/matrix/matrix_integer_dense.pyx
++++ b/src/sage/matrix/matrix_integer_dense.pyx
+@@ -3611,7 +3611,7 @@ cdef class Matrix_integer_dense(Matrix_dense):
+             3
+         """
+         sig_on()
+-        cdef unsigned long r = linbox_fmpz_mat_rank(self._matrix)
++        cdef size_t r = linbox_fmpz_mat_rank(self._matrix)
+         sig_off()
+         return Integer(r)
+ 
 diff --git a/src/sage/matrix/matrix_integer_sparse.pyx b/src/sage/matrix/matrix_integer_sparse.pyx
-index 7fa386e..132140f 100644
+index 7fa386e..6db9b2d 100644
 --- a/src/sage/matrix/matrix_integer_sparse.pyx
 +++ b/src/sage/matrix/matrix_integer_sparse.pyx
+@@ -31,7 +31,7 @@ from cysignals.memory cimport check_calloc, sig_free
+ 
+ from collections import Iterator, Sequence
+ 
+-from cpython.int cimport PyInt_FromLong
++from cpython.int cimport PyInt_FromSize_t
+ 
+ from sage.ext.stdsage cimport PY_NEW
+ from sage.ext.mod_int cimport *
 @@ -42,7 +42,7 @@ from sage.libs.linbox.conversion cimport (
      new_linbox_vector_integer_dense,
      new_sage_vector_integer_dense,
@@ -160,6 +245,22 @@ index 7fa386e..132140f 100644
      METHOD_SPARSE_ELIMINATION, METHOD_BLACKBOX,
      METHOD_WIEDEMANN, get_method)
  
+@@ -647,13 +647,13 @@ cdef class Matrix_integer_sparse(Matrix_sparse):
+ 
+         cdef givaro.ZRing givZZ
+         cdef linbox.SparseMatrix_integer * M = new_linbox_matrix_integer_sparse(givZZ, self)
+-        cdef unsigned long r = 0
++        cdef size_t r = 0
+ 
+         linbox.rank(r, M[0])
+ 
+         del M
+ 
+-        return PyInt_FromLong(r)
++        return PyInt_FromSize_t(r)
+ 
+     def _det_linbox(self):
+         r"""
 @@ -926,7 +926,7 @@ cdef class Matrix_integer_sparse(Matrix_sparse):
              - ``'linbox'`` or ``'linbox_default'`` - (default) use LinBox
                and let it chooses the appropriate algorithm
@@ -356,10 +457,33 @@ index 6a5e164..230a16e 100644
              self.cache('det', d2)
              return d2
 diff --git a/src/sage/matrix/matrix_modn_sparse.pyx b/src/sage/matrix/matrix_modn_sparse.pyx
-index 241167a..dd3a2f0 100644
+index 241167a..9b4184f 100644
 --- a/src/sage/matrix/matrix_modn_sparse.pyx
 +++ b/src/sage/matrix/matrix_modn_sparse.pyx
-@@ -882,7 +882,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
+@@ -677,10 +677,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
+             # TODO: bug in linbox (gives segfault)
+             return 0, self.base_ring().one()
+ 
+-        # NOTE: the rank would more naturally be size_t but it is unsigned long
+-        # in LinBox
+-        # see https://github.com/linbox-team/linbox/issues/144
+-        cdef unsigned long A_rank = 0
++        cdef size_t A_rank = 0
+         cdef uint64_t A_det = 0
+ 
+         if not is_prime(self.p):
+@@ -696,9 +693,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
+         if A.rowdim() >= <size_t> UINT_MAX or A.coldim() >= <size_t> UINT_MAX:
+             raise ValueError("row/column size unsupported in LinBox")
+ 
+-        dom.InPlaceLinearPivoting(A_rank, A_det, A[0],
+-                <unsigned long> A.rowdim(),
+-                <unsigned long> A.coldim())
++        dom.InPlaceLinearPivoting(A_rank, A_det, A[0], A.rowdim(), A.coldim())
+ 
+         del A
+         del F
+@@ -882,7 +877,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
              - ``'linbox'`` or ``'linbox_default'`` - (default) use LinBox
                and let it chooses the appropriate algorithm
  
@@ -368,7 +492,7 @@ index 241167a..dd3a2f0 100644
  
              - ``'linbox_sparse_elimination'`` - use LinBox sparse elimination
  
-@@ -949,7 +949,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
+@@ -949,7 +944,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
  
          - ``b`` -- a dense integer vector
  
@@ -377,7 +501,7 @@ index 241167a..dd3a2f0 100644
            ``'sparse_elimination'``, ``'wiedemann'`` or ``'blackbox'``.
  
          OUTPUT: a pair ``(a, d)`` consisting of
-@@ -968,7 +968,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
+@@ -968,7 +963,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
              sage: b0 = vector((1,1,1,1))
              sage: m._solve_vector_linbox(b0)
              ((-1, -7, -3, -1), 1)
@@ -386,7 +510,7 @@ index 241167a..dd3a2f0 100644
              ((-1, -7, -3, -1), 1)
              sage: m._solve_vector_linbox(b0, 'sparse_elimination')
              ((-1, -7, -3, -1), 1)
-@@ -984,7 +984,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
+@@ -984,7 +979,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
  
          TESTS::
  
@@ -395,7 +519,7 @@ index 241167a..dd3a2f0 100644
              ....:          "blackbox", "wiedemann"]
              sage: for i in range(20):
              ....:     dim = randint(1, 30)
-@@ -1025,8 +1025,8 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
+@@ -1025,8 +1020,8 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
              linbox.solve(res[0], D, A[0], b[0])
          elif method == METHOD_WIEDEMANN:
              linbox.solve(res[0], D, A[0], b[0], linbox.Method.Wiedemann())
@@ -406,7 +530,7 @@ index 241167a..dd3a2f0 100644
          elif method == METHOD_SPARSE_ELIMINATION:
              linbox.solve(res[0], D, A[0], b[0], linbox.Method.SparseElimination())
          elif method == METHOD_BLACKBOX:
-@@ -1081,7 +1081,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
+@@ -1081,7 +1076,7 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
  
          TESTS::
  
@@ -415,7 +539,7 @@ index 241167a..dd3a2f0 100644
              ....:          "blackbox", "wiedemann"]
  
              sage: for _ in range(10):
-@@ -1136,8 +1136,8 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
+@@ -1136,8 +1131,8 @@ cdef class Matrix_modn_sparse(matrix_sparse.Matrix_sparse):
              # solve the current row
              if algo == METHOD_DEFAULT:
                  linbox.solve(res[0], D, A[0], b[0])
@@ -491,7 +615,7 @@ index f0fd7e35..8ae25c5 100644
      GivaroGfq *gfq_factorypk "new Givaro::GFqDom<int>" (unsigned int p, unsigned int k)
      GivaroGfq *gfq_factorypkp "new Givaro::GFqDom<int>" (unsigned int p, unsigned int k, intvec poly)
 diff --git a/src/sage/rings/finite_rings/element_givaro.pyx b/src/sage/rings/finite_rings/element_givaro.pyx
-index 3739020..a7f9c2f 100644
+index 0d63a63..1bd35cf 100644
 --- a/src/sage/rings/finite_rings/element_givaro.pyx
 +++ b/src/sage/rings/finite_rings/element_givaro.pyx
 @@ -310,7 +310,7 @@ cdef class Cache_givaro(SageObject):

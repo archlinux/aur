@@ -1,0 +1,34 @@
+diff --git a/src/sage/env.py b/src/sage/env.py
+index 27dd40c..453ccd7 100644
+--- a/src/sage/env.py
++++ b/src/sage/env.py
+@@ -182,6 +182,7 @@ var('CREMONA_LARGE_DATA_DIR',        join(SAGE_SHARE, 'cremona'))
+ var('JMOL_DIR',                      join(SAGE_SHARE, 'jmol'))
+ var('JSMOL_DIR',                     join(SAGE_SHARE, 'jsmol'))
+ var('MATHJAX_DIR',                   join(SAGE_SHARE, 'mathjax'))
++var('MTXLIB',                        join(SAGE_SHARE, 'meataxe'))
+ var('THREEJS_DIR',                   join(SAGE_SHARE, 'threejs'))
+ var('PPLPY_DOCS',                    join(SAGE_SHARE, 'doc', 'pplpy'))
+ var('MAXIMA_FAS')
+diff --git a/src/sage/libs/meataxe.pyx b/src/sage/libs/meataxe.pyx
+index 1120600..7549e55 100644
+--- a/src/sage/libs/meataxe.pyx
++++ b/src/sage/libs/meataxe.pyx
+@@ -68,7 +68,6 @@ cdef Matrix_t *rawMatrix(int Field, list entries) except NULL:
+ 
+ from sage.cpython.string cimport str_to_bytes, char_to_str
+ import os
+-from sage.env import DOT_SAGE
+ 
+ cdef void sage_meataxe_error_handler(const MtxErrorRecord_t *err):
+     sig_block()
+@@ -82,7 +81,8 @@ cdef inline meataxe_init():
+     ## Assign to a variable that enables MeatAxe to find
+     ## its multiplication tables.
+     global MtxLibDir
+-    mtxdir = str_to_bytes(os.path.join(DOT_SAGE, 'meataxe'))
++    from sage import env
++    mtxdir = str_to_bytes(env.MTXLIB)
+     if len(mtxdir) >= 1024:
+         raise RuntimeError(f"the path for the meataxe library {mtxdir!r} is too long, it needs to be of length < 1024")
+     MtxLibDir[:len(mtxdir)] = mtxdir

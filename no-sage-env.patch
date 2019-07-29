@@ -1,0 +1,302 @@
+diff --git a/src/bin/sage b/src/bin/sage
+index abb11d3..20b1303 100755
+--- a/src/bin/sage
++++ b/src/bin/sage
+@@ -4,8 +4,8 @@
+ # usage: sage_version [-v]
+ #   -v    display the full version banner including release date
+ sage_version() {
+-    if [ -f "$SAGE_LOCAL/bin/sage-version.sh" ]; then
+-        . "$SAGE_LOCAL/bin/sage-version.sh"
++    if [ -f "$0-version.sh" ]; then
++        . "$0-version.sh"
+     else
+         . "$SAGE_ROOT/src/bin/sage-version.sh"
+     fi
+@@ -430,18 +430,23 @@ fi
+ # append -env to that). We redirect stdout to stderr, which is safer
+ # for scripts.
+ #####################################################################
+-. "$0-env" >&2
+-if [ $? -ne 0 ]; then
+-    echo >&2 "Error setting environment variables by sourcing '$0-env';"
+-    echo >&2 "possibly contact sage-devel (see http://groups.google.com/group/sage-devel)."
+-    exit 1
++if [ -f "$0-env" ]; then
++    . "$0-env" >&2
++    if [ $? -ne 0 ]; then
++        echo >&2 "Error setting environment variables by sourcing '$0-env';"
++        echo >&2 "possibly contact sage-devel (see http://groups.google.com/group/sage-devel)."
++        exit 1
++    fi
+ fi
+ 
++if [ -z "$DOT_SAGE" ]; then
++    export DOT_SAGE="$HOME/.sage"
++fi
+ 
+ # Prepare for running Sage, either interactively or non-interactively.
+ sage_setup() {
+     # Check that we're not in a source tarball which hasn't been built yet (#13561).
+-    if [ ! -x "$SAGE_LOCAL/bin/sage" ]; then
++    if [ ! -z "$SAGE_LOCAL" ] && [ ! -x "$SAGE_LOCAL/bin/sage" ]; then
+         echo >&2 '************************************************************************'
+         echo >&2 'It seems that you are attempting to run Sage from an unpacked source'
+         echo >&2 'tarball, but you have not compiled it yet (or maybe the build has not'
+@@ -1038,13 +1043,13 @@ if [ "$1" = '-gdb' -o "$1" = "--gdb" ]; then
+     shift
+     sage_setup
+     if [ "$SAGE_DEBUG" = "no" ]; then
+-        gdb -x "$SAGE_LOCAL/bin/sage-gdb-commands" \
+-            -args python "$SAGE_LOCAL/bin/sage-ipython" "$@" -i
++        gdb -x "$0-gdb-commands" \
++            -args python "$0-ipython" "$@" -i
+     else
+         sage_dir=$(sage-python23 -c 'import os, sage; print(os.path.dirname(sage.__file__))')
+         cygdb "$sage_dir" "$SAGE_SRC/sage" \
+-            -- -x "$SAGE_LOCAL/bin/sage-gdb-commands" \
+-            -args python "$SAGE_LOCAL/bin/sage-ipython" "$@" -i
++            -- -x "$0-gdb-commands" \
++            -args python "$0-ipython" "$@" -i
+     fi
+     exit $?
+ fi
+diff --git a/src/bin/sage-cachegrind b/src/bin/sage-cachegrind
+index f77c2a2..41b4948 100755
+--- a/src/bin/sage-cachegrind
++++ b/src/bin/sage-cachegrind
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env bash
+ 
+ # We reuse the gdb pythonstartup script.
+-PYTHONSTARTUP=$SAGE_LOCAL/bin/sage-ipython
++PYTHONSTARTUP=`dirname $0`/sage-ipython
+ export PYTHONSTARTUP
+ echo $PYTHONSTARTUP
+ if [ ! -d "$DOT_SAGE/valgrind" ]; then
+diff --git a/src/bin/sage-callgrind b/src/bin/sage-callgrind
+index 5e21d8b..d78acd6 100755
+--- a/src/bin/sage-callgrind
++++ b/src/bin/sage-callgrind
+@@ -13,4 +13,4 @@ if [ "$SAGE_CALLGRIND_FLAGS" ]; then
+     echo "Using default flags: $CALLGRIND_FLAGS"
+ fi
+ 
+-valgrind --tool=callgrind $CALLGRIND_FLAGS python "$SAGE_LOCAL/bin/sage-ipython" "$@" -i
++valgrind --tool=callgrind $CALLGRIND_FLAGS sage-ipython "$@" -i
+diff --git a/src/bin/sage-cython b/src/bin/sage-cython
+index 526c68b..d1477d4 100755
+--- a/src/bin/sage-cython
++++ b/src/bin/sage-cython
+@@ -9,9 +9,7 @@ import os
+ import sys
+ args = sys.argv[1:]
+ 
+-if "SAGE_SRC" not in os.environ:
+-    raise RuntimeError("The environment variable SAGE_SRC must be set.")
+-SAGE_SRC = os.environ["SAGE_SRC"]
++from sage.env import SAGE_SRC
+ 
+ # args can have length 0, in case we're printing a usage message (see trac 12207)
+ pyx_file = os.path.abspath(args[-1]) if len(args) else None
+diff --git a/src/bin/sage-ipynb2rst b/src/bin/sage-ipynb2rst
+index d7c61a9..0fb6ee5 100755
+--- a/src/bin/sage-ipynb2rst
++++ b/src/bin/sage-ipynb2rst
+@@ -1,5 +1,9 @@
+ #!/usr/bin/env bash
+ 
++if [ -z $SAGE_EXTCODE ]; then
++    SAGE_EXTCODE=`${0/-ipynb2rst} -c "from sage.env import SAGE_EXTCODE; print(SAGE_EXTCODE)"`
++fi
++
+ fail () {
+     echo "ERROR: ${1}" 1>&2
+     exit 1
+diff --git a/src/bin/sage-massif b/src/bin/sage-massif
+index 20082bf..ead82de 100755
+--- a/src/bin/sage-massif
++++ b/src/bin/sage-massif
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env bash
+ 
+ # We reuse the gdb pythonstartup script.
+-PYTHONSTARTUP=$SAGE_LOCAL/bin/sage-ipython
++PYTHONSTARTUP=`dirname $0`/sage-ipython
+ export PYTHONSTARTUP
+ echo $PYTHONSTARTUP
+ if [ ! -d "$DOT_SAGE/valgrind" ]; then
+diff --git a/src/bin/sage-omega b/src/bin/sage-omega
+index 2b8449f..a4c1fff 100755
+--- a/src/bin/sage-omega
++++ b/src/bin/sage-omega
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env bash
+ 
+ # We reuse the gdb pythonstartup script.
+-PYTHONSTARTUP=$SAGE_LOCAL/bin/sage-ipython
++PYTHONSTARTUP=`dirname $0`/sage-ipython
+ export PYTHONSTARTUP
+ echo $PYTHONSTARTUP
+ if [ ! -d "$DOT_SAGE/valgrind" ]; then
+diff --git a/src/bin/sage-runtests b/src/bin/sage-runtests
+index 1207fa2..a7d4b55 100755
+--- a/src/bin/sage-runtests
++++ b/src/bin/sage-runtests
+@@ -5,7 +5,7 @@ import os
+ import sys
+ 
+ # Note: the DOT_SAGE and SAGE_STARTUP_FILE environment variables have already been set by sage-env
+-DOT_SAGE = os.environ['DOT_SAGE']
++DOT_SAGE = os.environ.get('DOT_SAGE', os.path.join(os.environ.get('HOME'),'.sage'))
+ SAGE_ROOT = os.environ.get('SAGE_ROOT')
+ 
+ # Override to not pick up user configuration, see Trac #20270
+diff --git a/src/bin/sage-valgrind b/src/bin/sage-valgrind
+index bba296d..61f27a8 100755
+--- a/src/bin/sage-valgrind
++++ b/src/bin/sage-valgrind
+@@ -1,5 +1,9 @@
+ #!/usr/bin/env bash
+ 
++if [ -z $SAGE_EXTCODE ]; then
++    SAGE_EXTCODE=`${0/-valgrind} -c "from sage.env import SAGE_EXTCODE; print(SAGE_EXTCODE)"`
++fi
++
+ SUPP=""
+ if [ -f "$SAGE_EXTCODE/valgrind/python.supp" ]; then
+     SUPP+=" --suppressions=$SAGE_EXTCODE/valgrind/python.supp"
+@@ -19,4 +23,4 @@ else
+     echo "Using default flags: $MEMCHECK_FLAGS"
+ fi
+ 
+-valgrind --tool=memcheck $MEMCHECK_FLAGS python "$SAGE_LOCAL/bin/sage-ipython" "$@" -i
++valgrind --tool=memcheck $MEMCHECK_FLAGS sage-ipython "$@" -i
+diff --git a/src/sage/docs/conf.py b/src/sage/docs/conf.py
+index 8d0083b..0560d96 100644
+--- a/src/sage/docs/conf.py
++++ b/src/sage/docs/conf.py
+@@ -218,7 +218,7 @@ html_theme = 'sage'
+ html_theme_options = {}
+ 
+ # Add any paths that contain custom themes here, relative to this directory.
+-html_theme_path = [os.path.join(SAGE_DOC_SRC, 'common', 'themes')]
++html_theme_path = [os.path.join(SAGE_DOC_SRC, 'common', 'themes'), os.path.join(SAGE_DOC, 'common', 'themes')]
+ 
+ # HTML style sheet NOTE: This overrides a HTML theme's corresponding
+ # setting.
+diff --git a/src/sage/doctest/control.py b/src/sage/doctest/control.py
+index 8438b96..b5dadaf 100644
+--- a/src/sage/doctest/control.py
++++ b/src/sage/doctest/control.py
+@@ -26,7 +26,7 @@ import random, os, sys, time, json, re, types
+ import six
+ import sage.misc.flatten
+ from sage.structure.sage_object import SageObject
+-from sage.env import DOT_SAGE, SAGE_LIB, SAGE_SRC
++from sage.env import DOT_SAGE, SAGE_LIB, SAGE_SRC, SAGE_LOCAL, SAGE_EXTCODE
+ from sage.misc.temporary_file import tmp_dir
+ from cysignals.signals import AlarmInterrupt, init_cysignals
+ 
+@@ -48,7 +48,7 @@ class DocTestDefaults(SageObject):
+     This class is used for doctesting the Sage doctest module.
+ 
+     It fills in attributes to be the same as the defaults defined in
+-    ``SAGE_LOCAL/bin/sage-runtests``, expect for a few places,
++    ``sage-runtests``, expect for a few places,
+     which is mostly to make doctesting more predictable.
+ 
+     EXAMPLES::
+@@ -291,7 +291,7 @@ class DocTestController(SageObject):
+ 
+         INPUT:
+ 
+-        - options -- either options generated from the command line by SAGE_LOCAL/bin/sage-runtests
++        - options -- either options generated from the command line by sage-runtests
+                      or a DocTestDefaults object (possibly with some entries modified)
+         - args -- a list of filenames to doctest
+ 
+@@ -1023,9 +1023,9 @@ class DocTestController(SageObject):
+             sage: from sage.doctest.control import DocTestDefaults, DocTestController
+             sage: DC = DocTestController(DocTestDefaults(timeout=123), ["hello_world.py"])
+             sage: print(DC._assemble_cmd())
+-            python "$SAGE_LOCAL/bin/sage-runtests" --serial --timeout=123 hello_world.py
++            python "...sage-runtests" --serial --timeout=123 hello_world.py
+         """
+-        cmd = '''python "%s" --serial '''%(os.path.join("$SAGE_LOCAL","bin","sage-runtests"))
++        cmd = '''python "%s" --serial '''%(os.path.join(SAGE_LOCAL,"bin","sage-runtests"))
+         opt = dict_difference(self.options.__dict__, DocTestDefaults().__dict__)
+         for o in ("all", "sagenb"):
+             if o in opt:
+@@ -1059,14 +1059,14 @@ class DocTestController(SageObject):
+             sage: DD = DocTestDefaults(gdb=True)
+             sage: DC = DocTestController(DD, ["hello_world.py"])
+             sage: DC.run_val_gdb(testing=True)
+-            exec gdb -x "$SAGE_LOCAL/bin/sage-gdb-commands" --args python "$SAGE_LOCAL/bin/sage-runtests" --serial --timeout=0 hello_world.py
++            exec gdb -x "...sage-gdb-commands" --args python "...sage-runtests" --serial --timeout=0 hello_world.py
+ 
+         ::
+ 
+             sage: DD = DocTestDefaults(valgrind=True, optional="all", timeout=172800)
+             sage: DC = DocTestController(DD, ["hello_world.py"])
+             sage: DC.run_val_gdb(testing=True)
+-            exec valgrind --tool=memcheck --leak-resolution=high --leak-check=full --num-callers=25 --suppressions="$SAGE_EXTCODE/valgrind/pyalloc.supp" --suppressions="$SAGE_EXTCODE/valgrind/sage.supp" --suppressions="$SAGE_EXTCODE/valgrind/sage-additional.supp"  --log-file=".../valgrind/sage-memcheck.%p" python "$SAGE_LOCAL/bin/sage-runtests" --serial --timeout=172800 --optional=all hello_world.py
++            exec valgrind --tool=memcheck --leak-resolution=high --leak-check=full --num-callers=25 --suppressions="...valgrind/pyalloc.supp" --suppressions="...valgrind/sage.supp" --suppressions="...valgrind/sage-additional.supp"  --log-file=".../valgrind/sage-memcheck.%p" python "...sage-runtests" --serial --timeout=172800 --optional=all hello_world.py
+         """
+         try:
+             sage_cmd = self._assemble_cmd()
+@@ -1075,7 +1075,7 @@ class DocTestController(SageObject):
+             return 2
+         opt = self.options
+         if opt.gdb:
+-            cmd = '''exec gdb -x "$SAGE_LOCAL/bin/sage-gdb-commands" --args '''
++            cmd = '''exec gdb -x "%s" --args '''%(os.path.join(SAGE_LOCAL,"bin","sage-gdb-commands"))
+             flags = ""
+             if opt.logfile:
+                 sage_cmd += " --logfile %s"%(opt.logfile)
+@@ -1096,9 +1096,9 @@ class DocTestController(SageObject):
+                 flags = os.getenv("SAGE_MEMCHECK_FLAGS")
+                 if flags is None:
+                     flags = "--leak-resolution=high --leak-check=full --num-callers=25 "
+-                    flags += '''--suppressions="%s" '''%(os.path.join("$SAGE_EXTCODE","valgrind","pyalloc.supp"))
+-                    flags += '''--suppressions="%s" '''%(os.path.join("$SAGE_EXTCODE","valgrind","sage.supp"))
+-                    flags += '''--suppressions="%s" '''%(os.path.join("$SAGE_EXTCODE","valgrind","sage-additional.supp"))
++                    flags += '''--suppressions="%s" '''%(os.path.join(SAGE_EXTCODE,"valgrind","pyalloc.supp"))
++                    flags += '''--suppressions="%s" '''%(os.path.join(SAGE_EXTCODE,"valgrind","sage.supp"))
++                    flags += '''--suppressions="%s" '''%(os.path.join(SAGE_EXTCODE,"valgrind","sage-additional.supp"))
+             elif opt.massif:
+                 toolname = "massif"
+                 flags = os.getenv("SAGE_MASSIF_FLAGS", "--depth=6 ")
+diff --git a/src/sage/env.py b/src/sage/env.py
+index 27dd40c..2e1111c 100644
+--- a/src/sage/env.py
++++ b/src/sage/env.py
+@@ -183,6 +183,7 @@ var('JMOL_DIR',                      join(SAGE_SHARE, 'jmol'))
+ var('JSMOL_DIR',                     join(SAGE_SHARE, 'jsmol'))
+ var('MATHJAX_DIR',                   join(SAGE_SHARE, 'mathjax'))
+ var('THREEJS_DIR',                   join(SAGE_SHARE, 'threejs'))
++var('SINGULARPATH',                  join(SAGE_SHARE, 'singular'))
+ var('PPLPY_DOCS',                    join(SAGE_SHARE, 'doc', 'pplpy'))
+ var('MAXIMA_FAS')
+ 
+diff --git a/src/sage/interfaces/singular.py b/src/sage/interfaces/singular.py
+index 513994c..2f08a9d 100644
+--- a/src/sage/interfaces/singular.py
++++ b/src/sage/interfaces/singular.py
+@@ -337,6 +337,7 @@ from sage.structure.element import RingElement
+ 
+ import sage.rings.integer
+ 
++from sage.env import SINGULARPATH
+ from sage.misc.misc import get_verbose
+ from sage.docs.instancedoc import instancedoc
+ 
+@@ -2261,7 +2262,7 @@ def generate_docstring_dictionary():
+     nodes.clear()
+     node_names.clear()
+ 
+-    singular_docdir = os.environ['SINGULARPATH']+"/../info/"
++    singular_docdir = SINGULARPATH + "/../info/"
+ 
+     new_node = re.compile(r"File: singular\.hlp,  Node: ([^,]*),.*")
+     new_lookup = re.compile(r"\* ([^:]*):*([^.]*)\..*")
