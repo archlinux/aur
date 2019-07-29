@@ -48,9 +48,9 @@ source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.
 "jvisualvm-$_jname.desktop"
 "policytool-$_jname.desktop")
 
-source_armv6h=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_token/$_pkgname-$pkgver-linux-arm32-vfp-hflt.tar.gz")
+source_armv6h=("http://download.oracle.com/otn/java/jdk/$pkgver-$_build/$_token/$_pkgname-$pkgver-linux-arm32-vfp-hflt.tar.gz")
 source_armv7h=("$source_armv6h")
-source_aarch64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_token/$_pkgname-$pkgver-linux-arm64-vfp-hflt.tar.gz")
+source_aarch64=("http://download.oracle.com/otn/java/jdk/$pkgver-$_build/$_token/$_pkgname-$pkgver-linux-arm64-vfp-hflt.tar.gz")
 
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          'b4f0da18e03f7a9623cb073b65dde6c1'
