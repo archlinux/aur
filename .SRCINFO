@@ -1,0 +1,17 @@
+pkgbase = ffs-git
+	pkgdesc = FFS is a middleware library for data communication
+	pkgver = r1180.7774ca6
+	pkgrel = 1
+	url = https://github.com/GTkorvo/ffs
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = atl
+	depends = dill
+	provides = ffs
+	conflicts = ffs
+	source = git+https://github.com/GTkorvo/ffs.git
+	sha256sums = SKIP
+
+pkgname = ffs-git
+
