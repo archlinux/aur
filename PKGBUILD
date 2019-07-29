@@ -3,7 +3,6 @@
 
 pkgname=criterion
 pkgver=2.3.3
-_fullver=2.3.3
 pkgrel=1
 pkgdesc="A KISS, non-intrusive unit testing framework for C and C++"
 arch=('i686' 'x86_64')
@@ -12,23 +11,18 @@ license=('MIT')
 depends=('gettext' 'nanomsg' 'libcsptr')
 makedepends=('cmake')
 checkdepends=('python-cram')
-source=("$pkgname"::"git://github.com/Snaipe/${pkgname}.git#tag=v${_fullver}")
-md5sums=('SKIP')
+source=("https://github.com/Snaipe/Criterion/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
+sha256sums=('8c85e1fcdb9a39b82bee50394bedfe74a0c839ffff129ddfc6fb73b11adafa29')
 
 build() {
-  cd ${srcdir}/${pkgname}
-  mkdir -p "build"
-  cd "build"
-  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        ..
-  make
+  cd "${pkgname}-v${pkgver}"
+  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr -DCTESTS=ON -S . -B build
+  cmake --build build
 }
 
 package() {
-  cd ${srcdir}/${pkgname}/build
-  make DESTDIR=$pkgdir LIBDIR=$pkgdir/usr/lib install
+  cd "${pkgname}-v${pkgver}"
+  cmake --build build --target install -- DESTDIR="$pkgdir/"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
