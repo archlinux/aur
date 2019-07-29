@@ -1,13 +1,13 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=lib32-amdvlk
-pkgver=2019.Q3.2
+pkgver=2019.Q3.3
 pkgrel=1
 
-_llpc_commit=252b93409b7cc92dacf48a421b9aac2a77629381
-_xgl_commit=2315f2a4de4df53eaa54b56e96332687ed12269f
-_pal_commit=ffb21e86238819817075e252ad9b49ea5284968d
-_llvm_commit=d9e4934189845f30428cad6da16e8745540291db
+_llpc_commit=f60ebe48d60ef00e69b399a24e04d600cdcc1f0c
+_xgl_commit=6b0fbc836e01be4b8fb1990b4e31846ec19305bc
+_pal_commit=46251728a7137f399b564b0886bd9bf9888c48ef
+_llvm_commit=951ae36dc33d628235446a7abe87a1aebf6717e8
 
 pkgdesc='Open-source Vulkan driver for AMD Radeon™ graphics adapters (32 Bit)'
 arch=(x86_64)
@@ -24,11 +24,11 @@ source=(AMDVLK-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/AMDVL
         pal-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/pal/archive/${_pal_commit}.tar.gz
         llvm-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/llvm/archive/${_llvm_commit}.tar.gz)
   
-sha256sums=('209f71acee66b1eaa4dc7f39cf2a0f3e349dfdedf5f4e1c2d29b217057323198'
-            'eb0a94288e4bda889d75e287247e63b97a91d9761fb818c9106d4afa490760c3'
-            '1b01201e15eb62ad3df8b925de5763484570a85a4cdf686efe066e26d0ca70c2'
-            'd0b96d0b37ac24ada16fa030fe80070f39528f69df1c64c3474c3f58b98475ee'
-            'a816af55d118d1ab3f96729c2401568e689190d10388aa4f067917061bbfd271')
+sha256sums=('d2aa97caeffef43c934b73d24af3c30be640d6ffee20e27db6a58bb21c683939'
+            '4d6b623092215bfb8f9f01601db3de2b93cc0bf305173bafeb58c65f32967043'
+            'fee95d0a55cbd9c34aa54c3309ad896d56c287f35bc7cd6bb25bd86f7e0985d6'
+            '6832551a933fd04d8b1d031cf49b86497c17c878675fc641df23c9c9e128d52b'
+            '50b25878e19cd8a7d15aad891463fbdac60cbb04b2a4027bc31ff9ca3da4a5f6')
             
 prepare() {
   ln -sf ${srcdir}/AMDVLK-v-${pkgver} ${srcdir}/AMDVLK
@@ -54,7 +54,7 @@ build() {
     -DBUILD_WAYLAND_SUPPORT=On \
     -G Ninja
     
-  ninja -C builds/Release
+  ninja -j 2 -l 2 -C builds/Release
 }
 
 package() {
