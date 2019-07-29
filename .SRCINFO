@@ -16,6 +16,10 @@ pkgbase = python-muselsl
 	sha384sums = 3f764491be01299027534692f25ad89c536098032bc82a9d24f2b63a45daa180383a863b73680e9440254fc2943ea4ac
 
 pkgname = python-muselsl
+	depends = python-pylsl=1.10.5
+	depends = python-pygatt
+	depends = python-scikit-learn
+	depends = python-seaborn
 	depends = python
 	depends = python-bitstring
 	depends = python-pandas
@@ -23,6 +27,10 @@ pkgname = python-muselsl
 	depends = python-pexpect
 
 pkgname = python2-muselsl
+	depends = python-pylsl=1.10.5
+	depends = python-pygatt
+	depends = python-scikit-learn
+	depends = python-seaborn
 	depends = python2
 	depends = python2-bitstring
 	depends = python2-pandas

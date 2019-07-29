@@ -31,7 +31,7 @@ check(){
 }
 
 package_python-muselsl() {
-  depends=('python'
+  depends+=('python'
            'python-bitstring'
            'python-pandas'
            'python-numpy'
@@ -43,7 +43,7 @@ package_python-muselsl() {
 }
 
 package_python2-muselsl() {
-  depends=('python2'
+  depends+=('python2'
            'python2-bitstring'
            'python2-pandas'
            'python2-numpy'
