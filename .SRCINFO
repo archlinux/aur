@@ -1,0 +1,18 @@
+pkgbase = python-pylsl
+	pkgdesc = Python interface to the Lab Streaming Layer
+	pkgver = 1.10.3
+	pkgrel = 1
+	url = https://github.com/labstreaminglayer/liblsl-Python
+	arch = any
+	license = MIT
+	depends = liblsl
+	conflicts = python-pylsl
+	source = https://files.pythonhosted.org/packages/62/42/fe6fba758bfa9301a56e87ec16933a8b6e2860c1aab0719f0aa431a35310/pylsl-1.10.3.zip
+	source = nolibs.patch
+	sha384sums = b31bb2560812dc066a63508f751d716679246c03fcda4b3f5e060248091980bd94df17e05e822acf2aab3009923ff24f
+	sha384sums = c6030d5f0d97e9a04604cd1e9ba6b163fa1e9a77d821177cb2b17b80e2eb78cf0cbbcc1d718f528e9dbe9f4016d51c53
+
+pkgname = python-pylsl
+
+pkgname = python2-pylsl
+

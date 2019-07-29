@@ -1,0 +1,63 @@
+diff --unified --recursive --text pylsl-1.10.3/MANIFEST.in pylsl-1.10.3.nolibs/MANIFEST.in
+--- pylsl-1.10.3/MANIFEST.in	2015-04-24 20:51:56.000000000 -0500
++++ pylsl-1.10.3.nolibs/MANIFEST.in	2019-07-28 21:47:09.512022467 -0500
+@@ -1,6 +1,2 @@
+ include DESCRIPTION.rst
+ include LICENSE
+-
+-# If using Python 2.6 or less, then have to include package data, even though
+-# it's already declared in setup.py
+-include pylsl/liblsl*.*
+Only in pylsl-1.10.3/pylsl: liblsl32.dll
+Only in pylsl-1.10.3/pylsl: liblsl32.dylib
+Only in pylsl-1.10.3/pylsl: liblsl32.so
+Only in pylsl-1.10.3/pylsl: liblsl64.dll
+Only in pylsl-1.10.3/pylsl: liblsl64.dylib
+Only in pylsl-1.10.3/pylsl: liblsl64.so
+diff --unified --recursive --text pylsl-1.10.3/pylsl/pylsl.py pylsl-1.10.3.nolibs/pylsl/pylsl.py
+--- pylsl-1.10.3/pylsl/pylsl.py	2015-04-24 18:16:52.000000000 -0500
++++ pylsl-1.10.3.nolibs/pylsl/pylsl.py	2019-07-28 21:46:44.068319850 -0500
+@@ -1137,7 +1137,9 @@
+ if not os.path.isfile(libpath):
+     libpath = util.find_library(libname)
+ if not libpath:
+-    raise RuntimeError("library " + libname + " was not found - make sure "
++    libpath = util.find_library('lsl')
++    if not libpath:
++        raise RuntimeError("library " + libname + " was not found - make sure "
+                        "that it is on the search path (e.g., in the same "
+                        "folder as pylsl.py).")
+ lib = CDLL(libpath)
+diff --unified --recursive --text pylsl-1.10.3/pylsl.egg-info/SOURCES.txt pylsl-1.10.3.nolibs/pylsl.egg-info/SOURCES.txt
+--- pylsl-1.10.3/pylsl.egg-info/SOURCES.txt	2015-04-24 20:55:00.000000000 -0500
++++ pylsl-1.10.3.nolibs/pylsl.egg-info/SOURCES.txt	2019-07-28 21:46:57.168509677 -0500
+@@ -5,12 +5,6 @@
+ setup.cfg
+ setup.py
+ pylsl/__init__.py
+-pylsl/liblsl32.dll
+-pylsl/liblsl32.dylib
+-pylsl/liblsl32.so
+-pylsl/liblsl64.dll
+-pylsl/liblsl64.dylib
+-pylsl/liblsl64.so
+ pylsl/pylsl.py
+ pylsl.egg-info/PKG-INFO
+ pylsl.egg-info/SOURCES.txt
+diff --unified --recursive --text pylsl-1.10.3/setup.py pylsl-1.10.3.nolibs/setup.py
+--- pylsl-1.10.3/setup.py	2015-04-24 20:44:06.000000000 -0500
++++ pylsl-1.10.3.nolibs/setup.py	2019-07-28 21:47:24.585575715 -0500
+@@ -84,13 +84,6 @@
+     # $ pip install -e .[dev,test]
+     extras_require={},
+ 
+-    # If there are data files included in your packages that need to be
+-    # installed, specify them here.  If using Python 2.6 or less, then these
+-    # have to be included in MANIFEST.in as well.
+-    package_data={
+-        'pylsl': ['liblsl32.dll','liblsl64.dll','liblsl32.dylib','liblsl64.dylib','liblsl32.so','liblsl64.so'],
+-    },
+-
+     # Although 'package_data' is the preferred approach, in some case you may
+     # need to place data files outside of your packages. See:
+     # http://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files # noqa
