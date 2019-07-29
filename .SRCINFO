@@ -1,6 +1,6 @@
 pkgbase = chan-sccp
 	pkgdesc = Chan-SCCP channel driver for Asterisk
-	pkgver = 4.2.3
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = http://chan-sccp-b.sourceforge.net
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = chan-sccp
 	license = GPL
 	depends = asterisk
 	backup = etc/asterisk/sccp.conf
-	source = https://github.com/chan-sccp/chan-sccp/archive/v4.2.3.tar.gz
-	sha256sums = d89d2e1102f0ef85e4acec614b08bd210918cfc161ddae7c61c540848499a18d
+	source = https://github.com/chan-sccp/chan-sccp/archive/v4.3.2-delta.tar.gz
+	sha256sums = 34d859768458ed2696c455a44a0ef06774e4f77669b3f6fbdc74423a87aa2d03
 
 pkgname = chan-sccp
 
