@@ -1,8 +1,7 @@
-# Contributor: Kibouo <csonka.mihaly@hotmail.com>
-# Contributor: Kibouo <csonka.mihaly@hotmail.com>
-# Contributor: Kibouo <csonka.mihaly@hotmail.com>
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+
 _cranname=mime
-_cranver=0.6
+_cranver=0.7
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-mime
 pkgver=${_cranver//[:-]/.}
@@ -15,7 +14,7 @@ depends=('r>=3.5.0')
 makedepends=('gcc-fortran>=8.3.0')
 provides=("${pkgname}")
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('a033d88ac9bc733868d145fdc44f8c96')
+md5sums=('4c083166e3371db5289b7b0d6b9e6bbc')
 
 build(){
     R CMD INSTALL ${_pkgtar} -l $srcdir

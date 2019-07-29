@@ -1,6 +1,6 @@
 pkgbase = r-mime
 	pkgdesc = Guesses the MIME type from a filename extension using the data derived from /etc/mime.types in UNIX-type systems.
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mime
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = r-mime
 	makedepends = gcc-fortran>=8.3.0
 	depends = r>=3.5.0
 	provides = r-mime
-	source = https://cran.r-project.org/src/contrib/mime_0.6.tar.gz
-	md5sums = a033d88ac9bc733868d145fdc44f8c96
+	source = https://cran.r-project.org/src/contrib/mime_0.7.tar.gz
+	md5sums = 4c083166e3371db5289b7b0d6b9e6bbc
 
 pkgname = r-mime
 
