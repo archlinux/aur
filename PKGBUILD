@@ -1,7 +1,7 @@
 # Maintainer: Wayne Campbell <wcampbell1995 [at] gmail [dot] com>
 # Python package author: Michael Rooney <mrooney.mintapi@rowk.com>
 pkgname=python-mintapi
-pkgver=1.39
+pkgver=1.40
 pkgrel=1
 pkgdesc="a screen-scraping API for Mint.com"
 arch=(any)
