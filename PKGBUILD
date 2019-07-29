@@ -18,13 +18,13 @@ sha256sums=('f9ca80cbc52374b315b9985e7679e493a4d0426139f4c9a015fff4ba2e1f2851')
 install=${pkgname}.install
 
 build() {
-  cd "${srcdir}/${_pkgsrcname}-${pkgver}"
+  cd ${_pkgsrcname}-${pkgver}
   emacs -q --no-splash -batch -L . -f batch-byte-compile *.el
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrcname}-${pkgver}"
-  mkdir -p "${pkgdir}/usr/share/emacs/site-lisp/snippets/python-mode"
+  cd ${_pkgsrcname}-${pkgver}
+  mkdir -p "$pkgdir"/usr/share/emacs/site-lisp/snippets/python-mode
   install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/
   install -m644 snippets/python-mode/* "$pkgdir"/usr/share/emacs/site-lisp/snippets/python-mode/
 }
