@@ -1444,3 +1444,20 @@ Sat Apr 6 23:55:50 2019 +0200
      2019-03-31 fcebce5c actionless chore(plugins: theme: arc): update submodule (gnome-shell 3.22)
      2019-03-26 1ebe6b8a actionless fix(packaging: arch): use --force on submodule deinit during prepare
      2019-03-24 fb5b801a Gustavo Reis Update Suru++ submodules and new April colourschemes (#238)
+
+
+Mon Jul 29 06:14:21 2019 +0200
+-------------------------------------------------
+1.12.3          Maintenance release 1.12.3
+    
+    Notable commits:
+     2019-07-29 b40b19a0 actionless chore(plugins: base16): update submodule (sync mirror):
+     2019-07-29 b9ed28db Vlada Makhonina Add 3 themes
+     2019-07-29 6a387bc5 actionless chore(plugins: theme: materia): update submobule
+     2019-07-26 7c255e7d actionless chore(plugins: theme: arc): update submodule (11 commits)
+     2019-07-26 976b4126 actionless chore(plugins: icons: numix): update submodule (audio and video mimetypes)
+     2019-07-26 5a8f516f actionless chore(plugins: icons: papirus): update submodule (tag: 20190720 + 8 commits)
+     2019-06-05 c0fba8d7 Gustavo Reis Upgrading Suru++ Asprómauros (#248)
+     2019-05-31 ae3adfb3 actionless chore(plugins: oomoxify): update submodule (recursive mkdir)
+     2019-04-14 43daeb9e Devon Maloney doc(readme): Add Flatpak instructions (#241)
+     2019-04-15 43b67e46 Heimen Stoffels chore(colors: contrib): Create Airmail-Dark (#240)
