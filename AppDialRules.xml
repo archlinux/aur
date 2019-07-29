@@ -1,0 +1,5 @@
+<DialRules>
+  <DialRule BeginsWith="+" NumDigits="11" DigitsToRemove="1" PrefixWith="00" />
+  <DialRule BeginsWith="+" NumDigits="12" DigitsToRemove="1" PrefixWith="00" />
+  <DialRule BeginsWith="+" NumDigits="13" DigitsToRemove="1" PrefixWith="00" />
+</DialRules>

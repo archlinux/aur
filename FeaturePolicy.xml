@@ -1,0 +1,67 @@
+<featurePolicy name="Feature Policy">
+  <versionStamp>a64c9b2e-b1fe-4781-ba89-7f8574012eb8</versionStamp>
+  <featureDef name="Forward All">
+    <id>1</id>
+    <enable>true</enable>
+  </featureDef>
+  <featureDef name="Park">
+    <id>2</id>
+    <enable>true</enable>
+  </featureDef>
+  <featureDef name="Divert (Alerting)">
+    <id>3</id>
+    <enable>true</enable>
+  </featureDef>
+  <featureDef name="Conference Details">
+    <id>4</id>
+    <enable>true</enable>
+  </featureDef>
+  <featureDef name="Speed Dial">
+    <id>5</id>
+    <enable>true</enable>
+  </featureDef>
+  <featureDef name="Call Back">
+    <id>6</id>
+    <enable>true</enable>
+  </featureDef>
+  <featureDef name="Redial">
+    <id>7</id>
+    <enable>true</enable>
+  </featureDef>
+  <featureDef name="Barge">
+    <id>8</id>
+    <enable>false</enable>
+  </featureDef>
+  <featureDef name="Divert (Connected)">
+    <id>9</id>
+    <enable>true</enable>
+  </featureDef>
+  <featureDef name="Call PickUp">
+    <id>10</id>
+    <enable>true</enable>
+  </featureDef>
+  <featureDef name="Other Call PickUp">
+    <id>11</id>
+    <enable>true</enable>
+  </featureDef>
+  <featureDef name="Group Call PickUp">
+    <id>12</id>
+    <enable>true</enable>
+  </featureDef>
+  <featureDef name="Mobility">
+    <id>13</id>
+    <enable>false</enable>
+  </featureDef>
+  <featureDef name="Meet Me">
+    <id>14</id>
+    <enable>true</enable>
+  </featureDef>
+  <featureDef name="Quality Reporting Tool">
+    <id>15</id>
+    <enable>true</enable>
+  </featureDef>
+  <featureDef name="Malicious Caller ID">
+    <id>16</id>
+    <enable>true</enable>
+  </featureDef>
+</featurePolicy>

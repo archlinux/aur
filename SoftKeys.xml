@@ -1,0 +1,201 @@
+<softKeyCfg>
+  <versionStamp>0200d4f8-e302-4315-b91e-9490e0b37fc5</versionStamp>
+  <typeSoftKey>
+    <softKeyDef keyID="Undefined">
+      <tag>0</tag>
+      <eventID>0</eventID>
+      <helpID>0</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="Redial">
+      <tag>1</tag>
+      <eventID>1</eventID>
+      <helpID>301</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="NewCall">
+      <tag>2</tag>
+      <eventID>2</eventID>
+      <helpID>302</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="Hold">
+      <tag>3</tag>
+      <eventID>3</eventID>
+      <helpID>303</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="Transfer">
+      <tag>4</tag>
+      <eventID>4</eventID>
+      <helpID>304</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="CFwdAll">
+      <tag>5</tag>
+      <eventID>5</eventID>
+      <helpID>305</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="&lt;&lt;">
+      <tag>8</tag>
+      <eventID>8</eventID>
+      <helpID>308</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="EndCall">
+      <tag>9</tag>
+      <eventID>9</eventID>
+      <helpID>309</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="Resume">
+      <tag>10</tag>
+      <eventID>10</eventID>
+      <helpID>310</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="Answer">
+      <tag>11</tag>
+      <eventID>11</eventID>
+      <helpID>311</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="Confrn">
+      <tag>13</tag>
+      <eventID>13</eventID>
+      <helpID>313</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="Park">
+      <tag>14</tag>
+      <eventID>14</eventID>
+      <helpID>314</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="Join">
+      <tag>15</tag>
+      <eventID>15</eventID>
+      <helpID>315</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="MeetMe">
+      <tag>16</tag>
+      <eventID>16</eventID>
+      <helpID>316</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="PickUp">
+      <tag>17</tag>
+      <eventID>17</eventID>
+      <helpID>317</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="GPickUp">
+      <tag>18</tag>
+      <eventID>18</eventID>
+      <helpID>318</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="RmLstC">
+      <tag>57</tag>
+      <eventID>19</eventID>
+      <helpID>319</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="DND">
+      <tag>63</tag>
+      <eventID>69</eventID>
+      <helpID>369</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="CallBack">
+      <tag>65</tag>
+      <eventID>20</eventID>
+      <helpID>320</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="QRT">
+      <tag>75</tag>
+      <eventID>22</eventID>
+      <helpID>322</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="MCID">
+      <tag>76</tag>
+      <eventID>27</eventID>
+      <helpID>327</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="Select">
+      <tag>78</tag>
+      <eventID>29</eventID>
+      <helpID>329</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="ConfList">
+      <tag>79</tag>
+      <eventID>30</eventID>
+      <helpID>330</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="iDivert">
+      <tag>80</tag>
+      <eventID>31</eventID>
+      <helpID>331</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="OPickUp">
+      <tag>91</tag>
+      <eventID>34</eventID>
+      <helpID>334</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="HLog">
+      <tag>92</tag>
+      <eventID>35</eventID>
+      <helpID>335</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="AbbrDial">
+      <tag>7740</tag>
+      <eventID>71</eventID>
+      <helpID>371</helpID>
+    </softKeyDef>
+    <softKeyDef keyID="Record">
+      <tag>7747</tag>
+      <eventID>74</eventID>
+      <helpID>374</helpID>
+    </softKeyDef>
+  </typeSoftKey>
+  <softKeySets>
+    <softKeySet id="On Hook">
+      <softKey keyID="Redial" />
+      <softKey keyID="NewCall" />
+      <softKey keyID="DND" />
+      <softKey keyID="CFwdAll" />
+    </softKeySet>
+    <softKeySet id="Off Hook">
+      <softKey keyID="Redial" />
+      <softKey keyID="EndCall" />
+      <softKey keyID="PickUp" />
+    </softKeySet>
+    <softKeySet id="Off Hook With Feature">
+      <softKey keyID="Redial" />
+      <softKey keyID="EndCall" />
+    </softKeySet>
+    <softKeySet id="Digits After First">
+      <softKey keyID="&lt;&lt;" />
+      <softKey keyID="EndCall" />
+    </softKeySet>
+    <softKeySet id="Ring Out">
+      <softKey keyID="Undefined" />
+      <softKey keyID="EndCall" />
+    </softKeySet>
+    <softKeySet id="Connected">
+      <softKey keyID="Hold" />
+      <softKey keyID="EndCall" />
+      <softKey keyID="Transfer" />
+      <softKey keyID="Confrn" />
+      <softKey keyID="ConfList" />
+      <softKey keyID="Park" />
+    </softKeySet>
+    <softKeySet id="Connected No Feature">
+      <softKey keyID="Undefined" />
+      <softKey keyID="EndCall" />
+    </softKeySet>
+    <softKeySet id="Connected Transfer">
+      <softKey keyID="Undefined" />
+      <softKey keyID="EndCall" />
+      <softKey keyID="Transfer" />
+    </softKeySet>
+    <softKeySet id="Connected Conference">
+      <softKey keyID="Undefined" />
+      <softKey keyID="EndCall" />
+      <softKey keyID="Confrn" />
+      <softKey keyID="ConfList" />
+    </softKeySet>
+    <softKeySet id="On Hold">
+      <softKey keyID="Resume" />
+      <softKey keyID="NewCall" />
+    </softKeySet>
+    <softKeySet id="Ring In">
+      <softKey keyID="Answer" />
+      <softKey keyID="iDivert" />
+    </softKeySet>
+  </softKeySets>
+</softKeyCfg>
