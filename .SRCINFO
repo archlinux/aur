@@ -1,12 +1,13 @@
 pkgbase = trueconf
 	pkgdesc = Video conference client
 	pkgver = 7.3.4.72
-	pkgrel = 1
+	pkgrel = 2
 	url = https://trueconf.ru
 	install = trueconf.install
 	arch = x86_64
 	license = freeware
 	makedepends = libarchive
+	depends = cppdb
 	depends = bzip2
 	depends = curl
 	depends = dbus

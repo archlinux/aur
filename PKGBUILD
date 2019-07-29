@@ -3,12 +3,12 @@
 
 pkgname='trueconf'
 pkgver='7.3.4.72'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Video conference client'
 arch=('x86_64')
 url="https://${pkgname}.ru"
 license=('freeware')
-depends=('bzip2' 'curl' 'dbus' 'glib2' 'icu' 'lame' 'libglvnd' 'libidn' 'libphonenumber'
+depends=('cppdb' 'bzip2' 'curl' 'dbus' 'glib2' 'icu' 'lame' 'libglvnd' 'libidn' 'libphonenumber'
 'libsystemd' 'libx11' 'libxcb' 'libxext' 'libxrandr' 'openssl-1.0' 'protobuf'
 'qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'speex' 'speexdsp' 'sqlite'
 'v4l-utils' 'zeromq' 'zlib' 'systemd')
