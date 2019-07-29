@@ -54,7 +54,7 @@ build() {
     -DBUILD_WAYLAND_SUPPORT=On \
     -G Ninja
     
-  ninja -j 2 -l 2 -C builds/Release
+  ninja -C builds/Release
 }
 
 package() {
