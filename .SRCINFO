@@ -7,6 +7,7 @@ pkgbase = namespaced-openvpn-git
 	license = MIT
 	makedepends = git
 	depends = python
+	depends = openvpn
 	source = git+https://github.com/slingamn/namespaced-openvpn.git
 	sha256sums = SKIP
 

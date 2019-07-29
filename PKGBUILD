@@ -9,7 +9,7 @@ arch=('any')
 license=('MIT')
 url="https://github.com/slingamn/namespaced-openvpn"
 makedepends=(git)
-depends=(python)
+depends=(python openvpn)
 source=("git+$url.git")
 sha256sums=('SKIP')
 
