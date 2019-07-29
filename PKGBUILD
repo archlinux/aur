@@ -3,10 +3,11 @@ pkgname='plexdrive-git'
 _pkgname=${pkgname/-git/}
 pkgdesc='Plexdrive allows you to mount your Google Drive account as read-only fuse filesystem'
 pkgver=5.0.0.r18.gbf61a47
-pkgrel=1
+pkgrel=2
 url='https://github.com/dweidenfeld/plexdrive'
 arch=('any')
 license=('MIT')
+depends=('fuse')
 makedepends=(
   'go-pie'
   'git'
