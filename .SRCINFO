@@ -1,7 +1,7 @@
 pkgbase = nvidia-container-toolkit
 	pkgdesc = NVIDIA container runtime toolkit
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NVIDIA/nvidia-container-runtime
 	arch = x86_64
 	license = BSD
