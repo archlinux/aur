@@ -2,7 +2,7 @@
 
 pkgname='python-zulip-term-git'
 _pkgname='zulip-terminal'
-pkgver=0.4.0
+pkgver=0.4.0.r4.3922f76
 pkgrel=1
 pkgdesc="An interactive terminal interface for Zulip"
 url="https://github.com/zulip/zulip-terminal"

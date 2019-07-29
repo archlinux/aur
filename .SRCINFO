@@ -1,6 +1,6 @@
 pkgbase = python-zulip-term-git
 	pkgdesc = An interactive terminal interface for Zulip
-	pkgver = 0.4.0
+	pkgver = 0.4.0.r4.3922f76
 	pkgrel = 1
 	url = https://github.com/zulip/zulip-terminal
 	arch = any
