@@ -3,7 +3,7 @@
 
 _pyname=nbstripout
 pkgname=python-$_pyname
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='Strips outputs from Jupyter and IPython notebooks'
 url="https://pypi.python.org/pypi/$_pyname/"
@@ -13,7 +13,7 @@ license=('MIT')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz"
 "https://raw.githubusercontent.com/kynan/nbstripout/master/LICENSE.txt")
-sha256sums=('814efbe00988445b2c3f3d1944c9f296a556e2b14a060f7b25372881c2e497d4'
+sha256sums=('1960caf7d1c1e281126c6c5cb98053db89eca8aaa616b58eed381e3e1508c0f4'
             'cceb6581e12b4e46f8291d138b15731e8b77e6e1eee9dca23be2297e2c48fe29')
 
 build() {
@@ -28,5 +28,5 @@ package() {
 }
 
 #check() {
-  #python setup.py test
+#  python setup.py test
 #}
