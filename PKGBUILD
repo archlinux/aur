@@ -1,13 +1,13 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=xtables-geoip-db
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GeoIP Database for xtables"
 arch=('any')
 license=('BSD' 'GPL')
 url="https://dev.maxmind.com/geoip/geoip2/geolite2/"
 makedepends=('perl-text-csv-xs' 'perl-net-cidr-lite')
-_xtver=3.2
+_xtver=3.3
 source=("https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip"
         "xt_geoip_build::https://sourceforge.net/p/xtables-addons/xtables-addons/ci/v${_xtver}/tree/geoip/xt_geoip_build?format=raw")
 sha256sums=('SKIP'
