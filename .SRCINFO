@@ -1,6 +1,6 @@
 pkgbase = python-fire
 	pkgdesc = Python Fire is a library for automatically generating command line interfaces (CLIs) from absolutely any Python object.
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/google/python-fire
 	arch = any
@@ -8,8 +8,11 @@ pkgbase = python-fire
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	depends = python
-	source = https://github.com/google/python-fire/archive/v0.1.3.tar.gz
-	sha256sums = fee9af0fde77bced1d518fccae6261ffea06f789bb374ba54eea61266800906a
+	depends = python2
+	depends = python-termcolor
+	depends = python2-termcolor
+	source = https://github.com/google/python-fire/archive/v0.2.0.tar.gz
+	sha256sums = 075d78ddc720ca88b9097b3dd17907ceb68649005f1bcbd40ff52c44ff70bb41
 
 pkgname = python-fire
 
