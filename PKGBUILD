@@ -17,7 +17,7 @@ package() {
     mv "Listen1_${pkgver}_linux_x86_64.AppImage" "listen1.AppImage"
     chmod a+x "listen1.AppImage"
     ${srcdir}/listen1.AppImage --appimage-extract
-    sed -i "s/AppRun/\/opt\/listen1\/listen1.AppImage/" "squashfs-root/listen1.desktop"
+    sed -i 's/AppRun/env DESKTOPINTEGRATION=no "\/opt\/listen1\/listen1.AppImage" %U/' "squashfs-root/listen1.desktop"
     find "squashfs-root/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
 
     install -d -m755 "${pkgdir}/usr/share/icons"
