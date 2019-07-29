@@ -2,7 +2,7 @@
 
 pkgname=cemu
 pkgver=1.15.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Wii U emulator (via wine). Includes the Cemuhook plugin"
 arch=(x86_64)
 url="http://cemu.info/"
@@ -15,18 +15,21 @@ source=(
   cemu.desktop
   http://cemu.info/releases/cemu_${pkgver}.zip
   https://files.sshnuke.net/cemuhook_${_cemuhookver}.zip
+  https://files.sshnuke.net/sharedFonts.7z
 )
+# The link for the sharedFonts comes from here: https://github.com/decaf-emu/decaf-emu/issues/29#issuecomment-315511347
 noextract=("cemuhook_${_cemuhookver}.zip")
 install=${pkgname}.install
 
 # If the cemuhook md5 is wrong, is because the cemuhook team every once in a while
 # updates the cemuhook zip file, but without giving it a new name. And that new file has, of course, a different md5.
 # If you notice this, please mark this package as out-of-date in the aur website and I'll fix it.
-md5sums=('38515a6d5216c800b76a1feae93b810a'
+md5sums=('c3ab928b2f3c1ea3d7f3bdb5005a250e'
          '54d70005a8975812ab54fcfef53f7bde'
          '7e1d24a435cff0af4a8ddc91c5499f15'
          '58f4f8143f06059ee0c2978cc8776588'
-         'f5f0de02b9df62d5b6018c7a82e6d43b')
+         'f5f0de02b9df62d5b6018c7a82e6d43b'
+         '336a0bc0e44eede4ddf613a0eebf3bb9')
 
 options=(!strip)
 
@@ -45,6 +48,7 @@ package() {
   install -d -m755 $pkgdir/usr/share/pixmaps
   install -m644 cemu.desktop $pkgdir/usr/share/applications
   install -m644 cemu.xpm $pkgdir/usr/share/pixmaps/cemu.xpm
+  cp -R sharedFonts $pkgdir/usr/share/$pkgname
   cd cemu_$pkgver
   install -m644 Cemu.exe $pkgdir/usr/share/$pkgname
   install -m644 dbghelp.dll $pkgdir/usr/share/$pkgname
