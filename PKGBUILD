@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.32.2+43+gb7f158811
-pkgrel=5
+pkgrel=6
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -87,7 +87,7 @@ prepare() {
   # Type: 1
   # Status: 2
   # Comment:
-  git cherry-pick -n 9499bc21^..ce0e5db7
+  git cherry-pick -n a2507cd5^..b9170a69
 
   # Title: clutter/stage-cogl: Don't skip over the next frame
   # URL : https://gitlab.gnome.org/GNOME/mutter/merge_requests/520
