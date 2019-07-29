@@ -10,19 +10,19 @@
 _BUILD_DOC=0
 # Copy 'examples' to /usr/share/examples/lammps
 _INSTALL_EXAMPLES=0
-# KIM package
-_ENABLE_KIM=0
 # Use Intel compilers
 _ENABLE_INTEL_COMPILER=0
 # USER-INTEL package
 _ENABLE_INTEL=0
 # USER-OMP package
 _ENABLE_OMP=0
+# KIM package
+_ENABLE_KIM=0
 
 _pkgname=lammps
 pkgname=${_pkgname}-beta
-pkgver=20190618
-_pkgver="18Jun2019"
+pkgver=20190719
+_pkgver="19Jul2019"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
@@ -34,14 +34,14 @@ makedepends=('cmake')
 conflicts=('lammps')
 provides=('lammps')
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/patch_${_pkgver}.tar.gz")
-sha512sums=('0a174deb6d17b61e7471afcbd8d2dddf99d03e7a06046b71d51cc79cb219550199b94d8e465f9d1f0644939ab6302c776588b0c27e5a1ec785ffffe0b6dcd614')
+sha512sums=('b9177b833618ef36c90bcb70455924125370e72bcc591908ffcf62bc3526a51f15ae5f86760436c361a8972e632ce425e65a8b25798a2ad4fdb80a024de7b9a5')
 
 # process the build settings from above
 if (( $_ENABLE_INTEL_COMPILER )); then
     _feature_args+=('-DCMAKE_C_COMPILER=mpiicc')
     _feature_args+=('-DCMAKE_C_FLAGS=-xHost -O2 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high')
     _feature_args+=('-DCMAKE_CXX_COMPILER=mpiicpc')
-    _feature_args+=('-DCMAKE_CXX_FLAGS=-fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -O2 -DLMP_INTEL_USELRT -DLMP_USE_MKL_RNG')
+    _feature_args+=('-DCMAKE_CXX_FLAGS=-fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -O2 -std=c++11 -DLMP_INTEL_USELRT -DLMP_USE_MKL_RNG')
     _feature_args+=('-DCMAKE_Fortran_COMPILER=mpiifort')
 fi
 if (( $_BUILD_DOC )); then
@@ -79,6 +79,7 @@ build() {
 
   if (( $_BUILD_DOC )) ; then
     # Generate ReStructuredText from Text files
+    export PYTHONPATH=$PWD/../doc/utils/converters/
     mkdir -p rst
 
     for file in ../doc/src/*.txt
@@ -112,7 +113,7 @@ package() {
   fi
   if (( $_INSTALL_EXAMPLES )) ; then
     mkdir -p "${pkgdir}/usr/share/examples/lammps"
-    cp -r "../examples/"* "${pkgdir}/usr/share/examples/lammps/"
+    cp -r "../examples/." "${pkgdir}/usr/share/examples/lammps/"
     find "${pkgdir}/usr/share/examples/lammps/" -type f -exec chmod 644 '{}' +
   fi
   install -Dm644 "../tools/vim/lammps.vim" "${pkgdir}/usr/share/vim/vimfiles/syntax/lammps.vim"
