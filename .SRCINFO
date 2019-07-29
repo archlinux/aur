@@ -1,0 +1,16 @@
+pkgbase = evpath-git
+	pkgdesc = EVpath is an event transport middleware layer
+	pkgver = r2256.47465da
+	pkgrel = 1
+	url = https://github.com/GTkorvo/evpath
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = gcc-libs
+	provides = evpath
+	conflicts = evpath
+	source = git+https://github.com/GTkorvo/evpath.git
+	sha256sums = SKIP
+
+pkgname = evpath-git
+
