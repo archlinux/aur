@@ -1,7 +1,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=opendaylight
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='A modular open platform for customizing and automating networks of any size and scale.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=()
 options=()
 install=opendaylight.install
 source=(https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/integration/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('d6f690cda6da1a240a1dbe64fd7f158b5f1d72084f3ccb7504ad55a3e569a43d')
+sha256sums=('da69972d086f1a1954b2c56218c825333f1b5f1b7c43b66009564a2a780ba802')
 
 package() {
     cd "${srcdir}"
