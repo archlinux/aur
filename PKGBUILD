@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=egg
-_cranver=0.4.2
+_cranver=0.4.5
 pkgname=r-${_cranname}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('r' 'r-gridextra' 'r-ggplot2' 'r-gtable')
 optdepends=('r-knitr' 'r-png')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('ae853d174480abb3da36667f0a60ed14')
+md5sums=('5092b6f00723cee6c47d923780cc781b')
 
 build(){
     cd "${srcdir}"

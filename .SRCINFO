@@ -1,6 +1,6 @@
 pkgbase = r-egg
 	pkgdesc = Miscellaneous functions to help customise 'ggplot2' objects
-	pkgver = 0.4.2
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=egg
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-egg
 	depends = r-gtable
 	optdepends = r-knitr
 	optdepends = r-png
-	source = http://cran.r-project.org/src/contrib/egg_0.4.2.tar.gz
-	md5sums = ae853d174480abb3da36667f0a60ed14
+	source = http://cran.r-project.org/src/contrib/egg_0.4.5.tar.gz
+	md5sums = 5092b6f00723cee6c47d923780cc781b
 
 pkgname = r-egg
 
