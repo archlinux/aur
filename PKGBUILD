@@ -14,20 +14,16 @@ _enginename=acestreamengine
 
 pkgname=acestream-engine-stable
 pkgver=3.1.49
-pkgrel=1
+pkgrel=2
 pkgdesc="P2P utility for multimedia live streaming and file transfer (stable version)"
 arch=("x86_64")
 url="http://acestream.org/"
 license=("custom")
 depends=(
-    "net-tools" 
-    "openssl-1.0" 
-    "python2-apsw" 
-    "python2-lxml" 
-    "python2-setuptools" 
-    "python2-typing" 
-    "python2-xlib")
-optdepends=("python2-libappindicator: GTK2 GUI")
+    "net-tools"
+    "python2-apsw"
+    "python2-libappindicator"
+    "python2-setuptools")
 provides=("$_pkgbasename")
 conflicts=("$_pkgbasename")
 backup=("usr/lib/$_pkgbasename/acestream.conf")
@@ -35,14 +31,12 @@ install="$_pkgbasename.install"
 source=(
     "$_pkgbasename.service"
     "$pkgname-$pkgver.tar.gz::http://acestream.org/downloads/linux/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64.tar.gz"
-#    "python2-m2crypto-0.24.0-4-x86_64.pkg.tar.xz"
     "$_pkgbasename.desktop"
     "LICENSE"
 )
 sha256sums=(
     "9446e4c36c2e92b4253a1c3fea5fa30d366d46295dcd1f1cac4ddfe8f002fcbe"
     "d2ed7bdc38f6a47c05da730f7f6f600d48385a7455d922a2688f7112202ee19e"
-#    "177c22681be64a7533b3303652da8724aa20edcbead87be90765bc5040f4cff5"
     "fad731aec3371b3e76065cf1668be6b61d33547d321c8cfb2b6018faa3d5b7b0"
     "SKIP"
 )
@@ -60,9 +54,6 @@ package() {
 
     cp -a "data" "$pkgdir/usr/lib/$_pkgbasename/"
     cp -a "lib" "$pkgdir/usr/lib/$_pkgbasename/"
-#    cp -a "$srcdir/usr/lib/python2.7/site-packages/M2Crypto" "$pkgdir/usr/lib/$_pkgbasename/lib"
-
-    rm "$pkgdir/usr/lib/$_pkgbasename/lib/lxml-3.7.2-py2.7-linux-x86_64.egg"
 
     mkdir -p "$pkgdir/usr/bin"
     ln -sf "/usr/lib/$_pkgbasename/start-engine" "$pkgdir/usr/bin/$_enginename"
