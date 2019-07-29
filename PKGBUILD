@@ -4,8 +4,8 @@
 
 _pkgname=python-pipenv
 pkgname=$_pkgname-git
-pkgver=v2018.11.26.r218.gd5e446ee
-pkgrel=1
+pkgver=v2018.11.26.r612.gf4b66a77
+pkgrel=2
 pkgdesc="Sacred Marriage of Pipfile, Pip, & Virtualenv."
 url="https://docs.pipenv.org"
 arch=('any')
@@ -17,18 +17,12 @@ provides=($_pkgname)
 #	      'python-pip' 'python-certifi' 'python-virtualenv'
 #	      'python-virtualenv-clone' 'python-strict-rfc3339'
 #	      'python-pytz' 'python-flaky' 'python-mock')
-source=("${_pkgname}::git+https://github.com/pypa/pipenv.git"
-        "0001-setup-don-t-setup_requires-on-things-used-to-run-dev.patch")
-sha256sums=('SKIP'
-            '50c9482911eb7d12bdce45b5e5a44efd4223d3d4a908c42b265d04ab58064e1f')
+source=("${_pkgname}::git+https://github.com/pypa/pipenv.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  patch -p1 -d "$srcdir/$_pkgname" < 0001-setup-don-t-setup_requires-on-things-used-to-run-dev.patch
 }
 
 build(){
