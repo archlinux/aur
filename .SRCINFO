@@ -1,13 +1,22 @@
 pkgbase = plexdrive
-	pkgdesc = Plexdrive allows you to mount your Google Drive account as read-only fuse filesystem
+	pkgdesc = Plexdrive allows you to mount your Google Drive account as read-only fuse filesystem, with direct delete option on the filesystem.
 	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/dweidenfeld/plexdrive
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
 	license = MIT
-	makedepends = go-pie
-	provides = plexdrive
-	conflicts = plexdrive
+	makedepends = go
+	depends = fuse
+	conflicts = plexdrive-bin
+	conflicts = plexdrive-git
+	conflicts = plexdrive-dev-git
+	conflicts = plexdrive-mongodb
+	conflicts = plexdrive-mongodb-bin
+	conflicts = plexdrive-sqlite
+	conflicts = plexdrive-sqlite-bin
 	source = https://github.com/dweidenfeld/plexdrive/archive/5.0.0.tar.gz
 	sha256sums = 68763993a3da3d8ccd0dc18b3a5db7ab7ad8d03fde2d9be2ef4829e8356225bd
 
