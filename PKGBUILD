@@ -16,4 +16,5 @@ package() {
   echo "Extracting package..." 
   bsdtar -xf data.tar.xz -C "$pkgdir/"
   install -Dm644 "$pkgdir"/usr/share/doc/xserver-xorg-input-cmt/copyright "$pkgdir"/usr/share/licenses/xf86-input-cmt/LICENCE
+  mv "$pkgdir/lib/systemd" "$pkgdir/usr/lib/"
 }
