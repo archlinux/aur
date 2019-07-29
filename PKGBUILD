@@ -2,7 +2,7 @@
 pkgname=carla-bridges
 pkgver=4981.3afdf1f2
 pkgrel=1
-pkgdesc="Carla All Bridges (Stable Branch)"
+pkgdesc="Carla All Bridges"
 arch=('x86_64')
 url="http://kxstudio.sf.net/carla"
 license=('GPL2')
