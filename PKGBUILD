@@ -1,9 +1,10 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Diego <cdprincipe@gmail.com>
+# Current Maintainer <erik.dubois@gmail.com>
 
 pkgname=numix-icon-theme-git
 pkgver=0.r1984.1029e86ec
-pkgrel=1
+pkgrel=2
 pkgdesc='Base icon theme from the Numix project'
 arch=('any')
 url='https://github.com/numixproject/numix-icon-theme'
@@ -29,4 +30,3 @@ package() {
   cp -dr --no-preserve='ownership' Numix{,-Light} "$pkgdir"/usr/share/icons/
 }
 
-# vim: ts=2 sw=2 et:
