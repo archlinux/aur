@@ -1,6 +1,6 @@
 pkgbase = blkar
 	pkgdesc = Multithreaded archiver offering bit rot protection and sector level recoverability
-	pkgver = 7.2.4
+	pkgver = 7.2.5
 	pkgrel = 1
 	url = https://github.com/darrenldl/blockyarchive
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = blkar
 	checkdepends = cargo
 	makedepends = cargo
 	depends = gcc-libs
-	source = https://github.com/darrenldl/blockyarchive/archive/v7.2.4.tar.gz
-	sha256sums = c4e357f5c31a80b6c921cd46fe642d09a96bb009610d731164e997245914e55d
+	source = https://github.com/darrenldl/blockyarchive/archive/v7.2.5.tar.gz
+	sha256sums = c53e513c74ed6365ec2dd4e58d807ad76cfc1ddbffa45aa9a9c201e48698090a
 
 pkgname = blkar
 
