@@ -1,6 +1,6 @@
 pkgbase = lua-busted
 	pkgdesc = Elegant Lua unit testing.
-	pkgver = 2.0.rc13
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://olivinelabs.com/busted/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = lua-busted
 	depends = lua-term
 	depends = lua-penlight
 	depends = lua-mediator
-	source = https://luarocks.org/busted-2.0.rc13-0.rockspec
-	sha256sums = 05879f7ee08f764411a192402529d03f53e3d7f001cacb8cca051331c2833b43
+	source = https://luarocks.org/busted-2.0.0-1.rockspec
+	sha256sums = 7cb1d99772b5c7df08f7798ffb0e5b06c392a778f6b1ab923dc6d02e57497c31
 
 pkgname = lua-busted
 

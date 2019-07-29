@@ -1,9 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=lua-busted
-pkgver=2.0.rc13
+pkgver=2.0.0
 _rockname=busted
-_rockrel=0
+_rockrel=1
 pkgrel=1
 pkgdesc="Elegant Lua unit testing."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=('lua'
 makedepends=('luarocks')
 conflicts=()
 source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.rockspec")
-sha256sums=('05879f7ee08f764411a192402529d03f53e3d7f001cacb8cca051331c2833b43')
+sha256sums=('7cb1d99772b5c7df08f7798ffb0e5b06c392a778f6b1ab923dc6d02e57497c31')
 
 package() {
   luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.rockspec"
