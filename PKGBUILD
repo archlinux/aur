@@ -2,7 +2,7 @@
 
 pkgname=fpakman-staging
 pkgver=0.4.3.RC
-pkgrel=1
+pkgrel=2
 pkgdesc="Free non-official GUI for Flatpak / Snap applications management (staging: it is a testing branch which receives updates frequently and may not be working properly)"
 arch=('any')
 url="https://github.com/vinifmor/fpakman"
@@ -12,16 +12,16 @@ optdepends=('flatpak' 'snapd')
 makedepends=('git' 'python-setuptools')
 provides=("fpakman")
 conflicts=('fpakman')
-source=("${url}/archive/aacd0c72d65e2f8f0da1115078936997256b47db.zip")
-sha512sums=('7a9fa871732edeec477d731c0c58d853fafcc3e308b139aa2c492f8188a8a72891fedca99aac53b86a30396d391d8feab4ceef7b48d51e14951e5c7ee2aafe0c')
+source=("${url}/archive/fecd15f34a76d4d3d415088adcbbf7cd106c514d.zip")
+sha512sums=('7c6093a3256678e2b80726722193b7bbe977a26be93cc6fae6bbf38f43950c1c27b26ca422306a830e85f36c3d5bee0596049242440d80fbe654632991659dfa')
 
 build() {
-  cd "${srcdir}/fpakman-aacd0c72d65e2f8f0da1115078936997256b47db"
+  cd "${srcdir}/fpakman-fecd15f34a76d4d3d415088adcbbf7cd106c514d"
   python3 setup.py build
 }
 
 package() {
-  cd "${srcdir}/fpakman-aacd0c72d65e2f8f0da1115078936997256b47db"
+  cd "${srcdir}/fpakman-fecd15f34a76d4d3d415088adcbbf7cd106c514d"
   python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
   python3 aur/desktop_entry.py
   
