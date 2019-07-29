@@ -1,6 +1,6 @@
-diff --unified --recursive --text pylsl-1.10.3/MANIFEST.in pylsl-1.10.3.nolibs/MANIFEST.in
---- pylsl-1.10.3/MANIFEST.in	2015-04-24 20:51:56.000000000 -0500
-+++ pylsl-1.10.3.nolibs/MANIFEST.in	2019-07-28 21:47:09.512022467 -0500
+diff --unified --recursive --text pylsl-1.10.4/MANIFEST.in pylsl-1.10.4.nolibs/MANIFEST.in
+--- pylsl-1.10.4/MANIFEST.in	2015-04-24 20:51:56.000000000 -0500
++++ pylsl-1.10.4.nolibs/MANIFEST.in	2019-07-28 22:05:54.866765165 -0500
 @@ -1,6 +1,2 @@
  include DESCRIPTION.rst
  include LICENSE
@@ -8,16 +8,16 @@ diff --unified --recursive --text pylsl-1.10.3/MANIFEST.in pylsl-1.10.3.nolibs/M
 -# If using Python 2.6 or less, then have to include package data, even though
 -# it's already declared in setup.py
 -include pylsl/liblsl*.*
-Only in pylsl-1.10.3/pylsl: liblsl32.dll
-Only in pylsl-1.10.3/pylsl: liblsl32.dylib
-Only in pylsl-1.10.3/pylsl: liblsl32.so
-Only in pylsl-1.10.3/pylsl: liblsl64.dll
-Only in pylsl-1.10.3/pylsl: liblsl64.dylib
-Only in pylsl-1.10.3/pylsl: liblsl64.so
-diff --unified --recursive --text pylsl-1.10.3/pylsl/pylsl.py pylsl-1.10.3.nolibs/pylsl/pylsl.py
---- pylsl-1.10.3/pylsl/pylsl.py	2015-04-24 18:16:52.000000000 -0500
-+++ pylsl-1.10.3.nolibs/pylsl/pylsl.py	2019-07-28 21:46:44.068319850 -0500
-@@ -1137,7 +1137,9 @@
+Only in pylsl-1.10.4/pylsl: liblsl32.dll
+Only in pylsl-1.10.4/pylsl: liblsl32.dylib
+Only in pylsl-1.10.4/pylsl: liblsl32.so
+Only in pylsl-1.10.4/pylsl: liblsl64.dll
+Only in pylsl-1.10.4/pylsl: liblsl64.dylib
+Only in pylsl-1.10.4/pylsl: liblsl64.so
+diff --unified --recursive --text pylsl-1.10.4/pylsl/pylsl.py pylsl-1.10.4.nolibs/pylsl/pylsl.py
+--- pylsl-1.10.4/pylsl/pylsl.py	2015-05-03 20:04:18.000000000 -0500
++++ pylsl-1.10.4.nolibs/pylsl/pylsl.py	2019-07-28 22:05:20.222839962 -0500
+@@ -1141,7 +1141,9 @@
  if not os.path.isfile(libpath):
      libpath = util.find_library(libname)
  if not libpath:
@@ -28,9 +28,9 @@ diff --unified --recursive --text pylsl-1.10.3/pylsl/pylsl.py pylsl-1.10.3.nolib
                         "that it is on the search path (e.g., in the same "
                         "folder as pylsl.py).")
  lib = CDLL(libpath)
-diff --unified --recursive --text pylsl-1.10.3/pylsl.egg-info/SOURCES.txt pylsl-1.10.3.nolibs/pylsl.egg-info/SOURCES.txt
---- pylsl-1.10.3/pylsl.egg-info/SOURCES.txt	2015-04-24 20:55:00.000000000 -0500
-+++ pylsl-1.10.3.nolibs/pylsl.egg-info/SOURCES.txt	2019-07-28 21:46:57.168509677 -0500
+diff --unified --recursive --text pylsl-1.10.4/pylsl.egg-info/SOURCES.txt pylsl-1.10.4.nolibs/pylsl.egg-info/SOURCES.txt
+--- pylsl-1.10.4/pylsl.egg-info/SOURCES.txt	2015-05-03 20:06:40.000000000 -0500
++++ pylsl-1.10.4.nolibs/pylsl.egg-info/SOURCES.txt	2019-07-28 22:05:43.563238559 -0500
 @@ -5,12 +5,6 @@
  setup.cfg
  setup.py
@@ -44,9 +44,9 @@ diff --unified --recursive --text pylsl-1.10.3/pylsl.egg-info/SOURCES.txt pylsl-
  pylsl/pylsl.py
  pylsl.egg-info/PKG-INFO
  pylsl.egg-info/SOURCES.txt
-diff --unified --recursive --text pylsl-1.10.3/setup.py pylsl-1.10.3.nolibs/setup.py
---- pylsl-1.10.3/setup.py	2015-04-24 20:44:06.000000000 -0500
-+++ pylsl-1.10.3.nolibs/setup.py	2019-07-28 21:47:24.585575715 -0500
+diff --unified --recursive --text pylsl-1.10.4/setup.py pylsl-1.10.4.nolibs/setup.py
+--- pylsl-1.10.4/setup.py	2015-05-03 20:04:30.000000000 -0500
++++ pylsl-1.10.4.nolibs/setup.py	2019-07-28 22:06:09.753583484 -0500
 @@ -84,13 +84,6 @@
      # $ pip install -e .[dev,test]
      extras_require={},
