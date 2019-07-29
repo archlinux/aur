@@ -1,8 +1,6 @@
 # Maintainer: Alexander Mcmillan <linuxguy93@gmail.com> 
 pkgname=carla-bridges
-pkgver=2.0.0
-majorver=${pkgver}
-minorver=${pkgver}
+pkgver=4981.3afdf1f2
 pkgrel=1
 pkgdesc="Carla All Bridges (Stable Branch)"
 arch=('x86_64')
@@ -12,7 +10,7 @@ conflicts=('carla-bridges-win32' 'carla-bridges-win64')
 provides=("$pkgname")
 depends=('wine' 'carla' 'liblo')
 makedepends=('git' 'mingw-w64-gcc' 'mingw-w64-crt' 'mingw-w64-winpthreads' 'mingw-w64-pkg-config' 'gcc-multilib')
-source=("$pkgname::git+https://github.com/falkTX/Carla.git#tag=v$pkgver")
+source=("$pkgname::git+https://github.com/falkTX/Carla.git")
 md5sums=('SKIP')
 
 _path=$PATH
@@ -25,6 +23,11 @@ _cxx=$CXX
 _pkg_config_path=$PKG_CONFIG_PATH
 _win32=$WIN32
 _win64=$WIN64
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	## Build Carla
