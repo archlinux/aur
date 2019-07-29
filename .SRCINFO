@@ -1,0 +1,37 @@
+pkgbase = octopi-dev
+	pkgdesc = A powerful Pacman frontend using Qt5 libs
+	pkgver = 0.9.0
+	pkgrel = 2
+	url = http://octopiproject.wordpress.com
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = qt5-declarative
+	makedepends = alpm_octopi_utils
+	makedepends = clang
+	makedepends = qtermwidget
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = pacman
+	depends = alpm_octopi_utils>=1.0.1-1
+	depends = qtermwidget
+	optdepends = octopi-notifier-qt5: Notifier for Octopi using Qt5 libs
+	optdepends = octopi-notifier-frameworks: Notifier for Octopi with Knotifications support
+	optdepends = gist: for SysInfo report
+	optdepends = pacaur: for AUR support
+	optdepends = trizen: for AUR support
+	optdepends = pikaur: for AUR support
+	optdepends = yay: for AUR support
+	optdepends = pacmanlogviewer: to view pacman log files
+	provides = octopi
+	provides = octopi-repoeditor
+	provides = octopi-cachecleaner
+	conflicts = octopi-git
+	conflicts = octopi-kde-git
+	conflicts = octopi-notifier-noknotify
+	source = octopi-0.9.0-2.tar.gz::https://github.com/aarnt/octopi/archive/31060ae2b2f7c496c95b2262b8219c39b65e45be.tar.gz
+	sha256sums = 2eac6062b3589700b0d0e37c601f5bff4ad49dc59847be5950777d7e5a09685c
+
+pkgname = octopi-dev
+
