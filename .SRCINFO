@@ -7,6 +7,8 @@ pkgbase = dill-git
 	license = BSD
 	makedepends = cmake
 	depends = gcc-libs
+	provides = dill
+	conflicts = dill
 	source = git+https://github.com/GTkorvo/dill.git
 	sha256sums = SKIP
 

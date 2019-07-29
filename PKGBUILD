@@ -7,6 +7,8 @@ arch=('x86_64')
 url="https://github.com/GTkorvo/dill"
 depends=('gcc-libs')
 makedepends=('cmake')
+provides=('dill')
+conflicts=('dill')
 source=("git+https://github.com/GTkorvo/dill.git")
 sha256sums=('SKIP')
 
