@@ -1,0 +1,13 @@
+pkgbase = environment-overseer-git
+	pkgdesc = Real time environment manager, used primarily to suppress addictive sites
+	pkgver = r59.7c2a2a5
+	pkgrel = 1
+	url = https://gitlab.com/meowxiik/environment-overseer
+	arch = any
+	license = GPL
+	depends = python
+	source = environment-overseer-git::git+https://gitlab.com/meowxiik/environment-overseer.git/
+	md5sums = SKIP
+
+pkgname = environment-overseer-git
+
