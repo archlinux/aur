@@ -9,7 +9,7 @@ pkgbase = octopi-notifier-qt5
 	makedepends = qt5-declarative
 	makedepends = clang
 	makedepends = qt5-tools
-	depends = octopi>=0.9.0-2
+	depends = octopi-dev>=0.9.0-2
 	depends = libnotify
 	optdepends = xfce4-notifyd: for notifications in XFCE
 	provides = octopi-notifier
