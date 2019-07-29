@@ -1,5 +1,5 @@
 pkgbase = linux-asus-aura
-	pkgver = 5.2.2.arch1
+	pkgver = 5.2.3.arch1
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = linux-asus-aura
 	makedepends = git
 	makedepends = libelf
 	options = !strip
-	source = https://git.archlinux.org/linux.git/snapshot/5.2.2-arch1.tar.gz
+	source = https://git.archlinux.org/linux.git/snapshot/5.2.3-arch1.tar.gz
 	source = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux
 	source = linux-asus-aura.preset
 	source = patch.diff
-	sha256sums = 389660a4bf08c5b213ac427c36555501cc4d2efc8271dc8f289abbbd645eb7da
+	sha256sums = 85220a4c2c4e3a452810dbffa424e39cd708317c54c3144e49990bc4de84bfda
 	sha256sums = d49d9d0570785051f6b8b58962a4d792d1d1501ecb0a98dcf616226e6da6bdb5
 	sha256sums = 95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7
 	sha256sums = d764703db8e24d52ed91ff842f7959cf2ffaa46d755e26d859a131d1f08c681f
