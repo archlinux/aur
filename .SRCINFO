@@ -5,7 +5,7 @@ pkgbase = python-muselsl
 	url = https://github.com/alexandrebarachant/muse-lsl
 	arch = any
 	license = BSD
-	depends = python-pylsl
+	depends = python-pylsl=1.10.5
 	depends = python-pygatt
 	depends = python-scikit-learn
 	depends = python-seaborn

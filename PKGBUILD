@@ -9,7 +9,7 @@ url='https://github.com/alexandrebarachant/muse-lsl'
 arch=('any')
 license=('BSD')
 provides=('muselsl')
-depends=('python-pylsl'
+depends=('python-pylsl=1.10.5'
          'python-pygatt'
          'python-scikit-learn'
          'python-seaborn')
