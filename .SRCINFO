@@ -1,6 +1,6 @@
 pkgbase = librenms
 	pkgdesc = Autodiscovering PHP/MySQL/SNMP based network monitoring
-	pkgver = 1.53.1
+	pkgver = 1.54
 	pkgrel = 1
 	url = https://www.librenms.org/
 	arch = any
