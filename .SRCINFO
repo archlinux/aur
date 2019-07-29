@@ -1,6 +1,6 @@
 pkgbase = armadillo
 	pkgdesc = C++ linear algebra library
-	pkgver = 9.500.2
+	pkgver = 9.600.5
 	pkgrel = 1
 	url = http://arma.sourceforge.net/
 	install = armadillo.install
@@ -15,8 +15,8 @@ pkgbase = armadillo
 	optdepends = hdf5: HDF5 output
 	optdepends = cuda: NVBLAS support
 	optdepends = acml-cblas: ACML support
-	source = http://downloads.sourceforge.net/sourceforge/arma/armadillo-9.500.2.tar.xz
-	sha512sums = 461fc196ca7907b205f5f173ebdf2a297a28a1e20d582562314d524137d29425416c183da273856a0ce43ef10bcea4066497e72609477a036e2af9e06d794fc2
+	source = http://downloads.sourceforge.net/sourceforge/arma/armadillo-9.600.5.tar.xz
+	sha512sums = c513fe3534a5cbb8f2f1b47d5b593cf0c86f624f4cadfda0a7c30bc9fdab024041c3c317c4c0cca10733e62ab40fde5f0402bed97de8de388a0d6a9714d0fac0
 
 pkgname = armadillo
 
