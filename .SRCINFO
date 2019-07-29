@@ -1,13 +1,13 @@
 pkgbase = r-xfun
 	pkgdesc = Miscellaneous Functions by Yihui Xie
-	pkgver = 0.6
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=xfun
 	arch = any
 	license = MIT
 	depends = r
-	source = https://cran.r-project.org/src/contrib/xfun_0.6.tar.gz
-	md5sums = ac7d495eb47ee60cb954bb046469737e
+	source = https://cran.r-project.org/src/contrib/xfun_0.8.tar.gz
+	md5sums = da4a9efbff2c49ae652ec8e0847c7d96
 
 pkgname = r-xfun
 
