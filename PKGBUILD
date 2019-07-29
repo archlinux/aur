@@ -65,11 +65,11 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-_srcver_tag=5.2.3-arch1
+_srcver_tag=5.2.4-arch1
 pkgver="${_srcver_tag//-/.}"
 pkgrel=1
 arch=(x86_64)
-url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
+url="https://git.archlinux.org/linux.git/log/?h=v$_srcver_tag"
 license=(GPL2)
 makedepends=(
     xmlto
