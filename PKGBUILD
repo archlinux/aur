@@ -2,7 +2,7 @@
 
 pkgname=netcap-git
 pkgver=v0.3.9.r106.g6bbb8d6
-pkgrel=1
+pkgrel=2
 pkgdesc='A framework for secure and scalable network traffic analysis'
 url="https://github.com/dreadl0ck/netcap"
 arch=('x86_64')
@@ -44,17 +44,15 @@ build() {
 			-ldflags "-s -w" \
 			-gcflags="all=-trimpath=${GOPATH}/src" \
 			-asmflags="all=-trimpath=${GOPATH}/src" \
-		-o "build/${i//\//.}" "./$i"
+			-o "build/net.$(basename $i)" "./$i"
 	done
 }
 
 package() {
 	cd "${srcdir}/go/src/github.com/dreadl0ck/netcap"
 
-	for i in build/cmd.*; do
-		msg2 "Installing $i..."
-
-		install -Dm755 "$i" "${pkgdir}/usr/bin/$(basename $i)"
-	done
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	cd build
+	find . -type f -name 'net.*' -exec install -Dm755 "{}" "${pkgdir}/usr/bin/{}" \;
 }
