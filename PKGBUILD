@@ -12,7 +12,7 @@ pkgbase=linux-asus-aura
 _srcver=5.2.3-arch1
 pkgver=${_srcver//-/.}
 _srcname=${_srcver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -25,7 +25,7 @@ source=("https://git.archlinux.org/linux.git/snapshot/$_srcver.tar.gz"
         # aura sync patch
         "patch.diff")
 sha256sums=('85220a4c2c4e3a452810dbffa424e39cd708317c54c3144e49990bc4de84bfda'
-            'd49d9d0570785051f6b8b58962a4d792d1d1501ecb0a98dcf616226e6da6bdb5'
+            'c405c700b2cb06c4ec805b7e327d0b66416395995519281194a8293da69b398a'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7'
             'd764703db8e24d52ed91ff842f7959cf2ffaa46d755e26d859a131d1f08c681f')
 
