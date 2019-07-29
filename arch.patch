@@ -1,0 +1,11 @@
+diff --git a/buildme b/buildme
+index cee90a6..4b2351c 100755
+--- a/buildme
++++ b/buildme
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ BUILDTYPE=Release
+-ARCH=`arch`
++ARCH=`uname -m`
+ ARM64=OFF
+ CMAKE_TOOLCHAIN_FILE=../../../makefiles/cmake/toolchains/arm-linux-gnueabihf.cmake
