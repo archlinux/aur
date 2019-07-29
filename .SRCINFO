@@ -1,6 +1,6 @@
 pkgbase = otf-metropolis-git
 	pkgdesc = The Metropolis font, a modern, geometric typeface.
-	pkgver = r9.r0.813a838
+	pkgver = r9.r19.ff3e04b
 	pkgrel = 1
 	url = https://github.com/chrismsimpson/Metropolis
 	arch = any

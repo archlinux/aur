@@ -1,7 +1,7 @@
 # Maintainer: Artjom Simon <artjom.simon@gmail.com>
 # Contributor: Orffen <orffen@orffenspace.com>
 pkgname=otf-metropolis-git
-pkgver=r9.r8.90d7dcf
+pkgver=r9.r19.ff3e04b
 pkgrel=1
 pkgdesc="The Metropolis font, a modern, geometric typeface."
 arch=('any')
@@ -23,5 +23,5 @@ package() {
 	install -m644 Metropolis/Metropolis-*.otf "${pkgdir}/usr/share/fonts/OTF/"
 
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -m644 "Metropolis/Open Font License.md" "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -m644 "Metropolis/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
