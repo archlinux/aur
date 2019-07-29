@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=lua-luassert
-pkgver=1.7.11
+pkgver=1.8.0
 _rockname=luassert
 _rockrel=0
 pkgrel=1
@@ -13,7 +13,7 @@ depends=('lua' 'lua-say')
 makedepends=('luarocks')
 conflicts=()
 source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.rockspec")
-sha256sums=('1ab435fbbdb56956bdded3a5ddba9eabefa08939a1f5d5e4fe9229b4d9f2ef8b')
+sha256sums=('e1fb3f76453dcaac009ee3981beec670bf6da240ffd09773c5044f6a03f22485')
 
 package() {
   luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.rockspec"
