@@ -3,7 +3,7 @@
 
 pkgbase=openrazer
 pkgname=('python-openrazer' 'openrazer-daemon' 'openrazer-driver-dkms' 'openrazer-meta')
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux."
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/openrazer/openrazer"
 license=('GPL2')
 makedepends=('python-setuptools')
 source=("https://github.com/openrazer/openrazer/releases/download/v$pkgver/openrazer-$pkgver.tar.xz")
-sha256sums=('7cae0b3eebe2f3435521a109fdeb0da68c45e46d931fd3ec7ea354c4502c4e41')
+sha256sums=('cf473a1956a00d1fd17138860e002d9ef90297a67daa7a7713b8ab9019795bac')
 
 package_python-openrazer() {
   pkgdesc="Python library for accessing the Razer daemon from Python."
