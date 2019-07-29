@@ -1,5 +1,5 @@
 pkgname=mingw-w64-sz
-pkgver=2.1.5.1
+pkgver=2.1.5.3
 pkgrel=1
 pkgdesc="Error-bounded Lossy Data Compressor (for floating-point/integer datasets) (mingw-w64)"
 url="https://collab.cels.anl.gov/display/ESR/SZ"
@@ -9,16 +9,9 @@ depends=('mingw-w64-zstd')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/disheng222/SZ/archive/v${pkgver}.tar.gz")
-sha256sums=('5234df442714f3400ed5676d2dd151386f6763471e52f784c640f840b8ce40d5')
+sha256sums=('d73e024da2095612c27a815fd6eb31cca24f566c9cdd6add74eabc08bba7d70d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd "$srcdir/SZ-${pkgver}"
-  sed -i "s|ARCHIVE DESTINATION lib|ARCHIVE DESTINATION lib RUNTIME DESTINATION bin|g" sz/CMakeLists.txt
-  
-  curl -L https://github.com/disheng222/SZ/commit/360d29e44cf52cc1d59f2b2c070f94ad067f5314.patch | patch -p1
-}
 
 build() {
   cd "$srcdir/SZ-${pkgver}"
