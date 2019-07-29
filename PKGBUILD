@@ -2,16 +2,16 @@
 # Maintainer: Allen Choong <allencch at hotmail dot com>
 
 pkgname=httpcomponents-client
-pkgver=4.4.1
+pkgver=4.5.9
 pkgrel=1
 pkgdesc="A HTTP/1.1 compliant HTTP agent implementation based on HttpCore"
 arch=('any')
 url="http://hc.apache.org/"
-license="Apache"
+license=("Apache")
 depends=('java-runtime')
 conflicts=('')
 source=(http://www.apache.org/dist/httpcomponents/httpclient/binary/${pkgname}-${pkgver}-bin.tar.gz)
-md5sums=('edb03c31c84f7c509650768ecd57b0fb')
+md5sums=('fa1c1e55b78604758d419de016dc4453')
 
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}/lib
