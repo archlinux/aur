@@ -30,7 +30,4 @@ package() {
   make DESTDIR=$pkgdir LIBDIR=$pkgdir/usr/lib install
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  # Criterion's build system is broken -- installing an external dependency at the wrong place.
-  rm -rf ${pkgdir}${srcdir}
-  find ${pkgdir} -depth -type d -print | xargs rmdir >/dev/null 2>&1 || true
 }
