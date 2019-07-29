@@ -5,6 +5,7 @@ pkgname=('octopi-dev')
 pkgver=0.9.0
 pkgrel=2
 pkgdesc="A powerful Pacman frontend using Qt5 libs"
+pkggit=octopi-dev
 _gitcommit=31060ae2b2f7c496c95b2262b8219c39b65e45be
 _gitsha256='2eac6062b3589700b0d0e37c601f5bff4ad49dc59847be5950777d7e5a09685c'
 arch=('i686' 'x86_64')
@@ -27,7 +28,7 @@ source=("octopi-${pkgver}-${pkgrel}.tar.gz::https://github.com/aarnt/octopi/arch
 sha256sums=(${_gitsha256})
 
 prepare() {
-  cd "${srcdir}/${pkgbase}-${_gitcommit}"
+  cd "${srcdir}/${pkggit}-${_gitcommit}"
   
   # set version if beta
   sed -i -e "s|0.10.0 (dev)|${pkgver}-${pkgrel} (git-${_gitcommit:0:6})|g" src/strconstants.cpp
@@ -37,7 +38,7 @@ build() {
   cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
   cpucount=$((${cpucount:-1}))
 
-  cd "${srcdir}/${pkgbase}-${_gitcommit}"
+  cd "${srcdir}/${pkggit}-${_gitcommit}"
 
   msg "Starting build..."
   qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="${CFLAGS}" QMAKE_CXXFLAGS="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" octopi.pro -spec linux-clang
@@ -65,7 +66,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgbase}-${_gitcommit}"
+  cd "${srcdir}/${pkggit}-${_gitcommit}"
 
   make INSTALL_ROOT="${pkgdir}" install
 
