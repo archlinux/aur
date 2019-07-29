@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=sysdig-inspect
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A powerful opensource interface for container troubleshooting and security investigation"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gconf' 'gtk2' 'libsecret' 'libxss' 'libxtst' 'nss')
 optdepends=('gnome-keyring')
 source=("https://download.sysdig.com/stable/sysdig-inspect/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('c77ae68e0adfcac067294de0ce37f525fc15b5ffc9bf30493125889fdebcb83e')
+sha256sums=('1e7cee08fef190c4041c193ee28c740dc33344c5a69c7fc1e08a6181b7bd9b5c')
 
 package() {
     bsdtar -O -xf "${pkgname}_${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
