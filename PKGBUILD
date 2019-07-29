@@ -3,7 +3,7 @@
 _prefix=/opt/Unity
 
 pkgname=unity-editor-mac
-pkgver=2019.1.11f1
+pkgver=2019.1.12f1
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Mac platform"
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor')
 makedepends=('cpio')
-source=("2019.1.11f1.1.11f1.pkg::https://download.unity3d.com/download_unity/9b001d489a54/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2019.1.11f1.pkg")
-md5sums=("6176b12782ca235d25a4c6edcbe9029b")
+source=("2019.1.12f1.1.12f1.pkg::https://download.unity3d.com/download_unity/f04f5427219e/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2019.1.12f1.pkg")
+md5sums=("c35fc20ed177699277a4f3832634e036")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
