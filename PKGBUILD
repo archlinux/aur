@@ -14,8 +14,6 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 depends=('liblsl')
 makedepends=('git')
-optdepends=('python-mne: Viewer V2'
-            'python-vispy: Viewer V2')
 source=("$_name::git+https://github.com/labstreaminglayer/liblsl-Python.git")
 sha384sums=('SKIP')
 
