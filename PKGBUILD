@@ -1,8 +1,8 @@
 # Maintainer: gee
 
 pkgname=higan-bsnes
-pkgver=107.3
-pkgverR=107r3
+pkgver=108
+pkgverR=108
 pkgrel=1
 pkgdesc='Nintendo SNES emulator, faster official flavor of higan'
 arch=('x86_64')
@@ -14,13 +14,13 @@ depends=('alsa-lib' 'cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2'
          'libudev.so')
 conflicts=('bsnes' 'bsnes-classic')
 source=("https://download.byuu.org/bsnes_v${pkgverR}-source.7z")
-sha256sums=('21e29e311034b94b5244b2208baee12376bb07d83e2cf0d541cf326280e8cba1')
+sha256sums=('49c560b8438d0ea3942b1cd90ac3d4b5a33074eca77a0b24a7af463e87187bec')
 
 #root issue in package
 prepare() {
   cd bsnes_v${pkgverR}-source/bsnes/target-bsnes
-  sed -i "37,38d" GNUmakefile
-  sed -i '37s/^.....//' GNUmakefile
+  sed -i "41,42d" GNUmakefile
+  sed -i '41s/^.....//' GNUmakefile
 }
 
 build() {
