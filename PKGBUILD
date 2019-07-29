@@ -30,7 +30,6 @@ depends=('qtermwidget' 'pkgfile' 'alpm_octopi_utils' 'qt5-declarative' 'pacman-c
 [[ ${DISABLE_QTERMWIDGET} == "1" ]] && unset depends[0]
 makedepends=('git')
 optdepends=('pikaur: for AUR support'
-            'yaourt: for AUR support'
             'pacaur: for AUR support'
             'trizen: for AUR support'
             'pacmanlogviewer: to view pacman log files'
