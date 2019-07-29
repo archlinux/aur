@@ -18,7 +18,9 @@ pkgver() {
 
 package() {
 	echo package
-	
+
+	mv ${srcdir}/${pkgname}/src/overseer.py ${srcdir}/${pkgname}/src/overseer
+
 	install -Dm 755 ${srcdir}/${pkgname}/src/* --target-directory "${pkgdir}/usr/bin/"
 	install -Dm 644 ${srcdir}/${pkgname}/systemd/* --target-directory "${pkgdir}/usr/lib/systemd/system"
 }
