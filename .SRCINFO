@@ -1,6 +1,6 @@
 pkgbase = radiance
 	pkgdesc = Video art software for live performance
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://radiance.video
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = radiance
 	depends = portaudio
 	depends = rtmidi
 	depends = youtube-dl
-	source = https://github.com/zbanks/radiance/archive/0.6.0.tar.gz
+	source = https://github.com/zbanks/radiance/archive/0.6.1.tar.gz
 	source = https://github.com/zbanks/BTrack/archive/stable-201810.tar.gz
-	sha256sums = 1b4be7cfecff3e8ec18e28033ebdedcc3801cb8088b9d41514ae183d0c6ccb67
+	sha256sums = cfc3281abe61ee9a5efba67d682b212bb75cb7197ff65ee0eff0d30577011163
 	sha256sums = 8c265f565358e35f26eb7b38c3caa09d551ddb5b0aff18045a9714e6f1829bcc
 
 pkgname = radiance
