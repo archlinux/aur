@@ -1,0 +1,17 @@
+pkgbase = python-rtrlib-git
+	pkgdesc = A cffi based rtrlib binding for python
+	pkgver = r51.2ade90e
+	pkgrel = 1
+	url = https://github.com/rtrlib/python-binding
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = rtrlib
+	depends = python-cffi
+	source = rtrlib-python-binding::git+https://github.com/rtrlib/python-binding
+	md5sums = SKIP
+
+pkgname = python-rtrlib-git
+
