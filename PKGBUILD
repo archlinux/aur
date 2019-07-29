@@ -1,14 +1,15 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=amdvlk
-pkgver=2019.Q3.2
+pkgver=2019.Q3.3
 pkgrel=1
 
-_llpc_commit=252b93409b7cc92dacf48a421b9aac2a77629381
-_xgl_commit=2315f2a4de4df53eaa54b56e96332687ed12269f
-_pal_commit=ffb21e86238819817075e252ad9b49ea5284968d
-_llvm_commit=d9e4934189845f30428cad6da16e8745540291db
-_spvgen_commit=051aaa46272aae7808129b98fd9da49f3229eb78
+
+_llpc_commit=f60ebe48d60ef00e69b399a24e04d600cdcc1f0c
+_xgl_commit=6b0fbc836e01be4b8fb1990b4e31846ec19305bc
+_pal_commit=46251728a7137f399b564b0886bd9bf9888c48ef
+_llvm_commit=951ae36dc33d628235446a7abe87a1aebf6717e8
+_spvgen_commit=2f31d1170e8a12a66168b23235638c4bbc43ecdc
 _spirvtools_commit=ce19e217bc82e1dbd631b6a555b1874432f3a05f
 _spirvheaders_commit=c4f8f65792d4bf2657ca751904c511bbcf2ac77b
 _glslang_commit=c11e3156af2297f89a23c8db3f5e2323733ee556
@@ -32,12 +33,12 @@ source=(AMDVLK-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/AMDVL
         glslang-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/glslang/archive/${_glslang_commit}.tar.gz
         SPIRV-Headers-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/SPIRV-Headers/archive/${_spirvheaders_commit}.tar.gz)
   
-sha256sums=('209f71acee66b1eaa4dc7f39cf2a0f3e349dfdedf5f4e1c2d29b217057323198'
-            'eb0a94288e4bda889d75e287247e63b97a91d9761fb818c9106d4afa490760c3'
-            '1b01201e15eb62ad3df8b925de5763484570a85a4cdf686efe066e26d0ca70c2'
-            'd0b96d0b37ac24ada16fa030fe80070f39528f69df1c64c3474c3f58b98475ee'
-            'a816af55d118d1ab3f96729c2401568e689190d10388aa4f067917061bbfd271'
-            '6f1242b24197e8f6ff259371773bedcb858dec379eba32f07d150d6eb57e5a2b'
+sha256sums=('d2aa97caeffef43c934b73d24af3c30be640d6ffee20e27db6a58bb21c683939'
+            '4d6b623092215bfb8f9f01601db3de2b93cc0bf305173bafeb58c65f32967043'
+            'fee95d0a55cbd9c34aa54c3309ad896d56c287f35bc7cd6bb25bd86f7e0985d6'
+            '6832551a933fd04d8b1d031cf49b86497c17c878675fc641df23c9c9e128d52b'
+            '50b25878e19cd8a7d15aad891463fbdac60cbb04b2a4027bc31ff9ca3da4a5f6'
+            'cc946ad2835e502aca904c5f87802a2004eaed4729cb5c1dc29a5258d1c1e401'
             '7d100132a55af3a024478d0793a8809f1aa9690d12e0d26e72455f021e06b97e'
             '60ee8f0301eef76cfa913da718e31e3650a903e8ea88852ef88189eff0427a6b'
             'aa89dbeeef92da345082020a7503dea2cadb6f443deb4eca3fcbe28043370154')
