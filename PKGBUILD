@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
+    export GOPATH=$GOPATH:`pwd`
     go build lc0_main.go
 }
 
