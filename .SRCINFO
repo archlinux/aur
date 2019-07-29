@@ -12,7 +12,7 @@ pkgbase = lazydocker
 	makedepends = go
 	makedepends = git
 	source = lazydocker-0.5.5.tar.gz::https://github.com/jesseduffield/lazydocker/archive/v0.5.5.tar.gz
-	sha1sums = 0389b78f0aa9f52a0fef469694e665a5916801fc
+	sha1sums = 630fef2dc4591871f26456cef7bffee7b6b5a2f0
 
 pkgname = lazydocker
 
