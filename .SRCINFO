@@ -1,12 +1,16 @@
 pkgbase = dsvpn
 	pkgdesc = A Dead Simple VPN.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jedisct1/dsvpn
 	arch = any
 	license = MIT
 	makedepends = make
 	makedepends = gcc
+	depends = iproute2
+	depends = gawk
+	depends = iptables
+	depends = procps-ng
 	provides = dsvpn-git
 	conflicts = dsvpn-git
 	source = https://github.com/jedisct1/dsvpn/archive/0.1.0.tar.gz

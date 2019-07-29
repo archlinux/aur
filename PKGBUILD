@@ -1,13 +1,13 @@
 # Maintainer: Ethan Brittain-Morby <ebm539 at protonmail dot com>
 pkgname=dsvpn
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Dead Simple VPN."
 arch=('any')
 url="https://github.com/jedisct1/dsvpn"
 license=('MIT')
-depends=()
-makedepends=(make gcc)
+depends=('iproute2' 'gawk' 'iptables' 'procps-ng')
+makedepends=('make' 'gcc')
 provides=(${pkgname}-git)
 conflicts=(${pkgname}-git)
 source=("https://github.com/jedisct1/$pkgname/archive/$pkgver.tar.gz")
