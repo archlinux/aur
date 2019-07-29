@@ -1,5 +1,5 @@
---- ./amd/amdgpu/amdgpu_drv.c.orig	2019-07-06 00:42:03.000000000 +0000
-+++ ./amd/amdgpu/amdgpu_drv.c	2019-07-23 17:48:36.539101827 +0000
+--- ./amd/amdgpu/amdgpu_drv.c.orig	2019-07-28 04:36:48.218880843 +0700
++++ ./amd/amdgpu/amdgpu_drv.c	2019-07-28 03:58:22.781458252 +0700
 @@ -33,6 +33,9 @@
  #include <linux/pm_runtime.h>
  #include <linux/vga_switcheroo.h>
@@ -15,8 +15,8 @@
  		DRIVER_ATOMIC |
  #endif
 -		DRIVER_HAVE_IRQ | DRIVER_IRQ_SHARED | DRIVER_GEM |
-+		DRIVER_HAVE_IRQ |
 +#if DRM_VERSION_CODE < DRM_VERSION(5, 1, 0)
++		DRIVER_HAVE_IRQ |
 +		DRIVER_IRQ_SHARED |
 +#endif
 +		DRIVER_GEM |

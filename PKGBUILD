@@ -4,7 +4,7 @@ minor=838629
 pkgname='amdgpu-dkms'
 pkgver=${major}_${minor}
 pkgdesc="DKMS AMDGPU driver from AMD"
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url=https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-navi-linux
 license=('custom')
@@ -38,7 +38,7 @@ sha256sums=('e2eb0a34745ecb9e244f81e0f3af8e4ab063d699dbc3e1a1e0867e8ce773d473'
             'd575728fbe9e53586a30c24865a4741b19ffb29e9845a2dd935cac3faea4bec9'
             'be0940ccf42c941a5537acfeff299b2b0588e7e5e8f01a53e76a01b30efca2fd'
             'aa09dc25dfdfbbcb1ccd16f5420f9f8291c5db97e7d366828244460015262f4a'
-            'f169f7731877be9de1f2222b1d70658a057a6fc653b4b7bb820f9d88a0ba29e4'
+            'f3501aaae0680aeb4fd43c3d731c53544d53aa28a1b8bc728a33591c96f5417b'
             '62a6958c51817f53aeaf6d839132ebf4c81964658f6930146ac802d002d0ff74'
             'ad824a6e0d30ed93fbe68b532029d70aca7bdacb3c227c35b835a4471c0d18f7'
             '7c8efd69177fc84cb340feb1940b224b684ba6459327e0f09ff720e1f16039e6'

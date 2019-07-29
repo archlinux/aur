@@ -1,3 +1,4 @@
 *.tar.xz
+*.log
 src/
 pkg/
