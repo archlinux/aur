@@ -1,15 +1,15 @@
 pkgbase = youtube-cli
-	pkgdesc = A cli client to play audio
-	pkgver = 1.1
+	pkgdesc = A cli client to play audio from youtube with caching
+	pkgver = 1.2
 	pkgrel = 1
-	url = https://github.com/vivekkairi/youtube-cli
+	url = https://github.com/uditkarode/youtube-cli
 	arch = x86_64
-	license = sha265
+	license = MIT
 	depends = youtube-dl
 	depends = mpv
 	depends = git
 	depends = python
-	source = youtube-cli::git+https://github.com/vivekkairi/youtube-cli.git
+	source = youtube-cli::git+https://github.com/uditkarode/youtube-cli.git
 	md5sums = SKIP
 
 pkgname = youtube-cli

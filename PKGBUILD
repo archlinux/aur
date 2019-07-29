@@ -1,12 +1,12 @@
 pkgname="youtube-cli"
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
-pkgdesc="A cli client to play audio"
+pkgdesc="A cli client to play audio from youtube with caching"
 arch=("x86_64")
-url="https://github.com/vivekkairi/youtube-cli"
-license=('sha265')
+url="https://github.com/uditkarode/youtube-cli"
+license=('MIT')
 depends=('youtube-dl' 'mpv' 'git' 'python')
-source=(${pkgname}::git+https://github.com/vivekkairi/youtube-cli.git)
+source=(${pkgname}::git+https://github.com/uditkarode/youtube-cli.git)
 md5sums=('SKIP')
 
 build() {
@@ -19,8 +19,8 @@ build() {
 }
 
 package() {
-	install -Dm777 "${pkgname}/ytm" "${pkgdir}/usr/bin/youtube-cli"
-	install -Dm777 "${pkgname}/ytcli" "${pkgdir}/usr/bin/ytcli"
+	install -Dm755 "${pkgname}/youtube-cli" "${pkgdir}/usr/bin/youtube-cli"
+	install -Dm755 "${pkgname}/ytcli" "${pkgdir}/usr/bin/ytcli"
 	chmod a+x "${pkgdir}/usr/bin/youtube-cli" "${pkgdir}/usr/bin/ytcli"
 }
 
