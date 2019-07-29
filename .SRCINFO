@@ -1,6 +1,6 @@
 pkgbase = bsnes
 	pkgdesc = Super Nintendo emulator focusing on performance, features, and ease of use.
-	pkgver = 107.1
+	pkgver = 108
 	pkgrel = 1
 	url = https://byuu.org/emulation/bsnes/
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = bsnes
 	depends = sdl2
 	conflicts = bsnes-classic
 	conflicts = bsnes-plus
-	source = https://download.byuu.org/bsnes_v107r1-source.7z
+	source = https://download.byuu.org/bsnes_v108-source.7z
 	source = package.patch
-	sha256sums = 8649491111ecf257daec4637d7c238ebed534860a16bcfa139d7bca4c2629fbf
-	sha256sums = b578fba0dd5be5a93b0272704a60fa81c0bb524f9b9894b058c1223927d934d0
+	sha256sums = 49c560b8438d0ea3942b1cd90ac3d4b5a33074eca77a0b24a7af463e87187bec
+	sha256sums = e800849a4e6c9b431578c2c55bfaab7b0619629ba34bd97f38bae64d5f2412d6
 
 pkgname = bsnes
 
