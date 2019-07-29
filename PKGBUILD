@@ -1,9 +1,7 @@
-# Contributor: Kibouo <csonka.mihaly@hotmail.com>
-# Contributor: Ward Segers <w@rdsegers.be>
-# Contributor: Alex Branham <alex.branham@gmail.com>
-_cranver=0.8
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+
+_cranver=0.10
 _cranname=rstudioapi
-_pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-rstudioapi
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,8 +11,8 @@ url='https://cran.r-project.org/package=rstudioapi'
 license=('MIT')
 depends=('r' )
 optdepends=('r-testthat' 'r-knitr' 'r-rmarkdown')
-source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
-md5sums=('7601abbffcade9bdba3aa982c2c2625a')
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('c6ac84330a55f2e3dcffd2ec3f829532')
 
 build(){
     R CMD INSTALL rstudioapi_"$_cranver".tar.gz -l "$srcdir"
