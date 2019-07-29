@@ -2,7 +2,7 @@
 # Contributor: Térence Clastres <t dot clastres at gmail dot com>
 # Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi/
 pkgname=vivaldi-arm64
-pkgver=2.5.1525.48
+pkgver=2.6.1566.49
 pkgrel=1
 pkgdesc="A new browser for our friends. Vivaldi browser is made with power users in mind by people who love the Web."
 arch=('aarch64')
@@ -15,7 +15,7 @@ optdepends=('vivaldi-codecs-ffmpeg-extra-bin-arm64: playback of proprietary vide
 provides=('www-browser')
 options=('!strip' '!emptydirs')
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-${pkgrel}_arm64.deb")
-sha256sums=('123e88b7923024f75746ff7507ce1a005881a7cb66925a8eefdcd250194a22f0')
+sha256sums=('1452483f4f3e6aee98a73a86bec26e6ec79b097361513040f0a1f5e3e42b7207')
 
 prepare() {
  tar -xf data.tar.xz
