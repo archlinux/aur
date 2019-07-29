@@ -1,0 +1,42 @@
+diff --unified --recursive --text liblsl-Python-1.13.0/MANIFEST.in liblsl-Python-1.13.0.posixlibs/MANIFEST.in
+--- liblsl-Python-1.13.0/MANIFEST.in	2018-12-17 09:44:52.000000000 -0600
++++ liblsl-Python-1.13.0.posixlibs/MANIFEST.in	2019-07-28 22:40:16.586394137 -0500
+@@ -1,6 +1,2 @@
+ include README.md
+ include LICENSE
+-
+-# If using Python 2.6 or less, then have to include package data, even though
+-# it's already declared in setup.py
+-include pylsl/liblsl*.*
+diff --unified --recursive --text liblsl-Python-1.13.0/pylsl/pylsl.py liblsl-Python-1.13.0.posixlibs/pylsl/pylsl.py
+--- liblsl-Python-1.13.0/pylsl/pylsl.py	2018-12-17 09:44:52.000000000 -0600
++++ liblsl-Python-1.13.0.posixlibs/pylsl/pylsl.py	2019-07-28 22:40:57.100140914 -0500
+@@ -1192,7 +1192,7 @@
+     raise RuntimeError("unrecognized operating system:", os_name)
+ libpath = os.path.join(os.path.dirname(__file__), 'lib', libname)
+ if not os.path.isfile(libpath):
+-    libpath = util.find_library('lsl' + str(bitness))
++    libpath = util.find_library('lsl')
+ if not libpath:
+     raise RuntimeError("library " + libname + " was not found - make sure "
+                        "that it is on the search path (e.g., in the same "
+diff --unified --recursive --text liblsl-Python-1.13.0/setup.py liblsl-Python-1.13.0.posixlibs/setup.py
+--- liblsl-Python-1.13.0/setup.py	2018-12-17 09:44:52.000000000 -0600
++++ liblsl-Python-1.13.0.posixlibs/setup.py	2019-07-28 22:41:32.070503361 -0500
+@@ -104,16 +104,6 @@
+     # $ pip install -e .[dev,test]
+     # extras_require={},
+ 
+-    # If there are data files included in your packages that need to be
+-    # installed, specify them here.  If using Python 2.6 or less, then these
+-    # have to be included in MANIFEST.in as well.
+-    # Here we specify all the shared libs for the different platforms, but
+-    # setup will probably only find the one library downloaded by the build
+-    # script or placed here manually.
+-    package_data={
+-        'pylsl': ['lib/*.so*', 'lib/*.dll', 'lib/*.dylib'],
+-    },
+-    
+     # Although 'package_data' is the preferred approach, in some case you may
+     # need to place data files outside of your packages. See:
+     # http://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files # noqa
