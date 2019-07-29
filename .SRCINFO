@@ -1,0 +1,17 @@
+pkgbase = kdenlive-appimage
+	pkgdesc = A non-linear video editor for Linux using the MLT video framework
+	pkgver = 19.04.3
+	pkgrel = 1
+	url = https://www.kdenlive.org
+	arch = x86_64
+	license = GPL
+	provides = kdenlive
+	conflicts = kdenlive
+	options = !strip
+	source = https://files.kde.org/kdenlive/release/kdenlive-19.04.3-x86_64.appimage
+	source = kdenlive.sh
+	sha256sums = b48e88ffc323b064d708ffba01f3d44de9515b343a5bb59dacecc74e212468a4
+	sha256sums = 66df25e1c4846564e8e743711b09c454802d3292280356abfcca058236cc6e23
+
+pkgname = kdenlive-appimage
+
