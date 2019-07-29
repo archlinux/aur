@@ -1,7 +1,7 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 
 pkgname=tapclean
-pkgver=0.36
+pkgver=0.38
 pkgrel=1
 pkgdesc="Commodore tape preservation and restoration tool"
 arch=('i686' 'x86_64')
@@ -9,7 +9,8 @@ url="https://sourceforge.net/projects/tapclean"
 license=('GPL2')
 depends=()
 source=("https://sourceforge.net/projects/tapclean/files/tapclean/TAPClean%20${pkgver}/${pkgname}-${pkgver}-src.tgz")
-md5sums=('f3501026f857d4af78bac8872c0f1e27')
+md5sums=('e6489783241bb30affdb33d19fff04fb')
+
 
 #pkgver() {
 #  cd "${srcdir}/${pkgname}"
@@ -17,11 +18,11 @@ md5sums=('f3501026f857d4af78bac8872c0f1e27')
 #}
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}/src"
   make CFLAGS+=
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}/src"
   install -D --mode=0755 tapclean "${pkgdir}/usr/bin/tapclean"
 }
