@@ -1,25 +1,25 @@
-diff --unified --recursive --text pylsl-1.10.5/MANIFEST.in pylsl-1.10.5.nolibs/MANIFEST.in
---- pylsl-1.10.5/MANIFEST.in	2016-08-26 16:52:50.000000000 -0500
-+++ pylsl-1.10.5.nolibs/MANIFEST.in	2019-07-28 22:15:45.386642468 -0500
+diff --unified --recursive --text pylsl-1.12.2/MANIFEST.in pylsl-1.12.2.nolibs/MANIFEST.in
+--- pylsl-1.12.2/MANIFEST.in	2018-07-26 10:32:58.000000000 -0500
++++ pylsl-1.12.2.nolibs/MANIFEST.in	2019-07-28 22:30:13.715521387 -0500
 @@ -1,6 +1,2 @@
- include DESCRIPTION.rst
+ include README.md
  include LICENSE
 -
 -# If using Python 2.6 or less, then have to include package data, even though
 -# it's already declared in setup.py
 -include pylsl/liblsl*.*
-Only in pylsl-1.10.5/pylsl: liblsl32.dll
-Only in pylsl-1.10.5/pylsl: liblsl32.dylib
-Only in pylsl-1.10.5/pylsl: liblsl32.so
-Only in pylsl-1.10.5/pylsl: liblsl64.dll
-Only in pylsl-1.10.5/pylsl: liblsl64.dylib
-Only in pylsl-1.10.5/pylsl: liblsl64.so
-diff --unified --recursive --text pylsl-1.10.5/pylsl/pylsl.py pylsl-1.10.5.nolibs/pylsl/pylsl.py
---- pylsl-1.10.5/pylsl/pylsl.py	2016-08-26 17:53:56.000000000 -0500
-+++ pylsl-1.10.5.nolibs/pylsl/pylsl.py	2019-07-28 22:16:32.690354072 -0500
-@@ -1141,7 +1141,9 @@
+Only in pylsl-1.12.2/pylsl: liblsl32.dll
+Only in pylsl-1.12.2/pylsl: liblsl64.1.12.0.dylib
+Only in pylsl-1.12.2/pylsl: liblsl64.dll
+Only in pylsl-1.12.2/pylsl: liblsl64.dylib
+Only in pylsl-1.12.2/pylsl: liblsl64.so
+Only in pylsl-1.12.2/pylsl: liblsl64.so.1.12.0
+diff --unified --recursive --text pylsl-1.12.2/pylsl/pylsl.py pylsl-1.12.2.nolibs/pylsl/pylsl.py
+--- pylsl-1.12.2/pylsl/pylsl.py	2018-07-27 09:01:45.000000000 -0500
++++ pylsl-1.12.2.nolibs/pylsl/pylsl.py	2019-07-28 22:29:49.148560030 -0500
+@@ -1194,7 +1194,9 @@
  if not os.path.isfile(libpath):
-     libpath = util.find_library(libname)
+     libpath = util.find_library('lsl' + str(bitness))
  if not libpath:
 -    raise RuntimeError("library " + libname + " was not found - make sure "
 +    libpath = util.find_library('lsl')
@@ -28,34 +28,37 @@ diff --unified --recursive --text pylsl-1.10.5/pylsl/pylsl.py pylsl-1.10.5.nolib
                         "that it is on the search path (e.g., in the same "
                         "folder as pylsl.py).")
  lib = CDLL(libpath)
-diff --unified --recursive --text pylsl-1.10.5/pylsl.egg-info/SOURCES.txt pylsl-1.10.5.nolibs/pylsl.egg-info/SOURCES.txt
---- pylsl-1.10.5/pylsl.egg-info/SOURCES.txt	2016-08-26 18:11:02.000000000 -0500
-+++ pylsl-1.10.5.nolibs/pylsl.egg-info/SOURCES.txt	2019-07-28 22:15:59.433419823 -0500
-@@ -5,12 +5,6 @@
+diff --unified --recursive --text pylsl-1.12.2/pylsl.egg-info/SOURCES.txt pylsl-1.12.2.nolibs/pylsl.egg-info/SOURCES.txt
+--- pylsl-1.12.2/pylsl.egg-info/SOURCES.txt	2018-07-27 14:05:20.000000000 -0500
++++ pylsl-1.12.2.nolibs/pylsl.egg-info/SOURCES.txt	2019-07-28 22:30:05.522089561 -0500
+@@ -4,12 +4,6 @@
  setup.cfg
  setup.py
  pylsl/__init__.py
 -pylsl/liblsl32.dll
--pylsl/liblsl32.dylib
--pylsl/liblsl32.so
+-pylsl/liblsl64.1.12.0.dylib
 -pylsl/liblsl64.dll
 -pylsl/liblsl64.dylib
 -pylsl/liblsl64.so
+-pylsl/liblsl64.so.1.12.0
  pylsl/pylsl.py
  pylsl.egg-info/PKG-INFO
  pylsl.egg-info/SOURCES.txt
-diff --unified --recursive --text pylsl-1.10.5/setup.py pylsl-1.10.5.nolibs/setup.py
---- pylsl-1.10.5/setup.py	2016-08-26 17:56:24.000000000 -0500
-+++ pylsl-1.10.5.nolibs/setup.py	2019-07-28 22:15:35.586566079 -0500
-@@ -84,13 +84,6 @@
+diff --unified --recursive --text pylsl-1.12.2/setup.py pylsl-1.12.2.nolibs/setup.py
+--- pylsl-1.12.2/setup.py	2018-07-27 13:57:09.000000000 -0500
++++ pylsl-1.12.2.nolibs/setup.py	2019-07-28 22:30:47.122591750 -0500
+@@ -85,16 +85,6 @@
      # $ pip install -e .[dev,test]
      extras_require={},
  
 -    # If there are data files included in your packages that need to be
 -    # installed, specify them here.  If using Python 2.6 or less, then these
 -    # have to be included in MANIFEST.in as well.
+-    # Here we specify all the shared libs for the different platforms, but
+-    # setup will probably only find the one library downloaded by the build
+-    # script or placed here manually.
 -    package_data={
--        'pylsl': ['liblsl32.dll','liblsl64.dll','liblsl32.dylib','liblsl64.dylib','liblsl32.so','liblsl64.so'],
+-        'pylsl': ['*.dll', '*.dylib', '*.so*'],
 -    },
 -
      # Although 'package_data' is the preferred approach, in some case you may

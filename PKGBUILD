@@ -3,7 +3,7 @@
 pkgbase=python-pylsl
 pkgname=(python-pylsl python2-pylsl)
 _name=${pkgname#python-}
-pkgver=1.10.5
+pkgver=1.12.2
 pkgrel=1
 pkgdesc='Python interface to the Lab Streaming Layer'
 url='https://github.com/labstreaminglayer/liblsl-Python'
@@ -11,10 +11,10 @@ arch=('any')
 license=('MIT')
 conflicts=($pkgname)
 depends=('liblsl')
-source=('https://files.pythonhosted.org/packages/8b/9e/96d8e32a716dfa8071c344742f8acf9942e7bb26cc060a8a71e1385703e8/pylsl-1.10.5.zip'
+source=('https://files.pythonhosted.org/packages/5b/1e/71fb9b89c713fcddb63304ee52ae14bc2ba9b20cd7e019e0fe1c92df32af/pylsl-1.12.2.tar.gz'
         'nolibs.patch')
-sha384sums=('84945e65a75d6a1e95a91648f2b2e70198eb8407ca83160bef7f1984a001983c62a7922919a675c7c6d30ecfb7cb5d7b'
-            'c01b6ef98127a79364f26f15f62d53928fb43b7d1db3da2a3d8ded30e64c754e19f0f02148db74bd96335e6975f2ff2b')
+sha384sums=('86125411f50812bb40aed30af171a9764bf1a5c4af479a5d276806e3fa40919c6548827b850fc900325095c4b7bdb133'
+            '5aef54d81924ea8dedfc7f80f73dfd2cd6913f8d2a9085a596c657a816c7bd69bf001e137ca3933651e381efda6bfb80')
 
 prepare(){
   cd "$srcdir/$_name-${pkgver}"
