@@ -20,6 +20,11 @@ build() {
   cmake --build build
 }
 
+check() {
+  cd "${pkgname}-v${pkgver}"
+  cmake --build build --target criterion_tests test
+}
+
 package() {
   cd "${pkgname}-v${pkgver}"
   cmake --build build --target install -- DESTDIR="$pkgdir/"
