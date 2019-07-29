@@ -1,14 +1,14 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.12.2
+_oomox_ver=1.12.3
 _oomox_theme_ver=1.10
-_materia_theme_ver=20190315
-#_materia_cmt=94da12f9c5dfa4e045f8f02e2c818891b13b0930
+#_materia_theme_ver=20190315
+_materia_cmt=f1ad3125eea55f4fe88ceab1be83bd51ee5eba48
 _arc_theme_ver=20190330
 _archdroid_icons_ver=1.0.2
 _gnome_colors_icons_ver=5.5.5
-_oomoxify_ver=1.1.2
-_base16_cmt=2e4112fe859ed5d33f67c177f11d369d360db9ae
+_oomoxify_ver=1.1.3
+_base16_cmt=2ddee2a03653850ed2166e7766636bf1dfb21ca5
 _numix_icons_cmt=1029e86ec58c387a5b3523380ee17f223f7e2de4
 _numix_folders_icons_cmt=24e5f6c6603e7f798553d2f24a00de107713c333
 _papirus_icons_ver=20190720
@@ -17,7 +17,7 @@ _suru_plus_aspromauros_icons_ver=3.0
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=10
+pkgrel=1
 pkgdesc='Themix: GUI for generating different color variations
 of Arc, Materia, Oomox themes
 (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
@@ -68,10 +68,11 @@ options=(
 provides=('oomox')
 conflicts=('oomox-git')
     # "materia-theme-v${_materia_theme_ver}.tar.gz::https://github.com/nana-4/materia-theme/archive/v${_materia_theme_ver}.tar.gz"
+    #"materia-theme-${_materia_theme_ver}.tar.gz::https://github.com/nana-4/materia-theme/archive/v${_materia_theme_ver}.tar.gz"
 source=(
     "oomox-${_oomox_ver}.tar.gz::https://github.com/themix-project/oomox/archive/${_oomox_ver}.tar.gz"
     "oomox-gtk-theme-${_oomox_theme_ver}.tar.gz::https://github.com/themix-project/oomox-gtk-theme/archive/${_oomox_theme_ver}.tar.gz"
-    "materia-theme-${_materia_theme_ver}.tar.gz::https://github.com/nana-4/materia-theme/archive/v${_materia_theme_ver}.tar.gz"
+    "materia-theme-${_materia_cmt}.tar.gz::https://github.com/nana-4/materia-theme/archive/${_materia_cmt}.tar.gz"
     "arc-theme-${_arc_theme_ver}.tar.gz::https://github.com/NicoHood/arc-theme/archive/${_arc_theme_ver}.tar.gz"
     "archdroid-icon-theme-${_archdroid_icons_ver}.tar.gz::https://github.com/themix-project/oomox-archdroid-icon-theme/archive/${_archdroid_icons_ver}.tar.gz"
     "gnome-colors-icon-theme-${_gnome_colors_icons_ver}.tar.gz::https://github.com/themix-project/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_icons_ver}.tar.gz"
@@ -83,14 +84,14 @@ source=(
     "suru-plus-icon-theme-${_suru_plus_icons_ver}.tar.gz::https://github.com/gusbemacbe/suru-plus/archive/v${_suru_plus_icons_ver}.tar.gz"
     "suru-plus-aspromauros-icon-theme-${_suru_plus_aspromauros_icons_ver}.tar.gz::https://github.com/gusbemacbe/suru-plus-aspromauros/archive/v${_suru_plus_aspromauros_icons_ver}.tar.gz"
 )
-md5sums=('3dd791ab2cf30cc713657fc68d0b8e87'
+md5sums=('c7bc893608ab64a35bce7063a5d26ea9'
          '13945f05eba3b85e6d63fec1ff60380a'
-         '2bc1e31909bf1e6d966d64c82db21a97'
+         'ff8455aa4a17e8939da1a87b649634cd'
          '57c71dbdf05b6cfda073239ff322033c'
          'cb669130685dcbf03a8f7f5738c71dc6'
          '8b4a9a1837211a3caf661ab825d66cb0'
-         '743395f8490fe7d2ec1525930f019d97'
-         '8f7506b74131bfce78685aade0e275eb'
+         '04e2280ab3094a04cb9c9feb032e2d74'
+         'e3b999f86cef486ff90c4911514f3de3'
          '9df0d2aae9a4b8e2e170c9aeb7effc4f'
          '3fcb07cefe43a6a2fe4d977f124624ec'
          '3f734d1ff9f7d34677dda25216b3d9dd'
@@ -100,8 +101,8 @@ md5sums=('3dd791ab2cf30cc713657fc68d0b8e87'
 prepare() {
     cd ${srcdir}
     cp -pr "${pkgname}-gtk-theme-${_oomox_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_oomox/gtk-theme"
-    cp -pr "materia-theme-${_materia_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
-    #cp -pr "materia-theme-${_materia_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
+    #cp -pr "materia-theme-${_materia_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
+	cp -pr "materia-theme-${_materia_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
     cp -pr "arc-theme-${_arc_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_arc/arc-theme"
     cp -pr "archdroid-icon-theme-${_archdroid_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_archdroid/archdroid-icon-theme"
     cp -pr "gnome-colors-icon-theme-${_gnome_colors_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_gnomecolors/gnome-colors-icon-theme"
