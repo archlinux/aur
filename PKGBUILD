@@ -8,7 +8,7 @@ pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="A simple music player for KDE aiming to provide a nice experience for its users"
 url="https://community.kde.org/Elisa"
-license=(GPL3 custom:"Qt Company GPL Exception 1.0")
+license=(LGPL3)
 depends=(qt5-quickcontrols2 kcmutils baloo kirigami2)
 makedepends=(git python extra-cmake-modules kdoctools)
 provides=(elisa)
@@ -37,7 +37,4 @@ build() {
 package(){
   cd build
   make DESTDIR="$pkgdir" install
-
-  cd "$srcdir"/elisa
-  install -Dm644 LICENSE.GPL3-EXCEPT "$pkgdir/usr/share/licenses/$pkgname/LICENSE.GPL3-EXCEPT"
 }
