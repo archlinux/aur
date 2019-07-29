@@ -1,0 +1,13 @@
+pkgbase = tapclean-git
+	pkgdesc = Commodore tape preservation and restoration tool
+	pkgver = r1102.dbbea87
+	pkgrel = 1
+	url = https://sourceforge.net/projects/tapclean
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = tapclean::git+https://git.code.sf.net/p/tapclean/gitcode
+	md5sums = SKIP
+
+pkgname = tapclean-git
+
