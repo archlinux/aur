@@ -2,20 +2,23 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='trueconf'
-pkgver='1.3.1.1038'
+pkgver='7.3.4.72'
 pkgrel='1'
 pkgdesc='Video conference client'
 arch=('x86_64')
 url="https://${pkgname}.ru"
 license=('freeware')
-depends=('libxslt' 'v4l-utils' 'sqlite' 'gtk2' 'openssl' 'gstreamer0.10')
+depends=('bzip2' 'curl' 'dbus' 'glib2' 'icu' 'lame' 'libglvnd' 'libidn' 'libphonenumber'
+'libsystemd' 'libx11' 'libxcb' 'libxext' 'libxrandr' 'openssl-1.0' 'protobuf'
+'qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'speex' 'speexdsp' 'sqlite'
+'v4l-utils' 'zeromq' 'zlib' 'systemd')
 optdepends=('pulseaudio: audio support with pulseaudio'
 	    'apulse-git: audio support without pulseaudio')
 makedepends=('libarchive')
-source=("${url}/download/${pkgname}-client-amd64.pkg.tar.xz"
+source=("${url}/download/${pkgname}_client_arch_x86_64.pkg.tar.xz"
 	"${pkgname}.desktop")
-sha256sums=('d077e5ea44e31968052d98f9c08e383275985b62b9372b0be97826389fce09a7'
-            'e57c0c5c0e4b1be5b11108df5245f3035c7cd4b492de9e014a14b3871f1cddaf')
+sha256sums=('e2aa01d7ceb1908a4e074d048b4bcca3447e7c5061a091331bc78fc3a7c91de5'
+            'f0f0457d608f985dca6d7e9256460c216ea9a389c13278fcc37f9ffdc2e7d9a0')
 install="${pkgname}.install"
 
 build() {
