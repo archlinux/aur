@@ -1,6 +1,6 @@
 pkgbase = lib32-ldns
 	pkgdesc = Fast DNS library supporting recent RFCs (32-bit)
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://www.nlnetlabs.nl/projects/ldns/
 	arch = x86_64
@@ -8,10 +8,8 @@ pkgbase = lib32-ldns
 	makedepends = lib32-libpcap
 	depends = lib32-openssl
 	depends = ldns
-	source = https://www.nlnetlabs.nl/downloads/ldns/ldns-1.7.0.tar.gz
-	source = pc.patch
-	sha256sums = c19f5b1b4fb374cfe34f4845ea11b1e0551ddc67803bd6ddd5d2a20f0997a6cc
-	sha256sums = 3586302eed28269c7fa6013785c0a017689aa9d4ff24ff8d7735fa23a3732cb7
+	source = https://www.nlnetlabs.nl/downloads/ldns/ldns-1.7.1.tar.gz
+	sha256sums = 8ac84c16bdca60e710eea75782356f3ac3b55680d40e1530d7cea474ac208229
 
 pkgname = lib32-ldns
 
