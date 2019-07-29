@@ -1,7 +1,7 @@
 pkgbase = emacs-elpy
 	pkgdesc = Emacs Python Development Environment
 	pkgver = 1.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorgenschaefer/elpy
 	install = emacs-elpy.install
 	arch = any

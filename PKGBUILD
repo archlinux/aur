@@ -6,10 +6,10 @@ _pkgmaintainer=jorgenschaefer
 _pkgdestdirname=elpy
 _versionprefix=
 pkgver=1.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs Python Development Environment"
 pkgname=emacs-${_pkgdestdirname}
-arch=(any)
+arch=('any')
 url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs' 'emacs-company-mode' 'emacs-find-file-in-project' 'emacs-highlight-indentation' 'emacs-pyvenv' 'emacs-yasnippet' 'emacs-s' 'python-elpy')
@@ -24,7 +24,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}"
-  mkdir -p "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/snippets/python-mode"
-  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/"
-  install -m644 snippets/python-mode/* "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/snippets/python-mode"
+  mkdir -p "${pkgdir}/usr/share/emacs/site-lisp/snippets/python-mode"
+  install -m644 *.el{c,} "$pkgdir"/usr/share/emacs/site-lisp/
+  install -m644 snippets/python-mode/* "$pkgdir"/usr/share/emacs/site-lisp/snippets/python-mode/
 }
