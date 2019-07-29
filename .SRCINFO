@@ -12,7 +12,6 @@ pkgbase = octopi
 	depends = qt5-declarative
 	depends = pacman-contrib
 	optdepends = pikaur: for AUR support
-	optdepends = yaourt: for AUR support
 	optdepends = pacaur: for AUR support
 	optdepends = trizen: for AUR support
 	optdepends = pacmanlogviewer: to view pacman log files
