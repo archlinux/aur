@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Completely free enterprise-ready Python distribution for large-scale data processing, predictive analytics, and scientific computing."
 arch=('x86_64')
 url="https://store.continuum.io/cshop/anaconda/"
-license=("custom")
+license=("BSD")
 source=("http://repo.continuum.io/archive/Anaconda2-${pkgver}-Linux-x86_64.sh"
 "$pkgname.install")
 options=(!strip libtool staticlibs)
