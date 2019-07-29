@@ -1,7 +1,7 @@
 pkgbase = asbru-cm-git
 	pkgdesc = A free and open-source connection manager. GIT version
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asbru-cm/asbru-cm
 	arch = any
 	license = GPL3
@@ -28,6 +28,7 @@ pkgbase = asbru-cm-git
 	optdepends = openssh: SSH connections
 	optdepends = mosh: Mobile shell
 	optdepends = tigervnc: for VNC connections
+	optdepends = perl-x11-guitest: To fit perfectly RDP tabs
 	source = git+https://github.com/asbru-cm/asbru-cm.git
 	sha256sums = SKIP
 
