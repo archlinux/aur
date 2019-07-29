@@ -1,0 +1,27 @@
+pkgbase = distrho-ports
+	pkgdesc = DISTRHO Plugin Ports (Stable)
+	pkgver = 20180416
+	pkgrel = 1
+	url = http://distrho.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = freetype2
+	depends = alsa-lib
+	depends = libxext
+	provides = distrho
+	conflicts = distrho
+	conflicts = distrho-vst-git
+	conflicts = distrho-plugins-vst-git
+	conflicts = distrho-lv2-git
+	conflicts = distrho-plugins-lv2-git
+	conflicts = dexed
+	conflicts = dexed-git
+	conflicts = dexed-vst-git
+	conflicts = luftikus
+	conflicts = tal-plugins
+	source = https://github.com/DISTRHO/DISTRHO-Ports/releases/download/2018-04-16/DISTRHO-Ports-2018-04-16-linux64.tar.xz
+	md5sums = SKIP
+
+pkgname = distrho-ports
+
