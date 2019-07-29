@@ -3,7 +3,7 @@
 pkgbase=python-pylsl
 pkgname=(python-pylsl python2-pylsl)
 _name=${pkgname#python-}
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc='Python interface to the Lab Streaming Layer'
 url='https://github.com/labstreaminglayer/liblsl-Python'
@@ -11,10 +11,10 @@ arch=('any')
 license=('MIT')
 conflicts=($pkgname)
 depends=('liblsl')
-source=('https://github.com/labstreaminglayer/liblsl-Python/archive/v1.13.0.tar.gz'
+source=('https://github.com/labstreaminglayer/liblsl-Python/archive/v1.13.1.tar.gz'
         'posixlibs.patch')
-sha384sums=('adabd2396461667365df4d314875f267787244dce2406e16644555dd4d983f196cfbdccbef00fa4d408a54716c1c3c05'
-            '7e71482a33178f7d452e0783967ca90dfe83f4dbac07230697a888a156d0af2657697c40d9fd9ec6c504dc6999895793')
+sha384sums=('bd66c7b77103c338d5d81d10f03d70724326edec02117445a624f0240c7a04718107b238a728a44d27197cb586b577f9'
+            '4fff43c98b8b96714479a3f2fde65eecaa53693bd9b73a8502e939d8f365cfec1b4c6e8c2cdc256b618d03afb520a16a')
 
 prepare(){
   cd "$srcdir/liblsl-Python-${pkgver}"

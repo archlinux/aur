@@ -1,6 +1,6 @@
-diff --unified --recursive --text liblsl-Python-1.13.0/MANIFEST.in liblsl-Python-1.13.0.posixlibs/MANIFEST.in
---- liblsl-Python-1.13.0/MANIFEST.in	2018-12-17 09:44:52.000000000 -0600
-+++ liblsl-Python-1.13.0.posixlibs/MANIFEST.in	2019-07-28 22:40:16.586394137 -0500
+diff --unified --recursive --text liblsl-Python-1.13.1/MANIFEST.in liblsl-Python-1.13.1.posixlibs/MANIFEST.in
+--- liblsl-Python-1.13.1/MANIFEST.in	2018-12-17 12:47:57.000000000 -0600
++++ liblsl-Python-1.13.1.posixlibs/MANIFEST.in	2019-07-28 22:48:11.268288919 -0500
 @@ -1,6 +1,2 @@
  include README.md
  include LICENSE
@@ -8,9 +8,9 @@ diff --unified --recursive --text liblsl-Python-1.13.0/MANIFEST.in liblsl-Python
 -# If using Python 2.6 or less, then have to include package data, even though
 -# it's already declared in setup.py
 -include pylsl/liblsl*.*
-diff --unified --recursive --text liblsl-Python-1.13.0/pylsl/pylsl.py liblsl-Python-1.13.0.posixlibs/pylsl/pylsl.py
---- liblsl-Python-1.13.0/pylsl/pylsl.py	2018-12-17 09:44:52.000000000 -0600
-+++ liblsl-Python-1.13.0.posixlibs/pylsl/pylsl.py	2019-07-28 22:40:57.100140914 -0500
+diff --unified --recursive --text liblsl-Python-1.13.1/pylsl/pylsl.py liblsl-Python-1.13.1.posixlibs/pylsl/pylsl.py
+--- liblsl-Python-1.13.1/pylsl/pylsl.py	2018-12-17 12:47:57.000000000 -0600
++++ liblsl-Python-1.13.1.posixlibs/pylsl/pylsl.py	2019-07-28 22:47:58.491471938 -0500
 @@ -1192,7 +1192,7 @@
      raise RuntimeError("unrecognized operating system:", os_name)
  libpath = os.path.join(os.path.dirname(__file__), 'lib', libname)
@@ -20,9 +20,9 @@ diff --unified --recursive --text liblsl-Python-1.13.0/pylsl/pylsl.py liblsl-Pyt
  if not libpath:
      raise RuntimeError("library " + libname + " was not found - make sure "
                         "that it is on the search path (e.g., in the same "
-diff --unified --recursive --text liblsl-Python-1.13.0/setup.py liblsl-Python-1.13.0.posixlibs/setup.py
---- liblsl-Python-1.13.0/setup.py	2018-12-17 09:44:52.000000000 -0600
-+++ liblsl-Python-1.13.0.posixlibs/setup.py	2019-07-28 22:41:32.070503361 -0500
+diff --unified --recursive --text liblsl-Python-1.13.1/setup.py liblsl-Python-1.13.1.posixlibs/setup.py
+--- liblsl-Python-1.13.1/setup.py	2018-12-17 12:47:57.000000000 -0600
++++ liblsl-Python-1.13.1.posixlibs/setup.py	2019-07-28 22:48:32.188536008 -0500
 @@ -104,16 +104,6 @@
      # $ pip install -e .[dev,test]
      # extras_require={},
