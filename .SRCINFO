@@ -1,0 +1,25 @@
+pkgbase = terminus-font-td1-ttf
+	pkgdesc = Fixed-width bitmap font (td1 patch) (TTF version)
+	pkgver = 4.47
+	pkgrel = 1
+	url = https://files.ax86.net/terminus-ttf
+	arch = any
+	license = GPL2
+	license = custom:OFL
+	makedepends = python
+	makedepends = fontforge
+	makedepends = potrace
+	makedepends = mkbold-mkitalic
+	makedepends = git
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	depends = fontconfig
+	provides = terminus-font-ttf
+	conflicts = terminus-font-ttf
+	source = https://downloads.sourceforge.net/project/terminus-font/terminus-font-4.47/terminus-font-4.47.tar.gz
+	source = git+https://github.com/Tblue/mkttf
+	sha256sums = 0f1b205888e4e26a94878f746b8566a65c3e3742b33cf9a4e6517646d5651297
+	sha256sums = SKIP
+
+pkgname = terminus-font-td1-ttf
+
