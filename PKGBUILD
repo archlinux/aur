@@ -2,7 +2,7 @@
 # Maintainer: Leihu Xi <leihuxi@gmail.com>
 
 pkgname=mitalk
-pkgver=4.0.39
+pkgver=4.0.48
 pkgrel=1
 pkgdesc="MiTalk Messenger"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     'https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_'${pkgver}'.deb'
 )
 md5sums=(
-    'e5965908ba5e4d822e775b42a3409cba'
+    'f476d69ff25d828f716c0da5a2f204b2'
 )
 
 package() {
