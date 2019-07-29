@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=system76-power-git
-pkgver=r202.8b7fd55
+pkgver=r208.80d9b4b
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
