@@ -13,8 +13,8 @@ pkgbase = mitalk
 	depends = nss
 	depends = libxss
 	depends = xorg-xrandr
-	source = https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_4.0.48.deb
-	md5sums = f476d69ff25d828f716c0da5a2f204b2
+	source = https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_4.0.48.pacman
+	md5sums = 4019cdb22ddd99a19db41b23d966e058
 
 pkgname = mitalk
 
