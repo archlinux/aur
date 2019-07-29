@@ -2,7 +2,7 @@
 
 pkgname=ater-yellow-cursor-theme
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ater-yellow cursor theme"
 arch=('any')
 url="https://github.com/itapai/ater-yellow"
