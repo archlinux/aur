@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=phonon-qt5-mpv-git
-pkgver=v0.0.5.0.gffcffc4
+pkgver=v0.0.6.0.g91bec0f
 pkgrel=1
 pkgdesc="Phonon Backend using MPV Player. (GIT version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('mpv'
          'phonon-qt5'
          'qt5-x11extras'
          )
-makedepends=('cmake'
+makedepends=('extra-cmake-modules'
              'git'
              'qt5-tools'
              )
