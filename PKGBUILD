@@ -202,10 +202,10 @@ sha256sums=('SKIP'
 if [ true = "${_include_proprietary}" ]; then
     pkgname=xamarin-android-proprietary-git
     pkgdesc="$pkgdesc (Including proprietary components)"
-    source+=('https://download.visualstudio.microsoft.com/download/pr/d78329f2-f4e6-440d-97d1-5a1b6b52a4ee/9595a9df7a9ceebe52c761cf18e68440/xamarin.android.sdk-9.4.0.34.vsix'
+    source+=('https://download.visualstudio.microsoft.com/download/pr/402a338a-8d27-4e64-b9c1-0d93e01e3183/3fe416138114726f3cdd74b85c8123dc/xamarin.android.sdk-9.5.0.27.vsix'
              runtime-xml.patch)
-    sha256sums+=('15a42e686b6491b4aaf2bfa7656bf3297908573968fb910095e52eeb7c9aaeb0'
-                 '48e5378c14adb3316d504df39e23c331fe9ff28ff3d1d9593ff995caa7d8eb69')
+    sha256sums+=('70de08a0afb7febe45f6147acf12d13aa7aa66ec14d93ddfb88d757e4a97316d'
+                 '353d503f404294812040cbaf9c2183f25e62fd56f06cc205ae25eee5f3ae0887')
     provides+=('xamarin-android-git')
     conflicts+=('xamarin-android-git')
 fi
@@ -248,7 +248,6 @@ _prepare_Java_Interop() {
 
 _prepare_mono() {
     local Submodules
-    cd external/mono
 
     Submodules=(Newtonsoft.Json
                 api-doc-tools
@@ -301,8 +300,6 @@ _prepare_mono() {
     git submodule update "external/cecil"
 
     cd ../..
-
-    cd ../..
 }
 
 _prepare_submodules() {
@@ -313,7 +310,6 @@ _prepare_submodules() {
                 dlfcn-win32
                 libzip
                 mman-win32
-                mono
                 mxe
                 nrefactory
                 opentk
@@ -331,6 +327,16 @@ _prepare_submodules() {
             "_prepare_${Submodule//[^0-9A-Za-z_]/_}"
         fi
     done
+
+    if [ -e mono ]; then
+        cd mono
+        git fetch --all
+    else
+        git clone "${srcdir}/mono" mono
+        cd mono
+    fi
+    _prepare_mono
+    cd ..
 }
 
 prepare() {
