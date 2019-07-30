@@ -14,9 +14,9 @@ provides=()
 conflicts=()
 replaces=()
 options=()
-source=("https://release.inivation.com/$pkgname/$pkgname-linux-$pkgver.tar.gz")
+source=("http://release.inivation.com/$pkgname/$pkgname-linux-$pkgver.tar.gz")
 noextract=()
-sha256sums=('')
+sha256sums=('4bc13436c2ffcbb6f961ed38edee43db9c0979eb6e0e80702c3ee07b8dc5d860')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"

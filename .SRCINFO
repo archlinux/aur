@@ -12,7 +12,8 @@ pkgbase = flashy
 	depends = libxi
 	depends = libxrender
 	depends = libxtst
-	source = https://release.inivation.com/flashy/flashy-linux-1.4.3.tar.gz
+	source = http://release.inivation.com/flashy/flashy-linux-1.4.3.tar.gz
+	sha256sums = 4bc13436c2ffcbb6f961ed38edee43db9c0979eb6e0e80702c3ee07b8dc5d860
 
 pkgname = flashy
 
