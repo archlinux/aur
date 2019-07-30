@@ -1,0 +1,23 @@
+pkgbase = luastatus-git
+	pkgdesc = luastatus is a universal status bar content generator
+	pkgver = r564.29fa981
+	pkgrel = 1
+	url = https://github.com/shdown/luastatus
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = lua
+	depends = libx11
+	depends = bash
+	depends = alsa-lib
+	depends = yajl>=2.1.0
+	depends = xcb-util-wm
+	provides = luastatus
+	conflicts = luastatus
+	source = git+https://github.com/shdown/luastatus
+	sha1sums = SKIP
+
+pkgname = luastatus-git
+
