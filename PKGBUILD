@@ -1,49 +1,48 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
-# Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
+# Maintainer: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Contributor: Salamandar <felix@piedallu.me>
 
-pkgname=babl-git
-_pkgname=${pkgname%-git}
-pkgver=0.1.57.r1369.2ca9b0c
+_pkgname=babl
+pkgname="${_pkgname}-git"
+pkgver=0.1.68.6.gcab54c3
 pkgrel=1
-pkgdesc="Dynamic, any to any, pixel format translation library."
-arch=('i686' 'x86_64')
-url="http://www.babl.org/babl"
+pkgdesc="babl is a dynamic, any to any, pixel format translation library."
+arch=('x86_64')
+url="https://www.gegl.org/babl"
 license=('LGPL3')
 depends=('glibc')
-makedepends=('git')
-provides=("babl=$pkgver")
+makedepends=('git' 'meson' 'lcms2')
+provides=("babl=${pkgver}")
 conflicts=('babl')
-source=('git+https://gitlab.gnome.org/GNOME/babl')
-sha512sums=('SKIP')
+options=(!libtool)
+source=(git+https://gitlab.gnome.org/GNOME/babl)
+md5sums=('SKIP')
 
-pkgver() {
-  cd $_pkgname
-
-  printf "%s.r%s.%s" \
-  	$(cat configure.ac | grep '^m4_define(\[babl_.*_version\], \[[0-9]*\])' | tr -d '\n' | sed -e 's|^m4_define(\[babl_major_version\], \[||' -e 's|\])m4_define(\[babl_minor_version\], \[|.|' -e 's|\])m4_define(\[babl_micro_version\], \[|.|' -e 's|\])|\n|') \
-  	$(git rev-list --count HEAD) \
-  	$(git rev-parse --short HEAD)
-}
-
-prepare() {
-  cd $_pkgname
-
-  autoreconf -vif
-
-  ./configure --prefix=/usr
-}
+_gitname=babl
 
 build() {
-  cd $_pkgname
+    mkdir "${srcdir}/build" -p
 
-  make
+    meson "${srcdir}/${_gitname}"\
+          "${srcdir}/build" \
+        --prefix=/usr \
+        -Dbuildtype=release \
+        -Db_lto=true \
+        -Dwith-docs=false
+
+    ninja -C "${srcdir}/build"
 }
 
 package() {
-  cd $_pkgname
-
-  make DESTDIR="$pkgdir" install
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
 }
 
+pkgver() {
+    cd "${_gitname}"
+    git describe --always | sed -e 's/BABL_//g' -e 's/[_-]/./g'
+}
+
+check() {
+    meson test -C "${srcdir}/build"
+}
