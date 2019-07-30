@@ -1,10 +1,11 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer:
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.br>
 
 pkgname=python2-pyro
 pkgver=4.76
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed object middleware for Python (RPC)'
 url='https://github.com/irmen/Pyro4'
 arch=(any)
