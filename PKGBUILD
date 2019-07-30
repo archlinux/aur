@@ -6,7 +6,7 @@
 
 pkgname=slack-desktop-dark
 pkgver=4.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Slack Desktop (Beta) for Linux, with dark theme patch"
 arch=('x86_64')
 url="https://slack.com/downloads"
@@ -53,7 +53,7 @@ package() {
     # of our function from being commented out
     echo "" >> $file
     head -n $((lineno - 1)) darkify_slack.js >> $file
-	sed -i -e '/\\E/d' slack-dark-mode.css # temporary fix for 'Add Reaction' icon
+	sed -i -e '/\\E/d' -e 's/939393/ffffff/' slack-dark-mode.css # temporary fix for 'Add Reaction' icon
     cat slack-dark-mode.css >> $file
     tail -n +$((lineno + 1)) darkify_slack.js >> $file
 
