@@ -4,7 +4,7 @@
 _gitname=regextester
 _author=artemanufrij
 pkgname=("${_gitname}-git")
-pkgver=latest
+pkgver=r110.8992442
 pkgrel=1
 pkgdesc="A simple regex tester built for Pantheon Shell"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('gtk3' 'granite')
 optdepends=('')
-makedepends=('git' 'meson' 'ninja' 'vala')
+makedepends=('git' 'meson' 'vala')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=("git+${url}.git")
