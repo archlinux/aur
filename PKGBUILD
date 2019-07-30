@@ -1,6 +1,6 @@
 # Maintainer: Mewosiku <meowiik at gmail dot com>
 pkgname=environment-overseer-git
-pkgver=r59.7c2a2a5
+pkgver=r83.8a1a893
 pkgrel=1
 pkgdesc="Real time environment manager, used primarily to suppress addictive sites"
 arch=('any')
@@ -18,8 +18,6 @@ pkgver() {
 
 package() {
 	echo package
-
-	mv ${srcdir}/${pkgname}/src/overseer.py ${srcdir}/${pkgname}/src/overseer
 
 	install -Dm 755 ${srcdir}/${pkgname}/src/* --target-directory "${pkgdir}/usr/bin/"
 	install -Dm 644 ${srcdir}/${pkgname}/systemd/* --target-directory "${pkgdir}/usr/lib/systemd/system"
