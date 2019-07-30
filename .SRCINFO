@@ -1,6 +1,6 @@
 pkgbase = mupengui-git
 	pkgdesc = Mupen64plus Frontend Application designed for Pantheon Shell
-	pkgver = latest
+	pkgver = r73.c425126
 	pkgrel = 1
 	url = https://github.com/EFDos/mupengui
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = mupengui-git
 	license = GPL3
 	makedepends = git
 	makedepends = meson
-	makedepends = ninja
 	makedepends = vala
 	depends = gtk3
 	depends = granite

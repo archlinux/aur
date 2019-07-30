@@ -4,7 +4,7 @@
 _gitname=mupengui
 _author=EFDos
 pkgname=("${_gitname}-git")
-pkgver=latest
+pkgver=r73.c425126
 pkgrel=1
 pkgdesc="Mupen64plus Frontend Application designed for Pantheon Shell"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('gtk3' 'granite' 'glib2')
 optdepends=('')
-makedepends=('git' 'meson' 'ninja' 'vala')
+makedepends=('git' 'meson' 'vala')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=("git+${url}.git")
