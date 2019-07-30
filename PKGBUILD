@@ -1,40 +1,23 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=snowflake-client
-pkgver=2.7.47
+pkgver=1.1.82
 pkgrel=1
-pkgdesc="Snowflake Database command line and JDBC client"
-arch=('i686' 'x86_64')
+epoch=1
+pkgdesc="Snowflake Database command line client (snowsql)"
+arch=('x86_64')
 url="http://www.snowflake.net/"
 license=('custom: commercial')
-depends=(gcc-libs java-environment bash libtinfo)
-source=(sfsql.patch)
-md5sums=('4ddf438900d60621b586979c96078426')
-
-_vpkg=snowflake_client.tar.gz
-
-build() {
-  msg "You need a full, licensed copy of the client in order to install it"
-  msg "Searching for ${_vpkg} in dir: \"$startdir\""
-  pkgpath="$startdir"
-  if [[ ! -f "${pkgpath}/${_vpkg}" ]]; then
-    error "Snowflake client package not found, please type absolute path to ${_vpkg} (/home/joe):"
-    read pkgpath
-    if [[ ! -f "${pkgpath}/${_vpkg}" ]]; then
-      error "Unable to find Snowflake client package." && return 1
-    fi
-  fi
-  msg "Found package, unpacking..."
-  tar -xf "${pkgpath}/${_vpkg}" -C "${srcdir}"
-  
-  cd "${srcdir}"
-  patch -Np1 -i "${srcdir}/sfsql.patch"
-}
+depends=(gcc-libs)
+source=(${pkgname}-${pkgver}.sh::http://s3-us-west-2.amazonaws.com/sfc-snowsql-updates/bootstrap/1.1/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash)
+md5sums=('e93cc95e21576b63d013e7c2e03e2b35')
 
 package() {
-  install -d "${pkgdir}/opt/${pkgname}"
-  install -d "${pkgdir}/usr/bin"
-  
-  cp -r "${srcdir}/client/"* "${pkgdir}/opt/${pkgname}" -R
-  ln -s /opt/${pkgname}/sfsql "${pkgdir}"/usr/bin/sfsql
+  # Stop Snowflake installer from modifying shell profile
+  local tmp="$(mktemp)"
+
+  SNOWSQL_DEST="${pkgdir}" SNOWSQL_LOGIN_SHELL="${tmp}" sh "${pkgname}-${pkgver}.sh"
+
+  install -Dm755 "${pkgdir}/snowsql" "${pkgdir}/usr/bin/snowsql"
+  rm -f "${pkgdir}/snowsql"
 }
