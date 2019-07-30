@@ -8,7 +8,7 @@
 
 pkgname=blender-2.8-git
 _fragment="#branch=master"
-pkgver=2.81.r89364.51be0a765e4
+pkgver=2.81.r89367.ae7db537448
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
@@ -107,6 +107,9 @@ package() {
 
   msg "mv doc/blender to doc/blender-2.8"
   mv ${pkgdir}/usr/share/doc/blender ${pkgdir}/usr/share/doc/blender-2.8
+
+  msg "add -2.8 sufix to man page"
+  mv ${pkgdir}/usr/share/man/man1/blender.1 ${pkgdir}/usr/share/man/man1/blender-2.8
 
   msg "add -2.8 sufix to all icons"  
   for icon in `find ${pkgdir}/usr/share/icons -type f`
