@@ -1,12 +1,12 @@
 pkgbase = mojave-ct-icon-theme
 	pkgdesc = macOs Mojave icon pack by zayronxio
-	pkgver = 0.9.8
-	pkgrel = 3
+	pkgver = 0.9.9
+	pkgrel = 1
 	url = https://github.com/zayronxio/Mojave-CT
 	arch = any
 	license = GPL3
-	source = mojave-ct-icon-theme-0.9.8.zip::https://github.com/zayronxio/Mojave-CT/archive/0.9.8.zip
-	sha512sums = 725581101f6cb5ec42356ca555c5f7ef54a377912ba9b5dc24a56e1b97b3cda16aab3fb2268ad1d5ef26fc1cbccc4a561aa95013427495e89e81e3d76ca085ec
+	source = mojave-ct-icon-theme-0.9.9.zip::https://github.com/zayronxio/Mojave-CT/archive/0.9.9.zip
+	sha512sums = aa5d6a7c02537d9571d21fa6dbeca4acf1218a70174da2a20b4aafbb7eae1bfbc611c17b8aa740a7f3e87508ccd5a661b9976154a9459617c094092147d41afe
 
 pkgname = mojave-ct-icon-theme
 
