@@ -1,16 +1,16 @@
 pkgbase = perl-asa
-	pkgdesc = Lets your class/object say it works like something else.
-	pkgver = 1.03
-	pkgrel = 3
-	url = http://search.cpan.org/~adamk/asa-1.03/
+	pkgdesc = Lets your class/object say it works like something else
+	pkgver = 1.04
+	pkgrel = 1
+	url = https://metacpan.org/release/asa
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	makedepends = perl-module-install
-	depends = perl>=5.5.0
+	depends = perl>=5.006
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/asa-1.03.tar.gz
-	md5sums = ad3d82114f569892d65163e8623d50e4
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/asa-1.04.tar.gz
+	md5sums = cbe6d1db505eb4eaa2bf35a637fc0451
+	sha512sums = 8584036c1c520741fe1bd4fb2875a86a46e2abd07d441078ef64bd90a31ba13b001079b020263add298ff004e094f8380b2ec590aacfc808cc1ba4be6b177b0a
 
 pkgname = perl-asa
 
