@@ -1,0 +1,15 @@
+pkgbase = emacs-youtube-dl
+	pkgdesc = A youtube-dl download manager for Emacs
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/skeeto/youtube-dl-emacs
+	arch = any
+	license = GPL3
+	depends = emacs
+	depends = emacs-s
+	depends = emacs-dash
+	source = emacs-youtube-dl-1.0.tar.gz::https://github.com/skeeto/youtube-dl-emacs/archive/1.0.tar.gz
+	sha256sums = 4189555f39d9bd3eb288a1e0ae6e77217e63a71ef2c2d4343a7a2ff098f37437
+
+pkgname = emacs-youtube-dl
+
