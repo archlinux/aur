@@ -1,10 +1,10 @@
 # Maintainer: Antoine Pierlot-Garcin <antoine@bokbox.com>
 pkgname=debsigs-git
-pkgver=r60.52a2621
+pkgver=r96.05c081a
 pkgrel=1
 pkgdesc="toolset for cryptographically signing Debian packages"
 arch=('any')
-url="http://gitorious.org/debsigs/debsigs"
+url="https://gitlab.com/debsigs/debsigs"
 license=('GPL')
 groups=()
 depends=('perl')
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('debsigs::git+http://gitorious.org/debsigs/debsigs.git')
+source=('debsigs::git+https://gitlab.com/debsigs/debsigs.git')
 noextract=()
 md5sums=('SKIP')
 
