@@ -12,7 +12,7 @@ pkgbase = mit30
 	depends = qwt
 	depends = sqlite
 	options = strip
-	source = https://www.iztech.ru/content/files/-1.0.3-x86_64.tar.gz
+	source = https://www.iztech.ru/content/files/mit30-1.0.3-x86_64.tar.gz
 	md5sums = 7fe9dc671d725803c1b659c35c6efbb2
 
 pkgname = mit30
