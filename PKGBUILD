@@ -12,7 +12,7 @@
 
 pkgname=mesa-aco-git
 pkgdesc="Mesa with the ACO compiler patchset, git version"
-pkgver=19.2.0_devel.114249.17d9490cef1
+pkgver=19.2.0_devel.114720.5c6077221dd
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
