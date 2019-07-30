@@ -1,6 +1,6 @@
 pkgbase = reco-git
 	pkgdesc = Reco is an audio recording app designed for Pantheon Shell
-	pkgver = latest
+	pkgver = r133.c98c6c0
 	pkgrel = 1
 	url = https://github.com/ryonakano/reco
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = reco-git
 	license = GPL3
 	makedepends = git
 	makedepends = meson
-	makedepends = ninja
 	makedepends = vala
 	depends = gtk3
 	depends = granite

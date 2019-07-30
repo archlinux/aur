@@ -4,7 +4,7 @@
 _gitname=reco
 _author=ryonakano
 pkgname=("${_gitname}-git")
-pkgver=latest
+pkgver=r133.c98c6c0
 pkgrel=1
 pkgdesc="Reco is an audio recording app designed for Pantheon Shell"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('gtk3' 'granite' 'gstreamer')
 optdepends=('')
-makedepends=('git' 'meson' 'ninja' 'vala')
+makedepends=('git' 'meson' 'vala')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=("git+${url}.git")
