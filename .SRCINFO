@@ -1,7 +1,7 @@
 pkgbase = grub-libzfs
 	pkgdesc = GNU GRand Unified Bootloader (2) - libzfs support
-	pkgver = 2.02
-	pkgrel = 3
+	pkgver = 2.04
+	pkgrel = 1
 	epoch = 2
 	url = https://www.gnu.org/software/grub/
 	install = grub-libzfs.install
@@ -50,36 +50,25 @@ pkgbase = grub-libzfs
 	options = !makeflags
 	backup = etc/default/grub
 	backup = etc/grub.d/40_custom
-	source = https://ftp.gnu.org/gnu/grub/grub-2.02.tar.xz
-	source = https://ftp.gnu.org/gnu/grub/grub-2.02.tar.xz.sig
-	source = https://git.savannah.nongnu.org/cgit/grub-extras.git/snapshot/grub-extras-f2a079441939eee7251bf141986cdd78946e1d20.tar.gz
+	source = git+https://git.savannah.gnu.org/git/grub.git#tag=grub-2.04?signed
+	source = git+https://git.savannah.gnu.org/git/grub-extras.git#commit=136763a4cc9ca3a4f59d05b79eede2159d6f441e
+	source = git+https://git.savannah.gnu.org/git/gnulib.git#commit=9ce9be2ef0cb1180e35dfe9dfbbe90d774b374bd
 	source = https://ftp.gnu.org/gnu/unifont/unifont-12.1.02/unifont-12.1.02.bdf.gz
 	source = https://ftp.gnu.org/gnu/unifont/unifont-12.1.02/unifont-12.1.02.bdf.gz.sig
 	source = 0003-10_linux-detect-archlinux-initramfs.patch
 	source = 0004-add-GRUB_COLOR_variables.patch
-	source = 0005-Allow_GRUB_to_mount_ext234_filesystems_that_have_the_encryption_feature.patch
-	source = 0006-tsc-Change-default-tsc-calibration-method-to-pmtimer-on-EFI-systems.patch
-	source = 0007-grub-mkconfig_10_linux_Support_multiple_early_initrd_images.patch
-	source = 0008-Fix-packed-not-aligned-error-on-GCC-8.patch
-	source = 0009-xfs-Accept-filesystem-with-sparse-inodes.patch
-	source = 0010-relocation.patch
 	source = grub.default
 	validpgpkeys = E53D497F3FA42AD8C9B4D1E835A93B74E82E4209
+	validpgpkeys = BE5C23209ACDDACEB20DB0A28C8189F1988C2166
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	sha256sums = 810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f
 	sha256sums = SKIP
-	sha256sums = 2844601914cea6b1231eca0104853a93c4d67a5209933a0766f1475953300646
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = 04d652be1e28a6d464965c75c71ac84633085cd0960c2687466651c34c94bd89
 	sha256sums = SKIP
-	sha256sums = b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3
+	sha256sums = 171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4
 	sha256sums = a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29
-	sha256sums = 535422c510a050d41efe7720dbe54de29e04bdb8f86fd5aea5feb0b24f7abe46
-	sha256sums = c38f2b2caae33008b35a37d8293d8bf13bf6fd779a4504925da1837fd007aeb5
-	sha256sums = e43566c4fe3b1b87e677167323d4716b82ac0810410a9d8dc7fbf415c8db2b8a
-	sha256sums = e84b8de569c7e6b73263758c35cf95c6516fde85d4ed451991427864f6a4e5a8
-	sha256sums = fcd5a626d4af33665d041ce42df813f1f198d8230ea186481b155a5b676f3b87
-	sha256sums = 51562fa1016c54567dbf42a86c0cfc902372ab579bbee17879a81aff09b76b99
-	sha256sums = 74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82
+	sha256sums = fd2e5f5453f3e44a2cb640c796b85cd70da8359c703f94cd531d457ede8c77fa
 
 pkgname = grub-libzfs
 

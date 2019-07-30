@@ -1,7 +1,9 @@
 *.pkg.tar*
 *.src.tar*
 *.gz
-*.xz
 *.sig
-src
-pkg
+/gnulib
+/grub
+/grub-extras
+/src
+/pkg
