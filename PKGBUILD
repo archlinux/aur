@@ -1,6 +1,6 @@
 # Maintainer: Omar Ahmad <omar.squircleart@gmail.com>
 pkgname=blender-plugin-animation-nodes-git
-pkgver=2.1.1.r5157.beae3e03
+pkgver=2.1.4.r5317.a80fc659
 pkgrel=1
 pkgdesc="Node based visual scripting system designed for motion graphics in Blender."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('blender' 'python-numpy')
 makedepends=('sed' 'cython')
 conflicts=('blender-plugin-animation-nodes')
-source=('git+https://github.com/JacquesLucke/animation_nodes.git#branch=v2.1')
+source=('git+https://github.com/JacquesLucke/animation_nodes.git#branch=blender2.8')
 md5sums=('SKIP')
 
 pkgver() {
@@ -25,5 +25,5 @@ package() {
   cd "animation_nodes"
   _blender_version=$(blender --version | grep -Po 'Blender \K[0-9]\...')
   mkdir -p $pkgdir/usr/share/blender/$_blender_version/scripts/addons
-  python setup.py build --copy --noversioncheck
+  python setup.py build --copy
 }
