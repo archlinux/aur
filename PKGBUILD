@@ -3,8 +3,9 @@
 # Contributor: Carl George < arch at cgtx dot us >
 # Contributor: Eric Engeström <eric at engestrom dot ch>
 # Contributor: Andreas Linz <klingt.net at gmail dot com>
+# Contributor: Akshay S Dinesh <asdofindia at gmail dot com>
 
-_gopkgname='github.com/mholt/caddy'
+_gopkgname='github.com/caddyserver/caddy'
 _name="caddy"
 
 pkgname="${_name}-no-telemetry"
@@ -18,7 +19,7 @@ backup=('etc/caddy/caddy.conf')
 provides=("$_name")
 conflicts=("$_name")
 install='caddy.install'
-makedepends=('go>=1.12' 'git')
+makedepends=('go>=2:1.12' 'git')
 source=("https://$_gopkgname/archive/v$pkgver/$_name-$pkgver.tar.gz"
         'https://caddyserver.com/resources/images/brand/caddy-at-your-service-white.svg'
         'index.html'
@@ -30,48 +31,42 @@ source=("https://$_gopkgname/archive/v$pkgver/$_name-$pkgver.tar.gz"
 sha256sums=('1c8b435a79e21b9832c7a8a88c44e70bc80434ca3719853d2b1092ffbbbbff7d'
             'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
             '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
-            '0466a41290db84402ca41cf32c0fc5b66b112a9d85b71d1619ae97b5a3dd2740'
+            '5f899f3d72bd815ba67a2fbd95144f7ff5d83ae47d1c4bee8297ce4e5d2ed400'
             'c8f002f5ba59985a643600dc3c871e18e110903aa945ef3f2da7c9edd39fbd7a'
             '80520b80ccabf077a3269f6a1bf55faa3811ef5adce115131b35ef2044d37b64'
             'f5a0fbb961e7c9ecf99e88d0959a3164cbea54660c1c08c3ba3cdf1d45563929'
             'e0183ff5631283e259dffe92d64974cf1d17c9f7d758fb24b9dcb4cf1d2586d4')
 
-patch_plugins() {
-    IFS=''
-    n=0
-    while read -r line; do
-        echo "$line"
-        if [[ $n = 0 && $line =~ ^import ]]; then
-            go run $srcdir/plugins.go "${plugins[@]}"
-            n=1
-        fi
-    done
-}
-
 prepare() {
-    export GOPATH="$srcdir/build"
-    rm -rf "$GOPATH/src/$_gopkgname"
-    mkdir --parents `dirname "$GOPATH/src/$_gopkgname"`
-    mv -Tv "$srcdir/$_name-$pkgver" "$GOPATH/src/$_gopkgname"
+    cd "$srcdir/$_name-$pkgver/caddy"
+    cat > main.go <<EOF
+package main
 
+import (
+    "github.com/caddyserver/caddy/caddy/caddymain"
+EOF
     if [ ${#plugins[@]} -gt 0 ]; then
         echo enabled plugins: ${plugins[@]}
-        cd $GOPATH/src/$_gopkgname/caddy/caddymain/
-        patch_plugins < run.go > run1.go
-        mv run1.go run.go
-        go get -v -d $_gopkgname/caddy/caddymain
+        go run $srcdir/plugins.go "${plugins[@]}" >> main.go
     fi
+    cat >> main.go <<EOF
+)
+
+func main() {
+    caddymain.EnableTelemetry = false
+    caddymain.Run()
+}
+EOF
 
     # Disable telemetry collection
-    cd "${srcdir}/build/src/$_gopkgname"
+    cd "$srcdir/$_name-$pkgver"
     patch -p1 < "${srcdir}/0001-disable-telemetry.patch"
 }
 
 build() {
-    export GO111MODULE=on
-    export GOPATH="$srcdir/build"
-    cd "${srcdir}/build/src/$_gopkgname"
-    go build -v -o $srcdir/caddy -ldflags "-X $_gopkgname/caddy/caddymain.gitTag=v$pkgver" $_gopkgname/caddy
+    cd "$srcdir/$_name-$pkgver/caddy"
+    export GOPATH="$srcdir"
+    go build -v -o "$srcdir/caddy"
     go clean --modcache
 }
 
@@ -98,16 +93,13 @@ plugins=(
 #    'http.cors'
 #    'http.datadog'
 #    'http.expires'
-#    'http.filemanager'
 #    'http.filter'
 #    'http.forwardproxy'
 #    'http.geoip'
 #    'http.git'
 #    'http.gopkg'
 #    'http.grpc'
-#    'http.hugo'
 #    'http.ipfilter'
-#    'http.jekyll'
 #    'http.jwt'
 #    'http.locale'
 #    'http.login'
@@ -120,9 +112,11 @@ plugins=(
 #    'http.realip'
 #    'http.reauth'
 #    'http.restic'
-#    'http.upload'
+#    'http.s3browser'
+#    'http.supervisor'
 #    'http.webdav'
 #    'net'
+#    'supervisor'
 #    'tls.dns.auroradns'
 #    'tls.dns.azure'
 #    'tls.dns.cloudflare'
@@ -131,6 +125,7 @@ plugins=(
 #    'tls.dns.dnsimple'
 #    'tls.dns.dnsmadeeasy'
 #    'tls.dns.dnspod'
+#    'tls.dns.duckdns'
 #    'tls.dns.dyn'
 #    'tls.dns.exoscale'
 #    'tls.dns.gandi'
@@ -140,6 +135,7 @@ plugins=(
 #    'tls.dns.lightsail'
 #    'tls.dns.linode'
 #    'tls.dns.namecheap'
+#    'tls.dns.namedotcom'
 #    'tls.dns.ns1'
 #    'tls.dns.otc'
 #    'tls.dns.ovh'

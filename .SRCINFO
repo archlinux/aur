@@ -10,12 +10,12 @@ pkgbase = caddy-no-telemetry
 	arch = armv7h
 	arch = aarch64
 	license = Apache
-	makedepends = go>=1.12
+	makedepends = go>=2:1.12
 	makedepends = git
 	provides = caddy
 	conflicts = caddy
 	backup = etc/caddy/caddy.conf
-	source = https://github.com/mholt/caddy/archive/v1.0.0/caddy-1.0.0.tar.gz
+	source = https://github.com/caddyserver/caddy/archive/v1.0.0/caddy-1.0.0.tar.gz
 	source = https://caddyserver.com/resources/images/brand/caddy-at-your-service-white.svg
 	source = index.html
 	source = caddy.service
@@ -26,7 +26,7 @@ pkgbase = caddy-no-telemetry
 	sha256sums = 1c8b435a79e21b9832c7a8a88c44e70bc80434ca3719853d2b1092ffbbbbff7d
 	sha256sums = e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85
 	sha256sums = 6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7
-	sha256sums = 0466a41290db84402ca41cf32c0fc5b66b112a9d85b71d1619ae97b5a3dd2740
+	sha256sums = 5f899f3d72bd815ba67a2fbd95144f7ff5d83ae47d1c4bee8297ce4e5d2ed400
 	sha256sums = c8f002f5ba59985a643600dc3c871e18e110903aa945ef3f2da7c9edd39fbd7a
 	sha256sums = 80520b80ccabf077a3269f6a1bf55faa3811ef5adce115131b35ef2044d37b64
 	sha256sums = f5a0fbb961e7c9ecf99e88d0959a3164cbea54660c1c08c3ba3cdf1d45563929
