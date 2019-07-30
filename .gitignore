@@ -2,5 +2,5 @@ pkg/
 src/
 *.tgz
 *.tar.xz
-etcher-git/
+balena-etcher-git/
 scripts/
