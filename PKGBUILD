@@ -6,7 +6,7 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.27.4
+pkgver=1.28.0
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl -s "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -24,10 +24,10 @@ makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
 optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
-        '0001-bz-1521249.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-bz-1521249.patch?h=packages/firefox&id=e58550cb74099902903a8514d9a54e7060259bac')
-sha256sums=('e489e563ed587384a9d0104f8516d461a31029a3f6f657912c8db9a8cb41dd58'
-            'd0673786a6a1f1b9f6f66a3a1356afa33f1f18f59dabd92bd193c88c52a1d04c')
-options=(!emptydirs !makeflags)
+        '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368')
+sha256sums=('329115f50936654d31c83592c3f5808854109fa2a425bd3efb2c57647022c43b'
+            'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894')
+options=(!emptydirs !makeflags !strip)
 
 prepare() {
   cd "$srcdir/${_pkgname}-$pkgver/mozilla-release/toolkit/mozapps/installer"
@@ -60,8 +60,8 @@ END
 
   cd "$srcdir/${_pkgname}-$pkgver/mozilla-release"
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
-  patch -Np1 -i "$srcdir/0001-bz-1521249.patch"
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+  patch -Np1 -i "$srcdir/0001-Use-remoting-name-for-GDK-application-names.patch"
 
   # Remove -lcrmf from old configure scripts
   sed -i 's/NSS_LIBS="$NSS_LIBS -lcrmf"/NSS_LIBS="$NSS_LIBS"/' old-configure.in
