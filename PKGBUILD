@@ -9,7 +9,7 @@ url="http://www.snowflake.net/"
 license=('custom: commercial')
 install=snowflake-odbc.install
 depends=(nss gcc-libs unixodbc)
-source=(https://sfc-repo.snowflakecomputing.com/odbc/linux/2.19.9/snowflake_linux_x8664_odbc-${pkgver}.tgz)
+source=(https://sfc-repo.snowflakecomputing.com/odbc/linux/${pkgver}/snowflake_linux_x8664_odbc-${pkgver}.tgz)
 md5sums=('ae5d3120fbf73afd1959471b9b4ba47e')
 
 package() {
