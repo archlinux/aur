@@ -2,7 +2,7 @@
 
 pkgname=nlohmann-json
 pkgver=3.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Header-only JSON library for Modern C++"
 url="https://github.com/nlohmann/json"
 license=('MIT')
@@ -18,7 +18,7 @@ build() {
     cmake "$srcdir"/json-$pkgver \
         -DBUILD_TESTING=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_INSTALL_LIBDIR=/us/lib
+	-DCMAKE_INSTALL_LIBDIR=/usr/lib
     make
 }
 
