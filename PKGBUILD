@@ -1,4 +1,5 @@
-# Maintainer: Phillip Smith <pkgbuild@phs.id.au>
+# Maintainer : Geballin - Guillaume Ballin <macniaque at free dot fr>
+# Contributor: Phillip Smith <pkgbuild@phs.id.au>
 # http://github.com/fukawi2/aur-packages
 
 ### I AM ONLY THE PACKAGER, NOT THE DEVELOPER
@@ -14,7 +15,7 @@
 pkgname=editix-free
 _pkgname=editix
 pkgver=2019
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="EditiX is a powerful and easy to use XML editor, Visual Schema Editor, XQuery Editor and XSLT debugger"
 arch=('any')
@@ -22,7 +23,7 @@ license=('custom')
 depends=('java-runtime')
 url="http://free.editix.com/"
 source=("http://www.editix.com/download/editix$pkgver.zip")
-sha256sums=('9d87180dbdbb7a3e76de505a3a9dc5eb6618d63e223b4479d1c0fdd4be285103')
+sha256sums=('3b1dd53ea84f11fde9264ffcd60c6d73840ee8cec6a9665a760adbcd3d2f33ef')
 
 package() {
   # Licenses first, before we move the whole directory to opt
