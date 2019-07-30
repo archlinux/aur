@@ -1,0 +1,6 @@
+lv2lint/
+src/
+pkg/
+lv2lint-git-*.tar.xz
+lv2lint-git-*.src.tar.gz
+.AURINFO
