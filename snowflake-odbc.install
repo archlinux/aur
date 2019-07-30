@@ -1,0 +1,3 @@
+post_install() {
+	echo "Don't forget to run /opt/snowflake-odbc/unixodbc_setup.sh to configure your ODBC credentials!"
+}
