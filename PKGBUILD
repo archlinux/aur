@@ -11,6 +11,7 @@ _github_url="https://github.com/electron/electron"
 license=("MIT")
 provides=("electron3")
 conflicts=("electron3")
+depends=("gtk3" "libxss" "nss")
 source=("${_github_url}/releases/download/v${pkgver}/chromedriver-v${pkgver}-linux-x64.zip"
 "${_github_url}/releases/download/v${pkgver}/electron-v${pkgver}-linux-x64.zip")
 sha256sums=("8256f20cb30d9f1c545c8228d7b59622743e270016e6541c51e3dbebb71ef790"
