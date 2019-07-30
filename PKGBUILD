@@ -8,7 +8,7 @@
 
 pkgname=blender-2.8-git
 _fragment="#branch=master"
-pkgver=2.80.r89204.105ae3be999
+pkgver=2.81.r89364.51be0a765e4
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
@@ -47,7 +47,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/blender"
-  printf "2.80.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "2.81.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
