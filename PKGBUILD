@@ -1,21 +1,21 @@
 # Maintainer: Alad Wenter <alad@archlinux.org>
 pkgname=kittypack
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Query package information from archweb API"
 arch=('any')
 url="https://github.com/MrElendig/kittypack"
 license=('AGPL3')
 depends=('python-requests' 'python-docopt' 'python-yaml'
          'python-curtsies' 'python-setuptools')
+conflicts=('kittypack-git')
 makedepends=('python-docutils')
 backup=('etc/kittypack.conf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c35503c642d0b9394b9d16e572633073063794cbcc66bffbe114c7ce6398d6f6')
+sha256sums=('c08c9250dbc3a88a7382ac4f728f32f48a119e3f2bbaae9ecbacbe6e6d1d5447')
 
 build() {
     cd "$pkgname-$pkgver"
-    touch kittypack/__init__.py
     python setup.py build
 
     cd doc/man
