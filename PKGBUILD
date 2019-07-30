@@ -4,15 +4,14 @@
 
 pkgname=balena-etcher
 _pkgname=etcher
-pkgver=1.5.34
-pkgrel=4
-epoch=1
+pkgver=1.5.52
+pkgrel=3
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64)
 _github_url='https://github.com/balena-io/etcher'
 url='https://etcher.io'
 license=(Apache)
-depends=('electron4' gtk2 libxtst libxss gconf nss alsa-lib)
+depends=(electron3-bin gtk2 libxtst libxss gconf nss alsa-lib nodejs-lts-dubnium)
 makedepends=(npm python2 git jq)
 optdepends=('libnotify: for notifications'
             'speech-dispatcher: for text-to-speech')
@@ -25,12 +24,11 @@ source=("${_pkgname}::git+https://github.com/balena-io/${_pkgname}.git#tag=v${pk
         'git+https://github.com/balena-io/scripts.git'
         "${pkgname}-electron"
         "${pkgname}-electron.desktop"
-        "use-electron-4.1.5.patch")
+        )
 sha256sums=('SKIP'
             'SKIP'
-            '76bfbcd018394ccf20e194950dbb5ad28d8f1dfc748be7802d3b499492017418'
-            'c950d9578f9cf60998c920bb60c6617559963f06a4918e7072fdc706b0ef5754'
-            '488e2ebce14bb9a8caaa1e9aaa73ee22c1c3eaa68c110d355bd588b37023f002')
+            '135ce3deefb9f571b0a28abb7f6c678eea10546a537618b8a69c57012906a0eb'
+            'c950d9578f9cf60998c920bb60c6617559963f06a4918e7072fdc706b0ef5754')
 
 prepare() {
   cd "${_pkgname}"
@@ -41,9 +39,10 @@ prepare() {
 
 build() {
   cd "${_pkgname}"
-  #git apply -v "${srcdir}/use-electron-4.1.5.patch"
   export NPM_VERSION=$(npm --version)
-  make electron-develop #|| /bin/true
+  rm -rf node_modules
+  find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+  make electron-develop
   make webpack
   npm prune --production
 }
