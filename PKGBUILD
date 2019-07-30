@@ -7,7 +7,7 @@
 
 pkgname='lucas-simpsons-hit-and-run-mod-launcher'
 pkgver='1.23.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Mod launcher for The Simpsons: Hit & Run."
 arch=(
     'x86_64'
@@ -25,8 +25,6 @@ depends=(
     'zenity'
     # Wine is needed to run the mod launcher.
     'wine'
-    # Wine's Mono implementation is needed for running .NET programs in Wine.
-    'wine-mono'
     # Winetricks is needed to install the .NET 3.5 SP1 runtime required by the mod launcher.
     'winetricks'
 )
