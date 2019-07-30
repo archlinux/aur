@@ -33,7 +33,7 @@ prepare() {
 build() {
   cd build
   cmake ../phonon-mpv \
-    -DCMAKE_BUILD_TYPE=Mone \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_SKIP_RPATH=ON
