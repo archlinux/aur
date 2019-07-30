@@ -20,8 +20,8 @@ optdepends=('cuda: CUDA support in Cycles')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
 ((DISABLE_CUDA)) || makedepends+=('cuda')
-provides=('blender=2.80')
-conflicts=('blender')
+provides=('blender-2.81')
+conflicts=('blender-2.81')
 license=('GPL')
 install=blender.install
 # NOTE: the source array has to be kept in sync with .gitmodules
