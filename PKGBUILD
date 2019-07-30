@@ -22,6 +22,7 @@ build() {
 package() {
 	cd "Viper4Linux-GUI-$pkgver"
 	install -Dm755 V4L_Frontend $pkgdir/usr/bin/viper-gui
-	install -Dm644 $srcdir/${pkgname%-git}.desktop $pkgdir/usr/share/applications/${pkgname%-git}.desktop
+	install -Dm644 $srcdir/$pkgname.desktop \
+		$pkgdir/usr/share/applications/$pkgname.desktop
 	install -Dm644 viper.png $pkgdir/usr/share/pixmaps/viper-gui.png
 }
