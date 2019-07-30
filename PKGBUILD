@@ -9,10 +9,10 @@
 # Contributor: Brad McCormack <bradmccormack100 at gmail.com>
 
 pkgbase=linux-asus-aura
-_srcver=5.2.3-arch1
+_srcver=5.2.4-arch1
 pkgver=${_srcver//-/.}
 _srcname=${_srcver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -24,7 +24,7 @@ source=("https://git.archlinux.org/linux.git/snapshot/$_srcver.tar.gz"
         "${pkgbase}.preset"
         # aura sync patch
         "patch.diff")
-sha256sums=('85220a4c2c4e3a452810dbffa424e39cd708317c54c3144e49990bc4de84bfda'
+sha256sums=('073c5fee2298fd54ab7659437ea0c5567495cdeb8372429193f6b4411f416844'
             'c405c700b2cb06c4ec805b7e327d0b66416395995519281194a8293da69b398a'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7'
             'd764703db8e24d52ed91ff842f7959cf2ffaa46d755e26d859a131d1f08c681f')
