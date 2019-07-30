@@ -1,6 +1,6 @@
 pkgbase = spectator-rest-client-git
 	pkgdesc = Spectator is a native application written in Vala using GTK. It's enables you to test the API endpoints of your HTTP server.
-	pkgver = r191.623a742
+	pkgver = r325.b3e424e
 	pkgrel = 1
 	url = https://github.com/treagod/spectator
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = spectator-rest-client-git
 	license = GPL3
 	makedepends = git
 	makedepends = meson
-	makedepends = ninja
 	makedepends = vala
 	depends = duktape
 	depends = granite

@@ -4,7 +4,7 @@
 _gitname=spectator
 _author=treagod
 pkgname=("${_gitname}-rest-client-git")
-pkgver=r191.623a742
+pkgver=r325.b3e424e
 pkgrel=1
 pkgdesc="Spectator is a native application written in Vala using GTK. It's enables you to test the API endpoints of your HTTP server."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('duktape' 'granite' 'gtk3' 'gtksourceview3' 'json-glib' 'libgee' 'webkit2gtk')
 optdepends=('lib32-json-glib')
-makedepends=('git' 'meson' 'ninja' 'vala')
+makedepends=('git' 'meson' 'vala')
 provides=("${_gitname}-rest-client")
 conflicts=("${_gitname}-rest-client")
 source=("git+${url}.git")
