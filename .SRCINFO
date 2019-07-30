@@ -1,0 +1,15 @@
+pkgbase = semaphoreci-cli
+	pkgdesc = Command line tool for the Semaphore CI service
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/semaphoreci/cli
+	arch = x86_64
+	license = custom:Apache
+	makedepends = go-pie
+	makedepends = git
+	depends = glibc
+	source = semaphoreci-cli::git+https://github.com/semaphoreci/cli#tag=v0.14.1
+	sha512sums = SKIP
+
+pkgname = semaphoreci-cli
+
