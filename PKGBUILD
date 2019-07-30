@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=viper4linux-gui-git
-pkgver=1.11.r0.6c68d10
+pkgver=1.12.r0.3819751
 pkgrel=1
 pkgdesc="Official UI for Viper4Linux"
 arch=('any')
@@ -29,6 +29,7 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm755 V4L_Frontend $pkgdir/usr/bin/viper-gui
-	install -Dm644 $srcdir/${pkgname%-git}.desktop $pkgdir/usr/share/applications/${pkgname%-git}.desktop
-	install -Dm644 viper.png $pkgdir/usr/share/pixmaps/${pkgname%-git}.png
+	install -Dm644 $srcdir/${pkgname%-git}.desktop \
+		$pkgdir/usr/share/applications/${pkgname%-git}.desktop
+	install -Dm644 viper.png $pkgdir/usr/share/pixmaps/viper-gui.png
 }

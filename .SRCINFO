@@ -1,6 +1,6 @@
 pkgbase = viper4linux-gui-git
 	pkgdesc = Official UI for Viper4Linux
-	pkgver = 1.11.r0.6c68d10
+	pkgver = 1.12.r0.3819751
 	pkgrel = 1
 	url = https://github.com/ThePBone/Viper4Linux-GUI
 	arch = any
