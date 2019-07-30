@@ -16,7 +16,7 @@ pkgbase = asofe
 	makedepends = wget
 	depends = libevent
 	depends = zeromq
-	source = git+https://github.com/TheLightSide/asofe.git#commit=cbb5911b5a8fdae9810bf862f2cb8895803a37fa
+	source = git+https://github.com/TheLightSide/asofe.git#commit=9c586dec02dce1204354dfb00e2fa30afab5cb60
 	source = asofed.service
 	sha512sums = SKIP
 	sha512sums = bfc39352e50078c7897ae3b8167f06d152f26c52dc7199ae952bad85b99a9da4f9d25d63edfe52291ad27b6e08b828c5db205eb0dc6091ec3fc75dc2b1bfca19
