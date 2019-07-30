@@ -1,15 +1,15 @@
 pkgbase = pnpm
 	pkgdesc = Fast, disk space efficient package manager
-	pkgver = 3.6.1
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = https://pnpm.js.org/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs>=8.15.0
-	noextract = pnpm-3.6.1.tgz
-	source = https://registry.npmjs.org/pnpm/-/pnpm-3.6.1.tgz
-	md5sums = 9ab12f027a0141e7a8cd7fa10ec17ad8
+	noextract = pnpm-3.6.2.tgz
+	source = https://registry.npmjs.org/pnpm/-/pnpm-3.6.2.tgz
+	md5sums = 6f4d827e3a2120dbaa7704de42c83c37
 
 pkgname = pnpm
 
