@@ -1,8 +1,8 @@
 # Maintainer: Roberto Rossini ("robymetallo") <roberto.rossini.9533@student.uu.se>
 
 pkgname=stringtie
-pkgver=1.3.6
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="A fast and highly efficient assembler of RNA-Seq\
  alignments into potential transcripts"
 
@@ -14,7 +14,7 @@ license=('Artistic2.0')
 depends=('gcc-libs' 'zlib')
 
 source=("https://ccb.jhu.edu/software/$pkgname/dl/$pkgname-$pkgver.tar.gz")
-sha256sums=('9dbdf01ab3282dc6eb647409920b53f8e0df45f4c45faf9d6b5ca135a3738ee8')
+sha256sums=('654da1b85a1eca9ad0d410d0e356ee8f05c62d89d6d4385b07bcd0d03c6b25eb')
 
 build() {
   cd $pkgname-$pkgver/
@@ -24,7 +24,7 @@ build() {
 
 check() {
   cd $pkgname-$pkgver/
-  ./stringtie --version | grep -Fxq "$pkgver"
+  make test
 }
 
 package() {
@@ -32,4 +32,3 @@ package() {
 
   install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }
-
