@@ -2,7 +2,7 @@
 pkgdesc='Command line tool for the Semaphore CI service'
 pkgname=semaphoreci-cli
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 url=https://github.com/semaphoreci/cli
 license=(custom:Apache)
 arch=(x86_64)
@@ -26,6 +26,8 @@ build () {
 	GOPATH="${srcdir}/_go" GOOS=linux GOARCH=${target_arch} \
 		go build -ldflags "-s -w -X cmd.version=${pkgver}-arch" \
 		-o semaphoreci
+
+	chmod -R +w "${srcdir}/_go"  # Ugh.
 }
 
 package () {

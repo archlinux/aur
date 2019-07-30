@@ -1,7 +1,7 @@
 pkgbase = semaphoreci-cli
 	pkgdesc = Command line tool for the Semaphore CI service
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/semaphoreci/cli
 	arch = x86_64
 	license = custom:Apache
