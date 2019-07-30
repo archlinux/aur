@@ -82,7 +82,7 @@ source=(
         'enable-vaapi.patch' # Use Saikrishna Arcot patch again :https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/a996c32c7ae7b369799b528daddb7be3c8b67de4/debian/patches/enable_vaapi_on_linux_2.diff'
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
-        'chromium-skia-harmony-r1.patch'
+        'chromium-skia-harmony-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
         'vaapi.diff.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1713435/revisions/1/patch?download' # https://chromium-review.googlesource.com/c/chromium/src/+/1713435
         'memory.diff.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1713037/revisions/1/patch?download' # https://chromium-review.googlesource.com/c/chromium/src/+/1713037
         'system_harfbuzz.diff.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1715288/revisions/1/patch?download' # https://chromium-review.googlesource.com/c/chromium/src/+/1715288
@@ -98,7 +98,7 @@ sha256sums=(
             '3cf77d5c90f46fa25f51a6c355f637395e2af84d584350fca406ebf5c3866e76'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
-            '0dd2fea50a93b26debce63c762c0291737b61816ba5b127ef923999494142b78'
+            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             '43810f59d73d6660b1b52989e15a02a3103ac2ab8f8561716cb67e0e0acce109'
             'd8bec3a727488ab3d0d2a5215537075aa63cd244052a1ac2c37c402fc4f31265'
             'c02a9701382b47391f7cd77529e5bf69a06461b503b50f64c60b8e16760a22aa'
@@ -507,7 +507,7 @@ prepare() {
   # # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
 
   # https://crbug.com/skia/6663#c10.
-  patch -p0 -i "${srcdir}/chromium-skia-harmony-r1.patch"
+  patch -p0 -i "${srcdir}/chromium-skia-harmony-r2.patch"
 
   # https://crbug.com/473866.
   patch -p1 -i "${srcdir}/chromium-widevine-r4.patch"
