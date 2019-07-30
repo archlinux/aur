@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 pkgver=3.32.2+10+g2483b6038
-pkgrel=3
+pkgrel=4
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -23,9 +23,11 @@ conflicts=(gnome-shell)
 install="$pkgname.install"
 _commit=2483b603869009f7294c00e8a5bdb778eb948b6d # tags/3.32.2^10
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+	"110.patch")
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            'cff49bc57c9cc0e8ac00f0b535eb9c5df39b1f2384337348dbf6e1e88ad7ba40')
 pkgver() {
   cd $pkgname
 
@@ -129,6 +131,7 @@ prepare() {
   # Status: 4
   # Comment: Makes the grid search icons hidden on some configuration: https://gitlab.gnome.org/GNOME/gnome-shell/issues/1456
   # git cherry-pick -n a7852705^..2d908e80
+  patch -Np1 < ../110.patch
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"

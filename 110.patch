@@ -1,0 +1,140 @@
+diff --git a/data/theme/gnome-shell-sass/_common.scss b/data/theme/gnome-shell-sass/_common.scss
+index a6357baad..756a39b79 100644
+--- a/data/theme/gnome-shell-sass/_common.scss
++++ b/data/theme/gnome-shell-sass/_common.scss
+@@ -1271,11 +1271,8 @@ StScrollBar {
+ 
+   //search results
+ 
+-  #searchResultsBin {
+-    max-width: 1000px;
+-  }
+-
+   #searchResultsContent {
++    max-width: 1000px;
+     padding-left: 20px;
+     padding-right: 20px;
+     spacing: 16px;
+@@ -1493,7 +1490,6 @@ StScrollBar {
+   }
+ 
+   //Some hacks I don't even
+-  .search-display > StBoxLayout,
+   .all-apps,
+   .frequent-apps > StBoxLayout {
+     // horizontal padding to make sure scrollbars or dash don't overlap content
+diff --git a/js/ui/iconGrid.js b/js/ui/iconGrid.js
+index d51a443e8..60776c542 100644
+--- a/js/ui/iconGrid.js
++++ b/js/ui/iconGrid.js
+@@ -603,6 +603,8 @@ var IconGrid = GObject.registerClass({
+     }
+ 
+     _computeLayout(forWidth) {
++        this.ensure_style();
++
+         let nColumns = 0;
+         let usedWidth = this.leftPadding + this.rightPadding;
+         let spacing = this._getSpacing();
+diff --git a/js/ui/search.js b/js/ui/search.js
+index fe4f6162b..bd10312d3 100644
+--- a/js/ui/search.js
++++ b/js/ui/search.js
+@@ -14,8 +14,8 @@ const SEARCH_PROVIDERS_SCHEMA = 'org.gnome.desktop.search-providers';
+ var MAX_LIST_SEARCH_RESULTS_ROWS = 5;
+ var MAX_GRID_SEARCH_RESULTS_ROWS = 1;
+ 
+-var MaxWidthBin = GObject.registerClass(
+-class MaxWidthBin extends St.Bin {
++var MaxWidthBox = GObject.registerClass(
++class MaxWidthBox extends St.BoxLayout {
+     vfunc_allocate(box, flags) {
+         let themeNode = this.get_theme_node();
+         let maxWidth = themeNode.get_max_width();
+@@ -309,7 +309,7 @@ var ListSearchResults = class extends SearchResultsBase {
+     }
+ 
+     _createResultDisplay(meta) {
+-        return super._createResultDisplay(meta, this._resultsView) ||
++        return super._createResultDisplay(meta) ||
+                new ListSearchResult(this.provider, meta, this._resultsView);
+     }
+ 
+@@ -329,12 +329,6 @@ Signals.addSignalMethods(ListSearchResults.prototype);
+ var GridSearchResults = class extends SearchResultsBase {
+     constructor(provider, resultsView) {
+         super(provider, resultsView);
+-        // We need to use the parent container to know how much results we can show.
+-        // None of the actors in this class can be used for that, since the main actor
+-        // goes hidden when no results are displayed, and then it lost its allocation.
+-        // Then on the next use of _getMaxDisplayedResults allocation is 0, en therefore
+-        // it doesn't show any result although we have some.
+-        this._parentContainer = resultsView.actor;
+ 
+         this._grid = new IconGrid.IconGrid({ rowLimit: MAX_GRID_SEARCH_RESULTS_ROWS,
+                                              xAlign: St.Align.START });
+@@ -345,10 +339,25 @@ var GridSearchResults = class extends SearchResultsBase {
+         this._resultDisplayBin.set_child(this._bin);
+     }
+ 
++    updateSearch(...args) {
++        if (this._notifyAllocationId)
++            this.actor.disconnect(this._notifyAllocationId);
++
++        // Make sure the maximum number of results calculated by
++        // _getMaxDisplayedResults() is updated after width changes.
++        this._notifyAllocationId = this.actor.connect('notify::allocation', () => {
++            super.updateSearch(...args);
++        });
++
++        super.updateSearch(...args);
++    }
++
+     _getMaxDisplayedResults() {
+-        let parentThemeNode = this._parentContainer.get_theme_node();
+-        let availableWidth = parentThemeNode.adjust_for_width(this._parentContainer.width);
+-        return this._grid.columnsForWidth(availableWidth) * this._grid.getRowLimit();
++        if (!this.actor.has_allocation()) return 1;
++
++        let allocation = this.actor.allocation;
++        let nCols = this._grid.columnsForWidth(allocation.x2 - allocation.x1);
++        return nCols * this._grid.getRowLimit();
+     }
+ 
+     _clearResultDisplay() {
+@@ -356,7 +365,7 @@ var GridSearchResults = class extends SearchResultsBase {
+     }
+ 
+     _createResultDisplay(meta) {
+-        return super._createResultDisplay(meta, this._resultsView) ||
++        return super._createResultDisplay(meta) ||
+                new GridSearchResult(this.provider, meta, this._resultsView);
+     }
+ 
+@@ -378,22 +387,16 @@ var SearchResults = class {
+         this.actor = new St.BoxLayout({ name: 'searchResults',
+                                         vertical: true });
+ 
+-        this._content = new St.BoxLayout({ name: 'searchResultsContent',
+-                                           vertical: true });
+-        this._contentBin = new MaxWidthBin({ name: 'searchResultsBin',
+-                                             x_fill: true,
+-                                             y_fill: true,
+-                                             child: this._content });
+-
+-        let scrollChild = new St.BoxLayout();
+-        scrollChild.add(this._contentBin, { expand: true });
++        this._content = new MaxWidthBox({ name: 'searchResultsContent',
++                                          vertical: true });
+ 
+         this._scrollView = new St.ScrollView({ x_fill: true,
+                                                y_fill: false,
+                                                overlay_scrollbars: true,
+                                                style_class: 'search-display vfade' });
+         this._scrollView.set_policy(St.PolicyType.NEVER, St.PolicyType.AUTOMATIC);
+-        this._scrollView.add_actor(scrollChild);
++        this._scrollView.add_actor(this._content);
++
+         let action = new Clutter.PanAction({ interpolate: true });
+         action.connect('pan', this._onPan.bind(this));
+         this._scrollView.add_action(action);
