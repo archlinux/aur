@@ -1,0 +1,18 @@
+pkgbase = hyperspace-bin
+	pkgdesc = The fluffiest client for the fediverse
+	pkgver = 1.0.0_beta5
+	pkgrel = 1
+	url = https://hyperspace.marquiskurt.net/
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	source = https://github.com/hyperspacedev/hyperspace/releases/download/1.0.0beta5/hyperspace_1.0.0-beta5_amd64.deb
+	sha256sums = f89dbf4664d7c249e521f19991db7cf2808e1489cdd3e99a9ebcd5e7c7246d64
+
+pkgname = hyperspace-bin
+
