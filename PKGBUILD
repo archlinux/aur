@@ -3,13 +3,13 @@
 # Contributor: Drew DeVault <sir@cmpwn.com>
 
 pkgname=aerc
-pkgver=0.1.4
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
 url='https://git.sr.ht/~sircmpwn/aerc'
 license=('MIT')
-depends=('libvterm' 'w3m' 'dante' 'python-colorama')
+depends=('w3m' 'dante')
 makedepends=('go' 'git' 'scdoc')
 provides=('aerc')
 conflicts=('aerc')
