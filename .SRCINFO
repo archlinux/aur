@@ -1,0 +1,12 @@
+pkgbase = galib
+	pkgdesc = GAlib contains a set of C++ genetic algorithm objects.
+	pkgver = 2.4.7
+	pkgrel = 1
+	url = http://lancet.mit.edu/ga
+	arch = any
+	license = MIT
+	source = http://lancet.mit.edu/ga/dist/galib247.tgz
+	sha256sums = ea76b66ce4db4db2ed86e20d6d3ff144abaf73e33620104246639d9b2a465329
+
+pkgname = galib
+
