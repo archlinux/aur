@@ -5,7 +5,7 @@
 
 _name='enfuse_pro'
 pkgname="darktable-plugin-${_name}"
-pkgver=2.1.4
+pkgver=2.1.6
 pkgrel=1
 pkgdesc='Enfuse_pro LUA plugin for darktable'
 url='https://www.multimedia4linux.de/'
@@ -14,7 +14,7 @@ makedepends=()
 license=('GPL3')
 arch=('x86_64')
 source=("${url}images/darktable/plugins/${_name}-${pkgver}.tar")
-sha256sums=('c0dd523fd527867481e5585913dfae1fc2638c6065bf20ab816c74856f474b89')
+sha256sums=('e8b68dcfde7db8332423a47c0138c7f17b2cf7e74c4382e27a087318dc6ee4d3')
 
 package() {
 	mkdir -p "${pkgdir}/usr/share/darktable/lua/contrib/"

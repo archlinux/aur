@@ -1,6 +1,6 @@
 pkgbase = darktable-plugin-enfuse_pro
 	pkgdesc = Enfuse_pro LUA plugin for darktable
-	pkgver = 2.1.4
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = https://www.multimedia4linux.de/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = darktable-plugin-enfuse_pro
 	depends = enblend-enfuse
 	depends = perl-image-exiftool
 	depends = hugin
-	source = https://www.multimedia4linux.de/images/darktable/plugins/enfuse_pro-2.1.4.tar
-	sha256sums = c0dd523fd527867481e5585913dfae1fc2638c6065bf20ab816c74856f474b89
+	source = https://www.multimedia4linux.de/images/darktable/plugins/enfuse_pro-2.1.6.tar
+	sha256sums = e8b68dcfde7db8332423a47c0138c7f17b2cf7e74c4382e27a087318dc6ee4d3
 
 pkgname = darktable-plugin-enfuse_pro
 
