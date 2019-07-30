@@ -1,0 +1,6 @@
+*.tar.gz
+*.tar.xz
+*.zip
+electron3-bin/*
+pkg
+src
