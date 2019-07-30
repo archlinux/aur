@@ -2,7 +2,7 @@
 pkgname=mit30
 orgname=Iztech
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Программа для управления измерителями температуры серии МИТ-30 производства ООО ИзТех"
 url="https://www.iztech.ru"
 license=(custom)
@@ -10,7 +10,7 @@ depends=("qt5-base" "qt5-multimedia" "qt5-svg" "qt5-serialport" "qwt" "sqlite")
 arch=('x86_64')
 options=('strip')
 source=("$url/content/files/$pkgname-$pkgver-x86_64.tar.gz")
-md5sums=('9fe4d886536f61933550c01c2907d49f')
+md5sums=('5dc202334dac54a09e77ebf8bd550cc3')
 
 package() {
   install -Dm755 "$srcdir/mit30" "$pkgdir/usr/bin/$pkgname"
