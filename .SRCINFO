@@ -1,6 +1,6 @@
 pkgbase = pdfarranger-git
 	pkgdesc = Helps merge or split pdf documents and rotate, crop and rearrange pages.
-	pkgver = r188.cd7acf0
+	pkgver = r240.fb7758d
 	pkgrel = 1
 	url = https://github.com/jeromerobert/pdfarranger
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = pdfarranger-git
 	depends = gtk3
 	depends = python-gobject
 	depends = python-cairo
-	depends = poppler-glib
-	depends = python-pypdf2
+	depends = python-pikepdf
 	depends = ghostscript
 	depends = python-setuptools
 	conflicts = pdfshuffler
