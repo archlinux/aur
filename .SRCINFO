@@ -1,7 +1,7 @@
 pkgbase = viper4linux-git
 	pkgdesc = Implementation of the libviper library for modern Linux desktops.
 	pkgver = r55.ec2dcf6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/noahbliss/Viper4Linux
 	arch = x86_64
 	license = GPL

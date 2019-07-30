@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=viper4linux-git
 pkgver=r55.ec2dcf6
-pkgrel=2
+pkgrel=3
 pkgdesc="Implementation of the libviper library for modern Linux desktops."
 arch=('x86_64')
 url="https://github.com/noahbliss/Viper4Linux"
