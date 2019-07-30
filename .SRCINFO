@@ -1,6 +1,6 @@
 pkgbase = xiphos-git
 	pkgdesc = A Bible study tool -- git version
-	pkgver = 4.1.0.r63.gd1dd1598
+	pkgver = 4.1.0.r69.g8845c65b
 	pkgrel = 1
 	epoch = 1
 	url = http://xiphos.org
@@ -17,6 +17,7 @@ pkgbase = xiphos-git
 	makedepends = git
 	makedepends = python2
 	makedepends = docbook-utils
+	makedepends = appstream-glib
 	depends = gconf
 	depends = webkit2gtk
 	depends = libgsf
