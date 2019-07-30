@@ -1,7 +1,7 @@
 #Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=nfft
-pkgver=3.4.1
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="Library for computing Non-uniform Fast Fourier Transforms."
 arch=(i686 x86_64)
 url="https://www-user.tu-chemnitz.de/~potts/nfft/"
@@ -11,7 +11,7 @@ optdepends=('openmp: for OpenMP support')
 provides=($pkgname=$pkgver)
 conflicts=('nfft-git')
 source=("https://github.com/NFFT/nfft/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('1cf6060eec0afabbbba323929d8222397a77fa8661ca74927932499db26b4aaf')
+sha256sums=('5f78a9d2a675aee7ace55c96bdf1b54f049e05a1dd50697757bdc609a8586a07')
 
 build() {
 	cd "$pkgname-$pkgver"
