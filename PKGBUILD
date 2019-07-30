@@ -1,4 +1,5 @@
-# Maintainer: Ray Rashif <schiv@archlinux.org>
+# Maintainer : Geballin - Guillaume Ballin <macniaque at free dot fr>
+# Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
@@ -6,17 +7,17 @@
 _name=CinelerraCV
 pkgname=cinelerra-cv
 pkgver=2.3
-pkgrel=7
+pkgrel=8
 epoch=1
 pkgdesc="Professional video editing and compositing environment"
 arch=('x86_64')
-url="https://cinelerra-cv.org/"
+url="https://github.com/cinelerra-gg/cinelerra-cv/"
 license=('GPL')
 depends=('e2fsprogs' 'libavc1394' 'libiec61883' 'libxv'
          'libtiff' 'mjpegtools' 'fftw' 'a52dec' 'glu'
          'ffmpeg' 'faad2' 'faac' 'openexr>=2.0.0' 'libxft')
 makedepends=('git' 'nasm' 'mesa')
-source=("https://${pkgname}.org/releases/${_name}-${pkgver}.tar.xz"
+source=("https://github.com/cinelerra-gg/${pkgname}/archive/v${pkgver}.tar.gz"
         'v4l1_removal.patch'
         'ffmpeg_api.patch'
         'ffmpeg2.0.patch'
@@ -24,7 +25,7 @@ source=("https://${pkgname}.org/releases/${_name}-${pkgver}.tar.xz"
         'cinelerra-cv-ffmpeg3.patch'
         'ffmpeg-link.patch'
         'cinelerra-cv-ffmpeg4.patch')
-sha512sums=('908dc097af8507e3b60b4787e0350500b8ba8c4340bbbdbf3716e61d74074e5f0617500b94ed1d450e030f88f3821f948cfa37c247ec2c2571fd76974374868e'
+sha512sums=('87134c7f88650df622963108352004cc71a5a515a832dafd15f926906e9ac73d162639857e6c46c85b01f2c48d4d47b5d8c602cb8e1b1514108a174c662ec5c7'
             '0295d71dd4b17051288778f54c57babd4fbfab5be29b71c47caf2bbac614898a7c2c7cb6cb1d093e6237f929f4e765a2fbed363cc34a3481d628ccdda19fe83e'
             '0882e87b3d8bd99de6c08d61a2569dd4595a90066ee6f697fddedb9f863f4ba3bcfb2b986e7ffeef369151cebf326a128f322d86c3c84602f7b35252f91a9bdb'
             '5313820d0030c216710654cb4ba17d33478e7f1d644c668d64e74c0d580d04ba658e68302a85311b2d2792c05a943a546b620ec680847d0324d335b168ba69c7'
@@ -34,7 +35,6 @@ sha512sums=('908dc097af8507e3b60b4787e0350500b8ba8c4340bbbdbf3716e61d74074e5f061
             '39af2d3b1e1ce0faaef63db23bebc5466b7ac15a75da58c7119f443ec6c4b06ec9118cea21fa2d5ff98031b7399f24e0a5d2280ebd01dea534377f685e0492de')
 
 prepare() {
-  mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
   cd "${pkgname}-${pkgver}"
 
   ## Patches (oldest first) ##
