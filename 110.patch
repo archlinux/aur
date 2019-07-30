@@ -37,7 +37,7 @@ index d51a443e8..60776c542 100644
          let usedWidth = this.leftPadding + this.rightPadding;
          let spacing = this._getSpacing();
 diff --git a/js/ui/search.js b/js/ui/search.js
-index fe4f6162b..bd10312d3 100644
+index fe4f6162b..f79c47271 100644
 --- a/js/ui/search.js
 +++ b/js/ui/search.js
 @@ -14,8 +14,8 @@ const SEARCH_PROVIDERS_SCHEMA = 'org.gnome.desktop.search-providers';
@@ -73,7 +73,7 @@ index fe4f6162b..bd10312d3 100644
  
          this._grid = new IconGrid.IconGrid({ rowLimit: MAX_GRID_SEARCH_RESULTS_ROWS,
                                               xAlign: St.Align.START });
-@@ -345,10 +339,25 @@ var GridSearchResults = class extends SearchResultsBase {
+@@ -345,10 +339,30 @@ var GridSearchResults = class extends SearchResultsBase {
          this._resultDisplayBin.set_child(this._bin);
      }
  
@@ -94,15 +94,20 @@ index fe4f6162b..bd10312d3 100644
 -        let parentThemeNode = this._parentContainer.get_theme_node();
 -        let availableWidth = parentThemeNode.adjust_for_width(this._parentContainer.width);
 -        return this._grid.columnsForWidth(availableWidth) * this._grid.getRowLimit();
-+        if (!this.actor.has_allocation()) return 1;
-+
 +        let allocation = this.actor.allocation;
 +        let nCols = this._grid.columnsForWidth(allocation.x2 - allocation.x1);
-+        return nCols * this._grid.getRowLimit();
++        let nResults = nCols * this._grid.getRowLimit();
++
++        // If the results is 0 we might not get allocated and the fix in
++        // updateSearch() won't work.
++        if (nResults == 0)
++            return 1;
++
++        return nResults;
      }
  
      _clearResultDisplay() {
-@@ -356,7 +365,7 @@ var GridSearchResults = class extends SearchResultsBase {
+@@ -356,7 +370,7 @@ var GridSearchResults = class extends SearchResultsBase {
      }
  
      _createResultDisplay(meta) {
@@ -111,7 +116,7 @@ index fe4f6162b..bd10312d3 100644
                 new GridSearchResult(this.provider, meta, this._resultsView);
      }
  
-@@ -378,22 +387,16 @@ var SearchResults = class {
+@@ -378,22 +392,16 @@ var SearchResults = class {
          this.actor = new St.BoxLayout({ name: 'searchResults',
                                          vertical: true });
  
