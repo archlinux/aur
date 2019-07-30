@@ -1,5 +1,6 @@
 # Maintainer: Bjoern Franke <bjo@nord-west.org>
-pkgname=nextcloud-inotifyscan
+pkgname=nextcloud-inotifyscan-git
+_pkgname=nextcloud-inotifyscan
 pkgver=r14.0eaf4a2
 pkgrel=1
 pkgdesc="Automatically scan external changes for Nextcloud local storage. "
@@ -17,7 +18,7 @@ pkgver() {
 
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   mkdir -p "${pkgdir}"/usr/bin/
   install -m 755 nextcloud-inotifyscan "${pkgdir}"/usr/bin/
   mkdir -p "${pkgdir}"/usr/lib/systemd/system/
