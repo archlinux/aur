@@ -1,6 +1,6 @@
 pkgbase = haskell-gi-cairo
 	pkgdesc = Generate Haskell bindings for GObject Introspection capable libraries
-	pkgver = 1.0.17
+	pkgver = 1.0.22
 	pkgrel = 2
 	url = https://hackage.haskell.org/package/gi-cairo
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = haskell-gi-cairo
 	depends = haskell-transformers
 	depends = gobject-introspection
 	depends = cairo
-	source = https://hackage.haskell.org/packages/archive/gi-cairo/1.0.17/gi-cairo-1.0.17.tar.gz
+	source = https://hackage.haskell.org/packages/archive/gi-cairo/1.0.22/gi-cairo-1.0.22.tar.gz
 	sha256sums = 5dbda70a038a93cb07130597407de9cde1436603beca3f2a0a6b43953c55a7ab
 
 pkgname = haskell-gi-cairo
