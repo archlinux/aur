@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 depends=("ghc-libs" 'haskell-gi-base' 'haskell-base' 'haskell-bytestring' 'haskell-containers' 'haskell-gi' 'haskell-gi-overloading' 'haskell-text' 'haskell-transformers' 'haskell-gi-xlib' 'haskell-gi-gdk')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('6600720b64d69965cde3ae8551e9b0bf6fb6cdd1ff37cbe2287e13aaaa95a15e')
+sha256sums=('02885b4786b9a72e0b2621654e74f3f48e6c2bdf84c7e52a512654003435e26f')
 
 
 build() {
