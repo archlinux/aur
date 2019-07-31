@@ -40,5 +40,5 @@ build() {
 package() {
     cd "$srcdir/build"
 	make DESTDIR="$pkgdir/" install
-    install -D -m644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "${srcdir}/${pkgname%-git}/LICENSE-2.0.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-2.0.txt"
 }
