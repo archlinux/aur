@@ -9,7 +9,7 @@ arch=('any')
 url="https://aur.archlinux.org/packages/firejail-profiles/"
 license=('GPL2')
 source=("firefox-restricted.profile")
-sha256sums=('e893981b770de490414f51948db8105a58765a98820920d2191cf2e438cec0cb')
+sha256sums=('13a3513721f03f428c4c51152abd7de5543e2d8927659eaf6d32cc74c015309f')
 
 package() {
 	cd "${srcdir}"
