@@ -17,7 +17,7 @@ md5sums=('af8a44e7d33b66ef54b2b5b497854b5e'
          '8b6d81ad1956b2d7eb5dbead68dacdf4')
 
 build() {
-	gunzip -d --force "${srcdir}/unifont-${pkgver}.bdf.gz"
+    gunzip -d --force "${srcdir}/unifont-${pkgver}.bdf.gz"
     ./otbconvert.pe "${srcdir}/unifont-${pkgver}.bdf"
 }
 
