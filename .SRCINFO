@@ -7,10 +7,10 @@ pkgbase = qogir-kde-theme-git
 	license = GPL3
 	makedepends = git
 	depends = plasma-desktop
-	depends = sddm
 	optdepends = kvantum-qt5
 	optdepends = qogir-gtk-theme-git
 	optdepends = qogir-icon-theme-git
+	optdepends = sddm
 	source = git+https://github.com/vinceliuice/Qogir-kde.git
 	sha256sums = SKIP
 
