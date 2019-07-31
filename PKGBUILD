@@ -3,9 +3,9 @@
 
 pkgname=jdk12-openj9-bin
 _jdkver=12
-_openj9ver=0.14.1
-_majorver=${_jdkver}.0.1
-_buildvershort=12
+_openj9ver=0.15.1
+_majorver=${_jdkver}.0.2
+_buildvershort=10
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_majorver}b${_buildver//-/_}
 pkgrel=1
@@ -24,7 +24,7 @@ provides=(
 )
 options=(!strip)
 source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_majorver}%2B${_buildver}/OpenJDK${_jdkver}U-jdk_x64_linux_openj9_${_majorver}_${_buildver}.tar.gz")
-sha256sums=('78091b44f3e2350888f0c73c9eb8f98dbc6fcb55b04692b067070c02bfeb4ec1')
+sha256sums=('e2f6f021560ddf217c60980ac147856e5b36f0ab0a0fd70091800d6042136229')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
