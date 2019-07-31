@@ -9,7 +9,7 @@ pkgbase = eclipse-platform
 	depends = unzip
 	depends = webkit2gtk
 	provides = eclipse=4.12
-	conflicts = eclipse
+	conflicts = eclipse-common
 	options = !strip
 	source = http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.12-201906051800/eclipse-platform-4.12-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.sh

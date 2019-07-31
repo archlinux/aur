@@ -12,7 +12,7 @@ arch=("x86_64")
 license=("EPL")
 depends=("java-environment>=8" "unzip" "webkit2gtk")
 optdepends=()
-conflicts=("eclipse")
+conflicts=("eclipse-common")
 provides=("eclipse=$pkgver")
 options=(!strip)
 
