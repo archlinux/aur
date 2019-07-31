@@ -1,14 +1,14 @@
 pkgbase = graphenex
 	pkgdesc = Automated System Hardening Framework
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/grapheneX/grapheneX
 	arch = any
 	license = GPLv3
 	makedepends = python3
 	depends = python
-	source = https://files.pythonhosted.org/packages/81/a2/23b43366c26e613458b67e6872d613ff36eaa51f51c26ea760036de6524c/graphenex-1.1.0.tar.gz
-	md5sums = 8b46e125c4886ec332065cfa00c8feed
+	source = https://files.pythonhosted.org/packages/06/6f/9115c73ef7340b32812995523c7754b1dea063ef373f1ea9446cdc5ee5f1/graphenex-1.1.1.tar.gz
+	md5sums = 4578f3bffaa49edd8ca2be4830b20e77
 
 pkgname = graphenex
 
