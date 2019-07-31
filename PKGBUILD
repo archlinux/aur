@@ -6,7 +6,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=bouml
-pkgver=7.8
+pkgver=7.9
 pkgrel=1
 pkgdesc='A free UML 2 tool box including a modeler allowing you to specify and generate code in C++, Java, IDL, PHP, Python and MySQL'
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ license=('GPL')
 depends=('qt4')
 source_x86_64=("v${pkgver}-64.tar.gz::https://www.bouml.fr/files/$pkgname-$pkgver-CentOS7.x86_64.rpm")
 source_i686=("v${pkgver}-32.tar.gz::https://www.bouml.fr/files/$pkgname-$pkgver-CentOS6.i686.rpm")
-sha256sums_x86_64=('d244ec9935688006f08add081166b5bc124aa815311fd2b14abc04d79c801020')
-sha256sums_i686=('f3067a9d2282aa7e57280d6add73104146f6d3125a8cbef05093176dde4b067e')
+sha256sums_x86_64=('e73cc158034de155e9c040ace2c2923cd1ad57a5e732b8a552e3238b766782db')
+sha256sums_i686=('1f63a5846e42cc6177dc392237dd477946ec3398ff2cfe1f293e2b03db797a98')
 
 package() {
     mkdir -p "$pkgdir"/usr/bin/
