@@ -8,7 +8,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r530539.fe795231a4af
+pkgver=r542876+.4d8cee124c4e+
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Wayland build of mozilla-unified hg"
 arch=(x86_64)
@@ -29,9 +29,11 @@ _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
 source=("hg+$_repo"
+        0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop $_pkgname-symbolic.svg)
 sha256sums=('SKIP'
-            '4a783dca1f88e003c72f32d22719a0915f3fa576adbc492240e7cc250246ce10'
+            'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
+            'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -54,6 +56,9 @@ pkgver() {
 prepare() {
   mkdir mozbuild
   cd mozilla-unified
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+  patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -84,6 +89,7 @@ export RANLIB=llvm-ranlib
 ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
+ac_add_options --with-unsigned-addon-scopes=app,system
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
 export MOZ_TELEMETRY_REPORTING=1
