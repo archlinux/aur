@@ -2,14 +2,14 @@
 # Maintainer: Shichao Gao <xgdgsc at gmail dot com>
 pkgname=dingtalk-electron
 _pkgname=${pkgname//-/_}
-pkgver=2.0.15
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="钉钉Linux版本"
 arch=('x86_64')
 url="https://github.com/nashaofu/dingtalk#readme"
 license=('MIT')
 depends=('gconf' 'libnotify' 'libappindicator-sharp' 'libxtst' 'nss' 'libxss')
-source=("https://github.com/nashaofu/dingtalk/releases/download/v${pkgver}/dingtalk_${pkgver}_amd64.deb")
+source=("https://github.com/nashaofu/dingtalk/releases/download/v${pkgver}/dingtalk-${pkgver}-latest-amd64.deb")
 
 package() {
 	tar xJvf data.tar.xz -C "${pkgdir}"
@@ -27,4 +27,4 @@ package() {
 	find "${pkgdir}" -type f | xargs chown root:root
 }
 
-md5sums=('b9b610d589dab6a9c8407da0f44b89a1')
+md5sums=('fcc01ab13edac1288484c9a843867765')
