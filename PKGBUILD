@@ -1,5 +1,5 @@
 pkgname=mingw-w64-blosc
-pkgver=1.16.3
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="A blocking, shuffling and loss-less compression library (mingw-w64)"
 url="http://blosc.org/"
@@ -9,7 +9,7 @@ depends=('mingw-w64-zstd' 'mingw-w64-snappy' 'mingw-w64-lz4' 'mingw-w64-zlib')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/Blosc/c-blosc/archive/v${pkgver}.tar.gz")
-sha256sums=('bec56cb0956725beb93d50478e918aca09f489f1bfe543dbd3087827a7344396')
+sha256sums=('75d98c752b8cf0d4a6380a3089d56523f175b0afa2d0cf724a1bd0a1a8f975a4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
