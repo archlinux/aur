@@ -17,7 +17,7 @@ depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-sett
          gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libcroco libgdm libsecret
          mutter nm-connection-editor unzip gstreamer libibus xrdesktop-git libinputsynth-git)
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
-             sassc)
+             sassc vulkan-headers)
 optdepends=('gnome-control-center: System settings'
             'evolution-data-server: Evolution calendar integration')
 groups=(gnome)
