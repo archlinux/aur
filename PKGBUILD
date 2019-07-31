@@ -3,8 +3,8 @@
 # Contributor: Filippo Veneri <filippo[dot]veneri[at]gmail[dot]com>
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 pkgname=acpilight
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="a backward-compatible xbacklight replacement based on ACPI"
 arch=('any')
 url='https://gitlab.com/wavexx/acpilight'
@@ -14,7 +14,7 @@ provides=('xorg-xbacklight')
 conflicts=('xorg-xbacklight')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.bz2")
 install=$pkgname.install
-sha256sums=('0a5ef16a39c05c1eb195823d906c08f8f912aa48122b31e6dd364c7f9d6c37aa')
+sha256sums=('0b80cbe7edaf48307fc26dbb34c260ec9ed0c19c56743291e5a7cc23044ff9ae')
 
 package() {
     cd "$pkgname-v$pkgver"
