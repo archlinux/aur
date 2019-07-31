@@ -5,7 +5,7 @@
 
 _pkgname=libxfce4ui
 pkgname="${_pkgname}"-devel
-pkgver=4.13.6
+pkgver=4.13.8
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications (Development version)"
 arch=('i686' 'x86_64')
