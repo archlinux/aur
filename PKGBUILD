@@ -2,24 +2,24 @@
 
 name=watchghost
 pkgname=$name
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 epoch=1
 pkgdesc="Your invisible but loud monitoring pet"
 arch=('any')
 url='https://gitlab.com/localg-host/watchghost/'
 license=('AGPLv3')
-depends=('python-tornado' 'python-aioftp' 'python-asyncssh' 'python-watchdog')
+depends=('python-aiohttp' 'python-aioftp' 'python-asyncssh' 'python-whois' 'python-influxdb' 'python-aiohttp-jinja2')
 makedepends=('python-setuptools')
 source=("https://gitlab.com/localg-host/watchghost/-/archive/${pkgver}/watchghost-${pkgver}.tar.gz")
-sha256sums=('94f6c05099bad2b8ee6d034a0b0cf04e91a0a81a58134b981b49b4b77d18b692')
+sha256sums=('3cdc89a27ccbcc5494d7c480c400fbb4a97a299ae3acd6d273b2a22d7e18b8a4')
 conflicts=('watchghost-git')
 install=watchghost.install
 backup=(
-    'etc/watchghost/watchers'
-    'etc/watchghost/loggers'
-    'etc/watchghost/servers'
-    'etc/watchghost/groups'
+    'etc/watchghost/watchers.toml'
+    'etc/watchghost/loggers.toml'
+    'etc/watchghost/servers.toml'
+    'etc/watchghost/groups.toml'
 )
 
 package() {
@@ -30,7 +30,7 @@ package() {
     install -D $startdir/sysusers.conf $pkgdir/usr/lib/sysusers.d/watchghost.conf
     install -D $startdir/watchghost.service $pkgdir/usr/lib/systemd/system/watchghost.service
     for filename in groups loggers servers watchers ; do
-      install -D $srcdir/${name}-${pkgver}/watchghost/etc/$filename $pkgdir/etc/watchghost/$filename
+      install -D $srcdir/${name}-${pkgver}/watchghost/etc/$filename.toml $pkgdir/etc/watchghost/$filename.toml
     done
 }
 
