@@ -6,6 +6,12 @@ pkgbase = tinygo-bin
 	arch = x86_64
 	license = custom: BSD 3-clause
 	depends = gcc-libs
+	depends = go>=1.11.0
+	optdepends = clang: Cortex-M support
+	optdepends = avr-gcc: Arduino Uno support
+	optdepends = avrdude: Arduino Uno support
+	optdepends = openocd: BBC Micro:bit support
+	optdepends = arm-none-eabi-gdb: tinygo gdb support
 	provides = tinygo
 	conflicts = tinygo
 	source = https://github.com/tinygo-org/tinygo/releases/download/v0.7.1/tinygo0.7.1.linux-amd64.tar.gz

@@ -7,7 +7,15 @@ pkgdesc='TinyGo - Go for small spaces'
 arch=('x86_64')
 url='https://tinygo.org'
 license=('custom: BSD 3-clause')
-depends=('gcc-libs')
+depends=('gcc-libs'
+         'go>=1.11.0'
+)
+optdepends=('clang: Cortex-M support'
+            'avr-gcc: Arduino Uno support'
+            'avrdude: Arduino Uno support'
+            'openocd: BBC Micro:bit support'
+            'arm-none-eabi-gdb: tinygo gdb support'
+)
 provides=('tinygo')
 conflicts=('tinygo')
 source=("https://github.com/tinygo-org/tinygo/releases/download/v${pkgver}/tinygo${pkgver}.linux-amd64.tar.gz"
