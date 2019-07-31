@@ -2,18 +2,17 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 pkgname=natron-plugins-git
 _pkgname=natron-plugins
-pkgver=2.1.7.r1062.g72d4bb5
-_commit=72d4bb5
+pkgver=2.1.7.r1177.g456618b
 pkgrel=1
-arch=("i686" "x86_64")
+arch=("any")
 pkgdesc="A collection of Natron plugins made by the community"
 url="https://github.com/NatronGitHub/natron-plugins"
 license=("GPL2" "custom:CCPL2")
 makedepends=("git")
 depends=("natron")
 provides=("natron-plugins")
-conflicts=("natron-plugins")
-source=("$_pkgname::git://github.com/NatronGitHub/natron-plugins#commit=$_commit")
+install=natron-plugins.install
+source=("$_pkgname::git://github.com/NatronGitHub/natron-plugins.git")
 sha256sums=("SKIP")
 
 pkgver() {
@@ -22,13 +21,24 @@ pkgver() {
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/share/Natron/Plugins/$_pkgname"
-  mkdir -p "$pkgdir/usr/share/licenses"
+  install -d "$pkgdir/usr/share/Natron/Plugins/$pkgname"
+  install -d "$pkgdir/usr/share/licenses"
+  install -d "$pkgdir/usr/OFX/Plugins/Shadertoy.ofx.bundle/Contents/Resources/presets/default"
 
   mv $srcdir/$_pkgname/Licenses/ \
      $pkgdir/usr/share/licenses/$pkgname
 
+  mv $srcdir/$_pkgname/Shadertoy/Shadertoy.txt \
+     $srcdir/$_pkgname/Shadertoy/Shadertoy.txt.natron-plugins
+
+  touch $srcdir/$_pkgname/Shadertoy/Shadertoy.txt.original
+
+  mv $srcdir/$_pkgname/Shadertoy/* \
+     $pkgdir/usr/OFX/Plugins/Shadertoy.ofx.bundle/Contents/Resources/presets/default
+
+  rmdir $srcdir/$_pkgname/Shadertoy/
+
   cp -r --preserve=mode,timestamps \
         $srcdir/$_pkgname/* \
-        $pkgdir/usr/share/Natron/Plugins/$_pkgname/
+        $pkgdir/usr/share/Natron/Plugins/$pkgname/
 }

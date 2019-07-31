@@ -1,0 +1,19 @@
+# The scripts below change the file "Shadertoy.txt"
+# from the openfx-misc package to the version available
+# in natron-plugins.
+
+post_install() {
+  cd /usr/OFX/Plugins/Shadertoy.ofx.bundle/Contents/Resources/presets/default
+  cp Shadertoy.txt Shadertoy.txt.original
+  cp Shadertoy.txt.natron-plugins Shadertoy.txt
+}
+
+post_upgrade() {
+  cd /usr/OFX/Plugins/Shadertoy.ofx.bundle/Contents/Resources/presets/default
+  cp Shadertoy.txt.natron-plugins Shadertoy.txt
+}
+
+pre_remove() {
+  cd /usr/OFX/Plugins/Shadertoy.ofx.bundle/Contents/Resources/presets/default
+  cp Shadertoy.txt.original Shadertoy.txt
+}
