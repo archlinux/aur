@@ -1,14 +1,14 @@
 pkgbase = clj-kondo-bin
 	pkgdesc = A minimal and opinionated linter for Clojure code that sparks joy.
-	pkgver = 2019.07.24_alpha
+	pkgver = 2019.07.31_alpha
 	pkgrel = 1
 	url = https://github.com/borkdude/clj-kondo
 	arch = x86_64
 	license = EPL
 	provides = clj-kondo
 	conflicts = clj-kondo
-	source = https://github.com/borkdude/clj-kondo/releases/download/v2019.07.24-alpha/clj-kondo-2019.07.24-alpha-linux-amd64.zip
-	sha256sums = dc94c34401ddc759d8446447639281d2c96115b3fc32eca27cd120b90d7df045
+	source = https://github.com/borkdude/clj-kondo/releases/download/v2019.07.31-alpha/clj-kondo-2019.07.31-alpha-linux-amd64.zip
+	sha256sums = 88b9118d37dd00ae6bc18c7baf6f959e8faf7526e458a7e515e6076eaad0edaa
 
 pkgname = clj-kondo-bin
 
