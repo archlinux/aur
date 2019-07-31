@@ -1,0 +1,16 @@
+pkgbase = cmake-afb-template-git
+	pkgdesc = This is a CMake module made to ease development of binding and application framework binder apps.
+	pkgver = 8.0.0
+	pkgrel = 1
+	url = https://gerrit.automotivelinux.org/gerrit/#/admin/projects/src/cmake-apps-module
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = gcc
+	provides = cmake-afb-template
+	conflicts = cmake-afb-template
+	source = cmake-afb-template::git+https://gerrit.automotivelinux.org/gerrit/src/cmake-apps-module
+	md5sums = SKIP
+
+pkgname = cmake-afb-template-git
+
