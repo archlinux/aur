@@ -1,6 +1,6 @@
 pkgbase = php-stat-git
 	pkgdesc = A super modern high performance profiler for production
-	pkgver = r77.6ab1fb9
+	pkgver = r80.2018c13
 	pkgrel = 1
 	url = https://github.com/krakjoe/stat
 	arch = i686

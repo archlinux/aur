@@ -2,7 +2,7 @@
 
 _pkgname=stat
 pkgname=php-$_pkgname-git
-pkgver=r77.6ab1fb9
+pkgver=r80.2018c13
 pkgrel=1
 pkgdesc="A super modern high performance profiler for production"
 arch=('i686' 'x86_64')
