@@ -1,22 +1,25 @@
 pkgbase = mangonel-frameworks-git
 	pkgdesc = Simple and fast and pretty launcher
-	pkgver = r179.067005a
+	pkgver = r208.7b2c5a2
 	pkgrel = 1
-	url = https://cgit.kde.org/mangonel.git/
+	url = https://phabricator.kde.org/source/mangonel/
+	install = mangonel-frameworks-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
 	makedepends = git
+	depends = ki18n
 	depends = kglobalaccel
 	depends = knotifications
-	depends = kcoreaddons
 	depends = kunitconversion
-	depends = ki18n
-	provides = mangonel
+	depends = kdbusaddons
+	depends = kservice
+	depends = knotifyconfig
 	provides = mangonel-frameworks
-	conflicts = mangonel
+	provides = mangonel
 	conflicts = mangonel-frameworks
+	conflicts = mangonel
 	source = git://anongit.kde.org/mangonel.git#branch=frameworks
 	sha256sums = SKIP
 
