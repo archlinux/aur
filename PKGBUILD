@@ -13,7 +13,7 @@ makedepends=('git' 'asciidoc')
 optdepends=('binutils: --uefi option support'
             'elfutils: strip binaries to reduce initramfs size'
             'hardlink: --hardlink option support'
-            'kpartx: dmraid dracut module support'
+            'multipath-tools: dmraid dracut module support'
             'pigz: faster gzip compression'
             'sbsigntools: uefi_secureboot_cert/key configuration option support')
 provides=("${pkgname%-git}" 'initramfs')
