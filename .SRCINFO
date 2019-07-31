@@ -1,0 +1,24 @@
+pkgbase = app-framework-binder-git
+	pkgdesc = Provides a test agl binder service which can be used to test agl bindings on Linux PC This service is evolving permanently and is only designed as a helper for developper.
+	pkgver = 8.0.0
+	pkgrel = 1
+	url = https://gerrit.automotivelinux.org/gerrit/#/admin/projects/src/app-framework-binder
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = gcc
+	makedepends = systemd-libs
+	makedepends = make
+	makedepends = openssl
+	makedepends = libutil-linux
+	makedepends = json-c
+	makedepends = libmicrohttpd
+	depends = systemd
+	depends = json-c
+	depends = libgcrypt
+	provides = app-framework-binder
+	conflicts = app-framework-binder
+	source = git+https://gerrit.automotivelinux.org/gerrit/src/app-framework-binder
+	md5sums = SKIP
+
+pkgname = app-framework-binder-git
+
