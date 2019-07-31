@@ -1,14 +1,14 @@
 pkgbase = python-emoji
 	pkgdesc = Emoji for Python
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/carpedm20/emoji/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/e/emoji/emoji-0.5.2.tar.gz
-	sha256sums = 9ae01495fc3fcc04e9136ca1af8cae58726ec5dfaaa92f61f0732cbae9a12fa9
+	source = https://files.pythonhosted.org/packages/source/e/emoji/emoji-0.5.3.tar.gz
+	sha256sums = b68112d40482a05e5da5d53da33d0aba3cce96891282c9c179cc340003c6c64e
 
 pkgname = python-emoji
 	depends = python
