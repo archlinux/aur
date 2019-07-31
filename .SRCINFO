@@ -1,7 +1,7 @@
 pkgbase = mit30
 	pkgdesc = Программа для управления измерителями температуры серии МИТ-30 производства ООО ИзТех
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.iztech.ru
 	arch = x86_64
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = mit30
 	depends = sqlite
 	options = strip
 	source = https://www.iztech.ru/content/files/mit30-1.0.6-x86_64.tar.gz
-	md5sums = 1bf0ed03c893395df6c486ffac654abf
+	md5sums = b2f8690e3a3d32b76a952f8df9f4fe72
 
 pkgname = mit30
 
