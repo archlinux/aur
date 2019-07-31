@@ -5,6 +5,8 @@ pkgbase = zorin-desktop-themes
 	url = https://github.com/ZorinOS/zorin-desktop-themes
 	arch = any
 	license = GPL2
+	provides = zorin-desktop-themes
+	conflicts = zorin-desktop-themes-git
 	source = zorin-desktop-themes-2.0.8.tar.xz::https://github.com/ZorinOS/zorin-desktop-themes/archive/2.0.8.tar.gz
 	md5sums = 49aa573993a5dd0733ecee77bda88d3a
 

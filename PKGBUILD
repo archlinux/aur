@@ -9,6 +9,8 @@ url="https://github.com/ZorinOS/zorin-desktop-themes"
 license=('GPL2')
 depends=()
 makedepends=()
+provides=('zorin-desktop-themes')
+conflicts=('zorin-desktop-themes-git')
 source=(
         "$pkgname-$pkgver.tar.xz::https://github.com/ZorinOS/$pkgname/archive/$pkgver.tar.gz"
 )
