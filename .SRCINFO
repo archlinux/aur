@@ -1,0 +1,21 @@
+pkgbase = otb-unifont
+	pkgdesc = GNU Unifont Glyphs
+	pkgver = 12.1.02
+	pkgrel = 1
+	url = https://ftp.gnu.org/gnu/unifont
+	arch = any
+	license = GPL
+	makedepends = fontforge
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = https://ftp.gnu.org/gnu/unifont/unifont-12.1.02/unifont-12.1.02.bdf.gz
+	source = https://ftp.gnu.org/gnu/unifont/unifont-12.1.02/unifont-12.1.02.bdf.gz.sig
+	source = otbconvert.pe
+	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
+	md5sums = af8a44e7d33b66ef54b2b5b497854b5e
+	md5sums = SKIP
+	md5sums = 8b6d81ad1956b2d7eb5dbead68dacdf4
+
+pkgname = otb-unifont
+

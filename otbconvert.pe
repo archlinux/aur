@@ -1,0 +1,4 @@
+#!/usr/bin/fontforge
+New()
+Import($1);
+Generate($fullname + ".otb")
