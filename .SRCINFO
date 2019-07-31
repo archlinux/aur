@@ -1,14 +1,14 @@
 pkgbase = tym
 	pkgdesc = A tiny term for minimalists
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/endaaman/tym
 	arch = x86_64
 	license = MIT
 	depends = vte3
 	depends = lua
-	source = https://github.com/endaaman/tym/releases/download/2.2.0/tym-2.2.0.tar.gz
-	sha1sums = e95c84a834f00eb6d58e5bb752833cc9061ed7af
+	source = https://github.com/endaaman/tym/releases/download/2.2.1/tym-2.2.1.tar.gz
+	sha1sums = 0e36d1c9599b808bfef946ca1277f1c833f71614
 
 pkgname = tym
 
