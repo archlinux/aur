@@ -1,5 +1,6 @@
 # Mozilla Firefox
 whitelist ${HOME}/Downloads
+whitelist ${HOME}/downloads
 
 whitelist ${HOME}/.cache/gtk-3.0
 whitelist ${HOME}/.cache/mozilla/firefox
@@ -35,7 +36,7 @@ blacklist /root
 blacklist /srv
 
 caps.drop all
-seccomp
+seccomp.drop @clock,@cpu-emulation,@debug,@module,@obsolete,@raw-io,@reboot,@resources,@swap,acct,add_key,bpf,fanotify_init,io_cancel,io_destroy,io_getevents,io_setup,io_submit,ioprio_set,kcmp,keyctl,mount,name_to_handle_at,nfsservctl,ni_syscall,open_by_handle_at,personality,pivot_root,process_vm_readv,ptrace,remap_file_pages,request_key,setdomainname,sethostname,syslog,umount,umount2,userfaultfd,vhangup,vmsplice
 protocol unix,inet,inet6,netlink
 netfilter
 noroot
