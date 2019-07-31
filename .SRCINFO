@@ -1,0 +1,17 @@
+pkgbase = tinygo-bin
+	pkgdesc = TinyGo - Go for small spaces
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://tinygo.org
+	arch = x86_64
+	license = custom: BSD 3-clause
+	depends = gcc-libs
+	provides = tinygo
+	conflicts = tinygo
+	source = https://github.com/tinygo-org/tinygo/releases/download/v0.7.1/tinygo0.7.1.linux-amd64.tar.gz
+	source = https://raw.githubusercontent.com/tinygo-org/tinygo/v0.7.1/LICENSE
+	sha256sums = 2cc120bc84c79c8a861d405a6fc8cb87b9025e249d76044bdb76c986fed998d0
+	sha256sums = 5a12ca662a49786a0f16f0ffacb6afa30bdc0e953441dbe53e742385d7dcb239
+
+pkgname = tinygo-bin
+
