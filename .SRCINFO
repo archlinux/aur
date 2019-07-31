@@ -1,0 +1,13 @@
+pkgbase = projstats
+	pkgdesc = Count source lines of code
+	pkgver = 1907.31.1
+	pkgrel = 1
+	url = https://github.com/salifm/projstats
+	arch = x86_64
+	license = MIT
+	depends = jre11-openjdk
+	source = projstats-1907.31.1-linux.zip::https://github.com/salifm/projstats/releases/download/v1907.31.1/projstats-v1907.31.1-linux.zip
+	sha512sums = 7a79eaee8c11f37b8cedf70dfe2bf239da5da0deff1c52fc7611d0bb3b82bbc66a965fbfa46932614adc501bd2770f383b6728f1443464d91250364fb82cd7eb
+
+pkgname = projstats
+
