@@ -4,7 +4,7 @@ pkgbase = pvs-studio
 	pkgrel = 1
 	url = http://www.viva64.com/en/pvs-studio
 	install = pvs-studio.install
-	arch = i686
+	arch = pentium4
 	arch = x86_64
 	license = unknown
 	optdepends = how-to-use-pvs-studio-free: for adding special comments to a source code
@@ -13,9 +13,9 @@ pkgbase = pvs-studio
 	options = !strip
 	source = http://files.viva64.com/pvs-studio-7.02.31917.1198-x86_64.tgz
 	sha256sums = 09e0f5985fc6e6b03c107472cfd07b75dd75a2d43888bcf8375c2d24edd722e1
-	source_i686 = pvs-studio.binfmt.d
-	depends_i686 = qemu-headless-arch-extra
-	sha256sums_i686 = fd7b1f7b48aa84205c1c0f60f630f1a33504e0e4904c5b0e8ae2477494899c97
+	source_pentium4 = pvs-studio.binfmt.d
+	depends_pentium4 = qemu-headless-arch-extra
+	sha256sums_pentium4 = fd7b1f7b48aa84205c1c0f60f630f1a33504e0e4904c5b0e8ae2477494899c97
 
 pkgname = pvs-studio
 
