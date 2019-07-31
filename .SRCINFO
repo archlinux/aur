@@ -1,15 +1,15 @@
 pkgbase = nodejs-pxder
 	pkgdesc = Download illusts from pixiv.net P站插画批量下载器
-	pkgver = 2.7.2
+	pkgver = 2.7.3
 	pkgrel = 1
 	url = https://github.com/Tsuk1ko/pxder#readme
 	arch = any
 	license = GPL-3.0-or-later
 	depends = nodejs
 	depends = npm
-	noextract = pxder-2.7.2.tgz
-	source = https://registry.npmjs.org/pxder/-/pxder-2.7.2.tgz
-	sha1sums = f639ce89c0d618965c87499d3638dceb66a889a5
+	noextract = pxder-2.7.3.tgz
+	source = https://registry.npmjs.org/pxder/-/pxder-2.7.3.tgz
+	sha1sums = 68a0eeb72afb5192b1d6a801f5b9d363baf1c132
 
 pkgname = nodejs-pxder
 
