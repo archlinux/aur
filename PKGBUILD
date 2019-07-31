@@ -4,7 +4,7 @@
 pkgname=memsource-editor
 _pkg=MemsourceEditor
 pkgver=6.234.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A CAT translation tool, requires Memsource subscription"
 arch=('x86_64')
 license=('custom')
@@ -18,7 +18,8 @@ depends=('bzip2'
          'freetype2'
          'fontconfig'
          'libpng12'
-         'openssl-1.0')
+         'openssl-1.0'
+         'qt5-xcb-private-headers')
 
 depends+=('shared-mime-info')
 
