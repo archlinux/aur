@@ -3,8 +3,8 @@
 # I maintain this on github, feel free to submit a pull request to
 # https://github.com/soker90/paquetes-archinux.git
 pkgname=python-pyexcel-ods
-pkgver=0.5.4
-pkgrel=3
+pkgver=5.0.6
+pkgrel=1
 pkgdesc="A wrapper library to read, manipulate and write data in ods format"
 arch=('i686' 'x86_64')
 url="https://github.com/pyexcel/pyexcel-ods"
