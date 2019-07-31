@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 pkgname=n-ipv4ll
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="IPv4 Link-Local Address Selection"
 url="https://github.com/nettools/n-ipv4ll"
@@ -9,8 +9,7 @@ license=('LGPL2.1' 'Apache')
 arch=(x86_64)
 depends=(glibc)
 makedepends=(meson pkgconf)
-_tag=v1 #20180929
-source=("git+https://github.com/nettools/n-ipv4ll.git#tag=$_tag")
+source=("git+https://github.com/nettools/n-ipv4ll.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 pkgver() {
