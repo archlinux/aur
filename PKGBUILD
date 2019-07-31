@@ -10,7 +10,7 @@ url='https://gitlab.freedesktop.org/xrdesktop/libinputsynth'
 depends=('glib2')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
-makedepend=('meson' 'git')
+makedepends=('meson' 'git' 'xdotool')
 license=('MIT')
 options=('debug' '!strip')
  
