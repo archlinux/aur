@@ -1,6 +1,6 @@
 pkgbase = n-dhcp4
 	pkgdesc = Dynamic Host Configuration Protocol for IPv4
-	pkgver = 0
+	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/nettools/n-dhcp4
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = n-dhcp4
 	makedepends = meson
 	makedepends = pkgconf
 	depends = glibc
-	source = git+https://github.com/nettools/n-dhcp4.git#commit=b8068385c2ab3539494f01971f64c0d5db8d5dbf
+	source = git+https://github.com/nettools/n-dhcp4.git#tag=v1
 	sha256sums = SKIP
 
 pkgname = n-dhcp4
