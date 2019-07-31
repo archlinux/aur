@@ -1,6 +1,6 @@
 pkgbase = vault-bin
 	pkgdesc = A tool for managing secrets
-	pkgver = 1.1.4
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://vaultproject.io/
 	install = vault.install
@@ -23,14 +23,14 @@ pkgbase = vault-bin
 	sha512sums = a97d10208fd99b29cf532c9b5882fe1bbb3faee1d1d706f95a9c379fef461c65a9f16c8530438920024e69871ebd8c7329e6b65025ad65092950bfb74ce393b3
 	sha512sums = 8f8769f2c285f77b10c1f96e43acb233c70509ca657a8113f9d1f13a73ba55de6acdc6984597a4e1da19d6a7748e05f3523461a3b4bce10b9541aa5340400dd6
 	sha512sums = dd6de68678d972517c135992217f625a3bc728a6495e1f6052df9926cf9cbc212dfa2a612be5a25d7ce5eeeef41e2b12f0d82af6176a6e0ca043b43c622c6347
-	source_i686 = https://releases.hashicorp.com/vault/1.1.4/vault_1.1.4_linux_386.zip
-	sha256sums_i686 = 303aa2e1ad29cf5082cc45c5b13e757b63a803d91e2990f520a7d36ec1afd941
-	source_x86_64 = https://releases.hashicorp.com/vault/1.1.4/vault_1.1.4_linux_amd64.zip
-	sha256sums_x86_64 = fb1f25f2a8978ac3212b87efb9210163f578bfcab66a0489169f7ab813abccde
-	source_armv7h = https://releases.hashicorp.com/vault/1.1.4/vault_1.1.4_linux_arm.zip
-	sha256sums_armv7h = bc5be7293f3c7e6ed2754cb589755f317aae860ffeb87839fa0640d7c7a4c683
-	source_aarch64 = https://releases.hashicorp.com/vault/1.1.4/vault_1.1.4_linux_arm64.zip
-	sha256sums_aarch64 = a05975b945ecfe427ed5b76f46d3450b1eee063ff5b8edb243a2afadea605290
+	source_i686 = https://releases.hashicorp.com/vault/1.2.0/vault_1.2.0_linux_386.zip
+	sha256sums_i686 = c99cb84cc7fd6e51ceca6e899d8bbcf5c03f1f47c3b10efe82e9bf074f0ee9a6
+	source_x86_64 = https://releases.hashicorp.com/vault/1.2.0/vault_1.2.0_linux_amd64.zip
+	sha256sums_x86_64 = 392b45f0978791d2050c02835494f220f40b70896903197dd9f95033f8855358
+	source_armv7h = https://releases.hashicorp.com/vault/1.2.0/vault_1.2.0_linux_arm.zip
+	sha256sums_armv7h = 970530a6d4591a102f1b4ea319e36a582a82ea826141a4e99173f0cf85cb3670
+	source_aarch64 = https://releases.hashicorp.com/vault/1.2.0/vault_1.2.0_linux_arm64.zip
+	sha256sums_aarch64 = e0e86c8fef6c22cf4a6620dd7ae0c05437534ecb4788771502cd308cc209c99a
 
 pkgname = vault-bin
 
