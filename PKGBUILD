@@ -7,7 +7,7 @@ pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd (git version)"
-pkgver=242.756
+pkgver=243.rc1.r14.gcd826afaf3
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -65,11 +65,8 @@ prepare() {
 
 pkgver() {
   cd "$_pkgbase"
-
-  local _version _count
-  _version="$(git describe --abbrev=0 --tags)"
-  _count="$(git rev-list --count ${_version}..)"
-  printf '%s.%s' "${_version#v}" "${_count}"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -171,6 +168,9 @@ package_systemd-git() {
   # avoid a potential conflict with [core]/filesystem
   rm -f "$pkgdir"/usr/share/factory/etc/nsswitch.conf
   sed -i '/^C \/etc\/nsswitch\.conf/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
+
+  # avoid a conflict with [core]/filesystem
+  rm -f "$pkgdir"/usr/share/factory/etc/issue
 
   # add back tmpfiles.d/legacy.conf, normally omitted without sysv-compat
   install -m0644 $_pkgbase/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
