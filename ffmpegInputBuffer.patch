@@ -1,0 +1,4 @@
+109c109
+< 	int buffer_size = 192000 + FF_INPUT_BUFFER_PADDING_SIZE;
+---
+> 	int buffer_size = 192000 + AV_INPUT_BUFFER_PADDING_SIZE;
