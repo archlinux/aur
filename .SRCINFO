@@ -1,0 +1,31 @@
+pkgbase = afl-qemu
+	pkgdesc = Lets you fuzz black-box binaries with afl.
+	pkgver = 2.52b
+	pkgrel = 1
+	url = http://lcamtuf.coredump.cx/afl/
+	arch = any
+	license = apache
+	depends = afl
+	depends = libtool
+	depends = wget
+	depends = python2
+	depends = automake
+	depends = autoconf
+	depends = bison
+	depends = glibc
+	options = staticlibs
+	options = !emptydirs
+	options = !strip
+	source = http://lcamtuf.coredump.cx/afl/releases/afl-2.52b.tgz
+	source = http://download.qemu-project.org/qemu-2.10.0.tar.xz
+	source = memfd.diff
+	source = glfs_truncate.diff
+	source = glfs_io_cbk.diff
+	md5sums = d4fa778e6c2221aee4f5326f22e1983d
+	md5sums = a89e3293cf69c32cf4be4188dfa25544
+	md5sums = 9715c550f9a71c55339a9b9fb8c136ad
+	md5sums = 05b5604dd7b10f43a8f2dca238d948df
+	md5sums = 93cce7e3cffc9574b325c886d4686428
+
+pkgname = afl-qemu
+

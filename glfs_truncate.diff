@@ -1,0 +1,80 @@
+From e014dbe74e0484188164c61ff6843f8a04a8cb9d Mon Sep 17 00:00:00 2001
+From: Prasanna Kumar Kalever <prasanna.kalever@redhat.com>
+Date: Tue, 5 Mar 2019 16:46:33 +0100
+Subject: [PATCH 1/1] gluster: Handle changed glfs_ftruncate signature
+
+New versions of Glusters libgfapi.so have an updated glfs_ftruncate()
+function that returns additional 'struct stat' structures to enable
+advanced caching of attributes. This is useful for file servers, not so
+much for QEMU. Nevertheless, the API has changed and needs to be
+adopted.
+
+Signed-off-by: Prasanna Kumar Kalever <prasanna.kalever@redhat.com>
+Signed-off-by: Niels de Vos <ndevos@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+---
+ block/gluster.c |  4 ++++
+ configure       | 18 ++++++++++++++++++
+ 2 files changed, 22 insertions(+)
+
+diff --git a/block/gluster.c b/block/gluster.c
+index af64330..f853aa8 100644
+--- a/block/gluster.c
++++ b/block/gluster.c
+@@ -20,6 +20,10 @@
+ #include "qemu/option.h"
+ #include "qemu/cutils.h"
+ 
++#ifdef CONFIG_GLUSTERFS_FTRUNCATE_HAS_STAT
++# define glfs_ftruncate(fd, offset) glfs_ftruncate(fd, offset, NULL, NULL)
++#endif
++
+ #define GLUSTER_OPT_FILENAME        "filename"
+ #define GLUSTER_OPT_VOLUME          "volume"
+ #define GLUSTER_OPT_PATH            "path"
+diff --git a/configure b/configure
+index cab830a..5354d51 100755
+--- a/configure
++++ b/configure
+@@ -456,6 +456,7 @@ glusterfs_xlator_opt="no"
+ glusterfs_discard="no"
+ glusterfs_fallocate="no"
+ glusterfs_zerofill="no"
++glusterfs_ftruncate_has_stat="no"
+ gtk=""
+ gtk_gl="no"
+ tls_priority="NORMAL"
+@@ -4091,6 +4092,19 @@ if test "$glusterfs" != "no" ; then
+       glusterfs_fallocate="yes"
+       glusterfs_zerofill="yes"
+     fi
++    cat > $TMPC << EOF
++#include <glusterfs/api/glfs.h>
++
++int
++main(void)
++{
++	/* new glfs_ftruncate() passes two additional args */
++	return glfs_ftruncate(NULL, 0, NULL, NULL);
++}
++EOF
++    if compile_prog "$glusterfs_cflags" "$glusterfs_libs" ; then
++      glusterfs_ftruncate_has_stat="yes"
++    fi
+   else
+     if test "$glusterfs" = "yes" ; then
+       feature_not_found "GlusterFS backend support" \
+@@ -6976,6 +6990,10 @@ if test "$glusterfs_zerofill" = "yes" ; then
+   echo "CONFIG_GLUSTERFS_ZEROFILL=y" >> $config_host_mak
+ fi
+ 
++if test "$glusterfs_ftruncate_has_stat" = "yes" ; then
++  echo "CONFIG_GLUSTERFS_FTRUNCATE_HAS_STAT=y" >> $config_host_mak
++fi
++
+ if test "$libssh2" = "yes" ; then
+   echo "CONFIG_LIBSSH2=m" >> $config_host_mak
+   echo "LIBSSH2_CFLAGS=$libssh2_cflags" >> $config_host_mak
+-- 
+1.8.3.1
+
