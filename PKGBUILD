@@ -7,6 +7,7 @@ pkgdesc="xrdesktop applet for KDE Plasma"
 url="https://gitlab.freedesktop.org/xrdesktop"
 license=('GPL')
 depends=('plasma-desktop' 'kwin-effect-xrdesktop-git')
+makedepends=('cmake' 'extra-cmake-modules')
 source=($pkgname::'git+https://gitlab.freedesktop.org/xrdesktop/kdeplasma-applets-xrdesktop.git')
 md5sums=('SKIP')
 arch=('any')
