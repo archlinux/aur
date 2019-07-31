@@ -3,7 +3,7 @@
 # I maintain this on github, feel free to submit a pull request to
 # https://github.com/soker90/paquetes-archinux.git
 pkgname=python-pyexcel-ods
-pkgver=5.0.6
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="A wrapper library to read, manipulate and write data in ods format"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ url="https://github.com/pyexcel/pyexcel-ods"
 license=('BSD-3-clause')
 makedepends=('python-setuptools')
 depends=('python' 'python-odfpy' 'python-pyexcel-io')
-source=("https://github.com/pyexcel/pyexcel-ods/archive/v$pkgver.tar.gz")
-md5sums=('85596dbdd695d0940cf2e66a74469fa1')
+source=("https://github.com/pyexcel/pyexcel-ods/archive/$pkgver.tar.gz")
+md5sums=('d51b9a481c1cd3d1fc8776004835faf8')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
