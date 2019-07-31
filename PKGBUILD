@@ -5,8 +5,8 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=gkrellm
-pkgver=2.3.10
-pkgrel=4
+pkgver=2.3.11
+pkgrel=1
 pkgdesc="System monitor package for GTK2"
 arch=('x86_64')
 url="http://gkrellm.srcbox.net/"
@@ -15,19 +15,9 @@ depends=('gtk2' 'libsm' 'lm_sensors')
 makedepends=('gettext')
 backup=('etc/gkrellmd.conf')
 source=("${url}/releases/${pkgname}-${pkgver}.tar.bz2"
-        "fix-critical-warning.patch"
-        "gkrellm.service")
-sha256sums=('8b9ec8baadcd5830c6aff04ba86dc9ed317a15c1c3787440bd1e680fb2fcd766'
-            '05c02428065b8774637db3efe564fb597e3d9d3d9200e004077fbe9a04412e36'
+        gkrellm.service)
+sha256sums=('1ee0643ed9ed99f88c1504c89d9ccb20780cf29319c904b68e80a8e7c8678c06'
             '2829931127632d0391f6749024809594b78c138fe4f03c98cd65fdbd47cea376')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  # Avoid calling g_strstr_len with NULL haystack (FS#51413)
-  # https://git.srcbox.net/gkrellm/commit/?id=3db76c647a04a603bafae19cc699bd50436d66a2
-  patch -Np1 -i ../fix-critical-warning.patch
-}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
