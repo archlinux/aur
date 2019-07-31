@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}"
+    cd "${srcdir}"
     for f in *.otb; do
         install -Dm 644 "${f}" "${pkgdir}/usr/share/fonts/misc/${f}"
     done
