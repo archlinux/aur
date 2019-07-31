@@ -16,7 +16,6 @@ backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt'
 
 source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	"https://raw.githubusercontent.com/max72bra/pi-hole-standalone-archlinux-customization/master/arch-server-core-$pkgver.patch"
-    dnsmasq.main
 	dnsmasq.include
 	$_pkgname-gravity.service
 	$_pkgname-gravity.timer
@@ -24,8 +23,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	piholeDebug.sh)
 
 md5sums=('3973f2a9d7fcd6ea10265feaa397f108'
-         '9a07ec70243c20ed5127a9b140cdccff'
-         '91a3f21bb0a7d429cce2b8d7551e99da'
+         '3cd7bd0ec53825b609c2ba138a089f6f'
          '50d29442a7b185f0d05bc2ed72f875be'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
@@ -62,7 +60,7 @@ package() {
   install -Dm644 $_pkgname-$pkgver/adlists.list "$pkgdir"/etc/pihole/adlists.list
   install -Dm644 /dev/null "$pkgdir"/etc/pihole/whitelist.txt
   install -Dm644 /dev/null "$pkgdir"/etc/pihole/blacklist.txt
-  install -Dm644 dnsmasq.main "$pkgdir"/usr/share/pihole/configs/dnsmasq.example.conf
+  install -Dm644 $_pkgname-$pkgver/advanced/dnsmasq.conf.original "$pkgdir"/etc/dnsmasq.conf
   install -Dm644 dnsmasq.include "$pkgdir"/etc/dnsmasq.d/01-pihole.conf
   install -dm755 "$pkgdir"/usr/share/licenses/pihole
   install -Dm644 ${pkgname%-*}-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/pihole/Pi-hole
