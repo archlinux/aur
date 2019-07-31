@@ -1,8 +1,8 @@
 # Maintainer: whoami <whoami@systemli.org>
 
 pkgname=vlang
-pkgver=0.1.15
-pkgrel=2
+pkgver=0.1.17
+pkgrel=1
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -11,7 +11,7 @@ depends=('glibc')
 optdepends=('glfw' 'libfreetype.so' 'libcurl.so')
 conflicts=('v' 'vlang-git')
 source=("v-$pkgver.tar.gz::https://github.com/$pkgname/v/archive/$pkgver.tar.gz"
-        "vc-$pkgver.tar.gz::https://github.com/$pkgname/vc/archive/$pkgver.tar.gz")
+        "vc-$pkgver.tar.gz::https://github.com/$pkgname/vc/archive/$pkgver.tar.gz") 
 
 prepare() {
     cp vc-$pkgver/v.c v-$pkgver/
@@ -19,10 +19,8 @@ prepare() {
 
 build() {
     cd v-$pkgver
-    cc -std=gnu11 -w -o v v.c -lm
-    ./v -prod -o v compiler
-    # -fPIC -pie required for examples/hot_code_reloading
-    make CFLAGS+="-fPIC -pie" thirdparty
+    cc -std=gnu11 $CFLAGS -w -o v v.c -lm $LDFLAGS
+    make thirdparty-release
 }
 
 package() {
@@ -36,5 +34,5 @@ package() {
     ln -s /usr/lib/vlang/v "$pkgdir/usr/bin/v"
 }
 
-sha256sums=('832265afc05c4ad18ac26967bb873eea7afff380fb4d5e8a026214a83e2d2e95'
-            'e9187de26c67f878ff9de9d1abf1b8705037db6020eb948492d549490e7bea24')
+sha256sums=('8c509b157e3faafac5556e124575b8d82c0441b4b45edc45bfb6c4b05d394d2b'
+            '2cf184f70315dd12a23d7ddb4df665f108e5aaf7fcf2253530b76bb8ce0b8b13')
