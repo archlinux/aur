@@ -1,0 +1,14 @@
+pkgbase = wordpress-plugin-wp-statistics
+	pkgdesc = Anti spam plugin
+	pkgver = 12.6.7
+	pkgrel = 1
+	url = https://github.com/wp-statistics/wp-statistics
+	arch = any
+	license = GPL3
+	depends = wordpress
+	options = !strip
+	source = wordpress-plugin-wp-statistics-12.6.7.tar.gz::https://downloads.wordpress.org/plugin/wp-statistics.12.6.7.zip
+	sha512sums = 436d188ee1fdcada584a89c85858ae37311568b52c77b0c8936d786df8984ffc0beaf70dff8a27624b050ef29c5e0c80c8bf837ddefcb72cf578a463aaf02569
+
+pkgname = wordpress-plugin-wp-statistics
+
