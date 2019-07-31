@@ -2,8 +2,8 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.2.4
-pkgver=5.2.v.4
+gitver=v5.2.5
+pkgver=5.2.v.5
 pkgrel=1
 #was 3
 arch=('x86_64')
