@@ -2,21 +2,21 @@
 
 _branch="fracture_modifier"
 _sufix=${_branch}
-_blenver=2.81
+_blenver=2.82
 _fragment="#branch=${_branch}"
 pkgname=blender-${_sufix}-git
-pkgver=v2.79b.r2154.gc8d6bba3cce
+pkgver=v2.79b.r2168.g969fca718a4
 pkgrel=1
 pkgdesc="Development version of Blenders ${_branch} branch"
 arch=('i686' 'x86_64')
-url="http://blender.org/"
+url="https://blender.org/"
 depends=('alembic' 'openjpeg' 'python-numpy'  'libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
-provides=('blender-fracture_modifier')
-conflicts=('blender-fracture_modifier')
+provides=("blender-${_sufix}")
+conflicts=("blender-${_sufix}")
 #options=(!makeflags)
 license=('GPL')
 install=blender.install
@@ -34,10 +34,11 @@ source=("git://git.blender.org/blender.git${_fragment}" \
         blender-fracture_modifier.desktop \
         SelectCudaComputeArch.patch \
         gcc8.patch \
-        version.patch \
+        gcc9.patch \
         ffmpeg.patch \
         openvdb.patch \
         collada1668.patch \
+        oiio-2.0.patch \
         )
 md5sums=('SKIP'
          'SKIP'
@@ -48,10 +49,11 @@ md5sums=('SKIP'
          '0a4847775c9eec16a76ec7d3a03a678d'
          '9454ff7e994f72ead5027356e227cbd2'
          'df6f12c3327678b0a05f9e48e9ace67c'
-         '975cef0e17c77517ed8727701abc8a0c'
+         '8679d9ab041141cf4fa1ae4da9389986'
          'bb325c8c879d677ad1f1c54797268716'
          'fe709e616e52c1acc47c1cc0f77c2694'
-         '4e4423315f07bc724c7703c57c4481d7')
+         '4e4423315f07bc724c7703c57c4481d7'
+         'f98eb0576a8e00444cc3e936d31a9812')
 
 # determine whether we can precompile CUDA kernels
 _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
@@ -75,8 +77,11 @@ prepare() {
   git apply -v ${srcdir}/gcc8.patch
   git apply -v ${srcdir}/ffmpeg.patch
   git apply -v ${srcdir}/openvdb.patch
-  git apply -v ${srcdir}/version.patch
   git apply -v ${srcdir}/collada1668.patch
+  git apply -v ${srcdir}/gcc9.patch
+  git apply -v ${srcdir}/oiio-2.0.patch
+  msg "change BLENDER_VERSION to ${_blenver/./}"
+  sed -i "/#define BLENDER_VERSION */s/279/${_blenver/./}/" source/blender/blenkernel/BKE_blender_version.h
 }
 
 build() {
@@ -85,9 +90,6 @@ build() {
   
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "python version detected: ${_pyver}"
-
-  export CFLAGS="${CFLAGS} -DOPENVDB_3_ABI_COMPATIBLE"
-  export CXXFLAGS="${CXXFLAGS} -DOPENVDB_3_ABI_COMPATIBLE"
 
   cmake "$srcdir/blender" \
         -DCMAKE_INSTALL_PREFIX=/usr \
