@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://gitlab.freedesktop.org/xrdesktop/kwin-effect-xrdesktop'
 license=('GPL')
 depends=(kwin libinputsynth-git xrdesktop-git)
-makedepends=('extra-cmake-modules' 'git')
+makedepends=('extra-cmake-modules' 'git' 'vulkan-headers')
 source=('git+https://gitlab.freedesktop.org/xrdesktop/kwin-effect-xrdesktop.git')
 md5sums=('SKIP')
 
