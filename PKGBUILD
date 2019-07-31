@@ -12,8 +12,8 @@ _tinydir_commit=3aae922
 
 pkgname=natron
 _pkgname=Natron
-pkgver=2.3.15_pre4
-_pkgver=2.3.15-pre4
+pkgver=2.3.15_pre5
+_pkgver=2.3.15-pre5
 pkgrel=1
 pkgdesc='Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry.'
 arch=('i686' 'pentium4' 'x86_64')
@@ -21,17 +21,17 @@ url='https://github.com/NatronGitHub/Natron'
 license=('GPL')
 depends=('boost-libs' 'cairo' 'openfx-arena' 'openfx-gmic' 'openfx-io' 'openfx-misc' 'python2-pyside')
 makedepends=('boost' 'expat' 'glfw-x11' 'openmp')
-optdepends=('openfx-arena: Extra OpenFX plugins for Natron, includes text node' 'natron-plugins')
-source=("$_pkgname-$_pkgver.tar.gz::https://github.com/NatronGitHub/Natron/archive/$_pkgver.tar.gz"
+optdepends=('natron-plugins')
+source=("$_pkgname-$_pkgver.tar.gz::https://github.com/NatronGitHub/Natron/archive/v$_pkgver.tar.gz"
         "google-breakpad-$_google_breakpad_commit.tar.gz::https://github.com/NatronGitHub/google-breakpad/tarball/$_google_breakpad_commit"
         "google-mock-$_google_mock_commit.tar.gz::https://github.com/NatronGitHub/google-mock/tarball/$_google_mock_commit"
         "google-test-$_google_test_commit.tar.gz::https://github.com/NatronGitHub/google-test/tarball/$_google_test_commit"
         "openfx-$_openfx_commit.tar.gz::https://github.com/NatronGitHub/openfx/tarball/$_openfx_commit"
         "SequenceParsing-$_SequenceParsing_commit.tar.gz::https://github.com/NatronGitHub/SequenceParsing/tarball/$_SequenceParsing_commit"
         "tinydir-$_tinydir_commit.tar.gz::https://github.com/NatronGitHub/tinydir/tarball/$_tinydir_commit"
-        "OCIO-Configs-$_pkgname-v${pkgver%.*}.tar.gz::https://github.com/NatronGitHub/OpenColorIO-Configs/archive/$_pkgname-v${pkgver%.*}.tar.gz"
+        "OpenColorIO-Configs-$_pkgname-v${pkgver%.*}.tar.gz::https://github.com/NatronGitHub/OpenColorIO-Configs/archive/$_pkgname-v${pkgver%.*}.tar.gz"
         "config.pri")
-sha512sums=('SKIP'
+sha512sums=('4cab3a8307126a8a15e46416adf0dd77702419b58530a0afc94f21e1ad328fdf2dda20a5f197c6e33acac27f359398564d894c4c02cd8ab213499deb759d0f9d'
             'SKIP'
             'SKIP'
             'SKIP'
