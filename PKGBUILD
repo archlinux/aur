@@ -3,8 +3,8 @@
 # Contributor: Viacheslav Chimishuk <voice@root.ua>
 
 pkgname=python-pysvn
-pkgver=1.9.9
-_pycxxver=7.1.0
+pkgver=1.9.10
+_pycxxver=7.1.3
 pkgrel=1
 pkgdesc="The Pythonic interface to Subversion"
 url="https://pysvn.sourceforge.io/"
@@ -13,7 +13,7 @@ conflicts=('pysvn<=1.7.4-3')
 arch=('i686' 'x86_64')
 license=('Apache')
 source=("https://downloads.sourceforge.net/project/pysvn/pysvn/V${pkgver}/pysvn-${pkgver}.tar.gz")
-md5sums=('e76e5d79fa07173ded54cd18c8f605c9')
+md5sums=('066555d1a8561829e903dc375ea6db10')
 
 build() {
   cd "$srcdir/pysvn-$pkgver/Source"
@@ -21,13 +21,10 @@ build() {
   make
 }
 
-# tests currently don't work
-
-# check() {
-#   cd "$srcdir/pysvn-$pkgver/Tests"
-#   # tests fail with latest subversion
-#   LC_ALL="en_US.UTF-8" make
-# }
+check() {
+  cd "$srcdir/pysvn-$pkgver/Tests"
+  LC_ALL="en_US.UTF-8" make
+}
 
 package() {
   _pyver=$(python -c 'import sys; print(sys.version_info.minor)')
