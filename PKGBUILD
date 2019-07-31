@@ -1,42 +1,39 @@
-# Maintainer: Hugo Courtial <hugo [at] courtial [not colon] me>
+# Maintainer: Tercio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
+# Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 pkgname=natron-plugins
-pkgver=437
-pkgrel=2
-arch=("i686" "x86_64")
-pkgdesc="Extra OpenFX plugins for Natron"
-url="https://github.com/natronvfx/natron-plugins"
-license=("GPL2")
-makedepends=("git")
-depends=("natron" "python" "python2" "ffmpeg")
-source=("$pkgname::git://github.com/NatronVFX/natron-plugins.git")
-md5sums=("SKIP")
+pkgver=2.1.7.r1177.g456618b
+_commit=456618b
+pkgrel=1
+arch=("any")
+pkgdesc="A collection of Natron plugins made by the community"
+url="https://github.com/NatronGitHub/natron-plugins"
+license=("GPL2" "custom:CCPL2")
+depends=("natron")
+install=natron-plugins.install
+source=("$pkgname-$_commit.tar.gz::$url/tarball/$_commit")
+sha256sums=("SKIP")
 
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  git rev-list --count HEAD
-}
-
-prepare() {
-    cd "$srcdir/$pkgname"
-    git submodule update -i --recursive
-
-   mkdir "$srcdir/$pkgname/png"
-   mkdir "$srcdir/$pkgname/py"
-
-   find . -type f -name *.png -exec mv {} ./png \;
-   find . -type f -name *.py -exec mv {} ./py \;
-}
-
-
+_pkgname="NatronGitHub-$pkgname-$_commit"
 
 package() {
-    cd $srcdir/$pkgname/py
-    mkdir -p "$pkgdir/usr/share/Natron/Plugins"
+  install -d "$pkgdir/usr/share/Natron/Plugins/$pkgname"
+  install -d "$pkgdir/usr/share/licenses"
+  install -d "$pkgdir/usr/OFX/Plugins/Shadertoy.ofx.bundle/Contents/Resources/presets/default"
 
-    cp -r * $pkgdir/usr/share/Natron/Plugins/
-    cd $srcdir/$pkgname/png
-    
+  mv $srcdir/$_pkgname/Licenses/ \
+     $pkgdir/usr/share/licenses/$pkgname
 
-    cp -r * $pkgdir/usr/share/Natron/Plugins/
+  mv $srcdir/$_pkgname/Shadertoy/Shadertoy.txt \
+     $srcdir/$_pkgname/Shadertoy/Shadertoy.txt.natron-plugins
+
+  touch $srcdir/$_pkgname/Shadertoy/Shadertoy.txt.original
+
+  mv $srcdir/$_pkgname/Shadertoy/* \
+     $pkgdir/usr/OFX/Plugins/Shadertoy.ofx.bundle/Contents/Resources/presets/default
+
+  rmdir $srcdir/$_pkgname/Shadertoy/
+
+  cp -r --preserve=mode,timestamps \
+        $srcdir/$_pkgname/* \
+        $pkgdir/usr/share/Natron/Plugins/$pkgname/
 }
