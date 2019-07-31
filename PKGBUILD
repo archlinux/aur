@@ -2,8 +2,8 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=haskell-status-notifier-item
 _hkgname=status-notifier-item
-pkgver=0.3.0.0
-pkgrel=2
+pkgver=0.3.0.4
+pkgrel=1
 pkgdesc="A wrapper over the StatusNotifierItem/libappindicator dbus specification"
 url=https://hackage.haskell.org/package/status-notifier-item
 license=('BSD')
@@ -12,16 +12,11 @@ depends=('ghc-libs' 'haskell-base' 'haskell-hslogger' 'haskell-spool' 'haskell-d
 makedepends=('ghc')
 source=(
   "https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz"
-  79f548c9fb77c1df2681be53bcf06b0f4b9c16ec.patch
 )
-sha256sums=('7b2702eb7eebe8d3499d6ecf8c6cfa81e9b41828fd837615b285102389e75ba3'
-            'af05bca399854f45553bb2ca000b4003c7dcaefd5586009a0e93f10efc3f24c3')
+sha256sums=('c798076268a82c19e5ed53e965e8e0bf2022fbc41b4a8cc4b3d390b97f996c29')
 
 prepare() {
   cd $_hkgname-$pkgver
-  # Patch for building against dbus-1.2.1
-  # See https://github.com/IvanMalison/status-notifier-item/pull/3
-  patch -Np1 -i "${srcdir}/79f548c9fb77c1df2681be53bcf06b0f4b9c16ec.patch"
   sed -i '55i\    , text' status-notifier-item.cabal
 }
 
