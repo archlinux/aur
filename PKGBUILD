@@ -6,14 +6,14 @@
 
 _locale='pl'
 pkgname=palemoon-i18n-pl
-pkgver=28.1.0
+pkgver=28.6.1
 pkgrel=1
 pkgdesc="Polish language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"http://addons.palemoon.org/?component=download&version=latest&id=langpack-${_locale}@palemoon.org")
-sha256sums=('085482f03653c803b1e5a0c28a9d0791544cebfd3b4bac409f4deda87244f1b6')
+sha256sums=('b6604775e6055dccfe9eb3fe2e0575c3d39223129ea899d769d0e91c5c0ac330')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("http::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
