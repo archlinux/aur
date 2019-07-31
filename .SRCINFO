@@ -1,6 +1,6 @@
 pkgbase = xfce4-panel-devel
 	pkgdesc = Panel for the Xfce desktop environment
-	pkgver = 4.13.6
+	pkgver = 4.13.7
 	pkgrel = 1
 	url = https://www.xfce.org/
 	arch = i686
@@ -20,11 +20,11 @@ pkgbase = xfce4-panel-devel
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = xfconf>=4.13.2
-	provides = xfce4-panel=4.13.6
+	provides = xfce4-panel=4.13.7
 	conflicts = xfce4-panel
 	conflicts = xfce4-panel-git
-	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.13/xfce4-panel-4.13.6.tar.bz2
-	sha256sums = 42411fee7675bb6fb3055395673dc925d43495df93b5e940a1ae3d0a3d2f63a8
+	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.13/xfce4-panel-4.13.7.tar.bz2
+	sha256sums = 888e30417342b05d566f5ef5a85791b05117fadbbc2f00bc5f29a30d6ba42ba9
 
 pkgname = xfce4-panel-devel
 
