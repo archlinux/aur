@@ -3,7 +3,7 @@
 # adapted from package "e1000e-dkms"
 pkgname=e1000e-dkms
 _modname=e1000e
-pkgver=3.4.2.4
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Intel e1000e Ethernet adapter driver (latest version from Intel) (DKMS version)"
 license=('GPL')
@@ -17,7 +17,7 @@ url='http://sourceforge.net/projects/e1000/'
 source=("http://downloads.sourceforge.net/project/e1000/${_modname}%20stable/${pkgver}/${_modname}-${pkgver}.tar.gz"
         'dkms.conf.in'
         'build-fix.patch')
-sha256sums=('20f2c08826d06b241228bba9501482d2e59197144e7e4d623f8f49b946dd3e7e'
+sha256sums=('1b8c391c8c7114dcb65f20ae424ff8f89692c8daa4fe2569beecf9b2a2c9ae34'
             '635b6c312c18db94e852248e0f5a1238e179ef1c0ebba2cdd0983afdb56efaf4'
             'd30c5d46d9f9b5e9c7ddcb3bd21303f585e04545571156fe3130d9f72922d0e0')
 
