@@ -1,5 +1,5 @@
 pkgbase = otb-unifont
-	pkgdesc = GNU Unifont Glyphs
+	pkgdesc = A free bitmap font with wide Unicode support (OTB version)
 	pkgver = 12.1.02
 	pkgrel = 1
 	url = https://ftp.gnu.org/gnu/unifont

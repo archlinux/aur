@@ -3,7 +3,7 @@
 pkgname=otb-unifont
 pkgver=12.1.02
 pkgrel=1
-pkgdesc="GNU Unifont Glyphs"
+pkgdesc="A free bitmap font with wide Unicode support (OTB version)"
 arch=('any')
 license=('GPL')
 url="https://ftp.gnu.org/gnu/unifont"
