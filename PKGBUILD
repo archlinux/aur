@@ -1,6 +1,6 @@
 pkgname=gandi-automatic-dns
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Script that updates Gandi DNS reccords to point at a machine's external IP address."
 arch=('any')
 url='https://github.com/brianpcurran/gandi-automatic-dns'

@@ -1,7 +1,7 @@
 pkgbase = gandi-automatic-dns
 	pkgdesc = Script that updates Gandi DNS reccords to point at a machine's external IP address.
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brianpcurran/gandi-automatic-dns
 	arch = any
 	license = custom:ISC
