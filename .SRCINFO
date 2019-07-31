@@ -1,7 +1,7 @@
 pkgbase = rua
 	pkgdesc = secure AUR helper written in Rust, supporting offline builds, filesystem isolation and more
 	pkgver = 0.13.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vn971/rua
 	arch = x86_64
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = rua
 	makedepends = cargo
 	depends = bubblewrap
 	depends = git
+	optdepends = bubblewrap-suid: version of bubblewrap that works on linux-hardened kernel
 	source = https://github.com/vn971/rua/archive/0.13.11.tar.gz
 	sha256sums = 166f5b232d1f1fad91249b0d4fc88de8ddcc996da73314e1b7ab6f3e311390f6
 
