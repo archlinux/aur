@@ -10,7 +10,7 @@ url='https://gitlab.freedesktop.org/xrdesktop/xrdesktop'
 depends=('glib2' 'gxr-git' 'gulkan-git')
 provides=("$basename="$pkgver)
 conflicts=("$basename")
-makedepend=('meson' 'git')
+makedepends=('meson' 'git' 'glslang' 'gtk-doc' 'vulkan-headers')
 license=('MIT')
 options=('debug' '!strip')
  
