@@ -6,14 +6,14 @@
 
 _locale='de'
 pkgname=palemoon-i18n-de
-pkgver=28.1.0
+pkgver=28.6.1
 pkgrel=1
 pkgdesc="German language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"http://addons.palemoon.org/?component=download&version=latest&id=langpack-${_locale}@palemoon.org")
-sha256sums=('33d0a2c145314ea63e9d0207a768839116cb0886a9c8fd3654f46b0c58e84b78')
+sha256sums=('17f3054e35fa15583f82ce645943a48bc09e0f7e4d618e29820453326d915b8a')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("http::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
