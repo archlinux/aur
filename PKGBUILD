@@ -9,7 +9,8 @@ set -u
 pkgname='canon-cque'
 #_cnver='3.0-5'; _dl='45523'
 #_cnver='4.0-0'; _dl64='48570'; _dl32=$((_dl64-1))
-_cnver='4.0-1'; _dl64='48570'; _dl32=$((_dl64-1))
+_cnver='4.0-3'; _dl64='48570'; _dl32=$((_dl64-1))
+#https://files.canon-europe.com/files/soft01-48570/Driver/CQue_v4.0.3_Linux_64_EN.tar.gz
 
 pkgver="${_cnver//-/.}"
 pkgrel='1'
@@ -20,17 +21,17 @@ license=('custom' 'GPL')
 depends=('cups' 'cups-filters')
 options=('!strip')
 source=('LICENSE')
-_fl="CQue_v${pkgver}_Linux_64_EN.tar"
-source_x86_64=("${_fl//.tar/.tgz}::http://files.canon-europe.com/files/soft01-${_dl64}/Driver/${_fl}")
-_fl="CQue_v${pkgver}_Linux_32_EN.tar"
-source_i686=("${_fl//.tar/.tgz}::http://files.canon-europe.com/files/soft01-${_dl32}/Driver/${_fl}")
+_fl="CQue_v${pkgver}_Linux_64_EN.tar.gz"
+source_x86_64=("https://files.canon-europe.com/files/soft01-${_dl64}/Driver/${_fl}")
+_fl="${_fl//64/32}"
+source_i686=("https://files.canon-europe.com/files/soft01-${_dl32}/Driver/${_fl}")
 unset _fl
 md5sums=('4df9593c184cd39bb9d9df6195c4d390')
-md5sums_i686=('cfe9fbc36a79af0c09955b7c58271c95')
-md5sums_x86_64=('aaab21e180cfd3891bc6dfc22330930d')
+md5sums_i686=('4ebc972c05dbb87b4fa11d1ab18d1dd7')
+md5sums_x86_64=('0076333d89bf9bd262ac502016ebffe2')
 sha256sums=('343a624f559718d085b01605572fdf1cf33201931f06ef37567bbd497a29d333')
-sha256sums_i686=('cf829d45509e4f1686187bbb04e471dacfe982f44bbdc1c76e9c8df3db0bbfbf')
-sha256sums_x86_64=('0a793dd059445294d0428e1903e32b58e1913bb187053211cad5df93043caf46')
+sha256sums_i686=('ec9ed3f2fe9e28ba3c1d6591e5945710a1be59fc1629ed59c9461946659c2af8')
+sha256sums_x86_64=('32e19bf28fd59cc0a7b95200f9dc96da53f579fd9ceedef53cac55c28994b401')
 
 package() {
   set -u
