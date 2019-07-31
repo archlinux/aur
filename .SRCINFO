@@ -7,7 +7,6 @@ pkgbase = mcmojave-kde-theme-git
 	license = GPL3
 	makedepends = git
 	depends = plasma-desktop
-	depends = sddm
 	optdepends = kvantum-qt5
 	optdepends = mcmojave-circle-icon-theme-git
 	optdepends = mojave-gtk-theme-git
