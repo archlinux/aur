@@ -9,7 +9,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts       # Build kernel with a different name
 _pkgver=4.19.59
-_rtpatchver=rt23
+_rtpatchver=rt24
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('x86_64')
@@ -40,11 +40,11 @@ validpgpkeys=(
 )
 sha256sums=('b8b41825d439de0587031eb8c659c5eb4970a5be5bfda1868661016c52c8b35b'
             'SKIP'
-            '9aa1a5c8555fd7195a36a274ad2b9e843810f172eb314230f82623f4068760a5'
+            '59756ebd634a951a8f74c3639257439104aaea2c635485c15f775d526b70fa64'
             'SKIP'
             '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
             '67aed9742e4281df6f0bd18dc936ae79319fee3763737f158c0e87a6948d100d'
-            '203221ce5e835e55f87585340ca7e50b3a8eefbb58161570479a1cf88963e2b7'
+            'c0b43b9a7090edaea7b003fcd4ca66de70cb4123c52311587c9f587e8814835b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
