@@ -1,0 +1,15 @@
+pkgbase = wordpress-plugin-jetpack-lite
+	pkgdesc = Prevent Jetpack modules from being loaded except for Stats and WP.me Shortlinks
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/pluginkollektiv/antispam-bee
+	arch = any
+	license = GPL2
+	depends = wordpress
+	depends = wordpress-plugin-jetpack
+	options = !strip
+	source = wordpress-plugin-jetpack-lite-3.0.3.tar.gz::https://downloads.wordpress.org/plugin/jetpack-lite.3.0.3.zip
+	sha512sums = 2eabaf33140011e361d6219d08e1478c40726f088afb8cd1fb46c82ed832e4b202173d0366edf94ae3ee8a19c2cc3ad7b76616cb32b719fcf2274b321164aea5
+
+pkgname = wordpress-plugin-jetpack-lite
+
