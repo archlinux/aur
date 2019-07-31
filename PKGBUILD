@@ -1,9 +1,9 @@
-# Maintainer: Trevor Bramble <inbox@trevorbramble.com>
 # Maintainer: Ryan Cragun <me@ryan.ec>
 
 pkgname=habitat-bin
-pkgver=0.82.0
-_builddate=20190605214032
+pkgver=0.83.0
+_builddate=20190712231625
+
 pkgrel=1
 pkgdesc="Application automation framework that allows you to build applications that have automation built-in"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache')
 provides=('habitat')
 conflicts=('habitat' 'habitat-git')
 source=("https://dl.bintray.com/habitat/stable/linux/${arch}/hab-${pkgver}-${_builddate}-${arch}-linux.tar.gz")
-sha256sums=('5e4a3a22d6a63c289653ab11826eb45f792f983b4395367cecf4d4e3b37daeb4')
+sha256sums=('6d14f7886583d669d2bc07279d63360492e3b96ca4ffa33812c30bfaf262660c')
 
 package() {
   install -D -m755 "${srcdir}/hab-${pkgver}-${_builddate}-${arch}-linux/hab" "${pkgdir}/usr/bin/hab"
