@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 pkgname=n-acd
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="IPv4 Address Conflict Detection"
 url="https://github.com/nettools/n-acd"
@@ -9,8 +9,7 @@ license=('LGPL2.1' 'Apache')
 arch=(x86_64)
 depends=(glibc)
 makedepends=(meson pkgconf)
-_tag=v1 #20180929
-source=("git+https://github.com/nettools/n-acd.git#tag=$_tag")
+source=("git+https://github.com/nettools/n-acd.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 pkgver() {
