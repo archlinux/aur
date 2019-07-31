@@ -10,6 +10,7 @@ pkgbase = mcmojave-kde-theme-git
 	depends = sddm
 	optdepends = kvantum-qt5
 	optdepends = mcmojave-circle-icon-theme-git
+	optdepends = mojave-gtk-theme
 	optdepends = sddm
 	source = git+https://github.com/vinceliuice/McMojave-kde.git
 	sha256sums = SKIP
