@@ -18,6 +18,7 @@ pkgbase = python-orange
 	depends = python-keyrings-alt
 	depends = python-bottleneck
 	depends = python-anyqt
+	depends = qt5-svg
 	depends = python-pip
 	depends = python-serverfiles
 	depends = python-louvain
