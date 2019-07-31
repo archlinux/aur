@@ -1,0 +1,18 @@
+pkgbase = mcmojave-kde-theme-git
+	pkgdesc = MacOSX Mojave like theme for KDE Plasma
+	pkgver = r20.5511039
+	pkgrel = 1
+	url = https://github.com/vinceliuice/McMojave-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plasma-desktop
+	depends = sddm
+	optdepends = kvantum-qt5
+	optdepends = mcmojave-circle-icon-theme-git
+	optdepends = sddm
+	source = git+https://github.com/vinceliuice/McMojave-kde.git
+	sha256sums = SKIP
+
+pkgname = mcmojave-kde-theme-git
+
