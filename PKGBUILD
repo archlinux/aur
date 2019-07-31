@@ -7,7 +7,7 @@
 _pkgname=linuxsampler
 pkgname=linuxsampler-vst
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional-grade audio sampler alternative to Gigasampler (including VST plugin)"
 arch=('x86_64')
 url="https://www.linuxsampler.org/"
@@ -24,7 +24,7 @@ prepare() {
   cd "${_pkgname}-${pkgver}"
   autoreconf -vfi
   # creating a ld.so.conf entry for linuxsampler.so
-  echo "/usr/lib/${pkgname}" > "${pkgname}.conf"
+  echo "/usr/lib/${_pkgname}" > "${pkgname}.conf"
 }
 
 build() {
