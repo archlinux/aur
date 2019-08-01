@@ -1,14 +1,122 @@
 <a name="unreleased"></a>
-## [Unreleased](https://github.com/langurmonkey/gaiasky/tree/master)
-[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.7...HEAD)
+## [Unreleased](https://gitlab.com/langurmonkey/gaiasky/tree/master)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.0...HEAD)
 
 
-<a name="2.1.7"></a>
-## [2.1.7](https://github.com/langurmonkey/gaiasky/tree/2.1.6) (2019-01-11)
-[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.6...2.1.7)
+<a name="2.2.0"></a>
+## [2.2.0](https://gitlab.com/langurmonkey/gaiasky/tree/2.1.7-vr) (2019-08-01)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.7-vr...2.2.0)
 
 ### Bug Fixes
 
+- no-GUI mode inhibits GUI-related mappings 
+- memory info window layout 
+- VRAM leak disposing textures when changin quality 
+- truly release VRAM when unloading textures 
+- scripting parameter check 
+- cameraTransition() 
+- more glsl leftovers 
+- shader errors on macOS [#288](https://gitlab.com/langurmonkey/gaiasky/issues/288) [#288](https://gitlab.com/langurmonkey/gaiasky/issues/288) 
+- show notice with high/ultra quality 
+- tangent and binormal vectors on UV spheres 
+- ui inconsistencies 
+- line occlusion fixed with no depth writes 
+- adjust sun size and selection 
+- aspect ratio of most points 
+- synchronous catalog loading via script is really synchronous 
+- fade node visibility tied to internal frame rate, not absolute time 
+- fix dataset visibility fade time link, add cubemap projection setter in scripting API 
+- frame buffer and effects cleanup on resize 
+- adjust motion blur, remove blur radius 
+- about window layout 
+- add pad to version check buttons 
+- add some value checks to scripting implementation 
+- file chooser file/dir browsing state 
+- bugs determining location of files 
+- macos gradle launch script 
+- dataset version check in download manager 
+- macOS retina display scaling, remove analytics 
+- macos script fix 
+
+### Build System
+
+- Improved readme file instructions 
+- Requirements from JRE8 to JRE11 
+- move postprocessing lib to gaia sky 
+- gitlab issue templates 
+
+### Code Refactoring
+
+- texture component is now material component 
+- remove unused webgl code 
+- sphere creator to own class 
+- render system cleanup 
+- sprite batch shaders to version 330, moved postprocess shaders to own folder 
+- sanity checks and code cleanup in scripting API implementation 
+- reorganised scripts 
+- cleanup scripts folder 
+
+### Features
+
+- add padding to tooltips by default 
+- add reflections in shaders plus skybox 
+- add startup object to config 
+- add VRAM monitoring 
+- add reset sequence number button 
+- improve debug pane layout 
+- initialise elevation data structures asynchronously 
+- CPU generation of height data 
+- add tessellation quality control 
+- noise-based height 
+- new scripting calls: cameraYaw/Pitch 
+- handle server down event correctly 
+- data downloader checks for updates 
+- decouple keyboard bindings from code, i18n camera modes 
+- warnings in object search 
+- new checksum algorithm: MD5 -> SHA256 
+- orbit refresh daemon plus shading 
+- comprehensive info panel on mode switch, star textures 
+- fix point scaling 
+- add starburst to lens flare 
+- add load queue progress to debug 
+- separate HiDPI theme to checkbox in preferences 
+- add point size and color attributes to asteroids 
+- add dithering glsl library to simulate transparency with opaque objects 
+- some work on controller mappings 
+- add optional gravity to game mode 
+- new camera mode: Game mode 
+- walk on the surface of any height-mapped body 
+- add game mode - WASD+mouse 
+- add physically based fog to atmospheres 
+- add Uncharted and Filmic tone mapping types 
+- add color noise parameter to particle groups 
+- parallax mapping 
+- improve light glow performance and visual quality 
+- add ACES tone mapping type 
+- improve atmosphere blending with stars 
+- add plumbing to allow automatic and exposure HDR tone mapping types 
+- automatic tone mapping based on Reinhard's method 
+- move all post-processing shaders to version 330 
+- new milky way model 
+- new milky way model 
+- migrate search window to generic dialog 
+- native support for gzipped obj models (.obj.gz) 
+- implement integer indices 
+- use gitlab API instead of github's 
+- implement sane crash reporting to file 
+- migrate to Java 11 
+- add 'y' and 'n' key bindings to dialogs 
+- add shortcuts to expand/collapse panes 
+- velocity vectors are regular component types 
+- add optional arrowheads to velocity vectors 
+
+<a name="2.1.7"></a>
+## [2.1.7](https://gitlab.com/langurmonkey/gaiasky/tree/2.1.6) (2019-01-11)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.6...2.1.7)
+
+### Bug Fixes
+
+- restored download code 
 - wait for tasks to finish before shutting down 
 - about window layout in non-hidpi mode 
 - 'data files not found' problem 
@@ -30,8 +138,8 @@
 - add RUWE to octree generator 
 
 <a name="2.1.6"></a>
-## [2.1.6](https://github.com/langurmonkey/gaiasky/tree/2.1.5) (2018-12-18)
-[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.5...2.1.6)
+## [2.1.6](https://gitlab.com/langurmonkey/gaiasky/tree/2.1.5) (2018-12-18)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.5...2.1.6)
 
 ### Bug Fixes
 
@@ -78,12 +186,12 @@
 - nbg loader to manage distances better 
 
 <a name="2.1.5"></a>
-## [2.1.5](https://github.com/langurmonkey/gaiasky/tree/2.1.4) (2018-12-03)
-[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.4...2.1.5)
+## [2.1.5](https://gitlab.com/langurmonkey/gaiasky/tree/2.1.4) (2018-12-03)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.4...2.1.5)
 
 ### Bug Fixes
 
-- null pointer when unloading stars [#322](https://github.com/langurmonkey/gaiasky/issues/322) 
+- null pointer when unloading stars [#322](https://gitlab.com/langurmonkey/gaiasky/issues/322) 
 ### Build System
 
 - remove rpm deps as they depend on distro 
@@ -97,14 +205,14 @@
 ### Documentation
 
 - update changelog 
-- update rpm install command [#317](https://github.com/langurmonkey/gaiasky/issues/317) 
+- update rpm install command [#317](https://gitlab.com/langurmonkey/gaiasky/issues/317) 
 ### Features
 
 - LMC, SMC, datasets can require min gs version 
 - add support for nebulae 
 - non-jsonloader autoload files 
 - billboard galaxies 
-- passive update notifier [#321](https://github.com/langurmonkey/gaiasky/issues/321) 
+- passive update notifier [#321](https://gitlab.com/langurmonkey/gaiasky/issues/321) 
 - add download speed and progress in downloaded/total to download manager 
 - add progress MB data to downloader 
 ### Style
@@ -112,18 +220,18 @@
 - fix info message 
 
 <a name="2.1.4"></a>
-## [2.1.4](https://github.com/langurmonkey/gaiasky/tree/2.1.3) (2018-11-23)
-[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.3...2.1.4)
+## [2.1.4](https://gitlab.com/langurmonkey/gaiasky/tree/2.1.3) (2018-11-23)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.3...2.1.4)
 
 ### Bug Fixes
 
 - locale index overflow 
-- german translation and locale initialisation [#320](https://github.com/langurmonkey/gaiasky/issues/320) 
+- german translation and locale initialisation [#320](https://gitlab.com/langurmonkey/gaiasky/issues/320) 
 - do not preselect default dataset, only base data 
 - sizing of download manager window 
 - data download url log message 
 - null pointer when updating scroll focus, slash at end 
-- multiple scroll focus objects [#319](https://github.com/langurmonkey/gaiasky/issues/319) 
+- multiple scroll focus objects [#319](https://gitlab.com/langurmonkey/gaiasky/issues/319) 
 - octree generator 
 - emission shader code 
 ### Build System
@@ -133,7 +241,7 @@
 
 - improve usability of download manager 
 - ensure correct java version before building 
-- dataset versioning [#318](https://github.com/langurmonkey/gaiasky/issues/318) [#316](https://github.com/langurmonkey/gaiasky/issues/316) 
+- dataset versioning [#318](https://gitlab.com/langurmonkey/gaiasky/issues/318) [#316](https://gitlab.com/langurmonkey/gaiasky/issues/316) 
 - STIL provider adds HIP indices 
 - name support and more for STIL loader 
 - script to query HIP names in simbad 
@@ -144,15 +252,15 @@
 - wee reformatting 
 
 <a name="2.1.3"></a>
-## [2.1.3](https://github.com/langurmonkey/gaiasky/tree/2.1.2-vr) (2018-10-31)
-[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.2-vr...2.1.3)
+## [2.1.3](https://gitlab.com/langurmonkey/gaiasky/tree/2.1.2-vr) (2018-10-31)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.2-vr...2.1.3)
 
 ### Bug Fixes
 
 - octree rendering muted 
 - minimap window 
-- accents and umlauts in user folder path (win) [#314](https://github.com/langurmonkey/gaiasky/issues/314) 
-- start button status update [#313](https://github.com/langurmonkey/gaiasky/issues/313) 
+- accents and umlauts in user folder path (win) [#314](https://gitlab.com/langurmonkey/gaiasky/issues/314) 
+- start button status update [#313](https://gitlab.com/langurmonkey/gaiasky/issues/313) 
 ### Code Refactoring
 
 - startup log 
@@ -165,15 +273,15 @@
 - new shader init & various improvements 
 - add proper motions to stil data provider 
 - initial support for proper motions over SAMP 
-- individual constellation selectors [#275](https://github.com/langurmonkey/gaiasky/issues/275) 
+- individual constellation selectors [#275](https://gitlab.com/langurmonkey/gaiasky/issues/275) 
 ### Style
 
 - GaiaSky.java to use LF instead of CRLF 
 - remove leftover variables in full gui 
 
 <a name="2.1.2-vr"></a>
-## [2.1.2-vr](https://github.com/langurmonkey/gaiasky/tree/2.1.2) (2018-09-28)
-[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.2...2.1.2-vr)
+## [2.1.2-vr](https://gitlab.com/langurmonkey/gaiasky/tree/2.1.2) (2018-09-28)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.2...2.1.2-vr)
 
 ### Bug Fixes
 
@@ -182,35 +290,14 @@
 - heap sizes in build script 
 - macOS -XstartOnFirstThread flag 
 - macos builds tweaks 
-- heap sizes in build script 
-- macOS -XstartOnFirstThread flag 
-- assets location in install4j template 
-- macos builds tweaks 
-- heap sizes in build script 
-- macOS -XstartOnFirstThread flag 
-- macos builds tweaks 
-- macos builds tweaks 
-- heap sizes in build scripts 
-- heap sizes in build script 
-- macOS -XstartOnFirstThread flag 
-- macOS -XstartOnFirstThread flag 
-- global key bindings affect invisible GUIs [#311](https://github.com/langurmonkey/gaiasky/issues/311) 
-- fix `p` double-mapping [#310](https://github.com/langurmonkey/gaiasky/issues/310) 
+- global key bindings affect invisible GUIs [#311](https://gitlab.com/langurmonkey/gaiasky/issues/311) 
+- fix `p` double-mapping [#310](https://gitlab.com/langurmonkey/gaiasky/issues/310) 
 ### Build System
 
 - installer detects and removes previous versions 
 - new gradle 5 compile dep format 
 - update to lwjgl 3.2.3 
-- update to lwjgl 3.2.3 
 - missing flag in rund, fix caps in ruler 
-- new gradle 5 compile dep format 
-- update to lwjgl 3.2.3 
-- update to lwjgl 3.2.3 
-- new gradle 5 compile dep format 
-- update to lwjgl 3.2.3 
-- new gradle 5 compile dep format 
-- update to lwjgl 3.2.3 
-- update to lwjgl 3.2.3 
 - add javadoc generator and publisher 
 ### Code Refactoring
 
@@ -224,18 +311,8 @@
 ### Features
 
 - update to lwjgl3 backend 
-- update to lwjgl3 backend 
-- update to lwjgl3 backend 
-- update to lwjgl3 backend 
-- update to lwjgl3 backend 
-- update to lwjgl3 backend 
-- cosmic ruler [#296](https://github.com/langurmonkey/gaiasky/issues/296) 
-- update to lwjgl3 backend 
-- update to lwjgl3 backend 
-- update to lwjgl3 backend 
-- update to lwjgl3 backend 
-- update to lwjgl3 backend 
-- API calls to disable and enable the GUI [#312](https://github.com/langurmonkey/gaiasky/issues/312) 
+- cosmic ruler [#296](https://gitlab.com/langurmonkey/gaiasky/issues/296) 
+- API calls to disable and enable the GUI [#312](https://gitlab.com/langurmonkey/gaiasky/issues/312) 
 ### Style
 
 - fix issues with merge to bring it back to a working state 
@@ -244,12 +321,12 @@
 - minor style issues 
 
 <a name="2.1.2"></a>
-## [2.1.2](https://github.com/langurmonkey/gaiasky/tree/2.1.1) (2018-09-18)
-[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.1...2.1.2)
+## [2.1.2](https://gitlab.com/langurmonkey/gaiasky/tree/2.1.1) (2018-09-18)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.1...2.1.2)
 
 ### Bug Fixes
 
-- fix for windows paths [#309](https://github.com/langurmonkey/gaiasky/issues/309) 
+- fix for windows paths [#309](https://gitlab.com/langurmonkey/gaiasky/issues/309) 
 - fix run script and play camera windows 
 - update changelog 
 ### Features
@@ -258,12 +335,12 @@
 - add new key bindings for simple actions 
 
 <a name="2.1.1"></a>
-## [2.1.1](https://github.com/langurmonkey/gaiasky/tree/2.1.0) (2018-09-14)
-[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.1.0...2.1.1)
+## [2.1.1](https://gitlab.com/langurmonkey/gaiasky/tree/2.1.0) (2018-09-14)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.0...2.1.1)
 
 ### Bug Fixes
 
-- crash if no internet connection present [#308](https://github.com/langurmonkey/gaiasky/issues/308) 
+- crash if no internet connection present [#308](https://gitlab.com/langurmonkey/gaiasky/issues/308) 
 - fix description of very large catalog 
 ### Documentation
 
@@ -271,13 +348,13 @@
 - mended submodule init and update 
 
 <a name="2.1.0"></a>
-## [2.1.0](https://github.com/langurmonkey/gaiasky/tree/2.0.3) (2018-09-11)
-[Full changelog](https://github.com/langurmonkey/gaiasky/compare/2.0.3...2.1.0)
+## [2.1.0](https://gitlab.com/langurmonkey/gaiasky/tree/2.0.3) (2018-09-11)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.0.3...2.1.0)
 
 ### Bug Fixes
 
-- fix previous fix of search dialog [#307](https://github.com/langurmonkey/gaiasky/issues/307) 
-- search dialog crash if starts with number [#307](https://github.com/langurmonkey/gaiasky/issues/307) 
+- fix previous fix of search dialog [#307](https://gitlab.com/langurmonkey/gaiasky/issues/307) 
+- search dialog crash if starts with number [#307](https://gitlab.com/langurmonkey/gaiasky/issues/307) 
 - fix error loading lens dirt hi res texture 
 ### Build System
 
@@ -291,7 +368,7 @@
 - Fix download helper docs 
 ### Features
 
-- add download manager and infrastructure [#291](https://github.com/langurmonkey/gaiasky/issues/291) [#303](https://github.com/langurmonkey/gaiasky/issues/303) 
+- add download manager and infrastructure [#291](https://gitlab.com/langurmonkey/gaiasky/issues/291) [#303](https://gitlab.com/langurmonkey/gaiasky/issues/303) 
 ### Style
 
 - fix style of contributing once and for all 
@@ -627,7 +704,7 @@
 - Crash - Vector pool null pointer when multithreading is on [\#83](https://github.com/langurmonkey/gaiasky/issues/83)
 - Fix connection to archive for DR1 sources [\#78](https://github.com/langurmonkey/gaiasky/issues/78)
 - error 1114 [\#76](https://github.com/langurmonkey/gaiasky/issues/76)
-- New Version 1.0.0 doesn`t work on OSX 10.10.5 [\#75](https://github.com/langurmonkey/gaiasky/issues/75)
+- New Version 1.0.0 doesn't work on OSX 10.10.5 [\#75](https://github.com/langurmonkey/gaiasky/issues/75)
 
 **Closed issues:**
 
@@ -762,5 +839,4 @@
 
 ## [0.700b](https://github.com/langurmonkey/gaiasky/tree/0.700b) (2014-12-11)
 
-
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+\* *This Change Log was automatically generated with [git-chglog](https://github.com/git-chglog/git-chglog) (versions 2.1.0 and newer) and [github-changelog-generator](https://github.com/skywinder/Github-Changelog-Generator) (up to version 2.0.3)*
