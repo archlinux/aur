@@ -1,6 +1,6 @@
 # Maintainer: Giusy Margarita <kurmikon at libero dot it>
 
-_relver=1.1.5
+_relver=1.1.6
 
 pkgname=korla-icon-theme-git
 pkgver=$_relver.r295.23613054
