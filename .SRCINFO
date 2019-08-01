@@ -65,7 +65,7 @@ pkgbase = linux-bootsplash
 	sha256sums = aebc793d0064383ee6b1625bf3bb32532ec30a5c12bf9117066107d412119123
 
 pkgname = linux-bootsplash
-	pkgdesc = The Linux-bootsplash kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.192
+	pkgdesc = The Linux-bootsplash kernel and modules with framebuffer bootsplash support !
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
