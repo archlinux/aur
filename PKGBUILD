@@ -198,7 +198,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.192"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with framebuffer bootsplash support !"
   #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.192"
   #pkgdesc="${_Kpkgdesc}"
   depends=(coreutils linux-firmware kmod mkinitcpio)
