@@ -6,7 +6,7 @@ pkgname=insync
 pkgver=1.5.7
 _pkgver=37371
 _dist=artful
-pkgrel=2
+pkgrel=3
 pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
@@ -43,6 +43,10 @@ package() {
       echo "Patch: $file"
       [ -f "$file" ] && sed -i "s|usr/bin/python$|usr/bin/python2|g" "$file" || :
    done
+   #### Fixes a problem with some newer kernels and/or mesa.
+   #### Added July 31, 2019
+   rm ${pkgdir}/usr/lib/insync/libstdc++.so.6
+   ####
    # End of patching
    install -Dm644 ${srcdir}/insync@.service ${pkgdir}/usr/lib/systemd/system/insync@.service
    install -Dm644 ${srcdir}/insync.service ${pkgdir}/usr/lib/systemd/user/insync.service
