@@ -1,0 +1,9 @@
+pkg/
+src/
+dpf/
+dragonfly-reverb/
+dragonfly-reverb-git-*.tar.xz
+dragonfly-reverb-git-*.src.tar.gz
+pkg/
+src/
+.AURINFO
