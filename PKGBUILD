@@ -1,7 +1,7 @@
 # Contributor: skydrome <skydrome@protonmail.com>
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
-#_branch=maint-0.3.5 # stable
+#_branch=maint-0.4.0 # stable
 #_with_rust=1
 #_malloc=jemalloc # tcmalloc
 
@@ -42,7 +42,7 @@ sha256sums=('SKIP'
             '90a588c3c2dc7826172341453f76739e8f48df7b0c858adebd12e97f047bde26'
             '7fbb63e9411eee2176964449a3d6809d16e1120152c6ff201ecea1d1f97f102b'
             'd447227fcc2756778a1be143b8975d67b25ea15688cde2291185b3c71d0f6e34'
-            'f83ccec32ce30469bebf906a218cd62e5ec475408d3d30df6b34428616c0d217'
+            '96ed5b040c944fd99b15e8bdd25a7682a4e6d19c11f42c669c80aade088ec9dc'
             'ffef89a0eb10614e2350b4271ff83f92caa2301bfb97746b94dc7ab7f21d702b'
             '231405d1fbbcc68168248f93edd19ae14b60f66bb4d1c8e46ead1d4cd8e0ae7c')
 
