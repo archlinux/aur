@@ -25,7 +25,7 @@ _localmodcfg=
 pkgbase=linux-gc
 _srcver=5.2.5-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
+pkgrel=2
 _bmqversion=098
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
@@ -45,9 +45,9 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  "0001${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/5.2/${_bmq_patch}"
+  "0001_${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/5.2/${_bmq_patch}"
   "0002_enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0003${_ukms_patch}::https://raw.githubusercontent.com/Szpadel/uksm/patch-2/v5.x/${_ukms_patch}"
+  "0003_${_ukms_patch}::https://raw.githubusercontent.com/Szpadel/uksm/patch-2/v5.x/${_ukms_patch}"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -115,7 +115,6 @@ prepare() {
 
   # save configuration for later reuse
   cat .config > "${startdir}/config.last"
-    exit
 }
 
 build() {
