@@ -1,0 +1,14 @@
+pkgbase = boogrocha
+	pkgdesc = A lightweight, easy to use application for managing your group room bookings at Chalmers University of Technology
+	pkgver = r42.8b0f529
+	pkgrel = 1
+	url = https://github.com/sidusio/boogrocha
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	source = boogrocha-r42.8b0f529::git+https://github.com/sidusio/boogrocha.git
+	sha256sums = SKIP
+
+pkgname = boogrocha
+
