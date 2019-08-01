@@ -1,0 +1,14 @@
+pkgbase = fox-cursor-git
+	pkgdesc = Glowing mouse cursor theme with red, green, blue and yellow colors
+	pkgver = r3.5b361d2
+	pkgrel = 1
+	url = https://github.com/novamax2001/FOX-cursor
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = unzip
+	source = git+https://github.com/novamax2001/FOX-cursor.git
+	md5sums = SKIP
+
+pkgname = fox-cursor-git
+
