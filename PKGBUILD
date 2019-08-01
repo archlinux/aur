@@ -3,7 +3,7 @@
 # PKGBUILD structure copied from grunt-cli package
 
 pkgname=firebase-tools
-pkgver=6.10.0
+pkgver=7.2.2
 pkgrel=0
 pkgdesc="The Firebase Command Line Tools"
 arch=('any')
@@ -17,7 +17,7 @@ replaces=('nodejs-firebase-tools')
 install=${pkgname}.install
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=(${pkgname}-${pkgver}.tgz)
-sha256sums=('19b13391241d977df38ee61ff5860eb77d1a6421a994df87c65f939497c12371')
+sha256sums=('f6464a91e24df20b86eb5d7218f346190d2df98651cb4de83615f5e5dc171bd2')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
