@@ -1,5 +1,5 @@
 pkgbase = dina-font-otb
-	pkgdesc = A monospace bitmap font, primarily aimed at programmers, in bdf format
+	pkgdesc = A monospace bitmap font, primarily aimed at programmers(OTB)
 	pkgver = 2.92
 	pkgrel = 7
 	url = https://www.dcmembers.com/jibsen/download/61/
