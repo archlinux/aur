@@ -9,7 +9,7 @@ url="https://www.dcmembers.com/jibsen/download/61/"
 license=('custom')
 depends=('xorg-font-utils' 'fontconfig')
 makedepends=('fontforge')
-conflicts=('dina-font' 'dina-powerline')
+conflicts=('dina-font' 'dina-powerline' 'dina-font-otb-alt')
 source=("dina-$pkgver-new.zip::https://www.dcmembers.com/jibsen/download/61/?wpdmdl=61" "otbconvert.pe")
 md5sums=('028424baac750e9fd0f54df03202e5d0'
          'ef3dae0059b22d7c232cbd04d9cffff8')
