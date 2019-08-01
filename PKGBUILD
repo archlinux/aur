@@ -1,0 +1,40 @@
+# Maintainer: Nikola Hadžić <nikola@firemail.cc>
+pkgname="nixwriter"
+pkgver=0.1
+pkgrel=1
+epoch=
+pkgdesc="Create bootable Linux images with dd and from a GTK user interface"
+arch=("x86_64")
+url="https://gitlab.com/9898287/nixwriter"
+license=("MIT")
+groups=()
+depends=("gtk3" "polkit")
+makedepends=("ldc" "libphobos" "dub" "util-linux")
+checkdepends=()
+optdepends=("libnotify")
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+source=("git+https://gitlab.com/9898287/nixwriter.git")
+noextract=("git+https://gitlab.com/9898287/nixwriter.git")
+sha256sums=("SKIP")
+
+prepare() {
+	cd "$srcdir/$pkgname"
+	git reset --hard "c67a5b8479d6a261759dd54fd69480b79b47d85c"
+}
+
+build() {
+	cd "$srcdir/$pkgname"
+	dub build -b release -defaultlib --compiler ldc
+}
+
+package() {
+	cd "$srcdir/$pkgname"
+	mkdir -vp "$pkgdir/usr/bin/"
+
+	cp -v "bin/$pkgname" "$pkgdir/usr/bin/"
+}
+
