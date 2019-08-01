@@ -1,17 +1,16 @@
-# Maintainer: /dev/rs0 <rs0@secretco.de.com>
+# Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
+# Contributor: /dev/rs0 <rs0@secretco.de.com>
 # Contributor: Robin Martinjak <rob@rmartinjak.de>
 
 pkgname=archlinux-themes-balou
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Theme for the Balou splash screen (xfce4)"
-
 arch=('any')
 url="http://www.xfce.org"
 license=('GPL')
-
-source=("http://rmartinjak.de/arch/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('056b51fabcd8b713382c80739ceca27dceef90a37828549dc8b24ba26ca1ea52')
+source=("http://pkg.lucasbrum.net/${pkgname}-${pkgver}.tar.gz")
+md5sums=('26b9430d5619bced1ca49e6f1211113e')
 
 package() {
   install -d "${pkgdir}/usr/share/themes"
