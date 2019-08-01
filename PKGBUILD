@@ -1,8 +1,10 @@
 # Maintainer: lynix <lynix47@gmail.com>
 
+# Derived from 'dina-font-otb' by Ckat <ckat@teknik.io>
+
 pkgname=terminus-font-otb
 pkgver=4.47
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Monospace bitmap font (OTB version)'
 url='http://terminus-font.sourceforge.net/'
@@ -25,7 +27,7 @@ build() {
 package() {
     cd "terminus-font-$pkgver"
     for i in *.otb; do
-      install -Dm 644 $i "$pkgdir/usr/share/fonts/misc/$i"
+        install -Dm 644 $i "$pkgdir/usr/share/fonts/misc/$i"
     done
     install -Dm644 "OFL.TXT" "$pkgdir/usr/share/licenses/terminus-font-otb/LICENSE"
 }
