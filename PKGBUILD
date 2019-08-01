@@ -1,21 +1,22 @@
-# Maintainer: Wèi Cōngruì <crvv.pku@gmail.com>
+# Contributor: Artjom Simon <artjom.simon@gmail.com>
+# Contributor: Wèi Cōngruì <crvv.pku@gmail.com>
 
 pkgbase=postgresql-beta
 pkgname=('postgresql-beta-libs' 'postgresql-beta-docs' 'postgresql-beta')
-pkgver=11beta1
+pkgver=12beta2
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('aarch64' 'i686' 'x86_64')
 license=('custom:PostgreSQL')
-makedepends=('krb5' 'libxml2' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0' 'pam' 'zlib' 'icu' 'systemd' 'libldap')
+makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0' 'pam' 'zlib' 'icu' 'systemd' 'libldap')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
         postgresql.pam
         postgresql.logrotate
         postgresql.service
         postgresql-check-db-dir)
-sha256sums=('17889cbffdf4f07c193b16d76b2f9c45daa3f2ab225acd8d7f01521949cb1355'
+sha256sums=('1738da8e1e59d4f2dc69c216e67100c6d4dad46714cf597cc2db66077204d31f'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
