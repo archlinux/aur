@@ -1,0 +1,15 @@
+pkgbase = nodejs-jsinspect
+	pkgdesc = Detect copy-pasted and structurally similar JavaScript code.
+	pkgver = 0.12.7
+	pkgrel = 1
+	url = https://www.npmjs.com/package/jsinspect
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = jsinspect-0.12.7.tgz
+	source = https://registry.npmjs.org/jsinspect/-/jsinspect-0.12.7.tgz
+	sha256sums = 82fb27e14271c0d9ba37672aa4c946400b4e6ed813becc33f8f09a282c7c494b
+
+pkgname = nodejs-jsinspect
+
