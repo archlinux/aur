@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r11.5f41b6d
+pkgver=r56.fe3e1db
 pkgrel=1
 pkgdesc='Full featured and highly configurable SFTP server software'
 arch=('i686' 'x86_64')
@@ -38,6 +38,9 @@ package() {
   install -Dm 644 sftpgo.conf -t "${pkgdir}/etc/${_pkgname}"
   install -d "${pkgdir}/usr/share/doc/${_pkgname}"
   cp -r sql "${pkgdir}/usr/share/doc/${_pkgname}/"
+  install -Dm 644 README.md "${pkgdir}"/usr/share/doc/${_pkgname}/README.md
+  install -Dm 755 scripts/sftpgo_api_cli.py "${pkgdir}"/usr/share/doc/${_pkgname}/scripts/sftpgo_api_cli.py
+  install -Dm 644 scripts/README.md "${pkgdir}"/usr/share/doc/${_pkgname}/scripts/README.md
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${_pkgname}/LICENSE
 }
 
