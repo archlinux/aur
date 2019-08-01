@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-rc
-_pkgver="5.1.2"
+_pkgver="5.1.3"
 pkgver=${_pkgver/-rc/.}
 pkgrel=2
 pkgdesc="Official KiCad release candidates and dev snapshots"
@@ -16,12 +16,12 @@ provides=('kicad')
 makedepends=('clang')
 _github_project='kicad-source-mirror'
 source=("https://github.com/KiCad/${_github_project}/archive/${_pkgver}.tar.gz")
-md5sums=('0be64488e6beedf056c92ec527881148')
+md5sums=('522c982b60bab0adc34446491396a17e')
 
 
 prepare() {
   cd "${srcdir}/${_github_project}-${_pkgver}"
-  curl https://github.com/KiCad/kicad-source-mirror/commit/5685174808f5ca973e916a10f9f93660ee4dc4f2.patch | patch -p1
+  #curl https://github.com/KiCad/kicad-source-mirror/commit/5685174808f5ca973e916a10f9f93660ee4dc4f2.patch | patch -p1
 }
 
 build() {
