@@ -1,8 +1,8 @@
 # Maintainer: Katherine Cumberbatch <stykers@stykers.moe>
 
 pkgname=brave-git
-pkgver=0.24.1.r236.g7e6875794
-pkgrel=2
+pkgver=0.70.26.g674d3b845
+pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -30,9 +30,9 @@ build() {
   cd "$srcdir/brave-browser"
   python2 -m virtualenv venv
   source venv/bin/activate
-  npm install home-path buffer-to-vinyl stream-combiner2
   npm install
   npm run init
+  npm run build Release
 
   if [[ ! (-r /proc/sys/kernel/unprivileged_userns_clone && $(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n $(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ) ]]; then
     echo "User namespaces are not detected as enabled on your system, brave will run with the sandbox disabled"
