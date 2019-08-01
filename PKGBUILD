@@ -1,7 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_manjaro dot+org>
 
 pkgname=mapton
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Some kind of map application"
 arch=(any)
