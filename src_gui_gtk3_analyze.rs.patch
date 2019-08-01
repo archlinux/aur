@@ -1,0 +1,4 @@
+1c1
+< use gtk::{Builder, CellRendererText, Label, ListStore, TreeView, TreeViewColumn, Type};
+---
+> use gtk::*;

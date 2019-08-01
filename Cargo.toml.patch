@@ -1,0 +1,37 @@
+3c3
+< version = "1.0.0"
+---
+> version = "1.0.2"
+11,28d10
+< [package.metadata.deb]
+< maintainer = "Michael Aaron Murphy <mmstickman@gmail.com>"
+< copyright = "2015-2016, Michael Aaron Murphy <mmstickman@gmail.com>"
+< license_file = ["LICENSE", "3"]
+< depends = "$auto"
+< extended_description = """\
+< Written safely in Rust, this systemd manager provides a simple GTK3 GUI interface \
+< that allows you to enable/disable/start/stop services, monitor service logs, and \
+< edit unit files without ever using the terminal."""
+< section = "admin"
+< priority = "optional"
+< assets = [
+<     ["assets/org.freedesktop.policykit.systemd-manager.policy", "usr/share/polkit-1/actions/", "644"],
+<     ["assets/systemd-manager.desktop", "usr/share/applications/", "644"],
+<     ["assets/systemd-manager-pkexec", "usr/bin/", "755"],
+<     ["target/release/systemd-manager", "usr/bin/", "755"]
+< ]
+< 
+30,37c12,15
+< dbus = "0.3.4"
+< gtk = { version = "0.1.0", features = ["v3_16"] }
+< gdk = { version = "0.5.0" }
+< quickersort = "2.0.1"
+< 
+< [profile.release]
+< opt-level = 3
+< lto = true
+---
+> dbus = "0.5"
+> gtk = { version = "0.2.0", features = ["v3_16"] }
+> gdk = { version = "0.6" }
+> quickersort = "2.0"
