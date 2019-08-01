@@ -2,13 +2,13 @@
 
 _pkgname=treesheets
 pkgname=$_pkgname-git
-pkgver=r244.754b839
+pkgver=r255.2bc915d
 pkgrel=1
 pkgdesc='The ultimate replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases'
 url='http://treesheets.com'
 license=('zlib')
 depends=('wxgtk')
-makedepends=('git')
+makedepends=('cmake' 'git')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 
 source=(
@@ -33,9 +33,9 @@ prepare() {
 }
 
 build() {
-  cd $_pkgname/src
+  cd $_pkgname
+  cmake -DCMAKE_BUILD_TYPE=Release
   make
-  make install
 }
 
 package() {
