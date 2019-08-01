@@ -3,8 +3,8 @@
 # Contributors: Det, t3ddy, Lex Rivera aka x-demon, ruario
 
 pkgname=iridium-deb
-pkgver=71.0
-pkgrel=2
+pkgver=73.0
+pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Stable Channel)"
 arch=('x86_64')
 url="https://iridiumbrowser.de/"
@@ -16,12 +16,11 @@ optdepends=('kdialog: needed for file dialogs in KDE'
             'ttf-liberation: fix fonts for some PDFs')
 options=('!emptydirs' '!strip')
 
-source=("https://downloads.iridiumbrowser.de/ubuntu/iridium-browser_current_amd64.deb"
-)
+source=("https://downloads.iridiumbrowser.de/deb/pool/main/i/iridium-browser/iridium-browser_2019.04.73-1iridium0_amd64.deb")
 
-sha256sums=('4ec07d3844b64068dd7a062fa3f84629956ae65faa831533fa42aff60b5e4029')
-sha384sums=('752d46940f929e856b3902ab90cc13738e7e8fa405b9363767556e6346b78607dbeade5bc42ccab15a0eb099e9629ef8')
-sha512sums=('cc1f9e742f24ae7afba7b144d72cd45b23392033676ed6fc8e5a522e0cee81598cbc5e54aca5f7ecfd3a9c2bc377c0e7acf48c48d8258f883bfc3a77adbf9376')
+sha256sums=('12c64bec477ffe5b998994bcd7f1078abff3691edc1c25cd4792e0e59b78ba90')
+sha384sums=('98cdea200f178ed07350c237a3a05000c28ecded57a1f26616d2b4f730c233d4385bb12f803e4643304d238851f4de32')
+sha512sums=('06bc14849058059846ca29bd7d7b0e6e07623e4618900c134939b3c294fe98182f4ecc6ff6f9b6f6d2b40d02e2419d1fc93f1700131d172124ad57c2d69b43d8')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
