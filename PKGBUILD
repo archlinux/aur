@@ -6,8 +6,8 @@ _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1
 #fragment="#commit=7e49329 "
 _files=(__init__.py operators.py panel.py preferences.py utils.py)
 pkgname=blender-plugin-${_name}-git
-pkgver=0.8.1.beta.r6.gdc2c536
-pkgrel=2
+pkgver=1.0.0.beta.r80.gd5b86f5
+pkgrel=1
 pkgdesc="appleseed Blender integrator"
 arch=('any')
 url="https://github.com/appleseedhq/blenderseed"
