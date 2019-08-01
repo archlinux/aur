@@ -23,9 +23,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.2.2-arch1
+_srcver=5.2.5-arch1
 pkgver=${_srcver%-*}
-pkgrel=2
+pkgrel=1
 _bmqversion=098
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
@@ -38,27 +38,30 @@ options=('!strip')
 _srcname=linux-$_srcver
 _bmq_patch="v5.2_bmq${_bmqversion}.patch"
 _gcc_more_v='20190714'
+_ukms_patch='uksm-5.2.patch'
 source=(
   "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srcver.tar.gz"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  "0001_$_bmq_patch::https://gitlab.com/alfredchen/bmq/raw/master/5.2/${_bmq_patch}"
-  "0002_enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  "0001${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/5.2/${_bmq_patch}"
+  "0002_enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
+  "0003${_ukms_patch}::https://raw.githubusercontent.com/Szpadel/uksm/patch-2/v5.x/${_ukms_patch}"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('0c58360af2ce76ecebcf1169dada4fd5a1c82343d1d98b598b38af9fc15ed724'
-            'ee5dc466baa9e83ffc48752149ff0476ae8263c91f276cc7d2b4830f18c2c239'
+sha256sums=('22674945a57daed9f848cb0abf6a75f1aa65e8441556b583bdd7515288e81783'
+            '4423813200fefc9e8a5b9956692d763b74824030312983973e3ae5c027a971e2'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '628efd7ea8d6eb7a015e8790411e2353aa9cd6548099aa5c229a3b1cd25f1794'
-            '2466fb4aecc66d1b258b4cbdb2f215b5099f266d8c4386bb62ad1a0acd0caf5b')
+            '2466fb4aecc66d1b258b4cbdb2f215b5099f266d8c4386bb62ad1a0acd0caf5b'
+            '5febbab9437b1b97605fbfd170660e86d12593dac9033e8a32d112360eec1acc')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -112,6 +115,7 @@ prepare() {
 
   # save configuration for later reuse
   cat .config > "${startdir}/config.last"
+    exit
 }
 
 build() {
