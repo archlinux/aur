@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.32.2+43+gb7f158811
-pkgrel=6
+pkgrel=7
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -115,7 +115,7 @@ prepare() {
   # Type: 1
   # Status: 2
   # Comment: Replaces !168
-  git cherry-pick -n 3f6191bc^..c8d45c2a
+  git cherry-pick -n 544c6ed5^..c9127c77
 
   # Title: Resource scale computation optimizations
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/493
