@@ -1,0 +1,25 @@
+diff --git a/src/extension/internal/cairo-render-context.cpp b/src/extension/internal/cairo-render-context.cpp
+index 4464742dd3..c413920d1f 100644
+--- a/src/extension/internal/cairo-render-context.cpp
++++ b/src/extension/internal/cairo-render-context.cpp
+@@ -1756,7 +1756,7 @@ CairoRenderContext::renderGlyphtext(PangoFont *font, Geom::Affine const &font_ma
+     if(font_table.find(fonthash)!=font_table.end())
+         font_face = font_table[fonthash];
+ 
+-    FcPattern *fc_pattern = nullptr;
++//    FcPattern *fc_pattern = nullptr;
+ 
+ #ifdef USE_PANGO_WIN32
+ # ifdef CAIRO_HAS_WIN32_FONT
+@@ -1775,9 +1775,9 @@ CairoRenderContext::renderGlyphtext(PangoFont *font, Geom::Affine const &font_ma
+ #else
+ # ifdef CAIRO_HAS_FT_FONT
+     PangoFcFont *fc_font = PANGO_FC_FONT(font);
+-    fc_pattern = fc_font->font_pattern;
++//    fc_pattern = fc_font->pattern;
+     if(font_face == nullptr) {
+-        font_face = cairo_ft_font_face_create_for_pattern(fc_pattern);
++//        font_face = cairo_ft_font_face_create_for_pattern(fc_pattern);
+         font_table[fonthash] = font_face;
+     }
+ # endif

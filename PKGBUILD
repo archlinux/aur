@@ -3,7 +3,7 @@
 # Co-Maintainer: bartus <arch-user-repo@bartus.33mail.com>
 
 pkgname=inkscape-git
-pkgver=1.0+devel.r2.g6edc3e959f
+pkgver=1.0+devel.r333.g278d08bb15
 pkgrel=1
 epoch=2
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
@@ -21,8 +21,10 @@ makedepends=('cmake' 'boost' 'intltool' 'git' 'gettext' 'pango' 'python' 'fontco
 provides=('inkscape')
 conflicts=('inkscape')
 options=('!libtool' '!buildflags')
-source=("inkscape.git::git+$url.git")
-sha1sums=('SKIP')
+source=("inkscape.git::git+$url.git"
+	pango-144.patch)
+sha1sums=('SKIP'
+          'c2ec5c0809a4d3a98ac0df8637a8c8d86229911c')
 _gitname="inkscape.git"
 
 pkgver() {
@@ -33,6 +35,7 @@ pkgver() {
 prepare() {
   cd "$_gitname"
   git submodule update --init --recursive
+  git apply -v ${srcdir}/*.patch
 }
 
 build() {
@@ -40,6 +43,7 @@ build() {
   [[ -d build ]] || mkdir build
   cd build
   export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"
+  export CXXFLAGS="${CXXFLAGS} -fpermissive"
   cmake .. \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=RELEASE 

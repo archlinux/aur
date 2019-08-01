@@ -1,6 +1,6 @@
 pkgbase = inkscape-git
 	pkgdesc = An Open Source vector graphics editor, using SVG file format, from git master
-	pkgver = 1.0+devel.r2.g6edc3e959f
+	pkgver = 1.0+devel.r333.g278d08bb15
 	pkgrel = 1
 	epoch = 2
 	url = https://gitlab.com/inkscape/inkscape
@@ -42,7 +42,9 @@ pkgbase = inkscape-git
 	options = !libtool
 	options = !buildflags
 	source = inkscape.git::git+https://gitlab.com/inkscape/inkscape.git
+	source = pango-144.patch
 	sha1sums = SKIP
+	sha1sums = c2ec5c0809a4d3a98ac0df8637a8c8d86229911c
 
 pkgname = inkscape-git
 
