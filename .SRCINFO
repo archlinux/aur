@@ -1,0 +1,13 @@
+pkgbase = emacs-go-mode
+	pkgdesc = Go mode for emacs
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/dominikh/go-mode.el
+	arch = any
+	license = GPL
+	replaces = go-mode.el
+	source = https://github.com/dominikh/go-mode.el/archive/v1.5.0.tar.gz
+	sha256sums = d54a4afac1658082da1f26bab486c346262e5b185e6463cfe316a3e5e57ab6a9
+
+pkgname = emacs-go-mode
+
