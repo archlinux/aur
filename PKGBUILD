@@ -2,7 +2,7 @@
 
 pkgname=pdudaemon-git
 pkgver=r138.5ec803b
-pkgrel=7
+pkgrel=8
 pkgdesc='Daemon for controlling PDUs (Power Distribution Units)'
 arch=(any)
 url="https://github.com/pdudaemon/pdudaemon"
@@ -41,4 +41,6 @@ package() {
   install -D -m644 "share/pdudaemon.service" "${pkgdir}/usr/lib/systemd/system/pdudaemon.service"
   install -D -m644 "${srcdir}/tmpfiles.d" "${pkgdir}/usr/lib/tmpfiles.d/pdudaemon.conf"
   install -D -m644 "${srcdir}/sysusers.d" "${pkgdir}/usr/lib/sysusers.d/pdudaemon.conf"
+
+  sed "s/DynamicUser=yes/User=pdudaemon/" -i "${pkgdir}/usr/lib/systemd/system/pdudaemon.service"
 }
