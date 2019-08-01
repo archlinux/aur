@@ -1,6 +1,6 @@
 # Maintainer: Robert Csordas <xdever@gmail.com>
 pkgname=mutagen.io-bin
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 epoch=
 arch=("i386" "x86_64")
@@ -19,8 +19,8 @@ changelog=
 source_x86_64=("https://github.com/havoc-io/mutagen/releases/download/v${pkgver}/mutagen_linux_amd64_v${pkgver}.tar.gz")
 source_i386=("https://github.com/havoc-io/mutagen/releases/download/v${pkgver}/mutagen_linux_386_v${pkgver}.tar.gz")
 license=('MIT')
-md5sums_x86_64=('96538a76deca91422a0a66ba5b10a299')
-md5sums_i386=('4dc5c33bc8aaabf71b5a2de0bd0b6784')
+md5sums_x86_64=('051a18bdafd4c74f102f01182e03cf69')
+md5sums_i386=('e8f494fb057dbba42614ab073a71e57d')
 pkgdesc="Code synchronization tool for remote development."
 
 prepare () {
