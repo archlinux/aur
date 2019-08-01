@@ -1,7 +1,7 @@
 pkgbase = terminus-font-otb
 	pkgdesc = Monospace bitmap font (OTB version)
 	pkgver = 4.47
-	pkgrel = 1
+	pkgrel = 2
 	url = http://terminus-font.sourceforge.net/
 	arch = any
 	license = GPL2
