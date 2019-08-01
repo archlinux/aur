@@ -1,8 +1,9 @@
-# Maintainer: David Naramski <david.naramski AT gmail.com>
+# Maintainer: Ratbot <Ratbot at GnuPG dot uk>
+# Contributor: David Naramski <david.naramski AT gmail.com>
 # Contributor: Paul Oppenheimer <redg3ar@airmail.cc>
 pkgname=ao
 pkgver=6.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An Electron wrapper for Microsoft To-Do"
 arch=('x86_64')
 url="https://github.com/klaussinani/ao/"
@@ -18,4 +19,5 @@ package() {
   install -d ${pkgdir}/usr/bin/
   ln -s /opt/Ao/ao-app ${pkgdir}/usr/bin/ao
   install -Dm 644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/ao.png" "${pkgdir}/usr/share/pixmaps/ao.png"
+  rm -rfv "${pkgdir}/usr/share/icons/hicolor"
 }
