@@ -2,7 +2,7 @@
 
 pkgname=ncnn-git
 _pkgname=ncnn
-pkgver=20190611.r36.g81a5dfe
+pkgver=20190611.r60.gad9e0a9
 pkgrel=1
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
@@ -37,6 +37,5 @@ build() {
 package() {
 	cd "${srcdir}/ncnn/build"
 	make install
-	mkdir "${pkgdir}/usr/include/ncnn"
-	mv ${pkgdir}/usr/include/*.h ${pkgdir}/usr/include/ncnn
+	rm -fr "${pkgdir}/usr/lib/cmake"
 }
