@@ -4,6 +4,7 @@ pkgbase = zsh-auto-notify
 	pkgrel = 1
 	url = https://github.com/MichaelAquilina/zsh-auto-notify
 	install = zsh-auto-notify.install
+	changelog = changelog
 	arch = any
 	license = GPL
 	depends = zsh

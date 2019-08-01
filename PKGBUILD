@@ -10,6 +10,7 @@ depends=('zsh')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MichaelAquilina/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('788f926b957c79ceef2c304bad4aaaeaad47fc066992113f171baf5afadc618831be1f962503ec3ca990c97453407baacd4bb46879677608062faea0569e239c')
+changelog=changelog
 
 package() {
   cd "$pkgname-$pkgver"
