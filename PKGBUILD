@@ -2,7 +2,7 @@
 
 pkgname=qtum-core
 pkgver=0.17.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Qtum Core is a Smart Contracts blockchain platform which makes use of UTXO and Proof of Stake."
 arch=('x86_64')
 url="https://qtum.org"
@@ -34,10 +34,6 @@ package() {
       "$pkgdir"/usr/share/applications/qtum.desktop
   install -Dm644 share/pixmaps/bitcoin128.png \
     "$pkgdir"/usr/share/pixmaps/qtum128.png
-    install -Dm644 contrib/debian/qtum-qt-testnet.desktop \
-      "$pkgdir"/usr/share/applications/qtum-testnet.desktop
-  install -Dm644 share/pixmaps/qtumtestnet128.png \
-    "$pkgdir"/usr/share/pixmaps/qtumtestnet128.png
 
 }
 
