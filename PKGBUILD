@@ -6,13 +6,13 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 pkgname=lightspark-git
-pkgver=0.8.0.r45.g06d58822
+pkgver=test_travis.r6.gaba3311a
 pkgrel=1
 pkgdesc="An open source flash player implementation"
 arch=('i686' 'x86_64')
 url="http://lightspark.sourceforge.net"
 license=('LGPL3')
-depends=('gtk2' 'boost-libs' 'glew' 'ffmpeg' 'rtmpdump' 'sdl2_mixer' 'glibmm')
+depends=('boost-libs' 'glew' 'ffmpeg' 'rtmpdump' 'sdl2_mixer' 'glibmm')
 makedepends=('git' 'cmake' 'nasm' 'llvm' 'boost')
 optdepends=('gnash-gtk: Gnash fallback support')
 provides=('lightspark')
