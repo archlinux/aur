@@ -1,6 +1,6 @@
 # Maintainer: Jan Max Meyer <codepilot@phorward.info>
 pkgname=unicc
-pkgver=1.6.0
+pkgver=1.6.2
 pkgrel=1
 epoch=
 pkgdesc="Universal LALR(1) parser generator for C, C++, Python, JavaScript, JSON and XML"
@@ -13,7 +13,7 @@ checkdepends=()
 #changelog=CHANGELOG
 source=("https://phorward.info/download/unicc/$pkgname-$pkgver.tar.gz"
 "https://phorward.info/download/unicc/unicc.pdf")
-sha256sums=('5d8bdca5f1f7524211c7d2b82f0063dbe575233c779f5e3aae7a5f79c339183c'
+sha256sums=('20529e7b25dcbce65da82990167d544baf6ff9cae717a197a32558844cbb918b'
 '772ff233aae1eb433778534785556a7cb0e20a071c601a57631bc7ae8b1432df')
 
 build() {
