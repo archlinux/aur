@@ -1,6 +1,11 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # shellcheck disable=SC2034
 
+#to enforce cuda verison uncomment this line and update value of sm_xx model accordingly
+#_cuda_capability+=(sm_30 sm_35 sm_37)
+#_cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
+((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # suppress 3.x to prevent Travis build exceed time limit.
+
 _branch="fracture_modifier"
 _sufix=${_branch}
 _blenver=2.82
@@ -14,8 +19,9 @@ url="https://blender.org/"
 depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-utils' 'hicolor-icon-theme'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
-optdepends=('cuda: CUDA support in Cycles')
+
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
+((DISABLE_CUDA)) && optdepends=('cuda: CUDA support in Cycles') || makedepends+=('cuda')
 provides=("blender-${_sufix}")
 conflicts=("blender-${_sufix}")
 #options=(!makeflags)
@@ -48,20 +54,13 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          '0a4847775c9eec16a76ec7d3a03a678d'
-         '9454ff7e994f72ead5027356e227cbd2'
+         'a9b7fea83b66f4ced146b32ef4433479'
          'df6f12c3327678b0a05f9e48e9ace67c'
          '8679d9ab041141cf4fa1ae4da9389986'
          'bb325c8c879d677ad1f1c54797268716'
          'fe709e616e52c1acc47c1cc0f77c2694'
          '4e4423315f07bc724c7703c57c4481d7'
          'f98eb0576a8e00444cc3e936d31a9812')
-
-# determine whether we can precompile CUDA kernels
-_CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
-if [ "$_CUDA_PKG" != "" ]; then
-    _EXTRAOPTS="-DWITH_CYCLES_CUDA_BINARIES=ON \
-                -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda"
-fi
 
 pkgver() {
   cd "$srcdir/blender"
@@ -72,7 +71,9 @@ prepare() {
   cd "$srcdir/blender"
   # update the submodules
   git submodule update --init --recursive --remote
-  git apply -v ${srcdir}/SelectCudaComputeArch.patch
+  if [ -z "$_cuda_capability" ] && grep -q nvidia <(lsmod); then 
+    git apply -v ${srcdir}/SelectCudaComputeArch.patch
+  fi
   git apply -v ${srcdir}/gcc8.patch
   git apply -v ${srcdir}/ffmpeg.patch
   git apply -v ${srcdir}/openvdb.patch
@@ -90,6 +91,15 @@ build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "python version detected: ${_pyver}"
 
+  # determine whether we can precompile CUDA kernels
+  _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
+  if [ "$_CUDA_PKG" != "" ]; then
+      _EXTRAOPTS=(-DWITH_CYCLES_CUDA_BINARIES=ON \
+                  -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda)
+      if [ -v _cuda_capability ]; then
+        _EXTRAOPTS+=(-DCYCLES_CUDA_BINARIES_ARCH=$(IFS=';'; echo "${_cuda_capability[*]}";))
+      fi
+  fi
   cmake "$srcdir/blender" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_INSTALL_PORTABLE=OFF \
@@ -110,7 +120,7 @@ build() {
         -DWITH_OPENVDB=ON \
         -DWITH_OPENVDB_BLOSC=ON \
         -DWITH_OPENCOLLADA=ON \
-        $_EXTRAOPTS
+        ${_EXTRAOPTS[@]}
   make
 }
 
