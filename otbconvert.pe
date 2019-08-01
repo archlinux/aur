@@ -1,0 +1,8 @@
+#!/usr/bin/fontforge
+i=1
+while ( i<$argc )
+  Open($argv[i])
+  SetFontNames("", "DinaOTB")
+  Generate($argv[i]:r + ".otb")
+  i = i+1
+endloop
