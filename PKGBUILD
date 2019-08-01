@@ -1,8 +1,8 @@
 # Maintainer: Severin Kaderli <severin.kaderli@gmail.com>
 _pkgname=pegasus-fe
 pkgname=${_pkgname}-git
-pkgver=alpha11.r100.ga1f400c
-pkgrel=1
+pkgver=alpha12.r12.gca00bb4
+pkgrel=2
 pkgdesc="A cross platform, customizable graphical frontend for launching emulators and managing your game collection."
 arch=('i686' 'x86_64')
 url="https://pegasus-frontend.org/"
@@ -13,10 +13,15 @@ makedepends=(
 )
 depends=(
     'qt-gstreamer'
+    'fontconfig'
+    'openssl-1.0'
     'qt5-svg'
     'qt5-multimedia'
     'qt5-gamepad'
     'qt5-graphicaleffects'
+)
+optdepends=(
+    'polkit'
 )
 provides=('pegasus-fe')
 conflicts=('pegasus-fe')
@@ -50,13 +55,16 @@ prepare() {
 build() {
     cd "${srcdir}/${_pkgname}"
     mkdir -p ./build && cd build
-    qmake ..
+    qmake .. \
+        INSTALL_BINDIR=/usr/bin \
+        INSTALL_ICONDIR=/usr/share/pixmaps \
+        INSTALL_DESKTOPDIR=/usr/share/applications
     make
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    install -Dm755 "build/src/app/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${srcdir}/${_pkgname}/build"
+    make INSTALL_ROOT="${pkgdir}/" install
+    install -Dm644 "../README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "../LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
