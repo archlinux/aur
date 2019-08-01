@@ -1,7 +1,7 @@
 pkgbase = i3-wm-iconpatch
 	pkgdesc = An improved dynamic tiling window manager (with titlebar icon patch)
-	pkgver = 4.14.1
-	pkgrel = 2
+	pkgver = 4.16.1
+	pkgrel = 1
 	url = http://i3wm.org/
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = i3-wm-iconpatch
 	depends = libxkbcommon-x11
 	optdepends = dmenu: As menu.
 	optdepends = i3lock: For locking your screen.
-	optdepends = i3status: To display systeminformation with a bar.
+	optdepends = i3status: To display system information with a bar.
 	optdepends = perl: i3-save-tree and i3-dmenu-desktop
 	optdepends = perl-anyevent-i3: Features like saving the layout.
 	optdepends = perl-json-xs: Features like saving the layout.
@@ -29,13 +29,13 @@ pkgbase = i3-wm-iconpatch
 	conflicts = i3-wm
 	options = docs
 	options = !strip
-	source = http://i3wm.org/downloads/i3-4.14.1.tar.bz2
-	source = http://i3wm.org/downloads/i3-4.14.1.tar.bz2.asc
+	source = http://i3wm.org/downloads/i3-4.16.1.tar.bz2
+	source = http://i3wm.org/downloads/i3-4.16.1.tar.bz2.asc
 	source = iconsupport.patch
 	validpgpkeys = 424E14D703E7C6D43D9D6F364E7160ED4AC8EE1D
-	sha1sums = 2f98fdebbdc8b6214d8c258db062ae02095ca2f9
+	sha1sums = 95607b8e09bdf5d18032b2ec391cb1000efcdf5a
 	sha1sums = SKIP
-	sha1sums = 9b91e6490c32c05d6f619e21ae1a7850dd0bc745
+	sha1sums = 2ccc24022d4bbf1b1f5aa423e0a977ba99447f33
 
 pkgname = i3-wm-iconpatch
 

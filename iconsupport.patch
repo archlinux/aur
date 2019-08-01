@@ -1,5 +1,5 @@
 diff --git a/include/atoms_rest.xmacro b/include/atoms_rest.xmacro
-index d461dc08..f32a7e1e 100644
+index b65a81d..df56fd3 100644
 --- a/include/atoms_rest.xmacro
 +++ b/include/atoms_rest.xmacro
 @@ -1,6 +1,7 @@
@@ -11,10 +11,10 @@ index d461dc08..f32a7e1e 100644
  xmacro(WM_DELETE_WINDOW)
  xmacro(UTF8_STRING)
 diff --git a/include/data.h b/include/data.h
-index 31ef1dc1..0d24b8b7 100644
+index f55e003..d7e22a3 100644
 --- a/include/data.h
 +++ b/include/data.h
-@@ -470,6 +470,11 @@ struct Window {
+@@ -483,6 +483,11 @@ struct Window {
  
      /* aspect ratio from WM_NORMAL_HINTS (MPlayer uses this for example) */
      double aspect_ratio;
@@ -27,10 +27,10 @@ index 31ef1dc1..0d24b8b7 100644
  
  /**
 diff --git a/include/libi3.h b/include/libi3.h
-index b7a1e2aa..612dfd3f 100644
+index 790baba..cc88ee7 100644
 --- a/include/libi3.h
 +++ b/include/libi3.h
-@@ -601,6 +601,11 @@ color_t draw_util_hex_to_color(const char *color);
+@@ -614,6 +614,11 @@ color_t draw_util_hex_to_color(const char *color);
   */
  void draw_util_text(i3String *text, surface_t *surface, color_t fg_color, color_t bg_color, int x, int y, int max_width);
  
@@ -43,7 +43,7 @@ index b7a1e2aa..612dfd3f 100644
   * Draws a filled rectangle.
   * This function is a convenience wrapper and takes care of flushing the
 diff --git a/include/window.h b/include/window.h
-index 77e3f48f..894ee9fd 100644
+index 77e3f48..894ee9f 100644
 --- a/include/window.h
 +++ b/include/window.h
 @@ -89,3 +89,9 @@ void window_update_hints(i3Window *win, xcb_get_property_reply_t *prop, bool *ur
@@ -57,7 +57,7 @@ index 77e3f48f..894ee9fd 100644
 + */
 +void window_update_icon(i3Window *win, xcb_get_property_reply_t *prop);
 diff --git a/libi3/draw_util.c b/libi3/draw_util.c
-index 6a2e93dc..2147effc 100644
+index f88360d..59a9d8e 100644
 --- a/libi3/draw_util.c
 +++ b/libi3/draw_util.c
 @@ -140,6 +140,42 @@ void draw_util_text(i3String *text, surface_t *surface, color_t fg_color, color_
@@ -100,14 +100,14 @@ index 6a2e93dc..2147effc 100644
 +    cairo_restore(surface->cr);
 +}
 +
- /**
+ /*
   * Draws a filled rectangle.
   * This function is a convenience wrapper and takes care of flushing the
 diff --git a/src/handlers.c b/src/handlers.c
-index 3140e405..621c38e8 100644
+index b967791..efab679 100644
 --- a/src/handlers.c
 +++ b/src/handlers.c
-@@ -1402,6 +1402,19 @@ static bool handle_strut_partial_change(void *data, xcb_connection_t *conn, uint
+@@ -1392,6 +1392,19 @@ static bool handle_strut_partial_change(void *data, xcb_connection_t *conn, uint
      return true;
  }
  
@@ -127,7 +127,7 @@ index 3140e405..621c38e8 100644
  /* Returns false if the event could not be processed (e.g. the window could not
   * be found), true otherwise */
  typedef bool (*cb_property_handler_t)(void *data, xcb_connection_t *c, uint8_t state, xcb_window_t window, xcb_atom_t atom, xcb_get_property_reply_t *property);
-@@ -1423,7 +1436,8 @@ static struct property_handler_t property_handlers[] = {
+@@ -1413,7 +1426,8 @@ static struct property_handler_t property_handlers[] = {
      {0, 128, handle_class_change},
      {0, UINT_MAX, handle_strut_partial_change},
      {0, UINT_MAX, handle_window_type},
@@ -137,7 +137,7 @@ index 3140e405..621c38e8 100644
  #define NUM_HANDLERS (sizeof(property_handlers) / sizeof(struct property_handler_t))
  
  /*
-@@ -1445,6 +1459,7 @@ void property_handlers_init(void) {
+@@ -1435,6 +1449,7 @@ void property_handlers_init(void) {
      property_handlers[8].atom = A__NET_WM_STRUT_PARTIAL;
      property_handlers[9].atom = A__NET_WM_WINDOW_TYPE;
      property_handlers[10].atom = A__MOTIF_WM_HINTS;
@@ -146,7 +146,7 @@ index 3140e405..621c38e8 100644
  
  static void property_notify(uint8_t state, xcb_window_t window, xcb_atom_t atom) {
 diff --git a/src/manage.c b/src/manage.c
-index 004e8038..9bf910d8 100644
+index c4706b0..4e240d7 100644
 --- a/src/manage.c
 +++ b/src/manage.c
 @@ -91,6 +91,8 @@ void manage_window(xcb_window_t window, xcb_get_window_attributes_cookie_t cooki
@@ -184,7 +184,7 @@ index 004e8038..9bf910d8 100644
      if (!xcb_icccm_get_wm_size_hints_reply(conn, wm_normal_hints_cookie, &wm_size_hints, NULL))
          memset(&wm_size_hints, '\0', sizeof(xcb_size_hints_t));
 diff --git a/src/window.c b/src/window.c
-index 68c6933a..9df3e631 100644
+index 6128255..797be6a 100644
 --- a/src/window.c
 +++ b/src/window.c
 @@ -17,6 +17,7 @@ void window_free(i3Window *win) {
@@ -195,7 +195,7 @@ index 68c6933a..9df3e631 100644
      FREE(win->ran_assignments);
      FREE(win);
  }
-@@ -365,3 +366,91 @@ void window_update_motif_hints(i3Window *win, xcb_get_property_reply_t *prop, bo
+@@ -371,3 +372,91 @@ void window_update_motif_hints(i3Window *win, xcb_get_property_reply_t *prop, bo
  #undef MWM_DECOR_BORDER
  #undef MWM_DECOR_TITLE
  }
@@ -288,10 +288,10 @@ index 68c6933a..9df3e631 100644
 +    FREE(prop);
 +}
 diff --git a/src/x.c b/src/x.c
-index 09a60493..ed118b52 100644
+index 267372f..51ea062 100644
 --- a/src/x.c
 +++ b/src/x.c
-@@ -544,8 +544,9 @@ void x_draw_decoration(Con *con) {
+@@ -576,11 +576,35 @@ void x_draw_decoration(Con *con) {
      /* 5: draw two unconnected horizontal lines in border color */
      x_draw_title_border(con, p);
  
@@ -299,13 +299,12 @@ index 09a60493..ed118b52 100644
 +    /* 6: draw the icon and title */
      int text_offset_y = (con->deco_rect.height - config.font.height) / 2;
 +    int text_offset_x = 0;
++
++    struct Window *win = con->window;
  
-     struct Window *win = con->window;
-     if (win == NULL) {
-@@ -572,6 +573,25 @@ void x_draw_decoration(Con *con) {
-         goto after_title;
-     }
- 
+     const int title_padding = logical_px(2);
+     const int deco_width = (int)con->deco_rect.width;
++
 +    /* Draw the icon */
 +    if (win->icon) {
 +        uint16_t icon_size = con->deco_rect.height - 2 * logical_px(1);
@@ -325,18 +324,27 @@ index 09a60493..ed118b52 100644
 +                icon_size);
 +    }
 +
++
      int mark_width = 0;
      if (config.show_marks && !TAILQ_EMPTY(&(con->marks_head))) {
          char *formatted_mark = sstrdup("");
-@@ -611,9 +631,9 @@ void x_draw_decoration(Con *con) {
+@@ -619,7 +643,6 @@ void x_draw_decoration(Con *con) {
+     }
+ 
+     i3String *title = NULL;
+-    struct Window *win = con->window;
+     if (win == NULL) {
+         if (con->title_format == NULL) {
+             char *_title;
+@@ -663,9 +686,9 @@ void x_draw_decoration(Con *con) {
  
      draw_util_text(title, &(parent->frame_buffer),
                     p->color->text, p->color->background,
--                   con->deco_rect.x + logical_px(2),
-+                   con->deco_rect.x + text_offset_x + logical_px(2),
+-                   con->deco_rect.x + title_offset_x,
++                   con->deco_rect.x + text_offset_x + title_offset_x,
                     con->deco_rect.y + text_offset_y,
--                   con->deco_rect.width - mark_width - 2 * logical_px(2));
-+                   con->deco_rect.width - text_offset_x - mark_width - 2 * logical_px(2));
+-                   deco_width - mark_width - 2 * title_padding);
++                   deco_width - text_offset_x - mark_width - 2 * title_padding);
  
-     if (con->title_format != NULL) {
+     if (win == NULL || con->title_format != NULL) {
          I3STRING_FREE(title);
