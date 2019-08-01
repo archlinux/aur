@@ -1,0 +1,21 @@
+pkgbase = openvr
+	pkgdesc = API and runtime that allows access to VR hardware
+	pkgver = 1.5.17
+	pkgrel = 1
+	url = https://www.steamvr.com/en/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = qt5-base
+	depends = glibc
+	depends = glew
+	depends = libgl
+	depends = sdl2
+	options = staticlibs
+	source = https://github.com/ValveSoftware/openvr/archive/v1.5.17.tar.gz
+	source = remove-openvrpaths-check.diff::https://aur.archlinux.org/cgit/aur.git/plain/remove-openvrpaths-check.diff?h=openvr-git
+	sha256sums = 1b502a1f04d918fcbb26534444260632e6883d81e1f895906857f9aafba3c56d
+	sha256sums = SKIP
+
+pkgname = openvr
+
