@@ -6,6 +6,7 @@ pkgbase = rlvm-git
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = scons
 	makedepends = boost
 	depends = boost-libs>=1.46
@@ -15,12 +16,15 @@ pkgbase = rlvm-git
 	depends = sdl_image
 	depends = sdl_ttf
 	depends = guichan
+	depends = gtk2
 	provides = rlvm
 	conflicts = rlvm
 	source = git+https://github.com/eglaysher/rlvm.git
 	source = detect_guichan.patch
+	source = freetype.patch
 	md5sums = SKIP
 	md5sums = caf806e9f037ba95a747a0aefde7fd9d
+	md5sums = 60d11c6a9b259eda3ee69c6a6ddaffac
 
 pkgname = rlvm-git
 
