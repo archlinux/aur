@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r71524.a29aa269cd
+pkgver=r71573.da856edf7f
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -32,9 +32,6 @@ prepare() {
   git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
-
-  cd VTK
-  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5734.patch | patch -p1
 }
 
 build() {
