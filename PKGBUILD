@@ -11,7 +11,7 @@ pkgname=davinci-resolve-studio
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
 pkgver=15.3.1
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
@@ -91,8 +91,6 @@ package()
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
 	ln -s /usr/lib/libcrypto.so.1.0.0 libs/libcrypto.so.10
 	ln -s /usr/lib/libssl.so.1.0.0 libs/libssl.so.10
-	# Added missing link to libbz2 since libbz2-1.0.7
-	ln -s /usr/lib/libbz2.so libs/libbz2.so.1
 
 	msg2 "Install launchers and configs..."
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
