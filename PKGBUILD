@@ -1,20 +1,28 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='mongodb-compass-beta'
 pkgver='1.19.0beta.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB (beta version)'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
 license=('custom')
-depends=('nss' 'gconf' 'libxtst' 'alsa-lib' 'gtk3' 'libsecret' 'libxss')
+depends=('electron3' 'libsecret')
 optdepends=('gnome-keyring')
-source=('https://downloads.mongodb.com/compass/beta/mongodb-compass-beta-1.19.0-beta.1.x86_64.rpm')
-sha256sums=('1b1ccd58e98ed454d350cd37f2e01aab152a67fbb46fc320dd24b016056ff17a')
+source=(
+	'https://downloads.mongodb.com/compass/beta/mongodb-compass-beta-1.19.0-beta.1.x86_64.rpm'
+	'launch.sh'
+)
+sha256sums=(
+	'1b1ccd58e98ed454d350cd37f2e01aab152a67fbb46fc320dd24b016056ff17a'
+	'd56977ccd11620ed69c5471170640c451ae1635a5d498a1ea41585d36ac9e7d3'
+)
 
 package() {
-	rm -r "$srcdir/usr/share/doc/"
-	mkdir -p "$srcdir/usr/share/licenses/mongodb-compass-beta"
-	mv "$srcdir/usr/share/mongodb-compass-beta/LICENSE"* "$srcdir/usr/share/licenses/mongodb-compass-beta"
-
-	cp -r --preserve=mode "$srcdir/usr/" "$pkgdir/usr/"
+	install -Dm644 "$srcdir/usr/share/mongodb-compass-beta/resources/app.asar" "$pkgdir/usr/lib/mongodb-compass-beta/app.asar"
+	cp -r "$srcdir/usr/share/mongodb-compass-beta/resources/app.asar.unpacked/" "$pkgdir/usr/lib/mongodb-compass-beta/app.asar.unpacked/"
+	install -Dm755 "$srcdir/launch.sh" "$pkgdir/usr/bin/mongodb-compass-beta"
+	install -Dm644 "$srcdir/usr/share/mongodb-compass-beta/LICENSE" "$pkgdir/usr/share/licenses/mongodb-compass-beta/LICENSE"
+	install -Dm644 "$srcdir/usr/share/mongodb-compass-beta/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/mongodb-compass-beta/LICENSES.chromium.html"
+	install -Dm644 "$srcdir/usr/share/applications/mongodb-compass-beta.desktop" "$pkgdir/usr/share/applications/mongodb-compass-beta.desktop"
+	install -Dm644 "$srcdir/usr/share/pixmaps/mongodb-compass-beta.png" "$pkgdir/usr/share/pixmaps/mongodb-compass-beta.png"
 }

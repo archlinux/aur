@@ -1,20 +1,17 @@
 pkgbase = mongodb-compass-beta
 	pkgdesc = The official GUI for MongoDB (beta version)
 	pkgver = 1.19.0beta.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
 	license = custom
-	depends = nss
-	depends = gconf
-	depends = libxtst
-	depends = alsa-lib
-	depends = gtk3
+	depends = electron3
 	depends = libsecret
-	depends = libxss
 	optdepends = gnome-keyring
 	source = https://downloads.mongodb.com/compass/beta/mongodb-compass-beta-1.19.0-beta.1.x86_64.rpm
+	source = launch.sh
 	sha256sums = 1b1ccd58e98ed454d350cd37f2e01aab152a67fbb46fc320dd24b016056ff17a
+	sha256sums = d56977ccd11620ed69c5471170640c451ae1635a5d498a1ea41585d36ac9e7d3
 
 pkgname = mongodb-compass-beta
 
