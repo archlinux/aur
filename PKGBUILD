@@ -1,12 +1,12 @@
+# Maintainer: Dan Elkouby <streetwalkermc@gmail.com>
 # Contributor: Gavin Lloyd <gavinhungry@gmail.com>
-# Contributor: Dan Elkouby <streetwalrus@codewalr.us>
 # Contributor: Braden Pellett (daBrado) <aurcontact@dabrado.net>
 # Contributor: Vesa Kaihlavirta <vegai@iki.fi>
 # Contributor: Kristoffer Fossgård <kfs1@online.no>
 
 _pkgname=terminus-font
 pkgname=${_pkgname}-ll2-td1-ttf
-pkgver=4.47
+pkgver=4.48
 pkgrel=1
 pkgdesc="A superb, monospace bitmap font (for X11 and console) with ll2 patch (pass the il1I test) and td1 patch (centered ascii tilde) (TTF version)"
 arch=("any")
@@ -19,7 +19,7 @@ provides=("terminus-font-ttf")
 install="terminus-font.install"
 source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "git+https://github.com/Tblue/mkttf")
-sha256sums=('0f1b205888e4e26a94878f746b8566a65c3e3742b33cf9a4e6517646d5651297'
+sha256sums=('34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af'
             'SKIP')
 
 prepare() {
