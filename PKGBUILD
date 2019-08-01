@@ -2,7 +2,7 @@
 
 pkgname=waifu2x-ncnn-vulkan-git
 _pkgname=waifu2x-ncnn-vulkan
-pkgver=20190712.r0.g0995d88
+pkgver=20190712.r3.gc11d4f4
 pkgrel=1
 pkgdesc="waifu2x converter ncnn version, runs fast on intel / amd / nvidia GPU with vulkan"
 url="https://github.com/nihui/waifu2x-ncnn-vulkan"
@@ -24,12 +24,13 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}/waifu2x-ncnn-vulkan"
+	cd "${srcdir}/waifu2x-ncnn-vulkan/src"
 	sed -ie 's/set(ncnn_DIR "\/home\/nihui\/dev\/ncnn\/build\/install\/lib\/cmake\/ncnn")/include_directories("\/usr\/include\/ncnn")/' CMakeLists.txt
+	sed -ie 's/find_package(ncnn REQUIRED)/#find_package(ncnn REQUIRED)/' CMakeLists.txt
 }
 
 build() {
-	cd "${srcdir}/waifu2x-ncnn-vulkan"
+	cd "${srcdir}/waifu2x-ncnn-vulkan/src"
 	mkdir -p build
 	cd build
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr ..
@@ -37,12 +38,12 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/waifu2x-ncnn-vulkan"
+	cd "${srcdir}/waifu2x-ncnn-vulkan/src"
 	install -Dm755 "build/waifu2x-ncnn-vulkan" "${pkgdir}/usr/bin/waifu2x-ncnn-vulkan"
-        for f in models-cunet/*; do
+        for f in ../models/models-cunet/*; do
                 install -Dm 644 "$f" ${pkgdir}/usr/share/waifu2x-ncnn-vulkan/"$f"
         done
-	for f in models-upconv_7_anime_style_art_rgb/*; do
+	for f in ../models/models-upconv_7_anime_style_art_rgb/*; do
 		install -Dm 644 "$f" ${pkgdir}/usr/share/waifu2x-ncnn-vulkan/"$f"
 	done
 }
