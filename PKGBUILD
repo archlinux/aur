@@ -1,7 +1,7 @@
 # Maintainer: Nikola Hadžić <nikola@firemail.cc>
 pkgname="bamr"
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Simple GUI recording software"
 arch=("x86_64")
@@ -19,7 +19,7 @@ backup=()
 options=()
 source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=("08782df1a66986b8144d08b9dcf0f3c0efeaeedddc86fa0cbdb909f06642b36e")
+sha256sums=("e895489e2f41d6f38f2cbf927745b987d67c77531448cb9ae6cab0b726ed8c25")
 
 build() {
 	cd "$srcdir/$pkgname"
