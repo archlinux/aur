@@ -15,9 +15,15 @@ pkgbase = pdudaemon-git
 	depends = python-hidapi
 	depends = python-pysnmp
 	depends = python-pyusb
+	provides = pdudaemon
+	conflicts = pdudaemon
 	backup = etc/pdudaemon/pdudaemon.conf
 	source = pdudaemon::git+https://github.com/pdudaemon/pdudaemon.git
-	sha1sums = SKIP
+	source = sysusers.d
+	source = tmpfiles.d
+	sha256sums = SKIP
+	sha256sums = 889b97b347ae9b3d27f507ed9c40212e8e7e741d0ba5a5a36d28c2a5935e59c1
+	sha256sums = fc725d7ffe871d08e53c36ec1495e602dc0e5595f94f0ecec6c097987c78b411
 
 pkgname = pdudaemon-git
 
