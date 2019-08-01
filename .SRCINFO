@@ -1,0 +1,18 @@
+pkgbase = terminus-font-otb
+	pkgdesc = Monospace bitmap font (OTB version)
+	pkgver = 4.47
+	pkgrel = 1
+	url = http://terminus-font.sourceforge.net/
+	arch = any
+	license = GPL2
+	license = custom:OFL
+	makedepends = fontforge
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://downloads.sourceforge.net/project/terminus-font/terminus-font-4.47/terminus-font-4.47.tar.gz
+	source = otbconvert.pe
+	sha256sums = 0f1b205888e4e26a94878f746b8566a65c3e3742b33cf9a4e6517646d5651297
+	sha256sums = 431999be6be2630a9e8b4bcc5631b6bc727b795978b75cb4c874d9ce143e9703
+
+pkgname = terminus-font-otb
+
