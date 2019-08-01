@@ -207,9 +207,9 @@ prepare() {
   # Title: Make MetaCullable implementations more thorough wrt painted areas
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/698
   # Type: 1
-  # Status: 2
+  # Status: 4
   # Comment:
-  git cherry-pick -n c98d57f2^..53eca1c4
+  git cherry-pick -n 2812338b^..f501fdcc
 
   # Title: clutter-stage-cogl: Use regions
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/692
