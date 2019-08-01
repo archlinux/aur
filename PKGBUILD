@@ -8,7 +8,7 @@
 
 _pkgname=terminus-font
 pkgname=${_pkgname}-td1
-pkgver=4.47
+pkgver=4.48
 pkgrel=1
 
 pkgdesc='Monospace bitmap font (for X11 and console) with td1 patch (centered ascii tilde)'
@@ -25,7 +25,7 @@ provides=('terminus-font')
 
 source=("https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         fix-75-yes-terminus.patch)
-sha256sums=('0f1b205888e4e26a94878f746b8566a65c3e3742b33cf9a4e6517646d5651297'
+sha256sums=('34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af'
             'ddd86485cf6d54e020e36f1c38c56e8b21b57c23a5d76250e15c1d16fed9caa5')
 
 prepare() {
