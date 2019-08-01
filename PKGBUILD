@@ -115,7 +115,7 @@ prepare() {
   # Type: 1
   # Status: 2
   # Comment: Replaces !168
-  git cherry-pick -n 544c6ed5^..c9127c77
+  git cherry-pick -n 38181de2^..a943e35b
 
   # Title: Resource scale computation optimizations
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/493
