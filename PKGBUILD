@@ -2,7 +2,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=haskell-gi
 _hkgname=haskell-gi
-pkgver=0.21.5
+pkgver=0.22.6
 pkgrel=1
 epoch=1
 pkgdesc="Generate Haskell bindings for GObject Introspection capable libraries
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 depends=("ghc-libs" "gobject-introspection" 'haskell-base' 'haskell-safe' 'haskell-bytestring' 'haskell-mtl' 'haskell-regex-tdfa' "haskell-xdg-basedir" 'haskell-xml-conduit' 'haskell-transformers' 'haskell-pretty-show' 'haskell-process' 'haskell-gi-base' 'haskell-directory')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('12d116c6effae4da3f97afaad46faab6766f4a58be2c8fb434f8e0feea4a71e7')
+sha256sums=('b5221255a030cdfaaa7644bdb77a0c6a06646f84d125b72df702efb0bbed3154')
 
 
 build() {

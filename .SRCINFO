@@ -1,6 +1,6 @@
 pkgbase = haskell-gi
 	pkgdesc = Generate Haskell bindings for GObject Introspection capable libraries
-	pkgver = 0.21.5
+	pkgver = 0.22.6
 	pkgrel = 1
 	epoch = 1
 	url = https://hackage.haskell.org/package/haskell-gi
@@ -22,8 +22,8 @@ pkgbase = haskell-gi
 	depends = haskell-process
 	depends = haskell-gi-base
 	depends = haskell-directory
-	source = https://hackage.haskell.org/packages/archive/haskell-gi/0.21.5/haskell-gi-0.21.5.tar.gz
-	sha256sums = 12d116c6effae4da3f97afaad46faab6766f4a58be2c8fb434f8e0feea4a71e7
+	source = https://hackage.haskell.org/packages/archive/haskell-gi/0.22.6/haskell-gi-0.22.6.tar.gz
+	sha256sums = b5221255a030cdfaaa7644bdb77a0c6a06646f84d125b72df702efb0bbed3154
 
 pkgname = haskell-gi
 
