@@ -1,4 +1,4 @@
-From e52f2019cd296af14a1a0f84c4029b1d67894dcd Mon Sep 17 00:00:00 2001
+From 82916aaa8af2013196e144b38cad94adaa907276 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 20 Oct 2009 18:32:35 +0100
 Subject: [PATCH 4/4] Don't build the main poppler library.
@@ -8,7 +8,7 @@ Subject: [PATCH 4/4] Don't build the main poppler library.
  1 file changed, 17 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 550bd339..4b318c42 100644
+index 265008a7..0b0d9fb6 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -485,23 +485,6 @@ if(TIFF_FOUND)
