@@ -1,5 +1,5 @@
 pkgbase = linux-mainline-bcachefs-lts
-	pkgver = v4.19.0
+	pkgver = v4.19.63
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -41,11 +41,11 @@ pkgname = linux-mainline-bcachefs-lts
 
 pkgname = linux-mainline-bcachefs-lts-headers
 	pkgdesc = Header files and scripts for building modules for Linux-mainline-bcachefs-lts kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	provides = linux-bcachefs-git-headers=v4.19.0
-	provides = linux-headers=v4.19.0
+	provides = linux-bcachefs-git-headers=v4.19.63
+	provides = linux-headers=v4.19.63
 
 pkgname = linux-mainline-bcachefs-lts-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-mainline-bcachefs-lts kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	provides = linux-bcachefs-git-docs=v4.19.0
-	provides = linux-docs=v4.19.0
+	provides = linux-bcachefs-git-docs=v4.19.63
+	provides = linux-docs=v4.19.63
 

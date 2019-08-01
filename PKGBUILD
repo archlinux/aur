@@ -61,7 +61,7 @@ _localmodcfg=
 
 pkgbase=linux-mainline-bcachefs-lts
 _srcver_tag=4.19
-pkgver=v4.19.62
+pkgver=v4.19.63
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
@@ -137,6 +137,11 @@ actual_prepare() {
       fi
     fi
 
+    msg2 "Setting version..."
+    scripts/setlocalversion --save-scmversion
+    echo "-$pkgrel" > localversion.10-pkgrel
+    echo "$_kernelname" > localversion.20-pkgname
+
     msg2 "Setting config..."
     cp ../config .config
 
@@ -145,12 +150,6 @@ actual_prepare() {
     else
         make prepare
     fi
-
-    msg2 "Setting version..."
-    scripts/setlocalversion --save-scmversion
-    echo "-$pkgrel" > localversion.10-pkgrel
-    echo "$_kernelname" > localversion.20-pkgname
-
 
     ### Optionally load needed modules for the make localmodconfig
     # See https://aur.archlinux.org/packages/modprobed-db
@@ -168,10 +167,10 @@ actual_prepare() {
     # do not run `make olddefconfig` as it sets default options
     yes "" | make config >/dev/null
 
+    [[ -z "$_makenconfig" ]] || make nconfig
+
     make -s kernelrelease > ../version
     msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
-
-    [[ -z "$_makenconfig" ]] || make nconfig
 
     # save configuration for later reuse
     cat .config > "${startdir}/config.last"
