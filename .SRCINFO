@@ -1,0 +1,26 @@
+pkgbase = gulkan
+	pkgdesc = GLib library for Vulkan abstraction
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/xrdesktop/gulkan
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = glslang
+	makedepends = gtk-doc
+	makedepends = vulkan-headers
+	depends = glibc
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = graphene
+	depends = vulkan-icd-loader
+	optdepends = glew
+	optdepends = glfw
+	optdepends = libdrm
+	source = https://gitlab.freedesktop.org/xrdesktop/gulkan/-/archive/0.12.1/gulkan-0.12.1.tar.bz2
+	sha256sums = de3e176648f441c48a037acf4763d8b07754c3c2d8f3e38b05ec2f9e1c03e86d
+
+pkgname = gulkan
+
