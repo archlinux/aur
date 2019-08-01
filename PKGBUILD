@@ -6,6 +6,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('GPL2')
 depends=('cups' 'ghostscript')
+makedepends=('automake')
 optdepends=('imagescan: scanner support')
 options=('!libtool')
 source=('https://download3.ebz.epson.net/dsc/f/03/00/09/72/04/c6d928e83e558c4ba1e7e8bcb5c1fe080b8095eb/epson-inkjet-printer-escpr2-1.1.1-1lsb3.2.src.rpm'
