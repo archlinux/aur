@@ -4,7 +4,7 @@
 pkgname=remmina-appindicator
 _pkgname=remmina
 epoch=1
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='remote desktop client written in GTK+ (compiled with appindicator)'
 arch=(x86_64)
@@ -14,6 +14,7 @@ depends=(
     avahi
     libappindicator-gtk3
     libgcrypt
+    libsodium
     libssh
     vte3
 )
@@ -30,6 +31,7 @@ optdepends=(
 makedepends=(
     cmake
     freerdp
+    harfbuzz
     libvncserver
     spice-gtk
     spice-protocol
@@ -45,11 +47,12 @@ provides=(
     remmina
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/FreeRDP/Remmina/archive/v${pkgver/rc/-rc}.tar.gz")
-sha256sums=('a99a46f6d17d621c68561d30cbb30df7767cc42861a55a0daa2e836dd732900c')
+sha256sums=('babb477f5acd1cb7056cf47ba50dc56ef1c850f9c00a9ec012573553b03ca5a4')
 
 prepare() {
   cd Remmina-${pkgver/rc/-rc}
   sed -e 's|ssh_threads|ssh|' -i cmake/FindLIBSSH.cmake # Fix build with libssh 0.8
+  sed -i 's|include_directories(.)|include_directories(.)\ninclude_directories(/usr/include/harfbuzz)|' CMakeLists.txt
 }
 
 build() {

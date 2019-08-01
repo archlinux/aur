@@ -1,6 +1,6 @@
 pkgbase = remmina-appindicator
 	pkgdesc = remote desktop client written in GTK+ (compiled with appindicator)
-	pkgver = 1.3.4
+	pkgver = 1.3.5
 	pkgrel = 1
 	epoch = 1
 	url = https://www.remmina.org/
@@ -8,6 +8,7 @@ pkgbase = remmina-appindicator
 	license = GPL
 	makedepends = cmake
 	makedepends = freerdp
+	makedepends = harfbuzz
 	makedepends = libvncserver
 	makedepends = spice-gtk
 	makedepends = spice-protocol
@@ -15,6 +16,7 @@ pkgbase = remmina-appindicator
 	depends = avahi
 	depends = libappindicator-gtk3
 	depends = libgcrypt
+	depends = libsodium
 	depends = libssh
 	depends = vte3
 	optdepends = freerdp: RDP plugin
@@ -29,8 +31,8 @@ pkgbase = remmina-appindicator
 	provides = remmina
 	replaces = remmina-plugins
 	replaces = remmina
-	source = remmina-1.3.4.tar.gz::https://github.com/FreeRDP/Remmina/archive/v1.3.4.tar.gz
-	sha256sums = a99a46f6d17d621c68561d30cbb30df7767cc42861a55a0daa2e836dd732900c
+	source = remmina-1.3.5.tar.gz::https://github.com/FreeRDP/Remmina/archive/v1.3.5.tar.gz
+	sha256sums = babb477f5acd1cb7056cf47ba50dc56ef1c850f9c00a9ec012573553b03ca5a4
 
 pkgname = remmina-appindicator
 
