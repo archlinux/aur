@@ -21,6 +21,7 @@ depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-util
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
+((DISABLE_NINJA)) ||  makedepends+=('ninja')
 ((DISABLE_CUDA)) && optdepends=('cuda: CUDA support in Cycles') || makedepends+=('cuda')
 provides=("blender-${_sufix}")
 conflicts=("blender-${_sufix}")
@@ -100,7 +101,10 @@ build() {
         _EXTRAOPTS+=(-DCYCLES_CUDA_BINARIES_ARCH=$(IFS=';'; echo "${_cuda_capability[*]}";))
       fi
   fi
-  cmake "$srcdir/blender" \
+
+  ((DISABLE_NINJA)) && generator="Unix Makefiles" || generator="Ninja"
+  cmake -G "$generator" "$srcdir/blender" \
+        -C${srcdir}/blender/build_files/cmake/config/blender_release.cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_INSTALL_PORTABLE=OFF \
         -DWITH_PLAYER=OFF \
@@ -121,12 +125,13 @@ build() {
         -DWITH_OPENVDB_BLOSC=ON \
         -DWITH_OPENCOLLADA=ON \
         ${_EXTRAOPTS[@]}
-  make
+  export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
+  ((DISABLE_NINJA)) && make -j$(nproc) || ninja -d stats
 }
 
 package() {
   cd "$srcdir/blender-build"
-  make DESTDIR="$pkgdir" install
+  ((DISABLE_NINJA)) && make install DESTDIR="$pkgdir" || DESTDIR="$pkgdir" ninja install
 
   msg "install fracture-helper addon"  
   install ${srcdir}/blender-fracture-helper/*.py ${pkgdir}/usr/share/blender/${_blenver}/scripts/addons/

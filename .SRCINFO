@@ -12,6 +12,7 @@ pkgbase = blender-fracture_modifier-git
 	makedepends = boost
 	makedepends = mesa
 	makedepends = llvm
+	makedepends = ninja
 	makedepends = cuda
 	depends = alembic
 	depends = libgl
