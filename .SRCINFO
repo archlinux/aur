@@ -19,7 +19,7 @@ pkgbase = haskell-gi-cairo
 	depends = gobject-introspection
 	depends = cairo
 	source = https://hackage.haskell.org/packages/archive/gi-cairo/1.0.22/gi-cairo-1.0.22.tar.gz
-	sha256sums = 5dbda70a038a93cb07130597407de9cde1436603beca3f2a0a6b43953c55a7ab
+	sha256sums = 39c8a96ca44c65a890ee923241e9251d1f6e6784530a8c669324f01bc60e69ce
 
 pkgname = haskell-gi-cairo
 
