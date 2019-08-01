@@ -3,7 +3,7 @@
 pkgname=dina-font-otb
 pkgver=2.92
 pkgrel=7
-pkgdesc="A monospace bitmap font, primarily aimed at programmers(OTB)"
+pkgdesc="A monospace bitmap font, aimed at programmers (OTB Format)"
 arch=('any')
 url="https://www.dcmembers.com/jibsen/download/61/"
 license=('custom')
