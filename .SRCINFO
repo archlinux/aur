@@ -1,0 +1,15 @@
+pkgbase = spicat
+	pkgdesc = full-duplex SPI transactions from the command line
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/fusion-engineering/spicat
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = BSD
+	makedepends = cargo
+	source = spicat-0.1.1.tar.gz::https://github.com/fusion-engineering/spicat/archive/0.1.1.tar.gz
+	sha512sums = 014d8f3fafe9f3d6c191ddf1aecf9382f8d709c507ac29cbc594db8939d377f837d59e07f95bdd5896be37968e27b721017934d8d8befe4d9ea2d60506568b32
+
+pkgname = spicat
+
