@@ -1,4 +1,5 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck disable=SC2034
 
 _branch="fracture_modifier"
 _sufix=${_branch}
@@ -10,7 +11,7 @@ pkgrel=1
 pkgdesc="Development version of Blenders ${_branch} branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends=('alembic' 'openjpeg' 'python-numpy'  'libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme'
+depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-utils' 'hicolor-icon-theme'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles')
@@ -25,20 +26,20 @@ install=blender.install
 # the path in .gitmodules.
 # More info:
 #   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
-source=("git://git.blender.org/blender.git${_fragment}" \
-        'blender-addons.git::git://git.blender.org/blender-addons.git' \
-        'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git' \
-        'blender-translations.git::git://git.blender.org/blender-translations.git' \
-        'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git' \
-        'git+https://github.com/scorpion81/blender-fracture-helper.git' \
-        blender-fracture_modifier.desktop \
-        SelectCudaComputeArch.patch \
-        gcc8.patch \
-        gcc9.patch \
-        ffmpeg.patch \
-        openvdb.patch \
-        collada1668.patch \
-        oiio-2.0.patch \
+source=("git://git.blender.org/blender.git${_fragment}"
+        'blender-addons.git::git://git.blender.org/blender-addons.git'
+        'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git'
+        'blender-translations.git::git://git.blender.org/blender-translations.git'
+        'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
+        'git+https://github.com/scorpion81/blender-fracture-helper.git'
+        blender-fracture_modifier.desktop
+        SelectCudaComputeArch.patch
+        gcc8.patch
+        gcc9.patch
+        ffmpeg.patch
+        openvdb.patch
+        collada1668.patch
+        oiio-2.0.patch
         )
 md5sums=('SKIP'
          'SKIP'
@@ -71,8 +72,6 @@ prepare() {
   cd "$srcdir/blender"
   # update the submodules
   git submodule update --init --recursive --remote
-#  git submodule foreach git checkout master
-#  git submodule foreach git pull --rebase origin master
   git apply -v ${srcdir}/SelectCudaComputeArch.patch
   git apply -v ${srcdir}/gcc8.patch
   git apply -v ${srcdir}/ffmpeg.patch
