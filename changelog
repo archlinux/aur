@@ -1,3 +1,16 @@
+2019-08-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.0.3.9-1:
+    ASF will now attempt to split long Steam messages on newline if possible (ref: #1329).
+    ASF will now keep up to 10 past log files in logs directory for archival purposes. As usual you can modify this behaviour through custom NLog config.
+    ASF now includes enhanced logic for excluding invalid games from being idled (ref: #1299).
+    It's now possible to specify --path command-line argument also as ASF_PATH environment property (ref: #1316).
+    Enhanced SteamParentalCode usage, ASF can now verify whether the code is needed and whether the code is correct. It can also generate the code automatically in limited circumstances.
+    Rewritten and improved addlicense command, which now has a distinction between apps and packages, see licenses argument.
+    Rewritten and improved owns command, which now allows to query apps, packages, names and regexes, see games argument.
+    Fixed SteamParentalCode not working due to recent Steam breaking change (ref: #1339).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    [Deprecation] IPC's /Api/Command/{command} has been rewritten into /Api/Command with JSON body, check swagger spec for more details (ref: #1314).
 2019-07-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.0.2.7-1:
     Added reset command (ref: #1290).

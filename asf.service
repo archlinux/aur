@@ -8,7 +8,8 @@ After=network.target
 [Service]
 User=asf
 Group=asf
-ExecStart=/usr/bin/dotnet /usr/lib/asf/ArchiSteamFarm.dll --process-required --no-restart --path=/var/lib/asf
+Environment="ASF_PATH=/var/lib/asf"
+ExecStart=/usr/bin/dotnet /usr/lib/asf/ArchiSteamFarm.dll --process-required --no-restart
 ProtectSystem=true
 ReadWritePaths=/var/lib/asf
 
