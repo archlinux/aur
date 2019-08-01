@@ -34,6 +34,7 @@ depends=(
 	'gegl>=@_gegl_version@'
 	'cairo>=@_cairo_version@'
 	'appstream-glib>=@_appstream_glib_version@'
+        'gobject-introspection>=@_introspection_version@'
 	)
 makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1'
              'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
@@ -68,11 +69,7 @@ prepare() {
   _mypaintver=$(echo /usr/lib/libmypaint-*.so | grep -o -E '\-[0-9]+(\.[0-9]+)*' | head -1)
   sed -i "s|\\(libmypaint\\)\\( >= libmypaint_required_version\\)|\\1${_mypaintver}\\2|g" configure.ac
 
-  export PYTHON=/usr/bin/python2
-
-  autoreconf -vif
-
-  ./configure \
+  ./autogen.sh \
   	--prefix=/usr \
   	--sysconfdir=/etc \
   	--libexecdir=/usr/bin \

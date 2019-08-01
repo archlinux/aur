@@ -4,7 +4,7 @@ _gitname=gimp
 srcdir=$PWD/src
 
 declare -A dep_versions
-readonly -a deps=(pygtk gexiv2 poppler poppler_data libmypaint gtkdoc cairo babl lcms wmf gexiv2 rsvg openexr libmypaint appstream_glib)
+readonly -a deps=(pygtk gexiv2 poppler poppler_data libmypaint gtkdoc cairo babl lcms wmf gexiv2 rsvg openexr libmypaint appstream_glib introspection)
 
 ## probe configure.ac for dependencies versions
 # gegl version is broken to major_minor|micro those need to be probled separately
