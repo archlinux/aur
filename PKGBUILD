@@ -2,12 +2,12 @@
 _modulename=vimteractive
 pkgname=vim-$_modulename
 pkgver=1.7
-pkgrel=1
+pkgrel=3
 pkgdesc="Send commands from text files to interactive programs via vim"
 arch=(any)
 url="https://github.com/williamjameshandley/vimteractive"
 license=('GPL')
-groups=()
+groups=('vim-plugins')
 depends=('vim')
 makedepends=()
 provides=()
@@ -25,5 +25,5 @@ package() {
   install -d $installpath/plugin/ $installpath/doc/ $installpath/autoload/
   install -Dm644 plugin/* $installpath/plugin/
   install -Dm644 doc/* $installpath/doc/
-  install -Dm644 autload/* $installpath/autload/
+  install -Dm644 autoload/* $installpath/autoload/
 }
