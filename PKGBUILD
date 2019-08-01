@@ -2,7 +2,7 @@
 # Contributor: Paul Oppenheimer <redg3ar@airmail.cc>
 pkgname=ao
 pkgver=6.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron wrapper for Microsoft To-Do"
 arch=('x86_64')
 url="https://github.com/klaussinani/ao/"
@@ -17,4 +17,5 @@ package() {
   tar xfJ ${srcdir}/data.tar.xz -C ${pkgdir}
   install -d ${pkgdir}/usr/bin/
   ln -s /opt/Ao/ao-app ${pkgdir}/usr/bin/ao
+  install -Dm 644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/ao.png" "${pkgdir}/usr/share/pixmaps/ao.png"
 }
