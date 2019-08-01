@@ -1,11 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=26f1135f374f3ad5eb963dcdf016542fbbda361b  # tags/1.43.0^0
+_commit=dd154474af833b1c99ddf2ec1abf876341fe34db  # tags/1.44.1^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-pango
-pkgver=1.43.0
+pkgver=1.44.1
 pkgrel=1
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=('any')
@@ -34,9 +34,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/pango"
-
-  # disable help2man when cross building
-  sed -i "s/^if help2man.found()/if help2man.found() and not meson.is_cross_build()/g" utils/meson.build
 }
 
 build() {
@@ -47,8 +44,8 @@ build() {
     ${_arch}-meson \
       --buildtype=release \
       --default-library=both \
-      -D 'enable_docs=false' \
-      -D 'gir=false' \
+      -D 'gtk_doc=false' \
+      -D 'introspection=false' \
       ..
     ninja
     popd
@@ -60,8 +57,6 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/pango/build-${_arch}"
     DESTDIR="${pkgdir}" ninja install
-    rm -r "${pkgdir}/usr/${_arch}/lib/installed-tests"
-    rm -r "${pkgdir}/usr/${_arch}/share"
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
