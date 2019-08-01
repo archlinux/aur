@@ -1,0 +1,15 @@
+pkgbase = omg
+	pkgdesc = A CLI to interact with microservices built with the OMG standard.
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://microservice.guide/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = omg-0.14.0.tgz
+	source = https://registry.npmjs.org/omg/-/omg-0.14.0.tgz
+	sha256sums = 2ffdc570b82af9ab710fb79485e9879f25021dcf7afd003868a8a2cea515cf23
+
+pkgname = omg
+
