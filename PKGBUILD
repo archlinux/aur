@@ -23,7 +23,7 @@ sha256sums=("SKIP")
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	git reset --hard "c67a5b8479d6a261759dd54fd69480b79b47d85c"
+	git reset --hard "5b1dbf37f7caffcbe9f4dd3fb7cccb2e1141b3ca"
 }
 
 build() {
