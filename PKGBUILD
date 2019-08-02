@@ -1,4 +1,4 @@
-# Maintainer: Nate Simon <aurpkg (at natesimon.net)>
+# Maintainer: Nate Simon <njsimon10@gmail.com>
 
 pkgname=pix-git
 _pkgbasename=pix
@@ -22,7 +22,6 @@ optdepends=('gstreamer: Video support'
 provides=($pkgname $_pkgbasename)
 conflicts=(${_pkgbasename})
 url='https://github.com/linuxmint/pix'
-install=pix.install
 
 source=("${pkgname}::git+https://github.com/linuxmint/${_pkgbasename}.git")
 md5sums=('SKIP')
