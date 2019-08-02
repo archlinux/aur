@@ -23,6 +23,7 @@ pkgver() {
 
 _cmake_flags=(
 	-DCMAKE_BUILD_TYPE=Release
+	-DCMAKE_INSTALL_LIBDIR=lib
 	-DCMAKE_INSTALL_PREFIX=/usr
 )
 
