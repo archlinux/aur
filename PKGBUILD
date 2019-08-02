@@ -1,8 +1,8 @@
-# Maintainer: Carter Green <crtrgreen@gmail.com>
+# Maintainer: Carter Green <crtrgreen at gmail dot com>
 
 _pkgname=assemblyscript
 pkgname=assemblyscript-git
-pkgver=0.6.0.r636.abf3de90
+pkgver=0.7.0.r682.227c6269
 pkgrel=1
 pkgdesc="Compiles TypeScript to WebAssembly using Binaryen"
 arch=('any')
