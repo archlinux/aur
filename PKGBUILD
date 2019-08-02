@@ -2,7 +2,7 @@
 # Contributor: Giampaolo Mancini <giampaolo@trampolineup.com>
 
 pkgname=python-gpiozero
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A simple interface to GPIO devices with Raspberry Pi'
 arch=('any')
@@ -14,16 +14,16 @@ optdepends=(
 )
 depends=('python-colorzero' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RPi-Distro/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('179a773e838a3f091d8585f919ab7e702abb777d7d7a7e6df1bf48cae53083a0')
+sha256sums=('8cb9824fe1b08e7935de03899455e20ce2c242e4cebb0c954c274c48059f6ea5')
 
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname//python-/}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname//python-/}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
