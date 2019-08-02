@@ -3,7 +3,7 @@
 
 pkgname=libyami-utils
 pkgver=1.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Intel VA-API Media Applications and Scripts for libyami"
 arch=('i686' 'x86_64')
 url="https://github.com/01org/libyami-utils"
@@ -15,6 +15,7 @@ source=($url/archive/$pkgver.tar.gz)
 sha256sums=('9264b45dceb62b96fb428814c7ef2b16994654c1f5d4807e993d496c16375b79')
 
 build() {
+        export CXXFLAGS="-Wno-error"
 	export LD_RUN_PATH='$ORIGIN/lib/'
 	cd $pkgname-$pkgver
 	sh autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
