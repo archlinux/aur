@@ -47,7 +47,7 @@ build() {
 	./configure \
 		--prefix="" \
 		--bindir=/usr/bin \
-		--libdir=/usr/$(get_libdir) \
+		--libdir=/usr/lib \
 		--libexecdir=/usr/libexec \
 		--etcdir=/etc \
 		--initdir=/etc/modules/init \
