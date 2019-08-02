@@ -2,7 +2,8 @@
 
 pkgname=raven-reader-bin
 _pkgname=raven-reader
-pkgver=0.5.5
+urlname=Raven-Reader
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Simple RSS Reader app made using electron and vue.js"
 arch=('x86_64')
@@ -12,8 +13,8 @@ depends=('gtk2' 'dbus-glib' 'libdbusmenu-glib')
 makedepends=()
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("${_pkgname}-${pkgver}.AppImage::https://github.com/hello-efficiency-inc/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
-md5sums=('40d9d10654faaaa3e8800d8c3d139eb3')
+source=("${_pkgname}-${pkgver}.AppImage::https://github.com/hello-efficiency-inc/${_pkgname}/releases/download/v${pkgver}/${urlname}-${pkgver}.AppImage")
+md5sums=('c3424b3afc006a32028711eac9563993')
 
 package() {
   # Extract AppImage
