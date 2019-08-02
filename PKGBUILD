@@ -5,7 +5,7 @@
 
 pkgname=texworks
 pkgver=0.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A TeX IDE inspired by TeXShop.'
 arch=('i686' 'x86_64')
 url='https://www.tug.org/texworks/'
