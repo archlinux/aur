@@ -2,8 +2,8 @@
 # Maintainer: xgdgsc <xgdgsc at gmail dot com>
 pkgname=gisto
 pkgver=1.12.8
-pkgrel=1
-epoch=:wq
+pkgrel=2
+epoch=
 pkgdesc="Cross-platform gist snippets management desktop application that allows you and your team share code snippets fast and easily. Based on GitHub Gist Infrastructure which means you can use all your existing snippets by connecting your GitHub account."
 arch=("x86_64")
 url="http://www.gistoapp.com/"
