@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 pkgver=3.32.2+10+g2483b6038
-pkgrel=5
+pkgrel=6
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -27,7 +27,7 @@ source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_c
 	"110.patch")
 sha256sums=('SKIP'
             'SKIP'
-            '733a50776f519827f8c95ee050b4bc95796253fd8e0b666c5eaf655e54380a16')
+            'ea40cd43b370cc767cefeb554d11f7bd3ee30db8f10e74f11731d42cfb7ee44c')
 pkgver() {
   cd $pkgname
 
