@@ -2,7 +2,7 @@
 #
 _npmname=standard
 pkgname=nodejs-$_npmname
-pkgver=11.0.1
+pkgver=13.1.0
 pkgrel=1
 pkgdesc="JavaScript style guide, linter, and formatter"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 _source_file=$_npmname-$pkgver.tgz
 source=("https://registry.npmjs.org/$_npmname/-/$_source_file")
-sha512sums=('9eed2301c1e249cf07fa02425de8b388c559343622f0cbaaad824ac538233f8c4a5d930a9b7d756e8a902330eb608fe4b68b25b71b7609b0e3610b3d00d0bc20')
+sha512sums=('87735a333b1af3cfbfc6d8d708cbdd9fa11659d96876c23f1efb6c405f841b0ac5f6454dc0d85af5390500153a6d206835f0bbf580f2200abd7a4c4e301164bb')
 
 package() {
     export npm_config_cache="$srcdir/npm_cache"
