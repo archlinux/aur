@@ -1,7 +1,7 @@
 # Maintainer: crab2313 <crab2313@gmail.com>
 
 pkgname=python-gitlab
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Python wrapper for the GitLab API"
 arch=(any)
@@ -16,8 +16,8 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=(${url}/archive/${pkgver}.tar.gz)
-md5sums=('d052327ad5af5fda51ce5e02b013f88c')
+source=(${url}/archive/v${pkgver}.tar.gz)
+md5sums=('4114634676922af357fb44fd4b106b6a')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
