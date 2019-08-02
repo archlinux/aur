@@ -3,7 +3,7 @@
 
 pkgname=dotnet-runtime-bin
 pkgver=2.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The .NET Core runtime (binary version)"
 arch=("x86_64" "armv7h" "aarch64")
 url="https://github.com/dotnet/core"
@@ -22,6 +22,6 @@ package() {
 	install -D "${srcdir}/dotnet" "${pkgdir}/usr/bin/dotnet"
 	install -D "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	mkdir -p "${pkgdir}/usr/share/dotnet-runtime"
-	cp -r "${srcdir}/host" "${pkgdir}/usr/share/dotnet-runtime/"
+	cp -r "${srcdir}/host" "${pkgdir}/usr/bin/"
 	cp -r "${srcdir}/shared" "${pkgdir}/usr/share/dotnet-runtime/"
 }

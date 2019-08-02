@@ -1,7 +1,7 @@
 pkgbase = dotnet-runtime-bin
 	pkgdesc = The .NET Core runtime (binary version)
 	pkgver = 2.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dotnet/core
 	arch = x86_64
 	arch = armv7h
