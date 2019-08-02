@@ -4,8 +4,8 @@
 # Contributor: Salamandar <felix@piedallu.me>
 
 _pkgname=babl
-pkgname="${_pkgname}-git"
-pkgver=0.1.68.6.gcab54c3
+pkgname="${_pkgname}-qfix-git"
+pkgver=0.1.68.7.g2fa0be1
 pkgrel=1
 pkgdesc="babl is a dynamic, any to any, pixel format translation library."
 arch=('x86_64')
