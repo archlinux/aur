@@ -1,0 +1,5 @@
+ANRT-Baskervville/
+*~
+*.pkg.tar.xz
+pkg/
+src/
