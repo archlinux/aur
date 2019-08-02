@@ -14,6 +14,7 @@ pkgbase = env-modules-tcl
 	backup = etc/modules/init/modulerc
 	source = https://sourceforge.net/projects/modules/files/Modules/modules-4.3.0/modules-4.3.0.tar.gz
 	source = moduleshome.patch
+	source = lib-makefile.in.patch
 	md5sums = bc45aff23db73a38f635d3311c61ce16
 	md5sums = 7e6bf66733845eb3705a0a19c029eed6
 	md5sums = 6be36c0076bde45c0cc856b742ff701b
