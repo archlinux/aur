@@ -45,7 +45,7 @@ pkgver() {
 }
 
 build() {
-  # the upstream repo provides a Makefile, but this PKGBUILD ignores it so that 
+  # the upstream repo provides a Makefile, but this PKGBUILD ignores it so that
   #   further build options can be specified, as seen below
   # see https://wiki.archlinux.org/index.php/Go_package_guidelines#Building and
   #   `go help build`
