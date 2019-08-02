@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.32.2+43+gb7f158811
-pkgrel=8
+pkgrel=9
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -210,6 +210,13 @@ prepare() {
   # Status: 4
   # Comment:
   git cherry-pick -n 2812338b^..f501fdcc
+
+  #Title: window-actor: Fix rectangle coordinates in culling
+  #URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/707
+  #Type: 3
+  #Status: 4
+  #Comment: Fix for !698
+  git cherry-pick -n aae9f3a3
 
   # Title: clutter-stage-cogl: Use regions
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/692
