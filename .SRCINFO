@@ -1,8 +1,8 @@
 pkgbase = tomb-git
 	pkgdesc = simple tool to manage encrypted storage
-	pkgver = 2.5.r0.g74689ea
-	pkgrel = 2
-	url = http://tomb.dyne.org/
+	pkgver = 2.6.r7.g6f2ce59
+	pkgrel = 1
+	url = https://www.dyne.org/software/tomb/
 	arch = any
 	license = GPL3
 	makedepends = git
