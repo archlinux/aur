@@ -4,7 +4,8 @@
 # Maintainer : Marcos Heredia <chelqo@gmail.com>
 
 pkgname=yacas
-pkgver=1.6.1
+pkgver=1.7.0
+_docver=1.6.1
 pkgrel=1
 pkgdesc='Yet another computer algebra system'
 url='http://www.yacas.org/'
@@ -18,8 +19,8 @@ if [ ${_build_gui} == "OFF" ]; then
 depends=('glibc' 'gcc-libs')
 makedepends=('gcc' 'cmake' 'perl')
 else
-depends=('glibc' 'gcc-libs' 'qt5-base' 'qt5-webkit' 'qt5-svg')
-makedepends=('gcc' 'cmake' 'perl' 'python-sphinx')
+depends=('dbus' 'libbluray' 'libva' 'libvorbis' 'libxcursor' 'nspr' 'qt5-webengine' 'x264' 'x265' 'xvidcore' 'zstd')
+makedepends=('gcc' 'cmake' 'perl' 'python-sphinx' 'python-sphinxcontrib-bibtex' 'python-sphinx' 'python-sphinx_rtd_theme' 'npm')
 fi
 #--------------------------------------------------------------
 optdepends=('gnuplot' 'lynx' 'texmacs' 'fbreader: Reading EPUB manual')
@@ -27,11 +28,11 @@ conflicts=('yagy')
 install=${pkgname}.install
 noextract=('yacas.epub')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grzegorzmazur/yacas/archive/v${pkgver}.tar.gz"
-        "https://media.readthedocs.org/epub/yacas/v${pkgver}/yacas.epub"
+        "https://media.readthedocs.org/epub/yacas/v${_docver}/yacas.epub"
         "yacas.desktop"
         "yacas-docs.desktop"
         )
-md5sums=('c955d95b2eee79a59b6df5a2002814de'  # yacas source
+md5sums=('cd91867dba8aa858643d4bb9777f608c'  # yacas source
          '1278f790a15792996931c2adc56dd8aa'  # Epub manual
          'eb776002fabe21623716ed2642f6d365'  # yacas.desktop
          '04d2a47c02fba5d88f337a404e02929c'  # yacas-docs.desktop
@@ -46,8 +47,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_CYACAS_CONSOLE=ON \
     -DENABLE_CYACAS_GUI=${_build_gui} \
+    -DENABLE_CYACAS_UNIT_TESTS=OFF \
+    -DENABLE_CYACAS_BENCHMARKS=OFF \
     -DENABLE_JYACAS=OFF \
-    -DENABLE_DOCS=OFF \
+    -DENABLE_DOCS=ON \
     -DENABLE_CYACAS_KERNEL=OFF \
     -DCMAKE_BUILD_TYPE=Release
   msg "### make"  ; make
