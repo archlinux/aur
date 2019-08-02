@@ -1,0 +1,16 @@
+pkgbase = silicon
+	pkgdesc = Create beautiful image of your code
+	pkgver = 0.2.5
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/Aloxaf/silicon/archive/13209ffd5fdb7fe6c150060ba0a6e7c3d9faa5c8.zip
+	sha256sums = b4e26c4717afae5dee397fa3a0660a3e499e573e5edab259c5fd52beb221032e
+
+pkgname = silicon
+
