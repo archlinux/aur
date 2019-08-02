@@ -1,14 +1,13 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=prboom-plus-svn
-pkgver=4531
+pkgver=4540
 pkgrel=1
 pkgdesc="An enhanced version of the PrBoom Doom engine port"
 arch=('i686' 'x86_64')
 url="http://prboom-plus.sourceforge.net/"
 license=('GPL')
-depends=('libgl' 'libmad' 'mesa' 'portmidi' 'sdl_image'
-	 'sdl_mixer' 'sdl_net')
+depends=('fluidsynth' 'glu' 'libmad' 'portmidi' 'sdl2_image' 'sdl2_mixer' 'sdl2_net')
 makedepends=('deutex' 'freedoom2' 'imagemagick' 'subversion')
 conflicts=('prboom-plus')
 source=('prboom-plus::svn+https://svn.prboom.org/repos/branches/prboom-plus-24/prboom2'
