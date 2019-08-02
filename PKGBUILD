@@ -3,7 +3,7 @@
 # Based off of the souffle-git pkgfile by
 # Sam Linnfer <littlelightlittlefire@gmail.com>
 pkgname=souffle
-pkgver=1.5.1
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Soufflé is a translator of declarative Datalog programs into the C++ language"
 arch=('any')
@@ -18,8 +18,8 @@ backup=()
 options=()
 install=
 noextract=()
-source=('https://github.com/souffle-lang/souffle/archive/1.5.1.zip')
-md5sums=('e8d9f1f1d0d69703940e9203d834108a')
+source=("https://github.com/souffle-lang/souffle/archive/${pkgver}.zip")
+md5sums=('3135f0bfd20d45e8352132e27a8e00e4')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
