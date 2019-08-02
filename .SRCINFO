@@ -1,7 +1,7 @@
 pkgbase = grub-libzfs
 	pkgdesc = GNU GRand Unified Bootloader (2) - libzfs support
 	pkgver = 2.04
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://www.gnu.org/software/grub/
 	install = grub-libzfs.install
@@ -68,7 +68,7 @@ pkgbase = grub-libzfs
 	sha256sums = SKIP
 	sha256sums = 171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4
 	sha256sums = a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29
-	sha256sums = fd2e5f5453f3e44a2cb640c796b85cd70da8359c703f94cd531d457ede8c77fa
+	sha256sums = b8fe532668cb12c34d2a26221298f2459fac7c5578a14476a2af8c20aed5c101
 
 pkgname = grub-libzfs
 
