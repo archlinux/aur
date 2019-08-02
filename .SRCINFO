@@ -1,8 +1,8 @@
 pkgbase = alienarena-svn
 	pkgdesc = Multiplayer retro sci-fi deathmatch game based on Quake2
 	pkgver = r5655
-	pkgrel = 2
-	url = http://icculus.org/alienarena/rpa/
+	pkgrel = 3
+	url = http://red.planetarena.org/
 	arch = i686
 	arch = x86_64
 	groups = games

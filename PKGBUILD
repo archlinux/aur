@@ -5,7 +5,7 @@
 
 pkgname=alienarena-svn
 pkgver=r5655
-pkgrel=2
+pkgrel=3
 pkgdesc="Multiplayer retro sci-fi deathmatch game based on Quake2"
 arch=('i686' 'x86_64')
 url="http://red.planetarena.org/"
@@ -34,9 +34,8 @@ build() {
 
 	cd trunk/
 
-	./configure --prefix=/usr
-
-	export CPPFLAGS=" -DDATADIR='/usr/share/alienarena'"
+	autoreconf --verbose --force --install
+	./configure --enable-maintainer-mode --prefix=/usr --datarootdir=/usr/share --datadir=/usr/share
 	make
 }
 
