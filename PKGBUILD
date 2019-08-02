@@ -3,7 +3,7 @@
 
 pkgname=libyami
 pkgver=1.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Yet Another Media Infrastructure: Intel VA-API Media codecs with hardware acceleration"
 arch=('i686' 'x86_64')
 url="https://github.com/01org/libyami"
@@ -16,6 +16,7 @@ source=($url/archive/$pkgver.tar.gz)
 sha256sums=('8ac23517e8c4c0897313950f1cf727f79087b9e174a02dc66cff262eed1bb1c3')
 
 build() {
+        export CXXFLAGS="-Wno-error"
 	export LD_RUN_PATH='$ORIGIN/lib/'
 	cd $pkgname-$pkgver
 	sh autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
