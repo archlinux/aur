@@ -1,4 +1,4 @@
-# Maintainer: Nate Simon <aurpkg (at natesimon.net)>
+# Maintainer: Nate Simon <njsimon10@gmail.com>
 
 pkgname=xviewer-git
 _pkgbasename=xviewer
