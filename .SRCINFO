@@ -1,8 +1,8 @@
 pkgbase = python-pyscf-git
 	pkgdesc = Python-based Simulations of Chemistry Framework
-	pkgver = 1.5.1.r20.ge0259cc4
+	pkgver = 1.6.3.r0.g3f66df27
 	pkgrel = 1
-	url = http://sunqm.github.io/pyscf
+	url = http://pyscf.github.io
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -13,10 +13,10 @@ pkgbase = python-pyscf-git
 	depends = python-h5py
 	depends = xcfun-pyscf
 	depends = libcint-cint3
-	depends = libxc
-	provides = python-pyscf=1.5.1.r20.ge0259cc4
+	depends = libxc3
+	provides = python-pyscf=1.6.3.r0.g3f66df27
 	conflicts = python-pyscf
-	source = python-pyscf-git::git+https://github.com/sunqm/pyscf.git
+	source = python-pyscf-git::git+https://github.com/pyscf/pyscf.git
 	md5sums = SKIP
 
 pkgname = python-pyscf-git
