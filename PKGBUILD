@@ -5,20 +5,18 @@
 # Original: Michele Mocciola <mickele>
 # Contributor: Brice Méalier <mealier_brice@yahoo.fr>
 # Modified by: César Vecchio <cesar UNDERSTRIKE vecchio AT yahoo DOT com>
+# Contributor: valandil
 
 _pkgname='med'
 pkgname=('med-openmpi' 'med-openmpi-docs')
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - code-aster exchange module linked to hdf5"
 url="https://www.salome-platform.org/downloads"
 license=('LGPL')
 depends=('hdf5-openmpi' 'tk' 'python')
 makedepends=('gcc-fortran' 'swig' 'openmpi' 'cmake')
-provides=('med')
 arch=('x86_64')
-conflicts=('med')
-replaces=('med')
 source=("http://files.salome-platform.org/Salome/other/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('a474e90b5882ce69c5e9f66f6359c53b8b73eb448c5f631fa96e8cd2c14df004')
 
@@ -36,6 +34,10 @@ build() {
 #}
 
 package_med-openmpi() {
+  provides=('med')
+  conflicts=('med')
+  replaces=('med')
+
   cd ${_pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
 
