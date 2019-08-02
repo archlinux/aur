@@ -3,7 +3,7 @@
 # Previously:Fisher Duan <steamedfish@njuopen.com> Ryan Corder <ryanc@greengrey.org>
 
 pkgname=cyrus-imapd
-pkgver=2.5.11
+pkgver=2.5.13
 pkgrel=1
 pkgdesc="Cyrus IMAP mail server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,11 +15,11 @@ conflicts=('imap-server' 'pop3-server')
 options=('!makeflags')
 backup=(etc/cyrus/cyrus.conf etc/cyrus/imapd.conf)
 install="$pkgname.install"
-source=(ftp://ftp.cyrusimap.org/cyrus-imapd/$pkgname-$pkgver.tar.gz
+source=(https://www.cyrusimap.org/releases/cyrus-imapd-$pkgver.tar.gz
         'cyrus-master-conf.d'
         'cyrus-imapd.install'
         'cyrus-master.service')
-sha512sums=('bbb0e11f31d91d85037306321165e3608f8d5e2699b971fc4fbdd1630ec0a1485c8f6f17900142dec584ab41b0ec0c65c11cfaf8c5bbf1054b194a8f5f361538'
+sha512sums=('b6961edf519617c7664f773f24e8d69e57a1b0c667a83ed3b8f23773c1f0d3079da8d673aa843455a8aa5f410286c846bb2813e80c92d4d5a64a0e8cf66ba103'
             '881540a400670e86499db76af7cc41aa663a4492e3c512dbf0687f42b4a54dc5aca9df3ad315dd1c606d084feeec1a07670d50fae82fb9e71f30d5321d94327f'
             '80bfc8a2fca10cd2aa965449c426c987adf156017b111cebc37b889b3d41b7c5ba8a574e3b858166a72101a0e55f02c16411d06aa4dadc0b6410d40d68902386'
             '6cc4bbed0d5342a28a69e4acfa4a89f7a8909c6271e2e819e8da855dca2873fdaa5cea6519cb09c169b507df273d030eff5677bb07c4bf6591939958dd8e1bfe')
