@@ -5,14 +5,14 @@
 
 _realname=pango
 pkgname=$_realname-git
-pkgver=1.43.0.r21.gbe035735
+pkgver=1.44.r31.g1311cfec
 pkgrel=1
 pkgdesc="A library for layout and rendering of text"
 arch=('i686' 'x86_64')
 url="http://gnome.org/"
 license=('LGPL')
 depends=('glib2' 'cairo' 'libxft' 'libthai' 'freetype2' 'harfbuzz' 'fontconfig')
-makedepends=('gobject-introspection' 'libxt' 'gtk-doc' 'meson')
+makedepends=('gobject-introspection' 'libxt' 'gtk-doc' 'meson' 'git')
 provides=("${_realname}=${pkgver}")
 conflicts=("${_realname}")
 install=${_realname}.install
@@ -33,5 +33,5 @@ build() {
 
 package() {
   DESTDIR=$pkgdir ninja -C build install
-  rm -r "$pkgdir"/usr/{lib,share}/installed-tests
+#  rm -r "$pkgdir"/usr/{lib,share}/installed-tests
 }

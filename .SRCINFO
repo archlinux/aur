@@ -1,6 +1,6 @@
 pkgbase = pango-git
 	pkgdesc = A library for layout and rendering of text
-	pkgver = 1.43.0.r21.gbe035735
+	pkgver = 1.44.r31.g1311cfec
 	pkgrel = 1
 	url = http://gnome.org/
 	install = pango.install
@@ -11,6 +11,7 @@ pkgbase = pango-git
 	makedepends = libxt
 	makedepends = gtk-doc
 	makedepends = meson
+	makedepends = git
 	depends = glib2
 	depends = cairo
 	depends = libxft
@@ -18,7 +19,7 @@ pkgbase = pango-git
 	depends = freetype2
 	depends = harfbuzz
 	depends = fontconfig
-	provides = pango=1.43.0.r21.gbe035735
+	provides = pango=1.44.r31.g1311cfec
 	conflicts = pango
 	options = !libtool
 	options = strip
