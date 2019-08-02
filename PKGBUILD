@@ -1,6 +1,6 @@
 # Maintainer: snafu
 pkgname=(env-modules-tcl)
-pkgver=4.2.5
+pkgver=4.3.0
 pkgrel=0
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
@@ -18,11 +18,11 @@ replaces=(env-modules)
 options=()
 install=env-modules-tcl.install
 changelog=
-source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz" zshcomp.patch)
+source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz" moduleshome.patch)
 noextract=()
 validpgpkeys=()
-md5sums=('2f5c13cbf087d0cfcea4c913a4d97de6'
-         '48195d9f1c157c17b5c07e3997739f9c')
+md5sums=('bc45aff23db73a38f635d3311c61ce16'
+         '7e6bf66733845eb3705a0a19c029eed6')
 
 # Install locations:
 install_prefix=/usr
@@ -36,20 +36,26 @@ backup=("${config_path:1}/${moduledir}/init/modulerc")
 prepare() {
     cd "modules-$pkgver"
 
-    # comment if you don't won't the zsh-completion patch or if it doesn't work for you
-    patch -p1 < ../zshcomp.patch
+    patch -p1 < ../moduleshome.patch
 }
 
 build() {
 	cd "modules-$pkgver"
 
-    # lightweight default -- uncomment example/doc for heavy weight
 	./configure \
-        --prefix=/usr \
-        --docdir=$install_prefix/share/doc/$moduledir \
-        --initdir=$config_path/$moduledir/init \
-		--modulefilesdir=$config_path/$moduledir/modulefiles \
+		--prefix="" \
+		--bindir=/usr/bin \
+		--libdir=/usr/$(get_libdir) \
+		--libexecdir=/usr/libexec \
+		--etcdir=/etc \
+		--initdir=/etc/modules/init \
+		--datarootdir=/usr/share \
+		--mandir=/usr/share/man \
+		--docdir=/usr/share/doc \
+		--vimdatadir=/usr/share/vim/vimfiles \
+		--modulefilesdir=/etc/modules/modulefiles \
 		--disable-set-binpath \
+		--disable-set-manpath \
 		--disable-set-manpath \
 		--disable-compat-version \
 		--disable-example-modulefiles \
@@ -72,16 +78,11 @@ package() {
 
   _profiled="${pkgdir}${profiled}"
   mkdir -p "$_profiled"
-  ln -s ${config_path}/${moduledir}/init/profile.csh $_profiled/env-modules.csh
-  ln -s ${config_path}/${moduledir}/init/profile.sh $_profiled/env-modules.sh
-
-  # Work around, since module needs <PREFIX>/init for autoinitialization
-  ln -s ..${config_path}/${moduledir}/init ${pkgdir}/usr/init
+  ln -s ../${moduledir}/init/profile.csh $_profiled/env-modules.csh
+  ln -s ../${moduledir}/init/profile.sh $_profiled/env-modules.sh
 
   # Keep up with old versions:
   ln -s ./perl.pm ${pkgdir}${config_path}/${moduledir}/init/perl
   ln -s ./python.py ${pkgdir}${config_path}/${moduledir}/init/python
 }
 
-md5sums=('1d0aeea49a86cba41f6fb0b701110eb1'
-         '48195d9f1c157c17b5c07e3997739f9c')
