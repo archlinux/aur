@@ -1,7 +1,7 @@
 pkgbase = lib32-faudio-git
 	pkgdesc = XAudio2 reimplementation
 	pkgver = 19.08.r0.g2cc0ee5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FNA-XNA/FAudio/
 	arch = x86_64
 	license = custom:zlib
@@ -11,6 +11,7 @@ pkgbase = lib32-faudio-git
 	depends = lib32-sdl2
 	depends = lib32-ffmpeg
 	provides = lib32-faudio
+	conflicts = lib32-faudio
 	source = git+https://github.com/FNA-XNA/FAudio
 	source = faudio.pc
 	sha256sums = SKIP
