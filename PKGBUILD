@@ -1,7 +1,7 @@
 # Maintainer: Kim Scarborough <kim@scarborough.kim>
 pkgname=deluge1
 pkgver=1.3.15
-pkgrel=3
+pkgrel=4
 pkgdesc='A BitTorrent client with multiple interfaces in a client/server model (legacy 1.3.x version)'
 arch=('any')
 url='https://deluge-torrent.org/'
@@ -19,6 +19,7 @@ optdepends=('python2-service-identity'
 	'libtorrent-rasterbar: required for daemon'
 	'pygtk: required for GTK client'
 	'xdg-utils: required for GTK client'
+	'python2-xdg: required for GTK client'
 	'python2-notify: optional for GTK client'
 	'python2-pygame: optional for GTK client'
 	'python2-libappindicator: optional for GTK client'
