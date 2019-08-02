@@ -1,4 +1,5 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Julian DeMille <julian.demille@demilletech.net>
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Chris Dunder <cdunder@gmail.com>
 # Contributor: M Rawash <mrawash@gmail.com>
 # Contributor: olvar <beren.olvar@gmail.com>
@@ -9,15 +10,15 @@
 # Contributor: sidereus <francesco.serafin.3@gmail.com>
 
 pkgname=stumpwm
-pkgver=1.0.0
-pkgrel=7
+pkgver=18.11
+pkgrel=1
 pkgdesc='Tiling, keyboard-driven window manager written in Common Lisp'
 arch=('x86_64')
 url='https://stumpwm.github.io/'
 license=('GPL2')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('084187569b27c669f10922aaaad31c0dd7d935c03048140cd19e6f0ea012788b')
-makedepends=('cl-asdf' 'cl-ppcre' 'clx-git' 'common-lisp' 'gendesk')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('6968f35e100f0d65af58d2bebfa97fd0fe1b6775a6c397598a470446a6ebef9c')
+makedepends=('cl-asdf' 'cl-ppcre' 'clx-git' 'common-lisp' 'cl-alexandria-git')
 optdepends=('xorg-xprop: for stumpish, the StumpWM Interactive Shell'
             'rlwrap: command completion and history in stumpish'
             'emacs: edit and eval stumpwm code with M-x stumpwm-mode'
@@ -29,9 +30,8 @@ optdepends=('xorg-xprop: for stumpish, the StumpWM Interactive Shell'
 options=('!strip' '!makeflags')
 
 prepare() {
-  gendesk -f -n -wm --pkgname="$pkgname" --name=StumpWM
   cd "$pkgname-$pkgver"
-  ./autogen.sh
+  autoconf
 }
 
 build() {
@@ -42,7 +42,7 @@ build() {
 
 package() {
   destdir="$pkgdir" make -C "$pkgname-$pkgver" install
-  install -Dm644 stumpwm.desktop "$pkgdir/usr/share/xsessions/stumpwm.desktop"
+#  install -Dm644 stumpwm.desktop "$pkgdir/usr/share/xsessions/stumpwm.desktop"
   install -Dm644 "$pkgname-$pkgver/sample-stumpwmrc.lisp" \
     "$pkgdir/usr/share/doc/$pkgname/stumpwmrc.example"
 }
