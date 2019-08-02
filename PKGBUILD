@@ -1,8 +1,8 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 # Maintainer: Leif Warner <abimelech@gmail.com>
 pkgname=taffybar
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.2.1
+pkgrel=1
 license=('BSD3')
 pkgdesc="A desktop bar similar to xmobar, but with more GUI"
 url="http://github.com/travitch/taffybar"
@@ -11,6 +11,8 @@ depends=("ghc-libs"
          "haskell-alsa-mixer"
          "haskell-configfile"
          "haskell-either"
+         "haskell-gi-cairo-connector"
+         "haskell-gi-cairo-render"
          "haskell-hstringtemplate"
          "haskell-http"
          "haskell-x11"
@@ -58,7 +60,7 @@ source=("https://github.com/taffybar/taffybar/archive/v${pkgver}.tar.gz"
         "https://github.com/taffybar/taffybar/commit/ee2cd6b871ea05bc60a050d5cefc9e307475e794.patch"
         )
 
-sha256sums=('6d6de1a4de2c9bf4758db69c8dd322ce0ffe7fe2eb5042bac5d0857230152ffa'
+sha256sums=('51ca3f4dd505a9d5fb03a3150898bcd090e037ca851f04a4ce4185135bf537ca'
             'ff90b6e3d05b3bb94cfc2365708bbabbb96fd9a9a4919c0face6f8d2b69037e7'
             'e1a1c820057c64fab4521de3c9b153e4d54e7df9a96d94679dbffc9cec245076'
             'f4a08e887ba527a24f4cecc22393023bf7230172cc76f840ddfc5cfc54182a7e'
