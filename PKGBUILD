@@ -1,7 +1,7 @@
 # Maintainer: Robin Broda <robin at broda dot me>
 
 pkgname=hq
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc='HTML processor inspired by jq'
 arch=('x86_64')
