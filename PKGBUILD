@@ -2,8 +2,7 @@
 
 _pkgname=nemo-fileroller
 pkgname=nemo-engrampa
-_mintrel='betsy'
-pkgver=4.0.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Archive management plugin for Nemo using engrampa"
 arch=('i686' 'x86_64')
@@ -11,12 +10,10 @@ url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL2')
 depends=('nemo>=3.2' 'engrampa')
 options=('!libtool' '!emptydirs')
-#source=("${_pkgname}-${pkgver}.tar.gz::http://packages.linuxmint.com/pool/main/${_pkgname:0:1}/${_pkgname}/${_pkgname}_${pkgver}+${_mintrel}.tar.gz")
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('4bee7336554fd3c6e87371bc4683e5bee989a67030582b89a050aad5874a04de')
+sha256sums=('8ee8698c6058762965635d8233c18a4019437f73752e2085087d812aa46c0fe5')
 
 build() {
-  #cd ${_pkgname}-${pkgver}+${_mintrel}
   cd "${srcdir}/nemo-extensions-${pkgver}/${_pkgname}"
 
   cd src
@@ -35,8 +32,6 @@ build() {
 }
 
 package() {
-  #cd ${_pkgname}-${pkgver}+${_mintrel}
   cd "${srcdir}/nemo-extensions-${pkgver}/${_pkgname}"
-
   make DESTDIR="${pkgdir}" install
 }
