@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=libpdfium-nojs
-pkgver=3770.r1.6ce1d13248
+pkgver=3809.r3.178b812ec8
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -69,15 +69,6 @@ prepare() {
   curl https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT \
     | base64 --decode > "$srcdir/pdfium/tools/generate_shim_headers/generate_shim_headers.py"
   echo "Done."
-  
-  # Patch BUILD.gn to build a shared library
-  cd "$srcdir/pdfium"
-  sed -i 's/jumbo_static_library("pdfium")/shared_library("pdfium")/g' BUILD.gn
-
-  # Patch pdfium headers to enable symbol export
-  sed -i 's/\#define FPDF_EXPORT/\#define FPDF_EXPORT __attribute__ ((visibility ("default")))/g'\
-	 public/fpdfview.h
-  sed -i '/"PNG_PREFIX",/a     "FPDFSDK_EXPORTS",' BUILD.gn
 
 }
 
@@ -90,7 +81,6 @@ build() {
       'use_sysroot=false'
       'is_debug=false'
       'symbol_level=0'
-      'is_component_build=false'
       'pdf_enable_v8=false'
       'pdf_enable_xfa=false'
       'treat_warnings_as_errors=false'
@@ -104,7 +94,9 @@ build() {
       'pdf_is_standalone = true'
       'use_jumbo_build = true'
       'use_system_libopenjpeg2 = true'
+      'is_component_build = true'
   )
+  
   gn gen out/Release --script-executable=/usr/bin/python2 --args="${_flags[*]}"
   ninja -C out/Release pdfium
 
