@@ -11,6 +11,7 @@ source=("https://github.com/pyscf/pyscf/archive/v${pkgver}.tar.gz")
 sha256sums=('469781b4f2975b1bda0c1b71157d8388cdc5470bec4f6619d12756826d1d7c54')
 license=('BSD')
 depends=('python' 'python-numpy' 'python-scipy' 'python-h5py' 'xcfun-pyscf' 'libcint-cint3' 'libxc3')
+makedepends=('cmake')
 conflicts=(${pkgname}-git)
 
 build() {

@@ -5,6 +5,7 @@ pkgbase = python-pyscf
 	url = https://github.com/pyscf/pyscf
 	arch = x86_64
 	license = BSD
+	makedepends = cmake
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
