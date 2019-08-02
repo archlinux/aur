@@ -9,14 +9,14 @@ pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of common-lisp help functions"
 arch=('any')
 url="https://common-lisp.net/project/alexandria/"
 license=('custom')
 source=('git+https://gitlab.common-lisp.net/alexandria/alexandria.git')
 md5sums=('SKIP')
-replaces=cl-alexandria
+replaces=('cl-alexandria')
 
 package() {
   cd ${_pkgname}
