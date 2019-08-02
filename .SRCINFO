@@ -1,0 +1,31 @@
+pkgbase = hamsket-git
+	pkgdesc = Free and Open Source messaging and emailing app that combines common web applications into one.
+	pkgver = r1109.1efcb17
+	pkgrel = 1
+	url = https://github.com/TheGoddessInari/hamsket
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = java-runtime=8
+	makedepends = git
+	makedepends = desktop-file-utils
+	makedepends = ruby
+	makedepends = npm
+	makedepends = sencha-cmd-6
+	depends = electron
+	provides = hamsket
+	conflicts = hamsket
+	conflicts = rambox
+	conflicts = rambox-bin
+	conflicts = rambox-os
+	conflicts = rambox-os-git
+	conflicts = ramboxpro-bin
+	conflicts = hamsket-bin
+	replaces = rambox-os-git
+	source = hamsket::git+https://github.com/TheGoddessInari/hamsket.git
+	source = hamsket.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = hamsket-git
+
