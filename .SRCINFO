@@ -1,0 +1,36 @@
+pkgbase = secureboot-helper
+	pkgdesc = Kernel signing helper for UEFI secure boot
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Secure_Boot#Signing_kernel_with_pacman_hook
+	arch = any
+	license = GPL
+	makedepends = efitools
+	depends = sbsigntools
+	conflicts = sbupdate
+	backup = var/lib/uefi_signatures/db.auth
+	backup = var/lib/uefi_signatures/db.cer
+	backup = var/lib/uefi_signatures/db.crt
+	backup = var/lib/uefi_signatures/db.esl
+	backup = var/lib/uefi_signatures/db.key
+	backup = var/lib/uefi_signatures/KEK.auth
+	backup = var/lib/uefi_signatures/KEK.cer
+	backup = var/lib/uefi_signatures/KEK.crt
+	backup = var/lib/uefi_signatures/KEK.esl
+	backup = var/lib/uefi_signatures/KEK.key
+	backup = var/lib/uefi_signatures/PK.auth
+	backup = var/lib/uefi_signatures/PK.cer
+	backup = var/lib/uefi_signatures/PK.crt
+	backup = var/lib/uefi_signatures/PK.esl
+	backup = var/lib/uefi_signatures/PK.key
+	backup = var/lib/uefi_signatures/rm_PK.auth
+	backup = var/lib/uefi_signatures/GUID.txt
+	source = secureboot-helper.hook
+	source = secureboot-helper-systemd.hook
+	source = secureboot-helper.sysusers
+	sha256sums = 0e52f034ba8576b1723e07f974ea8a7d689cc41488cee731a6e0cb510a2cd4be
+	sha256sums = ef3511b8195bb02e417a6d8be455735a61df3191c4b5bb1bdb6eb1a4c443101e
+	sha256sums = ff1993aff155370018deeb78a0a112e887394fe3c5d289140d17462d1c2f1cc6
+
+pkgname = secureboot-helper
+

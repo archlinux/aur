@@ -1,0 +1,3 @@
+u uefisign - "UEFI Signatures" /%SIGN_LOCATION% /bin/nologin
+g uefisign - -
+m uefisign uefisign

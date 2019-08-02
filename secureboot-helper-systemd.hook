@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = usr/lib/systemd/boot/efi/systemd-bootx64.efi
+
+[Action]
+Description = Signing SystemD for SecureBoot
+When = PostTransaction
+Exec = /bin/bash -c 'while read -r f; do /usr/bin/sbsign --key /var/lib/uefi_signatures/db.key --cert /var/lib/uefi_signatures/db.crt --output $f $f; done'
+Depends = sbsigntools
+Depends = findutils
+Depends = grep
+NeedsTargets
