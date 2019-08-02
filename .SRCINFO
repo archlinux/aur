@@ -1,0 +1,15 @@
+pkgbase = dotfiles.sh-git
+	pkgdesc = A dotfiles manager using git meta files
+	pkgver = r13.fb2bd25
+	pkgrel = 1
+	url = https://github.com/eli-schwartz/dotfiles.sh
+	arch = any
+	license = GPL
+	depends = git
+	provides = dotfiles.sh
+	conflicts = dotfiles.sh
+	source = dotfiles.sh::git+https://github.com/eli-schwartz/dotfiles.sh
+	md5sums = SKIP
+
+pkgname = dotfiles.sh-git
+
