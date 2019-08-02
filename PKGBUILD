@@ -2,7 +2,7 @@
 
 pkgname=nats-cclient-git
 _pkgname=nats.c
-pkgver=v1.8.0.r11.g7e071ff
+pkgver=r421.c7aa654
 pkgrel=1
 pkgdesc="NATS & NATS Streaming - C Client"
 arch=('i686' 'x86_64')
@@ -18,11 +18,8 @@ source=(${_pkgname}::git+https://github.com/nats-io/nats.c.git#branch=master)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+	cd ${_pkgname}
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
