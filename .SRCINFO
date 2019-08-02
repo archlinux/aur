@@ -1,7 +1,7 @@
 pkgbase = xcfun-pyscf
 	pkgdesc = Exchange-Correlation functionals with arbitrary order derivatives (compatible to PySCF)
 	pkgver = 1.x
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dftlibs.org/xcfun/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = xcfun-pyscf
 	provides = xcfun=1.x
 	conflicts = xcfun
 	source = xcfun-pyscf::git+https://github.com/dftlibs/xcfun.git#commit=355f42497a9cd17d16ae91da1f1aaaf93756ae8b
-	md5sums = SKIP
+	source = https://github.com/pyscf/pyscf/raw/master/pyscf/lib/libxcfun.patch
+	sha256sums = SKIP
+	sha256sums = 3ce121a0a90146daf3d5e5c3ee457fb004113eeb764489027e085a6b1cf98b06
 
 pkgname = xcfun-pyscf
 
