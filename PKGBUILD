@@ -2,13 +2,13 @@
 
 pkgname=xapian-glib
 pkgver=3.3.18
-pkgrel=1
+pkgrel=2
 pkgdesc='GObject bindings for Xapian'
 arch=(x86_64)
 url='https://github.com/endlessm/xapian-glib'
 license=('GPL2')
 depends=('xapian-core>=1.3.4' 'glib2>=2.60')
-makedepends=('gtk-doc' 'gobject-introspection')
+makedepends=('gtk-doc' 'gobject-introspection' 'autoconf')
 _builddir="${pkgname}-Release_${pkgver}"
 
 source=("https://github.com/endlessm/${pkgname}/archive/Release_${pkgver}.tar.gz")
