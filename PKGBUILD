@@ -25,7 +25,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=4.1.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -41,12 +41,11 @@ depends=('alsa-lib' 'aom' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2' 'davs2' 'fo
          'opencore-amr' 'opencl-driver' 'opencl-icd-loader' 'openh264'
          'openjpeg2' 'libklvanc-git' 'libopenmpt-svn' 'opus' 'rockchip-mpp' 'rubberband'
          'rtmpdump' 'sdl2' 'speex' 'shine' 'tensorflow' 'tesseract'
-         'twolame' 'v4l-utils' 'vapoursynth' 'vid.stab' 'vo-amrwbenc' 'xavs2-git'
+         'twolame' 'v4l-utils' 'vapoursynth' 'vid.stab' 'vmaf' 'vo-amrwbenc' 'xavs2-git'
          'xvidcore' 'xz' 'wavpack' 'zeromq' 'zimg' 'zlib' 'zvbi' 'libvorbisenc.so' 
          'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so' 'snappy' 'sndio' 'xavs')
 depends_x86_64=('cuda')
 makedepends=('flite' 'ffnvcodec-headers' 'libmfx' 'libvdpau' 'nasm' 'opencl-headers')
-makedepends_x86_64=('vmaf')
 optdepends=('avxsynth-git: for Avisynth support'
             'blackmagic-decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
