@@ -3,7 +3,7 @@
 _pkgbase=faudio
 _pkgname=lib32-${_pkgbase}
 pkgname=${_pkgname}-git
-pkgver=19.05.r13.g3dd4e04
+pkgver=19.08.r0.g2cc0ee5
 pkgrel=1
 pkgdesc="XAudio2 reimplementation"
 arch=(x86_64)
@@ -17,7 +17,7 @@ source=('git+https://github.com/FNA-XNA/FAudio'
         'force-lib32-sdl2.patch')
 sha256sums=('SKIP'
             '10b0d2bd3a5e415971b36abf6bf6b853d7e3cd0dc316b6e4c773815a56b4a26f'
-            '14762bf049e8de0675d297e174a6b4c31de65d543e738a1c400747aa155d57ae')
+            '13fbcb9ef210db64bc73e3193b7c3a89cb2fac98fd4a1251389523dfb118c3bc')
 
 pkgver() {
   cd FAudio
