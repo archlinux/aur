@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.32.2+43+gb7f158811
-pkgrel=7
+pkgrel=8
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -110,12 +110,12 @@ prepare() {
   # Comment:
   git cherry-pick -n 4faeb127
 
-  # Title: clutter/stage: Process input events out of phase with redraws [performance]
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/661
+  # Title: clutter/stage: Don't queue incompressible events [performance]
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/711
   # Type: 1
   # Status: 2
   # Comment: Replaces !168
-  git cherry-pick -n 38181de2^..a943e35b
+  git cherry-pick -n f179158e
 
   # Title: Resource scale computation optimizations
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/493
