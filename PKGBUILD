@@ -13,19 +13,27 @@ license=('APACHE' 'custom:DCL')
 makedepends=('go' 'git')
 provides=('dgraph')
 conflicts=('dgraph' 'dgraph-bin')
-source=("$pkgname::git+$url"
+source=("$pkgname::git+$url#branch=master"
         'dgraph.service'
         'dgraph-zero.service')
 sha256sums=('SKIP'
             '94449db0bbd30aca993dbc6486fbec615e2cada7cd3d91e6b99d6a426a5d7ace'
             '402c5a022615f47d26db47f375f242638d04abbed3bfd22f86067f8f19031f83')
 
+export GOPATH="$srcdir"
+export GOOS=linux
+case "$CARCH" in
+    x86_64) export GOARCH=amd64 ;;
+    i686)   export GOARCH=386 GO386=387 ;;
+esac
+
 prepare() {
   # sets up a fresh temporary go path and symlinks the source repo to appear under
   #   the proper directory structure to avoid dependency manager weirdness
   # see https://wiki.archlinux.org/index.php/Go_package_guidelines#Old_Go_projects_(for_Go_%3C1.11)
-  mkdir -p "$srcdir/tmpgopath/src/github.com/dgraph-io/"
-  ln -rTsf "$srcdir/$pkgname" "$srcdir/tmpgopath/src/github.com/dgraph-io/dgraph"
+  mkdir -p "$srcdir"/src/github.com/dgraph-io
+  ln -rTsf "$srcdir/$pkgname" "$srcdir"/src/github.com/dgraph-io/dgraph
+  go get -v -d github.com/dgraph-io/dgraph/dgraph
 }
 
 pkgver() {
@@ -41,7 +49,6 @@ build() {
   #   further build options can be specified, as seen below
   # see https://wiki.archlinux.org/index.php/Go_package_guidelines#Building and
   #   `go help build`
-  cd "$srcdir"
   # enables PIE security mode, without having to target go-pie as a dependency
   # strips build paths from binary for reproducible builds
   # passes flags to go tool link
@@ -51,23 +58,26 @@ build() {
   # '-X' options mark the binary so that it reports proper version information
   # '-extldflags' passes options to the external linking tool to enable RELRO, without
   #   overwriting default linker flags
-  GOPATH="$(pwd)/tmpgopath" go install \
+  cd "$srcdir"/src/github.com/dgraph-io/dgraph/dgraph
+  go build -v \
+    -o dgraph \
     -buildmode=pie \
     -gcflags "all=-trimpath=$PWD" \
     -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-X github.com/dgraph-io/dgraph/x.lastCommitSHA=$(git --git-dir ./$pkgname/.git rev-parse --short HEAD) -X 'github.com/dgraph-io/dgraph/x.lastCommitTime=$(git --git-dir ./$pkgname/.git log -1 --format=%ci)' -X github.com/dgraph-io/dgraph/x.dgraphVersion=$(git --git-dir ./$pkgname/.git describe --always --tags) -X github.com/dgraph-io/dgraph/x.gitBranch=$(git --git-dir ./$pkgname/.git rev-parse --abbrev-ref HEAD) -extldflags '$LDFLAGS -Wl,-z,relro,-z,now'" \
-    -v "./tmpgopath/src/github.com/dgraph-io/dgraph/dgraph/..."
+    -ldflags "-X 'github.com/dgraph-io/dgraph/x.dgraphVersion=$(git rev-parse --short HEAD)' \
+              -X 'github.com/dgraph-io/dgraph/x.gitBranch=$(git rev-parse --abbrev-ref HEAD)' \
+              -X 'github.com/dgraph-io/dgraph/x.lastCommitSHA=$(git log -1 --format=%ci)' \
+              -X 'github.com/dgraph-io/dgraph/x.lastCommitTime=$(git describe --abbrev=0)' \
+              -extldflags '-Wl,-z,relro,-z,now'" \
+    .
+  strip -x dgraph
 }
 
 package() {
-  cd "$srcdir"
-  install -Dm644 "$pkgname/licenses/DCL.txt" "$pkgdir/usr/share/licenses/$pkgname/DCL.txt"
-  for binary in dgraph; do
-    install -Dm755 "tmpgopath/bin/$binary" "$pkgdir/usr/bin/$binary"
-  done
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/dgraph/ "$srcdir"/src/github.com/dgraph-io/dgraph/{LICENSE*,licenses/*}
+  install -Dm755 "$srcdir"/src/github.com/dgraph-io/dgraph/dgraph/dgraph "$pkgdir"/usr/bin/dgraph
   install -Dm644 dgraph.service "$pkgdir/usr/lib/systemd/system/dgraph.service"
   install -Dm644 dgraph-zero.service "$pkgdir/usr/lib/systemd/system/dgraph-zero.service"
-  install -d "$pkgdir/var/lib/dgraph/data"
 }
 
 # vim:set ts=2 sw=2 et:
