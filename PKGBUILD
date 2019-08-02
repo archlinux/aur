@@ -4,7 +4,7 @@
 # Contributor: John Trengrove <john at retrofilter dot com>
 
 pkgname=dgraph-git
-pkgver=1.0.12.rc3.r628.gcf7c1e630
+pkgver=1.0.12.rc3.r634.g31b96c263
 pkgrel=1
 pkgdesc='Fast, transactional, distributed graph database'
 arch=('x86_64')
