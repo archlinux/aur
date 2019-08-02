@@ -3,7 +3,7 @@
 
 pkgbase=python-pefile
 pkgname=('python-pefile' 'python2-pefile')
-pkgver=2019.4.14
+pkgver=2019.4.18
 pkgrel=1
 pkgdesc="Python PE parsing module"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/erocarrera/pefile"
 license=('MIT')
 makedepends=('python' 'python2' 'python-future' 'python2-future')
 source=(https://github.com/erocarrera/pefile/releases/download/v${pkgver}/pefile-$pkgver.tar.gz)
-sha512sums=('6529638feb2f749024acaa428982f77616408f3d5b0924be947490a11b460957bcc03b8c7bf4520778cb277e304be587ca729990724fcec95c8ad99015174751')
+sha512sums=('33c53120fd6a0fde22f4076c19ed8f69fc2b53b16d0c581133446d0d770e290dcb2ddd1e9941e8d8debc28c1cb4ff64ff055c2b8c0958015d9121de72ae20c76')
 
 prepare() {
   cd "${srcdir}"
