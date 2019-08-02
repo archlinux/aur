@@ -23,7 +23,7 @@ pkgname='grub-libzfs'
 pkgdesc='GNU GRand Unified Bootloader (2) - libzfs support'
 _pkgver=2.04
 pkgver=${_pkgver/-/}
-pkgrel=1
+pkgrel=2
 epoch=2
 url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
@@ -73,7 +73,7 @@ sha256sums=('SKIP'
             'SKIP'
             '171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
-            'fd2e5f5453f3e44a2cb640c796b85cd70da8359c703f94cd531d457ede8c77fa')
+            'b8fe532668cb12c34d2a26221298f2459fac7c5578a14476a2af8c20aed5c101')
 
 _backports=(
 )
