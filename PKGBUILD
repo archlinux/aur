@@ -3,8 +3,8 @@
 
 pkgname=i3-gaps-rounded
 _pkgsourcename=i3
-pkgver=4.16.1
-pkgrel=1
+pkgver=latest
+pkgrel=2
 pkgdesc='A fork of i3wm tiling window manager with more features, including gaps and rounded corners'
 arch=('i686' 'x86_64')
 url='https://github.com/resloved/i3'
@@ -14,7 +14,7 @@ conflicts=('i3-wm')
 groups=('i3')
 depends=('xcb-util-keysyms' 'xcb-util-wm' 'libev' 'yajl'
          'startup-notification' 'pango' 'perl' 'xcb-util-cursor' 'xcb-util-xrm'
-         'libxkbcommon-x11')
+         'libxkbcommon-x11' 'gzip' 'git')
 makedepends=('bison' 'flex' 'asciidoc' 'xmlto')
 optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
             'dmenu: As menu.'
@@ -24,9 +24,9 @@ optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
             'perl-anyevent-i3: For i3-save-tree')
 backup=(etc/i3/config)
 options=('docs' '!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/resloved/i3/archive/${pkgver}.tar.gz")
 
 prepare(){
+  git archive shape | gzip > ${pkgname}-${pkgver}.tar.gz
   mkdir build
   cd "${_pkgsourcename}-${pkgver}"
 
@@ -51,4 +51,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('d9093a4d9c3e0856844696ffdb199b8b')
