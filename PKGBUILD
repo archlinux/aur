@@ -2,13 +2,14 @@
 
 _pkgname=faudio
 pkgname=${_pkgname}-git
-pkgver=19.05.r13.g3dd4e04
-pkgrel=1
+pkgver=19.08.r0.g2cc0ee5
+pkgrel=2
 pkgdesc="XAudio2 reimplementation"
 arch=(x86_64)
 url="https://github.com/FNA-XNA/FAudio/"
 license=('custom:zlib')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 depends=('sdl2' 'ffmpeg')
 makedepends=('git' 'cmake')
 source=('git+https://github.com/FNA-XNA/FAudio'
