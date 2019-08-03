@@ -1,19 +1,18 @@
-# Maintainer: Cameron Eagans <me@cweagans.net>
-# Based on brother-hll2370dn package from AUR.
+# Maintainer: Félix Saparelli <felix@passcod.name>
+# Based on brother-dcpl3551cdw package from AUR.
 
-pkgname="brother-dcpl3550cdw"
+pkgname="brother-dcpl3551cdw"
 pkgver="1.0.2"
 pkgrel=1
-pkgdesc="CUPS driver for Brother DCP-L3550CDW"
+pkgdesc="CUPS driver for Brother DCP-L3551CDW"
 arch=('x86_64')
-url="https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpl3550cdw_eu"
+url="https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpl3551cdw_eu"
 license=('unknown')
-_model="dcpl3550cdw"
+_model="dcpl3551cdw"
 _revision=0
 
-#https://download.brother.com/welcome/dlf103938/dcpl3550cdwpdrv-1.0.2-0.i386.rpm
-source=("http://download.brother.com/welcome/dlf103938/${_model,,}pdrv-${pkgver}-${_revision}.i386.rpm")
-md5sums=("155eed84f5cbd7f406582d83c1c5c2d3")
+source=("http://download.brother.com/welcome/dlf103939/${_model,,}pdrv-${pkgver}-${_revision}.i386.rpm")
+md5sums=('d020c3259363cfef9ed8efbe90b779ec')
 
 package() {
 	# Using /usr/share instead of /opt
