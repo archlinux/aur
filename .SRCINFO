@@ -1,0 +1,25 @@
+pkgbase = zigbee2mqtt-git
+	pkgdesc = A Zigbee to MQTT bridge for domotic devices.
+	pkgver = 1.5.1.r0.gac3b924
+	pkgrel = 1
+	url = https://www.zigbee2mqtt.io
+	arch = any
+	license = GPLv3
+	makedepends = npm
+	makedepends = git
+	depends = nodejs>=10.0
+	optdepends = cc-tool: To flash Texas Instruments CC2531 debugger
+	optdepends = mosquitto: MQTT broker
+	conflicts = zigbee2mqtt
+	backup = opt/zigbee2mqtt/data/configuration.yaml
+	source = zigbee2mqtt::git+https://github.com/Koenkk/zigbee2mqtt.git
+	source = zigbee2mqtt.service
+	source = zigbee2mqtt.sysusers
+	source = zigbee2mqtt.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 831ce970669d29ba2db208bec8245c97e80540981dd23276bba10a9b7b699e1b
+	sha256sums = bf3e49cfb86df460b4db16b280839dc7f0c73fbfd29ea6d86040f711606abf65
+	sha256sums = 5861e6e25350b32fc81cf1a43802470e8ff033a019cba4d28b3bd48c6cb5ddf6
+
+pkgname = zigbee2mqtt-git
+
