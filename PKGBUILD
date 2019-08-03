@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=3proxy
-pkgver=0.8.12
-pkgrel=4
+pkgver=0.8.13
+pkgrel=1
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
 url="http://www.3proxy.ru/"
@@ -12,7 +12,7 @@ backup=('etc/3proxy/3proxy.cfg')
 source=("https://github.com/z3APA3A/3proxy/archive/$pkgver.tar.gz"
         "3proxy.service"
 )
-md5sums=('f8ccbe689ff8da8ff67942fc440187ae'
+md5sums=('d9420c56f05fb78bf9043dd8a30c6a1c'
          '99fbf305116df79fde910402c1132295'
 )
 _prefix=/usr
