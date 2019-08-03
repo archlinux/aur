@@ -46,10 +46,10 @@ prepare() {
   # https://bbs.archlinux.org/viewtopic.php?id=247933
   sed -e '/v4l2_buffer/d' \
       -e '/v4l2_format/d' \
-      -i "${srcdir}/libva-vdpau-driver-0.7.4/src/"vdpau_video.{h,c}
+      -i "${srcdir}/libva-vdpau-driver-${pkgver}/src/"vdpau_video.{h,c}
 
   # https://gitlab.freedesktop.org/lima/mesa/commit/1edaa33135feffe1082bf491e098224121615b08
-  sed 's|Baseline|ConstrainedBaseline|g' -i "${srcdir}/libva-vdpau-driver-0.7.4/src/vdpau_decode.c"
+  sed 's|Baseline|ConstrainedBaseline|g' -i "${srcdir}/libva-vdpau-driver-${pkgver}/src/vdpau_decode.c"
 }
 
 build() {
