@@ -13,7 +13,7 @@ url="https://bugzilla.kernel.org/show_bug.cgi?id=202587"
 license=('GPL2')
 depends=('dkms')
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
-	"https://www.kernel.org/pub/linux/kernel/v5.x/patch-${_k_pkgverx}.xz"
+	"https://www.kernel.org/pub/linux/kernel/v5.x/patch-${_k_pkgver}.xz"
 	"hda_intel.diff"
 	"hdac_stream.diff"
         'dkms.conf'
