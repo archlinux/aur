@@ -1,0 +1,18 @@
+pkgbase = barrier-headless-git
+	pkgdesc = Open-source KVM software based on Synergy (GUI)
+	pkgver = 2.1.2
+	pkgrel = 2
+	url = https://github.com/debauchee/barrier
+	arch = any
+	license = custom:GPL2WithOpenSSLException
+	makedepends = python-setuptools
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	depends = cmake
+	provides = barrier
+	conflicts = barrier
+	source = barrier-headless-git::git+https://github.com/debauchee/barrier.git
+	sha256sums = SKIP
+
+pkgname = barrier-headless-git
+
