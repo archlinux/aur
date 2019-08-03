@@ -6,10 +6,10 @@
 pkgname=xfce4-sensors-plugin-nvidia-hddtemp_through_netcat-current
 _realpkgname=xfce4-sensors-plugin
 pkgver=1.3.92
-pkgrel=2
+pkgrel=3
 pkgdesc="A lm_sensors plugin for the Xfce panel with nvidia and hddtemp (through netcat) support, current version"
 arch=('x86_64')
-url='http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin'
+url='https://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin'
 license=('GPL2')
 groups=('xfce4-goodies')
 depends=('xfce4-panel' 'lm_sensors' 'libxnvctrl' 'libnotify' 'hicolor-icon-theme')
