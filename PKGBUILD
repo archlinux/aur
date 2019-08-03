@@ -1,8 +1,8 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 pkgname=barrier-headless-git
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc="Open-source KVM software based on Synergy"
 url="https://github.com/debauchee/barrier"
 license=("custom:GPL2WithOpenSSLException")
