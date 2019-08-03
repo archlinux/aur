@@ -2,12 +2,12 @@
 
 pkgname=mapton
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Some kind of map application"
 arch=(any)
 url="https://mapton.org"
 license=('Apache')
-makedepends=('git' 'jre8-openjdk' 'jdk8-openjdk' 'java-openjfx' 'maven')
+makedepends=('git' 'jre8-openjdk' 'jdk8-openjdk' 'java8-openjfx' 'maven')
 
 _commit=1cb5a943593498ca92544b097a60e05351430487
 source=(git+https://github.com/trixon/mapton.git#commit=$_commit
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-	depends=('java-runtime>=8' 'java-openjfx')
+	depends=('java-runtime>=8' 'java8-openjfx')
 	cd mapton/application/target/mapton
 
 	# Initial target directories
@@ -59,4 +59,3 @@ package() {
 	install -D "$srcdir"/mapton.desktop "$pkgdir"/usr/share/applications/mapton.desktop
 	install -Dm644 "$srcdir"/mapton/mapton.png "$pkgdir"/usr/share/pixmaps/mapton.png
 }
-

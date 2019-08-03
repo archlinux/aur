@@ -1,14 +1,14 @@
 pkgbase = mapton
 	pkgdesc = Some kind of map application
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mapton.org
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = jre8-openjdk
 	makedepends = jdk8-openjdk
-	makedepends = java-openjfx
+	makedepends = java8-openjfx
 	makedepends = maven
 	source = git+https://github.com/trixon/mapton.git#commit=1cb5a943593498ca92544b097a60e05351430487
 	source = mapton.desktop
@@ -21,5 +21,5 @@ pkgbase = mapton
 
 pkgname = mapton
 	depends = java-runtime>=8
-	depends = java-openjfx
+	depends = java8-openjfx
 
