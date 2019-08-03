@@ -1,12 +1,13 @@
 pkgbase = auther-git
 	pkgdesc = A cross-platform OTP token manager
-	pkgver = r31.d0725c0
+	pkgver = r46.9e20e96
 	pkgrel = 1
 	url = https://gitlab.com/dg10a/auther.git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = qt5-base
+	depends = qt5-quickcontrols2
 	provides = auther
 	conflicts = auther
 	source = git+https://gitlab.com/dg10a/auther.git
