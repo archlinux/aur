@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Updating pkgfile database
+When = PostTransaction
+Exec = /bin/sh -c 'pkgfile --update --quiet <&- >&- 2>&- &'
