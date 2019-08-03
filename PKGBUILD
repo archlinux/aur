@@ -3,7 +3,7 @@
 
 pkgname=libva-vdpau-driver-chromium
 pkgver=0.7.4
-pkgrel=4
+pkgrel=5
 pkgdesc="VDPAU backend for VA API. (special version for chromium)"
 arch=('x86_64')
 url='http://freedesktop.org/wiki/Software/vaapi'
@@ -43,14 +43,17 @@ prepare() {
   patch -d "libva-vdpau-driver-${pkgver}" -p1 -i "${srcdir}/sigfpe-crash.patch"
   patch -d "libva-vdpau-driver-${pkgver}" -p1 -i "${srcdir}/implement-vaquerysurfaceattributes.patch"
 
+  sed -e '/v4l2_buffer/d' \
+      -e '/v4l2_format/d' \
+      -i "${srcdir}/libva-vdpau-driver-0.7.4/src/"vdpau_video.{h,c}
+}
+
+build() {
   cd build
   ../"libva-vdpau-driver-${pkgver}"/configure \
     --prefix=/usr
 
-}
-
-build() {
-  make -C build
+  make
 }
 
 package() {
