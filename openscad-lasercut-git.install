@@ -1,0 +1,14 @@
+post_install() {
+ cat << EOF
+
+  ##  NOTE  ###############################################################
+  #                                                                       #
+  # <lasercut.scad> installed in: /usr/share/openscad/libraries/lasercut/ #
+  #                                                                       #
+  # In OpenSCAD, import it with:                                          #
+  # use <lasercut/lasercut.scad>                                          #
+  #                                                                       #
+  #########################################################################
+
+EOF
+}

@@ -1,0 +1,14 @@
+pkgbase = openscad-lasercut-git
+	pkgdesc = Module for openscad, allowing 3d models to be created from 2d lasercut parts
+	pkgver = r79.1b1c738
+	pkgrel = 1
+	url = https://github.com/bmsleight/lasercut.git
+	install = openscad-lasercut-git.install
+	arch = any
+	license = BSD 2-Clause
+	depends = openscad
+	source = git+https://github.com/bmsleight/lasercut.git
+	sha512sums = SKIP
+
+pkgname = openscad-lasercut-git
+
