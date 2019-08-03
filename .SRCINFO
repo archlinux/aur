@@ -1,13 +1,19 @@
 pkgbase = ms-office-online
-	pkgdesc = Microsoft Office Suite Online
-	pkgver = 18.04.4
-	pkgrel = 1
-	url = https://github.com/manjaro/ms-office-online-launcher
+	pkgdesc = Microsoft Office Suite Online as a native application
+	pkgver = 19.06.2
+	pkgrel = 3
+	url = https://www.office.com/
 	arch = any
 	license = GPL3
-	depends = jade-application-kit-git
-	source = https://github.com/manjaro/ms-office-online-launcher/archive/18.04.4.zip
-	sha512sums = 689b2609679a74f03704de4a3de6b3b9c87d328df1f3d966a6245eb940387a5383fd63a3add5fd480b99d2feddcde006a49d9fdb988cc7df65555fae2a0ad811
+	license = CC
+	depends = jade-application-kit
+	provides = ms-office-online
+	source = https://gitlab.manjaro.org/applications/ms-office-online-launcher/-/archive/19.06.2/ms-office-online-launcher-19.06.2.tar.gz
+	source = add-mslogin.patch::https://gitlab.manjaro.org/applications/ms-office-online-launcher/commit/afa0d9e64bef5711180fe5072e48536a05ed313d.patch
+	source = sharepoint.patch::https://gitlab.manjaro.org/applications/ms-office-online-launcher/commit/0c3f2a441b1f83daeaaaf51d956daba7ef156b63.patch
+	sha256sums = b72b31e199ce6467fdce821ecff9344fe7f1b314db03e09db162b39558c43c2b
+	sha256sums = 498474e9c3dc43f93c163509ebafc6d916d526939685279c37288f673ef7641c
+	sha256sums = ce3878fe605879c23b69fb48e315c2fb549bdedc4847b1d3fdb25200b84c7613
 
 pkgname = ms-office-online
 
