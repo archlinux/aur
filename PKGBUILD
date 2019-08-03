@@ -1,8 +1,8 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname="gtk-theme-ambiance-ds-blue-sb12"
-pkgver=2.51
-pkgrel=2
+pkgver=2.60
+pkgrel=1
 pkgdesc="A theme based on Ambiance (gtk2, gtk3, gnome-shell, metacity, unity)"
 arch=(any)
 #url="http://gnome-look.org/content/show.php/Ambiance+DS+BlueSB12?content=154519"
