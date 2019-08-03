@@ -2,10 +2,10 @@
 pkgname=python-pywikibot
 _module='pywikibot'
 pkgver=3.0.20190722
-pkgrel=1
+pkgrel=2
 pkgdesc="Python MediaWiki Bot Framework"
 url="https://www.mediawiki.org/wiki/Pywikibot"
-depends=('python')
+depends=('python' 'python-requests')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
