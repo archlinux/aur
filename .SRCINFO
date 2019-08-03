@@ -9,6 +9,7 @@ pkgbase = glabels-qt-git
 	makedepends = git
 	makedepends = cmake
 	depends = qt5-base
+	depends = qt5-svg
 	depends = qt5-translations
 	depends = zint
 	provides = glabels-qt
