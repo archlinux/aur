@@ -4,7 +4,7 @@ minor=838629
 pkgname='amdgpu-dkms'
 pkgver=${major}_${minor}
 pkgdesc="DKMS AMDGPU driver from AMD"
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url=https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-navi-linux
 license=('custom')
@@ -54,7 +54,7 @@ sha256sums=('e2eb0a34745ecb9e244f81e0f3af8e4ab063d699dbc3e1a1e0867e8ce773d473'
             '04cd611a19cd0bc47c8d300f623e4b1b1999ad2a9d4fa1040ac87fcfde968552'
             '3f650c253593ea7969be36ce64f6a6f23e41fa2088738e03cc1d5a89c33d54e7'
             '3079a671f88e4710f9a1698a7c1854fe6b275b4dfe916308f172c3545c721870'
-            '13aba0223748b6af424058c250cb8d957ce56230b3044f98b66117a14fc5cc04')
+            'f43cf8f6f68129a2c718d6bb0313890972baef7e1b6a1edd8970dcf14d81ca65')
 
 build() {
     cd "${srcdir}/amdgpu-pro-${major}-${minor}-ubuntu-18.04"
