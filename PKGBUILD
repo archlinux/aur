@@ -1,6 +1,6 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
-pkgname=(barrier-git barrier-headless-git)
+pkgname=barrier-git
 pkgver=2.1.2
 pkgrel=2
 pkgdesc="Open-source KVM software based on Synergy"
@@ -98,20 +98,3 @@ package_barrier-git() {
         rm -rf "${pkgdir:?}/${file:?}"
     done
 }
-
-package_barrier-headless-git() {
-    pkgdesc="Open-source KVM software based on Synergy (client and server CLI binaries)"
-
-    # Install all the files:
-    _package_common
-
-    # Now go and delete the GUI-related files:
-    for file in \
-        /usr/bin/barrier \
-        /usr/share/applications \
-        /usr/share/icons \
-    ;do
-        rm -rf "${pkgdir:?}/${file:?}"
-    done
-}
-
