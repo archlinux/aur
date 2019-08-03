@@ -16,7 +16,7 @@ optdepends=('ffmpeg: convert video files to audio-only files'
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=($pkgname::git://github.com/MrS0m30n3/youtube-dl-gui.git
+source=($pkgname::git+https://github.com/MrS0m30n3/youtube-dl-gui.git
         youtube-dl-gui.desktop)
 md5sums=('SKIP'
          '298421ed0a9e2c6475e0bb3f86d2d2a7')
