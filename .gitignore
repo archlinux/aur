@@ -1,0 +1,4 @@
+*.otf
+*.tar.xz
+pkg/*
+src/*
