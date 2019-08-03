@@ -1,8 +1,8 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer-alpha
-pkgver=1.8.7.7750
-_pkgver=1_8_7_7750
+pkgver=1.8.7.7765
+_pkgver=1_8_7_7765
 pkgrel=1
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (nighly builds)"
 url="http://www.singularityviewer.org/"
@@ -24,7 +24,7 @@ provides=("singularityviewer")
 source=("http://singu.virtual-nexus.xyz/files/Singularity_Test_${_pkgver}_x86_64.tar.xz"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher")
-md5sums=('616c2091de42b57113b385cdc6274e3e'
+md5sums=('db4b4bb997cbcbb59d0477558af75d82'
          'ff7aa34dcd7548e3acdb3c2d44ae6604'
          'eb596f5cf7b6f2d0c55c0082fb99a905')
 
@@ -73,6 +73,5 @@ chmod -R g+rw $pkgdir/opt/singularityviewer
 chmod g+x $pkgdir/opt/singularityviewer/singularity
 
 # Do not re-register the application with the desktop system at every launch, saves from locally installed desktop files.
-sed -i 's|./etc/refresh_desktop_app_entry.sh|#./etc/refresh_desktop_app_entry.sh|' $pkgdir/opt/singularityviewer/singularity
-
+sed -i 's|./refresh_desktop_app_entry.sh|#./refresh_desktop_app_entry.sh|' $pkgdir/opt/singularityviewer/singularity
 }
