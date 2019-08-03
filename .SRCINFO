@@ -1,0 +1,18 @@
+pkgbase = python-listparser
+	pkgdesc = Parse OPML, FOAF, and iGoogle subscription lists
+	pkgver = 0.18
+	pkgrel = 1
+	url = https://github.com/kurtmckee/listparser/
+	arch = any
+	license = LGPL-3.0
+	makedepends = python-setuptools
+	depends = libxml2
+	depends = python
+	depends = python-requests
+	depends = python-six
+	conflicts = python-listparser-git
+	source = listparser-0.18::git+https://github.com/kurtmckee/listparser#tag=v0.18
+	sha256sums = SKIP
+
+pkgname = python-listparser
+
