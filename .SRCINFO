@@ -1,0 +1,12 @@
+pkgbase = kubedb-cli-bin
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://kubedb.com/
+	arch = x86_64
+	license = Apache
+	provides = kubedb-cli
+	source = https://github.com/kubedb/cli/releases/download/0.12.0/kubedb-linux-amd64
+	sha512sums = fc6fdb6f59776405702b16201be327bcab3563811ace7957b7428e373f951b556f1bc7b7decaf90f0b3750a1d9a80ab4f54c9a7b980e44c51c6ac82724103996
+
+pkgname = kubedb-cli-bin
+
