@@ -1,20 +1,20 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
-_pkgname=openspace-desktop
-_pkgver=0.0.44-1
+_pkgname=okuna-desktop
+_pkgver=0.0.49
 pkgname="${_pkgname}-bin"
 pkgver="${_pkgver//-/_}"
 pkgrel=1
-pkgdesc="Desktop client for Openspace"
+pkgdesc="Desktop client for Okuna"
 arch=('x86_64')
-url="https://gitlab.com/999eagle/openspace-desktop"
+url="https://gitlab.com/999eagle/okuna-desktop"
 license=('AGPL3')
-provides=("${_pkgname}" "openbook-desktop")
-conflicts=("${_pkgname}" "openbook-desktop-bin")
-replaces=('openbook-desktop-bin')
+provides=("${_pkgname}" "openspace-desktop" "openbook-desktop")
+conflicts=("${_pkgname}" "openspace-desktop-bin" "openbook-desktop-bin")
+replaces=('openspace-desktop-bin' 'openbook-desktop-bin')
 depends=('libxcursor' 'libxinerama' 'libxrandr' 'libxxf86vm' 'sqlite' 'bash' 'gtk3')
-source=("${_pkgname}-${_pkgver}.zip::https://gitlab.com/999eagle/openspace-desktop/-/jobs/artifacts/${_pkgver}/download?job=release-linux")
-sha256sums=('e16a344200df1e09ac5d7ed64cf817678d68dc59d283cd88ac876826f5744d79')
+source=("${_pkgname}-${_pkgver}.zip::https://gitlab.com/999eagle/okuna-desktop/-/jobs/artifacts/${_pkgver}/download?job=release-linux")
+sha256sums=('7e2aef95e8b3cf122d74003aead4c9f42d6f942c6b3f221127468f6d2794bf51')
 
 package() {
 	# Main files
@@ -34,7 +34,7 @@ package() {
 	for size in 32 64 256; do
 		path="${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
 		install -d "${path}"
-		ln -s "/opt/${_pkgname}/assets/openspace-o-logo_transparent_${size}.png" "${path}/${_pkgname}.png"
+		ln -s "/opt/${_pkgname}/assets/okuna-o-logo_transparent_${size}.png" "${path}/${_pkgname}.png"
 	done
 }
 
