@@ -1,18 +1,23 @@
-pkgbase = pam_abl
+pkgbase = pam_abl-git
 	pkgdesc = Automated blacklisting on repeated failed authentication attempts
-	pkgver = 0.6.0
+	pkgver = r88.19eaf6d
 	pkgrel = 1
-	url = http://pam-abl.sourceforge.net/
+	url = https://github.com/deksai/pam_abl
 	install = pam_abl.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2+
+	makedepends = git
 	makedepends = asciidoc
 	makedepends = cmake
+	makedepends = kyotocabinet
 	depends = db
 	depends = pam
-	source = http://downloads.sourceforge.net/pam-abl/pam-abl-0.6.0.tar.gz
-	md5sums = 62e02b88cf2da09eeea101a99f69f1ee
+	optdepends = kyotocabinet: faster database
+	provides = pam_abl
+	conflicts = pam_abl
+	source = git+https://github.com/deksai/pam_abl
+	sha512sums = SKIP
 
-pkgname = pam_abl
+pkgname = pam_abl-git
 
