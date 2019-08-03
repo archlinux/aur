@@ -1,5 +1,5 @@
 pkgbase = drill-search
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://drill.software
 	install = drill-search.install
@@ -7,10 +7,10 @@ pkgbase = drill-search
 	license = GPL2
 	makedepends = dmd
 	makedepends = dub
-	source = drill-search-2.0.0.tar.gz::https://github.com/yatima1460/Drill/archive/2.0.0.tar.gz
+	source = drill-search-2.1.0.tar.gz::https://github.com/yatima1460/Drill/archive/2.1.0.tar.gz
 	source = drill-search
 	source = drill-search-gtk.desktop
-	sha256sums = 9ac863f693da7db1deb2e89ec78476a34c89618a1b00149d2e3fb6ae152bbe6a
+	sha256sums = f1c9944dfbc42215d9b85cd403db25a84756d4862327a6ff0f8b3797424c694f
 	sha256sums = b875f928546aee7855cb1db9afc8ab3f1a8a34d43de5bbd62f7076d7ba9f3917
 	sha256sums = 5bafb37baf608a3168abba2ab9ea174a1d0f0472f52d3222ea0a05957c997c50
 
