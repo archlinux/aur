@@ -3,7 +3,7 @@
 
 _appname=freecad
 pkgname="${_appname}-git"
-pkgver=0.19pre.r633.g063582241
+pkgver=0.19pre.r1038.g7b315d3a1
 pkgrel=1
 epoch=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -28,7 +28,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_//'
+    git describe --long --tags --match '*.*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_//'
 }
 
 build() {
