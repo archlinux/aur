@@ -13,7 +13,6 @@ sha256sums=('6705bba1714961b41a728dfc5debbe348d2966c117649392f8c8139efc83ff14')
 
 build() {
 	cd "$pkgname-$pkgver"
-	echo CFLAGS ARE "$CFLAGS"
 	make CFLAGS="$CFLAGS -fpic" LDFLAGS="$LDFLAGS" D=.so.$pkgver \
 		LDDLLFLAGS="$LDFLAGS -shared -Wl,-soname,lib$pkgname.so.${pkgver%%.*}"
 }
