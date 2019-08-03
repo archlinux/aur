@@ -2,13 +2,13 @@
 
 _pkgname=auther
 pkgname=${_pkgname}-git
-pkgver=r31.d0725c0
+pkgver=r46.9e20e96
 pkgrel=1
 pkgdesc="A cross-platform OTP token manager"
 arch=('x86_64')
 url="https://gitlab.com/dg10a/auther.git"
 license=('GPL3')
-depends=('qt5-base')
+depends=('qt5-base' 'qt5-quickcontrols2')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
