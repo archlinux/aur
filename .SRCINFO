@@ -1,0 +1,40 @@
+pkgbase = bumblebee-picasso-git
+	pkgdesc = NVIDIA Optimus support for Linux through VirtualGL or primus, igpu amd picasso
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = http://www.bumblebee-project.org
+	install = bumblebee.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = help2man
+	depends = glib2
+	depends = mesa-libgl
+	optdepends = bbswitch: switch on/off discrete card
+	optdepends = xf86-video-nouveau: Nouveau driver
+	optdepends = nvidia: NVIDIA kernel driver
+	optdepends = nvidia-340xx: NVIDIA kernel driver for older devices
+	optdepends = nvidia-304xx: NVIDIA kernel driver for even older devices
+	optdepends = virtualgl: oldest back-end for optirun
+	optdepends = primus: faster back-end for optirun
+	optdepends = lib32-virtualgl: run 32bit applications with optirun
+	optdepends = lib32-primus: faster back-end for optirun
+	provides = bumblebee
+	conflicts = bumblebee
+	backup = etc/bumblebee/bumblebee.conf
+	backup = etc/bumblebee/xorg.conf.nouveau
+	backup = etc/bumblebee/xorg.conf.nvidia
+	source = bumblebee::git://github.com/Bumblebee-Project/Bumblebee.git#branch=master
+	source = 0001-libglvnd.patch
+	source = bumblebee.conf
+	source = 0002-bumblebee-f23xorgnvidiafix.patch
+	source = 0003-config-igpu.patch
+	sha256sums = SKIP
+	sha256sums = b260d64a53617807afe21560db0592d114d7775b182e13fb59349f0157c8dba4
+	sha256sums = 1c3d4f5d40245a23a5f1cb1f2f6bd4274ff3c5b3749f76a09255191328ae3193
+	sha256sums = 0a4885344a2e6ea08d87f163e133e5256a9c0badf6fe05f91dfcdc9e716135c7
+	sha256sums = 84f684ee8da0a6e841df5021de7647d587f34117dfdc55b71c0548817506c1a3
+
+pkgname = bumblebee-picasso-git
+

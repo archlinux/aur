@@ -1,0 +1,115 @@
+diff --git a/conf/bumblebee.conf.in b/conf/bumblebee.conf.in
+index a4d071718ff4f4f7acd18639cce9e745203ab13b..d572dcfa35ca8ba7da5b2ed1bf0cd7c5f7fe21cb 100644
+--- a/conf/bumblebee.conf.in
++++ b/conf/bumblebee.conf.in
+@@ -22,6 +22,8 @@ NoEcoModeOverride=false
+ Driver=@CONF_DRIVER@
+ # Directory with a dummy config file to pass as a -configdir to secondary X
+ XorgConfDir=@XCONFDDIR@
++# PCI Vendor ID of integrated card, empty defaults to INTEL (0x8086)
++IGCPCIVendorId=0x1002
+ 
+ ## Client options. Will take effect on the next optirun executed.
+ [optirun]
+diff --git a/src/bbconfig.c b/src/bbconfig.c
+index 1dff5e020fcbdc61a0143e69fc16ca6f63c50c34..81458d040864960b265dcbd7c8760c9c26debde2 100644
+--- a/src/bbconfig.c
++++ b/src/bbconfig.c
+@@ -47,6 +47,14 @@ const char *bb_pm_method_string[PM_METHODS_COUNT] = {
+ struct bb_status_struct bb_status;
+ struct bb_config_struct bb_config;
+ 
++/**
++* Returns a guint from value string
++*/
++guint bb_uint_from_string(char* str) {
++  unsigned int ret;
++  sscanf(str, "%x", &ret);
++  return ret;
++}
+ /**
+  * Returns a gboolean from true/false strings
+  * @return TRUE if str="true", FALSE otherwise
+@@ -425,6 +433,10 @@ GKeyFile *bbconfig_parse_conf(void) {
+   if (g_key_file_has_key(bbcfg, section, key, NULL)) {
+     free_and_set_value(&bb_config.x_conf_dir, g_key_file_get_string(bbcfg, section, key, NULL));
+   }
++  key = "IGCPCIVendorId";
++  if (g_key_file_has_key(bbcfg, section, key, NULL)) {
++    free_and_set_value(&bb_config.igc_pci_vendor_id, g_key_file_get_string(bbcfg, section, key, NULL));
++  }  
+   return bbcfg;
+ }
+ 
+@@ -520,6 +532,7 @@ void init_config(void) {
+   set_string_value(&bb_config.optirun_bridge, CONF_BRIDGE);
+   set_string_value(&bb_config.primus_ld_path, CONF_PRIMUS_LD_PATH);
+   set_string_value(&bb_config.vgl_compress, CONF_VGLCOMPRESS);
++  set_string_value(&bb_config.igc_pci_vendor_id, "");
+   // default to auto-detect
+   set_string_value(&bb_config.driver, "");
+   set_string_value(&bb_config.module_name, "");
+@@ -543,6 +556,8 @@ void config_dump(void) {
+   bb_log(LOG_DEBUG, " X display: %s\n", bb_config.x_display);
+   bb_log(LOG_DEBUG, " LD_LIBRARY_PATH: %s\n", bb_config.ld_path);
+   bb_log(LOG_DEBUG, " Socket path: %s\n", bb_config.socket_path);
++  bb_log(LOG_DEBUG, " Integrated Graphic Card PCI Vendor ID: %s\n", bb_config.igc_pci_vendor_id);
++  
+   if (bb_status.runmode == BB_RUN_SERVER || bb_status.runmode == BB_RUN_DAEMON) {
+     /* daemon options */
+ #ifdef WITH_PIDFILE
+diff --git a/src/bbconfig.h b/src/bbconfig.h
+index 5596b64c872d738be6da7478228f0607c8fd99e7..62fd388d9d6829a0a2c4f3c59fa219f2b786f021 100644
+--- a/src/bbconfig.h
++++ b/src/bbconfig.h
+@@ -143,6 +143,7 @@ struct bb_config_struct {
+                                     * If empty, driver will be used. This is
+                                     * for Ubuntu which uses nvidia-current */
+     int card_shutdown_state;
++    char * igc_pci_vendor_id;
+ #ifdef WITH_PIDFILE
+     char *pid_file; /* pid file for storing the daemons PID */
+ #endif
+@@ -180,6 +181,7 @@ void bbconfig_parse_opts(int argc, char *argv[], int conf_round);
+ GKeyFile *bbconfig_parse_conf(void);
+ void bbconfig_parse_conf_driver(GKeyFile *bbcfg, char *driver);
+ 
++guint bb_uint_from_string(char* str);
+ gboolean bb_bool_from_string(char* str);
+ 
+ enum bb_pm_method bb_pm_method_from_string(char *value);
+diff --git a/src/bumblebeed.c b/src/bumblebeed.c
+index a911da9a474a5fe69e813b7f38d7ce7906f8d125..44d761e585603f1e08651c605b721442b7ecb2e0 100644
+--- a/src/bumblebeed.c
++++ b/src/bumblebeed.c
+@@ -461,14 +461,19 @@ int main(int argc, char* argv[]) {
+   init_config();
+   bbconfig_parse_opts(argc, argv, PARSE_STAGE_PRECONF);
+ 
+-  /* First look for an intel card */
+-  struct pci_bus_id *pci_id_igd = pci_find_gfx_by_vendor(PCI_VENDOR_ID_INTEL, 0);
++  GKeyFile *bbcfg = bbconfig_parse_conf();
++
++  /* look for an integrated card */
++  unsigned int igc_pcivndid = bb_uint_from_string(bb_config.igc_pci_vendor_id);
++  igc_pcivndid =  igc_pcivndid == 0 ? PCI_VENDOR_ID_INTEL : igc_pcivndid; 
++
++  struct pci_bus_id *pci_id_igd = pci_find_gfx_by_vendor(igc_pcivndid, 0);
+   if (!pci_id_igd) {
+     /* This is no Optimus configuration. But maybe it's a
+        dual-nvidia configuration. Let us test that.
+     */
+     pci_id_igd = pci_find_gfx_by_vendor(PCI_VENDOR_ID_NVIDIA, 1);
+-    bb_log(LOG_INFO, "No Intel video card found, testing for dual-nvidia system.\n");
++    bb_log(LOG_INFO, "No integrated video card found, testing for dual-nvidia system.\n");
+ 
+     if (!pci_id_igd) {
+       /* Ok, this is not a double gpu setup supported (there is at most
+@@ -488,7 +493,6 @@ int main(int argc, char* argv[]) {
+ 
+   free(pci_id_igd);
+ 
+-  GKeyFile *bbcfg = bbconfig_parse_conf();
+   bbconfig_parse_opts(argc, argv, PARSE_STAGE_DRIVER);
+   driver_detect();
+   if (bbcfg) {

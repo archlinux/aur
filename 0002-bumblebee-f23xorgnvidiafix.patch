@@ -1,0 +1,11 @@
+diff -up bumblebee-3.2.1/conf/xorg.conf.nvidia.f23fix bumblebee-3.2.1/conf/xorg.conf.nvidia
+--- bumblebee-3.2.1/conf/xorg.conf.nvidia.f23fix	2013-04-26 11:49:03.010174177 -0400
++++ bumblebee-3.2.1/conf/xorg.conf.nvidia	2015-10-14 17:56:43.920706607 -0400
+@@ -32,3 +32,7 @@ Section "Device"
+     Option "UseEDID" "false"
+     Option "UseDisplayDevice" "none"
+ EndSection
++
++Section "ServerFlags"
++ Option "IgnoreABI" "1" 
++EndSection

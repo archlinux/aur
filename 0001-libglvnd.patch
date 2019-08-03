@@ -1,0 +1,26 @@
+From c3ccbb7f6dd00038b1cb328898a29583e3a6c9be Mon Sep 17 00:00:00 2001
+From: SolarAquarion <shlomochoina@gmail.com>
+Date: Sun, 19 Feb 2017 16:53:09 -0500
+Subject: [PATCH] adding workaround for libglvnd
+
+---
+ src/optirun.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/optirun.c b/src/optirun.c
+index 65c83d4..ec72057 100644
+--- a/src/optirun.c
++++ b/src/optirun.c
+@@ -203,7 +203,11 @@ static int run_primus(int argc, char **argv) {
+ 
+   /* primus starts the X server when needed, fixes long-standing fork issue */
+   setenv("BUMBLEBEE_SOCKET", bb_config.socket_path, 1);
+-
++  
++/* primus needs this variable workaround for libglvnd enabled mesa */
++ 
++   setenv("__GLVND_DISALLOW_PATCHING", "1", 0);
++  
+   /* set LD_LIBRARY_PATH to primus_ld_path plus ld_path plus current LD_LIBRARY_PATH */
+   setenv("PRIMUS_DISPLAY", bb_config.x_display, 0);
+   char *ldpath_cur = getenv("LD_LIBRARY_PATH");
