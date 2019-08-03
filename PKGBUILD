@@ -2,13 +2,13 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=jd-gui
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A standalone graphical utility that displays Java source codes of .class files'
 arch=('any')
 url='http://jd.benow.ca/'
 license=('GPL3')
 depends=('java-runtime')
-makedepends=('java-environment=8')
+makedepends=('java-environment=8' 'gradle')
 provides=('jd-gui')
 conflicts=('jd-gui-bin')
 source=(
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  JAVA_HOME=/usr/lib/jvm/java-8-openjdk/ ./gradlew --no-daemon build --stacktrace
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk/ gradle --no-daemon build --stacktrace
 }
 
 package() {

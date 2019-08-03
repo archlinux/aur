@@ -1,11 +1,12 @@
 pkgbase = jd-gui
 	pkgdesc = A standalone graphical utility that displays Java source codes of .class files
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jd.benow.ca/
 	arch = any
 	license = GPL3
 	makedepends = java-environment=8
+	makedepends = gradle
 	depends = java-runtime
 	provides = jd-gui
 	conflicts = jd-gui-bin
