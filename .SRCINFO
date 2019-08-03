@@ -1,14 +1,14 @@
 pkgbase = baidunetdisk
 	pkgdesc = Baidunetdisk Client, converted from .rpm package
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = http://pan.baidu.com/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/baidunetdisk_linux_2.0.1.rpm
+	source = https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/2.0.2/baidunetdisk_linux_2.0.2.rpm
 	source = https://pan.baidu.com/disk/duty/index.html
-	md5sums = 134bea2832e8e74c1646eb09f375b008
+	md5sums = 4f6cd066474fbdd2fc65fcc94dab5342
 	md5sums = SKIP
 
 pkgname = baidunetdisk
