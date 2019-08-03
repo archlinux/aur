@@ -6,10 +6,11 @@
 # Contributor: NextHendrix <cjones12 at sheffield.ac.uk>
 # Contributor: Shun Terabayashi <shunonymous at gmail.com>
 # Contributor: Brad McCormack <bradmccormack100 at gmail.com>
+# Contributor: Doug Johnson <dougvj at dougvj.net>
 
 pkgbase=linux-git
 _srcname=linux
-pkgver=5.0rc7.r0.ga3b22b9f11d9
+pkgver=5.3rc2.r193.gdcb8cfbd8fe9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,7 +24,7 @@ source=('git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/l
         "${pkgbase}.preset")
 sha256sums=('SKIP'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
-            '465c4495bec3741ac3099ff5a1332eb842a3583369daaf89e520402259a5070b'
+            'd9930ba05c74dc88b938fbf91ea0ca8c9e9caf4314db607c18650e2f4b42eee4'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
 
 _kernelname=${pkgbase#linux}
@@ -258,8 +259,9 @@ _package-docs() {
   find "${pkgdir}" -type f -exec chmod 444 {} \;
   find "${pkgdir}" -type d -exec chmod 755 {} \;
 
-  # remove a file already in linux package
+  # remove files already in linux package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/Kconfig"
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
