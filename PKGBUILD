@@ -34,6 +34,8 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}"
 
+    # we need to manually set all SHIBOKEN_* and PYSIDE_* paths as autodetection is broken:
+    # https://github.com/FreeCAD/FreeCAD/pull/2020
     PYVER="$(/usr/bin/python3 -c 'import sys; print("{}.{}".format(sys.version_info.major,sys.version_info.minor))')"
 
     cmake . \
@@ -47,9 +49,9 @@ build() {
         -DOPENMPI_INCLUDE_DIRS=/usr/include \
         -DSHIBOKEN_INCLUDE_DIR=/usr/include/shiboken2 \
         -DSHIBOKEN_BINARY=/usr/bin/shiboken2 \
-        -DSHIBOKEN_LIBRARY="/usr/lib/libshiboken2.cpython-${PYVER//.}m-x86_64-linux-gnu.so" \
+        -DSHIBOKEN_LIBRARY="/usr/lib/libshiboken2.cpython-${PYVER//.}m-${CARCH}-linux-gnu.so" \
         -DPYSIDE_INCLUDE_DIR=/usr/include/PySide2 \
-        -DPYSIDE_LIBRARY="/usr/lib/libpyside2.cpython-${PYVER//.}m-x86_64-linux-gnu.so" \
+        -DPYSIDE_LIBRARY="/usr/lib/libpyside2.cpython-${PYVER//.}m-${CARCH}-linux-gnu.so" \
         -DPYSIDE_PYTHONPATH="/usr/lib/python${PYVER}/site-packages/PySide2" \
         -DPYSIDE_TYPESYSTEMS=/usr/share/PySide2/typesystems
 
