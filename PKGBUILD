@@ -1,7 +1,7 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 pkgname=barrier-git
-pkgver=2.1.2
+pkgver=2.3
 pkgrel=2
 pkgdesc="Open-source KVM software based on Synergy"
 url="https://github.com/debauchee/barrier"
