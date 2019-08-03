@@ -1,0 +1,19 @@
+pkgbase = bootsplash-systemd
+	pkgdesc = Systemd service files for kernel bootsplash
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = https://github.com/charveey/bootsplash-systemd
+	arch = any
+	license = GPL
+	depends = systemd
+	source = bootsplash-ask-password-console.path
+	source = bootsplash-hide-when-booted.service
+	source = bootsplash-ask-password-console.service
+	source = bootsplash-show-on-shutdown.service
+	md5sums = d2642756f4425b2f87457ae31c094d13
+	md5sums = c038935769f00458f8ebd828229fe3ba
+	md5sums = 0c877b79b06b5253a2f74a993a6dd576
+	md5sums = 9f7471869b28a82ed08c813daf7e15a8
+
+pkgname = bootsplash-systemd
+

@@ -1,0 +1,27 @@
+msg() {
+    ALL_OFF="\e[1;0m"
+    BOLD="\e[1;1m"
+    GREEN="${BOLD}\e[1;32m"
+	local mesg=$1; shift
+	printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
+}
+
+post_install() {
+	msg "If you have luks or any other encryption, please enable with:"
+	msg "   # systemctl enable bootsplash-ask-password-console.path"
+}
+
+post_upgrade() {
+	msg "Enable Bootsplash"
+	systemctl enable bootsplash-hide-when-booted
+	systemctl enable bootsplash-show-on-shutdown
+	post_install
+}
+
+post_remove() {
+	systemctl disable bootsplash-hide-when-booted
+	systemctl disable bootsplash-show-on-shutdown
+	if [ -e /etc/systemd/system/sysinit.target.wants/bootsplash-ask-password-console.path ]; then
+		systemctl disable bootsplash-ask-password-console.path
+	fi
+}
