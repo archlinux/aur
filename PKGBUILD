@@ -21,11 +21,6 @@ build() {
     dub build --parallel -b release -c GTK
 }
 
-check() {
-    cd "Drill-$pkgver"
-    dub test --parallel
-}
-
 package_drill-search-cli() {
 	pkgdesc="Search files without indexing, but clever crawling (CLI version)"
 
