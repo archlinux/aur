@@ -1,7 +1,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=zulip-desktop-git
-pkgver=3.1.0+beta+r34+g47b729c
+pkgver=3.1.0beta+r34+g47b729c
 pkgrel=1
 pkgdesc='Real-time team chat based on the email threading model (git)'
 arch=(i686 x86_64)
@@ -18,7 +18,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd ${pkgname/-git/}
-  git describe --tags | sed 's#v##;s#-#+#g;s#+\([0-9]\)#+r\1#'
+  git describe --tags | sed 's#v##;s#-#+#g;s#+\([a-zA-Z]\)#\1#;s#+\([0-9]\)#+r\1#'
 }
 
 prepare() {

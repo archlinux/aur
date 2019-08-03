@@ -1,6 +1,6 @@
 pkgbase = zulip-desktop-git
 	pkgdesc = Real-time team chat based on the email threading model (git)
-	pkgver = 3.1.0+beta+r34+g47b729c
+	pkgver = 3.1.0beta+r34+g47b729c
 	pkgrel = 1
 	url = https://zulipchat.com
 	arch = i686
