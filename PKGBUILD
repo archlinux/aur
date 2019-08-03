@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=18.4rc1pre15
 _major=18.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -81,17 +81,17 @@ source=(
   001-PR16305.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16305.patch
   002-PR16313.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16313.patch
   003-PR16323.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16323.patch
-  004-PR16340.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16340.patch
-  005-PR16334.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16334.patch
-  006-PR16364.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16364.patch
-  007-PR16337.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16337.patch
-  008-PR16342.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16342.patch
-#  009-PR16378.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16378.patch
-  010-PR16352.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16352.patch
-  011-PR16416.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16416.patch
-  012-PR16353.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16353.patch
+  004-PR16334.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16334.patch
+  005-PR16337.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16337.patch
+  006-PR16340.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16340.patch
+  007-PR16342.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16342.patch
+  008-PR16352.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16352.patch
+  009-PR16353.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16353.patch
+  010-PR16355.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16355.patch
+  011-PR16364.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16364.patch
+#  012-PR16378.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16378.patch
   013-PR16409.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16409.patch
-  014-PR16353.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16353.patch
+  014-PR16416.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16416.patch
   015-PR16422.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16422.patch
 )
 noextract=(
@@ -118,16 +118,16 @@ sha256sums=('4f265901c00f582beb8d6ad96c9c303e5ab82611e828c7121ae822b07c0915cc'
             'a162fee84b8c7a52d5120874fa81cbf0534e5f993a1bb33b842a071186191698'
             'db2a285d0ef635e9cad6c8cace1937e39f0393bc2efbc724203c3cf580471951'
             'f9b0c2368151a37265a380d5cd164b8b73b8d3b0dea6df25bcc745ef23bee594'
-            'bafe677ee2e8a8484d01bc41812fdd099b05185eb85a821760639503d34d679a'
             '6d9a3710c4e205ff5ecf63d71181e0acde207bb8b93f3677c5c3395cbfa5dc9a'
-            '9ac8a0404739172e77addf6f1d3c05bbb6e3938c9e1e662264e95c64942de278'
             'e75f924d3e9f2fc0935791e324a111e77f4243476084f7e08cfabb28af903520'
+            'bafe677ee2e8a8484d01bc41812fdd099b05185eb85a821760639503d34d679a'
             '841cbdce9f207ce5d7eb719f4a6eace49232787bc7e06d66b222dda128c8d346'
             '61b42371a22f4683d13358a7f6d59284ef8b6b82a1235e508c15fdc5a29423ba'
-            'fa44afc553164952c497c75a2ebca36358f73a22bde3c2bfcd243e45bfb6247c'
             'a5d8af6af6c33aa62c935d924f3df2b341cd34a9d008f3f50a1697533a628db8'
+            'd2ba346fbe3f2b428409588fe3461b58cc450dc56d5d5083703fa252155a1aef'
+            '9ac8a0404739172e77addf6f1d3c05bbb6e3938c9e1e662264e95c64942de278'
             'fa6e929a5f55f9dc1b8807c2c83ca387225f87bb014dfc15ca5ea977d7a41180'
-            'a5d8af6af6c33aa62c935d924f3df2b341cd34a9d008f3f50a1697533a628db8'
+            'fa44afc553164952c497c75a2ebca36358f73a22bde3c2bfcd243e45bfb6247c'
             'a44771f00abda9f219340b4afce974b3add7d53db3b73ff36a30cabb4bda546e')
 
 prepare() {
