@@ -1,12 +1,13 @@
 pkgbase = ms-office-online
 	pkgdesc = Microsoft Office Suite Online as a native application
 	pkgver = 19.06.2
-	pkgrel = 3
+	pkgrel = 2
 	url = https://www.office.com/
 	arch = any
 	license = GPL3
 	license = CC
 	depends = jade-application-kit
+	depends = pyside2
 	provides = ms-office-online
 	source = https://gitlab.manjaro.org/applications/ms-office-online-launcher/-/archive/19.06.2/ms-office-online-launcher-19.06.2.tar.gz
 	source = add-mslogin.patch::https://gitlab.manjaro.org/applications/ms-office-online-launcher/commit/afa0d9e64bef5711180fe5072e48536a05ed313d.patch
