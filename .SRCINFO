@@ -1,6 +1,6 @@
 pkgbase = wxsvg
 	pkgdesc = C++ library to create, manipulate and render SVG files
-	pkgver = 1.5.19
+	pkgver = 1.5.20
 	pkgrel = 1
 	url = http://wxsvg.sourceforge.net/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = wxsvg
 	depends = ffmpeg
 	depends = libexif
 	options = !libtool
-	source = https://downloads.sourceforge.net/project/wxsvg/wxsvg/1.5.19/wxsvg-1.5.19.tar.bz2
-	sha256sums = 3f78783fb1ea8242cc3f5f4d9b5ca8c79ea90f0837849f5a908478e13a560f9e
+	source = https://downloads.sourceforge.net/project/wxsvg/wxsvg/1.5.20/wxsvg-1.5.20.tar.bz2
+	sha256sums = 1536da8591f9354e903c56b6765df758d65ae6d83354cd2ce867d7428391459e
 
 pkgname = wxsvg
 
