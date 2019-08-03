@@ -2,7 +2,7 @@
 pkgbase=python-mwclient
 pkgname=('python-mwclient' 'python2-mwclient')
 pkgdesc="A Python framework to interface with the MediaWiki API"
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 arch=('any')
 url="https://github.com/mwclient/mwclient"
@@ -34,4 +34,4 @@ package_python2-mwclient() {
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
-sha512sums=('463dd9c42c311435219b241cbe5e08cfcba984374998ae73d1153c5d55e00300c49d4a430aa47c9fe091e3ce816bfd835f0cdafdf8217ecfff676e7c01917a9b')
+sha512sums=('9b189cc94824e5af3ee76cf2c074b1bca94986e012c25ad3ecafdb55de8fb7684b162ecef833590d88a71317bd4cce569dbd8c8e573b8c0e00165fefdf08328e')
