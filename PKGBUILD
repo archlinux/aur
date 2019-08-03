@@ -21,8 +21,8 @@ _ENABLE_KIM=0
 
 _pkgname=lammps
 pkgname=${_pkgname}-beta
-pkgver=20190719
-_pkgver="19Jul2019"
+pkgver=20190802
+_pkgver="2Aug2019"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
@@ -34,7 +34,7 @@ makedepends=('cmake')
 conflicts=('lammps')
 provides=('lammps')
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/patch_${_pkgver}.tar.gz")
-sha512sums=('b9177b833618ef36c90bcb70455924125370e72bcc591908ffcf62bc3526a51f15ae5f86760436c361a8972e632ce425e65a8b25798a2ad4fdb80a024de7b9a5')
+sha512sums=('59bf2ea6f0234a3eb7578429664e1257e03e6f4c52cb6631d560010114949d26e6be854addb5c8e5c293e51764c4ecb8143c3cb6cc005fb2b67f7969e4a418c1')
 
 # process the build settings from above
 if (( $_ENABLE_INTEL_COMPILER )); then

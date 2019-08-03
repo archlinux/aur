@@ -1,6 +1,6 @@
 pkgbase = lammps-beta
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator
-	pkgver = 20190719
+	pkgver = 20190802
 	pkgrel = 1
 	url = https://lammps.sandia.gov/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = lammps-beta
 	depends = openmpi
 	provides = lammps
 	conflicts = lammps
-	source = lammps-19Jul2019.tar.gz::https://github.com/lammps/lammps/archive/patch_19Jul2019.tar.gz
-	sha512sums = b9177b833618ef36c90bcb70455924125370e72bcc591908ffcf62bc3526a51f15ae5f86760436c361a8972e632ce425e65a8b25798a2ad4fdb80a024de7b9a5
+	source = lammps-2Aug2019.tar.gz::https://github.com/lammps/lammps/archive/patch_2Aug2019.tar.gz
+	sha512sums = 59bf2ea6f0234a3eb7578429664e1257e03e6f4c52cb6631d560010114949d26e6be854addb5c8e5c293e51764c4ecb8143c3cb6cc005fb2b67f7969e4a418c1
 
 pkgname = lammps-beta
 
