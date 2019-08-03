@@ -1,4 +1,4 @@
-# Maintainer: Issam Maghni <me dot concati at me>
+# Maintainer: Issam Maghni <me at concati dot me>
 
 pkgname=bearssl
 pkgver=0.6
