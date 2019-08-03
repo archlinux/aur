@@ -1,7 +1,7 @@
 # Maintainer: Francisco Demartino <demartino.francisco@gmail.com>
 pkgname=deflemask
-pkgver=0.12.0
-pkgrel=5
+pkgver=0.12.1
+pkgrel=1
 pkgdesc="A Multi-System music tracker (Genesis/MegaDrive, NES/Famicom (nsf), Commodore 64 (sid), and many others)"
 arch=('i686' 'x86_64')
 url='http://www.delek.com.ar/deflemask'
@@ -17,7 +17,7 @@ source=($_tarlink
         launcher.sh
         deflemask.desktop)
 
-md5sums=('1865dbc78ec06bb098c4d0676354d830'
+md5sums=('d6b52441a2abc5cd15d55b22d564c592'
          '81d19468cae85f038ad2999bebc2f026'
          '98d2e13db3f8902dd697b6fab5235b4e')
 
