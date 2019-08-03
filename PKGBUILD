@@ -4,7 +4,7 @@
 # Contributor: TorGuard Support <support@torguard.com>
 pkgname=torguard
 pkgver=3.96.1
-pkgrel=1
+pkgrel=2
 pkgdesc="TorGuard VPN Software
  Stay private online with TorGuard's anonymous VPN software and connect to 37+ countries worldwide."
 arch=('x86_64')
