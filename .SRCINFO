@@ -1,0 +1,16 @@
+pkgbase = timesyncrpi
+	pkgdesc = Sync date at boot for raspberry pi which don't have clock
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Chipsterjulien/timesyncrpi
+	install = timesyncrpi.install
+	arch = any
+	license = WTFPL
+	makedepends = go
+	options = !strip
+	backup = etc/timesyncrpi/timesyncrpi.toml
+	source = timesyncrpi-0.0.1.tar.gz
+	sha512sums = b461d2ede28c0f9c746c76b3a4e5c5413742c4c9f055f973b7619ccd2dde3ced6a7f24b3321d772a410c36d9d3ac1347210d9ebf6615ca69a467315fea3a89b0
+
+pkgname = timesyncrpi
+

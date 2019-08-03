@@ -1,0 +1,40 @@
+post_install() {
+    pkgname=timesyncrpi
+
+    # Fixing membership
+    chown root: /var/log/$pkgname
+    chown -R root: /etc/$pkgname
+
+    # Reload systemctl
+    systemctl daemon-reload
+
+    echo "Adding $pkgname in systemctl:"
+    echo "  systemctl enable ${pkgname}_boot.service"
+    echo "  systemctl enable ${pkgname}.timer"
+    echo "  systemctl start ${pkgname}.timer"
+
+    true
+}
+
+post_upgrade() {
+    pkgname=timesyncrpi
+    # Reload systemctl
+    systemctl daemon-reload
+
+    true
+}
+
+pre_remove() {
+    pkgname=timesyncrpi
+
+    # Remove symlink in systemd
+    systemctl disable ${pkgname}_boot.service
+    systemctl disable ${pkgname}.timer
+    # Stop server
+    systemctl stop ${pkgname}_boot.service
+    systemctl stop ${pkgname}.timer
+    # Reload systemctl
+    systemctl daemon-reload
+
+    true
+}
