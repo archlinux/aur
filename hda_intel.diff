@@ -1,0 +1,101 @@
+--- a/sound/pci/hda/hda_intel.c	
++++ a/sound/pci/hda/hda_intel.c	
+@@ -64,6 +64,7 @@ enum {
+ 	POS_FIX_VIACOMBO,
+ 	POS_FIX_COMBO,
+ 	POS_FIX_SKL,
++	POS_FIX_AMD,
+ };
+ 
+ /* Defines for ATI HD Audio support in SB450 south bridge */
+@@ -258,6 +259,7 @@ enum {
+ 	AZX_DRIVER_ATI,
+ 	AZX_DRIVER_ATIHDMI,
+ 	AZX_DRIVER_ATIHDMI_NS,
++	AZX_DRIVER_AMD,
+ 	AZX_DRIVER_VIA,
+ 	AZX_DRIVER_SIS,
+ 	AZX_DRIVER_ULI,
+@@ -371,6 +373,7 @@ static char *driver_short_names[] = {
+ 	[AZX_DRIVER_ATI] = "HDA ATI SB",
+ 	[AZX_DRIVER_ATIHDMI] = "HDA ATI HDMI",
+ 	[AZX_DRIVER_ATIHDMI_NS] = "HDA ATI HDMI",
++	[AZX_DRIVER_AMD] = "HD-Audio Generic",  /* kept old name for compatibility */
+ 	[AZX_DRIVER_VIA] = "HDA VIA VT82xx",
+ 	[AZX_DRIVER_SIS] = "HDA SIS966",
+ 	[AZX_DRIVER_ULI] = "HDA ULI M5461",
+@@ -841,6 +844,37 @@ static unsigned int azx_via_get_position(struct azx *chip,
+ 	return bound_pos + mod_dma_pos;
+ }
+ 
++/* get the current DMA position with correction on AMD chips */
++static unsigned int azx_get_pos_amd(struct azx *chip, struct azx_dev *azx_dev)
++{
++	unsigned int link_pos, fifo_size;
++
++	link_pos = snd_hdac_stream_get_pos_lpib(azx_stream(azx_dev));
++
++#if 0 /* FIXME: do we need a correction for playback, too? */
++	if (azx_dev->core.substream->stream == SNDRV_PCM_STREAM_PLAYBACK)
++		return link_pos;
++#endif
++
++#if 1 /* FIXME: is this reliably readable on AMD platform (and correct?) */
++	fifo_size = readw(azx_bus(chip)->remap_addr +
++			  VIA_IN_STREAM0_FIFO_SIZE_OFFSET);
++#else /* FIXME: ... or better to use fifo_size per stream? */
++	fifo_size = azx_dev->core.fifo_size;
++#endif
++
++	if (azx_dev->insufficient) {
++		if (link_pos <= fifo_size)
++			return 0;
++		azx_dev->insufficient = 0;
++	}
++
++	if (link_pos < fifo_size)
++		link_pos += azx_dev->core.bufsize;
++	link_pos -= fifo_size;
++	return link_pos;
++}
++
+ static unsigned int azx_skl_get_dpib_pos(struct azx *chip,
+ 					 struct azx_dev *azx_dev)
+ {
+@@ -1417,6 +1451,7 @@ static int check_position_fix(struct azx *chip, int fix)
+ 	case POS_FIX_VIACOMBO:
+ 	case POS_FIX_COMBO:
+ 	case POS_FIX_SKL:
++	case POS_FIX_AMD:
+ 		return fix;
+ 	}
+ 
+@@ -1432,6 +1467,9 @@ static int check_position_fix(struct azx *chip, int fix)
+ 	if (chip->driver_type == AZX_DRIVER_VIA) {
+ 		dev_dbg(chip->card->dev, "Using VIACOMBO position fix\n");
+ 		return POS_FIX_VIACOMBO;
++	} else if (chip->driver_type == AZX_DRIVER_AMD) {
++		dev_dbg(chip->card->dev, "Using AMD position fix\n");
++		return POS_FIX_AMD;
+ 	}
+ 	if (chip->driver_caps & AZX_DCAPS_POSFIX_LPIB) {
+ 		dev_dbg(chip->card->dev, "Using LPIB position fix\n");
+@@ -1453,6 +1491,7 @@ static void assign_position_fix(struct azx *chip, int fix)
+ 		[POS_FIX_VIACOMBO] = azx_via_get_position,
+ 		[POS_FIX_COMBO] = azx_get_pos_lpib,
+ 		[POS_FIX_SKL] = azx_get_pos_skl,
++		[POS_FIX_AMD] = azx_get_pos_amd,
+ 	};
+ 
+ 	chip->get_position[0] = chip->get_position[1] = callbacks[fix];
+@@ -2447,6 +2486,10 @@ static const struct pci_device_id azx_ids[] = {
+ 	/* AMD Hudson */
+ 	{ PCI_DEVICE(0x1022, 0x780d),
+ 	  .driver_data = AZX_DRIVER_GENERIC | AZX_DCAPS_PRESET_ATI_SB },
++	/* AMD X370 */
++	{ PCI_DEVICE(0x1022, 0x1457),
++	  .driver_data = AZX_DRIVER_AMD | AZX_DCAPS_PRESET_ATI_SB |
++			 AZX_DCAPS_PM_RUNTIME },
+ 	/* AMD Stoney */
+ 	{ PCI_DEVICE(0x1022, 0x157a),
+ 	  .driver_data = AZX_DRIVER_GENERIC | AZX_DCAPS_PRESET_ATI_SB |

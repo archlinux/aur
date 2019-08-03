@@ -1,0 +1,23 @@
+pkgbase = snd_hda_intel-alc1220-dkms
+	pkgdesc = The snd_hda_intel kernel driver, patched to remove crackling on the ALC1220 audio chipset
+	pkgver = 1
+	pkgrel = 1
+	url = https://bugzilla.kernel.org/show_bug.cgi?id=202587
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/patch-.{_sub}.xz
+	source = hda_intel.diff
+	source = hdac_stream.diff
+	source = dkms.conf
+	source = Makefile
+	md5sums = ddf994de00d7b18395886dd9b30b9262
+	md5sums = 0bfed20acab24d45232983b54339a3c9
+	md5sums = 867d3d27fb1716290c76d90ffb739343
+	md5sums = b5f5cf9b9a7e0c5852d290992eb73b68
+	md5sums = 20495ab7a2c425ba786c44d53d458909
+	md5sums = 4cf63656de83b4321d6261289735d1e1
+
+pkgname = snd_hda_intel-alc1220-dkms
+
