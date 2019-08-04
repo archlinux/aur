@@ -34,7 +34,7 @@ source=(#"https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-po
         )
 
 md5sums=('67567ae0fd2ab5b18fea3442362ac7f4'
-         '7c1128f94fcd9f4e29225a12eac83704')
+         '732732f3c5b3160a65862931fc409ebb')
 
 optdepends=('libzen: Required by libmediainfo'
 	    'libmediainfo: Read media info such as video codec, resolution or duration'
