@@ -1,7 +1,7 @@
 #Maintainer: M. Mastroeni <the_maxtro@hotmail.it>
 pkgname=gimp-gap
 pkgver=2.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Gimp Animation Package, gimp's plugin for animation"
 url="https://www.gimp.org/tutorials/Using_GAP/"
 arch=('x86_64' 'i686')
@@ -23,4 +23,5 @@ package() {
  cmake
  make
  make DESTDIR="${pkgdir}" install
+ rmdir "${pkgdir}/usr/local/lib/gimp-gap-2.7"
 }
