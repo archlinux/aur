@@ -14,13 +14,14 @@ _enginename=acestreamengine
 
 pkgname=acestream-engine-stable
 pkgver=3.1.49
-pkgrel=2
+pkgrel=3
 pkgdesc="P2P utility for multimedia live streaming and file transfer (stable version)"
 arch=("x86_64")
 url="http://acestream.org/"
 license=("custom")
 depends=(
     "net-tools"
+    "pygtk"
     "python2-apsw"
     "python2-libappindicator"
     "python2-setuptools")
@@ -32,14 +33,12 @@ source=(
     "$_pkgbasename.service"
     "$pkgname-$pkgver.tar.gz::http://acestream.org/downloads/linux/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64.tar.gz"
     "$_pkgbasename.desktop"
-    "LICENSE"
-)
+    "LICENSE")
 sha256sums=(
     "9446e4c36c2e92b4253a1c3fea5fa30d366d46295dcd1f1cac4ddfe8f002fcbe"
     "d2ed7bdc38f6a47c05da730f7f6f600d48385a7455d922a2688f7112202ee19e"
     "fad731aec3371b3e76065cf1668be6b61d33547d321c8cfb2b6018faa3d5b7b0"
-    "SKIP"
-)
+    "SKIP")
 
 package() {
     sed -i "/ROOT=/c\ROOT=\/usr/lib\/${_pkgbasename}" "start-engine"
