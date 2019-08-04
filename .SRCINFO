@@ -1,9 +1,8 @@
 pkgbase = otf-bitter
 	pkgdesc = A font specially designed for comfortably reading on any computer or device.
-	pkgver = 1
-	pkgrel = 2
+	pkgver = 1.300
+	pkgrel = 1
 	url = http://www.huertatipografica.com/fonts/bitter-ht
-	install = otf-bitter.install
 	arch = any
 	license = custom:OFL
 	makedepends = unzip
@@ -11,7 +10,7 @@ pkgbase = otf-bitter
 	depends = xorg-font-utils
 	conflicts = otf-google-fonts-hg
 	source = bitter.zip::http://www.fontsquirrel.com/fonts/download/bitter
-	md5sums = SKIP
+	sha256sums = c41d2af90c73dd8dd9f691feba513fea943caffef8f76aa4755e0ae1e2f48de9
 
 pkgname = otf-bitter
 
