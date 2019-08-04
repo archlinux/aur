@@ -1,37 +1,37 @@
 pkgbase = kata-containers
 	pkgdesc = Lightweight virtual machines for containers
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache
-	noextract = kata-runtime-1.7.1-7.1.x86_64.rpm
-	noextract = kata-proxy-bin-1.7.1-5.1.x86_64.rpm
-	noextract = kata-shim-bin-1.7.1-5.1.x86_64.rpm
-	noextract = kata-ksm-throttler-1.7.1-5.1.x86_64.rpm
-	noextract = kata-containers-image-1.7.1-5.3.x86_64.rpm
-	noextract = kata-linux-container-4.19.28.41-5.1.x86_64.rpm
-	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.7/Fedora_30/x86_64/kata-runtime-1.7.1-7.1.x86_64.rpm
-	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.7/Fedora_30/x86_64/kata-proxy-bin-1.7.1-5.1.x86_64.rpm
-	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.7/Fedora_30/x86_64/kata-shim-bin-1.7.1-5.1.x86_64.rpm
-	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.7/Fedora_30/x86_64/kata-ksm-throttler-1.7.1-5.1.x86_64.rpm
-	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.7/Fedora_30/x86_64/kata-containers-image-1.7.1-5.3.x86_64.rpm
-	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.7/Fedora_30/x86_64/kata-linux-container-4.19.28.41-5.1.x86_64.rpm
-	sha256sums = 62291d6c763c2c50ddb56abdc8c8c89e6fcbafab99e6f800cbbb113e5cd30cd1
-	sha256sums = 67c00caef7d3bf42e47f25cee193222f0f029b81d09db42e1e584133b436bb97
-	sha256sums = 18e075cf1bcd42097f66277418c193f89263b4f5ed74999a793e86223a01b8c4
-	sha256sums = 375ab341014663e6a31637c9b928e723c078f8cb1f4b5c888ace5972141aae60
-	sha256sums = 93a3751cf6dd528a5d0c0c5b3edca3403e507b03362900cd0ed0310ceffdd93d
-	sha256sums = 7247de943248dedc6344944f9c42d98dab00bb6d63cc209246e6090fd5382ce9
+	noextract = kata-runtime-1.8.0-3.1.x86_64.rpm
+	noextract = kata-proxy-bin-1.8.0-3.1.x86_64.rpm
+	noextract = kata-shim-bin-1.8.0-3.1.x86_64.rpm
+	noextract = kata-ksm-throttler-1.8.0-3.1.x86_64.rpm
+	noextract = kata-containers-image-1.8.0-3.1.x86_64.rpm
+	noextract = kata-linux-container-4.19.52.45-3.1.x86_64.rpm
+	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.8/Fedora_30/x86_64/kata-runtime-1.8.0-3.1.x86_64.rpm
+	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.8/Fedora_30/x86_64/kata-proxy-bin-1.8.0-3.1.x86_64.rpm
+	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.8/Fedora_30/x86_64/kata-shim-bin-1.8.0-3.1.x86_64.rpm
+	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.8/Fedora_30/x86_64/kata-ksm-throttler-1.8.0-3.1.x86_64.rpm
+	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.8/Fedora_30/x86_64/kata-containers-image-1.8.0-3.1.x86_64.rpm
+	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.8/Fedora_30/x86_64/kata-linux-container-4.19.52.45-3.1.x86_64.rpm
+	sha256sums = fe282716c769e0875698af7f75a0fbfc473bf210acded431232dcda4d79e98a0
+	sha256sums = 75ae12ade1a41a1339d2c53a162bef0fba012fb329d3a1ed7028d6acac0e0163
+	sha256sums = 492e08417c5518abf4e8df4831e392f5ac81284077e67aa479a87741a9f5ef00
+	sha256sums = ec0057ce60c882bb078e7e661cf3852ddfafdc2d554028e744dd5b8883c43c53
+	sha256sums = cee937572423401dae7441efd46019fd218e608dd60c7aa5dfdf15bc99b4362c
+	sha256sums = 3200c91d1ae817c23ddc8d1b9123791550a924f80e87ab2423a161572cb0c250
 
 pkgname = kata-runtime
 	install = kata-runtime.install
 	depends = qemu
-	depends = kata-proxy=1.7.1
-	depends = kata-shim=1.7.1
-	depends = kata-ksm-throttler=1.7.1
-	depends = kata-containers-image=1.7.1
-	depends = kata-linux-container=1.7.1
+	depends = kata-proxy=1.8.0
+	depends = kata-shim=1.8.0
+	depends = kata-ksm-throttler=1.8.0
+	depends = kata-containers-image=1.8.0
+	depends = kata-linux-container=1.8.0
 
 pkgname = kata-proxy
 
