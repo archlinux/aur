@@ -12,7 +12,7 @@ pkgbase = cppsplash-git
 	provides = chwp
 	conflicts = chwp
 	source = https://gitlab.com/rouvenhimmelstein/cppsplash/-/archive/0.0.1/cppsplash-0.0.1.tar.gz
-	sha256sums = d0d3beaab07019d9d356e38689682bc7be4f5fb96dda6bc9847c9557fada950f
+	sha256sums = SKIP
 
 pkgname = cppsplash-git
 

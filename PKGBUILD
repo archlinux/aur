@@ -14,7 +14,7 @@ makedepends=('git' 'cmake' 'qt5-base')
 provides=('chwp')
 conflicts=('chwp')
 source=("https://gitlab.com/rouvenhimmelstein/cppsplash/-/archive/${pkgver}/${_gitname}-${pkgver}.tar.gz")
-sha256sums=('d0d3beaab07019d9d356e38689682bc7be4f5fb96dda6bc9847c9557fada950f')
+sha256sums=('SKIP')
 
 prepare() {
     mkdir -p $srcdir/$_gitname-${pkgver}/cmake-build-release
