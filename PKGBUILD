@@ -2,7 +2,7 @@
 
 pkgname=lc0
 pkgver=0.21.4
-pkgrel=1
+pkgrel=2
 _run="run1"
 _nnid=42850
 pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
@@ -12,19 +12,23 @@ arch=('x86_64')
 url="https://lczero.org/"
 license=('GPL3')
 
-depends=('protobuf' 'ocl-icd')
+depends=('protobuf' 'ocl-icd' 'opencl-driver')
 makedepends=('meson' 'zlib')
 checkdepends=('gtest')
 optdepends=("nvidia: Necessary for running on nvidia GPUs"
-	    "cudnn:  xNeural network library for use with nvidia GPUs"
+	    "cudnn:  Neural network library for use with nvidia GPUs"
+	    "openblas:    Library for running on CPUs"
 	    "intel-compute-runtime: Intel OpenCL runtime for \
 	    			    running on intel CPUs"
-	    "amdapp-sdk:  AMD OpenCL runtime for running on amd CPUs"
-	    "openblas:    Library for running on CPUs"
-	    "opencl-mesa: Free runtime for use with AMDGPU driver stack"
+	    "amdapp-sdk:  AMD OpenCL runtime for running on AMD CPUs"
+	    "xf86-video-amdgpu: AMDGPU driver stack"
+	    "xf86-video-ati: ATI driver stack"
+	    "opencl-mesa: Open AMD runtime for use with AMDGPU \
+	    		  and ATI driver stacks"
 	    "opencl-amd:  AMD proprietary userspace driver \
 	    		  for AMDGPU driver stack"
 	    "rocm-opencl-runtime:    AMD runtime for ROCm GPU driver stack"
+	    "amdgpu-pro-libgl: AMDGPU PRO driver stack"
 	    "opencl-amdgpu-pro-orca: AMD proprietary runtime for legacy \
 	    			     GPUs on the AMDGPU PRO driver stack"
 	    "opencl-amdgpu-pro-pal:  AMD proprietary runtime for the \
