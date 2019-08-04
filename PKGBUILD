@@ -4,8 +4,7 @@ pkgbase=linux-slim
 _srcname=linux
 gitver=v5.2.6
 pkgver=5.2.v.6
-pkgrel=2
-#was 3
+pkgrel=3
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
