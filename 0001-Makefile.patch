@@ -1,13 +1,13 @@
 diff --git a/Makefile.linux b/Makefile.linux
-index 5010833..c7d0503 100644
+index a5a6f74..86e89e5 100644
 --- a/Makefile.linux
 +++ b/Makefile.linux
-@@ -680,7 +680,7 @@ install : $(APPS) direwolf.conf tocalls.txt symbols-new.txt symbolsX.txt dw-icon
- # Set group and mode of HID devices corresponding to C-Media USB Audio adapters.
- # This will allow us to use the CM108/CM119 GPIO pins for PTT.
+@@ -571,7 +571,7 @@ install : $(APPS) direwolf.conf tocalls.txt symbols-new.txt symbolsX.txt dw-icon
+ # I don't think this is applicable to BSD.
  #
--	$(INSTALL) -D --mode=644 99-direwolf-cmedia.rules /etc/udev/rules.d/99-direwolf-cmedia.rules
-+	$(INSTALL) -D --mode=644 99-direwolf-cmedia.rules $(ROOTDIR)/etc/udev/rules.d/99-direwolf-cmedia.rules
+ ifeq ($(OS),Linux)
+-	$(INSTALL_DATA) 99-direwolf-cmedia.rules /etc/udev/rules.d/99-direwolf-cmedia.rules
++	$(INSTALL_DATA) 99-direwolf-cmedia.rules $(ROOTDIR)/etc/udev/rules.d/99-direwolf-cmedia.rules
+ endif
  #
  	@echo " "
- 	@echo "If this is your first install, not an upgrade, type this to put a copy"

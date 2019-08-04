@@ -1,7 +1,7 @@
 # Maintainer: Alexander Fasching <fasching.a91@gmail.com>
 pkgname=direwolf-git
 _pkgname=direwolf
-pkgver=1.5.beta4.r39.gbfa7f4a
+pkgver=1.5.beta4.r63.ge219426
 pkgrel=1
 pkgdesc="Software modem/TNC and APRS encoder/decoder"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,11 +16,11 @@ source=('git+https://github.com/wb2osz/direwolf.git#branch=dev'
         'direwolf.service'
         'direwolf-kiss.service')
 sha1sums=('SKIP'
-          '8fd025e2df746a4c776c482f04ce93791aad01f6'
+          '749c44b5060e911ea0b647ee4dc4af1ed0544fc8'
           '66366c7a4e8d3768013f9036f2681a86d4b8ad88'
           'eea3a3fb334645cd8a1e2604dc6c6b024148722a')
 sha256sums=('SKIP'
-            'd3f93a6cabe348d410c630f612dd49373f9932f747588dfd915283f3167e2a48'
+            'ad4eae3a6d0c8d6703cace8b956fc3e338ef7b6e951fd116dc75a81786b88fc2'
             'a1efe2bb96470bc52faa747708b195a685dc454f3d9c91f6bf4d39ab94d3608a'
             '2a2e4acc769a20afebdfdcd21640fd17b0c4217ceb7ecb3378f9ee5c45fadc68')
 
