@@ -2,7 +2,7 @@
 
 pkgname=ncnn-git
 _pkgname=ncnn
-pkgver=20190611.r60.gad9e0a9
+pkgver=20190611.r65.gf5eee84
 pkgrel=1
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
@@ -16,26 +16,27 @@ source=("git://github.com/Tencent/ncnn.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/ncnn"
+    cd "${srcdir}/ncnn"
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
-#prepare() {
-#}
-
 build() {
-	cd "${srcdir}/ncnn"
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/host.gcc.toolchain.cmake -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr -DNCNN_VULKAN=ON ..
-	make
+    cd "${srcdir}/ncnn"
+    mkdir -p build
+    cd build
+    cmake \
+        -DCMAKE_TOOLCHAIN_FILE=../toolchains/host.gcc.toolchain.cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DNCNN_VULKAN=ON \
+        ..
+    make
 }
 
 package() {
-	cd "${srcdir}/ncnn/build"
-	make install
-	rm -fr "${pkgdir}/usr/lib/cmake"
+    cd "${srcdir}/ncnn/build"
+    make DESTDIR="${pkgdir}" install
+    install -Dm644 "${srcdir}/ncnn/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
