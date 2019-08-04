@@ -1,0 +1,9 @@
+pkgbase = intel-ucode-clear
+	pkgver = 30550
+	pkgrel = 0
+	arch = x86_64
+
+pkgname = intel-ucode-clear
+	pkgdesc = intel cpu microcode and i915 firmware used by clear linux
+	provides = intel-ucode
+
