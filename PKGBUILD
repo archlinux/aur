@@ -2,7 +2,7 @@
 # Contributor: Ryan Young <ry an. ry. young@gmail.com> (omit spaces)
 
 pkgname=temp-throttle-git
-pkgver=r53.311790a
+pkgver=r94.e89c5fd
 pkgrel=1
 pkgdesc="A shell script for throttling system CPU frequency based on a desired maximum temperature."
 arch=('any')
@@ -11,6 +11,7 @@ license=('GPL2')
 depends=('bash')
 makedepends=('git')
 conflicts=("temp-throttle")
+backup=("etc/temp-throttle.conf")
 source=("git://github.com/Sepero/${pkgname%-git}.git#branch=testing")
 sha256sums=('SKIP')
 
@@ -33,6 +34,6 @@ package() {
   install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "usr/share/doc/${pkgname%-git}/credits.txt"
   # Install systemd service
   install -m 755 -d "${pkgdir}/usr/lib/systemd/system"
-  install -m 644 -t "${pkgdir}/usr/lib/systemd/system" "usr/lib/systemd/system/${pkgname%-git}@.service"
+  install -m 644 -t "${pkgdir}/usr/lib/systemd/system" "usr/lib/systemd/system/${pkgname%-git}.service"
 }
 
