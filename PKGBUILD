@@ -7,7 +7,6 @@ pkgdesc='Fork of http://thre.at/kalibrate/ for use with the bladeRF SDR'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/Nuand/kalibrate-bladeRF'
-provides=('kalibrate-rtl')
 depends=("bladerf" "fftw")
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/Nuand/kalibrate-bladeRF")

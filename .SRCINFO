@@ -1,7 +1,7 @@
 pkgbase = kalibrate-bladerf-git
 	pkgdesc = Fork of http://thre.at/kalibrate/ for use with the bladeRF SDR
 	pkgver = 6ac8204
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nuand/kalibrate-bladeRF
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = kalibrate-bladerf-git
 	makedepends = git
 	depends = bladerf
 	depends = fftw
-	provides = kalibrate-rtl
 	source = kalibrate-bladerf-git::git+https://github.com/Nuand/kalibrate-bladeRF
 	md5sums = SKIP
 
