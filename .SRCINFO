@@ -1,0 +1,30 @@
+pkgbase = haskell-scotty
+	pkgdesc = Haskell web framework inspired by Ruby's Sinatra, using WAI and Warp
+	pkgver = 0.11.4
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/scotty
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-blaze-builder
+	depends = haskell-transformers-base
+	depends = haskell-wai
+	depends = haskell-wai-extra
+	depends = haskell-transformers-compat
+	depends = haskell-monad-control
+	depends = haskell-aeson
+	depends = haskell-network
+	depends = haskell-http-types
+	depends = haskell-case-insensitive
+	depends = haskell-warp
+	depends = haskell-regex-compat
+	depends = haskell-data-default-class
+	source = http://hackage.haskell.org/packages/archive/scotty/0.11.4/scotty-0.11.4.tar.gz
+	source = 0001-Wrap-3.3-delete-fail-and-nats.patch
+	sha256sums = f1b89ca31e7bb987746ec29a3de573950d9cd67e7e2dee63f141291b5ffde08f
+	sha256sums = 2c4addfcf3e0c63585d799628a673ac6df00f205038762c1bff22719dfe3f3e1
+
+pkgname = haskell-scotty
+
