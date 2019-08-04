@@ -4,7 +4,7 @@ pkgbase=linux-amd-raven
 _srcname=linux
 gitver=v5.1.21
 pkgver=5.1.v.21
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -61,6 +61,9 @@ prepare() {
 build() {
   cd "${_srcname}"
 
+  #Force zenv1 architecture optimisation.
+  export CFLAGS="-march=znver1 -mtune=znver1 -O2 -pipe -fstack-protector-strong"
+  export CXXFLAGS="${CFLAGS}"
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
