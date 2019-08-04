@@ -14,8 +14,8 @@ conflicts=('i3-wm')
 groups=('i3')
 depends=('xcb-util-keysyms' 'xcb-util-wm' 'libev' 'yajl'
          'startup-notification' 'pango' 'perl' 'xcb-util-cursor' 'xcb-util-xrm'
-         'libxkbcommon-x11' 'gzip' 'git')
-makedepends=('bison' 'flex' 'asciidoc' 'xmlto')
+         'libxkbcommon-x11')
+makedepends=('bison' 'flex' 'asciidoc' 'xmlto' 'git' 'tar' 'gzip')
 optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
             'dmenu: As menu.'
             'i3lock: For locking your screen.'
@@ -28,10 +28,12 @@ options=('docs' '!strip')
 prepare(){
   git clone https://github.com/resloved/i3
   cd i3
-  git archive shape | gzip > ../${pkgname}-${pkgver}.tar.gz
+  git archive shape | gzip > ../${pkgname}-${pkgver}-${pkgrel}.tar.gz
+  cd ..
   rm -rf i3
+  tar xvzf ${pkgname}-${pkgver}-${pkgrel}.tar.gz --one-top-level
   mkdir build
-  cd "${_pkgsourcename}-${pkgver}"
+  cd "${_pkgname}-${pkgver}-${pkgrel}"
 
   autoreconf -fvi
 }
