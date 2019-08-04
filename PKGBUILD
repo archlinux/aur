@@ -1,38 +1,35 @@
+# Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: Valère Monseur <valere dot monseur at ymail dot com>
 # Contributor: Johan "Slikkie" van der Slikke <johan@slikkie.nl>
-# Maintainer: Valère Monseur <valere dot monseur at ymail dot com>
 
 pkgname=gexif
 pkgver=0.5
-pkgrel=3
-pkgdesc='A GTK+ based GUI interface to libexif-gtk'
+pkgrel=4
+pkgdesc='View and edit the EXIF tags contained in JPG and TIFF files'
 arch=('i686' 'x86_64')
-url='http://libexif.sourceforge.net/'
+url='https://libexif.github.io'
 license=('GPL')
 depends=('libexif-gtk')
-makedepends=('libexif-gtk')
-source=("http://downloads.sourceforge.net/project/libexif/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "gtk2-fix.patch"
+makedepends=('git')
+source=("git+https://github.com/libexif/$pkgname.git"
         "gexif.desktop")
-md5sums=("ad136a03e3e1a8d6d98211d94014df0c"
-         "164f4d3d564c22b4e7ab401940236ca9"
-         "6ce94402bf1799d3982fb879ae6bd3a9")
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  patch -p1 < "${srcdir}"/gtk2-fix.patch
-}
+md5sums=('SKIP'
+         'c717c9f555d17eabb0dd63d35f0bb5d9')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
 
+  mv po/Makevars.template savefile
+  autoreconf -if
+  mv savefile po/Makevars.template
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
 
   make DESTDIR="${pkgdir}" install
-  install -D -m644 "${srcdir}"/gexif.desktop "${pkgdir}"/usr/share/applications/gexif.desktop
+  install -D -m644 "${srcdir}"/$pkgname.desktop "${pkgdir}"/usr/share/applications/$pkgname.desktop
+  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
