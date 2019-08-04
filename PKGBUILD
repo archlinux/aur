@@ -1,8 +1,8 @@
 # Contributor: Jaroslaw Swierczynski <swiergot@juvepoland.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=ekg
-pkgver=1.8rc2
-pkgrel=2
+pkgver=20190803
+pkgrel=1
 pkgdesc="A Gadu-Gadu compatible client."
 arch=('i686' 'x86_64')
 url="http://ekg.chmurka.net/"
@@ -21,8 +21,8 @@ install=
 changelog=
 source=(http://ekg.chmurka.net/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('f697c711da91ddf57c882114539e92fe')
-sha1sums=('e6efb2eae35170ac7d5e1c7419b646457f128dfd')
+md5sums=('5aeb3f4dd62161ce9c76d5a8f5458a31')
+sha1sums=('4e5c60ea92028db7adedf2b4d2bc9830801201e7')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -44,4 +44,3 @@ package() {
   make DESTDIR="$pkgdir/" install
 }
 
-# vim:set ts=2 sw=2 et:
