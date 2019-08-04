@@ -1,7 +1,7 @@
 pkgbase = i3-gaps-rounded
 	pkgdesc = A fork of i3wm tiling window manager with more features, including gaps and rounded corners
 	pkgver = latest
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/resloved/i3
 	arch = i686
 	arch = x86_64
