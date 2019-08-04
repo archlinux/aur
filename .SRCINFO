@@ -1,0 +1,19 @@
+pkgbase = ninjam-client
+	pkgdesc = A program to allow people to make real music together via the Internet; ncurses client side utility
+	pkgver = r3657.658f12f1
+	pkgrel = 1
+	url = http://www.ninjam.com/
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gcc
+	depends = ncurses
+	depends = alsa-lib
+	depends = libvorbis
+	source = git+https://www-dev.cockos.com/ninjam/ninjam.git
+	sha512sums = SKIP
+
+pkgname = ninjam-client
+
