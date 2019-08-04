@@ -1,6 +1,6 @@
 pkgbase = thermald
 	pkgdesc = The Linux Thermal Daemon program from 01.org
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 2
 	url = https://01.org/linux-thermal-daemon
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = thermald
 	makedepends = python
 	depends = dbus-glib
 	depends = libxml2
-	source = thermald-1.8.tar.gz::https://github.com/intel/thermal_daemon/archive/v1.8.tar.gz
+	source = thermald-1.9.tar.gz::https://github.com/intel/thermal_daemon/archive/v1.9.tar.gz
 	source = modules-load-thermald.conf
-	sha256sums = 662456eff5b7ee5a42e54b8a667d002d3a4dec5cacbddc5e1ab5ec94dab218c6
+	sha256sums = d8f40bce80fb8303a0c103d2531d0e4cc1caad0a8d027cd26a1b5b10cdaae4e3
 	sha256sums = 0155e1eb459306d251a5a049ffc6c11e144fa8caa75901ac5fa20bd52e05d515
 
 pkgname = thermald

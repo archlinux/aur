@@ -3,7 +3,7 @@
 
 pkgname=thermald
 _pkgname=thermal_daemon
-pkgver=1.8
+pkgver=1.9
 pkgrel=2
 pkgdesc="The Linux Thermal Daemon program from 01.org"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('systemd' 'python')
 depends=('dbus-glib' 'libxml2')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/intel/${_pkgname}/archive/v${pkgver}.tar.gz"
         'modules-load-thermald.conf')
-sha256sums=('662456eff5b7ee5a42e54b8a667d002d3a4dec5cacbddc5e1ab5ec94dab218c6'
+sha256sums=('d8f40bce80fb8303a0c103d2531d0e4cc1caad0a8d027cd26a1b5b10cdaae4e3'
             '0155e1eb459306d251a5a049ffc6c11e144fa8caa75901ac5fa20bd52e05d515')
 
 build() {
