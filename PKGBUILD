@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 _name=itk
 pkgname=python-itk
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Open-source toolkit for multidimensional image analysis"
 arch=('x86_64')
@@ -15,8 +15,8 @@ makedepends=(
 	'python-scikit-build'
 	'python-setuptools'
 )
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.zip")
-sha256sums=('524af5ee66709b59c86cbf0d81df1524ca3b77ffc7d328ceecb97f81938fd9d1')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('e1899170ba5d926033306ab7659169f882dd807c65a85dc0574fa775a3d643e9')
 
 
 package() {

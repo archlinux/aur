@@ -1,6 +1,6 @@
 pkgbase = python-itk
 	pkgdesc = Open-source toolkit for multidimensional image analysis
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://itk.org/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = python-itk
 	makedepends = python-scikit-build
 	makedepends = python-setuptools
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/i/itk/itk-5.0.0.zip
-	sha256sums = 524af5ee66709b59c86cbf0d81df1524ca3b77ffc7d328ceecb97f81938fd9d1
+	source = https://files.pythonhosted.org/packages/source/i/itk/itk-5.0.1.tar.gz
+	sha256sums = e1899170ba5d926033306ab7659169f882dd807c65a85dc0574fa775a3d643e9
 
 pkgname = python-itk
 
