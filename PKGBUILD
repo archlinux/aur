@@ -42,10 +42,7 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         fes02.patch
         sagemath-cremona.patch
         sagemath-singular-4.1.2.patch
-        sagemath-ecl-sigfpe.patch
-        sagemath-linbox-1.6.patch
-        meataxe-tables.patch
-        no-sage-env.patch)
+        sagemath-ecl-sigfpe.patch)
 sha256sums=('SKIP'
             '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
             '1a82372a96ffd5e6d475b0e620935967ce5eb9b4484607d39da90824a77b07c4'
@@ -86,12 +83,6 @@ prepare(){
   patch -p1 -i ../sagemath-singular-4.1.2.patch
 # Fix SIGFPE crashes with ecl 16.1.3 https://trac.sagemath.org/ticket/22191
   patch -p1 -i ../sagemath-ecl-sigfpe.patch
-# fix build with linbox 1.6 https://trac.sagemath.org/ticket/26932
-  patch -p1 -i ../sagemath-linbox-1.6.patch
-# use meataxe package's multiplication tables instead of generating them at runtime https://trac.sagemath.org/ticket/28188
-  patch -p1 -i ../meataxe-tables.patch
-# make sage work without sage-env https://trac.sagemath.org/ticket/28225
-  patch -p1 -i ../no-sage-env.patch
 
 # use python2
   sed -e 's|sage-python23|python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
