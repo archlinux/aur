@@ -1,6 +1,6 @@
 pkgbase = symfony-console-autocomplete
 	pkgdesc = Bash autocompletion for Symfony Console based scripts.
-	pkgver = 1.3.4
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://github.com/bamarni/symfony-console-autocomplete
 	install = warning.install
@@ -10,8 +10,8 @@ pkgbase = symfony-console-autocomplete
 	depends = php
 	depends = bash
 	depends = bash-completion
-	source = https://github.com/bamarni/symfony-console-autocomplete/archive/v1.3.4.tar.gz
-	sha256sums = 217387d3581660932f7367dd4dce6fcdf2280f1fddd4b953ac1e433100c8b9ff
+	source = https://github.com/bamarni/symfony-console-autocomplete/archive/v1.3.5.tar.gz
+	sha256sums = 82907e3a94aaae7284f44c0554b9a85320f6738233e2b3609a11c3a62e53a106
 
 pkgname = symfony-console-autocomplete
 

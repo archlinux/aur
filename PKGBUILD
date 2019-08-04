@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Gąsior <tomaszgasior.pl>
 
 pkgname=symfony-console-autocomplete
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='Bash autocompletion for Symfony Console based scripts.'
 arch=('any')
@@ -11,7 +11,7 @@ install=warning.install
 depends=('php' 'bash' 'bash-completion')
 makedepends=('composer')
 source=("https://github.com/bamarni/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("217387d3581660932f7367dd4dce6fcdf2280f1fddd4b953ac1e433100c8b9ff")
+sha256sums=("82907e3a94aaae7284f44c0554b9a85320f6738233e2b3609a11c3a62e53a106")
 
 prepare()
 {
