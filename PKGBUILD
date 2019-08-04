@@ -3,7 +3,7 @@
 # Contributor: Heeru Kiyura <M8R-p9i5nh@mailinator.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=conkeror-git
-pkgver=1.0.3.r20.g02cb4db
+pkgver=1.0.4.r6.g0864afd
 pkgrel=1
 pkgdesc='A keyboard-oriented, highly-customizable, highly-extensible web browser based on Mozilla XULRunner.'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long | sed 's:-\(.*\)-:.r\1.:'
+  git describe --long | sed 's:-\(.*\)-:.r\1.:;s!debian/!!g;s!.-\(.\)!\1!'
 }
 
 build() {
