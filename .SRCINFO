@@ -1,5 +1,5 @@
 pkgbase = newlisp
-	pkgdesc = A LISP like, general purpose scripting language. Ongoing development version.
+	pkgdesc = A LISP like, general purpose scripting language.
 	pkgver = 10.7.5
 	pkgrel = 1
 	url = http://www.newlisp.org

@@ -4,7 +4,7 @@
 pkgname=newlisp
 pkgver=10.7.5
 pkgrel=1
-pkgdesc="A LISP like, general purpose scripting language. Ongoing development version."
+pkgdesc="A LISP like, general purpose scripting language."
 url="http://www.newlisp.org"
 license=('GPL3')
 arch=('x86_64' 'i686')
