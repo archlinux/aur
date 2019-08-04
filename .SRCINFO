@@ -1,0 +1,15 @@
+pkgbase = haskell-broadcast-chan
+	pkgdesc = Closable, fair, single-wakeup channel type that avoids 0 reader space leaks
+	pkgver = 0.2.0.2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/broadcast-chan
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-unliftio-core
+	source = http://hackage.haskell.org/packages/archive/broadcast-chan/0.2.0.2/broadcast-chan-0.2.0.2.tar.gz
+	sha256sums = 5b82b575997e733f825b7ef642cb102c55ae00be3480ef22479a8d98fc195d89
+
+pkgname = haskell-broadcast-chan
+
