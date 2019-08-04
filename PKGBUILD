@@ -3,7 +3,7 @@
 pkgname=dalton
 pkgver=2018.2
 _branch=2018
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for a wide range of molecular properties at different levels of theory"
 arch=("x86_64")
 url="https://daltonprogram.org"
@@ -31,13 +31,10 @@ build() {
     cmake .. \
             -DCMAKE_INSTALL_PREFIX=/usr/lib \
             -DCMAKE_EXE_LINKER_FLAGS="$_mpi_flags" \
-            -DENABLE_PCMSOLVER=ON \
             -DENABLE_OPENMP=ON \
             -DENABLE_MPI=ON \
             -DENABLE_SCALAPACK=ON \
-            -DBLACS_IMPLEMENTATION=openmpi \
-            
-            
+            -DBLACS_IMPLEMENTATION=openmpi
     make
 }
 

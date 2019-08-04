@@ -1,7 +1,7 @@
 pkgbase = dalton
 	pkgdesc = A tool for a wide range of molecular properties at different levels of theory
 	pkgver = 2018.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://daltonprogram.org
 	arch = x86_64
 	license = LGPL2.1
