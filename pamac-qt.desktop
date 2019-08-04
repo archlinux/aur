@@ -1,0 +1,21 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=/usr/bin/pamac-qt
+GenericName[en_US]=
+GenericName=
+Icon=system-software-install
+MimeType=
+Name[en_US]=Pamac-Qt
+Name=Pamac-Qt
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Categories=Qt;System;Settings

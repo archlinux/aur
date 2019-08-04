@@ -1,0 +1,52 @@
+pkgbase = pamac-qt-git
+	pkgdesc = A Qt5 frontend for libpamac - git version
+	pkgver = r80.f23e1c8.2019.07.31
+	pkgrel = 1
+	url = https://gitlab.manjaro.org/applications/pamac-qt
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = pamac-cli
+	depends = pamac-common
+	depends = qt5-base>=5.12.0
+	depends = qt5-quickcontrols2
+	depends = qt5-quickcontrols
+	depends = qt5-graphicaleffects
+	depends = breeze-icons
+	conflicts = pamac-qt
+	replaces = pamac-qt
+	options = !emptydirs
+	source = pamac-qt::git+https://gitlab.manjaro.org/applications/pamac-qt
+	source = pamac-qt.desktop
+	sha256sums = SKIP
+	sha256sums = cf812140e172fafd83dd662dada06e77ce4e14cc04f38216c23c32dace63cc45
+
+pkgname = pamac-qt-git
+
+pkgbase = pamac-qt-git
+	pkgdesc = A Qt5 frontend for libpamac - git version
+	pkgver = r80.f23e1c8.2019.07.31
+	pkgrel = 1
+	url = https://gitlab.manjaro.org/applications/pamac-qt
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = pamac-cli
+	depends = pamac-common
+	depends = qt5-base>=5.12.0
+	depends = qt5-quickcontrols2
+	depends = qt5-quickcontrols
+	depends = qt5-graphicaleffects
+	depends = breeze-icons
+	conflicts = pamac-qt
+	replaces = pamac-qt
+	options = !emptydirs
+	source = pamac-qt::git+https://gitlab.manjaro.org/applications/pamac-qt
+	source = pamac-qt.desktop
+	sha256sums = SKIP
+	sha256sums = cf812140e172fafd83dd662dada06e77ce4e14cc04f38216c23c32dace63cc45
+
+pkgname = pamac-qt-git
+
