@@ -2,7 +2,7 @@
 
 _pkgname=janet
 pkgname=janet-lang
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -13,9 +13,9 @@ makedepends=('git' 'clang')
 provides=('janet')
 conflicts=('janet-lang-git')
 source=("https://github.com/janet-lang/janet/archive/v${pkgver}.tar.gz")
-sha256sums=('0eef1593d2eca1cf48eef86eb02b71a3776fbae88138be8d1408172005af277f')
+sha256sums=('e58f8294d985140ea88ce7dfc0c79b5e83a0134fa5838ba3cb62afd36a362d1a')
 
-janet_build='JANET_BUILD=\"c1113d6\"'
+janet_build='JANET_BUILD=\"3928136\"'
 
 # janet_build() {
 #     printf 'JANET_BUILD=\"%s\"' "$(git rev-parse --short HEAD)"
