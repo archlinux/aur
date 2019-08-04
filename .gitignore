@@ -1,0 +1,5 @@
+pkg/
+src/
+redkite-*.tar.gz
+redkite-*.tar.xz
+.AURINFO
