@@ -17,7 +17,8 @@ pkgver() {
   awk 'match($$0, /\$Version: [^$]* \$/) {
          print substr($0, RSTART + 10, RLENGTH - 12);
          exit found=1;
-       } END { exit !found }' cmb.c
+       } END { exit !found }' cmb.c |
+  sed s/-/./g
 }
 
 build() {
