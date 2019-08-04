@@ -1,0 +1,15 @@
+pkgbase = haskell-fail
+	pkgdesc = Forward-compatible MonadFail class
+	pkgver = 4.9.0.0
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/fail
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	source = http://hackage.haskell.org/packages/archive/fail/4.9.0.0/fail-4.9.0.0.tar.gz
+	sha256sums = 6d5cdb1a5c539425a9665f740e364722e1d9d6ae37fbc55f30fe3dbbbb91d4a2
+
+pkgname = haskell-fail
+
