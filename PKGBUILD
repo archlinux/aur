@@ -2,7 +2,7 @@
 # Contributor: Xiang Gao <qasdfgtyuiop at gmail dot com>
 
 pkgname=bazel-buildtools
-pkgver=0.25.0
+pkgver=0.28.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/bazelbuild/buildtools'
@@ -16,7 +16,7 @@ package() {
 	install -d "$pkgdir"/usr/bin
 	install -Dm755 buildifier buildozer unused_deps $pkgdir/usr/bin/
 }
-md5sums=('4d9de1f184d07d60840df9adcf7b1b63'
-         '4cdc9f9b3f4945a1e2e29a96004ca5d4'
-         'd56001d3a82f412502c883ce56d85cd3')
+md5sums=('f9767c4a7c8a90865b84f3ed645b0fd2'
+         'd87c9f342ac78fa795791b70bbb5b224'
+         'a96ae7a5048f431bc4f06c4072dcdd08')
 
