@@ -1,7 +1,7 @@
 pkgbase = filebot
 	pkgdesc = The ultimate TV and Movie Renamer
 	pkgver = 4.8.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.filebot.net/
 	arch = i686
 	arch = x86_64
