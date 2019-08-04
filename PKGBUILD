@@ -16,8 +16,8 @@ _opt_DKMS=1            # This can be toggled between installs
 
 set -u
 pkgname='connecttech-cti-serial'
-pkgver='1.42'
-pkgrel='2'
+pkgver='1.43'
+pkgrel='1'
 pkgdesc='tty UART driver for BlueStorm BlueHeat Xtreme/104-Plus Titan and Xtreme/104-Express families'
 arch=('i686' 'x86_64')
 url='http://connecttech.com/product/pci-express-bluestorm-express/'
@@ -30,11 +30,12 @@ install="${pkgname}-install.sh"
 _srcdir="cti_serial_${pkgver//./}"
 source=(
   "file://${_srcdir}.tgz"
-  '0000-kernel-4.18-proc_fops-to-proc_show.patch' # https://patchwork.kernel.org/patch/10349751/
+  #'0000-kernel-4.18-proc_fops-to-proc_show.patch' # https://patchwork.kernel.org/patch/10349751/
   '0001-kernel-5.0.0-8250_core-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
 )
-sha256sums=('9833dfcac4b9116c1d22dcee16bb0533e7b3ab0ae3291c4570e716e1e991f042'
-            'bfe7886f273eed35d36956c143cd07fa1c6c9448cf21f8484bb5a0872ea6d04e'
+md5sums=('52370a65422a372cc2d7c84b4fee230e'
+         'c9f0fc60446b03a66998d90eff031546')
+sha256sums=('953d136584f7d1bf276211c0d87e46abc951214a0fba8339db8399cf5f8553fd'
             'fbb546222486ccbd3fc0cfaf44c146208a27507c20788602fcc6e77853692b00')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -74,7 +75,7 @@ prepare() {
 
   #cp -p driver/serial_core.c{,.orig}; false
   #diff -pNau5 driver/serial_core.c{.orig,} > '0000-kernel-4.18-proc_fops-to-proc_show.patch'
-  patch -Nbup0 -i "${srcdir}/0000-kernel-4.18-proc_fops-to-proc_show.patch"
+  #patch -Nbup0 -i "${srcdir}/0000-kernel-4.18-proc_fops-to-proc_show.patch"
 
   #cp -p driver/8250_core.c{,.orig}; false
   #diff -pNau5 driver/8250_core.c{.orig,} > '0001-kernel-5.0.0-8250_core-access_ok.patch'
