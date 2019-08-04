@@ -3,7 +3,7 @@
 
 pkgname=megazeux
 pkgver=2.92
-pkgrel=1
+pkgrel=2
 pkgdesc="Game creation system"
 arch=('i686' 'x86_64')
 url="http://www.digitalmzx.net/"
@@ -13,7 +13,7 @@ depends=(libvorbis libpng sdl2)
 makedepends=()
 _base=mzx${pkgver/.}
 _filename=${_base}src.tar.xz
-_sha256sum=841cf520002b6807ca2a11368be7942fd3eea8dc85f59b1cea07a7fba48e6c1e
+_sha256sum=08c04c3427e679d35ec4d655e1c8447e82afd2cbc371ba86cc033d8f0a9f3eb2
 
 ##old version
 #source=("${_filename}::http://vault.digitalmzx.net/download.php?rid=2197&f=${_sha256sum}")
