@@ -2,7 +2,7 @@
 # Contributor: Florian Walch <florian.walch@gmx.at>
 # Maintainer: Robin Baumgartner <robin@baumgartners.ch>
 pkgname=('python-relatorio' 'python2-relatorio')
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A templating library able to output odt and pdf files"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://relatorio.tryton.org/"
 license=('GPL')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://pypi.io/packages/source/r/relatorio/relatorio-$pkgver.tar.gz")
-sha512sums=('29b931b3de768375b9e736e4f2254faaf8757b1428efb8f3f1fcfca13a12649bbd07f56c000873c3544f203bf6c8e5bdd1e8851c24705cc504e853fa962fa721')
+sha512sums=('d8f5c2a6c6fd207de4f651a8abe8802de0a0a30b35c659136e52868c5721f719e53bc771019a8a4448615432696c149298b2306fcacadcc0737fa6b08a53b345')
 
 prepare() {
   cp -a relatorio-$pkgver{,-py2}
