@@ -31,9 +31,9 @@ prepare(){
   git archive shape | gzip > ../${pkgname}-${pkgver}-${pkgrel}.tar.gz
   cd ..
   rm -rf i3
-  tar xvzf ${pkgname}-${pkgver}-${pkgrel}.tar.gz --one-top-level
+  tar xvzf ./${pkgname}-${pkgver}-${pkgrel}.tar.gz --one-top-level
   mkdir build
-  cd "${_pkgname}-${pkgver}-${pkgrel}"
+  cd "./${pkgname}-${pkgver}-${pkgrel}"
 
   autoreconf -fvi
 }
