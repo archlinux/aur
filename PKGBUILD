@@ -4,7 +4,7 @@
 pkgname=i3-gaps-rounded
 _pkgsourcename=i3
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc='A fork of i3wm tiling window manager with more features, including gaps and rounded corners'
 arch=('i686' 'x86_64')
 url='https://github.com/resloved/i3'
@@ -26,7 +26,9 @@ backup=(etc/i3/config)
 options=('docs' '!strip')
 
 prepare(){
-  git archive shape | gzip > ${pkgname}-${pkgver}.tar.gz
+  git clone https://github.com/resloved/i3
+  git archive shape | gzip > ../${pkgname}-${pkgver}.tar.gz
+  rm -rf i3
   mkdir build
   cd "${_pkgsourcename}-${pkgver}"
 
