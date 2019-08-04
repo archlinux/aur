@@ -2,8 +2,8 @@
 # Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
 _pkgname=SimpleITK
 pkgname=simpleitk
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
 url="http://www.simpleitk.org/"
@@ -48,8 +48,8 @@ prepare() {
 	mkdir -p build
 	cd build
 
-	_java_home=$(find '/usr/lib/jvm/' -name `archlinux-java get`)
-	_lua51_version=$(pacman -Qi lua51 | grep '^Version' | egrep -o '[0-9]\.[0-9]\.[0-9]')
+	_java_home=$(find '/usr/lib/jvm/' -name "$(archlinux-java get)")
+	_lua51_version=$(pacman -Qi lua51 | grep '^Version' | grep -Eo '[0-9]\.[0-9]\.[0-9]')
 
 	JAVA_HOME=$_java_home \
 		cmake \
@@ -84,7 +84,7 @@ build() {
 package() {
 	_builddir="$srcdir/$_pkgname/build"
 
-	cd $_builddir
+	cd "$_builddir"
 
 	make DESTDIR="$pkgdir/" install
 
@@ -94,7 +94,7 @@ package() {
 			--isolated \
 			--no-deps \
 			--root="$pkgdir" \
-			"$_builddir/Wrapping/Python/dist/$_pkgname-$pypkgver"*"-linux_$CARCH.whl"
+			"$_builddir/Wrapping/Python/dist/$_pkgname-"*"-linux_$CARCH.whl"
 	python -O -m compileall "${pkgdir}/usr/lib/python3.7/site-packages/SimpleITK"
 
 	install -d -Dm755 "$pkgdir/usr/lib/lua/5.1/"
