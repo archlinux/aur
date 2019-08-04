@@ -5,7 +5,8 @@ pkgver=0.21.4
 pkgrel=1
 _run="run1"
 _nnid=42850
-pkgdesc="UCI-compliant chess engine designed to play chess via neural network, specifically those of the LeelaChessZero project."
+pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
+		       specifically those of the LeelaChessZero project."
 arch=('x86_64')
 
 url="https://lczero.org/"
