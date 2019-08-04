@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if [ ! -d "$HOME/.cache/veloren" ]; then
-    mkdir -p "$HOME/.cache/veloren"
-    ln -sd "/usr/share/veloren/assets" "$HOME/.cache/veloren/assets"
-fi
-
-cd "$HOME/.cache/veloren"
-veloren-voxygen
