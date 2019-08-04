@@ -16,7 +16,7 @@ license=('GPL3')
 provides=('python2-pafy')
 depends=('python2' 'python2-youtube-dl')
 makedepends=('git' 'python2-setuptools')
-conflicts=('python-pafy')
+conflicts=('python-pafy' 'python2-pafy-git')
 
 source=("python-pafy-$pkgver.tar.gz::https://github.com/mps-youtube/pafy/archive/v$pkgver.tar.gz")
 sha1sums=('bb79fce739f44e6ac0f13911c8e388378fd5fccf')
