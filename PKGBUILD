@@ -1,7 +1,7 @@
 # Maintainer: Jorengarenar
 
 pkgname=dgl
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc='Dmenu Game Launcher - use dmenu to launch your games'
 arch=('any')
