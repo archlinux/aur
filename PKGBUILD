@@ -3,7 +3,7 @@
 pkgname=waifu2x-ncnn-vulkan-git
 _pkgname=waifu2x-ncnn-vulkan
 pkgver=20190712.r3.gc11d4f4
-pkgrel=1
+pkgrel=2
 pkgdesc="waifu2x converter ncnn version, runs fast on intel / amd / nvidia GPU with vulkan"
 url="https://github.com/nihui/waifu2x-ncnn-vulkan"
 license=('MIT')
@@ -34,7 +34,9 @@ build() {
     cd "${srcdir}/waifu2x-ncnn-vulkan/src"
     mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        ..
     make
 }
 
