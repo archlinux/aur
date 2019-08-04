@@ -3,7 +3,7 @@
 # Contributor: Kevin Piche <kevin@archlinux.org>
 
 pkgname=worker
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A file manager for the X Window System"
 arch=('i686' 'x86_64')
@@ -13,9 +13,8 @@ depends=('avfs' 'gcc-libs' 'libx11' 'file')
 makedepends=('libxt')
 source=(http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2
         http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2.asc)
-sha512sums=('19a4a58b8bb8b4046c5899327e8fdace646e457893e1015a294e488ccaa2c983b9b48ea90d00847036924c353d350ea98401a1e5a623dfe908f5abfddb303e9a'
-            '2a10983efbc577a985a1576cddd9e1bc2240ba143de8911f98b5f6ad251bdef18bdcf54c4b80dc9dbd5b7ae6b8b8fbbe683d9b95f32347c5937155bc24a31a40')
-
+sha512sums=('b697dca488d582851da80673e0aed808560310af6c065dfab2cf9452d5e8b5fa26962d2825865916538efa3cf6089cc8712df286dd09f38847bea2799ceb0184'
+            '12c392fa7084f60f9cb096b83f1ed1234cc892f580e3e0f12125f28f29753fecf334a9881d164eca8b943cc173eab6c447eb784d12c02a9f2be880d3e86df3bd')
 validpgpkeys=('F9299EE90A729029E71AF26B667132D0FBC52B37') # Ralf Hoffmann
 
 build() {
