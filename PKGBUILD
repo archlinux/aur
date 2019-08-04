@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-alpha-kde
-pkgver=68.0a1
+pkgver=68.0a2
 pkgrel=0
 pkgdesc="Free, open and private browser with patches for better integration with KDE"
 arch=('x86_64')
@@ -26,13 +26,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver"
         "vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-alpha/vendor.js"
         "waterfox-alpha.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-alpha/waterfox-alpha.1"
         "syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-alpha/syspref.js"
-        "waterfox-kde-68.0a1.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-alpha-kde/patches/waterfox-kde-68.0a1.patch"
-        "fix-build-after-y2038-changes-in-glibc.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-alpha/patches/fix-build-after-y2038-changes-in-glibc.patch"
-        "addon_versions_addon_manager.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-alpha/patches/addon_versions_addon_manager.patch"
-        "bookmark_star_button.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-alpha/patches/bookmark_star_button.patch"
-        "privacy.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-alpha/patches/privacy.patch"
-        "utf8.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-alpha/patches/utf8.patch"
-        "zoom_cursor.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-alpha/patches/zoom_cursor.patch"
+        "waterfox-kde-68.0a2.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-alpha-kde/patches/waterfox-kde-68.0a2.patch"
         "mozilla-nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-alpha/patches/mozilla-nongnome-proxies.patch"
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js")
 sha256sums=('SKIP'
@@ -41,13 +35,7 @@ sha256sums=('SKIP'
             '04810534261af6cb7fce4a00ffdd7457be045e480bb95f4dcad4fbfeb202c163'
             '8fe7431aecc9d7f412744608ab8d779231726b6fe33aa46044ee4741053bd67f'
             '1362b56a0b5ddaad0761d8d3a04ea072a591772de8c9f7fd5c0459d2bba2379b'
-            'c84c48bfc46ca50785843e5b41ee30f312f0a5569c9009fde44f6d0e994c6002'
-            '433c3e75a009defc19ab653075ead400ad9d0f9b0b5f39b1bd4de8561a4a3c9c'
-            '86132acc7d435443ea332c4b832a965794f9ad48df40fdc537d3d0ba997db804'
-            '71e437dff53e4cf86244f285182b4534b3a74a4cb6086d10a0c2de9d09b9babd'
-            'c1042ce02c47d671b4d34c98da24591b0cc1721972e63ae9fa1afb5065d2e85c'
-            'c7e0319da37225559604073329c07e766323453d4e4fddb11c73dd134fcb6bd8'
-            '1fe5fbb242622bfc22bbcc2969a342d12328c5d28163dd643d979d1eec5f0ed0'
+            '6ce6c1d76b66727b5b1c60eac24074afd0d81f9ec16f8f5e3c52eba1d9fa2352'
             'ffa9d71bd6dd60eaaef70ba67444c75b6ce0313a107b5b086fd3d30df865ccbf'
             'b900f7f5a8440852a17191a374d5557ece44b98215c3c8960eb864cbc0753fe0')
 
@@ -55,13 +43,7 @@ prepare() {
 
   cd Waterfox
 
-  patch -Np1 -i ../waterfox-kde-68.0a1.patch
-  patch -Np1 -i ../fix-build-after-y2038-changes-in-glibc.patch
-  patch -Np1 -i ../addon_versions_addon_manager.patch
-  patch -Np1 -i ../bookmark_star_button.patch
-  patch -Np1 -i ../privacy.patch
-  patch -Np1 -i ../utf8.patch
-  patch -Np1 -i ../zoom_cursor.patch
+  patch -Np1 -i ../waterfox-kde-68.0a2.patch
   patch -Np1 -i ../mozilla-nongnome-proxies.patch
 
   cat >.mozconfig <<END
@@ -71,7 +53,7 @@ export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
 
-ac_add_options --enable-optimize="-O3 -msse3 -march=x86-64 -mtune=generic -w"
+ac_add_options --enable-optimize="-O2 -msse3 -march=x86-64 -mtune=generic -w"
 ac_add_options --target=x86_64-pc-linux-gnu
 
 ac_add_options --enable-alsa
@@ -103,8 +85,6 @@ ac_add_options --disable-gconf
 ac_add_options --disable-dmd
 
 # Enable wanted features
-ac_add_options "MOZ_ALLOW_LEGACY_EXTENSIONS=1"
-ac_add_options --enable-release
 ac_add_options --enable-rust-simd
 ac_add_options --enable-application=browser
 ac_add_options --enable-startup-notification
@@ -116,11 +96,6 @@ ac_add_options --enable-ccache=ccache
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 
-export MOZ_GECKO_PROFILER=
-export MOZ_ENABLE_PROFILER_SPS=
-export MOZ_PROFILING=
-export MOZ_MAINTENANCE_SERVICE=
-MOZ_REQUIRE_SIGNING=0
 export MOZ_PGO=1
 END
 }
@@ -186,6 +161,6 @@ END
   # Add syspref.js for setting preferences for all users
   mkdir -p "$pkgdir/etc/waterfox"
   cp "$srcdir/syspref.js" "$pkgdir/etc/waterfox/"
-  ln -Tsf /etc/waterfox/syspref.js "$pkgdir/usr/lib/browser/defaults/preferences/syspref.js"
+  ln -Tsf /etc/waterfox/syspref.js "$pkgdir/usr/lib/waterfox-alpha/browser/defaults/preferences/syspref.js"
 
 }
