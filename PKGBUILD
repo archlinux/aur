@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.9.beta4.r0.g1537fe511b
+pkgver=8.9.beta5.r0.gac8cf16c5c
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -51,10 +51,7 @@ sha256sums=('SKIP'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
             '4c6df9e4e5a7b29ecf6189eda3e5a79f69b6e1b4d29c1b9559663149b8c0af96'
             '961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9'
-            'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938'
-            '96ab7783d8758a5237b26cf096be8fb03df4e88dc6d08bbd94dff7e18c91314e'
-            '8305de73d7a3c68ceaa001866ff933c4fa3a0706700ade2e25046f58270bc6db'
-            '657750f0d856d936143c352acb00db7c4852e413315e216fe68c9f35515253fb')
+            'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938')
 
 pkgver() {
   cd sage
