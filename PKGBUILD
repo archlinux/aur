@@ -2,7 +2,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-pyxel
-pkgver=1.0.2
+pkgver=1.1.8
 pkgrel=1
 pkgdesc='Retro game development environment'
 arch=('any')
