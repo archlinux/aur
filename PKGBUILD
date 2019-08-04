@@ -4,7 +4,7 @@
 pkgname=i3-gaps-rounded
 _pkgsourcename=i3
 pkgver=latest
-pkgrel=5
+pkgrel=6
 pkgdesc='A fork of i3wm tiling window manager with more features, including gaps and rounded corners'
 arch=('i686' 'x86_64')
 url='https://github.com/resloved/i3'
@@ -41,7 +41,7 @@ prepare(){
 build() {
   cd build
 
-  ../i3-$pkgver/configure \
+  ../${pkgname}-${pkgver}-${pkgrel}/configure \
     --prefix=/usr \
     --sysconfdir=/etc
   make
