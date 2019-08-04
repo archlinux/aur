@@ -1,9 +1,9 @@
 # Maintainer: GrayJack <gr41.j4ck@gmail.com>
 
 _pkgname=janet
-_pkgver=1.0.0
+_pkgver=1.2.0
 pkgname=janet-lang-git
-pkgver=1.0.0.r1147.f2313b9
+pkgver=1.2.0.r1369.5c83ebd
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
+    # janet_build=$(printf "JANET_BUILD=\"%s\"" "$(git rev-parse --short HEAD)")
     make PREFIX="/usr" CC=clang -j7
 }
 
