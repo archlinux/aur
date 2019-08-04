@@ -1,7 +1,7 @@
 # Maintainer: snafu
 pkgname=(env-modules-tcl)
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
@@ -48,7 +48,7 @@ build() {
 		--prefix="" \
 		--bindir=/usr/bin \
 		--libdir=/usr/lib \
-		--libexecdir=/usr/libexec \
+		--libexecdir=/usr/lib/env-modules \
 		--etcdir=/etc \
 		--initdir=/etc/modules/init \
 		--datarootdir=/usr/share \
