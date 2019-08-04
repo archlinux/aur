@@ -16,8 +16,5 @@ sha512sums=('87fc5d69980c6d8c7c658179890e1551b35979d64a2b4624cf9d989a439f08fd7c9
 package() {
     cd "${srcdir}"
     tar -xJC "${pkgdir}" -f data.tar.xz
-
-    # Create /usr/bin for the executable
-    mkdir "${pkgdir}/usr/bin"
-    install -m 755 "${startdir}/minetime" "${pkgdir}/usr/bin/minetime"
+    install -Dm 755 "${startdir}/minetime" "${pkgdir}/usr/bin/minetime"
 }
