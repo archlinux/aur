@@ -2,6 +2,9 @@
 export WINEPREFIX="$HOME/.cemu/wine"
 export WINEDLLOVERRIDES="mscoree=;mshtml=;dbghelp.dll=n,b"
 
+# Allows to play BotW with Polaris video cards
+export R600_DEBUG="nohyperz"
+
 if [ ! -d "$HOME"/.cemu ] ; then
   mkdir -p "$HOME"/.cemu/wine || exit 1
   ln -s /usr/share/cemu/Cemu.exe "$HOME"/.cemu/Cemu.exe || exit 1
