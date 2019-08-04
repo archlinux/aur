@@ -1,3 +1,4 @@
+# Maintainer: Michael Taboada <michael@michaels.world>
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 # Contributor: Kyle <kyle@free2.ml>
 # Contributer: Steve Holmes <steve.holmes88@gmail.com>
@@ -16,7 +17,7 @@ optdepends=('festival-freebsoft-utils: Speech output using Festival.'
             'flite: Speech output using Festival Lite.'
             'espeak: Speech output using ESpeak.'
             'svox-pico-git: Speech output using Android pico voice.')
-makedepends=('pkgconfig' 'espeak' 'dotconf' 'automake' 'intltool')
+makedepends=('git' 'pkgconfig' 'espeak' 'dotconf' 'automake' 'intltool')
 provides=("libspeechd" "speech-dispatcher")
 conflicts=("libspeechd" "speech-dispatcher")
 options=('!libtool') 
