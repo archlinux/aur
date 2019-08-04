@@ -1,0 +1,12 @@
+pkgbase = linux-clear-headers-bin
+	pkgver = 5.2.5
+	pkgrel = 813
+	arch = x86_64
+
+pkgname = linux-clear-headers-bin
+	pkgdesc = Header files and scripts for clear linux 5.2.5 kernel and modules
+	provides = linux-headers=5.2.5
+	provides = linux-clear-headers=5.2.5
+	conflicts = linux-clear-headers
+	options = !strip
+
