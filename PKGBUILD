@@ -6,7 +6,7 @@ license=("AGPL3")
 arch=("x86_64")
 depends=('gmp')
 conflicts=("shellcheck")
-provides=("shellcheck=0.6.0")
+provides=("shellcheck=$pkgver")
 
 # The statically-linked binary provided by the developer. See:
 # https://github.com/koalaman/shellcheck#installing
