@@ -26,10 +26,6 @@ pkgver() {
 prepare() {
     cd "${srcdir}/waifu2x-ncnn-vulkan/src"
 
-    # Fix ncnn path
-    sed -i 's|set(ncnn_DIR "/home/nihui/dev/ncnn/build/install/lib/cmake/ncnn")|include_directories("/usr/include/ncnn")|' CMakeLists.txt
-    sed -i 's|find_package(ncnn REQUIRED)|#find_package(ncnn REQUIRED)|' CMakeLists.txt
-
     # Fix default model path
     sed -i 's|path_t model = PATHSTR("models-cunet")|path_t model = PATHSTR("/usr/share/waifu2x-ncnn-vulkan/models-cunet")|' main.cpp
 }
