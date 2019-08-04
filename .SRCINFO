@@ -1,16 +1,16 @@
 pkgbase = libindi-ticfocuser
-	pkgdesc = 3rd party drivers for INDI: TicFocuser
-	pkgver = 1
+	pkgdesc = 3rd party drivers for INDI: TicFocuser-ng
+	pkgver = 0.9
 	pkgrel = 1
-	url = https://github.com/HelgeMK/TicFocuser
+	url = https://github.com/sebo-/TicFocuser-ng
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	depends = pololu-tic-software
 	depends = libusbp-1
-	source = libindi-ticfocuser::git+https://github.com/HelgeMK/TicFocuser.git
-	sha256sums = SKIP
+	source = https://github.com/sebo-b/TicFocuser-ng/archive/v0.9.tar.gz
+	sha256sums = a0a032ba96e5c5cdb484edb5d0692771664b2222ed790c6708968cb00dbf22b1
 
 pkgname = libindi-ticfocuser
 
