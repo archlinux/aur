@@ -4,7 +4,7 @@
 pkgname=i3-gaps-rounded
 _pkgsourcename=i3
 pkgver=latest
-pkgrel=6
+pkgrel=7
 pkgdesc='A fork of i3wm tiling window manager with more features, including gaps and rounded corners'
 arch=('i686' 'x86_64')
 url='https://github.com/resloved/i3'
@@ -52,7 +52,7 @@ package() {
 
   make DESTDIR="${pkgdir}/" install
   install -Dt "$pkgdir/usr/share/man/man1" -m644 man/*.1
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 ../i3-$pkgver/LICENSE
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 ../${pkgname}-${pkgver}-${pkgrel}/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
