@@ -1,6 +1,6 @@
 # Maintainer: Hokuto <abrahamhokuto@outlook.com>
 
-pkgver=20190621
+pkgver=20190804
 pkgrel=1
 pkgname=windows-xp-themes-git
 _pkgname=Windows-XP-master
