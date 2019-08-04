@@ -1,0 +1,15 @@
+pkgbase = python-omemo
+	pkgdesc = A Python implementation of the OMEMO Multi-End Message and Object Encryption protocol.
+	pkgver = 0.10.5
+	pkgrel = 1
+	url = https://github.com/Syndace/python-omemo
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/O/OMEMO/OMEMO-0.10.5.tar.gz
+	sha256sums = a6e091d9e5300725cf91cbe787b1f23e6b5b72be46e4ac749491bba8f91c6746
+
+pkgname = python-omemo
+	depends = python
+
