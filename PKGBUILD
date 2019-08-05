@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duetsoftwareframework-meta
-pkgver=1.0.2.1
+pkgver=1.0.3.0
 pkgrel=1
 pkgdesc="Meta package for the full Duet software framework"
 arch=('armv7h')
