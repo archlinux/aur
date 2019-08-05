@@ -2,7 +2,7 @@
 
 _pkgname=string-machine
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r1.g009ffce
+pkgver=0.1.0.r25.gb1cc7a5
 pkgrel=1
 pkgdesc="A virtual-analog string ensemble synthesizer LV2 and VST2 plugin"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/jpcima/string-machine"
 license=('Boost')
 depends=('cairo')
 makedepends=('boost' 'git' 'mesa')
-groups=('lv2-plugins' 'vst-plugins')
+groups=('pro-audio' 'lv2-plugins' 'vst-plugins')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/jpcima/${_pkgname}.git"
@@ -41,10 +41,5 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  # Create installation directories
-  install -dm755 "${pkgdir}"/usr/lib/{lv2,vst}
-  # LV2 bundle
-  cp -rp bin/${_pkgname}.lv2 "${pkgdir}"/usr/lib/lv2
-  # VST shared library
-  install -m755 bin/${_pkgname}-vst.so "${pkgdir}"/usr/lib/vst
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
