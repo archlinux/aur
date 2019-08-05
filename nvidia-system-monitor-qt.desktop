@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+
+Exec=qnvsm
+Icon=nvidia-system-monitor-qt
+
+Name=Nvidia System Monitor QT
+
+Categories=System;Utility;
