@@ -1,0 +1,23 @@
+pkgbase = gortr-bin
+	pkgdesc = An RPKI-to-Router server written in Go
+	pkgver = 0.11.3
+	pkgrel = 1
+	url = https://github.com/cloudflare/gortr
+	arch = x86_64
+	license = BSD
+	provides = gortr
+	conflicts = gortr
+	backup = etc/conf.d/gortr
+	source = gortr::https://github.com/cloudflare/gortr/releases/download/v0.11.3/gortr-v0.11.3-linux-x86_64
+	source = https://github.com/cloudflare/gortr/releases/download/v0.11.3/cf.pub
+	source = https://github.com/cloudflare/gortr/raw/v0.11.3/LICENSE.txt
+	source = gortr.env
+	source = gortr.service
+	md5sums = f7586dcf627dfe80c09571dc1e495f30
+	md5sums = b196196f8598b43023d86821929197e1
+	md5sums = b0725559434e18b352046f9b15619960
+	md5sums = b8eb3dab8494b7d031249b7d4ae5a5ba
+	md5sums = 67afd99e5c49c253c8d531d30d1f4f59
+
+pkgname = gortr-bin
+
