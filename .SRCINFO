@@ -1,18 +1,19 @@
 pkgbase = duetruntime
 	pkgdesc = .NET Core runtime libraries for the Duet software framework
-	pkgver = 1.0.2.1
+	pkgver = 1.0.3.0
 	pkgrel = 1
 	url = https://github.com/chrishamm/DuetSoftwareFramework
 	arch = armv7h
 	license = GPL3
+	depends = curl
 	depends = gettext
 	depends = libunwind
 	provides = duetruntime
 	conflicts = duetruntime
 	options = !strip
 	options = staticlibs
-	source = https://chrishamm.io/debian/dists/stretch/dsf/binary-armhf/duetruntime_1.0.2.1.deb
-	sha256sums = 1f7a4e08616f001fba8b5c5584dfddb8c4b493c3edda74e0d826d5d88599e8e2
+	source = https://chrishamm.io/debian/dists/buster/dsf/binary-armhf/duetruntime_1.0.3.0.deb
+	sha256sums = a3af1ef2c716487ef851482cc375affb3deb4cd088a9eeac5413d72e6c24bb1b
 
 pkgname = duetruntime
 
