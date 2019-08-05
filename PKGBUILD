@@ -1,7 +1,7 @@
 # Maintainer: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=exodus
-pkgver=19.7.18
+pkgver=19.8.2
 pkgrel=1
 pkgdesc="All-in-one app to secure, manage and exchange blockchain assets"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("https://exodusbin.azureedge.net/releases/exodus-linux-x64-${pkgver}.zip
 	"${pkgname}.svg"
 	"${pkgname}.desktop"
         "LICENSE")
-sha256sums=('6968ed0ef7c7d4d4da4b03e59f19a79cc0ba0f66af429151e338453140a6ef9e'
+sha256sums=('04e5032093e9dad076b20a3af5808f7f3282579f2fa688250691bc697f9cd7db'
             'ffafdcd0869f1c9338ba25e447698c4cfa3c8714123459ae3e63686a5312ef2e'
             '04676d81272a35a91150a7eec4640e69ca50f2e479d29fad8be90160ee74122c'
             '582d6782c9412cd961c55d105f38ed5c911bf8509be040b8d23a836504a25d0b')
