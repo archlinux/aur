@@ -1,0 +1,13 @@
+pkgbase = polify
+	pkgdesc = polybar hookmodule manager
+	pkgver = 2019.08.05.7
+	pkgrel = 1
+	url = https://github.com/budlabs/polify
+	arch = any
+	license = MIT
+	depends = bash>=4.0.0
+	source = https://github.com/budlabs/polify/archive/2019.08.05.7.tar.gz
+	sha256sums = 543ad3a1540881a87464ad1d4fceae4b2d88c09eeb3f0813ca41ffe94dfe0bf4
+
+pkgname = polify
+
