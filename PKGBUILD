@@ -3,7 +3,7 @@ pkgname=python2-matplotlib2tikz-git
 pkgver=0.8.2.r8.ge3f107a
 pkgrel=1
 pkgdesc="Convert matplotlib figures into TikZ/PGFPlots"
-url="https://github.com/nschloe/matplotlib2tikz"
+url="https://github.com/nschloe/tikzplotlib"
 depends=('python2' 'python2-numpy' 'python2-matplotlib>=1.4.0' 'python2-pillow')
 makedepends=('python2')
 provides=('python2-matplotlib2tikz')
