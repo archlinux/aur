@@ -1,0 +1,5 @@
+!.gitignore
+php-nocheq-git*
+nocheq/
+src/
+pkg/
