@@ -1,7 +1,7 @@
-# Maintainer: Thanos Apostolou <thanosapostolou@outlook.com>
-
+# Submitter: Thanos Apostolou <thanosapostolou@outlook.com>
+# Maintainer: gilbus <aur(AT)tinkershell.eu>
 pkgname=gnome-shell-extension-windowoverlay-icons
-pkgver=33
+pkgver=34
 pkgrel=2
 pkgdesc="Adds application icons to the windows overview (in Activities menu)"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/sustmi/gnome-shell-extension-windowoverlay-icons"
 license=('GPL3')
 depends=('gnome-shell')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('07dd842ac5b79bf9d3b730b574d83a6ee54c65cd6ad115a65fc384913b724ad3')
+sha256sums=('594c3a419234ed8b0c3ccb140ee77f7931a0164fd8d64b35c65cfbadec24fe6c')
 
 
 build() {
