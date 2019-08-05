@@ -11,10 +11,8 @@ url="https://www.jabref.org/"
 license=('MIT')
 provides=('jabref')
 conflicts=('jabref')
-depends=('archlinux-java-run>=4' 'java-openjfx>=8' 'java-openjfx<9'
+depends=('archlinux-java-run>=4' 'java8-openjfx'
          'sh'
-         # Additional dependencies for the JavaFX UI, determined using
-         # ldd /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libglass.so|awk '{print $3}'|xargs pacman -Qo|awk '{print $4}'|sort -u
          'atk'
          'bzip2'
          'cairo'
@@ -60,7 +58,7 @@ source=(https://builds.jabref.org/master/JabRef--master--latest.jar
         jabref.desktop)
 noextract=(JabRef--master--latest.jar)
 sha256sums=('SKIP'
-            '5c1fd05ff42cfe35f7f1722fa349546bab877f00ac0d4756def08ae098615653'
+            'dad0a06f54ce346cc066c6e27e746974e850b77f04381f3c363021ee927e444d'
             'b51970cc3b70da835f7ebc971d03570417dba7dae837f28f2cce213ecb844768'
             'a26845ba60ef2588c52d7d18259a977b146c777f935573bacdffcdcefa2b41b5')
 
