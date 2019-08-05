@@ -13,7 +13,7 @@ pkgbase = mit8
 	depends = sqlite
 	options = strip
 	source = https://www.iztech.ru/content/files/mit8-3.0.19-x86_64.tar.gz
-	md5sums = d25c59f3f23b106a7859bfd6cf135c98
+	md5sums = b221c0409b47476ebc74999ee84f96c4
 
 pkgname = mit8
 
