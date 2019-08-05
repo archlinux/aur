@@ -1,15 +1,15 @@
 # Maintainer: Thomas Hipp <thomashipp at gmail dot com>
 pkgname=dqlite-git
 _pkgname=dqlite
-pkgver=r336.9d8ea2e
+pkgver=r604.faf62f4
 pkgrel=1
 pkgdesc="Distributed SQLite"
 arch=('x86_64')
-url="https://github.com/CanonicalLtd/dqlite"
+url="https://github.com/canonical/dqlite"
 license=('Apache')
-depends=('libuv>=1.8.0' 'sqlite-replication>=3.22.0')
+depends=('libuv>=1.8.0' 'sqlite-replication>=3.22.0' 'raft' 'libco')
 makedepends=('git')
-source=("git+https://github.com/CanonicalLtd/dqlite.git")
+source=("git+https://github.com/canonical/dqlite.git")
 sha256sums=('SKIP')
 conflicts=('dqlite')
 provides=('dqlite')
