@@ -1,0 +1,14 @@
+pkgbase = loginized
+	pkgdesc = Gnome GDM Login Theme Manager.
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/juhaku/loginized
+	arch = x86_64
+	license = GPL3
+	depends = glib2
+	depends = xdg-utils
+	source = https://github.com/juhaku/loginized/releases/download/1.3.3/loginized-1.3.3.pacman
+	sha256sums = 95257349ba617339c2ef03d7b4f5c0f26f3ffa2e985196ffc77902a4285baf4b
+
+pkgname = loginized
+
