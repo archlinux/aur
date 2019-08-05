@@ -1,16 +1,18 @@
 # Maintainer: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
 # Contributor: Tushar R <echo dHVzaGFyXzcyN0B5YWhvby5jb20K | base64 -d>
 # Contributor: Bernhard Tittelbach <xro -at- realraum -dot- at>
+# Maintainer: Emil VATAI (vatai) <emil.vatai@gmail.com>
 
 pkgname=ttf-kanjistrokeorders
-pkgver=4.001
+pkgver=4.002
 pkgrel=1
-pkgdesc="Kanji Stroke Order Font"
+pkgdesc="Kanji stroke order font"
 arch=('any')
-url="https://sites.google.com/site/nihilistorguk/"
 license=('custom')
-source=(https://sites.google.com/site/nihilistorguk/KanjiStrokeOrders_v${pkgver}.zip)
-sha512sums=('93ad839464912b2d7164b9b0195c5ac02aff233e4de5d19b3f9c4f0f901f8577c6db6efd4fb115d5c414f533f82d1671dfe42799b07d6b82b0e5af96f7076f84')
+url="http://www.nihilist.org.uk/"
+source=("https://www.dropbox.com/s/tnq52bz46n5zyh1/KanjiStrokeOrders_v${pkgver}.zip")
+sha256sums=('66ef5987dd64474e6c638f020fdb6fbe10db4b58f1420e32b22b320d2407f5cb')
+
 
 package() {
 	cd "${srcdir}"
