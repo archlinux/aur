@@ -50,6 +50,7 @@ check() {
 
 package_rapidcheck() {
     cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -P "$_build_dir/cmake_install.cmake" 
+    install --mode=644 -D --target-directory="$pkgdir/usr/share/licenses/rapidcheck" "$_git_dir/LICENSE.md"
 }
 
 md5sums=('SKIP')
