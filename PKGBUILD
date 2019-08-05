@@ -3,30 +3,35 @@
 _jdkname=zulu-12
 pkgname="${_jdkname}-bin"
 _java_ver=12
-_zulu_build=12.2.3-ca
-pkgver=12.0.1
+_zulu_build=12.3.11-ca
+pkgver=12.0.2
 pkgrel=1
-pkgdesc='Zulu is a certified build of OpenJDK that is fully compliant with the Java SE standard.'
+pkgdesc='Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.'
 arch=('x86_64')
-url='https://www.azul.com/zulu'
+url='https://www.azul.com/products/zulu-community/'
 license=('custom')
 depends=(
+  'java-runtime-common>=3' 'ca-certificates-utils'
   # not 100% sure if all of these dependencies are needed
   # dependencies from jre11-openjdk-headless
-  'java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2'
+  'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2'
   # dependencies from jre11-openjdk
   'giflib'
   # dependencies from java11-openjdk
-  'java-environment-common=3' 'hicolor-icon-theme' 'libelf'
+  'hicolor-icon-theme' 'libelf'
 )
 provides=(
   "java-environment=$_java_ver"
   "java-environment-openjdk=$_java_ver"
+  "java-runtime-headless=$_java_ver"
+  "java-runtime-headless-openjdk=$_java_ver"
+  "java-runtime=$_java_ver"
+  "java-runtime-openjdk=$_java_ver"
 )
 install="$pkgname.install"
 _tarballname="zulu${_zulu_build}-jdk${pkgver}-linux_x64"
-source=("http://cdn.azul.com/zulu/bin/${_tarballname}.tar.gz")
-md5sums=('772a8d0b5f2e610d9061ed448c9221a8')
+source=("https://cdn.azul.com/zulu/bin/${_tarballname}.tar.gz")
+sha256sums=('660cacbed777b5f9048b1a2d6640422ca5921eddea086bc62cb78e9e453ae994')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
