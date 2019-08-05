@@ -1,7 +1,7 @@
 pkgbase = python-numpy-quaternion
 	pkgdesc = Add built-in support for quaternions to NumPy
 	pkgver = 2019.7.23.15.26.49
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moble/quaternion
 	arch = x86_64
 	license = MIT

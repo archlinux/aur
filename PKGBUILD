@@ -2,7 +2,7 @@
 
 pkgname=python-numpy-quaternion
 pkgver=2019.7.23.15.26.49
-pkgrel=1
+pkgrel=2
 pkgdesc="Add built-in support for quaternions to NumPy"
 url="https://github.com/moble/quaternion"
 arch=('x86_64')
@@ -17,11 +17,11 @@ sha256sums=(
 
 build() {
     cd "numpy-quaternion-$pkgver"
-    python setup.py build
+    package_version=${pkgver} python setup.py build
 }
 
 package() {
     cd "numpy-quaternion-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    package_version=${pkgver} python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
