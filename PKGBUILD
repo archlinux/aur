@@ -1,7 +1,7 @@
 # Maintainer: gobonja <gobonja@gmail.com>
 
 pkgname=timeshift-autosnap
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="Timeshift auto-snapshot script which runs before package upgrade using Pacman hook."
 arch=("any")
@@ -11,7 +11,7 @@ depends=('timeshift')
 optdepends=('grub-btrfs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 backup=('etc/timeshift-autosnap.conf')
-md5sums=('5256615ba6d7e78ebdef9ceed2a8af89')
+md5sums=('dcf0ec87ee095fac6fec9e143398915f')
 
 package() {
     cd ${srcdir}/${pkgname}-${pkgver}
