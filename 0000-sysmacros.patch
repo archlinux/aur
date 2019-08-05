@@ -1,0 +1,10 @@
+--- src/wfs_util.c.orig	2018-01-02 15:27:53.000000000 -0500
++++ src/wfs_util.c	2019-08-04 19:53:05.301455493 -0400
+@@ -123,6 +123,7 @@
+ #ifdef HAVE_SYS_TYPES_H
+ # include <sys/types.h>	/* for open() */
+ #endif
++#include <sys/sysmacros.h>
+ 
+ #ifdef HAVE_SYS_STAT_H
+ # include <sys/stat.h>
