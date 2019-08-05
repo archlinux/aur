@@ -3,15 +3,15 @@
 pkgbase=('python-cfn-lint-git')
 pkgname=('python-cfn-lint-git')
 _module='cfn-lint'
-pkgver=r71.d2e1e46
+pkgver=r1262.8d4f1dea
 pkgrel=1
 pkgdesc="checks cloudformation for practices and behaviour         that could potentially be improved"
 url="https://github.com/awslabs/cfn-python-lint"
-depends=('python' 'python-yaml' 'python-requests')
+depends=('python' 'python-yaml' 'python-six' 'python-requests' 'python-aws-sam-translator' 'python-jsonschema' 'python-jsonschema')
 makedepends=('python-setuptools')
 license=('MIT No Attribution')
 arch=('any')
-source=("git+https://github.com/awslabs/cfn-python-lint.git")
+source=("git+https://github.com/awslabs/cfn-python-lint")
 md5sums=('SKIP')
 
 pkgver() {
