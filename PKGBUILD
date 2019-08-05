@@ -10,7 +10,7 @@ depends=("qt5-base" "qt5-multimedia" "qt5-svg" "qt5-serialport" "qwt" "sqlite")
 arch=('x86_64')
 options=('strip')
 source=("$url/content/files/$pkgname-$pkgver-x86_64.tar.gz")
-md5sums=('b221c0409b47476ebc74999ee84f96c4')
+md5sums=('a60d3f22bad6a614e7749dd8be011935')
 
 package() {
   install -Dm755 "$srcdir/mit8" "$pkgdir/usr/bin/$pkgname"
