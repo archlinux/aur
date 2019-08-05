@@ -1,4 +1,4 @@
-# Maintainer: Bruce Zhang 
+# Maintainer: Bruce Zhang
 pkgname=sddm-theme-sugar-candy-git
 pkgver=r30.9cbdbc2
 pkgrel=1
