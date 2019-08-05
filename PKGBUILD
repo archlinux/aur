@@ -1,8 +1,8 @@
 # Maintainer: Zhaofeng Li <hello@zhaofeng.li>
 
 pkgname=gortr
-pkgver=0.9.4
-pkgrel=2
+pkgver=0.11.3
+pkgrel=1
 pkgdesc="An RPKI-to-Router server written in Go"
 arch=('x86_64' 'i686' 'aarch64' 'armv7l')
 url="https://github.com/cloudflare/gortr"
@@ -14,12 +14,12 @@ backup=(
   'etc/conf.d/gortr'
 )
 source=(
-  "https://github.com/cloudflare/gortr/archive/${pkgver}.tar.gz"
+  "https://github.com/cloudflare/gortr/archive/v${pkgver}.tar.gz"
   'gortr.env'
   'gortr.service'
 )
 
-md5sums=('415f8c5c796b627052d1394c056c09d5'
+md5sums=('543c4ff565192864367b3c33d9dcea02'
          'b8eb3dab8494b7d031249b7d4ae5a5ba'
          '67afd99e5c49c253c8d531d30d1f4f59')
 _gourl='github.com/cloudflare/gortr'
