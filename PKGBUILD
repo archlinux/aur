@@ -13,7 +13,7 @@
 
 
 pkgname=xamarin-android-git
-pkgver=9.4.99.r2255.g6ac1aabf
+pkgver=9.4.99.r2284.gc2ff29f2
 pkgrel=1
 pkgdesc="Provides open-source bindings of the Android SDK for use with .NET managed languages (Git version)"
 arch=('x86_64')
@@ -120,8 +120,7 @@ source=('git+https://github.com/xamarin/xamarin-android.git'
         "${_android_source[@]}"
         'https://dist.nuget.org/win-x86-commandline/v5.1.0/nuget.exe'
         Configuration.Override.props
-        xaprepare-arch.patch
-        api-xml-adjuster-fix.patch)
+        xaprepare-arch.patch)
 noextract=("${_android_source[@]##*/}")
 sha256sums=('SKIP'
             'SKIP'
@@ -196,8 +195,7 @@ sha256sums=('SKIP'
             '5ea68a00f2fe0667d9d66dbf05181828d405a205732221751310dd0c1b5abe64'
             '0ace4f53493332c9a75291ee96acd76b371b4e687175e4852bf85948176d7152'
             'c633ea19a84a5b638fb60d6421d8c2b10fdd6f1a5b455c4f0fe0fa0b0628878b'
-            '809792dbe7384634e82406b724c3f4f452af0c536f75bf115deb93aa682a7142'
-            '2057d5dafe366476075fefb34787b4ce848ccf3b6835321f33ba25d63edefa80')
+            '809792dbe7384634e82406b724c3f4f452af0c536f75bf115deb93aa682a7142')
 
 if [ true = "${_include_proprietary}" ]; then
     pkgname=xamarin-android-proprietary-git
@@ -351,8 +349,6 @@ prepare() {
 
     # Add Arch Linux support to xaprepare.
     git -C "${srcdir}/xamarin-android" apply "${srcdir}/xaprepare-arch.patch"
-    # Fix overlooked ProjectReference to a removed project.
-    git -C "${srcdir}/xamarin-android" apply "${srcdir}/api-xml-adjuster-fix.patch"
 
     mkdir -p "${srcdir}/android-archives"
     AndroidSourceArchives=("${_android_source[@]##*/}")
