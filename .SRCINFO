@@ -1,0 +1,13 @@
+pkgbase = python-transforms3d
+	pkgdesc = 3 dimensional spatial transformations for Python
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://matthew-brett.github.io/transforms3d/
+	arch = any
+	license = BSD
+	depends = python-numpy>=1.5
+	source = https://github.com/matthew-brett/transforms3d/archive/0.3.1.tar.gz
+	sha256sums = 6d83c9051b3b1a92a4ce884bad102f4079b3abfe1b186dca7a65ea871f82665d
+
+pkgname = python-transforms3d
+
