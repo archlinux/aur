@@ -1,6 +1,6 @@
 pkgbase = gogios
 	pkgdesc = Checks to see if required services are still running on important machines.
-	pkgver = 1.0.r2.g58b610b
+	pkgver = 1.2.r0.g4ebd7ed
 	pkgrel = 1
 	url = https://github.com/bkasin/gogios
 	install = gogios.install

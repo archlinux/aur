@@ -1,12 +1,17 @@
 post_install() {
     if [ ! -f /etc/gingertechengine/checks.json ]; then
         echo "Making default check file"
-        mv /etc/gingertechengine/example.json /etc/gingertechengine/checks.json
+        cp /etc/gingertechengine/example.json /etc/gingertechengine/checks.json
     fi
     
     if [ ! -f /etc/gingertechengine/gogios.toml ]; then
         echo "Making default config"
         cp /etc/gingertechengine/gogios.sample.toml /etc/gingertechengine/gogios.toml
+    fi
+
+    if [ ! -f /opt/gingertechengine/js/current.json ]; then
+	echo "Making current results file"
+	cp /etc/gingertechengine/checks.json /opt/gingertechengine/js/current.json
     fi
     
     if id "gogios" >/dev/null 2>&1; then
