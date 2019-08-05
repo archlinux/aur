@@ -2,7 +2,7 @@
 _hkgname=broadcast-chan
 pkgname=haskell-broadcast-chan
 pkgver=0.2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Closable, fair, single-wakeup channel type that avoids 0 reader space leaks"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('BSD3')
@@ -26,8 +26,8 @@ build() {
 
 package() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
-    install -D -m744 register.sh   ${pkgdir}/usr/share/haskell/${pkgname}/register.sh
-    install    -m744 unregister.sh ${pkgdir}/usr/share/haskell/${pkgname}/unregister.sh
+    install -D -m744 register.sh   ${pkgdir}/usr/share/haskell/register/${pkgname}.sh
+    install -D -m744 unregister.sh ${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh
     runhaskell Setup copy --destdir=${pkgdir}
     install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     rm -f ${pkgdir}/usr/share/doc/${pkgname}/LICENSE

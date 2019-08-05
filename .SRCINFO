@@ -1,7 +1,7 @@
 pkgbase = haskell-broadcast-chan
 	pkgdesc = Closable, fair, single-wakeup channel type that avoids 0 reader space leaks
 	pkgver = 0.2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/broadcast-chan
 	arch = x86_64
 	license = BSD3
