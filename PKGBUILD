@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://www.azul.com/products/zulu-community/'
 license=('custom')
 depends=(
-  'java-runtime-common>=3' 'ca-certificates-utils'
+  'java-environment-common=3' 'java-runtime-common>=3' 'ca-certificates-utils'
   # not 100% sure if all of these dependencies are needed
   # dependencies from jre11-openjdk-headless
   'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2'
