@@ -1,10 +1,10 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 
 pkgname=intiface-desktop
-pkgver=15.0.0
+pkgver=16.0.0
 pkgrel=1
 pkgdesc="Open-source, cross-platform application that acts as a hub for sex hardware access"
-depends=('electron')
+depends=('electron4')
 makedepends=('npm' 'yarn' 'git' 'trash-cli' 'typescript')
 arch=('i686' 'x86_64')
 url="https://intiface.com/desktop/"
@@ -12,8 +12,8 @@ license=('BSD')
 source=("https://github.com/intiface/intiface-desktop/archive/v${pkgver}.tar.gz"
         'intiface-desktop.sh'
         'intiface-desktop.desktop')
-sha256sums=('9624fe579d93afa294d93a184a2b013771a7b52a09156d2e0c0f32e54a62e1e3'
-            '4205a31af9b20ffaf3d124b6a08ea4e21d5c41be679f8412c203c20ee06e41ac'
+sha256sums=('68b5d5b30c681ddc607de083b78663a3d76265b3ede3b34a9e47a0ce2a7bff7c'
+            '605b843e41440eafbbf33a98ecae17db0033976532f8c6606e4f167ab618b4e2'
             'ece9fd45978dae583a9c572f3e64f8234350d5e53f9c1ae2da503c53b3ecff64')
 
 build() {
