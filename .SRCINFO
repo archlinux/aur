@@ -1,0 +1,19 @@
+pkgbase = pgbackrest
+	pkgdesc = Displays an auto-updating per-second count of the number of packets and bytes being handled by each specified NIC
+	pkgver = 2.15.1
+	pkgrel = 1
+	url = https://github.com/pgbackrest/pgbackrest
+	arch = any
+	license = MIT
+	depends = openssl
+	depends = libxml2
+	depends = icu
+	depends = gcc-libs
+	depends = xz
+	depends = perl
+	backup = etc/pgbackrest/pgbackrest.conf
+	source = https://github.com/pgbackrest/pgbackrest/archive/release/2.15.1.tar.gz
+	sha256sums = e559de3525129ed692ba97c94bd8ea5c86966f7e172c20b64fc95651225bc525
+
+pkgname = pgbackrest
+
