@@ -1,7 +1,7 @@
 pkgbase = openssh-selinux
 	pkgdesc = Premier connectivity tool for remote login with the SSH protocol, with SELinux support
 	pkgver = 8.0p1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openssh.com/portable.html
 	arch = x86_64
 	groups = selinux
@@ -14,8 +14,8 @@ pkgbase = openssh-selinux
 	depends = libselinux
 	optdepends = xorg-xauth: X11 forwarding
 	optdepends = x11-ssh-askpass: input passphrase in X
-	provides = openssh=8.0p1-1
-	provides = selinux-openssh=8.0p1-1
+	provides = openssh=8.0p1-2
+	provides = selinux-openssh=8.0p1-2
 	conflicts = openssh
 	conflicts = selinux-openssh
 	backup = etc/ssh/ssh_config
