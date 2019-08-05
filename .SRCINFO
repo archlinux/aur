@@ -1,7 +1,7 @@
 pkgbase = snapcraft
 	pkgdesc = Build Ubuntu snappy packages.
-	pkgver = 3.6
-	pkgrel = 2
+	pkgver = 3.7.1
+	pkgrel = 1
 	url = http://snapcraft.io
 	arch = any
 	license = GPL
@@ -26,8 +26,8 @@ pkgbase = snapcraft
 	depends = python-pylxd
 	optdepends = lxd
 	options = !emptydirs
-	source = https://github.com/snapcore/snapcraft/archive/3.6.tar.gz
-	sha256sums = c8f74b57b444152c339dfb233d6cc34b696ecfe74104d245ec7326bd5950fe11
+	source = https://github.com/snapcore/snapcraft/archive/3.7.1.tar.gz
+	sha256sums = 3cea888816a14f0526a64ec9d7a7c882e54ce29aa889a3aed97e079bb6c3c8cd
 
 pkgname = snapcraft
 
