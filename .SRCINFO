@@ -1,16 +1,16 @@
 pkgbase = kube-forwarder
 	pkgdesc = Easy to use Kubernetes port forwarding manager
-	pkgver = 1.3.2
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/pixel-point/kube-forwarder
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	depends = electron
-	source = kube-forwarder-1.3.2.tar.gz::https://github.com/pixel-point/kube-forwarder/archive/v1.3.2.tar.gz
+	source = kube-forwarder-1.4.1.tar.gz::https://github.com/pixel-point/kube-forwarder/archive/v1.4.1.tar.gz
 	source = kube-forwarder.desktop
 	source = kube-forwarder.sh
-	sha512sums = cfc06295e0dd31d23f63c3cba95f240e3ea2a958b0ba34742604478a69737248909e8a72315f25d931de07843b7a1df55efae09fd720bb0c540ee148b3f30f42
+	sha512sums = bccacb02495e376bc759299e670d68b8138486be3283b4a8b6024e129e2b5e29e4fab2ea10c812ed67eb8f7b19a278b022ce94080dd6abcbcb7fc92ae716eab5
 	sha512sums = 7e05c6d152488a9aa56e9c4aa01797f263ba09de1f6b91af487619ad424a833be6b2af722719aebd1906a74430b7ef8c93c5c4e7aef80c4a04776d8cce93ffd6
 	sha512sums = 808d36263a068ab068b7ee52a578cc194c4e37193009e3cc2393ef5dc03d2b4b11c9ab11da4d399c5a05e1dbeaa3916fe06886e61cd4f1226b488e135aa2d94d
 
