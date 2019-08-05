@@ -6,8 +6,7 @@ pkgbase = jabref-latest
 	arch = any
 	license = MIT
 	depends = archlinux-java-run>=4
-	depends = java-openjfx>=8
-	depends = java-openjfx<9
+	depends = java8-openjfx
 	depends = sh
 	depends = atk
 	depends = bzip2
@@ -55,7 +54,7 @@ pkgbase = jabref-latest
 	source = jabref.sh
 	source = jabref.desktop
 	sha256sums = SKIP
-	sha256sums = 5c1fd05ff42cfe35f7f1722fa349546bab877f00ac0d4756def08ae098615653
+	sha256sums = dad0a06f54ce346cc066c6e27e746974e850b77f04381f3c363021ee927e444d
 	sha256sums = b51970cc3b70da835f7ebc971d03570417dba7dae837f28f2cce213ecb844768
 	sha256sums = a26845ba60ef2588c52d7d18259a977b146c777f935573bacdffcdcefa2b41b5
 
