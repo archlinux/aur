@@ -14,6 +14,7 @@ pkgbase = python-pyxel
 	depends = python-opengl
 	depends = python-pillow
 	depends = python-sounddevice
+	depends = sdl2_image
 	source = git+https://github.com/kitao/pyxel#tag=v1.2.0
 	md5sums = SKIP
 

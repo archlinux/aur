@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/kitao/pyxel'
 license=('MIT')
 depends=('portaudio' 'python-glfw' 'python-numpy' 'python-opengl'
-         'python-pillow' 'python-sounddevice')
+         'python-pillow' 'python-sounddevice' 'sdl2_image')
 makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/kitao/pyxel#tag=v$pkgver")
 md5sums=('SKIP')
