@@ -36,7 +36,7 @@ package() {
       "${srcdir}/${_pkgname}/server/build/install/server/" \
       "${pkgdir}/usr/share/kotlin/kotlin-language-server"
     ln -srf \
-      "${pkgdir}/usr/share/kotlin/kotlin-language-server/bin/server" \
+      "${pkgdir}/usr/share/kotlin/kotlin-language-server/bin/kotlin-language-server" \
       "${pkgdir}/usr/bin/kotlin-language-server"
 }
 
