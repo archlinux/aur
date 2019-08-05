@@ -12,7 +12,7 @@ pkgbase = python-nazca
 	depends = python-pillow
 	depends = ipython
 	source = https://nazca-design.org/dist/nazca-0.5.3.zip
-	sha256sums = c89b3a2334d3b3b1baed5eedee66ee5005a9e1a4068db8a36df95e2ed034adfa
+	sha256sums = 81fdc50e3861c7baea03492b14da0c32cb7b3610deb17a182dabfe267a1dd582
 
 pkgname = python-nazca
 

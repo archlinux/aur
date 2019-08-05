@@ -8,7 +8,7 @@ arch=(any)
 url="https://nazca-design.org/"
 license=("AGPLv3+")
 depends=("python" "python-pyclipper" "python-pandas" "python-matplotlib" "python-pillow" "ipython")
-sha256sums=('c89b3a2334d3b3b1baed5eedee66ee5005a9e1a4068db8a36df95e2ed034adfa')
+sha256sums=('81fdc50e3861c7baea03492b14da0c32cb7b3610deb17a182dabfe267a1dd582')
 source=("https://nazca-design.org/dist/$pkg-$pkgver.zip")
 
 package() {
