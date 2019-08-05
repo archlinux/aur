@@ -13,6 +13,7 @@ makedepends=(git
              pkg-config
              meson
              intltool
+             rust
              gtk-doc)
 provides=(squeekboard)
 conflicts=(squeekboard)

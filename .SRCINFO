@@ -12,6 +12,7 @@ pkgbase = squeekboard-git
 	makedepends = pkg-config
 	makedepends = meson
 	makedepends = intltool
+	makedepends = rust
 	makedepends = gtk-doc
 	depends = gtk3
 	depends = libcanberra
