@@ -6,7 +6,7 @@ pkgdesc="Kanji stroke order font"
 arch=(any)
 depends=(fontconfig xorg-font-utils)
 url="http://www.nihilist.org.uk/"
-source=("http://www.nihilist.org.uk/KanjiStrokeOrders_v${pkgver}.zip")
+source=("https://www.dropbox.com/s/tnq52bz46n5zyh1/KanjiStrokeOrders_v${pkgver}.zip")
 sha256sums=('66ef5987dd64474e6c638f020fdb6fbe10db4b58f1420e32b22b320d2407f5cb')
 license=('BSD')
 
