@@ -15,8 +15,8 @@ package() {
     # extract the data file (already has everything as we need it)
     tar -xf "${srcdir}/data.tar.xz"
 
-    install -Dm755 "${srcdir}/usr/sbin/radeontop-gui" "${pkgdir}/usr/bin/radeontop-gui"
-    install -Dm755 "${srcdir}/usr/sbin/radeontop-gui.v1" "${pkgdir}/usr/bin/radeontop-gui.v1"
+    install -Dm755 "${srcdir}/usr/sbin/radeontop-gui" "${pkgdir}/usr/sbin/radeontop-gui"
+    install -Dm755 "${srcdir}/usr/sbin/radeontop-gui.v1" "${pkgdir}/usr/sbin/radeontop-gui.v1"
     install -Dm755 "${srcdir}/usr/share/applications/radeontop-gui.desktop" "${pkgdir}/usr/share/applications/radeontop-gui.desktop"
 
 }
