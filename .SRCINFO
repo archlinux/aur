@@ -1,6 +1,6 @@
 pkgbase = rocksdb-lite
 	pkgdesc = Embedded key-value store for fast storage (lite version)
-	pkgver = 6.0.2
+	pkgver = 6.2.2
 	pkgrel = 1
 	url = http://rocksdb.org
 	arch = i686
@@ -15,8 +15,10 @@ pkgbase = rocksdb-lite
 	depends = gcc-libs
 	provides = rocksdb
 	conflicts = rocksdb
-	source = https://github.com/facebook/rocksdb/archive/v6.0.2.tar.gz
-	sha256sums = 89e0832f1fb00ac240a9438d4bbdae37dd3e52f7c15c3f646dc26887da16f342
+	source = https://github.com/facebook/rocksdb/archive/v6.2.2.tar.gz
+	source = fix-compile-warnings-treated-as-errors-for-gcc9.patch
+	sha256sums = 3e7365cb2a35982e95e5e5dd0b3352dc78573193dafca02788572318c38483fb
+	sha256sums = 775b1099346843f0598168aff8d6621857012155234a2d50f87ed4bcad363c2d
 
 pkgname = rocksdb-lite
 
