@@ -2,9 +2,9 @@
 
 _pkgname=youtube-viewer
 pkgname=youtube-viewer-git
-pkgver=3.5.4
+pkgver=3.5.5
 pkgrel=1
-pkgdesc="A command line utility for searching and streaming videos from YouTube."
+pkgdesc="Command line utility for searching and streaming videos from YouTube."
 arch=('any')
 url="https://github.com/trizen/youtube-viewer"
 license=('Artistic2.0')
@@ -13,20 +13,20 @@ makedepends=('git')
 provides=('youtube-viewer')
 conflicts=('youtube-viewer')
 
-depends=('perl>=5.16.0' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-libwww')
+depends=('perl' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-libwww')
 
 optdepends=(
-            'perl-json-xs: faster JSON to HASH conversion'
-            'perl-lwp-useragent-cached: local cache support'
-            'perl-unicode-linebreak: for printing results in a fixed-width format (-W)'
-            'perl-term-readline-gnu: for better STDIN support (+history)'
-            'youtube-dl: for playing videos with encrypted signatures'
-            'wget: for downloading videos with wget'
-            'mplayer: for playing videos with MPlayer'
-            'vlc: for playing videos with VLC'
-            'mpv: for playing videos with MPV (recommended)'
-            'ffmpeg: for conversions and MKV merging'
-            )
+    'ffmpeg: conversions and MKV merging'
+    'perl-json-xs: faster JSON parsing'
+    'perl-lwp-useragent-cached: local cache support'
+    'perl-term-readline-gnu: better STDIN support (+history)'
+    'perl-unicode-linebreak: print results in a fixed-width format (-W)'
+    'mpv: play videos with MPV (recommended)'
+    'mplayer: play videos with MPlayer'
+    'vlc: play videos with VLC'
+    'wget: download videos with wget'
+    'youtube-dl: play videos with encrypted signatures'
+)
 
 source=('git+https://github.com/trizen/youtube-viewer.git')
 md5sums=('SKIP')
