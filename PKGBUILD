@@ -1,10 +1,10 @@
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 pkgname=fanctl-git
-pkgver=r17.5657da4
+pkgver=r20.5080e76
 pkgrel=1
 pkgdesc=""
 arch=('x86_64')
-url="https://github.com/mcoffin/fanctl"
+url="https://gitlab.com/mcoffin/fanctl"
 license=('GPL')
 groups=()
 depends=()

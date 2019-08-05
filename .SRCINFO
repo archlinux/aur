@@ -1,7 +1,7 @@
 pkgbase = fanctl-git
-	pkgver = r17.5657da4
+	pkgver = r20.5080e76
 	pkgrel = 1
-	url = https://github.com/mcoffin/fanctl
+	url = https://gitlab.com/mcoffin/fanctl
 	arch = x86_64
 	license = GPL
 	makedepends = git
