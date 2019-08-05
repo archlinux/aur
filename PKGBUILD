@@ -2,7 +2,7 @@
 # Maintainer: Leif Warner <abimelech@gmail.com>
 pkgname=taffybar
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 license=('BSD3')
 pkgdesc="A desktop bar similar to xmobar, but with more GUI"
 url="http://github.com/travitch/taffybar"
@@ -11,17 +11,20 @@ depends=("ghc-libs"
          "haskell-alsa-mixer"
          "haskell-configfile"
          "haskell-either"
+         "haskell-gi-pango"
+         "haskell-broadcast-chan"
+         "haskell-http-client"
+         "haskell-http-types"
+         "haskell-http-client-tls"
          "haskell-gi-cairo-connector"
          "haskell-gi-cairo-render"
          "haskell-hstringtemplate"
          "haskell-http"
          "haskell-x11"
+         "haskell-scotty"
          "haskell-dyre"
-         "haskell-gtk"
-         "haskell-gtk-traymanager"
          "haskell-enclosed-exceptions"
          "haskell-dbus"
-         "haskell-mtl"
          "haskell-multimap"
          "haskell-network"
          "haskell-network-uri"
@@ -42,7 +45,6 @@ depends=("ghc-libs"
          "haskell-dbus-hslogger"
          "haskell-xml-helpers"
          "haskell-status-notifier-item"
-         "haskell-gi-gobject"
          "haskell-gi-gdkx11"
          "haskell-gi-gtk"
          "haskell-gtk-strut"
@@ -54,18 +56,18 @@ makedepends=('ghc')
 install=taffybar.install
 source=("https://github.com/taffybar/taffybar/archive/v${pkgver}.tar.gz"
         "dynamic-compilation.patch"
+        "0001-will-hopefully-work.patch"
         "taffybar.install"
         "taffybar.service"
         "https://raw.githubusercontent.com/taffybar/taffybar/13b32fc2bc62129093494e939339a979d641691c/xmonad.hs.example"
-        "https://github.com/taffybar/taffybar/commit/ee2cd6b871ea05bc60a050d5cefc9e307475e794.patch"
         )
 
 sha256sums=('51ca3f4dd505a9d5fb03a3150898bcd090e037ca851f04a4ce4185135bf537ca'
             'ff90b6e3d05b3bb94cfc2365708bbabbb96fd9a9a4919c0face6f8d2b69037e7'
+            '80a3eba5861ec0d92e0b4e5ebdd7b7c0797695c5f997ca9d329e53eee02508f0'
             'e1a1c820057c64fab4521de3c9b153e4d54e7df9a96d94679dbffc9cec245076'
             'f4a08e887ba527a24f4cecc22393023bf7230172cc76f840ddfc5cfc54182a7e'
-            '1a8ca4f177891941960585e228d5386ea9f120a1bb12ac0a956200de839032cb'
-            '697275116d1a11410326dc40d9bc8d712f51f9c156b5ff241fb681b79a5ffb18')
+            '1a8ca4f177891941960585e228d5386ea9f120a1bb12ac0a956200de839032cb')
 
 # PKGBUILD functions
 
@@ -75,7 +77,6 @@ prepare() {
     # See https://github.com/willdonnelly/dyre/issues/5
     #sed -i -e 's/Dyre.ghcOpts = \["-threaded", "-rtsopts"\]/Dyre.ghcOpts = \["-threaded", "-rtsopts", "-dynamic"\]/'  src/System/Taffybar.hs
     patch -p1 -i ../dynamic-compilation.patch
-    patch -p1 -i ../ee2cd6b871ea05bc60a050d5cefc9e307475e794.patch
 }
 
 build() {
@@ -84,7 +85,7 @@ build() {
     runhaskell Setup configure -O --enable-shared --disable-library-vanilla \
         --enable-executable-dynamic \
         --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
-        --libsubdir=\$compiler/site-local/\$pkgid \
+        --dynlibdir=/usr/lib  --libsubdir=\$compiler/site-local/\$pkgid \
         -fnetwork-uri
     runhaskell Setup build
     runhaskell Setup register --gen-script

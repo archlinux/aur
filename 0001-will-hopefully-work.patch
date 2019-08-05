@@ -1,0 +1,25 @@
+From 04184c6077d2d28db0c383a5c271f5b1bfd30d98 Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Mon, 5 Aug 2019 09:14:49 -0400
+Subject: [PATCH] will hopefully work
+
+---
+ taffybar.cabal | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/taffybar.cabal b/taffybar.cabal
+index 4b7521c..0b9066b 100644
+--- a/taffybar.cabal
++++ b/taffybar.cabal
+@@ -43,7 +43,7 @@ library
+                , HStringTemplate >= 0.8 && < 0.9
+                , X11 >= 1.5.0.1
+                , ansi-terminal
+-               , broadcast-chan >= 0.2.0.2
++               , broadcast-chan 
+                , bytestring
+                , containers
+                , dbus >= 1.2.1 && < 2.0.0
+-- 
+2.22.0
+

@@ -1,0 +1,19 @@
+module Main where
+
+import           XMonad
+import           XMonad.Hooks.EwmhDesktops        (ewmh)
+import           XMonad.Hooks.ManageDocks
+import           System.Taffybar.Support.PagerHints (pagerHints)
+
+       -- xmonad entrypoint
+main = xmonad $
+
+       -- docks allows xmonad to handle taffybar
+       docks $
+
+       -- gives taffybar logger information
+       ewmh $
+       pagerHints
+
+       -- xmonad config
+       defaultConfig
