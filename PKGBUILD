@@ -2,7 +2,7 @@
 pkgname=sonic
 pkgver=1.2.2
 pkgrel=1
-pkgdesc="🦔 Fast, lightweight & schema-less search backend. An alternative to Elasticsearch that runs on a few MBs of RAM"
+pkgdesc="Fast, lightweight & schema-less search backend. An alternative to Elasticsearch that runs on a few MBs of RAM"
 arch=('i686' 'x86_64')
 url="https://github.com/valeriansaliou/sonic"
 license=('MPL2')
