@@ -1,12 +1,14 @@
 pkgbase = gogios-bin
 	pkgdesc = Checks to see if required services are still running on important machines.
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://angrysysadmins.tech
 	install = gogios-bin.install
 	arch = x86_64
 	license = MIT
 	optdepends = nginx
+	provides = gogios
+	conflicts = gogios
 	noextract = gogios-1.2.deb
 	options = !strip
 	options = !emptydirs
