@@ -1,7 +1,7 @@
 pkgbase = taffybar
 	pkgdesc = A desktop bar similar to xmobar, but with more GUI
 	pkgver = 3.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/travitch/taffybar
 	install = taffybar.install
 	arch = i686
@@ -55,14 +55,12 @@ pkgbase = taffybar
 	depends = xmonad-contrib
 	source = https://github.com/taffybar/taffybar/archive/v3.2.1.tar.gz
 	source = dynamic-compilation.patch
-	source = 0001-will-hopefully-work.patch
 	source = taffybar.install
 	source = taffybar.service
 	source = https://raw.githubusercontent.com/taffybar/taffybar/13b32fc2bc62129093494e939339a979d641691c/xmonad.hs.example
 	sha256sums = 51ca3f4dd505a9d5fb03a3150898bcd090e037ca851f04a4ce4185135bf537ca
 	sha256sums = ff90b6e3d05b3bb94cfc2365708bbabbb96fd9a9a4919c0face6f8d2b69037e7
-	sha256sums = 80a3eba5861ec0d92e0b4e5ebdd7b7c0797695c5f997ca9d329e53eee02508f0
-	sha256sums = e1a1c820057c64fab4521de3c9b153e4d54e7df9a96d94679dbffc9cec245076
+	sha256sums = 554340a052abecb78fbb959d1a05b8f4f4db947fc151e7f0f8c49f2300f1ab6d
 	sha256sums = f4a08e887ba527a24f4cecc22393023bf7230172cc76f840ddfc5cfc54182a7e
 	sha256sums = 1a8ca4f177891941960585e228d5386ea9f120a1bb12ac0a956200de839032cb
 

@@ -2,7 +2,7 @@
 # Maintainer: Leif Warner <abimelech@gmail.com>
 pkgname=taffybar
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 license=('BSD3')
 pkgdesc="A desktop bar similar to xmobar, but with more GUI"
 url="http://github.com/travitch/taffybar"
@@ -56,7 +56,6 @@ makedepends=('ghc')
 install=taffybar.install
 source=("https://github.com/taffybar/taffybar/archive/v${pkgver}.tar.gz"
         "dynamic-compilation.patch"
-        "0001-will-hopefully-work.patch"
         "taffybar.install"
         "taffybar.service"
         "https://raw.githubusercontent.com/taffybar/taffybar/13b32fc2bc62129093494e939339a979d641691c/xmonad.hs.example"
@@ -64,8 +63,7 @@ source=("https://github.com/taffybar/taffybar/archive/v${pkgver}.tar.gz"
 
 sha256sums=('51ca3f4dd505a9d5fb03a3150898bcd090e037ca851f04a4ce4185135bf537ca'
             'ff90b6e3d05b3bb94cfc2365708bbabbb96fd9a9a4919c0face6f8d2b69037e7'
-            '80a3eba5861ec0d92e0b4e5ebdd7b7c0797695c5f997ca9d329e53eee02508f0'
-            'e1a1c820057c64fab4521de3c9b153e4d54e7df9a96d94679dbffc9cec245076'
+            '554340a052abecb78fbb959d1a05b8f4f4db947fc151e7f0f8c49f2300f1ab6d'
             'f4a08e887ba527a24f4cecc22393023bf7230172cc76f840ddfc5cfc54182a7e'
             '1a8ca4f177891941960585e228d5386ea9f120a1bb12ac0a956200de839032cb')
 
@@ -105,7 +103,6 @@ package() {
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm 644 CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm 644 taffybar.hs.example -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm 644 ${srcdir}/taffybar.service -t "${pkgdir}/usr/lib/systemd/user"
     install -Dm 644 ${srcdir}/xmonad.hs.example -t "{$pkgdir}/usr/share/doc/${pkgname}"
 
