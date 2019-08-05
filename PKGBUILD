@@ -11,7 +11,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.2.0_devel.111950.8dd26fa2f06
+pkgver=19.2.0_devel.113971.74470baebbd
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -40,7 +40,7 @@ sha512sums=('SKIP'
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
 
 # MESA_WHICH_LLVM is an environment variable used to determine which llvm package tree is used to built mesa-git against.
-# Adding a line to makepkg.conf that sets this value is the simplest way to ensure a specific choice.
+# Adding a line to ~/.bash_rc that sets this value is the simplest way to ensure a specific choice.
 # 
 # 1: llvm-minimal-git (aur) preferred value
 # 2: llvm-git (aur)
@@ -73,8 +73,8 @@ case $MESA_WHICH_LLVM in
         ;;
     4)
         # extra/llvm
-        makedepends+=(lib32-llvm=8.0.0)
-        depends+=(lib32-llvm-libs=8.0.0)
+        makedepends+=(lib32-llvm=8.0.1)
+        depends+=(lib32-llvm-libs=8.0.1)
         ;;
     *)
 esac
