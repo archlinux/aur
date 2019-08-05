@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=gitomatic
-pkgver=0.1.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A tool to monitor git repositories and automatically pull & push changes"
 arch=('x86_64' 'i686')
