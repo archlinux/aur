@@ -1,0 +1,11 @@
+diff -aur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt    2019-08-04 12:39:49.674360014 +0100
++++ b/CMakeLists.txt    2019-08-04 12:40:02.904652576 +0100
+@@ -75,6 +75,7 @@
+   ${GTK_INCLUDE_DIRS}
+   ${M_INCLUDE_DIR}
+   ${NOTIFY_INCLUDE_DIRS}
++  /usr/include/harfbuzz
+ )
+
+ ADD_SUBDIRECTORY(configuration)
