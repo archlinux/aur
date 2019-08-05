@@ -1,6 +1,6 @@
 pkgbase = sqlite-replication
 	pkgdesc = A C library that implements an SQL database engine
-	pkgver = 3.26.0
+	pkgver = 3.28.0
 	pkgrel = 1
 	url = http://www.sqlite.org/
 	arch = x86_64
@@ -10,36 +10,36 @@ pkgbase = sqlite-replication
 	makedepends = zlib
 	options = !emptydirs
 	options = !makeflags
-	source = https://www.sqlite.org/2018/sqlite-src-3260000.zip
-	source = https://www.sqlite.org/2018/sqlite-doc-3260000.zip
+	source = https://www.sqlite.org/2019/sqlite-src-3280000.zip
+	source = https://www.sqlite.org/2019/sqlite-doc-3280000.zip
 	source = license.txt
 	source = replication.patch
-	sha1sums = a05429d6a8337d60ddc7c6381b49941059a55f68
-	sha1sums = 13c48e0396d15f3f4978214e144445031a23d509
+	sha1sums = 21c391f177ac39750e5a8ac61d07550bf6befb4a
+	sha1sums = f3242cf186a4e194e7d1a5e00384dd4aa66ec16b
 	sha1sums = f34f6daa4ab3073d74e774aad21d66878cf26853
-	sha1sums = 163f9030b71267e08fdc63749de18b4e7d204ea5
+	sha1sums = ca5b4bb48976aefa198c4fcbab75313d3d4171f1
 
 pkgname = sqlite-replication
 	pkgdesc = A C library that implements an SQL database engine
 	depends = readline
 	depends = zlib
-	provides = sqlite=3.26.0
-	provides = sqlite3=3.26.0
+	provides = sqlite=3.28.0
+	provides = sqlite3=3.28.0
 	conflicts = sqlite
 	replaces = sqlite3
 
 pkgname = sqlite-replication-tcl
 	pkgdesc = sqlite Tcl Extension Architecture (TEA)
 	depends = sqlite
-	provides = sqlite-tcl=3.26.0
-	provides = sqlite3-tcl=3.26.0
+	provides = sqlite-tcl=3.28.0
+	provides = sqlite3-tcl=3.28.0
 	conflicts = sqlite-tcl
 	replaces = sqlite3-tcl
 
 pkgname = sqlite-replication-doc
 	pkgdesc = most of the static HTML files that comprise this website, including all of the SQL Syntax and the C/C++ interface specs and other miscellaneous documentation
-	provides = sqlite-doc=3.26.0
-	provides = sqlite3-doc=3.26.0
+	provides = sqlite-doc=3.28.0
+	provides = sqlite3-doc=3.28.0
 	conflicts = sqlite-doc
 	replaces = sqlite3-doc
 
@@ -47,6 +47,6 @@ pkgname = sqlite-replication-analyzer
 	pkgdesc = An analysis program for sqlite3 database files
 	depends = sqlite
 	depends = tcl
-	provides = sqlite-analyzer=3.26.0
+	provides = sqlite-analyzer=3.28.0
 	conflicts = sqlite-analyzer
 
