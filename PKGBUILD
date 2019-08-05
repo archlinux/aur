@@ -11,7 +11,7 @@ url="https://metacpan.org/release/${_dist}"
 license=('PerlArtistic' 'GPL')
 depends=('perl')
 options=('!emptydirs')
-source=(http://search.cpan.org/CPAN/authors/id/I/IZ/IZUT/${_dist}-${pkgver}.tar.gz)
+source=(https://search.cpan.org/CPAN/authors/id/I/IZ/IZUT/${_dist}-${pkgver}.tar.gz)
 md5sums=('436049dc2c7dfd8423d8bcc807248b31')
 sha512sums=('3e64a0ba224427e688a45945860fd5e876e6ca5b01298e744e257981ed84d933ab14c9ab8d5b74316c031ffa9821afd9563270109cba20a5939f14af2dde8668')
 
