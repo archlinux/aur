@@ -1,6 +1,6 @@
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 pkgname=fanctl-git
-pkgver=r4.bd570a8
+pkgver=r17.5657da4
 pkgrel=1
 pkgdesc=""
 arch=('x86_64')
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('fanctl::git+https://github.com/mcoffin/fanctl.git#branch=master')
+source=('fanctl::git+https://gitlab.com/mcoffin/fanctl.git#branch=master')
 noextract=()
 sha256sums=('SKIP')
 
