@@ -1,6 +1,6 @@
 # Maintainer: mh00h <matt.halbert@gmail.com>
 pkgname=nextflow
-pkgver=19.04.1
+pkgver=19.07.0
 pkgrel=1
 pkgdesc="A DSL for data-driven computational pipelines"
 install=nextflow.install
