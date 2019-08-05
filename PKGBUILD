@@ -13,7 +13,7 @@ depends=('qt5-declarative' 'qt5-multimedia' 'qt5-svg' 'qt5-sensors'
          'qml-box2d' 'hicolor-icon-theme')
 makedepends=('cmake' 'extra-cmake-modules' 'qt5-tools' 'kdoctools')
 replaces=('gcompris' 'gcompris-data')
-source=(http://gcompris.net/download/qt/src/$pkgname-$pkgver.tar.xz)
+source=(https://gcompris.net/download/qt/src/$pkgname-$pkgver.tar.xz)
 sha256sums=('a2bc2ce6e2687120d7ff2dee036fd85cfed70a793a9cc385b786d054681c8818')
 
 prepare() {
