@@ -1,5 +1,5 @@
 #!/bin/sh
-prefix=/opt/osxcross/SDK/MacOSX10.11.sdk/usr
+prefix=@PREFIX@
 
 additional_args=" \
   -DCMAKE_INSTALL_PREFIX:PATH=${prefix} \
@@ -10,10 +10,10 @@ additional_args=" \
   -DLIB_INSTALL_DIR:PATH=${prefix}/lib \
   -DSYSCONF_INSTALL_DIR:PATH=${prefix}/etc \
   -DSHARE_INSTALL_DIR:PATH=${prefix}/share \
-  -DCMAKE_TOOLCHAIN_FILE=/opt/osxcross/share/apple-darwin/toolchain-@TRIPLE@.cmake"
+  -DCMAKE_TOOLCHAIN_FILE=@OSXCROSSDIR@/share/apple-darwin/toolchain-@TRIPLE@.cmake"
 
 [[ ! $PREVENT_FORCING_SHARED_LIBS ]] &&
   additional_args+=' -DBUILD_SHARED_LIBS:BOOL=ON' ||
   additional_args+=' -DBUILD_SHARED_LIBS:BOOL=OFF'
 
-PATH="/opt/osxcross/bin:${prefix}/bin:$PATH" cmake $additional_args "$@"
+PATH="@OSXCROSSDIR@/bin:${prefix}/bin:$PATH" cmake $additional_args "$@"
