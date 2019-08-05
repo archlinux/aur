@@ -10,7 +10,7 @@ depends=("qt5-base" "qt5-multimedia" "qt5-svg" "qt5-serialport" "qwt" "sqlite")
 arch=('x86_64')
 options=('strip')
 source=("$url/content/files/$pkgname-$pkgver-x86_64.tar.gz")
-md5sums=('6e91b45dd2fc821165265fb28151e8e3')
+md5sums=('f41c8814468d9095d88c1f3f58941707')
 
 package() {
   install -Dm755 "$srcdir/mit30" "$pkgdir/usr/bin/$pkgname"
