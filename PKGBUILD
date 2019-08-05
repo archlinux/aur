@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=('drill-search-cli' 'drill-search-gtk')
 pkgbase=drill-search
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 arch=('x86_64')
 url="https://drill.software"
@@ -11,7 +11,7 @@ install="$pkgbase.install"
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/yatima1460/Drill/archive/$pkgver.tar.gz"
 	"$pkgbase"
 	"$pkgbase-gtk.desktop")
-sha256sums=('f1c9944dfbc42215d9b85cd403db25a84756d4862327a6ff0f8b3797424c694f'
+sha256sums=('ecd3a976e85210a21d0bb0082b490993d9c152c7b0b2183293e003a20b512d54'
             'b875f928546aee7855cb1db9afc8ab3f1a8a34d43de5bbd62f7076d7ba9f3917'
             '5bafb37baf608a3168abba2ab9ea174a1d0f0472f52d3222ea0a05957c997c50')
 
