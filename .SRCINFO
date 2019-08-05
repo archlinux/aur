@@ -1,15 +1,15 @@
 pkgbase = lybniz
 	pkgdesc = An easy to use mathematical function graph plotter written in Python and GTK.
-	pkgver = 1.3.2
+	pkgver = 3.0.4
 	pkgrel = 1
-	url = http://lybniz2.sourceforge.net/index.html
+	url = https://github.com/thomasfuhringer/lybniz
 	arch = any
 	license = BSD
-	depends = python2
-	depends = pygtk
-	optdepends = gnome-python: GNOME Help Support
-	source = https://downloads.sourceforge.net/project/lybniz2/lybniz/1.3.2/lybniz-1.3.2.tar.gz
-	md5sums = 0effc8eba87cfa3514ec54157e7f9815
+	makedepends = python-setuptools
+	depends = python-gobject
+	depends = hicolor-icon-theme
+	source = lybniz-3.0.4.tar.gz::https://github.com/thomasfuhringer/lybniz/archive/v3.0.4.tar.gz
+	sha256sums = 725c5274115bd7faad3abb0b7cd2ae8a377b73cbcc8b4e8a6c9522a772976983
 
 pkgname = lybniz
 
