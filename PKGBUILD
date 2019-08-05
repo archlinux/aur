@@ -2,7 +2,7 @@
 # Contributor: Fabio Tardivo <x95a31x at gmail dot com>
 pkgname=minizinc-ide
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=(x86_64)
 url=http://www.minizinc.org/ide/
@@ -15,7 +15,7 @@ source=(
     minizinc-ide.desktop
     fzn-gecode-gist-lib-path.patch
     https://raw.githubusercontent.com/MiniZinc/MiniZincIDE/master/resources/icon.png
-    https://github.com/MiniZinc/MiniZincIDE/releases/download/$pkgver/MiniZincIDE-$pkgver-bundle-linux.tgz
+    https://github.com/MiniZinc/MiniZincIDE/releases/download/$pkgver/MiniZincIDE-$pkgver-bundle-linux-$arch.tgz
 )
 sha256sums=(
     bf26b9e3cae148fb05ce131ef62076bda467ebd2ce9913525a5540f09435c2b6
