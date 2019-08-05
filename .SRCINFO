@@ -11,6 +11,7 @@ pkgbase = pam_abl-git
 	makedepends = asciidoc
 	makedepends = cmake
 	makedepends = kyotocabinet
+	makedepends = cunit
 	depends = db
 	depends = pam
 	optdepends = kyotocabinet: faster database

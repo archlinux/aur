@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/deksai/pam_abl"
 license=('GPL2+')
 depends=(db pam)
-makedepends=(git asciidoc cmake kyotocabinet)
+makedepends=(git asciidoc cmake kyotocabinet cunit)
 optdepends=("kyotocabinet: faster database")
 source=(git+https://github.com/deksai/pam_abl)
 sha512sums=('SKIP')
@@ -36,6 +36,12 @@ build() {
 
   cd doc
   sh generate.sh
+}
+
+check() {
+  cd "${srcdir}/${pkgname%-git}"
+  ./pam_abl_test pam_abl_bdb.so
+  ./pam_abl_test pam_abl_kc.so
 }
 
 package() {
