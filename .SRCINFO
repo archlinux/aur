@@ -1,7 +1,7 @@
 pkgbase = lemonldap-ng
 	pkgdesc = A modular WebSSO (Single Sign On) based on Apache::Session modules
-	pkgver = 2.0.4
-	pkgrel = 2
+	pkgver = 2.0.5
+	pkgrel = 1
 	url = https://lemonldap-ng.org/
 	arch = any
 	license = GPL
@@ -38,9 +38,10 @@ pkgbase = lemonldap-ng
 	depends = perl-crypt-urandom
 	depends = perl-module-pluggable
 	depends = perl-convert-base32
+	depends = perl-text-unidecode
 	optdepends = uwsgi-plugin-psgi: for running under uWSGI
-	source = https://release.ow2.org/lemonldap/lemonldap-ng-2.0.4.tar.gz
-	sha512sums = ef36e4c502910cd56d9cb39c46418b6b28afa823f9be61e3f9bca247d6cbb7c07b74f2f3634fa14b25b00198b48d67f69a3286cac50e7054200f3bc0ce8ccc19
+	source = https://release.ow2.org/lemonldap/lemonldap-ng-2.0.5.tar.gz
+	sha512sums = bd1e5296ea345db9ea3cd23b31add593c7f9f6eb0692d97aca04ce93078d12bdf701581189125e414f0b9c8d977cc27146adca359e0868731637ead5638c8d7a
 
 pkgname = lemonldap-ng
 
