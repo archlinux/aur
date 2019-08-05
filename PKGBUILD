@@ -3,7 +3,7 @@
 # This PKGBUILD is based on the packages jabref and jabref-git
 
 pkgname=jabref-latest
-pkgver=20190527
+pkgver=20190802
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java; latest master version from git"
 arch=('any')
