@@ -2,7 +2,7 @@
 
 pkgname=kotlin-language-server-git
 _pkgname=kotlin-language-server
-pkgver=0.1.13.r458.125b3fd
+pkgver=r576.e6f7637
 pkgrel=1
 pkgdesc="Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol"
 arch=(any)
@@ -17,8 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "%s.r%s.%s" \
-    "$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' package.json)" \
+  printf "r%s.%s" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
