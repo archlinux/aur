@@ -13,7 +13,12 @@ source=(radeontop-gui_1.5.5-1ubuntu18.10.1_amd64.deb)
 
 package() {
     # extract the data file (already has everything as we need it)
-    tar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+    tar -xf "${srcdir}/data.tar.xz"
+
+    install -Dm755 "${srcdir}/usr/sbin/radeontop-gui" "${pkgdir}/usr/bin/radeontop-gui"
+    install -Dm755 "${srcdir}/usr/sbin/radeontop-gui.v1" "${pkgdir}/usr/bin/radeontop-gui.v1"
+    install -Dm755 "${srcdir}/usr/share/applications/radeontop-gui.desktop" "${pkgdir}/usr/share/applications/radeontop-gui.desktop"
+
 }
 
 md5sums=('2fe6799e3172b3dce86f1037623c4ba3')
