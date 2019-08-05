@@ -1,26 +1,23 @@
-# Maintainer: See AUR interface for current maintainer and contact information.
+# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
 pkgname=groff-git
-pkgver=1.22.4.10.g68a34636
+pkgver=1.22.4.37.gee0ce46b
 pkgrel=1
 pkgdesc="GNU Troff. Official git trunk."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/groff/"
 license=('GPL')
-depends=('uchardet')
-makedepends=('git' 'netpbm' 'psutils' 'ghostscript' 'libxaw')
+depends=('uchardet' 'netpbm' 'psutils' 'ghostscript')
+makedepends=('git' 'libxaw')
 conflicts=('groff')
 provides=('groff')
-install="$pkgname".install
 source=("$pkgname::git://git.savannah.gnu.org/groff.git" 
-#source=("$pkgname::git+http://git.savannah.gnu.org/r/groff.git" 
-	'site.tmac')
-optdepends=('netpbm:      Enable grohtml image processing.'
-            'psutils:     Enable postscript file transformation.'
-            'ghostscript: Enable grohtml image and gropdf PDF file creation.'
-            'libxaw:      Enable gxditvew.')
-sha384sums=('SKIP'
-            '393a4e1b807ab3f77e0ceb10c0c844b130720b65a46e561187e5a59268e1dce04c0d54ca5271f171dc2af62501197a19')
+        "gnulib-git::git://git.sv.gnu.org/gnulib.git"
+	      'site.tmac')
+optdepends=('libxaw:      Enable gxditvew.')
+sha256sums=('SKIP'
+            'SKIP'
+            'af59ecde597ce9f8189368a7739279a5f8a391139fe048ef6b4e493ed46e5f5f')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -30,7 +27,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  ./bootstrap
+  sed -i.bak -e "s/\[2\.62\]/\[2\.63\]/" configure.ac
+  ./bootstrap --gnulib-srcdir="$srcdir"/gnulib-git --bootstrap-sync --no-git
 }
 
 build() {
@@ -62,7 +60,7 @@ package() {
   if [[ ${LANG/en_US} ]] || [[ ${LANG/es_CO} ]]; then
     make DESTDIR="$pkgdir/" PAPER=letter install
   else
-    make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir/" PAPER=A4 install
   fi
   
   ## Copypaste from core package's PKGBUILD...
@@ -75,7 +73,8 @@ package() {
   # FS33760 - TERMCAP variables not followed
   # TODO: everyone is doing this - find out why upstream does not...
   #
-  # Having being privy the whole thing longer than 10 years ago... Blech! V.
+  # Having being privy to the whole thing since 2003, I wonder why people
+  # still stick to this. Blech! Vorbote.
   #
   cat $srcdir/site.tmac >> \
     $pkgdir/usr/share/groff/site-tmac/man.local

@@ -13,3 +13,4 @@ src/
 *.jar
 *.zip
 groff-git
+gnulib-git

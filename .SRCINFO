@@ -1,28 +1,26 @@
 pkgbase = groff-git
 	pkgdesc = GNU Troff. Official git trunk.
-	pkgver = 1.22.4.10.g68a34636
+	pkgver = 1.22.4.37.gee0ce46b
 	pkgrel = 1
 	url = http://www.gnu.org/software/groff/
-	install = groff-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = netpbm
-	makedepends = psutils
-	makedepends = ghostscript
 	makedepends = libxaw
 	depends = uchardet
-	optdepends = netpbm: Enable grohtml image processing.
-	optdepends = psutils: Enable postscript file transformation.
-	optdepends = ghostscript: Enable grohtml image and gropdf PDF file creation.
+	depends = netpbm
+	depends = psutils
+	depends = ghostscript
 	optdepends = libxaw: Enable gxditvew.
 	provides = groff
 	conflicts = groff
 	source = groff-git::git://git.savannah.gnu.org/groff.git
+	source = gnulib-git::git://git.sv.gnu.org/gnulib.git
 	source = site.tmac
-	sha384sums = SKIP
-	sha384sums = 393a4e1b807ab3f77e0ceb10c0c844b130720b65a46e561187e5a59268e1dce04c0d54ca5271f171dc2af62501197a19
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = af59ecde597ce9f8189368a7739279a5f8a391139fe048ef6b4e493ed46e5f5f
 
 pkgname = groff-git
 
