@@ -1,7 +1,7 @@
 pkgbase = radeontop-gui
 	pkgdesc = Utility to show Radeon GPU utilization
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erol-y/radeontop-gui
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,9 @@ pkgbase = radeontop-gui
 	depends = libdrm
 	depends = wxgtk3
 	source = radeontop-gui_1.5.5-1ubuntu18.10.1_amd64.deb
+	source = radeontop-gui
 	md5sums = 2fe6799e3172b3dce86f1037623c4ba3
+	md5sums = 50d03aaf94d292b983e4e667b4fcbda4
 
 pkgname = radeontop-gui
 
