@@ -1,0 +1,14 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 4672499..756ddd8 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -44,9 +44,6 @@ default-features = false
+ features = [ "termcolor", "atty", "humantime" ]
+ optional = true
+ 
+-[patch.crates-io]
+-font-kit = { version = "0.3.1", git = "https://github.com/pcwalton/font-kit" }
+-
+ [features]
+ default = [ "bin" ]
+ bin = [ "structopt", "env_logger", "failure" ]

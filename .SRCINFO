@@ -1,7 +1,7 @@
 pkgbase = silicon
 	pkgdesc = Create beautiful image of your code
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -9,8 +9,13 @@ pkgbase = silicon
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/Aloxaf/silicon/archive/13209ffd5fdb7fe6c150060ba0a6e7c3d9faa5c8.zip
-	sha256sums = b4e26c4717afae5dee397fa3a0660a3e499e573e5edab259c5fd52beb221032e
+	depends = fontconfig
+	depends = freetype2
+	depends = xclip
+	source = silicon-0.2.5.zip::https://github.com/Aloxaf/silicon/archive/13209ffd5fdb7fe6c150060ba0a6e7c3d9faa5c8.zip
+	source = 0001-font-kit.patch
+	sha256sums = c1cb9d6e7e3bd354f1e02915ffb012beffa1637b395387b139eaaf7dbb83d1bc
+	sha256sums = ef8225eb6c7d14648ed1a769f5b7177593bde16f5ab9ce75cbcc92df79b6639a
 
 pkgname = silicon
 

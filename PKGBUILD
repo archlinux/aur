@@ -2,7 +2,8 @@
 pkgname=silicon
 pkgver=0.2.5
 _relcommit='13209ffd5fdb7fe6c150060ba0a6e7c3d9faa5c8'
-pkgrel=1
+pkgrel=2
+depends=('fontconfig' 'freetype2' 'xclip')
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Create beautiful image of your code"
