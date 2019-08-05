@@ -1,7 +1,7 @@
 pkgbase = nautilus-python
 	pkgdesc = Python 2 bindings for the Nautilus Extension API
-	pkgver = 1.2.2
-	pkgrel = 3
+	pkgver = 1.2.3
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/NautilusPython
 	arch = x86_64
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = nautilus-python
 	depends = nautilus
 	depends = python2-gobject
 	conflicts = python-nautilus
-	source = https://download.gnome.org/sources/nautilus-python/1.2/nautilus-python-1.2.2.tar.xz
-	sha256sums = 90cda3fd613ed012214e47c2dc6f814db4e204a5af38e840479819ab9c59f112
+	source = https://download.gnome.org/sources/nautilus-python/1.2/nautilus-python-1.2.3.tar.xz
+	sha256sums = 073ce0297282259937ab473d189b97a04f42b97197c9292fc3bde9d135282098
 
 pkgname = python2-nautilus

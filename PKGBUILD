@@ -4,8 +4,8 @@
 
 pkgbase='nautilus-python'
 pkgname='python2-nautilus'
-pkgver=1.2.2
-pkgrel=3
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="Python 2 bindings for the Nautilus Extension API"
 arch=('x86_64')
 license=('GPL2')
@@ -14,7 +14,7 @@ depends=('nautilus' 'python2-gobject')
 makedepends=('gtk-doc')
 conflicts=('python-nautilus')
 source=("https://download.gnome.org/sources/${pkgbase}/${pkgver%.*}/${pkgbase}-${pkgver}.tar.xz")
-sha256sums=('90cda3fd613ed012214e47c2dc6f814db4e204a5af38e840479819ab9c59f112')
+sha256sums=('073ce0297282259937ab473d189b97a04f42b97197c9292fc3bde9d135282098')
 
 build() {
 	cd "${pkgbase}-${pkgver}"
