@@ -1,21 +1,32 @@
 pkgbase = gateway
 	pkgdesc = Things Gateway by Mozilla
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://iot.mozilla.org/gateway/
 	arch = any
 	license = MPL2
+	makedepends = pkgconfig
+	makedepends = curl
+	makedepends = nvm
+	makedepends = boost
+	makedepends = boost-libs
+	makedepends = bluez
+	makedepends = bluez-libs
+	makedepends = glib2
+	makedepends = libusb
+	makedepends = autoconf
+	makedepends = libpng
 	makedepends = git
-	makedepends = yarn
+	makedepends = gcc
 	makedepends = nodejs-lts-carbon
+	makedepends = nanomsg
 	depends = libusb
 	depends = nodejs
-	depends = openzwave
+	source = gateway.install
 	source = gateway.service
-	source = git+https://github.com/mozilla-iot/gateway.git#tag=0.7.0
-	source = git+https://github.com/OpenZWave/open-zwave.git#tag=V1.5
+	source = git+https://github.com/mozilla-iot/gateway.git#tag=0.8.0
+	sha1sums = 57cadc31a5abbeb88ec5b9728dc6c7d493ca9115
 	sha1sums = b3cc211e2725bc4ec80037d413c86563092b3a25
-	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = gateway

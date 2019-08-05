@@ -1,0 +1,4 @@
+post_install() {
+    setcap cap_net_raw+eip $(eval readlink -f `which node`)
+    setcap cap_net_raw+eip $(eval readlink -f `which python3`)
+}
