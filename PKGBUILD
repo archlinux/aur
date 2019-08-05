@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=xash3d-git
-pkgver=r358.94cbb4e
+pkgver=r717.7be094b
 pkgrel=1
 pkgdesc="A custom Gold Source engine rewritten from scratch"
 arch=('x86_64')
@@ -32,21 +32,21 @@ prepare() {
 prepare_xash3d() {
 	cd $srcdir/$pkgname
 	./waf configure --prefix=/usr \
-	--libdir=/usr/lib32 \
-    --build-type=release \
-    --disable-vgui \
-	--enable-stbtt
+		--libdir=/usr/lib32 \
+		--build-type=release \
+		--disable-vgui \
+		--enable-stbtt
 }
 
 prepare_xash3ds() {
 	cd $srcdir/$pkgname
 	./waf clean
 	./waf configure --prefix=/usr \
-	--libdir=/usr/lib32 \
-    --build-type=release \
-    --disable-vgui \
-	--enable-stbtt \
-	--dedicated
+		--libdir=/usr/lib32 \
+		--build-type=release \
+		--disable-vgui \
+		--enable-stbtt \
+		--dedicated
 }
 
 build_both() {
