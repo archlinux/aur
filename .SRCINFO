@@ -1,0 +1,28 @@
+pkgbase = geonkick-git
+	pkgdesc = A free software percussion synthesizer (git version)
+	pkgver = 1.6.1.r510.96f8bd7
+	pkgrel = 1
+	url = http://quamplex.com/geonkick
+	arch = i386
+	arch = x86_64
+	groups = pro-audio
+	license = GPL3
+	makedepends = cmake
+	makedepends = jack
+	makedepends = lv2
+	makedepends = rapidjson
+	makedepends = redkite
+	makedepends = sord
+	depends = cairo
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = libsndfile
+	depends = shared-mime-info
+	optdepends = jack: for stand-alone application
+	provides = geonkick
+	conflicts = geonkick
+	source = geonkick::git+https://gitlab.com/quamplex/geonkick.git
+	sha512sums = SKIP
+
+pkgname = geonkick-git
+

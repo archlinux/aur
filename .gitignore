@@ -1,0 +1,5 @@
+geonkick/
+pkg/
+src/
+geonkick-git-*.tar.xz
+.AURINFO
