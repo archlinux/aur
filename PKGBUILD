@@ -1,7 +1,7 @@
 # Maintainer: Leo Schwarz (evotopid) <mail@leoschwarz.com>
 pkgname=kanjistrokeorders-ttf
 pkgver=4.002
-pkgrel=1
+pkgrel=2
 pkgdesc="Kanji stroke order font"
 arch=(any)
 depends=(fontconfig xorg-font-utils)
