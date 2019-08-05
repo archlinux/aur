@@ -6,6 +6,7 @@ pkgbase = zulu-11-bin
 	install = zulu-11-bin.install
 	arch = x86_64
 	license = custom
+	depends = java-environment-common=3
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
 	depends = nss
