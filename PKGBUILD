@@ -5,7 +5,8 @@
 # Contributor: Kevin Kyzer <kev@k3v.in>
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
-pkgver=4.0.2
+pkgver=4.0.3
+
 pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
@@ -19,7 +20,7 @@ conflicts=('mudlet-dev' 'mudlet-git' 'mudlet-deb')
 #source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
 ##using alternate link
 source=("https://www.mudlet.org/wp-content/files/Mudlet-${pkgver}.tar.xz")
-sha256sums=('e521a7eebe878242f25e68f5eea895a5a635e2f8f0ce97d1b0db700e60ab7a62')
+sha256sums=('31c791134099cea13126c40c616c5bae2d0c4b45d407d5a9aec74a105f61527f')
 
 prepare() {
     cd "$srcdir/src"
