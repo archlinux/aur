@@ -1,11 +1,11 @@
 pkgbase = mediathek
 	pkgdesc = Access the Mediathek of many German TV stations
 	pkgver = 13.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mediathekview.de
 	arch = any
 	license = GPL3
-	depends = java-openjfx
+	depends = java8-openjfx
 	optdepends = mplayer: record streams
 	optdepends = flvstreamer: stream flash
 	optdepends = vlc: play files directly from mediathek

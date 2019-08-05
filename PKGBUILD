@@ -6,12 +6,12 @@
 pkgname=mediathek
 _realname=MediathekView
 pkgver=13.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Access the Mediathek of many German TV stations"
 arch=('any')
 url="https://mediathekview.de"
 license=('GPL3')
-depends=('java-openjfx')
+depends=('java8-openjfx')
 optdepends=('mplayer: record streams'
             'flvstreamer: stream flash'
             'vlc: play files directly from mediathek')
