@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer-git
-pkgver=3.5.4
+pkgver=3.5.5
 pkgrel=1
 pkgdesc="Gtk2 application for searching and streaming videos from YouTube."
 arch=('any')
@@ -13,22 +13,22 @@ makedepends=('git' 'perl-module-build')
 provides=('youtube-viewer' 'youtube-viewer-git')
 conflicts=('youtube-viewer' 'youtube-viewer-git')
 
-depends=('perl>=5.16.0' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-libwww' 'gtk2-perl' 'perl-file-sharedir')
+depends=('perl' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-libwww' 'gtk2-perl' 'perl-file-sharedir')
 
 optdepends=(
-            'perl-json-xs: faster JSON to HASH conversion'
-            'perl-lwp-useragent-cached: local cache support'
-            'perl-unicode-linebreak: for printing results in a fixed-width format (-W)'
-            'perl-term-readline-gnu: for better STDIN support'
-            'youtube-dl: for playing videos with encrypted signatures'
-            'wget: for downloading videos with wget'
-            'mplayer: for playing videos with MPlayer'
-            'vlc: for playing videos with VLC'
-            'smplayer: for playing videos with SMPlayer'
-            'mpv: for playing videos with MPV (recommended)'
-            'gnome-icon-theme: for icons in menus'
-            'ffmpeg: for conversions and MKV merging'
-            )
+    'ffmpeg: conversions and MKV merging'
+    'gnome-icon-theme: icons in menus'
+    'perl-json-xs: faster JSON parsing'
+    'perl-lwp-useragent-cached: local cache support'
+    'perl-term-readline-gnu: better STDIN support'
+    'perl-unicode-linebreak: print results in a fixed-width format (-W)'
+    'mpv: play videos with MPV (recommended)'
+    'mplayer: play videos with MPlayer'
+    'smplayer: play videos with SMPlayer'
+    'vlc: play videos with VLC'
+    'wget: download videos with wget'
+    'youtube-dl: play videos with encrypted signatures'
+)
 
 source=("git+https://github.com/trizen/${_pkgname}.git")
 sha256sums=('SKIP')
