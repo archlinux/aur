@@ -1,6 +1,6 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 pkgname=lemonldap-ng
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="A modular WebSSO (Single Sign On) based on Apache::Session modules"
 arch=(any)
@@ -14,15 +14,20 @@ depends=('perl-apache-session' 'perl-cache-cache' 'perl-clone' 'perl-config-inif
          'perl-string-random' 'perl-unicode-string' 'perl-uri' 'perl-libwww' 'perl-lwp-protocol-https'
          'perl-xml-simple' 'perl-xml-libxslt' 'perl-crypt-urandom'
          'perl-module-pluggable' 'perl-convert-base32' 'perl-text-unidecode' 'imagemagick')
-makedepends=()
+makedepends=('uglify-js' 'python-sphinx' 'python-sphinx-bootstrap-theme')
 checkdepends=('perl-test-output' 'perl-time-fake')
 optdepends=('uwsgi-plugin-psgi: for running under uWSGI')
 source=("https://release.ow2.org/lemonldap/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('85938490fe42b6f644d712c99897228352866ce00b375064cb52b27ce6093eac8b2fcb1781b0e9f40879630af4a57bca71a025859313260108facc60d9bb4f73')
+sha512sums=('49941897e3341b427de5919a1c2d2d86a3b89317ef1dcd02666692f3032d81df81b977d43e1be0233c4d425d28d18777b7ff45f758658709f7226530e67d8cb9')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	make configure PERLOPTIONS="INSTALLDIRS=vendor" STORAGECONFFILE="/etc/lemonldap-ng/lemonldap-ng.ini"
+}
 
 build() {
 	cd "$pkgname-$pkgver"
-	make configure PERLOPTIONS="INSTALLDIRS=vendor" STORAGECONFFILE="/etc/lemonldap-ng/lemonldap-ng.ini"
+	make
 }
 
 check() {
