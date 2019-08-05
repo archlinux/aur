@@ -1,9 +1,9 @@
 pkgbase = pgbackrest
-	pkgdesc = Displays an auto-updating per-second count of the number of packets and bytes being handled by each specified NIC
+	pkgdesc = Reliable PostgreSQL Backup & Restore
 	pkgver = 2.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pgbackrest/pgbackrest
-	arch = any
+	arch = x86_64
 	license = MIT
 	depends = openssl
 	depends = libxml2

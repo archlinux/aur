@@ -3,9 +3,9 @@
 
 pkgname='pgbackrest'
 pkgver='2.15.1'
-pkgrel='1'
-pkgdesc='Displays an auto-updating per-second count of the number of packets and bytes being handled by each specified NIC'
-arch=('any')
+pkgrel='2'
+pkgdesc='Reliable PostgreSQL Backup & Restore'
+arch=('x86_64')
 url="https://github.com/${pkgname}/${pkgname}"
 license=('MIT')
 depends=('openssl' 'libxml2' 'icu' 'gcc-libs' 'xz' 'perl')
