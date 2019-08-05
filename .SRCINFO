@@ -1,6 +1,6 @@
 pkgbase = dsvpn
 	pkgdesc = A Dead Simple VPN.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/jedisct1/dsvpn
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = dsvpn
 	depends = procps-ng
 	provides = dsvpn-git
 	conflicts = dsvpn-git
-	source = https://github.com/jedisct1/dsvpn/archive/0.1.1.tar.gz
-	sha256sums = c955cc1848855b297dd69ed7534077c4c44da95f8d441900f44f61f01a5d817f
+	source = https://github.com/jedisct1/dsvpn/archive/0.1.2.tar.gz
+	sha256sums = 6e92fbf82c527471c3836f201cc0dc6da9850afc7bffb4f9fce88b2588611dc3
 
 pkgname = dsvpn
 

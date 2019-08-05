@@ -1,6 +1,6 @@
 # Maintainer: Ethan Brittain-Morby <ebm539 at protonmail dot com>
 pkgname=dsvpn
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A Dead Simple VPN."
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('make' 'gcc')
 provides=(${pkgname}-git)
 conflicts=(${pkgname}-git)
 source=("https://github.com/jedisct1/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('c955cc1848855b297dd69ed7534077c4c44da95f8d441900f44f61f01a5d817f')
+sha256sums=('6e92fbf82c527471c3836f201cc0dc6da9850afc7bffb4f9fce88b2588611dc3')
 
 build() {
   cd "${pkgname}-${pkgver}"
