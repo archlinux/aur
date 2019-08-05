@@ -1,7 +1,7 @@
 # Maintainer: Nikola Hadžić <nikola@firemail.cc>
 pkgname=marg
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Simple argument handling library for C programs"
 arch=("x86_64")
@@ -19,7 +19,7 @@ backup=()
 options=()
 source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=("1c5d7fbccbcbb32d265c54372f450f8c25f1fda4ada0d26fc11774a86a4b7b18")
+sha256sums=("03231369485bd1cf7a083745369f42cce5ce3dc53d46ee480f4a7ad65a974e67")
 
 package() {
 	mkdir -vp "$pkgdir/usr/include/"
