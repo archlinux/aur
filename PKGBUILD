@@ -1,7 +1,7 @@
 # Maintainer: sasvari <sasvari@fastmail.com>
 pkg="nazca"
 pkgname="python-$pkg"
-pkgver=0.5
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Nazca module for photonic integrated circuit design."
 arch=(any)
