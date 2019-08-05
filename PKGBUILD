@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@tellus.space>
 
 pkgname=duffle
-pkgver=0.2.0_beta.3
+pkgver=0.2.0_beta.4
 pkgrel=1
 pkgdesc='A tool to install and manage CNAB bundles'
 arch=(x86_64)
@@ -10,9 +10,9 @@ license=(MIT)
 makedepends=('go' 'dep')
 conflicts=('duffle-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/deislabs/duffle/archive/${pkgver/_/-}.tar.gz")
-sha512sums=('1cbf9c563f2a2487126b335117f72c94915cacdf3045f89ba5d96138e5210e011250912ddd51c2bbc6515a1cc0fc501ff27a7c43a480f9c68e3b1db6fa008c24')
+sha512sums=('631894fd552c120d4b00743b2974d2224dd432cb2536db4057a9b215465782a5fb7697f81c5e6836765e0b98c4e09610730d170a871a11566d099568f17e31ab')
 
-prepare(){
+prepare() {
   mkdir -p gopath/src/github.com/deislabs
   ln -rTsf $pkgname-${pkgver/_/-} gopath/src/github.com/deislabs/$pkgname
   export GOPATH="$srcdir"/gopath
@@ -20,7 +20,6 @@ prepare(){
   cd gopath/src/github.com/deislabs/$pkgname
   dep ensure -v
 }
-
 
 build() {
   # Flags to trim path from binary
