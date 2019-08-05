@@ -1,6 +1,6 @@
 pkgbase = linux-amd-raven
 	pkgver = 5.1.v.21
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-amd-raven
 	source = config.x86_64
 	source = linux-amd-raven.preset
 	sha256sums = SKIP
-	sha256sums = 00895ec3ed999ecd5d236fcdc1874654649f3a8626ca51adb28819b47ab7c555
+	sha256sums = 0a669c0f7d1c64b501992874e486ef1f0f44d37a5cb7df1014d6aec56f483978
 	sha256sums = 0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87
 
 pkgname = linux-amd-raven
