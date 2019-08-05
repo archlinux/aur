@@ -1,6 +1,6 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 pkgname=lemonldap-ng
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="A modular WebSSO (Single Sign On) based on Apache::Session modules"
 arch=(any)
@@ -15,10 +15,10 @@ depends=('perl-apache-session' 'perl-cache-cache' 'perl-clone' 'perl-config-inif
          'perl-xml-simple' 'perl-xml-libxslt' 'perl-crypt-urandom'
          'perl-module-pluggable' 'perl-convert-base32' 'perl-text-unidecode' 'imagemagick')
 makedepends=()
-checkdepends=()
+checkdepends=('perl-test-output' 'perl-time-fake')
 optdepends=('uwsgi-plugin-psgi: for running under uWSGI')
 source=("https://release.ow2.org/lemonldap/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('359b3e1d944f172c61db5ac9d5acd4465aebc9952ee101d034295ed1494a99fd6c66fb7c7e85b26847d7da10a63cf0457640063b7bd524e60556f599da03e77c')
+sha512sums=('85938490fe42b6f644d712c99897228352866ce00b375064cb52b27ce6093eac8b2fcb1781b0e9f40879630af4a57bca71a025859313260108facc60d9bb4f73')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -33,4 +33,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" PREFIX="/usr/share" PROD=yes install
+	chown -R http:http "$pkgdir"/usr/share/lemonldap-ng/data/{captcha,conf,notifications,psessions,sessions}
+	chmod -R 755 "$pkgdir"/usr/share/lemonldap-ng/data/{captcha,conf,notifications,psessions,sessions}
 }
