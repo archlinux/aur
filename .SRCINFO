@@ -1,7 +1,7 @@
 pkgbase = dotnet-runtime-bin
 	pkgdesc = The .NET Core runtime (binary version)
 	pkgver = 2.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dotnet/core
 	arch = x86_64
 	arch = armv7h
@@ -10,6 +10,8 @@ pkgbase = dotnet-runtime-bin
 	provides = dotnet-runtime
 	conflicts = dotnet-runtime
 	options = !strip
+	source = dotnet.sh
+	sha512sums = 181ccf9499e1b38576b7f87eb04c1fad7aede4b7e56d246e00ca7956ec15996221862db00a2a5014bdb482eb5a363ca49fc6b661909d2d9e22a374318c5c0066
 	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/9f21e352-9d2c-4e3b-af45-915da89158db/0e8a7ea83cc08d4bcf417a927a36ed6f/dotnet-runtime-2.2.6-linux-x64.tar.gz
 	sha512sums_x86_64 = 8af7a39407b4a3503a7c6d83106336140eeef2bc24decf1b817c7d5a3e5596c8cefed8f211019148cd89a31759d851836dd6147e544b8c1d183dcfbd5a8d4636
 	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/428aaa32-f66c-4847-b845-aa21f90504e4/1cf033db866414997140c2672bd75069/dotnet-runtime-2.2.6-linux-arm.tar.gz
