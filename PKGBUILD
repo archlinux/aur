@@ -2,7 +2,7 @@
 
 pkgname=("openxr-loader-git" "openxr-headers-git")
 _dirname="openxr-loader"
-pkgver=r136.4bea7d7
+pkgver=1.0.1.r0.g46d7cb3
 pkgrel=1
 pkgdesc='OpenXR Loader and headers'
 arch=('i686' 'x86_64')
@@ -22,7 +22,8 @@ prepare() {
 
 pkgver() {
   cd "$_dirname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
