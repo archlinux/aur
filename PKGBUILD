@@ -19,8 +19,8 @@ source=(
     cockpit-pam
 )
 noextract=(cockpit-${pkgver}.tar.xz)
-sha1sums=('39ff3227ecb0ecc9ddf9207d23544739dbefa5a2'
-          '8aa8f6859046ba0ba3e94c9c3bf8bbfc9751f837'
+sha1sums=('0aff444f0dbf95d1c5b8486ee36a8511d08461ec'
+          '907313822e979f6a4b78f12afb5a42c511505c6e'
           '69b899b034e981cf217c2f8d61264caa2015c0e6')
 
 prepare() {
