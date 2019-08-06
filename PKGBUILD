@@ -12,7 +12,7 @@ depends=('android-tools' 'android-udev' 'electron')
 makedepends=('jq' 'npm' 'moreutils')
 conflicts=('ubports-installer-git' 'ubports-installer-bin')
 source=("https://github.com/ubports/ubports-installer/archive/$_ver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('f3cfbce3e0c4c6994bfaca24953a637dcc42d3f0a45ca8b5961ee4769ceb743a736ae75daf901fbff780d65f993c05ff7b63551e509d0841f40e7ce2473d3146')
 
 prepare() {
     local cache="$srcdir/npm-cache"
