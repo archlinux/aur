@@ -1,3 +1,4 @@
+# Maintainer: Nikos Fytilis <n-fit \at\ live \dot\ com>
 # Contributor: zoulnix <http://goo.gl/HQaP>
 pkgname=g15mpd
 pkgver=1.0.0
@@ -18,7 +19,6 @@ build() {
 
   # apply patches...
   patch -Np1 -i ../${pkgname}-libmpdheader.patch || return 1
-  
   # Generating build system
   sh autogen.sh || return 1
 
@@ -27,7 +27,8 @@ build() {
 	      --localstatedir=/var \
 	      --disable-static
 
-  make || return 1
+  sed 's/-lmpd/-lmpd -pthread/' -i Makefile
+  make LDLIBS='-lpthread' || return 1
 }
 
 package() {
