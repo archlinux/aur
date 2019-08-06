@@ -2,20 +2,19 @@
 
 pkgname=lib32-jemalloc
 _pkgbasename=jemalloc
-pkgver=5.2.0
-pkgrel=2
+pkgver=5.2.1
+pkgrel=1
 pkgdesc='General-purpose scalable concurrent malloc implementation (32-bit)'
 arch=('x86_64')
 url='http://jemalloc.net/'
 license=('BSD')
-depends=('lib32-glibc' "${_pkgbasename}")
+depends=('lib32-gcc-libs' "${_pkgbasename}")
 makedepends=('gcc-multilib')
 source=("https://github.com/jemalloc/jemalloc/releases/download/${pkgver}/${_pkgbasename}-${pkgver}.tar.bz2")
-sha256sums=('74be9f44a60d2a99398e706baa921e4efde82bf8fd16e5c0643c375c5851e3b4')
+sha256sums=('34330e5ce276099e2e8950d9335db5a875689a4c6a56751ef3b1d8c537f887f6')
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
-  
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
