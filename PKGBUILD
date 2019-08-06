@@ -1,7 +1,7 @@
 # Maintainer: Nikola Hadžić <nikola@firemail.cc>
 pkgname=marg
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Simple argument handling library for C programs"
 arch=("x86_64")
@@ -19,12 +19,15 @@ backup=()
 options=()
 source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=("03231369485bd1cf7a083745369f42cce5ce3dc53d46ee480f4a7ad65a974e67")
+sha256sums=("00a6f7dde5f64a57cb4ee8c27656898cffcb0da9a77991c14ae6f93d71d01dfa")
+
+build () {
+	cd "$srcdir/$pkgname/"
+	make build
+}
 
 package() {
-	mkdir -vp "$pkgdir/usr/include/"
-	mkdir -vp "$pkgdir/usr/share/man/man3/"
-	cp -rv "$srcdir/$pkgname/lib/" "$pkgdir/usr/include/marg/"
-	cp -v "$srcdir/$pkgname/marg.man" "$pkgdir/usr/share/man/man3/marg.3"
-	gzip -v "$pkgdir/usr/share/man/man3/marg.3"
+	cd "$srcdir/$pkgname/"
+	make install HEADERDIR="$pkgdir/usr/include/marg/" INSTALLDIR="$pkgdir/usr/lib/"
+	make man MANDIR="$pkgdir/usr/share/man/man3/"
 }
