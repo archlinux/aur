@@ -1,6 +1,6 @@
 pkgbase = readme-generator-git
 	pkgdesc = A basic tool to generate modern readme's
-	pkgver = r11.da1b4a5
+	pkgver = r13.361fbd3
 	pkgrel = 1
 	url = https://github.com/F0xedb/README-generator
 	arch = any
