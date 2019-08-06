@@ -19,3 +19,5 @@ pkgbase = hpp-fcl
 
 pkgname = hpp-fcl
 
+pkgname = hpp-fcl-docs
+

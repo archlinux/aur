@@ -1,6 +1,6 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
-pkgname=hpp-fcl
+pkgname=('hpp-fcl' 'hpp-fcl-docs')
 pkgver=1.1.2
 pkgrel=1
 pkgdesc="An extension of the Flexible Collision Library"
@@ -16,19 +16,27 @@ md5sums=('SKIP' 'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28' 'A031AD35058955293D54DECEC45D22EF408328AD')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
 
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
     make
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     make test
 }
 
-package() {
-    cd "$pkgname-$pkgver"
+package_hpp-fcl() {
+    cd "$pkgbase-$pkgver"
     make DESTDIR="$pkgdir/" install
+    rm -rf $pkgdir/usr/share/doc
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_hpp-fcl-docs() {
+    cd "$pkgbase-$pkgver"
+    make DESTDIR="$pkgdir/" install
+    rm -rf $pkgdir/usr/{lib,include}
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
