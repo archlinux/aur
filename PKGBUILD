@@ -1,11 +1,11 @@
 pkgname=dnf-plugins-core
-pkgver=4.0.8
+pkgver=4.0.9
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
-depends=('dnf>=4.2.1' 'python')
+depends=('dnf>=4.2.8' 'python')
 makedepends=('cmake' 'python-sphinx')
 checkdepends=('python-nose')
 optdepends=('python-dateutil: for changelog plugin'
@@ -17,7 +17,7 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('4f91a6ba8876c5191d89d7982b2034d1')
+md5sums=('01000aa7c054fc0ad9e8b3cd3a74f7e4')
 
 prepare() {
 	cd "$pkgname-$pkgver"
