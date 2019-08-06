@@ -5,7 +5,7 @@ post_install() {
   echo 'NOTE:'
   echo 'NOTE: If you want to use this until Steam recognises this natively,'
   echo 'NOTE: you can make a symlink like this to have your Steam find it:'
-  echo 'NOTE: ln -s /usr/share/steam/compatibilitytools.d/boxtron ~/.local/share/Steam/compatibilitytools.d/boxtron'
+  echo 'NOTE: ln -s /usr/share/steam/compatibilitytools.d/boxtron-git ~/.local/share/Steam/compatibilitytools.d/boxtron-git'
 }
 
 post_upgrade() {
