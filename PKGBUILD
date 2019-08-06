@@ -1,11 +1,11 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=appleseed
-pkgrel=1
+pkgrel=2
 pkgver=2.0.0
 _pkgver=${pkgver}-beta
 pkgdesc="physically-based global illumination rendering engine primarily designed for animation and visual effects. "
 arch=(x86_64)
-url="http://appleseedhq.net"
+url="https://appleseedhq.net"
 license=('MIT')
 provides=('appleseed')
 conflicts=('appleseed-git')
@@ -14,9 +14,11 @@ makedepends=(cmake)
 options=()
 source=("https://github.com/${pkgname}hq/${pkgname}/archive/${_pkgver}.tar.gz"
         dir.patch
+        oiio2.patch
         )
 md5sums=('25030249df1403daf7b38359b2edf593'
-         '3da34be53a016d68ff8abfebaed1dd4e')
+         '3da34be53a016d68ff8abfebaed1dd4e'
+         'f539c5b703c9a29fbaabaa47fbf3fc63')
 
 CMAKE_FLAGS="-DUSE_EXTERNAL_EXR=ON \
               -DUSE_EXTERNAL_OCIO=ON \
@@ -43,7 +45,8 @@ prepare() {
   grep -q avx /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_AVX=ON"
   grep -q avx2 /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_AVX2=ON"
   grep -q sse4_2 /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_SSE42=ON"
-  patch -Np1 -i ../dir.patch
+  patch -Np1 -i ${srcdir}/dir.patch
+  patch -Np1 -i ${srcdir}/oiio2.patch
 }
 build() {
   cd ${pkgname}-${_pkgver}

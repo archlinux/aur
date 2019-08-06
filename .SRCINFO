@@ -1,8 +1,8 @@
 pkgbase = appleseed
 	pkgdesc = physically-based global illumination rendering engine primarily designed for animation and visual effects.
 	pkgver = 2.0.0
-	pkgrel = 1
-	url = http://appleseedhq.net
+	pkgrel = 2
+	url = https://appleseedhq.net
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
@@ -20,8 +20,10 @@ pkgbase = appleseed
 	conflicts = appleseed-git
 	source = https://github.com/appleseedhq/appleseed/archive/2.0.0-beta.tar.gz
 	source = dir.patch
+	source = oiio2.patch
 	md5sums = 25030249df1403daf7b38359b2edf593
 	md5sums = 3da34be53a016d68ff8abfebaed1dd4e
+	md5sums = f539c5b703c9a29fbaabaa47fbf3fc63
 
 pkgname = appleseed
 
