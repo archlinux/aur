@@ -26,10 +26,15 @@ backup=(etc/i3/config)
 options=('docs' '!strip')
 
 prepare(){
+  set -e
   echo
   echo "THIS PACKAGE WILL BE DELETED SOON, PLEASE INSTALL i3-gaps-rounded-git"
   echo
   read
+  #Package is being replaced, return error
+  exit 1
+
+  
   git clone https://github.com/resloved/i3
   cd i3
   git archive shape | gzip > ../${pkgname}-${pkgver}-${pkgrel}.tar.gz
