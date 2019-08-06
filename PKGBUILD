@@ -5,14 +5,14 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Thanks to mobo's package, https://aur.archlinux.org/packages/zandronum2/
 pkgname=zandronum
 pkgver=3.0
-pkgrel=4
+pkgrel=5
 _fmod_ver_true="4.24.16"
 _fmod_ver="$(echo ${_fmod_ver_true} | sed -e 's/\.//g')"
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer"
 arch=('i686' 'x86_64')
 url="https://zandronum.com/"
 license=('custom')
-depends=('sdl' 'libjpeg6-turbo' 'glu' 'openssl' 'fluidsynth')
+depends=('sdl' 'libjpeg6-turbo' 'glu' 'openssl-1.0' 'fluidsynth')
 optdepends=('timidity++: midi support' 'freedoom: free IWAD' 'gtk2: for a GUI selection screen' 'doomseeker: a GUI server browser')
 makedepends=( 'zlib' 'sdl' 'libjpeg-turbo' 'nasm' 'gtk2' 'cmake' 'mercurial' 'fluidsynth' 'mesa' 'glu' )
 _pkgname=zandronum
