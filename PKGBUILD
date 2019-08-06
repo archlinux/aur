@@ -2,8 +2,8 @@
 
 pkgname=intellij-idea-community-edition-jre
 _appname=jetbrains-idea-ce
-pkgver=2019.1.3
-_buildver=191.7479.19
+pkgver=2019.2
+_buildver=192.5728.98
 pkgrel=1
 pkgdesc="Intellij Idea Community Edition with bundled JRE"
 arch=('any')
