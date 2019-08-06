@@ -1,10 +1,10 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: Sebastian Ullrich <echo c2ViYXN0aUBudWxscmkuY2gK|base64 -d>
 # Contributor: lishengming.zju <lishengming.zju@gmail.com>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com
 pkgname=('pidgin-hg') #'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=3.r39630.d5d92880d39e
+pkgver=3.r39746.cc5e2c10954d
 pkgrel=1
 provides=("pidgin" "libpurple" "finch")
 conflicts=("pidgin" "libpurple" "finch")
@@ -12,12 +12,12 @@ pkgdesc="Multi-protocol instant messaging client. Latest mercurial build."
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
-depends=('enchant1.6' 'libgadu' 'gplugin' 'gmime3'
+depends=('enchant' 'libgadu' 'gplugin' 'gmime3'
   'talkatu-hg' 'libgnt3-hg' 'meanwhile' 'farstream'
-   'libsasl' 'libidn' 'dbus-glib' 'nss'
+   'libsasl' 'libidn' 'nss'
   'libgnome-keyring' 'startup-notification' 'gtkspell'
    'libxss' 'libsm' 'hicolor-icon-theme'
-     'dbus-glib' 'webkitgtk' 'json-glib')
+     'dbus-glib' 'json-glib')
 optdepends=('avahi: Bonjour protocol support'
     'ca-certificates: SSL CA certificates'
     'python-dbus: for purple-remote and purple-url-handler'
@@ -26,8 +26,8 @@ optdepends=('avahi: Bonjour protocol support'
 makedepends=('mercurial' 'python2' 'avahi' 'tk' "gobject-introspection" 'ca-certificates' 'intltool'
              'tk' 'ca-certificates' 'intltool' 'networkmanager'
              'startup-notification' 'gtkspell' 'libxss' 'libsm'
-             'hicolor-icon-theme' 'dbus-glib' 'webkitgtk' 'json-glib'
-             'farstream' 'libsasl' 'gtk-doc' 'libidn' 'dbus-glib' 'nss'
+             'hicolor-icon-theme' 'dbus-glib' 'json-glib'
+             'farstream' 'libsasl' 'gtk-doc' 'libidn' 'nss'
              'libgnome-keyring' 'gplugin')
 makedepends+=('libx11' 'meson')
 options=('!libtool')
@@ -41,14 +41,11 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir"/pidgin
-   arch-meson build -Dsilc=false -Ddoc=true
+   arch-meson pidgin build -Dplugins=false -Dsilc=false -Ddoc=true
   ninja -C build
 }
 
 package(){
-  cd "$srcdir"/pidgin
-
   # For linking
   DESTDIR=$pkgdir ninja -C build install
 
