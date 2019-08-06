@@ -18,11 +18,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
-prepare() {
-    chmod +x "$_reponame/"readme-gen # Make sure our package is executable
-}
-
 build() {
     return 0;
 }
