@@ -13,6 +13,7 @@ arch=('x86_64' 'armv7l')
 url="http://www.maier-komor.de/mbuffer.html"
 license=('GPL3')
 depends=('openssl')
+backup=('etc/mbuffer.rc')
 source=("http://www.maier-komor.de/software/${pkgname}/${pkgname}-${pkgver}.tgz")
 md5sums=('ba73ff60b121f2feb5980df1bcbe9c72')
 
@@ -26,4 +27,9 @@ build() {
 package() {
   cd "${srcdir}"/${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
+
+  # Put the mbuffer.rc in /etc instead of /usr/etc
+  mkdir -p "${pkgdir}/etc"
+  mv "${pkgdir}/usr/etc/mbuffer.rc" "${pkgdir}/etc/"
+  rmdir "${pkgdir}/usr/etc"
 }
