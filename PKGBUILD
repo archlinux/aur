@@ -9,7 +9,7 @@ pkgdesc='cli manga downloader'
 url='https://github.com/yuru-yuri/manga-py.git'
 arch=('any')
 license=('MIT')
-depends=('python-lxml' 'python-cssselect' 'python-requests' 'python-pillow' 'python-pycryptodome' 'python-cloudscraper' 'python-loguru' 'python-selenium' 'python-pyexecjs' 'python-packaging' 'python' 'python-urllib3' 'python2-progressbar' 'python-html-purifier' 'python-numpy')
+depends=('python-lxml' 'python-cssselect' 'python-requests' 'python-pillow' 'python-pycryptodome' 'python-cloudscraper' 'python-loguru' 'python-selenium' 'python-pyexecjs' 'python-packaging' 'python' 'python-urllib3' 'python-progressbar' 'python-html-purifier' 'python-numpy')
 makedepends=('git')
 provides=('manga-downloader')
 
