@@ -3,12 +3,12 @@
 pkgname=ubports-installer
 pkgver=0.2.5b
 _ver=${pkgver/b/-beta}
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
 arch=('x86_64' 'i686')
 url='https://github.com/ubports/ubports-installer'
 license=('GPL3')
-depends=('android-tools' 'android-udev' 'electron')
+depends=('android-tools' 'android-udev' 'electron4')
 makedepends=('jq' 'npm' 'moreutils')
 conflicts=('ubports-installer-git' 'ubports-installer-bin')
 source=("https://github.com/ubports/ubports-installer/archive/$_ver.tar.gz")
@@ -16,7 +16,7 @@ sha512sums=('f3cfbce3e0c4c6994bfaca24953a637dcc42d3f0a45ca8b5961ee4769ceb743a736
 
 prepare() {
     local cache="$srcdir/npm-cache"
-    local dist=/usr/lib/electron
+    local dist=/usr/lib/electron4
 
     cd "$pkgname-$_ver"
     jq '.electronDist = $dist | .electronVersion = $version' \
@@ -36,7 +36,7 @@ package() {
     cd "$pkgname-$_ver"
 
     echo "#!/usr/bin/env bash
-exec electron /usr/share/ubports-installer/app.asar -n \$@" > "$srcdir/ubports-installer.sh"
+exec electron4 /usr/share/ubports-installer/app.asar -n \$@" > "$srcdir/ubports-installer.sh"
 	install -Dm755 "$srcdir/ubports-installer.sh" "$pkgdir/usr/bin/ubports-installer"
 
 	echo "[Desktop Entry]
