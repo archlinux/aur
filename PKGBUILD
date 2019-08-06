@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=networkmanager-dispatcher-timesyncd
-pkgver=0.r1.g97bb92b
+pkgver=0.r5.gbdeed3f
 pkgrel=1
 pkgdesc='Networkmanager Dispatcher script for systemd-timesyncd'
 arch=('any')
@@ -19,11 +19,11 @@ pkgver() {
 		printf '%s.r%s.g%s' \
 			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
 			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	else
 		printf '0.r%s.g%s' \
 			"$(git rev-list --count master)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	fi
 }
 
