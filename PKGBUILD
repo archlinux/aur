@@ -5,8 +5,8 @@
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-desktop-dark
-pkgver=4.0.0
-pkgrel=6
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux, with dark theme patch"
 arch=('x86_64')
 url="https://slack.com/downloads"
@@ -21,7 +21,7 @@ source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgv
         "darkify_slack.js"
         "${pkgname}.patch")
 noextract=("${pkgname%-dark}-${pkgver}-amd64.deb")
-sha256sums=('911a4c05fb4f85181df13f013e82440b0d171862c9cb137dc19b6381d47bd57e'
+sha256sums=('6277a6c3d9c1c55813ad4fe1e56702a486ab8ff36ecbef345d1794a3a644ecbc'
             '876522011f9830a9b1e195bd8ffcc54ee6fa002821ffc7f7ad248309e82bc38a'
             'SKIP'
             'SKIP')
