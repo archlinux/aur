@@ -1,7 +1,7 @@
 pkgbase = barrier-headless-git
 	pkgdesc = Open-source KVM software based on Synergy (GUI)
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/debauchee/barrier
 	arch = any
 	license = custom:GPL2WithOpenSSLException

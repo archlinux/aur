@@ -2,7 +2,7 @@
 
 pkgname=barrier-headless-git
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source KVM software based on Synergy"
 url="https://github.com/debauchee/barrier"
 license=("custom:GPL2WithOpenSSLException")
