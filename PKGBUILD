@@ -1,6 +1,6 @@
 pkgname=openvr-git
-pkgver=1.4.18.r0.g02bc73b
-pkgrel=2
+pkgver=1.6.10.r0.gd9cffe2
+pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam."
 arch=('x86_64')
 url="https://github.com/ValveSoftware/openvr"
@@ -34,6 +34,8 @@ prepare() {
   git apply ../0fa21ba17748efcca1816536e27bdca70141b074.patch #https://github.com/ValveSoftware/openvr/pull/594
   git apply ../0001-also-add-pragma-pack-around-VRControllerState_t.patch
   git apply ../remove-openvrpaths-check.diff
+
+  sed -i '/driver_sample/d' "$srcdir"/openvr/samples/CMakeLists.txt
 }
 
 build() {
