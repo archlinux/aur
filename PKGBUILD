@@ -1,5 +1,5 @@
 _npmname=verdaccio
-_npmver=4.1.0
+_npmver=4.2.0
 
 pkgname=$_npmname
 pkgver=$_npmver
@@ -11,7 +11,7 @@ license=(MIT)
 depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha256sums=('37a7d5747a3396729995e23732221477744986e1e6dff843a3422db9e006c987')
+sha256sums=('aa1e77bf4d9e88f950f480532d0bd0ef88d7f3dce058af9770d53fd760e27f5c')
 
 package() {
   cd $srcdir
