@@ -1,0 +1,14 @@
+pkgbase = notigo
+	pkgdesc = Send iOS/Android notifications using IFTTT's Webhook
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/scotow/notigo
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = notigo-2.0.2.tar.gz::https://github.com/scotow/notigo/archive/2.0.2.tar.gz
+	sha256sums = 59047afb6f30353da243ef97accf09cc0a0a251f5a19f6f0d0501ce2dd89897e
+
+pkgname = notigo
+
