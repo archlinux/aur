@@ -1,7 +1,7 @@
 # Contributor: Jishnu Mohan jishnu7 at gmail dot com
 
 pkgname=quilter
-pkgver=1.9.3
+pkgver=1.9.5
 pkgrel=1
 pkgdesc="Focus on your writing and write beautiful solid stories with the Focus Mode in tow in this Markdown editor."
 arch=(any)
@@ -13,7 +13,7 @@ install=quilter.install
 source=(
   "https://github.com/lainsce/quilter/archive/${pkgver}.zip"
 )
-sha256sums=('597371496d5e6841ef6d7d7c83253e770bb55de35cbd5c09b6dc0f2d498145ce')
+sha256sums=('0314f89139d536f64e017bbf0e7c2a0a7fca4f7aa2b64aeabe058d90f24ada9b')
 
 build () {
   cd $srcdir/$pkgname-$pkgver
