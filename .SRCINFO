@@ -1,5 +1,5 @@
-pkgbase = scons
-	pkgdesc = Extensible Python-based build utility
+pkgbase = python2-scons
+	pkgdesc = Extensible Python-based build utility. Python2 version
 	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://scons.org
@@ -23,9 +23,6 @@ pkgbase = scons
 	depends = python
 	source = scons-3.1.0.tar.gz::https://github.com/scons/scons/archive/3.1.0.tar.gz
 	sha512sums = 3894d17bca02b9aa5426c70d894b8ecfcf3db2b20254b848209c31d8413a8cd1c2a7b2a87ef9bcfe5555980beb2815f62cdbe185098a64ae8b3506c41c867463
-
-pkgname = scons
-	depends = python
 
 pkgname = python2-scons
 	depends = python2

@@ -5,11 +5,11 @@
 # Contributor: Lukas Sabota <punkrockguy318@comcast.net>
 # Contributor: Brice Carpentier <brice@dlfp.org>
 
-pkgbase=scons
-pkgname=(scons python2-scons)
+_pkgbase=scons
+pkgname=python2-${_pkgbase}
 pkgver=3.1.0
 pkgrel=1
-pkgdesc="Extensible Python-based build utility"
+pkgdesc="Extensible Python-based build utility. Python2 version"
 arch=('any')
 url="https://scons.org"
 license=('MIT')
@@ -19,12 +19,11 @@ makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('clang' 'dmd' 'gdc' 'ldc' 'nasm' 'python-lxml' 'python-pytest'
 'python-virtualenv' 'python2-lxml' 'python2-pytest' 'python2-virtualenv' 'swig'
 'zip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
+source=("$_pkgbase-$pkgver.tar.gz::https://github.com/${_pkgbase}/${_pkgbase}/archive/${pkgver}.tar.gz")
 sha512sums=('3894d17bca02b9aa5426c70d894b8ecfcf3db2b20254b848209c31d8413a8cd1c2a7b2a87ef9bcfe5555980beb2815f62cdbe185098a64ae8b3506c41c867463')
 
 prepare() {
-  (
-   cd "${pkgbase}-${pkgver}"
+   cd "${_pkgbase}-${pkgver}"
    local _copyright='Copyright (c) 2001 - 2019 The SCons Foundation'
    local _date_of_release="$(grep "RELEASE ${pkgver}" src/CHANGES.txt | cut -d ',' -f2)"
    local _date="$(date -d "${_date_of_release}" +'%Y-%m-%d %H:%M:%S')"
@@ -48,78 +47,40 @@ prepare() {
        -e 's/__DEVELOPER__/none/g' \
        -e "s/__VERSION__/${pkgver}/g" \
        -i "src/setup.py"
-  )
-  # we need to copy all sources, because using build with python2 and python3
-  # would otherwise overwrite the build created first
-  cp -av "${pkgbase}-${pkgver}" "${pkgname[1]}-${pkgver}"
-  (
     # fix shebang for python2 version
-    cd "${pkgname[1]}-${pkgver}"
     sed -e 's/env python/env python2/' \
         -i src/script/*
     sed -e 's/python/python2/' \
         -i src/engine/SCons/Tool/docbook/docbook-xsl-*/extensions/xslt.py
-  )
 }
 
 build() {
-  (
-    cd "${pkgbase}-${pkgver}"
-    # build man page and move to src directory
-    python bootstrap.py doc/SConscript
-    mv -v build/doc/man/* src/
-    cd src
-    python setup.py build
-  )
-  (
-    cd "${pkgname[1]}-${pkgver}"
+    cd "${_pkgbase}-${pkgver}"
     # build man page and move to src directory
     python2 bootstrap.py doc/SConscript
     mv -v build/doc/man/* src/
     cd src
     python2 setup.py build
-  )
 }
 
 check() {
-  (
-    cd "${pkgbase}-${pkgver}"
-    python runtest.py -a -t || msg "Tests passing with 'NO RESULT' count as failed."
-  )
-  (
-    cd "${pkgname[1]}-${pkgver}"
+    cd "${_pkgbase}-${pkgver}"
     python2 runtest.py -a -t || msg "Tests passing with 'NO RESULT' count as failed."
-  )
 }
 
-package_scons() {
-  depends=('python')
-  cd "${pkgname}-${pkgver}/src"
-  python setup.py install --prefix=/usr \
-                          --skip-build \
-                          --optimize=1 \
-                          --standard-lib \
-                          --install-data=/usr/share \
-                          --root="$pkgdir"
-  install -vDm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -vDm 644 {CHANGES,README,RELEASE}.txt \
-    -t "${pkgdir}/usr/share/doc/${pkgname}/"
-  # removing Windows only script
-  rm -vf "${pkgdir}/usr/bin/scons"*.bat
-}
 
-package_python2-scons() {
+package() {
   depends=('python2')
-  cd "${pkgname}-${pkgver}/src"
+  cd "${_pkgbase}-${pkgver}/src"
   python2 setup.py install --prefix=/usr \
                            --skip-build \
                            --optimize=1 \
                            --standard-lib \
                            --install-data=/usr/share \
                            --root="$pkgdir"
-  install -vDm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -vDm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${_pkgbase}/"
   install -vDm 644 {CHANGES,README,RELEASE}.txt \
-    -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    -t "${pkgdir}/usr/share/doc/${_pkgbase}/"
   # removing Windows only script
   rm -vf "${pkgdir}/usr/bin/scons"*.bat
   # moving files so scons and python2-scons don't conflict
