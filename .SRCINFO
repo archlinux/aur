@@ -1,0 +1,18 @@
+pkgbase = opmon-git
+	pkgdesc = A open source RPG monster fighting game - Git Version
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://opmon-game.ga
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = sfml
+	depends = gcc
+	depends = libstdc++5
+	depends = smpeg
+	conflicts = opmon
+	source = git+https://github.com/OpMonTeam/OpMon.git
+	md5sums = SKIP
+
+pkgname = opmon-git
+
