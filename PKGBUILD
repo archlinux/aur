@@ -1,7 +1,7 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
 _pkgname=okuna-desktop
-_pkgver=0.0.50
+_pkgver=0.0.50-1
 pkgname="${_pkgname}-bin"
 pkgver="${_pkgver//-/_}"
 pkgrel=1
@@ -14,7 +14,7 @@ conflicts=("${_pkgname}" "openspace-desktop-bin" "openbook-desktop-bin")
 replaces=('openspace-desktop-bin' 'openbook-desktop-bin')
 depends=('libxcursor' 'libxinerama' 'libxrandr' 'libxxf86vm' 'sqlite' 'bash' 'gtk3')
 source=("${_pkgname}-${_pkgver}.zip::https://gitlab.com/999eagle/okuna-desktop/-/jobs/artifacts/${_pkgver}/download?job=release-linux")
-sha256sums=('957d45020a3ce9d1ee4c09530905878a4c2e7ab19cc5a526959fb7918e92190d')
+sha256sums=('fa31cc5df812cee55cdc4ff1eda157a6dd781a7d588745b08de587d081714cc9')
 
 package() {
 	# Main files
