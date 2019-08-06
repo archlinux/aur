@@ -10,8 +10,8 @@ license=('LGPL2.1' 'LGPL3')
 makedepends=('mate-common' 'gtk-doc' 'dbus-glib' 'gobject-introspection' 'gtk-sharp-2' 'perl-xml-libxml'
              'libayatana-indicator-gtk'{2,3} 'libdbusmenu-gtk'{2,3} 'mono' 'pygtk' 'vala' 'python2')
 options=('!emptydirs')
-source=(http://releases.ayatana-indicators.org/source/${pkgbase}/${pkgbase}-${pkgver}.tar.gz)
-sha512sums=('2061582cf16954de1ad4df888acc3972126e642357adcf017d71b742ad600b970089cca91e5fe2c0dac3c35660efb22bb07cd1b3a7559a8d6adc15eba062eec7')
+source=("https://github.com/AyatanaIndicators/$pkgbase/archive/$pkgver.tar.gz")
+sha512sums=('194944fc8720313be60d0791149ec79d0eba994ed2775421932b8c16526ef4c1933c073dea2373b310b99e5f1c25532b8971dc43ae41aad13f502b3aa7422cc0')
 
 prepare() {
   cp -ra ${pkgbase}-${pkgver}{,-py2}
