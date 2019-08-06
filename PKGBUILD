@@ -1,7 +1,7 @@
 # Maintainer: jaelpark@outlook.com
 pkgname=chamfer-git
 _pkgname=chamfer
-pkgver=r194
+pkgver=r233
 pkgrel=1
 pkgdesc="A tiling X11 window manager with Vulkan compositor."
 arch=("x86_64")
@@ -20,6 +20,7 @@ source=(
 	"${_pkgname}"::'git+https://github.com/jaelpark/chamferwm.git'
 )
 md5sums=("SKIP")
+options=(!buildflags)
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
