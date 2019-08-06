@@ -1,19 +1,15 @@
 pkgbase = phantombot
 	pkgdesc = PhantomBot is a Twitch chat bot powered by Java.
-	pkgver = 2.3.8
-	pkgrel = 3
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://phantombot.tv/
 	install = phantombot.install
 	arch = x86_64
 	license = GPL3
 	depends = jre8-openjdk
-	source = https://github.com/PhantomBot/PhantomBot/releases/download/v2.3.8/PhantomBot-2.3.8.zip
-	source = phantombot
-	source = phantombot-service
+	source = https://github.com/PhantomBot/PhantomBot/releases/download/v3.0.0/PhantomBot-3.0.0.zip
 	source = phantombot.service
-	md5sums = 31ff8f531d63e1345f17daee8cb04276
-	md5sums = b15be553d777c8b87d79d8551f4cd639
-	md5sums = ba89682a452ffbfc23efb5c11b9f2158
+	md5sums = 946fa4b046822bcbc9dbbddd238f929c
 	md5sums = b9e8e8a3b567bc72f44b2192dacbd630
 
 pkgname = phantombot
