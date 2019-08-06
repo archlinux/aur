@@ -47,11 +47,12 @@ prepare() {
     )
   fi
 
-  _cuda_gcc=$(basename $(readlink /opt/cuda/bin/gcc))
-  if [[ -L "/usr/lib/ccache/bin/$_cuda_gcc" ]] ; then
-    _CMAKE_FLAGS+=( \
-      -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/$_cuda_gcc \
-    )
+  if _cuda_gcc=$(basename $(readlink /opt/cuda/bin/gcc)) ; then
+    if [[ -L "/usr/lib/ccache/bin/$_cuda_gcc" ]] ; then
+      _CMAKE_FLAGS+=( \
+        -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/$_cuda_gcc \
+      )
+    fi
   fi
 }
 
