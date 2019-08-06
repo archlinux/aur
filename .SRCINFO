@@ -1,0 +1,15 @@
+pkgbase = git-revise
+	pkgdesc = A git subcommand to efficiently update, split, and rearrange commits
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://mystor.github.io/git-revise.html
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = git
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/g/git-revise/git-revise-0.4.2.tar.gz
+	sha256sums = 7aa3c572afb88d08ac6c307fa480c011a233e87d2c04d44401b44b53117401d7
+
+pkgname = git-revise
+
