@@ -1,8 +1,8 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgname=eigenpy
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.5.7
+pkgrel=1
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
 url="https://github.com/stack-of-tasks/$pkgname"
@@ -19,7 +19,8 @@ build() {
 
     patch -i "${srcdir}/patch-aa"
 
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
+        -DBUILD_UNIT_TESTS=ON .
     make
 }
 
