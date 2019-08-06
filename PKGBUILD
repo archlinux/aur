@@ -1,18 +1,18 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
+pkgorg='humanoid-path-planner'
 pkgname=('hpp-fcl' 'hpp-fcl-docs')
 pkgver=1.1.2
 pkgrel=1
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
-url="https://github.com/humanoid-path-planner/$pkgname"
+url="https://github.com/$pkgorg/$pkgname"
 license=('BSD')
 depends=('assimp')
 optdepends=('doxygen' 'octomap')
-makedepends=('eigen')
-makedepends=('cmake')
+makedepends=('cmake' 'eigen')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-md5sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28' 'A031AD35058955293D54DECEC45D22EF408328AD')
 
 build() {
