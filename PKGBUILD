@@ -3,7 +3,7 @@
 # Maintainer: Martoko <mbastholm at gmail dot com>
 
 pkgname=nordvpn-bin
-pkgver=3.3.0_3
+pkgver=3.3.0_4
 pkgrel=1
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -18,10 +18,10 @@ source_i686=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pk
 source_x86_64=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_amd64.deb")
 source_armv7h=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_armhf.deb")
 source_aarch64=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_aarch64.deb")
-md5sums_i686=('4145402b8c4efbf52534123841940c0f')
-md5sums_x86_64=('b4da7fc1ffcb1d9b39bbcbbcd4b6f3ab')
-md5sums_armv7h=('e4f52c7c0287c122a7e95f8bcab69b8e')
-md5sums_aarch64=('9ad7344a909b17ffe6db737b473d614d')
+sha256sums_i686=('64616b5d5891f5c07e34c2dc7db5e39c15a9aa51fa3a390112d9f49dc29b723d')
+sha256sums_x86_64=('508722c2bb4943dad260ebbecd0af8d4d115330f55dbf2bc32f3b74a47f125a7')
+sha256sums_armv7h=('71d1569c21e08555f47382fe01b4d1faa5d39425eb628c5e5f4f2c8eda0f83bf')
+sha256sums_aarch64=('536fbbd7f387ea2d6b24839f62d0c55d2298a2f8dd0ab9f97632c2efc6009c18')
 
 package() {
     bsdtar -O -xf *.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
