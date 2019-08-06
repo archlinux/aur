@@ -3,14 +3,13 @@
 
 pkgname=casadi
 pkgver=3.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Symbolic framework for automatic differentiation and numeric optimization"
 arch=('i686' 'x86_64')
 url="https://github.com/casadi/casadi"
 license=('GPL3')
-depends=('python2' 'gcc-fortran' 'lapack' 'swig' 'ipython2' 'python2-numpy'
-         'python2-scipy' 'python2-matplotlib')
-optdepends=('coin-or-ipopt')
+depends=('python' 'gcc-fortran' 'lapack' 'tinyxml' 'swig' 'sundials' 'ipython'
+         'python-numpy' 'python-scipy' 'python-matplotlib' 'coin-or-ipopt')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/casadi/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('2732a90b49084c38c88e0fb59b49635456f6f19712436a64c998133e52fd396f')
@@ -23,9 +22,15 @@ build() {
     -DCMAKE_BUILD_TYPE="Release" \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DWITH_PYTHON=ON \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-    -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-    -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+    -DWITH_PYTHON3=ON \
+    -DPYTHON_EXECUTABLE=/usr/bin/python \
+    -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
+    -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
+    -DWITH_LAPACK=ON \
+    -DWITH_SUNDIALS=ON \
+    -DWITH_TINYXML=ON \
+    -DWITH_IPOPT=ON \
+    -DWITH_CLANG=OFF \
     ..
 
   make
