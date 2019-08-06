@@ -1,25 +1,21 @@
 pkgbase = ubports-installer
 	pkgdesc = A simple tool to install Ubuntu Touch on UBports devices
-	pkgver = 0.2.2_beta
+	pkgver = 0.2.5b
 	pkgrel = 1
 	url = https://github.com/ubports/ubports-installer
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = GPL3
-	makedepends = git
 	makedepends = jq
 	makedepends = npm
+	makedepends = moreutils
 	depends = android-tools
 	depends = android-udev
 	depends = electron
 	conflicts = ubports-installer-git
-	source = https://github.com/ubports/ubports-installer/archive/0.2.2-beta.tar.gz
-	source = ubports-installer.sh
-	source = ubports-installer.desktop
-	source = rootless.patch
-	sha512sums = 2316633f620db34846dfda3c55774682a371d30ebe28360d882da69d18316e5f069d02ffa91cd88243337040ffbaacce2f1c83ab63a934154ebcfd8a418f5a83
-	sha512sums = d622cfe1f01d1ef0fc89c6d05e655f0396133142a3244353cc43dbefb493ac0e896f4927e350cda5138b4b369975e5755552f5dfaef53dee209af5eb1d90f5f2
-	sha512sums = 87d6760633d83b5d02abd3f54619fa1082a2f1a69be85ee010b2e552f6a926888c37aacb9b71d75b06d87311942dc219a3e51afd758cb2b9985a0bcb1d9a0455
-	sha512sums = dcc4efbe608a518adbad074d741745a8d43da580bc2279f429fc3c458a496ec91eaa913c4d43d49979b3411326dbb4e551bec092fb07cfe96fab5f559588677a
+	conflicts = ubports-installer-bin
+	source = https://github.com/ubports/ubports-installer/archive/0.2.5-beta.tar.gz
+	sha512sums = SKIP
 
 pkgname = ubports-installer
 
