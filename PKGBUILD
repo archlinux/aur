@@ -7,7 +7,7 @@
 
 pkgname=opmon
 pkgver=0.15
-pkgrel=2
+pkgrel=1
 license=('GPL')
 arch=('x86_64')
 pkgdesc="A open source RPG monster fighting game"

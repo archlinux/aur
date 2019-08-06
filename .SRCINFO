@@ -5,12 +5,12 @@ pkgbase = opmon
 	url = http://opmon-game.ga
 	arch = x86_64
 	license = GPL
-	makedepends = make
 	makedepends = cmake
 	depends = sfml
 	depends = gcc
 	depends = libstdc++5
 	depends = smpeg
+	conflicts = opmon-git
 	source = git+git://github.com/cyrioncentori/OpMon.git#tag=alpha-v0.15
 	md5sums = SKIP
 
