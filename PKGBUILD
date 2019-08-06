@@ -2,16 +2,16 @@
 pkgbase=libayatana-indicator
 pkgname=("${pkgbase}-gtk"{2,3})
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Ayatana Indicators Shared Library'
-url='https://ayatana-indicators.org'
+url='https://github.com/AyatanaIndicators/libayatana-indicator'
 arch=('x86_64')
 license=('LGPL2.1' 'LGPL3')
 depends=('glib2' 'ayatana-ido')
 makedepends=('gtk2' 'gtk3' 'mate-common' 'gtk-doc' 'pkg-config')
 options=('!emptydirs')
-source=("http://releases.ayatana-indicators.org/source/$pkgbase/$pkgbase-$pkgver.tar.gz")
-sha512sums=('fa7ecef06da459a1b6f4ce53832f2af9c53db6603d844f7fde61650752a5a58105714a0fd6183a95ba7d0caaeab16216712f9cdfe314631fbe565dc0332fe832')
+source=("https://github.com/AyatanaIndicators/$pkgbase/archive/$pkgver.tar.gz")
+sha512sums=('47a89a4f59d547e4aeeeba245ec7df360e18dc9f8a8c256cbeaf2a95e335f2734873457b2b0fdef8c2fdeaf780dda38cfe020c335a3447a2175914d580aeb8de')
 
 prepare() {
   cp -ra ${pkgbase}-${pkgver}{,-gtk2}
