@@ -2,13 +2,13 @@
 pkgname=direwolf-git
 _pkgname=direwolf
 pkgver=1.5.beta4.r63.ge219426
-pkgrel=1
+pkgrel=2
 pkgdesc="Software modem/TNC and APRS encoder/decoder"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/wb2osz/direwolf"
 license=('GPL')
 depends=('alsa-lib' 'gpsd')
-makedepends=('make' 'gcc' 'patch')
+makedepends=('git')
 provides=('direwolf')
 conflicts=('direwolf')
 source=('git+https://github.com/wb2osz/direwolf.git#branch=dev'
