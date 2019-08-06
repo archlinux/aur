@@ -1,0 +1,17 @@
+pkgbase = chrysalis-git
+	pkgdesc = A graphical configuration tool for programmable keyboards. Git master
+	pkgver = chrysalis.0.6.1.r2.g50fb61d
+	pkgrel = 0
+	url = https://github.com/keyboardio/Chrysalis
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = yarn
+	depends = npm
+	depends = electron
+	options = !strip
+	source = git+https://github.com/keyboardio/Chrysalis.git
+	sha512sums = SKIP
+
+pkgname = chrysalis-git
+
