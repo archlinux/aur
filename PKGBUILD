@@ -12,7 +12,7 @@ source=(git+"${url}".git)
 sha512sums=("SKIP")
 
 provides=("${pkgname}")
-conflicts=(	"${provides}")
+conflicts=("${provides}")
 makedepends=("git")
 depends=(
 	"fontconfig"
