@@ -2,7 +2,7 @@
 
 pkgname=growlight
 pkgver=1.0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Disk manipulation and system preparation tool"
 url="https://nick-black.com/dankwiki/index.php/Growlight"
 license=('GPL3')
@@ -17,7 +17,9 @@ optdepends=('jfsutils: JFS manipulation'
             'btrfs-progs: Btrfs manipulation'
             'hfsprogs: HFS (MacOS) manipulation'
             'ntfs-3g: NTFS (Windows) manipulation'
-            'f2fs-tools: F2FS manipulation')
+            'f2fs-tools: F2FS manipulation'
+            'hdparm: Deep ATA hardware details'
+            'nvme-cli: Deep NVMe hardware details')
 source=("https://github.com/dankamongmen/growlight/archive/v${pkgver}.tar.gz")
 
 build() {

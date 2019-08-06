@@ -1,7 +1,7 @@
 pkgbase = growlight
 	pkgdesc = Disk manipulation and system preparation tool
 	pkgver = 1.0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nick-black.com/dankwiki/index.php/Growlight
 	arch = x86_64
 	license = GPL3
@@ -20,8 +20,10 @@ pkgbase = growlight
 	optdepends = hfsprogs: HFS (MacOS) manipulation
 	optdepends = ntfs-3g: NTFS (Windows) manipulation
 	optdepends = f2fs-tools: F2FS manipulation
+	optdepends = hdparm: Deep ATA hardware details
+	optdepends = nvme-cli: Deep NVMe hardware details
 	source = https://github.com/dankamongmen/growlight/archive/v1.0.6.2.tar.gz
-	sha256sums = 'cced7b7cc00b3db0b14208bcb2c029579dbcbb8cdae34ba83699827d97769f47'
+	sha256sums = cced7b7cc00b3db0b14208bcb2c029579dbcbb8cdae34ba83699827d97769f47
 
 pkgname = growlight
 
