@@ -19,7 +19,7 @@ backup=()
 options=()
 source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=("00a6f7dde5f64a57cb4ee8c27656898cffcb0da9a77991c14ae6f93d71d01dfa")
+sha256sums=("4892f1e09db2bd00653415465816213c7971a22872536ab8cc48a49bdc01f34e")
 
 build () {
 	cd "$srcdir/$pkgname/"
@@ -28,6 +28,8 @@ build () {
 
 package() {
 	cd "$srcdir/$pkgname/"
+	pwd
+	ls
 	make install HEADERDIR="$pkgdir/usr/include/marg/" INSTALLDIR="$pkgdir/usr/lib/"
 	make man MANDIR="$pkgdir/usr/share/man/man3/"
 }
