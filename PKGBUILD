@@ -3,27 +3,24 @@
 # Maintainer: Wainer Vandelli <wainer dot vandelli at gmail dot com>
 # Contributor: Konstantin Gizdov < arch at kge dot pw >
 pkgname=cvmfs
-pkgver=2.5.2
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
 arch=('x86_64')
 url="http://cernvm.cern.ch/portal/filesystem"
 license=('BSD')
-depends=('fuse2' 'curl' 'c-ares' 'leveldb' 'pacparser' 'sqlite' 'protobuf')
+depends=('fuse2' 'curl' 'c-ares' 'leveldb' 'pacparser' 'sqlite' 'protobuf' 'libwebsockets')
 makedepends=('cmake' 'make' 'gtest' 'sparsehash' 'gmock')
 backup=('etc/cvmfs/default.local')
 install=cvmfs.install
 options=('!emptydirs')
 source=("https://ecsft.cern.ch/dist/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
-    'settings.cmake'
+        'settings.cmake'
 	'externals.patch'
-	'sqlite-scratch.patch'
-    'curl.patch')
-md5sums=('ee73d8322ffa48c5278869201006afc5'
+        )
+md5sums=('ca5b9c0ec4911622ee80e5d9f8e8f61a'
          '20dc60c61077f4a3711463e8686d260d'
-         '3054d07ba4d5f96159a6c2c36244bda8'
-         '0ef4c858aa9648dcd46768991748eb06'
-         '2ec8fe3ee233d0934f288927c7a88e46')
+         '8f160f021cc0724a21968fc1fc7081b3')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -32,12 +29,6 @@ prepare() {
     # We remove all those that are provided by Arch/AUR and leave only
     # the ones not currently available
     patch -Np1 -i "$srcdir/externals.patch"
-
-    # Sqlite deprecated the SCRATCH configuration option
-    patch -Np1 -i "$srcdir/sqlite-scratch.patch"
-
-    # Error code aliases in cURL
-    patch -Np1 -i "$srcdir/curl.patch"
 }
 
 build() {
