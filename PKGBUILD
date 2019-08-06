@@ -53,7 +53,7 @@ prepare() {
 build() {
     cd "${srcdir}/${_reponame}"
 
-    make
+    make EXTRA_CFLAGS="-O0"
 }
 
 package() {
