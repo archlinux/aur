@@ -1,0 +1,17 @@
+pkgbase = python-html-purifier-git
+	pkgdesc = A Python module to purify HTML.
+	pkgver = 0.r26.00f38b6
+	pkgrel = 1
+	url = https://github.com/PixxxeL/python-html-purifier.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	provides = python-html-purifier
+	source = git+https://github.com/PixxxeL/python-html-purifier.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = python-html-purifier-git
+
