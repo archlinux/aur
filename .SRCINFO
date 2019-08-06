@@ -7,6 +7,7 @@ pkgbase = hpp-fcl
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	makedepends = eigen
 	depends = assimp
 	optdepends = doxygen
 	optdepends = octomap
@@ -14,8 +15,8 @@ pkgbase = hpp-fcl
 	source = https://github.com/humanoid-path-planner/hpp-fcl/releases/download/v1.1.2/hpp-fcl-1.1.2.tar.gz.sig
 	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28
 	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = hpp-fcl
 
