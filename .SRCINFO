@@ -1,6 +1,6 @@
 pkgbase = textedit-classic.app
 	pkgdesc = A text editor with font, color, and style capabilities for GNUstep
-	pkgver = 4.0+20061029
+	pkgver = 0.95_pre20100427
 	pkgrel = 1
 	url = http://www.nongnu.org/backbone/
 	arch = i686

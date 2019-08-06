@@ -3,7 +3,7 @@
 _pkgname=TextEdit
 pkgname=textedit-classic.app
 pkgrel=1
-pkgver=4.0+20061029
+pkgver=0.95_pre20100427
 pkgdesc='A text editor with font, color, and style capabilities for GNUstep'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://www.nongnu.org/backbone/'
