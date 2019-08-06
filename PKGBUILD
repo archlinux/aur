@@ -13,7 +13,8 @@ arch=('x86_64')
 pkgdesc="A open source RPG monster fighting game"
 url="http://opmon-game.ga"
 depends=('sfml' 'gcc' 'libstdc++5' 'smpeg')
-makedepends=('make' 'cmake')
+makedepends=('cmake')
+conflicts=('opmon-git')
 source=("git+git://github.com/cyrioncentori/OpMon.git#tag=alpha-v${pkgver}")
 md5sums=('SKIP')
 
