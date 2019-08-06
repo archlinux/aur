@@ -1,6 +1,6 @@
 pkgbase = linux-bootsplash
 	pkgdesc = Linux kernel with kernel bootsplash support
-	pkgver = 5.2.5
+	pkgver = 5.2.6
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = linux-bootsplash
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.5.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.6.tar.xz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -37,7 +37,7 @@ pkgbase = linux-bootsplash
 	source = ajax-loader.gif
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = c645402843f90a69426975f8923923dfc6edebb5d1bc0092560ffb7135d3cd96
+	sha256sums = be105afb7394dce98953bcea79c2ce02345587eee4638fce9a5f5a1e7e7b1ff2
 	sha256sums = SKIP
 	sha256sums = 1c4d5500a3b4995035c2e940fc0ad2a2dae7be047c8eb20c097444e348258f87
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
@@ -73,12 +73,12 @@ pkgname = linux-bootsplash
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = bootsplash-systemd: to enable bootsplash
-	provides = linux=5.2.5
+	provides = linux=5.2.6
 	backup = etc/mkinitcpio.d/linux-bootsplash.preset
 
 pkgname = linux-bootsplash-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bootsplash kernel
 	depends = linux
-	provides = linux-headers=5.2.5
-	provides = linux-headers=5.2.5
+	provides = linux-headers=5.2.6
+	provides = linux-headers=5.2.6
 
