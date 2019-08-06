@@ -4,6 +4,7 @@ pkgbase = mbuffer
 	pkgrel = 1
 	url = http://www.maier-komor.de/mbuffer.html
 	arch = x86_64
+	arch = armv7l
 	license = GPL3
 	depends = openssl
 	source = http://www.maier-komor.de/software/mbuffer/mbuffer-20190725.tgz
