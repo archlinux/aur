@@ -28,8 +28,6 @@ build () {
 
 package() {
 	cd "$srcdir/$pkgname/"
-	pwd
-	ls
 	make install HEADERDIR="$pkgdir/usr/include/marg/" INSTALLDIR="$pkgdir/usr/lib/"
 	make man MANDIR="$pkgdir/usr/share/man/man3/"
 }
