@@ -20,6 +20,7 @@ pkgbase = green-recorder-git
 	depends = python2-configparser
 	depends = xdg-utils
 	depends = pulseaudio
+	depends = python2-pydbus
 	provides = green-recorder
 	conflicts = green-recorder
 	options = !emptydirs
