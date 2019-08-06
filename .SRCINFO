@@ -1,0 +1,15 @@
+pkgbase = nodejs-dockerfile-utils
+	pkgdesc = Utilities for formatting and linting a Dockerfile.
+	pkgver = 0.0.13
+	pkgrel = 1
+	url = https://github.com/rcjsuen/dockerfile-utils#readme
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = dockerfile-utils-0.0.13.tgz
+	source = https://registry.npmjs.org/dockerfile-utils/-/dockerfile-utils-0.0.13.tgz
+	sha1sums = 43dd955e6c4d2c4c844216b7128d5a95b8fdc783
+
+pkgname = nodejs-dockerfile-utils
+
