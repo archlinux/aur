@@ -17,7 +17,7 @@ post_install() {
     if id "gogios" >/dev/null 2>&1; then
         echo "gogios user already exists"
     else
-        useradd --system --no-create-home --shell /sbin/nologin gogios
+        useradd --system --user-group --home-dir /var/spool/gogios --shell /sbin/nologin gogios
     fi
     
     chown gogios:gogios -R /var/log/gingertechnology

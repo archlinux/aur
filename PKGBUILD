@@ -1,7 +1,7 @@
 # Maintainer: Bailey Kasin <bailey@gingertechnology.net> (https://angrysysadmins.tech)
 
 pkgname=gogios
-pkgver=1.2.r0.g4ebd7ed
+pkgver=1.2.1.r0.g2ed102f
 pkgrel=1
 pkgdesc="Checks to see if required services are still running on important machines."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/bkasin/gogios"
 license=('MIT')
 
 makedepends=('go' 'make')
-optdepends=('nginx')
+optdepends=('nginx' 'nmap')
 
 install=${pkgname}.install
 

@@ -1,6 +1,6 @@
 pkgbase = gogios
 	pkgdesc = Checks to see if required services are still running on important machines.
-	pkgver = 1.2.r0.g4ebd7ed
+	pkgver = 1.2.1.r0.g2ed102f
 	pkgrel = 1
 	url = https://github.com/bkasin/gogios
 	install = gogios.install
@@ -9,6 +9,7 @@ pkgbase = gogios
 	makedepends = go
 	makedepends = make
 	optdepends = nginx
+	optdepends = nmap
 	provides = gogios
 	conflicts = gogios-bin
 	source = gogios::git+https://github.com/bkasin/gogios.git#branch=master
