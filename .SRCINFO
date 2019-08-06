@@ -1,6 +1,6 @@
 pkgbase = scribus-svn
 	pkgdesc = A desktop publishing program - Version from SVN
-	pkgver = 23113
+	pkgver = 23102
 	pkgrel = 1
 	url = http://www.scribus.net
 	arch = i686
@@ -25,10 +25,13 @@ pkgbase = scribus-svn
 	depends = openscenegraph
 	depends = libwmf
 	depends = desktop-file-utils
+	depends = libqxp
+	depends = libzmf
+	depends = libfreehand
 	optdepends = lib2geom: for mesh distortion
 	provides = scribus
 	conflicts = scribus
-	source = scribus::svn://scribus.net/trunk
+	source = scribus::svn://scribus.net/trunk#revision=23102
 	source = python2.patch
 	sha256sums = SKIP
 	sha256sums = 1801f9b1fbabeee33112c48e706706072e1e60b1160b1723c9bb80df0b4e2c66
