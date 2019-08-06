@@ -1,0 +1,7 @@
+post_install() {
+  echo 'You may need to delete the local version in ~/.julia/packages/Arpack for this installed version to be used.'
+}
+
+post_upgrade() {
+  post_install
+}
