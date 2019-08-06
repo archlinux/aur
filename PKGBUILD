@@ -5,10 +5,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=75.0.3770.142
+pkgver=76.0.3809.87
 pkgrel=1
 _launcher_ver=6
-_meta_browser_sha=3a0df19242cddda96efd91f195fe0df53fe4f955
+_meta_browser_sha=38b36f421f8d984c7004c9d9a6d514ed2fb6cf8e
 pkgdesc="Chromium built with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -29,23 +29,25 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         meta-browser-${_meta_browser_sha}.tar.gz::https://github.com/OSSystems/meta-browser/archive/${_meta_browser_sha}.tar.gz
         chromium-system-icu.patch
-        chromium-fix-window-flash-for-some-WMs.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch
-        chromium-sway-presentation.patch
-        chromium-mutex-surfaces.patch
-        https://git.nightly.network/Exherbo/desktop/raw/de0a391d9e7442dce614553835ef599119826387/packages/net-www/chromium-stable/files/chromium-remove-const.patch
+        0001-ozone-wayland-Prepare-WaylandCanvasSurface-for-compl.patch
+	      0002-ozone-wayland-Sway-avoid-sending-presentation-early.patch
+	      0003-Ozone-Wayland-Manager-make-mojo-calls-on-IO-thread.patch
+	      0004-ozone-wayland-Fix-broken-software-rendering-path.patch
+	      0005-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch
         Added-HiDPI-support-for-Ozone-Wayland.patch)
-sha256sums=('510e6ca7ccc218b401b375c13656f6aecab196b03142026dc3602b9d1804a5ac'
+sha256sums=('215ca6acee7b4fd3c95fe796260af4dc5454dbba3b701aa43afeb98a06dc4194'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '6bacd62414282999a5631e06cd3fa1eca787ee5b20a41fd3499668eead55f4d1'
+            'd87957d01be9fb59faf5fde523eb87a8256605b1533171416b7a56bfcbd6d056'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
-            '183d8cc712f0bcf1afcb01ce90c4c104a4c8d8070a06f94974a28b007d9e2ce4'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
-            '5887f78b55c4ecbbcba5930f3f0bb7bc0117c2a41c2f761805fcf7f46f1ca2b3'
-            '279b9558a466d96bc7dcba96a9f41efaed98ede1cd69e1562689ee4409940fe8'
-            'dcf01e0d630eb107e5efb56bb00c140269a0c9711b3ae90a3fd289ad5153ac08'
-            '005f7db8acc774e2c66f99d900f2263abf495ccd5eda33c45a957fce2ed30f8d'
+            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
+            'a16afeb448fc49904f4bb4f679db1a79b3305a04399d672787e708a32516ac91'
+            'bddf821069a8037ce91c35787aa942d35ef880ca5e28dae1ddeb224c2d008548'
+            '1455cc2bb36f4247b3c16b805328b277c8538ad96f50d1e7f5fb816d5cad2d6d'
+            'deba5fa9ebd64ca48bab71d51c3bf50a6c10e2704e60b7b50268fc2de15afb61'
+            '907be76f0906452b3327b0d469bf5bcff31eec9d9e6d6829c6a0159da73af68a'
             'b6b258a6d3b42731c9375395b4e6e896edef00617d5b7028c348a5d2dbb14eb7')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -83,8 +85,7 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
-_general_patches=(
-  '0001-libstdc-do-not-assume-unique_ptr-has-ostream-operato.patch'
+_mb_general_patches=(
   'oe-clang-fixes.patch'
   # 'v8-qemu-wrapper.patch'
   'wrapper-extra-flags.patch'
@@ -92,34 +93,18 @@ _general_patches=(
   'add_internal_define_armv7ve.patch'
 )
 
-_wayland_patches=(
-  '0001-ozone-wayland-Factored-the-clipboard-logic-out-of-Wa.patch'
-  '0002-Convert-wayland-buffer-to-the-new-shared-memory-API.patch'
-  '0003-Migrate-WaylandCanvasSurface-to-the-new-shared-memor.patch'
-  '0004-ozone-wayland-Ease-the-buffer-swap-and-maintenance.patch'
-  '0005-ozone-wayland-Fix-presentation-feedback-flags.patch'
-  '0006-wayland-Do-not-release-shared-memory-fd-when-passing.patch'
-  '0007-ozone-wayland-Don-t-wait-for-frame-callback-after-su.patch'
-  '0008-ozone-wayland-Do-not-add-window-if-manager-does-not-.patch '
-  '0009-ozone-wayland-Fix-NativeGpuMemoryBuffers-usage.patch'
-  '0010-ozone-wayland-Add-immediate-release-support.patch'
-  '0011-ozone-wayland-Wrap-wl_shm-to-WaylandShm.patch'
-  '0012-ozone-wayland-Shm-Proxy-make-mojo-calls-on-the-gpu-t.patch'
-  '0013-ozone-wayland-Shm-add-buffer_id.patch'
-  '0014-ozone-wayland-Unite-Wayland-ShmBufferManager-and-Buf.patch'
-  '0015-ozone-wayland-Stop-providing-WaylandConnection-throu.patch'
-  '0016-ozone-wayland-Improve-logging-when-creating-gbm-buff.patch'
-  '0017-ozone-wayland-Establish-BufferManagerGpu-and-BufferM.patch'
-  '0018-ozone-wayland-Use-new-shmen-API-when-loading-keymap.patch'
-  '0019-ozone-wayland-Prepare-WaylandCanvasSurface-for-compl.patch'
-  '0020-ozone-wayland-Reset-surface-contents-in-a-safe-way.patch'
-  '0021-Ozone-Wayland-Manager-make-mojo-calls-on-IO-thread.patch'
-  '0022-ozone-wayland-Manager-tests-exercise-tests-with-mojo.patch'
-  '0023-ozone-wayland-Fix-broken-software-rendering-path.patch'
-  '0001-v4l2_device-CanCreateEGLImageFrom-support-all-ARM-So.patch'
-  '0001-Add-support-for-V4L2VDA-on-Linux.patch'
-  '0002-Add-mmap-via-libv4l-to-generic_v4l2_device.patch'
+_mb_wayland_patches=(
   '0001-ozone-wayland-Fix-method-prototype-match.patch'
+  'V4L2/0001-Add-support-for-V4L2VDA-on-Linux.patch'
+  'V4L2/0002-Add-mmap-via-libv4l-to-generic_v4l2_device.patch'
+)
+
+_bugfix_patches=(
+  '0001-ozone-wayland-Prepare-WaylandCanvasSurface-for-compl.patch'
+	'0002-ozone-wayland-Sway-avoid-sending-presentation-early.patch'
+	'0003-Ozone-Wayland-Manager-make-mojo-calls-on-IO-thread.patch'
+	'0004-ozone-wayland-Fix-broken-software-rendering-path.patch'
+	'0005-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch'
 )
 
 prepare() {
@@ -135,9 +120,6 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/libxml_utils.cc
 
-  # https://crbug.com/956061
-  patch -Np1 -i ../chromium-fix-window-flash-for-some-WMs.patch
-
   # Load Widevine CDM if available
   patch -Np1 -i ../chromium-widevine.patch
 
@@ -147,27 +129,24 @@ prepare() {
   # https://bugs.gentoo.org/661880#c21
   patch -Np1 -i ../chromium-system-icu.patch
 
-  # https://github.com/ungoogled-software/ungoogled-chromium-debian/issues/7
-  patch -Np1 -i ../chromium-remove-const.patch
-
   # chromium-ozone-wayland
-  for PATCH in ${_general_patches[@]}
+  for PATCH in ${_mb_general_patches[@]}
   do
     echo "Applying $PATCH"
     patch -Np1 -i $srcdir/meta-browser-${_meta_browser_sha}/recipes-browser/chromium/files/${PATCH}
   done
 
-  for PATCH in ${_wayland_patches[@]}
+  for PATCH in ${_mb_wayland_patches[@]}
   do
     echo "Applying $PATCH"
     patch -Np1 -i $srcdir/meta-browser-${_meta_browser_sha}/recipes-browser/chromium/chromium-ozone-wayland/${PATCH}
   done
 
-  # https://chromium-review.googlesource.com/c/chromium/src/+/1718406
-  patch -Np1 -i ../chromium-mutex-surfaces.patch
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/1719013
-  patch -Np1 -i ../chromium-sway-presentation.patch
+  for PATCH in ${_bugfix_patches[@]}
+  do
+    echo "Applying $PATCH"
+    patch -Np1 -i $srcdir/${PATCH}
+  done
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/1647154
   patch -Np1 -i ../Added-HiDPI-support-for-Ozone-Wayland.patch
@@ -211,13 +190,6 @@ build() {
   export AR=ar
   export NM=nm
 
-  if check_buildoption ccache y; then
-    # Avoid falling back to preprocessor mode when sources contain time macros
-    export CCACHE_SLOPPINESS=time_macros
-    export CC="ccache $CC"
-    export CXX="ccache $CXX"
-  fi
-
   local _flags=(
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
@@ -249,6 +221,12 @@ build() {
     "google_default_client_id=\"${_google_default_client_id}\""
     "google_default_client_secret=\"${_google_default_client_secret}\""
   )
+
+  if check_buildoption ccache y; then
+    # Avoid falling back to preprocessor mode when sources contain time macros
+    export CCACHE_SLOPPINESS=time_macros
+    _flags+=('cc_wrapper="ccache"')
+  fi
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'

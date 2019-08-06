@@ -1,0 +1,271 @@
+From 3be83bcae17f547f58b41640451471ab840c70c0 Mon Sep 17 00:00:00 2001
+From: Maksim Sisov <msisov@igalia.com>
+Date: Tue, 4 Jun 2019 07:56:29 +0000
+Subject: [PATCH 3/5] [Ozone/Wayland] Manager: make mojo calls on IO thread.
+
+Previously, the manager had been rerouting calls to GpuMainThread
+to make mojo calls. That thread is not really meant for IPC.
+Instead, make calls on IOChildThread for consistency.
+
+Bug: 969603
+Change-Id: I351768c4a36973bd791c02c1f65080c65b9a0a7b
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1640398
+Commit-Queue: Maksim Sisov <msisov@igalia.com>
+Reviewed-by: Michael Spang <spang@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#665836}
+---
+ .../wayland/gpu/wayland_buffer_manager_gpu.cc | 95 +++++++++----------
+ .../wayland/gpu/wayland_buffer_manager_gpu.h  | 21 ++--
+ 2 files changed, 59 insertions(+), 57 deletions(-)
+
+diff --git a/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc b/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc
+index 49c4903270bd..c37289f9179e 100644
+--- a/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc
++++ b/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc
+@@ -7,11 +7,11 @@
+ #include <utility>
+ 
+ #include "base/bind.h"
++#include "base/message_loop/message_loop_current.h"
+ #include "base/process/process.h"
+ #include "mojo/public/cpp/bindings/associated_interface_ptr.h"
+ #include "mojo/public/cpp/system/platform_handle.h"
+ #include "ui/ozone/common/linux/drm_util_linux.h"
+-#include "ui/ozone/platform/wayland/gpu/gbm_surfaceless_wayland.h"
+ #include "ui/ozone/platform/wayland/gpu/wayland_surface_gpu.h"
+ 
+ namespace ui {
+@@ -24,9 +24,11 @@ WaylandBufferManagerGpu::~WaylandBufferManagerGpu() = default;
+ 
+ void WaylandBufferManagerGpu::SetWaylandBufferManagerHost(
+     BufferManagerHostPtr buffer_manager_host_ptr) {
+-  // This is an IO child thread. To satisfy our needs, we pass interface here
+-  // and bind it again on a gpu main thread, where buffer swaps happen.
+-  buffer_manager_host_ptr_info_ = buffer_manager_host_ptr.PassInterface();
++  // This is an IO child thread meant for IPC. Bind interface in this thread and
++  // do all the mojo calls on the same thread.
++  BindHostInterface(std::move(buffer_manager_host_ptr));
++
++  io_thread_runner_ = base::ThreadTaskRunnerHandle::Get();
+ }
+ 
+ void WaylandBufferManagerGpu::ResetGbmDevice() {
+@@ -40,28 +42,41 @@ void WaylandBufferManagerGpu::ResetGbmDevice() {
+ void WaylandBufferManagerGpu::OnSubmission(gfx::AcceleratedWidget widget,
+                                            uint32_t buffer_id,
+                                            gfx::SwapResult swap_result) {
+-  DCHECK(gpu_thread_runner_->BelongsToCurrentThread());
++  DCHECK(io_thread_runner_->BelongsToCurrentThread());
+   DCHECK_NE(widget, gfx::kNullAcceleratedWidget);
+   auto* surface = GetSurface(widget);
+   // There can be a race between destruction and submitting the last frames. The
+   // surface can be destroyed by the time the host receives a request to destroy
+   // a buffer, and is able to call the OnSubmission for that specific buffer.
+-  if (surface)
+-    surface->OnSubmission(buffer_id, swap_result);
++  if (surface) {
++    // As long as mojo calls rerouted to the IO child thread, we have to reroute
++    // them back to the gpu main thread, where the original commit buffer call
++    // came from.
++    gpu_thread_runner_->PostTask(
++        FROM_HERE,
++        base::Bind(&WaylandSurfaceGpu::OnSubmission, base::Unretained(surface),
++                   buffer_id, swap_result));
++  }
+ }
+ 
+ void WaylandBufferManagerGpu::OnPresentation(
+     gfx::AcceleratedWidget widget,
+     uint32_t buffer_id,
+     const gfx::PresentationFeedback& feedback) {
+-  DCHECK(gpu_thread_runner_->BelongsToCurrentThread());
++  DCHECK(io_thread_runner_->BelongsToCurrentThread());
+   DCHECK_NE(widget, gfx::kNullAcceleratedWidget);
+   auto* surface = GetSurface(widget);
+   // There can be a race between destruction and presenting the last frames. The
+   // surface can be destroyed by the time the host receives a request to destroy
+   // a buffer, and is able to call the OnPresentation for that specific buffer.
+-  if (surface)
+-    surface->OnPresentation(buffer_id, feedback);
++  if (surface) {
++    // As long as mojo calls rerouted to the IO child thread, we have to reroute
++    // them back to the gpu main thread, where the original commit buffer call
++    // came from.
++    gpu_thread_runner_->PostTask(
++        FROM_HERE, base::Bind(&WaylandSurfaceGpu::OnPresentation,
++                              base::Unretained(surface), buffer_id, feedback));
++  }
+ }
+ 
+ void WaylandBufferManagerGpu::RegisterSurface(gfx::AcceleratedWidget widget,
+@@ -92,10 +107,10 @@ void WaylandBufferManagerGpu::CreateDmabufBasedBuffer(
+     uint32_t current_format,
+     uint32_t planes_count,
+     uint32_t buffer_id) {
+-  DCHECK(gpu_thread_runner_);
+-  // Do a mojo call on the GpuMainThread instead of the io child thread to
+-  // ensure proper functionality.
+-  gpu_thread_runner_->PostTask(
++  DCHECK(io_thread_runner_);
++
++  // Do the mojo call on the IO child thread.
++  io_thread_runner_->PostTask(
+       FROM_HERE,
+       base::BindOnce(&WaylandBufferManagerGpu::CreateDmabufBasedBufferInternal,
+                      base::Unretained(this), widget, std::move(dmabuf_fd),
+@@ -110,10 +125,10 @@ void WaylandBufferManagerGpu::CreateShmBasedBuffer(
+     size_t length,
+     gfx::Size size,
+     uint32_t buffer_id) {
+-  DCHECK(gpu_thread_runner_);
+-  // Do a mojo call on the GpuMainThread instead of the io child thread to
+-  // ensure proper functionality.
+-  gpu_thread_runner_->PostTask(
++  DCHECK(io_thread_runner_);
++
++  // Do the mojo call on the IO child thread.
++  io_thread_runner_->PostTask(
+       FROM_HERE,
+       base::BindOnce(&WaylandBufferManagerGpu::CreateShmBasedBufferInternal,
+                      base::Unretained(this), widget, std::move(shm_fd), length,
+@@ -123,11 +138,11 @@ void WaylandBufferManagerGpu::CreateShmBasedBuffer(
+ void WaylandBufferManagerGpu::CommitBuffer(gfx::AcceleratedWidget widget,
+                                            uint32_t buffer_id,
+                                            const gfx::Rect& damage_region) {
+-  DCHECK(gpu_thread_runner_);
++  DCHECK(gpu_thread_runner_ && gpu_thread_runner_->BelongsToCurrentThread());
++  DCHECK(io_thread_runner_);
+ 
+-  // Do a mojo call on the GpuMainThread instead of the io child thread to
+-  // ensure proper functionality.
+-  gpu_thread_runner_->PostTask(
++  // Do the mojo call on the IO child thread.
++  io_thread_runner_->PostTask(
+       FROM_HERE,
+       base::BindOnce(&WaylandBufferManagerGpu::CommitBufferInternal,
+                      base::Unretained(this), widget, buffer_id, damage_region));
+@@ -135,11 +150,10 @@ void WaylandBufferManagerGpu::CommitBuffer(gfx::AcceleratedWidget widget,
+ 
+ void WaylandBufferManagerGpu::DestroyBuffer(gfx::AcceleratedWidget widget,
+                                             uint32_t buffer_id) {
+-  DCHECK(gpu_thread_runner_);
++  DCHECK(io_thread_runner_);
+ 
+-  // Do a mojo call on the GpuMainThread instead of the io child thread to
+-  // ensure proper functionality.
+-  gpu_thread_runner_->PostTask(
++  // Do the mojo call on the IO child thread.
++  io_thread_runner_->PostTask(
+       FROM_HERE, base::BindOnce(&WaylandBufferManagerGpu::DestroyBufferInternal,
+                                 base::Unretained(this), widget, buffer_id));
+ }
+@@ -159,14 +173,7 @@ void WaylandBufferManagerGpu::CreateDmabufBasedBufferInternal(
+     uint32_t current_format,
+     uint32_t planes_count,
+     uint32_t buffer_id) {
+-  // The interface pointer is passed on an IO child thread, which is different
+-  // from the thread, which is used to call these methods. Thus, rebind the
+-  // interface on a first call to ensure mojo calls will always happen on a
+-  // sequence we want.
+-  if (!buffer_manager_host_ptr_.is_bound())
+-    BindHostInterface();
+-
+-  DCHECK(gpu_thread_runner_->BelongsToCurrentThread());
++  DCHECK(io_thread_runner_->BelongsToCurrentThread());
+   DCHECK(buffer_manager_host_ptr_);
+   buffer_manager_host_ptr_->CreateDmabufBasedBuffer(
+       widget,
+@@ -181,15 +188,7 @@ void WaylandBufferManagerGpu::CreateShmBasedBufferInternal(
+     size_t length,
+     gfx::Size size,
+     uint32_t buffer_id) {
+-  DCHECK(gpu_thread_runner_->BelongsToCurrentThread());
+-
+-  // The interface pointer is passed on an IO child thread, which is different
+-  // from the thread, which is used to call these methods. Thus, rebind the
+-  // interface on a first call to ensure mojo calls will always happen on a
+-  // sequence we want.
+-  if (!buffer_manager_host_ptr_.is_bound())
+-    BindHostInterface();
+-
++  DCHECK(io_thread_runner_->BelongsToCurrentThread());
+   DCHECK(buffer_manager_host_ptr_);
+   buffer_manager_host_ptr_->CreateShmBasedBuffer(
+       widget, mojo::WrapPlatformHandle(mojo::PlatformHandle(std::move(shm_fd))),
+@@ -200,7 +199,7 @@ void WaylandBufferManagerGpu::CommitBufferInternal(
+     gfx::AcceleratedWidget widget,
+     uint32_t buffer_id,
+     const gfx::Rect& damage_region) {
+-  DCHECK(gpu_thread_runner_->BelongsToCurrentThread());
++  DCHECK(io_thread_runner_->BelongsToCurrentThread());
+   DCHECK(buffer_manager_host_ptr_);
+ 
+   buffer_manager_host_ptr_->CommitBuffer(widget, buffer_id, damage_region);
+@@ -209,15 +208,15 @@ void WaylandBufferManagerGpu::CommitBufferInternal(
+ void WaylandBufferManagerGpu::DestroyBufferInternal(
+     gfx::AcceleratedWidget widget,
+     uint32_t buffer_id) {
+-  DCHECK(gpu_thread_runner_->BelongsToCurrentThread());
++  DCHECK(io_thread_runner_->BelongsToCurrentThread());
+   DCHECK(buffer_manager_host_ptr_);
+ 
+   buffer_manager_host_ptr_->DestroyBuffer(widget, buffer_id);
+ }
+ 
+-void WaylandBufferManagerGpu::BindHostInterface() {
+-  DCHECK(!buffer_manager_host_ptr_.is_bound());
+-  buffer_manager_host_ptr_.Bind(std::move(buffer_manager_host_ptr_info_));
++void WaylandBufferManagerGpu::BindHostInterface(
++    BufferManagerHostPtr buffer_manager_host_ptr) {
++  buffer_manager_host_ptr_.Bind(buffer_manager_host_ptr.PassInterface());
+ 
+   // Setup associated interface.
+   ozone::mojom::WaylandBufferManagerGpuAssociatedPtrInfo client_ptr_info;
+diff --git a/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.h b/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.h
+index d2185c8308fb..deeb8d0f097f 100644
+--- a/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.h
++++ b/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.h
+@@ -140,7 +140,7 @@ class WaylandBufferManagerGpu : public ozone::mojom::WaylandBufferManagerGpu {
+                             const gfx::Rect& damage_region);
+   void DestroyBufferInternal(gfx::AcceleratedWidget widget, uint32_t buffer_id);
+ 
+-  void BindHostInterface();
++  void BindHostInterface(BufferManagerHostPtr buffer_manager_host_ptr);
+ 
+ #if defined(WAYLAND_GBM)
+   // A DRM render node based gbm device.
+@@ -152,20 +152,23 @@ class WaylandBufferManagerGpu : public ozone::mojom::WaylandBufferManagerGpu {
+   // A pointer to a WaylandBufferManagerHost object, which always lives on a
+   // browser process side. It's used for a multi-process mode.
+   BufferManagerHostPtr buffer_manager_host_ptr_;
+-  ozone::mojom::WaylandBufferManagerHostPtrInfo buffer_manager_host_ptr_info_;
+ 
+   mojo::AssociatedBinding<ozone::mojom::WaylandBufferManagerGpu>
+       associated_binding_;
+ 
+-  // A task runner, which is initialized in a multi-process mode. It is used to
+-  // ensure all the methods of this class are run on GpuMainThread. This is
+-  // needed to ensure mojo calls happen on a right sequence. What is more, it
+-  // makes it possible to use a frame callback (when it is implemented) in the
+-  // browser process, which calls back to a right sequence after a
+-  // CommitBuffer call.
++  std::map<gfx::AcceleratedWidget, WaylandSurfaceGpu*> widget_to_surface_map_;
++
++  // This task runner can be used to pass messages back to the GpuMainThread.
++  // For example, swap requests come from the GpuMainThread, but rerouted to the
++  // IOChildThread and then mojo calls happen. However, when the manager
++  // receives mojo calls, it has to reroute calls back to the same thread
++  // where the calls came from to ensure correct sequence.
+   scoped_refptr<base::SingleThreadTaskRunner> gpu_thread_runner_;
+ 
+-  std::map<gfx::AcceleratedWidget, WaylandSurfaceGpu*> widget_to_surface_map_;
++  // A task runner, which is initialized in a multi-process mode. It is used to
++  // ensure all the methods of this class are run on IOChildThread. This is
++  // needed to ensure mojo calls happen on a right sequence.
++  scoped_refptr<base::SingleThreadTaskRunner> io_thread_runner_;
+ 
+   DISALLOW_COPY_AND_ASSIGN(WaylandBufferManagerGpu);
+ };
+-- 
+2.22.0
+

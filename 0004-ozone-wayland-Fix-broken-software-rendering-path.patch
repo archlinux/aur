@@ -1,0 +1,108 @@
+From 86c0a9aac3e872c98345cc761bfbbc9dbbb6fde2 Mon Sep 17 00:00:00 2001
+From: Maksim Sisov <msisov@igalia.com>
+Date: Thu, 6 Jun 2019 08:58:59 +0000
+Subject: [PATCH 4/5] [ozone/wayland] Fix broken software rendering path.
+
+The "[Ozone/Wayland] Manager: make mojo calls on IO thread." CL:
+https://crrev.com/c/1640398 broke the software rendering path,
+which results in a DCHECK now.
+
+It turned out that when software rendering is used, the buffers
+are committed on the VizCompositorThread, whereas hw accelerated
+rendering uses GpuMainThread instead.
+
+To resolve the conflict, rename the |gpu_thread_runner_| to
+the |commit_thread_runner_|, and use it when OnSubmission
+and OnPresentation calls come.
+
+Bug: 969603
+Change-Id: I3600e35fdc9d4fd0817ce9948316a2af86108bdb
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1642558
+Reviewed-by: Michael Spang <spang@chromium.org>
+Commit-Queue: Maksim Sisov <msisov@igalia.com>
+Cr-Commit-Position: refs/heads/master@{#666629}
+---
+ .../wayland/gpu/wayland_buffer_manager_gpu.cc | 19 ++++++++++---------
+ .../wayland/gpu/wayland_buffer_manager_gpu.h  | 13 +++++++------
+ 2 files changed, 17 insertions(+), 15 deletions(-)
+
+diff --git a/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc b/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc
+index c37289f9179e..63bfa3032fde 100644
+--- a/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc
++++ b/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.cc
+@@ -17,8 +17,7 @@
+ namespace ui {
+ 
+ WaylandBufferManagerGpu::WaylandBufferManagerGpu()
+-    : associated_binding_(this),
+-      gpu_thread_runner_(base::ThreadTaskRunnerHandle::Get()) {}
++    : associated_binding_(this) {}
+ 
+ WaylandBufferManagerGpu::~WaylandBufferManagerGpu() = default;
+ 
+@@ -50,9 +49,9 @@ void WaylandBufferManagerGpu::OnSubmission(gfx::AcceleratedWidget widget,
+   // a buffer, and is able to call the OnSubmission for that specific buffer.
+   if (surface) {
+     // As long as mojo calls rerouted to the IO child thread, we have to reroute
+-    // them back to the gpu main thread, where the original commit buffer call
+-    // came from.
+-    gpu_thread_runner_->PostTask(
++    // them back to the same thread, where the original commit buffer call came
++    // from.
++    commit_thread_runner_->PostTask(
+         FROM_HERE,
+         base::Bind(&WaylandSurfaceGpu::OnSubmission, base::Unretained(surface),
+                    buffer_id, swap_result));
+@@ -71,9 +70,9 @@ void WaylandBufferManagerGpu::OnPresentation(
+   // a buffer, and is able to call the OnPresentation for that specific buffer.
+   if (surface) {
+     // As long as mojo calls rerouted to the IO child thread, we have to reroute
+-    // them back to the gpu main thread, where the original commit buffer call
+-    // came from.
+-    gpu_thread_runner_->PostTask(
++    // them back to the same thread, where the original commit buffer call came
++    // from.
++    commit_thread_runner_->PostTask(
+         FROM_HERE, base::Bind(&WaylandSurfaceGpu::OnPresentation,
+                               base::Unretained(surface), buffer_id, feedback));
+   }
+@@ -138,9 +137,11 @@ void WaylandBufferManagerGpu::CreateShmBasedBuffer(
+ void WaylandBufferManagerGpu::CommitBuffer(gfx::AcceleratedWidget widget,
+                                            uint32_t buffer_id,
+                                            const gfx::Rect& damage_region) {
+-  DCHECK(gpu_thread_runner_ && gpu_thread_runner_->BelongsToCurrentThread());
+   DCHECK(io_thread_runner_);
+ 
++  if (!commit_thread_runner_)
++    commit_thread_runner_ = base::ThreadTaskRunnerHandle::Get();
++
+   // Do the mojo call on the IO child thread.
+   io_thread_runner_->PostTask(
+       FROM_HERE,
+diff --git a/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.h b/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.h
+index deeb8d0f097f..87439610cfc3 100644
+--- a/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.h
++++ b/ui/ozone/platform/wayland/gpu/wayland_buffer_manager_gpu.h
+@@ -158,12 +158,13 @@ class WaylandBufferManagerGpu : public ozone::mojom::WaylandBufferManagerGpu {
+ 
+   std::map<gfx::AcceleratedWidget, WaylandSurfaceGpu*> widget_to_surface_map_;
+ 
+-  // This task runner can be used to pass messages back to the GpuMainThread.
+-  // For example, swap requests come from the GpuMainThread, but rerouted to the
+-  // IOChildThread and then mojo calls happen. However, when the manager
+-  // receives mojo calls, it has to reroute calls back to the same thread
+-  // where the calls came from to ensure correct sequence.
+-  scoped_refptr<base::SingleThreadTaskRunner> gpu_thread_runner_;
++  // This task runner can be used to pass messages back to the same thread,
++  // where the commit buffer request came from. For example, swap requests come
++  // from the GpuMainThread, but rerouted to the IOChildThread and then mojo
++  // calls happen. However, when the manager receives mojo calls, it has to
++  // reroute calls back to the same thread where the calls came from to ensure
++  // correct sequence.
++  scoped_refptr<base::SingleThreadTaskRunner> commit_thread_runner_;
+ 
+   // A task runner, which is initialized in a multi-process mode. It is used to
+   // ensure all the methods of this class are run on IOChildThread. This is
+-- 
+2.22.0
+
