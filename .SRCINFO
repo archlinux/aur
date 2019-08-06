@@ -12,6 +12,7 @@ pkgbase = courier-authlib
 	makedepends = libldap
 	makedepends = libmariadbclient
 	makedepends = postgresql-libs>=8.3.0
+	makedepends = procps-ng
 	depends = openssl
 	depends = gdbm
 	depends = perl
