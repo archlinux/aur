@@ -2,7 +2,7 @@
 
 pkgname=beaker-git
 pkgver=0.8.8+r30+g111b6370
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental peer-to-peer web browser (git)'
 arch=(i686 x86_64)
 url=https://beakerbrowser.com
@@ -14,7 +14,7 @@ conflicts=(beaker beaker-browser-bin)
 source=(git+https://github.com/beakerbrowser/beaker
         beaker.desktop)
 sha512sums=('SKIP'
-            '4b61e8a4830fdac99afe2a04885fdd7c64415e32bf0bcb990ad81a7928ff7185a09ef43e827a159410302a2aa536b96a90de9fe29236341882bd464492214cca')
+            '24210bb1900112d4b4ff37ed7e57055516b4134d277730bf78e69e7c30c2f2655fb21f5266719a60b3edd2dfea7c8ec9e0d56d71f9a9daf1b674f9108831df08')
 
 pkgver() {
   cd beaker
