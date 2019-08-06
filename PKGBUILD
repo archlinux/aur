@@ -1,15 +1,15 @@
 # Maintainer: Oliver Mangold <omgold@aur>
 
 pkgname=mantid-term
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Mantid is a xterm-compatible terminal emulator based on Vte-ng, similar to termite with customizable keybindings and multiple tabs"
 url="https://github.com/omgold/mantid-term/"
 license=('GPL2' 'GPL3')
 arch=('x86_64')
 depends=(gtk3 gnutls pcre2 python python-gobject gobject-introspection python-yaml)
 makedepends=(git libtool intltool gtk-doc scdoc pkg-config sed)
-source=("git+https://github.com/omgold/mantid-term#commit=9dd571b2ffc6d2375d65c9a52d496358f0be0b56"
+source=("git+https://github.com/omgold/mantid-term#commit=27224578a27cd9f83c5da670f44f2fe45dda9aff"
         "git+https://github.com/thestinger/vte-ng#commit=dd74ae7c06e8888af2fc090ac6f8920a9d8227fb")
 sha256sums=(SKIP SKIP)
 
