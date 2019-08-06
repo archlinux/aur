@@ -1,6 +1,0 @@
-pre_install() {
-    echo "Make sure you have imported Axel Kohlmeyer's PGP key"
-    echo ""
-    echo "wget https://github.com/akohlmey.gpg"
-    echo "gpg --import akohlmey.gpg"
-}

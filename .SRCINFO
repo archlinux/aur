@@ -1,9 +1,8 @@
 pkgbase = lammps-beta
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator
 	pkgver = 20190807
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lammps.sandia.gov/
-	install = lammps-beta.install
 	arch = x86_64
 	license = GPL
 	makedepends = cmake

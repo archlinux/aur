@@ -24,7 +24,7 @@ pkgname=${_pkgname}-beta
 pkgver=20190807
 _pkgver="7Aug2019"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
-pkgrel=1
+pkgrel=2
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
@@ -33,9 +33,12 @@ depends=('fftw' 'openmpi')
 makedepends=('cmake')
 conflicts=('lammps')
 provides=('lammps')
-install="${pkgname}.install"
 source=("git+https://github.com/${_pkgname}/${_pkgname}#tag=patch_${_pkgver}?signed")
 sha512sums=('SKIP')
+
+# Make sure you have imported Axel Kohlmeyer's PGP key
+#   wget https://github.com/akohlmey.gpg
+#   gpg --import akohlmey.gpg
 
 # process the build settings from above
 if (( $_ENABLE_INTEL_COMPILER )); then
