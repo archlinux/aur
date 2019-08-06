@@ -11,7 +11,7 @@
 
 pkgname=hal
 pkgver=0.5.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Hardware Abstraction Layer"
 arch=(i686 x86_64)
 license=('GPL' 'custom')
@@ -26,7 +26,7 @@ source=("https://github.com/bbidulock/${pkgname}/releases/download/${pkgname^^[a
 	"header.patch")
 md5sums=('a8a7d380f3791c818a08a5f74befe3aa'
          'ca4a7932fe7e8acbfa17245b62cc3b9b'
-         '5448c3074a62337faafc586203a07649')
+         '26cd90a078dd5c28786aea158fb7a0d3')
 
 prepare() {
   cd ${pkgname}-${pkgver}

@@ -1,7 +1,7 @@
 pkgbase = hal
 	pkgdesc = Hardware Abstraction Layer
 	pkgver = 0.5.15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.freedesktop.org/wiki/Software/hal
 	install = hal.install
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = hal
 	source = header.patch
 	md5sums = a8a7d380f3791c818a08a5f74befe3aa
 	md5sums = ca4a7932fe7e8acbfa17245b62cc3b9b
-	md5sums = 5448c3074a62337faafc586203a07649
+	md5sums = 26cd90a078dd5c28786aea158fb7a0d3
 
 pkgname = hal
 
