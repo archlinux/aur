@@ -1,8 +1,8 @@
-# Maintainer: DenBrahe <denbrahe@hotmail.com>
-# Contributor: Philipp A. <flying-sheep@web.de>
-# Contributor: theSander <aur@sandervanbalen.be>
+# Maintainer: bserckx <services+aur at brechtserckx dot be>
+# Contributor: Philipp A. <flying-sheep at web dot de>
+# Contributor: theSander <aur at sandervanbalen dot be>
 pkgname=hamsket-git
-pkgver=r1109.1efcb17
+pkgver=r1112.cc3398f
 pkgrel=1
 pkgdesc="Free and Open Source messaging and emailing app that combines common web applications into one."
 arch=(i686 x86_64)
@@ -30,10 +30,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-  ev="$(electron --version)"
-  ev2="${ev##v}"
-  sed -Ei 's/\s+"electron": "[^"]+",//' package.json
-  sed -i -re "s/^(\s*)(\"build\":\s*\{$)/\1\2\n\1\t\"electronVersion\": \"$ev2\",/m" package.json
+  # Get electron version from pacman
+  ev="$(pacman -Q electron | cut -d " " -f2 | cut -d "-" -f1)"
+  # Insert electron version in package.json
+  sed -i -re "s/^(\s+\"electron\": \")[^\"]+(\",)/\1$ev\2/" package.json
+  sed -i -re "s/^(\s*)(\"build\":\s*\{$)/\1\2\n\1\t\"electronVersion\": \"$ev\",/m" package.json
 }
 
 build() {
