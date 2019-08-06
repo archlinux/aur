@@ -5,6 +5,7 @@ pkgbase = readme-generator-git
 	url = https://github.com/F0xedb/README-generator
 	arch = any
 	license = GPL
+	makedepends = git
 	source = git+https://github.com/F0xedb/README-generator.git
 	md5sums = SKIP
 
