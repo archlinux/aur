@@ -1,7 +1,7 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgname=pinocchio
-pkgver=2.1.3
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
@@ -18,7 +18,8 @@ build() {
     cd "$pkgname-$pkgver"
 
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
-        -DBUILD_WITH_AUTODIFF_SUPPORT=ON -DBUILD_WITH_COLLISION_SUPPORT=ON .
+        -DBUILD_WITH_AUTODIFF_SUPPORT=ON -DBUILD_WITH_COLLISION_SUPPORT=ON -DBUILD_UNIT_TESTS=ON \
+        -DBUILD_WITH_CODEGEN_SUPPORT=ON -DBUILD_UTILS=ON .
     make
 }
 
