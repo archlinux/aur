@@ -6,7 +6,7 @@
 
 
 pkgname=opmon-git
-pkgver=r2534.a88a0ea7
+pkgver=0.15.1.r208.ga88a0ea7
 pkgrel=1
 license=('GPL')
 arch=('x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 pkgver() {
   cd OpMon
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^alpha-//;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
 
