@@ -8,7 +8,7 @@
 # Currently it will not be a mandatory makedepend.
 
 pkgname=intel-media-sdk
-pkgver=2019.2.0
+pkgver=2019.2.1
 _srcver="${pkgver:2}"
 pkgrel=1
 epoch=1
@@ -26,7 +26,7 @@ install="${pkgname}.install"
 source=("https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-${_srcver}.tar.gz"
         'intel-media-sdk.conf'
         'intel-media-sdk.sh')
-sha256sums=('ea33798ed905bbe574e3500e983ff9b412ac4496081867484362a34ec6907393'
+sha256sums=('03c11a0379b61e292e789fa3dc9308ce45f36d68b4ebf437806c0e2c32357970'
             '63e76d28140486871a3ffc29ce19c84914583bf243201946c76943bf54df374a'
             '315ea6f304cf2b7b6a8aaabb0b8f71fcd480677c7fb9c8cbfa51c7830bb159bc')
 
