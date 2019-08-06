@@ -4,7 +4,7 @@ pkgname=fluent-bit
 
 pkgmaj=1.2
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
@@ -49,9 +49,14 @@ check() {
 
 package() {
     cd $pkgname-$pkgver/build
+
     make DESTDIR="$pkgdir/" install
+
     mv $pkgdir/lib/* $pkgdir/usr/lib
     rmdir $pkgdir/lib
+
+    mv $pkgdir/usr/lib64/* $pkgdir/usr/lib
+    rmdir $pkgdir/usr/lib64
 }
 
 md5sums=('761ca237b4a96491fa157f1dd9d0d09e')
