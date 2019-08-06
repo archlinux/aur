@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Moreira
 
 pkgname=fpakman
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Free non-official GUI for Flatpak / Snap applications management."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-pip' 'python-pyqt5' 'python-requests' 'python-colorama
 optdepends=('flatpak' 'snapd')
 makedepends=('git' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('73f9cc2a9f3d6c923dae9a253fc85432217adef66bef011230708c619a988ec95067303f6221663c0249001d0266c10bb4c43d547d9956a919ef29dd68147bb9')
+sha512sums=('c8fad945ff2d5ad615ee8b9c169e7ae4d7042c7ade4044e0af9d14ab5d26accc6e7207e076d7b928925231698fc7c99ab75b57d9b593e454993600197773da2c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,8 +21,10 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
-  python3 aur/desktop_entry.py
+  python3 aur/panel_entry.py
+  python3 aur/tray_entry.py
 
-  mkdir -p $pkgdir/usr/share/applications  
+  mkdir -p $pkgdir/usr/share/applications
   mv fpakman.desktop $pkgdir/usr/share/applications/
+  mv fpakman_tray.desktop $pkgdir/usr/share/applications/
 }
