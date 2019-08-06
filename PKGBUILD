@@ -9,8 +9,8 @@ pkgdesc='Simple script to set a different wallpaper when its daytime/nightime.'
 url='https://github.com/Baitinq/smart-wallpaper.git'
 arch=('any')
 license=('GPL')
-depends=('bash' 'redshift' 'feh')
-optdepends=('gifsicle: support for animated backgrounds (.gif)')
+depends=('redshift' 'feh')
+optdepends=('gifsicle: support for animated backgrounds (.gif)' 'xwinwrap: support for compositors' 'mpv: support for videos')
 makedepends=('git')
 provides=('smart-wallpaper')
 
