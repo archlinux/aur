@@ -1,9 +1,8 @@
 pkgbase = mbuffer
-	pkgdesc = a tool for buffering data streams
+	pkgdesc = A tool for buffering data streams.
 	pkgver = 20190725
 	pkgrel = 1
 	url = http://www.maier-komor.de/mbuffer.html
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = openssl
