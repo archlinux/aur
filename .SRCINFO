@@ -1,10 +1,12 @@
 pkgbase = drc
 	pkgdesc = Digital Room Correction FIR filter generator
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://drc-fir.sourceforge.net/
 	arch = x86_64
 	arch = i686
+	arch = armv6
+	arch = armv7h
 	license = GPL2
 	depends = gcc-libs
 	optdepends = octave: building graphs

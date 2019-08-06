@@ -1,9 +1,9 @@
 # Maintainer: Jakob Dübel <jkbd@posteo.de>
 pkgname=drc
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital Room Correction FIR filter generator"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv6' 'armv7h')
 url="http://drc-fir.sourceforge.net/"
 license=('GPL2')
 depends=('gcc-libs')
