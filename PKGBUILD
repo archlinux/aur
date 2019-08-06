@@ -4,7 +4,7 @@
 pkgname=julia-arpack
 _pkgname=Arpack
 _arpack_ver=3.5.0
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Arpack Package for Julia (compiled from source)'
 arch=(any)
@@ -20,10 +20,10 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaLinearAlgebra/$_pkgname
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml
         https://github.com/opencollab/arpack-ng/archive/${_arpack_ver}.tar.gz
 )
-sha256sums=('85f95f96ab400e0135b91886828067eaf59357280ce009fb04309019068ecd97'
-            '6b20fc5711c63225d87c803032c8533c78304a761937a39a19e225dab01cabcd'
+sha256sums=('d6cd6641c29ed7ff60d79125823cb4565e7d1ec594046aa0737e2a0832d39330'
+            '3a8e07881d715381578fa133b00f4fa9d3770bc239b37b55516bb4fed6732326'
             'd8fc2a720833fb2930bcdc2bc87624cd13852ab8ffb6e27e76b264829d725636'
-            'f16a79561cfe8825ba19745a65e6a589735dcd7642f8c5e325a701a878501614'
+            'ce1e72f10df1857103c24ab4106ee3711a9127e1985b37886652954d39bed2a8'
             '50f7a3e3aec2e08e732a487919262238f8504c3ef927246ec3495617dde81239')
 
 _slug() {
