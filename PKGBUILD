@@ -7,14 +7,14 @@
 
 pkgname=fritzing
 pkgver=0.9.3b
-pkgrel=4
+pkgrel=5
 partsrev=667a5360e53e8951e5ca6c952ae928f7077a9d5e
 pkgdesc='PCB layout prototyping application'
 arch=('i686' 'x86_64')
 url=http://fritzing.org
 license=(GPL3)
 makedepends=('boost')
-depends=('desktop-file-utils' 'java-environment' 'libgit2' 'python2' 'qt5-serialport' 'qt5-svg' 'shared-mime-info')
+depends=('desktop-file-utils' 'libgit2' 'python2' 'qt5-serialport' 'qt5-svg' 'shared-mime-info')
 source=(https://github.com/fritzing/fritzing-app/archive/${pkgver}.tar.gz
         parts-${partsrev}.tar.gz::https://codeload.github.com/fritzing/fritzing-parts/tar.gz/${partsrev}
         0001-Squashed-commit-of-the-following.patch

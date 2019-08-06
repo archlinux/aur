@@ -1,14 +1,13 @@
 pkgbase = fritzing
 	pkgdesc = PCB layout prototyping application
 	pkgver = 0.9.3b
-	pkgrel = 4
+	pkgrel = 5
 	url = http://fritzing.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = boost
 	depends = desktop-file-utils
-	depends = java-environment
 	depends = libgit2
 	depends = python2
 	depends = qt5-serialport
