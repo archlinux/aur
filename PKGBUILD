@@ -3,7 +3,7 @@
 
 pkgname=buck
 pkgver=2019.06.17.01
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast build system that encourages the creation of small, \
 	   reusable modules over a variety of platforms and languages.'
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('6de46b534913b9be584d83044f3df831a73975551edfbbb9770e5f0b4bd58576')
 build() {
   cd ${pkgname}-${pkgver}
   ant
-  buck kill && NO_BUCKD=1 ./bin/buck build buck
+  ./bin/buck build buck
 }
 
 prepare() {
