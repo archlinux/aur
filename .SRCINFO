@@ -1,0 +1,12 @@
+pkgbase = readme-generator-git
+	pkgdesc = A basic tool to generate modern readme's
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/F0xedb/README-generator
+	arch = any
+	license = GPL
+	source = git+https://github.com/F0xedb/README-generator.git
+	md5sums = SKIP
+
+pkgname = readme-generator-git
+
