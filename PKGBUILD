@@ -1,11 +1,12 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
-pkgname=pinocchio
+pkgorg='stack-of-tasks'
+pkgname=('pinocchio' 'pinocchio-docs')
 pkgver=2.1.6
 pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
-url="https://github.com/stack-of-tasks/$pkgname"
+url="https://github.com/$pkgorg/$pkgname"
 license=('BSD')
 depends=('hpp-fcl' 'eigenpy' 'urdfdom')
 optdepends=('doxygen' 'lua52' 'cppad' 'cppadcodegen')
@@ -15,7 +16,7 @@ sha256sums=('SKIP' 'SKIP')
 validpgpkeys=('A031AD35058955293D54DECEC45D22EF408328AD')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
 
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
         -DBUILD_WITH_AUTODIFF_SUPPORT=ON -DBUILD_WITH_COLLISION_SUPPORT=ON -DBUILD_UNIT_TESTS=ON \
@@ -24,12 +25,20 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     make test
 }
 
-package() {
-    cd "$pkgname-$pkgver"
+package_pinocchio() {
+    cd "$pkgbase-$pkgver"
     make DESTDIR="$pkgdir/" install
+    rm -rf $pkgdir/usr/share/doc
+    install -Dm644 COPYING.LESSER "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_pinocchio-docs() {
+    cd "$pkgbase-$pkgver"
+    make DESTDIR="$pkgdir/" install
+    rm -rf $pkgdir/usr/{lib,include}
     install -Dm644 COPYING.LESSER "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

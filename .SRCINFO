@@ -23,3 +23,5 @@ pkgbase = pinocchio
 
 pkgname = pinocchio
 
+pkgname = pinocchio-docs
+
