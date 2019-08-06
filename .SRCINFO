@@ -1,13 +1,13 @@
 pkgbase = mitsuba-git
 	pkgdesc = Mitsuba physically based renderer.
-	pkgver = 0.6.0.r2170.450a2b8a
+	pkgver = 0.6.0.r2171.26355676
 	pkgrel = 1
 	url = http://mitsuba-renderer.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = eigen
-	makedepends = scons
+	makedepends = python2-scons
 	makedepends = git
 	makedepends = boost
 	depends = python

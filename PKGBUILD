@@ -2,16 +2,15 @@
 
 _pkgname="mitsuba"
 _pkgver="0.6.0"
-_pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 pkgname="${_pkgname}-git"
-pkgver=0.6.0.r2170.450a2b8a
+pkgver=0.6.0.r2171.26355676
 pkgrel=1
 pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
 license=("GPL3")
 arch=("i686" "x86_64")
 depends=("python" "xerces-c" "glew-1.13.0" "openexr" "libpng" "libjpeg" "qt5-base" "qt5-xmlpatterns" "fftw" "collada-dom-mitsuba" "boost-libs" "pcre")
-makedepends=("eigen" "scons" "git" "boost")
+makedepends=("eigen" "python2-scons" "git" "boost")
 provides=("mitsuba")
 conflicts=("mitsuba" "mitsuba-hg")
 source=("${_pkgname}::git+https://github.com/mitsuba-renderer/mitsuba.git"
@@ -30,6 +29,7 @@ pkgver() {
 
 prepare() {
     cd "${_pkgname}"
+    _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
     cp build/config-linux-gcc.py config.py
 
     ## use collada-dom-mitsuba
@@ -53,7 +53,7 @@ prepare() {
 
 build() {
     cd "${_pkgname}"
-    scons --jobs=$[${MAKEFLAGS/-j/} - 1]
+    scons2 --jobs=$[${MAKEFLAGS/-j/} - 1]
     
 }
 
