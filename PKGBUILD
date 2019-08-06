@@ -48,8 +48,7 @@ package_openxr-loader-git() {
 }
 
 package_openxr-headers-git() {
-  cd "$_dirname"-build
   # TODO install target for headers
   install -d "$pkgdir"/usr/include/openxr/
-  cp -ra include/openxr/*.h "$pkgdir"/usr/include/openxr/
+  cp "$srcdir"/"$_dirname"/include/openxr/*.h "$pkgdir"/usr/include/openxr
 }
