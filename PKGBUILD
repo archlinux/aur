@@ -1,6 +1,6 @@
 # Maintainer: Šarūnas Gliebus <ssharunas at yahoo.co.uk>
 pkgname=boram
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Cross-platform WebM converter"
 arch=('x86_64')
@@ -13,11 +13,9 @@ source=(
 	"git+https://github.com/Kagami/nacl_sdk.git"
 	"git+https://github.com/Kagami/boram.git#tag=v$pkgver"
 )
-md5sums=(
-	'd0bd9d68b7981a27ee4fc00211d34eab'
-	'SKIP'
-	'SKIP'
-)
+md5sums=('7e3557a468e3582b5eb7620e89b2a94c'
+         'SKIP'
+         'SKIP')
 
 build() {
 	# Since video preview does not work with default release, we will have to build libboram.so by ourselves.
