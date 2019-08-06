@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=networkmanager-dispatcher-openvpn
-pkgver=0.r5.gb99fa05
-pkgrel=2
+pkgver=0.r6.g031bc89
+pkgrel=1
 pkgdesc='Networkmanager Dispatcher script for OpenVPN'
 arch=('any')
 depends=('openvpn' 'networkmanager')
@@ -19,11 +19,11 @@ pkgver() {
 		printf '%s.r%s.g%s' \
 			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
 			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	else
 		printf '0.r%s.g%s' \
 			"$(git rev-list --count master)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	fi
 }
 
