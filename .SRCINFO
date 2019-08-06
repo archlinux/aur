@@ -1,6 +1,6 @@
 pkgbase = yada
 	pkgdesc = Yet another dotfile aggregator
-	pkgver = 0.4
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/apetresc/yada
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = yada
 	depends = python-click>=7
 	depends = python-click<8
 	depends = python-setuptools
-	source = git+https://github.com/apetresc/yada.git#tag=v0.4
+	source = git+https://github.com/apetresc/yada.git#tag=v0.7.2
 	sha256sums = SKIP
 
 pkgname = yada

@@ -2,7 +2,7 @@
 # Contributor: Adrian Petrescu <adrian@apetre.sc>
 
 pkgname=yada
-pkgver=0.4
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Yet another dotfile aggregator'
 arch=(any)
