@@ -1,6 +1,6 @@
 # Maintainer: Tom Meyers tom@pbfp.team
 pkgname=readme-generator-git
-pkgver=r10.
+pkgver=r11.da1b4a5
 pkgrel=1
 pkgdesc="A basic tool to generate modern readme's"
 arch=(any)
@@ -11,6 +11,7 @@ license=('GPL')
 source=(
 "git+https://github.com/F0xedb/README-generator.git")
 md5sums=('SKIP')
+makedepends=('git')
 
 pkgver() {
   cd "$srcdir/$_reponame"
