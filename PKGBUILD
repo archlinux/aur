@@ -4,29 +4,28 @@
 
 pkgname="lightzone"
 pkgver=4.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A professional photo browser and editor, like Aperture or Lightroom"
 url="http://lightzoneproject.org/"
-license=("custom")
-arch=("i686" "x86_64")
-depends=("javahelp2" "lcms2" "libjpeg-turbo" "libxml2")
+license=("custom:BSD-3-Clause")
+arch=("x86_64")
+depends=('jre7-openjdk'
+         'javahelp2'
+         'lcms2'
+         'libjpeg-turbo'
+         'libtiff'
+         'libxml2')
 
-if [[ $CARCH == 'i686' ]]; then
-  source=("${pkgname}-${pkgver}.deb::http://download.opensuse.org/repositories/home:/ktgw0316:/LightZone/Debian_7.0/i386/${pkgname}_${pkgver}-0obs1_i386.deb")
-  md5sums=('a3ed17c004e78b3cf48b28b9ab838422')
-elif [[ $CARCH == 'x86_64' ]]; then
-  source=("${pkgname}-${pkgver}.deb::http://download.opensuse.org/repositories/home:/ktgw0316:/LightZone/Debian_7.0/amd64/${pkgname}_${pkgver}-0obs1_amd64.deb")
-  md5sums=('f49e838818f09637b438c27b3e61a371')
-fi
+source=("https://download.opensuse.org/repositories/home:/ktgw0316:/LightZone/Arch_Extra/x86_64/${pkgname}-${pkgver}-0-x86_64.pkg.tar.xz")
+md5sums=('563a2a43982c88d1c9be7b56f20cb124')
 
 build() {
   cd "${srcdir}"
-  tar -xf data.tar.gz
+  tar -I xz -xf lightzone-4.1.8-0-x86_64.pkg.tar.xz
 }
 
 package() {
   cd "${srcdir}"
-
-# Install
+  # Install
   cp -dr --no-preserve=ownership ./usr "${pkgdir}"/
 }
