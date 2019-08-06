@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=xmedcon  
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc="open source toolkit for medical image conversion"
 url="http://xmedcon.sourceforge.net/"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 depends=('gtk2')
 source=(http://downloads.sourceforge.net/project/$pkgname/XMedCon-Source/$pkgver/$pkgname-$pkgver.tar.bz2)
-sha256sums=('767d3f044023978e0b6da13ac3c450f9d01dce58314962bc07e0f70a0fcd3a11')
+sha256sums=('75a1623714745efe03a8abd654f0715d56c5497f9b494f3e1e74cb52274f64d8')
 options=('!libtool')
 
 prepare() {
