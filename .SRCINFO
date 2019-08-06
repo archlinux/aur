@@ -1,0 +1,21 @@
+pkgbase = typora-bin
+	pkgdesc = A minimal Markdown reading & writing app.
+	pkgver = 0.9.73
+	pkgrel = 1
+	url = https://typora.io/
+	arch = x86_64
+	license = custom: "Copyright (c) 2015 Abner Lee All Rights Reserved."
+	depends = electron
+	optdepends = noto-fonts-emoji: emoji support
+	provides = typora
+	conflicts = typora
+	conflicts = typora-latest
+	source = typora-bin-0.9.73.tar.gz::https://typora.io/linux/Typora-linux-x64.tar.gz
+	source = typora.desktop
+	source = typora.js
+	sha512sums = 9f8582c3bc9e5fffe7a8e9ca4d7e6317b28d5209a9afb6b15dd888ad8dbe11a74dc31279f7aa6e016d401e7562e0d518d493a51ca454912a1069a2b008df60c0
+	sha512sums = 83fb1c7d18e14f4b5118e139e4fe6af1ec4c90f4cab4e4e3f076129fbe08458c50b8174fa61929e8b53d8622cad483385814bf0034570c1e68ce75476ae77ebb
+	sha512sums = 976917931c1739c8b463d1b3f0ba53cf7291e258b2018fd67fe2bf6509aabda0d97fa073e127dc96492a41f1c49d7d47898f25be14aa422490c4ee60771642d9
+
+pkgname = typora-bin
+
