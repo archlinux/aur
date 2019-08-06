@@ -1,0 +1,31 @@
+pkgbase = nx-firewall-git
+	pkgdesc = kcm module for firewall from nx desktop
+	pkgver = 0.1.r73.g1da8c2e
+	pkgrel = 1
+	url = https://github.com/nx-desktop/nx-firewall
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	depends = kdeclarative
+	depends = kcoreaddons
+	depends = kcmutils
+	depends = ki18n
+	depends = plasma-framework
+	depends = kdelibs4support
+	depends = kauth
+	depends = kconfig
+	depends = kio
+	depends = knewstuff
+	depends = kconfigwidgets
+	depends = net-tools
+	depends = ufw
+	depends = kdesignerplugin
+	replaces = nomad-firewall-git
+	source = git+https://github.com/nx-desktop/nx-firewall.git
+	md5sums = SKIP
+
+pkgname = nx-firewall-git
+
