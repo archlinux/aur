@@ -1,12 +1,12 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Emil Renner Berthing <aur@esmil.dk>
 
 _target=riscv64-linux-gnu
 pkgname=$_target-gcc
 pkgver=9.1.0
 _islver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross compiler for 32-bit and 64-bit RISC-V'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
