@@ -1,0 +1,22 @@
+pkgbase = ttf-google-fonts
+	pkgdesc = All fonts available in Google products
+	pkgver = 2019.08
+	pkgrel = 1
+	url = https://github.com/google/fonts
+	arch = any
+	license = Apache
+	license = custom:SIL Open Font License 1.1
+	license = custom:Ubuntu Font License 1.0
+	makedepends = git
+	depends = fontconfig
+	depends = noto-fonts-emoji
+	depends = xorg-fonts-encodings
+	depends = xorg-mkfontdir
+	depends = xorg-mkfontscale
+	provides = ttf-google-fonts
+	conflicts = ttf-google-fonts
+	source = git+https://github.com/google/fonts.git
+	sha512sums = SKIP
+
+pkgname = ttf-google-fonts
+
