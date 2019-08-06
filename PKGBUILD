@@ -29,7 +29,7 @@ pkgver() {
 
 prepare() {
     cd "${_pkgname}"
-    _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
+    export _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
     cp build/config-linux-gcc.py config.py
 
     ## use collada-dom-mitsuba
