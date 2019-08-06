@@ -7,7 +7,7 @@ url="https://github.com/tmakkonen/sipcmd"
 arch=('i686' 'x86_64' 'armv6h')
 license=('GPL')
 depends=("gcc-libs" "opal")
-makedepends=("ruby-ronn")
+makedepends=("ruby-ronn" "git")
 source=("sipcmd::git+https://github.com/tmakkonen/sipcmd.git")
 md5sums=('SKIP')
 
