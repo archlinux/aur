@@ -54,7 +54,7 @@ _major=5.2
 _minor=6
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
 license=('GPL2')
@@ -63,9 +63,9 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd
              'graphviz' 'imagemagick')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-_aufs_path="aufs-patches-v2"
-_aufs_ver="v20190610"
-_aufs_patch="0001-aufs-advanced-multi-layered-unification-filesystem-${_aufs_ver}.patch"
+_aufs_path="aufs-patches-v4"
+_aufs_ver="20190805"
+_aufs_patch="0001-aufs-${_aufs_ver}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 
@@ -73,8 +73,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
-        "${_lucjanpath}/aufs-fixes/0001-aufs-fix-version.patch"
-        "${_lucjanpath}/aufs-patches-v3/0001-aufs-bump-to-v20190805.patch"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
         "${_lucjanpath}/arch-patches/0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
@@ -388,9 +386,7 @@ done
 sha512sums=('9bed49bb0b25a058bfc633102274fdf2d346c13e707011bd453d6975bf13f63679f947c2ab88c711b71cf43d5ee843d77c5c6308fa2866113a7756cd95e8d5a1'
             'SKIP'
             '8d9547ff38096b99d296cdec9875b816960c09db31acebb033e3660ba65475d1f310578282cac74947d75dff844dd22d7e7c2e4ded12368d32314fe145763752'
-            '705387b4d1130fe1d356bda2114656987302433caab5face83e441cbc91d261bccb13f3c27acd9b2b7455297d0c45044a8cebdc553cb4d9dc18ec5cf78335586'
-            '1e1e89cb4d4492e1e97e2971075bed992b2bf5e6d8ad0a9c4ac42a52877e7101f61f2065d91c76870f0f7eaff2e0f2c4f78d8f9271bf5412c603998671e9192d'
-            'cf19bc9b42b04cb367c85a7ba4f98c14ab0f3f3e7a8b93fbd02b5c4aa163ab31f637521c027157ecc3875d50f8a581a3490b371751106c91ad620c4b168fb644'
+            '84a5285f2d785616c50053896623632694c1ae339d0873f24cf78cd644dcdf6fb886e620ce2a20ac6ecf75d95f7a52a2ccc8876ca0fbf1f9390eb96b772c5e04'
             '8a158ae5660426f0fb9fa74f37c093f325b5a23392b95e50c36825205f42311cbf05f818f0275ebda27ce9fad40652ba6dc2397f19f45addb3f68f8f4476196f'
             '9d472377c50ddd9ddab5d4ab3092f3d487eeee20a4d4a04d3cefeef5bbf40daa3eb609b15741ca4a8cd32bf2b6d0781de961cbf55e2f80fd40260f282bf022f4'
             '166653c6d7d76b052aa26f6a0782a74db75d2611c3d5d770219a00fed4da7d2317b35e39aaadec25da1fc91fb7f18385247303d531d15e3998886bb65f8cd89f'
