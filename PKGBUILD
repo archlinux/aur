@@ -239,6 +239,13 @@ prepare() {
   # Comment:
   git cherry-pick -n 156980ef^..02c99524
 
+  # Title: renderer-native: Reference count front buffers.
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/119
+  # Type: 2
+  # Status: 4
+  # Comment: Needed for !651 to behave well
+  git cherry-pick -n fecc57dd
+
   # Title: clutter/stage-cogl: Factor in pending_swaps to next_presentation_time
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/651
   # Type: 1
