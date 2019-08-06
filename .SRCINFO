@@ -1,0 +1,31 @@
+pkgbase = manga-downloader-git
+	pkgdesc = cli manga downloader
+	pkgver = 0.r1154.73daf97
+	pkgrel = 1
+	url = https://github.com/yuru-yuri/manga-py.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-lxml
+	depends = python-cssselect
+	depends = python-requests
+	depends = python-pillow
+	depends = python-pycryptodome
+	depends = python-cloudscraper
+	depends = python-loguru
+	depends = python-selenium
+	depends = python-pyexecjs
+	depends = python-packaging
+	depends = python
+	depends = python-urllib3
+	depends = python2-progressbar
+	depends = python-html-purifier
+	depends = python-numpy
+	provides = manga-downloader
+	source = git+https://github.com/yuru-yuri/manga-py.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = manga-downloader-git
+
