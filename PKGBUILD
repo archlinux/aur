@@ -23,7 +23,7 @@ changelog=
 source=(
   "https://github.com/Azure/WALinuxAgent/archive/v${pkgver}.tar.gz")
 sha256sums=(
-  '824972766850e81da3ffc3d56c8ca9731a4b1f35597830810d7cad188a6d3166')
+  '5bfea8199e368ea0a2ba5006a488197e4fec6cfb1efacb663a53e5ffa4880e79')
 
 package() {
 	cd "$_pkgname-$pkgver"
