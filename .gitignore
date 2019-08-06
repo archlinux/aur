@@ -1,0 +1,8 @@
+cevelop-*.tar.gz
+cevelop-*.tar.xz
+logo-square-*.png
+logo-square.svg
+
+src/
+pkg/
+
