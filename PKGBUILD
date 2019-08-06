@@ -5,12 +5,12 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=68.0
-pkgrel=1
-pkgdesc="Firefox from extra with appmenu patch"
+pkgver=68.0.1
+pkgrel=2
+pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
 license=(MPL GPL LGPL)
-url="https://aur.archlinux.org/packages/firefox-appmenu/"
+url="https://www.mozilla.org/firefox/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
@@ -21,15 +21,15 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
-provides=("firefox=$pkgver")
-conflicts=("firefox")
-options=(!emptydirs !makeflags)
+options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
+        0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop firefox-symbolic.svg
         unity-menubar.patch)
-sha256sums=('f7d61a08820088f1280d27f0808e355152c1dd0c94625fd077ced7319e522565'
+sha256sums=('6037f77bdab29d79ca5e3fbd1d32f6c209e09d2066189a13dc7f7491227f5568'
             'SKIP'
-            'e8d2908727309a58bee9a3dc994e85140c5977b2d486381d67d5e22ad3830d28'
+            'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
+            'e466789015e15be9409b7a7044353674ca6aa0f392e882217f90c79821fe2630'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
             '03684be59adac8ab83c4c5cad3156879983b6d1311555fcaa8476684730d94f8')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
@@ -53,9 +53,8 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 _repo=https://hg.mozilla.org/releases/mozilla-release
 _tag=FIREFOX_${pkgver//./_}_RELEASE
 
-_changeset=353628fec415324ca6aa333ab6c47d447ecc128e
-_changeset_tag=FIREFOX_68_0_RELEASE
-
+_changeset=837bbcb850cd58eb07c7f6437078d5229986967c
+_changeset_tag=FIREFOX_68_0_1_RELEASE
 
 if [[ $1 == update_hgrev ]]; then
   _changeset=$(hg id -r $_tag --id $_repo --template '{node}')
@@ -70,6 +69,9 @@ fi
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+  patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
   # actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
@@ -99,7 +101,7 @@ ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 export MOZILLA_OFFICIAL=1
-export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
 export MOZ_TELEMETRY_REPORTING=1
 export MOZ_REQUIRE_SIGNING=1
 
