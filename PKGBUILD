@@ -3,11 +3,12 @@ pkgbase=python-mwclient
 pkgname=('python-mwclient' 'python2-mwclient')
 pkgdesc="A Python framework to interface with the MediaWiki API"
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/mwclient/mwclient"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mwclient/mwclient/archive/v${pkgver}.tar.gz")
+makedepends=('python-setuptools' 'python2-setuptools')
 
 build() {
   cd $srcdir
