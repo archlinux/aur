@@ -3,7 +3,7 @@
 pkgname=ubports-installer
 pkgver=0.2.5b
 _ver=${pkgver/b/-beta}
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
 arch=('x86_64' 'i686')
 url='https://github.com/ubports/ubports-installer'
@@ -57,4 +57,7 @@ Categories=Utility" > "$srcdir/ubports-installer.desktop"
 
     cd "$srcdir/$pkgname-$_ver/dist/linux-unpacked/resources"
     install -Dm644 app.asar "$pkgdir/usr/share/ubports-installer/app.asar"
+
+    cd app.asar.unpacked
+    find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/ubports-installer/app.asar.unpacked/{}" \;
 }
