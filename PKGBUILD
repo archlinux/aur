@@ -26,8 +26,6 @@ prepare() {
   cd "$_pkgname"
   sed -i -E '/^tool_(name|dir) +=/s/$/-git/' Makefile
   sed -i -E '/^tool_name_display +=/s/$/ (git)/' Makefile
-  less Makefile
-  #exit 1
 }
 
 check() {
