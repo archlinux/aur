@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 
 pkgver() {
-  cd "$pkgname"
+  cd OpMon
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
