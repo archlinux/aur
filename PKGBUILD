@@ -4,7 +4,7 @@
 pkgname=i3-gaps-rounded
 _pkgsourcename=i3
 pkgver=latest
-pkgrel=8
+pkgrel=9
 pkgdesc='A fork of i3wm tiling window manager with more features, including gaps and rounded corners'
 arch=('i686' 'x86_64')
 url='https://github.com/resloved/i3'
@@ -31,8 +31,7 @@ prepare(){
   echo "THIS PACKAGE WILL BE DELETED SOON, PLEASE INSTALL i3-gaps-rounded-git"
   echo
   read
-  #Package is being replaced, return error
-  exit 1
+  #Package is being replaced
 
   
   git clone https://github.com/resloved/i3
