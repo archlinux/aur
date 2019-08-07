@@ -14,7 +14,7 @@ conflicts=('redeclipse')
 source=("https://github.com/red-eclipse/base/releases/download/v$pkgver/redeclipse_${pkgver}_nix.tar.bz2"
         "redeclipse.desktop")
 sha256sums=('48a947e858587116b7d177cf18148d0d9e40b1c5b481e2c955baed68cffc2849'
-            'e407f5e6a4781214a0a18c583a04ee465bcabdb4feb9a11c41f075e7609723ab')
+            '8bfccdd79fc24e923bc1fa3f120cc567e6eb841eaeeb4dc2628682a936465ed5')
 
 prepare() {
     cd "redeclipse-$pkgver"
