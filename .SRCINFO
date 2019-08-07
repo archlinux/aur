@@ -16,9 +16,7 @@ pkgbase = firefox-esr-pt-br-bin
 	depends = nss
 	provides = firefox=68
 	provides = firefox-esr=68.0.1
-	conflicts = firefox=68
-	conflicts = firefox-esr=68.0.1
-	conflicts = firefox-esr-bin
+	conflicts = firefox
 	source = firefox-esr.desktop
 	source = firefox-esr-safe.desktop
 	sha512sums = f1edf5aaeec7edf5bf1be6155c4b417190c520eeb826b63107ac0ac99e7df1800f237ed7ced35e44e9d6809b142582e4fcb4e033f8d91d445486d35d1314705c

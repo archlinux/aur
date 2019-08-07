@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 depends=('gtk2' 'gtk3' 'libxt' 'dbus-glib' 'nss')
 makedepends=()
 provides=('firefox=68' firefox-esr=$pkgver)
-conflicts=('firefox=68' firefox-esr=$pkgver firefox-esr-bin) 
+conflicts=('firefox') 
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
 
