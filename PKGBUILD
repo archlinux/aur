@@ -2,7 +2,7 @@
 # Contributer: N30N <archlinux@alunamation.com>
 pkgname=djv
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Movie playback and image processing software for the film and computer animation industries"
 url="http://djv.sourceforge.net/"
 license=('BSD')
@@ -12,7 +12,7 @@ makedepends=("cmake" "git" "glm" "picojson-git" "portaudio" "qt5-tools")
 source=("${pkgname}::git+https://github.com/darbyjohnston/DJV#tag=${pkgver}"
         "${pkgname}_view.desktop")
 md5sums=('SKIP'
-         '2668ad2635036f33ba615b5dc538b1cf')
+         'bf03a9488996f357497e044e66df3b97')
 
 prepare() {
     cd "${pkgname}"
