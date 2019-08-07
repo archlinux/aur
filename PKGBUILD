@@ -1,6 +1,6 @@
 # Maintainer: Tom Meyers tom@pbfp.team
 pkgname=readme-generator-git
-pkgver=r11.da1b4a5
+pkgver=r18.0ccf95b
 pkgrel=1
 pkgdesc="A basic tool to generate modern readme's"
 arch=(any)
@@ -17,6 +17,7 @@ pkgver() {
   cd "$srcdir/$_reponame"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 
 build() {
     return 0;
