@@ -1,7 +1,7 @@
 pkgbase = mapton
 	pkgdesc = Some kind of map application
-	pkgver = 1.1.2
-	pkgrel = 2
+	pkgver = 1.1.3
+	pkgrel = 1
 	url = https://mapton.org
 	arch = any
 	license = Apache
@@ -10,14 +10,12 @@ pkgbase = mapton
 	makedepends = jdk8-openjdk
 	makedepends = java8-openjfx
 	makedepends = maven
-	source = git+https://github.com/trixon/mapton.git#commit=1cb5a943593498ca92544b097a60e05351430487
+	source = git+https://github.com/trixon/mapton.git#tag=v1.1.3
 	source = mapton.desktop
-	source = git+https://github.com/trixon/almond3.git#commit=2019f5ca723e4a7372fdf81ee9e0199c32da1204
-	source = git+https://github.com/rterp/GMapsFX.git#commit=4623d3f768e8ad78fc50ee32dd204d236e01059f
+	source = jdkhome.patch
 	sha256sums = SKIP
 	sha256sums = 303620b07b9a48324acfa2541a1f93fe5630cca7919cd5b5b1141f0ffe7b6cd7
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 16a6788545ecc091bc56057def2362db0de3cea4705d675ee769070136b40f40
 
 pkgname = mapton
 	depends = java-runtime>=8

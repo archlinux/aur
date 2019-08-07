@@ -1,0 +1,13 @@
+diff --git a/application/src/main/resources/mapton.conf b/application/src/main/resources/mapton.conf
+index dc30143..26913b0 100644
+--- a/application/src/main/resources/mapton.conf
++++ b/application/src/main/resources/mapton.conf
+@@ -10,7 +10,7 @@ default_options="--branding mapton -J-Xss2m -J-Dnetbeans.logger.console=true -J-
+ # for development purposes you may wish to append: -J-Dnetbeans.logger.console=true -J-ea
+ 
+ # default location of JDK/JRE, can be overridden by using --jdkhome <dir> switch
+-#jdkhome="/path/to/jdk"
++jdkhome="/usr/lib/jvm/java-8-openjdk"
+ 
+ # clusters' paths separated by path.separator (semicolon on Windows, colon on Unices)
+ #extra_clusters=

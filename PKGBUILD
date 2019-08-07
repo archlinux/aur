@@ -1,43 +1,36 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_manjaro dot+org>
 
 pkgname=mapton
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="Some kind of map application"
 arch=(any)
 url="https://mapton.org"
 license=('Apache')
 makedepends=('git' 'jre8-openjdk' 'jdk8-openjdk' 'java8-openjfx' 'maven')
 
-_commit=1cb5a943593498ca92544b097a60e05351430487
-source=(git+https://github.com/trixon/mapton.git#commit=$_commit
+source=(git+https://github.com/trixon/mapton.git#tag=v$pkgver
         mapton.desktop
-        git+https://github.com/trixon/almond3.git#commit=2019f5ca723e4a7372fdf81ee9e0199c32da1204
-        git+https://github.com/rterp/GMapsFX.git#commit=4623d3f768e8ad78fc50ee32dd204d236e01059f)
+        jdkhome.patch)
 sha256sums=('SKIP'
             '303620b07b9a48324acfa2541a1f93fe5630cca7919cd5b5b1141f0ffe7b6cd7'
-            'SKIP'
-            'SKIP')
+            '16a6788545ecc091bc56057def2362db0de3cea4705d675ee769070136b40f40')
 
 export HOME=/nonexistent
 
 prepare() {
 	cd $pkgname
-	ln -sf ../almond3
-	ln -sf ../GMapsFX
+	patch -Np1 -i ../jdkhome.patch
 }
 
 build() {
+	# Requires JDK8
+	export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+
 	MAVENCACHE="${SRCDEST:-$srcdir}"
 	export MAVENCACHE
 
-	cd "$srcdir"/$pkgname/almond3
-	mvn clean install -gs "$srcdir"/../settings.xml
-
-	cd "$srcdir"/$pkgname/GMapsFX/GMapsFX
-	mvn clean install -gs "$srcdir"/../settings.xml -Dmaven.javadoc.skip=true
-
-	cd "$srcdir"/$pkgname
+	cd $pkgname
 	mvn -e package -gs "$srcdir"/../settings.xml
 }
 
