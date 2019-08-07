@@ -6,11 +6,11 @@ package_file=pack-kernel-native-from-0.tar
 pkgname=linux-clear-bin
 arch=('x86_64')
 
-version=30670
-kernel_version="5.2.6-814.native"
+version=30700
+kernel_version="5.2.7-816.native"
 
-pkgver="5.2.6"
-pkgrel="814"
+pkgver="5.2.7"
+pkgrel="816"
 
 source=('depmod.hook')
 md5sums=('ef6f6d2359e9925e78ae643072603028')

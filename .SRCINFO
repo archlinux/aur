@@ -1,6 +1,6 @@
 pkgbase = linux-clear-bin
-	pkgver = 5.2.6
-	pkgrel = 814
+	pkgver = 5.2.7
+	pkgrel = 816
 	arch = x86_64
 	source = depmod.hook
 	md5sums = ef6f6d2359e9925e78ae643072603028
@@ -14,7 +14,7 @@ pkgname = linux-clear-bin
 	optdepends = intel-ucode-clear: intel cpu and i915 firmware
 	optdepends = linux-clear-headers-bin: header files for the kernel
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.2.6
-	provides = linux-clear=5.2.6
+	provides = linux=5.2.7
+	provides = linux-clear=5.2.7
 	conflicts = linux-clear
 
