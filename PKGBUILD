@@ -10,16 +10,16 @@
 # Contributor: Chris Cromer <chris@cromer.cl>
 
 pkgname=networkmanager-consolekit
-pkgver=1.18.2
+pkgver=1.20.0
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1')
 url="https://wiki.gnome.org/Projects/NetworkManager"
-depends=("libnm>=$pkgver" "libnm-glib>=$pkgver" 'iproute2' 'polkit-consolekit'
-         'consolekit' 'wpa_supplicant' 'libmm-glib' 'libnewt' 'libndp' 'libteam'
-         'bluez-libs' 'curl' 'libpsl' 'audit')
+depends=("libnm>=$pkgver" 'iproute2' 'polkit-consolekit' 'consolekit'
+         'wpa_supplicant' 'libmm-glib' 'libnewt' 'libndp' 'libteam' 'bluez-libs'
+         'curl' 'libpsl' 'audit')
 makedepends=('intltool' 'dhclient' 'iptables' 'gobject-introspection' 'gtk-doc'
              "ppp=$_pppver" 'modemmanager' 'vala' 'perl-yaml' 'python-gobject'
              'git' 'jansson' 'glib2-docs' 'dhcpcd' 'iwd' 'dnsmasq')
@@ -37,7 +37,7 @@ conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 groups=('gnome')
 install=networkmanager.install
-_commit=b77764a9cd9f62ee1aba060e2664d220ebe49d7b  # tags/1.18.2^0
+_commit=c438f01b19e180fc15cb860321c3ba5cd821adfd  # tags/1.20.0^0
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         NetworkManager.conf
@@ -74,7 +74,6 @@ build() {
     --disable-static \
     --enable-bluez5-dun \
     --enable-concheck \
-    --enable-config-plugin-ibft \
     --enable-gtk-doc \
     --enable-introspection \
     --enable-json-validation \
@@ -88,7 +87,7 @@ build() {
     --with-config-dhcp-default=internal \
     --with-config-dns-rc-manager-default=symlink \
     --with-config-logging-backend-default=syslog \
-    --with-config-plugins-default=keyfile,ibft \
+    --with-config-plugins-default=keyfile \
     --with-crypto=nss \
     --with-dbus-sys-dir=/usr/share/dbus-1/system.d \
     --with-dhclient=/usr/bin/dhclient \
@@ -102,7 +101,6 @@ build() {
     --with-iwd \
     --with-kernel-firmware-dir=/usr/lib/firmware \
     --with-libaudit=yes \
-    --with-libnm-glib \
     --with-libpsl \
     --with-modem-manager-1 \
     --with-nmcli \
