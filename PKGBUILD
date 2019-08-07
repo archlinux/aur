@@ -22,9 +22,9 @@ pkgname=(
   "$pkgbase" "$pkgbase-bin" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=18.4rc1pre15
+pkgver=18.4rc1pre16
 _major=18.3
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -93,6 +93,7 @@ source=(
   013-PR16409.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16409.patch
   014-PR16416.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16416.patch
   015-PR16422.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16422.patch
+  016-PR16426.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16426.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -128,7 +129,8 @@ sha256sums=('4f265901c00f582beb8d6ad96c9c303e5ab82611e828c7121ae822b07c0915cc'
             '9ac8a0404739172e77addf6f1d3c05bbb6e3938c9e1e662264e95c64942de278'
             'fa6e929a5f55f9dc1b8807c2c83ca387225f87bb014dfc15ca5ea977d7a41180'
             'fa44afc553164952c497c75a2ebca36358f73a22bde3c2bfcd243e45bfb6247c'
-            'a44771f00abda9f219340b4afce974b3add7d53db3b73ff36a30cabb4bda546e')
+            'a44771f00abda9f219340b4afce974b3add7d53db3b73ff36a30cabb4bda546e'
+            '6835c87aabb8e43f6313f6a1d61b06efc31daea3cb2777d10392b5f2c8c604f5')
 
 prepare() {
   # force python 'binary' as python2
