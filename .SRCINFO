@@ -1,6 +1,6 @@
 pkgbase = rdma-core
 	pkgdesc = RDMA core userspace libraries and daemons
-	pkgver = 24.0
+	pkgver = 25.0
 	pkgrel = 1
 	url = https://github.com/linux-rdma/rdma-core
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = rdma-core
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
-	makedepends = libnl
 	makedepends = libsystemd
 	makedepends = systemd
 	makedepends = pkg-config
@@ -17,6 +16,7 @@ pkgbase = rdma-core
 	makedepends = bash
 	makedepends = pandoc
 	makedepends = python
+	makedepends = python-docutils
 	depends = libnl
 	provides = rdma
 	provides = ibacm
@@ -63,7 +63,7 @@ pkgbase = rdma-core
 	replaces = libnes
 	replaces = libocrdma
 	replaces = srptools
-	source = rdma-core::git+https://github.com/linux-rdma/rdma-core.git#tag=v24.0?signed
+	source = rdma-core::git+https://github.com/linux-rdma/rdma-core.git#tag=v25.0?signed
 	validpgpkeys = 921AFFAF83A9D7FD38CAA681E4637B88367258A7
 	validpgpkeys = 42D25385C1A1C02B8B1B1C6F801BDDB825988F64
 	sha512sums = SKIP
