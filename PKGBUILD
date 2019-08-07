@@ -24,26 +24,27 @@
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
-pkgver=4.1.4
-pkgrel=2
+pkgver=4.2
+pkgrel=1
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('custom: nonfree and unredistributable')
-depends=('alsa-lib' 'aom' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2' 'davs2' 'fontconfig'
-         'ffnvcodec-headers' 'frei0r-plugins' 'fribidi' 'glibc' 'gsm' 'jack'
-         'ladspa' 'lame' 'lensfun' 'libass' 'libavc1394' 'libbluray' 'libbs2b' 'libcaca'
-         'libcdio-paranoia' 'libdc1394' 'libfdk-aac' 'libgme' 'libiec61883'
-         'libilbc' 'libmodplug' 'libomxil-bellagio' 'libmysofa' 'libpulse' 
-         'librsvg' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libxcb'
-         'libxext' 'libwebp' 'libxml2' 'libxv' 'lilv' 'libgl' 'lv2' 'ndi-sdk' 'openal'
-         'opencore-amr' 'opencl-driver' 'opencl-icd-loader' 'openh264'
-         'openjpeg2' 'libklvanc-git' 'libopenmpt-svn' 'opus' 'rockchip-mpp' 'rubberband'
-         'rtmpdump' 'sdl2' 'speex' 'shine' 'tensorflow' 'tesseract'
-         'twolame' 'v4l-utils' 'vapoursynth' 'vid.stab' 'vmaf' 'vo-amrwbenc' 'xavs2-git'
-         'xvidcore' 'xz' 'wavpack' 'zeromq' 'zimg' 'zlib' 'zvbi' 'libvorbisenc.so' 
-         'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so' 'snappy' 'sndio' 'xavs')
+depends=('alsa-lib' 'aom' 'aribb24' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2'  
+	     'dav1d-git' 'davs2' 'fontconfig' 'ffnvcodec-headers' 'frei0r-plugins' 
+         'fribidi' 'glibc' 'gsm' 'jack' 'ladspa' 'lame' 'lensfun' 'libass' 'libavc1394'
+         'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libdc1394'
+         'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmodplug' 'libomxil-bellagio'
+         'libmysofa' 'libpulse' 'librsvg' 'libsoxr' 'libssh' 'libtheora'
+         'libva' 'libvdpau' 'libxcb' 'libxext' 'libwebp' 'libxml2' 'libxv' 'lilv'
+         'libgl' 'lv2' 'openal' 'opencore-amr' 'opencl-driver' 'opencl-icd-loader'
+         'openh264' 'openjpeg2' 'libklvanc-git' 'libopenmpt-svn' 'opus' 'pocketsphinx'
+         'rockchip-mpp' 'rubberband' 'rtmpdump' 'sdl2' 'speex' 'shine' 'tensorflow' 
+         'tesseract' 'twolame' 'v4l-utils' 'vapoursynth' 'vid.stab' 'vmaf'
+         'vo-amrwbenc' 'xavs2' 'xvidcore' 'xz' 'wavpack' 'zeromq' 'zimg' 'zlib'
+         'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so'
+         'snappy' 'sndio' 'xavs')
 depends_x86_64=('cuda')
 makedepends=('flite' 'ffnvcodec-headers' 'libmfx' 'libvdpau' 'nasm' 'opencl-headers')
 optdepends=('avxsynth-git: for Avisynth support'
@@ -56,7 +57,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 source=(https://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.xz{,.asc}
         'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1'
+sha256sums=('023f10831a97ad93d798f53a3640e55cd564abfeba807ecbe8524dac4fedecd5'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
@@ -67,7 +68,7 @@ build() {
   if [ "$CARCH" = "x86_64" ]
   then
       local _libvmaf='--enable-libvmaf'
-      local _cudasdk='--enable-cuda-sdk'
+      local _cudasdk='--enable-cuda-nvcc'
       local _libmfx='--enable-libmfx'
       local _libnpp='--enable-libnpp'
       local _cflags='-I/opt/cuda/include'      
@@ -144,6 +145,7 @@ build() {
     --enable-iconv \
     --enable-ladspa \
     --enable-libaom \
+    --enable-libaribb24 \
     --enable-libass \
     --enable-libcodec2 \
     --enable-libbluray \
@@ -168,7 +170,6 @@ build() {
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libmysofa \
-    --enable-libndi_newtek \
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
     --disable-libopencv \
@@ -217,6 +218,7 @@ build() {
     --enable-opencl \
     --enable-opengl \
     --enable-openssl \
+    --enable-pocketsphinx \
     --enable-rkmpp \
     --enable-sndio \
     --enable-sdl2 \
