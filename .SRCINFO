@@ -11,6 +11,7 @@ pkgbase = gnome-shell-extension-background-logo-git
 	makedepends = gnome-common
 	depends = gnome-shell
 	depends = gnome-backgrounds
+	depends = meson
 	source = git+https://pagure.io/background-logo-extension
 	source = archlinux-wm-gnome.svg
 	sha256sums = SKIP
