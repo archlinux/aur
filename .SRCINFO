@@ -1,0 +1,16 @@
+pkgbase = python-dpkt-git
+	pkgdesc = This is a Python library for interacting with and creating packets.
+	pkgver = v1.9.2.r33.2c6aada
+	pkgrel = 1
+	url = https://github.com/kbandla/dpkt
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	provides = python-dpkt
+	conflicts = python-dpkt
+	source = dpkt::git+https://github.com/kbandla/dpkt.git
+	md5sums = SKIP
+
+pkgname = python-dpkt-git
+
