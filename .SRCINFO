@@ -1,6 +1,6 @@
 pkgbase = firefox-esr-pt-br-bin
 	pkgdesc = Instalação autônoma do navegador de internet da mozilla.org, edição de suporte de longo prazo, traduzido para o português do Brasil.
-	pkgver = 52.8.0
+	pkgver = 68.0.1
 	pkgrel = 1
 	url = http://www.mozilla.org/en-US/firefox/organizations/
 	install = firefox-esr.install
@@ -14,19 +14,19 @@ pkgbase = firefox-esr-pt-br-bin
 	depends = libxt
 	depends = dbus-glib
 	depends = nss
-	provides = firefox=52
-	provides = firefox-esr=52.8.0
-	conflicts = firefox=52
-	conflicts = firefox-esr=52.8.0
+	provides = firefox=68
+	provides = firefox-esr=68.0.1
+	conflicts = firefox=68
+	conflicts = firefox-esr=68.0.1
 	conflicts = firefox-esr-bin
 	source = firefox-esr.desktop
 	source = firefox-esr-safe.desktop
 	sha512sums = f1edf5aaeec7edf5bf1be6155c4b417190c520eeb826b63107ac0ac99e7df1800f237ed7ced35e44e9d6809b142582e4fcb4e033f8d91d445486d35d1314705c
 	sha512sums = 2cb650cf7c16db64e5d540db798799c569837a430a8573d86d3a120cdb59ef28bcd3959990ee5b946b21694f0deb84b527cc99a7d071002d6d33d6627cb10621
-	source_i686 = http://ftp.mozilla.org/pub/firefox/releases/52.8.0esr/linux-i686/pt-BR/firefox-52.8.0esr.tar.bz2
-	sha512sums_i686 = 5fb864ae77c8e5fc32364660cef9e08da893e9379b16670e97a6fd5d1857fa0283eb9396f0aee6e1bd9b811a3460d32a92e27250b117fb236737189beb03afbf
-	source_x86_64 = http://ftp.mozilla.org/pub/firefox/releases/52.8.0esr/linux-x86_64/pt-BR/firefox-52.8.0esr.tar.bz2
-	sha512sums_x86_64 = ec44a0217481ac7db532ac5dc160e53d6e95c3897045ef556d0a864d4857c137a03ae1898217d607e477d231a732644d88bad0205ccc0979edad4c65035bb0cb
+	source_i686 = http://ftp.mozilla.org/pub/firefox/releases/68.0.1esr/linux-i686/pt-BR/firefox-68.0.1esr.tar.bz2
+	sha512sums_i686 = 3843c9d4e342c80d9b4cbaa621417e9d86aecd67e29a8f96e139bdf235bbc269f16864e986c18ec9473740dc68a5b454cda88ff30df68151a70cea7b962f633c
+	source_x86_64 = http://ftp.mozilla.org/pub/firefox/releases/68.0.1esr/linux-x86_64/pt-BR/firefox-68.0.1esr.tar.bz2
+	sha512sums_x86_64 = 3843c9d4e342c80d9b4cbaa621417e9d86aecd67e29a8f96e139bdf235bbc269f16864e986c18ec9473740dc68a5b454cda88ff30df68151a70cea7b962f633c
 
 pkgname = firefox-esr-pt-br-bin
 
