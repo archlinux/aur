@@ -1,0 +1,20 @@
+#!/bin/bash
+
+pd_dir="$HOME"/.local/share/pandownload
+export WINEARCH=win32 WINEPREFIX="${pd_dir}"/wine
+export WINEDEBUG=-all WINEDLLOVERRIDES="mscoree,mshtml="
+
+if [ ! -d "${pd_dir}" ] ; then
+  mkdir -p "${pd_dir}" || exit 1
+  mkdir -p "${pd_dir}"/wine || exit 1
+  ln -s /usr/share/pandownload/PanDownload.exe "${pd_dir}"/pandownload.exe || exit 1
+  ln -s /usr/share/pandownload/libcurl.dll "${pd_dir}"/libcurl.dll || exit 1
+  ln -s /usr/share/pandownload/lua53.dll "${pd_dir}"/lua53.dll || exit 1
+  cp -r /usr/share/pandownload/PanData "${pd_dir}"/PanData || exit 1
+
+  wineboot -u || exit 1
+  ln -sf /usr/share/pandownload/wine/msscript.ocx "${pd_dir}"/wine/drive_c/windows/system32/msscript.ocx || exit 1
+  wine regedit /S /usr/share/pandownload/wine/override-dll.reg || exit 1
+fi
+
+wine "${pd_dir}"/pandownload.exe "$@"
