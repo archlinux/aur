@@ -1,0 +1,12 @@
+post_upgrade() {
+  _extramodules="$(basename $(readlink -f /lib/modules/$(uname -r)/extramodules/))"
+  depmod "$(uname -r)"
+}
+
+post_install() {
+  post_upgrade
+}
+
+post_remove() {
+  post_upgrade
+} 

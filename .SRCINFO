@@ -1,0 +1,15 @@
+pkgbase = cartographer-git
+	pkgdesc = Linux Kernel Module to spoof /proc maps
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/LWSS/Cartographer
+	install = cartographer-git.install
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	makedepends = elfutils
+	source = git://github.com/LWSS/Cartographer.git
+	md5sums = SKIP
+
+pkgname = cartographer-git
+
