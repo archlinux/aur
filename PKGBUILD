@@ -1,48 +1,42 @@
-# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
-# Contributor: Timofey Titovets <nefelim4ag@gmail.com>
+# Maintainer: Simone Cimarelli <aquilairreale [AT] ymail [DOT] com>
 
-pkgname=drive-git
-pkgver=r745.7222324
+_basename=drive
+pkgname=$_basename-git
+pkgver=v0.3.9.1.r51.gb868c96
 pkgrel=1
-pkgdesc="Drive is a tiny golang program to pull or push Google Drive files."
-arch=('any')
-url="https://github.com/odeke-em/drive"
-license=('Apache')
-depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
-makedepends=('go' 'git')
-conflicts=('drive')
-options=('!strip' '!emptydirs')
-source=($pkgname::git+https://github.com/odeke-em/drive.git)
-md5sums=('SKIP')
-_gourl=github.com/odeke-em/drive/drive-gen
+pkgdesc="Google Drive client for the command line (development version)"
+arch=("i686" "pentium4" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
+url="https://github.com/odeke-em/$_basename"
+license=("APACHE")
+makedepends=("go")
+source=("$_basename::git+https://github.com/odeke-em/$_basename.git#branch=master")
+md5sums=("SKIP")
+provides=("$_basename")
+conflicts=("$_basename")
+
 pkgver() {
-  cd $srcdir/$pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_basename"
+    git describe --long --tags | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    mkdir -p go/src/github.com/odeke-em
+    ln -rTsf "$_basename" "go/src/github.com/odeke-em/$_basename"
+    export GOPATH="$srcdir/go"
+    cd "go/src/github.com/odeke-em/$_basename"
+    go get -v -d ./...
 }
 
 build() {
-  export GOPATH=$srcdir
-  go get google.golang.org/api/drive/v2
-  go get $_gourl
-  cd $srcdir/bin/
-  ./drive-gen
-  go get github.com/odeke-em/rsc/qr
-  go get github.com/martini-contrib/binding
-  cd $srcdir/$pkgname/drive-server
-  go build -o drive-server
+    export GOPATH="$srcdir/go"
+    cd "go/src/github.com/odeke-em/$_basename"
+    go install -v \
+        -gcflags "all=-trimpath=$GOPATH" \
+        -asmflags "all=-trimpath=$GOPATH" \
+        -ldflags "-extldflags $LDFLAGS" \
+        ./...
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  install -p -m755 $srcdir/bin/drive "$pkgdir/usr/bin"
-  install -p -m755 $srcdir/$pkgname/drive-server/drive-server "$pkgdir/usr/bin"
-  
-  cd "$srcdir/$pkgname"
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
-  mkdir -p "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes"
-  cp $srcdir/$pkgname/icons/*.png $pkgdir/usr/share/icons/hicolor/128x128/mimetypes
-  mkdir -p "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes"
-  cp $srcdir/$pkgname/icons/*.svg $pkgdir/usr/share/icons/hicolor/scalable/mimetypes
-
+    install -Dm755 "$srcdir/go/bin/$_basename" "$pkgdir/usr/bin/$_basename"
 }
