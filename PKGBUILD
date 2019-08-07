@@ -1,13 +1,13 @@
 # Maintainer: Clar Charr <clar@charr.xyz>
 
 pkgname=miniflux
-pkgver=2.0.16
+pkgver=2.0.17
 pkgrel=1
 pkgdesc='Minimalist Feed Reader'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://miniflux.app'
 license=('Apache')
-depends=('postgresql')
+optdepends=("postgresql: unless the database is on another machine, this machine needs it")
 makedepends=('go' 'godep' 'git')
 conflicts=('miniflux-git')
 backup=('etc/miniflux.conf')
@@ -18,7 +18,7 @@ source=(
   miniflux.sysusers
 )
 sha256sums=(
-  '0f255172fcf7442c835a00333943b291ef921a63711e16ab33f712bf577391dc'
+  '2d0cd7c5ec1b7a083c306902b56f63fd786ece675b2874f22df29d025a5e4cc9'
   '1247a3cfe0307f5f1bb070e616f57344d8f16201070ecf7dda243b3fa1fbd8b8'
   '2b3b50d9b50581a80e85e23011c8b5dd048247206083615f213d63b70f8f13be'
   'd1ce5acf1e633b04b92bf9330bd64d97c19d8f8d39c7bb4b64e11a96be4b73e2'
