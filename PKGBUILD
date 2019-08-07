@@ -8,7 +8,7 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.2.1330.r329.g7747ad37e6
+pkgver=v1.2.1330.r1174.g6830132b14
 _gwtver=2.8.2
 _ginver=2.1.2
 _clangver=3.8.0
@@ -25,11 +25,13 @@ source=('git://github.com/rstudio/rstudio.git'
 	'rstudio-server.service'
 	"https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
 	"https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
+	"boost-system.patch"
 )
 md5sums=('SKIP'
          'eea28f7865720f6c8d5de12f3f631880'
          'e2617189fe5c138945b8cc95f26bd476'
-         'c295406d68c5ef364e445068599aa6d4')
+         'c295406d68c5ef364e445068599aa6d4'
+         '135db966cb49800cf0f66c7f9ac063e7')
          
 
 pkgver() {
@@ -39,6 +41,7 @@ pkgver() {
 
 prepare () {
 	cd ${srcdir}/$_gitname
+	patch -p1 < $srcdir/boost-system.patch
 
 	msg "Extracting dependencies..."
 	    cd "${srcdir}/${_gitname}/src/gwt"
@@ -76,7 +79,8 @@ build() {
   mkdir "${srcdir}/$_gitname/build"
   cd "${srcdir}/$_gitname/build"
   # Configure cmake 
-  cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio-server -DCMAKE_DL_LIBRARIES=/usr/lib64/libdl.so -DCMAKE_LIBR_DOC_DIR=/usr/share/doc/R -DCMAKE_LIBR_EXECUTABLE=/usr/bin/R -DCMAKE_LIBR_HOME=/usr/lib64/R -DCMAKE_LIBR_INCLUDE_DIRS=/usr/include/R -DCMAKE_LIBR_CORE_LIBRARY=usr/lib64/R/lib/libR.so ..
+  #cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio-server -DCMAKE_DL_LIBRARIES=/usr/lib64/libdl.so -DCMAKE_LIBR_DOC_DIR=/usr/share/doc/R -DCMAKE_LIBR_EXECUTABLE=/usr/bin/R -DCMAKE_LIBR_HOME=/usr/lib64/R -DCMAKE_LIBR_INCLUDE_DIRS=/usr/include/R -DCMAKE_LIBR_CORE_LIBRARY=usr/lib64/R/lib/libR.so  -DRSTUDIO_USE_SYSTEM_BOOST=Yes ..
+  cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio-server ..
 
 }
 
@@ -91,7 +95,7 @@ package() {
   install -d "${pkgdir}/etc/pam.d"
   install -Dm 644 "${pkgdir}/usr/lib/rstudio-server/extras/pam/rstudio" "${pkgdir}/etc/pam.d/rstudio"
   # rstudio home directory
-  install -d "${pkgdir}/srv/rstudio"
+  install -d "${pkgdir}/srv/rstudio-server"
 #  mv "${pkgdir}/usr/lib/rstudio-server/www" "${pkgdir}/srv/rstudio"
 #  rm -rf "${pkgdir}/usr/lib/rstudio-server/extras"
   install -d "${pkgdir}/usr/lib//systemd/system"
