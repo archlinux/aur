@@ -1,7 +1,7 @@
 pkgbase = ttf-bauhaus
 	pkgdesc = A neat font.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.myfonts.com/foundry/FotoStar/
 	install = ttf-bauhaus.install
 	arch = any
