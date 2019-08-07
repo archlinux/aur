@@ -1,4 +1,4 @@
-# Maintainer: Alfonso Saaverda "Son Link" <sonlink.dourden@gmail.com>
+# Maintainer: Maikel Llamaret Heredia "llamaret" <llamaret@webmisolutions.com>
 
 pkgname=videomorph
 pkgver=1.4
