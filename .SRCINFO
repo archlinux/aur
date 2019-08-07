@@ -1,0 +1,21 @@
+pkgbase = rxvt-unicode-minimal
+	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) witout resize hints and perl support
+	pkgver = 9.22
+	pkgrel = 11
+	url = http://software.schmorp.de/pkg/rxvt-unicode.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxft
+	depends = perl
+	depends = startup-notification
+	depends = rxvt-unicode-terminfo
+	provides = rxvt-unicode
+	conflicts = rxvt-unicode
+	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.22.tar.bz2
+	source = noinc.diff
+	sha1sums = e575b869782fbfed955f84f48b204ec888d91ba1
+	sha1sums = e9fbc2c35c4de3f04d9c9843d133f6efbce50565
+
+pkgname = rxvt-unicode-minimal
+
