@@ -1,0 +1,18 @@
+--- a/vue.config.js
++++ b/vue.config.js
+@@ -2,6 +2,15 @@
+  * @type { ProjectOptions }
+  */
+ module.exports = {
++  pluginOptions: {
++    electronBuilder: {
++      builderOptions: {
++        linux: {
++          target: 'dir'
++        }
++      }
++    }
++  },
+   css: {
+     sourceMap: true,
+   },

@@ -1,0 +1,47 @@
+pkgbase = yuna
+	pkgdesc = Anime player integating AniList, Crunchyroll, and Hidive
+	pkgver = 1.3.9
+	pkgrel = 1
+	url = https://yuna.moe
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = yarn
+	makedepends = nodejs>=10
+	makedepends = python2
+	depends = alsa-lib
+	depends = atk
+	depends = at-spi2-atk
+	depends = at-spi2-core
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libcups
+	depends = libx11
+	depends = libxcb
+	depends = libxcomposite
+	depends = libxcursor
+	depends = libxdamage
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	depends = libxrandr
+	depends = libxrender
+	depends = libxss
+	depends = libxtst
+	depends = nspr
+	depends = nss
+	depends = pango
+	options = !strip
+	source = yuna-1.3.9.tar.gz::https://github.com/BeeeQueue/yuna/archive/v1.3.9.tar.gz
+	source = electron-builder.patch
+	source = yuna.desktop
+	sha512sums = 519f3ec59b265a757b17617e26d55a36486cbf63785386c894b5afc055ca958c96d8fbe1c08d5d3b69cfeb76dc4b7a6dd798db4c946b1b9991e1febb9d3e5470
+	sha512sums = e6b50f112b1123e0308edb0fd28a7ebaf56af006b6c20fc6fbc078f95fdf85b9f5e5f024951b7a10599cdaeaee6f47ead9647c3698615216e774976100c354e7
+	sha512sums = 8cff81afac9ed702d14bfdf28cc8f5db83895360ab7b68c94aa59e260cf3a0c94597a6a083f86cd00a9b85be751a263879eca7ed25d8a91a8a0cc6c3f36a393a
+
+pkgname = yuna
+
