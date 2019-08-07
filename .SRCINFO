@@ -1,7 +1,7 @@
 pkgbase = ayatana-indicator-power
 	pkgdesc = Ayatana Indicator showing power state
 	pkgver = 2.0.93
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/AyatanaIndicators
 	arch = i686
 	arch = x86_64

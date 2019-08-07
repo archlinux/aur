@@ -3,7 +3,7 @@
 
 pkgname="ayatana-indicator-power"
 pkgver="2.0.93"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Ayatana Indicator showing power state"
 arch=("i686" "x86_64")
 url="https://github.com/AyatanaIndicators"
