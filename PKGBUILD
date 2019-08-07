@@ -13,7 +13,8 @@ makedepends=(gcc cmake)
 depends=(liblastfm-qt5
         qt5-base
         moc
-        python3)
+        python3
+        python-notify2)
 
 build() {
     cd $srcdir
