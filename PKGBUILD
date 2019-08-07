@@ -1,68 +1,134 @@
 # Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
 # Maintainer: Severin Kaderli <severin@kaderli.dev>
-pkgname=vita3k-git
 _pkgname=vita3k
-pkgver=r11.40a247b
-pkgrel=2
-pkgdesc="PlayStation Vita emulator"
+pkgname=${_pkgname}-git
+pkgver=r1195.eb9dea27
+pkgrel=1
+pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
 url="https://vita3k.github.io/"
 license=('GPL2')
-depends=('unicorn' 'sdl2')
-makedepends=('git' 'cmake')
+makedepends=(
+	'clang'
+	'cmake'
+	'git'
+	'python2'
+	'rsync'
+)
+depends=(
+	'sdl2'
+)
 provides=('vita3k')
 conflicts=('vita3k')
 source=(
-  "git+https://github.com/vita3k/vita3k.git"
-  "git+https://github.com/aquynh/capstone.git"
-  "git+https://github.com/serge1/ELFIO.git"
-  "git+https://github.com/cginternals/glbinding.git"
-  "git+https://github.com/jonasmr/microprofile.git"
-  "git+https://github.com/tcbrindle/sdl2-cmake-scripts.git"
-  "git+https://github.com/vitasdk/vita-headers.git"
-  "git+https://github.com/vitasdk/vita-toolchain.git"
-  "git+https://github.com/jbeder/yaml-cpp.git"
+	"git+https://github.com/vita3k/vita3k.git"
+	"git+https://github.com/serge1/ELFIO.git"
+	"git+https://github.com/aquynh/capstone.git"
+	"git+https://github.com/vitasdk/vita-headers.git"
+	"git+https://github.com/jbeder/yaml-cpp.git"
+	"git+https://github.com/Vita3K/vita-toolchain.git"
+	"git+https://github.com/jonasmr/microprofile.git"
+	"git+https://github.com/tcbrindle/sdl2-cmake-scripts.git"
+	"git+https://github.com/gabime/spdlog.git#branch=v1.x"
+	"git+https://github.com/nothings/stb.git"
+	"git+https://github.com/tronkko/dirent.git#branch=v1.23"
+	"git+https://github.com/B-Con/crypto-algorithms.git"
+	"git+https://github.com/ocornut/imgui.git"
+	"git+https://github.com/google/googletest.git"
+	"git+https://github.com/Vita3K/shaders-db.git"
+	"git+https://github.com/KhronosGroup/glslang.git"
+	"git+https://github.com/vita3k/SPIRV-Cross.git"
+	"git+https://github.com/Vita3K/ext-boost.git"
+	"git+https://github.com/Vita3K/dlmalloc.git"
+	"git+https://github.com/vita3k/printf.git"
+	"git+https://github.com/ocornut/imgui_club.git"
+	"git+https://github.com/unicorn-engine/unicorn.git"
+	"git+https://github.com/discordapp/discord-rpc.git"
+	"git+https://github.com/zeux/pugixml.git"
 )
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+md5sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+)
 
 pkgver() {
-	cd "$_pkgname"
+	cd "${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$_pkgname"
+	cd "${_pkgname}"
 	git submodule init
-	git config submodule.src/external/capstone.url "$srcdir/capstone"
-	git config submodule.src/external/elfio.url "$srcdir/ELFIO"
-	git config submodule.src/external/glbinding.url "$srcdir/glbinding"
-	git config submodule.src/external/microprofile.url "$srcdir/microprofile"
-	git config submodule.src/external/sdl2-cmake-scripts.url "$srcdir/sdl2-cmake-scripts"
-	git config submodule.src/external/vita-headers.url "$srcdir/vita-headers"
-	git config submodule.src/external/vita-toolchain.url "$srcdir/vita-toolchain"
-	git config submodule.src/external/yaml-cpp.url "$srcdir/yaml-cpp"
+	git config submodule.src/external/elfio.url "${srcdir}/ELFIO"
+	git config submodule.src/external/capstone.url "${srcdir}/capstone"
+	git config submodule.src/external/vita-headers.url "${srcdir}/vita-headers"
+	git config submodule.src/external/yaml-cpp.url "${srcdir}/yaml-cpp"
+	git config submodule.src/external/vita-toolchain.url "${srcdir}/vita-toolchain"
+	git config submodule.src/external/microprofile.url "${srcdir}/microprofile"
+	git config submodule.src/external/sdl2-cmake-scripts.url "${srcdir}/sdl2-cmake-scripts"
+	git config submodule.src/external/spdlogs.url "${srcdir}/spdlog"
+	git config submodule.src/external/stb.url "${srcdir}/stb"
+	git config submodule.src/external/dirent.url "${srcdir}/dirent"
+	git config submodule.src/external/crypto-algorithms.url "${srcdir}/crypto-algorithms"
+	git config submodule.src/external/imgui.url "${srcdir}/imgui"
+	git config submodule.src/external/googletest.url "${srcdir}/googletest"
+	git config submodule.src/external/shaders-db.url "${srcdir}/shaders-db"
+	git config submodule.src/external/glslang.url "${srcdir}/glslang"
+	git config submodule.src/external/SPIRV-Cross.url "${srcdir}/SPIRV-Cross"
+	git config submodule.src/external/boost.url "${srcdir}/ext-boost"
+	git config submodule.src/external/dlmalloc.url "${srcdir}/dlmalloc"
+	git config submodule.src/external/printf.url "${srcdir}/printf"
+	git config submodule.src/external/imgui_club.url "${srcdir}/imgui_club"
+	git config submodule.src/external/unicorn-src.url "${srcdir}/unicorn"
+	git config submodule.src/external/discord-rpc.url "${srcdir}/discord-rpc"
+	git config submodule.src/external/pugixml.url "${srcdir}/pugixml"
 	git submodule update
 }
 
 build() {
-	cd "$_pkgname"
-	msg2 "Create build"
-	mkdir -p build && cd build
-	msg2 "Create cmake"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-	make
+	cd "${_pkgname}"
+
+	# Clang is needed for the build to work for now
+	export CC="/usr/bin/clang"
+	export CXX="/usr/bin/clang++"
+
+	./gen-linux.sh && cd build-linux
+	make VERBOSE=1 UNICORN_QEMU_FLAGS="--python=/usr/bin/python2"
 }
 
 package() {
-	cd $_pkgname
-	install -Dm755 build/src/emulator/Vita3K "$pkgdir/usr/bin/vita3k"
-	install -Dm644 src/emulator/shaders/* -t "$pkgdir/usr/bin/shaders/"
+	cd "${_pkgname}"
+
+	install -d -m 755 "${pkgdir}/opt/"
+	install -d -m 755 "${pkgdir}/usr/bin/"
+
+	# 777 permissions are sadly needed for now for it to work because vita3k
+	# creates a log file in the same directory as the binary
+	rsync -rtl --perms --chmod=777 "build-linux/bin/" "${pkgdir}/opt/vita3k"
+	ln -s "/opt/vita3k/Vita3K" "${pkgdir}/usr/bin/vita3k"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "COPYING.txt" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
 }
