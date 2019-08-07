@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Red Eclipse
+Comment=A fast-paced arena shooter
+Path=/opt/redeclipse
+Exec=redeclipse.sh
+Icon=redeclipse
+Terminal=false
+Categories=Game;Shooter;ActionGame
