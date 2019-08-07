@@ -1,7 +1,7 @@
 # Maintainer: Alfonso Saaverda "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=videomorph
-pkgver=1.2
+pkgver=1.4
 pkgrel=1
 pkgdesc="Small GUI wrapper for FFMPEG based on PyQt5"
 arch=('i686' 'x86_64')
