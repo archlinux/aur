@@ -92,6 +92,9 @@ createprefix() {
     sed -i -e 's/\[Video\]/[Video]\r\nAllowHiResModes=true/' "$gamedir/SUN.INI"
 
     # TODO Speed decrease?
+
+    # Fix renderer
+    wine regedit "$DIR/fix-renderer.reg" || echo "regedit failed"
 }
 
 

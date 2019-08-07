@@ -2,7 +2,7 @@
 
 pkgname=tiberiansun
 pkgver=2.03
-pkgrel=1
+pkgrel=2
 pkgdesc="Freeware release of Westwood's classic C&C: Tiberian Sun, with Firestorm Expansion (uses Wine)"
 url='http://web.archive.org/web/20000302013458/http://www.westwood.com/games/ccuniverse/tiberiansun/index.html'
 arch=('any')
@@ -15,11 +15,13 @@ install='tiberiansun.install'
 source=('tiberiansun.desktop'
         'launch-tiberiansun.sh'
         'README'
+        'fix-renderer.reg'
         'https://downloads.cncfps.com/Freeware/Tibsun/OfficialCnCTiberianSun.rar')
 noextract=('OfficialCnCTiberianSun.rar')
 sha256sums=('ce9c09f9338c989d005bd8c9c425b930ad591a7ee135c5f6c4ccbce513c4199e'
-            '413b214f75ed15007d7ee5a71a2c89ef04e1892237d1e59c6fa2535bc4ba67ad'
+            'a325ce3c3de0ee7947418fd136e620a2cd84ca67999f358e360f9aea55f4dbe9'
             '739ada7ac1b6b7614ad386bdd74f472a36902110daaba12cd2c7dd3d527e7e61'
+            '6a925ba54f6f96aa954f5d4237e0089bfcc3029eae2927b73dfd22292a4b3b15'
             'b04219e715511de9baa2feb9827013c8e106f8d6b9b563936b8a2f650305dec5')
 
 # Disable compression of the package
@@ -54,6 +56,7 @@ package() {
     install -Dm755 "launch-$pkgname.sh" "$pkgdir/opt/$pkgname/launch-$pkgname.sh"
     mkdir -p "$pkgdir/usr/bin/"
     ln -s -T "/opt/$pkgname/launch-$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "fix-renderer.reg" "$pkgdir/opt/$pkgname/"
 
     # Icon
     mkdir -p "$pkgdir/usr/share/icons/"
