@@ -2,7 +2,7 @@
 
 _pkgname=blend2d
 pkgname=${_pkgname}-git
-pkgver=r4.1490253
+pkgver=r70.6f7f2c1
 pkgrel=1
 pkgdesc='A high-performance 2D vector graphics engine written in C++'
 url='https://blend2d.com'
