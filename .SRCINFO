@@ -1,13 +1,13 @@
 pkgbase = insomnia
 	pkgdesc = HTTP and GraphQL client for developers
-	pkgver = 6.6.0
+	pkgver = 6.6.2
 	pkgrel = 1
 	url = http://insomnia.rest/
 	arch = x86_64
 	options = !strip
-	source = https://github.com/getinsomnia/insomnia/releases/download/v6.6.0/insomnia_6.6.0_amd64.deb
+	source = https://github.com/getinsomnia/insomnia/releases/download/v6.6.2/insomnia_6.6.2_amd64.deb
 	source = insomnia.sh
-	md5sums = ae86e7c438dc8a25c3c718bd5d61ef4b
+	md5sums = 02f4599d5e1882a476db452c5caeabf3
 	md5sums = dfe139daf29b508bdb83bc735681a381
 
 pkgname = insomnia
