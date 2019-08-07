@@ -2,7 +2,7 @@
 
 pkgname=libcelero
 _pkgname=Celero
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='C++ Benchmark Authoring Library/Framework'
 arch=('x86_64' 'i686')
@@ -10,8 +10,8 @@ url='https://github.com/DigitalInBlue/Celero'
 license=('custom:"Apache License, Version 2.0"')
 depends=('gcc-libs')
 makedepends=('cmake')
-source=("https://github.com/DigitalInBlue/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('dbbe80a06a203dcc3865879f51e4da0feffbc0cb953a91d4c798a5582962ec41')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/DigitalInBlue/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('1306444fb78ad1d33d6b9ed8ec94a1740b49fc98c3337dead15395255eda76a8')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
