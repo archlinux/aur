@@ -1,17 +1,25 @@
 pkgbase = ninjas2-git
-	pkgdesc = Ninjas 2 Is Not Just Another Slicer. Standalone, LV2, VST. (unstable!)
-	pkgver = r142.ce7d3d2
+	pkgdesc = An easy to use sample slicer LV2 & VST plugin and JACK application (git version)
+	pkgver = 2.0.0.r267.36df466
 	pkgrel = 1
 	url = https://github.com/rghvdberg/ninjas2
 	arch = i686
 	arch = x86_64
-	license = custom
-	depends = mesa
-	depends = xorg-server
-	depends = libsndfile
+	groups = lv2-plugins
+	groups = pro-audio
+	groups = vst-plugins
+	license = GPL3
+	makedepends = git
+	makedepends = jack
+	depends = libgl
 	depends = libsamplerate
-	source = git+https://github.com/rghvdberg/ninjas2
-	md5sums = SKIP
+	optdepends = jack: stand-alone JACK application
+	provides = ninjas2
+	conflicts = ninjas2
+	source = ninjas2::git+https://github.com/rghvdberg/ninjas2.git
+	source = dpf::git+https://github.com/DISTRHO/DPF.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ninjas2-git
 

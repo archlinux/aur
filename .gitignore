@@ -1,0 +1,7 @@
+dpf/
+ninjas2/
+pkg/
+src/
+.AURINFO
+ninjas2-git-*.tar.xz
+ninjas2-git-*.src.tar.gz

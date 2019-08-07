@@ -1,52 +1,55 @@
 # Maintainer: milk on freenode
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+
 _pkgname=ninjas2
 pkgname=${_pkgname}-git
-pkgver=r142.ce7d3d2
+pkgver=2.0.0.r267.36df466
 pkgrel=1
-pkgdesc="Ninjas 2 Is Not Just Another Slicer. Standalone, LV2, VST. (unstable!)"
-#epoch=0
+#epoch=1
+pkgdesc="An easy to use sample slicer LV2 & VST plugin and JACK application (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/rghvdberg/ninjas2"
-license=('custom')
-groups=()
-depends=('mesa' 'xorg-server' 'libsndfile' 'libsamplerate')
-makedepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-changelog=()
-source=(git+https://github.com/rghvdberg/ninjas2)
-noextract=()
-md5sums=('SKIP')
+license=('GPL3')
+groups=('lv2-plugins' 'pro-audio' 'vst-plugins')
+depends=('libgl' 'libsamplerate')
+makedepends=('git' 'jack')
+optdepends=('jack: stand-alone JACK application')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+https://github.com/rghvdberg/${_pkgname}.git"
+        'dpf::git+https://github.com/DISTRHO/DPF.git')
+sha256sums=('SKIP' 'SKIP')
 
-pkgver()
-{
-  cd "$_pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+
+  local ver="$(grep d_version plugins/Ninjas2/Ninjas2Plugin.hpp | awk '{ print $4$5$6 }' | tr ',' '.')"
+  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-# check()
-# {
-  # cd "$_pkgname"
-# }
+prepare() {
+  cd "${srcdir}/${_pkgname}"
 
-prepare()
-{
-  cd "$_pkgname"
+  git submodule init
+  git config submodule.dpf.url "${srcdir}/dpf"
+  git submodule update
+}
+
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+
   git submodule init && git submodule update --recursive
   make
 }
 
 package() {
-  cd ${_pkgname}
-  install -Dm775 ${srcdir}/ninjas2/bin/ninjas2 ${pkgdir}/usr/bin/ninjas2
-  mkdir -p ${pkgdir}/usr/lib/lv2/
-  cp -r bin/ninjas2.lv2 ${pkgdir}/usr/lib/lv2/
-  install -Dm775 ${srcdir}/ninjas2/bin/ninjas2-vst.so ${pkgdir}/usr/lib/vst/ninjas2-vst.so
+  cd "${srcdir}/${_pkgname}"
+
+  install -Dm775 bin/${_pkgname} "${pkgdir}"/usr/bin/ninjas2
+  install -dm755 "${pkgdir}"/usr/lib/lv2/${_pkgname}.lv2
+  install -m644 bin/${_pkgname}.lv2/*.ttl "${pkgdir}"/usr/lib/lv2/${_pkgname}.lv2
+  install -m755 bin/${_pkgname}.lv2/*.so "${pkgdir}"/usr/lib/lv2/${_pkgname}.lv2
+  install -Dm775 bin/${_pkgname}-vst.so -t "${pkgdir}"/usr/lib/vst
 }
