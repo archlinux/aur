@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r56.fe3e1db
+pkgver=r72.2aca447
 pkgrel=1
 pkgdesc='Full featured and highly configurable SFTP server software'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=(
   "postgresql: to use PostgreSQL provider"
   "mariadb: to use MySQL provider"
 )
-backup=("etc/${_pkgname}/sftpgo.conf")
+backup=("etc/${_pkgname}/sftpgo.json")
 install=${pkgname}.install
 
 source=("git+https://github.com/drakkan/${_pkgname}.git")
@@ -28,14 +28,14 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  go build -i -ldflags "-s -w" -o sftpgo 	 
+  go build -i -ldflags "-s -w -X github.com/drakkan/sftpgo/utils.commit=`git describe --tags --always --dirty` -X github.com/drakkan/sftpgo/utils.date=`date --utc +%FT%TZ`" -o sftpgo
 }
 
 package() {
   cd "${_pkgname}"
   install -Dm755 sftpgo "$pkgdir/usr/bin/${_pkgname}"
   install -Dm 644 init/${_pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
-  install -Dm 644 sftpgo.conf -t "${pkgdir}/etc/${_pkgname}"
+  install -Dm 644 sftpgo.json -t "${pkgdir}/etc/${_pkgname}"
   install -d "${pkgdir}/usr/share/doc/${_pkgname}"
   cp -r sql "${pkgdir}/usr/share/doc/${_pkgname}/"
   install -Dm 644 README.md "${pkgdir}"/usr/share/doc/${_pkgname}/README.md
