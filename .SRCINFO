@@ -1,7 +1,7 @@
 pkgbase = movim-desktop
 	pkgdesc = Movim is a decentralized social network
 	pkgver = 0.13.90
-	pkgrel = 0
+	pkgrel = 1
 	url = https://movim.eu/
 	arch = x86_64
 	license = Copyright (c) 2013-2018 GitHub Inc.
