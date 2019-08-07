@@ -1,16 +1,16 @@
 # Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=perftest
-pkgver=4.4.0.5
-_pkgver=4.4-0.5
-pkgrel=3
+pkgver=4.4.0.6
+_pkgver=4.4-0.6
+pkgrel=1
 pkgdesc='OpenFabrics Alliance Infiniband verbs performance testing and benchmarking tools'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"OpenIB.org BSD"')
 depends=('rdma-core' 'bash')
-source=("https://github.com/linux-rdma/${pkgname}/archive/v${_pkgver}.tar.gz")
-sha256sums=('d09dfce9823b67ec62bec54433a6bcf20fb5653c3537d8679e9ef93f8b3c384e')
+source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/linux-rdma/${pkgname}/archive/v${_pkgver}.tar.gz")
+sha256sums=('41660ad7de0a9447111b88dc854e867cec81771b3e3408bb34dee781ea718963')
 
 build() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
