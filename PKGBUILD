@@ -1,10 +1,10 @@
 pkgname=pycharm-community-eap
-_buildver=192.5728.105
-_pkgver=2019.2
-_eap=n
+_buildver=192.6262.12
+_pkgver=2019.2.1
+_eap=y
 pkgver=$_pkgver.$_buildver
 pkgrel=1
-epoch=3
+epoch=4
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build. Community edition.'
 arch=(any)
 options=('!strip')
@@ -22,6 +22,9 @@ fi
 source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
 sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz.sha256" | cut -d' ' -f1))
 prepare() {
+	if [[ -d $srcdir/pycharm-community-${_pkgver} ]]; then
+		mv $srcdir/pycharm-community-${_pkgver} $srcdir/pycharm-community-${_buildver}
+	fi
 	cat >"$srcdir/$pkgname.desktop" <<-EOF
 		[Desktop Entry]
 		Version=$pkgver
@@ -40,14 +43,14 @@ prepare() {
 build() {
 	# use absolute paths to the python executables so that users with an activated
 	# virtual environment (like e.g. anaconda) can build without issues
-	/usr/bin/python2 "$srcdir/pycharm-community-$_filever/helpers/pydev/setup_cython.py" build_ext --inplace
-	/usr/bin/python3 "$srcdir/pycharm-community-$_filever/helpers/pydev/setup_cython.py" build_ext --inplace
+	/usr/bin/python2 "$srcdir/pycharm-community-$_buildver/helpers/pydev/setup_cython.py" build_ext --inplace
+	/usr/bin/python3 "$srcdir/pycharm-community-$_buildver/helpers/pydev/setup_cython.py" build_ext --inplace
 }
 
 package() {
 	cd "$srcdir"
 	mkdir -p "$pkgdir/opt/$pkgname"
-	cp -R "pycharm-community-$_filever/"* "$pkgdir/opt/$pkgname/"
+	cp -R "pycharm-community-$_buildver/"* "$pkgdir/opt/$pkgname/"
 
 	local _vmoptfile=pycharm64
 	if [[ $CARCH = 'i686' ]]; then
