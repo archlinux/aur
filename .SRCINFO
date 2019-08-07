@@ -1,0 +1,18 @@
+pkgbase = waybox
+	pkgdesc = An openbox clone on Wayland (WP)
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	depends = wlroots
+	depends = wayland
+	depends = pixman
+	source = waybox::git+https://github.com/wizbright/waybox.git
+	source = Makefile
+	md5sums = SKIP
+	md5sums = ae4c2c8642d0abe7af9b511b746ad9c8
+
+pkgname = waybox
+
