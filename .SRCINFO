@@ -12,6 +12,7 @@ pkgbase = infiniband-diags
 	depends = perl
 	provides = libibmad
 	conflicts = libibmad
+	conflicts = rdma-core
 	replaces = libibmad
 	source = infiniband-diags-2.2.0.tar.gz::https://github.com/linux-rdma/infiniband-diags/archive/2.2.0.tar.gz
 	sha256sums = 8f3bae228a53e0f69a242f8d315230dd1e7d7ee8a1bf14ebde80603173a43ff3
