@@ -1,7 +1,7 @@
 pkgbase = exo-player
 	pkgdesc = eXo music player based on moc
 	pkgver = 8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Feresey/exo
 	arch = x86_64
 	arch = i686
