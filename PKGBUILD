@@ -2,13 +2,14 @@
 
 pkgname=dwarview-git
 _gitname=dwarview
-pkgver=r27.0e518cb
-pkgrel=2
+pkgver=r31.3019f3b
+pkgrel=1
 pkgdesc="GUI program that displays DWARF debug info of a file"
 arch=('i686' 'x86_64')
 url="https://github.com/namhyung/dwarview.git"
 license=('GPL')
 depends=('libelf' 'gtk3')
+makedepends=('git')
 source=(git+https://github.com/namhyung/dwarview.git
         gladefile_path.patch)
 sha1sums=('SKIP'
