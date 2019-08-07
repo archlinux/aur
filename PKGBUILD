@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/videomorph-dev/videomorph'
 license=('Apache-2.0')
 depends=('python' 'ffmpeg' 'python-pyqt5')
-source=('https://gutl.jovenclub.cu/wp-content/uploads/2017/12/videomorph-1.2.tar.gz')
+source=('https://github.com/videomorph-dev/videomorph/archive/1.4.tar.gz')
 md5sums=('5f2c19516d022b5c39ddf5c7316b82ea')
 
 build() {
