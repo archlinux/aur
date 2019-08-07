@@ -54,7 +54,7 @@ _major=5.2
 _minor=7
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -63,15 +63,18 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd
              'graphviz' 'imagemagick')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-_bfq_path="bfq-paolo-dev-lucjan-for-5.2.3"
-_bfq_patch="0001-block-bfq-dev-lucjan.patch"
+_bfq_path_1="bfq-paolo-dev-lucjan-for-5.2.3"
+_bfq_patch_1="0001-block-bfq-dev-lucjan.patch"
+_bfq_path_2="bfq-paolo-dev-lucjan-v2"
+_bfq_patch_2="0002-block-bfq-dev-lucjan.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
+        "${_lucjanpath}/${_bfq_path_1}/${_bfq_patch_1}"
+        "${_lucjanpath}/${_bfq_path_2}/${_bfq_patch_2}"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
         "${_lucjanpath}/arch-patches/0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
@@ -386,6 +389,7 @@ sha512sums=('13c83e1b83b374d01562829f5a67d23fca58f5b39fb856c979706c00033f735bb38
             'SKIP'
             '8d9547ff38096b99d296cdec9875b816960c09db31acebb033e3660ba65475d1f310578282cac74947d75dff844dd22d7e7c2e4ded12368d32314fe145763752'
             'd996a89d7831c4d49980b1b5b73ccd21da419302e86ea6faaf7d8f5a686bdbfe688a75c34d3e9583cbb11a011d2adcb4cb3aef66aba677e0d810f3eb1fb5be4b'
+            '8ce2e2c3da37435090abdf0d1875aa0b2870d9cb9ce148cdc30855c1beeffc87cd7a8003c3c351f8f31753c1a4678df6cb3c02c39797b361632c9e5abbe2173f'
             '8a158ae5660426f0fb9fa74f37c093f325b5a23392b95e50c36825205f42311cbf05f818f0275ebda27ce9fad40652ba6dc2397f19f45addb3f68f8f4476196f'
             '9d472377c50ddd9ddab5d4ab3092f3d487eeee20a4d4a04d3cefeef5bbf40daa3eb609b15741ca4a8cd32bf2b6d0781de961cbf55e2f80fd40260f282bf022f4'
             '166653c6d7d76b052aa26f6a0782a74db75d2611c3d5d770219a00fed4da7d2317b35e39aaadec25da1fc91fb7f18385247303d531d15e3998886bb65f8cd89f'
