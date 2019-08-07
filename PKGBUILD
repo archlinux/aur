@@ -2,7 +2,7 @@
 
 pkgname="ayatana-indicator-session"
 pkgver="0.4.3"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Ayatana Indicator showing session management, status and user switching"
 arch=("i686" "x86_64")
 url="https://github.com/AyatanaIndicators"
@@ -10,8 +10,8 @@ license=("GPL2" "GPL3")
 depends=("libayatana-indicator-gtk3" "gsettings-desktop-schemas" "systemd" "glib2")
 makedepends=("cmake" "intltool" "glib2" "systemd")
 optdepends=("mate-screensaver" "mate-ayatana-indicator-applet" "mate-control-center" "yelp" "firefox")
-source=("http://releases.ayatana-indicators.org/source/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=("9f57e1f0c432ae54a2dd0aa46eb51c16")
+source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('18b01c4e412f1293fe5bf32c84bd1705')
 options=("!emptydirs")
 
 build()
