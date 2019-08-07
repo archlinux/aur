@@ -1,8 +1,8 @@
 # Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=infiniband-diags
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='OpenFabrics Alliance diagnostic programs and scripts for InfiniBand subnets'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
@@ -10,10 +10,10 @@ license=('GPL2' 'custom:"OpenIB.org BSD"')
 provides=('libibmad')
 conflicts=('libibmad')
 replaces=('libibmad')
-depends=('opensm' 'glib2' 'perl')
+depends=('opensm' 'perl')
 makedepends=('python-docutils')
-source=("https://github.com/linux-rdma/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('c9e43ccf633f65ee7b0b1dc709c97ffef6c6d2da260e2f488e592c7da52fabc4')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linux-rdma/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('8f3bae228a53e0f69a242f8d315230dd1e7d7ee8a1bf14ebde80603173a43ff3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
