@@ -138,7 +138,7 @@ prepare() {
 			# modprobe configs
 			zcat /proc/config.gz > ./.config
 		else
-			warning "You kernel was not compiled with IKCONFIG_PROC!"
+			warning "Your kernel was not compiled with IKCONFIG_PROC!"
 			warning "You cannot read the current config!"
 			warning "Aborting!"
 			exit
