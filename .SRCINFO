@@ -11,6 +11,8 @@ pkgbase = exo-player
 	depends = liblastfm-qt5
 	depends = qt5-base
 	depends = moc
+	depends = python3
+	depends = python-notify2
 	source = git://github.com/Feresey/exo
 	sha1sums = SKIP
 
