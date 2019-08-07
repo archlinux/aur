@@ -1,7 +1,7 @@
 # Maintainer: Tinu Weber <http://ayekat.ch>
 
 pkgname=makemetapkg
-pkgver=0.8
+pkgver=0.9.5
 pkgrel=1
 arch=(any)
 

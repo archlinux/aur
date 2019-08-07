@@ -1,3 +1,7 @@
+v0.9.5-1 (2019-08-02)
+* New package maintainer, 'telans'
+* Bug fixes from v0.8.1 through v0.9.5
+
 v0.8-1 (2019-06-10)
 * Readme: Fix list of dependencies (bugfix)
 * More bug fixes as in v0.7.1--v0.7.8
