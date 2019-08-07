@@ -1,7 +1,7 @@
 # Maintainer: Kim Scarborough <kim@scarborough.kim>
 pkgname=deluge1
 pkgver=1.3.15
-pkgrel=5
+pkgrel=6
 pkgdesc='A BitTorrent client with multiple interfaces in a client/server model (legacy 1.3.x version)'
 arch=('any')
 url='https://deluge-torrent.org/'
@@ -35,11 +35,18 @@ backup=('etc/conf.d/deluged')
 source=('https://ftp-osl.osuosl.org/pub/deluge/source/1.3/deluge-1.3.15.tar.xz'
 	deluged.service
 	deluged.environment
-	deluge-web.service)
+	deluge-web.service
+	prefdialog.patch)
 sha256sums=('a96405140e3cbc569e6e056165e289a5e9ec66e036c327f3912c73d049ccf92c'
 	'74f05cf43eae69f8ee8d257443ecdc0b0bbcc82cfb1bdb926ffe0a191164d699'
 	'70f5e700570e5286f785a4bd23c23d39ae72c5662d76da9354ace46e8f6e28fd'
-	'5d434c265d69773942134c143598fa2aa413989097cc30c007310801270f8b87')
+	'5d434c265d69773942134c143598fa2aa413989097cc30c007310801270f8b87'
+	'b4c397cc4ffede983554331c2b31e40feadda3a03e2ee377c3892c88b096b564')
+
+prepare() {
+	cd "${srcdir}/deluge-${pkgver}"
+	patch -p1 -i "${srcdir}"/prefdialog.patch
+}
 
 build() {
 	cd "${srcdir}/deluge-${pkgver}"
