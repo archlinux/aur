@@ -9,7 +9,7 @@ url='https://github.com/videomorph-dev/videomorph'
 license=('Apache-2.0')
 depends=('python' 'ffmpeg' 'python-pyqt5')
 source=('https://github.com/videomorph-dev/videomorph/archive/1.4.1.tar.gz')
-md5sums=('46789b8c4bb7157f6ca38116212debf7')
+md5sums=('79e370fc3c590b970ced1d71f49fdcde')
 
 build() {
 	cd ${pkgname}-${pkgver}
