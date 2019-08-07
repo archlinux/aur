@@ -11,7 +11,8 @@ license=("GPL2" "GPL3")
 depends=("libayatana-indicator-gtk3" "upower" "systemd" "libnotify" "dconf")
 makedepends=("cmake" "cmake-extras" "libnotify" "glib2" "python")
 optdepends=("mate-ayatana-indicator-applet" "zenity" "powerd" "mate-control-center" "mate-power-manager")
-source=("https://github.com/AyatanaIndicators/${pkgname}/${pkgname}-${pkgver}.tar.gz" "0001_enum-in-gschemas-unique.patch" "0002_add-testing-option.patch")
+https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz
+source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz" "0001_enum-in-gschemas-unique.patch" "0002_add-testing-option.patch")
 md5sums=("8584e8489ef75c47ef1b820b53d85954" "aa58e7664e559967ba1b7e6c8ba1b4b1" "2fab358cf58bfde470e0b1f00931151b")
 options=("!emptydirs")
 
