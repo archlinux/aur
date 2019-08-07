@@ -1,7 +1,7 @@
 # Maintainer: Matthias Fulz <mfulz at olzenet dot de>
 
 pkgname=shellbuddy
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="History and path tracking for shells"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/mfulz/$pkgname"
 license=('GPL')
 makedepends=('go')
 source=("https://github.com/mfulz/shellbuddy/archive/$pkgver.tar.gz")
-sha256sums=('d7259d42cf569c0b2d3dd92d579d392b30cb2444400e10d4c6109297eab45e1f')
+sha256sums=('399f92fec910ab2fafecd45c89a5decc2f866a55cef285bd49b247fb47ca8044')
 
 prepare() {
     GOPATH="$srcdir/go" go get github.com/manifoldco/promptui
