@@ -1,7 +1,7 @@
 pkgbase = hamsket-bin
 	pkgdesc = Forked Free and Open Source messaging and emailing app that combines common web applications into one
 	pkgver = 0.5.18
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/TheGoddessInari/hamsket
 	arch = x86_64
 	license = GPL3
@@ -21,7 +21,7 @@ pkgbase = hamsket-bin
 	conflicts = ramboxpro-bin
 	conflicts = rambox-os-bin
 	conflicts = rambox-os
-	source = hamsket.tar.gz::https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Rambox-0.5.18.tar.gz
+	source = hamsket.tar.gz::https://github.com/TheGoddessInari/hamsket/releases/download/0.5.18/Rambox-0.5.18.tar.gz
 	source = hamsket.desktop
 	source = hamsket.png
 	sha256sums = SKIP
