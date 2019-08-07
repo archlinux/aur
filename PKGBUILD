@@ -2,7 +2,7 @@
 
 pkgname=ttf-bauhaus
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A neat font."
 arch=('any')
 url="https://www.myfonts.com/foundry/FotoStar/"
