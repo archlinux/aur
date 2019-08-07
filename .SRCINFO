@@ -1,12 +1,12 @@
 pkgbase = prips
 	pkgdesc = Prints IP subnet ranges by list or CIDR
-	pkgver = 1.0.1
-	pkgrel = 3
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = http://packages.debian.org/stable/net/prips
 	arch = x86_64
 	license = GPL
-	source = http://http.debian.net/debian/pool/main/p/prips/prips_1.0.1.orig.tar.xz
-	md5sums = 646d222bd0b29db766d656df5c8ea1dc
+	source = http://http.debian.net/debian/pool/main/p/prips/prips_1.1.1.orig.tar.xz
+	md5sums = c6577271a818035f4fd25aadfa9cef96
 
 pkgname = prips
 
