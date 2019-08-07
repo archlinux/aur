@@ -1,0 +1,25 @@
+pkgbase = ttf-bauhaus
+	pkgdesc = A neat font.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.myfonts.com/foundry/FotoStar/
+	install = ttf-bauhaus.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = local://BauhausBoldItalic.ttf
+	source = local://BauhausBold.ttf
+	source = local://BauhausItalic.ttf
+	source = local://BauhausRegular.ttf
+	source = local://BauhausBoldItalic.otf
+	source = local://BauhausBold.otf
+	md5sums = cd631044b78293e3a5d6453fc6f55a54
+	md5sums = 872e2904dea37339f57338b7d2d7c600
+	md5sums = f15cca0d50f59a5f6c740f1c54785357
+	md5sums = 223d29d081047e50f0c1872e5de70115
+	md5sums = f67cdf869321b167ab670377f41a5caf
+	md5sums = ce8d095dd715d9e6bc74ad3fbe342330
+
+pkgname = ttf-bauhaus
+
