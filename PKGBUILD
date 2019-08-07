@@ -3,21 +3,21 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=proxygen
-pkgver=2019.07.29.00
+pkgver=2019.08.05.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=('x86_64')
 url="https://github.com/facebook/proxygen"
 license=('BSD')
 depends=('boost' 'boost-libs' 'folly' 'fizz' 'wangle' 'zstd' 'openssl' 'zlib' 'libcap' 'google-glog' 'gflags')
-makedepends=('cmake' 'python' 'gperf' 'gperftools' 'gtest' 'gmock')
+makedepends=('cmake' 'git' 'python' 'gperf' 'gperftools' 'gtest' 'gmock')
 conflicts=('proxygen-git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f1dcd12a0d20752e03767f56eae63d7610df8ef4f9602625c7cebef596a00b3f')
+sha256sums=('21787fa3268a9393ce0e0601675a4f069df8c905c6ddaffc8d3d0d9842f3e91f')
 
 build() {
   cd "$pkgname-$pkgver"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -S . -B _build
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTS=ON -S . -B _build
   cmake --build _build
 }
 
