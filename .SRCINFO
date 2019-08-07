@@ -1,7 +1,7 @@
 pkgbase = snd_hda_intel-amd-hd-audio-fix-dkms
 	pkgdesc = The snd_hda_intel kernel driver, patched to remove crackling on AMD HD-audio controller
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bugzilla.kernel.org/show_bug.cgi?id=195303
 	arch = x86_64
 	license = GPL2
@@ -10,16 +10,16 @@ pkgbase = snd_hda_intel-amd-hd-audio-fix-dkms
 	replaces = snd_hda_intel-alc1220-dkms
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/patch-5.2.5.xz
-	source = hda_intel.diff
-	source = hdac_stream.diff
+	source = patch-7.diff::https://bugzilla.kernel.org/attachment.cgi?id=284221
 	source = dkms.conf
 	source = Makefile
+	source = Makefile.diff
 	md5sums = ddf994de00d7b18395886dd9b30b9262
 	md5sums = 0bfed20acab24d45232983b54339a3c9
-	md5sums = 867d3d27fb1716290c76d90ffb739343
-	md5sums = b5f5cf9b9a7e0c5852d290992eb73b68
-	md5sums = 20495ab7a2c425ba786c44d53d458909
-	md5sums = 4cf63656de83b4321d6261289735d1e1
+	md5sums = e0d0c2c46caaff7039d74b6c54360af9
+	md5sums = 8239975d93c5b07c11b092386ba9aa86
+	md5sums = 7168339cf224bcd7927614fd608435a6
+	md5sums = 77d3d06692c18e1504163a0a05521ac0
 
 pkgname = snd_hda_intel-amd-hd-audio-fix-dkms
 
