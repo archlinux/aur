@@ -1,0 +1,15 @@
+pkgbase = ricoh-spc261-ppd
+	pkgdesc = CUPS driver for Ricoh SP C 261DNw series
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://support.ricoh.com/bb/html/dr_ut_e/re1/model/spc261dnw/spc261dnw.htm
+	arch = x86_64
+	license = unknown
+	makedepends = binutils
+	makedepends = p7zip
+	depends = cups
+	source = http://support.ricoh.com/bb/pub_e/dr_ut_e/0001305/0001305295/V101/r80978en.exe
+	sha256sums = a91017ab0ce697dff16d4a0f699c4525f87acc25b5ed673f8563f165c1416de6
+
+pkgname = ricoh-spc261-ppd
+
