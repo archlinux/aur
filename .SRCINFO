@@ -1,0 +1,28 @@
+pkgbase = shinjiru
+	pkgdesc = Qt-based anime tracker for AniList
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://shinjiru.me
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-base
+	makedepends = qt5-declarative
+	makedepends = qt5-networkauth
+	makedepends = qt5-tools
+	makedepends = qt5-quickcontrols
+	makedepends = qt5-quickcontrols2
+	makedepends = libx11
+	makedepends = libxtst
+	makedepends = libxinerama
+	depends = hicolor-icon-theme
+	depends = libxinerama
+	depends = libxtst
+	depends = qt5-declarative
+	depends = qt5-networkauth
+	source = git+https://github.com/ShinjiruApp/Shinjiru#tag=v3.4.0
+	sha512sums = SKIP
+
+pkgname = shinjiru
+
