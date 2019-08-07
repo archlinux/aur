@@ -3,7 +3,7 @@
 
 _project_name=pace
 pkgname=${_project_name}-git
-pkgver=1.1.90.r0.gba48950
+pkgver=1.2.0.r0.g67358cf
 pkgrel=1
 pkgdesc='A simple pacman.conf editor'
 arch=('x86_64')
