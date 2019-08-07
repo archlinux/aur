@@ -1,7 +1,7 @@
 pkgbase = snd_hda_intel-amd-hd-audio-fix-dkms
 	pkgdesc = The snd_hda_intel kernel driver, patched to remove crackling on AMD HD-audio controller
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bugzilla.kernel.org/show_bug.cgi?id=195303
 	arch = x86_64
 	license = GPL2
@@ -19,7 +19,7 @@ pkgbase = snd_hda_intel-amd-hd-audio-fix-dkms
 	md5sums = e0d0c2c46caaff7039d74b6c54360af9
 	md5sums = 8239975d93c5b07c11b092386ba9aa86
 	md5sums = 7168339cf224bcd7927614fd608435a6
-	md5sums = 77d3d06692c18e1504163a0a05521ac0
+	md5sums = eac7fd423191fe0f5fe841fb06999815
 
 pkgname = snd_hda_intel-amd-hd-audio-fix-dkms
 
