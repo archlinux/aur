@@ -2,7 +2,7 @@
 
 pkgname=adom-noteye
 pkgver=3.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A roguelike game with a quest-centric, plot driven structure (+ GUI) - Please consider buying the game on Steam"
 arch=("x86_64")
 url="http://www.adom.de/"
