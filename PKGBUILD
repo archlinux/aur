@@ -5,7 +5,7 @@ _srcname='rdma-core'
 pkgdesc='RDMA core userspace libraries and daemons'
 pkgver='25.0'
 _tag="v${pkgver}"
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url="https://github.com/linux-rdma/${_srcname}"
 license=('GPL2' 'custom:OpenIB.org BSD (MIT variant)')
@@ -14,7 +14,7 @@ depends=('libnl')
 makedepends=('git' 'cmake' 'gcc' 'libsystemd' 'systemd' 'pkg-config' 'ninja' 'bash' 'pandoc' 'python' 'python-docutils')
 _provides=('rdma' 'ibacm' 'libiwpm' 'libibcm' 'libibumad' 'libibverbs'
            'librdmacm' 'libcxgb3' 'libcxgb4' 'libmlx4' 'libmlx5' 'libmthca' 'libnes' 'libocrdma'
-           'srptools')
+           'srptools' 'infiniband-diags' 'libibmad')
 provides=("${_provides[@]}")
 conflicts=("${_provides[@]}")
 replaces=("${_provides[@]}")
@@ -44,10 +44,12 @@ build() {
         -DENABLE_VALGRIND=0 \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_INSTALL_RUNDIR='/run' \
         -DCMAKE_INSTALL_SBINDIR:PATH='/usr/bin' \
         -DCMAKE_INSTALL_LIBDIR:PATH='/usr/lib' \
         -DCMAKE_INSTALL_LIBEXECDIR:PATH='/usr/lib/rdma' \
         -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
+        -DCMAKE_INSTALL_PERLDIR='/usr/share/perl5/vendor_perl' \
         ..
     ninja
 }
