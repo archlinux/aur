@@ -1,6 +1,6 @@
 # Maintainer: David Cristofaro <david@dtcristo.com>
 pkgname=lucky-git
-pkgver=0.15.0.r0.6796508
+pkgver=0.17.0.rc1.r1.d439b9c
 pkgrel=1
 pkgdesc='A Crystal web framework that catches bugs for you, runs incredibly fast, and helps you write code that lasts.'
 arch=('x86_64')
