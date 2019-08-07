@@ -2,7 +2,7 @@
 
 pkgname=nordic-polar-theme-git
 _pkgname=Nordic-Polar
-pkgver=r35.b10fa83
+pkgver=r37.6091269
 pkgrel=1
 pkgdesc="A Gtk3.20+ theme created using the awesome Nord color palette."
 arch=("any")
@@ -49,12 +49,12 @@ build() {
 	msg2 "Rendering assets, please wait"
 	pushd gtk-2.0
 	while read $line; do echo -n "."; done < \
-		<(./render-assets.sh; ); echo
+		<(./render-assets.sh); echo
 	popd
 
 	pushd src
 	while read $line; do echo -n "."; done < \
-		<(./render-gtk3-assets.py; ./render-gtk3-assets-hidpi.py); echo
+		<(./render-gtk3-assets.py; ./render-gtk3-assets-hidpi.py; ./render-wm-assets-hidpi.py; ./render-wm-assets.py); echo
 	popd
 	msg2 "Done!"
 }
