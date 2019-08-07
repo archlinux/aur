@@ -1,5 +1,5 @@
 pkgbase = smex
-	pkgdesc = генератор смеха на питоне
+	pkgdesc = little laugh generator in python
 	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/anar66/python-test/tree/master/tests
