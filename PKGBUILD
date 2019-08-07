@@ -45,10 +45,10 @@ build() {
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_INSTALL_RUNDIR='/run' \
-        -DCMAKE_INSTALL_SBINDIR:PATH='/usr/bin' \
-        -DCMAKE_INSTALL_LIBDIR:PATH='/usr/lib' \
-        -DCMAKE_INSTALL_LIBEXECDIR:PATH='/usr/lib/rdma' \
-        -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
+        -DCMAKE_INSTALL_SBINDIR='/usr/bin' \
+        -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+        -DCMAKE_INSTALL_LIBEXECDIR='/usr/lib/rdma' \
+        -DCMAKE_INSTALL_SYSCONFDIR='/etc' \
         -DCMAKE_INSTALL_PERLDIR='/usr/share/perl5/vendor_perl' \
         ..
     ninja
