@@ -1,0 +1,18 @@
+pkgbase = lkl-git
+	pkgdesc = Linux kernel library
+	pkgver = 5.0.0r813484.0875fde75e41
+	pkgrel = 1
+	url = https://lkl.github.io/
+	arch = x86_64
+	license = GPL
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	depends = fuse
+	depends = libarchive
+	source = git+https://github.com/lkl/linux.git
+	md5sums = SKIP
+
+pkgname = lkl-git
+
