@@ -1,0 +1,20 @@
+pkgbase = brother-mfc-9325cw
+	pkgdesc = LPR and CUPS drivers for Brother MFC-9325CW
+	pkgver = 20190807
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=mfc9325cw_us_as
+	install = brother-mfc-9325cw.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = perl
+	makedepends = a2ps
+	depends = lib32-libcups
+	depends = ghostscript
+	optdepends = brscan4: Scanner support
+	source = https://download.brother.com/welcome/dlf006466/mfc9325cwlpr-1.1.2-1.i386.deb
+	source = https://download.brother.com/welcome/dlf006468/mfc9325cwcupswrapper-1.1.2-2.i386.deb
+	sha512sums = b3c994cce7cf96d01e5aafa3167dbe4fece78c73110b57d441d270168b4f4a76dc44932bbbd17bc425fa6c0e93aec8df980daafda42645a2119d7a043edb4c65
+	sha512sums = 7fccacc9fd863800c7d187f26efe0648e1a9400bc4a40c48fc6753466ea01baf1a074ee402008e1cea22edeb82bd85432ef55115898ee2ebaa353cde17d76d35
+
+pkgname = brother-mfc-9325cw
