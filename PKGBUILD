@@ -3,7 +3,7 @@
 
 pkgname="ayatana-indicator-application"
 pkgver="0.5.2"
-pkgrel="4"
+pkgrel="5"
 pkgdesc="Ayatana Application Indicators"
 arch=("i686" "x86_64")
 url="https://github.com/AyatanaIndicators"
