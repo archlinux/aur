@@ -24,7 +24,7 @@ pkgname=${_pkgname}-beta
 pkgver=20190807
 _pkgver="7Aug2019"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
-pkgrel=2
+pkgrel=3
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
@@ -65,12 +65,12 @@ if (( $_ENABLE_OMP )); then
 fi
 
 prepare(){
-  cd "${_pkgname}-patch_${_pkgver}"
+  cd "${_pkgname}"
   mkdir -p build
 }
 
 build() {
-  cd "${_pkgname}-patch_${_pkgver}/build"
+  cd "${_pkgname}/build"
   cmake ../cmake \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR="lib" \
@@ -102,7 +102,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}-patch_${_pkgver}/build"
+  cd "${_pkgname}/build"
   make DESTDIR="${pkgdir}" install
   if (( $_BUILD_DOC )) ; then
     install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/html" "html/"*.html
