@@ -1,5 +1,5 @@
 pkgbase = lib32-gtest
-	pkgdesc = Google Test - C++ testing utility based on the xUnit framework (like JUnit) (mingw-w64)
+	pkgdesc = Google Test - C++ testing utility based on the xUnit framework (like JUnit) 
 	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/google/googletest
