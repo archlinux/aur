@@ -1,0 +1,42 @@
+diff -ur tutka-1.1.3.orig/src/mainwindow.cpp tutka-1.1.3/src/mainwindow.cpp
+--- tutka-1.1.3.orig/src/mainwindow.cpp	2019-08-05 21:00:43.000000000 +0200
++++ tutka-1.1.3/src/mainwindow.cpp	2019-08-07 17:01:50.136296298 +0200
+@@ -31,6 +31,8 @@
+ #include <QTimer>
+ #include <QScrollBar>
+ #include <QDesktopWidget>
++#include <QWindow>
++#include <QScreen>
+ #include "instrumentpropertiesdialog.h"
+ #include "preferencesdialog.h"
+ #include "trackvolumesdialog.h"
+@@ -212,7 +214,7 @@
+     connect(playingSequenceListDialog, SIGNAL(playingSequenceSelected(int)), player, SLOT(setPlayseq(int)));
+     connect(sectionListDialog, SIGNAL(sectionSelected(int)), player, SLOT(setSection(int)));
+
+-    setGeometryFromString(this, settings.value("Windows/mainWindowGeometry", rectToString(qApp->desktop()->availableGeometry())).toString());
++    setGeometryFromString(this, settings.value("Windows/mainWindowGeometry", rectToString(windowHandle()->screen()->availableGeometry())).toString());
+     setGeometryFromString(instrumentPropertiesDialog, settings.value("Windows/instrumentPropertiesDialogGeometry").toString());
+     setGeometryFromString(openDialog, settings.value("Windows/openDialogGeometry").toString());
+     setGeometryFromString(preferencesDialog, settings.value("Windows/preferencesDialogGeometry").toString());
+@@ -1016,7 +1018,7 @@
+         if (rect.isValid()) {
+             widget->setGeometry(rect);
+         } else {
+-            QRect mainRect = qApp->desktop()->availableGeometry();
++            QRect mainRect = widget->windowHandle()->screen()->availableGeometry();
+             QRect widgetRect = widget->geometry();
+             widget->setGeometry(mainRect.x() + (mainRect.width() - widgetRect.width()) / 2, mainRect.y() + (mainRect.height() - widgetRect.height()) / 2, widgetRect.width(), widgetRect.height());
+         }
+diff -ur tutka-1.1.3.orig/src/tracker.cpp tutka-1.1.3/src/tracker.cpp
+--- tutka-1.1.3.orig/src/tracker.cpp	2019-08-05 21:00:43.000000000 +0200
++++ tutka-1.1.3/src/tracker.cpp	2019-08-07 17:01:46.416296129 +0200
+@@ -721,7 +721,7 @@
+ void Tracker::calculateFontSize()
+ {
+     QFontMetrics metrics(font);
+-    fontWidth = metrics.width('0');
++    fontWidth = metrics.horizontalAdvance('0');
+     fontHeight = metrics.ascent() + 1;
+     fontAscent = metrics.ascent();
+ }

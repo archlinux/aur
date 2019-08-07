@@ -1,3 +1,8 @@
+2019-08-07 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Add a patch to allow compilation with latest Qt5 version
+
 2017-01-21 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
