@@ -4,8 +4,8 @@
 
 pkgname=barman
 _realname=barman
-pkgver=2.8
-pkgrel=2
+pkgver=2.9
+pkgrel=1
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('x86_64')
 url="http://www.pgbarman.org"
@@ -23,7 +23,8 @@ source=(
   ssh-server.conf-template
   streaming-server.conf-template
 )
-md5sums=('c0eab2058f10fdd9a3f6b2c038397bc8'
+
+md5sums=('3ee64a7ad667f99514cfce2b7ebcb393'
          '0e48345895f88b3939543c00928a199b'
          '58c5b20b8e1272ab4ce46757f6613e0d'
          'b43254374978938f7d21035a3356b531'
