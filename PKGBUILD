@@ -1,7 +1,7 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
-pkgver=1539902
-pkgrel=2
+pkgver=1543721
+pkgrel=0
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
@@ -83,8 +83,8 @@ package() {
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
         rm -rf ${srcdir}/evelauncher/resources/ ${srcdir}/evelauncher/plugins/
         rm -f ${srcdir}/evelauncher/*Qt* ${srcdir}/evelauncher/libcrypto*
-        rm -f ${srcdir}/evelauncher/libssl* ${srcdir}/evelauncher/libicu*
-        rm -f ${srcdir}/evelauncher/libxcb*
+        rm -f ${srcdir}/evelauncher/libicu* ${srcdir}/evelauncher/libssl*
+        rm -f ${srcdir}/evelauncher/libpng* ${srcdir}/evelauncher/libxcb*
         cp -f ${srcdir}/evelauncher.sh.real ${srcdir}/evelauncher/evelauncher.sh
         chmod 0755 ${srcdir}/evelauncher/*
         chmod 0644 ${srcdir}/evelauncher/*.qm ${srcdir}/evelauncher/errorpage/*
@@ -99,7 +99,6 @@ package() {
         ln -sf libgrpc.so.6.0.0 ${srcdir}/evelauncher/libgrpc.so.6
         ln -sf libprotobuf.so.16.0.0 ${srcdir}/evelauncher/libprotobuf.so
         ln -sf libprotobuf.so.16.0.0 ${srcdir}/evelauncher/libprotobuf.so.16
-        ln -sf libpng12.so.0.54.0 ${srcdir}/evelauncher/libpng12.so.0
         find ${srcdir}/evelauncher/ -type f -exec strip -s {} 2>/dev/null \;
         tar cJf ${pkgdir}/opt/${pkgname}/lib/evelauncher-${pkgver}.tar.xz evelauncher/
 }
@@ -108,14 +107,14 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             'b5febef1a55d27af357f88079c0c7a1799971bd570080d91034115230323ef68'
             'e0b2105d58713a71940ae4443f8e4526505fb7db18515897ebbf3e2fd3641992'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
-            'fb2b6aa2d47365cc88e7ecac6f01def985b008683bb0f9efd7873799e929c7d2'
+            'c3849fd2277cedaacbb68805b7667d3980d763e0f1cc80050628bb42b0e0d380'
             'a8e604e6481b9a386269b6252852ee57812fc932f44f767982c4dbac168bb03b'
             'cd840d3ad3a21517f30bb4979c97adaaccba2affdddaa5da2889f4fd2ba89578'
             '546aaf5669dc3d3f1b2fff1b9a493d8ba31c19940a04fa4b9eb080e7301df4bd'
             'c83beba543663b926d28d0eda98f1035cd73327da50f718a487763d300415a24'
             'f438c7002eaf8e1186a838ac2e803242b7a2c98a22cf49622eb4a64cf4b202ec'
             '04c102d6db1bb8d4159c41f32ec0aa95846c0fb519841a3c1428ab20c850e9cf'
-            'cc9b7bd4778305b542bd67d043f408c0e30fe7ef82601e7ff2d8d216a71ee904'
+            '25c84d6823badf7c04dd316857b144b614a917943baeb8dc769b27cd029071ff'
             '2520a9b19f2827fa2634ea2acae3a6f61e73aada1af0eb2029e95709f0c8927d'
             '498c21e2ab8ef8e789d5d99265678a2784e6d0ddbd407a520e107412fd8bfd0d'
             '11aa040bc38c34bb5ad516813a5879a18a81991f067c8e64a18971d2f4196aa6'
@@ -128,4 +127,4 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '7ae1c6324c4ad43ab3f18f5a3ceaa48b34ede5466b7a0b9351d018e8cef9bbd0'
             '1936061a14432ab2632ea3ff15d45350b59ac822985445f597a4a5db44a35ae6'
             'ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2'
-            '70d45773ca4b3eaf6174cbd0757fbfc2b0ce4ba74713355ec5a5eda18a9af746')
+            'ffd2f1a07af37780d343c1349106a852f1c1fc81c8beeae61a9baf317cf88782')

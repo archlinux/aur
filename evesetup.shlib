@@ -14,7 +14,7 @@ SHAREDIR="$HOME/.eve"
 check_env() {
     if [ -d "$CONFDIR" ] ;then
 	if [ -r "$EVECONF" ] ;then
-	    SHAREDIR=$(grep SharedCacheFolder $EVECONF | cut -d= -f2)
+	    SHAREDIR=$(getval SharedCacheFolder)
 	fi
     fi
     [ ! -d "$SHAREDIR" ] && SHAREDIR=""
@@ -47,9 +47,9 @@ check_wine() {
 	desktop_msg "ERROR: EVE Configuration not found!"
 	exit 1
     fi
-    CUSTOMWP=$(grep CustomWinePath $EVECONF | cut -d= -f2)
-    SHAREDIR=$(grep SharedCacheFolder $EVECONF | cut -d= -f2)
-    UCW=$(grep UseCustomWine $EVECONF | cut -d= -f2)
+    CUSTOMWP=$(getval CustomWinePath)
+    SHAREDIR=$(getval SharedCacheFolder)
+    UCW=$(getval UseCustomWine)
     WINEPREFIX=${SHAREDIR}wineenv
     if [ "x$UCW" = "xtrue" ] ;then
 	WINEPATH=${CUSTOMWP%/*}
@@ -101,4 +101,8 @@ desktop_msg() {
 	notify-send -i eve $(basename $0) "$@"
     fi
     printf "$(basename $0): $@\n"
+}
+
+getval() {
+    printf $(grep "$1" $EVECONF | cut -d= -f2)
 }

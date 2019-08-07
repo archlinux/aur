@@ -6,7 +6,7 @@ set -e
 
 . ./evesetup.shlib
 
-SHAREDIR=$(grep SharedCacheFolder $EVECONF | cut -d= -f2)
+SHAREDIR=$(getval SharedCacheFolder)
 BCKUPDIR=$(xdg-user-dir DOCUMENTS 2>/dev/null || true)/EVE
 [ -d "$BCKUPDIR" ] || BCKUPDIR=$HOME
 
