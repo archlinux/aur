@@ -1,0 +1,14 @@
+pkgbase = i3tree-git
+	pkgdesc = Human-friendly display of i3's tree layout
+	pkgver = 7cb81e0
+	pkgrel = 1
+	url = https://github.com/sciurus/i3tree
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = perl-anyevent-i3
+	source = i3tree-git::git+https://github.com/sciurus/i3tree.git
+	sha256sums = SKIP
+
+pkgname = i3tree-git
+
