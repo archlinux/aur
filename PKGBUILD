@@ -1,7 +1,7 @@
 # Maintainer: James Smith <jslonescout AT icloud DOT com>
 _pkgname=emacs-libvterm
 pkgname=${_pkgname}-git
-pkgver=r258.8870258
+pkgver=r265.aafb9da
 pkgrel=1
 pkgdesc="Emacs libvterm integration"
 arch=('i686' 'x86_64' 'armv7h' 'pentium4')
