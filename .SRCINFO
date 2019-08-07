@@ -1,0 +1,14 @@
+pkgbase = smex
+	pkgdesc = генератор смеха на питоне
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/anar66/python-test/tree/master/tests
+	arch = any
+	license = CUSTOM
+	depends = python
+	depends = python-ptyprocess
+	source = https://github.com/anar66/python-test/archive/master.zip
+	sha256sums = SKIP
+
+pkgname = smex
+
