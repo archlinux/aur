@@ -2,19 +2,23 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=zanata-python-client
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='Client for managaging translations on Zanata'
 arch=('any')
 url='http://zanata.org/'
-license=('LGPL2')
-depends=('python2' 'python2-setuptools' 'python2-httplib2' 'python2-polib' 'python2-lxml')
-source=("https://github.com/zanata/zanata-python-client/archive/v${pkgver}.tar.gz")
-sha256sums=('1a06fda3befeecf572b9a5d2348f36be1e27daf5326bb0312c7f50ebf6f5eb24')
+license=('LGPL2.1')
+depends=('python-future' 'python-httplib2' 'python-polib' 'python-lxml')
+makedepends=('python-setuptools')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/zanata/zanata-python-client/archive/v${pkgver}.tar.gz")
+sha256sums=('f7caae883d29e70e189b494d8b3681b90b1c2d9c31e1eea01930d8748f94580f')
 
-#Tests needs python-mock, not packaged yet
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py build
+}
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  python2 setup.py install --root=${pkgdir} --optimize=1
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
