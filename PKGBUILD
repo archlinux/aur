@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.32.2+43+gb7f158811
-pkgrel=13
+pkgrel=14
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -243,15 +243,15 @@ prepare() {
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/119
   # Type: 2
   # Status: 4
-  # Comment: Needed for !651 to behave well
+  # Comment: Needed for !719 to behave well
   git cherry-pick -n fecc57dd
 
-  # Title: clutter/stage-cogl: Factor in pending_swaps to next_presentation_time
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/651
+  # Title: clutter/stage-cogl: Don't return uptime_time=-1 when pending_swaps
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/719
   # Type: 1
   # Status: 2
   # Comment:
-  git cherry-pick -n 5e950092
+  git cherry-pick -n 1130b19b^..d2989eb8
 }
 
 build() {
