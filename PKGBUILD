@@ -2,7 +2,7 @@
 
 pkgname=sweet-theme-git
 _pkgname=Sweet
-pkgver=r44.88b15fd
+pkgver=r47.2a939fd
 pkgrel=1
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
 arch=("any")
@@ -49,12 +49,12 @@ build() {
 	msg2 "Rendering assets, please wait"
 	pushd gtk-2.0
 	while read $line; do echo -n "."; done < \
-		<(./render-assets.sh; ); echo
+		<(./render-assets.sh); echo
 	popd
 
 	pushd src
 	while read $line; do echo -n "."; done < \
-		<(./render-gtk3-assets.py; ./render-gtk3-assets-hidpi.py); echo
+		<(./render-gtk3-assets.py; ./render-gtk3-assets-hidpi.py; ./render-wm-assets-hidpi.py; ./render-wm-assets.py); echo
 	popd
 	msg2 "Done!"
 }
