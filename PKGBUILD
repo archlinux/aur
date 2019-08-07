@@ -1,7 +1,8 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Useful: https://gitlab.com/gitlab-org/gitlab-ce/issues/29963
 pkgname=gitlab-pages
-pkgver=1.5.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='GitLab Pages daemon used to serve static websites for GitLab users'
 url='https://gitlab.com/gitlab-org/gitlab-pages'
@@ -14,13 +15,14 @@ source=("$pkgname-v$pkgver.tar.gz::https://gitlab.com/gitlab-org/gitlab-pages/re
 	'gitlab-pages.service'
 	'service.env')
 backup=('etc/gitlab-pages/config.cfg')
-sha256sums=('52af7ace4d5146738db30b5b5c9337059a0babca803468ccaf9fbf6e61de5e61'
+sha256sums=('eda36763002b3fe54633c59d384f9840de38c6fc9008eb04cab25ae088d1d8f7'
             '26f9ffde23377b0f83006f8441f31697acb15e0fabe1a63ae4c815faf544b6f2'
             'ae62235f0fd66eaed7ad74048daf21b92058aba90e40fc2d3e7a684e9883c32e'
             'fd8f9b60e2247077ad00765904237b6b1c36b11a952cd3b1ad88e74417b82a96')
 
 build() {
 	cd "$srcdir/$pkgname-v$pkgver-"*
+	export GO_EXTLINK_ENABLED=0
 	make
 }
 
