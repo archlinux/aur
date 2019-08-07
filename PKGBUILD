@@ -2,7 +2,7 @@
 # Contributor: John Williams <jwilliams4200 liamg reverse&remove moc>
 pkgname=snapraid
 pkgver=11.3
-pkgrel=2
+pkgrel=3
 pkgdesc="tool for Snapshot RAID: generate parity files, maintain checksums on data, restore lost data"
 arch=('x86_64' 'i686')
 url="http://www.snapraid.it/"
@@ -21,7 +21,7 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make check || return 1
+  make check
 }
 
 package() {
