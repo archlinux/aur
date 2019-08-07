@@ -1,0 +1,14 @@
+[Unit]
+Description=Calibre-web
+
+[Service]
+Type=simple
+User=calibre-web
+Group=calibre-web
+ExecStart=/usr/lib/calibre-web/cps.py
+WorkingDirectory=/usr/lib/calibre-web/
+KillSignal=SIGINT
+SendSIGHUP=yes
+
+[Install]
+WantedBy=multi-user.target
