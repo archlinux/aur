@@ -2,7 +2,7 @@
 
 pkgname="ayatana-indicator-notifications"
 pkgver="0.4.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Ayatana Indicator for viewing recent notifications"
 arch=("i686" "x86_64")
 url="https://github.com/AyatanaIndicators"
@@ -10,8 +10,8 @@ license=("GPL3")
 depends=("glib2" "libayatana-indicator-gtk3")
 makedepends=("intltool" "libayatana-indicator-gtk3" "glib2" "gdk-pixbuf2" "gtk3" "mate-common")
 optdepends=("mate-ayatana-indicator-applet")
-source=("http://releases.ayatana-indicators.org/source/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('75eb132add4ec1ee7ffbc5c6c6b49e55')
+source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=("1ae8dc099a3219115bff24365839f1df")
 options=("!emptydirs")
 
 prepare()
