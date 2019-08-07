@@ -6,12 +6,13 @@
 
 pkgname=chromium-ozone
 pkgver=76.0.3809.87
-pkgrel=1
+pkgrel=2
 _launcher_ver=6
 _meta_browser_sha=38b36f421f8d984c7004c9d9a6d514ed2fb6cf8e
 pkgdesc="Chromium built with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
+options=(debug !strip)
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
@@ -114,12 +115,6 @@ prepare() {
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
     tools/generate_shim_headers/generate_shim_headers.py
 
-  # https://crbug.com/893950
-  sed -i -e 's/\<xmlMalloc\>/malloc/' -e 's/\<xmlFree\>/free/' \
-    third_party/blink/renderer/core/xml/*.cc \
-    third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
-    third_party/libxml/chromium/libxml_utils.cc
-
   # Load Widevine CDM if available
   patch -Np1 -i ../chromium-widevine.patch
 
@@ -151,12 +146,6 @@ prepare() {
   # https://chromium-review.googlesource.com/c/chromium/src/+/1647154
   patch -Np1 -i ../Added-HiDPI-support-for-Ozone-Wayland.patch
 
-  # Remove compiler flags not supported by our system clang
-  sed -i \
-    -e '/"-fsplit-lto-unit"/d' \
-    -e '/"-Wno-defaulted-function-deleted"/d' \
-    build/config/compiler/BUILD.gn
-
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
 
@@ -178,6 +167,8 @@ prepare() {
 
   python2 build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
+
+  python2 tools/clang/scripts/update.py
 }
 
 build() {
@@ -185,15 +176,7 @@ build() {
 
   cd "$srcdir/chromium-$pkgver"
 
-  export CC=clang
-  export CXX=clang++
-  export AR=ar
-  export NM=nm
-
   local _flags=(
-    'custom_toolchain="//build/toolchain/linux/unbundle:default"'
-    'host_toolchain="//build/toolchain/linux/unbundle:default"'
-    'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
@@ -228,18 +211,8 @@ build() {
     _flags+=('cc_wrapper="ccache"')
   fi
 
-  # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
-  CFLAGS+='   -Wno-builtin-macro-redefined'
-  CXXFLAGS+=' -Wno-builtin-macro-redefined'
-  CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
-
   if check_option strip y; then
     _flags+=('symbol_level=0')
-
-    # Mimic exclude_unwind_tables=true
-    CFLAGS+='   -fno-unwind-tables -fno-asynchronous-unwind-tables'
-    CXXFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
-    CPPFLAGS+=' -DNO_UNWIND_TABLES'
   else
     _flags+=('symbol_level=1')
   fi

@@ -1,7 +1,7 @@
 pkgbase = chromium-ozone
 	pkgdesc = Chromium built with patches for wayland support via Ozone
 	pkgver = 76.0.3809.87
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = chromium.install
 	arch = x86_64
@@ -55,6 +55,8 @@ pkgbase = chromium-ozone
 	optdepends = kwallet: for storing passwords in KWallet
 	provides = chromium
 	conflicts = chromium
+	options = debug
+	options = !strip
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-76.0.3809.87.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
 	source = meta-browser-38b36f421f8d984c7004c9d9a6d514ed2fb6cf8e.tar.gz::https://github.com/OSSystems/meta-browser/archive/38b36f421f8d984c7004c9d9a6d514ed2fb6cf8e.tar.gz
