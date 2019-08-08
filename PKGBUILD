@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=1.4.16
+pkgver=1.4.17
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -24,11 +24,12 @@ optdepends=('createrepo_c: for mockchain command'
             'python-requests: for mockchain command'
             'yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)')
 install="$pkgname.install"
-backup=("etc/$pkgname/site-defaults.cfg")
+backup=("etc/$pkgname/logging.ini"
+        "etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('5db3847642c49a6c01a7a6c1e3c31fe4'
+md5sums=('e18b9f2a57070c86c45e725dca54b448'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
 
@@ -59,7 +60,7 @@ build() {
 	pushd "$pkgname" >/dev/null
 
 	python_sitelib=$(python -c 'from distutils.sysconfig import get_python_lib; import sys; sys.stdout.write(get_python_lib())')
-	sed -r -i "py/$pkgname"{,chain}.py \
+	sed -r -i "py/$pkgname"{,chain,-parse-buildlog}.py \
 	    -e 's|^__VERSION__\s*=.*|__VERSION__="'$pkgver'"|' \
 	    -e 's|^SYSCONFDIR\s*=.*|SYSCONFDIR="'$_sysconfdir'"|' \
 	    -e 's|^PYTHONDIR\s*=.*|PYTHONDIR="'$python_sitelib'"|' \
@@ -69,7 +70,7 @@ build() {
 	sed -r -i "py/$pkgname.py" \
 	    -e 's|/usr/libexec/mock/mock|/usr/bin/mock.py|'
 
-	sed -e "s|@VERSION@|$pkgver|" -i "docs/$pkgname"{,chain}.1
+	sed -e "s|@VERSION@|$pkgver|" -i "docs/$pkgname"{,chain,-parse-buildlog}.1
 
 	python    -m compileall py/ -q
 	python -O -m compileall py/ -q
@@ -85,6 +86,7 @@ package() {
 	mkdir -p "$pkgdir/$_bindir/"
 	install -Dp -m755 py/mock.py      "$pkgdir/$_bindir/"mock
 	install -Dp -m755 py/mockchain.py "$pkgdir/$_bindir/"mockchain
+	install -Dp -m755 py/mock-parse-buildlog.py "$pkgdir/$_bindir/"mock-parse-buildlog
 
 	mkdir -p "$pkgdir/$_sysconfdir/"pam.d
 	cp -Rp etc/pam/* "$pkgdir/$_sysconfdir/"pam.d/
@@ -95,6 +97,7 @@ package() {
 	mkdir -p "$pkgdir/$_datadir/"bash-completion/completions
 	cp -Rp etc/bash_completion.d/* "$pkgdir/$_datadir/"bash-completion/completions/
 	ln -s mock "$pkgdir/$_datadir/"bash-completion/completions/mockchain
+	ln -s mock "$pkgdir/$_datadir/"bash-completion/completions/mock-parse-buildlog
 
 	mkdir -p "$pkgdir/$_sysconfdir/"pki/mock
 	cp -Rp etc/pki/* "$pkgdir/$_sysconfdir/"pki/mock/
@@ -104,7 +107,7 @@ package() {
 	cp -Rp py/mockbuild "$pkgdir/$python_sitelib/"
 
 	mkdir -p "$pkgdir/$_mandir/"man1
-	cp -Rp "docs/$pkgname"{,chain}.1 "$pkgdir/$_mandir/"man1/
+	cp -Rp "docs/$pkgname"{,chain,-parse-buildlog}.1 "$pkgdir/$_mandir/"man1/
 
 	if ((_with_usermode)); then
 		mkdir -p "$pkgdir/$_sysconfdir/"security/console.apps/
@@ -115,6 +118,8 @@ package() {
 		    -i "$pkgdir/etc/security/console.apps/$pkgname"
 		ln -s /usr/bin/consolehelper "$pkgdir/usr/bin/$pkgname"
 	fi
+
+	install -Dp -m644 docs/mock.cheat "$pkgdir/usr/share/doc/$pkgname/cheat/$pkgname"
 
 	popd >/dev/null
 
