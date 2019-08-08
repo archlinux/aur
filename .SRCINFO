@@ -1,0 +1,16 @@
+pkgbase = opencpn-plugin-oesenc
+	pkgdesc = oeSENC Plugin for OpenCPN
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://opencpn.org/OpenCPN/plugins/oesenc.html
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = opencpn
+	source = https://github.com/bdbcat/oesenc_pi/archive/v3.0.0.tar.gz
+	source = CMakeLists.txt.patch
+	sha1sums = 95941113b64253d758d99a8ebecd2fb02119a309
+	sha1sums = 08a26936c63640b9a30d334b024bb0dd11bd2832
+
+pkgname = opencpn-plugin-oesenc
+
