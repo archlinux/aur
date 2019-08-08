@@ -1,7 +1,6 @@
-pkg
-src
+pkg/
+src/
 paho-mqtt-*.tar.gz
-python-paho-mqtt-*.pkg.tar.xz
 python2-paho-mqtt-*.pkg.tar.xz
-python-paho-mqtt-*.src.tar.gz
+python2-paho-mqtt-*.src.tar.gz
 .AURINFO
