@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 4.19 Greg Kroah-Hartman 2018-10-22 2020-12
 _LLL_VER=4.19
-_LLL_SUBVER=49
+_LLL_SUBVER=64
 
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU can actually run slower with NUMA enabled.
@@ -36,9 +36,6 @@ _CJKTTY_PATCH="${_CJKTTY_PATCH_FILE}::${_CJKTTY_PATCH_URL}"
 
 _PATHSET_DESC="ck${_CK_VER} uksm-${_UKSM_VER} and cjktty"
 
-# https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg2021842.html
-_drm_i915_sphinx_v2_patch="drm-i915-maintain-consistent-documentation-subsection-ordering.patch"
-
 pkgbase=linux-shmilee
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
 _srcname=linux-${_LLL_VER}
@@ -61,7 +58,6 @@ source=(
         ${_UKSM_PATCH}
         'uksm-patch-for-4.19.37+.patch'
         ${_CJKTTY_PATCH}
-        "${_drm_i915_sphinx_v2_patch}"
         'config'         # the main kernel config file
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -74,7 +70,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '6db8a2cf4dd3808e4bcf47da5b434de78e2eadb367432db1c4709ac83910117a'
+            'dda154fabc35aa281be8a2bd772738ac2abe2656f890ce7f67729a82e6b85df7'
             '77863d16a08e1b3c726b6c965f1bb7c672bd7317776810121062b73f9ea26780'
             '58b81803f8f81d18bef9fe3c5101851ca770ca103da114b8d1460ed74d920efa'
             'fb338209c3b3d00ae2e3706eb3b874d5d9391f84120ff5197f95824be76f86e1'
@@ -82,8 +78,7 @@ sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'ec617b1718e6cadfad02c75aca9c4b0e6b6f944bc1a93b7e4d82c847c04b5653'
             'fe32296cad05b08b34369ac49a226ae9591890fb106d0c6bc5b8f690f8d553b3'
             '72be48252f30bc644071bbce2607b773f789c6f19e281b89ab7e16a3d8161ed3'
-            '0264c997a4193c7504f0c950373a96f8d0cb5e647bbb5df551ffc91566586b3f'
-            'c804c47ecb6d01f29ed4af5bd9c50fa3bb2545ebe9d1c3b560bc6c61a72966f5'
+            '2eb7ec27f3dea53b0aac9ad665195df63e03598a89b6dd1c00af8d2738be88df'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -117,9 +112,6 @@ prepare() {
   msg "Patching source with Gentoo-zh/linux-cjktty patches"
   cp "../${_CJKTTY_PATCH_FILE}" "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
   patch -Np1 -i "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
-
-  msg "Patching source with Sphinx-2.0 Documentation build patch"
-  patch -p1 -i ../${_drm_i915_sphinx_v2_patch}
 
   cp -Tf ../config .config
 
