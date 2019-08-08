@@ -1,6 +1,6 @@
 pkgbase = python-discord
 	pkgdesc = An API wrapper for Discord written in Python
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/Rapptz/discord.py
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-discord
 	depends = python-aiohttp
 	optdepends = python-pynacl: Voice support
 	optdepends = libffi: Voice support
-	source = discord.py-1.3.2.tar.gz::https://github.com/Rapptz/discord.py/archive/v1.3.2.tar.gz
-	sha512sums = a4a185f53845e73a0405f030d2e22614e0e4d1e8f4d97bff24dd860cd5f7a0486113cd298de8ee1bbea3163a07569da403c941a769391d37bbc32ba5be94fcdc
+	source = discord.py-1.3.3.tar.gz::https://github.com/Rapptz/discord.py/archive/v1.3.3.tar.gz
+	sha512sums = a7a68086d2eeeb098a9bb310d6f3ed700cfe687853e08911ceaf12c5bc1c0b8b5011dd2e7443f6621304c66ff5f6ae1e4e554530c3ccfadcae9028ba5bfb6ddb
 
 pkgname = python-discord
 
