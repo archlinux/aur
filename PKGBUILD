@@ -21,7 +21,7 @@ kill_process_shortcut=x
 
 _pkgname=htop
 pkgname=htop-vim-solarized
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Interactive process viewer with solarized and vim keybindings patch"
 arch=('i686' 'x86_64')
@@ -35,13 +35,13 @@ provides=('htop')
 conflicts=('htop')
 options=('!emptydirs')
 source=(
-    'http://hisham.hm/htop/releases/2.1.0/htop-2.1.0.tar.gz'
+    "http://hisham.hm/htop/releases/${pkgver}/htop-${pkgver}.tar.gz"
     'solarized-colors.patch'
     'vim-keybindings-common.patch'
     'vim-keybindings-d-for-kill.patch'
     'vim-keybindings-x-for-kill.patch'
 )
-sha384sums=('26e1a2a18775824d326d5918673d3bd04d062b4cfc1dffef29a8c590085bf0420a03c82ba38a781d96519445380201b0'
+sha384sums=('1db22d35dbd27753b7988f324c841b8c57db29957d2634c345f11b7be6f68ffef47b8f45ebfac160e94964e91f8ddf8d'
             '3ffcf99a5d8ff9816340fd591859d3e5a1b710ad7f6e6ab5581a0d11573df1991533191366b86a0e6dfa80f8d4617020'
             '3de0c03296baa0089380a3404a13e96b347b6caaf18380dacd6b5f9c81f3741940bdcd1f07f75bd13e05112e333d2635'
             '353a675f5453b5b1ab503f9cbcb02e45b32bf429797f11e3cea96848fb4ad931129da7afa52b373fd6871c41657d52af'
