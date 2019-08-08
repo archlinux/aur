@@ -4,7 +4,7 @@ pkgname=fluent-bit
 
 pkgmaj=1.2
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
@@ -39,7 +39,7 @@ build() {
         -DFLB_TESTS_INTERNAL=Yes \
         -DFLB_TESTS_RUTNIME=Yes \
         ..
-    make -j8
+    make
 }
 
 check() {

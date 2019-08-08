@@ -1,7 +1,7 @@
 pkgbase = fluent-bit
 	pkgdesc = Collect data/logs from different sources, unify and send them to multiple destinations.
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fluentbit.io/
 	arch = x86_64
 	license = Apache
