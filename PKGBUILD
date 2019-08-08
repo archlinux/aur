@@ -1,7 +1,7 @@
 # Maintainer: Yves G. <theYinYeti@yalis.fr>
 
 pkgname=collabora-online-server-nodocker
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
 arch=('x86_64')
@@ -9,6 +9,11 @@ url="https://www.collaboraoffice.com/code/"
 license=('MPL')
 provides=('libreoffice' 'libreoffice-en-US')
 makedepends=(bzip2 coreutils curl fontconfig gawk grep gzip libcap sed systemd tar util-linux xz)
+
+optdepends=(
+  'hunspell: Use with language-specific hunspell dictionaries for LibreOffice spell-check'
+  'hyphen: Use with language-specific hyphen rules for LibreOffice hyphenation'
+)
 
 # From Dockerfile’s install script, minus inotify-tools+psmisc: not actually part of CODE
 depends=()
@@ -77,15 +82,8 @@ _upstream_equiv='
   libgcc1             = gcc-libs
   libgl1-mesa-glx     = mesa-libgl
   libpam0g            = pam
-  libpcre3            = 
+  libpcre3            = pcre
   libpng12-0          = libpng12
-  libpococrypto60     = poco
-  libpocofoundation60 = poco
-  libpocojson60       = poco
-  libpoconet60        = poco
-  libpoconetssl60     = poco
-  libpocoutil60       = poco
-  libpocoxml60        = poco
   libsm6              = libsm
   libssl1.0.0         = openssl-1.0
   libstdc++6          = gcc-libs
@@ -98,6 +96,8 @@ _upstream_equiv='
 '
 _upstream_equiv_OLD='
 '
+
+# >>>> START OF DYNAMIC ADAPTATION OF PKGBUILD
 _upstream_handle_dep() {
   local dep="$1"
   local eqv="$(grep "^[[:blank:]]*$(sed 's/[.]/\\\0/g' <<<"$dep")[[:blank:]]*=" <<<"$_upstream_equiv")"
@@ -144,6 +144,7 @@ if [ ${#source[*]} -eq 5 ]; then
   done
 fi
 unset _upstream_handle_dep _upstream_equiv _upstream_deps
+# <<<< END OF DYNAMIC ADAPTATION OF PKGBUILD
 
 package() {
   local data= f=
@@ -163,12 +164,20 @@ package() {
   # /lib is deprecated
   mv {lib,usr/lib}
 
+  # link Debian’s libpcre.so.3 to the “standard” naming
+  # (https://archives.gentoo.org/gentoo-dev/message/676cd8b16a7255446355744d91636880)
+  ln -s /usr/lib/libpcre.so usr/lib/libpcre.so.3
+
   # use systemd for user allocation
   install -Dm0644 "$srcdir"/sysusers usr/lib/sysusers.d/$pkgname.conf
 
   # replace cron with systemd
   rm -rf etc/cron.d
   install -Dm0644 "$srcdir"/tmpfiles usr/lib/tmpfiles.d/$pkgname.conf
+
+  # fix the systemd unit path
+  mv usr/lib{/lib,}/systemd
+  rmdir usr/lib/lib
 
   # add dependency on systemd
   sed -i '/^\[Unit\]/ a \
@@ -203,6 +212,9 @@ After=systemd-tmpfiles-setup.service' usr/lib/systemd/system/loolwsd.service
     mv opt/collaboraoffice6.0/share/xdg/"$f" usr/share/applications/"collaboraoffice-$f"
   done
   rm -rf opt/collaboraoffice6.0/share/xdg
+
+  # fix lib + desktop files’ permissions
+  chmod a+x opt/collaboraoffice6.0/program/lib*.so usr/lib/libPoco* usr/share/applications/*.desktop
 
   # https://github.com/CollaboraOnline/Docker-CODE/issues/32
   [ -d etc/sysconfig ] || mkdir etc/sysconfig

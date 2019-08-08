@@ -1,0 +1,6 @@
+*.code-workspace
+Packages
+*.deb
+/src/
+/pkg/
+/*.tar.xz
