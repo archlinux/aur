@@ -1,0 +1,11 @@
+--- a/usr/share/applications/movim.desktop	2018-08-11 22:18:51.000000000 +0300
++++ b/usr/share/applications/movim.desktop	2019-08-08 22:19:24.487742758 +0300
+@@ -4,7 +4,7 @@
+ GenericName=Social Network
+ Comment=Kick Ass Social Network, decentralized and fully based on XMPP
+ Keywords=jabber;xmpp;im;instant;messaging;discussion;chat;social;
+-Exec=/usr/bin/movim-desktop %U
++Exec=/usr/bin/env XDG_CURRENT_DESKTOP=Unity /usr/bin/movim-desktop %U
+ Terminal=false
+ X-MultipleArgs=false
+ MimeType=x-scheme-handler/xmpp
