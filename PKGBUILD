@@ -30,7 +30,7 @@ package() {
     # use the most up to date electron version.
     mkdir -p "${pkgdir}/opt/dot"
     cp -a "squashfs-root/." "${pkgdir}/opt/dot/"
-    chmod 755 -R "${pkgdir}/opt/dot" 
+    chmod 755 -R "${pkgdir}/opt/dot/" 
     install -Dm644 "dot.desktop" "${pkgdir}/usr/share/applications/dot.desktop"
 
     for size in 16 32 128 256 512; do
