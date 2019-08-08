@@ -1,7 +1,7 @@
 From c644b4aba05233a8a78d7708a98d9a583ff78a27 Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Tue, 30 Jul 2019 05:53:48 +0000
-Subject: [PATCH 2/5] [ozone/wayland] Sway: avoid sending presentation early.
+Subject: [PATCH 02/11] [ozone/wayland] Sway: avoid sending presentation early.
 
 In Sway, presentation callbacks may come much earlier than we send
 submission callbacks. That results in unexpected crashes in

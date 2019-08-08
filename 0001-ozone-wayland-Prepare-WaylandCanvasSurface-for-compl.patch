@@ -1,7 +1,7 @@
 From a3ca8acd6582c0169ad3e2d94dd9fcd423810a56 Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Tue, 4 Jun 2019 06:24:59 +0000
-Subject: [PATCH 1/5] [ozone/wayland] Prepare WaylandCanvasSurface for
+Subject: [PATCH 01/11] [ozone/wayland] Prepare WaylandCanvasSurface for
  completion callbacks
 
 This is a prerequisite CL to make WaylandCanvasSurface listen

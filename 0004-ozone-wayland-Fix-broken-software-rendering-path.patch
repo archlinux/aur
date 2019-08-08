@@ -1,7 +1,7 @@
 From 86c0a9aac3e872c98345cc761bfbbc9dbbb6fde2 Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Thu, 6 Jun 2019 08:58:59 +0000
-Subject: [PATCH 4/5] [ozone/wayland] Fix broken software rendering path.
+Subject: [PATCH 04/11] [ozone/wayland] Fix broken software rendering path.
 
 The "[Ozone/Wayland] Manager: make mojo calls on IO thread." CL:
 https://crrev.com/c/1640398 broke the software rendering path,

@@ -1,7 +1,7 @@
 From 3be83bcae17f547f58b41640451471ab840c70c0 Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Tue, 4 Jun 2019 07:56:29 +0000
-Subject: [PATCH 3/5] [Ozone/Wayland] Manager: make mojo calls on IO thread.
+Subject: [PATCH 03/11] [Ozone/Wayland] Manager: make mojo calls on IO thread.
 
 Previously, the manager had been rerouting calls to GpuMainThread
 to make mojo calls. That thread is not really meant for IPC.

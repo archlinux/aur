@@ -6,7 +6,7 @@
 
 pkgname=chromium-ozone
 pkgver=76.0.3809.87
-pkgrel=2
+pkgrel=3
 _launcher_ver=6
 _meta_browser_sha=38b36f421f8d984c7004c9d9a6d514ed2fb6cf8e
 pkgdesc="Chromium built with patches for wayland support via Ozone"
@@ -33,23 +33,33 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-widevine.patch
         chromium-skia-harmony.patch
         0001-ozone-wayland-Prepare-WaylandCanvasSurface-for-compl.patch
-	      0002-ozone-wayland-Sway-avoid-sending-presentation-early.patch
-	      0003-Ozone-Wayland-Manager-make-mojo-calls-on-IO-thread.patch
-	      0004-ozone-wayland-Fix-broken-software-rendering-path.patch
-	      0005-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch
-        Added-HiDPI-support-for-Ozone-Wayland.patch)
+        0002-ozone-wayland-Sway-avoid-sending-presentation-early.patch
+        0003-Ozone-Wayland-Manager-make-mojo-calls-on-IO-thread.patch
+        0004-ozone-wayland-Fix-broken-software-rendering-path.patch
+        0005-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch
+        0006-ozone-wayland-Reset-surface-contents-in-a-safe-way.patch
+        0007-ozone-wayland-Stop-using-wl_display_roundtrip.patch
+        0008-ozone-wayland-Added-HiDPI-support-for-Ozone-Wayland.patch
+        0009-Fixed-positioning-and-sizes-of-menus-when-the-scale-.patch
+        0010-ozone-wayland-Extract-window-management-methods-to-o.patch
+        0011-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch)
 sha256sums=('215ca6acee7b4fd3c95fe796260af4dc5454dbba3b701aa43afeb98a06dc4194'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'd87957d01be9fb59faf5fde523eb87a8256605b1533171416b7a56bfcbd6d056'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            'a16afeb448fc49904f4bb4f679db1a79b3305a04399d672787e708a32516ac91'
-            'bddf821069a8037ce91c35787aa942d35ef880ca5e28dae1ddeb224c2d008548'
-            '1455cc2bb36f4247b3c16b805328b277c8538ad96f50d1e7f5fb816d5cad2d6d'
-            'deba5fa9ebd64ca48bab71d51c3bf50a6c10e2704e60b7b50268fc2de15afb61'
-            '907be76f0906452b3327b0d469bf5bcff31eec9d9e6d6829c6a0159da73af68a'
-            'b6b258a6d3b42731c9375395b4e6e896edef00617d5b7028c348a5d2dbb14eb7')
+            '1fe3bb02ffd0445da8ea3b9eb09e8dff6b7bdd1ca26f4b439310a3e94aa16ebf'
+            'd9c5932f1af91a8c2e8b7687d9ad013d5895e3e03811d9f03e674afb77031ce5'
+            '424c5c0e5b6ded87d0c00dd4755eb6e63bfdf42233ee60c354729f5cbba82334'
+            'fecdfa694a84b4dc688ec20970ea18b11d9e332b8423a935ba35cd3fae7485a5'
+            '2359fdd84a3c10eeb576b15cfea86a34867097cb3e3d30ade6c823cf0d538d99'
+            '13be86e54b14f5a9f21e371a0f2762c5ff9a4204877ded60600f5950f6a14885'
+            'ede2a4c0283f01f7653c0caabd8439d96c27da16dd557ebb0730c0b3e7134097'
+            '9996ddaa8a83c58dcbe45e21746ffe41a9f8b56edc71a16090ebdb6adbc74541'
+            '6f4fc0a82443f9bfaeecfd1a463b4bc10dfa29b9357f17592dfac8332d27cb3c'
+            '470cf88aa6878bfaaf74f00791d33f4f922f31a13e0503b8bb11edb4bb89d29c'
+            'aaefa3a868024aa1eb118236bd528986db972646f762418764b5f0ab326468b0')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -102,10 +112,16 @@ _mb_wayland_patches=(
 
 _bugfix_patches=(
   '0001-ozone-wayland-Prepare-WaylandCanvasSurface-for-compl.patch'
-	'0002-ozone-wayland-Sway-avoid-sending-presentation-early.patch'
-	'0003-Ozone-Wayland-Manager-make-mojo-calls-on-IO-thread.patch'
-	'0004-ozone-wayland-Fix-broken-software-rendering-path.patch'
-	'0005-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch'
+  '0002-ozone-wayland-Sway-avoid-sending-presentation-early.patch'
+  '0003-Ozone-Wayland-Manager-make-mojo-calls-on-IO-thread.patch'
+  '0004-ozone-wayland-Fix-broken-software-rendering-path.patch'
+  '0005-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch'
+  '0006-ozone-wayland-Reset-surface-contents-in-a-safe-way.patch'
+  '0007-ozone-wayland-Stop-using-wl_display_roundtrip.patch'
+  '0008-ozone-wayland-Added-HiDPI-support-for-Ozone-Wayland.patch'
+  '0009-Fixed-positioning-and-sizes-of-menus-when-the-scale-.patch'
+  '0010-ozone-wayland-Extract-window-management-methods-to-o.patch'
+  '0011-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch'
 )
 
 prepare() {
@@ -142,9 +158,6 @@ prepare() {
     echo "Applying $PATCH"
     patch -Np1 -i $srcdir/${PATCH}
   done
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/1647154
-  patch -Np1 -i ../Added-HiDPI-support-for-Ozone-Wayland.patch
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py

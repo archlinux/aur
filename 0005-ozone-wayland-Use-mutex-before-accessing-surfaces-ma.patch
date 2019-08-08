@@ -1,7 +1,8 @@
 From fd1d8bfd55d5b1d073cbad3ebe8f058c49f3702a Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Mon, 5 Aug 2019 16:14:47 +0300
-Subject: [PATCH 5/5] [ozone/wayland] Use mutex before accessing surfaces map.
+Subject: [PATCH 05/11] [ozone/wayland] Use mutex before accessing surfaces
+ map.
 
 We must make sure that accessing surfaces map from different threads
 is safe. Otherwise, this is subject to races and unexpected crashes.

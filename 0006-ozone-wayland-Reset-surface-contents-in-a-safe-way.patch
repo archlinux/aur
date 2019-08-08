@@ -1,0 +1,171 @@
+From 739876012248a57964326a4dcc9f00039ad1ad73 Mon Sep 17 00:00:00 2001
+From: Maksim Sisov <msisov@igalia.com>
+Date: Tue, 4 Jun 2019 06:58:40 +0000
+Subject: [PATCH 06/11] [ozone/wayland] Reset surface contents in a safe way
+
+Currently, WaylandWindow may attach a null buffer to a surface,
+which makes the Wayland compositor skip the buffer release call even
+though there was a buffer attached.
+
+The skipped buffer release call results in a missed submission
+callback, and the Chromium display compositor starts to lag
+behind one frame.
+
+What is more, we no longer trigger a buffer swap completion
+callback before presention feedback is provided, which also
+results in DCHECK when checking the order of the callbacks.
+
+Bug: 968497
+Change-Id: I12494e78fa376d6c421b7366d0bddb52ae59a5af
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1636354
+Commit-Queue: Maksim Sisov <msisov@igalia.com>
+Reviewed-by: Robert Kroeger <rjkroege@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#665833}
+---
+ .../host/wayland_buffer_manager_host.cc       | 38 ++++++++++++++++++-
+ .../host/wayland_buffer_manager_host.h        |  6 +++
+ .../platform/wayland/host/wayland_window.cc   | 26 ++++++-------
+ 3 files changed, 55 insertions(+), 15 deletions(-)
+
+diff --git a/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc b/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
+index 5f7efebac400..a6759bb798f4 100644
+--- a/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
++++ b/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
+@@ -103,6 +103,14 @@ class WaylandBufferManagerHost::Surface {
+ 
+     connection_->ScheduleFlush();
+ 
++    // If the contents were reset, there is no buffer attached. It means we have
++    // to behave the same way as if it was the very first frame. Check the
++    // comment below where the |contents_reset_| is declared.
++    if (contents_reset_) {
++      prev_submitted_buffer_ = nullptr;
++      contents_reset_ = false;
++    }
++
+     // If it was the very first frame, the surface has not had a back buffer
+     // before, and Wayland won't release the front buffer until next buffer is
+     // attached. Thus, notify about successful submission immediately.
+@@ -166,13 +174,26 @@ class WaylandBufferManagerHost::Surface {
+     wl_frame_callback_.reset();
+     presentation_feedbacks_ = PresentationFeedbackQueue();
+ 
+-    wl_surface_attach(window_->surface(), nullptr, 0, 0);
++    ResetSurfaceContents();
++
+     prev_submitted_buffer_ = nullptr;
+     submitted_buffer_ = nullptr;
+ 
+     connection_->ScheduleFlush();
+   }
+ 
++  void ResetSurfaceContents() {
++    wl_surface_attach(window_->surface(), nullptr, 0, 0);
++    wl_surface_commit(window_->surface());
++
++    // We cannot reset |prev_submitted_buffer_| here as long as the surface
++    // might have attached a new buffer and is about to receive a release
++    // callback. Check more comments below where the variable is declared.
++    contents_reset_ = true;
++
++    connection_->ScheduleFlush();
++  }
++
+  private:
+   using PresentationFeedbackQueue = base::queue<
+       std::pair<uint32_t, wl::Object<struct wp_presentation_feedback>>>;
+@@ -449,6 +470,14 @@ class WaylandBufferManagerHost::Surface {
+   // Previous submitted buffer.
+   WaylandBuffer* prev_submitted_buffer_ = nullptr;
+ 
++  // If WaylandWindow becomes hidden, it may need to attach a null buffer to the
++  // surface it backed to avoid its contents shown on screen. However, it
++  // means that the Wayland compositor no longer sends new buffer release events
++  // as long as there has not been buffer attached and no submission callback is
++  // sent. To avoid this, |contents_reset_| can be used as an identification of a
++  // need to call submission callback manually.
++  bool contents_reset_ = false;
++
+   DISALLOW_COPY_AND_ASSIGN(Surface);
+ };
+ 
+@@ -620,6 +649,13 @@ void WaylandBufferManagerHost::DestroyBuffer(gfx::AcceleratedWidget widget,
+   connection_->ScheduleFlush();
+ }
+ 
++void WaylandBufferManagerHost::ResetSurfaceContents(
++    gfx::AcceleratedWidget widget) {
++  auto* surface = GetSurface(widget);
++  DCHECK(surface);
++  surface->ResetSurfaceContents();
++}
++
+ bool WaylandBufferManagerHost::CreateBuffer(gfx::AcceleratedWidget& widget,
+                                             const gfx::Size& size,
+                                             uint32_t buffer_id) {
+diff --git a/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.h b/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.h
+index a2dd899e2de0..63fa02b4089d 100644
+--- a/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.h
++++ b/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.h
+@@ -94,6 +94,12 @@ class WaylandBufferManagerHost : ozone::mojom::WaylandBufferManagerHost {
+                     uint32_t buffer_id,
+                     const gfx::Rect& damage_region) override;
+ 
++  // When a surface is hidden, the client may want to detach the buffer attached
++  // to the surface backed by |widget| to ensure Wayland does not present those
++  // contents and do not composite in a wrong way. Otherwise, users may see the
++  // contents of a hidden surface on their screens.
++  void ResetSurfaceContents(gfx::AcceleratedWidget widget);
++
+  private:
+   // This is an internal representation of a real surface, which holds a pointer
+   // to WaylandWindow. Also, this object holds buffers, frame callbacks and
+diff --git a/ui/ozone/platform/wayland/host/wayland_window.cc b/ui/ozone/platform/wayland/host/wayland_window.cc
+index 4b0a9908a13e..3d4229f466ff 100644
+--- a/ui/ozone/platform/wayland/host/wayland_window.cc
++++ b/ui/ozone/platform/wayland/host/wayland_window.cc
+@@ -16,6 +16,7 @@
+ #include "ui/events/event_utils.h"
+ #include "ui/events/ozone/events_ozone.h"
+ #include "ui/gfx/geometry/point_f.h"
++#include "ui/ozone/platform/wayland/host/wayland_buffer_manager_host.h"
+ #include "ui/ozone/platform/wayland/host/wayland_connection.h"
+ #include "ui/ozone/platform/wayland/host/wayland_cursor_position.h"
+ #include "ui/ozone/platform/wayland/host/wayland_output_manager.h"
+@@ -300,22 +301,19 @@ void WaylandWindow::Show() {
+ void WaylandWindow::Hide() {
+   if (is_tooltip_) {
+     parent_window_ = nullptr;
+-    wl_surface_attach(surface_.get(), NULL, 0, 0);
+-    wl_surface_commit(surface_.get());
+-    return;
++  } else {
++    if (child_window_)
++      child_window_->Hide();
++    if (xdg_popup_) {
++      parent_window_->set_child_window(nullptr);
++      xdg_popup_.reset();
++    }
+   }
+ 
+-  if (child_window_)
+-    child_window_->Hide();
+-
+-  if (xdg_popup_) {
+-    parent_window_->set_child_window(nullptr);
+-    xdg_popup_.reset();
+-    // Detach buffer from surface in order to completely shutdown popups and
+-    // release resources.
+-    wl_surface_attach(surface_.get(), NULL, 0, 0);
+-    wl_surface_commit(surface_.get());
+-  }
++  // Detach buffer from surface in order to completely shutdown popups and
++  // tooltips, and release resources.
++  if (!xdg_surface())
++    connection_->buffer_manager_host()->ResetSurfaceContents(GetWidget());
+ }
+ 
+ void WaylandWindow::Close() {
+-- 
+2.22.0
+
