@@ -1,0 +1,16 @@
+pkgbase = simplelock
+	pkgdesc = Fast and simple wrapper over i3lock with multiple modes. Supports xkcd and unsplash
+	pkgver = r3.bc8f7c3
+	pkgrel = 1
+	url = https://github.com/rhnvrm/simplelock
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = i3lock
+	provides = simplelock
+	source = simplelock-git::git+https://github.com/rhnvrm/simplelock.git
+	sha256sums = SKIP
+
+pkgname = simplelock
+
