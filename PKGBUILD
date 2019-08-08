@@ -12,7 +12,8 @@ depends=("ghc-libs" 'haskell-gi-base'  'haskell-base'
   'haskell-bytestring' 'haskell-containers' 'haskell-gi' 
   'haskell-gi-cairo' 'haskell-gi-gio' 'haskell-gi-overloading' 
   'haskell-text' 'haskell-transformers' 'haskell-gi-gobject' 
-  'haskell-gi-gdkpixbuf' 'haskell-gi-pango' 'gtk3' 'gtk4')
+  'haskell-gi-gdkpixbuf' 'haskell-gi-pango' 
+  'gtk3' 'gtk4' 'haskell-gi-graphene')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 sha256sums=('98e31dc8f133effb40f5106c74ba42509fe43b134fa1225c8a36b1c1cefe4aac')
