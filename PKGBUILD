@@ -5,7 +5,7 @@
 
 pkgname=terminus-font-ll2-td1-otb
 pkgver=4.48
-pkgrel=1
+pkgrel=2
 pkgdesc='Monospace bitmap font (OTB version) with ll2 patch (pass the il1I test) and td1 patch (centered ascii tilde)'
 url='http://terminus-font.sourceforge.net/'
 arch=('any')
@@ -35,5 +35,5 @@ package() {
     for i in *.otb; do
         install -D -m0644 $i "$pkgdir/usr/share/fonts/misc/$i"
     done
-    install -D -m0644 'OFL.TXT' "$pkgdir/usr/share/licenses/terminus-font-otb/LICENSE"
+    install -D -m0644 'OFL.TXT' "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }

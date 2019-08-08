@@ -1,7 +1,7 @@
 pkgbase = terminus-font-ll2-td1-otb
 	pkgdesc = Monospace bitmap font (OTB version) with ll2 patch (pass the il1I test) and td1 patch (centered ascii tilde)
 	pkgver = 4.48
-	pkgrel = 1
+	pkgrel = 2
 	url = http://terminus-font.sourceforge.net/
 	arch = any
 	license = GPL2
