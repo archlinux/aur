@@ -3,7 +3,7 @@
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-webgl
-pkgver=2019.2.0b10
+pkgver=2019.2.0f1
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the WebGL platform"
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('unity-editor-beta'
          'ffmpeg'
          'gzip'
          'ncurses5-compat-libs')
-source=("2019.2.0b10.2.0b10.tar.xz::https://beta.unity3d.com/download/54f9b0ad4ba4/LinuxEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-2019.2.0b10.tar.xz")
-md5sums=("28e1cf5ac3c38a3bf119c9eca30d98aa")
+source=("2019.2.0f1.2.0f1.tar.xz::https://beta.unity3d.com/download/20c1667945cf/LinuxEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-2019.2.0f1.tar.xz")
+md5sums=("b159e1f283495f68e397524bd2d3ec47")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
