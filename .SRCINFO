@@ -1,18 +1,18 @@
 pkgbase = sidplayfp
 	pkgdesc = Sidplay2 fork with improved filter emulation
-	pkgver = 1.4.4
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://sourceforge.net/projects/sidplay-residfp/
 	install = sidplayfp.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = libsidplayfp>=1.8.8
+	depends = libsidplayfp>=2.0.0
 	conflicts = sidplay-residfp
 	conflicts = sidplay-residfp-alsa
 	conflicts = sidplay-residfp-pulse
-	source = http://downloads.sourceforge.net/project/sidplay-residfp/sidplayfp/1.4/sidplayfp-1.4.4.tar.gz
-	sha256sums = 35fc69c2a18d2602be7646748bdf620b8062f290556221a8b2513be0c6cb3a2b
+	source = http://downloads.sourceforge.net/project/sidplay-residfp/sidplayfp/2.0/sidplayfp-2.0.0.tar.gz
+	sha256sums = 192cf3f8638eb05edfb11d6208a9f64b2b8564e7e33f366cd29d98762617949a
 
 pkgname = sidplayfp
 
