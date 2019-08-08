@@ -3,7 +3,7 @@
 pkgname=sddm-sugar-light
 pkgver=1.0
 pkgrel=1
-pkgdesc="The sweetest dark theme around for SDDM, the Simple Desktop Display Manager."
+pkgdesc="The sweetest theme around for SDDM, the Simple Desktop Display Manager."
 arch=('any')
 url="https://github.com/MarianArlt/sddm-sugar-light"
 license=('GPL3')
