@@ -1,7 +1,7 @@
 pkgbase = dot-bin
 	pkgdesc = A beautiful browser with material UI, with built-in adblock, based on Wexond
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getdot.js.org
 	arch = x86_64
 	license = GPL3

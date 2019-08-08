@@ -2,7 +2,7 @@
 
 pkgname=dot-bin
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A beautiful browser with material UI, with built-in adblock, based on Wexond"
 arch=('x86_64')
 url="https://getdot.js.org"
@@ -30,7 +30,7 @@ package() {
     # use the most up to date electron version.
     mkdir -p "${pkgdir}/opt/dot"
     cp -a "squashfs-root/." "${pkgdir}/opt/dot/"
-
+    chmod 755 -R "${pkgdir}/opt/dot" 
     install -Dm644 "dot.desktop" "${pkgdir}/usr/share/applications/dot.desktop"
 
     for size in 16 32 128 256 512; do
