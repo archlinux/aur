@@ -6,7 +6,7 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=4.1.4
+pkgver=4.2
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
@@ -21,14 +21,14 @@ depends=('aom' 'bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libbluray.so' 'libva'
          'libvorbisenc.so' 'libvorbis.so'
          'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so'
-         'rtmpdump')
+         'rtmpdump' 'dav1d')
 makedepends=('yasm')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1')
+sha256sums=('023f10831a97ad93d798f53a3640e55cd564abfeba807ecbe8524dac4fedecd5')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -54,6 +54,7 @@ build() {
     --enable-libaom \
     --disable-libass \
     --enable-libbluray \
+    --enable-libdav1d \
     --enable-libdrm \
     --disable-libfreetype \
     --enable-libfribidi \
