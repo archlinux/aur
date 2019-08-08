@@ -1,0 +1,25 @@
+pkgbase = rush-git
+	pkgdesc = Time manager app to break your work into intervals to keep you focused
+	pkgver = r56.4d67f66
+	pkgrel = 1
+	url = https://github.com/naaando/rush
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = libcanberra
+	depends = json-glib
+	depends = libunity
+	depends = libgee
+	optdepends = lib32-json-glib
+	provides = rush
+	conflicts = rush
+	source = git+https://github.com/naaando/rush.git
+	md5sums = SKIP
+
+pkgname = rush-git
+
