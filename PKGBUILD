@@ -1,4 +1,5 @@
-# Maintainer: Ilya Gulya <ilyagulya@gmail.com>
+# Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
+# Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=4.10.2
 pkgrel=1
