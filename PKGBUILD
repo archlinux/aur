@@ -7,7 +7,7 @@ pkgname=(
     'manjarowish-light-kde-settings'
     )
 pkgver=0.1
-pkgrel=7
+pkgrel=8
 arch=('any')
 _branch='master'
 url="https://github.com/librewish/manjarowish-light"
@@ -39,6 +39,8 @@ package_manjarowish-light-kde-settings() {
     depends=(
         'kvantum-qt5'
         'latte-dock'
+        'flameshot'
+        'kim4'
         'mojave-gtk-theme-git'
         'papirus-icon-theme'
         'noto-fonts'
@@ -47,15 +49,17 @@ package_manjarowish-light-kde-settings() {
         'irqbalance'
         'systemd-swap'
         'nohang-git'
-        'kim4'
-        'flameshot'
-        'plasma5-applets-active-window-control'
+        'plasma5-applets-window-title'
+        'plasma5-applets-window-appmenu'
+        'plasma5-applets-window-buttons'
         'plasma5-applets-eventcalendar'
         'plasma5-applets-netspeed'
         'plasma5-applets-plasma-pstate'
         'plasma5-applets-redshift-control'
         'kwin-decoration-sierra-breeze-enhanced-git'
         'kwin-effects-yet-another-magic-lamp'
+        'kwin-scripts-forceblur'
+        'kwin-scripts-window-colors'
         )
     optdepends=(
         'timeshift-autosnap'
