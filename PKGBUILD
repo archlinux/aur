@@ -10,10 +10,10 @@ url="https://www.hahwul.com/p/mad-metasploit.html"
 license=('MIT')
 depends=('ruby' 'metasploit')
 makedepends=('git')
-optdepends=(
-  "arachni: arachni web scanner plugin"
-  "searchsploit: db_exploit plugin"
-)
+#optdepends=(
+#  "arachni-scanner: arachni web scanner plugin" # This used to have a seriously broken PKGBUILD
+#  "searchsploit: db_exploit plugin" # Broken Link
+#)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/hahwul/mad-metasploit.git")
