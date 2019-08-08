@@ -1,9 +1,9 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_gitcommit=e852d591c1fbf57381eeb6922bd9675698cb26a0
+_gitcommit=713515355ed3aa74ed0b09477bd2eaae7506b77b
 
 pkgname=rst2pdf
-pkgver=0.95.dev0+3+${_gitcommit:0:7}
+pkgver=0.95.dev0+4+${_gitcommit:0:7}
 pkgrel=1
 pkgdesc="Convert reStructured Text to PDF via ReportLab."
 url="https://rst2pdf.org"
@@ -16,26 +16,26 @@ depends=(
   'python-reportlab'
   'python-six'
   'python-smartypants'
-  'python-svglib'  # should be optional
 )
 makedepends=('python-setuptools')
+optdepends=(
+  'python-sphinx: sphinx'
+  'python-wordaxe>=1.0: hyphenation'
+  'python-svglib: SVG support'
+  'python-aafigure: aafigure support'
+  'python-matplotlib: math support'
+  'python-xhtml2pdf: raw HTML support'
+)
 arch=('any')
 license=('MIT')
 provides=('rst2pdf')
 conflicts=('python-rst2pdf' 'python2-rst2pdf')
 source=(
   "git+https://github.com/rst2pdf/rst2pdf.git#commit=${_gitcommit}"
-  01-fixed-print-compatible-in-python3.patch
 )
 sha256sums=(
   'SKIP'
-  '72ce82472b1e14a28410a30f6aa617d0012a52e2e5612690536acc3d0d7e06e4'
 )
-
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  patch -p0 -i ../01-fixed-print-compatible-in-python3.patch
-}
 
 build() {
   cd "${srcdir}/${pkgname}"

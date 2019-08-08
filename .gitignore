@@ -1,3 +1,6 @@
-pkg/
-src/
-*.tar.*
+*
+!.gitignore
+!PKGBUILD
+!*.install
+!*.sysusers
+!.SRCINFO
