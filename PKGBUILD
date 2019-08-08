@@ -22,5 +22,7 @@ source=("https://github.com/rtMis/ungoogled-chromium-binaries/releases/download/
 sha256sums=("5405deb13e7cdefe1e767a57beee9eae09fd4b4fcf6d46e91a9190e1a56fb96e")
 
 package() {
-    cp -R "${srcdir}/usr/" "${pkgdir}/usr"
+    cp -R "${srcdir}/usr/" "${pkgdir}/usr"    
+    chown root $pkgdir/usr/lib/chromium/chrome-sandbox
+    chmod 4755 $pkgdir/usr/lib/chromium/chrome-sandbox
 }
