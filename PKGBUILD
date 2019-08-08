@@ -1,4 +1,5 @@
-# Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
+# Maintainer: Frederick Zhang <frederick888@tsundere.moe>
+# Contributor: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=python-pynvim
 pkgver=0.3.2
 pkgrel=1
