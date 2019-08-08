@@ -7,21 +7,21 @@
 _bldtype=Release
 
 _mozcver=2.23.2815.102
-_dicver=20190530
+_dicver=20190806
 _revision=1
 
 _pkgbase=mozc
 pkgname=mozc-neologd-ut
 true && pkgname=('mozc-neologd-ut' 'fcitx-mozc-neologd-ut')
 pkgver=${_mozcver}.${_dicver}.${_revision}
-pkgrel=3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
 makedepends=('clang' 'ninja' 'pkg-config' 'python2' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
 
-source=('https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F24%2F24261%2Fmozc-neologd-ut-2.23.2815.102.20190530.1.tar.xz'
-        add-new-japanese-era.patch
+source=("https://osdn.net/frs/chamber_redir.php?m=iij&f=%2Fusers%2F24%2F24372%2Fmozc-neologd-ut-2.23.2815.102.20190806.1.tar.xz"
+		add-new-japanese-era.patch
         # https://github.com/google/mozc/issues/441#issue-321728877
         fix-for-gcc81.patch
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
