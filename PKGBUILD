@@ -28,7 +28,7 @@ package() {
     cd "${srcdir}"
 
     # Extract the AppImage
-    "${srcdir}/Dot.${pkgver}.AppImage --appimage-extract"
+    ./Dot.${pkgver}.AppImage --appimage-extract
 
     #Extract the app.asar
     asar extract "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/squashfs-root/resources/app"
