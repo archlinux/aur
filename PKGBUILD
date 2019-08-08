@@ -1,7 +1,7 @@
 # Maintainer: hadi latifi <m313hl at gmail dot com>
 # Contributor: zamin <dev at zamin dot link>
 pkgname=balonet
-pkgver=2.5.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Balonet is a social network, focused on working environment. Balonet helps to address communication and coordination needs of small startups and development groups up to big organizations."
 arch=('x86_64')
