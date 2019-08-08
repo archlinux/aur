@@ -1,0 +1,39 @@
+# Created by https://www.gitignore.io/api/vim,archlinuxpackages
+# Edit at https://www.gitignore.io/?templates=vim,archlinuxpackages
+
+### ArchLinuxPackages ###
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+
+### Vim ###
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+
+# End of https://www.gitignore.io/api/vim,archlinuxpackagesu

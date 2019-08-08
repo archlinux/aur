@@ -4,13 +4,13 @@ pkgname=dell-idractools
 pkgver=9.3.0.3379
 _pkgver="9.3.0-3379"
 _pkgbuild=14516
-pkgrel=1
+pkgrel=2
 pkgdesc="Dell EMC iDRAC Tools (RACADM, VMCLI, IPMI Tool)"
 arch=('x86_64')
 url='https://www.dell.com/support/home/de/de/debsdt1/drivers/driversdetails?driverid=G3NDF&oscode=RHE70&productcode=poweredge-r640'
 license=('GPL2' 'LGPL2')
 conflicts=(dell-srvadmin dell-mgmtstat)
-makedepends=(rpmextract cpio)
+makedepends=(rpmextract)
 # http://downloads.dell.com/published/pages/poweredge-r640.html
 source=("http://downloads.dell.com/FOLDER05446180M/1/DellEMC-iDRACTools-Web-LX-${_pkgver}_A00.tar.gz"
         "http://downloads.dell.com/FOLDER05446181M/1/DellEMC-iDRACTools-Web-LX-${_pkgver}_A00.tar.gz.sign")
