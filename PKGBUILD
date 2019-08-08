@@ -6,7 +6,7 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.28.0
+pkgver=1.28.1
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl -s "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -25,7 +25,7 @@ optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
         '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368')
-sha256sums=('329115f50936654d31c83592c3f5808854109fa2a425bd3efb2c57647022c43b'
+sha256sums=('4d6d0dbf87d30e760b66e6e891ab80ff5e9863168ce9641cebfe4b114fe38e10'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894')
 options=(!emptydirs !makeflags !strip)
 
@@ -35,10 +35,10 @@ prepare() {
   sed -i 's/ifeq ($(OS_ARCH), Linux)/ifeq ($(OS_ARCH), Nope)/' upload-files.mk
 
   cd linux/rpm
-  # Patch future desktop file, which does not seems to be embed
-  sed -i "s/@MOZ_APP_DISPLAYNAME@/$pkgname/g" mozilla.desktop
+  # Patch future desktop file, which does not seems to be modified by compilation
+  sed -i "s/@MOZ_APP_DISPLAYNAME@/Cliqz/g" mozilla.desktop
   sed -i "s/@MOZ_APP_NAME@/$pkgname/g" mozilla.desktop
-  sed -i "s/@MOZ_APP_REMOTINGNAME@/Cliqz/g" mozilla.desktop
+  sed -i "s/@MOZ_APP_REMOTINGNAME@/$pkgname/g" mozilla.desktop
   sed -i "s|^Exec=${pkgname}$|Exec=/usr/lib/${pkgname}/${pkgname} %u|" mozilla.desktop
   sed -i 's|^MimeType=.*$|MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;|' mozilla.desktop
 
@@ -159,10 +159,9 @@ package() {
   done
 
   install -d -m755 "$pkgdir/usr/lib/$pkgname/browser/defaults/preferences"
-  _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
-  install -D -m644 /dev/stdin "$_vendorjs" <<END
-// Disable update check
-pref("app.update.enabled", false);
+  cp "$srcdir/${_pkgname}-$pkgver/mozilla-release/toolkit/mozapps/installer/linux/rpm/no-updates.js" vendor.js
+  cat >> vendor.js <<END
+
 // Do not update/overwrite search engines
 pref("browser.search.update", false);
 
@@ -177,6 +176,8 @@ pref("intl.locale.requested", "");
 // Use system-provided dictionaries
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 END
+  _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
+  install -D -m644 vendor.js "$_vendorjs"
 
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
