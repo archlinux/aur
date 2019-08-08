@@ -17,7 +17,7 @@ source_x86_64=(
     'dot.desktop'
 )
 
-md5sums_x86_64=('5118fb1d8ad17b3f677cab9424f3969e'
+md5sums_x86_64=('57715345bcfe249b73804ebe7a4f03c0'
                 '586b8094810544d86f70f23c6b1956ee')
 
 package() {

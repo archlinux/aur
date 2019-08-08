@@ -18,7 +18,7 @@ pkgbase = dot-bin
 	options = !strip
 	source_x86_64 = https://github.com/dot-browser/desktop/releases/download/v2.1.0/Dot.2.1.0.AppImage
 	source_x86_64 = dot.desktop
-	md5sums_x86_64 = 5118fb1d8ad17b3f677cab9424f3969e
+	md5sums_x86_64 = 57715345bcfe249b73804ebe7a4f03c0
 	md5sums_x86_64 = 586b8094810544d86f70f23c6b1956ee
 
 pkgname = dot-bin
