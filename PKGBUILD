@@ -37,7 +37,7 @@ build() {
     --disable-next-scroll \
     --disable-xterm-scroll \
     --disable-smart-resize \
-    --disable-frills \
+    --enable-frills \
     --disable-slipwheeling \
     --disable-startup-notification \
     --disable-transparency \
