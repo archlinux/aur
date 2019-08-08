@@ -1,4 +1,4 @@
-pkgbase = colord
+pkgbase = colord-git
 	pkgdesc = System daemon for managing color devices
 	pkgver = 1.4.4
 	pkgrel = 2

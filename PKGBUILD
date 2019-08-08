@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgbase=colord
+pkgbase=colord-git
 pkgname=(colord-git colord-sane-git)
 pkgver=1.4.4
 pkgrel=2
