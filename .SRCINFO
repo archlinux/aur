@@ -1,0 +1,24 @@
+pkgbase = python-jax-opt-cuda-git
+	pkgdesc = Differentiate, compile, and transform Numpy code.
+	pkgver = 0.1.40.a6ec5a9
+	pkgrel = 1
+	url = https://github.com/google/jax/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = bazel
+	depends = absl-py
+	depends = python
+	depends = python-numpy
+	depends = python-protobuf
+	depends = python-six
+	depends = python-fastcache
+	depends = cuda
+	depends = cudnn
+	provides = python-jax
+	conflicts = python-jax
+	source = python-jax-opt-cuda-git::git+https://github.com/google/jax/
+	md5sums = SKIP
+
+pkgname = python-jax-opt-cuda-git
+
