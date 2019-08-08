@@ -1,6 +1,6 @@
 pkgbase = drive-git
 	pkgdesc = Google Drive client for the command line (development version)
-	pkgver = v0.3.9.1.r51.gb868c96
+	pkgver = 0.3.9.1.r51.gb868c96
 	pkgrel = 1
 	url = https://github.com/odeke-em/drive
 	arch = i686
