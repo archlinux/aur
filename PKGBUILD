@@ -3,7 +3,7 @@
 
 pkgname=pace
 pkgver=1.2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple pacman.conf editor'
 arch=('x86_64')
 license=('GPL3')
@@ -19,12 +19,6 @@ build() {
   arch-meson . build
 
   ninja -C build
-}
-
-check () {
-  cd ${pkgname}-${pkgver}
-
-  ninja -C build test
 }
 
 package() {
