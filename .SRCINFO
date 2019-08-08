@@ -1,5 +1,5 @@
 pkgbase = tsv-utils-bin
-	pkgdesc = Command line tools for large, tabular data files. Filtering, statistics, sampling, joins and more.
+	pkgdesc = Command line tools for large, tabular data files. Filtering, statistics, sampling, joins and more. Self-contained official binary release package.
 	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/eBay/tsv-utils
