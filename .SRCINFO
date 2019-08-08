@@ -1,0 +1,20 @@
+pkgbase = jerry-git
+	pkgdesc = A chess program build around powerful chess engine Stockfish
+	pkgver = v3.2.0.r8.gf19447f
+	pkgrel = 1
+	url = http://jerry-chess.github.io
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-svg
+	provides = jerry
+	source = git+https://github.com/asdfjkl/jerry.git#branch=master
+	source = fix_desktop_file.patch
+	source = fix_stockfish_path.patch
+	sha256sums = SKIP
+	sha256sums = 4c62aa9bf79969c71c60962a68d46aeff2c54c398bf76b106f58764f2f25b80d
+	sha256sums = 2bff53051f51a1a0e85a0fcfea2dd912917ae6ac436a9f66f60479c565ae8dfd
+
+pkgname = jerry-git
+	depends = stockfish
+

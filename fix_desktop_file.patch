@@ -1,0 +1,19 @@
+diff --git a/debian_package_files/jerry.desktop b/debian_package_files/jerry.desktop
+index dd67f6d..15fe913 100644
+--- a/debian_package_files/jerry.desktop
++++ b/debian_package_files/jerry.desktop
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+ Type=Application
+ Terminal=false
+-Name=Jerry - Chess GUI
+-Exec=/usr/games/jerry
+-Comment=Chess Program
+-Icon=jerry
++Name=jerry
++Exec=/usr/bin/jerry
++Comment=A chess program build around powerful chess engine Stockfish
++Icon=/usr/share/jerry/icons/jerry_icon256.png
+ StartupNotify=false
+ Encoding=UTF-8
+ Categories=Game

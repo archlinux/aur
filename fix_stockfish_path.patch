@@ -1,0 +1,13 @@
+diff --git a/model/internalengine.cpp b/model/internalengine.cpp
+index dc85769..7ab66e2 100644
+--- a/model/internalengine.cpp
++++ b/model/internalengine.cpp
+@@ -30,7 +30,7 @@ InternalEngine::InternalEngine() : Engine()
+     this->name = QString("Stockfish");
+ 
+ #ifdef __linux__
+-    QString path = QString("/usr/games/stockfish");
++    QString path = QString("/usr/bin/stockfish");
+     this->setPath(path);
+ #endif
+     
