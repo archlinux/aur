@@ -1,0 +1,14 @@
+pkgbase = mini-git
+	pkgdesc = Tiny, header only C++ library for manipulating INI files.
+	pkgver = 0.9.7.r2.g765a357
+	pkgrel = 1
+	url = https://github.com/pulzed/mINI
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = mini
+	source = git://github.com/pulzed/mINI.git
+	md5sums = SKIP
+
+pkgname = mini-git
+
