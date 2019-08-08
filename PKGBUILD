@@ -14,7 +14,7 @@ conflicts=("${_pkgname}" "openspace-desktop-bin" "openbook-desktop-bin")
 replaces=('openspace-desktop-bin' 'openbook-desktop-bin')
 depends=('libxcursor' 'libxinerama' 'libxrandr' 'libxxf86vm' 'sqlite' 'bash' 'gtk3')
 source=("${_pkgname}-${_pkgver}.zip::https://gitlab.com/999eagle/okuna-desktop/-/jobs/artifacts/${_pkgver}/download?job=release-linux")
-sha256sums=('fa31cc5df812cee55cdc4ff1eda157a6dd781a7d588745b08de587d081714cc9')
+sha256sums=('1dd6fe4a6787797bf834a0a9380e46737072bf2624f114d08f7fb67d2622ac99')
 
 package() {
 	# Main files
