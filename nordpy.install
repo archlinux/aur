@@ -1,0 +1,18 @@
+post_install() {
+	cd /usr/share/NordPy
+	echo "n" | sudo ./install.sh 2> /dev/null
+
+	sudo chmod 0777 /usr/share/NordPy
+}
+
+post_upgrade() {
+	cd /usr/share/NordPy
+	echo "n" | sudo ./install.sh 2> /dev/null
+}
+
+pre_remove() {
+	cd /usr/share/NordPy
+
+	xdg-desktop-menu uninstall nordpy.desktop 2> /dev/null
+	sudo rm /usr/local/bin/nordpy
+}
