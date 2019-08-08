@@ -6,7 +6,7 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=4.1.4
+pkgver=4.2
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
@@ -131,6 +131,7 @@ build() {
 #    --enable-libsoxr \ ## not available under 32bit
 #    --enable-libssh \ ## not available under 32bit
 #    --enable-libvidstab \ ## not available under 32bit
+#    --enable-libdav1d \ ## not available under 32bit
 
   make
 }
