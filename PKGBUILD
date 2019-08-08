@@ -6,7 +6,7 @@
 
 pkgname=slack-desktop-dark
 pkgver=4.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Slack Desktop (Beta) for Linux, with dark theme patch"
 arch=('x86_64')
 url="https://slack.com/downloads"
@@ -22,9 +22,9 @@ source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgv
         "${pkgname}.patch")
 noextract=("${pkgname%-dark}-${pkgver}-amd64.deb")
 sha256sums=('6277a6c3d9c1c55813ad4fe1e56702a486ab8ff36ecbef345d1794a3a644ecbc'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            '1fef7eb3d9225b319fb9cc3e983cde532cd434beb7a68492f3c03addd7bc6029'
+            '13fc4ea2c9bfd113e123a7f74375f17c17a7256d7481f9acacb466088b913418'
+            'c952eb32dd59beff9fc5374853b04acde4a60ed8c39934fcd0b66829455d594d')
 
 package() {
     bsdtar -O -xf "slack-desktop-${pkgver}"*.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
