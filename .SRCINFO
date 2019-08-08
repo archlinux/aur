@@ -24,6 +24,7 @@ pkgbase = haskell-gi-gtk
 	depends = haskell-gi-overloading
 	depends = haskell-text
 	depends = haskell-transformers
+	depends = haskell-gi-gsk
 	source = https://hackage.haskell.org/packages/archive/gi-gtk/4.0.1/gi-gtk-4.0.1.tar.gz
 	sha256sums = fb5e94d615dcce9aa6ef4963e9cb5476c605db396d388ef90280d92dfd2536af
 
