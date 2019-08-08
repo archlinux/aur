@@ -4,7 +4,7 @@
 # Author: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Maintainer: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=oscam-git
-pkgver=11518
+pkgver=11537
 pkgrel=1
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
@@ -24,12 +24,12 @@ sha256sums=('SKIP'
          '3adbbfa4f388c6510b365719da251360dee9cc2885c5f82e06d56c246fcd26b0')
 
 pkgver() {
-  cd "$SRCDEST/$pkgname"
+  cd "$pkgname"
   LANG=C svn info | grep '^Revision:' | sed -e 's/^Revision: //'
 }
 
 build() {
-  cd "$SRCDEST/$pkgname"
+  cd "$pkgname"
 
   make allyesconfig
 
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-  cd "$SRCDEST/$pkgname"
+  cd "$pkgname"
 
   #Install binaries
   install -Dm755 oscam "$pkgdir/usr/bin/oscam"
