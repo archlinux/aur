@@ -1,0 +1,45 @@
+post_install() {
+  # try to insert the unknown entry to the "passwd" and "group" lines in
+  # /etc/nsswitch.conf to automatically enable libnss-unknown support; do not
+  # change the configuration if the lines already contain "unknown"
+
+  echo "Checking NSS setup..."
+  # abort if /etc/nsswitch.conf does not exist
+  if ! [ -e /etc/nsswitch.conf ]; then
+    echo "Could not find /etc/nsswitch.conf."
+    return
+  fi
+  perl -i -pe '
+    sub insert {
+       my $line = shift;
+       # this also splits on tab
+       my @bits=split(" ", $line);
+       # do not break configuration if the line already references
+       # unknown
+       if (grep { $_ eq "unknown"} @bits) {
+         return $line;
+       }
+       # add unknown at the end
+       return $line . " unknown";
+     }
+     s/^(passwd:\s+)(.*)/$1.insert($2)/e;
+     s/^(group:\s+)(.*)/$1.insert($2)/e;
+  ' /etc/nsswitch.conf
+}
+
+post_remove() {
+  # try to remove the unknown entry from the "passwd" and "group" lines in
+  # /etc/nsswitch.conf to disable libnss-unknown support
+
+  echo "Checking NSS setup..."
+  # abort if /etc/nsswitch.conf does not exist
+  if ! [ -e /etc/nsswitch.conf ]; then
+    echo "Could not find /etc/nsswitch.conf."
+    return
+  fi
+  # we must remove possible [foo=bar] options as well
+  sed -i -r "/(passwd|group):/ s/[[:space:]]+unknown\b([[:space:]]*\[[^]]*\])*//" \
+    /etc/nsswitch.conf
+}
+
+# vim:set sw=2 et:

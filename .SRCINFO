@@ -1,0 +1,14 @@
+pkgbase = libnss-unknown
+	pkgdesc = nss module to gracefully handle unknown uids
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://gitlab.collabora.com/sjoerd/libnss-unknown
+	install = libnss-unknown.install
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = meson
+	source = libnss-unknown-0.0.2.tar.gz::https://gitlab.collabora.com/sjoerd/libnss-unknown/-/archive/v0.0.2/libnss-unknown-v0.0.2.tar.gz
+	md5sums = cec375568f5843281702b5a392ad7432
+
+pkgname = libnss-unknown
+
