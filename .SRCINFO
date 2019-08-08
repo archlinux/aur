@@ -1,0 +1,28 @@
+pkgbase = polyglot
+	pkgdesc = A python library built which abstracts out all ISY 5.0 Node Server APIs.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/UniversalDevicesInc/polyglot-v2
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = python
+	depends = mongodb
+	depends = curl
+	options = !strip
+	source = polyglot.service
+	source = polyglot.tmpfiles
+	source = polyglot.sysusers
+	sha256sums = 584e9fba9d818c1301ac0364f9a6bd9c4061a21ae691c47ee0fe989d4ad897c4
+	sha256sums = b0fe8bc8f8eb63c267f81b55101789ed18e908c9ea43fc8299d05e879605e26c
+	sha256sums = 728783fb5152baf655131ad1427d1c2524a6f7d76a3664c070c4f0f5df443728
+	source_x86_64 = polyglot-2.2.1-1.x86_64.tar.gz::https://s3.amazonaws.com/polyglotv2/binaries/polyglot-v2-linux-x64.tar.gz
+	sha256sums_x86_64 = ba8d6f6e4089c7ccd6487c5b2325a672524c3b5e6b4a5ce877a4c96a9b519a1f
+	source_armv7h = polyglot-2.2.1-1.armv7h.tar.gz::https://s3.amazonaws.com/polyglotv2/binaries/polyglot-v2-linux-armv7.tar.gz
+	sha256sums_armv7h = 959307719a4103bb1058808799f18b011e35613d0c31e877fa41a683eaaeaab3
+	source_aarch64 = polyglot-2.2.1-1.aarch64.tar.gz::https://s3.amazonaws.com/polyglotv2/binaries/polyglot-v2-linux-armv7.tar.gz
+	sha256sums_aarch64 = 959307719a4103bb1058808799f18b011e35613d0c31e877fa41a683eaaeaab3
+
+pkgname = polyglot
+

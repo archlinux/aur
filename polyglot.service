@@ -1,0 +1,14 @@
+[Unit]
+Description=polyglot
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/polyglot
+ExecStart=/usr/bin/polyglot
+Restart=always
+User=polyglot
+Group=polyglot
+
+[Install]
+WantedBy=multi-user.target
