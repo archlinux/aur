@@ -4,7 +4,7 @@
 
 pkgname='frr'
 pkgver='7.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('any')
 url="https://frrouting.org/"
@@ -67,6 +67,11 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   make
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  make check
 }
 
 package() {
