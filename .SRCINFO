@@ -22,6 +22,7 @@ pkgbase = haskell-gi-gdk
 	depends = haskell-gi-gdkpixbuf
 	depends = haskell-gi-pango
 	depends = gtk3
+	depends = gtk4
 	source = https://hackage.haskell.org/packages/archive/gi-gdk/4.0.1/gi-gdk-4.0.1.tar.gz
 	sha256sums = 98e31dc8f133effb40f5106c74ba42509fe43b134fa1225c8a36b1c1cefe4aac
 
