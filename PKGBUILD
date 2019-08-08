@@ -6,7 +6,7 @@
 #   curl https://keybase.io/threema/pgp_keys.asc | gpg --import
 #   gpg --lsign E7ADD9914E260E8B35DFB50665FDE935573ACDA6
 pkgname=threema-web
-pkgver=2.1.7
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="The Threema Web client, packaged to run locally on port 4242"
 arch=('any')
@@ -21,11 +21,13 @@ source=(
     "https://github.com/threema-ch/threema-web/releases/download/v${pkgver}/threema-web-${pkgver}-gh.tar.gz"
     "https://github.com/threema-ch/threema-web/releases/download/v${pkgver}/threema-web-${pkgver}-gh.tar.gz.asc"
     "threema-web.service"
+    "launch.py"
 )
 sha256sums=(
-    'ce3176132e9192caa09610b1ae0e0d0dbc87b943e8aed10b3f299f0c7e1437ed'
-    'SKIP'  # PGP signature
-    '6cb24b36278ef9d5b57d056d5b8428f82b94cb92f7ffc0ef4bc3eb5278488514'
+    '372c670e1bd8c862cfcb7140cff33f0004803c4d014eec648857d9327357d9c1'
+    'SKIP'
+    '1fbf9c4af5548138f75b00d2bd3de462c658db0c14e9897d09b79f8aa235db9e'
+    '0968289ce31f750834b8f495951e1a29a2971d38e9d4d20213bb2a1f174a2fb1'
 )
 install=threema-web.install
 
@@ -47,9 +49,12 @@ package() {
   chown -R root:http ${pkgdir}/opt/threema-web
   find "${pkgdir}/opt/threema-web" -type f -exec chmod 640 {} \;
   find "${pkgdir}/opt/threema-web" -type d -exec chmod 750 {} \;
+  install -Dm644 -o root -g http "${srcdir}/launch.py" "${pkgdir}/opt/threema-web/"
+
+  # Install launcher
 
   # Install service file
-  install -Dm640 -o root -g root ${srcdir}/threema-web.service "${pkgdir}/etc/systemd/system/"
+  install -Dm640 -o root -g root "${srcdir}/threema-web.service" "${pkgdir}/etc/systemd/system/"
 }
 
 # vim:set ts=2 sw=2 et:
