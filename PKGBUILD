@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@tellus.space>
 
 pkgname=kube-forwarder
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Easy to use Kubernetes port forwarding manager'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pixel-point/kube-forwarder/archive/v${pkgver}.tar.gz"
         'kube-forwarder.desktop'
         'kube-forwarder.sh')
-sha512sums=('bccacb02495e376bc759299e670d68b8138486be3283b4a8b6024e129e2b5e29e4fab2ea10c812ed67eb8f7b19a278b022ce94080dd6abcbcb7fc92ae716eab5'
+sha512sums=('1a15b9edb3315cee7beb54f689c2d16d6e3f4f08cbec97ec227504344cec0649e67918e047231c6c904c145a191b6d215e2cfc01f1f854fe1cebee1f8f3266b5'
             '7e05c6d152488a9aa56e9c4aa01797f263ba09de1f6b91af487619ad424a833be6b2af722719aebd1906a74430b7ef8c93c5c4e7aef80c4a04776d8cce93ffd6'
             '808d36263a068ab068b7ee52a578cc194c4e37193009e3cc2393ef5dc03d2b4b11c9ab11da4d399c5a05e1dbeaa3916fe06886e61cd4f1226b488e135aa2d94d')
 
