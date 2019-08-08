@@ -1,85 +1,99 @@
-# $Id: PKGBUILD 212820 2014-05-15 14:29:12Z eric $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 _pkgname=avahi
 pkgname=avahi-gtk2
-pkgver=0.6.31
-pkgrel=16
+pkgver=0.7+18+g1b5f401
+pkgrel=2
 pkgdesc='Multicast/unicast DNS-SD framework (with Gtk2 client apps)'
-url='http://www.avahi.org/'
-license=('LGPL')
-arch=('i686' 'x86_64')
+url='https://github.com/lathiat/avahi'
+license=(LGPL)
+arch=(x86_64 i686)
 options=('!emptydirs')
-depends=('expat' 'libdaemon' 'glib2' 'libcap' 'gdbm' 'dbus')
-replaces=(${_pkgname})
+depends=(expat libdaemon glib2 libcap gdbm dbus)
+makedepends=(git intltool gobject-introspection gtk2 xmltoman)
+provides=("${_pkgname}=${pkgver}")
+conflicts=(${_pkgname})
 optdepends=('gtk2: avahi-discover-standalone, bshell, bssh, bvnc, gtk2 bindings'
             'nss-mdns: NSS support for mDNS')
-makedepends=('intltool' 'gobject-introspection' 'gtk2' 'xmltoman' 'python2')
-backup=('etc/avahi/hosts'
-        'etc/avahi/avahi-daemon.conf'
-        'etc/avahi/services/ssh.service'
-        'etc/avahi/services/sftp-ssh.service'
-        'usr/lib/avahi/service-types.db'
-	'usr/share/avahi/service-types')
-source=("http://www.avahi.org/download/avahi-${pkgver}.tar.gz")
-sha1sums=('7e05bd78572c9088b03b1207a0ad5aba38490684')
+backup=(etc/avahi/{hosts,avahi-daemon.conf,avahi-{autoip,dnsconf}d.action})
+_commit=1b5f401f64d7bed40c4335b0327acf4125da3086  # pull/115/merge~2
+source=("git+https://github.com/lathiat/avahi#commit=$_commit")
+sha512sums=('SKIP')
 
-conflicts=(${_pkgname} 'howl' 'mdnsresponder')
-provides=("${_pkgname}=${pkgver}" 'howl' 'mdnsresponder')
-
-install=install
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	sed '/^Libs:/s:$: -ldbus-1:' -i avahi-client.pc.in
-	sed 's:netdev:network:g' -i avahi-daemon/avahi-dbus.conf
-	sed 's:/sbin/resolvconf:/usr/sbin/resolvconf:g' -i */*.action
-	sed 's:-DG[^ ]*_DISABLE_DEPRECATED=1::g' -i avahi-ui/Makefile.*
+  cd $_pkgname
+
+  # CVE-2017-6519 CVE-2018-100084
+  git cherry-pick -n e111def44a7df4624a4aa3f85fe98054bffb6b4f
+
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	export MOC_QT4=/usr/bin/moc-qt4
-	export PYTHON=/usr/bin/python2
+  cd $_pkgname
+  export MOC_QT4=/usr/bin/moc-qt4
+  export PYTHON=/usr/bin/python3
 
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--sbindir=/usr/bin \
-		--disable-monodoc \
-		--disable-qt3 \
-		--disable-qt4 \
-		--disable-gtk3 \
-		--disable-pygtk \
-		--disable-python-dbus \
-		--disable-mono \
-		--disable-doxygen-doc \
-		--disable-doxygen-dot \
-		--disable-doxygen-xml \
-		--disable-doxygen-html \
-		--enable-compat-libdns_sd \
-		--enable-compat-howl \
-		--with-distro=archlinux \
-		--with-avahi-priv-access-group=network \
-		--with-autoipd-user=avahi \
-		--with-autoipd-group=avahi \
-		--with-systemdsystemunitdir=/usr/lib/systemd/system \
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --sbindir=/usr/bin \
+    --with-dbus-sys=/usr/share/dbus-1/system.d \
+    --disable-monodoc \
+    --disable-qt4 \
+    --disable-qt5 \
+    --disable-gtk3 \
+    --disable-python \
+    --disable-pygobject \
+    --disable-python-dbus \
+    --disable-mono \
+    --disable-monodoc \
+    --disable-doxygen-doc \
+    --disable-doxygen-dot \
+    --disable-doxygen-xml \
+    --disable-doxygen-html \
+    --enable-compat-libdns_sd \
+    --with-distro=archlinux \
+    --with-avahi-priv-access-group=network \
+    --with-autoipd-user=avahi \
+    --with-autoipd-group=avahi \
+    --with-systemdsystemunitdir=/usr/lib/systemd/system
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
-	make
+# cp -a avahi-python/avahi avahi-python/avahi2
+
+  make
+# make -C avahi-python/avahi2 PYTHON=/usr/bin/python2
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
-	rm -fr "${pkgdir}"/etc/rc.d
+  cd $_pkgname
+  make DESTDIR="$pkgdir" install
+# make DESTDIR="$pkgdir" -C avahi-python/avahi2 install \
+#   PYTHON=/usr/bin/python2 pythondir=/usr/lib/python2.7/site-packages
 
-	# howl and mdnsresponder compatability
-	cd "${pkgdir}"/usr/include; ln -s avahi-compat-libdns_sd/dns_sd.h dns_sd.h; ln -s avahi-compat-howl howl
-	cd "${pkgdir}"/usr/lib/pkgconfig; ln -s avahi-compat-howl.pc howl.pc
+  rmdir "$pkgdir/run"
 
-	# see FS#42638
-	ln avahi-daemon.service -s "${pkgdir}"/usr/lib/systemd/system/dbus-org.freedesktop.Avahi.service
+# # this isn't ported
+# sed -i '1s|python3|python2|' "$pkgdir/usr/bin/avahi-bookmarks"
+
+  # mdnsresponder compat
+  ln -s avahi-compat-libdns_sd/dns_sd.h "$pkgdir/usr/include/dns_sd.h"
+
+  # move example services https://bugs.archlinux.org/task/47822
+  install -d "$pkgdir/usr/share/doc/$pkgname"
+  mv "$pkgdir"/etc/avahi/services/{,sftp-}ssh.service \
+    "$pkgdir/usr/share/doc/$pkgname/"
+
+  echo 'u avahi - "Avahi mDNS/DNS-SD daemon"' |
+    install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
