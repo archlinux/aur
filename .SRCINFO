@@ -1,6 +1,6 @@
 pkgbase = php-nocheq-git
 	pkgdesc = Sick of pesky type checking making your code too slow (and correct) ?
-	pkgver = r38.b578958
+	pkgver = r39.6e3c4f8
 	pkgrel = 1
 	url = https://github.com/krakjoe/nocheq
 	arch = i686

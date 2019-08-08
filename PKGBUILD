@@ -2,7 +2,7 @@
 
 _pkgname=nocheq
 pkgname=php-$_pkgname-git
-pkgver=r38.b578958
+pkgver=r39.6e3c4f8
 pkgrel=1
 pkgdesc="Sick of pesky type checking making your code too slow (and correct) ?"
 arch=('i686' 'x86_64')
