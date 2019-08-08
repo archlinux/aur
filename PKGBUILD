@@ -1,52 +1,68 @@
-# Maintainer: Moritz Lipp <mlq@pwmt.org>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=colord-git
-pkgver=1.2.1.r14.g5a9987b
-pkgrel=1
+pkgbase=colord
+pkgname=(colord-git colord-sane-git)
+pkgver=1.4.4
+pkgrel=2
 pkgdesc="System daemon for managing color devices"
-arch=('i686' 'x86_64')
-url="http://www.freedesktop.org/software/colord"
+url="https://www.freedesktop.org/software/colord"
+arch=(x86_64)
 license=(GPL2)
-depends=(lcms2 libgusb polkit sqlite systemd dconf dbus)
-makedepends=(intltool gobject-introspection vala docbook2x sane bash-completion
-perl-xml-libxml perl-file-which)
-optdepends=('sane: scanner support')
-replaces=('shared-color-profiles')
-provides=(colord)
-conflicts=(colord)
-install=colord.install
-source=('colord::git+git://github.com/hughsie/colord.git'
-        'colord.install'
-        'colord-git-docbook.patch'
-        )
-sha1sums=('SKIP'
-          'e06950f0c75ffedd2977ff12945cfbf5a947899d'
-          'ce6b0953a669abe228a309028ee9168c0f11f51c')
-_gitname=colord
+provides=(colord colord-sane)
+conflicts=(colord colord-sane)
+depends=(lcms2 libgusb polkit sqlite dconf dbus libgudev shared-mime-info systemd-libs udev)
+makedepends=(gobject-introspection vala sane bash-completion argyllcms git meson gtk-doc systemd
+             docbook-xsl)
+options=(!emptydirs)
+source=("git+https://github.com/hughsie/colord")
+sha256sums=('SKIP')
+#validpgpkeys=('163EB50119225DB3DF8F49EA17ACBA8DFA970E17')  # Richard Hughes
+
+pkgver() {
+  cd colord
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
-  cd "$srcdir/$_gitname"
-  patch -p1 < $srcdir/colord-git-docbook.patch
+  cd colord
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --libexecdir=/usr/lib/$pkgname --disable-static \
-    --with-systemdsystemunitdir=/usr/lib/systemd/system \
-    --enable-vala --enable-sane --with-daemon-user=colord
-  make
+  arch-meson colord build \
+    -D libcolordcompat=true \
+    -D sane=true \
+    -D vapi=true \
+    -D print_profiles=true \
+    -D daemon_user=colord
+  ninja -C build
 }
 
-package() {
-  cd "$srcdir/$_gitname"
-  make DESTDIR="$pkgdir" install
+check() {
+  meson test -C build
 }
 
-pkgver() {
-  cd "$srcdir/$_gitname"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/_/./g;s/COLORD.//g'
+package_colord-git() {
+  optdepends=('argyllcms: color profiling'
+              'colord-sane: SANE support')
+  replaces=(shared-color-profiles)
+
+  DESTDIR="$pkgdir" meson install -C build
+
+  echo 'u colord - "Color management daemon" /var/lib/colord' |
+    install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/colord.conf"
+
+### Split colord-sane
+  mkdir -p colord-sane/usr/lib/colord-plugins
+  mv {"$pkgdir",colord-sane}/usr/lib/colord-sane
+  mv {"$pkgdir",colord-sane}/usr/lib/colord-plugins/libcolord_sensor_sane.so
 }
 
-# vim:set ts=2 sw=2 et:
+package_colord-sane-git() {
+  pkgdesc+=" (SANE support)"
+  depends=(colord sane)
+  mv colord-sane/* "$pkgdir"
+}
+
+# vim:set sw=2 et:
