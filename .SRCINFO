@@ -1,0 +1,21 @@
+pkgbase = cgterm-git
+	pkgdesc = C/G telnet client that lets you connect to C64 telnet BBS
+	pkgver = r1.01e35d6
+	pkgrel = 1
+	url = https://github.com/MagerValp/CGTerm
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = sdl
+	source = cgterm-git::git+https://github.com/MagerValp/CGTerm.git
+	source = cgterm.1.gz
+	source = cgchat.1.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = b3913ae8dfa64f5dfd2fc830c7e62a83
+	md5sums = 1fa28dc46a84150a4a52184aec1e3146
+	md5sums = 01f185b2b35869909ccef6332ac369ef
+
+pkgname = cgterm-git
+
