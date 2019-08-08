@@ -6,7 +6,7 @@
 
 
 pkgname=opmon-git
-pkgver=0.15.1.r225.geb790444
+pkgver=0.15.1.r227.g321b7241
 pkgrel=1
 license=('GPL')
 arch=('x86_64')
