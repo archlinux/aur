@@ -9,6 +9,7 @@ pkgbase = veloren-bin
 	conflicts = veloren-bin
 	noextract = veloren-voxygen.desktop
 	noextract = voxygen.png
+	options = !strip
 	source = veloren-bin::https://gitlab.com/veloren/veloren/-/jobs/265513558/artifacts/raw/optional-release-linux-debug.tar.bz2
 	source = veloren-voxygen.desktop
 	source = voxygen.png
