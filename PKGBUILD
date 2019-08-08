@@ -1,46 +1,61 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
-# Contributor: dx <dx@dxzone.com.ar>
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Vincent Grande <shoober420@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Brice Carpentier <brice@daknet.org>
 
 pkgname=cairo-git
-epoch=1
-pkgver=1.14.2.r6.g7139265
+pkgver=1.17.2+17+g52a7c79fd
 pkgrel=1
-pkgdesc="Cairo vector graphics library (git version)"
-arch=(i686 x86_64)
-license=('LGPL' 'MPL')
-url="http://cairographics.org/"
-depends=('libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman>=0.28.0' 'glib2' 'mesa' 'libgl' 'lzo')
-makedepends=('mesa-libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre' 'gtk-doc' 'valgrind' 'git')
-provides=("cairo=$pkgver" "cairo-xcb=$pkgver")
-conflicts=('cairo' 'cairo-xcb')
-source=('git://anongit.freedesktop.org/git/cairo')
-sha1sums=('SKIP')
+pkgdesc="2D graphics library with support for multiple output devices"
+url="https://cairographics.org/"
+arch=(x86_64)
+license=(LGPL MPL)
+provides=(cairo)
+conflicts=(cairo)
+depends=(libpng libxrender libxext fontconfig pixman glib2 lzo)
+makedepends=(librsvg gtk2 poppler-glib libspectre valgrind git)
+#checkdepends=(ttf-dejavu gsfonts)
+source=("git+https://gitlab.freedesktop.org/cairo/cairo.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd cairo
-	git describe --long --tags | sed 's/-/.r/;s/-/./'
+  cd cairo
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd cairo
+
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-	cd cairo
-	./autogen.sh \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--disable-static \
-		--enable-tee \
-		--enable-gl \
-		--enable-egl \
-		--enable-svg \
-		--enable-ps \
-		--enable-pdf \
-		--enable-gobject \
-		--enable-gtk-doc
+  cd cairo
+  ./configure --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --disable-static \
+        --disable-gl \
+        --enable-tee \
+        --enable-svg \
+        --enable-ps \
+        --enable-pdf \
+        --enable-gobject \
+        --disable-gtk-doc \
+        --enable-full-testing \
+        --enable-test-surfaces
+  sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
-package(){
-	cd cairo
-	make DESTDIR="${pkgdir}" install
+#check() {
+#  cd cairo
+  # FIXME: tests don't pass
+#  env CAIRO_TEST_TARGET=image \
+#      CAIRO_TEST_TARGET_FORMAT=rgba \
+#      CAIRO_TESTS='!pthread-show-text' make -k check || :
+#}
+
+package() {
+  cd cairo
+  make DESTDIR="$pkgdir" install
 }
