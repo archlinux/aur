@@ -1,8 +1,9 @@
-# Maintainer: caiye <ye.jingchen[at]gmail[dot]com>
+# Maintainer: Nebula <chfsefefgesfen foxmail com>
+# contributor: caiye <ye.jingchen[at]gmail[dot]com>
 # Contributor: Alvie Zhang <alvie.zhang {AT} gmail {DOT} com>
 pkgname=meow-proxy-git
 pkgver=r1164.4dc7bec
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of MEOW that uses whitelist mode and bypasses IPv6"
 arch=('i686' 'x86_64')
 url="https://github.com/netheril96/MEOW"
@@ -37,11 +38,13 @@ prepare() {
     for gopkg in 'github.com/shadowsocks/shadowsocks-go/shadowsocks' 'github.com/cyfdecyf/'{leakybuf,color,bufio}; do
         go get -d -fix -v -x -u "$gopkg"
     done
+    sed -i "45,46s/true/false/g" "$srcdir/MEOW/log.go"
 }
 
 build() {
     export GOPATH="$srcdir/gopath"
     cd "$srcdir/MEOW"
+    go run chinaip_gen.go
     go build -v
 }
 
