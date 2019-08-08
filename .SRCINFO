@@ -1,15 +1,18 @@
 pkgbase = nuspell
 	pkgdesc = Free and open source C++ spell checking library
-	pkgver = 2.2.0
-	pkgrel = 3
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://nuspell.github.io/
 	arch = x86_64
 	license = LGPL3+
 	makedepends = boost
+	makedepends = catch2
 	makedepends = cmake
+	makedepends = ruby-ronn
 	depends = boost-libs
 	depends = icu
-	source = git+https://github.com/nuspell/nuspell#tag=v2.2.0
-	sha512sums = SKIP
+	source = https://github.com/nuspell/nuspell/archive/v2.3.0.tar.gz
+	sha512sums = 93630dec951d1256c7b8505b5d67e625c161b082fefbada5497cea0246d3a0bdf4f0e3732693709da06697162a490676a3de99f6c142270736c9c6b47f24e29c
 
 pkgname = nuspell
 
