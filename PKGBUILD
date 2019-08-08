@@ -3,7 +3,7 @@
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-facebook
-pkgver=2019.2.0b10
+pkgver=2019.2.0f1
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Facebook-Games platform"
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-beta')
 makedepends=('cpio')
-source=("2019.2.0b10.2.0b10.pkg::https://beta.unity3d.com/download/54f9b0ad4ba4/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-2019.2.0b10.pkg")
-md5sums=("8ff694de27fe7e16c0cfa86f461f118f")
+source=("2019.2.0f1.2.0f1.pkg::https://beta.unity3d.com/download/20c1667945cf/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-2019.2.0f1.pkg")
+md5sums=("1c71c2962ce6cf39a2a0bdb34e4e0d4a")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
