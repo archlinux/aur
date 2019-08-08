@@ -2,7 +2,7 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.0.4+352+gcafbb77d
+pkgver=9.0.4+818+g6da0d934
 _d2j=2.0
 _yajsw=12.12
 _hfsx=0.21
@@ -15,7 +15,7 @@ license=(Apache)
 provides=(ghidra)
 conflicts=(ghidra ghidra-bin)
 depends=('java-environment>=11' bash)
-makedepends=(gradle unzip bison flex)
+makedepends=(git gradle unzip fop)
 source=(git+$_git
         git+$_git-data
         https://github.com/pxb1988/dex2jar/releases/download/$_d2j/dex-tools-$_d2j.zip
@@ -34,39 +34,26 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd ghidra
-  git describe --tags | sed 's/Ghidra_//;s/_build//;s/-/+/g'
+  git describe --tags | sed 's#Ghidra_##;s#_build##;s#-#+#g' #;s#+#+r#' # Add when pkgver goes to 9.0.5
 }
 
 prepare() {
-  install -d hfsx
+  # HFSExplorer isn't archived in a folder, so let's make one to extract it into
+  mkdir hfsx
   unzip -u hfsexplorer-${_hfsx/./_}-bin.zip -d hfsx
 
   cd ghidra
 
-  # Allow use of any Gradle version
-  sed -i '/gradleVersion/,+2d' build.gradle
-
-  # Add repositories
-  cat >> build.gradle << EOF
-
-allprojects {
-	repositories {
-		mavenCentral()
-		jcenter()
-		flatDir name: 'localRepository', dirs: "\${rootDir}/lib"
-	}
-}
-EOF
-
-  # Add libs
-  install -Dm 644 ../dex2jar-$_d2j/lib/dex-*.jar \
+  # Copy needed libraries into flat repo folder
+  mkdir flatRepo
+  cp ../dex2jar-$_d2j/lib/dex-*.jar \
     ../AXMLPrinter2.jar \
     ../hfsx/lib/{csframework,hfsx*,iharder-base64}.jar \
-    -t lib
+    flatRepo
 
   # YAJSW expects this symlink
   ln -sf ghidra ../ghidra.bin
-  install -Dm 644 ../yajsw-stable-$_yajsw.zip -t Ghidra/Features/GhidraServer
+  cp ../yajsw-stable-$_yajsw.zip Ghidra/Features/GhidraServer
 
   # Add FID datasets
   install -Dm 644 ../ghidra-data/FunctionID/*.fidb -t Ghidra/Features/FunctionID/src/main/fidb
@@ -77,19 +64,31 @@ EOF
 
 build() {
   cd ghidra
+
+  # GhidraServer requires YAJSW
   gradle yajswDevUnpack
+
+  # Build native components
   gradle prebuildNatives_linux64
+
+  # Let's go
   gradle buildGhidra
 }
 
 package() {
   cd ghidra
+
   install -d "$pkgdir"/{opt,usr/bin}
+
+  # Extract built archive into destination folder
   _appver=$(grep -oP '(?<=^application.version=).*$' Ghidra/application.properties)
   _relname=$(grep -oP '(?<=^application.release.name=).*$' Ghidra/application.properties)
   unzip -u build/dist/ghidra_${_appver}_${_relname}_$(date +"%Y%m%d")_linux64.zip -d "$pkgdir"/opt
+  # Use a simple directory name
   mv "$pkgdir"/opt/ghidra{_${_appver}_${_relname},}
+
   ln -s /opt/ghidra/ghidraRun "$pkgdir"/usr/bin/ghidra
   ln -s /opt/ghidra/support/analyzeHeadless "$pkgdir"/usr/bin/ghidra-analyzeHeadless
+
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/ghidra
 }
