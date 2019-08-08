@@ -22,6 +22,8 @@ pkgbase = lib32-colord-git
 	depends = lib32-polkit
 	depends = lib32-sqlite
 	depends = lib32-dbus
+	provides = lib32-colord
+	conflicts = lib32-colord
 	source = git+https://github.com/hughsie/colord
 	sha256sums = SKIP
 

@@ -12,6 +12,8 @@ pkgdesc='System daemon for managing color devices'
 arch=(x86_64)
 url=https://www.freedesktop.org/software/colord
 license=(GPL2)
+provides=(lib32-colord)
+conflicts=(lib32-colord)
 depends=(
   colord
   lib32-dconf
