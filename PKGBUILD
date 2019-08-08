@@ -1,37 +1,23 @@
-pkgbase=python-serverfiles
-pkgname=('python-serverfiles' 'python2-serverfiles')
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+
+pkgname=python-serverfiles
 pkgver=0.3.0
-pkgrel=1
-pkgdesc="An utility that accesses files on a HTTP server and stores them locally for reuse."
-arch=(any)
+pkgrel=2
+pkgdesc="A utility that accesses files on a HTTP server and stores them locally for reuse."
+arch=('any')
 url="https://github.com/biolab/serverfiles"
 license=('GPL')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-requests' 'python2-requests')
-source=("https://pypi.io/packages/source/s/serverfiles/serverfiles-$pkgver.tar.gz")
+depends=('python-requests')
+makedepends=('python-setuptools')
+source=("https://pypi.io/packages/source/s/serverfiles/serverfiles-${pkgver}.tar.gz")
 sha256sums=('ce38e1dc3518a16b2490f7b84b4ce829f2d6685596c1a3f0fdedbe06d13685ec')
 
 build() {
-  cp -r "${srcdir}"/serverfiles-$pkgver "${srcdir}"/serverfiles-$pkgver-py2
-
-  cd "${srcdir}"/serverfiles-$pkgver
+  cd "${srcdir}/serverfiles-${pkgver}"
   python setup.py build
-
-  cd "${srcdir}"/serverfiles-$pkgver-py2
-  python2 setup.py build
 }
 
-package_python-serverfiles() {
-  depends=('python-requests')
-
-  cd "${srcdir}/serverfiles-$pkgver"
-  python setup.py install --root="${pkgdir}" --optimize=1
+package() {
+  cd "${srcdir}/serverfiles-${pkgver}"
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
-
-package_python2-serverfiles() {
-  depends=('python2-requests')
-
-  cd "${srcdir}/serverfiles-$pkgver"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-}
-
-
