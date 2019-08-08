@@ -2,7 +2,7 @@ pkgbase = no-appimage-desktop-integration
 	pkgdesc = Disables “Would you like to integrate {AppImage} with your system?” dialogues.
 	pkgver = 1
 	pkgrel = 1
-	url = https://github.com/electron-userland/electron-builder/issues/1962#issuecomment-352531262
+	url = https://github.com/electron-userland/electron-builder/issues/1962#issuecomment-355042545
 	arch = any
 	license = CC0
 

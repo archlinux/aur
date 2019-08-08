@@ -4,7 +4,7 @@ pkgver=1
 pkgrel=1
 pkgdesc='Disables “Would you like to integrate {AppImage} with your system?” dialogues.'
 arch=('any')
-url='https://github.com/electron-userland/electron-builder/issues/1962#issuecomment-352531262'
+url='https://github.com/electron-userland/electron-builder/issues/1962#issuecomment-355042545'
 # There’s nothing to copyright… the package is literally a single empty file.
 license=('CC0')
 
