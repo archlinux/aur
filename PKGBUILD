@@ -2,12 +2,12 @@
 
 pkgname=bedstead-fonts-powerline
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bedstead is a family of outline fonts based on the characters produced by the Mullard SAA5050 series of Teletext Character Generators. Patched for powerline"
 url="https://bjh21.me.uk/bedstead/"
 arch=(any)
 license=(custom)
-depends=('python>=3.0.0'
+makedepends=('python>=3.0.0'
          'fontforge')
 source=("patcher::git+https://github.com/powerline/fontpatcher"
     "https://bjh21.me.uk/bedstead/bedstead.otf"
