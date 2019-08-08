@@ -1,37 +1,40 @@
-# Contributor: Lubosz Sarnecki <lubosz@gmail.com>
-# Contributor: mariusz - myswiat <my.swiat@o2.pl>
-# Contributor:Jan de Groot <jgc@archlinux.org>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Vincent Grande <shoober420@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
-_realname=pango
-pkgname=$_realname-git
-pkgver=1.44.r31.g1311cfec
+pkgname=pango-git
+pkgver=1.44.3
 pkgrel=1
+epoch=1
 pkgdesc="A library for layout and rendering of text"
-arch=('i686' 'x86_64')
-url="http://gnome.org/"
-license=('LGPL')
-depends=('glib2' 'cairo' 'libxft' 'libthai' 'freetype2' 'harfbuzz' 'fontconfig')
-makedepends=('gobject-introspection' 'libxt' 'gtk-doc' 'meson' 'git')
-provides=("${_realname}=${pkgver}")
-conflicts=("${_realname}")
-install=${_realname}.install
-options=('!libtool' 'strip' 'debug')
-source=("git+https://gitlab.gnome.org/GNOME/pango" "pango.install")
-sha256sums=('SKIP'
-            '1e69feead9d9e5a76e7e0dc1b3da3b8938f65f58c02449478900559be50e9ac7')
- 
+url="https://www.pango.org/"
+arch=(x86_64)
+license=(LGPL)
+provides=(pango)
+conflicts=(pango)
+depends=(libthai cairo libxft harfbuzz fribidi)
+makedepends=(gobject-introspection git meson)
+#checkdepends=(ttf-dejavu cantarell-fonts)
+source=("git+https://gitlab.gnome.org/GNOME/pango.git")
+sha256sums=('SKIP')
+
 pkgver() {
-  cd $_realname
-  git describe --tags | sed 's/-/.r/' |tr - .
+  cd pango
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd pango
 }
 
 build() {
-  arch-meson $_realname build -D enable_docs=true 
+  arch-meson pango build -D gtk_doc=false
   ninja -C build
 }
 
+#check() {
+#  meson test -C build --print-errorlogs
+#}
+
 package() {
-  DESTDIR=$pkgdir ninja -C build install
-#  rm -r "$pkgdir"/usr/{lib,share}/installed-tests
+  DESTDIR="$pkgdir" meson install -C build
 }
