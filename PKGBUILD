@@ -1,35 +1,30 @@
-# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
+# Maintainer: Aniket Pradhan <aniket17133[at]iiitd[dot]ac[dot]in>
+# Contributer: Roman Haritonov <reclosedev[at]gmail[dot]com>
 
-pkgbase=python-requests-cache
-_pyname=requests-cache
-pkgname=('python-requests-cache' 'python2-requests-cache')
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools'
-             'python-requests' 'python2-requests')
-pkgver=0.4.13
+_pkgname="requests-cache"
+pkgname="python-requests-cache"
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="Persistent cache for requests library"
-arch=('any')
+pkgdesc="Transparent persistent cache for http://python-requests.org/ library ⛺ https://pypi.org/project/requests-cache/"
+arch=("x86_64")
 url="https://github.com/reclosedev/requests-cache"
-license=('BSD')
-source=("${_pyname}-${pkgver}.tar.gz::https://github.com/reclosedev/${_pyname}/archive/v${pkgver}.tar.gz")
-sha512sums=('54d814c9c4da1b1fa6f4ec124faee7e74e7ca52bc90ae7c948f19e9cb7657fe2b41f5de6c5fafe259526312d82dc5efd81ad01a741a66baf12ea2a358334f912')
+license=("BSD")
+depends=("python" "python-requests")
+makedepends=("git" "python-setuptools")
+provides=("python-requests-cache")
+conflicts=("python2-requests-cache")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/reclosedev/requests-cache/archive/v${pkgver}.tar.gz")
+sha256sums=('7846f008cd09ee1d38b5285bf098f9f0246cd1019d8c519d23184c1616342217')
 
-package_python-requests-cache() {
-  depends=('python')
-  cd "${srcdir}/${_pyname}-${pkgver}"
-  python setup.py install -O1 --root="${pkgdir}"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
-
+build() {
+  cd "$srcdir/$_pkgname-${pkgver}"
+  python setup.py build
 }
 
-package_python2-requests-cache() {
-  depends=('python2')
-  cd "${srcdir}/${_pyname}-${pkgver}"
-  python2 setup.py install -O1 --root="${pkgdir}"
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
-
 }
-
-# vim:set et sw=2 ts=2 tw=79:

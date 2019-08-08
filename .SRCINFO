@@ -1,22 +1,18 @@
 pkgbase = python-requests-cache
-	pkgdesc = Persistent cache for requests library
-	pkgver = 0.4.13
+	pkgdesc = Transparent persistent cache for http://python-requests.org/ library ⛺ https://pypi.org/project/requests-cache/
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/reclosedev/requests-cache
-	arch = any
+	arch = x86_64
 	license = BSD
-	makedepends = python
-	makedepends = python2
+	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	makedepends = python-requests
-	makedepends = python2-requests
-	source = requests-cache-0.4.13.tar.gz::https://github.com/reclosedev/requests-cache/archive/v0.4.13.tar.gz
-	sha512sums = 54d814c9c4da1b1fa6f4ec124faee7e74e7ca52bc90ae7c948f19e9cb7657fe2b41f5de6c5fafe259526312d82dc5efd81ad01a741a66baf12ea2a358334f912
+	depends = python
+	depends = python-requests
+	provides = python-requests-cache
+	conflicts = python2-requests-cache
+	source = requests-cache-0.5.0.tar.gz::https://github.com/reclosedev/requests-cache/archive/v0.5.0.tar.gz
+	sha256sums = 7846f008cd09ee1d38b5285bf098f9f0246cd1019d8c519d23184c1616342217
 
 pkgname = python-requests-cache
-	depends = python
-
-pkgname = python2-requests-cache
-	depends = python2
 
