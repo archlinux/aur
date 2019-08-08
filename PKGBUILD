@@ -1,45 +1,46 @@
-# Maintainer: Vincent Grande <shoober420@gmail.com>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 
 pkgname=pixman-git
-pkgver=0.35.1.2348.489fa0d
+pkgver=pixman+0.38.4+11+gfd5c0da
 pkgrel=1
 pkgdesc="The pixel-manipulation library for X and cairo"
 arch=(x86_64)
-url="http://xorg.freedesktop.org"
+url="https://cgit.freedesktop.org/pixman/"
 license=('custom')
+provides=(pixman)
+conflicts=(pixman)
 depends=('glibc')
-provides=('pixman')
-conflicts=('pixman')
-source=("git://anongit.freedesktop.org/pixman")
+makedepends=('meson' 'libpng')
+source=(git+https://gitlab.freedesktop.org/pixman/pixman.git)
 sha1sums=('SKIP')
 
-pkgver () {
-	cd pixman
-	
-	 for i in pixman_major pixman_minor pixman_micro; do
-    local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
-  done
-
-  echo ${_pixman_major}.${_pixman_minor}.${_pixman_micro}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
+pkgver() {
+    cd pixman
+      git describe --tags | sed 's/-/+/g'
+    }
 
 build() {
-  cd pixman
-  ./autogen.sh --prefix=/usr --disable-static
-  make
+  arch-meson pixman build \
+    -D loongson-mmi=disabled \
+    -D vmx=disabled \
+    -D arm-simd=disabled \
+    -D neon=disabled \
+    -D iwmmxt=disabled \
+    -D mips-dspr2=disabled \
+    -D gtk=disabled
+  ninja -C build
 }
 
 #check() {
-#  cd pixman
-#  make check
+#  meson test -C build
 #}
 
 package() {
-  cd pixman
-  make DESTDIR="${pkgdir}" install
-  install -m755 -d "${pkgdir}/usr/share/licenses/pixman"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/pixman"
+  DESTDIR="$pkgdir" meson install -C build
+  install -Dt "$pkgdir/usr/share/licenses/pixman" -m644 pixman/COPYING
 }
+
+# vim:set et sw=2:
