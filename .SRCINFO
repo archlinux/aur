@@ -1,6 +1,6 @@
 pkgbase = python-pygmo
 	pkgdesc = Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model (Python version)
-	pkgver = 2.10
+	pkgver = 2.11
 	pkgrel = 1
 	url = https://esa.github.io/pagmo2/index.html
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = python-pygmo
 	depends = pagmo
 	depends = python-numpy
 	depends = python-cloudpickle
-	source = https://github.com/esa/pagmo2/archive/v2.10.tar.gz
-	sha512sums = 87417c105bc887439a7a089d3569e7df942584bf4af4c3fe2df738498bf17be99e450e02ef3d0bf1fdfab5d37cd7a2218aed39492215ed49d9a029a19d143794
+	source = https://github.com/esa/pagmo2/archive/v2.11.tar.gz
+	sha512sums = 6b7da56db3e2f1e0627cd84d1ccd7d40f4838ef2e54274d802bd040926dd159e88f692fb6e4146e5e620a10298a539992460ebd3efad611db2e998cb8c20f478
 
 pkgname = python-pygmo
 
