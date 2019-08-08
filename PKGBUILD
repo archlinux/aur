@@ -1,16 +1,16 @@
 # Maintainer: Luis Aranguren <pizzaman@hotmail.com>
-# Maintainer: Raansu <Gero3977@gmail.com>
+# Contributor: Raansu <Gero3977@gmail.com>
 
 pkgname=bitcoin-git
 _gitname=bitcoin
-pkgver=v0.18.0.r20783
+pkgver=v0.18.1.r20975
 pkgrel=1
 pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli"
 arch=('x86_64')
 url="https://bitcoin.org"
 license=('MIT')
 depends=('qt5-base' 'miniupnpc' 'openssl' 'protobuf' 'boost-libs' 'db4.8' 'qrencode' 'zeromq' 'libevent' 'desktop-file-utils')
-makedepends=('qt5-tools' 'pkg-config' 'git' 'boost' 'gcc' 'gcc-libs' 'make' 'automake' 'autoconf' 'libtool')
+makedepends=('qt5-tools' 'pkg-config' 'git' 'boost' 'gcc' 'gcc-libs' 'make' 'automake' 'autoconf' 'libtool' 'python3')
 provides=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-cli' 'bitcoin-core')
 conflicts=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-core' 'bitcoin-core-git' 'bitcoin-cli' 'bitcoin-tx')
 source=('git://github.com/bitcoin/bitcoin.git'

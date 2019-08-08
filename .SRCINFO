@@ -1,6 +1,6 @@
 pkgbase = bitcoin-git
 	pkgdesc = Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli
-	pkgver = v0.18.0.r20783
+	pkgver = v0.18.1.r20975
 	pkgrel = 1
 	url = https://bitcoin.org
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = bitcoin-git
 	makedepends = automake
 	makedepends = autoconf
 	makedepends = libtool
+	makedepends = python3
 	depends = qt5-base
 	depends = miniupnpc
 	depends = openssl
