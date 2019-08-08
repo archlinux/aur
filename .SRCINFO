@@ -1,7 +1,7 @@
 pkgbase = meow-proxy-git
 	pkgdesc = A fork of MEOW that uses whitelist mode and bypasses IPv6
 	pkgver = r1164.4dc7bec
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/netheril96/MEOW
 	install = meow-proxy-git.install
 	arch = i686
