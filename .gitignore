@@ -3,6 +3,6 @@
 !/.gitignore
 !/.pre-commit
 !/PKGBUILD
-!/brave-bin.desktop
+!/brave-browser.desktop
 !/brave-bin.sh
 !/logo.png
