@@ -1,15 +1,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=xmedcon-extra
-pkgver=1.2.1
+pkgver=1.2.1a
 pkgrel=1
+epoch=1
 pkgdesc="Some tools and ressources for Xmedcon"
 url="http://xmedcon.sourceforge.net/"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 depends=('xmedcon')
 source=(https://sourceforge.net/projects/xmedcon/files/XMedCon-Extra/$pkgver/xmedcon-extra-$pkgver.zip)
-sha256sums=('12f61b9b079ffe0c3a1c17f009f3aa58cae41bbbec1f50d16b11c75b3cd36eac')
+sha256sums=('629b974a83b540ac0f1b6c8059690d5bee108f00310d86a34e01ede39efce977')
 
 build() {
   cd $pkgname/source
