@@ -11,7 +11,7 @@ depends=('gconf' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libappindica
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://cdn.balonet.net/files/linux/$pkgname-$pkgver.deb")
-sha512sums_x86_64=('6c3ecce1b78c7fa0687809c2961209ffc26de4350a1fa9dd7e62a1a99ec15827a854aa73b36aa8be216e5857a93d5c573cb5ac013fcec624424f3b4440ba1d7c')
+sha512sums_x86_64=('956572b95df37b6c77653db800233cc40c1906a518db25c538750e9e6832192fe7e90594e50689d17ef7c39926367fc7eb6b81ca753713c465f6e55e5b1fe769')
 
 package(){
 
