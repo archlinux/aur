@@ -1,4 +1,4 @@
-# Maintainer: NebulaNeko chfsefefgesfen foxmail com
+# Maintainer: NebulaNeko <chfsefefgesfen foxmail com>
 pkgname=pandownload-bin
 pkgver=2.1.2
 pkgrel=1
