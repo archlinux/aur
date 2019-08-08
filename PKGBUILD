@@ -10,6 +10,6 @@ sha256sums=('SKIP')
 depends=('python' 'python-ptyprocess')
 package(){
 	cd $srcdir/python-test-master/tests
-	install -Dm777 smex2.py $pkgdir/usr/local/bin/smex
+	install -Dm777 smex2.py $pkgdir/usr/bin/smex
 }
 
