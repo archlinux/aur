@@ -2,7 +2,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=haskell-gi-gtk-hs
 _hkgname=gi-gtk-hs
-pkgver=0.3.7.0
+pkgver=0.3.8.0
 pkgrel=1
 pkgdesc="A wrapper for gi-gtk, adding a few more idiomatic API parts on top"
 url=https://hackage.haskell.org/package/gi-gtk-hs
@@ -15,7 +15,7 @@ depends=('haskell-base' 'haskell-base-compat' 'ghc-libs'
 'haskell-gi-base' 'haskell-text' 'haskell-transformers')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('4f35b19b9a732353291a20c1792db64df72c8734b287a2ef66678eb0ea56c47c')
+sha256sums=('b4c4fc2936a24be471243460f4b3359096ddc989d84018566ff14a47049efe32')
 
 
 build() {

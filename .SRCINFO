@@ -1,6 +1,6 @@
 pkgbase = haskell-gi-gtk-hs
 	pkgdesc = A wrapper for gi-gtk, adding a few more idiomatic API parts on top
-	pkgver = 0.3.7.0
+	pkgver = 0.3.8.0
 	pkgrel = 1
 	url = https://hackage.haskell.org/package/gi-gtk-hs
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = haskell-gi-gtk-hs
 	depends = haskell-gi-base
 	depends = haskell-text
 	depends = haskell-transformers
-	source = https://hackage.haskell.org/packages/archive/gi-gtk-hs/0.3.7.0/gi-gtk-hs-0.3.7.0.tar.gz
-	sha256sums = 4f35b19b9a732353291a20c1792db64df72c8734b287a2ef66678eb0ea56c47c
+	source = https://hackage.haskell.org/packages/archive/gi-gtk-hs/0.3.8.0/gi-gtk-hs-0.3.8.0.tar.gz
+	sha256sums = b4c4fc2936a24be471243460f4b3359096ddc989d84018566ff14a47049efe32
 
 pkgname = haskell-gi-gtk-hs
 
