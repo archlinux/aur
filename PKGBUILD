@@ -1,7 +1,7 @@
 # Maintainer: pfm <vorticity at mail dot ru>
 pkgname=("python-pem" "python2-pem")
 _pkgname=pem
-pkgver=19.1.0
+pkgver=19.2.0
 pkgrel=1
 pkgdesc="Parsing and splitting of PEM files"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://pem.readthedocs.io"
 license=('MIT')
 makedepends=("python-setuptools" "python2-setuptools")
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/hynek/$_pkgname/archive/$pkgver.tar.gz")
-md5sums=('d29e612b2612f686bdab85ac1607baa9')
+md5sums=('297afd00b775205766e95f5cf8801c3e')
 
 prepare() {
     cp -a $_pkgname-$pkgver{,-py2}
