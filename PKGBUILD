@@ -2,7 +2,7 @@
 
 pkgname=mon2cam-git
 _pkgname=Mon2Cam
-pkgver=r5.348413e
+pkgver=r9.3aebdad
 pkgrel=1
 pkgdesc="Workaround for multi-monitor Discord screensharing"
 arch=('any')
