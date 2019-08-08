@@ -1,0 +1,15 @@
+pkgbase = octant
+	pkgdesc = A tool for developers to understand how applications run on a Kubernetes cluster
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/vmware/octant
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = npm
+	depends = kubectl
+	source = octant-0.5.1.tar.gz::https://github.com/vmware/octant/archive/v0.5.1.tar.gz
+	sha256sums = 29d43f526f79ee20f97688b28598f6281c405de46e56938822a9e189a6651621
+
+pkgname = octant
+
