@@ -4,7 +4,7 @@
 
 pkgname='python-grpcio-tools'
 pkgver=1.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python protobuf generator for GRPC"
 arch=('x86_64' 'i686')
 url="https://grpc.io/"
@@ -14,7 +14,7 @@ install=
 changelog=
 noextract=()
 depends=('python' 'python-grpcio' 'python-protobuf')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/g/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('0b733afb78ca60ce3ec0479cd0c4faf0d0d43ab2e015145d19f1c4736c79d0e3776813d0147e7e71f21f6cff2747eeb641fcf1399455936fd7b507bf38b38896')
 
