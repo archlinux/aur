@@ -1,0 +1,29 @@
+pkgbase = dot-bin
+	pkgdesc = A beautiful browser with material UI, with built-in adblock, based on Wexond
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://getdot.js.org
+	arch = x86_64
+	license = GPL3
+	makedepends = asar
+	depends = electron
+	depends = gconf
+	depends = libnotify
+	depends = libindicator-gtk2
+	depends = libappindicator-gtk2
+	depends = libxtst
+	depends = nss
+	depends = libxss
+	provides = dot
+	options = !strip
+	source_x86_64 = https://github.com/dot-browser/desktop/releases/download/v2.1.0/Dot.2.1.0.AppImage
+	source_x86_64 = dot.desktop
+	source_x86_64 = dot.js
+	source_x86_64 = 0001-fix-french-translation.patch
+	md5sums_x86_64 = 57715345bcfe249b73804ebe7a4f03c0
+	md5sums_x86_64 = 586b8094810544d86f70f23c6b1956ee
+	md5sums_x86_64 = b3e415a18deddfab9bb56395116b8309
+	md5sums_x86_64 = d3ad4886754d0c3972bfe031695c7587
+
+pkgname = dot-bin
+

@@ -1,0 +1,99 @@
+--- lol/locale/fr.json	2019-08-08 20:37:51.058856787 +0000
++++ app/locale/fr.json	2019-08-08 19:41:42.840141459 +0000
+@@ -5,7 +5,7 @@
+             "dot_with_version": "Dot {appVersion}",
+             "dot_full": "Dot Browser",
+             "dot_full_with_version": "Dot Browser {appVersion}",
+-            "button_open": "Ouvert",
++            "button_open": "Ouvrir",
+             "button_run": "Exécuter",
+             "button_send": "Envoyer",
+             "button_download": "Télécharger",
+@@ -31,26 +31,26 @@
+     "rich_presence": [
+         {
+             "default_details": "Naviguer sur",
+-            "audio_details": "Écouter l'audio sur",
+-            "file_details": "Affichage d'un fichier {fileType}",
+-            "active_small_text": "Parcourir une page web",
+-            "idle_small_text": "Inutile",
++            "audio_details": "Écoute de la musique sur",
++            "file_details": "Affiche un fichier {fileType}",
++            "active_small_text": "Parcour une page web",
++            "idle_small_text": "Inactif",
+             "idle_details": "Dot Browser",
+             "large_text": "Dot Browser {version}"
+         }
+     ],
+     "overlay": [
+         {
+-            "dial_top_sites": "Sites haut de gamme",
++            "dial_top_sites": "Sites fréquemment visités",
+             "dial_bookmarks": "Signet",
+             "overview": "Vue d'ensemble",
+             "menu": "Menu",
+             "tab_groups": "Groupes d'onglets",
+             "default_tab_group": "Nouveaux groupes",
+             "world": "Monde",
+-            "history_bubble": "Histoire",
++            "history_bubble": "Historique",
+             "bookmarks_bubble": "Signets",
+-            "downloads_bubble": "Télécharger",
++            "downloads_bubble": "Téléchargements",
+             "settings_bubble": "Paramètres",
+             "extensions_bubble": "Extensions",
+             "find_bubble": "Trouver",
+@@ -112,8 +112,8 @@
+             ],
+             "downloads": [
+                 {
+-                    "title": "Télécharger",
+-                    "download_loc": "Emplacement des téléchargeurs"
++                    "title": "Téléchargements",
++                    "download_loc": "Emplacement des téléchargements"
+                 }
+             ],
+             "dev_tools": [
+@@ -129,7 +129,7 @@
+                     "title": "À propos de Dot",
+                     "thanks_message": "Dot a été rendu possible grâce à",
+                     "wxnd_coffee": "et ☕.",
+-                    "made_in": "Fabriqué en",
++                    "made_in": "Créé en",
+                     "gb_with": "La Grande-Bretagne avec ",
+                     "end": ".",
+                     "developers_title": "Équipe de développeurs",
+@@ -151,7 +151,7 @@
+             ],
+             "languages": [
+                 {
+-                    "title": "La langue",
++                    "title": "Langue",
+                     "download_languages": "Télécharger le dernier pack de langue"
+                 }
+             ]
+@@ -159,11 +159,11 @@
+     ],
+     "history": [
+         {
+-            "title": "Histoire",
++            "title": "Historique",
+             "clear_browsing_history": "Données de navigation claires",
+             "sort": [
+                 {
+-                    "range_all": "Tout le",
++                    "range_all": "Tout",
+                     "range_today": "Aujourd'hui",
+                     "range_yesterday": "Yesterday",
+                     "range_last_week": "La semaine dernière",
+@@ -176,8 +176,8 @@
+     "bookmarks": [
+         {
+             "title": "Signets",
+-            "import": "Signets d'importation",
+-            "export": "Livres d'exportation",
++            "import": "Importer des signets",
++            "export": "Exporter les signets",
+             "add_bookmark": "Nouveau signet"
+         }
+     ],
