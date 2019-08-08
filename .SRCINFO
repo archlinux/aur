@@ -1,7 +1,7 @@
 pkgbase = ogre-1.9
 	pkgdesc = Scene-oriented, flexible 3D engine written in C++
 	pkgver = 1.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ogre3d.org
 	arch = x86_64
 	license = custom:MIT
@@ -23,8 +23,8 @@ pkgbase = ogre-1.9
 	depends = sdl2
 	depends = glu
 	depends = tinyxml
-	provides = ogre
-	provides = ogre-docs
+	provides = ogre=1.9
+	provides = ogre-docs=1.9
 	source = https://github.com/OGRECave/ogre/archive/v1.9.1.tar.gz
 	sha512sums = 69e1ea27ef3126ac0e09be9c1f8a9fc762630cd236ce6c3352a550ad977925387b1dfb9d124cc27bb8ac5231e036155451db988a26de6fb2df6da6f7d961115d
 

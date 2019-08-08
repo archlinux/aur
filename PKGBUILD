@@ -4,7 +4,7 @@
 pkgbase=('ogre-1.9')
 pkgname=('ogre-1.9' 'ogre-docs-1.9')
 pkgver=1.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Scene-oriented, flexible 3D engine written in C++'
 arch=('x86_64')
 url='http://www.ogre3d.org'
@@ -12,7 +12,7 @@ license=('custom:MIT')
 depends=('freeimage' 'freetype2' 'libxaw' 'libxrandr' 'openexr'
          'nvidia-cg-toolkit' 'zziplib' 'sdl2' 'glu' 'tinyxml')
 makedepends=('cmake' 'doxygen' 'graphviz' 'ttf-dejavu' 'mesa' 'python' 'swig' 'systemd')
-provides=('ogre' 'ogre-docs')
+provides=('ogre=1.9' 'ogre-docs=1.9')
 source=("https://github.com/OGRECave/ogre/archive/v${pkgver}.tar.gz")
 sha512sums=('69e1ea27ef3126ac0e09be9c1f8a9fc762630cd236ce6c3352a550ad977925387b1dfb9d124cc27bb8ac5231e036155451db988a26de6fb2df6da6f7d961115d')
 
