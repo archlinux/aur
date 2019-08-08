@@ -1,6 +1,7 @@
 # Maintainer: David Plassmann <arch[at]plassmann.biz>
 pkgname=xping-git
-pkgver=20150222
+_pkgname=xping
+pkgver=195
 pkgrel=1
 pkgdesc="A simple ping program continiously probing multiple hosts using icmp-echo"
 url="https://github.com/martintopholm/xping"
@@ -17,6 +18,11 @@ pkgrelname=xping
 build() {
     cd "$pkgrelname"
     make
+}
+
+pkgver() {
+  cd ${srcdir}/${_pkgname}
+  git rev-list --count HEAD
 }
 
 package() {
