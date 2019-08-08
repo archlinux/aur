@@ -2,7 +2,7 @@
 
 _basename=drive
 pkgname=$_basename-git
-pkgver=v0.3.9.1.r51.gb868c96
+pkgver=0.3.9.1.r51.gb868c96
 pkgrel=1
 pkgdesc="Google Drive client for the command line (development version)"
 arch=("i686" "pentium4" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
@@ -16,7 +16,7 @@ conflicts=("$_basename")
 
 pkgver() {
     cd "$srcdir/$_basename"
-    git describe --long --tags | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
