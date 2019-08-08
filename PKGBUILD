@@ -19,7 +19,7 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'chromium-vaapi-fix.patch'
         'brave-vaapi-enable.patch'
         'brave-launcher'
-        'brave.desktop')
+        'brave-browser.desktop')
 sha256sums=('SKIP'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
@@ -81,7 +81,7 @@ package() {
 
     cd "${srcdir}"
     install -Dm0755 brave-launcher "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm0644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
+    install -Dm0644 -t "${pkgdir}/usr/share/applications/" "${_reponame}.desktop"
     install -Dm0644 "${_reponame}/src/brave/app/theme/brave/product_logo_128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}/LICENSE"
     install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}/src/brave/components/brave_sync/extension/brave-sync/node_modules/electron/dist/LICENSES.chromium.html"
