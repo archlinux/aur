@@ -1,21 +1,21 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=4.10.2
+pkgver=4.14.1
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
-arch=('x86_64')
+arch=('any')
 url="https://www.deezer.com/"
 license=('custom:"Copyright (c) 2006-2018 Deezer S.A."')
-depends=('electron>=3.0.10' 'electron<4.0.0')
+depends=('electron4')
 provides=('deezer')
 options=('!strip')
-makedepends=('p7zip')
+makedepends=('p7zip' 'asar')
 source=(
 "$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
 "$pkgname.desktop"
 )
-md5sums=('74b51845d654091da2caed2a7507b36c'
+md5sums=('2fd38dda52c68f739569494f6db9630d'
          '98ec5effa2d9a1d8c3c030125a2937c0')
 
 package() {
@@ -26,17 +26,24 @@ package() {
 
     # Extract app from installer
     7z x -so $pkgname-$pkgver-setup.exe "\$PLUGINSDIR/app-32.7z" > app-32.7z
-    # Extract electron bundle from app archive
-    7z x -so app-32.7z "resources/app.asar" > app.asar
-    # Extract icon from app archive
-    7z x -so app-32.7z "resources/build/win/app.ico" > app.ico
+    # Extract app archive
+    7z x -y -bsp0 -bso0 app-32.7z
+
+    cd resources/
+    # Fix crash on startup since 4.14.1 (patch systray icon path)
+    asar extract app.asar app
+    sed -i 's/build\/linux\/systray.png/..\/..\/..\/share\/deezer\/systray.png/g' app/app/js/main/Utils/index.js
+    asar pack app app.asar
+
+    cd "${srcdir}"
 
     echo "#!/bin/sh" > deezer
-    echo "/usr/bin/electron /usr/share/deezer/app.asar" >> deezer
+    echo "exec electron4 /usr/share/deezer/app.asar \"\$@\"" >> deezer
 
-    install -Dm644 app.asar "$pkgdir"/usr/share/deezer/app.asar
-    install -Dm644 app.ico "$pkgdir"/usr/share/deezer/app.ico
+    install -Dm644 resources/app.asar "$pkgdir"/usr/share/deezer/
+    install -Dm644 resources/build/win/app.ico "$pkgdir"/usr/share/deezer/
+    install -Dm644 resources/build/win/systray.png "$pkgdir"/usr/share/deezer/
     install -Dm644 "$pkgname".desktop "$pkgdir"/usr/share/applications/
-    install -Dm755 deezer "$pkgdir"/usr/bin/deezer
+    install -Dm755 deezer "$pkgdir"/usr/bin/
 
 }
