@@ -1,4 +1,6 @@
 # Maintainer: Max Mehl <aur at mehl dot mx>
+# SPDX-FileCopyrightText: 2019 Max Mehl
+# SPDX-License-Identifier: CC0-1.0
 
 pkgname='reuse'
 pkgver=0.4.1
@@ -6,7 +8,7 @@ pkgrel=1
 pkgdesc='Helper tool for providing and confirming copyright and licensing information'
 arch=('any')
 url='https://git.fsfe.org/reuse/tool'
-license=('GPL3')
+license=('GPL-3.0-or-later' 'Apache-2.0' 'CC-BY-SA-4.0' 'CC0-1.0')
 depends=('python' 'git')
 makedepends=('python-setuptools')
 source=(
