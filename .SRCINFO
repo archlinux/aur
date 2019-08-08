@@ -1,0 +1,18 @@
+pkgbase = python2-requests-cache
+	pkgdesc = Transparent persistent cache for http://python-requests.org/ library ⛺ https://pypi.org/project/requests-cache/
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/reclosedev/requests-cache
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-requests
+	provides = python2-requests-cache
+	conflicts = python-requests-cache
+	source = requests-cache-0.5.0.tar.gz::https://github.com/reclosedev/requests-cache/archive/v0.5.0.tar.gz
+	sha256sums = 7846f008cd09ee1d38b5285bf098f9f0246cd1019d8c519d23184c1616342217
+
+pkgname = python2-requests-cache
+
