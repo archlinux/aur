@@ -30,7 +30,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.9.0.r4109.2b3f27c1
+pkgver=2.9.0.r4143.c96563ce
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://agraef.github.io/purr-data/"
@@ -38,12 +38,12 @@ arch=('i686' 'x86_64')
 license=('BSD')
 depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'flite' 'fluidsynth' 'freeglut' 'ftgl' 'glew'
-  'gsl' 'gsm' 'hicolor-icon-theme' 'libmagick6' 'jack' 'ladspa' 'lame'
+  'gsl' 'gsm' 'hicolor-icon-theme' 'imagemagick' 'jack' 'ladspa' 'lame'
   'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
-  'libxxf86vm' 'libtiff' 'libiec61883' 'libraw1394'
+  'libxxf86vm' 'libtiff' 'libraw1394'
   'libv4l' 'libvorbis' 'portaudio'
   'smpeg' 'speex' 'stk' 'zlib'
-  'alsa-lib' 'gconf' 'gtk2' 'nss' 'libxtst' 'libxss' 'ttf-dejavu')
+  'alsa-lib' 'gconf' 'gtk2' 'gtk3' 'nss' 'libxtst' 'libxss' 'ttf-dejavu')
 makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
 conflicts=('purr-data')
 install=purr-data.install
@@ -57,18 +57,18 @@ options=('!makeflags' '!strip')
 # depend on upstream tagging releases and candidates, and also allows us to
 # deal with situations where upstream lags behind on already submitted merge
 # requests with important bugfixes and additions.
-source=("$pkgname::git+https://bitbucket.org/agraef/purr-data.git#branch=release"
-	"gem-magick6-fixes.patch")
-md5sums=('SKIP'
-         'f6ed0798a5afc17e46bc16ef97e647c1')
+# NOTE: Temporarily switched to the testing branch to incorporate important
+# bugfixes and updates which haven't been merged upstream yet.
+source=("$pkgname::git+https://bitbucket.org/agraef/purr-data.git#branch=testing")
+md5sums=('SKIP')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
-nwjsver=0.22.1
+nwjsver=0.24.4
 source_common="http://dl.nwjs.io/v$nwjsver/$nwjsname-v$nwjsver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-md5sums_i686=('e4708d59006219eaa2c54cdb1d682794')
-md5sums_x86_64=('30b00dd353ee96af0cb5e511078f79ca')
+md5sums_i686=('a7afcd35d2891e7b7c78db5ca7a625a3')
+md5sums_x86_64=('82f20fe9081201db81652eb066c29f9b')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="ia32"
@@ -103,8 +103,6 @@ prepare() {
   # copy the nw.js sources to where purr-data wants them
   rm -rf pd/nw/nw
   cp -a $srcdir/$nwjsname-v$nwjsver-linux-$_arch pd/nw/nw
-  # make sure to link Gem with ImageMagick 6, it doesn't compile with 7
-  cd $srcdir/$pkgname && patch -Np1 < $srcdir/gem-magick6-fixes.patch
 }
 
 build() {
