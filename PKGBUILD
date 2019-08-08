@@ -4,8 +4,8 @@
 
 _pkgname=balena-etcher
 pkgname=balena-etcher-git
-pkgver=1.5.52.r0.g54dca31d
-pkgrel=2
+pkgver=1.5.53.r0.gf4ac4dee
+pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily. (git version)'
 arch=(x86_64)
 url='https://www.balena.io/etcher/'
@@ -24,7 +24,7 @@ source=("${pkgname}::git+https://github.com/balena-io/etcher.git"
         'balena-etcher-electron.desktop')
 sha256sums=('SKIP'
             'SKIP'
-            '4499f316e4de865696312b31545f8df62850aad4492bcc9736cccb6d8eeb96ec'
+            '135ce3deefb9f571b0a28abb7f6c678eea10546a537618b8a69c57012906a0eb'
             '89291532fb6e6c5555b43d61c9ba3df103bca0eace040483884b86fd30dca3e4')
 
 pkgver() {
