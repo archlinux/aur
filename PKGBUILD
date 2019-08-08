@@ -32,6 +32,7 @@ package() {
 	mkdir -p "$pkgdir/usr/share/icons/hicolor/32x32/apps/"
 	mkdir -p "$pkgdir/usr/share/icons/hicolor/48x48/apps/"
 	mkdir -p "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
+	mkdir -p "$pkgdir/usr/share/applications/"
 	make install INSTALLDIR="$pkgdir/usr/bin/" ICONSDIR="$pkgdir/usr/share/icons/hicolor/" APPDIR="$pkgdir/usr/share/applications/"
 }
 
