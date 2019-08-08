@@ -1,9 +1,9 @@
 # Maintainer: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=thruk
-_pkgver=2.14-2
+_pkgver=2.30-3
 pkgver=${_pkgver/-/.}
-pkgrel=5
+pkgrel=1
 pkgdesc="Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken"
 arch=('any')
 url="http://thruk.org"
@@ -20,7 +20,7 @@ backup=('etc/thruk/cgi.cfg' 'etc/thruk/htpasswd'
         'etc/thruk/naglint.conf' 'etc/httpd/conf/extra/thruk.conf'
         'etc/thruk/thruk_local.conf' 'etc/logrotate.d/thruk-base')
 source=(http://download.thruk.org/pkg/v$_pkgver/src/$pkgname-$_pkgver.tar.gz)
-md5sums=('d15292905a702e9819467e94c22b505a')
+md5sums=('db908f8331e5023ffb318ee80ab88442')
 
 build() {
   cd $pkgname-$_pkgver
