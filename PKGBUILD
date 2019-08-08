@@ -1,27 +1,31 @@
-# Maintainer : Ionut Biru <ibiru@archlinux.org>
+# Maintainer  : Vincent Grande <shoober420@gmail.com>
+# Contributor : Ionut Biru <ibiru@archlinux.org>
+
 _pkgbasename=pixman
 pkgname=lib32-$_pkgbasename-git
-pkgver=0.35.1.2348.489fa0d
+pkgver=pixman+0.38.4+11+gfd5c0da
 pkgrel=1
 pkgdesc="Pixman library (32-bit)"
 arch=('x86_64')
-url="http://xorg.freedesktop.org"
+url="https://xorg.freedesktop.org"
 license=('custom')
+provides=(lib32-pixman)
+conflicts=(lib32-pixman)
 depends=('lib32-glibc' $_pkgbasename)
 makedepends=('gcc-multilib')
-provides=('lib32-pixman')
-conflicts=('lib32-pixman')
-source=("git://anongit.freedesktop.org/pixman")
+source=(git+https://gitlab.freedesktop.org/pixman/pixman.git)
 sha1sums=('SKIP')
 
+
+
 pkgver() {
-  cd "pixman"
+     cd pixman
+     git describe --tags | sed 's/-/+/g'
+}
 
-  for i in pixman_major pixman_minor pixman_micro; do
-    local _$i=$(grep -m 1 $i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
-  done
-
-  echo ${_pixman_major}.${_pixman_minor}.${_pixman_micro}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+prepare() {
+   cd pixman
+   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -29,13 +33,13 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cd "${srcdir}/pixman"
-  ./autogen.sh --prefix=/usr --libdir=/usr/lib32 --disable-static
+  cd "${srcdir}/${_pkgbasename}"
+  ./configure --prefix=/usr --libdir=/usr/lib32 --disable-static
   make
 }
 
 package() {
-  cd "${srcdir}/pixman"
+  cd "${srcdir}/${_pkgbasename}"
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/include
   mkdir -p "$pkgdir/usr/share/licenses"
