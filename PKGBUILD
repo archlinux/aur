@@ -2,8 +2,8 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=haskell-gi
 _hkgname=haskell-gi
-pkgver=0.22.6
-pkgrel=2
+pkgver=0.23.0
+pkgrel=1
 epoch=1
 pkgdesc="Generate Haskell bindings for GObject Introspection capable libraries
 "
@@ -13,13 +13,12 @@ arch=('i686' 'x86_64')
 depends=("ghc-libs" "gobject-introspection" 'haskell-base' 'haskell-safe' 'haskell-bytestring' 'haskell-mtl' 'haskell-regex-tdfa' "haskell-xdg-basedir" 'haskell-xml-conduit' 'haskell-transformers' 'haskell-pretty-show' 'haskell-process' 'haskell-gi-base' 'haskell-directory')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz"
-         "fix.patch::https://github.com/haskell-gi/haskell-gi/commit/cf85114f5a891acfedddc2d2caadd17d22ba2614.patch")
-sha256sums=('b5221255a030cdfaaa7644bdb77a0c6a06646f84d125b72df702efb0bbed3154'
-            '89ad13a2a761c901bd67ad0d2320965ebf82d445acfd2a61152a3a7023ac5265')
+         )
+sha256sums=('8ad81ef082c71f41c6c6e0afbd8779497da6ffb1e9e7c2b207efe0b56aa7a211')
 
 prepare() {
   cd "${srcdir}/${_hkgname}-${pkgver}"
-  patch -Np1 -i ../fix.patch
+  
 }
 build() {
 	cd "${srcdir}/${_hkgname}-${pkgver}"
