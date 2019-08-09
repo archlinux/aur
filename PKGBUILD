@@ -1,4 +1,3 @@
-# Maintainer: Daniel Kronberg <danikron at protonmail dot com>
 pkgname=otf-font-awesome-5-free
 pkgver=5.10.1
 pkgrel=1
