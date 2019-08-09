@@ -1,23 +1,25 @@
-# Maintainer: Bruce Zhang
+# Maintainer: ccat3 <c0ldcat3z@gmail.com>
+# Contributor: bruceutut <zttt183525594@gmail.com>
+
 pkgname=insomnia-src
 _name=insomnia
-pkgver=6.5.4
-pkgrel=2
+pkgver=6.6.2
+pkgrel=1
 pkgdesc="Cross-platform HTTP and GraphQL Client (Build from source)"
 arch=('x86_64' 'i686')
 url="https://github.com/getinsomnia/insomnia"
 license=('MIT')
-depends=('electron')
+depends=('electron3')
 provides=("$_name")
 conflicts=("$_name")
 source=("$_name-$pkgver.src.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b22d7932d25356beb5658beb0e8bc65863d0595a2df91ef1d7ce3678678f40c3')
+sha256sums=('815a4c5ab70218c92aa0082afa175ef4e5dd58d2e831655a48c960ecb64d6665')
 
 prepare() {
 	cd "$_name-$pkgver/packages/insomnia-app"
 
 	# Make electron version to match community/electron
-	electronV=$(electron --version)
+	electronV=$(electron3 --version)
 	electronVer=${electronV#v}
 	sed -i "/\"electron\": \"/c\\\"electron\": \"$electronVer\"," package.json
 
@@ -27,7 +29,7 @@ prepare() {
 	sed -i 's/"tar.gz",//' .electronbuilder
 	sed -i 's/"snap",//' .electronbuilder
 	sed -i 's/"rpm"/"dir"/' .electronbuilder
-	sed -i 's/"appId": "com.insomnia.app",/"appId": "com.insomnia.app","electronDist": "\/usr\/lib\/electron",/' .electronbuilder
+	sed -i 's/"appId": "com.insomnia.app",/"appId": "com.insomnia.app","electronDist": "\/usr\/lib\/electron3",/' .electronbuilder
 }
 
 build() {
@@ -47,7 +49,7 @@ package() {
 
 	# Install start script
 	echo "#!/usr/bin/env sh
-exec electron /usr/share/insomnia/app.asar \$@
+exec electron3 /usr/share/insomnia/app.asar \$@
 " > "$srcdir/insomnia.sh"
 	install -Dm755 "$srcdir/insomnia.sh" "$pkgdir/usr/bin/insomnia"
 
