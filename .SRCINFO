@@ -1,7 +1,7 @@
 pkgbase = julia-customunitranges
 	pkgdesc = Package-specific AbstractUnitRange types for julia
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JuliaArrays/CatIndices.jl
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = julia-customunitranges
 	depends = julia
 	depends = julia-compat
 	depends = julia-loadpath
-	source = julia-customunitranges-0.2.0.tar.gz::https://github.com/JuliaArrays/CustomUnitRanges.jl/archive/v0.2.0.tar.gz
+	source = julia-customunitranges-0.2.0.tar.gz::https://github.com/JuliaArrays/CatIndices.jl/archive/v0.2.0.tar.gz
 	source = julia-customunitranges-0.2.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/fbfeb69a2884a8188446ede9713b4a6fab54ac9d/C/CustomUnitRanges/Deps.toml
 	source = julia-customunitranges-0.2.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/fbfeb69a2884a8188446ede9713b4a6fab54ac9d/C/CustomUnitRanges/Package.toml
 	source = julia-customunitranges-0.2.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/fbfeb69a2884a8188446ede9713b4a6fab54ac9d/C/CustomUnitRanges/Versions.toml
