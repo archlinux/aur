@@ -9,7 +9,7 @@ pkgbase = aocc
 	options = staticlibs
 	options = !strip
 	options = libtool
-	source = file://aocc-compiler-2.0.0.tar
+	source = local://aocc-compiler-2.0.0.tar
 	md5sums = 09d64260794b40901c77504317fbd0ad
 
 pkgname = aocc
