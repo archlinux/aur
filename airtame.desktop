@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Airtame
-Exec=/opt/airtame/launch-airtame.sh
-Terminal=false
-Type=Application
-Icon=/opt/airtame/icon.png
-Categories=AudioVideo
-NoDisplay=false
