@@ -1,0 +1,26 @@
+pkgbase = fuzion-git
+	pkgdesc = Fuzion is a free-as-in-freedom CSGO cheat
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/LWSS/Fuzion
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = sdl2
+	makedepends = patchelf
+	depends = gdb
+	optdepends = cartographer-git: Load Fuzion hidden from /proc maps
+	source = git://github.com/LWSS/Fuzion.git
+	source = git://github.com/LWSS/imgui.git
+	source = fuzion-load
+	source = fuzion-unload
+	source = build
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 6cbff5e6ef37e08a44e440f08bf6910eb508b6795c9cac102d18f7cd92a16174
+	sha256sums = 87c41293afe0c1cfaad67b24144dc48b737011b92a9da4029768257711250cc8
+	sha256sums = f6caf87a562b1aecd86bd80d17a0a3912f0095207f5416f873928cc7539e8e87
+
+pkgname = fuzion-git
+
