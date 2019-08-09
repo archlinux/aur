@@ -1,0 +1,12 @@
+pkgbase = manjarowish-lxqt-kwin-dark-settings
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/librewish/manjarowish-lxqt-kwin-dark-settings
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/librewish/manjarowish-lxqt-kwin-dark-settings.git#branch=master
+	sha256sums = SKIP
+
+pkgname = manjarowish-lxqt-kwin-dark-settings
+
