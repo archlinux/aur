@@ -1,6 +1,6 @@
 pkgbase = pd-l2ork-git
 	pkgdesc = L2Ork (Linux Laptop Orchestra) version of PureData (git version)
-	pkgver = r1760.ecca59b6
+	pkgver = r1761.eab3e978
 	pkgrel = 1
 	url = http://l2ork.music.vt.edu/main/?page_id=56
 	install = pd-l2ork.install

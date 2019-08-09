@@ -11,7 +11,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork-git
-pkgver=r1760.ecca59b6
+pkgver=r1761.eab3e978
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData (git version)"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
@@ -62,7 +62,9 @@ build() {
   unset INCLUDES
 
   cd $srcdir/$pkgname/l2ork_addons
-  ./tar_em_up.sh $buildopt -n
+  # -k: try to fix IEM GUI sizes (needed since tar_em_up.sh will only detect
+  # newer Ubuntu systems automagically)
+  ./tar_em_up.sh $buildopt -n -k
 }
 
 package() {
