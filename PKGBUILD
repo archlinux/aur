@@ -2,66 +2,36 @@
 
 pkgname=julia-fixedpointnumbers
 _pkgname=FixedPointNumbers
-pkgver=0.5.3
-pkgrel=4
+pkgver=0.6.1
+pkgrel=1
 pkgdesc='Fixed point types for Julia'
 arch=(any)
 url=https://github.com/JuliaMath/FixedPointNumbers.jl
 license=(MIT)
 depends=(julia julia-compat julia-loadpath)
+makedepends=(julia-distrohelper)
 
-_commit=b150d0d4335c17bb0e1a72f310ce21116fb9de95
-source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaMath/$_pkgname.jl/archive/v$pkgver.tar.gz
-        $pkgname-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
-        $pkgname-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
-        $pkgname-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('b24651e1f4e87cb1fae625cef50caabfff36dcf5b448a8c0d803eb6c06faa39d'
-            'ad085f3a880b61f931088db9d9b70ab69fabf9a92084ae8be8cab1ef3691150b'
+_commit=d74523d5b0214e557417f9120023b0623b730971
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
+        $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
+        $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
+        $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
+sha256sums=('4e2aadbd8bf1b20e73fbd7dd3146d00fd6b5d39bd31ea17f411cd4ef7f1d1aa4'
+            '18fe0f0b68b046357bd5d51a0dfadd968169a6841468bcbde57c2f666fe0de87'
             'ccc35c4ecc6b3c409acb4d1078d27b571a60750e9dfb3c73a135ed8305e919e0'
-            'a054fe95daecfa16cf8b32f30bb8e051e440e1e8b1c7f1a88a64d2f8eb000bda')
+            '07321646dc19edca1f4373b53371ec94f9be416a0317ae0d72d6b1ce95323ee8')
 
 _slug() {
-	local uuid=$(grep uuid $pkgname-Package.toml | cut -f3 -d' ')
-	local sha1=$(grep \"$pkgver\" -a1 $pkgname-Versions.toml | tail -n1 | cut -f3 -d' ')
-	julia -e "u = Base.UUID($uuid);
-	          s = Base.SHA1(hex2bytes($sha1));
-	          println(Base.version_slug(u,s));"
+	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
 }
 
-_deps() {
-	julia -e "using Pkg
-
-	          alldeps = Pkg.TOML.parsefile(\"$srcdir/$pkgname-Deps.toml\")
-	          version = VersionNumber(\"$pkgver\")
-	          majmin  = VersionNumber(\"${pkgver%.*}\")
-	          deps = Dict{String,Any}()
-
-	          for (key, value) in alldeps
-	            vers = split(key, \"-\")
-	            lower = VersionNumber(vers[1])
-	            if length(vers) == 2
-	              upper = VersionNumber(vers[2])
-	              if (majmin  >= lower && majmin  <= upper) ||
-	                 (version >= lower && version <= upper)
-	                merge!(deps, value)
-	              end
-	            elseif length(vers) == 1
-	              if majmin == lower || version == lower
-	                merge!(deps, value)
-	              end
-	            end
-	          end
-
-	          Pkg.TOML.print(deps)"
+_project() {
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
 }
 
 prepare() {
 	# Generate a Project.toml from Registry metadata
-	rm -f Project.toml && touch Project.toml
-	cat $pkgname-Package.toml       >> Project.toml
-	echo -e "version = \"$pkgver\"" >> Project.toml
-	echo -e "\n[deps]"              >> Project.toml
-	echo -e "$(_deps)" | sort       >> Project.toml
+	rm -f Project.toml && _project
 }
 
 package() {

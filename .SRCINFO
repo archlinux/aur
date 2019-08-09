@@ -1,21 +1,22 @@
 pkgbase = julia-fixedpointnumbers
 	pkgdesc = Fixed point types for Julia
-	pkgver = 0.5.3
-	pkgrel = 4
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://github.com/JuliaMath/FixedPointNumbers.jl
 	arch = any
 	license = MIT
+	makedepends = julia-distrohelper
 	depends = julia
 	depends = julia-compat
 	depends = julia-loadpath
-	source = julia-fixedpointnumbers-0.5.3.tar.gz::https://github.com/JuliaMath/FixedPointNumbers.jl/archive/v0.5.3.tar.gz
-	source = julia-fixedpointnumbers-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/b150d0d4335c17bb0e1a72f310ce21116fb9de95/F/FixedPointNumbers/Deps.toml
-	source = julia-fixedpointnumbers-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/b150d0d4335c17bb0e1a72f310ce21116fb9de95/F/FixedPointNumbers/Package.toml
-	source = julia-fixedpointnumbers-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/b150d0d4335c17bb0e1a72f310ce21116fb9de95/F/FixedPointNumbers/Versions.toml
-	sha256sums = b24651e1f4e87cb1fae625cef50caabfff36dcf5b448a8c0d803eb6c06faa39d
-	sha256sums = ad085f3a880b61f931088db9d9b70ab69fabf9a92084ae8be8cab1ef3691150b
+	source = julia-fixedpointnumbers-0.6.1.tar.gz::https://github.com/JuliaMath/FixedPointNumbers.jl/archive/v0.6.1.tar.gz
+	source = julia-fixedpointnumbers-0.6.1-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/d74523d5b0214e557417f9120023b0623b730971/F/FixedPointNumbers/Deps.toml
+	source = julia-fixedpointnumbers-0.6.1-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/d74523d5b0214e557417f9120023b0623b730971/F/FixedPointNumbers/Package.toml
+	source = julia-fixedpointnumbers-0.6.1-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/d74523d5b0214e557417f9120023b0623b730971/F/FixedPointNumbers/Versions.toml
+	sha256sums = 4e2aadbd8bf1b20e73fbd7dd3146d00fd6b5d39bd31ea17f411cd4ef7f1d1aa4
+	sha256sums = 18fe0f0b68b046357bd5d51a0dfadd968169a6841468bcbde57c2f666fe0de87
 	sha256sums = ccc35c4ecc6b3c409acb4d1078d27b571a60750e9dfb3c73a135ed8305e919e0
-	sha256sums = a054fe95daecfa16cf8b32f30bb8e051e440e1e8b1c7f1a88a64d2f8eb000bda
+	sha256sums = 07321646dc19edca1f4373b53371ec94f9be416a0317ae0d72d6b1ce95323ee8
 
 pkgname = julia-fixedpointnumbers
 
