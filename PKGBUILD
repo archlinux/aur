@@ -3,7 +3,7 @@
 pkgname=julia-orderedcollections
 _pkgname=OrderedCollections
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Julia implementation of associative containers that preserve insertion order '
 arch=(any)
 url="https://github.com/JuliaCollections/OrderedCollections.jl"
@@ -26,7 +26,7 @@ _slug() {
 }
 
 _project() {
-	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml $pkgver
 }
 
 prepare() {
