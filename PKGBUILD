@@ -60,8 +60,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-mainline-bcachefs
-_srcver_tag=5.1
-pkgver=v5.1.20
+_srcver_tag=5.3
+pkgver=v5.3_rc3
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
@@ -77,7 +77,7 @@ makedepends=(
 options=('!strip')
 
 _reponame="bcachefs"
-_repo_url="https://github.com/koverstreet/${_reponame}"
+_repo_url="https://github.com/nicman23/${_reponame}"
 
 _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
@@ -94,8 +94,6 @@ source=(
     60-linux.hook  # pacman hook for depmod
     90-linux.hook  # pacman hook for initramfs regeneration
     linux.preset   # standard config files for mkinitcpio ramdisk
-    001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch
-    002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
 )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886'    # Linus Torvalds
@@ -104,12 +102,10 @@ validpgpkeys=(
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            'f78db94e15ed4a5abca28238d2a315dcf13ff20e04694497275208b4aad18b1ded8b715bad546c623b0138747e6de4c070c28b5d3cc383bdd8b5959afc58294b'
+            '50d550c97a61eea91139e24024a9b72d73bd36b6dbb213d10dec5b76f1baeb14ddf7aaa47473c0bb60fcbe2637134cc8e3ccb6e2b50df8a28e89527cb70b00f4'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '6792e775464ba41b03938fd42d71caf22c85a4c63a255f5ff807da6101a42afe2f9cb940bd5e80b1e7d21a0b959962d90cc2452920597e7ba0bcb15d37c15233'
-            'dc6321a572ac365f73b924b3bd8cd26112a0256baf358e3893b90a623e4c0a9eb3667b23f86570581371f993f2c17998e31e27aa36eee925a0589b20b71b65ff'
 )
 
 _kernelname=${pkgbase#linux}
@@ -118,28 +114,22 @@ _kernelname=${pkgbase#linux}
 pkgver() {
   cd upstream
   git fetch --tags &> /dev/null
-  _srcver_tag=$(git tag | grep v${_srcver_tag} | grep -v '-' | sort -t. -k 1,1n -k 2,2n -k 3,3n | tail -n1)
-  echo "${_srcver_tag//-/.}"
+# _srcver_tag=$(git tag | grep v${_srcver_tag} | grep -v '-' | sort -t. -k 1,1n -k 2,2n -k 3,3n | tail -n1)
+# [ -z "$_srcver_tag" ] &&
+   _srcver_tag=$(git tag | grep v${_srcver_tag} | grep '-' | tail -n1)
+msg2 "${_srcver_tag}"
+  echo "${_srcver_tag}" | sed 's/-/_/'
 }
 
 actual_prepare() {
-#prepare() {
+    _srcver_tag=$(echo $pkgver | sed 's/_/-/')
+    msg2 "Latest tag found: ${_srcver_tag}"
+
     cd ${_reponame}
 
-    msg2 "Latest tag found: ${pkgver}"
-    msg2 "Setting version..."
-    scripts/setlocalversion --save-scmversion
-    echo "-$pkgrel" > localversion.10-pkgrel
-    echo "$_kernelname" > localversion.20-pkgname
-
-    # msg2 "Adding patches from Arch Linux kernel repository..."
-    # git remote add arch_stable https://git.archlinux.org/linux.git || true
-    # git pull --no-edit arch_stable "v${_srcver_tag}"
-
-    # msg2 "Adding patches from Linux upstream kernel repository..."
     git remote add upstream ../upstream || true
     git fetch --tags upstream
-    if ! git merge v${_srcver_tag}
+    if ! git merge ${_srcver_tag}
       then if ! git diff --name-only --diff-filter=U | xargs git checkout --theirs
         then git diff --name-only --diff-filter=U |
         while read line
@@ -150,14 +140,10 @@ actual_prepare() {
       fi
     fi
 
-    msg2 "Arch patches"
-    patch -Np1 -i "${srcdir}/001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch"
-    patch -Np1 -i "${srcdir}/002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
-#    sed -i -e "s/^EXTRAVERSION =.*/EXTRAVERSION = -arch1/" Makefile
-
-    # https://github.com/graysky2/kernel_gcc_patch
-    msg2 "Patching to enabled additional gcc CPU optimizatons..."
-    patch -Np1 -i "$srcdir/${_reponame_gcc_patch}/${_gcc_patch_name}"
+    msg2 "Setting version..."
+    scripts/setlocalversion --save-scmversion
+    echo "-$pkgrel" > localversion.10-pkgrel
+    echo "$_kernelname" > localversion.20-pkgname
 
     msg2 "Setting config..."
     cp ../config .config
@@ -165,7 +151,8 @@ actual_prepare() {
     if [ -n "$_subarch" ]; then
         yes "$_subarch" | make oldconfig
     else
-        make prepare
+        yes '
+' | make prepare
     fi
 
     ### Optionally load needed modules for the make localmodconfig
@@ -187,7 +174,7 @@ actual_prepare() {
     make -s kernelrelease > ../version
     msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 
-    [[ -z "$_makenconfig" ]] || make nconfig
+    [[ -z "$_makenconfig" ]] || make menuconfig
 
     # save configuration for later reuse
     cat .config > "${startdir}/config.last"
@@ -234,7 +221,7 @@ _package() {
     ln -sr "$extradir" "$modulesdir/extramodules"
 
     # remove build and source links
-    rm "$modulesdir"/{source,build}
+#   rm "$modulesdir"/{source,build}
 
     msg2 "Installing hooks..."
     # sed expression for following substitutions
@@ -371,7 +358,7 @@ _package-docs() {
 pkgname=(
     "$pkgbase"
     "$pkgbase-headers"
-    "$pkgbase-docs"
+#    "$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
