@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duettools
-pkgver=1.0.3.0
+pkgver=1.0.3.1
 pkgrel=1
 pkgdesc="Optional tools (code examples)"
 arch=('armv7h')
@@ -8,10 +8,10 @@ url="https://github.com/chrishamm/DuetSoftwareFramework"
 license=('GPL3')
 provides=('duettools')
 conflicts=('duettools')
-depends=("duetcontrolserver=${pkgver}")
+depends=("duetcontrolserver>=${pkgver}")
 options=(!strip staticlibs)
 source=("https://chrishamm.io/debian/dists/buster/dsf/binary-armhf/duettools_${pkgver}.deb")
-sha256sums=('1f88b3014b4c3802f9f896bb45485341c3ecede4080597cb3c1d6cc5c800c520')
+sha256sums=('5c927eda24b1d99c157086fc20fa34a7ba4cd482a96339dd81cba5d9bddf8605')
 
 prepare() {
     tar -xf data.tar.xz
