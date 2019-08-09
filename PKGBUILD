@@ -5,13 +5,13 @@
 
 _pkgname=babl
 pkgname="${_pkgname}-qfix-git"
-pkgver=0.1.68.7.g2fa0be1
+pkgver=0.1.70.14.g868a077
 pkgrel=1
 pkgdesc="babl is a dynamic, any to any, pixel format translation library."
 arch=('x86_64')
 url="https://www.gegl.org/babl"
 license=('LGPL3')
-depends=('glibc')
+depends=('glibc' 'gobject-introspection')
 makedepends=('git' 'meson' 'lcms2')
 provides=("babl=${pkgver}")
 conflicts=('babl')

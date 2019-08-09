@@ -1,6 +1,6 @@
 pkgbase = babl-qfix-git
 	pkgdesc = babl is a dynamic, any to any, pixel format translation library.
-	pkgver = 0.1.68.7.g2fa0be1
+	pkgver = 0.1.70.14.g868a077
 	pkgrel = 1
 	url = https://www.gegl.org/babl
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = babl-qfix-git
 	makedepends = meson
 	makedepends = lcms2
 	depends = glibc
-	provides = babl=0.1.68.7.g2fa0be1
+	depends = gobject-introspection
+	provides = babl=0.1.70.14.g868a077
 	conflicts = babl
 	options = !libtool
 	source = git+https://gitlab.gnome.org/GNOME/babl
