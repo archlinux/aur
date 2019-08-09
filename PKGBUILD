@@ -2,7 +2,7 @@
 
 pkgbase=poppler-lcd
 pkgname=('poppler-lcd' 'poppler-glib-lcd' 'poppler-qt5-lcd')
-pkgver=0.76.0
+pkgver=0.79.0
 pkgrel=1
 arch=(x86_64)
 license=('GPL')
@@ -11,10 +11,10 @@ makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'gtk3' 'pkgco
              'cmake' 'python') 
 options=('!emptydirs')
 url="https://github.com/jonathanffon/poppler-lcd-patch"
-_commit=14e76ddd729edebd07a97eed8d1d8fe17125d85d
+_commit=6518e62aabc3dd98add63af1bb7198699042304d
 source=("https://poppler.freedesktop.org/poppler-${pkgver}.tar.xz"
         "git+https://github.com/jonathanffon/poppler-lcd-patch#commit=${_commit}")
-sha256sums=('370f5fcfe2bbf0c76fc394d338cd72ed7f2044b67f4eb4b115eb074ccfc70d63'
+sha256sums=('f985a4608fe592d2546d9d37d4182e502ff6b4c42f8db4be0a021a1c369528c8'
             'SKIP')
 
 prepare() {
