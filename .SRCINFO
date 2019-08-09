@@ -1,7 +1,7 @@
 pkgbase = julia-parsers
 	pkgdesc = fast parsing machinery for basic types in Julia
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JuliaData/Parsers.jl
 	arch = any
 	license = MIT

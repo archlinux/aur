@@ -3,7 +3,7 @@
 pkgname=julia-parsers
 _pkgname=Parsers
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='fast parsing machinery for basic types in Julia'
 arch=(any)
 url=https://github.com/JuliaData/Parsers.jl
@@ -28,7 +28,7 @@ _slug() {
 }
 
 _project() {
-	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml $pkgver
 }
 
 prepare() {
