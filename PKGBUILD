@@ -4,20 +4,20 @@
 pkgname=julia-distrohelper
 _pkgname=DistroHelper.jl
 _pkgver=0.1.0
-_commit=fa337bc4bbfb58428f0255c1e8903be5a1be57a3
-pkgver=0.1.0r31.fa337bc
-pkgrel=2
+_commit=dabf5af662307865a88274c4d89fdf5f0b2ad667
+pkgver=0.1.0r32.dabf5af
+pkgrel=1
 pkgdesc="DistroHelper.jl (dh_julia)"
 arch=(any)
 url="https://github.com/cdluminate/DistroHelper.jl"
 license=('Custom:Expat')
 source=("git+$url.git#commit=$_commit"
         distro-project-full.diff
-        https://raw.githubusercontent.com/JuliaLang/Pkg.jl/b807801a7749e42d34e4157d24aa6ecaf50a95bb/src/versions.jl
+        https://raw.githubusercontent.com/JuliaLang/Pkg.jl/889a5dd661d5f843afffd1d6ae47b4bd2ab32811/src/versions.jl
         versionrange-check.diff)
 sha256sums=('SKIP'
             '0c9c185024e335bba20f1907754c1057cf6b43b74f0b7d1490b5c2099b3e5656'
-            '208d54252ea1a59eb396f3aafd1180b37ee950112e80554d7ce62983d0f52ec0'
+            '09cb809f94a29d6b576e6dbd5cc17e7534168b725c5106cdddd09ccafbc46964'
             '5795b95c7fe46116fb87dc24cda16b5da1b2ce3d0ec215bd97626d3299402c61')
 
 pkgver() {
