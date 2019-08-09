@@ -1,0 +1,18 @@
+pkgbase = powertool
+	pkgdesc = A simple power management script
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/plasmicplexus/powertool
+	install = powertool.install
+	arch = any
+	license = GPL3
+	depends = sudo
+	optdepends = brightnessctl: brightness control
+	optdepends = cpupower: CPU frequency control
+	optdepends = networkmanager: WiFi control
+	optdepends = tpacpi-bat: battery charge thresholds
+	source = https://gitlab.com/plasmicplexus/powertool/-/archive/0.1/powertool-0.1.tar.gz
+	md5sums = d9015fecbf5a803323db745fd6a2bcd9
+
+pkgname = powertool
+
