@@ -1,0 +1,31 @@
+pkgbase = mullvad-vpn-beta
+	pkgdesc = VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy
+	pkgver = 2019.7
+	pkgrel = 1
+	url = https://www.mullvad.net
+	install = mullvad-vpn-beta.install
+	arch = x86_64
+	license = GPL3
+	depends = gconf
+	depends = gtk3
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libxss
+	depends = nss
+	provides = mullvad-vpn
+	conflicts = mullvad-vpn-old
+	conflicts = mullvad-vpn
+	replaces = mullvad-vpn-old
+	replaces = mullvad-vpn
+	source = mullvad-daemon.service
+	source = mullvad-vpn.desktop
+	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2019.7-beta1/MullvadVPN-2019.7-beta1_x86_64.rpm
+	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2019.7-beta1/MullvadVPN-2019.7-beta1_x86_64.rpm.asc
+	validpgpkeys = A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF
+	md5sums = ed3a49275addbd5f2098a33bd605f1d3
+	md5sums = 9628b4f93e72f5cca0a47087ae10b0fd
+	md5sums = 8525f785caa496c20c097440e40ed16b
+	md5sums = SKIP
+
+pkgname = mullvad-vpn-beta
+

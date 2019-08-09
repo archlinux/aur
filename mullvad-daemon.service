@@ -1,0 +1,14 @@
+[Unit]
+Description=Mullvad VPN daemon
+Wants=network.target
+After=network-online.target
+StartLimitBurst=5
+StartLimitIntervalSec=20
+
+[Service]
+Restart=always
+RestartSec=1
+ExecStart="/opt/mullvad-vpn/resources/mullvad-daemon" -v --disable-stdout-timestamps
+
+[Install]
+WantedBy=multi-user.target
