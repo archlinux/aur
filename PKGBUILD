@@ -3,13 +3,13 @@
 
 pkgname=bitwarden
 pkgver=1.15.2
-pkgrel=2
+pkgrel=3
 _jslibcommit='6372d2410424e5ef04acd962598d242d2bce905e'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
 url='https://github.com/bitwarden/desktop'
 license=('GPL3')
-makedepends=('npm' 'nvm' 'jq')
+makedepends=('npm' 'nvm' 'jq' 'electron')
 depends=('alsa-lib' 'electron' 'gconf' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
 conflicts=('bitwarden-git' 'bitwarden-bin')
 options=('!strip' '!emptydirs')
