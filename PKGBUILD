@@ -3,7 +3,7 @@
 pkgname=julia-json
 _pkgname=JSON
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc='JSON parsing and printing for Julia'
 arch=(any)
 url=https://github.com/JuliaIO/JSON.jl
@@ -20,7 +20,7 @@ depends=(julia
 makedepends=(julia-distrohelper)
 
 _commit=364ab0ee90ba4e4567abbccddb8f6c26116b8527
-source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaIO/$_pkgname.jl/archive/v$pkgver.tar.gz
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
@@ -34,7 +34,7 @@ _slug() {
 }
 
 _project() {
-	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml $pkgver
 }
 
 prepare() {
