@@ -1,11 +1,12 @@
 pkgbase = versionist
 	pkgdesc = Flexible CHANGELOG generation toolkit that adapts to your commit conventions
 	pkgver = 5.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/balena-io/versionist
 	arch = any
 	license = APACHE
 	makedepends = npm
+	makedepends = jq
 	depends = nodejs>=4.0.0
 	noextract = versionist-5.3.0.tgz
 	source = http://registry.npmjs.org/versionist/-/versionist-5.3.0.tgz
