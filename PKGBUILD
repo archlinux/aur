@@ -3,7 +3,7 @@
 pkgname=julia-conda
 _pkgname=Conda
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Use conda as a cross-platform binary provider for Julia'
 arch=(any)
 url=https://github.com/JuliaPy/Conda.jl
@@ -27,7 +27,7 @@ _slug() {
 }
 
 _project() {
-	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml $pkgver
 }
 
 prepare() {
