@@ -11,29 +11,27 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork-git
-pkgver=r1716.a1424f0
-pkgrel=2
+pkgver=r1760.ecca59b6
+pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData (git version)"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
-  'flite1' 'fluidsynth' 'freeglut' 'ftgl' 'glew' 'gmerlin'
+  'flite' 'fluidsynth' 'freeglut' 'ftgl' 'glew'
   'gsl' 'gsm' 'hicolor-icon-theme' 'imagemagick' 'jack' 'ladspa' 'lame'
   'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
-  'libxxf86vm' 'libtiff' 'libiec61883' 'libunicap' 'libraw1394'
-  'libsndobj-git' 'libv4l' 'libvorbis' 'lua51' 'portaudio'
+  'libxxf86vm' 'libtiff' 'libiec61883' 'libraw1394'
+  'libv4l' 'libvorbis' 'lua51' 'portaudio'
   'smpeg' 'speex' 'stk' 'tk' 'tkpng' 'vlc' 'xapian-tcl-bindings' 'zlib')
 makedepends=('autoconf' 'automake' 'libtool' 'git')
 provides=('pd-l2ork')
 conflicts=('pd-l2ork')
 install=pd-l2ork.install
 options=('!makeflags')
-source=("$pkgname::git+https://github.com/pd-l2ork/pd.git"
-	"Gem-pix_colorclassify.patch"
+source=("$pkgname::git+https://github.com/pd-l2ork/pd.git#branch=arch-fixes"
 	"RTcmix-pd-LCPLAY-stabilize.patch")
 md5sums=('SKIP'
-         '33dc1880e38ac8dbc7aa5075bfe49abd'
          '39c53063dc18681f29b12c08d9c453aa')
 
 # Run 'makepkg buildopt=-b' for an incremental build (this skips recompiling
@@ -55,7 +53,6 @@ prepare() {
   # check out the latest source of all submodules
   git submodule update --init
   # make the sources compile with gcc 6.1+
-  cd $srcdir/$pkgname/Gem && patch -Np1 < $srcdir/Gem-pix_colorclassify.patch
   cd $srcdir/$pkgname/l2ork_addons/rtcmix-in-pd && patch -Np1 < $srcdir/RTcmix-pd-LCPLAY-stabilize.patch
 }
 
