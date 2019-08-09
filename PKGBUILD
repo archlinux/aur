@@ -1,7 +1,7 @@
 # Maintainer: Will Price <will.price94@gmail.com>
 
 pkgname=ttf-sudo
-pkgver=0.33
+pkgver=0.39
 pkgrel=1
 pkgdesc="A font for programmers and command line users"
 arch=(any)
@@ -10,12 +10,12 @@ license=(SIL)
 install=ttf-sudo.install
 depends=(fontconfig xorg-font-utils)
 source=("https://github.com/jenskutilek/sudo-font/archive/v${pkgver}.tar.gz")
-md5sums=('7738743f7b82c13d5aff95b3a8284a21')
+md5sums=('b4428fc26e85066152961719d75ae323')
 
 package() {
-  for font in Sudo{,-{Bold{,Italic},Italic}}.ttf; do
-    install -Dm644 "$srcdir/sudo-font-$pkgver/sudo/$font" \
-                   "$pkgdir/usr/share/fonts/sudo-font/$font"
+  for font in "$srcdir/sudo-font-$pkgver/sudo/"Sudo*.ttf; do
+    install -Dm644 "$font" \
+                   "$pkgdir/usr/share/fonts/sudo-font/$(basename "$font")"
   done
 }
 
