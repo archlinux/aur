@@ -1,4 +1,4 @@
-pkgbase = smex
+pkgbase = smeh
 	pkgdesc = little laugh generator in python
 	pkgver = 2
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = smex
 	source = https://github.com/anar66/python-test/archive/master.zip
 	sha256sums = SKIP
 
-pkgname = smex
+pkgname = smeh
 

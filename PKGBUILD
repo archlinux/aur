@@ -1,4 +1,4 @@
-pkgname=smex
+pkgname=smeh
 pkgver=2
 pkgrel=2
 pkgdesc="генератор смеха на питоне"
@@ -10,6 +10,6 @@ sha256sums=('SKIP')
 depends=('python' 'python-ptyprocess')
 package(){
 	cd $srcdir/python-test-master/tests
-	install -Dm777 smex2.py $pkgdir/usr/bin/smex
+	install -Dm777 smeh2.py $pkgdir/usr/bin/smex
 }
 
