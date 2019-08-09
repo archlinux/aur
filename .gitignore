@@ -1,0 +1,9 @@
+pkg/*
+src/*
+solr/*
+php-solr*
+solr-*
+php72*
+php71*
+*.tar.*
+*.t?z
