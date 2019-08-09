@@ -1,0 +1,28 @@
+pkgbase = plasma-virtual-desktop-bar-git
+	pkgdesc = KDE Plasma panel applet for managing virtual desktops
+	pkgver = r276.541a26f
+	pkgrel = 1
+	url = https://github.com/wsdfhjxc/virtual-desktop-bar
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = gcc
+	makedepends = kglobalaccel
+	makedepends = qt5-base
+	makedepends = qt5-declarative
+	makedepends = qt5-x11extras
+	makedepends = kxmlgui
+	makedepends = plasma-framework
+	depends = kglobalaccel
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-x11extras
+	depends = kxmlgui
+	depends = plasma-framework
+	source = git://github.com/wsdfhjxc/virtual-desktop-bar.git
+	md5sums = SKIP
+
+pkgname = plasma-virtual-desktop-bar-git
+
