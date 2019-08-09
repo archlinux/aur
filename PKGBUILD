@@ -3,13 +3,13 @@
 
 pkgname=bitwarden
 pkgver=1.15.2
-pkgrel=1
+pkgrel=2
 _jslibcommit='6372d2410424e5ef04acd962598d242d2bce905e'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
 url='https://github.com/bitwarden/desktop'
 license=('GPL3')
-makedepends=('npm' 'nvm')
+makedepends=('npm' 'nvm' 'jq')
 depends=('alsa-lib' 'electron' 'gconf' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
 conflicts=('bitwarden-git' 'bitwarden-bin')
 options=('!strip' '!emptydirs')
@@ -23,9 +23,15 @@ sha512sums=('e7a3894c454c7b4f0d136de2d874dd49745c77e5745fc437f38ffff47e0df8ccab8
             '05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd')
 
 prepare() {
+  # Link jslib
   rmdir "${srcdir}/desktop-${pkgver}/jslib"
   ln -s "${srcdir}/jslib-${_jslibcommit}" "${srcdir}/desktop-${pkgver}/jslib"
   sed -i 's/ && npm run sub:init//' "${srcdir}/desktop-${pkgver}/package.json"
+  # Patch the build config in package.json so it works with system electron
+  SYSTEM_ELECTRON_VERSION=$(electron --version | sed -r 's/v//')
+  cd "${srcdir}/desktop-${pkgver}"
+  jq < package.json --arg ver $SYSTEM_ELECTRON_VERSION '.build["electronVersion"]=$ver | .build["electronDist"]="/usr/lib/electron"' > package.json.patched
+  mv package.json.patched package.json
 }
 
 build() {
