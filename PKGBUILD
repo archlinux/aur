@@ -3,7 +3,7 @@
 pkgname=julia-fixedpointnumbers
 _pkgname=FixedPointNumbers
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fixed point types for Julia'
 arch=(any)
 url=https://github.com/JuliaMath/FixedPointNumbers.jl
@@ -26,7 +26,7 @@ _slug() {
 }
 
 _project() {
-	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml $pkgver
 }
 
 prepare() {
