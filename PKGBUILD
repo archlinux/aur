@@ -6,7 +6,7 @@ arch=(any)
 url="http://libsdl.org"
 license=("MIT")
 depends=(mingw-w64-sdl2 mingw-w64-freetype2 mingw-w64-bzip2)
-makedepends=(mingw-w64-cmake)
+makedepends=(mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
 source=("http://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-$pkgver.tar.gz")
 sha256sums=('a9eceb1ad88c1f1545cd7bd28e7cbc0b2c14191d40238f531a15b01b1b22cd33')
@@ -23,7 +23,7 @@ build() {
   cd "${srcdir}/SDL2_ttf-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake ..
+    ${_arch}-configure ..
     make
     popd
   done
