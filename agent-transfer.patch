@@ -1,6 +1,8 @@
---- Makefile.orig	2016-12-03 10:43:04.759768941 +0100
-+++ Makefile	2016-12-03 10:57:02.677366447 +0100
-@@ -62,43 +62,14 @@
+diff --git a/Makefile b/Makefile
+index 0f85019..54814d9 100755
+--- a/Makefile
++++ b/Makefile
+@@ -62,42 +62,12 @@ replaced/%.gz: replaced/%
  # this target is to be called from the tarball, not from the git
  # working dir!
  install: all installman
@@ -15,7 +17,6 @@
 -	install src/monkeysphere-authentication-keys-for-user $(DESTDIR)$(PREFIX)/share/monkeysphere
 -	install -m 0644 src/share/common $(DESTDIR)$(PREFIX)/share/monkeysphere
 -	install -m 0644 replaced/src/share/defaultenv $(DESTDIR)$(PREFIX)/share/monkeysphere
--	install -m 0755 src/share/checkperms $(DESTDIR)$(PREFIX)/share/monkeysphere
 -	install -m 0755 src/share/keytrans $(DESTDIR)$(PREFIX)/share/monkeysphere
 -	ln -sf ../share/monkeysphere/keytrans $(DESTDIR)$(PREFIX)/bin/pem2openpgp
 -	ln -sf ../share/monkeysphere/keytrans $(DESTDIR)$(PREFIX)/bin/openpgp2ssh
@@ -43,9 +44,7 @@
 -	ln -sf openpgp2ssh.1.gz $(DESTDIR)$(MANPREFIX)/man1/openpgp2pem.1.gz
 -	ln -sf openpgp2ssh.1.gz $(DESTDIR)$(MANPREFIX)/man1/openpgp2spki.1.gz
 +	mkdir -p $(DESTDIR)$(MANPREFIX)/man1
-+	gzip -n man/man1/agent-transfer.1
-+	install man/man1/agent-transfer.1.gz $(DESTDIR)$(MANPREFIX)/man1
-+
++	install replaced/man/man1/agent-transfer.1.gz $(DESTDIR)$(MANPREFIX)/man1
  
  # this target depends on you having the monkeysphere-docs
  # repo checked out as a peer of your monkeysphere repo.

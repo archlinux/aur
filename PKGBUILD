@@ -1,8 +1,8 @@
 # Maintainer: svalo <valo@eigenlab.org>
 pkgname=agent-transfer
 _pkgsrcname=monkeysphere
-pkgver=0.42
-pkgrel=2
+pkgver=0.44
+pkgrel=1
 pkgdesc="Copy a secret key from GnuPG's gpg-agent to OpenSSH's ssh-agent"
 arch=('i686' 'x86_64')
 url="http://web.monkeysphere.info/"
@@ -12,8 +12,8 @@ source=(https://archive.monkeysphere.info/debian/pool/${_pkgsrcname}/m/${_pkgsrc
     agent-transfer.patch
     )
 
-sha256sums=('c1c956b1c86aaa44134fc1a9d75f5aef61266e3a9d8a6218b45d6c54bb7c58c1'
-            '7209c99d3f11bfdd6484012e989c296d3f484b6f1f7e37ae65bd54b4c3873673')
+sha256sums=('6ac6979fa1a4a0332cbea39e408b9f981452d092ff2b14ed3549be94918707aa'
+            'bce1ef58a6e2c01655501f2f15e326cf851bb909029e8431b963f4cd939e8648')
 
 prepare() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}"
