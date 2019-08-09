@@ -38,7 +38,6 @@ else
 	
 fi
 
-
 _archive=${_archive_name}.zip
 _installer_binary=${_archive_name}.run
 
@@ -58,7 +57,6 @@ if [ ! -f ${PWD}/${_archive} ]; then
 fi
 
 source=("local://${_archive}")
-
 
 prepare()
 {
