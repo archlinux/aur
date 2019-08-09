@@ -1,6 +1,6 @@
 # Maintainer: Aleksandr Arlanow <aleksandr@arlanow.ru>
 pkgname=evelauncher
-pkgver=1539902
+pkgver=1548102
 pkgrel=1
 pkgdesc="Unofficial Eve Online Launcher."
 arch=('any')
@@ -20,7 +20,7 @@ source=(
 	"evelauncher.desktop"
 	"icon.png"
   "evelauncher.sh")
-md5sums=('09f58b225694fe7406056434923bfb95'
+md5sums=('6292c4155c4ceaac97dd186a62772461'
          '2150407bf15ea647a0854c0c9df4c887'
          'ecd3b7d8dd554f8106045e1d78a885c6'
          'e133d2aaf8d35fb1438d0b97072dd630')
