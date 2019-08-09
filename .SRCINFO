@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve-beta
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
-	pkgver = 16.0b7
+	pkgver = 16.1b1
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	install = davinci-resolve.install
@@ -15,6 +15,7 @@ pkgbase = davinci-resolve-beta
 	depends = lib32-libpng12
 	depends = ocl-icd
 	depends = openssl-1.0
+	depends = opencl-driver
 	depends = qt5-base
 	depends = qt5-svg
 	depends = qt5-webkit
@@ -25,8 +26,8 @@ pkgbase = davinci-resolve-beta
 	conflicts = davinci-resolve-studio
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = local://DaVinci_Resolve_16.0b7_Linux.zip
-	sha256sums = 050f980c063ef60a466c7f7543fdf7902fc1d90d2667f02e0bf9b1531da9b357
+	source = local://DaVinci_Resolve_16.1b1_Linux.zip
+	sha256sums = 5be8a13eb7a5886485edf9e6062960d64beca8a6741310452ad2717804ba65b0
 
 pkgname = davinci-resolve-beta
 

@@ -10,13 +10,13 @@
 pkgname=davinci-resolve-beta
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=16.0b7
+pkgver=16.1b1
 pkgrel=1
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
 depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl-1.0'
-          'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
+         'opencl-driver' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
 makedepends=('libarchive' 'xdg-user-dirs')
 options=('!strip')
 provides=('davinci-resolve')
@@ -26,18 +26,15 @@ if [ ${pkgname} == "davinci-resolve-studio-beta" ]; then
 # Variables for STUDIO edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('e19308abd6e4ce293ed70a4c399f7512e8eb31ac97969e1c406032f15d0f6037')
+	sha256sums=('e5779215049734dd6d1234e9f7810d938e8c49ad18426bec31f01bce7b48f2f5')
 	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio')
-	
 else
 # Variables for FREE edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('050f980c063ef60a466c7f7543fdf7902fc1d90d2667f02e0bf9b1531da9b357')
+	sha256sums=('5be8a13eb7a5886485edf9e6062960d64beca8a6741310452ad2717804ba65b0')
 	conflicts=('davinci-resolve' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
-	
 fi
-
 
 _archive=${_archive_name}.zip
 _installer_binary=${_archive_name}.run
@@ -58,7 +55,6 @@ if [ ! -f ${PWD}/${_archive} ]; then
 fi
 
 source=("local://${_archive}")
-
 
 prepare()
 {
