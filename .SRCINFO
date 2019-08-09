@@ -1,15 +1,12 @@
 pkgbase = php70-redis
 	pkgdesc = PHP extension for interfacing with Redis
 	pkgver = 5.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pecl.php.net/package/redis
 	arch = x86_64
 	license = PHP
 	makedepends = php70
 	depends = php70
-	conflicts = phpredis-git
-	conflicts = phpredis
-	conflicts = php-redis
 	backup = etc/php70/conf.d/redis.ini
 	source = http://pecl.php.net/get/redis-5.0.2.tgz
 	md5sums = 0fed05402f8eabc2030ae327df0d1e27
