@@ -1,12 +1,12 @@
 pkgname=terminus-cyrillic
 _pkgname=terminus-font
 pkgver=4.47
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminus monospace bitmap font (for X11 and console) with patches dv1 and ij1 applied'
 arch=('any')
 url='http://sourceforge.net/projects/terminus-font/'
 license=('GPL2' 'custom:OFL')
-makedepends=('xorg-bdftopcf' 'fontconfig' 'xorg-mkfontscale' 'xorg-mkfontdir')
+makedepends=('xorg-bdftopcf' 'fontconfig' 'xorg-mkfontscale' 'xorg-mkfontdir' 'python')
 optdepends=('xorg-fonts-alias')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 provides=('terminus-font')

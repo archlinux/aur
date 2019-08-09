@@ -1,7 +1,7 @@
 pkgbase = terminus-cyrillic
 	pkgdesc = Terminus monospace bitmap font (for X11 and console) with patches dv1 and ij1 applied
 	pkgver = 4.47
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/terminus-font/
 	install = terminus-cyrillic.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = terminus-cyrillic
 	makedepends = fontconfig
 	makedepends = xorg-mkfontscale
 	makedepends = xorg-mkfontdir
+	makedepends = python
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
