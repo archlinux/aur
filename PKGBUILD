@@ -2,12 +2,12 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=4.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
 license=('custom:"Copyright (c) 2006-2018 Deezer S.A."')
-depends=('electron4')
+depends=('electron')
 provides=('deezer')
 options=('!strip')
 makedepends=('p7zip' 'asar')
@@ -35,12 +35,15 @@ package() {
     sed -i 's/build\/linux\/systray.png/..\/..\/..\/share\/deezer\/systray.png/g' app/app/js/main/Utils/index.js
     # Remove NodeRT from package (-205.72 MiB)
     rm -r app/node_modules/@nodert
+    # Fix electron 5 incompatibility
+    sed -i 's/webPreferences:{dev/webPreferences:{nodeIntegration:true,dev/g' app/app/js/main/App/index.js
+    sed -i 's/nodeIntegration:!1/nodeIntegration:true/g' app/app/js/main/App/index.js
     asar pack app app.asar
 
     cd "${srcdir}"
 
     echo "#!/bin/sh" > deezer
-    echo "exec electron4 /usr/share/deezer/app.asar \"\$@\"" >> deezer
+    echo "exec electron /usr/share/deezer/app.asar \"\$@\"" >> deezer
 
     install -Dm644 resources/app.asar "$pkgdir"/usr/share/deezer/
     install -Dm644 resources/build/win/app.ico "$pkgdir"/usr/share/deezer/
