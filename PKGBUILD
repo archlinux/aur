@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='wlroots-git'
-pkgver=0.4.1.r20.g30d34261
+pkgver=0.6.0.r70.g58b25848
 pkgrel=1
 license=('custom:MIT')
 pkgdesc='Modular Wayland compositor library'
@@ -39,7 +39,6 @@ build () {
 		-Dxcb-icccm=enabled \
 		-Dxwayland=enabled \
 		-Dx11-backend=enabled \
-		-Drootston=true \
 		-Dexamples=true
 	ninja -C build
 }
@@ -48,10 +47,4 @@ package () {
 	cd "${pkgname}"
 	DESTDIR="${pkgdir}" ninja -C build install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	# Manually install rootston, "ninja installs" skips it.
-	install -Dm755 build/rootston/rootston \
-		"${pkgdir}/usr/bin/rootston"
-	install -Dm755 rootston/rootston.ini.example \
-		"${pkgdir}/usr/share/doc/${pkgname}/rootston.ini.example"
 }
