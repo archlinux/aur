@@ -1,13 +1,13 @@
 pkgbase = otf-font-awesome-5-free
 	pkgdesc = Iconic font designed for Bootstrap
-	pkgver = 5.8.2
+	pkgver = 5.10.1
 	pkgrel = 1
 	url = http://fontawesome.com/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
-	source = otf-font-awesome-5-free-5.8.2.zip::https://use.fontawesome.com/releases/v5.8.2/fontawesome-free-5.8.2-desktop.zip
-	sha256sums = 888f7ff14cfbd31d4ae1e59a65f1037ed0c5460ba2a9480cda1d7d454ed31e16
+	source = otf-font-awesome-5-free-5.10.1.zip::https://use.fontawesome.com/releases/v5.10.1/fontawesome-free-5.10.1-desktop.zip
+	sha256sums = 82a706af092a8c494f2ef516966993fb2721acd1995304907f41a356d701e8ba
 
 pkgname = otf-font-awesome-5-free
 
