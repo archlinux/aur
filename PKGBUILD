@@ -2,7 +2,7 @@
 
 pkgname=julia-softglobalscope
 _pkgname=SoftGlobalScope
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='Utilities for "soft" global scope in interactive Julia environments'
 arch=(any)
@@ -11,15 +11,15 @@ license=(MIT)
 depends=(julia julia-compat julia-loadpath)
 makedepends=(julia-distrohelper)
 
-_commit=b071e24ebb51955824b85795becead12ee04f6c4
+_commit=5bdd989d20e4caecfd9da66c6ac4dbf3f98656f5
 source=($pkgname-$pkgver.tar.gz::https://github.com/stevengj/$_pkgname.jl/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('05ace5b7d6c12cf4512a8068dacb4d4c3fa9404802508605b3fc0921e2be99b1'
-            'a6e467671ff0ee20352aecc1938c4a947b21786cbc18d07fbc9b66a3d8e59a5b'
+sha256sums=('b871a44657298c809a5400b47c0bdddb1878963f3704cb6aef3e461808a79e55'
+            '74225d1c6ba49d7378ed4a6c15d2f59539d166031269bd75c1af70fb1a00b9df'
             'bd88b87dce5f48dd61010d56f75d2cf8aa73ddfca287c5fdc6f71a09c2bd9ca4'
-            'f1cfb6b2d54c6e17aebfe7ab076eb2026aa5e878ab541814c6a8dd2d8cd32372')
+            '50a75c508968f20fc543fe466d9b5e31b945f3bd34ff631aa9e9ff62b76a454b')
 
 _slug() {
 	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
