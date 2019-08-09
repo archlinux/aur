@@ -2,8 +2,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core
-pkgver=0.18.0
-pkgrel=3
+pkgver=0.18.1
+pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://bitcoincore.org"
@@ -21,7 +21,7 @@ source=(https://bitcoincore.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
         bitcoin-core-01-userdel.hook
         bitcoin-core-02-chown.hook
         bitcoin-core-02-rm-rf.hook)
-sha256sums=('5e4e6890e07b620a93fdb24605dae2bb53e8435b2a93d37558e1db1913df405f'
+sha256sums=('5c7d93f15579e37aa2d1dc79e8f5ac675f59045fceddf604ae0f1550eb03bf96'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73'
             'a25e1a1e42d21f97282a53b8e571f0cef2081ce365dd70743131288ccc579b5c'
