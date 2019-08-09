@@ -7,7 +7,7 @@ pkgname="${_pkgname}"
 epoch=0
 _pkgver=1.0.0
 pkgver="${_pkgver}"
-pkgrel=5
+pkgrel=6
 pkgdesc="Printer filter for Pentax PocketJet 200 and PocketJet II printers. Needed in addition to the PPDs/ files that come with foomatic-db/ CUPS. Includes printer documentation."
 arch=('i686' 'x86_64')
 url="http://ww1.pragana.net/gdiprinters.html#pentaxpj"
@@ -58,7 +58,7 @@ source=(
   "${_target}::http://ww1.pragana.net/pentaxpj-${_pkgver}.tar.gz"
   "pentaxpj.conf.a4"
   "pentaxpj.conf.letter"
-  "Pentax_PocketJet_II_and_PocketJet_200_users_guide.pdf::http://www.megatron.fr/imprimantes/pdf/manuels/thermal/pentax/doc_pocketjet_II-200_user_guide_e.pdf"
+  "Pentax_PocketJet_II_and_PocketJet_200_users_guide.pdf::http://web.archive.org/web/20071017093018/http://www.megatron.fr/imprimantes/pdf/manuels/thermal/pentax/doc_pocketjet_II-200_user_guide_e.pdf"
   "${install}"
   "license_users-guide_info.txt"
 )
