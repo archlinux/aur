@@ -3,7 +3,7 @@
 pkgname=julia-datastructures
 _pkgname=DataStructures
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Julia implementation of Data structures'
 arch=(any)
 url=https://github.com/JuliaCollections/DataStructures.jl
@@ -26,7 +26,7 @@ sha256sums=('b5c633571407bbd16b9fa229246bf0d57f43c0279fd5fa169a6b6f0bbbd948f3'
             'aae3c2136dc1b186e58bf84ef557078dba48b564cc3006bd0f2c046864e52e4d')
 
 _slug() {
-	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
+	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml $pkgver
 }
 
 _project() {
