@@ -3,7 +3,7 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r1931.2d0e79da
+pkgver=r1938.bc74e426
 pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GTKRadiant fork)'
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 depends=('gtk2' 'gtkglext' 'minizip' 'libjpeg-turbo' 'libwebp')
 makedepends=('git' 'svn' 'wget' 'unzip' 'cmake' 'make')
 provides=('netradiant' 'q3map2' 'q3data' 'q2map' 'qdata3' 'h2data')
-source=("${pkgname}::git://git.xonotic.org/xonotic/netradiant.git")
+source=("${pkgname}::git+https://gitlab.com/xonotic/netradiant.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -29,7 +29,7 @@ build() {
     # "all" (free + proprietary) and "none". To only fetch Xonotic and
     # Unvanquished gamepacks for example, use -DGAMEPACKS_LICENSE_LIST=none
     # with -DGAMEPACKS_NAME_LIST="Xonotic Unvanquished"
-
+    # Please refer to the NetRadiant website for more instructions.
     cmake -G 'Unix Makefiles' -H. -Bbuild \
     -DCMAKE_BUILD_TYPE=Release \
     -DFHS_INSTALL=ON \
