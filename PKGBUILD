@@ -3,7 +3,7 @@
 
 pkgname='facette'
 pkgver='0.5.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Facette is a software to display time series data from several various sources'
 arch=('i686' 'x86_64')
 url='http://facette.io/'
@@ -22,7 +22,7 @@ noextract=()
 sha256sums=(
   '3d54db16127b50a55df7677aa3395524d5f53a2fe57b5616e6dc2c8db71b0316'
   'ed3435a7069106c360dcf77cf4b4bd5df1d51ed8df4071ac8b8453de4cf1181d'
-  'c9878a303c1f33bde7bbc03805676a7d38ffa8441db38ac195f949a362062de9'
+  '5e395e0a668b19739ffd41939c8e2258c2205e597d5ec55517d27aa117bdc222'
   '5302d6ebcdbafe7b090dff42edf7eec9b579da6018623d8583914614c5b0db82'
 )
 _prefix='/usr'
