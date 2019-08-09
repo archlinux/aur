@@ -2,7 +2,7 @@
 
 pkgname=julia-compat
 _pkgname=Compat
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Compat Package for Julia.'
 arch=(any)
@@ -11,15 +11,15 @@ license=(MIT)
 depends=(julia julia-loadpath)
 makedepends=(julia-distrohelper)
 
-_commit=0bf9b9c8de8ed0e08cbd44293d93ba972b45fd95
+_commit=5bdd989d20e4caecfd9da66c6ac4dbf3f98656f5
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaLang/$_pkgname.jl/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('12c04a618bc13a35e393b32345a4d0aff2c31fde43e1cefaebc94265ea541935'
-            'be69ba677e6f9945acf5a3ee4a363667d49f1267979383905f6fb253fab4059c'
+sha256sums=('d858931c63990af876098bd99f0bacb40e5ec0e2c9d2ba3a0bb04ed7b3602803'
+            '6727084aecda47d613a41256950ad9a4eb54c4a7d8d0a71753a843e32479b602'
             '635b69201accd41cbf62491638b8e880370a473dd6ecf438fcfc1a80211b3b6c'
-            '238b556761393c444fe896e7ef60141f087e4473af140b6cccf62fb8b44c72d1')
+            'ebc1efc837932d42308740b8fc78fd5dcd3feb8058ea866e632bbd332fc4387a')
 
 _slug() {
 	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
