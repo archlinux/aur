@@ -3,7 +3,7 @@
 pkgname=julia-offsetarrays
 _pkgname=OffsetArrays
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides Julia users with arrays that have arbitrary indices'
 arch=(any)
 url=https://github.com/JuliaArrays/OffsetArrays.jl
@@ -12,7 +12,7 @@ depends=(julia julia-compat julia-loadpath)
 makedepends=(julia-distrohelper)
 
 _commit=220dbbe2fc32cfc02552f7d8e41293203fd37fba
-source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaArrays/$_pkgname.jl/archive/v$pkgver.tar.gz
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
@@ -26,7 +26,7 @@ _slug() {
 }
 
 _project() {
-	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml $pkgver
 }
 
 prepare() {
