@@ -1,6 +1,4 @@
-/wlroots-git/
-/pkg/
-/src/
-/*.log
-/*.pkg.tar
-/*.pkg.tar.*
+*
+!/PKGBUILD
+!/.SRCINFO
+!/.gitignore
