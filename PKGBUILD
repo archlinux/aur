@@ -17,7 +17,6 @@ package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-	echo "i do something!"
-	# install -D -m644 "/opt/balonet/resources/app/node_modules/universalify/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "/opt/balonet/resources/app/node_modules/universalify/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
