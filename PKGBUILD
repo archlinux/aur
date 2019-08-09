@@ -2,15 +2,15 @@
 # Manual download of 'AMDuProf_Linux_x64_${pkgver}.tar.bz2' required from upstream
 
 pkgname=amduprof
-pkgver=3.0.281
+pkgver=3.1.35
 pkgrel=1
 pkgdesc="AMD uProf is a performance analysis tool for applications running on Windows and Linux operating systems. It allows developers to better understand the runtime performance of their application and to identify ways to improve its performance."
 arch=('x86_64')
 license=('custom')
 url="https://developer.amd.com/amd-uprof/"
-source=("file://AMDuProf_Linux_x64_${pkgver}.tar.bz2")
+source=("local://AMDuProf_Linux_x64_${pkgver}.tar.bz2")
 options=('staticlibs' '!strip' 'libtool')
-sha256sums=("9a5d3800ebd0c184ab5faed463bd31567eb72d475973c0698946db2e0e817e2b")
+md5sums=("d5097d8066c0f6ecdc0f82f4c92dc591")
 
 package() {
 	mkdir -p ${pkgdir}/opt/amduprof
