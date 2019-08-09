@@ -35,7 +35,7 @@ _install() {
 }
 
 package_manjarowish-dark-kde-settings() {
-    pkgdesc='Manjarowish Linux lxqt-kwin dark settings'
+    pkgdesc='Manjarowish Linux Lxqt-Kwin dark settings'
     depends=(
         'kvantum-qt5'
         'plank'
