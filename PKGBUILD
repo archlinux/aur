@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=4.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
@@ -30,9 +30,11 @@ package() {
     7z x -y -bsp0 -bso0 app-32.7z
 
     cd resources/
-    # Fix crash on startup since 4.14.1 (patch systray icon path)
     asar extract app.asar app
+    # Fix crash on startup since 4.14.1 (patch systray icon path)
     sed -i 's/build\/linux\/systray.png/..\/..\/..\/share\/deezer\/systray.png/g' app/app/js/main/Utils/index.js
+    # Remove NodeRT from package (-205.72 MiB)
+    rm -r app/node_modules/@nodert
     asar pack app app.asar
 
     cd "${srcdir}"
