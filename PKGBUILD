@@ -4,7 +4,7 @@ pkgname=julia-mbedtls
 _pkgname=MbedTLS
 # 0.7.0 is for Julia 1.2, 0.6.8 works with Julia 1.1
 pkgver=0.6.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Wrapper around mbedtls for Julia'
 arch=(any)
 url=https://github.com/JuliaWeb/MbedTLS.jl
@@ -29,7 +29,7 @@ _slug() {
 }
 
 _project() {
-	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml $pkgver
 }
 
 prepare() {

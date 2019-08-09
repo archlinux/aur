@@ -1,7 +1,7 @@
 pkgbase = julia-mbedtls
 	pkgdesc = Wrapper around mbedtls for Julia
 	pkgver = 0.6.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/JuliaWeb/MbedTLS.jl
 	arch = any
 	license = MIT
