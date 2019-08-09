@@ -59,7 +59,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_rtpatchver}
 _pkgver=${_major}
 _srcname=linux-${_pkgver}
-pkgrel=12
+pkgrel=13
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -76,6 +76,8 @@ _bfq_path_3="bfq-paolo-dev-lucjan-v3"
 _bfq_patch_3="0003-block-bfq-dev-lucjan.patch"
 _bfq_path_4="bfq-paolo-dev-lucjan-v4"
 _bfq_patch_4="0004-block-bfq-dev-lucjan.patch"
+_bfq_path_5="bfq-paolo-dev-lucjan-v5"
+_bfq_patch_5="0005-block-bfq-dev-lucjan.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 
@@ -87,6 +89,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_path_2}/${_bfq_patch_2}"
         "${_lucjanpath}/${_bfq_path_3}/${_bfq_patch_3}"
         "${_lucjanpath}/${_bfq_path_4}/${_bfq_patch_4}"
+        "${_lucjanpath}/${_bfq_path_5}/${_bfq_patch_5}"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
@@ -406,6 +409,7 @@ sha512sums=('5a28f8a34c4e0470617f5638b7112e6252109b78f23b1eed484a228530970c7ef5c
             '8ce2e2c3da37435090abdf0d1875aa0b2870d9cb9ce148cdc30855c1beeffc87cd7a8003c3c351f8f31753c1a4678df6cb3c02c39797b361632c9e5abbe2173f'
             '960028ff15108a88e67caf7769b21e9989aa5c56120fa417baa5a721ef09fb86e73d2ba9f1def27b0f98ac935cc670799b3fbb2b78b98b26516a9063b4c84e5f'
             '831337f1b6042d97dc79cc5768a31f97773248a41af4704742deff4e3224aa0c57e7645d939b9fab9140fc24f0c879fabef85ed58255844ac507f9e971840ee1'
+            '7204b2a9e6c79f0254064569fbd059e60b8a7b6cd70aefff98b818f9ff06ab726eb7411c3aa8b6d009d17c1c2e095d530d8690ce233fa8b9f60dbb0427241711'
             '8d9547ff38096b99d296cdec9875b816960c09db31acebb033e3660ba65475d1f310578282cac74947d75dff844dd22d7e7c2e4ded12368d32314fe145763752'
             '8a158ae5660426f0fb9fa74f37c093f325b5a23392b95e50c36825205f42311cbf05f818f0275ebda27ce9fad40652ba6dc2397f19f45addb3f68f8f4476196f'
             '9d472377c50ddd9ddab5d4ab3092f3d487eeee20a4d4a04d3cefeef5bbf40daa3eb609b15741ca4a8cd32bf2b6d0781de961cbf55e2f80fd40260f282bf022f4'
