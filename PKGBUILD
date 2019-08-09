@@ -7,39 +7,58 @@
 # Hardware support is limited. Nvidia cards should work fine.
 # If you're running a hybrid setup, try with primusrun/optirun.
 
-pkgname=davinci-resolve
+pkgname=davinci-resolve-beta
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=15.3.1
+pkgver=16.0
 pkgrel=1
-pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
 depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl-1.0'
-         'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
+         'opencl-driver' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
 makedepends=('libarchive' 'xdg-user-dirs')
 options=('!strip')
-conflicts=('davinci-resolve-beta' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
-install=${pkgname}.install
+provides=('davinci-resolve')
+install=davinci-resolve.install
+
+if [ ${pkgname} == "davinci-resolve-studio-beta" ]; then
+# Variables for STUDIO edition
+	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
+	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
+	sha256sums=('03f7bbd32eb2956fd933838690af7e86ecc0eca9f935ef287cebdebaaf5a2dd2')
+	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio')
+	
+else
+# Variables for FREE edition
+	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
+	_archive_name=DaVinci_Resolve_${pkgver}_Linux
+	sha256sums=('03f7bbd32eb2956fd933838690af7e86ecc0eca9f935ef287cebdebaaf5a2dd2')
+	conflicts=('davinci-resolve' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
+	
+fi
+
+
+_archive=${_archive_name}.zip
+_installer_binary=${_archive_name}.run
 
 # Trying to make the user's life easier ;o)
 msg2 "Trying to fetch the archive file if available..."
 DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
 
-if [ ! -f ${PWD}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
-	if [ -f $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
-		ln -sfn $DOWNLOADS_DIR/DaVinci_Resolve_${pkgver}_Linux.zip ${PWD}
+if [ ! -f ${PWD}/${_archive} ]; then
+	if [ -f $DOWNLOADS_DIR/${_archive} ]; then
+		ln -sfn $DOWNLOADS_DIR/${_archive} ${PWD}
 	else
 		msg2 ""
 		msg2 "The package can be downloaded here: https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
-		msg2 "Please remember to put a downloaded package DaVinci_Resolve_${pkgver}_Linux.zip into the build directory ${PWD} or $DOWNLOADS_DIR"
+		msg2 "Please remember to put a downloaded package ${_archive}into the build directory ${PWD} or $DOWNLOADS_DIR"
 		msg2 ""
 	fi
 fi
 
-source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('6ac9a8b06c848567e9add85e086cb9d7ac4a4bb51da9805cb688c9461392aa9f')
+source=("local://${_archive}")
+
 
 prepare()
 {
@@ -66,7 +85,7 @@ package()
 	msg2 "Extracting from bundle..."
 	msg "Please wait, this take a while..."
 	cd "${srcdir}" || exit
-	bsdtar x -f DaVinci_Resolve_${pkgver}_Linux.run -C "${pkgdir}/opt/${_pkgname}"
+	bsdtar x -f ${_installer_binary} -C "${pkgdir}/opt/${_pkgname}"
 
 	msg2 "Add lib symlinks..."
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
@@ -75,7 +94,7 @@ package()
 
 	msg2 "Install launchers and configs..."
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
-	install -Dm666 share/default-config-linux.dat "${pkgdir}/opt/${_pkgname}/configs/config.dat"
+	install -Dm666 share/default-config.dat "${pkgdir}/opt/${_pkgname}/configs/config.dat"
 	install -Dm666 share/log-conf.xml "${pkgdir}/opt/${_pkgname}/configs/log-conf.xml"
 	install -Dm666 share/default_cm_config.bin "${pkgdir}/opt/${_pkgname}/DolbyVision/config.bin"
 	install -Dm644 share/DaVinciResolve.desktop "${pkgdir}/usr/share/applications/${resolve_app_name}.desktop"
