@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
-	pkgver = 18.4rc1pre17
-	pkgrel = 2
+	pkgver = 18.4rc1pre18
+	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -132,7 +132,7 @@ pkgname = kodi-devel
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = shairplay: AirPlay support
 	optdepends = upower: Display battery level
-	provides = kodi=18.4rc1pre17
+	provides = kodi=18.4rc1pre18
 	conflicts = kodi
 
 pkgname = kodi-devel-bin
@@ -183,7 +183,7 @@ pkgname = kodi-devel-wayland
 	depends = tinyxml
 	depends = waylandpp
 	depends = kodi-devel
-	provides = kodi-devel-bin=18.4rc1pre17
+	provides = kodi-devel-bin=18.4rc1pre18
 	conflicts = kodi-wayland
 
 pkgname = kodi-devel-gbm
@@ -209,14 +209,14 @@ pkgname = kodi-devel-gbm
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-devel
-	provides = kodi-devel-bin=18.4rc1pre17
+	provides = kodi-devel-bin=18.4rc1pre18
 	provides = kodi-gbm
 	conflicts = kodi-gbm
 
 pkgname = kodi-devel-eventclients
 	pkgdesc = Kodi Event Clients
 	optdepends = python2: most eventclients are implemented in python2
-	provides = kodi-eventclients=18.4rc1pre17
+	provides = kodi-eventclients=18.4rc1pre18
 	conflicts = kodi-eventclients
 
 pkgname = kodi-devel-tools-texturepacker
@@ -225,12 +225,12 @@ pkgname = kodi-devel-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=18.4rc1pre17
+	provides = kodi-tools-texturepacker=18.4rc1pre18
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-devel-dev
 	pkgdesc = Kodi dev files
 	depends = kodi-devel
-	provides = kodi-dev=18.4rc1pre17
+	provides = kodi-dev=18.4rc1pre18
 	conflicts = kodi-dev
 

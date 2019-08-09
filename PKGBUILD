@@ -22,9 +22,9 @@ pkgname=(
   "$pkgbase" "$pkgbase-bin" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=18.4rc1pre17
+pkgver=18.4rc1pre18
 _major=18.3
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -95,6 +95,7 @@ source=(
   015-PR16422.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16422.patch
   016-PR16426.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16426.patch
   017-PR16447.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16447.patch
+#  018-PR16314.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16314.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
