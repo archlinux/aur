@@ -1,6 +1,6 @@
 pkgbase = fpakman
 	pkgdesc = Free non-official GUI for Flatpak / Snap applications management.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/vinifmor/fpakman
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = fpakman
 	depends = python-colorama
 	optdepends = flatpak
 	optdepends = snapd
-	source = https://github.com/vinifmor/fpakman/archive/0.5.0.tar.gz
-	sha512sums = c8fad945ff2d5ad615ee8b9c169e7ae4d7042c7ade4044e0af9d14ab5d26accc6e7207e076d7b928925231698fc7c99ab75b57d9b593e454993600197773da2c
+	source = https://github.com/vinifmor/fpakman/archive/0.5.1.tar.gz
+	sha512sums = eed932b89ec50cf0fedc21291961aa67b085aa1997725553e7e142496547fedf745bb4517f66f83fc5c9230b2d31a93d5341ad02f47b6519a1d015104f4f9782
 
 pkgname = fpakman
 
