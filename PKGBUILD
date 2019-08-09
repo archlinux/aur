@@ -1,14 +1,14 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=naturaldocs2
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Readable Source Code Documentation for 20 Programming Languages"
 url="https://www.naturaldocs.org/"
 arch=('x86_64' 'i686')
 license=('AGPLv3')
 depends=('mono')
 optdepends=()
-makedepends=()
+makedepends=(rsync)
 conflicts=()
 replaces=()
 backup=()
