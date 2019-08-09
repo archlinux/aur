@@ -1,6 +1,6 @@
 pkgname=php72-xdebug
 _extname=xdebug
-pkgver=2.6.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Xdebug is an extension for PHP to assist with debugging and development"
 arch=("x86_64")
@@ -27,4 +27,4 @@ package() {
     install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config72 --extension-dir)/$_extname.so"
 }
 
-md5sums=('35cc0f2e8b7d40556a9ad9afd9c49aee')
+md5sums=('5d1a8ca3101df93938d283933f256493')
