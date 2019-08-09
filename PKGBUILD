@@ -3,7 +3,7 @@
 pkgname=julia-versionparsing
 _pkgname=VersionParsing
 pkgver=1.1.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Flexible parsing of version-number strings into Julia's built-in VersionNumber type"
 arch=(any)
 url=https://github.com/stevengj/VersionParsing.jl
@@ -12,7 +12,7 @@ depends=(julia julia-compat julia-loadpath)
 makedepends=(julia-distrohelper)
 
 _commit=334790bf66964522555084d375eef20d1390fb06
-source=($pkgname-$pkgver.tar.gz::https://github.com/stevengj/$_pkgname.jl/archive/v$pkgver.tar.gz
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
@@ -26,7 +26,7 @@ _slug() {
 }
 
 _project() {
-	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml $pkgver
 }
 
 prepare() {
