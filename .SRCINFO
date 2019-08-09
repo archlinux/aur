@@ -1,6 +1,6 @@
 pkgbase = julia-conda
 	pkgdesc = Use conda as a cross-platform binary provider for Julia
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/JuliaPy/Conda.jl
 	arch = any
@@ -10,14 +10,14 @@ pkgbase = julia-conda
 	depends = julia
 	depends = julia-compat
 	depends = julia-loadpath
-	source = julia-conda-1.2.0.tar.gz::https://github.com/JuliaPy/Conda.jl/archive/v1.2.0.tar.gz
-	source = julia-conda-1.2.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/00bf2a45661f1c4167b9a652ef0f1aa0388a7543/C/Conda/Deps.toml
-	source = julia-conda-1.2.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/00bf2a45661f1c4167b9a652ef0f1aa0388a7543/C/Conda/Package.toml
-	source = julia-conda-1.2.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/00bf2a45661f1c4167b9a652ef0f1aa0388a7543/C/Conda/Versions.toml
-	sha256sums = e506dc7be838432d5f92407db3bdfcb5f1716ff0d1e52015e93956f1eb206994
-	sha256sums = 65fbb8a34cb714871ee7cea2cf6f2ded558444055eaa168e3173ba094b94dbf2
+	source = julia-conda-1.3.0.tar.gz::https://github.com/JuliaPy/Conda.jl/archive/v1.3.0.tar.gz
+	source = julia-conda-1.3.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/85ed1f9bd9b0fee95f9d0834147088dbc44f4af4/C/Conda/Deps.toml
+	source = julia-conda-1.3.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/85ed1f9bd9b0fee95f9d0834147088dbc44f4af4/C/Conda/Package.toml
+	source = julia-conda-1.3.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/85ed1f9bd9b0fee95f9d0834147088dbc44f4af4/C/Conda/Versions.toml
+	sha256sums = 3b43a581d45fe6d6edd9e6a86119cf73587370202d85fc1e6196b3eb5cab2d4c
+	sha256sums = 13f55effc5db4c9b01a6676e1147f1d354a336749f8d8321cf4b9b5a94147022
 	sha256sums = 16404fdeb5c5df9d923ffbdc6f6d146561242cbf1255dc67ab668625480d4be2
-	sha256sums = 1e610d2ab3e73eebb5380c2d846f21389334603e1aea3807e2e9c107b2a965ce
+	sha256sums = eea559d5438aa58068e40abb403130531b87d9865b0236ad46350528096d59f3
 
 pkgname = julia-conda
 
