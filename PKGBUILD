@@ -1,7 +1,7 @@
 _phpbase=php72
 pkgname=php72-redis
 pkgver=5.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP extension for interfacing with Redis"
 url="http://pecl.php.net/package/redis"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 
 build() {
   cd "$srcdir/redis-$pkgver"
-  phpize71
+  phpize72
   ./configure --prefix=/usr --enable-redis-lzf
   make
 }
