@@ -1,7 +1,7 @@
 pkgbase = cjdns-git
 	pkgdesc = A routing engine designed for security, scalability, speed and ease of use
 	pkgver = 20.3.r13.g2dfc2a59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cjdelisle/cjdns
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = cjdns-git
 	makedepends = nodejs
 	makedepends = python2
 	makedepends = binutils
+	makedepends = llvm
 	depends = bash
 	optdepends = cjdnsify: allows you to run some programs bound to your cjdns address
 	optdepends = cjdns-git-sysvinit: support for sysvinit (rc.d)
