@@ -1,25 +1,29 @@
+# Maintainer: Étienne Deparis <etienne [at] depar.is>
+# Maintainer: Richard Quirk
+
 pkgname=aha
-pkgver=0.4.10.5
+pkgver=0.5
 pkgrel=1
 pkgdesc="Ansi HTML Adapter: convert ANSI escape sequences to HTML."
 arch=('any')
 url="https://github.com/theZiz/aha"
 license=('MPL' 'LGPL')
-provides=('aha')
-conflicts=('aha')
+conflicts=('aha-git')
 
 source=("$url/archive/${pkgver}.tar.gz")
-sha512sums=('cd7245a333f1eb4fd941397a98849dbcc6589a0a0591bb50937d2d5a2e3c98db02da2ad57bea183a9c04d1504d8e2e1087ac5a9fb4e5d72ff3140bbd76f05c51')
+sha512sums=('2fbf0be928d8ea0491f6710d96eddd135253cadce6cc8c00f342e03e030ee16a3ff1eb6a559740cdd642b074c9e4e3fd9a76412272ffeb0b7bb419b0dcb6dbc1')
 
 build() {
-  cd -- "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   make
 }
 
 package() {
-  cd -- "$srcdir/$pkgname-$pkgver"
-  install -Dm755 "aha" "$pkgdir/usr/bin/aha"
-  install -Dm644 "aha.1" "$pkgdir/usr/share/man/man1/aha.1"
+  cd "$srcdir/$pkgname-$pkgver"
+  make install PREFIX="$pkgdir/usr"
 }
 
 # vim:set ts=2 sw=2 et:
+# Local Variables:
+# sh-basic-offset: 2
+# End:
