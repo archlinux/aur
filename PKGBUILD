@@ -19,7 +19,7 @@ conflicts=("bisq-bin" "bisq-git")
 provides=("bisq")
 
 build() {
-  cd "${srcdir}/${pkgname}" || exit
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
   msg2 "Building bisq..."
   ./gradlew build -Dorg.gradle.java.home=/usr/lib/jvm/java-10-openjdk -x test
 }
@@ -27,12 +27,12 @@ build() {
 package() {
   # Install executable.
   install -d "${pkgdir}/opt/bisq"
-  cp -r "${srcdir}/${pkgname}/desktop/build/app/"* "${pkgdir}/opt/bisq"
-  cp -r "${srcdir}/${pkgname}/bisq-desktop" "${pkgdir}/opt/bisq/"
+  cp -r "${srcdir}/${pkgname}-${pkgver}/desktop/build/app/"* "${pkgdir}/opt/bisq"
+  cp -r "${srcdir}/${pkgname}-${pkgver}/bisq-desktop" "${pkgdir}/opt/bisq/"
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/bisq/bisq-desktop" "${pkgdir}/usr/bin/bisq-desktop"
 
   # Install desktop launcher.
   install -Dm644 bisq.desktop "${pkgdir}/usr/share/applications/bisq.desktop"
-  install -Dm644 "${srcdir}/${pkgname}/desktop/package/linux/icon.png" "${pkgdir}/usr/share/pixmaps/bisq.png"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/desktop/package/linux/icon.png" "${pkgdir}/usr/share/pixmaps/bisq.png"
 }
