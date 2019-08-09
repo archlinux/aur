@@ -1,7 +1,7 @@
 pkgbase = julia-catindices
 	pkgdesc = Julia package for indices-aware array concatenation and growth
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/JuliaArrays/CatIndices.jl
 	arch = any
 	license = MIT
