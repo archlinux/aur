@@ -3,11 +3,11 @@
 
 # Note: this software is difficult to install.
 
-pkgname=mummer
+pkgname=mummer64
 pkgver=3.23
-pkgrel=2
-pkgdesc="MUMmer is a program for rapidly aligning large genomes"
-arch=('i686' 'x86_64')
+pkgrel=1
+pkgdesc="MUMmer is a program for rapidly aligning large genomes. This is a 64-bit build with some fixes."
+arch=('x86_64')
 url="http://mummer.sourceforge.net"
 license=('PerlArtistic')
 depends=('perl')

@@ -1,9 +1,8 @@
-pkgbase = mummer
-	pkgdesc = MUMmer is a program for rapidly aligning large genomes
+pkgbase = mummer64
+	pkgdesc = MUMmer is a program for rapidly aligning large genomes. This is a 64-bit build with some fixes.
 	pkgver = 3.23
-	pkgrel = 2
+	pkgrel = 1
 	url = http://mummer.sourceforge.net
-	arch = i686
 	arch = x86_64
 	license = PerlArtistic
 	depends = perl
@@ -14,5 +13,5 @@ pkgbase = mummer
 	source = http://downloads.sourceforge.net/project/mummer/mummer/3.23/MUMmer3.23.tar.gz
 	md5sums = f2422b3d2638dba4baedb71b1acdffa2
 
-pkgname = mummer
+pkgname = mummer64
 
