@@ -1,20 +1,19 @@
 # Maintainer: Sebastian Gsänger <sebastian_gsaenger@web.de>
 pkgname=vipster
-pkgver=1.16b
-pkgrel=2
+pkgver=1.18b
+pkgrel=1
 pkgdesc="Molecule editor based on Qt, specialized on periodic structures"
 arch=('x86_64')
 url="https://sgsaenger.github.io/vipster"
 license=('GPL3')
 groups=()
 depends=('qt5-base' 'python')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'pybind11')
 source=("https://github.com/sgsaenger/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('92919e0833ae121ff7058af1aaa61174')
+md5sums=('1eff92f7d9bf700a8c4ac0b15d7d79c5')
 
 build() {
     cd vipster-$pkgver
-    git clone https://github.com/pybind/pybind11 --branch v2.2.4 external/pybind11
     mkdir build
     cd build
 
