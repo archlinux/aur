@@ -1,7 +1,7 @@
 # Maintainer: GrayJack <gr41.j4ck@gmail.com>
 
 _pkgname=janet
-_pkgver=1.2.0
+_pkgver=1.3.0
 pkgname=janet-lang-git
 pkgver=1.2.0.r1369.5c83ebd
 pkgrel=1
