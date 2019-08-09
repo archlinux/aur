@@ -1,7 +1,7 @@
 pkgbase = gsctl-bin
 	pkgdesc = The Giant Swarm command line interface
 	pkgver = 0.15.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/giantswarm/gsctl/
 	arch = x86_64
 	license = apache
