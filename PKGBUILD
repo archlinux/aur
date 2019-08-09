@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-intel-tbb
-pkgver=2018_20180618
-_pkgver=2018_U5
+pkgver=2019.8
+_pkgver=${pkgver/./_U}
 pkgrel=1
 pkgdesc='High level abstract threading library (mingw-w64)'
 depends=('mingw-w64-crt')
@@ -11,7 +11,7 @@ arch=('any')
 url='http://www.threadingbuildingblocks.org/'
 license=('APACHE')
 source=("https://github.com/01org/tbb/archive/${_pkgver}.tar.gz")
-sha256sums=('c4c2896af527392496c5e01ef8579058a71b6eebbd695924cd138841c13f07be')
+sha256sums=('7b1fd8caea14be72ae4175896510bf99c809cd7031306a1917565e6de7382fba')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
