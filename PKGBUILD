@@ -3,7 +3,7 @@
 pkgname=julia-binaryprovider
 _pkgname=BinaryProvider
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A reliable binary provider for Julia'
 arch=(any)
 url=https://github.com/JuliaPackaging/BinaryProvider.jl
@@ -27,7 +27,7 @@ _slug() {
 }
 
 _project() {
-	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml $pkgver
 }
 
 prepare() {
