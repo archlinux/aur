@@ -1,0 +1,3 @@
+z /etc/facette 0755 facette facette
+z /var/run/facette 0755 facette facette
+z /var/log/facette 0750 facette facette

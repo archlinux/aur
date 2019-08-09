@@ -1,52 +1,55 @@
-# Maintainer: Nicolas Leclercq <nicolas.private@gmail.com>
+# Maintainer: Clar Fon <them@lightdark.xyz>
+# Contributor: Nicolas Leclercq <nicolas.private@gmail.com>
 
 pkgname='facette'
-pkgver='0.3.0'
+pkgver='0.5.0'
 pkgrel='1'
-epoch=
 pkgdesc='Facette is a software to display time series data from several various sources'
 arch=('i686' 'x86_64')
 url='http://facette.io/'
 license=('BSD')
-groups=()
-depends=('rrdtool<1.5.0')
-makedepends=('pkg-config' 'go' 'nodejs' 'npm' 'pandoc-bin')
-checkdepends=()
-optdepends=()
+depends=('rrdtool')
+makedepends=('pkg-config' 'go' 'nodejs' 'yarn' 'pandoc')
 provides=('facette')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install='facette.install'
-changelog=
+backup=('etc/facette/facette.yaml')
 source=(
   "https://github.com/facette/facette/archive/$pkgver.tar.gz"
-  'facette.service'
-  'facette.install')
+  'facette.sysusers'
+  'facette.tmpfiles'
+  'latest.patch'
+)
 noextract=()
-md5sums=('40efaaed5a806f38d09b0279cae03ee7'
-         'SKIP'
-         'SKIP')
-_prefix='/usr/local'
+sha256sums=(
+  '3d54db16127b50a55df7677aa3395524d5f53a2fe57b5616e6dc2c8db71b0316'
+  'ed3435a7069106c360dcf77cf4b4bd5df1d51ed8df4071ac8b8453de4cf1181d'
+  'c9878a303c1f33bde7bbc03805676a7d38ffa8441db38ac195f949a362062de9'
+  '5302d6ebcdbafe7b090dff42edf7eec9b579da6018623d8583914614c5b0db82'
+)
+_prefix='/usr'
 
 build() {
+  mkdir -p "$srcdir/go"
+  GOPATH="$srcdir/go" go get github.com/jteeuwen/go-bindata/...
+
   cd "$srcdir/$pkgname-$pkgver"
-  make
+  patch -p1 < "$srcdir/latest.patch"
+  patch -p1 < "debian/patches/001_paths.patch"
+  PATH="$PATH:$srcdir/go/bin" make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make PREFIX=${pkgdir}/${_prefix} install
 
-	# create target directory structure
-	mkdir -p ${pkgdir}/{etc/facette,var/log/facette,var/run/facette}
+  # create target directory structure
+  install -d -m755 ${pkgdir}/{etc,var/{lib,cache}}/facette
+  install -d -m750 ${pkgdir}/var/log/facette
 
-	# default config
-  cp docs/examples/facette.json  ${pkgdir}/etc/facette
-  cp -r docs/examples/providers  ${pkgdir}/etc/facette
+  # default config
+  cp docs/examples/facette.yaml ${pkgdir}/etc/facette
 
-	# copy systemd service file
-  install -D -m644 $srcdir/facette.service $pkgdir/usr/lib/systemd/system/facette.service
+  # copy systemd files
+  install -D -m644 debian/facette.service $pkgdir/usr/lib/systemd/system/facette.service
+  install -D -m644 ../facette.sysusers $pkgdir/usr/lib/sysusers.d/facette.conf
+  install -D -m644 ../facette.tmpfiles $pkgdir/usr/lib/tmpfiles.d/facette.conf
 }
-
