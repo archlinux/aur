@@ -1,5 +1,5 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
-# Contributor: Alexander Schäferdiek <alexander@schaeferdiek.eu>
+# Contributor: Varakh <varakh@varakh.de>
 # Contributor: Florian Klink <flokli@flokli.de>
 
 pkgbase=spotifyd
