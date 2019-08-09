@@ -5,7 +5,7 @@
 
 pkgname=xulrunner
 pkgver=41.0.2
-pkgrel=15
+pkgrel=16
 pkgdesc="Mozilla Runtime Environment"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -16,6 +16,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/$pkgver/sourc
         mozconfig
         freetype261.patch
         0001-Bug-1233963-Work-around-recent-GNU-gold-behavior-wit.patch
+        0001-Bug-1329798-Include-sys-sysmacros.h-for-major-minor-on-Linux.patch
 	Bug-1269171.patch
         LFS_graphite2_harfbuzz.patch
         mozilla-pkgconfig.patch
@@ -28,6 +29,7 @@ sha256sums=('f7abb2e2989779305ab1f80d30caf9fc55d96c7e66d1394e2cc9639442e2b864'
             '8ab57ae3ba4660a721cdb210babee02488b670d9af9fdecf5da3b832d77e342b'
             '3aea9a83bf304da5525f34a911712cf42f8ded1c8b6becf0a2cf8a4b4f7facd6'
             '13a27a385fab88938ac7417f1e7ca7225ec6b88840bafe67e0f5642e5446554a'
+            '815cf186cd697ee3277d7b661285f13b5db65a582379df78696d7502fb09b520'
             'bd78da5d5319c8eb6a9195c3bd35bf919f9a9c030d69890f42e96171e32be60f'
             'afcd7d3f6113b0f9ead0cb1b47b3fccedadce56a16b4406c439411864bd11863'
             '1aa9ebe67542a2b8c28905d070829ada5b29438c6a7961f2b0cdd6b92d8b9f5c'
@@ -52,6 +54,9 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1269171
   patch -Np1 -i ../gcc6.diff
   patch -Np1 -i ../Bug-1269171.patch
+
+  # Fix for Bug 1329798 "Use of major & minor macros without including sys/sysmacros.h"
+  patch -Np1 -i ../0001-Bug-1329798-Include-sys-sysmacros.h-for-major-minor-on-Linux.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=847568
   patch -Np1 -i ../LFS_graphite2_harfbuzz.patch

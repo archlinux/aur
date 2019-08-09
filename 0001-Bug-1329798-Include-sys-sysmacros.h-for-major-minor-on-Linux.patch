@@ -1,0 +1,35 @@
+# HG changeset patch
+# User Michał Górny <mgorny@gentoo.org>
+
+Include sys/sysmacros.h for major(), minor() on Linux
+
+Include sys/sysmacros.h explicitly as that will be required by future
+glibc versions to expose major() and minor() macros.
+
+Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=1329798
+
+diff --git a/config/system-headers b/config/system-headers
+index 60788e788..984e86933 100644
+--- a/config/system-headers
++++ b/config/system-headers
+@@ -1055,6 +1055,7 @@ sys/statvfs.h
+ sys/syscall.h
+ sys/sysctl.h
+ sys/sysinfo.h
++sys/sysmacros.h
+ sys/sysmp.h
+ sys/syssgi.h
+ sys/system_properties.h
+diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
+index 6f13e2a7d..6149aaeac 100644
+--- a/xpcom/io/nsLocalFileUnix.cpp
++++ b/xpcom/io/nsLocalFileUnix.cpp
+@@ -26,6 +26,7 @@
+ #define USE_LINUX_QUOTACTL
+ #include <sys/mount.h>
+ #include <sys/quota.h>
++#include <sys/sysmacros.h>
+ #ifndef BLOCK_SIZE
+ #define BLOCK_SIZE 1024 /* kernel block size */
+ #endif
+
