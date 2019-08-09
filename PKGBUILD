@@ -3,7 +3,7 @@
 pkgname=julia-primes
 _pkgname=Primes
 pkgver=0.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Prime numbers in Julia'
 arch=(any)
 url=https://github.com/JuliaMath/Primes.jl
@@ -12,7 +12,7 @@ depends=(julia julia-compat julia-datastructures julia-loadpath julia-orderedcol
 makedepends=(julia-distrohelper)
 
 _commit=a5407c18c94c6c262603337392426894f86b3f79
-source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaMath/$_pkgname.jl/archive/v$pkgver.tar.gz
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
@@ -26,7 +26,7 @@ _slug() {
 }
 
 _project() {
-	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml $pkgver
 }
 
 prepare() {
