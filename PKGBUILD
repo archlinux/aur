@@ -1,17 +1,18 @@
-# Maintainer: grufo <madmurphy333@gmail.com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Contributor: PedroHLC <root AT pedrohlc DOT com>
 
 pkgname='notejot'
-pkgver='1.4.7'
+pkgver='1.5.8'
 pkgrel=1
 pkgdesc='A stupidly-simple sticky notes application for any type of short term notes or ideas'
 arch=('i686' 'x86_64')
 url='https://github.com/lainsce/notejot'
 license=('GPL')
 depends=('granite' 'gtk3' 'gtksourceview3' 'json-glib' 'libgee')
-makedepends=('meson')
+makedepends=('meson' 'vala')
 conflicts=('notejot-git')
 source=("https://github.com/lainsce/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('71b5aac922d01af2b41019000c18d3ef6d15284a8790a77f9f2a79cc340aa325')
+sha256sums=('0cb7b4df24b75935fa91ddc5cc4e2073a2697c0ae70f34b2bdf62f2cf784a3d4')
 
 build() {
 
