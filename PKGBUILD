@@ -3,65 +3,35 @@
 pkgname=julia-primes
 _pkgname=Primes
 pkgver=0.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Prime numbers in Julia'
 arch=(any)
 url=https://github.com/JuliaMath/Primes.jl
 license=(MIT)
 depends=(julia julia-compat julia-datastructures julia-loadpath julia-orderedcollections)
+makedepends=(julia-distrohelper)
 
 _commit=a5407c18c94c6c262603337392426894f86b3f79
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaMath/$_pkgname.jl/archive/v$pkgver.tar.gz
-$pkgname-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
-        $pkgname-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
-        $pkgname-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
+        $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
+        $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
+        $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
 sha256sums=('489f5c77fc2fceb00b2d8c2571b1e85808322c8e762a5d1712e8bfbfb3c8bc36'
             '1c08fdc3105498ea73a5486a753edab162088ecdff1b7fbfb682855f63344fae'
             '52c8ba7d166e9593828b8ed5bf12e58cccdcc4ae86ea28e63fa8310468f91a14'
             '2abd6401f33937b90d28df5d4a8c806bc4110a4a3e65ece3ba623ab72e1e1c51')
 
 _slug() {
-	local uuid=$(grep uuid $pkgname-Package.toml | cut -f3 -d' ')
-	local sha1=$(grep \"$pkgver\" -a1 $pkgname-Versions.toml | tail -n1 | cut -f3 -d' ')
-	julia -e "u = Base.UUID($uuid);
-	          s = Base.SHA1(hex2bytes($sha1));
-	          println(Base.version_slug(u,s));"
+	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
 }
 
-_deps() {
-	julia -e "using Pkg
-
-	          alldeps = Pkg.TOML.parsefile(\"$srcdir/$pkgname-Deps.toml\")
-	          version = VersionNumber(\"$pkgver\")
-	          majmin  = VersionNumber(\"${pkgver%.*}\")
-	          deps = Dict{String,Any}()
-
-	          for (key, value) in alldeps
-	            vers = split(key, \"-\")
-	            lower = VersionNumber(vers[1])
-	            if length(vers) == 2
-	              upper = VersionNumber(vers[2])
-	              if (majmin  >= lower && majmin  <= upper) ||
-	                 (version >= lower && version <= upper)
-	                merge!(deps, value)
-	              end
-	            elseif length(vers) == 1
-	              if majmin == lower || version == lower
-	                merge!(deps, value)
-	              end
-	            end
-	          end
-
-	          Pkg.TOML.print(deps)"
+_project() {
+	dh_julia distro_project_ "$srcdir"/"$pkgname"-$pkgver-{Package,Versions,Deps}.toml
 }
 
 prepare() {
 	# Generate a Project.toml from Registry metadata
-	rm -f Project.toml && touch Project.toml
-	cat $pkgname-Package.toml       >> Project.toml
-	echo -e "version = \"$pkgver\"" >> Project.toml
-	echo -e "\n[deps]"              >> Project.toml
-	echo -e "$(_deps)" | sort       >> Project.toml
+	rm -f Project.toml && _project
 }
 
 package() {
