@@ -5,7 +5,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r6924.7c97e8df6
+pkgver=r7941.3e9c2e77d
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -30,6 +30,10 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_pkgbase/build"
+
+	# Fix for an issue some users are facing when compiling with GCC
+	CXXFLAGS+=" -DFMT_USE_USER_DEFINED_LITERALS=0"
+
 	cmake .. \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DCMAKE_BUILD_TYPE=Release \
