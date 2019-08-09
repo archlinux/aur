@@ -1,7 +1,7 @@
 # Maintainer: agilob <archlinux@agilob.net>
 # Contributor: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-linux
-pkgver=3.57.3
+pkgver=3.57.5
 pkgrel=1
 pkgdesc='Official Tutanota email client'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname}")
 options=(!strip)
 source=("${pkgname}-${pkgver}.AppImage::https://mail.tutanota.com/desktop/${pkgname}.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha512sums=('c5af5730895fa0e045a1797ede00002437a1b4f389eb7b19a4e7e4005b027cb2aaf417c0f9c49bc1db63b8983f3bdb6d54227e65dc0d3f82ef050c830e10591b')
+sha512sums=('0378dc9204a465a2b316b572ddc63ea4c542a67b0a645c753cc1a6b5c33f77083b6526aa8846ffedbe376b14bd3cddb994a3216de2bfbcaafb98377a85cc157d')
 #install="tutanota-desktop-linux.install"
 
 check () {
