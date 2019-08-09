@@ -1,8 +1,8 @@
 # Maintainer: Manuel Stoeckl <com dоt mstoeckl аt wppkgb>
 pkgname=waypipe-git
-pkgver=0.3.0.r14.g5736b0b
+pkgver=0.5.0.r0.ge66f424
 pkgrel=1
-pkgdesc='A proxy for Wayland protocol applications. WARNING: very unstable'
+pkgdesc='A proxy for Wayland protocol applications. WARNING: unstable'
 license=('MIT')
 # minimal build: only 'wayland' 'wayland-protocols' 'meson' 'ninja'
 depends=('lz4' 'zstd' 'mesa')
