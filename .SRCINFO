@@ -1,7 +1,7 @@
 pkgbase = julia-json
 	pkgdesc = JSON parsing and printing for Julia
-	pkgver = 0.20.0
-	pkgrel = 6
+	pkgver = 0.21.0
+	pkgrel = 1
 	url = https://github.com/JuliaIO/JSON.jl
 	arch = any
 	license = MIT
@@ -13,14 +13,15 @@ pkgbase = julia-json
 	depends = julia-loadpath
 	depends = julia-offsetarrays
 	depends = julia-orderedcollections
-	source = julia-json-0.20.0.tar.gz::https://github.com/JuliaIO/JSON.jl/archive/v0.20.0.tar.gz
-	source = julia-json-0.20.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/f2c833d0b5c23a66f28811f02ff6edbdfd23c6dc/J/JSON/Deps.toml
-	source = julia-json-0.20.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/f2c833d0b5c23a66f28811f02ff6edbdfd23c6dc/J/JSON/Package.toml
-	source = julia-json-0.20.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/f2c833d0b5c23a66f28811f02ff6edbdfd23c6dc/J/JSON/Versions.toml
-	sha256sums = 1185a2d71ebbc0cce52ea5defb4722036f340b96c9e5719e495ca5c9b89c1f96
-	sha256sums = 45df09f58c92f61efa553b66d6c01028add7819865658934abd57fb98a394693
+	depends = julia-parsers
+	source = julia-json-0.21.0.tar.gz::https://github.com/JuliaIO/JSON.jl/archive/v0.21.0.tar.gz
+	source = julia-json-0.21.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/364ab0ee90ba4e4567abbccddb8f6c26116b8527/J/JSON/Deps.toml
+	source = julia-json-0.21.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/364ab0ee90ba4e4567abbccddb8f6c26116b8527/J/JSON/Package.toml
+	source = julia-json-0.21.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/364ab0ee90ba4e4567abbccddb8f6c26116b8527/J/JSON/Versions.toml
+	sha256sums = 74712822a34b0c49e3e538b489ca35e42378f03c1cae3d47dd6e21eeea0c66e9
+	sha256sums = 7bcb48e9e69d3e077977cd81a27fc7462a8d18cce4d508d3c689e27aca6ad0a7
 	sha256sums = 60ccc8cd6ece9c85ce4a34b5bc9b56b88149a910d6d7cb7f40695a04a2437d06
-	sha256sums = 98eab77e3d637164697aedbe438eded75fbc00c5b1b881b11876aba44ad23441
+	sha256sums = 3597218a5f46d6b3f7dff0ef0f9fb523caa47d5373bc23d46e6c0637a71b6bf0
 
 pkgname = julia-json
 

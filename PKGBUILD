@@ -2,8 +2,8 @@
 
 pkgname=julia-json
 _pkgname=JSON
-pkgver=0.20.0
-pkgrel=6
+pkgver=0.21.0
+pkgrel=1
 pkgdesc='JSON parsing and printing for Julia'
 arch=(any)
 url=https://github.com/JuliaIO/JSON.jl
@@ -15,18 +15,19 @@ depends=(julia
   julia-loadpath
   julia-offsetarrays
   julia-orderedcollections
+  julia-parsers
 )
 makedepends=(julia-distrohelper)
 
-_commit=f2c833d0b5c23a66f28811f02ff6edbdfd23c6dc
+_commit=364ab0ee90ba4e4567abbccddb8f6c26116b8527
 source=($pkgname-$pkgver.tar.gz::https://github.com/JuliaIO/$_pkgname.jl/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('1185a2d71ebbc0cce52ea5defb4722036f340b96c9e5719e495ca5c9b89c1f96'
-            '45df09f58c92f61efa553b66d6c01028add7819865658934abd57fb98a394693'
+sha256sums=('74712822a34b0c49e3e538b489ca35e42378f03c1cae3d47dd6e21eeea0c66e9'
+            '7bcb48e9e69d3e077977cd81a27fc7462a8d18cce4d508d3c689e27aca6ad0a7'
             '60ccc8cd6ece9c85ce4a34b5bc9b56b88149a910d6d7cb7f40695a04a2437d06'
-            '98eab77e3d637164697aedbe438eded75fbc00c5b1b881b11876aba44ad23441')
+            '3597218a5f46d6b3f7dff0ef0f9fb523caa47d5373bc23d46e6c0637a71b6bf0')
 
 _slug() {
 	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
