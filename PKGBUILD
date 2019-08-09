@@ -18,7 +18,7 @@ source=("git+$url.git#commit=$_commit"
 sha256sums=('SKIP'
             '0c9c185024e335bba20f1907754c1057cf6b43b74f0b7d1490b5c2099b3e5656'
             '09cb809f94a29d6b576e6dbd5cc17e7534168b725c5106cdddd09ccafbc46964'
-            '5c36fb13a5191ef19d14220d41ecdc37ef74967c10c1660fa36f518d42ea7cd5')
+            '61d089d1b9dc3e44bfdc8469ca8c248fb7b17914cc7879346491c7f1425d37f4')
 
 pkgver() {
 	# Upstream package is currently UNRELEASED so use the commit to provide the

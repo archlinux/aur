@@ -14,7 +14,8 @@ index ee9ae0b..bf4199e 100644
  """
  function depends(deps::AbstractString, version::Any = nothing)
  	alldeps = Pkg.TOML.parsefile(deps)
- 	bounds = map(x -> VersionNumber.(x), split.(keys(alldeps), "-"))
+-	bounds = map(x -> VersionNumber.(x), split.(keys(alldeps), "-"))
++	bounds = [VersionRange(x) for x in keys(alldeps)]
  	ver	= (version == nothing) ? maximum(maximum(bounds)) : VersionNumber(version) 
 -	mask = [ver >= x[1] && ver <= x[2] for x in bounds]
 +	mask = [Base.in(ver, x) for x in bounds]
