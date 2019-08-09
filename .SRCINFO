@@ -1,4 +1,4 @@
-pkgbase = davinci-resolve-beta
+pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
 	pkgver = 16.0
 	pkgrel = 1
@@ -29,5 +29,5 @@ pkgbase = davinci-resolve-beta
 	source = local://DaVinci_Resolve_16.0_Linux.zip
 	sha256sums = 03f7bbd32eb2956fd933838690af7e86ecc0eca9f935ef287cebdebaaf5a2dd2
 
-pkgname = davinci-resolve-beta
+pkgname = davinci-resolve
 
