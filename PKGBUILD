@@ -1,6 +1,6 @@
 # Maintainers: Perry Hung <perry@leaflabs.com> Florent Thiery <fthiery@gmail.com> Théo Le Calvar <tlc@kher.nl>
 pkgname=decklink
-pkgver=11.2
+pkgver=11.3
 pkgrel=1
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ options=('!strip' 'staticlibs')
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-_pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/cae6708b1743402693c6ae208f5e9fb8"
+_pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/2fdc19fd59ba44cc85c4a55f2b124ce6"
 _pkgsrc_file=${pkgname}-${pkgver}.tar.gz
 
 DLAGENTS=("https::/usr/bin/curl \
@@ -29,7 +29,7 @@ DLAGENTS=("https::/usr/bin/curl \
 )
 
 source=("${_pkgsrc_file}"::"${_pkgsrc_url}")
-sha256sums=("ec466268fed5ca8ea3c32e4c37165ed16bb843425428e73391f9c505cc6abd5d")
+sha256sums=("84c1d1a563bf449d0b7390b831808424b9e17bbc661e2dd66aeed932a467ca8a")
 
 package() {
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
