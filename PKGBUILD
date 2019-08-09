@@ -4,6 +4,7 @@
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
+# Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
 pkgname=asterisk
 pkgver=16.5.0
@@ -121,7 +122,7 @@ backup=('etc/asterisk/acl.conf'
         'etc/asterisk/xmpp.conf')
 url='http://www.asterisk.org'
 license=('GPL')
-depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'opus' 'libedit')
+depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'opus' 'libedit' 'pjproject')
 makedepends=('sqlite3' 'gsm')
 optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'libpri' 'libss7' 'openr2' 'iksemel' 'radiusclient-ng' 'dahdi')
 install=${pkgname}.install
@@ -136,7 +137,9 @@ sha256sums=('e4e280a7ce176d36ebb249618377d0c484f147125c630c6ba2ab410d62c7a41a'
 
 build() {
   cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --with-pjproject-bundled=no
+  make menuselect.makeopts
+  ./menuselect/menuselect --disable BUILD_NATIVE
   make
 }
 
