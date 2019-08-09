@@ -1,0 +1,20 @@
+pkgbase = xbox-generic-controller
+	pkgdesc = Fix for generic XBox-like USB gamepads that are recognized but not functional
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/ryanobeirne/xbox-generic-controller
+	arch = any
+	license = MIT
+	depends = systemd
+	depends = python>=3
+	depends = python-pyusb
+	depends = xboxdrv
+	source = xbox-generic-controller.conf
+	source = 50_xbox-generic-controller.rules
+	source = fixcontroller.py
+	sha256sums = bdc54ef5b9728751f89f08039c69141f7515b9df723cbda1df0239c5109d249b
+	sha256sums = ecb8c515f1b88fe4986eec098bd6863c459c39fd569d759884936e39d22d586b
+	sha256sums = e9f41812137b2cdcf60bc47cc59a5ef5f23e3c467fa6f841b5d20f9abe30797a
+
+pkgname = xbox-generic-controller
+

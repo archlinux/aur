@@ -1,0 +1,1 @@
+ATTRS{idVendor}=="045e", ATTRS{idProduct}=="028e", RUN+="/usr/bin/fixcontroller.py"
