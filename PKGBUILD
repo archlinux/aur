@@ -6,7 +6,7 @@ _pkgname=DistroHelper.jl
 _pkgver=0.1.0
 _commit=dabf5af662307865a88274c4d89fdf5f0b2ad667
 pkgver=0.1.0r32.dabf5af
-pkgrel=2
+pkgrel=3
 pkgdesc="DistroHelper.jl (dh_julia)"
 arch=(any)
 url="https://github.com/cdluminate/DistroHelper.jl"
@@ -18,7 +18,7 @@ source=("git+$url.git#commit=$_commit"
 sha256sums=('SKIP'
             '0c9c185024e335bba20f1907754c1057cf6b43b74f0b7d1490b5c2099b3e5656'
             '09cb809f94a29d6b576e6dbd5cc17e7534168b725c5106cdddd09ccafbc46964'
-            '440753fc2e6631121aa28fee2f4b668d0576f2a2437cff85d8ff0d35601d5c79')
+            '5c36fb13a5191ef19d14220d41ecdc37ef74967c10c1660fa36f518d42ea7cd5')
 
 pkgver() {
 	# Upstream package is currently UNRELEASED so use the commit to provide the
