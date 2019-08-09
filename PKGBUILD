@@ -3,7 +3,7 @@
 _pkgname=janet
 _pkgver=1.3.0
 pkgname=janet-lang-git
-pkgver=1.2.0.r1369.5c83ebd
+pkgver=1.3.0.r1386.ec62e87
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
