@@ -1,0 +1,18 @@
+pkgbase = mummer
+	pkgdesc = MUMmer is a program for rapidly aligning large genomes
+	pkgver = 3.23
+	pkgrel = 2
+	url = http://mummer.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	depends = perl
+	optdepends = gnuplot: for alignment visualization
+	optdepends = xfig: for alignment visualization
+	optdepends = transsfig: for alignment visualization
+	optdepends = tcsh: for running some optional scripts
+	source = http://downloads.sourceforge.net/project/mummer/mummer/3.23/MUMmer3.23.tar.gz
+	md5sums = f2422b3d2638dba4baedb71b1acdffa2
+
+pkgname = mummer
+
