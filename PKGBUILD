@@ -1,6 +1,6 @@
 #Maintainer: Neve Laughery <RewoundVHS@protonmail.com>
 
-pkgname=scientifica-bdf
+pkgname=otb-scientifica
 _gitname=scientifica
 pkgver=2.5
 pkgrel=0
