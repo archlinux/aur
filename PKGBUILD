@@ -31,7 +31,7 @@ package() {
                  "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "usr.bin.doh-client" \
-                 "$pkgdir/etc/apparmor.d/usr.local.bin.doh-client"
+                 "$pkgdir/etc/apparmor.d/usr.bin.doh-client"
   install -Dm644 "doh-client.service" \
                  "$pkgdir/usr/lib/systemd/system/doh-client.service"
   install -Dm644 "doh-client.socket" \
