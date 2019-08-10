@@ -78,9 +78,9 @@ package() {
                            --standard-lib \
                            --install-data=/usr/share \
                            --root="$pkgdir"
-  install -vDm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${_pkgbase}/"
+  install -vDm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -vDm 644 {CHANGES,README,RELEASE}.txt \
-    -t "${pkgdir}/usr/share/doc/${_pkgbase}/"
+    -t "${pkgdir}/usr/share/doc/${pkgname}/"
   # removing Windows only script
   rm -vf "${pkgdir}/usr/bin/scons"*.bat
   # moving files so scons and python2-scons don't conflict
