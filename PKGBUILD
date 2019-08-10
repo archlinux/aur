@@ -68,6 +68,7 @@ package_manjarowish-lxqt-kwin-dark-settings() {
         'systemd-swap'
         'nohang-git'
         'sddm-kcm'
+        'sddm-theme-sugar-candy-git'
         'kwin'
         'kde-cli-tools'
         'kwin-decoration-sierra-breeze-enhanced-git'

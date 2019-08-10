@@ -42,6 +42,7 @@ pkgname = manjarowish-lxqt-kwin-dark-settings
 	depends = systemd-swap
 	depends = nohang-git
 	depends = sddm-kcm
+	depends = sddm-theme-sugar-candy-git
 	depends = kwin
 	depends = kde-cli-tools
 	depends = kwin-decoration-sierra-breeze-enhanced-git
