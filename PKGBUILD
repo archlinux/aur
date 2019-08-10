@@ -4,15 +4,16 @@ pkgver=2.2
 pkgrel=1
 pkgdesc="A GTK color chooser with zoom."
 arch=('any')
-url="http://rephorm.com/code/elicit/"
+#url="http://rephorm.com/code/elicit/"
+url="https://github.com/rephorm/elicit"
 license=('GPL')
 depends=('pygtk' 'python2-numpy' 'gnome-python' 'python2-xdg')
-source=("http://rephorm.com/files/$pkgname/${pkgname}_${pkgver}.tar.gz")
+#source=("http://rephorm.com/files/$pkgname/${pkgname}_${pkgver}.tar.gz")
+source=("https://pkgbuild.com/~kkeen/sources/${pkgname}_${pkgver}.tar.gz")
 md5sums=('14f6cd58cb34e2d02738b6c53d715a7b')
 
 build() {
   cd "${pkgname}_${pkgver}"
-
   python2 setup.py build
 }
 
