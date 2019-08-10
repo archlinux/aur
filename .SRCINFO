@@ -1,7 +1,7 @@
 pkgbase = fuzion-git
 	pkgdesc = Fuzion is a free-as-in-freedom CSGO cheat
 	pkgver = master
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LWSS/Fuzion
 	arch = x86_64
 	license = GPL3
