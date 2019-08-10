@@ -1,6 +1,6 @@
 pkgbase = discord-irc
 	pkgdesc = Connects Discord and IRC channels by sending messages back and forth
-	pkgver = 2.7.0
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://github.com/reactiflux/discord-irc
 	install = install
@@ -8,11 +8,11 @@ pkgbase = discord-irc
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = discord-irc-2.7.0.tgz
+	noextract = discord-irc-2.7.2.tgz
 	backup = etc/discord-irc/conf.json
-	source = http://registry.npmjs.org/discord-irc/-/discord-irc-2.7.0.tgz
+	source = http://registry.npmjs.org/discord-irc/-/discord-irc-2.7.2.tgz
 	source = system.service
-	sha256sums = e16217b733088d67702857210270cd16626fa34c1281b58e83e7516681c6cf82
+	sha256sums = e35ccb2443d5aaf20e74f37409cd00e0847de5d9841f4aa5b1152b75cbd57af2
 	sha256sums = SKIP
 
 pkgname = discord-irc
