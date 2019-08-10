@@ -1,0 +1,37 @@
+pkgbase = ensemble-chorus-git
+	pkgdesc = An LV2/VST2 plugin and stand-alone application emulating a string ensemble chorus
+	pkgver = 0.0.1.r56.59baeb8
+	pkgrel = 1
+	url = https://github.com/jpcima/ensemble-chorus
+	arch = i686
+	arch = x86_64
+	groups = pro-audio
+	groups = lv2-plugins
+	groups = vst-plugins
+	license = Boost
+	makedepends = git
+	depends = fltk
+	depends = jack
+	depends = libpulse
+	provides = ensemble-chorus
+	provides = ensemble-chorus=0.0.1
+	conflicts = ensemble-chorus
+	source = ensemble-chorus::git+https://github.com/jpcima/ensemble-chorus.git
+	source = git+https://github.com/vinniefalco/DSPFilters.git
+	source = git+https://github.com/martinmoene/gsl-lite.git
+	source = git+https://github.com/thestk/rtaudio.git
+	source = git+https://github.com/boostorg/predef.git
+	source = git+https://github.com/zeux/pugixml.git
+	source = git+https://github.com/jpcima/JUCE.git
+	source = juce-pixel.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = a98866e03ccdebf93969755277c2712d
+
+pkgname = ensemble-chorus-git
+

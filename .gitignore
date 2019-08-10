@@ -1,0 +1,12 @@
+DSPFilters/
+ensemble-chorus/
+gsl-lite/
+JUCE/
+predef/
+pugixml/
+rtaudio/
+pkg/
+src/
+ensemble-chorus-git-*.src.tar.gz
+ensemble-chorus-git-*.tar.xz
+.AURINFO
