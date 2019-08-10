@@ -1,6 +1,6 @@
 pkgbase = unity-editor-facebook
 	pkgdesc = Allows building your Unity projects for the Facebook-Games platform
-	pkgver = 2019.1.13f1
+	pkgver = 2019.1.14f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = unity-editor-facebook
 	makedepends = cpio
 	depends = unity-editor
 	options = !strip
-	source = 2019.1.13f1.1.13f1.pkg::https://download.unity3d.com/download_unity/b5956c0a61e7/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-2019.1.13f1.pkg
-	md5sums = 64c6d85aa054a2991e19332252b6d2d6
+	source = 2019.1.14f1.1.14f1.pkg::https://download.unity3d.com/download_unity/148b5891095a/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-2019.1.14f1.pkg
+	md5sums = 92ba363111e6f95b98eadb2fc85a4daa
 
 pkgname = unity-editor-facebook
 
