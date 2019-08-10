@@ -1,0 +1,3 @@
+post_upgrade() {
+    echo "The data directory was shifted to XDG_CONFIG_HOME(~/.config/cfiles) in v1.8 so make sure to copy your old bookmarks and scripts to the new directory"
+}
