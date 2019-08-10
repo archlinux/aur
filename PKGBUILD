@@ -21,8 +21,8 @@ source=('git://github.com/LWSS/Fuzion.git'
 		'build')
 sha256sums=('SKIP'
 			'SKIP'
-			'6cbff5e6ef37e08a44e440f08bf6910eb508b6795c9cac102d18f7cd92a16174'
-			'87c41293afe0c1cfaad67b24144dc48b737011b92a9da4029768257711250cc8'
+			'41b2e9aa83ec988b556c9b2fa40be9d6d48d11e3fe5179ed6606615bddefbdc2'
+			'95bc6992fb561e41f69bdb5923dd35eb8151eac39b074148478cf2353c6e13b3'
 			'f6caf87a562b1aecd86bd80d17a0a3912f0095207f5416f873928cc7539e8e87')
 
 pkgver() {
