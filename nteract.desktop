@@ -1,0 +1,10 @@
+[Desktop Entry]
+Comment=Interactive literate coding notebook
+Icon=nteract
+MimeType=application/x-ipynb+json
+Name=nteract
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Science;Development;
+Exec=/usr/bin/nteract

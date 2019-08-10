@@ -1,0 +1,21 @@
+pkgbase = nteract-desktop-bin
+	pkgdesc = All the power of Jupyter notebooks, wrapped in a native desktop application.
+	pkgver = 0.14.5
+	pkgrel = 1
+	url = https://nteract.io/desktop
+	arch = x86_64
+	license = BSD
+	depends = python-ipykernel
+	conflicts = nteract-desktop
+	options = !strip
+	source = https://github.com/nteract/nteract/releases/download/v0.14.5/nteract-0.14.5.tar.gz
+	source = https://raw.githubusercontent.com/nteract/nteract/v0.14.5/LICENSE
+	source = https://raw.githubusercontent.com/nteract/nteract/master/applications/desktop/static/logoTemplate%403x.png
+	source = nteract.desktop
+	sha256sums = c664229b3819182ff49989586f40e3f060add0a45b640d034d3b68303d655817
+	sha256sums = 866e6fa48cb8810d36d8d85a3085d7aa1c4317d3731f0ef84919428fee87bf71
+	sha256sums = b86a5ceef994ce2f5d6cd9a15dd9164587bf97f6237fe73304a3f5db660b8eea
+	sha256sums = 7ea096d8c58271e272bb559e60679e168115a1834e0f28693c1031dd608ca19c
+
+pkgname = nteract-desktop-bin
+
