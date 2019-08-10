@@ -7,14 +7,13 @@
 pkgname=gimp-develop-git
 _pkgname=${pkgname%-develop-git}
 epoch=1
-pkgver=2.99.1.r2925.71d0251d2c
+pkgver=2.99.1.r3159.4bafbeca1b
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (non-conflicting git version)"
 arch=('i686' 'x86_64')
 url="https://www.gimp.org"
 license=('GPL' 'LGPL')
 depends=(
-	'pygtk>=2.10.4'
 	'lcms2>=2.8'
 	'libwmf>=0.2.8'
 	'icu'
@@ -30,7 +29,7 @@ depends=(
 	'poppler-data>=0.4.9'
 	'openexr>=1.6.1'
 	'mypaint-brushes>=1.3.0'
-	'babl>=0.1.68'
+	'babl>=0.1.70'
 	'gegl>=0.4.17'
 	'cairo>=1.14.0'
 	'appstream-glib>=0.7.7'
@@ -39,7 +38,9 @@ depends=(
 makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1'
              'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm' 'webkit2gtk'
-             'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib')
+             'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib'
+             'gjs' 'python-gobject'
+             )
 checkdepends=('xorg-server-xvfb')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
             'alsa-lib: for MIDI event controller module'
@@ -52,7 +53,9 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'libmng: MNG support'
             'iso-codes: Language support'
             'aalib: ASCII art support'
-            'zlib: Compression routines')
+            'zlib: Compression routines'
+            'gjs: JavaScript scripting support'
+            )
 source=('git+https://gitlab.gnome.org/GNOME/gimp.git'
         'linux.gpl')
 sha512sums=('SKIP'
