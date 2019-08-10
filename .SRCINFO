@@ -1,0 +1,16 @@
+pkgbase = go-picofeed-git
+	pkgdesc = Golang minimal terminal rss reader.
+	pkgver = r18.a8c410b
+	pkgrel = 1
+	url = https://github.com/seenaburns/picofeed
+	arch = aarch64
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	conflicts = go-picofeed
+	source = git+https://github.com/seenaburns/picofeed.git
+	md5sums = SKIP
+
+pkgname = go-picofeed-git
+
