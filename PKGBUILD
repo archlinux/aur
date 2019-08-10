@@ -1,7 +1,7 @@
 # Maintainer: Lars Rustand
 
 pkgname=kubernetes-bin
-pkgver=1.15.1
+pkgver=1.15.2
 _contribver=0.7.0
 pkgrel=0
 pkgdesc="Production-Grade Container Scheduling and Management - binary version."
@@ -33,13 +33,13 @@ provides=('kubernetes'
 	  'kube-scheduler')
 conflicts=('kubernetes' 'kubeadm-git' 'kubectl' 'kubectl-bin' 'kubeadm-bin' 'kubelet-bin' )
 install=kubernetes.install
-sha512sums=('75cdef9f2e7e246a7833b454282858574bea37aea207d967599f49777e2998c49bf04e6c314b83b0debbbbaf50abd724cbb621ca7b909ede720305ae701c4e89'
+sha512sums=('0c8b0614236666c1025551bc0fc239b412348998352458ab94a63e67bcb0357a1b04355ddd23a1587ede931d109fb4132b3e73204f523d238b0e20e2e488d6aa'
             '51ab778583bd3d33a89d6fdfd17231ec8e1fe5983c043c21c03421d71403b8e76b52d86b05b05651ab8da1bdb5b47b8aa85f275badefe82344bac15b9d86cde6'
             '19d70634252932e7835bb5db4af75c530fe843386ca688267caca0fb3b4fb1ad7019025ea9d59926ceac8817580e9dfad9396c327f2da955146a302f22b2d5ce')
-sha512sums_x86_64=('5080c5f955c27b678b173af0f34b1dcac00437b7b93f368fd7315a1e61eb35eaee8df7da6af92f205a89a1c48825a98470c8fd3210a539c35cc81c9740a48781')
-sha512sums_armv7l=('e1983d3dd28d915d2d2bc232f1205d8b1ffe1c6afd7be6f488eaab121df31e922c332ee3fa618b745cb0130997e293d8e9d14d88eaae74b97c0de69a9b26c72b')
+sha512sums_x86_64=('faa734636ca18ae8786552eab317c0288cf958525df9236ce9b734d5b13809c002bb1538763bc0f8cbb2efa4340152f2cc78630e6158ed7edee163ac53570e22')
+sha512sums_armv7l=('bd539e5789eef3123c62c368b4733b5a1eb23e651b8d1a93bf3fba00fc5f0e9f8648865086f0a27271027fd3f13dc7c58da8d9336e62788380f1da23596bf8f9')
 sha512sums_armv7h=("${sha512sums_armv7l}")
-sha512sums_aarch64=('d59bbab5acadd6918341b37f1edbaadb4745d960b0a81e817a87f6aadaa1bd721f9774186b5475ab16047a52fe3324e1df6f3e2c2c3a68e04d9b7ca30b68e97e')
+sha512sums_aarch64=('05267d81e27dc7508e315b4b815d5c4c879729b5e60db9e5c9fa0f19f3b7518f0f31ad85a1d50af1ba3fdf0532346a6cfbdc9f7fb0b1d98337a4f285cbda078d')
 
 package() {
     cd $srcdir/kubernetes
