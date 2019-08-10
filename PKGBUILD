@@ -16,7 +16,7 @@ source=("$pkgname-v$pkgver.tar.gz::https://gitlab.com/gitlab-org/gitlab-pages/re
 	'service.env')
 backup=('etc/gitlab-pages/config.cfg')
 sha256sums=('eda36763002b3fe54633c59d384f9840de38c6fc9008eb04cab25ae088d1d8f7'
-            '26f9ffde23377b0f83006f8441f31697acb15e0fabe1a63ae4c815faf544b6f2'
+            '5e2135793d43ec2f3343b49cf45b00f44ef74e813c7d152d2e0ed46af5c25122'
             'ae62235f0fd66eaed7ad74048daf21b92058aba90e40fc2d3e7a684e9883c32e'
             'fd8f9b60e2247077ad00765904237b6b1c36b11a952cd3b1ad88e74417b82a96')
 
