@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=77.0.3860.5
+pkgver=78.0.3876.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -83,9 +83,6 @@ source=(
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
         'chromium-skia-harmony-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
-        'vaapi.diff.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1713435/revisions/1/patch?download' # https://chromium-review.googlesource.com/c/chromium/src/+/1713435
-        'memory.diff.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1713037/revisions/1/patch?download' # https://chromium-review.googlesource.com/c/chromium/src/+/1713037
-        'system_harfbuzz.diff.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~1715288/revisions/1/patch?download' # https://chromium-review.googlesource.com/c/chromium/src/+/1715288
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -99,9 +96,6 @@ sha256sums=(
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            '43810f59d73d6660b1b52989e15a02a3103ac2ab8f8561716cb67e0e0acce109'
-            'd8bec3a727488ab3d0d2a5215537075aa63cd244052a1ac2c37c402fc4f31265'
-            'c02a9701382b47391f7cd77529e5bf69a06461b503b50f64c60b8e16760a22aa'
             )
 install=chromium-dev.install
 
@@ -169,12 +163,17 @@ _keeplibs=(
            'third_party/catapult/common/py_vulcanize/third_party/rcssmin'
            'third_party/catapult/common/py_vulcanize/third_party/rjsmin'
            'third_party/catapult/third_party/polymer'
+           'third_party/catapult/tracing/third_party/chai'
            'third_party/catapult/tracing/third_party/d3'
+           'third_party/catapult/tracing/third_party/devscripts'
            'third_party/catapult/tracing/third_party/gl-matrix'
+           'third_party/catapult/tracing/third_party/jpeg-js'
            'third_party/catapult/tracing/third_party/jszip'
            'third_party/catapult/tracing/third_party/mannwhitneyu'
+           'third_party/catapult/tracing/third_party/mocha'
            'third_party/catapult/tracing/third_party/oboe'
            'third_party/catapult/tracing/third_party/pako'
+           'third_party/catapult/tracing/third_party/symbols'
            'third_party/ced'
            'third_party/cld_3'
            'third_party/closure_compiler'
@@ -231,6 +230,7 @@ _keeplibs=(
            'third_party/nasm'
            'third_party/node'
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
+           'third_party/one_euro_filter'
            'third_party/openscreen'
            'third_party/openscreen/src/third_party/tinycbor'
            'third_party/ots'
@@ -391,10 +391,6 @@ if check_option strip y; then
   _flags+=(
            'symbol_level=0'
            )
-  # Mimic exclude_unwind_tables=true.
-  CFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
-  CXXFLAGS+=' -fno-unwind-tables -fno-asynchronous-unwind-tables'
-  CPPFLAGS+=' -DNO_UNWIND_TABLES'
 fi
 
 if check_buildoption ccache y; then
@@ -486,23 +482,14 @@ prepare() {
 
   # https://crbug.com/893950.
   sed -e 's/\<xmlMalloc\>/malloc/' \
-    -e 's/\<xmlFree\>/free/' \
-    -i third_party/blink/renderer/core/xml/*.cc \
-    -i third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
-    -i third_party/libxml/chromium/libxml_utils.cc
+      -e 's/\<xmlFree\>/free/' \
+      -i third_party/blink/renderer/core/xml/*.cc \
+      -i third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
+      -i third_party/libxml/chromium/libxml_utils.cc
 
   # Enable VAAPI.
   patch -p1 -i "${srcdir}/enable-vaapi.patch"
   sed 's|/dri/|/|g' -i media/gpu/vaapi/vaapi_wrapper.cc
-
-  # Fix https://chromium-review.googlesource.com/c/chromium/src/+/1713435
-  base64 -d "${srcdir}/vaapi.diff.base64" | patch -p1 -i -
-
-  # Fix https://chromium-review.googlesource.com/c/chromium/src/+/1713037/
-  base64 -d "${srcdir}/memory.diff.base64" | patch -p1 -i -
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/1715288
-  base64 -d "${srcdir}/system_harfbuzz.diff.base64" | patch -p1 -i -
 
   # # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
 
@@ -675,13 +662,15 @@ package() {
   find locales -type f -name "*.pak" -exec install -Dm644 '{}' "${pkgdir}/usr/lib/chromium-dev/{}" \;
 
   # Install icons.
-  for _size in 16 22_mono 24 32 48 128 256; do
+  for _size in 16 24 32 48 64 128 256; do
     case "${_size}" in
       16|32) _branding="${srcdir}/chromium-${pkgver}/chrome/app/theme/default_100_percent/chromium" ;;
       *) _branding="${srcdir}/chromium-${pkgver}/chrome/app/theme/chromium" ;;
     esac
-    install -Dm644 "${_branding}/product_logo_${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size/_mono}x${_size//_mono}/apps/chromium-dev.png"
+    install -Dm644 "${_branding}/product_logo_${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/chromium-dev.png"
+    install -Dm644 "${_branding}/product_logo_${_size}.png" "${pkgdir}/usr/lib/chromium-dev/product_logo_${_size}.png"
   done
+  install -Dm644 "${srcdir}/chromium-${pkgver}/chrome/app/theme/chromium/linux/product_logo_32.xpm" "${pkgdir}/usr/lib/chromium-dev/product_logo_32.xpm"
   install -Dm644 "${srcdir}/chromium-dev.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/chromium-dev.svg"
 
   popd &> /dev/null
