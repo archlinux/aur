@@ -37,7 +37,7 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://repository-origin.spoti
 #              "${pkgname}-${pkgver}-i686-Packages::http://repository.spotify.com/dists/stable/non-free/binary-i386/Packages")
 sha512sums=('999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
-            'ecc001ad420bafeef8551fca4ed1b37ca9ba069b0d42b7756df5b6cf8184abbfb97ca6898178e9f1dc1290557a8ce3347c56dcdf00c5671c493de718b08d47e8'
+            'SKIP'
             'SKIP')
 sha512sums_x86_64=('f004083eee00600a51e50d7dee03846293b5ccd6966786e91055564c7963917b9aaa917de41f299a0f5b7baecea5f466fb37722b8631743ff2ca15f43851f5f4'
                    '39074e57abb9a647b4b27cc09bf91dd80a16589c8503b17061c23277b7718e778834bb79c168c771b9615d9e247f1ce9c5c597a10db905874a5d5c79f1109856')
