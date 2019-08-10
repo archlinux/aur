@@ -2,7 +2,7 @@
 
 _pkgname=p2
 pkgname=${_pkgname}-git
-pkgver=r18.1fc009c
+pkgver=r31.57da406
 pkgrel=1
 epoch=1
 pkgdesc="An XEP-0357: Push Notifications app server that relays push messages between the user’s server and Googles Firebase Cloud Messaging"
@@ -89,7 +89,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   install -d "${pkgdir}/opt/"
-  cp target/p2-0.1.jar "${pkgdir}/opt/"
+  cp target/p2-0.3.jar "${pkgdir}/opt/"
   install -d "${pkgdir}/etc/"
   cp p2.conf.example "${pkgdir}/etc/p2.conf"
   install -d "${pkgdir}/usr/lib/systemd/system/"
