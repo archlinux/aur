@@ -1,13 +1,13 @@
 # Maintainer: Johannes Arnold <johannes.arnold@stud.uni-hannover.de>
 pkgname=wldash-git
-pkgver=r69.92acc7c
+pkgver=r75.2bb0a2f
 pkgrel=1
 pkgdesc="Wayland launcher/dashboard"
 arch=('x86_64')
 url="https://github.com/kennylevinsen/wldash"
 license=('GPL3')
 depends=()
-makedepends=('git' 'rust') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'rust') 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=()
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	cargo build --release --features ivy
+	cargo build --release --features=bc
 }
 
 package() {
