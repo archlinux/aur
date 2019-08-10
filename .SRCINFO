@@ -1,0 +1,16 @@
+pkgbase = mariadbpp-git
+	pkgdesc = C++ client library for MariaDB
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/viaduck/mariadbpp
+	arch = x86_64
+	license = BSL-1.0
+	makedepends = cmake
+	depends = mariadb-libs
+	source = git+https://github.com/viaduck/mariadbpp
+	source = git+https://github.com/viaduck/cmake-modules
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mariadbpp-git
+
