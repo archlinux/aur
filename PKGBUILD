@@ -18,7 +18,7 @@ _extramodules="$(basename $(readlink -f /lib/modules/$(uname -r)/extramodules/))
 
 pkgver() {
   cd "$_pkgname"
-  git describe --always | sed 's|-|.|g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
