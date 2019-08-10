@@ -6,7 +6,7 @@
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=76.0.3809.87
+pkgver=76.0.3809.100
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
@@ -29,7 +29,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('215ca6acee7b4fd3c95fe796260af4dc5454dbba3b701aa43afeb98a06dc4194'
+sha256sums=('8cd93ada3e0837ced512f69783400991d3b82e0d9622e04fab5922877577d26d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
