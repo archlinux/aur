@@ -7,7 +7,7 @@
 
 _pkgbase=scons
 pkgname=python2-${_pkgbase}
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Extensible Python-based build utility. Python2 version"
 arch=('any')
@@ -20,7 +20,7 @@ checkdepends=('clang' 'dmd' 'gdc' 'ldc' 'nasm' 'python-lxml' 'python-pytest'
 'python-virtualenv' 'python2-lxml' 'python2-pytest' 'python2-virtualenv' 'swig'
 'zip')
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/${_pkgbase}/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha512sums=('3894d17bca02b9aa5426c70d894b8ecfcf3db2b20254b848209c31d8413a8cd1c2a7b2a87ef9bcfe5555980beb2815f62cdbe185098a64ae8b3506c41c867463')
+sha512sums=('3347a7ec5c6c7b596c0d51bb4a9654b971734736febe3834df0f40e7839e1f0578dafeae838d5ddd9f3319ac3d17b6790666fa1602c30480eba25122355179a5')
 
 prepare() {
    cd "${_pkgbase}-${pkgver}"
