@@ -5,7 +5,7 @@
 
 pkgname=gnudatalanguage
 pkgver=0.9.8
-pkgrel=6
+pkgrel=7
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"
@@ -25,8 +25,8 @@ depends=('python2'
          'eccodes'
          'udunits'
          'eigen3'
-         'libtirpc'
-         'graphicsmagick')
+         'libtirpc')
+         #'graphicsmagick')
 makedepends=('cmake')
 options=('!makeflags')
 source=("http://downloads.sourceforge.net/gnudatalanguage/gdl-${pkgver}.tgz"
@@ -56,7 +56,7 @@ build() {
     mkdir build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON=YES -DPYTHONVERSION=2.7 \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2.7 -DGRAPHICSMAGICK=ON -DMAGICK=OFF \
+        -DPYTHON_EXECUTABLE=/usr/bin/python2.7 -DGRAPHICSMAGICK=OFF -DMAGICK=OFF \
         -DFFTW=ON -DHDF=ON -DHDFDIR=/opt/hdf4 -DHDF5=ON -DGRIB=ON -DUDUNITS=ON ..
 
     make
