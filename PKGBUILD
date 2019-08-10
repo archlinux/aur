@@ -6,8 +6,8 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.0.8
-pkgrel=2
+pkgver=4.0.9
+pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -47,17 +47,8 @@ optdepends=(
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("fonts.xml"
-        "${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP'
-            '2b86f0579776a0a50696eb0fe4958a853cd020e91d76a88d33c72a71e379e5d7')
-
-prepare() {
-
-  # temporary patch for 4.0.8
-  cp fonts.xml "Electron-Cash-${pkgver}/gui/qt/data/fonts.xml"
-
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz")
+sha256sums=('379855695794df956dbea18624ce06fb0be07fb42741935882eaa7962c593c5e')
 
 build() {
   cd "Electron-Cash-${pkgver}"
