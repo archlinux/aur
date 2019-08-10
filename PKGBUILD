@@ -2,7 +2,7 @@
 pkgname=ncpamixer-git
 _pkgname=ncpamixer
 pkgver=a
-pkgrel=3
+pkgrel=4
 pkgdesc="ncurses PulseAudio Mixer"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/fulhax/ncpamixer"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git rev-parse --short HEAD # Fix to better comply with github display
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
