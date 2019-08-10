@@ -3,7 +3,7 @@
 
 pkgname=emscripten-git
 epoch=2
-pkgver=1.38.30.r70.ge9c44b413
+pkgver=1.38.41.r21.gbef558aff
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -103,7 +103,4 @@ package() {
   # docs
   install -d "$pkgdir"/usr/share/doc
   ln -s /usr/lib/${pkgname%-git}/site/source/docs "$pkgdir"/usr/share/doc/$pkgname
-
-  # delete stray link
-  rm "$pkgdir"/usr/lib/${pkgname%-git}/system/include/libc/bits
 }
