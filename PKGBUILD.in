@@ -14,7 +14,6 @@ arch=('i686' 'x86_64')
 url="https://www.gimp.org"
 license=('GPL' 'LGPL')
 depends=(
-	'pygtk>=@_pygtk_version@'
 	'lcms2>=@_lcms_version@'
 	'libwmf>=@_wmf_version@'
 	'icu'
@@ -39,7 +38,9 @@ depends=(
 makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1'
              'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm' 'webkit2gtk'
-             'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib')
+             'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib'
+             'gjs' 'python-gobject'
+             )
 checkdepends=('xorg-server-xvfb')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
             'alsa-lib: for MIDI event controller module'
@@ -52,7 +53,9 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'libmng: MNG support'
             'iso-codes: Language support'
             'aalib: ASCII art support'
-            'zlib: Compression routines')
+            'zlib: Compression routines'
+            'gjs: JavaScript scripting support'
+            )
 source=('git+https://gitlab.gnome.org/GNOME/gimp.git'
         'linux.gpl')
 sha512sums=('SKIP'
