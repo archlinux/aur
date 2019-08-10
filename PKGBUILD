@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=4.14.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
@@ -38,6 +38,9 @@ package() {
     # Fix electron 5 incompatibility
     sed -i 's/webPreferences:{dev/webPreferences:{nodeIntegration:true,dev/g' app/app/js/main/App/index.js
     sed -i 's/nodeIntegration:!1/nodeIntegration:true/g' app/app/js/main/App/index.js
+    # Fix startup error electron 6.0.1 (https://github.com/electron/electron/pull/19570
+    sed -i 's|urls:\[\"\*\.\"+r.tld\]|urls:\["\*://\*/\*\"\]|g' app/app/js/main/App/index.js
+    sed -i 's|urls:\[\"\*\.\*\"\]|urls:\["\*://\*/\*\"\]|g' app/app/js/main/App/index.js
     asar pack app app.asar
 
     cd "${srcdir}"
