@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=libplacebo-git
-pkgver=v1.18.0.7.g2ee4b04
+pkgver=v1.18.0.20.g22a9919
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://github.com/haasn/libplacebo'
@@ -10,7 +10,6 @@ arch=('x86_64')
 license=('LGPL2.1')
 depends=('vulkan-icd-loader'
          'lcms2'
-         'shaderc'
          'libshaderc_shared.so'
          )
 makedepends=('git'
@@ -21,7 +20,9 @@ makedepends=('git'
 provides=('libplacebo'
           'libplacebo.so'
           )
-conflicts=('libplacebo')
+conflicts=('libplacebo'
+           'libplacebo.so'
+           )
 source=('git+https://github.com/haasn/libplacebo.git')
 sha256sums=('SKIP')
 
