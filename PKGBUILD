@@ -3,7 +3,7 @@
 pkgname=julia-zmq
 _pkgname=ZMQ
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Julia binding to the native API of ØMQ project'
 arch=(any)
 url=https://github.com/JuliaInterop/ZMQ.jl
@@ -32,6 +32,25 @@ _project() {
 prepare() {
 	# Generate a Project.toml from Registry metadata
 	rm -f Project.toml && _project
+
+	cat >$_pkgname.jl-$pkgver/deps/deps.jl << 'EOF'
+if isdefined((@static VERSION < v"0.7.0-DEV.484" ? current_module() : @__MODULE__), :Compat)
+    import Compat.Libdl
+elseif VERSION >= v"0.7.0-DEV.3382"
+    import Libdl
+end
+const libzmq = "/usr/lib/libzmq.so"
+function check_deps()
+    global libzmq
+    if !isfile(libzmq)
+        error("$(libzmq) does not exist, please report an issue with this PKGBUILD")
+    end
+
+    if Libdl.dlopen_e(libzmq) in (C_NULL, nothing)
+        error("$(libzmq) cannot be opened, please report an issue with this PKGBUILD")
+    end
+end
+EOF
 }
 
 package() {
