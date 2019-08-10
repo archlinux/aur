@@ -1,7 +1,7 @@
 pkgbase = powertool
 	pkgdesc = A simple power management script
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/plasmicplexus/powertool
 	install = powertool.install
 	arch = any
