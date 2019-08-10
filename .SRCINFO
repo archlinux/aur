@@ -53,5 +53,6 @@ pkgname = manjarowish-lxqt-kwin-light-settings
 	optdepends = grub-btrfs
 	provides = manjaro-desktop-settings
 	conflicts = manjaro-desktop-settings
+	conflicts = plasma-workspace
 	replaces = manjarowish-dark-settings-settings,manjaro-kde-settings,manjarowish-light-settings-settings
 
