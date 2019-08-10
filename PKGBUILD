@@ -1,11 +1,11 @@
 # Maintainer: Robert Hawdon <aur at robertianhawdon dot me dot uk>
 
 pkgname=gnome-shell-extension-argos-git
-pkgver=r38.a038299
+pkgver=r51.e7c69ff
 pkgrel=1
 pkgdesc="Create GNOME Shell extensions in seconds."
 arch=(any)
-url="https://github.com/roberthawdon/argos"
+url="https://github.com/p-e-w/argos"
 license=(GPLv3)
 
 makedepends+=('git')
