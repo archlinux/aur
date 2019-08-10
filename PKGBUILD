@@ -4,11 +4,11 @@
 # cd steamos_kernel
 # echo "$(git rev-parse --abbrev-ref HEAD).$(git log -n 1 --pretty=format:%h -- drivers/input/joystick/xpad.c)" | sed 's/-/./g'
 
-_xpadsteamoscommit='brewmaster-4.11'
+_xpadsteamoscommit='brewmaster-4.19'
 
 _pkgbase='steamos-xpad'
 pkgname='steamos-xpad-dkms'
-pkgver='20171105'
+pkgver='20190810'
 pkgrel='1'
 pkgdesc="xpad kernel module included with Valve's SteamOS"
 arch=('any')
@@ -24,7 +24,7 @@ source=("https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/$_xpadst
         "change-name.patch"
         "steamos-xpad-dkms.dkms"
         "xpad.modprobe")
-sha512sums=("SKIP"
+sha512sums=('291bb7262204f0ff3afcb09129e8cae9e22b848f2db604bf015f685a9869c237af8d49203e455c8e8f8edc0ca047794a88293f7ac3329242642e9b59b3fdafb8'
             '9ca3d1ada29c5bfe3ffd39f818e792be0c528191952660568f0ecae981b191a2cfbfd64a90f1158aa760e38fcd3c52d648cdf0f032fd649512933ca36bcd2149'
             'a0ab12a6768447b1798c6d82988fb81a212512dbef19a5e66a5b5c096cbe136671255ad4896226c595d95a97ce097efe6702a370c30cc32d3234750d6a0a5daf'
             '7901fb85689d8670f0d853f19e24b0c22e3913dd82cdb0a83d74f456e010b7dff67575c5be863b43c95f1149780faec5cab604a829cb3e400f1ec44173c35aac'
@@ -34,7 +34,7 @@ prepare() {
     local _tmpdir="${srcdir}/temp"
     mkdir "${_tmpdir}"
     cp -L "${srcdir}/xpad.c" "${_tmpdir}/xpad.c" # we will patch a copy of our source xpad.c
-    
+
     patch -d "${_tmpdir}" -Np4 -i "${srcdir}/change-name.patch"
 }
 
