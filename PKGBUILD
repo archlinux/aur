@@ -1,7 +1,7 @@
 # Author: futpib <futpib@gmail.com>
 
 pkgname=pagraphcontrol-git
-pkgver=1.0.2.r6.gf715a4c
+pkgver=1.0.5.r0.g5f529a6
 pkgrel=1
 pkgdesc="PulseAudio Graph Control"
 arch=('x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 build() {
     cd $_pkgname
 
-    yarn install
+    yarn install --ignore-engines
     yarn build
 }
 
