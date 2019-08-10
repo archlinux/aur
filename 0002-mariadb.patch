@@ -1,0 +1,53 @@
+diff --git a/src/network-mysqld-packet.c b/src/network-mysqld-packet.c
+index 3e5740b..5c81e49 100644
+--- a/src/network-mysqld-packet.c
++++ b/src/network-mysqld-packet.c
+@@ -97,7 +97,7 @@ int network_mysqld_proto_get_com_query_result(network_packet *packet, network_my
+ 			err = err || network_mysqld_proto_get_ok_packet(packet, ok_packet);
+ 
+ 			if (!err) {
+-				if (ok_packet->server_status & SERVER_MORE_RESULTS_EXISTS) {
++				if (ok_packet->server_status & SERVER_MORE_RESULTS_EXIST) {
+ 			
+ 				} else {
+ 					is_finished = 1;
+@@ -167,7 +167,7 @@ int network_mysqld_proto_get_com_query_result(network_packet *packet, network_my
+ 
+ 				if (!err) {
+ #if MYSQL_VERSION_ID >= 50000
+-					/* 5.5 may send a SERVER_MORE_RESULTS_EXISTS as part of the first 
++					/* 5.5 may send a SERVER_MORE_RESULTS_EXIST as part of the first 
+ 					 * EOF together with SERVER_STATUS_CURSOR_EXISTS. In that case,
+ 					 * we aren't finished. (#61998)
+ 					 *
+@@ -180,7 +180,7 @@ int network_mysqld_proto_get_com_query_result(network_packet *packet, network_my
+ 					 */
+ 					if (use_binary_row_data &&
+ 					    eof_packet->server_status & SERVER_STATUS_CURSOR_EXISTS &&
+-					    !(eof_packet->server_status & SERVER_MORE_RESULTS_EXISTS)) {
++					    !(eof_packet->server_status & SERVER_MORE_RESULTS_EXIST)) {
+ 						is_finished = 1;
+ 					} else {
+ 						query->state = PARSE_COM_QUERY_RESULT;
+@@ -234,7 +234,7 @@ int network_mysqld_proto_get_com_query_result(network_packet *packet, network_my
+ 					}
+ 					query->warning_count = eof_packet->warnings;
+ 
+-					if (query->server_status & SERVER_MORE_RESULTS_EXISTS) {
++					if (query->server_status & SERVER_MORE_RESULTS_EXIST) {
+ 						query->state = PARSE_COM_QUERY_INIT;
+ 					} else {
+ 						is_finished = 1;
+diff --git a/plugins/admin/admin-plugin.c b/plugins/admin/admin-plugin.c
+index e3e36a1..1521deb 100644
+--- a/plugins/admin/admin-plugin.c
++++ b/plugins/admin/admin-plugin.c
+@@ -208,7 +208,7 @@ NETWORK_MYSQLD_PLUGIN_PROTO(server_con_init) {
+ 	challenge->server_version_str = g_strdup("5.0.99-agent-admin");
+ 	challenge->server_version     = 50099;
+ 	challenge->charset            = 0x08; /* latin1 */
+-	challenge->capabilities       = CLIENT_PROTOCOL_41 | CLIENT_SECURE_CONNECTION | CLIENT_LONG_PASSWORD;
++	challenge->capabilities       = CLIENT_PROTOCOL_41 | CLIENT_SECURE_CONNECTION;
+ 	challenge->server_status      = SERVER_STATUS_AUTOCOMMIT;
+ 	challenge->thread_id          = 1;
+ 
