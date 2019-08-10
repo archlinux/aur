@@ -27,11 +27,11 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/mariadbpp"
+    mkdir -p "build"
+    cd "${srcdir}/${pkgname}"
     git submodule init
     git config "submodule.external/cmake-modules.url" $srcdir/cmake-modules
     git submodule update --init
-    mkdir -p "build"
 }
 
 build() {
