@@ -7,7 +7,7 @@ pkgver=3.3
 pkgrel=1
 pkgdesc="Bootstrap a rpm based distribution like debootstrap"
 arch=('any')
-url="http://collab-maint.alioth.debian.org/rinse/"
+url="https://salsa.debian.org/debian/rinse"
 license=('GPL')
 groups=()
 depends=('glibc' 'perl' 'perl-html-parser' 'perl-uri' 'perl-libwww' 'wget' 'rpm-org' 'cpio')
@@ -34,4 +34,4 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   make PREFIX="$pkgdir/" sbindir="$pkgdir/bin" install
 }
- 
+
