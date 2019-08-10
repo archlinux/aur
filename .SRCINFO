@@ -1,0 +1,12 @@
+pkgbase = tonespace
+	pkgdesc = chord generator and visualizer
+	pkgver = 2.5.544
+	pkgrel = 1
+	url = https://www.mucoder.net/en/tonespace
+	arch = x86_64
+	license = unknown
+	source = https://www.mucoder.net/en/tonespace/v0205/download/544/tonespace-2.5.544-linux-64bit.zip
+	md5sums = f2a88b3f84cab982f5740b4668ef52f0
+
+pkgname = tonespace
+
