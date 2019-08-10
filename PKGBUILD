@@ -1,14 +1,13 @@
 # Maintainer: Christophe LAVIE <christophe.lavie@laposte.net>
 
 pkgbase='dynamic-wallpaper-mojave'
-pkgname=("${pkgbase}-timed-gnome-git" "${pkgbase}-kde-git" "${pkgbase}-images-git" )
+pkgname=("${pkgbase}-gnome-timed-git" "${pkgbase}-kde-git" "${pkgbase}-images-git" )
 _gitname='gnome-kde-dynamic-wallpaper-mojave'
-pkgver=6
+pkgver=6.1
 pkgrel=1
 arch=('any')
 url="https://github.com/japamax/${_gitname}"
 source=("git+https://github.com/japamax/${_gitname}")
-conflicts=('gnome-mojave-timed-wallpaper' 'gnome-theme-macos-mojave-meta')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,14 +22,14 @@ pkgver() {
 	install -m644 ${srcdir}/${_gitname}/mojave/* "${pkgdir}/usr/share/dynamicwallpapers/mojave/images"
 }
 
- package_dynamic-wallpaper-mojave-timed-gnome-git() {
+ package_dynamic-wallpaper-mojave-gnome-timed-git() {
 	depends=(gnome-shell gnome-backgrounds dynamic-wallpaper-mojave-images-git)
 	pkgdesc="Time based GNOME macOS Mojave wallpaper with real scheludes"
-	install=dynamic-wallpaper-mojave-timed-gnome-git.install
+	install=dynamic-wallpaper-mojave-gnome-timed-git.install
 	cd "${srcdir}/${_gitname}"
-	install -dm755 "${pkgdir}/usr/share/backgrounds/gnome"
-	ln -s "/usr/share/dynamicwallpapers/mojave/images" "${pkgdir}/usr/share/backgrounds/gnome/mojave"
-	install -Dm644 mojave-timed.xml "${pkgdir}/usr/share/backgrounds/gnome/mojave-timed.xml"
+	install -dm755 "${pkgdir}/usr/share/backgrounds/macOS"
+	ln -s "/usr/share/dynamicwallpapers/mojave/images" "${pkgdir}/usr/share/backgrounds/macOS/mojave"
+	install -Dm644 mojave-timed.xml "${pkgdir}/usr/share/backgrounds/macOS/mojave-timed.xml"
 	install -Dm644 mojave.xml "${pkgdir}/usr/share/gnome-background-properties/mojave.xml"
  }
  
