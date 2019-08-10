@@ -1,9 +1,15 @@
-post_upgrade() {
-  grpck -r >/dev/null 2>&1
-  if [ $? -eq 2 ]; then
-    printf '%s\n' \
-      "==> Warning: /etc/group or /etc/gshadow are inconsistent." \
-      "    Run 'grpck' to correct this."
-  fi
-  return 0
+setcaps() {
+  # shadow ships these as setuid, but if we can apply file caps, use those instead.
+  setcap cap_setuid+ep usr/bin/newuidmap 2>/dev/null && chmod -s usr/bin/newuidmap
+  setcap cap_setgid+ep usr/bin/newgidmap 2>/dev/null && chmod -s usr/bin/newgidmap 
 }
+
+post_install() {
+  setcaps
+}
+
+post_upgrade() {
+  setcaps
+}
+
+# vim:set ts=2 sw=2 et:

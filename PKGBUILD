@@ -9,8 +9,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=shadow-selinux
-pkgver=4.6
-pkgrel=3
+pkgver=4.7
+pkgrel=2
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('x86_64')
 url='https://github.com/shadow-maint/shadow'
@@ -27,7 +27,6 @@ backup=(etc/login.defs
         etc/pam.d/{chgpasswd,groupmems}
         etc/default/useradd)
 options=(strip)
-install='shadow.install'
 validpgpkeys=('D5C2F9BFCA128BBA22A77218872F702C4D6E25A8')  # Christian Perrier
 source=("git+https://github.com/shadow-maint/shadow.git#tag=$pkgver"
         LICENSE
@@ -39,6 +38,7 @@ source=("git+https://github.com/shadow-maint/shadow.git#tag=$pkgver"
         passwd
         shadow.{timer,service}
         useradd.defaults)
+install=shadow.install
 sha1sums=('SKIP'
           '33a6cf1e44a1410e5c9726c89e5de68b78f5f922'
           '4ad0e059406a305c8640ed30d93c2a1f62c2f4ad'
@@ -61,12 +61,6 @@ prepare() {
   cd "${pkgname/-selinux}"
 
   local backports=(
-    # Fix usermod crash
-    73a876a05612c278da747faeaeea40c3b8d34a53
-    # usermod: prevent a segv
-    48dcf7852e51b9d8e7926737cc7f7823978b7d7d
-    # https://github.com/shadow-maint/shadow/issues/125
-    10e388efc2c786d1ec4ed007891bfefa8826b6fd
   )
 
   for commit in "${backports[@]}"; do
