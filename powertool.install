@@ -5,7 +5,7 @@ post_install() {
 }
 
 post_remove() {
-    sed -i '/[]\?%sudo ALL=(ALL) NOPASSWD: \/usr\/bin\/powertool/d' /etc/sudoers
+    sed -i 'N;N;s/\n*%sudo ALL=(ALL) NOPASSWD: \/usr\/bin\/powertool//' /etc/sudoers
 }
 
 # vim: ts=4 sts=4 sw=4 et

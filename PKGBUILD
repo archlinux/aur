@@ -1,7 +1,7 @@
 # Contributor: Jake Mannens <jakem_5@hotmail.com>
 pkgname=powertool
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple power management script"
 arch=('any')
 url="https://gitlab.com/plasmicplexus/powertool"
