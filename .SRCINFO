@@ -19,6 +19,7 @@ pkgbase = artegeek-planner-git
 	depends = libgee
 	depends = libnotify
 	depends = libunity
+	depends = pantheon-calendar
 	depends = sqlite
 	provides = artegeek-planner
 	provides = planner-eos

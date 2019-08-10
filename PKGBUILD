@@ -11,7 +11,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('gtk3' 'granite' 'appstream' 'discount' 'evolution-data-server' 
-		 'geoclue' 'gtksourceview3' 'libgee' 'libnotify' 'libunity' 'sqlite' )
+		 'geoclue' 'gtksourceview3' 'libgee' 'libnotify' 'libunity' 
+		 'pantheon-calendar' 'sqlite' )
 optdepends=('')
 makedepends=('git' 'meson' 'vala')
 provides=("artegeek-${_gitname}" "planner-eos")
