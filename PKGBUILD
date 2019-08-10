@@ -2,7 +2,7 @@
 
 pkgname=fuzion-git
 _pkgname=Fuzion
-pkgver=master
+pkgver=v1.0.r1564.g648b4789
 pkgrel=2
 pkgdesc="Fuzion is a free-as-in-freedom CSGO cheat"
 arch=("x86_64")
