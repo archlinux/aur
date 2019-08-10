@@ -3,7 +3,7 @@
 _pkgname=p2
 pkgname=${_pkgname}-git
 pkgver=r31.57da406
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An XEP-0357: Push Notifications app server that relays push messages between the user’s server and Googles Firebase Cloud Messaging"
 arch=('any')

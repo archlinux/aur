@@ -1,7 +1,7 @@
 pkgbase = p2-git
 	pkgdesc = An XEP-0357: Push Notifications app server that relays push messages between the user’s server and Googles Firebase Cloud Messaging
 	pkgver = r31.57da406
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/iNPUTmice/p2
 	install = p2.install
