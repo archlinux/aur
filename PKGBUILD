@@ -1,8 +1,7 @@
 # Maintainer: Daniel Micay <danielmicay@gmail.com>
 _gitname=kmscon
 pkgname=kmscon-git
-pkgver=8.15.g3b6fb0f
-pkgver() { cd $_gitname && git describe | sed 's/^kmscon\-//; s/-/./g'; }
+pkgver=a
 pkgrel=1
 epoch=2
 pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS)'
@@ -16,6 +15,11 @@ provides=(kmscon)
 conflicts=(kmscon)
 source=(git://people.freedesktop.org/~dvdhrm/kmscon)
 md5sums=(SKIP)
+
+pkgver() {
+  cd $_gitname
+  git describe | sed 's/^kmscon\-//; s/-/./g'
+}
 
 build() {
   cd $_gitname
