@@ -1,0 +1,24 @@
+pkgbase = dynamic-wallpaper-catalina
+	pkgver = 1.0
+	pkgrel = 22
+	url = https://github.com/japamax/gnome-kde-dynamic-wallpaper-catalina
+	arch = any
+	source = git+https://github.com/japamax/gnome-kde-dynamic-wallpaper-catalina
+	sha256sums = SKIP
+
+pkgname = dynamic-wallpaper-catalina-timed-gnome-git
+	pkgdesc = Time based GNOME macOS Catalina wallpaper with real scheludes
+	install = dynamic-wallpaper-catalina-timed-gnome-git.install
+	depends = gnome-shell
+	depends = gnome-backgrounds
+	depends = dynamic-wallpaper-catalina-images-git
+
+pkgname = dynamic-wallpaper-catalina-kde-git
+	pkgdesc = Azimuth Elevation based KDE macOS Catalina wallpaper
+	install = dynamic-wallpaper-catalina-kde-git.install
+	depends = plasma5-wallpapers-dynamic
+	depends = dynamic-wallpaper-catalina-images-git
+
+pkgname = dynamic-wallpaper-catalina-images-git
+	pkgdesc = macOS Catalina dynamic wallpaper based 8 images
+
