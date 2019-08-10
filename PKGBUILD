@@ -8,7 +8,7 @@
 #PKGEXT='.pkg.tar.gz'
 pkgname=osmocombb-git
 pkgver=a
-pkgrel=3
+pkgrel=4
 pkgdesc="An Free Software / Open Source GSM Baseband software implementation."
 arch=('i686' 'x86_64')
 url="http://bb.osmocom.org/"
@@ -25,9 +25,7 @@ md5sums=('SKIP' '94bb3ff0cdff13d7a8163c7d2ee40a35')
 
 pkgver() {
   cd "$srcdir/osmocom-bb"
-  __pkgver="$(git describe --always)"
-  __pkgver="${__pkgver//-/.}"
-  echo "${__pkgver#*_v}"
+  git describe --long | sed 's/^osmocon_//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 prepare() {
