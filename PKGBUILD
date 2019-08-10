@@ -3,6 +3,8 @@ pkgver=1.0.0
 _pkgver=${pkgver/_/-}
 pkgrel=0
 arch=('i686' 'x86_64')
+conflicts=('mariadbpp')
+provides=('mariadbpp')
 
 _abi=1.0.0
 
