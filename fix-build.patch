@@ -1,0 +1,36 @@
+diff -ura package.orig/electron-builder.json package.new/electron-builder.json
+--- package.orig/electron-builder.json	2019-08-10 11:52:54.445603209 +0200
++++ package.new/electron-builder.json	2019-08-10 11:56:04.277391817 +0200
+@@ -76,12 +76,10 @@
+ 		],
+ 		"artifactName": "rocketchat-${version}-${arch}.${ext}"
+ 	},
++	"electronDist": "/usr/lib/electron4",
+ 	"linux": {
+ 		"target": [
+-			"tar.gz",
+-			"deb",
+-			"rpm",
+-			"snap"
++			"dir"
+ 		],
+ 		"executableName": "rocketchat-desktop",
+ 		"category": "GNOME;GTK;Network;InstantMessaging",
+diff -ura package.orig/tasks/release.js package.new/tasks/release.js
+--- package.orig/tasks/release.js	2019-08-10 11:52:54.482270211 +0200
++++ package.new/tasks/release.js	2019-08-10 11:55:33.283760108 +0200
+@@ -16,6 +16,14 @@
+ 	await build({ publish, x64, linux: [], c: { productName: 'rocketchat' } });
+ });
+ 
++gulp.task('release:linux-x64', async() => {
++	await build({ publish: 'never', x64, linux: [], c: { productName: 'rocketchat' } });
++});
++
++gulp.task('release:linux-ia32', async() => {
++	await build({ publish: 'never', ia32, linux: [], c: { productName: 'rocketchat' } });
++});
++
+ gulp.task('release:win32', async () => {
+ 	const publish = getEnv() === 'production' ? 'onTagOrDraft' : 'never';
+ 	await build({ publish, x64, ia32, win: [] });
