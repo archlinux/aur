@@ -1,0 +1,16 @@
+pkgbase = python-arrayfire
+	pkgdesc = Python bindings for arrayfire
+	pkgver = 3.6
+	pkgrel = 20181017
+	url = https://pypi.org/project/arrayfire/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = arrayfire
+	source = https://pypi.io/packages/source/A/Arrayfire/arrayfire-3.6.20181017.tar.gz
+	sha256sums = 58e33500cea53ba01b461010e479fe1ff79d2158eb34301e05ed2b5f839afc5f
+
+pkgname = python-arrayfire
+
