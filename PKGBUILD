@@ -65,7 +65,7 @@ build() {
 
 check() {
     cd "${_pkgbase}-${pkgver}"
-    python2 runtest.py -a -t || msg "Tests passing with 'NO RESULT' count as failed."
+    python2 runtest.py -a -t -j ${MAKEFLAGS#-j} || msg "Tests passing with 'NO RESULT' count as failed."
 }
 
 
