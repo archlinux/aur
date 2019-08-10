@@ -32,6 +32,8 @@ prepare() {
     git submodule init
     git config "submodule.external/cmake-modules.url" $srcdir/cmake-modules
     git submodule update --init
+    cd "include/mariadb++"
+    patch -p1 -d . < "${startdir}/headers.patch"
 }
 
 build() {

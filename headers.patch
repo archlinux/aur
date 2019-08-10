@@ -1,0 +1,100 @@
+diff -c mariadb++org/account.hpp mariadb++/account.hpp
+*** mariadb++org/account.hpp	2019-08-10 15:36:14.389725377 +0900
+--- mariadb++/account.hpp	2019-08-10 15:29:26.273546659 +0900
+***************
+*** 13,19 ****
+  #include <string>
+  #include <map>
+  #include <mariadb++/types.hpp>
+! #include <mysql.h>
+  
+  namespace mariadb {
+  class account;
+--- 13,19 ----
+  #include <string>
+  #include <map>
+  #include <mariadb++/types.hpp>
+! #include <mysql/mysql.h>
+  
+  namespace mariadb {
+  class account;
+diff -c mariadb++org/bind.hpp mariadb++/bind.hpp
+*** mariadb++org/bind.hpp	2019-08-10 15:36:14.389725377 +0900
+--- mariadb++/bind.hpp	2019-08-10 15:29:51.116645349 +0900
+***************
+*** 10,16 ****
+  #ifndef _MARIADB_BIND_HPP_
+  #define _MARIADB_BIND_HPP_
+  
+! #include <mysql.h>
+  #include <mariadb++/types.hpp>
+  #include <mariadb++/data.hpp>
+  
+--- 10,16 ----
+  #ifndef _MARIADB_BIND_HPP_
+  #define _MARIADB_BIND_HPP_
+  
+! #include <mysql/mysql.h>
+  #include <mariadb++/types.hpp>
+  #include <mariadb++/data.hpp>
+  
+diff -c mariadb++org/connection.hpp mariadb++/connection.hpp
+*** mariadb++org/connection.hpp	2019-08-10 15:36:14.389725377 +0900
+--- mariadb++/connection.hpp	2019-08-10 15:29:37.426774611 +0900
+***************
+*** 18,24 ****
+  #include <mariadb++/save_point.hpp>
+  #include <mariadb++/result_set.hpp>
+  
+! #include <mysql.h>
+  
+  namespace mariadb {
+  /**
+--- 18,24 ----
+  #include <mariadb++/save_point.hpp>
+  #include <mariadb++/result_set.hpp>
+  
+! #include <mysql/mysql.h>
+  
+  namespace mariadb {
+  /**
+diff -c mariadb++org/time.hpp mariadb++/time.hpp
+*** mariadb++org/time.hpp	2019-08-10 15:36:14.389725377 +0900
+--- mariadb++/time.hpp	2019-08-10 15:33:19.921351381 +0900
+***************
+*** 14,20 ****
+  #include <iostream>
+  #include <mariadb++/time_span.hpp>
+  
+! #include <mysql.h>
+  
+  namespace mariadb {
+  /**
+--- 14,20 ----
+  #include <iostream>
+  #include <mariadb++/time_span.hpp>
+  
+! #include <mysql/mysql.h>
+  
+  namespace mariadb {
+  /**
+diff -c mariadb++org/types.hpp mariadb++/types.hpp
+*** mariadb++org/types.hpp	2019-08-10 15:36:14.393058680 +0900
+--- mariadb++/types.hpp	2019-08-10 15:30:12.079780943 +0900
+***************
+*** 10,16 ****
+  #ifndef _MARIADB_TYPES_HPP_
+  #define _MARIADB_TYPES_HPP_
+  
+! #include <mysql.h>
+  #include <memory>
+  
+  namespace mariadb {
+--- 10,16 ----
+  #ifndef _MARIADB_TYPES_HPP_
+  #define _MARIADB_TYPES_HPP_
+  
+! #include <mysql/mysql.h>
+  #include <memory>
+  
+  namespace mariadb {
