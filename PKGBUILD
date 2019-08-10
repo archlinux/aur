@@ -1,6 +1,6 @@
 # Maintainer: Kyle MacLeod <aur.kmac5@recursor.net>
 pkgname=mlbv
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=1
 pkgdesc='Command-line interface to MLB game information, schedule, scores, and standings.'
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python-requests' 'python-lxml' 'python-dateutil' 'streamlink')
 makedepends=('python-setuptools')
 source=("https://github.com/kmac/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('5d649b5730d9ea26843251adaf89a6e0')
+md5sums=('43baafe452a06f6ae4fb6b8b51b9ba3a')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
