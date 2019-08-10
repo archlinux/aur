@@ -1,6 +1,6 @@
 pkgname=ch341eeprom-git
 _gitname=ch341eeprom
-pkgver=r33.cc398a0
+pkgver=a
 pkgrel=1
 pkgdesc="A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -13,12 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-
-  # Get the version number
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
