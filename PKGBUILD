@@ -2,8 +2,8 @@
 
 pkgname=electron-cash-bin
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.0.8
-pkgrel=3
+pkgver=4.0.9
+pkgrel=1
 pkgbin=electron-cash
 url='http://www.electroncash.org/'
 arch=('x86_64')
@@ -18,12 +18,10 @@ validpgpkeys=(D56C110F4555F371AEEFCB254FD06489EFF1DDE1) # Jonald Fyookball <jonf
 source_x86_64=(
 	"${github}/releases/download/${pkgver}/${appimage}"
 	"${github}/releases/download/${pkgver}/${appimage}.asc"
-	"fonts.xml"
 	)
 
-sha256sums_x86_64=('190487301067e7859da725121bc74297e44982059ef91d6ad9987f05208a9ddb'
-                   'SKIP'
-                   '26f984bc1ea98dda962acc9f7753c0ee80fab250a8f30b4278fdb4a9414d774d')
+sha256sums_x86_64=('0ef5941a537d947d9e37ad8dff2e3e5efd8ff67f9958115a9122a9c5549109d0'
+                   'SKIP')
 
 package() {
 	# Extract files
@@ -43,6 +41,4 @@ package() {
 	install -d "$pkgdir/usr/bin"
 	ln -s "/opt/$pkgbin/AppRun" "$pkgdir/usr/bin/$pkgbin"
 	install -Dm644 "$srcdir/$pkgbin/$pkgbin.desktop" "$pkgdir/usr/share/applications/$pkgbin.desktop"
-
-	cp "$srcdir/fonts.xml" "$pkgdir/opt/$pkgbin/usr/lib/python3.6/site-packages/electroncash_gui/qt/data/fonts.xml"
 }
