@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=pnputils-git
-pkgver=0.1.3+56.g81e685a
+pkgver=a
 pkgrel=1
 pkgdesc="PNP utils"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=("pnputils=${pkgver%+*}")
 
 pkgver() {
   cd "$srcdir/pnputils"
-  git describe --long --tags | sed 's#.*/##; s/-/./; s/-/+/; s/-/./'
+  git describe --long --tags | sed 's#.*/##; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {
