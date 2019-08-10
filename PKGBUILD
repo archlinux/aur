@@ -4,15 +4,16 @@
 _gitname=planner
 _author=alainm23
 pkgname=("artegeek-${_gitname}-git")
-pkgver=r124.a9a8972
+pkgver=r181.f261665
 pkgrel=1
 pkgdesc="Task and project manager, designed for Pantheon Shell"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
-depends=('gtk3' 'granite' 'libgee' 'libnotify' 'libunity' 'sqlite' )
+depends=('gtk3' 'granite' 'appstream' 'discount' 'evolution-data-server' 
+		 'geoclue' 'gtksourceview3' 'libgee' 'libnotify' 'libunity' 'sqlite' )
 optdepends=('')
-makedepends=('git' 'meson' 'ninja' 'vala')
+makedepends=('git' 'meson' 'vala')
 provides=("artegeek-${_gitname}" "planner-eos")
 conflicts=("artegeek-${_gitname}" "planner-eos")
 source=("git+${url}.git")
