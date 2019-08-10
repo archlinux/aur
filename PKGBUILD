@@ -3,8 +3,8 @@
 # Helpful url: https://ci.appveyor.com/project/galli-leo/radarr-usby1/branch/aphrodite/artifacts
 
 pkgname="radarr-aphrodite"
-pkgver="2.0.0.1418"
-_pkghash="5mrbs5cw4bair1o4"
+pkgver="2.0.0.1422"
+_pkghash="jaxy5cgpj3y5mr04"
 pkgrel=1
 pkgdesc="Movie download automation for usenet and torrents."
 arch=(any)
@@ -29,7 +29,7 @@ source=("Radarr.aphrodite.${pkgver}.linux.tar.gz::https://ci.appveyor.com/api/bu
         'radarr.tmpfiles'
         'radarr.sysusers')
 
-sha512sums=('195a536397d0104cb60d43d435c2bf1a759877687561ce8d984f37344f99e3be3aa2c5c0aa1bf8f7ecd7525d7e11ef9c6abb43931433c8808e8cb7552d93ece7'
+sha512sums=('46709a9159342d14864d64c461583d003be90d0969879f00da9dca213cda125cd22f56e46b8f5e50439fa12e7d044510c338c5c05a8244181d869b52bbdede3e'
             '4c064051c7592529a7ed41c4fdd6381b5e9ace938608f9e271aa4126194db456e85b7602d8e13718efcc4c40d66f82a338199cb6fd924177ad23154090e48da3'
             'e0d55353f0bf89f826eb7eb9ee26c3e3f38bd46a8884135139536ae220c0c531d5df486bc3b50f580679f9607bb4b7bfb9f29998609dc966fbfb8e1809834650'
             'c1ee3925eced182ea7fffa55a6dc2a4e099ccf18636fc237ef0a2fc9517a38cfc2a819ae5a7bc546b63e383506f9f47e89454a71e34106c579d7454d71b2299e')
