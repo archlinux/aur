@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies < fredbezies at gmail dot com > 
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=mate-tweak-git 
-pkgver=19.10.1.r3.gf45f868
+pkgver=19.10.2.r0.g208e404
 pkgrel=1
 pkgdesc="MATE desktop tweak tool"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('brisk-menu: for Manjaro panel layout'
             'synapse: to enable launcher'
             'tilda: to enable pull-down terminal'
             'topmenu-gtk: for Mutiny panel layout'
-            'vala-panel-appmenu-mate: for Mutiny,Cupertino')
+            'vala-panel-appmenu-mate-git: for Mutiny,Cupertino')
 makedepends=('bzr' 'git' 'python-distutils-extra' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

@@ -1,6 +1,6 @@
 pkgbase = mate-tweak-git
 	pkgdesc = MATE desktop tweak tool
-	pkgver = 19.10.1.r3.gf45f868
+	pkgver = 19.10.2.r0.g208e404
 	pkgrel = 1
 	url = https://github.com/ubuntu-mate/mate-tweak
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = mate-tweak-git
 	optdepends = synapse: to enable launcher
 	optdepends = tilda: to enable pull-down terminal
 	optdepends = topmenu-gtk: for Mutiny panel layout
-	optdepends = vala-panel-appmenu-mate: for Mutiny,Cupertino
+	optdepends = vala-panel-appmenu-mate-git: for Mutiny,Cupertino
 	provides = mate-tweak
 	conflicts = mate-tweak
 	source = mate-tweak::git+https://github.com/ubuntu-mate/mate-tweak.git
