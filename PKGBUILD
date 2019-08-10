@@ -1,10 +1,10 @@
 # Maintainer: Christophe LAVIE <christophe.lavie@laposte.net>
 
 pkgbase='dynamic-wallpaper-catalina'
-pkgname=("${pkgbase}-timed-gnome-git" "${pkgbase}-kde-git" "${pkgbase}-images-git" )
+pkgname=("${pkgbase}-gnome-timed-git" "${pkgbase}-kde-git" "${pkgbase}-images-git" )
 _gitname='gnome-kde-dynamic-wallpaper-catalina'
-pkgver=1.0
-pkgrel=22
+pkgver=1.1
+pkgrel=1
 arch=('any')
 url="https://github.com/japamax/${_gitname}"
 source=("git+https://github.com/japamax/${_gitname}")
@@ -22,14 +22,14 @@ pkgver() {
 	install -m644 ${srcdir}/${_gitname}/catalina/* "${pkgdir}/usr/share/dynamicwallpapers/catalina/images"
 }
 
- package_dynamic-wallpaper-catalina-timed-gnome-git() {
+ package_dynamic-wallpaper-catalina-gnome-timed-git() {
 	depends=(gnome-shell gnome-backgrounds dynamic-wallpaper-catalina-images-git)
 	pkgdesc="Time based GNOME macOS Catalina wallpaper with real scheludes"
-	install=dynamic-wallpaper-catalina-timed-gnome-git.install
+	install=dynamic-wallpaper-catalina-gnome-timed-git.install
 	cd "${srcdir}/${_gitname}"
-	install -dm755 "${pkgdir}/usr/share/backgrounds/gnome"
-	ln -s "/usr/share/dynamicwallpapers/catalina/images" "${pkgdir}/usr/share/backgrounds/gnome/catalina"
-	install -Dm644 catalina-timed.xml "${pkgdir}/usr/share/backgrounds/gnome/catalina-timed.xml"
+	install -dm755 "${pkgdir}/usr/share/backgrounds/macOS"
+	ln -s "/usr/share/dynamicwallpapers/catalina/images" "${pkgdir}/usr/share/backgrounds/macOS/catalina"
+	install -Dm644 catalina-timed.xml "${pkgdir}/usr/share/backgrounds/macOS/catalina-timed.xml"
 	install -Dm644 catalina.xml "${pkgdir}/usr/share/gnome-background-properties/catalina.xml"
  }
  
@@ -40,3 +40,4 @@ pkgver() {
 	cd "${srcdir}/${_gitname}"
 	install -Dm644 catalina.json "${pkgdir}/usr/share/dynamicwallpapers/catalina/metadata.json"
  }
+
