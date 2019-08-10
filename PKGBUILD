@@ -12,7 +12,7 @@ _makenconfig=
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
 # which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 26.
+# generic (default) option is 27.
 #
 # Note - the march=native option is unavailable by this method, use the nconfig
 # and manually select it.
@@ -28,21 +28,23 @@ _makenconfig=
 #  9. AMD Steamroller (MSTEAMROLLER)
 #  10. AMD Excavator (MEXCAVATOR)
 #  11. AMD Zen (MZEN)
-#  12. Intel P4 / older Netburst based Xeon (MPSC)
-#  13. Intel Atom (MATOM)
-#  14. Intel Core 2 (MCORE2)
-#  15. Intel Nehalem (MNEHALEM)
-#  16. Intel Westmere (MWESTMERE)
-#  17. Intel Silvermont (MSILVERMONT)
-#  18. Intel Sandy Bridge (MSANDYBRIDGE)
-#  19. Intel Ivy Bridge (MIVYBRIDGE)
-#  20. Intel Haswell (MHASWELL)
-#  21. Intel Broadwell (MBROADWELL)
-#  22. Intel Skylake (MSKYLAKE)
-#  23. Intel Skylake X (MSKYLAKEX)
-#  24. Intel Cannon Lake (MCANNONLAKE)
-#  25. Intel Ice Lake (MICELAKE)
-#  26. Generic-x86-64 (GENERIC_CPU)
+#  12. AMD Zen 2 (MZEN2)
+#  13. Intel P4 / older Netburst based Xeon (MPSC)
+#  14. Intel Atom (MATOM)
+#  15. Intel Core 2 (MCORE2)
+#  16. Intel Nehalem (MNEHALEM)
+#  17. Intel Westmere (MWESTMERE)
+#  18. Intel Silvermont (MSILVERMONT)
+#  19. Intel Sandy Bridge (MSANDYBRIDGE)
+#  20. Intel Ivy Bridge (MIVYBRIDGE)
+#  21. Intel Haswell (MHASWELL)
+#  22. Intel Broadwell (MBROADWELL)
+#  23. Intel Skylake (MSKYLAKE)
+#  24. Intel Skylake X (MSKYLAKEX)
+#  25. Intel Cannon Lake (MCANNONLAKE)
+#  26. Intel Ice Lake (MICELAKE)
+#  27. Generic-x86-64 (GENERIC_CPU)
+#  28. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
 # Compile ONLY probed modules
@@ -80,7 +82,7 @@ _repo_url="https://github.com/koverstreet/${_reponame}"
 
 _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
-_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
+_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
@@ -175,6 +177,7 @@ _package() {
         bcachefs-tools-git
     )
     optdepends=("crda: to set the correct wireless channels of your country")
+    provides=("${pkgbase}=${pkgver}")
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
     install=linux.install
 
@@ -228,6 +231,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel ${_pkgdesc_extra}"
+    depends=("${pkgbase}=${pkgver}")
     provides=(
         "linux-bcachefs-git-headers=${pkgver}"
         "linux-headers=${pkgver}"
@@ -313,6 +317,7 @@ _package-headers() {
 
 _package-docs() {
     pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel ${_pkgdesc_extra}"
+    depends=("${pkgbase}=${pkgver}")
     provides=(
         "linux-bcachefs-git-docs=${pkgver}"
         "linux-docs=${pkgver}"
