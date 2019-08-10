@@ -2,8 +2,8 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.2.0rc2.r60.gbaf081cd3
-pkgrel=2
+pkgver=1.2.1.r145.gd1b5b055b
+pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
 url="https://github.com/matrix-org/synapse"
@@ -20,15 +20,13 @@ depends=('python-jsonschema' 'python-twisted' 'python-service-identity'
          'python-service-identity' 'python-msgpack'
          'python-phonenumbers' 'python-prometheus_client'
          'python-attrs' 'python-netaddr' 'python-sortedcontainers'
-         'python-treq' 'python-psutil' 'python-sdnotify'
+         'python-treq' 'python-psutil' 'python-sdnotify' 'python-jinja'
+         'python-bleach' 'python-psutil'
          'systemd')
 makedepends=('git')
-checkdepends=('python-lxml' 'python-jinja' 'python-mock' 'python-parameterized' 'python-bleach')
+checkdepends=('python-lxml' 'python-mock' 'python-parameterized')
 optdepends=('python-psycopg2: PostgreSQL support'
-            'python-lxml: URL previewing'
-            'python-jinja: e-mail notifications'
-            'python-bleach: e-mail notifications'
-            'python-psutil: metrics')
+            'python-lxml: URL previewing')
 
 source=("git://github.com/matrix-org/synapse.git#branch=develop"
         'synapse.service'
