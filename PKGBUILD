@@ -10,8 +10,9 @@ pkgdesc="An alignment tool for Protein, DNA and RNA sequences"
 url="http://www.tcoffee.org"
 makedepends=('gcc-fortran')
 depends=('gcc-libs')
-source=("$url/Packages/Stable/Version_$pkgver/T-COFFEE_distribution_Version_$pkgver.tar.gz")
-sha256sums=('6119514a0e36da4b4de88741b8c12f9c8ab653772b3952a011d4cb373beee44f')
+pkgver=13.39.0.d675aed
+source=("$url/Packages/Stable/Latest/T-COFFEE_distribution_Version_$pkgver.tar.gz")
+sha256sums=('33e0eb17fe5a88e59ddeaad2e54782e3ab5b2f70d8654e54aff1ccc4e5cc127f')
 
 build() {
   cd "$srcdir/T-COFFEE_distribution_Version_$pkgver/t_coffee_source"
