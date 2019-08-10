@@ -5,3 +5,4 @@ shadowbeta.deb
 *.pkg.tar.xz
 .directory
 *.zip
+*.part

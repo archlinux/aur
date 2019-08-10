@@ -6,7 +6,7 @@
 # Made with https://github.com/NicolasGuilloux/blade-shadow-beta
 _commit=9add3366d25530d51d168608c54b5339b64d2a4e
 pkgname=shadow-beta
-pkgver=4.5.9
+pkgver=4.7.10
 pkgrel=2
 pkgdesc="Shadow launcher"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('unknown')
 depends=('desktop-file-utils' 'freetype2' 'libuv' 'gconf' 'hicolor-icon-theme' 'json-c' 'libappindicator-gtk2' 'libbsd' 'libcurl-gnutls' 'libdrm' 'libnotify' 'libva' 'libxtst' 'nss' 'opus' 'qt5-base' 'qt5-svg' 'sdl2' 'libappindicator' 'libcurl-compat' 'sdl' 'gcc7-libs' 'ttf-dejavu' 'libxss' 'libsndio-61-compat')
 provides=(shadow-beta)
 source=('https://update.shadow.tech/launcher/preprod/linux/ubuntu_18.04/ShadowBeta.zip')
-md5sums=('3881802a9023059593ea696cdcf4c55f')
+md5sums=('65c5b4032339e9bc988809b39ac59c59')
 install=$pkgname.install
 
 # Build the package
