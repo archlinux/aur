@@ -1,6 +1,7 @@
 #Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+
 pkgname=shaderc-git
-pkgver=v2018.0.62.g59a49bc
+pkgver=v2019.0.60.gb3b228c
 pkgrel=1
 pkgdesc="A collection of tools, libraries and tests for shader compilation. (GIT version)"
 url='https://github.com/google/shaderc'
@@ -15,9 +16,10 @@ makedepends=('git'
              'python'
              'asciidoctor'
              )
-conflicts=('shaderc')
+conflicts=('shaderc'
+           'libshaderc_shared.so'
+           )
 provides=('shaderc'
-          'shaderc-git'
           'libshaderc_shared.so'
           )
 
