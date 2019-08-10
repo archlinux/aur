@@ -2,7 +2,7 @@
 
 _applet_name=plasma-pstate
 pkgname=plasma5-applets-${_applet_name}
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Intel P-state and CPUFreq Manager Widget"
 url="https://github.com/jsalatas/${_applet_name}"
@@ -14,7 +14,7 @@ optdepends=(
     "x86_energy_perf_policy: If your processor doesn't support EPP (ie older generations without HWP)"
 )
 source=("https://github.com/jsalatas/${_applet_name}/archive/${pkgver}.tar.gz")
-sha256sums=('095ed32a420de05cae994862be528289090eabd572698f23b43e872f8893fc23')
+sha256sums=('b2abb03e9fe939fd6f516b8e65ef0badad2558c0b55687dd044756523e3900dc')
 
 package() {
   cd "${srcdir}/${_applet_name}-${pkgver}"
