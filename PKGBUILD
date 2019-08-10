@@ -1,7 +1,7 @@
 # Maintainer: Manan Singh <mananapr@gmail.com>
 
 pkgname=cfiles
-pkgver=1.7.2
+pkgver=1.8
 pkgrel=1
 pkgdesc="A ncurses file manager written in C"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('mediainfo: to see media info'
             'poppler: for pdf previews'
             'w3m: for image previews')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mananapr/cfiles/archive/v${pkgver}.tar.gz")
-sha256sums=('65f141e1deef8fec0bd35264a3837d98fd59fcb993d117deeb0a0a4b9543e383')
+sha256sums=('c5f8111df59496aafd817af0b7c7dcf7177bc4baa84b03ddf0912ef69f4be8f6')
 
 build(){
   cd "cfiles-${pkgver}"
@@ -37,4 +37,5 @@ package() {
   install -Dm755 scripts/displayimg_uberzug "$pkgdir/usr/share/cfiles/scripts/displayimg_uberzug"
   install -Dm755 scripts/clearimg "$pkgdir/usr/share/cfiles/scripts/clearimg"
   install -Dm755 scripts/clearimg_uberzug "$pkgdir/usr/share/cfiles/scripts/clearimg_uberzug"
+  echo "The data directory was shifted to XDG_CONFIG_HOME(~/.config/cfiles) in v1.8 so make sure to copy your old bookmarks and scripts to the new directory"
 }
