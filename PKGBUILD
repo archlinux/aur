@@ -3,8 +3,8 @@
 _srcname=canta-kde
 pkgname=canta-kde-git
 pkgdesc="Canta theme for kde plasma desktop"
-pkgver=r6.e2e8841
-pkgrel=2
+pkgver=r8.104ccc0
+pkgrel=1
 arch=('any')
 url="https://github.com/vinceliuice/Canta-kde"
 license=('GPL')
