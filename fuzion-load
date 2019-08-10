@@ -20,10 +20,6 @@ if [ -z "$csgo_pid" ]; then
     exit 1
 fi
 
-if [ ! -d ".git" ]; then
-    echo "We have detected that you have downloaded Fuzion-master.zip from GitHub.com. This is the WRONG way to download! Please download Fuzion by cloning the Git repository: 'git clone --recursive https://github.com/LWSS/Fuzion.git'"
-fi
-
 # pBypass for crash dumps being sent
 # You may also want to consider using -nobreakpad in your launch options.
 sudo rm -rf /tmp/dumps # Remove if it exists

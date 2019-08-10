@@ -44,11 +44,6 @@ package() {
 	install -Dm755 fuzion-unload "$pkgdir/usr/bin/fuzion-unload"
 	cd "$_pkgname"
 	install -Dm755 "build_id" "$pkgdir/usr/share/Fuzion/build_id"
-	if [ -f build_id_old ]; then
-		install -Dm755 "build_id_old" "$pkgdir/usr/share/Fuzion/build_id_old"
-	else
-		touch "$pkgdir/usr/share/Fuzion/build_id_old"
-	fi
 	_buildname="$(cat build_id)"
 	install -Dm755 "$_buildname" "$pkgdir/usr/lib/$_buildname"
 }
