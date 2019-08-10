@@ -1,0 +1,18 @@
+pkgbase = sway-services-git
+	pkgdesc = Collection of sway and friends systemd unit files
+	pkgver = r17.430a8b0
+	pkgrel = 1
+	url = https://github.com/xdbob/sway-services
+	arch = any
+	license = MIT
+	makedepends = meson
+	depends = sway
+	optdepends = python3: for swayidle.service
+	optdepends = mako
+	optdepends = swayidle
+	optdepends = kanshi
+	source = git+https://github.com/xdbob/sway-services.git
+	md5sums = SKIP
+
+pkgname = sway-services-git
+
