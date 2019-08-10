@@ -1,0 +1,18 @@
+post_install() {
+cat << EOT
+
+==================================================================================
+
+you must sync your system clock time (presented both in local time and UTC) as well as the RTC (hardware clock).
+Consult https://wiki.archlinux.org/index.php/System_time & https://wiki.archlinux.org/index.php/OpenNTPD
+
+==================================================================================
+
+EOT
+}
+
+
+post_upgrade() {
+ post_install
+}
+
