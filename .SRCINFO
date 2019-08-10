@@ -1,17 +1,17 @@
 pkgbase = memtier_benchmark
-	pkgdesc = NoSQL Redis and Memcache traffic generation and benchmarking tool.
-	pkgver = 1.2.10
-	pkgrel = 2
+	pkgdesc = Redis and Memcached traffic generation and benchmarking tool
+	pkgver = 1.2.17
+	pkgrel = 1
 	url = https://github.com/RedisLabs/memtier_benchmark
-	arch = any
+	arch = x86_64
 	license = GPL2
-	makedepends = git
 	makedepends = pcre
 	makedepends = libevent
 	depends = zlib
 	depends = libmemcached
-	source = git+https://github.com/RedisLabs/memtier_benchmark.git
-	md5sums = SKIP
+	depends = bash-completion
+	source = memtier_benchmark-1.2.17.tar.gz::https://github.com/RedisLabs/memtier_benchmark/archive/1.2.17.tar.gz
+	sha256sums = 18526a32732173ac5f73cecfa003571079634e8d124132eaf545c46bab61e0b2
 
 pkgname = memtier_benchmark
 
