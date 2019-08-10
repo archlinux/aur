@@ -2,12 +2,12 @@
 
 pkgname=runelite-launcher
 pkgver=1.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Open source Old School RuneScape client. (Launcher with auto-update)"
 arch=(any)
 license=('BSD')
 url="https://github.com/runelite/launcher"
-depends=('java-runtime>=11' 'ttf-font')
+depends=('java-environment' 'ttf-font')
 optdepends=('gvfs: enable links')
 makedepends=('maven' 'imagemagick')
 source=("${url}/archive/${pkgver}.tar.gz"
