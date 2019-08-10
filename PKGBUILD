@@ -3,7 +3,7 @@
 
 _gitname=esp8089
 pkgname=$_gitname-git
-pkgver=2016.08.07
+pkgver=a
 pkgrel=1
 pkgdesc="Linux kernel module driver for the ESP8089 WiFi chip"
 arch=('i686' 'x86_64' 'armv7h')
@@ -20,7 +20,7 @@ md5sums=('SKIP' 'SKIP')
 
 pkgver() {
    cd "$srcdir/$_gitname"
-   git log -1 --format="%cd" --date=short | sed 's|-|.|g'
+   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
