@@ -18,7 +18,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd $_gitname
-  git describe | sed 's/^kmscon\-//; s/-/./g'
+  git describe | sed 's/^kmscon\-//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {
