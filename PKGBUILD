@@ -1,12 +1,12 @@
 # Maintainer: Dave Reisner <d@falconindy.com>
 
 pkgname=ngtcp2-git
-pkgver=r1519.d00bf08
+pkgver=r1524.e1e398c
 pkgrel=1
 pkgdesc="An effort to implement IETF QUIC protocol"
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/ngtcp2/ngtcp2"
-license=('GPL')
+license=('MIT')
 makedepends=('git')
 checkdepends=('cunit')
 provides=('ngtcp2' 'libngtcp2.so')
