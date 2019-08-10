@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.29.0.366.ga8c2e29868
+pkgver=v0.29.0.369.g639ee55df7
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -16,14 +16,16 @@ depends=(
          'libbs2b'
          'libcaca'
          'libcdio-paranoia'
+         'libdav1d.so'
          'libdvdnav'
          'libgme'
          'libmysofa'
-         'libplacebo'
+         'libplacebo.so'
          'libpulse'
+         'libshaderc_shared.so'
          'libsoxr'
          'libssh'
-         'libva'
+         'libva.so'
          'libvdpau'
          'libxinerama'
          'libxkbcommon'
@@ -37,7 +39,6 @@ depends=(
          'rubberband'
          'sdl2'
          'sndio'
-         'shaderc'
          'smbclient'
          'uchardet'
          'v4l-utils'
@@ -62,8 +63,12 @@ optdepends=(
             'youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
             )
-provides=('mpv')
-conflicts=('mpv')
+provides=('mpv'
+          'libmpv.so'
+          )
+conflicts=('mpv'
+           'libmpv.so'
+           )
 options=('!emptydirs')
 source=('git+https://github.com/mpv-player/mpv-build.git'
         'git+https://github.com/mpv-player/mpv.git'
@@ -103,6 +108,7 @@ prepare() {
     '--disable-programs'
     '--enable-ladspa'
     '--enable-libbs2b'
+    '--enable-libdav1d'
     '--enable-libgme'
     '--enable-libmysofa'
     '--enable-libsoxr'
@@ -166,4 +172,7 @@ package() {
   sed 's|/usr/local/etc/mpv.conf|/etc/mpv.conf|g' -i "${pkgdir}/usr/share/doc/mpv/mpv.conf"
 
   (cd mpv/TOOLS/lua; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/mpv/scripts/${i}"; done)
+
+  install -Dm644 mpv/LICENSE.GPL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.GPL"
+  install -Dm644 mpv/LICENSE.GPL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.LGPL"
 }
