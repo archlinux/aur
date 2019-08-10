@@ -2,6 +2,7 @@ The Linux bootsplash
 ====================
 
 Date: November, 2017
+
 Author: Max Staudt <mstaudt@suse.de>
 
 
@@ -9,8 +10,7 @@ The Linux bootsplash is a graphical replacement for the '``quiet``' boot
 option, typically showing a logo and a spinner animation as the system starts.
 
 Currently, it is a part of the Framebuffer Console support, and can be found
-as ``CONFIG_BOOTSPLASH`` in the kernel configuration. This means that as long
-as it is enabled, it hijacks fbcon's output and draws a splash screen instead.
+as ``CONFIG_BOOTSPLASH`` in the kernel configuration. This means that as long as it is enabled, it hijacks fbcon's output and draws a splash screen instead.
 
 Purely compiling in the bootsplash will not render it functional - to actually
 render a splash, you will also need a splash theme file. See the example
