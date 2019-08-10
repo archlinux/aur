@@ -18,7 +18,7 @@ license=("custom:SSPL")
 # lsb-release::/etc/lsb-release required by src/mongo/util/processinfo_linux.cpp::getLinuxDistro()
 depends=("curl" "libstemmer" "lsb-release" "pcre" "wiredtiger>=3.1.1.20190701" "yaml-cpp")
 optdepends=("${pkgname}-tools: mongoimport, mongodump, mongotop, etc")
-makedepends=("libpcap" "ncurses" "python2-cheetah" "python2-regex" "python2-requests" "python2-setuptools" "python2-typing" "python2-yaml" "readline" "scons")
+makedepends=("libpcap" "ncurses" "python2-cheetah" "python2-regex" "python2-requests" "python2-setuptools" "python2-typing" "python2-yaml" "readline" "python2-scons")
 checkdepends=("python2-pymongo")
 backup=("etc/${pkgname}.conf")
 source=(
