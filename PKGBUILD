@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-test-synopsis'
-pkgver='0.15'
+pkgver='0.16'
 pkgrel='1'
 pkgdesc="Test your SYNOPSIS code"
 arch=('any')
@@ -9,9 +9,9 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/Test-Synopsis'
+url="https://metacpan.org/pod/Test::Synopsis"
 source=("https://cpan.metacpan.org/authors/id/Z/ZO/ZOFFIX/Test-Synopsis-${pkgver}.tar.gz")
-sha512sums=('5efd04a168265d804b2afe027e14227cb977cf41cb59ae05f272e89488249acc64f6fdff7da66b74213cba024e811f3e3f8fb76013cc65d9fbfdc35c9440d62c')
+sha512sums=('eacd83013ce6ebf2ccebc3d32bf5415b03b934191e6e13713608262c18cc2dc338d78013e0045f9584413a959d70b0484b21045b03d72d1e2bd022a6809c956c')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
