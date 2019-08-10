@@ -1,14 +1,14 @@
 pkgbase = fpp
 	pkgdesc = TUI that lets you pick paths out of its stdin and run arbitrary commands on them
-	pkgver = 0.7.2
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://facebook.github.io/PathPicker/
 	arch = any
-	license = BSD
+	license = MIT
 	depends = python
 	options = zipman
-	source = https://github.com/facebook/PathPicker/archive/0.7.2.tar.gz
-	sha256sums = e6376fe627474e3e3109f9f913327098e84887fce67a8d1e7d12835ff04ee620
+	source = https://github.com/facebook/PathPicker/archive/0.8.2.tar.gz
+	sha256sums = 7d1beb76f9864c1f13a25fe382e3467684999068bfcbb99053eb4bc322d6a80c
 
 pkgname = fpp
 
