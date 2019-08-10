@@ -1,4 +1,9 @@
+# Maintainer: Anna <morganamilo@gmail.com>
+# Maintainer: E5ten <e5ten.arch@gmail.com>
+# Maintainer: Parker Reed <parker.l.reed@gmail.com>
 # Maintainer: Stephanie Wilde-Hobbs <steph@rx14.co.uk>
+# Contributor: Cayde Dixon <me@cazzar.net>
+# Contributor: Anthony Anderson <aantony4122@gmail.com>
 
 pkgname=discord-canary
 pkgver=0.0.91
