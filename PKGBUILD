@@ -1,22 +1,22 @@
 # Maintainer: Bruce Zhang
 pkgname=dingtalk
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='钉钉桌面版，基于electron和钉钉网页版开发，支持Windows、Linux和macOS'
 arch=('x86_64' 'i686')
 url='https://github.com/nashaofu/dingtalk'
 license=('MIT')
 provides=('dingtalk')
 conflicts=('dingtalk-electron' 'dingtalk-git')
-depends=('electron')
+depends=('electron4')
 makedepends=('jq' 'moreutils' 'npm')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/nashaofu/dingtalk/archive/v$pkgver.tar.gz")
 sha256sums=('e025869f918b0c10725c0d411763caa12b05149ece8cb7aed87e881ba6878e1f')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
-    electronDist="\/usr\/lib\/electron"
-    electronVersion=$(tail -1 /usr/lib/electron/version)
+    electronDist="\/usr\/lib\/electron4"
+    electronVersion=$(tail -1 /usr/lib/electron4/version)
     sed -i "s|\"electron\": \".*|\"electron\": \"$electronVersion\",|" package.json
     jq '.build.linux.target = ["dir"]' package.json | sponge package.json
     jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
@@ -38,7 +38,7 @@ package() {
 
     # Install start script
     echo "#!/usr/bin/env sh
-exec electron /usr/share/dingtalk/app.asar
+exec electron4 /usr/share/dingtalk/app.asar
     " > "$srcdir/dingtalk.sh"
     install -Dm755 "$srcdir/dingtalk.sh" "$pkgdir/usr/bin/dingtalk"
 
