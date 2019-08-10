@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Dot
+Comment=A beautiful browser with darn-simple UI, based on Wexond.
+Exec=dot
+Terminal=false
+Type=Application
+Icon=dot
+StartupWMClass=Dot
+Categories=Network;Web;
