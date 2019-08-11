@@ -1,0 +1,14 @@
+pkgbase = pscpp-git
+	pkgdesc = PureScript C++ Compiler
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/andyarvanitis/purescript-native
+	arch = any
+	license = BSD3
+	makedepends = stack
+	depends = gcc
+	source = https://github.com/andyarvanitis/purescript-native/archive/master.zip
+	sha256sums = SKIP
+
+pkgname = pscpp-git
+
