@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 package_glrnvim() {
 	pkgdesc="A GPU-accelerated neovim GUI."
 	depends=('neovim')
-	optdepends=('alacritty' 'urxvt' 'kitty')
+	optdepends=('alacritty' 'rxvt-unicode' 'kitty')
 	provides=('glrnvim')
 
 	cd "$srcdir/$_pkgname"

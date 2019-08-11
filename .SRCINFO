@@ -15,7 +15,7 @@ pkgname = glrnvim
 	pkgdesc = A GPU-accelerated neovim GUI.
 	depends = neovim
 	optdepends = alacritty
-	optdepends = urxvt
+	optdepends = rxvt-unicode
 	optdepends = kitty
 	provides = glrnvim
 
