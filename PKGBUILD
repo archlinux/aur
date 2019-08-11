@@ -1,4 +1,4 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: eugene
 
 _pkgname=picofeed
 pkgname=go-picofeed-git
