@@ -1,6 +1,6 @@
 pkgbase = pytype
 	pkgdesc = Python type inferencer
-	pkgver = 2019.07.11
+	pkgver = 2019.08.09
 	pkgrel = 1
 	url = https://google.github.io/pytype
 	arch = any
@@ -24,15 +24,15 @@ pkgbase = pytype
 	optdepends = python36: for target code of Python 3.6 support
 	provides = pytype
 	options = !emptydirs
-	source = https://github.com/google/pytype/archive/2019.07.11.tar.gz
+	source = https://github.com/google/pytype/archive/2019.08.09.tar.gz
 	source = cpython-9734024.zip::https://github.com/python/cpython/archive/9734024ec65311e33936faa83fb1cb249ef0de9d.zip
 	source = googletest-e82d320.zip::https://github.com/google/googletest/archive/e82d320567a45db1a999f9109f2b9a733bc59bb1.zip
-	source = typeshed-e1e5c83.zip::https://github.com/python/typeshed/archive/e1e5c83795af3313216c937a39a3dd7091b3d6d1.zip
+	source = typeshed-40215d1.zip::https://github.com/python/typeshed/archive/40215d1fa3ef33a31fe68624472c10dd62350f18.zip
 	source = without-ninja-python-distributions.patch
-	sha256sums = d8cce9b6a0381ecfd2d133717f1400dc0582832d57c26f9117b37a144294c9b1
+	sha256sums = 9a5eff6ad8e364d6b0faf4db6fabd124989d547c6b8bb7bac2b4d9122b78afcd
 	sha256sums = ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a
 	sha256sums = 891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7
-	sha256sums = 7f42f6d4659f9f20945b6e74111298c2836a5bcc3f7a85e741e6f606ba30d159
+	sha256sums = 21bd743a80dfa2c8fe38f0b6bcb215c8562cc7744a53a78f83e73540b013bacd
 	sha256sums = 4094677e9c9e56866cf2581ca834e8e4cfbaaa1fd3061a78acef89795758df8a
 
 pkgname = pytype
