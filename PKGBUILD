@@ -1,44 +1,63 @@
 # Maintainer: Yves G. <theYinYeti@yalis.fr>
 
 pkgname=ysflight
-pkgver=20150523
-pkgrel=2
+pkgver=20181124
+pkgrel=1
 pkgdesc="A portable flight simulator"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://wwwe.ysflight.com/"
 license=('freeware')
-depends=(zenity lib32-libpulse lib32-glu)
+makedepends=(python)
 ysflight_dir="/opt/ysflight-$pkgver"
 
-source=('http://ysflight.in.coocan.jp/download/YsflightForLinux.zip'
-        'ysflight.desktop'
-        'ysflight-server.desktop'
-        'ysflight.png'
+source=('YsflightForLinux.zip::https://forum.ysfhq.com/download/file.php?id=499'
         'ysflight.sh')
-md5sums=('2257ce6d2041f55f7a17a1d4034983af'
-         'd137828b093f2e16f289f5a3d922f31c'
-         'eb042809766b50b7195065f8d2e0692b'
-         'a544483da4de1585434c0c134eb60be0'
-         'a72ce06ebea39126edd88d512d763115')
+md5sums=('26a8f7bcc79eb710895547f052a09fef'
+         '540ca8dec29fec23c67f830c6cce5d5c')
 
-build() {
-  cd "${srcdir}/"
+prepare() {
+  cd "${srcdir}"
   sed -i "s#YSFLIGHT_DIR#${ysflight_dir}#g" ysflight.sh
+  cd "${srcdir}/Ysflight"
+  sed -ri "
+    s#^([[:blank:]]*)input\\(.*#\\1pass#
+
+    s#join\\(\"~\",\"Desktop\"#join(\"${pkgdir}/usr/share/applications\"#
+    s#Exec=\"\\+exe#Exec=/usr/bin/\"+os.path.basename(exe)#
+    s#isfile\\(iconfile\\)#isfile(\"${pkgdir}\"+iconfile)#
+    /Path=/d
+
+    s#YSFLIGHTPATH=.*#YSFLIGHTPATH=\"${ysflight_dir}\"#
+    s#to ~/YSFLIGHT.COM/ysflight#to ${ysflight_dir}#
+    s#(isdir|rmtree)\\(YSFLIGHTPATH\\)#\\1(\"${pkgdir}\"+YSFLIGHTPATH)#
+    s#(copytree\\(FindYsflight.*,)YSFLIGHTPATH#\1\"${pkgdir}\"+YSFLIGHTPATH#
+    s#(FileCheck\\()YSFLIGHT#\1\"${pkgdir}\"+YSFLIGHT#
+  " InstallInLinux.py
 }
 
 package() {
-  cd "${pkgdir}/"
+  echo '
+[WARNING!]
+[WARNING!] This installer does its best to enforce
+[WARNING!] Linux’ standard file locations. Unfortunately,
+[WARNING!]   “ $HOME/Documents/YSFLIGHT.COM ”
+[WARNING!] is hard-coded into the binary programs…
+[WARNING!]
+'
 
-  mkdir -p "$(dirname "${ysflight_dir#/}")"
-  cp -a "${srcdir}/Ysflight" "${ysflight_dir#/}"
+  cd "${pkgdir}"
+  mkdir -p usr/bin usr/share/applications opt
+
+  cd "${srcdir}/Ysflight"
+  python InstallInLinux.py
+
+  cd "${pkgdir}"
   find "${ysflight_dir#/}" -type d -exec chmod 755 {} \;
   find "${ysflight_dir#/}" ! -type d -exec chmod 444 {} \;
-  chmod 555 "${ysflight_dir#/}"/ysflight/ysflight*_*
-
-  install -Dm755 "${srcdir}/ysflight.sh" usr/bin/ysflight
+  chmod 555 "${ysflight_dir#/}"/ysflight64_*
+  install -Dm555 "${srcdir}/ysflight.sh" usr/bin/ysflight
   touch usr/bin/ysflight
-  ln -s ysflight usr/bin/ysflight-server
-  install -Dm444 "${srcdir}/ysflight.png" usr/share/pixmaps/ysflight.png
-  install -Dm755 "${srcdir}/ysflight.desktop" usr/share/applications/ysflight.desktop
-  install -Dm755 "${srcdir}/ysflight-server.desktop" usr/share/applications/ysflight-server.desktop
+  ln -s ysflight usr/bin/ysflight64_gl1
+  ln -s ysflight usr/bin/ysflight64_gl2
+  ln -s ysflight usr/bin/ysflight64_nownd
 }
