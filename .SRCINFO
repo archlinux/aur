@@ -1,20 +1,24 @@
 pkgbase = ls-icons
 	pkgdesc = A fork of coreutils with a modified ls that print icons
-	pkgver = v8.27+46+gd3450c176
+	pkgver = v8.27+48+gc5f26413b
 	pkgrel = 1
 	url = https://github.com/sebastiencs/ls-icons
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = arm
 	license = GPL3
 	makedepends = git
 	makedepends = gperf
 	makedepends = rsync
 	makedepends = clang
-	depends = icons-in-terminal
+	depends = icons-in-terminal>=r93.b12286d-3
+	depends = libcap
 	provides = ls-icons
 	conflicts = ls-icons
 	source = git://github.com/sebastiencs/ls-icons.git
-	sha512sums = SKIP
+	source = ls-icons-st-term-icons-cutoff-fix.patch
+	sha1sums = SKIP
+	sha1sums = 4d69c3b01252cfbb5d42e62546d96ac11daa14a1
 
 pkgname = ls-icons
-	install = ls-icons.install
 

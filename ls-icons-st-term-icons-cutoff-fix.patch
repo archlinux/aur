@@ -1,0 +1,20 @@
+diff --git a/src/ls-icons.c b/src/ls-icons.c
+index afc6ced39..3b049bf69 100644
+--- a/src/ls-icons.c
++++ b/src/ls-icons.c
+@@ -408,6 +408,7 @@ static void write_icon(const char *icon, const char *color, size_t color_len, FI
+     fwrite(color, 1, color_len ,stream);
+ 
+   fwrite(icon, 1, 4, stream);
++  fputc(' ', stream);
+ 
+   if (insert_color)
+     fwrite(ENDCOLOR, 1, sizeof ENDCOLOR - 1,stream);
+@@ -443,7 +444,6 @@ int print_icon(const char *filename, size_t len, FILE *stream,
+     len -= 2;
+   }
+   _print_icon(filename, len, stream, is_directory, is_link, is_quoted, is_colored);
+-  fputc(' ', stream);
+   return 0;
+ }
+ 
