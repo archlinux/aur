@@ -9,13 +9,12 @@ license=('MIT')
 depends=('nodejs>=10.0.0' 'npm>=6.0.0')
 makedepens=('git')
 source=("git+${url}.git")
-
-foldername=PreMiD-git
-
 md5sums=('SKIP')
 
+foldername=PreMiD
+
 pkgver() {
- cd "${foldername%-git}"
+ cd "${foldername}"
  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -34,8 +33,8 @@ package() {
 	# Add launcher script to /usr/bin/
 	echo "#!/bin/bash
 	cd /usr/lib/premid/
-	npm start" > "${pkgdir}/usr/bin/premid"
-	chmod +x "${pkgdir}/usr/bin/premid"
+	./PreMiD" > "${pkgdir}/usr/bin/${pkgname%-git}"
+	chmod +x "${pkgdir}/usr/bin/${pkgname%-git}"
 
 	# Create application menu shortcut
 	echo "[Desktop Entry]
@@ -48,19 +47,24 @@ package() {
 	Icon=premid.png" > "${pkgdir}/usr/share/applications/premid.desktop"
 	
 	# Install dependency modules
-	cd "${foldername%-git}/src"
+	cd "${foldername}"
 	npm install
+
+	cd src
+	npm install 
+
+	cd ..
+	npm run pkglinux
 
 	# Copy the app files & dependency modules to package directory
 	mkdir -p "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cd out/PreMiD-linux-x64
 	cp -r ./* "${pkgdir}/usr/lib/${pkgname%-git}/"
 
-	cp assets/images/logo.png "${pkgdir}/usr/share/pixmaps/premid.png"
+	cd ../../
+
+	cp src/assets/images/logo.png "${pkgdir}/usr/share/pixmaps/premid.png"
 
 	# Copy a license file to package directory
-	install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
-
-	# Remove references to $srcdir of node_modules directory
-	grep -l "${srcdir}" -r "${pkgdir}" | xargs sed -i "s#${_git_srcdir}#/usr/lib/${pkgname%-git}#g"
-
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
