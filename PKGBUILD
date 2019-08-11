@@ -2,8 +2,8 @@
 
 pkgname=marktext-bin
 _pkgname=marktext
-pkgver=0.14.0
-pkgrel=3
+pkgver=0.15.0
+pkgrel=1
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability.'
 arch=('x86_64')
 url='https://marktext.app'
@@ -53,8 +53,8 @@ package() {
 		"$srcdir/$_pkgname-$pkgver-x64/"{LICENSE,LICENSE.electron.txt,LICENSES.chromium.html}
 }
 
-sha512sums=('8e485ac0c599d149ab4a04666b8ba58f77c5576d2cf70b5e81d2748d69b3c9d79a92ca9b3d3d7ea6d643f7ef12145ccd4c3a8f093436962161fd73c9704e6ae3'
-            '98886b39342ca90fe1c2ff011e612e62c37cba589cd1f8ee71dc8d6df7db1582798cef844cfc6ab50e29f5f2e21edc2a16c88b480298cfd719058e47ff754982'
+sha512sums=('0f7c7ad5b3863db5e9709e7fdab9b8937fab2c37e021a396a7631714cf8076f3dd5b5b6b6610eb7ccd42b02c7a164797f01ea2acbc1bf5d92dd5608fd4609268'
+            '419b20d75376c2992d47c0f2b445795be716de0bb3f670d52d2e492fe3331c6aae7a898d2ea82259777d5eea68910440de99217aeee1edd585d7f4bb09388f99'
             '2d700fb2af037ade7c66e328e90eacfec27fe25d3ee42487f00978450a81bc9275622404cad821a41b4f5a767d9f7afbbe614ed7a0ddbc95d879fb57beef79e2'
             '52a8a7f28f620738e06253243e3156d09bc6f9cec6ab49caa2e3674e57be0378d5ab6bc28028ee08caaebd7b197c383ed5f08a5c1c8cb9dce6c9b1c90abb932e'
             '840ec0fc95ebeff29902d984113b91906ca5c3fc598fdd515a9b475a373d0c96bcee0c6bb146c8e99ccef2c616db0ee1ddfc44573d78ce9077b4bc2fab1c41e8'
