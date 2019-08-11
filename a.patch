@@ -1,0 +1,36 @@
+diff -ruN --text sinsy-0.92.orig/lib/util/Configurations.cpp sinsy-0.92/lib/util/Configurations.cpp
+--- sinsy-0.92.orig/lib/util/Configurations.cpp	2015-12-25 03:46:56.000000000 +0000
++++ sinsy-0.92/lib/util/Configurations.cpp	2019-08-11 11:28:36.248505819 +0100
+@@ -129,7 +129,7 @@
+             }
+          }
+       }
+-      configs.insert(std::make_pair<std::string, std::string>(key, value));
++      configs.insert(std::make_pair<std::string, std::string>(std::move(key), std::move(value)));
+    }
+    return true;
+ }
+diff -ruN --text sinsy-0.92.orig/lib/util/MacronTable.cpp sinsy-0.92/lib/util/MacronTable.cpp
+--- sinsy-0.92.orig/lib/util/MacronTable.cpp	2015-12-25 03:46:56.000000000 +0000
++++ sinsy-0.92/lib/util/MacronTable.cpp	2019-08-11 11:28:36.248505819 +0100
+@@ -136,7 +136,7 @@
+       extractPhonemeList(st.at(1), result->forward);
+       extractPhonemeList(st.at(2), result->backward);
+
+-      if (false == convertTable.insert(std::make_pair<std::vector<std::string>, Result*>(pl, result)).second) {
++      if (false == convertTable.insert(std::make_pair<std::vector<std::string>, Result*>(std::move(pl), std::move(result))).second) {
+          ERR_MSG("Wrong macron table (There is a duplication : " << st.at(0) << ") : " << fname);
+          delete result;
+          return false;
+diff -ruN --text sinsy-0.92.orig/lib/util/PhonemeTable.cpp sinsy-0.92/lib/util/PhonemeTable.cpp
+--- sinsy-0.92.orig/lib/util/PhonemeTable.cpp	2015-12-25 03:46:56.000000000 +0000
++++ sinsy-0.92/lib/util/PhonemeTable.cpp	2019-08-11 11:28:36.248505819 +0100
+@@ -180,7 +180,7 @@
+       for (size_t i(1); i < sz; ++i) {
+          pl->push_back(st.at(i));
+       }
+-      if (false == convertTable.insert(std::make_pair<std::string, PhonemeList*>(st.at(0), pl)).second) {
++      if (false == convertTable.insert(std::make_pair<std::string, PhonemeList*>(st.at(0), std::move(pl))).second) {
+          ERR_MSG("Wrong phoneme table (some syllables have same name : " << st.at(0) << ") : " << fname);
+          delete pl;
+          return false;

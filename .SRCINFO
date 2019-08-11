@@ -1,0 +1,19 @@
+pkgbase = sinsy
+	pkgdesc = An HMM-Based Singing Voice Synthesis System
+	pkgver = 0.92
+	pkgrel = 1
+	url = http://www.sinsy.jp/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	depends = hts-engine
+	source = https://downloads.sourceforge.net/sinsy/sinsy-0.92.tar.gz
+	source = a.patch
+	md5sums = fb80f6cb488ea41758e36e57ff28180b
+	md5sums = 2cb921b1b9d02e8c4d695a69f8617c86
+	sha1sums = 8b7576ab04611d8fefba8e5096723be9d19a52a7
+	sha1sums = c03535de8c2e9d77310cb143066cb6363fda3a7d
+
+pkgname = sinsy
+
