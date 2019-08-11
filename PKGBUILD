@@ -6,18 +6,18 @@
 _google_breakpad_commit=9474c3f
 _google_mock_commit=17945db
 _google_test_commit=50d6fc3
-_openfx_commit=c70de42
-_SequenceParsing_commit=6441ec7
+_openfx_commit=5d9ac2c
+_SequenceParsing_commit=dc7bf39
 _tinydir_commit=3aae922
 
 pkgname=natron
 _pkgname=Natron
-pkgver=2.3.15_pre5
-_pkgver=2.3.15-pre5
+pkgver=2.3.15_rc.7
+_pkgver=2.3.15-rc.7
 pkgrel=1
-pkgdesc='Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry.'
+pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=('i686' 'pentium4' 'x86_64')
-url='https://github.com/NatronGitHub/Natron'
+url="https://github.com/NatronGitHub/Natron"
 license=('GPL')
 depends=('boost-libs' 'cairo' 'openfx-arena' 'openfx-gmic' 'openfx-io' 'openfx-misc' 'python2-pyside')
 makedepends=('boost' 'expat' 'glfw-x11' 'openmp')
@@ -29,9 +29,9 @@ source=("$_pkgname-$_pkgver.tar.gz::https://github.com/NatronGitHub/Natron/archi
         "openfx-$_openfx_commit.tar.gz::https://github.com/NatronGitHub/openfx/tarball/$_openfx_commit"
         "SequenceParsing-$_SequenceParsing_commit.tar.gz::https://github.com/NatronGitHub/SequenceParsing/tarball/$_SequenceParsing_commit"
         "tinydir-$_tinydir_commit.tar.gz::https://github.com/NatronGitHub/tinydir/tarball/$_tinydir_commit"
-        "OpenColorIO-Configs-$_pkgname-v${pkgver%.*}.tar.gz::https://github.com/NatronGitHub/OpenColorIO-Configs/archive/$_pkgname-v${pkgver%.*}.tar.gz"
+        "OpenColorIO-Configs-$_pkgname-v${pkgver%.??*}.tar.gz::https://github.com/NatronGitHub/OpenColorIO-Configs/archive/$_pkgname-v${pkgver%.??*}.tar.gz"
         "config.pri")
-sha512sums=('4cab3a8307126a8a15e46416adf0dd77702419b58530a0afc94f21e1ad328fdf2dda20a5f197c6e33acac27f359398564d894c4c02cd8ab213499deb759d0f9d'
+sha512sums=('921f6534a940f47d3d5d13c7263e38d9a359fc53517c8684092213cd0680d420459813338405805832905ffb766cb0bf265f14fb4b013ae96e3ae9faccd299e0'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -48,7 +48,7 @@ prepare() {
     rm -rf OpenColorIO-Configs
   fi
   
-  mv "$srcdir/OpenColorIO-Configs-Natron-v${pkgver%.*}" \
+  mv "$srcdir/OpenColorIO-Configs-Natron-v${pkgver%.??*}" \
      "$srcdir/$_pkgname-$_pkgver/OpenColorIO-Configs"
 
   rm -rf OpenColorIO-Configs/aces*
