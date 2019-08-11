@@ -1,0 +1,27 @@
+pkgbase = lib32-fontconfig-git
+	pkgdesc = A library for configuring and customizing font access (32-bit)
+	pkgver = 2.13.91+18+g01e4f08
+	pkgrel = 1
+	epoch = 2
+	url = https://www.freedesktop.org/wiki/Software/fontconfig/
+	install = lib32-fontconfig.install
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = gperf
+	makedepends = python-lxml
+	makedepends = python-six
+	makedepends = lib32-json-c
+	depends = lib32-expat
+	depends = lib32-freetype2
+	depends = fontconfig
+	provides = lib32-fontconfig
+	conflicts = lib32-fontconfig
+	source = git+https://anongit.freedesktop.org/git/fontconfig
+	source = fontconfig-32.hook
+	sha256sums = SKIP
+	sha256sums = d97c0c5b88023da5a2acf64cf560265390a9365305c43b8e86b4f89348e727b3
+
+pkgname = lib32-fontconfig-git
+
