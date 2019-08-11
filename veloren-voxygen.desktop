@@ -1,12 +1,10 @@
 [Desktop Entry]
-Version=1.2
 Type=Application
 Name=Voxygen
-Comment=Official Veloren Client
+Comment=Official client for Veloren - the open-world, open-source multiplayer voxel RPG
 Exec=veloren-voxygen
 Path=/tmp
 Categories=Game
 Keywords=veloren
 Icon=voxygen.png
 Terminal=true
-Hidden=false
