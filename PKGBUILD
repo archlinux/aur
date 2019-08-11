@@ -9,7 +9,7 @@ url="https://metronome.im/"
 license=('MIT' 'ISC')
 depends=('lua52' 'lua52-socket' 'lua52-expat' 'lua52-filesystem'
 	 'lua52-event' 'lua52-sec' 'libidn' 'openssl' 'libevent')
-optdepends=('lua51-zlib: compression support')
+optdepends=('lua52-zlib: compression support')
 makedepends=('git')
 backup=('etc/metronome/metronome.cfg.lua')
 install=metronome.install
