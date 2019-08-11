@@ -1,7 +1,7 @@
 pkgbase = waterfox-alpha-bin
 	pkgdesc = 64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons.
 	pkgver = 68.0a1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.waterfoxproject.org/
 	arch = x86_64
 	license = MPL

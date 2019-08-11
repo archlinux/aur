@@ -1,7 +1,7 @@
 # Maintainer: Simon Kronberg <Simon.Kronberg@gmail.com>
 pkgname=waterfox-alpha-bin
 pkgver=68.0a1
-pkgrel=1
+pkgrel=2
 pkgdesc="64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons."
 arch=('x86_64')
 url="https://www.waterfoxproject.org/"
