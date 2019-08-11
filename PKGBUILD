@@ -2,7 +2,7 @@
 # Maintainer: Infernio <infernio at icloud dot com>
 
 pkgname=lombok-eclipse
-pkgver=1.18.6
+pkgver=1.18.8
 pkgrel=1
 pkgdesc="Project Lombok integrated to Eclipse installation"
 arch=("any")
@@ -12,7 +12,7 @@ makedepends=('java-runtime')
 depends=('eclipse-java' 'java-runtime')
 install=lombok.install
 source=("https://projectlombok.org/downloads/lombok-${pkgver}.jar")
-sha256sums=('6373d9ade79efdc028cd48d40a9af9ac6a090dbcfaec55b438ec49556a4e92fb')
+sha256sums=('0396952823579b316a0fe85cbd871bbb3508143c2bcbd985dd7800e806cb24fc')
 noextract=("lombok.jar")
 
 build() {
