@@ -1,0 +1,16 @@
+pkgbase = tr-patcher
+	pkgdesc = A tool to patch Morrowind plugins that target old versions of Tamriel Rebuilt
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://gitlab.com/bmwinger/tr-patcher
+	arch = any
+	license = GPL3
+	makedepends = gradle
+	depends = java-runtime
+	provides = tr-patcher
+	conflicts = tr-patcher
+	source = https://gitlab.com/bmwinger/tr-patcher/-/archive/v1.0.3/tr-patcher-v1.0.3.tar.gz
+	sha512sums = dd04ce39f11f48b635d4d730c330c07d1acc25185c5ac1e07df87bb8d3290fcdf2d6df9aed774ec5260fbc7f42c22fe42b286203be5b237028f26bab4f6029f9
+
+pkgname = tr-patcher
+
