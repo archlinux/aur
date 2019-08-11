@@ -7,5 +7,5 @@
 2. Generate new checksums with `updpkgsums`
 3. Test install `makepkg -si`
 4. Update .SRCINFO `makepkg --printsrcinfo > .SRCINFO`
-5. `git remote add arch ssh://aur@aur.archlinux.org/lokalise.git`
+5. `git remote add arch ssh://aur@aur.archlinux.org/symfony-cli.git`
 6. `git push arch`

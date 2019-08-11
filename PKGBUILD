@@ -13,6 +13,7 @@ source=(
 )
 noextract=('symfony_linux_amd64.gz')
 sha256sums=('250065ec6577635f9450be260c7f7997920805aecae813a320cadfb297f5b4e1')
+depends=('gzip')
 
 prepare() {
     gunzip -d --force symfony_linux_amd64.gz
