@@ -1,6 +1,6 @@
 post_install() {
-	echo -e "\n	Remember to check the file /etc/fonts/conf.avail/30-icons-in-terminal.conf"
-	echo -e "	to add or remove font(s) that should be used.\n"
-	echo -e "	To view available icons use command 'icons-in-terminal'."
-	echo -e "	Additional files are located in /etc/icons-in-terminal.\n"
+cat << 'EOM'
+	Font(s) that should use icons are added to file /etc/fonts/conf.avail/30-icons-in-terminal.conf
+	Use command 'icons-in-terminal' to view a list of available icons.
+EOM
 }
