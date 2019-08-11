@@ -1,0 +1,19 @@
+pkgbase = mkvextract-gtk
+	pkgdesc = Simple Linux GUI to extract tracks from matroska (mkv) files
+	pkgver = v0.9.3
+	pkgrel = 1
+	url = https://bitbucket.org/Leyorus/mkvextract-gtk/
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = make
+	makedepends = cmake
+	makedepends = boost
+	makedepends = gtkmm
+	depends = mkvtoolnix-cli
+	source = https://bitbucket.org/Leyorus/mkvextract-gtk/get/v0.9.3.tar.gz
+	md5sums = 8f98b9bf977b100fe55c77e93f7236ec
+
+pkgname = mkvextract-gtk
+
