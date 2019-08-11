@@ -4,7 +4,7 @@
 export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors 
 pkgname=veloren
 pkgver=0.3.0
-pkgrel=7
+pkgrel=8
 pkgdesc='An open-world, open-source multiplayer voxel RPG'
 arch=('x86_64' 'i686')
 url='https://veloren.net/'
@@ -40,7 +40,8 @@ build() {
 }
 
 package() {
-    install -D "$srcdir/$pkgname/target/release/veloren-{voxygen,server-cli}" -t "$pkgdir/usr/bin"
+    install -D "$srcdir/$pkgname/target/release/veloren-voxygen" -t "$pkgdir/usr/bin"
+    install -D "$srcdir/$pkgname/target/release/veloren-server-cli" -t "$pkgdir/usr/bin"
     mkdir -p "$pkgdir/usr/share/veloren"
     cp -a "$srcdir/$pkgname/assets" "$pkgdir/usr/share/veloren/"
     install -D "$srcdir/veloren-voxygen.desktop" -t "$pkgdir/usr/share/applications"
