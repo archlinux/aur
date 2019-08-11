@@ -1,8 +1,5 @@
 # Lokalise AUR Package
-[![Build Status](https://travis-ci.org/famoser/lokalise-aur.svg?branch=master)](https://travis-ci.org/famoser/lokalise-aur)
-
-## Prepare arch upstream
-
+[![Build Status](https://travis-ci.org/famoser/symfony-cli-aur.svg?branch=master)](https://travis-ci.org/famoser/symfony-cli-aur)
 
 ## Update package
 
