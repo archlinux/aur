@@ -10,7 +10,7 @@ pkgdesc="A new IDE made with Vala."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/${_author}/${_gitname}"
 license=('GPL3')
-depends=('gtk3' 'granite' 'glib2' 'gtksourceview4' 'json-glib' 'libdazzle' 'vte3>=0.57.0')
+depends=('gtk3' 'granite' 'glib2' 'gtksourceview4' 'json-glib' 'libdazzle' 'vte3-git')
 optdepends=('')
 makedepends=('git' 'meson' 'vala')
 provides=("${_gitname}-ide")

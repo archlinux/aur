@@ -15,7 +15,7 @@ pkgbase = proton-ide-git
 	depends = gtksourceview4
 	depends = json-glib
 	depends = libdazzle
-	depends = vte3>=0.57.0
+	depends = vte3-git
 	provides = proton-ide
 	conflicts = proton-ide
 	source = git+https://gitlab.com/raggesilver-proton/proton.git
