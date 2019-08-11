@@ -1,7 +1,7 @@
 pkgbase = grub-theme-stylish-git
 	pkgdesc = Stylish grub theme
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/grub2-themes
 	arch = any
 	license = GPL3
