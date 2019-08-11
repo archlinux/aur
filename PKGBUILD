@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=0.37dev.git20190702
+pkgver=0.37dev.git20190811
 pkgrel=1
 arch=('any')
 pkgdesc='VHDL simulator - GCC flavour'
@@ -143,12 +143,17 @@ package() {
 	# Install VHDL libraries and runtime
 	cd "${srcdir}/ghdl"
 	make DESTDIR="${pkgdir}" install
+	# Install library for synthesis
+	make DESTDIR="${pkgdir}" install.libghdlsynth
 
 	# Remove gcc-specific files, keep only what is related to ghdl
 	cd "${pkgdir}"
-	rm -rf "usr/"{include,share/{locale,man}}
+	rm -rf "usr/share/"{locale,man}
 	find "usr/lib" \
-		-maxdepth 1 -mindepth 1 -not -name 'gcc' -not -name 'ghdl' \
+		-maxdepth 1 -mindepth 1 \
+		-not -name 'gcc' \
+		-not -name '*ghdl*' \
+		-not -name 'libiberty*' \
 		-exec rm -rf {} +
 	find "usr/lib/gcc/${_machine}/${_version}" \
 		-maxdepth 1 -mindepth 1 -not -name 'ghdl*' \
