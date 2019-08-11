@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='mongodb-compass-community'
-pkgver='1.18.0'
-pkgrel='3'
+pkgver='1.19.0'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Community Edition'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
@@ -9,11 +9,11 @@ license=('custom')
 depends=('electron3' 'libsecret')
 optdepends=('gnome-keyring')
 source=(
-	'https://downloads.mongodb.com/compass/mongodb-compass-community-1.18.0.x86_64.rpm'
+	'https://downloads.mongodb.com/compass/mongodb-compass-community-1.19.0.x86_64.rpm'
 	'launch.sh'
 )
 sha256sums=(
-	'df1f9f58986b48d76b7b38a352c0fc680543c55a44f7bba05bd1c14fdcff51cd'
+	'c845f792ba62fe52c0a3238e4fde9f44c47525eeca9f268f90739c2c13e85976'
 	'69f68797ebf485b53e74af1f9f5f2e66d0f4e862ca94b90504d0fc85645e8b9d'
 )
 
