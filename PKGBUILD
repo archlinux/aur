@@ -84,7 +84,7 @@ package_manjarowish-lxqt-kwin-dark-settings() {
     conflicts=('manjarowish-light-settings-settings','manjaro-kde-settings','manjarowish-dark-settings-settings')
     replaces=('manjarowish-light-settings-settings','manjaro-kde-settings','manjarowish-dark-settings-settings')
     provides=('manjaro-desktop-settings')
-    conflicts=('manjaro-desktop-settings')
+    conflicts=('manjaro-desktop-settings' 'plasma-workspace')
 
     _install ''
 }
