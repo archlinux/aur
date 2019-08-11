@@ -3,7 +3,7 @@
 
 _project_name=pace
 pkgname=${_project_name}-git
-pkgver=1.2.0.1.r0.g3a7468a
+pkgver=1.2.0.1.r2.g3a6a783
 pkgrel=1
 pkgdesc='A simple pacman.conf editor'
 arch=('x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd ${_project_name}
 
-  arch-meson . build
+  arch-meson --wrap-mode=nofallback . build
 
   ninja -C build
 }
