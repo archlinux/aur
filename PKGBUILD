@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='mongodb-compass-isolated'
-pkgver='1.18.0'
-pkgrel='3'
+pkgver='1.19.0'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
@@ -9,11 +9,11 @@ license=('custom')
 depends=('electron3' 'libsecret')
 optdepends=('gnome-keyring')
 source=(
-	'https://downloads.mongodb.com/compass/mongodb-compass-isolated-1.18.0.x86_64.rpm'
+	'https://downloads.mongodb.com/compass/mongodb-compass-isolated-1.19.0.x86_64.rpm'
 	'launch.sh'
 )
 sha256sums=(
-	'a5413c5c42e24181bd965d24c006e05ee8bb1fba5beef17588628ea503dfafcf'
+	'6dd0e076ad48748dbba9dda96e2438c84fc0f2aae97723af9dfa19a60e162872'
 	'a9e2a135358cbbb57be58dcbd7e6a906ab894ed6ac2f166ee688f9ee80accc87'
 )
 
