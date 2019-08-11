@@ -1,9 +1,6 @@
 # Lokalise AUR Package
 [![Build Status](https://travis-ci.org/famoser/lokalise-aur.svg?branch=master)](https://travis-ci.org/famoser/lokalise-aur)
 
-## Prepare arch upstream
-
-
 ## Update package
 
 1. Update package version in PKGBUILD
