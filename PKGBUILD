@@ -1,11 +1,11 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 # Contributor:
 
-_gitname=gcleaner
-_author=gcleaner-vala
+_gitname=gcleaner-vala
+_author=gcleaner
 pkgname=("${_gitname}-git")
 pkgver=r42.50fc6e4
-pkgrel=1
+pkgrel=2
 pkgdesc="This is the original version of GCleaner writen in Vala lang"
 arch=('any')
 url="https://github.com/${_author}/${_gitname}"

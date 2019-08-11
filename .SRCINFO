@@ -1,8 +1,8 @@
-pkgbase = gcleaner-git
+pkgbase = gcleaner-vala-git
 	pkgdesc = This is the original version of GCleaner writen in Vala lang
 	pkgver = r42.50fc6e4
-	pkgrel = 1
-	url = https://github.com/gcleaner-vala/gcleaner
+	pkgrel = 2
+	url = https://github.com/gcleaner/gcleaner-vala
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -13,10 +13,10 @@ pkgbase = gcleaner-git
 	depends = glib2
 	depends = json-glib
 	optdepends = lib32-glib2
-	provides = gcleaner
-	conflicts = gcleaner
-	source = git+https://github.com/gcleaner-vala/gcleaner.git
+	provides = gcleaner-vala
+	conflicts = gcleaner-vala
+	source = git+https://github.com/gcleaner/gcleaner-vala.git
 	md5sums = SKIP
 
-pkgname = gcleaner-git
+pkgname = gcleaner-vala-git
 
