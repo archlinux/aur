@@ -1,5 +1,5 @@
 pkgbase = python-requests-cache
-	pkgdesc = Transparent persistent cache for http://python-requests.org/ library ⛺ https://pypi.org/project/requests-cache/
+	pkgdesc = Transparent persistent cache for http://python-requests.org/ library.
 	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/reclosedev/requests-cache
