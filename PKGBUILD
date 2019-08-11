@@ -2,19 +2,20 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_openfx_misc_commit=a64b518
-_openfx_commit=5d9ac2c
-_openfx_supportext_commit=20bdc01
+_openfx_misc_commit=aee6629
+_openfx_commit=f5f4139
+_openfx_supportext_commit=961aabd
 
 pkgname=openfx-misc
-pkgver=2.3.15_pre5
+pkgver=2.3.15_rc.7
 pkgrel=1
-arch=("i686" "pentium4" "x86_64")
+arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Miscellaneous OpenFX plugins"
 url="https://github.com/NatronGitHub/openfx-misc"
-license=("GPL")
-makedepends=("openmp")
-depends=("libgl")
+license=('GPL')
+makedepends=('openmp')
+depends=('libgl')
+optdepends=('natron-plugins: More presets for the Shadertoy plugin')
 source=("openfx-misc_$_openfx_misc_commit.tar.gz::https://github.com/NatronGitHub/openfx-misc/tarball/$_openfx_misc_commit"
         "openfx_$_openfx_commit.tar.gz::https://github.com/NatronGitHub/openfx/tarball/$_openfx_commit"
         "openfx-supportext_$_openfx_supportext_commit.tar.gz::https://github.com/NatronGitHub/openfx-supportext/tarball/$_openfx_supportext_commit")
