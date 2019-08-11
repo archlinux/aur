@@ -1,0 +1,15 @@
+pkgbase = hts-nit-song070-f001
+	pkgdesc = HTS voice trained by using the Nitech Japanese Speech Database NIT SONG070 F001
+	pkgver = 0.90
+	pkgrel = 1
+	url = http://www.sinsy.jp/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = custom
+	source = https://downloads.sourceforge.net/project/sinsy/HTS%20voice/hts_voice_nitech_jp_song070_f001-0.90/hts_voice_nitech_jp_song070_f001-0.90.tar.gz
+	md5sums = 018cce3ccb1f7110286863420b116d5b
+	sha1sums = 70a00c87f85a4a6cd7f14c329cae63388c9b8027
+
+pkgname = hts-nit-song070-f001
+
