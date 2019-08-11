@@ -1,6 +1,6 @@
 --- /etc/grub.d/10_linux
 +++ /etc/grub.d/10_linux
-@@ -184,8 +184,20 @@
+@@ -194,8 +194,19 @@
  submenu_indentation=""
  
  is_top_level=true
@@ -8,11 +8,10 @@
 +default_kernel_name="/boot/vmlinuz-linux"
  while [ "x$list" != "x" ] ; do
    linux=`version_find_latest $list`
-+  if ! $default_kernel_grabbed; then
++  if [ "x$default_kernel_grabbed" = xfalse ] ; then
 +    for i in $list; do
-+      if [ $i == $default_kernel_name ]
-+      then
-+        linux=$default_kernel_name
++      if [ "x$i" = "x$default_kernel_name" ] ; then
++        linux="$default_kernel_name"
 +        break
 +      fi
 +    done
