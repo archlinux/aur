@@ -1,4 +1,5 @@
 # Maintainer: Denton Liu <liu.denton@gmail.com>
+# Original patch by deusstultus: https://bugs.archlinux.org/task/28081#comment155230
 
 pkgname=grub-linux-default-hook
 pkgver=1.0
