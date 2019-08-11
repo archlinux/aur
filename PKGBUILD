@@ -4,13 +4,13 @@
 
 pkgname=nordvpn-bin
 pkgver=3.3.0_4
-pkgrel=1
+pkgrel=2
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://nordvpn.com/download/linux/"
 license=('custom')
 depends=('net-tools' 'libxslt' 'iptables' 'procps' 'iproute2')
-optdepends=('wireguard-tools: nordlynx support' 'wireguard-arch: nordlynx support')
+optdepends=('wireguard-tools: nordlynx support' 'wireguard-module: nordlynx support')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn')
 install=nordvpn-bin.install

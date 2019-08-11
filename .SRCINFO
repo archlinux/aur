@@ -1,7 +1,7 @@
 pkgbase = nordvpn-bin
 	pkgdesc = NordVPN CLI tool for Linux
 	pkgver = 3.3.0_4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nordvpn.com/download/linux/
 	install = nordvpn-bin.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = nordvpn-bin
 	depends = procps
 	depends = iproute2
 	optdepends = wireguard-tools: nordlynx support
-	optdepends = wireguard-arch: nordlynx support
+	optdepends = wireguard-module: nordlynx support
 	provides = nordvpn
 	conflicts = openvpn-nordvpn
 	source_i686 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.3.0-4_i386.deb
