@@ -1,0 +1,15 @@
+pkgbase = tes3cmd
+	pkgdesc = A command line tool to examine and manipulate plugins for the game Morrowind
+	pkgver = 0.40_pre2
+	pkgrel = 1
+	url = https://github.com/john-moonsugar/tes3cmd
+	arch = any
+	license = MIT
+	depends = perl
+	provides = tes3cmd
+	conflicts = tes3cmd
+	source = https://github.com/john-moonsugar/tes3cmd/archive/v0.40-pre-release-2.tar.gz
+	sha512sums = 9ba1919eae8f572cfa58f9f1dccca9b2b2e24f2a0e4182139c3716b49ce645d69782053b70fb407d32dce2beb74068fd23b6fb8e14a276205630ac606edf6ecb
+
+pkgname = tes3cmd
+
