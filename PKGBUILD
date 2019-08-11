@@ -16,7 +16,7 @@ license=(GPL2 LGPL2.1)
 _pppver=2.4.7
 makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
              iproute2 nss polkit wpa_supplicant curl systemd libmm-glib
-             libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
+             libnewt libndp libteam vala perl-yaml python-gobject git jansson bluez-libs
              glib2-docs dhcpcd iwd dnsmasq systemd-resolvconf libpsl audit meson)
 checkdepends=(libx11 python-dbus)
 source=("https://download.gnome.org/sources/NetworkManager/1.20/NetworkManager-1.20.0.tar.xz")

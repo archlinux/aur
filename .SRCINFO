@@ -29,7 +29,6 @@ pkgbase = networkmanager-iwd
 	makedepends = perl-yaml
 	makedepends = python-gobject
 	makedepends = git
-	makedepends = vala
 	makedepends = jansson
 	makedepends = bluez-libs
 	makedepends = glib2-docs
