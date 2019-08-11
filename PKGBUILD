@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-muranoclient
-pkgver=1.2.0
-pkgrel=2
+pkgver='1.3.0'
+pkgrel='1'
 pkgdesc='Python client library for Murano'
 arch=('any')
 url="https://docs.openstack.org/$pkgname/"
@@ -16,7 +16,7 @@ checkdepends=('python-fixtures' 'python-mock' 'python-requests-mock'
               'python-tempest' 'python-stestr' 'python-testscenarios'
               'python-testtools' 'python-oslotest' 'python-os-testr')
 source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('6c8281a694b637d73a48e4f2f81b515c97ffc7a0432a2653258690b31ceb72d1a1793462d61901c628bd2699c0fbbbd6beaf9b1257bd2f9a9114103dd06c5434')
+sha512sums=('69a6655924cadf2aa59814391e1607dbbcc247c8178dc0366c782413237e3e36243823bca0eae927340da89b8337fc5a708ea2b28ac913047824321470a9fe26')
 
 export PBR_VERSION=$pkgver
 
