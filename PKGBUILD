@@ -2,12 +2,12 @@
 
 pkgname=dot-browser-bin
 pkgver=2.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A beautiful browser with material UI, with built-in adblock, based on Wexond"
 arch=('x86_64')
 url="https://getdot.js.org"
 license=('GPL3')
-provides=('dot')
+provides=('dot-browser')
 replaces=('dot-bin')
 depends=('electron' 'gconf' 'libnotify' 'libindicator-gtk2' 'libappindicator-gtk2' 'libxtst' 'nss' 'libxss')
 options=('!strip')
@@ -40,6 +40,6 @@ package() {
 
     # Symlink dot binary which is located in /opt
     mkdir -p "${pkgdir}/usr/bin/"
-    ln -sf /opt/dot/dot "${pkgdir}/usr/bin/dot"
+    ln -sf /opt/dot/dot "${pkgdir}/usr/bin/dot-browser"
 
 }
