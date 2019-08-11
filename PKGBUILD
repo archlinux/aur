@@ -2,7 +2,7 @@
 
 pkgname=bananapkg-git
 pkgver=2.2.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-level package manager written in shell bash"
 url="https://bananapkg.github.io"
 license=('MIT')
