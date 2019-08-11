@@ -23,9 +23,10 @@ conflicts=('banana')
 
 package() {
     cd bananapkg
-    ./install.sh DESTDIR="${pkgdir}"
 
-    # change directory
-    install -Dm755 "${pkgdir}/sbin/banana" "${pkgdir}/usr/bin/banana"
-    rm -rf "${pkgdir}/sbin"
+    # install files manually
+    install -vDm755 -t "${pkgdir}/usr/bin/" "banana"
+    install -vDm644 -t "${pkgdir}/usr/share/man/pt_BR/man8/" 'banana.8'
+    install -vDm644 -t "${pkgdir}/usr/libexec/banana/" {core,help}'.sh'
+    install -vDm644 -t "${pkgdir}/etc/banana/" "banana.conf"
 }
