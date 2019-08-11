@@ -1,6 +1,6 @@
 pkgbase = colortool-git
 	pkgdesc = Tool for modifying colors
-	pkgver = 20190222000420
+	pkgver = 20190811221313
 	pkgrel = 1
 	url = https://gitlab.com/sambazley/colortool
 	arch = i686
