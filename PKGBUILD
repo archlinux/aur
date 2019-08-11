@@ -7,7 +7,7 @@
 _name=CinelerraCV
 pkgname=cinelerra-cv
 pkgver=2.3.20181006
-pkgrel=1
+pkgrel=2
 revision=bbcaf2fa70d6acb0ab764e853d50e6aa04e16496
 epoch=1
 pkgdesc="Professional video editing and compositing environment - Community version"
@@ -18,12 +18,11 @@ depends=('e2fsprogs' 'libavc1394' 'libiec61883' 'libxv'
          'libtiff' 'mjpegtools' 'fftw' 'a52dec' 'glu'
          'ffmpeg' 'faad2' 'faac' 'openexr>=2.0.0' 'libxft')
 makedepends=('git' 'automake' 'git' 'nasm' 'mesa')
-source=("git+https://github.com/cinelerra-gg/cinelerra-cv.git")
+source=("git+https://github.com/cinelerra-gg/cinelerra-cv.git#commit=bbcaf2fa70d6acb0ab764e853d50e6aa04e16496")
 sha512sums=('SKIP')
 
 prepare() {
   cd "${pkgname}"
-  git checkout ${revision}
   ./autogen.sh
 }
 

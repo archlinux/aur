@@ -1,7 +1,7 @@
 pkgbase = cinelerra-cv
 	pkgdesc = Professional video editing and compositing environment - Community version
 	pkgver = 2.3.20181006
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/cinelerra-gg/cinelerra-cv/
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = cinelerra-cv
 	depends = faac
 	depends = openexr>=2.0.0
 	depends = libxft
-	source = git+https://github.com/cinelerra-gg/cinelerra-cv.git
+	source = git+https://github.com/cinelerra-gg/cinelerra-cv.git#commit=bbcaf2fa70d6acb0ab764e853d50e6aa04e16496
 	sha512sums = SKIP
 
 pkgname = cinelerra-cv
