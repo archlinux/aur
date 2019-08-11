@@ -2,7 +2,7 @@
 
 export GIT_LFS_SKIP_SMUDGE=1
 pkgname=veloren-git
-pkgver=0.3.0
+pkgver=0.3.0.r51.4b333ed8
 pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
