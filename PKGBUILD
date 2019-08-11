@@ -20,6 +20,7 @@ sha512sums=('6a2b60f0f4f2dce35b0a5182a25adeafffc89c6bf65b0d07b6d349f2568ed096cc6
 
 check() {
   cd "$srcdir/$pkgname-v$pkgver"
+  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python setup.py test
 }
 
