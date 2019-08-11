@@ -1,0 +1,14 @@
+pkgbase = psgo-git
+	pkgdesc = PureScript Go Compiler
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/andyarvanitis/purescript-native
+	arch = any
+	license = BSD3
+	makedepends = stack
+	depends = go
+	source = https://github.com/andyarvanitis/purescript-native/archive/golang.zip
+	sha256sums = SKIP
+
+pkgname = psgo-git
+
