@@ -1,0 +1,24 @@
+pkgbase = toggldesktop-dev-bin
+	pkgdesc = Time Tracking Software.
+	pkgver = 7.4.504
+	pkgrel = 1
+	url = https://toggl.com/
+	arch = x86_64
+	depends = gst-plugins-base
+	depends = gstreamer
+	depends = jsoncpp
+	depends = libqxt
+	depends = libxss
+	depends = lua
+	depends = poco
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-webengine
+	depends = qt5-x11extras
+	provides = toggldesktop
+	conflicts = toggldesktop
+	source = https://github.com/toggl/toggldesktop/releases/download/v7.4.504/toggldesktop_7.4.504_amd64.deb
+	sha512sums = d9d774b8cad93b4d8cd07496179ade9789b2b978dde41fc2eef3c1afa0254c2bf8edce6f225e4fe7a4d38535a85c9ddb1003053d31993df210a9908ffe173dae
+
+pkgname = toggldesktop-dev-bin
+

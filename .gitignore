@@ -1,0 +1,5 @@
+*.pkg.*
+*.sig
+src/
+pkg/
+*.deb
