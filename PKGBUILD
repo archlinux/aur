@@ -1,14 +1,14 @@
 # Submitter: Marco Cirillo <maranda@lightwitch.org>
 # Maintainer: Marco Cirillo <maranda@lightwitch.org>
 pkgname=metronome-dev
-pkgver=3.8
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="Metronome IM XMPP Server Development"
 arch=('i686' 'x86_64')
 url="https://metronome.im/"
 license=('MIT' 'ISC')
-depends=('lua51' 'lua51-socket' 'lua51-expat' 'lua51-filesystem' 'lua51-event'
-   'lua51-sec' 'libidn' 'openssl', 'libevent-compat')
+depends=('lua52' 'lua52-socket' 'lua52-expat' 'lua52-filesystem'
+	 'lua52-event' 'lua52-sec' 'libidn' 'openssl' 'libevent')
 optdepends=('lua51-zlib: compression support')
 makedepends=('git')
 backup=('etc/metronome/metronome.cfg.lua')
