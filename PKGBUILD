@@ -1,12 +1,12 @@
 # Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
-_svt_hevc_ver='1.3.0'
+_svt_hevc_ver='1.4.0'
 _svt_av1_ver='0.6.0'
 _svt_vp9_ver='ce245894c6fc1c5d1439c41a7dda8d6dc61784c4'
 
 pkgname=ffmpeg-full
-pkgver=4.1.4
+pkgver=4.2
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('x86_64')
@@ -16,20 +16,21 @@ depends=(
     # official repositories:
         'glibc' 'alsa-lib' 'jack' 'libpng'
         'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass' 'aom'
-        'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
-        'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm'
-        'libiec61883' 'lensfun' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus'
-        'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump' 'snappy' 'libsoxr'
-        'speex' 'srt' 'libssh' 'tensorflow' 'tesseract' 'libtheora' 'twolame'
-        'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so'
-        'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
-        'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'libxv' 'libx11'
-        'libxext' 'zlib' 'cuda' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
+        'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'dav1d'
+        'libdc1394' 'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi'
+        'libgme' 'gsm' 'libiec61883' 'lensfun' 'libmodplug' 'lame' 'opencore-amr'
+        'openjpeg2' 'opus' 'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump' 'snappy'
+        'libsoxr' 'speex' 'srt' 'libssh' 'tensorflow' 'tesseract' 'libtheora'
+        'twolame' 'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp'
+        'libx264.so'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi'
+        'lv2' 'lilv' 'xz' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
+        'libxv' 'libx11'  'libxext' 'zlib' 'cuda' 'libomxil-bellagio' 'libva'
+        'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'codec2' 'davs2' 'flite1-patched' 'libilbc' 'libklvanc-git'
-        'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2'
-        'ndi-sdk' 'libmysofa' 'intel-media-sdk' 'rockchip-mpp' 'intel-svt-hevc'
-        'intel-svt-av1' 'svt-vp9-git'
+        'chromaprint-fftw' 'codec2' 'davs2' 'flite1-patched' 'libilbc'
+        'libklvanc-git' 'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc'
+        'xavs' 'xavs2' 'libmysofa' 'pocketsphinx' 'intel-media-sdk' 'rockchip-mpp'
+        'intel-svt-hevc' 'intel-svt-av1' 'svt-vp9-git'
 )
 makedepends=(
     # official repositories:
@@ -46,15 +47,13 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "ffmpeg-full-add-intel-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "ffmpeg-full-add-intel-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
         "ffmpeg-full-add-intel-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch"
-        'ffmpeg-full-decklink-sdk-11.patch'
         'LICENSE')
-sha256sums=('f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1'
+sha256sums=('023f10831a97ad93d798f53a3640e55cd564abfeba807ecbe8524dac4fedecd5'
             'SKIP'
-            'cc8ba4ff56cdb38a59650203999c4c8c83fc40bdb905b87b678ff68a4538444d'
-            '516c5a1b3ab6dc444e2270a1bae90455838fc3b7e3a18de37d7d63e25e79493d'
+            'd9bd8345ff994c26d5174759d460c723e92012139e29dd015fe83537e29a9554'
+            '295220f498680d893bec525321e657dc3cdb98080a7117d1f575cd0508996a0e'
             '102a70c5c453875f5806ce02cc83fdc74e53c078cf5be2657f3dd1dd4438868c'
             '7690a4f6bdc4a57e35c7ff5b6e87f2fe6d056d452eff9e767eaccff41832f4d7'
-            '96500257c72c664a9e7417d9aee3d0b2a4436f836e9733dcf1c9c30926b642df'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -66,9 +65,6 @@ prepare() {
     patch -Np1 -i "${srcdir}/ffmpeg-full-add-intel-svt-hevc-docs-${_svt_hevc_ver}.patch"
     patch -Np1 -i "${srcdir}/ffmpeg-full-add-intel-svt-av1-${_svt_av1_ver}.patch"
     patch -Np1 -i "${srcdir}/ffmpeg-full-add-intel-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
-    
-    # fix build with decklink sdk 11
-    patch -Np1 -i "${srcdir}/ffmpeg-full-decklink-sdk-11.patch"
 }
 
 build() {
@@ -113,6 +109,7 @@ build() {
         --enable-iconv \
         --enable-ladspa \
         --enable-libaom \
+        --enable-libaribb24 \
         --enable-libass \
         --enable-libbluray \
         --enable-libbs2b \
@@ -120,6 +117,7 @@ build() {
         --enable-libcelt \
         --enable-libcdio \
         --enable-libcodec2 \
+        --enable-libdav1d \
         --enable-libdavs2 \
         --enable-libdc1394 \
         --enable-libfdk-aac \
@@ -187,19 +185,20 @@ build() {
         --enable-lv2 \
         --enable-lzma \
         --enable-decklink \
-        --enable-libndi_newtek \
+        --disable-mbedtls \
         --enable-libmysofa \
         --enable-openal \
         --enable-opencl \
         --enable-opengl \
         --disable-openssl \
+        --enable-pocketsphinx \
         --enable-sndio \
         --enable-sdl2 \
         --enable-vapoursynth \
         --enable-xlib \
         --enable-zlib \
         \
-        --enable-cuda-sdk \
+        --enable-cuda-nvcc \
         --enable-cuvid \
         --enable-ffnvcodec \
         --enable-libdrm \
