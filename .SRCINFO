@@ -1,0 +1,21 @@
+pkgbase = htop-temperature-clockspeed-vim
+	pkgdesc = Interactive text-mode process viewer
+	pkgver = 1118.6cb2e30
+	pkgrel = 1
+	url = https://github.com/vitrvvivs/htop
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python2
+	depends = ncurses
+	optdepends = lsof: list open files for running process
+	optdepends = strace: attach to running process
+	provides = htop
+	conflicts = htop
+	options = !emptydirs
+	source = git+https://github.com/vitrvvivs/htop.git
+	sha256sums = SKIP
+
+pkgname = htop-temperature-clockspeed-vim
+
