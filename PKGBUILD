@@ -35,7 +35,7 @@ package() {
 	echo "#!/bin/bash
 	cd /usr/lib/premid/
 	npm start" > "${pkgdir}/usr/bin/${foldername%-git}"
-	chmod +x "${pkgdir}/usr/bin/${foldername%-git}"
+	chmod +x "${pkgdir}/usr/bin/premid"
 
 	# Create application menu shortcut
 	echo "[Desktop Entry]
