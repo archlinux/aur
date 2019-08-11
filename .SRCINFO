@@ -1,0 +1,21 @@
+pkgbase = linux-genuine-advantage
+	pkgdesc = This program makes sure that a given copy of Linux is Genuine
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.linuxgenuineadvantage.org
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-cgi
+	depends = perl-io-socket-inet6
+	source = http://www.linuxgenuineadvantage.org/downloads/linux-genuine-advantage-1.0.0.tar.gz
+	source = modern-linux.patch
+	source = no-install.patch
+	source = lga.service
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = linux-genuine-advantage
+

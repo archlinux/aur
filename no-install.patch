@@ -1,0 +1,87 @@
+--- aaa/linux-genuine-advantage
++++ bbb/linux-genuine-advantage
+@@ -79,8 +79,6 @@
+ $cmd = $ARGV[0];
+ if ('register' eq $cmd) {
+ 	do_register();
+-} elsif ('install' eq $cmd) {
+-	do_install();
+ } elsif ('daemon' eq $cmd) {
+ 	do_daemon();
+ } else {
+@@ -107,12 +105,7 @@
+ 	print STDERR "software, and you are welcome to redistribute it under certain\n";
+ 	print STDERR "conditions. See the GNU General Public License for details.\n";
+ 	print STDERR "\n";
+-	print STDERR "Usage: $PROGRAM_NAME [register|install]\n";
+-	print STDERR "\n";
+-	print STDERR "  install\n";
+-	print STDERR "\n";
+-	print STDERR "    Installs the $PROGRAM_NAME service. This is required in\n";
+-	print STDERR "    order to get the Genuine Linux Advantage.\n";
++	print STDERR "Usage: $PROGRAM_NAME [register]\n";
+ 	print STDERR "\n";
+ 	print STDERR "  register\n";
+ 	print STDERR "\n";
+@@ -146,8 +139,6 @@
+ sub do_register {
+ 	my $md5sum = calculate_hardware_hash();
+ 	
+-	do_install();
+-	
+ 	print "\n";
+ 	print "------------------------------------------------------------------------------\n";
+ 	print "Linux Genuine Advantage Registration\n";
+@@ -180,52 +171,6 @@
+ 	print "\n";
+ }
+ 
+-# adds a service so this program will perpetually run as a daemon.
+-# this will ensure that this copy of Linux is validated for Genuineness and Advantageousness constantly.
+-#
+-# accepts no arguments
+-# returns 1 on success, exits the program on error
+-sub do_install {
+-	my @lines = ();
+-	my $reload_result = undef;
+-	my $service_result = undef;
+-	my $installed = 0;
+-	
+-	# see if it's installed
+-	if (-e $service) {
+-		$installed = 1;
+-	}
+-	
+-	# if it's not installed, install it
+-	if (0 == $installed) {
+-		# add service
+-		# /usr/local/sbin/linux-genuine-advantage is the only Genuine path to this program (but /usr/sbin is symlink to /usr/bin), so no auto-detection is necessary
+-		open(SERVICE, ">> $service") or show_error("Could not install into $service!");
+-		print SERVICE "[Unit]\n";
+-		print SERVICE "Description=Linux Genuine Advantage - http://www.linuxgenuineadvantage.org/\n";
+-		print SERVICE "\n";
+-		print SERVICE "ExecStart=/usr/bin/$PROGRAM_NAME daemon\n";
+-		print SERVICE "\n";
+-		print SERVICE "[Install]\n";
+-		print SERVICE "WantedBy=multi-user.target\n";
+- 		close(SERVICE);
+-		
+-		# reload systemd state
+-		$reload_result = system('systemctl daemon-reload');
+-		if (! $reload_result) {
+-			show_error("Could not reload systemd state!");
+-		}
+-
+-		# enable service
+-		$service_result = system('systemctl enable lga');
+-		if (! $service_result) {
+-			show_error("Could not enable service!");
+-		}
+-	}
+-	
+-	return (1);
+-}
+-
+ # loop continuously, checking periodically to see if the author of this program got paid.
+ # if no money has changed hands after 30 days, make the computer less useful as punishment.
+ #

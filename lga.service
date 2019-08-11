@@ -1,0 +1,8 @@
+[Unit]
+Description=Linux Genuine Advantage - http://www.linuxgenuineadvantage.org/
+
+[Service]
+ExecStart=/usr/bin/linux-genuine-advantage daemon
+
+[Install]
+WantedBy=multi-user.target

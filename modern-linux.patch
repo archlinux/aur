@@ -1,0 +1,104 @@
+--- aaa/linux-genuine-advantage
++++ bbb/linux-genuine-advantage
+@@ -48,7 +48,7 @@
+ my $config_key_file  = $config_directory . '/product-key';
+ 
+ # key system files
+-my $inittab = '/etc/inittab';
++my $service = '/usr/lib/systemd/system/lga.service';
+ my $nologin = '/etc/nologin';
+ 
+ # Domain and URL to send product key and hardware hash to. From here we receive marching
+@@ -180,48 +180,46 @@
+ 	print "\n";
+ }
+ 
+-# adds a line to /etc/inittab so this program will perpetually run as a daemon.
++# adds a service so this program will perpetually run as a daemon.
+ # this will ensure that this copy of Linux is validated for Genuineness and Advantageousness constantly.
+ #
+ # accepts no arguments
+ # returns 1 on success, exits the program on error
+ sub do_install {
+ 	my @lines = ();
+-	my $result = undef;
++	my $reload_result = undef;
++	my $service_result = undef;
+ 	my $installed = 0;
+ 	
+-	open(INITTAB, "$inittab") or show_error("Could not open $inittab for reading!");
+-	@lines = <INITTAB>;
+-	close(INITTAB);
+-	
+-	if (0 == @lines) {
+-		show_error("Could not read $inittab!");
+-	}
+-	
+ 	# see if it's installed
+-	foreach my $line (@lines) {
+-		if ($line =~ m/linux\-genuine\-advantage/o) {
+-			if ($line !~ m/#/o) {
+-				$installed = 1;
+-				last;
+-			}
+-		}
++	if (-e $service) {
++		$installed = 1;
+ 	}
+ 	
+ 	# if it's not installed, install it
+ 	if (0 == $installed) {
+-		# add this program to inittab
+-		# /usr/local/sbin/linux-genuine-advantage is the only Genuine path to this program, so no auto-detection is necessary
+-		open(INITTAB, ">> $inittab") or show_error("Could not install into $inittab!");
+-		print INITTAB "\n";
+-		print INITTAB "# Linux Genuine Advantage - http://www.linuxgenuineadvantage.org/\n";
+-		print INITTAB "LGA:123456:respawn:/usr/local/sbin/$PROGRAM_NAME daemon\n";
+-		close(INITTAB);
++		# add service
++		# /usr/local/sbin/linux-genuine-advantage is the only Genuine path to this program (but /usr/sbin is symlink to /usr/bin), so no auto-detection is necessary
++		open(SERVICE, ">> $service") or show_error("Could not install into $service!");
++		print SERVICE "[Unit]\n";
++		print SERVICE "Description=Linux Genuine Advantage - http://www.linuxgenuineadvantage.org/\n";
++		print SERVICE "\n";
++		print SERVICE "ExecStart=/usr/bin/$PROGRAM_NAME daemon\n";
++		print SERVICE "\n";
++		print SERVICE "[Install]\n";
++		print SERVICE "WantedBy=multi-user.target\n";
++ 		close(SERVICE);
+ 		
+-		# restart init (kill -HUP 1)
+-		$result = kill(1, 1);
+-		if (! $result) {
+-			show_error("Could not restart init!");
++		# reload systemd state
++		$reload_result = system('systemctl daemon-reload');
++		if (! $reload_result) {
++			show_error("Could not reload systemd state!");
++		}
++
++		# enable service
++		$service_result = system('systemctl enable lga');
++		if (! $service_result) {
++			show_error("Could not enable service!");
+ 		}
+ 	}
+ 	
+@@ -232,7 +230,7 @@
+ # if no money has changed hands after 30 days, make the computer less useful as punishment.
+ #
+ # accepts no arguments
+-# runs as a daemon forever (called from inittab, does not fork into the background)
++# runs as a daemon forever (called from service, does not fork into the background)
+ sub do_daemon {
+ 	my $result = undef;
+ 	
+@@ -323,7 +321,7 @@
+ # accepts no arguments
+ # returns an md5sum that will cause unnecessary grief for the user if it doesn't match exactly
+ sub calculate_hardware_hash {
+-	my $md5sum = `(/sbin/ifconfig | grep -i hwaddr | awk '{print \$5}' | sort -u; cat /proc/cpuinfo | egrep -i 'processor|vendor_id|cpu family|model|model name|stepping') | md5sum | awk '{print \$1}'`;
++	my $md5sum = `(/sbin/ifconfig | grep -i ether | awk '{print \$2}' | sort -u; egrep -i 'processor|vendor_id|cpu family|model|model name|stepping') /proc/cpuinfo | md5sum | awk '{print \$1}'`;
+ 	chomp($md5sum);
+ 	return ($md5sum);
+ }
