@@ -10,6 +10,7 @@ md5sums=('SKIP')
 makedepends=('git')
 depends=('vim')
 optdepends=('vim-airline-git' 'vim-lightline-git')
+conflicts=('gruvbox-material-git')
 _pkgname=gruvbox-material
 source=("git+https://github.com/sainnhe/gruvbox-material.git")
 

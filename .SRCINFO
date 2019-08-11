@@ -10,6 +10,7 @@ pkgbase = gruvbox-material-neosyn-git
 	depends = vim
 	optdepends = vim-airline-git
 	optdepends = vim-lightline-git
+	conflicts = gruvbox-material-git
 	source = git+https://github.com/sainnhe/gruvbox-material.git
 	md5sums = SKIP
 
