@@ -23,17 +23,10 @@ sha512sums=('c124e02e11a86209328c171dfbf7e292d62ea75e8d7afd06b18755ffd58807d5cc1
             'b5e5cbf28ab0e335f5a0fc93511fc9936360432a36e35cc876761601abacf257299deb0af6b3d9081143b700f6663c4f603970155dd4dacedb7a9672cde1dc94')
 
 package() {
+    install -D "$srcdir/optional-release-build/veloren-voxygen" -t "$pkgdir/usr/bin/"
+    install -D "$srcdir/optional-release-build/veloren-server-cli" -t "$pkgdir/usr/bin/"
     mkdir -p "$pkgdir/usr/share/veloren"
-    mkdir -p "$pkgdir/usr/bin"
-    cp -r "$srcdir/optional-release-build/assets" "$pkgdir/usr/share/veloren/"
-    cp -r "$srcdir/optional-release-build/shaders" "$pkgdir/usr/share/veloren/"
-    cp "$srcdir/optional-release-build/veloren-voxygen" "$pkgdir/usr/bin/"
-    chmod +x "$pkgdir/usr/bin/veloren-voxygen"
-    cp "$srcdir/optional-release-build/veloren-server-cli" "$pkgdir/usr/bin/"
-    chmod +x "$pkgdir/usr/bin/veloren-server-cli"
-
-    mkdir -p "$pkgdir/usr/share/pixmaps"
-    mkdir -p "$pkgdir/usr/share/applications"
-    cp "$srcdir/veloren-voxygen.desktop" "$pkgdir/usr/share/applications"
-    cp "$srcdir/voxygen.png" "$pkgdir/usr/share/pixmaps/"
+    cp -a "$srcdir/optional-release-build/assets" "$pkgdir/usr/share/veloren/"
+    install -D "$srcdir/veloren-voxygen.desktop" -t "$pkgdir/usr/share/applications"
+    install -Dm 644 "$srcdir/voxygen.png" -t "$pkgdir/usr/share/pixmaps/"
 }
