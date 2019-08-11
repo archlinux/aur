@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
-_svt_hevc_ver='1.3.0'
+_svt_hevc_ver='1.4.0'
 _svt_av1_ver='0.6.0'
 _svt_vp9_ver='ce245894c6fc1c5d1439c41a7dda8d6dc61784c4'
 
 pkgname=ffmpeg-full-git
-pkgver=4.2.r94300.gaf5f770113
+pkgver=4.3.r94501.g33186028fc
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('x86_64')
@@ -15,17 +15,18 @@ depends=(
     # official repositories:
         'glibc' 'alsa-lib' 'jack' 'libpng'
         'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass' 'aom'
-        'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
-        'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm'
-        'libiec61883' 'lensfun' 'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus'
-        'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt'
-        'libssh' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab'
-        'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so'  'x265' 'libxcb'
-        'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz' 'openal'
-        'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'libxv' 'libx11'  'libxext'
-        'zlib' 'cuda' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
+        'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'dav1d'
+        'libdc1394' 'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi'
+        'libgme' 'gsm' 'libiec61883' 'lensfun' 'libmodplug' 'lame' 'opencore-amr'
+        'openjpeg2' 'opus' 'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump' 'snappy'
+        'libsoxr' 'speex' 'srt' 'libssh' 'tensorflow' 'tesseract' 'libtheora'
+        'twolame' 'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp'
+        'libx264.so'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi'
+        'lv2' 'lilv' 'xz' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
+        'libxv' 'libx11'  'libxext' 'zlib' 'cuda' 'libomxil-bellagio' 'libva'
+        'libdrm' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'dav1d-git' 'codec2' 'davs2' 'flite1-patched' 'libilbc'
+        'chromaprint-fftw' 'codec2' 'davs2' 'flite1-patched' 'libilbc'
         'libklvanc-git' 'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc'
         'xavs' 'xavs2' 'libmysofa' 'pocketsphinx' 'intel-media-sdk' 'rockchip-mpp'
         'intel-svt-hevc' 'intel-svt-av1' 'svt-vp9-git'
@@ -42,13 +43,13 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         "ffmpeg-full-git-add-intel-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
-        "ffmpeg-full-git-add-intel-svt-hevc-docs-${_svt_hevc_ver}.patch"
+        "ffmpeg-full-git-add-intel-svt-hevc-docs.patch"
         "ffmpeg-full-git-add-intel-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
         "ffmpeg-full-git-add-intel-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch"
         'LICENSE')
 sha256sums=('SKIP'
-            'cc8ba4ff56cdb38a59650203999c4c8c83fc40bdb905b87b678ff68a4538444d'
-            'd6f29cbe57cba0fdfcb97111aa089154509db3a7bfdfa7f978692b68652e6fb5'
+            'd9bd8345ff994c26d5174759d460c723e92012139e29dd015fe83537e29a9554'
+            '1b3708496be453267be9699753c110ae171024db140e6a8d7fd68ac61845334b'
             '102a70c5c453875f5806ce02cc83fdc74e53c078cf5be2657f3dd1dd4438868c'
             '7690a4f6bdc4a57e35c7ff5b6e87f2fe6d056d452eff9e767eaccff41832f4d7'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
@@ -58,7 +59,7 @@ prepare() {
     
     # add intel-svt support for hevc, av1 and vp9
     git apply --index "${srcdir}/ffmpeg-full-git-add-intel-svt-hevc-${_svt_hevc_ver}.patch"
-    git apply --index "${srcdir}/ffmpeg-full-git-add-intel-svt-hevc-docs-${_svt_hevc_ver}.patch"
+    git apply --index "${srcdir}/ffmpeg-full-git-add-intel-svt-hevc-docs.patch"
     git apply --index "${srcdir}/ffmpeg-full-git-add-intel-svt-av1-${_svt_av1_ver}.patch"
     git apply --index "${srcdir}/ffmpeg-full-git-add-intel-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
 }
