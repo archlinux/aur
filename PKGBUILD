@@ -1,5 +1,6 @@
 # Maintainer: xtheosirian <https://aur.archlinux.org/account/xtheosirian>
 
+_pkgname=vim-gluon
 pkgname=vim-gluon-git
 pkgver=r16.07f9f69
 pkgrel=1
@@ -12,7 +13,7 @@ makedepends=('git')
 conflicts=('vim-gluon')
 provides=('vim-gluon')
 groups=('vim-plugins')
-source=("git+https://github.com/salpalvv/${pkgname%-git}.git")
+source=("git+https://github.com/salpalvv/vim-gluon.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,9 +22,10 @@ pkgver() {
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname%-git}"
   _installpath="${pkgdir}/usr/share/vim/vimfiles"
-  mkdir -p "${_installpath}"
-  cp -r ftdetect indent syntax "${_installpath}"
+  install -D -m644 ftdetect/gluon.vim "${_installpath}"/ftdetect/gluon.vim
+  install -D -m644 indent/gluon.vim "${_installpath}"/indent/gluon.vim
+  install -D -m644 syntax/gluon.vim "${_installpath}"/syntax/gluon.vim
   install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
