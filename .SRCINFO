@@ -1,6 +1,6 @@
 pkgbase = python-osprofiler
 	pkgdesc = Library for cross-project profiling library
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://docs.openstack.org/osprofiler/
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = python-osprofiler
 	depends = python-oslo-concurrency
 	depends = python-oslo-serialization
 	depends = python-prettytable
-	source = https://github.com/openstack/osprofiler/archive/2.8.0.tar.gz
-	sha512sums = 60ba181613b022bcb704e7f9a4b631c33e1fd924902d4a1a6ae7d9d221d554fa8936bd71f590be10bdaa42d9c2110e6de6d4993f7bf6d6fd1ab98d62ad7b0695
+	source = https://github.com/openstack/osprofiler/archive/2.8.1.tar.gz
+	sha512sums = 33229d45caaa4ef085433d1475a1bcbd678d2c8b2c1e619fe75032ba7744f6108e08c54177609417ed4e0fd1ed784a4de4c91454925961a96be22086fe4444e0
 
 pkgname = python-osprofiler
 
