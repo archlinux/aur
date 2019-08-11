@@ -12,7 +12,7 @@ pkgbase = vim-lalrpop-git
 	depends = vim-rust-git
 	provides = vim-lalrpop
 	conflicts = vim-lalrpop
-	source = git+https://github.com/qnighy/vim-lalrpop.git
+	source = git+https://github.com/qnighy/lalrpop.vim.git
 	md5sums = SKIP
 
 pkgname = vim-lalrpop-git

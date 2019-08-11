@@ -1,5 +1,6 @@
 # Maintainer: xtheosirian <https://aur.archlinux.org/account/xtheosirian>
 
+_pkgname=lalrpop.vim
 pkgname=vim-lalrpop-git
 pkgver=r2.7073eec
 pkgrel=1
@@ -12,19 +13,19 @@ makedepends=('git')
 conflicts=('vim-lalrpop')
 provides=('vim-lalrpop')
 groups=('vim-plugins')
-source=("git+https://github.com/qnighy/${pkgname%-git}.git")
+source=("git+https://github.com/qnighy/lalrpop.vim.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${_pkgname}"
   _installpath="${pkgdir}/usr/share/vim/vimfiles"
-  mkdir -p "${_installpath}"
-  cp -r ftdetect syntax "${_installpath}"
+  install -D -m644 ftdetect/lalrpop.vim "${_installpath}"/ftdetect/lalrpop.vim
+  install -D -m644 syntax/lalrpop.vim "${_installpath}"/syntax/lalrpop.vim
   install -D -m644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -D -m644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 }
