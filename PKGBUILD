@@ -1,7 +1,7 @@
 # Submitter: Marco Cirillo <maranda@lightwitch.org>
 # Maintainer: Marco Cirillo <maranda@lightwitch.org>
 pkgname=metronome-dev
-pkgver=3.12.0
+pkgver=3.12.1
 pkgrel=1
 pkgdesc="Metronome IM XMPP Server Development"
 arch=('i686' 'x86_64')
