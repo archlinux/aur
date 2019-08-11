@@ -1,17 +1,17 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
-_openfx_gmic_commit=6c878e1
-_openfx_commit=5d9ac2c
+_openfx_gmic_commit=4589d0d
+_openfx_commit=f5f4139
 
 pkgname=openfx-gmic
-pkgver=2.3.15_pre5
+pkgver=2.3.15_rc.7
 pkgrel=1
-arch=("i686" "pentium4" "x86_64")
+arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="OpenFX wrapper for the G'MIC framework"
 url="https://github.com/NatronGitHub/openfx-gmic"
 license=('custom:CeCILL-C' 'custom:CeCILLv2')
-depends=("curl" "fftw" "libgl" "libpng")
-makedepends=("gimp" "opencv" "openexr" "qt5-base")
+depends=('curl' 'fftw' 'libgl' 'libpng')
+makedepends=('gimp' 'opencv' 'openexr' 'qt5-base')
 source=("openfx-gmic_$_openfx_gmic_commit.tar.gz::https://github.com/NatronGitHub/openfx-gmic/tarball/$_openfx_gmic_commit"
         "openfx_$_openfx_commit.tar.gz::https://github.com/NatronGitHub/openfx/tarball/$_openfx_commit")
 sha512sums=('SKIP'
