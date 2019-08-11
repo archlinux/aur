@@ -22,7 +22,7 @@ pkgver() {
 package() {
 
 	# Set up file structure
-	mkdir -p "${pkgdir}/usr/lib/${foldername%-git}/"
+	mkdir -p "${pkgdir}/usr/lib/${pkgname%-git}/"
 	mkdir -p "${pkgdir}/usr/bin/"
 	mkdir -p "${pkgdir}/usr/share/applications"
 	mkdir -p "${pkgdir}/usr/share/pixmaps"
@@ -34,7 +34,7 @@ package() {
 	# Add launcher script to /usr/bin/
 	echo "#!/bin/bash
 	cd /usr/lib/premid/
-	npm start" > "${pkgdir}/usr/bin/${foldername%-git}"
+	npm start" > "${pkgdir}/usr/bin/premid"
 	chmod +x "${pkgdir}/usr/bin/premid"
 
 	# Create application menu shortcut
@@ -42,7 +42,7 @@ package() {
 	Name=PreMiD
 	GenericName=PreMiD
 	Comment=PreMiD adds Discord Rich Presence support to a lot of services you use and love.
-	Exec=/usr/bin/PreMiD
+	Exec=/usr/bin/premid
 	Terminal=false
 	Type=Application
 	Icon=premid.png" > "${pkgdir}/usr/share/applications/premid.desktop"
@@ -52,15 +52,15 @@ package() {
 	npm install
 
 	# Copy the app files & dependency modules to package directory
-	mkdir -p "${pkgdir}/usr/lib/${foldername%-git}/"
-	cp -r ./* "${pkgdir}/usr/lib/${foldername%-git}/"
+	mkdir -p "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -r ./* "${pkgdir}/usr/lib/${pkgname%-git}/"
 
 	cp assets/images/logo.png "${pkgdir}/usr/share/pixmaps/premid.png"
 
 	# Copy a license file to package directory
-	install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${foldername%-git}/LICENSE"
+	install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 
 	# Remove references to $srcdir of node_modules directory
-	grep -l "${srcdir}" -r "${pkgdir}" | xargs sed -i "s#${_git_srcdir}#/usr/lib/${foldername%-git}#g"
+	grep -l "${srcdir}" -r "${pkgdir}" | xargs sed -i "s#${_git_srcdir}#/usr/lib/${pkgname%-git}#g"
 
 }
