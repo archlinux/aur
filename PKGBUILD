@@ -1,9 +1,9 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
 pkgname=ygopro-koishipro
-pkgver=2019.7.28
+pkgver=2019.8.7
 pkgrel=1
 _pkgrel=1
-name="Rosarium"
+name="Charin"
 zipFile="KoishiPro-linux-full-$name.zip"
 pkgdesc="Link compatable ygopro client with AI"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('mono' 'libevent')
 makedepends=('patchelf' 'unzip')
 source=("$url/releases/download/$name/$zipFile")
 noextract=($zipFile)
-sha256sums=('1bd6bb989b54779d12788ddad70eb7de849ed64d8f24369589ffcda85468a34c')
+sha256sums=('622fb41491b8c380d5620ae486de06efcbe7a9a125517429a3923541389a4768')
 options=('!strip' 'emptydirs')
 
 prepare(){
