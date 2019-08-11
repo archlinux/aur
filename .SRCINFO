@@ -11,7 +11,7 @@ pkgbase = vim-dyon-git
 	provides = vim-dyon
 	conflicts = vim-dyon
 	source = git+https://github.com/thyrgle/vim-dyon.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = vim-dyon-git
 
