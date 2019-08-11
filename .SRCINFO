@@ -1,4 +1,4 @@
-pkgbase = gcleaner-vala-git
+pkgbase = gcleaner-git
 	pkgdesc = This is the original version of GCleaner writen in Vala lang
 	pkgver = r42.50fc6e4
 	pkgrel = 2
@@ -18,5 +18,5 @@ pkgbase = gcleaner-vala-git
 	source = git+https://github.com/gcleaner/gcleaner-vala.git
 	md5sums = SKIP
 
-pkgname = gcleaner-vala-git
+pkgname = gcleaner-git
 
