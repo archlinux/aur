@@ -1,6 +1,6 @@
 pkgbase = taskell-bin
 	pkgdesc = A command line kanban board/task manager written in Haskell
-	pkgver = 1.4.3
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/smallhadroncollider/taskell
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = taskell-bin
 	replaces = taskell
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/smallhadroncollider/taskell/releases/download/1.4.3/taskell-1.4.3_x86-64-linux.deb
+	source = https://github.com/smallhadroncollider/taskell/releases/download/1.5.1/taskell-1.5.1_x86-64-linux.deb
 	source = LICENSE
-	sha256sums = 25aa6c2286e26294925c734c0be849912b332338447a7c64c8914a6d06ced5b0
+	sha256sums = 10ef455562c7cf68afe874479fad9d7fb48668182d21b7b843889d8564a477b2
 	sha256sums = 04dc83953b60b17ab28cbc37ad3188e1c632db38dd423885af7507460f461d29
 
 pkgname = taskell-bin
