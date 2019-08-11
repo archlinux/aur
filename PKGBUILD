@@ -3,7 +3,7 @@
 pkgbase=python-pipx
 pkgname=python-pipx
 _name=pipx
-pkgver=0.13.1.1
+pkgver=0.14.0.0
 pkgrel=1
 pkgdesc='Execute binaries from Python packages in isolated environments'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-userpath')
 makedepends=('python-setuptools')
 #source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 source=("https://github.com/cs01/${_name}/archive/${pkgver}.tar.gz")
-sha512sums=('bab31764c2978236eb8da153d6238686228862a0819babcf383ed7551aef2e53e38275c53b0bbf67b3f1e13658d67fa4ddde72ee1d0d7db7c6f6f52aaf72f7a7')
+sha512sums=('38bec26099535a9bd84e5a7d4a30753b2ebdcbbd8c33179d62eb5fc1c09ff816122ee672dfc5c191cad6ffb5496d0fe9fc825ddec7f689758f1c9a34f53270e4')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
@@ -25,6 +25,9 @@ check() {
   #  export PYTHONPATH=build:${PYTHONPATH}
   #  py.test
   #python setup.py test
+  # handle userpath
+  echo 'You need to append ~/.local/bin to $PATH (if necessary)'
+  echo 'You can do so with: userpath append ~/.local/bin/'
 }
 
 package_python-pipx() {
