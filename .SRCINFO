@@ -1,5 +1,5 @@
 pkgbase = glrnvim
-	pkgver = 0.1.1
+	pkgver = 1.0.0
 	pkgrel = 0
 	url = https://github.com/beeender/glrnvim
 	arch = x86_64
@@ -8,12 +8,14 @@ pkgbase = glrnvim
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/beeender/glrnvim.git#tag=v0.1.1
+	source = git+https://github.com/beeender/glrnvim.git#tag=v1.0.0
 	sha256sums = SKIP
 
 pkgname = glrnvim
 	pkgdesc = A GPU-accelerated neovim GUI.
-	depends = alacritty
 	depends = neovim
+	optdepends = alacritty
+	optdepends = urxvt
+	optdepends = kitty
 	provides = glrnvim
 
