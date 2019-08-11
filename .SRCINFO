@@ -1,6 +1,6 @@
 pkgbase = python-pyxel
 	pkgdesc = Retro game development environment
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/kitao/pyxel
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = python-pyxel
 	depends = python-pillow
 	depends = python-sounddevice
 	depends = sdl2_image
-	source = https://github.com/kitao/pyxel/archive/v1.2.2.tar.gz
-	md5sums = 3c0da081ff5a218a4a0a15cea8bbcd60
+	source = https://github.com/kitao/pyxel/archive/v1.2.3.tar.gz
+	md5sums = d4585470ff3eb3322f80069862980abd
 
 pkgname = python-pyxel
 
