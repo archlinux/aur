@@ -3,8 +3,8 @@
 # Maintainer (bin-version): Marc Mettke <marc@itmettke.de>
 
 pkgname=firefox-kde-opensuse-bin
-pkgver=68.0
-_pkgrel=2
+pkgver=68.0.1
+_pkgrel=1
 pkgrel=${_pkgrel}
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(https://repo.itmettke.de/firefox-kde-opensuse-${pkgver}-${_pkgrel}-x86_6
 noextract=(firefox-kde-opensuse-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz)
 validpgpkeys=(81E604C18BFD3FA9986E32D91E74416BECD445A4)
 sha256sums=(
-	'84dad9bd8a70ad4cd95b6f457cbd8cf1bbfd4c6d574322afc6f27ce9dd5d7c5a'
+	'f6346bee61e43ee288c0de97f58be4fae716b2a74be8ee758ed7b660639253ac'
 	'SKIP'
 )
 
