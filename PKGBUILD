@@ -1,15 +1,15 @@
 # Maintainer: Gustaf Lindstedt <gustaflindstedt at protonmail dot com>
 
 pkgname=xwobf-git
-pkgver=0.r8.cc04f4d
+pkgver=0.r17.4ff96e3
 pkgrel=1
 pkgdesc='Generates a screenshot which obfuscates all X windows.'
 arch=('any')
-url='https://github.com/glindste/xwobf'
+url='https://github.com/glindstedt/xwobf'
 license=('MIT')
 depends=('xorg-server' 'libxcb' 'imagemagick')
 makedepends=('git' 'libxcb' 'imagemagick')
-source=("${pkgname}::git://github.com/glindste/xwobf.git")
+source=("${pkgname}::git://github.com/glindstedt/xwobf.git")
 provides=("xwobf=${pkgver}")
 conflicts=('xwobf')
 md5sums=('SKIP')
