@@ -1,18 +1,14 @@
 pkgbase = python-cheetah3
 	pkgdesc = A Python 3-powered template engine and code generator
-	pkgver = 3.1.0
-	pkgrel = 3
+	pkgver = 3.2.3
+	pkgrel = 1
 	url = http://www.cheetahtemplate.org
 	arch = x86_64
 	license = custom
-	depends = python
+	depends = python-setuptools
 	optdepends = python-markdown
-	provides = cheetah3
-	provides = python-cheetah3
-	conflicts = cheetah3
-	conflicts = python-cheetah3
-	source = https://files.pythonhosted.org/packages/source/C/Cheetah3/Cheetah3-3.1.0.tar.gz
-	sha512sums = 879de1b7a333def757a1618b7c28348d8b2f43a433aa8d5d9ee501619a854c514ca4a842f741bf4d272f5cc2defa137b741d2cc9648a3fc40dc2c4ab50692fac
+	source = https://files.pythonhosted.org/packages/source/C/Cheetah3/Cheetah3-3.2.3.tar.gz
+	sha512sums = ebc735b59d61912679405469f9d509fc73bbdde51c414320994421849f4a02266d2c286c0f618cab2a592ab47ac0a4be9ec444fab75145a0c31dd0c3c39fc1e3
 
 pkgname = python-cheetah3
 
