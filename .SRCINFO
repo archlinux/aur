@@ -8,6 +8,7 @@ pkgbase = sinsy
 	arch = armv7h
 	license = BSD
 	depends = hts-engine
+	depends = hts-nit-song070-f001
 	source = https://downloads.sourceforge.net/sinsy/sinsy-0.92.tar.gz
 	source = a.patch
 	md5sums = fb80f6cb488ea41758e36e57ff28180b

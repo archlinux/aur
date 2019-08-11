@@ -8,7 +8,7 @@ pkgdesc="An HMM-Based Singing Voice Synthesis System"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.sinsy.jp/"
 license=('BSD')
-depends=('hts-engine')
+depends=('hts-engine' 'hts-nit-song070-f001')
 source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
         a.patch)
 md5sums=('fb80f6cb488ea41758e36e57ff28180b'
