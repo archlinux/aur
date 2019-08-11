@@ -15,7 +15,7 @@ source=($pkgname-$pkgver-$_pkgver.tar.bz2::https://github.com/LuxCoreRender/LuxM
         system_scenes.diff exepath.diff fix-dependencies.patch)
 md5sums=('92862b24a169f54f084c310fdf7e2eb5'
          '03d3d117dfd2f3a7f825e3ea7b68f045'
-         '35d0429f14cea46e937d8d6b09147a0a'
+         'c11dd38c085e03ced707410b43a94088'
          '6ba9b9888160cc06e3c3644e21d80e5a'
          '44a0b3284c49cffdf3612c4debb24e71')
 
