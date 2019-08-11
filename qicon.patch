@@ -1,0 +1,13 @@
+diff --git a/plugins/Conditions/DBus/createdbusconditionwidget.cpp b/plugins/Conditions/DBus/createdbusconditionwidget.cpp
+index d068234c..54265582 100644
+--- a/plugins/Conditions/DBus/createdbusconditionwidget.cpp
++++ b/plugins/Conditions/DBus/createdbusconditionwidget.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include "createdbusconditionwidget.h"
+ #include "dbuscondition.h"
+-
++#include <QIcon>
+ #include <simoncontextdetection/contextmanager.h>
+ 
+ 
