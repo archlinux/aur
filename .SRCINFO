@@ -1,0 +1,13 @@
+pkgbase = python-shortcutter
+	pkgdesc = Easy cross-platform creation of shortcuts supporting virtual and Anaconda environments
+	pkgver = 0.1.20
+	pkgrel = 1
+	url = https://github.com/kiwi0fruit/shortcutter
+	arch = any
+	license = MIT
+	depends = python
+	source = python-shortcutter-0.1.20.tar.gz::https://github.com/kiwi0fruit/shortcutter/archive/0.1.20.tar.gz
+	sha256sums = 859ddf79a061071544cd4dcb30a77f390c97ed8819d5cf05bec4e564d8ea7b95
+
+pkgname = python-shortcutter
+
