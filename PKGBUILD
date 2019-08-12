@@ -14,7 +14,7 @@ conflicts=()
 source=("git+https://github.com/robbertkl/docker-ipv6nat.git#tag=v$pkgver"
         "docker-ipv6nat.service")
 sha256sums=('SKIP'
-            '7ffd1b0d3c772e76c092fecbca225342f586d2ddd312497679f325df6885220d')
+            'a8e15a8d9a37be69d84bc60b63d7446e67a380cdf8e121f0fb5ea9db64a9e1b8')
 
 prepare() {
     mkdir -p "src/github.com/robbertkl"
