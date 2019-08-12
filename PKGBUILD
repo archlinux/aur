@@ -14,7 +14,7 @@ conflicts=()
 source=("git+https://github.com/robbertkl/docker-ipv6nat.git#tag=v$pkgver"
         "docker-ipv6nat.service")
 sha256sums=('SKIP'
-            'a8e15a8d9a37be69d84bc60b63d7446e67a380cdf8e121f0fb5ea9db64a9e1b8')
+            '4f0443dc6873fa2ed217309b79d8db362aa2fbcfca81b717edc6ec805bdd24f4')
 
 prepare() {
     mkdir -p "src/github.com/robbertkl"
@@ -38,10 +38,10 @@ build() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/sbin/"
-    mkdir -p "$pkgdir/lib/systemd/system/"
+    mkdir -p "$pkgdir/usr/bin/"
+    mkdir -p "$pkgdir/usr/lib/systemd/system/"
     chmod 0755 "docker-ipv6nat"
-    mv "docker-ipv6nat" "$pkgdir/usr/sbin/"
+    mv "docker-ipv6nat" "$pkgdir/usr/bin/"
     chmod 0644 "docker-ipv6nat.service"
-    mv "docker-ipv6nat.service" "$pkgdir/lib/systemd/system/"
+    mv "docker-ipv6nat.service" "$pkgdir/usr/lib/systemd/system/"
 }

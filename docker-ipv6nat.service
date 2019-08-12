@@ -7,7 +7,7 @@ StartLimitIntervalSec=60
 Type=simple
 Restart=on-failure
 RestartSec=10
-ExecStart=/usr/sbin/docker-ipv6nat -cleanup -retry
+ExecStart=/usr/bin/docker-ipv6nat -cleanup -retry
 
 [Install]
 WantedBy=multi-user.target
