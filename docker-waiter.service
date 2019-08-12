@@ -1,0 +1,12 @@
+[Unit]
+Description=Control startup order of docker containers
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/docker-waiter
+Restart=Always
+
+[Install]
+RequiredBy=multi-user.target

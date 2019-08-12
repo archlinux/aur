@@ -1,0 +1,16 @@
+post_install() {
+	systemctl --quiet daemon-reload
+}
+
+post_upgrade() {
+	systemctl --quiet daemon-reload
+	systemctl --quiet try-restart docker-waiter.service
+}
+
+pre_remove() {
+	systemctl --quiet --no-reload disable --now docker-waiter.service
+}
+
+post_remove() {
+	systemctl --quiet daemon-reload
+}
