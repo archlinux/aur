@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Generic WPE WebKit backend using FreeDesktop technologies (Wayland)'
 pkgname=wpebackend-fdo
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=0
 url=https://github.com/Igalia/WPEBackend-fdo
 license=(custom:BSD)
@@ -9,8 +9,11 @@ arch=(x86_64 i686 aarch64)
 groups=(wpe)
 depends=(glib2 'libwpe>=1.2.0' opengl-driver)
 makedepends=(cmake)
-source=("https://wpewebkit.org/releases/${pkgname}-${pkgver}.tar.xz")
-sha512sums=('05bc2523d18474b076d77b868d4932ca850bf4abc9a94a14af510901d250ce0cf0d2d416ffd47b570080c55252dfa30d53c80e19353bff40a009002e5ed90c4b')
+source=("https://wpewebkit.org/releases/${pkgname}-${pkgver}.tar.xz"{,.asc})
+md5sums=('59b5fd6a3b64fe473458e16913ff9256' SKIP)
+sha1sums=('d525044256dc7ee13fd64bc10d3e24e3b980125e' SKIP)
+sha256sums=('a2a50631eff7ec7ad1f787ab7ea9a524148588edbb42fff614ee404e1bcc126d' SKIP)
+validpgpkeys=('5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
 
 prepare () {
 	mkdir -p _build
@@ -23,7 +26,7 @@ build () {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
 		"../${pkgname}-${pkgver}"
-	cmake --build .
+	cmake --build . -j$(nproc)
 }
 
 package () {
