@@ -2,7 +2,7 @@
 
 pkgname=docker-waiter
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker container startup order controller'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://gitlab.com/BrianAllred/docker-waiter'
@@ -19,8 +19,8 @@ md5sums=('ad0660096881210e6237ef793962b060'
          '289546697d1fd3074b3024f395c509fd')
 
 build() {
-    cd "$pkgname-$pkgver"
-    go build -v -i -o "$pkgname"
+    cd "$srcdir/$pkgname-$pkgver"
+    go build -v -i -o "$srcdir/$pkgname"
     go clean --modcache
 }
 

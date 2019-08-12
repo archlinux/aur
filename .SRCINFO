@@ -1,7 +1,7 @@
 pkgbase = docker-waiter
 	pkgdesc = Docker container startup order controller
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/BrianAllred/docker-waiter
 	install = docker-waiter.install
 	arch = x86_64
