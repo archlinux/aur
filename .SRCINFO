@@ -1,0 +1,14 @@
+pkgbase = directx-shader-compiler
+	pkgdesc = A compiler for HLSL to DXIL (DirectX Intermediate Language).
+	pkgver = 1.4.1907
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/microsoft/DirectXShaderCompiler
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	source = https://github.com/microsoft/DirectXShaderCompiler/archive/v1.4.1907.tar.gz
+
+pkgname = directx-shader-compiler
+
