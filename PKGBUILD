@@ -11,7 +11,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork-git
-pkgver=r1766.bcbaf448
+pkgver=r1771.42cedfa8
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData (git version)"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
