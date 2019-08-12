@@ -1,0 +1,19 @@
+pkgbase = kiwix-desktop
+	pkgver = 2.0rc1
+	pkgrel = 1
+	url = https://www.kiwix.org/
+	arch = any
+	license = GPLv3
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-webengine
+	depends = qt5-svg
+	depends = qt5-imageformats
+	depends = aria2
+	depends = kiwix-lib
+	conflicts = kiwix-bin
+	source = https://download.kiwix.org/release/kiwix-desktop/kiwix-desktop-2.0-rc1.tar.gz
+	md5sums = ce648a2a7e47366e8fe0ae7fa6f054da
+
+pkgname = kiwix-desktop
+
