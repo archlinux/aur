@@ -3,7 +3,7 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r1730.55435b3
+pkgver=r1816.a3975e5
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -19,9 +19,7 @@ optdepends=(
   'bettercap: Complete, modular, portable and easily extensible MITM framework'
   'bully: Retrieve WPA/WPA2 passphrase from a WPS enabled access point'
   'ccze: Robust and modular log colorizer with many plugins'
-  'crunch: A wordlist generator where you can specify a standard character set or a
-    character set you specify and generate all possible combinations and
-    permutations'
+  'crunch: A wordlist generator where you can specify a standard character set or a character set you specify and generate all possible combinations and permutations'
   'curl: An URL retrieval utility and library'
   'dhcp: A DHCP server, client, and relay agent'
   'dsniff: Collection of tools for network auditing and penetration testing'
@@ -33,12 +31,13 @@ optdepends=(
   'hostapd-wpe: Modified hostapd to facilitate AP impersonation attacks'
   'john: John the Ripper password cracker'
   'iptables: Linux kernel packet control tool'
-  'nftables: This software provides an in-kernel packet classification framework'
   'lighttpd: A secure, fast, compliant and very flexible web-server'
+  'mdk3: WLAN penetration tool'
   'mdk4: WLAN penetration tool'
+  'nftables: This software provides an in-kernel packet classification framework'
+  'openssl: The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   'pciutils: PCI bus configuration space access library and tools'
-  'pixiewps: Offline bruteforce of the WPS pin exploiting the low or non-existing entropy
-    of some APs'
+  'pixiewps: Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs'
   'reaver: Brute force attack against Wifi Protected Setup'
   'rfkill: Tool for enabling and disabling wireless devices'
   'sslstrip: Python tool to hijack HTTPS connections during a MITM attack'
@@ -83,7 +82,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/airgeddon"
 
   install -Dm644 -t "$pkgdir/usr/share/doc/airgeddon/" README.md CHANGELOG.md CONTRIBUTING.md CODE_OF_CONDUCT.md
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/airgeddon/LICENSE.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/airgeddon/LICENSE"
 
   rm -rf *.md .git* .editor* binaries imgs Dockerfile pindb_checksum.txt
 
