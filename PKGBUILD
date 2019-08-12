@@ -1,7 +1,7 @@
-# Mainteiner: Bjoern Franke <bjo+aur@schafweide.org>
 # Contributor: Nícolas Bordignon dos Santos <nicolas.bordignon16@gmail.com>
+# Co-Mainteiner: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
-# Contributor:  Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: James An <james@jamesan.ca>
 # Contributor: Stefano Bergamini <bergs at live dot it>
 # Contributor: Heiko Baums <heiko@baums-on-web.de>
