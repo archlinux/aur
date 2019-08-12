@@ -1,11 +1,11 @@
 post_install() {
   instruct
-  echo "and enable the extension with gnome-tweak-tool."
+  echo "and enable this extension with the gnome-tweaks tool."
 }
 
 post_upgrade() {
   instruct
-  echo "for the changes to have an effect."
+  echo "for the upgrade to have an effect."
 }
 
 post_remove() {
@@ -14,7 +14,5 @@ post_remove() {
 
 instruct() {
   post_remove
-  echo "Don't forget to restart GNOME Shell ([Alt]+[F2], r)"
+  echo -n "Don't forget to restart GNOME Shell ([Alt]+[F2], r) "
 }
-
-# vim: ts=2 sw=2 et:
