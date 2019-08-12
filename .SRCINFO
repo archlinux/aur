@@ -1,7 +1,7 @@
 pkgbase = python-fakeredis
 	pkgdesc = Fake implementation of redis API (redis-py) for testing purposes
-	pkgver = 1.0.3
-	pkgrel = 2
+	pkgver = 1.0.3f
+	pkgrel = 1
 	url = https://github.com/jamesls/fakeredis
 	arch = any
 	license = BSD
@@ -12,8 +12,8 @@ pkgbase = python-fakeredis
 	checkdepends = python-hypothesis
 	checkdepends = python2-hypothesis
 	options = !emptydirs
-	source = https://github.com/jamesls/fakeredis/archive/1.0.3.tar.gz
-	sha256sums = 4d5a501a39c321acfdb9e41c9a66851852caa6f3ed4d1c7de8ea2bf17ef6e457
+	source = git+https://github.com/jamesls/fakeredis.git#commit=d675ee1d6c4ac7a3bb0129f916232c0f2c6e9dd5
+	sha256sums = SKIP
 
 pkgname = python-fakeredis
 	depends = python
