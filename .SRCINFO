@@ -1,6 +1,6 @@
 pkgbase = linux-bfq
 	pkgver = 5.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sirlucjan/bfq-mq-lucjan
 	arch = x86_64
 	license = GPL2
@@ -20,7 +20,7 @@ pkgbase = linux-bfq
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.2/bfq-paolo-dev-lucjan-v2/0002-block-bfq-dev-lucjan.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.2/bfq-paolo-dev-lucjan-v3/0003-block-bfq-dev-lucjan.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.2/bfq-paolo-dev-lucjan-v4/0004-block-bfq-dev-lucjan.patch
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.2/bfq-paolo-dev-lucjan-v5/0005-block-bfq-dev-lucjan.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.2/bfq-paolo-dev-lucjan-v5r1/0005-block-bfq-dev-lucjan.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.2/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.2/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.2/arch-patches/0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
