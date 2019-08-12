@@ -14,7 +14,7 @@ depends=("python" "patool" "python-setuptools" "python-colorama" "python-appdirs
          "python-yaml" "python-progressbar" "python-restrictedpython" "bubblewrap" "omwcmd")
 makedepends=("python" "python-setuptools" "python-setuptools-scm")
 checkdepends=("python-pytest")
-optdepends=("omwllf")
+optdepends=("omwllf" "tes3cmd" "tr-patcher")
 source=("https://gitlab.com/portmod/portmod/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha512sums=('6a2b60f0f4f2dce35b0a5182a25adeafffc89c6bf65b0d07b6d349f2568ed096cc6c30cb2f1a0132cf5b006e8de7c31f69e08064b9b3a8ba9c94c2c792bd2956')
 
