@@ -1,6 +1,6 @@
 pkgbase = environment-overseer-git
 	pkgdesc = Real time environment manager, used primarily to suppress addictive sites
-	pkgver = r59.7c2a2a5
+	pkgver = r106.4b505f6
 	pkgrel = 1
 	url = https://gitlab.com/meowxiik/environment-overseer
 	arch = any
