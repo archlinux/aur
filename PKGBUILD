@@ -1,6 +1,6 @@
 # Maintainer: Tom Hiller <thrilleratplay@gmail.com>
 pkgname=notable-bin
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 epoch=
 pkgdesc="The markdown-based note-taking app that doesn't suck"
@@ -21,8 +21,8 @@ install=
 changelog=
 source=("https://github.com/fabiospampinato/notable/releases/download/v${pkgver}/notable_${pkgver}_amd64.deb")
 noextract=()
-md5sums=('61dc0c4fbda445e83cfa6f105bcd7f38')
-sha512sums=('ec095ec77526bf32f2779d6497bc7288905664def4df60b0280934506c3555b0f6d31be042d59df0c0789afcc344c1c684867eaf9cca98de09808c5ef169a9a8')
+md5sums=('cf46deeb84cac3cdb10c68215416b3aa')
+sha512sums=('36dda14a0cb451f3c079c02208bc8b42b81cd90db800e94d8d3ae4d5c513c2fe7548cf60fde73fed3d230f96572341a2990881940d6c77204a48070671d449da')
 validpgpkeys=()
 
 package() {
