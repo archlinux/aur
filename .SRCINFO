@@ -1,7 +1,7 @@
 pkgbase = ezc3d
 	pkgdesc = An easy to use reader, modifier and writer for C3D format files. Includes Python bindings
-	pkgver = 0.3.6
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/pyomeca/ezc3d
 	arch = x86_64
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = ezc3d
 	makedepends = swig
 	makedepends = cmake
 	depends = python
-	source = https://github.com/pyomeca/ezc3d/archive/Release_0.3.6.tar.gz
-	sha256sums = 08132badd69e750390eade0b85df900e705b2550af1bc4c7a5fbcc4d765a66bf
+	source = https://github.com/pyomeca/ezc3d/archive/Release_1.1.0.tar.gz
+	sha256sums = d0b99d8681aadfafc82a0106703ee66ce83852a65ce507899942c6d68e42d7b4
 
 pkgname = ezc3d
 

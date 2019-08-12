@@ -1,15 +1,15 @@
 # Maintainer: Martin Drawitsch <martin dot drawitsch at gmail dot com>
 pkgname=('ezc3d')
-pkgver='0.3.6'
-pkgrel=2
+pkgver='1.1.0'
+pkgrel=1
 pkgdesc="An easy to use reader, modifier and writer for C3D format files. Includes Python bindings"
 url="https://github.com/pyomeca/ezc3d"
 depends=('python')
-makedepends=('python' 'swig' 'cmake')  # TODO: Not sure if there is anything missing
+makedepends=('python' 'swig' 'cmake')
 license=('MIT')
 arch=('x86_64')
 source=("https://github.com/pyomeca/ezc3d/archive/Release_${pkgver}.tar.gz")
-sha256sums=('08132badd69e750390eade0b85df900e705b2550af1bc4c7a5fbcc4d765a66bf')
+sha256sums=('d0b99d8681aadfafc82a0106703ee66ce83852a65ce507899942c6d68e42d7b4')
 
 build() {
     cd ${srcdir}/ezc3d-Release_${pkgver}
@@ -27,8 +27,4 @@ build() {
 package() {
     cd ${srcdir}/ezc3d-Release_${pkgver}/build
     make DESTDIR=${pkgdir} install
-    # Fix the _ezc3d.so path. How did it end up there?
-    PY=$(readlink $(which python3))
-    mv ${pkgdir}/usr/lib/${PY}/site-packages/_ezc3d.so \
-       ${pkgdir}/usr/lib/${PY}/site-packages/ezc3d/ 
 }
