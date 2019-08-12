@@ -10,7 +10,7 @@ depends=('python' 'python-qscintilla-qt5' 'python-pyqt5')
 options=(!emptydirs)
 install=red-alien.install
 source=("https://github.com/cosarara/red-alien/archive/v${pkgver}.tar.gz")
-md5sums=('0db33927e08dbb67c7b9b234e57e3ceb')
+md5sums=('6f3898d759f96ba49e1e0bb640ffdb04')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

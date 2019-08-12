@@ -11,7 +11,7 @@ pkgbase = red-alien
 	depends = python-pyqt5
 	options = !emptydirs
 	source = https://github.com/cosarara/red-alien/archive/v2.0.1.tar.gz
-	md5sums = 0db33927e08dbb67c7b9b234e57e3ceb
+	md5sums = 6f3898d759f96ba49e1e0bb640ffdb04
 
 pkgname = red-alien
 
