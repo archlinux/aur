@@ -1,6 +1,6 @@
 # Maintainer: Axel Lehmann <lehmann at cs dot uni-freiburg do de>
 pkgname=gantry-git
-pkgver=v0.2.0.r3.gf314e46
+pkgver=v0.3.0.r0.g477c0a9
 pkgrel=1
 pkgdesc='Pipeline management tool using containers as its building blocks'
 arch=('x86_64')
