@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=IQmol
+Comment=
+Exec=/usr/bin/iqmol
+Icon=iqmol
+Path=
+Terminal=false
+StartupNotify=false

@@ -1,7 +1,7 @@
 # Maintainer: Eric Berquist <eric DOT berquist AT gmail>
 
 pkgname=iqmol
-pkgver=2.11.0
+pkgver=2.13b
 pkgrel=1
 pkgdesc="A molecular editor and visualization package with Q-Chem integration"
 arch=('x86_64')
@@ -10,11 +10,17 @@ license=('GPL3')
 depends=('qt5-base' 'glu')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}_${pkgver}.deb::http://iqmol.org/download.php?get=${pkgname}_${pkgver}.deb")
-md5sums=('11f90cc7d0a1ba9f2cbd4f0ef7c23028')
+source=("${pkgname}_${pkgver}.deb::http://iqmol.org/download.php?get=${pkgname}_${pkgver}.deb"
+        "${pkgname}.png")
+md5sums=('2523dc7c85d5af0face568179f99ac8a'
+         '82ebad946c038562090f20efa2160929')
 
 package() {
-  msg2 "Extracting the data.tar.xz..."
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
-  find "${pkgdir}" -type d -exec chmod 755 '{}' +
+  # Fix ownership and permissions
+  find "${pkgdir}/" -exec chown root:root '{}' +
+  find "${pkgdir}/" -type d -exec chmod 755 '{}' +
+  # Icon and desktop files
+  install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
