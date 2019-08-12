@@ -41,7 +41,7 @@ package() {
        
         for d in `find . -type d`
         do
-                install -dm755  "$installdir/$d"
+                install -dm755 "$installdir/$d"
         done
        
         for f in `find . -type f`
@@ -51,4 +51,5 @@ package() {
         chmod +x "$installdir/autogen.sh"
         chmod +x "$installdir/git-version-gen"
         chmod +x "$installdir/move-modules"
+        chmod +x "$installdir/release.sh"
 }
