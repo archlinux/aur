@@ -1,0 +1,14 @@
+pkgbase = python-xmldiff
+	pkgdesc = A libray and command line utility for diffing xml
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://xmldiff.readthedocs.io
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.org/packages/source/x/xmldiff/xmldiff-2.3.tar.gz
+	sha256sums = 2727f62ab590c1fc834e86033988a76a86a67f5a78196584049b7a722bd94466
+
+pkgname = python-xmldiff
+
