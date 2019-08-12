@@ -1,7 +1,7 @@
 # Maintainer: Marco Donadoni <marcodonadoni at live dot it>
 # Contributor: Jeroen Rijken <jeroen dot rijken at gmail dot com>
 pkgname=archi
-pkgver=4.4.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="Free, open source, cross-platform tool and editor to create ArchiMate models."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("https://www.archimatetool.com/downloads/$pkgver/Archi-Linux64-$pkgver.t
         "$pkgname.desktop"
         "$pkgname-launcher.sh"
         'LICENSE')
-md5sums=('1ea85ed8a6c553a050f98335ce6d44a1'
+md5sums=('805623ada2fe99aea9178f9cd316f82d'
          '7b9a0cf8e67790ff9ca1afc6578e3adc'
          '7813e905142baeb290d396e349beeb13'
          '66653b079752362c3e9fc7142027cb7e')
