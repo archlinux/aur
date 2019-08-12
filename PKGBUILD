@@ -7,7 +7,7 @@ arch=('any')
 url="https://gitlab.com/meowxiik/environment-overseer"
 license=('GPL')
 depends=('python')
-source=("$pkgname::git+https://gitlab.com/meowxiik/environment-overseer.git/")
+source=("$pkgname::git+https://github.com/meowxiik/environment-overseer.git/")
 md5sums=('SKIP')
 validpgpkeys=()
 
