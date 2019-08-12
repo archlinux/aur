@@ -5,10 +5,10 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=zeit-now-bin
-pkgver=14.0.3
+pkgver=15.8.7
 pkgrel=1
 epoch=
-pkgdesc="Realtime Global Deployments by Zeit, pre-built binary (always latest version)"
+pkgdesc="Realtime Global Deployments by Zeit, pre-built binary (outdated)"
 arch=("x86_64")
 url="https://zeit.co/now"
 # license is according to https://www.npmjs.com/package/now
@@ -25,29 +25,14 @@ backup=()
 options=("!strip")
 install=
 changelog=
-# Actually this is just an information about the latest version.
-source=("https://api.github.com/repos/zeit/now-cli/releases/latest")
+source=("https://github.com/zeit/now-cli/releases/download/${pkgver}/now-linux.gz")
 noextract=()
-md5sums=('SKIP')
+md5sums=('cb106ea0f55d81877cd2368168da9678')
 validpgpkeys=()
 
-pkgver() {
-	# Could not find a way to check version *before* downloading sources,
-	# so we fetch version information instead of sources
-	# and then download the real binary in build().
-	# The data in `latest` is a pretty-printed JSON.
-	# We could parse it using `jq` package, but let's not introduce extra dependencies
-	# for such trivial case.
-	# FIXME: sometimes we get an HTML page in the `latest` file,
-	# despite it should be JSON.
-	cat latest | grep -Po '(?<="tag_name":)\s*"[0-9.]*"' | tr -d '" '
-}
-
 build() {
-	# now really download the source
-	curl -L https://github.com/zeit/now-cli/releases/download/${pkgver}/now-linux.gz -o now-linux.gz
-	# and unpack it
-	gunzip now-linux.gz
+	# XXX why is this required? It was not required before auto-update
+	gunzip < now-linux.gz > now-linux
 	chmod +x now-linux
 }
 

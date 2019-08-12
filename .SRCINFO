@@ -1,6 +1,6 @@
 pkgbase = zeit-now-bin
-	pkgdesc = Realtime Global Deployments by Zeit, pre-built binary (always latest version)
-	pkgver = 14.0.3
+	pkgdesc = Realtime Global Deployments by Zeit, pre-built binary (outdated)
+	pkgver = 15.8.7
 	pkgrel = 1
 	url = https://zeit.co/now
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = zeit-now-bin
 	provides = zeit-now
 	conflicts = nodejs-now
 	options = !strip
-	source = https://api.github.com/repos/zeit/now-cli/releases/latest
-	md5sums = SKIP
+	source = https://github.com/zeit/now-cli/releases/download/15.8.7/now-linux.gz
+	md5sums = cb106ea0f55d81877cd2368168da9678
 
 pkgname = zeit-now-bin
 
