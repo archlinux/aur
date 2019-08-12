@@ -1,0 +1,23 @@
+pkgbase = bauh-staging
+	pkgdesc = Free non-official GUI for Flatpak / Snap applications management (staging: it is a testing branch which receives updates frequently and may not be working properly)
+	pkgver = 0.5.1.R
+	pkgrel = 1
+	url = https://github.com/vinifmor/bauh
+	arch = any
+	license = zlib/libpng
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pip
+	depends = python-pyqt5
+	depends = python-requests
+	depends = python-colorama
+	optdepends = flatpak
+	optdepends = snapd
+	provides = bauh
+	conflicts = bauh
+	source = https://github.com/vinifmor/bauh/archive/0ee6d85dd1eeb22eae16470ad15aafc9652712b1.zip
+	sha512sums = 8bfe96dfb8da05cd8ec813d14b563bda834d60dc2db2232740558e558fe5ebe33f9e3c7c318ef33ea55b41d153b63034b4795a5608b0351b0f848c5d4c786edf
+
+pkgname = bauh-staging
+
