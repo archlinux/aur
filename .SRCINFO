@@ -1,6 +1,6 @@
 pkgbase = polar-bookshelf-bin
 	pkgdesc = Polar Bookshelf
-	pkgver = 1.30.0
+	pkgver = 1.31.0
 	pkgrel = 1
 	url = https://github.com/burtonator/polar-bookshelf
 	arch = x86_64
