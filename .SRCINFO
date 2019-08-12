@@ -1,0 +1,13 @@
+pkgbase = shunit-git
+	pkgdesc = A basic unit testing framework for bash
+	pkgver = r31.6a774f4
+	pkgrel = 1
+	url = https://github.com/F0xedb/shUnit
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/F0xedb/shUnit.git
+	md5sums = SKIP
+
+pkgname = shunit-git
+
