@@ -8,9 +8,8 @@ pkgbase = octopi-dev
 	license = GPL2
 	makedepends = clang
 	makedepends = qt5-tools
-	depends = qt5-base
 	depends = qt5-declarative
-	depends = pacman
+	depends = pacman-contrib
 	depends = alpm_octopi_utils>=1.0.1-1
 	depends = qtermwidget
 	optdepends = octopi-notifier-qt5: Notifier for Octopi using Qt5 libs
