@@ -2,7 +2,7 @@
 
 pkgname=hunter-holy-git
 pkgver=1.3.4+r12+ge49f2f4
-pkgrel=1
+pkgrel=2
 pkgdesc='ranger-like file browser written in Rust (holy branch, git)'
 arch=(i686 x86_64)
 url=https://github.com/rabite0/hunter
@@ -24,7 +24,7 @@ optdepends=('gst-plugins-good: media support'
             'poppler: PDF support'
             'mupdf-tools: PDF support')
 provides=(hunter)
-conflicts=(hunter hunter-holy)
+conflicts=(hunter)
 source=(git+$url#branch=holy)
 sha512sums=('SKIP')
 
