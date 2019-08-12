@@ -3,7 +3,7 @@
 
 pkgname=('python-rebulk' 'python2-rebulk')
 _name=${pkgname#python-}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Define simple search patterns in bulk to perform advanced matching on any string. "
 arch=("any")
@@ -13,7 +13,7 @@ makedepends=('python-setuptools'
              'python2-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('c812c06c55c0cf2ef97b02806ca7bfa0319dfd6b1beb674f66d12e5b78180e0d96e9562fedfcf19d09134d25dd4fc8999359d5e9010f612515e0e58d45b8c6d2')
+sha512sums=('30b4e23ffbc982d9ff2e2e60b16b31dc49f40483dfd3d822872b0a71e5330698f53d9b03ecc85cf3dd7f2775eeafbce2fdaf1fe3477327c118dddcce0484615a')
 
 prepare() {
   cp -a "rebulk-${pkgver}"{,-py2}
