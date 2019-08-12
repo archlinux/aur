@@ -1,6 +1,6 @@
 # Maintainer: Axel Lehmann <lehmann at cs dot uni-freiburg do de>
 pkgname=gantry
-pkgver=v0.2.0
+pkgver=v0.3.0
 pkgrel=1
 pkgdesc='Pipeline management tool using containers as its building blocks'
 arch=('x86_64')
