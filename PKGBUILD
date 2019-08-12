@@ -2,7 +2,7 @@
 
 pkgname=cartographer-git
 _pkgname=Cartographer
-pkgver=1.0
+pkgver=r11.2a2c337
 pkgrel=1
 pkgdesc="Linux Kernel Module to spoof /proc maps"
 arch=('x86_64')
@@ -17,7 +17,7 @@ _extramodules="$(basename $(readlink -f /lib/modules/$(uname -r)/extramodules/))
 
 pkgver() {
   cd "$_pkgname"
-  git describe --always --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
