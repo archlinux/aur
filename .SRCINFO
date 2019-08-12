@@ -1,17 +1,14 @@
 pkgbase = ttf-unifont
 	pkgdesc = TrueType version of the GNU Unifont
-	pkgver = 12.1.02
+	pkgver = 12.1.03
 	pkgrel = 1
 	url = http://unifoundry.com/unifont.html
 	arch = any
 	license = GPL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = https://ftp.gnu.org/gnu/unifont/unifont-12.1.02/unifont-12.1.02.tar.gz
-	source = https://ftp.gnu.org/gnu/unifont/unifont-12.1.02/unifont-12.1.02.tar.gz.sig
+	source = https://ftp.gnu.org/gnu/unifont/unifont-12.1.03/unifont-12.1.03.tar.gz
+	source = https://ftp.gnu.org/gnu/unifont/unifont-12.1.03/unifont-12.1.03.tar.gz.sig
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	sha256sums = e812dcf032f0e7a7bb57b98767277701c1d3d0675f5d034f2bf495efa9ed8d8b
+	sha256sums = c1d56e1d2f6952a45fc2d38c5c2c52d715328714d385749451b7ec14ba1ab982
 	sha256sums = SKIP
 
 pkgname = ttf-unifont
