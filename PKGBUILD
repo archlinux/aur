@@ -8,24 +8,21 @@
 
 _pkgname=libtorrent
 pkgname=libtorrent-ipv6
-pkgver=0.13.7
+pkgver=0.13.8
 pkgrel=1
 pkgdesc='BitTorrent library with a focus on high performance and good code, with ipv6 support'
 url='http://rakshasa.github.io/rtorrent/'
 arch=('x86_64')
 license=('GPL')
-depends=('openssl')
+depends=('openssl' 'zlib')
 makedepends=('git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("$_pkgname::git+https://github.com/rakshasa/libtorrent.git#commit=9f15199ce2312350735b1d87e6db033414b41db0"
-        'libtorrent-feature-bind-to-0.13.7.patch')
-sha256sums=('SKIP'
-            'ef0b0ce4378647ac0246dd88f68dc5fbf01336cac13de60e1f4600dd329629f3')
+source=("$_pkgname::git+https://github.com/rakshasa/libtorrent.git#commit=bd3e232a2fdb91a2eb93994bb18e5e0e3d2f6235")
+sha256sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    patch -Np1 -i ../libtorrent-feature-bind-to-0.13.7.patch
     sed '/AM_PATH_CPPUNIT/d' -i configure.ac
 }
 
