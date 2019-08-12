@@ -8,7 +8,7 @@ pkgdesc="A powerful Pacman frontend using Qt5 libs"
 arch=('i686' 'x86_64')
 url="http://octopiproject.wordpress.com"
 license=('GPL2')
-depends=('qt5-declarative' 'pacman-contrib' 'alpm_octopi_utils>=1.0.1-1' 'qtermwidget')
+depends=('qt5-declarative' 'alpm_octopi_utils>=1.0.1-1' 'qtermwidget')
 makedepends=('clang' 'qt5-tools')
 optdepends=('octopi-notifier-qt5: Notifier for Octopi using Qt5 libs'
             'octopi-notifier-frameworks: Notifier for Octopi with Knotifications support'
