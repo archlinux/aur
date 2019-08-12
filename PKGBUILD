@@ -1,7 +1,7 @@
 #Maintainer: weearc <q19981121@163.com>
 pkgname=motrix
 pkgver=1.4.1
-pkgrel=1
+pkgrel=3
 pkgdesc="elegent downloading tool frontend for aria2c,using vue(release version)"
 arch=('x86_64')
 url="https://github.com/agalwood/Motrix"
