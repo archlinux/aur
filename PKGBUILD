@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-git
-pkgver=1.7.14.r3.g9c909c899
+pkgver=1.8.1.r0.gdac1128dc
 pkgrel=1
 pkgdesc="Official Telegram Desktop client (dev branch)"
 arch=('i686' 'x86_64')
@@ -33,7 +33,8 @@ source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#branch=de
         "libtgvoip.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libtgvoip.patch?h=packages/telegram-desktop"
         "demibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/demibold.patch?h=packages/telegram-desktop"
         "Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/Use-system-wide-font.patch?h=packages/telegram-desktop"
-        "tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_lottie_animation_qtdebug.patch?h=packages/telegram-desktop")
+        "tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/tdesktop_lottie_animation_qtdebug.patch?h=packages/telegram-desktop"
+        "revert-private-headers.patch::https://github.com/telegramdesktop/tdesktop/commit/b9d3ba621eb8af638af46c6b3cfd7a8330bf0dd5.patch")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -43,13 +44,14 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'b87414ceaae19185a8a5749cea1f6d9f3fc3c69b8dd729e3db8790cde00b987c3c827cd30baf0eac579d1884e34aa2f37bb90778c3c0bc9ca211d75a82891b9d'
-            'b20674f61ff6378749d1f59a6a0da194d33ccc786bd783f6ed62027924a3a8a8d27c9763bf376480432d6536896b0c7eeb8c495c5b8cefff7cf5fe84da50947e'
+            '16874fabcb0d04d6bf8db1ee2fd77fbd09eeb6acc28bb5fd915d378f7a5ed7ebf4aae01c390e516695572cf9ef0e2cb59493e21a35643fd63ddf3fec446858a6'
             '3b6a0450f7981c2ce5f90c1ea46d9fb504194609f357b957b5c4a741681d3c531252394df116f8b77780a3a110783c047c9a081f9651e0792e7423573e390392'
             'a8f1708616a598fea3cb94e3b63b02a7b13b55abd129a5dc02ad502529f4ebe7a673b6a350b669290fd26135358d21e2e10bf4a11d88f58f0685b7c4ab515bc5'
             'd60694dc701aa985b0e82a12c9732b945082470441c687b33167a94f94efcf253baf43bb7280ec160ba338485ee5c62de138e4804cae05f27cc5cf4298166d39'
             '6d0bac5aa4c4992b5400a9a9318f7a4e92d5eab961917cf0b05cdd251ab66a77c52ec8fbef246e8019606a7624d7b5420b87f8153e071e9724c7d2f5c94e47c0'
             'ce6be003220267bac5483caf8302b492e1581892bc36d35a61236ebf9f9d766b8bd2159557a1c36256aa85f461797a38bfaae57b12da7a72101b21c0b17ed653'
-            'a83b80668b2dc2cc77c857069fdb45b487793fda01ad8a63bab66c6a1c71e5d032050e4ec7efb5b4c3216badc5377c856ef1f4a59c2e02b24ee53b1d83124bf3')
+            'a83b80668b2dc2cc77c857069fdb45b487793fda01ad8a63bab66c6a1c71e5d032050e4ec7efb5b4c3216badc5377c856ef1f4a59c2e02b24ee53b1d83124bf3'
+            'e25dc1c54d6001a7a3740c6cee40a12a2313a3fd2e41986268f0ee5d9d8bf2d34812f539efb0eb5d26d3f263b2e4a7849016711532bf215aa9ff38da30175557')
 pkgver() {
     cd "$srcdir/tdesktop"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -73,6 +75,7 @@ prepare() {
     patch -R -Np1 -i "$srcdir/demibold.patch"
     patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
     patch -Np1 -i "$srcdir/tdesktop_lottie_animation_qtdebug.patch"
+    patch -R -Np1 -i "$srcdir/revert-private-headers.patch"
 
     # disable static-qt for rlottie
     sed "/RLOTTIE_WITH_STATIC_QT/d" -i "$srcdir/tdesktop/Telegram/gyp/lib_rlottie.gyp"
