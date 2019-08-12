@@ -1,7 +1,7 @@
 # Maintainer: Jurica Bradarić <jbradaric@gmail.com>
 
 pkgname=libluv
-pkgver=1.30.1
+pkgver=1.30.0
 pkgrel=0
 pkgdesc='libuv bindings for luajit and lua 5.1/5.2.'
 arch=('i686' 'x86_64')
