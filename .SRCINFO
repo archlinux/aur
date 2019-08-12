@@ -1,0 +1,12 @@
+pkgbase = mips64el-linux-gnu-linux-api-headers
+	pkgdesc = Kernel headers sanitized for use in userspace (mips64el-linux-gnu)
+	pkgver = 5.2.6
+	pkgrel = 1
+	url = http://www.kernel.org
+	arch = any
+	license = GPL2
+	source = http://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.6.tar.xz
+	sha1sums = b07b8b7997a7211c25f5b51341890d4f2c349646
+
+pkgname = mips64el-linux-gnu-linux-api-headers
+
