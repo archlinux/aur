@@ -23,6 +23,6 @@ build() {
 }
 
 package() {
-    $pkgname-$pkgver/cmd/bgc
+    cd $pkgname-$pkgver/cmd/bgc
     install -Dm755 bgc "$pkgdir"/usr/bin/bgc
 }
