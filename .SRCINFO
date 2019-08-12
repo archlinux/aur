@@ -2,13 +2,14 @@ pkgbase = evmone
 	pkgdesc = Fast Ethereum Virtual Machine implementation
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/sociomantic-tsunami/git-hub
+	url = https://github.com/ethereum/evmone/
 	arch = any
 	license = Apache-2.0
 	makedepends = cmake
 	makedepends = gcc
-	source = https://github.com/ethereum/evmone/archive/v0.1.0.tar.gz
-	md5sums = aa6fcd65396fa0bff5c3ecc1e94b445e
+	makedepends = git
+	source = git+https://github.com/ethereum/evmone.git#tag=v0.1.0
+	md5sums = SKIP
 
 pkgname = evmone
 
