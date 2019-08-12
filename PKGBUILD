@@ -2,7 +2,7 @@
 
 pkgname=docker-ipv6nat
 pkgver=0.3.8
-pkgrel=1
+pkgrel=4
 epoch=0
 pkgdesc="Extend Docker with IPv6 NAT, similar to IPv4"
 arch=('x86_64')
