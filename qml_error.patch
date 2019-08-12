@@ -2,13 +2,14 @@ diff --git a/YACReaderLibrary/qml/GridComicsView.qml b/YACReaderLibrary/qml/Grid
 index fd12c3c..17adb73 100644
 --- a/YACReaderLibrary/qml/GridComicsView.qml
 +++ b/YACReaderLibrary/qml/GridComicsView.qml
-@@ -460,8 +460,7 @@ Rectangle {
+@@ -460,8 +460,8 @@ Rectangle {
              }
          }
  
 -        Component {
 -            id: currentComicView
 +        property Component currentComicView: Component {
++            id: currentComicView
              Rectangle {
                  id: currentComicViewTopView
                  color: "#00000000"
