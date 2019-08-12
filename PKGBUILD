@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=knitr
-_cranver=1.23
+_cranver=1.24
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-knitr
 pkgver=${_cranver//[:-]/.}
@@ -15,7 +15,7 @@ depends=('r' 'r-evaluate>=0.10' 'r-highr' 'r-markdown' 'r-stringr>=0.6' 'r-yaml'
 optdepends=('pandoc' 'r-formatr' 'r-testit' 'r-digest' 'r-rgl' 'r-rmarkdown' 'r-htmlwidgets' 'r-webshot' 'r-tikzdevice' 'r-tinytex' 'r-reticulate' 'r-juliacall' 'r-png' 'r-jpeg' 'r-xml2' 'r-httr' 'r-dbi' 'r-showtext' 'r-tibble')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('3fc90a5ba07b978566883dd1c5cd3cd7')
+md5sums=('f6e024377cd3d870af9927131fe6ad8e')
 
 build(){
     R CMD INSTALL ${_pkgtar} -l $srcdir
