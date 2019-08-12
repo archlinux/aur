@@ -1,7 +1,7 @@
 # Maintainer: Bertrand Ciroux <bertrand.ciroux@gmail.com>
 # Contributor: Bertrand Ciroux <bertrand.ciroux@gmail.com>
 pkgname=blynk-server-bin
-pkgver=0.41.9
+pkgver=0.41.10
 pkgrel=1
 pkgdesc="Blynk server for the Blynk IoT platform"
 arch=('any')
@@ -24,7 +24,7 @@ source=("server-${pkgver}.jar::https://github.com/blynkkk/blynk-server/releases/
 
 noextract=("server-${pkgver}.jar")
 
-sha256sums=("29e8ba5b92aabfb768e580d2d939c4541dd64baceb620b3c5aac81f7fcd9c6b2"
+sha256sums=("3fe7ad3ad33dd5841f736ed6a128ceceab909fa996680fbd341daecc7856ca05"
             "c99ade828ecfd9f3a71b6ac6d319bd8f898c97af754bb834b8f3ac88f4862b15"
             "298b02167fec72ac884541f63a660e3e5505afe220084bb72b032d24374a1846"
             "140aefbac5fbfe38c886353079ddca35fbc071d01b7895ea772e7a14fb02fdf0"
