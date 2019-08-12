@@ -9,6 +9,8 @@ pkgbase = gnome-shell-extension-argos-git
 	license = GPLv3
 	makedepends = git
 	depends = gnome-shell
+	provides = gnome-shell-extension-argos
+	conflicts = gnome-shell-extension-argos
 	source = git+https://github.com/p-e-w/argos.git
 	md5sums = SKIP
 

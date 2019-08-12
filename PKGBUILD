@@ -6,9 +6,11 @@ pkgdesc="Create GNOME Shell extensions in seconds"
 arch=('any')
 url="https://github.com/p-e-w/argos"
 license=('GPLv3')
+groups=('gnome-shell-extensions')
 depends=('gnome-shell')
 makedepends=('git')
-groups=('gnome-shell-extensions')
+provides=('gnome-shell-extension-argos')
+conflicts=('gnome-shell-extension-argos')
 source=('git+https://github.com/p-e-w/argos.git')
 md5sums=('SKIP')
 
