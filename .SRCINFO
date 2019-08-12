@@ -6,7 +6,7 @@ pkgbase = environment-overseer-git
 	arch = any
 	license = GPL
 	depends = python
-	source = environment-overseer-git::git+https://gitlab.com/meowxiik/environment-overseer.git/
+	source = environment-overseer-git::git+https://github.com/meowxiik/environment-overseer.git/
 	md5sums = SKIP
 
 pkgname = environment-overseer-git
