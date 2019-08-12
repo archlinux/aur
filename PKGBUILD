@@ -3,7 +3,7 @@
 
 pkgname=openspades
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A clone of Voxlap Ace of Spades 0.75"
 arch=('i686' 'x86_64')
 url="http://openspades.yvt.jp/"
@@ -17,7 +17,7 @@ sha256sums=('ecd7aaf568f80712d981ecdd7bf9e380221dc2c16e86d2e56a0ddda87432bea3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D OPENSPADES_RESDIR=/usr/share/openspades/Resources -D OPENSPADES_INSTALL_RESOURCES=share/openspades/Resources -D OPENSPADES_INSTALL_BINARY=bin .
+  cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=RelWithDebInfo -D OPENSPADES_RESDIR=/usr/share/openspades/Resources -D OPENSPADES_INSTALL_RESOURCES=share/openspades/Resources -D OPENSPADES_INSTALL_BINARY=bin .
   make
 }
 
