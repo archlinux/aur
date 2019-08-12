@@ -4,7 +4,7 @@ pkgname=fluent-bit
 
 pkgmaj=1.2
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
@@ -52,11 +52,17 @@ package() {
 
     make DESTDIR="$pkgdir/" install
 
+    # put /lib/* in /usr/lib
     mv $pkgdir/lib/* $pkgdir/usr/lib
     rmdir $pkgdir/lib
 
+    # also put /usr/lib64/* in /usr/lib
     mv $pkgdir/usr/lib64/* $pkgdir/usr/lib
     rmdir $pkgdir/usr/lib64
+
+    # put /usr/lib/system/* in /usr/lib/systemd/system/* so that systemd can actually find it ...
+    mkdir -p $pkgdir/usr/lib/systemd
+    mv $pkgdir/usr/lib/system $pkgdir/usr/lib/systemd
 }
 
 md5sums=('761ca237b4a96491fa157f1dd9d0d09e')
