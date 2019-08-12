@@ -1,6 +1,6 @@
 pkgbase = concourse-bin
 	pkgdesc = Concourse is a pipeline-based CI system written in Go.
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://concourse-ci.org
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = concourse-bin
 	conflicts = concourse
 	conflicts = concourse-git
 	replaces = concourse
-	source = https://github.com/concourse/concourse/releases/download/v5.4.0/concourse-5.4.0-linux-amd64.tgz
-	sha512sums = 9f15240ca91c99629862cd4902fe453ee8cd4bdfb5cfb729721569c16c0d3cf665608308a56615412dd70897834b59410e93c715374142912b3c7396c19ecbcb
+	source = https://github.com/concourse/concourse/releases/download/v5.4.1/concourse-5.4.1-linux-amd64.tgz
+	sha512sums = 02282d3971ad8735b18607900a68f5885c553923792557702c27b9d9e862bdf478a4c32ddedf693d80b0db6ae4719cb33e2658245dcb8ff8456baab8acf03191
 
 pkgname = concourse-bin
 
