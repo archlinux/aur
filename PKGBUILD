@@ -1,50 +1,26 @@
-# Maintainer: William Turner <willtur.will@gmail.com>
-pkgbase=python-defcon
-pkgname=(python-defcon python2-defcon)
-_pkgname=defcon
-pkgver=0.5.3
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
+pkgname=('python-defcon')
+_pkgname='defcon'
+pkgver='0.6.0'
 pkgrel=1
 pkgdesc='A set of UFO based objects for use in font editing applications.'
-arch=('any')
-url='https://github.com/typesupply/defcon'
+url="https://pypi.org/project/defcon/"
+checkdepends=('python-pytest')
+depends=('python' 'python-fonttools' 'python-unicodedata2=12.0.0')
+makedepends=('python-setuptools')
+optdepends=()
 license=('MIT')
-makedepends=('python-pip' 'python2-pip')
-options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/py2.py3/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}-py2.py3-none-any.whl")
-sha256sums=('f9a254b6b112b92bfb92f1a315440904a96c89de7d7f17bf5b72533c98e7ddbc')
+arch=('any')
+source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
+sha256sums=('52e461961b4b68ae6883f8a14a0d82f2d09f2de7a526b95c7d1b195c10ca745f')
 
-package_python-defcon() {
-  depends=('python' 'python-fonttools' 'python-ufolib')
-  provides=('python-defcon')
-
-  cd "${srcdir}"
-
-  # install the wheel
-  PIP_CONFIG_FILE=/dev/null pip install \
-    --isolated \
-    --root="${pkgdir}" \
-    --ignore-installed \
-    --no-deps \
-    ${_pkgname}-${pkgver}-py2.py3-none-any.whl
-
-  # compile to pyo
-  python -O -m compileall "${pkgdir}"
+check() {
+    cd "$srcdir/$_pkgname-$pkgver"
+    python setup.py test
 }
 
-package_python2-defcon() {
-  depends=('python2' 'python2-fonttools' 'python2-ufolib')
-  provides=('python2-defcon')
-
-  cd "${srcdir}"
-
-  # install the wheel
-  PIP_CONFIG_FILE=/dev/null pip2 install \
-    --isolated \
-    --root="${pkgdir}" \
-    --ignore-installed \
-    --no-deps \
-    ${_pkgname}-${pkgver}-py2.py3-none-any.whl
-
-  # compile to pyo
-  python2 -O -m compileall "${pkgdir}"
+package() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
+    install -D -m644 License.txt "${pkgdir}/usr/share/licenses/${pkgname}/License.txt"
 }
