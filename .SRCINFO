@@ -1,0 +1,13 @@
+pkgbase = morris-worm
+	pkgdesc = The Morris worm was one of the first computer worms distributed via the Internet
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = unknown
+	source = git+https://github.com/arialdomartini/morris-worm.git
+	source = no-static.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = morris-worm
+
