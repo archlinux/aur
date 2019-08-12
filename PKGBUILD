@@ -12,7 +12,7 @@ conflicts=()
 depends=('luajit' 'libuv')
 makedepends=('cmake' 'luajit' 'libuv')
 source=("https://github.com/luvit/luv/releases/download/$pkgver-$pkgrel/luv-$pkgver-$pkgrel.tar.gz")
-sha256sums=('420fc299f3b25aff55b839e9fe590982f45045b3e53ebeab2449eca7e23a106a')
+sha256sums=('5cc75a012bfa9a5a1543d0167952676474f31c2d7fd8d450b56d8929dbebb5ef')
 
 build() {
     mkdir "${srcdir}/build"
