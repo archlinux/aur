@@ -2,7 +2,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-pyxel
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='Retro game development environment'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('portaudio' 'python-glfw' 'python-numpy' 'python-opengl'
          'python-pillow' 'python-sounddevice' 'sdl2_image')
 makedepends=('python-setuptools')
 source=("https://github.com/kitao/pyxel/archive/v$pkgver.tar.gz")
-md5sums=('d4585470ff3eb3322f80069862980abd')
+md5sums=('b1745d65d8206c32493e58f2dbf00f76')
 
 build() {
   cd pyxel-$pkgver
