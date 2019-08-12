@@ -2,6 +2,7 @@ diff -urN gitahead/dep/CMakeLists.txt gitahead/dep/CMakeLists.txt
 --- gitahead/dep/CMakeLists.txt 2019-03-28 16:25:09.753615593 +0100
 +++ gitahead/dep/CMakeLists.txt 2019-03-28 16:19:28.866933275 +0100
 @@ -1,4 +1,3 @@
+ find_package(PkgConfig)
 -add_subdirectory(openssl)
  add_subdirectory(libssh2)
  add_subdirectory(libgit2)

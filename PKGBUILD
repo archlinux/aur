@@ -6,7 +6,7 @@
 
 pkgname=gitahead
 pkgrel=1
-pkgver=2.5.8
+pkgver=2.5.9
 pkgdesc='Graphical Git client that helps you understand and manage your source history'
 url='https://www.gitahead.com/'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('SKIP'
             '022132e59ea2a1ca43df8ca1e20a1f851fca6e61afe4899814619ca241df7f19'
-            '402b9d9ec41668a99054b524542f410a8e94607b06c58c103e25dab604b06094')
+            '0c1320f33acb314b361ff69b4b5fbeda9dfd1a8c59528d27dc37ce111e42ab10')
 
 prepare() {
   cd "$srcdir/gitahead"
