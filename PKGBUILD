@@ -1,20 +1,20 @@
 # Maintainer: Eric Spreen <erispre@gmail.com>
 pkgname=gnunet-gtk-git
 pkgdesc="A framework for secure peer-to-peer networking (GTK 3 interfaces)"
-pkgver=0.10.1_git_087f8e16
+pkgver=0.11.6.r1.gbd150825
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://gnunet.org"
 license=('GPL3')
 conflicts=('gnunet-gtk')
 provides=('gnunet-gtk')
-depends=('gnunet-git' 'gtk3' 'libglade')
+depends=('gnunet-git' 'gtk3' 'libglade' 'glade')
 source=('git+https://gnunet.org/git/gnunet-gtk.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/gnunet-gtk"
-    echo "0.10.1_git_$(git rev-parse --short HEAD)"
+    cd gnunet-gtk
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
