@@ -1,7 +1,7 @@
 pkgbase = pd-l2ork
 	pkgdesc = L2Ork (Linux Laptop Orchestra) version of PureData
 	pkgver = 20190812.r1771.42cedfa8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://l2ork.music.vt.edu/main/?page_id=56
 	install = pd-l2ork.install
 	arch = i686
@@ -45,6 +45,7 @@ pkgbase = pd-l2ork
 	depends = smpeg
 	depends = speex
 	depends = stk
+	depends = gtk2
 	depends = tk
 	depends = tkpng
 	depends = vlc

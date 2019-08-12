@@ -11,7 +11,7 @@
 
 pkgname=pd-l2ork
 pkgver=20190812.r1771.42cedfa8
-pkgrel=1
+pkgrel=2
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
   'libxxf86vm' 'libtiff' 'libiec61883' 'libraw1394'
   'libv4l' 'libvorbis' 'lua51' 'portaudio'
-  'smpeg' 'speex' 'stk' 'tk' 'tkpng' 'vlc' 'xapian-tcl-bindings' 'zlib')
+  'smpeg' 'speex' 'stk' 'gtk2' 'tk' 'tkpng' 'vlc' 'xapian-tcl-bindings' 'zlib')
 makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
 conflicts=('pd-l2ork')
 install=pd-l2ork.install
