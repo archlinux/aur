@@ -1,6 +1,6 @@
 pkgbase = dv-gui
 	pkgdesc = Java GUI for iniVation's Dynamic Vision (DV) C++ framework.
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://gitlab.com/inivation/dv-gui/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = dv-gui
 	depends = libxi
 	depends = libxrender
 	depends = libxtst
-	source = http://release.inivation.com/gui/dv-gui-linux-0.9.0.tar.gz
-	sha256sums = 09689aeb747f874728000c44e8081f01642445d283ff4462dce40e5360610313
+	source = http://release.inivation.com/gui/dv-gui-linux-0.9.1.tar.gz
+	sha256sums = f70806339042f48b250337a2df63b4f00d914401f4e3aa3ffcc670d3371526b6
 
 pkgname = dv-gui
 
