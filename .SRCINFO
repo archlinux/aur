@@ -1,14 +1,14 @@
 pkgbase = start-stop-daemon
 	pkgdesc = Start and stop system daemon programs
-	pkgver = 1.19.0.5
+	pkgver = 1.19.7
 	pkgrel = 1
 	url = https://packages.debian.org/source/sid/dpkg
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = glibc
-	source = http://http.debian.net/debian/pool/main/d/dpkg/dpkg_1.19.0.5.tar.xz
-	md5sums = 704ea5ca7a799bbb5a4de17a0fccae6c
+	source = http://http.debian.net/debian/pool/main/d/dpkg/dpkg_1.19.7.tar.xz
+	md5sums = 60f57c5494e6dfa177504d47bfa0e383
 
 pkgname = start-stop-daemon
 
