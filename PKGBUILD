@@ -7,7 +7,7 @@ pkgname=(
     'manjarowish-lxqt-kwin-light-settings'
     )
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 _branch='master'
 url="https://github.com/librewish/manjarowish-lxqt-kwin-light-settings"
