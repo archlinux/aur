@@ -6,7 +6,7 @@
 pkgname=arachnophilia
 _pkgname=Arachnophilia
 pkgver=5.5.2935
-pkgrel=2
+pkgrel=3
 pkgdesc="A web page development workshop and general programming tool"
 arch=('any')
 url="http://www.arachnoid.com/arachnophilia/index.php"
