@@ -5,7 +5,6 @@ pkgbase = portmod-migrate
 	url = https://gitlab.com/portmod/portmod-migrate
 	arch = any
 	license = GPL3
-	checkdepends = python-pytest
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
