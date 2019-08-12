@@ -1,6 +1,6 @@
 pkgbase = vmd
 	pkgdesc = Visual Molecular Dynamics
-	pkgver = 1.9.4a31
+	pkgver = 1.9.4a35
 	pkgrel = 1
 	url = http://www.ks.uiuc.edu/Research/vmd/
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = vmd
 	optdepends = netcdf: MMTK and AMBER 9 trajectories support
 	optdepends = openbabel: additional file formats support
 	optdepends = sqlite: dmsplugin
-	source = local://vmd-1.9.4a31.bin.LINUXAMD64-CUDA9-OptiX600-RTX-OSPRay170.opengl.tar.gz
-	md5sums = e35f16f7d28df2915f2ea43f6641030d
+	source = local://vmd-1.9.4a35.bin.LINUXAMD64-CUDA9-OptiX600-RTX-OSPRay170.opengl.tar.gz
+	md5sums = 2762dfec75e7e5486d8b61c884d94fef
 
 pkgname = vmd
 
