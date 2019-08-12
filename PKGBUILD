@@ -2,14 +2,14 @@
 
 _gitname=axoloti-runtime
 pkgname=${_gitname}-git
-pkgver=1.0.12.1.r3.g3a06887e
+pkgver=1.0.12.2.r4.gcb6a65c6
 pkgrel=2
 pkgdesc="runtime for axoloti"
 arch=(x86_64)
 url="http://www.axoloti.com"
 license=(GPL)
-depends=(systemd libsystemd lib32-bzip2 lib32-ncurses lib32-zlib)
-makedepends=(libtool automake autoconf unzip)
+depends=(systemd libsystemd python2 lib32-bzip2 lib32-ncurses lib32-zlib)
+makedepends=(git libtool automake autoconf unzip)
 provides=(axoloti-runtime=$pkgver)
 conflicts=(axoloti-runtime)
 options=('!strip')
@@ -27,7 +27,7 @@ _dfu_util_archive=${_dfu_util}.tar.gz
 
 source=(
   "${_gitname}::git+https://github.com/axoloti/axoloti.git"
-  "http://sourceforge.net/projects/chibios/files/ChibiOS_RT%20stable/Version%20${_chibios_version}/${_chibios_archive}"
+  "https://sourceforge.net/projects/chibios/files/ChibiOS%20GPL3/Version%20${_chibios_version}/${_chibios_archive}"
   "https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q2-update/+download/${_toolchain_archive}"
   "${_libusb_archive}::http://sourceforge.net/projects/libusb/files/libusb-1.0/${_libusb}/${_libusb_archive}/download"
   "http://dfu-util.sourceforge.net/releases/${_dfu_util_archive}"
