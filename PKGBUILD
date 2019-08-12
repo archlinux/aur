@@ -4,7 +4,7 @@
 
 _pkgname='concourse-fly'
 pkgname="${_pkgname}-bin"
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc='A command line interface that runs a build in a container with ATC.'
 arch=(x86_64)
@@ -14,7 +14,7 @@ provides=("${_pkgname}")
 replaces=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 source=("https://github.com/concourse/concourse/releases/download/v${pkgver}/fly-${pkgver}-linux-amd64.tgz")
-sha512sums=('9fb6dcc4b4300ab9c0f6419e19071094bd94daab155ce00f43255b1f08944dc8b1375bfdd6d1e964f591fb0eb79066dfc04f449a5eb728302331907aebda105e')
+sha512sums=('f0bf787290df84f79b6f9af2a1163b6e05669906e821bad9e11cc080f0943277c78ca0c5db0a53266a2dacc57d0ffd0f38df26d5cb38bf399412a86bb5e914e3')
 
 package() {
   install -Dm755 "${srcdir}/fly" "${pkgdir}/usr/bin/fly"
