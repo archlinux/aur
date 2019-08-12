@@ -1,6 +1,6 @@
 pkgbase = marker-git
 	pkgdesc = Markdown editor for linux made with Gtk+-3.0
-	pkgver = 2018.07.03.r0.ga41e6832
+	pkgver = 2018.07.03.r54.gc0f8c7e8
 	pkgrel = 1
 	url = https://github.com/fabiocolacio/Marker
 	arch = x86_64
@@ -15,12 +15,6 @@ pkgbase = marker-git
 	conflicts = marker
 	options = !buildflags
 	source = marker::git+https://github.com/fabiocolacio/Marker.git
-	source = scidown::git+https://github.com/Mandarancio/scidown.git
-	source = charter::git+https://github.com/Mandarancio/charter.git
-	source = tinyexpr::git+https://github.com/codeplea/tinyexpr.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = marker-git
