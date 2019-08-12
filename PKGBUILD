@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=rfm
-pkgver=1.1.0_RC3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Command-line interface to perform file management on RepRapFirmware based devices."
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
