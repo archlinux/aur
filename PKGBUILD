@@ -2,7 +2,7 @@
 
 pkgname=bananapkg-git
 pkgver=2.2.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Low-level package manager written in shell bash"
 url="https://bananapkg.github.io"
 license=('MIT')
@@ -14,8 +14,8 @@ depends=(
     'sed'
     'tar'
     'awk'
-    'xz>=5.2.2'
-    'gnupg>=2.2.9'
+    'xz'
+    'gnupg'
 )
 
 provides=('banana')
@@ -24,9 +24,12 @@ conflicts=('banana')
 package() {
     cd bananapkg
 
+    # replace /usr/libexec/banana to /usr/lib/banana
+    sed --in-place 's@/usr/libexec@/usr/lib@g' {banana,core.sh}
+
     # install files manually
     install -vDm755 -t "${pkgdir}/usr/bin/" "banana"
     install -vDm644 -t "${pkgdir}/usr/share/man/pt_BR/man8/" 'banana.8'
-    install -vDm644 -t "${pkgdir}/usr/libexec/banana/" {core,help}'.sh'
+    install -vDm644 -t "${pkgdir}/usr/lib/banana/" {core,help}'.sh'
     install -vDm644 -t "${pkgdir}/etc/banana/" "banana.conf"
 }

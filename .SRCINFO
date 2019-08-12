@@ -1,7 +1,7 @@
 pkgbase = bananapkg-git
 	pkgdesc = Low-level package manager written in shell bash
 	pkgver = 2.2.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bananapkg.github.io
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = bananapkg-git
 	depends = sed
 	depends = tar
 	depends = awk
-	depends = xz>=5.2.2
-	depends = gnupg>=2.2.9
+	depends = xz
+	depends = gnupg
 	provides = banana
 	conflicts = banana
 	source = git+https://github.com/slackjeff/bananapkg.git
