@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Deezer
 StartupNotify=true
-Icon=/usr/share/deezer/app.ico
+Icon=deezer
 Comment=Deezer audio streaming service
 Exec=/usr/bin/deezer
 Terminal=false

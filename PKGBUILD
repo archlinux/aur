@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=4.14.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
@@ -16,12 +16,13 @@ source=(
 "$pkgname.desktop"
 )
 md5sums=('2fd38dda52c68f739569494f6db9630d'
-         '98ec5effa2d9a1d8c3c030125a2937c0')
+         'bb851102d63a9cb396b42d7a61c5104c')
 
 package() {
     
     mkdir -p "$pkgdir"/usr/share/deezer
     mkdir -p "$pkgdir"/usr/share/applications
+    mkdir -p "$pkgdir"/usr/share/icons/hicolor/256x256/apps/
     mkdir -p "$pkgdir"/usr/bin/
 
     # Extract app from installer
@@ -49,7 +50,7 @@ package() {
     echo "exec electron /usr/share/deezer/app.asar \"\$@\"" >> deezer
 
     install -Dm644 resources/app.asar "$pkgdir"/usr/share/deezer/
-    install -Dm644 resources/build/win/app.ico "$pkgdir"/usr/share/deezer/
+    install -Dm644 resources/build/win/app.ico "$pkgdir"/usr/share/icons/hicolor/256x256/apps/deezer.png
     install -Dm644 resources/build/win/systray.png "$pkgdir"/usr/share/deezer/
     install -Dm644 "$pkgname".desktop "$pkgdir"/usr/share/applications/
     install -Dm755 deezer "$pkgdir"/usr/bin/
