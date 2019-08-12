@@ -1,5 +1,5 @@
 pkgbase = mullvad-vpn-beta
-	pkgdesc = VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy
+	pkgdesc = VPN Client for Mullvad.net (latest/beta release).
 	pkgver = 2019.7.beta1
 	pkgrel = 2
 	url = https://www.mullvad.net
