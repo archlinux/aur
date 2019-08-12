@@ -1,7 +1,7 @@
 pkgbase = axmud
 	pkgdesc = GTK3 Multi-User Dungeon (MUD) client
 	pkgver = 1.2.041
-	pkgrel = 1
+	pkgrel = 2
 	url = https://axmud.sourceforge.io/
 	arch = any
 	license = GPL3
@@ -14,6 +14,7 @@ pkgbase = axmud
 	depends = perl-file-sharedir-install
 	depends = perl-goocanvas2
 	depends = perl-gtk3
+	depends = perl-math-round
 	depends = perl-io-socket-inet6
 	depends = perl-io-socket-ssl
 	depends = perl-ipc-run
