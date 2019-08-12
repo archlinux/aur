@@ -1,0 +1,14 @@
+pkgbase = sshping
+	pkgdesc = ssh-based ping: measure character-echo latency and bandwidth for an interactive ssh session
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/spook/sshping
+	arch = x86_64
+	license = MIT
+	makedepends = perl
+	depends = libssh
+	source = https://github.com/spook/sshping/archive/v0.1.4.tar.gz
+	sha256sums = 589623e3fbe88dc1d423829e821f9d57f09aef0d9a2f04b7740b50909217863a
+
+pkgname = sshping
+
