@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Mullvad VPN
-Comment=Mullvad VPN client
-Exec="/opt/mullvad-vpn/mullvad-vpn" %U
-Terminal=false
-Type=Application
-Icon=mullvad-vpn
-Categories=Network;
