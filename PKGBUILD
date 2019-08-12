@@ -1,24 +1,25 @@
-# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Maintainer: Adrian Petrescu <adrian@apetre.sc>
 
 pkgname=gmailieer
-pkgver=0.10
+_pkgname=lieer
+pkgver=0.11
 pkgrel=1
 pkgdesc='Fast fetch and two-way tag synchronization between notmuch and GMail'
 arch=('any')
-url=https://github.com/gauteh/gmailieer
+url=https://github.com/gauteh/${_pkgname}
 license=('GPL3')
 depends=('python-oauth2client' 'python-google-api-python-client' 'python-tqdm')
 makedepends=('python-setuptools')
-source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('9663799f9896dc48568febe00a7fb272b0176a86add680f5d5c9539c833aa6b471d0f5de9b644e9103191a6c85df6dbdcd64c55433ef573b37c837402de63c4c')
+source=("$url/archive/v$pkgver/${_pkgname}-v$pkgver.tar.gz")
+sha512sums=('b07d2a92d966d860af03db6f1faded478660e1550f5c2b1b33a63363a3dfb5a25d29e0ca5cb730caad78ce34dc76bdb1b98d1446d5857fd2a8549e2f26dbc99e')
 
 build() {
-  cd $pkgname-$pkgver
+  cd ${_pkgname}-$pkgver
   python setup.py build
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd ${_pkgname}-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
