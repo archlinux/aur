@@ -1,6 +1,6 @@
 pkgbase = sampler
 	pkgdesc = A tool for shell commands execution, visualization and alerting. Configured with a simple YAML file.
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://sampler.dev
 	arch = i686
@@ -9,11 +9,12 @@ pkgbase = sampler
 	arch = armv6h
 	arch = aarch64
 	license = custom:Fair Source License
+	makedepends = git
 	makedepends = go-pie
 	makedepends = alsa-lib
 	conflicts = sampler-git
-	source = https://github.com/sqshq/sampler/archive/v1.0.0.tar.gz
-	sha256sums = de9065e76d950166fd5e355b1610a3e0697caa4dc3ee5f2877e9da0cd52fc942
+	source = https://github.com/sqshq/sampler/archive/v1.0.2.tar.gz
+	sha256sums = 3b5240322ed0f48529af94cecee55900ae05ab776531a2e75337bf99fe8b1ff2
 
 pkgname = sampler
 
