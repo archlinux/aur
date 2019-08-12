@@ -1,0 +1,13 @@
+[Unit]
+Description=Docker IPv6-NAT
+After=network.target docker.service
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=10
+ExecStart=/usr/sbin/docker-ipv6nat -cleanup -retry
+
+[Install]
+WantedBy=multi-user.target
