@@ -1,7 +1,7 @@
 # Maintainer: Dave Reisner <d@falconindy.com>
 
 pkgname=nghttp3-git
-pkgver=r148.3a93081
+pkgver=r152.34a21bf
 pkgrel=1
 pkgdesc="HTTP/3 library written in C"
 arch=('x86_64')
@@ -15,31 +15,30 @@ source=('git+https://github.com/ngtcp2/nghttp3')
 md5sums=('SKIP')
 
 pkgver() {
-	cd nghttp3
+  cd nghttp3
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd nghttp3
+  cd nghttp3
 
-	autoreconf -fisv
+  autoreconf -fisv
 
-	./configure \
+  ./configure \
       --prefix=/usr
 
-	make
+  make
 }
 
 check() {
-	cd nghttp3
+  cd nghttp3
 
-  # re-enable after tests pass at head.
-	# make -k check
+  make -k check
 }
 
 package() {
-	cd nghttp3
+  cd nghttp3
 
-	make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }
