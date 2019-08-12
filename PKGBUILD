@@ -5,8 +5,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=76.0.3809.87
-pkgrel=3
+pkgver=76.0.3809.100
+pkgrel=1
 _launcher_ver=6
 _meta_browser_sha=38b36f421f8d984c7004c9d9a6d514ed2fb6cf8e
 pkgdesc="Chromium built with patches for wayland support via Ozone"
@@ -43,7 +43,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         0009-Fixed-positioning-and-sizes-of-menus-when-the-scale-.patch
         0010-ozone-wayland-Extract-window-management-methods-to-o.patch
         0011-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch)
-sha256sums=('215ca6acee7b4fd3c95fe796260af4dc5454dbba3b701aa43afeb98a06dc4194'
+sha256sums=('8cd93ada3e0837ced512f69783400991d3b82e0d9622e04fab5922877577d26d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'd87957d01be9fb59faf5fde523eb87a8256605b1533171416b7a56bfcbd6d056'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
