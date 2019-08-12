@@ -7,8 +7,10 @@ pkgbase = gitahead
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = git
 	depends = desktop-file-utils
 	depends = qt5-base
+	depends = git
 	source = git+https://github.com/gitahead/gitahead#tag=v2.5.9
 	source = gitahead.desktop
 	source = gitahead.patch

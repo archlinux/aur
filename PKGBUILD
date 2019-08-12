@@ -11,8 +11,8 @@ pkgdesc='Graphical Git client that helps you understand and manage your source h
 url='https://www.gitahead.com/'
 arch=('x86_64')
 license=('MIT')
-depends=('desktop-file-utils' 'qt5-base')
-makedepends=('cmake' 'ninja')
+depends=('desktop-file-utils' 'qt5-base' 'git')
+makedepends=('cmake' 'ninja' 'git')
 source=(
   "git+https://github.com/gitahead/gitahead#tag=v${pkgver}"
   "gitahead.desktop"
