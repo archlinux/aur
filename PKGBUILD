@@ -4,8 +4,8 @@
 # Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=leocad
-pkgver=18.02
-pkgrel=2
+pkgver=19.07.1
+pkgrel=1
 pkgdesc="A CAD program for creating virtual LEGO models"
 arch=('i686' 'x86_64')
 url="http://leocad.org"
@@ -13,9 +13,9 @@ license=('GPL')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('qt5-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/leozide/leocad/archive/v$pkgver.tar.gz"
-        "$pkgname-$pkgver-library.zip::https://github.com/leozide/leocad/releases/download/v$pkgver/Library-Linux-11331.zip")
-sha512sums=('cf7b878d2a39775d6f0a4d07608a99144d832a06e9813b79dd85e018f7fb16cddb8a1f5cc4640488a0168aeb8549e7ee91811e4a4b9f727d788b598f10f25d97'
-            '6e303c6b3aa2b1948a69d6165555ab069d211b71ec26e7b8903c7dbd0d716483765d45265fedca67fbd1df21bc2af92f224638668db15bd849cd60f9fb0598d6')
+        "https://github.com/leozide/leocad/releases/download/v18.02/Library-Linux-11494.zip")
+sha512sums=('7c7d896920ca0eb2bd9e19080e1532ab76454d6585bee4b09a198f4abff23a7a40b396bc0bdf433f1c7eca99e17c440cbad8f1e5f30b043906e418404438517b'
+            '2389a1814f4cf94a6a1b449adc2782b8d6cb3c781ecbf75b964f002a35b7283e41c41b0684f4aa70e3d2dd880bd1032b94ecd33b862dbcd9cdf56b88024a5e28')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
