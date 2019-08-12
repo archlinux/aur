@@ -1,6 +1,6 @@
 pkgbase = signal-desktop-bin
 	pkgdesc = Private messaging from your desktop
-	pkgver = 1.25.3
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://github.com/signalapp/Signal-Desktop
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = signal-desktop-bin
 	provides = signal-desktop
 	conflicts = signal
 	options = !strip
-	source = https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_1.25.3_amd64.deb
-	sha256sums = 2319a0171198890bbf30c8e7ba777cc564904189b71f631cefb19fd4c88df738
+	source = https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_1.26.0_amd64.deb
+	sha256sums = 44c0282a7004138b1260539b44783d3de828cd41230f8617cd84356f72f7e59d
 
 pkgname = signal-desktop-bin
 
