@@ -4,7 +4,7 @@
 
 pkgname=flatbuffers-static
 _pkgname=flatbuffers
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='An efficient cross platform serialization library for C++, with support for Java, C# and Go'
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=(gcc-libs)
 makedepends=(cmake)
 options=('staticlibs')
 source=($pkgname-$pkgver.tar.gz::https://github.com/google/$_pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('3714e3db8c51e43028e10ad7adffb9a36fc4aa5b1a363c2d0c4303dd1be59a7c')
+sha256sums=('3f4a286642094f45b1b77228656fbd7ea123964f19502f9ecfd29933fd23a50b')
 provides=('flatbuffers')
 conflicts=('flatbuffers')
 
