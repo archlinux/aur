@@ -25,37 +25,35 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data-git
-pkgver=2.5.0.r3922.cbaa90dd
+pkgver=2.9.0.r4141.02137491
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
-  'flite' 'fluidsynth' 'freeglut' 'ftgl' 'glew' 'gmerlin'
-  'gsl' 'gsm' 'hicolor-icon-theme' 'libmagick6' 'jack' 'ladspa' 'lame'
+  'flite' 'fluidsynth' 'freeglut' 'ftgl' 'glew'
+  'gsl' 'gsm' 'hicolor-icon-theme' 'imagemagick' 'jack' 'ladspa' 'lame'
   'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
-  'libxxf86vm' 'libtiff' 'libiec61883' 'libunicap' 'libraw1394'
-  'libsndobj-git' 'libv4l' 'libvorbis' 'portaudio'
-  'smpeg' 'speex' 'stk' 'zlib'
+  'libxxf86vm' 'libtiff' 'libiec61883' 'libraw1394'
+  'libv4l' 'libvorbis' 'portaudio'
+  'smpeg' 'speex' 'stk' 'zlib' 'lua'
   'alsa-lib' 'gconf' 'gtk2' 'nss' 'libxtst' 'libxss' 'ttf-dejavu')
 makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
 provides=('purr-data')
 conflicts=('purr-data')
 install=purr-data.install
 options=('!makeflags' '!strip')
-source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git"
-	"gem-magick6-fixes.patch")
-md5sums=('SKIP'
-         '6f9b87db6e73a35ec63327e97ad95d66')
+source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git")
+md5sums=('SKIP')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
-nwjsver=0.22.1
+nwjsver=0.24.4
 source_common="http://dl.nwjs.io/v$nwjsver/$nwjsname-v$nwjsver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-md5sums_i686=('e4708d59006219eaa2c54cdb1d682794')
-md5sums_x86_64=('30b00dd353ee96af0cb5e511078f79ca')
+md5sums_i686=('a7afcd35d2891e7b7c78db5ca7a625a3')
+md5sums_x86_64=('82f20fe9081201db81652eb066c29f9b')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="ia32"
@@ -90,8 +88,6 @@ prepare() {
   # copy the nw.js sources to where purr-data wants them
   rm -rf pd/nw/nw
   cp -a $srcdir/$nwjsname-v$nwjsver-linux-$_arch pd/nw/nw
-  # make sure to link Gem with ImageMagick 6, it doesn't compile with 7
-  cd $srcdir/$pkgname && patch -Np1 < $srcdir/gem-magick6-fixes.patch
 }
 
 build() {
