@@ -1,6 +1,6 @@
 pkgbase = pd-l2ork
 	pkgdesc = L2Ork (Linux Laptop Orchestra) version of PureData
-	pkgver = 20190811.r1766.bcbaf448
+	pkgver = 20190812.r1771.42cedfa8
 	pkgrel = 1
 	url = http://l2ork.music.vt.edu/main/?page_id=56
 	install = pd-l2ork.install
@@ -52,7 +52,7 @@ pkgbase = pd-l2ork
 	depends = zlib
 	conflicts = pd-l2ork
 	options = !makeflags
-	source = pd-l2ork::git+https://github.com/pd-l2ork/pd.git#commit=bcbaf4489b98715c46a2a97cbbf8905480faa3a4
+	source = pd-l2ork::git+https://github.com/pd-l2ork/pd.git#commit=42cedfa82c8a6aea20caa8b46ed22a98763646f6
 	source = RTcmix-pd-LCPLAY-stabilize.patch
 	md5sums = SKIP
 	md5sums = 39c53063dc18681f29b12c08d9c453aa
