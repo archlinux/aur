@@ -1,16 +1,18 @@
 pkgbase = r-markdown
 	pkgdesc = Markdown Rendering for R
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=markdown
 	arch = x86_64
+	arch = i686
 	license = GPL2
 	depends = r
 	depends = r-mime>=0.3
+	depends = r-xfun
 	optdepends = r-knitr
 	optdepends = r-rcurl
-	source = https://cran.r-project.org/src/contrib/markdown_1.0.tar.gz
-	md5sums = 18cd558ad494c9ffff482954dae32f18
+	source = https://cran.r-project.org/src/contrib/markdown_1.1.tar.gz
+	md5sums = 51fedf7d7f62da1f828a80bd71ccba1d
 
 pkgname = r-markdown
 
