@@ -4,11 +4,12 @@
 
 pkgname=cryptomator
 pkgver=1.4.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('x86_64')
 url="https://cryptomator.org/"
 license=('GPL3')
+depends=('fuse2')
 source=("cryptomator-${pkgver}-x86_64.AppImage::https://dl.bintray.com/cryptomator/cryptomator/${pkgver}/cryptomator-${pkgver}-x86_64.AppImage"
         'cryptomator.desktop'
         'cryptomator.png'
