@@ -1,6 +1,6 @@
 pkgbase = raven-git
 	pkgdesc = Free software alternative discord client
-	pkgver = r25.2aaa374
+	pkgver = r41.45a1360
 	pkgrel = 1
 	url = https://github.com/SavageLLC/Raven
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = raven-git
 	makedepends = kotlin
 	makedepends = git
 	depends = java-runtime>=12
+	depends = ffmpeg-compat-54
 	source = raven-git::git+https://github.com/SavageLLC/Raven.git
 	source = raven.desktop
 	sha512sums = SKIP
