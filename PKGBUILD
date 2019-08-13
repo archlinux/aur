@@ -1,15 +1,15 @@
 # Maintainer: Pierre-Alexis Ciavaldini <pierre-alexis@ciavaldini.fr>
 
-# maintenance, tar files
-pkgver="1.1.0"
+# maintenance, files checksums
+pkgver="2.0.1"
 pkgrel=1
 sha256sums=(
-    # tar.gz
-    "11e4dda02398fdcdc04999dac27dc42263a29480f977ab8411d4c2b23c74b0b0"
+    # .zip linux-x64
+    "7d545518f5e4dd5557ac8369b97a529eb6e444882c567aeb532541e10fe453d5"
     # Particl Desktop.desktop -> change version
-    "a426d46f17a0b17e7a4db7186b1e94fad368e27c5437d13496a2a880cad87fa4"
+    "3fee1b62d18816680f7672af1ad7cce56bfa9c5529bafba7c528ec3ec136b691"
     # icon.png
-    "24054a6942768b71baf6ccecd9b6b4e965ca5b478bc684feb8d35e1d18f2ccab"
+    "3916932f864c13e916cb940a3398656bc236afd2e4a5b188ff717e749b8aa851"
 )
 
 # info
@@ -17,11 +17,12 @@ pkgname="particl-bin"
 pkgdesc="Particl Desktop from git releases"
 
 _name="particl-desktop"
+_app_name="Particl Desktop"
 _platform="linux-x64"
 _package="${_name}-${pkgver}-${_platform}"
 arch=('x86_64')
 license=('GPL')
-url="https://github.com/particl/particl-desktop/releases"
+url="https://github.com/particl/${_name}/releases"
 
 provides=(
     ${_name}
@@ -33,8 +34,8 @@ depends=()
 
 # desktop file and icon
 source=(
-    "${url}/download/v${pkgver}/${_package}.tar.gz"
-    "Particl Desktop.desktop"
+    "${url}/download/v${pkgver}/${_package}.zip"
+    "${_app_name}.desktop"
     "icon.png"
 )
 
@@ -45,18 +46,20 @@ package() {
     install -d "${pkgdir}/usr/bin/"
     install -d "${pkgdir}/usr/share/applications"
 
-    # install       FROM                      TO
-    cp -a "${srcdir}/${_package}/" "${pkgdir}/opt/${_name}/"
-    ln -s "/opt/${_name}/${_name}" "${pkgdir}/usr/bin/${_name}"
+    # remove unwanted package in package
+    rm "${srcdir}/${_package}.zip"
 
-    # installing icon and desktop file
-    cp "${srcdir}/icon.png"                "${pkgdir}/opt/${_name}/"
-    cp "${srcdir}/Particl Desktop.desktop" "${pkgdir}/usr/share/applications"
+    #                FROM                             TO
+    cp -a "${srcdir}/"                     "${pkgdir}/opt/${_name}/"
+    ln -s "/opt/${_name}/${_app_name}"     "${pkgdir}/usr/bin/${_app_name}"
+    cp    "${srcdir}/${_app_name}.desktop" "${pkgdir}/usr/share/applications"
 
     # modes
-    find      "${pkgdir}" -type d -exec chmod 755 {} +
-    find      "${pkgdir}" -type f -exec chmod 644 {} +
-    chmod 755 "${pkgdir}/opt/${_name}/${_name}"
-    chmod 755 "${pkgdir}/opt/${_name}/libnode.so"
-    chmod 755 "${pkgdir}/opt/${_name}/libffmpeg.so"
+    find       "${pkgdir}" -type d -exec chmod 755 {} +
+    find       "${pkgdir}" -type f -exec chmod 644 {} +
+    chmod 755  "${pkgdir}/opt/${_name}/${_app_name}"
+    chmod 755  "${pkgdir}/opt/${_name}/libEGL.so"
+    chmod 755  "${pkgdir}/opt/${_name}/libffmpeg.so"
+    chmod 755  "${pkgdir}/opt/${_name}/libGLESv2.so"
+    chmod 4755 "${pkgdir}/opt/${_name}/chrome-sandbox"
 }

@@ -1,18 +1,18 @@
 pkgbase = particl-bin
 	pkgdesc = Particl Desktop from git releases
-	pkgver = 1.1.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/particl/particl-desktop/releases
 	arch = x86_64
 	license = GPL
 	provides = particl-desktop
 	conflicts = particl-git
-	source = https://github.com/particl/particl-desktop/releases/download/v1.1.0/particl-desktop-1.1.0-linux-x64.tar.gz
+	source = https://github.com/particl/particl-desktop/releases/download/v2.0.1/particl-desktop-2.0.1-linux-x64.zip
 	source = Particl Desktop.desktop
 	source = icon.png
-	sha256sums = 11e4dda02398fdcdc04999dac27dc42263a29480f977ab8411d4c2b23c74b0b0
-	sha256sums = a426d46f17a0b17e7a4db7186b1e94fad368e27c5437d13496a2a880cad87fa4
-	sha256sums = 24054a6942768b71baf6ccecd9b6b4e965ca5b478bc684feb8d35e1d18f2ccab
+	sha256sums = 7d545518f5e4dd5557ac8369b97a529eb6e444882c567aeb532541e10fe453d5
+	sha256sums = 3fee1b62d18816680f7672af1ad7cce56bfa9c5529bafba7c528ec3ec136b691
+	sha256sums = 3916932f864c13e916cb940a3398656bc236afd2e4a5b188ff717e749b8aa851
 
 pkgname = particl-bin
 

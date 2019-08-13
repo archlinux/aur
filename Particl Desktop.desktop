@@ -1,11 +1,11 @@
 [Desktop Entry]
 Type=Application
-Version=1.1.0
+Version=2.0.1
 Name=Particl Desktop
 Comment=Particl, P2P Privacy project
-Exec=/usr/bin/particl
-Path=/opt/particl
-Icon=/opt/particl/icon.png
+Exec="/usr/bin/Particl Desktop"
+Path=/opt/particl-desktop
+Icon=/opt/particl-desktop/icon.png
 Terminal=false
 StartupNotify=true
 Categories=P2P;Finance;Security;
