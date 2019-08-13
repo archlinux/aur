@@ -1,15 +1,15 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=opencorsairlink-testing
-pkgver=0+208+ge8d79e6
-_commit=e8d79e6d7d1173d7f59776660f9817c97c5ae96b
+pkgver=0+217+ga858acd
+_commit=a858acdd65bcf9662ad914dd55513ed18bb0cfa9
 pkgrel=1
 pkgdesc='Status and control utility for Corsair Link products (testing branch)'
 arch=(i686 x86_64)
 url=https://github.com/audiohacked/OpenCorsairLink
 license=(GPL2)
 depends=(libusb)
-makedepends=(git libdrm pkg-config)
+makedepends=(git)
 provides=(opencorsairlink)
 conflicts=(opencorsairlink)
 source=(git+$url#commit=$_commit)
