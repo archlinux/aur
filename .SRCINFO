@@ -1,6 +1,6 @@
 pkgbase = my-weather-indicator-git
 	pkgdesc = A simple indicator for the weather
-	pkgver = r86.b2b70c2
+	pkgver = r97.8701218
 	pkgrel = 1
 	url = https://github.com/atareao/my-weather-indicator
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = my-weather-indicator-git
 	makedepends = python-polib
 	depends = libappindicator-gtk3
 	depends = libnotify
-	depends = webkitgtk
+	depends = webkit2gtk
 	depends = geocode-glib
 	depends = python-pytz
 	depends = python-cairo

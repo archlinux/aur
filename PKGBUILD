@@ -5,13 +5,13 @@
 
 _pkgname=my-weather-indicator
 pkgname=my-weather-indicator-git
-pkgver=r86.b2b70c2
+pkgver=r97.8701218
 pkgrel=1
 pkgdesc='A simple indicator for the weather'
 arch=('any')
 url='https://github.com/atareao/my-weather-indicator'
 license=('GPL3')
-depends=('libappindicator-gtk3' 'libnotify' 'webkitgtk' 'geocode-glib' 'python-pytz'
+depends=('libappindicator-gtk3' 'libnotify' 'webkit2gtk' 'geocode-glib' 'python-pytz'
          'python-cairo' 'python-lxml' 'python-dateutil' 'osm-gps-map'
          'python-requests-oauthlib' 'geoclue2' 'geoip')
 makedepends=('git' 'python-distutils-extra' 'python-polib')
@@ -34,9 +34,9 @@ prepare() {
            -e 's:locale-langpack:locale:g' '{}' \;
 
   # async is a reserved keyword in python 3.7+
-  cd src
-  mv async.py mywi_async.py
-  sed -i 's:from async import:from mywi_async import:' *py
+#  cd src
+#  mv async.py mywi_async.py
+#  sed -i 's:from async import:from mywi_async import:' *py
 }
 
 build() {
