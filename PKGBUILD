@@ -8,7 +8,7 @@ pkgname=('nvidia-full-beta-all'
          'nvidia-settings-full-beta-all'
          'lib32-nvidia-utils-full-beta-all'
          'lib32-opencl-nvidia-full-beta-all')
-pkgver=430.40
+pkgver=435.17
 pkgrel=1
 pkgdesc='Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)'
 arch=('x86_64')
@@ -21,13 +21,11 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-full-beta-all.sysusers'
         'FS62142.patch'
-        'nvidia-utils-full-beta-all-change-vulkan-driver-path.patch'
         'nvidia-settings-full-beta-all-change-desktop-paths.patch')
-sha256sums=('f700899f48ba711b7e1598014e8db9a93537d7baa3d6a64067ed08578387dfd7'
+sha256sums=('a71cecb5b8f0af35ed9a2d4023652a0537271457ef570c5f21dccd5067d9e9a6'
             '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             'c961006882afb691410c017c239e2c2ef61badb88f15735d37112b513ef0a99d'
-            '57e2393228b09b85d91b9d095b85899178f6fd4b456cbb7ea39093d07e7c7ca7'
             '633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a')
 
 # create soname links
@@ -52,7 +50,6 @@ prepare() {
     cd "${_pkg}"
     bsdtar -xf nvidia-persistenced-init.tar.bz2
     
-    patch -Np1 -i "${srcdir}/nvidia-utils-full-beta-all-change-vulkan-driver-path.patch"
     patch -Np1 -i "${srcdir}/nvidia-settings-full-beta-all-change-desktop-paths.patch"
     
     # create a build directory for each installed kernel
@@ -193,7 +190,7 @@ package_nvidia-utils-full-beta-all() {
     install -D -m755 "libnvidia-glvkspirv.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # Vulkan ICD
-    install -D -m644 "nvidia_icd.json.template" "${pkgdir}/usr/share/vulkan/icd.d/nvidia_icd.json"
+    install -D -m644 nvidia_icd.json -t "${pkgdir}/usr/share/vulkan/icd.d"
     
     # VDPAU
     install -D -m755 "libvdpau_nvidia.so.${pkgver}" -t "${pkgdir}/usr/lib/vdpau"
@@ -258,6 +255,13 @@ package_nvidia-utils-full-beta-all() {
     install -D -m644 NVIDIA_Changelog -t "${pkgdir}/usr/share/doc/${pkgname}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgname}/"
     #ln -s nvidia "${pkgdir}/usr/share/doc/nvidia-utils"
+    
+    # new power management support
+    install -D -m644 nvidia-suspend.service   -t "${pkgdir}/usr/lib/systemd/system"
+    install -D -m644 nvidia-hibernate.service -t "${pkgdir}/usr/lib/systemd/system"
+    install -D -m644 nvidia-resume.service    -t "${pkgdir}/usr/lib/systemd/system"
+    install -D -m755 nvidia                   -t "${pkgdir}/usr/lib/systemd/system-sleep"
+    install -D -m755 nvidia-sleep.sh          -t "${pkgdir}/usr/bin"
     
     # distro specific files must be installed in /usr/share/X11/xorg.conf.d
     install -D -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
