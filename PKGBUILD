@@ -2,7 +2,7 @@
 
 pkgname=surfn-icons-git
 pkgver=9.7
-pkgrel=3
+pkgrel=4
 _destname="/usr/share/icons/"
 pkgdesc="Surfn is a colourful icon theme."
 arch=('any')
