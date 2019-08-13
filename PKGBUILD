@@ -45,6 +45,7 @@ build() {
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DOBS_VERSION_OVERRIDE=$pkgver ..
 
   make
