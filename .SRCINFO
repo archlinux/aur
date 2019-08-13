@@ -1,0 +1,14 @@
+pkgbase = lightpp
+	pkgdesc = A C++ API for interacting with phillips hue lights
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/jorbo/lightsplusplus
+	arch = x86_64
+	license = GPL
+	depends = gcc
+	depends = git
+	depends = libcurlpp
+	depends = jsoncpp
+
+pkgname = lightpp
+
