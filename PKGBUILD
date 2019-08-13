@@ -3,13 +3,13 @@
 pkgname=opencorsairlink
 pkgver=0+179+gf92ba8c
 _commit=f92ba8cae34cd5fc396e987cb7326ad65f7acaf3
-pkgrel=1
+pkgrel=2
 pkgdesc='Status and control utility for Corsair Link products'
 arch=(i686 x86_64)
 url=https://github.com/audiohacked/OpenCorsairLink
 license=(GPL2)
 depends=(libusb)
-makedepends=(git libdrm pkg-config)
+makedepends=(git)
 source=(git+$url#commit=$_commit)
 sha512sums=('SKIP')
 

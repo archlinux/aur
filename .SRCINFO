@@ -1,14 +1,12 @@
 pkgbase = opencorsairlink
 	pkgdesc = Status and control utility for Corsair Link products
 	pkgver = 0+179+gf92ba8c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/audiohacked/OpenCorsairLink
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = libdrm
-	makedepends = pkg-config
 	depends = libusb
 	source = git+https://github.com/audiohacked/OpenCorsairLink#commit=f92ba8cae34cd5fc396e987cb7326ad65f7acaf3
 	sha512sums = SKIP
