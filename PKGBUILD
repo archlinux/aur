@@ -1,5 +1,5 @@
 # Maintainer: Jordan Ayvazian <jaayvazian@gmail.com>
-pkgname=lightpp
+pkgname=lighstpp
 pkgver=0.2
 pkgrel=1
 pkgdesc="A C++ API for interacting with phillips hue lights"

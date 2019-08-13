@@ -1,4 +1,4 @@
-pkgbase = lightpp
+pkgbase = lighstpp
 	pkgdesc = A C++ API for interacting with phillips hue lights
 	pkgver = 0.2
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = lightpp
 	depends = libcurlpp
 	depends = jsoncpp
 
-pkgname = lightpp
+pkgname = lighstpp
 
