@@ -1,7 +1,7 @@
 # Maintainer: Wouter de Vries <wouter@wouter-web.nl>
 _name=ripe.atlas.sagan
 pkgname=python-ripe-atlas-sagan
-pkgver=1.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A parsing library for RIPE Atlas measurement results"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('python-ujson: faster json decoding' 'python-sphinx: documentation g
 makedepends=('python-setuptools')
 provides=('python-ripe-atlas-sagan')
 source=("https://pypi.io/packages/source/r/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('52bf9f7d0a5a82535f629a2af5644e8de1c4b085f711841ca3660d34fbef19cc')
+sha256sums=('0a1d7548032a7521fcde6db6a766a5e01b06968d21691f9c89076561b8416222')
 
 package() {
     cd "$srcdir/$_name-$pkgver"
