@@ -1,6 +1,6 @@
 pkgbase = shshare
 	pkgdesc = A screenshotter, recorder, and uploader
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/MarkusGordathian/shshare
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = shshare
 	optdepends = libnotify: for notifying of upload completions
 	optdepends = ffmpeg: for screen recording
 	backup = etc/share.sh.d/upload.sh
-	source = shshare-0.1.8.tar.gz::https://github.com/MarkusGordathian/shshare/releases/download/0.1.8/shshare-0.1.8.tar.gz
-	sha512sums = a3f006c6b05f219eec370fa7093404e83415a29bf09413e3deb1cea6bc55b5f2b1802a4f057f1cef060391c99c24b46d21acf3489e170db1c7f2389d9efd7bc0
+	source = shshare-0.1.9.tar.gz::https://github.com/MarkusGordathian/shshare/releases/download/0.1.9/shshare-0.1.9.tar.gz
+	sha512sums = 77d77a2b78f182dec360a18fe58a00a832813856b65e03382953aa68f009f4d41fb87689acb97b8096874ef0b6d82d8c65ddaa91dfce452b893f462b18fb210c
 
 pkgname = shshare
 
