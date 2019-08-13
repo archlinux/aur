@@ -4,7 +4,7 @@
 
 pkgname=devolo-dlan-cockpit
 pkgver=5.0.4
-pkgrel=1
+pkgrel=2
 install=${pkgname}.install
 pkgdesc="Display and configure settings of your devolo device"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ else
   _arch="i386"
 fi 
 
-source=("https://www.devolo.fr/fileadmin/Web-Content/DE/Contentseiten/Downloads/Cockpit/devolo-cockpit-v${pkgver//./-}-linux.run"
+source=("https://www.devolo.de/fileadmin/Web-Content/DE/products/hnw/devolo-cockpit/software/devolo-cockpit-v${pkgver//./-}-linux.run"
   'devolonetsvc.service')
 
 
