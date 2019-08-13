@@ -2,7 +2,6 @@
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
-MAKEFLAGS="-j1"
 pkgname=obs-studio-git
 pkgver=23.2.1.r188.gae83c857d
 pkgrel=1
