@@ -3,7 +3,7 @@
 
 _realname='graphene'
 pkgname="$_realname-git"
-pkgver=1.9.2.r1.g5263782
+pkgver=1.9.6.r1.g735918a
 pkgrel=1
 pkgdesc='A thin layer of graphic data types'
 arch=('i686' 'x86_64')
@@ -37,6 +37,6 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  install -Dt "$pkgdir/usr/share/licenses/$_realname" -m644 $_realname/LICENSE
+  install -Dt "$pkgdir/usr/share/licenses/$_realname" -m644 $_realname/LICENSE.txt
   rm -r "$pkgdir"/usr/{lib,share}/installed-tests
 }
