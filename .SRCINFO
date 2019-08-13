@@ -1,7 +1,7 @@
 pkgbase = lynda-dl
 	pkgdesc = Tool to download courses from Lynda
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/r0oth3x49/lynda-dl
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = lynda-dl
 	depends = python-colorama
 	depends = python-unidecode
 	depends = python-pyopenssl
-	source = https://github.com/r0oth3x49/lynda-dl/archive/v0.3.tar.gz
+	source = lynda-dl-0.3.tar.gz::https://github.com/r0oth3x49/lynda-dl/archive/v0.3.tar.gz
 	source = setup.py
 	sha512sums = 29ab76a2bac6fa07c453ef578d754a1ef1cfaf643251a8d3203a11f93f85128445112fa54fd9e9933d35bea71dc3746bdfc00e71dbc13944de1b024ef6394b11
 	sha512sums = 3e76a6678bf00708437fab400ded30d2169a88180ea77d51badecba14ba7649645791500e7d0649be15c25f7980c6d17f8f3a3a4bbf65782dac29556266ec6ee
