@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=xorg-xdm-xlogin
 _pkgname=xorg-xdm
-pkgver=1.1.11
-pkgrel=9
+pkgver=1.1.12
+pkgrel=1
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
 #url="http://xorg.freedesktop.org/"
@@ -14,9 +14,9 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=(${_pkgname})
 makedepends=('pkgconfig' 'xorg-util-macros' 'xtrans')
 backup=(etc/X11/xdm/Xaccess etc/X11/xdm/Xresources etc/X11/xdm/Xservers etc/X11/xdm/xdm-config etc/pam.d/xdm etc/pam.d/greeter etc/X11/xdm/Xsetup_0 etc/X11/xdm/Xsession)
-source=("xdm.zip::https://github.com/bbidulock/xdm/archive/2806205d33afa981ed2228355699eb2c0d3150d0.zip"
+source=("xdm.zip::https://github.com/bbidulock/xdm/archive/027536f4cdefe292adec15303198897d8ee4f1c8.zip"
 	xdm.pam)
-sha256sums=('bc83891ad601e275c50ea310b6673ef510d8decd08352bcf73e87313c9b7e6c5'
+sha256sums=('9c3d08e459667037898a73826b1e6622c359d71b3f10b2e7d8b7aff3545d1718'
             'e8c4c5fd3b801a390d201166fd1fb9730e78a5c62928768103b870b6bd980ea0')
 
 build() {
