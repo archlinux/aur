@@ -1,6 +1,6 @@
 pkgbase = alma
 	pkgdesc = Create Arch Linux based live USB
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/r-darwish/alma
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = alma
 	depends = coreutils
 	depends = util-linux
 	optdepends = cryptsetup: for root filesystem encryption
-	source = alma-0.9.0.tar.gz::https://github.com/r-darwish/alma/archive/v0.9.0.tar.gz
-	sha256sums = 1721b464901ff373b8b7b7ea68989685c52e7167266a6ca35526972b741937d0
+	source = alma-0.10.0.tar.gz::https://github.com/r-darwish/alma/archive/v0.10.0.tar.gz
+	sha256sums = d2e6c614e31a531c74aec69ba0c487296a6618b2194f915a58ae7c182a8af272
 
 pkgname = alma
 
