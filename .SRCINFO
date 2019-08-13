@@ -1,12 +1,13 @@
 pkgbase = klog
 	pkgdesc = A multiplatform free hamradio logger
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.klog.xyz
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-tools
 	makedepends = gendesk
+	depends = hamlib
 	depends = qt5-base
 	depends = qt5-charts
 	depends = qt5-serialport
