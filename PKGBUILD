@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://github.com/jorbo/lightsplusplus"
 license=('GPL')
 depends=('gcc' 'git' 'libcurlpp' 'jsoncpp')
+conflicts=('lightspp-git')
 
 build() {
   git clone https://github.com/jorbo/lightsplusplus
