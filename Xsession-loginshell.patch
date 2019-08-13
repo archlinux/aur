@@ -1,5 +1,5 @@
---- config/Xsession.cpp.orig	2008-06-21 13:57:36.000000000 +0000
-+++ config/Xsession.cpp	2008-06-21 14:01:25.000000000 +0000
+--- config/Xsession.in.orig	2008-06-21 13:57:36.000000000 +0000
++++ config/Xsession.in	2008-06-21 14:01:25.000000000 +0000
 @@ -56,11 +56,7 @@
  resources=$HOME/.Xresources
  

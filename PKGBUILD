@@ -2,7 +2,7 @@
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=xorg-xdm-git
-pkgver=1.1.11.49.g50bd014
+pkgver=1.1.12
 pkgrel=1
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
@@ -17,9 +17,9 @@ options=('!libtool')
 source=("$pkgname::git://anongit.freedesktop.org/git/xorg/app/xdm"
 	fixes.patch
         xdm.pam)
-sha256sums=('SKIP'
-            '0aba5f8e58dead488544962376531e1067e7a55a441f62c601645cd31762caf9'
-            '7d6818a1c1a44e9bd38774c035e03b0b831f6646681bc2bf556761aec7baf418')
+sha512sums=('SKIP'
+            '9fb1c63c37c7fe8d92f9883cc4c1f0f0685076f5edadbae1b56ed01c3f74c6fd31b57b3054441f939bcb617493dbaefe741f6826c9d1e7aa94170f7acb88cb83'
+            'cb912013a294f0801b357a43f3e5313ffa9ac5fcc493b2318843983388eb0b839c84060a97c355e12ca03f3b056644aa4a2bb8a74ed73a0f2405816b8d6efdc0')
 
 pkgver() {
   cd $pkgname
@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
   cd $pkgname
   patch -Np2 -b -z .orig -i ../fixes.patch
-  autoreconf -fi
+  autoreconf -vfi
 }
 
 build() {
@@ -40,6 +40,9 @@ build() {
       --with-xdmconfigdir=/etc/X11/xdm \
       --with-xdmscriptdir=/etc/X11/xdm \
       --with-pixmapdir=/usr/share/xdm/pixmaps
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
   make
 }
 
