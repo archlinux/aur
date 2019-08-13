@@ -1,10 +1,11 @@
 pkgbase = lynda-dl-git
 	pkgdesc = Tool to download courses from Lynda (git)
-	pkgver = 0.3+11+gbfa3fbe
+	pkgver = 0.3+r11+gbfa3fbe
 	pkgrel = 1
 	url = https://github.com/r0oth3x49/lynda-dl
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = python-requests
 	depends = python-six
 	depends = python-colorama
