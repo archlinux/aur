@@ -3,7 +3,7 @@
 
 _npmname=triton
 pkgname=nodejs-$_npmname
-pkgver=7.3.0
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="triton is a CLI tool for working with the CloudAPI for Joyent's Triton Public Cloud and Private Cloud"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/joyent/node-triton/archive/$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('b7e9b6be5e30474263e462c2e44169de32848b83a1fd4694e1e5887f087704d7')
+sha256sums=('7d0e4622d0ab0d4dd6917d3c8a6f2353c75b38c3cedaedf608f315a874d86acd')
 
 package() {
   npm install --cache "${srcdir}"/npm-cache --no-optional -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tar.gz"
