@@ -1,16 +1,16 @@
 # Maintainer: Ilaï Deutel
 
 pkgname='git-machete'
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
-pkgdesc='See what branches are out of sync with their parent branches and painlessly rebase them.'
+pkgdesc="Probably the sharpest git repository organizer & rebase workflow automation tool you've ever seen"
 arch=('any')
 url='https://github.com/VirtusLab/git-machete'
 license=('MIT')
-depends=('git' 'python2')
-makedepends=('python2-setuptools' 'python2-pbr')
+depends=('git' 'python')
+makedepends=('python-setuptools' 'python-pbr')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/VirtusLab/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('faf680ff7e585d6759cfa0fe783cb874716ccf44b880423781dc356a1c3d8020')
+sha256sums=('33cb5fc9d045895f78264a77afa15af8de622ccf794a6422aee62d05c3d66e4b')
 
 prepare() {
   export PBR_VERSION="$pkgver"
@@ -18,14 +18,14 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-${pkgver}"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "$srcdir/$pkgname-${pkgver}"
 
   # Install the package
-  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
   # Install bash and zsh completions
   install -Dm644 "completion/git-machete.completion.bash" "$pkgdir/usr/share/bash-completion/completions/git-machete"
