@@ -19,10 +19,10 @@
 
 pkgbase=kodi-devel
 pkgname=(
-  "$pkgbase" "$pkgbase-bin" "$pkgbase-wayland" "$pkgbase-gbm"
-  "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
+  "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
+  kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.4rc1pre18
+pkgver=18.4rc1pre20
 _major=18.3
 pkgrel=1
 arch=('x86_64')
@@ -95,7 +95,9 @@ source=(
   015-PR16422.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16422.patch
   016-PR16426.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16426.patch
   017-PR16447.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16447.patch
-#  018-PR16314.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16314.patch
+  018-PR16467.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16467.patch
+  019-PR16468.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16468.patch
+  020-PR16471.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16471.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -133,7 +135,10 @@ sha256sums=('4f265901c00f582beb8d6ad96c9c303e5ab82611e828c7121ae822b07c0915cc'
             'fa44afc553164952c497c75a2ebca36358f73a22bde3c2bfcd243e45bfb6247c'
             'a44771f00abda9f219340b4afce974b3add7d53db3b73ff36a30cabb4bda546e'
             '6835c87aabb8e43f6313f6a1d61b06efc31daea3cb2777d10392b5f2c8c604f5'
-            '7fadba3375a912ff5c65ac1bf5d78394173b9ab1a19435ee99aa713dd0175f78')
+            '7fadba3375a912ff5c65ac1bf5d78394173b9ab1a19435ee99aa713dd0175f78'
+            '54da6342b8132638a6b195f0224d94ea435ee28381faa1a0b84349000a8398fd'
+            '89c56c229d8598ef8c0bf1bae4476e733baeab5cac7171410e668a4ff801a8b4'
+            '761d0bedc5ee7cb9bcdab426cbb32da072f39c3f620fafeb62a46fadbf10b878')
 
 prepare() {
   # force python 'binary' as python2
@@ -306,7 +311,7 @@ package_kodi-devel() {
 # kodi-x11
 # components: kodi-bin
 
-package_kodi-devel-bin() {
+package_kodi-bin-devel() {
   pkgdesc="x11 kodi binary"
   conflicts=('kodi-bin')
   depends=(
@@ -324,9 +329,9 @@ package_kodi-devel-bin() {
 # kodi-wayland
 # components: kodi-bin
 
-package_kodi-devel-wayland() {
+package_kodi-wayland-devel() {
   pkgdesc="wayland kodi binary"
-  provides=("$pkgbase-bin=${pkgver}")
+  provides=("kodi-bin=${pkgver}")
   conflicts=('kodi-wayland')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
@@ -342,9 +347,9 @@ package_kodi-devel-wayland() {
 # kodi-gbm
 # components: kodi-bin
 
-package_kodi-devel-gbm() {
+package_kodi-gbm-devel() {
   pkgdesc="gbm kodi binary"
-  provides=("$pkgbase-bin=${pkgver}" 'kodi-gbm')
+  provides=("kodi-bin=${pkgver}" 'kodi-gbm')
   conflicts=('kodi-gbm')
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
@@ -360,7 +365,7 @@ package_kodi-devel-gbm() {
 # kodi-eventclients
 # components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-wiiremote kodi-eventclients-kodi-send
 
-package_kodi-devel-eventclients() {
+package_kodi-eventclients-devel() {
   pkgdesc="Kodi Event Clients"
   provides=("kodi-eventclients=${pkgver}")
   conflicts=('kodi-eventclients')
@@ -391,7 +396,7 @@ package_kodi-devel-eventclients() {
 # kodi-tools-texturepacker
 # components: kodi-tools-texturepacker
 
-package_kodi-devel-tools-texturepacker() {
+package_kodi-tools-texturepacker-devel() {
   pkgdesc="Kodi Texturepacker tool"
   provides=("kodi-tools-texturepacker=${pkgver}")
   conflicts=('kodi-tools-texturepacker')
@@ -415,7 +420,7 @@ package_kodi-devel-tools-texturepacker() {
 #             kodi-inputstream-dev kodi-peripheral-dev kodi-pvr-dev
 #             kodi-screensaver-dev kodi-visualization-dev
 
-package_kodi-devel-dev() {
+package_kodi-dev-devel() {
   pkgdesc="Kodi dev files"
   depends=("$pkgbase")
   provides=("kodi-dev=${pkgver}")
