@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-mpris-git
-pkgver=0.2.1.g5413e5d
+pkgver=0.2.4.ga9fe25c
 pkgrel=1
 pkgdesc="MPRIS plugin for mpv. (GIT version)"
 arch=('x86_64')

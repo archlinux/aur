@@ -5,7 +5,7 @@ blue="${bold}$(tput setaf 4)"
 green="${bold}$(tput setaf 2)"
 
 _instructions() {
-  printf "${yellow}==>${all_off} ${bold}ATENTION:${all_off}
+  printf "${yellow}==>${all_off} ${bold}ATTENTION:${all_off}
   ${blue}->${all_off} For run this plugin, add this line:
      '${bold}script=/usr/share/mpv/scripts/mpris.so${all_off}'
      in your '${bold}/etc/mpv/mpv.conf${all_off}', or copy the plugin into
@@ -13,7 +13,7 @@ _instructions() {
 }
 
 _instructions_remove() {
-  printf "${yellow}==>${all_off} ${bold}ATENTION:${all_off}
+  printf "${yellow}==>${all_off} ${bold}ATTENTION:${all_off}
   ${blue}->${all_off} Don\'t forget remove this line:
    '${bold}script=/usr/share/mpv/scripts/mpris.so${all_off}'
    in your '${bold}/etc/mpv/mpv.conf${all_off}', or remove the plugin into
