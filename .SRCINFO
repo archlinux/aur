@@ -1,5 +1,5 @@
 pkgbase = lightspp-git
-	pkgdesc = A C++ API for interacting with phillips hue lights
+	pkgdesc = (Dev Branch) A C++ API for interacting with phillips hue lights
 	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/jorbo/lightsplusplus
