@@ -1,0 +1,19 @@
+pkgbase = raven-git
+	pkgdesc = Free software alternative discord client
+	pkgver = r25.2aaa374
+	pkgrel = 1
+	url = https://github.com/SavageLLC/Raven
+	arch = any
+	license = GPL2
+	makedepends = java-environment>=12
+	makedepends = gradle
+	makedepends = kotlin
+	makedepends = git
+	depends = java-runtime>=12
+	source = raven-git::git+https://github.com/SavageLLC/Raven.git
+	source = raven.desktop
+	sha512sums = SKIP
+	sha512sums = f21180f8bc3dcb6a987619ebaab196c24a6e1fdaff1dd2c298417c7bbf12312a52da7bd1171ea1281219358acbc23d77998b37b3b8acad65773c073bb5739de3
+
+pkgname = raven-git
+

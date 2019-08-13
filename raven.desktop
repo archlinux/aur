@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Raven
+GenericName=Raven
+Comment=Free software Discord client
+Exec=raven %u
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+StartupWMClass=com.savagellc.raven.gui.javafxbootstrapper
