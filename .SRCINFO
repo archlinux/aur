@@ -1,7 +1,7 @@
 pkgbase = docker-waiter
 	pkgdesc = Docker container startup order controller
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://gitlab.com/BrianAllred/docker-waiter
 	install = docker-waiter.install
 	arch = x86_64
@@ -12,14 +12,14 @@ pkgbase = docker-waiter
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = https://gitlab.com/BrianAllred/docker-waiter/-/archive/0.2.1/docker-waiter-0.2.1.tar.gz
+	source = https://gitlab.com/BrianAllred/docker-waiter/-/archive/0.3.0/docker-waiter-0.3.0.tar.gz
 	source = docker-waiter.install
 	source = docker-waiter.service
 	source = config-example.json
-	md5sums = ad0660096881210e6237ef793962b060
+	md5sums = c0dd88ab77ef1830dd2294a44fded4a9
 	md5sums = c059894cba8a0928149da701d2e351c8
 	md5sums = b532409b1cf2556410c1b30941e55e75
-	md5sums = 289546697d1fd3074b3024f395c509fd
+	md5sums = 864d974c4acb0ed6d34af7069f2ec1f2
 
 pkgname = docker-waiter
 

@@ -1,8 +1,8 @@
 # Maintainer: Brian Allred <brian.d.allred at gmail dot com>
 
 pkgname=docker-waiter
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='Docker container startup order controller'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://gitlab.com/BrianAllred/docker-waiter'
@@ -13,10 +13,10 @@ source=("https://gitlab.com/BrianAllred/$pkgname/-/archive/$pkgver/$pkgname-$pkg
         "docker-waiter.install"
         "docker-waiter.service"
         "config-example.json")
-md5sums=('ad0660096881210e6237ef793962b060'
+md5sums=('c0dd88ab77ef1830dd2294a44fded4a9'
          'c059894cba8a0928149da701d2e351c8'
          'b532409b1cf2556410c1b30941e55e75'
-         '289546697d1fd3074b3024f395c509fd')
+         '864d974c4acb0ed6d34af7069f2ec1f2')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

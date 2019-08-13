@@ -1,13 +1,19 @@
 // Provided as an example. Service reads from /etc/docker-waiter/config.json
 // Binary reads from /etc/docker-waiter/config.json as root
 // or $XDG_CONFIG_HOME/docker-waiter/config.json if not
-
 {
-    "MainContainer": "nginx",
-    "DepContainers": [
-        "proxy",
-        "proxy2"
+    "ContainerConfigs": [
+        {
+            "MainContainer": "nginx",
+            "DepContainers": [
+                "proxy",
+                "proxy2"
+            ],
+            "CheckRunning": false,
+            "CheckDelay": 1
+        }
     ],
-    "CheckRunning": false,
-    "CheckDelay": 1
+    "DockerConfig": {
+        "Host": "localhost" // Default if left blank
+    }
 }
