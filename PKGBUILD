@@ -2,7 +2,7 @@
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=xorg-xdm-xlogin-git
-pkgver=1.1.11.93.g2806205
+pkgver=1.1.12.48.g027536f
 pkgrel=1
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
