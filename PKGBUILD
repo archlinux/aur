@@ -4,7 +4,7 @@
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
 pkgver=23.2.1.r188.gae83c857d
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
