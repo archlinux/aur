@@ -2,15 +2,14 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.30.0.r7.g337d1eb8f
-_last_release="0.30.0-1"
+pkgver=0.30.1.r43.g59fb22d4b
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
 url="http://crystal-lang.org"
 license=('Apache')
 depends=('gc' 'libatomic_ops' 'pcre' 'libevent')
-makedepends=('git' 'libxml2' 'llvm')
+makedepends=('git' 'libxml2' 'llvm' 'crystal')
 checkdepends=('libyaml' 'libxml2' 'gmp' 'git' 'inetutils')
 optdepends=('shards: To make the crystal deps command work'
             'libyaml: For YAML support'
@@ -19,8 +18,6 @@ optdepends=('shards: To make the crystal deps command work'
 conflicts=('crystal')
 provides=('crystal')
 source=("git+https://github.com/crystal-lang/crystal.git")
-source_i686+=("https://github.com/crystal-lang/crystal/releases/download/${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-i686.tar.gz")
-source_x86_64+=("https://github.com/crystal-lang/crystal/releases/download/${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-x86_64.tar.gz")
 
 pkgver() {
   cd "$srcdir/${pkgname/-git/}"
@@ -34,7 +31,6 @@ build() {
   cd "$srcdir/${pkgname/-git/}"
 
   make release=1 FLAGS="--no-debug" \
-       PATH="$srcdir/${pkgname/-git/}-$_last_release/bin:$PATH" \
        CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
        EXPORTS='CRYSTAL_CONFIG_PATH="lib:/usr/lib/crystal"' \
        CRYSTAL_CACHE_DIR="/tmp/crystal"
@@ -76,5 +72,3 @@ package() {
 }
 
 sha256sums=('SKIP')
-sha256sums_i686=('81282e2fdaba77a31aeb682deac7cde545a72dfd0ad5b6554002b8fd861e9d3e')
-sha256sums_x86_64=('1995420a5d9146fd21322c96fe8bf87ddf73d5e0273b3c24c3c71d0e6f54cba2')
