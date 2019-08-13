@@ -2,14 +2,14 @@
 pkgname=xorg-xmore
 _pkgname=xmore
 pkgdesc="Plain text display for the X window system"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 arch=('x86_64' 'i686')
 url="http://www.x.org/"
 license=('custom')
 depends=('libxaw')
 source=("http://xorg.freedesktop.org/releases/individual/app/$_pkgname-$pkgver.tar.bz2")
-md5sums=('e66f16684e92d3ca035c27003157cdbd')
+md5sums=('8e1279352192e4142740c21db58f9be9')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
