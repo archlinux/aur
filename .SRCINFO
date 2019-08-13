@@ -1,23 +1,22 @@
 pkgbase = simple-fb2-reader
 	pkgdesc = Simple FB2 book reader on GTK+3
-	pkgver = 1.1.1
-	pkgrel = 3
+	pkgver = 1.1.3
+	pkgrel = 1
 	url = http://github.com/Cactus64k/simple-fb2-reader
 	install = simple-fb2-reader.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = gettext>=0.19.3
-	makedepends = pkg-config>=0.28
-	depends = libxml2>=2.9.1
-	depends = gtk3>=3.14.5
-	depends = glib2>=2.33.12
-	depends = libzip>=0.10.1
-	depends = sqlite>=3.8.7.1
-	source = http://github.com/Cactus64k/simple-fb2-reader/archive/1.1.1.tar.gz
-	source = fix-crash.patch
-	md5sums = 85cdaed7419fed02c314e19cb665d96f
-	md5sums = e79f59cd8bc304ca50a81b3aa42d8047
+	makedepends = debhelper>=12.3
+	makedepends = gettext>=0.19.8
+	makedepends = pkgconf>=0.29
+	makedepends = cmake>=3.13.4
+	depends = libxml2>=2.9.4
+	depends = gtk3>=3.24.10
+	depends = libzip>=1.5.1
+	depends = sqlite>=3.29.0
+	source = http://github.com/Cactus64k/simple-fb2-reader/archive/1.1.3.tar.gz
+	md5sums = ef5cf7266d37912ecf9018f51657cb64
 
 pkgname = simple-fb2-reader
 
