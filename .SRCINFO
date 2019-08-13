@@ -3,11 +3,12 @@
 pkgbase = oracle-sqldeveloper
 	pkgdesc = A graphical tool for database development
 	pkgver = 19.2.0.206.2117
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html
 	arch = any
 	license = custom:OTN
-	depends = java-environment=8
+	depends = java-environment>=8
+	depends = java-environment<=11
 	depends = bash
 	depends = perl
         depends = java-openjfx
