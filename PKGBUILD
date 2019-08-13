@@ -2,11 +2,8 @@
 # Maintainer : Anarchiste <anarchiste@disroot.org>
 # Contributor: Navet56 <evandib@gmail.com>
 
-
-
-
 pkgname=opmon-git
-pkgver=0.15.1.r232.gcbb99787
+pkgver=0.15.1.r240.g19d25d9c
 pkgrel=1
 license=('GPL')
 arch=('x86_64')
