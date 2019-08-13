@@ -1,7 +1,7 @@
 pkgbase = lazyman
 	pkgdesc = A simple program that lets you stream every NHL and MLB game
-	pkgver = 2.4.0.20181101
-	pkgrel = 2
+	pkgver = 2.4.020190807
+	pkgrel = 1
 	url = https://github.com/StevensNJD4/LazyMan
 	arch = any
 	license = GPL2
@@ -15,13 +15,11 @@ pkgbase = lazyman
 	source = lazyman.sh
 	source = lazyman.desktop
 	source = lazyman.png
-	source = lazyman.svg
 	md5sums = e9af636a4fccfcd6e81a74f69247eaf0
 	md5sums = d41d8cd98f00b204e9800998ecf8427e
 	md5sums = b387dc6c2bdf54718d6d2e48f9f37e3d
 	md5sums = cc5998a228727420cbf7d07fc5318920
 	md5sums = 41aebb968e8b6856d1b73cabd6a8c5d2
-	md5sums = 838805914545f8ece3df2115b638252f
 
 pkgname = lazyman
 
