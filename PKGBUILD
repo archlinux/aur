@@ -5,13 +5,14 @@
 pkgname=cydia-impactor
 _pkgname=Impactor
 pkgver=0.9.52
-pkgrel=2
+pkgrel=3
 pkgdesc='A GUI tool for working with mobile devices'
 arch=('i686' 'x86_64')
 url='http://www.cydiaimpactor.com'
 license=('unknown')
 depends=('atk' 'cairo' 'fontconfig' 'freetype2' 'gdk-pixbuf2' 'gtk2' 'libsm' 'libudev0-shim' 'libx11' 'ncurses5-compat-libs' 'pango')
 makedepends=('gendesk' 'libicns' 'p7zip')
+optdepends=('usbmuxd: for connecting to iOS devices')
 source=("https://cache.saurik.com/impactor/mac/${_pkgname}_$pkgver.dmg")
 source_i686=("https://cache.saurik.com/impactor/l32/${_pkgname}32_$pkgver.tgz")
 source_x86_64=("https://cache.saurik.com/impactor/l64/${_pkgname}64_$pkgver.tgz")

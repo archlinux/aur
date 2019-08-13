@@ -1,7 +1,7 @@
 pkgbase = cydia-impactor
 	pkgdesc = A GUI tool for working with mobile devices
 	pkgver = 0.9.52
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cydiaimpactor.com
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = cydia-impactor
 	depends = libx11
 	depends = ncurses5-compat-libs
 	depends = pango
+	optdepends = usbmuxd: for connecting to iOS devices
 	source = https://cache.saurik.com/impactor/mac/Impactor_0.9.52.dmg
 	sha256sums = 9db548074424473c5804d1118d27cd4f052db8b53b3e7c3261c1a903f521cbf1
 	source_i686 = https://cache.saurik.com/impactor/l32/Impactor32_0.9.52.tgz
