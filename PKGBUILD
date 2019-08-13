@@ -1,10 +1,10 @@
-# Maintainer: ccat3 <c0ldcat3z@gmail.com>
+# Maintainer: ccat3z <c0ldcat3z@gmail.com>
 # Contributor: bruceutut <zttt183525594@gmail.com>
 
 pkgname=insomnia-src
 _name=insomnia
 pkgver=6.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform HTTP and GraphQL Client (Build from source)"
 arch=('x86_64' 'i686')
 url="https://github.com/getinsomnia/insomnia"
@@ -21,6 +21,7 @@ prepare() {
 	# Make electron version to match community/electron
 	electronV=$(electron3 --version)
 	electronVer=${electronV#v}
+    electronDist=$(dirname $(realpath $(which electron3)))
 	sed -i "/\"electron\": \"/c\\\"electron\": \"$electronVer\"," package.json
 
 	# Edit electron builder config
@@ -29,7 +30,7 @@ prepare() {
 	sed -i 's/"tar.gz",//' .electronbuilder
 	sed -i 's/"snap",//' .electronbuilder
 	sed -i 's/"rpm"/"dir"/' .electronbuilder
-	sed -i 's/"appId": "com.insomnia.app",/"appId": "com.insomnia.app","electronDist": "\/usr\/lib\/electron3",/' .electronbuilder
+	sed -i "s#\"appId\": \"com.insomnia.app\",#\"appId\": \"com.insomnia.app\",\"electronDist\": \"${electronDist}\",#" .electronbuilder
 }
 
 build() {
