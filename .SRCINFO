@@ -1,6 +1,6 @@
 pkgbase = starship
 	pkgdesc = The cross-shell prompt for astronauts
-	pkgver = 0.6.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://starship.rs/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = starship
 	depends = openssl
 	depends = zlib
 	provides = starship
-	source = https://github.com/starship/starship/archive/v0.6.0.tar.gz
-	sha256sums = eec9a9f6d694bd14f1aa1e5f4a0a88c12bc4209fe52ec8f12d9dbadbef9ea32a
+	source = https://github.com/starship/starship/archive/v0.8.0.tar.gz
+	sha256sums = fb3b5ed74f777481afc96459a6d2a6ceb1aa4b1f8edc39efe0f1f83bb3fc3a5f
 
 pkgname = starship
 
