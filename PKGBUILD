@@ -2,17 +2,19 @@
 # Contributor: Reventlov <contact+aur at volcanis dot me>
 
 pkgname=searx-git
-pkgver=0.15.0+77+g8189b0d1
+pkgver=0.15.0+r155+g8e62f760
 pkgrel=1
 pkgdesc='Privacy-respecting metasearch engine (git)'
 arch=(any)
 url=https://asciimoo.github.io/searx/
 license=(AGPL3)
 depends=(python2-certifi
-         python2-flask
+         python2-babel
          python2-flask-babel
-         python2-lxml
+         python2-flask
          python2-idna
+         python2-jinja
+         python2-lxml
          python2-pygments
          python2-pyopenssl
          python2-dateutil
@@ -20,8 +22,8 @@ depends=(python2-certifi
          python2-requests
          python2-pysocks)
 makedepends=(git)
-optdepends=('filtron: Filtering reverse-HTTP proxy'
-            'morty: Privacy-aware web content sanitizer proxy-as-a-service')
+optdepends=('filtron: filter incoming HTTP requests'
+            'morty: proxy server for search results')
 provides=(searx)
 conflicts=(searx)
 backup=(etc/searx.conf)
@@ -36,27 +38,27 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd searx
-  git describe --tags | sed 's/v//;s/-/+/g'
+  git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
 }
 
 prepare() {
   cd searx
-
-  # Allow newer versions of Python 2 libraries since we like to break stuff
-  sed -i 's/==/>=/g' requirements.txt
+  # Allow newer libraries since we can't guarantee older library versions
+  sed -i 's#==#>=#g' requirements.txt
 }
 
 package() {
-  install -Dm 644 searx.service -t "$pkgdir"/usr/lib/systemd/system
-  install -Dm 644 searx.sysusers.d "$pkgdir"/usr/lib/sysusers.d/searx.conf
-  install -Dm 644 searx.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/searx.conf
-
   cd searx
-  python2 setup.py install --root="$pkgdir" --optimize=1
 
-  # Move searx files into searx folder since they're incorrectly spread out
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  # Move incorrectly-placed searx files
   mv "$pkgdir"/usr/lib/python2.7/site-packages/{README.rst,requirements*,searx}
 
   install -Dm 600 searx/settings.yml "$pkgdir"/etc/searx.conf
+
+  install -Dm 644 ../searx.service -t "$pkgdir"/usr/lib/systemd/system
+  install -Dm 644 ../searx.sysusers.d "$pkgdir"/usr/lib/sysusers.d/searx.conf
+  install -Dm 644 ../searx.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/searx.conf
+
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/searx
 }
