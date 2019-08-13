@@ -3,7 +3,7 @@
 # Contributor: Ng Oon-Ee
 
 pkgname=nvidia-beta-all
-pkgver=430.40
+pkgver=435.17
 pkgrel=1
 pkgdesc='NVIDIA drivers for all kernels on the system (beta version)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'FS62142.patch')
-sha256sums=('669ff38532ff05c78e1edc3c6df2055fd96437107f5919b6e5a774c3a495501b'
+sha256sums=('1d5e23663c8730f6c8035debe728a18da112e3d0a12a859f76e0b16132c33162'
             'c961006882afb691410c017c239e2c2ef61badb88f15735d37112b513ef0a99d')
 
 prepare() {
