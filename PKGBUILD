@@ -12,19 +12,21 @@
 
 _name=opencv
 pkgname="$_name-git"
-pkgver=4.0.0.r81.g197285d12a
+pkgver=4.1.1.r65.gbf0765fc7f
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library"
 url="https://opencv.org/"
 license=('BSD')
 arch=('i686' 'x86_64')
 depends=('intel-tbb' 'openexr' 'gst-plugins-base' 'libdc1394' 'cblas' 'lapack' 'libgphoto2' 'jasper' 'ffmpeg')
-makedepends=('git' 'cmake' 'python-numpy' 'python-setuptools' 'mesa' 'eigen' 'hdf5' 'lapacke' 'gtk3' 'vtk' 'glew')
+makedepends=('git' 'cmake' 'python-numpy' 'python-setuptools' 'mesa' 'eigen' 'hdf5' 'lapacke' 'gtk3' 'vtk' 'glew' 'ant' 'java-environment')
 optdepends=('opencv-samples: samples'
-            'gtk3: for the HighGUI module'
-            'hdf5: Support for HDF5 format'
+            'gtk3: for the HighGUI module and Python bindings'
+            'vtk: for the viz module'
+            'hdf5: for the HDF5 module and the Python bindings'
             'opencl-icd-loader: For coding with OpenCL'
-            'python-numpy: Python 3 interface')
+            'python-numpy: Python bindings'
+            'java-runtime: Java interface')
 conflicts=('opencv')
 provides=("$_name=$pkgver")
 source=('git+https://github.com/opencv/opencv.git'
@@ -62,6 +64,7 @@ prepare() {
 
 build() {
     cd build
+    export JAVA_HOME="/usr/lib/jvm/default"
     # cmake's FindLAPACK doesn't add cblas to LAPACK_LIBRARIES, so we need to specify them manually
     _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
 
@@ -72,6 +75,9 @@ build() {
           -DLAPACK_LAPACKE_H="/usr/include/lapacke.h" \
           -DOPENCV_PYTHON3_INSTALL_PATH=$_pythonpath \
           -DOPENCV_GENERATE_PKGCONFIG=ON \
+          -DOPENCV_ENABLE_NOFREE=ON \
+          -DOPENCV_JNI_INSTALL_PATH=lib \
+          -DOPENCV_GENERATE_SETUPVARS=OFF \
           ../"$_name"
 
     make
