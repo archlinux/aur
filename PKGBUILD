@@ -1,9 +1,10 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
+
 _name="balena"
 _module="${_name}-sdk"
 _fullname="${_module}-python"
 pkgname=("python-${_name}" "python2-${_name}")
-pkgver=7.8.1
+pkgver=8.0.1
 pkgrel="1"
 pkgdesc="Balena SDK for Python"
 arch=("any")
@@ -13,7 +14,7 @@ license=("Apache")
 makedepends=("python-setuptools" "python2-setuptools")
 provides=("python-${_name}" "python2-${_name}")
 source=("https://github.com/balena-io/${_fullname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5a031d460c4486f895890904057c37c55d193d696f60dbba05767ad6dbdbd87b')
+sha256sums=('adfd4b140fded3c3eac4f55123a23adf1d53e6d9e5267594e1554537a97a169b')
 
 prepare() {
     cp -a "${srcdir}/${_fullname}-${pkgver}" "${srcdir}/${_fullname}-${pkgver}-python2"
