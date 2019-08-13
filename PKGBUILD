@@ -1,8 +1,8 @@
-# Maintainer: Hendrik R. <hendrikr_10 [at] yahoo [dot] dde>
+# Maintainer: H. Rosendahl <h [at] ro [dot] sendahl [dot] de>
 # Maintainer: Alexander Neumann <alexander@bumpern.de>
 options=(!strip)
 pkgname=grobi-git
-pkgver=r72.f02831d
+pkgver=r117.daa886b
 pkgrel=1
 pkgdesc="grobi automates applying xrandr profiles when outputs change"
 arch=('i686' 'x86_64')
@@ -30,6 +30,7 @@ package() {
   install -Dm644 "$pkgname/LICENSE"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README"
   install -Dm644 "$pkgname/doc/grobi.service" "$pkgdir/usr/lib/systemd/user/grobi.service"
+  install -Dm644 "$pkgname/contrib/grobi.bash" "$pkgdir/usr/share/bash-completion/completions/grobi"
 }
 
 # vim:set ts=2 sw=2 et:
