@@ -2,14 +2,14 @@
 pkgname=xorg-xditview
 _pkgname=xditview
 pkgdesc="Display ditroff output"
-pkgver=1.0.3
+pkgver=1.0.5
 pkgrel=1
 arch=('x86_64' 'i686')
 url="http://www.x.org/"
 license=('custom')
 depends=('libxaw')
 source=("http://xorg.freedesktop.org/releases/individual/app/$_pkgname-$pkgver.tar.bz2")
-md5sums=('a9a49c84477be93cdd1cd7726d758574')
+md5sums=('3a909116a3b2abe3845215cf49e09fa5')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
