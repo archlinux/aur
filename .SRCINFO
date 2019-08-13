@@ -1,10 +1,11 @@
 pkgbase = cryptomator
 	pkgdesc = Multiplatform transparent client-side encryption of your files in the cloud.
 	pkgver = 1.4.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cryptomator.org/
 	arch = x86_64
 	license = GPL3
+	depends = fuse2
 	options = !strip
 	source = cryptomator-1.4.14-x86_64.AppImage::https://dl.bintray.com/cryptomator/cryptomator/1.4.14/cryptomator-1.4.14-x86_64.AppImage
 	source = cryptomator.desktop
