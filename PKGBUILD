@@ -1,74 +1,34 @@
-# Maintainer: Marco Pompili <aur (at) mg.odd.red>
+# Maintainer: Frederick Zhang <frederick888@tsundere.moe>
+# Contributor: Marco Pompili <aur (at) mg.odd.red>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: tocer <tocer.deng@gmail.com>
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
-pkgname=v8
-pkgver=7.4.288.18
-pkgrel=3
+pkgname=v8-6.7-static
+pkgver=6.7.288.46
+pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://v8.dev"
 license=('BSD')
 depends=('readline' 'icu')
-makedepends=('clang' 'clang-tools-extra' 'python2' 'python2-colorama' 'python2-pylint' 'python2-lazy-object-proxy' 'python2-singledispatch' 'python2-wrapt' 'ninja' 'git' 'wget')
-conflicts=('v8-3.14' 'v8-3.15' 'v8-3.20' 'v8-static-gyp' 'v8-static-gyp-5.4')
+makedepends=('python2' 'python2-colorama' 'python2-pylint' 'python2-lazy-object-proxy' 'python2-singledispatch' 'python2-wrapt' 'ninja' 'git' 'wget')
+provides=('v8')
+conflicts=('v8' 'v8-6.8' 'v8-3.14' 'v8-3.15' 'v8-3.20' 'v8-static-gyp' 'v8-static-gyp-5.4')
 source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
         "v8.pc"
         "v8_libbase.pc"
         "v8_libplatform.pc"
-	"d8")
+        "d8"
+        "ctest.patch")
 sha256sums=('SKIP'
             '3616bcfb15af7cd5a39bc0f223b2a52f15883a4bc8cfcfb291837c7421363d75'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
-            '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0')
-
-#
-# Custom configuration for V8
-#
-
-# clang_base_path: Set clang path when not using the clang bundled with V8.
-V8_CLANG_PATH="/usr/"
-
-# is_clang: Set to true when compiling with the Clang compiler. Typically this
-# is used to configure warnings.
-V8_IS_CLANG=false
-
-# is_component_build: Component build. Setting to true compiles targets declared
-# as "components" as shared libraries loaded dynamically.
-# This speeds up development time.
-# When false, components will be linked statically.
-V8_COMPONENT_BUILD=true
-
-# is_debug: Enabling official builds (V8_OFFICIAL_BUILD) automatically sets is_debug to false.
-V8_DEBUG=false
-
-# is_official_build: Set to enable the official build level of optimization.
-# This has nothing to do with branding, but enables an additional level of
-# optimization above release (!is_debug). This might be better expressed
-# as a tri-state (debug, release, official) but for historical reasons there
-# are two separate flags.
-V8_OFFICIAL_BUILD=false
-
-# v8_enable_i18n_support: Enable ECMAScript Internationalization API.
-# Enabling this feature will add a dependency on the ICU library.
-V8_I18N_SUPPORT=true
-
-# v8_use_external_startup_data: Use external files for startup data blobs:
-# the JS builtins sources and the start snapshot.
-V8_USE_EXTERNAL_STARTUP_DATA=""
-
-# Use sysroot
-V8_USE_SYSROOT=false
-
-# treat_warnings_as_errors: Default to warnings as errors for default workflow,
-# where we catch warnings with known toolchains. Allow overriding this e.g.
-# for Chromium builds on Linux that could use a different version of the compiler.
-# With GCC, warnings in no-Chromium code are always not treated as errors.
-V8_WARNINGS_AS_ERRORS=false
+            '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
+            'db2f7e8b37d99a396b488d7657d6febb475371d42ec30fff8ffbb69983a9a09f')
 
 case "$CARCH" in
   x86_64) V8_ARCH="x64" ;;
@@ -100,7 +60,7 @@ prepare() {
   cd v8
 
   msg2 "Reset repository"
-  git reset --hard
+  find . -type d -name '.git' | while read REPO; do REPO="$(dirname "$REPO")"; git -C "$REPO" reset --hard; done
 
   if [ -f third_party/icu/BUILD.gn.orig ]
   then
@@ -118,18 +78,22 @@ prepare() {
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8_libbase.pc"
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8_libplatform.pc"
 
+  patch -p1 <"${srcdir}/ctest.patch"
+  sed -i 's/"V8_DEPRECATION_WARNINGS"/"V8_DEPRECATION_WARNINGS", "GTEST_HAS_TR1_TUPLE=0"/' build/config/BUILD.gn
+
   msg2 "Running GN..."
-  ../depot_tools/gn gen $OUTFLD \
+  gn gen $OUTFLD \
     -vv --fail-on-unused-args \
-    --args="clang_base_path=\"$V8_CLANG_PATH\"
-    is_clang=$V8_IS_CLANG
-    is_component_build=$V8_COMPONENT_BUILD
-    is_debug=$V8_DEBUG
-    is_official_build=$V8_OFFICIAL_BUILD
-    treat_warnings_as_errors=$V8_WARNINGS_AS_ERRORS
-    v8_enable_i18n_support=$V8_I18N_SUPPORT
-    v8_use_external_startup_data=\"$V8_USE_EXTERNAL_STARTUP_DATA\"
-    use_sysroot=$V8_USE_SYSROOT"
+    --args="is_clang=false
+        use_gold=false
+        is_component_build=false
+        is_debug=false
+        is_official_build=false
+        treat_warnings_as_errors=false
+        use_custom_libcxx=false
+        v8_monolithic=true
+        v8_use_external_startup_data=false
+        use_sysroot=false"
 }
 
 build() {
@@ -142,7 +106,7 @@ build() {
   mkdir -p "$OUTFLD/gen/shim_headers/icui18n_shim/third_party/icu/source/i18n/unicode/"
 
   msg2 "Building, this will take a while..."
-  ninja -C $OUTFLD
+  ninja -C $OUTFLD v8_monolith v8_fuzzer cctest unittests d8 mkgrokdump inspector-test
 }
 
 check() {
@@ -165,22 +129,13 @@ package() {
   install -Dm755 $OUTFLD/cctest ${pkgdir}/usr/lib/v8/cctest
   install -Dm755 $OUTFLD/d8 ${pkgdir}/usr/lib/v8/d8
 
-  install -Dm755 $OUTFLD/libc++.so ${pkgdir}/usr/lib/v8/libc++.so
+  install -Dm755 $OUTFLD/obj/third_party/icu/libicuuc.a ${pkgdir}/usr/lib/v8/libicuuc.a
+  install -Dm755 $OUTFLD/obj/third_party/icu/libicui18n.a ${pkgdir}/usr/lib/v8/libicui18n.a
+  install -Dm755 $OUTFLD/icudtl.dat ${pkgdir}/usr/lib/v8/icudtl.dat
 
-  if [ $V8_I18N_SUPPORT == "true" ]
-  then
-    install -Dm755 $OUTFLD/libicui18n.so ${pkgdir}/usr/lib/v8/libicui18n.so
-    install -Dm755 $OUTFLD/libicuuc.so ${pkgdir}/usr/lib/v8/libicuuc.so
-    install -Dm755 $OUTFLD/icudtl.dat ${pkgdir}/usr/lib/v8/icudtl.dat
-  fi
-  
-  install -Dm755 $OUTFLD/libv8_for_testing.so ${pkgdir}/usr/lib/libv8_for_testing.so
-  install -Dm755 $OUTFLD/libv8_libbase.so ${pkgdir}/usr/lib/libv8_libbase.so
-  install -Dm755 $OUTFLD/libv8_libplatform.so ${pkgdir}/usr/lib/libv8_libplatform.so
-  install -Dm755 $OUTFLD/libv8.so ${pkgdir}/usr/lib/v8/libv8.so
-
-  install -Dm755 $OUTFLD/natives_blob.bin ${pkgdir}/usr/lib/v8/natives_blob.bin
-  install -Dm755 $OUTFLD/snapshot_blob.bin ${pkgdir}/usr/lib/v8/snapshot_blob.bin
+  install -Dm755 $OUTFLD/obj/libv8_libbase.a ${pkgdir}/usr/lib/libv8_libbase.a
+  install -Dm755 $OUTFLD/obj/libv8_libplatform.a ${pkgdir}/usr/lib/libv8_libplatform.a
+  install -Dm755 $OUTFLD/obj/libv8_monolith.a ${pkgdir}/usr/lib/libv8_monolith.a
 
   install -Dm755 ${srcdir}/d8 ${pkgdir}/usr/bin/d8
 
@@ -193,10 +148,12 @@ package() {
   install -Dm644 include/libplatform/*.h ${pkgdir}/usr/include/libplatform
 
   install -d ${pkgdir}/usr/lib/pkgconfig
-  install -m644 $srcdir/v8.pc ${pkgdir}/usr/lib/pkgconfig
-  install -m644 $srcdir/v8_libbase.pc ${pkgdir}/usr/lib/pkgconfig
-  install -m644 $srcdir/v8_libplatform.pc ${pkgdir}/usr/lib/pkgconfig
+  install -m644 ${srcdir}/v8.pc ${pkgdir}/usr/lib/pkgconfig
+  install -m644 ${srcdir}/v8_libbase.pc ${pkgdir}/usr/lib/pkgconfig
+  install -m644 ${srcdir}/v8_libplatform.pc ${pkgdir}/usr/lib/pkgconfig
 
-  install -d ${pkgdir}/usr/share/licenses/v8
-  install -m644 LICENSE* ${pkgdir}/usr/share/licenses/v8
+  install -d ${pkgdir}/usr/share/licenses/${pkgname}
+  install -m644 LICENSE* ${pkgdir}/usr/share/licenses/${pkgname}
 }
+
+# vim:set ts=2 sw=2 et:
