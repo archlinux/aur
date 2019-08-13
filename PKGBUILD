@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 _pkgname=ptvsd
 pkgname=python-$_pkgname
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="Python debugger package for use with Visual Studio and Visual Studio Code"
 url="https://github.com/microsoft/$_pkgname"
@@ -10,7 +10,7 @@ arch=("x86_64")
 depends=("python>=3.4")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha1sums=('9c19343098cf4dd574b536e2c09fccec9b656ace')
+sha1sums=('0ea052d12c5f78e676194c8ef3a476fe76d29ea8')
 
 # These are python2 files required for legacy support of the package on
 # non-Arch systems. These all fail to byte-compile which causes package
