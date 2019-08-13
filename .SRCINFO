@@ -9,6 +9,7 @@ pkgbase = lightspp-git
 	depends = git
 	depends = libcurlpp
 	depends = jsoncpp
+	conflicts = lightspp
 
 pkgname = lightspp-git
 
