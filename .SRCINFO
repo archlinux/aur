@@ -1,0 +1,17 @@
+pkgbase = zirnevis
+	pkgdesc = Open source application for download subtitle only by movie name
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kiahamedi/zirnevis
+	arch = any
+	license = GPL3
+	depends = wget
+	depends = python
+	depends = python-pyqt5
+	depends = python-requests
+	depends = qt5-svg
+	depends = python-beautifulsoup4
+	source = zirnevis-1.0.0.zip::https://github.com/kiahamedi/zirnevis/archive/master.zip
+
+pkgname = zirnevis
+
