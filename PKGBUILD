@@ -2,7 +2,7 @@
 
 pkgname=docker-ipv6nat
 pkgver=0.3.8
-pkgrel=4
+pkgrel=5
 epoch=0
 pkgdesc="Extend Docker with IPv6 NAT, similar to IPv4"
 arch=('x86_64')
@@ -38,10 +38,6 @@ build() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/bin/"
-    mkdir -p "$pkgdir/usr/lib/systemd/system/"
-    chmod 0755 "docker-ipv6nat"
-    mv "docker-ipv6nat" "$pkgdir/usr/bin/"
-    chmod 0644 "docker-ipv6nat.service"
-    mv "docker-ipv6nat.service" "$pkgdir/usr/lib/systemd/system/"
+    install -Dm0755 "docker-ipv6nat" "$pkgdir/usr/bin/docker-ipv6nat"
+    install -Dm0644 "docker-ipv6nat.service" "$pkgdir/usr/lib/systemd/system/docker-ipv6nat.service"
 }
