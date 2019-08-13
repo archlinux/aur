@@ -5,7 +5,7 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
-pkgver=430.40
+pkgver=435.17
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
@@ -16,12 +16,10 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("https://download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-beta.sysusers'
-        'nvidia-utils-beta-change-vulkan-driver-path.patch'
         'nvidia-settings-beta-change-desktop-paths.patch')
-sha256sums=('669ff38532ff05c78e1edc3c6df2055fd96437107f5919b6e5a774c3a495501b'
+sha256sums=('1d5e23663c8730f6c8035debe728a18da112e3d0a12a859f76e0b16132c33162'
             '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
-            '57e2393228b09b85d91b9d095b85899178f6fd4b456cbb7ea39093d07e7c7ca7'
             '633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a')
 
 # create soname links
@@ -46,7 +44,6 @@ prepare() {
     cd "${_pkg}"
     bsdtar -xf nvidia-persistenced-init.tar.bz2
     
-    patch -Np1 -i "${srcdir}/nvidia-utils-beta-change-vulkan-driver-path.patch"
     patch -Np1 -i "${srcdir}/nvidia-settings-beta-change-desktop-paths.patch"
 }
 
@@ -132,7 +129,7 @@ package_nvidia-utils-beta() {
     install -D -m755 "libnvidia-glvkspirv.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # Vulkan ICD
-    install -D -m644 "nvidia_icd.json.template" "${pkgdir}/usr/share/vulkan/icd.d/nvidia_icd.json"
+    install -D -m644 nvidia_icd.json -t "${pkgdir}/usr/share/vulkan/icd.d"
     
     # VDPAU
     install -D -m755 "libvdpau_nvidia.so.${pkgver}" -t "${pkgdir}/usr/lib/vdpau"
@@ -197,6 +194,13 @@ package_nvidia-utils-beta() {
     install -D -m644 NVIDIA_Changelog -t "${pkgdir}/usr/share/doc/${pkgname}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgname}/"
     #ln -s nvidia "${pkgdir}/usr/share/doc/nvidia-utils"
+    
+    # new power management support
+    install -D -m644 nvidia-suspend.service   -t "${pkgdir}/usr/lib/systemd/system"
+    install -D -m644 nvidia-hibernate.service -t "${pkgdir}/usr/lib/systemd/system"
+    install -D -m644 nvidia-resume.service    -t "${pkgdir}/usr/lib/systemd/system"
+    install -D -m755 nvidia                   -t "${pkgdir}/usr/lib/systemd/system-sleep"
+    install -D -m755 nvidia-sleep.sh          -t "${pkgdir}/usr/bin"
     
     # distro specific files must be installed in /usr/share/X11/xorg.conf.d
     install -D -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
