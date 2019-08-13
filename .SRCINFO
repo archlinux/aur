@@ -1,6 +1,6 @@
 pkgbase = libdnf
 	pkgdesc = Library providing simplified C and Python API to libsolv
-	pkgver = 0.35.2
+	pkgver = 0.35.3
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/libdnf
 	arch = i686
@@ -29,8 +29,8 @@ pkgbase = libdnf
 	provides = hawkey
 	conflicts = hawkey
 	replaces = hawkey
-	source = https://github.com/rpm-software-management/libdnf/archive/0.35.2/libdnf-0.35.2.tar.gz
-	md5sums = c428cc164c1b1927876dfdf85dba0a54
+	source = https://github.com/rpm-software-management/libdnf/archive/0.35.3/libdnf-0.35.3.tar.gz
+	md5sums = ecfe60c41768994a787ec2d2adcc828b
 
 pkgname = libdnf
 
