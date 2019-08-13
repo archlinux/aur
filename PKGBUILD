@@ -2,13 +2,13 @@
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
-
+MAKEFLAGS="-j1"
 pkgname=obs-studio-git
-pkgver=21.0.2.r12.gc87597f7
+pkgver=23.2.1.r188.gae83c857d
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
-url="https://github.com/jp9000/obs-studio"
+url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
 depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11"
          "qt5-x11extras" "curl" "gtk-update-icon-cache")
@@ -23,7 +23,7 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "python: Python scripting")
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
-source=("$pkgname::git+https://github.com/jp9000/obs-studio.git#branch=master"
+source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
        "git+https://github.com/Mixer/ftl-sdk.git")
 md5sums=("SKIP" "SKIP")
 

@@ -1,8 +1,8 @@
 pkgbase = obs-studio-git
 	pkgdesc = Free and open source software for video recording and live streaming.
-	pkgver = 21.0.2.r0.g6ed55995
+	pkgver = 23.2.1.r188.gae83c857d
 	pkgrel = 1
-	url = https://github.com/jp9000/obs-studio
+	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -30,9 +30,9 @@ pkgbase = obs-studio-git
 	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting
 	optdepends = python: Python scripting
-	provides = obs-studio=21.0.2.r0.g6ed55995
+	provides = obs-studio=23.2.1.r188.gae83c857d
 	conflicts = obs-studio
-	source = obs-studio-git::git+https://github.com/jp9000/obs-studio.git#branch=master
+	source = obs-studio-git::git+https://github.com/obsproject/obs-studio.git#branch=master
 	source = git+https://github.com/Mixer/ftl-sdk.git
 	md5sums = SKIP
 	md5sums = SKIP
