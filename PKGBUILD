@@ -1,9 +1,9 @@
 _npmname=verdaccio
-_npmver=4.2.0
+_npmver=4.2.1
 
 pkgname=$_npmname
 pkgver=$_npmver
-pkgrel=2
+pkgrel=1
 pkgdesc="Private npm repository server"
 arch=(any)
 url="https://github.com/verdaccio/verdaccio"
@@ -11,7 +11,7 @@ license=(MIT)
 depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha256sums=('aa1e77bf4d9e88f950f480532d0bd0ef88d7f3dce058af9770d53fd760e27f5c')
+sha256sums=('62554a1a13ce9c6ff0d73c4eed36030137d36c3f5878711aca6c4b1f053ec3a6')
 
 backup=(etc/verdaccio/config.yaml)
 
