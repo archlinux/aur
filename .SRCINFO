@@ -1,7 +1,7 @@
 pkgbase = mrsh-git
 	pkgdesc = A minimal POSIX shell
 	pkgver = r417.a2f07ab
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.sr.ht/~emersion/mrsh
 	install = mrsh-git.install
 	arch = i686

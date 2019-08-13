@@ -1,7 +1,7 @@
 # Maintainer: KingofToasters <dev@sgregoratto.me>
 pkgname=mrsh-git
 pkgver=r417.a2f07ab
-pkgrel=2
+pkgrel=3
 pkgdesc='A minimal POSIX shell'
 url='https://git.sr.ht/~emersion/mrsh'
 license=('custom: MIT')
@@ -31,5 +31,5 @@ check() {
 package() {
   DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
   install -Dm644 "$srcdir/${pkgname%-git}/LICENSE" \
-    "$pkgdir/usr/share/licences/$pkgname/LICENSE"
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
