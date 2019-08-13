@@ -1,7 +1,7 @@
 # Maintainer: Daurnimator <quae@daurnimator.com>
 
 pkgname=('lua-cqueues' 'lua51-cqueues' 'lua52-cqueues')
-pkgver=20190731
+pkgver=20190813
 pkgrel=1
 arch=('x86_64')
 url='http://25thandclement.com/~william/projects/cqueues.html'
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('lua' 'lua51' 'lua52')
 depends=('openssl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wahern/cqueues/archive/rel-$pkgver.tar.gz")
-md5sums=('551951f6bdd521d56643d8f25b58d6ab')
+md5sums=('24b6f642514dabc9fb7996d2595060fa')
 
 build() {
 	cd "cqueues-rel-$pkgver"
