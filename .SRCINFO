@@ -1,0 +1,26 @@
+pkgbase = coredns-git
+	pkgdesc = CoreDNS is a DNS server that chains plugins
+	pkgver = 1.6.1.r19.ga64ff8cc0
+	pkgrel = 1
+	url = https://coredns.io
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = go>=1.12
+	makedepends = git
+	provides = coredns
+	conflicts = coredns-bin
+	conflicts = coredns
+	source = git+https://github.com/coredns/coredns.git
+	source = corefile.example
+	source = coredns.service
+	source = coredns-sysusers.conf
+	source = coredns-tmpfiles.conf
+	sha256sums = SKIP
+	sha256sums = 66689ad9160de3ba17431bbd38d2a438bc4f75151eff93f9ffb7bd2e48c298cc
+	sha256sums = 8a5689eeba6c48945fec84dd0163fdf3d7118aa98ad511992501637f411b1a5c
+	sha256sums = f4fd89dcb36f52466ebb1a2ae435dc960cdc828a071f3aaae1d83a39696bff30
+	sha256sums = 20052dded9a02e05013a602e597002ee2a003ecfab3309d30969c28207fc5b72
+
+pkgname = coredns-git
+

@@ -1,0 +1,33 @@
+## https://github.com/coredns/coredns.io/tree/master/content/manual
+
+# Start a server listening on port 1053
+.:1053 {
+
+	# Forward all queries to Google OR Quad9
+    forward . 8.8.8.8 9.9.9.9:53
+    # Forward all requests to 9.9.9.9 using DNS-over-TLS
+    forward . tls://9.9.9.9 {
+       tls_servername dns.quad9.net
+       health_check 5s
+    }
+
+    # Write query/errors logs to stdout
+    log
+    errors
+
+    # Enable caching for all zones, keep a
+    # positive cache size of 5000 and a negative cache size of 2500
+    cache {
+         success 5000
+         denial 2500
+    }
+    # Only cache responses for example.org 
+    cache example.org
+}
+
+# Forward all queries about example.org to a server from an environment variable
+# or servers from a file
+example.org {
+    forward . {$DNS_SERVER} /etc/resolv.conf
+    log
+}
