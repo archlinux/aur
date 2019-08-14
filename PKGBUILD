@@ -9,7 +9,7 @@
 
 _pkgname=dmenu-wayland
 pkgname=$_pkgname-git
-pkgver=4.2.1.r34.88f1766
+pkgver=4.2.1.r40.b76d594
 pkgrel=1
 pkgdesc="Wayland port of a generic menu for X"
 url="https://github.com/nyyManni/dmenu-wayland"
@@ -18,8 +18,8 @@ license=('MIT')
 depends=('wayland-protocols' 'cairo' 'pango' 'libxkbcommon' 'glib2')
 makedepends=('git' 'meson' 'ninja')
 # Not providing "dmenu" is intented: it does not provide a "dmenu" command, it's "dmenu-wl"
-provides=(dmenu-wayland)
-conflicts=(dmenu-wayland)
+provides=(dmenu-wayland dmenu)
+conflicts=(dmenu-wayland dmenu)
 source=(git+https://github.com/nyyManni/dmenu-wayland.git)
 sha256sums=('SKIP')
 
@@ -51,4 +51,11 @@ package() {
 
   cd $_pkgname
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  msg2 "Installing symlinks for dmenu..."
+  # Install symlinks to provide dmenu
+  ln -sf "dmenu-wl" "$pkgdir/usr/bin/dmenu"
+  ln -sf "dmenu-wl_run" "$pkgdir/usr/bin/dmenu_run"
+  ln -sf "dmenu-wl_path" "$pkgdir/usr/bin/dmenu_path"
+  ln -sf "dmenu-wl.1.gz" "$pkgdir/usr/share/man/man1/dmenu.1.gz"
 }
