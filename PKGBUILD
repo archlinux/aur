@@ -19,6 +19,9 @@ depends=(
  'python2-crypto'
  'python2-pyscard'
 )
+makedepends=(
+ 'python2-setuptools'
+)
 
 build() {
  cd "$srcdir"/EMVCAP-$pkgver
