@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=hponcfg
-pkgver=5.3.0_0
+pkgver=5.4.0_0
 pkgrel=1
 pkgdesc="RILOE II/iLo online configuration utility"
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=(libxslt)
 groups=(hpproliant)
 license=("CUSTOM")
 source=("https://downloads.linux.hpe.com/SDR/downloads/mcp/centos/7/x86_64/current/$pkgname-${pkgver//_/-}.x86_64.rpm")
-sha256sums=('eed1cbf5e30f7ed9c84bb6509458f2875c2a4b6b2b2136fbe274c800f099cd7b')
+sha256sums=('577debf53e21dd9bb620c1e97be308a912a9a3acabdfff4f2c06a3438a34f515')
 
 package() {
 	cd "$srcdir"
