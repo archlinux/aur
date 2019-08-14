@@ -1,7 +1,7 @@
 pkgbase = filtron
-	pkgdesc = Filtering reverse-HTTP proxy
-	pkgver = 0+51+93f8b22
-	pkgrel = 3
+	pkgdesc = Reverse-HTTP filtering proxy
+	pkgver = 0+r51+93f8b22
+	pkgrel = 1
 	url = https://github.com/asciimoo/filtron
 	install = filtron.install
 	arch = i686
@@ -9,8 +9,6 @@ pkgbase = filtron
 	license = AGPL3
 	makedepends = git
 	makedepends = go
-	optdepends = searx: A privacy-respecting, hackable metasearch engine
-	optdepends = morty: Privacy-aware web content sanitizer proxy-as-a-service
 	source = git+https://github.com/asciimoo/filtron#commit=93f8b22bc42fabb57d8a4c0ce7b7de706e6034b6
 	source = filtron.service
 	source = rules.json

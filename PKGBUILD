@@ -1,16 +1,14 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=filtron
-pkgver=0+51+93f8b22
+pkgver=0+r51+93f8b22
 _commit=93f8b22bc42fabb57d8a4c0ce7b7de706e6034b6
-pkgrel=3
-pkgdesc='Filtering reverse-HTTP proxy'
+pkgrel=1
+pkgdesc='Reverse-HTTP filtering proxy'
 arch=(i686 x86_64)
 url=https://github.com/asciimoo/filtron
 license=(AGPL3)
 makedepends=(git go)
-optdepends=('searx: A privacy-respecting, hackable metasearch engine'
-            'morty: Privacy-aware web content sanitizer proxy-as-a-service')
 install=filtron.install
 source=(git+$url#commit=$_commit
         filtron.service
@@ -21,7 +19,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd filtron
-  printf 0+%s+%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  printf 0+r%s+%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
@@ -30,11 +28,13 @@ build() {
 }
 
 package() {
-  install -Dm 644 filtron.service -t "$pkgdir"/usr/lib/systemd/system
-  install -Dm 644 rules.json -t "$pkgdir"/etc/filtron
-
   cd filtron
 
   install -D bin/filtron -t "$pkgdir"/usr/bin
+
+  install -Dm 644 ../rules.json -t "$pkgdir"/etc/filtron
+  install -Dm 644 ../filtron.service -t "$pkgdir"/usr/lib/systemd/system
+
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/filtron
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/filtron
 }
