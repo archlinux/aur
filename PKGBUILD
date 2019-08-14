@@ -3,7 +3,7 @@
 pkgname=weex-toolkit
 pkgver=2.0.0beta.31
 _pkgver=${pkgver/beta/-beta}
-pkgrel=1
+pkgrel=2
 pkgdesc='Official CLI for Apache Weex development'
 arch=(any)
 url=https://github.com/weexteam/weex-toolkit
@@ -16,5 +16,7 @@ sha512sums=('f42d0fa5d58105dde338fa9d682bf3d88882fc8e2dc602328842cb303b05fddbbaa
 
 package() {
   npm i -g --prefix "$pkgdir"/usr $pkgname-$_pkgver.tgz
-  find "$pkgdir"/usr -type d -exec chmod 755 {} +
+
+  cd "$pkgdir"/usr
+  install -Dm 644 lib/node_modules/$pkgname/LICENSE -t share/licenses/$pkgname
 }

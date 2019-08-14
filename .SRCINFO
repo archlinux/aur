@@ -1,7 +1,7 @@
 pkgbase = weex-toolkit
 	pkgdesc = Official CLI for Apache Weex development
 	pkgver = 2.0.0beta.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/weexteam/weex-toolkit
 	arch = any
 	license = MIT
