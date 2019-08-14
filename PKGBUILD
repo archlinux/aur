@@ -8,7 +8,7 @@ _majorver=${_jdkver}.0.4
 _buildvershort=11
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_majorver}b${_buildver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_jdkver}"
 arch=('x86_64')
 url="https://adoptopenjdk.net/index.html?variant=openjdk${_jdkver}&jvmVariant=openj9"
@@ -31,7 +31,7 @@ _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 package() {
   # Install
   install -d "${pkgdir}/${_jvmdir}"
-  cd jdk-${_majorver}.0.3+7
+  cd jdk-${_majorver}+${_buildvershort}
   cp -a bin demo include jmods lib release "${pkgdir}/${_jvmdir}/"
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
