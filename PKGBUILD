@@ -1,7 +1,7 @@
 # Maintainer: Alexander Couzens <lynxis@fe80.eu>
 pkgname=libxtrx-git
 pkgver=r53.9af1c458b567
-pkgrel=1
+pkgrel=2
 pkgdesc="High level API for the xtrx SDR"
 _gitname=libxtrx
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git' 'cmake')
 depends=('liblms7002m-xtrx'
          'libxtrxdsp'
          'libxtrxll'
-         'qcustomplot-qt5'
+         'qcustomplot'
          'soapysdr')
 source=("git+$url")
 md5sums=('SKIP')
