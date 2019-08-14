@@ -1,12 +1,15 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = open62541-git
+	pkgdesc = An open source and free implementation of OPC Unified Architecture written in the common subset of the C99 and C++98 languages.
+	pkgver = v1.0_rc3_r18_g07d98934
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = http://open62541.org/
+	arch = any
+	license = MPL2
+	makedepends = cmake
+	source = git+https://github.com/open62541/open62541.git#branch=master
+	md5sums = SKIP
+	sha256sums = SKIP
 
-pkgname = yarxi
+pkgname = open62541-git
+
 
