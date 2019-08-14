@@ -1,6 +1,6 @@
 pkgbase = vue-language-server
 	pkgdesc = Language server protocol implementation for Vue
-	pkgver = 0.0.58
+	pkgver = 0.0.59
 	pkgrel = 1
 	url = https://www.npmjs.com/package/vue-language-server
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = vue-language-server
 	makedepends = npm
 	depends = nodejs
 	provides = vue-language-server
-	noextract = vue-language-server-0.0.58.tgz
+	noextract = vue-language-server-0.0.59.tgz
 	options = !emptydirs
-	source = https://registry.npmjs.org/vue-language-server/-/vue-language-server-0.0.58.tgz
-	sha256sums = 2099d3d58b6c6fd1e8d9b491b565214f3ae872fd097c62a0696f304429a1ab27
+	source = https://registry.npmjs.org/vue-language-server/-/vue-language-server-0.0.59.tgz
+	sha256sums = 8df8b523df58a29bc4fd1c004a231120e33dca3920097019f2cef8a7a691d3b2
 
 pkgname = vue-language-server
 
