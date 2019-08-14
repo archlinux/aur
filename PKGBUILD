@@ -4,38 +4,23 @@
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
 # Contributor: Angel "angvp" Velasquez <angvp[at]archlinux.com.ve> 
 
-pkgbase=python-numpy-openblas
-pkgname=("python-numpy-openblas" "python2-numpy-openblas")
-pkgver=1.16.2
+pkgname="python-numpy-openblas"
+#pkgname=("python2-numpy-openblas")
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Scientific tools for Python - built with openblas"
 arch=("i686" "x86_64")
 license=("custom")
 url="http://numpy.scipy.org/"
-makedepends=('cblas' 'lapack' 'python' 'python2' 'python-setuptools' 'python2-setuptools'
-             'gcc-fortran' 'python-nose' 'python2-nose' 'cython' 'cython2')
-checkdepends=('python-pytest' 'python2-pytest')
+depends=("python" "cython" "openblas-lapack")
+optdepends=("python-nose: testsuite")
+provides=("python3-numpy=${pkgver}" "python-numpy=${pkgver}")
+conflicts=("python3-numpy" "python-numpy")
+makedepends=('cblas' 'lapack' 'python' 'python-setuptools' 'gcc-fortran' 'python-nose' 'cython')
+checkdepends=('python-pytest')
 options=('staticlibs')
-source=("python-numpy-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz") 
-sha256sums=('88835849921a970dae7705b0ea4a144d6b22f5e28148e17f25723c492a74a3c0')
-
-prepare() {
-  cp -a numpy-$pkgver{,-py2}
-  cd numpy-$pkgver-py2
-
-  sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-      -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-      -e "s|#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
-      -i $(find . -name '*.py')
-}
-
-build() {
-  cd "$srcdir"/numpy-$pkgver
-  python setup.py build
-
-  cd "$srcdir"/numpy-$pkgver-py2
-  python2 setup.py build
-}
+source=("python-numpy-$pkgver.tar.gz::https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
+sha256sums=('47b7b6145e7ba5918ce26be25999b6d4b35cf9fbfdf46b7da50090ffdb020445')
 
 check() {
   # TODO: Fix fortran tests here (it works fine after installation)
@@ -45,46 +30,9 @@ check() {
   cd "$PWD/tmp_install"
   PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python3.7/site-packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
 
-  cd "$srcdir"/numpy-$pkgver-py2
-  python2 setup.py config_fc --fcompiler=gnu95 install --root="$PWD/tmp_install" --optimize=1
-  cd "$PWD/tmp_install"
-  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python2.7/site-packages:$PYTHONPATH" python2 -c 'import numpy; numpy.test()'
 }
 
-package_python2-numpy-openblas() {
-  depends=("python2" "cython2" "openblas-lapack")
-  optdepends=("python2-nose: testsuite")
-  provides=("python2-numpy=${pkgver}")
-  conflicts=("python2-numpy")
-
-  _pyver=2.7
-
-  export Atlas=None
-  export LDFLAGS="$LDFLAGS -shared"
-
-  echo "Building Python2"
-  cd "${srcdir}"/numpy-"$pkgver"-py2
-
-  python2 setup.py config_fc --fcompiler=gnu95 build
-
-  python2 setup.py config_fc --fcompiler=gnu95 install \
-    --prefix=/usr --root="${pkgdir}" --optimize=1
-
-  install -m755 -d "${pkgdir}/usr/share/licenses/python2-numpy"
-  install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-numpy/"
-
-  install -m755 -d "${pkgdir}/usr/include/python${_pyver}"
-  ln -sf /usr/lib/python${_pyver}/site-packages/numpy/core/include/numpy "${pkgdir}/usr/include/python${_pyver}/numpy"
-
-  mv "$pkgdir"/usr/bin/f2py{,2}
-}
-
-package_python-numpy-openblas() {
-  depends=("python" "cython" "openblas-lapack")
-  optdepends=("python-nose: testsuite")
-  provides=("python3-numpy=${pkgver}" "python-numpy=${pkgver}")
-  conflicts=("python3-numpy" "python-numpy")
-
+package() {
   _pyver=3.7
   _pyinc=3.7m
 
