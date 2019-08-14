@@ -23,6 +23,9 @@ prepare() {
 }
 
 package() {
+  install -Dm 644 zulip.desktop -t "$pkgdir"/usr/share/applications/
+  rm zulip.desktop
+
   # Install the whole archive in that folder
   install -dm755 "$pkgdir"/usr/lib/zulip-desktop
   mv * "$pkgdir"/usr/lib/zulip-desktop/
@@ -30,6 +33,4 @@ package() {
   # Symlink for ease of use
   install -dm755 "$pkgdir"/usr/bin
   ln -s /usr/lib/zulip-desktop/zulip "$pkgdir"/usr/bin/zulip
-
-  install -Dm 644 zulip.desktop -t "$pkgdir"/usr/share/applications/
 }
