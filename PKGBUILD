@@ -1,9 +1,9 @@
 # Maintainer: Marvin Kreis <MarvinKreis@web.de>
 
 pkgname=rofi-file-browser-extended-git
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="A plugin to use rofi as a file browser"
+pkgdesc="Use rofi to quickly open files"
 arch=("x86_64")
 url="https://github.com/marvinkreis/${pkgname%-git}"
 license=("MIT")
@@ -34,5 +34,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname%-git}"
     make DESTDIR="${pkgdir}" PREFIX=/usr install
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
