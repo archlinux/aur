@@ -4,7 +4,7 @@
 
 pkgname=dokku
 pkgver=0.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
 url="https://github.com/dokku/dokku"
@@ -12,6 +12,7 @@ license=(MIT)
 depends=(
   'bind-tools'
   'docker'
+  'dos2unix'
   'go'
   'gliderlabs-sigil'
   'herokuish'
