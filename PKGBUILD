@@ -1,13 +1,14 @@
-# Maintainer: Eric Liu <eric@hnws.me>
-# Official repo maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: Dave Wheeler <dwwheeler at gmail dot com>
+# Maintainer: Eric Liu <eric at hnws dot me>
+# Official repo maintainer: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
 # Contributor: Marcello "mererghost" Rocha <https://github.com/mereghost>
 # Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
 
 pkgname=elasticsearch-xpack
-pkgver=6.7.0
+pkgver=7.2.1
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
-arch=('any')
+arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
 license=('Apache')
 depends=('java-runtime-headless' 'systemd')
@@ -15,7 +16,7 @@ provides=('elasticsearch')
 conflicts=('elasticsearch')
 relpkgname=elasticsearch
 source=(
-  "https://artifacts.elastic.co/downloads/$relpkgname/$relpkgname-$pkgver.tar.gz"
+  "https://artifacts.elastic.co/downloads/$relpkgname/$relpkgname-$pkgver-linux-x86_64.tar.gz"
   elasticsearch-env
   elasticsearch.service
   elasticsearch@.service
@@ -26,8 +27,8 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
 )
-sha256sums=('bed3587b892319d2e6b25d68c03930c95cf6d74210e3b368a638ca9f837a2315'
-            '1607adfcdefc2a55d7d4c7e8a15669da2cc8096029cce5dd5b9279d4966ceabe'
+sha256sums=('d5d660895a39755ad6af16ec32cff5e2b645d5faf7150c69acc0fe013c604ae7'
+            'ff530bf9440364955e9f38b5c5cc0782da1b1ac1c54870b162b7ded81e56eebc'
             'de3842935b6ef9cb8a05dc18334112f534dccc2292e36052df942a92de7e66db'
             '13090c1d23ae0a21bf6f0f1d1da795d38972f1674b20c3d2d32f54311aa99094'
             'bac40d87acaa5bee209ceb6dfa253009a072e9243fe3b94be42fb5cd44727d6f'
