@@ -1,6 +1,6 @@
 pkgbase = cros-container-guest-tools-git
 	pkgdesc = Guest tools for the Crostini containers on ChromeOS
-	pkgver = r157.5a5206c
+	pkgver = r181.4e1b573
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools
 	install = cros-container-guest-tools.install
@@ -12,6 +12,7 @@ pkgbase = cros-container-guest-tools-git
 	depends = pulseaudio
 	depends = xxd
 	depends = packagekit
+	depends = dbus
 	source = git+https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools
 	source = cros-sftp-conditions.conf
 	source = cros-garcon-conditions.conf
