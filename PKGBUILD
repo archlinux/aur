@@ -1,7 +1,7 @@
 #Maintainer: weearc <q19981121@163.com>
 pkgname=motrix
 pkgver=1.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="elegent downloading tool frontend for aria2c,using vue(release version)"
 arch=('x86_64')
 url="https://github.com/agalwood/Motrix"
@@ -42,7 +42,7 @@ package() {
     # launch script
     echo "#!/bin/bash
 export ELECTRON_IS_DEV=0
-exec /usr/bin/electron /usr/lib/motrix/app
+exec /usr/bin/electron4 /usr/lib/motrix/app
     " > "$pkgdir/usr/bin/motrix"
     chmod +x "$pkgdir/usr/bin/motrix"
     # desktop file
