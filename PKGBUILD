@@ -7,7 +7,7 @@
 _gopkgname='github.com/caddyserver/caddy'
 
 pkgname=caddy
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ url='https://caddyserver.com'
 license=('Apache')
 backup=('etc/caddy/caddy.conf')
 install='caddy.install'
-makedepends=('go>=2:1.12' 'git')
+makedepends=('go>=2:1.12.8' 'git')
 source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'https://caddyserver.com/resources/images/brand/caddy-at-your-service-white.svg'
         'index.html'
@@ -23,7 +23,7 @@ source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'caddy.tmpfiles'
         'caddy.conf'
         'plugins.go')
-sha256sums=('7cbd80c798a0db4195381f730f5409680c6e1239fbc06295b90b34f666a05692'
+sha256sums=('bdfefc0dfee259424ffd14fcafd4502361e5bd63a017208e83e333ad0b597630'
             'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
             '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
             '5f899f3d72bd815ba67a2fbd95144f7ff5d83ae47d1c4bee8297ce4e5d2ed400'
