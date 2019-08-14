@@ -4,7 +4,7 @@
 
 pkgbase=dotnet-core-preview
 pkgname=('dotnet-host-preview' 'dotnet-runtime-preview' 'aspnet-runtime-preview' 'dotnet-sdk-preview')
-pkgver=3.0.0+100+preview.012821
+pkgver=3.0.0+100+preview.013656
 pkgrel=1
 arch=('x86_64')
 url='https://www.microsoft.com/net/core'
@@ -15,12 +15,12 @@ makedepends=(
 )
 options=('staticlibs')
 source=(
-  'https://download.visualstudio.microsoft.com/download/pr/c624c5d6-0e9c-4dd9-9506-6b197ef44dc8/ad61b332f3abcc7dec3a49434e4766e1/dotnet-sdk-3.0.100-preview7-012821-linux-x64.tar.gz'
-  'https://download.visualstudio.microsoft.com/download/pr/02241c22-f7c1-4eb9-a599-02c3b27461f0/00725bf30e6deadc0facc9a1757d0eea/aspnetcore-runtime-3.0.0-preview7.19365.7-linux-x64.tar.gz'
+  'https://download.visualstudio.microsoft.com/download/pr/a0e368ac-7161-4bde-a139-1a3ef5a82bbe/439cdbb58950916d3718771c5d986c35/dotnet-sdk-3.0.100-preview8-013656-linux-x64.tar.gz'
+  'https://download.visualstudio.microsoft.com/download/pr/0bff102b-7983-4947-be67-be740e168ec1/d4b2a3818f2849501710b6ee16a1e2be/aspnetcore-runtime-3.0.0-preview8.19405.7-linux-x64.tar.gz'
   'dotnet.sh'
 )
-sha256sums=('0b5a203c5e7ac4c1506f75a5e8e7aaba3c63d2d3b91a7185c41b1c7e6ca8ce9b'
-            '7fc7c0f3c494e7888917f6af48b615d498372eb5539a44db7de82cf29dfdbc6b'
+sha256sums=('6ce2353764f57a8721fb4caa43851c826913ad3bd24640caeb5503432bd45ca8'
+            '50e81dab852bdf0d95ae6d5fe39860dff676282cd2fe4e3824d76230117be3eb'
             'f4cb02490234b853946477f82514f0c6247b55b08b2e85fae98e99a6e6974edd')
 
 package_dotnet-host-preview() {
