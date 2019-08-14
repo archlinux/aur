@@ -1,7 +1,7 @@
 pkgbase = sccache
 	pkgdesc = ccache with cloud storage
-	pkgver = 0.2.9
-	pkgrel = 2
+	pkgver = 0.2.10
+	pkgrel = 1
 	url = https://github.com/mozilla/sccache
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = sccache
 	makedepends = cargo
 	makedepends = openssl-1.0
 	depends = openssl
-	source = sccache-0.2.9.tar.gz::https://github.com/mozilla/sccache/archive/0.2.9.tar.gz
-	sha512sums = 289109338913c935752e9bbcd45b7bf4ef48be03b5a7d92c93ac220b98f04338ff562030cf126f80bda8db41e83b1103e6c2bd55caaeef4d7804157f4f685080
+	source = sccache-0.2.10.tar.gz::https://github.com/mozilla/sccache/archive/0.2.10.tar.gz
+	sha512sums = 4f4c051e93d937bae42739d9030dddddde48af59d66c69256172ad660e8d6135c64a77421174b98d304ddff9949d33a04e84e05c255ceccc73cd9cab32663989
 
 pkgname = sccache
 
