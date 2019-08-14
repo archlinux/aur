@@ -1,0 +1,18 @@
+pkgbase = renamemytvseries-bin
+	pkgdesc = Rename your TV-Series using TheTVDB
+	pkgver = 2.0.5
+	pkgrel = 2
+	url = https://www.tweaking4all.com/home-theatre/rename-my-tv-series-v2/
+	arch = x86_64
+	license = custom
+	source = LICENSE
+	source = RenameMyTVSeries.sh
+	source = RenameMyTVSeries.desktop
+	source = https://www.tweaking4all.com/RenameMyTVSeries2.tar.gz
+	md5sums = c6618071446e1528f9080cbb2eb5913a
+	md5sums = 21641c4c01d8c31845b32bd9d11e92d6
+	md5sums = 4348d64bef9cee3f50f9d908e72c46dd
+	md5sums = SKIP
+
+pkgname = renamemytvseries-bin
+

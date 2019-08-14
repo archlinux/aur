@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Rename My TV-Series
+Comment=Rename your TV-Seris using TheTVDB
+Categories=AudioVideo;
+Terminal=false
+Icon=RenameMyTVSeries
+Exec=RenameMyTVSeries
