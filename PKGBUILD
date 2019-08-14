@@ -5,7 +5,7 @@
 
 pkgname=pistache-git
 _name=${pkgname%-git}
-pkgver=985.c5927e1
+pkgver=1030.399d04e
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Modern and elegant HTTP and REST framework for C++'
@@ -15,6 +15,7 @@ makedepends=('cmake' 'git')
 checkdepends=('gtest')
 provides=("${_name}")
 conflicts=("${_name}")
+options=(staticlibs)
 url="https://github.com/oktal/${_name}"
 source=("${_name}::git://github.com/oktal/${_name}.git")
 sha256sums=('SKIP')
@@ -29,8 +30,10 @@ build() {
 
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DPISTACHE_BUILD_TESTS=true \
-    -DCMAKE_INSTALL_PREFIX="/usr"
+    -DPISTACHE_USE_SSL=true \
+    .
   make
 }
 
