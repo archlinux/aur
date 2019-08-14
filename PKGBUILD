@@ -5,8 +5,8 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-5.2
-_stable=5.2.5
-_patchver=5.2.6
+_stable=5.2.8
+_patchver=5.2.9
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -26,16 +26,15 @@ source=(
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
   0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
   0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch
-  0005-netfilter-nf_tables-fix-module-autoload-for-redir.patch
   # Arch-Linux-kernel-vx.xx.x-arch1.patch is not needed for rc1
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('c645402843f90a69426975f8923923dfc6edebb5d1bc0092560ffb7135d3cd96'
+sha256sums=('a127cd06cc01468e5564c5242827610b679827d7b40c2a2e4d82c629dd0f6937'
             'SKIP'
-            '5096bbc224b69b73c8e00243f7b7ea5b38438300a4e9aa3240ba1e5c9d268e15'
+            '50f42ac40e5c37910a2c06acc2db7a706343e4745a0af6e1fb4e5db453a90a69'
             'SKIP'
             'c405c700b2cb06c4ec805b7e327d0b66416395995519281194a8293da69b398a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -44,8 +43,7 @@ sha256sums=('c645402843f90a69426975f8923923dfc6edebb5d1bc0092560ffb7135d3cd96'
             '702840a04a8f08bec4688865ae41303dfc9f8c173c8dc10bfa4ffe12fce562a5'
             '187fa8d9a6c5777a8930dcecfafdd9d6e9095d4bf96ec060e756fb7c6a88b74d'
             'e2c9c31219cedbb4a279b59940239b4b5df0a1a2757d8b0299d376e74e0f6fb9'
-            'b1dae3c4a169f4809eec40eae06222e7c663878c2343189aea45b99db74cba6d'
-            'e6e912c6b014b4f622b4ed8005d46bffda19e260b357c7cb912c6283986c47ef')
+            'b1dae3c4a169f4809eec40eae06222e7c663878c2343189aea45b99db74cba6d')
 
 _kernelname=${pkgbase#linux}
 
