@@ -7,6 +7,7 @@ pkgbase = smex
 	license = CUSTOM
 	depends = python
 	depends = python-pyperclip
+	depends = python-click
 	source = https://github.com/anar66/python-test/archive/master.zip
 	sha256sums = SKIP
 
