@@ -1,0 +1,16 @@
+pkgbase = cnpy-git
+	pkgdesc = Library to read/write .npy and .npz files in C/C++
+	pkgver = r53.4e8810b
+	pkgrel = 1
+	url = https://github.com/rogersce/cnpy
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	provides = cnpy
+	source = git+https://github.com/rogersce/cnpy.git
+	md5sums = SKIP
+
+pkgname = cnpy-git
+
