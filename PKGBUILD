@@ -4,7 +4,7 @@
 
 pkgname=leatherman
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Collection of C++ and CMake utility libraries"
 arch=('x86_64')
 url="https://github.com/puppetlabs/leatherman"
@@ -14,12 +14,15 @@ makedepends=('boost' 'cmake' 'rapidjson' 'python')
 checkdepends=('ruby')
 optdepends=('python: cpplint cmake script')
 provides=(
-  leatherman_execution.so
+  leatherman_curl.so
   leatherman_dynamic_library.so
-  leatherman_util.so
-  leatherman_locale.so
+  leatherman_execution.so
   leatherman_file_util.so
+  leatherman_json_container.so
+  leatherman_locale.so
   leatherman_logging.so
+  leatherman_ruby.so
+  leatherman_util.so
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/puppetlabs/leatherman/archive/${pkgver}.tar.gz"
         librapidjson-1.1.patch)
