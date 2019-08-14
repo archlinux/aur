@@ -1,5 +1,5 @@
 pkgname=python-pymc3
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="Probabilistic Programming in Python. Uses Theano as a backend, supports NUTS and ADVI."
 arch=('any')
@@ -9,7 +9,7 @@ depends=('python>=3.4' 'python-scipy' 'python-numpy' 'python-matplotlib' 'python
 optdepends=('python-patsy' 'python-six' 'python-h5py')
 options=(!emptydirs)
 source=("https://github.com/pymc-devs/pymc3/archive/v${pkgver}.tar.gz")
-sha256sums=('eb3a389e68bd1d69c5d4b5d84b730366686059f970d71be74d68266c75e2a6e3')
+sha256sums=('5330fa7b9be470c4d8f3fffe23fc8e0bcdeb0b281bedcd765f1e9579b43865e6')
 
 package() {
   cd "$srcdir/pymc3-$pkgver"
