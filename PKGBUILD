@@ -3,26 +3,20 @@
 # Original Maintainer::  	Jonathan Hudson <jh+arch@daria.co.uk>
 
 pkgname=mapserver
-pkgver=7.2.1
-pkgrel=2
+pkgver=7.4.1
+pkgrel=1
 pkgdesc="Platform for publishing spatial data and interactive mapping applications to the web"
 arch=(i686 x86_64)
 license=('MIT')
 url="http://www.mapserver.org"
 depends=('libpng' 'freetype2' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'libpqxx' 'pdflib-lite' 'geos' 'agg' 'apache' 'protobuf-c'
-'fcgi' 'mod_fcgid' 'python2' 'swig' 'libsvg-cairo' 'fribidi' )
+'fcgi' 'mod_fcgid' 'python2' 'swig3' 'libsvg-cairo' 'fribidi' )
 ## For v8 support require v8-3.20; for PHP mapscript require php, php-pear, php-apache
 makedepends=('cfitsio')
 options=()
-source=("http://download.osgeo.org/mapserver/mapserver-${pkgver}.tar.gz" cmake-3.12.patch)
-md5sums=('03cd2532df9def0011c2f586e2e615fd'
-         '4f336526a3a0b20ef784d8c8c88e38df')
+source=("http://download.osgeo.org/mapserver/mapserver-${pkgver}.tar.gz")
+md5sums=('3a113a82fcf7dab97476c7585b0e9f39')
 
-prepare() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  
-  patch -p1 < ../cmake-3.12.patch
-}
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -79,11 +73,11 @@ build() {
 	-DWITH_WFS=ON \
 	-DWITH_WMS=ON \
 	-DWITH_XMLMAPFILE=OFF \
+	-DSWIG_EXECUTABLE="/usr/bin/swig-3" \
 	-DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
     
   make clean
-  make -j2
-  
+  make -j$(nproc)
 }
 
 package() {
