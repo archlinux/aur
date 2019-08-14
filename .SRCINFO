@@ -1,6 +1,6 @@
 pkgbase = calls-git
 	pkgdesc = Phone dialer and call handler
-	pkgver = 0.0.1.r4.gee126b3
+	pkgver = 0.0.1.r47.g8f38e50
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/calls
 	arch = i686
@@ -8,6 +8,9 @@ pkgbase = calls-git
 	arch = armv6h
 	arch = armv7h
 	license = GPL3
+	makedepends = gobject-introspection
+	depends = evolution-data-server
+	depends = gom
 	depends = gsound
 	depends = libhandy
 	depends = libpeas

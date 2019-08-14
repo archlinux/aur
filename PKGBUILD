@@ -1,17 +1,19 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls-git
-pkgver=0.0.1.r4.gee126b3
+pkgver=0.0.1.r47.g8f38e50
 pkgrel=1
 pkgdesc="Phone dialer and call handler"
 arch=(i686 x86_64 armv6h armv7h)
 url="https://source.puri.sm/Librem5/calls"
 license=(GPL3)
-depends=(gsound
+depends=(evolution-data-server
+         gom
+         gsound
          libhandy
          libpeas
          modemmanager)
-makedepends=()
+makedepends=(gobject-introspection)
 provides=(calls)
 conflicts=(calls)
 source=("git+https://source.puri.sm/Librem5/calls.git")
