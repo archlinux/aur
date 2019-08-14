@@ -1,7 +1,7 @@
 # Maintainer: Norbert Melzer <timmelzer PLUS aur AT gmail DOT com>
 
 pkgname=gleam
-pkgver="0.2.0"
+pkgver="0.3.0"
 pkgrel=1
 pkgdesc="A statically typed language for the Erlang VM"
 arch=('any')
@@ -19,7 +19,7 @@ options=(strip !docs !libtool !staticlibs)
 install=
 changelog=
 source=("https://github.com/lpil/gleam/archive/v${pkgver}.tar.gz")
-md5sums=('7d24f85015161ad30222bb79a1daef74')
+md5sums=('9a5ed955a544614ac4d1b7eddfba0d55')
 
 prepare() {
     cd "$pkgname-$pkgver"
