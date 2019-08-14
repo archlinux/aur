@@ -1,0 +1,53 @@
+From 0ed6a7b65d89e439f3ea325e3d4cd8e7579a0f8f Mon Sep 17 00:00:00 2001
+From: Michael Smith <michael.smith@puppet.com>
+Date: Tue, 5 Sep 2017 11:14:57 -0700
+Subject: [PATCH] (LTH-130) Use rapidjson 1.1.0
+
+rapidjson is no longer vendored, it must be installed on the system
+independently.
+---
+ CMakeLists.txt                |   1 -
+ json_container/CMakeLists.txt |   6 +++---
+ rapidjson/CMakeLists.txt      |   1 -
+ 6 files changed, 10 insertions(+), 5 deletions(-)
+ delete mode 100644 rapidjson/CMakeLists.txt
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3d9a9a2..3ba6cd2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -64,7 +64,6 @@ add_leatherman_dir(nowide)
+ add_leatherman_dir(util)
+ add_leatherman_dir(locale)
+ add_leatherman_dir(logging)
+-add_leatherman_dir(rapidjson)
+ add_leatherman_dir(json_container)
+ add_leatherman_dir(file_util)
+ add_leatherman_dir(curl)
+diff --git a/json_container/CMakeLists.txt b/json_container/CMakeLists.txt
+index 09efa38..df10fc3 100644
+--- a/json_container/CMakeLists.txt
++++ b/json_container/CMakeLists.txt
+@@ -1,11 +1,11 @@
+ find_package(Boost 1.54 REQUIRED COMPONENTS regex)
++find_package(RapidJSON 1.1.0 REQUIRED)
+ 
+ add_leatherman_deps("${Boost_LIBRARIES}")
+-add_leatherman_includes("${Boost_INCLUDE_DIRS}")
++add_leatherman_includes("${Boost_INCLUDE_DIRS} ${RAPIDJSON_INCLUDE_DIRS}")
+ 
+-leatherman_dependency(rapidjson)
+ leatherman_dependency(locale)
+ 
+ add_leatherman_library("src/json_container.cc")
+ add_leatherman_headers("inc/leatherman")
+-add_leatherman_test("tests/json_container_test.cc")
+\ No newline at end of file
++add_leatherman_test("tests/json_container_test.cc")
+diff --git a/rapidjson/CMakeLists.txt b/rapidjson/CMakeLists.txt
+deleted file mode 100644
+index 0e7dd0d..0000000
+--- a/rapidjson/CMakeLists.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-add_leatherman_vendored("rapidjson-1.0.2.zip" "rapidjson" "include")
