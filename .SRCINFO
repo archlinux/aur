@@ -40,7 +40,6 @@ pkgbase = ffmpeg-headless
 	depends = libx265.so
 	depends = libxvidcore.so
 	depends = rtmpdump
-	depends = dav1d
 	provides = libavcodec.so
 	provides = libavdevice.so
 	provides = libavfilter.so

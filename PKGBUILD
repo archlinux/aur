@@ -21,7 +21,8 @@ depends=('aom' 'bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libbluray.so' 'libva'
          'libvorbisenc.so' 'libvorbis.so'
          'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so'
-         'rtmpdump' 'dav1d')
+         'rtmpdump')
+         #'libdav1d.so'
 makedepends=('yasm')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so'
@@ -54,7 +55,7 @@ build() {
     --enable-libaom \
     --disable-libass \
     --enable-libbluray \
-    --enable-libdav1d \
+    --disable-libdav1d \
     --enable-libdrm \
     --disable-libfreetype \
     --enable-libfribidi \
