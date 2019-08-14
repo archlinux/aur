@@ -1,16 +1,18 @@
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Aris Synodinos <arissynod-gmail-com>
+
 pkgname=gazebo-hg
-pkgver=10.0.1.37153
+pkgver=11.0.0.38446
 pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments. Mercurial version."
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
 license=('Apache')
-# See: http://www.gazebosim.org/user_guide/installation__requirements.html
-depends=('boost>=1.40.0' 'curl>=4.0' 'freeglut' 'freeimage>=3.0'
-         'intel-tbb>=3.0' 'libccd>=1.4' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
-         'ogre' 'protobuf>=2.3.0' 'sdformat>=6.0.0' 'ignition-math>=4' 'ignition-transport>=4'
-         'ignition-common' 'ignition-fuel_tools' 'ignition-msgs' 'tinyxml2' 'qwt')
+# See: http://www.gazebosim.org/tutorials?tut=install_from_source&cat=install
+depends=('boost' 'curl' 'freeglut' 'freeimage' 'intel-tbb' 'libccd' 'libltdl'
+         'libtar' 'libxml2' 'ogre=1.9' 'protobuf' 'sdformat=6' 'ignition-math=4'
+         'ignition-transport=4' 'ignition-common=1' 'ignition-fuel_tools=1'
+         'ignition-msgs=1' 'tinyxml2' 'qwt')
 optdepends=('bullet: Bullet support'
             'cegui: Design custom graphical interfaces'
             'ffmpeg: Playback movies on textured surfaces'
@@ -21,10 +23,9 @@ optdepends=('bullet: Bullet support'
             'ruby-ronn: Generate manpages'
             'simbody: Simbody support'
             'urdfdom: Load URDF files')
-makedepends=('cmake' 'doxygen' 'mercurial' 'pkgconf>=0.26')
+makedepends=('cmake' 'doxygen' 'ignition-cmake=0' 'mercurial')
 install="gazebo.install"
 provides=('gazebo')
-conflicts=('gazebo')
 
 _hgrepo=gazebo
 _hgroot=https://bitbucket.org/osrf

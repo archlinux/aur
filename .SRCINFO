@@ -1,6 +1,6 @@
 pkgbase = gazebo-hg
 	pkgdesc = A multi-robot simulator for outdoor environments. Mercurial version.
-	pkgver = 6.0.0.19165
+	pkgver = 11.0.0.38446
 	pkgrel = 1
 	url = http://gazebosim.org/
 	install = gazebo.install
@@ -9,33 +9,38 @@ pkgbase = gazebo-hg
 	license = Apache
 	makedepends = cmake
 	makedepends = doxygen
+	makedepends = ignition-cmake=0
 	makedepends = mercurial
-	makedepends = pkg-config>=0.26
-	depends = boost>=1.40.0
-	depends = curl>=4.0
+	depends = boost
+	depends = curl
 	depends = freeglut
-	depends = freeimage>=3.0
-	depends = intel-tbb>=3.0
-	depends = libccd>=1.4
-	depends = libltdl>=2.4.2
-	depends = libtar>=1.2
-	depends = libxml2>=2.7.7
-	depends = ogre
-	depends = protobuf>=2.3.0
-	depends = qt4
-	depends = sdformat>=2.0.1
-	depends = tinyxml>=2.6.2
-	optdepends = bullet>=2.82: Bullet support
-	optdepends = cegui-0.7>=0.7.5: Design custom graphical interfaces
-	optdepends = ffmpeg>=0.8.3: Playback movies on textured surfaces
+	depends = freeimage
+	depends = intel-tbb
+	depends = libccd
+	depends = libltdl
+	depends = libtar
+	depends = libxml2
+	depends = ogre=1.9
+	depends = protobuf
+	depends = sdformat=6
+	depends = ignition-math=4
+	depends = ignition-transport=4
+	depends = ignition-common=1
+	depends = ignition-fuel_tools=1
+	depends = ignition-msgs=1
+	depends = tinyxml2
+	depends = qwt
+	optdepends = bullet: Bullet support
+	optdepends = cegui: Design custom graphical interfaces
+	optdepends = ffmpeg: Playback movies on textured surfaces
 	optdepends = gdal: Digital elevation terrains support
-	optdepends = libdart>=3.0: DART support
+	optdepends = libdart: DART support
+	optdepends = libspnav: space navigator joystick support
 	optdepends = libusb: USB peripherals support
 	optdepends = ruby-ronn: Generate manpages
-	optdepends = simbody>=3.3: Simbody support
+	optdepends = simbody: Simbody support
 	optdepends = urdfdom: Load URDF files
 	provides = gazebo
-	conflicts = gazebo
 	source = gazebo::hg+https://bitbucket.org/osrf/gazebo#branch=default
 	md5sums = SKIP
 
