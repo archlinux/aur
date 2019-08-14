@@ -1,0 +1,16 @@
+pkgbase = xtext-git
+	pkgdesc = Display Text w/ X11
+	pkgver = 20190813.9815e2a
+	pkgrel = 1
+	url = www.github.com/resloved/xtext
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pango
+	depends = cairo
+	depends = xorg-server
+	source = git://github.com/resloved/xtext.git
+	md5sums = SKIP
+
+pkgname = xtext-git
+
