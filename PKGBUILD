@@ -1,14 +1,14 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=zulip-desktop-git
-pkgver=3.1.0beta+r34+g47b729c
+pkgver=4.0.0+r1+gab62b8b
 pkgrel=1
 pkgdesc='Real-time team chat based on the email threading model (git)'
 arch=(i686 x86_64)
 url=https://zulipchat.com
 license=(Apache)
-depends=(alsa-lib atk at-spi2-atk cairo dbus fontconfig gdk-pixbuf2 glib2 gtk3 hicolor-icon-theme libcups libxcomposite libxcursor libxdamage libxext libxfixes libxi libxkbfile libxrandr libxrender libxss libxtst nspr nss pango)
-makedepends=(git npm python2 libxkbfile typescript)
+depends=(alsa-lib atk at-spi2-atk cairo dbus fontconfig gdk-pixbuf2 glib2 gtk3 hicolor-icon-theme libcups libxcomposite libxcursor libxdamage libxfixes libxi libxkbfile libxrandr libxrender libxss libxtst nspr nss pango)
+makedepends=(git npm python2 typescript)
 provides=(zulip-desktop)
 conflicts=(zulip-desktop zulip-desktop-bin)
 source=(git+https://github.com/zulip/${pkgname/-git/}
@@ -18,7 +18,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd ${pkgname/-git/}
-  git describe --tags | sed 's#v##;s#-#+#g;s#+\([a-zA-Z]\)#\1#;s#+\([0-9]\)#+r\1#'
+  git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
 }
 
 prepare() {
