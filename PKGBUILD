@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='mongodb-compass-readonly'
-pkgver='1.19.2'
+pkgver='1.19.3'
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition'
 arch=('x86_64')
@@ -9,11 +9,11 @@ license=('custom')
 depends=('electron3' 'libsecret')
 optdepends=('gnome-keyring')
 source=(
-	'https://downloads.mongodb.com/compass/mongodb-compass-readonly-1.19.2.x86_64.rpm'
+	'https://downloads.mongodb.com/compass/mongodb-compass-readonly-1.19.3.x86_64.rpm'
 	'launch.sh'
 )
 sha256sums=(
-	'f7d34de77f2a9f6151f4f670ba3c3af8ab5c738a28115d67ed7e490e5f257837'
+	'2e5a73b47db2b4dcd4a33ad26f4dc097d7746de00622a9d63aacdd75b20ecd3f'
 	'7b4ba718a5e9d42402c251b1216a586dd3c0b9504affdd18c1eac1b2040bcea5'
 )
 
