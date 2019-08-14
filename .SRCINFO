@@ -1,6 +1,6 @@
 pkgbase = jgd-springawakening
 	pkgdesc = Pastel yellow and green theme for GTK2 and GTK3 (3.10 and 3.20+)
-	pkgver = 08_05_19
+	pkgver = 08_12_19
 	pkgrel = 1
 	url = http://www.jasong-designs.com/2016/08/12/jgd-spring-awakening-gtk/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = jgd-springawakening
 	depends = gtk-engine-murrine
 	optdepends = openbox: optional window manager theme
 	optdepends = ttf-dejavu: font support
-	source = https://github.com/jgpws/jgd-spring-awakening/raw/master/downloads/jgd-springawakening-08-05-19.tar.gz
-	md5sums = 793397c0ed35db0baa36e7671612bfc1
+	source = https://github.com/jgpws/jgd-spring-awakening/raw/master/downloads/jgd-springawakening-08-12-19.tar.gz
+	md5sums = c0c8ad193f3743d01fe6792ee3825d92
 
 pkgname = jgd-springawakening
 
