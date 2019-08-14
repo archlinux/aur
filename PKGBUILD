@@ -2,12 +2,12 @@
 
 pkgname=nexys2prog
 pkgver=20101021
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to load .bit files to Digilent's Nexys 2 board"
 arch=("i686" "x86_64")
 url="http://ixo-jtag.sourceforge.net/nexys2-linux-howto.html"
 license=("GPL2")
-depends=(libftd2xx fxload urjtag-svn)
+depends=(libftd2xx fxload urjtag)
 makedepends=(git)
 options=('!strip')
 _gitroot="git+https://github.com/svn2github/ixo-usb-jtag.git"
