@@ -1,4 +1,4 @@
-pkgname=smeh
+pkgname=smex
 pkgver=2
 pkgrel=3
 pkgdesc="генератор смеха на питоне"
