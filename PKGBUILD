@@ -2,7 +2,7 @@
 
 pkgname=fogtrack
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A cli tool for all you fogbugz tracking needs'
 arch=(x86_64 i686)
 url='https://gitlab.com/jreinert/fogtrack'
