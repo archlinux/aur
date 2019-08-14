@@ -2,7 +2,7 @@
 
 pkgname=ant-theme-git
 _pkgname=Ant
-pkgver=r66.c71f9e0
+pkgver=r71.8889b8a
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look"
 arch=("any")
@@ -36,16 +36,6 @@ build() {
 	msg2 "Setting gnome-shell font face to ${THEME_FONT_FACE}"
 	msg2 "Setting gnome-shell font size to ${THEME_FONT_SIZE}"
 
-	if [ "${THEME_FONT_FACE}" != "Roboto" ]; then
-		sed -i -re "s/font-family: (.*);/font-family: ${THEME_FONT_FACE}, \1;/" \
-			"${srcdir}/${_pkgname}/gnome-shell/gnome-shell.css"
-	fi
-
-	if [ "${THEME_FONT_SIZE}" != "10" ]; then
-		sed -i -re "s/font-size: (.*);/font-size: ${THEME_FONT_SIZE}pt;/" \
-			"${srcdir}/${_pkgname}/gnome-shell/gnome-shell.css"
-	fi
-
 	msg2 "Rendering assets, please wait"
 	pushd gtk-2.0
 	while read $line; do echo -n "."; done < \
@@ -57,6 +47,16 @@ build() {
 		<(./render-gtk3-assets.py; ./render-gtk3-assets-hidpi.py); echo
 	popd
 	msg2 "Done!"
+
+	if [ "${THEME_FONT_FACE}" != "Roboto" ]; then
+		sed -i -re "s/font-family: (.*);/font-family: ${THEME_FONT_FACE}, \1;/" \
+			"${srcdir}/${_pkgname}/gnome-shell/gnome-shell.css"
+	fi
+
+	if [ "${THEME_FONT_SIZE}" != "10" ]; then
+		sed -i -re "s/font-size: (.*);/font-size: ${THEME_FONT_SIZE}pt;/" \
+			"${srcdir}/${_pkgname}/gnome-shell/gnome-shell.css"
+	fi
 }
 
 package() {
