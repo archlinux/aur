@@ -5,10 +5,10 @@
 
 pkgname=mpv-git-nc
 _pkgname=mpv-git
-pkgver=0.29.1.r107.gd6d6da4711
+pkgver=0.29.1.r353.g65b1c2d065
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL3')
 url='https://mpv.io/'
 depends=(
@@ -18,9 +18,9 @@ depends=(
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
         'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader' 'shaderc'
-        
+        'libplacebo'
     # AUR:
-        'ffmpeg-git-nc' 'mujs' 'rsound' 'crossc'
+        'ffmpeg-git-nc' 'mujs' 'rsound' 'spirv-cross'
 )
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
@@ -49,11 +49,11 @@ pkgver() {
 build() {
     cd "$_pkgname"
     
-    export PKG_CONFIG_PATH="/usr/lib/ffmpeg-git/pkgconfig"
+    export PKG_CONFIG_PATH="/usr/lib/ffmpeg-git-nc/pkgconfig"
     
     msg2 'Running bootstrap. Please wait...'
     ./bootstrap.py
-    
+
     ./waf configure \
         --color='yes' \
         --prefix='/usr' \
@@ -76,6 +76,7 @@ build() {
         --disable-clang-database \
         \
         --disable-android \
+        --disable-egl-android \
         --disable-swift \
         --disable-uwp \
         --disable-win32-internal-pthreads \
@@ -143,13 +144,14 @@ build() {
         --enable-jpeg \
         --disable-direct3d \
         --enable-shaderc \
-        --enable-crossc \
+        --enable-spirv-cross \
         --disable-d3d11 \
         --disable-rpi \
         --disable-ios-gl \
         --enable-plain-gl \
         --disable-mali-fbdev \
         --enable-gl \
+        --enable-libplacebo \
         --enable-vulkan \
         \
         --disable-videotoolbox-gl \
