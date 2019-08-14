@@ -1,0 +1,20 @@
+pkgbase = manjaro-mono-splash-plasma5-git
+	pkgdesc = Manjaro Linux Mono KDE Splash Screen (git version)
+	pkgver = 20190814
+	pkgrel = 1
+	url = https://github.com/FadeMind/manjaro-mono-splash-plasma5
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = plasma-desktop
+	optdepends = materia-kde
+	optdepends = papirus-icon-theme
+	provides = manjaro-mono-splash-plasma5
+	conflicts = manjaro-mono-splash-plasma5
+	options = !strip
+	source = manjaro-mono-splash-plasma5::git+https://github.com/FadeMind/manjaro-mono-splash-plasma5.git
+	sha256sums = SKIP
+
+pkgname = manjaro-mono-splash-plasma5-git
+
