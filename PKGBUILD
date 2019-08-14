@@ -2,7 +2,7 @@
 # Contributor: Leo Schwarz (evotopid) <mail@leoschwarz.com>
 
 pkgname=("python-fakeredis" "python2-fakeredis")
-pkgver=1.0.3f
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Fake implementation of redis API (redis-py) for testing purposes"
 arch=("any")
@@ -14,17 +14,14 @@ checkdepends=(
     "python-hypothesis" "python2-hypothesis"
 )
 options=(!emptydirs)
-
-# Not using a release because as of now no release works.
-# See https://github.com/jamesls/fakeredis/issues/245
-source=("git+https://github.com/jamesls/fakeredis.git#commit=d675ee1d6c4ac7a3bb0129f916232c0f2c6e9dd5")
-sha256sums=(SKIP)
+source=("https://github.com/jamesls/fakeredis/archive/$pkgver.tar.gz")
+sha256sums=("2ff68a178db6a343a607e56c1a3df7c49e5b3b5d26c65cb8ab48848743b1262a")
 
 build() {
     cd "$srcdir"
     rm -rf python{2,3}-build
     for builddir in python{2,3}-build; do
-        cp -r "fakeredis" "$builddir"
+        cp -r "fakeredis-$pkgver" "$builddir"
         pushd "$builddir"
             "${builddir%-build}" setup.py build
         popd
@@ -32,12 +29,10 @@ build() {
 }
 
 check() {
-     # tests don't pass (https://github.com/jamesls/fakeredis/issues/242)
-    return 0
-    cd "$srcdir/python3-build"
-    python3 setup.py test
-    cd "$srcdir/python2-build"
-    python2 setup.py test
+  cd "$srcdir/python3-build"
+  python3 setup.py test
+  cd "$srcdir/python2-build"
+  python2 setup.py test
 }
 
 package_python-fakeredis() {
