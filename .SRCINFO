@@ -1,7 +1,7 @@
 pkgbase = zrythm
 	pkgdesc = An highly automated, intuitive, Digital Audio Workstation (DAW)
 	pkgver = 0.6.003
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zrythm.org
 	arch = x86_64
 	arch = i686
@@ -23,7 +23,6 @@ pkgbase = zrythm
 	depends = alsa-lib
 	depends = ladspa
 	depends = fftw
-	depends = zrythm-man
 	optdepends = portaudio: portaudio backend
 	optdepends = qt5-base: for embedding qt5 plugin UIs
 	conflicts = zrythm-git
