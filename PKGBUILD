@@ -11,7 +11,7 @@ depends=(gsound
          libhandy
          libpeas
          modemmanager)
-makedepends=()
+makedepends=(gobject-introspection)
 source=("https://source.puri.sm/Librem5/calls/-/archive/v${pkgver}/calls-v${pkgver}.tar.gz")
 sha256sums=(SKIP)
 

@@ -8,6 +8,7 @@ pkgbase = calls
 	arch = armv6h
 	arch = armv7h
 	license = GPL3
+	makedepends = gobject-introspection
 	depends = gsound
 	depends = libhandy
 	depends = libpeas
