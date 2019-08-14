@@ -1,0 +1,16 @@
+pkgbase = zulip-desktop-bin
+	pkgdesc = Zulip Desktop Client - Workplace chat that improves your productivity.
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://zulipchat.com
+	arch = x86_64
+	license = Apache
+	provides = zulip-desktop=4.0.0
+	conflicts = zulip-desktop
+	source = https://github.com/zulip/zulip-desktop/releases/download/v4.0.0/Zulip-4.0.0-linux-x64.zip
+	source = zulip.desktop
+	sha256sums = c9c4f75871cf2fb88a22d68112e06300bb45bac75a06bf4d0af0ccfc530a756c
+	sha256sums = 4cf97c330c440c5f3d0cdc3bd9af9b22a0475dd462bbe336d591d52b5bb6236e
+
+pkgname = zulip-desktop-bin
+
