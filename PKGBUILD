@@ -4,8 +4,8 @@
 # Contributor: kpcyrd <git@rxv.cc>
 
 pkgname=libressl-side
-pkgver=2.9.1
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='libressl side-by-side with openssl'
 url='http://www.libressl.org/'
 arch=('x86_64')
@@ -17,7 +17,7 @@ backup=('etc/libressl/openssl.cnf')
 
 source=(https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz{,.asc})
 sha512sums=(
-	'7051911e566bb093c48a70da72c9981b870e3bf49a167ba6c934eece873084cc41221fbe3cd0c8baba268d0484070df7164e4b937854e716337540a87c214354'
+	'460fa390012218262b7c148a28e6ddfc0dc3d669c4bdd37b68bfa6f50a0cb2fb81a277fb46ae0ac22673aae5b5cc4476fe96e56471a6812176bf76e9c5e10838'
 	'SKIP'
 )
 
