@@ -1,0 +1,44 @@
+pkgbase = manjarowish-pantheon-settings
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://github.com/librewish/manjarowish-pantheon-settings
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/librewish/manjarowish-pantheon-settings.git#branch=master
+	sha256sums = SKIP
+
+pkgname = manjarowish-pantheon-settings
+	pkgdesc = Manjarowish Linux pantheon settings
+	install = manjarowish-pantheon-settings.install
+	depends = kvantum-qt5
+	depends = preload
+	depends = haveged
+	depends = irqbalance
+	depends = systemd-swap
+	depends = nohang-git
+	depends = qt5ct
+	depends = elementary-icon-theme-git
+	depends = gtk-theme-elementary-git
+	depends = pantheon-session
+	depends = gala-git
+	depends = granite-git
+	depends = plank-git
+	depends = switchboard-git
+	depends = wingpanel-git
+	depends = ttf-droid
+	depends = ttf-opensans
+	depends = ttf-roboto
+	depends = gnome-settings-daemon-elementary
+	depends = gnome-settings-daemon-compat
+	optdepends = timeshift-autosnap
+	optdepends = grub-btrfs
+	provides = manjaro-desktop-settings
+	conflicts = manjaro-desktop-settings
+	conflicts = manjarowish-dark-settings-settings
+	conflicts = manjaro-kde-settings
+	conflicts = manjarowish-light-settings-settings
+	conflicts = pantheon-workaround
+	conflicts = pantheon-default-settings
+	replaces = manjarowish-dark-settings-settings,manjaro-kde-settings,manjarowish-light-settings-settings
+

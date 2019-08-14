@@ -1,0 +1,41 @@
+msg() {
+    ALL_OFF="\e[1;0m"
+    BOLD="\e[1;1m"
+    GREEN="${BOLD}\e[1;32m"
+	local mesg=$1; shift
+	printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
+}
+
+post_upgrade() {
+  glib-compile-schemas usr/share/glib-2.0/schemas
+  gtk-update-icon-cache -ftq usr/share/icons/hicolor
+  systemctl is-active haveged >/dev/null || systemctl enable haveged
+  systemctl is-active systemd-swap >/dev/null || systemctl enable systemd-swap
+  systemctl is-active irqbalance >/dev/null || systemctl enable irqbalance
+  systemctl is-active preload >/dev/null || systemctl enable preload
+  systemctl is-active grub-btrfs.path >/dev/null || systemctl enable grub-btrfs.path
+  systemctl is-active fstrim.timer >/dev/null || systemctl enable fstrim.timer
+  systemctl is-active nohang >/dev/null || systemctl enable nohang
+  echo ""
+  msg "services enabled."
+  echo ""
+}
+
+post_install() {
+  glib-compile-schemas usr/share/glib-2.0/schemas
+  gtk-update-icon-cache -ftq usr/share/icons/hicolor
+  msg "Attempting to enable services..."
+  systemctl is-active haveged >/dev/null || systemctl enable haveged
+  systemctl is-active systemd-swap >/dev/null || systemctl enable systemd-swap
+  systemctl is-active irqbalance >/dev/null || systemctl enable irqbalance
+  systemctl is-active preload >/dev/null || systemctl enable preload
+  systemctl is-active grub-btrfs.path >/dev/null || systemctl enable grub-btrfs.path
+  systemctl is-active fstrim.timer >/dev/null || systemctl enable fstrim.timer
+  systemctl is-active nohang >/dev/null || systemctl enable nohang
+  echo ""
+  msg "services should now be enabled."
+  msg "Reboot your system, so changes will take effect.."
+  echo ""
+}
+
+# vim: ts=2 sw=2 et:
