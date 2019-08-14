@@ -14,7 +14,7 @@ makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'l
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver')
-replaces=('sdl2')
+conflicts=('sdl2')
 source=("https://www.libsdl.org/release/SDL2-${pkgver}.tar.gz")
 sha512sums=('f49b869362699b3282f6e82920e59c7fac581bcbf955f18a81cc126293c08093a90df7fcb39517cc8bc32708d2213fe645a42b655d6d811c1386efebb3d3c798')
 
