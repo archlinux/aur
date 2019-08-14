@@ -1,0 +1,20 @@
+diff --git a/setup.py b/setup.py
+index 91b4bdb..6b45047 100644
+--- a/setup.py
++++ b/setup.py
+@@ -40,12 +40,13 @@ setuptools.setup(
+         "pyxel.examples.assets",
+     ],
+     package_data={"": ["*.pyxres", "*.png", "*.gif", "*.dylib", "*.dll", "*.so"]},
+-    install_requires=["numpy", "pyinstaller"],
++    install_requires=["numpy"],
++    extras_require={"packager": ["pyinstaller"]},
+     python_requires=">=3.7",
+     entry_points={
+         "console_scripts": [
+             "pyxeleditor=pyxel.editor:run",
+-            "pyxelpackager=pyxel.packager:run",
++            "pyxelpackager=pyxel.packager:run [packager]",
+             "install_pyxel_examples=pyxel.examples:install",
+         ]
+     },
