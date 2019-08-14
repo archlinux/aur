@@ -5,7 +5,7 @@
 
 pkgname=gnudatalanguage
 pkgver=0.9.8
-pkgrel=8
+pkgrel=9
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"
@@ -26,7 +26,7 @@ depends=('python2'
          'udunits'
          'eigen3'
          'libtirpc'
-         'imagemagick')
+         'libmagick6')
 makedepends=('cmake')
 options=('!makeflags')
 source=("http://downloads.sourceforge.net/gnudatalanguage/gdl-${pkgver}.tgz"
