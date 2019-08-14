@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc='A minimal terminal emulator for Wayland on Linux.'
 arch=(x86_64)
 url='https://github.com/ii8/havoc'
-license=('MIT')
+license=('MIT' 'custom')
 depends=('wayland')
 makedepends=('wayland-protocols' 'git')
 provides=(havoc)
@@ -26,5 +26,6 @@ build() {
 
 package() {
 	cd "${srcdir}"/havoc
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	make PREFIX='/usr' DESTDIR="${pkgdir}" install
 }
