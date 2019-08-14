@@ -1,19 +1,21 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
 
 pkgname='xmrig-proxy'
-pkgver=2.14.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Stratum protocol proxy for Monero, Electroneum, Sumokoin and AEON pools; HTTP API disabled, donation percentage is 0.'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-proxy'
 depends=('libuv')
 makedepends=('cmake' 'libuv')
-optdepends=('monero: wallet')
+optdepends=('monero: XMR wallet'
+            'xmrig-bin: XMR CPU miner - binary'
+            'xmrig: XMR CPU miner')
 license=('GPL')
 install="${pkgname}.install"
 changelog=CHANGELOG.md
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1f0088f8a49f663e09e353ba3aa01d0d85cf8f1a5b1b175d5945a4136d3778dc')
+sha256sums=('b3203e38ae0178e90004a41b0b2b9f767a4b47866544f6d87dfd0c4e41c21d81')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -33,7 +35,7 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}/build"
 
-  cmake -DWITH_HTTPD=OFF ..
+  cmake -DWITH_HTTP=OFF ..
   make
 }
 
