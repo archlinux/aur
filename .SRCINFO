@@ -1,12 +1,15 @@
 pkgbase = veloren-bin
 	pkgdesc = An open-world, open-source multiplayer voxel RPG
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://veloren.net/
 	arch = x86_64
 	license = GPL3
+	depends = gtk3
 	provides = veloren-bin
+	provides = veloren
 	conflicts = veloren-bin
+	conflicts = veloren
 	noextract = veloren-voxygen.desktop
 	noextract = voxygen.png
 	options = !strip

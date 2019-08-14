@@ -2,16 +2,16 @@
 
 pkgname=veloren-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
 url="https://veloren.net/"
 license=('GPL3')
 options=('!strip')
-depends=()
+depends=('gtk3')
 makedepends=()
-provides=("$pkgname")
-conflicts=("$pkgname")
+provides=("$pkgname" 'veloren')
+conflicts=("$pkgname" 'veloren')
 source=(
     "$pkgname"::"https://gitlab.com/veloren/veloren/-/jobs/265513558/artifacts/raw/optional-release-linux-debug.tar.bz2"
     "veloren-voxygen.desktop"
