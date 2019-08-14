@@ -1,0 +1,18 @@
+pkgbase = yolo-mark-git
+	pkgdesc = GUI for marking bounded boxes of objects in images for training YOLO neural networks.
+	pkgver = r64.ea049f3
+	pkgrel = 1
+	url = https://github.com/AlexeyAB/yolo_mark
+	arch = i686
+	arch = x86_64
+	license = None
+	makedepends = cmake
+	makedepends = git
+	makedepends = vtk
+	depends = opencv
+	provides = yolo-mark
+	source = git+https://github.com/AlexeyAB/yolo_mark.git
+	md5sums = SKIP
+
+pkgname = yolo-mark-git
+
