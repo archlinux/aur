@@ -1,22 +1,17 @@
 pkgbase = bdash
 	pkgdesc = Simple business intelligence application
-	pkgver = 1.1.0
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://github.com/bdash-app/bdash
 	arch = x86_64
 	license = MIT
+	makedepends = node-gyp
 	makedepends = python2
 	makedepends = python
-	makedepends = npm
 	makedepends = yarn
-	depends = gtk2
-	depends = nss
-	depends = alsa-lib
-	depends = libxss
-	depends = gconf
-	depends = libxtst
-	source = bdash-1.1.0.tar.gz::https://github.com/bdash-app/bdash/archive/1.1.0.tar.gz
-	sha512sums = e6d5a56bb4849d2c0a0bedbd95b8fe6725e1952a1cbb6d0f400d048580ddcfbe8e2bf815424b91c0c3f08c76047ed4991cbfa0b899613757dcaca4dc2e6ff7b1
+	options = !strip
+	source = bdash-1.5.6.tar.gz::https://github.com/bdash-app/bdash/archive/v1.5.6.tar.gz
+	sha512sums = 1d01d3979d34958251b56836254ed8044e8b3ec870e926335bd1d9ef661d8ed34c56a9ce711d6601343a969c3805fcccd01ca245b978d137f4cf83dff0263268
 
 pkgname = bdash
 
