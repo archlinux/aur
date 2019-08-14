@@ -1,15 +1,16 @@
+# Maintainer: Max le Fou <buttbadger@gmail.com>
 # Maintainer: Alex Zappa <reatlat@gmail.com>
 
 pkgname=koala-bin
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Koala is a GUI application for LESS, Sass and CoffeeScript compilation, to help web developers use these tools more efficiently for development."
 arch=('x86_64' 'i686')
 url="http://koala-app.com/"
 _repourl="https://github.com/oklai/koala"
 license=('Apache License, Version 2.0')
 provides=('koala')
-depends=()
+depends=('ruby')
 optdepends=()
 
 source=('koala.png'

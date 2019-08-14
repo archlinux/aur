@@ -1,11 +1,12 @@
 pkgbase = koala-bin
 	pkgdesc = Koala is a GUI application for LESS, Sass and CoffeeScript compilation, to help web developers use these tools more efficiently for development.
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://koala-app.com/
 	arch = x86_64
 	arch = i686
 	license = Apache License, Version 2.0
+	depends = ruby
 	provides = koala
 	source = koala.png
 	source = koala.desktop
