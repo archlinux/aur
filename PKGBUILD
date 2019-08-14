@@ -1,6 +1,6 @@
 pkgname=smex
-pkgver=2
-pkgrel=3
+pkgver=2.1
+pkgrel=3.1
 pkgdesc="генератор смеха на питоне"
 arch=('any')
 license=("CUSTOM")
