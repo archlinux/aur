@@ -1,6 +1,6 @@
 pkgbase = boston-icon-theme-git
 	pkgdesc = Boston is a highly minimalist icon theme, with a sober color palette inspired on basic hues.
-	pkgver = r76.2d6d673
+	pkgver = r105.85eaba1
 	pkgrel = 1
 	url = https://github.com/heychrisd/Boston-Icons
 	arch = any
