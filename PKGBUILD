@@ -11,7 +11,7 @@ pkgdesc='Real-time team chat based on the email threading model'
 arch=(i686 x86_64)
 url=https://zulipchat.com
 license=(Apache)
-depends=(alsa-lib atk at-spi2-atk cairo dbus fontconfig gdk-pixbuf2 glib2 gtk3 hicolor-icon-theme libcups libxcomposite libxcursor libxdamage libxext libxfixes libxi libxkbfile libxrandr libxrender libxss libxtst nspr nss pango)
+depends=(alsa-lib atk at-spi2-atk cairo dbus fontconfig gdk-pixbuf2 glib2 gtk3 hicolor-icon-theme libcups libxcomposite libxcursor libxdamage libxfixes libxi libxrandr libxrender libxss libxtst nspr nss pango)
 makedepends=(npm python2 libxkbfile)
 source=(https://github.com/zulip/$pkgname/archive/v$pkgver.tar.gz
         zulip.desktop)
