@@ -1,0 +1,18 @@
+pkgbase = zrythm-man
+	pkgdesc = User manual for Zrythm
+	pkgver = 0.6.003
+	pkgrel = 1
+	url = https://manual.zrythm.org
+	arch = any
+	license = AGPL3
+	makedepends = gettext
+	makedepends = python-sphinx
+	options = !debug
+	source = https://download.savannah.nongnu.org/releases/zrythm/zrythm-manual-0.6.003.tar.gz
+	source = https://download.savannah.nongnu.org/releases/zrythm/zrythm-manual-0.6.003.tar.gz.asc
+	validpgpkeys = 48132384AD3DF7D86E254B83022EAE42313D70F3
+	sha256sums = df61be544137ce7bdbf27f0a3ff3301c9cd888a0e61841f63f9aa752a8f9a5d8
+	sha256sums = SKIP
+
+pkgname = zrythm-man
+
