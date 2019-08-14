@@ -23,7 +23,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.2.7-arch1
+_srcver=5.2.8-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _bmqversion=098
@@ -52,7 +52,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('3a7c185fc8557c0da41316f0165447aa1c9018c2db81eac36c19f68ff464dbff'
+sha256sums=('3115442a3239cc90c759eb1dfaba68599afc8d2500f3232c44d0c5b458bd283d'
             'b22d748dd419708cda26970f97bd302d84100b5df0147cbe29d29749d57d2637'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
