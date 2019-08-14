@@ -6,7 +6,7 @@
 
 pkgname=conky-nvidia
 _pkgname=conky
-pkgver=1.11.4
+pkgver=1.11.5
 pkgrel=1
 pkgdesc='Lightweight system monitor for X'
 provides=('conky')
@@ -18,7 +18,7 @@ makedepends=('cmake' 'docbook2x' 'docbook-xml' 'man-db' 'perl-xml-libxml' 'perl-
 depends=('glib2' 'curl' 'lua' 'wireless_tools' 'libxml2' 'libxft' 'libxdamage' 'libxinerama' 'imlib2' 'libxnvctrl' 'libpulse')
 source=("https://github.com/brndnmtthws/conky/archive/v${pkgver}.tar.gz")
 
-md5sums=('7c27fc56d8c9a0d5a79e89cec69b61d4')
+md5sums=('5eb277341701e9e8128e315998796e86')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
