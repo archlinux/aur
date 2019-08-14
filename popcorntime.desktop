@@ -1,9 +1,10 @@
 [Desktop Entry]
+Version=1.0
 Type=Application
 Name=Popcorn Time
-Icon=popcorntime
-Exec=popcorntime %U
 Comment=BitTorrent client with integrated media player
+Exec=popcorntime %U
+Icon=popcorntime
 MimeType=application/x-bittorrent;x-scheme-handler/magnet;
 Categories=AudioVideo;Video;Player;Network;FileTransfer;P2P;
 Terminal=false

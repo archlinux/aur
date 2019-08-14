@@ -4,25 +4,25 @@
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 
 pkgname=popcorntime-git
-pkgver=0.3.10+6429+1537575b
-pkgrel=2
+pkgver=0.3.10+r6429+1537575b
+pkgrel=1
 pkgdesc='BitTorrent client with integrated media player (git)'
 arch=(i686 x86_64)
 url=https://popcorntime.sh
 license=(GPL3)
-depends=(alsa-lib gconf gtk2 nss ttf-font libxtst libnotify)
-makedepends=(git yarn)
+depends=(alsa-lib atk cairo gdk-pixbuf2 gtk3 libcups libx11 libxcb libxcomposite libxcursor libxdamage libxext libxfixes libxi libxrandr libxrender libxss libxtst nspr nss pango)
+makedepends=(git yarn npm)
 provides=(popcorntime)
 conflicts=(popcorntime popcorntime-ce)
 options=(!strip)
 source=(git+https://github.com/popcorn-official/popcorn-desktop#branch=development
         popcorntime.desktop)
 sha512sums=('SKIP'
-            'cccfbe1722404b6eac04d1e16b71ec99668bc261d53b494e0402a5346e6337491f04eb6a5f431f92a98f959705e712d25943586baab1206efaa9a085fe4755b6')
+            'abf5d406467422168944244b95eac0d2c23ca4140cd803afeea852e9a15a5176a019a5772be919234fe01ceec0d8d135158900e828144b0079018015662f7dcd')
 
 pkgver() {
   cd popcorn-desktop
-  echo $(git tag)+$(git rev-list --count HEAD)+$(git rev-parse --short HEAD)
+  echo $(git tag)+r$(git rev-list --count HEAD)+$(git rev-parse --short HEAD)
 }
 
 build() {
@@ -32,17 +32,19 @@ build() {
   yarn build
 }
 
-[ "$CARCH" = i686 ] && _platform=linux32
-[ "$CARCH" = x86_64 ] && _platform=linux64
-
 package() {
-  install -Dm 644 popcorntime.desktop "$pkgdir"/usr/share/applications/popcorntime.desktop
-  cd popcorn-desktop/build/Popcorn-Time/$_platform
-  install -Dm 644 src/app/images/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/popcorntime.png
-  install -d "$pkgdir"/usr/{share/popcorntime,bin}
-  cp -a . "$pkgdir"/usr/share/popcorntime
-  cd "$pkgdir"/usr/share/popcorntime
-  find . -type f -exec chmod 644 {} +
-  chmod +x Popcorn-Time
+  cd popcorn-desktop
+
+  install -d "$pkgdir"/usr/{share,bin}
+
+  cp -a build/Popcorn-Time/$([ $CARCH = x86_64 ] && echo linux64 || echo linux32) \
+    "$pkgdir"/usr/share/popcorntime
+
+  # Fix file permissions
+  find "$pkgdir"/usr/share/popcorntime -type f -not -name Popcorn-Time -exec chmod 644 {} +
+
   ln -s /usr/share/popcorntime/Popcorn-Time "$pkgdir"/usr/bin/popcorntime
+
+  install -Dm 644 ../popcorntime.desktop -t "$pkgdir"/usr/share/applications
+  install -Dm 644 src/app/images/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/popcorntime.png
 }
