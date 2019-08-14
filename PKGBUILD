@@ -2,7 +2,7 @@
 
 pkgname=stremio
 pkgver=4.4.77
-pkgrel=1
+pkgrel=2
 pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)'
 arch=('x86_64')
 url='https://www.stremio.com/'
@@ -21,8 +21,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '8903e9660302bfbb413c7f6b2275f4cf31ce97fd51cfb9c39a0c3ee5171134ff'
-            'fc776607fc1e23f5d0433fc6803ee2a5785cf1b6a6ac224c7c46cb0e4bf81490'
+            '2ccab494d975363fd16b61d51527995c7d452d66e69dd1bd9ffa2a4d11fb7191'
+            'e2295734bb6ff6ecf9b1fd423f89fccc617a11a86310bf44b03301f452650067'
             'b1febe31374eaceefc1f869d574a00f7f5414eafa8b5d0a92a5f511078ba3add')
 
 prepare() {
