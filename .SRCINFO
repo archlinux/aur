@@ -6,7 +6,7 @@ pkgbase = smex
 	arch = any
 	license = CUSTOM
 	depends = python
-	depends = python-ptyprocess
+	depends = python-pyperclip
 	source = https://github.com/anar66/python-test/archive/master.zip
 	sha256sums = SKIP
 
