@@ -5,7 +5,7 @@
 # Contributor: parchd <parchd@archlinux.info>
 
 pkgname=opensmtpd-libressl
-pkgver=6.4.1p2
+pkgver=6.4.2p1
 pkgrel=3
 pkgdesc='OpenSMTPD built against LibreSSL'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=(
   'smtpd.service'
   'smtpd.socket'
 )
-sha256sums=('b69b84934bcc4893ca334504411cd47f86ea04ac5e971a5746d44c473ac5f732'
+sha256sums=('6d71155b15fa4ef0198d10dfb7b1905845c9d36d4a02321245a99da80002fb5d'
             'b38b64f1457b7227d55585edc711cce525e089516d16b093e6c44387380e6b13'
             '107bc2a46fa885e355e551cc362dce5ef2362a8f4ad4cb12d6310a7b6d4edb54'
             '5c0f60d7bcebb1a6d371e7254b20d8ed2cfd79db64b3c3e9a6e992955bd6678f'
