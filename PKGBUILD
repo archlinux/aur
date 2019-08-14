@@ -1,25 +1,33 @@
-# Maintainer: Aniket Pradhan <aniket17133@iiitd.ac.in>
-# Contributer: Paul Irish <http://paulirish.com/>
+# Maintainer :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
+# Contributor : Aniket Pradhan <aniket17133@iiitd.ac.in>
+# Contributor : Paul Irish <http://paulirish.com/>
 
-_pkgname=git-open
 pkgname=git-open-git
-pkgver=r200.4ca1990
+
+pkgver() {
+  cd "${pkgname%-git}"
+  git describe | sed 's/v\?//;s/-/.r/;s/-/./'
+}
+pkgver=2.1.0.r8.g08fa2ab
 pkgrel=1
+
 pkgdesc='Type `git open` to open the GitHub page or website for a repository in your browser.'
 arch=('x86_64')
-url='https://github.com/paulirish/git-open'
+url="https://github.com/paulirish/${pkgname%-git}"
 license=('MIT')
+
+provides=("${pkgname%-git}")
+conflicts=('nodejs-git-open' "${pkgname%-git}")
+
 depends=('git' 'xdg-utils')
-conflicts=('nodejs-git-open' 'git-open')
-source=('git://github.com/paulirish/git-open')
-md5sums=('SKIP')
+
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/$_pkgname"
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "${pkgdir}/usr/share/doc"
-  mkdir -p "${pkgdir}/usr/share/licenses"
-  install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/${_pkgname}/${_pkgname}"
-  install -Dm644 ${_pkgname}.1.md "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  cd "${pkgname%-git}"
+
+  install -Dm755 "${pkgname%-git}" -t"$pkgdir/usr/bin/"
+  install -Dm644 "${pkgname%-git}.1.md" "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE.md"
 }
