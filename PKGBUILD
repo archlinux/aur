@@ -24,4 +24,4 @@ package() {
   install -D -t "$pkgdir/usr/share/icons/" "$srcdir/zirnevis-master/zirnevis-icon.png"
   install -D -t "$pkgdir/usr/share/applications/" "$srcdir/zirnevis-master/zirnevis.desktop"
 }
-md5sums=('53e3f3e482b846b3cd3c0009e1991cef')
+md5sums=('8c9e34f610b6ef34e3c7c94d1a7f8e1d')
