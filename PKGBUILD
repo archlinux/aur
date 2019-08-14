@@ -1,11 +1,11 @@
 pkgname=ultra-simple-screen-recorder-git
 _pkgname=ussr
-pkgver=r2.806ffd5
+pkgver=r4.cf575cb
 pkgrel=1
 pkgdesc="Recording screen on Linux using kmsgrab and vaapi"
 arch=('x86_64')
 url="https://github.com/Saren-Arterius/ussr"
-depends=('intel-media-driver' 'ffmpeg-vaapi-crop' 'lemonbar-xft-git' 'python-notify2')
+depends=('intel-media-driver' 'ffmpeg' 'lemonbar-xft-git' 'python-notify2')
 source=('git+https://github.com/Saren-Arterius/ussr.git' 'ussr.desktop' 'logo.png')
 sha256sums=('SKIP' 'c0100e49673d27d49963768c31b6cc8f98f3241e33b732da8ccdfef1424000f7' 'SKIP')
 
