@@ -21,6 +21,7 @@ pkgbase = asterisk
 	depends = libxslt
 	depends = opus
 	depends = libedit
+	depends = pjproject
 	optdepends = lua51
 	optdepends = libsrtp
 	optdepends = postgresql
