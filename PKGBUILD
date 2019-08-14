@@ -1,6 +1,6 @@
 # Maintainer: Darvin Delgado <dnmodder@gmail.com>
 pkgname=oversteer
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Graphical application to configure Logitech Wheels."
 arch=("any")
@@ -10,7 +10,7 @@ depends=("python" "python-gobject" "python-pyudev" "python-xdg" "gettext"  "apps
 optdepends=("jstest-gtk-git: Test the steering wheel")
 makedepends=("meson")
 source=("https://github.com/berarma/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=("429df91ee381e0fd1b0958ee5bb17adbb6458c6157b0193acc6f4ab63c48722e")
+sha256sums=("ec487f40d3a5456cb769d7b69ea20d46a17cb4252426b7a96edd76d90186712c")
 
 build() {
 	cd "$pkgname-$pkgver"
