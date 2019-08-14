@@ -4,13 +4,13 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=5.05
+pkgver=5.25
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
 url='http://www.microchip.com/mplabx'
 license=(custom)
-depends=(gtk2 alsa-lib libxslt libxtst "java-runtime=8" "java-openjfx>=8" "java-openjfx<9")
+depends=(gtk2 alsa-lib libxslt libxtst "java-runtime=8" java8-openjfx)
 makedepends=(fakechroot desktop-file-utils)
 makedepends_x86_64=(lib32-fakechroot lib32-fakeroot)
 optdepends=('microchip-mplabxc8-bin: C compiler for PIC10 PIC12 PIC16 PIC18 MCUs'
@@ -33,7 +33,7 @@ source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.ta
         "LICENSE"
         "mplabx-override.conf")
 
-md5sums=('a01e9d419a0863329cb55c823f90d128'
+md5sums=('9b8323a8bf9d23dc6eb6a24ca0f772df'
          'a34a85b2600a26f1c558bcd14c2444bd'
          'a476a71af625380a2fd52f82fb5d5492')
 
@@ -42,7 +42,7 @@ backup=("etc/mplab_ide.conf")
 PKGEXT='.pkg.tar'
 
 package() {
-  mkdir -p "${pkgdir}"/{etc,usr/{bin,lib},tmp}
+  mkdir -p "${pkgdir}"/{etc,usr/{bin,lib,local/lib},tmp}
 
   # Create a fake chroot in $pkgdir to run the installer into
   ln -s /usr/bin "${pkgdir}/"
