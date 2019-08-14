@@ -1,7 +1,7 @@
 pkgbase = gnudatalanguage
 	pkgdesc = An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)
 	pkgver = 0.9.8
-	pkgrel = 7
+	pkgrel = 8
 	url = http://gnudatalanguage.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = gnudatalanguage
 	depends = udunits
 	depends = eigen3
 	depends = libtirpc
+	depends = imagemagick
 	options = !makeflags
 	source = http://downloads.sourceforge.net/gnudatalanguage/gdl-0.9.8.tgz
 	source = gdl-tirpc.patch
