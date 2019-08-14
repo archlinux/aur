@@ -1,0 +1,21 @@
+pkgbase = binfmt-qemu-all-arch
+	pkgdesc = Register qemu interpreters for various binary formats - all archetectures, intelligently removing the current archetecture
+	pkgver = 20190813
+	pkgrel = 1
+	url = http://www.freedesktop.org/software/systemd/man/binfmt.d.html
+	arch = armv5
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL
+	optdepends = qemu
+	optdepends = qemu-arch-extra
+	provides = binfmt-qemu
+	conflicts = binfmt-qemu
+	source = qemu.conf
+	md5sums = 0232a790000c73c46b8621dfedbe093d
+
+pkgname = binfmt-qemu-all-arch
+
