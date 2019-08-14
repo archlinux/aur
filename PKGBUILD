@@ -3,7 +3,7 @@ pkgbase=python-gdbgui
 pkgname=python-gdbgui
 _module='gdbgui'
 pkgver=0.13.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser-based frontend to gdb (gnu debugger). Add breakpoints, view the stack, visualize data structures, and more in C, C++, Go, Rust, and Fortran. Run gdbgui from the terminal and a new tab will open in your browser. https://gdbgui.com"
 url="https://github.com/cs01/gdbgui"
 depends=('python' 'python-flask12' 'python-flask-compress' 'python-flask-socketio2' 'python-gevent' 'python-pygdbmi' 'python-pygments')
@@ -16,6 +16,8 @@ md5sums=('0e769e57691900f42ffaaaf8d91e285f')
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
     rm -rf tests
+    yarn install
+    yarn build
     python setup.py build
 }
 
