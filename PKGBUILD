@@ -1,9 +1,9 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-setuptools-markdown
-pkgver=0.2
+pkgver=0.3
 _commit=48c3977bf3404141fec78e2d1f8658bfbcf82f53
-pkgrel=4
+pkgrel=1
 pkgdesc="Use Markdown for your project description"
 arch=('any')
 url="https://github.com/msabramo/setuptools-markdown"
