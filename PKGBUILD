@@ -1,9 +1,10 @@
-# Maintainer: Aniket Pradhan <aniket17133[at]iiitd[dot]ac[dot]in>
-# Contributer: Roman Haritonov <reclosedev[at]gmail[dot]com>
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Contributor: Aniket Pradhan <aniket17133[at]iiitd[dot]ac[dot]in>
+# Contributor: Roman Haritonov <reclosedev[at]gmail[dot]com>
 
 _pkgname="requests-cache"
 pkgname="python-requests-cache"
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Transparent persistent cache for http://python-requests.org/ library."
 arch=("x86_64")
@@ -13,8 +14,8 @@ depends=("python" "python-requests")
 makedepends=("git" "python-setuptools")
 provides=("python-requests-cache")
 conflicts=("python2-requests-cache")
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/reclosedev/requests-cache/archive/v${pkgver}.tar.gz")
-sha256sums=('7846f008cd09ee1d38b5285bf098f9f0246cd1019d8c519d23184c1616342217')
+source=("https://files.pythonhosted.org/packages/source/r/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('813023269686045f8e01e2289cc1e7e9ae5ab22ddd1e2849a9093ab3ab7270eb')
 
 build() {
   cd "$srcdir/$_pkgname-${pkgver}"

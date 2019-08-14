@@ -1,6 +1,6 @@
 pkgbase = python-requests-cache
 	pkgdesc = Transparent persistent cache for http://python-requests.org/ library.
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/reclosedev/requests-cache
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = python-requests-cache
 	depends = python-requests
 	provides = python-requests-cache
 	conflicts = python2-requests-cache
-	source = requests-cache-0.5.0.tar.gz::https://github.com/reclosedev/requests-cache/archive/v0.5.0.tar.gz
-	sha256sums = 7846f008cd09ee1d38b5285bf098f9f0246cd1019d8c519d23184c1616342217
+	source = https://files.pythonhosted.org/packages/source/r/requests-cache/requests-cache-0.5.2.tar.gz
+	sha256sums = 813023269686045f8e01e2289cc1e7e9ae5ab22ddd1e2849a9093ab3ab7270eb
 
 pkgname = python-requests-cache
 
