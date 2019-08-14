@@ -1,13 +1,14 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=coturn-git
-pkgver=4.5.1.1+48+g9de0b2d
+pkgver=4.5.1.1+r50+g24397e8
 pkgrel=1
 pkgdesc='Open-source implementation of TURN and STUN server (git)'
-arch=(i686 x86_64 armv7h)
+arch=(armv7h i686 x86_64)
 url=https://github.com/coturn/coturn
 license=(BSD)
-depends=(libevent postgresql-libs libmariadbclient hiredis sqlite)
+depends=(libevent sqlite postgresql-libs libmariadbclient mongo-c-driver hiredis)
+makedepends=(git)
 provides=(coturn)
 conflicts=(coturn)
 backup=(etc/turnserver/turnserver.conf)
@@ -22,7 +23,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd coturn
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's#-#+#g;s#+#+r#'
 }
 
 build() {
@@ -48,6 +49,7 @@ package() {
   cd coturn
 
   make DESTDIR="$pkgdir" install
+
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/coturn
 
   cd "$pkgdir"
