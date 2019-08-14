@@ -20,11 +20,11 @@ pkgver() {
 }
 
 build() {
-	cd havoc
+	cd "${srcdir}"/havoc
 	make PREFIX='/usr'
 }
 
 package() {
-	cd havoc
+	cd "${srcdir}"/havoc
 	make PREFIX='/usr' DESTDIR="${pkgdir}" install
 }
