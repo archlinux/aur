@@ -1,13 +1,12 @@
 # Maintainer: Øyvind 'Mr.Elendig' Heggstad  <mrelendig@har-ikkje.net>>
 pkgname=kittypack-git
-pkgver=0.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A silly little tool to get info from archlinux.org/packages"
 arch=('any')
 url="https://github.com/MrElendig/kittypack"
 license=('AGPL3')
-depends=('python' 'python-requests' 'python-docopt' 'python-yaml'
-         'python-curtsies' 'python-setuptools')
+depends=('python' 'python-requests' 'python-click' 'python-yaml' 'python-setuptools')
 makedepends=('git' 'python-docutils')
 backup=('etc/kittypack.conf')
 source=(git://github.com/MrElendig/kittypack.git)
