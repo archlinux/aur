@@ -9,6 +9,9 @@ post_install() {
   echo "Add dokku user to docker group"
   (egrep -i "^docker" /etc/group || groupadd docker) &>/dev/null
   usermod -aG docker dokku
+  mkdir -p "$DOKKU_ROOT/.ssh" "$DOKKU_ROOT/.dokkurc"
+  touch "$DOKKU_ROOT/.ssh/authorized_keys"
+  chown -R dokku:dokku "$DOKKU_ROOT/.ssh" "${DOKKU_ROOT}/.dokkurc"
 
   echo "Setting up storage directories"
   mkdir -p "$DOKKU_LIB_ROOT/data/storage"
@@ -16,12 +19,9 @@ post_install() {
 
   echo "Setting up plugin directories"
   # should be replaced by `plugn init`
-  mkdir -p "$DOKKU_LIB_ROOT/core-plugins/available"
-  mkdir -p "$DOKKU_LIB_ROOT/plugins/available"
-  mkdir -p "$DOKKU_LIB_ROOT/core-plugins/enabled"
-  mkdir -p "$DOKKU_LIB_ROOT/plugins/enabled"
-  touch "$DOKKU_LIB_ROOT/core-plugins/config.toml"
-  touch "$DOKKU_LIB_ROOT/plugins/config.toml"
+  mkdir -p "$DOKKU_LIB_ROOT/core-plugins/available" "$DOKKU_LIB_ROOT/plugins/available"
+  mkdir -p "$DOKKU_LIB_ROOT/core-plugins/enabled" "$DOKKU_LIB_ROOT/plugins/enabled"
+  touch "$DOKKU_LIB_ROOT/core-plugins/config.toml" "$DOKKU_LIB_ROOT/plugins/config.toml"
 
   echo "Migrating old plugins"
   find "$DOKKU_LIB_ROOT/plugins" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read -r plugin; do
@@ -47,8 +47,6 @@ post_install() {
 
   echo "Ensure proper sshcommand path"
   echo /usr/bin/dokku > "$DOKKU_ROOT/.sshcommand"
-  mkdir -p "$DOKKU_ROOT/.ssh"
-  touch "$DOKKU_ROOT/.ssh/authorized_keys"
   if [[ -f .ssh/authorized_keys ]]; then
     sed -i.bak 's#/usr/local/bin/dokku#/usr/bin/dokku#' "$DOKKU_ROOT/.ssh/authorized_keys"
     rm "$DOKKU_ROOT/.ssh/authorized_keys"
@@ -63,12 +61,6 @@ post_install() {
 
   echo "Update hostname"
   hostname -f > "$DOKKU_ROOT/HOSTNAME"
-
-  echo "Create nginx config folder"
-  mkdir -p /etc/nginx/conf.d
-
-  echo "Add sudoers rule for dokku control over nginx"
-  echo "%dokku ALL=(ALL) NOPASSWD:/usr/bin/systemctl reload nginx, /usr/sbin/nginx -t" > /etc/sudoers.d/dokku-nginx
 
   echo "
     Please add your ssh pubkey like:
