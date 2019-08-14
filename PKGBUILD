@@ -1,9 +1,9 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=cxx
-pkgver=3.0.7
+pkgver=3.1.0
 pkgrel=1
-pkgdesc='Build system that makes modern C++ easier to deal with'
+pkgdesc='Build system for easy interaction with C++17 and C++20'
 arch=(x86_64)
 url='https://github.com/xyproto/cxx'
 license=(MIT)
