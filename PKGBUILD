@@ -74,30 +74,25 @@
 ## updated to upstream 6.0.2
 ## updated to upstream 6.0.3
 ## updated to upstream 6.0.4
+## updated to upstream 6.3.0 and drop x86 support
 
 ## Check for new LibreOffice releases:
 # $ wget "https://download.documentfoundation.org/libreoffice/stable/" -q -O /tmp/lo.html && echo "LibreOffice versions" && awk '{print $3;}' /tmp/lo.html|cut -b 7-11|grep --color=never [0-9].[0-9].[0-9]; rm /tmp/lo.html
 
 pkgname=libreoffice-fresh-rpm
-pkgver=6.0.4
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="LGPL Office Suite installed from rpms"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.libreoffice.org'
 license=('LGPL')
 depends=('glibc>=2.5' 'gtk2>=2.10.4' 'xorg-server')
 makedepends=('curl' 'awk')
 optdepends=('jre8-openjdk' 'gtk3' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 # WARNING sha256sums values should be taken from details page about rpm.tar.gz files from servers. DO NOT USE _updpgksums_ tool.
-if [ "$(uname -m)" == "i686" ]; then  ## convert bit architecture to libreoffice format
-  arch_mod='x86';
-  sha256sums+=('41525a9b24c395340bd2131f88cd1a21ce83e8702189247c1f04a0e213795a55');
-  source+=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
- else
-  arch_mod='x86_64';
-  sha256sums+=('caae6d511250c300d4881642a0e83879c4e58b8c18362e4c31f2789f7e9f9a20')
-  source+=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
-fi;
+arch_mod='x86_64';
+sha256sums=('7f3a9c53055284568056fe559ea85aa218b8e2ea0a569c0d5fc5934648475cbc')
+source=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
 
 prepare() { ## prepare function
 
@@ -177,7 +172,7 @@ for a in $(ls -d */); do  ## loop for all directories found
   cp -rf */ ${pkgdir}/;  ## copy and merge all found directories to the package directory
 
   ## change the permissions for files that shouldn't be executable
-  declare -a wrongexec=("opt/libreoffice$(echo $pkgver | awk -F'.' 'OFS="." {print $1,$2}')/CREDITS.fodt" "opt/libreoffice$(echo $pkgver | awk -F'.' 'OFS="." {print $1,$2}')/LICENSE.fodt" "opt/libreoffice$(echo $pkgver | awk -F'.' 'OFS="." {print $1,$2}')/NOTICE");  ## set the array to change permissions
+  declare -a wrongexec=("opt/libreoffice$(echo $pkgver | awk -F'.' 'OFS="." {print $1,$2}')/CREDITS.fodt" "opt/libreoffice$(echo $pkgver | awk -F'.' 'OFS="." {print $1,$2}')/LICENSE" "opt/libreoffice$(echo $pkgver | awk -F'.' 'OFS="." {print $1,$2}')/NOTICE");  ## set the array to change permissions
   for a in ${wrongexec[@]}; do
     chmod 644 ${pkgdir}/$a; ## change permissions to read/write for root, read only for users
   done;
