@@ -2,7 +2,7 @@
 _pkgname=zrythm
 pkgname=$_pkgname-git
 pkgver=0.6.003
-pkgrel=1
+pkgrel=2
 pkgdesc='An highly automated, intuitive, Digital Audio Workstation (DAW)'
 arch=('x86_64' 'i686')
 url='https://git.zrythm.org/zrythm/zrythm'
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('gtk3' 'lv2' 'lilv' 'libx11' 'jack'
   'libsndfile' 'libyaml' 'gettext'
   'libsamplerate' 'alsa-lib'
-  'ladspa' 'fftw' 'zrythm-man')
+  'ladspa' 'fftw')
 makedepends=('python' 'gettext' 'sed'
              'meson' 'ninja')
 optdepends=('portaudio: portaudio backend'
