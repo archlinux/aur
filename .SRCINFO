@@ -1,20 +1,19 @@
 pkgbase = kittypack
 	pkgdesc = Query package information from archweb API
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/MrElendig/kittypack
 	arch = any
 	license = AGPL3
 	makedepends = python-docutils
 	depends = python-requests
-	depends = python-docopt
+	depends = python-click
 	depends = python-yaml
-	depends = python-curtsies
 	depends = python-setuptools
 	conflicts = kittypack-git
 	backup = etc/kittypack.conf
-	source = kittypack-0.2.2.tar.gz::https://github.com/MrElendig/kittypack/archive/0.2.2.tar.gz
-	sha256sums = c08c9250dbc3a88a7382ac4f728f32f48a119e3f2bbaae9ecbacbe6e6d1d5447
+	source = kittypack-0.2.3.tar.gz::https://github.com/MrElendig/kittypack/archive/0.2.3.tar.gz
+	sha256sums = f7d3b279825534c1963f50f8c74e2c7cd3d262ae50b064eca593b9611f3d4195
 
 pkgname = kittypack
 
