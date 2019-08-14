@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Caprice 32 (Amstrad CPC)
+GenericName=Caprice 32 CPC Emulator
+GenericName[es]=Caprice 32 Emulador CPC
+GenericName[fr]=Caprice 32 Emulateur CPC
+Comment=Amstrad CPC/CPC+ Emulator
+Comment[es]=Emulador de Amstrad CPC/CPC+
+Comment[fr]=Emulateur Amstrad CPC/CPC+
+Icon=/usr/share/caprice32/resources/freedesktop/caprice32.png
+Exec=cap32
+Terminal=false
+Categories=Game
