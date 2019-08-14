@@ -12,7 +12,7 @@ pkgver=19.04
 _buildver=19.04.22-1555944973
 _pkgverpostfix=""
 _electronver="3.0.2"
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A zooming presentation editor and player based on SVG and JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -61,8 +61,8 @@ prepare() {
   cp package.original.json package.json
   patch package.json "${srcdir}/sozi-package-json.patch"
 
-  install -D -m644 "/usr/share/fonts/TTF/DroidSans.ttf" "vendor/DroidSans/DroidSans.ttf"
-  install -D -m644 "/usr/share/fonts/TTF/DroidSans-Bold.ttf" "vendor/DroidSans/DroidSans-Bold.ttf"
+  install -D -m644 "/usr/share/fonts/droid/DroidSans.ttf" "vendor/DroidSans/DroidSans.ttf"
+  install -D -m644 "/usr/share/fonts/droid/DroidSans-Bold.ttf" "vendor/DroidSans/DroidSans-Bold.ttf"
 
   rm -rf "cache" "dist"
   mkdir -p "cache/"
