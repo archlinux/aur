@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-gcc-bin
 pkgver=9.2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Cross GCC for the MinGW-w64 cross-compiler (pre-compiled)"
 arch=('x86_64')
 url="https://gcc.gnu.org/"
