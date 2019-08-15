@@ -1,0 +1,17 @@
+pkgbase = lua-language-server-git
+	pkgdesc = Lua Language Server coded by Lua
+	pkgver = r1746.f4b2975
+	pkgrel = 1
+	url = https://github.com/sumneko/lua-language-server
+	arch = x86_64
+	license = MIT
+	makedepends = ninja
+	makedepends = git
+	depends = lua
+	source = git+https://github.com/sumneko/lua-language-server
+	source = 0001-Use-a-writable-log-dir-in-tmp.patch
+	md5sums = SKIP
+	md5sums = a83632ed00578977a6b50269f2d3b60a
+
+pkgname = lua-language-server-git
+
