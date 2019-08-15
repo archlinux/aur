@@ -1,0 +1,23 @@
+pkgbase = xfconf-gtk2
+	pkgdesc = A simple client-server configuration storage and query system (GTK2 version)
+	pkgver = 4.12.1
+	pkgrel = 1
+	url = https://www.xfce.org/
+	arch = x86_64
+	groups = xfce4-gtk2
+	license = GPL2
+	makedepends = perl-extutils-depends
+	makedepends = perl-extutils-pkgconfig
+	makedepends = glib-perl
+	makedepends = intltool
+	makedepends = chrpath
+	depends = libxfce4util-gtk2
+	depends = dbus-glib
+	provides = xfconf
+	conflicts = xfconf
+	options = !emptydirs
+	source = https://archive.xfce.org/src/xfce/xfconf/4.12/xfconf-4.12.1.tar.bz2
+	sha256sums = 35f48564e5694faa54fdc180cd3268e16fc2352946a89a3c2fc12cbe400ada36
+
+pkgname = xfconf-gtk2
+
