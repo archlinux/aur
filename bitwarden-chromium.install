@@ -1,0 +1,13 @@
+post_install() {
+	echo "---------------------------------------------------------------"
+	echo "Installed unpacked extension in /usr/share/bitwarden-chromium/"
+	echo "To add the extension:"
+	echo "  - Go to chrome://extensions/"
+	echo "  - Enable developer mode"
+	echo "  - Load unpacked extension from /usr/share/bitwarden-chromium/"
+	echo "---------------------------------------------------------------"
+}
+
+post_upgrade() {
+	post_install
+}

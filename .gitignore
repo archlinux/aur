@@ -1,0 +1,10 @@
+# build and package directories
+src/
+pkg/
+
+# source and package archives
+dist-chrome-*.zip
+bitwarden-chromium-*-any.pkg.tar.xz
+
+# lazy script to update package sums and .SRCINFO
+update.sh
