@@ -4,7 +4,7 @@
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 
 pkgname=popcorntime-git
-pkgver=0.3.10+r6429+1537575b
+pkgver=0.3.10+r6429+g1537575b
 pkgrel=1
 pkgdesc='BitTorrent client with integrated media player (git)'
 arch=(i686 x86_64)
@@ -22,7 +22,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd popcorn-desktop
-  echo $(git tag)+r$(git rev-list --count HEAD)+$(git rev-parse --short HEAD)
+  echo $(git tag)+r$(git rev-list --count HEAD)+g$(git rev-parse --short HEAD)
 }
 
 build() {
