@@ -7,7 +7,7 @@ pkgname=(
     'manjarowish-pantheon-settings'
     )
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 arch=('any')
 _branch='master'
 url="https://github.com/librewish/manjarowish-pantheon-settings"
@@ -53,7 +53,7 @@ package_manjarowish-pantheon-settings() {
         'switchboard-git'
         'wingpanel-git'
         ttf-{droid,opensans,roboto}
-        gnome-settings-daemon-{elementary,compat}
+       gnome-settings-daemon-{elementary,compat}
         )
     optdepends=(
         'timeshift-autosnap'
