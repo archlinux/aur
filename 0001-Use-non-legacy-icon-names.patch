@@ -1,0 +1,47 @@
+From 65e9020cb0d507a58e71eb31751d3eca0eb0cd59 Mon Sep 17 00:00:00 2001
+From: Evangelos Foutras <evangelos@foutrelis.com>
+Date: Thu, 8 Oct 2015 16:50:26 +0300
+Subject: [PATCH] Use non-legacy icon names
+
+gtk-find and gtk-execute are legacy icon names found in the GNOME icon
+theme, but they are not part of the Adwaita icon theme.
+
+In the GNOME icon theme, they map to edit-find and system-run via
+symlinks created by icon-naming-utils. Adwaita doesn't ship these
+symlinks. [1]
+
+[1] https://bugzilla.gnome.org/show_bug.cgi?id=729998
+---
+ data/xfce4-appfinder.desktop.in | 2 +-
+ data/xfce4-run.desktop.in       | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/data/xfce4-appfinder.desktop.in b/data/xfce4-appfinder.desktop.in
+index c4bd6ca..dc34d21 100644
+--- a/data/xfce4-appfinder.desktop.in
++++ b/data/xfce4-appfinder.desktop.in
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Version=1.0
+ Exec=xfce4-appfinder
+-Icon=gtk-find
++Icon=edit-find
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+diff --git a/data/xfce4-run.desktop.in b/data/xfce4-run.desktop.in
+index 9611cd5..a888753 100644
+--- a/data/xfce4-run.desktop.in
++++ b/data/xfce4-run.desktop.in
+@@ -2,7 +2,7 @@
+ Version=1.0
+ Type=Application
+ Exec=xfce4-appfinder --collapsed
+-Icon=gtk-execute
++Icon=system-run
+ StartupNotify=true
+ Terminal=false
+ Categories=Utility;X-XFCE;X-Xfce-Toplevel;
+-- 
+2.6.1
+

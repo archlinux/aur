@@ -1,0 +1,21 @@
+pkgbase = xfce4-appfinder-gtk2
+	pkgdesc = An application finder for Xfce (GTK2 version)
+	pkgver = 4.12.0
+	pkgrel = 1
+	url = https://www.xfce.org/
+	arch = x86_64
+	groups = xfce4-gtk2
+	license = GPL2
+	makedepends = intltool
+	depends = libxfce4ui-gtk2
+	depends = garcon
+	depends = hicolor-icon-theme
+	provides = xfce4-appfinder
+	conflicts = xfce4-appfinder
+	source = https://archive.xfce.org/src/xfce/xfce4-appfinder/4.12/xfce4-appfinder-4.12.0.tar.bz2
+	source = 0001-Use-non-legacy-icon-names.patch
+	sha256sums = 2ad4a58019a76a6b64a816050db25f96854917c2f2e89d6a9df6c18e6c84c567
+	sha256sums = b829103bf33d6f1ec71e1448e469b1b1df3313f887a27b7479a7cbc67e06643f
+
+pkgname = xfce4-appfinder-gtk2
+
