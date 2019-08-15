@@ -1,0 +1,19 @@
+pkgbase = libxfce4util-gtk2
+	pkgdesc = Basic utility non-GUI functions for Xfce (GTK2 version)
+	pkgver = 4.14.0
+	pkgrel = 1
+	url = https://www.xfce.org/
+	arch = x86_64
+	groups = xfce4-gtk2
+	license = GPL2
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	provides = libxfce4util
+	conflicts = libxfce4util
+	source = https://archive.xfce.org/src/xfce/libxfce4util/4.14/libxfce4util-4.14.0.tar.bz2
+	sha256sums = 32ad79b7992ec3fd863e8ff2f03eebda8740363ef9d7d910a35963ac1c1a6324
+
+pkgname = libxfce4util-gtk2
+
