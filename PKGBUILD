@@ -2,7 +2,7 @@
 
 pkgname=dreampower-cpu
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI application that allow to transform photos of people for private entertainment - No CUDA support'
 arch=('x86_64')
 options=(!strip)

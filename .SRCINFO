@@ -1,7 +1,7 @@
 pkgbase = dreampower-cpu
 	pkgdesc = CLI application that allow to transform photos of people for private entertainment - No CUDA support
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/private-dreamnet/dreampower
 	arch = x86_64
 	license = GPL3
