@@ -1,8 +1,8 @@
 # Maintainer: Pedro A. López-Valencia <youremail@domain.com>
 pkgname=tnftpd
 pkgver=20190602
-pkgrel=3
-pkgdesc="a.k.a. lukemftpd, it is the default NetBSD FTP server"
+pkgrel=4
+pkgdesc="Also known as lukemftpd, it is the default NetBSD FTP server"
 arch=('x86_64')
 url="https://ftp.netbsd.org/pub/NetBSD/misc/tnftp/"
 license=('custom:BSD-2clause')
@@ -12,13 +12,17 @@ source=("http://ftp.netbsd.org/pub/NetBSD/misc/tnftp/$pkgname-$pkgver.tar.gz"{,.
 	'tnftpd.service' 
 	'tnftpd@.service' 
 	'tnftpd.socket'
-	'tnftpd.pam')
+	'tnftpd.pam'
+	'etc_ftpd.conf'
+	'etc_ftpusers')
 sha256sums=('905519d239745ebec41c91e357af299f3bce04b59f84f2ba5f7654738439ac1c'
             'SKIP'
-            '08855f0b39f5db5d8adf748bf15630db976c4ec4d7763c5bc421aab94694ae70'
+            '7c34b35ae14a04b7a7da2165467ca5796c97ee5757cfe1fc796e17e212a61cfc'
             '9e96e30acac10290b03a8d0b761c0cd95d24345b24a8175cc6df371634bc90fe'
             '6f3a47accdbd0e45aa2daca1c3362a225747356d51ffc3e179a16e211f48d185'
-            'eef8441bf5796d8ff0508044ebf3ed2cd20b8593881b5fe24c1e7fefe60ea628')
+            'e0513358204dcb310c07d906b45b83f40bff584c3031583a1a901bfadd702f97'
+            '7844c647396c179a5c2544e3f801b9cc3a6742a84b82789e4d5bef82ad81444e'
+            '746d0744f6469e6bca4b1443b8049a6847715653ad590834cde537c8cc4189d5')
 validpgpkeys=('2A8E22EDB07B5414548D8507A4186D9A7F332472')
 
 prepare() {
@@ -43,9 +47,9 @@ package() {
 	install -D -m 644 ../tnftpd.service "$pkgdir/usr/lib/systemd/system/tnftpd.service"
 	install -D -m 644 ../tnftpd@.service "$pkgdir/usr/lib/systemd/system/tnftpd@.service"
 	install -D -m 644 ../tnftpd.socket "$pkgdir/usr/lib/systemd/system/tnftpd.socket"
-	install -D -m 644 ../tnftpd.pam "$pkgdir/etc/pam.d/tnftpd"
-	install -D -m 644 "examples/ftpd.conf" "$pkgdir/etc/ftpd.conf"
-	install -D -m 644 "examples/ftpusers" "$pkgdir/etc/ftpusers"
+	install -D -m 644 ../tnftpd.pam "$pkgdir/etc/pam.d/ftpd"
+	install -D -m 644 "../etc_ftpd.conf" "$pkgdir/etc/ftpd.conf"
+	install -D -m 644 "../etc_ftpusers" "$pkgdir/etc/ftpusers"
 	install -D -m 644 "examples/ftpd.conf" "$pkgdir/usr/share/doc/$pkgname/ftpd.conf"
 	install -D -m 644 "examples/ftpusers" "$pkgdir/usr/share/doc/$pkgname/ftpusers"
 	rm -r "$pkgdir/usr/share/examples"

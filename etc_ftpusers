@@ -1,0 +1,6 @@
+# No this is not described in ftpusers(5), read ftpusers.tnftpd(5).
+#
+root                    deny
+toor                    deny
+ftp			deny
+anonymous		deny
