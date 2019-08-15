@@ -1,7 +1,7 @@
 pkgbase = wps-office
 	pkgdesc = Kingsoft Office (WPS Office) is an office productivity suite
 	pkgver = 11.1.0.8722
-	pkgrel = 3
+	pkgrel = 4
 	url = http://wps-community.org/
 	install = wps-office.install
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = wps-office
 	conflicts = kingsoft-office
 	options = !emptydirs
 	source = http://kdl.cc.ksosoft.com/wps-community/download/8722/wps-office_11.1.0.8722_amd64.deb
-	sha1sums = 438cdd5057ebf16bff3b0b6b3a9f06fcfca9a3da
+	sha1sums = 7a420957166d2bf6430a67b186f16361dd7b5c7b
 
 pkgname = wps-office
 

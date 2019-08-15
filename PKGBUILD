@@ -7,7 +7,7 @@
 pkgname=wps-office
 pkgver=11.1.0.8722
 #_pkgver=8372
-pkgrel=3
+pkgrel=4
 #_pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) is an office productivity suite"
 arch=('x86_64')
@@ -30,11 +30,11 @@ source=("http://kdl.cc.ksosoft.com/wps-community/download/${pkgver##*.}/wps-offi
 #       'add_no_kdialog_variable.patch')
 #sha1sums_i686=('60b1c9e33ee6fc1edcefe40dc9ec529d4a668825'
 #               'dd8b5283ee17a88a3eb0531976abccd6e5e08c48')
-sha1sums=('438cdd5057ebf16bff3b0b6b3a9f06fcfca9a3da')
+sha1sums=('7a420957166d2bf6430a67b186f16361dd7b5c7b')
 #         '49ccf3e3d9c7c9c80294127ce063c56d2b57d7c4')
 
 prepare() {
-    tar -Jxf data.tar.xz
+    bsdtar -xpf data.tar.xz
 
     cd "${srcdir}/usr/bin"
     sed -i 's|/opt/kingsoft/wps-office|/usr/lib|' *
@@ -43,8 +43,7 @@ prepare() {
 
     cd "${srcdir}/usr/share/icons/hicolor"
 
-    for _file in ./*
-    do
+    for _file in ./*; do
         if [ -e ${_file}/mimetypes/wps-office2019-etmain.png ]; then
             mkdir -p ${_file}/apps
             cp -p ${_file}/mimetypes/wps-office2019* ${_file}/apps
@@ -62,7 +61,7 @@ package() {
     install -d "${pkgdir}/usr/lib"
     cp -r office6 "${pkgdir}/usr/lib"
 #   chmod -x "${pkgdir}/usr/lib/office6/wpsoffice"
-    install -Dm644 office6/mui/default/EULA.txt "${pkgdir}/usr/share/licenses/${pkgname}/EULA.txt"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" office6/mui/default/*.txt
 
     install -d "${pkgdir}/usr/bin"
     cd "${srcdir}/usr/bin"
