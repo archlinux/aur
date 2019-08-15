@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=blackhole-git
-pkgver=0.2r4.g50bb6fd
+pkgver=0.2.r8.g3f78eb7
 pkgrel=1
 pkgdesc="module system for gambit-c scheme"
 arch=('x86_64')
@@ -11,17 +11,17 @@ license=('custom')
 depends=('glibc')
 makedepends=('git' 'gambit-c')
 source=("git+https://github.com/pereckerdal/blackhole.git" compilescript.diff)
-md5sums=('SKIP'
-         '29094e13f494d335ec70246ce76cadff')
+sha256sums=('SKIP'
+            '5d2c5bf85eab249df3bd67c4a297a4705037524e1d683c604eb58dbf8ecfb3a2')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags|sed 's+-+r+'| tr - . 
+  git describe --tags|sed 's+-+.r+'| tr - . 
 }
 
 prepare() {
-   cd ${pkgname%-git}
-   patch -Np1 < "$srcdir"/compilescript.diff
+  cd ${pkgname%-git}
+  patch -Np1 < "$srcdir"/compilescript.diff
 }
 
 build() {
