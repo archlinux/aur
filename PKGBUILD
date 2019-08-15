@@ -5,7 +5,7 @@
 _gemname=jekyll
 pkgname=$_gemname
 pkgver=3.8.6
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple, blog aware, static site generator.'
 arch=('any')
 url='https://github.com/jekyll/jekyll'
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('ruby>=2.1.0'
     'ruby-addressable>=2.4' 'ruby-addressable<3.0'
     'ruby-colorator>=1.0' 'ruby-colorator<=2.0'
-    'ruby-jekyll-sass-converter>=1.0' 'ruby-jekyll-sass-converter<2.0'
+    'ruby-jekyll-sass-converter-1>=1.0' 'ruby-jekyll-sass-converter-1<2.0'
     'ruby-jekyll-watch>=2.0' 'ruby-jekyll-watch<3.0'
     'ruby-kramdown-1>=1.14' 'ruby-kramdown-1<2.0'
     'ruby-liquid>=4.0' 'ruby-liquid<5.0'

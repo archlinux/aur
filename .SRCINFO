@@ -1,7 +1,7 @@
 pkgbase = jekyll
 	pkgdesc = A simple, blog aware, static site generator.
 	pkgver = 3.8.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jekyll/jekyll
 	arch = any
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = jekyll
 	depends = ruby-addressable<3.0
 	depends = ruby-colorator>=1.0
 	depends = ruby-colorator<=2.0
-	depends = ruby-jekyll-sass-converter>=1.0
-	depends = ruby-jekyll-sass-converter<2.0
+	depends = ruby-jekyll-sass-converter-1>=1.0
+	depends = ruby-jekyll-sass-converter-1<2.0
 	depends = ruby-jekyll-watch>=2.0
 	depends = ruby-jekyll-watch<3.0
 	depends = ruby-kramdown-1>=1.14
