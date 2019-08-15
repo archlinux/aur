@@ -7,7 +7,7 @@
 
 pkgname=tengine
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
@@ -27,10 +27,24 @@ provides=('nginx')
 source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgver.tar.gz
         service
         logrotate
+        "0001-http2-reject-zero-length-headers.patch::https://github.com/nginx/nginx/commit/dbdd9ffea81d9db46fb88b5eba828f2ad080d388.patch"
+        "0002-http2-limit-number-of-DATA.patch::https://github.com/nginx/nginx/commit/94c5eb142e58a86f81eb1369fa6fcb96c2f23d6b.patch"
+        "0003-http2-limit-number-of-PRIORITY.patch::https://github.com/nginx/nginx/commit/39bb3b9d4a33bd03c8ae0134dedc8a7700ae7b2b.patch"
        )
 sha256sums=('0dd5f05b5a821e37c7ec2ecfaedbb5df832e017d6925d51283c2042cea6eede5'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
-            '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
+            '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97'
+            '67b369edc0d2518e07aaea37f24fe59eae3a394ee25ce04e6776a52e2c73d270'
+            '55c212c39eff86a6b3cf971884940cee71c5fe83f7f998a8dcfb55d48deb6dc0'
+            '5d8cc9b917dda0a65dd8afd637b0654bd6934f3ca936e8c2f9e4569cf3429d05')
+
+ prepare() {
+    cd tengine-$pkgver
+    for i in $srcdir/*.patch; do
+        msg2 "Applying $i"
+        patch -Np1 -i $i
+    done
+}
 
 build() {
     cd tengine-$pkgver
