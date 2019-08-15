@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -25,8 +25,12 @@ depends=("$_pkgbasename"
       'lib32-gsm'
       'lib32-jack'
       'lib32-lame'
+      'lib32-libass'
       'lib32-libavc1394'
+      'lib32-libbluray'
+      'lib32-dav1d'
       'lib32-libdrm'
+      'lib32-freetype2'
       'lib32-libiec61883'
       'lib32-libmodplug'
       'lib32-libomxil-bellagio'
@@ -50,9 +54,6 @@ depends=("$_pkgbasename"
       'lib32-v4l-utils'
       'lib32-xz'
       'lib32-zlib'
-      'lib32-libass'
-      'lib32-libbluray'
-      'lib32-freetype2'
       'lib32-libva'
 #      'lib32-vid.stab'
       'lib32-libvorbis'
@@ -61,12 +62,23 @@ depends=("$_pkgbasename"
       'lib32-x265'
       'lib32-xvidcore'
       )
-makedepends=('ffnvcodec-headers' 'git' 'lib32-ladspa' 'yasm')
+makedepends=(
+      'ffnvcodec-headers'
+      'git'
+      'lib32-ladspa'
+      'yasm'
+      )
 optdepends=('lib32-ladspa: LADSPA filters')
 provides=(
-      'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-      'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
-)
+      'libavcodec.so'
+      'libavdevice.so'
+      'libavfilter.so'
+      'libavformat.so'
+      'libavutil.so'
+      'libpostproc.so'
+      'libswresample.so'
+      'libswscale.so'
+      )
 source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}")
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=('SKIP')
@@ -98,6 +110,7 @@ build() {
     --enable-libaom \
     --enable-libass \
     --enable-libbluray \
+    --enable-libdav1d \
     --enable-libdrm \
     --enable-libfreetype \
     --enable-libfribidi \
@@ -131,7 +144,6 @@ build() {
 #    --enable-libsoxr \ ## not available under 32bit
 #    --enable-libssh \ ## not available under 32bit
 #    --enable-libvidstab \ ## not available under 32bit
-#    --enable-libdav1d \ ## not available under 32bit
 
   make
 }
