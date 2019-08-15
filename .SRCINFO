@@ -1,7 +1,7 @@
 pkgbase = kworkflow-git
-	pkgdesc = Scripts that help setup infra for kernel development.
+	pkgdesc = Scripts that help setting up infra for kernel development.
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rodrigosiqueira/kworkflow
 	install = kw.install
 	arch = x86_64

@@ -1,4 +1,5 @@
 post_install() {
-  echo "Append these to your .bashrc to enable autocomplete:PATH=$PATH:/home/<user>/.config/kw
-source /home/<user>/.config/kw/src/bash_autocomplete.sh"
+  echo 'Append these to your .bashrc to enable autocomplete:'
+  echo "PATH=\$PATH:$HOME/.config/kw"
+  echo "source $HOME/.config/kw/src/bash_autocomplete.sh"
 }

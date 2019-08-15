@@ -3,8 +3,8 @@ pkgname=kworkflow-git
 _gitname=kworkflow
 _lpkg="${_gitname,,}"
 pkgver=0.7
-pkgrel=1
-pkgdesc="Scripts that help setup infra for kernel development."
+pkgrel=2
+pkgdesc="Scripts that help setting up infra for kernel development."
 arch=('x86_64')
 url="https://github.com/rodrigosiqueira/kworkflow"
 source=("git+https://github.com/rodrigosiqueira/kworkflow.git")
@@ -32,6 +32,6 @@ package() {
   mkdir -p "$pkgdir$HOME/.kworkflow"
   cp -r * "$pkgdir$HOME/.kworkflow/"
   mkdir -p "$pkgdir/usr/bin"
-  ln -s "$HOME/.kworkflow/kw" "$pkgdir/usr/bin/kworkflow"
+  ln -s "$HOME/.kw/kw" "$pkgdir/usr/bin/kworkflow"
 }
 install="kw.install"
