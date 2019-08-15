@@ -8,6 +8,7 @@ pkgbase = glad-c-git
 	makedepends = python
 	makedepends = gcc
 	depends = glibc
+	depends = mesa
 	conflicts = glad
 	source = git://github.com/Dav1dde/glad.git
 	sha1sums = SKIP
