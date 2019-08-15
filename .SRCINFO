@@ -1,0 +1,12 @@
+pkgbase = latex-tuda-ci-logos
+	pkgdesc = Logos for TUDa-CI from Technische Universität Darmstadt
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://www.ce.tu-darmstadt.de/ce/latex_tuda/index.de.jsp
+	arch = any
+	license = custom
+	source = local://logo_bundle.zip
+	sha512sums = d664eae76a40e8fe97ed7a84a4b3f287662ae631f4f5dc7885e31b6355bf9a846dff722839c99db79e4edd2ce13741ddfa7eb2e301e4c46dcf8f1b92d430466a
+
+pkgname = latex-tuda-ci-logos
+
