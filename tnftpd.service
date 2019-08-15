@@ -1,0 +1,14 @@
+[Unit]
+Description=NetBSD FTPd running as a standalone daemon
+Documentation=man:tnftpd(8)
+Documentation=man:ftpd.conf(5)
+Documentation=man:ftpusers(5)
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/tnftpd -D -r
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

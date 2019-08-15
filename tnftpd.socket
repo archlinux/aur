@@ -1,0 +1,12 @@
+[Unit]
+Conflicts=tnftpd.service
+Documentation=man:tnftpd(8)
+Documentation=man:ftpd.conf(5)
+Documentation=man:ftpusers(5)
+
+[Socket]
+ListenStream=21
+Accept=yes
+
+[Install]
+WantedBy=sockets.target
