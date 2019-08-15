@@ -1,7 +1,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=lib32-spirv-tools
-pkgver=2018.5
+pkgver=2019.3
 pkgrel=1
 pkgdesc="API and commands for processing SPIR-V modules"
 arch=('x86_64')
@@ -25,6 +25,8 @@ sha256sums=('SKIP'
 
 prepare() {
   mkdir -p build
+  
+  alias widl=
 }
 
 build() {
