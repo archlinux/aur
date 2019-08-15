@@ -1,8 +1,8 @@
 pkgbase = ghidra-bin
 	pkgdesc = Software reverse engineering framework (bin)
 	pkgver = 9.0.4
-	pkgrel = 1
-	url = https://ghidra-sre.org
+	pkgrel = 2
+	url = https://www.nsa.gov/ghidra
 	arch = x86_64
 	license = Apache
 	depends = java-environment>=11
@@ -11,8 +11,17 @@ pkgbase = ghidra-bin
 	conflicts = ghidra
 	conflicts = ghidra-git
 	source = https://ghidra-sre.org/ghidra_9.0.4_PUBLIC_20190516.zip
+	source = ghidra.desktop
+	source = https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_9.0.4_build/Ghidra/Framework/Generic/src/main/resources/images/GhidraIcon256.png
+	source = https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_9.0.4_build/LICENSE
 	sha256sums = a50d0cd475d9377332811eeae66e94bdc9e7d88e58477c527e9c6b78caec18bf
+	sha256sums = 15b6fa386be85b23c879331e93124953cd724765248895a7e305c68ca698867c
+	sha256sums = 93180199280b4a0492037db3de834d6a0b11742a25b7f2f3c3a06935ca0fe5a1
+	sha256sums = f2105b982da9ddce5f2213d7e1d56ba238ba7830c99ac46fb877c780fb728906
 	sha512sums = be8c6ed3bfc8661489e9da191e643a7fbbe15b3adb82cd312f5c1abb08b761e8d8bef7cf7125fef0faa55e8660cd3ce405a580adce9adee5b52ea98eec625103
+	sha512sums = a85b8b3276e2ff4ed8bda6470c15d02711ebaa48463c775cd2a36549fad738e9fe073dab80f8c57646490ffc959cdc27e9d25b1dc2a5810b0ddb249b5dc99a9b
+	sha512sums = e4fb76653fce7b0c2f9e22c1bdc4df2b85031a52c089e0e8813fdfe66e9c57029150971c686237575473b8cf1cbe2befaf0d521d2387079ec5f7301b0f8098fb
+	sha512sums = 5fcc175414f0b323297c8c49e418a7863a637e61fe611c7e1694a187f1d7bf19e2c17d8fd20fc792027ec20429a9e6aa27302e7c001018b2ffed4ba15f96a8af
 
 pkgname = ghidra-bin
 
