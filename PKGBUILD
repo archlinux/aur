@@ -1,8 +1,8 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=4.14.1
-pkgrel=5
+pkgver=4.15.0
+pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
@@ -15,7 +15,7 @@ source=(
 "$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
 "$pkgname.desktop"
 )
-md5sums=('2fd38dda52c68f739569494f6db9630d'
+md5sums=('208423389ef47f1c70d60d6e591202e0'
          'bb851102d63a9cb396b42d7a61c5104c')
 
 package() {
