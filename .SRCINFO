@@ -1,6 +1,6 @@
 pkgbase = opmon
 	pkgdesc = A open source RPG monster fighting game
-	pkgver = 0.15
+	pkgver = 0.16
 	pkgrel = 1
 	url = http://opmon-game.ga
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = opmon
 	depends = libstdc++5
 	depends = smpeg
 	conflicts = opmon-git
-	source = git+git://github.com/OpMonTeam/OpMon.git#tag=alpha-v0.15
+	source = git+git://github.com/OpMonTeam/OpMon.git#tag=alpha-v0.16
 	md5sums = SKIP
 
 pkgname = opmon

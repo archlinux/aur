@@ -1,12 +1,9 @@
-# Maintainer: Navet56 <evandib@gmail.com>
-# Maintener : Anarchiste <anarchiste@disroot.org>
-# Contributor: Navet56 <evandib@gmail.com>
-
-
-
+# Contributor: Navet56 <evandib@gmail.com> 
+# Maintainer: Navet56 <evandib@gmail.com> 
+# Maintainer : Anarchiste
 
 pkgname=opmon
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 license=('GPL')
 arch=('x86_64')
