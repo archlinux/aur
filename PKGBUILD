@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=opencorsairlink-testing
-pkgver=0+217+ga858acd
+pkgver=0+r217+ga858acd
 _commit=a858acdd65bcf9662ad914dd55513ed18bb0cfa9
 pkgrel=1
 pkgdesc='Status and control utility for Corsair Link products (testing branch)'
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd OpenCorsairLink
-  printf 0+%s+%s $(git rev-list --count HEAD) g$(git rev-parse --short HEAD)
+  echo 0+r$(git rev-list --count HEAD)+g$(git rev-parse --short HEAD)
 }
 
 build() {
