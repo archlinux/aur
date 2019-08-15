@@ -1,13 +1,13 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=amdvlk
-pkgver=2019.Q3.3
+pkgver=2019.Q3.4
 pkgrel=1
 
-_llpc_commit=f60ebe48d60ef00e69b399a24e04d600cdcc1f0c
-_xgl_commit=6b0fbc836e01be4b8fb1990b4e31846ec19305bc
-_pal_commit=46251728a7137f399b564b0886bd9bf9888c48ef
-_llvm_commit=951ae36dc33d628235446a7abe87a1aebf6717e8
+_llpc_commit=0da6ca8e09f41639636a106f9b9ca74df50321ce
+_xgl_commit=9b632ef4f132bddc94769702ed8b49efbc39d89c
+_pal_commit=66e78b997748d03d77e1d706c10f1f17e18e5654
+_llvm_commit=9bc5dd4450a6361faf5c5661056a7ee494fad830
 _spvgen_commit=2f31d1170e8a12a66168b23235638c4bbc43ecdc
 _spirvtools_commit=9702d47c6fe4cefbc55f905b0e9966452124b6c2
 _spirvheaders_commit=123dc278f204f8e833e1a88d31c46d0edf81d4b2
@@ -32,11 +32,11 @@ source=(AMDVLK-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/AMDVL
         glslang-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/glslang/archive/${_glslang_commit}.tar.gz
         SPIRV-Headers-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/SPIRV-Headers/archive/${_spirvheaders_commit}.tar.gz)
   
-sha256sums=('d2aa97caeffef43c934b73d24af3c30be640d6ffee20e27db6a58bb21c683939'
-            '4d6b623092215bfb8f9f01601db3de2b93cc0bf305173bafeb58c65f32967043'
-            'fee95d0a55cbd9c34aa54c3309ad896d56c287f35bc7cd6bb25bd86f7e0985d6'
-            '6832551a933fd04d8b1d031cf49b86497c17c878675fc641df23c9c9e128d52b'
-            '50b25878e19cd8a7d15aad891463fbdac60cbb04b2a4027bc31ff9ca3da4a5f6'
+sha256sums=('01777c1cfe4df7dce4feb91e75658fbc865dd5c755ff79451191a0cf8de1c7a4'
+            '00bf10ff483ba5f6420fb3bfe34f7ce77c6d33515840df64ed1e2858e0eeb831'
+            '6baede0581d63bdf88cc72c8c496b0cef534ee244dd4f74bcb39a9e0e0beeacd'
+            'e8a29b20a166cb7139157a40e88b8087ed33097871dcaee1bfda61b6a417886f'
+            'efbde2752044ec74d522c160899491105dbc77bb8a08ff64c274d2b94a6916d1'
             'cc946ad2835e502aca904c5f87802a2004eaed4729cb5c1dc29a5258d1c1e401'
             '64820fab5f07b9525ae09afb7bd5c6cd2c898da41026f6517e83e67547bb659c'
             '627699304b84e638e3c40bc39bef8caddb68badd857a4415ced1b371760a20d8'
