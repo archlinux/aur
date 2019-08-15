@@ -1,0 +1,16 @@
+pkgbase = mediawiki-extension-pluggableauth-git
+	pkgdesc = A Framework for creating authentication and authorization extensions
+	pkgver = 5.7.r9.g36e0a37
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Extension:PluggableAuth
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = mediawiki
+	provides = mediawiki-extension-pluggableauth
+	conflicts = mediawiki-extension-pluggableauth
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth
+	sha512sums = SKIP
+
+pkgname = mediawiki-extension-pluggableauth-git
+
