@@ -1,13 +1,14 @@
 pkgbase = oxy
 	pkgdesc = SSH-alike that uses the Noise protocol
-	pkgver = 3.0.0+105+g891cedf
-	pkgrel = 2
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://github.com/oxy-secure/oxy
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = rust
+	depends = gcc-libs
 	source = git+https://github.com/oxy-secure/oxy#commit=891cedf8fd9945fbccd9e67f6644a80bc4963d81
 	sha512sums = SKIP
 
