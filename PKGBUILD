@@ -2,7 +2,7 @@
 # Contributor: TBK <aur@jjtc.eu>
 
 pkgname=termius
-pkgver=4.9.5
+pkgver=4.9.7
 pkgrel=1
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
@@ -14,11 +14,11 @@ makedepends=('squashfs-tools')
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-app | jq '.download_url' -r
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-app | jq '.version' -r
 source=(
-    "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_34.snap"
+    "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_35.snap"
     "termius.desktop"
     "tos.html"
 )
-sha256sums=('bf45900f01872f28b9cba51569a308bf7be49db4ca5b3af98498db85229be026'
+sha256sums=('4aa31fdf498c5845a7413fe214abec37ed5f0fced88b16274b7cb205faaec3c8'
             'a64e00e3fb2f3d3b81e0f4492e339ab72c61572f4e70b2268edd94c9e69acf1b'
             '9c969cc82314240860737dc09d48970271c798c9b1116ceb91556f75959788a2')
 
