@@ -2,8 +2,8 @@
 # Contributor: Peter Lewis <plewis@aur.archlinux.org>
 pkgname=commander-genius-git
 _pkgname=Commander-Genius
-pkgver=v2.3.5
-pkgrel=5
+pkgver=v2.3.3.r117.gf718664bd
+pkgrel=1
 pkgdesc="A modern implementation of the classic Commander Keen game series"
 arch=('i686' 'x86_64')
 url="http://clonekeenplus.sourceforge.net"
