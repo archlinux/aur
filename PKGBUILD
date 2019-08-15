@@ -2,7 +2,7 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-minimal
-pkgver=0.21.7
+pkgver=0.21.13
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback through socket connection as user."
 arch=(i686 x86_64 armv7h)
@@ -13,7 +13,7 @@ makedepends=(boost meson)
 provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=(512062bc529bee04d4ccfaa2c6e720afc85bb071e49850a096b5ed518b3b412c SKIP)
+sha256sums=(95b70b268406bde15bda4464ef768f7e773417a8c776d42a678c5a5070855eea SKIP)
 validpgpkeys=(0392335A78083894A4301C43236E8A58C6DB4512) # Max Kellermann <max@musicpd.org>
 
 prepare() {
