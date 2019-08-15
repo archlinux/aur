@@ -2,7 +2,7 @@
 pkgname=python-clickhouse-cli-git
 _pkgname=clickhouse-cli
 pkgver=r144.4d96d07
-pkgrel=1
+pkgrel=2
 pkgdesc="Third-party client for the Clickhouse DBMS server"
 arch=(any)
 url="https://github.com/hatarist/clickhouse-cli"
