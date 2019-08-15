@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=4.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
@@ -42,6 +42,8 @@ package() {
     # Fix startup error electron 6.0.1 (https://github.com/electron/electron/pull/19570
     sed -i 's|urls:\[\"\*\.\"+r.tld\]|urls:\["\*://\*/\*\"\]|g' app/app/js/main/App/index.js
     sed -i 's|urls:\[\"\*\.\*\"\]|urls:\["\*://\*/\*\"\]|g' app/app/js/main/App/index.js
+    # Disable menu bar
+    sed -i 's/frame: !this\.isFrameless/frame: this\.isFrameless/g' app/app/js/main/App/index.js
     asar pack app app.asar
 
     cd "${srcdir}"
