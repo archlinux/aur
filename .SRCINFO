@@ -1,0 +1,14 @@
+pkgbase = faultstat
+	pkgdesc = page fault tracking tool
+	pkgver = 0.01.02
+	pkgrel = 1
+	url = https://github.com/ColinIanKing/faultstat
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	makedepends = gcc
+	source = https://github.com/ColinIanKing/faultstat/archive/V0.01.02.tar.gz
+	sha256sums = 4403a82f37e49b0f5d674230686465500fd3b138d6b5414e9b3de7b9a6dea57a
+
+pkgname = faultstat
+
