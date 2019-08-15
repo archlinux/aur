@@ -1,0 +1,15 @@
+pkgbase = asciiquarium-git
+	pkgver = r12.8bdb7d4
+	pkgrel = 1
+	url = https://github.com/cmatsuoka/asciiquarium
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = perl-term-animation
+	provides = asciiquarium
+	conflicts = asciiquarium
+	source = git+https://github.com/cmatsuoka/asciiquarium.git
+	md5sums = SKIP
+
+pkgname = asciiquarium-git
+
