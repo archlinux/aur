@@ -3,12 +3,13 @@
 pkgname=filtron-git
 pkgver=0+r51+93f8b22
 pkgrel=1
-pkgdesc='Reverse-HTTP filtering proxy (git)'
+pkgdesc='Reverse HTTP filtering proxy (git)'
 arch=(i686 x86_64)
 url=https://github.com/asciimoo/filtron
 license=(AGPL3)
 provides=(filtron)
 conflicts=(filtron)
+depends=(glibc)
 makedepends=(git go)
 install=filtron.install
 source=(git+$url
