@@ -2,7 +2,7 @@
 
 pkgname=qlcplus-git
 _pkgname=qlcplus
-pkgver=4.11.2.r1024.g50b228e64
+pkgver=4.12.1.r126.g50b228e64
 pkgrel=1
 pkgdesc="Q Light Controller - The open DMX lighting desk software for controlling professional lighting fixtures."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 	cd "$srcdir/${_pkgname}"
 	
 	# Remove 'QLC+_' prefix from git tag
-	git describe --long | sed 's/^QLC+_//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^QLC+_//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

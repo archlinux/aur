@@ -1,6 +1,6 @@
 pkgbase = qlcplus-git
 	pkgdesc = Q Light Controller - The open DMX lighting desk software for controlling professional lighting fixtures.
-	pkgver = 4.11.2.r1024.g50b228e64
+	pkgver = 4.12.1.r126.g50b228e64
 	pkgrel = 1
 	url = http://qlcplus.org/
 	install = qlcplus-git.install
