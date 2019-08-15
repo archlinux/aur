@@ -1,0 +1,19 @@
+pkgbase = kworkflow-git
+	pkgdesc = Scripts that help setup infra for kernel development.
+	pkgver = 1.3.3.r0.gc3055f9
+	pkgrel = 1
+	url = https://github.com/rodrigosiqueira/kworkflow
+	install = kw.install
+	arch = x86_64
+	license = GPL2
+	depends = libguestfs
+	depends = qemu
+	depends = ansible
+	depends = git
+	provides = kworkflow
+	conflicts = kworkflow
+	source = git+https://github.com/rodrigosiqueira/kworkflow.git
+	md5sums = SKIP
+
+pkgname = kworkflow-git
+
