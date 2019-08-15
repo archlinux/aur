@@ -1,0 +1,16 @@
+pkgbase = mediawiki-extension-ldapprovider-git
+	pkgdesc = MediaWiki extension for LDAP authentication
+	pkgver = r126.5c4546b
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Extension:LDAPProvider
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = mediawiki
+	provides = mediawiki-extension-ldapprovider
+	conflicts = mediawiki-extension-ldapprovider
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/LDAPProvider
+	sha512sums = SKIP
+
+pkgname = mediawiki-extension-ldapprovider-git
+
