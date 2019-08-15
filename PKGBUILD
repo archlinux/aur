@@ -1,7 +1,7 @@
 # Maintainer: jackusm <jackusm95@gmail.com>
 
 pkgname=easytether-bin
-pkgver=0.8.8
+pkgver=0.8.9-1
 pkgrel=1
 pkgdesc="Internet access via smartphone"
 arch=('i686' 'x86_64')
@@ -13,18 +13,21 @@ _file=easytether-${pkgver}-${pkgrel}-$CARCH.pkg.tar.xz
 source=("http://www.mobile-stream.com/beta/arch/easytether-${pkgver}-${pkgrel}-$CARCH.pkg.tar.xz")
 changelog=CHANGELOG
 case "$CARCH" in
+	armv6h) _pkgarch="arm"
+		sha256sums+=('835bece8494fce7f5ceca5b45023b9188a0868ef4ebe0fc9063f9cf2dac36241')
+		;;
 	armv6h) _pkgarch="armv6"
-			sha256sums+=('f918fc5ed31811fb0390ebdfb50afd59795e3f82503813aa6d5c4279f7dcf89b')
-			;;
+		sha256sums+=('eaea92e4810b1f024b512b224085e34050b27aafd99e5323a22b07f2e38f6f59')
+		;;
 	armv7h) _pkgarch="armv7"
-			sha256sums+=('0bc017027a8bf3c2efafd8597532b53b2c40791d61c8a9c9c6c8641bf0e84add')
-			;;
+		sha256sums+=('edc6cb840e816fa04445d73bd9100a4b94a73ff8b3d698a3cafe0ab254aefc3b')
+		;;
 	i686) _pkgarch="386"
-			sha256sums+=('a3f50f42cbfa24833d5c686edb3841912fc46b304947f046e59ec5cd7b77409d')
-			;;
+		sha256sums+=('81867d75fa974afa9100da8c94aef350e2892fd79b65fd92ae2308b15da3d83b')
+		;;
 	x86_64) _pkgarch="amd64"
-			sha256sums+=('392b01904aa37eb2d497f3bef459cc467f25466ed60247d596d9577e2a9b4008')
-			;;
+		sha256sums+=('a576590d185a08384b3c7b856d66bfafb8e1a1b94c96f5f3bda96d9216d83cf9')
+		;;
 esac
 
 build()
