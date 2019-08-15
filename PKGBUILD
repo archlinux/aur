@@ -43,7 +43,7 @@ package() {
     sed -i 's|urls:\[\"\*\.\"+r.tld\]|urls:\["\*://\*/\*\"\]|g' app/app/js/main/App/index.js
     sed -i 's|urls:\[\"\*\.\*\"\]|urls:\["\*://\*/\*\"\]|g' app/app/js/main/App/index.js
     # Disable menu bar
-    sed -i 's/frame: !this\.isFrameless/frame: this\.isFrameless/g' app/app/js/main/App/index.js
+    sed -i 's/frame:!this\.isFrameless/frame:this\.isFrameless/g' app/app/js/main/App/index.js
     asar pack app app.asar
 
     cd "${srcdir}"
