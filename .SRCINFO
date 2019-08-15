@@ -1,21 +1,24 @@
 pkgbase = stf
 	pkgdesc = Web application for controlling and managing Android devices
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openstf.io
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = npm
-	depends = nodejs
+	makedepends = python2
+	makedepends = graphicsmagick
+	makedepends = protobuf
+	makedepends = yasm
 	depends = android-tools
+	depends = nodejs<10
 	depends = rethinkdb
-	depends = graphicsmagick
 	depends = zeromq
-	depends = protobuf
-	depends = yasm
-	depends = pkg-config
+	noextract = stf-3.4.1.tgz
 	options = !strip
+	source = https://registry.npmjs.org/stf/-/stf-3.4.1.tgz
+	sha512sums = 75dca7e86a16a1ba12cded9249130a8c31aee22d33d71690d0a3790624089c0c9eb885c6899ca0641c5e26c3b4d86ad027cf2b09be62f49491faa330c81cfa07
 
 pkgname = stf
 
