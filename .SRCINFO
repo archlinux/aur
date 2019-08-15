@@ -1,0 +1,19 @@
+pkgbase = latex-tuda-ci
+	pkgdesc = TUDa-CI for LaTeX from Technische Universität Darmstadt
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://github.com/tudace/tuda_latex_templates
+	arch = any
+	license = custom
+	depends = latex-tuda-ci-logos
+	conflicts = latex-tuddesign
+	conflicts = latex-tuddesign-thesis
+	conflicts = latex-tuddesign-fonts
+	replaces = latex-tuddesign
+	replaces = latex-tuddesign-thesis
+	replaces = latex-tuddesign-fonts
+	source = https://github.com/tudace/tuda_latex_templates/archive/v1.01.tar.gz
+	sha512sums = 27ae601c7d644a36917430e7638babd59514e2e9cea51fd0ed1de22ffbb9b9c0599381eb7a9e581ca29a9f673fbd22cc81cb17a3de6331b09d2b75b6485c57b3
+
+pkgname = latex-tuda-ci
+
