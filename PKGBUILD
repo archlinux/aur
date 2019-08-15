@@ -2,8 +2,8 @@
 # Maintainer: Sean V Kelley <seanvk@posteo.de>
 
 pkgname=libyami-utils
-pkgver=1.3.1
-pkgrel=4
+pkgver=1.3.2
+pkgrel=5
 pkgdesc="Intel VA-API Media Applications and Scripts for libyami"
 arch=('i686' 'x86_64')
 url="https://github.com/01org/libyami-utils"
@@ -12,7 +12,7 @@ depends=('libbsd' 'libyami' 'ffmpeg')
 options=('!emptydirs')
 changelog=
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=('9264b45dceb62b96fb428814c7ef2b16994654c1f5d4807e993d496c16375b79')
+sha256sums=('e63e7aa96db61409ac46f58671974f6a44d7cc7625782209d2ad4e0cfe97c706')
 
 build() {
         export CXXFLAGS="-Wno-error"
