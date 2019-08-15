@@ -10,7 +10,7 @@
 pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
 pkgver=4.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.${pkgname}.com/"
@@ -76,7 +76,7 @@ build() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
   export SCONSFLAGS="$MAKEFLAGS"
-  scons core "${_scons_args[@]}"
+  scons2 core "${_scons_args[@]}"
 }
 
 check() {
@@ -84,7 +84,7 @@ check() {
 
   export SCONSFLAGS="$MAKEFLAGS"
 
-  scons unittests "${_scons_args[@]}"
+  scons2 unittests "${_scons_args[@]}"
 
   # These use mlock(), which will fail under systemd-nspawn (using devtools)
   # See https://jira.mongodb.org/browse/SERVER-32773
@@ -102,17 +102,17 @@ check() {
 
   python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=unittests
 
-  scons dbtest "${_scons_args[@]}"
+  scons2 dbtest "${_scons_args[@]}"
   python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=dbtest
 
-  scons integration_tests "${_scons_args[@]}"
+  scons2 integration_tests "${_scons_args[@]}"
   python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=integration_tests_replset,integration_tests_standalone --dbpathPrefix="${srcdir}"
 }
 
 package() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
-  scons install --prefix="${pkgdir}/usr" "${_scons_args[@]}"
+  scons2 install --prefix="${pkgdir}/usr" "${_scons_args[@]}"
 
   # Keep historical Arch conf file name
   install -Dm644 "rpm/mongod.conf" "${pkgdir}/etc/${pkgname}.conf"
