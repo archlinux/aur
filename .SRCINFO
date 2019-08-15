@@ -1,7 +1,7 @@
 pkgbase = tnftpd
 	pkgdesc = a.k.a. lukemftpd, it is the default NetBSD FTP server
 	pkgver = 20190602
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ftp.netbsd.org/pub/NetBSD/misc/tnftp/
 	arch = x86_64
 	license = custom:BSD-2clause

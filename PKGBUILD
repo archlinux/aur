@@ -1,7 +1,7 @@
 # Maintainer: Pedro A. López-Valencia <youremail@domain.com>
 pkgname=tnftpd
 pkgver=20190602
-pkgrel=1
+pkgrel=2
 pkgdesc="a.k.a. lukemftpd, it is the default NetBSD FTP server"
 arch=('x86_64')
 url="https://ftp.netbsd.org/pub/NetBSD/misc/tnftp/"
@@ -43,6 +43,7 @@ package() {
 	install -D -m 644 ../tnftpd.socket "$pkgdir/usr/lib/systemd/system/tnftpd.socket"
 	install -d -m 755 "$pkgdir/usr/share/doc/$pkgname"
 	install -d -m 755 "$pkgdir/etc"
+	mv "$pkgdir/usr/share/man/man5/ftpusers.5" "$pkgdir/usr/share/man/man5/ftpusers.tnftpd.5"
 	mv "$pkgdir/usr/share/examples/tnftpd" "$pkgdir/usr/share/doc/"
 	#groff -mdoc -f N -rS12 "src/ftpd.conf.man" | ps2pdf -dPDFA - "$pkgdir/usr/share/doc/$pkgname/ftpd.conf.5.pdf"
 	#groff -mdoc -f N -rS12 "src/ftpusers.man" | ps2pdf -dPDFA - "$pkgdir/usr/share/doc/$pkgname/ftusers.5.pdf"

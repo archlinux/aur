@@ -1,5 +1,5 @@
 src/
 pkg/
-.gz
-.asc
-.xz
+*.gz
+*.asc
+*.xz
