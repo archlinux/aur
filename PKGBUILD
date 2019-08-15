@@ -12,14 +12,14 @@ _build_stubdom=${build_stubdom:-false}
 
 pkgbase="xen"
 pkgname=("xen" "xen-docs")
-pkgver="4.12.0"
+pkgver="4.12.1"
 pkgrel="1"
 arch=("x86_64") # TODO What about ARM?
 url="http://www.xenproject.org/"
 license=("GPL2")
 changelog="ChangeLog"
 validpgpkeys=("23E3222C145F4475FA8060A783FE14C957E82BD9")
-options=(!buildflags !strip)
+options=(!buildflags !strip !debug)
 makedepends=(
   "bin86"
   "binutils>=2.30"
@@ -62,7 +62,7 @@ makedepends=(
 source=(
   "https://downloads.xenproject.org/release/xen/${pkgver}/${pkgbase}-${pkgver}.tar.gz"
   "https://downloads.xenproject.org/release/xen/${pkgver}/${pkgbase}-${pkgver}.tar.gz.sig"
-  "ipxe-git.tar.gz::http://xenbits.xen.org/xen-extfiles/ipxe-git-d2063b7693e0e35db97b2264aa987eb6341ae779.tar.gz"
+  "ipxe-git.tar.gz::http://xenbits.xen.org/xen-extfiles/ipxe-git-1dd56dbd11082fb622c2ed21cfaced4f47d798a6.tar.gz"
 
   # Helper and config files.
   "grub-mkconfig-helper"
@@ -76,9 +76,9 @@ source=(
   # Compile fixes.
 )
 sha256sums=(
-  "6e5455e4a58dcb2339bfcd2a89842728068b530aa62501843793f7cf743c4d64"
+  "5450a85497b84167df1d229b3ab98fb24ef4d6b0510dce522798c13c1b090159"
   "SKIP"
-  "38061598a5147ebcda8ae41c356396cce59f087cf27253b6bf8fb50ae0919ca1"
+  "fcb2b5da90a59a0011db7403a1ea7887b0dfb04ef91a7d31964c63ed14f7a426"
 
   # Helper and config files.
   "23c3b0eab4cb06260bd07324d2060356560c9bc52270aaaf6130e1c130fc6e5e"
