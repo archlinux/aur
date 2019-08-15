@@ -1,0 +1,13 @@
+pkgbase = dreampower-checkpoints
+	pkgdesc = Checkpoints for dreampower CLI application
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/private-dreamnet/dreampower-checkpoints
+	arch = x86_64
+	license = GPL3
+	options = !strip
+	source = checkpoints::https://cdn.dreamnet.tech/releases/checkpoints/v0.0.1.zip
+	md5sums = 0b89647a2ef60f765e67a6d32f34786b
+
+pkgname = dreampower-checkpoints
+
