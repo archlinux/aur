@@ -30,7 +30,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.9.0.r4146.37f21591
+pkgver=2.9.0.r4147.54c59a88
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://agraef.github.io/purr-data/"
@@ -57,9 +57,7 @@ options=('!makeflags' '!strip')
 # depend on upstream tagging releases and candidates, and also allows us to
 # deal with situations where upstream lags behind on already submitted merge
 # requests with important bugfixes and additions.
-# NOTE: Temporarily switched to the testing branch to incorporate important
-# bugfixes and updates which haven't been merged upstream yet.
-source=("$pkgname::git+https://bitbucket.org/agraef/purr-data.git#branch=testing")
+source=("$pkgname::git+https://bitbucket.org/agraef/purr-data.git#branch=release")
 md5sums=('SKIP')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
