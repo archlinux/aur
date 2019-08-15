@@ -3,7 +3,7 @@
 
 pkgname=ckan
 pkgver=1.26.4
-pkgrel=1
+pkgrel=2
 pkgdesc='All you need to find, install, and manage mods for Kerbal Space Program (ksp)'
 arch=('any')
 url="https://github.com/KSP-CKAN/CKAN/"
