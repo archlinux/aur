@@ -1,0 +1,58 @@
+From e940818853582290af21bf38d73ee26143d500ad Mon Sep 17 00:00:00 2001
+From: Simon Steinbeiss <simon.steinbeiss@elfenbeinturm.at>
+Date: Wed, 25 Mar 2015 17:03:02 +0100
+Subject: Make screenlockers configurable through xfconf
+
+Signed-off-by: Eric Koegel <eric.koegel@gmail.com>
+---
+ scripts/xflock4 | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/scripts/xflock4 b/scripts/xflock4
+index ec4d05d..7d857d3 100644
+--- a/scripts/xflock4
++++ b/scripts/xflock4
+@@ -24,8 +24,12 @@
+ PATH=/bin:/usr/bin
+ export PATH
+ 
++# First test for the command set in the session's xfconf channel
++LOCK_CMD=$(xfconf-query -c xfce4-session -p /general/LockCommand)
++
+ # Lock by xscreensaver or gnome-screensaver, if a respective daemon is running
+ for lock_cmd in \
++    "$LOCK_CMD" \
+     "xscreensaver-command -lock" \
+     "gnome-screensaver-command --lock"
+ do
+From 495aac78058cd78e2d34505af204e72a1b4f19ac Mon Sep 17 00:00:00 2001
+From: Eric Koegel <eric.koegel@gmail.com>
+Date: Sat, 28 Mar 2015 06:16:10 +0300
+Subject: Xflock: bypass null/blank LockCommand parameter (Bug #11764)
+
+Commit http://git.xfce.org/xfce/xfce4-session/commit/?id=e940818853582290af21bf38d73ee26143d500ad
+breaks xflock4 functionality if the xfconf LockCommand parameter doesn't exist or
+is a blank entry. The
+$lock_cmd >/dev/null 2>&1 && exit
+will run a blank (empty string) and then exist, never getting to the other items
+in the list.
+Bug report and patch provided by ToZ.
+---
+ scripts/xflock4 | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/xflock4 b/scripts/xflock4
+index 7d857d3..32770b4 100644
+--- a/scripts/xflock4
++++ b/scripts/xflock4
+@@ -33,7 +33,9 @@ for lock_cmd in \
+     "xscreensaver-command -lock" \
+     "gnome-screensaver-command --lock"
+ do
+-    $lock_cmd >/dev/null 2>&1 && exit
++    if [ ! -z "$lock_cmd" ]; then
++        $lock_cmd >/dev/null 2>&1 && exit
++    fi
+ done
+ 
+ # else run another access locking utility, if installed

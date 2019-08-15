@@ -1,0 +1,18 @@
+diff -upr xfce4-session-4.12.1.orig/scripts/xinitrc.in.in xfce4-session-4.12.1/scripts/xinitrc.in.in
+--- xfce4-session-4.12.1.orig/scripts/xinitrc.in.in	2015-03-16 09:29:52.000000000 +0200
++++ xfce4-session-4.12.1/scripts/xinitrc.in.in	2017-03-03 04:11:03.591724694 +0200
+@@ -87,6 +87,14 @@ cat /dev/null $XRESOURCES | xrdb -nocpp
+ # load local modmap
+ test -r $HOME/.Xmodmap && xmodmap $HOME/.Xmodmap
+ 
++# source system xinitrc scripts
++if [ -d /etc/X11/xinit/xinitrc.d ]; then
++    for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
++        [ -x "$f" ] && . "$f"
++    done
++    unset f
++fi
++
+ # run xfce4-session if installed
+ if which xfce4-session >/dev/null 2>&1; then
+ 

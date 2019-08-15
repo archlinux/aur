@@ -1,0 +1,27 @@
+From e740aad5d6761ce9a9df48a3d87ff29240433d19 Mon Sep 17 00:00:00 2001
+From: Evangelos Foutras <evangelos@foutrelis.com>
+Date: Tue, 24 Mar 2015 10:09:33 +0200
+Subject: [PATCH] Pass VT number to xinit if XDG_VTNR is set
+
+---
+ scripts/startxfce4.in | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/scripts/startxfce4.in b/scripts/startxfce4.in
+index d0a74a9..bf3201b 100644
+--- a/scripts/startxfce4.in
++++ b/scripts/startxfce4.in
+@@ -92,6 +92,10 @@ if test "x$DISPLAY" = "x"
+ then
+   echo "$0: Starting X server"
+   prog=xinit
++
++  if test ! "x$XDG_VTNR" = "x"; then
++    SERVERRC="vt$XDG_VTNR $SERVERRC"
++  fi
+ else
+   echo "$0: X server already running on display $DISPLAY"
+   prog=/bin/sh
+-- 
+2.3.4
+
