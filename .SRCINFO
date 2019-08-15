@@ -1,6 +1,6 @@
 pkgbase = python-log_symbols
 	pkgdesc = Colored symbols for various log levels for Python
-	pkgver = 0.0.13
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://github.com/manrajgrover/py-log-symbols
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-log_symbols
 	makedepends = python-setuptools
 	depends = python
 	depends = python-colorama
-	source = https://files.pythonhosted.org/packages/source/l/log_symbols/log_symbols-0.0.13.tar.gz
-	sha256sums = ecc2f8f3ee586fd819d8c8696705914761cd8367d1f10597b9b49a0980ab6e55
+	source = https://files.pythonhosted.org/packages/source/l/log_symbols/log_symbols-0.0.14.tar.gz
+	sha256sums = cf0bbc6fe1a8e53f0d174a716bc625c4f87043cc21eb55dd8a740cfe22680556
 
 pkgname = python-log_symbols
 
