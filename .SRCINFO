@@ -1,0 +1,19 @@
+pkgbase = plymouth-theme-arch-agua-git
+	pkgdesc = Plymouth theme for Arch Linux inspired by Deepin.
+	pkgver = r4.f7789af
+	pkgrel = 1
+	url = https://github.com/tejonaco/plymouth-theme-arch-agua/
+	install = plymouth-theme-arch-agua-git.install
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GNU
+	makedepends = git
+	depends = plymouth
+	source = git+https://github.com/tejonaco/plymouth-theme-arch-agua.git
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-arch-agua-git
+
