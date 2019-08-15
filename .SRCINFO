@@ -1,16 +1,26 @@
 pkgbase = zulip-desktop-bin
-	pkgdesc = Zulip Desktop Client - Workplace chat that improves your productivity.
+	pkgdesc = Real-time team chat based on the email threading model (bin)
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zulipchat.com
 	arch = x86_64
 	license = Apache
-	provides = zulip-desktop=4.0.0
+	makedepends = unzip
+	depends = libxkbfile
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	provides = zulip-desktop
 	conflicts = zulip-desktop
+	noextract = Zulip-4.0.0-linux-x64.zip
 	source = https://github.com/zulip/zulip-desktop/releases/download/v4.0.0/Zulip-4.0.0-linux-x64.zip
 	source = zulip.desktop
-	sha256sums = c9c4f75871cf2fb88a22d68112e06300bb45bac75a06bf4d0af0ccfc530a756c
-	sha256sums = 4cf97c330c440c5f3d0cdc3bd9af9b22a0475dd462bbe336d591d52b5bb6236e
+	source = https://github.com/zulip/zulip-desktop/blob/v4.0.0/build/zulip.png
+	source = https://github.com/zulip/zulip-desktop/blob/v4.0.0/LICENSE
+	sha512sums = 4bbed4d0b781e2964dee51e6ea313c6e6b74d1e6cc47aad70d3a4f127bbde5d4462a19355ed49f4026c0904d38927a37f691fc962a0fa6971c6bd6e878d51f9d
+	sha512sums = 7696a6874d17957f99452452723ae1a6b32b6814b018361a71ed1fe0191e1c6da6f3ad693e2e279615e74f687c380ff2f6dab8b69fcd82476e8f33b56a6b4cb5
+	sha512sums = 1839542bec928c14e9de4b4cb5e986767983f0b8ce51429d718eabdd459b7865abfd7793555fb8727642b3a4ff77d787e5f07370040025b3bc0c8a7b883cf052
+	sha512sums = e8da9afa03d2b8feabef60f49df30d4dfe95654aa7172d62c6121985b715a71a92e5e65e4c03fc87d1c6269c1c83f610bc77999c935c026144b16e348300ea77
 
 pkgname = zulip-desktop-bin
 
