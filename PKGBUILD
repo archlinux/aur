@@ -3,7 +3,7 @@
 
 _pkgname=frida
 pkgname=python2-$_pkgname
-pkgver=12.6.9
+pkgver=12.6.14
 pkgrel=1
 pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 2 version from PyPi."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('wxWindows Library License, Version 3.1')
 depends=('python2' 'python2-pygments' 'python2-colorama')
 source=("https://files.pythonhosted.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "COPYING")
-sha256sums=('88b8a4a544234ffb0106ca30edc2e4a23d2db1ebce723477e306ea5b8ae3ec31'
+sha256sums=('52e9dc674c9ef6329d6a7008f0878bfb1d5611f09b246fe52f464241179207e8'
             '5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2')
 conflicts=("python-${_pkgname}")
 
