@@ -3,6 +3,7 @@ Version=1.0
 Type=Application
 Name=Todoist
 Comment=Todoist for Linux
+Categories=Office;ProjectManagement
 Exec=/usr/bin/todoist
 Icon=goa-account-todoist
 Path=

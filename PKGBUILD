@@ -2,7 +2,7 @@
 _pkgname=todoist
 pkgname=todoist-linux-bin
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Unofficial desktop client for Todoist"
 arch=(x86_64)
@@ -33,4 +33,4 @@ package() {
 }
 
 sha512sums=('942d073844a955e5c70fdd57d61b849fb227f50b13529466fd26955fb2a3cab17d08941f57451e0298ee6025b23eebc391f082bafad83c7e3f2f0b53ab1a02f4'
-            '57ff03370058564bd185e9b561a33fe6cbd37ea9794aea48bbc39dd62639bb9028f3c1777daf0fc113a176fa75693fbf790295998cd9a213e09c7108a6ec3124')
+            '8c3a96c0582833edd43efdf36b126e25c0c98fe34bc9e1c43c32bde350f69f090b75c89fd795a1decdd9bca9fdd35e776a43aabb04c6306a32d5b43da41fe143')
