@@ -1,5 +1,5 @@
 pkgbase = morty-git
-	pkgdesc = Privacy-aware web content sanitizer proxy-as-a-service (git)
+	pkgdesc = Web content sanitizer/proxy (git)
 	pkgver = 0.2.0+12+gfe94d9a
 	pkgrel = 1
 	url = https://github.com/asciimoo/morty
@@ -8,7 +8,7 @@ pkgbase = morty-git
 	license = AGPL3
 	makedepends = git
 	makedepends = go
-	optdepends = searx: Privacy-respecting, hackable metasearch engine
+	depends = glibc
 	provides = morty
 	conflicts = morty
 	source = git+https://github.com/asciimoo/morty

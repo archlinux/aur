@@ -2,16 +2,16 @@
 # Contributor: Arthur Țițeică / arthur dot titeica with gmail
 
 pkgname=morty-git
-pkgver=0.2.0+12+gfe94d9a
+pkgver=0.2.0+r18+gc23dae9
 pkgrel=1
-pkgdesc='Privacy-aware web content sanitizer proxy-as-a-service (git)'
+pkgdesc='Web content sanitizer/proxy (git)'
 arch=(i686 x86_64)
 url=https://github.com/asciimoo/morty
 license=(AGPL3)
 provides=(morty)
 conflicts=(morty)
+depends=(glibc)
 makedepends=(git go)
-optdepends=('searx: Privacy-respecting, hackable metasearch engine')
 source=(git+$url
         morty.service)
 sha512sums=('SKIP'
@@ -19,7 +19,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd morty
-  git describe --tags | sed 's/v//;s/-/+/g'
+  git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
 }
 
 build() {
@@ -28,10 +28,12 @@ build() {
 }
 
 package() {
-  install -Dm 644 morty.service -t "$pkgdir"/usr/lib/systemd/system
-
   cd morty
 
   install -D bin/morty -t "$pkgdir"/usr/bin
+
+  install -Dm 644 ../morty.service -t "$pkgdir"/usr/lib/systemd/system
+
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/morty
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/morty
 }
