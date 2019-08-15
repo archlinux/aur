@@ -1,6 +1,6 @@
 pkgbase = fontforge-git
 	pkgdesc = Full-featured outline and bitmap font editor.
-	pkgver = 20150824.r32.geda9fc9
+	pkgver = 20190801.r29.gf40e1fbc5
 	pkgrel = 1
 	epoch = 1
 	url = https://fontforge.github.io/
@@ -10,6 +10,8 @@ pkgbase = fontforge-git
 	license = GPL3
 	license = BSD
 	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
 	depends = libxkbui
 	depends = libxi
 	depends = pango
@@ -26,9 +28,7 @@ pkgbase = fontforge-git
 	provides = fontforge
 	conflicts = fontforge
 	source = git://github.com/fontforge/fontforge.git
-	source = http://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.bz2
 	sha256sums = SKIP
-	sha256sums = 2f6e9a7de3ae8e85bdd2fe237e27d868d3ba7a27495e65906455c27722dd1a17
 
 pkgname = fontforge-git
 
