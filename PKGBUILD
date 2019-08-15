@@ -3,7 +3,7 @@
 
 pkgname=deepgit
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to investigate the history of source code."
 arch=('any')
 url="http://www.syntevo.com/deepgit/"
@@ -20,10 +20,11 @@ source=(
     "deepgit.desktop"
 )
 sha1sums=(
-    6d7865feb079ecc8715643a66eeb7feb2a897945
+    11f4dc96ab826ad6b1633ce7472a375f7f45153a
     23a92ccca3e7e452538cc7a9739c86a71dea474c
     8ab2e36b3cb2e6f7b5af70a4ddbe2e9d307d3988
 )
+
 
 package() {
     cd $srcdir
