@@ -2,7 +2,7 @@
 
 pkgname=autopass.cr-git
 pkgver=0.r4.802fb81
-pkgrel=2
+pkgrel=3
 pkgdesc='a rofi frontend for pass'
 arch=(x86_64)
 url='https://gitlab.com/repomaa/autopass.cr'
