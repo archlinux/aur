@@ -10,6 +10,7 @@ url='https://github.com/sumneko/lua-language-server'
 arch=('x86_64')
 depends=('lua')
 makedepends=('ninja' 'git')
+install="$_pkgname.install"
 source=(git+https://github.com/sumneko/$_pkgname
         0001-Use-a-writable-log-dir-in-tmp.patch)
 md5sums=('SKIP'
