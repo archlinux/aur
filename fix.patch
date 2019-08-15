@@ -1,0 +1,69 @@
+diff --git a/main.py b/main.py
+index 65e2bf2..fd25095 100644
+--- a/main.py
++++ b/main.py
+@@ -189,7 +189,7 @@ def main(args):
+     if not os.path.isfile(args.input):
+         print("Error : {} file doesn't exist".format(
+             args.input), file=sys.stderr)
+-        exit(1)
++        sys.exit(1)
+     start = time.time()
+ 
+     gpu_ids = args.gpu
+@@ -236,7 +236,7 @@ def main(args):
+         if image.shape != (512, 512, 3):
+             print("Error : image is not 512 x 512, got shape: {}".format(
+                 image.shape), file=sys.stderr)
+-            exit(1)
++            sys.exit(1)
+ 
+         # Process
+         if args.n_runs is None or args.n_runs == 1:
+diff --git a/run.py b/run.py
+index 9f09b78..3c61bb6 100644
+--- a/run.py
++++ b/run.py
+@@ -155,30 +155,24 @@ def process(cv_img, gpu_ids, prefs):
+                 # Save Data
+                 if phase == "correct_to_mask":
+                     mask = cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
+-                    cv2.imwrite("mask.png", mask)
+ 
+                 elif phase == "maskref_to_maskdet":
+                     maskdet = cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
+-                    cv2.imwrite("maskdet.png", maskdet)
+ 
+                 elif phase == "maskfin_to_nude":
+                     nude = cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
+-                    cv2.imwrite("nude.png", nude)
+ 
+         # Correcting:
+         elif phase == "dress_to_correct":
+             correct = create_correct(dress)
+-            cv2.imwrite("correct.png", correct)
+ 
+         # mask_ref phase (opencv)
+         elif phase == "mask_to_maskref":
+             maskref = create_maskref(mask, correct)
+-            cv2.imwrite("maskref.png", maskref)
+ 
+         # mask_fin phase (opencv)
+         elif phase == "maskdet_to_maskfin":
+             maskfin = create_maskfin(maskref, maskdet, prefs)
+-            cv2.imwrite("maskfin.png", maskfin)
+ 
+         # nude_to_watermark phase (opencv)
+         elif phase == "nude_to_watermark":
+diff --git a/scripts/setup.py b/scripts/setup.py
+index bf10fb0..d07d4ad 100644
+--- a/scripts/setup.py
++++ b/scripts/setup.py
+@@ -1,6 +1,7 @@
+ import argparse
+ import fileinput
+ import importlib
++from importlib import util
+ import logging
+ import os
+ import subprocess
