@@ -6,10 +6,13 @@
 # Contributor: Sebastian Jug <seb AT stianj DOT ug>
 
 #
-# Before running makepkg, you must do this:
+# Before running makepkg, you must do this (as normal user):
 #
-# gpg --keyserver hkp://pgp.mit.edu:11371 --recv-keys 0x4E2C6E8793298290
+#     gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
 #
+# If you want to update tor-browser from AUR without AUR helpers you can run in a terminal:
+#
+#     tor-browser -u
 
 pkgname='tor-browser'
 pkgver='8.5.4'
