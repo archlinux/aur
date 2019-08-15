@@ -1,0 +1,20 @@
+read -r -d '' msg <<TIPS
+====================================\n
+1. Uncomment or add/edit these lines in /etc/libvirt/qemu.conf \n
+\n
+nvram = [ \n
+  "/usr/share/AAVMF/AAVMF_CODE.fd:/usr/share/AAVMF/AAVMF_VARS.fd" \n
+  "/usr/share/AAVMF/AAVMF32_CODE.fd:/usr/share/AAVMF/AAVMF32_VARS.fd" \n
+]\n
+
+2. systemctl restart libvirtd \n
+\n
+====================================
+TIPS
+post_install() {
+  echo -e $msg
+}
+
+post_upgrade() {
+  echo -e $msg
+}
