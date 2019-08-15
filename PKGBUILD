@@ -1,13 +1,14 @@
 # Maintainer: Pedro A. López-Valencia <youremail@domain.com>
 pkgname=tnftpd
 pkgver=20190602
-pkgrel=4
+pkgrel=5
 pkgdesc="Also known as lukemftpd, it is the default NetBSD FTP server"
 arch=('x86_64')
 url="https://ftp.netbsd.org/pub/NetBSD/misc/tnftp/"
 license=('custom:BSD-2clause')
 depends=('pam')
 backup=(etc/ftpd.conf etc/ftpusers)
+conflicts=('bftpd' 'vsftpd')
 source=("http://ftp.netbsd.org/pub/NetBSD/misc/tnftp/$pkgname-$pkgver.tar.gz"{,.asc} 
 	'tnftpd.service' 
 	'tnftpd@.service' 
@@ -22,7 +23,7 @@ sha256sums=('905519d239745ebec41c91e357af299f3bce04b59f84f2ba5f7654738439ac1c'
             '6f3a47accdbd0e45aa2daca1c3362a225747356d51ffc3e179a16e211f48d185'
             'e0513358204dcb310c07d906b45b83f40bff584c3031583a1a901bfadd702f97'
             '7844c647396c179a5c2544e3f801b9cc3a6742a84b82789e4d5bef82ad81444e'
-            '746d0744f6469e6bca4b1443b8049a6847715653ad590834cde537c8cc4189d5')
+            'dd98d58e69b89da4f7a17904e5c14c2f761586a43841e7b75f4501f58667b03a')
 validpgpkeys=('2A8E22EDB07B5414548D8507A4186D9A7F332472')
 
 prepare() {
