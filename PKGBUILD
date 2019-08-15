@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=dino
-pkgver=0.0+495+gd251063
-_commit=d251063aae329788c7d94b7474b54b40320870f3
+pkgver=0.0+r497+g3ad2891
+_commit=3ad2891eb80d9381fed8547d6429904120af1f3e
 pkgrel=1
 pkgdesc='Modern XMPP (Jabber) chat client written in GTK+/Vala'
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd dino
-  git describe --tags | sed 's#-#+#g'
+  git describe --tags | sed 's#-#+#g;s#+#+r#'
 }
 
 build() {
@@ -38,4 +38,5 @@ check() {
 package() {
   cd dino
   make DESTDIR="$pkgdir" install
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/dino
 }
