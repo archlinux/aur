@@ -3,7 +3,7 @@
 # Contributor: Jose Valecillos <valecillosjg@gmail.com>
 
 pkgname=dosbox-svn
-pkgver=0.74.2.4157
+pkgver=0.74.2.4253
 pkgrel=1
 epoch=1
 pkgdesc="An emulator with builtin DOS for running DOS Games"
@@ -11,13 +11,13 @@ arch=('i686' 'x86_64')
 url='http://dosbox.sourceforge.net/'
 license=('GPL2')
 depends=('alsa-lib' 'hicolor-icon-theme' 'libgl' 'glu' 'libpng' 'mesa' 'sdl_net' 'sdl_sound')
-makedepends=('subversion')
+makedepends=('subversion' 'desktop-file-utils')
 provides=('dosbox')
 conflicts=('dosbox')
 source=($pkgname::svn+https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk
     $pkgname.desktop
-    dosbox-16.png 
-    dosbox-48.png 
+    dosbox-16.png
+    dosbox-48.png
     dosbox-128.png)
 sha256sums=('SKIP'
     '7c8db8a5a475f54283748b539b50fa49b59a87c5ff80e94e82520530b996f871'
@@ -41,7 +41,7 @@ package() {
 
     # Fix invalid permissions FS#10732
     chmod 755 "$pkgdir"/usr/share/man/man1
-    
+
     for i in 16 48 128; do
 	install -Dm644 dosbox-$i.png "$pkgdir"/usr/share/icons/hicolor/${i}x$i/apps/dosbox.png
     done
