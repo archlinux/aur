@@ -2,7 +2,7 @@
 # Maintainer: Milo Gilad <myl0gcontact@gmail.com>
 pkgname=bitwarden-bin
 pkgver=1.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
 url="https://bitwarden.com"
@@ -11,7 +11,6 @@ groups=('')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
 conflicts=('bitwarden')
 provides=('bitwarden')
-replaces=('bitwarden')
 options=('!strip' '!emptydirs')
 source=("https://github.com/bitwarden/desktop/releases/download/v${pkgver}/Bitwarden-${pkgver}-amd64.deb")
 
@@ -22,7 +21,10 @@ package(){
 
 	# Symlink
 	install -d "${pkgdir}/usr/bin"
-	ln -s "/opt/Bitwarden/bitwarden" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/opt/Bitwarden/bitwarden" "${pkgdir}/usr/bin/bitwarden"
+
+	chown root:root $pkgdir/opt/Bitwarden/chrome-sandbox
+	chmod 4755 $pkgdir/opt/Bitwarden/chrome-sandbox
 }
 
 md5sums=('434f2f346feb0b532f9e3e647ffcc76e')
