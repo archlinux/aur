@@ -6,7 +6,7 @@ Documentation=man:ftpusers(5)
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/tnftpd -D -r
+ExecStart=/usr/bin/tnftpd -D
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 

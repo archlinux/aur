@@ -1,7 +1,7 @@
 pkgbase = tnftpd
 	pkgdesc = a.k.a. lukemftpd, it is the default NetBSD FTP server
 	pkgver = 20190602
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ftp.netbsd.org/pub/NetBSD/misc/tnftp/
 	arch = x86_64
 	license = custom:BSD-2clause
@@ -13,12 +13,14 @@ pkgbase = tnftpd
 	source = tnftpd.service
 	source = tnftpd@.service
 	source = tnftpd.socket
+	source = tnftpd.pam
 	validpgpkeys = 2A8E22EDB07B5414548D8507A4186D9A7F332472
 	sha256sums = 905519d239745ebec41c91e357af299f3bce04b59f84f2ba5f7654738439ac1c
 	sha256sums = SKIP
-	sha256sums = 70ab3564b717fabc8a06068d893ee7a935314d1eee60f2b9d033f0424be3106b
-	sha256sums = faf5d0dbc7b33aa4fe42c6fb719712835aebfcfcd336728c474966a764d9f582
+	sha256sums = 08855f0b39f5db5d8adf748bf15630db976c4ec4d7763c5bc421aab94694ae70
+	sha256sums = 9e96e30acac10290b03a8d0b761c0cd95d24345b24a8175cc6df371634bc90fe
 	sha256sums = 6f3a47accdbd0e45aa2daca1c3362a225747356d51ffc3e179a16e211f48d185
+	sha256sums = eef8441bf5796d8ff0508044ebf3ed2cd20b8593881b5fe24c1e7fefe60ea628
 
 pkgname = tnftpd
 
