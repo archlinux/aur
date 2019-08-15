@@ -3,18 +3,16 @@
 
 pkgname=python-pocket
 _name=${pkgname#python-}
-pkgver=0.3.6
-pkgrel=2
+pkgver=0.3.7
+pkgrel=1
 pkgdesc="api wrapper for getpocket.com"
 url="https://github.com/tapanpandita/${_name}"
 license=('BSD')
 arch=('any')
 depends=('python')
 makedepends=('python-setuptools')
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
-  LICENSE::https://raw.githubusercontent.com/tapanpandita/pocket/master/LICENSE.md)
-sha512sums=('7cee6a5e0c5840cae136b264ba9404cdb9b17dbcc0b4051c55cb1e1e1ca3e014862081de5fe7bd687f5d4901f7e456d812091120325c3b5a5c5aeda8978da573'
-            '311093e2f50620a0ff523b8ac01187001832fc25b809bd220c03f58715e8a3c3e013c2305d7d6920b5a6b30ddd693515596e476d41d1c97ceed042d241b633b1')
+source=("${_name}-${pkgver}.tar.gz::https://github.com/tapanpandita/pocket/archive/v${pkgver}.tar.gz")
+sha512sums=('d6b320c40baabcf4cb6b7c7557a3ecc07b997905336010bc5cb061263b0c6f79d13d9fc51f2c070859f2f1acd85d5508b29eb755538a711b9885b1cee8329d10')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
@@ -22,9 +20,8 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   cd "$srcdir/${_name}-${pkgver}/"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
