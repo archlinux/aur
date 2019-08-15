@@ -5,6 +5,7 @@ pkgbase = ckan
 	url = https://github.com/KSP-CKAN/CKAN/
 	arch = any
 	license = MIT
+	makedepends = msbuild
 	depends = mono
 	source = ckan-1.26.4.tar.gz::https://github.com/KSP-CKAN/CKAN/archive/v1.26.4.tar.gz
 	sha256sums = a4f0eb7246768b7fc5916d1ddd33c7ed3224953fb9afe5078acd524da989b1a0

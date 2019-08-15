@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/KSP-CKAN/CKAN/"
 license=('MIT')
 depends=('mono')
+makedepends=('msbuild')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KSP-CKAN/CKAN/archive/v${pkgver}.tar.gz")
 sha256sums=('a4f0eb7246768b7fc5916d1ddd33c7ed3224953fb9afe5078acd524da989b1a0')
 
