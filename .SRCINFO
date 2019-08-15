@@ -1,7 +1,7 @@
 pkgbase = filtron
-	pkgdesc = Reverse-HTTP filtering proxy
+	pkgdesc = Reverse HTTP filtering proxy
 	pkgver = 0+r51+93f8b22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asciimoo/filtron
 	install = filtron.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = filtron
 	license = AGPL3
 	makedepends = git
 	makedepends = go
+	depends = glibc
 	source = git+https://github.com/asciimoo/filtron#commit=93f8b22bc42fabb57d8a4c0ce7b7de706e6034b6
 	source = filtron.service
 	source = rules.json

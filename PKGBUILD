@@ -3,11 +3,12 @@
 pkgname=filtron
 pkgver=0+r51+93f8b22
 _commit=93f8b22bc42fabb57d8a4c0ce7b7de706e6034b6
-pkgrel=1
-pkgdesc='Reverse-HTTP filtering proxy'
+pkgrel=2
+pkgdesc='Reverse HTTP filtering proxy'
 arch=(i686 x86_64)
 url=https://github.com/asciimoo/filtron
 license=(AGPL3)
+depends=(glibc)
 makedepends=(git go)
 install=filtron.install
 source=(git+$url#commit=$_commit
