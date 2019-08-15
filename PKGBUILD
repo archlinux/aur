@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://curlie.io/"
 license=('MIT')
 makedepends=('go-pie')
+depends=('curl')
 source=("git+https://github.com/rs/curlie.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
