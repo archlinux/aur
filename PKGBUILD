@@ -2,8 +2,8 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ivideon-client'
-pkgver='6.8.0'
-pkgrel='684'
+pkgver='6.8.1'
+pkgrel='708'
 pkgdesc='Ivideon Client'
 arch=('x86_64')
 url='https://ivideon.com'
@@ -12,7 +12,7 @@ depends=('qt5-base' 'qt5-script' 'qt5-svg' 'qt5-multimedia' 'openssl' 'wget' 'vl
 makedepends=('libarchive')
 source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgname}_${pkgver}.${pkgrel}_amd64.deb"
 	"${pkgname}.desktop")
-sha256sums=('53710d9065faa5fb4212103c971a3d10f36748cce0b20008810dc902162c1eea'
+sha256sums=('ecca3d31cbe1a8ebbd1de810b17c9c25f3e2d6ab60f08f4e93b118911aaa5432'
             '2baf7178b17057d0e638d19c1c3feb17e8eb65ea32106d477f9d53e24937020b')
 install='ivideon.install'
 
@@ -23,6 +23,8 @@ build() {
 
 package() {
   cp -ax "usr" "${pkgdir}"
+  # use system QT5 libs for HiDPI scaling support
+  rm -rf opt/ivideon/${pkgname}/libQt5*
   cp -ax "opt" "${pkgdir}"
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
