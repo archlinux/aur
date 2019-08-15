@@ -2,8 +2,8 @@
 # Maintainer: Sean V Kelley <seanvk@posteo.de>
 
 pkgname=libyami
-pkgver=1.3.1
-pkgrel=5
+pkgver=1.3.2
+pkgrel=6
 pkgdesc="Yet Another Media Infrastructure: Intel VA-API Media codecs with hardware acceleration"
 arch=('i686' 'x86_64')
 url="https://github.com/01org/libyami"
@@ -13,7 +13,7 @@ optdepends=('libva-intel-driver: Hardware Video Acceleration on Intel x86 GPU')
 options=('!emptydirs')
 changelog=
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=('8ac23517e8c4c0897313950f1cf727f79087b9e174a02dc66cff262eed1bb1c3')
+sha256sums=('d6b741d49aebeba736162d7ee092ffb3e19ebdf3e1b9bdbec1f9d5599757d2cb')
 
 build() {
         export CXXFLAGS="-Wno-error"
