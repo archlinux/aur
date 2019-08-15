@@ -1,7 +1,7 @@
 # Maintainer: Dominic Radermacher <blip@mockmoon-cybernetics.ch>
 _pkgbasename='mariadb-connector-c'
 pkgname=lib32-${_pkgbasename}
-pkgver=3.0.8
+pkgver=3.1.3
 pkgrel=1
 pkgdesc='MariaDB connector libraries for C/C++'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('lib32-openssl' 'lib32-krb5' 'lib32-curl')
 makedepends=('cmake' 'zlib' 'libaio' 'libxml2' 'openssl' 'pcre' 'lz4')
 conflicts=('lib32-libmysqlclient')
 source=("https://downloads.mariadb.org/interstitial/connector-c-$pkgver/mariadb-connector-c-$pkgver-src.tar.gz")
-sha256sums=('2ca368fd79e87e80497a5c9fd18922d8316af8584d87cecb35bd5897cb1efd05')
+sha256sums=('8bcd0a7fe9487a08019a7e74b861cdf79068ace62a9b599384936a8f83d3170e')
 
 build() {
 	export CC="gcc -m32"
