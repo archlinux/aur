@@ -1,6 +1,6 @@
  # By tejonaco
  _pkgname=plymouth-theme-arch-agua
-pkgname="${_pkgname}-git"
+pkgname="${_pkgname}"
 pkgver=r4.f7789af
 pkgrel=1
 pkgdesc='Plymouth theme for Arch Linux inspired by Deepin.'
