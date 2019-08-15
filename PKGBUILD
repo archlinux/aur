@@ -3,7 +3,7 @@
 pkgname=bsnes-hd
 _gitver=beta9
 pkgver=beta9.r0.g9f9cb26
-pkgrel=1
+pkgrel=2
 pkgdesc='Nintendo SNES emulator, featuring HD Mode 7 and Widescreen.'
 arch=('x86_64')
 url='https://github.com/DerKoun/bsnes-hd'
