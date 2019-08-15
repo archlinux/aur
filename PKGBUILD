@@ -8,8 +8,8 @@
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd)
 pkgver=1.20.0
-pkgrel=1
-pkgdesc="Experimental NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency"
+pkgrel=2
+pkgdesc="NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
@@ -83,6 +83,7 @@ package_networkmanager-iwd() {
               'ppp: dialup connection support'
               'modemmanager: cellular network support')
   backup=(etc/NetworkManager/NetworkManager.conf)
+  install="$pkgbase.install"
   groups=(gnome)
 
   DESTDIR="$pkgdir" meson install -C build
@@ -107,6 +108,13 @@ END
 wifi.backend=iwd
 END
 
+  # iwd.service overriding configuration
+  install -Dm644 /dev/stdin "$pkgdir/etc/systemd/system/iwd.service.d/90-networkmanager.conf" <<END
+[Unit]
+After=systemd-udevd.service
+Before=NetworkManager.service
+END
+
 ### Split libnm
   _pick libnm "$pkgdir"/usr/include/libnm
   _pick libnm "$pkgdir"/usr/lib/girepository-1.0/NM-*
@@ -118,7 +126,7 @@ END
 }
 
 package_libnm-iwd() {
-  pkgdesc="NetworkManager client library"
+  pkgdesc="NetworkManager client library with iwd backend"
   depends=(glib2 nss libutil-linux jansson systemd-libs)
   provides=("libnm")
   conflicts=("libnm")

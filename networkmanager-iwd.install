@@ -1,0 +1,22 @@
+_post_install_message() {
+    echo
+    echo ">>> It's recommended to enable iwd service if you haven't done yet:"
+    echo
+    echo "    systemctl enable iwd.service"
+echo
+}
+
+_post_uninstall_message() {
+    echo
+    echo ">>> Do not forget to disable iwd service if you don't need it anymore:"
+    echo
+    echo "    systemctl disable iwd.service"
+}
+
+post_install() {
+    _post_install_message
+} 
+
+post_remove() {
+    _post_uninstall_message
+}

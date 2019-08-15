@@ -1,7 +1,7 @@
 pkgbase = networkmanager-iwd
-	pkgdesc = Experimental NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency
+	pkgdesc = NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	arch = x86_64
 	license = GPL2
@@ -43,6 +43,7 @@ pkgbase = networkmanager-iwd
 	sha256sums = b7e605055491ea8ef433bc149d55349111b9c789ad1cd0578f19ece39b1ac7c4
 
 pkgname = networkmanager-iwd
+	install = networkmanager-iwd.install
 	groups = gnome
 	depends = libnm-iwd
 	depends = iproute2
@@ -65,7 +66,7 @@ pkgname = networkmanager-iwd
 	backup = etc/NetworkManager/NetworkManager.conf
 
 pkgname = libnm-iwd
-	pkgdesc = NetworkManager client library
+	pkgdesc = NetworkManager client library with iwd backend
 	depends = glib2
 	depends = nss
 	depends = libutil-linux
