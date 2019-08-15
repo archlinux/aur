@@ -1,0 +1,28 @@
+pkgbase = qlcplus-git
+	pkgdesc = Q Light Controller - The open DMX lighting desk software for controlling professional lighting fixtures.
+	pkgver = 4.11.2.r1024.g50b228e64
+	pkgrel = 1
+	url = http://qlcplus.org/
+	install = qlcplus-git.install
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-script
+	depends = qt5-multimedia
+	depends = libftdi-compat
+	depends = libsndfile
+	depends = libmad
+	depends = shared-mime-info
+	depends = fftw
+	depends = libftdi
+	depends = desktop-file-utils
+	optdepends = ola: Open Lighting Architecture plugin
+	provides = qlcplus
+	conflicts = qlcplus
+	source = git+https://github.com/mcallegari/qlcplus.git
+	sha1sums = SKIP
+
+pkgname = qlcplus-git
+
