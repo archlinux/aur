@@ -9,10 +9,10 @@ pkgbase = jome-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
-	makedepends = qt5-base
 	makedepends = python-cairo
 	makedepends = python-cairosvg
 	makedepends = python-yaml
+	depends = qt5-base
 	source = jome-git::git+https://github.com/eepp/jome
 	md5sums = SKIP
 

@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc='Jome is a keyboard centric emoji picker desktop application.'
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('')
-makedepends=('git' 'cmake' 'boost' 'qt5-base' 'python-cairo' 'python-cairosvg' 'python-yaml')
+depends=('qt5-base')
+makedepends=('git' 'cmake' 'boost' 'python-cairo' 'python-cairosvg' 'python-yaml')
 url='https://github.com/eepp/jome'
 source=('jome-git::git+https://github.com/eepp/jome')
 md5sums=('SKIP')
@@ -21,6 +21,7 @@ pkgver() {
 build() {
     mkdir -p $srcdir/$pkgname/build
     cd $srcdir/$pkgname/build
+
     cmake -DCMAKE_BUILD_TYPE=release ..
     make
 }
