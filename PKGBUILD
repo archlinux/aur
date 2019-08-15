@@ -1,23 +1,27 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=zerotwo-git
-pkgver=0.6.2+beta
-pkgrel=4
+pkgver=0.6.2beta+r1+g3f49920
+pkgrel=1
 pkgdesc='AniList anime tracker written with Electron & Vue.js (git)'
 arch=(i686 x86_64)
 url=https://www.zerotwo.org
 license=(GPL3)
 provides=(zerotwo)
 conflicts=(zerotwo zerotwo-bin)
+depends=(alsa-lib atk at-spi2-atk cairo gdk-pixbuf2 glib2 gtk3 hicolor-icon-theme libcups libglvnd libx11 libxcb libxcomposite libxcursor libxdamage libxext libxfixes libxi libxrandr libxrender libxss libxtst nspr nss pango)
 makedepends=(git npm)
-source=(git+https://github.com/NicoAiko/zerotwo
+source=(git+https://gitlab.com/NicoAiko/zerotwo
         zerotwo.desktop)
 sha512sums=('SKIP'
-            '8811f73498b76d5985e819d40d84b1a88919c71b563de8ca58a831e9ffd5b1ec54d525d263a01c053a761385712669deb993824545af98e51d2ce73f96788bd3')
+            'd322d1fc1e78086a0dad38d3272fe1bebde3db750f0cd38c5995e7b2c819ab60d3a941792056d5fe2b431c968adae47b01b22d0d1bd8646b74967ad8000d789a')
 
 pkgver() {
   cd zerotwo
-  git describe --tags | sed 's#v##;s#-#+#'
+  if [ $(git describe --tags | grep beta) ]; then
+    git describe --tags | sed 's#v##;s#-#+#g;s#+\([a-zA-Z]\)#\1#;s#+\([0-9]\)#+r\1#'
+  else git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
+  fi
 }
 
 build() {
@@ -40,15 +44,17 @@ build() {
 }
 
 package() {
-  install -d "$pkgdir"/usr/{share,bin}
-  install -Dm 644 zerotwo.desktop -t "$pkgdir"/usr/share/applications
-
   cd zerotwo/build
 
-  cp -a linux-unpacked "$pkgdir"/usr/share/zerotwo
-  ln -s /usr/share/zerotwo/zerotwo-ui "$pkgdir"/usr/bin/zerotwo
+  install -d "$pkgdir"/usr/{lib,bin}
+  cp -a linux-unpacked "$pkgdir"/usr/lib/zerotwo
+  ln -s /usr/lib/zerotwo/zerotwo-ui "$pkgdir"/usr/bin/zerotwo
 
+  install -Dm 644 ../../zerotwo.desktop -t "$pkgdir"/usr/share/applications
   for i in 16 32 64 128 256 512 1024; do
-    install -Dm 644 icons/ZeroTwoAppIcon_$i* "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/zerotwo.png
+    install -Dm 644 icons/ZeroTwoAppIcon_$i.png \
+      "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/zerotwo.png
   done
+
+  install -Dm 644 ../LICENSE -t "$pkgdir"/usr/share/licenses/zerotwo
 }

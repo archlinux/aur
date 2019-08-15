@@ -1,9 +1,9 @@
 [Desktop Entry]
+Version=1.0
+Type=Application
 Name=ZeroTwo
 Comment=AniList anime tracker
 Exec=zerotwo
-Terminal=false
-Type=Application
 Icon=zerotwo
-StartupWMClass=ZeroTwo
 Categories=Network;
+Terminal=false
