@@ -2,7 +2,7 @@
 
 pkgname=filtron-git
 pkgver=0+r51+93f8b22
-pkgrel=1
+pkgrel=2
 pkgdesc='Reverse HTTP filtering proxy (git)'
 arch=(i686 x86_64)
 url=https://github.com/asciimoo/filtron
