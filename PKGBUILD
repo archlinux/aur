@@ -2,9 +2,7 @@
 
 pkgname=ttf-haeck
 pkgver=0.1
-pkgrel=1
-conflicts=('ttf-inconsolata-g')
-provides=('ttf-inconsolata-g')
+pkgrel=2
 pkgdesc="Hæck is the Hack fork with programming ligatures."
 url="https://github.com/ignatov/haack"
 license=('unknown')
