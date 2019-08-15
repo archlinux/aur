@@ -1,19 +1,24 @@
 pkgbase = qolibri
 	pkgdesc = A QT-based EPWING dictionary viewer
-	pkgver = 2.1.0
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/ludios/qolibri/
 	arch = x86_64
 	arch = i686
 	license = GPL2
+	makedepends = cmake
 	depends = qt5-base
 	depends = qt5-tools
 	depends = qt5-multimedia
-	depends = qt5-webkit
+	depends = qt5-webengine
 	depends = zlib
 	depends = eb-library
-	source = https://github.com/ludios/qolibri/archive/2.1.0.tar.gz
-	md5sums = 8e4ebb169c8fed34899fe3aa1ae1e5ba
+	source = https://github.com/ludios/qolibri/archive/2.1.2.tar.gz
+	source = qolibri.desktop
+	source = qolibri-128.png
+	md5sums = 94c58051989d05ed3d1e1393a79bff2a
+	md5sums = 9c68770443635f3718d8d291f260de10
+	md5sums = 85bd387834f16a9ee92824acfcdfd5f2
 
 pkgname = qolibri
 
