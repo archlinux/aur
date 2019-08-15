@@ -1,0 +1,25 @@
+pkgbase = libxfce4ui-gtk2
+	pkgdesc = Commonly used Xfce widgets among Xfce applications (GTK2 version)
+	pkgver = 4.14.1
+	pkgrel = 1
+	url = https://www.xfce.org/
+	arch = x86_64
+	groups = xfce4-gtk2
+	license = GPL2
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = libxfce4util-gtk2
+	depends = gtk2
+	depends = gtk3
+	depends = xfconf-gtk2
+	depends = libsm
+	depends = startup-notification
+	depends = hicolor-icon-theme
+	provides = libxfce4ui
+	conflicts = libxfce4ui
+	source = https://archive.xfce.org/src/xfce/libxfce4ui/4.14/libxfce4ui-4.14.1.tar.bz2
+	sha256sums = c449075eaeae4d1138d22eeed3d2ad7032b87fb8878eada9b770325bed87f2da
+
+pkgname = libxfce4ui-gtk2
+
