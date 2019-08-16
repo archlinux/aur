@@ -1,12 +1,13 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
-	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+pkgbase = rofi-autorandr
+	pkgdesc = Autorandr integration for rofi
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://github.com/pawndev/rofi-autorandr
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	license = MIT
+	depends = rofi
+	depends = autorandr
+	source = rofi-autorandr::https://github.com/pawndev/rofi-autorandr/archive/1.0.0.tar.gz
 
-pkgname = yarxi
+pkgname = rofi-autorandr
 
