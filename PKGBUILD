@@ -2,7 +2,7 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.0.4+822+g3a12b5bb
+pkgver=9.0.4+r862+g74be8446
 _d2j=2.0
 _yajsw=12.12
 _hfsx=0.21
@@ -36,21 +36,15 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd ghidra
-  git describe --tags | sed 's#Ghidra_##;s#_build##;s#-#+#g' # ;s#+#+r#' # Add when pkgver goes to 9.0.5
+  git describe --tags | sed 's#Ghidra_##;s#_build##;s#-#+#g;s#+#+r#'
 }
 
 prepare() {
   # HFSExplorer isn't archived in a folder, so let's make one to extract it into
   mkdir hfsx
-  unzip -u hfsexplorer-${_hfsx/./_}-bin.zip -d hfsx
+  unzip -d hfsx hfsexplorer-${_hfsx/./_}-bin.zip
 
   cd ghidra
-
-  # This commit breaks the build
-  if [ "$(git describe --tags)" = 'Ghidra_9.0.4_build-828-g8f3f5c18' ]; then
-    git checkout HEAD^
-    cd .. && pkgver
-  fi
 
   # Copy needed libraries into a flat repo
   mkdir flatRepo
