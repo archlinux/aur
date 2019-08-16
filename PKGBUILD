@@ -1,6 +1,6 @@
 # Maintainer: Hsiu-Ming Chang <cges30901 at gmail dot com>
 pkgname=hmtimer
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="graphical shutdown timer"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ options=()
 changelog=
 source=("https://github.com/cges30901/hmtimer/releases/download/v$pkgver/hmtimer-$pkgver-src.tar.bz2")
 noextract=()
-md5sums=('868496c2f50de9b2a946d38bee31e362')
+md5sums=('73ad0ce8011a96067b38e7c682e4889b')
 
 build() {
   cd "$pkgname-$pkgver"
