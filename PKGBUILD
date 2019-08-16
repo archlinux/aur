@@ -3,7 +3,7 @@
 # Ported from the package by AlexanderR <alexander r at gmx com>
 
 pkgname=fdroidserver
-pkgver=1.1.1
+pkgver=1.1.4
 epoch=2
 pkgrel=2
 pkgdesc="F-Droid repository management tools"
@@ -34,7 +34,7 @@ optdepends=(
 arch=('any')
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/fdroid/${pkgname}/repository/archive.tar.gz?ref=${pkgver}")
-sha256sums=('37ee8db0d02e0ab65a8c6fc121bf57531924d1942b77cef5816b7cc3c3417cfa')
+sha256sums=('8dbf103b3e7f6b692773fddbead8258f964d6040debc2f9bb0b2ce060f4b16a4')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}-"*
