@@ -51,10 +51,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _major=5.2
-_minor=8
+_minor=9
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -88,7 +88,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
         "${_lucjanpath}/arch-patches/0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
         "${_lucjanpath}/arch-patches/0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch"
-        "${_lucjanpath}/arch-patches/0005-netfilter-nf_tables-fix-module-autoload-for-redir.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -394,7 +393,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('89d1b8d5aff901ee86211e1c03adfa912fbbe221e63f54cc7894eea1ff1a10c49dc359a4f097054be43041bec01dcf119af2967cf9ac6eb2198c2af7d0d18a46'
+sha512sums=('2e3fad96cce66e1ef0a8f82c221970e6535d2d20b5ed8dcc3f368cd51576ff57bd31f5b5b09f7b19acee4f73c7ef5f1a0aa8ecb5176c431c2d4cb5c770432f4b'
             'SKIP'
             '8d9547ff38096b99d296cdec9875b816960c09db31acebb033e3660ba65475d1f310578282cac74947d75dff844dd22d7e7c2e4ded12368d32314fe145763752'
             'd996a89d7831c4d49980b1b5b73ccd21da419302e86ea6faaf7d8f5a686bdbfe688a75c34d3e9583cbb11a011d2adcb4cb3aef66aba677e0d810f3eb1fb5be4b'
@@ -406,7 +405,6 @@ sha512sums=('89d1b8d5aff901ee86211e1c03adfa912fbbe221e63f54cc7894eea1ff1a10c49dc
             '9d472377c50ddd9ddab5d4ab3092f3d487eeee20a4d4a04d3cefeef5bbf40daa3eb609b15741ca4a8cd32bf2b6d0781de961cbf55e2f80fd40260f282bf022f4'
             '166653c6d7d76b052aa26f6a0782a74db75d2611c3d5d770219a00fed4da7d2317b35e39aaadec25da1fc91fb7f18385247303d531d15e3998886bb65f8cd89f'
             '1e422fc04acad01380b96dad92b43bbc2ddb26e3f109c519534fe6635e6fc1decebeff22b6f31be773330f1d4504883264e719889a4961a03c31670dbc2d9859'
-            'b6b4b55bca0271677e66566175e28d4032d7f95b9fdd2163fb1fd1fa4997271fef03bcf71257b03080f2a6896eb4becdc8771b90c458ad4a575b5bb126937146'
             'cdc174453c97c855ded63f25b4e1205bd61770797f3f728a34be2f8360e9d79e85ed02ceb7390aae654909cc9337904763312680a8667af1b24d501caf2c0b2c'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
