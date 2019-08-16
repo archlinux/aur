@@ -1,7 +1,7 @@
 # Maintainer: Christophe Coquelet <coqueletc at gmail dot com>
 
 pkgname=rofi-autorandr
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=3
 pkgdesc="Autorandr integration for rofi"
 arch=('x86_64')
