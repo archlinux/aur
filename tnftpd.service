@@ -4,7 +4,7 @@ Documentation=man:tnftpd(8)
 Documentation=man:ftpd.conf(5)
 Documentation=man:ftpusers(5)
 Conflicts=tnftpd.socket
-After=network.target
+After=network-online.target
 
 [Service]
 ExecStart=/usr/bin/tnftpd -D -r
