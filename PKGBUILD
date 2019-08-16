@@ -7,13 +7,13 @@ pkgver=2.0.12
 pkgrel=1
 pkgdesc="Monitor ARP changes in ethernet networks"
 arch=('i686' 'x86_64')
-url="https://www.arpalert.org/"
+url="http://www.arpalert.org/"
 license=('GPL')
 depends=('libpcap')
-source=("https://www.arpalert.org/src/${pkgname}-${pkgver}.tar.gz"
+source=("http://www.arpalert.org/src/${pkgname}-${pkgver}.tar.gz"
         "arpalert-flags.patch")
 sha256sums=('ca3ef80d89cbca64e5964cbbcdae8652dc69aa09e1a58f630f835a6349f489ab'
-            'c4166a3e74478ccda7603c15f729640b0a3afb16b0d4c0c7854e5ccb675f46b4')
+            '19d3f3c5e1ce4795aaea1ee625aa0098a2d331dc566f774a8dde395a058e354e')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

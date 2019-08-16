@@ -6,7 +6,7 @@ diff -Naur arpalert-2.0.12.orig/Makefile.in arpalert-2.0.12/Makefile.in
            -DCONFIG_FILE=\"$(config_dir)/arpalert.conf\" \
            -DPID_FILE=\"$(lock_dir)/arpalert.pid\"
 -LDFLAGS = -Wl,--export-dynamic
-+LDFLAGS += -Wl,--export-dynamic
++LDFLAGS ?= -Wl,--export-dynamic
  LIBS = @LIBS@
  OBJECT_LIST = \
  	$(src_dir)/arpalert.o \
