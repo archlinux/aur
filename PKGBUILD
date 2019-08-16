@@ -42,12 +42,12 @@ _openssh_ver=7.9p1
 _hpn_ver=hpn14v17
 _pkgver=`sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver}`
 pkgver="${_openssh_ver}.${_hpn_ver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
 arch=('i686' 'x86_64' 'armv7h')
-depends=('krb5' 'ldns' 'libedit' 'openssl' 'pam')
+depends=('krb5' 'ldns>=1.7.1' 'libedit' 'openssl' 'pam')
 makedepends=('git')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X')
