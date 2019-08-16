@@ -6,7 +6,7 @@ Documentation=man:ftpusers(5)
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/tnftpd
+ExecStart=/usr/bin/tnftpd -r
 StandardInput=socket
 StandardError=syslog
 KillMode=process

@@ -7,7 +7,7 @@ Conflicts=tnftpd.socket
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/tnftpd -D
+ExecStart=/usr/bin/tnftpd -D -r
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 
