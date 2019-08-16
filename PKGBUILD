@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-auth_pam
 pkgver=1.5.1
-pkgrel=27
+pkgrel=28
 
 _modname=ngx_http_auth_pam_module
-_nginxver=1.17.1
+_nginxver=1.17.3
 
 pkgdesc='Nginx mainline module to use PAM for simple http authentication'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('6f1825b4514e601579986035783769c456b888d3facbab78881ed9b58467e73e'
+sha256sums=('3b84fe1c2cf9ca22fde370e486a9ab16b6427df1b6ea62cdb61978c9f34d0f3c'
             'SKIP'
             '77676842919134af88a7b4bfca4470223e3a00d287d17c0dbdc9a114a685b6e7'
             '1a59787672cf9c6768cb77c31f19a870eaf556c7b28c8c22a22cf8a7013b93af')
