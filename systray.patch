@@ -1,0 +1,13 @@
+diff --git a/app/js/main/Utils/index.js b/app/js/main/Utils/index.js
+index 1d4664c..0ff1f4f 100644
+--- a/app/js/main/Utils/index.js
++++ b/app/js/main/Utils/index.js
+@@ -184,7 +184,7 @@ var platformVersion =
+                 e = "build/mac/trayTemplate.png";
+                 break;
+               case this.isLinux():
+-                e = "build/linux/systray.png";
++                e = "../../../share/deezer/systray.png";
+             }
+             return _path2.default.join(process.resourcesPath, e);
+           }

@@ -1,0 +1,13 @@
+diff --git a/app/js/main/App/index.js b/app/js/main/App/index.js
+index 94631c5..400f221 100644
+--- a/app/js/main/App/index.js
++++ b/app/js/main/App/index.js
+@@ -255,7 +255,7 @@ var App = (function() {
+               titleBarStyle: "hiddenInset",
+               backgroundColor: "#F8F8F9",
+               show: !0,
+-              frame: !this.isFrameless,
++              frame: this.isFrameless,
+               webPreferences: {
+                 devTools: _Utils2.default.hasDevTools(),
+                 preload: _path2.default.join(

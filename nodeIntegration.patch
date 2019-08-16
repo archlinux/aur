@@ -1,0 +1,21 @@
+diff --git a/app/js/main/App/index.js b/app/js/main/App/index.js
+index 94631c5..e00498f 100644
+--- a/app/js/main/App/index.js
++++ b/app/js/main/App/index.js
+@@ -257,6 +257,7 @@ var App = (function() {
+               show: !0,
+               frame: !this.isFrameless,
+               webPreferences: {
++                nodeIntegration: true,
+                 devTools: _Utils2.default.hasDevTools(),
+                 preload: _path2.default.join(
+                   _Utils2.default.getResolvedDirPath(__dirname),
+@@ -424,7 +425,7 @@ var App = (function() {
+                 (a.oauthWindow = new _electron.BrowserWindow({
+                   parent: a.getWindow(),
+                   show: !1,
+-                  webPreferences: { nodeIntegration: !1 }
++                  webPreferences: { nodeIntegration: true }
+                 }));
+               var n = function() {
+                 a.oauthWindow.loadURL(

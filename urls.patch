@@ -1,0 +1,22 @@
+diff --git a/app/js/main/App/index.js b/app/js/main/App/index.js
+index 94631c5..02afd59 100644
+--- a/app/js/main/App/index.js
++++ b/app/js/main/App/index.js
+@@ -124,7 +124,7 @@ var App = (function() {
+             _electron.app.on("ready", function() {
+               _electronLog2.default.debug("App is ready"),
+                 _AutoUpdater2.default.init();
+-              var e = { urls: ["*." + r.tld] };
++              var e = { urls: ["*://*/*"] };
+               _CookieManager2.default.init(_electron.session.defaultSession),
+                 _electron.session.defaultSession.webRequest.onBeforeSendHeaders(
+                   e,
+@@ -140,7 +140,7 @@ var App = (function() {
+                   }
+                 );
+               _electron.session.defaultSession.webRequest.onBeforeRequest(
+-                { urls: ["*.*"] },
++                { urls: ["*://*/*"] },
+                 function(e, t) {
+                   if (-1 === e.url.indexOf("blob:file"))
+                     if (-1 !== e.url.indexOf("file:")) {
