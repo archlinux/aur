@@ -1,16 +1,16 @@
 # Maintainer: Pavol Hluchy (Lopo) <lopo at losys dot eu>
 
 pkgname="log4qt"
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Logging for the Qt cross-platform application framework"
 license=('Apache License 2, Version 2.0')
 arch=('x86_64' 'i686')
 url="https://github.com/MEONMedical/Log4Qt"
-depends=('qt5-base>=5.6')
+depends=('qt5-base>=5.7')
 options=(!strip)
 source=("https://github.com/MEONMedical/Log4Qt/archive/v${pkgver}.tar.gz")
-sha512sums=('b7a42175301d0ae189302a5563f293a385a506f021450cfb5a8bb6856613209918320259de8c7d097836c25b1a262809ea843280f0547c4112ef3bd6d5e67f3f')
+sha512sums=('a8053ca0c8177dd500b1ba828ec6da4f7be008e018e0ea787f33ddd604e00c4b67375c8cd55b153726c88dd8b6b3efd45d92d92e2cf2948b1ca54407af145f6c')
 
 prepare() {
 	cd "${srcdir}/Log4Qt-${pkgver}"
