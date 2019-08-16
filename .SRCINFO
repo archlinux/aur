@@ -11,7 +11,7 @@ pkgbase = opmon
 	depends = libstdc++5
 	depends = smpeg
 	conflicts = opmon-git
-	source = git+git://github.com/OpMonTeam/OpMon.git#tag=alpha-va0.16
+	source = git+git://github.com/OpMonTeam/OpMon.git#tag=alpha-v0.16
 	md5sums = SKIP
 
 pkgname = opmon
