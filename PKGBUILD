@@ -1,15 +1,12 @@
 # Maintainer: lsf
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
-# Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=librewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
 _pkgname=LibreWolf
-pkgver=68.0.1
-_uploadpath='258026784'
-pkgrel=2
+pkgver=68.0.2
+_uploadpath='274152460'
+pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -24,7 +21,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 options=(!emptydirs)
 install='librewolf-bin.install'
 source=(https://gitlab.com/${pkgname//-bin/""}-community/${_pkgname}-Arch/-/jobs/${_uploadpath}/artifacts/raw/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz)
-sha256sums=('4656e09d9f0aff3765709e406da18edd5a7efa44b2a661b43fafe3e9327360e0')
+sha256sums=('e9f67d7c4904c668383bbafd3b1f6eb426d701ee73d1056215d7063061f78487')
 
 package() {
   cp -r $srcdir/usr $pkgdir/
