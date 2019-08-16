@@ -2,7 +2,7 @@
 
 pkgname='gti-bin'
 _binname='gti'
-pkgver=v1.0.0
+pkgver=v1.1.0
 pkgrel=1
 pkgdesc='Just a silly git launcher, basically. Inspired by sl.'
 url='https://github.com/ldez/gti'
@@ -19,16 +19,16 @@ _basedownloadurl="${_url}/releases/download/${pkgver}"
 _basearchive="${_binname}_${pkgver}_linux"
 
 source_x86_64=("${_basedownloadurl}/${_basearchive}_amd64.tar.gz")
-sha256sums_x86_64=('1579b6310c2a43374fd0c9c5ffa969ee920ef59f760f6669d43883eb33a01dac')
+sha256sums_x86_64=('7002f7915c115e4c47b0cdd1a7d6b4efaedc3061756c8a747fecd42de37ed325')
 
 source_i686=("${_basedownloadurl}/${_basearchive}_386.tar.gz")
-sha256sums_i686=('df2c145101e8edae3b2f060dedc1472530ef601af765da247221bb1ae0901c2e')
+sha256sums_i686=('9aa93ce2d48b3af9b9e6ce2b5da5fbbdfe8567c9d39291823167a5bb1f4125b9')
 
 source_armv7h=("${_basedownloadurl}/${_basearchive}_armv7.tar.gz")
-sha256sums_armv7h=('666413b4cac31f1fc2db47a5f43dea8d2be5170c5f001e4e4debcd460b65eeec')
+sha256sums_armv7h=('570d34443763b47273d8024be83bb4d776738507a50bbbc29cfe1848e786bcfb')
 
 source_aarch64=("${_basedownloadurl}/${_basearchive}_arm64.tar.gz")
-sha256sums_aarch64=('38cec5ede344ea501ef3c73683f0b8439a76fd87639eef1912a91f76a84a83b6')
+sha256sums_aarch64=('4d1cd7b5e1ccd188b7d1c84c12e2bf67ec611ccdd71510fdf1aa4ca068b8080b')
 
 package() {
 	# Bin
