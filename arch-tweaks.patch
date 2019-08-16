@@ -1,25 +1,11 @@
-From 16535e94322a8561c89b0d0d2e854124d3ba1745 Mon Sep 17 00:00:00 2001
-From: Solomon Choina <shlomochoina@gmail.com>
-Date: Wed, 13 Dec 2017 07:13:52 -0500
-Subject: [PATCH] arch tweaks
-
----
- debian/elementary-default-settings.gsettings-override  | 4 +---
- meson.build                                            | 1 -
- plank/dock1/launchers/io.elementary.appcenter.dockitem | 4 ----
- policykit.desktop                                      | 2 +-
- settings.ini                                           | 2 +-
- 5 files changed, 3 insertions(+), 10 deletions(-)
- delete mode 100644 plank/dock1/launchers/io.elementary.appcenter.dockitem
-
 diff --git a/debian/elementary-default-settings.gsettings-override b/debian/elementary-default-settings.gsettings-override
 index da55ae6..ff3d55a 100644
 --- a/debian/elementary-default-settings.gsettings-override
 +++ b/debian/elementary-default-settings.gsettings-override
 @@ -1,5 +1,5 @@
  [net.launchpad.plank.dock.settings]
--dock-items=['gala-multitaskingview.dockitem','epiphany.dockitem','org.pantheon.mail.dockitem','io.elementary.calendar.dockitem','io.elementary.music.dockitem','io.elementary.videos.dockitem','io.elementary.photos.dockitem','org.pantheon.switchboard.dockitem','io.elementary.appcenter.dockitem']
-+dock-items=['gala-multitaskingview.dockitem','epiphany.dockitem','org.pantheon.mail.dockitem','io.elementary.calendar.dockitem','io.elementary.music.dockitem','io.elementary.videos.dockitem','io.elementary.photos.dockitem','org.pantheon.switchboard.dockitem']
+-dock-items=['gala-multitaskingview.dockitem','org.gnome.Epiphany.dockitem','org.pantheon.mail.dockitem','io.elementary.calendar.dockitem','io.elementary.music.dockitem','io.elementary.videos.dockitem','io.elementary.photos.dockitem','io.elementary.switchboard.dockitem','io.elementary.appcenter.dockitem']
++dock-items=['gala-multitaskingview.dockitem','org.gnome.Epiphany.dockitem','org.pantheon.mail.dockitem','io.elementary.calendar.dockitem','io.elementary.music.dockitem','io.elementary.videos.dockitem','io.elementary.photos.dockitem','io.elementary.switchboard.dockitem']
  hide-delay=250
  hide-mode='window-dodge'
  show-dock-item=false
@@ -61,18 +47,29 @@ index c9e2372..0000000
 -Launcher=file:///usr/share/applications/io.elementary.appcenter.desktop
 -
 -
-diff --git a/settings.ini b/settings.ini
-index 0d10895..716aad2 100644
---- a/settings.ini
-+++ b/settings.ini
-@@ -2,6 +2,6 @@
- gtk-theme-name = elementary
- gtk-icon-theme-name = elementary
- gtk-fallback-icon-theme = gnome
--gtk-sound-theme-name = ubuntu
-+gtk-sound-theme-name = freedesktop
- gtk-icon-sizes = panel-menu-bar=24,24
- gtk-font-name = Open Sans 9
--- 
-2.15.1
-
+--- a/meson.build	2019-08-17 01:58:19.554216192 +0900
++++ b/meson.build	2019-08-17 02:18:10.548389124 +0900
+@@ -9,12 +9,6 @@
+     install_dir: join_paths(get_option('datadir'), 'cups', 'data')
+ )
+ 
+-# Installer session lightdm.conf
+-install_data(
+-    'lightdm.conf',
+-    install_dir: join_paths(get_option('sysconfdir'), 'lightdm')
+-)
+-
+ install_data(
+     'settings.ini',
+     install_dir: join_paths(get_option('sysconfdir'), 'gtk-3.0')
+--- a/meson.build	2019-08-17 02:21:02.247682193 +0900
++++ b/meson.build	2019-08-17 02:30:05.087644804 +0900
+@@ -41,7 +41,7 @@
+     join_paths('.', 'plank', 'dock1', 'launchers', 'io.elementary.calendar.dockitem'),
+     join_paths('.', 'plank', 'dock1', 'launchers', 'io.elementary.music.dockitem'),
+     join_paths('.', 'plank', 'dock1', 'launchers', 'io.elementary.photos.dockitem'),
+-    join_paths('.', 'plank', 'dock1', 'launchers', 'org.pantheon.switchboard.dockitem'),
++    join_paths('.', 'plank', 'dock1', 'launchers', 'io.elementary.switchboard.dockitem'),
+ ]
+ 
+ install_data(

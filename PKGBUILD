@@ -1,8 +1,8 @@
 # Maintainer: Que Quotion <quequotion@bugmenot.com>
 
 pkgname=pantheon-qq-default-settings-git
-pkgver=r340.09ae797
-pkgrel=2
+pkgver=r376.7a753ce
+pkgrel=1
 arch=('any')
 url='https://github.com/elementary/default-settings'
 license=('GPL')
@@ -10,7 +10,7 @@ groups=('pantheon-qq' 'pantheon-unstable')
 makedepends=('git' 'meson')
 pkgdesc='Default settings for Pantheon derivatives'
 depends=('elementary-icon-theme' 'gtk-theme-elementary-git'
-         'gnome-themes-standard' ttf-{droid,opensans,roboto-mono})
+         'gnome-themes-standard' ttf-{droid,opensans,roboto})
 optdepends=('elementary-wallpapers-git')
 groups=(pantheon-qq)
 provides=(pantheon-default-settings{,-git})
@@ -19,7 +19,7 @@ source=('pantheon-default-settings::git+https://github.com/elementary/default-se
         'arch-tweaks.patch'
         'leave-bg-alone.patch')
 sha256sums=('SKIP'
-            '742812de8dbbaf641a7cc531d4ab2ad21408db5017dff5ce52dffda474b61a3f'
+            '99528c7ed672a5231f4d42d90421cef18d416f2b7aea6e0381db7cea6f9391d3'
             '3732b2209d28c68bb3a11da5726f486db1fca9fcb3776bf58f83c81678b84211')
 
 pkgver() {
@@ -50,8 +50,8 @@ package() {
 
     install -dm 755 "${pkgdir}"/usr/share/glib-2.0/schemas
     install -m 644 debian/elementary-default-settings.gsettings-override "${pkgdir}"/usr/share/glib-2.0/schemas/25_pantheon-default-settings.gschema.override
-    install -Dm 644 $pkgdir/etc/lightdm/lightdm.conf $pkgdir/etc/skel/.config/lightdm/lightdm.conf
-    rm $pkgdir/etc/lightdm/lightdm.conf
+    #install -Dm 644 $pkgdir/etc/lightdm/lightdm.conf $pkgdir/etc/skel/.config/lightdm/lightdm.conf
+    #rm $pkgdir/etc/lightdm/lightdm.conf
     install -Dm 644 $pkgdir/etc/gtk-3.0/settings.ini $pkgdir/etc/skel/.config/gtk-3.0/settings.ini
     rm $pkgdir/etc/gtk-3.0/settings.ini
     rm $pkgdir/usr/share/cups/data/default-testpage.pdf
