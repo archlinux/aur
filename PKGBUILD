@@ -12,18 +12,16 @@ license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}" 'vdr-svdrpservice')
 _plugname=${pkgname//vdr-/}
 source=("http://vdr.schmirler.de/$_plugname/$pkgname-$pkgver.tgz"
-        "vdr-remoteosd-1.0.0-vdr-2.3.2.diff::https://www.vdr-portal.de/index.php?attachment/40530")
+        "$pkgname-vdr-2.3.2.patch")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('5ec2756944cdb36808d1332e7e6a87c8'
-         'c6af05b7090f0b1153d44dbabb674dcc')
+         '771db7688cd5237265aef6674b856e9b')
 
 prepare() {
   cd "${srcdir}/${_plugname}-${pkgver}"
-    if [ `vercmp $_vdrapi 2.3.0` -eq 1 ]; then
-      patch -p1 -i "$srcdir/vdr-remoteosd-1.0.0-vdr-2.3.2.diff"
-    fi
+  patch -p1 -i "$srcdir/$pkgname-vdr-2.3.2.patch"
 }
-         
+
 build() {
   cd "${srcdir}/${_plugname}-${pkgver}"
   make

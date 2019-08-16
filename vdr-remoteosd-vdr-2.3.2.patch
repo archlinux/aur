@@ -1,0 +1,37 @@
+Author: MatthiasK
+https://www.vdr-portal.de/forum/index.php?thread/130045-produktive-problem-und-pluginl%C3%B6sungen-f%C3%BCr-vdr-2-3-2-und-h%C3%B6her/&postID=1284573#post1284573
+
+diff -u -r -N remoteosd-1.0.0/menu.c remoteosd-1.0.0_mk/menu.c
+--- remoteosd-1.0.0/menu.c	2013-04-30 23:08:34.000000000 +0200
++++ remoteosd-1.0.0_mk/menu.c	2017-01-04 09:39:47.439076685 +0100
+@@ -69,7 +69,8 @@
+ 	}
+ 
+ 	if (RemoteOsdSetup.tuneServer) {
+-		cChannel *channel = Channels.GetByNumber(cDevice::CurrentChannel());
++                LOCK_CHANNELS_READ;
++		const cChannel *channel = Channels->GetByNumber(cDevice::CurrentChannel());
+ 		CmdCHAN(channel);
+ 	}
+ 
+@@ -98,7 +99,7 @@
+ 	return cmd.responseCode;
+ }
+ 
+-bool cRemoteOsdMenu::CmdCHAN(cChannel *Channel) {
++bool cRemoteOsdMenu::CmdCHAN(const cChannel *Channel) {
+ 	SvdrpCommand_v1_0 cmd;
+ 	cmd.command = cString::sprintf("CHAN %s\r\n", *Channel->GetChannelID().ToString());
+ 	cmd.handle = svdrp.handle;
+diff -u -r -N remoteosd-1.0.0/menu.h remoteosd-1.0.0_mk/menu.h
+--- remoteosd-1.0.0/menu.h	2013-04-30 23:00:29.000000000 +0200
++++ remoteosd-1.0.0_mk/menu.h	2017-01-04 09:38:55.291501264 +0100
+@@ -27,7 +27,7 @@
+ 		bool			isEmpty;
+ 		bool			plugOsd;
+ 
+-		bool CmdCHAN(cChannel *Channel);
++		bool CmdCHAN(const cChannel *Channel);
+ 		bool CmdHITK(const char *Key);
+ 		bool CmdLSTO();
+ 		bool CmdOSDT();
