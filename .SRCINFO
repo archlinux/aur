@@ -6,17 +6,9 @@ pkgbase = python-sortedcollections
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	makedepends = python-sortedcontainers>=2.0.0
-	makedepends = python2-sortedcontainers>=2.0.0
+	depends = python-sortedcontainers>=2.0.0
 	source = https://files.pythonhosted.org/packages/source/s/sortedcollections/sortedcollections-1.1.2.tar.gz
 	sha256sums = b93e0decbd7f8f19e40c320709e70e4845b6c8b3a0e96c3c4f707b4b93e1d38a
 
 pkgname = python-sortedcollections
-	depends = python
-	depends = python-sortedcontainers>=2.0.0
-
-pkgname = python2-sortedcollections
-	depends = python2
-	depends = python2-sortedcontainers>=2.0.0
 
