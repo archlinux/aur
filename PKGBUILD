@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Lopez <contact@scotow.com>
 
 pkgname=mego
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A simple megadl wrapper with auto-retry and download list"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('megatools')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/scotow/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('431e8ca61e04936bba225925c331f011754cb76eaac894903e7eb256a73e651f')
+sha256sums=('f7d60a9cefa4fbc1cfad391a6b503085198b2b97d868882bc414d4f7ebb057c2')
 
 prepare(){
   mkdir -p src/github.com/scotow
