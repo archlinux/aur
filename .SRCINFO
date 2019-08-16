@@ -1,6 +1,6 @@
 pkgbase = opmon-git
 	pkgdesc = A open source RPG monster fighting game - Git Version
-	pkgver = 0.15.1.r256.geab539f4
+	pkgver = 0.16.r0.gf323e7d3
 	pkgrel = 1
 	url = http://opmon-game.ga
 	arch = x86_64

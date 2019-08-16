@@ -3,7 +3,7 @@
 # Contributor: Navet56 <evandib@gmail.com>
 
 pkgname=opmon-git
-pkgver=0.15.1.r256.geab539f4
+pkgver=0.16.r0.gf323e7d3
 pkgrel=1
 license=('GPL')
 arch=('x86_64')
