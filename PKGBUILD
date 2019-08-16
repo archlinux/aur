@@ -2,7 +2,7 @@
 
 pkgname=bearssl
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of the SSL/TLS protocol (RFC 5246) written in C'
 arch=('x86_64')
 url='https://bearssl.org'
@@ -23,10 +23,14 @@ check() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/lib" "$pkgdir/usr/share/licenses/$pkgname"
+	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/lib" "$pkgdir/usr/include/$pkgname" "$pkgdir/usr/share/licenses/$pkgname"
 	cd "$pkgname-$pkgver/build"
+	sed -e 's|"bearssl_|"bearssl/|g' -i ../inc/*
+	for h in ../inc/bearssl_*
+	do  mv $h "$pkgdir/usr/include/bearssl/${h#*_}"
+	done
+	mv ../inc/bearssl.h "$pkgdir/usr/include"
 	mv ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname"
-	mv ../inc "$pkgdir/usr/include"
 	mv brssl "$pkgdir/usr/bin"
 	mv  "lib$pkgname.so.$pkgver" "lib$pkgname.a" "$pkgdir/usr/lib"
 	ln -s "lib$pkgname.so.$pkgver" "$pkgdir/usr/lib/lib$pkgname.so.${pkgver%%.*}"
