@@ -1,7 +1,7 @@
  # By tejonaco
- _pkgname=plymouth-theme-arch-agua
+_pkgname=plymouth-theme-arch-agua
 pkgname="${_pkgname}"
-pkgver=1.0
+pkgver=hola
 pkgrel=1
 pkgdesc='Plymouth theme for Arch Linux inspired by Deepin.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -10,18 +10,18 @@ license=('GNU')
 install="${pkgname}.install"
 depends=('plymouth')
 makedepends=('git')
-source=("https://github.com/tejonaco/$_pkgname.git")
+source=("https://github.com/tejonaco/$_pkgname/archive/master.zip")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
-	cd "${srcdir}/arch-logo"
-	rm -fv *~
-	mkdir -p "${pkgdir}/usr/share/plymouth/themes/arch-logo"
-	install -Dvm644 * "${pkgdir}/usr/share/plymouth/themes/arch-logo"
+  cd "${_pkgname}-master"
+
+  _themedir="$pkgdir/usr/share/plymouth/themes/arch-agua"
+
+  for N in *.png arch-agua.plymouth arch-agua.script; do
+    install -Dm644 $N "${_themedir}/$N"
+  done
+
 }
 
