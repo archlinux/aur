@@ -1,8 +1,8 @@
 # Maintainer: Alexandros Theodotou <alex@zrythm.org>
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=0.6.003
-pkgrel=2
+pkgver=0.6.003.r5.g2c5ff65c
+pkgrel=1
 pkgdesc='An highly automated, intuitive, Digital Audio Workstation (DAW)'
 arch=('x86_64' 'i686')
 url='https://git.zrythm.org/zrythm/zrythm'
@@ -12,7 +12,7 @@ depends=('gtk3' 'lv2' 'lilv' 'libx11' 'jack'
   'libsamplerate' 'alsa-lib'
   'ladspa' 'fftw')
 makedepends=('python' 'gettext' 'sed'
-             'meson' 'ninja')
+             'meson' 'ninja' 'help2man')
 optdepends=('portaudio: portaudio backend'
             'qt5-base: for embedding qt5 plugin UIs')
 conflicts=("$_pkgname")
