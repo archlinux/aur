@@ -12,18 +12,21 @@ license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tgz::https://www.vdr-portal.de/index.php?attachment/29502"
-        "favorites-makefile-1.7.36.tar.gz::https://www.vdr-portal.de/index.php?attachment/32856"
-        "favorites-0.0.2-vdr-2.3.1-porting.diff::https://www.vdr-portal.de/index.php?attachment/38761-favorites-0-0-2-vdr-2-3-1-porting-diff/"
+        "$pkgname-new-makefile.patch"
+        "$pkgname-vdr-2.3.1.patch"
 )
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('b5e87d11102ff1d8923a64cd53694171'
-         'e3262d62bee7d4e99c16d3359e77261f'
-         '8bc83fc7ac565f6d89b4bf1e2b617996')
+sha256sums=('ed01256fbbb34e3aab28223fc51b078a08fbe46c36b582f3a807c34e65360654'
+            '3fb61d2b9cee6bc79898b1cc6274ae096de928e09970cb501892520557b4102a'
+            'b4920fbbd9abf6129212b8287a3308d6438418a188c86784d7e3abdc6a687e23')
+
+# SSL certificate on www.vdr-portal.de is regularly broken so don't check it
+DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 --insecure -o %o %u')
 
 prepare() {
   cd "${srcdir}/${_plugname}-${pkgver}"
-  patch -p1 -i "${srcdir}/favorites-0.0.2-vdr-2.3.1-porting.diff"
-  cp "$srcdir/favorites-makefile-1.7.36" Makefile
+  patch -p1 -i "${srcdir}/$pkgname-new-makefile.patch"
+  patch -p1 -i "${srcdir}/$pkgname-vdr-2.3.1.patch"
 }
 
 build() {
