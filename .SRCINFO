@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-local-scripts-git
+	pkgdesc = Scripts are just clicks away
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/ylxdzsw/gnome-shell-extension-local-scripts
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	depends = polkit
+	source = git+https://github.com/ylxdzsw/gnome-shell-extension-local-scripts.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-local-scripts-git
+
